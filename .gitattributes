@@ -1,0 +1,41 @@
+# Default: normalize all text files to LF on commit and checkout
+* text=auto eol=lf
+
+# Lean source files
+*.lean   text eol=lf
+*.toml   text eol=lf
+
+# Common text types
+*.py     text eol=lf
+*.sh     text eol=lf
+*.json   text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.md     text eol=lf
+*.txt    text eol=lf
+*.ini    text eol=lf
+
+# Windows-native scripts that require CRLF
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+*.ps1    text eol=lf
+
+# Binary — never normalize
+*.olean  binary
+*.ilean  binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.pdf    binary
+*.zip    binary
+*.7z     binary
+*.gz     binary
+*.exe    binary
+*.dll    binary
+*.so     binary
+*.dylib  binary
+*.sqlite binary
+*.db     binary
+*.bin    binary

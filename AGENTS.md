@@ -496,3 +496,43 @@ A small theorem with exact provenance and a kernel-checked proof is progress.
 A large speculative formalization with unclear conventions is technical debt.
 
 When in doubt, formalize the algebra first, document the convention, and keep the physics interpretation in a separate layer until the formal foundation is stable.
+
+## Text encoding and formatting rules
+
+All agents must preserve repo text hygiene. Formatting drift between agents is
+expensive to fix and can corrupt files silently.
+
+Required conventions:
+
+- Text files must be UTF-8 **without BOM**.
+- Text files must use **LF line endings**, not CRLF.
+- Text files must end with **exactly one final newline**.
+- No trailing whitespace except where Markdown explicitly needs it (two spaces
+  for a line break).
+- Code, config, scripts, and filenames should be **ASCII-only** unless Unicode
+  is semantically required. In particular, do not introduce smart quotes,
+  nonbreaking spaces, Unicode minus signs, en dashes, or em dashes into Lean
+  source, config, or shell scripts.
+- **Do not reformat whole files** unless explicitly asked. Make the smallest
+  semantic edit, then run the repo's checker. If the checker reports unrelated
+  formatting problems elsewhere, stop and report them instead of doing a broad
+  cleanup.
+- Do not edit binary files, generated files, lock files, `.olean`/`.ilean`
+  files, images, PDFs, or archives unless explicitly asked.
+- Do not use shell redirection (`>`, `>>`) or `Out-File` from Windows
+  PowerShell 5 to rewrite repo files — these produce UTF-16LE by default. Use
+  explicit UTF-8 writes:
+  - PowerShell 7+: `Set-Content -Encoding utf8NoBOM`
+  - Python: `open(path, "w", encoding="utf-8", newline="\n")`
+
+Before committing or handing back changes, run:
+
+```bash
+pre-commit run --all-files
+lake build
+```
+
+If pre-commit is not installed: `pipx install pre-commit && pre-commit install`.
+
+If formatting checks fail, fix only the files touched by the current task
+unless the user asks for repo-wide normalization.

@@ -5,3 +5,5 @@ __pycache__/
 *.py[cod]
 *.pyc
 .DS_Store
+# MCP config contains machine-specific executable paths — do not commit
+/.mcp.json
