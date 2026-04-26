@@ -1,0 +1,31 @@
+{
+  "description": "Baez-to-XOR convention bridge for octonion basis. Canonical choice s1=s2=s3=+1.",
+  "source": "Computed by Scripts/oracle/validate_convention_bridge.py",
+  "baez_to_xor_permutation": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 6,
+    "4": 3,
+    "5": 4,
+    "6": 5,
+    "7": 7
+  },
+  "baez_to_xor_sign": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": -1,
+    "6": 1,
+    "7": 1
+  },
+  "note_sign_flip": "Only Baez e5 -> -e100 requires a sign flip; all other signs are +1.",
+  "furey_ladder_in_xor": {
+    "alpha_1": "( +e100 + i*e011 ) / 2   [Baez: (-e5 + i*e4)/2]",
+    "alpha_2": "( -e110 + i*e001 ) / 2   [Baez: (-e3 + i*e1)/2]",
+    "alpha_3": "( -e101 + i*e010 ) / 2   [Baez: (-e6 + i*e2)/2]"
+  },
+  "verification": "All 21 forward products and 21 reversed products verified against XOR table."
+}

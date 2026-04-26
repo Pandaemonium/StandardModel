@@ -1,96 +1,124 @@
+import PhysicsSM.Algebra.Octonion.Basic
+
 /-!
 # Algebra.Octonion.ConventionBridge
 
-Translation between the project XOR convention and the Baez/Furey conventions.
+Explicit translation between the project XOR convention and the Baez/Furey conventions.
 
-## Why this module exists
+## Summary
 
-The project uses the XOR binary-label convention for octonions (see
-`PhysicsSM.Algebra.Octonion.Basic`). Baez (2002) and Furey (2015) use a
-cyclic mod-7 convention on labels 1–7. The two conventions are isomorphic
-as octonion algebras, but they are **not related by a pure label permutation**
-— some basis elements also require sign flips.
+The project XOR convention and Baez (2002) differ by:
+1. A **permutation** of the seven imaginary basis labels.
+2. A **sign flip** on exactly one basis element (Baez e₅ → −e100 in XOR).
 
-This module provides:
-- The explicit permutation from Baez labels to project labels.
-- The sign correction map needed on top of the permutation.
-- Verified translation lemmas (once the `Octonion` type is defined).
-- A warning against using Baez/Furey formulas without translating first.
+The full map, with canonical choice s₁=s₂=s₃=+1, is:
 
-## Baez label permutation
+| Baez | XOR   | Sign |
+|------|-------|------|
+| e₁   | e001  | +1   |
+| e₂   | e010  | +1   |
+| e₃   | e110  | +1   |
+| e₄   | e011  | +1   |
+| e₅   | e100  | **−1** ← only sign flip |
+| e₆   | e101  | +1   |
+| e₇   | e111  | +1   |
 
-```
-Baez e1 ↦ e001    Baez e5 ↦ e100
-Baez e2 ↦ e010    Baez e6 ↦ e101
-Baez e3 ↦ e110    Baez e7 ↦ e111
-Baez e4 ↦ e011
-```
+This map sends every Baez positive triple to the correct XOR product.
+Verified: all 21 forward products and 21 reversed products pass against
+`Scripts/oracle/validate_octonion.py`. See also `Index/convention_bridge.json`.
 
-As a function `baezToXOR : Fin 7 → Fin 7` on imaginary-unit indices
-(1-based for Baez, decimal 1–7 for XOR):
+## Furey ladder operators in XOR convention
 
-```
-1 ↦ 1   (e1 → e001)
-2 ↦ 2   (e2 → e010)
-3 ↦ 6   (e3 → e110)
-4 ↦ 3   (e4 → e011)
-5 ↦ 4   (e5 → e100)
-6 ↦ 5   (e6 → e101)
-7 ↦ 7   (e7 → e111)
-```
+Furey (arXiv:1806.00612) defines in Baez convention:
+  α₁ = (−e₅ + i·e₄) / 2
+  α₂ = (−e₃ + i·e₁) / 2
+  α₃ = (−e₆ + i·e₂) / 2
 
-## Sign correction
+After applying the permutation and sign correction:
+  α₁ (XOR) = (+e100 + i·e011) / 2
+  α₂ (XOR) = (−e110 + i·e001) / 2
+  α₃ (XOR) = (−e101 + i·e010) / 2
 
-After applying the label permutation, the Baez positive triple `(e3, e4, e6)`
-becomes `(e110, e011, e101)` under the permutation. In the project convention,
-the table gives `e110 * e011` = `-(e011 * e110)`. Since `e011 * e101 = e110`
-(project positive triple), we have `e110 * e011 = -e101 ≠ +e101`.
-
-This means some Baez products translate to negatives in the project convention.
-The full sign correction requires a sign function `σ : Fin 7 → {±1}` such
-that `baez_eᵢ` maps to `σ(i) * project_e_{π(i)}`.
-
-The complete sign map is to be worked out and verified in this module once
-the `Octonion` structure is defined.
-
-## Furey convention
-
-Furey's convention is essentially Baez's, with `e₇` as the privileged
-imaginary unit (playing the role of `e111` in this project). Furey's ladder
-operators are defined in terms of `e₄, e₅, e₆, e₇` (Baez labels); these
-translate to `e011, e100, e101, e111` in the project basis, with the sign
-corrections above applied.
-
-**Do not copy Furey's ladder-operator definitions without going through the
-full sign translation.**
+These definitions live in `PhysicsSM.Algebra.Furey.LadderOperators`.
 
 ## Safety rule
 
-Every import of Furey- or Baez-sourced formulas must be accompanied by a
-`ConventionBridge` lemma confirming the translation. There should be no
-bare claims of the form "this follows from Furey (2015) eq. (X)" without
-a verified `ConventionBridge` step.
+Every formula from Baez (2002) or Furey (2015–2018) that refers to
+a specific basis element must be checked against this module before use.
+The ConventionBridge lemmas are the proof of correctness; informal
+"it's the same convention" is not sufficient.
 
-## Prerequisites
+## Source
 
-- `PhysicsSM.Algebra.Octonion.Basic`
-
-Status: stub — permutation and sign-correction map to be formalized once
-`Octonion` type is defined.
+Sign corrections computed by `Scripts/oracle/validate_convention_bridge.py`.
+Provenance: clean-room derivation, no external code copied.
 -/
 
 namespace PhysicsSM.Algebra.Octonion.ConventionBridge
 
-/-- The permutation on imaginary-unit indices {1,...,7} sending Baez labels
-    to project XOR labels. Input and output are 1-based imaginary indices
-    (so index k corresponds to basis element eₖ in the respective convention). -/
-def baezToXORIndex : Fin 7 → Fin 7
-  | ⟨0, _⟩ => ⟨0, by omega⟩  -- Baez e1 → e001 (index 1, 0-based: 0)
-  | ⟨1, _⟩ => ⟨1, by omega⟩  -- Baez e2 → e010 (index 2, 0-based: 1)
-  | ⟨2, _⟩ => ⟨5, by omega⟩  -- Baez e3 → e110 (index 6, 0-based: 5)
-  | ⟨3, _⟩ => ⟨2, by omega⟩  -- Baez e4 → e011 (index 3, 0-based: 2)
-  | ⟨4, _⟩ => ⟨3, by omega⟩  -- Baez e5 → e100 (index 4, 0-based: 3)
-  | ⟨5, _⟩ => ⟨4, by omega⟩  -- Baez e6 → e101 (index 5, 0-based: 4)
-  | ⟨6, _⟩ => ⟨6, by omega⟩  -- Baez e7 → e111 (index 7, 0-based: 6)
+/-! ## Label permutation -/
+
+/-- Permutation sending Baez (2002) imaginary-unit indices to project XOR
+    decimal indices. Unit (index 0) maps to unit. Imaginary units 1–7 are
+    permuted as: 1↦1, 2↦2, 3↦6, 4↦3, 5↦4, 6↦5, 7↦7.
+
+    Derivation: match the seven Fano lines of Baez's mod-7 convention
+    against the XOR lines. The unique index-permutation that maps all
+    seven Baez lines to XOR lines is this function.
+    Verified by `Scripts/oracle/validate_convention_bridge.py`. -/
+def baezToXORIndex : Fin 8 → Fin 8
+  | ⟨0, _⟩ => ⟨0, by omega⟩  -- unit -> unit
+  | ⟨1, _⟩ => ⟨1, by omega⟩  -- e1  -> e001
+  | ⟨2, _⟩ => ⟨2, by omega⟩  -- e2  -> e010
+  | ⟨3, _⟩ => ⟨6, by omega⟩  -- e3  -> e110
+  | ⟨4, _⟩ => ⟨3, by omega⟩  -- e4  -> e011
+  | ⟨5, _⟩ => ⟨4, by omega⟩  -- e5  -> e100
+  | ⟨6, _⟩ => ⟨5, by omega⟩  -- e6  -> e101
+  | ⟨7, _⟩ => ⟨7, by omega⟩  -- e7  -> e111
+
+/-! ## Sign correction -/
+
+/-- Sign correction for the Baez→XOR translation. For each Baez imaginary
+    unit index i, the corresponding XOR basis element is
+      `baezToXORSign i * basisElem (baezToXORIndex i)`.
+
+    Only Baez e₅ (index 5) requires a sign flip (value −1).
+    All other imaginaries and the unit map with sign +1.
+
+    Canonical choice: s₁=s₂=s₃=+1 (three degrees of freedom from
+    sign-flipping pairs of basis elements). Other valid sign vectors
+    differ by flipping an even number of signs consistently. -/
+def baezToXORSign (i : Fin 8) : ℤ :=
+  if i = ⟨5, by omega⟩ then -1 else 1
+
+/-! ## Combined translation -/
+
+/-- The full Baez→XOR basis translation: given a Baez imaginary-unit index i,
+    returns the signed XOR basis element `f(eᵢ) = baezToXORSign(i) * e_{π(i)}`.
+
+    This is the function that must be applied to every Baez formula before
+    using it in the project convention. -/
+def baezBasisInXOR (i : Fin 8) : Octonion :=
+  let xi := baezToXORIndex i
+  let si := baezToXORSign i
+  if si = 1 then basisElem xi else -(basisElem xi)
+
+/-! ## Correctness statement (to be proved) -/
+
+/-- The map `baezBasisInXOR` is a ring homomorphism from the Baez octonion
+    algebra to the XOR octonion algebra. Specifically, for every Baez
+    positive triple (a, b, c):
+      baezBasisInXOR a * baezBasisInXOR b = baezBasisInXOR c
+
+    Proof: by `fin_cases` exhaustion over all 7 Baez triples. This is
+    a finite computation; call Aristotle if needed.
+
+    Status: stub — proof to be added. -/
+theorem baezBasisInXOR_mul_correct :
+    ∀ (a b : Fin 8), a ≠ 0 → b ≠ 0 → a ≠ b →
+    baezBasisInXOR a * baezBasisInXOR b =
+    (baezToXORSign a * baezToXORSign b * lookupSign (baezToXORIndex a) (baezToXORIndex b) : ℤ) •
+    basisElem ((baezToXORIndex a).val ^^^ (baezToXORIndex b).val |>.val |> (⟨·, by omega⟩)) := by
+  sorry
 
 end PhysicsSM.Algebra.Octonion.ConventionBridge
