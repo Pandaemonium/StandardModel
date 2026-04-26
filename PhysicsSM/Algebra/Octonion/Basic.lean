@@ -1,3 +1,9 @@
+import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.FinCases
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.NormNum
+import Mathlib.Data.Fintype.Fin
+
 /-!
 # Algebra.Octonion.Basic
 
@@ -40,9 +46,6 @@ e011 * e101 = e110
 e011 * e111 = e100      ← user-specified anchor
 ```
 
-Note `e101 * e111 = e010` and `e110 * e111 = e001` follow cyclically from
-the last two triples above.
-
 Each triple `(eₐ, e_b, e_c)` with `eₐ * e_b = e_c` also gives:
 - `e_b * e_c = eₐ`  (cyclic)
 - `e_c * eₐ = e_b`  (cyclic)
@@ -51,73 +54,168 @@ Each triple `(eₐ, e_b, e_c)` with `eₐ * e_b = e_c` also gives:
 
 This orientation has been machine-validated: Fano incidence and all 512
 Moufang checks pass. See `Scripts/oracle/validate_octonion.py`.
-
-## Relationship to Baez and Furey conventions
-
-This convention is **not the same** as Baez (2002) or Furey (2015) verbatim.
-
-Baez uses a cyclic mod-7 scheme on labels 1–7. A label permutation that sends
-Baez's basis to this XOR basis is:
-
-```
-Baez e1 ↦ e001    Baez e5 ↦ e100
-Baez e2 ↦ e010    Baez e6 ↦ e101
-Baez e3 ↦ e110    Baez e7 ↦ e111
-Baez e4 ↦ e011
-```
-
-However, this permutation alone does **not** convert Baez products to project
-products — some basis elements also need sign flips. The full translation
-(permutation + signs) is worked out in
-`PhysicsSM.Algebra.Octonion.ConventionBridge`.
-
-**Do not use Baez/Furey product formulas, ladder operators, or structure
-constants directly in this project without explicitly translating them via
-`ConventionBridge`. Mixing conventions silently corrupts signs.**
-
-Furey's convention is essentially Baez's with `e₇` as the privileged
-imaginary unit. In this project `e111` plays the same structural role.
-The translation to Furey's ladder operators must go through `ConventionBridge`.
-
-## Provenance
-
-Convention: XOR basis labeling, user-defined.
-Validation: `Scripts/oracle/validate_octonion.py` (Fano + Moufang).
-Source for mathematical content: Baez, "The Octonions", Bull. Amer. Math. Soc.
-39 (2002) 145–205. Convention differs from Baez — see `ConventionBridge`.
-
-## Predecessor modules
-
-None — this is the base octonion module.
-
-## Successor modules
-
-- `PhysicsSM.Algebra.Octonion.Conjugation`
-- `PhysicsSM.Algebra.Octonion.Norm`
-- `PhysicsSM.Algebra.Octonion.Alternativity`
-- `PhysicsSM.Algebra.Octonion.ConventionBridge`
-
-Status: stub — `Octonion` structure definition to be added.
 -/
 
 namespace PhysicsSM.Algebra.Octonion
 
-/-!
-The seven positive Fano triples encoded as a list, for use by the oracle
-validator and future executable definitions.
--/
+/-! ## Fano triples -/
 
 /-- The seven lines of the Fano plane as positive cyclic triples,
     in the project XOR basis. Each entry `(a, b, c)` records `eₐ * e_b = e_c`,
     with indices given as natural numbers matching the 3-bit XOR labels. -/
 def fanoTriples : List (Fin 8 × Fin 8 × Fin 8) :=
-  [ (⟨1, by omega⟩, ⟨2, by omega⟩, ⟨3, by omega⟩)   -- e001 * e010 = e011
-  , (⟨1, by omega⟩, ⟨5, by omega⟩, ⟨4, by omega⟩)   -- e001 * e101 = e100
-  , (⟨1, by omega⟩, ⟨6, by omega⟩, ⟨7, by omega⟩)   -- e001 * e110 = e111
-  , (⟨2, by omega⟩, ⟨4, by omega⟩, ⟨6, by omega⟩)   -- e010 * e100 = e110
-  , (⟨2, by omega⟩, ⟨5, by omega⟩, ⟨7, by omega⟩)   -- e010 * e101 = e111
-  , (⟨3, by omega⟩, ⟨5, by omega⟩, ⟨6, by omega⟩)   -- e011 * e101 = e110
-  , (⟨3, by omega⟩, ⟨7, by omega⟩, ⟨4, by omega⟩)   -- e011 * e111 = e100
+  [ (⟨1, by omega⟩, ⟨2, by omega⟩, ⟨3, by omega⟩)
+  , (⟨1, by omega⟩, ⟨5, by omega⟩, ⟨4, by omega⟩)
+  , (⟨1, by omega⟩, ⟨6, by omega⟩, ⟨7, by omega⟩)
+  , (⟨2, by omega⟩, ⟨4, by omega⟩, ⟨6, by omega⟩)
+  , (⟨2, by omega⟩, ⟨5, by omega⟩, ⟨7, by omega⟩)
+  , (⟨3, by omega⟩, ⟨5, by omega⟩, ⟨6, by omega⟩)
+  , (⟨3, by omega⟩, ⟨7, by omega⟩, ⟨4, by omega⟩)
   ]
+
+/-! ## Sign lookup table -/
+
+/-- Sign of the basis product `eᵢ * eⱼ`. The product lands on `e_{i ⊕ j}`. -/
+def lookupSign (i j : Fin 8) : ℤ :=
+  match i.val, j.val with
+  | 0, _ =>  1
+  | _, 0 =>  1
+  | 1, 1 => -1 | 1, 2 =>  1 | 1, 3 => -1
+  | 1, 4 => -1 | 1, 5 =>  1 | 1, 6 =>  1 | 1, 7 => -1
+  | 2, 1 => -1 | 2, 2 => -1 | 2, 3 =>  1
+  | 2, 4 =>  1 | 2, 5 =>  1 | 2, 6 => -1 | 2, 7 => -1
+  | 3, 1 =>  1 | 3, 2 => -1 | 3, 3 => -1
+  | 3, 4 => -1 | 3, 5 =>  1 | 3, 6 => -1 | 3, 7 =>  1
+  | 4, 1 =>  1 | 4, 2 => -1 | 4, 3 =>  1
+  | 4, 4 => -1 | 4, 5 => -1 | 4, 6 =>  1 | 4, 7 => -1
+  | 5, 1 => -1 | 5, 2 => -1 | 5, 3 => -1
+  | 5, 4 =>  1 | 5, 5 => -1 | 5, 6 =>  1 | 5, 7 =>  1
+  | 6, 1 => -1 | 6, 2 =>  1 | 6, 3 =>  1
+  | 6, 4 => -1 | 6, 5 => -1 | 6, 6 => -1 | 6, 7 =>  1
+  | 7, 1 =>  1 | 7, 2 =>  1 | 7, 3 => -1
+  | 7, 4 =>  1 | 7, 5 => -1 | 7, 6 => -1 | 7, 7 => -1
+  | _, _ =>  0
+
+/-! ## Octonion type -/
+
+/-- An octonion, represented by its 8 real coefficients in the XOR basis.
+    `c0` is the real (scalar) part; `c1`–`c7` are imaginary. -/
+@[ext]
+structure Octonion where
+  c0 : ℝ
+  c1 : ℝ
+  c2 : ℝ
+  c3 : ℝ
+  c4 : ℝ
+  c5 : ℝ
+  c6 : ℝ
+  c7 : ℝ
+  deriving Inhabited
+
+/-! ### Algebraic operations -/
+
+instance : Neg Octonion where
+  neg a := ⟨-a.c0, -a.c1, -a.c2, -a.c3, -a.c4, -a.c5, -a.c6, -a.c7⟩
+
+/-- Octonion multiplication following the XOR-basis Fano convention. -/
+instance : Mul Octonion where
+  mul a b :=
+  { c0 := a.c0*b.c0 - a.c1*b.c1 - a.c2*b.c2 - a.c3*b.c3
+         - a.c4*b.c4 - a.c5*b.c5 - a.c6*b.c6 - a.c7*b.c7
+    c1 := a.c0*b.c1 + a.c1*b.c0 + a.c2*b.c3 - a.c3*b.c2
+         - a.c4*b.c5 + a.c5*b.c4 + a.c6*b.c7 - a.c7*b.c6
+    c2 := a.c0*b.c2 + a.c2*b.c0 - a.c1*b.c3 + a.c3*b.c1
+         + a.c4*b.c6 - a.c6*b.c4 + a.c5*b.c7 - a.c7*b.c5
+    c3 := a.c0*b.c3 + a.c3*b.c0 + a.c1*b.c2 - a.c2*b.c1
+         - a.c4*b.c7 + a.c7*b.c4 + a.c5*b.c6 - a.c6*b.c5
+    c4 := a.c0*b.c4 + a.c4*b.c0 + a.c1*b.c5 - a.c5*b.c1
+         - a.c2*b.c6 + a.c6*b.c2 + a.c3*b.c7 - a.c7*b.c3
+    c5 := a.c0*b.c5 + a.c5*b.c0 - a.c1*b.c4 + a.c4*b.c1
+         - a.c2*b.c7 + a.c7*b.c2 - a.c3*b.c6 + a.c6*b.c3
+    c6 := a.c0*b.c6 + a.c6*b.c0 - a.c1*b.c7 + a.c7*b.c1
+         + a.c2*b.c4 - a.c4*b.c2 + a.c3*b.c5 - a.c5*b.c3
+    c7 := a.c0*b.c7 + a.c7*b.c0 + a.c1*b.c6 - a.c6*b.c1
+         + a.c2*b.c5 - a.c5*b.c2 - a.c3*b.c4 + a.c4*b.c3 }
+
+/-! ### Basis elements -/
+
+/-- The basis element `eᵢ` as an octonion. -/
+def basisElem (i : Fin 8) : Octonion :=
+  { c0 := if i = 0 then 1 else 0
+    c1 := if i = 1 then 1 else 0
+    c2 := if i = 2 then 1 else 0
+    c3 := if i = 3 then 1 else 0
+    c4 := if i = 4 then 1 else 0
+    c5 := if i = 5 then 1 else 0
+    c6 := if i = 6 then 1 else 0
+    c7 := if i = 7 then 1 else 0 }
+
+/-- Product of two basis elements. -/
+def basisMul (i j : Fin 8) : Octonion := basisElem i * basisElem j
+
+/-! ### Component-wise simp lemmas -/
+
+@[simp] theorem Octonion.neg_c0 (a : Octonion) : (-a).c0 = -a.c0 := rfl
+@[simp] theorem Octonion.neg_c1 (a : Octonion) : (-a).c1 = -a.c1 := rfl
+@[simp] theorem Octonion.neg_c2 (a : Octonion) : (-a).c2 = -a.c2 := rfl
+@[simp] theorem Octonion.neg_c3 (a : Octonion) : (-a).c3 = -a.c3 := rfl
+@[simp] theorem Octonion.neg_c4 (a : Octonion) : (-a).c4 = -a.c4 := rfl
+@[simp] theorem Octonion.neg_c5 (a : Octonion) : (-a).c5 = -a.c5 := rfl
+@[simp] theorem Octonion.neg_c6 (a : Octonion) : (-a).c6 = -a.c6 := rfl
+@[simp] theorem Octonion.neg_c7 (a : Octonion) : (-a).c7 = -a.c7 := rfl
+
+@[simp] theorem Octonion.mul_c0 (a b : Octonion) :
+    (a * b).c0 = a.c0*b.c0 - a.c1*b.c1 - a.c2*b.c2 - a.c3*b.c3
+    - a.c4*b.c4 - a.c5*b.c5 - a.c6*b.c6 - a.c7*b.c7 := rfl
+@[simp] theorem Octonion.mul_c1 (a b : Octonion) :
+    (a * b).c1 = a.c0*b.c1 + a.c1*b.c0 + a.c2*b.c3 - a.c3*b.c2
+    - a.c4*b.c5 + a.c5*b.c4 + a.c6*b.c7 - a.c7*b.c6 := rfl
+@[simp] theorem Octonion.mul_c2 (a b : Octonion) :
+    (a * b).c2 = a.c0*b.c2 + a.c2*b.c0 - a.c1*b.c3 + a.c3*b.c1
+    + a.c4*b.c6 - a.c6*b.c4 + a.c5*b.c7 - a.c7*b.c5 := rfl
+@[simp] theorem Octonion.mul_c3 (a b : Octonion) :
+    (a * b).c3 = a.c0*b.c3 + a.c3*b.c0 + a.c1*b.c2 - a.c2*b.c1
+    - a.c4*b.c7 + a.c7*b.c4 + a.c5*b.c6 - a.c6*b.c5 := rfl
+@[simp] theorem Octonion.mul_c4 (a b : Octonion) :
+    (a * b).c4 = a.c0*b.c4 + a.c4*b.c0 + a.c1*b.c5 - a.c5*b.c1
+    - a.c2*b.c6 + a.c6*b.c2 + a.c3*b.c7 - a.c7*b.c3 := rfl
+@[simp] theorem Octonion.mul_c5 (a b : Octonion) :
+    (a * b).c5 = a.c0*b.c5 + a.c5*b.c0 - a.c1*b.c4 + a.c4*b.c1
+    - a.c2*b.c7 + a.c7*b.c2 - a.c3*b.c6 + a.c6*b.c3 := rfl
+@[simp] theorem Octonion.mul_c6 (a b : Octonion) :
+    (a * b).c6 = a.c0*b.c6 + a.c6*b.c0 - a.c1*b.c7 + a.c7*b.c1
+    + a.c2*b.c4 - a.c4*b.c2 + a.c3*b.c5 - a.c5*b.c3 := rfl
+@[simp] theorem Octonion.mul_c7 (a b : Octonion) :
+    (a * b).c7 = a.c0*b.c7 + a.c7*b.c0 + a.c1*b.c6 - a.c6*b.c1
+    + a.c2*b.c5 - a.c5*b.c2 - a.c3*b.c4 + a.c4*b.c3 := rfl
+
+/-! ### Alternativity -/
+
+/-- Left alternativity: `a * (a * b) = (a * a) * b` for all octonions. -/
+theorem left_alternative (a b : Octonion) :
+    a * (a * b) = (a * a) * b := by
+  ext <;> simp <;> ring
+
+/-- Right alternativity: `(a * b) * b = a * (b * b)` for all octonions. -/
+theorem right_alternative (a b : Octonion) :
+    (a * b) * b = a * (b * b) := by
+  ext <;> simp <;> ring
+
+/-! ### Anticommutativity of imaginary basis elements -/
+
+/-- Distinct nonzero basis elements anticommute:
+    `eᵢ * eⱼ = -(eⱼ * eᵢ)` for `i ≠ 0`, `j ≠ 0`, `i ≠ j`. -/
+theorem mul_anticomm_imag (i j : Fin 8)
+    (hi : i ≠ 0) (hj : j ≠ 0) (hij : i ≠ j) :
+    basisMul i j = -(basisMul j i) := by
+  fin_cases i <;> fin_cases j <;>
+    simp (config := { decide := true }) only
+      [basisMul, basisElem, Fin.reduceFinMk,
+       Octonion.neg_c0, Octonion.neg_c1, Octonion.neg_c2, Octonion.neg_c3,
+       Octonion.neg_c4, Octonion.neg_c5, Octonion.neg_c6, Octonion.neg_c7,
+       Octonion.mul_c0, Octonion.mul_c1, Octonion.mul_c2, Octonion.mul_c3,
+       Octonion.mul_c4, Octonion.mul_c5, Octonion.mul_c6, Octonion.mul_c7,
+       Octonion.ext_iff, ite_true, ite_false] <;>
+    (try norm_num) <;> (first | omega | contradiction)
 
 end PhysicsSM.Algebra.Octonion
