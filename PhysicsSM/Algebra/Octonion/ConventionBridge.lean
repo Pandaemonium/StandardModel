@@ -103,22 +103,20 @@ def baezBasisInXOR (i : Fin 8) : Octonion :=
   let si := baezToXORSign i
   if si = 1 then basisElem xi else -(basisElem xi)
 
-/-! ## Correctness statement (to be proved) -/
+/-! ## Correctness statement
 
-/-- The map `baezBasisInXOR` is a ring homomorphism from the Baez octonion
-    algebra to the XOR octonion algebra. Specifically, for every Baez
-    positive triple (a, b, c):
-      baezBasisInXOR a * baezBasisInXOR b = baezBasisInXOR c
+The following theorem will be stated and proved once `Octonion` has
+`Add`, `Zero`, and ℝ-scalar multiplication (needed for `ℤ`-scalar action `•`).
+Those instances are added in `PhysicsSM.Algebra.Octonion.Basic` Milestone 1b.
 
-    Proof: by `fin_cases` exhaustion over all 7 Baez triples. This is
-    a finite computation; call Aristotle if needed.
+Planned statement: for every imaginary Baez indices a, b (a ≠ b), the product
+  baezBasisInXOR a * baezBasisInXOR b
+equals the correctly-signed XOR basis element at index (π(a) XOR π(b)).
 
-    Status: stub — proof to be added. -/
-theorem baezBasisInXOR_mul_correct :
-    ∀ (a b : Fin 8), a ≠ 0 → b ≠ 0 → a ≠ b →
-    baezBasisInXOR a * baezBasisInXOR b =
-    (baezToXORSign a * baezToXORSign b * lookupSign (baezToXORIndex a) (baezToXORIndex b) : ℤ) •
-    basisElem ((baezToXORIndex a).val ^^^ (baezToXORIndex b).val |>.val |> (⟨·, by omega⟩)) := by
-  sorry
+Proof strategy: `fin_cases a <;> fin_cases b` exhaustion + `simp` + `decide`.
+This is a finite computation; strong Aristotle target once prerequisites exist.
+
+Prerequisite task: `AgentTasks/octonion-ring-structure.md`
+-/
 
 end PhysicsSM.Algebra.Octonion.ConventionBridge
