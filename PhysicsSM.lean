@@ -1,0 +1,11 @@
+import PhysicsSM.Prelude
+
+/-!
+# PhysicsSM
+
+Root import file for the PhysicsSM formalization project.
+
+Individual files should import only the specific modules they depend on.
+See `PhysicsSM.Prelude` for an orientation to available mathlib infrastructure
+and project-wide conventions.
+-/

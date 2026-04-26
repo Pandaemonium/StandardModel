@@ -1,0 +1,50 @@
+name: Lean Action CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build
+        uses: leanprover/lean-action@v1
+
+      - name: No sorry in trusted code
+        run: |
+          ! grep -rn --include="*.lean" "\bsorry\b\|\badmit\b" \
+            PhysicsSM/Algebra \
+            PhysicsSM/Clifford \
+            PhysicsSM/Spinor \
+            PhysicsSM/Lie \
+            PhysicsSM/Gauge \
+            PhysicsSM/StandardModel \
+            PhysicsSM/Supersymmetry \
+            2>/dev/null || true
+          result=$(grep -rn --include="*.lean" "\bsorry\b\|\badmit\b" \
+            PhysicsSM/Algebra \
+            PhysicsSM/Clifford \
+            PhysicsSM/Spinor \
+            PhysicsSM/Lie \
+            PhysicsSM/Gauge \
+            PhysicsSM/StandardModel \
+            PhysicsSM/Supersymmetry \
+            2>/dev/null || true)
+          if [ -n "$result" ]; then
+            echo "FAIL: sorry or admit found in trusted code:"
+            echo "$result"
+            exit 1
+          fi
+          echo "OK: no sorry or admit in trusted directories"
+
+      - name: Build docs
+        uses: leanprover-community/docgen-action@v1
