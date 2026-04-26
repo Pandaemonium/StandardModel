@@ -51,10 +51,47 @@ Every convention choice that could differ between sources is recorded here.
 |------|----------------|--------|
 | Hypercharge formula | Q = T₃ + Y/2 | Weinberg Vol. 2 |
 | Metric signature | mostly-minus: (+,-,-,-) | Peskin–Schroeder |
-| Octonion basis | Baez (2002) Table 1 | Baez, "The Octonions" |
-| Fano plane orientation | Baez (2002) | Baez, "The Octonions" |
+| Octonion basis | XOR binary labels e000–e111 | project convention (see Basic.lean) |
+| Fano plane orientation | positive triples listed in Basic.lean; anchored by e011*e111=e100 | project convention, validated by Scripts/oracle/validate_octonion.py |
 | Cartan matrix labelling | Bourbaki | Bourbaki Ch. 4–6 |
 | Spinor conventions | two-component van der Waerden | Wess–Bagger |
+
+## Octonion basis elements
+
+| Label  | Index | Decimal |
+|--------|-------|---------|
+| e000   | unit  | 0       |
+| e001   | imag  | 1       |
+| e010   | imag  | 2       |
+| e011   | imag  | 3       |
+| e100   | imag  | 4       |
+| e101   | imag  | 5       |
+| e110   | imag  | 6       |
+| e111   | imag  | 7       |
+
+## Octonion Fano positive triples
+
+Product index = bitwise XOR of the two input labels.
+Sign from the positive-triple orientation below.
+
+```
+e001 * e010 = e011
+e001 * e101 = e100
+e001 * e110 = e111
+e010 * e100 = e110
+e010 * e101 = e111
+e011 * e101 = e110
+e011 * e111 = e100
+```
+
+Reversed products are negative: e010 * e001 = -e011, etc.
+
+## Convention translation warning
+
+Do NOT use Baez (2002) or Furey (2015) product formulas, structure constants,
+or ladder operator definitions directly. The project convention differs by a
+basis relabeling AND sign flips. All translations must go through
+`PhysicsSM.Algebra.Octonion.ConventionBridge`.
 -/
 
 namespace PhysicsSM.Docs.Glossary
