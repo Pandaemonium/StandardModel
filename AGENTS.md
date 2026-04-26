@@ -205,6 +205,23 @@ When formalizing octonionic identities, make parenthesization explicit in the th
 
 Do not use associative algebra abstractions for octonions unless the relevant associative property is actually available for the substructure being used.
 
+### Project octonion convention
+
+This project uses the **XOR binary-label convention**:
+
+- Bases: `e000` (unit), `e001`, `e010`, `e011`, `e100`, `e101`, `e110`, `e111`.
+- Product index: bitwise XOR of the two input labels.
+- Sign: from the Fano orientation in `PhysicsSM.Algebra.Octonion.Basic`.
+- Anchor products: `e011 * e111 = e100`, `e101 * e111 = e010`, `e110 * e111 = e001`.
+
+This is **not** Baez (2002) or Furey (2015) verbatim. Any formula taken from
+those sources requires an explicit basis relabeling **and** sign correction via
+`PhysicsSM.Algebra.Octonion.ConventionBridge`. Do not copy Baez/Furey product
+formulas, structure constants, or ladder operators without going through that
+module. Mixing conventions silently corrupts signs.
+
+The full multiplication table and validator are in `Scripts/oracle/validate_octonion.py`.
+
 ## Physics convention rules
 
 Physics notation is convention-heavy. Always document conventions for:
