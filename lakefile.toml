@@ -3,6 +3,26 @@ version = "0.1.0"
 keywords = ["math"]
 defaultTargets = ["PhysicsSM"]
 
+# Toolchain is pinned to v4.28.0 for compatibility with:
+#   - Aristotle (harmonic.fun proof agent)
+#   - math-inc/Sphere-Packing-Lean (when imported from a Linux/macOS environment)
+# Do not upgrade the toolchain unless mathlib, SpherePacking, and the
+# Aristotle workflow all build cleanly under the target version.
+#
+# NOTE — SpherePacking Windows incompatibility:
+#   math-inc/Sphere-Packing-Lean contains a file named Aux.lean
+#   (SpherePacking/Basic/PeriodicPacking/Aux.lean). "Aux" is a Windows
+#   reserved device name (like CON, NUL, PRN); git cannot check out this
+#   file on Windows regardless of path-length or NTFS settings.
+#   To use SpherePacking on Windows, use WSL2. On Linux/macOS add:
+#     [[require]]
+#     name = "SpherePacking"
+#     git = "https://github.com/math-inc/Sphere-Packing-Lean"
+#     rev = "main"
+#   The E8 lattice content needed for PhysicsSM.Lie.Exceptional.E8
+#   (Submodule.E8, E8Matrix, E8Matrix_unimodular, etc.) will be
+#   cherry-picked from SpherePacking/Dim8/E8/Basic.lean under Apache-2.0.
+
 [leanOptions]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
 relaxedAutoImplicit = false
@@ -12,7 +32,7 @@ maxSynthPendingDepth = 3
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.30.0-rc2"
+rev = "v4.28.0"
 
 [[lean_lib]]
 name = "PhysicsSM"

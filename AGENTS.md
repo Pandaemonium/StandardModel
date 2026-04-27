@@ -18,6 +18,8 @@ A result is trusted only when:
 
 Do not optimize for producing large volumes of code. Optimize for small, thoroughly-commented, reviewable, kernel-checked formalizations with clear provenance.
 
+When writing code, always focus on legibility. Use verbose comments and descriptive names. Make code discoverable by adding it to the knowledge graph or index documents, and add comments pointing related pieces of code to each other.
+
 ## Repository organization
 
 Follow the actual repository layout, but preserve these conceptual layers:
@@ -111,12 +113,31 @@ For each task:
 
 Do not mix unrelated refactors with a narrow proof task.
 
+## Toolchain freeze
+
+The project is pinned to `leanprover/lean4:v4.28.0` (`lean-toolchain`) for
+compatibility with:
+- **Aristotle** (Harmonic proof agent) which targets v4.28.0
+- **math-inc/Sphere-Packing-Lean** (E8 lattice + sphere packing formalization)
+
+**Do not upgrade the toolchain** unless all three of the following build cleanly
+under the target version: (1) mathlib, (2) SpherePacking, (3) Aristotle workflow.
+
+**Windows note — ProofWidgets path issue**: On Windows, `lake build <module>`
+fails at the `proofwidgets/widgetJsAll` step because the ProofWidgets cloud
+release trace contains Linux CI paths. This does NOT affect correctness.
+Use `lake env lean <file>` for targeted checks on Windows.
+On Linux/macOS and in CI, `lake build <module>` works normally.
+
 ## Build and verification
 
 Use targeted checks first:
 
 ```bash
+# Preferred on Windows (avoids ProofWidgets build):
 lake env lean PhysicsSM/Path/To/File.lean
+
+# Also works on Linux/macOS:
 lake build PhysicsSM.Path.To.Module
 ```
 

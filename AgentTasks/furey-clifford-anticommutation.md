@@ -1,11 +1,13 @@
 # Task: Furey Clifford anticommutation relations
 
 **Agent**: Aristotle
-**Status**: In progress
+**Status**: Complete — merged
 **Priority**: High
 **Job ID**: `4ad7ff1e-9193-4175-b76d-df9aae96cd4b`
 **Submitted**: 2026-04-26
 **Output**: `AgentTasks/aristotle-output/furey-clifford-anticommutation`
+**Verified**: `lake env lean PhysicsSM/Algebra/Furey/LadderOperators.lean` passes on v4.28.0. No sorry.
+**Proved**: 6 nilpotency + 27 anticommutation = 33 theorems. Full Cl(6) relations complete.
 
 ---
 

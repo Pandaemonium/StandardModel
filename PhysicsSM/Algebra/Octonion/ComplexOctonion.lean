@@ -102,4 +102,12 @@ instance : Mul ComplexOctonion where
 @[simp] theorem ComplexOctonion.zero_re : (0 : ComplexOctonion).re = 0 := rfl
 @[simp] theorem ComplexOctonion.zero_im : (0 : ComplexOctonion).im = 0 := rfl
 
+/-- The multiplicative identity of ComplexOctonion: the real scalar 1,
+    embedded as ⟨1_Octonion, 0_Octonion⟩. -/
+instance : One ComplexOctonion where
+  one := ⟨1, 0⟩
+
+@[simp] theorem ComplexOctonion.one_re : (1 : ComplexOctonion).re = 1 := rfl
+@[simp] theorem ComplexOctonion.one_im : (1 : ComplexOctonion).im = 0 := rfl
+
 end PhysicsSM.Algebra.Octonion.ComplexOctonion
