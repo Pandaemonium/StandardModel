@@ -189,6 +189,68 @@ def basisMul (i j : Fin 8) : Octonion := basisElem i * basisElem j
     (a * b).c7 = a.c0*b.c7 + a.c7*b.c0 + a.c1*b.c6 - a.c6*b.c1
     + a.c2*b.c5 - a.c5*b.c2 - a.c3*b.c4 + a.c4*b.c3 := rfl
 
+instance : Add Octonion where
+  add a b := ⟨a.c0+b.c0, a.c1+b.c1, a.c2+b.c2, a.c3+b.c3,
+               a.c4+b.c4, a.c5+b.c5, a.c6+b.c6, a.c7+b.c7⟩
+
+instance : Zero Octonion where
+  zero := ⟨0,0,0,0,0,0,0,0⟩
+
+instance : Sub Octonion where
+  sub a b := ⟨a.c0-b.c0, a.c1-b.c1, a.c2-b.c2, a.c3-b.c3,
+               a.c4-b.c4, a.c5-b.c5, a.c6-b.c6, a.c7-b.c7⟩
+
+instance : One Octonion where
+  one := ⟨1,0,0,0,0,0,0,0⟩
+
+instance : SMul ℝ Octonion where
+  smul r a := ⟨r*a.c0, r*a.c1, r*a.c2, r*a.c3, r*a.c4, r*a.c5, r*a.c6, r*a.c7⟩
+
+@[simp] theorem Octonion.add_c0 (a b : Octonion) : (a + b).c0 = a.c0 + b.c0 := rfl
+@[simp] theorem Octonion.add_c1 (a b : Octonion) : (a + b).c1 = a.c1 + b.c1 := rfl
+@[simp] theorem Octonion.add_c2 (a b : Octonion) : (a + b).c2 = a.c2 + b.c2 := rfl
+@[simp] theorem Octonion.add_c3 (a b : Octonion) : (a + b).c3 = a.c3 + b.c3 := rfl
+@[simp] theorem Octonion.add_c4 (a b : Octonion) : (a + b).c4 = a.c4 + b.c4 := rfl
+@[simp] theorem Octonion.add_c5 (a b : Octonion) : (a + b).c5 = a.c5 + b.c5 := rfl
+@[simp] theorem Octonion.add_c6 (a b : Octonion) : (a + b).c6 = a.c6 + b.c6 := rfl
+@[simp] theorem Octonion.add_c7 (a b : Octonion) : (a + b).c7 = a.c7 + b.c7 := rfl
+
+@[simp] theorem Octonion.zero_c0 : (0 : Octonion).c0 = 0 := rfl
+@[simp] theorem Octonion.zero_c1 : (0 : Octonion).c1 = 0 := rfl
+@[simp] theorem Octonion.zero_c2 : (0 : Octonion).c2 = 0 := rfl
+@[simp] theorem Octonion.zero_c3 : (0 : Octonion).c3 = 0 := rfl
+@[simp] theorem Octonion.zero_c4 : (0 : Octonion).c4 = 0 := rfl
+@[simp] theorem Octonion.zero_c5 : (0 : Octonion).c5 = 0 := rfl
+@[simp] theorem Octonion.zero_c6 : (0 : Octonion).c6 = 0 := rfl
+@[simp] theorem Octonion.zero_c7 : (0 : Octonion).c7 = 0 := rfl
+
+@[simp] theorem Octonion.sub_c0 (a b : Octonion) : (a - b).c0 = a.c0 - b.c0 := rfl
+@[simp] theorem Octonion.sub_c1 (a b : Octonion) : (a - b).c1 = a.c1 - b.c1 := rfl
+@[simp] theorem Octonion.sub_c2 (a b : Octonion) : (a - b).c2 = a.c2 - b.c2 := rfl
+@[simp] theorem Octonion.sub_c3 (a b : Octonion) : (a - b).c3 = a.c3 - b.c3 := rfl
+@[simp] theorem Octonion.sub_c4 (a b : Octonion) : (a - b).c4 = a.c4 - b.c4 := rfl
+@[simp] theorem Octonion.sub_c5 (a b : Octonion) : (a - b).c5 = a.c5 - b.c5 := rfl
+@[simp] theorem Octonion.sub_c6 (a b : Octonion) : (a - b).c6 = a.c6 - b.c6 := rfl
+@[simp] theorem Octonion.sub_c7 (a b : Octonion) : (a - b).c7 = a.c7 - b.c7 := rfl
+
+@[simp] theorem Octonion.one_c0 : (1 : Octonion).c0 = 1 := rfl
+@[simp] theorem Octonion.one_c1 : (1 : Octonion).c1 = 0 := rfl
+@[simp] theorem Octonion.one_c2 : (1 : Octonion).c2 = 0 := rfl
+@[simp] theorem Octonion.one_c3 : (1 : Octonion).c3 = 0 := rfl
+@[simp] theorem Octonion.one_c4 : (1 : Octonion).c4 = 0 := rfl
+@[simp] theorem Octonion.one_c5 : (1 : Octonion).c5 = 0 := rfl
+@[simp] theorem Octonion.one_c6 : (1 : Octonion).c6 = 0 := rfl
+@[simp] theorem Octonion.one_c7 : (1 : Octonion).c7 = 0 := rfl
+
+@[simp] theorem Octonion.smul_c0 (r : ℝ) (a : Octonion) : (r • a).c0 = r * a.c0 := rfl
+@[simp] theorem Octonion.smul_c1 (r : ℝ) (a : Octonion) : (r • a).c1 = r * a.c1 := rfl
+@[simp] theorem Octonion.smul_c2 (r : ℝ) (a : Octonion) : (r • a).c2 = r * a.c2 := rfl
+@[simp] theorem Octonion.smul_c3 (r : ℝ) (a : Octonion) : (r • a).c3 = r * a.c3 := rfl
+@[simp] theorem Octonion.smul_c4 (r : ℝ) (a : Octonion) : (r • a).c4 = r * a.c4 := rfl
+@[simp] theorem Octonion.smul_c5 (r : ℝ) (a : Octonion) : (r • a).c5 = r * a.c5 := rfl
+@[simp] theorem Octonion.smul_c6 (r : ℝ) (a : Octonion) : (r • a).c6 = r * a.c6 := rfl
+@[simp] theorem Octonion.smul_c7 (r : ℝ) (a : Octonion) : (r • a).c7 = r * a.c7 := rfl
+
 /-! ### Alternativity -/
 
 /-- Left alternativity: `a * (a * b) = (a * a) * b` for all octonions. -/

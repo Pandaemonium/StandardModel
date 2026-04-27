@@ -58,43 +58,43 @@ Provenance: clean-room formalization, no external code copied.
 
 ## Status
 
-Stub — alpha_1, alpha_2, alpha_3 definitions and nilpotency/anticommutation
-proofs to be added. Proof of nilpotency and anticommutation are strong Aristotle
-targets: finite computations once the ComplexOctonion Mul instance is defined.
+Ladder operators defined and nilpotency proved.
 -/
 
 namespace PhysicsSM.Algebra.Furey.LadderOperators
 
 open PhysicsSM.Algebra.Octonion.ComplexOctonion PhysicsSM.Algebra.Octonion
 
--- TODO: Requires ComplexOctonion Mul instance (to be defined in ComplexOctonion.lean)
-
 /-- Ladder operator alpha_1 in the project XOR convention.
     Furey (Baez): (-e5 + i*e4)/2.
     XOR (this project): (+e100 + i*e011)/2. -/
--- def alpha1 : ComplexOctonion :=
---   { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=1/2, c5:=0, c6:=0, c7:=0 }
---     im := { c0:=0, c1:=0, c2:=0, c3:=1/2, c4:=0, c5:=0, c6:=0, c7:=0 } }
+noncomputable def alpha1 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=1/2, c5:=0, c6:=0, c7:=0 }
+    im := { c0:=0, c1:=0, c2:=0, c3:=1/2, c4:=0, c5:=0, c6:=0, c7:=0 } }
 
 /-- Ladder operator alpha_2 in the project XOR convention.
     Furey (Baez): (-e3 + i*e1)/2.
     XOR (this project): (-e110 + i*e001)/2. -/
--- def alpha2 : ComplexOctonion :=
---   { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=-1/2, c7:=0 }
---     im := { c0:=0, c1:=1/2, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 } }
+noncomputable def alpha2 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=-1/2, c7:=0 }
+    im := { c0:=0, c1:=1/2, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 } }
 
 /-- Ladder operator alpha_3 in the project XOR convention.
     Furey (Baez): (-e6 + i*e2)/2.
     XOR (this project): (-e101 + i*e010)/2. -/
--- def alpha3 : ComplexOctonion :=
---   { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=-1/2, c6:=0, c7:=0 }
---     im := { c0:=0, c1:=0, c2:=1/2, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 } }
+noncomputable def alpha3 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=-1/2, c6:=0, c7:=0 }
+    im := { c0:=0, c1:=0, c2:=1/2, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 } }
 
-/-
-Aristotle handoff (future):
-Goal: prove alpha_k * alpha_k = 0 and {alpha_i, alpha_j†} = delta_ij * 1.
-These are pure component computations once ComplexOctonion.Mul is defined.
-Strategy: unfold definitions; use Octonion.mul_c0 .. mul_c7 simp lemmas; ring.
--/
+-- simp closes all goals for alpha1 directly
+theorem alpha1_nilpotent : alpha1 * alpha1 = 0 := by
+  ext <;> simp [alpha1]
+
+-- simp reduces to numeric goals; ring closes the remainders
+theorem alpha2_nilpotent : alpha2 * alpha2 = 0 := by
+  ext <;> simp [alpha2] <;> ring
+
+theorem alpha3_nilpotent : alpha3 * alpha3 = 0 := by
+  ext <;> simp [alpha3] <;> ring
 
 end PhysicsSM.Algebra.Furey.LadderOperators

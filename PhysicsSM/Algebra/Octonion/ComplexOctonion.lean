@@ -77,4 +77,29 @@ def complexConj (x : ComplexOctonion) : ComplexOctonion :=
   ⟨x.re, ⟨-x.im.c0, -x.im.c1, -x.im.c2, -x.im.c3,
            -x.im.c4, -x.im.c5, -x.im.c6, -x.im.c7⟩⟩
 
+instance : Neg ComplexOctonion where
+  neg a := ⟨-a.re, -a.im⟩
+
+instance : Add ComplexOctonion where
+  add a b := ⟨a.re + b.re, a.im + b.im⟩
+
+instance : Zero ComplexOctonion where
+  zero := ⟨0, 0⟩
+
+/-- ComplexOctonion multiplication: (a + i·b)(c + i·d) = (a·c - b·d) + i·(a·d + b·c)
+    where · is octonion multiplication (non-associative, non-commutative). -/
+instance : Mul ComplexOctonion where
+  mul a b := ⟨a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re⟩
+
+@[simp] theorem ComplexOctonion.mul_re (a b : ComplexOctonion) :
+    (a * b).re = a.re * b.re - a.im * b.im := rfl
+@[simp] theorem ComplexOctonion.mul_im (a b : ComplexOctonion) :
+    (a * b).im = a.re * b.im + a.im * b.re := rfl
+@[simp] theorem ComplexOctonion.add_re (a b : ComplexOctonion) :
+    (a + b).re = a.re + b.re := rfl
+@[simp] theorem ComplexOctonion.add_im (a b : ComplexOctonion) :
+    (a + b).im = a.im + b.im := rfl
+@[simp] theorem ComplexOctonion.zero_re : (0 : ComplexOctonion).re = 0 := rfl
+@[simp] theorem ComplexOctonion.zero_im : (0 : ComplexOctonion).im = 0 := rfl
+
 end PhysicsSM.Algebra.Octonion.ComplexOctonion
