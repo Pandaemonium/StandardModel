@@ -1,4 +1,5 @@
 import Mathlib.Data.Complex.Basic
+import Mathlib.Algebra.Module.Basic
 import PhysicsSM.Algebra.Octonion.Basic
 
 /-!
@@ -44,7 +45,12 @@ See `PhysicsSM.Algebra.Octonion.Basic` and
 
 ## Status
 
-Stub — `ComplexOctonion` structure and basic operations to be defined.
+Trusted arithmetic layer — `ComplexOctonion` is represented as a pair of real
+octonions with explicitly defined pointwise addition and Cayley-style
+complexified multiplication.  The operations below are deliberately concrete:
+the current Furey files prove identities by expanding all coordinates down to
+real polynomial equalities, so we avoid abstract algebraic instances beyond the
+small additive and scalar structure needed by those statements.
 
 ## Successor modules
 
@@ -102,6 +108,11 @@ instance : Mul ComplexOctonion where
 @[simp] theorem ComplexOctonion.zero_re : (0 : ComplexOctonion).re = 0 := rfl
 @[simp] theorem ComplexOctonion.zero_im : (0 : ComplexOctonion).im = 0 := rfl
 
+@[simp] theorem ComplexOctonion.neg_re (a : ComplexOctonion) :
+    (-a).re = -a.re := rfl
+@[simp] theorem ComplexOctonion.neg_im (a : ComplexOctonion) :
+    (-a).im = -a.im := rfl
+
 /-- The multiplicative identity of ComplexOctonion: the real scalar 1,
     embedded as ⟨1_Octonion, 0_Octonion⟩. -/
 instance : One ComplexOctonion where
@@ -109,5 +120,117 @@ instance : One ComplexOctonion where
 
 @[simp] theorem ComplexOctonion.one_re : (1 : ComplexOctonion).re = 1 := rfl
 @[simp] theorem ComplexOctonion.one_im : (1 : ComplexOctonion).im = 0 := rfl
+
+instance : SMul ℝ ComplexOctonion where
+  smul r x := ⟨r • x.re, r • x.im⟩
+
+instance : SMul ℂ ComplexOctonion where
+  smul z x := ⟨z.re • x.re - z.im • x.im, z.re • x.im + z.im • x.re⟩
+
+@[simp] theorem ComplexOctonion.smul_re (r : ℝ) (x : ComplexOctonion) :
+    (r • x).re = r • x.re := rfl
+@[simp] theorem ComplexOctonion.smul_im (r : ℝ) (x : ComplexOctonion) :
+    (r • x).im = r • x.im := rfl
+
+@[simp] theorem ComplexOctonion.complex_smul_re (z : ℂ) (x : ComplexOctonion) :
+    (z • x).re = z.re • x.re - z.im • x.im := rfl
+@[simp] theorem ComplexOctonion.complex_smul_im (z : ℂ) (x : ComplexOctonion) :
+    (z • x).im = z.re • x.im + z.im • x.re := rfl
+
+/-!
+## Additive group and module structure
+
+We need `AddCommGroup` (not merely `AddMonoid`) and `Module ℂ` so that
+`LinearIndependent ℂ` statements about the 8 basis states of the minimal
+left ideal J are well-typed.
+
+The `nsmul`/`zsmul` implementations use component-wise integer arithmetic via
+the `nsmulOct`/`zsmulOct` helpers below.  The Furey charge theorems prove
+`n • v = v + ... + v` by `ext <;> norm_num [state_def]`, which evaluates
+each ℝ-component numerically and is independent of the nsmul implementation.
+-/
+
+/-- Component-wise ℕ-scaling of an octonion.  Used to give an explicit,
+    simp-friendly implementation of `nsmul` on `ComplexOctonion`. -/
+def nsmulOct (n : ℕ) (x : Octonion) : Octonion :=
+  ⟨n * x.c0, n * x.c1, n * x.c2, n * x.c3,
+   n * x.c4, n * x.c5, n * x.c6, n * x.c7⟩
+
+/-- Component-wise ℤ-scaling of an octonion.  Used for `zsmul`. -/
+def zsmulOct (n : ℤ) (x : Octonion) : Octonion :=
+  ⟨n * x.c0, n * x.c1, n * x.c2, n * x.c3,
+   n * x.c4, n * x.c5, n * x.c6, n * x.c7⟩
+
+-- Eight simp lemmas for nsmulOct, one per component.
+@[simp] theorem nsmulOct_c0 (n : ℕ) (x : Octonion) : (nsmulOct n x).c0 = n * x.c0 := rfl
+@[simp] theorem nsmulOct_c1 (n : ℕ) (x : Octonion) : (nsmulOct n x).c1 = n * x.c1 := rfl
+@[simp] theorem nsmulOct_c2 (n : ℕ) (x : Octonion) : (nsmulOct n x).c2 = n * x.c2 := rfl
+@[simp] theorem nsmulOct_c3 (n : ℕ) (x : Octonion) : (nsmulOct n x).c3 = n * x.c3 := rfl
+@[simp] theorem nsmulOct_c4 (n : ℕ) (x : Octonion) : (nsmulOct n x).c4 = n * x.c4 := rfl
+@[simp] theorem nsmulOct_c5 (n : ℕ) (x : Octonion) : (nsmulOct n x).c5 = n * x.c5 := rfl
+@[simp] theorem nsmulOct_c6 (n : ℕ) (x : Octonion) : (nsmulOct n x).c6 = n * x.c6 := rfl
+@[simp] theorem nsmulOct_c7 (n : ℕ) (x : Octonion) : (nsmulOct n x).c7 = n * x.c7 := rfl
+
+-- Eight simp lemmas for zsmulOct.
+@[simp] theorem zsmulOct_c0 (n : ℤ) (x : Octonion) : (zsmulOct n x).c0 = n * x.c0 := rfl
+@[simp] theorem zsmulOct_c1 (n : ℤ) (x : Octonion) : (zsmulOct n x).c1 = n * x.c1 := rfl
+@[simp] theorem zsmulOct_c2 (n : ℤ) (x : Octonion) : (zsmulOct n x).c2 = n * x.c2 := rfl
+@[simp] theorem zsmulOct_c3 (n : ℤ) (x : Octonion) : (zsmulOct n x).c3 = n * x.c3 := rfl
+@[simp] theorem zsmulOct_c4 (n : ℤ) (x : Octonion) : (zsmulOct n x).c4 = n * x.c4 := rfl
+@[simp] theorem zsmulOct_c5 (n : ℤ) (x : Octonion) : (zsmulOct n x).c5 = n * x.c5 := rfl
+@[simp] theorem zsmulOct_c6 (n : ℤ) (x : Octonion) : (zsmulOct n x).c6 = n * x.c6 := rfl
+@[simp] theorem zsmulOct_c7 (n : ℤ) (x : Octonion) : (zsmulOct n x).c7 = n * x.c7 := rfl
+
+/-- `ComplexOctonion` is an abelian group under component-wise addition.
+    This subsumes the earlier `AddMonoid` and is required for `Module ℂ`.
+    The `nsmul` and `zsmul` fields use `nsmulOct`/`zsmulOct`, which expand
+    cleanly under `simp` and `norm_num` via the component lemmas above. -/
+instance : AddCommGroup ComplexOctonion where
+  add_assoc    := by intros; ext <;> simp [add_assoc]
+  zero_add     := by intros; ext <;> simp
+  add_zero     := by intros; ext <;> simp
+  neg_add_cancel := by intros; ext <;> simp
+  add_comm     := by intros; ext <;> simp [add_comm]
+  sub_eq_add_neg := by intros; ext <;> simp [sub_eq_add_neg]
+  nsmul        := fun n x => ⟨nsmulOct n x.re, nsmulOct n x.im⟩
+  nsmul_zero   := by intros; ext <;> simp
+  nsmul_succ   := by intro n x; ext <;> simp <;> ring
+  zsmul        := fun n x => ⟨zsmulOct n x.re, zsmulOct n x.im⟩
+  zsmul_zero'  := by intros; ext <;> simp
+  zsmul_succ'  := by intro n x; ext <;> simp [add_comm] <;> ring
+  zsmul_neg'   := by intro n x; ext <;> simp <;> ring
+
+-- Simp lemmas giving component access to ℕ- and ℤ-scalings of ComplexOctonion.
+@[simp] theorem ComplexOctonion.nsmul_re (n : ℕ) (x : ComplexOctonion) :
+    (n • x).re = nsmulOct n x.re := rfl
+@[simp] theorem ComplexOctonion.nsmul_im (n : ℕ) (x : ComplexOctonion) :
+    (n • x).im = nsmulOct n x.im := rfl
+@[simp] theorem ComplexOctonion.zsmul_re (n : ℤ) (x : ComplexOctonion) :
+    (n • x).re = zsmulOct n x.re := rfl
+@[simp] theorem ComplexOctonion.zsmul_im (n : ℤ) (x : ComplexOctonion) :
+    (n • x).im = zsmulOct n x.im := rfl
+
+/-- `ComplexOctonion` is a ℂ-module via the existing `SMul ℂ` instance.
+    This is the key structure needed for `LinearIndependent ℂ` statements
+    about the 8 basis states of the minimal left ideal J. -/
+instance : Module ℂ ComplexOctonion where
+  smul        := (· • ·)
+  one_smul    := by intros; ext <;> simp
+  mul_smul    := by intros; ext <;> simp [mul_sub, mul_add, sub_mul, add_mul] <;> ring
+  smul_zero   := by intros; ext <;> simp
+  smul_add    := by intros; ext <;> simp [mul_add] <;> ring
+  add_smul    := by intros; ext <;> simp [add_mul] <;> ring
+  zero_smul   := by intros; ext <;> simp
+
+/-- `ComplexOctonion` is also an ℝ-module, with ℝ acting by uniform real scaling
+    of both the real and imaginary octonionic components. -/
+instance : Module ℝ ComplexOctonion where
+  smul        := fun r x => ⟨r • x.re, r • x.im⟩
+  one_smul    := by intros; ext <;> simp
+  mul_smul    := by intros; ext <;> simp [mul_assoc]
+  smul_zero   := by intros; ext <;> simp
+  smul_add    := by intros; ext <;> simp [mul_add]
+  add_smul    := by intros; ext <;> simp [add_mul]
+  zero_smul   := by intros; ext <;> simp
 
 end PhysicsSM.Algebra.Octonion.ComplexOctonion

@@ -1,3 +1,4 @@
+import PhysicsSM.Algebra.Furey.LadderOperators
 import PhysicsSM.Algebra.Octonion.ComplexOctonion
 
 /-!
@@ -31,14 +32,14 @@ representation corresponding to one generation of SM fermions.
 ## Basis of J
 
 A ℂ-basis of J consists of:
-  nu     = alpha_1 * alpha_2 * alpha_3 * omega   (anti-neutrino state)
-  e1_    = alpha_1† * nu                          (anti-up-quark, colour 1)
-  e2_    = alpha_2† * nu                          (anti-up-quark, colour 2)
-  e3_    = alpha_3† * nu                          (anti-up-quark, colour 3)
-  e12    = alpha_1† * alpha_2† * nu               (electron)
-  e13    = alpha_1† * alpha_3† * nu               (down-quark, colour 1)
-  e23    = alpha_2† * alpha_3† * nu               (down-quark, colour 2)
-  e123   = alpha_1† * alpha_2† * alpha_3† * nu    (down-quark, colour 3)
+  omega  = (1 - i*e111)/2                         (anti-electron / electron Q=-1)
+  v1     = alpha_1 * omega                        (anti-up-quark, colour r Q=-2/3)
+  v2     = alpha_2 * omega                        (anti-up-quark, colour g Q=-2/3)
+  v3     = alpha_3 * omega                        (anti-up-quark, colour b Q=-2/3)
+  v4     = alpha_1 * (alpha_2 * omega)            (anti-down-quark, colour rg Q=-1/3)
+  v5     = alpha_1 * (alpha_3 * omega)            (anti-down-quark, colour rb Q=-1/3)
+  v6     = alpha_2 * (alpha_3 * omega)            (anti-down-quark, colour gb Q=-1/3)
+  nu     = alpha_1 * (alpha_2 * (alpha_3 * omega))(neutrino Q=0)
 
 (Notation adapted from Furey; see the paper for the precise identification with
 particle quantum numbers.)
@@ -55,10 +56,398 @@ Provenance: clean-room formalization.
 
 ## Status
 
-Stub — idempotent definition and ideal construction to be formalized once
-`ComplexOctonion` multiplication is defined and ladder operators are active.
+Milestone 6 (Furey-style algebraic SM structure) — In progress.
+omega, 8 basis states, complete Cl(6) action table, number operators,
+and charge assignments proved.
+
+All theorems in this file are trusted finite-coordinate computations.  The
+semantic interpretation as Standard Model particle content follows Furey's
+convention and still requires human review before being treated as physics
+content; the Lean kernel verifies only the explicitly stated algebraic
+equalities over the project XOR basis.
 -/
 
 namespace PhysicsSM.Algebra.Furey.MinimalLeftIdeal
+
+open PhysicsSM.Algebra.Octonion.ComplexOctonion
+open PhysicsSM.Algebra.Octonion
+open PhysicsSM.Algebra.Furey.LadderOperators
+
+/-- The primitive idempotent omega = (1 - i*e111)/2. -/
+noncomputable def omega : ComplexOctonion :=
+  { re := { c0 := 1/2, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 }
+    im := { c0 := 0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=-1/2 } }
+
+/-
+The proof pattern used throughout this file is deliberately repetitive:
+`ext` splits equality of complex octonions into the 16 real coordinate goals,
+`simp` unfolds the relevant explicit coordinate definitions and multiplication
+tables, and `ring` closes the remaining polynomial identity over `ℝ`.
+
+This style is verbose but useful in trusted non-associative code.  It makes
+parenthesization visible in the theorem statement and avoids any hidden appeal
+to an associative algebra hierarchy that the octonions do not satisfy.
+-/
+theorem omega_idempotent : omega * omega = omega := by
+  ext <;> simp [omega] <;> ring
+
+/-- The three dagger operators annihilate omega from the left. -/
+theorem alpha1_dag_kills_omega : alpha1_dag * omega = 0 := by
+  ext <;> simp [alpha1_dag, omega] <;> ring
+
+theorem alpha2_dag_kills_omega : alpha2_dag * omega = 0 := by
+  ext <;> simp [alpha2_dag, omega] <;> ring
+
+theorem alpha3_dag_kills_omega : alpha3_dag * omega = 0 := by
+  ext <;> simp [alpha3_dag, omega] <;> ring
+
+-- The 8 basis states (Creation operators acting on vacuum)
+
+/-- v1: alpha1 * omega - anti-up quark, colour r. -/
+noncomputable def v1 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=1/2, c5:=0, c6:=0, c7:=0 }
+    im := { c0:=0, c1:=0, c2:=0, c3:=1/2, c4:=0, c5:=0, c6:=0, c7:=0 } }
+
+/-- v2: alpha2 * omega - anti-up quark, colour g. -/
+noncomputable def v2 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=-1/2, c7:=0 }
+    im := { c0:=0, c1:=1/2, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 } }
+
+/-- v3: alpha3 * omega - anti-up quark, colour b. -/
+noncomputable def v3 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=-1/2, c6:=0, c7:=0 }
+    im := { c0:=0, c1:=0, c2:=1/2, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 } }
+
+/-- v4: alpha1 * (alpha2 * omega) - anti-down quark, colour rg. -/
+noncomputable def v4 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=-1/2, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 }
+    im := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=1/2, c6:=0, c7:=0 } }
+
+/-- v5: alpha1 * (alpha3 * omega) - anti-down quark, colour rb. -/
+noncomputable def v5 : ComplexOctonion :=
+  { re := { c0:=0, c1:=1/2, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 }
+    im := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=-1/2, c7:=0 } }
+
+/-- v6: alpha2 * (alpha3 * omega) - anti-down quark, colour gb. -/
+noncomputable def v6 : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=-1/2, c4:=0, c5:=0, c6:=0, c7:=0 }
+    im := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=-1/2, c5:=0, c6:=0, c7:=0 } }
+
+/-- nu: neutrino state = alpha1 * (alpha2 * (alpha3 * omega)). -/
+noncomputable def nu : ComplexOctonion :=
+  { re := { c0:=0, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=-1/2 }
+    im := { c0:=1/2, c1:=0, c2:=0, c3:=0, c4:=0, c5:=0, c6:=0, c7:=0 } }
+
+theorem v1_eq : alpha1 * omega = v1 := by ext <;> simp [alpha1, omega, v1] <;> ring
+theorem v2_eq : alpha2 * omega = v2 := by ext <;> simp [alpha2, omega, v2] <;> ring
+theorem v3_eq : alpha3 * omega = v3 := by ext <;> simp [alpha3, omega, v3] <;> ring
+theorem v4_eq : alpha1 * (alpha2 * omega) = v4 := by ext <;> simp [alpha1, alpha2, omega, v4] <;> ring
+theorem v5_eq : alpha1 * (alpha3 * omega) = v5 := by ext <;> simp [alpha1, alpha3, omega, v5] <;> ring
+theorem v6_eq : alpha2 * (alpha3 * omega) = v6 := by ext <;> simp [alpha2, alpha3, omega, v6] <;> ring
+theorem nu_eq : alpha1 * (alpha2 * (alpha3 * omega)) = nu := by ext <;> simp [alpha1, alpha2, alpha3, omega, nu] <;> ring
+
+-- Theorems: verify basis elements belong to the ideal (x * omega = x)
+theorem omega_in_J : omega * omega = omega := omega_idempotent
+theorem v1_in_J : v1 * omega = v1 := by ext <;> simp [v1, omega] <;> ring
+theorem v2_in_J : v2 * omega = v2 := by ext <;> simp [v2, omega] <;> ring
+theorem v3_in_J : v3 * omega = v3 := by ext <;> simp [v3, omega] <;> ring
+
+/-- The three creation operators annihilate nu. -/
+theorem alpha1_kills_nu : alpha1 * nu = 0 := by ext <;> simp [alpha1, nu] <;> ring
+theorem alpha2_kills_nu : alpha2 * nu = 0 := by ext <;> simp [alpha2, nu] <;> ring
+theorem alpha3_kills_nu : alpha3 * nu = 0 := by ext <;> simp [alpha3, nu] <;> ring
+
+-- Cl(6) Action Table
+
+/-
+The following action table records left multiplication by the six Clifford
+generators on the eight explicit states.  Because `ℂ ⊗ 𝕆` is non-associative,
+each theorem is about exactly the parenthesized expression shown; for example,
+`alpha1 * (alpha2 * omega)` is not silently interchanged with
+`(alpha1 * alpha2) * omega`.
+-/
+
+theorem act_a1_omega : alpha1 * omega = v1 := v1_eq
+theorem act_a1_v1 : alpha1 * v1 = 0 := by ext <;> norm_num [alpha1, v1]
+theorem act_a1_v2 : alpha1 * v2 = v4 := by ext <;> norm_num [alpha1, v2, v4]
+theorem act_a1_v3 : alpha1 * v3 = v5 := by ext <;> norm_num [alpha1, v3, v5]
+theorem act_a1_v4 : alpha1 * v4 = 0 := by ext <;> norm_num [alpha1, v4]
+theorem act_a1_v5 : alpha1 * v5 = 0 := by ext <;> norm_num [alpha1, v5]
+theorem act_a1_v6 : alpha1 * v6 = nu := by ext <;> norm_num [alpha1, v6, nu]
+theorem act_a1_nu : alpha1 * nu = 0 := alpha1_kills_nu
+
+theorem act_a2_omega : alpha2 * omega = v2 := v2_eq
+theorem act_a2_v1 : alpha2 * v1 = -v4 := by ext <;> norm_num [alpha2, v1, v4]
+theorem act_a2_v2 : alpha2 * v2 = 0 := by ext <;> norm_num [alpha2, v2]
+theorem act_a2_v3 : alpha2 * v3 = v6 := by ext <;> norm_num [alpha2, v3, v6]
+theorem act_a2_v4 : alpha2 * v4 = 0 := by ext <;> norm_num [alpha2, v4]
+theorem act_a2_v5 : alpha2 * v5 = -nu := by ext <;> norm_num [alpha2, v5, nu]
+theorem act_a2_v6 : alpha2 * v6 = 0 := by ext <;> norm_num [alpha2, v6]
+theorem act_a2_nu : alpha2 * nu = 0 := alpha2_kills_nu
+
+theorem act_a3_omega : alpha3 * omega = v3 := v3_eq
+theorem act_a3_v1 : alpha3 * v1 = -v5 := by ext <;> norm_num [alpha3, v1, v5]
+theorem act_a3_v2 : alpha3 * v2 = -v6 := by ext <;> norm_num [alpha3, v2, v6]
+theorem act_a3_v3 : alpha3 * v3 = 0 := by ext <;> norm_num [alpha3, v3]
+theorem act_a3_v4 : alpha3 * v4 = nu := by ext <;> norm_num [alpha3, v4, nu]
+theorem act_a3_v5 : alpha3 * v5 = 0 := by ext <;> norm_num [alpha3, v5]
+theorem act_a3_v6 : alpha3 * v6 = 0 := by ext <;> norm_num [alpha3, v6]
+theorem act_a3_nu : alpha3 * nu = 0 := alpha3_kills_nu
+
+theorem act_a1d_omega : alpha1_dag * omega = 0 := alpha1_dag_kills_omega
+theorem act_a1d_v1 : alpha1_dag * v1 = omega := by ext <;> norm_num [alpha1_dag, v1, omega]
+theorem act_a1d_v2 : alpha1_dag * v2 = 0 := by ext <;> norm_num [alpha1_dag, v2]
+theorem act_a1d_v3 : alpha1_dag * v3 = 0 := by ext <;> norm_num [alpha1_dag, v3]
+theorem act_a1d_v4 : alpha1_dag * v4 = v2 := by ext <;> norm_num [alpha1_dag, v4, v2]
+theorem act_a1d_v5 : alpha1_dag * v5 = v3 := by ext <;> norm_num [alpha1_dag, v5, v3]
+theorem act_a1d_v6 : alpha1_dag * v6 = 0 := by ext <;> norm_num [alpha1_dag, v6]
+theorem act_a1d_nu : alpha1_dag * nu = v6 := by ext <;> norm_num [alpha1_dag, nu, v6]
+
+theorem act_a2d_omega : alpha2_dag * omega = 0 := alpha2_dag_kills_omega
+theorem act_a2d_v1 : alpha2_dag * v1 = 0 := by ext <;> norm_num [alpha2_dag, v1]
+theorem act_a2d_v2 : alpha2_dag * v2 = omega := by ext <;> norm_num [alpha2_dag, v2, omega]
+theorem act_a2d_v3 : alpha2_dag * v3 = 0 := by ext <;> norm_num [alpha2_dag, v3]
+theorem act_a2d_v4 : alpha2_dag * v4 = -v1 := by ext <;> norm_num [alpha2_dag, v4, v1]
+theorem act_a2d_v5 : alpha2_dag * v5 = 0 := by ext <;> norm_num [alpha2_dag, v5]
+theorem act_a2d_v6 : alpha2_dag * v6 = v3 := by ext <;> norm_num [alpha2_dag, v6, v3]
+theorem act_a2d_nu : alpha2_dag * nu = -v5 := by ext <;> norm_num [alpha2_dag, nu, v5]
+
+theorem act_a3d_omega : alpha3_dag * omega = 0 := alpha3_dag_kills_omega
+theorem act_a3d_v1 : alpha3_dag * v1 = 0 := by ext <;> norm_num [alpha3_dag, v1]
+theorem act_a3d_v2 : alpha3_dag * v2 = 0 := by ext <;> norm_num [alpha3_dag, v2]
+theorem act_a3d_v3 : alpha3_dag * v3 = omega := by ext <;> norm_num [alpha3_dag, v3, omega]
+theorem act_a3d_v4 : alpha3_dag * v4 = 0 := by ext <;> norm_num [alpha3_dag, v4]
+theorem act_a3d_v5 : alpha3_dag * v5 = -v1 := by ext <;> norm_num [alpha3_dag, v5, v1]
+theorem act_a3d_v6 : alpha3_dag * v6 = -v2 := by ext <;> norm_num [alpha3_dag, v6, v2]
+theorem act_a3d_nu : alpha3_dag * nu = v4 := by ext <;> norm_num [alpha3_dag, nu, v4]
+
+-- Number operators and Charge
+
+/-
+The number operators are operator compositions:
+
+  N_k(x) = alpha_k_dag * (alpha_k * x).
+
+They are not products of a pre-composed algebra element with `x`.  This matters:
+in the non-associative algebra, `(alpha_k_dag * alpha_k) * x` is a different
+expression from `alpha_k_dag * (alpha_k * x)`.  The lemmas below therefore use
+the action table as a two-step calculation whenever that keeps the proof
+readable, and fall back to direct coordinate expansion for the signed cases.
+-/
+
+theorem N1_omega : alpha1_dag * (alpha1 * omega) = omega := by rw [act_a1_omega, act_a1d_v1]
+theorem N1_v1 : alpha1_dag * (alpha1 * v1) = 0 := by ext <;> norm_num [alpha1_dag, alpha1, v1]
+theorem N1_v2 : alpha1_dag * (alpha1 * v2) = v2 := by rw [act_a1_v2, act_a1d_v4]
+theorem N1_v3 : alpha1_dag * (alpha1 * v3) = v3 := by rw [act_a1_v3, act_a1d_v5]
+theorem N1_v4 : alpha1_dag * (alpha1 * v4) = 0 := by ext <;> norm_num [alpha1_dag, alpha1, v4]
+theorem N1_v5 : alpha1_dag * (alpha1 * v5) = 0 := by ext <;> norm_num [alpha1_dag, alpha1, v5]
+theorem N1_v6 : alpha1_dag * (alpha1 * v6) = v6 := by rw [act_a1_v6, act_a1d_nu]
+theorem N1_nu : alpha1_dag * (alpha1 * nu) = 0 := by ext <;> norm_num [alpha1_dag, alpha1, nu]
+
+theorem N2_omega : alpha2_dag * (alpha2 * omega) = omega := by rw [act_a2_omega, act_a2d_v2]
+theorem N2_v1 : alpha2_dag * (alpha2 * v1) = v1 := by ext <;> norm_num [alpha2_dag, alpha2, v1]
+theorem N2_v2 : alpha2_dag * (alpha2 * v2) = 0 := by ext <;> norm_num [alpha2_dag, alpha2, v2]
+theorem N2_v3 : alpha2_dag * (alpha2 * v3) = v3 := by rw [act_a2_v3, act_a2d_v6]
+theorem N2_v4 : alpha2_dag * (alpha2 * v4) = 0 := by ext <;> norm_num [alpha2_dag, alpha2, v4]
+theorem N2_v5 : alpha2_dag * (alpha2 * v5) = v5 := by ext <;> norm_num [alpha2_dag, alpha2, v5]
+theorem N2_v6 : alpha2_dag * (alpha2 * v6) = 0 := by ext <;> norm_num [alpha2_dag, alpha2, v6]
+theorem N2_nu : alpha2_dag * (alpha2 * nu) = 0 := by ext <;> norm_num [alpha2_dag, alpha2, nu]
+
+theorem N3_omega : alpha3_dag * (alpha3 * omega) = omega := by rw [act_a3_omega, act_a3d_v3]
+theorem N3_v1 : alpha3_dag * (alpha3 * v1) = v1 := by ext <;> norm_num [alpha3_dag, alpha3, v1]
+theorem N3_v2 : alpha3_dag * (alpha3 * v2) = v2 := by ext <;> norm_num [alpha3_dag, alpha3, v2]
+theorem N3_v3 : alpha3_dag * (alpha3 * v3) = 0 := by ext <;> norm_num [alpha3_dag, alpha3, v3]
+theorem N3_v4 : alpha3_dag * (alpha3 * v4) = v4 := by rw [act_a3_v4, act_a3d_nu]
+theorem N3_v5 : alpha3_dag * (alpha3 * v5) = 0 := by ext <;> norm_num [alpha3_dag, alpha3, v5]
+theorem N3_v6 : alpha3_dag * (alpha3 * v6) = 0 := by ext <;> norm_num [alpha3_dag, alpha3, v6]
+theorem N3_nu : alpha3_dag * (alpha3 * nu) = 0 := by ext <;> norm_num [alpha3_dag, alpha3, nu]
+
+theorem charge_omega :
+    alpha1_dag * (alpha1 * omega) + alpha2_dag * (alpha2 * omega)
+    + alpha3_dag * (alpha3 * omega) = 3 • omega := by
+  simp [N1_omega, N2_omega, N3_omega]
+  ext <;> norm_num [omega]
+
+theorem charge_v1 :
+    alpha1_dag * (alpha1 * v1) + alpha2_dag * (alpha2 * v1)
+    + alpha3_dag * (alpha3 * v1) = 2 • v1 := by
+  simp [N1_v1, N2_v1, N3_v1]
+  ext <;> norm_num [v1]
+
+theorem charge_v2 :
+    alpha1_dag * (alpha1 * v2) + alpha2_dag * (alpha2 * v2)
+    + alpha3_dag * (alpha3 * v2) = 2 • v2 := by
+  simp [N1_v2, N2_v2, N3_v2]
+  ext <;> norm_num [v2]
+
+theorem charge_v3 :
+    alpha1_dag * (alpha1 * v3) + alpha2_dag * (alpha2 * v3)
+    + alpha3_dag * (alpha3 * v3) = 2 • v3 := by
+  simp [N1_v3, N2_v3, N3_v3]
+  ext <;> norm_num [v3]
+
+theorem charge_v4 :
+    alpha1_dag * (alpha1 * v4) + alpha2_dag * (alpha2 * v4)
+    + alpha3_dag * (alpha3 * v4) = 1 • v4 := by
+  simp [N1_v4, N2_v4, N3_v4]
+  ext <;> norm_num [v4]
+
+theorem charge_v5 :
+    alpha1_dag * (alpha1 * v5) + alpha2_dag * (alpha2 * v5)
+    + alpha3_dag * (alpha3 * v5) = 1 • v5 := by
+  simp [N1_v5, N2_v5, N3_v5]
+  ext <;> norm_num [v5]
+
+theorem charge_v6 :
+    alpha1_dag * (alpha1 * v6) + alpha2_dag * (alpha2 * v6)
+    + alpha3_dag * (alpha3 * v6) = 1 • v6 := by
+  simp [N1_v6, N2_v6, N3_v6]
+  ext <;> norm_num [v6]
+
+theorem charge_nu :
+    alpha1_dag * (alpha1 * nu) + alpha2_dag * (alpha2 * nu)
+    + alpha3_dag * (alpha3 * nu) = 0 := by
+  simp [N1_nu, N2_nu, N3_nu]
+
+-- Non-zero status
+
+theorem omega_ne_zero : omega ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c0) h
+  norm_num [omega] at hcoord
+
+theorem v1_ne_zero : v1 ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c4) h
+  norm_num [v1] at hcoord
+
+theorem v2_ne_zero : v2 ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c6) h
+  norm_num [v2] at hcoord
+
+theorem v3_ne_zero : v3 ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c5) h
+  norm_num [v3] at hcoord
+
+theorem v4_ne_zero : v4 ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c2) h
+  norm_num [v4] at hcoord
+
+theorem v5_ne_zero : v5 ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c1) h
+  norm_num [v5] at hcoord
+
+theorem v6_ne_zero : v6 ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c3) h
+  norm_num [v6] at hcoord
+
+theorem nu_ne_zero : nu ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c7) h
+  norm_num [nu] at hcoord
+
+-- ============================================================================
+-- Linear independence of the 8 basis states over ℂ
+-- ============================================================================
+
+/-!
+## Linear independence over ℂ
+
+`basis_linear_independent` shows that the eight states
+
+  omega, v1, v2, v3, v4, v5, v6, nu
+
+form a **linearly independent set over ℂ** in `ComplexOctonion`.  Together
+with the fact that each state is non-zero and that they are generated by the
+Cl(6) action on omega, this confirms that J is (at least) 8-dimensional.
+
+### Proof sketch
+
+`Fintype.linearIndependent_iff` reduces the claim to showing that any
+ℂ-linear combination `∑ gᵢ · basisᵢ = 0` forces every coefficient `gᵢ = 0`.
+Each basis state has a *unique non-zero component* in its 16 real coordinates
+(8 for the real octonion part, 8 for the imaginary part):
+
+| State  | Unique non-zero coordinate |
+|--------|---------------------------|
+| omega  | re.c0 = 1/2              |
+| v1     | re.c4 = 1/2              |
+| v2     | re.c6 = -1/2             |
+| v3     | re.c5 = -1/2             |
+| v4     | re.c2 = -1/2             |
+| v5     | re.c1 = 1/2              |
+| v6     | re.c3 = -1/2             |
+| nu     | re.c7 = -1/2             |
+
+Because these *real-part* witnesses are all in distinct components, the
+16×8 coordinate matrix (over ℝ) has a non-singular 8×8 minor, making the
+set ℂ-linearly independent.
+
+The proof uses `simp +decide` and `grind` to fully automate the coordinate
+case analysis.  The `Module ℂ ComplexOctonion` instance (in
+`PhysicsSM.Algebra.Octonion.ComplexOctonion`) provides the linear-algebra
+typeclass context.
+
+Source: argument verified via Python oracle; theorem proved by Aristotle
+job 72a89d00-f09a-45b1-8e6d-fc151ffb6c7d.
+-/
+
+/-- The eight basis states of the minimal left ideal J are linearly independent
+    over ℂ, confirming J is at least 8-dimensional as a ℂ-vector space. -/
+theorem basis_linear_independent :
+    LinearIndependent ℂ (fun i : Fin 8 =>
+      match i with
+      | 0 => omega
+      | 1 => v1
+      | 2 => v2
+      | 3 => v3
+      | 4 => v4
+      | 5 => v5
+      | 6 => v6
+      | 7 => nu) := by
+  rw [Fintype.linearIndependent_iff]
+  intro g hg
+  simp +decide [Fin.sum_univ_succ] at hg
+  simp_all +decide [Complex.ext_iff, ComplexOctonion.ext_iff]
+  simp_all +decide [omega, v1, v2, v3, v4, v5, v6, nu, Octonion.ext_iff]
+  norm_num [Fin.forall_fin_succ] at *
+  grind
+
+-- SU(3) generators (Gell-Mann style, from ladder bilinears)
+-- These act on the anti-up triplet {v1, v2, v3} and anti-down triplet {v4, v5, v6}
+
+/-- T12: raises colour g->r (mode 2 → mode 1 generator)
+    Acts as: v2 ↦ v1, v1 ↦ 0 on the triplet sector. -/
+noncomputable def T12 : ComplexOctonion := alpha1 * alpha2_dag
+
+/-- T21: raises colour r->g -/
+noncomputable def T21 : ComplexOctonion := alpha2 * alpha1_dag
+
+/-- T13: raises colour b->r -/
+noncomputable def T13 : ComplexOctonion := alpha1 * alpha3_dag
+
+/-- T31: raises colour r->b -/
+noncomputable def T31 : ComplexOctonion := alpha3 * alpha1_dag
+
+/-- T23: raises colour b->g -/
+noncomputable def T23 : ComplexOctonion := alpha2 * alpha3_dag
+
+/-- T32: raises colour g->b -/
+noncomputable def T32 : ComplexOctonion := alpha3 * alpha2_dag
+
+-- SU(3) action on anti-up triplet {v1, v2, v3}:
+-- Prove T12 maps v2 -> v1, T21 maps v1 -> v2, etc.
+-- These follow from the action table: alpha1*(alpha2_dag*v2) = alpha1*omega = v1
+-- Note: in non-associative algebra, (alpha1 * alpha2_dag) * v2
+--       is NOT the same as alpha1 * (alpha2_dag * v2) in general!
+-- Use the explicit coordinate proofs:
+-- The actual SU(3) action is via OPERATOR composition, not algebra product.
+-- This section remains to be formalized.
+
 
 end PhysicsSM.Algebra.Furey.MinimalLeftIdeal
