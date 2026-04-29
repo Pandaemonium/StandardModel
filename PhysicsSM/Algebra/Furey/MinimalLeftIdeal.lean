@@ -1,3 +1,5 @@
+import Mathlib.LinearAlgebra.LinearIndependent.Lemmas
+import Mathlib.Tactic
 import PhysicsSM.Algebra.Furey.LadderOperators
 import PhysicsSM.Algebra.Octonion.ComplexOctonion
 
@@ -290,19 +292,16 @@ theorem charge_v4 :
     alpha1_dag * (alpha1 * v4) + alpha2_dag * (alpha2 * v4)
     + alpha3_dag * (alpha3 * v4) = 1 • v4 := by
   simp [N1_v4, N2_v4, N3_v4]
-  ext <;> norm_num [v4]
 
 theorem charge_v5 :
     alpha1_dag * (alpha1 * v5) + alpha2_dag * (alpha2 * v5)
     + alpha3_dag * (alpha3 * v5) = 1 • v5 := by
   simp [N1_v5, N2_v5, N3_v5]
-  ext <;> norm_num [v5]
 
 theorem charge_v6 :
     alpha1_dag * (alpha1 * v6) + alpha2_dag * (alpha2 * v6)
     + alpha3_dag * (alpha3 * v6) = 1 • v6 := by
   simp [N1_v6, N2_v6, N3_v6]
-  ext <;> norm_num [v6]
 
 theorem charge_nu :
     alpha1_dag * (alpha1 * nu) + alpha2_dag * (alpha2 * nu)

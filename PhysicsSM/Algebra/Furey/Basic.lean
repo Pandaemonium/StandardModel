@@ -66,6 +66,7 @@ No external code is copied.
 PhysicsSM.Algebra.Furey.Basic               ← this file
 PhysicsSM.Algebra.Furey.LadderOperators     ← alpha_1, alpha_2, alpha_3
 PhysicsSM.Algebra.Furey.MinimalLeftIdeal    ← primitive idempotent, ideal J
+PhysicsSM.Algebra.Furey.OperatorRepresentations ← left-multiplication operators on J
 PhysicsSM.Algebra.Furey.CliffordConnection ← Cl(6) from left multiplication
 PhysicsSM.Algebra.Furey.SMStates           ← SM particle states in J
 PhysicsSM.Algebra.Furey.QuantumNumbers     ← U(1) and SU(3) generators

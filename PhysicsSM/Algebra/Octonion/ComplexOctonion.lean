@@ -191,7 +191,7 @@ instance : AddCommGroup ComplexOctonion where
   add_zero     := by intros; ext <;> simp
   neg_add_cancel := by intros; ext <;> simp
   add_comm     := by intros; ext <;> simp [add_comm]
-  sub_eq_add_neg := by intros; ext <;> simp [sub_eq_add_neg]
+  sub_eq_add_neg := by intros; rfl
   nsmul        := fun n x => ⟨nsmulOct n x.re, nsmulOct n x.im⟩
   nsmul_zero   := by intros; ext <;> simp
   nsmul_succ   := by intro n x; ext <;> simp <;> ring

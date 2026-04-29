@@ -2,7 +2,7 @@
 
 ## Current state (2026-04-28)
 
-**Infrastructure and first Aristotle proof integrations are complete.** The project has:
+**Milestone 1 and Core Furey Arithmetic are complete.** The project has:
 
 - Lean 4 `v4.28.0`, mathlib4 `v4.28.0`, full pre-built cache downloaded.
 - A trusted octonion arithmetic core in `PhysicsSM/Algebra/Octonion/Basic.lean`:
@@ -17,10 +17,11 @@
   all 27 Cl(6) anticommutation relations.
 - Trusted minimal-left-ideal arithmetic in
   `PhysicsSM/Algebra/Furey/MinimalLeftIdeal.lean`: omega, eight explicit states,
-  Cl(6) action table, number-operator eigenvalue lemmas, charge-sum lemmas, and
-  nonzero witnesses for all eight states.
+  Cl(6) action table, number-operator eigenvalue lemmas, charge-sum lemmas,
+  nonzero witnesses, and **verified linear independence** of the 8-state basis.
 - GitHub Actions CI: `lake build` + no-sorry gate on trusted dirs + `docgen-action`.
 - Pre-commit hooks: UTF-8/LF/final-newline hygiene enforced on every commit.
+- Exceptional foundations: D4 triality and Octonion symmetry dot/commutator facts integrated.
 - MCP servers active: `scholarly` (OpenAlex/Semantic Scholar), `zotero_write`,
   `neo4j_graph`.
 - Aristotle API key active and tested.
@@ -250,12 +251,23 @@ algebraic structure.
 - Six nilpotency theorems and all 27 Cl(6) anticommutation relations.
 - Minimal-left-ideal finite arithmetic: omega, eight explicit states, action
   table, number-operator eigenvalues, charge-sum lemmas, and nonzero witnesses.
+- Operator representation layer from Aristotle jobs
+  `0bcaa9b0-9a92-48e0-a3a3-30969e8742aa` and
+  `38b00d57-1e6d-4ace-aefc-d4e147739b4a`: `J`, `J_basis`, `Lmul`, operator
+  Cl(6) relations on `J`, color-changing operator transitions, number
+  operators, and the electric-charge operator `Q_op`.
 
-The remaining hard step is not more coordinate arithmetic but structure:
-formalizing the span/submodule/basis statement for J over ℂ and proving linear
-independence of the eight states.
+**Status**: Advanced. Linear independence proved. Basis states matched to Furey's
+particle table. Action table complete.
 
-**Primary source**: Furey (2015) PhD thesis + follow-on papers. Paper-first
+**Semantic review note**: The two Aristotle jobs described
+`(-1/3) * (N1 + N2 + N3)` as hypercharge.  The formal eigenvalues match the
+electric-charge convention already in `MinimalLeftIdeal.lean`, so the integrated
+operator is named `Q_op`.  Conventional weak hypercharge remains a future task
+requiring explicit weak-isospin and particle/antiparticle conventions.
+
+**Primary source**: Furey (2015) PhD thesis; Furey (2018) EPJC 78 375.
+Paper-first
 formalization — no public code repository exists for direct porting.
 
 **Key constraint**: Every Furey formula that uses a product or basis element must
@@ -368,16 +380,12 @@ result connecting SUSY in dimensions 3, 4, 6, 10 to normed division algebras.
 
 ## Immediate next actions
 
-1. **Package the Furey minimal ideal as a linear object** — use the existing
-   `basis_linear_independent` theorem in `MinimalLeftIdeal.lean` to define the
-   relevant `Submodule`/basis API over ℂ.
+1. **Formalize the SM Gauge Operators** — prove that the bilinears in ladder
+   operators satisfy the SU(3) x SU(2) x U(1) Lie algebra relations when acting
+   on the submodule J.
 
-2. **Build the abstraction layer above Milestone 1** — decide which downstream
-   theorem first needs a composition-algebra, normed-division-algebra, or
-   Moufang-loop interface, then introduce the smallest matching structure.
-
-3. **Initialize Neo4j schema** — write the Cypher initialization script for the
-   knowledge graph node and edge types.
+2. **Cayley-Dickson Doubling** — formalize Milestone 2 to provide the path
+   to the Albert Algebra (Milestone 8) and three generations.
 
 4. **PhysLean audit** — use `scholarly` MCP to find recent PhysLean papers and
    check HEPLean/PhysLean for anything overlapping Milestones 1–5.

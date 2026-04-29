@@ -114,6 +114,11 @@ PhysicsSM/
       Norm.lean           ← normSq, norm multiplicativity
       Alternativity.lean  ← left/right alternative laws
       Moufang.lean        ← Moufang identities
+    Furey/
+      Basic.lean          ← overview and source map for Furey-style SM algebra
+      LadderOperators.lean ← alpha operators in the XOR convention
+      MinimalLeftIdeal.lean ← omega, basis states, action table, charges
+      OperatorRepresentations.lean ← J, left-multiplication maps, Cl(6), color, charge
     Jordan/
       H3O.lean            ← 3×3 octonionic Hermitian matrices (exceptional Jordan)
   Clifford/
