@@ -1,11 +1,24 @@
 # Execution Plan: PhysicsSM
 
-## Current state (2026-04-26)
+## Current state (2026-04-28)
 
-**Infrastructure complete.** The project has:
+**Infrastructure and first Aristotle proof integrations are complete.** The project has:
 
-- Lean 4 `v4.30.0-rc2`, mathlib4 `v4.30.0-rc2`, full pre-built cache downloaded.
-- 35 stub modules across all planned areas, compiling cleanly with zero `sorry`.
+- Lean 4 `v4.28.0`, mathlib4 `v4.28.0`, full pre-built cache downloaded.
+- A trusted octonion arithmetic core in `PhysicsSM/Algebra/Octonion/Basic.lean`:
+  explicit XOR-basis multiplication, component simp lemmas, left and right
+  alternativity, and imaginary-basis anticommutation.
+- A trusted complexified-octonion arithmetic layer in
+  `PhysicsSM/Algebra/Octonion/ComplexOctonion.lean`: pair representation,
+  addition, multiplication, unit, scalar actions, and the modest additive
+  monoid structure needed for finite Furey computations.
+- Trusted Furey ladder operators in `PhysicsSM/Algebra/Furey/LadderOperators.lean`:
+  `alpha1`, `alpha2`, `alpha3`, their daggers, six nilpotency theorems, and
+  all 27 Cl(6) anticommutation relations.
+- Trusted minimal-left-ideal arithmetic in
+  `PhysicsSM/Algebra/Furey/MinimalLeftIdeal.lean`: omega, eight explicit states,
+  Cl(6) action table, number-operator eigenvalue lemmas, charge-sum lemmas, and
+  nonzero witnesses for all eight states.
 - GitHub Actions CI: `lake build` + no-sorry gate on trusted dirs + `docgen-action`.
 - Pre-commit hooks: UTF-8/LF/final-newline hygiene enforced on every commit.
 - MCP servers active: `scholarly` (OpenAlex/Semantic Scholar), `zotero_write`,
@@ -14,7 +27,10 @@
 - Octonion XOR convention locked and validated (Fano + 512 Moufang checks).
 - `ConventionBridge` stub isolating project convention from Baez/Furey.
 
-**Nothing proved yet.** All Lean modules are documented stubs.
+**Important caveat.** Several modules remain documented stubs, and the Furey
+particle interpretation still needs semantic review against sources.  The Lean
+kernel verifies the explicit algebraic equalities, not the physical
+identification of those states.
 
 ---
 
@@ -23,11 +39,11 @@
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
 | Project philosophy | Mathematics-first | Algebra foundations must be stable before physics interpretation |
-| Lean toolchain | `v4.30.0-rc2` (pinned) | Reproducibility; update deliberately |
+| Lean toolchain | `v4.28.0` (pinned) | Reproducibility; update deliberately |
 | Primary dependency | mathlib4 (Apache-2.0) | Largest verified algebra library; same kernel |
 | Octonion basis | XOR binary labels `e000`–`e111` | Computationally clean; XOR gives product index |
 | Fano orientation | Anchored by `e011*e111=e100` | User-specified; validated against Moufang |
-| Baez/Furey translation | Via `ConventionBridge` only | Prevents silent sign errors |
+| Baez/Furey translation | Via `ConventionBridge` | Explicit mapping; status: Map derived via `validate_octonion.py` |
 | License | Apache-2.0 (Lean source) | Matches mathlib/PhysLean ecosystem |
 | Hypercharge | Q = T₃ + Y/2 | Weinberg convention |
 | Metric signature | (+,-,-,-) | Peskin–Schroeder |
@@ -48,6 +64,11 @@
 - **Baez (2002)**: "The Octonions" — division algebras, octonion identities, G₂
 - **Baez–Huerta (2010)**: arXiv:0909.0551 — division algebras and SUSY
 - **Furey (2015)**: PhD thesis — SM representation structure from octonions
+- **Furey (2018)**: "SU(3)_C × SU(2)_L × U(1)_Y (× U(1)_X) as a symmetry of division algebraic ladder operators" (EPJC 78)
+- **Furey (2014)**: "Generations: Three prints, now in colour" (Phys. Rev. D 86)
+- **Krasnov (2018)**: "The Standard Model and Octonions" (arXiv:1804.05364)
+- **Dubois-Violette & Todorov (2018)**: "Deducing the Standard Model from the Exceptional Jordan Algebra" (arXiv:1806.09450)
+- **Dixon (1994)**: "Division Algebras: Octonions, Quaternions, Complex Numbers and the Algebraic Design of Physics"
 - **Adams (1996)**: "Lectures on Exceptional Lie Groups" — E₈ and exceptional structure
 
 ### Tier 3 — oracle/fixture generation only (do not copy code)
@@ -89,14 +110,27 @@ trusted files at completion.
 |------|---------|-------------|
 | `Basic.lean` | `Octonion` structure, basis, multiplication | `fanoTriples`, `mul_def` |
 | `Conjugation.lean` | `conj` involution | `conj_conj`, `conj_mul`, `mul_conj` |
-| `Norm.lean` | `normSq`, `norm` | `normSq_nonneg`, `normSq_eq_zero`, `normSq_mul` |
+| `Norm.lean` | `normSq` | `normSq_nonneg`, `normSq_eq_zero`, `normSq_mul` |
 | `Alternativity.lean` | Alternative laws | `left_alternative`, `right_alternative` |
 | `Moufang.lean` | Moufang identities | `moufang_left`, `moufang_right`, `moufang_middle` |
 
-**Strategy**: Define `Octonion` as `Fin 8 → ℝ` with multiplication given by the
-sign table from `validate_octonion.py`. Prove identities by component expansion
-or by appeals to alternativity. Use Aristotle for `normSq_mul` and the Moufang
-proofs — these are the hardest.
+**Status**: Complete at the trusted coordinate-arithmetic layer. Aristotle
+results now integrated:
+- Basic arithmetic core: explicit multiplication, pointwise additive/scalar
+  operations, left and right alternativity, and anticommutation of distinct
+  imaginary basis elements.
+- Job `fe5f83fd-885e-4f87-936f-9a8a4746ee7c`: conjugation, squared norm,
+  norm multiplicativity, all three Moufang identities, and flexibility.
+
+**Strategy**: Continue from the explicit eight-coordinate representation already
+in `Basic.lean`. The current trusted proofs intentionally use component
+expansion followed by real polynomial normalization. Introduce abstract
+composition-algebra, normed-division-algebra, or Moufang-loop interfaces only
+when a downstream theorem needs them.
+
+**Deferred scope**: Hurwitz uniqueness/classification is not a Milestone 1 gate.
+It belongs in a later division-algebra classification milestone after the
+octonion norm and Cayley-Dickson bridge are stable.
 
 **Oracle backstop**: `Octonions.jl` and the Python validator for arithmetic checks.
 
@@ -157,11 +191,20 @@ automorphism group of the octonions stated (full proof deferred).
 | `RootData.lean` | Wrappers over `Mathlib.LinearAlgebra.RootSystem` |
 | `Weights.lean` | Weight lattice; Weyl character formula interface |
 | `Branching.lean` | Branching rule data structures |
-| `Exceptional/G2.lean` | G₂ root data; `Aut(𝕆) ≅ G₂` theorem statement |
+| `Exceptional/G2.lean` | G₂ root data; `Aut(𝕆) ≅ G₂` and `Der(𝕆) ≅ 𝔤₂` statements |
 | `Exceptional/E8.lean` | E₈ root data; rank 8; 240 roots; det(Cartan) = 1 |
+| `Exceptional/Triality.lean` | Trusted finite D4 Cartan-matrix triality cycle |
+| `Exceptional/OctonionSymmetry.lean` | Dot product, imaginary octonions, and commutator primitives for the later G2/SO(8) bridge |
+
+**Status**: First exceptional foothold integrated from Aristotle job
+`aab25ea4-035f-45e0-8321-3408a1edfaaf`. The current trusted result is finite
+and deliberately scoped: D4 triality is proved as Cartan-matrix preservation by
+an order-three outer-node cycle, while group-level Spin(8) triality, `G2 =
+Aut(O)`, and E8 decompositions remain future work.
 
 **Oracle protocol**: Every E₈ combinatorial claim must be cross-checked against
 at least two of: LieART, SageMath `RootSystem(['E',8])`, OSCAR.jl.
+**Key Theorem**: The 7D cross product defined via `Im(xy)` satisfies the Jacobi-like identities (Baez 2002).
 
 **Risk**: E₈ is large. The 240-root count and Cartan determinant are easily
 mis-stated. Use oracle fixtures before attempting Lean proofs.
@@ -182,8 +225,8 @@ of fermions with verified charge assignments.
 | `Gauge/StandardModel.lean` | Direct sum `su(3) ⊕ su(2) ⊕ u(1)` |
 | `StandardModel/QuantumNumbers.lean` | Isospin, hypercharge, color types |
 | `StandardModel/Charges.lean` | `Q = T₃ + Y/2`; consistency lemmas |
-| `StandardModel/Fermions.lean` | One-generation fermion rep table |
-| `StandardModel/Representations.lean` | Anomaly cancellation checks |
+| `StandardModel/Fermions.lean` | Three-generation fermion rep table | `generation : Fin 3` parameter |
+| `StandardModel/Representations.lean` | Anomaly cancellation checks | Per-generation and total |
 
 **Key theorems**: Electric charge of W± is ±1; anomaly cancellation conditions
 `Σ Y³ = 0`, `Σ T₃² Y = 0` satisfied for one generation.
@@ -195,11 +238,22 @@ before merge.
 ---
 
 ### Milestone 6 — Furey-style algebraic SM structure
-**Goal**: Ladder operators derived from the complexified octonion algebra; key
+**Goal**: **[ADVANCED]** Ladder operators derived from the complexified octonion algebra; key
 representation-theoretic facts about the SM particle content recovered from
 algebraic structure.
 
-**Prerequisites**: Milestones 1, 2, 5 complete; `ConventionBridge` fully worked out.
+**Status**: Partially complete and kernel-checked. Aristotle results merged:
+
+- `ComplexOctonion` pair arithmetic, multiplication, unit, scalar actions, and
+  additive monoid support for repeated sums.
+- Furey ladder operators and daggers in XOR convention.
+- Six nilpotency theorems and all 27 Cl(6) anticommutation relations.
+- Minimal-left-ideal finite arithmetic: omega, eight explicit states, action
+  table, number-operator eigenvalues, charge-sum lemmas, and nonzero witnesses.
+
+The remaining hard step is not more coordinate arithmetic but structure:
+formalizing the span/submodule/basis statement for J over ℂ and proving linear
+independence of the eight states.
 
 **Primary source**: Furey (2015) PhD thesis + follow-on papers. Paper-first
 formalization — no public code repository exists for direct porting.
@@ -225,6 +279,11 @@ build on.
 
 **Connection to division algebras**: State (but defer proof of) the Baez–Huerta
 result connecting SUSY in dimensions 3, 4, 6, 10 to normed division algebras.
+
+### Milestone 8 — Multi-generational Unification (Expansion)
+**Goal**: Formalize the Albert Algebra $\mathfrak{h}_3(\mathbb{O})$ and the Dixon Algebra $\mathbb{R} \otimes \mathbb{C} \otimes \mathbb{H} \otimes \mathbb{O}$.
+**Motivation**: Move from one generation to three; derive the full $SU(3) \times SU(2) \times U(1)$ gauge group from division algebraic automorphisms.
+**Strategy**: Use the doubling construction from Milestone 2 to define the Jordan product on $3 \times 3$ octonionic matrices.
 
 ---
 
@@ -300,26 +359,29 @@ result connecting SUSY in dimensions 3, 4, 6, 10 to normed division algebras.
 5. **Physlib dependency**: Should PhysLean be added as a Lake dependency
    alongside mathlib? Evaluate after the PhysLean audit.
 
-6. **Aristotle job management**: As the project grows, structured AgentTask
-   files become essential. Establish the `AgentTasks/` filing convention before
-   running the first real Aristotle job.
+6. **Minimal ideal as a linear object**: `MinimalLeftIdeal.lean` proves the
+   explicit finite arithmetic of the eight states, but J is not yet packaged as
+   a `Submodule`/basis over ℂ. The open task is
+   `AgentTasks/furey-ideal-linear-independence.md`.
 
 ---
 
 ## Immediate next actions
 
-1. **Write the first Aristotle task file** — `AgentTasks/octonion-basic.md` for
-   the `Octonion` structure definition (Milestone 1 entry point).
+1. **Package the Furey minimal ideal as a linear object** — use the existing
+   `basis_linear_independent` theorem in `MinimalLeftIdeal.lean` to define the
+   relevant `Submodule`/basis API over ℂ.
 
-2. **Initialize Neo4j schema** — write the Cypher initialization script for the
+2. **Build the abstraction layer above Milestone 1** — decide which downstream
+   theorem first needs a composition-algebra, normed-division-algebra, or
+   Moufang-loop interface, then introduce the smallest matching structure.
+
+3. **Initialize Neo4j schema** — write the Cypher initialization script for the
    knowledge graph node and edge types.
 
-3. **PhysLean audit** — use `scholarly` MCP to find recent PhysLean papers and
+4. **PhysLean audit** — use `scholarly` MCP to find recent PhysLean papers and
    check HEPLean/PhysLean for anything overlapping Milestones 1–5.
 
-4. **ConventionBridge sign map** — extend `validate_octonion.py` to compare the
+5. **ConventionBridge sign map** — extend `validate_octonion.py` to compare the
    project multiplication table against the Baez table and output the full sign
    correction vector. Then formalize it in `ConventionBridge.lean`.
-
-5. **Run the first Aristotle job** — `Octonion.normSq_mul` is the natural first
-   target: well-defined statement, nontrivial proof, good calibration benchmark.

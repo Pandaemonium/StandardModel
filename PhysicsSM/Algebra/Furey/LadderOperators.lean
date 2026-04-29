@@ -146,7 +146,7 @@ theorem alpha3_nilpotent : alpha3 * alpha3 = 0 := by
 
 /-- The adjoint alpha1_dag is itself nilpotent. -/
 theorem alpha1_dag_nilpotent : alpha1_dag * alpha1_dag = 0 := by
-  ext <;> simp [alpha1_dag]
+  ext <;> simp [alpha1_dag] <;> ring
 
 theorem alpha2_dag_nilpotent : alpha2_dag * alpha2_dag = 0 := by
   ext <;> simp [alpha2_dag] <;> ring
@@ -220,7 +220,7 @@ theorem anticomm_1_2 :
 
 theorem anticomm_2_1 :
     alpha2 * alpha1 + alpha1 * alpha2 = 0 := by
-  simp [anticomm_1_2, add_comm]
+  ext <;> simp [alpha1, alpha2] <;> ring
 
 theorem anticomm_1_3 :
     alpha1 * alpha3 + alpha3 * alpha1 = 0 := by
@@ -228,7 +228,7 @@ theorem anticomm_1_3 :
 
 theorem anticomm_3_1 :
     alpha3 * alpha1 + alpha1 * alpha3 = 0 := by
-  simp [anticomm_1_3, add_comm]
+  ext <;> simp [alpha1, alpha3] <;> ring
 
 theorem anticomm_2_3 :
     alpha2 * alpha3 + alpha3 * alpha2 = 0 := by
@@ -236,7 +236,7 @@ theorem anticomm_2_3 :
 
 theorem anticomm_3_2 :
     alpha3 * alpha2 + alpha2 * alpha3 = 0 := by
-  simp [anticomm_2_3, add_comm]
+  ext <;> simp [alpha2, alpha3] <;> ring
 
 -- ============================================================================
 -- Group C — dagger-dagger anticommutation: {αᵢ†, αⱼ†} = 0
@@ -260,7 +260,7 @@ theorem anticomm_1dag_2dag :
 
 theorem anticomm_2dag_1dag :
     alpha2_dag * alpha1_dag + alpha1_dag * alpha2_dag = 0 := by
-  simp [anticomm_1dag_2dag, add_comm]
+  ext <;> simp [alpha1_dag, alpha2_dag] <;> ring
 
 theorem anticomm_1dag_3dag :
     alpha1_dag * alpha3_dag + alpha3_dag * alpha1_dag = 0 := by
@@ -268,7 +268,7 @@ theorem anticomm_1dag_3dag :
 
 theorem anticomm_3dag_1dag :
     alpha3_dag * alpha1_dag + alpha1_dag * alpha3_dag = 0 := by
-  simp [anticomm_1dag_3dag, add_comm]
+  ext <;> simp [alpha1_dag, alpha3_dag] <;> ring
 
 theorem anticomm_2dag_3dag :
     alpha2_dag * alpha3_dag + alpha3_dag * alpha2_dag = 0 := by
@@ -276,6 +276,6 @@ theorem anticomm_2dag_3dag :
 
 theorem anticomm_3dag_2dag :
     alpha3_dag * alpha2_dag + alpha2_dag * alpha3_dag = 0 := by
-  simp [anticomm_2dag_3dag, add_comm]
+  ext <;> simp [alpha2_dag, alpha3_dag] <;> ring
 
 end PhysicsSM.Algebra.Furey.LadderOperators

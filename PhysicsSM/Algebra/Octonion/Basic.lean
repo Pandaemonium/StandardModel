@@ -206,6 +206,14 @@ instance : One Octonion where
 instance : SMul ℝ Octonion where
   smul r a := ⟨r*a.c0, r*a.c1, r*a.c2, r*a.c3, r*a.c4, r*a.c5, r*a.c6, r*a.c7⟩
 
+/-!
+The component simp lemmas below are intentionally explicit and somewhat
+mechanical.  Later Furey and convention-bridge proofs reduce non-associative
+octonion identities to real coordinate arithmetic; naming every projection of
+addition, subtraction, the unit, and scalar multiplication lets `simp` expose
+those real goals without guessing through typeclass abstractions.
+-/
+
 @[simp] theorem Octonion.add_c0 (a b : Octonion) : (a + b).c0 = a.c0 + b.c0 := rfl
 @[simp] theorem Octonion.add_c1 (a b : Octonion) : (a + b).c1 = a.c1 + b.c1 := rfl
 @[simp] theorem Octonion.add_c2 (a b : Octonion) : (a + b).c2 = a.c2 + b.c2 := rfl
@@ -272,7 +280,7 @@ theorem mul_anticomm_imag (i j : Fin 8)
     basisMul i j = -(basisMul j i) := by
   fin_cases i <;> fin_cases j <;>
     simp (config := { decide := true }) only
-      [basisMul, basisElem, Fin.reduceFinMk,
+      [basisMul, basisElem,
        Octonion.neg_c0, Octonion.neg_c1, Octonion.neg_c2, Octonion.neg_c3,
        Octonion.neg_c4, Octonion.neg_c5, Octonion.neg_c6, Octonion.neg_c7,
        Octonion.mul_c0, Octonion.mul_c1, Octonion.mul_c2, Octonion.mul_c3,

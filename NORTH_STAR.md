@@ -59,24 +59,10 @@ hypotheses and definitions**. The kernel does not check that:
 - the conventions match the literature,
 - the physics interpretation is correct.
 
-Those checks are the responsibility of human mathematical review. Every
+Those checks are the responsibility of careful mathematical review. Every
 non-trivial definition and theorem therefore carries a source citation and a
 convention declaration. A kernel-checked result with an unchecked convention
 is not trusted.
-
-## The agent pipeline
-
-No single agent builds this library. The workflow is:
-
-| Agent | Role |
-|-------|------|
-| Claude Code | Long-context coordination, code review, task preparation |
-| Codex | Repository-wide scaffolding, refactors, import cleanup |
-| Gemini | Paper ingestion, RAG over sources and notes |
-| Aristotle | Targeted Lean theorem proving and proof repair |
-
-Every agent output is provisional until `lake build` passes on the pinned
-toolchain. The Lean kernel is the only verifier.
 
 ## What success looks like
 
@@ -91,7 +77,7 @@ A complete first version of the library would contain:
   of fermion representations and verified charge assignments.
 - Furey-style ladder operators derived from the complexified octonion algebra,
   with nilpotency and anticommutation relations proved.
-- A minimal supersymmetry algebra with the {Q, Q̄} = 2σP anticommutator as a
+- A supersymmetry algebra with the {Q, Q̄} = 2σP anticommutator as a
   typed formal interface.
 
 Each item has a kernel-checked proof, a source citation, and a convention record.

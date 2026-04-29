@@ -133,6 +133,8 @@ PhysicsSM/
     Exceptional/
       G2.lean             ← G₂ root data and octonion automorphism connection
       E8.lean             ← E₈ root data, rank, root count, Cartan determinant
+      Triality.lean       ← finite D4 Cartan-matrix triality cycle
+      OctonionSymmetry.lean ← dot product and imaginary-octonion primitives
   Gauge/
     U1.lean               ← U(1) gauge algebra
     SU2.lean              ← SU(2) gauge algebra
