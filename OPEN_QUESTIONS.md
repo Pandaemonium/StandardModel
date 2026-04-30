@@ -17,8 +17,91 @@ that would be genuinely novel in the formal-math literature.
 - Complexified octonions: ComplexOctonion arithmetic, Module ℂ/ℝ.
 - Furey Cl(6) module: omega, 8 basis states, complete action table (48 entries),
   number operators, charge formula Q = -(1/3)(N₁+N₂+N₃), basis_linear_independent.
+- Furey operator representation layer: left-multiplication operators on J,
+  anticommutation relations for the operator-level Cl(6) action, color-changing
+  operators, and the corrected electric-charge operator `Q_op`.
 - D4 triality: Cartan matrix, order-3 cycle, Cartan preservation.
 - Octonion symmetry primitives: dot product, imaginary subspace, commutator.
+- Triality-companion foothold: `cube`, `conjBy`, unit cancellation through
+  conjugates, the forward `cube = +/-1` automorphism theorems for `conjBy`,
+  and the corresponding order-three iteration theorems.
+
+**Literature refresh (2026-04-29).** The main external updates are:
+- Furey's number-operator construction is about electric charge and the
+  unbroken `SU(3)_C × U(1)_em` symmetry; it should not be silently relabeled as
+  weak hypercharge.
+- Furey's 2018 ladder-operator paper targets `SU(3)_C × SU(2)_L × U(1)_Y`
+  (possibly with an extra `U(1)_X`) as a symmetry of the division-algebraic
+  ladder operators, so the next formal step is to separate `Q`, `T3`, and `Y`
+  rather than using `Y = 2Q`.
+- Furey-Hughes 2024/2025 "Three Generations and a Trio of Trialities" gives a
+  concrete ambitious target: identify the Standard Model internal Lie algebra
+  inside `tri(ℂ) ⊕ tri(ℍ) ⊕ tri(𝕆)` and track the triality triple
+  `(Ψ_+, Ψ_-, V)` over `ℂ ⊗ ℍ ⊗ 𝕆`.
+- Furey 2025 "A Superalgebra Within" upgrades the long-horizon program from
+  minimal left ideals alone to a `ℤ₂⁵`-graded algebra isomorphic to
+  `H₁₆(ℂ)`, with gauge-boson-like and fermion-like representations included.
+- Baez's 2025 triality note, citing Yokota and Conway-Smith, suggests a more
+  precise Moufang/triality target: conjugation by a unit octonion `a` is an
+  automorphism exactly when `a^3 = ±1`; the order-three phenomenon is not a
+  statement about arbitrary conjugation maps.
+- Barton-Sudbery, Springer-Veldkamp, and the mathlib/SpherePacking ecosystem
+  make the magic-square/E8 side more formalizable than this document originally
+  assumed: there are now plausible import-or-bridge targets, not only oracle
+  targets.
+- Coding-theory literature gives a real string-theory bridge:
+  the extended binary Hamming [8,4,4] code gives the E8 lattice by
+  Construction A, and recent heterotic Narain work identifies binary-code
+  Construction A data for both the E8 x E8 and Spin(32)/Z2 heterotic
+  backgrounds. This is much stronger than the ordinary Standard Model analogy,
+  where anomaly cancellation is currently best treated as linear and cubic
+  charge equations unless extra code/lattice structure is supplied.
+
+**Correction ledger.**
+- Do not state `Y = 2Q` as a Standard Model identity. With the usual
+  normalization `Q = T3 + Y/2`, hypercharge is `Y = 2(Q - T3)`.
+- The sedenion counterexample is useful, but it is not the upper-bound proof in
+  Hurwitz's classification. It proves that one Cayley-Dickson continuation
+  fails to be a composition algebra, not that every dimension greater than 8 is
+  impossible.
+- For `G₂ = Aut(𝕆)`, norm preservation is not automatic from multiplicativity
+  alone unless the proof also controls the real unit, conjugation/scalar part,
+  or inverses. Treat this as a theorem with explicit hypotheses.
+- Operator nilpotency over all `ComplexOctonion` elements is not the same as the
+  verified finite action table on J. Prefer the J-restricted operator algebra
+  and anticommutation theorems until the global alternativity API is proved.
+- Any theorem exhibiting nonassociativity should put the unit-norm hypotheses in
+  the existential witness, not behind implications that make the theorem easier
+  to satisfy.
+- In the Hamming/Fano bridge, the seven Fano lines are the weight-3 words of
+  the [7,4,3] Hamming code; their complements are the weight-4 words in the
+  same length-7 code. After adding the parity bit, the extended [8,4,4] code
+  has 14 weight-4 words, plus `00000000` and `11111111`.
+
+**New high-value Aristotle prompt drafts.**
+- `octonion-symmetry-primitives`: finish dot bilinearity, scalar-part identity,
+  imaginary-subspace closure, and the cross-product norm formula.
+- `furey-su3-u1-operator-algebra`: prove the operator commutator table for the
+  color-changing operators and `Q_op` on J; this is the submitted moonshot
+  `bb0868bf-5312-4437-bc55-7c65e015ba17`.
+- `furey-hypercharge-bridge`: introduce a separate weak-isospin operator `T3_op`
+  and define `Y_op := 2 * (Q_op - T3_op)` only after the left/right state
+  convention is explicit.
+- `g2-derivation-rank`: build a rational 64-variable derivation constraint
+  matrix from the XOR multiplication table and prove rank 50, hence
+  `dim Der(𝕆) = 14`.
+- `h3o-jordan-scaffold`: define `H3O`, the Jordan product, trace, determinant
+  candidate, and prove easy structural lemmas before attempting the full Jordan
+  identity.
+- `triality-companions`: formalize Conway-Smith/Yokota companion maps for left
+  and right multiplication by a unit octonion, then prove the `a^3 = ±1`
+  automorphism criterion. Integrated result from Aristotle job
+  `d76adda3-911d-43d2-ac78-6d122fcda89c`: the forward `cube = +/-1`
+  automorphism and order-three theorems are trusted; companion identities and
+  the converse remain open.
+- `e8-import-bridge`: compare project root data with mathlib root-system APIs
+  and SpherePacking's E8 lattice statements before attempting any new E8 proof
+  from scratch.
 
 **Oracle-verification note.** Proof sketches marked *oracle-verified* have been
 checked numerically against 30–100 random samples in Python before being written.
@@ -34,16 +117,23 @@ or straightforward algebra over existing simp lemmas.
 
 ---
 
-### Q1.1 — Inner automorphisms of the unit-octonion Moufang loop have order 3
+### Q1.1 — Moufang/triality criterion for octonion conjugation maps
 
-**Statement (clarified from original).** The unit octonions `{x : Octonion | normSq x = 1}`
-form a Moufang loop under multiplication. For any unit octonion `u`, the
-"inner mapping" `T_u : x ↦ u⁻¹ * (x * u)` (where `u⁻¹ = conj u` for unit
-octonions) satisfies `T_u^3 = id`.
+**Statement (corrected after the 2026 literature refresh).** The unit
+octonions `{x : Octonion | normSq x = 1}` form a Moufang loop under
+multiplication. For a unit octonion `a`, the conjugation map
+`C_a : x ↦ a * x * a⁻¹` is an algebra automorphism exactly when `a^3 = ±1`
+(equivalently, when `a^3` is a real scalar after normalization). In the
+nontrivial case, the resulting automorphism has order 3.
 
-More concretely, for any imaginary unit octonion `u` (with `normSq u = 1`,
-`u.c0 = 0`), the map `x ↦ u * (x * u)` composed with itself three times is
-the identity — a consequence of the Moufang identity.
+Trusted formal progress: `PhysicsSM.Algebra.Octonion.TrialityCompanions`
+defines `cube a := (a * a) * a` and `conjBy a x := (a * x) * conj a`, then
+proves that `conjBy a` preserves multiplication when `normSq a = 1` and
+`cube a = 1` or `cube a = -1`. It also proves the corresponding order-three
+iteration theorem.
+
+Remaining target: prove the companion-map identities behind the conceptual
+Conway-Smith/Yokota proof, and then attack the converse direction.
 
 **Caution on statement.** The naive algebraic inner automorphism
 `x ↦ u * x * u⁻¹` does NOT generally have order 3 — for imaginary unit `u`,
@@ -52,13 +142,18 @@ it has order 2 on many elements (e.g., `u * e010 * u⁻¹ = -e010` for
 inner mappings, which are compositions of left and right translations.
 This distinction must be stated carefully in Lean.
 
-**Why novel.** Yokota (1990) proved all Moufang loop inner maps of unit
-octonions have order 3. John Baez (September 2025) asked whether a clean
-direct proof via the Moufang identities — without the G₂ machinery Yokota
-uses — can be found. Our project has exactly the right tools: three Moufang
-identities already proved.
+**Why novel.** Yokota proved the criterion using triality and Moufang-style
+identities; Baez's September 2025 note asks for a clean explanation of the
+relationship between Spin(8) triality and these octonionic conjugation
+phenomena. Our project has the Moufang identities and a D4 triality scaffold,
+so it is well positioned to isolate the exact formal bridge.
 
-**Proof sketch for the specific map T_u(x) = u⁻¹ * (x * u).**
+**Exploratory proof sketch for a special map.** The following calculation is
+kept as a useful Moufang-algebra exercise, not as the full theorem statement.
+It must be reviewed against the exact Conway-Smith/Yokota companion-map
+formalization before being promoted to a trusted target.
+
+For the specific map `T_u(x) = u⁻¹ * (x * u)`:
 For imaginary unit `u`: `u⁻¹ = conj u = -u` (since `normSq u = 1`).
 So `T_u(x) = (-u) * (x * u) = -(u * (x * u))`.
 
@@ -73,12 +168,13 @@ The key step: use the **middle Moufang identity**
 applied with `y = u*(x*u)` and the order-3 of `u*(u*(u*x)) = (u*u*u)*x = -u*x`
 (using `u*u = -1` twice).
 
-**Difficulty.** Medium. Requires careful parenthesization; all steps use
-existing Moufang lemmas. Strong Aristotle target.
+**Difficulty.** Forward direction: trusted. Companion-map proof and converse:
+medium-hard to research-level.
 
 **Prerequisites.** `moufang_middle`, `moufang_right`, `mul_conj`, `normSq_one`.
 
-**Source.** Baez (2002) Section 4.1; Yokota (1990); nCat Café "A Shadow of
+**Source.** Baez (2002) Section 4.1; Yokota, *Exceptional Lie Groups*;
+Conway-Smith, *On Quaternions and Octonions*; Baez nCat Café "A Shadow of
 Triality?" (September 2025).
 
 ---
@@ -235,6 +331,65 @@ theorem d4Cartan_symm_zero (i j : Fin 4) :
 
 ---
 
+### Q1.7 — Fano plane and the [7,4,3] Hamming code
+
+**Statement.** The seven nonzero vectors of `F2^3` serve simultaneously as:
+1. The seven points of the Fano plane, with lines the triples `{a,b,c}` such
+   that `a + b + c = 0`.
+2. The seven columns of the parity-check matrix of the binary [7,4,3] Hamming
+   code.
+3. The seven imaginary octonion basis labels in the project's XOR convention,
+   with oriented lines supplying the octonion multiplication signs.
+
+The formal entry point should avoid a common off-by-one/code-dual confusion:
+the Fano lines are the weight-3 codewords of the [7,4,3] Hamming code. Their
+complements are the weight-4 codewords of that same length-7 code. After adding
+the parity bit, the extended [8,4,4] Hamming code has 14 weight-4 words, plus
+`00000000` and `11111111`.
+
+```lean
+-- `fanoTriples` encodes 7 positive Fano lines as triples of nonzero XOR labels.
+-- The seven imaginary-octonion indices are exactly `{1,2,3,4,5,6,7}`.
+theorem fano_xor_closure (t : fanoTriples.val) :
+    t.1.val ^^^ t.2.1.val = t.2.2.val
+
+-- Schematic target: after choosing the same column order in the parity-check
+-- matrix, the support of a weight-3 Hamming codeword is exactly a Fano line.
+theorem hamming743_weight_three_support_iff_fano_line
+    (v : Fin 7 -> ZMod 2) :
+    v ∈ hamming743 ->
+    hammingNorm v = 3 ->
+    IsFanoLine {i | v i = 1}
+```
+
+**Why interesting.** This is the finite combinatorial root of the Hamming ->
+E8 -> heterotic-string lattice chain. It also gives a disciplined way to
+compare the project's octonion XOR convention with coding-theory conventions
+before any E8 or anomaly statement is attempted.
+
+**Public Lean status.**
+- Mathlib has `Mathlib.InformationTheory.Hamming`: Hamming distance and weight.
+- This repo has `fanoTriples` in `PhysicsSM/Algebra/Octonion/Basic.lean`.
+- I did not find a public Lean definition of the [7,4,3] Hamming code or a
+  Fano/Hamming bridge lemma. A small local `LinearCode` wrapper around a
+  `Submodule (ZMod 2) (Fin n -> ZMod 2)` should be enough for this target.
+
+**Proof sketch.** Define the `3 x 7` parity-check matrix whose columns are the
+nonzero vectors of `F2^3` in the same XOR-label order used by `fanoTriples`.
+The equation `H * v = 0` says exactly that the XOR-sum of the support is zero.
+For support size 3, that is precisely the Fano-line condition. All finite
+checks should close by `fin_cases`, `decide`, and the existing Hamming weight
+definition.
+
+**Difficulty.** Easy-Moderate. The Fano/XOR fact is finite computation; the
+main task is choosing a reusable Lean representation of binary linear codes.
+
+**Source.** Baez (2002) Section 1; Hamming (1950); MacWilliams-Sloane,
+*The Theory of Error-Correcting Codes*; Error Correction Zoo entries for the
+[7,4,3] and [8,4,4] Hamming codes.
+
+---
+
 ## Tier 2 — Medium-term (4–10 Aristotle jobs, needs some new infrastructure)
 
 ---
@@ -247,23 +402,28 @@ theorem d4Cartan_symm_zero (i j : Fin 4) :
 
 **Why novel.** No formal proof exists in any proof assistant as of 2026.
 
-**Proof strategy (three layers).**
+**Proof strategy (corrected three-layer version).**
 
 *Layer 1 — Existence (already proved):* `normSq_mul` shows 𝕆 satisfies the
 composition property. ℝ, ℂ, ℍ also satisfy it (proven in mathlib).
 
-*Layer 2 — Upper bound on dimension:* The key lemma is that the Cayley–Dickson
-double of any composition algebra of dimension n gives a composition algebra
-of dimension 2n, but the double of 𝕆 (the sedenions, dim = 16) is NOT a
-composition algebra. This can be proved by explicit counterexample: find
-sedenion elements `s, t` with `normSq(s*t) ≠ normSq(s)*normSq(t)`. The
-proof is a finite computation once the sedenion multiplication table is defined.
+*Layer 2 — Formalize composition-algebra structure theory:* The real proof of
+Hurwitz's classification does not follow merely by checking that the sedenions
+fail. It needs the standard structure theorem for finite-dimensional real
+unital composition algebras: after choosing an element outside the base field
+and repeatedly adjoining orthogonal imaginary units, the process stops at
+dimensions 1, 2, 4, or 8. This is the hard theorem, and it will require a
+careful Lean API for quadratic forms, conjugation, orthogonal complements, and
+subalgebra generation.
 
-*Layer 3 — Uniqueness:* Any two composition algebras of the same dimension
-over ℝ are isomorphic. This requires constructing an explicit isomorphism,
-which is the hardest part.
+*Layer 3 — Uniqueness and convention matching:* Once the dimension is known,
+construct explicit isomorphisms to ℝ, ℂ, ℍ, or the project XOR octonions. The
+octonion case must document the Fano orientation and basis convention.
 
-**Near-term formal target.** The sedenions fail the composition property:
+**Near-term formal target.** Keep the sedenion result, but label it correctly:
+it is a counterexample showing that the next Cayley-Dickson double is not a
+composition algebra, not a proof of the Hurwitz upper bound.
+
 define `sed_mul : Fin 16 → Fin 16 → Fin 16 → ℝ` (the sedenion multiplication
 table via Cayley–Dickson from 𝕆) and prove there exist basis elements
 `e_a, e_b` with `normSq(e_a * e_b) ≠ 1 = normSq(e_a) * normSq(e_b)`.
@@ -508,9 +668,28 @@ the Baez convention are correctly translated to the project XOR convention.
 
 ---
 
-### Q2.7 — Furey left-multiplication operators on J are nilpotent
+### Q2.7 — Furey operator algebra on J
 
-**Statement.** Define the left-multiplication operator:
+**Status after Aristotle integration.** The most important J-restricted
+operator layer is now kernel-verified in
+`PhysicsSM.Algebra.Furey.OperatorRepresentations`: `Lmul`, its action on the
+8-state minimal left ideal J, operator-level anticommutation on J, color
+operators, and the corrected electric-charge operator `Q_op`.
+
+**Updated statement.** Continue from the verified J-restricted representation
+instead of first trying to prove global operator nilpotency over all
+`ComplexOctonion` elements. The next target is:
+```lean
+-- Every commutator [Λ_i, Λ_j] agrees with the expected su(3) linear
+-- combination on each of the eight J basis states.
+theorem color_operator_commutator_table_on_J : ...
+
+-- Q_op commutes with the su(3) color action on J.
+theorem Q_op_commutes_with_color_on_J : ...
+```
+
+**Older global target, now demoted to a supporting lemma.** Define the
+left-multiplication operator:
 ```lean
 def L_alpha1 (x : ComplexOctonion) : ComplexOctonion := alpha1 * x
 ```
@@ -519,15 +698,18 @@ Then prove:
 theorem L_alpha1_nilpotent (x : ComplexOctonion) :
     alpha1 * (alpha1 * x) = 0
 ```
-This says `L_alpha1 ∘ L_alpha1 = 0` as a linear operator on ComplexOctonion.
-Similarly for `L_alpha2` and `L_alpha3`.
+This would say `L_alpha1 ∘ L_alpha1 = 0` as a linear operator on all
+`ComplexOctonion`, and similarly for `L_alpha2` and `L_alpha3`. It should not
+be promoted until the global alternativity/left-alternative API for
+`ComplexOctonion` is proved and reviewed.
 
 **Why this differs from the existing `alpha1_nilpotent`.** The existing theorem
 `alpha1 * alpha1 = 0` proves nilpotency *of the element*. This theorem proves
 nilpotency *of the operator* (i.e., with an arbitrary `x` between them),
 which is stronger and requires left alternativity.
 
-**Proof sketch.** The key step uses the **left alternative law for ComplexOctonion**:
+**Proof sketch for the demoted global lemma.** The key step would use the
+**left alternative law for ComplexOctonion**:
 ```
 alpha1 * (alpha1 * x)    [operator nilpotency]
 = (alpha1 * alpha1) * x  [by ComplexOctonion.left_alternative]
@@ -562,12 +744,13 @@ theorem L_alpha1_nilpotent (x : ComplexOctonion) : alpha1 * (alpha1 * x) = 0 := 
   rw [← ComplexOctonion.left_alternative, alpha1_nilpotent, ComplexOctonion.zero_mul]
 ```
 
-**Why novel.** The distinction between element nilpotency and operator nilpotency
-is the key step toward the Clifford algebra Cl(6) acting on J. The operator
-version implies the canonical anticommutation `{L_α, L_α†} = id` when combined
-with the product anticommutation already proved.
+**Why still useful.** The distinction between element nilpotency and operator
+nilpotency remains important, but the repository now has the safer
+J-restricted operator representation. The global lemma is useful only if it
+supports cleaner reuse of those J-level theorems.
 
-**Difficulty.** Moderate. Two auxiliary lemmas + a clean three-line proof.
+**Difficulty.** Moderate. Two auxiliary lemmas + a short proof, after the
+global `ComplexOctonion` alternativity statement is verified.
 
 **Prerequisites.** `alpha1_nilpotent` (proved), `Octonion.left_alternative` (proved).
 
@@ -611,12 +794,245 @@ values from `MinimalLeftIdeal.lean`.
 
 **Difficulty.** Easy — `norm_num` on explicit rational numbers.
 
-**Note.** The physically interesting anomaly cancellation conditions include the
-`U(1)³` and `U(1)·gravity²` anomalies, which involve hypercharge Y = 2Q, and
-may require the combined SM gauge group structure. This more complete version
-is a longer-term target.
+**Note.** The physically interesting anomaly cancellation conditions include
+the `U(1)^3` and `U(1)·gravity^2` anomalies for weak hypercharge. Do not use
+`Y = 2Q` globally. With the usual Standard Model convention
+`Q = T3 + Y/2`, one has `Y = 2 * (Q - T3)`, so a faithful formal target needs
+explicit weak-isospin assignments in addition to the electric-charge operator
+already proved in the Furey layer.
 
-**Source.** Furey arXiv:1806.00612, Section 4.
+**Source.** Furey arXiv:1603.04078 for electric charge from the number
+operator; Furey arXiv:1806.00612 for the ladder-operator symmetry context.
+
+---
+
+### Q2.9 — Separate electric charge, weak isospin, and hypercharge
+
+**Statement.** Introduce a convention-explicit bridge between the Furey
+electric-charge operator and the Standard Model electroweak convention:
+```lean
+-- schematic, names to be aligned with the final state model
+def T3_op : End J := ...
+def Y_op : End J := 2 • (Q_op - T3_op)
+
+theorem electroweak_charge_relation_on_basis (b : JBasis) :
+    Q_op b = T3_op b + (1 / 2 : ℚ) • Y_op b
+```
+
+**Why important.** The repo now has a verified `Q_op`, but several planning
+notes and older Aristotle outputs used hypercharge language for a number
+operator that behaves as electric charge. This target prevents that convention
+drift from spreading into anomaly-cancellation and Standard Model
+representation files.
+
+**Proof strategy.** Start with a table target over the eight J basis states.
+Only after left/right chirality and antiparticle conventions are fixed should
+this be generalized to a full generation. Cross-check against
+`PhysicsSM.StandardModel.QuantumNumbers` and PhysLean/HEPLean conventions.
+
+**Difficulty.** Moderate; the arithmetic is easy, but the semantic convention
+review is essential.
+
+**Source.** Furey arXiv:1806.00612 for the `SU(3)_C × SU(2)_L × U(1)_Y`
+target; standard electroweak convention `Q = T3 + Y/2`.
+
+---
+
+### Q2.10 — Construction A: binary linear codes to lattices
+
+**Statement.** Construction A maps a binary linear code `C <= F2^n` to the
+integer lattice
+```
+A(C) = { x : Z^n | x mod 2 is in C }.
+```
+With the standard Euclidean scaling `Lambda_A(C) = (1 / sqrt 2) A(C)`,
+self-orthogonal, doubly-even, and self-dual code hypotheses translate into
+integral, even, and unimodular lattice properties.
+
+```lean
+abbrev BinaryLinearCode (n : Nat) :=
+  Submodule (ZMod 2) (Fin n -> ZMod 2)
+
+def constructionAInt (C : BinaryLinearCode n) : AddSubgroup (Fin n -> Int) :=
+  { carrier := {x | (fun i => (x i : ZMod 2)) ∈ C}
+    ... }
+
+-- Schematic targets; final names should follow the lattice API chosen locally.
+theorem constructionA_integral_of_selfOrthogonal
+    (hC : SelfOrthogonal C) :
+    IntegralLattice (scaledConstructionA C)
+
+theorem constructionA_even_of_doublyEven
+    (hC : DoublyEven C) :
+    EvenLattice (scaledConstructionA C)
+
+theorem constructionA_unimodular_of_selfDual
+    (hC : SelfDual C) :
+    UnimodularLattice (scaledConstructionA C)
+```
+
+**Why novel.** Construction A is the classical bridge between coding theory and
+lattice theory. I found public Lean code for the endpoints, but not for this
+bridge: mathlib has Hamming distance/weight, and `math-inc/Sphere-Packing-Lean`
+has extensive E8/sphere-packing infrastructure, but neither appears to expose a
+binary-linear-code-to-lattice Construction A layer. I also did not find public
+Lean code for `LinearCode`, the [7,4,3] Hamming code, or the extended [8,4,4]
+code as reusable objects.
+
+**What's already in Lean.**
+- Hamming metric/weight: `Mathlib.InformationTheory.Hamming`.
+- Integer lattice infrastructure: `Mathlib.Algebra.Module.ZLattice.*`.
+- E8 lattice and dimension-8 sphere-packing infrastructure:
+  `math-inc/Sphere-Packing-Lean`.
+- Standard Model anomaly equations: PhysLean/HEPLean has `ACCSystem`,
+  `SMNoGrav`, and related Lean statements, but not this coding/lattice bridge.
+
+**Proof sketch.** The key modular computations are finite and elementary:
+`sum_i x_i^2 mod 2 = hammingNorm (x mod 2) mod 2`, and
+`sum_i x_i y_i mod 2 = dot (x mod 2) (y mod 2)`. Self-orthogonality gives
+integrality; doubly-even weight gives evenness after the `1/sqrt 2` scaling;
+self-duality controls covolume/unimodularity. The final self-dual/unimodular
+step is the first place where the `ZLattice` covolume API will matter.
+
+**Difficulty.** Moderate. The arithmetic is small; the API design for binary
+codes, dual codes, and scaled integer lattices is the real work.
+
+**Source.** Leech (1967); Conway-Sloane, *Sphere Packings, Lattices and
+Groups*; MacWilliams-Sloane, *The Theory of Error-Correcting Codes*; Error
+Correction Zoo entry `errorcorrectionzoo.org/c/construction_a`.
+
+---
+
+### Q2.11 — [8,4,4] Hamming code to E8 via Construction A
+
+**Statement.** Applying Construction A to the extended binary Hamming code
+`H8` gives a lattice isometric to E8:
+```lean
+theorem constructionA_hamming844_isometric_E8 :
+    IsometricLattice (scaledConstructionA H8) E8_lattice
+```
+where `E8_lattice` should be aligned either with the local project definition
+or with the E8 lattice from `math-inc/Sphere-Packing-Lean`.
+
+The [8,4,4] code is the smallest doubly-even self-dual binary code. Construction
+A therefore gives an even unimodular rank-8 lattice; the concrete target should
+prefer an explicit isometry or basis comparison over relying on an unformalized
+classification theorem.
+
+**Explicit construction.** Define `H8` as the even-parity extension of the
+[7,4,3] Hamming code:
+```lean
+def extendEvenParity (v : Fin 7 -> ZMod 2) : Fin 8 -> ZMod 2 := ...
+def hamming844 : BinaryLinearCode 8 :=
+  span (ZMod 2) {extended rows/generator matrix}
+```
+Then prove:
+- `hamming844_card = 16`.
+- `hamming844_weight_enumerator = 1 + 14 X^4 + X^8`.
+- `hamming844_doublyEven`.
+- `hamming844_selfDual`.
+- `scaledConstructionA hamming844` has the same Gram matrix as a chosen E8
+  basis, or has an explicit linear isometry to the SpherePacking E8 lattice.
+
+**Proof sketch.** First verify the 16 codewords by `decide` over `Fin 8 ->
+ZMod 2`. Then choose a concrete basis for `A(H8)`, compute its Gram matrix, and
+match that matrix to the E8 basis convention used by the imported/local E8
+lattice. This route avoids depending on a global uniqueness theorem for even
+unimodular rank-8 lattices unless such a theorem is later imported.
+
+**What it would accomplish.** This is the first formal bridge from the
+project's Fano/XOR octonion convention to a coding-theoretic construction of
+E8. It also prepares the rank-16 heterotic-lattice target in Q4.7.
+
+**Prerequisites.** Q1.7 (Fano/Hamming combinatorics), Q2.10 (Construction A),
+and a reviewed E8 lattice convention.
+
+**Difficulty.** Hard. The finite-code facts are small; the lattice-isometry
+statement is the serious part.
+
+**Source.** Error Correction Zoo entries for [8,4,4] Hamming and E8; Leech
+(1967); Conway-Sloane Ch. 7; `math-inc/Sphere-Packing-Lean`.
+
+---
+
+### Q2.12 — Self-dual code building-up constructions (Baek-Kim, Lean, April 2026)
+
+**Statement.** Baek and Kim have already formalized "building-up constructions
+for binary and ℤ_q-ary self-dual codes through isotropic lines" in Lean
+(arXiv:2604.08485, April 2026). Their results provide a verified algebraic
+core for the codes underlying E8.
+
+**What they prove.** Given a self-dual code `C` of length `n`, the building-up
+construction produces new self-dual codes of length `n+2`. The key Lean
+definitions include:
+- `SelfDualCode`: a linear code equal to its dual
+- `IsotropicLine`: a one-dimensional totally isotropic subspace
+- `BuildUp`: the construction map (short code + isotropic line → longer code)
+
+Their formalization uses isotropic lines in symplectic spaces over finite fields,
+which generalizes both the binary case (for E8 construction) and the ternary
+case (for Leech lattice via ternary Golay code).
+
+**Immediate impact on this project.** This paper *directly enables* Q2.10
+(Construction A for Hamming → E8). The missing piece was a formalization of
+self-dual codes in Lean — Baek-Kim provide exactly that.
+
+**Near-term action.** Determine whether arXiv:2604.08485 is a standalone Lean
+project or already merged to mathlib. If standalone, evaluate importing it as
+a Lake dependency. If its code is available and compatible with v4.28.0, Q2.10
+becomes tractable immediately.
+
+**Prerequisites.** `Mathlib.InformationTheory.Hamming` (Hamming metric ✓),
+`Mathlib.LinearAlgebra.Matrix.DotProduct` (bilinear forms ✓), Baek-Kim library.
+
+**Difficulty.** Easy–Moderate once the Baek-Kim library is imported.
+
+**Source.** Baek–Kim arXiv:2604.08485 (April 2026), "Formalizing building-up
+constructions of self-dual codes through isotropic lines in Lean."
+
+---
+
+### Q2.13 — Weight enumerator of [8,4,4] as a modular form
+
+**Statement.** The weight enumerator of the [8,4,4] extended Hamming code is
+the classical MacWilliams–Gleason polynomial:
+```
+W(x, y) = x⁸ + 14 x⁴ y⁴ + y⁸
+```
+This polynomial is a modular form of weight 4 under the theta-series
+interpretation: substituting `x = θ₃(q)`, `y = θ₄(q)` gives the theta series
+of the E8 lattice:
+```
+Θ_E8(q) = W(θ₃(q), θ₄(q)) = 1 + 240 q² + 2160 q⁴ + ...
+```
+where the coefficient 240 counts the minimal vectors (roots) of E8.
+
+**Formal targets.** In Lean:
+```lean
+def hammingWeightEnumerator : MvPolynomial (Fin 2) ℤ :=
+  X 0 ^ 8 + 14 * X 0 ^ 4 * X 1 ^ 4 + X 1 ^ 8
+
+-- The 240 vectors come from the weight-4 codewords of H8
+-- Each of the 14 weight-4 codewords lifts to 240/14... actually:
+-- weight-4 codewords: 14 of them; each lifts to {±1}^4 in 4 positions → 2^4 = 16 vectors
+-- 14 * 16 = 224; plus weight-8 codeword contributes 16 vectors: total = 240
+theorem E8_root_count_from_hamming :
+    (14 * 16 : ℕ) + 16 = 240 := by norm_num
+```
+
+**Why interesting.** The weight enumerator connects coding theory to:
+1. The 240 roots of E8 (algebraic geometry / Lie theory)
+2. The theta series of E8 (modular forms)
+3. The genus-1 partition function of the heterotic string (physics)
+
+The formal proof that `W` generates the ring of modular forms of level 1 would
+be a non-trivial bridge to the modular-forms machinery being developed for the
+sphere-packing formalization.
+
+**Difficulty.** Moderate. The root-count arithmetic is `norm_num`; connecting
+to modular forms requires mathlib's modular forms library.
+
+**Source.** Gleason (1971); MacWilliams-Sloane Ch. 19; Conway-Sloane Ch. 7.
 
 ---
 
@@ -633,10 +1049,17 @@ the compact Lie group G₂, which has dimension 14.
 
 **Proof strategy (multiple Aristotle moonshots).**
 
-*Step 1 — Aut(𝕆) ⊆ O(8):* Every automorphism φ of 𝕆 preserves the norm
-(`normSq(φ(x)) = normSq(x)`), so Aut(𝕆) is a closed subgroup of O(8).
-Proof uses: φ(x*y) = φ(x)*φ(y) ⟹ normSq(φ(x)*φ(y)) = normSq(φ(x))*normSq(φ(y))
-= normSq(x)*normSq(y) = normSq(x*y); since φ is a bijection, normSq is preserved.
+*Step 1 — Aut(𝕆) ⊆ O(8):* Prove carefully that every unital algebra
+automorphism φ of 𝕆 preserves conjugation, scalar part, and hence the norm.
+One route is:
+1. `φ 1 = 1`.
+2. `x + conj x` and `x * conj x` are real scalar multiples of `1`.
+3. Use uniqueness of the real and imaginary decomposition to show
+   `φ (conj x) = conj (φ x)`.
+4. Conclude `normSq (φ x) = normSq x`.
+
+Do not use multiplicativity alone as a black box here; the Lean proof must make
+the real-line/scalar-part preservation explicit.
 
 *Step 2 — Aut(𝕆) is a manifold of dimension 14:* Use the orbit-stabilizer
 theorem. Aut(𝕆) acts transitively on pairs (u, v) of orthogonal imaginary
@@ -675,8 +1098,9 @@ theorem unit_inv {x : Octonion} (hx : normSq x = 1) :
 -- For unit x, y, z: (x*y)*(z*x) = x*((y*z)*x)  -- from moufang_left
 -- Non-associativity: there exist x,y,z with (x*y)*z ≠ x*(y*z)
 theorem not_associative :
-    ∃ (x y z : Octonion), normSq x = 1 → normSq y = 1 → normSq z = 1 →
-    (x * y) * z ≠ x * (y * z)
+    ∃ (x y z : Octonion),
+      normSq x = 1 ∧ normSq y = 1 ∧ normSq z = 1 ∧
+      (x * y) * z ≠ x * (y * z)
 -- Counterexample: x=e001, y=e010, z=e100
 -- (e001*e010)*e100 = e011*e100 = ?
 -- e001*(e010*e100) = e001*e110 = ?
@@ -776,27 +1200,108 @@ is the 52-dimensional compact Lie group F₄.
 
 ---
 
+### Q3.6 — Uniqueness of even unimodular lattices in rank 16
+
+**Statement.** Up to isometry, there are exactly two even unimodular lattices
+in dimension 16: `E8 ⊕ E8` and `D16⁺`. This is the key theorem underlying
+the uniqueness of the anomaly-free heterotic gauge groups.
+
+Formally:
+```lean
+theorem even_unimodular_rank16_classification :
+    ∀ (Λ : EvenUnimodularLattice 16),
+    Λ ≅ E8_E8_lattice ∨ Λ ≅ D16plus_lattice
+```
+
+**Why critical.** This theorem is the **missing link** between Q2.11 (Hamming → E8)
+and Q4.7 (E8⊕E8 from two Hamming codes → heterotic string). The argument is:
+1. The [8,4,4] code is Type II → Construction A gives an even unimodular lattice
+   of rank 8 → isometric to E8 (by uniqueness in rank 8).
+2. Two independent copies → even unimodular rank-16 lattice.
+3. Uniqueness theorem → it must be E8⊕E8 or D16+.
+4. The specific code choice determines which: two [8,4,4] codes give E8⊕E8;
+   the [16,8,4] Reed-Muller code gives D16+.
+
+**What's needed.** The rank-8 uniqueness (E8 is the unique even unimodular
+lattice in rank 8) is essentially contained in `math-inc/Sphere-Packing-Lean`.
+The rank-16 classification requires more: the Niemeier lattice classification
+restricted to rank 16 (only 2 cases vs. 24 in rank 24).
+
+**Difficulty.** Hard. The rank-8 half is close to done (Sphere-Packing-Lean);
+the rank-16 part requires new work.
+
+**Source.** Niemeier (1973); Conway-Sloane Ch. 18; Green-Schwarz (1984) (physics
+application).
+
+---
+
+### Q3.7 — Adinkra symbols as linear codes in Lean
+
+**Statement.** Adinkra symbols — the graphical representations of off-shell
+supersymmetry multiplets introduced by Gates (2009) — are in bijection with
+certain doubly even binary linear codes. Concretely:
+- An Adinkra graph on `n` nodes with `k` "bosonic nodes" encodes an
+  `[n, k]` binary code where the codewords describe the connectivity structure.
+- The extended Hamming code [8,4,4] corresponds to the "vanilla" N=8 Adinkra.
+- The extended Golay code [24,12,8] corresponds to the N=32 Adinkra underlying
+  11-dimensional supergravity.
+
+**Lean formal target.** Define `Adinkra` as a bipartite graph with additional
+structure, define the map `adinkraToCode : Adinkra → LinearCode`, and prove:
+```lean
+theorem adinkra_to_code_is_doubly_even (A : Adinkra) :
+    IsDoublyEven (adinkraToCode A)
+
+theorem vanilla_adinkra_code_is_hamming :
+    adinkraToCode vanilla_N8_adinkra ≅ extended_hamming_844
+```
+
+**Why interesting.** Gates identified this connection while studying supergravity
+(and made the speculative claim about "computer code in the fabric of spacetime").
+Regardless of the speculation, the formal mathematical content is real: Adinkras
+encode supersymmetry representations as error-correcting codes.
+
+The connection to our project: our `SUSYAlgebra.lean` stub defines the SUSY
+anticommutator `{Q, Q̄} = 2σP`. Adinkras represent the off-shell multiplets
+that solve this algebra. Formally connecting our SUSY algebra to the Adinkra
+code structure would close the loop from the Hamming code through supersymmetry.
+
+**Difficulty.** Hard. Requires defining bipartite graphs with signs (Adinkras)
+and the code-extraction map.
+
+**Source.** Gates et al. (2009) arXiv:0902.3007; Iga-Zhang (2016) for
+classification; Error Correction Zoo `errorcorrectionzoo.org/c/adinkra`.
+
+---
+
 ## Tier 4 — Frontier (open in mathematics, or at the edge of current knowledge)
 
 ---
 
-### Q4.1 — Baez's 2025 open question: Moufang-based proof of order-3 inner automorphisms
+### Q4.1 — Baez's 2025 open question: Moufang/triality proof of the conjugation criterion
 
 **Exact open question (Baez, September 2025, nCat Café).** Can one prove that
-inner automorphisms of the Moufang loop S⁷ have order 3 in a way that
-visibly uses the Moufang identities — without going through the G₂ structure
-that Yokota's proof invokes? Conway and Smith (2003) suggest the connection
-exists but the argument is "convoluted."
+the octonionic conjugation maps that are automorphisms, equivalently the unit
+octonions with `a^3 = ±1`, have their order-three behavior in a way that
+visibly uses the Moufang identities and triality companions, rather than
+treating the result as a black-box corollary of the G₂ structure? Conway and
+Smith (2003) suggest the connection exists but the argument is indirect.
 
 **Our position.** We have:
 - All three Moufang identities formally proved.
 - The D₄ triality cycle of order 3 formally proved.
 - The machinery to compute product compositions explicitly.
+- A trusted forward-conjugation result in
+  `PhysicsSM.Algebra.Octonion.TrialityCompanions`: for unit `a`, `cube a = 1`
+  or `cube a = -1` implies that `conjBy a` preserves multiplication and has
+  order three.
 
-A Lean proof that directly chains the Moufang identities to produce the order-3
-result would be the first clean, kernel-verified proof of this connection.
+Remaining frontier piece: replace the current `grind`/coordinate-heavy proof
+with a proof that directly chains the Moufang identities and the companion-map
+form of triality, and prove the converse direction. That would turn the current
+strong forward theorem into the full Conway-Smith/Yokota criterion.
 
-**Prerequisites.** Q1.1 (inner automorphism statement), Q3.2 (Moufang loop setup).
+**Prerequisites.** Q1.1 (conjugation criterion), Q3.2 (Moufang loop setup).
 
 **Source.** Baez nCat Café "A Shadow of Triality?" (September 2025);
 Conway–Smith "On Quaternions and Octonions" (2003), Chapter 8.
@@ -860,17 +1365,26 @@ formal treatment anywhere.
 
 ---
 
-### Q4.5 — Three generations from triality
+### Q4.5 — Three generations from a trio of trialities
 
-**Statement.** (Furey et al. 2024.) The three generations of Standard Model
-fermions arise from three copies of J related by the ℤ₃ triality symmetry
-of the octonions. Under `d4OuterCycle`-type permutations of the Furey
-ladder operators, three isomorphic minimal left ideals J₁, J₂, J₃ carry
-the 48 states of a full three-generation spectrum.
+**Statement.** (Furey-Hughes 2024 preprint, Phys. Lett. B 2025.) Identify
+`su(3) ⊕ su(2) ⊕ u(1)` inside
+`tri(ℂ) ⊕ tri(ℍ) ⊕ tri(𝕆)`, then act on the triality triple
+`(Ψ_+, Ψ_-, V)` for `Ψ_+, Ψ_-, V ∈ ℂ ⊗ ℍ ⊗ 𝕆`. In the paper, the two spinor
+slots provide two generations, while the vector slot provides a third
+generation only after the Cartan factorization / non-degenerate trilinear
+form constraint is imposed.
+
+**Formalization warning.** This is not merely "three copies of J under the D4
+Cartan-cycle theorem" already in the repo. The target needs the triality
+algebra `tri(A)`, the tensor product `ℂ ⊗ ℍ ⊗ 𝕆`, and the paper's Cartan
+factorization data. Treat any simple J-copy model as a toy approximation, not
+as the literature statement.
 
 **Difficulty.** Research-level.
 
-**Source.** Furey et al. "Three generations and a trio of trialities" (2024).
+**Source.** Furey and Hughes, "Three Generations and a Trio of Trialities",
+arXiv:2409.17948; Phys. Lett. B 865 (2025), 139473.
 
 ---
 
@@ -895,6 +1409,216 @@ which itself uses the Moufang identity. This is a large but mechanical computati
 **Difficulty.** Hard (requires Q2.5 first).
 
 **Source.** Baez (2002) Section 3; McCrimmon "A Taste of Jordan Algebras" (2004).
+
+---
+
+### Q4.7 — E8 ⊕ E8 from two Hamming codes; the heterotic gauge lattice
+
+**Statement.** The rank-16 even unimodular lattice `E8 ⊕ E8` arises from two
+independent [8,4,4] extended Hamming codes:
+```lean
+theorem E8_direct_sum_from_two_hamming :
+    constructionA H_ext ⊕ constructionA H_ext = E8_plus_E8_lattice
+```
+This is the Euclidean gauge-lattice piece associated with the `E8 x E8`
+heterotic string. The companion rank-16 lattice `D16+` for the
+`Spin(32)/Z2` heterotic string should be treated as a parallel code-lattice
+target; the standard Reed-Muller/Construction-A description and the precise
+Mizoguchi-Oikawa binary-code data need to be reconciled before stating a
+trusted Lean theorem.
+
+**Why interesting.** This is the lattice-theoretic skeleton behind the two
+ten-dimensional heterotic gauge choices that survive anomaly cancellation:
+`E8 x E8` and `Spin(32)/Z2`. The even unimodular rank-16 lattice condition is
+not itself the full Green-Schwarz proof, but it is the mathematically clean
+place where binary codes, E8, and heterotic gauge data meet.
+
+**Recent literature.** Mizoguchi-Oikawa (arXiv:2602.16269, February 2026)
+develops the code/Construction-A/Narain-CFT chain directly. Use that paper as
+a source of candidate binary codes and convention checks, but review every
+normalization against standard Narain and Conway-Sloane conventions before
+promoting any theorem to trusted Lean.
+
+**Connection to our project.** We have `Triality.lean` (D4 triality) and know
+E8 contains D4 in its root system. The `d4OuterCycle_cartan_preserved` theorem
+is related to the triality symmetry of the E8 ⊕ E8 gauge group.
+
+**Prerequisites.** Q2.11 (Hamming -> E8 via Construction A), Q2.4 (E8 Cartan
+matrix), the uniqueness theorem for even unimodular rank-16 lattices.
+
+**Difficulty.** Very Hard. Needs Q2.11 plus classification of even unimodular
+lattices in rank 16 (a known but non-trivial theorem).
+
+**Source.** Narain (1986); Green-Schwarz (1984); Mizoguchi-Oikawa
+arXiv:2602.16269 (2026); Conway-Sloane Ch. 18.
+
+---
+
+### Q4.8 — Green–Schwarz anomaly polynomial factorization (string theory level)
+
+**Statement.** For the usual ten-dimensional `N = 1` supergravity/super
+Yang-Mills setting, the one-loop anomaly polynomial `I₁₂` factorizes as:
+```
+I₁₂ = I₄ ∧ I₈
+```
+for the heterotic/type-I gauge algebras `e₈ × e₈` and `so(32)`. This
+factorization is what allows the Green-Schwarz mechanism to cancel the anomaly
+via a two-form `B` field.
+
+**Formal near-term target.** State the Bianchi identity and the anomaly
+cancellation condition as equalities of differential form polynomials in the
+curvature and gauge field strength. The factorization condition reduces to
+algebraic identities involving traces in the adjoint representation,
+schematically of the form:
+```
+tr_{adj} F⁴ = (tr F²)² / λ
+```
+for a specific constant `λ` that holds only for the two anomaly-free gauge
+groups.
+
+**Connection to the coding chain.** The two heterotic gauge lattices in Q4.7
+are the lattice/CFT input for the two ten-dimensional heterotic theories whose
+low-energy gauge algebras pass the Green-Schwarz anomaly test. Do not state
+that anomaly-polynomial factorization is simply equivalent to lattice
+self-duality: the lattice condition is part of the string-consistency story,
+while Green-Schwarz factorization also uses representation-theoretic trace
+identities for `e8 x e8` and `so(32)`.
+
+**Why this is Tier 4.** The formal statement of anomaly cancellation requires:
+- Differential form algebra (not in project scope yet)
+- The representation theory of e₈ and so(32)
+- The specific trace identities and normalizations used in ten-dimensional
+  super Yang-Mills/string conventions
+
+PhysLean/HEPLean has Lean infrastructure for local anomaly cancellation in
+Standard Model settings, but I did not find public Lean code for the
+ten-dimensional Green-Schwarz polynomial factorization.
+
+**Difficulty.** Very Hard — research-level.
+
+**Source.** Green–Schwarz (1984) original papers; anomaly-cancellation review
+by Bilal arXiv:0802.0634; Polchinski "String Theory" Vol. II, Ch. 10.
+
+---
+
+### Q4.9 — Standard Model anomaly conditions as linear/cubic code constraints
+
+**Statement.** The Standard Model anomaly cancellation conditions over one
+fermion generation are weighted sums over left-handed Weyl fermion
+representations, with multiplicities and Dynkin indices made explicit:
+```
+sum_i dim(SU(3)_i) dim(SU(2)_i) Y_i = 0       gravitational-U(1)
+sum_i dim(SU(3)_i) dim(SU(2)_i) Y_i^3 = 0     U(1)^3
+sum_i T_2(SU(3)_i) dim(SU(2)_i) Y_i = 0       SU(3)^2-U(1)
+sum_i dim(SU(3)_i) T_2(SU(2)_i) Y_i = 0       SU(2)^2-U(1)
+```
+There is no standalone Standard Model condition `sum_i Y_i^2 = 0`; any such
+formula should be treated as a convention or transcription error unless a
+specific source and representation weighting are supplied.
+
+The question is whether these conditions can be recast as a code-theoretic
+statement analogous to the string-theory case. The connection is weaker than
+in string theory (the SM charges are not automatically from a lattice
+construction), but there are approaches:
+
+- **Linear constraint approach**: the anomaly conditions define a system of
+  linear and cubic equations on hypercharge assignments. Formalize these as
+  `LinearMap.ker` and cubic polynomial vanishing conditions.
+- **Lattice approach**: asking whether any SM charge assignment extends to a
+  self-dual lattice (a stronger condition, but potentially tractable for the
+  specific SM values).
+
+**Partial near-term target.** Using the existing charge eigenvalues in
+`MinimalLeftIdeal.lean`, verify the cubic anomaly condition over J ⊕ J̄
+formally. This was mentioned in Q2.8 but the connection to code theory is new.
+
+**Note.** The ChatGPT analysis is correct: for the ordinary Standard Model,
+the Hamming code connection is an *analogy* (shared combinatorial structure
+via the Fano plane / octonion multiplication), not a direct derivation.
+The honest formal statement would say: "the SM anomaly conditions hold and
+can be proved as `norm_num` facts; a code-theoretic *explanation* would
+require additional structure."
+
+**Difficulty.** Moderate for the arithmetic statements; research-level for
+the code-theoretic interpretation.
+
+**Public Lean status.** PhysLean/HEPLean contains Lean definitions for anomaly
+cancellation systems (`ACCSystem`) and Standard Model no-gravity examples
+(`SMNoGrav`). This repo should either import/align those conventions or keep a
+clear compatibility note before re-proving local anomaly arithmetic.
+
+**Source.** Standard SM reviews; Bilal's anomaly lectures; PhysLean/HEPLean;
+Furey arXiv:1806.00612 Section 4. The correct electroweak convention is
+`Q = T3 + Y/2` (not `Y = 2Q`).
+
+---
+
+### Q4.10 — N=1 Super Vertex Operator Algebra uniqueness for E8 at level 2
+
+**Statement.** (Open conjecture.) There exists a unique — up to isomorphism —
+N=1 Super Vertex Operator Algebra (SVOA) whose even subalgebra corresponds to
+the simply-connected WZW model of type E8 at level 2 (`V_{E8}^{(2)}`).
+
+This is the "Type E" case in the classification of N=1 SVOAs. It is labelled
+"contaminated" in the literature because `V_{E8}^{(2)}` has unusual properties:
+it is not even a conformal field theory in the usual sense (the level-2 E8 WZW
+model has a fractional central charge of 16 × 4/3 = 64/3 rather than an integer).
+
+**Why it matters.** This uniqueness theorem would close the classification of
+consistent supersymmetric theories that can emerge from the heterotic string.
+The heterotic string at specific compactifications produces exactly these SVOAs.
+A formal proof would provide a machine-verified bound on heterotic string vacua.
+
+**Why Tier 4.** The conjecture is stated in the research literature but not proven
+for the Type E case. The difficulty is the "contamination" — unusual modular
+properties that prevent the standard arguments from applying.
+
+**Connection to this project.** Our `SUSYAlgebra.lean` stub defines the basic
+SUSY anticommutator. SVOAs are the algebraic structures that solve it in 2D
+(worldsheet). Formally stating the uniqueness conjecture would connect our SUSY
+stub to the string theory context.
+
+**Source.** arXiv:1908.11012 (classification of N=1 SVOAs); the document's
+citation to the "contaminated" Type E case.
+
+---
+
+### Q4.11 — F-theory: the 13 unproven transcendental lattice cases
+
+**Statement.** (Open conjecture, with an extraordinary implication.) In the
+study of F-theory compactifications on K3 surfaces, there are 34 transcendental
+lattice types. For 21 of them, it is proven that the Kneser-Nishiyama frame
+lattice contains roots (implying non-abelian gauge symmetry). For the remaining
+13 cases, this is unproven.
+
+The conjecture is that all 34 cases have non-abelian gauge symmetry. The document
+notes the extraordinary consequence:
+
+> **If the conjecture is FALSE for any of the 13 cases, it would imply the
+> existence of a new optimal sphere packing in dimension 18** — a result that
+> would conflict with current lattice theory (which places the 18D optimum at
+> a density that is not achieved by any known lattice).
+
+This is a remarkable case where a physics conjecture (F-theory gauge symmetry)
+and a mathematics conjecture (18D sphere packing) are equivalent.
+
+**Formal approach.** For each of the 13 unresolved transcendental lattice types
+`T_k`, one needs to show that the complement lattice `T_k^⊥` in the K3 lattice
+contains roots. This is a question about lattice embeddings — decidable for any
+specific lattice by exhaustive search. The 21 proven cases were done by
+Kneser-Nishiyama methods; the 13 remaining cases may be tractable with:
+- Automated lattice-embedding search (using Gauss AI or similar)
+- Connection to the math-inc/Sphere-Packing-Lean infrastructure
+
+**Why notable.** This is the first example in this document of a physics
+conjecture (F-theory) that is **equivalent** to a mathematical conjecture
+(sphere packing) in a specific dimension.
+
+**Difficulty.** Very Hard / Research-level. But each of the 13 cases is a
+finite computation (lattice embedding search).
+
+**Source.** Document §"The 34 F-Theory Cases"; Shimada-Zhang (K3 classification);
+math-inc/Sphere-Packing-Lean (for the sphere-packing side).
 
 ---
 
@@ -932,35 +1656,105 @@ and that dim(E₈ × E₈) = 496 (the anomaly-free dimension for the heterotic s
 
 ---
 
+### Q5.4 — Octions and an E₈ description of Standard Model structure
+
+Manogue-Dray-Wilson (2022) identify elements of the real form
+`e8(-24)` with Standard Model objects, including the Lorentz algebra,
+`su(3) + su(2) + u(1)`, lepton/quark spinors, and familiar GUT subalgebras
+such as `so(10)`, `su(5)`, and Pati-Salam.
+
+**Near-term formal target.** Do not attempt the physics interpretation first.
+Instead:
+- define an explicit `e8(-24)` candidate decomposition used by the paper,
+- record the dimensions of each summand,
+- prove that the named subalgebra dimension counts match the intended
+  `so(3,1)`, `su(3)`, `su(2)`, and `u(1)` pieces,
+- cross-check the root and Cartan data against mathlib or SpherePacking.
+
+**Why ambitious.** This is the most direct bridge between the repo's E8,
+octonion, spinor, and Standard Model themes, but it must be guarded against
+semantic overclaiming.
+
+---
+
+### Q5.5 — Furey's algebraic-roadmap intersections
+
+Furey's 2025 algebraic-roadmap papers describe a network linking Spin(10),
+Georgi-Glashow SU(5), Pati-Salam, left-right symmetric models, the Standard
+Model, and the post-Higgs unbroken symmetries. Part III frames
+`so(10) → su(3)_C ⊕ su(2)_L ⊕ u(1)_Y` as a three-way intersection and
+`so(10) → su(3)_C ⊕ u(1)_Q` as a five-way intersection, explicitly comparing
+this with `so(8) → g2` from triality.
+
+**Formal target.** Model intersections of Lie subalgebras as finite-dimensional
+linear subspaces first. Prove dimension and basis statements for the
+intersection, then layer on bracket closure. This is an excellent place for
+oracle fixtures: every claimed intersection should have a matrix-basis witness.
+
+---
+
+### Q5.6 — PhysLean/HEPLean bridge for anomaly cancellation and SM data
+
+PhysLean/HEPLean has active Lean 4 formalizations of high-energy-physics
+objects, including local anomaly cancellation examples. Rather than duplicating
+that work, add a compatibility target:
+- align this repo's `StandardModel` quantum-number records with PhysLean's
+  conventions,
+- prove an importable table equivalence for one generation,
+- then reuse or port anomaly-cancellation statements with explicit convention
+  documentation.
+
+**Why useful.** This turns the division-algebra layer into a producer of
+verified Standard Model representation data, rather than a parallel physics
+library with drifting conventions.
+
+---
+
 ## Summary table
 
 | ID | Question | Difficulty | Proof sketch available? | Formalized elsewhere? |
 |----|----------|-----------|------------------------|----------------------|
-| 1.1 | Inner maps of S⁷ have order 3 | Medium | Partial (Moufang chain) | No |
+| 1.1 | Conjugation automorphism criterion | Medium/Hard | Forward theorem proved; converse open | Partial in repo |
 | 1.2 | Three isotopic norm formulas | Easy | Yes (2-line proofs) | No |
 | 1.3 | octonionDot is bilinear | Easy | Yes (ring) | No |
 | 1.4 | ImOct is 7-dim subspace | Easy | Yes (simp) | No |
 | 1.5 | Cross product norm formula | Easy | Yes (simp+ring) | No |
 | 1.6 | D4 Cartan axioms | Trivial | Yes (decide) | No |
-| 2.1 | Hurwitz theorem | Hard | Partial (sedenion step) | No |
+| 1.7 | Fano plane ≅ [7,4,3] Hamming code | Easy–Mod | Yes (decide + matrix def) | No |
+| 2.1 | Hurwitz theorem | Hard | Structure theorem needed | No |
 | 2.2 | dim(Der(𝕆)) = 14 | Moderate | Yes (rank computation) | No |
 | 2.3 | G₂ Cartan matrix | Moderate | Yes (explicit matrix) | No |
 | 2.4 | E₈ Cartan matrix | Moderate | Yes (explicit matrix) | No |
 | 2.5 | H₃(𝕆) Jordan identity | Hard | Partial (ring after expand) | No |
 | 2.6 | ConventionBridge correctness | Moderate | Yes (7 decide proofs) | No |
-| 2.7 | Operator nilpotency of L_α | Moderate | Yes (3-line proof via left_alt) | No |
+| 2.7 | Furey operator algebra on J | Moderate | Yes (finite table + commutators) | Partial (J action) |
 | 2.8 | Charge cancellation J ⊕ J̄ | Easy | Yes (norm_num) | No |
+| 2.9 | Q, T3, and hypercharge bridge | Moderate | Table strategy | Partial (SM data) |
+| 2.10 | Construction A for binary codes | Moderate | Yes (mod-2 arithmetic + ZLattice) | No public Lean found |
+| 2.11 | [8,4,4] Hamming code to E8 | Hard | Explicit finite code + Gram matrix route | Partial endpoints |
+| 2.12 | Self-dual code building-up (Baek-Kim 2026) | Easy-Mod | Yes (import Baek-Kim library) | **Yes (arXiv:2604.08485)** |
+| 2.13 | Weight enumerator as modular form | Moderate | Yes (arithmetic + theta series) | No |
 | 3.1 | G₂ = Aut(𝕆) | Very Hard | Strategy only | No |
 | 3.2 | Moufang loop axioms | Moderate | Yes (existing theorems) | No |
 | 3.3 | D4 triality and representations | Very Hard | Partial (Cartan level) | No |
 | 3.4 | E₈ root count = 240 | Hard | Strategy (explicit set) | Partial (lattice) |
 | 3.5 | F₄ = Aut(H₃(𝕆)) | Very Hard | Strategy only | No |
-| 4.1 | Baez 2025 triality–Moufang | Open | Open | Open in math |
+| 3.6 | Uniqueness of even unimodular rank-16 lattices | Hard | Strategy (Niemeier) | No |
+| 3.7 | Adinkra symbols as linear codes | Hard | Graph-to-code map | No |
+| 4.1 | Baez 2025 triality–Moufang | Open | Forward theorem proved; companion route open | Partial in repo |
 | 4.2 | Baez–Huerta SUSY theorem | Very Hard | None | No |
 | 4.3 | Freudenthal magic square | Multi-year | None | No |
 | 4.4 | Furey 2025 ℤ₂⁵ superalgebra | Research | None | No (paper 2025) |
-| 4.5 | Three generations from triality | Research | None | No |
+| 4.5 | Trio of trialities and three generations | Research | Strategy only | No |
 | 4.6 | Jordan characteristic equation | Hard | Partial (ring after Q2.5) | No |
+| 4.7 | E8 x E8 from two Hamming codes | Very Hard | Construction A chain | Partial endpoints |
+| 4.8 | Green-Schwarz anomaly factorization | Research | Physics-algebra strategy | No public Lean found |
+| 4.9 | SM anomaly conditions as code constraints | Moderate/Research | Arithmetic yes; coding open | Partial in PhysLean |
+| 4.10 | N=1 SVOA uniqueness for E8 level 2 | Open conjecture | None | No |
+| 4.11 | F-theory 13 unproven lattice cases ↔ 18D sphere packing | Very Hard/Open | Lattice embedding search | No |
+| 5.4 | Octions and E8 Standard Model model | Research | Strategy only | No |
+| 5.5 | Algebraic-roadmap intersections | Research | Matrix oracle route | No |
+| 5.6 | PhysLean/HEPLean bridge | Moderate | API comparison route | Partial externally |
 
 ---
 
@@ -969,12 +1763,53 @@ and that dim(E₈ × E₈) = 496 (the anomaly-free dimension for the heterotic s
 - [Baez (2002)](https://math.ucr.edu/home/baez/octonions/) — "The Octonions", Bull. Amer. Math. Soc. 39, 145–205
 - [Baez nCat (Sep 2025)](https://golem.ph.utexas.edu/category/2025/09/a_shadow_of_triality.html) — "A Shadow of Triality?" (open question on triality–Moufang link)
 - [Baez–Huerta (2010)](https://arxiv.org/abs/0909.0551) — "Division Algebras and Supersymmetry I"
+- [Baez–Huerta (2010)](https://arxiv.org/abs/1003.3436) — "Division Algebras and Supersymmetry II"
+- [Anastasiou et al. (2014)](https://arxiv.org/abs/1309.0546) — "Super Yang-Mills, division algebras and triality"
+- [Furey (2015/2016)](https://arxiv.org/abs/1603.04078) — "Charge quantization from a number operator"
 - [Furey (2016)](https://arxiv.org/abs/1611.09182) — PhD thesis: "Standard model physics from an algebra?"
 - [Furey (2018)](https://arxiv.org/abs/1806.00612) — SU(3) × SU(2) × U(1) from ladder operators
 - [Furey et al. (2019)](https://arxiv.org/abs/1910.08395) — Three generations, two unbroken gauge symmetries
+- [Furey–Hughes (2024/2025)](https://arxiv.org/abs/2409.17948) — "Three Generations and a Trio of Trialities"
+- [Furey (2025), Roadmap I](https://edoc.hu-berlin.de/items/117a7722-fd05-490a-9df0-088e9b26320a) — algebraic roadmap, general construction
+- [Furey (2025), Roadmap II](https://edoc.hu-berlin.de/18452/33905) — theoretical checkpoints
+- [Furey (2025), Roadmap III](https://edoc.hu-berlin.de/18452/33958) — intersection route to SM and post-Higgs symmetries
 - [Furey (2025)](https://arxiv.org/abs/2505.07923) — "A Superalgebra Within", ℤ₂⁵-graded structure
+- [Hamming (1950)](https://doi.org/10.1002/j.1538-7305.1950.tb00463.x) — "Error Detecting and Error Correcting Codes"
+- [Leech (1967)](https://doi.org/10.4153/CJM-1967-017-0) — "Notes on Sphere Packings" (Construction A source)
+- [MacWilliams–Sloane (1977)](https://doi.org/10.1016/C2013-0-10774-1) — "The Theory of Error-Correcting Codes"
+- [Conway–Sloane (1999)](https://doi.org/10.1007/978-1-4757-6568-7) — "Sphere Packings, Lattices and Groups"
+- [Error Correction Zoo: Construction A](https://errorcorrectionzoo.org/c/construction_a) — code-to-lattice construction overview
+- [Error Correction Zoo: [7,4,3] Hamming](https://errorcorrectionzoo.org/c/hamming743) — classical Hamming code facts
+- [Error Correction Zoo: [8,4,4] Hamming](https://errorcorrectionzoo.org/c/hamming844) — extended Hamming code facts
+- [Error Correction Zoo: E8 Gosset lattice](https://errorcorrectionzoo.org/c/eeight) — E8 via the [8,4,4] code and Construction A
+- [Mizoguchi–Oikawa (2026)](https://arxiv.org/abs/2602.16269) — "Error correcting codes and heterotic Narain CFTs"
+- [Green–Schwarz (1984)](https://doi.org/10.1016/0370-2693(84)91565-X) — anomaly cancellation in 10D gauge theory and superstring theory
+- [Narain (1986)](https://doi.org/10.1016/0370-2693(86)90682-9) — heterotic compactification and even self-dual lattices
+- [Bilal (2008)](https://arxiv.org/abs/0802.0634) — lectures on anomalies and anomaly cancellation
+- [Günaydin–Gürsey (1973)](https://doi.org/10.1063/1.1666240) — "Quark structure and octonions"
+- [Günaydin–Gürsey (1974)](https://doi.org/10.1103/PhysRevD.9.3387) — "Quark statistics and octonions"
+- [Barton–Sudbery (2003)](https://doi.org/10.1016/S0001-8708(03)00015-X) — "Magic squares and matrix models of Lie algebras"
+- [Todorov–Drenska (2018)](https://arxiv.org/abs/1805.06739) — exceptional Jordan algebra and F4 in particle physics
+- [Dubois-Violette–Todorov (2018)](https://arxiv.org/abs/1806.09450) — SM symmetry from automorphism and structure groups of the exceptional Jordan algebra
+- [Boyle (2020)](https://arxiv.org/abs/2006.16265) — Standard Model, exceptional Jordan algebra, and triality
+- [Manogue–Dray–Wilson (2022)](https://arxiv.org/abs/2204.05310) — "Octions: An E8 description of the Standard Model"
+- [Tooby-Smith (2024)](https://arxiv.org/abs/2405.08863) — "HepLean: Digitalising high energy physics"
 - [Geometric triality (2025)](https://www.mdpi.com/2073-8994/17/9/1414) — Geometric Realization of Triality via Octonionic Vector Fields
-- [Krasnov (2018)](https://arxiv.org/abs/1805.06739) — Octonions, exceptional Jordan algebra, F₄ in particle physics
 - [Adams (1996)](https://press.uchicago.edu/ucp/books/book/chicago/L/bo3630685.html) — "Lectures on Exceptional Lie Groups"
 - [Springer–Veldkamp (2000)](https://link.springer.com/book/10.1007/978-3-662-12622-6) — "Octonions, Jordan Algebras and Exceptional Groups"
+- [mathlib Hamming docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/InformationTheory/Hamming.html) — Lean Hamming distance and weight API
+- [mathlib root-system docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/RootSystem/CartanMatrix.html) — Cartan matrix API
 - [math-inc/Sphere-Packing-Lean](https://github.com/math-inc/Sphere-Packing-Lean) — E₈ lattice formalization (Apache-2.0)
+- [Hariharan–Viazovska et al. (2026)](https://arxiv.org/abs/2604.23468) — "A Milestone in Formalization: The Sphere Packing Problem in Dimension 8", arXiv:2604.23468
+- [Baek–Kim (2026)](https://arxiv.org/abs/2604.08485) — "Formalizing building-up constructions of self-dual codes through isotropic lines in Lean", arXiv:2604.08485 ← **direct prerequisite for Q2.12 / Q2.10**
+- [Mizoguchi–Oikawa (2026)](https://arxiv.org/abs/2602.16269) — "Error correcting codes and heterotic Narain CFTs", arXiv:2602.16269; explicitly proves Hamming → E8 → heterotic string Narain lattice chain
+- [Cheng–Harrison (2024)](https://arxiv.org/abs/2410.12488) — "Unifying error-correcting code/Narain CFT correspondences via lattices over integers of cyclotomic fields", arXiv:2410.12488
+- [Error Correction Zoo: E8 entry](https://errorcorrectionzoo.org/c/eeight) — E₈ Gosset lattice code: Construction A from [8,4,4] Hamming
+- [Error Correction Zoo: [8,4,4] entry](https://errorcorrectionzoo.org/c/hamming844) — Extended Hamming code
+- [Gates et al. (2009)](https://arxiv.org/abs/0902.3007) — Adinkra symbols and supersymmetry representations as error-correcting codes
+- [Conway–Sloane (1999)](https://link.springer.com/book/10.1007/978-1-4757-6568-7) — "Sphere Packings, Lattices and Groups", Ch. 7 (Construction A), Ch. 18 (rank-16 classification)
+- [MacWilliams–Sloane (1977)](https://www.sciencedirect.com/book/9780444850102) — "The Theory of Error-Correcting Codes", foundational reference for Construction A and weight enumerators
+- [Green–Schwarz (1984)](https://doi.org/10.1016/0370-2693(84)91565-X) — Original anomaly cancellation paper
+- [Bilal (2008)](https://arxiv.org/abs/0802.0634) — Anomaly cancellation review, anomaly polynomial formulas
+- [Tachikawa (2025)](https://member.ipmu.jp/yuji.tachikawa/lectures/2025-string-anomaly-cancellation/memo.pdf) — Lecture notes on anomaly cancellation in string theory
+- [HEPLean/PhysLean](https://github.com/HEPLean/PhysLean) — Lean 4 physics formalization project
