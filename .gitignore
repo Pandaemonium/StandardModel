@@ -8,4 +8,6 @@ __pycache__/
 .DS_Store
 # MCP config contains machine-specific executable paths — do not commit
 /.mcp.json
-/AgentTasks
+# Aristotle binary archives, extracted temporaries, and slim submission copies
+AgentTasks/aristotle-output/
+AgentTasks/aristotle-submit/

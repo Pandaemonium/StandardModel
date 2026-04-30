@@ -114,6 +114,7 @@ PhysicsSM/
       Norm.lean           ← normSq, norm multiplicativity
       Alternativity.lean  ← left/right alternative laws
       Moufang.lean        ← Moufang identities
+      TrialityCompanions.lean ← cube/conjBy, forward conjugation criterion
     Furey/
       Basic.lean          ← overview and source map for Furey-style SM algebra
       LadderOperators.lean ← alpha operators in the XOR convention

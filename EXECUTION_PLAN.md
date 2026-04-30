@@ -1,6 +1,6 @@
 # Execution Plan: PhysicsSM
 
-## Current state (2026-04-28)
+## Current state (2026-04-29)
 
 **Milestone 1 and Core Furey Arithmetic are complete.** The project has:
 
@@ -22,6 +22,10 @@
 - GitHub Actions CI: `lake build` + no-sorry gate on trusted dirs + `docgen-action`.
 - Pre-commit hooks: UTF-8/LF/final-newline hygiene enforced on every commit.
 - Exceptional foundations: D4 triality and Octonion symmetry dot/commutator facts integrated.
+- Triality-companion foothold integrated:
+  `PhysicsSM/Algebra/Octonion/TrialityCompanions.lean` proves the forward
+  Conway-Smith/Yokota conjugation criterion for unit octonions with
+  `cube a = 1` or `cube a = -1`, plus the order-three iteration result.
 - MCP servers active: `scholarly` (OpenAlex/Semantic Scholar), `zotero_write`,
   `neo4j_graph`.
 - Aristotle API key active and tested.
@@ -114,6 +118,7 @@ trusted files at completion.
 | `Norm.lean` | `normSq` | `normSq_nonneg`, `normSq_eq_zero`, `normSq_mul` |
 | `Alternativity.lean` | Alternative laws | `left_alternative`, `right_alternative` |
 | `Moufang.lean` | Moufang identities | `moufang_left`, `moufang_right`, `moufang_middle` |
+| `TrialityCompanions.lean` | Conjugation criterion foothold | `conjBy_mul_of_unit_cube_eq_one`, `conjBy_iter_three_of_unit_cube_eq_one` |
 
 **Status**: Complete at the trusted coordinate-arithmetic layer. Aristotle
 results now integrated:
@@ -122,6 +127,10 @@ results now integrated:
   imaginary basis elements.
 - Job `fe5f83fd-885e-4f87-936f-9a8a4746ee7c`: conjugation, squared norm,
   norm multiplicativity, all three Moufang identities, and flexibility.
+- Job `d76adda3-911d-43d2-ac78-6d122fcda89c`: `cube`, `conjBy`, unit
+  cancellation through conjugates, the `cube = +/-1` forward automorphism
+  theorems, and the corresponding order-three iteration theorems. Companion
+  identities and the converse criterion remain open.
 
 **Strategy**: Continue from the explicit eight-coordinate representation already
 in `Basic.lean`. The current trusted proofs intentionally use component

@@ -39,3 +39,6 @@
 *.sqlite binary
 *.db     binary
 *.bin    binary
+*.docx   binary
+*.xlsx   binary
+*.pptx   binary
