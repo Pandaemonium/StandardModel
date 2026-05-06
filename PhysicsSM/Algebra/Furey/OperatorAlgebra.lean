@@ -456,7 +456,7 @@ theorem comm_T12_T23_eq_T13 :
   simp [hc, Fin.sum_univ_eight, opComm];
   simp +decide [ show basisState 0 = omega from rfl, show basisState 1 = v1 from rfl, show basisState 2 = v2 from rfl, show basisState 3 = v3 from rfl, show basisState 4 = v4 from rfl, show basisState 5 = v5 from rfl, show basisState 6 = v6 from rfl, show basisState 7 = nu from rfl ];
   simp +decide [ T12_op_omega, T12_op_v1, T12_op_v2, T12_op_v3, T12_op_v4, T12_op_v5, T12_op_v6, T12_op_nu, T23_op_omega, T23_op_v1, T23_op_v2, T23_op_v3, T23_op_v4, T23_op_v5, T23_op_v6, T23_op_nu, T13_op_omega, T13_op_v1, T13_op_v2, T13_op_v3, T13_op_v4, T13_op_v5, T13_op_v6, T13_op_nu ];
-  exact?
+  exact sub_eq_add_neg _ _
 
 /-
 The composition `[T21, T32] = -T31` on `J` (adjoint Serre relation).

@@ -3,11 +3,19 @@ import PhysicsSM.Algebra.Furey.MinimalLeftIdeal
 /-!
 # Algebra.Furey.SMStates
 
-Standard Model particle states as elements of the minimal left ideal J.
+Candidate Standard Model particle-state labels for elements of the minimal
+left ideal J.
+
+Claim boundary: this file records the Furey-style particle-label dictionary.
+It is not a proof that the minimal ideal alone realizes the full Standard
+Model fermion sector. Right-handed fields, weak-isospin assignments, and the
+full hypercharge bridge must be modeled explicitly before any "full generation"
+claim is made.
 
 ## State identification
 
-One generation of SM fermions (and anti-fermions) is identified with the
+In the Furey dictionary, one generation of SM fermions and antifermions is
+expected to be identified with the
 8 basis elements of J (and their complex conjugates from the second ideal J'):
 
 | Element of J      | SM particle       | Charge | SU(3) rep |

@@ -58,7 +58,18 @@
       "Bash(grep -n \"^## Tier 3\\\\|^---$\" c:/Projects/StandardModel/OPEN_QUESTIONS.md)",
       "Bash(grep -n \"^### Q2\\\\.10\\\\|^### Q2\\\\.9\\\\|^---$\" c:/Projects/StandardModel/OPEN_QUESTIONS.md)",
       "Read(//c/Projects/AutoLab/COGLab/lean_e8_mathlib/**)",
-      "Read(//c/Projects/AutoLab/COGLab/lean_e8_mathlib/LeanE8Mathlib/**)"
+      "Read(//c/Projects/AutoLab/COGLab/lean_e8_mathlib/LeanE8Mathlib/**)",
+      "Bash(aristotle status *)",
+      "Bash(Get-ChildItem \"AgentTasks\\\\aristotle-output\")",
+      "Bash(Select-Object Name, LastWriteTime)",
+      "Bash(Sort-Object LastWriteTime -Descending)",
+      "Bash(Select-Object -First 10)",
+      "Bash(tar -tzf \"17d42ab0-exceptional-jordan\")",
+      "Bash(gunzip -c \"76df9a63-baez-sm-octonions\")",
+      "Bash(cd /tmp)",
+      "Bash(gunzip -c \"c:\\\\Projects\\\\StandardModel\\\\AgentTasks\\\\aristotle-output\\\\17d42ab0-exceptional-jordan\")",
+      "Bash(tar -xf 17d42ab0.tar)",
+      "Bash(xargs cat)"
     ]
   }
 }

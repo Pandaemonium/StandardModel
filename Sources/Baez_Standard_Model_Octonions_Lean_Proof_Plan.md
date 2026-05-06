@@ -278,6 +278,12 @@ h_3(O) ~= R + h_2(O) + O^2
 
 where `O^2` is the real spinor representation.
 
+Formalization boundary: the bullets above are source claims from the talk, not
+trusted Lean theorems in the current repository. The trusted code currently
+proves coordinate facts about `H3O`, Jordan products, chosen subalgebras, and
+the `O^2` complex-structure map. Compact Lie group identifications with `F4`
+or `Spin(9)` remain draft/frontier targets.
+
 Lean targets:
 
 - Promote the safe part of

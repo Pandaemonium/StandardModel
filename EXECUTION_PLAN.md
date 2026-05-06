@@ -1,8 +1,10 @@
 # Execution Plan: PhysicsSM
 
-## Current state (2026-04-29)
+## Current state (2026-05-06)
 
-**Milestone 1 and Core Furey Arithmetic are complete.** The project has:
+**Milestone 1, the Milestone 2 Cayley-Dickson foundation, Core Furey
+Arithmetic, and the Milestone 8 coordinate/Jordan foundation are complete.**
+The project has:
 
 - Lean 4 `v4.28.0`, mathlib4 `v4.28.0`, full pre-built cache downloaded.
 - A trusted octonion arithmetic core in `PhysicsSM/Algebra/Octonion/Basic.lean`:
@@ -31,14 +33,70 @@
 - Aristotle API key active and tested.
 - Octonion XOR convention locked and validated (Fano + 512 Moufang checks).
 - `ConventionBridge` stub isolating project convention from Baez/Furey.
-- Exceptional Jordan projective-geometry track opened for
-  `Sources/John_Baez_exceptional.pdf`: literature note, typed draft scaffold,
-  and Aristotle job `17d42ab0-5795-4bcc-b387-d93e47bd976e`.
+- **Second Aristotle wave integrated** (jobs submitted and merged
+  2026-05-06):
+  - `PhysicsSM/Algebra/Furey/OperatorAlgebra.lean` now has the trusted finite
+    operator algebra layer: `EqOnJ`, `opComm`, color-transition tables,
+    SU(3)-style commutators, charge conservation, and sector submodules.
+  - `PhysicsSM/Algebra/Jordan/H2OProduct.lean` and
+    `PhysicsSM/Algebra/Jordan/H3OJordan*.lean` now package the trusted Jordan
+    product identities. The largest new theorem is
+    `jordanIdentity_H3O`, proving the Jordan identity for all `a b : H3O`.
+  - `PhysicsSM/Algebra/Octonion/ComplexSplitting.lean` gives the trusted
+    `O = C plus C^3` coordinate splitting around the chosen complex line.
+  - `PhysicsSM/Algebra/Jordan/Automorphism.lean` and
+    `PhysicsSM/Algebra/Jordan/ProjectiveGeometry.lean` move the projective
+    geometry API, automorphism API, standard blocks, and standard line/plane
+    scaffolding into trusted modules.
+  - `PhysicsSM/Algebra/Division/CayleyDickson.lean` provides the trusted generic
+    doubling construction through `CD1`, `CD2`, and `CD3`.
+  - `PhysicsSM/Gauge/BlockEmbeddings.lean` adds the trusted block determinant,
+    `Z6` phase, and quotient-scaffold facts behind the Standard Model gauge
+    group presentation.
+- **Exceptional Jordan and Baez 2021 targets integrated** (Aristotle jobs
+  `17d42ab0` and `76df9a63`, completed 2026-05-05):
+  - `PhysicsSM/Algebra/Octonion/ComplexLine.lean` — chosen complex line
+    `C = span_R{1, e111}`, closure under all operations, complex structure
+    `J² = -id` on complement. Trusted, sorry-free.
+  - `PhysicsSM/Algebra/Jordan/Basic.lean` — minimal Jordan vocabulary
+    (`IsJordanIdempotent`, `IsJordanTraceOneProjection`, etc.). Trusted.
+  - `PhysicsSM/Algebra/Jordan/SpinFactor.lean` — spin factor `R ⊕ Rⁿ` with
+    `det = t² - ‖x‖²`, trace, Euclidean norm, and trace-one projection
+    characterization. Trusted.
+  - `PhysicsSM/Algebra/Jordan/H2O.lean` — concrete `h₂(O)` in spin-factor
+    coordinates: `det = t² - x² - normSq(y)`, standard projections. Trusted.
+  - `PhysicsSM/Algebra/Jordan/H3O.lean` — trusted `H3O` coordinate model
+    with explicit Jordan product, 24 kernel-checked theorems including Jordan
+    product commutativity, identity lemmas, complex-line closure, standard block
+    closure (`h₂(O)`, `h₃(C)`, `h₂(C)`), and `diag(1,1,0)` proved to be a
+    trace-2 Jordan idempotent. Sorry-free.
+  - `PhysicsSM/Gauge/StandardModelGroup.lean` — `S(U(2) × U(3))` scaffolding:
+    ℤ₆ center, SU(4) block determinant, dimension 12. Trusted.
+  - `PhysicsSM/Spinor/OctonionicQubit.lean` — Krasnov's `O² = Octonion × Octonion`
+    with `rightMulE111_sq_neg` (J² = -id) verified. Trusted.
+  - `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` — rich draft:
+    `OP2Point`, `OP2Line`, `LiesOn`, bundled `JordanSubalgebra`, proved
+    `standardA_isH2O`, `standardB_isH3C`, `standardAInterB_isH2C`, and
+    `standardAInterB_is_intersection`. After the 2026-05-06 integration, five
+    frontier sorries remain (F₄ transitivity, common stabilizer closure, DVT
+    stabilizer, and `S(U(2) × U(3))` isomorphism targets).
+  - `PhysicsSM/Draft/BaezStandardModelFromOctonions.lean` — new draft with
+    proved `h₃(O) = h₃(C) ⊕ h₃(C)^⊥` splitting, complex structure
+    preservation, and J² = -id on complement. The old Jordan-product bundle
+    placeholders now delegate to trusted H2O/H3O theorem modules.
 
-**Important caveat.** Several modules remain documented stubs, and the Furey
-particle interpretation still needs semantic review against sources.  The Lean
-kernel verifies the explicit algebraic equalities, not the physical
-identification of those states.
+**Important caveat.** The Lean kernel verifies the explicit algebraic
+equalities, not any physical identification of states. The final stabilizer
+theorems (F₄ transitivity, `Stab = S(U(2) × U(3))`) require compact Lie group
+infrastructure not yet in Mathlib and remain frontier draft statements.
+
+**Claim boundary.** Trusted modules currently prove finite coordinate algebra,
+block-matrix determinant arithmetic, and explicitly stated subgroup/predicate
+facts. They do not yet prove topological compact Lie group isomorphisms such
+as `Aut(h_3(O)) ~= F4`, `Stab(h_2(O)) ~= Spin(9)`, or the full quotient
+identification of the Standard Model gauge group. Such statements must stay in
+`Draft` or source notes until the required manifold/Lie-group/quotient
+infrastructure is formalized.
 
 ---
 
@@ -151,6 +209,11 @@ when a downstream theorem needs them.
 It belongs in a later division-algebra classification milestone after the
 octonion norm and Cayley-Dickson bridge are stable.
 
+**Classification boundary**: A failed sedenion composition law is evidence
+about one Cayley-Dickson continuation, not a proof of Hurwitz's classification.
+Do not claim that Lean has proved "only dimensions 1, 2, 4, and 8" until the
+classification theorem itself is formalized with its hypotheses.
+
 **Oracle backstop**: `Octonions.jl` and the Python validator for arithmetic checks.
 
 **Risk**: Nonassociativity creates API friction with mathlib's algebra hierarchy.
@@ -172,6 +235,15 @@ norm identity inheritance proved.
 | `QuaternionBridge.lean` | Align `CD(ℂ)` with `Mathlib.Analysis.Quaternion` |
 
 **Dependency**: Milestone 1 must be complete (octonions as `CD(ℍ)`).
+
+**Status (2026-05-06)**: The trusted generic doubling foundation is integrated
+in `PhysicsSM/Algebra/Division/CayleyDickson.lean`. It supplies the pair type,
+star operation, multiplication, additive/group/module structure, conjugation,
+distributivity lemmas, squared norm, and the concrete iterates `CD1`, `CD2`,
+and `CD3`. The next proof frontier is the semantic bridge from `CD3` to the
+project's existing XOR-basis `Octonion`, including basis relabeling, sign
+comparison, and norm/multiplication compatibility. Norm multiplicativity
+inheritance for the full tower remains a later trusted theorem target.
 
 ---
 
@@ -254,6 +326,15 @@ of fermions with verified charge assignments.
 against at least one textbook source (Peskin–Schroeder or Weinberg Vol. 2)
 before merge.
 
+**Handedness boundary**: Modules that model only the Krasnov/Baez `O^2`
+octonionic-qubit route must not be named or summarized as the full Standard
+Model fermion sector. That route currently accounts for a left-handed
+one-generation representation only; right-handed fermions and three
+generations are explicit open defects. Conventional anomaly modules may use
+the standard all-left-handed Weyl convention, where physical right-handed
+fermions are represented by their left-handed charge-conjugate fields, but that
+is a convention and must be documented at each bridge.
+
 ---
 
 ### Milestone 6 — Furey-style algebraic SM structure
@@ -274,9 +355,17 @@ algebraic structure.
   `38b00d57-1e6d-4ace-aefc-d4e147739b4a`: `J`, `J_basis`, `Lmul`, operator
   Cl(6) relations on `J`, color-changing operator transitions, number
   operators, and the electric-charge operator `Q_op`.
+- Finite operator algebra layer from Aristotle job
+  `79238cf7-f9dd-429f-97ed-b2fe96c8d3e4`: `EqOnJ`, `opComm`, explicit color
+  transition tables, SU(3)-style commutator identities, electric-charge
+  conservation, and sector submodules in
+  `PhysicsSM/Algebra/Furey/OperatorAlgebra.lean`.
 
 **Status**: Advanced. Linear independence proved. Basis states matched to Furey's
-particle table. Action table complete.
+particle table. Action table and finite operator algebra complete. The next
+semantic bridge is to introduce weak isospin and hypercharge over the existing
+table, then prove the convention `Q = T3 + Y/2` and connect it to the anomaly
+package.
 
 **Convention note**: The number-operator combination
 `(-1/3) * (N1 + N2 + N3)` is the electric-charge operator `Q_op` on the current
@@ -332,19 +421,39 @@ stabilizer characterization of the gauge group.
 | `Sources/Baez_Standard_Model_Octonions_Lean_Proof_Plan.md` | Slide-by-slide Lean theorem inventory for the 2021 talk |
 | `Sources/Exceptional_Jordan_Projective_Geometry_Lit_Search.md` | Literature search and formalization strategy |
 | `AgentTasks/exceptional-jordan-projective-geometry-moonshot.md` | Aristotle handoff for the first large proof push |
+| `AgentTasks/aristotle-next-wave-2-2026-05-06.md` | Next six aggressive Aristotle jobs after the 2026-05-06 integration |
 | `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | Current typed draft scaffold |
 
 **Aristotle status**:
 
-- Job `17d42ab0-5795-4bcc-b387-d93e47bd976e` submitted on 2026-05-06.
-- Scope: implement as much of the finite coordinate algebra and projective
-  dictionary as possible; keep unproved frontier stabilizer statements in
-  draft with precise handoff notes.
-- Job `76df9a63-ef90-4aa4-b0cb-e82e2ba48b32` submitted on 2026-05-06 for the
-  Baez 2021 "Standard Model from octonions" targets.
-- Scope: emphasize the chosen octonion complex line, `h_2(O)` spin-factor
-  facts, `S(U(2) x U(3))` group scaffolding, `h_3(C)`/`h_3(O)` splitting, and
-  the Krasnov octonionic-qubit endpoint.
+- Job `17d42ab0-5795-4bcc-b387-d93e47bd976e` — **COMPLETE, integrated
+  2026-05-05**. Delivered trusted `H3O.lean` (530 lines, 24 kernel-checked
+  theorems) and the projective-geometry draft layer in
+  `ExceptionalJordanProjectiveGeometry.lean`. Six frontier sorries remained
+  before the 2026-05-06 second wave.
+- Job `76df9a63-ef90-4aa4-b0cb-e82e2ba48b32` — **COMPLETE, integrated
+  2026-05-05**. Delivered seven trusted modules (`ComplexLine`, `Jordan/Basic`,
+  `SpinFactor`, `H2O`, `H3O`, `StandardModelGroup`, `OctonionicQubit`) and
+  the `BaezStandardModelFromOctonions.lean` draft. Its two Jordan-product
+  frontier sorries were closed by the 2026-05-06 second wave.
+- Second wave, **COMPLETE, integrated 2026-05-06**:
+  - `79238cf7-f9dd-429f-97ed-b2fe96c8d3e4`: Furey finite operator algebra.
+  - `d2bc1249-49f7-4cdb-b06e-3971faaa5d5c`: H2O/H3O Jordan product bundle
+    and trusted H3O Jordan identity.
+  - `5287e902-67dc-4ff0-a569-b67f3b058d98`: chosen-complex-line splitting
+    of the octonions.
+  - `77b64073-54bc-4068-a625-5feea13ea523`: Jordan automorphism and
+    projective-geometry API.
+  - `c02ae3c0-1574-4847-8a7d-e5a91a20db20`: generic Cayley-Dickson
+    foundation.
+  - `55bb70e4-6992-4ff4-8a75-8e214500da9b`: Standard Model block embedding
+    and `Z6` quotient scaffold.
+
+The active draft frontier is now concentrated in
+`PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean`, with five expected
+`sorry`s: Baez-Schwahn pair transitivity, the common-stabilizer group closure,
+the standard-block DVT stabilizer theorem, the general SM stabilizer theorem,
+and the projective common stabilizer theorem.
 
 **Semantic target from the PDF**:
 
@@ -372,16 +481,19 @@ Dubois-Violette-Todorov block example.
 
 **Lean targets**:
 
-| Layer | File target | Content |
-|-------|-------------|---------|
-| Coordinate Albert algebra | `PhysicsSM/Algebra/Jordan/H3O.lean` | Trusted `H3O` coordinate model, addition, negation, scalar multiplication, trace |
-| Jordan product | `PhysicsSM/Algebra/Jordan/H3O.lean` or `Product.lean` | Explicit Jordan product `(a*b + b*a)/2` with nonassociative parenthesization documented |
-| Projections and projective geometry | `PhysicsSM/Algebra/Jordan/ProjectiveGeometry.lean` | Trace-one points, trace-two lines, incidence `p o ell = p` |
-| Standard blocks | `PhysicsSM/Algebra/Jordan/StandardBlocks.lean` | `standardA`, `standardB`, `standardAInterB`; closure under the Jordan product |
-| Complex line in octonions | `PhysicsSM/Algebra/Octonion/ComplexLine.lean` | The chosen `C = span_R {1, e111}` and closure under conjugation and multiplication |
-| Automorphisms | `PhysicsSM/Algebra/Jordan/Automorphism.lean` | Jordan automorphisms of `h_3(O)` as the concrete stand-in for `F4` |
-| Stabilizers | `PhysicsSM/Algebra/Jordan/Stabilizer.lean` | Stabilizers of subalgebras, projective planes, and projective lines |
-| Frontier statements | `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | Transitivity and `S(U(2) x U(3))` isomorphism until supporting Lie infrastructure exists |
+| Layer | File target | Content | Status |
+|-------|-------------|---------|--------|
+| Coordinate Albert algebra | `PhysicsSM/Algebra/Jordan/H3O.lean` | Trusted `H3O` coordinate model, addition, negation, scalar multiplication, trace | ✅ trusted |
+| Jordan product | `PhysicsSM/Algebra/Jordan/H3O.lean` | Explicit Jordan product `(a*b + b*a)/2`, commutativity, identity | ✅ trusted |
+| Complex line in octonions | `PhysicsSM/Algebra/Octonion/ComplexLine.lean` | The chosen `C = span_R {1, e111}`, closure, complex structure J² = -id | ✅ trusted |
+| Standard blocks | `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | `standardA`, `standardB`, `standardAInterB`; closure; block isomorphism targets | ✅ proved in draft |
+| Projections and projective geometry | `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | `OP2Point`, `OP2Line`, `LiesOn`, standard octonionic line and complex projective plane | ✅ defined in draft |
+| Spin factor and `h₂(O)` | `PhysicsSM/Algebra/Jordan/H2O.lean`, `SpinFactor.lean` | Spin factor, `det = t² - x² - normSq(y)`, projections | ✅ trusted |
+| SM gauge group scaffold | `PhysicsSM/Gauge/StandardModelGroup.lean` | `S(U(2) × U(3))`, ℤ₆ center, SU(4) block | ✅ trusted |
+| Krasnov qubit | `PhysicsSM/Spinor/OctonionicQubit.lean` | `O²`, `rightMulE111_sq_neg` | ✅ trusted |
+| Automorphisms | `PhysicsSM/Algebra/Jordan/Automorphism.lean` | Jordan automorphisms of `h_3(O)` as stand-in for F₄ | trusted |
+| Stabilizers | `PhysicsSM/Algebra/Jordan/ProjectiveGeometry.lean` plus draft frontier | Line/plane stabilizer predicates and standard-line subgroup facts | partial trusted; common-stabilizer group closure remains draft |
+| Frontier statements | `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | F₄ transitivity and `S(U(2) × U(3))` isomorphism | 5 frontier sorries |
 
 **Proof phases**:
 
@@ -672,33 +784,42 @@ of Milestone 8 are stable enough to avoid duplicating algebra.
 
 ## Immediate next actions
 
-Baez-Schwahn exceptional-Jordan priorities:
+### Completed since last update (2026-05-06)
 
-1. **Review Aristotle job `17d42ab0-5795-4bcc-b387-d93e47bd976e` when it
-   completes** - integrate any trusted, sorry-free finite-coordinate
-   `h_3(O)` and standard-block results; leave frontier stabilizer statements in
-   `Draft` until their hypotheses are semantically reviewed.
+- Integrated Aristotle jobs `17d42ab0` and `76df9a63`: eight trusted modules
+  and two draft modules, all kernel-checked and sorry-free in trusted code.
+- Integrated the second six-job Aristotle wave:
+  `79238cf7`, `d2bc1249`, `5287e902`, `77b64073`, `c02ae3c0`, and `55bb70e4`.
+  This moved Furey operator algebra, H2O/H3O Jordan product identities,
+  complex splitting, Jordan automorphisms/projective geometry,
+  Cayley-Dickson doubling, and the SM block embedding scaffold into trusted
+  Lean modules.
+- Delegated the old Baez 2021 Jordan-product draft placeholders to trusted
+  theorem modules. `BaezStandardModelFromOctonions.lean` now typechecks without
+  those two frontier `sorry`s.
 
-2. **Promote the safe part of the exceptional-Jordan scaffold** - after review,
-   split `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` into
-   trusted modules for `H3O`, the chosen octonion complex line, projections,
-   and standard blocks.
+### Active priorities
 
-3. **Resolve the transitivity status** - search for a published proof or
-   equivalent homogeneous-space formulation of the Baez-Schwahn pair
-   transitivity lemma. If none exists, keep it explicitly marked as a
-   conjectural frontier statement.
+1. **Resolve the Baez-Schwahn transitivity status** - search for a published
+   proof or equivalent homogeneous-space formulation of the F4
+   pair-transitivity lemma. If none exists, keep it explicitly marked as a
+   conjectural frontier statement in the draft.
 
-1. **Formalize the SM Gauge Operators** — prove that the bilinears in ladder
-   operators satisfy the SU(3) x SU(2) x U(1) Lie algebra relations when acting
-   on the submodule J.
+2. **Common stabilizer closure** - prove the group closure/inverse facts for
+   the common stabilizer of the standard complex plane and octonionic line,
+   then move the usable subgroup API out of draft.
 
-2. **Cayley-Dickson Doubling** — formalize Milestone 2 to provide the path
-   to the Albert Algebra (Milestone 8) and three generations.
+3. **CD3-to-Octonion bridge** - identify the exact basis map from
+   `CayleyDickson.CD3` to the project XOR-basis `Octonion`, prove the
+   multiplication/sign comparison table, and prepare norm compatibility.
 
-4. **PhysLean audit** — use `scholarly` MCP to find recent PhysLean papers and
-   check HEPLean/PhysLean for anything overlapping Milestones 1–5.
+4. **Furey weak-isospin/hypercharge bridge** - add weak-isospin and
+   hypercharge assignments over the trusted Furey table, prove `Q = T3 + Y/2`,
+   and connect the result to `StandardModel/AnomalyPackage.lean`.
 
-5. **ConventionBridge sign map** — extend `validate_octonion.py` to compare the
-   project multiplication table against the Baez table and output the full sign
-   correction vector. Then formalize it in `ConventionBridge.lean`.
+5. **DVT/Yokota block action** - use `O = C plus C^3` to define the concrete
+   action on the `h_3(C)` plus complement splitting and prove the first
+   block-action invariance lemmas.
+
+6. **Generated-proof hygiene** - clean nonsemantic linter warnings in the
+   Aristotle-generated trusted files without changing theorem statements.

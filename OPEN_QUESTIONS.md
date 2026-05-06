@@ -58,6 +58,15 @@ that would be genuinely novel in the formal-math literature.
   charge equations unless extra code/lattice structure is supplied.
 
 **Correction ledger.**
+- Do not present coordinate `H3O` polynomial identities as compact Lie group
+  isomorphisms. Claims such as `Aut(h_3(O)) ~= F4`,
+  `Stab(h_2(O)) ~= Spin(9)`, and the final
+  `S(U(2) x U(3))` stabilizer theorem require Lie group/topology/quotient
+  infrastructure and are not consequences of coordinate arithmetic alone.
+- Do not present the Krasnov/Baez `O^2` route as the full Standard Model
+  fermion sector. It currently targets a left-handed one-generation
+  representation; right-handed fermions and three generations must remain
+  explicit open problems unless separately formalized.
 - Do not state `Y = 2Q` as a Standard Model identity. With the usual
   normalization `Q = T3 + Y/2`, hypercharge is `Y = 2(Q - T3)`.
 - The sedenion counterexample is useful, but it is not the upper-bound proof in

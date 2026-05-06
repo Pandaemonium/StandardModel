@@ -312,19 +312,27 @@ Best venue fit:
 
 - Computer Physics Communications, CICM, or an applied formalization venue.
 
-### Paper D: The true Standard Model gauge group as a formal quotient
+### Paper D: Standard Model gauge-group quotient scaffolding
 
 Possible title:
 
 ```text
-Formalizing S(U(2) x U(3)) and the Z6 Quotient of the Standard Model Gauge Group
+Toward a Lean Formalization of S(U(2) x U(3)) and the Z6 Quotient
 ```
 
 Core claim:
 
-Lean defines the true Standard Model gauge group as `S(U(2) x U(3))`, constructs
-the familiar cover from `U(1) x SU(2) x SU(3)`, and proves the kernel is the
-central `Z6`.
+Lean defines concrete block-matrix scaffolding for the usual
+`S(U(2) x U(3))` presentation, constructs the determinant-one block map behind
+the familiar cover from `U(1) x SU(2) x SU(3)`, and proves the finite phase
+facts expected of the central `Z6` kernel.
+
+Claim boundary:
+
+This is not yet a proof of the topological compact Lie group quotient theorem.
+A publishable version must either formalize the required quotient/Lie-group
+infrastructure or advertise itself as a scaffold and determinant/kernel
+calculation only.
 
 Why this is publishable:
 
@@ -346,8 +354,8 @@ Remaining work before submission:
   groups.
 - Define block matrices for `2+3` and `3+1` decompositions.
 - Prove determinant and kernel facts.
-- Decide how much quotient-group infrastructure is needed for a polished
-  statement.
+- Decide how much quotient-group and compact Lie group infrastructure is needed
+  for a polished statement.
 
 Best venue fit:
 
@@ -543,6 +551,9 @@ The following claims are not yet publishable from the current formalization:
 - "The Baez/Dubois-Violette/Todorov stabilizer theorem has been formalized."
 - "The project explains right-handed fermions in the Krasnov/Baez `O^2`
   picture."
+- "Hurwitz's classification has been proved because the sedenions fail."
+- "The Standard Model gauge group quotient or any `F4`/`Spin(9)` stabilizer
+  isomorphism has been formalized as a compact Lie group theorem."
 - "Three generations have been derived from triality."
 - "Hamming codes explain Standard Model anomaly cancellation."
 - "Green-Schwarz anomaly cancellation has been formalized."
