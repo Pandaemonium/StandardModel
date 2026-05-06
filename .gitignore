@@ -1,5 +1,7 @@
 /.lake
 /.elan_sandbox
+/.cache/
+/.pre-commit-cache*/
 /Index/*.jsonl
 /Index/*.json
 __pycache__/

@@ -52,7 +52,13 @@
       "Bash(cp C:/Users/Owner/AppData/Local/Temp/ar-clifford/ComplexOctonion.lean C:/Projects/StandardModel/PhysicsSM/Algebra/Octonion/ComplexOctonion.lean)",
       "Bash(cp C:/Users/Owner/AppData/Local/Temp/ar-clifford/LadderOperators.lean C:/Projects/StandardModel/PhysicsSM/Algebra/Furey/LadderOperators.lean)",
       "Bash(git commit *)",
-      "WebFetch(domain:arxiv.org)"
+      "WebFetch(domain:arxiv.org)",
+      "Bash(grep -n \"sorry\\\\|admit\\\\|^axiom\\\\|unsafe def\\\\|import Mathlib$\" \"C:/Users/Owner/AppData/Local/Temp/ar-bb0868bf/PhysicsSM_Algebra_Furey_OperatorRepresentations.lean\")",
+      "WebFetch(domain:errorcorrectionzoo.org)",
+      "Bash(grep -n \"^## Tier 3\\\\|^---$\" c:/Projects/StandardModel/OPEN_QUESTIONS.md)",
+      "Bash(grep -n \"^### Q2\\\\.10\\\\|^### Q2\\\\.9\\\\|^---$\" c:/Projects/StandardModel/OPEN_QUESTIONS.md)",
+      "Read(//c/Projects/AutoLab/COGLab/lean_e8_mathlib/**)",
+      "Read(//c/Projects/AutoLab/COGLab/lean_e8_mathlib/LeanE8Mathlib/**)"
     ]
   }
 }

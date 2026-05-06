@@ -5,10 +5,28 @@ External tooling scripts for oracle generation, index building, and CI support.
 Scripts here produce data used by the Lean project but are not themselves Lean code.
 They may use Python, SageMath, Julia, or other languages.
 
+## Local pre-commit wrapper
+
+Use `Scripts/pre-commit.cmd` on Windows, or `Scripts/pre-commit.ps1` when
+PowerShell script execution is allowed, instead of invoking `pre-commit`
+directly from Codex or other sandboxed agents:
+
+```powershell
+cmd /c Scripts\pre-commit.cmd run --files EXECUTION_PLAN.md
+cmd /c Scripts\pre-commit.cmd run --all-files
+```
+
+The wrappers set `PRE_COMMIT_HOME` to `.cache/pre-commit-store` inside the repository.
+This avoids permission failures from tools trying to write to
+`C:\Users\Owner\.cache\pre-commit` while the agent is sandboxed to the project
+workspace.
+
 ## Subdirectory plan
 
 ```
 Scripts/
+  pre-commit.cmd        - Windows wrapper for a repo-local pre-commit cache
+  pre-commit.ps1        - run pre-commit with a repo-local cache
   oracle/
     sage_roots.py       — generate root system fixtures via SageMath
     lieart_branching.py — generate branching rule fixtures via LieART (Mathematica)

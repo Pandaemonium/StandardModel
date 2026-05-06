@@ -31,6 +31,9 @@
 - Aristotle API key active and tested.
 - Octonion XOR convention locked and validated (Fano + 512 Moufang checks).
 - `ConventionBridge` stub isolating project convention from Baez/Furey.
+- Exceptional Jordan projective-geometry track opened for
+  `Sources/John_Baez_exceptional.pdf`: literature note, typed draft scaffold,
+  and Aristotle job `17d42ab0-5795-4bcc-b387-d93e47bd976e`.
 
 **Important caveat.** Several modules remain documented stubs, and the Furey
 particle interpretation still needs semantic review against sources.  The Lean
@@ -72,7 +75,13 @@ identification of those states.
 - **Furey (2018)**: "SU(3)_C × SU(2)_L × U(1)_Y (× U(1)_X) as a symmetry of division algebraic ladder operators" (EPJC 78)
 - **Furey (2014)**: "Generations: Three prints, now in colour" (Phys. Rev. D 86)
 - **Krasnov (2018)**: "The Standard Model and Octonions" (arXiv:1804.05364)
+- **Baez (2021)**: "Can We Understand the Standard Model Using Octonions?"
+  slides, copied locally as `Sources/John _Baez_standard_model_octonions.pdf`
 - **Dubois-Violette & Todorov (2018)**: "Deducing the Standard Model from the Exceptional Jordan Algebra" (arXiv:1806.09450)
+- **Baez & Schwahn (2026)**: "Projective Geometry and the Exceptional Jordan
+  Algebra" slides, copied locally as `Sources/John_Baez_exceptional.pdf`
+- **Krasnov (2021)**: "SO(9) characterization of the Standard Model gauge group"
+- **Landsberg & Manivel (2006)**: projective geometry over composition algebras
 - **Dixon (1994)**: "Division Algebras: Octonions, Quaternions, Complex Numbers and the Algebraic Design of Physics"
 - **Adams (1996)**: "Lectures on Exceptional Lie Groups" — E₈ and exceptional structure
 
@@ -269,11 +278,10 @@ algebraic structure.
 **Status**: Advanced. Linear independence proved. Basis states matched to Furey's
 particle table. Action table complete.
 
-**Semantic review note**: The two Aristotle jobs described
-`(-1/3) * (N1 + N2 + N3)` as hypercharge.  The formal eigenvalues match the
-electric-charge convention already in `MinimalLeftIdeal.lean`, so the integrated
-operator is named `Q_op`.  Conventional weak hypercharge remains a future task
-requiring explicit weak-isospin and particle/antiparticle conventions.
+**Convention note**: The number-operator combination
+`(-1/3) * (N1 + N2 + N3)` is the electric-charge operator `Q_op` on the current
+Furey basis. Weak hypercharge should only be introduced in modules that also
+specify weak isospin and use the convention `Q = T3 + Y/2`.
 
 **Primary source**: Furey (2015) PhD thesis; Furey (2018) EPJC 78 375.
 Paper-first
@@ -301,10 +309,279 @@ build on.
 **Connection to division algebras**: State (but defer proof of) the Baez–Huerta
 result connecting SUSY in dimensions 3, 4, 6, 10 to normed division algebras.
 
-### Milestone 8 — Multi-generational Unification (Expansion)
-**Goal**: Formalize the Albert Algebra $\mathfrak{h}_3(\mathbb{O})$ and the Dixon Algebra $\mathbb{R} \otimes \mathbb{C} \otimes \mathbb{H} \otimes \mathbb{O}$.
-**Motivation**: Move from one generation to three; derive the full $SU(3) \times SU(2) \times U(1)$ gauge group from division algebraic automorphisms.
-**Strategy**: Use the doubling construction from Milestone 2 to define the Jordan product on $3 \times 3$ octonionic matrices.
+### Milestone 8 — Exceptional Jordan geometry and the Baez-Schwahn conjecture
+**Goal**: Formalize the mathematical content of
+`Sources/John_Baez_exceptional.pdf`: the exceptional Jordan algebra `h_3(O)`,
+its projective geometry `OP^2`, the standard subalgebras `h_2(O)`, `h_3(C)`,
+and `h_2(C)`, and the projective-geometry stabilizer conjecture whose common
+stabilizer is `S(U(2) x U(3))`.
+
+**Motivation**: This is the cleanest current route from octonions and the
+exceptional Jordan algebra to the Standard Model gauge group. It complements
+the Furey minimal-left-ideal program: Furey gives explicit finite particle
+arithmetic, while Baez-Schwahn/Dubois-Violette-Todorov give a geometric
+stabilizer characterization of the gauge group.
+
+**Primary local sources**:
+
+| File | Purpose |
+|------|---------|
+| `Sources/John _Baez_standard_model_octonions.pdf` | Baez 2021 talk source for the octonionic qubit/qutrit, `Spin(9)`, `h_3(C)` splitting, and Krasnov fermion endpoint |
+| `Sources/John_Baez_exceptional.pdf` | Main source to formalize: Baez-Schwahn projective-geometry presentation |
+| `Sources/Baez_Octonions_Standard_Model_Talk_Notes.md` | Notes from related Baez talk material |
+| `Sources/Baez_Standard_Model_Octonions_Lean_Proof_Plan.md` | Slide-by-slide Lean theorem inventory for the 2021 talk |
+| `Sources/Exceptional_Jordan_Projective_Geometry_Lit_Search.md` | Literature search and formalization strategy |
+| `AgentTasks/exceptional-jordan-projective-geometry-moonshot.md` | Aristotle handoff for the first large proof push |
+| `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | Current typed draft scaffold |
+
+**Aristotle status**:
+
+- Job `17d42ab0-5795-4bcc-b387-d93e47bd976e` submitted on 2026-05-06.
+- Scope: implement as much of the finite coordinate algebra and projective
+  dictionary as possible; keep unproved frontier stabilizer statements in
+  draft with precise handoff notes.
+- Job `76df9a63-ef90-4aa4-b0cb-e82e2ba48b32` submitted on 2026-05-06 for the
+  Baez 2021 "Standard Model from octonions" targets.
+- Scope: emphasize the chosen octonion complex line, `h_2(O)` spin-factor
+  facts, `S(U(2) x U(3))` group scaffolding, `h_3(C)`/`h_3(O)` splitting, and
+  the Krasnov octonionic-qubit endpoint.
+
+**Semantic target from the PDF**:
+
+Formalize the chain:
+
+```text
+h_3(O) exceptional Jordan algebra
+  -> projections of trace 1 and 2
+  -> points and lines of OP^2
+  -> subalgebras A ~= h_2(O), B ~= h_3(C), A cap B ~= h_2(C)
+  -> projective version: X ~= CP^2, ell ~= OP^1, X cap ell ~= CP^1
+  -> Stab(X) cap Stab(ell) ~= S(U(2) x U(3)).
+```
+
+The proof is expected to factor through the algebraic transitivity lemma from
+the slides:
+
+```text
+F4 acts transitively on pairs (A, B) with
+A ~= h_2(O), B ~= h_3(C), and A cap B ~= h_2(C).
+```
+
+Once this is available, the general stabilizer theorem reduces to the standard
+Dubois-Violette-Todorov block example.
+
+**Lean targets**:
+
+| Layer | File target | Content |
+|-------|-------------|---------|
+| Coordinate Albert algebra | `PhysicsSM/Algebra/Jordan/H3O.lean` | Trusted `H3O` coordinate model, addition, negation, scalar multiplication, trace |
+| Jordan product | `PhysicsSM/Algebra/Jordan/H3O.lean` or `Product.lean` | Explicit Jordan product `(a*b + b*a)/2` with nonassociative parenthesization documented |
+| Projections and projective geometry | `PhysicsSM/Algebra/Jordan/ProjectiveGeometry.lean` | Trace-one points, trace-two lines, incidence `p o ell = p` |
+| Standard blocks | `PhysicsSM/Algebra/Jordan/StandardBlocks.lean` | `standardA`, `standardB`, `standardAInterB`; closure under the Jordan product |
+| Complex line in octonions | `PhysicsSM/Algebra/Octonion/ComplexLine.lean` | The chosen `C = span_R {1, e111}` and closure under conjugation and multiplication |
+| Automorphisms | `PhysicsSM/Algebra/Jordan/Automorphism.lean` | Jordan automorphisms of `h_3(O)` as the concrete stand-in for `F4` |
+| Stabilizers | `PhysicsSM/Algebra/Jordan/Stabilizer.lean` | Stabilizers of subalgebras, projective planes, and projective lines |
+| Frontier statements | `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | Transitivity and `S(U(2) x U(3))` isomorphism until supporting Lie infrastructure exists |
+
+**Proof phases**:
+
+1. **Trusted finite coordinate layer**:
+   - define `H3O` as the six independent Hermitian coordinates
+     `alpha beta gamma : R` and `x y z : O`;
+   - prove extensionality and coordinate simp lemmas;
+   - prove trace linearity;
+   - document the matrix convention:
+
+```text
+[[alpha, z, conj y],
+ [conj z, beta, x],
+ [y, conj x, gamma]].
+```
+
+2. **Jordan product layer**:
+   - implement explicit octonionic matrix multiplication only for the Hermitian
+     3 by 3 pattern needed by `h_3(O)`;
+   - define `a o b = (1/2) * (a*b + b*a)`;
+   - prove commutativity of the Jordan product;
+   - prove `diag(1,1,1)` is a unit;
+   - prove `diag(1,1,0)` is a projection of trace two.
+
+3. **Chosen complex subalgebra layer**:
+   - define the project's chosen copy of `C` inside `O` as
+     `span_R {1, e111}`;
+   - prove closure under zero, addition, negation, scalar multiplication,
+     conjugation, and octonion multiplication;
+   - prove that the standard `h_3(C)` block is closed under the Jordan product.
+
+4. **Standard subalgebra layer**:
+   - construct the upper-left `h_2(O)` block `A`;
+   - construct the chosen `h_3(C)` block `B`;
+   - construct and characterize `A cap B` as the upper-left `h_2(C)` block;
+   - prove membership iff lemmas for all three blocks;
+   - state isomorphism targets to abstract `h_2(O)`, `h_3(C)`, and `h_2(C)`.
+
+5. **Projective dictionary layer**:
+   - define points as trace-one projections;
+   - define lines as trace-two projections;
+   - define incidence by the Jordan product;
+   - prove the identity projection of a copy of `h_2(O)` gives an octonionic
+     projective line;
+   - prove trace-one projections in a copy of `h_3(C)` form a complex
+     projective plane;
+   - state the equivalence between the algebraic and projective versions of the
+     Baez-Schwahn conjecture.
+
+6. **Stabilizer and group layer**:
+   - define Jordan automorphisms of `h_3(O)`;
+   - prove automorphisms preserve projections, trace, points, lines, and
+     incidence;
+   - define the common stabilizer of a complex projective plane and an
+     octonionic projective line;
+   - define the Standard Model gauge group as the block group
+     `S(U(2) x U(3))`, eventually aligned with the existing gauge modules.
+
+7. **Dubois-Violette-Todorov block example**:
+   - formalize the standard example from the slides;
+   - state and eventually prove:
+
+```text
+Stab(standardA) ~= Spin(9)
+Stab(standardB) ~= (SU(3) x SU(3))/Z3
+Stab(standardA) cap Stab(standardB) ~= S(U(2) x U(3)).
+```
+
+8. **Baez-Schwahn transitivity frontier**:
+   - formalize the conjectured lemma that `F4` acts transitively on all pairs
+     `(A, B)` with `A ~= h_2(O)`, `B ~= h_3(C)`, and `A cap B ~= h_2(C)`;
+   - reduce the projective geometry version to the standard block example;
+   - keep this in `Draft` until the supporting `F4` and compact Lie group
+     infrastructure is strong enough.
+
+9. **Krasnov fallback path**:
+   - formalize the more concrete `Spin(9)` route as an independent bridge:
+
+```text
+O = C + C^3
+Spin(9)-stabilizer/centralizer of the chosen complex structure
+  ~= SU(3) x SU(2) x U(1) / Z6.
+```
+
+   - use it as a cross-check and possible earlier theorem if full `F4`
+     transitivity remains too large.
+
+**Milestone gates**:
+
+- No trusted file may contain `sorry`.
+- Every source-derived statement must cite the PDF or paper and record the
+  convention choices.
+- The final stabilizer theorem must not be advertised as a derivation of the
+  physical Standard Model. It is a mathematical stabilizer theorem identifying
+  the Standard Model gauge group.
+- Any use of Baez-style octonion signs must pass through
+  `PhysicsSM.Algebra.Octonion.ConventionBridge`, because the project uses the
+  XOR binary-label convention.
+
+**Risks**:
+
+- Mathlib does not currently appear to provide a ready-made exceptional Jordan
+  algebra, Euclidean Jordan algebra hierarchy, `OP^2`, or `F4 = Aut(h_3(O))`.
+- The final transitivity lemma is mathematically frontier-level and may remain
+  a named conjecture for a long time.
+- Stabilizer isomorphisms require careful distinction between compact groups,
+  Lie algebras, matrix subgroups, quotient groups, and connected components.
+
+**Short-term success criteria**:
+
+- `PhysicsSM/Algebra/Jordan/H3O.lean` becomes a trusted, sorry-free coordinate
+  file.
+- The standard line projection `diag(1,1,0)` is proved to be a trace-two
+  projection.
+- The chosen `h_3(C)` and upper-left `h_2(O)` block predicates are proved closed
+  under the Jordan product.
+- The projective conjecture is stated in a typechecked draft form with a clear
+  semantic-alignment note.
+
+**Remaining pieces from Baez 2021, "Can We Understand the Standard Model Using
+Octonions?"**:
+
+1. **Chosen complex line in the project octonions**:
+   - define `C = span_R {1, e111}` and its complement;
+   - prove closure under addition, negation, scalar multiplication,
+     conjugation, and octonion multiplication;
+   - prove left/right multiplication by `e111` gives the needed complex
+     structures on the complement and on `O^2`.
+
+2. **Minimal Jordan vocabulary**:
+   - add a small Jordan-product/projection interface;
+   - keep the full Euclidean Jordan algebra classification as source context,
+     not a near-term dependency.
+
+3. **`h_2(O)` / octonionic qubit**:
+   - define the concrete coordinates
+     `[[t+x, y], [conj y, t-x]]`;
+   - prove determinant `t^2 - x^2 - normSq(y)`;
+   - prove trace and trace-square Euclidean form;
+   - connect `h_2(O)` to the 10-dimensional spin factor and state
+     `Aut(h_2(O)) ~= O(9)` as a later theorem.
+
+4. **True Standard Model gauge group**:
+   - define `S(U(2) x U(3))` as the block subgroup of `SU(5)`;
+   - define the covering map from `U(1) x SU(2) x SU(3)`;
+   - prove or draft the `Z6` kernel and quotient statement;
+   - define the slide 18-21 block map into `SU(2) x SU(4)`.
+
+5. **`h_3(O)` / octonionic qutrit**:
+   - promote the safe coordinate model from draft to trusted Lean;
+   - implement the Jordan product with explicit nonassociative
+     parenthesization;
+   - prove the block decomposition
+     `h_3(O) ~= R x h_2(O) x O^2` for a chosen `h_2(O)` block.
+
+6. **`h_3(C)` splitting from a unit imaginary octonion**:
+   - define the embedded `h_3(C)` using the chosen complex line;
+   - define the trace-orthogonal complement;
+   - prove the coordinate description of the complement;
+   - prove the induced complex structure squares to `-1`;
+   - define the vector-space model `h_3(O) ~= h_3(C) x M_3(C)`.
+
+7. **Yokota/Dubois-Violette-Todorov stabilizer theorem**:
+   - state the subgroup preserving the `h_3(C)` splitting and complex
+     structure as `(SU(3) x SU(3)) / Z3`;
+   - define the action `(g,h)(X,M) = (gXg*, hMg*)`;
+   - prove easy central-kernel and vector-space facts first;
+   - leave full Jordan-product preservation and compact-group isomorphism in
+     draft until the supporting Lie group infrastructure exists.
+
+8. **Intersection theorem**:
+   - state the common stabilizer of the `h_3(C)` structure and chosen `h_2(O)`
+     block;
+   - prove, or keep as a sourced frontier theorem, that it is
+     `S(U(2) x U(3))`;
+   - keep this separate from the later Baez-Schwahn pair-transitivity
+     conjecture.
+
+9. **Krasnov octonionic-qubit endpoint**:
+   - define `O^2` with right multiplication by `e111`;
+   - prove the complex-structure facts;
+   - state the centralizer theorem inside `Spin(9)`;
+   - compare the resulting complex representation with the left-handed
+     one-generation Standard Model fermions;
+   - document that right-handed fermions and three generations remain open in
+     this route.
+
+---
+
+### Milestone 9 — Multi-generational unification and Dixon algebra
+**Goal**: Formalize the Dixon Algebra
+`R tensor C tensor H tensor O` and connect it to the three-generation and
+exceptional-Jordan directions once the `h_3(O)` layer is stable.
+
+**Motivation**: Move from one generation to three and compare the Furey,
+Dixon, Krasnov, and Baez-Schwahn routes to Standard Model structure.
+
+**Strategy**: Reuse the Cayley-Dickson and `h_3(O)` infrastructure. Do not
+start a large Dixon formalization until Milestones 2, 6, and the trusted parts
+of Milestone 8 are stable enough to avoid duplicating algebra.
 
 ---
 
@@ -385,9 +662,32 @@ result connecting SUSY in dimensions 3, 4, 6, 10 to normed division algebras.
    a `Submodule`/basis over ℂ. The open task is
    `AgentTasks/furey-ideal-linear-independence.md`.
 
+7. **Baez-Schwahn transitivity status**: Is the conjectured transitivity lemma
+   in `Sources/John_Baez_exceptional.pdf` already known in the literature under
+   a different homogeneous-space or incidence-geometry formulation, or is it
+   genuinely new? This determines whether Milestone 8 is a formalization of an
+   existing theorem or a formalized conjecture with partial supporting lemmas.
+
 ---
 
 ## Immediate next actions
+
+Baez-Schwahn exceptional-Jordan priorities:
+
+1. **Review Aristotle job `17d42ab0-5795-4bcc-b387-d93e47bd976e` when it
+   completes** - integrate any trusted, sorry-free finite-coordinate
+   `h_3(O)` and standard-block results; leave frontier stabilizer statements in
+   `Draft` until their hypotheses are semantically reviewed.
+
+2. **Promote the safe part of the exceptional-Jordan scaffold** - after review,
+   split `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` into
+   trusted modules for `H3O`, the chosen octonion complex line, projections,
+   and standard blocks.
+
+3. **Resolve the transitivity status** - search for a published proof or
+   equivalent homogeneous-space formulation of the Baez-Schwahn pair
+   transitivity lemma. If none exists, keep it explicitly marked as a
+   conjectural frontier statement.
 
 1. **Formalize the SM Gauge Operators** — prove that the bilinears in ladder
    operators satisfy the SU(3) x SU(2) x U(1) Lie algebra relations when acting

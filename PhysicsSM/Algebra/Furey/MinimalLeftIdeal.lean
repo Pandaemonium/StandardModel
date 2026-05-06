@@ -448,5 +448,310 @@ noncomputable def T32 : ComplexOctonion := alpha3 * alpha2_dag
 -- The actual SU(3) action is via OPERATOR composition, not algebra product.
 -- This section remains to be formalized.
 
+/-! ## Complementary idempotent and arithmetic anomaly certificate -/
+
+/--
+The complementary primitive idempotent to `omega`.
+
+In the project convention, `omega = (1/2) * (1 - i * e111)`. This definition
+uses the opposite sign in the imaginary `e111` coordinate:
+`omega_bar = (1/2) * (1 + i * e111)`.
+
+This is an algebraic complement inside the concrete complex octonion model. The
+charge-conjugation interpretation is recorded only as convention-level
+documentation below; the theorems in this section are finite coordinate
+identities and exact rational arithmetic.
+
+Provenance: Aristotle job `68efb3f8-03cf-49d3-99ec-328690e68529`.
+-/
+noncomputable def omega_bar : ComplexOctonion :=
+  { re := { c0 := 1 / 2, c1 := 0, c2 := 0, c3 := 0,
+             c4 := 0, c5 := 0, c6 := 0, c7 := 0 }
+    im := { c0 := 0, c1 := 0, c2 := 0, c3 := 0,
+             c4 := 0, c5 := 0, c6 := 0, c7 := 1 / 2 } }
+
+/-- The complementary idempotent squares to itself. -/
+theorem omega_bar_idempotent : omega_bar * omega_bar = omega_bar := by
+  ext <;> simp [omega_bar] <;> ring
+
+/-- The two complementary idempotents add to the unit. -/
+theorem omega_plus_omega_bar : omega + omega_bar = 1 := by
+  ext <;> simp [omega, omega_bar] <;> ring
+
+/-- The idempotent `omega` annihilates `omega_bar` on the left. -/
+theorem omega_mul_omega_bar : omega * omega_bar = 0 := by
+  ext <;> simp [omega, omega_bar] <;> ring
+
+/-- The idempotent `omega_bar` annihilates `omega` on the left. -/
+theorem omega_bar_mul_omega : omega_bar * omega = 0 := by
+  ext <;> simp [omega_bar, omega] <;> ring
+
+/-- The complementary idempotent is not the zero complex octonion. -/
+theorem omega_bar_ne_zero : omega_bar ≠ 0 := by
+  intro h
+  have hcoord := congr_arg (fun x : ComplexOctonion => x.re.c0) h
+  norm_num [omega_bar] at hcoord
+
+/-!
+### Candidate basis states for the complementary ideal
+
+The following elements mirror the existing `omega`, `v1`, ..., `v6`, `nu`
+states, but start from `omega_bar`. They are useful as named anchors for later
+operator-level charge-conjugation theorems.
+
+Important limitation: this file does not import
+`PhysicsSM.Algebra.Furey.OperatorRepresentations`, because that file already
+depends on `MinimalLeftIdeal.lean`. Charge-eigenvalue theorems for these
+`omega_bar` states therefore belong in a downstream file, not here.
+-/
+
+/-- First one-particle state generated from `omega_bar`. -/
+noncomputable def vbar1 : ComplexOctonion := alpha1 * omega_bar
+
+/-- Second one-particle state generated from `omega_bar`. -/
+noncomputable def vbar2 : ComplexOctonion := alpha2 * omega_bar
+
+/-- Third one-particle state generated from `omega_bar`. -/
+noncomputable def vbar3 : ComplexOctonion := alpha3 * omega_bar
+
+/-- First two-particle state generated from `omega_bar`. -/
+noncomputable def vbar4 : ComplexOctonion := alpha1 * (alpha2 * omega_bar)
+
+/-- Second two-particle state generated from `omega_bar`. -/
+noncomputable def vbar5 : ComplexOctonion := alpha1 * (alpha3 * omega_bar)
+
+/-- Third two-particle state generated from `omega_bar`. -/
+noncomputable def vbar6 : ComplexOctonion := alpha2 * (alpha3 * omega_bar)
+
+/-- Three-particle state generated from `omega_bar`. -/
+noncomputable def nu_bar : ComplexOctonion :=
+  alpha1 * (alpha2 * (alpha3 * omega_bar))
+
+/-!
+### Exact rational anomaly arithmetic for `J` plus its complementary partner
+
+The theorems below are intentionally arithmetic certificates. They do not prove
+that the listed rational numbers are operator eigenvalues for every state in
+this file. The existing charge table for `J` is proved earlier from the number
+operators; the complementary-sector signs are recorded here as the conventional
+charge-conjugate arithmetic target for a later operator-level proof.
+-/
+
+/-- Sum of electric charges over the existing `J` charge table. -/
+theorem charge_sum_J :
+    (-1 : Rat) + (-2 / 3) + (-2 / 3) + (-2 / 3) +
+      (-1 / 3) + (-1 / 3) + (-1 / 3) + 0 = -4 := by
+  norm_num
+
+/-- Sum of electric charges over the sign-reversed complementary table. -/
+theorem charge_sum_Jbar :
+    (1 : Rat) + (2 / 3) + (2 / 3) + (2 / 3) +
+      (1 / 3) + (1 / 3) + (1 / 3) + 0 = 4 := by
+  norm_num
+
+/-- The linear electric-charge sum cancels between `J` and `Jbar`. -/
+theorem anomaly_linear_Q : (-4 : Rat) + 4 = 0 := by
+  norm_num
+
+/-- Sum of cubed electric charges over the existing `J` charge table. -/
+theorem cubic_charge_sum_J :
+    (-1 : Rat) ^ 3 + (-2 / 3) ^ 3 + (-2 / 3) ^ 3 + (-2 / 3) ^ 3 +
+      (-1 / 3) ^ 3 + (-1 / 3) ^ 3 + (-1 / 3) ^ 3 + 0 ^ 3 = -2 := by
+  norm_num
+
+/-- Sum of cubed electric charges over the sign-reversed complementary table. -/
+theorem cubic_charge_sum_Jbar :
+    (1 : Rat) ^ 3 + (2 / 3) ^ 3 + (2 / 3) ^ 3 + (2 / 3) ^ 3 +
+      (1 / 3) ^ 3 + (1 / 3) ^ 3 + (1 / 3) ^ 3 + 0 ^ 3 = 2 := by
+  norm_num
+
+/-- The cubic electric-charge sum cancels between `J` and `Jbar`. -/
+theorem anomaly_cubic_Q : (-2 : Rat) + 2 = 0 := by
+  norm_num
+
+/-- Sum of electric charges over the colored states of `J`. -/
+theorem coloured_charge_sum_J :
+    (-2 / 3 : Rat) + (-2 / 3) + (-2 / 3) +
+      (-1 / 3) + (-1 / 3) + (-1 / 3) = -3 := by
+  norm_num
+
+/-- Sum of electric charges over the sign-reversed complementary colored table. -/
+theorem coloured_charge_sum_Jbar :
+    (2 / 3 : Rat) + (2 / 3) + (2 / 3) +
+      (1 / 3) + (1 / 3) + (1 / 3) = 3 := by
+  norm_num
+
+/-- The mixed colored electric-charge sum cancels between `J` and `Jbar`. -/
+theorem anomaly_su3_Q : (-3 : Rat) + 3 = 0 := by
+  norm_num
+
+/-!
+### Candidate hypercharge table from an explicit weak-isospin target
+
+The electric-charge values above come from the number-operator calculation.
+The weak-isospin values in this section are target constants.  Hypercharge is
+therefore computed here only after that target `T3` table has been supplied,
+using the Standard Model convention `Y = 2 * (Q - T3)`.
+-/
+
+/-- Weak-isospin target value assigned to `omega`. -/
+def T3_omega : Rat := -1 / 2
+
+/-- Weak-isospin target value assigned to `v1`. -/
+def T3_v1 : Rat := 0
+
+/-- Weak-isospin target value assigned to `v2`. -/
+def T3_v2 : Rat := 0
+
+/-- Weak-isospin target value assigned to `v3`. -/
+def T3_v3 : Rat := 0
+
+/-- Weak-isospin target value assigned to `v4`. -/
+def T3_v4 : Rat := 0
+
+/-- Weak-isospin target value assigned to `v5`. -/
+def T3_v5 : Rat := 0
+
+/-- Weak-isospin target value assigned to `v6`. -/
+def T3_v6 : Rat := 0
+
+/-- Weak-isospin target value assigned to `nu`. -/
+def T3_nu : Rat := 1 / 2
+
+/-- Hypercharge target value `Y = 2 * (Q - T3)` for `omega`. -/
+def Y_omega : Rat := 2 * ((-1 : Rat) - T3_omega)
+
+/-- Hypercharge target value for `v1`. -/
+def Y_v1 : Rat := 2 * ((-2 / 3 : Rat) - T3_v1)
+
+/-- Hypercharge target value for `v2`. -/
+def Y_v2 : Rat := 2 * ((-2 / 3 : Rat) - T3_v2)
+
+/-- Hypercharge target value for `v3`. -/
+def Y_v3 : Rat := 2 * ((-2 / 3 : Rat) - T3_v3)
+
+/-- Hypercharge target value for `v4`. -/
+def Y_v4 : Rat := 2 * ((-1 / 3 : Rat) - T3_v4)
+
+/-- Hypercharge target value for `v5`. -/
+def Y_v5 : Rat := 2 * ((-1 / 3 : Rat) - T3_v5)
+
+/-- Hypercharge target value for `v6`. -/
+def Y_v6 : Rat := 2 * ((-1 / 3 : Rat) - T3_v6)
+
+/-- Hypercharge target value for `nu`. -/
+def Y_nu : Rat := 2 * ((0 : Rat) - T3_nu)
+
+/-- The hypercharge target for `omega` reduces to `-1`. -/
+theorem Y_omega_val : Y_omega = -1 := by
+  unfold Y_omega T3_omega
+  norm_num
+
+/-- The hypercharge target for `v1` reduces to `-4 / 3`. -/
+theorem Y_v1_val : Y_v1 = -4 / 3 := by
+  unfold Y_v1 T3_v1
+  norm_num
+
+/-- The hypercharge target for `v2` reduces to `-4 / 3`. -/
+theorem Y_v2_val : Y_v2 = -4 / 3 := by
+  unfold Y_v2 T3_v2
+  norm_num
+
+/-- The hypercharge target for `v3` reduces to `-4 / 3`. -/
+theorem Y_v3_val : Y_v3 = -4 / 3 := by
+  unfold Y_v3 T3_v3
+  norm_num
+
+/-- The hypercharge target for `v4` reduces to `-2 / 3`. -/
+theorem Y_v4_val : Y_v4 = -2 / 3 := by
+  unfold Y_v4 T3_v4
+  norm_num
+
+/-- The hypercharge target for `v5` reduces to `-2 / 3`. -/
+theorem Y_v5_val : Y_v5 = -2 / 3 := by
+  unfold Y_v5 T3_v5
+  norm_num
+
+/-- The hypercharge target for `v6` reduces to `-2 / 3`. -/
+theorem Y_v6_val : Y_v6 = -2 / 3 := by
+  unfold Y_v6 T3_v6
+  norm_num
+
+/-- The hypercharge target for `nu` reduces to `-1`. -/
+theorem Y_nu_val : Y_nu = -1 := by
+  unfold Y_nu T3_nu
+  norm_num
+
+/-- The two target lepton-doublet states have the same hypercharge. -/
+theorem lepton_doublet_hypercharge : Y_omega = Y_nu := by
+  rw [Y_omega_val, Y_nu_val]
+
+/-- Sum of hypercharges over the two target weak-doublet states in `J`. -/
+theorem doublet_hypercharge_sum_J : Y_omega + Y_nu = -2 := by
+  rw [Y_omega_val, Y_nu_val]
+  norm_num
+
+/--
+The mixed `SU(2)^2 U(1)_Y` target sum cancels between `J` and `Jbar`.
+-/
+theorem anomaly_su2_Y :
+    Y_omega + Y_nu + (-(Y_omega + Y_nu)) = 0 := by
+  ring
+
+/-- Sum of cubed hypercharge target values over `J`. -/
+theorem cubic_Y_sum_J :
+    Y_omega ^ 3 + Y_nu ^ 3 + Y_v1 ^ 3 + Y_v2 ^ 3 + Y_v3 ^ 3 +
+      Y_v4 ^ 3 + Y_v5 ^ 3 + Y_v6 ^ 3 = -10 := by
+  rw [Y_omega_val, Y_nu_val, Y_v1_val, Y_v2_val, Y_v3_val,
+    Y_v4_val, Y_v5_val, Y_v6_val]
+  norm_num
+
+/-- The cubic hypercharge target sum cancels between `J` and `Jbar`. -/
+theorem anomaly_cubic_Y : (-10 : Rat) + 10 = 0 := by
+  norm_num
+
+/-- Sum of hypercharge target values over the colored states of `J`. -/
+theorem coloured_Y_sum_J :
+    Y_v1 + Y_v2 + Y_v3 + Y_v4 + Y_v5 + Y_v6 = -6 := by
+  rw [Y_v1_val, Y_v2_val, Y_v3_val, Y_v4_val, Y_v5_val, Y_v6_val]
+  norm_num
+
+/-- The mixed colored hypercharge target sum cancels between `J` and `Jbar`. -/
+theorem anomaly_su3_Y : (-6 : Rat) + 6 = 0 := by
+  norm_num
+
+/-- Number of target weak-doublet states in `J`. -/
+def n_doublet_J : Nat := 2
+
+/-- Number of target weak-doublet states in the complementary sector. -/
+def n_doublet_Jbar : Nat := 2
+
+/-- The combined target weak-doublet count is even. -/
+theorem witten_su2_anomaly_free :
+    Even (n_doublet_J + n_doublet_Jbar) := by
+  unfold n_doublet_J n_doublet_Jbar
+  decide
+
+/--
+Bundled exact-arithmetic anomaly certificate for the `J` plus `Jbar` target
+charge table.
+
+This theorem is an arithmetic checkpoint, not yet the final operator-level
+physics theorem. The missing bridge is to prove, in a downstream module, that
+the listed `Jbar` and weak-isospin target values are eigenvalues of the
+appropriate project operators.
+-/
+theorem furey_generation_anomaly_free :
+    (-4 : Rat) + 4 = 0 ∧
+    (-2 : Rat) + 2 = 0 ∧
+    (-3 : Rat) + 3 = 0 ∧
+    (Y_omega + Y_nu + (-(Y_omega + Y_nu)) = 0) ∧
+    (-10 : Rat) + 10 = 0 ∧
+    (-6 : Rat) + 6 = 0 ∧
+    Even (n_doublet_J + n_doublet_Jbar) := by
+  refine ⟨by norm_num, by norm_num, by norm_num, by ring,
+    by norm_num, by norm_num, ?_⟩
+  exact witten_su2_anomaly_free
+
 
 end PhysicsSM.Algebra.Furey.MinimalLeftIdeal

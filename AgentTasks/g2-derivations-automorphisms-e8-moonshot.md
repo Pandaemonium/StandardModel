@@ -1,11 +1,59 @@
 # Task: G2 From the Ground Up — Der(𝕆)=14, conjBy Automorphism, E8 Cartan, Hamming-Fano
 
 **Agent**: Aristotle
-**Status**: In progress
+**Status**: COMPLETE_WITH_ERRORS; completed portions integrated
 **Job ID**: `270e946c-7615-49ff-aded-15f9a2c68c15`
 **Submitted**: 2026-04-29
+**Reviewed**: 2026-04-30
+**Integrated**: 2026-04-30
 **Priority**: MOONSHOT — Six independent phases, all finite computation
 **Output**: `AgentTasks/aristotle-output/g2-derivations-automorphisms-e8-moonshot`
+
+## Result review
+
+Aristotle returned a partial result bundle rather than a clean completion. The
+downloaded archive and extracted review copy live under the ignored
+`AgentTasks/aristotle-output/` directory.
+
+Locally checked with `lake env lean`, using the repository's `.elan_sandbox`:
+
+- `PhysicsSM/Lie/Exceptional/E8.lean`: kernel-checked. It adds an explicit E8
+  Cartan matrix and proves the diagonal, off-diagonal, zero-symmetry, and
+  determinant-one facts. The file has minor linter warnings around redundant
+  `decide` tactics and imports all of `Mathlib`, so it should be cleaned before
+  integration.
+- `PhysicsSM/Algebra/Octonion/Basic.lean`: kernel-checked. It adds finite
+  Fano/Hamming skeleton facts, all proved by `decide`. The checked extracted
+  file emits existing duplicate-namespace warnings from the full copied file.
+- `PhysicsSM/Lie/Exceptional/OctonionSymmetry.lean`: kernel-checked. It adds
+  associator antisymmetry lemmas and a derivation predicate with the lemma that
+  derivations kill `1`. The full `dim Der(O) = 14` construction was not
+  completed.
+- `PhysicsSM/Algebra/Octonion/TrialityCompanions.lean`: kernel-checks only with
+  the expected stretch-goal `sorry` in `preservesMul_conjBy_iff_cube`. The
+  earlier helper theorems around `conjBy` bijectivity are promising, but this
+  file cannot be integrated into trusted code until the sorry-bearing theorem is
+  removed or moved to an explicit draft/handoff area.
+
+Integrated trusted portions:
+
+- `PhysicsSM/Algebra/Octonion/TrialityCompanions.lean`: unit-norm
+  preservation, conjugation compatibility, explicit inverse/bijectivity of
+  `conjBy`, and unbundled automorphism data for cube `1` and cube `-1`.
+- `PhysicsSM/Lie/Exceptional/OctonionSymmetry.lean`: a named octonion
+  associator, associator antisymmetry in the first and last two arguments,
+  `IsOctonionDerivation`, and `octonionDerivation_kills_one`.
+- `PhysicsSM/Lie/Exceptional/E8.lean`: explicit E8 Cartan matrix and determinant
+  one proof, with local matrix imports instead of `import Mathlib`.
+- `PhysicsSM/Algebra/Octonion/Basic.lean`: finite Fano/Hamming parity skeleton
+  lemmas.
+
+Remaining work: Phase C still lacks the full `dim Der(O) = 14` construction.
+Phase F was completed by the follow-up job below and integrated into
+`PhysicsSM/Algebra/Octonion/TrialityCompanions.lean`.
+
+Follow-up submitted: `AgentTasks/g2-conjby-converse-followup.md`, Aristotle job
+`6065091b-6f6b-4de4-9590-501d6c3ab742`, focused on the hard `conjBy` converse.
 
 ---
 

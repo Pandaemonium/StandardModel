@@ -1,4 +1,4 @@
-# Task: Furey Operator Charge Review
+# Task: Furey Operator Charge Layer
 
 ## Original Request
 
@@ -17,14 +17,14 @@ Requested targets included:
 7. Define the number operators as operator compositions.
 8. Prove the basis-state charge eigenvalues.
 
-## Semantic Correction
+## Convention
 
-The original task used the word "hypercharge" for the operator
-`(-1/3) * (N1 + N2 + N3)`.  The eigenvalues requested for that operator were
-`-1`, `-2/3`, `-1/3`, and `0`, which match the electric-charge values already
-documented in `MinimalLeftIdeal.lean`, not conventional weak hypercharge.
+The operator `(-1/3) * (N1 + N2 + N3)` is the electric-charge operator on the
+current Furey basis and is named `Q_op` in trusted Lean code.
 
-The integrated Lean code therefore uses the name `Q_op`.
+Weak hypercharge is not defined by this operator. It should only be introduced
+in a later module that also specifies weak isospin and uses
+`Q = T3 + Y / 2`.
 
 ## Integrated Result
 
@@ -37,7 +37,6 @@ Main file:
 
 - `PhysicsSM/Algebra/Furey/OperatorRepresentations.lean`
 
-The conventional weak-hypercharge formalization remains a separate future
-task, because it requires an explicit convention for weak isospin and for how
-the Furey ideal states are being identified with left-handed versus conjugate
-Standard Model fields.
+Hypercharge formalization remains a separate future task, because it requires
+an explicit convention for weak isospin and for how the Furey ideal states are
+being identified with left-handed versus conjugate Standard Model fields.

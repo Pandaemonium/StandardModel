@@ -22,14 +22,11 @@ raw algebra-element layer in `MinimalLeftIdeal.lean`:
 * `J` is the complex span of the eight kernel-checked basis states.
 * `T12_op`, ..., `T32_op` are color-changing operator compositions.
 * `N1_op`, `N2_op`, `N3_op` are number-operator compositions.
-* `Q_op` is the charge operator `(-1/3) * (N1 + N2 + N3)`.
+* `Q_op` is the electric-charge operator `(-1/3) * (N1 + N2 + N3)`.
 
-Aristotle result `0bcaa9b0-9a92-48e0-a3a3-30969e8742aa` called the last
-operator `Y_op` and described it as hypercharge.  During review we keep the
-formal formula but rename the integrated operator to `Q_op`: the eigenvalues
-proved here are exactly the electric-charge values already documented in
-`MinimalLeftIdeal.lean`, not the conventional Standard Model weak
-hypercharges.
+Weak hypercharge is a separate Standard Model quantity related by
+`Q = T3 + Y / 2`; it requires an explicit weak-isospin convention and is not
+defined in this module.
 
 Source: Furey, arXiv:1806.00612, together with Aristotle jobs
 `0bcaa9b0-9a92-48e0-a3a3-30969e8742aa` and
@@ -478,9 +475,8 @@ noncomputable def Ntot_op : ComplexOctonion →ₗ[Complex] ComplexOctonion :=
 Electric-charge operator in the convention already used by
 `MinimalLeftIdeal.lean`.
 
-Aristotle result `0bcaa9b0-9a92-48e0-a3a3-30969e8742aa` called this operator
-`Y_op`.  The integrated name is `Q_op` because the eigenvalues below are the
-electric charges recorded in the existing state comments.
+The eigenvalues below are the electric charges recorded in the existing state
+comments. Weak hypercharge is intentionally not bundled into this definition.
 -/
 noncomputable def Q_op : ComplexOctonion →ₗ[Complex] ComplexOctonion :=
   (-1 / 3 : Complex) • Ntot_op

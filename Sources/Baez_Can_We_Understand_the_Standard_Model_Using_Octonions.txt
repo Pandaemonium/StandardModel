@@ -1,0 +1,2178 @@
+# tactiq.io free youtube transcript
+# Can We Understand the Standard Model Using Octonions?
+# https://www.youtube.com/watch/OH9e9C0xvUg
+
+00:00:00.560 Thank you very much. Um, so I'll let you
+00:00:03.840 know right away that I will not ever say
+00:00:07.200 yes or no to to the answer of this
+00:00:10.080 question. Uh, so the suspense is is
+00:00:14.400 gone. But uh [clears throat]
+00:00:16.960 so
+00:00:19.039 a question that I think a lot of people
+00:00:22.270 [clears throat] in this workshop are
+00:00:23.600 interested in is can we derive the
+00:00:25.920 standard model or something close to the
+00:00:27.920 standard model from some reasonable
+00:00:29.920 principles.
+00:00:31.679 And so of course the internal degrees of
+00:00:33.760 freedom in the standard model the
+00:00:35.120 hypercharge isospin and color
+00:00:38.239 are described by algebbras of
+00:00:40.239 observables that are connected to
+00:00:42.800 representations of this standard model
+00:00:45.520 gauge group which I like to call s of u2
+00:00:48.559 * u3. So remember that's the 5x5 unitary
+00:00:53.440 matrices with determinant one that are
+00:00:56.160 in this block form of a 2x2 block and a
+00:00:58.800 3x3 block. Uh so the big question one
+00:01:03.199 big question then becomes why in the
+00:01:05.438 world should this particular group be
+00:01:07.439 favored and the particular
+00:01:09.200 representations
+00:01:11.280 uh that we see.
+00:01:13.840 So [clears throat] there's been quite a
+00:01:15.920 bit of work on this kind of thing and in
+00:01:18.080 particular for example Alan Con and his
+00:01:21.439 collaborators have tried to answer it
+00:01:23.520 using non-commutative geometry. They've
+00:01:26.320 actually given a number of different uh
+00:01:30.320 answers, different different papers
+00:01:32.159 attempting to do this where
+00:01:34.321 [clears throat]
+00:01:35.040 they think of space time as having the
+00:01:37.840 uh usual
+00:01:39.920 uh manifold description in the uh
+00:01:44.240 horizontal directions you might call
+00:01:45.840 them, but then a non-commutative
+00:01:47.920 description in terms of a finite
+00:01:49.360 dimensional non-commutative algebra in
+00:01:51.680 terms in the vertical or fiber or
+00:01:54.159 internal directions.
+00:01:56.159 Um, so I'm going to present something
+00:01:58.399 much more tentative than their work.
+00:02:01.831 [clears throat]
+00:02:02.640 Certainly not a theory of physics. It's
+00:02:04.880 really a review of some work by Todorov
+00:02:09.520 and Dubois Vlet and a bit of Kur
+00:02:12.640 Kranoff's work. Um, and these involve
+00:02:16.480 octonians and Jordan algebbras. So, I
+00:02:20.160 like Jordan algebbras because they're a
+00:02:22.000 very conceptually clear framework for
+00:02:25.280 dealing [clears throat] with observables
+00:02:26.480 in a in quantum physics.
+00:02:29.520 And I'll explain them. I think they're
+00:02:32.879 often thought of as being a little bit
+00:02:34.560 weird, but I'd like to try to explain
+00:02:36.319 them in a way that makes them seem very
+00:02:37.920 natural. In the classification of Jordan
+00:02:40.560 algebbras of a certain kind, one
+00:02:43.360 discovers the exceptional Jordan algebra
+00:02:47.599 consisting of 3x3 self adjoint octonic
+00:02:50.480 matrices.
+00:02:52.160 This is sort of different than all the
+00:02:53.680 other ones. Uh you could think of it in
+00:02:56.959 modern language in fashionable language
+00:02:59.920 as the algebra of observables of an
+00:03:01.760 octonic Q trit. So
+00:03:06.239 uh there's been a lot of talk these days
+00:03:08.720 about whether physics could somehow be
+00:03:10.879 explained in terms of quantum
+00:03:12.800 information theory. I guess this goes
+00:03:14.800 back all the way to uh uh John Wheeler's
+00:03:17.840 idea of it from bit. But more recently
+00:03:21.120 with the interest in quantum
+00:03:23.280 computation, people are trying to come
+00:03:25.440 up with ideas for how to get physics to
+00:03:27.680 arise naturally out of out of cubits.
+00:03:31.200 But you could also have Q trits where
+00:03:33.680 the Hbert space is not C2 but C3.
+00:03:37.840 And you could also replace the complex
+00:03:40.080 numbers by other number systems. And so
+00:03:43.840 that gives you the idea of an octonianic
+00:03:46.959 QR in a rough in a rough form. Um and so
+00:03:52.400 I'm going to explain some ideas of
+00:03:55.200 Michelle Dubo Vlet and Ivan
+00:03:57.112 [clears throat] Toadoroth and we'll see
+00:03:59.680 the following purely mathematical result
+00:04:02.319 that the true gauge group of the
+00:04:04.000 standard model this group S of U2 * U3
+00:04:07.760 consist of the symmetries of an octonic
+00:04:10.959 QRT that have two special properties.
+00:04:14.879 First they preserve all the structure
+00:04:17.358 that arises from a choice of a unit
+00:04:19.759 imaginary octonian which I'll call I in
+00:04:23.199 the octonians.
+00:04:25.199 So that picks out a copy of the complex
+00:04:28.080 numbers in the octonians.
+00:04:31.680 And second of all they restrict to give
+00:04:34.240 symmetries of an octonianic qbit which
+00:04:37.120 you can think of as sort of sitting
+00:04:38.400 inside the octonianic trit.
+00:04:41.520 So I don't know really what this means.
+00:04:44.080 I' I've been thinking about this trying
+00:04:45.759 to understand uh what it means but it's
+00:04:49.520 appealing to me because
+00:04:52.720 we're getting the gauge group of the
+00:04:54.639 standard model from some ideas that that
+00:04:58.639 have some resonance with uh ideas from
+00:05:01.199 the foundations of quantum physics
+00:05:04.560 and I'll so I'll explain this. So let's
+00:05:08.080 just start at the beginning here though
+00:05:09.919 and think about observables in quantum
+00:05:13.120 mechanics.
+00:05:14.800 Um so in the most common approach to
+00:05:18.720 finite dimensional quantum systems you
+00:05:20.479 take observables to be self adjoint
+00:05:22.800 complex matrices.
+00:05:24.880 So elements of what I'll call HNC and by
+00:05:28.160 permission complex matrices. And what
+00:05:30.560 can you do with those things
+00:05:31.759 mathematically? Well, you can take real
+00:05:33.919 linear combinations of them. The big
+00:05:36.639 thing you can't do with them is multiply
+00:05:38.720 them in the usual way because the
+00:05:41.120 product of self adjoint matrices isn't
+00:05:42.960 self adjoint. However, what you can do
+00:05:46.400 is you can square a self adjoint matrix
+00:05:48.639 and get a self adjoint matrix. And this
+00:05:51.360 has a very nice physical meaning. So it
+00:05:54.240 means that when if you take two
+00:05:55.919 different uh non-commuting observables,
+00:05:59.199 there's no reason to expect there to be
+00:06:02.160 any well- definfined observable that's
+00:06:04.080 the product of those two. For example,
+00:06:05.919 position times the momentum in a in
+00:06:08.319 another situation is is not an
+00:06:09.919 observable in quantum mechanics. But you
+00:06:12.160 can always square an observable and get
+00:06:14.319 an observable.
+00:06:16.160 However, once you know that you can
+00:06:17.600 square observables and also take real
+00:06:19.759 linear combinations of them, then you
+00:06:22.080 can define a kind of funny product of
+00:06:24.479 observables called the Jordan product
+00:06:28.160 which is just 1/2 of a + b^ 2 minus a^ 2
+00:06:33.199 minus b ^ 2 and in the particular and in
+00:06:36.800 this uh if you work out what that is in
+00:06:38.479 the case of these n byn permission
+00:06:40.800 matrices
+00:06:42.400 it's just one of 1/2 of a plus ba Okay,
+00:06:46.160 so it's a kind of symmetriized product.
+00:06:49.919 Um, so this product has peculiar
+00:06:52.319 properties compared to other forms of
+00:06:55.199 algebra. So it's commutative obviously,
+00:06:58.319 but it's not associative. Uh, but it is
+00:07:01.280 however power associative, meaning that
+00:07:03.360 if you take a product of a bunch of
+00:07:05.440 copies of the same observable,
+00:07:07.919 you can parenthesize it in any manner
+00:07:10.160 and you always get the same answer.
+00:07:13.280 um that power associivity has a good
+00:07:15.599 physical significance. It means that not
+00:07:19.199 only can you square an observable and
+00:07:22.000 get a well- definfined observable, you
+00:07:23.919 could also cube it or raise it to the
+00:07:25.680 fourth power and get an unambiguously
+00:07:28.560 defined observable.
+00:07:31.440 And so that's something that I think uh
+00:07:34.960 we can say is a a reasonable thing you
+00:07:38.240 might want uh just from conceptual
+00:07:40.880 reasons. Uh if you're in a world where
+00:07:43.280 measuring one observable may mess up the
+00:07:46.160 measurement of another then you have to
+00:07:48.639 be very careful about about multiplying
+00:07:51.199 them. But but raising a single one to a
+00:07:53.599 power. you could measure that just by
+00:07:56.160 measuring your original observable and
+00:07:57.919 then raising the answer uh the
+00:08:00.800 experimental answer to that power. So
+00:08:03.440 that's a a nice thing to have. And so
+00:08:07.759 Jordan and Vner and Vanoyman turned
+00:08:11.280 these ideas into a definition of a
+00:08:13.520 mathematical structure. Now the good
+00:08:15.599 Jordan algebbras are the ones called the
+00:08:17.440 uklidian Jordan algebbras or sometimes
+00:08:20.080 formally real Jordan algebbras. There
+00:08:22.800 are other Jordan algebbras, but as far
+00:08:25.280 as I'm concerned, they're sort of a mess
+00:08:28.000 compared to these in terms of uh
+00:08:31.520 understanding what they're what's really
+00:08:32.958 going on with them. Um so because the
+00:08:36.479 definition here of an uklidian Jordan
+00:08:38.799 algebra is pretty nice and conceptual.
+00:08:41.519 So it's a real vector space with a
+00:08:43.599 bilinear commutative and power
+00:08:45.839 associative product that has one
+00:08:48.320 additional property which is which says
+00:08:51.200 that if the sum of the squares of a
+00:08:54.240 bunch of elements is zero then every one
+00:08:56.560 of them has to be zero.
+00:08:58.880 And all of these properties here are
+00:09:01.680 more or less
+00:09:03.600 justifiable. you can make a good
+00:09:05.200 argument for them from starting from our
+00:09:08.080 concept of observable in quantum
+00:09:10.560 physics. In particular, the last
+00:09:12.480 property is a way of saying that the
+00:09:15.040 observable should be thought of as real
+00:09:16.800 valued things that you measure and get a
+00:09:19.040 real number as your answer. And so if
+00:09:21.760 you measure a bunch of quantities
+00:09:25.440 uh that are squares and they add up to
+00:09:27.920 zero, well, if they're real valued
+00:09:29.519 quantities, then they all have to be
+00:09:30.959 real. So this is a beautiful definition.
+00:09:34.640 There's a general definition of Jordan
+00:09:36.399 algebra which involves some
+00:09:37.519 bizarrelooking identity which I don't
+00:09:39.920 want to even write down. That bizarrel
+00:09:42.560 looking identity which I'm not going to
+00:09:44.160 even talk about it follows from this
+00:09:47.040 stuff. So in the special case of a
+00:09:51.600 uklitian Jordan algebra, we don't even
+00:09:53.360 need to talk about that identity until
+00:09:55.120 we want to start getting technical.
+00:09:57.760 I'm mentioning that just because you may
+00:09:59.519 have seen the the general definition of
+00:10:02.160 a Jordan algebra and wondered what
+00:10:03.519 happened to that funnyl looking identity
+00:10:05.920 in my treatment.
+00:10:07.920 So starting from this Jordan vonman and
+00:10:11.200 Vner proved that a classification of
+00:10:14.240 finite dimensional uklitian Jordan
+00:10:16.399 algebbras and they showed that they're
+00:10:18.079 all isomeorphic to a direct sum of ones
+00:10:21.360 like this. There's a little list of
+00:10:22.959 them. So you can take the n byn self
+00:10:25.839 adjoint real matrices
+00:10:28.959 uh with the jordan product of the form
+00:10:31.920 that I already wrote down. Uh you can do
+00:10:34.640 it for the complex matrices
+00:10:37.120 which is the motivating example. You can
+00:10:39.680 do it for the quitterianic matrices
+00:10:42.399 and you can do it for the octonianic
+00:10:44.079 matrices. However, only n byn self
+00:10:47.680 adjint octoniotic matrices where n is
+00:10:50.640 less than or equal to three
+00:10:53.279 actually give you Jordan algebbras
+00:10:56.000 and so the case n equals 3 is the
+00:11:00.000 most unusual one that's the exceptional
+00:11:02.399 Jordan algebra and I believe that was
+00:11:04.720 discovered in this classification
+00:11:07.120 theorem although the mathematician
+00:11:09.519 Adrien Albert
+00:11:11.519 started thinking about that algebra at
+00:11:14.560 about the same time and sometimes it's
+00:11:16.720 called the Albert algebra.
+00:11:19.120 I hear from some people that that that
+00:11:22.079 these three gentlemen here discovered
+00:11:24.959 the exceptional Jordan algebra. I'd like
+00:11:26.720 to know the answer to that, but that
+00:11:28.160 doesn't really matter. Uh finally,
+00:11:29.680 there's another infinite family of
+00:11:34.640 uklitian Jordan algebbras which are
+00:11:36.640 called spin factors sometimes. So these
+00:11:39.200 are of the form r direct sum rn where
+00:11:42.160 the first copy of r contains the
+00:11:44.079 multiplicative
+00:11:45.920 uh unit. Well there's an identity
+00:11:48.240 element in this Jordan algebra. Um but
+00:11:51.040 you anyway the formula for the
+00:11:52.640 multiplication is as shown below here.
+00:11:55.760 So I'm suggestively writing the elements
+00:11:59.120 as t and x arrow to make you think of
+00:12:02.240 spacetime. And the multiplication works
+00:12:05.360 works like this that the if you take the
+00:12:07.760 dotproduct of two of the uh
+00:12:11.680 uh spatial elements. It it you you get a
+00:12:15.200 number and that that that goes into the
+00:12:17.200 time part and then this is a the vector
+00:12:20.639 times the scaler here and this is just a
+00:12:23.440 product of two scalers. So it's
+00:12:25.519 basically built up out of the operations
+00:12:27.360 that you can do when you have a vector
+00:12:30.079 space with a dotproduct.
+00:12:32.959 So that's also a somewhat mysterious uh
+00:12:36.160 class of Jordan algebbras compared to
+00:12:38.240 these ones which look like the matrix
+00:12:41.279 algebbras that we're familiar with in
+00:12:43.519 the study of finite dimensional quantum
+00:12:45.360 systems.
+00:12:47.279 So what about these spin factors? What's
+00:12:49.680 what's going on with these spin factors?
+00:12:51.920 Well, I'll tell you a few results about
+00:12:54.000 Jordan algebbras without attempting to
+00:12:55.920 prove them. So one nice fact well this
+00:12:58.639 is this is fairly obvious here. There's
+00:13:01.279 other results that will be a little less
+00:13:02.880 obvious that every uklitian Jordan
+00:13:05.519 algebra, let's call it J, it
+00:13:07.760 automatically comes with a cone of what
+00:13:10.639 we could call non- negative elements,
+00:13:12.720 which are the sums of squares. So I've
+00:13:16.639 already sort of shown from the
+00:13:18.480 definition, if you think about it a bit,
+00:13:19.920 that this is a cone, meaning that if you
+00:13:21.680 add two elements of J+, you get another
+00:13:24.399 element of J+. And if you multiply an
+00:13:27.200 element of J+ by a positive number, you
+00:13:29.920 get an element of J+. Uh so in the
+00:13:33.279 matrix examples, these would be the um
+00:13:37.519 the non- negative permission matrices,
+00:13:41.200 the ones with non- negative values, say
+00:13:44.160 in the complex case. But for the spin
+00:13:46.800 factor, this cone is isomeorphic to the
+00:13:49.279 future cone in n plus one dimensional
+00:13:52.320 manowski spacetime. So there's some
+00:13:55.040 funny similarity between the spin
+00:13:58.000 factors and space times.
+00:14:01.600 Also
+00:14:03.440 >> isomeorphic as what?
+00:14:06.560 >> Um so there's a concept of a vector
+00:14:09.519 space with a cone and a map linear map
+00:14:12.800 between vector spaces mapping one cone
+00:14:15.199 to another cone.
+00:14:16.560 >> Oh so just isomeorphic as cones in
+00:14:19.040 vector spaces.
+00:14:20.399 >> Yeah that's right. Yes. So, so, so every
+00:14:23.920 every uklitian Jordan algebra comes with
+00:14:26.000 a cone. Usually, most of these cones are
+00:14:28.320 not isomeorphic to cone the cones you're
+00:14:31.040 familiar with from Minkowski spacetime.
+00:14:33.839 Uh, but but for the spin factors, they
+00:14:36.399 are exactly those.
+00:14:38.240 >> M, if I wanted to get the backward
+00:14:42.240 pointing ones, would that be very hard?
+00:14:45.199 >> No, you would just take the negative of
+00:14:47.199 the elements of J+. Okay. So yeah, you
+00:14:50.000 should imagine that as also being there.
+00:14:52.560 So just the take taking minus all the
+00:14:55.760 elements in J plus and you get this
+00:14:57.279 other cone we could call J minus if you
+00:14:59.279 wanted. So yeah, they're both they're
+00:15:00.720 all there. Um
+00:15:03.600 then another fact that's a little less
+00:15:05.440 obvious is that well quite a bit less
+00:15:07.680 obvious is that every Uklitian Jordan
+00:15:09.680 algebra automatically gets a function on
+00:15:12.160 it. that is you can just cook it up
+00:15:15.199 without making any arbitrary choices
+00:15:17.360 which we call the determinant
+00:15:20.240 uh
+00:15:21.920 that takes values in the real numbers
+00:15:24.240 which vanishes on the boundary of J+.
+00:15:28.800 In the case of these uh Jordan algebbras
+00:15:31.199 that are matrices like self adjoint real
+00:15:34.000 or complex or matrices the determinant
+00:15:37.279 is just the usual determinant of a
+00:15:39.120 matrix
+00:15:41.040 and so that's why we call it
+00:15:43.120 determinant. Uh but for the spin factor
+00:15:46.485 [clears throat] this determinant
+00:15:47.680 function is the manowski metric that is
+00:15:51.120 it's t ^2 minus [clears throat] x dox.
+00:15:54.720 So this is another way in which the spin
+00:15:57.040 factors
+00:15:58.959 uh sort of look like Nikowski
+00:16:00.639 spacetimes. Well, they look exactly like
+00:16:02.720 Mikowski's baset times. Um
+00:16:07.519 so there's something funny going on here
+00:16:09.279 which I've pondered for a long time and
+00:16:12.639 so [clears throat] have a lot of you out
+00:16:14.480 there which is that spin factors aren't
+00:16:17.360 only algebbras of observables. It's a
+00:16:20.160 little bit tendentious to say this but
+00:16:21.759 I'll say it anyway. They're also
+00:16:23.120 Manowski spacetimes.
+00:16:26.240 Now the Jordan algebbras of 2x two self
+00:16:28.880 adjoint matrices are especially
+00:16:31.040 interesting
+00:16:32.639 uh because those turn out to be
+00:16:34.160 isomorphic to spin factors. So in this
+00:16:37.360 classification of Jordan algebbras that
+00:16:39.519 I wrote down there's a bit of overlap or
+00:16:42.160 redundancy that these four cases here
+00:16:47.519 2x2 self joint matrices valued in a
+00:16:52.079 in r or o those are isomorphic to
+00:16:56.800 minkowsk those are isomeorphic to the
+00:16:58.880 spin factors shown here which you can
+00:17:01.839 imagine as being incarnations of three
+00:17:05.599 four six and 10 dimensional ninkowski
+00:17:07.919 spacetime. This coincidence has launched
+00:17:12.160 a thousand ships. It's very important
+00:17:14.799 for example in why super symmetric
+00:17:17.679 theories
+00:17:19.280 h work very beautifully in these
+00:17:21.439 particular dimensions.
+00:17:23.679 Um but I'm not going to go in that
+00:17:26.079 direction here. I just want to point out
+00:17:27.919 the basic idea which is that if you take
+00:17:30.799 the determinant of a 2x2 matrix that
+00:17:33.760 will be the determinant function that
+00:17:36.160 I've been talking about in in these four
+00:17:38.320 cases here and the determinant of a 2x2
+00:17:41.200 matrix really just is a manowski metric
+00:17:44.640 if you which becomes clear if you write
+00:17:47.039 down the matrix entries in this kind of
+00:17:48.799 way. So the diagonal entries of a
+00:17:52.080 hermission matrix are real. So t and x
+00:17:54.400 here are real and the off diagonal entry
+00:17:57.520 here is just any old entry in our
+00:18:00.400 division algebra r or o but that that's
+00:18:03.760 a normed algebra and so uh that element
+00:18:09.280 times its and it has a kind of star
+00:18:11.760 operation and so that element times its
+00:18:14.000 star is the norm squared.
+00:18:17.200 Um so so that that's that's sort of
+00:18:20.640 that's
+00:18:22.559 that's hinting at why we have this uh
+00:18:24.640 these isomeorphisms. That's not the
+00:18:26.240 proof of the isomeorphism of Jordan
+00:18:27.840 algebbras but that's the basic clue
+00:18:30.320 there as to what's going on. Whereas
+00:18:33.360 when we get to 3x3 matrices the
+00:18:35.360 determinant is a cubic function and so
+00:18:37.200 on. So we'd get like cones described by
+00:18:39.520 cubic equations in in that in that case
+00:18:41.760 and so on. Um so so what's going on here
+00:18:45.840 though? This is all sort of rather
+00:18:47.280 mysterious because we [clears throat]
+00:18:48.799 started out trying to uh formalize the
+00:18:52.799 concept of an algebra of observables
+00:18:54.799 using some very elegant clean axioms and
+00:18:58.160 then these three geniuses figured out
+00:19:00.320 how to classify them all. But then all
+00:19:02.240 of a sudden we've gotten hurled into the
+00:19:04.320 world of of these Minkowski spacetimes
+00:19:06.880 which wasn't what we were trying to talk
+00:19:08.799 about at all. So something strange is
+00:19:11.280 going on here.
+00:19:13.468 >> [clears throat]
+00:19:14.080 >> Um
+00:19:15.919 this is my best attempt to ex understand
+00:19:18.880 that so far. [clears throat]
+00:19:21.280 Excuse me. So one thing is that a
+00:19:24.000 uklitian Jordan algebra doesn't just
+00:19:26.240 describe observables. It also describes
+00:19:28.720 states.
+00:19:30.960 So
+00:19:32.640 turns out that any uklitian Jordan
+00:19:34.320 algebra automatically comes with another
+00:19:36.320 function besides the determinant. It
+00:19:38.160 comes with a trace. So there's another
+00:19:41.039 real valued function on your Jordan
+00:19:42.720 algebra that's a linear functional
+00:19:44.320 actually. Um and and for the case of
+00:19:48.400 matrices case of uklidian Jordan
+00:19:50.720 algebbras of matrices it's just the
+00:19:52.480 usual trace.
+00:19:54.320 Um
+00:19:56.480 and an element in this positive cone or
+00:19:59.919 non- negative cone with trace equals 1
+00:20:03.520 is a state. So that should remind you of
+00:20:06.320 a density matrix in quantum mechanics.
+00:20:09.200 And indeed a density matrix would be a
+00:20:11.520 special case of this idea. So we're just
+00:20:13.440 generalizing that.
+00:20:15.600 And so in particular given a state S and
+00:20:18.320 an observable A, we can define the
+00:20:20.240 expected value of the observable A in
+00:20:22.720 the state S. And we define it to be the
+00:20:24.960 trace of S time A where we use the
+00:20:29.200 Jordan product.
+00:20:31.600 Um so this is again supposed to be
+00:20:34.640 familiar if you've studied enough
+00:20:36.320 quantum mechanics. This is just the way
+00:20:38.320 that you take a so-called density matrix
+00:20:41.200 and an observable and calculate the
+00:20:43.919 expected value of the observable in that
+00:20:46.880 using that density matrix.
+00:20:49.360 Um,
+00:20:50.960 and finally there are certain special
+00:20:53.919 elements in a Jordan algebra that are
+00:20:58.240 called projections who are just elements
+00:21:00.320 whose squar is themselves.
+00:21:02.880 And if you have a projection whose trace
+00:21:04.799 is equal to one
+00:21:07.360 that turns out to be a special kind of
+00:21:10.000 state
+00:21:11.679 uh you can check that it's going to be a
+00:21:13.679 non- negative element because it's the
+00:21:15.600 square of something namely itself and
+00:21:17.919 its trace is one. So it's a state but
+00:21:20.000 these are some special states and these
+00:21:21.600 are called the pure states. So all this
+00:21:24.320 stuff is very familiar in the case of
+00:21:26.799 the n byn complex matrices where the
+00:21:29.440 states are the density matrices
+00:21:32.000 and any vector unit vector in a hilbert
+00:21:34.960 space gives you a projection onto that
+00:21:37.200 vector which is gives you a pure state.
+00:21:39.919 So the whole formalism of uh of quantum
+00:21:43.280 mechanics not just the observables but
+00:21:45.679 also the states and pure states uh
+00:21:50.559 can be done starting with the uklidian
+00:21:53.200 Jordan algebra. So that that's why it's
+00:21:55.120 a nice formalism for doing physics.
+00:21:59.039 Now if you work out what the space of
+00:22:00.720 pure states is
+00:22:02.880 for the matrix algebra cases it's more
+00:22:07.120 or less familiar where we are I hope
+00:22:11.200 used to the idea that the space of pure
+00:22:14.000 states for a complex quantum system is
+00:22:17.280 complex projected space. So you take C
+00:22:20.080 to the N, you take the unit vectors and
+00:22:22.320 then you identify two unit vectors if
+00:22:24.240 they differ just by a phase. And so you
+00:22:26.799 get CPN minus one is the space of pure
+00:22:29.679 states. But you can also think of that
+00:22:31.200 as the space of uh projections
+00:22:35.919 projection operators in here. Uh
+00:22:41.679 so so sorry with trace one projections
+00:22:44.880 onto onto one dimensional subspaces. So
+00:22:47.280 that works the same way in all these
+00:22:48.640 three cases and it also works even in
+00:22:50.640 the octonic case although that's the the
+00:22:53.039 tricky case.
+00:22:55.200 Um but you can ask okay that's all fine
+00:22:58.240 and dandy but what is the space of pure
+00:22:59.919 states for one of our spin factors? The
+00:23:01.840 the goal here is to try to like
+00:23:03.360 understand the the spin factors. Well
+00:23:06.080 there it turns out you can just work it
+00:23:07.840 out that the space of pure states is a
+00:23:10.000 sphere. It's s n minus one. We can
+00:23:13.840 actually draw this whole story very
+00:23:18.000 accurately uh in the case of the spin
+00:23:21.360 factor uh where n equals 2 because then
+00:23:24.720 the spin factor is just a
+00:23:25.919 three-dimensional space and we can
+00:23:27.360 actually draw what's going on. And so
+00:23:29.840 the so it looks like this. The the
+00:23:32.480 forwards cone is just the usual uh just
+00:23:37.039 the usual a usual cone in three
+00:23:38.960 dimensions. The
+00:23:42.000 surface where the trace is equal to one
+00:23:43.840 is is a horizontal plane. And so if we
+00:23:46.880 intersect those two, we get this gray
+00:23:48.960 disc here. And those will be the states
+00:23:52.720 uh of our Jordan algebra. And then the
+00:23:55.360 pure states turn out to be the ones on
+00:23:58.080 the boundary. In fact, that's always
+00:23:59.840 true that the pure states uh form the
+00:24:02.559 boundary of the space. Well, they form
+00:24:05.440 the extreme points. Sorry, not the whole
+00:24:07.200 boundary, but just the so-called extreme
+00:24:08.799 points of the set of states. But here
+00:24:11.120 it's here it's the whole boundary. It's
+00:24:12.799 the it's this it's this one sphere in
+00:24:16.159 this case, a circle. The the surface
+00:24:18.720 with the determinant equals zero is what
+00:24:21.120 you'd call the light cone. Both the
+00:24:22.640 forwards and the backwards light cone.
+00:24:25.760 Um so
+00:24:28.960 so we're seeing that the
+00:24:31.600 uh concepts which have one meaning in
+00:24:34.240 terms of space-time geometry like
+00:24:36.480 forwards light cone uh
+00:24:41.039 future um sorry interior of the light
+00:24:44.720 cone and so on all those geometrical
+00:24:46.480 concepts familiar from spacetime have uh
+00:24:50.320 analoges where we think of them in terms
+00:24:52.640 of uh quantum systems. I mean they have
+00:24:55.440 other descriptions is what I mean where
+00:24:57.440 we think of them as quantum concepts.
+00:25:00.400 Now what's nice about all this is that
+00:25:04.799 we have one way of thinking about states
+00:25:07.279 in these matrix cases and a different
+00:25:09.600 way of thinking about states in the spin
+00:25:11.679 factor cases. But I said that in certain
+00:25:15.120 examples the spin factors are also uh
+00:25:19.200 algebbras of matrices. And so then we
+00:25:21.039 get a a a nice matchup of the two ways
+00:25:23.520 of thinking of things. Namely uh what in
+00:25:27.039 the 2x two matrix cases the space of
+00:25:31.360 states on the one hand it's a projective
+00:25:35.600 line RP1 CP1 HP1 or OP1 but on the other
+00:25:39.360 hand because the set of pure states and
+00:25:42.159 the spin factor is a sphere you also get
+00:25:44.240 a sphere. So you get a one sphere a two
+00:25:46.080 sphere a four sphere and an eight
+00:25:47.840 sphere.
+00:25:49.360 A lot of you, a lot of people who study
+00:25:52.880 math or or physics are well familiar
+00:25:55.120 with the fact that the the reman sphere
+00:25:57.520 CP1 is also a two sphere, but the has
+00:26:01.279 these analogs in the these four cases.
+00:26:05.120 Um, and so of course these are also the
+00:26:08.320 the Jordan algebbras that we would say
+00:26:10.880 are the observables for a cubit. I mean
+00:26:13.760 we're most familiar with complex cubits.
+00:26:16.720 uh and then CP1 is the space of states
+00:26:18.880 of a of a complex cubit. But we can talk
+00:26:21.600 about real complex quitterionic or
+00:26:23.840 octonianic cubits.
+00:26:26.640 And those cubits, those pairs of well,
+00:26:30.320 if we think of it in terms of a Hilbert
+00:26:32.000 space approach, they'd be pairs of real
+00:26:33.600 numbers, pairs of complex numbers, pairs
+00:26:35.360 of quitterians, pairs of octonians.
+00:26:37.520 Those also turn out to be the spinners,
+00:26:39.840 the left-handed or right-handed spinners
+00:26:42.480 in the spaceimes of these various
+00:26:44.640 dimensions.
+00:26:46.559 So there's something nice going on in
+00:26:48.240 these cases.
+00:26:50.720 Now
+00:26:52.799 there's something that I've left out
+00:26:55.200 which is sort of necessary if you really
+00:26:57.039 want to do physics at least the way that
+00:26:59.120 we're accustomed to doing it in ordinary
+00:27:01.520 physics. We have Nther's theorems saying
+00:27:04.400 that observables should generate
+00:27:06.640 symmetries.
+00:27:08.720 Um and it turns out that that wanting
+00:27:10.720 that to be true
+00:27:13.520 complex case as special because only the
+00:27:17.679 only uklidian Jordan algebbras
+00:27:21.039 uh of all the uklidian Jordan algebraas
+00:27:22.880 on my list only the n byn complex
+00:27:25.760 permission matrices can also be made
+00:27:28.400 into a le algebra. So you you want to
+00:27:31.760 make you want your observables to
+00:27:35.600 generate symmetry. So they should form
+00:27:37.279 the le algebra of some lee group and
+00:27:39.840 only in this case can you do that if you
+00:27:41.840 want the le algebra to act in a
+00:27:43.919 non-trivial way not zero way as
+00:27:48.080 derivations of the Jordan product. So in
+00:27:51.120 the case of the complex
+00:27:53.520 matrices you can define a new lee
+00:27:55.279 bracket which I'm going to write as as a
+00:27:58.080 posson bracket here but it's it's a lee
+00:27:59.760 bracket and it's i times the commutator.
+00:28:02.960 So right the commutator of self adjoint
+00:28:04.720 matrices is not self adjint but when you
+00:28:06.480 multiply by i it becomes self adjoin. So
+00:28:09.120 then you get this leave bracket
+00:28:10.799 structure
+00:28:12.399 on your observables and it has this nice
+00:28:14.799 property which says that if you uh which
+00:28:20.000 says that bracketing with a acts like a
+00:28:22.399 like a derivative it obeys a kind of
+00:28:24.240 product rule. Um so so that's what we
+00:28:28.000 use all the time in quantum mechanics
+00:28:30.080 where we let uh
+00:28:34.000 observables generate symmetries and if
+00:28:36.559 you look at Schwinger's equation or
+00:28:38.399 sorry the Heisenberg formulation of
+00:28:39.919 quantum mechanics that that I shows up
+00:28:41.840 there as well as the commutator. So it
+00:28:45.200 turns out that you cannot do anything
+00:28:47.440 you cannot get this uh mathematics to to
+00:28:50.799 work in any way uh for the cases of the
+00:28:53.760 real or the quturnionic matrix uh
+00:28:59.120 cases and I wrote a paper about this
+00:29:03.679 and and some reflections on that. But
+00:29:05.760 one interesting thing is that those real
+00:29:07.360 and quitterianic cases actually do still
+00:29:10.000 play a role in ordinary quantum
+00:29:11.919 mechanics but they have to be sort of in
+00:29:14.080 uh fit inside the complex picture to
+00:29:17.039 actually to actually work. So there are
+00:29:20.000 there are some group representations
+00:29:22.720 that are said to be real even though
+00:29:24.720 they're complex representations. They
+00:29:26.880 they come from a real representation and
+00:29:29.520 there's some that are called
+00:29:30.720 quitterianic which come from a
+00:29:32.799 quitterianic representation and those
+00:29:34.960 kinds of representations play a special
+00:29:37.039 role in quantum mechanics. So I I argue
+00:29:40.080 in this other paper here that that all
+00:29:42.480 three division algebbras actually are
+00:29:44.640 visible in ordinary quantum mechanics
+00:29:47.919 but with with HNC playing a kind of
+00:29:51.120 starring role uh because I believe of
+00:29:54.799 this fact that only in that context can
+00:29:58.640 you get observables to generate
+00:30:00.559 symmetries.
+00:30:02.080 >> So question John.
+00:30:03.600 >> Sure. Um so it seems like in all
+00:30:06.159 examples in addition like you're talking
+00:30:08.480 about the Jordan algebra of self
+00:30:10.000 adjinant operators but you do know what
+00:30:11.840 are the skew adin operators.
+00:30:14.240 >> Well I know yes
+00:30:16.799 >> I mean like over any of these base rings
+00:30:19.120 are they somehow
+00:30:20.960 >> like you know I know what a skew adjint
+00:30:23.279 real matrix is. I know I probably even
+00:30:26.399 >> so
+00:30:27.360 >> yes okay yeah sure you have
+00:30:28.880 >> you have le algebbras lying around.
+00:30:31.039 Yeah, there are those Lee algebbras
+00:30:32.399 lying around and those are and and
+00:30:35.760 so if you are willing to work in a
+00:30:37.679 framework where the symmetry generators
+00:30:40.320 are those skew joint guys and the
+00:30:42.480 observables are the self adjint guys and
+00:30:44.720 you work with both of them then you're
+00:30:46.880 fine. Yeah. So that's fine. Um so so
+00:30:50.080 basically you would just have to ex
+00:30:52.000 accept
+00:30:53.919 to do those kind of quantum mechanics
+00:30:55.600 you would have to ex accept the idea
+00:30:57.840 that that symmetry generators and
+00:30:59.679 observables are are different
+00:31:01.039 fundamentally different kinds of things
+00:31:03.440 whereas in the complex case you can turn
+00:31:05.520 one to the other automatically by
+00:31:07.120 multiplying or dividing by I and so you
+00:31:10.880 yeah so I mean I you know I can't boss
+00:31:13.679 God around so I mean if God had wanted
+00:31:15.760 to use uh real quantum mechanics ICS
+00:31:18.559 then then she would have just accepted
+00:31:20.880 that that observables and and symmetry
+00:31:23.520 generators are going to be different.
+00:31:25.440 But but anyway, I'm trying to make an
+00:31:27.120 argument that there's something
+00:31:28.159 specially nice about the complex case
+00:31:30.799 and and physicists for example will say
+00:31:33.039 like if you want to know how time
+00:31:34.480 evolution works, you write down the
+00:31:36.559 Hamiltonian, right? So that's saying
+00:31:39.279 that like you tell me the observable,
+00:31:41.120 I'll tell you the symmetry it generates.
+00:31:43.039 So that would not work in these other
+00:31:45.039 worlds of described by the other
+00:31:47.039 division algebbras
+00:31:48.880 >> and and in the octonian case do you have
+00:31:51.360 enough associivity to get the le algebra
+00:31:53.519 to work or or
+00:31:56.000 >> there
+00:31:58.240 sorry I'll have to think about there is
+00:31:59.840 a there is a le algebra there is a lee
+00:32:01.760 algebra of derivations of your Jordan
+00:32:04.000 algebra in every case and so you can you
+00:32:06.799 can use that lee algebra as your as your
+00:32:08.960 symmetry generators. Yeah, that's right.
+00:32:11.760 And I'll probably Yeah, [clears throat]
+00:32:13.360 for the exceptional Jordan algebra case
+00:32:15.519 that the algebra would be the Lee
+00:32:17.039 algebra of the group F4.
+00:32:19.477 [clears throat]
+00:32:20.159 >> Okay.
+00:32:20.880 >> Uh looks like you have a question Lee or
+00:32:22.960 a comment?
+00:32:23.519 >> Yes. Um we you were talking about this
+00:32:26.159 sphere S2 and the action of SL2C on it
+00:32:30.240 and there if I understand you right
+00:32:32.000 there's an analogous sphere made from
+00:32:34.399 octonians but is there an action of SL2
+00:32:37.360 octonian on it?
+00:32:39.440 Yes, there is if you if you can figure
+00:32:41.440 out what the heck SL2 octonians is. Um
+00:32:45.679 but but PE so you can't take SL2
+00:32:49.039 octonians
+00:32:50.559 too literally because 2x two matrices of
+00:32:53.440 octonians don't form a group. The
+00:32:56.159 multiplication is not associative.
+00:32:58.080 >> But there's a group that everyone who's
+00:33:02.000 thought about it has agreed should be
+00:33:05.440 called SL2 octonians. And it turns out
+00:33:08.880 that it is the group um
+00:33:12.399 sorry it is is is the group spin 91. So
+00:33:16.159 it's the the double cover of SO91.
+00:33:20.000 >> Okay. And it axon it's basically the
+00:33:22.080 eight sphere.
+00:33:23.919 >> Yeah that's right. So if you're in 10
+00:33:25.600 dimensional Minowski spacetime, Laurent
+00:33:28.320 transformations form this group that
+00:33:30.320 you're with the double cover forms this
+00:33:32.480 group you're calling SL2O
+00:33:34.960 and it acts as conformal transformations
+00:33:37.039 of your field of view which would be an
+00:33:39.120 eight sphere.
+00:33:40.480 >> Very good.
+00:33:41.279 >> And so it's all very much like that.
+00:33:43.120 >> Has anybody ever written down a
+00:33:44.159 conformal field theory that had those
+00:33:45.840 symmetries?
+00:33:48.080 >> I don't know.
+00:33:51.200 There would be people here in the
+00:33:53.279 audience who'd be much more likely to to
+00:33:55.840 know, I think. So, I don't know.
+00:33:57.840 >> Thank you.
+00:33:58.640 >> Uhhuh. Sure. [snorts] It sounds like
+00:34:00.799 something some string theorist should
+00:34:02.159 have tried, right? Because this is the
+00:34:03.919 this is the space-time uh that string
+00:34:07.840 theory lives in very very nicely.
+00:34:10.828 [snorts]
+00:34:12.159 >> Okay. So, I'll I'll march on. Um so,
+00:34:16.079 what about H2O
+00:34:18.399 and H3?
+00:34:20.560 So these I haven't gotten into in great
+00:34:23.760 detail although we are just starting to
+00:34:25.280 talk about them. So amazingly these
+00:34:27.280 Jordan algebbras are actually connected
+00:34:29.040 mathematically at least to the standard
+00:34:30.960 model. Uh so there are three papers here
+00:34:35.040 by
+00:34:36.639 uh Michelle and Ivonne that discuss this
+00:34:40.960 issue and I just want to uh summarize
+00:34:43.440 them and maybe try to
+00:34:47.760 try to isolate some of the nice
+00:34:49.520 mathematical ideas in these papers.
+00:34:53.040 So remember from my last talk if you can
+00:34:56.800 uh that choosing a unit imaginary
+00:34:59.359 octonian which I'll call I
+00:35:02.160 gives a way of including the complex
+00:35:03.920 numbers into the arctonians
+00:35:06.240 and thus because the octonians have an
+00:35:08.320 inner product on them it lets you split
+00:35:10.320 the artonians into a direct sum of
+00:35:12.320 vector spaces
+00:35:14.480 one of which you can identify with
+00:35:16.400 complex numbers and the other I'll just
+00:35:17.839 call cer which will be a sixdimensional
+00:35:21.359 space also it puts a complex structure
+00:35:25.839 on CP coming from left multiplication by
+00:35:29.680 I. So left multiplication by I makes the
+00:35:33.680 octonians into a complex vector space
+00:35:37.920 uh and it splits into a copy of C and
+00:35:41.680 then a this sixdimensional real space
+00:35:45.520 which becomes now a three-dimensional
+00:35:47.119 complex space.
+00:35:50.480 So that same kind of trick works for
+00:35:52.240 these self adjoint matrices. Uh so if
+00:35:55.440 you take the 2x two self adjoint
+00:35:57.040 matrices of the complex numbers, it now
+00:35:58.800 gets included into the 2x two octonic
+00:36:03.440 self adjoint matrices just because we're
+00:36:06.480 thinking of complex numbers as special
+00:36:08.079 octonians. Uh and then we get because
+00:36:11.599 there's an inner product
+00:36:13.839 on on on H2O coming from this trace that
+00:36:18.079 it has. uh it lets us split
+00:36:22.000 H2O into H2C and
+00:36:26.480 a copy of of CP.
+00:36:30.320 And so this I've shown how to identify
+00:36:33.680 with 10 dimensional Mowski spacetime.
+00:36:36.000 This one with fourdimensional Mowski
+00:36:38.480 spacetime. And this is sixdimensional in
+00:36:41.280 the real sense a sixdimensional real uh
+00:36:44.000 vector space or if you like a
+00:36:45.440 three-dimensional complex vector space.
+00:36:47.680 So we get all this from choosing a unit
+00:36:50.079 imaginary octonian.
+00:36:53.599 Now part of the funny business that's
+00:36:57.040 going on is that H2O has naturally the
+00:37:01.520 structure of both the 10-dimensional
+00:37:03.119 Minowski spacetime which comes from this
+00:37:06.560 the fact that the determinant is the
+00:37:09.280 Manowski metric but it also has a
+00:37:11.920 10-dimensional uklitian space. It has a
+00:37:14.079 uklitian inner product which you get
+00:37:16.320 using the Jordan product and then taking
+00:37:19.040 the trace. So if you work out what this
+00:37:21.200 is, you get the same kind of
+00:37:23.680 >> John, sorry to interrupt you.
+00:37:26.480 >> Sure.
+00:37:28.560 >> Sorry to interrupt you. Could we just go
+00:37:30.320 back to the previous slide if you don't
+00:37:32.000 mind the last equation? Does this have a
+00:37:35.280 interpretation in terms of SL2
+00:37:40.160 being writable as say SL2C and SL2H?
+00:37:45.440 >> Uh not SL2.
+00:37:48.720 I don't know how to do that. I mean,
+00:37:51.760 this definitely says that SL2CD is a
+00:37:53.920 subgroup of of SL2O
+00:37:57.520 and then the
+00:38:00.400 >> but I I I don't know how to write SL2O
+00:38:04.000 in terms of SL2C and SL2 H. Yeah, that
+00:38:08.560 doesn't
+00:38:09.359 >> it's okay. We can we can talk later.
+00:38:11.200 Thank you.
+00:38:12.000 >> Yeah.
+00:38:12.480 >> Yep.
+00:38:15.119 So, so I was saying that when you have a
+00:38:17.040 Jordan algebra, it naturally gets just
+00:38:19.599 from its Jordan multiplication, it
+00:38:21.920 naturally gets a determinant and a
+00:38:23.760 trace. And so if we use both of those,
+00:38:27.119 H2O naturally gets the structure of both
+00:38:30.160 a Manowskian metric and a uklidian
+00:38:32.160 metric, both invariant under all
+00:38:35.760 transformations that preserves the
+00:38:37.520 multiplication.
+00:38:39.200 So the Jordan so the automorphism group
+00:38:41.599 of the Jordan algebra the things that
+00:38:43.280 preserve the Jordan product has to also
+00:38:45.200 preserve both of these uh kinds of
+00:38:48.400 metrics and so it must be contained both
+00:38:50.560 in 091 and also in 010. So it must be
+00:38:54.800 contained in 09
+00:38:56.960 and in fact it turns out that it's it's
+00:38:59.760 exactly equal to 09. So this sort of
+00:39:02.880 sheds some light
+00:39:06.720 So this sort of sheds some light on the
+00:39:08.640 uh Uklitian or Minkowskian puzzle that I
+00:39:11.599 was posing last time about do should we
+00:39:15.680 think of H should we think of uh the
+00:39:19.040 standard model gauge group is sitting
+00:39:21.520 inside
+00:39:23.200 uh SO10 or SO91 and the answer was that
+00:39:27.680 it's in both.
+00:39:29.839 uh but this this is sort of meant to
+00:39:31.599 give some
+00:39:33.920 new look on that.
+00:39:36.160 Um it's much easier to see actually that
+00:39:38.320 the automorphism group of H2O
+00:39:41.359 had is just exactly 09 because you just
+00:39:44.079 use the fact that it's isomeorphic to
+00:39:45.760 the spin factor. Uh and the spin factor
+00:39:49.520 the multiplication on it only depends on
+00:39:52.000 the only interesting part about it is
+00:39:53.599 the dotproduct on R9. So anything in '
+00:39:56.720 09 will be an automorphism of this
+00:40:00.560 Jordan algebra.
+00:40:02.880 Now
+00:40:04.480 we can already see one kind of way then
+00:40:07.359 to get the standard model gauge group
+00:40:10.000 into the game here. So if we go and work
+00:40:13.760 not with 09
+00:40:15.839 but with a double cover of its connected
+00:40:18.160 component. So you may wonder why I'm
+00:40:21.040 doing this and I'll get back to it but
+00:40:22.720 that that will be spin 9. So let's
+00:40:24.800 switch from working with 09 to spin 9 uh
+00:40:28.480 for reasons that aren't terribly well
+00:40:30.000 motivated yet but certainly common in
+00:40:33.040 physics to do that. Uh so the subgroup
+00:40:37.359 of spin 9 that preserves
+00:40:41.440 so spin 9 will act on H2O. uh and the
+00:40:44.560 subgroup that preserves the uh H2C
+00:40:48.880 will be one one can check just um
+00:40:54.160 spin 3 * spin 6 or actually that's sort
+00:40:57.839 of double counting the double cover. So
+00:40:59.760 it's really that mod Z mod 2. So
+00:41:02.079 basically what's going on here is that
+00:41:03.680 the subgroup of spin 9 that preserves uh
+00:41:07.520 H2 of C will
+00:41:11.040 will act on nine-dimensional space but
+00:41:13.280 it will act on it in a way that
+00:41:14.720 preserves a split of nine-dimensional
+00:41:17.040 space into three dimensions which are
+00:41:19.440 the ones coming from it from this
+00:41:21.440 fourdimensional spacetime and the six
+00:41:23.760 remaining spatial dimensions. So that's
+00:41:26.000 why
+00:41:27.920 that's intuitively why we get spin 3
+00:41:30.400 time spin 6 showing up. But there's some
+00:41:33.119 nice lerroup uh coincidences that say
+00:41:36.880 that you can also think of that as su2
+00:41:39.200 time su4.
+00:41:41.520 Um and as we saw last time this group
+00:41:44.480 here contains a copy of the gauge group
+00:41:48.079 of the standard model. Let me just
+00:41:50.319 remind you a bit how that goes.
+00:41:53.440 So we can sort of take the potty salam
+00:41:56.319 model and strip off one of the su2 salam
+00:42:01.119 model and actually map u1 * su2 * su3
+00:42:05.440 into su2 * su4
+00:42:08.880 uh in in the following fashion which I
+00:42:10.960 discussed in more detail last time and
+00:42:13.200 it's not quite one one but it's just 3
+00:42:16.160 one
+00:42:17.680 uh
+00:42:19.440 and so then if you if you if you uh take
+00:42:22.640 this group here and you mod out by Z mod
+00:42:25.040 2 which is what we have to which is what
+00:42:26.640 we have to do up here then you get
+00:42:28.480 actually a 6:1 homorphism from U1* SU2 *
+00:42:33.119 SU3 into SU2 * SU4 mod Z mod over Z mod
+00:42:38.560 2. uh and you can show that the kernel
+00:42:42.160 of this homorphism is exactly that six
+00:42:45.119 element subgroup of this group that acts
+00:42:48.319 trivially on all these standard model
+00:42:50.560 firmians or all the standard model
+00:42:53.280 particles. So we get an inclusion of
+00:42:55.520 that quotient
+00:42:57.520 group into SU2 * SU2 mod Z mod 2. And
+00:43:04.000 this quotient here is exactly the true
+00:43:07.599 what I'm calling the true gauge group of
+00:43:09.440 the standard model. So that's how this
+00:43:12.880 group uh contains the standard model
+00:43:16.960 gauge group. I mean that's a way that it
+00:43:19.280 contains the standard model gauge group.
+00:43:21.200 That's the most physically relevant way.
+00:43:23.839 Um so so what we draw from this is that
+00:43:28.160 the standard model gauge group acts as
+00:43:32.160 automorphisms of the Jordan algebra H2O
+00:43:36.000 that preserve the subal algebra H2C.
+00:43:39.920 And if you want to sell this in the
+00:43:42.240 popular press, you should say it like
+00:43:44.800 this. the the true gauge group of the
+00:43:47.760 standard model acts as symmetries of an
+00:43:49.680 octonic cubit and it preserves the subal
+00:43:52.880 algebbras suba algebra of observables of
+00:43:55.599 a complex cubit. I mean that's that's
+00:43:58.400 perfectly true. It's not sounds flashy
+00:44:01.520 but it's perfectly true if what we mean
+00:44:03.200 by octonic cubit is the algebra of
+00:44:06.319 observables which is this Jordan algebra
+00:44:09.200 H3 H2O and similarly here H2O.
+00:44:14.800 So this sounds nice.
+00:44:18.720 I don't know what it means, but it
+00:44:20.160 sounds nice. Uh
+00:44:22.880 but but if you think about it a little
+00:44:24.800 bit more, although it sounds impressive,
+00:44:26.560 it it leaves open two really big
+00:44:29.119 questions. We there's some slack in this
+00:44:31.839 description. First of all,
+00:44:34.640 the automorphism group of H2O is
+00:44:37.280 actually 09. And for some unmotivated
+00:44:40.800 reason, I switched to working with spin
+00:44:43.760 9. the double cover of its connected
+00:44:46.079 component. So why should we be doing why
+00:44:48.400 should we be using spin on second of all
+00:44:54.480 although this sentence is is true um in
+00:44:58.720 fact the standard model gauge group is
+00:45:01.760 not all of the automorphisms of H2O that
+00:45:04.400 preserve H2C there's this larger group
+00:45:08.560 that that does that so then the question
+00:45:10.880 is what what makes the smaller group the
+00:45:13.440 standard model gauge group special so we
+00:45:16.000 haven't really characterize the standard
+00:45:17.599 model gauge group by means of these
+00:45:19.200 sentences here. So we can tackle these
+00:45:22.000 questions and answer these questions.
+00:45:25.760 Um and the interesting thing is that to
+00:45:28.480 answer them we need to bring in the
+00:45:30.400 exceptional Jordan algebra H30. I mean I
+00:45:33.359 don't know if we need to. I shouldn't be
+00:45:34.720 so bold but but we're that's how I'm
+00:45:36.560 going to that's what I'll do.
+00:45:39.359 So as I mentioned that that's the Jordan
+00:45:42.079 algebra of observables of an octonianic
+00:45:44.640 trit or more concretely it's just these
+00:45:47.440 3x3 matrices. The diagonal elements are
+00:45:50.000 real. Um this has a larger automorphism
+00:45:54.319 group. It's a 52dimensional group. It's
+00:45:57.040 called F4. We won't need to know too
+00:45:59.760 much about it. Well we actually I guess
+00:46:02.000 will but but [laughter] we we we will to
+00:46:04.480 prove all the things I'm going to say
+00:46:05.839 but we won't I won't prove them. So one
+00:46:08.800 interesting thing about it is that F4
+00:46:11.119 can't act on O3. So although you might
+00:46:15.040 think of F4 as the symmetries of an
+00:46:16.880 octonianic
+00:46:18.480 and you might have thought that an
+00:46:19.680 octonianic should have something to do
+00:46:21.920 with O3, it that's not a representation
+00:46:24.480 of F4 in any non-trivial way because the
+00:46:26.800 smallest representation of F4 is is
+00:46:29.280 bigger than the dimension of O3. This is
+00:46:31.760 24dimensional.
+00:46:33.760 uh this smallest rep is non-trivial rep
+00:46:37.119 is 26dimensional. So there's no hilbert
+00:46:39.680 space picture of the octonic Q trait at
+00:46:41.920 least not a complete picture.
+00:46:45.760 Okay. So here's what we're going to do.
+00:46:47.520 We're going to pick a copy of H2O
+00:46:49.920 sitting inside H3O as a Jordan subal
+00:46:52.400 algebra. You could do this in any way
+00:46:54.000 but just for explicitness I'll I'll pick
+00:46:56.880 it as this 2x two matrices sitting
+00:47:01.040 inside the 3x3 matrices.
+00:47:04.880 So there will be a subgroup of the
+00:47:06.640 automorphisms of H30 that preserve that
+00:47:11.280 uh copy of H2O and that turns out to be
+00:47:15.040 spin 9.
+00:47:17.119 So this answers question A
+00:47:20.240 which is why are we working with spin 9
+00:47:22.480 instead of 09. So the proposed answer
+00:47:26.480 here is don't work with automorphisms of
+00:47:28.800 H2O because that's the group 09. Instead
+00:47:32.560 work with automorphisms of H3 that
+00:47:35.359 happen to map H2O to itself. So they
+00:47:38.880 will give automorphisms of H2O but
+00:47:40.880 they'll also be messing around on doing
+00:47:42.960 things with H3. And it turns out that
+00:47:45.440 these form the group spin 9.
+00:47:49.280 Okay. So the idea is we're led to this
+00:47:51.520 idea of thinking about H2O and H30O
+00:47:53.920 together with H2O sitting inside H30.
+00:47:56.640 And we're I'm just going to pick a
+00:47:58.000 specific way of having it sit inside
+00:47:59.680 there.
+00:48:01.520 >> So just a quick question. So is it
+00:48:04.560 correct to say that you can have H2O
+00:48:08.319 inside H3 in three different ways? Oh,
+00:48:12.079 you can have it infinitely many
+00:48:13.920 different ways. There not all the ways
+00:48:15.839 are so beautifully described as like
+00:48:18.160 block matrices. Yeah, there three there
+00:48:19.920 are three very nice ways
+00:48:22.880 >> in terms of matrices but but there's
+00:48:24.720 actually a continuum of ways because
+00:48:26.319 there are these you know you know you
+00:48:27.839 can you can act by automorphisms and
+00:48:30.800 rotate so to speak into all sorts of
+00:48:32.800 different ways. Yeah,
+00:48:33.599 >> I should not start thinking of three
+00:48:36.079 firmian generations in H30 and each 2x
+00:48:40.480 two being one generation.
+00:48:43.599 >> You're welcome. You're welcome to try
+00:48:45.280 and lots of people have and I've never
+00:48:47.599 none of them has ever reported back any
+00:48:49.520 success with that idea. So, I I don't I
+00:48:51.520 don't know. I don't recommend it too
+00:48:52.960 much, but it it would be really cool if
+00:48:55.119 something like that worked. But I I
+00:48:57.280 haven't I can't get it to work yet. Um,
+00:49:00.640 so why do we get spin 9 when we when we
+00:49:03.040 do this trick? Well, one way to see it
+00:49:05.440 is that you can think of H3 as split up
+00:49:10.880 into this way. So here's our H2O and
+00:49:14.000 this is a pair of octonians here. So we
+00:49:16.079 got a copy of O squared. And then here's
+00:49:18.160 a lonely real number here, alpha.
+00:49:21.280 So as representations of spin 9, H30
+00:49:24.160 actually breaks up into this uh into
+00:49:27.200 these three representations.
+00:49:29.920 And so the way it works is that spin 9
+00:49:31.920 is acting on R trivially. So you should
+00:49:34.079 think of this as a scaler. It acts on O2
+00:49:37.280 via the real spinner representation. So
+00:49:40.800 you should think of O2 as a spinner for
+00:49:42.640 spin 9. And it acts on H2O as as we
+00:49:46.720 already mentioned. You can you can think
+00:49:50.079 of H2O either as 9 plus one dimensional
+00:49:52.880 spacetime or 10 dimensional space and
+00:49:54.800 the rotations or the double cover of the
+00:49:57.040 rotations are acting on that. And then
+00:50:00.319 the Jordan product on HDO by the way can
+00:50:02.960 be described using invariant operations
+00:50:05.920 on these scalers, spinners and vectors.
+00:50:09.440 And you can check then that only spin 9
+00:50:12.319 preserves all the those operations. And
+00:50:14.640 so spin 9 is the subgroup of
+00:50:18.079 automorphisms
+00:50:19.839 of H3O that preserve uh H2O. So that's
+00:50:24.400 the idea. But the nice thing about it is
+00:50:26.480 we're seeing this nice uh scalar vector
+00:50:29.520 spinner thing going on here.
+00:50:32.640 Um so okay, so now we're ready to answer
+00:50:35.200 question B, which is what picks out the
+00:50:37.359 standard model gauge group as a subgroup
+00:50:39.359 of spin 9. So here's one way to get at
+00:50:43.920 it. So first choose a copy of H2O and
+00:50:46.559 H3O, which I've I've done. The subgroup
+00:50:49.359 of F4 that preserves that is spin 9.
+00:50:52.160 Then next pick a unit imaginary
+00:50:54.480 octonium.
+00:50:56.559 So it turns out that the subgroup of F4
+00:50:58.559 that preserves all the structure that
+00:51:01.119 that puts on H30, I'll maybe be more
+00:51:04.000 explicit about explicit about that in a
+00:51:06.319 minute is SU3 * SU3 modulo the diagonal
+00:51:10.880 Z mod 3.
+00:51:13.440 And then finally the subgroup of F4 that
+00:51:16.000 preserves all this structure
+00:51:18.800 that is both the copy of H2O and
+00:51:22.319 uh all the structure that this imaginary
+00:51:24.720 octonium puts on H30 is exactly the true
+00:51:28.000 gauge group of the standard model. It's
+00:51:29.839 a it's a subgroup of this of SU3 times
+00:51:34.720 SU3 over Z 3. Uh and it's also a
+00:51:38.160 subgroup of this spin 9 that I've
+00:51:40.720 mentioned here.
+00:51:42.319 So, this is something I'd like to
+00:51:44.960 quickly sketch an argument for. I'm
+00:51:47.359 getting low on time here.
+00:51:50.319 But first, let me just sort of say the
+00:51:51.920 bumper sticker version of this yet
+00:51:54.000 again, which is that the true gauge
+00:51:56.640 group of the standard model consists of
+00:51:58.960 precisely the symmetries of an octonic
+00:52:01.280 QRT that preserve all the structure
+00:52:03.680 arising from a choice of a unit
+00:52:05.359 imaginary octonian on the one hand and
+00:52:08.400 two restrict symmetries of an octonic
+00:52:12.480 cubit on the other hand. So again, I
+00:52:16.800 don't know what this means, but You
+00:52:20.240 could imagine that if nature were trying
+00:52:22.000 to fundamentally be working with octonic
+00:52:25.680 and yet still get the benefit of working
+00:52:29.599 with uh complex
+00:52:32.480 uh cubits,
+00:52:35.119 it might want to use this type of
+00:52:37.599 mathematics.
+00:52:40.079 Um let me let let me show you a little
+00:52:42.240 bit more about
+00:52:44.640 uh how those results are are obtained.
+00:52:49.200 This is all review of work in in uh
+00:52:51.839 Todorov and Dublet's paper by the way.
+00:52:55.520 So so if you pick a unit imaginary
+00:52:59.040 octonian you get an inclusion of the
+00:53:01.200 complex numbers in the octonian. So you
+00:53:02.880 get an inclusion of H3 C and H3 and you
+00:53:06.960 again can split up H3 in this way in
+00:53:10.720 terms of H3 C and an orthogonal space
+00:53:13.599 which is just the space of guys whose
+00:53:16.000 inner product with guys in H3 of C is
+00:53:19.200 zero. But if you work out concretely
+00:53:21.200 what it is, it's just these
+00:53:23.920 offdagonal matrices whose off diagonal
+00:53:26.640 entries are just living in C perp
+00:53:30.880 and this space here gets a complex
+00:53:34.480 structure via left multiplication by I.
+00:53:38.079 So we not only get this splitting but we
+00:53:40.240 also get that this uh complimentary
+00:53:43.599 space becomes a complex vector space in
+00:53:46.000 a natural way.
+00:53:48.720 And so then there's a theorem which says
+00:53:53.040 that for any choice of a unit imaginary
+00:53:55.200 octonian
+00:53:57.040 the subgroup of f4 that is the
+00:53:59.920 automorphisms of h3 that preserve this
+00:54:02.640 splitting and also preserve the complex
+00:54:04.960 structure on this orthogonal space is
+00:54:07.680 su3 * su3 mod z mod 3 and most of the
+00:54:13.119 work in showing this is in yakakota's
+00:54:18.559 very nice paper on exceptional league
+00:54:21.119 groups.
+00:54:22.640 But just to give you like a little hint
+00:54:24.800 of what's going on, I'll tell you how
+00:54:26.400 SU3* SU3 mod Z3 acts on H3.
+00:54:32.800 I'm sort of probably running out of time
+00:54:36.400 here, but
+00:54:38.319 um you can think of this complimentary
+00:54:41.920 space as a space of 3x3 complex
+00:54:45.359 matrices.
+00:54:48.000 And so you can think of H3
+00:54:51.359 as split up into self joint 3x3 matrices
+00:54:55.520 plus arbitrary complex 3x3 matrices.
+00:55:01.920 So you can think of it any element of
+00:55:03.920 H30 as a pair of a self joint matrix and
+00:55:07.760 a complex and an arbitrary matrix and
+00:55:10.400 then a guy in SU3 * SU3 acts on this
+00:55:14.000 pair in the following way
+00:55:17.200 where the first copy of SU3 conjugates
+00:55:22.480 your self adjoin matrix and it
+00:55:25.119 multiplies on the right roughly speaking
+00:55:27.520 on the other matrix and the other
+00:55:30.000 element of SC3 acts only on the on the
+00:55:32.480 second matrix.
+00:55:35.200 Um,
+00:55:37.040 and
+00:55:39.520 well, and so that's how it works. And
+00:55:41.200 and the important thing, I guess, to
+00:55:42.880 realize is that the two copies of SU3
+00:55:45.440 that are showing up in this game are
+00:55:47.040 acting in very different ways. They're
+00:55:48.480 they're have very different meanings,
+00:55:50.640 these two SU3s.
+00:55:54.319 So when we go all the way down to look
+00:55:58.000 at the standard model gauge group as a
+00:56:00.640 subgroup of this, we'll see that the
+00:56:03.280 second SU3 becomes the strong force SU3
+00:56:06.640 and it's acting separately on each one
+00:56:08.720 of these
+00:56:10.480 matrices
+00:56:12.559 sorry on each entry of this matrix which
+00:56:14.960 is an octonian
+00:56:16.960 and it acts as octonian automorphisms
+00:56:19.200 that preserve an imaginary octonian.
+00:56:22.160 Whereas the first acts to mix up the
+00:56:25.280 different matrix entries
+00:56:27.520 and this winds up becoming the
+00:56:30.400 electroeak group that is a subgroup of
+00:56:32.720 it winds up be the electroeak group and
+00:56:36.160 it's only that subgroup that preserves
+00:56:38.480 this splitting of the 3x3 matrix into a
+00:56:42.319 one by one and a 2x two part. So that
+00:56:45.040 supposed to make it roughly intuitive
+00:56:47.119 about how this su3 gets broken down into
+00:56:49.359 a u1* su2. It's because uh it it does so
+00:56:54.880 when you demand that we're looking at uh
+00:56:58.079 transformations that preserve this copy
+00:56:59.839 of H2O sitting inside H3.
+00:57:03.680 I know I'm going through this a little
+00:57:05.040 bit too fast to absorb, but my notes are
+00:57:07.200 will be available uh and lots of links
+00:57:09.920 to papers on this stuff. So basically
+00:57:12.480 the the upshot stated which I stated
+00:57:15.040 before but I'll state it a little more
+00:57:16.559 precisely now that if you pick an unit
+00:57:18.880 imaginary octonian you get a Jordan
+00:57:22.240 subalgebra
+00:57:23.920 H3 of C sitting inside H3 of O. But then
+00:57:27.280 if you also choose
+00:57:30.240 a Jordan subalgebra H2 of O sitting
+00:57:33.440 inside H3 of O
+00:57:36.559 then you are ready to get the standard
+00:57:38.960 model gauge group because the group of
+00:57:41.520 automorphisms of H30O that preserves the
+00:57:44.240 splitting that we get and also the
+00:57:47.280 complex structure that we get on the
+00:57:49.520 complimentary space
+00:57:51.760 and also this Jordan subalgebra H2O is
+00:57:56.640 isomeorphic to the true gauge group of
+00:57:58.640 the standard model. So that's a bit of a
+00:58:01.119 mouthful, but that's the most precise uh
+00:58:05.680 statement I'm going to give you of this
+00:58:07.839 of this result. Uh if that's if that's
+00:58:11.520 too precise, you can read the summary
+00:58:15.440 here. So now I'm in the home stretch. So
+00:58:18.079 the the summary version is what I've
+00:58:20.079 said before. I'll just say it again that
+00:58:22.400 the true gauge group of the standard
+00:58:23.920 model consists of the automorphisms of
+00:58:25.760 the exceptional Jordan algebra that
+00:58:27.440 preserve all the structure coming from a
+00:58:29.359 unit imaginary octonian meaning both the
+00:58:32.319 splitting and the complex structure on
+00:58:34.559 the orthogonal space the complimentary
+00:58:37.359 space and also preserve a copy of H2O
+00:58:40.559 and H3 of O.
+00:58:43.040 So what that means is that these
+00:58:44.319 symmetries are acting simultaneously as
+00:58:46.880 symmetries of a number of things. They
+00:58:49.599 start out acting as symmetries of an
+00:58:51.760 octonianic QT trit, but they're
+00:58:53.920 preserving this copy of H2O and H3O. So
+00:58:57.440 they're also acting as symmetries of an
+00:58:58.960 octonianic cubit. But then we also are
+00:59:03.359 uh picking out this copy of of the the
+00:59:08.160 complex
+00:59:10.799 uh
+00:59:12.640 Q trit in the octonic trit
+00:59:15.380 [clears throat] thanks to this item one
+00:59:16.799 here. So, it's also acting on H3C and
+00:59:18.960 it's also acting on H2C, which is the
+00:59:20.960 intersection of of of these these two
+00:59:23.920 guys here. Um, so, so that's
+00:59:28.640 intriguing. Maybe this is all just a
+00:59:31.040 coincidence. Of course, it' be nice if
+00:59:32.880 this actually led led to something.
+00:59:36.000 Um, I'll just conclude by saying that
+00:59:37.680 there's Oh, yeah, sure, Lee.
+00:59:41.520 >> No. So, conclude and then I I have a
+00:59:43.520 question.
+00:59:44.240 >> Okay. So there are a bunch of problems.
+00:59:46.960 So here what I've been doing is I've
+00:59:48.559 been describing the standard model gauge
+00:59:51.280 group. But you would also want to know
+00:59:54.480 what about its representation on
+00:59:56.079 firmians.
+00:59:58.400 Um that's one. And and you might hope
+01:00:01.760 that since this we've got this
+01:00:03.920 octonionic qrit idea running around in
+01:00:07.680 our description of the standard model
+01:00:09.280 gauge group that maybe that octonianic
+01:00:12.400 qrit should be should be there in the
+01:00:14.640 standard model. But it's not clear how
+01:00:16.880 that how that is working. It's not even
+01:00:20.079 completely clear what we mean by an
+01:00:21.680 octonic cue in the following sense. We
+01:00:24.559 have this nice Jordan algebra H3 of O.
+01:00:28.079 That's the observables of the octonic
+01:00:30.079 cue. There's no doubt about that. It
+01:00:33.280 does act as operators on O cubed
+01:00:36.960 uh just by matrix multiplication in in
+01:00:39.920 some funny way and not associatively. Uh
+01:00:43.839 but the symmetry group of HBO doesn't
+01:00:46.799 act on O3. It only acts on H30 and it
+01:00:50.720 and also on OP2 which are the pure
+01:00:52.799 states. So there's something funny about
+01:00:54.880 this O cubed way of thinking about about
+01:00:59.520 things.
+01:01:01.200 Um if the octonian cq bit would be less
+01:01:05.760 mysterious. The standard model gauge
+01:01:08.000 group um sitting inside spin 9. It also
+01:01:13.359 acts on H2O. So it's also acting on the
+01:01:15.920 octonic cubit.
+01:01:18.720 And there it's you can show that it's
+01:01:21.200 actually does act in a nice way on O
+01:01:24.319 squared via the spinner representation
+01:01:26.720 of spin 9. And it makes sense to call
+01:01:29.280 that an octonic cubit. An element of O2
+01:01:32.960 is like a Hilbert space description of
+01:01:36.160 the octonic cubit. Um
+01:01:39.839 and it turns out that you thanks to
+01:01:42.799 Curill's work there's a very beautiful
+01:01:44.799 description of the standard model gauge
+01:01:46.880 group as being exactly the subgroup of
+01:01:49.280 spin 9 whose action on O squ commutes
+01:01:52.480 with right multiplication by a chosen uh
+01:01:56.319 unit imaginary octonium. So that's all
+01:01:59.599 very nice. But then if you work out how
+01:02:02.240 it's acting on O2
+01:02:04.720 with this complex structure, it's acting
+01:02:07.359 just as it does on the left-handed
+01:02:09.680 firmians in one generation. The
+01:02:12.400 right-handed firmians are are not there.
+01:02:16.480 Um so there's a big mystery left as to
+01:02:19.760 whether the stuff I've discussed can be
+01:02:23.280 fleshed out to give some description of
+01:02:26.079 the uh firmians in the standard model in
+01:02:29.920 terms of octonianic mathematics or in
+01:02:32.720 terms of this kind of octonianic
+01:02:34.240 mathematics anyway there's other kinds
+01:02:35.760 of octonic mathematics you can use of
+01:02:37.839 course uh so I'll end there
+01:02:44.240 >> great let's thank
+01:02:46.948 >> [applause]
+01:02:49.280 >> And Lee, you had a question.
+01:02:52.880 >> This is a big question, but I'm sure
+01:02:54.799 you've thought about it. Um, at this
+01:02:57.200 point, what I would want to do if I was
+01:02:59.040 playing this game to see if this
+01:03:00.319 amounted to anything, is invent some
+01:03:02.640 geometry, not representation theory. So
+01:03:05.760 is there any sense of how you could take
+01:03:08.480 this represent this version of the
+01:03:10.960 labeling of the group and construct a
+01:03:13.680 flat connection or any kind of
+01:03:15.440 connection acting on some 3D plus one
+01:03:18.240 dimensional manifold and can we start to
+01:03:20.880 give dynamics to these objects rather
+01:03:23.680 than just investigating the
+01:03:25.599 representation theoretic structure.
+01:03:29.920 >> Um
+01:03:31.760 I haven't thought about that a lot. So,
+01:03:37.280 so I don't have anything
+01:03:39.680 I don't have anything great to say about
+01:03:42.480 that except that
+01:03:46.319 we do we do have this
+01:03:49.280 um copy of Minkowski spacetime staring
+01:03:53.200 us in the face in this picture which is
+01:03:56.079 which is H2C.
+01:03:58.079 And we do have the standard model
+01:04:02.000 gauge group running around. So it should
+01:04:05.039 be pretty easy to build a a trivial
+01:04:08.720 bundle with that gauge group over that
+01:04:11.520 uh minkowski spacetime. But I haven't
+01:04:14.480 tried to for example like write down a
+01:04:16.240 lrangei like the like say maybe like a
+01:04:19.200 start out like a gauge field uh yang
+01:04:21.839 mills lrangeian
+01:04:23.280 >> or even a topological field theory just
+01:04:25.440 write down df equals zero see if I can
+01:04:29.520 >> yeah no I I haven't I haven't haven't
+01:04:32.640 tried any of those things um I spent the
+01:04:34.799 last couple of weeks while I was
+01:04:37.200 preparing this talk trying to get the
+01:04:38.720 math of that I just described all
+01:04:40.960 cleared up in my mind. So that's that's
+01:04:42.960 all I've that's all I' that's all I've
+01:04:45.280 got.
+01:04:45.920 >> John, it's a great thing. It's a
+01:04:47.440 wonderful time.
+01:04:48.880 >> Thanks.
+01:04:49.839 >> Very few of us could have done that.
+01:04:52.480 >> Thanks. Well, yeah, I should say that
+01:04:54.079 this um is it's it's there in uh Duba
+01:05:00.079 Vlet and Toadorov's paper and also in in
+01:05:03.920 Curl's paper. But being a mathematician,
+01:05:06.559 I try trying to squeeze it down to some
+01:05:09.839 kind of theorem
+01:05:13.039 uh and trying to maybe hint which might
+01:05:16.799 hint at some kind of conceptual meaning
+01:05:18.960 of what's of what's going on or gives
+01:05:20.799 people some inspiration for for for what
+01:05:23.359 to do with this.
+01:05:25.200 >> Okay,
+01:05:25.599 >> that's
+01:05:28.559 >> Could I uh make a comment and a
+01:05:30.640 question? And I couldn't find the
+01:05:32.079 appropriate uh thing to button to push
+01:05:35.359 on here.
+01:05:36.880 >> Sure.
+01:05:37.520 >> Oh,
+01:05:38.480 >> am I am I
+01:05:39.359 >> You're okay.
+01:05:40.160 >> Go ahead.
+01:05:40.480 >> Am [clears throat] I?
+01:05:41.599 >> Yeah, we hear you. We hear you.
+01:05:43.520 >> Um yeah, very nice uh talk. Uh John, I I
+01:05:48.400 just wanted to um comment
+01:05:51.200 >> just about it's it's to do with the
+01:05:52.799 choice of you know unit imaginary. Why
+01:05:55.920 should one pick out a unit imaginary
+01:05:57.760 octonian? Now earlier on in your talk
+01:06:01.280 when you were you were mentioning this
+01:06:03.839 the distinction between um multiplying
+01:06:07.200 by I to get you can if you're in the
+01:06:09.200 over the complex numbers then if you
+01:06:11.520 have a uh hermission matrix you multiply
+01:06:14.400 it by I and you get an anti-ermission
+01:06:16.000 one which you can use as a symmetry
+01:06:18.559 generator. Um now the thing is that and
+01:06:22.799 you were saying well that's picks out
+01:06:24.799 the that picks out the Jordan algebbras
+01:06:26.640 over complex numbers are special. Um but
+01:06:30.880 there were two points here is that over
+01:06:32.640 the you can do something like that for
+01:06:34.720 the other Jordan algebbras but then
+01:06:36.160 you're going to need instead of having a
+01:06:38.240 single gener single uh observable which
+01:06:41.359 generates a symmetry you need a pair of
+01:06:43.200 them. So then you get you then the the
+01:06:45.920 operation is the associator rather than
+01:06:47.760 the commutator.
+01:06:49.440 So if you and another well let me put it
+01:06:52.240 another way. If you if you look and this
+01:06:54.559 is perhaps the main point I want I was
+01:06:56.960 wanted to say was that if you look at
+01:06:58.319 the Heisenberg uh equation of motion
+01:07:02.480 then normally you have to introduce an
+01:07:04.240 I. So that that's often the way that one
+01:07:06.400 explains why why do you need to have to
+01:07:08.720 why does complex why do you need to
+01:07:10.319 introduce the complex numbers in quantum
+01:07:12.079 mechanics? Well, because if you want if
+01:07:15.200 you want to generate uh if you want a
+01:07:17.359 Hamiltonian to generate a motion in
+01:07:19.119 time,
+01:07:20.400 >> you're going to have to introduce a
+01:07:21.760 factor of I. So,
+01:07:24.640 >> um I just wondered but there's another
+01:07:27.119 way of doing that. So, essentially
+01:07:28.559 you're picking out a direction of time
+01:07:30.000 because you could have I or minus I,
+01:07:32.079 >> right?
+01:07:32.799 >> Um I mean [clears throat] there's
+01:07:35.839 if there's another way of doing that.
+01:07:38.000 So, if you if you have that Heisenberg
+01:07:39.520 equation of motion, you can actually
+01:07:41.039 rewrite it. uh as if if your Hamiltonian
+01:07:45.200 can be written as the commutator of two
+01:07:46.960 other uh emission matrices then in fact
+01:07:50.640 you can rewrite that um Heisenberg
+01:07:53.680 equation of motion in terms of an
+01:07:55.760 associator
+01:07:57.839 with your your two your other two oper
+01:08:01.119 observables and then of course that
+01:08:03.440 doesn't pick out any direction of time
+01:08:05.359 so that will actually work for all the
+01:08:07.039 other cases as well but it won't
+01:08:09.599 >> associator for the Jordan product Yeah.
+01:08:12.400 So in other words, if you're looking of
+01:08:13.839 if you if you're interested in the
+01:08:15.359 question, how do I generate a time? How
+01:08:17.359 do I you've got your observables and
+01:08:19.120 your your states, but how what about the
+01:08:20.880 time evolution?
+01:08:22.158 >> Okay.
+01:08:22.640 >> So, okay, in the complex case, that's
+01:08:24.640 easy. Heisenberg equation of motion.
+01:08:27.520 >> Uhhuh.
+01:08:28.080 >> There's an analogous equation of motion
+01:08:29.679 that applies in the other cases, but it
+01:08:31.839 doesn't pick out a direction of time.
+01:08:33.920 Doesn't pick out a direction.
+01:08:36.158 So I'm just wondering if in the case
+01:08:38.479 when we start applying this to the to
+01:08:40.479 the standard model if the motivation for
+01:08:42.880 picking out a unit imaginary octonian
+01:08:45.040 has to do somehow with with essentially
+01:08:47.279 cosmology. I mean you know uh picking
+01:08:50.319 out a direction of time
+01:08:53.439 >> anyway those are two slightly
+01:08:56.399 >> disconnect connected points but maybe
+01:08:58.479 they are related in some way. Yeah,
+01:09:00.560 thanks. I think I actually have studied
+01:09:04.080 how you uh get those
+01:09:07.520 derivations of Jordan algebbras from
+01:09:10.640 associators, but I somehow hadn't
+01:09:13.120 connected it back to my the physics side
+01:09:15.439 of my brain. Uh and so it will be good
+01:09:18.399 for me to think about that here. And
+01:09:20.640 >> yeah, um
+01:09:22.799 I I can mention there's a there's a
+01:09:25.439 review of of Jordan algebraas years ago.
+01:09:28.319 I I wrote and I put up more recently a
+01:09:31.279 few years ago, I put up a transcript of
+01:09:33.359 it on on the archive and I thought there
+01:09:37.439 was there was one point in it that I
+01:09:39.040 thought was was original which was to do
+01:09:41.359 with something with what I was just
+01:09:42.640 telling you. But actually then later I
+01:09:44.799 actually discovered it's in the paper
+01:09:46.080 it's in a paper of Namboo many years
+01:09:48.238 ago. But when he uses his Namboo
+01:09:50.000 mechanics and he starts looking for at
+01:09:52.799 some point he starts to consider Jordan
+01:09:54.800 algebra as an associate and in fact it's
+01:09:57.280 this the same thing is actually in his
+01:09:59.600 paper.
+01:10:01.199 >> Ah that's interesting. Well then maybe
+01:10:02.800 I'll finally understand Namboo mechanic.
+01:10:05.840 >> You can
+01:10:07.840 so so I mean it's stated in the in this
+01:10:10.239 review thing that I wrote it on the
+01:10:11.840 archive but actually the the original
+01:10:14.560 you know I didn't I didn't know that but
+01:10:16.320 in fact I found it later. It's in it's
+01:10:18.320 in Namboo's paper.
+01:10:19.760 >> Oh, that's ne thanks. I'll look at that.
+01:10:24.880 Um maybe curly.
+01:10:27.920 >> John, I had two questions. Uh uh one is
+01:10:32.080 that few slides back you had a SU3 cross
+01:10:35.920 SU3. One of the SU3s you identified with
+01:10:39.679 the strong interaction. Can the other
+01:10:42.080 one be SU3 flavor? This is one. Okay. So
+01:10:46.320 first you can answer this then I come to
+01:10:47.840 my next question.
+01:10:49.600 >> Yeah. Well everyone is tempted to relate
+01:10:54.880 the oh sorry the every did you say
+01:10:59.199 flavor um or your generation.
+01:11:02.320 >> I mean
+01:11:03.360 >> generations. Yes. Yes.
+01:11:04.480 >> I mean everyone is tempted when they see
+01:11:06.159 the exceptional Jordan algebra to think
+01:11:07.840 it has something to do with the three
+01:11:09.760 generations. Um I I haven't managed to
+01:11:12.880 find a a way to make that very to make
+01:11:16.560 that really work in this particular
+01:11:18.960 case.
+01:11:21.120 the the the
+01:11:23.520 other SU
+01:11:25.360 both of these SU3s uh I mean the
+01:11:28.640 standard model gauge group is sitting
+01:11:30.159 inside this SU3 times SU3 and one of
+01:11:33.360 them is giving you the strong force SU3
+01:11:35.600 and the other SU3 you should think of as
+01:11:37.600 maybe like some kind of primordial SU3
+01:11:41.440 that contains the U1 times SU2. So you
+01:11:44.960 can imagine some uh breaking scenario
+01:11:48.480 where where the electroeak force was
+01:11:50.239 once upon a time its own su3 but but it
+01:11:54.239 has nothing visible to do with like the
+01:11:56.640 three generations at all.
+01:11:59.120 So the related question is uh what if
+01:12:02.320 you go to complexified H30 where the
+01:12:07.120 group is E6
+01:12:09.679 what's the difficult if you try to
+01:12:11.199 represent three perian generations using
+01:12:13.920 that
+01:12:16.719 >> I don't know what the difficulty is with
+01:12:19.760 that sorry I can't yeah I I don't know I
+01:12:22.480 mean I I haven't tried it hard enough to
+01:12:25.040 >> to find an obstacle
+01:12:28.320 good other interesting things to say
+01:12:30.640 about complexifying this uh H30 and and
+01:12:35.600 bringing E6 into the picture.
+01:12:38.320 was raising that
+01:12:41.440 >> issue uh in some emails recently because
+01:12:45.280 it might it might
+01:12:48.080 deal with what I consider the very
+01:12:51.840 pressing problem that uh that right now
+01:12:56.080 if we try to use this octonic
+01:12:58.800 description to understand the firmians
+01:13:02.000 it's
+01:13:02.480 >> it's rather easy to get the left-handed
+01:13:04.320 firmians into the game but but the
+01:13:06.719 right-handed firmian aren't aren't ar
+01:13:08.880 are ar are ar are ar are ar are ar are
+01:13:08.880 ar are ar are ar are ar are ar are ar
+01:13:08.960 are ar are ar are ar are ar are ar are
+01:13:08.960 ar are ar are ar are aren't so easily
+01:13:10.560 showing up in this description
+01:13:13.679 >> yeah just quickly to say I I I discussed
+01:13:16.080 that a little bit that's discussed a
+01:13:17.440 little bit in a paper that I posted last
+01:13:19.280 this past summer and I'll I'll talk
+01:13:20.960 about that a little bit more in my in my
+01:13:22.960 well a lot more in my talk later in the
+01:13:24.880 workshop uh
+01:13:26.000 >> great
+01:13:26.320 >> it's the answer's a little bit involved
+01:13:30.080 >> great yeah I'd like
+01:13:31.120 >> okay think more about that
+01:13:32.719 >> thank you
+01:13:33.440 >> sure y uh Ben
+01:13:36.239 >> hi there Um I'm Ben. I'm in Canada,
+01:13:38.640 Saskatchewan. Thanks very much for your
+01:13:40.480 talk.
+01:13:41.520 >> What I wanted to uh
+01:13:43.280 >> what I wanted to ask about was
+01:13:46.159 >> closer look at this idea of selecting a
+01:13:48.000 imaginary unit in the octonians in the
+01:13:50.239 context of a Jordan algebra. Um because
+01:13:53.360 you can say that in one sentence and
+01:13:54.960 because we're familiar with constructing
+01:13:56.880 Jordan algebbras uh as matrices over
+01:14:00.080 octonians for instance. But the group F4
+01:14:02.960 it has a lot of symmetry. And if we can
+01:14:05.679 select any three orthogonal um I think
+01:14:09.440 you call them pure states then we can
+01:14:12.480 split
+01:14:14.000 uh this 27 dimensional algebra into 1
+01:14:17.120 plus 1 + 1 + 8 plus 8 plus 8 and we have
+01:14:19.840 to go further to specify octon structure
+01:14:23.360 and only then can we say let's select an
+01:14:26.400 imaginary unit. And what's interesting
+01:14:28.159 to me is that after selecting that
+01:14:29.920 imaginary unit, um, we're going to relax
+01:14:32.960 that previous constraints that we put on
+01:14:35.360 there because the standard model is not
+01:14:37.600 inside of G2 and it's not inside of D4.
+01:14:41.440 So I I I wonder if uh if looking at
+01:14:46.960 Jordan algebbras more directly and
+01:14:49.040 seeing the octonians as as downstream of
+01:14:52.400 the exceptional Jordan algebra might
+01:14:54.159 give us a new way to sort of state your
+01:14:56.640 two sentence answer to where does the
+01:14:58.239 standard model come from.
+01:15:01.120 >> Yeah, that sounds nice to me because
+01:15:03.040 that sounds like a like a math problem.
+01:15:06.451 [laughter] It sounds like sounds like a
+01:15:08.239 a problem that
+01:15:11.120 that uh
+01:15:13.280 should have some solution. Um
+01:15:17.360 I haven't thought about that enough. So
+01:15:19.600 maybe we could talk about that
+01:15:22.480 sometime. So
+01:15:26.080 So yeah. So the way I would like to
+01:15:30.320 try to go about that would be to start
+01:15:33.120 out just thinking of H3 of O as a Jordan
+01:15:36.880 algebra.
+01:15:39.040 And you're and you're right, not not
+01:15:42.320 acting like you don't know its 3x3
+01:15:44.560 matrices of of octonians. Just think of
+01:15:47.040 it as sort of an anonymous Jordan
+01:15:49.120 algebra and then figure out what extra
+01:15:52.800 structure you have to slap on that
+01:15:54.480 Jordan algebra to break the symmetry
+01:15:56.640 group down to the standard model gauge
+01:15:59.280 group but phrased purely in the Jordan
+01:16:01.440 algebra language. Yeah. Um I I don't
+01:16:04.480 know how to do that but that sounds like
+01:16:06.480 a fairly wellposed math problem. It
+01:16:10.960 could have lots of answers but should
+01:16:13.280 have a good answer. Do you have an idea?
+01:16:16.960 >> I have an idea. Um I think that the
+01:16:20.000 first step would be to say um we've got
+01:16:22.800 a Jordan algebra and so we've got a
+01:16:24.400 manifold of primitive in potent which
+01:16:26.000 are your pure states that you mentioned.
+01:16:28.080 >> That's the octonium projective plane.
+01:16:30.480 >> Um so if you select any point in the
+01:16:32.320 octonium projective plane that's the
+01:16:34.000 same thing as selecting an H2O
+01:16:36.719 subalgebra because that's just the
+01:16:38.880 vectors that are orthogonal to it
+01:16:40.800 relative to this trace. Uh and then the
+01:16:43.280 next step which is the tricky one which
+01:16:45.040 I'm have played with but I'm not sure
+01:16:47.199 how it works is realizing that um H2O it
+01:16:52.719 has got the eight sphere like you said
+01:16:54.960 um but these primitive in potent they
+01:16:56.719 actually have a um reman manifold
+01:16:59.440 structure so they have geodessic curves
+01:17:01.760 >> and I think I speculate that if you just
+01:17:04.800 select any geodessic curve on this eight
+01:17:08.080 sphere that might be enough to get you
+01:17:10.480 quite close to the standard model. So it
+01:17:12.480 would be select a primitive and impotent
+01:17:15.199 and then select a geodessic curve on the
+01:17:17.520 eight sphere. I think that might be
+01:17:19.280 enough or it'll be it'll get you close I
+01:17:21.600 think. Yeah.
+01:17:22.800 >> Uhhuh. Yeah. That's nice. Yeah. I
+01:17:25.280 definitely completely agree with picking
+01:17:27.120 the
+01:17:28.640 primitive in potent or pure state. At
+01:17:31.360 one point I my talk I was get describing
+01:17:33.920 things when I was trying to write this
+01:17:36.080 talk. I was describing things that way
+01:17:38.080 instead of picking out a copy of H2O.
+01:17:40.640 Those are but those are completely
+01:17:42.560 equivalent. Uh so yeah. So then you
+01:17:45.679 could so then it seems to me you need to
+01:17:48.159 get down to getting yourself a copy of
+01:17:51.920 HQC in there. But then well at least in
+01:17:55.440 the description that I'm talking about
+01:17:58.000 uh in my my talk
+01:18:02.400 we need [snorts] we need more than just
+01:18:05.760 uh we need a bit more than that. there's
+01:18:08.640 some extra a little bit of extra
+01:18:10.000 structure that's being preserved by the
+01:18:12.960 standard model gauge group. Anyway,
+01:18:15.120 thanks. That's that's a good thing to
+01:18:16.960 think about.
+01:18:19.280 >> Uh I think Namata has had her hand up
+01:18:23.520 for a while.
+01:18:27.120 >> Hi, thank you. Uh it was a wonderful
+01:18:30.000 talk um and I was able to follow
+01:18:32.480 through. So, thank you so much. Um so my
+01:18:35.760 question actually kind of um ties in
+01:18:37.840 with the previous question from the
+01:18:39.600 person from Saskatchewan.
+01:18:41.920 Um is that uh it's it's similar like
+01:18:44.640 when you were talking about um you know
+01:18:47.520 the cones where you have the determinant
+01:18:50.239 equals zero um and then you have the
+01:18:52.320 states in you had the pure states in
+01:18:54.560 blue which you would which you would
+01:18:56.800 like call let's say uh boundary uh
+01:19:00.320 states
+01:19:00.960 >> the right word for that would be extreme
+01:19:03.360 points. So those uh there there's
+01:19:06.640 certain I in this case it's the whole
+01:19:08.880 boundary but in in general for the
+01:19:11.040 Jordan algebra the pure states are what
+01:19:12.800 you call the extreme points of the of
+01:19:16.239 the states anyway we could get into that
+01:19:18.000 if we cared but go ahead. Yeah.
+01:19:19.600 >> Right. So so basically I I I guess my
+01:19:22.000 first thing would be we would have to
+01:19:23.520 describe such extreme points. Um but I
+01:19:28.320 guess the question is like can we use
+01:19:30.560 these um Jordan algebbras to describe
+01:19:33.840 the manowski space with these pure
+01:19:36.719 states on the boundary and um basically
+01:19:39.199 where I'm going is to have this like to
+01:19:43.679 be able to describe this manifold
+01:19:46.239 um between two different um
+01:19:51.040 uh between two different uh let's say
+01:19:54.080 not boundaries per se but whatever
+01:19:56.320 fields you're looking at to different
+01:19:57.679 gauge fields um by I mean we can always
+01:20:00.640 use a path integral or some other way to
+01:20:04.640 connect them to actually describe
+01:20:08.400 um the relationship between like the
+01:20:10.560 boundary and let's say the bulk for
+01:20:12.719 example
+01:20:14.800 so can can we use Jordan algebbras to do
+01:20:18.640 that like how close is it to manowski
+01:20:21.679 space that we can actually use that
+01:20:25.520 >> uh I I don't really know a good answer
+01:20:29.600 to that but I mean I will just say that
+01:20:32.239 I mean every everything about Minkowski
+01:20:34.800 spacetime is
+01:20:38.000 is available in this
+01:20:41.360 uh Jordan algebra framework for spin
+01:20:44.480 factors like the problem in a sense is
+01:20:47.199 that even more than what you want is
+01:20:49.600 available because we're what what the
+01:20:51.679 spin factor is really describing is not
+01:20:53.600 exactly Minkowski spacetime but it's
+01:20:55.280 actually Minkowki space spacetime with a
+01:20:58.080 chosen time axis. So
+01:21:00.560 >> okay.
+01:21:00.960 >> So um so that's that's why these
+01:21:03.679 symmetries get of the spin factor get to
+01:21:06.960 be not the uh Lorent group but a smaller
+01:21:10.400 group which is like o I guess in this
+01:21:13.120 case it would be like o and um so you
+01:21:16.159 have sort of both the benefits of
+01:21:17.760 minkowski spacetime and uklitian
+01:21:20.320 spacetime. Uh but by the way if you only
+01:21:24.800 if you throw out some aspects of the
+01:21:26.800 Jordan algebra and only keep track of
+01:21:28.400 the determinant then the symmetries that
+01:21:30.480 preserve that are just going to be the
+01:21:32.640 Lorent group and so you should you
+01:21:35.360 should you should do that.
+01:21:37.840 Uh okay so I'm not completely answering
+01:21:39.920 your question but I guess I'm saying
+01:21:41.120 that in fact the Jordan algebra
+01:21:42.640 structure is sort of more structure than
+01:21:44.239 you need to describe Mikowski spacetime
+01:21:47.040 >> right. Um uh the only one of the reasons
+01:21:50.080 I had asked that like I don't know if
+01:21:51.840 anyone's done this but it makes sense
+01:21:54.080 like just because like you you just said
+01:21:56.239 that the spin uh factors have a lot more
+01:21:59.760 um information so to speak
+01:22:02.320 >> like structural information uh than
+01:22:04.960 let's say just the Laurent group. So it
+01:22:08.719 it just it it would give you more of an
+01:22:11.440 idea of what said boundary would look
+01:22:14.800 like or like you know the what other
+01:22:17.280 structures may arise especially if
+01:22:19.040 you're doing something in terms of um
+01:22:21.840 quantum gravity so to speak.
+01:22:25.760 I I know I'm speaking in generalities
+01:22:27.679 because I haven't done this either.
+01:22:29.920 >> Yeah. I don't have anything terribly
+01:22:31.840 good I don't have anything terribly good
+01:22:34.639 to say about that. I guess um could you
+01:22:37.440 describe what you meant by um when you
+01:22:41.040 said the pure states would be like crit
+01:22:44.080 special states like critical ones?
+01:22:46.320 >> No, they're called extreme points. So
+01:22:48.239 the idea is that the
+01:22:50.639 >> these I'll point my hand at this picture
+01:22:53.199 but you should somehow be imagining a
+01:22:54.800 general Jordan algebra. Uh and so or
+01:22:58.320 maybe I should not get get rid of the
+01:23:00.159 picture here. So, so there's this
+01:23:04.480 cone of non- negative elements and then
+01:23:06.560 the ones whose trace is one, they're
+01:23:09.120 called states. And that that set of
+01:23:11.520 states is what's called a convex set.
+01:23:14.080 Meaning that you can if you draw a
+01:23:15.920 straight line between any two states,
+01:23:18.400 any point along that interval between
+01:23:21.040 them will again be a state. So, so
+01:23:24.000 convex linear combinations of states are
+01:23:26.159 states. Whenever you have a convex
+01:23:29.440 uh set, there's a concept of extreme
+01:23:32.239 point. So an extreme point in a convex
+01:23:35.199 set is one that's not lying on one of
+01:23:39.040 these line segments between any other
+01:23:41.760 points in the convex set. So like if my
+01:23:45.600 if my convex set was a ball, the points
+01:23:48.400 on the surface of the ball would be
+01:23:51.440 extreme points because if I there's if I
+01:23:54.159 take two points on the ball and draw a
+01:23:56.159 straight line between them, the points
+01:23:57.440 on on that straight line in the middle
+01:24:00.400 of the straight line couldn't be
+01:24:02.639 couldn't be on the surface of the ball.
+01:24:05.520 So the points on the surface of a ball
+01:24:07.360 are extreme points because they don't
+01:24:08.880 lie on any line joining any other two
+01:24:11.360 points. But but extreme point is a more
+01:24:13.920 specialized concept than the boundary
+01:24:16.080 because for example if I take a cube a
+01:24:18.320 cube is a convex set. But the points on
+01:24:22.000 the faces of the cube in the middle of a
+01:24:24.560 square are not extreme points because a
+01:24:27.679 point on the face of a cube could be
+01:24:30.000 gotten by drawing a line between two
+01:24:31.920 other points on the face of the cube and
+01:24:34.000 picking a point in along that line. So
+01:24:36.800 for a cube only only the edges of the
+01:24:39.679 cube and the corners or the extreme
+01:24:41.360 points. Um okay.
+01:24:43.440 >> So it takes it takes a it's actually um
+01:24:49.120 quite tricky to visualize this kind of
+01:24:50.960 thing. It's it's it's very easy to
+01:24:53.280 visualize the states in this kind of
+01:24:56.159 example when when they're a ball and
+01:24:58.239 then the pure states uh the extreme
+01:25:00.719 points are a sphere. But it's I I've had
+01:25:03.760 a lot of trouble visualizing these these
+01:25:06.000 other examples. So that what we're
+01:25:07.760 saying here is like for the case like n
+01:25:10.080 equals 3. So we're saying that CP2
+01:25:14.400 which is a pretty interesting
+01:25:16.639 four-dimensional manifold not at all a
+01:25:18.800 sphere. CP2 you can think of as the
+01:25:21.360 extreme points of a convex set of of the
+01:25:25.520 of the the density matrices.
+01:25:28.719 This states in this case are density
+01:25:30.480 matrices. So I'm saying you take density
+01:25:32.719 matrices 3x3 self adjoint matrices with
+01:25:35.760 trace one look at the extreme points of
+01:25:38.400 that and and you get CP two. So so
+01:25:42.320 that's an example of of how these
+01:25:44.000 extreme points work
+01:25:46.000 >> right. Um thank you. I think this makes
+01:25:48.800 even this for some reason that makes
+01:25:50.960 even more sense now because if you are
+01:25:53.280 looking if you are looking at a um
+01:25:56.159 manowski spacetime a curved manowski
+01:25:58.880 spacetime then it makes sense you start
+01:26:01.520 with the you know um n equals 2 and then
+01:26:06.639 you can like go forward then
+01:26:10.080 okay well thank you so much I'm going to
+01:26:11.679 look into this
+01:26:12.400 >> y okay
+01:26:15.840 >> Michelle Yes. Uh
+01:26:19.920 I uh well thank for your lecture which
+01:26:24.080 very clear. I have not no real question.
+01:26:27.760 I have some remark on some question we
+01:26:31.120 have been uh posed. So first um the
+01:26:36.320 origin of my work
+01:26:40.159 was
+01:26:41.760 I was working from a lot of time to add
+01:26:45.440 the piece of quantum space to sp time to
+01:26:49.520 make the theory of of fundamental
+01:26:52.560 particle because I think it is a
+01:26:54.800 phenomena of quantum theory
+01:26:57.520 and uh well and a lot of thing are quite
+01:27:03.520 uh quite Well, but at some moment
+01:27:07.840 around 10 years ago, I was wondering
+01:27:11.280 what is the meaning of the unimod the
+01:27:15.600 unodularity of three a color group. It
+01:27:20.159 is absolutely not natural because if we
+01:27:23.199 say that the quark has three color okay
+01:27:28.880 space three dimension the group should
+01:27:31.040 be you three. Okay. Uh-huh.
+01:27:34.000 >> Doing that I say okay this means that
+01:27:37.120 there is a complex volume down so a
+01:27:41.280 linear form.
+01:27:42.800 >> So since we are in three dimension in
+01:27:45.040 three dimension one always way can do
+01:27:48.239 transform this in a product like the
+01:27:51.440 vector product in air. So you take your
+01:27:56.239 volume and you say volume fix y z is the
+01:28:01.199 scalar product of the the new product of
+01:28:05.280 fix and y with zed and like that you
+01:28:09.679 obtain an anti-ymmetric
+01:28:12.000 antilinear product on C3. Okay.
+01:28:15.840 >> Right. Yes.
+01:28:16.960 >> And now SU3 is exactly the group which
+01:28:20.080 preserve this two thing.
+01:28:22.000 >> Yes. So now uh if you have the curiosity
+01:28:25.760 to compute the norm of the product the
+01:28:29.360 norm square of the this new product you
+01:28:32.480 find that it is the product of the norm
+01:28:35.679 square okay of the two factor minus the
+01:28:40.480 norm square of the scalar product of
+01:28:43.040 these two factor. So you see this say
+01:28:46.239 you that if I had a factor C and if I
+01:28:49.760 say that I have a projection of say on
+01:28:54.560 on of C3 on C plus C3. Okay. I can say
+01:29:00.159 that if I take a projection of this
+01:29:03.199 product the scalar product on the on the
+01:29:06.000 factor say and the product before then
+01:29:10.239 this this product would would be
+01:29:12.560 isometric. Okay.
+01:29:15.040 So now the natural thing to do when you
+01:29:17.679 are in this situation is to add the unit
+01:29:20.239 which correspond to the factor that you
+01:29:22.880 have here and to say okay I have a
+01:29:25.840 product on C3 + C. Okay, which is such
+01:29:30.719 that if I take the fact two two element
+01:29:33.280 of the C3 and if I take the other
+01:29:35.520 product the projection on C3 is the
+01:29:38.800 product I have already and the
+01:29:41.360 projection onto the unit is a scalar
+01:29:44.000 product. [snorts] So once you see that
+01:29:46.960 you say you you should you should try to
+01:29:50.320 extend this product as anric product
+01:29:53.840 from C3 plus C on itself. Okay, which is
+01:29:58.480 a and there are not so much this debond
+01:30:02.159 of some f but it's essentially unique
+01:30:05.600 and it's lead to a product which is C3
+01:30:10.800 is exactly the group which act linearly
+01:30:15.040 on C3 and which preserve this product.
+01:30:18.000 This product of course is not billionar
+01:30:21.440 complex and since for two reason first
+01:30:24.880 the the internal product is as I say
+01:30:28.719 antilar in the two factor and second is
+01:30:31.199 this linear on the projection on on the
+01:30:35.440 but what you see when you do that is
+01:30:38.400 that uh looking a little this you obtain
+01:30:42.639 like that a division algebra.
+01:30:45.040 >> Yes. Since this product is not still
+01:30:48.400 linear okay it's a product on air eight
+01:30:52.239 okay
+01:30:52.639 >> right yeah
+01:30:54.000 >> the division algebra so you have not and
+01:30:56.480 which is the metric okay we have not the
+01:31:00.000 choice is necessarily the octon but of
+01:31:02.880 course it is the octon realized by an a
+01:31:07.760 linear action a linear complex action on
+01:31:10.639 the factor C3 this is why this select
+01:31:14.560 inside
+01:31:16.480 this this this
+01:31:19.120 C3 and this action and you don't you
+01:31:22.560 must not forget this section because
+01:31:24.800 this action is really the color group
+01:31:27.600 which act linearly okay on the on the
+01:31:30.880 component of the quark. So now uh of
+01:31:34.320 course when you see that of course
+01:31:36.639 >> I'm sorry to interrupt you but it's been
+01:31:39.840 we've had a very long discussion
+01:31:41.440 already. So can you uh try to make your
+01:31:44.159 question precise?
+01:31:45.199 >> Okay, I have no question. I have chosen
+01:31:47.600 the I say that first. So this is my
+01:31:50.719 first remark that it is completely
+01:31:53.679 natural to do the thing like that and to
+01:31:56.960 to interpret then the factor say the
+01:31:59.600 lector associated to the quark because
+01:32:02.239 it's of course trivial presentation. My
+01:32:06.080 second point is the following.
+01:32:08.800 The difficulty to work with the
+01:32:11.199 exceptional algebra is that all jord
+01:32:14.239 module on this exceptional algebra are a
+01:32:17.199 factor of this exceptional algebra. The
+01:32:19.760 only irreductive module is the
+01:32:21.760 exceptional algebra itself. So all what
+01:32:25.360 you can do is transerize with some
+01:32:28.639 vector space. We don't know this stuff.
+01:32:31.199 And if you try to make the particle
+01:32:34.800 there you can but you will have some
+01:32:37.440 more particle. So this is the second
+01:32:40.159 point. The third point is that if you
+01:32:42.480 look at the 2x two octonic matrix
+01:32:47.840 you can look at your height the
+01:32:50.560 automorisma group of this is onoff since
+01:32:53.440 it's a factor the spin factor nine.
+01:32:56.880 Okay. But uh if you look at the subgroup
+01:33:00.800 which preserve this splitting
+01:33:04.159 in C + C3 acting line and which actar on
+01:33:08.480 C you find [clears throat] that it is
+01:33:10.960 the the the
+01:33:14.419 [clears throat] connected part of this
+01:33:16.080 is O3 cross S cross U3. Okay. So as your
+01:33:22.480 remark this is not exactly the standard
+01:33:25.520 group because there is a factor Z2 there
+01:33:28.480 but this factor Z2 is easy to understand
+01:33:32.080 with your analysis because it correspond
+01:33:34.400 to the fact that when you see that
+01:33:37.199 inside the the exceptional algebra you
+01:33:41.679 have two spinner over there.
+01:33:44.400 Okay. And you see when you pass you pass
+01:33:47.920 from spas time to the spinner field of
+01:33:51.440 course uh you take a covering of
+01:33:55.760 of what I mean is that this mean that
+01:34:00.400 torsion part of the fundamental group of
+01:34:05.440 the group is not some some obstruction
+01:34:08.960 you see. Okay. Well, we can yeah
+01:34:12.239 >> at all to to make a module over there
+01:34:15.440 which contain all the information of the
+01:34:18.639 particle of the standard model.
+01:34:20.880 >> Mhm.
+01:34:21.440 >> For one generation. So this is all what
+01:34:24.320 I want to to
+01:34:26.080 >> I'll have to think about the last part
+01:34:27.679 especially. So the first part yeah I is
+01:34:30.400 something that I invented and then
+01:34:32.400 discovered that that uh it's in
+01:34:35.440 Yakakota's uh lectures on exceptional
+01:34:40.400 groups which uh is well I I explain it
+01:34:44.800 in this blog article and I'm not going
+01:34:46.400 to go over it but the yeah so the idea
+01:34:48.639 is that like you said if you pick a
+01:34:50.639 complex inner product and a complex
+01:34:52.880 volume form on C3
+01:34:56.239 then you can define a kind crossroduct
+01:34:58.880 on C3 which is conjugate linear which is
+01:35:02.800 why I'm writing this uh overline here
+01:35:05.360 but then if you
+01:35:08.000 essentially if you copy the usual
+01:35:09.440 formula for how to build the quturnians
+01:35:12.639 out of R + R3 you get the a formula for
+01:35:16.880 the octonians. Yes, which is very
+01:35:20.000 beautiful. And then the and then you see
+01:35:23.040 this way that the uh subgroup of G2 that
+01:35:27.760 preserves a unit imaginary octonian has
+01:35:30.159 got to be SU3 because SU3 is exactly
+01:35:32.639 what's preserving the uh the uh inner
+01:35:36.880 product and the
+01:35:39.360 uh
+01:35:41.040 uh volume form on C3. So yes, it seems
+01:35:44.400 very this is people have thought about
+01:35:47.120 this in different ways for a while, but
+01:35:49.040 it's it's it's very tempting to think
+01:35:50.960 that the strong force is connected to
+01:35:53.280 all of that nice mathematics.
+01:35:58.159 >> Okay. Uh we have 40 minutes past the end
+01:36:00.960 of the discussion. So I think we should
+01:36:03.679 wrap up. So let's thank John again.
+01:36:08.159 >> Great. Thanks very much.

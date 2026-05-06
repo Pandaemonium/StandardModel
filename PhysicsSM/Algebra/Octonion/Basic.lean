@@ -288,4 +288,60 @@ theorem mul_anticomm_imag (i j : Fin 8)
        Octonion.ext_iff, ite_true, ite_false] <;>
     (try norm_num) <;> (first | omega | contradiction)
 
+/-! ### Fano plane and Hamming-code skeleton -/
+
+/--
+Each positive Fano triple is closed under the project XOR labelling.
+
+This is the finite combinatorial bridge between the octonion multiplication
+table and the usual parity-check picture of the `[7,4,3]` Hamming code.  A line
+of the Fano plane contains three nonzero binary labels whose bitwise XOR is
+zero; with the chosen orientation this is recorded as `a XOR b = c`.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`, reviewed and
+integrated as a finite `decide` proof against the project XOR convention.
+-/
+theorem fanoTriple_xor_closure :
+    ∀ t ∈ fanoTriples, t.1.val ^^^ t.2.1.val = t.2.2.val := by
+  decide
+
+/--
+The project Fano triples satisfy the bitwise parity equations used by the
+`[7,4,3]` Hamming parity-check matrix.
+
+For each Fano line `(a, b, c)`, every bit of `a` is the XOR of the
+corresponding bits of `b` and `c`.  This theorem does not yet define a full
+linear code in Lean; it records the exact finite parity skeleton that later
+Construction A work can use as its starting point.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`.
+-/
+theorem fano_lines_are_hamming_parity_rows :
+    ∀ t ∈ fanoTriples,
+    (Nat.testBit t.1.val 0 : Bool) =
+        xor (Nat.testBit t.2.1.val 0) (Nat.testBit t.2.2.val 0) ∧
+    (Nat.testBit t.1.val 1 : Bool) =
+        xor (Nat.testBit t.2.1.val 1) (Nat.testBit t.2.2.val 1) ∧
+    (Nat.testBit t.1.val 2 : Bool) =
+        xor (Nat.testBit t.2.1.val 2) (Nat.testBit t.2.2.val 2) := by
+  decide
+
+/--
+The seven Fano triples cover every ordered pair of distinct nonzero labels.
+
+This is the finite projective-plane incidence fact needed before treating the
+Fano plane as the combinatorial support of the `[7,4,3]` Hamming code.  The
+six disjuncts say that the ordered pair may occur in either order and in any
+two of the three positions of the stored oriented triple.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`.
+-/
+theorem fano_covers_all_ordered_pairs :
+    ∀ (a b : Fin 8), a ≠ 0 → b ≠ 0 → a ≠ b →
+    ∃ t ∈ fanoTriples,
+      (t.1 = a ∧ t.2.1 = b) ∨ (t.1 = b ∧ t.2.1 = a) ∨
+      (t.2.1 = a ∧ t.2.2 = b) ∨ (t.2.1 = b ∧ t.2.2 = a) ∨
+      (t.1 = a ∧ t.2.2 = b) ∨ (t.1 = b ∧ t.2.2 = a) := by
+  decide
+
 end PhysicsSM.Algebra.Octonion

@@ -12,19 +12,18 @@ Formalize the minimal left ideal `J` as a `Submodule Complex ComplexOctonion`
 and prove that the Furey operator-level symmetry maps act correctly on the
 verified eight-state basis.
 
-## Review Note
+## Convention Note
 
-Both Aristotle results used the word "hypercharge" for the operator
-`(-1/3) * (N1 + N2 + N3)`.  The formal statements and eigenvalues match the
-electric-charge convention already present in `MinimalLeftIdeal.lean`:
+The operator `(-1/3) * (N1 + N2 + N3)` is the electric-charge operator on the
+current Furey basis:
 
 - `omega`: `-1`
 - `v1`, `v2`, `v3`: `-2/3`
 - `v4`, `v5`, `v6`: `-1/3`
 - `nu`: `0`
 
-That is not conventional weak hypercharge.  The integrated code therefore names
-the operator `Q_op` and records this semantic correction in comments.
+The integrated code names this operator `Q_op`. Hypercharge belongs to a
+separate weak-isospin bridge using `Q = T3 + Y / 2`.
 
 ## Integrated File
 

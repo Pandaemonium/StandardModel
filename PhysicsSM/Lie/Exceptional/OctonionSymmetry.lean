@@ -30,6 +30,12 @@ octonions -> norm/dot product -> norm-preserving maps -> SO(8)
 - `octonionCommutator_anticomm` proves the commutator is antisymmetric.
 - `octonionCommutator_imaginary` proves that the commutator of imaginary
   octonions is imaginary.
+- `octonionAssociator` records the explicit associator parenthesization.
+- `octonionAssociator_antisymmetric_first_two` and
+  `octonionAssociator_antisymmetric_last_two` prove the finite coordinate
+  antisymmetry identities needed for later G2 work.
+- `IsOctonionDerivation` and `octonionDerivation_kills_one` start the
+  derivation-space infrastructure.
 
 ## What is not proved here
 
@@ -154,5 +160,191 @@ theorem octonionCommutator_imaginary {x y : Octonion}
   unfold octonionCommutator
   simp [hx, hy]
   ring
+
+/-! ## Associator -/
+
+/--
+The explicitly parenthesized octonion associator.
+
+Because octonions are not associative, this definition is intentionally
+parenthesized in the only way it should be read:
+
+```text
+[a, b, c] = (a * b) * c - a * (b * c)
+```
+
+Later G2 work should refer to this named definition rather than restating the
+parenthesized expression by hand.
+-/
+def octonionAssociator (a b c : Octonion) : Octonion :=
+  (a * b) * c - a * (b * c)
+
+/--
+The octonion associator is antisymmetric in its first two arguments.
+
+This is the coordinate-level linearization of left alternativity for the
+project octonion model.  The proof expands all eight coordinates and reduces
+the statement to polynomial arithmetic over `Real`.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`, cleaned to
+use the descriptive `octonionAssociator` definition.
+-/
+theorem octonionAssociator_antisymmetric_first_two (a b c : Octonion) :
+    octonionAssociator a b c = -octonionAssociator b a c := by
+  unfold octonionAssociator
+  ext <;> simp <;> ring
+
+/--
+The octonion associator is antisymmetric in its last two arguments.
+
+Together with `octonionAssociator_antisymmetric_first_two`, this records the
+finite trusted fact that the project octonion associator is alternating.  This
+is one algebraic fingerprint behind the later derivation and G2 story.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`.
+-/
+theorem octonionAssociator_antisymmetric_last_two (a b c : Octonion) :
+    octonionAssociator a b c = -octonionAssociator a c b := by
+  unfold octonionAssociator
+  ext <;> simp <;> ring
+
+/-! ## Octonion derivations -/
+
+/--
+Predicate for derivations of the concrete real octonion algebra.
+
+The predicate is deliberately stated directly on functions `Octonion ->
+Octonion`.  It requires compatibility with real scalar multiplication,
+additivity, and the Leibniz rule for the nonassociative octonion product.  It
+does not package derivations as a vector space yet; the missing dimension-14
+theorem needs a separate constraint-matrix formalization.
+-/
+def IsOctonionDerivation (D : Octonion → Octonion) : Prop :=
+  (∀ (r : ℝ) (x : Octonion), D (r • x) = r • D x) ∧
+  (∀ x y : Octonion, D (x + y) = D x + D y) ∧
+  (∀ x y : Octonion, D (x * y) = D x * y + x * D y)
+
+/--
+Every octonion derivation sends the scalar unit to zero.
+
+The proof uses only the Leibniz rule at `1 * 1`.  Since `1` is a two-sided unit,
+the Leibniz equation becomes `D 1 = D 1 + D 1`, and the coordinate extensionality
+lemmas reduce the result to real arithmetic.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`.
+-/
+theorem octonionDerivation_kills_one {D : Octonion → Octonion}
+    (hD : IsOctonionDerivation D) :
+    D 1 = 0 := by
+  have hD_one : D 1 = D 1 * 1 + 1 * D 1 := by
+    have h_leibniz := hD.2.2 1 1
+    convert h_leibniz
+    ext <;> simp
+  simp_all +decide [Octonion.ext_iff]
+
+/-! ## Derivation closure properties -/
+
+/--
+The zero function is an octonion derivation.
+
+This is the first closure property needed before the derivations can be
+packaged as a vector subspace. The statement is kept at the predicate level
+because the project octonion type does not yet expose all of the additive and
+module typeclass structure needed for a bundled `Submodule`.
+
+Provenance: Aristotle job `c8b9c03a-b34e-423f-a362-ffe278b99fc8`.
+-/
+theorem zero_isOctonionDerivation :
+    IsOctonionDerivation (fun _ : Octonion => 0) := by
+  constructor <;> intros <;> simp +decide
+  · ext <;> norm_num
+  · exact ⟨by ext <;> norm_num, fun x y => by ext <;> norm_num⟩
+
+/--
+The pointwise sum of two octonion derivations is again an octonion derivation.
+
+The proof expands the three fields in `IsOctonionDerivation`. Scalar
+compatibility and additivity are pointwise consequences of the hypotheses.
+For the Leibniz rule, the only subtlety is bookkeeping: the desired expression
+has the four resulting terms grouped in a different order.
+
+Provenance: Aristotle job `c8b9c03a-b34e-423f-a362-ffe278b99fc8`.
+-/
+theorem add_isOctonionDerivation {D E : Octonion → Octonion}
+    (hD : IsOctonionDerivation D) (hE : IsOctonionDerivation E) :
+    IsOctonionDerivation (D + E) := by
+  constructor
+  · intro r x
+    have := hD.1 r x
+    have := hE.1 r x
+    simp_all +decide
+    exact Eq.symm (by ext <;> simp +decide [mul_add])
+  · constructor
+    · intros x y
+      simp [Pi.add_apply, hD.2.1, hE.2.1]
+      simp +decide [add_left_comm, add_comm, Octonion.ext_iff]
+    · intro x y
+      have := hD.2.2 x y
+      have := hE.2.2 x y
+      simp_all +decide
+      have : ∀ (a b c d : Octonion),
+          (a + b) + (c + d) = (a + c) + (b + d) := by
+        intros a b c d
+        ext <;> simp [add_comm, add_left_comm]
+      have : ∀ (a b c : Octonion),
+          a * (b + c) = a * b + a * c ∧
+          (b + c) * a = b * a + c * a := by
+        intros a b c
+        exact ⟨by ext <;> simp +decide [mul_add] <;> ring,
+               by ext <;> simp +decide [add_mul] <;> ring⟩
+      grind
+
+/--
+The pointwise negation of an octonion derivation is again an octonion
+derivation.
+
+This is the additive-inverse closure property for the eventual derivation
+subspace. It is stated directly for functions, matching the current
+predicate-level API.
+
+Provenance: Aristotle job `c8b9c03a-b34e-423f-a362-ffe278b99fc8`.
+-/
+theorem neg_isOctonionDerivation {D : Octonion → Octonion}
+    (hD : IsOctonionDerivation D) :
+    IsOctonionDerivation (-D) := by
+  have h0 : ∀ (r : ℝ) (x : Octonion),
+      (-D) (r • x) = r • (-D) x := by
+    exact fun r x => by ext <;> simp +decide [hD.1 r x]
+  constructor
+  · assumption
+  · constructor <;> intros <;> ext <;> simp +decide [*]
+    all_goals have := hD.2.1
+    all_goals simp_all +decide [IsOctonionDerivation]
+    all_goals ring
+
+/--
+A real scalar multiple of an octonion derivation is again an octonion
+derivation.
+
+Together with `zero_isOctonionDerivation`, `add_isOctonionDerivation`, and
+`neg_isOctonionDerivation`, this gives the mathematical closure content for
+the future vector space of octonion derivations. Packaging it as a Lean
+`Submodule` is intentionally deferred until the octonion type has the needed
+full additive and module instances.
+
+Provenance: Aristotle job `c8b9c03a-b34e-423f-a362-ffe278b99fc8`.
+-/
+theorem smul_isOctonionDerivation (r : ℝ) {D : Octonion → Octonion}
+    (hD : IsOctonionDerivation D) :
+    IsOctonionDerivation (r • D) := by
+  constructor
+  · exact fun r' x => by
+      ext <;> simp +decide [hD.1] <;> ring
+  · have := hD.2.2
+    constructor
+    · intro x y
+      ext <;> simp +decide [hD.2.1] <;> ring
+    · intro x y
+      ext <;> simp +decide [this, mul_comm r] <;> ring
 
 end PhysicsSM.Lie.Exceptional.OctonionSymmetry

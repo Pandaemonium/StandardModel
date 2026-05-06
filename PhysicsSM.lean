@@ -1,5 +1,10 @@
 import PhysicsSM.Prelude
+import PhysicsSM.Algebra.Furey.MinimalLeftIdeal
 import PhysicsSM.Algebra.Octonion.TrialityCompanions
+import PhysicsSM.Lie.Exceptional.G2
+import PhysicsSM.Lie.Exceptional.E8
+import PhysicsSM.Lie.Exceptional.OctonionSymmetry
+import PhysicsSM.StandardModel.AnomalyCancellation
 
 /-!
 # PhysicsSM

@@ -425,6 +425,94 @@ theorem conjBy_mul_of_unit_cube_eq_neg_one
   simp only [conjBy_neg] at h
   exact h
 
+/-! ## Bijectivity and structural preservation for `conjBy` -/
+
+/--
+Conjugation by a unit octonion preserves the squared norm.
+
+No cube hypothesis is needed.  The proof uses norm multiplicativity twice:
+first for `(a * x)`, then for the final multiplication by `conj a`.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`, cleaned and
+kept in trusted code because the proof is complete and uses the existing
+project norm convention.
+-/
+theorem conjBy_normSq_of_unit {a : Octonion} (ha_unit : normSq a = 1)
+    (x : Octonion) :
+    normSq (conjBy a x) = normSq x := by
+  unfold conjBy
+  rw [normSq_mul, normSq_mul, normSq_conj, ha_unit]
+  ring
+
+/--
+`conjBy a` commutes with octonion conjugation.
+
+This identity is true without assuming `a` has unit norm.  The only
+nonassociative subtlety is the reassociation through `a` and `conj a`, which is
+handled by `mul_assoc_with_conj_right`.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`.
+-/
+theorem conjBy_commutes_conjugation (a x : Octonion) :
+    conjBy a (conj x) = conj (conjBy a x) := by
+  unfold conjBy
+  rw [mul_assoc_with_conj_right, conj_mul, conj_mul]
+  rw [conj_conj]
+
+/--
+For unit `a`, `conjBy (conj a)` is a left inverse of `conjBy a`.
+
+This is the key cancellation fact behind bijectivity.  It is stated as a
+separate lemma so later automorphism and group-action work can reuse the exact
+inverse candidate rather than reconstructing it.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`.
+-/
+theorem conjBy_leftInverse_conj_of_unit {a : Octonion}
+    (ha_unit : normSq a = 1) (z : Octonion) :
+    conjBy (conj a) (conjBy a z) = z := by
+  unfold conjBy
+  grind +suggestions
+
+/--
+For unit `a`, `conjBy a` is injective.
+
+The proof applies the explicit left inverse `conjBy (conj a)` to both sides.
+-/
+theorem conjBy_injective_of_unit {a : Octonion} (ha_unit : normSq a = 1) :
+    Function.Injective (conjBy a) := by
+  intro x y hxy
+  have h_congruent := congr_arg (conjBy (conj a)) hxy
+  rw [conjBy_leftInverse_conj_of_unit ha_unit x,
+      conjBy_leftInverse_conj_of_unit ha_unit y] at h_congruent
+  exact h_congruent
+
+/--
+For unit `a`, `conjBy a` is surjective.
+
+The inverse candidate is again `conjBy (conj a)`.  To prove it is a right
+inverse, we apply the left-inverse lemma to the unit octonion `conj a` and then
+simplify `conj (conj a)`.
+-/
+theorem conjBy_surjective_of_unit {a : Octonion} (ha_unit : normSq a = 1) :
+    Function.Surjective (conjBy a) := by
+  intro y
+  refine ⟨conjBy (conj a) y, ?_⟩
+  have h_conj_unit : normSq (conj a) = 1 := normSq_conj_unit ha_unit
+  simpa [conj_conj] using
+    (conjBy_leftInverse_conj_of_unit (a := conj a) h_conj_unit y)
+
+/--
+For unit `a`, `conjBy a` is a bijection of the underlying octonion type.
+
+This is only a bijectivity statement.  Multiplicativity is supplied separately
+by the cube hypotheses in `conjBy_mul_of_unit_cube_eq_one` and
+`conjBy_mul_of_unit_cube_eq_neg_one`.
+-/
+theorem conjBy_bijective_of_unit {a : Octonion} (ha_unit : normSq a = 1) :
+    Function.Bijective (conjBy a) :=
+  ⟨conjBy_injective_of_unit ha_unit, conjBy_surjective_of_unit ha_unit⟩
+
 /-! ## Companion-map predicates for the next stage -/
 
 /--
@@ -448,5 +536,119 @@ preserves multiplication and `normSq a = 1`, then one expects `cube a = 1` or
 -/
 def PreservesMul (gamma : Octonion → Octonion) : Prop :=
   ∀ x y : Octonion, gamma (x * y) = gamma x * gamma y
+
+/--
+For a unit octonion whose fixed cube is `1`, `conjBy a` has the concrete
+structure expected of an algebra automorphism.
+
+The project does not yet package this as a bundled `AlgEquiv`, because the
+octonion multiplication is nonassociative and the correct bundled abstraction
+needs separate design.  This theorem deliberately records the four trusted
+pieces instead: preservation of `1`, additivity, multiplicativity, and
+bijectivity.
+
+Provenance: Aristotle job `270e946c-7615-49ff-aded-15f9a2c68c15`, with the
+statement renamed from the raw output to make clear that it is unbundled
+automorphism data.
+-/
+theorem conjBy_automorphismData_of_unit_cube_eq_one {a : Octonion}
+    (ha_unit : normSq a = 1) (ha_cube : cube a = 1) :
+    conjBy a 1 = 1 ∧
+    (∀ x y, conjBy a (x + y) = conjBy a x + conjBy a y) ∧
+    PreservesMul (conjBy a) ∧
+    Function.Bijective (conjBy a) :=
+  ⟨conjBy_one_of_unit ha_unit,
+   fun x y => conjBy_add a x y,
+   fun x y => conjBy_mul_of_unit_cube_eq_one ha_unit ha_cube x y,
+   conjBy_bijective_of_unit ha_unit⟩
+
+/--
+For a unit octonion whose fixed cube is `-1`, `conjBy a` has the same concrete
+unbundled automorphism data.
+
+This is the negative-cube companion to
+`conjBy_automorphismData_of_unit_cube_eq_one`; it reuses the already trusted
+reduction through `conjBy_mul_of_unit_cube_eq_neg_one`.
+-/
+theorem conjBy_automorphismData_of_unit_cube_eq_neg_one {a : Octonion}
+    (ha_unit : normSq a = 1) (ha_cube : cube a = -1) :
+    conjBy a 1 = 1 ∧
+    (∀ x y, conjBy a (x + y) = conjBy a x + conjBy a y) ∧
+    PreservesMul (conjBy a) ∧
+    Function.Bijective (conjBy a) :=
+  ⟨conjBy_one_of_unit ha_unit,
+   fun x y => conjBy_add a x y,
+   fun x y => conjBy_mul_of_unit_cube_eq_neg_one ha_unit ha_cube x y,
+   conjBy_bijective_of_unit ha_unit⟩
+
+/-! ## Converse multiplication criterion -/
+
+/--
+Hard converse direction of the Conway-Smith/Yokota-style `conjBy` criterion.
+
+If `a` has unit norm and the explicitly parenthesized map
+`conjBy a x = (a * x) * conj a` preserves octonion multiplication, then the
+fixed parenthesized cube `(a * a) * a` is forced to be either `1` or `-1`.
+
+The proof is finite and coordinate-based.  It specializes the multiplicativity
+hypothesis to seven carefully chosen pairs of imaginary basis elements, expands
+those equations in the project XOR/Fano multiplication table, and lets `grind`
+combine the resulting polynomial constraints with `normSq a = 1`.  This keeps
+all nonassociative parenthesization explicit and avoids introducing any bundled
+associative-algebra abstraction for octonions.
+
+Provenance: Aristotle job `6065091b-6f6b-4de4-9590-501d6c3ab742`, reviewed
+after the extracted file kernel-checked with no proof placeholders.
+-/
+theorem conjBy_preservesMul_implies_cube_eq_one_or_neg_one
+    {a : Octonion} (ha_unit : normSq a = 1)
+    (h_preserves_mul : PreservesMul (conjBy a)) :
+    cube a = 1 ∨ cube a = -1 := by
+  have h_basis_equations :
+      conjBy a (basisElem 2 * basisElem 3) =
+          conjBy a (basisElem 2) * conjBy a (basisElem 3) ∧
+      conjBy a (basisElem 2 * basisElem 4) =
+          conjBy a (basisElem 2) * conjBy a (basisElem 4) ∧
+      conjBy a (basisElem 1 * basisElem 5) =
+          conjBy a (basisElem 1) * conjBy a (basisElem 5) ∧
+      conjBy a (basisElem 1 * basisElem 6) =
+          conjBy a (basisElem 1) * conjBy a (basisElem 6) ∧
+      conjBy a (basisElem 3 * basisElem 5) =
+          conjBy a (basisElem 3) * conjBy a (basisElem 5) ∧
+      conjBy a (basisElem 3 * basisElem 7) =
+          conjBy a (basisElem 3) * conjBy a (basisElem 7) ∧
+      conjBy a (basisElem 1 * basisElem 2) =
+          conjBy a (basisElem 1) * conjBy a (basisElem 2) := by
+    exact ⟨h_preserves_mul _ _, h_preserves_mul _ _, h_preserves_mul _ _,
+      h_preserves_mul _ _, h_preserves_mul _ _, h_preserves_mul _ _,
+      h_preserves_mul _ _⟩
+  unfold conjBy at h_basis_equations
+  unfold basisElem at h_basis_equations
+  simp +decide [Octonion.ext_iff] at h_basis_equations ⊢
+  unfold cube
+  simp +decide [Octonion.mul_c0, Octonion.mul_c1, Octonion.mul_c2,
+    Octonion.mul_c3, Octonion.mul_c4, Octonion.mul_c5, Octonion.mul_c6,
+    Octonion.mul_c7] at *
+  grind
+
+/--
+Full Conway-Smith/Yokota-style criterion for the project `conjBy` map.
+
+For a unit octonion `a`, `conjBy a` preserves the octonion product exactly when
+the fixed parenthesized cube `cube a = (a * a) * a` is `1` or `-1`.
+
+The forward implication is
+`conjBy_preservesMul_implies_cube_eq_one_or_neg_one`.  The reverse implication
+uses the two previously trusted forward multiplication theorems for cube `1`
+and cube `-1`.
+-/
+theorem conjBy_preservesMul_iff_cube_eq_one_or_neg_one
+    {a : Octonion} (ha_unit : normSq a = 1) :
+    PreservesMul (conjBy a) ↔ cube a = 1 ∨ cube a = -1 := by
+  constructor
+  · exact conjBy_preservesMul_implies_cube_eq_one_or_neg_one ha_unit
+  · rintro (ha_cube | ha_cube)
+    · exact fun x y => conjBy_mul_of_unit_cube_eq_one ha_unit ha_cube x y
+    · exact fun x y => conjBy_mul_of_unit_cube_eq_neg_one ha_unit ha_cube x y
 
 end PhysicsSM.Algebra.Octonion

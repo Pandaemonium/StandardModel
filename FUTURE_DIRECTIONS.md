@@ -287,19 +287,21 @@ made available.
 ### Concrete experiment
 
 Using the existing charge and colour data from `OperatorAlgebra.lean`:
-1. Assign SU(2) isospin T₃ eigenvalues to each of the 8 states of J (using
-   the `Y_op` / `T3_op` operators from `hypercharge.md`).
+1. Assign SU(2) isospin T₃ eigenvalues to each of the 8 states of J using a
+   future weak-isospin bridge. Hypercharge should then be computed from
+   `Y = 2(Q - T3)`.
 2. Compute `Σ Y · T₃²` (the mixed `[SU(2)]²[U(1)]` anomaly).
 3. Compute `Σ Y · (colour Casimir)` (the mixed `[SU(3)]²[U(1)]` anomaly).
 4. Check whether all six conditions vanish over J ⊕ J̄.
 
-If they do, this is the first machine-verified proof that the Furey charge
-assignment is *fully anomaly-free* in the Standard Model sense — going beyond
-what the existing charge-sum theorems already confirm.
+If they do, this gives a machine-verified arithmetic certificate for the
+candidate Standard Model anomaly equations attached to the Furey charge
+assignment, conditional on the separately specified weak-isospin bridge.
 
 ### Lean formalization prerequisites
 
-- `T3_op` and `Y_op` from `hypercharge.md` (task file exists)
+- a future weak-isospin operator or basis-level T3 table, together with
+  `Y = 2(Q - T3)`
 - The six anomaly conditions stated as Lean theorems
 - `norm_num` for the rational arithmetic
 - A clear convention on the Standard Model isospin and colour assignments
@@ -630,8 +632,8 @@ Higher gauge (5) ────────
 payoff near-term investments are:
 
 1. **Direction 4 (Anomaly Diophantine)** — requires only what is already
-   formalized; adding `T3_op` (from `hypercharge.md`) and checking all six
-   SM anomaly conditions would be a complete, verifiable result within 1-2
+   formalized; adding a weak-isospin bridge or basis-level T3 table and checking
+   the SM anomaly equations would be a focused, verifiable result within 1-2
    Aristotle jobs.
 
 2. **Direction 2 (Exceptional Jordan)** — the `H3O.lean` stub already exists,
@@ -675,7 +677,7 @@ Continuum limit and Lorentz recovery (long horizon)
 | 1. Spectral triple | SpectralTriple(A,H,D) | Not in Lean | Module ℂ, Q_op | 2–3 |
 | 2. Exceptional Jordan | H₃(𝕆), F₄ | Not in Lean | H3O.lean stub, Q2.5 | 4–6 |
 | 3. QCA dynamics | Bisio-D'Ariano local rule | Not in Lean | action table in MinimalLeftIdeal | simulation first |
-| 4. Anomaly Diophantine | SM anomaly equations | Not in Lean | charge_sum, T3_op needed | 1–2 |
+| 4. Anomaly Diophantine | SM anomaly equations | Not in Lean | charge_sum, weak-isospin bridge needed | 1–2 |
 | 5. Higher gauge / 2-group | 2-connection, crossed module | Not in Lean | assoc_antisymm, Chevalley rels | 3–5 |
 | 6. Causal set theory | Partial order, dimension | Not in Lean | none | simulation first |
 | 7. Holographic codes | Perfect tensor, HaPPY | Not in Lean | invariant subspaces in OperatorAlgebra | 2–3 |

@@ -1,0 +1,356 @@
+import Mathlib.Tactic
+import PhysicsSM.Algebra.Furey.OperatorRepresentations
+
+/-!
+# Draft Standard Model anomaly package and Furey bridge targets
+
+This file is intentionally draft scaffolding for a large Aristotle job. It
+collects the missing pieces needed to turn the current exact-arithmetic anomaly
+checks into a complete, reviewable Standard Model anomaly-cancellation package.
+
+Trusted files should not import this module while it contains `sorry`.
+
+The intended end state is to split successful parts into trusted modules:
+
+* `PhysicsSM.StandardModel.AnomalyPackage`
+* `PhysicsSM.Algebra.Furey.AnomalyBridge`
+
+The difficult semantic bridge is the Furey-to-Standard-Model map. The Lean
+kernel can check operator eigenvalue equations, but it cannot decide by itself
+whether the chosen state labels are the intended Standard Model multiplets. The
+final trusted bridge must therefore keep the particle/antiparticle, chirality,
+color representation, and hypercharge conventions explicit.
+-/
+
+namespace PhysicsSM.Draft.StandardModelAnomalyPackage
+
+/-! ## Generic Standard Model multiplet data -/
+
+/--
+The three color-representation cases needed for one Standard Model generation.
+
+This is deliberately smaller than a full representation-theory API. The anomaly
+package only needs the multiplicity, whether the state is colored for the
+`SU(3)^2 U(1)` sum, and the sign of the cubic `SU(3)^3` anomaly.
+-/
+inductive ColorRep where
+  | singlet
+  | triplet
+  | antiTriplet
+deriving DecidableEq, Repr
+
+namespace ColorRep
+
+/-- Dimension of the color representation. -/
+def multiplicity : ColorRep -> Nat
+  | singlet => 1
+  | triplet => 3
+  | antiTriplet => 3
+
+/-- Whether this representation contributes to the mixed `SU(3)^2 U(1)` sum. -/
+def isColored : ColorRep -> Bool
+  | singlet => false
+  | triplet => true
+  | antiTriplet => true
+
+/--
+Relative cubic `SU(3)^3` anomaly coefficient.
+
+The fundamental triplet and antifundamental triplet have opposite signs. The
+normalization is irrelevant for cancellation; only the relative signs matter.
+-/
+def cubicIndex : ColorRep -> Int
+  | singlet => 0
+  | triplet => 1
+  | antiTriplet => -1
+
+end ColorRep
+
+/-- The weak `SU(2)` representation cases used by the Standard Model table. -/
+inductive WeakRep where
+  | singlet
+  | doublet
+deriving DecidableEq, Repr
+
+namespace WeakRep
+
+/-- Dimension of the weak representation. -/
+def multiplicity : WeakRep -> Nat
+  | singlet => 1
+  | doublet => 2
+
+/-- Whether this representation contributes to the mixed `SU(2)^2 U(1)` sum. -/
+def isDoublet : WeakRep -> Bool
+  | singlet => false
+  | doublet => true
+
+end WeakRep
+
+/--
+A compact record for a left-handed chiral Standard Model multiplet.
+
+All right-handed physical fermions should be entered as left-handed
+charge-conjugate fields. Hypercharge uses the project convention
+`Q = T3 + Y / 2`.
+-/
+structure ChiralMultiplet where
+  label : String
+  color : ColorRep
+  weak : WeakRep
+  hypercharge : Rat
+deriving Repr
+
+namespace ChiralMultiplet
+
+/-- Color multiplicity of a multiplet. -/
+def colorMultiplicity (m : ChiralMultiplet) : Nat :=
+  m.color.multiplicity
+
+/-- Weak multiplicity of a multiplet. -/
+def weakMultiplicity (m : ChiralMultiplet) : Nat :=
+  m.weak.multiplicity
+
+/-- Total number of Weyl states represented by this multiplet. -/
+def totalMultiplicity (m : ChiralMultiplet) : Nat :=
+  m.colorMultiplicity * m.weakMultiplicity
+
+end ChiralMultiplet
+
+/--
+The mixed gravitational-`U(1)` anomaly coefficient, with color and weak
+multiplicities included.
+-/
+def gravitationalU1Anomaly (multiplets : List ChiralMultiplet) : Rat :=
+  (multiplets.map fun m =>
+    ((m.totalMultiplicity : Nat) : Rat) * m.hypercharge).sum
+
+/-- The cubic `U(1)^3` anomaly coefficient. -/
+def u1CubedAnomaly (multiplets : List ChiralMultiplet) : Rat :=
+  (multiplets.map fun m =>
+    ((m.totalMultiplicity : Nat) : Rat) * m.hypercharge ^ 3).sum
+
+/--
+The mixed `SU(2)^2 U(1)` anomaly coefficient.
+
+The common Dynkin index of the doublet is omitted because it is a nonzero
+common factor. Cancellation is unaffected by this normalization.
+-/
+def su2SquaredU1Anomaly (multiplets : List ChiralMultiplet) : Rat :=
+  (multiplets.map fun m =>
+    if m.weak.isDoublet then ((m.colorMultiplicity : Nat) : Rat) * m.hypercharge else 0).sum
+
+/--
+The mixed `SU(3)^2 U(1)` anomaly coefficient.
+
+Triplet and antitriplet have the same quadratic index, so both contribute with
+the same sign to this mixed anomaly.
+-/
+def su3SquaredU1Anomaly (multiplets : List ChiralMultiplet) : Rat :=
+  (multiplets.map fun m =>
+    if m.color.isColored then ((m.weakMultiplicity : Nat) : Rat) * m.hypercharge else 0).sum
+
+/--
+The pure `SU(3)^3` anomaly coefficient.
+
+Triplet and antitriplet contribute with opposite cubic signs. Weak
+multiplicity is included because each weak component carries color.
+-/
+def su3CubedAnomaly (multiplets : List ChiralMultiplet) : Int :=
+  (multiplets.map fun m => (m.weakMultiplicity : Int) * m.color.cubicIndex).sum
+
+/-- Number of left-handed weak doublets, counted with color multiplicity. -/
+def weakDoubletCount (multiplets : List ChiralMultiplet) : Nat :=
+  (multiplets.map fun m =>
+    if m.weak.isDoublet then m.colorMultiplicity else 0).sum
+
+/-- Local perturbative gauge and mixed anomaly cancellation conditions. -/
+structure LocalAnomalyFree (multiplets : List ChiralMultiplet) : Prop where
+  gravitational_u1 : gravitationalU1Anomaly multiplets = 0
+  u1_cubed : u1CubedAnomaly multiplets = 0
+  su2_squared_u1 : su2SquaredU1Anomaly multiplets = 0
+  su3_squared_u1 : su3SquaredU1Anomaly multiplets = 0
+  su3_cubed : su3CubedAnomaly multiplets = 0
+
+/-- Witten's global `SU(2)` anomaly cancellation condition. -/
+def WittenSU2AnomalyFree (multiplets : List ChiralMultiplet) : Prop :=
+  Even (weakDoubletCount multiplets)
+
+/--
+The conventional one-generation Standard Model table, written entirely with
+left-handed Weyl fermions.
+-/
+def standardModelOneGeneration : List ChiralMultiplet :=
+  [ { label := "Q_L", color := ColorRep.triplet,
+      weak := WeakRep.doublet, hypercharge := 1 / 3 },
+    { label := "L_L", color := ColorRep.singlet,
+      weak := WeakRep.doublet, hypercharge := -1 },
+    { label := "u_R^c", color := ColorRep.antiTriplet,
+      weak := WeakRep.singlet, hypercharge := -4 / 3 },
+    { label := "d_R^c", color := ColorRep.antiTriplet,
+      weak := WeakRep.singlet, hypercharge := 2 / 3 },
+    { label := "e_R^c", color := ColorRep.singlet,
+      weak := WeakRep.singlet, hypercharge := 2 } ]
+
+/--
+Draft target: the conventional one-generation table is locally anomaly free.
+
+This should be easy for Aristotle or a coding agent: unfold the definitions and
+close the rational and integer equalities by exact arithmetic.
+-/
+theorem standardModelOneGeneration_localAnomalyFree :
+    LocalAnomalyFree standardModelOneGeneration := by
+  sorry
+
+/-- Draft target: the conventional one-generation table has no Witten anomaly. -/
+theorem standardModelOneGeneration_wittenAnomalyFree :
+    WittenSU2AnomalyFree standardModelOneGeneration := by
+  sorry
+
+/-- Bundled conventional Standard Model anomaly theorem. -/
+theorem standardModelOneGeneration_anomalyFree :
+    LocalAnomalyFree standardModelOneGeneration ∧
+      WittenSU2AnomalyFree standardModelOneGeneration := by
+  exact ⟨standardModelOneGeneration_localAnomalyFree,
+    standardModelOneGeneration_wittenAnomalyFree⟩
+
+/-! ## Furey bridge scaffolding -/
+
+namespace FureyBridge
+
+open PhysicsSM.Algebra.Octonion.ComplexOctonion
+open PhysicsSM.Algebra.Furey.MinimalLeftIdeal
+
+/-- A rational eigenvalue statement for a complex-linear operator. -/
+def HasRationalEigenvalue
+    (A : ComplexOctonion →ₗ[Complex] ComplexOctonion)
+    (q : Rat) (x : ComplexOctonion) : Prop :=
+  A x = (q : Complex) • x
+
+/-- The eight candidate states generated from the complementary idempotent. -/
+noncomputable def JbarBasisState : Fin 8 -> ComplexOctonion
+  | 0 => omega_bar
+  | 1 => vbar1
+  | 2 => vbar2
+  | 3 => vbar3
+  | 4 => vbar4
+  | 5 => vbar5
+  | 6 => vbar6
+  | 7 => nu_bar
+
+/-- The candidate complementary span. -/
+noncomputable def Jbar : Submodule Complex ComplexOctonion :=
+  Submodule.span Complex (Set.range JbarBasisState)
+
+/--
+Draft target: the complementary eight states are linearly independent.
+
+This is an operator-level prerequisite for treating the `Jbar` states as a
+stable finite state table rather than just eight named vectors.
+-/
+theorem JbarBasisState_linearIndependent :
+    LinearIndependent Complex JbarBasisState := by
+  sorry
+
+/-!
+### Electric charge on `Jbar`
+
+The current arithmetic certificate assumes a sign-reversed complementary charge
+table. Aristotle should prove these theorems if they are true for the existing
+`Q_op`; if any statement is false, the result should include the actual
+kernel-checked eigenvalue and a clear note explaining the convention mismatch.
+-/
+
+theorem Q_op_omega_bar_target :
+    HasRationalEigenvalue Q_op 1 omega_bar := by
+  sorry
+
+theorem Q_op_vbar1_target :
+    HasRationalEigenvalue Q_op (2 / 3) vbar1 := by
+  sorry
+
+theorem Q_op_vbar2_target :
+    HasRationalEigenvalue Q_op (2 / 3) vbar2 := by
+  sorry
+
+theorem Q_op_vbar3_target :
+    HasRationalEigenvalue Q_op (2 / 3) vbar3 := by
+  sorry
+
+theorem Q_op_vbar4_target :
+    HasRationalEigenvalue Q_op (1 / 3) vbar4 := by
+  sorry
+
+theorem Q_op_vbar5_target :
+    HasRationalEigenvalue Q_op (1 / 3) vbar5 := by
+  sorry
+
+theorem Q_op_vbar6_target :
+    HasRationalEigenvalue Q_op (1 / 3) vbar6 := by
+  sorry
+
+theorem Q_op_nu_bar_target :
+    HasRationalEigenvalue Q_op 0 nu_bar := by
+  sorry
+
+/-!
+### Weak-isospin and hypercharge bridge
+
+This placeholder operator should eventually become either:
+
+1. a basis-diagonal finite operator used only as a formal bridge target, or
+2. a genuine Furey weak-isospin operator derived from the downstream
+   `SU(2)_L` construction.
+
+The final trusted code must say which one it is.
+-/
+
+noncomputable def T3_op : ComplexOctonion →ₗ[Complex] ComplexOctonion := by
+  sorry
+
+/-- Hypercharge operator in the project convention `Q = T3 + Y / 2`. -/
+noncomputable def Y_op : ComplexOctonion →ₗ[Complex] ComplexOctonion :=
+  (2 : Complex) • (Q_op - T3_op)
+
+theorem T3_op_omega_target :
+    HasRationalEigenvalue T3_op (-1 / 2) omega := by
+  sorry
+
+theorem T3_op_nu_target :
+    HasRationalEigenvalue T3_op (1 / 2) nu := by
+  sorry
+
+theorem Y_op_omega_target :
+    HasRationalEigenvalue Y_op (-1) omega := by
+  sorry
+
+theorem Y_op_nu_target :
+    HasRationalEigenvalue Y_op (-1) nu := by
+  sorry
+
+/-!
+### Final bridge target
+
+This is the semantic theorem we ultimately want, but it should not be proved by
+definition. The proof must cite the operator eigenvalue table and the explicit
+particle/antiparticle convention mapping.
+-/
+
+/--
+Draft target: the Furey operator/state data realizes the conventional
+one-generation Standard Model multiplet table.
+-/
+def FureyRealizesStandardModelOneGeneration : Prop :=
+  LocalAnomalyFree standardModelOneGeneration ∧
+    WittenSU2AnomalyFree standardModelOneGeneration
+
+/--
+Draft target: complete Standard Model anomaly cancellation package, with the
+Furey bridge as an explicit hypothesis/result rather than hidden arithmetic.
+-/
+theorem furey_realizes_anomalyFreeStandardModelGeneration :
+    FureyRealizesStandardModelOneGeneration := by
+  sorry
+
+end FureyBridge
+
+end PhysicsSM.Draft.StandardModelAnomalyPackage

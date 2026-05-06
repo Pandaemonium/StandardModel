@@ -3,17 +3,21 @@ import PhysicsSM.Algebra.Furey.SMStates
 /-!
 # Algebra.Furey.QuantumNumbers
 
-Recovering U(1) and SU(3) generators from the division algebraic ladder operators.
+Recovering electric charge and SU(3) generators from the division algebraic
+ladder operators.
 
-## U(1) — hypercharge / electric charge
+## U(1) electromagnetic charge
 
 The number operators N_k = alpha_k† * alpha_k (k=1,2,3) are simultaneously
 diagonalizable on J. Their eigenvalues on the basis states give the
-electric charge via the Gell-Mann–Nishijima-type formula:
+electric charge:
   Q = -(1/3)(N_1 + N_2 + N_3) + (constant depending on idempotent)
 
 The specific charges recovered (see `SMStates`) match the Standard Model
 assignments for one generation.
+
+Weak hypercharge is not defined in this file. It should only appear in modules
+that also specify a weak-isospin convention and use `Q = T3 + Y / 2`.
 
 ## SU(3) — strong colour charge
 
@@ -37,7 +41,7 @@ the two minimal left ideals J and J'. This is a longer-term target.
 
 1. Number operator eigenvalues on J basis states match the charge table in SMStates.
 2. The SU(3) action on J is irreducible on the triplet sectors.
-3. Anomaly cancellation: sum of charges over one generation vanishes.
+3. Charge-table arithmetic over one generation.
 
 ## Sources
 
