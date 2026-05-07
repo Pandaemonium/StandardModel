@@ -12,12 +12,35 @@ Submitted jobs:
 
 | Job | Output directory | Aristotle ID | Status |
 |-----|------------------|--------------|--------|
-| G1: Jordan derivations | `AgentTasks/aristotle-output/gap-jordan-derivations` | `813531a9-aeb5-4e38-85bd-b2fb3c73d027` | queued |
-| G2: Standard-block derivation stabilizers | `AgentTasks/aristotle-output/gap-standard-block-derivation-stabilizers` | `d07518dc-8782-482e-b329-a41fd86cb1b2` | queued |
-| G3: Krasnov complex-structure centralizer surrogate | `AgentTasks/aristotle-output/gap-krasnov-centralizer` | `0ceb503d-e1f9-4d43-b3b9-1676ef352964` | queued |
-| G4: Full one-generation handedness table | `AgentTasks/aristotle-output/gap-sm-handedness-table` | `88a46864-8d1c-4ac9-8ebc-079bd67a22c5` | queued |
-| G5: Furey-Hughes triality-triple scaffold | `AgentTasks/aristotle-output/gap-furey-hughes-triality-triple` | `8073c1d9-d34f-49c4-b025-39d95b45870e` | queued |
-| G6: Hurwitz-Clifford precursor | `AgentTasks/aristotle-output/gap-hurwitz-clifford-precursor` | `a231c951-a861-4a12-a1dd-a3884a7da01f` | queued |
+| G1: Jordan derivations | `AgentTasks/aristotle-output/gap-jordan-derivations` | `813531a9-aeb5-4e38-85bd-b2fb3c73d027` | complete; fetched, extracted, integrated |
+| G2: Standard-block derivation stabilizers | `AgentTasks/aristotle-output/gap-standard-block-derivation-stabilizers` | `d07518dc-8782-482e-b329-a41fd86cb1b2` | complete; fetched, extracted, integrated |
+| G3: Krasnov complex-structure centralizer surrogate | `AgentTasks/aristotle-output/gap-krasnov-centralizer` | `0ceb503d-e1f9-4d43-b3b9-1676ef352964` | complete; fetched, extracted, integrated |
+| G4: Full one-generation handedness table | `AgentTasks/aristotle-output/gap-sm-handedness-table` | `88a46864-8d1c-4ac9-8ebc-079bd67a22c5` | complete; fetched, extracted, integrated |
+| G5: Furey-Hughes triality-triple scaffold | `AgentTasks/aristotle-output/gap-furey-hughes-triality-triple` | `8073c1d9-d34f-49c4-b025-39d95b45870e` | complete; fetched, extracted, integrated |
+| G6: Hurwitz-Clifford precursor | `AgentTasks/aristotle-output/gap-hurwitz-clifford-precursor` | `a231c951-a861-4a12-a1dd-a3884a7da01f` | failed: Aristotle internal error |
+
+Result check, 2026-05-06:
+
+- G1 returned `PhysicsSM/Algebra/Jordan/Derivation.lean`, a trusted
+  derivation Lie algebra API for `H3O` with commutator closure and
+  `LieRing`/`LieAlgebra` instances. Integrated into the root import.
+- G2 returned `PhysicsSM/Algebra/Jordan/StabilizerDerivation.lean`, a trusted
+  algebraic stabilizer API for derivations preserving the standard
+  `h_2(O)`, `h_3(C)`, and `h_2(C)` blocks. Integrated into the root import.
+- G3 returned `PhysicsSM/Spinor/KrasnovComplexStructure.lean` and two small
+  component simp lemmas in `OctonionicQubit.lean`, giving the algebraic
+  centralizer API for `rightMulE111` on `O^2`. Integrated into the root import.
+- G4 returned `PhysicsSM/StandardModel/OneGenerationTable.lean`, a
+  conventional full-generation bookkeeping table that explicitly separates
+  physical right-handed multiplets from the all-left charge-conjugate
+  convention. Integrated into the root import.
+- G5 returned `PhysicsSM/Algebra/Furey/TrialityTriple.lean`, a provenance-safe
+  scaffold for the Furey-Hughes `(Psi_+, Psi_-, V)` route. Review note:
+  `SMActionData` is intentionally documentary/scaffold data, not a proved
+  Standard Model action theorem. Integrated into the root import.
+- G6 did not return Lean output; `aristotle result` reported an internal
+  Aristotle failure. Retry as smaller jobs: first the composition-algebra record
+  and basic APIs, then the Clifford-relation precursor.
 
 Purpose: turn the three skeptic gaps into concrete Lean proof jobs. These jobs
 are deliberately ambitious, but each one attacks a mathematical prerequisite

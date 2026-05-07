@@ -2,6 +2,7 @@ import Mathlib
 import PhysicsSM.Algebra.Jordan.H3O
 import PhysicsSM.Algebra.Jordan.Automorphism
 import PhysicsSM.Algebra.Jordan.ProjectiveGeometry
+import PhysicsSM.Algebra.Jordan.Stabilizer
 
 /-!
 # Draft projective geometry of the exceptional Jordan algebra
@@ -77,42 +78,35 @@ imports and no longer need to be defined here:
   `inv_stabilizes` — from `Automorphism`
 -/
 
-/-! ## Common stabilizer -/
+/-! ## Common stabilizer
 
-/-- An automorphism preserves a complex projective plane. -/
-def StabilizesComplexPlane
-    (g : H3OAutomorphism)
-    (X : ComplexProjectivePlaneInOP2) : Prop :=
-  ∀ p : OP2Point, p ∈ X.points ↔
-    ∃ hp : IsProjection (g p.val),
-    ∃ ht : trace (g p.val) = 1,
-      ({ val := g p.val, isProjection := hp,
-         trace_eq_one := ht } : OP2Point) ∈ X.points
+The common stabilizer group structure is now provided by the trusted module
+`PhysicsSM.Algebra.Jordan.Stabilizer`. The definitions and group instance
+have been moved there:
 
-/-- The common stabilizer of a complex projective plane and
-    an octonionic line. -/
+- `Stabilizer.StabilizesComplexPlane` — setwise preservation of the
+  subalgebra carrier (replaces the draft's point-level predicate).
+- `Stabilizer.ProjectiveCommonStabilizer` — the common stabilizer subtype.
+- `Stabilizer.instGroupProjectiveCommonStabilizer` — the group instance.
+- `Stabilizer.commonStabilizerSubgroup` — the subgroup of `H3OAutomorphism`.
+
+We re-export the trusted definitions here for downstream compatibility.
+-/
+
+/-- Re-export: the common stabilizer of a complex projective plane and
+    an octonionic line (from `Stabilizer.lean`). -/
 def ProjectiveCommonStabilizer
     (X : ComplexProjectivePlaneInOP2)
     (ell : OP2Line) : Type :=
-  { g : H3OAutomorphism //
-    StabilizesComplexPlane g X ∧ StabilizesLine g ell }
+  PhysicsSM.Algebra.Jordan.Stabilizer.ProjectiveCommonStabilizer X ell
 
-/--
-Draft group structure on a common stabilizer.
-
-**Handoff note**: This inherits the group structure from
-`H3OAutomorphism` via the subtype construction, once the
-closure of the stabilizer conditions under composition and
-inversion is established. The line-stabilizer closure is
-already available from `ProjectiveGeometry.stabilizesLine_mul`
-and `stabilizesLine_inv`. The complex-plane stabilizer
-closure requires additional work on the `StabilizesComplexPlane`
-predicate.
--/
+/-- Trusted group structure on a common stabilizer, proved in
+    `Stabilizer.lean` via closure of both stabilization conditions
+    under identity, composition, and inversion. -/
 noncomputable instance
     (X : ComplexProjectivePlaneInOP2) (ell : OP2Line) :
-    Group (ProjectiveCommonStabilizer X ell) := by
-  sorry
+    Group (ProjectiveCommonStabilizer X ell) :=
+  PhysicsSM.Algebra.Jordan.Stabilizer.instGroupProjectiveCommonStabilizer X ell
 
 /-! ## Standard Model gauge group placeholder -/
 

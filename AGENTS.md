@@ -123,18 +123,28 @@ compatibility with:
 **Do not upgrade the toolchain** unless all three of the following build cleanly
 under the target version: (1) mathlib, (2) SpherePacking, (3) Aristotle workflow.
 
-**Windows note — ProofWidgets path issue**: On Windows, `lake build <module>`
-fails at the `proofwidgets/widgetJsAll` step because the ProofWidgets cloud
-release trace contains Linux CI paths. This does NOT affect correctness.
-Use `lake env lean <file>` for targeted checks on Windows.
-On Linux/macOS and in CI, `lake build <module>` works normally.
+**Windows — ProofWidgets fix (one-time per cache wipe)**:
+Mathlib injects an `errorOnBuild` flag into ProofWidgets that blocks `lake build`
+on Windows. The fix is to build the widget JS from *inside* the ProofWidgets
+package directory (where it is the root package and `errorOnBuild` is not set):
+
+```bash
+cd .lake/packages/proofwidgets && lake build widgetJsAll
+```
+
+After this one-time step, `lake build <module>` works normally on Windows.
+Re-run this command after `lake clean` or after a full `lake exe cache get!`
+wipes the build directory. `lake env lean <file>` still works without this fix.
 
 ## Build and verification
 
 Use targeted checks first:
 
 ```bash
-# Preferred on Windows (avoids ProofWidgets build):
+# Works on Windows after the one-time widgetJsAll fix above:
+lake build PhysicsSM.Path.To.Module
+
+# Also works on Windows without any fix (no ProofWidgets dependency):
 lake env lean PhysicsSM/Path/To/File.lean
 
 # Also works on Linux/macOS:

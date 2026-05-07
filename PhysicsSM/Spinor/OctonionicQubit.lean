@@ -86,6 +86,10 @@ instance : SMul ℝ OctonionicQubit where
     (a + b).snd = a.snd + b.snd := rfl
 @[simp] theorem neg_fst (a : OctonionicQubit) : (-a).fst = -a.fst := rfl
 @[simp] theorem neg_snd (a : OctonionicQubit) : (-a).snd = -a.snd := rfl
+@[simp] theorem smul_fst (r : ℝ) (a : OctonionicQubit) :
+    (r • a).fst = r • a.fst := rfl
+@[simp] theorem smul_snd (r : ℝ) (a : OctonionicQubit) :
+    (r • a).snd = r • a.snd := rfl
 
 /-! ## Right multiplication by `e111` as a complex structure -/
 

@@ -365,6 +365,51 @@ for octonion identities: prove them generically for Cayley–Dickson algebras,
 then transfer via the isomorphism.
 -/
 
+/-! ## Ring and StarRing instances for CD1 and CD2
+
+These instances make the iterated Cayley–Dickson tower operational:
+`CD1` (≅ ℂ) and `CD2` (≅ ℍ) are associative algebras, so they receive full
+`Ring` instances. This gives `CD3` (≅ 𝕆) its `Mul` instance via the generic
+`CayleyDickson.instMul`.
+
+Note: `CD3` is *not* a `Ring` — octonion multiplication is not associative.
+-/
+
+-- CD1 ≅ ℂ: complex numbers are a commutative ring
+noncomputable instance instRingCD1 : Ring CD1 where
+  mul_assoc a b c := by ext <;> simp [star_trivial] <;> ring
+  one_mul := one_mul_eq
+  mul_one := mul_one_eq
+  left_distrib := left_distrib_eq
+  right_distrib := right_distrib_eq
+  zero_mul := zero_mul_eq
+  mul_zero := mul_zero_eq
+  neg_add_cancel a := by ext <;> simp
+  add_comm a b := by ext <;> simp [add_comm]
+
+noncomputable instance instStarRingCD1 : StarRing CD1 where
+  star_add x y := star_add_eq x y
+  star_mul x y := star_mul_eq x y
+
+-- CD2 ≅ ℍ: quaternions are an associative (but noncommutative) ring
+set_option maxHeartbeats 800000 in
+-- Quaternion associativity requires higher heartbeat budget due to nested
+-- Cayley–Dickson unfolding (4 real coordinates, each a degree-3 polynomial).
+noncomputable instance instRingCD2 : Ring CD2 where
+  mul_assoc a b c := by ext <;> simp <;> ring
+  one_mul := one_mul_eq
+  mul_one := mul_one_eq
+  left_distrib := left_distrib_eq
+  right_distrib := right_distrib_eq
+  zero_mul := zero_mul_eq
+  mul_zero := mul_zero_eq
+  neg_add_cancel a := by ext <;> simp
+  add_comm a b := by ext <;> simp [add_comm]
+
+noncomputable instance instStarRingCD2 : StarRing CD2 where
+  star_add x y := star_add_eq x y
+  star_mul x y := star_mul_eq x y
+
 end CayleyDickson
 
 end PhysicsSM.Algebra.Division

@@ -17,12 +17,34 @@ Submitted jobs:
 
 | Job | Output directory | Aristotle ID | Status |
 |-----|------------------|--------------|--------|
-| Job A: CD3-to-Octonion bridge | `AgentTasks/aristotle-output/cd3-octonion-bridge-next` | `e89f71be-ad2a-4a62-8338-2c54cbb9d932` | queued |
-| Job B: H3O trace form and splitting | `AgentTasks/aristotle-output/h3o-trace-form-splitting-next` | `101775e5-36e8-4eaa-ba61-e9a1c5007c33` | queued |
-| Job C: common stabilizer group closure | `AgentTasks/aristotle-output/common-stabilizer-closure-next` | `0bd47cc5-58ec-48b8-87ed-d84e6db7a367` | queued |
-| Job D: concrete Standard Model block subgroup | `AgentTasks/aristotle-output/sm-block-subgroup-next` | `cdb75897-66e3-4fa7-a3db-f9075971299d` | queued |
-| Job E: Furey weak-isospin and hypercharge bridge | `AgentTasks/aristotle-output/furey-hypercharge-bridge-next` | `ce91075d-58ce-4049-87b2-9eb0492d76a8` | queued |
-| Job F: DVT/Yokota first block action | `AgentTasks/aristotle-output/dvt-yokota-block-action-next` | `d988fff7-f5f9-426b-8176-486b6d69688a` | queued |
+| Job A: CD3-to-Octonion bridge | `AgentTasks/aristotle-output/cd3-octonion-bridge-next` | `e89f71be-ad2a-4a62-8338-2c54cbb9d932` | complete; fetched, extracted, integrated |
+| Job B: H3O trace form and splitting | `AgentTasks/aristotle-output/h3o-trace-form-splitting-next` | `101775e5-36e8-4eaa-ba61-e9a1c5007c33` | complete; fetched, extracted, integrated |
+| Job C: common stabilizer group closure | `AgentTasks/aristotle-output/common-stabilizer-closure-next` | `0bd47cc5-58ec-48b8-87ed-d84e6db7a367` | complete; fetched, extracted, integrated |
+| Job D: concrete Standard Model block subgroup | `AgentTasks/aristotle-output/sm-block-subgroup-next` | `cdb75897-66e3-4fa7-a3db-f9075971299d` | complete with errors; fetched, reviewed, integrated |
+| Job E: Furey weak-isospin and hypercharge bridge | `AgentTasks/aristotle-output/furey-hypercharge-bridge-next` | `ce91075d-58ce-4049-87b2-9eb0492d76a8` | failed: Aristotle internal error |
+| Job F: DVT/Yokota first block action | `AgentTasks/aristotle-output/dvt-yokota-block-action-next` | `d988fff7-f5f9-426b-8176-486b6d69688a` | complete; fetched, extracted, integrated |
+
+Result check, 2026-05-06:
+
+- Job A returned `PhysicsSM/Algebra/Division/CayleyDicksonOctonionBridge.lean`
+  and small `CD1`/`CD2` helper instances in `CayleyDickson.lean`. Integrated
+  into the root import after targeted Lean checks.
+- Job B returned `PhysicsSM/Algebra/Jordan/TraceForm.lean`, including the
+  trace bilinear form, `h_3(C)`/complement projections, decomposition lemmas,
+  and trace-form orthogonality. Integrated into the root import.
+- Job C returned `PhysicsSM/Algebra/Jordan/Stabilizer.lean` and a draft-file
+  update that removes the common-stabilizer group-structure hole while leaving
+  the compact Lie group/gauge-group identification claims in draft. Integrated.
+- Job D returned `PhysicsSM/Gauge/StandardModelSubgroup.lean` despite an
+  Aristotle `COMPLETE_WITH_ERRORS` status. The returned Lean module was
+  reviewed with the same trusted-code gate and integrated after a targeted
+  Lean check.
+- Job F returned `PhysicsSM/Algebra/Jordan/DVTAction.lean`, a conservative
+  coordinate-level action scaffold over the `h_3(C)` plus complement
+  splitting. Integrated into the root import.
+- Job E did not return Lean output; `aristotle result` reported an internal
+  Aristotle failure. Retry as two smaller jobs: first a finite table proving
+  `Q = T3 + Y/2`, then a separate bridge from Furey basis states to that table.
 
 General constraints for every job:
 

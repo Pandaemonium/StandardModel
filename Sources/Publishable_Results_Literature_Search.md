@@ -496,6 +496,299 @@ Best venue fit:
 - ITP/CICM workshop, AI for theorem proving workshop, or formal-methods
   experience-report track.
 
+## Conjecture and Frontier Target Backlog
+
+Search update: 2026-05-06. This section collects mathematically interesting
+claims and conjectural directions found in papers, source pages, and serious
+blog discussions. The point is not to claim these are proved in the repository;
+the point is to identify targets that could become publishable Lean
+formalization results if the claim boundary is kept exact.
+
+### Target 1: Baez-Schwahn projective stabilizer conjecture
+
+Informal target:
+
+```text
+In OP^2, the common stabilizer of a complex projective plane X ~= CP^2
+and an octonionic projective line ell ~= OP^1 meeting in CP^1 is
+S(U(2) x U(3)).
+```
+
+Why it is interesting:
+
+- It packages the Dubois-Violette/Todorov exceptional-Jordan stabilizer picture
+  in projective-geometric language.
+- It is close to the repository's current trusted coordinate work:
+  `H3O`, projections, standard `h_2(O)`, `h_3(C)`, and incidence.
+
+Lean entry point:
+
+- First publishable step: formalize the standard block example and prove the
+  algebraic/projective dictionary for `X`, `ell`, and `X cap ell`.
+- Frontier step: prove or source the pair-transitivity theorem used to reduce
+  arbitrary pairs to the standard example.
+
+Claim boundary:
+
+Do not present this as proved until the compact Lie group/stabilizer
+identification is actually formalized.
+
+Sources:
+
+- Baez-Schwahn slides, "Projective Geometry and the Exceptional Jordan Algebra":
+  <https://math.ucr.edu/home/baez/standard/exceptional.pdf>
+- Baez 2021 standard-model-octonions page:
+  <https://math.ucr.edu/home/baez/standard/>
+- Dubois-Violette and Todorov, arXiv:1806.09450:
+  <https://arxiv.org/abs/1806.09450>
+
+### Target 2: Conway-Smith/Yokota triality-shadow criterion
+
+Informal target:
+
+```text
+For an invertible octonion a, conjugation x |-> a*x*a^{-1}
+is an octonion algebra automorphism iff a^3 is a real scalar.
+For unit a, this specializes to the a^3 = +/-1 cases, with order-three
+behavior in the nontrivial cases.
+```
+
+Why it is interesting:
+
+- This is a compact, beautiful theorem connecting Moufang identities,
+  companion maps, and Spin(8) triality.
+- It is small enough to be a serious formalization paper section, especially
+  because the project already has Moufang identities and a forward
+  `cube = +/-1` theorem.
+
+Lean entry point:
+
+- Formalize companion maps for left and right multiplication by a unit
+  octonion.
+- Prove the "companions are `a^3` and `a^{-3}`" lemma.
+- Prove the converse direction, or at least reduce it to a scalar-cube lemma.
+
+Claim boundary:
+
+The current trusted repo result covers a forward special case; it does not yet
+prove the iff statement.
+
+Sources:
+
+- Baez, "A Shadow of Triality?", n-Category Cafe, September 2025:
+  <https://golem.ph.utexas.edu/category/2025/09/a_shadow_of_triality.html>
+- Baez, "The Octonions":
+  <https://math.ucr.edu/home/baez/octonions/octonions.html>
+
+### Target 3: Krasnov `Spin(9)` / `Spin(10)` complex-structure centralizers
+
+Informal targets:
+
+```text
+Centralizer_{Spin(9)}(J on O^2) ~= S(U(2) x U(3)).
+
+Inside Spin(10), two suitably aligned commuting complex structures encoded by
+pure spinors determine the Standard Model subgroup.
+```
+
+Why it is interesting:
+
+- This is a more concrete route to the gauge group than the full `F4`
+  exceptional-Jordan theorem.
+- It directly addresses the known weakness of the `Spin(9)` route: it is too
+  left-right symmetric for the full chiral Standard Model, while the
+  `Spin(10)` two-complex-structure route is designed to encode chirality.
+
+Lean entry point:
+
+- Start with the coordinate centralizer of `rightMulE111` on `O^2`.
+- Formalize the `O = C plus C^3` splitting and centralizer-preservation
+  predicates before touching compact groups.
+- Later, connect to Clifford algebra and pure spinor infrastructure.
+
+Sources:
+
+- Krasnov, "SO(9) characterization of the Standard Model gauge group",
+  arXiv:1912.11282:
+  <https://arxiv.org/abs/1912.11282>
+- Krasnov, "Geometry of Spin(10) Symmetry Breaking", arXiv:2209.05088:
+  <https://arxiv.org/abs/2209.05088>
+- Krasnov, "Octonions, complex structures and Standard Model fermions",
+  arXiv:2504.16465:
+  <https://arxiv.org/abs/2504.16465>
+- Baez, "Octonions and the Standard Model (Part 13)", n-Category Cafe:
+  <https://golem.ph.utexas.edu/category/?wref=bif>
+
+### Target 4: Furey-Hughes triality-triple generation conjecture
+
+Informal target:
+
+```text
+The Standard Model internal Lie algebra su(3) + su(2) + u(1)
+appears inside tri(C) + tri(H) + tri(O), acting on a triality triple
+(Psi_+, Psi_-, V) in C tensor H tensor O, with the three roles accounting
+for three generations after Cartan factorization.
+```
+
+Why it is interesting:
+
+- It is a plausible right-handed/three-generation route that does not try to
+  squeeze the full fermion sector into Krasnov's `O^2` left-handed picture.
+- It is representation-theoretic and table-driven enough to break into Lean
+  milestones.
+
+Lean entry point:
+
+- Define `tri(A)` for the project octonions first in a finite-coordinate way.
+- Prove the triality relation is closed under commutator.
+- Build a typed `TrialityTriple` scaffold and then formalize the representation
+  tables.
+
+Sources:
+
+- Furey-Hughes, "Three Generations and a Trio of Trialities",
+  arXiv:2409.17948:
+  <https://arxiv.org/abs/2409.17948>
+- Furey, "Three generations, two unbroken gauge symmetries, and one
+  eight-dimensional algebra", arXiv:1910.08395:
+  <https://arxiv.org/abs/1910.08395>
+- Furey-Hughes, "Division algebraic symmetry breaking", arXiv:2210.10126:
+  <https://arxiv.org/abs/2210.10126>
+
+### Target 5: Baez-Huerta grand-unification square
+
+Informal target:
+
+```text
+The Standard Model gauge group can be characterized as a pullback/intersection
+relating the Georgi-Glashow SU(5), Pati-Salam, and Spin(10) grand-unification
+groups.
+```
+
+Why it is interesting:
+
+- This is less speculative than many octonion-based claims: it is a precise
+  representation-theoretic organization of known GUTs.
+- It could give the project a clean conventional-physics anchor and a path to
+  right-handed charge-conjugate conventions.
+
+Lean entry point:
+
+- Formalize the finite-dimensional complex representations and block subgroup
+  inclusions.
+- Prove the pullback/intersection statement first at the level of matrix
+  predicates before adding Lie-group topology.
+
+Sources:
+
+- Baez-Huerta, "The Algebra of Grand Unified Theories":
+  <https://math.ucr.edu/home/baez/guts.pdf>
+- AMS article page:
+  <https://www.ams.org/bull/2010-47-03/S0273-0979-10-01294-2/>
+- nLab `SO(10)` page, useful as a source map rather than a proof source:
+  <https://ncatlab.org/nlab/show/SO%2810%29>
+
+### Target 6: Bioctonionic projective geometry
+
+Informal target:
+
+```text
+Define a "bioctonionic plane" using C tensor O. Points and lines exist, but
+the incidence axioms of an ordinary projective plane fail: some pairs of
+distinct lines meet in more than one point, and dually for points.
+```
+
+Why it is interesting:
+
+- It is a crisp negative theorem: a formally checked failure of projective-plane
+  axioms can be more publishable than a vague positive physics analogy.
+- It connects naturally to the repository's complexified octonions and
+  projective-geometry draft.
+
+Lean entry point:
+
+- Define the bioctonionic point/line predicates in a small coordinate model.
+- Exhibit a concrete counterexample to uniqueness of line intersection or
+  uniqueness of line through two points.
+
+Sources:
+
+- Baez, "Octonions and the Standard Model (Part 12)", n-Category Cafe archive:
+  <https://golem.ph.utexas.edu/category/?wref=bif>
+- Baez octonions background:
+  <https://math.ucr.edu/home/baez/octonions/octonions.html>
+
+### Target 7: Integral octonions, E8, Leech lattice, and `H3O`
+
+Informal targets:
+
+```text
+The 240 shortest integral octonions form an E8 root system.
+Certain triples of integral octonions realize the Leech lattice.
+Some Leech lattice embeddings into the off-diagonal part of H3O are compatible
+with the exceptional Jordan product.
+```
+
+Why it is interesting:
+
+- This is a mathematically rich route that is less physically speculative.
+- It could connect the project to Sphere-Packing-Lean's E8 formalization and
+  recent Lean work on codes.
+
+Lean entry point:
+
+- Start with the E8 lattice/integral-octonion equivalence or a bridge to
+  Sphere-Packing-Lean's E8.
+- Formalize the off-diagonal `H3O` embedding and a small product-compatibility
+  theorem for one explicit embedding.
+
+Sources:
+
+- Baez-Egan, "Integral Octonions" series:
+  <https://math.ucr.edu/home/baez/octonions/integers/>
+- Integral Octonions Part 9, Leech lattice in `O^3`:
+  <https://golem.ph.utexas.edu/category/2014/11/integral_octonions_part_9.html>
+- Integral Octonions Part 10, Leech lattice in the exceptional Jordan algebra:
+  <https://golem.ph.utexas.edu/category/2014/12/integral_octonions_part_10.html>
+- Sphere-Packing-Lean:
+  <https://github.com/math-inc/Sphere-Packing-Lean>
+
+### Target 8: Construction A bridge from Hamming codes to E8/Narain lattices
+
+Informal targets:
+
+```text
+The extended binary [8,4,4] Hamming code gives the E8 lattice by Construction A.
+Recent heterotic Narain examples can be reproduced from code data plus metric,
+B-field, and gauge-background choices.
+```
+
+Why it is interesting:
+
+- It is much cleaner than claiming Hamming codes explain Standard Model anomaly
+  cancellation.
+- Recent formalization and physics papers make this unusually timely.
+
+Lean entry point:
+
+- Formalize the extended Hamming code and Construction A lattice.
+- Prove the result is isometric/equal to the E8 lattice definition used by
+  Sphere-Packing-Lean or a local coordinate definition.
+- Keep the Narain-lattice part as a later typed scaffold.
+
+Sources:
+
+- Mizoguchi-Oikawa, "Error correcting codes and heterotic Narain CFTs",
+  arXiv:2602.16269:
+  <https://arxiv.org/abs/2602.16269>
+- Baek-Kim, "Formalizing building-up constructions of self-dual codes through
+  isotropic lines in Lean", arXiv:2604.08485:
+  <https://arxiv.org/abs/2604.08485>
+- Error Correction Zoo E8 entry:
+  <https://errorcorrectionzoo.org/c/eeight>
+- Sphere-Packing-Lean blueprint:
+  <https://thefundamentaltheor3m.github.io/Sphere-Packing-Lean/blueprint/index.html>
+
 ## Recommended publication sequence
 
 ### First paper

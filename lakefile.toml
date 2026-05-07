@@ -34,5 +34,14 @@ name = "mathlib"
 scope = "leanprover-community"
 rev = "v4.28.0"
 
+# Direct require at the same version mathlib uses, but WITHOUT the
+# errorOnBuild flag that mathlib sets. This overrides mathlib's
+# configuration so Lake can build ProofWidgets from npm on Windows
+# rather than failing with "ProofWidgets not up-to-date".
+[[require]]
+name = "proofwidgets"
+scope = "leanprover-community"
+rev = "v0.0.87"
+
 [[lean_lib]]
 name = "PhysicsSM"
