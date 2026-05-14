@@ -1,6 +1,6 @@
 # Execution Plan: PhysicsSM
 
-## Current state (2026-05-06)
+## Current state (2026-05-07)
 
 **Milestone 1, the Milestone 2 Cayley-Dickson foundation, Core Furey
 Arithmetic, and the Milestone 8 coordinate/Jordan foundation are complete.**
@@ -79,6 +79,31 @@ The project has:
     `PhysicsSM/Coding/HammingE8.lean` add publication-shaped theorem islands:
     a bioctonionic incidence counterexample, a 240-root E8 octonion seed, and
     the Construction A extended-Hamming-to-E8 minimum norm bridge.
+- **Hamming -> Construction A -> E8 publication spine integrated**
+  (completed 2026-05-07, targeted checks passed locally):
+  - `PhysicsSM/Coding/HammingConstructionAE8Final.lean` is the
+    citation-friendly theorem index for the paper. It aliases the completed
+    chain from Type II extended Hamming code through full rank, scaled
+    even/unimodular properties, minimum norm 2, the 240 short vectors, the
+    short-vector/root-list bijection, Gram/Cartan bridge, and Weyl closure API.
+  - `PhysicsSM/Coding/Hamming844Classification.lean` and
+    `PhysicsSM/Draft/Hamming844Uniqueness.lean` now provide the uniqueness of
+    the binary `[8,4,4]` code up to coordinate permutation. The proof uses a
+    finite `native_decide` classification step and must be documented with the
+    resulting `Lean.trustCompiler` boundary.
+  - `PhysicsSM/Algebra/Division/CompositionClifford.lean` adds the trusted
+    norm-form composition-algebra mixin, real/imaginary projections, and the
+    pure-imaginary square relation. This advances the broader
+    Hurwitz/Clifford route but is not a gate for the E8 paper.
+  - `PhysicsSM/Coding/E8SpherePackingMatrixBridge.lean` reproduces SPL's E8
+    basis matrix over `Q` without importing SPL, proves determinant/Gram facts,
+    proves membership in the local half-integer E8 predicate, and proves the
+    SPL-shaped Gram matrix and the scaled Construction A Gram matrix are both
+    congruent to the local `e8Cartan` by unimodular transitions.
+  - Remaining headline target: in an SPL-enabled branch, prove the imported
+    hinge theorem `E8Matrix Q = splE8BasisQ`, use `span_E8Matrix` to identify
+    the span with `Submodule.E8`, and then transport SPL's packing density or
+    optimality theorem to the Hamming/Construction A model.
 - **Exceptional Jordan and Baez 2021 targets integrated** (Aristotle jobs
   `17d42ab0` and `76df9a63`, completed 2026-05-05):
   - `PhysicsSM/Algebra/Octonion/ComplexLine.lean` — chosen complex line

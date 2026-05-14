@@ -10,15 +10,17 @@ defaultTargets = ["PhysicsSM"]
 # Aristotle workflow all build cleanly under the target version.
 #
 # NOTE — SpherePacking Windows incompatibility:
-#   math-inc/Sphere-Packing-Lean contains a file named Aux.lean
-#   (SpherePacking/Basic/PeriodicPacking/Aux.lean). "Aux" is a Windows
-#   reserved device name (like CON, NUL, PRN); git cannot check out this
-#   file on Windows regardless of path-length or NTFS settings.
-#   To use SpherePacking on Windows, use WSL2. On Linux/macOS add:
+#   math-inc/Sphere-Packing-Lean contains several files named Aux.lean.
+#   "Aux" is a Windows reserved device name (like CON, NUL, PRN); git cannot
+#   check out these files on Windows regardless of path-length or NTFS settings.
+#   To use upstream SpherePacking on Windows, use WSL2. On Linux/macOS add:
 #     [[require]]
 #     name = "SpherePacking"
 #     git = "https://github.com/math-inc/Sphere-Packing-Lean"
 #     rev = "main"
+#   A local Windows-safe fork branch has also been prepared in
+#   AgentTasks/external with exact Aux.lean files renamed to Auxiliary.lean.
+#   See AgentTasks/sphere-packing-lean-windows-fork-2026-05-07.md.
 #   The E8 lattice content needed for PhysicsSM.Lie.Exceptional.E8
 #   (Submodule.E8, E8Matrix, E8Matrix_unimodular, etc.) will be
 #   cherry-picked from SpherePacking/Dim8/E8/Basic.lean under Apache-2.0.
@@ -42,6 +44,36 @@ rev = "v4.28.0"
 name = "proofwidgets"
 scope = "leanprover-community"
 rev = "v0.0.87"
+
+# ============================================================
+# Sphere-Packing-Lean dependency (LINUX / macOS ONLY)
+# ============================================================
+# To enable the direct SPL import bridge in
+# PhysicsSM/Draft/E8SpherePackingImported.lean, uncomment the
+# [[require]] block below and build on Linux or macOS (or WSL2).
+#
+# WINDOWS: Do NOT point this block at upstream on Windows. SPL contains
+# files named Aux.lean (Windows reserved device name). Lake cannot check out
+# those files on Windows regardless of path length or NTFS settings. Use WSL2
+# for upstream, or use the Windows-safe fork branch documented in
+# AgentTasks/sphere-packing-lean-windows-fork-2026-05-07.md.
+#
+# SPL declarations confirmed available (Aristotle job SPL2, 2026-05-07):
+#   Submodule.E8, E8Matrix, E8Matrix_unimodular, span_E8Matrix,
+#   E8_integral_self, E8Lattice, E8Packing, E8Packing_density
+#   Source: SpherePacking.Dim8.E8.Basic + SpherePacking.Dim8.E8.Packing
+#   License: Apache-2.0
+#
+# [[require]]
+# name = "SpherePacking"
+# git = "https://github.com/math-inc/Sphere-Packing-Lean"
+# rev = "main"
+#
+# Windows-safe fork form, once the fork branch is pushed:
+# [[require]]
+# name = "SpherePacking"
+# git = "https://github.com/Pandaemonium/Sphere-Packing-Lean"
+# rev = "windows-safe-auxiliary-renames"
 
 [[lean_lib]]
 name = "PhysicsSM"

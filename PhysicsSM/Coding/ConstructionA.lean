@@ -45,6 +45,36 @@ def hammingWeight {n : ℕ} (v : BinaryVector n) : ℕ :=
 def IsDoublyEven {n : ℕ} (C : BinaryLinearCode n) : Prop :=
   ∀ v ∈ C, 4 ∣ hammingWeight v
 
+/-! ## Binary dot product -/
+
+/-- The binary dot product (inner product over `ZMod 2`): the sum of
+coordinate-wise products. Two binary vectors are orthogonal when
+`binaryDot v w = 0`. -/
+def binaryDot {n : ℕ} (v w : BinaryVector n) : ZMod 2 :=
+  ∑ i, v i * w i
+
+@[simp]
+theorem binaryDot_zero_left {n : ℕ} (w : BinaryVector n) :
+    binaryDot 0 w = 0 := by
+  simp [binaryDot]
+
+@[simp]
+theorem binaryDot_zero_right {n : ℕ} (v : BinaryVector n) :
+    binaryDot v 0 = 0 := by
+  simp [binaryDot]
+
+theorem binaryDot_add_left {n : ℕ} (u v w : BinaryVector n) :
+    binaryDot (u + v) w = binaryDot u w + binaryDot v w := by
+  simp [binaryDot, add_mul, Finset.sum_add_distrib]
+
+theorem binaryDot_comm {n : ℕ} (v w : BinaryVector n) :
+    binaryDot v w = binaryDot w v := by
+  simp [binaryDot, mul_comm]
+
+theorem binaryDot_smul_left {n : ℕ} (c : ZMod 2) (v w : BinaryVector n) :
+    binaryDot (c • v) w = c * binaryDot v w := by
+  simp [binaryDot, Pi.smul_apply, smul_eq_mul, mul_assoc, Finset.mul_sum]
+
 /-! ## Reduction mod 2 -/
 
 /-- Reduce an integer vector mod 2 to get a binary vector. -/

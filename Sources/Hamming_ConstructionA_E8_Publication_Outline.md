@@ -32,12 +32,68 @@ The strongest version of the paper would end with a Lean theorem saying that
 our code-built lattice is the same object, or isometric to the same object, as
 the `E8` lattice whose packing density is proved optimal in Sphere-Packing-Lean.
 
+## Current formal status
+
+As of the 2026-05-07 integration, the strong local E8 paper spine is in place.
+The citation-friendly entry point is:
+
+```lean
+PhysicsSM.Coding.HammingConstructionAE8Final
+```
+
+That file re-exports the main theorem chain:
+
+1. the extended `[8,4,4]` Hamming code is Type II;
+2. its Construction A lattice has an explicit full-rank basis;
+3. the scaled lattice is even and unimodular via the concrete Gram determinant;
+4. the scaled minimum squared norm is exactly `2`;
+5. the short-vector list has exactly `240` vectors;
+6. those short vectors biject with the repository's octonionic `E8Root.rootList`;
+7. the Gram/Cartan bridge and Weyl reflection closure facts are available.
+8. the dependency-free SPL-shaped matrix bridge is available:
+   `E8SpherePackingMatrixBridge.lean` reproduces SPL's E8 basis matrix over
+   `Q`, proves it is unimodular, proves its rows satisfy the local
+   half-integer E8 predicate, and proves that its Gram matrix and the scaled
+   Construction A Gram matrix are both congruent to `e8Cartan`.
+
+This clears the "strong paper" target below. The remaining upgrade from
+"strong" to "truly impressive" is the import-level bridge to
+Sphere-Packing-Lean: identify the local Hamming/Construction A model with the
+E8 object used in the formalized sphere-packing theorem, then transport the
+density or optimality result.
+
+The broad division-algebra side route also advanced: `CompositionClifford.lean`
+now supplies a norm-form composition-algebra mixin, real/imaginary projections,
+and the pure-imaginary square relation. This is valuable for the larger
+octonion/Hurwitz/Clifford program, but it is not on the critical path for the
+Hamming-to-E8 publication.
+
 ## Literature review synthesis
 
 The literature supports a strong but carefully bounded paper. The paper should
 not be pitched as a new sphere-packing proof. It should be pitched as the
 formal coding-theory entrance to the already formalized E8 sphere-packing
 story.
+
+### Zotero-backed provenance status
+
+A Zotero source map for this manuscript is now maintained in
+`Sources/Hamming_E8_Zotero_Source_Map.md`. The current local Zotero library
+contains Conway-Sloane's *Sphere Packings, Lattices and Groups*, which should
+be the primary source for Construction A, E8 lattice presentations, and the
+classical code-to-lattice route. It also contains useful context items for
+code-lattice-CFT motivation, E8 uniqueness background, and Weyl/Jacobi-form
+sequel work.
+
+Several canonical sources still need to be imported into Zotero before final
+submission: Hamming 1950, MacWilliams-Sloane, Huffman-Pless, Cohn-Elkies,
+Sphere-Packing-Lean's formal publication/blueprint citation, and any heterotic
+Narain/code-lattice source used for physics motivation. Viazovska's
+dimension-8 paper and the Cohn-Kumar-Miller-Radchenko-Viazovska universal
+optimality paper are present as arXiv items and should be updated with their
+published Annals metadata. Until those items are present and checked, the
+outline should treat those citations as planned bibliography entries rather
+than completed provenance.
 
 ### Classical code-to-lattice route
 
@@ -236,34 +292,35 @@ norm 2. This theorem alone does not identify the subgroup as E8.
 
 ## Peer-review guardrails
 
-The current draft should explicitly separate proved facts from E8-facing
-targets:
+The current manuscript should explicitly separate proved local E8 facts from
+the remaining Sphere-Packing-Lean endpoint:
 
 - Proved: the extended Hamming parity-check code has 16 codewords, minimum
-  weight at least 4, and is doubly even.
+  weight at least 4, doubly-evenness, self-duality, and Type II status.
 - Proved: Construction A for this code is an additive subgroup of `Z^8`.
-- Proved: every nonzero vector in that subgroup has squared norm at least 4,
-  and one vector attains squared norm 4.
-- Not yet proved: code self-duality.
-- Not yet proved: full-rank geometric lattice packaging.
-- Not yet proved: evenness/unimodularity after scaling.
-- Not yet proved: a Gram matrix comparison with E8.
-- Not yet proved: exactly 240 minimal vectors.
-- Not yet proved: equivalence with the integral-octonion `E8Root.rootList`.
-- Not yet proved: any import-level bridge to Sphere-Packing-Lean.
+- Proved: the lattice has an explicit full-rank basis and Gram determinant
+  `256` before scaling.
+- Proved: after the `1 / sqrt 2` normalization, the Gram determinant is `1`
+  and all squared norms are even.
+- Proved: the scaled minimum squared norm is exactly `2`.
+- Proved: there are exactly `240` short vectors.
+- Proved: those short vectors are in bijection with the integral-octonion
+  `E8Root.rootList`.
+- Proved: a local Gram/Cartan bridge and Weyl reflection closure API.
+- Not yet proved: any import-level equality or isometry with the
+  Sphere-Packing-Lean E8 object.
+- Not yet proved: any transported density or optimality theorem for the local
+  Hamming/Construction A lattice.
 
-The paper should not use the phrase "the E8 lattice" for the Construction A
-object until one of the bridge theorems is kernel-checked. Safer phrases are:
+The paper may now call the local object the Hamming Construction A model of E8,
+provided the normalization and bridge theorems are cited. It should still avoid
+claiming that this is the Sphere-Packing-Lean E8 lattice until the
+import-level bridge is kernel-checked.
 
-- "the Hamming Construction A subgroup";
-- "the unscaled Construction A model";
-- "the standard code-theoretic E8 candidate";
-- "the object classically identified with E8 after scaling."
-
-The finite enumeration theorems currently use `native_decide`. This is fine for
-small finite searches, but the paper must acknowledge the resulting
-`trustCompiler` dependency or replace those proofs with kernel-normalized
-certificates.
+Several finite enumeration theorems use `native_decide`. This is appropriate
+for the small finite searches in this project, but the paper must acknowledge
+the resulting `Lean.trustCompiler` dependency, especially for 240-root
+enumerations and classification-style checks.
 
 ## Relationship to Sphere-Packing-Lean
 
@@ -537,7 +594,7 @@ Discuss:
 The following target choices keep the paper ambitious without scattering effort
 away from the central Hamming -> Construction A -> E8 bridge.
 
-Immediate targets already queued with Aristotle:
+Completed near-term targets:
 
 - Self-duality and Type II status of the extended Hamming code.
 - Scaling the Construction A subgroup to the E8 root norm convention.
@@ -545,16 +602,25 @@ Immediate targets already queued with Aristotle:
 - 240 shortest vectors and the bridge to `E8Root.rootList`.
 - Half-integer coordinate bridge toward Sphere-Packing-Lean.
 - Evenness/full-rank precursor facts and a `native_decide` certificate audit.
+- Weight enumerator data and a concrete MacWilliams identity check.
+- Code equivalence/permutation-action API and the `[8,4,4]` uniqueness theorem.
+- Weyl reflection closure on the 240-root list.
+- A final theorem index in `HammingConstructionAE8Final.lean`.
+- A dependency-free SPL matrix bridge in `E8SpherePackingMatrixBridge.lean`.
 
 Good new near-term targets:
 
-- Weight enumerator of the extended Hamming code:
-  `W(x,y) = x^8 + 14*x^4*y^4 + y^8`.
-- A concrete MacWilliams identity check for the extended Hamming code, even if
-  the fully general Fourier-transform theorem is postponed.
-- Code equivalence/permutation-action API, with `[8,4,4]` uniqueness as an
-  ambitious stretch.
-- Weyl reflections on the 240-root list, with Weyl group order as a stretch.
+- Publish/use the Windows-safe SPL fork branch that renames exact `Aux.lean`
+  files to `Auxiliary.lean`.
+- Prove imported matrix equality: SPL's `E8Matrix Q` is definitionally equal
+  to local `splE8BasisQ`.
+- Use SPL's `span_E8Matrix` to identify the `Z`-span of the local SPL-shaped
+  basis with `Submodule.E8`.
+- Compose the imported span theorem with the local Gram-congruence bridge.
+- Transport a density theorem only after the local-to-SPL lattice bridge is
+  kernel-checked.
+- Weyl orbit convergence and Weyl group order remain good stretch targets, but
+  they are not needed for the main Hamming-to-E8 paper.
 
 Targets to defer until the E8 bridge lands:
 
@@ -569,6 +635,28 @@ Targets to defer until the E8 bridge lands:
   infrastructure beyond the current paper's spine.
 - Narain lattice physics. Keep as motivation until the finite code/lattice
   results are stable.
+
+### Post-integration next wave
+
+After the 2026-05-07 integrations, the local E8 construction is complete enough
+for the strong version of the paper. The next Aristotle/engineering target is
+therefore the external bridge:
+
+- inspect Sphere-Packing-Lean under the pinned toolchain;
+- identify the exact E8 lattice, Gram matrix, packing, and density theorem
+  names;
+- compare SPL's normalization with `E8SpherePackingShape.lean` and
+  `E8HalfIntegerBridge.lean`;
+- use `E8SpherePackingMatrixBridge.lean` as the dependency-free comparison
+  layer;
+- prove the imported hinge theorem `E8Matrix Q = splE8BasisQ`;
+- use `span_E8Matrix` to bridge from local matrix facts to `Submodule.E8`;
+- if possible, transport SPL's density or optimality theorem to the local
+  Hamming Construction A model after the lattice bridge is checked.
+
+Golay/Leech, theta series, Narain lattices, abstract rank-8 uniqueness, and full
+Weyl group order remain excellent sequel targets. They should not distract from
+the immediate SPL bridge.
 
 ### Target A: scaled embedding
 
@@ -784,7 +872,7 @@ Expected output:
 
 ### Minimal solid paper
 
-Submit once we have:
+Status: achieved.
 
 - Construction A formalized;
 - extended Hamming `[8,4,4]` formalized;
@@ -795,7 +883,7 @@ This is a modest but clean formalization note.
 
 ### Strong paper
 
-Submit once we add:
+Status: achieved locally, assuming the current build remains green.
 
 - explicit basis;
 - Gram matrix theorem;
@@ -806,7 +894,7 @@ This becomes a serious E8 formalization paper.
 
 ### Truly impressive paper
 
-Submit once we add:
+Status: one major bridge remains.
 
 - bridge to Sphere-Packing-Lean's E8 lattice;
 - transported density theorem or optimality corollary;

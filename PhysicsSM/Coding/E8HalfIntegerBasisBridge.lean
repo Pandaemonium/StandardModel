@@ -1,0 +1,162 @@
+import PhysicsSM.Coding.E8SpherePackingMatrixBridge
+
+/-!
+# Half-integer E8 lattice: basis spanning and bidirectional bridge
+
+This module proves that the doubled half-integer E8 lattice
+`halfIntE8Doubled` is exactly the `Z`-span of the rows of
+`splE8BasisDoubled`.
+
+## Main results
+
+* `splE8BasisDoubled_span_sub_halfIntE8Doubled`: any `Z`-linear combination
+  of rows of `splE8BasisDoubled` belongs to `halfIntE8Doubled`.
+* `halfIntE8Doubled_sub_splE8BasisDoubled_span`: every
+  `y ∈ halfIntE8Doubled` is a `Z`-linear combination of the rows.
+* `halfIntE8Doubled_eq_span_splE8BasisDoubled`: the lattice equality.
+
+The reverse inclusion is constructive: explicit integer coefficients are
+exhibited by back-substitution through the lower-triangular structure of
+`splE8BasisDoubled` plus the all-ones glue row.
+-/
+
+set_option linter.style.longLine false
+set_option linter.style.nativeDecide false
+
+namespace PhysicsSM.Coding
+
+open PhysicsSM.Lie.Exceptional.E8
+
+/-! ## Coefficient extraction -/
+
+/-- Explicit decomposition coefficients for expressing a vector `y` as
+`sum_i c_i * splE8BasisDoubled i`.
+
+The definition uses integer division, which is exact when
+`y ∈ halfIntE8Doubled`. -/
+def decompCoeffs (y : Fin 8 → ℤ) : Fin 8 → ℤ :=
+  ![ (y 0 + y 1 + y 2 + y 3 + y 4 + y 5 + y 6 + y 7 - 8 * y 7) / 4,
+     (y 1 + y 2 + y 3 + y 4 + y 5 + y 6 - 6 * y 7) / 2,
+     (y 2 + y 3 + y 4 + y 5 + y 6 - 5 * y 7) / 2,
+     (y 3 + y 4 + y 5 + y 6 - 4 * y 7) / 2,
+     (y 4 + y 5 + y 6 - 3 * y 7) / 2,
+     (y 5 + y 6 - 2 * y 7) / 2,
+     (y 6 - y 7) / 2,
+     y 7 ]
+
+/-! ## Integrality of coefficients -/
+
+/-- The divisions in `decompCoeffs` are exact for vectors satisfying the
+same-parity and divisibility conditions that define `halfIntE8Doubled`. -/
+theorem decompCoeffs_int_divisibility (y : Fin 8 → ℤ)
+    (hpar : ∀ i j : Fin 8, y i % 2 = y j % 2) (hdiv : 4 ∣ ∑ i, y i) :
+    2 ∣ (y 6 - y 7) ∧
+    2 ∣ (y 5 + y 6 - 2 * y 7) ∧
+    2 ∣ (y 4 + y 5 + y 6 - 3 * y 7) ∧
+    2 ∣ (y 3 + y 4 + y 5 + y 6 - 4 * y 7) ∧
+    2 ∣ (y 2 + y 3 + y 4 + y 5 + y 6 - 5 * y 7) ∧
+    2 ∣ (y 1 + y 2 + y 3 + y 4 + y 5 + y 6 - 6 * y 7) ∧
+    4 ∣ (y 0 + y 1 + y 2 + y 3 + y 4 + y 5 + y 6 + y 7 - 8 * y 7) := by
+  simp_all +decide [Fin.sum_univ_eight, ← even_iff_two_dvd, parity_simps]
+  grind
+
+/-! ## Reconstruction identity -/
+
+/-- The linear combination `sum_i c_i * row_i` reconstructs `y`, provided
+`y` satisfies the half-integer parity and divisibility conditions. -/
+theorem decompCoeffs_reconstruction (y : Fin 8 → ℤ)
+    (hpar : ∀ i j : Fin 8, y i % 2 = y j % 2) (hdiv : 4 ∣ ∑ i, y i) :
+    ∀ j : Fin 8,
+      (∑ i : Fin 8, decompCoeffs y i * splE8BasisDoubled i j) = y j := by
+  intro j
+  have := decompCoeffs_int_divisibility y hpar hdiv
+  unfold decompCoeffs splE8BasisDoubled
+  fin_cases j <;> simp +decide [*, Fin.sum_univ_eight] <;> ring!
+  all_goals
+    rw [Int.ediv_mul_cancel] <;> omega
+
+/-! ## Forward inclusion: span is contained in halfIntE8Doubled -/
+
+/-- Any `Z`-linear combination of rows of `splE8BasisDoubled` belongs to
+`halfIntE8Doubled`. -/
+theorem splE8BasisDoubled_span_sub_halfIntE8Doubled
+    (c : Fin 8 → ℤ) :
+    (∑ i, c i • splE8BasisDoubled i) ∈ halfIntE8Doubled := by
+  have h_row_mem : ∀ i, splE8BasisDoubled i ∈ halfIntE8Doubled := by
+    grind +suggestions
+  convert AddSubgroup.sum_mem _ fun i _ =>
+    AddSubgroup.zsmul_mem _ (h_row_mem i) (c i) using 1
+
+/-! ## Reverse inclusion: halfIntE8Doubled is contained in the span -/
+
+/-- Every `y ∈ halfIntE8Doubled` can be expressed as a `Z`-linear combination
+of the rows of `splE8BasisDoubled`. -/
+theorem halfIntE8Doubled_sub_splE8BasisDoubled_span
+    (y : Fin 8 → ℤ) (hy : y ∈ halfIntE8Doubled) :
+    ∃ c : Fin 8 → ℤ, ∀ j : Fin 8,
+      (∑ i : Fin 8, c i * splE8BasisDoubled i j) = y j := by
+  exact ⟨decompCoeffs y, decompCoeffs_reconstruction y hy.1 hy.2⟩
+
+/-- Equivalent pointfree form: `y = sum_i c_i • row_i`. -/
+theorem halfIntE8Doubled_sub_splE8BasisDoubled_span' (y : Fin 8 → ℤ)
+    (hy : y ∈ halfIntE8Doubled) :
+    ∃ c : Fin 8 → ℤ, y = ∑ i, c i • splE8BasisDoubled i := by
+  obtain ⟨c, hc⟩ := halfIntE8Doubled_sub_splE8BasisDoubled_span y hy
+  exact ⟨c, funext fun j => by rw [← hc j]; simp [Finset.sum_apply]⟩
+
+/-! ## Lattice equality -/
+
+/-- **Main theorem**: The doubled half-integer E8 lattice equals the `Z`-span
+of the rows of `splE8BasisDoubled`. -/
+theorem splE8BasisDoubled_rows_span_halfIntE8Doubled :
+    (∀ c : Fin 8 → ℤ, (∑ i, c i • splE8BasisDoubled i) ∈ halfIntE8Doubled) ∧
+    (∀ y, y ∈ halfIntE8Doubled →
+      ∃ c : Fin 8 → ℤ, y = ∑ i, c i • splE8BasisDoubled i) :=
+  ⟨splE8BasisDoubled_span_sub_halfIntE8Doubled,
+   fun y hy => halfIntE8Doubled_sub_splE8BasisDoubled_span' y hy⟩
+
+/-! ## AddSubgroup equality form -/
+
+/-- The additive subgroup generated by the rows of `splE8BasisDoubled` equals
+`halfIntE8Doubled`. -/
+theorem halfIntE8Doubled_eq_span_splE8BasisDoubled :
+    halfIntE8Doubled = AddSubgroup.closure (Set.range splE8BasisDoubled) := by
+  refine le_antisymm ?_ ?_ <;> norm_num [Set.range_subset_iff, AddSubgroup.mem_closure]
+  · intro y hy
+    obtain ⟨c, rfl⟩ := halfIntE8Doubled_sub_splE8BasisDoubled_span' y hy
+    exact AddSubgroup.sum_mem _ fun i _ =>
+      AddSubgroup.zsmul_mem _ (AddSubgroup.subset_closure <| Set.mem_range_self i) _
+  · intro y
+    apply splE8BasisQ_row_doubled_mem y
+
+/-! ## Construction A to half-integer full bridge -/
+
+/-- **Full bidirectional bridge.** The Construction A lattice and the
+half-integer E8 lattice are connected by:
+
+1. the Hadamard map sends Construction A vectors into `halfIntE8Doubled`;
+2. `halfIntE8Doubled` is exactly the `Z`-span of the SPL doubled basis rows;
+3. both Gram matrices are congruent to `e8Cartan` via unimodular transitions.
+-/
+theorem constructionA_to_halfInteger_full_bridge :
+    (∀ z : Fin 8 → ℤ, z ∈ e8IntLattice →
+      Matrix.mulVec hadamard8 z ∈ halfIntE8Doubled) ∧
+    (∀ c : Fin 8 → ℤ,
+      (∑ i, c i • splE8BasisDoubled i) ∈ halfIntE8Doubled) ∧
+    (∀ y, y ∈ halfIntE8Doubled →
+      ∃ c : Fin 8 → ℤ, y = ∑ i, c i • splE8BasisDoubled i) ∧
+    ((splToCartanTransition.map (Int.castRingHom ℚ)) *
+      splE8GramQ *
+      (splToCartanTransition.map (Int.castRingHom ℚ)).transpose =
+    (e8Cartan.map (Int.castRingHom ℚ))) ∧
+    ((e8BasisChangeMatrix.map (Int.castRingHom ℚ)).transpose *
+      e8ScaledGramQ *
+      (e8BasisChangeMatrix.map (Int.castRingHom ℚ)) =
+    (e8Cartan.map (Int.castRingHom ℚ))) :=
+  ⟨hadamard8_maps_constructionA_to_halfIntE8,
+   splE8BasisDoubled_rows_span_halfIntE8Doubled.1,
+   splE8BasisDoubled_rows_span_halfIntE8Doubled.2,
+   splGram_to_cartan,
+   constructionA_scaledGram_to_cartan⟩
+
+end PhysicsSM.Coding

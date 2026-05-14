@@ -373,6 +373,16 @@ Prefer to provide:
 
 The theorem statement should already be as semantically correct as possible. Do not ask Aristotle to prove a statement that is probably malformed, convention-mismatched, or mathematically false unless the purpose is counterexample search.
 
+### Aristotle submission tips
+
+Recent submission lessons:
+
+- Prefer a clean submission copy under `AgentTasks/aristotle-submit/` when the live worktree contains old `AgentTasks/aristotle-output/` extracts or heavyweight external dependencies. The CLI archives the project directory, so stale extracted output can break packaging.
+- For Sphere-Packing-Lean enabled jobs, use a separate Linux/SPL-enabled submission copy and refresh only the relevant files from the live tree. Do not enable upstream Sphere-Packing-Lean in the native Windows checkout.
+- Submit large waves one job at a time, or verify with `aristotle list` after a timeout. A timeout can happen after a job was created, so do not blindly resubmit.
+- Record job IDs, output directories, and submission-project paths immediately in the task file.
+- Transient upload or SSL errors can happen. Check `aristotle list` before retrying so duplicate jobs are not created.
+
 ### Preferred workflow
 
 For a hard proof:

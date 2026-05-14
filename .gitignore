@@ -13,3 +13,5 @@ __pycache__/
 # Aristotle binary archives, extracted temporaries, and slim submission copies
 AgentTasks/aristotle-output/
 AgentTasks/aristotle-submit/
+# External dependency clones and local fork scratch space
+AgentTasks/external/
