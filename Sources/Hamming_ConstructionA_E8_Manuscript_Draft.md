@@ -1,12 +1,13 @@
 # From the Extended Hamming Code to the E8 Sphere Packing in Lean
 
-Status: first manuscript draft, 2026-05-07.
+Status: working manuscript draft, reviewed against the repository on 2026-05-16.
 
 Tag policy: claims marked `[confirm]` are intended manuscript claims that still
 need a final build check, citation check, imported Sphere-Packing-Lean check, or
-Zotero metadata check before submission. Untagged formal claims should be
-backed by the local Lean theorem index
-`PhysicsSM.Coding.HammingConstructionAE8Final`.
+Zotero metadata check before submission. Untagged core Hamming-to-E8 formal
+claims should be backed by the local Lean theorem index
+`PhysicsSM.Coding.HammingConstructionAE8Final`; theta-series and SPL comparison
+claims may instead cite the named modules listed in the architecture table.
 
 ## Draft Abstract
 
@@ -60,7 +61,8 @@ extended binary Hamming code [8,4,4]
   -> scaled even unimodular rank-8 lattice
   -> 240 minimal vectors
   -> E8 root system
-  -> Sphere-Packing-Lean E8 basis model [confirm]
+  -> local Sphere-Packing-Lean basis reproduction
+  -> optional imported Sphere-Packing-Lean endpoint [confirm]
 ```
 
 in Lean 4. The contribution is intentionally complementary to
@@ -83,10 +85,12 @@ it has exactly `240` minimal vectors, those vectors biject with the repository's
 octonionic E8 root list, and an explicit unimodular change of basis carries its
 Gram matrix to the E8 Cartan matrix.
 
-The `[8,4,4]` uniqueness theorem is currently a companion result rather than a
-re-exported theorem in this index: the public statement lives in
-`PhysicsSM/Draft/Hamming844Uniqueness.lean` and delegates to trusted proof
-machinery under `PhysicsSM/Coding/`. `[confirm final theorem-index placement]`
+The `[8,4,4]` uniqueness theorem is now also exposed through the theorem index
+as
+`PhysicsSM.Coding.HammingConstructionAE8Final.code_unique_up_to_equivalence`.
+The underlying trusted proof statement is
+`PhysicsSM.Coding.extendedHamming8_unique_up_to_equivalence_proof` in
+`PhysicsSM/Coding/Hamming844Classification.lean`.
 
 ### Contributions
 
@@ -95,8 +99,8 @@ The main contributions are:
 1. A Lean formalization of the extended `[8,4,4]` Hamming code as a Type II
    binary code, including self-duality and doubly-evenness.
 2. A kernel-checked uniqueness theorem: every binary linear `[8,4,4]` code is
-   equivalent to `extendedHamming8` under a coordinate permutation. `[confirm
-   final theorem-index placement]`
+   equivalent to `extendedHamming8` under a coordinate permutation, exposed in
+   the citation-friendly theorem index.
 3. A concrete Construction A lattice over integer vectors, with membership
    lemmas and norm bounds.
 4. An explicit basis for the Hamming Construction A lattice, together with a
@@ -116,12 +120,24 @@ The main contributions are:
 10. An imported Sphere-Packing-Lean bridge proving a full `Z`-linear equivalence
     from coefficient coordinates to `Submodule.E8 R`, together with a
     manuscript-facing inner-product theorem.
-11. A finite theta-series check proving the first six coefficients
-    `1, 240, 2160, 6720, 17520, 30240` of the Construction A E8 theta series,
-    matching the Eisenstein series `E4(q)` through `O(q^6)`.
-12. A structural theta-series bridge deriving the first shell counts from the
-    Hamming weight distribution `(1, 14, 1)`, plus an API bridge identifying
-    the local `sigma3` with Mathlib's `ArithmeticFunction.sigma 3`.
+11. A finite theta-series check proving the constant term through the `q^6`
+    coefficient
+    `1, 240, 2160, 6720, 17520, 30240, 60480` of the Construction A E8 theta
+    series, matching the Eisenstein series `E4(q)` through `O(q^7)`.
+12. A structural theta-series bridge proving the finite product/convolution
+    formula for one-dimensional even/odd lift series, plus an API bridge
+    identifying the local `sigma3` with Mathlib's
+    `ArithmeticFunction.sigma 3`.
+13. A Lean proof of the two Jacobi theta duplication identities needed to
+    identify the Hamming theta-constant polynomial with Sphere-Packing-Lean's
+    `thetaE4` polynomial. The remaining theta-series gap is now the all-`n`
+    representation-number/q-expansion coefficient formula.
+14. New structural-strengthening drafts showing how to reduce several larger
+    finite computations: a short-vector count partitioned by Hamming weight, a
+    semantic classification of doubled-coordinate E8 roots into the usual two
+    root families, an E8 x E8 direct-sum self-duality and 480 minimal-vector
+    package, and a draft general theta/weight-enumerator convolution formula.
+    `[confirm final placement for draft results]`
 
 ### What We Do Not Claim
 
@@ -181,7 +197,7 @@ Key theorem:
 
 ```lean
 PhysicsSM.Coding.HammingConstructionAE8Final.code_is_typeII
-PhysicsSM.Coding.extendedHamming8_unique_up_to_equivalence
+PhysicsSM.Coding.extendedHamming8_unique_up_to_equivalence_proof
 ```
 
 ### 2.2 Construction A
@@ -273,17 +289,30 @@ two existing objects.
 | `E8ThetaSeries.lean` | Theta coefficients through `q^4` and comparison with `E4` |
 | `E8ThetaSigmaBridge.lean` | Compatibility between local `sigma3` and Mathlib's arithmetic-function `sigma` |
 | `E8ThetaSeriesQ5.lean` | `q^5` coefficient by inner-shell plus spike decomposition |
+| `E8ThetaSeriesQ6.lean` | `q^6` coefficient by inner-shell plus spike decomposition |
 | `ConstructionAThetaWeightBridge.lean` | First shell counts derived from the Hamming weight distribution |
+| `Coding/ConstructionAThetaConvolution.lean` | Structural shell partition and Hamming weight-enumerator convolution theorem |
+| `Draft/WeightContribCoeffProof.lean` | Formal power-series coefficient theorem for finite products |
+| `Draft/E8ThetaDuplicationAristotle.lean` | Jacobi duplication identities in SPL theta notation |
+| `Draft/ThetaDuplicationProof.lean` | Mathlib-only theta duplication proof used by the SPL-facing wrapper |
+| `Draft/E8ThetaSPLBridge.lean` | SPL `E4` q-expansion and theta-polynomial bridge |
+| `Draft/E8ThetaCoeffGapAristotle.lean` | Remaining all-coefficient E8 representation-number target |
 | `Draft/E8SpherePackingIsometryHelper.lean` | SPL-free bilinear-form lemmas for the imported isometry bridge |
 | `Draft/E8EvenUnimodularUniqueness.lean` | Draft scaffold for abstract rank-8 even unimodular uniqueness |
 | `E8WeylPermutations.lean` | Simple reflections packaged as permutations of the root subtype |
 | `E8WeylOrbitConvergence.lean` | Constructive orbit convergence from one root to all `240` roots |
 | `HammingConstructionAE8Final.lean` | Citation-friendly theorem index |
 
-Draft or platform-dependent bridge files live under `PhysicsSM/Draft/`.
-In particular, the direct Sphere-Packing-Lean import file is intentionally not
-part of the default Windows build until the external dependency naming issue is
-resolved upstream or through the local fork. `[confirm]`
+Draft or platform-dependent bridge files live under `PhysicsSM/Draft/` and are
+collected by the optional `PhysicsSMDraft` root when they do not require the
+external Sphere-Packing-Lean dependency. In particular, the direct
+Sphere-Packing-Lean import file is intentionally not part of either default
+root. A Windows-safe fork branch with exact `Aux.lean` files renamed to
+`Auxiliary.lean` exists at
+`Pandaemonium/Sphere-Packing-Lean:windows-safe-auxiliary-renames`; the current
+checkout uses the local copy under `AgentTasks/external` as a Lake path
+dependency and exposes the direct import bridge through `PhysicsSMSPL`.
+`[confirm imported fork build status]`
 
 ## 4. Main Formal Results
 
@@ -307,7 +336,11 @@ properties that Construction A needs.
 The formalization also proves the uniqueness statement for these parameters:
 
 ```lean
-theorem extendedHamming8_unique_up_to_equivalence
+theorem code_unique_up_to_equivalence
+    (C : BinaryLinearCode 8) (hC : IsLinearCode C 4 4) :
+    CodeEquivalent C extendedHamming8
+
+theorem extendedHamming8_unique_up_to_equivalence_proof
     (C : BinaryLinearCode 8) (hC : IsLinearCode C 4 4) :
     CodeEquivalent C extendedHamming8
 ```
@@ -316,11 +349,10 @@ The proof combines an information-set argument, reduction to systematic
 generator matrices, and a finite classification over all `2^16 = 65,536`
 possible systematic `4 x 4` binary matrices. The theorem
 `CodeEquivalent.isLinearCode` records that coordinate-permutation equivalence
-preserves the relevant code parameters. The public wrapper currently lives in
-`PhysicsSM/Draft/Hamming844Uniqueness.lean`; the proof machinery is in
-`PhysicsSM/Coding/Hamming844Classification.lean` and
-`PhysicsSM/Coding/Hamming844UniquenessBasic.lean`. `[confirm final placement
-before submission]`
+preserves the relevant code parameters. The first displayed theorem is the
+citation-facing wrapper in `HammingConstructionAE8Final.lean`; the second is
+the underlying proof theorem in
+`PhysicsSM/Coding/Hamming844Classification.lean`.
 
 Finally, `HammingWeightEnumerator.lean` proves the MacWilliams self-dual
 identity
@@ -463,13 +495,13 @@ names `Aux.lean`; `Aux` is a reserved device name on Windows filesystems.
 
 ### 4.7 Imported Sphere-Packing-Lean Endpoint
 
-The imported file
+The platform-dependent imported file
 
 ```lean
 PhysicsSM/Draft/E8SpherePackingImported.lean
 ```
 
-directly imports:
+directly imports Sphere-Packing-Lean when that external dependency is enabled:
 
 ```lean
 SpherePacking.Dim8.E8.Basic
@@ -488,7 +520,7 @@ E8Packing
 E8Packing_density
 ```
 
-The strongest new bridge theorems are:
+The strongest platform-checked bridge theorems in that file are:
 
 ```lean
 theorem local_splE8BasisQ_eq_imported_E8Matrix_Q : ...
@@ -507,7 +539,7 @@ comparison chain. The theorem `e8_density_with_bridge_documentation` bundles
 the SPL density statement with the matrix and span equalities that document why
 the density theorem is being cited in the same coordinate story.
 
-The imported bridge now also contains an explicit transition matrix and
+The imported bridge also contains an explicit transition matrix and
 coefficient-level embedding:
 
 ```lean
@@ -546,8 +578,8 @@ vectors with even coordinate sum lie in `Submodule.E8 R` in the imported SPL
 model. They are the direct interface between the Construction A parity data and
 SPL's half-integer/integer even-sum predicate.
 
-The remaining formal endpoint is no longer the lattice equivalence itself, but
-the packing-level packaging:
+Within the imported bridge, the remaining endpoint is packing-level packaging
+rather than the lattice equivalence itself:
 
 ```text
 transport or restate the SPL packing/density theorem through
@@ -574,9 +606,11 @@ theorem e8ShellCount_eight : ...
 theorem e8ShellCount_twelve : ...
 theorem e8ShellCount_sixteen : ...
 theorem e8ShellCount_twenty : ...
+theorem e8ShellCount_twentyfour : ...
 ```
 
-These prove the shell counts `1`, `240`, `2160`, `6720`, `17520`, and `30240`.
+These prove the shell counts `1`, `240`, `2160`, `6720`, `17520`, `30240`,
+and `60480`.
 The base theta file defines the divisor-sum function `sigma3`, the
 Eisenstein-series coefficient function `e4Coeff n = 240 * sigma3 n`, and the
 bridge file proves that this local definition agrees with Mathlib's canonical
@@ -595,25 +629,28 @@ theorem thetaCoeff_eq_e4Coeff_two : ...
 theorem thetaCoeff_eq_e4Coeff_three : ...
 theorem thetaCoeff_eq_e4Coeff_four : ...
 theorem thetaCoeff_eq_e4Coeff_five : ...
+theorem thetaCoeff_eq_e4Coeff_six : ...
 ```
 
 Thus the formalized coefficient data matches
 
 ```text
 Theta_E8(q) = 1 + 240 q + 2160 q^2 + 6720 q^3
-                + 17520 q^4 + 30240 q^5 + O(q^6)
+                + 17520 q^4 + 30240 q^5 + 60480 q^6 + O(q^7)
 E4(q)       = 1 + 240 q + 2160 q^2 + 6720 q^3
-                + 17520 q^4 + 30240 q^5 + O(q^6).
+                + 17520 q^4 + 30240 q^5 + 60480 q^6 + O(q^7).
 ```
 
-The `q^4` and `q^5` coefficients use a decomposition rather than a direct
+The `q^4`, `q^5`, and `q^6` coefficients use decompositions rather than direct
 search over `{-4, ..., 4}^8`. For `q^4`, the proof counts the inner shell
 with all coordinates of absolute value at most `3`, then adds the `16` spike
 vectors `+/-4 e_i`. For `q^5`, the proof again counts the inner shell and then
 adds `2016` spike vectors with exactly one coordinate of absolute value `4`.
+For `q^6`, the proof counts the inner `sqNorm = 24` shell and adds `12096`
+spike vectors with exactly one coordinate of absolute value `4`.
 The decomposition is complete because two coordinates of absolute value at
 least `4` would already contribute squared norm at least `32`, larger than
-the `sqNorm = 20` shell.
+the `sqNorm = 16`, `20`, and `24` shells.
 
 The file `ConstructionAThetaWeightBridge.lean` gives a complementary
 explanation for the early coefficients. It partitions Construction A shell
@@ -639,15 +676,99 @@ theorem theta1_bridge_eq_e4 : ...
 theorem theta2_bridge_eq_e4 : ...
 ```
 
-This does not yet prove the full MacWilliams-theta product formula, but it
-turns the theta section from a pure point-counting calculation into a first
-formal connection between the Hamming weight enumerator and the E8 theta
-series.
+This early bridge has since been strengthened in two directions. First, the
+general convolution theorem in
+`PhysicsSM/Coding/ConstructionAThetaConvolution.lean` counts a fixed residue
+shell by a product of one-dimensional even and odd lift coefficients,
+partitions the Construction A shell by Hamming codeword residue, and collapses
+the codeword sum using the weight distribution `(1, 14, 1)`. The pure formal
+power-series coefficient theorem
 
-This is not yet a proof of the full identity `Theta_E8 = E4`; it is a
-kernel-checked finite initial segment plus a structural bridge for the first
-coefficients, with the same finite-enumeration trust boundary as the
-short-vector theorem.
+```lean
+theorem weightContribFormalSeries_coeff (w s : Nat) : ...
+```
+
+is proved in `PhysicsSM/Draft/E8ThetaWeightEnumeratorBridgeAristotle.lean`,
+using the reusable helper
+`PhysicsSM/Draft/WeightContribCoeffProof.lean`. It shows that the coefficient
+of the finite product of the eight one-dimensional parity-lift series is
+exactly the combinatorial convolution `weightContribConvolution w s`.
+
+Second, the Jacobi theta-constant part of the classical proof is now
+kernel-checked. The file `PhysicsSM/Draft/ThetaDuplicationProof.lean` proves
+local Mathlib-only duplication identities by direct summability and
+double-series reindexing. The SPL-facing wrapper
+`PhysicsSM/Draft/E8ThetaDuplicationAristotle.lean` transports them to
+Sphere-Packing-Lean's theta constants:
+
+```lean
+theorem theta2_sq_duplication (tau : UpperHalfPlane) :
+    (Theta2 tau)^2 = 2 * Theta2 (twoTau tau) * Theta3 (twoTau tau)
+
+theorem theta4_sq_duplication (tau : UpperHalfPlane) :
+    (Theta4 tau)^2 = Theta3 (twoTau tau)^2 - Theta2 (twoTau tau)^2
+
+theorem hammingThetaConstantPolynomial_eq_thetaE4_from_duplication
+    (tau : UpperHalfPlane) :
+    hammingThetaConstantPolynomial tau = SpherePacking.ModularForms.thetaE4 tau
+```
+
+The actual Lean declarations use SPL's Unicode names `Theta_2`, `Theta_3`,
+and `Theta_4`. The algebraic step behind the last theorem is also isolated as
+a small `ring` proof in `PhysicsSM/Draft/E8ThetaDuplicationHelper.lean`.
+
+The SPL/Eisenstein side is also formalized. In
+`PhysicsSM/Draft/E8ThetaSPLBridge.lean`, the theorem
+
+```lean
+theorem splThetaE4Series_coeff_eq_local_e4 (n : Nat) : ...
+```
+
+identifies the q-expansion coefficients of SPL's `thetaE4` polynomial with the
+local normalized `E4` coefficients `if n = 0 then 1 else 240 * sigma3 n`.
+
+Thus the remaining theta gap is narrower than the original manuscript draft:
+it is no longer the Jacobi duplication bridge or the formal finite-product
+coefficient extraction. The remaining all-coefficient theorem is the E8
+representation-number formula in the project normalization:
+
+```lean
+theorem hammingThetaConvolutionCoeff_eq_e4Coeff (n : Nat) :
+    hammingThetaConvolutionCoeff n =
+      if n = 0 then 1 else 240 * sigma3 n
+```
+
+The draft file `PhysicsSM/Draft/E8ThetaCoeffGapAristotle.lean` proves this for
+`n <= 3` and proves that the all-`n` statement follows from the project-local
+formal series equality
+`E8ThetaAristotle.thetaSeries = E8ThetaAristotle.e4Series`. It also now
+contains a sorry-free modular-form reduction:
+
+```lean
+theorem hammingThetaConvolutionCoeff_eq_e4Coeff_of_weight4_form
+    (f : ModularForm Γ(1) 4)
+    (hf : ∀ n : Nat, (ModularFormClass.qExpansion (1 : ℝ) f).coeff n =
+      (hammingThetaConvolutionCoeff n : ℂ)) :
+    ∀ n : Nat, hammingThetaConvolutionCoeff n =
+      if n = 0 then 1 else 240 * sigma3 n
+```
+
+This reduction uses SPL's one-dimensionality theorem for weight-4 level-one
+modular forms and the q-expansion theorem for `E4`. It moves the remaining
+formal gap to the analytic construction of the E8 theta function as such a
+modular form, with q-expansion coefficients matching the Construction A shell
+counts. A separate conditional theorem in
+`PhysicsSM/Draft/E8ThetaQExpansionBridgeAristotle.lean`
+packages the current endpoint: with the now-proved duplication identities and
+the all-`n` representation formula, the analytic Hamming theta-polynomial
+q-expansion has the project-local Hamming Construction A coefficients.
+
+This is not yet a proof of the full identity `Theta_E8 = E4`, but the formal
+frontier has moved substantially. The Lean development now contains a
+kernel-checked finite initial segment, a structural product/convolution bridge,
+the Jacobi theta-duplication bridge to SPL's `thetaE4`, and the SPL `E4`
+coefficient bridge. What remains is the global representation-number formula,
+or an equivalent modular-form uniqueness proof.
 
 ## 5. Verification and Trust Boundary
 
@@ -664,7 +785,37 @@ import PhysicsSM.Coding.HammingConstructionAE8Final
 The final paper should report the exact Lean version, mathlib revision, and
 repository commit. `[confirm]`
 
-### 5.2 Finite Computation and `native_decide`
+### 5.2 Theorem Status and Trust Boundary
+
+The current theorem landscape is best presented explicitly. The following
+table separates fully checked local theorem wrappers, optional SPL-dependent
+bridges, and draft theta endpoints.
+
+| Claim family | Representative Lean declaration | File | Status / trust boundary |
+|--------------|---------------------------------|------|-------------------------|
+| Type II Hamming code | `HammingConstructionAE8Final.code_is_typeII` | `HammingConstructionAE8Final.lean` | Kernel-checked local theorem |
+| `[8,4,4]` uniqueness | `HammingConstructionAE8Final.code_unique_up_to_equivalence` | `HammingConstructionAE8Final.lean` | Kernel-checked wrapper; finite classification uses `native_decide` |
+| Construction A full rank / evenness / unimodularity | `HammingConstructionAE8Final.property_package` | `HammingConstructionAE8Final.lean` | Kernel-checked local theorem |
+| Minimum norm `2` | `HammingConstructionAE8Final.scaled_minimum_norm_two` | `HammingConstructionAE8Final.lean` | Kernel-checked local theorem |
+| Kissing number `240` | `HammingConstructionAE8Final.short_vector_count` | `HammingConstructionAE8Final.lean` | Kernel-checked theorem; list certificate uses finite computation |
+| Octonionic root bridge | `HammingConstructionAE8Final.bridge_perm` | `HammingConstructionAE8Final.lean` | Kernel-checked theorem; list permutation check uses `native_decide` |
+| Cartan bridge | `HammingConstructionAE8Final.gram_cartan_bridge` | `HammingConstructionAE8Final.lean` | Kernel-checked matrix identity |
+| Weyl orbit certificate | `HammingConstructionAE8Final.simpleClosure_from_firstRoot_covers_rootList` | `HammingConstructionAE8Final.lean` | Kernel-checked wrapper; compact finite word-table certificate |
+| SPL basis equality | `local_splE8BasisQ_eq_imported_E8Matrix_Q` | `E8SpherePackingImported.lean` | Optional SPL-dependent bridge |
+| SPL linear equivalence | `constructionAToE8Equiv`, `constructionAToE8_inner` | `E8SpherePackingImported.lean` | Optional SPL-dependent bridge |
+| Theta coefficients through `q^6` | `thetaCoeff_eq_e4Coeff_one` through `thetaCoeff_eq_e4Coeff_six` | `E8ThetaSeries*.lean` | Kernel-checked finite coefficient proofs |
+| Formal theta convolution | `weightContribFormalSeries_coeff` | `E8ThetaWeightEnumeratorBridgeAristotle.lean` | Sorry-free draft theorem, standard Lean axioms only |
+| Jacobi duplication bridge | `theta2_sq_duplication`, `theta4_sq_duplication` | `E8ThetaDuplicationAristotle.lean` | Sorry-free draft theorem, standard Lean axioms only |
+| SPL `thetaE4` to local `E4` coefficients | `splThetaE4Series_coeff_eq_local_e4` | `E8ThetaSPLBridge.lean` | Sorry-free draft theorem using SPL imported facts |
+| Modular-form reduction for all theta coefficients | `hammingThetaConvolutionCoeff_eq_e4Coeff_of_weight4_form` | `E8ThetaCoeffGapAristotle.lean` | Sorry-free draft theorem using SPL modular-form dimension and `E4_q_exp` |
+| Full `Theta_E8 = E4` coefficient formula | `hammingThetaConvolutionCoeff_eq_e4Coeff` | `E8ThetaCoeffGapAristotle.lean` | Open draft `sorry`; proved for `n <= 3` |
+
+This table is intentionally conservative: draft files may contain sorry-free
+theorems that are useful and kernel-checked, but they should not be presented
+as trusted theorem-index results until their statements and imports are
+reviewed for publication placement.
+
+### 5.3 Finite Computation and `native_decide`
 
 Several theorems are finite computations over small explicit data: codeword
 enumerations, `8 x 8` matrix identities, determinant calculations, and list
@@ -699,10 +850,26 @@ matrix equalities use `native_decide`, trading full kernel reduction for the
 native compiler trust boundary. The manuscript should report which theorem
 families fall on each side of this line.
 
+Recent structural-strengthening work refines this trust boundary rather than
+removing it entirely. The E8 x E8 Hamming-weight and dot-product splitting
+proofs in `PhysicsSM/Coding/HammingE8E8.lean` are ordinary finite-sum
+reindexing proofs, and the semantic doubled-coordinate root classification in
+`PhysicsSM/Draft/E8RootSemanticAristotle.lean` is a non-computational proof
+from `IsE8RootD`. The promoted general theta-convolution theorem in
+`PhysicsSM/Coding/ConstructionAThetaConvolution.lean` is also structural: it
+proves the shell partition and residue-convolution formula for arbitrary
+shell index `s`. On the other hand, the new short-vector count
+`short_vector_count_eq_240_structural`, the E8 x E8 480-count theorem, and the
+final grouping step in the convolution theorem still inherit finite
+certificates for lower-dimensional shell counts or Hamming weight classes.
+They improve the mathematical explanation by replacing monolithic searches
+with partitions and product decompositions, but they do not eliminate every
+use of `Lean.trustCompiler`.
+
 This is an appropriate use of native finite computation, but it should not be
 hidden from readers.
 
-### 5.3 External Dependency Boundary
+### 5.4 External Dependency Boundary
 
 The local theorem spine does not require Sphere-Packing-Lean. The direct SPL
 import bridge does. The manuscript should distinguish three layers:
@@ -724,22 +891,40 @@ paper on error-correcting codes, MacWilliams and Sloane's textbook, Huffman and
 Pless's textbook, and Conway and Sloane's lattice reference. `[confirm exact
 bibliographic metadata and chapter/page references]`
 
-The Error Correction Zoo and the Nebe-Sloane Catalogue of Lattices provide
-useful public cross-checks for the statement that the extended `[8,4,4]`
-Hamming code yields the E8 lattice by Construction A. They should be cited as
-secondary cross-checks rather than as the primary source for the theorem.
+Leech and Sloane's 1971 paper "Sphere Packings and Error-Correcting Codes"
+should be cited as an important historical source for the code-to-packing
+route: it systematically uses error-correcting codes to build sphere packings
+and devotes a major part of the paper to Construction A. For the Type II and
+self-dual-code side, the bibliography should also include Pless's introductory
+text, Rains and Sloane's Handbook survey "Self-Dual Codes", and Nebe, Rains,
+and Sloane's monograph Self-Dual Codes and Invariant Theory. Ebeling's
+Lattices and Codes is a compact bridge reference covering integral lattices,
+modular forms, and coding theory in one place.
+
+The Error Correction Zoo provides a useful public cross-check for the statement
+that the extended `[8,4,4]` Hamming code yields the E8 lattice by Construction
+A and for the uniqueness of the length-8 Type II code. The Nebe-Sloane
+Catalogue of Lattices is better cited as a secondary cross-check for concrete
+E8 lattice data, such as basis, Gram matrix, determinant, minimal norm, and
+kissing number, rather than as the primary source for the code-lattice theorem.
 `[confirm citation policy]`
+
+For root-system conventions and the octonionic bridge, Bourbaki's Lie Groups
+and Lie Algebras, Chapters 4-6, is the standard root-system/Coxeter reference,
+while Baez's "The Octonions" is the natural octonion reference. The manuscript
+should still state explicitly that the repository's octonion multiplication
+uses its own XOR binary-label convention, not Baez's basis convention verbatim.
 
 ### Sphere Packing
 
 Cohn and Elkies developed the linear-programming framework for upper bounds on
 sphere packings. Viazovska solved the sphere-packing problem in dimension `8`
 by constructing the required magic function, proving the optimality of the E8
-lattice packing. Cohn, Kumar, Miller, Radchenko, and Viazovska later solved the
-dimension `24` Leech lattice case and proved universal optimality results for
-E8 and the Leech lattice, including the Annals paper "Universal optimality of
-the E8 and Leech lattices and interpolation formulas", Annals of Mathematics
-196 (2022), 983-1082. `[confirm exact citations]`
+lattice packing. Cohn, Kumar, Miller, Radchenko, and Viazovska then solved the
+dimension `24` Leech lattice case. The later Annals paper "Universal
+optimality of the E8 and Leech lattices and interpolation formulas", Annals of
+Mathematics 196 (2022), 983-1082, proves universal optimality results for E8
+and the Leech lattice. `[confirm exact citations]`
 
 Sphere-Packing-Lean formalizes the dimension-8 theorem in Lean. The project
 blueprint credits Christopher Birkbeck, Sidharth Hariharan, Seewoo Lee,
@@ -754,17 +939,28 @@ SPL bibliography key]`
 ### Formal Coding Theory
 
 Recent Lean work on self-dual codes and building-up constructions is adjacent
-to this project. Our focus is different: instead of developing general
-self-dual-code construction theory, we formalize a concrete code-to-lattice
-bridge ending at E8. `[confirm Baek-Kim citation and relationship]`
+to this project. Baek and Kim's 2026 preprint "Formalizing building-up
+constructions of self-dual codes through isotropic lines in Lean" formalizes
+the algebraic core of building-up constructions for self-dual codes. TCSlib is
+also relevant as a Lean 4 formalization library for theoretical computer
+science that includes error-correcting-code material such as classical bounds,
+generator and parity-check matrices, dual codes, and the MacWilliams identity.
+Our focus is different: instead of developing general coding-theory
+infrastructure, we formalize a concrete code-to-lattice bridge ending at E8.
+`[confirm final Baek-Kim and TCSlib citation wording]`
 
 ### Physics Motivation
 
 Code-lattice correspondences also appear in the physics literature around
-conformal field theory and heterotic/Narain compactifications. This provides
+conformal field theory and heterotic/Narain compactifications. Dolan,
+Goddard, and Montague's work on conformal field theories, representations, and
+lattice constructions is an older code-lattice-CFT reference. Dymarsky and
+Shapere relate quantum stabilizer codes, lattices, and non-chiral CFTs, and
+Mizoguchi and Oikawa's 2026 preprint studies heterotic Narain lattices built
+from error-correcting codes by Construction A and variants. This provides
 motivation for the larger repository, but the present manuscript should keep
-the physics discussion short and non-essential. `[confirm whether to include
-Dymarsky-Shapere and Mizoguchi-Oikawa citations]`
+the physics discussion short and non-essential. `[confirm final physics
+citation scope]`
 
 ## 7. Discussion
 
@@ -842,21 +1038,29 @@ simple-reflection closure step from one root cover the whole root list. This is
 a compact constructive irreducibility certificate for the E8 root system.
 
 These results are not necessary for the minimal Hamming-to-E8 bridge, but they
-are strong enough to deserve either an appendix or a short "root-system
-verification" subsection. `[confirm final inclusion]`
+are strong enough to include as an appendix-level root-system verification
+certificate. This keeps the main proof spine focused while still recording the
+independent Weyl-action evidence.
 
 ## 8. Limitations and Future Work
 
 1. The paper does not formalize the abstract classification of rank-eight even
    unimodular lattices. The identification is explicit and finite.
 2. The default local build does not import `E8SpherePackingImported.lean`,
-   because the direct SPL bridge is platform/dependency-sensitive. The
-   SPL-free helper file `E8SpherePackingIsometryHelper.lean` does build in the
-   default project. `[confirm final status]`
-3. The paper proves the first six coefficients of `Theta_E8 = E4`, through
-   `q^5`, and proves a first weight-enumerator bridge for the early shells.
-   It does not yet prove the full theta-series identity or the general
-   MacWilliams-theta product formula. Those remain natural sequel targets.
+   because the direct SPL bridge is platform/dependency-sensitive. The current
+   checkout enables the local Windows-safe SPL fork as a Lake path dependency,
+   but keeps the direct bridge behind the explicit `PhysicsSMSPL` root. The
+   optional `PhysicsSMDraft` root imports the SPL-free draft helper files, but
+   still does not import the direct SPL bridge. `[confirm imported fork build
+   status]`
+3. The paper proves the constant term through the `q^6` coefficient of
+   `Theta_E8 = E4`, proves the formal finite-product convolution bridge, and
+   proves the Jacobi duplication identities identifying the Hamming
+   theta-constant polynomial with SPL's `thetaE4`. It does not yet prove the
+   full all-coefficient E8 representation-number formula
+   `hammingThetaConvolutionCoeff n = if n = 0 then 1 else 240 * sigma3 n`.
+   That theorem, or an equivalent modular-form uniqueness proof, remains the
+   theta-series sequel target.
 4. The paper does not include the Leech lattice or the Golay code. A future
    paper could generalize the same Construction A machinery to the
    `[24,12,8]` Golay code and the Leech lattice.
@@ -880,10 +1084,10 @@ verification" subsection. `[confirm final inclusion]`
 6. Short vectors and the kissing number `240`
 7. Bridge to octonionic E8 roots
 8. Cartan and Sphere-Packing-Lean matrix bridge
-9. Initial theta-series coefficients and the weight-enumerator bridge
+9. Theta coefficients, formal convolution, and the Jacobi duplication bridge
 10. Verification, provenance, and limitations
 11. Conclusion
-12. Appendix: Weyl reflections and orbit closure `[confirm]`
+12. Appendix: Weyl reflections and orbit closure
 
 ## 10. Draft Conclusion
 
@@ -900,14 +1104,18 @@ Sphere-Packing-Lean, and the imported bridge proves literal equality between
 the local rational basis and Sphere-Packing-Lean's `E8Matrix Q`, plus the
 corresponding span equality with `Submodule.E8 Q`; it also constructs a full
 `Z`-linear equivalence with `Submodule.E8 R` and proves the matching inner
-product formula. The theta-series modules verify the first six coefficients
-`1`, `240`, `2160`, `6720`, `17520`, and `30240`, matching the Eisenstein
-series `E4` through `O(q^6)`. They also connect the local divisor-sum function
-to Mathlib's `ArithmeticFunction.sigma 3` and derive the first shell counts
-from the Hamming weight distribution `(1, 14, 1)`. The code-built lattice is
-therefore a formal front door to the E8 lattice object used in
-Sphere-Packing-Lean. What remains is packing-level transport/provenance
-wording, not the lattice equivalence itself. `[confirm]`
+product formula. The theta-series modules verify the constant term through
+`q^6`, namely `1`, `240`, `2160`, `6720`, `17520`, `30240`, and `60480`,
+matching the Eisenstein series `E4` through `O(q^7)`. They also connect the
+local divisor-sum function to Mathlib's `ArithmeticFunction.sigma 3`, prove the
+formal Hamming weight-enumerator convolution theorem, and prove the two Jacobi
+duplication identities needed to identify the Hamming theta-constant
+polynomial with Sphere-Packing-Lean's `thetaE4`. The remaining theta gap is
+the all-`n` E8 representation-number formula, not the algebraic or duplication
+part of the classical theta-constant proof. The code-built lattice is therefore
+a formal front door to the E8 lattice object used in Sphere-Packing-Lean. What
+remains for the packing endpoint is provenance wording and optional theorem
+transport, not the lattice equivalence itself. `[confirm]`
 
 The main lesson is methodological as much as mathematical: for highly
 classical equivalences among codes, lattices, and root systems, a proof
@@ -922,30 +1130,29 @@ well-known informal chain into a reviewable kernel-checked artifact.
 - `[confirm]` Run the no-sorry/trusted-code check and record expected draft
   exceptions, if any.
 - `[confirm]` Record exact Lean, mathlib, and repository commit hashes.
-- `[confirm]` Decide whether to move/import the `[8,4,4]` uniqueness theorem
-  from `PhysicsSM/Draft/Hamming844Uniqueness.lean` into the citation-friendly
-  theorem index.
+- `[done 2026-05-16]` Add a citation-friendly `[8,4,4]` uniqueness wrapper to
+  `PhysicsSM.Coding.HammingConstructionAE8Final`.
 - `[confirm]` Decide whether the direct Sphere-Packing-Lean import bridge is a
   theorem in the paper body, an appendix, or a documented external endpoint.
 - `[confirm]` Verify the Windows-safe SPL fork or upstream rename status.
 - `[confirm]` Decide whether `constructionA_to_E8_full_bridge` and
   `e8_density_with_bridge_documentation` should remain in a platform-specific
   draft file or be mirrored in a paper appendix as Linux/macOS-checked results.
+- `[done 2026-05-16]` Add a theorem-status/trust-boundary table distinguishing
+  trusted wrappers, draft sorry-free bridges, optional SPL-dependent results,
+  and open theta endpoints.
 - `[confirm]` Decide how to present `constructionAToE8Equiv` and
   `constructionAToE8_inner`: paper body, appendix, or platform-specific
   imported bridge section.
 - `[confirm]` Add a conservative packing-level transport/provenance theorem if
   M2 produced one; otherwise describe the SPL density endpoint without
   overclaiming.
-- `[confirm]` Add or update Zotero records for Hamming, MacWilliams-Sloane,
-  Huffman-Pless, Cohn-Elkies, Viazovska, Sphere-Packing-Lean, and any formal
-  coding-theory comparison paper.
+- `[done 2026-05-15]` Add or update Zotero records for Hamming,
+  MacWilliams-Sloane, Huffman-Pless, Cohn-Elkies, Viazovska,
+  Sphere-Packing-Lean, and formal coding-theory comparison papers.
 - `[confirm]` Replace all citation placeholders with exact bibliography keys,
   page ranges, theorem numbers, or chapter references.
-- `[confirm]` Decide whether to include the Weyl orbit results in the main text
-  or appendix.
-- `[confirm]` Add a final trust-boundary table distinguishing `decide`,
-  `native_decide`, and ordinary tactic proofs.
+- `[done 2026-05-16]` Present the Weyl orbit results as an appendix candidate.
 - `[confirm]` Decide whether to mention physics motivation, and if so keep it
   clearly separated from the formal theorem claims.
 
@@ -953,6 +1160,9 @@ well-known informal chain into a reviewable kernel-checked artifact.
 
 These are not final bibliography entries. They are a working checklist for
 Zotero cleanup and citation insertion.
+Zotero records were added or updated on 2026-05-15; remaining `[confirm]`
+markers indicate final citation-key, page, theorem, chapter, or edition checks,
+not missing Zotero records.
 
 - `Hamming1950` `[confirm]`: Richard W. Hamming, "Error Detecting and Error
   Correcting Codes", Bell System Technical Journal 29 (1950), 147-160.
@@ -960,12 +1170,28 @@ Zotero cleanup and citation insertion.
   The Theory of Error-Correcting Codes, North-Holland, 1977.
 - `HuffmanPless2003` `[confirm]`: W. Cary Huffman and Vera Pless,
   Fundamentals of Error-Correcting Codes, Cambridge University Press, 2003.
+- `Pless1998` `[confirm]`: Vera Pless, Introduction to the Theory of
+  Error-Correcting Codes, third edition, Wiley, 1998.
+- `RainsSloane1998`: E. M. Rains and N. J. A. Sloane, "Self-Dual Codes", in
+  Handbook of Coding Theory, V. S. Pless and W. C. Huffman, eds., 1998,
+  177-294; arXiv:math/0208001.
+- `NebeRainsSloane2006`: Gabriele Nebe, Eric M. Rains, and Neil J. A. Sloane,
+  Self-Dual Codes and Invariant Theory, Algorithms and Computation in
+  Mathematics 17, Springer, 2006.
+- `LeechSloane1971`: John Leech and N. J. A. Sloane, "Sphere Packings and
+  Error-Correcting Codes", Canadian Journal of Mathematics 23 (1971),
+  718-745.
+- `Ebeling2013`: Wolfgang Ebeling, Lattices and Codes: A Course Partially
+  Based on Lectures by Friedrich Hirzebruch, third edition, Springer, 2013.
 - `ConwaySloane1999`: J. H. Conway and N. J. A. Sloane, Sphere Packings,
   Lattices and Groups, third edition, Springer, 1999.
 - `CohnElkies2003` `[confirm]`: Henry Cohn and Noam Elkies, "New upper bounds
   on sphere packings I", Annals of Mathematics 157 (2003), 689-714.
 - `Viazovska2017` `[confirm metadata]`: Maryna Viazovska, "The sphere packing
   problem in dimension 8", Annals of Mathematics 185 (2017), 991-1015.
+- `CKMRV2017Dimension24` `[optional]`: Henry Cohn, Abhinav Kumar, Stephen D.
+  Miller, Danylo Radchenko, and Maryna Viazovska, "The sphere packing problem
+  in dimension 24", Annals of Mathematics 185 (2017), 1017-1033.
 - `CKMRV2022UniversalOptimality` `[confirm metadata]`: Henry Cohn, Abhinav
   Kumar, Stephen D. Miller, Danylo Radchenko, and Maryna Viazovska,
   "Universal optimality of the E8 and Leech lattices and interpolation
@@ -980,12 +1206,28 @@ Zotero cleanup and citation insertion.
 - `EvenUnimodularRank8Classification` `[confirm exact source]`: standard
   reference for uniqueness of the rank-8 even unimodular lattice, likely
   Conway-Sloane Ch. 15 or another reviewed classification source.
+- `BourbakiLie456` `[confirm edition]`: N. Bourbaki, Lie Groups and Lie
+  Algebras, Chapters 4-6, Springer. Use for root systems, Coxeter groups, Weyl
+  groups, and Dynkin conventions.
+- `Baez2002Octonions`: John C. Baez, "The Octonions", Bulletin of the
+  American Mathematical Society 39 (2002), 145-205; arXiv:math/0105155.
+- `DolanGoddardMontague1996` `[optional physics]`: L. Dolan, P. Goddard, and
+  P. Montague, "Conformal Field Theories, Representations and Lattice
+  Constructions", Communications in Mathematical Physics 179 (1996), 61-120;
+  arXiv:hep-th/9410029.
+- `Thompson1983` `[optional expository]`: Thomas M. Thompson, From
+  Error-Correcting Codes Through Sphere Packings to Simple Groups, Carus
+  Mathematical Monographs 21, Mathematical Association of America, 1983.
 - `BaekKim2026` `[confirm]`: Jae-Hyun Baek and Jon-Lark Kim, formalization work
-  on self-dual code building-up constructions in Lean.
+  on self-dual code building-up constructions in Lean; arXiv:2604.08485.
+- `TCSlib` `[confirm]`: Shilun Allan Li et al., TCSlib, a Lean 4
+  formalization library for theoretical computer science including
+  error-correcting codes.
 - `ErrorCorrectionZooHamming844` `[confirm]`: Error Correction Zoo entry for
   the extended `[8,4,4]` Hamming code.
-- `NebeSloaneE8Code` `[confirm]`: Nebe-Sloane Catalogue of Lattices entry for
-  the E8 coding-theory construction.
+- `NebeSloaneE8Catalogue` `[confirm]`: Nebe-Sloane Catalogue of Lattices entry
+  for E8 lattice basis, Gram, determinant, minimal norm, and kissing number
+  data.
 - `DymarskyShapere2021` `[optional]`: Dymarsky and Shapere on quantum
   stabilizer codes, lattices, and CFTs.
 - `MizoguchiOikawa2026` `[optional confirm]`: error-correcting codes and

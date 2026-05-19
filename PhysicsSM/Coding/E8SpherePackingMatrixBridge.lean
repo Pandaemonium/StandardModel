@@ -579,11 +579,10 @@ should be provable by:
 
 The remaining import-level step is:
 
-```
+```lean
 -- Requires: import SpherePacking.Dim8.E8.Basic
-theorem constructionA_E8_matches_SPL :
-    -- The Construction A lattice, after scaling, equals SPL's Submodule.E8
-    sorry
+-- Target statement, proved in the SPL-dependent draft/import bridge:
+-- the Construction A lattice, after scaling, equals SPL's Submodule.E8.
 ```
 
 This step requires:

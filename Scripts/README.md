@@ -21,12 +21,30 @@ This avoids permission failures from tools trying to write to
 `C:\Users\Owner\.cache\pre-commit` while the agent is sandboxed to the project
 workspace.
 
+## Aristotle submission packages
+
+Use `Scripts/prepare_aristotle_submission.ps1` to create a slim project copy
+under `AgentTasks/aristotle-submit/` before calling Aristotle:
+
+```powershell
+pwsh Scripts/prepare_aristotle_submission.ps1 `
+  -JobName hamming-e8-theta-modular-form-20260516 `
+  -TaskNote AgentTasks/hamming-e8-theta-modular-form-construction-aristotle-2026-05-16.md
+```
+
+The script copies root Lean config files and `PhysicsSM/`, excludes local build
+state and old Aristotle artifacts, patches the copied SpherePacking dependency
+to the remote Windows-safe fork, and prints the `aristotle submit` command.
+Use `-IncludeSources`, `-IncludeScripts`, `-IncludeIndex`, or `-ExtraPath` when
+a job needs additional context.
+
 ## Subdirectory plan
 
 ```
 Scripts/
   pre-commit.cmd        - Windows wrapper for a repo-local pre-commit cache
   pre-commit.ps1        - run pre-commit with a repo-local cache
+  prepare_aristotle_submission.ps1 - create a slim Aristotle project copy
   oracle/
     sage_roots.py       — generate root system fixtures via SageMath
     lieart_branching.py — generate branching rule fixtures via LieART (Mathematica)

@@ -17,9 +17,11 @@ and directly imports `SpherePacking.Dim8.E8.Basic` and
 
 ## Platform note
 
-SPL contains files named `Aux.lean` (a Windows reserved device name).
-This file **only compiles on Linux/macOS** (or WSL2 on Windows).
-The `lakefile.toml` documents this limitation.
+Upstream SPL contains files named `Aux.lean` (a Windows reserved device name).
+This checkout uses the local Windows-safe fork under `AgentTasks/external`,
+where those files have been renamed to `Auxiliary.lean`. The bridge is still
+kept behind the optional `PhysicsSMSPL` root so that the default `PhysicsSM`
+target stays independent of the direct SPL dependency.
 
 ## SPL declarations confirmed (with exact types)
 

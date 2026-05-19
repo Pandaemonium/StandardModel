@@ -1,5 +1,6 @@
 import PhysicsSM.Coding.HammingSelfDual
 import PhysicsSM.Coding.E8ThetaSeries
+import PhysicsSM.Coding.HammingE8E8Helpers
 
 /-!
 # E8 × E8: the 16-dimensional gauge lattice from two Hamming codes
@@ -66,20 +67,20 @@ def projRight16 (v : BinaryVector 16) : BinaryVector 8 :=
 def joinVec16 (u v : BinaryVector 8) : BinaryVector 16 :=
   fun i => if h : i.val < 8 then u ⟨i.val, h⟩ else v ⟨i.val - 8, by omega⟩
 
-@[simp] theorem projLeft16_apply  (v : BinaryVector 16) (i : Fin 8) :
+@[simp] theorem projLeft16_apply (v : BinaryVector 16) (i : Fin 8) :
     projLeft16 v i = v ⟨i.val, by omega⟩ := rfl
 @[simp] theorem projRight16_apply (v : BinaryVector 16) (i : Fin 8) :
     projRight16 v i = v ⟨8 + i.val, by omega⟩ := rfl
-@[simp] theorem projLeft16_zero  : projLeft16  (0 : BinaryVector 16) = 0 := by ext; simp [projLeft16]
+@[simp] theorem projLeft16_zero : projLeft16 (0 : BinaryVector 16) = 0 := by ext; simp [projLeft16]
 @[simp] theorem projRight16_zero : projRight16 (0 : BinaryVector 16) = 0 := by ext; simp [projRight16]
 
-theorem projLeft16_add  (u v : BinaryVector 16) :
-    projLeft16  (u + v) = projLeft16  u + projLeft16  v := by ext; simp [projLeft16,  Pi.add_apply]
+theorem projLeft16_add (u v : BinaryVector 16) :
+    projLeft16 (u + v) = projLeft16 u + projLeft16 v := by ext; simp [projLeft16, Pi.add_apply]
 theorem projRight16_add (u v : BinaryVector 16) :
     projRight16 (u + v) = projRight16 u + projRight16 v := by ext; simp [projRight16, Pi.add_apply]
 
 /-- The left and right projections are left-inverses of `joinVec16`. -/
-@[simp] theorem projLeft16_joinVec16  (u v : BinaryVector 8) : projLeft16  (joinVec16 u v) = u := by
+@[simp] theorem projLeft16_joinVec16 (u v : BinaryVector 8) : projLeft16 (joinVec16 u v) = u := by
   ext i; simp [projLeft16, joinVec16, i.isLt]
 @[simp] theorem projRight16_joinVec16 (u v : BinaryVector 8) : projRight16 (joinVec16 u v) = v := by
   ext i; simp [projRight16, joinVec16]
@@ -134,7 +135,10 @@ a bijection with `Fin 8` for each half. -/
 theorem hammingWeight_directSum16 (v : BinaryVector 16) :
     hammingWeight v =
       hammingWeight (projLeft16 v) + hammingWeight (projRight16 v) := by
-  sorry
+  -- Aristotle job 6b24bf9e proved this as a pure `Fin.sum_univ_add`
+  -- reindexing.  Keeping the proof in the helper file avoids importing this
+  -- frontier module while proving the foundational split.
+  exact hammingWeight_split16 v
 
 /-- `hamming16E8E8` is doubly even: every codeword has Hamming weight divisible by 4.
 
@@ -163,7 +167,9 @@ theorem binaryDot16_split (v w : BinaryVector 16) :
     binaryDot v w =
       binaryDot (projLeft16 v) (projLeft16 w) +
       binaryDot (projRight16 v) (projRight16 w) := by
-  sorry
+  -- As with the weight split, this is ordinary finite-sum reindexing rather
+  -- than a truth-table or `native_decide` computation.
+  exact binaryDot_split16 v w
 
 /-- Self-orthogonality of `hamming16E8E8`: any two codewords have zero `binaryDot`.
 
@@ -178,16 +184,44 @@ theorem hamming16E8E8_selfOrthogonal (v w : BinaryVector 16)
   have hr := extendedHamming8_selfOrthogonal _ _ hv.2 hw.2
   simp [hl, hr]
 
+/-- If a length-16 vector is orthogonal to every word of `hamming16E8E8`,
+then its left half is orthogonal to every word of `extendedHamming8`.
+
+The test words are `joinVec16 u 0`: a codeword in the left copy and the zero
+word in the right copy.  The dot-product split discards the zero right half and
+leaves the desired left-half orthogonality condition. -/
+private theorem projLeft16_mem_dual_of_mem_dual_hamming16
+    (v : BinaryVector 16)
+    (hv : ∀ w ∈ hamming16E8E8, binaryDot v w = 0) :
+    ∀ u ∈ extendedHamming8, binaryDot (projLeft16 v) u = 0 := by
+  intro u hu
+  convert hv (joinVec16 u 0) _ using 1
+  exact ⟨hu, by simp⟩
+
+/-- If a length-16 vector is orthogonal to every word of `hamming16E8E8`,
+then its right half is orthogonal to every word of `extendedHamming8`.
+
+This is the symmetric test against `joinVec16 0 u`. -/
+private theorem projRight16_mem_dual_of_mem_dual_hamming16
+    (v : BinaryVector 16)
+    (hv : ∀ w ∈ hamming16E8E8, binaryDot v w = 0) :
+    ∀ u ∈ extendedHamming8, binaryDot (projRight16 v) u = 0 := by
+  intro u hu
+  have h_w : joinVec16 0 u ∈ hamming16E8E8 := by
+    exact ⟨by simp, hu⟩
+  have h_dot : binaryDot v (joinVec16 0 u) = binaryDot (projRight16 v) u := by
+    convert binaryDot16_split v (joinVec16 0 u) using 1
+    simp
+  rw [← h_dot, hv _ h_w]
+
 /-- `hamming16E8E8` is self-dual.
 
-**Proof plan (sorry'd pending Aristotle)**:
-1. C ⊆ C⊥: by `hamming16E8E8_selfOrthogonal`.
-2. C⊥ ⊆ C: if `∀ w ∈ hamming16E8E8, binaryDot v w = 0`, then by the dot-product
-   splitting, `binaryDot (left v) (left w) = 0` for all `left w ∈ extendedHamming8`,
-   hence `left v ∈ extendedHamming8` (by self-duality of the factor). Similarly for right.
-
-The cardinality argument (|C| = |C⊥| for equal-length codes) would give C = C⊥
-from C ⊆ C⊥ once dimensions are counted.
+The forward inclusion is self-orthogonality.  The reverse inclusion uses the
+two test families `joinVec16 u 0` and `joinVec16 0 u`: if a length-16 vector is
+orthogonal to the whole direct-sum code, then each 8-coordinate half is
+orthogonal to every word of the corresponding `extendedHamming8` factor.  The
+self-duality theorem for `extendedHamming8` then puts both halves back in the
+factor code.
 -/
 theorem hamming16E8E8_selfDual : IsSelfDual hamming16E8E8 := by
   apply le_antisymm
@@ -197,15 +231,14 @@ theorem hamming16E8E8_selfDual : IsSelfDual hamming16E8E8 := by
     intro w hw
     exact hamming16E8E8_selfOrthogonal v w hv hw
   · -- dualCode hamming16E8E8 ⊆ hamming16E8E8
-    sorry
-    /-
-    Aristotle handoff:
-    Goal: show that if binaryDot v w = 0 for all w ∈ hamming16E8E8, then v ∈ hamming16E8E8.
-    By binaryDot16_split: for all left w ∈ extendedHamming8 and right w = 0,
-      binaryDot (left v) (left w) = 0.
-    Hence left v ∈ dualCode extendedHamming8 = extendedHamming8.
-    Similarly for right v.
-    -/
+    intro v hv
+    rw [mem_hamming16E8E8_iff]
+    have hv' : ∀ w ∈ hamming16E8E8, binaryDot v w = 0 := hv
+    exact
+      ⟨extendedHamming8_dual_le
+          (projLeft16_mem_dual_of_mem_dual_hamming16 v hv'),
+       extendedHamming8_dual_le
+          (projRight16_mem_dual_of_mem_dual_hamming16 v hv')⟩
 
 /-- `hamming16E8E8` is Type II (self-dual and doubly even). -/
 theorem hamming16E8E8_typeII : IsTypeII hamming16E8E8 :=
@@ -240,7 +273,7 @@ theorem hamming16_minimal_vectors_card :
       sqNorm v₁ + sqNorm v₂ = 4 ∧
       Matrix.mulVec extendedHamming8ParityCheck (reduceModTwo v₁) = 0 ∧
       Matrix.mulVec extendedHamming8ParityCheck (reduceModTwo v₂) = 0)).card = 480 := by
-  sorry
+  exact hamming16_480_structural
 
 /-! ## Construction A isomorphism (Aristotle target) -/
 

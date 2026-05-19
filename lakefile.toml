@@ -5,7 +5,7 @@ defaultTargets = ["PhysicsSM"]
 
 # Toolchain is pinned to v4.28.0 for compatibility with:
 #   - Aristotle (harmonic.fun proof agent)
-#   - math-inc/Sphere-Packing-Lean (when imported from a Linux/macOS environment)
+#   - math-inc/Sphere-Packing-Lean / the local Windows-safe SPL fork
 # Do not upgrade the toolchain unless mathlib, SpherePacking, and the
 # Aristotle workflow all build cleanly under the target version.
 #
@@ -13,17 +13,15 @@ defaultTargets = ["PhysicsSM"]
 #   math-inc/Sphere-Packing-Lean contains several files named Aux.lean.
 #   "Aux" is a Windows reserved device name (like CON, NUL, PRN); git cannot
 #   check out these files on Windows regardless of path-length or NTFS settings.
-#   To use upstream SpherePacking on Windows, use WSL2. On Linux/macOS add:
+#   To use upstream SpherePacking on Windows, use WSL2. On Linux/macOS use:
 #     [[require]]
 #     name = "SpherePacking"
 #     git = "https://github.com/math-inc/Sphere-Packing-Lean"
 #     rev = "main"
-#   A local Windows-safe fork branch has also been prepared in
+#   A local Windows-safe fork branch has been prepared in
 #   AgentTasks/external with exact Aux.lean files renamed to Auxiliary.lean.
 #   See AgentTasks/sphere-packing-lean-windows-fork-2026-05-07.md.
-#   The E8 lattice content needed for PhysicsSM.Lie.Exceptional.E8
-#   (Submodule.E8, E8Matrix, E8Matrix_unimodular, etc.) will be
-#   cherry-picked from SpherePacking/Dim8/E8/Basic.lean under Apache-2.0.
+#   The direct SPL bridge is exposed through the optional PhysicsSMSPL root.
 
 [leanOptions]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
@@ -46,11 +44,11 @@ scope = "leanprover-community"
 rev = "v0.0.87"
 
 # ============================================================
-# Sphere-Packing-Lean dependency (LINUX / macOS ONLY)
+# Sphere-Packing-Lean dependency
 # ============================================================
-# To enable the direct SPL import bridge in
-# PhysicsSM/Draft/E8SpherePackingImported.lean, uncomment the
-# [[require]] block below and build on Linux or macOS (or WSL2).
+# The direct SPL import bridge in
+# PhysicsSM/Draft/E8SpherePackingImported.lean is exposed through the optional
+# PhysicsSMSPL root. The default PhysicsSM target remains SPL-free.
 #
 # WINDOWS: Do NOT point this block at upstream on Windows. SPL contains
 # files named Aux.lean (Windows reserved device name). Lake cannot check out
@@ -64,12 +62,17 @@ rev = "v0.0.87"
 #   Source: SpherePacking.Dim8.E8.Basic + SpherePacking.Dim8.E8.Packing
 #   License: Apache-2.0
 #
+[[require]]
+name = "SpherePacking"
+path = "AgentTasks/external/Sphere-Packing-Lean-windows-safe"
+
+# Upstream form for Linux/macOS or WSL2:
 # [[require]]
 # name = "SpherePacking"
 # git = "https://github.com/math-inc/Sphere-Packing-Lean"
 # rev = "main"
 #
-# Windows-safe fork form, once the fork branch is pushed:
+# Remote Windows-safe fork form (branch pushed 2026-05-07):
 # [[require]]
 # name = "SpherePacking"
 # git = "https://github.com/Pandaemonium/Sphere-Packing-Lean"
@@ -77,3 +80,12 @@ rev = "v0.0.87"
 
 [[lean_lib]]
 name = "PhysicsSM"
+moreLeanArgs = ["-s65536"] # Heavy certified finite enumerations can overflow Lean's default stack.
+
+[[lean_lib]]
+name = "PhysicsSMDraft"
+moreLeanArgs = ["-s65536"] # Keep draft Aristotle/SPL import chains on the same stack setting.
+
+[[lean_lib]]
+name = "PhysicsSMSPL"
+moreLeanArgs = ["-s65536"] # Needed by Aristotle job 9215f082 for SPL theta bridge builds.

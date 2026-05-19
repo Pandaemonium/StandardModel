@@ -1,6 +1,6 @@
 # Zotero source map: Hamming -> Construction A -> E8 manuscript
 
-Last checked: 2026-05-07.
+Last checked: 2026-05-16.
 
 Purpose: record which Zotero items currently support the manuscript, which Lean
 theorem clusters they support, and which canonical references still need to be
@@ -20,7 +20,82 @@ for checking exact chapter, theorem, or page references while drafting.
 | `6CDBTJW4` | Kazuhiro Sakai, "Algebraic construction of Weyl invariant E8 Jacobi forms", *Journal of Number Theory* 244 (2023), 42-62. DOI: `10.1016/j.jnt.2022.09.014`. | Long-range theta/Jacobi-form sequel context. Not needed for the minimal Construction A paper. | Possible future theta-series/Jacobi-form targets after root-list and Weyl-orbit formalization. |
 | `V34P5RP9` | Kaiwen Sun and Haowu Wang, "Weyl invariant E8 Jacobi forms and E-strings", *Communications in Number Theory and Physics* 17 (2023), no. 3, 553-582. DOI: `10.4310/cntp.2023.v17.n3.a1`. | Long-range Weyl/Jacobi-form and physics-motivated sequel context. Not needed for the minimal paper. | Possible future work near `E8WeylBasic.lean` and planned `E8WeylOrbit.lean`. |
 
+## 2026-05-15 Zotero update
+
+The following items were added or updated through the Zotero Web API and tagged
+`Hamming-E8`. This resolves the earlier "canonical sources to add" checklist
+at the metadata level; exact page, theorem, and chapter citations still need a
+final manuscript pass.
+
+| Zotero key | Citation key | Action | Note |
+|------------|--------------|--------|------|
+| `UBEA7SR4` | `Hamming1950` | Added | Original error-detecting/error-correcting-codes source. |
+| `8WZCIEFK` | `MacWilliamsSloane1977` | Added | Classical coding-theory reference. |
+| `SAS8R9WZ` | `HuffmanPless2003` | Added | Coding-theory textbook. |
+| `XJTVTJGZ` | `Pless1998` | Added | Introductory coding-theory textbook. |
+| `C6DI7ISQ` | `RainsSloane1998` | Added | Self-dual-codes handbook chapter. |
+| `ENDH3C4K` | `NebeRainsSloane2006` | Added | Self-dual codes and invariant theory. |
+| `EECPD7D4` | `LeechSloane1971` | Added | Code-lattice/sphere-packing paper. |
+| `TX4HTFPJ` | `Ebeling2013` | Added | Lattices-and-codes reference. |
+| `8ZKHE2F7` | `BourbakiLie456` | Added | Root-system and Weyl-group reference. |
+| `KDFEC9HE` | `Thompson1983` | Added | Expository code-to-sphere-packing source. |
+| `5S7UWHPT` | `CohnElkies2003` | Added | Linear-programming bounds for sphere packing. |
+| `Z87TPERU` | `Viazovska2017` | Updated | Added published DOI and `Hamming-E8` tags. |
+| `8PRA87FG` | `CKMRV2017Dimension24` | Added | Dimension-24 Leech-lattice optimality. |
+| `PSC2PZ4C` | `CKMRV2022UniversalOptimality` | Updated | Added published DOI and `Hamming-E8` tags. |
+| `FH27NZHC` | `SpherePackingLeanMilestone2026` | Added | 2026 formalization report, arXiv:2604.23468. |
+| `EXC32G57` | `SpherePackingLeanBlueprint` | Added | Sphere-Packing-Lean blueprint site. |
+| `6BW5UXSN` | `BaekKim2026` | Added | Adjacent Lean formalization of self-dual codes. |
+| `I69Z25RA` | `TCSlib` | Added | Lean formalization library with coding-theory material. |
+| `ZDWZR96C` | `ErrorCorrectionZooHamming844` | Added | Public cross-check for the extended `[8,4,4]` code. |
+| `W2RJFI59` | `NebeSloaneE8Catalogue` | Added | Public cross-check for the E8 code-lattice construction. |
+| `5FVGNNV4` | `MizoguchiOikawa2026` | Added | Physics-motivation source on code-lattice Narain CFTs. |
+| `WTWHDPPX` | `DolanGoddardMontague1996` | Added | Older code-lattice-CFT reference. |
+| `V7WNUP3P` | `ConwaySloane1999` | Updated | Added `Hamming-E8` tags and citation key. |
+
 ## Zotero query log
+
+### 2026-05-16 theta coefficient pass
+
+This pass was triggered by Aristotle job
+`9215f082-2baa-4e13-837c-9335ddf88aad`, which proved the SPL/Eisenstein
+q-expansion side but left the all-coefficient Hamming Construction A formula
+open.
+
+Web and public-code checks:
+
+- Error Correction Zoo, extended `[8,4,4]` Hamming code: supports the
+  Construction A link from the code to the E8 Gosset lattice.
+  URL: `https://errorcorrectionzoo.org/c/eeight`.
+- Nebe-Sloane E8 code catalogue: public cross-check for the E8 code-lattice
+  model. URL:
+  `https://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/E8_code.html`.
+- OEIS A004009: public cross-check for the coefficient sequence
+  `1, 240, 2160, ...`, the `E4` q-expansion, and the formula
+  `a(n) = 240 * sigma_3(n)` for positive `n`.
+  URL: `https://oeis.org/A004009`.
+- Sphere-Packing-Lean source and blueprint: confirm that SPL already has the
+  theta constants and the modular-form identity used by the local bridge.
+  URL: `https://thefundamentaltheor3m.github.io/Sphere-Packing-Lean/blueprint.pdf`.
+- Mathlib modular-form q-expansion docs: confirm useful q-expansion algebra is
+  present, but no direct Hamming Construction A coefficient theorem was found.
+  URL:
+  `https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/ModularForms/EisensteinSeries/QExpansion.html`.
+
+Zotero searches run:
+
+- `Conway Sloane Sphere Packings Lattices Groups E8 theta series`
+- `Ebeling Lattices Codes E8 theta series`
+- `Serre Course Arithmetic Eisenstein E4 theta E8`
+- `Jacobi eight squares theorem E8 sigma_3`
+
+No new Zotero items were found by these searches. The canonical references
+already present in this source map remain the right bibliography base; the
+remaining work is to pin exact page/theorem references for the theta-series
+coefficient formula before manuscript submission.
+
+The negative searches below were run before the 2026-05-15 import and are
+retained as provenance for why the update was needed.
 
 Successful or partially successful searches:
 
@@ -49,8 +124,8 @@ Searches that did not find the expected canonical items:
 
 ## Additional web-discovered references
 
-These were found by web search on 2026-05-07 and should either be added to
-Zotero or used to update existing Zotero metadata.
+These were found by web search on 2026-05-07 and were used for the 2026-05-15
+Zotero update. The notes remain here as source provenance.
 
 ### Core coding-theory sources
 
@@ -108,12 +183,13 @@ Zotero or used to update existing Zotero metadata.
   Narain CFTs", arXiv `2602.16269`. Motivation source for code-lattice
   heterotic/Narain language; not a source for the Lean E8 lattice theorem.
 
-## Canonical sources to add to Zotero
+## Canonical source status
 
-These should be imported before submission so the bibliography has the right
-primary sources rather than relying on memory or public web pages.
+The sources in this section were imported or updated in Zotero on 2026-05-15.
+The remaining bibliography work is to attach exact page, theorem, chapter, and
+edition references in the manuscript.
 
-### Must add for the minimal paper
+### Minimal-paper sources now in Zotero
 
 - Richard W. Hamming, "Error Detecting and Error Correcting Codes", *Bell
   System Technical Journal* 29 (1950), 147-160. DOI:
@@ -131,7 +207,7 @@ primary sources rather than relying on memory or public web pages.
 - The Sphere-Packing-Lean repository/blueprint and the associated 2026
   formalization report or preprint, once the exact bibliographic item is known.
 
-### Should add for a strong or sequel paper
+### Strong/sequel-paper sources now in Zotero or intentionally deferred
 
 - Cohn, Kumar, Miller, Radchenko, and Viazovska, dimension-24 Leech lattice
   optimality paper. DOI `10.4007/annals.2017.185.3.8`.
@@ -161,12 +237,13 @@ Lean files:
 Current Zotero support:
 
 - `V7WNUP3P` supports the code-lattice background at a high level.
+- `UBEA7SR4`, `8WZCIEFK`, `SAS8R9WZ`, `XJTVTJGZ`, `C6DI7ISQ`, and
+  `ENDH3C4K` now cover the core Hamming-code, self-dual-code, and
+  weight-enumerator background.
 
 Still needed:
 
-- Hamming 1950 for historical code family.
-- MacWilliams-Sloane and Huffman-Pless for self-dual/Type II coding theory and
-  weight enumerator background.
+- Exact page, theorem, and chapter references for the final citation pass.
 
 ### Construction A and normalized E8 lattice
 
@@ -182,6 +259,8 @@ Lean files:
 Current Zotero support:
 
 - `V7WNUP3P` is the main support.
+- `EECPD7D4`, `TX4HTFPJ`, `ZDWZR96C`, and `W2RJFI59` give additional
+  code-lattice and public cross-check support.
 
 Still needed:
 
@@ -200,12 +279,13 @@ Lean files:
 Current Zotero support:
 
 - `V7WNUP3P` for E8 roots/lattice background.
+- `8ZKHE2F7` for root-system, Coxeter-group, and Weyl-group conventions.
 - `6CDBTJW4` and `V34P5RP9` as sequel context for E8 Weyl/Jacobi-form work.
 
 Still needed:
 
-- A standard Lie/root-system reference if the manuscript leans heavily on Weyl
-  terminology beyond finite root-list verification.
+- Exact Bourbaki chapter/table/page references if the manuscript leans heavily
+  on Weyl terminology beyond finite root-list verification.
 
 ### Sphere-packing endpoint
 
@@ -216,12 +296,14 @@ Lean files:
 Current Zotero support:
 
 - `V7WNUP3P` for classical lattice/sphere-packing context.
+- `5S7UWHPT`, `Z87TPERU`, `8PRA87FG`, `PSC2PZ4C`, `FH27NZHC`, and
+  `EXC32G57` cover the Cohn-Elkies bound, Viazovska endpoint, dimension-24
+  sequel, universal-optimality sequel, and Sphere-Packing-Lean sources.
 
 Still needed:
 
-- Viazovska 2017.
-- Cohn-Elkies 2003.
-- Sphere-Packing-Lean blueprint/repository/formalization report.
+- Decide which sphere-packing sources are core references versus sequel/context
+  references, then add exact citation keys in the manuscript.
 
 ### Physics motivation
 
@@ -233,11 +315,12 @@ Current Zotero support:
 
 - `B8FWVQDC` for code-lattice-CFT motivation.
 - `CEQ6URHZ` as a caution against overclaiming E8 physics.
+- `WTWHDPPX` and `5FVGNNV4` now cover older lattice-CFT context and recent
+  heterotic/Narain code-lattice motivation.
 
 Still needed:
 
-- Mizoguchi-Oikawa or other specific heterotic/code-lattice references if the
-  manuscript keeps a Narain/heterotic motivation paragraph.
+- Decide whether the manuscript keeps the physics motivation paragraph.
 
 ## Drafting guidance
 

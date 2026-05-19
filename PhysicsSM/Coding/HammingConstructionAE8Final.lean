@@ -1,6 +1,7 @@
 import PhysicsSM.Coding.HammingConstructionAE8Properties
 import PhysicsSM.Coding.E8RootBridge
 import PhysicsSM.Coding.E8SpherePackingShape
+import PhysicsSM.Coding.Hamming844Classification
 import PhysicsSM.Algebra.Octonion.E8WeylPublication
 
 /-!
@@ -25,7 +26,7 @@ during formalization. This module provides that stable interface:
 
 ## Organisation
 
-The 20 theorems are grouped to match the logical flow of the paper:
+The theorem wrappers are grouped to match the logical flow of the paper:
 
 ### 1. Code-theoretic input (Theorem 1)
 The extended `[8,4,4]` Hamming code is Type II: self-dual and doubly even.
@@ -115,6 +116,17 @@ This is the key code-theoretic property from which all subsequent lattice
 theorems follow. Proved in `PhysicsSM.Coding.HammingSelfDual`. -/
 theorem code_is_typeII : IsTypeII extendedHamming8 :=
   PhysicsSM.Coding.extendedHamming8_typeII
+
+/-- **Theorem 1b.** Every binary linear `[8,4,4]` code is equivalent to the
+extended Hamming code under a coordinate permutation.
+
+This is the classification theorem used to justify the uniqueness claim for
+the length-8 Type II binary code. Proved in
+`PhysicsSM.Coding.Hamming844Classification`. -/
+theorem code_unique_up_to_equivalence
+    (C : BinaryLinearCode 8) (hC : IsLinearCode C 4 4) :
+    CodeEquivalent C extendedHamming8 :=
+  PhysicsSM.Coding.extendedHamming8_unique_up_to_equivalence_proof C hC
 
 /-! ## 2. Lattice basis and determinant
 

@@ -61,9 +61,7 @@ import PhysicsSM.Coding.E8ThetaSigmaBridge
 import PhysicsSM.Coding.E8ThetaSeriesQ5
 import PhysicsSM.Coding.E8ThetaSeriesQ6
 import PhysicsSM.Coding.ConstructionAThetaWeightBridge
-import PhysicsSM.Draft.E8ThetaSeriesMoonshot
-import PhysicsSM.Draft.E8SpherePackingIsometryHelper
-import PhysicsSM.Draft.E8EvenUnimodularUniqueness
+import PhysicsSM.Coding.ConstructionAThetaConvolution
 import PhysicsSM.Coding.E8RootBridge
 import PhysicsSM.Coding.E8ShortVectors
 import PhysicsSM.Coding.HammingConstructionAE8
@@ -72,12 +70,10 @@ import PhysicsSM.Algebra.Octonion.E8WeylOrbit
 import PhysicsSM.Algebra.Octonion.E8WeylPermutations
 import PhysicsSM.Algebra.Octonion.E8WeylOrbitConvergence
 import PhysicsSM.Algebra.Octonion.E8WeylPublication
-import PhysicsSM.Draft.Hamming844Uniqueness
 import PhysicsSM.Algebra.Octonion.E8RootCompleteness
 import PhysicsSM.Algebra.Furey.HyperchargeBridge
 import PhysicsSM.Algebra.Division.CompositionAlgebra
 import PhysicsSM.Algebra.Division.CompositionClifford
-import PhysicsSM.Draft.E8SpherePackingBridge
 
 /-!
 # PhysicsSM
@@ -89,5 +85,7 @@ See `PhysicsSM.Prelude` for an orientation to available mathlib infrastructure
 and project-wide conventions.
 
 The root file imports the currently trusted milestone modules that should be
-checked by the default `lake build` target.
+checked by the default `lake build` target. Draft and frontier modules live in
+`PhysicsSMDraft.lean`, which can be built explicitly with
+`lake build PhysicsSMDraft`.
 -/
