@@ -24,6 +24,9 @@ import PhysicsSM.Draft.E8WeylSemanticAristotle
 import PhysicsSM.Draft.E8ShortVectorsNoNativeAristotle
 import PhysicsSM.Draft.Hamming844SystematicNoNativeAristotle
 import PhysicsSM.Draft.HammingWeightEnumeratorNoNativeAristotle
+import PhysicsSM.Draft.Hamming844PermutationNoNativeAristotle
+import PhysicsSM.Draft.Hamming844UniquenessNoNativeAristotle
+import PhysicsSM.Draft.Hamming844ConcreteNoNativeAristotle
 import PhysicsSM.Draft.E8ThetaDim8Helpers
 import PhysicsSM.Draft.DualLatticeHelper
 import PhysicsSM.Draft.E8ThetaDim8MF

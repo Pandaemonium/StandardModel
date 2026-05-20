@@ -89,3 +89,15 @@ moreLeanArgs = ["-s65536"] # Keep draft Aristotle/SPL import chains on the same 
 [[lean_lib]]
 name = "PhysicsSMSPL"
 moreLeanArgs = ["-s65536"] # Needed by Aristotle job 9215f082 for SPL theta bridge builds.
+
+[[lean_lib]]
+name = "CodeLatticeE8"
+moreLeanArgs = ["-s65536"] # Clean Hamming-to-E8 publication package.
+
+[[lean_lib]]
+name = "CodeLatticeE8SPL"
+moreLeanArgs = ["-s65536"] # Optional SPL-facing publication bridge.
+
+[[lean_lib]]
+name = "CodeLatticeE8Draft"
+moreLeanArgs = ["-s65536"] # Draft/staging root for the publication extraction.

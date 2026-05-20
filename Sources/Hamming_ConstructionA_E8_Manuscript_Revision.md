@@ -67,10 +67,12 @@ standard E8 data used elsewhere in the Lean ecosystem.
 The main Lean-facing theorem index for the local Hamming-to-E8 development is:
 
 ```text
-PhysicsSM.Coding.HammingConstructionAE8Final
+CodeLatticeE8.Publication.TheoremIndex
 ```
 
-The theta-series comparison is currently organized through:
+The older `PhysicsSM.Coding.HammingConstructionAE8Final` file remains useful as
+a research-workbench index while the polished package is being extracted.  The
+theta-series comparison is currently organized through:
 
 ```text
 PhysicsSM.Draft.E8ThetaCoeffGapAristotle
@@ -150,16 +152,21 @@ definition.  The formalization records the column ordering of the matrix, since
 many classical parity-check matrices for the same code differ by coordinate
 permutation.
 
-The central code-theoretic Lean declarations are:
+The promoted code-theoretic Lean declarations are:
 
 ```text
-PhysicsSM.Coding.HammingConstructionAE8Final.code_is_typeII
-PhysicsSM.Coding.HammingConstructionAE8Final.code_unique_up_to_equivalence
+CodeLatticeE8.Code.extendedHamming8_isLinearCode_4_4
+CodeLatticeE8.Code.extendedHamming8_doublyEven_mem
+CodeLatticeE8.Code.extendedHamming8_selfDual
+CodeLatticeE8.Code.extendedHamming8_typeII
+CodeLatticeE8.Code.extendedHamming8_unique_up_to_equivalence
 ```
 
-The first packages self-duality and doubly-evenness.  The second states that
-any binary linear `[8,4,4]` code is coordinate-permutation equivalent to the
-chosen extended Hamming code.
+The first packages the `[8,4,4]` parameters, the second records the
+doubly-even property used by Construction A, the next two prove self-duality
+and Type II status, and the final theorem states that any binary linear
+`[8,4,4]` code is coordinate-permutation equivalent to the chosen extended
+Hamming code.
 
 ### 2.2 Construction A
 
@@ -222,16 +229,22 @@ The development is organized around a small number of interfaces.
 The generic binary-code and Construction A definitions live in:
 
 ```text
-PhysicsSM/Coding/ConstructionA.lean
-PhysicsSM/Coding/HammingE8.lean
-PhysicsSM/Coding/HammingSelfDual.lean
-PhysicsSM/Coding/HammingWeightEnumerator.lean
-PhysicsSM/Coding/Hamming844Classification.lean
+CodeLatticeE8/Code/Binary.lean
+CodeLatticeE8/Code/Equivalence.lean
+CodeLatticeE8/Code/LinearCode.lean
+CodeLatticeE8/Code/Hamming844Basic.lean
+CodeLatticeE8/Code/Hamming844WeightEnumerator.lean
+CodeLatticeE8/Code/Hamming844.lean
+CodeLatticeE8/Code/Hamming844Uniqueness.lean
+CodeLatticeE8/ConstructionA/Basic.lean
+CodeLatticeE8/ConstructionA/Norm.lean
+CodeLatticeE8/ConstructionA/Even.lean
 ```
 
 These files define binary vectors, Hamming weight, reduction mod `2`, the
-extended Hamming code, self-duality and Type II status, weight distribution,
-and uniqueness up to code equivalence.
+extended Hamming code, weight distribution, the `[8,4,4]` parameter package,
+Construction A as an integer subgroup, mod-four norm divisibility for
+doubly-even codes, and uniqueness up to code equivalence.
 
 ### 3.2 Lattice and Root Layer
 
@@ -239,19 +252,19 @@ The Construction A lattice, its explicit basis, and its E8 root data are
 organized through:
 
 ```text
-PhysicsSM/Coding/HammingConstructionAE8Properties.lean
-PhysicsSM/Coding/E8Scaled.lean
-PhysicsSM/Coding/E8Basis.lean
-PhysicsSM/Coding/E8BasisSpanning.lean
-PhysicsSM/Coding/E8ShortVectors.lean
-PhysicsSM/Coding/E8RootBridge.lean
-PhysicsSM/Coding/E8SpherePackingShape.lean
+CodeLatticeE8/E8/HammingConstruction.lean
+CodeLatticeE8/E8/Basis.lean
+CodeLatticeE8/E8/Span.lean
+CodeLatticeE8/E8/Gram.lean
+CodeLatticeE8/E8/Determinant.lean
 ```
 
-The citation-facing theorem aliases are collected in:
+The root-list, short-vector, Cartan-bridge, and Sphere-Packing-Lean comparison
+files are still being promoted out of the research namespace.  The
+citation-facing clean theorem index is:
 
 ```text
-PhysicsSM/Coding/HammingConstructionAE8Final.lean
+CodeLatticeE8/Publication/TheoremIndex.lean
 ```
 
 ### 3.3 Theta-Series Layer
@@ -310,17 +323,33 @@ that endpoint.
 The Lean theorem
 
 ```text
-theorem code_is_typeII : IsTypeII extendedHamming8
+theorem extendedHamming8_typeII :
+    IsTypeII extendedHamming8
 ```
 
-states that the explicitly defined code is self-dual and doubly even.  This is
-the code-theoretic condition that makes Construction A produce an even
-unimodular lattice after the standard scaling.
+states that the explicitly defined code is self-dual and doubly even.  The
+parameter theorem is:
+
+```text
+theorem extendedHamming8_isLinearCode_4_4 :
+    IsLinearCode extendedHamming8 4 4
+```
+
+and the promoted doubly-even theorem used directly by Construction A is:
+
+```text
+theorem extendedHamming8_doublyEven_mem
+    (v : BinaryVector 8) (hv : v in extendedHamming8) :
+    4 divides hammingWeight v
+```
+
+This is the code-theoretic parity condition that makes the Construction A norm
+divisible by four.
 
 The uniqueness theorem is:
 
 ```text
-theorem code_unique_up_to_equivalence
+theorem extendedHamming8_unique_up_to_equivalence
     (C : BinaryLinearCode 8) (hC : IsLinearCode C 4 4) :
     CodeEquivalent C extendedHamming8
 ```
@@ -332,50 +361,74 @@ code with parameters `[8,4,4]`.
 ### 4.2 The Construction A Lattice Has the E8 Gram Data
 
 The Construction A subgroup comes with an explicit integer basis
-`e8CodeBasisInt`.  The theorem
+`hammingConstructionBasis`.  The promoted spanning theorem is:
 
 ```text
-theorem lattice_fullRank : ...
+theorem hammingConstructionASubmodule_eq_span :
+    hammingConstructionASubmodule =
+      Submodule.span Z (Set.range hammingConstructionBasis)
 ```
 
-states that the Construction A lattice is exactly the `Z`-span of this basis
-and that the Gram determinant is positive.  The determinant computation is:
+It states that the Construction A lattice is exactly the `Z`-span of this
+basis.  The displayed Gram matrix is named `hammingConstructionGram`, and its
+entrywise correctness theorem is:
 
 ```text
-theorem gram_det_eq : e8CodeBasisGram.det = 16 ^ 2
+theorem hammingConstructionGram_eq :
+    forall i j : Fin 8,
+      hammingConstructionGram i j =
+        sum k, hammingConstructionBasis i k * hammingConstructionBasis j k
 ```
 
 Since the E8 normalization divides the quadratic form by `2`, the scaled Gram
-determinant is:
+matrix is:
 
 ```text
-theorem scaled_gram_det_one :
-    (e8CodeBasisGram.det : Q) / (2 ^ 8 : Q) = 1
+def hammingConstructionScaledGram : Matrix (Fin 8) (Fin 8) Q
 ```
+
+with diagonal theorem:
+
+```text
+theorem hammingConstructionScaledGram_diag (i : Fin 8) :
+    hammingConstructionScaledGram i i = 2
+```
+
+The determinant computation is now also in the clean package:
+
+```text
+theorem hammingConstructionGram_det :
+    hammingConstructionGram.det = 256
+
+theorem hammingConstructionScaledGram_det :
+    hammingConstructionScaledGram.det = 1
+```
+
+These are proved through the explicit basis matrix rather than by expanding
+the full `8 x 8` determinant directly: the basis matrix is block upper
+triangular with a `4 x 4` determinant `-1` block and a `2 I_4` block, so its
+determinant is `-16`; the raw Gram determinant is its square, and the scaled
+Gram determinant is obtained by `Matrix.det_smul`.
 
 Together with the divisibility theorem
 
 ```text
-theorem sqNorm_div_four
-    (z : Fin 8 -> Z) (hz : z in hammingConstructionALattice) :
+theorem hammingConstructionA_sqNorm_dvd_four
+    (z : Fin 8 -> Z) (hz : z in hammingConstructionA) :
     (4 : Z) divides sqNorm z
 ```
 
-these results give the concrete even unimodular rank-eight lattice package.
-The paper-facing bundled statement is:
-
-```text
-theorem property_package : ...
-```
+these results give the clean integral basis, Gram, determinant, and evenness
+package.
 
 ### 4.3 Minimum Norm and Kissing Number
 
 The scaled minimum norm theorem is:
 
 ```text
-theorem scaled_minimum_norm_two :
-    (forall z, z in e8IntLattice -> z != 0 -> 2 <= scaledSqNorm z) and
-    (exists z, z in e8IntLattice and z != 0 and scaledSqNorm z = 2)
+theorem hammingConstructionA_scaledMinSqNorm :
+    (forall z, z in hammingConstructionA -> z != 0 -> 2 <= scaledSqNorm z) and
+    (exists z, z in hammingConstructionA and z != 0 and scaledSqNorm z = 2)
 ```
 
 The exact short-vector count is:
@@ -557,7 +610,7 @@ pinned toolchain.
 Minimal checks for the local theorem index:
 
 ```text
-lake build PhysicsSM.Coding.HammingConstructionAE8Final
+lake build CodeLatticeE8
 ```
 
 Checks for the theta-series route:
@@ -642,14 +695,22 @@ The following table gives the primary theorem names for the paper.
 
 | Mathematical claim | Lean declaration | File |
 |--------------------|------------------|------|
-| Extended Hamming code is Type II | `HammingConstructionAE8Final.code_is_typeII` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| `[8,4,4]` uniqueness | `HammingConstructionAE8Final.code_unique_up_to_equivalence` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Full rank basis package | `HammingConstructionAE8Final.lattice_fullRank` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Unscaled Gram determinant | `HammingConstructionAE8Final.gram_det_eq` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Scaled Gram determinant | `HammingConstructionAE8Final.scaled_gram_det_one` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Norm divisibility | `HammingConstructionAE8Final.sqNorm_div_four` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
+| Extended Hamming code has parameters `[8,4,4]` | `CodeLatticeE8.Code.extendedHamming8_isLinearCode_4_4` | `CodeLatticeE8/Code/Hamming844.lean` |
+| Extended Hamming code is doubly even | `CodeLatticeE8.Code.extendedHamming8_doublyEven_mem` | `CodeLatticeE8/Code/Hamming844.lean` |
+| Extended Hamming code is self-dual | `CodeLatticeE8.Code.extendedHamming8_selfDual` | `CodeLatticeE8/Code/Dual.lean` |
+| Extended Hamming code is Type II | `CodeLatticeE8.Code.extendedHamming8_typeII` | `CodeLatticeE8/Code/Dual.lean` |
+| `[8,4,4]` uniqueness | `CodeLatticeE8.Code.extendedHamming8_unique_up_to_equivalence` | `CodeLatticeE8/Code/Hamming844Uniqueness.lean` |
+| Construction A minimum unscaled norm `4` | `CodeLatticeE8.E8.hammingConstructionA_minSqNorm` | `CodeLatticeE8/E8/HammingConstruction.lean` |
+| Construction A norm divisibility | `CodeLatticeE8.E8.hammingConstructionA_sqNorm_dvd_four` | `CodeLatticeE8/E8/HammingConstruction.lean` |
+| Explicit basis membership | `CodeLatticeE8.E8.hammingConstructionBasis_mem` | `CodeLatticeE8/E8/Basis.lean` |
+| Explicit basis spans the lattice | `CodeLatticeE8.E8.hammingConstructionASubmodule_eq_span` | `CodeLatticeE8/E8/Span.lean` |
+| Unscaled Gram matrix entries | `CodeLatticeE8.E8.hammingConstructionGram_eq` | `CodeLatticeE8/E8/Basis.lean` |
+| Scaled Gram diagonal has root norm `2` | `CodeLatticeE8.E8.hammingConstructionScaledGram_diag` | `CodeLatticeE8/E8/Gram.lean` |
+| Scaled Gram entries are integral | `CodeLatticeE8.E8.hammingConstructionScaledGram_int_valued` | `CodeLatticeE8/E8/Gram.lean` |
+| Minimum squared norm `2` | `CodeLatticeE8.E8.hammingConstructionA_scaledMinSqNorm` | `CodeLatticeE8/E8/Minimum.lean` |
+| Unscaled Gram determinant | `CodeLatticeE8.E8.hammingConstructionGram_det` | `CodeLatticeE8/E8/Determinant.lean` |
+| Scaled Gram determinant | `CodeLatticeE8.E8.hammingConstructionScaledGram_det` | `CodeLatticeE8/E8/Determinant.lean` |
 | Even/unimodular package | `HammingConstructionAE8Final.property_package` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Minimum squared norm `2` | `HammingConstructionAE8Final.scaled_minimum_norm_two` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
 | Kissing number `240` | `HammingConstructionAE8Final.short_vector_count` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
 | Short-vector completeness | `HammingConstructionAE8Final.short_vector_list_complete` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
 | Root-list bridge | `HammingConstructionAE8Final.bridge_perm` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
@@ -691,18 +752,31 @@ The Construction A lattice is
 { z in Z^8 : z mod 2 in extendedHamming8 }.
 ```
 
-The formalization gives an explicit basis `e8CodeBasisInt`.  From this basis
-it computes the Gram matrix `e8CodeBasisGram` and proves:
+The clean formalization gives an explicit basis `hammingConstructionBasis`.
+The theorem `hammingConstructionASubmodule_eq_span` proves that this basis spans
+the Construction A submodule.  From this basis it computes the Gram matrix
+`hammingConstructionGram` and proves:
 
 ```text
-det(e8CodeBasisGram) = 16^2.
+hammingConstructionGram i j =
+  sum k, hammingConstructionBasis i k * hammingConstructionBasis j k.
 ```
 
-Because the E8 normalization divides the quadratic form by `2`, the scaled
-Gram determinant is:
+Because the E8 normalization divides the quadratic form by `2`, the clean
+package defines the rational scaled Gram matrix `hammingConstructionScaledGram`
+and proves:
 
 ```text
-det(e8CodeBasisGram) / 2^8 = 1.
+hammingConstructionScaledGram i i = 2.
+```
+
+The determinant proof is also cleanly packaged.  The basis matrix determinant
+is proved by a block-upper-triangular decomposition, and the resulting Gram
+determinant theorems are:
+
+```text
+hammingConstructionGram.det = 256
+hammingConstructionScaledGram.det = 1.
 ```
 
 The same basis supports the Cartan comparison.  An explicit unimodular
@@ -807,7 +881,9 @@ constructs the E8 lattice used at the formalized sphere-packing endpoint.
 Before submission, run:
 
 ```text
-lake build PhysicsSM.Coding.HammingConstructionAE8Final
+lake build CodeLatticeE8
+lake build CodeLatticeE8SPL
+lake build CodeLatticeE8Draft
 lake build PhysicsSM.Draft.E8ThetaDim8MF
 lake build PhysicsSM.Draft.E8ThetaMFBridgeAristotle
 lake build PhysicsSM.Draft.E8ThetaCoeffGapAristotle

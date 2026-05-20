@@ -1,6 +1,19 @@
 # Clean Packaging Plan for the Hamming-to-E8 Lean Development
 
-Status: planning draft.
+Status: implementation started.
+
+Implementation note, 2026-05-20: the first standalone `CodeLatticeE8` root now
+exists and builds without importing the research namespace.  The trusted root
+currently contains the polished finite coding layer: binary vectors/codes,
+coordinate equivalence, the `[n,k,d]` predicate, the concrete extended Hamming
+`[8,4,4]` code, its structural weight/parameter certificates, the structural
+uniqueness theorem, self-duality and Type II status, Construction A as an
+integer subgroup, the first Hamming Construction A minimum-norm theorem, the
+generic doubly-even mod-four norm theorem for Construction A, explicit basis
+vectors, their Gram matrix, an explicit spanning theorem for those basis
+vectors, the rational Gram normalization that gives root squared norm `2`, and
+determinant proofs for the unscaled and scaled Gram matrices, and the scaled
+minimum-norm theorem.
 
 This document proposes how to repackage the current Hamming-to-E8 Lean work
 into cleaner, reviewable packages.  The current `PhysicsSM` repository should
@@ -165,6 +178,7 @@ CodeLatticeE8/
     HammingConstruction.lean
     Basis.lean
     Gram.lean
+    Determinant.lean
     CartanBridge.lean
     Roots.lean
     RootBridge.lean
