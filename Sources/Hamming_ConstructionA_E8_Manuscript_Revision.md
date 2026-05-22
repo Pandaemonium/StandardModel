@@ -1,13 +1,5 @@
 # From the Extended Hamming Code to the E8 Lattice in Lean
 
-Status: polished manuscript revision draft, prepared from the current repository
-state.
-
-This revision is written as a clean paper draft.  It presents the current
-formal development directly, with conventions and implementation details moved
-to appendices.  Exact page and theorem citations should be filled in during the
-final bibliography pass using `Sources/Hamming_E8_Zotero_Source_Map.md`.
-
 ## Abstract
 
 We formalize in Lean 4 the classical construction of the E8 lattice from the
@@ -20,16 +12,21 @@ also gives the standard E8 metric data: minimum squared norm `2`, exactly
 `240` minimal vectors, an explicit bridge to an independently formalized E8
 root list, and a Cartan-matrix comparison.
 
-The formalization also connects the coding-theoretic model to two analytic
-descriptions of E8.  First, it proves the theta-series coefficient formula
+The formalization also connects the coding-theoretic model to the theta-series
+description of E8.  In the standalone `CodeLatticeE8` package, it proves the
+semantic `q^0` and `q^1` theta coefficients and a finite Hamming
+weight-contribution calculation agreeing with the normalized Eisenstein
+coefficients through `q^6`.  The all-coefficient analytic route is isolated in
+an optional Sphere-Packing-Lean-facing package plan: it transports Construction
+A shell counts to the rank-eight theta modular form and compares that modular
+form with the normalized Eisenstein series `E4`, giving the classical identity
 
 ```text
 Theta_E8(q) = E4(q) = 1 + 240 * sum_{n > 0} sigma_3(n) q^n
 ```
 
-by transporting Construction A shell counts to the rank-eight theta modular
-form and comparing with the normalized Eisenstein series `E4`.  Second, it
-compares the local Construction A basis with the E8 basis used by
+when the optional bridge is built.  The development also compares the local
+Construction A basis with the E8 basis used by
 Sphere-Packing-Lean, the Lean formalization of Viazovska's dimension-eight
 sphere-packing theorem.  The result is a verified bridge from a finite
 coding-theoretic object to the E8 lattice appearing at the analytic endpoint of
@@ -53,7 +50,7 @@ extended binary Hamming code [8,4,4]
   -> scaled even unimodular rank-eight lattice
   -> 240 minimal vectors
   -> E8 root and Cartan data
-  -> theta-series identity Theta_E8 = E4
+  -> finite theta coefficients, with optional SPL route to Theta_E8 = E4
   -> Sphere-Packing-Lean E8 basis comparison
 ```
 
@@ -70,20 +67,25 @@ The main Lean-facing theorem index for the local Hamming-to-E8 development is:
 CodeLatticeE8.Publication.TheoremIndex
 ```
 
-The older `PhysicsSM.Coding.HammingConstructionAE8Final` file remains useful as
-a research-workbench index while the polished package is being extracted.  The
-theta-series comparison is currently organized through:
+A reviewer-facing theorem map and trust audit are maintained in:
 
 ```text
-PhysicsSM.Draft.E8ThetaCoeffGapAristotle
-PhysicsSM.Draft.E8ThetaMFBridgeAristotle
-PhysicsSM.Draft.E8ThetaDim8MF
+Sources/CodeLatticeE8_Publication_Theorem_Map.md
+Sources/CodeLatticeE8_Trust_Report.md
 ```
 
-Some of these files remain in `Draft` because they import or adapt
-Sphere-Packing-Lean modules and are still being organized for eventual
-promotion.  The theorems cited below are named explicitly so that their status
-can be checked directly in Lean.
+The legacy research-workbench index remains useful internally, but the polished
+theorem spine is now organized through the standalone package root and the
+optional SPL root:
+
+```text
+CodeLatticeE8
+CodeLatticeE8SPL
+```
+
+The older draft files remain provenance and comparison material.  The theorems
+cited below are named explicitly so that their status can be checked directly in
+Lean.
 
 ### Contributions
 
@@ -111,9 +113,11 @@ The formalization proves the following.
 8. An explicit unimodular change of basis relates the Construction A Gram
    matrix to the E8 Cartan matrix.
 
-9. The theta series of the Construction A E8 lattice has coefficients
-   `1` for `n = 0` and `240 * sigma_3(n)` for `n > 0`, hence agrees with the
-   normalized Eisenstein series `E4`.
+9. The standalone package proves the semantic zero and first theta
+   coefficients, a finite Hamming weight-contribution table check through
+   `q^6`, and an all-shell semantic Construction A convolution theorem.  The
+   all-coefficient analytic identity is completed in the optional SPL-facing
+   root.
 
 10. The local basis model is compared with the E8 model used by
     Sphere-Packing-Lean, giving a formal bridge from the code-built lattice to
@@ -235,6 +239,8 @@ CodeLatticeE8/Code/LinearCode.lean
 CodeLatticeE8/Code/Hamming844Basic.lean
 CodeLatticeE8/Code/Hamming844WeightEnumerator.lean
 CodeLatticeE8/Code/Hamming844.lean
+CodeLatticeE8/Code/Hamming844Permutation.lean
+CodeLatticeE8/Code/Hamming844Systematic.lean
 CodeLatticeE8/Code/Hamming844Uniqueness.lean
 CodeLatticeE8/ConstructionA/Basic.lean
 CodeLatticeE8/ConstructionA/Norm.lean
@@ -257,11 +263,17 @@ CodeLatticeE8/E8/Basis.lean
 CodeLatticeE8/E8/Span.lean
 CodeLatticeE8/E8/Gram.lean
 CodeLatticeE8/E8/Determinant.lean
+CodeLatticeE8/E8/ShortVectors.lean
+CodeLatticeE8/E8/Roots.lean
+CodeLatticeE8/E8/RootBridge.lean
+CodeLatticeE8/E8/CartanBridge.lean
+CodeLatticeE8/E8/WeylReflections.lean
 ```
 
-The root-list, short-vector, Cartan-bridge, and Sphere-Packing-Lean comparison
-files are still being promoted out of the research namespace.  The
-citation-facing clean theorem index is:
+The root-list, short-vector, root-bridge, Cartan-bridge, and basic Weyl
+reflection layers are now part of the clean package.  Direct
+Sphere-Packing-Lean comparisons remain optional and belong under the
+`CodeLatticeE8SPL` root.  The citation-facing clean theorem index is:
 
 ```text
 CodeLatticeE8/Publication/TheoremIndex.lean
@@ -269,40 +281,57 @@ CodeLatticeE8/Publication/TheoremIndex.lean
 
 ### 3.3 Theta-Series Layer
 
-The theta-series proof uses three linked ingredients.
+The theta-series material is now split into a standalone finite layer and an
+optional analytic/Sphere-Packing-Lean layer.
 
-First, `ConstructionAThetaConvolution.lean` proves that Construction A shell
-counts can be computed from the Hamming weight distribution and the
-one-dimensional even/odd lift coefficients.
-
-Second, `E8ThetaDim8MF.lean` constructs the rank-eight E8 theta modular form
-and proves its equality with `E4`:
+The standalone package records the coefficient normalization and the finite
+Hamming weight-contribution table:
 
 ```text
-PhysicsSM.Coding.E8ThetaDim8.thetaE8_MF_eq_E4
+CodeLatticeE8/Theta/Sigma.lean
+CodeLatticeE8/ConstructionA/ThetaLift.lean
+CodeLatticeE8/ConstructionA/ThetaConvolution.lean
+CodeLatticeE8/E8/ThetaCoefficients.lean
+CodeLatticeE8/E8/ThetaTable.lean
+CodeLatticeE8/E8/ThetaSeries.lean
 ```
 
-Third, `E8ThetaMFBridgeAristotle.lean` identifies the q-expansion coefficients
-of that modular form with the project-side Construction A shell counts:
+The core finite table theorem is:
 
 ```text
-PhysicsSM.Coding.E8ThetaMFBridge
-  .thetaE8_MF_qExpansion_coeff_eq_hammingThetaConvolutionCoeff
+CodeLatticeE8.E8.thetaTableCoeff_eq_e4Coeff_of_le_six
 ```
 
-The final coefficient theorem is:
+It states that a finite Hamming weight-contribution table agrees with the
+normalized `E4` coefficients through `q^6`.  This is a clean standalone table
+check, not a semantic shell-count theorem and not the full analytic identity.
+The entries of this table are manually entered elementary one-coordinate lift
+counts for the displayed finite range; Lean checks their arithmetic consequence
+against the `E4` coefficients, but the standalone table is not derived from the
+semantic Construction A fiber count.
+
+The standalone package also contains the all-shell Construction A convolution
+theorem:
 
 ```text
-PhysicsSM.Coding.E8ThetaSPLBridge
-  .hammingThetaConvolutionCoeff_eq_e4Coeff
+CodeLatticeE8.E8.thetaShellCount_eq_convolution
 ```
 
-and the corresponding formal power-series equality is:
+It expresses the semantic Construction A shell count as the Hamming
+weight-distribution convolution for every unscaled squared norm.
+
+The analytic layer has a clean optional root, `CodeLatticeE8SPL`.  It contains
+the completed all-coefficient bridge:
 
 ```text
-PhysicsSM.Coding.E8ThetaSPLBridge
-  .thetaSeries_eq_e4Series_from_hammingThetaConvolutionCoeff
+CodeLatticeE8.SPL.thetaE8_MF_eq_E4
+CodeLatticeE8.SPL.thetaE8_MF_qExpansion_coeff_eq_hammingThetaConvolutionCoeff
+CodeLatticeE8.SPL.hammingThetaConvolutionCoeff_eq_e4Coeff
+CodeLatticeE8.SPL.thetaSeries_hammingE8_eq_e4Series
 ```
+
+The proof was developed through a historical workbench route, but the
+reviewer-facing code now cites the polished declarations above.
 
 ### 3.4 Sphere-Packing-Lean Bridge
 
@@ -434,21 +463,24 @@ theorem hammingConstructionA_scaledMinSqNorm :
 The exact short-vector count is:
 
 ```text
-theorem short_vector_count :
-    shortHammingE8VectorList.length = 240
+theorem hammingConstructionA_short_vector_count :
+    Set.ncard hammingE8ShortShell = 240
 ```
 
 Completeness is supplied by:
 
 ```text
-theorem short_vector_list_complete
-    (z : Fin 8 -> Z) (hz : isShortHammingE8Vector z) :
-    z in shortHammingE8VectorList
+theorem shortShell_mem_shortShellVectorList
+    {z : Fin 8 -> Z}
+    (hz : z in hammingE8ShortShell) :
+    z in shortShellVectorList
 ```
 
 Thus the Construction A lattice has the E8 kissing number.  In unscaled
 coordinates, the short shell is `sqNorm z = 4`; in the scaled E8 normalization,
-this is squared norm `2`.
+this is squared norm `2`.  The finite cardinality theorem is now proved by
+private finite parametrizations of the weight-zero and weight-four Hamming
+classes, not by `native_decide`.
 
 ### 4.4 The Root and Cartan Bridges
 
@@ -456,59 +488,140 @@ The short-vector shell is compared to an independently defined E8 root list.
 The paper-facing permutation theorem is:
 
 ```text
-theorem bridge_perm :
-    (shortHammingE8VectorList.map E8RootBridge.shortVectorToDoubledRoot).Perm
-      E8Root.rootList
+theorem shortShell_perm_rootList :
+    (shortShellVectorList.map shortVectorToRootCoords).Perm rootList
 ```
 
 This theorem says that the Construction A short vectors, after the explicit
-doubled-coordinate bridge map, are precisely the root-list model.
+doubled-coordinate bridge map, are precisely the root-list model.  The root
+list itself is characterized by:
+
+```text
+theorem mem_rootList_iff_isE8Root (v : Fin 8 -> Z) :
+    v in rootList iff IsE8Root v
+```
+
+The root-list completeness theorem is now proved by a structural
+type-1/type-2 classification argument.  The bridge permutation has also been
+strengthened: it is derived from a nodup mapped list, a subset theorem, and a
+length calculation that uses the structural short-vector count, rather than
+from a monolithic 240-by-240 enumeration.
 
 The Cartan bridge is:
 
 ```text
-theorem gram_cartan_bridge :
-    ...
+theorem gramCartan_congruence :
+    e8BasisChangeMatrix.transpose * hammingConstructionGram *
+        e8BasisChangeMatrix =
+      2 * e8CartanMatrix
 ```
 
 It states that an explicit unimodular transition matrix carries the
 Construction A Gram matrix to the standard E8 Cartan form.  This provides a
 matrix-level identification of the code-built lattice with the root-system
-presentation.
+presentation.  The congruence itself is proved by ordinary kernel reduction
+over the 64 matrix entries.  The Cartan determinant is also now non-native:
+it is proved by nested cofactor expansion, reducing the calculation to four
+small `6 x 6` kernel `decide` checks.
 
-### 4.5 Theta_E8 = E4
+The clean package also records the first Weyl-theoretic closure property of
+this root model.  In doubled coordinates, reflection through a root is:
 
-Let `hammingThetaConvolutionCoeff n` be the Construction A coefficient at
-theta index `n`; by convention, this counts the unscaled shell
-`sqNorm z = 4 * n` after grouping by Hamming codeword weight.  The formal
-coefficient theorem is:
+```text
+reflect r v = v - (Roots.dot v r / 4) * r
+```
+
+The theorem
+
+```text
+theorem reflect_mem_rootList
+    {r v : Fin 8 -> Z}
+    (hr : r in rootList) (hv : v in rootList) :
+    reflect r v in rootList
+```
+
+shows that the 240-root list is closed under Weyl reflections.  The companion
+theorems `reflect_reflect_of_mem` and `reflect_self_eq_neg` record
+involutivity and reflection of a root through itself.  Closure and involutivity
+are now proved from the semantic root predicate `IsE8Root`: the key structural
+lemmas show that doubled inner products are divisible by `4`, that reflection
+preserves the semantic root conditions, and that reflection is involutive.
+The old finite all-pairs root-list check is no longer part of this proof path.
+
+There are two integer dot products in play.  The Cartan bridge uses
+`CodeLatticeE8.E8.intDot` in Construction A coordinates.  The Weyl-reflection
+module uses `CodeLatticeE8.E8.Roots.dot` in doubled root-list coordinates.
+The Hadamard bridge relating these models scales squared norms by `8`, as
+recorded in `CodeLatticeE8.E8.RootBridge.hadamard_sqNorm_scale`; this is why a
+Construction A short vector with `sqNorm = 4` maps to a doubled root with
+`Roots.normSq = 8`, while both represent an E8 vector of squared norm `2`.
+
+### 4.5 Theta Coefficients and the Optional Theta_E8 = E4 Bridge
+
+The standalone package currently exposes the theta comparison in two finite
+layers.  First, it proves the semantic shell statements:
+
+```text
+theorem semanticThetaCoeff_eq_e4Coeff_zero :
+    Set.ncard (hammingE8Shell 0) = e4Coeff 0
+
+theorem semanticThetaCoeff_eq_e4Coeff_one :
+    Set.ncard (hammingE8Shell 4) = e4Coeff 1
+```
+
+The `q^1` result is exactly the kissing-number theorem restated as the first
+nonconstant theta coefficient.  Second, the core package records a finite
+Hamming weight-contribution table and proves:
+
+```text
+theorem thetaTableCoeff_eq_e4Coeff_of_le_six
+    (n : Nat) (hn : n <= 6) :
+    hammingThetaTableCoeff n = e4Coeff n
+```
+
+This is a standalone finite table theorem.  It does not assert that the table
+is definitionally the semantic shell-count function, and it does not assert the
+full unbounded analytic identity.  The semantic standalone statement is the
+all-shell Construction A convolution theorem
+`CodeLatticeE8.E8.thetaShellCount_eq_convolution`; the SPL-facing package then
+identifies that semantic coefficient function with `E4` for every `n`.
+The table entries themselves are hand-entered closed-form counts for the
+finite range shown in the file.  Their role in the standalone package is a
+small, auditable coefficient comparison, not a replacement for the semantic
+all-shell convolution theorem.
+
+The optional SPL-facing theorem package uses a semantic coefficient
+function `hammingThetaConvolutionCoeff n` for the Construction A coefficient
+at theta index `n`; by convention, this counts the unscaled shell
+`sqNorm z = 4 * n` after grouping by Hamming codeword weight.  The completed
+all-coefficient theorem is:
 
 ```text
 theorem hammingThetaConvolutionCoeff_eq_e4Coeff (n : Nat) :
-    hammingThetaConvolutionCoeff n =
-      if n = 0 then 1 else 240 * sigma3 n
+    hammingThetaConvolutionCoeff n = Theta.e4Coeff n
 ```
 
-This is the all-coefficient E8 representation-number formula in the project's
-normalization.  The formal power-series conclusion is:
+This is the all-coefficient E8 representation-number formula in the package
+normalization.  The formal power-series target is:
 
 ```text
-theorem thetaSeries_eq_e4Series_from_hammingThetaConvolutionCoeff :
-    E8ThetaAristotle.thetaSeries = E8ThetaAristotle.e4Series
+theorem CodeLatticeE8.SPL.thetaSeries_hammingE8_eq_e4Series :
+    thetaSeries = e4Series
 ```
 
-The proof factors through the modular-form theorem:
+The proof route factors through the modular-form theorem:
 
 ```text
-theorem thetaE8_MF_eq_E4 : thetaE8_MF = E4
+theorem CodeLatticeE8.SPL.thetaE8_MF_eq_E4 :
+    thetaE8_MF = E4
 ```
 
 and the q-expansion bridge:
 
 ```text
-theorem thetaE8_MF_qExpansion_coeff_eq_hammingThetaConvolutionCoeff
+theorem CodeLatticeE8.SPL.thetaE8_MF_qExpansion_coeff_eq_hammingThetaConvolutionCoeff
     (n : Nat) :
-    (qExpansion 1 thetaE8_MF).coeff n =
+    (ModularFormClass.qExpansion (1 : R) thetaE8_MF).coeff n =
       (hammingThetaConvolutionCoeff n : C)
 ```
 
@@ -516,6 +629,10 @@ The mathematical content of the bridge is that the Fourier coefficient of the
 rank-eight theta modular form is the cardinality of the E8 shell of squared
 norm `2n`, and that this shell is bijective with the Construction A shell
 `sqNorm z = 4n`.
+
+These all-coefficient statements belong to the optional SPL-facing root because
+they depend on Sphere-Packing-Lean's modular-form infrastructure, not because
+any extra hypothesis remains.
 
 ### 4.6 Bridge to Sphere-Packing-Lean
 
@@ -564,7 +681,7 @@ The weight distribution `(1, 14, 1)` explains the cardinality:
 The Lean proof packages this as an explicit finite list and proves both
 soundness and completeness for the short-vector predicate.
 
-### 5.3 The Theta-Series Proof
+### 5.3 The Theta-Series Proof Plan
 
 The coefficient proof follows the classical theta-series route, but each
 normalization step is explicit.
@@ -575,8 +692,12 @@ product of one-dimensional even or odd lift counts.  Summing over Hamming
 codewords and grouping by weight gives the function
 `hammingThetaConvolutionCoeff`.
 
-The analytic side constructs a rank-eight theta modular form, proves its
-equality with `E4`, and extracts q-expansion coefficients as shell counts.
+The standalone package proves the semantic `q^0` and `q^1` coefficients, the
+finite Hamming contribution table through `q^6`, and the all-shell Construction
+A convolution theorem.  The optional SPL-facing layer now completes the
+all-coefficient comparison with `E4`: it constructs a rank-eight theta modular
+form, proves its equality with `E4`, extracts q-expansion coefficients as shell
+counts, and transports those shell counts to the Hamming Construction A model.
 The final bridge proves that the analytic E8 shell and the Construction A shell
 are in bijection with the correct factor of two in the norm:
 
@@ -585,16 +706,17 @@ sqNorm_ConstructionA(z) = 4n
     <-> ||phi(z)||^2 = 2n.
 ```
 
-Combining these facts yields the coefficient formula
-`1` at `n = 0` and `240 * sigma3 n` for `n > 0`.
+Combining these facts yields the all-coefficient formula
+`1` at `n = 0` and `240 * sigma3 n` for `n > 0`; this is recorded in
+`CodeLatticeE8.SPL.hammingThetaConvolutionCoeff_eq_e4Coeff`.
 
 ### 5.4 Why an Explicit SPL Bridge Matters
 
-The theorem `Theta_E8 = E4` identifies the theta series abstractly, but the
-sphere-packing endpoint is phrased for the E8 model used inside
-Sphere-Packing-Lean.  The explicit matrix and lattice bridges ensure that the
-code-built lattice and the SPL lattice are not merely isomorphic in principle;
-they are connected by named Lean maps and inner-product statements.
+The optional theorem `Theta_E8 = E4` identifies the theta series
+abstractly, but the sphere-packing endpoint is phrased for the E8 model used
+inside Sphere-Packing-Lean.  The explicit matrix and lattice bridges ensure
+that the code-built lattice and the SPL lattice are not merely isomorphic in
+principle; they are connected by named Lean maps and inner-product statements.
 
 This is the central formalization lesson of the paper.  In ordinary
 mathematical prose, one often moves freely among equivalent E8 presentations.
@@ -607,24 +729,36 @@ The repository is pinned to Lean 4.28.0.  The main theorem statements cited in
 this paper should be checked by building the relevant Lean modules under the
 pinned toolchain.
 
+Some files use local `maxHeartbeats` increases and style-linter suppressions
+for large finite matrix reductions or long analytic tactic scripts.  These are
+engineering choices about proof-search budget and warning noise; the proofs
+remain ordinary kernel-checked Lean terms and the trust report records the
+absence of `native_decide` and `Lean.trustCompiler` from the publication spine.
+
 Minimal checks for the local theorem index:
 
 ```text
 lake build CodeLatticeE8
 ```
 
-Checks for the theta-series route:
+The standalone Lean modules imported by `CodeLatticeE8` do not import
+Sphere-Packing-Lean.  Reviewers who want to check only this core layer without
+resolving the optional SPL dependency should use the standalone Lake wrapper:
 
 ```text
-lake build PhysicsSM.Draft.E8ThetaDim8MF
-lake build PhysicsSM.Draft.E8ThetaMFBridgeAristotle
-lake build PhysicsSM.Draft.E8ThetaCoeffGapAristotle
+cd CodeLatticeE8Standalone
+lake build CodeLatticeE8
 ```
 
-Checks for the full draft aggregation:
+That wrapper has a mathlib-only `lakefile.toml` and points its source directory
+at the repository root.  Building from the monorepo root still resolves the
+full dependency graph, including the optional Sphere-Packing-Lean package used
+by `CodeLatticeE8SPL`.
+
+Checks for the optional SPL-facing theta-series route:
 
 ```text
-lake build PhysicsSMDraft
+lake build CodeLatticeE8SPL
 ```
 
 Appendix B lists the theorem names and files used in the paper.  Appendix H
@@ -687,11 +821,24 @@ Under the bridge to the standard E8 normalization, this becomes
 ||phi(z)||^2 = 2 * n.
 ```
 
+Equivalently, the theta bridge uses the normalization
+
+```text
+sqNorm z = 4 * n  <->  ||phi(z)||^2 = 2 * n.
+```
+
+The Lean declaration `CodeLatticeE8.SPL.sqNorm_eq_two_mul_norm_sq` records the
+underlying equality `sqNorm z = 2 * ||phi(z)||^2` for the explicit bridge map.
 This is the most important normalization in the theta-series proof.
 
 # Appendix B. Lean Theorem Index
 
 The following table gives the primary theorem names for the paper.
+Displayed theorem statements in the body are lightly normalized for readability:
+`Nat`, `Int`, `Rat`, `Real`, and `Complex` are sometimes written as
+`N`, `Z`, `Q`, `R`, and `C`, and membership/divisibility symbols are sometimes
+written in prose.  The declaration names and file paths in the table are the
+authoritative handles for checking the exact Lean statements.
 
 | Mathematical claim | Lean declaration | File |
 |--------------------|------------------|------|
@@ -710,17 +857,32 @@ The following table gives the primary theorem names for the paper.
 | Minimum squared norm `2` | `CodeLatticeE8.E8.hammingConstructionA_scaledMinSqNorm` | `CodeLatticeE8/E8/Minimum.lean` |
 | Unscaled Gram determinant | `CodeLatticeE8.E8.hammingConstructionGram_det` | `CodeLatticeE8/E8/Determinant.lean` |
 | Scaled Gram determinant | `CodeLatticeE8.E8.hammingConstructionScaledGram_det` | `CodeLatticeE8/E8/Determinant.lean` |
-| Even/unimodular package | `HammingConstructionAE8Final.property_package` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Kissing number `240` | `HammingConstructionAE8Final.short_vector_count` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Short-vector completeness | `HammingConstructionAE8Final.short_vector_list_complete` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Root-list bridge | `HammingConstructionAE8Final.bridge_perm` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| Cartan bridge | `HammingConstructionAE8Final.gram_cartan_bridge` | `PhysicsSM/Coding/HammingConstructionAE8Final.lean` |
-| E8 theta modular form equals `E4` | `E8ThetaDim8.thetaE8_MF_eq_E4` | `PhysicsSM/Draft/E8ThetaDim8MF.lean` |
-| Construction A shell to E8 shell | `E8ThetaMFBridge.constructionAShellSet_ncard_eq_e8Shell` | `PhysicsSM/Draft/E8ThetaMFBridgeAristotle.lean` |
-| q-expansion coefficient extraction | `E8ThetaMFBridge.thetaE8_MF_qExpansion_coeff_eq_e8Shell` | `PhysicsSM/Draft/E8ThetaMFBridgeAristotle.lean` |
-| q-expansion to Hamming coefficient | `E8ThetaMFBridge.thetaE8_MF_qExpansion_coeff_eq_hammingThetaConvolutionCoeff` | `PhysicsSM/Draft/E8ThetaMFBridgeAristotle.lean` |
-| E8 representation formula | `E8ThetaSPLBridge.hammingThetaConvolutionCoeff_eq_e4Coeff` | `PhysicsSM/Draft/E8ThetaCoeffGapAristotle.lean` |
-| Formal theta series equals formal `E4` | `E8ThetaSPLBridge.thetaSeries_eq_e4Series_from_hammingThetaConvolutionCoeff` | `PhysicsSM/Draft/E8ThetaCoeffGapAristotle.lean` |
+| Kissing number `240` | `CodeLatticeE8.E8.hammingConstructionA_short_vector_count` | `CodeLatticeE8/E8/ShortVectors.lean` |
+| Short-vector completeness | `CodeLatticeE8.E8.RootBridge.shortShell_mem_shortShellVectorList` | `CodeLatticeE8/E8/RootBridge.lean` |
+| E8 root-list characterization | `CodeLatticeE8.E8.Roots.mem_rootList_iff_isE8Root` | `CodeLatticeE8/E8/Roots.lean` |
+| Root-list bridge | `CodeLatticeE8.E8.RootBridge.shortShell_perm_rootList` | `CodeLatticeE8/E8/RootBridge.lean` |
+| Cartan bridge | `CodeLatticeE8.E8.gramCartan_congruence` | `CodeLatticeE8/E8/CartanBridge.lean` |
+| Weyl reflection closure | `CodeLatticeE8.E8.WeylReflections.reflect_mem_rootList` | `CodeLatticeE8/E8/WeylReflections.lean` |
+| `E4` coefficient normalization | `CodeLatticeE8.Theta.e4Coeff` | `CodeLatticeE8/Theta/Sigma.lean` |
+| Semantic theta zero shell | `CodeLatticeE8.E8.semanticThetaCoeff_eq_e4Coeff_zero` | `CodeLatticeE8/E8/ThetaCoefficients.lean` |
+| Semantic theta first shell | `CodeLatticeE8.E8.semanticThetaCoeff_eq_e4Coeff_one` | `CodeLatticeE8/E8/ThetaCoefficients.lean` |
+| Hamming contribution table through `q^6` | `CodeLatticeE8.E8.thetaTableCoeff_eq_e4Coeff_of_le_six` | `CodeLatticeE8/E8/ThetaSeries.lean` |
+| All-shell Construction A convolution | `CodeLatticeE8.E8.thetaShellCount_eq_convolution` | `CodeLatticeE8/E8/ThetaSeries.lean` |
+| E8 theta modular form equals `E4` | `CodeLatticeE8.SPL.thetaE8_MF_eq_E4` | `CodeLatticeE8/SPL/E8ThetaModular.lean` |
+| q-expansion to Hamming coefficient | `CodeLatticeE8.SPL.thetaE8_MF_qExpansion_coeff_eq_hammingThetaConvolutionCoeff` | `CodeLatticeE8/SPL/CoefficientBridge.lean` |
+| E8 representation formula | `CodeLatticeE8.SPL.hammingThetaConvolutionCoeff_eq_e4Coeff` | `CodeLatticeE8/SPL/CoefficientBridge.lean` |
+| Formal theta series equals formal `E4` | `CodeLatticeE8.SPL.thetaSeries_hammingE8_eq_e4Series` | `CodeLatticeE8/SPL/CoefficientBridge.lean` |
+
+The optional SPL root `CodeLatticeE8SPL.lean` imports
+`CodeLatticeE8.SPL.TheoremIndex`, which lists the completed analytic,
+q-expansion, shell-transport, and formal power-series theorem chain.
+
+The standalone package currently has no live `native_decide` dependency in the
+paper spine.  The root-list characterization, root-bridge permutation chain,
+short-vector count, Cartan determinant, Gram-Cartan congruence, simple-root
+Gram theorem, small theta arithmetic, all-shell Construction A convolution,
+and Weyl reflection closure are now proved without compiler-trusted native
+evaluation.
 
 # Appendix C. Hamming Code Details
 
@@ -825,29 +987,50 @@ The Construction A theta coefficient at index `n` is the cardinality of:
 { z in A(C) : sqNorm z = 4 * n }.
 ```
 
-The formal convolution theorem decomposes this shell count by binary residue.
-For a fixed residue, every coordinate contributes either an even lift count or
-an odd lift count.  Multiplying across coordinates and summing over all
-partitions of the norm gives `weightContribConvolution`.  Grouping codewords
-by Hamming weight gives:
+The clean package now exposes two finite theta layers.
+
+First, `CodeLatticeE8/E8/ThetaCoefficients.lean` records the semantic shells
+that are already available without any finite table:
 
 ```text
-hammingThetaConvolutionCoeff n =
-  A_0 * weightContribConvolution 0 (4*n)
-  + A_4 * weightContribConvolution 4 (4*n)
-  + A_8 * weightContribConvolution 8 (4*n),
+CodeLatticeE8.E8.semanticThetaCoeff_eq_e4Coeff_zero
+CodeLatticeE8.E8.semanticThetaCoeff_eq_e4Coeff_one
 ```
 
-where
+The `q^1` theorem reuses the proved short-vector count, so the kissing number
+is tied to the semantic Construction A shell.
+
+Second, `CodeLatticeE8/E8/ThetaTable.lean` records the finite Hamming
+weight-contribution table through `q^6`.  For a codeword of weight `w`, odd
+coordinates contribute square `1` or `9`, and even coordinates contribute
+square `0`, `4`, or `16` in the verified range `sqNorm <= 24`.  Combining that
+table with the certified Hamming weight distribution gives:
+
+```text
+CodeLatticeE8.E8.thetaTableCoeff_eq_e4Coeff_of_le_six
+```
+
+The weight multiplicities are:
 
 ```text
 A_0 = 1,  A_4 = 14,  A_8 = 1.
 ```
 
-The analytic comparison uses the E8 theta modular form `thetaE8_MF`.  Its
-q-expansion coefficient at `n` is identified with the standard E8 shell
-`||v||^2 = 2n`.  The shell bridge identifies this with the Construction A
-shell `sqNorm z = 4n`.
+The table values are manually entered closed-form finite counts and are checked
+against the displayed `E4` coefficients; they are not themselves derived from
+the semantic Construction A fiber count.  This finite table is intentionally
+not presented as the full theta theorem.
+The structural Construction A convolution theorem is now also available as
+`CodeLatticeE8.E8.thetaShellCount_eq_convolution`, giving the semantic shell
+count as the Hamming weight-distribution convolution for every unscaled
+squared norm.  This convolution proof is now outside the `native_decide`
+boundary; it uses ordinary kernel-checked reductions for the small finite
+weight-class checks.
+
+The optional SPL-facing analytic comparison uses the E8 theta modular form
+`thetaE8_MF`.  Its q-expansion coefficient at `n` is identified with the
+standard E8 shell `||v||^2 = 2n`.  The shell bridge identifies this with the
+Construction A shell `sqNorm z = 4n`.
 
 Finally, the modular-form theorem proves:
 
@@ -878,16 +1061,16 @@ constructs the E8 lattice used at the formalized sphere-packing endpoint.
 
 # Appendix H. Verification Checklist
 
-Before submission, run:
+Before submission for the standalone package, run:
 
 ```text
 lake build CodeLatticeE8
+```
+
+For the optional SPL-facing theta route, run:
+
+```text
 lake build CodeLatticeE8SPL
-lake build CodeLatticeE8Draft
-lake build PhysicsSM.Draft.E8ThetaDim8MF
-lake build PhysicsSM.Draft.E8ThetaMFBridgeAristotle
-lake build PhysicsSM.Draft.E8ThetaCoeffGapAristotle
-lake build PhysicsSMDraft
 ```
 
 For each theorem cited in Appendix B, record:
@@ -896,12 +1079,17 @@ For each theorem cited in Appendix B, record:
 2. the file;
 3. whether the containing module builds under the pinned toolchain;
 4. the axiom report;
-5. whether the theorem is intended for trusted code or remains in a
-   draft-facing bridge module.
+5. whether the theorem is part of the standalone root or the SPL-facing root.
 
 The final paper should include only claims backed by checked theorem
 declarations and should keep convention-sensitive statements tied to their
 Lean names.
+
+The current paper-spine axiom audit should be refreshed after this SPL
+promotion.  The expected trusted profile is the standard Lean/mathlib axiom set
+`[propext, Classical.choice, Quot.sound]`, with `Lean.ofReduceBool` expected
+for declarations whose proofs contain ordinary kernel-checked `decide` steps.
+The detailed command list is recorded in `Sources/CodeLatticeE8_Trust_Report.md`.
 
 # Appendix I. Bibliography Checklist
 
@@ -914,9 +1102,16 @@ The bibliography should include at least:
 - Bourbaki, chapters on root systems and E8.
 - Cohn and Elkies, "New upper bounds on sphere packings I".
 - Viazovska, "The sphere packing problem in dimension 8".
-- The Sphere-Packing-Lean blueprint and formalization report.
-- Error Correction Zoo and Nebe-Sloane catalogue entries as public
-  cross-checks for the code-lattice construction.
+- Sidharth Hariharan, Christopher Birkbeck, Seewoo Lee, Ho Kiu Gareth Ma,
+  Bhavik Mehta, Auguste Poiroux, and Maryna Viazovska, "A Milestone in
+  Formalization: The Sphere Packing Problem in Dimension 8",
+  arXiv:2604.23468.
+- The Sphere-Packing-Lean project site, blueprint, documentation, and GitHub
+  repository: `https://thefundamentaltheor3m.github.io/Sphere-Packing-Lean/`.
+- Error Correction Zoo, "`[8,4,4]` extended Hamming code",
+  `https://errorcorrectionzoo.org/c/hamming844`.
+- Nebe and Sloane catalogue entries as public cross-checks for the
+  code-lattice construction.
 
-Exact page, chapter, theorem, and blueprint-section references should be filled
-in from `Sources/Hamming_E8_Zotero_Source_Map.md` before submission.
+Exact page, chapter, theorem, and blueprint-section references should be
+filled in during the final bibliography pass before submission.

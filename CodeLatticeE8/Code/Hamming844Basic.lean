@@ -19,7 +19,6 @@ The theorem that this code has parameters `[8,4,4]` is proved in
 -/
 
 set_option linter.style.longLine false
-set_option linter.style.nativeDecide false
 
 namespace CodeLatticeE8.Code
 

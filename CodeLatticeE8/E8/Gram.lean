@@ -14,7 +14,6 @@ small rational bridge needed by later, more geometric statements.
 -/
 
 set_option linter.style.longLine false
-set_option linter.style.nativeDecide false
 
 namespace CodeLatticeE8.E8
 

@@ -10,7 +10,6 @@ finite enumeration of all ambient words.
 -/
 
 set_option linter.style.longLine false
-set_option linter.style.nativeDecide false
 
 namespace CodeLatticeE8.Code
 

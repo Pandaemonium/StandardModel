@@ -18,7 +18,6 @@ with minimum squared norm two.
 -/
 
 set_option linter.style.longLine false
-set_option linter.style.nativeDecide false
 
 namespace CodeLatticeE8.E8
 

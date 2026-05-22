@@ -8,6 +8,34 @@ Purpose: continue migrating the Hamming-to-E8 development from the research
 workspace under `PhysicsSM` into the elegant, polished, reviewer-facing package
 `CodeLatticeE8`.
 
+Status update later on 2026-05-20: `ShortVectors.lean`, `Roots.lean`,
+`RootBridge.lean`, `CartanBridge.lean`, and `WeylReflections.lean` were added
+to the clean root.  They are fully proved and standalone.
+
+Status update, 2026-05-21: a publication/theta Aristotle wave was submitted.
+See:
+
+```text
+AgentTasks/code-lattice-e8-publication-theta-aristotle-2026-05-21.md
+```
+
+The jobs cover small theta arithmetic, the core Construction A theta
+convolution theorem, root-list trust-boundary reduction, root-bridge
+trust-boundary reduction, and the optional SPL-facing full `Theta_E8 = E4`
+package.  The current packaging decision is that the standalone `CodeLatticeE8`
+root should contain the finite/combinatorial theta theorem, while the
+all-coefficient analytic identity should be exposed through `CodeLatticeE8SPL`.
+
+Status update later on 2026-05-21: those completed jobs have been integrated.
+`Roots.lean`, `RootBridge.lean`, small theta arithmetic, the short-vector
+count, Cartan determinant, and basic Weyl reflection closure are now
+`native_decide`-free.  The standalone root also contains the all-shell
+Construction A convolution theorem.  The remaining documented
+`Lean.trustCompiler` boundary in `CodeLatticeE8` is four private finite
+Hamming-code checks in `CodeLatticeE8/ConstructionA/ThetaConvolution.lean`.
+`CodeLatticeE8SPL` now exists as a sorry-free optional root with conditional
+main theta theorems and documented analytic blockers.
+
 ## Executive Summary
 
 The clean package now exists and builds:
@@ -40,18 +68,18 @@ Current promoted content:
 - determinant proofs for the raw Gram determinant `256` and scaled determinant
   `1`;
 - scaled minimum squared norm `2`;
+- the 240-element short shell;
+- the doubled-coordinate E8 root list;
+- the bridge between the short shell and the root list;
+- the local Gram-Cartan bridge;
+- the basic Weyl reflection formula, closure, and involutivity on the E8 root list;
 - a thin publication theorem index.
 
-The main remaining pieces are:
+The main remaining pieces are now:
 
-1. short-vector enumeration and completeness;
-2. the 240-root list and semantic root classification;
-3. the bridge between Construction A short vectors and the root list;
-4. local Cartan-matrix comparison;
-5. optional SPL bridge;
-6. Weyl-reflection/orbit material;
-7. local theta coefficient/convolution results;
-8. SPL-dependent or conditional analytic theta material.
+1. optional SPL bridge;
+2. Weyl permutation/orbit material;
+3. SPL-dependent or conditional analytic theta material.
 
 ## Nonnegotiable Rules For The Clean Package
 
@@ -70,11 +98,12 @@ For files imported by `CodeLatticeE8.lean`:
 - no weakening theorem statements merely to make proofs pass;
 - no direct SPL imports.
 
-Prefer to keep `CodeLatticeE8` free of `native_decide`.  If a finite
-enumeration proof is genuinely the right final artifact, isolate it, document
-its trust profile in the module docstring and theorem index, and update the
-manuscript table.  The current promoted package has avoided `native_decide` in
-public trusted files where possible.
+Prefer structural proofs in `CodeLatticeE8`.  If a finite enumeration proof is
+genuinely the right final artifact, isolate it, document its trust profile in
+the module docstring and theorem index, and update the manuscript table.  The
+current promoted package intentionally contains bounded `native_decide` checks
+only in `CodeLatticeE8/ConstructionA/ThetaConvolution.lean`; treat those as
+documented trust boundaries rather than as silent kernel-only proofs.
 
 For `CodeLatticeE8SPL.lean`:
 
@@ -114,11 +143,16 @@ CodeLatticeE8/
 
   E8/
     Basis.lean
+    CartanBridge.lean
     Determinant.lean
     Gram.lean
     HammingConstruction.lean
     Minimum.lean
+    RootBridge.lean
+    Roots.lean
+    ShortVectors.lean
     Span.lean
+    WeylReflections.lean
 
   Publication/
     TheoremIndex.lean
@@ -200,7 +234,9 @@ module with clean imports and reviewer-facing names.
 
 ### 1. Short Vectors
 
-Target:
+Status: promoted and imported by the clean root.
+
+Current file:
 
 ```text
 CodeLatticeE8/E8/ShortVectors.lean
@@ -215,53 +251,29 @@ PhysicsSM/Draft/E8ShortVectorsNoNativeAristotle.lean
 PhysicsSM/Coding/HammingConstructionAE8Final.lean
 ```
 
-Goal:
+Current public declarations:
 
-- define the short shell in clean-package terms;
-- prove every listed short vector lies in `hammingConstructionA`;
-- prove every listed short vector has `sqNorm = 4`;
-- prove completeness of the short-vector classification;
-- prove the short shell has cardinality `240`.
+- `hammingE8ShortShell`;
+- `coordinate_abs_le_two_of_short`;
+- `not_short_of_weight8`;
+- `hammingConstructionA_short_vector_count`.
 
-Preferred public theorem shapes:
+The promoted theorem shape is:
 
 ```lean
-def isShortHammingE8Vector (z : Fin 8 -> Int) : Prop := ...
-
-def shortHammingE8VectorList : List (Fin 8 -> Int) := ...
-
-theorem mem_shortHammingE8VectorList_iff
-    (z : Fin 8 -> Int) :
-    z in shortHammingE8VectorList <-> isShortHammingE8Vector z := ...
-
-theorem shortHammingE8VectorList_nodup :
-    shortHammingE8VectorList.Nodup := ...
-
-theorem shortHammingE8VectorList_length :
-    shortHammingE8VectorList.length = 240 := ...
-
 theorem hammingConstructionA_short_vector_count :
-    Set.ncard {z : Fin 8 -> Int | z in hammingConstructionA /\ sqNorm z = 4} = 240 := ...
+    Set.ncard hammingE8ShortShell = 240
 ```
 
-Naming can be adjusted to match existing package style.  The important point is
-that the count should be tied semantically to `hammingConstructionA` and
-`sqNorm`, not only to an isolated list.
-
-Implementation guidance:
-
-- Prefer the structural proof in `E8ShortVectorsStructuralAristotle.lean` over
-  raw list evaluation if it ports cleanly.
-- Reuse `extendedHamming8_weight_distribution` and the Construction A parity
-  facts already promoted.
-- Keep the normalization explicit: short means unscaled `sqNorm = 4`, which is
-  scaled norm `2`.
-- If a list is retained, separate list mechanics from semantic shell
-  theorems.
+Trust note: the weight-0 and weight-4 counts now use private finite
+parametrizations rather than `native_decide`; the surrounding partition,
+coordinate bound, and weight-8 exclusion are structural.
 
 ### 2. Root List And Semantic Root Classification
 
-Target:
+Status: promoted and imported by the clean root.
+
+Current file:
 
 ```text
 CodeLatticeE8/E8/Roots.lean
@@ -276,48 +288,42 @@ PhysicsSM/Draft/E8RootSemanticHelpers.lean
 PhysicsSM/Draft/E8RootSemanticAristotle.lean
 ```
 
-Goal:
+Current public declarations include:
 
-- port the doubled-coordinate E8 root predicate;
-- port or recreate the explicit 240-element root list;
-- prove length, no duplicates, and semantic completeness;
-- avoid importing the project octonion implementation unless genuinely needed.
+- `Roots.normSq`;
+- `Roots.dot`;
+- `Roots.IsE8Root`;
+- `Roots.type1Roots`;
+- `Roots.type2Roots`;
+- `Roots.rootList`;
+- `Roots.rootList_length`;
+- `Roots.rootList_nodup`;
+- `Roots.coordinate_abs_le_two_of_normSq8`;
+- `Roots.mem_rootList_iff_isE8Root`;
+- `Roots.neg_mem_rootList`.
 
-Recommended clean namespace:
+The promoted theorem shape is:
 
 ```lean
-namespace CodeLatticeE8.E8.Roots
-```
-
-Possible public declarations:
-
-```lean
-def normSqD (v : Fin 8 -> Int) : Int := ...
-def dotD (v w : Fin 8 -> Int) : Int := ...
-def IsE8RootD (v : Fin 8 -> Int) : Prop := ...
-def rootList : List (Fin 8 -> Int) := ...
-
-theorem rootList_length : rootList.length = 240 := ...
-theorem rootList_nodup : rootList.Nodup := ...
-theorem mem_rootList_iff_isE8RootD
-    (v : Fin 8 -> Int) : v in rootList <-> IsE8RootD v := ...
-theorem rootList_normSqD
-    (v : Fin 8 -> Int) (hv : v in rootList) : normSqD v = 8 := ...
+theorem mem_rootList_iff_isE8Root (v : Fin 8 -> Int) :
+    v in rootList <-> IsE8Root v
 ```
 
 Notes:
 
-- The source file lives under `PhysicsSM/Algebra/Octonion`, but much of the
+- The source file lived under `PhysicsSM/Algebra/Octonion`, but much of the
   root-list content is just integer vectors.  Extract that integer-vector
-  content first.
+  content first for any future refinements.
 - Keep the convention note: these are doubled coordinates.  Actual E8 root
   norm squared is `2`; doubled-coordinate norm squared is `8`.
-- The source file currently uses finite enumeration proofs.  Look at the
-  semantic Aristotle files before accepting list-only proof style.
+- Current completeness is structural: coordinate bound plus type-1/type-2
+  classification.
 
 ### 3. Construction A Short Shell To Root List Bridge
 
-Target:
+Status: promoted and imported by the clean root.
+
+Current file:
 
 ```text
 CodeLatticeE8/E8/RootBridge.lean
@@ -333,11 +339,16 @@ PhysicsSM/Draft/E8ShellBridgeHelper.lean
 PhysicsSM/Draft/E8ShellBridgeNoNativeAristotle.lean
 ```
 
-Goal:
+Current public declarations include:
 
-- show the Construction A short shell corresponds to the 240 root list;
-- record the normalization map explicitly;
-- prove the bridge preserves the relevant quadratic form.
+- `RootBridge.hadamardBridgeMatrix`;
+- `RootBridge.shortShellVectorList`;
+- `RootBridge.shortVectorToRootCoords`;
+- `RootBridge.shortShell_mem_shortShellVectorList`;
+- `RootBridge.shortVectorToRootCoords_mem_rootList`;
+- `RootBridge.rootList_preimage_in_shortShell`;
+- `RootBridge.shortShell_perm_rootList`;
+- `RootBridge.shortVectorToRootCoords_normSq`.
 
 Things to check carefully:
 
@@ -345,31 +356,34 @@ Things to check carefully:
 - whether the bridge is identity, a permutation, a sign change, or a more
   substantial coordinate transform;
 - unscaled Construction A norm `sqNorm = 4`;
-- doubled-root norm `normSqD = 8`;
+- doubled-root norm `Roots.normSq = 8`;
 - scaled E8 norm `sqNorm / 2 = 2`.
 
-Preferred public theorem shapes:
+The promoted theorem shapes are:
 
 ```lean
-def constructionAShortToRootD (z : Fin 8 -> Int) : Fin 8 -> Int := ...
+def shortVectorToRootCoords (z : Fin 8 -> Int) : Fin 8 -> Int := ...
 
-theorem constructionAShortToRootD_mem_rootList
-    {z : Fin 8 -> Int}
-    (hz : z in hammingConstructionA) (hsq : sqNorm z = 4) :
-    constructionAShortToRootD z in Roots.rootList := ...
+theorem shortVectorToRootCoords_mem_rootList
+    {z : Fin 8 -> Int} (hz : z in hammingE8ShortShell) :
+    shortVectorToRootCoords z in Roots.rootList
 
-theorem rootList_mem_to_constructionAShort
+theorem rootList_preimage_in_shortShell
     {r : Fin 8 -> Int} (hr : r in Roots.rootList) :
-    exists z, z in hammingConstructionA /\ sqNorm z = 4 /\
-      constructionAShortToRootD z = r := ...
+    exists z, z in hammingE8ShortShell /\ shortVectorToRootCoords z = r
+
+theorem shortShell_perm_rootList :
+    (shortShellVectorList.map shortVectorToRootCoords).Perm Roots.rootList
 ```
 
-If the source proof uses an explicit permutation theorem such as `bridge_perm`,
-give it a mathematical name, not a provenance name.
+Trust note: the bridge has been strengthened past the explicit 240-element
+native checks.  `RootBridge.lean` currently has no `native_decide` proofs.
 
 ### 4. Local Cartan Bridge
 
-Targets:
+Status: promoted and imported by the clean root.
+
+Current file:
 
 ```text
 CodeLatticeE8/E8/CartanBridge.lean
@@ -390,14 +404,18 @@ PhysicsSM/Coding/E8SpherePackingMatrixBridge.lean
 PhysicsSM/Draft/E8TransitionMatrixNoNativeAristotle.lean
 ```
 
-Goal:
+Current public declarations include:
 
-- define or import a clean local E8 Cartan matrix without importing the
-  research namespace;
-- prove the Cartan determinant and diagonal facts if needed locally;
-- prove a clean transition/congruence statement between the local scaled Gram
-  matrix and the Cartan matrix;
-- keep any direct SPL comparison out of this file.
+- `e8CartanMatrix`;
+- `e8CartanMatrix_det`;
+- `e8BasisChangeMatrix`;
+- `gramCartan_congruence`;
+- `e8BasisChangeMatrix_det_sq`;
+- `e8BasisChangeMatrix_isUnit`;
+- `e8SimpleRoots`;
+- `e8SimpleRoots_mem`;
+- `e8SimpleRoots_gram`;
+- `e8SimpleRoots_sqNorm`.
 
 Guidance:
 
@@ -410,6 +428,9 @@ Guidance:
   `CodeLatticeE8SPL`, not in `CodeLatticeE8`.
 - Avoid huge determinant evaluation.  Use structured matrix proof patterns
   analogous to `E8/Determinant.lean`.
+- Current trust note: `gramCartan_congruence`, `e8SimpleRoots_gram`, and
+  `e8CartanMatrix_det` avoid `native_decide`.  The Cartan determinant is proved
+  by nested cofactor expansion to four 6-by-6 kernel `decide` checks.
 
 ### 5. Optional SPL Bridge
 
@@ -453,10 +474,31 @@ Windows/SPL caveat:
 
 ### 6. Weyl Cluster
 
-Targets:
+Status: the basic reflection-closure layer is promoted as:
 
 ```text
 CodeLatticeE8/E8/WeylReflections.lean
+```
+
+Current promoted declarations include:
+
+- `WeylReflections.reflectionCoeff`;
+- `WeylReflections.reflect`;
+- `WeylReflections.dot_div_four_of_isE8Root`;
+- `WeylReflections.reflect_preserves_IsE8Root`;
+- `WeylReflections.reflect_involutive_of_isE8Root`;
+- `WeylReflections.dot_mod_four_eq_zero_of_mem`;
+- `WeylReflections.reflect_mem_rootList`;
+- `WeylReflections.reflect_reflect_of_mem`;
+- `WeylReflections.reflect_self_eq_neg_of_normSq`;
+- `WeylReflections.reflect_self_eq_neg`;
+- `WeylReflections.normSq_reflect_of_mem`.
+
+The remaining Weyl work is the richer permutation/orbit material.
+
+Targets:
+
+```text
 CodeLatticeE8/E8/WeylOrbit.lean
 CodeLatticeE8/E8/WeylPermutations.lean
 ```
@@ -489,6 +531,19 @@ Guidance:
   profile.
 
 ### 7. Local Theta Coefficients And Convolution
+
+Status update later on 2026-05-20: the first standalone theta slice has been
+promoted.  `Sigma.lean`, `ThetaLift.lean`, `ThetaCoefficients.lean`,
+`ThetaConvolution.lean`, and `ThetaSeries.lean` now build under the clean root.
+The promoted result is a finite Hamming weight-contribution table through
+`q^6`; the structural Construction A convolution theorem is still the next
+migration target.
+
+Detailed theta packaging plan:
+
+```text
+Sources/CodeLatticeE8_Theta_Packaging_Plan.md
+```
 
 Targets:
 

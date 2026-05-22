@@ -9,7 +9,6 @@ extended Hamming code.  The proof uses a four-parameter description of the
 -/
 
 set_option linter.style.longLine false
-set_option linter.style.nativeDecide false
 
 namespace CodeLatticeE8.Code
 

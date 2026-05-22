@@ -23,6 +23,26 @@ integer-lattice layer:
 - determinant computations showing the unscaled Gram determinant is `256` and
   the scaled E8 Gram determinant is `1`.
 - the scaled minimum squared norm theorem in that E8 normalization.
+- the 240-element short shell enumeration (E8 kissing number).
+- the E8 root list in doubled integer coordinates and its semantic characterization.
+- the Hadamard bridge bijecting the Construction A short shell with the root list.
+- the E8 Cartan matrix in Bourbaki labelling, with determinant `1`.
+- the Gram–Cartan congruence `Pᵀ G P = 2 · Cartan`.
+- unimodularity of the change-of-basis matrix `P` (derived algebraically).
+- explicit E8 simple roots in Construction A coordinates, with Gram matrix
+  reproducing the E8 Dynkin diagram.
+- Weyl reflections on the doubled-coordinate root list, including closure and
+  involutivity.
+- the first semantic theta shells (`q^0` and `q^1`), a finite Hamming
+  weight-contribution table check matching the normalized `E4` coefficients
+  through `q^6`, and an all-shell semantic Construction A convolution theorem.
+
+The root-list, root-bridge, short-vector count, small theta arithmetic,
+Construction A theta convolution, Cartan determinant, and Weyl reflection
+layers have all been upgraded away from compiler-trusted native evaluation.
+The theta material here is still finite/combinatorial, not the full analytic
+identity `Theta_E8 = E4`; that bridge remains in the optional
+`CodeLatticeE8SPL` layer.
 
 This root is intended to be standalone: publication modules should import only
 Mathlib and other `CodeLatticeE8.*` modules.

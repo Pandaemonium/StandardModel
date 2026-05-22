@@ -18,7 +18,6 @@ file does not identify any lattice with E8 and does not introduce real scaling.
 -/
 
 set_option linter.style.longLine false
-set_option linter.style.nativeDecide false
 
 namespace CodeLatticeE8.ConstructionA
 

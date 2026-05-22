@@ -1,0 +1,25 @@
+name = "CodeLatticeE8Standalone"
+version = "0.1.0"
+keywords = ["math", "coding-theory", "lattice", "E8"]
+defaultTargets = ["CodeLatticeE8"]
+packagesDir = "../.lake/packages"
+
+# This wrapper is intentionally mathlib-only.  It lets reviewers build the
+# standalone CodeLatticeE8 root without resolving the optional
+# Sphere-Packing-Lean dependency used by CodeLatticeE8SPL in the monorepo root.
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.28.0"
+
+[[lean_lib]]
+name = "CodeLatticeE8"
+srcDir = ".."
+moreLeanArgs = ["-s65536"]
