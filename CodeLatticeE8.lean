@@ -15,6 +15,9 @@ integer-lattice layer:
 - the Construction A integer model for the Hamming code, including the
   nonzero minimum squared norm statement and the generic doubly-even
   mod-four norm theorem;
+- the general Type II Construction A bridge: doubly-even codes give even
+  scaled real norms, and self-dual codes give the set-theoretic real dual
+  identity after the conventional `1 / sqrt 2` scaling;
 - explicit Hamming Construction A basis vectors and their Gram matrix.
 - an explicit coefficient map proving those vectors span the whole Hamming
   Construction A integer lattice.

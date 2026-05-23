@@ -44,6 +44,9 @@ in the standalone package:
 - `CodeLatticeE8.E8.Roots.rootList_all_isE8Root`;
 - `CodeLatticeE8.E8.Roots.rootList_complete`;
 - `CodeLatticeE8.E8.Roots.mem_rootList_iff_isE8Root`;
+- `CodeLatticeE8.ConstructionA.scaledDualInt_eq_lattice_of_selfDual`;
+- `CodeLatticeE8.ConstructionA.scaledReal_even_of_doublyEven`;
+- `CodeLatticeE8.ConstructionA.scaledRealDual_eq_self_of_selfDual`;
 - `CodeLatticeE8.E8.e8CartanMatrix_det`;
 - `CodeLatticeE8.E8.e8CartanDoubled_det`;
 - `CodeLatticeE8.E8.gramCartan_congruence`;
@@ -154,6 +157,18 @@ ordinary `decide` reductions may report `Lean.ofReduceBool`; this is Lean's
 kernel-checked boolean-reduction certificate and is distinct from
 `Lean.trustCompiler`.  No theorem in this audit reported `Lean.trustCompiler`.
 
+On 2026-05-23, the following clean Type II Construction A declarations were
+also audited:
+
+```lean
+#print axioms CodeLatticeE8.ConstructionA.typeII_integer_package
+#print axioms CodeLatticeE8.ConstructionA.scaledReal_even_of_doublyEven
+#print axioms CodeLatticeE8.ConstructionA.scaledRealDual_eq_self_of_selfDual
+```
+
+Each reported only the standard Lean/mathlib axioms
+`[propext, Classical.choice, Quot.sound]`.
+
 ## Aristotle Jobs Tracking This Boundary
 
 The current proof-improvement wave is recorded by the following submitted job
@@ -173,6 +188,9 @@ IDs:
 - `56691706-08a0-4637-8aa7-fcc19945abce`: follow-up root-bridge job targeting
   the five remaining local `native_decide` facts in `RootBridge.lean`;
   integrated 2026-05-21.
+- `df2b5ccf-23e3-42dc-988b-db4c6f8639b6`: clean-package port of the general
+  Type II Construction A theorem, including the integer scaled-dual equality
+  and the real scaled evenness/self-duality statements; integrated 2026-05-23.
 
 ## Audit Commands
 

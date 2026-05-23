@@ -23,6 +23,9 @@ Status labels:
 | Uniqueness of binary `[8,4,4]` codes up to equivalence | `CodeLatticeE8.Code.extendedHamming8_unique_up_to_equivalence` | `CodeLatticeE8/Code/Hamming844Uniqueness.lean` | Core |
 | Construction A integer lattice | `CodeLatticeE8.ConstructionA.lattice` | `CodeLatticeE8/ConstructionA/Basic.lean` | Core |
 | Generic doubly-even norm divisibility | `CodeLatticeE8.ConstructionA.sqNorm_dvd_four_of_doublyEven` | `CodeLatticeE8/ConstructionA/Even.lean` | Core |
+| Generic Type II integer package | `CodeLatticeE8.ConstructionA.typeII_integer_package` | `CodeLatticeE8/ConstructionA/TypeII.lean` | Core |
+| Generic scaled real evenness | `CodeLatticeE8.ConstructionA.scaledReal_even_of_doublyEven` | `CodeLatticeE8/ConstructionA/TypeII.lean` | Core |
+| Generic scaled real self-duality | `CodeLatticeE8.ConstructionA.scaledRealDual_eq_self_of_selfDual` | `CodeLatticeE8/ConstructionA/TypeII.lean` | Core |
 | Hamming Construction A minimum shell | `CodeLatticeE8.E8.hammingConstructionA_minSqNorm` | `CodeLatticeE8/E8/HammingConstruction.lean` | Core |
 | Explicit E8 basis spans the Construction A lattice | `CodeLatticeE8.E8.hammingConstructionASubmodule_eq_span` | `CodeLatticeE8/E8/Span.lean` | Core |
 | Unscaled Gram determinant `256` | `CodeLatticeE8.E8.hammingConstructionGram_det` | `CodeLatticeE8/E8/Determinant.lean` | Core |

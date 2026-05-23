@@ -1,5 +1,6 @@
 import CodeLatticeE8.Code.Dual
 import CodeLatticeE8.Code.Hamming844Uniqueness
+import CodeLatticeE8.ConstructionA.TypeII
 import CodeLatticeE8.E8.Basis
 import CodeLatticeE8.E8.Gram
 import CodeLatticeE8.E8.Determinant
@@ -82,6 +83,14 @@ Construction A:
 - `CodeLatticeE8.ConstructionA.lattice_sqNorm_ge_four`
 - `CodeLatticeE8.ConstructionA.sqNorm_mod_four_eq_hammingWeight_mod_four`
 - `CodeLatticeE8.ConstructionA.sqNorm_dvd_four_of_doublyEven`
+- `CodeLatticeE8.ConstructionA.intDot`
+- `CodeLatticeE8.ConstructionA.binaryLift`
+- `CodeLatticeE8.ConstructionA.scaledDualInt`
+- `CodeLatticeE8.ConstructionA.scaledDualInt_eq_lattice_of_selfDual`
+- `CodeLatticeE8.ConstructionA.typeII_integer_package`
+- `CodeLatticeE8.ConstructionA.scaledReal`
+- `CodeLatticeE8.ConstructionA.scaledReal_even_of_doublyEven`
+- `CodeLatticeE8.ConstructionA.scaledRealDual_eq_self_of_selfDual`
 
 Hamming Construction A integer lattice:
 
@@ -293,6 +302,22 @@ private noncomputable abbrev theoremIndexGuard_sqNorm_mod_four :=
   @CodeLatticeE8.ConstructionA.sqNorm_mod_four_eq_hammingWeight_mod_four
 private noncomputable abbrev theoremIndexGuard_sqNorm_dvd_four :=
   @CodeLatticeE8.ConstructionA.sqNorm_dvd_four_of_doublyEven
+private noncomputable abbrev theoremIndexGuard_constructionA_intDot :=
+  @CodeLatticeE8.ConstructionA.intDot
+private noncomputable abbrev theoremIndexGuard_binaryLift :=
+  @CodeLatticeE8.ConstructionA.binaryLift
+private noncomputable abbrev theoremIndexGuard_scaledDualInt :=
+  @CodeLatticeE8.ConstructionA.scaledDualInt
+private noncomputable abbrev theoremIndexGuard_scaledDualInt_eq_lattice :=
+  @CodeLatticeE8.ConstructionA.scaledDualInt_eq_lattice_of_selfDual
+private noncomputable abbrev theoremIndexGuard_typeII_integer_package :=
+  @CodeLatticeE8.ConstructionA.typeII_integer_package
+private noncomputable abbrev theoremIndexGuard_scaledReal :=
+  @CodeLatticeE8.ConstructionA.scaledReal
+private noncomputable abbrev theoremIndexGuard_scaledReal_even :=
+  @CodeLatticeE8.ConstructionA.scaledReal_even_of_doublyEven
+private noncomputable abbrev theoremIndexGuard_scaledRealDual_eq_self :=
+  @CodeLatticeE8.ConstructionA.scaledRealDual_eq_self_of_selfDual
 
 private noncomputable abbrev theoremIndexGuard_hammingConstructionA :=
   CodeLatticeE8.E8.hammingConstructionA

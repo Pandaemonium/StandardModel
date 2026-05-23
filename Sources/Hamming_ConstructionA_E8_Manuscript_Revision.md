@@ -245,12 +245,14 @@ CodeLatticeE8/Code/Hamming844Uniqueness.lean
 CodeLatticeE8/ConstructionA/Basic.lean
 CodeLatticeE8/ConstructionA/Norm.lean
 CodeLatticeE8/ConstructionA/Even.lean
+CodeLatticeE8/ConstructionA/TypeII.lean
 ```
 
 These files define binary vectors, Hamming weight, reduction mod `2`, the
 extended Hamming code, weight distribution, the `[8,4,4]` parameter package,
 Construction A as an integer subgroup, mod-four norm divisibility for
-doubly-even codes, and uniqueness up to code equivalence.
+doubly-even codes, the general Type II scaled evenness and self-duality
+theorem, and uniqueness up to code equivalence.
 
 ### 3.2 Lattice and Root Layer
 
@@ -656,10 +658,17 @@ then shown to span exactly this subgroup.  The Gram matrix is computed from
 the basis, and the determinant and divisibility properties are proved from the
 matrix and code equations.
 
-This avoids invoking a broad theorem saying that Type II codes always give
-even unimodular lattices.  Such a theorem would be elegant, and would be a good
-future abstraction, but for this paper the explicit rank-eight proof gives a
-smaller and more auditable formal object.
+The standalone package also contains the corresponding general Type II
+Construction A theorem.  In Lean, the integer-coordinate theorem is
+`CodeLatticeE8.ConstructionA.typeII_integer_package`; the real scaled dual
+statement is
+`CodeLatticeE8.ConstructionA.scaledRealDual_eq_self_of_selfDual`.  Thus the
+formal library now records the standard abstraction that Type II codes give
+even self-dual, hence unimodular, lattices after the conventional `1 / sqrt 2`
+scaling.  The paper still keeps the rank-eight basis, determinant, and Cartan
+comparisons explicit, because those are the auditable coordinate bridges needed
+to identify the Hamming Construction A model with the E8 lattice used elsewhere
+in the formalization.
 
 ### 5.2 The Short-Vector Shell
 
@@ -849,6 +858,8 @@ authoritative handles for checking the exact Lean statements.
 | `[8,4,4]` uniqueness | `CodeLatticeE8.Code.extendedHamming8_unique_up_to_equivalence` | `CodeLatticeE8/Code/Hamming844Uniqueness.lean` |
 | Construction A minimum unscaled norm `4` | `CodeLatticeE8.E8.hammingConstructionA_minSqNorm` | `CodeLatticeE8/E8/HammingConstruction.lean` |
 | Construction A norm divisibility | `CodeLatticeE8.E8.hammingConstructionA_sqNorm_dvd_four` | `CodeLatticeE8/E8/HammingConstruction.lean` |
+| Generic Type II integer package | `CodeLatticeE8.ConstructionA.typeII_integer_package` | `CodeLatticeE8/ConstructionA/TypeII.lean` |
+| Generic Type II real self-duality | `CodeLatticeE8.ConstructionA.scaledRealDual_eq_self_of_selfDual` | `CodeLatticeE8/ConstructionA/TypeII.lean` |
 | Explicit basis membership | `CodeLatticeE8.E8.hammingConstructionBasis_mem` | `CodeLatticeE8/E8/Basis.lean` |
 | Explicit basis spans the lattice | `CodeLatticeE8.E8.hammingConstructionASubmodule_eq_span` | `CodeLatticeE8/E8/Span.lean` |
 | Unscaled Gram matrix entries | `CodeLatticeE8.E8.hammingConstructionGram_eq` | `CodeLatticeE8/E8/Basis.lean` |
@@ -1059,59 +1070,71 @@ different coordinate models.  The formal bridge records:
 This bridge is what allows the manuscript to say that the extended Hamming code
 constructs the E8 lattice used at the formalized sphere-packing endpoint.
 
-# Appendix H. Verification Checklist
+# Appendix H. Verification and Reproducibility
 
-Before submission for the standalone package, run:
+The Lean artifacts are checked in three layers, matching the dependency
+boundaries used in the paper.
+
+For the standalone Hamming-to-E8 package, run:
 
 ```text
 lake build CodeLatticeE8
 ```
 
-For the optional SPL-facing theta route, run:
+For a mathlib-only checkout, the standalone wrapper gives the same root without
+the Sphere-Packing-Lean dependency:
+
+```text
+cd CodeLatticeE8Standalone
+lake build CodeLatticeE8
+cd ..
+```
+
+For the Sphere-Packing-Lean-facing bridge, run:
 
 ```text
 lake build CodeLatticeE8SPL
 ```
 
-For each theorem cited in Appendix B, record:
+For the broader repository check, run:
 
-1. the Lean declaration name;
-2. the file;
-3. whether the containing module builds under the pinned toolchain;
-4. the axiom report;
-5. whether the theorem is part of the standalone root or the SPL-facing root.
+```text
+lake build
+```
 
-The final paper should include only claims backed by checked theorem
-declarations and should keep convention-sensitive statements tied to their
-Lean names.
+This command also rebuilds older `PhysicsSM` modules.  Those files may emit
+style warnings, but the command should exit successfully.
 
-The current paper-spine axiom audit should be refreshed after this SPL
-promotion.  The expected trusted profile is the standard Lean/mathlib axiom set
-`[propext, Classical.choice, Quot.sound]`, with `Lean.ofReduceBool` expected
-for declarations whose proofs contain ordinary kernel-checked `decide` steps.
-The detailed command list is recorded in `Sources/CodeLatticeE8_Trust_Report.md`.
+The paper cites theorem declarations rather than informal file names whenever a
+precise formal claim is involved.  Appendix B gives the declaration/file map.
+The trust report `Sources/CodeLatticeE8_Trust_Report.md` records the
+corresponding axiom audit.  The expected axiom profile for the main paper-spine
+theorems is the standard Lean/mathlib set:
 
-# Appendix I. Bibliography Checklist
+```text
+[propext, Classical.choice, Quot.sound]
+```
 
-The bibliography should include at least:
+Some lower-level finite reductions may report `Lean.ofReduceBool`; this is
+Lean's kernel-checked boolean-reduction certificate, not a compiler-trust
+assumption.  The standalone root is additionally checked to contain no
+`sorry`, `admit`, fake axioms, `unsafe def`, `native_decide`,
+`Lean.trustCompiler`, or imports from `PhysicsSM.*`.
 
-- Hamming, "Error Detecting and Error Correcting Codes", 1950.
-- MacWilliams and Sloane, *The Theory of Error-Correcting Codes*, 1977.
-- Huffman and Pless, *Fundamentals of Error-Correcting Codes*, 2003.
-- Conway and Sloane, *Sphere Packings, Lattices and Groups*.
-- Bourbaki, chapters on root systems and E8.
-- Cohn and Elkies, "New upper bounds on sphere packings I".
-- Viazovska, "The sphere packing problem in dimension 8".
-- Sidharth Hariharan, Christopher Birkbeck, Seewoo Lee, Ho Kiu Gareth Ma,
-  Bhavik Mehta, Auguste Poiroux, and Maryna Viazovska, "A Milestone in
-  Formalization: The Sphere Packing Problem in Dimension 8",
-  arXiv:2604.23468.
-- The Sphere-Packing-Lean project site, blueprint, documentation, and GitHub
-  repository: `https://thefundamentaltheor3m.github.io/Sphere-Packing-Lean/`.
-- Error Correction Zoo, "`[8,4,4]` extended Hamming code",
-  `https://errorcorrectionzoo.org/c/hamming844`.
-- Nebe and Sloane catalogue entries as public cross-checks for the
-  code-lattice construction.
+# Appendix I. Bibliographic Roles
 
-Exact page, chapter, theorem, and blueprint-section references should be
-filled in during the final bibliography pass before submission.
+The cited sources play the following roles in the paper.
+
+- Hamming's original paper supplies the historical coding-theory origin of the
+  Hamming code.
+- MacWilliams-Sloane and Huffman-Pless are the coding-theory references for the
+  extended Hamming code, weight enumerators, self-duality, Type II codes, and
+  uniqueness up to coordinate permutation.
+- Leech-Sloane and Conway-Sloane are the lattice references for Construction A,
+  the Hamming-code construction of E8, the E8 theta series, and the standard
+  normalizations of even unimodular lattices.
+- Bourbaki is used for the E8 root-system and Cartan matrix conventions.
+- Cohn-Elkies, Viazovska, and the Sphere-Packing-Lean report provide the
+  analytic sphere-packing endpoint and its Lean formalization.
+- The Error Correction Zoo entry is cited only as a secondary orientation
+  source for the named `[8,4,4]` extended Hamming code.

@@ -101,14 +101,14 @@ description of E8.  In the standalone \code{CodeLatticeE8} package, it proves
 the semantic $q^0$ and $q^1$ theta coefficients and a finite Hamming
 weight-contribution calculation agreeing with the normalized Eisenstein
 coefficients through $q^6$.  The all-coefficient analytic route is isolated in
-an optional Sphere-Packing-Lean-facing package plan: it transports
+a Sphere-Packing-Lean-facing package plan: it transports
 Construction~A shell counts to the rank-eight theta modular form and compares
 that modular form with the normalized Eisenstein series $E_4$, giving the
 classical identity
 \[
   \Theta_{E_8}(q) = E_4(q) = 1 + 240\sum_{n>0}\sigma_3(n)\,q^n
 \]
-when the optional bridge is built.  The development also compares the local
+when the bridge is built.  The development also compares the local
 Construction~A basis with the E8 basis used by Sphere-Packing-Lean, the Lean
 formalization of Viazovska's dimension-eight sphere-packing theorem.  The
 result is a verified bridge from a finite coding-theoretic object to the E8
@@ -121,12 +121,14 @@ proof.
 \label{sec:intro}
 
 The E8 lattice admits many classical descriptions.  It can be introduced as
-the unique even unimodular positive-definite lattice of rank eight, as the root
-lattice of the exceptional root system $E_8$, as a half-integer lattice in
-$\R^8$, or as the Construction~A lattice attached to the extended binary Hamming
-code.  These descriptions are equivalent in the mathematical literature, but a
-formal proof assistant asks for explicit maps, explicit normalizations, and
-kernel-checked statements connecting them.
+the unique even unimodular positive-definite lattice of rank eight~\cite{ConwaySloane1999},
+as the root lattice of the exceptional root system $E_8$~\cite{Bourbaki2002},
+as a half-integer lattice in $\R^8$~\cite{ConwaySloane1999}, as the lattice of
+Coxeter integral octonions, or as the
+Construction~A lattice attached to the extended binary Hamming
+code~\cite{LeechSloane1971,ConwaySloane1999}.  These descriptions are equivalent
+in the mathematical literature, but a formal proof assistant asks for explicit
+maps, explicit normalizations, and kernel-checked statements connecting them.
 
 This paper formalizes the coding-theoretic route:
 \begin{center}
@@ -137,29 +139,23 @@ $\quad\to$ scaled even unimodular rank-eight lattice \\
 $\quad\to$ $240$ minimal vectors \\
 $\quad\to$ E8 root and Cartan data \\
 $\quad\to$ finite theta coefficients,\\
-$\quad\quad$ with optional SPL route to $\Theta_{E_8} = E_4$ \\
+$\quad\quad$ with Sphere-Packing-Lean route to $\Theta_{E_8} = E_4$ \\
 $\quad\to$ Sphere-Packing-Lean E8 basis comparison
 \end{tabular}
 \end{center}
 
-The contribution is complementary to Sphere-Packing-Lean.
+The contribution is complementary to Sphere-Packing-Lean~\cite{SPL2025}.
 Sphere-Packing-Lean formalizes the analytic proof that the E8 sphere packing
-is optimal in dimension eight.  The present development supplies a finite and
-combinatorial entrance to the same E8 object: it starts from the extended
-Hamming code, builds the lattice by Construction~A, and identifies the
-resulting object with the standard E8 data used elsewhere in the Lean
-ecosystem.
+is optimal in dimension eight~\cite{Viazovska2017}.  The present development
+supplies a finite and combinatorial entrance to the same E8 object: it starts
+from the extended Hamming code, builds the lattice by Construction~A, and
+identifies the resulting object with the standard E8 data used elsewhere in
+the Lean ecosystem.
 
 The main Lean-facing theorem index for the local Hamming-to-E8 development is
-\code{CodeLatticeE8.Publication.TheoremIndex}.  A reviewer-facing theorem map
-and trust audit are maintained in
-\code{Sources/CodeLatticeE8\_Publication\_Theorem\_Map.md} and
-\code{Sources/CodeLatticeE8\_Trust\_Report.md}.  The polished theorem spine is
+\code{CodeLatticeE8.Publication.TheoremIndex}.  The theorem spine is
 organized through the standalone package root
-\code{CodeLatticeE8} and the optional SPL root \code{CodeLatticeE8SPL}.
-The older draft files remain provenance and comparison material.  The theorems
-cited below are named explicitly so that their status can be checked directly
-in Lean.
+\code{CodeLatticeE8} and the optional Sphere-Packing-Lean (SPL) root \code{CodeLatticeE8SPL}.
 
 \subsection{Contributions}
 
@@ -185,12 +181,12 @@ The formalization proves the following.
       formalized E8 root list.
 
 \item An explicit unimodular change of basis relates the Construction~A Gram
-      matrix to the E8 Cartan matrix.
+      matrix to the E8 Cartan matrix~\cite{Bourbaki2002,ConwaySloane1999}.
 
 \item The standalone package proves the semantic zero and first theta
       coefficients, a finite Hamming weight-contribution table check through
       $q^6$, and an all-shell semantic Construction~A convolution theorem.
-      The all-coefficient analytic identity is completed in the optional
+      The all-coefficient analytic identity is completed in the
       SPL-facing root.
 
 \item The local basis model is compared with the E8 model used by
@@ -217,14 +213,15 @@ root-system, theta-series, and Sphere-Packing-Lean conventions.
 
 \subsection{The Extended Hamming Code}
 
-Let $C$ be the extended binary Hamming code of length eight.  Classically, this
-is the unique Type~II binary code of length eight.  It has parameters $[8,4,4]$:
+Let $C$ be the extended binary Hamming code of length eight~\cite{Hamming1950}.
+Classically, this is the unique Type~II binary code of length
+eight~\cite{MacSloane1977,ConwaySloane1999}.  It has parameters $[8,4,4]$:
 length eight, dimension four, and minimum distance four.  Its weight enumerator
-is
+is~\cite{MacSloane1977}
 \[
   W_C(x,y) = x^8 + 14x^4y^4 + y^8.
 \]
-In Lean, $C$ is not introduced merely by name.  It is defined by an explicit
+In Lean, $C$ is defined by an explicit
 parity-check matrix over $\F_2 = \Z/2\Z$, and the code properties are proved
 from that definition.  The formalization records the column ordering of the
 matrix, since many classical parity-check matrices for the same code differ by
@@ -241,19 +238,21 @@ CodeLatticeE8.Code.extendedHamming8_unique_up_to_equivalence
 The first packages the $[8,4,4]$ parameters, the second records the doubly-even
 property used by Construction~A, the next two prove self-duality and Type~II
 status, and the final theorem states that any binary linear $[8,4,4]$ code is
-coordinate-permutation equivalent to the chosen extended Hamming code.
+coordinate-permutation equivalent to the chosen extended Hamming
+code~\cite{MacSloane1977,HuffmanPless2003}.
 
 \subsection{Construction A}
 
 For a binary code $C \subseteq (\Z/2\Z)^n$, Construction~A defines a subgroup
-of integer vectors:
+of integer vectors~\cite{LeechSloane1971,ConwaySloane1999}:
 \[
   A(C) = \bigl\{\, z \in \Z^n \;\bigm|\; z \bmod 2 \in C \,\bigr\}.
 \]
-For the extended Hamming code, this produces an integer lattice in $\Z^8$.  The
-unscaled integer model has minimal squared norm~$4$.  The usual E8 normalization
-divides the quadratic form by~$2$, equivalently scaling all coordinates by
-$1/\sqrt{2}$, so the standard E8 minimal squared norm is~$2$.
+For the extended Hamming code, this produces an integer lattice in
+$\Z^8$~\cite{LeechSloane1971}.  The unscaled integer model has minimal squared
+norm~$4$.  The usual E8 normalization divides the quadratic form by~$2$,
+equivalently scaling all coordinates by $1/\sqrt{2}$, so the standard E8
+minimal squared norm is~$2$~\cite{ConwaySloane1999}.
 
 The formalization uses the unscaled integer model for the direct Construction~A
 definition and then records the scaled form explicitly.  This avoids hiding the
@@ -262,10 +261,10 @@ determinants.
 
 \subsection{E8 Metric and Root Data}
 
-The standard E8 root system has $240$ roots, each of squared norm~$2$.  In the
-Construction~A integer coordinates, these correspond to vectors of unscaled
-squared norm~$4$.  The formalization proves both the minimum norm statement and
-the exact cardinality of the short-vector shell.
+The standard E8 root system has $240$ roots, each of squared norm~$2$~\cite{ConwaySloane1999}.
+In the Construction~A integer coordinates, these correspond to vectors of
+unscaled squared norm~$4$.  The formalization proves both the minimum norm
+statement and the exact cardinality of the short-vector shell.
 
 It then relates the short-vector shell to an independent root-list model in
 the repository.  This gives a second confirmation that the code-built lattice
@@ -274,11 +273,12 @@ properties.
 
 \subsection{Theta Series and $E_4$}
 
-The theta series of E8 is the generating function for shell counts:
+The theta series of E8 is the generating function for shell
+counts~\cite{ConwaySloane1999}:
 \[
   \Theta_{E_8}(q) = \sum_{v \in E_8} q^{\|v\|^2/2}.
 \]
-For the standard E8 lattice, the classical formula is:
+For the standard E8 lattice, the classical formula is~\cite{ConwaySloane1999}:
 \[
   \Theta_{E_8}(q) = E_4(q) = 1 + 240\sum_{n>0}\sigma_3(n)\,q^n.
 \]
@@ -310,11 +310,13 @@ CodeLatticeE8/Code/Hamming844Uniqueness.lean
 CodeLatticeE8/ConstructionA/Basic.lean
 CodeLatticeE8/ConstructionA/Norm.lean
 CodeLatticeE8/ConstructionA/Even.lean
+CodeLatticeE8/ConstructionA/TypeII.lean
 \end{lstlisting}
 These files define binary vectors, Hamming weight, reduction mod~$2$, the
 extended Hamming code, weight distribution, the $[8,4,4]$ parameter package,
 Construction~A as an integer subgroup, mod-four norm divisibility for doubly-even
-codes, and uniqueness up to code equivalence.
+codes, the general Type~II scaled evenness and self-duality theorem, and
+uniqueness up to code equivalence.
 
 \subsection{Lattice and Root Layer}
 
@@ -333,15 +335,15 @@ CodeLatticeE8/E8/CartanBridge.lean
 CodeLatticeE8/E8/WeylReflections.lean
 \end{lstlisting}
 The root-list, short-vector, root-bridge, Cartan-bridge, and basic Weyl
-reflection layers are now part of the clean package.  Direct
+reflection layers are now part of the package.  Direct
 Sphere-Packing-Lean comparisons remain optional and belong under the
-\code{CodeLatticeE8SPL} root.  The citation-facing clean theorem index is
+\code{CodeLatticeE8SPL} root.  The theorem index is
 \code{CodeLatticeE8/Publication/TheoremIndex.lean}.
 
 \subsection{Theta-Series Layer}
 
 The theta-series material is split into a standalone finite layer and an
-optional analytic/Sphere-Packing-Lean layer.
+analytic/Sphere-Packing-Lean layer.
 
 The standalone package records the coefficient normalization and the finite
 Hamming weight-contribution table:
@@ -358,7 +360,7 @@ The core finite table theorem is:
 CodeLatticeE8.E8.thetaTableCoeff_eq_e4Coeff_of_le_six
 \end{lstlisting}
 It states that a finite Hamming weight-contribution table agrees with the
-normalized $E_4$ coefficients through $q^6$.  This is a clean standalone table
+normalized $E_4$ coefficients through $q^6$.  This is a standalone table
 check, not a semantic shell-count theorem and not the full analytic identity.
 
 The standalone package also contains the all-shell Construction~A convolution
@@ -369,7 +371,7 @@ CodeLatticeE8.E8.thetaShellCount_eq_convolution
 It expresses the semantic Construction~A shell count as the Hamming
 weight-distribution convolution for every unscaled squared norm.
 
-The analytic layer has a clean optional root, \code{CodeLatticeE8SPL}.  It
+The analytic layer has a root, \code{CodeLatticeE8SPL}, that
 contains the completed all-coefficient bridge:
 \begin{lstlisting}[style=lean]
 CodeLatticeE8.SPL.thetaE8_MF_eq_E4
@@ -425,7 +427,7 @@ theorem extendedHamming8_unique_up_to_equivalence
 \end{lstlisting}
 This says that the chosen parity-check representation is not an arbitrary
 example: it represents, up to coordinate permutation, the unique binary linear
-code with parameters $[8,4,4]$.
+code with parameters $[8,4,4]$~\cite{MacSloane1977,ConwaySloane1999}.
 
 \subsection{The Construction~A Lattice Has the E8 Gram Data}
 
@@ -454,7 +456,7 @@ theorem hammingConstructionScaledGram_diag (i : Fin 8) :
     hammingConstructionScaledGram i i = 2
 \end{lstlisting}
 
-The determinant computation is also in the clean package:
+The determinant computation is also in the package:
 \begin{lstlisting}[style=lean]
 theorem hammingConstructionGram_det :
     hammingConstructionGram.det = 256
@@ -474,7 +476,7 @@ theorem hammingConstructionA_sqNorm_dvd_four
     (z : Fin 8 -> Z) (hz : z in hammingConstructionA) :
     (4 : Z) divides sqNorm z
 \end{lstlisting}
-these results give the clean integral basis, Gram, determinant, and evenness
+these results give the integral basis, Gram, determinant, and evenness
 package.
 
 \subsection{Minimum Norm and Kissing Number}
@@ -499,16 +501,16 @@ theorem shortShell_mem_shortShellVectorList
     (hz : z in hammingE8ShortShell) :
     z in shortShellVectorList
 \end{lstlisting}
-Thus the Construction~A lattice has the E8 kissing number.  In unscaled
-coordinates, the short shell is $\mathrm{sqNorm}(z) = 4$; in the scaled E8
-normalization, this is squared norm~$2$.  The finite cardinality theorem is
-proved by private finite parametrizations of the weight-zero and weight-four
-Hamming classes.
+Thus the Construction~A lattice has the E8 kissing number~\cite{ConwaySloane1999}.
+In unscaled coordinates, the short shell is $\mathrm{sqNorm}(z) = 4$; in the
+scaled E8 normalization, this is squared norm~$2$.  The finite cardinality
+theorem is proved by private finite parametrizations of the weight-zero and
+weight-four Hamming classes.
 
 \subsection{The Root and Cartan Bridges}
 
 The short-vector shell is compared to an independently defined E8 root list.
-The paper-facing permutation theorem is:
+The permutation theorem is:
 \begin{lstlisting}[style=lean]
 theorem shortShell_perm_rootList :
     (shortShellVectorList.map shortVectorToRootCoords).Perm rootList
@@ -529,15 +531,15 @@ theorem gramCartan_congruence :
       2 * e8CartanMatrix
 \end{lstlisting}
 It states that an explicit unimodular transition matrix carries the
-Construction~A Gram matrix to the standard E8 Cartan form.  This provides a
-matrix-level identification of the code-built lattice with the root-system
-presentation.  The congruence itself is proved by ordinary kernel reduction over
-the 64 matrix entries.  The Cartan determinant is proved by nested cofactor
-expansion, reducing the calculation to small $7\times 7$ kernel \lean{decide}
-checks.
+Construction~A Gram matrix to the standard E8 Cartan form~\cite{Bourbaki2002}.
+This provides a matrix-level identification of the code-built lattice with the
+root-system presentation.  The congruence itself is proved by ordinary kernel
+reduction over the 64 matrix entries.  The Cartan determinant is proved by
+nested cofactor expansion, reducing the calculation to small $7\times 7$ kernel
+\lean{decide} checks.
 
-The clean package also records the first Weyl-theoretic closure property of
-this root model.  In doubled coordinates, reflection through a root is:
+The package also records the first Weyl-theoretic closure property of
+this root model.  In doubled coordinates, reflection through a root is~\cite{Bourbaki2002}:
 \[
   \sigma_r(v) = v - \frac{\langle v,\, r\rangle}{4}\,r.
 \]
@@ -566,7 +568,7 @@ Construction~A short vector with $\mathrm{sqNorm} = 4$ maps to a doubled root
 with $\mathrm{Roots.normSq} = 8$, while both represent an E8 vector of squared
 norm~$2$.
 
-\subsection{Theta Coefficients and the Optional $\Theta_{E_8} = E_4$ Bridge}
+\subsection{Theta Coefficients and the $\Theta_{E_8} = E_4$ Bridge}
 
 The standalone package currently exposes the theta comparison in two finite
 layers.  First, it proves the semantic shell statements:
@@ -593,7 +595,7 @@ is the all-shell Construction~A convolution theorem
 package then identifies that semantic coefficient function with $E_4$ for
 every~$n$.
 
-The optional SPL-facing theorem package uses a semantic coefficient function
+The SPL-facing theorem package uses a semantic coefficient function
 $\code{hammingThetaConvolutionCoeff}(n)$ for the Construction~A coefficient at
 theta index~$n$.  The completed all-coefficient theorem is:
 \begin{lstlisting}[style=lean]
@@ -647,10 +649,17 @@ then shown to span exactly this subgroup.  The Gram matrix is computed from the
 basis, and the determinant and divisibility properties are proved from the
 matrix and code equations.
 
-This avoids invoking a broad theorem saying that Type~II codes always give even
-unimodular lattices.  Such a theorem would be elegant, and would be a good
-future abstraction, but for this paper the explicit rank-eight proof gives a
-smaller and more auditable formal object.
+The package also contains the corresponding general Type~II
+Construction~A theorem.  In Lean, the integer-coordinate theorem is
+\lean{CodeLatticeE8.ConstructionA.typeII\_integer\_package}; the real scaled
+dual statement is
+\lean{CodeLatticeE8.ConstructionA.scaledRealDual\_eq\_self\_of\_selfDual}.
+Thus the formal library now records the standard abstraction that Type~II
+codes give even self-dual, hence unimodular, lattices after the conventional
+$1/\sqrt{2}$ scaling~\cite{MacSloane1977,ConwaySloane1999}.  The paper still
+keeps the rank-eight basis, determinant, and Cartan comparisons explicit,
+because those are the auditable coordinate bridges needed to identify the Hamming
+Construction~A model with the E8 lattice used elsewhere in the formalization.
 
 \subsection{The Short-Vector Shell}
 
@@ -662,7 +671,7 @@ integer coordinates, vectors of squared norm~$4$ arise from:
 \item sign choices on four coordinates supported on a weight-four Hamming
       codeword.
 \end{enumerate}
-The weight distribution $(1,14,1)$ explains the cardinality:
+The weight distribution $(1,14,1)$~\cite{MacSloane1977} explains the cardinality:
 \[
   16 + 14 \times 16 = 240.
 \]
@@ -682,7 +691,7 @@ $\code{hammingThetaConvolutionCoeff}$.
 
 The standalone package proves the semantic $q^0$ and $q^1$ coefficients, the
 finite Hamming contribution table through $q^6$, and the all-shell
-Construction~A convolution theorem.  The optional SPL-facing layer completes
+Construction~A convolution theorem.  The SPL-facing layer completes
 the all-coefficient comparison with~$E_4$: it constructs a rank-eight theta
 modular form, proves its equality with~$E_4$, extracts $q$-expansion
 coefficients as shell counts, and transports those shell counts to the Hamming
@@ -698,7 +707,7 @@ $240\,\sigma_3(n)$ for $n>0$, recorded in
 
 \subsection{Why an Explicit SPL Bridge Matters}
 
-The optional theorem $\Theta_{E_8} = E_4$ identifies the theta series
+The theorem $\Theta_{E_8} = E_4$ identifies the theta series
 abstractly, but the sphere-packing endpoint is phrased for the E8 model used
 inside Sphere-Packing-Lean.  The explicit matrix and lattice bridges ensure
 that the code-built lattice and the SPL lattice are not merely isomorphic in
@@ -749,16 +758,18 @@ declarations that form the paper spine.
 \label{sec:related}
 
 The classical mathematical background is the code-lattice theory developed in
-MacWilliams--Sloane, Conway--Sloane, and later lattice and coding-theory texts.
-The extended Hamming code is the smallest Type~II binary code, and
-Construction~A applied to it is the standard coding-theoretic construction of
-E8.
+MacWilliams--Sloane~\cite{MacSloane1977}, Conway--Sloane~\cite{ConwaySloane1999},
+and later lattice and coding-theory texts~\cite{HuffmanPless2003}.  The extended
+Hamming code is the smallest Type~II binary code, and Construction~A applied to
+it is the standard coding-theoretic construction of
+E8~\cite{LeechSloane1971,ConwaySloane1999}.
 
 Sphere-Packing-Lean~\cite{SPL2025} formalizes the analytic endpoint of the
 dimension-eight sphere-packing theorem, following the Cohn--Elkies
-linear-programming method and Viazovska's construction.  The present work is
-not a replacement for that analytic formalization.  Instead, it supplies a
-formal combinatorial bridge to the E8 object used there.
+linear-programming method~\cite{CohnElkies2003} and Viazovska's
+construction~\cite{Viazovska2017}.  The present work is not a replacement for
+that analytic formalization.  Instead, it supplies a formal combinatorial bridge
+to the E8 object used there.
 
 Recent Lean formalizations of coding theory, self-dual codes, and related
 algebraic constructions provide adjacent infrastructure.  This paper differs in
@@ -873,6 +884,12 @@ Construction~A minimum unscaled norm $4$ &
 Construction~A norm divisibility &
   \lean{...hammingConstructionA\_sqNorm\_dvd\_four} &
   \lean{E8/HammingConstruction.lean} \\[2pt]
+Generic Type~II integer package &
+  \lean{...ConstructionA.typeII\_integer\_package} &
+  \lean{ConstructionA/TypeII.lean} \\[2pt]
+Generic Type~II real self-duality &
+  \lean{...scaledRealDual\_eq\_self\_of\_selfDual} &
+  \lean{ConstructionA/TypeII.lean} \\[2pt]
 Explicit basis membership &
   \lean{...hammingConstructionBasis\_mem} &
   \lean{E8/Basis.lean} \\[2pt]
@@ -957,18 +974,18 @@ in the paper spine.
 \label{app:hamming}
 
 The extended Hamming code is defined by an explicit parity-check matrix over
-$\F_2$.  Four parity equations determine a four-dimensional subspace of
-$\F_2^8$.  The formal development proves:
+$\F_2$~\cite{Hamming1950,MacSloane1977}.  Four parity equations determine a
+four-dimensional subspace of $\F_2^8$.  The formal development proves:
 \begin{enumerate}
 \item the code has $16$ codewords;
 \item the minimum nonzero Hamming weight is $4$;
 \item every codeword has weight divisible by $4$;
 \item the code is self-dual;
 \item the weight distribution is $(1,14,1)$;
-\item every binary linear $[8,4,4]$ code is equivalent to it.
+\item every binary linear $[8,4,4]$ code is equivalent to it~\cite{MacSloane1977}.
 \end{enumerate}
 
-The weight enumerator is:
+The weight enumerator is~\cite{MacSloane1977}:
 \[
   W_C(x,y) = x^8 + 14x^4y^4 + y^8.
 \]
@@ -978,7 +995,7 @@ theta-series computation.
 \section{Construction~A Basis and Gram Data}
 \label{app:gram}
 
-The Construction~A lattice is
+The Construction~A lattice is~\cite{LeechSloane1971,ConwaySloane1999}:
 \[
   A(C) = \bigl\{\, z \in \Z^8 \;\bigm|\; z \bmod 2 \in C_{\mathrm{Hamming}} \,\bigr\}.
 \]
@@ -1004,7 +1021,7 @@ proved by a block-upper-triangular decomposition:
 \]
 The same basis supports the Cartan comparison.  An explicit unimodular
 transition matrix~$P$ (with $\det P = \pm 1$) carries the Construction~A Gram
-form to the standard E8 Cartan form:
+form to the standard E8 Cartan form~\cite{Bourbaki2002,ConwaySloane1999}:
 \[
   P^\top G P = 2\,\mathrm{Cartan}_{E_8}.
 \]
@@ -1030,7 +1047,7 @@ on its support, giving $2^4 = 16$ choices.  Since there are $14$ weight-four
 codewords, this contributes $14\times 16 = 224$ vectors.
 
 \medskip
-\noindent The total is $16 + 224 = 240$.
+\noindent The total is $16 + 224 = 240$~\cite{ConwaySloane1999}.
 
 The Lean development proves not only this count, but also that the explicit
 short-vector list is complete and maps to the repository's E8 root list.
@@ -1038,12 +1055,13 @@ short-vector list is complete and maps to the repository's E8 root list.
 \section{Theta-Series Details}
 \label{app:theta}
 
-The Construction~A theta coefficient at index~$n$ is the cardinality of:
+The Construction~A theta coefficient at index~$n$ is the cardinality
+of~\cite{ConwaySloane1999,LeechSloane1971}:
 \[
   \bigl\{\, z \in A(C) \;\bigm|\; \mathrm{sqNorm}(z) = 4n \,\bigr\}.
 \]
 
-The clean package exposes two finite theta layers.
+The package exposes two finite theta layers.
 
 \paragraph{Semantic shells.}
 \lean{CodeLatticeE8/E8/ThetaCoefficients.lean} records:
@@ -1057,7 +1075,7 @@ The $q^1$ theorem reuses the proved short-vector count.
 \lean{CodeLatticeE8/E8/ThetaTable.lean} records the table through $q^6$.  For
 a codeword of weight~$w$, odd coordinates contribute square $1$ or~$9$, and
 even coordinates contribute square $0$, $4$, or~$16$ in the verified range
-$\mathrm{sqNorm} \le 24$.  The weight multiplicities are:
+$\mathrm{sqNorm} \le 24$.  The weight multiplicities are~\cite{MacSloane1977}:
 \[
   A_0 = 1, \quad A_4 = 14, \quad A_8 = 1.
 \]
@@ -1093,65 +1111,77 @@ different coordinate models.  The formal bridge records:
 This bridge is what allows the manuscript to say that the extended Hamming code
 constructs the E8 lattice used at the formalized sphere-packing endpoint.
 
-\section{Verification Checklist}
+\section{Verification and Reproducibility}
 \label{app:verification}
 
-Before submission for the standalone package, run:
+The Lean artifacts are checked in three layers, matching the dependency
+boundaries used in the paper.
+
+\paragraph{Standalone Hamming-to-E8 package.}
+The main package is checked by:
 \begin{lstlisting}[style=shell]
 lake build CodeLatticeE8
 \end{lstlisting}
-For the optional SPL-facing theta route:
+For a mathlib-only checkout, the standalone wrapper gives the same root without
+the Sphere-Packing-Lean dependency:
+\begin{lstlisting}[style=shell]
+cd CodeLatticeE8Standalone
+lake build CodeLatticeE8
+cd ..
+\end{lstlisting}
+
+\paragraph{Sphere-Packing-Lean-facing bridge.}
+The analytic theta identity and the comparison with the E8 object used in
+Sphere-Packing-Lean are checked by:
 \begin{lstlisting}[style=shell]
 lake build CodeLatticeE8SPL
 \end{lstlisting}
-For each theorem cited in Appendix~\ref{app:theorems}, record:
-\begin{enumerate}
-\item the Lean declaration name;
-\item the file;
-\item whether the containing module builds under the pinned toolchain;
-\item the axiom report;
-\item whether the theorem is part of the standalone root or the SPL-facing root.
-\end{enumerate}
-The final paper should include only claims backed by checked theorem
-declarations and should keep convention-sensitive statements tied to their Lean
-names.
 
-The current paper-spine axiom audit should be refreshed after the SPL
-promotion.  The expected trusted profile is the standard Lean/Mathlib axiom set
-$\{\texttt{propext},\; \texttt{Classical.choice},\; \texttt{Quot.sound}\}$,
-with \lean{Lean.ofReduceBool} expected for declarations whose proofs contain
-ordinary kernel-checked \lean{decide} steps.  The detailed command list is
-recorded in \lean{Sources/CodeLatticeE8\_Trust\_Report.md}.
+\paragraph{Whole repository.}
+The broader repository check is:
+\begin{lstlisting}[style=shell]
+lake build
+\end{lstlisting}
 
-\section{Bibliography Checklist}
+The paper cites theorem declarations rather than informal file names whenever a
+precise formal claim is involved.  Appendix~\ref{app:theorems} gives the
+declaration/file map.  The trust report
+\lean{Sources/CodeLatticeE8\_Trust\_Report.md} records the corresponding axiom
+audit.  The expected axiom profile for the main paper-spine theorems is the
+standard Lean/Mathlib set
+\[
+  \{\texttt{propext},\; \texttt{Classical.choice},\; \texttt{Quot.sound}\}.
+\]
+Some lower-level finite reductions may report \lean{Lean.ofReduceBool}; this is
+Lean's kernel-checked boolean-reduction certificate, not a compiler-trust
+assumption.  The standalone root is additionally checked to contain no
+\lean{sorry}, \lean{admit}, fake axioms, \lean{unsafe def},
+\lean{native\_decide}, or \lean{Lean.trustCompiler}.
+
+\section{Bibliographic Roles}
 \label{app:bibcheck}
 
-The bibliography should include at least:
+The cited sources play the following roles in the paper.
+
 \begin{itemize}
-\item Hamming, ``Error Detecting and Error Correcting Codes,'' 1950.
-\item MacWilliams and Sloane, \textit{The Theory of Error-Correcting Codes},
-      North-Holland, 1977.
-\item Huffman and Pless, \textit{Fundamentals of Error-Correcting Codes},
-      Cambridge University Press, 2003.
-\item Conway and Sloane, \textit{Sphere Packings, Lattices and Groups},
-      Springer, 3rd ed., 1998.
-\item Bourbaki, \textit{Lie Groups and Lie Algebras}, Chapters 4--6,
-      Springer, 2002.
-\item Cohn and Elkies, ``New upper bounds on sphere packings~I,''
-      \textit{Ann.\ of Math.}\ 157 (2003), 689--714.
-\item Viazovska, ``The sphere packing problem in dimension 8,''
-      \textit{Ann.\ of Math.}\ 185 (2017), 991--1015.
-\item Hariharan, Birkbeck, Lee, Ma, Mehta, Poiroux, and Viazovska,
-      ``A Milestone in Formalization: The Sphere Packing Problem in
-      Dimension~8,'' arXiv:2604.23468 (2025).
-\item The Sphere-Packing-Lean project:
-      \url{https://thefundamentaltheor3m.github.io/Sphere-Packing-Lean/}.
-\item Error Correction Zoo, ``$[8,4,4]$ extended Hamming code,''
-      \url{https://errorcorrectionzoo.org/c/hamming844}.
-\item Nebe and Sloane lattice catalogue.
+\item Hamming's original paper~\cite{Hamming1950} supplies the historical
+      coding-theory origin of the Hamming code.
+\item MacWilliams--Sloane~\cite{MacSloane1977} and
+      Huffman--Pless~\cite{HuffmanPless2003} are the coding-theory references
+      for the extended Hamming code, weight enumerators, self-duality, Type~II
+      codes, and uniqueness up to coordinate permutation.
+\item Leech--Sloane~\cite{LeechSloane1971} and
+      Conway--Sloane~\cite{ConwaySloane1999} are the lattice references for
+      Construction~A, the Hamming-code construction of E8, the E8 theta series,
+      and the standard normalizations of even unimodular lattices.
+\item Bourbaki~\cite{Bourbaki2002} is used for the E8 root-system and Cartan
+      matrix conventions.
+\item Cohn--Elkies~\cite{CohnElkies2003}, Viazovska~\cite{Viazovska2017}, and
+      the Sphere-Packing-Lean report~\cite{SPL2025} provide the analytic
+      sphere-packing endpoint and its Lean formalization.
+\item The Error Correction Zoo entry~\cite{ECZ} is cited as a secondary
+      orientation source for the named $[8,4,4]$ extended Hamming code.
 \end{itemize}
-Exact page, chapter, theorem, and blueprint-section references should be filled
-in during the final bibliography pass before submission.
 
 %% -----------------------------------------------------------------------
 \bibliographystyle{plain}
@@ -1161,6 +1191,11 @@ in during the final bibliography pass before submission.
 R.~W. Hamming.
 \newblock Error detecting and error correcting codes.
 \newblock \textit{Bell System Technical Journal}, 29(2):147--160, 1950.
+
+\bibitem{LeechSloane1971}
+J.~Leech and N.~J.~A. Sloane.
+\newblock Sphere packings and error-correcting codes.
+\newblock \textit{Canadian Journal of Mathematics}, 23(4):718--745, 1971.
 
 \bibitem{MacSloane1977}
 F.~J. MacWilliams and N.~J.~A. Sloane.
