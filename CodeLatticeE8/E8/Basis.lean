@@ -14,9 +14,8 @@ At this stage we record:
 - their integer Gram matrix;
 - diagonal and parity facts about the Gram matrix.
 
-The determinant and spanning/unimodularity package is intentionally left for a
-later module.  That keeps this file small and lets the reviewer inspect the
-basic concrete data without a dense determinant computation in the way.
+The determinant and spanning/unimodularity package is left for a
+later module.
 -/
 
 set_option linter.style.longLine false

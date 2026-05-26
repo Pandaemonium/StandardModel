@@ -31,6 +31,19 @@ import PhysicsSM.Draft.E8ThetaDim8Helpers
 import PhysicsSM.Draft.DualLatticeHelper
 import PhysicsSM.Draft.E8ThetaDim8MF
 import PhysicsSM.Draft.ConstructionATypeIIAristotle
+import PhysicsSM.Draft.Sedenions.CayleyDicksonSignTable
+import PhysicsSM.Draft.Sedenions.ReedMullerCode
+import PhysicsSM.Draft.Sedenions.CocycleQuadraticPhase
+import PhysicsSM.Draft.Sedenions.StabilizerPlaquettes
+import PhysicsSM.Draft.Sedenions.GL32Action
+import PhysicsSM.Draft.Sedenions.S3PsiAction
+import PhysicsSM.Draft.Sedenions.S3PsiActionAbstract
+import PhysicsSM.Draft.Sedenions.StabilizerMagicMoonshot
+import PhysicsSM.Draft.Sedenions.GenerationCancellationGeometry
+import PhysicsSM.Draft.Sedenions.PSL27FlavorGeometry
+import PhysicsSM.Draft.Sedenions.FanoComplementGeneration
+import PhysicsSM.Draft.Sedenions.AnomalyCancellationAnalogue
+import PhysicsSM.Draft.Sedenions.BarnesWallFirstShell
 
 /-!
 # PhysicsSM draft root
@@ -59,4 +72,9 @@ The bounded-shell bridge and conditional modular-route theta scaffold are also
 imported here. They are draft-facing results: the bounded-shell bridge is
 sorry-free, while the modular-route file is a conditional theorem isolating the
 missing analytic modular-forms facts.
+
+The sedenion modules imported here are draft-facing Aristotle results for the
+new zero-divisor research program. They are sorry-free finite theorem clusters,
+but they intentionally remain outside the trusted root while the convention and
+publication story mature.
 -/

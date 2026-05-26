@@ -134,7 +134,11 @@ lemma term_integral_indicator_abstract {d : ℕ}
   · obtain ⟨m, hm⟩ := hEven
     convert intervalIntegral_cexp_two_pi_I_int_mul_add_I_eq_zero
       (show (m : ℤ) - n ≠ 0 from
-        sub_ne_zero_of_ne <| mod_cast fun hmn => h <| by aesop) using 1
+        sub_ne_zero_of_ne <| by
+          intro hmn
+          apply h
+          have hmn_real : (m : ℝ) = (n : ℝ) := by exact_mod_cast hmn
+          rw [hm, hmn_real]) using 1
     convert intervalIntegral.integral_congr fun u hu =>
       qParamPowInv_mul_thetaTerm_eq_exp n m z u hm using 3
     push_cast

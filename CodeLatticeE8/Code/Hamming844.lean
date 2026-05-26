@@ -4,7 +4,7 @@ import CodeLatticeE8.Code.LinearCode
 /-!
 # The extended Hamming `[8,4,4]` code
 
-This module starts the clean publication interface for the concrete extended
+This module starts the interface for the concrete extended
 Hamming code.  The theorems here give structural certificates for its
 cardinality, dimension, minimum distance, doubly-evenness, and `[8,4,4]`
 parameter package.

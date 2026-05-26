@@ -11,9 +11,6 @@ Hamming-to-E8 package.  The definitions are deliberately concrete:
 - Hamming weight counts nonzero coordinates;
 - the binary dot product is the ordinary coordinatewise sum over `ZMod 2`.
 
-The point of keeping this file small is reviewability: later modules should
-read as ordinary coding theory, without forcing the reader to unpack a large
-framework before reaching the Hamming code.
 -/
 
 set_option linter.style.longLine false

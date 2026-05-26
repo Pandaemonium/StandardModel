@@ -137,8 +137,16 @@ elsewhere sums to `a + b`.
 -/
 private theorem sum_ite_pair {n : ℕ} {i j : Fin n} (hij : i ≠ j) (a b : ℤ) :
     ∑ k : Fin n, (if k = i then a else if k = j then b else (0 : ℤ)) = a + b := by
-  simp +decide [ Finset.sum_ite, Finset.filter_eq', Finset.filter_ne', * ];
-  aesop
+  have hji : j ≠ i := Ne.symm hij
+  rw [Finset.sum_eq_add i j]
+  · simp [hji]
+  · exact hij
+  · intro k hk_univ hk
+    simp [hk.1, hk.2]
+  · intro hi
+    exact False.elim (hi (Finset.mem_univ i))
+  · intro hj
+    exact False.elim (hj (Finset.mem_univ j))
 
 /-
 When `i ≠ j` in `Fin n`, sum of squares of the same indicator equals `a² + b²`.
@@ -146,14 +154,28 @@ When `i ≠ j` in `Fin n`, sum of squares of the same indicator equals `a² + b�
 private theorem sum_sq_ite_pair {n : ℕ} {i j : Fin n} (hij : i ≠ j) (a b : ℤ) :
     ∑ k : Fin n, (if k = i then a else if k = j then b else (0 : ℤ)) ^ 2 =
     a ^ 2 + b ^ 2 := by
-  rw [ Finset.sum_eq_add ( i ) ( j ) ] <;> aesop
+  have hji : j ≠ i := Ne.symm hij
+  rw [Finset.sum_eq_add i j]
+  · simp [hji]
+  · exact hij
+  · intro k hk_univ hk
+    simp [hk.1, hk.2]
+  · intro hi
+    exact False.elim (hi (Finset.mem_univ i))
+  · intro hj
+    exact False.elim (hj (Finset.mem_univ j))
 
 /-
 For a `{+1, -1}`-valued function on `Fin 8`, the sum of squares is 8.
 -/
 private theorem sum_sq_pm1 {v : Fin 8 → ℤ} (hv : ∀ i, v i = 1 ∨ v i = -1) :
     ∑ i : Fin 8, v i ^ 2 = 8 := by
-  exact Eq.symm ( by rw [ Finset.sum_congr rfl fun i hi => by rcases hv i with ( H | H ) <;> rw [ H ] ; norm_num ] ; norm_cast )
+  exact Eq.symm ( by
+    rw [ Finset.sum_congr rfl fun i hi => by
+      rcases hv i with hpos | hneg
+      · rw [hpos]
+      · rw [hneg]; norm_num ]
+    norm_cast )
 
 /-
 For a `{+1, -1}`-valued function on `Fin 8`, the sum is `8 − 2 * #(−1 entries)`.
@@ -162,7 +184,11 @@ private theorem sum_pm1_eq {v : Fin 8 → ℤ}
     (hv : ∀ i, v i = 1 ∨ v i = -1) :
     ∑ i : Fin 8, v i =
     8 - 2 * ((Finset.univ.filter fun i : Fin 8 => v i = -1).card : ℤ) := by
-  convert Finset.sum_congr rfl fun i _ => show v i = 1 - 2 * ( if v i = -1 then 1 else 0 ) by rcases hv i with ( H | H ) <;> norm_num [ H ] using 1 ; simp +decide [ Finset.sum_ite ] ; ring;
+  convert Finset.sum_congr rfl fun i hi => show v i = 1 - 2 * ( if v i = -1 then 1 else 0 ) by
+    rcases hv i with hpos | hneg
+    · norm_num [hpos]
+    · norm_num [hneg] using 1
+  simp +decide [ Finset.sum_ite ] ; ring;
 
 /-! ## Type-1 algebraic verification -/
 
@@ -229,8 +255,8 @@ private theorem type1Roots_forall_isE8Root : ∀ v ∈ type1Roots, IsE8Root v :=
         [(2 : ℤ), -2].flatMap (fun si =>
           [(2 : ℤ), -2].flatMap (fun sj =>
             [fun k : Fin 8 => if k = i then si else if k = j then sj else 0]))))) at hv
-  rw [List.mem_flatMap] at hv; obtain ⟨i, _, hv⟩ := hv
-  rw [List.mem_flatMap] at hv; obtain ⟨j, _, hv⟩ := hv
+  rw [List.mem_flatMap] at hv; obtain ⟨i, hi_mem, hv⟩ := hv
+  rw [List.mem_flatMap] at hv; obtain ⟨j, hj_mem, hv⟩ := hv
   by_cases hij : i < j
   · simp only [guard, if_pos hij, pure, List.flatMap_cons, List.flatMap_nil,
       List.append_nil, List.mem_append, List.mem_cons, List.mem_nil_iff, or_false] at hv
@@ -249,7 +275,7 @@ private theorem type2Roots_forall_isE8Root : ∀ v ∈ type2Roots, IsE8Root v :=
       List Unit).flatMap
       (fun _ => [fun i : Fin 8 =>
         if n.val.testBit i.val then (-1 : ℤ) else 1])) at hv
-  rw [List.mem_flatMap] at hv; obtain ⟨n, _, hv⟩ := hv
+  rw [List.mem_flatMap] at hv; obtain ⟨n, hn_mem, hv⟩ := hv
   set cond := ((List.finRange 8).countP fun i => n.val.testBit i.val) % 2 == 0 with hcond_def
   by_cases hc : cond
   · simp only [guard, if_pos hc, pure, List.flatMap_cons, List.flatMap_nil,
@@ -415,7 +441,9 @@ private theorem type1_classification {v : Fin 8 → ℤ}
   obtain ⟨i, j, hij, h_nonzero⟩ : ∃ i j : Fin 8, i ≠ j ∧ (v i ≠ 0) ∧ (v j ≠ 0) ∧ ∀ k : Fin 8, k ≠ i ∧ k ≠ j → v k = 0 := by
     have h_two_nonzero : Finset.card (Finset.filter (fun i => v i ≠ 0) Finset.univ) = 2 := by
       have h_two_nonzero : (∑ i, (if v i = 0 then 0 else (v i)^2)) = 8 := by
-        exact Eq.trans ( Finset.sum_congr rfl fun _ _ => by aesop ) hnorm;
+        exact Eq.trans
+          (Finset.sum_congr rfl fun i hi_univ => by by_cases hi : v i = 0 <;> simp [hi])
+          hnorm
       have h_two_nonzero : ∀ i, (if v i = 0 then 0 else (v i)^2) = if v i = 0 then 0 else 4 := by
         intro i; specialize heven i; specialize hbd i; rcases abs_le.mp hbd with ⟨ hi₁, hi₂ ⟩ ; interval_cases v i <;> trivial;
       simp_all +decide [ Finset.sum_ite ];

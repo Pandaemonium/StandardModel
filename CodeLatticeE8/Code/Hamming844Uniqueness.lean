@@ -55,13 +55,17 @@ theorem info_set_exists (C : BinaryLinearCode 8)
     have h_char : ∀ i, v I i = if i ∈ I then 0 else 1 := by
       intro i
       split_ifs <;> simp_all +decide [hammingWeight]
-      have := Finset.eq_of_subset_of_card_le
+      have h_support_eq_complement := Finset.eq_of_subset_of_card_le
         (show Finset.filter (fun j => ¬ v I j = 0) Finset.univ ⊆ Finset.univ \ I from
-          fun x hx => by aesop)
+          fun x hx => by
+            have hx_not_mem : x ∉ I := by
+              intro hxI
+              exact (Finset.mem_filter.mp hx).2 (hv₃ I hI_card x hxI)
+            simp [Finset.mem_sdiff, hx_not_mem])
       simp_all +decide [Finset.card_sdiff]
-      replace this := Finset.ext_iff.mp this i
+      replace h_support_eq_complement := Finset.ext_iff.mp h_support_eq_complement i
       simp_all +decide [Finset.mem_sdiff]
-      exact Or.resolve_left (Fin.exists_fin_two.mp (by aesop)) this
+      exact Or.resolve_left (Fin.exists_fin_two.mp ⟨v I i, rfl⟩) h_support_eq_complement
     exact funext h_char
   have h_complement_indicators :
       ∀ I : Finset (Fin 8), I.card = 4 →
@@ -125,7 +129,8 @@ theorem code_eq_systematic_of_inj_proj
             (by simpa using congr_fun h 2) (by simpa using congr_fun h 3)
       intro v
       replace h_basis := SetLike.ext_iff.mp h_basis v
-      aesop
+      obtain ⟨w, hw⟩ := h_basis.mpr trivial
+      exact ⟨w, w.property, by simpa using hw⟩
     exact ⟨fun i => Classical.choose (h_basis (Pi.single i 1)),
       fun i => Classical.choose_spec (h_basis (Pi.single i 1)) |>.1,
       fun i => Classical.choose_spec (h_basis (Pi.single i 1)) |>.2⟩
@@ -151,10 +156,10 @@ theorem code_eq_systematic_of_inj_proj
             fin_cases i <;> simp +decide [mkSystematicRow]
           have h_zero : v - ∑ i, (projFirst4 v i) • g i = 0 := by
             apply hinj
-            · exact C.sub_mem hv (C.sum_mem fun i _ => C.smul_mem _ (hg.1 i))
+            · exact C.sub_mem hv (C.sum_mem fun i hi => C.smul_mem _ (hg.1 i))
             · exact fun i hi => by
                 simpa using congr_fun h_proj_eq ⟨i, by fin_cases hi <;> trivial⟩
-          exact ⟨_, eq_of_sub_eq_zero h_zero⟩
+          exact ⟨projFirst4 v, eq_of_sub_eq_zero h_zero⟩
         exact h_span v hv
       use c
       ext j
@@ -162,7 +167,7 @@ theorem code_eq_systematic_of_inj_proj
     · intro v hv
       obtain ⟨c, rfl⟩ := mem_systematicSubmodule P v |>.1 hv
       simp_all +decide [Fin.sum_univ_four]
-      convert C.sum_mem fun i _ => C.smul_mem (c i) (hg.1 i) using 1
+      convert C.sum_mem fun i hi => C.smul_mem (c i) (hg.1 i) using 1
       swap
       exact Finset.univ
       ext j
@@ -172,7 +177,7 @@ theorem code_eq_systematic_of_inj_proj
     · congr! 1
       ext j
       simp +decide [hP, systematicCW]
-    · exact Submodule.sum_mem _ fun i _ => Submodule.smul_mem _ _ (hg.1 i)
+    · exact Submodule.sum_mem C fun i hi => Submodule.smul_mem C (c i) (hg.1 i)
     · contrapose! hc
       ext i
       replace hc := congr_arg (fun v => projFirst4 v i) hc

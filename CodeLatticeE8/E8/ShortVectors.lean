@@ -327,7 +327,7 @@ private theorem shortShellByWeight4_subset_biUnion :
   refine ⟨msgOfCodeword (reduceModTwo fun i => shortCoordVals (f i)), ?_,
     fun i => (f i == 3), ?_⟩
   · rw [codeword_msg_right_inv _ hf.1]
-    aesop
+    exact hf.2.2
   · ext i
     simp +decide [weight4Map]
     split_ifs <;> simp_all +decide [codeword_msg_right_inv]

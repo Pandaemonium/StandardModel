@@ -59,8 +59,8 @@ theorem permuteBinaryVector_cancel_inv {n : ℕ} (sigma : Equiv.Perm (Fin n))
 theorem permuteBinaryVector_injective {n : ℕ} (sigma : Equiv.Perm (Fin n)) :
     Function.Injective (permuteBinaryVector sigma) := by
   intro a b h
-  have := congr_arg (permuteBinaryVector sigma.symm) h
-  simpa using this
+  have h_cancelled := congr_arg (permuteBinaryVector sigma.symm) h
+  simpa using h_cancelled
 
 /-- Coordinate permutation is surjective. -/
 theorem permuteBinaryVector_surjective {n : ℕ} (sigma : Equiv.Perm (Fin n)) :
@@ -97,8 +97,8 @@ theorem permuteBinaryVector_ne_zero {n : ℕ} (sigma : Equiv.Perm (Fin n))
     permuteBinaryVector sigma v ≠ 0 := by
   intro h
   apply hv
-  have := congr_arg (permuteBinaryVector sigma.symm) h
-  simpa using this
+  have h_cancelled := congr_arg (permuteBinaryVector sigma.symm) h
+  simpa using h_cancelled
 
 /-- Hamming weight is invariant under coordinate permutation. -/
 theorem hammingWeight_permuteBinaryVector {n : ℕ} (sigma : Equiv.Perm (Fin n))
@@ -123,8 +123,10 @@ theorem mem_permuteCode_iff {n : ℕ} (sigma : Equiv.Perm (Fin n))
   constructor
   · intro hv
     obtain ⟨w, hwC, hw⟩ := hv
-    unfold permuteBinaryVectorLinear at hw
-    aesop
+    have hw_eq : permuteBinaryVector sigma w = v := by
+      simpa [permuteBinaryVectorLinear] using hw
+    rw [← hw_eq]
+    simpa using hwC
   · intro hv
     use permuteBinaryVector sigma.symm v
     exact ⟨hv, by ext i; simp +decide [permuteBinaryVectorLinear]⟩
@@ -190,11 +192,13 @@ theorem minWeight_preserved_of_permuteCode {n : ℕ} (sigma : Equiv.Perm (Fin n)
   · intro h v hv hv'
     rw [mem_permuteCode_iff] at hv
     rw [← hammingWeight_permuteBinaryVector sigma.symm]
-    exact h _ hv (permuteBinaryVector_ne_zero _ _ hv')
+    exact h (permuteBinaryVector sigma.symm v) hv
+      (permuteBinaryVector_ne_zero sigma.symm v hv')
   · intro h v hv hv'
     have hmem : permuteBinaryVector sigma v ∈ permuteCode sigma C := ⟨v, hv, rfl⟩
     rw [← hammingWeight_permuteBinaryVector sigma v]
-    exact h _ hmem (permuteBinaryVector_ne_zero _ _ hv')
+    exact h (permuteBinaryVector sigma v) hmem
+      (permuteBinaryVector_ne_zero sigma v hv')
 
 /-- Doubly-evenness is invariant under coordinate permutation. -/
 theorem isDoublyEven_permuteCode {n : ℕ} (sigma : Equiv.Perm (Fin n))
@@ -210,6 +214,6 @@ theorem isDoublyEven_permuteCode {n : ℕ} (sigma : Equiv.Perm (Fin n))
   · intro hC' v hv
     have hmem : permuteBinaryVector sigma v ∈ permuteCode sigma C := ⟨v, hv, rfl⟩
     rw [← hammingWeight_permuteBinaryVector sigma v]
-    exact hC' _ hmem
+    exact hC' (permuteBinaryVector sigma v) hmem
 
 end CodeLatticeE8.Code

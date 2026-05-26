@@ -89,7 +89,10 @@ lemma span_dualBasis_le_span_basis (n : ℕ)
     have h_comb : ∀ k i, ∑ j, ( (gramMatrixZ n b hInt)⁻¹ k j : ℤ) * (ipBilin n) (b j) (b i) = if k = i then 1 else 0 := by
       -- By definition of $C$, we know that for each $k$, $(C k j : ℝ) • b j$ is a linear combination of the original basis vectors, and thus its representation in the dual basis is given by the $k$-th row of $C$. Use this fact.
       have h_comb : ∀ k i, ∑ j, ( (gramMatrixZ n b hInt)⁻¹ k j : ℤ) * (gramMatrixZ n b hInt) j i = if k = i then 1 else 0 := by
-        intro k i; rw [ ← Matrix.mul_apply ] ; aesop;
+        intro k i
+        rw [← Matrix.mul_apply]
+        simpa using congr_fun
+          (congr_fun (Matrix.nonsing_inv_mul (gramMatrixZ n b hInt) hDet) k) i
       convert h_comb using 3;
       rw [ ← @Int.cast_inj ℝ ] ; push_cast ; congr! 2 ; ring_nf!;
       exact congrArg _ ( Eq.symm <| gramMatrixZ_spec _ _ _ _ _ );

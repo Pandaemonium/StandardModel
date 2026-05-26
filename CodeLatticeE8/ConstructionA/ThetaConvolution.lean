@@ -28,12 +28,6 @@ same weight contribute equally.
 - The shell index `s : ℕ` is the unscaled squared norm; the theta index is
   `s / 4` (by the doubly-even property, shells are nonzero only when `4 ∣ s`).
 
-## Trust profile
-
-This module is fully proved and avoids compiler-trusted native evaluation.  The
-small finite reductions that remain use ordinary kernel-checked `decide`, while
-the main argument is the structural partition of the shell by residue class and
-Hamming weight.
 -/
 
 set_option linter.style.longLine false
@@ -79,23 +73,23 @@ private theorem shell_eq_biUnion (s : ℕ) :
       ⋃ c ∈ extendedHamming8Finset, fiberOverCodeword c s := by
   ext z
   simp [constructionAShellSet, fiberOverCodeword, hammingConstructionA]
-  exact fun _ => by rw [← mem_extendedHamming8Finset_iff]
+  exact fun hz_code => by rw [← mem_extendedHamming8Finset_iff]
 
 private theorem fibers_pairwiseDisjoint (s : ℕ) :
     (extendedHamming8Finset : Set (BinaryVector 8)).PairwiseDisjoint
       (fun c => fiberOverCodeword c s) := by
-  intro c₁ _ c₂ _ hne
+  intro c₁ hc₁ c₂ hc₂ hne
   simp_all +decide [Set.disjoint_left, fiberOverCodeword]
 
 private theorem fiber_finite (c : BinaryVector 8) (s : ℕ) :
     Set.Finite (fiberOverCodeword c s) := by
   refine Set.Finite.subset (Set.finite_Icc (-s : Fin 8 → ℤ) s) ?_
   intro z hz
-  obtain ⟨_, hz_sq⟩ := hz
+  obtain ⟨hz_code, hz_sq⟩ := hz
   have hz_bound : ∀ i, abs (z i) ≤ s := by
     intro i
-    have : z i ^ 2 ≤ s :=
-      hz_sq ▸ Finset.single_le_sum (fun i _ => sq_nonneg (z i)) (Finset.mem_univ i)
+    have hcoord_sq_le : z i ^ 2 ≤ s :=
+      hz_sq ▸ Finset.single_le_sum (fun j hj => sq_nonneg (z j)) (Finset.mem_univ i)
     exact abs_le.mpr ⟨by nlinarith, by nlinarith⟩
   exact ⟨fun i => neg_le_of_abs_le (hz_bound i), fun i => le_of_abs_le (hz_bound i)⟩
 
@@ -111,11 +105,16 @@ private theorem ncard_biUnion_of_disjoint_finite
   induction S using Finset.induction <;> simp_all +decide
   · rw [@Set.ncard_union_eq]
     · rename_i a s ha ih
-      exact congr_arg _ (ih fun x hx y hy hxy => hd (by aesop) (by aesop) hxy)
-    · simp_all +decide [Set.disjoint_left, Set.mem_iUnion]
+      exact congr_arg _ (ih fun x hx y hy hxy =>
+        hd (Set.mem_insert_of_mem a hx) (Set.mem_insert_of_mem a hy) hxy)
+    · rename_i a s ha ih
+      simp_all +decide [Set.disjoint_left, Set.mem_iUnion]
       exact fun x hx y hy hxy =>
         Set.disjoint_left.mp (hd (Set.mem_insert _ _)
-          (Set.mem_insert_of_mem _ hy) (by aesop)) hx hxy
+          (Set.mem_insert_of_mem _ hy) (by
+            intro hay
+            subst hay
+            exact ha hy)) hx hxy
     · exact hf.1
     · exact Set.Finite.biUnion (Finset.finite_toSet _) hf.2
   · exact Classical.decEq α
@@ -125,7 +124,7 @@ private theorem shell_ncard_eq_sum (s : ℕ) :
       ∑ c ∈ extendedHamming8Finset, Set.ncard (fiberOverCodeword c s) := by
   rw [shell_eq_biUnion]
   exact ncard_biUnion_of_disjoint_finite (fibers_pairwiseDisjoint s)
-    (fun c _ => fiber_finite c s)
+    (fun c hc => fiber_finite c s)
 
 /-! ## Permutation invariance of sqNorm and reduceModTwo -/
 
@@ -144,11 +143,11 @@ private theorem fiber_ncard_comp_perm
     Set.ncard (fiberOverCodeword (c ∘ σ) s) =
       Set.ncard (fiberOverCodeword c s) := by
   fapply Set.ncard_congr
-  use fun a _ => a ∘ σ.symm
+  use fun a ha => a ∘ σ.symm
   · simp +contextual [fiberOverCodeword, reduceModTwo_comp_equiv]
     exact fun a ha₁ ha₂ =>
       ⟨funext fun i => by simp +decide, by rw [sqNorm_comp_equiv a σ.symm]; exact ha₂⟩
-  · exact fun a b _ _ h => funext fun i => by simpa using congr_fun h (σ i)
+  · exact fun a b ha hb h => funext fun i => by simpa using congr_fun h (σ i)
   · intro b hb; use b ∘ σ; simp_all +decide [fiberOverCodeword]
     simp_all +decide [funext_iff, reduceModTwo, sqNorm]
     rw [← hb.2, Equiv.sum_comp σ fun i => b i ^ 2]
@@ -175,8 +174,11 @@ private theorem exists_perm_of_same_hammingWeight
       exact ⟨Fintype.equivOfCardEq <| by simpa [Fintype.card_subtype] using h⟩
     obtain ⟨σ₂, _⟩ : ∃ σ₂ : { i : Fin 8 // i ∉ S₁ } ≃ { i : Fin 8 // i ∉ S₂ }, True := by
       have h_card_compl : Finset.card (Finset.univ \ S₁) = Finset.card (Finset.univ \ S₂) := by
-        simp_all +decide [Finset.card_sdiff]
-        aesop
+        have h_card_support : S₁.card = S₂.card := by
+          subst S₁
+          subst S₂
+          simpa using h
+        simp [Finset.card_sdiff, h_card_support]
       exact ⟨Fintype.equivOfCardEq <| by simpa [Finset.card_sdiff] using h_card_compl, trivial⟩
     obtain ⟨σ, hσ⟩ : ∃ σ : Fin 8 ≃ Fin 8, ∀ i, i ∈ S₁ ↔ σ i ∈ S₂ :=
       ⟨Equiv.sumCompl (fun i => i ∈ S₁) |>.symm.trans
@@ -184,7 +186,9 @@ private theorem exists_perm_of_same_hammingWeight
           intro i; by_cases hi : i ∈ S₁ <;> simp +decide [hi]
           exact σ₂ ⟨i, hi⟩ |>.2⟩
     use σ.symm
-    intro i; specialize hσ (σ.symm i); aesop
+    intro i
+    specialize hσ (σ.symm i)
+    simpa [S₁, S₂] using hσ.symm
   intro c₁ c₂ h
   specialize h_perm (fun i => c₁ i = 1) (fun i => c₂ i = 1)
   simp_all +decide [hammingWeight]
@@ -192,8 +196,9 @@ private theorem exists_perm_of_same_hammingWeight
   · simp +decide [funext_iff, ZMod]
     grind
   · convert h using 2 <;> ext i <;>
-      have := Fin.exists_fin_two.mp ⟨c₁ i, rfl⟩ <;>
-      have := Fin.exists_fin_two.mp ⟨c₂ i, rfl⟩ <;> aesop
+      rcases Fin.exists_fin_two.mp ⟨c₁ i, rfl⟩ with h₁ | h₁ <;>
+      rcases Fin.exists_fin_two.mp ⟨c₂ i, rfl⟩ with h₂ | h₂ <;>
+      simp [h₁, h₂]
 
 /-! ## Fiber ncard depends only on weight -/
 
@@ -237,7 +242,10 @@ private theorem sum_fibers_eq_weighted (s : ℕ) :
             extendedHamming8Finset) = extendedHamming8Finset from ?_]
       decide +revert
     · exact fun x _ y _ hxy =>
-        Finset.disjoint_left.mpr fun z hz₁ hz₂ => hxy <| by aesop
+        Finset.disjoint_left.mpr fun z hz₁ hz₂ => hxy <| by
+          have hx_weight : hammingWeight z = x := (Finset.mem_filter.mp hz₁).2
+          have hy_weight : hammingWeight z = y := (Finset.mem_filter.mp hz₂).2
+          exact hx_weight.symm.trans hy_weight
   have h_replace : ∀ w ∈ ({0, 4, 8} : Finset ℕ),
       ∑ c ∈ extendedHamming8Finset.filter (fun c => hammingWeight c = w),
         (fiberOverCodeword c s).ncard =

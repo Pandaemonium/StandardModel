@@ -18,7 +18,7 @@ import CodeLatticeE8.E8.ThetaSeries
 /-!
 # Theorem index
 
-This module is the reviewer-facing index for declarations currently promoted
+This module is the index for declarations currently promoted
 to the standalone `CodeLatticeE8` root.
 
 For the prose audit trail, see:
@@ -27,9 +27,6 @@ For the prose audit trail, see:
 - `Sources/CodeLatticeE8_Trust_Report.md`.
 
 ## Trust profile
-
-All declarations reachable from this index are standalone: they depend on
-Mathlib and `CodeLatticeE8.*`, and do not import the research namespace.
 
 The root-list enumeration/completeness facts, the short-vector count, the
 root-bridge permutation chain, the Cartan determinant,

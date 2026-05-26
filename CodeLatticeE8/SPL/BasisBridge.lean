@@ -191,9 +191,9 @@ private theorem gram_form_change_of_basis {n : ℕ}
     Finset.mul_sum _ _ _, Finset.sum_mul]
   simp +decide only [← sum_product']
   apply Finset.sum_bij (fun x _ => (x.2.2.2, x.2.2.1, x.2.1, x.1))
-  · aesop
+  · simp +decide
   · grind
-  · aesop
+  · simp +decide
   · grind
 
 private theorem inner_intLinComb_eq_gram_form {n : ℕ}
