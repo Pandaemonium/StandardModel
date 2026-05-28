@@ -1,6 +1,6 @@
 # CodeLatticeE8 Publication Theorem Map
 
-Date: 2026-05-21
+Date: 2026-05-28
 
 This document maps the manuscript-level mathematical claims to the new
 reviewer-facing Lean package.  Its purpose is to make the package easy to
@@ -34,6 +34,9 @@ Status labels:
 | E8 short-vector count `240` | `CodeLatticeE8.E8.hammingConstructionA_short_vector_count` | `CodeLatticeE8/E8/ShortVectors.lean` | Core |
 | Semantic doubled-coordinate E8 root list | `CodeLatticeE8.E8.Roots.mem_rootList_iff_isE8Root` | `CodeLatticeE8/E8/Roots.lean` | Core |
 | Short shell to root-list bridge | `CodeLatticeE8.E8.RootBridge.shortShell_perm_rootList` | `CodeLatticeE8/E8/RootBridge.lean` | Core |
+| Octavian raw product has even coordinates on Construction A | `CodeLatticeE8.Octonion.two_dvd_mulInt_of_hammingConstructionA` | `CodeLatticeE8/Octonion/Octavian.lean` | Core |
+| Hamming Construction A octavian order closure | `CodeLatticeE8.Octonion.octavianUnitMul_mem_hammingConstructionA` | `CodeLatticeE8/Octonion/Octavian.lean` | Core |
+| Octavian 240-unit shell closure | `CodeLatticeE8.Octonion.octavianUnitMul_mem_shortShell` | `CodeLatticeE8/Octonion/Octavian.lean` | Core |
 | Cartan matrix determinant | `CodeLatticeE8.E8.e8CartanMatrix_det` | `CodeLatticeE8/E8/CartanBridge.lean` | Core |
 | Gram-Cartan congruence | `CodeLatticeE8.E8.gramCartan_congruence` | `CodeLatticeE8/E8/CartanBridge.lean` | Core |
 | Simple roots reproduce the E8 Dynkin diagram | `CodeLatticeE8.E8.e8SimpleRoots_gram` | `CodeLatticeE8/E8/CartanBridge.lean` | Core |

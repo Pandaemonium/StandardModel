@@ -14,6 +14,7 @@ import CodeLatticeE8.E8.CartanBridge
 import CodeLatticeE8.E8.WeylReflections
 import CodeLatticeE8.E8.ThetaCoefficients
 import CodeLatticeE8.E8.ThetaSeries
+import CodeLatticeE8.Octonion.Octavian
 
 /-!
 # Theorem index
@@ -183,7 +184,36 @@ Bridge between the Construction A short shell and the E8 root list:
   short shell vectors with unscaled `sqNorm = 4` map to doubled-coordinate roots with
   `normSq = 8` (both encode the same E8 root squared norm `2`).
 
-Gram–Cartan bridge (E8 root system structure):
+Cayley-Dickson octonion layer:
+
+- `CodeLatticeE8.Octonion.fanoTriples` -- the seven positive triples fixing
+  the package Cayley-Dickson convention.
+- `CodeLatticeE8.Octonion.xorIndex` -- bitwise XOR on the three-bit basis
+  labels.
+- `CodeLatticeE8.Octonion.sign` -- the basis-product sign table.
+- `CodeLatticeE8.Octonion.mulInt` -- integer-coordinate octonion
+  multiplication.
+- `CodeLatticeE8.Octonion.normSqInt_mulInt` -- norm multiplicativity for the
+  Cayley-Dickson product.
+- `CodeLatticeE8.Octonion.octavianUnitMul` -- normalized product on doubled
+  coordinates for the Construction A short shell.
+- `CodeLatticeE8.Octonion.two_dvd_mulInt_of_hammingConstructionA` -- the
+  Cayley-Dickson product of two Hamming Construction A vectors has even
+  integer coordinates, proved by bilinearity and the explicit Construction A
+  basis.
+- `CodeLatticeE8.Octonion.two_mul_octavianUnitMul_eq_mulInt` -- exactness of
+  the coordinatewise division by two in the normalized product.
+- `CodeLatticeE8.Octonion.octavianUnitMul_mem_hammingConstructionA` -- the
+  normalized product closes on the full Hamming Construction A octavian order.
+- `CodeLatticeE8.Octonion.octavianUnitMul_sqNorm` -- product of two short-shell
+  vectors has unscaled squared norm four.
+- `CodeLatticeE8.Octonion.octavianUnitMul_mem_shortShell` -- the 240 octavian
+  units are closed under normalized Cayley-Dickson multiplication.
+- `CodeLatticeE8.Octonion.octavianUnitMul_mem_shortShell_of_mem_coordinateShortVectorList`
+  -- closure of the normalized product on the 16 coordinate units, retained as
+  an independent coordinate-unit certificate.
+
+Gram-Cartan bridge (E8 root system structure):
 
 - `CodeLatticeE8.E8.e8CartanMatrix` — the E8 Cartan matrix in Bourbaki labelling;
   diagonal entries `2`, adjacent-node entries `−1`, all others `0`.
@@ -343,6 +373,19 @@ private noncomputable abbrev theoremIndexGuard_shortShell_perm_rootList :=
   CodeLatticeE8.E8.RootBridge.shortShell_perm_rootList
 private noncomputable abbrev theoremIndexGuard_hadamard_sqNorm_scale :=
   CodeLatticeE8.E8.RootBridge.hadamard_sqNorm_scale
+
+private noncomputable abbrev theoremIndexGuard_octavianUnitMul :=
+  CodeLatticeE8.Octonion.octavianUnitMul
+private noncomputable abbrev theoremIndexGuard_octavian_even_product :=
+  @CodeLatticeE8.Octonion.two_dvd_mulInt_of_hammingConstructionA
+private noncomputable abbrev theoremIndexGuard_octavian_exact_division :=
+  @CodeLatticeE8.Octonion.two_mul_octavianUnitMul_eq_mulInt
+private noncomputable abbrev theoremIndexGuard_octavian_order_closure :=
+  @CodeLatticeE8.Octonion.octavianUnitMul_mem_hammingConstructionA
+private noncomputable abbrev theoremIndexGuard_octavian_sqNorm :=
+  @CodeLatticeE8.Octonion.octavianUnitMul_sqNorm
+private noncomputable abbrev theoremIndexGuard_octavian_shortShell :=
+  @CodeLatticeE8.Octonion.octavianUnitMul_mem_shortShell
 
 private noncomputable abbrev theoremIndexGuard_e8CartanMatrix :=
   CodeLatticeE8.E8.e8CartanMatrix

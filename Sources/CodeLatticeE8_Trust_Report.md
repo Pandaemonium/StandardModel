@@ -1,6 +1,6 @@
 # CodeLatticeE8 Trust Report
 
-Date: 2026-05-21
+Date: 2026-05-28
 
 This report records the current trust boundary for the polished
 `CodeLatticeE8` package.  It is meant to complement the theorem index and the
@@ -55,6 +55,9 @@ in the standalone package:
 - `CodeLatticeE8.E8.WeylReflections.reflect_preserves_IsE8Root`;
 - `CodeLatticeE8.E8.WeylReflections.reflect_mem_rootList`;
 - `CodeLatticeE8.E8.WeylReflections.reflect_reflect`;
+- `CodeLatticeE8.Octonion.two_dvd_mulInt_of_hammingConstructionA`;
+- `CodeLatticeE8.Octonion.octavianUnitMul_mem_hammingConstructionA`;
+- `CodeLatticeE8.Octonion.octavianUnitMul_mem_shortShell`;
 - `CodeLatticeE8.E8.thetaShellCount_eq_convolution`.
 
 These are now good reviewer-facing theorems: their trust story is ordinary
@@ -68,8 +71,9 @@ were replaced on 2026-05-21 by ordinary kernel-checked `decide`/structural
 proofs.
 
 The short-vector count, root-list characterization, root-bridge permutation,
-Weyl reflection closure, and all-shell Construction A convolution theorem are
-therefore outside the `Lean.trustCompiler` boundary.
+Weyl reflection closure, octavian order/unit-shell closure, and all-shell
+Construction A convolution theorem are therefore outside the
+`Lean.trustCompiler` boundary.
 
 Several matrix, root-list, and theta-analysis files locally raise
 `maxHeartbeats` or suppress style linters such as long-line, flexible-tactic,
@@ -89,7 +93,10 @@ The notable standalone heartbeat increases are:
 - `CodeLatticeE8/E8/ShortVectors.lean`: up to `1600000` heartbeats for the
   short-vector finite parametrization;
 - `CodeLatticeE8/E8/CartanBridge.lean`: `400000` heartbeat local checks for
-  the displayed determinant minors and matrix comparisons.
+  the displayed determinant minors and matrix comparisons;
+- `CodeLatticeE8/Octonion/Octavian.lean`: up to `3200000` heartbeats for the
+  private 8-by-8 basis-product certificates used by the octavian closure
+  theorems.
 
 The Lake roots also pass `-s65536` to Lean.  This is a larger stack budget for
 large finite reductions and matrix proofs; it is not a trust assumption, but it
@@ -169,6 +176,17 @@ also audited:
 Each reported only the standard Lean/mathlib axioms
 `[propext, Classical.choice, Quot.sound]`.
 
+On 2026-05-28, the following octavian closure declarations were audited:
+
+```lean
+#print axioms CodeLatticeE8.Octonion.two_dvd_mulInt_of_hammingConstructionA
+#print axioms CodeLatticeE8.Octonion.octavianUnitMul_mem_hammingConstructionA
+#print axioms CodeLatticeE8.Octonion.octavianUnitMul_mem_shortShell
+```
+
+Each reported only the standard Lean/mathlib axioms
+`[propext, Classical.choice, Quot.sound]`.
+
 ## Aristotle Jobs Tracking This Boundary
 
 The current proof-improvement wave is recorded by the following submitted job
@@ -187,10 +205,13 @@ IDs:
   `Theta_E8 = E4` package; integrated 2026-05-21;
 - `56691706-08a0-4637-8aa7-fcc19945abce`: follow-up root-bridge job targeting
   the five remaining local `native_decide` facts in `RootBridge.lean`;
-  integrated 2026-05-21.
+  integrated 2026-05-21;
 - `df2b5ccf-23e3-42dc-988b-db4c6f8639b6`: clean-package port of the general
   Type II Construction A theorem, including the integer scaled-dual equality
-  and the real scaled evenness/self-duality statements; integrated 2026-05-23.
+  and the real scaled evenness/self-duality statements; integrated 2026-05-23;
+- `98138111-f6ae-45c7-9bad-3816f8454edc`: structural octavian order and
+  unit-shell closure using bilinearity and the Construction A basis;
+  integrated 2026-05-28.
 
 ## Audit Commands
 
@@ -202,7 +223,7 @@ rg -n "\bnative_decide\b|\btrustCompiler\b" CodeLatticeE8 CodeLatticeE8.lean
 lake build CodeLatticeE8
 lake build CodeLatticeE8SPL
 cd CodeLatticeE8Standalone; lake build CodeLatticeE8; cd ..
-pre-commit run --files CodeLatticeE8.lean CodeLatticeE8/Publication/TheoremIndex.lean Sources/Hamming_ConstructionA_E8_Manuscript_Revision.md Sources/CodeLatticeE8_Publication_Theorem_Map.md Sources/CodeLatticeE8_Trust_Report.md
+pre-commit run --files CodeLatticeE8.lean CodeLatticeE8/Publication/TheoremIndex.lean Sources/Hamming_ConstructionA_E8_Paper.tex Sources/CodeLatticeE8_Publication_Theorem_Map.md Sources/CodeLatticeE8_Trust_Report.md
 ```
 
 For a final release candidate, run the repository-wide checks from `AGENTS.md`:
