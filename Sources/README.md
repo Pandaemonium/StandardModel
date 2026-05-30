@@ -58,3 +58,9 @@ subdirectory, recording:
 ### Mathlib (primary Lean library)
 
 - `mathlib4` — leanprover-community/mathlib4, Apache-2.0, https://github.com/leanprover-community/mathlib4
+
+### Adjacent public Lean repositories
+
+- `Lean_Adjacent_Repositories_Survey.md` records public Lean repositories
+  adjacent to the octonion/Standard Model/E8/Clifford/formal physics program,
+  with license, toolchain, and integration notes.

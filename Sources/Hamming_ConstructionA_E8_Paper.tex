@@ -108,6 +108,10 @@ layer this gives the classical identity
 \[
   \Theta_{E_8}(q) = E_4(q) = 1 + 240\sum_{n>0}\sigma_3(n)\,q^n.
 \]
+Here \(\Theta_{E_8}\) is the theta series of the E8 lattice, \(E_4\) is the
+normalized Eisenstein series of weight~\(4\), \(q\) is the formal theta-series
+variable, and \(\sigma_3(n)=\sum_{d\mid n} d^3\) is the sum of cubes of the
+positive divisors of~\(n\).
 The development also compares the local
 Construction~A basis with the E8 basis used by Sphere-Packing-Lean, the Lean
 formalization of Viazovska's dimension-eight sphere-packing theorem.  The
@@ -144,8 +148,8 @@ $\quad\to$ Sphere-Packing-Lean E8 basis comparison
 \end{tabular}
 \end{center}
 
-The contribution is complementary to Sphere-Packing-Lean~\cite{SPL2025}.
-Sphere-Packing-Lean formalizes the analytic proof that the E8 sphere packing
+The contribution is complementary to the Sphere-Packing-Lean project~\cite{SPL2025}.
+Sphere-Packing-Lean has formalized the analytic proof that the E8 sphere packing
 is optimal in dimension eight~\cite{Viazovska2017}.  The present development
 supplies a finite and combinatorial entry point to the same E8 object: it starts
 from the extended Hamming code, builds the lattice by Construction~A, and
@@ -200,11 +204,12 @@ The formalization proves the following.
 
 \subsection{Scope}
 
-We do not reprove Viazovska's analytic sphere-packing theorem.  We also do not
-use the abstract classification theorem saying that there is a unique even
-unimodular positive-definite lattice of rank eight.  Instead, the development
-works concretely: basis matrices, Gram matrices, explicit shell counts, explicit
-roots, and explicit transition maps carry the construction from the code to E8.
+Viazovska's analytic sphere-packing theorem enters through the existing
+Sphere-Packing-Lean formalization, and the construction avoids appealing to the
+abstract classification theorem for even unimodular positive-definite lattices
+of rank eight.  The development works concretely: basis matrices, Gram
+matrices, explicit shell counts, explicit roots, and explicit transition maps
+carry the construction from the code to E8.
 
 This concrete approach has two advantages.  First, it gives a small,
 reviewable formal proof of the code-to-lattice route.  Second, it makes all
@@ -225,6 +230,10 @@ is~\cite{MacSloane1977}
 \[
   W_C(x,y) = x^8 + 14x^4y^4 + y^8.
 \]
+Here \(W_C\) is the homogeneous weight enumerator
+\(\sum_{c\in C} x^{8-\mathrm{wt}(c)}y^{\mathrm{wt}(c)}\); the variables \(x\)
+and \(y\) mark zero and one coordinates, respectively, and
+\(\mathrm{wt}(c)\) is the Hamming weight of the codeword~\(c\).
 In Lean, $C$ is defined by an explicit
 parity-check matrix over $\F_2 = \Z/2\Z$, and the code properties are proved
 from that definition.  The formalization records the column ordering of the
@@ -252,6 +261,7 @@ of integer vectors~\cite{LeechSloane1971,ConwaySloane1999}:
 \[
   A(C) = \bigl\{\, z \in \Z^n \;\bigm|\; z \bmod 2 \in C \,\bigr\}.
 \]
+Here \(A(C)\) is the Construction~A integer lattice attached to \(C\).
 For the extended Hamming code, this produces an integer lattice in
 $\Z^8$~\cite{LeechSloane1971}.  The unscaled integer model has minimal squared
 norm~$4$.  The usual E8 normalization divides the quadratic form by~$2$,
@@ -279,11 +289,12 @@ octonion basis, the two root families are
   \qquad\text{and}\qquad
   \frac12(\pm e_0 \pm e_1 \pm \cdots \pm e_7),
 \]
-where $e_0$ denotes the real unit, together with the Coxeter parity condition
-on the half-integral family~\cite{Coxeter1946,Baez2002}.  Thus the independent
-root-list comparison also identifies the code-built short shell with the
-classical integral-octonion presentation of the E8 roots.  The octavian
-multiplication layer uses the same coordinate convention to define the
+Here \(e_0,\ldots,e_7\) are the fixed octonion basis vectors, with \(e_0\) the
+real unit; \(i\) and \(j\) range over basis labels; and the half-integral sign
+vectors satisfy Coxeter's parity condition~\cite{Coxeter1946,Baez2002}.  Thus
+the independent root-list comparison also identifies the code-built short shell
+with the classical integral-octonion presentation of the E8 roots.  The
+octavian multiplication layer uses the same coordinate convention to define the
 Cayley--Dickson product and prove the corresponding order and unit-shell
 closure statements.
 
@@ -294,10 +305,17 @@ counts~\cite{ConwaySloane1999}:
 \[
   \Theta_{E_8}(q) = \sum_{v \in E_8} q^{\|v\|^2/2}.
 \]
+Here \(q\) is the formal theta-series variable, \(v\) ranges over E8 lattice
+vectors, and \(\|v\|^2\) is the squared norm in the standard E8 normalization.
+The exponent \(\|v\|^2/2\) makes roots of squared norm~\(2\) contribute to the
+coefficient of~\(q\).
 For the standard E8 lattice, the classical formula is~\cite{ConwaySloane1999}:
 \[
   \Theta_{E_8}(q) = E_4(q) = 1 + 240\sum_{n>0}\sigma_3(n)\,q^n.
 \]
+Here \(E_4\) is the normalized weight-four Eisenstein series and
+\(\sigma_3(n)=\sum_{d\mid n} d^3\).  Thus the coefficient of \(q^n\), for
+\(n>0\), is \(240\) times the sum of cubes of the divisors of~\(n\).
 In the Construction~A integer coordinates, coefficient~$n$ corresponds to the
 unscaled shell condition $\mathrm{sqNorm}(z) = 4n$.  The Lean proof keeps this
 conversion explicit.  It first identifies the Construction~A coefficient with a
@@ -611,6 +629,11 @@ this root model.  In doubled coordinates, reflection through a root is~\cite{Bou
 \[
   \sigma_r(v) = v - \frac{\langle v,\, r\rangle}{4}\,r.
 \]
+Here \(r\) is the reflecting root, \(v\) is another doubled-coordinate root, and
+\(\langle v,r\rangle\) is the integer dot product in doubled root-list
+coordinates.  The factor \(1/4\) appears because doubled roots satisfy
+\(\langle r,r\rangle=8\), so \(2/\langle r,r\rangle=1/4\) in the usual
+reflection formula.
 The theorem
 \begin{lstlisting}[style=lean]
 theorem reflect_mem_rootList
@@ -741,6 +764,9 @@ The weight distribution $(1,14,1)$~\cite{MacSloane1977} explains the cardinality
 \[
   16 + 14 \times 16 = 240.
 \]
+Here the first \(16\) counts the coordinate-spike vectors, \(14\) is the number
+of weight-four codewords in the extended Hamming code, and the final factor
+\(16=2^4\) counts sign choices on the four supported coordinates.
 The Lean proof realizes this classification as an explicit finite list and
 proves both soundness and completeness for the short-vector predicate.
 
@@ -767,6 +793,9 @@ norm:
 \[
   \mathrm{sqNorm}_{\mathrm{CA}}(z) = 4n \iff \|\phi(z)\|^2 = 2n.
 \]
+Here \(\mathrm{sqNorm}_{\mathrm{CA}}\) is the unscaled integer Construction~A
+squared norm, \(\phi\) is the bridge map into the standard E8/SPL coordinate
+model, and \(n\) is the theta coefficient index.
 Combining these facts yields the all-coefficient formula $1$ at $n=0$ and
 $240\,\sigma_3(n)$ for $n>0$, recorded in
 \lean{CodeLatticeE8.SPL.hammingThetaConvolutionCoeff\_eq\_e4Coeff}.
@@ -909,12 +938,18 @@ The theta coefficient indexed by~$n$ counts the unscaled Construction~A shell
 \[
   \mathrm{sqNorm}(z) = 4n.
 \]
+Here \(z\) ranges over Construction~A integer vectors, \(\mathrm{sqNorm}\) is
+the unscaled coordinate squared norm, and \(n\) is the theta-series coefficient
+index.
 Under the bridge to the standard E8 normalization, this becomes
 $\|\phi(z)\|^2 = 2n$.
 Equivalently, the theta bridge uses the normalization
 \[
   \mathrm{sqNorm}(z) = 4n \iff \|\phi(z)\|^2 = 2n.
 \]
+Here \(\phi\) is the explicit map from the Construction~A integer model to the
+standard E8/Sphere-Packing-Lean model; the right-hand norm is the standard E8
+squared norm.
 The Lean declaration \lean{CodeLatticeE8.SPL.sqNorm\_eq\_two\_mul\_norm\_sq}
 records the underlying equality $\mathrm{sqNorm}(z) = 2\|\phi(z)\|^2$ for the
 explicit bridge map.  This is the most important normalization in the
@@ -1073,6 +1108,8 @@ The weight enumerator is~\cite{MacSloane1977}:
 \[
   W_C(x,y) = x^8 + 14x^4y^4 + y^8.
 \]
+Here \(W_C(x,y)=\sum_{c\in C}x^{8-\mathrm{wt}(c)}y^{\mathrm{wt}(c)}\), so the
+coefficient \(14\) records the fourteen codewords of Hamming weight~\(4\).
 This polynomial is the finite combinatorial input for the Construction~A
 theta-series computation.
 
@@ -1083,6 +1120,9 @@ The Construction~A lattice is~\cite{LeechSloane1971,ConwaySloane1999}:
 \[
   A(C) = \bigl\{\, z \in \Z^8 \;\bigm|\; z \bmod 2 \in C_{\mathrm{Hamming}} \,\bigr\}.
 \]
+Here \(C_{\mathrm{Hamming}}\) is the fixed extended Hamming code and
+\(z\bmod 2\) means coordinatewise reduction of \(z\in\Z^8\) to
+\((\Z/2\Z)^8\).
 The formalization gives an explicit basis \lean{hammingConstructionBasis}.
 The theorem \lean{hammingConstructionASubmodule\_eq\_span} proves that this
 basis spans the Construction~A submodule.  From this basis it computes the Gram
@@ -1090,7 +1130,8 @@ matrix \lean{hammingConstructionGram} and proves:
 \[
   G_{ij} = \sum_{k} b_i(k)\,b_j(k),
 \]
-where $b_i$ denotes the $i$-th basis vector.
+Here \(G_{ij}\) is the \((i,j)\)-entry of the Gram matrix, \(b_i\) is the
+\(i\)-th basis vector, and \(k\) ranges over the eight coordinate positions.
 
 Because the E8 normalization divides the quadratic form by~$2$, the
 formalization defines the rational scaled Gram matrix
@@ -1103,12 +1144,18 @@ of the basis matrix:
   \det(B) = -16, \quad \det(G) = (-16)^2 = 256, \quad
   \det(\tilde{G}) = 2^{-8}\cdot 256 = 1.
 \]
+Here \(B\) is the displayed Construction~A basis matrix, \(G\) is the unscaled
+Gram matrix, and \(\tilde{G}\) is the scaled Gram matrix obtained by dividing
+the quadratic form by~\(2\) in rank~\(8\).
 The same basis supports the Cartan comparison.  An explicit unimodular
 transition matrix~$P$ (with $\det P = \pm 1$) carries the Construction~A Gram
 form to the standard E8 Cartan form~\cite{Bourbaki2002,ConwaySloane1999}:
 \[
   P^\top G P = 2\,\mathrm{Cartan}_{E_8}.
 \]
+Here \(P\) is the explicit change-of-basis matrix, \(G\) is the Construction~A
+Gram matrix, and \(\mathrm{Cartan}_{E_8}\) is the standard E8 Cartan matrix in
+the chosen Bourbaki ordering.
 
 \section{Short Vectors and Roots}
 \label{app:roots}
@@ -1117,6 +1164,9 @@ In unscaled Construction~A coordinates, the short shell is:
 \[
   \bigl\{\, z \in A(C) \;\bigm|\; \mathrm{sqNorm}(z) = 4 \,\bigr\}.
 \]
+Here \(A(C)\) is the Construction~A lattice for the extended Hamming code and
+\(\mathrm{sqNorm}\) is the unscaled integer squared norm.  The value~\(4\)
+corresponds to squared norm~\(2\) after the standard E8 scaling.
 The formal proof classifies this shell by Hamming residue.
 
 \medskip
@@ -1144,6 +1194,8 @@ of~\cite{ConwaySloane1999,LeechSloane1971}:
 \[
   \bigl\{\, z \in A(C) \;\bigm|\; \mathrm{sqNorm}(z) = 4n \,\bigr\}.
 \]
+Here \(n\) is the theta-series index and the factor~\(4\) is the unscaled
+Construction~A normalization corresponding to standard E8 squared norm~\(2n\).
 
 The formalization has two finite theta layers.
 
@@ -1163,6 +1215,8 @@ $\mathrm{sqNorm} \le 24$.  The weight multiplicities are~\cite{MacSloane1977}:
 \[
   A_0 = 1, \quad A_4 = 14, \quad A_8 = 1.
 \]
+Here \(A_w\) denotes the number of codewords of Hamming weight~\(w\) in the
+extended Hamming code.
 The resulting table values are checked against the displayed $E_4$ coefficients
 in \lean{thetaTableCoeff\_eq\_e4Coeff\_of\_le\_six}.
 
@@ -1179,6 +1233,8 @@ $\lean{thetaE8\_MF} = E_4$, giving the coefficient formula:
   \text{coeff}_0 = 1, \qquad
   \text{coeff}_n = 240\,\sigma_3(n) \quad \text{for } n > 0.
 \]
+Here \(\text{coeff}_n\) is the coefficient of \(q^n\) in the theta series and
+\(\sigma_3(n)=\sum_{d\mid n}d^3\).
 
 \section{Sphere-Packing-Lean Bridge}
 \label{app:spl}
@@ -1236,6 +1292,9 @@ standard Lean/Mathlib set
 \[
   \{\texttt{propext},\; \texttt{Classical.choice},\; \texttt{Quot.sound}\}.
 \]
+Here \texttt{propext} is propositional extensionality, \texttt{Classical.choice}
+is Lean's classical choice principle, and \texttt{Quot.sound} is the standard
+quotient soundness axiom used throughout Mathlib.
 Some lower-level finite reductions may report \lean{Lean.ofReduceBool}; this is
 Lean's kernel-checked boolean-reduction certificate, not a compiler-trust
 assumption.  The standalone root is additionally checked to contain no
