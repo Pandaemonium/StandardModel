@@ -133,7 +133,7 @@ theorem det_coveringMap_snd (α : ℂ) (g : Matrix (Fin 2) (Fin 2) ℂ)
     (coveringMap α g h).2.det = (α⁻¹ ^ 2) ^ 3 * h.det := by
   simp [coveringMap, Fintype.card_fin]
 
-/-
+/--
 **Key theorem**: the covering map lands in `S(U(2) × U(3))` when the
 inputs satisfy `α ≠ 0`, `det(g) = 1` (g ∈ SU(2)), and `det(h) = 1` (h ∈ SU(3)).
 -/
@@ -181,7 +181,7 @@ noncomputable def CoveringKernelElt.su3Part (k : CoveringKernelElt) :
     Matrix (Fin 3) (Fin 3) ℂ :=
   (k.phase ^ 2) • (1 : Matrix (Fin 3) (Fin 3) ℂ)
 
-/-
+/--
 The covering map sends a kernel element to the identity pair `(I₂, I₃)`.
 
 Proof: `α³ • (α⁻³ • I₂) = (α³ · α⁻³) • I₂ = I₂` and
@@ -209,7 +209,7 @@ theorem sixCoveringKernelElts_injective :
   intro i j h
   exact kernelPhases_injective (congr_arg CoveringKernelElt.phase h)
 
-/-
+/--
 The SU(2) component of a kernel element has determinant 1.
 This shows the kernel element genuinely lies in SU(2).
 -/
@@ -219,7 +219,7 @@ theorem coveringKernelElt_su2_det (k : CoveringKernelElt) :
   norm_num [ Matrix.det_smul ];
   exact eq_or_eq_neg_of_sq_eq_sq _ _ <| by linear_combination' k.phase_pow_six;
 
-/-
+/--
 The SU(3) component of a kernel element has determinant 1.
 This shows the kernel element genuinely lies in SU(3).
 -/

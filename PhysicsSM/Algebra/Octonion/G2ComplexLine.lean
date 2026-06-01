@@ -54,7 +54,7 @@ The map `α(x) = e111 * (x * e111)` acts as `-id` on the chosen complex line
 and as `+id` on the complement. This is the key tool for proving complement
 preservation algebraically. -/
 
-/-
+/--
 The conjugation action `α(x) = e111 * (x * e111)` negates the `c0`
     coordinate of any octonion.
 -/
@@ -63,7 +63,7 @@ theorem conj_action_c0 (x : Octonion) :
       convert rightMul_e111_sq_neg x using 1;
       constructor <;> intro h <;> simp_all +decide [ Octonion.ext_iff ]
 
-/-
+/--
 The conjugation action `α(x) = e111 * (x * e111)` negates the `c7`
     coordinate of any octonion.
 -/
@@ -71,7 +71,7 @@ theorem conj_action_c7 (x : Octonion) :
     (e111 * (x * e111)).c7 = -x.c7 := by
       grind +suggestions
 
-/-
+/--
 The conjugation action fixes every element of the complement:
     if `x.c0 = 0` and `x.c7 = 0`, then `e111 * (x * e111) = x`.
 -/
@@ -82,7 +82,7 @@ theorem conj_action_on_complement {x : Octonion}
       ext
       all_goals simp [h0, h7]
 
-/-
+/--
 A `FixingE111MulLinear` map commutes with the conjugation action:
     `e111 * (g(x) * e111) = g(e111 * (x * e111))`.
 -/
@@ -94,7 +94,7 @@ theorem conj_action_commutes (g : FixingE111MulLinear) (x : Octonion) :
 
 /-! ## Main theorems -/
 
-/-
+/--
 A `FixingE111MulLinear` map preserves the chosen complex line
     `span_ℝ {1, e111}`.
 

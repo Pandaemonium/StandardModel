@@ -1,13 +1,15 @@
 # Aristotle task: Furey color generators induced on J
 
 **Agent**: Aristotle
-**Status**: Submitted
+**Status**: Integrated
 **Priority**: High
 **Prepared**: 2026-05-30
 **Submitted**: 2026-05-30
 **Job ID**: `d8134d6a-2e95-4f3c-9b61-434068a3abd3`
 **Submission project**: `AgentTasks/aristotle-submit/octonion-sm-next-wave-20260530-project`
 **Output**: `AgentTasks/aristotle-output/furey-colorgen-induced-j-representation-20260530`
+**Downloaded output**: `AgentTasks/aristotle-output/d8134d6a-20260531-result`
+**Extracted output**: `AgentTasks/aristotle-output/d8134d6a-20260531-extracted`
 **Type**: Furey color representation on the minimal left ideal
 
 ## Goal
@@ -136,3 +138,12 @@ lake env lean PhysicsSM/Algebra/Furey/ColorJRepresentation.lean
 lake build PhysicsSM.Algebra.Furey.ColorJRepresentation
 lake build PhysicsSM
 ```
+
+## Integration notes
+
+- Integrated on 2026-05-31.
+- Added trusted file `PhysicsSM/Algebra/Furey/ColorJRepresentation.lean`.
+- Added `PhysicsSM.Algebra.Furey.ColorJRepresentation` to `PhysicsSM.lean`.
+- Aristotle returned a sorry-free theorem package. The local integration only
+  adjusted heartbeat-limit comments to satisfy the Lean style linter; theorem
+  statements and proofs were otherwise preserved.

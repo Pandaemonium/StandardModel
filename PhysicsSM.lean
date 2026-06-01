@@ -21,6 +21,11 @@ import PhysicsSM.Algebra.Octonion.G2ComplexLine
 import PhysicsSM.Algebra.Octonion.G2ComplexTripleAction
 import PhysicsSM.Algebra.Octonion.G2SU3Bridge
 import PhysicsSM.Algebra.Octonion.G2C3Matrix
+import PhysicsSM.Algebra.Octonion.G2C3Unitary
+import PhysicsSM.Algebra.Octonion.G2C3GUTUnitary
+import PhysicsSM.Algebra.Octonion.G2C3GUTBlockBridge
+import PhysicsSM.Algebra.Octonion.G2C3GUTSU5Bridge
+import PhysicsSM.Algebra.Octonion.G2C3GUTPaperPackage
 import PhysicsSM.Algebra.Octonion.IntegralOctonion
 import PhysicsSM.Algebra.Jordan.Basic
 import PhysicsSM.Algebra.Jordan.SpinFactor
@@ -34,9 +39,18 @@ import PhysicsSM.Algebra.Jordan.ProjectiveGeometry
 import PhysicsSM.Algebra.Jordan.TraceForm
 import PhysicsSM.Algebra.Jordan.H3OComplexMatrix
 import PhysicsSM.Algebra.Jordan.H3OComplexMatrixLinear
+import PhysicsSM.Algebra.Jordan.H3OComplementMatrixAction
+import PhysicsSM.Algebra.Jordan.H3OComplementTwoSidedAction
 import PhysicsSM.Algebra.Jordan.Stabilizer
 import PhysicsSM.Algebra.Jordan.StabilizerDerivation
 import PhysicsSM.Algebra.Jordan.DVTAction
+import PhysicsSM.Algebra.Jordan.DVTComplementBridge
+import PhysicsSM.Algebra.Jordan.DVTComplementTwoSidedAction
+import PhysicsSM.Algebra.Jordan.DVTComplementCentralKernel
+import PhysicsSM.Algebra.Jordan.DVTZ3CentralKernel
+import PhysicsSM.Algebra.Jordan.DVTZ3CentralUnit
+import PhysicsSM.Algebra.Jordan.DVTZ3CentralUnitConversions
+import PhysicsSM.Algebra.Jordan.DVTBlockActionMonoid
 import PhysicsSM.Algebra.Jordan.DVTStabilizerPrelude
 import PhysicsSM.Algebra.Jordan.DVTStabilizerRestriction
 import PhysicsSM.Algebra.Jordan.BioctonionicPlane
@@ -46,6 +60,14 @@ import PhysicsSM.Gauge.StandardModelSubgroup
 import PhysicsSM.Gauge.StandardModelBlockHom
 import PhysicsSM.Gauge.StandardModelZ6Kernel
 import PhysicsSM.Gauge.StandardModelZ6FiniteKernel
+import PhysicsSM.Gauge.StandardModelZ6KernelEquiv
+import PhysicsSM.Gauge.StandardModelZ6KernelMap
+import PhysicsSM.Gauge.StandardModelZ6KernelPackage
+import PhysicsSM.Gauge.StandardModelZ6QuotientScaffold
+import PhysicsSM.Gauge.StandardModelZ6ImageQuotient
+import PhysicsSM.Gauge.StandardModelZ6IdentityFiber
+import PhysicsSM.Gauge.StandardModelZ6QuotientImageEquiv
+import PhysicsSM.Gauge.StandardModelZ6QuotientImageFiber
 import PhysicsSM.Gauge.GUTSquare
 import PhysicsSM.Spinor.OctonionicQubit
 import PhysicsSM.Spinor.KrasnovComplexStructure
@@ -56,10 +78,18 @@ import PhysicsSM.Spinor.KrasnovQubitHermitian
 import PhysicsSM.Spinor.PureSpinor10
 import PhysicsSM.StandardModel.AnomalyPackage
 import PhysicsSM.StandardModel.OneGenerationTable
+import PhysicsSM.StandardModel.FamilyAnomalyNaturality
+import PhysicsSM.StandardModel.FamilyRelabeledCopies
+import PhysicsSM.StandardModel.FamilySymmetry
+import PhysicsSM.StandardModel.FamilyOrbitNaturality
+import PhysicsSM.StandardModel.FamilyAnomalyAppendTriality
 import PhysicsSM.Algebra.Furey.AnomalyBridge
 import PhysicsSM.Algebra.Furey.ElectroweakBridge
 import PhysicsSM.Algebra.Furey.OperatorAlgebra
 import PhysicsSM.Algebra.Furey.ColorRepresentation
+import PhysicsSM.Algebra.Furey.ColorJRepresentation
+import PhysicsSM.Algebra.Furey.QopColorJCommutator
+import PhysicsSM.Algebra.Furey.OneGenerationPackage
 import PhysicsSM.Algebra.Furey.TrialityTriple
 import PhysicsSM.Algebra.Furey.TrialityAlgebraScaffold
 import PhysicsSM.Algebra.Furey.QopJbarEigenBridge
@@ -67,9 +97,14 @@ import PhysicsSM.Algebra.Furey.QopJEigenBridge
 import PhysicsSM.Algebra.Furey.TrialityTripleModule
 import PhysicsSM.Algebra.Furey.TrialityRolePermutation
 import PhysicsSM.Algebra.Furey.TrialityPermutationLinear
+import PhysicsSM.Algebra.Furey.TrialityPermutationRepresentation
 import PhysicsSM.Algebra.Furey.QopElectroweakConsistency
+import PhysicsSM.Algebra.Furey.OperatorElectroweakIdentity
+import PhysicsSM.Algebra.Furey.ElectroweakPaperPackage
 import PhysicsSM.Algebra.Furey.TrialityActionPermutation
 import PhysicsSM.Algebra.Furey.TrialityActionMonoid
+import PhysicsSM.Algebra.Furey.TrialityFamilyNaturality
+import PhysicsSM.Algebra.Furey.TrialityElectroweakTransport
 import PhysicsSM.Algebra.Furey.JbarElectroweakAnomaly
 import PhysicsSM.Coding.ConstructionA
 import PhysicsSM.Coding.HammingE8
@@ -108,6 +143,7 @@ import PhysicsSM.Algebra.Octonion.E8RootCompleteness
 import PhysicsSM.Algebra.Furey.HyperchargeBridge
 import PhysicsSM.Algebra.Division.CompositionAlgebra
 import PhysicsSM.Algebra.Division.CompositionClifford
+import PhysicsSM.Publication.FureyBaezDVTTheoremIndex
 
 /-!
 # PhysicsSM

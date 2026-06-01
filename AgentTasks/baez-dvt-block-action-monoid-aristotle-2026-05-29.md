@@ -1,13 +1,16 @@
 # Aristotle task: DVT block actions as a monoid
 
 **Agent**: Aristotle
-**Status**: Submitted
+**Status**: Integrated
 **Priority**: High
 **Prepared**: 2026-05-29
 **Submitted**: 2026-05-29
 **Job ID**: `e16397ef-57d7-470d-9284-ed0ce33f684b`
 **Submission project**: `AgentTasks/aristotle-submit/octonion-sm-next-round-20260529-project`
 **Output**: `AgentTasks/aristotle-output/baez-dvt-block-action-monoid-20260529`
+**Downloaded output**: `AgentTasks/aristotle-output/e16397ef-57d7-470d-9284-ed0ce33f684b-result`
+**Extracted output**: `AgentTasks/aristotle-output/e16397ef-57d7-470d-9284-ed0ce33f684b-extracted`
+**Integrated file**: `PhysicsSM/Algebra/Jordan/DVTBlockActionMonoid.lean`
 **Type**: Dubois-Violette-Todorov/Baez exceptional Jordan scaffold
 
 ## Goal
@@ -140,3 +143,26 @@ lake env lean PhysicsSM/Algebra/Jordan/DVTBlockActionMonoid.lean
 lake build PhysicsSM.Algebra.Jordan.DVTBlockActionMonoid
 lake build PhysicsSM
 ```
+
+## Integration result
+
+Integrated on 2026-05-30.
+
+Aristotle produced a trusted theorem package containing:
+
+- `toStandardBPart_add_complement`
+- `extractComplement_add_standardB`
+- `DVTBlockAction.comp_act`
+- `One DVTBlockAction`
+- `Mul DVTBlockAction`
+- `Monoid DVTBlockAction`
+- `DVTBlockAction.one_act`
+- `DVTBlockAction.mul_act`
+- `DVTBlockAction.ext_act`
+
+During integration, the result project's `lakefile.toml` and root import file
+were not copied wholesale because that project predates newer live-tree imports
+and locally comments out the SpherePacking dependency. Only the new Lean module
+was integrated, and the live `PhysicsSM.lean` import list was updated manually.
+Unused simp arguments and a literal proof-placeholder token in a docstring were
+removed without changing theorem statements.

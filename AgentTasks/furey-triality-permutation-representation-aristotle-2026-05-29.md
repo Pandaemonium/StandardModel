@@ -1,14 +1,28 @@
 # Aristotle task: triality role permutations as a linear representation
 
 **Agent**: Aristotle
-**Status**: Submitted
+**Status**: Integrated after OUT_OF_BUDGET
 **Priority**: High
 **Prepared**: 2026-05-29
 **Submitted**: 2026-05-29
 **Job ID**: `3a8a8fce-12cc-482b-9b4d-f457c08aeeae`
 **Submission project**: `AgentTasks/aristotle-submit/octonion-sm-next-round-20260529-project`
 **Output**: `AgentTasks/aristotle-output/furey-triality-permutation-representation-20260529`
+**Downloaded output**: `AgentTasks/aristotle-output/3a8a8fce-20260530-oob`
+**Extracted output**: `AgentTasks/aristotle-output/3a8a8fce-20260530-oob-extracted`
+**Integrated file**: `PhysicsSM/Algebra/Furey/TrialityPermutationRepresentation.lean`
 **Type**: Furey-Hughes triality scaffold / finite linear representation
+
+## Integration note
+
+The Aristotle job ended with status `OUT_OF_BUDGET`. The downloaded artifact
+contained the original submission project but did not contain the requested
+`TrialityPermutationRepresentation.lean` file or a usable Lean patch.
+
+The target was small enough to integrate locally using the existing trusted
+`TrialityPermutationLinear` API. The integrated file records the OOB provenance
+and proves the representation-style identity/composition aliases and the
+third-power law for the canonical cycle as a linear equivalence.
 
 ## Goal
 

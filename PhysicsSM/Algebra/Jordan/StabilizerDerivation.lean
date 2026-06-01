@@ -61,17 +61,17 @@ to the coordinatewise linear structure on `H3O`. Each is proved by
 expanding coordinates and applying `ring`.
 -/
 
-/-
-The Jordan product is additive in the left argument.
--/
 set_option maxHeartbeats 800000 in
 -- The off-diagonal octonion coordinate expressions are large after expansion.
+/--
+The Jordan product is additive in the left argument.
+-/
 theorem jordanProduct_add_left (a b c : H3O) :
     (a + b) ○ c = a ○ c + b ○ c := by
   unfold jordanProduct
   ext <;> simp [octonionInner] <;> ring
 
-/-
+/--
 The Jordan product is additive in the right argument.
 -/
 theorem jordanProduct_add_right (a b c : H3O) :
@@ -79,17 +79,17 @@ theorem jordanProduct_add_right (a b c : H3O) :
   rw [jordanProduct_comm a (b + c), jordanProduct_add_left,
       jordanProduct_comm b a, jordanProduct_comm c a]
 
-/-
-The Jordan product scales in the left argument.
--/
 set_option maxHeartbeats 800000 in
 -- The off-diagonal octonion coordinate expressions are large after expansion.
+/--
+The Jordan product scales in the left argument.
+-/
 theorem jordanProduct_smul_left (r : ℝ) (a b : H3O) :
     (r • a) ○ b = r • (a ○ b) := by
   unfold jordanProduct
   ext <;> simp [octonionInner] <;> ring
 
-/-
+/--
 The Jordan product scales in the right argument.
 -/
 theorem jordanProduct_smul_right (r : ℝ) (a b : H3O) :
@@ -218,7 +218,7 @@ instance : Neg H3ODerivation where
 
 /-! ## Commutator of derivations -/
 
-/-
+/--
 The commutator of two derivations: `[D₁, D₂] = D₁ ∘ D₂ - D₂ ∘ D₁`.
 
 The commutator of two derivations of a Jordan algebra is again a derivation.

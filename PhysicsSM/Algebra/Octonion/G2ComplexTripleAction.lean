@@ -38,7 +38,7 @@ open PhysicsSM.Algebra.Octonion
 
 /-! ## Complement projection helper -/
 
-/-
+/--
 If an octonion is in the chosen complex complement (`c0 = 0`, `c7 = 0`),
     then projecting to `ComplexTriple` and embedding back recovers the
     original octonion.
@@ -59,7 +59,7 @@ noncomputable def FixingE111MulLinear.onComplexTriple
     (g : FixingE111MulLinear) (w : ComplexTriple) : ComplexTriple :=
   (g.toFun w.toOctonion).toComplexTriple
 
-/-
+/--
 The induced action on `ComplexTriple` reconstructs the action on the
     octonion complement: embedding the result gives `g(w.toOctonion)`.
 -/
@@ -71,14 +71,14 @@ theorem FixingE111MulLinear.onComplexTriple_toOctonion
 
 /-! ## Real-linearity of the induced action -/
 
-/-
+/--
 Helper: `ComplexTriple.toOctonion` is additive.
 -/
 theorem ComplexTriple.toOctonion_add (u v : ComplexTriple) :
     (u + v).toOctonion = u.toOctonion + v.toOctonion := by
   cases u ; cases v ; aesop
 
-/-
+/--
 Helper: `ComplexTriple.toOctonion` respects real scalar multiplication.
 -/
 theorem ComplexTriple.toOctonion_smul (r : ℝ) (w : ComplexTriple) :
@@ -86,21 +86,21 @@ theorem ComplexTriple.toOctonion_smul (r : ℝ) (w : ComplexTriple) :
   ext <;> simp +decide;
   all_goals rfl;
 
-/-
+/--
 Helper: `Octonion.toComplexTriple` is additive.
 -/
 theorem Octonion.toComplexTriple_add (a b : Octonion) :
     (a + b).toComplexTriple = a.toComplexTriple + b.toComplexTriple := by
   exact ComplexTriple.ext rfl rfl rfl rfl rfl rfl
 
-/-
+/--
 Helper: `Octonion.toComplexTriple` respects real scalar multiplication.
 -/
 theorem Octonion.toComplexTriple_smul (r : ℝ) (a : Octonion) :
     (r • a).toComplexTriple = r • a.toComplexTriple := by
   exact ComplexTriple.ext rfl rfl rfl rfl rfl rfl
 
-/-
+/--
 The induced action is additive:
     `g.onComplexTriple (u + v) = g.onComplexTriple u + g.onComplexTriple v`.
 -/
@@ -112,7 +112,7 @@ theorem FixingE111MulLinear.onComplexTriple_add
   rw [ ← g.map_add, ← ComplexTriple.toOctonion_add ];
   rfl
 
-/-
+/--
 The induced action is ℝ-homogeneous:
     `g.onComplexTriple (r • w) = r • g.onComplexTriple w`.
 -/
@@ -125,7 +125,7 @@ theorem FixingE111MulLinear.onComplexTriple_real_smul
 
 /-! ## Complex-linearity of the induced action -/
 
-/-
+/--
 Decomposition of complex scalar multiplication into real and imaginary
     parts: `z • w = z.re • w + z.im • (I • w)`.
 -/
@@ -141,7 +141,7 @@ theorem ComplexTriple.complexSmul_eq_real_add_I
   · exact show z.re * w2_re - z.im * w2_im = z.re * w2_re + z.im * (-w2_im) by ring_nf;
   · exact show z.re * w3_re - z.im * w3_im = z.re * w3_re + z.im * (-w3_im) by ring_nf;
 
-/-
+/--
 The induced action commutes with multiplication by `Complex.I`:
     `g.onComplexTriple (I • w) = I • g.onComplexTriple w`.
 
@@ -161,7 +161,7 @@ theorem FixingE111MulLinear.onComplexTriple_I_smul
   · simp +decide [ Fin.forall_fin_succ, ComplexTriple.toComplexVec ];
   · ext <;> simp +decide [ ComplexTriple.complexSmul ]
 
-/-
+/--
 The induced action is complex-linear: it commutes with
     `ComplexTriple.complexSmul` for all `z : ℂ`.
 

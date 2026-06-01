@@ -135,7 +135,7 @@ theorem m3CToComplement_inComplementOfB
 
 /-! ## Round-trip theorems -/
 
-/-
+/--
 Right inverse: converting a matrix to a complement element and back recovers
 the original matrix.
 -/
@@ -147,7 +147,7 @@ theorem complementToM3C_m3CToComplement
   · convert ComplexTriple.toComplexVec_ofComplexVec ( M 1 ) |> congrFun <| j using 1;
   · convert ComplexTriple.toComplexVec_ofComplexVec ( M 2 ) |> congr_fun <| j using 1
 
-/-
+/--
 Left inverse on the complement: converting a complement element to a matrix
 and back recovers the original element.
 -/
@@ -180,7 +180,7 @@ noncomputable def complementEquivM3C :
 
 /-! ## Linearity of `complementToM3C` -/
 
-/-
+/--
 `complementToM3C` sends the zero element to the zero matrix.
 -/
 @[simp]
@@ -189,7 +189,7 @@ theorem complementToM3C_zero :
   ext i j;
   fin_cases i <;> fin_cases j <;> rfl
 
-/-
+/--
 `complementToM3C` is additive.
 -/
 theorem complementToM3C_add (a b : H3O) :
@@ -198,7 +198,7 @@ theorem complementToM3C_add (a b : H3O) :
   ext i j; fin_cases i <;> fin_cases j <;> simp +decide [ offDiag ] ;
   all_goals unfold ComplexTriple.toComplexVec; simp +decide [ Complex.ext_iff ] ;
 
-/-
+/--
 `complementToM3C` commutes with negation.
 -/
 theorem complementToM3C_neg (a : H3O) :
@@ -208,7 +208,7 @@ theorem complementToM3C_neg (a : H3O) :
 
 /-! ## Linearity of `m3CToComplement` -/
 
-/-
+/--
 `m3CToComplement` sends the zero matrix to zero.
 -/
 @[simp]
@@ -216,7 +216,7 @@ theorem m3CToComplement_zero :
     m3CToComplement (0 : Matrix (Fin 3) (Fin 3) ℂ) = 0 := by
   convert m3CToComplement_complementToM3C_of_inComplementOfB zero_inComplementOfB using 1
 
-/-
+/--
 `m3CToComplement` is additive.
 -/
 theorem m3CToComplement_add (M N : Matrix (Fin 3) (Fin 3) ℂ) :
@@ -227,7 +227,7 @@ theorem m3CToComplement_add (M N : Matrix (Fin 3) (Fin 3) ℂ) :
     (m3CToComplement_inComplementOfB M)
     (m3CToComplement_inComplementOfB N)
 
-/-
+/--
 `m3CToComplement` commutes with negation.
 -/
 theorem m3CToComplement_neg (M : Matrix (Fin 3) (Fin 3) ℂ) :

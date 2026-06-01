@@ -111,14 +111,14 @@ We enumerate the six phases as concrete complex numbers using `exp(2πik/6)`.
 /-- The primitive sixth root of unity `ω = exp(2πi/6)`. -/
 noncomputable def omega : ℂ := Complex.exp (2 * Real.pi * I / 6)
 
-/-
+/--
 `ω` satisfies `ω⁶ = 1`.
 -/
 theorem omega_pow_six : omega ^ 6 = 1 := by
   unfold omega;
   rw [ ← Complex.exp_nat_mul, mul_comm, Complex.exp_eq_one_iff ] ; use 1 ; ring
 
-/-
+/--
 `ω³ = -1`.
 -/
 theorem omega_pow_three : omega ^ 3 = -1 := by
@@ -127,13 +127,13 @@ theorem omega_pow_three : omega ^ 3 = -1 := by
   rw [ ← Complex.exp_nat_mul, mul_comm, Complex.exp_eq_exp_re_mul_sin_add_cos ] ; norm_num;
   ring_nf; norm_num [ mul_div ] ;
 
-/-
+/--
 `ω` is nonzero.
 -/
 theorem omega_ne_zero : omega ≠ 0 := by
   exact Complex.exp_ne_zero _
 
-/-
+/--
 `ω` is a primitive sixth root of unity.
 -/
 theorem omega_isPrimitiveRoot : IsPrimitiveRoot omega 6 := by
@@ -148,7 +148,7 @@ noncomputable def kernelPhases : Fin 6 → ℂ
   | ⟨4, _⟩ => omega ^ 4    -- = -ω²
   | ⟨5, _⟩ => omega ^ 5
 
-/-
+/--
 = -ω
 
 Each kernel phase is a sixth root of unity.
@@ -162,14 +162,14 @@ theorem kernelPhases_pow_six (k : Fin 6) :
   · rw [ ← pow_mul, mul_comm, pow_mul, omega_pow_six, one_pow ];
   · linear_combination' omega_pow_six * omega_pow_six * omega_pow_six * omega_pow_six * omega_pow_six
 
-/-
+/--
 Each kernel phase is nonzero.
 -/
 theorem kernelPhases_ne_zero (k : Fin 6) :
     kernelPhases k ≠ 0 := by
   fin_cases k <;> simp +decide [ kernelPhases, omega_ne_zero ]
 
-/-
+/--
 The kernel phases are distinct.
 -/
 theorem kernelPhases_injective : Function.Injective kernelPhases := by
@@ -257,7 +257,7 @@ def IsKernelTriple (α : ℂ) (g : Matrix (Fin 2) (Fin 2) ℂ)
     (h : Matrix (Fin 3) (Fin 3) ℂ) : Prop :=
   g = α • 1 ∧ h = (α⁻¹ ^ 3) • 1 ∧ α ^ 6 = 1
 
-/-
+/--
 **Trusted**: The number of sixth roots of unity is 6.
 -/
 theorem z6_kernel_card : Fintype.card (rootsOfUnity 6 ℂ) = 6 := by

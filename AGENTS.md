@@ -192,8 +192,6 @@ Mathlib.RepresentationTheory.*
 
 Guidelines:
 
-* Prefer small imports.
-* Do not import all of Mathlib without a strong reason.
 * Use explicit namespaces such as `PhysicsSM`, `PhysicsSM.Algebra.Octonion`, or `PhysicsSM.Lie.Exceptional`.
 * Public definitions and theorems should usually have docstrings.
 * Prefer small named lemmas over large fragile proofs.

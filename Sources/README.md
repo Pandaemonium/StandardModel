@@ -21,6 +21,10 @@ subdirectory, recording:
 
 ### Standard Model from division algebras (Furey program)
 
+- `Furey_Baez_Octonions_Standard_Model_Survey.md` — high-level survey of the
+  Furey, Baez, Dubois-Violette/Todorov, Krasnov, Boyle, and related
+  octonion/Clifford/Jordan-algebra approaches to the Standard Model.
+
 - `furey_thesis_2016` — Furey, "Standard model physics from an algebra?", PhD thesis, University of Waterloo, 2016. arXiv:1611.09182
   - Primary reference for the overall algebraic SM construction.
   - Convention: Baez mod-7 octonion labeling.
