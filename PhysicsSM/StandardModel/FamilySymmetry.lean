@@ -16,8 +16,8 @@ across the family orbit.
 ## Overview
 
 We define:
-- `CommutesWithLinearEquiv`: a predicate saying a linear operator commutes
-  with a linear equivalence.
+- `CommutesWithLinearEquiv`: a predicate saying a continuous linear operator
+  commutes with a continuous linear equivalence.
 - `eigenvector_transport` / `eigenvector_transport_symm`: eigenvectors are
   transported along the family equivalence and its inverse.
 - `InvariantUnderFamilyAction`: a predicate saying a function on an index
@@ -25,8 +25,8 @@ We define:
 - `ChargeTable`: a bundled table of electric charge, weak isospin T₃,
   and hypercharge for each family index.
 - `ChargeTable.SatisfiesGMN`: the Gell-Mann–Nishijima relation Q = T₃ + Y/2.
-- `ChargeTable.SatisfiesGMN.apply`: the GMN relation can be evaluated at any
-  family index.
+- `ChargeTable.gmn_transport`: the GMN relation transports along the
+  family action when the charge table is invariant.
 
 ## Claim boundary
 
@@ -39,18 +39,20 @@ namespace PhysicsSM.StandardModel.FamilySymmetry
 
 /-! ### Linear operator naturality -/
 
-/-- A linear operator `A` commutes with a linear equivalence `e` when
-`A` after `e` equals `e` after `A` pointwise. -/
+/-- A continuous linear operator `A` commutes with a continuous linear
+equivalence `e` when `A ∘ e = e ∘ A` pointwise. -/
 def CommutesWithLinearEquiv
     {K M : Type*} [Semiring K] [AddCommMonoid M] [Module K M]
-    (A : M →ₗ[K] M) (e : M ≃ₗ[K] M) : Prop :=
+    [TopologicalSpace K] [TopologicalSpace M]
+    (A : M →L[K] M) (e : M ≃L[K] M) : Prop :=
   ∀ x, A (e x) = e (A x)
 
 /-- If `A` commutes with `e` and `x` is a `λ`-eigenvector of `A`, then
 `e x` is also a `λ`-eigenvector. -/
 theorem eigenvector_transport
     {K M : Type*} [Semiring K] [AddCommMonoid M] [Module K M]
-    (A : M →ₗ[K] M) (e : M ≃ₗ[K] M) (lambda : K) (x : M)
+    [TopologicalSpace K] [TopologicalSpace M]
+    (A : M →L[K] M) (e : M ≃L[K] M) (lambda : K) (x : M)
     (hcomm : CommutesWithLinearEquiv A e)
     (heig : A x = lambda • x) :
     A (e x) = lambda • e x := by
@@ -60,15 +62,16 @@ theorem eigenvector_transport
 a `λ`-eigenvector whenever `x` is. -/
 theorem eigenvector_transport_symm
     {K M : Type*} [Semiring K] [AddCommMonoid M] [Module K M]
-    (A : M →ₗ[K] M) (e : M ≃ₗ[K] M) (lambda : K) (x : M)
+    [TopologicalSpace K] [TopologicalSpace M]
+    (A : M →L[K] M) (e : M ≃L[K] M) (lambda : K) (x : M)
     (hcomm : CommutesWithLinearEquiv A e)
     (heig : A x = lambda • x) :
     A (e.symm x) = lambda • e.symm x := by
   have hcomm_symm : CommutesWithLinearEquiv A e.symm := fun y => by
     have h := hcomm (e.symm y)
-    simp only [LinearEquiv.apply_symm_apply] at h
+    simp only [ContinuousLinearEquiv.apply_symm_apply] at h
     rw [h]
-    simp only [LinearEquiv.symm_apply_apply]
+    simp only [ContinuousLinearEquiv.symm_apply_apply]
   exact eigenvector_transport A e.symm lambda x hcomm_symm heig
 
 /-! ### Finite table naturality -/
@@ -110,13 +113,17 @@ def ChargeTable.InvariantUnderFamilyAction
 def ChargeTable.SatisfiesGMN {I : Type*} (t : ChargeTable I) : Prop :=
   ∀ i, t.electric i = t.weakT3 i + t.hypercharge i / 2
 
-/-- Direct application of the Gell-Mann-Nishijima relation at an index. -/
-theorem ChargeTable.SatisfiesGMN.apply
-    {I : Type*} (t : ChargeTable I)
+/-- If a charge table is invariant under a family action and satisfies
+the GMN relation, then the GMN relation also holds at every
+family-transformed index `g • i`. -/
+theorem ChargeTable.gmn_transport
+    {G I : Type*} [SMul G I] (t : ChargeTable I)
+    (_hinv : t.InvariantUnderFamilyAction G)
     (hgmn : t.SatisfiesGMN)
-    (i : I) :
-    t.electric i = t.weakT3 i + t.hypercharge i / 2 :=
-  hgmn i
+    (g : G) (i : I) :
+    t.electric (g • i) =
+      t.weakT3 (g • i) + t.hypercharge (g • i) / 2 :=
+  hgmn (g • i)
 
 /-- Alternative form of GMN transport that rewrites the transformed
 charges back to the original index using invariance. -/

@@ -1,6 +1,7 @@
 import Mathlib
 import PhysicsSM.Algebra.Octonion.ComplexLine
 import PhysicsSM.Algebra.Octonion.ComplexSplitting
+import PhysicsSM.Algebra.Octonion.Norm
 
 /-!
 # Algebra.Octonion.G2ComplexLine
@@ -47,6 +48,7 @@ structure FixingE111MulLinear where
   map_one : toFun 1 = 1
   map_mul : ∀ x y, toFun (x * y) = toFun x * toFun y
   fixes_e111 : toFun e111 = e111
+  map_conj : ∀ x, toFun (Octonion.conj x) = Octonion.conj (toFun x)
 
 /-! ## Helper: the conjugation action α(x) = e111 * (x * e111)
 
@@ -165,5 +167,35 @@ theorem commutes_with_J_on_triple
     (g : FixingE111MulLinear) (w : ComplexTriple) :
     g.toFun (e111 * w.toOctonion) = e111 * g.toFun w.toOctonion :=
   commutes_with_left_e111 g w.toOctonion
+
+/-! ## Norm preservation -/
+
+/-
+A `FixingE111MulLinear` map preserves the squared octonion norm.
+
+    **Proof.** Since `normSq x • 1 = x * conj x`, applying `g` gives
+    `g(normSq x • 1) = normSq x • 1` (by `map_smul` and `map_one`), and
+    `g(x * conj x) = g(x) * conj(g(x))` (by `map_mul` and `map_conj`).
+    Hence `normSq x • 1 = g(x) * conj(g(x)) = normSq(g(x)) • 1`, so
+    `normSq(g(x)) = normSq x`.
+-/
+theorem FixingE111MulLinear.normSq_preserved
+    (g : FixingE111MulLinear) (x : Octonion) :
+    Octonion.normSq (g.toFun x) = Octonion.normSq x := by
+  have h_normSq_def : ∀ x : Octonion,
+      Octonion.normSq x • (1 : Octonion) = x * Octonion.conj x :=
+    fun x ↦ normSq_eq_mul_conj x
+  have h_g_normSq_def :
+      ∀ x : Octonion, Octonion.normSq x • (1 : Octonion) =
+        g.toFun x * Octonion.conj (g.toFun x) := by
+    intros x
+    have := h_normSq_def x
+    have := congr_arg (g.toFun) this
+    simp at this;
+    grind +suggestions;
+  convert congr_arg
+    ( fun y => y.c0 ) ( h_g_normSq_def x ) |> Eq.symm using 1;
+  · simp +decide [ ← h_normSq_def ];
+  · simp +decide [ Octonion.smul_c0 ]
 
 end PhysicsSM.Algebra.Octonion.G2ComplexLine

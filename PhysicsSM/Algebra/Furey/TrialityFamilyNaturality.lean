@@ -18,8 +18,7 @@ Furey–Hughes triality role-permutation API.
 
 We provide:
 - `triality_cycle_eigenvector_transport`: specialization to the canonical
-  triality cycle `cycleLinearEquiv`, using the generic
-  `FamilySymmetry.eigenvector_transport`.
+  triality cycle `cycleLinearEquiv`.
 - `TrialityRoleChargeTable`: a charge table indexed by `TrialityRole`.
 - `RoleConstant`: predicate expressing that a charge table assigns the same
   values to all three triality roles.
@@ -53,13 +52,13 @@ theorem triality_cycle_eigenvector_transport
     {K M : Type*} [Semiring K] [AddCommMonoid M] [Module K M]
     (A : Module.End K (TrialityTriple M)) (lambda : K)
     (x : TrialityTriple M)
-    (hcomm :
-      CommutesWithLinearEquiv A
-        (TrialityTriple.cycleLinearEquiv (M := M) K))
+    (hcomm : ∀ y : TrialityTriple M,
+      A (TrialityTriple.cycleLinearEquiv (M := M) K y) =
+        TrialityTriple.cycleLinearEquiv (M := M) K (A y))
     (heig : A x = lambda • x) :
     A (TrialityTriple.cycleLinearEquiv (M := M) K x) =
-      lambda • TrialityTriple.cycleLinearEquiv (M := M) K x :=
-  eigenvector_transport A (TrialityTriple.cycleLinearEquiv K) lambda x hcomm heig
+      lambda • TrialityTriple.cycleLinearEquiv (M := M) K x := by
+  rw [hcomm x, heig, map_smul]
 
 /-! ## Charge-table naturality over `TrialityRole` -/
 

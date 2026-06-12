@@ -77,4 +77,10 @@ The sedenion modules imported here are draft-facing Aristotle results for the
 new zero-divisor research program. They are sorry-free finite theorem clusters,
 but they intentionally remain outside the trusted root while the convention and
 publication story mature.
+
+The Spin(10) ten-dimensional Fierz identity, formerly drafted here as
+`PhysicsSM.Draft.SpinorTenfoldFierzAristotle` behind a `native_decide`, has
+been kernel-cleaned and promoted to the trusted modules
+`PhysicsSM.Spinor.SpinorTenfoldFierzKernel` and
+`PhysicsSM.Spinor.SpinorTenfoldFierz`.
 -/

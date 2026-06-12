@@ -168,6 +168,7 @@ triality and family-symmetry stories.
 | New-result track | Family-symmetry naturality theorem | Highest | Potentially new theorem abstracting why triality/S3 family actions preserve gauge quantum numbers and anomaly cancellation |
 | Companion formalization | Furey-Hughes triality three-generation scaffold | High | Recent and directly aligned with existing `Triality*` files |
 | Foundation target | `O = C + C^3`, unitary/Hermitian API, and eventual `G2`/`SU(3)` bridge | High | Needed by Baez, Krasnov, and Furey, but the full stabilizer theorem remains heavier than the coordinate splitting |
+| Expository/formal bridge | Quunit/qubit/qutrit dictionary for `U(1)`, `SU(2)`, `SU(3)`, and `S(U(2) x U(3))` | High | Gives the Baez public-lecture motivation a precise Lean target and ties the `Z6` quotient to `C^2 + C^3` block geometry |
 | Medium-term formalization | Krasnov `Spin(9)`/`Spin(10)` centralizer theorem | Medium | Mathematically clean but requires serious Lie/Clifford infrastructure |
 | Medium-term formalization | Furey `Z2^5`-graded superalgebra | Medium | Recent finite algebra target; should wait until the Furey table and operator packages are publication-clean |
 | Medium-term comparison | Gresnigt/Gourlay `Cl(10)` with `S3` family symmetry | Medium | Very recent and promising; best treated as a second instance of the family-symmetry naturality theorem |
@@ -583,6 +584,7 @@ stabilizer characterization of the gauge group.
 | `Sources/John_Baez_exceptional.pdf` | Main source to formalize: Baez-Schwahn projective-geometry presentation |
 | `Sources/Baez_Octonions_Standard_Model_Talk_Notes.md` | Notes from related Baez talk material |
 | `Sources/Baez_Standard_Model_Octonions_Lean_Proof_Plan.md` | Slide-by-slide Lean theorem inventory for the 2021 talk |
+| Baez, `Standard Model - Part 3: Qubits` public lecture | Accessible source for the quunit/qubit/qutrit motivation behind `U(1)`, `SU(2)`, and `SU(3)` |
 | `Sources/Exceptional_Jordan_Projective_Geometry_Lit_Search.md` | Literature search and formalization strategy |
 | `AgentTasks/exceptional-jordan-projective-geometry-moonshot.md` | Aristotle handoff for the first large proof push |
 | `AgentTasks/aristotle-next-wave-2-2026-05-06.md` | Next six aggressive Aristotle jobs after the 2026-05-06 integration |
@@ -656,6 +658,7 @@ Dubois-Violette-Todorov block example.
 | Projections and projective geometry | `PhysicsSM/Draft/ExceptionalJordanProjectiveGeometry.lean` | `OP2Point`, `OP2Line`, `LiesOn`, standard octonionic line and complex projective plane | ✅ defined in draft |
 | Spin factor and `h₂(O)` | `PhysicsSM/Algebra/Jordan/H2O.lean`, `SpinFactor.lean` | Spin factor, `det = t² - x² - normSq(y)`, projections | ✅ trusted |
 | SM gauge group scaffold | `PhysicsSM/Gauge/StandardModelGroup.lean` | `S(U(2) × U(3))`, ℤ₆ center, SU(4) block | ✅ trusted |
+| Quunit/qubit/qutrit dictionary | `PhysicsSM/Gauge/QunitQubitQutritDictionary.lean` | `C`, `C^2`, `C^3`, block `C^2 ⊕ C^3`, and `S(U(2) x U(3))` motivation | planned |
 | Krasnov qubit | `PhysicsSM/Spinor/OctonionicQubit.lean` | `O²`, `rightMulE111_sq_neg` | ✅ trusted |
 | Automorphisms | `PhysicsSM/Algebra/Jordan/Automorphism.lean` | Jordan automorphisms of `h_3(O)` as stand-in for F₄ | trusted |
 | Stabilizers | `PhysicsSM/Algebra/Jordan/ProjectiveGeometry.lean`, `Stabilizer.lean`, plus draft frontier | Line/plane stabilizer predicates, standard-line subgroup facts, trusted common-stabilizer group closure | trusted subgroup API; isomorphism frontier remains draft |
@@ -808,21 +811,38 @@ Octonions?"**:
    - prove or draft the `Z6` kernel and quotient statement;
    - define the slide 18-21 block map into `SU(2) x SU(4)`.
 
-5. **`h_3(O)` / octonionic qutrit**:
+5. **Quunit/qubit/qutrit dictionary**:
+   - formalize the dictionary
+     `quunit = C`, `qubit = C^2`, `qutrit = C^3`;
+   - record that `U(1)` is the unitary symmetry of a complex line, `SU(2)`
+     acts on the weak `C^2` doublet, and `SU(3)` acts on the color `C^3`
+     triplet;
+   - prove that the block split `C^5 = C^2 ⊕ C^3` gives the compact matrix
+     target `S(U(2) x U(3))`;
+   - connect the product cover
+     `(U(1) x SU(2) x SU(3)) -> S(U(2) x U(3))` to the already-formalized
+     `Z6` kernel;
+   - relate the ordinary complex observables `h_2(C)` and `h_3(C)` to the
+     octonionic observables `h_2(O)` and `h_3(O)` as the precise version of
+     Baez's qubit/qutrit slogan;
+   - keep the claim boundary explicit: this is representation geometry and
+     Jordan-observable algebra, not a claim about quantum-computing hardware.
+
+6. **`h_3(O)` / octonionic qutrit**:
    - promote the safe coordinate model from draft to trusted Lean;
    - implement the Jordan product with explicit nonassociative
      parenthesization;
    - prove the block decomposition
      `h_3(O) ~= R x h_2(O) x O^2` for a chosen `h_2(O)` block.
 
-6. **`h_3(C)` splitting from a unit imaginary octonion**:
+7. **`h_3(C)` splitting from a unit imaginary octonion**:
    - define the embedded `h_3(C)` using the chosen complex line;
    - define the trace-orthogonal complement;
    - prove the coordinate description of the complement;
    - prove the induced complex structure squares to `-1`;
    - define the vector-space model `h_3(O) ~= h_3(C) x M_3(C)`.
 
-7. **Yokota/Dubois-Violette-Todorov stabilizer theorem**:
+8. **Yokota/Dubois-Violette-Todorov stabilizer theorem**:
    - state the subgroup preserving the `h_3(C)` splitting and complex
      structure as `(SU(3) x SU(3)) / Z3`;
    - define the action `(g,h)(X,M) = (gXg*, hMg*)`;
@@ -830,7 +850,7 @@ Octonions?"**:
    - leave full Jordan-product preservation and compact-group isomorphism in
      draft until the supporting Lie group infrastructure exists.
 
-8. **Intersection theorem**:
+9. **Intersection theorem**:
    - state the common stabilizer of the `h_3(C)` structure and chosen `h_2(O)`
      block;
    - prove, or keep as a sourced frontier theorem, that it is
@@ -838,7 +858,7 @@ Octonions?"**:
    - keep this separate from the later Baez-Schwahn pair-transitivity
      conjecture.
 
-9. **Krasnov octonionic-qubit endpoint**:
+10. **Krasnov octonionic-qubit endpoint**:
    - define `O^2` with right multiplication by `e111`;
    - prove the complex-structure facts;
    - state the centralizer theorem inside `Spin(9)`;
@@ -1030,41 +1050,109 @@ finite algebraic Standard Model tables. It would not claim that triality or
    boundary, and add a citation-friendly theorem index. This is the nearest
    ITP/formalization paper target.
 
-2. **Publication target B: Furey charge and electroweak table** - complete the
+2. **Publication target A2: quunit/qubit/qutrit bridge** - add
+   `PhysicsSM/Gauge/QunitQubitQutritDictionary.lean` as an expository theorem
+   island. It should formalize the complex vector spaces `C`, `C^2`, `C^3`,
+   the block split `C^2 ⊕ C^3`, the `S(U(2) x U(3))` matrix target, and the
+   connection to the existing `Z6` product-cover scaffold. This gives Baez's
+   public quunit/qubit/qutrit slogan a precise Lean-facing statement without
+   claiming new physics.
+
+3. **Publication target B: Furey charge and electroweak table** - complete the
    bridge from Furey's ladder-operator/number-operator computations to the
    conventional one-generation table. Prove the exact charge eigenvalues,
    weak-isospin/hypercharge assignments, and `Q = T3 + Y/2` in the chosen
    convention.
 
-3. **New-result target: family-symmetry naturality** - create the generic
+4. **New-result target: family-symmetry naturality** - create the generic
    `FamilySymmetry` and `FamilyAnomalyNaturality` layer. Prove that a family
    action commuting with gauge/charge operators transports eigenvalues and
    preserves finite anomaly sums across family-equivalent sectors.
 
-4. **Furey-Hughes triality instantiation** - instantiate the generic
+5. **Furey-Hughes triality instantiation** - instantiate the generic
    family-symmetry theorem for the existing `TrialityRole` and
    `TrialityTriple` permutation-linear API. Keep the claim to finite
    role-permutation linear algebra and inherited gauge tables, not the full
    `tri(C) + tri(H) + tri(O)` Lie algebra.
 
-5. **Complex splitting and `SU(3)` bridge** - keep strengthening the
+6. **Complex splitting and `SU(3)` bridge** - keep strengthening the
    `O = C + C^3` API, Hermitian/unitary coordinate facts, and `G2`-to-`C^3`
    action scaffolds. Do not claim the full `G2` stabilizer is `SU(3)` until
    the group-isomorphism statement is explicitly formalized.
 
-6. **DVT/Yokota and Baez-Schwahn frontier** - continue sharpening the
+7. **DVT/Yokota and Baez-Schwahn frontier** - continue sharpening the
    block-action and complement-action scaffolds below the compact Lie group
    isomorphism layer. Keep Baez-Schwahn transitivity marked as a frontier
    statement unless a published proof or equivalent homogeneous-space theorem
    is found.
 
-7. **Krasnov/Spin(10) refinement** - replace predicate-level pure-spinor and
-   centralizer scaffolds with explicit linear/exterior-algebra equations where
-   feasible, while keeping full Standard Model centralizer claims in draft.
+8. **Krasnov/Spin(10) refinement** - largely done at the quadric level
+   (2026-06-10): the concrete Fock model (`Spinor/SpinorTenfoldFock`), honest
+   Cartan purity quadric and the Krasnov-collinearity equivalence
+   (`Spinor/SpinorTenfoldPurity`), CAR/Clifford relation
+   (`Spinor/SpinorTenfoldCAR`), symmetry of the gamma-bilinear and single-`q`
+   Krasnov condition (`Spinor/SpinorTenfoldGammaSymm`), color-axis `d = 3`
+   computation (`Spinor/SpinorTenfoldColorAxis`), Cayley-plane `D5` chart and
+   rank-one collinearity (`Algebra/Jordan/CayleyPlaneD5Chart`), and the
+   physical hypercharge table for the `16`
+   (`StandardModel/SpinorFockHypercharge`) are all trusted and axiom-clean.
+   The ten-dimensional Fierz identity and unconditional Proposition 1(b) are
+   now also trusted and axiom-clean (`Spinor/SpinorTenfoldFierzKernel`,
+   `Spinor/SpinorTenfoldFierz`; Aristotle job
+   `93e29d35-37f8-4c3c-bad7-02b5fca82612` replaced the last `native_decide`
+   by a closed-form reduction plus kernel `decide`; job
+   `1bca1a38-8f7e-4e61-ad1a-13e5f7277d2d`, integrated 2026-06-10, cut the
+   `cancel_all` clean-build cost from ~7 minutes to ~30 seconds via a `Nat`
+   bit-mask mirror with `enc32`/`dec32` bridge decides). The Baez-Huerta
+   octonionic program is complete through the bioctonionic stage: the
+   trusted `Algebra/Octonion/SpinorFierz` proves the diagonal 3-psi rule and
+   Clifford relation of the octonionic D=10 spinor model from alternativity,
+   and the trusted `Algebra/Octonion/SpinorFierzPolarized` (job `04babfce`,
+   integrated 2026-06-10) adds the polarized trilinear 3-Psi rule, the
+   bioctonionic cancellation laws, and the bioctonionic Clifford + Fierz
+   identities. The final stage is in flight: the explicit bioctonion <->
+   Fock bridge is fully defined in the trusted
+   `Spinor/SpinorTenfoldOctonionBridge` (oracle-generated `octImage` table,
+   null-vector `iotaV`, both chirality inverses; all statements verified by
+   `Scripts/oracle/validate_bioctonion_fock_bridge.py` in exact arithmetic),
+   with the intertwining/inverse/quadric targets and the already-derived
+   payoff theorems (`purity_iff_spinorSquareC`,
+   `fierz_clifford_via_octonions`) as Aristotle job
+   `4c2cd9ac-18bc-4e6a-8e49-4a8966da1890`
+   (`Draft/SpinorTenfoldOctonionBridgeAristotle`, wave 5). The group-level
+   program: the infinitesimal `so(10)` action
+   (`Draft/SpinorTenfoldSO10ActionAristotle`; job `d5acb603` in progress) is
+   joined by the physical hypercharge generator `Y = sum y_i rho(e_i ^ f_i)`
+   (Prop S3 infinitesimal; `Draft/SpinorTenfoldHyperchargeOpAristotle`; job
+   `ee0d7409-c8be-4707-860c-ebfc7969c984`) and the basis-pair annihilator
+   trichotomy `dim(N_S cap N_T) = 5 - |S Delta T| in {1,3,5}` (Prop 3 normal
+   forms; `Draft/SpinorTenfoldBasisTrichotomyAristotle`; job `5662f6a5`,
+   COMPLETE and integrated 2026-06-10 - all seven targets proved, including
+   the explicit `pairAnnihilatorEquivCoord` linear equivalence). The
+   group-level program proper started 2026-06-10 (wave 6): `Spin(10)` is
+   modeled algebraically as `evenCliffordGroup` - the subgroup of
+   `(Module.End C FockSpinor)^x` generated by pair products of anisotropic
+   Clifford units - in the trusted `Spinor/SpinorTenfoldCliffordGroup`
+   (gamma units with explicit inverses, mode-flip units, scalar units,
+   twisted reflection; no exponentials or analysis anywhere). Wave 6
+   Aristotle jobs: `3408462a` (conjugation = twisted reflection, B10/Q10
+   invariance, chirality preservation, conjugation stability of the vector
+   image; `Draft/SpinorTenfoldCliffordConjAristotle`) and `701dda9e`
+   (mode-flip action on basis spinors and MARKED orbit transitivity on the
+   even basis, with the vacuum-to-weak Krasnov anchor derived;
+   `Draft/SpinorTenfoldBasisOrbitAristotle`). Remaining after wave 6: the
+   spinor Witt theorem (every pure spinor lies in the vacuum orbit), the
+   vector representation `evenCliffordGroup -> SO(10, C)`, pair
+   transitivity (Lemma S1), the stabilizer computation (Lemma S2), and the
+   `S(U(2) x U(3))` Selector Theorem of `Sources/Spin10_stabilizer.txt`.
+   Note: `evenCliffordGroup` is `GSpin` (contains all nonzero scalars);
+   the spinor-norm-1 cut to `Spin(10)` proper comes later via the
+   Chevalley-pairing adjoint and must be done before any theorem is
+   advertised as a `Spin(10)` statement.
 
-8. **E8/code-lattice alignment** - connect the integral-octonion 240-root seed
+9. **E8/code-lattice alignment** - connect the integral-octonion 240-root seed
    and Construction A Hamming-E8 lattice to existing `Lie.Exceptional.E8` and,
    later, Sphere-Packing-Lean definitions.
 
-9. **Generated-proof hygiene** - clean nonsemantic linter warnings in
+10. **Generated-proof hygiene** - clean nonsemantic linter warnings in
    Aristotle-generated trusted files without changing theorem statements.

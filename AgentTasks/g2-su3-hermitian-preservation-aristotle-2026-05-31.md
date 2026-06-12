@@ -1,13 +1,14 @@
 # Aristotle task: G₂ stabilizer Hermitian preservation toward SU(3)
 
 **Agent**: Aristotle
-**Status**: Submitted
+**Status**: Integrated
 **Priority**: High
 **Prepared**: 2026-05-31
 **Submitted**: 2026-05-31
 **Job ID**: `68da8354-d372-4d50-b96f-625692c580c5`
 **Submission project**: `AgentTasks/aristotle-submit/paper-wave2-20260531`
-**Output**: `AgentTasks/aristotle-output/g2-su3-hermitian-preservation-20260531`
+**Output**: `AgentTasks/aristotle-output/g2-hermitian-preservation-20260601`
+**Integrated**: 2026-06-01
 **Type**: Major advance toward Stab_{G₂}(e111) ≅ SU(3)
 
 ## Goal

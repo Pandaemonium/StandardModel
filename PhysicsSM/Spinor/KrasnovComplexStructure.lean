@@ -354,4 +354,17 @@ theorem rightMulE111_complement_coords (w : ComplexTriple) :
       ⟨w.w1_im, -w.w1_re, w.w2_im, -w.w2_re, w.w3_im, -w.w3_re⟩ := by
   ext <;> simp [ComplexTriple.toOctonion, e111, Octonion.toComplexTriple]
 
+/-! ## J² = -id -/
+
+/-- The complex structure `J = rightMulE111` squares to minus the identity
+on `𝕆²`. This is the defining algebraic property of a complex structure. -/
+theorem rightMulE111_sq_neg (q : OctonionicQubit) :
+    rightMulE111 (rightMulE111 q) = -q :=
+  OctonionicQubit.rightMulE111_sq_neg q
+
+/-- Function-level form of `rightMulE111_sq_neg`. -/
+theorem rightMulE111_sq_neg_linearMap :
+    (rightMulE111 ∘ rightMulE111) = fun q => -q :=
+  funext rightMulE111_sq_neg
+
 end PhysicsSM.Spinor.KrasnovComplexStructure

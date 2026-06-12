@@ -1,6 +1,7 @@
 import Mathlib
 import PhysicsSM.Algebra.Jordan.H3O
 import PhysicsSM.Algebra.Octonion.ComplexSplitting
+import PhysicsSM.Algebra.Octonion.Norm
 
 /-!
 # Algebra.Jordan.TraceForm
@@ -417,5 +418,73 @@ theorem toComplementPart_neg (a : H3O) :
     toComplementPart (-a) = -toComplementPart a := by
   ext <;> simp [toComplementPart, ComplexTriple.toOctonion,
     Octonion.toComplexTriple]
+
+/-! ## Positive definiteness of the trace form -/
+
+/-- The octonion inner product of an element with itself equals its squared norm. -/
+theorem octonionInner_self_eq_normSq (a : Octonion) :
+    octonionInner a a = normSq a := by
+  simp [octonionInner, normSq]
+  ring
+
+/-- The trace form self-pairing expressed as a sum of squares and norms. -/
+theorem traceForm_self_eq (a : H3O) :
+    traceForm a a =
+      a.alpha ^ 2 + a.beta ^ 2 + a.gamma ^ 2 +
+      2 * normSq a.x + 2 * normSq a.y + 2 * normSq a.z := by
+  rw [traceForm_eq]
+  rw [octonionInner_self_eq_normSq, octonionInner_self_eq_normSq,
+      octonionInner_self_eq_normSq]
+  ring
+
+/-- The trace form self-pairing is non-negative. -/
+theorem traceForm_nonneg (a : H3O) :
+    0 ≤ traceForm a a := by
+  rw [traceForm_self_eq]
+  have hx := normSq_nonneg a.x
+  have hy := normSq_nonneg a.y
+  have hz := normSq_nonneg a.z
+  nlinarith [sq_nonneg a.alpha, sq_nonneg a.beta, sq_nonneg a.gamma]
+
+/-- The trace form self-pairing vanishes if and only if the element is zero. -/
+theorem traceForm_eq_zero_iff (a : H3O) :
+    traceForm a a = 0 ↔ a = 0 := by
+  constructor
+  · intro h
+    rw [traceForm_self_eq] at h
+    have hx := normSq_nonneg a.x
+    have hy := normSq_nonneg a.y
+    have hz := normSq_nonneg a.z
+    have hα_sq := sq_nonneg a.alpha
+    have hβ_sq := sq_nonneg a.beta
+    have hγ_sq := sq_nonneg a.gamma
+    have hα_zero : a.alpha ^ 2 = 0 := by nlinarith
+    have hβ_zero : a.beta ^ 2 = 0 := by nlinarith
+    have hγ_zero : a.gamma ^ 2 = 0 := by nlinarith
+    have hx_zero : normSq a.x = 0 := by nlinarith
+    have hy_zero : normSq a.y = 0 := by nlinarith
+    have hz_zero : normSq a.z = 0 := by nlinarith
+    have hx_coord : a.x = 0 := (normSq_eq_zero a.x).mp hx_zero
+    have hy_coord : a.y = 0 := (normSq_eq_zero a.y).mp hy_zero
+    have hz_coord : a.z = 0 := (normSq_eq_zero a.z).mp hz_zero
+    have hα_coord : a.alpha = 0 := by nlinarith [sq_abs a.alpha]
+    have hβ_coord : a.beta = 0 := by nlinarith [sq_abs a.beta]
+    have hγ_coord : a.gamma = 0 := by nlinarith [sq_abs a.gamma]
+    ext <;> simp_all
+  · intro h
+    rw [h]
+    simp
+
+/-- `traceForm a a = 0` implies `a = 0`. -/
+theorem traceForm_zero_of_self_zero (a : H3O)
+    (h : traceForm a a = 0) : a = 0 :=
+  (traceForm_eq_zero_iff a).mp h
+
+/-- The trace form is positive definite: `traceForm a a > 0` for `a ≠ 0`. -/
+theorem traceForm_posDef (a : H3O) (ha : a ≠ 0) :
+    0 < traceForm a a := by
+  rcases lt_or_eq_of_le (traceForm_nonneg a) with h | h
+  · exact h
+  · exact False.elim (ha ((traceForm_eq_zero_iff a).mp h.symm))
 
 end PhysicsSM.Algebra.Jordan.H3O
