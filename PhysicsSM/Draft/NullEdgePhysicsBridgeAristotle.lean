@@ -69,13 +69,15 @@ theorem spinorFanBivectorMass_eq_momentum_det {n : Nat}
     (psi : Fin n -> CSpinor) :
     (finBundleMomentum psi).det =
       (spinorFanBivectorMass psi : Complex) := by
-  sorry
+  unfold spinorFanBivectorMass
+  exact fin_bundle_det_eq_ofReal_pluckerMassReal psi
 
 /-- The finite bivector mass defect is nonnegative. -/
 theorem spinorFanBivectorMass_nonneg {n : Nat}
     (psi : Fin n -> CSpinor) :
     0 <= spinorFanBivectorMass psi := by
-  sorry
+  unfold spinorFanBivectorMass
+  exact finPairwisePluckerMassReal_nonneg psi
 
 /--
 The finite massless locus is exactly a common projective spinor direction.
@@ -87,7 +89,9 @@ theorem spinorFanBivectorMass_zero_iff_common_direction
     spinorFanBivectorMass psi = 0 <->
       exists c : Fin n -> Complex,
         forall i : Fin n, psi i = c i • psi base := by
-  sorry
+  unfold spinorFanBivectorMass
+  rw [← Complex.ofReal_eq_zero, ← fin_bundle_det_eq_ofReal_pluckerMassReal]
+  exact fin_bundle_mass_zero_iff_common_direction psi base hbase
 
 /--
 Twistor-chart version of the same massless locus, with the determinant
@@ -101,7 +105,7 @@ theorem twistorFanMass_zero_iff_common_pi_direction
       exists c : Fin n -> Complex,
         forall i : Fin n,
           (Z.twistor i).pi = c i • (Z.twistor base).pi := by
-  sorry
+  exact multiTwistorMassSqDetConvention_eq_zero_iff_common_pi_direction Z base hbase
 
 /-! ## 2. Finite Abelian Stokes / BF-action additivity -/
 
@@ -128,7 +132,13 @@ theorem additiveDefect_verticalStack_eq_sum
     (Ps : List (PathPair G)) :
     chi (pathPairDefect (verticalStack Ps)) =
       additiveDefectSum chi Ps := by
-  sorry
+  induction Ps with
+  | nil =>
+      simp [verticalStack, identityPathPair, pathPairDefect_flatPathPair,
+        additiveDefectSum, h_one]
+  | cons P Ps ih =>
+      rw [verticalStack, pathPairDefect_verticalCompose_comm, h_mul, ih]
+      simp [additiveDefectSum]
 
 /-! ## 3. Higgs/Yukawa permission for chirality flips -/
 
@@ -152,7 +162,20 @@ theorem permittedChiralityFlip_iff_yukawa_channel
       exists v : YukawaFlip,
         left = YukawaFlip.leftMultiplet v /\
         right = YukawaFlip.rightMultiplet v := by
-  sorry
+  unfold PermittedChiralityFlip
+  constructor
+  · rintro ⟨H, hlegal⟩
+    obtain ⟨v, hv⟩ := (candidateGaugeLegal_iff_exists_yukawaFlip _).1 hlegal
+    exact ⟨v, congrArg CandidateYukawaVertex.left hv,
+      congrArg CandidateYukawaVertex.right hv⟩
+  · rintro ⟨v, hl, hr⟩
+    refine ⟨higgsInsertion v, ?_⟩
+    have heq :
+        ({ left := left, right := right, higgs := higgsInsertion v } :
+            CandidateYukawaVertex) = candidateOfYukawaFlip v := by
+      rw [hl, hr]; rfl
+    rw [heq]
+    exact candidateOfYukawaFlip_gaugeLegal v
 
 /-! ## 4. Observable-relative nullity diagnostics -/
 
@@ -167,7 +190,10 @@ theorem quotient_incidence_internal_edge_eq_zero
     {V B : Type*} [DecidableEq B]
     (pi : V -> B) (u v : V) (h : pi u = pi v) :
     quotientIncidence pi u v = 0 := by
-  sorry
+  funext b
+  unfold quotientIncidence
+  rw [h]
+  simp
 
 /-- A directed edge used for exact finite gauge phases. -/
 structure OrientedEdge (V : Type*) where
@@ -188,20 +214,21 @@ theorem exact_two_step_cycle_holonomy_trivial
     {V G : Type*} [Group G] (a : V -> G) (u v : V) :
     exactEdgePhase a { source := u, target := v } *
       exactEdgePhase a { source := v, target := u } = 1 := by
-  sorry
+  unfold exactEdgePhase
+  group
 
 /-- Boundary chains are homology-null in the finite order-complex model. -/
 theorem homology_null_boundary_chain
     {V : Type*} (s : Simplex V) :
     chainBoundary (simplexBoundary s) = 0 := by
-  sorry
+  exact chainBoundary_simplexBoundary_eq_zero s
 
 /-- Exact cochains are observable-null on cohomology: every coboundary is a cocycle. -/
 theorem exact_cochain_is_cocycle
     {V : Type*} (f : IntegralCochain V)
     (hf : IsCoboundary f) :
     IsCocycle f := by
-  sorry
+  exact coboundary_is_cocycle f hf
 
 /-! ## 5. Low-mode spectral nullity as a rank-one edge score -/
 
@@ -229,7 +256,14 @@ theorem realEdgeIncidence_dot_eq_endpoint_difference
     {V : Type*} [Fintype V] [DecidableEq V]
     (u v : V) (phi : V -> Real) :
     realDot (realEdgeIncidence u v) phi = phi u - phi v := by
-  sorry
+  unfold realDot realEdgeIncidence
+  have hterm : ∀ x : V,
+      ((if x = u then (1 : Real) else 0) - (if x = v then (1 : Real) else 0))
+          * phi x
+        = (if x = u then phi x else 0) - (if x = v then phi x else 0) := by
+    intro x; split_ifs <;> ring
+  simp only [hterm, Finset.sum_sub_distrib, Finset.sum_ite_eq',
+    Finset.mem_univ, if_true]
 
 /--
 The rank-one edge quadratic form is the weighted endpoint-difference score.
@@ -239,7 +273,8 @@ theorem rankOne_edge_form_eq_weighted_modeScore
     (w : Real) (u v : V) (phi : V -> Real) :
     w * (realDot (realEdgeIncidence u v) phi) ^ 2 =
       w * edgeModeScore u v phi := by
-  sorry
+  rw [realEdgeIncidence_dot_eq_endpoint_difference]
+  rfl
 
 /-! ## 6. Algebraic Dirac mass-gap square -/
 
@@ -256,7 +291,16 @@ theorem chiral_mass_square_matrix
     (h_gamma_sq : Gamma * Gamma = 1) :
     (D + m • Gamma) * (D + m • Gamma) =
       D * D + (m * m) • (1 : Matrix n n Complex) := by
-  sorry
+  have hexpand :
+      (D + m • Gamma) * (D + m • Gamma)
+        = D * D + m • (D * Gamma + Gamma * D)
+            + (m * m) • (Gamma * Gamma) := by
+    rw [add_mul, mul_add, mul_add]
+    rw [Matrix.mul_smul, Matrix.smul_mul, Matrix.smul_mul, Matrix.mul_smul,
+      smul_smul]
+    rw [smul_add]
+    abel
+  rw [hexpand, h_anti, h_gamma_sq, smul_zero, add_zero]
 
 /--
 Eigenvector form of the same mass-gap identity: if `D^2 psi = lambda psi`,
@@ -271,7 +315,9 @@ theorem chiral_mass_square_on_eigenvector
     (h_eigen : (D * D).mulVec psi = lambda • psi) :
     (((D + m • Gamma) * (D + m • Gamma)).mulVec psi) =
       (lambda + m * m) • psi := by
-  sorry
+  rw [chiral_mass_square_matrix D Gamma m h_anti h_gamma_sq]
+  rw [Matrix.add_mulVec, h_eigen, Matrix.smul_mulVec, Matrix.one_mulVec,
+    add_smul]
 
 end PhysicsSM.Draft.NullEdgePhysicsBridge
 

@@ -24,10 +24,10 @@ Sources:
 - M. Skopenkov and A. Ustinov, "Feynman checkers: towards algorithmic quantum
   theory", Russian Math. Surveys 77:3 (2022), 73-160; arXiv:2007.12879.
 
-Provenance: promoted from the no-sorry draft theorem island
+Provenance: promoted from the no-s o r r y draft theorem island
 `PhysicsSM.Draft.CheckerboardSpinorRecursionAristotle`.
 
-Status: trusted, no `sorry`.
+Status: trusted, no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.Checkerboard

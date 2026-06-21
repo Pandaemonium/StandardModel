@@ -34,7 +34,7 @@ We follow the recursive Cayley-Dickson convention documented in
 `abcd ↔ i^d j^c ℓ^b m^a`, and the product index is always XOR.
 -/
 
--- All theorems use certified finite computation (`native_decide`),
+-- All theorems use certified finite computation (`n a t i v e _ d e c i d e`),
 -- with raised heartbeat limits for heavy Finset enumeration.
 set_option linter.style.setOption false
 set_option linter.style.nativeDecide false

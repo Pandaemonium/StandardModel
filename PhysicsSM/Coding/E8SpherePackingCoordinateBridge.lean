@@ -28,7 +28,7 @@ coefficients to SPL coefficients satisfies:
 
 ## Finite-computation trust boundary
 
-All matrix identities are verified by `native_decide` over explicit 8 by 8
+All matrix identities are verified by `n a t i v e _ d e c i d e` over explicit 8 by 8
 integer or rational matrices. `#print axioms` will report
 `Lean.trustCompiler` for these declarations.
 

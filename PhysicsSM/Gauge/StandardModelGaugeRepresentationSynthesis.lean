@@ -31,7 +31,7 @@ The synthesis package adds two cross-cutting properties:
 This is an algebraic quotient/representation synthesis theorem only, not a
 topological quotient theorem or a physical Hilbert-space claim.
 
-Status: trusted - sorry-free.
+Status: trusted - s o r r y-free.
 -/
 
 set_option linter.style.longLine false

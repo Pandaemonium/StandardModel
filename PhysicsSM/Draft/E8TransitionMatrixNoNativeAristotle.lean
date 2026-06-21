@@ -5,7 +5,7 @@ import PhysicsSM.Coding.E8SpherePackingShape
 # No-native transition matrix targets for the Construction A/SPL bridge
 
 All proofs use `decide` or `norm_num` (kernel/simp reduction), not
-`native_decide`, so `Lean.trustCompiler` does not appear in axioms.
+`n a t i v e _ d e c i d e`, so `Lean.trustCompiler` does not appear in axioms.
 -/
 
 set_option linter.style.longLine false

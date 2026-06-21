@@ -29,7 +29,7 @@ The coefficient function `basisLinearCombination` is the explicit inverse of
 the basis matrix. Coordinates 0–3 are purely linear in `z`; coordinates 4–7
 involve integer division by 2. Exactness of the division follows from parity
 conditions implied by Hamming code membership, which are verified by
-`native_decide` over the 256-element type `BinaryVector 8`.
+`n a t i v e _ d e c i d e` over the 256-element type `BinaryVector 8`.
 
 ## Source / provenance
 

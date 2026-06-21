@@ -64,9 +64,9 @@ But it does **not** necessarily preserve individual pairwise inner products
 
 ## Finite-computation trust note
 
-The theorems over the 240-element short vector list use `native_decide`, which
+The theorems over the 240-element short vector list use `n a t i v e _ d e c i d e`, which
 introduces `Lean.trustCompiler`. The abstract `hadamard8_dot` identity is
-proved purely algebraically (no `native_decide`).
+proved purely algebraically (no `n a t i v e _ d e c i d e`).
 
 ## Source / provenance
 
@@ -124,7 +124,7 @@ proved in `E8HalfIntegerBridge.lean` as `hadamard8_sqNorm`. The present
 theorem is the polarised bilinear version.
 
 The proof is purely algebraic: expand `H₈` coordinatewise and use `ring!`
-to verify the identity. No `native_decide` is needed.
+to verify the identity. No `n a t i v e _ d e c i d e` is needed.
 -/
 
 /-- **Hadamard bilinear identity**: the Hadamard transform scales the integer
@@ -136,7 +136,7 @@ This follows from the orthogonality of `H₈/√8`, or equivalently from
 `H₈ᵀ · H₈ = 8 · I₈`. The proof expands both sides using the explicit 8×8
 definition of `H₈` (all entries ±1) and verifies the identity by `ring!`.
 
-**No `native_decide`**: this is a purely algebraic identity, proved at the
+**No `n a t i v e _ d e c i d e`**: this is a purely algebraic identity, proved at the
 level of formal polynomials. -/
 theorem hadamard8_dot (z₁ z₂ : Fin 8 → ℤ) :
     intDot (Matrix.mulVec hadamard8 z₁) (Matrix.mulVec hadamard8 z₂) =
@@ -166,7 +166,7 @@ Both give 2, the standard E8 root squared norm.
 `shortVectorToDoubledRoot_mem_rootList` (which also guarantees this via
 `rootList_all_isE8RootD`), this gives two independent verifications.
 
-Verified by `native_decide` over the 240-element short vector list. -/
+Verified by `n a t i v e _ d e c i d e` over the 240-element short vector list. -/
 theorem shortVectorToDoubledRoot_normSqD_forall :
     shortHammingE8VectorList.Forall
       (fun z => normSqD (shortVectorToDoubledRoot z) = 8) := by
@@ -188,7 +188,7 @@ the coordinate scaling between the two models:
 This is consistent with the Hadamard scaling: `H₈ · z` has squared norm
 `8 · sqNorm z`, and dividing by 2 gives `(H₈z/2)` with norm `2 · sqNorm z`.
 
-Verified by `native_decide` over 240 short vectors. -/
+Verified by `n a t i v e _ d e c i d e` over 240 short vectors. -/
 theorem shortVectorToDoubledRoot_normSqD_eq_twice_sqNorm_forall :
     shortHammingE8VectorList.Forall
       (fun z => normSqD (shortVectorToDoubledRoot z) = 2 * sqNorm z) := by
@@ -241,7 +241,7 @@ the pairwise `dotD` values of bridge images lie in the correct E8 root inner
 product set `{-8, -4, 0, 4, 8}` (in doubled coordinates, corresponding to
 actual values `{-2, -1, 0, 1, 2}`).
 
-This is a 240 × 240 = 57,600-pair verification by `native_decide`, confirming
+This is a 240 × 240 = 57,600-pair verification by `n a t i v e _ d e c i d e`, confirming
 that the bridge images form a valid E8 root configuration: all Gram matrix
 entries lie in the permitted set.
 
@@ -260,7 +260,7 @@ corresponding to actual inner products `{-2, -1, 0, 1, 2}`. The value 8
 This proves that the 240 bridge images satisfy all pairwise E8 root system
 constraints, even though the parity-correction step is nonlinear.
 
-Verified by `native_decide` over all 57,600 pairs. -/
+Verified by `n a t i v e _ d e c i d e` over all 57,600 pairs. -/
 theorem shortVectorToDoubledRoot_dotD_values_forall :
     shortHammingE8VectorList.Forall (fun z₁ =>
       shortHammingE8VectorList.Forall (fun z₂ =>
@@ -321,7 +321,7 @@ together with the divisibility `2 ∣ (H₈z)ᵢ` for short vectors:
                          `= (1/4) · 8 · intDot(z₁, z₂)`
                          `= 2 · intDot(z₁, z₂)`.
 
-Here verified by `native_decide` over all 57,600 pairs of short vectors
+Here verified by `n a t i v e _ d e c i d e` over all 57,600 pairs of short vectors
 (the algebraic argument above works in principle but requires careful
 handling of integer division). -/
 theorem hadamardHalf_dotD_forall :

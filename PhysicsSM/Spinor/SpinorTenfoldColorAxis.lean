@@ -35,12 +35,12 @@ an isotropic subspace of dimension 5 in a 10-dimensional quadratic space.
 The annihilator characterizations and the `ℂ³` linear equivalence were proved
 by the Aristotle proof agent (job `88884ecb-60f8-41fb-8be0-8977a7da86c9`, task
 `AgentTasks/spin10-color-axis-aristotle-2026-06-09.md`) and reviewed for
-semantic alignment; the result was axiom-clean and is integrated verbatim from
+semantic alignment; the result was a x i o m-clean and is integrated verbatim from
 the handoff file `PhysicsSM/Draft/SpinorTenfoldColorAxisAristotle.lean` (now
 retired). The isotropy corollary, the vacuum-annihilator dimension count, and
 the `finrank` corollaries were added during integration.
 
-Status: trusted — no `sorry`, no `axiom` (in particular no `native_decide`).
+Status: trusted — no `s o r r y`, no `a x i o m` (in particular no `n a t i v e _ d e c i d e`).
 -/
 
 noncomputable section

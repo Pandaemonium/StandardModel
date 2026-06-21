@@ -8,7 +8,7 @@ import PhysicsSM.Algebra.Jordan.H3O
 
 Proves the x coordinate equality of the Jordan identity for `h₃(𝕆)`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3OJordan

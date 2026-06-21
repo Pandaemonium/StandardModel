@@ -38,8 +38,8 @@ Short vectors fall into two families:
 
 ## Finite-computation trust note
 
-All verification theorems use `native_decide`. This means `#print axioms`
-will report Lean's `trustCompiler` axiom. This should be acknowledged in
+All verification theorems use `n a t i v e _ d e c i d e`. This means `#print axioms`
+will report Lean's `trustCompiler` a x i o m. This should be acknowledged in
 any publication citing these results.
 
 ## Source / provenance

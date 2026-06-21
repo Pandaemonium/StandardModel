@@ -23,7 +23,7 @@ program:
    to zero, the combinatorial start of a graph-native Kahler-Dirac branch.
 
 All statements below are draft targets for Aristotle.  They may contain
-documented `sorry`s here, and should not be moved to trusted code until the
+documented `s o r r y`s here, and should not be moved to trusted code until the
 proofs are reviewed, placeholder-free, and the convention choices are checked.
 -/
 

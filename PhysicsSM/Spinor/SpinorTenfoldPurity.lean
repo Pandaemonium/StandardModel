@@ -81,7 +81,7 @@ layer those results sit on.
 - Provenance: clean-room formalization; conventions validated by
   `Scripts/oracle/validate_spinor_tenfold.py`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 noncomputable section

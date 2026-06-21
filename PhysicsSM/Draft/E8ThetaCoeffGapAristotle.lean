@@ -33,7 +33,7 @@ routes include:
 3. import a sufficiently strong classical representation-number theorem for
    E8.
 
-This file also contains the sorry-free reduction theorem
+This file also contains the s o r r y-free reduction theorem
 `hammingThetaConvolutionCoeff_eq_e4Coeff_of_weight4_form`.  It shows that the
 main coefficient theorem follows from a single analytic hypothesis: the
 Construction A E8 theta function has been constructed as a `ModularForm Γ(1) 4`
@@ -258,7 +258,7 @@ is the classical E8 representation-number formula: the number of lattice
 vectors with unscaled Construction A norm `4*n` is `240 * sigma3 n`.
 
 Proved via the rank-8 theta modular form `thetaE8_MF` from `E8ThetaDim8MF`:
-1. `thetaE8_MF_eq_E4` shows the E8 theta series equals E₄ (sorry-free).
+1. `thetaE8_MF_eq_E4` shows the E8 theta series equals E₄ (s o r r y-free).
 2. The q-expansion extraction + shell count bridge in `E8ThetaMFBridgeAristotle`
    connects the theta Fourier coefficients to `hammingThetaConvolutionCoeff`.
 3. Since `thetaE8_MF = E₄`, the q-expansion coefficients match E₄'s.

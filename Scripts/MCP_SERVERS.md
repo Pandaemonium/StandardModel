@@ -58,6 +58,37 @@ therefore pinned to 3.12 (`uv tool install --python 3.12 "lean-explore[local]"`
 and `uvx --python 3.12 ...`). The downloaded index is independent of the Python
 version, so re-pinning does not refetch it.
 
+**Two Qwen models must be pre-cached (or searches hang).** The local backend
+uses `Qwen/Qwen3-Embedding-0.6B` to encode the query (retrieval) and
+`Qwen/Qwen3-Reranker-0.6B` to rerank candidates. Both are ~1.2 GB and download
+*lazily inside the first search request*. Under the MCP client watchdog a cold
+download overruns, the request is killed mid-download, and the partial
+HuggingFace cache re-downloads next time - so the first searches appear to hang
+forever (this affects `rerank_top: 0` too, since retrieval still needs the
+embedding model). Fix: pre-warm both models once, outside any request, by
+running a search with the tool-env interpreter:
+
+```bash
+"C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe" \
+    Scripts/lit/test_lean_explore_search.py
+```
+
+After that, both models live in `~/.cache/huggingface/hub/` and the in-server
+search loads them from disk. `Scripts/lit/prewarm_reranker.py` warms the
+reranker alone if needed.
+
+**CPU latency.** The `[local]` extra installs the CPU torch build
+(`torch ...+cpu`, `cuda_available=False`), so both 0.6B transformers run on CPU:
+a warm search is ~30 s (query embedding + reranking 50 candidates), and the
+first search after server start adds a one-time model load. This is fine for
+batch lemma lookup but not snappy. `rerank_top: 0` roughly halves it (skips the
+reranker, keeps the embedding retrieval). A CUDA torch build would cut this to a
+few seconds but is a heavier reinstall (`uv tool install --python 3.12
+--with "torch --index-url https://download.pytorch.org/whl/cu121" ...`) and is
+not currently configured. The MCP client default timeout (90 s) comfortably
+covers a warm search once the models are cached; raise it for the first
+cold-load call.
+
 ### Semantic Scholar API key (optional, free)
 
 `scholarly` reads `SEMANTIC_SCHOLAR_API_KEY` (referenced in `.mcp.json`) and

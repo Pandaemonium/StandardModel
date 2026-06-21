@@ -5,10 +5,14 @@ and the bibliography [`Null_Edge_Causal_Graph_Bibliography.md`](Null_Edge_Causal
 
 **Compiled:** 2026-06-21.
 **Library:** Zotero collection "Null-Edge Causal Graph Program" (`9W59V3K9`) and the
-Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`). ~82 papers, tagged
-`null-edge-program` plus per-pillar cluster tags.
+Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`). ~94 curated papers,
+tagged `null-edge-program` plus per-pillar cluster tags. The reviewed Gemma4 harness
+additions are also mirrored in Neo4j under `Collection {collection_key:"null-edge-lit"}`.
 **Method note:** searches run through the `scholarly` MCP server (INSPIRE-HEP and
-OpenAlex backends); see [`../Scripts/MCP_SERVERS.md`](../Scripts/MCP_SERVERS.md).
+OpenAlex backends) and the staging-only Gemma4 literature harness; see
+[`../Scripts/MCP_SERVERS.md`](../Scripts/MCP_SERVERS.md) and
+[`../Scripts/lit/README.md`](../Scripts/lit/README.md). Gemma output is treated as
+recall, not curation: only manually reviewed papers are promoted to Zotero/Neo4j.
 
 ## How to read this plan
 
@@ -103,10 +107,19 @@ the partial trace contains overlaps `<e_b,e_a>`, so internal coherence can
 change the visible determinant. The simple Plucker sum is the
 orthonormal/decohered case.
 
+**2026-06-21 Gemma4/Zotero/Neo4j update.** Added the massive two-twistor papers
+Fedoruk-Lukierski `1403.4127` (`HPP4FME8`) and Deguchi-Okano `1512.07740`
+(`7V6SJB4F`). They support a sharper hidden-channel theorem target: the finite
+internal label should carry a local `U(1)`/`SU(2)` basis freedom, and the visible
+reduced density should be invariant under hidden-basis isometries. This is the
+finite algebra now isolated in `PhysicsSM.Draft.NullEdgeDecoherenceChannelAristotle`.
+
 **Lean targets.**
 
 - `visibleDensity_from_orthonormal_internal_purification`;
 - `det_visibleDensity_eq_internal_plucker_sum`;
+- `visibleReducedDensity_hiddenMix2_eq_pairSpinorFamily`;
+- `partialCoherenceMomentum_det_eq_overlap_factor_mul_plucker`;
 - `normalized_mass_ratio_eq_two_sqrt_det_visibleDensity`;
 - `mass_ratio_eq_sqrt_linear_entropy`;
 - `massless_iff_visibleDensity_rank_one`;
@@ -289,7 +302,11 @@ momentum as a little-group-covariant pair of spinors — exactly the
 `hep-th/0512091`; Albonico `2203.08087`; Kim `2102.07063`) realize mass as a two-twistor
 invariant. Okano-Kugo's no-go theorem (`1606.01339`) bounds how far the n-twistor
 description can be pushed. Dittmaier `hep-ph/9805445` and Ni `2501.09062` give the
-Weyl-van der Waerden / helicity-chirality bookkeeping.
+Weyl-van der Waerden / helicity-chirality bookkeeping. The reviewed Gemma4 pass added
+Fedoruk-Lukierski `1403.4127` and Deguchi-Okano `1512.07740`; these are especially
+useful because they expose the two-twistor mass constraints, modified Penrose
+incidence, and local `U(1)`/`SU(2)` gauge freedom in the massive spinning-particle
+model.
 
 **What it buys us.** A finite-dimensional linear-algebra keystone: the determinant
 identity `det(sum_i psi_i psi_i^dagger) = sum_{i<j} |psi_i wedge psi_j|^2`, mass as
@@ -310,12 +327,17 @@ scoped to the spinor chart only — no full Penrose transform.
 finite determinant identity, the real-valued nonnegativity wrapper, and the
 mass-zero/common-direction criterion to a trusted no-sorry module. The
 remaining Pillar 1 work is the celestial-moment wrapper and the
-twistor-incidence interpretation layer. The next theorem names are:
+twistor-incidence interpretation layer. The hidden-channel update adds one more
+finite theorem cluster: coherent alternatives have zero determinant mass,
+decohered alternatives have Plucker mass, and partial hidden coherence scales that
+mass by the hidden Gram determinant `1 - |k|^2`. The next theorem names are:
 
 - `rankOneHermitian_eq_weighted_spinProjector`;
 - `fin_bundle_det_eq_bloch_minkowski_norm`;
 - `finPairwisePluckerMassReal_eq_weighted_angular_variance`;
 - `mass_zero_iff_bloch_dipole_saturates`.
+- `visibleReducedDensity_hiddenMix2_eq_pairSpinorFamily`;
+- `partialCoherenceMomentum_det_eq_overlap_factor_mul_plucker`.
 
 **Falsification.** Failure of the determinant identity, failure of the
 Bloch/angular-variance rewrite, or mismatch with the physical invariant-mass
@@ -333,7 +355,11 @@ question: Bialynicki-Birula *Dirac and Weyl equations on a lattice as QCA*
 honeycomb/curved-spacetime walks (`1803.01015`, `1505.07023`), Mlodinow-Brun
 (`1802.03910`, `2006.08927`), Marquez-Martin fermion confinement via QW in 2D+1/3D+1
 (`1612.08027`), Chandrashekar multi-dim Dirac walks, and Kauffman discrete physics
-(`hep-th/9603202`). 't Hooft's deterministic CA (`1992`) anchors the discrete-determinism angle.
+(`hep-th/9603202`). 't Hooft's deterministic CA (`1992`) anchors the
+discrete-determinism angle. The Gemma4 review added Brun-Mlodinow `2503.05998`
+(`SBQ24VRF`), useful as a current QCA/QED continuum-limit guardrail: locality,
+symmetry, and positive-energy restriction are not simultaneously innocent
+assumptions.
 
 **What it buys us.** Concrete higher-dimensional walk constructions whose continuum
 limits are Dirac/Weyl — the evidence base for the chirality-flip universality
@@ -415,7 +441,9 @@ Yang-Mills* (`hep-th/0206130`) and *Teleparallel Gravity as Higher Gauge Theory*
 (`1204.4339`) supply the 2-connection language for the diamond/higher-gauge upgrade.
 Spin foams (Baez intro `gr-qc/9905087`, Livine-Oriti causality `gr-qc/0210064`) and
 Regge/simplicial dynamics (Dittrich `0807.2806`) are the adjacent discrete gauge-gravity
-methods.
+methods. The reviewed harness also added Zucchini `1112.2819` (`T73WQRFW`), which is
+useful background for semistrict Lie-2-algebra, higher BF, and higher Chern-Simons
+conventions before we attempt a non-Abelian 2-connection layer.
 
 **Next Lean target.** Finite + Abelian first:
 `PhysicsSM/Draft/CausalDiamondHolonomy.lean` — a finite DAG diamond, two paths, edge
@@ -467,6 +495,8 @@ Calculus* (`math/0508341`), Arnold-Falk-Winther *Finite Element Exterior Calculu
 Discretization* (`10.1137/15m1047684`). The doubling obstruction is Nielsen-Ninomiya
 (`10.1016/0550-3213(82)90011-6`) with the Ginsparg-Wilson resolution (Luscher
 `hep-lat/9802011`); Aoki lattice Weyl (`2402.09774`) for the chiral-surface angle.
+Zenkin's extension of Nielsen-Ninomiya (`hep-lat/9803002`, Zotero `5245553T`)
+is a useful guardrail because it reaches beyond translation-invariant local lattices.
 
 **What it buys us.** A graph-native home for graded fermionic data via `d + delta` on the
 order complex, with a clear-eyed view of the doubling problem it must navigate.
@@ -489,7 +519,10 @@ sector without reintroducing hidden lattice structure (the Nielsen-Ninomiya trap
 Rideout-Sorkin sequential growth (`gr-qc/9904062`), Sorkin *Light, Links and Causal Sets*
 (`0910.0673`). Fields/curvature: Benincasa-Dowker scalar curvature (`1001.2725`), Johnston
 propagators (`0909.0944`, `1010.5514`), BDG continuum limit (`2007.13192`), spectral
-dimension (Eichhorn `1311.2530`).
+dimension (Eichhorn `1311.2530`). The reviewed harness added Johnston's finite-density
+correction paper `1411.2614` (`SBHC9STK`), the causal-set QFT review `2306.04800`
+(`DFRSS56K`), and Dowker-Henson-Sorkin on Lorentz-invariant discreteness
+`gr-qc/0311055` (`P9HI8CI4`).
 
 **Role.** This is the ambient discrete-causal setting. The near-term, repo-faithful
 contribution is the *finite* order-complex and diamond-holonomy machinery (Pillars 5, 7);
@@ -502,8 +535,23 @@ causal-set Dirac propagators and the d'Alembertian are Stage-4 continuum targets
 **Literature (tag `quantum-measure`).** Sorkin *Quantum mechanics as quantum measure
 theory* (`gr-qc/9401003`) and *Quantum dynamics without the wave function*
 (`quant-ph/0610204`) formalize the decoherence-functional / quantum-measure view that the
-program's "quantum measure over causal histories" needs. (Tsirelson-bound search returned
-mostly fringe results; revisit with a targeted, authenticated query later.)
+program's "quantum measure over causal histories" needs. The curated Gemma4 pass added
+Salgado's sum-rule identities `gr-qc/9903015` (`7QR6F4VK`), Dowker-Johnston-Surya
+on extension and strong positivity `1007.2725` (`UC5T4NKA`), Bub on the Tsirelson
+bound `1208.3744` (`AIHKUCDK`), and Dowker-Wilkes on strong positivity
+`2011.06120` (`DRPQH4ME`).
+
+**Next finite target.** Before claiming any Bell/Tsirelson physics, formalize the
+finite event-algebra layer:
+
+```lean
+grade2_sum_rule
+decoherenceFunctional_stronglyPositive_gram
+strongPositivity_closed_under_tensor_product_finite
+```
+
+These are finite algebra targets only; the operational Tsirelson claim remains a
+later theorem or falsification test.
 
 **Falsification.** The decoherence functional cannot produce quantum correlations while
 preserving operational no-signalling and strong positivity.
@@ -544,6 +592,9 @@ trusted physics claim.
 5. `ReducedCelestialMixedness`: prove the visible partial-trace theorem,
    determinant-as-mixedness identity, mass-ratio formula, and the
    orthonormal/decohered internal-label caveat.
+   `NullEdgeDecoherenceChannelAristotle`: finish the hidden-basis isometry
+   invariance and partial-coherence determinant theorem, using the two-twistor
+   `U(1)`/`SU(2)` literature as the physical interpretation.
 6. `JordanVisibleMass`: source-backed wrapper saying visible determinant mass
    is the `H_2(C)` Jordan norm and is independent of auxiliary generation
    labels.
@@ -565,8 +616,9 @@ trusted physics claim.
 
 **Stage 2 — finite-dimensional synthesis:** two-twistor/Plucker spinor-chart
 matching is now drafted; next package the null-step projector + Plucker mass
-theorems with the bivector/BF wrapper, state the chirality-flip universality
-conjecture precisely, and write an expository paper tying Lean results to
+theorems with the hidden-channel `SU(2)` basis-invariance theorem and the
+bivector/BF wrapper, state the chirality-flip universality conjecture
+precisely, and write an expository paper tying Lean results to
 checkerboard / Foster-Jacobson / energetic-causal-set / Plebanski-BF
 literature.
 
@@ -614,7 +666,9 @@ Every new conjecture must enter the ledger before it is promoted from prose to a
 - **Search:** `python Scripts/mcp/mcp_call.py scholarly search-inspirehep --args '{"query":"...","limit":8}'`
   (avoid `search-papers` until a Semantic Scholar key is set — its SS leg 429s).
 - **Add to Zotero:** `zotero_add_item_by_arxiv` / `zotero_add_item_by_doi` with
-  `collection_key:"9W59V3K9"` and tags.
+  `collection_key:"9W59V3K9"` when available, or at least the `null-edge-program`
+  tag plus per-pillar tags.
 - **Graph:** new papers are synced into the `coglab` Neo4j graph as `Paper` nodes linked
-  `IN_COLLECTION` to `9W59V3K9`, with `AUTHORED_BY`/`HAS_TAG`. Query relevance with
-  `read-cypher`; a future enrichment pass can add `Concept`/`ABOUT` links per pillar.
+  `IN_COLLECTION` to `9W59V3K9` or the reviewed-harness collection `null-edge-lit`,
+  with `AUTHORED_BY`/`HAS_TAG` and, for curated additions, `Concept`/`ABOUT` links per
+  pillar. Query relevance with `read-cypher`.

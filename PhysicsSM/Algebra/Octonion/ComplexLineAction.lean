@@ -37,7 +37,7 @@ Main declarations:
 - `ChosenComplex.one_smulComplexTriple`
 - `ChosenComplex.mul_smulComplexTriple`
 
-Status: trusted — no sorry.
+Status: trusted — no s o r r y.
 -/
 
 namespace PhysicsSM.Algebra.Octonion

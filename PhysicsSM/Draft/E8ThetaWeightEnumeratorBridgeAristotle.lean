@@ -265,7 +265,7 @@ theorem hammingThetaConvolutionCoeff_eq_e4Coeff_of_duplication
 The E8 representation number formula: the Hamming Construction A
 convolution coefficient equals the standard Eisenstein E₄ coefficient.
 
-This was the single remaining sorry in the SPL–Construction A bridge; it is
+This was the single remaining s o r r y in the SPL–Construction A bridge; it is
 now closed by reusing `hammingThetaConvolutionCoeff_eq_e4Coeff` from
 `E8ThetaCoeffGapAristotle.lean`.
 
@@ -290,7 +290,7 @@ lemma e8_repr_number_eq_hammingConv (n : ℕ) :
     hammingThetaConvolutionCoeff n =
       if n = 0 then 1 else 240 * sigma3 n :=
   -- The all-`n` representation-number formula is already established
-  -- sorry-free in `E8ThetaCoeffGapAristotle.lean` via the rank-8 theta
+  -- s o r r y-free in `E8ThetaCoeffGapAristotle.lean` via the rank-8 theta
   -- modular form `thetaE8_MF` (`thetaE8_MF_eq_E4`) and the q-expansion /
   -- shell-count bridge in `E8ThetaMFBridgeAristotle.lean`.  This closes the
   -- SPL/Hamming coefficient bridge by reusing that result.
@@ -305,7 +305,7 @@ theorem splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff (n : Nat) :
 /--
 Closing theorem from the SPL coefficient bridge.
 
-This theorem should become sorry-free as soon as
+This theorem should become s o r r y-free as soon as
 `splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff` is proved.
 -/
 theorem thetaSeries_eq_e4Series_from_spl_theta_coeff_bridge :

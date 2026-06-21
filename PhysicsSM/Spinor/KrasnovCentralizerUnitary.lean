@@ -23,7 +23,7 @@ This is a linear-algebra theorem about the Krasnov complex structure. It
 does not define `Spin(9)`, prove a centralizer–Spin intersection theorem,
 or prove a Standard Model gauge group identification.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.KrasnovComplexStructure

@@ -23,7 +23,7 @@ This file proves the ℂ-module laws for the Krasnov complex structure. It
 does **not** claim an orthonormal basis of ℂ⁸, a representation of
 Spin(9), or a Standard Model gauge group identification.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.KrasnovComplexStructure

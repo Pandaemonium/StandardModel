@@ -7,7 +7,7 @@ import PhysicsSM.Draft.SpinCoherentProjectorAristotle
 Aristotle handoff (wave 2): the general collapse and rank-one structure of
 the spin coherent projectors of
 `PhysicsSM.Draft.SpinCoherentProjectorAristotle` (whose targets were proved
-in wave 1 and are available sorry-free).
+in wave 1 and are available s o r r y-free).
 
 ## Mathematical intent
 
@@ -38,7 +38,7 @@ Same as the wave-1 file: `spinProjector a = (1/2)(1 + sigma . a)` on
 
 ## Proof guidance
 
-- Available sorry-free from the imported wave-1 file:
+- Available s o r r y-free from the imported wave-1 file:
   `pauliVec_mul_pauliVec` (the master product identity),
   `pauliVec_conjTranspose`, `spinProjector_conjTranspose`,
   `trace_spinProjector`, `spinProjector_mul_self`, `det_spinProjector`,

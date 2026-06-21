@@ -48,7 +48,7 @@ The two summands are orthogonal with respect to the trace form.
 Source: Dubois-Violette and Todorov, "Exceptional quantum geometry and particle
 physics II" (2019); Yokota, "Exceptional Lie Groups" (2009), Chapter 3.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3O

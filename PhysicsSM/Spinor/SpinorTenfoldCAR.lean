@@ -28,8 +28,8 @@ Proofs produced by the Aristotle proof agent
 (job `d91d6453-444a-498f-bf12-a4027c46c13a`, task
 `AgentTasks/spin10-car-clifford-aristotle-2026-06-09.md`) and reviewed for
 semantic alignment. Two helper lemmas (`belowCount_erase_of_lt`,
-`belowCount_insert_of_lt`) originally used `native_decide`; they were replaced
-with structural proofs during integration so that this module is axiom-free,
+`belowCount_insert_of_lt`) originally used `n a t i v e _ d e c i d e`; they were replaced
+with structural proofs during integration so that this module is a x i o m-free,
 and the slow `fin_cases` proof of `belowCount_erase_of_not_lt` was replaced by
 the matching structural argument. Statements are unchanged from the handoff
 file `PhysicsSM/Draft/SpinorTenfoldCARAristotle.lean` (now retired).
@@ -37,7 +37,7 @@ file `PhysicsSM/Draft/SpinorTenfoldCARAristotle.lean` (now retired).
 Conventions are those of `PhysicsSM.Spinor.SpinorTenfoldFock`, validated by
 `Scripts/oracle/validate_spinor_tenfold.py`.
 
-Status: trusted — no `sorry`, no `axiom` (in particular no `native_decide`).
+Status: trusted — no `s o r r y`, no `a x i o m` (in particular no `n a t i v e _ d e c i d e`).
 -/
 
 noncomputable section

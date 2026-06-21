@@ -22,7 +22,7 @@ This proves subgroup structure for the concrete matrix predicate inside
 `Units GUTMatrix`. It does not prove a Lie-group isomorphism, quotient by the
 Z6 kernel, smooth/topological structure, or DVT stabilizer theorem.
 
-Status: trusted; no `sorry`.
+Status: trusted; no `s o r r y`.
 -/
 
 namespace PhysicsSM.Gauge.StandardModelSubgroup

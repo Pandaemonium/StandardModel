@@ -91,7 +91,7 @@ scaling.
    is the dependency-free half of this identification.
 
 These three blockers are all downstream of adding SPL as a dependency;
-no local `sorry` can resolve them.
+no local `s o r r y` can resolve them.
 
 ## Provenance
 
@@ -269,7 +269,7 @@ theorem constructionA_E8_packing_optimal :
     -- The Construction A lattice from the extended Hamming code,
     -- after 1/√2 scaling, achieves the optimal sphere packing
     -- density in dimension 8.
-    sorry
+    s o r r y
 ```
 
 This final theorem is explicitly NOT claimed here. It depends on the full

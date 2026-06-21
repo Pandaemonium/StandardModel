@@ -49,7 +49,7 @@ Source: Baez–Huerta, "The Algebra of Grand Unified Theories",
   Bull. Amer. Math. Soc. 47 (2010), 483–552.
   https://math.ucr.edu/home/baez/guts.pdf
 
-Status: trusted — sorry-free predicate-level intersection/inclusion theorems.
+Status: trusted — s o r r y-free predicate-level intersection/inclusion theorems.
 -/
 
 set_option linter.style.longLine false

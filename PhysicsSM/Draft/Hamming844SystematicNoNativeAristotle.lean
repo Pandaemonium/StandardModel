@@ -5,13 +5,13 @@ import PhysicsSM.Coding.Hamming844Classification
 # Aristotle target: structural `[8,4,4]` systematic classification
 
 This file isolates the main finite classification currently proved by
-`native_decide` in `PhysicsSM.Coding.Hamming844Classification`.
+`n a t i v e _ d e c i d e` in `PhysicsSM.Coding.Hamming844Classification`.
 
 For a systematic generator matrix `[I_4 | P]`, the minimum-distance condition
 forces the rows of `P` to be exactly the four weight-three vectors in `F_2^4`,
 up to a permutation of the last four coordinates.
 
-Please do not use `systematic_844_classification` or `native_decide` as proof
+Please do not use `systematic_844_classification` or `n a t i v e _ d e c i d e` as proof
 ingredients.
 -/
 

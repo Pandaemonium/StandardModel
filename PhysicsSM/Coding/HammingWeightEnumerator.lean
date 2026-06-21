@@ -17,10 +17,10 @@ the code's weight enumerator is invariant under the MacWilliams transform
 
 ## Finite-computation trust note
 
-The weight-distribution counts are verified by `native_decide` over the 256
+The weight-distribution counts are verified by `n a t i v e _ d e c i d e` over the 256
 binary vectors of length 8. This means `#print axioms` will report Lean's
-`Lean.trustCompiler` axiom for those theorems. The MacWilliams identity itself
-is a pure `ring` computation and uses no `native_decide`.
+`Lean.trustCompiler` a x i o m for those theorems. The MacWilliams identity itself
+is a pure `ring` computation and uses no `n a t i v e _ d e c i d e`.
 
 ## Source / provenance
 
@@ -40,7 +40,7 @@ namespace PhysicsSM.Coding
 matrix) with Hamming weight exactly `w`.
 
 We use the parity-check characterisation `H₈ v = 0` directly so that the
-predicate is decidable and `native_decide` can evaluate the counts. -/
+predicate is decidable and `n a t i v e _ d e c i d e` can evaluate the counts. -/
 def extendedHamming8WeightDist (w : ℕ) : ℕ :=
   (Finset.univ.filter (fun v : BinaryVector 8 =>
     Matrix.mulVec extendedHamming8ParityCheck v = 0 ∧ hammingWeight v = w)).card
@@ -126,7 +126,7 @@ This identity confirms that the weight enumerator is invariant under the
 MacWilliams transform, which is equivalent to the code being formally self-dual
 at the weight-enumerator level.
 
-The proof is a pure `ring` computation — no `native_decide` or `trustCompiler`
+The proof is a pure `ring` computation — no `n a t i v e _ d e c i d e` or `trustCompiler`
 is needed. -/
 theorem extendedHamming8_macwilliams_selfdual (a b : ℤ) :
     16 * extendedHamming8WeightEnumerator a b =

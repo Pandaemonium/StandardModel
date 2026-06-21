@@ -114,7 +114,7 @@ The following Mathlib definitions are relevant for a full formalization:
 
 Below we:
 1. Define the predicates `IsEvenGram`, `IsUnimodularGram`, `IsPosDef_over_reals`.
-2. State the classification theorem as a `sorry`-marked draft.
+2. State the classification theorem as a `s o r r y`-marked draft.
 3. Prove precursor lemmas showing `e8Cartan` satisfies all the hypotheses.
 -/
 
@@ -250,7 +250,7 @@ proceeds as follows:
 
 ### Status
 
-This theorem is stated as a draft with `sorry`.  It is NOT on the critical
+This theorem is stated as a draft with `s o r r y`.  It is NOT on the critical
 path for the manuscript, which uses explicit Cartan-matrix / root-system /
 Construction-A bridges instead.
 -/

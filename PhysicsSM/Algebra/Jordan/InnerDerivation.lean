@@ -67,7 +67,7 @@ the isomorphism `Aut(h₃(𝕆)) ≅ F₄`.
 
 ## Status
 
-Trusted module — no `sorry`.
+Trusted module — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3O

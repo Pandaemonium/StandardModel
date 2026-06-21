@@ -64,7 +64,7 @@ See `PhysicsSM.Coding.E8ThetaSeries` for the full normalization table.
 
 ## Finite-computation trust note
 
-Weight contributions are verified by `native_decide` over finite coordinate
+Weight contributions are verified by `n a t i v e _ d e c i d e` over finite coordinate
 spaces. `#print axioms` will report `Lean.trustCompiler`.
 
 ## Next steps for future work
@@ -272,7 +272,7 @@ three-term formula involving the Hamming weight distribution and per-weight
 contributions.
 
 The bridge formula is proved purely from the computed weight contributions and
-the weight distribution — no additional native_decide calls are needed.
+the weight distribution — no additional n a t i v e _ d e c i d e calls are needed.
 -/
 
 /-- **Bridge formula at `sqNorm = 0` (theta index `n = 0`):**
@@ -578,7 +578,7 @@ Using the weight distribution `(A₀, A₄, A₈) = (1, 14, 1)`, we derive:
 
   `θ(3) = 1 · 448 + 14 · 448 + 1 · 0 = 6720`
 
-This replaces the pure `native_decide` shell enumeration over `{-3,…,3}⁸`
+This replaces the pure `n a t i v e _ d e c i d e` shell enumeration over `{-3,…,3}⁸`
 with a three-term formula using the Hamming weight distribution.
 -/
 
@@ -621,7 +621,7 @@ theorem weight_enum_bridge_arithmetic_s12 :
 The following theorem provides a unified statement of the bridge formula
 at `sqNorm = 12`, expressing the theta coefficient purely in terms of
 the Hamming weight distribution `(1, 14, 1)` and per-weight lift counts.
-This is the structural alternative to the brute-force `native_decide`
+This is the structural alternative to the brute-force `n a t i v e _ d e c i d e`
 enumeration `e8ShellCount_twelve`. -/
 
 /-- **Structural theta coefficient at `n = 3`**: the shell count at
@@ -633,7 +633,7 @@ This theorem derives `θ(3)` from:
 2. The per-weight lift counts `(448, 448, 0)` at `sqNorm = 12`.
 3. The `Θ = E₄` coefficient identity.
 
-The per-weight lift counts use `native_decide` over `{-3,…,3}⁸`, but the
+The per-weight lift counts use `n a t i v e _ d e c i d e` over `{-3,…,3}⁸`, but the
 high-level shell count is derived structurally from the weight distribution. -/
 theorem hamming_thetaCoeff_from_weight_distribution_3 :
     shellCountRange7 12 = e4Coeff 3 := by
@@ -656,15 +656,15 @@ the first four nontrivial coefficients:
 |  2  |    8     | 2160   | `1·112 + 14·128 + 1·256`               |
 |  3  |   12     | 6720   | `1·448 + 14·448 + 1·0`                 |
 
-Each row replaces a monolithic `native_decide` over the full 8-dimensional
+Each row replaces a monolithic `n a t i v e _ d e c i d e` over the full 8-dimensional
 coordinate space with a three-term weight-distribution formula. The per-weight
-lift counts still use `native_decide` for individual weight classes, but the
+lift counts still use `n a t i v e _ d e c i d e` for individual weight classes, but the
 high-level structure is derived from the Hamming code's weight enumerator.
 
 ### Next steps
 
 1. **q⁴ extension**: The `sqNorm = 16` shell requires range `{-4,…,4}`
-   (too large for direct `native_decide`). A spike-decomposition approach
+   (too large for direct `n a t i v e _ d e c i d e`). A spike-decomposition approach
    (as in `E8ThetaSeriesQ5`) can be combined with the weight distribution
    bridge to handle this case.
 

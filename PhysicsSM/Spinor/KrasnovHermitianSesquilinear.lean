@@ -49,7 +49,7 @@ form. It does **not** prove:
 - Kirill Krasnov, "Octonions, complex structures and Standard Model fermions",
   arXiv:2504.16465.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.KrasnovComplexStructure

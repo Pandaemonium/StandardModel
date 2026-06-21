@@ -25,7 +25,7 @@ Convention: XOR basis and Fano orientation from
 Provenance: Aristotle job `fe5f83fd-885e-4f87-936f-9a8a4746ee7c`,
 adapted to this repository's `PhysicsSM` module paths and comments.
 
-Status: trusted. The file contains no `sorry`; each identity is checked by
+Status: trusted. The file contains no `s o r r y`; each identity is checked by
 coordinate expansion and real polynomial normalization.
 -/
 

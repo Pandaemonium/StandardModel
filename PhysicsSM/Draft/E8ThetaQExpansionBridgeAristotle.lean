@@ -47,7 +47,7 @@ packages this reduction, showing that the main theorem follows from these two hy
 
 ## Modular-form route (via `thetaE8_MF_eq_E4`)
 
-`E8ThetaDim8MF.lean` now has a complete (sorry-free) analytic proof that the E8 theta
+`E8ThetaDim8MF.lean` now has a complete (s o r r y-free) analytic proof that the E8 theta
 modular form equals E₄:
   `PhysicsSM.Coding.E8ThetaDim8.thetaE8_MF_eq_E4`
 
@@ -77,7 +77,7 @@ namespace E8ThetaSPLBridge
 
 /-! ## Conditional reduction theorems
 
-These theorems show that the main sorry reduces to two independent
+These theorems show that the main s o r r y reduces to two independent
 mathematical facts: the theta-constant duplication identities and the
 E₈ representation number formula.
 -/
@@ -164,7 +164,7 @@ theorem hammingThetaConstantPolynomial_qExpansion_coeff_of_qExpansion_eq_and_rep
 
 /-! ## Modular-form bridge via `thetaE8_MF_eq_E4`
 
-The sorry-free theorem `PhysicsSM.Coding.E8ThetaDim8.thetaE8_MF_eq_E4` proves
+The s o r r y-free theorem `PhysicsSM.Coding.E8ThetaDim8.thetaE8_MF_eq_E4` proves
 that the E8 theta modular form equals E₄. Combined with the E₄ q-expansion
 formula, this means the representation number formula
 `hammingThetaConvolutionCoeff n = if n = 0 then 1 else 240 * sigma3 n`

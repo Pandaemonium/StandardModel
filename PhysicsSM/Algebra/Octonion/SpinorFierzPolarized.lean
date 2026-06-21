@@ -28,7 +28,7 @@ This module proves the remaining stages:
 All proofs follow the repository house style: coordinate expansion plus
 `ring`. Heavier 16-coordinate identities need a raised heartbeat budget.
 
-Status: trusted — no `sorry`, no `native_decide`.
+Status: trusted — no `s o r r y`, no `n a t i v e _ d e c i d e`.
 Axioms: `propext`, `Classical.choice`, `Quot.sound` only.
 
 ## Sources

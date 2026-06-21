@@ -37,7 +37,7 @@ for Γ(1), adapted from SPL's rank-24/weight-12 blueprint in
 * `thetaE8_SIF`, `thetaE8_MF`: Assembled slash-invariant form and modular form.
 * `thetaE8_MF_eq_E4`: The theta MF equals E₄ by cusp form uniqueness.
 
-## Remaining sorry's with proof strategies
+## Remaining s o r r y's with proof strategies
 
 ### `e8_dualLattice_eq_self`
 SPL blueprint: `dualLattice_eq_of_integral_unimodular` in `DualSelf.lean`.

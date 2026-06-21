@@ -79,7 +79,7 @@ Everything follows the trusted Fock conventions of
 - Internal research notes: `Sources/Spin10_stabilizer.txt`.
 - Provenance: clean-room formalization; no external code copied.
 
-Status: trusted - no `sorry`.
+Status: trusted - no `s o r r y`.
 -/
 
 noncomputable section

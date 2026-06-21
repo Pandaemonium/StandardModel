@@ -54,7 +54,7 @@ and `StandardModelUnitZ6KernelPackage` modules.
 - Baez–Huerta, "The Algebra of Grand Unified Theories",
   Bull. Amer. Math. Soc. 47 (2010), 483–552.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 set_option linter.style.longLine false

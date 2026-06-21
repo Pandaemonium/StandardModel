@@ -7,7 +7,7 @@ Aristotle job `38c802a4-5b9d-4637-a6b6-f818f8506452` returned with status
 `COMPLETE_WITH_ERRORS`.  The error status came from job-output handling rather
 than from this target proof: the extracted file typechecked locally and proved
 the requested Hamming weight-grouping lemmas without using a fresh
-`native_decide` enumeration.
+`n a t i v e _ d e c i d e` enumeration.
 
 The useful declarations have been reviewed and promoted to
 `PhysicsSM.Coding.ConstructionAThetaConvolution`:

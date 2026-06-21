@@ -33,7 +33,7 @@ doubly-even property — are preserved under coordinate permutations.
 
 ## Finite-computation trust note
 
-This file does not use `native_decide`. All proofs are structural.
+This file does not use `n a t i v e _ d e c i d e`. All proofs are structural.
 
 ## Source / provenance
 

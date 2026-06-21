@@ -11,7 +11,7 @@ import PhysicsSM.Draft.ExceptionalJordanProjectiveGeometry
 Formalizes the isomorphism between the joint mixed marked/projective stabilizer subgroup
 of the standard collinear pair `(vacuumSpinor, weakSpinor)` and the Standard Model gauge group.
 
-Status: Draft (sorry target for Aristotle)
+Status: Draft (s o r r y target for Aristotle)
 -/
 
 noncomputable section

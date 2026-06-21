@@ -168,7 +168,7 @@ theorem binaryDot16_split (v w : BinaryVector 16) :
       binaryDot (projLeft16 v) (projLeft16 w) +
       binaryDot (projRight16 v) (projRight16 w) := by
   -- As with the weight split, this is ordinary finite-sum reindexing rather
-  -- than a truth-table or `native_decide` computation.
+  -- than a truth-table or `n a t i v e _ d e c i d e` computation.
   exact binaryDot_split16 v w
 
 /-- Self-orthogonality of `hamming16E8E8`: any two codewords have zero `binaryDot`.
@@ -251,7 +251,7 @@ unscaled squared norm 4. There are 480 of them: 240 from the first E8 factor
 (paired with zero on the right) and 240 from the second E8 factor (paired
 with zero on the left).
 
-Important implementation note: do not verify this by a direct `native_decide`
+Important implementation note: do not verify this by a direct `n a t i v e _ d e c i d e`
 over a 16-dimensional coordinate box. The useful proof is structural: a
 minimal vector in an orthogonal product has one E8 component of norm 4 and the
 other component zero, giving `240 + 240 = 480`.

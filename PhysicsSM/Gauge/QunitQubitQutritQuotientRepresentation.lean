@@ -40,7 +40,7 @@ for every `SMCoveringTriple x`.
 This is a representation/dictionary theorem only; it does not claim
 quantum computing dynamics or physical Hilbert-space interpretation.
 
-Status: trusted - no `sorry`.
+Status: trusted - no `s o r r y`.
 -/
 
 set_option linter.style.longLine false

@@ -34,7 +34,7 @@ Aristotle guidance:
 - Prefer induction on lists for the stacked-diamond targets.
 - Prefer finite case splits for the Yukawa classifier.
 - Prefer existing theorem names from imported modules before reproving facts.
-- This file is draft-only while it contains `sorry`.
+- This file is draft-only while it contains `s o r r y`.
 -/
 
 noncomputable section

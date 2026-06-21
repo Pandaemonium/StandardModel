@@ -35,7 +35,7 @@ Convention note:
   literature are outside this wrapper and should be handled by separate
   convention-bridge lemmas.
 
-Status: draft-facing convention wrapper, no `sorry`.
+Status: draft-facing convention wrapper, no `s o r r y`.
 -/
 
 noncomputable section

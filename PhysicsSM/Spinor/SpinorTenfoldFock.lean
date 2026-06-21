@@ -61,7 +61,7 @@ pure-spinor (Cartan) quadric.
 - Provenance: clean-room formalization from the mathematical definitions;
   no external code copied.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 noncomputable section

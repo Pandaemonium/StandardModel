@@ -157,6 +157,8 @@ def test_process_topic_end_to_end():
               and r["scores"].get("topic_fit") == 5)
         check("duplicates counted", stats["duplicates"] == 1)
         check("seen updated", "3333.0003" in seen)
+        # Gamma is found by both backends (found_by_count=2): composite 5+4+3-0 +1 corroboration = 13
+        check("corroboration bonus applied", r.get("composite") == 13, str(r.get("composite")))
     finally:
         lh.gemma_generate = orig
 

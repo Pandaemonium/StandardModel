@@ -40,7 +40,7 @@ slides 35–36.
 Important caveat: this route describes LEFT-handed fermions only. Right-handed
 fermions and the three-generation structure remain open problems.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.OctonionicQubit

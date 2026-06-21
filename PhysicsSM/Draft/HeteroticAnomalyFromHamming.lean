@@ -46,7 +46,7 @@ on T^d has signature (d+16, d). This file stays in the positive-definite setting
 
 All theorems are either:
 1. Proved (conditional on `thetaE8_eq_e4` where noted), or
-2. Stated with `sorry` with precise blockers documented.
+2. Stated with `s o r r y` with precise blockers documented.
 -/
 
 set_option linter.style.longLine false
@@ -262,7 +262,7 @@ If the E8 moonshot `thetaE8_eq_e4` is proved (theta series of E8 equals E₄),
 then by the direct sum theta product, the theta series of E8⊕E8 equals E₄².
 
 Note: `thetaE8_eq_e4` is the moonshot theorem in `E8ThetaSeriesMoonshot.lean`,
-currently stated with `sorry`. The dimension argument requires
+currently stated with `s o r r y`. The dimension argument requires
 `dim S₄(SL₂(ℤ)) = 0`, which is not yet in Mathlib.
 -/
 theorem thetaE8xE8_eq_e4_sq
@@ -307,7 +307,7 @@ theorem e4Sq_coeff_one : PowerSeries.coeff 1 e4SquaredPowerSeries = 480 := by
 /-! ## Physics framework: named literature hypotheses
 
 Following the principle from Codex's analysis: cite the physics result as a
-named hypothesis rather than an axiom or an unproved sorry.
+named hypothesis rather than an a x i o m or an unproved s o r r y.
 
 This makes the formal dependency explicit: the Lean theorem is conditional
 on the physics theorem, which is a statement about the external world
@@ -371,10 +371,10 @@ structure ModInvImpliesAnomalyFree where
 /-- **Draft: Two Hamming codes support the E8×E8 heterotic gauge sector.**
 
 This is the formal bridge theorem, conditional on:
-1. `thetaE8_eq_e4`: the E8 theta series equals E₄ (moonshot, currently sorry'd
+1. `thetaE8_eq_e4`: the E8 theta series equals E₄ (moonshot, currently s o r r y'd
    in `E8ThetaSeriesMoonshot.lean`).
 2. `theta_directSum`: the theta series of the product lattice is the product of
-   theta series (sorry'd above, pending `constructionA_hamming16_iso_e8_prod`).
+   theta series (s o r r y'd above, pending `constructionA_hamming16_iso_e8_prod`).
 3. `hGS`: the Green-Schwarz physics theorem (cited, not formalized).
 4. `hModInv`: the modular invariance → anomaly freedom bridge (cited).
 

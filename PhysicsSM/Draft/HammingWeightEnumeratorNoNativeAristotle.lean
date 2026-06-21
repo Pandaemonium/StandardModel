@@ -4,7 +4,7 @@ import PhysicsSM.Coding.HammingWeightEnumerator
 # Aristotle target: no-native Hamming weight enumerator
 
 This file proves the weight distribution of the extended Hamming `[8,4,4]` code
-without `native_decide`. The approach:
+without `n a t i v e _ d e c i d e`. The approach:
 
 1. Parametrize the 16 codewords via four free coordinates (positions 2,4,5,6)
    solved from the parity-check equations.

@@ -13,7 +13,7 @@ all completed Hamming-to-E8 bridge modules and re-exports the key formal
 results under short, stable names suitable for direct in-text citation.
 
 **No new mathematics is proved here.** Every theorem is a one-line alias for
-a declaration that is already sorry-free in one of the imported modules.
+a declaration that is already s o r r y-free in one of the imported modules.
 
 ## Why this module exists
 
@@ -70,9 +70,9 @@ facts suitable for citation in the Hamming/E8 manuscript.
 
 ## Finite-computation trust boundary
 
-Several theorems transitively depend on `native_decide` (for finite
+Several theorems transitively depend on `n a t i v e _ d e c i d e` (for finite
 verification over the 240-element root list), introducing `Lean.trustCompiler`
-into their axiom sets. In all cases:
+into their a x i o m sets. In all cases:
 - The computation is over an explicitly given finite list.
 - The list and the property being checked are both explicitly defined.
 - The trust boundary is documented in the source module.
@@ -295,7 +295,7 @@ that the coding-theoretic and algebraic descriptions of the E8 root system
 agree.
 
 Source: `PhysicsSM.Coding.E8RootBridge`. Trust: `Lean.trustCompiler` (from
-`native_decide` over the 240-element lists). -/
+`n a t i v e _ d e c i d e` over the 240-element lists). -/
 theorem bridge_perm :
     (shortHammingE8VectorList.map E8RootBridge.shortVectorToDoubledRoot).Perm
       rootList :=
@@ -520,7 +520,7 @@ there exists a word of simple reflections mapping the first root
 `rootList[0]! = (2,2,0,0,0,0,0,0)` to that root. The word table is
 verified coordinate-by-coordinate by kernel reduction (`decide`).
 
-Trust: kernel-checked (no `native_decide`).
+Trust: kernel-checked (no `n a t i v e _ d e c i d e`).
 Proved in `PhysicsSM.Algebra.Octonion.E8WeylOrbitConvergence`. -/
 theorem rootWordTable_correct :
     ∀ k : Fin 240, ∀ j : Fin 8,
@@ -532,7 +532,7 @@ theorem rootWordTable_correct :
 length at most 39. This bounds the number of simple-reflection closure
 iterations needed to reach all 240 roots.
 
-Trust: kernel-checked (no `native_decide`).
+Trust: kernel-checked (no `n a t i v e _ d e c i d e`).
 Proved in `PhysicsSM.Algebra.Octonion.E8WeylOrbitConvergence`. -/
 theorem rootWordTable_length_le :
     ∀ k : Fin 240, (rootWordTable k).length ≤ 39 :=
@@ -546,7 +546,7 @@ This is the formal proof that the E8 root system is a single Weyl orbit
 (irreducibility). In particular, the Weyl group W(E8) acts transitively on
 the root system.
 
-Trust: `Lean.trustCompiler` via `native_decide` for a trivial length bound;
+Trust: `Lean.trustCompiler` via `n a t i v e _ d e c i d e` for a trivial length bound;
 the word table itself is kernel-checked.
 Proved in `PhysicsSM.Algebra.Octonion.E8WeylOrbitConvergence`. -/
 theorem simpleClosure_from_firstRoot_covers_rootList :

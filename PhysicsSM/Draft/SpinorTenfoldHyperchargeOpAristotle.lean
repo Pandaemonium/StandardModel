@@ -54,7 +54,7 @@ theorems and confirm no `sorryAx` enters through the import.
 Do not change any definition or sign convention. Helper lemmas are
 welcome.
 
-This is draft code: the statements below contain documented `sorry`s and
+This is draft code: the statements below contain documented `s o r r y`s and
 must not be imported from trusted code until the holes are eliminated.
 -/
 

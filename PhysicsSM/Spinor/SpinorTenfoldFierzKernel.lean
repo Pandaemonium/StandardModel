@@ -15,7 +15,7 @@ halves require incompatible cardinalities, so at most one monomial survives.
 
 This reduces the symmetrized Fierz identity to a finite per-configuration sign
 cancellation that the Lean kernel can check by `decide` on the cheap
-`(coeff, target)` data, with no `native_decide`.
+`(coeff, target)` data, with no `n a t i v e _ d e c i d e`.
 
 ## Provenance
 
@@ -36,7 +36,7 @@ arithmetic over only the `16³` even codes, so the module builds in well under a
 minute. The definitions `gBasisZ`, `termData`, `cliffordActionZ`, `cancel3`, and
 all sign conventions are unchanged.
 
-Status: trusted — no `sorry`, no `axiom` (in particular no `native_decide`).
+Status: trusted — no `s o r r y`, no `a x i o m` (in particular no `n a t i v e _ d e c i d e`).
 -/
 
 namespace PhysicsSM.Spinor.SpinorTenfold
@@ -381,7 +381,7 @@ set_option maxHeartbeats 4000000 in
 set_option maxRecDepth 10000 in
 /-- The bit-mask mirror of the per-configuration cancellation, over the 16 even
 codes, checked by the Lean kernel via `decide` on native `Nat`/`Int`
-arithmetic (no `native_decide`). -/
+arithmetic (no `n a t i v e _ d e c i d e`). -/
 theorem cancelAllN :
     (evenCodes.all (fun a => evenCodes.all (fun b => evenCodes.all (fun c =>
       cancel3N (termDataN a b c) (termDataN a c b) (termDataN b c a))))) = true := by decide

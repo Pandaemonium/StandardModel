@@ -13,14 +13,14 @@ This file scaffolds the Baez-Schwahn projective-geometry conjecture around
 
 It imports the trusted modules:
 
-* `PhysicsSM.Algebra.Jordan.H3O` — sorry-free definitions and proofs for the
+* `PhysicsSM.Algebra.Jordan.H3O` — s o r r y-free definitions and proofs for the
   coordinate model, Jordan product, trace, block predicates, and closure.
 
-* `PhysicsSM.Algebra.Jordan.Automorphism` — sorry-free `H3OAutomorphism`
+* `PhysicsSM.Algebra.Jordan.Automorphism` — s o r r y-free `H3OAutomorphism`
   structure and `Group H3OAutomorphism` instance, plus preservation lemmas
   for projections, trace, and incidence.
 
-* `PhysicsSM.Algebra.Jordan.ProjectiveGeometry` — sorry-free `OP2Point`,
+* `PhysicsSM.Algebra.Jordan.ProjectiveGeometry` — s o r r y-free `OP2Point`,
   `OP2Line`, `LiesOn`, `JordanSubalgebra`, standard blocks, automorphism
   action on projective structures, and line stabilizer subgroup.
 
@@ -32,7 +32,7 @@ substantial Lie-group infrastructure not yet in Lean/Mathlib:
 * `standard_block_pair_stabilizer_is_smGaugeGroup` — DVT stabilizer iso.
 * `projective_geometry_main_conjecture` — the full Baez-Schwahn statement.
 
-Draft status: this file contains documented `sorry`s for frontier statements.
+Draft status: this file contains documented `s o r r y`s for frontier statements.
 Trusted files should not import this module.
 
 Sources:
@@ -138,7 +138,7 @@ def IntersectionIsComplexProjectiveLine
 
 The theorems below are the final targets of the Baez-Schwahn
 projective-geometry conjecture. They are intentionally left as
-`sorry` because proving them requires substantial Lie-group
+`s o r r y` because proving them requires substantial Lie-group
 infrastructure that is not yet available in Lean/Mathlib:
 
 1. **`F4_transitive_on_good_subalgebra_pairs`**: Conjectural
@@ -180,7 +180,7 @@ theorem F4_transitive_on_good_subalgebra_pairs
 /--
 Standard block-pair stabilizer target (Dubois-Violette-Todorov).
 
-**Handoff note**: This `sorry` cannot be closed without:
+**Handoff note**: This `s o r r y` cannot be closed without:
 1. A concrete `S(U(2) × U(3))` definition replacing the
    placeholder `StandardModelGaugeGroup`.
 2. The stabilizer computation for `Stab_F4(standardA)` and

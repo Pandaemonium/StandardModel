@@ -62,9 +62,9 @@ sublattice; row 7 is the half-integer glue vector extending D₇ to E8.
 ## Finite-computation trust boundary
 
 The central matrix-equality and determinant lemmas in this module are proved
-via kernel-reduced proofs that do NOT use `native_decide`. A few auxiliary
+via kernel-reduced proofs that do NOT use `n a t i v e _ d e c i d e`. A few auxiliary
 witness proofs (half-integer predicates, parity checks) still use
-`native_decide` for convenience; these are low-risk finite computations.
+`n a t i v e _ d e c i d e` for convenience; these are low-risk finite computations.
 
 | Theorem family                         | Proof method                          |
 |-----------------------------------------|---------------------------------------|
@@ -141,7 +141,7 @@ def splE8BasisQ : Matrix (Fin 8) (Fin 8) ℚ := !![
 
 -- Kernel-reduced determinant proof via lower-triangular structure.
 -- The transpose is upper triangular; det(M) = det(Mᵀ) = ∏ diag = 2·1⁶·½ = 1.
--- No `native_decide`; does NOT depend on `Lean.trustCompiler`.
+-- No `n a t i v e _ d e c i d e`; does NOT depend on `Lean.trustCompiler`.
 set_option maxHeartbeats 800000 in
 private theorem splE8BasisQ_transpose_upperTriangular :
     splE8BasisQ.transpose.BlockTriangular id := by
@@ -241,7 +241,7 @@ halfIntegerE8Predicate (v : Fin 8 → ℚ) : Prop :=
 ```
 -/
 
--- Kernel-reduced: `simp` + `norm_num` instead of `native_decide`.
+-- Kernel-reduced: `simp` + `norm_num` instead of `n a t i v e _ d e c i d e`.
 set_option maxHeartbeats 800000 in
 /-- Auxiliary: every entry of `splE8BasisQ` is a half-integer coordinate
 (`∃ n : ℤ, entry = n / 2`). -/
@@ -316,7 +316,7 @@ theorem splE8BasisDoubled_eq_twice :
 Row `i` satisfies:
 - All coordinates have the same parity (rows 0–6: all even; row 7: all odd).
 - The coordinate sum is divisible by 4 (row 0: 4, rows 1–6: 0, row 7: 8). -/
--- Kernel-reduced: `decide` instead of `native_decide`.
+-- Kernel-reduced: `decide` instead of `n a t i v e _ d e c i d e`.
 theorem splE8BasisQ_row_doubled_mem (i : Fin 8) :
     splE8BasisDoubled i ∈ halfIntE8Doubled := by
   rw [mem_halfIntE8Doubled_iff]
@@ -374,7 +374,7 @@ def splToCartanTransition : Matrix (Fin 8) (Fin 8) ℤ := !![
 
 /-! ### Determinant of `splToCartanTransition` via cyclic permutation
 
-The proof avoids `native_decide` by:
+The proof avoids `n a t i v e _ d e c i d e` by:
 1. Applying the cyclic row permutation σ = (0 1 2 … 7): `det(D) = sign(σ) · det(D_σ)`.
 2. Performing one row operation on `D_σ` (subtract row 1 from row 0) to
    obtain a lower-triangular matrix with unit diagonal.
@@ -444,7 +444,7 @@ private theorem splD_sigma_reduced_det : splD_sigma_reduced.det = 1 := by
 
 /-- The transition matrix has determinant −1 (unimodular: `|det| = 1`).
 
-Proof without `native_decide`: cyclic row permutation reduces `D` to a
+Proof without `n a t i v e _ d e c i d e`: cyclic row permutation reduces `D` to a
 nearly-lower-triangular form; one elementary row operation completes the
 triangularisation. The 8-cycle has sign −1, and the triangular matrix has
 determinant 1, giving `det D = −1 · 1 = −1`. -/

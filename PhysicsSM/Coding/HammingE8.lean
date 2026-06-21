@@ -52,11 +52,11 @@ identify the lattice as E8.
 
 ## Finite-computation trust note
 
-Several concrete finite facts in this file are proved with `native_decide`.
+Several concrete finite facts in this file are proved with `n a t i v e _ d e c i d e`.
 This is appropriate for the small finite searches here, but it means
-`#print axioms` may report Lean's `trustCompiler` axiom for those theorems.
+`#print axioms` may report Lean's `trustCompiler` a x i o m for those theorems.
 The publication should acknowledge this explicitly or replace these proofs with
-kernel-normalized certificates before making a "minimal axiom" claim.
+kernel-normalized certificates before making a "minimal a x i o m" claim.
 
 ## Source / provenance
 

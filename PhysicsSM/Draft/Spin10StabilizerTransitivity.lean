@@ -10,7 +10,7 @@ import PhysicsSM.Spinor.SpinorTenfoldPurity
 Formalizes the transitivity of the even Clifford group (`GSpin(10, ℂ)`) on Krasnov pairs
 of pure spinors.
 
-Status: Draft (sorry target for Aristotle)
+Status: Draft (s o r r y target for Aristotle)
 -/
 
 noncomputable section

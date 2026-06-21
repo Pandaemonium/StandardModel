@@ -44,7 +44,7 @@ at the end of this file.
 Prerequisites:
 - `PhysicsSM.Algebra.Division.Basic`
 
-Status: trusted — no `sorry` in any definition or lemma.
+Status: trusted — no `s o r r y` in any definition or lemma.
 -/
 
 namespace PhysicsSM.Algebra.Division

@@ -22,8 +22,8 @@ Conventions:
   Construction A lattice in `Fin 8 -> Int`.
 * `sqNorm = 4` is the unscaled short-vector convention.
 * `scaledSqNorm = 2` is the conventional `1 / sqrt 2` E8 root convention.
-* The finite enumeration theorems inherited here use `native_decide`, so a
-  publication should acknowledge Lean's `trustCompiler` axiom for those facts.
+* The finite enumeration theorems inherited here use `n a t i v e _ d e c i d e`, so a
+  publication should acknowledge Lean's `trustCompiler` a x i o m for those facts.
 -/
 
 namespace PhysicsSM.Coding.HammingConstructionAE8

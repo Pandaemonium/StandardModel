@@ -30,7 +30,7 @@ it is not yet available in the upstream modules.
 Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021.
 Convention: project XOR basis from `PhysicsSM.Algebra.Octonion.Basic`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Octonion

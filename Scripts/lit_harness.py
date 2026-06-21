@@ -634,6 +634,15 @@ def process_topic(spec, scholarly, neo4j, cfg, staging, seen_keys, run_meta) -> 
             decisions = {f"C{i}": {"decision": "REVIEW", "rank": None, "scores": {},
                                    "composite": None, "evidence": "", "reason": "triage parse failed"}
                          for i in range(1, len(new_list) + 1)}
+        # reward multi-backend corroboration: a paper found by >=2 (backend,keyword)
+        # sources is a stronger signal -> small composite bonus, then re-rank.
+        for i, c in enumerate(new_list, 1):
+            d = decisions.get(f"C{i}")
+            if d and d.get("composite") is not None and c.get("found_by_count", 1) >= 2:
+                d["composite"] += 1
+        scored = [(d["composite"], cid) for cid, d in decisions.items() if d.get("composite") is not None]
+        for rank, (_, cid) in enumerate(sorted(scored, key=lambda x: -x[0]), 1):
+            decisions[cid]["rank"] = rank
         n_inc = sum(1 for d in decisions.values() if d["decision"] == "INCLUDE")
         n_rev = sum(1 for d in decisions.values() if d["decision"] == "REVIEW")
         n_skp = sum(1 for d in decisions.values() if d["decision"] == "SKIP")
@@ -736,14 +745,26 @@ def main() -> int:
           f"keywords={not args.no_gemma_keywords} triage={not args.no_triage} "
           f"dedup={not args.no_dedup} seen={len(seen_keys)}")
 
-    scholarly = McpSession("scholarly", call_timeout=args.mcp_timeout, retries=args.mcp_retries)
-    neo4j = None if args.no_dedup else McpSession("neo4j_graph", call_timeout=args.mcp_timeout,
-                                                  retries=args.mcp_retries)
+    try:
+        scholarly = McpSession("scholarly", call_timeout=args.mcp_timeout, retries=args.mcp_retries)
+    except Exception as exc:
+        print(f"[fatal] cannot start scholarly MCP: {exc}")
+        return 1
+    neo4j = None
+    if not args.no_dedup:
+        try:
+            neo4j = McpSession("neo4j_graph", call_timeout=args.mcp_timeout, retries=args.mcp_retries)
+        except Exception as exc:
+            print(f"[warn] neo4j MCP unavailable; continuing WITHOUT graph dedup: {exc}")
     totals = {"candidates": 0, "previously_staged": 0, "duplicates": 0, "staged": 0}
     try:
         with open(args.staging, "a", encoding="utf-8", newline="\n") as staging:
             for spec in topics:
-                stats = process_topic(spec, scholarly, neo4j, args, staging, seen_keys, run_meta)
+                try:  # one topic's failure must not abort an unattended batch
+                    stats = process_topic(spec, scholarly, neo4j, args, staging, seen_keys, run_meta)
+                except Exception as exc:
+                    print(f"[warn] topic failed, skipping: {spec.get('topic')!r}: {exc}")
+                    continue
                 for k in totals:
                     totals[k] += stats[k]
     finally:

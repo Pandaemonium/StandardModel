@@ -28,7 +28,7 @@ has the identity matrix `I₄` in the first four columns and an arbitrary
 information set on positions `{0,1,2,3}` has this form.
 
 The key computational step (`systematic_844_classification`) verifies by
-`native_decide` over all `4^16 = 2^16 = 65,536` choices of `P : Fin 4 → Fin 4 → ZMod 2`
+`n a t i v e _ d e c i d e` over all `4^16 = 2^16 = 65,536` choices of `P : Fin 4 → Fin 4 → ZMod 2`
 that only 24 matrices produce a code with minimum distance ≥ 4, and each
 of those 24 is a coordinate permutation of `extendedHamming8`.
 
@@ -73,7 +73,7 @@ Since information sets are at arbitrary positions, we permute coordinates so
 the information set maps to `{0,1,2,3}`. The key lemma (`exists_perm_to_first4`)
 finds such a permutation for any 4-element subset. Since there are `C(8,4) = 70`
 such subsets and all permutations of `Fin 8` are checked, this is proved by
-`native_decide`.
+`n a t i v e _ d e c i d e`.
 
 ### Part 6: Full uniqueness theorem
 
@@ -95,11 +95,11 @@ without abstract group theory.
 ## Finite-computation trust note
 
 `systematic_844_classification` verifies the classification over all
-`2^16 = 65,536` matrices `P` by `native_decide`. This introduces the
-`Lean.trustCompiler` axiom. All structural reasoning uses only `propext`,
+`2^16 = 65,536` matrices `P` by `n a t i v e _ d e c i d e`. This introduces the
+`Lean.trustCompiler` a x i o m. All structural reasoning uses only `propext`,
 `Classical.choice`, and `Quot.sound`.
 
-`exists_perm_to_first4` is also proved by `native_decide` (checking all
+`exists_perm_to_first4` is also proved by `n a t i v e _ d e c i d e` (checking all
 `8!/(8-4)! = 1680` relevant permutations of `Fin 8`).
 
 ## Source / provenance
@@ -169,7 +169,7 @@ For each, check whether all `2^4 - 1 = 15` nonzero codewords have weight
 permutation mapping the code to `extendedHamming8`.
 
 This is the central computational fact from which uniqueness follows.
-The `native_decide` oracle verifies the entire enumeration.
+The `n a t i v e _ d e c i d e` oracle verifies the entire enumeration.
 The 24 valid matrices correspond to the 24 automorphisms of the extended
 Hamming code (i.e., |Aut(Ham(8,4))| = 1344, but only 24 systematic forms).
 -/
@@ -477,7 +477,7 @@ theorem code_eq_systematic_of_inj_proj
 
 Any 4-element subset of `Fin 8` can be mapped to `{0,1,2,3}` by a coordinate
 permutation. This is a finite enumeration over all 70 possible 4-element subsets
-and all permutations sending each to `{0,1,2,3}`. Proved by `native_decide`.
+and all permutations sending each to `{0,1,2,3}`. Proved by `n a t i v e _ d e c i d e`.
 -/
 
 /-- **Given any 4-element subset `I ⊆ Fin 8`, there exists a permutation
@@ -486,7 +486,7 @@ and all permutations sending each to `{0,1,2,3}`. Proved by `native_decide`.
 This is used to move an arbitrary information set to the canonical positions
 `{0,1,2,3}` needed by the systematic form argument.
 
-Proved by `native_decide` over the finitely many (70) choices of 4-element
+Proved by `n a t i v e _ d e c i d e` over the finitely many (70) choices of 4-element
 subsets and the permutations that map each to `{0,1,2,3}`. -/
 theorem exists_perm_to_first4 (I : Finset (Fin 8)) (hI : I.card = 4) :
     ∃ σ : Equiv.Perm (Fin 8), I.image σ = {0, 1, 2, 3} := by

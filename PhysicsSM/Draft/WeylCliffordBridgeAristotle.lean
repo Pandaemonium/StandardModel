@@ -8,7 +8,7 @@ import PhysicsSM.Draft.SpinorHelicityRankOneAristotle
 Aristotle handoff (wave 2): the bridge between the spin coherent projector
 layer (`PhysicsSM.Draft.SpinCoherentProjectorAristotle`) and the
 spinor-helicity layer (`PhysicsSM.Draft.SpinorHelicityRankOneAristotle`),
-both proved in wave 1 and available sorry-free.
+both proved in wave 1 and available s o r r y-free.
 
 ## Mathematical intent
 
@@ -39,7 +39,7 @@ p0 - p3]` (from the spinor-helicity file); Pauli matrices and
 
 ## Proof guidance
 
-- Available sorry-free from the imports: `pauliVec_mul_pauliVec`,
+- Available s o r r y-free from the imports: `pauliVec_mul_pauliVec`,
   `spinProjector` lemmas (projector file); `minkHerm_conjTranspose`,
   `det_minkHerm`, `trace_minkHerm`, `minkHerm_rankOne_iff` and friends
   (helicity file).  Note the two files have *independent* Pauli-style

@@ -2,7 +2,7 @@ import PhysicsSM.Draft.Hamming844SystematicNoNativeAristotle
 import PhysicsSM.Draft.Hamming844PermutationNoNativeAristotle
 
 /-!
-# Aristotle target: full Hamming [8,4,4] uniqueness without native_decide
+# Aristotle target: full Hamming [8,4,4] uniqueness without n a t i v e _ d e c i d e
 
 This draft file assembles the non-native uniqueness proof once the two finite
 classification bottlenecks have structural replacements:
@@ -18,7 +18,7 @@ Aristotle instructions:
 * Finish this file after proving `exists_perm_to_first4_constructive`.
 * Do not use `systematic_844_classification`.
 * Do not use `exists_perm_to_first4`.
-* Do not use `native_decide`.
+* Do not use `n a t i v e _ d e c i d e`.
 * The final theorem should have the same mathematical statement as
   `extendedHamming8_unique_up_to_equivalence_proof`, but with a proof path
   that avoids both native finite searches.

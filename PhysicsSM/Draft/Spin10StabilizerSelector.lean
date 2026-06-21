@@ -12,7 +12,7 @@ import PhysicsSM.Draft.ExceptionalJordanProjectiveGeometry
 Formalizes the Selector Theorem: the physical embedding class of `S(U(2) × U(3))` is the unique
 conjugacy class in the even Clifford group stabilizing a Krasnov pair of pure spinors.
 
-Status: Draft (sorry target for Aristotle)
+Status: Draft (s o r r y target for Aristotle)
 -/
 
 noncomputable section

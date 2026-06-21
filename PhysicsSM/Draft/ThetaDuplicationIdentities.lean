@@ -3,7 +3,7 @@ import SpherePacking.ModularForms.JacobiTheta
 import PhysicsSM.Draft.ThetaDuplicationProof
 
 /-!
-# Theta function duplication identities (sorry targets)
+# Theta function duplication identities (s o r r y targets)
 
 The classical theta-constant duplication identities needed for the
 Construction A theta / weight enumerator bridge:
@@ -26,7 +26,7 @@ contribute `-Θ₂(2τ)²`.
 
 ## Status
 
-These are `sorry`-ed targets. Once proved, they immediately close Gap A
+These are `s o r r y`-ed targets. Once proved, they immediately close Gap A
 (function equality `hammingThetaConstantPolynomial = thetaE4`) via
 `hammingThetaConstantPolynomial_eq_thetaE4_of_duplication` in
 `E8ThetaWeightEnumeratorBridgeAristotle.lean`.
@@ -50,7 +50,7 @@ Jacobi theta duplication identity for `Θ₄`.
 
 `Θ₄(τ)² = Θ₃(2τ)² − Θ₂(2τ)²`
 
-Status: `sorry`. The proof uses the Cauchy product of `Θ₄` with itself and
+Status: `s o r r y`. The proof uses the Cauchy product of `Θ₄` with itself and
 a same-parity / opposite-parity decomposition of ℤ×ℤ with the change of
 variables `(a,b) = ((n+m)/2, (n-m)/2)`.
 -/
@@ -67,7 +67,7 @@ Landen theta duplication identity for `Θ₂`.
 
 `Θ₂(τ)² = 2·Θ₂(2τ)·Θ₃(2τ)`
 
-Status: `sorry`. The proof uses the Cauchy product of `Θ₂` with itself
+Status: `s o r r y`. The proof uses the Cauchy product of `Θ₂` with itself
 and the same parity-splitting technique as `theta4_sq_eq`.
 -/
 theorem theta2_sq_eq (tau : UpperHalfPlane) :

@@ -26,14 +26,14 @@ continuum Stokes theorem, a continuum field strength, or a higher-gauge
 
 Sources and provenance:
 - `Sources/Null_Edge_Causal_Graph_Research_Plan.md`, Pillar 5.
-- First developed in no-sorry draft modules
+- First developed in no-s o r r y draft modules
   `PhysicsSM.Draft.NullEdgeCoreAristotle`,
   `PhysicsSM.Draft.NullEdgeDiamondNonabelian`, and
   `PhysicsSM.Draft.NullEdgeCochainDiamond`.
 - Literature context: causal-set gauge fields and higher-gauge theory as
   recorded in the null-edge source notes.
 
-Status: trusted, no `sorry`.
+Status: trusted, no `s o r r y`.
 -/
 
 noncomputable section

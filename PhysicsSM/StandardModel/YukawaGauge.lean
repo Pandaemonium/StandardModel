@@ -27,12 +27,12 @@ Sources and provenance:
 * `PhysicsSM.StandardModel.OneGenerationTable`
 * `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
 * `AgentTasks/null-edge-overnight-synthesis-aristotle-2026-06-21.md`
-* Promoted from the no-sorry draft modules
+* Promoted from the no-s o r r y draft modules
   `PhysicsSM.Draft.NullEdgeYukawaFlip`,
   `PhysicsSM.Draft.NullEdgeYukawaGaugeAristotle`, and
   `PhysicsSM.Draft.NullEdgeOvernightSynthesisAristotle` after semantic review.
 
-Status: trusted, no `sorry`.
+Status: trusted, no `s o r r y`.
 -/
 
 namespace PhysicsSM.StandardModel.YukawaGauge

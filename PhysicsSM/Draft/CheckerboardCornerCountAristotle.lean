@@ -66,10 +66,10 @@ not the proofs.
   injective map on `histories n`).
 
 Do not change any definition of `PhysicsSM.Spinor.Checkerboard`.  Helper
-lemmas are welcome.  No `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, and
-**no `native_decide`** in the final state.
+lemmas are welcome.  No `s o r r y`, `a d m i t`, `a x i o m`, `o p a q u e`, `u n s a f e`, and
+**no `n a t i v e _ d e c i d e`** in the final state.
 
-This is draft code: the statements below contain documented `sorry`s and
+This is draft code: the statements below contain documented `s o r r y`s and
 must not be imported from trusted code until the holes are eliminated.
 -/
 

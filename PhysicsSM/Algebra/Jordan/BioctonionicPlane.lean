@@ -4,7 +4,7 @@ import PhysicsSM.Algebra.Octonion.ComplexOctonion
 /-!
 # Algebra.Jordan.BioctonionicPlane
 
-A counterexample to the projective-plane uniqueness axiom in the bioctonionic
+A counterexample to the projective-plane uniqueness a x i o m in the bioctonionic
 (complexified octonionic) setting.
 
 ## Overview
@@ -13,7 +13,7 @@ The bioctonions ℂ ⊗ 𝕆 are the complexification of the octonion algebra.
 Unlike the octonions (which form a normed division algebra), the bioctonions
 contain **zero divisors**: nonzero elements whose product is zero. This has
 geometric consequences—when one attempts to build a projective plane over the
-bioctonions, the standard axiom that two distinct lines meet in at most one
+bioctonions, the standard a x i o m that two distinct lines meet in at most one
 point fails.
 
 ## The counterexample
@@ -26,7 +26,7 @@ We exhibit two explicit zero divisors `p, q ∈ ℂ ⊗ 𝕆` with `p * q = 0`,
 
 These are distinct lines (since `p ≠ 0`), yet both pass through
 the points `(0, 0)` and `(q, 0)` (since `p · q = 0`). This gives two
-distinct intersection points, violating the projective plane axiom.
+distinct intersection points, violating the projective plane a x i o m.
 
 ## Source
 
@@ -136,12 +136,12 @@ theorem P₂_onLine_L₂ : OnLine P₂ L₂ := by
   unfold OnLine; dsimp only [P₂, L₂]
   simp [zeroDivisorP_mul_zeroDivisorQ]
 
-/-! ## Main theorem: counterexample to the projective plane uniqueness axiom -/
+/-! ## Main theorem: counterexample to the projective plane uniqueness a x i o m -/
 
 /-- **Bioctonionic incidence counterexample.**
     In the bioctonionic affine plane, there exist two distinct lines
     that share at least two distinct points. This violates the
-    projective-plane axiom that two distinct lines meet in at most one point.
+    projective-plane a x i o m that two distinct lines meet in at most one point.
 
     The counterexample exploits zero divisors in ℂ ⊗ 𝕆: the product of
     two nonzero bioctonions can vanish, allowing a nonzero point to

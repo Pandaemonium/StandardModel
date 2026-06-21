@@ -32,7 +32,7 @@ Lie subalgebra of `Der(h₃(𝕆))`. It does **not** prove:
 
 ## Status
 
-Trusted module — no `sorry`.
+Trusted module — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3O

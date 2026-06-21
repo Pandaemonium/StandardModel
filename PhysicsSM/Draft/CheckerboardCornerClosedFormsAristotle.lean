@@ -19,7 +19,7 @@ mathematical content is the run-counting formula:
 The hypotheses `0 < q` and `0 < r` are part of the convention and were checked
 against brute-force enumeration in `Scripts/oracle/validate_checkerboard.py`.
 
-Trusted code should not import this module while it contains `sorry`.
+Trusted code should not import this module while it contains `s o r r y`.
 -/
 
 namespace PhysicsSM.Draft.CheckerboardCornerClosedForms

@@ -10,9 +10,9 @@ E8 root in the list.
 
 ## Trust boundary
 
-The root-list preservation theorem `reflectD_mem_rootList` uses `native_decide`
+The root-list preservation theorem `reflectD_mem_rootList` uses `n a t i v e _ d e c i d e`
 to verify the 240 × 240 = 57,600 reflection pairs. This means `Lean.trustCompiler`
-appears in its axiom set. The same trust boundary applies to the involutivity
+appears in its a x i o m set. The same trust boundary applies to the involutivity
 theorem `reflectD_involutive_on_rootList`.
 
 ## Conventions

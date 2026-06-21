@@ -18,7 +18,7 @@ This file collects the frontier theorem targets from Baez's 2021 talk
 "Can We Understand the Standard Model Using Octonions?" that require
 infrastructure not yet available in this project or in Mathlib.
 
-Each `sorry` is accompanied by a precise handoff note explaining:
+Each `s o r r y` is accompanied by a precise handoff note explaining:
 - what the theorem states mathematically,
 - what infrastructure is missing,
 - recommended next steps.

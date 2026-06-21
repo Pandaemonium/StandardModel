@@ -90,11 +90,11 @@ into a closure step API ready for orbit computations.
 
 ## Finite-computation trust boundary
 
-`simpleRootListD_length` uses `native_decide` for a trivial length check.
-`simpleReflectD_mem_rootList` uses `native_decide` indirectly (via the parent
+`simpleRootListD_length` uses `n a t i v e _ d e c i d e` for a trivial length check.
+`simpleReflectD_mem_rootList` uses `n a t i v e _ d e c i d e` indirectly (via the parent
 `reflectD_mem_rootList` from `E8WeylBasic`). All other proofs in this module
-are purely structural. The `Lean.trustCompiler` axiom appears in the axiom
-sets of the `native_decide`-based theorems.
+are purely structural. The `Lean.trustCompiler` a x i o m appears in the a x i o m
+sets of the `n a t i v e _ d e c i d e`-based theorems.
 
 ## Source / provenance
 
@@ -191,7 +191,7 @@ theorem simpleReflectD_mem_rootList :
   intro i
   -- Step 1: confirm the i-th simple root belongs to rootList.
   -- This uses simpleRootListD_subset_rootList from E8WeylBasic, which is
-  -- a native_decide computation over the 8 simple roots vs. the 240-element
+  -- a n a t i v e _ d e c i d e computation over the 8 simple roots vs. the 240-element
   -- rootList.
   have h_simple_root :
       simpleRootListD[i.val]'(by

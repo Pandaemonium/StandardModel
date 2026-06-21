@@ -4,7 +4,7 @@ import PhysicsSM.Coding.CodeEquivalence
 /-!
 # Helper package: the extended Hamming code satisfies the [8,4,4] predicate
 
-This module proves, without `sorry`, the foundational facts needed to state
+This module proves, without `s o r r y`, the foundational facts needed to state
 and eventually prove the uniqueness theorem for the extended `[8,4,4]`
 Hamming code:
 
@@ -32,7 +32,7 @@ The `IsLinearCode` structure is used in two places:
   equivalent to `extendedHamming8`.
 - Future Aristotle jobs working towards a proof of uniqueness.
 
-By separating these sorry-free helper results from the draft uniqueness file,
+By separating these s o r r y-free helper results from the draft uniqueness file,
 we keep the trusted and draft layers cleanly separated.
 
 ## Mathematical background
@@ -49,9 +49,9 @@ gives an even integer lattice with minimum squared norm 4.
 
 ## Finite-computation trust note
 
-The dimension proof (`extendedHamming8_finrank`) uses `native_decide` to
+The dimension proof (`extendedHamming8_finrank`) uses `n a t i v e _ d e c i d e` to
 compute `Fintype.card ↥extendedHamming8 = 16`. This introduces the
-`Lean.trustCompiler` axiom. All other proofs use only standard axioms
+`Lean.trustCompiler` a x i o m. All other proofs use only standard axioms
 (`propext`, `Classical.choice`, `Quot.sound`).
 
 ## Source / provenance
@@ -147,7 +147,7 @@ has weight ≥ 4), it shows the minimum is exactly 4.
 
 In the matrix language: columns {3,4,5,6} of H₈ are the support of this
 codeword, and the parity-check `H₈ · (0,0,0,1,1,1,1,0)ᵀ = 0` is verified
-by `native_decide`.
+by `n a t i v e _ d e c i d e`.
 -/
 
 /-- There exists a codeword of the extended Hamming code with Hamming weight

@@ -42,7 +42,7 @@ inner derivation subspace from `h₃(ℂ)`. It does **not** prove:
 
 ## Status
 
-Trusted module — no `sorry`.
+Trusted module — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3O

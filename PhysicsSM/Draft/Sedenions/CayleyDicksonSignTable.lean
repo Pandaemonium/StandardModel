@@ -26,13 +26,13 @@ where the sign is computed recursively via the Cayley–Dickson pair rule:
 
 ## Main results
 
-### Kernel-checked (`decide`, no `native_decide`)
+### Kernel-checked (`decide`, no `n a t i v e _ d e c i d e`)
 * `cdIdx_eq_xor_dim8` — product index equals XOR in dimension 8.
 * `octonion_triple_{1..7}` — the seven reference octonion triples are positive.
 * `octonion_triples_positive` — combined statement.
 * `cdSign_unit_dim8` — the octonion sign is always ±1.
 
-### Finite verified enumeration (`native_decide`)
+### Finite verified enumeration (`n a t i v e _ d e c i d e`)
 * `cdIdx_eq_xor_dim16` — product index equals XOR in dimension 16.
 * `sedenion_low_low` / `sedenion_low_high` / `sedenion_high_low` /
   `sedenion_high_high` — structural recursion rules for sedenion products.
@@ -47,7 +47,7 @@ where the sign is computed recursively via the Cayley–Dickson pair rule:
 * `Scripts/sedenions/explore_zero_divisor_geometry.py`
 -/
 
--- Draft module: native_decide is used for finite verified enumeration
+-- Draft module: n a t i v e _ d e c i d e is used for finite verified enumeration
 -- in dimension 16. Dimension 8 results use kernel decide only.
 set_option linter.style.nativeDecide false
 
@@ -110,7 +110,7 @@ theorem conjSign_unit (a : ℕ) : conjSign a = 1 ∨ conjSign a = -1 := by
 
 /-! ### Product index equals XOR — dimension 8 (octonions)
 
-Kernel-checked: uses `decide`, no `native_decide`. -/
+Kernel-checked: uses `decide`, no `n a t i v e _ d e c i d e`. -/
 
 /-- In the 8-dimensional Cayley–Dickson algebra, the product index is XOR. -/
 theorem cdIdx_eq_xor_dim8 :
@@ -118,7 +118,7 @@ theorem cdIdx_eq_xor_dim8 :
 
 /-! ### Seven reference octonion triples are positive
 
-Kernel-checked: uses `decide`, no `native_decide`.
+Kernel-checked: uses `decide`, no `n a t i v e _ d e c i d e`.
 
 These are the standard positive triples for the recursive Cayley–Dickson
 octonion convention:
@@ -148,7 +148,7 @@ theorem cdSign_unit_dim8 :
 
 /-! ### Product index equals XOR — dimension 16 (sedenions)
 
-The following results use `native_decide` for finite verified enumeration
+The following results use `n a t i v e _ d e c i d e` for finite verified enumeration
 over `Fin 16 × Fin 16` (256 cases, each with depth-4 recursion). -/
 
 /-- In the 16-dimensional Cayley–Dickson algebra, the product index is XOR. -/

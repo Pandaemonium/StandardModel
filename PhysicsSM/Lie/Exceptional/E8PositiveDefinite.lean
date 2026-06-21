@@ -8,7 +8,7 @@ import PhysicsSM.Lie.Exceptional.E8
 /-!
 # Positive definiteness of the E8 Cartan / Gram matrix
 
-This file provides a sorry-free proof that the E8 Cartan matrix, equivalently
+This file provides a s o r r y-free proof that the E8 Cartan matrix, equivalently
 the E8 root-lattice Gram matrix, is positive definite over `R`.
 
 ## Proof method

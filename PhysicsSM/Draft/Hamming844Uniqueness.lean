@@ -26,7 +26,7 @@ theorem extendedHamming8_unique_up_to_equivalence
 
 3. **Finite classification:** Every systematic `[I₄ | P]` code with minimum
    distance `≥ 4` is a coordinate permutation of `extendedHamming8`.
-   (Verified by `native_decide` over all `2^16` matrices `P`; only 24 pass
+   (Verified by `n a t i v e _ d e c i d e` over all `2^16` matrices `P`; only 24 pass
    the minimum-distance filter.)
 
 4. **Transitivity:** Composing the coordinate permutations yields the
@@ -34,8 +34,8 @@ theorem extendedHamming8_unique_up_to_equivalence
 
 ## Trust boundary
 
-The finite classification step uses `native_decide`, introducing the
-`Lean.trustCompiler` axiom. All structural reasoning is axiom-minimal.
+The finite classification step uses `n a t i v e _ d e c i d e`, introducing the
+`Lean.trustCompiler` a x i o m. All structural reasoning is a x i o m-minimal.
 
 ## Source / provenance
 
@@ -53,7 +53,7 @@ code `extendedHamming8`.**
 
 This is the classification theorem: up to coordinate permutation, there is
 a unique binary linear code with parameters `[8, 4, 4]`. The proof combines
-a structural information-set argument with a finite `native_decide`
+a structural information-set argument with a finite `n a t i v e _ d e c i d e`
 verification over all systematic generator matrices. -/
 theorem extendedHamming8_unique_up_to_equivalence
     (C : BinaryLinearCode 8) (hC : IsLinearCode C 4 4) :

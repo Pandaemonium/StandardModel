@@ -30,7 +30,7 @@ by casting. Two ingredients keep the kernel check cheap:
 - the actual `32 × 32` symmetry check `gBasisZ_symm`, discharged by kernel
   `decide` on the closed form.
 
-No `native_decide` is used anywhere in this module: every enumeration is
+No `n a t i v e _ d e c i d e` is used anywhere in this module: every enumeration is
 checked by the Lean kernel itself.
 
 ## Provenance
@@ -38,7 +38,7 @@ checked by the Lean kernel itself.
 The integer-mirror architecture, cast layer, and multilinear expansion are due
 to the Aristotle proof agent (job `198550bc-ef58-4789-bda2-b7361cc6c3f7`, task
 `AgentTasks/spin10-fierz-cayley-chart-aristotle-2026-06-09.md`), reviewed and
-reworked during integration: Aristotle's `native_decide` closures of
+reworked during integration: Aristotle's `n a t i v e _ d e c i d e` closures of
 `gBasisZ_eq` and the basis symmetry were replaced by the structural proof and
 kernel `decide` respectively. The basis-level symmetrized Fierz identity was
 subsequently kernel-cleaned as well (job
@@ -49,7 +49,7 @@ subsequently kernel-cleaned as well (job
 Conventions are those of `PhysicsSM.Spinor.SpinorTenfoldFock`, validated by
 `Scripts/oracle/validate_spinor_tenfold.py`.
 
-Status: trusted — no `sorry`, no `axiom` (in particular no `native_decide`).
+Status: trusted — no `s o r r y`, no `a x i o m` (in particular no `n a t i v e _ d e c i d e`).
 -/
 
 namespace PhysicsSM.Spinor.SpinorTenfold

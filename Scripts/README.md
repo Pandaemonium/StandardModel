@@ -30,6 +30,22 @@ This avoids permission failures from tools trying to write to
 `C:\Users\Owner\.cache\pre-commit` while the agent is sandboxed to the project
 workspace.
 
+## Lean placeholder checker
+
+Use the comment-aware Lean scanner instead of raw grep when checking trusted
+code for proof placeholders or escape hatches:
+
+```powershell
+python Scripts\check_forbidden_lean_tokens.py
+python Scripts\check_forbidden_lean_tokens.py --include-draft PhysicsSM\Draft\Example.lean
+python Scripts\check_forbidden_lean_tokens.py --include-draft --forbid-native-decide PhysicsSM\Draft\Example.lean
+```
+
+It ignores Lean comments, docstrings, and strings, so project prose can remain
+readable without flooding scans. The strict finite-computation flag is useful
+for Aristotle outputs or other targets that must avoid compiled-evaluator
+proofs.
+
 ## Aristotle submission packages
 
 Use `Scripts/prepare_aristotle_submission.ps1` to create a slim project copy
@@ -85,6 +101,7 @@ task-note compatibility.
 Scripts/
   pre-commit.cmd        - Windows wrapper for a repo-local pre-commit cache
   pre-commit.ps1        - run pre-commit with a repo-local cache
+  check_forbidden_lean_tokens.py - comment-aware Lean placeholder scanner
   prepare_aristotle_submission.ps1 - create a slim Aristotle project copy
   MCP_SERVERS.md        - MCP server reference (scholarly/zotero/neo4j/local-qwen)
   mcp/
@@ -98,8 +115,6 @@ Scripts/
   index/
     build_index.py      — extract declaration metadata from Lean sources into JSON
     build_graph.py      — build knowledge graph from declaration metadata
-  ci/
-    check_no_sorry.sh   — shell script for local no-sorry checking
 ```
 
 ## Oracle policy

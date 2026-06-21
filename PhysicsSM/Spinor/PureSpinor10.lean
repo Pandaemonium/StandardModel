@@ -52,7 +52,7 @@ Source: Krasnov, "Spin(11,3), particles, and octonions", arXiv:2209.05088.
 Source: Krasnov, "Spin(10), two pure spinors, and the Standard Model",
   arXiv:2504.16465.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 noncomputable section

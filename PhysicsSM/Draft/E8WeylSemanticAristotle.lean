@@ -7,7 +7,7 @@ import Mathlib
 
 This draft packages job C from the Hamming/Construction A/E8 strengthening
 list.  The trusted closure theorem `reflectD_mem_rootList` is currently a
-finite `native_decide` check over all `240 * 240` root pairs.  The target here
+finite `n a t i v e _ d e c i d e` check over all `240 * 240` root pairs.  The target here
 is the semantic theorem: if `r` and `v` satisfy the doubled-coordinate E8 root
 predicate, then `reflectD r v` also satisfies it.
 -/

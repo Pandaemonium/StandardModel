@@ -37,7 +37,7 @@ The proof is split across four files to manage memory:
 Source: Baez, "The Octonions", Bull. Amer. Math. Soc. 39 (2002), §3–4.
 Albert, "On a Certain Algebra of Quantum Mechanics", Ann. of Math. 35 (1934).
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3OJordan

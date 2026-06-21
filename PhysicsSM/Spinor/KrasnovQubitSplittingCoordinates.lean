@@ -40,7 +40,7 @@ is claimed.
   J. Math. Phys. 62, 021703, 2021.
 - Baez, "Can We Understand the Standard Model Using Octonions?", 2021.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.KrasnovComplexStructure

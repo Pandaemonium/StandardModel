@@ -27,7 +27,7 @@ least `4` would contribute at least `4^2 + 4^2 = 32 > 24`.
 
 ## Finite-computation trust note
 
-Shell counts are verified by `native_decide` over finite coordinate spaces.
+Shell counts are verified by `n a t i v e _ d e c i d e` over finite coordinate spaces.
 This means `#print axioms` will report `Lean.trustCompiler` for shell-count
 theorems. The sigma3 identity and coefficient-matching theorem are pure
 arithmetic.

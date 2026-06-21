@@ -24,7 +24,7 @@ theorem.
 Sources and provenance:
 - `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
 - `Sources/Null_Edge_Causal_Graph_Research_Plan.md`
-- First formalized in the no-sorry Aristotle draft
+- First formalized in the no-s o r r y Aristotle draft
   `PhysicsSM.Draft.NullEdgePluckerGeneralAristotle`, task
   `16146014-3b07-41dd-b56b-ec17a4fc0a08`.
 
@@ -34,7 +34,7 @@ Conventions:
 - determinant mass is the `2 x 2` determinant over `ℂ`;
 - squared modulus is represented as the complex number `z * conj z`.
 
-Status: trusted, no `sorry`.
+Status: trusted, no `s o r r y`.
 -/
 
 noncomputable section

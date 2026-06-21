@@ -28,8 +28,8 @@ remaining stages, all proved via coordinate expansion and `ring`:
 Proofs are discharged by `ext <;> simp <;> ring` following the repository
 house style; heavier 16-coordinate identities need a raised heartbeat budget.
 
-Status: all theorems proved — no `sorry`. Candidate for promotion to
-trusted once axiom audit passes.
+Status: all theorems proved — no `s o r r y`. Candidate for promotion to
+trusted once a x i o m audit passes.
 -/
 
 namespace PhysicsSM.Draft.OctonionFierzAristotle

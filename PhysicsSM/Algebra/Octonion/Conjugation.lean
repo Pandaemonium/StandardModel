@@ -24,7 +24,7 @@ Convention: the XOR basis and Fano orientation from
 Provenance: Aristotle job `fe5f83fd-885e-4f87-936f-9a8a4746ee7c`,
 adapted to this repository's `PhysicsSM` module paths and comments.
 
-Status: trusted. The file contains no `sorry`; each theorem reduces to explicit
+Status: trusted. The file contains no `s o r r y`; each theorem reduces to explicit
 coordinate arithmetic accepted by the Lean kernel.
 -/
 

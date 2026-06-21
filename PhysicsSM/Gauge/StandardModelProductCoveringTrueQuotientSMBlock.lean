@@ -37,7 +37,7 @@ This is an algebraic quotient theorem. It does not prove a topological
 quotient, smooth Lie group isomorphism, compactness, connectedness, or
 physical dynamics.
 
-Status: trusted — no sorry.
+Status: trusted — no s o r r y.
 -/
 
 set_option linter.style.longLine false

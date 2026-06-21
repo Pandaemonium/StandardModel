@@ -35,7 +35,7 @@ into its chosen-complex-line part and its complement (complex triple) part.
 We lift this splitting componentwise to `𝕆²` and prove that `rightMulE111`
 preserves the `C` and `C³` summands.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.KrasnovComplexStructure

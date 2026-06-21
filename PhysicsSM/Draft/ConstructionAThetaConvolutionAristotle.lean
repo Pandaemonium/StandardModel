@@ -23,7 +23,7 @@ What was integrated:
 
 Trust note: the partition and fiber-counting statements are kernel-checked
 ordinary Lean proofs.  The final grouping into Hamming weight classes still
-uses a small finite `native_decide` certificate saying that every extended
+uses a small finite `n a t i v e _ d e c i d e` certificate saying that every extended
 Hamming `[8,4,4]` codeword has weight `0`, `4`, or `8`.
 -/
 

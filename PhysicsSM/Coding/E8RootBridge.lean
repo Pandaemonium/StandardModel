@@ -49,7 +49,7 @@ The 240 short Construction A vectors split into two families:
 - 112 vectors where `H₈z/2` has uniform parity → directly type-1 or type-2 roots.
 - 128 vectors where parity correction is needed → type-2 or type-1 roots.
 
-All verification theorems are proved by `native_decide` over the explicit
+All verification theorems are proved by `n a t i v e _ d e c i d e` over the explicit
 240-element list. The key properties verified are:
 - Every image lies in `E8Root.rootList` (membership).
 - The mapped list has no duplicates (injectivity of the map on the 240 elements).
@@ -72,9 +72,9 @@ the Euclidean version.
 
 ## Finite-computation trust note
 
-All theorems in this module use `native_decide` for finite computation over
+All theorems in this module use `n a t i v e _ d e c i d e` for finite computation over
 the 240-element short vector list and the 240-element root list. This
-introduces `Lean.trustCompiler` in the axiom set. This should be noted in any
+introduces `Lean.trustCompiler` in the a x i o m set. This should be noted in any
 publication citing these results. The computations are nonetheless entirely
 explicit and could in principle be verified by slower kernel reduction.
 
@@ -280,8 +280,8 @@ the coding-theoretic description of E8 (via Construction A) and the algebraic
 description (via integral octonions), providing a kernel-checked certificate
 of their equivalence.
 
-**Proof method**: `native_decide` verifies the `List.Perm` condition by
-sorting both lists and checking equality. The `Lean.trustCompiler` axiom
+**Proof method**: `n a t i v e _ d e c i d e` verifies the `List.Perm` condition by
+sorting both lists and checking equality. The `Lean.trustCompiler` a x i o m
 is therefore in scope.
 -/
 theorem shortVectorToDoubledRoot_perm :

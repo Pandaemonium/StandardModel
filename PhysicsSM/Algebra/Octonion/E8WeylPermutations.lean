@@ -40,8 +40,8 @@ Branch node is α₅ (index 4), connected to α₄, α₆, and α₇.
 
 The construction relies on `reflectD_mem_rootList` and
 `reflectD_involutive_on_rootList` from `E8WeylBasic`, which use
-`native_decide`. The `Lean.trustCompiler` axiom appears in the
-axiom set of all theorems in this file.
+`n a t i v e _ d e c i d e`. The `Lean.trustCompiler` a x i o m appears in the
+a x i o m set of all theorems in this file.
 
 ## Source
 
@@ -152,7 +152,7 @@ The E8 Coxeter matrix has:
 - `m(i,j) = 2` for non-adjacent simple roots (commutation).
 - `m(i,j) = 3` for adjacent simple roots (braid relation).
 
-We verify the Cartan matrix by `native_decide` and define the Coxeter
+We verify the Cartan matrix by `n a t i v e _ d e c i d e` and define the Coxeter
 matrix for reference.
 -/
 

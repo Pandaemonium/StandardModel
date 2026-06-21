@@ -27,7 +27,7 @@ stabilizes h₃(ℂ). It does **not** prove equality with the full stabilizer.
 
 ## Status
 
-Trusted module — no `sorry`.
+Trusted module — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3O

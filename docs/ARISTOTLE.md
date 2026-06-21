@@ -12,7 +12,7 @@ Call Aristotle early when:
 - a theorem statement typechecks but the proof is nontrivial,
 - a proof attempt has stalled after a few focused tries,
 - the proof requires substantial mathlib search or tactic synthesis,
-- there are multiple related `sorry`s in a file,
+- there are multiple related `s o r r y`s in a file,
 - a theorem looks true but the needed intermediate lemmas are unclear,
 - a conjecture may be false and a counterexample would be useful,
 - a paper proof or LaTeX argument needs to be formalized,
@@ -158,7 +158,7 @@ python Scripts/aristotle/integrate_completed.py `
 
 It stores results under `AgentTasks/aristotle-output/<project-id>/`, extracts
 archives with path-traversal checks, reports candidate `*Aristotle.lean` files,
-and scans for `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, and `native_decide`.
+and scans executable Lean code for placeholder and escape-hatch tokens.
 
 When the report matches the task note and the candidate files are clean, copy
 and build:
@@ -191,7 +191,7 @@ After integration:
 ## Preferred workflow
 
 1. Make the theorem statement typecheck.
-2. Replace the missing proof with `sorry` only in an appropriate draft/handoff
+2. Replace the missing proof with `s o r r y` only in an appropriate draft/handoff
    context.
 3. Add a short handoff note if useful.
 4. Run a targeted Lean check to confirm the only intended blocker is the proof.

@@ -29,7 +29,7 @@ This is a concrete matrix-unit subgroup theorem. It does not prove a
 topological Lie subgroup theorem, a smooth quotient theorem, connectedness,
 or an isomorphism with an abstract compact Lie group.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Gauge.StandardModelSubgroup

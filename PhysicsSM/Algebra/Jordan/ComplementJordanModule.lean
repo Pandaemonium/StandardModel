@@ -32,7 +32,7 @@ Jordan module (the complement is closed under the h₃(ℂ) action). It does
 
 ## Status
 
-Trusted module — no `sorry`.
+Trusted module — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3O

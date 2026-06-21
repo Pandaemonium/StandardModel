@@ -19,9 +19,9 @@ subject to the constraint that the sum of entries is divisible by 4
 (equivalently, the sum of actual coordinates is even).
 
 All key properties (cardinality, norm, negation closure, dot-product integrality
-and bounds) are verified by kernel-checked computation via `native_decide`.
-As with other finite-enumeration modules in this repository, `native_decide`
-may show up through Lean's `trustCompiler` axiom in `#print axioms`; this should
+and bounds) are verified by kernel-checked computation via `n a t i v e _ d e c i d e`.
+As with other finite-enumeration modules in this repository, `n a t i v e _ d e c i d e`
+may show up through Lean's `trustCompiler` a x i o m in `#print axioms`; this should
 be acknowledged in any publication that cites these computations.
 
 ## Sources
@@ -34,7 +34,7 @@ be acknowledged in any publication that cites these computations.
 
 Created for the PhysicsSM integral-octonion / E8 / Leech-lattice program.
 Convention: XOR basis from `PhysicsSM.Algebra.Octonion.Basic`.
-Status: trusted (no `sorry`).
+Status: trusted (no `s o r r y`).
 -/
 
 namespace PhysicsSM.Algebra.Octonion

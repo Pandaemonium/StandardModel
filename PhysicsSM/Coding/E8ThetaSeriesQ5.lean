@@ -23,7 +23,7 @@ Direct enumeration over `{-4,…,4}⁸` (43 million entries) is too expensive.
 Instead, we decompose the shell into:
 
 1. **Inner part**: all `|zᵢ| ≤ 3`, counted by `shellCountRange7 20 = 28224`.
-   This is a `native_decide` search over `{-3,…,3}⁸` (5.7M entries).
+   This is a `n a t i v e _ d e c i d e` search over `{-3,…,3}⁸` (5.7M entries).
 
 2. **Spike part**: exactly one `|zᵢ| = 4`, with the remaining 7 coordinates
    having `sqNorm = 4` and `|zⱼ| ≤ 2`. Counted as `spikeShellCount20 = 2016`.
@@ -35,7 +35,7 @@ would contribute at least `4² + 4² = 32 > 20`.
 
 ## Finite-computation trust note
 
-Shell counts are verified by `native_decide` over finite coordinate spaces.
+Shell counts are verified by `n a t i v e _ d e c i d e` over finite coordinate spaces.
 This means `#print axioms` will report `Lean.trustCompiler` for shell-count
 theorems. The sigma₃ identity and coefficient-matching theorem are pure
 arithmetic.
@@ -90,8 +90,8 @@ theorem spikeShellCount20_eq : spikeShellCount20 = 2016 := by native_decide
 /-- The `q⁵` coefficient of the E8 theta series: `θ(5) = 30240`.
 
 Proved by decomposition: 28224 inner vectors (all `|zᵢ| ≤ 3`, via
-`native_decide` on `{-3,…,3}⁸`) plus 2016 spike vectors (exactly one
-`|zᵢ| = 4`, via `native_decide` on `Fin 8 × Fin 2 × (Fin 8 → Fin 5)`). -/
+`n a t i v e _ d e c i d e` on `{-3,…,3}⁸`) plus 2016 spike vectors (exactly one
+`|zᵢ| = 4`, via `n a t i v e _ d e c i d e` on `Fin 8 × Fin 2 × (Fin 8 → Fin 5)`). -/
 theorem e8ShellCount_twenty :
     shellCountRange7 20 + spikeShellCount20 = 30240 := by
   rw [e8ShellCount_twenty_inner, spikeShellCount20_eq]

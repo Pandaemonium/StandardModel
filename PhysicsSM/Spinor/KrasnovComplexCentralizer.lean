@@ -27,7 +27,7 @@ This is a linear-algebra theorem about the Krasnov complex structure. It
 does not prove a Clifford algebra representation theorem, a Standard Model
 representation theorem, or a physical chirality statement.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.KrasnovComplexStructure

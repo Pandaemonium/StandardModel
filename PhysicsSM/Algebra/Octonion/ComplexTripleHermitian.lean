@@ -48,7 +48,7 @@ the downstream usage where `SU(3)` acts linearly on the complement.
 Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021.
 Convention: project XOR basis from `PhysicsSM.Algebra.Octonion.Basic`.
 
-Theorems in this module are trusted and contain no `sorry`.
+Theorems in this module are trusted and contain no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Octonion

@@ -2,11 +2,11 @@ import PhysicsSM.Draft.HammingWeightEnumeratorNoNativeAristotle
 import PhysicsSM.Coding.Hamming844UniquenessBasic
 
 /-!
-# Concrete extended Hamming facts without native_decide
+# Concrete extended Hamming facts without n a t i v e _ d e c i d e
 
 This module provides no-native certificates for the concrete extended Hamming
 code `extendedHamming8`.  These theorems replace the remaining finite
-`native_decide` checks used by `extendedHamming8_isLinearCode_4_4`:
+`n a t i v e _ d e c i d e` checks used by `extendedHamming8_isLinearCode_4_4`:
 
 * the 16-codeword cardinality;
 * the dimension-four statement;

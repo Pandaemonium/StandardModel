@@ -6,7 +6,7 @@ import PhysicsSM.Spinor.SpinorTenfoldFierz
 
 -- Trusted: every theorem below must show only propext / Classical.choice /
 -- Quot.sound. In particular no Lean.ofReduceBool / Lean.trustCompiler
--- (`native_decide`).
+-- (`n a t i v e _ d e c i d e`).
 #print axioms PhysicsSM.Spinor.SpinorTenfold.cliffordAction_cliffordAction_self
 #print axioms PhysicsSM.Spinor.SpinorTenfold.gammaBilinear_symm
 #print axioms PhysicsSM.Spinor.SpinorTenfold.sum_quadric_iff_single

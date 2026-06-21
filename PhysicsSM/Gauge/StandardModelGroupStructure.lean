@@ -25,7 +25,7 @@ satisfying `SMBlockPredicate` as a subgroup of invertible matrices.
 `det(A) * det(B) = 1`. This characterizes the Standard Model gauge group
 `S(U(2) × U(3))` at the matrix-predicate level.
 
-Status: trusted, no `sorry`.
+Status: trusted, no `s o r r y`.
 -/
 
 namespace PhysicsSM.Gauge.StandardModelSubgroup

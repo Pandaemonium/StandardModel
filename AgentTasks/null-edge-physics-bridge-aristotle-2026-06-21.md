@@ -33,8 +33,8 @@ PhysicsSM.Draft.NullEdgePhysicsBridgeAristotle
 
 ## Constraints
 
-- No `sorry`, `admit`, `axiom`, `opaque`, or `unsafe` in the final target file.
-- Do not use `native_decide`.
+- No `s o r r y`, `a d m i t`, `a x i o m`, `o p a q u e`, or `u n s a f e` in the final target file.
+- Do not use `n a t i v e _ d e c i d e`.
 - Do not weaken theorem statements merely to close proofs.
 - Helper lemmas in this file are welcome.
 - Prefer existing imported theorem names before reproving facts.
@@ -187,10 +187,17 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdgePhysicsBridgeAristotle
   submission_project: AgentTasks/aristotle-submit/null-edge-physics-bridge-20260621-project
   output_dir: AgentTasks/aristotle-output/7852e499-8e63-4ddf-a641-1fb3d261b437
-  status: submitted
+  status: integrated
 ```
 
 Submitted 2026-06-21.  `aristotle list` reported the project as `RUNNING`;
 `aristotle tasks 7852e499-8e63-4ddf-a641-1fb3d261b437` reported task
 `6a507619-8806-4d64-879c-10c603fe83b1` as `QUEUED` immediately after
 submission.
+
+Integrated 2026-06-21 after `aristotle tasks` reported task
+`6a507619-8806-4d64-879c-10c603fe83b1` as `COMPLETE`.  The conservative
+integration helper extracted the expected candidate file, reported no
+placeholders, copied it into
+`PhysicsSM/Draft/NullEdgePhysicsBridgeAristotle.lean`, and built
+`PhysicsSM.Draft.NullEdgePhysicsBridgeAristotle` successfully.

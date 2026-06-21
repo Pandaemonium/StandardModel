@@ -5,7 +5,7 @@ Formalization roadmap and open questions.
 
 ## Milestone 1 — Foundation (current)
 - [x] Project skeleton and module structure
-- [x] CI with no-sorry gate and doc generation
+- [x] CI with no-s o r r y gate and doc generation
 - [x] Prelude documenting available mathlib infrastructure
 - [ ] Octonion type and multiplication table
 - [ ] Conjugation involution
@@ -16,7 +16,7 @@ Formalization roadmap and open questions.
 - [ ] Quaternion bridge to Mathlib
 - [ ] Octonion alternativity
 - [ ] Octonion Moufang identities
-- [ ] Norm multiplicativity proof (kernel-checked, no sorry)
+- [ ] Norm multiplicativity proof (kernel-checked, no s o r r y)
 
 ## Milestone 3 — Clifford and spinor pass
 - [ ] Clifford algebra conventions wrapper

@@ -47,7 +47,7 @@ beyond the current trusted development.
 ## Status
 
 This is a **trusted** module: all definitions and theorems are fully proved.
-No `sorry`, `admit`, `axiom`, `opaque`, or `unsafe`.
+No `s o r r y`, `a d m i t`, `a x i o m`, `o p a q u e`, or `u n s a f e`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.Derivation

@@ -32,7 +32,7 @@ image and the SM block predicate. It does **not** prove surjectivity of
 the covering map onto all of `S(U(2) × U(3))`, the full first-isomorphism
 group theorem, or any topological quotient structure.
 
-Status: trusted — sorry-free.
+Status: trusted — s o r r y-free.
 -/
 
 namespace PhysicsSM.Gauge.StandardModelSubgroup

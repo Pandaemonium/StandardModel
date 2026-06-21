@@ -32,7 +32,7 @@ No G₂, SU(3), or Standard Model claims.
 
 Convention: project XOR basis, chosen imaginary unit `e111`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Octonion

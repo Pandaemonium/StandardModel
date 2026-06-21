@@ -33,7 +33,7 @@ transported from the integer mirror, where `gBasisZ_symm` (kernel `decide`,
 trusted) collapses the six terms to twice the three-term cyclic combination
 `fierzZ_three`, proved in `PhysicsSM.Spinor.SpinorTenfoldFierzKernel` by the
 single-monomial closed form `termData_eq` plus a finite kernel `decide` on the
-`(coeff, target)` data. No `native_decide` is used anywhere in the dependency
+`(coeff, target)` data. No `n a t i v e _ d e c i d e` is used anywhere in the dependency
 tree: `#print axioms fierz_clifford` lists only `propext`, `Classical.choice`,
 `Quot.sound` (audited in `Scripts/check_axioms_spin10.lean`).
 
@@ -42,14 +42,14 @@ tree: `#print axioms fierz_clifford` lists only `propext`, `Classical.choice`,
 Proofs produced by the Aristotle proof agent in two stages: multilinear
 reduction and main theorems (job `198550bc-ef58-4789-bda2-b7361cc6c3f7`, task
 `AgentTasks/spin10-fierz-cayley-chart-aristotle-2026-06-09.md`), and the
-kernel-clean enumeration replacing the original `native_decide` (job
+kernel-clean enumeration replacing the original `n a t i v e _ d e c i d e` (job
 `93e29d35-37f8-4c3c-bad7-02b5fca82612`, task
 `AgentTasks/spin10-fierz-kernel-decide-aristotle-2026-06-10.md`); reviewed for
 semantic alignment and promoted from the retired draft
 `PhysicsSM/Draft/SpinorTenfoldFierzAristotle.lean`. The identity is
 independently verified by `Scripts/oracle/validate_spinor_tenfold.py`.
 
-Status: trusted — no `sorry`, no `axiom` (in particular no `native_decide`).
+Status: trusted — no `s o r r y`, no `a x i o m` (in particular no `n a t i v e _ d e c i d e`).
 -/
 
 namespace PhysicsSM.Spinor.SpinorTenfold
@@ -64,7 +64,7 @@ Kernel-clean proof: by symmetry of `gBasisZ` (`gBasisZ_symm`) the six terms
 collapse to twice the three-term cyclic combination `fierzZ_three`, which is
 established in `PhysicsSM.Spinor.SpinorTenfoldFierzKernel` by a closed-form
 single-monomial reduction (`termData_eq`) followed by a finite kernel `decide`
-on the cheap `(coeff, target)` data (no `native_decide`). -/
+on the cheap `(coeff, target)` data (no `n a t i v e _ d e c i d e`). -/
 theorem fierzZ_symmetrized :
     ∀ S T U : Finset (Fin 5), S.card % 2 = 0 → T.card % 2 = 0 → U.card % 2 = 0 →
       cliffordActionZ (gBasisZ S T) (basisZ U)

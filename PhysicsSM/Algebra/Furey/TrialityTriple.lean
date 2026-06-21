@@ -68,7 +68,7 @@ cited papers.  No external code is copied.
 
 ## Status
 
-Draft scaffold — contains no `sorry` in executable code, but the `SMActionData`
+Draft scaffold — contains no `s o r r y` in executable code, but the `SMActionData`
 record fields are documentation-only (`Prop`-valued) placeholders for future
 formalization targets.
 -/
@@ -207,7 +207,7 @@ This record exists so that:
 /-- Record of intended Standard Model action data for a triality-triple
 construction.
 
-Each field is a `Prop` documenting a formalization target.  The `sorry`-free
+Each field is a `Prop` documenting a formalization target.  The `s o r r y`-free
 default value `True` means "this target has not yet been formalized".
 
 Source: Furey and Hughes, arXiv:2409.17948, Sections 3–5. -/

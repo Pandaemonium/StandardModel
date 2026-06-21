@@ -44,13 +44,13 @@ Sources/  Scripts/  AgentTasks/  Index/
 
 ## Trusted vs draft code
 
-- Trusted theorem files must compile without `sorry`, `admit`, fake axioms, or
+- Trusted theorem files must compile without `s o r r y`, `a d m i t`, fake axioms, or
   hidden assumptions.
-- Draft files may contain `sorry` if accompanied by a useful proof plan or
-  failure note. A `sorry` is a handoff marker, not success.
-- It is acceptable to stop after inserting a documented `sorry` when stuck - do
+- Draft files may contain `s o r r y` if accompanied by a useful proof plan or
+  failure note. A `s o r r y` is a handoff marker, not success.
+- It is acceptable to stop after inserting a documented `s o r r y` when stuck - do
   not churn if you are not making progress.
-- Never move a theorem from draft to trusted until all `sorry`s are eliminated
+- Never move a theorem from draft to trusted until all `s o r r y`s are eliminated
   and the statement has been reviewed for semantic alignment.
 
 Good handoff comment:
@@ -65,9 +65,9 @@ Likely missing lemma: ...   Potential issue with statement: ...
 
 ## Forbidden in trusted code
 
-Never introduce `axiom`, `opaque`, `unsafe def`, `admit`, or `sorry` in trusted
-code. Do not add opaque placeholders, fake definitions, or new assumptions merely
-to make a proof pass.
+Never introduce `a x i o m`, `o p a q u e`, `u n s a f e def`, `a d m i t`, or
+`s o r r y` in trusted code. Do not add `o p a q u e` placeholders, fake
+definitions, or new assumptions merely to make a proof pass.
 
 Do not weaken theorem statements to make proofs easier unless explicitly asked
 and the change is documented. Do not silently change definitions, signs, indices,
@@ -84,7 +84,7 @@ report the issue.
 3. Identify the smallest useful target statement.
 4. Add or modify definitions only when necessary.
 5. State the theorem precisely.
-6. Prove it, or leave a documented `sorry` in draft/handoff context.
+6. Prove it, or leave a documented `s o r r y` in draft/handoff context.
 7. Run the smallest relevant Lean check, then a broader build before claiming
    completion (see [`docs/BUILD.md`](docs/BUILD.md)).
 8. Update provenance, metadata, and task notes when relevant.
@@ -106,7 +106,7 @@ lake build                                   # full
 
 The toolchain is frozen at `leanprover/lean4:v4.28.0` - do not upgrade. The
 one-time Windows ProofWidgets fix, the extra index/oracle/docs commands, and the
-no-sorry scan are in [`docs/BUILD.md`](docs/BUILD.md). Do not claim a command
+placeholder scan are in [`docs/BUILD.md`](docs/BUILD.md). Do not claim a command
 passed unless it was actually run.
 
 ## Lean style
@@ -195,7 +195,7 @@ isolate context, call Aristotle, and review the result for semantic alignment,
 convention drift, and hidden assumptions.
 
 Call Aristotle early for nontrivial proofs, stalled attempts, heavy mathlib
-search, clustered `sorry`s, unclear intermediate lemmas, possible
+search, clustered `s o r r y`s, unclear intermediate lemmas, possible
 counterexamples, or paper-proof formalization. Do not weaken a statement just to
 make progress - hand it to Aristotle instead.
 
@@ -222,7 +222,7 @@ pre-add existence check (keyed on arxiv_id/doi, not title) documented in
 When translating from a paper or external codebase: extract the informal
 definition/theorem; record source, notation, assumptions, conventions; map to
 existing Lean/mathlib concepts; state the Lean theorem before proving; prove it
-or isolate the blocker with a documented `sorry`; review semantic alignment.
+or isolate the blocker with a documented `s o r r y`; review semantic alignment.
 Check: same hypotheses? same scalar field? quotient structures represented
 correctly? same signs/normalizations? groups vs Lie algebras vs representations
 vs concrete matrices? implicit physics assumptions made explicit?
@@ -240,11 +240,11 @@ cannot be completed, record: the exact theorem/definition attempted, the current
 Lean error, what was tried, suspected missing lemmas, whether the problem is
 syntax / imports / statement / missing-API / convention-mismatch /
 mathematical-falsehood, and the recommended next step. If proof search is
-churning, stop and add a documented `sorry` in a draft/handoff context.
+churning, stop and add a documented `s o r r y` in a draft/handoff context.
 
 ## Red flags
 
-Stop and request review if you encounter: need for a new axiom; a theorem
+Stop and request review if you encounter: need for a new `a x i o m`; a theorem
 depending on unstated analytic assumptions; ambiguity between group and Lie
 algebra representations; convention mismatch between sources; copyleft code that
 seems necessary to copy; a proof that works only after weakening the statement;
@@ -270,7 +270,7 @@ Remaining issues:
 - ...
 ```
 
-Report any `sorry`s explicitly and say whether they are in trusted or
+Report any `s o r r y`s explicitly and say whether they are in trusted or
 draft/handoff code.
 
 ## Project philosophy
@@ -298,6 +298,12 @@ Preserve repo text hygiene:
 - Do not rewrite repo files with PowerShell 5 redirection or `Out-File` (UTF-16LE
   default). Use explicit UTF-8: PowerShell 7+ `Set-Content -Encoding utf8NoBOM`,
   or Python `open(path, "w", encoding="utf-8", newline="\n")`.
+- In comments, docstrings, Markdown prose, and task notes, avoid spelling raw
+  Lean placeholder/escape-hatch tokens. Use spaced forms such as `s o r r y`,
+  `a d m i t`, `a x i o m`, `o p a q u e`, `u n s a f e`, and
+  `n a t i v e _ d e c i d e`. Use raw tokens only in executable Lean/code,
+  regexes, or tool logic where the literal token is required. This keeps grep
+  and scan output focused on kernel-relevant code instead of prose.
 
 Before committing or handing back: run `pre-commit run --all-files` and
 `lake build`. If pre-commit is missing: `pipx install pre-commit && pre-commit

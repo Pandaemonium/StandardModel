@@ -37,7 +37,7 @@ The coordinate ordering is `Fin 3 = {0 ↦ w₁, 1 ↦ w₂, 2 ↦ w₃}`.
 Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021.
 Convention: project XOR basis from `PhysicsSM.Algebra.Octonion.Basic`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Octonion

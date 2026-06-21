@@ -24,7 +24,7 @@ In the Dubois-Violette–Todorov (DVT) / Yokota framework, a pair `(g, h)` of
 via `g` and on the complement summand via `h`. The full unitary group
 infrastructure is too heavy to formalize in one pass, so this module provides
 a **scoped trusted coordinate scaffold**: all definitions compile without
-`sorry`, using conservative hypotheses on the action data.
+`s o r r y`, using conservative hypotheses on the action data.
 
 ## Sources
 
@@ -33,7 +33,7 @@ a **scoped trusted coordinate scaffold**: all definitions compile without
 - Yokota, "Exceptional Lie Groups", arXiv:0902.0431, Chapter 3.
 - Baez, "Can We Understand the Standard Model Using Octonions?", 2021.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.DVTAction

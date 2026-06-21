@@ -63,7 +63,7 @@ computations of Lemma 1 / Proposition 1-2 of the research notes.
 - Provenance: clean-room formalization; sign conventions inherited from
   `PhysicsSM.Spinor.SpinorTenfold` (oracle-validated).
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 noncomputable section

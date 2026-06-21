@@ -54,16 +54,29 @@ lake exe oracle-check
 lake build PhysicsSM:docs
 ```
 
-## No-sorry / placeholder scan
+## Placeholder scan
 
-If there is a no-sorry checker, run it before finalizing trusted work.
-Otherwise inspect suspicious tokens:
+Run the comment-aware Lean-code checker before finalizing trusted work:
 
 ```bash
-grep -R "sorry\|admit\|axiom\|unsafe" PhysicsSM
+python Scripts/check_forbidden_lean_tokens.py
 ```
 
-A grep hit is not automatically a failure in comments, generated files, or draft
-files, but it must be inspected.
+For draft or focused files, pass paths explicitly and include draft directories:
+
+```bash
+python Scripts/check_forbidden_lean_tokens.py --include-draft PhysicsSM/Draft/Example.lean
+```
+
+For Aristotle outputs or packages that must avoid compiled-evaluator proofs,
+add the strict finite-computation flag:
+
+```bash
+python Scripts/check_forbidden_lean_tokens.py --include-draft --forbid-native-decide PhysicsSM/Draft/Example.lean
+```
+
+This checker ignores Lean comments, docstrings, and strings, so it is much
+quieter than raw grep while still catching kernel-relevant placeholders and
+escape hatches in executable Lean code.
 
 Do not claim a command passed unless it was actually run.

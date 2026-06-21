@@ -5,7 +5,7 @@ import PhysicsSM.Draft.E8RootSemanticHelpers
 
 This draft packages job B from the Hamming/Construction A/E8 strengthening
 list.  The current root list is trusted by Lean but many list facts are proved
-by finite `native_decide` checks.  The target here is the semantic
+by finite `n a t i v e _ d e c i d e` checks.  The target here is the semantic
 classification:
 
 * type I roots have exactly two nonzero coordinates, each equal to `+2` or `-2`;

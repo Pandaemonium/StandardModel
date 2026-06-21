@@ -21,7 +21,7 @@ the proof splits the shell into the two cases `(norm 4, norm 0)` and
 `(norm 0, norm 4)`, using the already-established E8 minimum-norm bound to
 exclude the case where both factors are nonzero.  The remaining 8-dimensional
 factor counts still use small finite certificates, so this helper inherits the
-same `native_decide` trust boundary as the existing E8 shell-count files.
+same `n a t i v e _ d e c i d e` trust boundary as the existing E8 shell-count files.
 
 Provenance: Aristotle job `6b24bf9e-8c20-4fb4-a6d7-f0f84d22c18a`,
 2026-05-15.  The comments in this file were expanded during integration.

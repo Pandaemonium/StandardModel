@@ -49,7 +49,7 @@ action, and the sign cocycle is preserved up to a local gauge (coboundary),
 both at the octonion and sedenion levels.
 -/
 
--- All theorems use certified finite computation (`native_decide`),
+-- All theorems use certified finite computation (`n a t i v e _ d e c i d e`),
 -- with raised heartbeat limits for heavy Finset enumeration.
 set_option linter.style.setOption false
 set_option linter.style.nativeDecide false

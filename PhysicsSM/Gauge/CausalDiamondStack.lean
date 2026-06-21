@@ -25,10 +25,10 @@ Stokes theorem, a smooth connection, or a non-Abelian gerbe holonomy.
 Sources and provenance:
 * `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
 * `AgentTasks/null-edge-overnight-synthesis-aristotle-2026-06-21.md`
-* Promoted from the no-sorry draft
+* Promoted from the no-s o r r y draft
   `PhysicsSM.Draft.NullEdgeOvernightSynthesisAristotle` after semantic review.
 
-Status: trusted, no `sorry`.
+Status: trusted, no `s o r r y`.
 -/
 
 noncomputable section

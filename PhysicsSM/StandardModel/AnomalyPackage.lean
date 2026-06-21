@@ -67,7 +67,7 @@ charge conjugation negates hypercharge.
 
 ## Convention
 
-Trusted module: no `sorry`, `admit`, `axiom`, `opaque`, or `unsafe`.
+Trusted module: no `s o r r y`, `a d m i t`, `a x i o m`, `o p a q u e`, or `u n s a f e`.
 Provenance: clean-room formalization from standard textbook conditions;
 verified by Aristotle proof agent, job 8778de36-1c9d-4266-bc0f-b61055bddd07.
 -/

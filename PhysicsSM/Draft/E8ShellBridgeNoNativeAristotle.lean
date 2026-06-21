@@ -185,7 +185,7 @@ private theorem toE8LatticeVec_surj_no_native (w : R8) (hw : w ∈ E8Lattice) :
   exact ⟨c, by unfold toE8LatticeVec; rw [hc]; exact hvw⟩
 
 /--
-No-`native_decide` replacement for the shell-count bridge.
+No-`n a t i v e _ d e c i d e` replacement for the shell-count bridge.
 
 This is the key theorem needed to remove `Lean.trustCompiler` from the final
 `Theta_E8 = E4` coefficient theorem.

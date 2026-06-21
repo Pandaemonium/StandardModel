@@ -25,8 +25,8 @@ The proof reduces to two bridge lemmas:
 
 2. **Q-expansion coefficient matching** (`qExpansion_thetaE8_MF_coeff`):
    Proved by chaining `thetaE8_MF_eq_E4` (from `E8ThetaDim8MF.lean`) with
-   `splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff` (sorry'd in
-   `E8ThetaWeightEnumeratorBridgeAristotle.lean`).  This sorry is the
+   `splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff` (s o r r y'd in
+   `E8ThetaWeightEnumeratorBridgeAristotle.lean`).  This s o r r y is the
    "SPL theta coefficient bridge" documented in that file.
 
 ## References
@@ -110,8 +110,8 @@ The proof requires establishing a norm-preserving bijection between
 `{v : Fin 8 → ℤ | v ∈ e8IntLattice}` and `E8Lattice` satisfying
 `‖φ(v)‖² = sqNorm(v) / 2`.
 
-This is the sole remaining sorry in this file.  The q-expansion coefficient
-sorry is located in `E8ThetaWeightEnumeratorBridgeAristotle.lean` as
+This is the sole remaining s o r r y in this file.  The q-expansion coefficient
+s o r r y is located in `E8ThetaWeightEnumeratorBridgeAristotle.lean` as
 `splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff`.
 -/
 /--
@@ -207,7 +207,7 @@ The q-expansion coefficients of `thetaE8_MF` are the Construction A shell
 counts `hammingThetaConvolutionCoeff`.
 
 This chains `thetaE8_MF_eq_E4` with
-`splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff` (sorry'd in
+`splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff` (s o r r y'd in
 `E8ThetaWeightEnumeratorBridgeAristotle.lean`).
 -/
 theorem qExpansion_thetaE8_MF_coeff (n : ℕ) :
@@ -252,7 +252,7 @@ theorem exists_e8Theta_weight4_modularForm_with_qExpansion :
 /--
 Coefficient matching extracted from the modular-form construction target.
 
-This theorem becomes sorry-free once the two bridge lemmas are filled.
+This theorem becomes s o r r y-free once the two bridge lemmas are filled.
 -/
 theorem hammingThetaConvolutionCoeff_eq_e4Coeff_from_e8Theta_modularForm
     (n : Nat) :

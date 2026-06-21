@@ -63,8 +63,8 @@ needs the two-operator statement. Target (4) follows from (1), (3),
 
 Do not change any definition or sign convention. Helper lemmas are welcome.
 
-Status: all four targets are proved (no `sorry`, no `axiom`, no
-`native_decide`); the two single-operator right-slot swap facts on the integer
+Status: all four targets are proved (no `s o r r y`, no `a x i o m`, no
+`n a t i v e _ d e c i d e`); the two single-operator right-slot swap facts on the integer
 mirror are closed by kernel `decide`.
 -/
 

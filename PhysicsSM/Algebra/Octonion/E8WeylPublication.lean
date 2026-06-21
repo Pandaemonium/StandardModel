@@ -32,8 +32,8 @@ results under short, stable names.
 
 ## Trust boundary
 
-All theorems in this module inherit the `Lean.trustCompiler` axiom from
-`native_decide` computations in upstream modules. See the documentation in
+All theorems in this module inherit the `Lean.trustCompiler` a x i o m from
+`n a t i v e _ d e c i d e` computations in upstream modules. See the documentation in
 `E8WeylBasic`, `E8WeylOrbitConvergence`, and `E8WeylPermutations` for the
 precise trust boundaries.
 

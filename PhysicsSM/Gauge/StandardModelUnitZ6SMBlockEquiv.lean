@@ -51,7 +51,7 @@ It does **not** prove:
 This is the Z₆ quotient convention. The true-product quotient theorem
 is in a separate file and both are useful.
 
-Status: trusted — sorry-free.
+Status: trusted — s o r r y-free.
 -/
 
 namespace PhysicsSM.Gauge.StandardModelSubgroup

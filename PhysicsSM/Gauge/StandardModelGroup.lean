@@ -48,7 +48,7 @@ anomaly package `PhysicsSM.StandardModel.AnomalyPackage`.
 Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021,
 slides 17–21.
 
-Status: trusted definitions and lemmas — no `sorry`.
+Status: trusted definitions and lemmas — no `s o r r y`.
 The concrete block-matrix maps and determinant calculations are in
 `PhysicsSM.Gauge.BlockEmbeddings`.
 -/

@@ -21,11 +21,11 @@ number of steps.
 
 The word table correctness (`rootWordTable_correct`) and length bounds
 (`rootWordTable_length_le`) are verified by `decide` (kernel reduction)
-without `native_decide` — no `Lean.trustCompiler` dependency.
+without `n a t i v e _ d e c i d e` — no `Lean.trustCompiler` dependency.
 
 The final convergence assembly (`simpleClosure_from_firstRoot_covers_rootList`)
-uses `native_decide` only for a trivial bound `rootList.length ≤ 240`,
-inheriting the same `Lean.trustCompiler` axiom already present in
+uses `n a t i v e _ d e c i d e` only for a trivial bound `rootList.length ≤ 240`,
+inheriting the same `Lean.trustCompiler` a x i o m already present in
 `rootList_length` from `IntegralOctonion.lean`.
 
 ## Source / provenance
@@ -367,7 +367,7 @@ theorem rootWordTable_length_le :
 
 This is the single-orbit (irreducibility) property of E8.
 
-**Trust boundary**: uses `native_decide` only for the trivial bound
+**Trust boundary**: uses `n a t i v e _ d e c i d e` only for the trivial bound
 `rootList.length ≤ 240`. Word table correctness is kernel-checked.
 -/
 theorem simpleClosure_from_firstRoot_covers_rootList :

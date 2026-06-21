@@ -8,7 +8,7 @@ This file is intentionally draft scaffolding for a large Aristotle job. It
 collects the missing pieces needed to turn the current exact-arithmetic anomaly
 checks into a complete, reviewable Standard Model anomaly-cancellation package.
 
-Trusted files should not import this module while it contains `sorry`.
+Trusted files should not import this module while it contains `s o r r y`.
 
 The intended end state is to split successful parts into trusted modules:
 
@@ -284,7 +284,7 @@ file: it is NOT linearly independent.
 -- ORIGINAL (FALSE) DRAFT TARGET, kept for the record:
 -- theorem JbarBasisState_linearIndependent :
 --     LinearIndependent Complex JbarBasisState := by
---   sorry
+--   s o r r y
 -/
 
 /-- Corrected statement: the draft `JbarBasisState` is *not* linearly
@@ -323,7 +323,7 @@ realized by the existing `Q_op`.
 -- ORIGINAL (FALSE) DRAFT TARGET, kept for the record:
 -- theorem Q_op_omega_bar_target :
 --     HasRationalEigenvalue Q_op 1 omega_bar := by
---   sorry
+--   s o r r y
 -/
 
 /-- Corrected statement: the kernel-checked `Q_op` eigenvalue of the empty

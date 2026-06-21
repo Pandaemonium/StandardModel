@@ -44,7 +44,7 @@ From `SpherePacking.Dim8.E8.Packing`:
 The central result is `local_splE8BasisQ_eq_imported_E8Matrix_Q`, which proves
 that our local ℚ-valued reproduction `splE8BasisQ` from
 `E8SpherePackingMatrixBridge` is **identical** to SPL's `E8Matrix ℚ`
-(verified by `native_decide` over the finite 8×8 rational matrix).
+(verified by `n a t i v e _ d e c i d e` over the finite 8×8 rational matrix).
 
 From this, `span_E8Matrix ℚ` immediately gives the submodule equality:
 
@@ -56,8 +56,8 @@ unimodular change-of-basis path.
 
 ## Finite-computation trust boundary
 
-Matrix equalities over explicit 8×8 matrices use `native_decide`, introducing
-`Lean.trustCompiler` into the axiom set.
+Matrix equalities over explicit 8×8 matrices use `n a t i v e _ d e c i d e`, introducing
+`Lean.trustCompiler` into the a x i o m set.
 
 ## Source / provenance
 
@@ -132,7 +132,7 @@ literal. The proof is a finite decidable computation.
 `E8SpherePackingMatrixBridge`) is identical to `E8Matrix ℚ` (SPL's
 definition imported from `SpherePacking.Dim8.E8.Basic`).
 
-This is verified by `native_decide` over the 64 rational entries. -/
+This is verified by `n a t i v e _ d e c i d e` over the 64 rational entries. -/
 theorem local_splE8BasisQ_eq_imported_E8Matrix_Q :
     splE8BasisQ = E8Matrix ℚ := by
   native_decide
@@ -356,7 +356,7 @@ maps Construction A basis coefficients to SPL basis coefficients.
 Since both `D` and `P` are unimodular integer matrices (`det = ±1`),
 their composition `T` is also unimodular integer (`det = 1`).
 
-Key properties (all verified by `native_decide`):
+Key properties (all verified by `n a t i v e _ d e c i d e`):
 1. `T · P = Dᵀ` (factorization identity, equivalent to `T = Dᵀ · P⁻¹`)
 2. `det T = 1` (unimodularity)
 3. `Tᵀ · G_spl · T = G_CA_scaled` (Gram congruence: inner products match)
@@ -791,7 +791,7 @@ theorem constructionA_E8_density_conditional
 
 /-! ## Section 17: Summary of bridge status
 
-### What is proved (kernel-checked, sorry-free):
+### What is proved (kernel-checked, s o r r y-free):
 
 1–15 from original list, plus:
 

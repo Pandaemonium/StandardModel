@@ -26,7 +26,7 @@ octonion inner product.
 - `traceForm_jordanProduct_oneH3O` — symmetric variant of the unit identity.
 - `TraceFormFrobeniusPackage` — bundled package of the above results.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H3O

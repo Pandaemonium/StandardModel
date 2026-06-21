@@ -49,7 +49,7 @@ equivalently `sqNorm z = 4n`. Thus:
 
 ## Finite-computation trust note
 
-Shell counts are verified by `native_decide` over finite coordinate spaces.
+Shell counts are verified by `n a t i v e _ d e c i d e` over finite coordinate spaces.
 For unscaled sqNorm `s`, every coordinate satisfies `zᵢ² ≤ s`, so a search
 over `{-⌊√s⌋, …, ⌊√s⌋}⁸` is provably complete. This means `#print axioms`
 will report `Lean.trustCompiler` for shell-count theorems. The sigma₃
@@ -227,7 +227,7 @@ def thetaCoeffE8 (n : ℕ) : ℕ :=
 -- Using shellCountRange7 uniformly is correct for all n ≤ 3 since the
 -- larger range includes all vectors found by the smaller range.
 
--- However, for native_decide performance, we use the tighter range where
+-- However, for n a t i v e _ d e c i d e performance, we use the tighter range where
 -- possible. The following theorems state the final coefficient values.
 
 /-- `θ(0) = 1`: the zero vector. -/
@@ -263,7 +263,7 @@ theorem thetaCoeff_eq_e4Coeff_three :
 
 For the `q⁴` coefficient (`sqNorm = 16`), the coordinate bound gives
 `| zᵢ | ≤ 4`, requiring a search over `{-4,…,4}⁸` (43 million entries).
-This is too large for `native_decide` directly.
+This is too large for `n a t i v e _ d e c i d e` directly.
 
 Instead, we decompose the shell into two disjoint parts:
 1. **Inner shell**: vectors with all `| zᵢ | ≤ 3`, counted by `shellCountRange7 16`.
@@ -316,8 +316,8 @@ theorem spikeShellCount16_eq : spikeShellCount16 = 16 := by native_decide
 /-- The `q⁴` coefficient of the E8 theta series: `θ(4) = 17520`.
 
 Proved by decomposition: 17504 inner vectors (all `| zᵢ | ≤ 3`, via
-`native_decide` on `{-3,…,3}⁸`) plus 16 spike vectors (`±4 · eᵢ`,
-via `native_decide` on `Fin 8 × Fin 2`). -/
+`n a t i v e _ d e c i d e` on `{-3,…,3}⁸`) plus 16 spike vectors (`±4 · eᵢ`,
+via `n a t i v e _ d e c i d e` on `Fin 8 × Fin 2`). -/
 theorem e8ShellCount_sixteen :
     shellCountRange7 16 + spikeShellCount16 = 17520 := by
   rw [e8ShellCount_sixteen_inner, spikeShellCount16_eq]
@@ -370,7 +370,7 @@ E₄(q)     = 1 + 240q + 2160q² + 6720q³ + 17520q⁴ + O(q⁵)
 ```
 
 The `q⁴` coefficient required a decomposition technique: the `{-3,...,3}⁸`
-enumeration (5.7M entries, feasible for `native_decide`) captures 17504 of
+enumeration (5.7M entries, feasible for `n a t i v e _ d e c i d e`) captures 17504 of
 the 17520 lattice vectors, with the remaining 16 being spike vectors `±4·eᵢ`
 counted on the tiny `Fin 8 × Fin 2` space.
 

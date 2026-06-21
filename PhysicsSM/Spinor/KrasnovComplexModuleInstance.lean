@@ -20,7 +20,7 @@ This is a complex vector-space API for the Krasnov qubit. It does not prove a
 Spin(9) representation theorem, a Standard Model centralizer theorem, or a
 physical chirality result.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.KrasnovComplexStructure

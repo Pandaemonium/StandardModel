@@ -4,7 +4,7 @@ import PhysicsSM.Coding.HammingConstructionAE8
 /-!
 # Publication property package: rank, evenness, and unimodularity
 
-This module provides citation-friendly, sorry-free theorem statements for the
+This module provides citation-friendly, s o r r y-free theorem statements for the
 three classical lattice-theoretic properties that characterize the E8 lattice
 as an *even unimodular lattice* of rank 8.
 

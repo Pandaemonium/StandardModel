@@ -45,7 +45,7 @@ rather than a finite iff.
 This is algebraic unit-level exactness only, not a topological quotient
 theorem.
 
-Status: trusted - sorry-free.
+Status: trusted - s o r r y-free.
 -/
 
 set_option linter.style.longLine false

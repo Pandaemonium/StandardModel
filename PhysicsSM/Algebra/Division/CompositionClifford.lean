@@ -41,7 +41,7 @@ of Hurwitz classification, the identity is not derivable there.
 
 `NormFormCompAlg` therefore adds the norm-form identity as an explicit field.
 Any future Hurwitz-classification proof will *discharge* this field as a
-consequence of the stronger structural theorem; until then, it is an axiom
+consequence of the stronger structural theorem; until then, it is an a x i o m
 of the interface.
 
 ## Why star linearity properties are added explicitly
@@ -98,7 +98,7 @@ See Baez, "The Octonions", Bull. Amer. Math. Soc. 39 (2002) 145–205, §1
 for the mathematical background; predecessor module:
 `PhysicsSM.Algebra.Division.CompositionAlgebra`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Division

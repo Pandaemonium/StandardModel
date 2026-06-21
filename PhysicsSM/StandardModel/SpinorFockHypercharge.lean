@@ -70,7 +70,7 @@ these charges; those are future group-level targets.
 - Provenance: clean-room formalization; table cross-checked against
   `PhysicsSM.StandardModel.OneGenerationTable`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.StandardModel.SpinorFockHypercharge

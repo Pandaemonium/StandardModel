@@ -26,7 +26,7 @@ This is only a predicate-intersection theorem for concrete matrix units.
 It does not prove a Lie-group theorem, a quotient theorem, or a DVT
 stabilizer intersection theorem.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Gauge.StandardModelSubgroup

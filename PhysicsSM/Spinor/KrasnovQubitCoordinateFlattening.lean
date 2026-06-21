@@ -34,7 +34,7 @@ Under this flattening, `rightMulE111` acts diagonally:
 This is coordinate bookkeeping only. No `Spin(9)` centralizer theorem or
 Standard Model subgroup theorem is claimed.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 
 Provenance: integrated from Aristotle job
 `3156280f-61d4-4885-81f9-2b34065a1d5f`; see

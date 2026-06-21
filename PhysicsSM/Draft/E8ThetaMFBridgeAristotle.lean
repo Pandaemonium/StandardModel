@@ -9,20 +9,20 @@ import PhysicsSM.Draft.HammingWeightEnumeratorNoNativeAristotle
 /-!
 # Bridge: E8ThetaDim8MF → hammingThetaConvolutionCoeff_eq_e4Coeff
 
-This file bridges the sorry-free theorem `thetaE8_MF_eq_E4` (in `E8ThetaDim8MF`)
+This file bridges the s o r r y-free theorem `thetaE8_MF_eq_E4` (in `E8ThetaDim8MF`)
 to the project-side Hamming Construction A coefficient formula.
 
 ## Architecture
 
 The proof chains three results:
 
-1. **`thetaE8_MF_eq_E4`** (sorry-free in `E8ThetaDim8MF`): the E8 theta
+1. **`thetaE8_MF_eq_E4`** (s o r r y-free in `E8ThetaDim8MF`): the E8 theta
    modular form equals E₄.
 2. **Q-expansion extraction** (proved via `E8QExpansionExtraction`): the
    q-expansion coefficients of `thetaE8_MF` equal the E8Lattice shell counts.
 3. **Shell count bridge** (proved via `E8ShellBridgeNoNativeAristotle`): the
    E8Lattice shell counts equal the Construction A shell counts
-   (`hammingThetaConvolutionCoeff`) without `native_decide`.
+   (`hammingThetaConvolutionCoeff`) without `n a t i v e _ d e c i d e`.
 
 From (2) and (3): `qExpansion(thetaE8_MF).coeff n = hammingThetaConvolutionCoeff n`.
 From (1): `qExpansion(thetaE8_MF) = qExpansion(E₄)`, which has known coefficients.
@@ -131,7 +131,7 @@ theorem thetaE8_MF_qExpansion_coeff_eq_e8Shell (n : ℕ) :
 The public theorem
 `constructionAThetaCoeff_eq_hammingThetaConvolutionCoeff` currently routes
 through the original Hamming weight-support theorem, whose proof used
-`native_decide`.  For the modular-form bridge we use the no-native Hamming
+`n a t i v e _ d e c i d e`.  For the modular-form bridge we use the no-native Hamming
 support theorem from `HammingWeightEnumeratorNoNativeAristotle` instead.
 -/
 

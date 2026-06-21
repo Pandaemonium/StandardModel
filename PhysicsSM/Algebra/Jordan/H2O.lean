@@ -34,7 +34,7 @@ Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021,
 slides 7–11.
 Convention: `(t, x, y)` parametrization with `t = (α + β)/2`, `x = (α − β)/2`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H2O

@@ -33,7 +33,7 @@ It does **not** claim the full topological Lie group `G₂`, connectedness,
 or smooth isomorphism. The XOR/Fano octonion convention is preserved.
 
 Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021.
-Status: trusted theorem package; no `sorry`.
+Status: trusted theorem package; no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Octonion.G2ComplexLine

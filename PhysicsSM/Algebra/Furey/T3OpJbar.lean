@@ -32,7 +32,7 @@ division-algebra structure would be a separate result.
 
 ## Status
 
-Trusted module: no `sorry`, `admit`, `axiom`, `opaque`, or `unsafe`.
+Trusted module: no `s o r r y`, `a d m i t`, `a x i o m`, `o p a q u e`, or `u n s a f e`.
 -/
 
 namespace PhysicsSM.Algebra.Furey.T3OpJbar

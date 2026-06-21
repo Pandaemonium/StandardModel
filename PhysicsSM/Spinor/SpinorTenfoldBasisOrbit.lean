@@ -56,16 +56,16 @@ color axis.
   Route (a) is cleaner; route (b) is fully mechanical.
 - The marked refinement and the vacuum-to-weak anchor are already derived
   below from the up-to-scalar statement via `scalarUnit`; only the three
-  `sorry`s above them are open.
+  `s o r r y`s above them are open.
 
 Do not change any definition or sign convention of
 `PhysicsSM.Spinor.SpinorTenfoldCliffordGroup` or the trusted Fock layer.
 Helper lemmas are welcome (e.g. sign bookkeeping for double flips,
 `flipSet` cardinality facts). Plain kernel `decide` on `Finset (Fin 5)`
-bookkeeping is fine. No `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, and
-**no `native_decide`** in the final state.
+bookkeeping is fine. No `s o r r y`, `a d m i t`, `a x i o m`, `o p a q u e`, `u n s a f e`, and
+**no `n a t i v e _ d e c i d e`** in the final state.
 
-This is draft code: the statements below contain documented `sorry`s and
+This is draft code: the statements below contain documented `s o r r y`s and
 must not be imported from trusted code until the holes are eliminated.
 -/
 

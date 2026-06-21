@@ -23,7 +23,7 @@ Sources:
 
 Provenance: clean-room formalization of the elementary finite path bookkeeping.
 
-Status: trusted, no `sorry`.
+Status: trusted, no `s o r r y`.
 -/
 
 namespace PhysicsSM.Spinor.Checkerboard

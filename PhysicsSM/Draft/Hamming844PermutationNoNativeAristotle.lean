@@ -3,7 +3,7 @@ import Mathlib
 /-!
 # Constructive permutation of a 4-element information set
 
-This module replaces the small `native_decide` search used by
+This module replaces the small `n a t i v e _ d e c i d e` search used by
 `PhysicsSM.Coding.Hamming844Classification.exists_perm_to_first4`.
 
 The statement is purely finite-combinatorial: if `I` is a 4-element subset of

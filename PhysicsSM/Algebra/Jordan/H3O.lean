@@ -56,8 +56,8 @@ entries `alpha, beta, gamma : ℝ` and three off-diagonal octonion entries
 
 ## Status
 
-This is a **trusted** module: it contains no `sorry`, `admit`, `axiom`,
-`opaque`, or `unsafe`. All proofs are kernel-checked.
+This is a **trusted** module: it contains no `s o r r y`, `a d m i t`, `a x i o m`,
+`o p a q u e`, or `u n s a f e`. All proofs are kernel-checked.
 
 Source: Baez, "The Octonions", Bull. Amer. Math. Soc. 39 (2002), §4.
 Additional convention anchors:

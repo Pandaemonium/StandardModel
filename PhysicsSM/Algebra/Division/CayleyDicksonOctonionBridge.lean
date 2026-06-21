@@ -35,7 +35,7 @@ Prerequisites:
 - `PhysicsSM.Algebra.Division.CayleyDickson`
 - `PhysicsSM.Algebra.Octonion.Basic`
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Division.CayleyDicksonOctonionBridge

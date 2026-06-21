@@ -17,7 +17,7 @@ This splits the larger corner-count package into the structural part only:
 The binomial closed forms for those cardinalities live in
 `PhysicsSM.Draft.CheckerboardCornerClosedFormsAristotle`.
 
-Trusted code should not import this module while it contains `sorry`.
+Trusted code should not import this module while it contains `s o r r y`.
 -/
 
 namespace PhysicsSM.Draft.CheckerboardCornerPolynomial

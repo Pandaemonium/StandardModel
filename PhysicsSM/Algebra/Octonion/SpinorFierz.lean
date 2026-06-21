@@ -81,7 +81,7 @@ complex scalar).
   ("octonions explain 10d SUSY" = "octonions build the Cayley plane").
 - Provenance: clean-room formalization from the mathematical definitions.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Octonion

@@ -66,7 +66,7 @@ Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021,
 slides 14–16; Dubois-Violette and Todorov (2018).
 Convention: project XOR basis from `PhysicsSM.Algebra.Octonion.Basic`.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Octonion

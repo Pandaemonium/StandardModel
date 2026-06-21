@@ -22,7 +22,7 @@ heavyweight analysis.
 
 ## Main definitions
 
-* `EuclideanCompAlg` — a mixin class packaging the composition axiom and
+* `EuclideanCompAlg` — a mixin class packaging the composition a x i o m and
   positivity of `normSq` on top of Mathlib's `NonAssocRing`, `Module ℝ`,
   and `Star` typeclasses.
 * `EuclideanCompAlg.normSq` — the quadratic norm, supplied as a field.
@@ -44,7 +44,7 @@ These steps would connect this record to `Mathlib.LinearAlgebra.CliffordAlgebra.
 Provenance: clean-room formalization from Baez, "The Octonions",
 Bull. Amer. Math. Soc. 39 (2002) 145-205, §1.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Division

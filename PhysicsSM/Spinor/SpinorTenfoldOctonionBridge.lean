@@ -65,7 +65,7 @@ on even `ψ` (the oracle-determined constant is exactly `2`).
 - Provenance: clean-room construction; the oracle pins the definitions and
   signs, the Lean proofs are kernel-checked from the definitions.
 
-Status: trusted code — no `sorry`.
+Status: trusted code — no `s o r r y`.
 -/
 
 noncomputable section

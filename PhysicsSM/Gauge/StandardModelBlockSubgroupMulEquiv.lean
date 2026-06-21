@@ -28,7 +28,7 @@ This is a concrete multiplicative equivalence of subgroups of matrix units.
 It does not prove a topological Lie subgroup theorem, a smooth quotient
 theorem, connectedness, or an abstract compact Lie group isomorphism.
 
-Status: trusted - no `sorry`.
+Status: trusted - no `s o r r y`.
 -/
 
 namespace PhysicsSM.Gauge.StandardModelSubgroup

@@ -107,7 +107,7 @@ All charges use the Furey convention `Q = −(1/3)(N₁ + N₂ + N₃)`, which
 matches the project convention `Q = T₃ + Y/2` when the SU(2)_L assignment
 is made. The XOR octonion basis is used throughout.
 
-Trusted module: no `sorry`, `admit`, `axiom`, `opaque`, or `unsafe`.
+Trusted module: no `s o r r y`, `a d m i t`, `a x i o m`, `o p a q u e`, or `u n s a f e`.
 Provenance: Aristotle proof agent, job 8778de36-1c9d-4266-bc0f-b61055bddd07.
 Primary source: N. Furey, "Standard Model Physics from an Algebra?" (2016
 PhD thesis); N. Furey, Eur. Phys. J. C 78 (2018) 375.
@@ -553,7 +553,7 @@ theorem sm_wittenAnomalyFree :
 
 /-! ## Bridge status summary
 
-### Proved in this module (kernel-checked, no sorry):
+### Proved in this module (kernel-checked, no s o r r y):
 
 1. `N1_op`, `N2_op`, `N3_op` each give eigenvalue 0 on `omega_bar`.
 2. `Ntot_op omega_bar = 0 • omega_bar`.

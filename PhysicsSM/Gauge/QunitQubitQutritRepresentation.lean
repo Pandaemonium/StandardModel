@@ -33,7 +33,7 @@ This is a finite-dimensional linear representation theorem for the
 algebraic covering scaffold. It does not claim that the Standard Model
 is quantum computing, nor does it prove dynamics or Hilbert-space physics.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 set_option linter.style.longLine false

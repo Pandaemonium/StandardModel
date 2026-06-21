@@ -58,12 +58,12 @@ this module deliberately stays at the kernel-checkable normal-form level.
   over `Finset (Fin 5) × Finset (Fin 5)` (1024 cases) — plain kernel
   `decide` is acceptable — or provable structurally from
   `Finset.card_inter_add_card_union` and
-  `Finset.card_symmDiff`-style lemmas. **No `native_decide`.**
+  `Finset.card_symmDiff`-style lemmas. **No `n a t i v e _ d e c i d e`.**
 
 Do not change any definition or sign convention. Helper lemmas are
 welcome.
 
-This is draft code: the statements below contain documented `sorry`s and
+This is draft code: the statements below contain documented `s o r r y`s and
 must not be imported from trusted code until the holes are eliminated.
 -/
 

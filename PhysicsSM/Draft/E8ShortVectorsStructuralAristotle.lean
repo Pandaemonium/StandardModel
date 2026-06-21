@@ -5,7 +5,7 @@ import PhysicsSM.Coding.HammingWeightEnumerator
 # Aristotle scaffold: structural E8 short-vector count
 
 This draft packages job A from the Hamming/Construction A/E8 strengthening
-list.  The goal is to replace the monolithic `native_decide` proof of the
+list.  The goal is to replace the monolithic `n a t i v e _ d e c i d e` proof of the
 240 short vectors with a structural proof from:
 
 * the Hamming weight distribution `(A_0, A_4, A_8) = (1, 14, 1)`;

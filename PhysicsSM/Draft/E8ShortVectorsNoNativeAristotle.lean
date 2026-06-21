@@ -4,7 +4,7 @@ import PhysicsSM.Draft.HammingWeightEnumeratorNoNativeAristotle
 /-!
 # Aristotle target: no-native structural short-vector count
 
-This file targets the remaining `native_decide` pieces in
+This file targets the remaining `n a t i v e _ d e c i d e` pieces in
 `PhysicsSM.Draft.E8ShortVectorsStructuralAristotle`.
 
 The current structural draft already reduces the 240 short-vector count to

@@ -9,7 +9,7 @@ Construction A basis coefficients.
 
 The existing trusted-looking API is mathematically correct, but
 `PhysicsSM.Coding.basisLinearCombination_reconstruction` currently proves four
-parity/divisibility facts using `native_decide`.  The targets below ask
+parity/divisibility facts using `n a t i v e _ d e c i d e`.  The targets below ask
 Aristotle to replace those finite enumerations by structural proofs from the
 extended Hamming parity-check equations.
 
@@ -115,7 +115,7 @@ theorem lattice_div2_coeff7_no_native (z : Fin 8 → ℤ)
 /-! ## Main reconstruction target -/
 
 /-
-No-`native_decide` replacement for `basisLinearCombination_reconstruction`.
+No-`n a t i v e _ d e c i d e` replacement for `basisLinearCombination_reconstruction`.
 
 This is the theorem needed by the shell bridge.  The proof should use the four
 `lattice_div2_coeff*_no_native` lemmas above and then perform the coordinate
@@ -135,7 +135,7 @@ theorem basisLinearCombination_reconstruction_no_native
     by linarith [ Int.ediv_mul_cancel (lattice_div2_coeff7_no_native z hz) ] ⟩
 
 /-
-No-`native_decide` spanning theorem using the explicit coefficient inverse.
+No-`n a t i v e _ d e c i d e` spanning theorem using the explicit coefficient inverse.
 -/
 theorem e8CodeBasisInt_spans_hammingConstructionALattice_no_native
     (z : Fin 8 → ℤ) (hz : z ∈ hammingConstructionALattice) :

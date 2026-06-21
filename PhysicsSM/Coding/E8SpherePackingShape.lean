@@ -5,7 +5,7 @@ import PhysicsSM.Lie.Exceptional.E8
 /-!
 # Dependency-free SPL-bridge shape theorems for the E8 Construction A lattice
 
-This module collects reusable, sorry-free facts about the E8 Construction A
+This module collects reusable, s o r r y-free facts about the E8 Construction A
 lattice that are formulated to be directly portable into a future
 Sphere-Packing-Lean (SPL) integration branch. Nothing here imports SPL.
 
@@ -49,15 +49,15 @@ Bridging between the two models requires:
 ## Finite-computation trust boundary
 
 Most matrix-equality lemmas use kernel-reduced proofs (`decide`, `norm_num`,
-`fin_cases`). A few dense computations (marked below) still use `native_decide`;
+`fin_cases`). A few dense computations (marked below) still use `n a t i v e _ d e c i d e`;
 `#print axioms` for those declarations reports `Lean.trustCompiler`.
 
 | Declaration                       | Proof method                  | trustCompiler? |
 |-----------------------------------|-------------------------------|----------------|
-| `e8BasisChangeMatrix_det`         | `norm_num` + `native_decide`  | yes            |
+| `e8BasisChangeMatrix_det`         | `norm_num` + `n a t i v e _ d e c i d e`  | yes            |
 | `e8BasisChange_gram_eq_cartan`    | `ext` + `fin_cases` + `decide`| no             |
-| `e8SimpleRootBasis_sqNorm`        | `fin_cases` + `native_decide` | yes            |
-| `e8SimpleRootBasis_gram`          | `fin_cases` + `native_decide` | yes            |
+| `e8SimpleRootBasis_sqNorm`        | `fin_cases` + `n a t i v e _ d e c i d e` | yes            |
+| `e8SimpleRootBasis_gram`          | `fin_cases` + `n a t i v e _ d e c i d e` | yes            |
 | `e8ScaledGramQ_det`               | algebraic (`norm_num`)        | no             |
 
 ## Source / provenance
@@ -248,7 +248,7 @@ def e8BasisChangeMatrix : Matrix (Fin 8) (Fin 8) ℤ :=
       2, -1, -1,  1, -1,  0,  0,  1;
      -3,  1,  2, -1,  1,  0, -1,  0]
 
--- Dense 8×8 ℤ determinant: norm_num + native_decide.
+-- Dense 8×8 ℤ determinant: norm_num + n a t i v e _ d e c i d e.
 set_option maxHeartbeats 800000 in
 /-- The change-of-basis matrix has determinant −1, so it is unimodular.
 `|det P| = 1` confirms that `P` is an invertible integer matrix — the simple

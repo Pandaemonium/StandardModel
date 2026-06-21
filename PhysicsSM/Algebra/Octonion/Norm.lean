@@ -24,7 +24,7 @@ quadratic form.
 Provenance: Aristotle job `fe5f83fd-885e-4f87-936f-9a8a4746ee7c`,
 adapted to this repository's `PhysicsSM` module paths and comments.
 
-Status: trusted. The file contains no `sorry`; the multiplicativity theorem is
+Status: trusted. The file contains no `s o r r y`; the multiplicativity theorem is
 a kernel-checked polynomial identity after expanding the multiplication table.
 -/
 

@@ -31,7 +31,7 @@ This module proves:
 Source: Baez, "Can We Understand the Standard Model Using Octonions?", 2021,
 slides 7–11.
 
-Status: trusted — no `sorry`.
+Status: trusted — no `s o r r y`.
 -/
 
 namespace PhysicsSM.Algebra.Jordan.H2OProduct

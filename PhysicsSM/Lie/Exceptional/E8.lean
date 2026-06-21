@@ -165,7 +165,7 @@ det(e8Cartan) = 2 * 4 - 7 = 1.
 ```
 
 The two minor determinants are finite integer computations certified by
-`native_decide`; no custom axioms are introduced.
+`n a t i v e _ d e c i d e`; no custom axioms are introduced.
 -/
 theorem e8Cartan_det_eq_one :
     Matrix.det e8Cartan = 1 := by

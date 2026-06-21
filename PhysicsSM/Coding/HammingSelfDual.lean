@@ -18,7 +18,7 @@ This module proves that the extended `[8,4,4]` Hamming code is self-dual
 
 ## Proof strategy
 
-All concrete facts about the `[8,4,4]` code are discharged by `native_decide`
+All concrete facts about the `[8,4,4]` code are discharged by `n a t i v e _ d e c i d e`
 over the 256-element type `BinaryVector 8`. The definitions (`dualCode`,
 `IsSelfDual`, `IsTypeII`) are stated for general binary linear codes so they
 are reusable beyond dimension 8.
