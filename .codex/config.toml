@@ -1,0 +1,44 @@
+[shell_environment_policy]
+inherit = "core"
+
+[shell_environment_policy.set]
+ARISTOTLE_API_KEY = "arstl__JyM7Yftqfu9YvOvTCn1m6ucPMz3sO9E-8XTTOPcNgM"
+
+[mcp_servers.local-qwen]
+command = "python"
+args = ["c:/Projects/StandardModel/Scripts/oracle/local_mcp_bridge.py"]
+
+[mcp_servers.neo4j_graph]
+command = "cmd.exe"
+args = [
+    "/c",
+    'C:\Projects\AutoLab\COGLab\infrastructure\mcp\neo4j_mcp\run.bat',
+]
+env_vars = [
+    "NEO4J_URI",
+    "NEO4J_USERNAME",
+    "NEO4J_PASSWORD",
+    "NEO4J_DATABASE",
+]
+
+[mcp_servers.neo4j_graph.env]
+NEO4J_READ_ONLY = "false"
+NEO4J_TELEMETRY = "false"
+
+[mcp_servers.scholarly]
+command = "python"
+args = ["C:/Projects/AutoLab/COGLab/infrastructure/mcp/scholarly_wrapper/src/server.py"]
+env_vars = [
+    "OPENALEX_API_KEY",
+    "SEMANTIC_SCHOLAR_API_KEY",
+    "UNPAYWALL_EMAIL",
+]
+
+[mcp_servers.zotero_write]
+command = "python"
+args = ["C:/Tools/mcp/zotero-writer/src/server.py"]
+env_vars = ["ZOTERO_API_KEY"]
+
+[mcp_servers.zotero_write.env]
+ZOTERO_USER_ID = "19894138"
+ZOTERO_LIBRARY_TYPE = "user"

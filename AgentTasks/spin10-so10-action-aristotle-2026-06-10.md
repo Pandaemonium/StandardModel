@@ -87,11 +87,14 @@ Submission project:
 AgentTasks/aristotle-submit/spin10-wave4-20260610
 ```
 
-Job ID (active):
+aristotle:
+  job_id: 4a36a5c3-6ecc-426a-a0aa-7f67b5234a4f
+  target_file: PhysicsSM/Draft/SpinorTenfoldSO10ActionAristotle.lean
+  expected_module: PhysicsSM.Draft.SpinorTenfoldSO10ActionAristotle
+  submission_project: AgentTasks/aristotle-submit/spin10-wave4-20260610
+  output_dir: AgentTasks/aristotle-output/4a36a5c3-6ecc-426a-a0aa-7f67b5234a4f
+  status: integrated
 
-```text
-4a36a5c3-6ecc-426a-a0aa-7f67b5234a4f
-```
 
 Previous jobs (failed/cancelled, internal server error):
 

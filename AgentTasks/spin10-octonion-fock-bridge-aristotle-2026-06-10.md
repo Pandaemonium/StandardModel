@@ -89,7 +89,7 @@ Axiom check on `fierz_clifford_via_octonions` and
 
 ## Submission
 
-Status: re-submitted 2026-06-11, fifth attempt (incorporates the completed trusted Spin(10) action proofs context, with unrelated drafts pruned).
+Status: COMPLETE, integrated 2026-06-12 from the fifth attempt.
 
 Submission project:
 
@@ -101,6 +101,30 @@ Job ID (active):
 
 ```text
 7054d23b-bbd1-4900-8414-ca8354f29f1d
+```
+
+Output archive:
+
+```text
+AgentTasks/aristotle-output/spin10-octonion-fock-bridge-20260612
+```
+
+Selected extraction:
+
+```text
+AgentTasks/aristotle-output/spin10-octonion-fock-bridge-20260612-extracted2
+```
+
+Integrated into:
+
+```text
+PhysicsSM/Draft/SpinorTenfoldOctonionBridgeAristotle.lean
+```
+
+Verification run after integration:
+
+```bash
+lake build PhysicsSM.Draft.SpinorTenfoldOctonionBridgeAristotle
 ```
 
 Previous jobs (failed/cancelled):

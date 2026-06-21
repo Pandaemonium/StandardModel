@@ -533,6 +533,16 @@ if (-not $CheckOnly) {
     '```text',
     "aristotle submit --project-dir $relativeProjectDir ""<prompt>""",
     '```',
+    '',
+    'Record the returned Aristotle project ID in the task note:',
+    '',
+    '```yaml',
+    'aristotle:',
+    '  project_id: 00000000-0000-0000-0000-000000000000',
+    "  submission_project: $relativeProjectDir",
+    '  output_dir: AgentTasks/aristotle-output/00000000-0000-0000-0000-000000000000',
+    '  status: submitted',
+    '```',
     ''
   )
   $summary = $summaryLines -join "`n"
@@ -551,3 +561,5 @@ Assert-SubmissionPackage $repoRoot $projectDir $relativeProjectDir $checkPaths `
 Write-Host ''
 Write-Host 'Submit with:'
 Write-Host "  aristotle submit --project-dir $relativeProjectDir `"<prompt>`""
+Write-Host ''
+Write-Host 'Record the returned Aristotle project ID in the task note as project_id.'

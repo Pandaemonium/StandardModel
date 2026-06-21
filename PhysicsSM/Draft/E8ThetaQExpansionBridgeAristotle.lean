@@ -1,5 +1,7 @@
 import PhysicsSM.Draft.E8ThetaWeightEnumeratorBridgeAristotle
 import PhysicsSM.Draft.E8ThetaDim8MF
+import PhysicsSM.Draft.E8ThetaDuplicationAristotle
+import PhysicsSM.Draft.E8ThetaCoeffGapAristotle
 
 /-!
 # Aristotle target: Hamming theta q-expansion coefficient bridge
@@ -265,34 +267,34 @@ theorem hammingThetaConstantPolynomial_qExpansion_coeff_of_fun_eq_thetaE4_and_sh
   have hRepr := hammingThetaConvolutionCoeff_eq_e4Coeff_of_MF_qExpansion hShell
   exact hammingThetaConstantPolynomial_qExpansion_coeff_of_fun_eq_and_repr hfun hRepr n
 
-/-! ## Main theorem (sorry) -/
+/-! ## Main theorem -/
 
 /--
 The q-expansion of the analytic Hamming theta polynomial has the project-local
 Hamming Construction A convolution coefficients.
 
-**Status**: `sorry`. The conditional reductions above show exactly what remains:
+**Status**: Proved (Route A). The proof combines:
 
-* **Route A** (duplication + representation formula): Proved in
-  `hammingThetaConstantPolynomial_qExpansion_coeff_of_duplication_and_repr`.
-  Needs the two theta-constant duplication identities plus the E₈ representation
-  number formula.
+* The function equality `hammingThetaConstantPolynomial = thetaE4`, obtained
+  from the two theta-constant duplication identities via
+  `hammingThetaConstantPolynomial_eq_thetaE4_from_duplication`
+  (in `E8ThetaDuplicationAristotle.lean`).
 
-* **Route B** (modular form bridge via `thetaE8_MF_eq_E4`): Proved in
-  `hammingThetaConstantPolynomial_qExpansion_coeff_of_MF_bridge`.
-  Needs `hammingThetaConstantPolynomial = thetaSeriesUHP8` (Construction A theta
-  identity) plus the shell-count/q-expansion bridge for the analytic theta.
-  The representation number formula then follows for free from
-  `thetaE8_MF_eq_E4`.
+* The E₈ representation number formula
+  `hammingThetaConvolutionCoeff_eq_e4Coeff` (in `E8ThetaCoeffGapAristotle.lean`),
+  itself a consequence of the modular-form result `thetaE8_MF_eq_E4`.
 
-The remaining gap is the connection between the combinatorial Construction A
-coefficients and the analytic theta series q-expansion.
+These are plugged into the conditional reduction
+`hammingThetaConstantPolynomial_qExpansion_coeff_of_fun_eq_and_repr`.
 -/
 theorem hammingThetaConstantPolynomial_qExpansion_coeff (n : Nat) :
     PowerSeries.coeff n (ModularFormClass.qExpansion (1 : Real)
       hammingThetaConstantPolynomial) =
       (hammingThetaConvolutionCoeff n : Complex) := by
-  sorry
+  refine hammingThetaConstantPolynomial_qExpansion_coeff_of_fun_eq_and_repr
+    ?_ hammingThetaConvolutionCoeff_eq_e4Coeff n
+  funext tau
+  exact hammingThetaConstantPolynomial_eq_thetaE4_from_duplication tau
 
 /--
 If the duplication identities are also available, the SPL theta-polynomial

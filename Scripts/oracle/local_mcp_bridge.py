@@ -5,7 +5,7 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP("LocalOracle")
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "qwen3:8b"  # matches `ollama list` output
+MODEL_NAME = "gemma4:12b"  # 256k context for distilling large result sets; qwen3.5:9b-q4_K_M is a broken quant. See Scripts/MCP_SERVERS.md
 
 @mcp.tool()
 async def query_qwen(prompt: str) -> str:

@@ -56,17 +56,16 @@ color axis.
   Route (a) is cleaner; route (b) is fully mechanical.
 - The marked refinement and the vacuum-to-weak anchor are already derived
   below from the up-to-scalar statement via `scalarUnit`; only the three
-  `sorry`s above them are open.
+  submitted proof targets are open.
 
 Do not change any definition or sign convention of
 `PhysicsSM.Spinor.SpinorTenfoldCliffordGroup` or the trusted Fock layer.
 Helper lemmas are welcome (e.g. sign bookkeeping for double flips,
 `flipSet` cardinality facts). Plain kernel `decide` on `Finset (Fin 5)`
-bookkeeping is fine. No `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, and
-**no `native_decide`** in the final state.
+bookkeeping is fine. The final state should contain no placeholder proof
+commands, no new assumptions, and no forbidden declarations.
 
-This is draft code: the statements below contain documented `sorry`s and
-must not be imported from trusted code until the holes are eliminated.
+This draft file now contains kernel-checked proofs of the submitted targets.
 -/
 
 noncomputable section
@@ -81,7 +80,8 @@ open PhysicsSM.Spinor.SpinorTenfold
 single index `i`. -/
 theorem cliffordAction_flipVec (i : Fin 5) (psi : FockSpinor) :
     cliffordAction (flipVec i) psi = wedge i psi + contract i psi := by
-  sorry
+  unfold cliffordAction;
+  ext S; simp_all +decide [ Fin.sum_univ_succ, flipVec ] ;
 
 /-! ## Target 2: mode flips toggle basis spinors with the fermionic sign -/
 
@@ -92,7 +92,12 @@ whether `i` is being created or annihilated, because `belowCount` ignores
 theorem gammaEnd_flipVec_basisSpinor (i : Fin 5) (T : Finset (Fin 5)) :
     gammaEnd (flipVec i) (basisSpinor T)
       = opSign i T • basisSpinor (flipSet i T) := by
-  sorry
+  unfold flipSet gammaEnd opSign
+  simp [cliffordAction_flipVec];
+  split_ifs <;> simp_all +decide [ wedge_basisSpinor_of_not_mem, wedge_basisSpinor_of_mem, contract_basisSpinor_of_mem, contract_basisSpinor_of_not_mem ];
+  · rw [ opSign, belowCount_erase ];
+  · simp +decide [ belowCount, opSign ];
+    rw [ Finset.filter_insert ] ; aesop
 
 /-- A double flip toggles two modes; multiplication in `Module.End` is
 composition, so `flipUnit j` acts first. -/
@@ -101,9 +106,51 @@ theorem flipUnit_mul_flipUnit_basisSpinor (i j : Fin 5) (T : Finset (Fin 5)) :
         Module.End ℂ FockSpinor) (basisSpinor T)
       = (opSign j T * opSign i (flipSet j T))
           • basisSpinor (flipSet i (flipSet j T)) := by
-  sorry
+  have := @gammaEnd_flipVec_basisSpinor;
+  simp_all +decide [ mul_comm, smul_smul ]
 
 /-! ## Target 3: transitivity on even basis spinors, up to a scalar -/
+
+/-- The fermionic ordering sign is a nonzero scalar (it is `±1`). -/
+lemma opSign_ne_zero (i : Fin 5) (S : Finset (Fin 5)) : opSign i S ≠ 0 :=
+  pow_ne_zero _ (by norm_num)
+
+/-- Every even basis spinor can be carried to a nonzero multiple of the
+vacuum `basisSpinor ∅` by an element of the even Clifford group, by
+repeatedly removing pairs of occupied modes with double flips. Stated with
+a cardinality bound `n` to allow induction. -/
+lemma exists_evenCliffordGroup_smul_basisSpinor_empty (n : ℕ)
+    (S : Finset (Fin 5)) (hn : S.card ≤ n) (hpar : S.card % 2 = 0) :
+    ∃ g ∈ evenCliffordGroup, ∃ c : ℂ, c ≠ 0 ∧
+      (g : Module.End ℂ FockSpinor) (basisSpinor S) = c • basisSpinor ∅ := by
+  induction' n with n ih generalizing S;
+  · refine' ⟨ 1, _, 1, _, _ ⟩ <;> aesop_cat;
+  · by_cases hS : S = ∅;
+    · exact ⟨ 1, Subgroup.one_mem _, 1, one_ne_zero, by aesop ⟩;
+    · have hcard : 1 < S.card :=
+        lt_of_le_of_ne (Finset.card_pos.2 (Finset.nonempty_of_ne_empty hS))
+          (Ne.symm (by aesop))
+      obtain ⟨i, j, hij, hi, hj⟩ : ∃ i j : Fin 5, i ≠ j ∧ i ∈ S ∧ j ∈ S :=
+        Exists.imp (by aesop) (Finset.one_lt_card.1 hcard)
+      obtain ⟨g1, hg1, c1, hc1, hg1⟩ :
+          ∃ g1 ∈ evenCliffordGroup, ∃ c1 : ℂ, c1 ≠ 0 ∧
+            (g1 : Module.End ℂ FockSpinor)
+                (basisSpinor (flipSet i (flipSet j S))) = c1 • basisSpinor ∅ := by
+        apply ih;
+        · unfold flipSet; simp +decide [ *, Finset.card_erase_of_mem ] ;
+          linarith;
+        · unfold flipSet; simp +decide [ *, Finset.card_erase_of_mem ] ;
+          omega;
+      refine' ⟨ g1 * ( flipUnit i * flipUnit j ), _, _ ⟩;
+      · exact Subgroup.mul_mem _ ‹_› ( flipUnit_mul_flipUnit_mem i j );
+      · refine' ⟨ opSign j S * opSign i ( flipSet j S ) * c1, _, _ ⟩ <;>
+          simp_all +decide [ mul_assoc, mul_left_comm, mul_comm ];
+        · exact ⟨ opSign_ne_zero _ _, opSign_ne_zero _ _ ⟩;
+        · convert congr_arg ( fun x => ( opSign j S * opSign i ( flipSet j S ) ) • x ) hg1 using 1;
+          · rw [ ← map_smul ];
+            congr! 1;
+            convert flipUnit_mul_flipUnit_basisSpinor i j S using 1;
+          · simp +decide [ mul_assoc, mul_comm, mul_left_comm, smul_smul ]
 
 /-- **Up-to-scalar orbit transitivity** on the even basis: for any two
 even-cardinality subsets, some even-Clifford-group element carries
@@ -112,7 +159,20 @@ theorem exists_evenCliffordGroup_smul_basisSpinor (S T : Finset (Fin 5))
     (hS : S.card % 2 = 0) (hT : T.card % 2 = 0) :
     ∃ g ∈ evenCliffordGroup, ∃ c : ℂ, c ≠ 0 ∧
       (g : Module.End ℂ FockSpinor) (basisSpinor S) = c • basisSpinor T := by
-  sorry
+  obtain ⟨gS, hgS, cS, hcS, hSeq⟩ :=
+    exists_evenCliffordGroup_smul_basisSpinor_empty S.card S le_rfl hS
+  obtain ⟨gT, hgT, cT, hcT, hTeq⟩ :=
+    exists_evenCliffordGroup_smul_basisSpinor_empty T.card T le_rfl hT
+  have hinv : ((gT⁻¹ : (Module.End ℂ FockSpinor)ˣ) : Module.End ℂ FockSpinor)
+      (basisSpinor ∅) = cT⁻¹ • basisSpinor T := by
+    have h1 : ((gT⁻¹ : (Module.End ℂ FockSpinor)ˣ) : Module.End ℂ FockSpinor)
+        ((gT : Module.End ℂ FockSpinor) (basisSpinor T)) = basisSpinor T :=
+      congr_arg (fun f : Module.End ℂ FockSpinor => f (basisSpinor T)) (Units.inv_mul gT)
+    rw [hTeq, map_smul] at h1
+    rw [← h1, smul_smul, inv_mul_cancel₀ hcT, one_smul]
+  refine ⟨gT⁻¹ * gS, mul_mem (inv_mem hgT) hgS, cS * cT⁻¹,
+    mul_ne_zero hcS (inv_ne_zero hcT), ?_⟩
+  rw [Units.val_mul, Module.End.mul_apply, hSeq, map_smul, hinv, smul_smul]
 
 /-! ## Derived: marked transitivity (complete modulo the targets above) -/
 

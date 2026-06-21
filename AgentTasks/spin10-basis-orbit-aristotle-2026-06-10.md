@@ -56,7 +56,8 @@ Axiom check on each finished theorem: only
 
 ## Submission
 
-Status: re-submitted 2026-06-11, third attempt (incorporates the completed trusted Spin(10) action proofs context, with unrelated drafts pruned).
+Status: COMPLETE_WITH_ERRORS from Aristotle packaging, proof output integrated
+2026-06-12. The summary reports all submitted theorem targets proved.
 
 Submission project:
 
@@ -68,6 +69,30 @@ Job ID (active):
 
 ```text
 c53883a4-c8d6-4fba-9d12-260d6efcec73
+```
+
+Output archive:
+
+```text
+AgentTasks/aristotle-output/c53883a4-20260612-complete-with-errors
+```
+
+Selected extraction:
+
+```text
+AgentTasks/aristotle-output/c53883a4-20260612-picked
+```
+
+Integrated into:
+
+```text
+PhysicsSM/Draft/SpinorTenfoldBasisOrbitAristotle.lean
+```
+
+Verification run after integration:
+
+```bash
+lake build PhysicsSM.Draft.SpinorTenfoldBasisOrbitAristotle
 ```
 
 Previous jobs (failed):

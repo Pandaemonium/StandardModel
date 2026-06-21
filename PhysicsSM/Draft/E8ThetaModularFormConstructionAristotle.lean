@@ -1,6 +1,7 @@
 import PhysicsSM.Draft.E8ThetaCoeffGapAristotle
 import PhysicsSM.Draft.E8ThetaDim8MF
 import PhysicsSM.Draft.E8ThetaWeightEnumeratorBridgeAristotle
+import PhysicsSM.Draft.E8ShellBridgeHelper
 
 /-!
 # Aristotle target: construct the E8 theta modular form
@@ -44,6 +45,8 @@ open ModularFormClass
 
 namespace PhysicsSM.Coding
 namespace E8ThetaSPLBridge
+
+open PhysicsSM.Coding.E8ShellBridge PhysicsSM.Draft.E8SpherePackingImported
 
 /-!
 ## Analytic theta function
@@ -97,7 +100,7 @@ for corresponding vectors `v ↦ w`, `‖w‖² = sqNorm(v) / 2`, which gives
 `exp(πi‖w‖²τ) = exp(πi · sqNorm(v)/2 · τ) = exp(2πiτ · sqNorm(v)/4)`.
 -/
 
-/--
+/-!
 **Handoff lemma (lattice transport).**
 
 The integer Construction A theta series `e8ThetaAnalytic` equals SPL's
@@ -111,9 +114,67 @@ This is the sole remaining sorry in this file.  The q-expansion coefficient
 sorry is located in `E8ThetaWeightEnumeratorBridgeAristotle.lean` as
 `splThetaE4Series_coeff_eq_hammingThetaConvolutionCoeff`.
 -/
+/--
+The norm-preserving transport map from the integer Construction A model to
+SPL's real `E8Lattice`.  It sends `v ∈ e8IntLattice` to the real lattice vector
+`toE8LatticeVec (basisLinearCombination v)`, which lies in `E8Lattice` by
+`toE8LatticeVec_mem`.
+-/
+noncomputable def transportMap
+    (v : {v : Fin 8 → Int // (e8IntLattice : Set (Fin 8 → Int)) v}) :
+    E8Lattice :=
+  ⟨toE8LatticeVec (basisLinearCombination v.1), toE8LatticeVec_mem _⟩
+
+/-- `transportMap` is a bijection between the integer Construction A model and
+the real `E8Lattice`. -/
+lemma transportMap_bijective : Function.Bijective transportMap := by
+  constructor
+  · rintro ⟨z1, h1⟩ ⟨z2, h2⟩ h
+    have hval : toE8LatticeVec (basisLinearCombination z1)
+        = toE8LatticeVec (basisLinearCombination z2) :=
+      congrArg Subtype.val h
+    have hc := toE8LatticeVec_injective hval
+    have e1 := fromBasisCoeffs_basisLinearCombination z1 h1
+    have e2 := fromBasisCoeffs_basisLinearCombination z2 h2
+    apply Subtype.ext
+    calc z1 = fromBasisCoeffs (basisLinearCombination z1) := e1.symm
+      _ = fromBasisCoeffs (basisLinearCombination z2) := by rw [hc]
+      _ = z2 := e2
+  · rintro ⟨w, hw⟩
+    obtain ⟨c, hc⟩ := toE8LatticeVec_surj w hw
+    refine ⟨⟨fromBasisCoeffs c, fromBasisCoeffs_mem c⟩, ?_⟩
+    apply Subtype.ext
+    show toE8LatticeVec (basisLinearCombination (fromBasisCoeffs c)) = w
+    rw [basisLinearCombination_fromBasisCoeffs, hc]
+
+/-- The transport map identifies the analytic theta summand with SPL's
+`thetaTerm8`.  The key input is `sqNorm_eq_two_mul_norm_sq`, which gives
+`‖transportMap v‖² = sqNorm v / 2`. -/
+lemma thetaTerm8_transportMap (z : UpperHalfPlane)
+    (v : {v : Fin 8 → Int // (e8IntLattice : Set (Fin 8 → Int)) v}) :
+    E8ThetaDim8.thetaTerm8 (z : Complex) (transportMap v) =
+      Complex.exp
+        (2 * (Real.pi : Complex) * Complex.I * (z : Complex) *
+          ((sqNorm (v : Fin 8 → Int) : Complex) / 4)) := by
+  have hsq : ‖((transportMap v : E8Lattice) : EuclideanSpace ℝ (Fin 8))‖ ^ 2
+      = (sqNorm (v : Fin 8 → Int) : ℝ) / 2 := by
+    have hnorm := PhysicsSM.Coding.E8ShellBridge.sqNorm_eq_two_mul_norm_sq v.1 v.2
+    simp only at hnorm
+    show ‖toE8LatticeVec (basisLinearCombination v.1)‖ ^ 2 = _
+    simp only [toE8LatticeVec] at hnorm ⊢
+    linarith
+  unfold E8ThetaDim8.thetaTerm8
+  congr 1
+  rw [hsq]
+  push_cast
+  ring
+
 theorem e8ThetaAnalytic_eq_thetaSeriesUHP8 (z : UpperHalfPlane) :
     e8ThetaAnalytic z = E8ThetaDim8.thetaSeriesUHP8 z := by
-  sorry
+  rw [e8ThetaAnalytic, E8ThetaDim8.thetaSeriesUHP8, E8ThetaDim8.thetaSeries8,
+    ← Equiv.tsum_eq (Equiv.ofBijective transportMap transportMap_bijective)
+      (E8ThetaDim8.thetaTerm8 (z : Complex))]
+  exact tsum_congr fun v => (thetaTerm8_transportMap z v).symm
 
 /-!
 ## Bridge lemma 2: Q-expansion coefficient matching

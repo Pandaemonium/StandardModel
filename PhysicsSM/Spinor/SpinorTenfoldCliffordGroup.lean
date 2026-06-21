@@ -50,17 +50,17 @@ must not be advertised as `Spin(10)` statements.
   `evenCliffordGroup` (as `gammaUnit (c • flipVec 0) * gammaUnit (flipVec 0)`).
 - `reflectTwist` : the twisted reflection
   `u ↦ (B10 u v / Q10 v) • v - u`, which is what conjugation by a single
-  `gammaUnit v` induces on the `gammaEnd` image (proved in the draft
-  module `PhysicsSM.Draft.SpinorTenfoldCliffordConjAristotle`).
+  `gammaUnit v` induces on the `gammaEnd` image (proved in the trusted
+  module `PhysicsSM.Spinor.SpinorTenfoldCliffordConj`).
 - `PreservesChirality` : the chirality-preservation predicate for
   endomorphisms.
 
-## Successor modules (Aristotle wave 6)
+## Successor modules (trusted core)
 
-- `PhysicsSM.Draft.SpinorTenfoldCliffordConjAristotle` : conjugation =
+- `PhysicsSM.Spinor.SpinorTenfoldCliffordConj` : conjugation =
   twisted reflection, B10/Q10 invariance, chirality preservation of the
   even group, injectivity of `gammaEnd`.
-- `PhysicsSM.Draft.SpinorTenfoldBasisOrbitAristotle` : mode-flip action on
+- `PhysicsSM.Spinor.SpinorTenfoldBasisOrbit` : mode-flip action on
   basis spinors and marked transitivity of `evenCliffordGroup` on the even
   wedge-monomial basis (the normal-form core of Lemma S1).
 

@@ -55,7 +55,7 @@ Axiom check on each finished theorem: only
 
 ## Submission
 
-Status: re-submitted 2026-06-11, third attempt (incorporates the completed trusted Spin(10) action proofs context, with unrelated drafts pruned).
+Status: COMPLETE, integrated 2026-06-12 from the third attempt.
 
 Submission project:
 
@@ -67,6 +67,30 @@ Job ID (active):
 
 ```text
 f09621e4-4c8d-448d-bd9a-02c5a28e944c
+```
+
+Output archive:
+
+```text
+AgentTasks/aristotle-output/spin10-clifford-conj-20260612
+```
+
+Selected extraction:
+
+```text
+AgentTasks/aristotle-output/spin10-clifford-conj-20260612-picked
+```
+
+Integrated into:
+
+```text
+PhysicsSM/Draft/SpinorTenfoldCliffordConjAristotle.lean
+```
+
+Verification run after integration:
+
+```bash
+lake build PhysicsSM.Draft.SpinorTenfoldCliffordConjAristotle
 ```
 
 Previous jobs (failed):

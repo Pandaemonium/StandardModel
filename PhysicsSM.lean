@@ -131,6 +131,10 @@ import PhysicsSM.Gauge.QunitQubitQutritRepresentation
 import PhysicsSM.Gauge.QunitQubitQutritQuotientRepresentation
 import PhysicsSM.Gauge.StandardModelGaugeRepresentationSynthesis
 import PhysicsSM.Gauge.GUTSquare
+import PhysicsSM.Gauge.CausalDiamondHolonomy
+import PhysicsSM.Spinor.PluckerMass
+import PhysicsSM.Spinor.Checkerboard
+import PhysicsSM.Spinor.CheckerboardDynamics
 import PhysicsSM.Spinor.OctonionicQubit
 import PhysicsSM.Spinor.SpinorTenfoldFock
 import PhysicsSM.Spinor.SpinorTenfoldPurity
@@ -141,6 +145,8 @@ import PhysicsSM.Spinor.SpinorTenfoldFierzKernel
 import PhysicsSM.Spinor.SpinorTenfoldFierz
 import PhysicsSM.Spinor.SpinorTenfoldCliffordGroup
 import PhysicsSM.Spinor.SpinorTenfoldSO10Action
+import PhysicsSM.Spinor.SpinorTenfoldCliffordConj
+import PhysicsSM.Spinor.SpinorTenfoldBasisOrbit
 import PhysicsSM.Algebra.Octonion.SpinorFierz
 import PhysicsSM.Algebra.Octonion.SpinorFierzPolarized
 import PhysicsSM.Spinor.SpinorTenfoldOctonionBridge

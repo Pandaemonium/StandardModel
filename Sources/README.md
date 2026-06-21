@@ -59,6 +59,48 @@ subdirectory, recording:
 
 - `wess_bagger_1992` — Wess & Bagger, "Supersymmetry and Supergravity", 2nd ed., Princeton (1992)
 
+### Luminal checkerboard path integrals
+
+- `Luminal_Motion_Checkerboard_Research_Program.md` - draft research program
+  for finite checkerboards, higher-dimensional null-polygon expansions, and
+  causal-set hop-stop propagators.
+- `Luminal_Motion_Checkerboard_Publication_Advance_2026-06-11.md` - Codex
+  evaluation, source-verification notes, corrections before publication, and
+  the Lean theorem sequence started in `PhysicsSM.Spinor.Checkerboard`.
+- `Null_Edge_Causal_Graph_Strengthened_Program.md` - clean synthesis of the
+  null-edge causal graph program, with corrections to the octonionic
+  collinearity claim, theorem-first extensions, and repo-native Lean targets.
+- `Null_Edge_Causal_Graph_Theorem_Roadmap_2026-06-21.md` - literature-backed
+  theorem roadmap after the SPL-free Aristotle verification of the null-edge
+  core, including the next Aristotle waves for finite Pluecker mass, twistor
+  matching, Higgs/Yukawa flips, diamond holonomy, and cochains.
+- `Null_Edge_Causal_Graph_Proof_Advances_2026-06-21.md` - hand-proof and
+  theorem-target note advancing the finite Pluecker, `SL(2,C)` covariance,
+  twistor-chart, non-Abelian diamond, Higgs-flip, and cochain branches.
+- `Null_Edge_Causal_Graph_Next_Wave_2026-06-21.md` - post-Pluecker and
+  post-spinor-geometry next-wave plan, including promotion criteria, dynamics
+  targets, twistor/projective targets, diamond composition, cochains, and graph
+  gravity observables.
+  Trusted dynamics advance: `PhysicsSM.Spinor.CheckerboardDynamics` promotes
+  the finite endpoint recursion, iterated two-component evolution, and
+  telegraph/Klein-Gordon checkerboard recursion.
+  Trusted Pluecker-mass advance: `PhysicsSM.Spinor.PluckerMass` promotes the
+  finite determinant identity, real-valued nonnegativity wrapper, and
+  mass-zero/common-direction criterion for visible complex null-spinor
+  bundles.
+  Twistor wrapper advance: `PhysicsSM.Draft.TwistorPluckerMass` and
+  `Twistor_Plucker_Matching_Wrapper_2026-06-21.md` isolate the spinor-chart
+  reduction of the two-/multi-twistor mass invariant to the Pluecker wedge
+  squared, without claiming a full incidence formalization. The Zotero/Neo4j
+  source additions for this bridge are `MFUJKFEA`, `2T3HC5NC`, `NFHRVF2Q`,
+  `SZJE69PE`, and `J5GA3CQ8`.
+  Trusted diamond-holonomy advance: `PhysicsSM.Gauge.CausalDiamondHolonomy`
+  promotes finite Abelian gauge invariance, non-Abelian endpoint covariance,
+  and class-function gauge invariance for causal-diamond defects.
+  Draft projective advance: `PhysicsSM.Draft.NullEdgeSpinorGeometryTargets`
+  now includes independent spinor-column rescaling laws and normalized
+  projective wedge-spread invariance.
+
 ### Mathlib (primary Lean library)
 
 - `mathlib4` — leanprover-community/mathlib4, Apache-2.0, https://github.com/leanprover-community/mathlib4

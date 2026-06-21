@@ -375,11 +375,76 @@ The theorem statement should already be as semantically correct as possible. Do 
 
 Recent submission lessons:
 
-- Prefer a clean submission copy under `AgentTasks/aristotle-submit/` when the live worktree contains old `AgentTasks/aristotle-output/` extracts or heavyweight external dependencies. The CLI archives the project directory, so stale extracted output can break packaging.
+- Prefer `Scripts/prepare_aristotle_submission.ps1` to create a clean submission copy under `AgentTasks/aristotle-submit/`. The CLI archives the project directory, so stale `AgentTasks/aristotle-output/` extracts, `.lake`, old external checkouts, or generated state can break packaging.
 - For Sphere-Packing-Lean enabled jobs, use a separate Linux/SPL-enabled submission copy and refresh only the relevant files from the live tree. Do not enable upstream Sphere-Packing-Lean in the native Windows checkout.
-- Submit large waves one job at a time, or verify with `aristotle list` after a timeout. A timeout can happen after a job was created, so do not blindly resubmit.
-- Record job IDs, output directories, and submission-project paths immediately in the task file.
+- Submit large waves one project at a time, or verify with `aristotle list` after a timeout. A timeout can happen after a project was created, so do not blindly resubmit.
+- Record project IDs, optional task IDs, output directories, target files, expected modules, and submission-project paths immediately in the task file.
 - Transient upload or SSL errors can happen. Check `aristotle list` before retrying so duplicate jobs are not created.
+
+Preferred task-note metadata block:
+
+```yaml
+aristotle:
+  project_id: 00000000-0000-0000-0000-000000000000
+  task_id: 00000000-0000-0000-0000-000000000000
+  target_file: PhysicsSM/Draft/ExampleAristotle.lean
+  expected_module: PhysicsSM.Draft.ExampleAristotle
+  submission_project: AgentTasks/aristotle-submit/example-20260612-project
+  output_dir: AgentTasks/aristotle-output/00000000-0000-0000-0000-000000000000
+  status: submitted
+```
+
+Use the project ID as the canonical output directory name. Friendly names are fine
+in prose, but do not make them the only locator; they are easy to mismatch when
+several projects complete at once.
+
+### Aristotle result integration
+
+Separate fetching from integration. First fetch and inspect the result, then
+copy proofs into the live tree only after review.
+
+Use the conservative helper:
+
+```powershell
+python Scripts/aristotle/integrate_completed.py `
+  --task-note AgentTasks/example-aristotle-2026-06-12.md `
+  00000000-0000-0000-0000-000000000000
+```
+
+The default mode is a dry run. It stores results under
+`AgentTasks/aristotle-output/<project-id>/`, extracts archives with path traversal
+checks, reports candidate `*Aristotle.lean` files, and scans for
+`sorry`, `admit`, `axiom`, `opaque`, `unsafe`, and `native_decide`.
+
+When the report matches the task note and the candidate files are clean, copy
+and build with:
+
+```powershell
+python Scripts/aristotle/integrate_completed.py `
+  --task-note AgentTasks/example-aristotle-2026-06-12.md `
+  --apply --build `
+  00000000-0000-0000-0000-000000000000
+```
+
+For batches, use:
+
+```powershell
+python Scripts/aristotle/integrate_completed.py --from-list
+```
+
+With Aristotle API v3, `aristotle list` reports project states such as `IDLE`
+and `RUNNING`; an `IDLE` project still requires review. Read the summary,
+inspect the generated files, run the targeted build, and record why it was or
+was not integrated.
+
+After integration:
+
+- Update the task note from `submitted` or `complete` to `integrated`.
+- Record the exact project ID, selected extraction, copied files, and verification commands.
+- Run a placeholder scan on the integrated files.
+- Run targeted `lake build <module>` for each integrated module.
+- Run `lake build` before claiming trusted work complete.
+- Run `pre-commit run --all-files` before handing back.
 
 ### Preferred workflow
 

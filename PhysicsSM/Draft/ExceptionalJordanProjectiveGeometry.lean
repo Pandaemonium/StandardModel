@@ -3,6 +3,7 @@ import PhysicsSM.Algebra.Jordan.H3O
 import PhysicsSM.Algebra.Jordan.Automorphism
 import PhysicsSM.Algebra.Jordan.ProjectiveGeometry
 import PhysicsSM.Algebra.Jordan.Stabilizer
+import PhysicsSM.Gauge.StandardModelBlockSubgroup
 
 /-!
 # Draft projective geometry of the exceptional Jordan algebra
@@ -113,39 +114,12 @@ noncomputable instance
 /--
 The Standard Model gauge group as `S(U(2) × U(3))`.
 
-This is a placeholder for a future concrete unitary matrix definition.
-
-**Handoff note**: `S(U(2) × U(3))` is the subgroup of `U(5)` of
-block-diagonal matrices `diag(U₂, U₃)` with `U₂ ∈ U(2)`,
-`U₃ ∈ U(3)`, and `det(U₂) · det(U₃) = 1`. The quotient
-`(U(1) × SU(2) × SU(3)) / ℤ₆ ≅ S(U(2) × U(3))` should be
-formalized explicitly in `PhysicsSM.Gauge.StandardModel`.
-
-**Warning**: This structure is insufficient for the final stabilizer
-isomorphism. A proper formalization requires:
-1. Concrete block-diagonal unitary matrices in `U(5)`.
-2. The determinant-one condition `det(U₂) · det(U₃) = 1`.
-3. Group operations inherited from matrix multiplication.
-4. The `ℤ₆` kernel identification.
-
-See `PhysicsSM.Gauge.StandardModelGroup` for related definitions.
+This is defined as the subgroup of `Units GUTMatrix` (where `GUTMatrix` is
+`Matrix (Fin 2 ⊕ Fin 3) (Fin 2 ⊕ Fin 3) ℂ`) consisting of block-diagonal unitary
+matrices with determinant one.
 -/
-structure StandardModelGaugeGroup where
-  matrix : Matrix (Fin 5) (Fin 5) ℂ
-  isBlockDiagonal : Prop
-  isUnitary : Prop
-  determinant_eq_one : Prop
-
-/-- Draft group structure for the block gauge group.
-
-**Handoff note**: This `sorry` cannot be closed without first
-replacing the `Prop`-valued fields (`isBlockDiagonal`, `isUnitary`,
-`determinant_eq_one`) with concrete predicates that compose correctly
-under matrix multiplication. The current placeholder structure does
-not carry enough information to define a group operation. -/
-noncomputable instance :
-    Group StandardModelGaugeGroup := by
-  sorry
+abbrev StandardModelGaugeGroup : Type :=
+  PhysicsSM.Gauge.StandardModelSubgroup.SMBlockUnitsSubgroup
 
 /-- The intersection of a complex projective plane and an octonionic
     line is a complex projective line.

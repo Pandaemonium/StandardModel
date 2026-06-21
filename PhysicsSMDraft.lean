@@ -44,6 +44,23 @@ import PhysicsSM.Draft.Sedenions.PSL27FlavorGeometry
 import PhysicsSM.Draft.Sedenions.FanoComplementGeneration
 import PhysicsSM.Draft.Sedenions.AnomalyCancellationAnalogue
 import PhysicsSM.Draft.Sedenions.BarnesWallFirstShell
+import PhysicsSM.Draft.CheckerboardSpinorRecursionAristotle
+import PhysicsSM.Draft.CheckerboardCornerCountAristotle
+import PhysicsSM.Draft.CheckerboardKernelClosedFormsAristotle
+import PhysicsSM.Draft.SpinCoherentProjectorAristotle
+import PhysicsSM.Draft.SpinorHelicityRankOneAristotle
+import PhysicsSM.Draft.CheckerboardSupportSymmetryAristotle
+import PhysicsSM.Draft.SpinCoherentCollapseAristotle
+import PhysicsSM.Draft.WeylCliffordBridgeAristotle
+import PhysicsSM.Draft.SpinorHelicityQuaternionAristotle
+import PhysicsSM.Draft.NullEdgeCoreAristotle
+import PhysicsSM.Draft.NullEdgeDiamondNonabelian
+import PhysicsSM.Draft.NullEdgeCochainDiamond
+import PhysicsSM.Draft.NullEdgePluckerGeneralAristotle
+import PhysicsSM.Draft.NullEdgeSpinorGeometryTargets
+import PhysicsSM.Draft.TwistorPluckerMass
+import PhysicsSM.Draft.NullEdgeYukawaFlip
+import PhysicsSM.Draft.NullEdgeYukawaGaugeAristotle
 
 /-!
 # PhysicsSM draft root

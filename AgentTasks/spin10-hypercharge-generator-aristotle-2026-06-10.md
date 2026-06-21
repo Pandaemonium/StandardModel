@@ -86,11 +86,14 @@ Submission project:
 AgentTasks/aristotle-submit/spin10-wave6-20260611-project
 ```
 
-Job ID (active):
+aristotle:
+  job_id: 4c71113d-6c0b-4739-b1fb-95743612c502
+  target_file: PhysicsSM/Draft/SpinorTenfoldHyperchargeOpAristotle.lean
+  expected_module: PhysicsSM.Draft.SpinorTenfoldHyperchargeOpAristotle
+  submission_project: AgentTasks/aristotle-submit/spin10-wave6-20260611-project
+  output_dir: AgentTasks/aristotle-output/4c71113d-6c0b-4739-b1fb-95743612c502
+  status: integrated
 
-```text
-4c71113d-6c0b-4739-b1fb-95743612c502
-```
 
 Previous jobs (failed/out-of-budget):
 

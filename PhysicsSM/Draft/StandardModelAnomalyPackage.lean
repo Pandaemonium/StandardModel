@@ -199,12 +199,19 @@ close the rational and integer equalities by exact arithmetic.
 -/
 theorem standardModelOneGeneration_localAnomalyFree :
     LocalAnomalyFree standardModelOneGeneration := by
-  sorry
+  refine ⟨?_, ?_, ?_, ?_, ?_⟩ <;>
+    simp only [gravitationalU1Anomaly, u1CubedAnomaly, su2SquaredU1Anomaly,
+      su3SquaredU1Anomaly, su3CubedAnomaly, standardModelOneGeneration,
+      ChiralMultiplet.totalMultiplicity, ChiralMultiplet.colorMultiplicity,
+      ChiralMultiplet.weakMultiplicity, ColorRep.multiplicity, WeakRep.multiplicity,
+      ColorRep.isColored, WeakRep.isDoublet, ColorRep.cubicIndex,
+      List.map, List.sum, List.foldr] <;> norm_num
 
 /-- Draft target: the conventional one-generation table has no Witten anomaly. -/
 theorem standardModelOneGeneration_wittenAnomalyFree :
     WittenSU2AnomalyFree standardModelOneGeneration := by
-  sorry
+  unfold WittenSU2AnomalyFree weakDoubletCount standardModelOneGeneration
+  decide
 
 /-- Bundled conventional Standard Model anomaly theorem. -/
 theorem standardModelOneGeneration_anomalyFree :
@@ -219,6 +226,7 @@ namespace FureyBridge
 
 open PhysicsSM.Algebra.Octonion.ComplexOctonion
 open PhysicsSM.Algebra.Furey.MinimalLeftIdeal
+open PhysicsSM.Algebra.Furey.LadderOperators
 
 /-- A rational eigenvalue statement for a complex-linear operator. -/
 def HasRationalEigenvalue
@@ -241,15 +249,55 @@ noncomputable def JbarBasisState : Fin 8 -> ComplexOctonion
 noncomputable def Jbar : Submodule Complex ComplexOctonion :=
   Submodule.span Complex (Set.range JbarBasisState)
 
-/--
-Draft target: the complementary eight states are linearly independent.
+/-
+Draft target (original): the complementary eight states are linearly
+independent.  This is an operator-level prerequisite for treating the `Jbar`
+states as a stable finite state table rather than just eight named vectors.
 
-This is an operator-level prerequisite for treating the `Jbar` states as a
-stable finite state table rather than just eight named vectors.
+NOTE (corrected statement).  The draft target
+
+  `theorem JbarBasisState_linearIndependent :`
+  `    LinearIndependent Complex JbarBasisState`
+
+is in fact FALSE for the `JbarBasisState` defined above, and therefore cannot
+be proved.  The reason is a degeneracy in the underlying state definitions in
+`PhysicsSM.Algebra.Furey.MinimalLeftIdeal`, which this file is not allowed to
+change: the operators `alpha1, alpha2, alpha3` are *annihilation* operators and
+`omega_bar` is the *empty* vacuum (all occupation numbers zero).  Hence
+
+  `vbar1 = alpha1 * omega_bar = 0`,  `vbar2 = 0`,  `vbar3 = 0`,
+  `vbar4 = alpha1 * (alpha2 * omega_bar) = 0`,  `vbar5 = 0`,  `vbar6 = 0`,
+  `nu_bar = alpha1 * (alpha2 * (alpha3 * omega_bar)) = 0`.
+
+Since `JbarBasisState 1 = vbar1 = 0`, the family contains a zero vector and so
+cannot be linearly independent.  (This matches the proven theorem
+`PhysicsSM.Algebra.Furey.JbarLinearIndependence.original_JbarBasisState_not_linearIndependent`.)
+
+The statement is recoverable only by replacing the annihilation operators with
+the *creation* operators `alpha_k_dag`, exactly as done by the corrected basis
+`JbarBasisState'` in `PhysicsSM.Algebra.Furey.JbarLinearIndependence`, whose
+linear independence is established there by `JbarBasisState'_linearIndependent`.
+
+Below we record the honest, true statement for the `JbarBasisState` of this
+file: it is NOT linearly independent.
+
+-- ORIGINAL (FALSE) DRAFT TARGET, kept for the record:
+-- theorem JbarBasisState_linearIndependent :
+--     LinearIndependent Complex JbarBasisState := by
+--   sorry
 -/
-theorem JbarBasisState_linearIndependent :
-    LinearIndependent Complex JbarBasisState := by
-  sorry
+
+/-- Corrected statement: the draft `JbarBasisState` is *not* linearly
+independent, because the underlying `vbar`/`nu_bar` states are all zero (the
+annihilation operators kill the empty vacuum `omega_bar`).  See the note above
+for the recoverable creation-operator version `JbarBasisState'`. -/
+theorem JbarBasisState_not_linearIndependent :
+    ¬ LinearIndependent Complex JbarBasisState := by
+  intro h
+  refine h.ne_zero (1 : Fin 8) ?_
+  change vbar1 = 0
+  unfold vbar1 alpha1 omega_bar
+  ext <;> simp
 
 /-!
 ### Electric charge on `Jbar`
@@ -260,37 +308,80 @@ table. Aristotle should prove these theorems if they are true for the existing
 kernel-checked eigenvalue and a clear note explaining the convention mismatch.
 -/
 
+/-
+NOTE (corrected eigenvalue).  The draft target
+
+  `theorem Q_op_omega_bar_target : HasRationalEigenvalue Q_op 1 omega_bar`
+
+is FALSE.  `omega_bar` is the empty vacuum (all occupation numbers `N_i = 0`),
+so `Ntot_op omega_bar = 0` and therefore the kernel-checked electric charge is
+`Q_op omega_bar = (-1/3) * Ntot_op omega_bar = 0`, i.e. the eigenvalue is `0`,
+not `1`.  The claimed value `1` corresponds to the sign-reversed complementary
+charge convention discussed in the module header, which is not the convention
+realized by the existing `Q_op`.
+
+-- ORIGINAL (FALSE) DRAFT TARGET, kept for the record:
+-- theorem Q_op_omega_bar_target :
+--     HasRationalEigenvalue Q_op 1 omega_bar := by
+--   sorry
+-/
+
+/-- Corrected statement: the kernel-checked `Q_op` eigenvalue of the empty
+vacuum `omega_bar` is `0`. -/
 theorem Q_op_omega_bar_target :
-    HasRationalEigenvalue Q_op 1 omega_bar := by
-  sorry
+    HasRationalEigenvalue Q_op 0 omega_bar := by
+  unfold HasRationalEigenvalue
+  simp only [Q_op, Ntot_op, N1_op, N2_op, N3_op, LinearMap.smul_apply, LinearMap.add_apply,
+    LinearMap.comp_apply, Lmul_apply]
+  ext <;>
+    simp [omega_bar, alpha1, alpha2, alpha3, alpha1_dag, alpha2_dag, alpha3_dag]
+
+/-
+NOTE (degenerate targets).  The seven targets below are TRUE as stated, but
+only vacuously: the underlying states `vbar1, ..., vbar6, nu_bar` are all the
+zero vector, because the annihilation operators `alpha_k` kill the empty vacuum
+`omega_bar` (see `JbarBasisState_not_linearIndependent` above).  For the zero
+vector, `Q_op 0 = q * 0 = 0` holds for every rational `q`, so these statements
+carry no eigenvalue information.  The genuine, non-degenerate charge eigenvalues
+for the corrected creation-operator states are established in
+`PhysicsSM.Algebra.Furey.JbarLinearIndependence` / `QopJbarEigenBridge`.
+-/
 
 theorem Q_op_vbar1_target :
     HasRationalEigenvalue Q_op (2 / 3) vbar1 := by
-  sorry
+  unfold HasRationalEigenvalue
+  rw [show vbar1 = 0 from by unfold vbar1 alpha1 omega_bar; ext <;> simp]; simp
 
 theorem Q_op_vbar2_target :
     HasRationalEigenvalue Q_op (2 / 3) vbar2 := by
-  sorry
+  unfold HasRationalEigenvalue
+  rw [show vbar2 = 0 from by unfold vbar2 alpha2 omega_bar; ext <;> simp <;> ring]; simp
 
 theorem Q_op_vbar3_target :
     HasRationalEigenvalue Q_op (2 / 3) vbar3 := by
-  sorry
+  unfold HasRationalEigenvalue
+  rw [show vbar3 = 0 from by unfold vbar3 alpha3 omega_bar; ext <;> simp <;> ring]; simp
 
 theorem Q_op_vbar4_target :
     HasRationalEigenvalue Q_op (1 / 3) vbar4 := by
-  sorry
+  unfold HasRationalEigenvalue
+  rw [show vbar4 = 0 from by unfold vbar4 alpha1 alpha2 omega_bar; ext <;> simp]; simp
 
 theorem Q_op_vbar5_target :
     HasRationalEigenvalue Q_op (1 / 3) vbar5 := by
-  sorry
+  unfold HasRationalEigenvalue
+  rw [show vbar5 = 0 from by unfold vbar5 alpha1 alpha3 omega_bar; ext <;> simp]; simp
 
 theorem Q_op_vbar6_target :
     HasRationalEigenvalue Q_op (1 / 3) vbar6 := by
-  sorry
+  unfold HasRationalEigenvalue
+  rw [show vbar6 = 0 from by unfold vbar6 alpha2 alpha3 omega_bar; ext <;> simp <;> ring]; simp
 
 theorem Q_op_nu_bar_target :
     HasRationalEigenvalue Q_op 0 nu_bar := by
-  sorry
+  unfold HasRationalEigenvalue
+  rw [show nu_bar = 0 from by
+    unfold nu_bar alpha1 alpha2 alpha3 omega_bar; ext <;> simp <;> ring]; simp
 
 /-!
 ### Weak-isospin and hypercharge bridge
@@ -304,8 +395,20 @@ This placeholder operator should eventually become either:
 The final trusted code must say which one it is.
 -/
 
-noncomputable def T3_op : ComplexOctonion →ₗ[Complex] ComplexOctonion := by
-  sorry
+/--
+Weak-isospin (`T₃`) operator, defined here as a basis-diagonal *formal bridge*
+operator (option (1) in the docstring above).
+
+It is the unique affine function of the diagonal charge operator `Q_op` that
+reproduces the lepton-doublet target eigenvalues `T₃ ω = -1/2` and `T₃ ν = 1/2`:
+since `Q_op = (-1/3) • Ntot_op` is diagonal with `Q ω = -1` and `Q ν = 0`, the
+choice `T3_op = (1/2) • id + Q_op` gives `T₃ ω = 1/2 - 1 = -1/2` and
+`T₃ ν = 1/2 + 0 = 1/2`, matching the Standard Model `(ν, e)_L` doublet with the
+convention `Q = T3 + Y/2`.  It is a genuine `ℂ`-linear endomorphism of
+`ComplexOctonion`, not a placeholder.
+-/
+noncomputable def T3_op : ComplexOctonion →ₗ[Complex] ComplexOctonion :=
+  (1 / 2 : Complex) • LinearMap.id + Q_op
 
 /-- Hypercharge operator in the project convention `Q = T3 + Y / 2`. -/
 noncomputable def Y_op : ComplexOctonion →ₗ[Complex] ComplexOctonion :=
@@ -313,19 +416,29 @@ noncomputable def Y_op : ComplexOctonion →ₗ[Complex] ComplexOctonion :=
 
 theorem T3_op_omega_target :
     HasRationalEigenvalue T3_op (-1 / 2) omega := by
-  sorry
+  unfold HasRationalEigenvalue T3_op
+  simp only [LinearMap.add_apply, LinearMap.smul_apply, LinearMap.id_apply, Q_omega]
+  ext <;> simp [omega] <;> ring
 
 theorem T3_op_nu_target :
     HasRationalEigenvalue T3_op (1 / 2) nu := by
-  sorry
+  unfold HasRationalEigenvalue T3_op
+  simp only [LinearMap.add_apply, LinearMap.smul_apply, LinearMap.id_apply, Q_nu]
+  ext <;> simp [nu]
 
 theorem Y_op_omega_target :
     HasRationalEigenvalue Y_op (-1) omega := by
-  sorry
+  unfold HasRationalEigenvalue Y_op T3_op
+  simp only [LinearMap.smul_apply, LinearMap.sub_apply, LinearMap.add_apply,
+    LinearMap.id_apply, Q_omega]
+  ext <;> simp [omega]
 
 theorem Y_op_nu_target :
     HasRationalEigenvalue Y_op (-1) nu := by
-  sorry
+  unfold HasRationalEigenvalue Y_op T3_op
+  simp only [LinearMap.smul_apply, LinearMap.sub_apply, LinearMap.add_apply,
+    LinearMap.id_apply, Q_nu]
+  ext <;> simp [nu]
 
 /-!
 ### Final bridge target
@@ -348,8 +461,9 @@ Draft target: complete Standard Model anomaly cancellation package, with the
 Furey bridge as an explicit hypothesis/result rather than hidden arithmetic.
 -/
 theorem furey_realizes_anomalyFreeStandardModelGeneration :
-    FureyRealizesStandardModelOneGeneration := by
-  sorry
+    FureyRealizesStandardModelOneGeneration :=
+  ⟨standardModelOneGeneration_localAnomalyFree,
+    standardModelOneGeneration_wittenAnomalyFree⟩
 
 end FureyBridge
 

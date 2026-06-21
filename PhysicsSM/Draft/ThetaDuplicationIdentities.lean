@@ -1,5 +1,6 @@
 import Mathlib
 import SpherePacking.ModularForms.JacobiTheta
+import PhysicsSM.Draft.ThetaDuplicationProof
 
 /-!
 # Theta function duplication identities (sorry targets)
@@ -55,7 +56,11 @@ variables `(a,b) = ((n+m)/2, (n-m)/2)`.
 -/
 theorem theta4_sq_eq (tau : UpperHalfPlane) :
     (Θ₄ tau) ^ 2 = (Θ₃ (twoTau tau)) ^ 2 - (Θ₂ (twoTau tau)) ^ 2 := by
-  sorry
+  have h4 : Θ₄ tau = myΘ₄ (tau : ℂ) := rfl
+  have h3 : Θ₃ (twoTau tau) = myΘ₃ (2 * (tau : ℂ)) := rfl
+  have h2 : Θ₂ (twoTau tau) = myΘ₂ (2 * (tau : ℂ)) := rfl
+  rw [h4, h3, h2]
+  exact myTheta4_sq_duplication tau.im_pos
 
 /--
 Landen theta duplication identity for `Θ₂`.
@@ -67,6 +72,10 @@ and the same parity-splitting technique as `theta4_sq_eq`.
 -/
 theorem theta2_sq_eq (tau : UpperHalfPlane) :
     (Θ₂ tau) ^ 2 = (2 : Complex) * Θ₂ (twoTau tau) * Θ₃ (twoTau tau) := by
-  sorry
+  have h2 : Θ₂ tau = myΘ₂ (tau : ℂ) := rfl
+  have h2' : Θ₂ (twoTau tau) = myΘ₂ (2 * (tau : ℂ)) := rfl
+  have h3' : Θ₃ (twoTau tau) = myΘ₃ (2 * (tau : ℂ)) := rfl
+  rw [h2, h2', h3']
+  exact myTheta2_sq_duplication tau.im_pos
 
 end ThetaDuplication

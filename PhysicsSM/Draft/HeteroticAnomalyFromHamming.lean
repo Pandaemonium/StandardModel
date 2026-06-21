@@ -81,31 +81,180 @@ vectors in `Λ₁ ⊕ Λ₂` of norm 4n biject with pairs (z₁, z₂) with
 `sqNorm z₁ + sqNorm z₂ = 4n`, giving the convolution of shell counts.
 -/
 
+/-! ### Integer projections and the join bijection
+
+The Construction A lattice of `hamming16E8E8` is the orthogonal direct sum of
+two copies of `e8IntLattice`. We make this explicit via integer projections
+`projLeftZ`, `projRightZ` (left/right halves of a `Fin 16 → ℤ` vector) and the
+concatenation map `joinLattice16` (already defined in `HammingE8E8.lean`). -/
+
+/-- The left 8 integer coordinates (positions 0–7) of a `Fin 16 → ℤ` vector. -/
+def projLeftZ (z : Fin 16 → ℤ) : Fin 8 → ℤ := fun i => z ⟨i.val, by omega⟩
+
+/-- The right 8 integer coordinates (positions 8–15) of a `Fin 16 → ℤ` vector. -/
+def projRightZ (z : Fin 16 → ℤ) : Fin 8 → ℤ := fun i => z ⟨8 + i.val, by omega⟩
+
+@[simp] theorem projLeftZ_join (a b : Fin 8 → ℤ) :
+    projLeftZ (joinLattice16 (a, b)) = a := by
+      exact funext fun i => by unfold joinLattice16 projLeftZ; aesop;
+
+@[simp] theorem projRightZ_join (a b : Fin 8 → ℤ) :
+    projRightZ (joinLattice16 (a, b)) = b := by
+      ext i; simp [projRightZ, joinLattice16]
+
+/-- `joinLattice16` reassembles a vector from its two integer halves. -/
+theorem join_projZ (z : Fin 16 → ℤ) :
+    joinLattice16 (projLeftZ z, projRightZ z) = z := by
+      ext i; exact by unfold joinLattice16 projLeftZ projRightZ; aesop;
+
+/-- The mod-2 reduction commutes with the left projection. -/
+theorem reduceModTwo_projLeftZ (z : Fin 16 → ℤ) :
+    reduceModTwo (projLeftZ z) = projLeft16 (reduceModTwo z) := by
+      exact funext fun i => by unfold reduceModTwo projLeftZ projLeft16; aesop;
+
+/-- The mod-2 reduction commutes with the right projection. -/
+theorem reduceModTwo_projRightZ (z : Fin 16 → ℤ) :
+    reduceModTwo (projRightZ z) = projRight16 (reduceModTwo z) := by
+  ext i; simp [reduceModTwo, projRightZ, projRight16]
+
+/-- Membership in the E8⊕E8 Construction A lattice splits coordinate-wise:
+`z` lies in it iff both integer halves lie in `e8IntLattice`. -/
+theorem mem_cA_hamming16_iff_projZ (z : Fin 16 → ℤ) :
+    z ∈ constructionA hamming16E8E8 ↔
+      projLeftZ z ∈ e8IntLattice ∧ projRightZ z ∈ e8IntLattice := by
+        convert mem_hamming16E8E8_iff ( reduceModTwo z ) using 1
+
+/-- The squared norm of a concatenation is the sum of the squared norms. -/
+theorem sqNorm_join16 (a b : Fin 8 → ℤ) :
+    sqNorm (joinLattice16 (a, b)) = sqNorm a + sqNorm b := by
+      unfold sqNorm;
+      simp +decide only [joinLattice16, Fin.sum_univ_succ, Fin.sum_univ_zero];
+      grind
+
+/-- The squared norm of a `Fin 16 → ℤ` vector splits as the sum of the squared
+norms of its two integer halves. -/
+theorem sqNorm_projZ_split (z : Fin 16 → ℤ) :
+    sqNorm z = sqNorm (projLeftZ z) + sqNorm (projRightZ z) := by
+      convert sqNorm_join16 (projLeftZ z) (projRightZ z) using 1
+
+/-! ### Divisibility and finiteness of shells -/
+
+/-- For any integer vector, `4` divides `sqNorm z - hammingWeight (reduceModTwo z)`,
+because each coordinate contributes `0 (mod 4)` if even and `1 (mod 4)` if odd. -/
+theorem dvd_four_sqNorm_sub_weight {m : ℕ} (z : Fin m → ℤ) :
+    (4 : ℤ) ∣ sqNorm z - (hammingWeight (reduceModTwo z) : ℤ) := by
+      -- By definition of `hammingWeight`, we know that
+      suffices h_div : ∀ i : Fin m, 4 ∣ (z i) ^ 2 - (if (z i : ZMod 2) ≠ 0 then 1 else 0) by
+        unfold hammingWeight sqNorm;
+        convert Finset.dvd_sum fun i _ => h_div i using 1 ; simp +decide [ Finset.sum_ite ];
+        convert rfl;
+      intro i; split_ifs <;> simp_all +decide [ ← even_iff_two_dvd, parity_simps ] ;
+      · rcases Int.even_or_odd' ( z i ) with ⟨ k, hk | hk ⟩ <;> push_cast [ hk ] <;> ring_nf;
+        · simp_all +decide [ ZMod.intCast_zmod_eq_zero_iff_dvd ];
+        · exact ⟨ k + k ^ 2, by ring ⟩;
+      · rw [ ZMod.intCast_zmod_eq_zero_iff_dvd ] at *; obtain ⟨ k, hk ⟩ := ‹_›; exact ⟨ k ^ 2, by rw [ hk ] ; ring ⟩ ;
+
+/-
+Every vector of the E8 Construction A lattice has squared norm divisible by 4.
+(`reduceModTwo z` is a doubly-even codeword, so its weight is a multiple of 4,
+and `sqNorm z ≡ weight (mod 4)`.)
+-/
+theorem e8_sqNorm_dvd_four (z : Fin 8 → ℤ) (hz : z ∈ e8IntLattice) :
+    (4 : ℤ) ∣ sqNorm z := by
+      convert dvd_add ( dvd_four_sqNorm_sub_weight z ) ( Int.natCast_dvd_natCast.mpr ( PhysicsSM.Coding.extendedHamming8_doublyEven' ( reduceModTwo z ) ( by simpa using hz ) ) ) using 1 ; ring!;
+
+/-- The set of integer vectors with a fixed squared norm is finite (each
+coordinate is bounded by the norm). -/
+theorem sqNorm_set_finite {m : ℕ} (k : ℤ) :
+    {z : Fin m → ℤ | sqNorm z = k}.Finite := by
+  apply Set.Finite.subset (Set.Finite.pi fun _ => Set.finite_Icc (-k) k)
+  intro z hz i _
+  have hzi : z i ^ 2 ≤ k := hz ▸ coord_sq_le_sqNorm z i
+  exact ⟨by nlinarith [sq_nonneg (z i)], by nlinarith [sq_nonneg (z i)]⟩
+
+/-- An E8 shell (fixed squared norm in `e8IntLattice`) is finite. -/
+theorem shell8_finite (k : ℤ) :
+    {z : Fin 8 → ℤ | z ∈ e8IntLattice ∧ sqNorm z = k}.Finite :=
+  (sqNorm_set_finite k).subset (fun _ h => h.2)
+
+/-! ### The counting identity -/
+
+/-
+**Bijection step**: the E8⊕E8 shell at norm `4n` biject with pairs of E8
+vectors whose norms sum to `4n`, via the half-projections. Hence equal counts.
+-/
+theorem ncard_shell16_eq_ncard_pair (n : ℕ) :
+    Set.ncard {z : Fin 16 → ℤ |
+        z ∈ constructionA hamming16E8E8 ∧ sqNorm z = 4 * (n : ℤ)}
+      = Set.ncard {ab : (Fin 8 → ℤ) × (Fin 8 → ℤ) |
+        ab.1 ∈ e8IntLattice ∧ ab.2 ∈ e8IntLattice ∧
+          sqNorm ab.1 + sqNorm ab.2 = 4 * (n : ℤ)} := by
+            convert Set.InjOn.ncard_image _;
+            rotate_left;
+            exact fun ab => joinLattice16 ab;
+            · intro ab hab; intro ab' hab' h_eq; simp_all +decide [ funext_iff, Fin.forall_fin_succ ] ;
+              exact Prod.ext ( funext fun i => by fin_cases i <;> tauto ) ( funext fun i => by fin_cases i <;> tauto );
+            · ext;
+              constructor;
+              · intro hx;
+                use (projLeftZ ‹_›, projRightZ ‹_›);
+                exact ⟨ ⟨ by simpa using mem_cA_hamming16_iff_projZ _ |>.1 hx.1 |>.1, by simpa using mem_cA_hamming16_iff_projZ _ |>.1 hx.1 |>.2, by linarith [ hx.2, sqNorm_projZ_split ‹_› ] ⟩, join_projZ _ ⟩;
+              · rintro ⟨ ab, ⟨ ha, hb, hab ⟩, rfl ⟩;
+                exact ⟨ mem_constructionA_hamming16_of_product _ _ ha hb, by rw [ sqNorm_join16 ] ; exact hab ⟩
+
+/-
+**Convolution step**: the pair-shell at total norm `4n` is the disjoint
+union over `(i, j)` with `i + j = n` of the products of E8 shells at norms
+`4i` and `4j`; counting gives the antidiagonal convolution.
+-/
+theorem ncard_pair_eq_sum (n : ℕ) :
+    Set.ncard {ab : (Fin 8 → ℤ) × (Fin 8 → ℤ) |
+        ab.1 ∈ e8IntLattice ∧ ab.2 ∈ e8IntLattice ∧
+          sqNorm ab.1 + sqNorm ab.2 = 4 * (n : ℤ)}
+      = ∑ p ∈ Finset.antidiagonal n,
+          Set.ncard {z : Fin 8 → ℤ | z ∈ e8IntLattice ∧ sqNorm z = 4 * (p.1 : ℤ)}
+            * Set.ncard {z : Fin 8 → ℤ | z ∈ e8IntLattice ∧ sqNorm z = 4 * (p.2 : ℤ)} := by
+  rw [ ← Set.ncard_image_of_injective _ ( show Function.Injective ( fun x : ( Fin 8 → ℤ ) × ( Fin 8 → ℤ ) ↦ x ) from fun x y h ↦ by simpa using h ) ];
+  rw [ show ( fun x : ( Fin 8 → ℤ ) × ( Fin 8 → ℤ ) => x ) '' { ab : ( Fin 8 → ℤ ) × ( Fin 8 → ℤ ) | ab.1 ∈ e8IntLattice ∧ ab.2 ∈ e8IntLattice ∧ sqNorm ab.1 + sqNorm ab.2 = 4 * ↑n } = ⋃ p ∈ Finset.antidiagonal n, { z : ( Fin 8 → ℤ ) × ( Fin 8 → ℤ ) | z.1 ∈ e8IntLattice ∧ z.2 ∈ e8IntLattice ∧ sqNorm z.1 = 4 * ↑p.1 ∧ sqNorm z.2 = 4 * ↑p.2 } from ?_ ];
+  · rw [ show ( ⋃ p ∈ Finset.antidiagonal n, { z : ( Fin 8 → ℤ ) × ( Fin 8 → ℤ ) | z.1 ∈ e8IntLattice ∧ z.2 ∈ e8IntLattice ∧ sqNorm z.1 = 4 * ↑p.1 ∧ sqNorm z.2 = 4 * ↑p.2 } ) = ⋃ p ∈ Finset.antidiagonal n, ( { z : Fin 8 → ℤ | z ∈ e8IntLattice ∧ sqNorm z = 4 * ↑p.1 } ×ˢ { z : Fin 8 → ℤ | z ∈ e8IntLattice ∧ sqNorm z = 4 * ↑p.2 } ) from ?_ ];
+    · induction' ( Finset.antidiagonal n : Finset ( ℕ × ℕ ) ) using Finset.induction <;> simp_all +decide [ Set.ncard_eq_toFinset_card' ];
+      rw [ @Set.ncard_union_eq ];
+      · rw [ Set.ncard_prod ] ; aesop;
+      · simp_all +decide [ Set.disjoint_left ];
+      · exact Set.Finite.prod ( shell8_finite _ ) ( shell8_finite _ );
+      · exact Set.Finite.biUnion ( Finset.finite_toSet _ ) fun p hp => Set.Finite.prod ( shell8_finite _ ) ( shell8_finite _ );
+    · aesop;
+  · ext ⟨a, b⟩; simp [Finset.mem_antidiagonal];
+    intro ha hb; constructor <;> intro h;
+    · obtain ⟨k, hk⟩ : ∃ k : ℕ, sqNorm a = 4 * k := by
+        exact ⟨ Int.toNat ( sqNorm a / 4 ), by rw [ Int.toNat_of_nonneg ( Int.ediv_nonneg ( sqNorm_nonneg a ) zero_le_four ) ] ; rw [ Int.mul_ediv_cancel' ( e8_sqNorm_dvd_four a ha ) ] ⟩;
+      exact ⟨ k, hk, n - k, add_tsub_cancel_of_le <| by linarith [ sqNorm_nonneg a, sqNorm_nonneg b ], by rw [ Nat.cast_sub <| by linarith [ sqNorm_nonneg a, sqNorm_nonneg b ] ] ; linarith ⟩;
+    · grind +revert
+
+/-- The E8⊕E8 shell count is the antidiagonal convolution of the E8 shell counts. -/
+theorem ncard_directSum (n : ℕ) :
+    Set.ncard {z : Fin 16 → ℤ |
+        z ∈ constructionA hamming16E8E8 ∧ sqNorm z = 4 * (n : ℤ)}
+      = ∑ p ∈ Finset.antidiagonal n,
+          Set.ncard {z : Fin 8 → ℤ | z ∈ e8IntLattice ∧ sqNorm z = 4 * (p.1 : ℤ)}
+            * Set.ncard {z : Fin 8 → ℤ | z ∈ e8IntLattice ∧ sqNorm z = 4 * (p.2 : ℤ)} :=
+  (ncard_shell16_eq_ncard_pair n).trans (ncard_pair_eq_sum n)
+
 /-- **Theta series of the direct sum equals the product of theta series.**
 
 Formally: the generating function for shell counts of `E8 ⊕ E8` equals
 the product of the generating functions for each E8 factor.
 
-This is a consequence of the isomorphism
-`constructionA hamming16E8E8 ≅ e8IntLattice × e8IntLattice`
-(proved in `HammingE8E8.lean`, pending Aristotle) combined with the fact
-that the shell count of a product lattice is the Dirichlet convolution of
-the individual shell counts.
-
-**Blocker**: Requires `constructionA_hamming16_iso_e8_prod` to be proved.
-Once the isomorphism is in hand, the proof is a direct power series identity.
--/
+The `n`-th coefficient of the product is the antidiagonal convolution of the
+E8 shell counts (`PowerSeries.coeff_mul`), which equals the E8⊕E8 shell count
+by `ncard_directSum`. -/
 theorem theta_directSum :
     thetaE8xE8PowerSeries = thetaE8PowerSeries * thetaE8PowerSeries := by
-  sorry
-  /-
-  Aristotle handoff:
-  Current goal: show the shell counts of E8⊕E8 are the convolution of E8 shell counts.
-  Key lemma: for z : Fin 16 → ℤ in constructionA hamming16E8E8,
-    sqNorm z = sqNorm (projLeft16 z) + sqNorm (projRight16 z).
-  This follows from additivity of sqNorm and the direct sum decomposition.
-  Then sum over all (n₁, n₂) with n₁ + n₂ = n, giving the convolution product.
-  -/
+  ext n
+  rw [PowerSeries.coeff_mul]
+  simp only [thetaE8xE8PowerSeries, thetaE8PowerSeries, PowerSeries.coeff_mk]
+  rw [ncard_directSum n, Nat.cast_sum]
+  exact Finset.sum_congr rfl (fun p _ => by push_cast; ring)
 
 /-- **Conditional theta series identity: `θ_{E8⊕E8} = E₄²`.**
 
