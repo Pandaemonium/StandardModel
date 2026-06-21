@@ -65,11 +65,15 @@ the determinant convention `m^2 = det(P)` and the trace-pairing convention
 
 The causal-diamond gauge theorem is now trusted: Abelian defects are gauge
 invariant, non-Abelian defects are endpoint-conjugation covariant, and class
-functions of non-Abelian defects are gauge invariant.
+functions of non-Abelian defects are gauge invariant. The same trusted module
+now includes path-pair composition laws for glued diamonds: vertical gluing has
+the expected non-Abelian transport/conjugation correction, horizontal gluing
+cancels the shared branch, and the Abelian specialization is ordinary defect
+multiplication.
 
-## The current Aristotle queue
+## Latest Aristotle integrations
 
-Submitted continuation:
+Completed and integrated continuation:
 
 ```text
 PhysicsSM/Draft/CheckerboardKernelClosedFormsAristotle.lean
@@ -83,14 +87,35 @@ combining the corner-count polynomial theorem with the closed binomial corner
 counts.
 ```
 
+The proved declarations are:
+
+```text
+pathSum_right_right_closed_form
+pathSum_right_left_closed_form
+pathSum_right_right_straight
+pathSum_right_left_straight_zero
+```
+
 The earlier Yukawa gauge-legality wave has completed and is integrated in
 
 ```text
 PhysicsSM/Draft/NullEdgeYukawaGaugeAristotle.lean
 ```
 
-The endpoint-kernel task is Aristotle task
+The endpoint-kernel Aristotle task was
 `62a3c14d-d084-4a24-b1e6-4e86a4ec605b`.
+
+New submitted continuation:
+
+```text
+PhysicsSM/Draft/CausalDiamondHigherGaugeAristotle.lean
+```
+
+Target: endpoint-transport/whiskering notation, transport functoriality,
+vertical composition in transport form, associativity, and interchange for
+finite path-pair gluing. Aristotle project:
+`0897a0dd-888e-451f-97e7-e24633cd2699`, task
+`a0748c78-baba-4edc-8f4e-ba71f1798110`.
 
 ## Local theorem gains after the spinor job
 
@@ -98,7 +123,8 @@ Finite theorem islands added or promoted without waiting for Aristotle:
 
 1. `PhysicsSM.Gauge.CausalDiamondHolonomy` promotes Abelian diamond gauge
    invariance, non-Abelian endpoint covariance, and class-function invariance
-   to trusted code.
+   to trusted code, and now adds vertical/horizontal composition laws for
+   glued path-pair defects.
 2. The formal chain boundary theorem dualizes to an integral cochain
    coboundary theorem, `delta^2 = 0`.
 
@@ -138,6 +164,8 @@ propagator or dispersion relation?
 Near-term finite targets:
 
 - checkerboard path-sum closed forms by endpoint and corner count;
+  (now integrated as `PhysicsSM.Draft.CheckerboardKernelClosedFormsAristotle`,
+  pending trusted promotion);
 - transfer-matrix recursion for left/right chirality sectors
   (now promoted to `PhysicsSM.Spinor.CheckerboardDynamics`);
 - exact finite telegraph/Klein-Gordon recursion in which the corner amplitude
@@ -176,12 +204,13 @@ This avoids making premature claims about full twistor geometry.
 ### 4. Non-Abelian diamond composition
 
 The trusted theorem now proves endpoint conjugation and class-function
-invariance.  Next:
+invariance, plus the first path-pair composition API.  Next:
 
-- define diamond gluing along compatible paths;
-- prove defect multiplication laws under horizontal and vertical gluing in the
-  Abelian case;
-- define the basepointed non-Abelian composition law;
+- package the path-pair laws as a small finite double-category/groupoid
+  scaffold;
+- define whiskering/basepoint transport explicitly as named operations;
+- connect the finite gluing law to the Schreiber-Waldorf surface-holonomy
+  gluing axioms at the level of sourced interpretation only;
 - then ask for a 2-categorical API.
 
 This is the path toward higher-gauge causal diamonds.
@@ -214,17 +243,15 @@ thermodynamic argument.
 
 ## Suggested next Aristotle waves
 
-1. Integrate `NullEdgeYukawaGaugeAristotle`.
-2. Submit a checkerboard closed-form wave:
-   binomial path counts, kernel polynomials, and normalization matching.
-   The endpoint-kernel summation glue is queued as Aristotle task
-   `62a3c14d-d084-4a24-b1e6-4e86a4ec605b`.
-3. Submit a projective twistor wave:
+1. Promote the checkerboard endpoint-kernel file after source and theorem
+   surface cleanup.
+2. Submit a projective twistor wave:
    column rescaling, normalized Pluecker spread, and chart-level projective
    invariants.
-4. Submit a diamond composition wave:
-   Abelian gluing laws first, then non-Abelian basepointed composition.
-5. Submit a cochain grading wave:
+3. Submit a diamond higher-gauge wrapper wave:
+   path-pair composition as whiskering, associativity/coherence laws, and
+   clean basepoint transport names.
+4. Submit a cochain grading wave:
    even/odd cochains and the first Hodge-Dirac algebra scaffold.
 
 ## Main research claim after this wave

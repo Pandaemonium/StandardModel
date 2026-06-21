@@ -1,0 +1,5 @@
+# Topic queue for lit_harness.py (one topic per line; blank lines and # comments ignored).
+# Keep these specific -- the harness fills precise gaps better than broad sweeps.
+Tsirelson bound and Bell correlations from quantum measure theory and generalized probabilistic theories
+higher-dimensional Feynman checkerboard and quantum walk Dirac universality
+two-twistor invariant mass and Plucker incidence for massive spinors

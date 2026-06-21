@@ -3,9 +3,9 @@
 Companion to [`Null_Edge_Causal_Graph_Strengthened_Program.md`](Null_Edge_Causal_Graph_Strengthened_Program.md)
 and the bibliography [`Null_Edge_Causal_Graph_Bibliography.md`](Null_Edge_Causal_Graph_Bibliography.md).
 
-**Compiled:** 2026-06-20.
+**Compiled:** 2026-06-21.
 **Library:** Zotero collection "Null-Edge Causal Graph Program" (`9W59V3K9`) and the
-Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`). ~65 papers, tagged
+Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`). ~79 papers, tagged
 `null-edge-program` plus per-pillar cluster tags.
 **Method note:** searches run through the `scholarly` MCP server (INSPIRE-HEP and
 OpenAlex backends); see [`../Scripts/MCP_SERVERS.md`](../Scripts/MCP_SERVERS.md).
@@ -23,6 +23,122 @@ The repo already has theorem islands to build on:
 `PhysicsSM.Draft.WeylCliffordBridgeAristotle`,
 `PhysicsSM.Draft.SpinorHelicityRankOneAristotle`,
 `PhysicsSM.Draft.SpinorHelicityQuaternionAristotle`.
+
+## New synthesis: the bivector/BF spine
+
+Claude's bivector note gives a useful integration principle: do not treat
+the Plucker mass theorem and the causal-diamond holonomy theorem as unrelated
+islands. Treat them as two finite shadows of a `Lambda^2`-valued object on
+the null-edge graph.
+
+The conservative version is:
+
+```text
+Bivector cochain B:
+  mass sector   = simplicity defect / Gram determinant of a null-spinor fan
+  gauge sector  = pairing of B with a diamond curvature defect
+  gravity route = long-horizon Plebanski/BF interpretation, not yet a theorem
+```
+
+This is sharp because it turns "mass from null spread" and "curvature from
+diamond disagreement" into one finite algebraic vocabulary. It also keeps
+the speculative part in the right place: Plebanski gravity, Urbantke metric
+reconstruction, and simplicity constraints are continuum/self-dual two-form
+technology; the repo should first formalize the finite wrapper, then only
+later ask whether the continuum interpretation survives.
+
+**Reference anchors to add or cite defensively.**
+
+- Plebanski/Krasnov self-dual two-form formulation: Krasnov `0904.0423`.
+- Gravity/Yang-Mills/Higgs from enlarged Plebanski-type gauge group:
+  Torres-Gomez-Krasnov `0911.3793`; Krasnov `1112.5097`; Smolin `0712.0977`.
+- Energetic causal sets as the closest edge-momentum causal-set precedent:
+  Cortes-Smolin `1308.2206`, `1307.6167`, `1407.0032`.
+- Topological/Kahler-Dirac graph mass-gap precedent:
+  Bianconi `2106.02929`, `2309.07851`.
+
+**Claim boundary.** The finite novelty remains the kernel-checkable
+Plucker/holonomy package and its graph-native synthesis. The continuum claim
+"one two-form unifies gravity, Yang-Mills, and Higgs" has substantial prior
+art in Krasnov/Smolin-style Plebanski programs. The null-edge program's
+defensible angle is the finite causal-graph, Plucker-mass, and Lean-verified
+version of the story.
+
+**New Lean targets.**
+
+- `NullEdgeBivector`: define the finite `B` wrapper whose local components are
+  spinor wedges or diamond surface labels.
+- `bivector_massDefect_eq_plucker`: identify the `B` simplicity/Gram defect
+  with `finPairwisePluckerMassReal`.
+- `bivector_pairing_respects_diamond_composition`: show that the finite
+  `B`-weighted diamond pairing is compatible with the already-proved
+  vertical and horizontal path-pair composition laws.
+- `topological_dirac_sq_eq_laplacian`: extend the cochain seed toward the
+  Bianconi/Kahler-Dirac finite operator.
+- `gapped_topological_dirac_sq`: for a finite matrix model, prove that adding
+  a chiral mass term gives the expected algebraic square when the anticommutator
+  hypotheses are explicit.
+
+**Caveats.**
+
+- In Lorentzian signature, self-dual two-forms are naturally complex; any
+  Urbantke/Plebanski interpretation needs explicit reality conditions.
+- The QGT/Berry-curvature analogy is interesting but should stay a numerical
+  or conceptual pilot until it produces a finite theorem or a source-backed
+  model.
+- AHH massive spinor-helicity already owns the two-spinor on-shell mass
+  identity. Our trusted theorem is the finite `n`-edge Cauchy-Binet bundle
+  identity and its graph interpretation.
+
+---
+
+## Observable-relative nullity as a diagnostics layer
+
+The graph-theoretic "null edges as kernels" note is useful, but it should be
+integrated as an API/diagnostics layer rather than as a new physics pillar. The
+safe definition is:
+
+```text
+Given a graph observable F, an edge or chain x is F-null when deleting,
+contracting, quotienting, or gauge-normalizing x has zero effect on F.
+Approximate F-nullity measures small effect on F.
+```
+
+This clarifies why no single definition of "null edge" should be expected.
+The same edge can be connectivity-null, spectrally visible, quotient-null after
+coarse-graining, gauge-null up to a vertex phase, or homology-null only as part
+of a chain. That fits the program's existing theorem spine: Plucker mass is an
+observable on null-spinor bundles, causal-diamond defects are observables on
+path pairs, and order-complex cohomology sees chains rather than isolated
+edges.
+
+**2026-06-21 Zotero/Neo4j additions.** Added `UFHN99H4` (Spielman-Srivastava
+effective-resistance sparsification), `N7T76U5H` (Schaub-Benson-Horn-Lippner-
+Jadbabaie normalized Hodge 1-Laplacian), `33X7ZETB` (Roddenberry-Frantzen-
+Schaub-Segarra Hodgelets), `FNP9V3DT` (Lange-Liu-Peyerimhoff-Post magnetic
+Laplacians), `GNEARI9Q` (Fabila-Carrasco-Lledo-Post magnetic Laplacian
+matrices), and `S78BASEN` (Kannan-Kumar-Pragada gain-graph Laplacians). All are
+tagged `observable-relative-nullity` in the library/graph.
+
+**Lean targets this suggests.**
+
+- `quotient_incidence_internal_edge_eq_zero`: an edge internal to a quotient
+  block maps to zero incidence in the quotient operator.
+- `exact_one_cochain_has_trivial_cycle_holonomy`: an exact Abelian 1-cochain
+  has trivial holonomy on every cycle.
+- `tree_phase_assignment_is_gauge_trivial`: phases supported on a spanning
+  tree can be removed by a vertex gauge transformation.
+- `homology_null_boundary_chain`: a boundary chain is zero in homology, so
+  topological nullity is naturally chainwise rather than edgewise.
+- `laplacian_rankOne_modeShift`: first-order shift of a simple Laplacian
+  eigenvalue under an edge update is the squared endpoint difference of the
+  eigenmode.
+
+**Claim boundary.** Connectivity and matroid nullity are standard graph theory,
+and spectral/gauge/homology nullity have mature literatures. The project should
+claim the observable-relative language as a useful organizing convention for
+the null-edge causal graph program, not as a new discovery of those standard
+notions.
 
 ---
 
@@ -77,10 +193,11 @@ honeycomb/curved-spacetime walks (`1803.01015`, `1505.07023`), Mlodinow-Brun
 limits are Dirac/Weyl — the evidence base for the chirality-flip universality
 conjecture (`m_eff = C * nu`).
 
-**Next steps.** (a) Promote `PhysicsSM.Spinor.Checkerboard` finite recursion to a
-trusted, documented "finite core of the checkerboard" result (first-step path-sum
-decomposition is already there). (b) State the universality conjecture precisely as a
-renewal/random-history statement (Stage-2 paper, not yet Lean). (c) Numerical pilot:
+**Next steps.** (a) Promote the no-sorry endpoint-kernel closed forms from
+`PhysicsSM.Draft.CheckerboardKernelClosedFormsAristotle` into the trusted
+checkerboard theorem surface after a semantic/documentation audit. (b) State
+the universality conjecture precisely as a renewal/random-history statement
+(Stage-2 paper, not yet Lean). (c) Numerical pilot:
 isotropic null-edge flip ensemble dispersion relation (oracle script, justifies tests
 not theorems).
 
@@ -147,7 +264,11 @@ continuum Stokes statement as documented interpretation only.
 **Status update, 2026-06-21.** The finite Abelian target has been promoted to
 trusted code as `PhysicsSM.Gauge.CausalDiamondHolonomy`. The same trusted
 module also proves the non-Abelian endpoint-conjugation law and class-function
-gauge invariance.
+gauge invariance. It now also contains a path-pair abstraction for glued
+diamonds, with vertical and horizontal composition laws for the holonomy
+defect and the Abelian multiplication specialization. Literature additions
+from this pass: Wilson `QDII2KHM` in Neo4j, plus Zotero keys `AHK54SN9`,
+`K9XTAJUM`, and `Z38RZX2Q` for higher-gauge/surface-holonomy context.
 
 **Falsification.** Path-comparison defects are not gauge invariant, or their continuum
 limit fails to reproduce field strength.
@@ -244,29 +365,44 @@ indices, twistor incidence, checkerboard corner weight, hypercharge). Done befor
 trusted physics claim.
 
 **Stage 1 — finite Lean theorems (kernel-checkable, no analysis):**
-1. Promote `PhysicsSM.Spinor.Checkerboard` finite core to trusted.
+1. Promote the no-sorry checkerboard endpoint-kernel closed forms after
+   semantic audit.
 2. Promote `SpinCoherentProjectorAristotle` and `WeylCliffordBridgeAristotle`.
 3. `PluckerMass.lean`: identity, nonnegativity wrapper, and collinearity are
    now trusted; add twistor chart matching (Pillar 1).
 4. `yukawa_vertex_hypercharge_neutral` (Pillar 3).
 5. `PhysicsSM.Gauge.CausalDiamondHolonomy`: finite Abelian gauge invariance,
    non-Abelian endpoint covariance, and class-function invariance are now
-   trusted; next prove diamond gluing/composition laws (Pillar 5).
+   trusted; vertical and horizontal path-pair composition laws are now
+   trusted; next develop the 2-categorical/higher-gauge wrapper (Pillar 5).
 6. `OrderComplex.lean`: `d^2 = 0` (Pillar 7).
+7. `NullEdgeBivector`: draft a finite `B`-cochain wrapper tying Plucker
+   mass defects to diamond surface pairings, with the continuum BF/Plebanski
+   reading kept in comments/prose only.
+8. `KahlerDiracGraph`: build the finite topological Dirac operator from the
+   cochain seed, then prove `D^2 = Laplacian` and the algebraic chiral
+   mass-gap square under explicit adjoint/anticommutation hypotheses.
+9. `ObservableNullity`: package the quotient, exact-cochain, tree-gauge,
+   boundary-chain, and rank-one spectral-nullity lemmas as diagnostics for
+   finite graph observables.
 
 **Stage 2 — finite-dimensional synthesis:** two-twistor/Plucker spinor-chart
 matching is now drafted; next package the null-step projector + Plucker mass
-theorems, state the chirality-flip universality conjecture precisely, and
-write an expository paper tying Lean results to checkerboard /
-Foster-Jacobson / causal-set literature.
+theorems with the bivector/BF wrapper, state the chirality-flip universality
+conjecture precisely, and write an expository paper tying Lean results to
+checkerboard / Foster-Jacobson / energetic-causal-set / Plebanski-BF
+literature.
 
 **Stage 3 — numerical/probabilistic pilots (oracle scripts):** isotropic flip-ensemble
 dispersion; effective-mass universality test; abelian diamond holonomy on random diamonds;
-graph observables vs expected curvature/flux.
+graph observables vs expected curvature/flux; QGT/Fubini-Study mass-spread and
+Berry-curvature diagnostics on the celestial `CP^1` direction space; approximate
+spectral/gauge/homology nullity signatures for coarse-graining pilots.
 
 **Stage 4 — long-horizon continuum:** causal-set Dirac propagator (Johnston route);
-diamond-holonomy continuum limit; higher-gauge 2-connection over diamonds; null-horizon
-Clausius derivation; decoherence-functional Bell/Tsirelson analysis.
+diamond-holonomy continuum limit; higher-gauge 2-connection over diamonds;
+Plebanski/Urbantke reality-condition analysis for the bivector wrapper;
+null-horizon Clausius derivation; decoherence-functional Bell/Tsirelson analysis.
 
 ## Falsification ledger
 

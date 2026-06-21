@@ -79,8 +79,8 @@ aristotle:
   target_file: PhysicsSM/Draft/CheckerboardKernelClosedFormsAristotle.lean
   expected_module: PhysicsSM.Draft.CheckerboardKernelClosedFormsAristotle
   submission_mode: continue
-  status: submitted
-  last_checked: QUEUED
+  status: integrated
+  last_checked: COMPLETE
 ```
 
 ## Submission notes
@@ -101,3 +101,34 @@ PhysicsSM/Draft/CheckerboardCornerClosedFormsAristotle.lean
 PhysicsSM/Draft/CheckerboardKernelClosedFormsAristotle.lean
 AgentTasks/checkerboard-kernel-closed-forms-aristotle-2026-06-21.md
 ```
+
+## Result and integration
+
+Aristotle completed the continuation task and proved all four endpoint-kernel
+closed forms:
+
+- `pathSum_right_right_closed_form`
+- `pathSum_right_left_closed_form`
+- `pathSum_right_right_straight`
+- `pathSum_right_left_straight_zero`
+
+The result adds reindexing and boundary-count helper lemmas in the same draft
+file. The claim boundary remains finite combinatorics only: no continuum
+limit, no Bessel-function asymptotics, and no equality with the analytic Dirac
+propagator.
+
+Integrated locally from the fresh project archive:
+
+```text
+AgentTasks/aristotle-output/6fe6a877-4ad1-4b70-91f0-ace14eb90a13/checkerboard-62a3c14d-project-files.tar.gz
+```
+
+Verification run locally:
+
+```text
+lake env lean PhysicsSM/Draft/CheckerboardKernelClosedFormsAristotle.lean
+lake build PhysicsSM.Draft.CheckerboardKernelClosedFormsAristotle
+```
+
+The touched target file has no proof-command placeholders or forbidden
+constructs.

@@ -1,14 +1,23 @@
 # AGENTS.md
 
-This repository is a Lean 4 formalization project for mathematical structures used in Standard Model physics, octonions and division algebras, exceptional Lie theory including E8, spinors, Clifford algebras, supersymmetry, and related representation-theoretic physics.
+Lean 4 formalization project for mathematical structures in Standard Model
+physics: octonions and division algebras, exceptional Lie theory including E8,
+spinors, Clifford algebras, supersymmetry, and related representation-theoretic
+physics.
 
-These instructions are for AI coding agents including Codex, Claude Code, Gemini Code Assist, Aristotle, and similar tools.
+These instructions are for AI coding agents (Codex, Claude Code, Gemini Code
+Assist, Aristotle, and similar). They are the always-on rules; infrequent
+operational detail lives in linked docs:
+
+- Build, toolchain pin, Windows fix, verification commands:
+  [`docs/BUILD.md`](docs/BUILD.md)
+- Aristotle submission/integration mechanics: [`docs/ARISTOTLE.md`](docs/ARISTOTLE.md)
+- Research/MCP tooling (literature search, Zotero, Neo4j, local LLM):
+  [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md)
 
 ## Prime directive
 
-The Lean kernel is the source of truth.
-
-A result is trusted only when:
+The Lean kernel is the source of truth. A result is trusted only when:
 
 1. the intended mathematical statement is represented correctly in Lean,
 2. the proof is accepted by the Lean kernel,
@@ -16,89 +25,59 @@ A result is trusted only when:
 4. source provenance is recorded when relevant,
 5. convention choices are documented.
 
-Do not optimize for producing large volumes of code. Optimize for small, thoroughly-commented, reviewable, kernel-checked formalizations with clear provenance.
-
-When writing code, always focus on legibility. Use verbose comments and descriptive names. Make code discoverable by adding it to the knowledge graph or index documents, and add comments pointing related pieces of code to each other.
+Optimize for small, thoroughly-commented, reviewable, kernel-checked
+formalizations with clear provenance, not for volume of code. Always favor
+legibility: verbose comments, descriptive names, cross-references between related
+pieces, and discoverability via the knowledge graph or index documents.
 
 ## Repository organization
 
-Follow the actual repository layout, but preserve these conceptual layers:
-
-- trusted Lean code,
-- draft or experimental Lean code,
-- source metadata,
-- external oracle scripts,
-- generated indexes,
-- agent task records.
-
-Expected areas may include:
+Preserve these conceptual layers: trusted Lean code, draft/experimental Lean
+code, source metadata, external oracle scripts, generated indexes, agent task
+records.
 
 ```text
 PhysicsSM/
-  Algebra/
-  Clifford/
-  Spinor/
-  Lie/
-  Gauge/
-  StandardModel/
-  Supersymmetry/
-  Oracle/
-  Draft/
-Sources/
-Scripts/
-AgentTasks/
-Index/
-````
+  Algebra/ Clifford/ Spinor/ Lie/ Gauge/ StandardModel/ Supersymmetry/ Oracle/ Draft/
+Sources/  Scripts/  AgentTasks/  Index/
+```
 
 ## Trusted vs draft code
 
-Trusted code should compile without `sorry`, `admit`, fake axioms, or hidden assumptions.
-
-Draft code may contain `sorry` when it is clearly marked as draft work, blocked work, or an intentional handoff to another agent.
-
-Use this policy:
-
-* Trusted theorem files should not contain `sorry`.
-* Draft files may contain `sorry` if accompanied by a useful proof plan or failure note.
-* It is acceptable to stop after inserting a `sorry` when you get stuck - do not churn if you are not making progress.
-* A `sorry` should be treated as a handoff marker, not as success.
-* Never move a theorem from draft to trusted status until all `sorry`s are eliminated and the statement has been reviewed for semantic alignment.
+- Trusted theorem files must compile without `sorry`, `admit`, fake axioms, or
+  hidden assumptions.
+- Draft files may contain `sorry` if accompanied by a useful proof plan or
+  failure note. A `sorry` is a handoff marker, not success.
+- It is acceptable to stop after inserting a documented `sorry` when stuck - do
+  not churn if you are not making progress.
+- Never move a theorem from draft to trusted until all `sorry`s are eliminated
+  and the statement has been reviewed for semantic alignment.
 
 Good handoff comment:
 
 ```lean
 /-
 Proof handoff:
-Current goal: ...
-Tried: ...
-Likely missing lemma: ...
-Potential issue with statement: ...
+Current goal: ...   Tried: ...
+Likely missing lemma: ...   Potential issue with statement: ...
 -/
 ```
 
 ## Forbidden in trusted code
 
-Do not introduce any of the following in trusted code:
+Never introduce `axiom`, `opaque`, `unsafe def`, `admit`, or `sorry` in trusted
+code. Do not add opaque placeholders, fake definitions, or new assumptions merely
+to make a proof pass.
 
-```lean
-axiom
-opaque
-unsafe def
-admit
-sorry
-```
+Do not weaken theorem statements to make proofs easier unless explicitly asked
+and the change is documented. Do not silently change definitions, signs, indices,
+scalar fields, parenthesization, basis order, normalization, or convention
+choices to ease downstream proofs.
 
-Do not add opaque placeholders, fake definitions, or new assumptions merely to make a proof pass.
-
-Do not weaken theorem statements merely to make proofs easier unless explicitly asked and the change is documented.
-
-Do not silently change definitions, signs, indices, scalar fields, parenthesization, basis order, normalization, or convention choices to make downstream proofs easier.
-
-If a theorem appears false, underspecified, or convention-mismatched, stop and report the issue.
+If a theorem appears false, underspecified, or convention-mismatched, stop and
+report the issue.
 
 ## Lean workflow
-
-For each task:
 
 1. Read the issue, task file, nearby Lean files, and relevant source notes.
 2. Search existing mathlib and project declarations before creating new ones.
@@ -106,554 +85,221 @@ For each task:
 4. Add or modify definitions only when necessary.
 5. State the theorem precisely.
 6. Prove it, or leave a documented `sorry` in draft/handoff context.
-7. Run the smallest relevant Lean check.
-8. Run a broader build before claiming completion.
-9. Update provenance, metadata, and task notes when relevant.
-10. Summarize what changed, what was proved, what remains draft, and what commands were run.
+7. Run the smallest relevant Lean check, then a broader build before claiming
+   completion (see [`docs/BUILD.md`](docs/BUILD.md)).
+8. Update provenance, metadata, and task notes when relevant.
+9. Summarize what changed, what was proved, what remains draft, and what
+   commands were run.
 
 Do not mix unrelated refactors with a narrow proof task.
 
-## Toolchain freeze
+## Build and verification (summary)
 
-The project is pinned to `leanprover/lean4:v4.28.0` (`lean-toolchain`) for
-compatibility with:
-- **Aristotle** (Harmonic proof agent) which targets v4.28.0
-- **math-inc/Sphere-Packing-Lean** (E8 lattice + sphere packing formalization)
-
-**Do not upgrade the toolchain** unless all three of the following build cleanly
-under the target version: (1) mathlib, (2) SpherePacking, (3) Aristotle workflow.
-
-**Windows — ProofWidgets fix (one-time per cache wipe)**:
-Mathlib injects an `errorOnBuild` flag into ProofWidgets that blocks `lake build`
-on Windows. The fix is to build the widget JS from *inside* the ProofWidgets
-package directory (where it is the root package and `errorOnBuild` is not set):
+Use targeted checks first, then a full build before claiming a trusted change
+complete:
 
 ```bash
-cd .lake/packages/proofwidgets && lake build widgetJsAll
+lake env lean PhysicsSM/Path/To/File.lean   # no ProofWidgets dependency
+lake build PhysicsSM.Path.To.Module          # targeted
+lake build                                   # full
 ```
 
-After this one-time step, `lake build <module>` works normally on Windows.
-Re-run this command after `lake clean` or after a full `lake exe cache get!`
-wipes the build directory. `lake env lean <file>` still works without this fix.
-
-## Build and verification
-
-Use targeted checks first:
-
-```bash
-# Works on Windows after the one-time widgetJsAll fix above:
-lake build PhysicsSM.Path.To.Module
-
-# Also works on Windows without any fix (no ProofWidgets dependency):
-lake env lean PhysicsSM/Path/To/File.lean
-
-# Also works on Linux/macOS:
-lake build PhysicsSM.Path.To.Module
-```
-
-Before claiming a trusted change is complete, run:
-
-```bash
-lake build
-```
-
-If configured, also run:
-
-```bash
-lake exe index
-lake exe oracle-check
-lake build PhysicsSM:docs
-```
-
-If there is a no-sorry checker, run it before finalizing trusted work. If not, inspect suspicious tokens manually or with grep:
-
-```bash
-grep -R "sorry\|admit\|axiom\|unsafe" PhysicsSM
-```
-
-A grep hit is not automatically a failure in comments, generated files, or draft files, but it must be inspected.
-
-Do not claim a command passed unless it was actually run.
+The toolchain is frozen at `leanprover/lean4:v4.28.0` - do not upgrade. The
+one-time Windows ProofWidgets fix, the extra index/oracle/docs commands, and the
+no-sorry scan are in [`docs/BUILD.md`](docs/BUILD.md). Do not claim a command
+passed unless it was actually run.
 
 ## Lean style
 
-Prefer mathlib style and mathlib names.
+Prefer mathlib style and names. Search before defining new abstractions,
+especially under `Mathlib.Algebra.*`, `Mathlib.LinearAlgebra.*` (incl.
+`CliffordAlgebra.*`, `RootSystem.*`), `Mathlib.Algebra.Lie.*`, and
+`Mathlib.RepresentationTheory.*`.
 
-Search before defining new abstractions, especially in:
+- Use explicit namespaces (`PhysicsSM`, `PhysicsSM.Algebra.Octonion`,
+  `PhysicsSM.Lie.Exceptional`).
+- Public definitions and theorems should usually have docstrings.
+- Prefer small named lemmas over large fragile proofs; readable tactic proofs
+  over brittle golf; descriptive names.
 
-```text
-Mathlib.Algebra.*
-Mathlib.LinearAlgebra.*
-Mathlib.LinearAlgebra.CliffordAlgebra.*
-Mathlib.LinearAlgebra.RootSystem.*
-Mathlib.Algebra.Lie.*
-Mathlib.RepresentationTheory.*
-```
+Good: `Octonion.normSq_mul`, `RootSystem.E8.root_card`,
+`StandardModel.hypercharge_left_quark`. Bad: `theorem1`, `mainLemma`, `foo_aux`,
+`final_result`.
 
-Guidelines:
+## Octonions and nonassociative algebra
 
-* Use explicit namespaces such as `PhysicsSM`, `PhysicsSM.Algebra.Octonion`, or `PhysicsSM.Lie.Exceptional`.
-* Public definitions and theorems should usually have docstrings.
-* Prefer small named lemmas over large fragile proofs.
-* Prefer readable tactic proofs over brittle proof golf.
-* Use descriptive names.
+Octonions are not associative. Be extremely careful with parenthesization,
+rewriting under multiplication, power notation, scalar actions, ring/algebra
+typeclasses, associativity-assuming simp lemmas, and formulas copied from papers
+that omit parentheses. Make parenthesization explicit in theorem statements. Do
+not use associative-algebra abstractions for octonions unless the relevant
+associative property actually holds for the substructure in use.
 
-Good names:
-
-```lean
-Octonion.conj_conj
-Octonion.normSq_mul
-RootSystem.E8.root_card
-StandardModel.hypercharge_left_quark
-```
-
-Bad names:
-
-```lean
-theorem1
-mainLemma
-foo_aux
-final_result
-```
-
-## Octonion and nonassociative algebra rules
-
-Octonions are not associative.
-
-Be extremely careful with:
-
-* parenthesization,
-* rewriting under multiplication,
-* power notation,
-* scalar actions,
-* ring and algebra typeclasses,
-* simp lemmas that assume associativity,
-* formulas copied from papers that omit parentheses.
-
-When formalizing octonionic identities, make parenthesization explicit in the theorem statement.
-
-Do not use associative algebra abstractions for octonions unless the relevant associative property is actually available for the substructure being used.
-
-### Project octonion convention
-
-This project uses the **XOR binary-label convention**:
+### Project octonion convention (XOR binary-label)
 
 - Bases: `e000` (unit), `e001`, `e010`, `e011`, `e100`, `e101`, `e110`, `e111`.
 - Product index: bitwise XOR of the two input labels.
 - Sign: from the Fano orientation in `PhysicsSM.Algebra.Octonion.Basic`.
-- Anchor products: `e011 * e111 = e100`, `e101 * e111 = e010`, `e110 * e111 = e001`.
+- Anchor products: `e011 * e111 = e100`, `e101 * e111 = e010`,
+  `e110 * e111 = e001`.
 
-This is **not** Baez (2002) or Furey (2015) verbatim. Any formula taken from
-those sources requires an explicit basis relabeling **and** sign correction via
+This is NOT Baez (2002) or Furey (2015) verbatim. Any formula from those sources
+needs explicit basis relabeling AND sign correction via
 `PhysicsSM.Algebra.Octonion.ConventionBridge`. Do not copy Baez/Furey product
 formulas, structure constants, or ladder operators without going through that
-module. Mixing conventions silently corrupts signs.
+module - mixing conventions silently corrupts signs. Full table and validator:
+`Scripts/oracle/validate_octonion.py`.
 
-The full multiplication table and validator are in `Scripts/oracle/validate_octonion.py`.
+## Physics conventions
 
-## Physics convention rules
-
-Physics notation is convention-heavy. Always document conventions for:
-
-* metric signature,
-* gamma matrix signs,
-* chirality and handedness,
-* Fano plane orientation,
-* octonion basis order,
-* root normalization,
-* Cartan matrix ordering,
-* hypercharge normalization,
-* electric charge convention,
-* representation duals and conjugates,
-* particle/antiparticle naming.
-
-If sources use different conventions, do not silently merge them. Use separate namespaces or explicit conversion lemmas.
+Physics notation is convention-heavy. Always document: metric signature, gamma
+matrix signs, chirality/handedness, Fano plane orientation, octonion basis order,
+root normalization, Cartan matrix ordering, hypercharge normalization, electric
+charge convention, representation duals/conjugates, and particle/antiparticle
+naming. If sources differ, do not silently merge - use separate namespaces or
+explicit conversion lemmas.
 
 ## Provenance
 
-Every nontrivial declaration inspired by a paper, book, repository, or CAS output should have provenance.
-
-For major definitions and theorems, include source and convention notes in a docstring or metadata file.
-
-Example:
-
-```lean
-/--
-The squared norm on octonions.
-
-Source: Baez, "The Octonions", Bull. Amer. Math. Soc. 2002.
-Convention: basis order follows `PhysicsSM.Algebra.Octonion.Basis`.
-Provenance: clean-room formalization from literature, not copied from external code.
--/
-def normSq (x : Octonion) : ℝ := ...
-```
-
-Do not claim a source supports a theorem unless the statement and conventions have been checked.
+Every nontrivial declaration inspired by a paper, book, repository, or CAS output
+should record provenance (source + convention) in a docstring or metadata file.
+Do not claim a source supports a theorem unless the statement and conventions
+have been checked. Example: a `normSq` docstring citing Baez 2002, naming the
+basis-order convention, and noting "clean-room formalization from literature, not
+copied from external code."
 
 ## External code and licensing
 
-Use external repositories carefully.
-
 Permissive code may be consulted subject to attribution and license rules.
-
-GPL, LGPL, AGPL, or unclear-license code must not be copied into trusted Lean source. Such code may be used only as:
-
-* an external reference,
-* an oracle for generated test fixtures,
-* a comparison target,
-* a source of ideas that are then clean-room formalized from mathematical definitions or papers.
-
-Translate mathematics, not implementation text.
+GPL/LGPL/AGPL or unclear-license code must NOT be copied into trusted Lean
+source; use it only as an external reference, an oracle for generated test
+fixtures, a comparison target, or a source of ideas then clean-room formalized
+from mathematical definitions or papers. Translate mathematics, not
+implementation text.
 
 ## CAS and oracle policy
 
-CAS outputs are useful but not trusted proofs.
+CAS outputs are useful but not trusted proofs. A CAS fixture can justify adding a
+test (root counts, Cartan matrices, branching rules, tensor decompositions, gamma
+identities, representation dimensions, charge assignments, RGE coefficients); it
+cannot justify adding an unproved theorem to trusted Lean. When adding a fixture,
+record tool name, version/commit, generation command, input conventions, output
+format, license status, and whether CI checks it.
 
-Oracle fixtures may help check:
+## Aristotle policy summary
 
-* root counts,
-* Cartan matrices,
-* branching rules,
-* tensor product decompositions,
-* gamma matrix identities,
-* representation dimensions,
-* charge assignments,
-* RGE coefficients.
+Use Aristotle liberally - it is the preferred proof-specialist agent for this
+repo. General coding agents should not churn on hard Lean proofs when Aristotle
+is available; their job is to prepare a clean, typechecking theorem statement,
+isolate context, call Aristotle, and review the result for semantic alignment,
+convention drift, and hidden assumptions.
 
-A CAS fixture can justify adding a test. It cannot justify adding an unproved theorem to trusted Lean code.
+Call Aristotle early for nontrivial proofs, stalled attempts, heavy mathlib
+search, clustered `sorry`s, unclear intermediate lemmas, possible
+counterexamples, or paper-proof formalization. Do not weaken a statement just to
+make progress - hand it to Aristotle instead.
 
-When adding an oracle fixture, record:
+Full mechanics (submission helper, task-note metadata block, integration helper,
+post-integration checklist, preferred loop) are in
+[`docs/ARISTOTLE.md`](docs/ARISTOTLE.md). The Lean kernel checks the proof, not
+that the statement is the intended one - semantic alignment is the reviewing
+agent's responsibility.
 
-* tool name,
-* tool version or commit,
-* generation command/script,
-* input conventions,
-* output format,
-* license status,
-* whether CI checks it.
+## Research tooling (MCP)
 
-## Aristotle proof agent policy
+Literature search, Zotero, the Neo4j knowledge graph, and a local LLM are wired
+as MCP servers; see [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md) for the
+servers, tools, and the search -> triage -> Zotero -> Neo4j workflow. These are
+research/developer tooling, not part of the Lean build.
 
-Use Aristotle liberally for challenging Lean proofs.
-
-Aristotle is the preferred proof-specialist agent for this repository. General coding agents should not spend large amounts of time churning on difficult Lean proofs when Aristotle is available. Their job is usually to prepare a clean theorem statement, isolate the relevant context, call Aristotle, and then review the result.
-
-### When to use Aristotle
-
-Call Aristotle early when:
-
-- a theorem statement typechecks but the proof is nontrivial,
-- a proof attempt has stalled after a few focused tries,
-- the proof requires substantial mathlib search or tactic synthesis,
-- there are multiple related `sorry`s in a file,
-- a theorem looks true but the needed intermediate lemmas are unclear,
-- a conjecture may be false and a counterexample would be useful,
-- a paper proof or LaTeX argument needs to be formalized,
-- a general coding agent is tempted to weaken the theorem just to make progress.
-
-Do not treat Aristotle as a last resort. For hard proofs, use it as a primary proof engine.
-
-### Good Aristotle inputs
-
-Before calling Aristotle, prepare the problem so the proof search has the best chance of success.
-
-Prefer to provide:
-
-- a minimal Lean file or focused code snippet,
-- all necessary imports,
-- the exact theorem statement,
-- nearby definitions and lemmas,
-- relevant namespace context,
-- any known convention choices,
-- an informal proof sketch if available,
-- known failed attempts or current Lean error messages,
-- permission to add small helper lemmas if needed.
-
-The theorem statement should already be as semantically correct as possible. Do not ask Aristotle to prove a statement that is probably malformed, convention-mismatched, or mathematically false unless the purpose is counterexample search.
-
-### Aristotle submission tips
-
-Recent submission lessons:
-
-- Prefer `Scripts/prepare_aristotle_submission.ps1` to create a clean submission copy under `AgentTasks/aristotle-submit/`. The CLI archives the project directory, so stale `AgentTasks/aristotle-output/` extracts, `.lake`, old external checkouts, or generated state can break packaging.
-- For Sphere-Packing-Lean enabled jobs, use a separate Linux/SPL-enabled submission copy and refresh only the relevant files from the live tree. Do not enable upstream Sphere-Packing-Lean in the native Windows checkout.
-- Submit large waves one project at a time, or verify with `aristotle list` after a timeout. A timeout can happen after a project was created, so do not blindly resubmit.
-- Record project IDs, optional task IDs, output directories, target files, expected modules, and submission-project paths immediately in the task file.
-- Transient upload or SSL errors can happen. Check `aristotle list` before retrying so duplicate jobs are not created.
-
-Preferred task-note metadata block:
-
-```yaml
-aristotle:
-  project_id: 00000000-0000-0000-0000-000000000000
-  task_id: 00000000-0000-0000-0000-000000000000
-  target_file: PhysicsSM/Draft/ExampleAristotle.lean
-  expected_module: PhysicsSM.Draft.ExampleAristotle
-  submission_project: AgentTasks/aristotle-submit/example-20260612-project
-  output_dir: AgentTasks/aristotle-output/00000000-0000-0000-0000-000000000000
-  status: submitted
-```
-
-Use the project ID as the canonical output directory name. Friendly names are fine
-in prose, but do not make them the only locator; they are easy to mismatch when
-several projects complete at once.
-
-### Aristotle result integration
-
-Separate fetching from integration. First fetch and inspect the result, then
-copy proofs into the live tree only after review.
-
-Use the conservative helper:
-
-```powershell
-python Scripts/aristotle/integrate_completed.py `
-  --task-note AgentTasks/example-aristotle-2026-06-12.md `
-  00000000-0000-0000-0000-000000000000
-```
-
-The default mode is a dry run. It stores results under
-`AgentTasks/aristotle-output/<project-id>/`, extracts archives with path traversal
-checks, reports candidate `*Aristotle.lean` files, and scans for
-`sorry`, `admit`, `axiom`, `opaque`, `unsafe`, and `native_decide`.
-
-When the report matches the task note and the candidate files are clean, copy
-and build with:
-
-```powershell
-python Scripts/aristotle/integrate_completed.py `
-  --task-note AgentTasks/example-aristotle-2026-06-12.md `
-  --apply --build `
-  00000000-0000-0000-0000-000000000000
-```
-
-For batches, use:
-
-```powershell
-python Scripts/aristotle/integrate_completed.py --from-list
-```
-
-With Aristotle API v3, `aristotle list` reports project states such as `IDLE`
-and `RUNNING`; an `IDLE` project still requires review. Read the summary,
-inspect the generated files, run the targeted build, and record why it was or
-was not integrated.
-
-After integration:
-
-- Update the task note from `submitted` or `complete` to `integrated`.
-- Record the exact project ID, selected extraction, copied files, and verification commands.
-- Run a placeholder scan on the integrated files.
-- Run targeted `lake build <module>` for each integrated module.
-- Run `lake build` before claiming trusted work complete.
-- Run `pre-commit run --all-files` before handing back.
-
-### Preferred workflow
-
-For a hard proof:
-
-1. Make the theorem statement typecheck.
-2. Replace the missing proof with `sorry` only in an appropriate draft or handoff context.
-3. Add a short handoff note if useful.
-4. Run a targeted Lean check to confirm the only intended blocker is the proof.
-5. Call Aristotle on the focused theorem, snippet, or file.
-6. If Aristotle succeeds, insert the proof and run the targeted Lean check again.
-7. Run a broader build before claiming completion.
-8. Review the result for semantic alignment, convention drift, hidden assumptions, and proof hygiene.
-
-Example handoff note:
-
-```lean
-/-
-Aristotle handoff:
-Goal: prove multiplicativity of the project octonion squared norm.
-Statement should not be weakened.
-Conventions: basis order follows `PhysicsSM.Algebra.Octonion.Basis`; multiplication is explicitly parenthesized.
-Useful lemmas: `conj_mul`, `mul_conj`, `normSq_def`.
-Failed attempts: direct `simp` unfolds too aggressively; likely needs alternativity or component expansion.
--/
-````
-
-The Lean kernel verifies correctness of the formal proof, but it does not verify that the formal statement is the intended mathematical statement. Semantic alignment remains the responsibility of the reviewing agent.
-
-### Agent division of labor
-
-General coding agents should:
-
-* prepare clean theorem statements,
-* search mathlib and project APIs,
-* break large proofs into focused lemmas,
-* call Aristotle on difficult proof obligations,
-* post-process Aristotle output,
-* run verification,
-* document remaining gaps.
-
-Aristotle should be used for:
-
-* filling focused proof holes,
-* proving helper lemmas,
-* repairing difficult tactic scripts,
-* formalizing informal mathematical arguments,
-* testing whether a statement is likely false.
-
-For challenging proofs, prefer the loop:
-
-```text
-Codex/Claude/Gemini prepares definitions and theorem statements
-→ Aristotle proves or refutes focused goals
-→ Codex/Claude/Gemini cleans, organizes, verifies, and documents
-→ Aristotle is called again on remaining proof holes
-```
-
-Do not let a general-purpose agent burn excessive tokens on proof search when Aristotle is available.
+When adding papers, avoid duplicates: use the canonical `paper_key` = bare Zotero
+item key (no `zotero:` prefix), normalize `arxiv_id`/`doi`, and run the low-cost
+pre-add existence check (keyed on arxiv_id/doi, not title) documented in
+[`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md).
 
 ## Translation workflow
 
-When translating from a paper or external codebase:
-
-1. Extract the informal definition or theorem.
-2. Record source, notation, assumptions, and conventions.
-3. Map the content to existing Lean/mathlib concepts.
-4. State the Lean theorem before attempting a proof.
-5. Prove it, or isolate the blocker with a documented `sorry`.
-6. Review semantic alignment with the source.
-
-Check:
-
-* Are the hypotheses the same?
-* Is the scalar field the same?
-* Are quotient structures represented correctly?
-* Are signs and normalizations the same?
-* Is the theorem about groups, Lie algebras, representations, or concrete matrices?
-* Are implicit physics assumptions explicit?
+When translating from a paper or external codebase: extract the informal
+definition/theorem; record source, notation, assumptions, conventions; map to
+existing Lean/mathlib concepts; state the Lean theorem before proving; prove it
+or isolate the blocker with a documented `sorry`; review semantic alignment.
+Check: same hypotheses? same scalar field? quotient structures represented
+correctly? same signs/normalizations? groups vs Lie algebras vs representations
+vs concrete matrices? implicit physics assumptions made explicit?
 
 ## Documentation
 
-Important modules should start with a module docstring explaining:
-
-* what the module defines,
-* what source it follows,
-* what conventions it uses,
-* what is trusted vs draft,
-* prerequisite and successor modules.
-
-Example:
-
-```lean
-/-!
-# Octonion norm
-
-This module defines conjugation and the squared norm for the project octonion model.
-It follows the basis and multiplication conventions in
-`PhysicsSM.Algebra.Octonion.Basic`.
-
-Main declarations:
-- `Octonion.conj`
-- `Octonion.normSq`
-- `Octonion.conj_conj`
-- `Octonion.normSq_mul`
-
-Theorems in this module are intended to be trusted and should not contain `sorry`.
--/
-```
+Important modules start with a docstring explaining what the module defines, what
+source it follows, what conventions it uses, what is trusted vs draft, and its
+prerequisite/successor modules.
 
 ## Failure protocol
 
-A useful failed task is better than a misleading successful-looking patch.
-
-If a task cannot be completed, record:
-
-* exact theorem or definition attempted,
-* current Lean error,
-* what was tried,
-* suspected missing lemmas,
-* whether the problem is syntax, imports, theorem statement, missing API, convention mismatch, or mathematical falsehood,
-* recommended next step.
-
-If proof search is churning, stop, add a documented `sorry` only in an appropriate draft/handoff context, and return the task for another agent.
+A useful failed task beats a misleading successful-looking patch. If a task
+cannot be completed, record: the exact theorem/definition attempted, the current
+Lean error, what was tried, suspected missing lemmas, whether the problem is
+syntax / imports / statement / missing-API / convention-mismatch /
+mathematical-falsehood, and the recommended next step. If proof search is
+churning, stop and add a documented `sorry` in a draft/handoff context.
 
 ## Red flags
 
-Stop and request review if you encounter:
+Stop and request review if you encounter: need for a new axiom; a theorem
+depending on unstated analytic assumptions; ambiguity between group and Lie
+algebra representations; convention mismatch between sources; copyleft code that
+seems necessary to copy; a proof that works only after weakening the statement;
+hidden associativity assumptions for octonions; a result based only on
+floating-point evidence; Standard Model normalization ambiguity; an E8 branching
+rule without source or oracle confirmation.
 
-* need for a new axiom,
-* theorem depending on unstated analytic assumptions,
-* ambiguity between group and Lie algebra representations,
-* convention mismatch between sources,
-* GPL/LGPL/AGPL code that seems necessary to copy,
-* proof that works only after weakening the statement,
-* hidden associativity assumptions for octonions,
-* result based only on floating-point evidence,
-* Standard Model normalization ambiguity,
-* E8 branching rule without source or oracle confirmation.
-
-## Final response format for agents
+## Final response format
 
 When finishing a task, report:
 
 ```text
 Summary:
 - ...
-
 Files changed:
 - ...
-
 Verification:
 - `lake env lean ...`
 - `lake build`
-
 Provenance:
 - ...
-
 Remaining issues:
 - ...
 ```
 
-If there are `sorry`s, report them explicitly and say whether they are in trusted code or draft/handoff code.
+Report any `sorry`s explicitly and say whether they are in trusted or
+draft/handoff code.
 
 ## Project philosophy
 
-This project is allowed to be ambitious.
+This project is allowed to be ambitious. A small theorem with exact provenance
+and a kernel-checked proof is progress; a large speculative formalization with
+unclear conventions is technical debt. When in doubt, formalize the algebra
+first, document the convention, and keep the physics interpretation in a separate
+layer until the formal foundation is stable.
 
-A small theorem with exact provenance and a kernel-checked proof is progress.
-A large speculative formalization with unclear conventions is technical debt.
+## Text encoding and formatting
 
-When in doubt, formalize the algebra first, document the convention, and keep the physics interpretation in a separate layer until the formal foundation is stable.
+Preserve repo text hygiene:
 
-## Text encoding and formatting rules
+- UTF-8 without BOM, LF line endings, exactly one final newline, no trailing
+  whitespace (except Markdown's two-space line break).
+- ASCII-only in code, config, scripts, and filenames unless Unicode is
+  semantically required (no smart quotes, nonbreaking spaces, Unicode minus, en
+  or em dashes).
+- Do not reformat whole files unless asked: make the smallest semantic edit, then
+  run the checker; if it reports unrelated problems elsewhere, stop and report
+  them.
+- Do not edit binary/generated/lock files, `.olean`/`.ilean`, images, PDFs, or
+  archives unless asked.
+- Do not rewrite repo files with PowerShell 5 redirection or `Out-File` (UTF-16LE
+  default). Use explicit UTF-8: PowerShell 7+ `Set-Content -Encoding utf8NoBOM`,
+  or Python `open(path, "w", encoding="utf-8", newline="\n")`.
 
-All agents must preserve repo text hygiene. Formatting drift between agents is
-expensive to fix and can corrupt files silently.
-
-Required conventions:
-
-- Text files must be UTF-8 **without BOM**.
-- Text files must use **LF line endings**, not CRLF.
-- Text files must end with **exactly one final newline**.
-- No trailing whitespace except where Markdown explicitly needs it (two spaces
-  for a line break).
-- Code, config, scripts, and filenames should be **ASCII-only** unless Unicode
-  is semantically required. In particular, do not introduce smart quotes,
-  nonbreaking spaces, Unicode minus signs, en dashes, or em dashes into Lean
-  source, config, or shell scripts.
-- **Do not reformat whole files** unless explicitly asked. Make the smallest
-  semantic edit, then run the repo's checker. If the checker reports unrelated
-  formatting problems elsewhere, stop and report them instead of doing a broad
-  cleanup.
-- Do not edit binary files, generated files, lock files, `.olean`/`.ilean`
-  files, images, PDFs, or archives unless explicitly asked.
-- Do not use shell redirection (`>`, `>>`) or `Out-File` from Windows
-  PowerShell 5 to rewrite repo files — these produce UTF-16LE by default. Use
-  explicit UTF-8 writes:
-  - PowerShell 7+: `Set-Content -Encoding utf8NoBOM`
-  - Python: `open(path, "w", encoding="utf-8", newline="\n")`
-
-Before committing or handing back changes, run:
-
-```bash
-pre-commit run --all-files
-lake build
-```
-
-If pre-commit is not installed: `pipx install pre-commit && pre-commit install`.
-
-If formatting checks fail, fix only the files touched by the current task
-unless the user asks for repo-wide normalization.
+Before committing or handing back: run `pre-commit run --all-files` and
+`lake build`. If pre-commit is missing: `pipx install pre-commit && pre-commit
+install`. Fix only files touched by the current task unless repo-wide
+normalization was requested.

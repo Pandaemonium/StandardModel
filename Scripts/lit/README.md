@@ -1,0 +1,65 @@
+# Literature-search harness (Option 2, staging-only)
+
+`Scripts/lit_harness.py` runs the search -> triage pipeline described in
+[`../MCP_SERVERS.md`](../MCP_SERVERS.md) and
+[`../../Sources/Null_Edge_Causal_Graph_Research_Plan.md`](../../Sources/Null_Edge_Causal_Graph_Research_Plan.md).
+
+Python owns the control flow. The local LLM (Gemma via Ollama) is used only as a
+text function for two steps -- keyword generation and relevance triage. It does
+NOT execute searches or write to the corpus. The harness makes **no writes to
+Zotero or Neo4j** (Neo4j is read-only, for dedup); it only appends ranked
+proposals to a staging file for a human/strong-model approval pass.
+
+## Pipeline
+
+1. Gemma proposes plain keyword sets for the topic (no boolean operators).
+2. Each keyword is searched via the `scholarly` MCP server (deterministic).
+3. Results are round-robin merged (so narrow keywords are not starved by broad
+   ones) and deduped within the batch by normalized arxiv_id/doi/title.
+4. Candidates are deduped against the live Neo4j graph (read-only existence check
+   on arxiv_id/doi -- the convention in `../MCP_SERVERS.md`).
+5. Gemma triages the *new* candidates (INCLUDE / SKIP + reason).
+6. Proposals are appended to `staging.jsonl`. Nothing is committed.
+
+## Usage
+
+```bash
+# fast plumbing test (skip the slow Gemma steps):
+python Scripts/lit_harness.py --topic "two-twistor massive particle" \
+    --no-gemma-keywords --no-triage
+
+# full run on one topic:
+python Scripts/lit_harness.py --topic "Tsirelson bound from quantum measure theory"
+
+# overnight batch from a queue (one topic per line, # comments ok, or a JSON list):
+python Scripts/lit_harness.py --topics-file Scripts/lit/topics.txt
+```
+
+Useful flags: `--backend` (search-inspirehep | search-arxiv | search-openalex |
+search-papers), `--limit` (per keyword), `--keywords` (sets per topic),
+`--max-per-topic`, `--sleep` (politeness delay), `--model`, `--gemma-timeout`,
+`--no-dedup`, `--staging <path>`.
+
+Requires: `ollama serve` with the model pulled (default `gemma4:12b`), and the
+`scholarly` + `neo4j_graph` servers configured in `../../.mcp.json` with their
+env vars set (see `../MCP_SERVERS.md`).
+
+## Output schema (`staging.jsonl`, one JSON object per line)
+
+`topic, ts, title, year, arxiv_id, doi, url, backend, query, citation_count,
+in_library, decision (INCLUDE|SKIP|REVIEW), rank, reason, suggested_collection,
+suggested_tags, abstract`.
+
+`sample_staging.jsonl` is an example run (Pillar 9 topic). Real `staging*.jsonl`
+outputs are generated and git-ignored.
+
+## Known characteristics (from testing 2026-06-20)
+
+- Gemma triages with good recall but over-includes on lexical overlap (e.g. it
+  has tagged an ML "belief propagation / generalized probabilistic" paper as
+  relevant to GPT physics). This is why the harness is **propose-only**; a human
+  or strong model must approve before anything reaches Zotero/Neo4j.
+- gemma4:12b runs ~15 tok/s on CPU here, so a full topic (keyword gen + triage)
+  takes a few minutes. Suited to offline/overnight batch use, not interactive.
+- Approval/ingest is intentionally a separate, not-yet-built step. Keep
+  concept/claim graph edges human-curated; do not let the harness write them.

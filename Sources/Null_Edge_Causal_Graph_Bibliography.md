@@ -6,7 +6,7 @@ and the research plan [`Null_Edge_Causal_Graph_Research_Plan.md`](Null_Edge_Caus
 **Updated:** 2026-06-21.
 **Library:** Zotero collection "Null-Edge Causal Graph Program" (`9W59V3K9`) and the
 Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`).
-**Count:** 70 papers, tagged `null-edge-program` plus a per-cluster tag.
+**Count:** 79 papers, tagged `null-edge-program` plus a per-cluster tag.
 **Source:** INSPIRE-HEP and OpenAlex via the `scholarly` MCP server; see
 [`../Scripts/MCP_SERVERS.md`](../Scripts/MCP_SERVERS.md). Per-pillar context and the
 Lean targets each cluster feeds are in the research-plan companion.
@@ -86,11 +86,20 @@ Lean targets each cluster feeds are in the research-plan companion.
 
 ## F. Gauge curvature, holonomy & discrete gravity
 
+2026-06-21 Zotero/Neo4j additions for causal-diamond composition and
+higher-gauge surface holonomy: `AHK54SN9`, `K9XTAJUM`, `Z38RZX2Q`. The
+existing Wilson lattice-gauge item `QDII2KHM` was also linked in Neo4j to the
+diamond-composition concept.
+
+- (1974) Confinement of quarks — `doi:10.1103/PhysRevD.10.2445`
 - (2000) An Introduction to Spin Foam Models of $BF$ Theory and Quantum Gravity — `arXiv:gr-qc/9905087`
 - (2002) Higher Yang-Mills theory — `arXiv:hep-th/0206130`
 - (2003) Implementing causality in the spin foam quantum geometry — `arXiv:gr-qc/0210064`
+- (2007) Higher gauge theory — `doi:10.1090/conm/431/08264`
 - (2008) Bosonic Fields in Causal Set Theory — `arXiv:0807.4709`
+- (2008) Connections on non-abelian Gerbes and their Holonomy — `arXiv:0808.1923`
 - (2008) Gauge Fields in Causal Set Theory — `arXiv:0807.2066`
+- (2011) An invitation to higher gauge theory — `doi:10.1007/s10714-010-1070-9`
 - (2011) Phase space descriptions for simplicial 4d geometries — `arXiv:0807.2806`
 - (2015) Teleparallel Gravity as a Higher Gauge Theory — `arXiv:1204.4339`
 
@@ -102,3 +111,18 @@ Lean targets each cluster feeds are in the research-plan companion.
 ## H. Internal algebra (octonions / division algebras)
 
 - (2021) Trace dynamics and division algebras: towards quantum gravity and unification — `arXiv:2009.05574`
+
+## I. Observable-relative graph nullity diagnostics
+
+2026-06-21 Zotero/Neo4j additions for the observable-relative nullity support
+layer: `UFHN99H4`, `N7T76U5H`, `33X7ZETB`, `FNP9V3DT`, `GNEARI9Q`, and
+`S78BASEN`. These are tagged `observable-relative-nullity` and support the
+quotient, spectral, gauge, gain-graph, and homology-nullity targets in the
+research plan.
+
+- (2011) Graph Sparsification by Effective Resistances — `doi:10.1137/080734029`
+- (2015) Frustration index and Cheeger inequalities for discrete and continuous magnetic Laplacians — `doi:10.1007/s00526-015-0935-x`
+- (2020) Random Walks on Simplicial Complexes and the Normalized Hodge 1-Laplacian — `doi:10.1137/18M1201019`
+- (2021) Hodgelets: Localized Spectral Representations of Flows on Simplicial Complexes — `arXiv:2109.08728`
+- (2022) Matching number, Hamiltonian graphs and magnetic Laplacian matrices — `doi:10.1016/j.laa.2022.02.006`
+- (2022) Normalized Laplacians for gain graphs — `doi:10.63151/amjc.v1i.3`

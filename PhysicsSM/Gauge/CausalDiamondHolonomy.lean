@@ -17,6 +17,8 @@ This module proves two finite gauge facts:
    vertex gauge transformations.
 2. In a non-Abelian gauge group, the defect is covariant by conjugation at the
    top endpoint, so every class function of the defect is gauge invariant.
+3. Path-comparison defects compose under vertical and horizontal gluing of
+   causal diamonds, with the expected non-Abelian conjugation correction.
 
 These are finite group-theoretic statements only.  They do not assert a
 continuum Stokes theorem, a continuum field strength, or a higher-gauge
@@ -80,6 +82,117 @@ def rightHolonomy [Mul G] (U : DiamondLabels G) : G :=
 /-- The path-comparison defect across the diamond. -/
 def diamondDefect [Group G] (U : DiamondLabels G) : G :=
   (leftHolonomy U)⁻¹ * rightHolonomy U
+
+/-! ## Path-pair abstraction and diamond composition -/
+
+/--
+The two branch holonomies of any pair of directed paths with common endpoints.
+
+Unlike `DiamondLabels`, this structure does not remember the individual edges.
+It is the right finite abstraction for gluing diamonds into larger causal
+rectangles: after gluing, each branch may itself be a composite path.
+-/
+structure PathPair (G : Type*) where
+  left : G
+  right : G
+
+/-- The path-comparison defect of a pair of parallel branch holonomies. -/
+def pathPairDefect [Group G] (P : PathPair G) : G :=
+  P.left⁻¹ * P.right
+
+/-- Forget a four-edge diamond down to its two branch holonomies. -/
+def pathPairOfDiamond [Mul G] (U : DiamondLabels G) : PathPair G where
+  left := leftHolonomy U
+  right := rightHolonomy U
+
+/-- The path-pair defect of a four-edge diamond is its diamond defect. -/
+theorem pathPairDefect_pathPairOfDiamond [Group G] (U : DiamondLabels G) :
+    pathPairDefect (pathPairOfDiamond U) = diamondDefect U := rfl
+
+/--
+Vertical gluing of two path pairs: first traverse `P`, then traverse `Q`.
+
+This models stacked causal diamonds.  The two composite branches are the
+products of the corresponding branch holonomies.
+-/
+def verticalComposePathPair [Mul G] (P Q : PathPair G) : PathPair G where
+  left := P.left * Q.left
+  right := P.right * Q.right
+
+/--
+Non-Abelian vertical composition law for causal-diamond defects.
+
+For stacked diamonds, the lower defect must be transported through the left
+branch of the upper diamond before it multiplies the upper defect.
+-/
+theorem pathPairDefect_verticalCompose [Group G]
+    (P Q : PathPair G) :
+    pathPairDefect (verticalComposePathPair P Q) =
+      Q.left⁻¹ * pathPairDefect P * Q.left * pathPairDefect Q := by
+  simp [pathPairDefect, verticalComposePathPair, mul_assoc]
+
+/--
+In an Abelian gauge group, vertically glued causal-diamond defects multiply
+with no conjugation correction.
+-/
+theorem pathPairDefect_verticalCompose_comm [CommGroup G]
+    (P Q : PathPair G) :
+    pathPairDefect (verticalComposePathPair P Q) =
+      pathPairDefect P * pathPairDefect Q := by
+  rw [pathPairDefect_verticalCompose]
+  simp [mul_comm]
+
+/--
+Horizontal gluing of two path pairs, keeping the outside left branch of `P`
+and the outside right branch of `Q`.
+
+The theorem below supplies the compatibility hypothesis saying that the inner
+branches match.
+-/
+def horizontalComposePathPair [Mul G] (P Q : PathPair G) : PathPair G where
+  left := P.left
+  right := Q.right
+
+/--
+Horizontal composition law for compatible causal-diamond defects.
+
+If the right branch of the left diamond is the same path holonomy as the left
+branch of the right diamond, the shared branch cancels.
+-/
+theorem pathPairDefect_horizontalCompose [Group G]
+    (P Q : PathPair G) (h : P.right = Q.left) :
+    pathPairDefect (horizontalComposePathPair P Q) =
+      pathPairDefect P * pathPairDefect Q := by
+  simp [pathPairDefect, horizontalComposePathPair, h, mul_assoc]
+
+/-- A path-pair defect is trivial exactly when the two branch holonomies agree. -/
+theorem pathPairDefect_eq_one_iff [Group G] (P : PathPair G) :
+    pathPairDefect P = 1 ↔ P.left = P.right := by
+  constructor
+  · intro h
+    change P.left⁻¹ * P.right = 1 at h
+    exact inv_mul_eq_one.mp h
+  · intro h
+    change P.left⁻¹ * P.right = 1
+    exact inv_mul_eq_one.mpr h
+
+/-- Vertical composition with a flat lower pair leaves the upper defect. -/
+theorem pathPairDefect_verticalCompose_of_left_flat [Group G]
+    (P Q : PathPair G) (hP : pathPairDefect P = 1) :
+    pathPairDefect (verticalComposePathPair P Q) = pathPairDefect Q := by
+  rw [pathPairDefect_verticalCompose, hP]
+  simp
+
+/--
+Vertical composition with a flat upper pair conjugates the lower defect to the
+new top endpoint.
+-/
+theorem pathPairDefect_verticalCompose_of_right_flat [Group G]
+    (P Q : PathPair G) (hQ : pathPairDefect Q = 1) :
+    pathPairDefect (verticalComposePathPair P Q) =
+      Q.left⁻¹ * pathPairDefect P * Q.left := by
+  rw [pathPairDefect_verticalCompose, hQ]
+  simp [mul_assoc]
 
 /-- Vertex gauge transformation of edge transports. -/
 def gaugeTransformDiamond [Group G] (g : DiamondGauge G)

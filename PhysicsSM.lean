@@ -132,7 +132,10 @@ import PhysicsSM.Gauge.QunitQubitQutritQuotientRepresentation
 import PhysicsSM.Gauge.StandardModelGaugeRepresentationSynthesis
 import PhysicsSM.Gauge.GUTSquare
 import PhysicsSM.Gauge.CausalDiamondHolonomy
+import PhysicsSM.Gauge.CausalDiamondStack
+import PhysicsSM.Gauge.OrderComplexCochain
 import PhysicsSM.Spinor.PluckerMass
+import PhysicsSM.Spinor.TwistorPluckerMass
 import PhysicsSM.Spinor.Checkerboard
 import PhysicsSM.Spinor.CheckerboardDynamics
 import PhysicsSM.Spinor.OctonionicQubit
@@ -163,6 +166,7 @@ import PhysicsSM.Spinor.KrasnovQubitHermitian
 import PhysicsSM.Spinor.PureSpinor10
 import PhysicsSM.StandardModel.AnomalyPackage
 import PhysicsSM.StandardModel.OneGenerationTable
+import PhysicsSM.StandardModel.YukawaGauge
 import PhysicsSM.StandardModel.FamilyAnomalyNaturality
 import PhysicsSM.StandardModel.FamilyRelabeledCopies
 import PhysicsSM.StandardModel.FamilySymmetry

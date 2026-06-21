@@ -81,6 +81,9 @@ subdirectory, recording:
   post-spinor-geometry next-wave plan, including promotion criteria, dynamics
   targets, twistor/projective targets, diamond composition, cochains, and graph
   gravity observables.
+- `Null_Edge_Attachment_Extraction_2026-06-21.md` - triage of the attached
+  ChatGPT synthesis note, separating redundant material from useful theorem
+  targets, numerical pilots, and reference follow-ups.
   Trusted dynamics advance: `PhysicsSM.Spinor.CheckerboardDynamics` promotes
   the finite endpoint recursion, iterated two-component evolution, and
   telegraph/Klein-Gordon checkerboard recursion.
@@ -96,7 +99,13 @@ subdirectory, recording:
   `SZJE69PE`, and `J5GA3CQ8`.
   Trusted diamond-holonomy advance: `PhysicsSM.Gauge.CausalDiamondHolonomy`
   promotes finite Abelian gauge invariance, non-Abelian endpoint covariance,
-  and class-function gauge invariance for causal-diamond defects.
+  class-function gauge invariance, and vertical/horizontal composition laws
+  for glued causal-diamond path-pair defects. The related Zotero/Neo4j
+  source additions are `AHK54SN9`, `K9XTAJUM`, `Z38RZX2Q`; existing Wilson
+  lattice-gauge item `QDII2KHM` is linked in Neo4j.
+  Draft higher-gauge handoff: `PhysicsSM.Draft.CausalDiamondHigherGaugeAristotle`
+  queues endpoint transport, associativity, and interchange lemmas for
+  Aristotle project `0897a0dd-888e-451f-97e7-e24633cd2699`.
   Draft projective advance: `PhysicsSM.Draft.NullEdgeSpinorGeometryTargets`
   now includes independent spinor-column rescaling laws and normalized
   projective wedge-spread invariance.

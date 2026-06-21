@@ -1,0 +1,66 @@
+{
+  "status": "running",
+  "cycle": 4,
+  "max_cycles": 5,
+  "cycle_seconds": 3600,
+  "master_staging": "Scripts/lit/autoloop/staging.jsonl",
+  "validation_task": "bvydb7oub",
+  "cycle_start_utc": "2026-06-21T12:34:04.089151+00:00",
+  "notes": "8-cycle autonomous lit-search loop. Each wake: if a cycle's bg search has run ~1h, review staging since last cycle, course-correct harness code + next queue, launch next cycle, ScheduleWakeup 3600s. Stop after cycle 8. Harness is staging-only: no Zotero/Neo4j writes.",
+  "cycles": [
+    {
+      "cycle": 1,
+      "queue": "Scripts/lit/autoloop/cycle1_queue.jsonl",
+      "staging": "Scripts/lit/autoloop/staging.jsonl",
+      "started": "2026-06-21T07:39:31.185445+00:00",
+      "finished": "2026-06-21T09:17:49.727929+00:00",
+      "topics": 8,
+      "candidates": 80,
+      "duplicates": 7,
+      "staged": 71,
+      "include": 24,
+      "review": 23,
+      "skip": 24,
+      "recall_failures": 2,
+      "corrections": "shortened triage abstracts 300->200; skeptic JSON salvage; cycle2 --max-per-topic 8; new cycle2 sub-topics"
+    },
+    {
+      "cycle": 2,
+      "queue": "Scripts/lit/autoloop/cycle2_queue.jsonl",
+      "staging": "Scripts/lit/autoloop/staging.jsonl",
+      "started": "2026-06-21T09:18:51.435499+00:00",
+      "args": "--max-per-topic 8",
+      "finished": "2026-06-21T11:03:41.862259+00:00",
+      "topics": 8,
+      "candidates": 64,
+      "prev_staged": 10,
+      "duplicates": 7,
+      "staged": 47,
+      "recall_failures": 2,
+      "corrections": "recall JSON salvage with complete-flag (absent-on-salvage -> REVIEW, never silent SKIP)"
+    },
+    {
+      "cycle": 3,
+      "queue": "Scripts/lit/autoloop/cycle3_queue.jsonl",
+      "staging": "Scripts/lit/autoloop/staging.jsonl",
+      "started": "2026-06-21T11:03:41.862259+00:00",
+      "args": "--max-per-topic 8",
+      "finished": "2026-06-21T12:34:04.089151+00:00",
+      "topics": 8,
+      "candidates": 64,
+      "prev_staged": 9,
+      "duplicates": 5,
+      "staged": 50,
+      "recall_failures": 0,
+      "corrections": "recall-salvage fix eliminated parse failures; added skeptic exclude-hint (sharper FP guard)"
+    },
+    {
+      "cycle": 4,
+      "queue": "Scripts/lit/autoloop/cycle4_queue.jsonl",
+      "staging": "Scripts/lit/autoloop/staging.jsonl",
+      "started": "2026-06-21T12:34:04.089151+00:00",
+      "args": "--max-per-topic 8"
+    }
+  ],
+  "phase": "running"
+}

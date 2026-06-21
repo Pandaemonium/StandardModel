@@ -1,8 +1,9 @@
-# MCP servers (literature search, Zotero, knowledge graph, local LLM)
+# MCP servers (Lean tooling, literature search, Zotero, knowledge graph, local LLM)
 
-This project wires up four Model Context Protocol (MCP) servers in
+This project wires up six Model Context Protocol (MCP) servers in
 [`.mcp.json`](../.mcp.json) at the repo root. They give coding/research agents
-literature search, a Zotero writer, a Neo4j knowledge graph, and a local LLM.
+Lean language-server access and mathlib search, literature search, a Zotero
+writer, a Neo4j knowledge graph, and a local LLM.
 
 These are developer/research tooling, not part of the Lean build.
 
@@ -10,10 +11,56 @@ These are developer/research tooling, not part of the Lean build.
 
 | Name | Purpose | Command | Source |
 |---|---|---|---|
+| `lean-lsp` | Live Lean LSP on this repo: goal states, diagnostics, hover, completions, build, plus LeanSearch / Loogle / Lean Finder / Lean Hammer / Lean State Search | `uvx lean-lsp-mcp` | [lean-lsp-mcp](https://github.com/oOo0oOo/lean-lsp-mcp) (PyPI) |
+| `lean-explore` | Semantic search over Lean 4 declarations (Mathlib, **PhysLean**, Batteries, Init, Lean, Std, ...), offline local index | `uvx --from lean-explore[local] lean-explore mcp serve --backend local` | [lean-explore](https://github.com/justincasher/lean-explore) (PyPI) |
 | `scholarly` | Literature search across **Semantic Scholar, OpenAlex, arXiv, INSPIRE-HEP, Crossref, Europe PMC, Unpaywall** | `python .../scholarly_wrapper/src/server.py` | `C:/Projects/AutoLab/COGLab/infrastructure/mcp/scholarly_wrapper/src/server.py` |
 | `zotero_write` | Write items into the Zotero library (user `19894138`) | `python .../zotero-writer/src/server.py` | `C:/Tools/mcp/zotero-writer/src/server.py` |
 | `neo4j_graph` | Read/write a Neo4j knowledge graph | `cmd.exe /c .../neo4j_mcp/run.bat` | Go binary `neo4j-mcp.exe` |
 | `local-qwen` | Local generative LLM via Ollama (summarize / distill / notation-map) | `python Scripts/oracle/local_mcp_bridge.py` | [`oracle/local_mcp_bridge.py`](oracle/local_mcp_bridge.py) |
+
+### lean-lsp tools (added 2026-06-21)
+
+`lean-lsp` runs `lake serve` in the repo root (`LEAN_PROJECT_PATH` in
+`.mcp.json`) and exposes the Lean language server to agents. It directly serves
+the AGENTS.md workflow rule "search existing mathlib and project declarations
+before creating new ones," which previously had no tool.
+
+- **Project introspection:** `lean_goal` (proof state at a position - the most
+  important one), `lean_term_goal`, `lean_hover_info`, `lean_completions`,
+  `lean_file_outline`, `lean_diagnostic_messages`, `lean_code_actions`,
+  `lean_declaration_file`, `lean_references`, `lean_build`.
+- **Mathlib search:** `lean_local_search` (verify a name exists before using
+  it), `lean_leansearch` (natural language), `lean_loogle` (by type signature),
+  `lean_leanfinder` (semantic; `version` defaults to **v4.28.0**, matching the
+  project toolchain), plus a Lean Hammer / Lean State Search premise selector.
+
+Install is via `uvx` (already cached locally with `uv tool install
+lean-lsp-mcp`). First call cold-starts `lake serve`, so goal/diagnostic tools
+lag until the project is built; the external search tools work immediately.
+This complements Aristotle: the coding agent checks goal states and finds
+existing lemmas *before* preparing a handoff, rather than churning.
+
+### lean-explore tools (added 2026-06-21)
+
+`lean-explore` is a semantic declaration search engine over a downloaded
+offline index (`lean-explore data fetch`, one-time). Its indexed corpus
+includes **PhysLean**, which overlaps this project's physics formalization
+goals. The `[local]` extra pulls `torch` + `sentence-transformers` +
+`faiss-cpu`, so the first install is heavy; the running server is then fully
+offline and needs no API key. (A lightweight `--backend api` mode exists but
+requires a free `LEANEXPLORE_API_KEY` from leanexplore.com.)
+
+### Semantic Scholar API key (optional, free)
+
+`scholarly` reads `SEMANTIC_SCHOLAR_API_KEY` (referenced in `.mcp.json`) and
+runs unauthenticated when it is unset - which is the current state. A free key
+(request at https://www.semanticscholar.org/product/api) only raises rate
+limits on a backend already in use. Set it once at Windows User scope so every
+spawned process inherits it:
+
+```powershell
+[Environment]::SetEnvironmentVariable('SEMANTIC_SCHOLAR_API_KEY', '<key>', 'User')
+```
 
 ### scholarly tools
 `search-arxiv`, `search-inspirehep`, `search-google-scholar` (local rerank over
@@ -81,9 +128,12 @@ directly with the helper:
 ```bash
 # List a server's tools
 python Scripts/mcp/mcp_call.py scholarly --list
+python Scripts/mcp/mcp_call.py lean-lsp --list --timeout 150   # first call cold-starts lake serve
 
 # Call a tool (arguments as JSON)
 python Scripts/mcp/mcp_call.py scholarly search-arxiv --args '{"query":"Feynman checkerboard Dirac propagator","limit":10}'
+python Scripts/mcp/mcp_call.py lean-lsp lean_loogle --args '{"query":"CliffordAlgebra _ _ -> _"}'
+python Scripts/mcp/mcp_call.py lean-lsp lean_leansearch --args '{"query":"determinant of sum of rank one matrices"}'
 python Scripts/mcp/mcp_call.py neo4j_graph --list
 python Scripts/mcp/mcp_call.py zotero_write zotero_add_journal_article --args-file paper.json
 ```
@@ -97,3 +147,60 @@ Health check across all servers:
 ```bash
 claude mcp list
 ```
+
+## Literature-search workflow and dedup convention (2026-06-20)
+
+The null-edge causal-graph program (and similar literature work) uses this
+pipeline: `scholarly` search -> local LLM relevance triage (`local-qwen`, backed
+by `gemma4:12b`) -> `zotero_write` add -> `neo4j_graph` sync. Library: Zotero
+collection `9W59V3K9`, Neo4j `coglab` graph.
+
+A staging-only prototype of the search -> triage half of this pipeline lives in
+[`lit_harness.py`](lit_harness.py) (docs: [`lit/README.md`](lit/README.md)). It
+lets Gemma propose keywords and triage results while Python owns execution and
+dedup, and writes ranked proposals to a staging file -- it makes no Zotero/Neo4j
+writes. The approval/ingest step is intentionally separate and human-gated.
+
+### Avoiding duplicate papers
+
+Duplicate `Paper` nodes arise two ways; guard against both:
+
+1. Key divergence: agents must use the canonical `paper_key` = bare Zotero item
+   key (no `zotero:` prefix). Normalize `arxiv_id` (strip any `arXiv:` prefix and
+   version suffix `vN`) and `doi` (lowercase, no `https://doi.org/`).
+2. Same paper added twice: re-adding to Zotero mints a new item key -> a new node
+   even with consistent keying. So dedup must gate the Zotero-add step, keyed on a
+   stable external id (arxiv_id/doi), NOT the title or Zotero key.
+
+Low-cost pre-add check (run before adding; skip the add if it returns a row):
+
+```cypher
+MATCH (p:Paper)
+WHERE ($arxiv <> "" AND p.arxiv_id = $arxiv)
+   OR ($doi   <> "" AND toLower(p.doi) = toLower($doi))
+RETURN p.paper_key AS key, p.title AS title LIMIT 1
+```
+
+A Neo4j uniqueness constraint is a poor fit here: many `Paper` nodes legitimately
+have `arxiv_id = ""`, and empty strings collide under a constraint.
+
+Neo4j `Paper` convention: `paper_key` = Zotero item key, `source = "zotero"`,
+`item_type = "preprint"`, `title_key` = lowercased-alphanumeric title; edges
+`AUTHORED_BY` / `HAS_TAG` / `IN_COLLECTION`.
+
+Known leftover: 5 pre-existing `zotero:`-prefixed duplicate nodes
+(hep-th/0510161, 2203.08087, 1709.04891, 1409.7169, hep-th/0512091) are not yet
+merged.
+
+### Known fixes / caveats
+
+- `zotero_search_items` previously failed via MCP with "expected record, received
+  array": `GET /items` returns a JSON array, but MCP `structuredContent` must be
+  an object. Fixed in `C:/Tools/mcp/zotero-writer/src/server.py`
+  `format_tool_result` (wraps non-dict results as `{"results": ...}`). A running
+  session must `/mcp`-reconnect to pick it up.
+- `local-qwen` (`gemma4:12b`) runs ~15 tok/s on CPU here, so non-trivial
+  generations exceed the httpx timeout in `oracle/local_mcp_bridge.py`. Raise the
+  timeout for batch distillation/triage. Quality is good; speed suits offline
+  batch use, not interactive. Verify a server out-of-session with
+  `python Scripts/mcp/mcp_call.py <server> <tool> --args-file <json>`.

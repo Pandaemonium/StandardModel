@@ -61,6 +61,8 @@ import PhysicsSM.Draft.NullEdgeSpinorGeometryTargets
 import PhysicsSM.Draft.TwistorPluckerMass
 import PhysicsSM.Draft.NullEdgeYukawaFlip
 import PhysicsSM.Draft.NullEdgeYukawaGaugeAristotle
+import PhysicsSM.Draft.CausalDiamondHigherGaugeAristotle
+import PhysicsSM.Draft.NullEdgeOvernightSynthesisAristotle
 
 /-!
 # PhysicsSM draft root
