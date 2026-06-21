@@ -1,11 +1,11 @@
 {
   "status": "running",
-  "cycle": 4,
+  "cycle": 5,
   "max_cycles": 5,
   "cycle_seconds": 3600,
   "master_staging": "Scripts/lit/autoloop/staging.jsonl",
   "validation_task": "bvydb7oub",
-  "cycle_start_utc": "2026-06-21T12:34:04.089151+00:00",
+  "cycle_start_utc": "2026-06-21T14:02:49.925997+00:00",
   "notes": "8-cycle autonomous lit-search loop. Each wake: if a cycle's bg search has run ~1h, review staging since last cycle, course-correct harness code + next queue, launch next cycle, ScheduleWakeup 3600s. Stop after cycle 8. Harness is staging-only: no Zotero/Neo4j writes.",
   "cycles": [
     {
@@ -59,7 +59,23 @@
       "queue": "Scripts/lit/autoloop/cycle4_queue.jsonl",
       "staging": "Scripts/lit/autoloop/staging.jsonl",
       "started": "2026-06-21T12:34:04.089151+00:00",
-      "args": "--max-per-topic 8"
+      "args": "--max-per-topic 8",
+      "finished": "2026-06-21T14:02:49.925997+00:00",
+      "topics": 8,
+      "candidates": 64,
+      "prev_staged": 13,
+      "duplicates": 4,
+      "staged": 47,
+      "recall_failures": 1,
+      "corrections": "skeptic exclude-hint live; recall retries 2->3 for residual total-garble case"
+    },
+    {
+      "cycle": 5,
+      "queue": "Scripts/lit/autoloop/cycle5_queue.jsonl",
+      "staging": "Scripts/lit/autoloop/staging.jsonl",
+      "started": "2026-06-21T14:02:49.925997+00:00",
+      "args": "--max-per-topic 8",
+      "note": "final cycle; diversified content"
     }
   ],
   "phase": "running"

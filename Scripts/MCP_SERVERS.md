@@ -12,7 +12,7 @@ These are developer/research tooling, not part of the Lean build.
 | Name | Purpose | Command | Source |
 |---|---|---|---|
 | `lean-lsp` | Live Lean LSP on this repo: goal states, diagnostics, hover, completions, build, plus LeanSearch / Loogle / Lean Finder / Lean Hammer / Lean State Search | `uvx lean-lsp-mcp` | [lean-lsp-mcp](https://github.com/oOo0oOo/lean-lsp-mcp) (PyPI) |
-| `lean-explore` | Semantic search over Lean 4 declarations (Mathlib, **PhysLean**, Batteries, Init, Lean, Std, ...), offline local index | `uvx --from lean-explore[local] lean-explore mcp serve --backend local` | [lean-explore](https://github.com/justincasher/lean-explore) (PyPI) |
+| `lean-explore` | Semantic search over Lean 4 declarations (Mathlib, **PhysLean**, Batteries, Init, Lean, Std, ...), offline local index | `uvx --python 3.12 --from lean-explore[local] lean-explore mcp serve --backend local` | [lean-explore](https://github.com/justincasher/lean-explore) (PyPI) |
 | `scholarly` | Literature search across **Semantic Scholar, OpenAlex, arXiv, INSPIRE-HEP, Crossref, Europe PMC, Unpaywall** | `python .../scholarly_wrapper/src/server.py` | `C:/Projects/AutoLab/COGLab/infrastructure/mcp/scholarly_wrapper/src/server.py` |
 | `zotero_write` | Write items into the Zotero library (user `19894138`) | `python .../zotero-writer/src/server.py` | `C:/Tools/mcp/zotero-writer/src/server.py` |
 | `neo4j_graph` | Read/write a Neo4j knowledge graph | `cmd.exe /c .../neo4j_mcp/run.bat` | Go binary `neo4j-mcp.exe` |
@@ -43,12 +43,20 @@ existing lemmas *before* preparing a handoff, rather than churning.
 ### lean-explore tools (added 2026-06-21)
 
 `lean-explore` is a semantic declaration search engine over a downloaded
-offline index (`lean-explore data fetch`, one-time). Its indexed corpus
-includes **PhysLean**, which overlaps this project's physics formalization
-goals. The `[local]` extra pulls `torch` + `sentence-transformers` +
-`faiss-cpu`, so the first install is heavy; the running server is then fully
-offline and needs no API key. (A lightweight `--backend api` mode exists but
-requires a free `LEANEXPLORE_API_KEY` from leanexplore.com.)
+offline index (`lean-explore data fetch`, one-time, ~3.8 GB: a 2.1 GB SQLite DB
+plus a 1.7 GB FAISS index). Its indexed corpus includes **PhysLean**, which
+overlaps this project's physics formalization goals. The `[local]` extra pulls
+`torch` + `sentence-transformers` + `faiss-cpu`, so the first install is heavy;
+the running server is then fully offline and needs no API key. (A lightweight
+`--backend api` mode exists but requires a free `LEANEXPLORE_API_KEY` from
+leanexplore.com.)
+
+**Python 3.12 pin (required).** The MCP server crashes on Python < 3.12 with
+`pydantic.errors.PydanticUserError: Please use typing_extensions.TypedDict
+instead of typing.TypedDict`. The tool env and the `.mcp.json` launch are
+therefore pinned to 3.12 (`uv tool install --python 3.12 "lean-explore[local]"`
+and `uvx --python 3.12 ...`). The downloaded index is independent of the Python
+version, so re-pinning does not refetch it.
 
 ### Semantic Scholar API key (optional, free)
 

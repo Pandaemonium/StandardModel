@@ -63,6 +63,7 @@ import PhysicsSM.Draft.NullEdgeYukawaFlip
 import PhysicsSM.Draft.NullEdgeYukawaGaugeAristotle
 import PhysicsSM.Draft.CausalDiamondHigherGaugeAristotle
 import PhysicsSM.Draft.NullEdgeOvernightSynthesisAristotle
+import PhysicsSM.Draft.NullEdgePhysicsBridgeAristotle
 
 /-!
 # PhysicsSM draft root

@@ -5,7 +5,7 @@ and the bibliography [`Null_Edge_Causal_Graph_Bibliography.md`](Null_Edge_Causal
 
 **Compiled:** 2026-06-21.
 **Library:** Zotero collection "Null-Edge Causal Graph Program" (`9W59V3K9`) and the
-Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`). ~79 papers, tagged
+Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`). ~82 papers, tagged
 `null-edge-program` plus per-pillar cluster tags.
 **Method note:** searches run through the `scholarly` MCP server (INSPIRE-HEP and
 OpenAlex backends); see [`../Scripts/MCP_SERVERS.md`](../Scripts/MCP_SERVERS.md).
@@ -23,6 +23,140 @@ The repo already has theorem islands to build on:
 `PhysicsSM.Draft.WeylCliffordBridgeAristotle`,
 `PhysicsSM.Draft.SpinorHelicityRankOneAristotle`,
 `PhysicsSM.Draft.SpinorHelicityQuaternionAristotle`.
+
+## New synthesis: celestial moments
+
+The latest feedback sharpens the Plucker mass theorem by moving from spinors
+to their celestial directions. A normalized visible null spinor determines a
+point of `CP^1 ~= S^2`, and its rank-one Hermitian matrix has Bloch form
+
+```text
+psi_i psi_i^dagger = (w_i / 2) * (I + n_i . sigma).
+```
+
+For a finite bundle, the determinant mass should therefore be packaged as
+
+```text
+det(sum_i psi_i psi_i^dagger)
+  = (1 / 4) * ((sum_i w_i)^2 - |sum_i w_i n_i|^2).
+```
+
+The monopole is energy, the dipole is spatial momentum, and mass is the
+missing dipole. This gives the program a clean finite target:
+
+```lean
+rankOneHermitian_eq_weighted_spinProjector
+fin_bundle_det_eq_bloch_minkowski_norm
+finPairwisePluckerMassReal_eq_weighted_angular_variance
+mass_zero_iff_bloch_dipole_saturates
+```
+
+The same sharpening changes the dynamics target. The flip-rate conjecture
+should be phrased as an l=1 spectral-gap statement for the celestial direction
+process. If `gamma_1` denotes the decay rate of the direction autocorrelation,
+the convention-audited target is `m = hbar * gamma_1 / (2*c^2)`. In the 1+1
+telegraph/checkerboard process, the autocorrelation decays as `exp(-2*nu*t)`,
+so `gamma_1 = 2*nu` and `m = hbar*nu/c^2`.
+
+Finally, the QGT/Berry idea becomes a concrete but still conjectural companion:
+the real Fubini-Study/chordal part is the mass spread; the imaginary
+Berry/Pancharatnam part should be tested against the existing Bargmann triple
+trace theorem before any spin claim is promoted.
+
+## New synthesis: reduced celestial mixedness
+
+The same Plucker theorem should be repackaged as a partial-trace theorem.
+Instead of treating the bundle index only as many classical null edges, let it
+label unresolved internal/chiral/Higgs alternatives in a pure microscopic
+state:
+
+```text
+|Psi> = sum_a v_a ⊗ e_a.
+```
+
+If the internal states `e_a` are orthonormal or decohered, the visible
+observer sees
+
+```text
+P_vis = Tr_int |Psi><Psi| = sum_a v_a v_a^dagger.
+```
+
+Then the trusted Plucker identity says
+
+```text
+det(P_vis) = sum_{a<b} |v_a wedge v_b|^2.
+```
+
+After normalization `rho_vis = P_vis / Tr(P_vis)`, the target identity is
+
+```text
+m / E = 2 * sqrt(det(rho_vis))
+      = sqrt(2 * (1 - Tr(rho_vis^2))).
+```
+
+Thus the mass ratio is the impurity, or concurrence-style invariant, of the
+visible celestial qubit. In units `c = 1`, this is also the proper-time rate
+`d tau / dt`.
+
+The caveat is part of the theorem statement: for nonorthogonal internal labels,
+the partial trace contains overlaps `<e_b,e_a>`, so internal coherence can
+change the visible determinant. The simple Plucker sum is the
+orthonormal/decohered case.
+
+**Lean targets.**
+
+- `visibleDensity_from_orthonormal_internal_purification`;
+- `det_visibleDensity_eq_internal_plucker_sum`;
+- `normalized_mass_ratio_eq_two_sqrt_det_visibleDensity`;
+- `mass_ratio_eq_sqrt_linear_entropy`;
+- `massless_iff_visibleDensity_rank_one`;
+- `restFrame_iff_visibleDensity_maximallyMixed`.
+
+## New synthesis: rank-2 / rank-3 Jordan split
+
+The generation feedback is useful because it tells us where not to look.
+The visible Plucker/celestial mass layer is generation-blind: it sees a
+bundle's visible null directions and their determinant mass, not whether the
+fermion is first, second, or third generation. Generation labels should
+therefore live in the internal label and Yukawa/flip-amplitude layer.
+
+The algebraic refinement is:
+
+```text
+visible layer:
+  H_2(C), the Jordan algebra of 2 x 2 complex Hermitian matrices
+  determinant = Lorentzian norm
+  rank-one idempotents = CP^1 celestial null directions
+
+internal layer:
+  H_3(O), the Albert algebra of 3 x 3 Hermitian octonionic matrices
+  candidate home for family/generation labels and internal mixing data
+```
+
+This is a structural hypothesis, not a spectrum theorem. It may explain why
+three is the right internal count if the Albert algebra is the correct
+internal arena, but it does not yet determine charged-lepton/quark mass ratios
+or CKM/PMNS mixing angles.
+
+**2026-06-21 Zotero/Neo4j additions.** Added Boyle `3ABEUB3K`
+(`2006.16265`), Dubois-Violette-Todorov `SVNGPAFK` (`1806.09450`), and
+Dubois-Violette-Todorov `FVH3WAAV` (`1808.08110`), tagged
+`jordan-generations` and `albert-algebra`.
+
+**Lean/prose targets.**
+
+- `JordanVisibleMass`: source note or wrapper identifying the existing
+  Hermitian momentum determinant with the norm form on `H_2(C)`.
+- `generation_blind_visible_mass`: a finite statement that the Plucker/Bloch
+  visible mass is independent of any auxiliary generation label.
+- `AlbertGenerationHypothesis`: prose/source note only at first, recording
+  `H_3(O)` as the internal generation-counting candidate and explicitly
+  separating counting from spectra and mixing.
+
+**Falsification.** A fourth generation, generation dependence forced by the
+visible null geometry, or failure of the Albert layer to house the required
+Standard Model family representation and mixing data would weaken or kill this
+branch.
 
 ## New synthesis: the bivector/BF spine
 
@@ -83,9 +217,11 @@ version of the story.
 
 - In Lorentzian signature, self-dual two-forms are naturally complex; any
   Urbantke/Plebanski interpretation needs explicit reality conditions.
-- The QGT/Berry-curvature analogy is interesting but should stay a numerical
-  or conceptual pilot until it produces a finite theorem or a source-backed
-  model.
+- The QGT/Berry-curvature analogy is now a sharper finite target: the real
+  part should match the Fubini-Study/chordal mass spread, while the imaginary
+  part should be tested through Bargmann/Berry phase identities. The spin
+  interpretation remains conjectural until this commutes with the graph
+  holonomy layer.
 - AHH massive spinor-helicity already owns the two-spinor on-shell mass
   identity. Our trusted theorem is the finite `n`-edge Cauchy-Binet bundle
   identity and its graph interpretation.
@@ -157,10 +293,13 @@ Weyl-van der Waerden / helicity-chirality bookkeeping.
 
 **What it buys us.** A finite-dimensional linear-algebra keystone: the determinant
 identity `det(sum_i psi_i psi_i^dagger) = sum_{i<j} |psi_i wedge psi_j|^2`, mass as
-total pairwise Plucker spread, zero iff collinear.
+total pairwise Plucker spread, zero iff collinear. The celestial rewrite adds
+a second, physically transparent form: mass is the deficit of the
+direction-distribution dipole from its monopole bound.
 
-**Next Lean target.** New trusted module `PhysicsSM/Spinor/PluckerMass.lean`, building
-on `SpinorHelicityRankOneAristotle`:
+**Original Lean target, now completed.** New trusted module
+`PhysicsSM/Spinor/PluckerMass.lean`, building on
+`SpinorHelicityRankOneAristotle`:
 - `complex_plucker_mass_identity` : `det (∑ i, ψ i • (ψ i)ᴴ) = ∑ i j, ‖ψ i ∧ ψ j‖²` (i<j),
 - `complex_plucker_mass_nonneg`,
 - `complex_plucker_mass_eq_zero_iff_collinear`.
@@ -170,10 +309,17 @@ scoped to the spinor chart only — no full Penrose transform.
 **Status update, 2026-06-21.** `PhysicsSM.Spinor.PluckerMass` now promotes the
 finite determinant identity, the real-valued nonnegativity wrapper, and the
 mass-zero/common-direction criterion to a trusted no-sorry module. The
-remaining Pillar 1 work is the twistor-incidence interpretation layer.
+remaining Pillar 1 work is the celestial-moment wrapper and the
+twistor-incidence interpretation layer. The next theorem names are:
 
-**Falsification.** Failure of the determinant identity, or mismatch with the physical
-invariant-mass convention `m^2 = det P`.
+- `rankOneHermitian_eq_weighted_spinProjector`;
+- `fin_bundle_det_eq_bloch_minkowski_norm`;
+- `finPairwisePluckerMassReal_eq_weighted_angular_variance`;
+- `mass_zero_iff_bloch_dipole_saturates`.
+
+**Falsification.** Failure of the determinant identity, failure of the
+Bloch/angular-variance rewrite, or mismatch with the physical invariant-mass
+convention `m^2 = det P`.
 
 ---
 
@@ -193,6 +339,13 @@ honeycomb/curved-spacetime walks (`1803.01015`, `1505.07023`), Mlodinow-Brun
 limits are Dirac/Weyl — the evidence base for the chirality-flip universality
 conjecture (`m_eff = C * nu`).
 
+Sharpened 2026-06-21 formulation: replace the raw proportionality slogan
+with an l=1 spectral-gap statement. Effective mass should be calibrated by
+the relaxation gap of the celestial direction process. If `gamma_1` is the
+decay rate of the direction autocorrelation, the convention-audited target is
+`m = hbar*gamma_1/(2*c^2)`. In the 1+1 telegraph/checkerboard process,
+`gamma_1 = 2*nu`, hence `m = hbar*nu/c^2`.
+
 **Next steps.** (a) Promote the no-sorry endpoint-kernel closed forms from
 `PhysicsSM.Draft.CheckerboardKernelClosedFormsAristotle` into the trusted
 checkerboard theorem surface after a semantic/documentation audit. (b) State
@@ -201,8 +354,17 @@ the universality conjecture precisely as a renewal/random-history statement
 isotropic null-edge flip ensemble dispersion relation (oracle script, justifies tests
 not theorems).
 
+The numerical pilot should also measure the l=1 relaxation spectrum and check
+whether higher multipoles are invisible to the determinant mass while still
+affecting other observables.
+
 **Falsification.** Isotropic flip ensembles fail to flow to a Dirac dispersion, or
 `m_eff` depends non-universally on microscopic flip distribution details.
+
+Sharper falsification hook: the l=1 generator block fails to reconstruct the
+Dirac operator, the factor-of-two convention cannot be made coherent, or
+anisotropic microscopic generators couple l=1 to higher multipoles in a way
+the mass observable can detect.
 
 ---
 
@@ -350,11 +512,17 @@ preserving operational no-signalling and strong positivity.
 
 ## Internal algebra layer (context, not spacetime)
 
-**Literature (tag `internal-algebra`).** Kept deliberately light because the repo already
-formalizes much octonion/Furey/Spin(10)/E8 content. Singh *Trace dynamics and division
-algebras* (`2009.05574`) is a useful bridge between the internal algebra and a quantum-gravity
-/ unification narrative. The program's stance holds: octonions/triality label internal
-transition rules, not observed spacetime coordinates.
+**Literature (tag `internal-algebra`).** The internal layer is now sharper:
+octonions/triality label internal transition rules and generation structure,
+not observed spacetime coordinates. Boyle `2006.16265` and
+Dubois-Violette-Todorov `1806.09450`, `1808.08110` anchor the exceptional
+Jordan/Albert-algebra generation hypothesis. Singh *Trace dynamics and
+division algebras* (`2009.05574`) remains a useful bridge between the internal
+algebra and a quantum-gravity / unification narrative.
+
+**Claim boundary.** `H_3(O)` is a candidate home for the family index and
+mixing structure. It does not by itself explain the observed Yukawa spectra,
+and it should not be used to alter the visible Plucker mass theorem.
 
 ---
 
@@ -369,20 +537,29 @@ trusted physics claim.
    semantic audit.
 2. Promote `SpinCoherentProjectorAristotle` and `WeylCliffordBridgeAristotle`.
 3. `PluckerMass.lean`: identity, nonnegativity wrapper, and collinearity are
-   now trusted; add twistor chart matching (Pillar 1).
-4. `yukawa_vertex_hypercharge_neutral` (Pillar 3).
-5. `PhysicsSM.Gauge.CausalDiamondHolonomy`: finite Abelian gauge invariance,
+   now trusted; add the celestial-moment wrapper and twistor chart matching
+   (Pillar 1).
+4. `CelestialPluckerMass`: prove the Bloch decomposition, angular-variance
+   identity, and dipole-saturation masslessness criterion.
+5. `ReducedCelestialMixedness`: prove the visible partial-trace theorem,
+   determinant-as-mixedness identity, mass-ratio formula, and the
+   orthonormal/decohered internal-label caveat.
+6. `JordanVisibleMass`: source-backed wrapper saying visible determinant mass
+   is the `H_2(C)` Jordan norm and is independent of auxiliary generation
+   labels.
+7. `yukawa_vertex_hypercharge_neutral` (Pillar 3).
+8. `PhysicsSM.Gauge.CausalDiamondHolonomy`: finite Abelian gauge invariance,
    non-Abelian endpoint covariance, and class-function invariance are now
    trusted; vertical and horizontal path-pair composition laws are now
    trusted; next develop the 2-categorical/higher-gauge wrapper (Pillar 5).
-6. `OrderComplex.lean`: `d^2 = 0` (Pillar 7).
-7. `NullEdgeBivector`: draft a finite `B`-cochain wrapper tying Plucker
+9. `OrderComplex.lean`: `d^2 = 0` (Pillar 7).
+10. `NullEdgeBivector`: draft a finite `B`-cochain wrapper tying Plucker
    mass defects to diamond surface pairings, with the continuum BF/Plebanski
    reading kept in comments/prose only.
-8. `KahlerDiracGraph`: build the finite topological Dirac operator from the
+11. `KahlerDiracGraph`: build the finite topological Dirac operator from the
    cochain seed, then prove `D^2 = Laplacian` and the algebraic chiral
    mass-gap square under explicit adjoint/anticommutation hypotheses.
-9. `ObservableNullity`: package the quotient, exact-cochain, tree-gauge,
+12. `ObservableNullity`: package the quotient, exact-cochain, tree-gauge,
    boundary-chain, and rank-one spectral-nullity lemmas as diagnostics for
    finite graph observables.
 
@@ -393,11 +570,34 @@ conjecture precisely, and write an expository paper tying Lean results to
 checkerboard / Foster-Jacobson / energetic-causal-set / Plebanski-BF
 literature.
 
+Celestial-moment addendum: Stage 2 should now package the null-step projector
+and Plucker mass theorems with the Bloch/dipole wrapper, state the
+chirality-flip universality conjecture as an l=1 spectral-gap theorem target,
+and add the finite Berry/Pancharatnam triangle phase as the imaginary
+companion to the real Fubini-Study mass spread.
+
+Reduced-channel addendum: Stage 2 should also package Higgs/chiral/internal
+bookkeeping as a unitary dilation of a visible mass channel. In this language,
+the stable mass observable is the determinant of the reduced visible celestial
+state, while effective flip rates are derived descriptions of particular
+checkerboard or quantum-walk limits.
+
+Jordan addendum: Stage 2 should also add a source-backed note making the
+rank-2/rank-3 split explicit: `H_2(C)` for visible determinant mass and
+`H_3(O)` for the internal generation-counting hypothesis. The note should
+state plainly that the hierarchy of Yukawa eigenvalues and CKM/PMNS mixing
+remain open.
+
 **Stage 3 — numerical/probabilistic pilots (oracle scripts):** isotropic flip-ensemble
 dispersion; effective-mass universality test; abelian diamond holonomy on random diamonds;
 graph observables vs expected curvature/flux; QGT/Fubini-Study mass-spread and
 Berry-curvature diagnostics on the celestial `CP^1` direction space; approximate
 spectral/gauge/homology nullity signatures for coarse-graining pilots.
+
+Celestial dynamics addendum: the numerical pilots should measure both the
+dispersion relation and the l=1 relaxation spectrum, then test whether higher
+celestial multipoles are invisible to determinant mass while remaining visible
+to other observables.
 
 **Stage 4 — long-horizon continuum:** causal-set Dirac propagator (Johnston route);
 diamond-holonomy continuum limit; higher-gauge 2-connection over diamonds;

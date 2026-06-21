@@ -474,7 +474,7 @@ def triage_recall(spec: dict, cands: list[dict], model: str, timeout: float) -> 
         '"source_importance":4,"evidence":"..."}]. Omit clearly irrelevant ones. No prose.'
     )
     out: dict[str, dict] = {}
-    items, ok, complete = _gemma_json_list(prompt, model, timeout, salvage=True)
+    items, ok, complete = _gemma_json_list(prompt, model, timeout, salvage=True, retries=3)
     for item in items:
         if isinstance(item, dict) and item.get("id"):
             out[str(item["id"]).strip().upper()] = item

@@ -1,0 +1,8 @@
+{"topic":"twistor string theory and tree-level gauge amplitudes","pillar":"P1/P4 twistor amplitudes","exclude":["machine learning"],"tags":["null-edge-program","mass-twistor"]}
+{"topic":"device independent nonlocality PR boxes and the no-signalling polytope","pillar":"P9 Bell nonlocality (pivot from measure)","exclude":["machine learning","key distribution"],"tags":["null-edge-program","quantum-measure"]}
+{"topic":"Ryu-Takayanagi holographic entanglement entropy and emergent geometry","pillar":"P6 entanglement geometry","exclude":["machine learning"],"tags":["null-edge-program","spacetime-thermodynamics"]}
+{"topic":"Whitney forms discrete differential forms and finite element exterior calculus","pillar":"P7 discrete exterior calculus","exclude":["machine learning"],"tags":["null-edge-program","dirac-kahler"]}
+{"topic":"Nielsen-Ninomiya theorem fermion doubling topological obstruction","pillar":"P7 doubling no-go","exclude":["machine learning"],"tags":["null-edge-program","lattice-fermion"]}
+{"topic":"classical sequential growth dynamics for causal sets cosmology","pillar":"P8 causal set dynamics","exclude":["machine learning"],"tags":["null-edge-program","causal-set"]}
+{"topic":"Clifford algebra spinor representations triality and division algebras","pillar":"internal algebra / Clifford","exclude":["machine learning"],"tags":["null-edge-program","internal-algebra"]}
+{"topic":"spin coherent states Bloch sphere and geometric phase","pillar":"P1 spin coherent (repo SpinCoherentProjector)","exclude":["machine learning"],"tags":["null-edge-program","massive-spinor-helicity"]}
