@@ -12,7 +12,7 @@ These are developer/research tooling, not part of the Lean build.
 | Name | Purpose | Command | Source |
 |---|---|---|---|
 | `lean-lsp` | Live Lean LSP on this repo: goal states, diagnostics, hover, completions, build, plus LeanSearch / Loogle / Lean Finder / Lean Hammer / Lean State Search | `uvx lean-lsp-mcp` | [lean-lsp-mcp](https://github.com/oOo0oOo/lean-lsp-mcp) (PyPI) |
-| `lean-explore` | Semantic search over Lean 4 declarations (Mathlib, **PhysLean**, Batteries, Init, Lean, Std, ...), offline local index | `uvx --python 3.12 --from lean-explore[local] lean-explore mcp serve --backend local` | [lean-explore](https://github.com/justincasher/lean-explore) (PyPI) |
+| `lean-explore` | Semantic search over Lean 4 declarations (Mathlib, **PhysLean**, Batteries, Init, Lean, Std, ...), offline local index, models on the **Intel Arc A750 (XPU)** | `<tool-env python> Scripts/mcp/lean_explore_xpu.py` | [lean-explore](https://github.com/justincasher/lean-explore) (PyPI) |
 | `scholarly` | Literature search across **Semantic Scholar, OpenAlex, arXiv, INSPIRE-HEP, Crossref, Europe PMC, Unpaywall** | `python .../scholarly_wrapper/src/server.py` | `C:/Projects/AutoLab/COGLab/infrastructure/mcp/scholarly_wrapper/src/server.py` |
 | `zotero_write` | Write items into the Zotero library (user `19894138`) | `python .../zotero-writer/src/server.py` | `C:/Tools/mcp/zotero-writer/src/server.py` |
 | `neo4j_graph` | Read/write a Neo4j knowledge graph | `cmd.exe /c .../neo4j_mcp/run.bat` | Go binary `neo4j-mcp.exe` |
@@ -40,54 +40,65 @@ lag until the project is built; the external search tools work immediately.
 This complements Aristotle: the coding agent checks goal states and finds
 existing lemmas *before* preparing a handoff, rather than churning.
 
-### lean-explore tools (added 2026-06-21)
+### lean-explore tools (added 2026-06-21, Arc/XPU 2026-06-21)
 
 `lean-explore` is a semantic declaration search engine over a downloaded
 offline index (`lean-explore data fetch`, one-time, ~3.8 GB: a 2.1 GB SQLite DB
 plus a 1.7 GB FAISS index). Its indexed corpus includes **PhysLean**, which
-overlaps this project's physics formalization goals. The `[local]` extra pulls
-`torch` + `sentence-transformers` + `faiss-cpu`, so the first install is heavy;
-the running server is then fully offline and needs no API key. (A lightweight
-`--backend api` mode exists but requires a free `LEANEXPLORE_API_KEY` from
-leanexplore.com.)
+overlaps this project's physics formalization goals - and is the main reason to
+run it alongside `lean-lsp` (whose online LeanSearch/Loogle index Mathlib but
+not PhysLean). Two ~1.2 GB models do the work: `Qwen/Qwen3-Embedding-0.6B`
+(retrieval) and `Qwen/Qwen3-Reranker-0.6B` (reranking). Both are pre-cached in
+`~/.cache/huggingface/hub/`. The server is fully offline (no API key).
 
-**Python 3.12 pin (required).** The MCP server crashes on Python < 3.12 with
-`pydantic.errors.PydanticUserError: Please use typing_extensions.TypedDict
-instead of typing.TypedDict`. The tool env and the `.mcp.json` launch are
-therefore pinned to 3.12 (`uv tool install --python 3.12 "lean-explore[local]"`
-and `uvx --python 3.12 ...`). The downloaded index is independent of the Python
-version, so re-pinning does not refetch it.
+It runs on the **Intel Arc A750 (XPU)** via a launch wrapper,
+[`mcp/lean_explore_xpu.py`](mcp/lean_explore_xpu.py), which `.mcp.json` invokes
+with the tool-env interpreter. Verified end-to-end through the real `mcp` client
+(`Scripts/mcp/_probe_mcp_client.py`): ~4.6 s for a cold reranked query, ~2.5 s
+warm, vs ~30 s on CPU.
 
-**Two Qwen models must be pre-cached (or searches hang).** The local backend
-uses `Qwen/Qwen3-Embedding-0.6B` to encode the query (retrieval) and
-`Qwen/Qwen3-Reranker-0.6B` to rerank candidates. Both are ~1.2 GB and download
-*lazily inside the first search request*. Under the MCP client watchdog a cold
-download overruns, the request is killed mid-download, and the partial
-HuggingFace cache re-downloads next time - so the first searches appear to hang
-forever (this affects `rerank_top: 0` too, since retrieval still needs the
-embedding model). Fix: pre-warm both models once, outside any request, by
-running a search with the tool-env interpreter:
+The wrapper exists because three things must be fixed, none editable upstream
+without losing them on `uv tool` reinstall:
+
+1. **Python 3.12 pin (required).** The server crashes on Python < 3.12 with
+   `pydantic.errors.PydanticUserError: ... typing_extensions.TypedDict`. The
+   tool env is installed with `uv tool install --python 3.12`. The torch build
+   is `2.9.1+xpu` (the newest Windows XPU wheel; the env's default was
+   `2.12.1+cpu`):
+   `uv tool install --python 3.12 --index https://download.pytorch.org/whl/xpu --with "torch==2.9.1+xpu" "lean-explore[local]" --reinstall`.
+   The downloaded index is independent of the Python/torch version, so this does
+   not refetch it.
+
+2. **Device + fp16.** lean-explore's `EmbeddingClient`/`RerankerClient`
+   `_select_device()` only knows `cuda`/`mps`/`cpu`, so it would fall back to
+   CPU. The wrapper patches both to prefer `xpu` and casts the models to fp16
+   (~2.4 GB total vs ~4.8 GB - the Arc's 8 GB is shared with Ollama).
+
+3. **The search hang (Intel XPU thread affinity).** The clients dispatch model
+   inference to a thread pool via `loop.run_in_executor(...)`. On Intel XPU that
+   moves the GPU work off the thread that owns the SYCL context and **deadlocks**
+   - the search reaches the embedding step and never returns (this is why every
+   `mcp_call`/native attempt hung at "BM25S Retrieve"). The wrapper patches
+   `EmbeddingClient.embed` and `RerankerClient.rerank` to run inference INLINE
+   (no executor) so all XPU work stays on the one FastMCP event-loop thread, and
+   pre-warms the models synchronously at startup (also on that thread) so the
+   first query is fast. It also sets `HF_HUB_OFFLINE=1`/`TRANSFORMERS_OFFLINE=1`
+   (models are cached) and `TQDM_DISABLE=1`.
+
+To verify out of session (initialize + list + a real reranked search through the
+proper client):
 
 ```bash
 "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe" \
-    Scripts/lit/test_lean_explore_search.py
+    Scripts/mcp/_probe_mcp_client.py
 ```
 
-After that, both models live in `~/.cache/huggingface/hub/` and the in-server
-search loads them from disk. `Scripts/lit/prewarm_reranker.py` warms the
-reranker alone if needed.
-
-**CPU latency.** The `[local]` extra installs the CPU torch build
-(`torch ...+cpu`, `cuda_available=False`), so both 0.6B transformers run on CPU:
-a warm search is ~30 s (query embedding + reranking 50 candidates), and the
-first search after server start adds a one-time model load. This is fine for
-batch lemma lookup but not snappy. `rerank_top: 0` roughly halves it (skips the
-reranker, keeps the embedding retrieval). A CUDA torch build would cut this to a
-few seconds but is a heavier reinstall (`uv tool install --python 3.12
---with "torch --index-url https://download.pytorch.org/whl/cu121" ...`) and is
-not currently configured. The MCP client default timeout (90 s) comfortably
-covers a warm search once the models are cached; raise it for the first
-cold-load call.
+`Scripts/lit/test_lean_explore_search.py` exercises the search engine directly
+(bypassing MCP) for timing/sanity. **Rollback to stock CPU** if needed: repoint
+the `.mcp.json` `lean-explore` entry to
+`uvx --python 3.12 --from lean-explore[local] lean-explore mcp serve --backend local`
+and reinstall torch as `+cpu` - but note the upstream server still hangs on XPU
+without the wrapper, and CPU search is ~30 s/query.
 
 ### Semantic Scholar API key (optional, free)
 
@@ -118,8 +129,8 @@ Backed by Ollama at `http://localhost:11434`. Model is set in
 (currently `gemma4:12b`, chosen for its 256k context when distilling large
 literature result sets). It is a generative LLM with **no paper corpus and no
 internet** — useful for summarizing/distilling search results or mapping
-notation, not for search. There is no local semantic-search index over papers on
-this machine.
+notation, not for search. For semantic search over the curated paper library, see
+"Semantic vector search over papers (Neo4j)" below.
 
 Note: `qwen3.5:9b-q4_K_M` (and its `-cpu` twin, same blob) is a **broken quant**
 — it emits a degenerate all-zeros stream and never returns content. Do not use it
@@ -230,6 +241,95 @@ Neo4j `Paper` convention: `paper_key` = Zotero item key, `source = "zotero"`,
 Known leftover: 5 pre-existing `zotero:`-prefixed duplicate nodes
 (hep-th/0510161, 2203.08087, 1709.04891, 1409.7169, hep-th/0512091) are not yet
 merged.
+
+### Semantic vector search over papers (Neo4j, 2026-06-21)
+
+Papers are searchable by **meaning**, not just by id/title/tag. Each `Paper`
+node carries a 1024-dim `embedding` of its `title + abstract`
+(`Qwen/Qwen3-Embedding-0.6B`, the model lean-explore uses, run on the Arc GPU),
+indexed by a native Neo4j `VECTOR INDEX` named `paper_embedding` (cosine).
+Build/refresh and query with
+[`lit/neo4j_paper_search.py`](lit/neo4j_paper_search.py), run with the
+lean-explore tool-env interpreter (it carries `+xpu` torch,
+`sentence-transformers`, the cached model, and the `neo4j` driver):
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+"$PY" Scripts/lit/neo4j_paper_search.py                       # embed new papers + ensure index
+"$PY" Scripts/lit/neo4j_paper_search.py --query "celestial holography soft theorems"
+"$PY" Scripts/lit/neo4j_paper_search.py --query "spin foam simplicity" --format markdown
+```
+
+Ingest is idempotent: a default run only embeds papers whose `embedding` is
+`NULL`, so re-run it after adding papers (a natural last step of the
+search -> Zotero -> Neo4j pipeline); `--reembed` redoes all. Query encodes with
+the model's asymmetric "query" prompt and calls `db.index.vector.queryNodes`, so
+semantic ranking is fused with the graph (authors, tags, claims, collections
+stay attached). All 325 `Paper` nodes are embedded (the write keys on
+`elementId(p)`, so nodes with null/duplicate `paper_key` persist too). Direct
+Cypher: `CALL db.index.vector.queryNodes('paper_embedding', 10, $vec) YIELD node,
+score`. The `neo4j` driver was `uv pip install`ed into the lean-explore tool env;
+re-add it if that env is reinstalled.
+
+Caveat - the graph is **shared across projects**: `Paper` nodes are mixed by
+collection (yours: `9W59V3K9` "Null-Edge Causal Graph Program" + `null-edge-lit`;
+AutoLab's: `M6SN2MC2` "AutoLab Sources", `GX2VZ4FV` "AutoLab SM Parameter
+Benchmark"). The CLI now scopes query results to the two null-edge collections
+by default; use `--all-projects` only when you intentionally want cross-project
+paper recall. Use repeatable `--collection <key>` to override the scoped set.
+Query output supports `--format text|json|markdown`.
+
+### Semantic search over the repo's own docs + Lean (Neo4j, 2026-06-21)
+
+The shared `coglab` graph's `Doc`/`LeanFile`/`Claim`/`Concept` nodes belong to
+AutoLab, **not this repo**. So this repo's own documents were ingested under
+**project-scoped labels** `:NEDoc` (a source file) and `:NEChunk` (a chunk), both
+`project='null-edge'`, with a dedicated `VECTOR INDEX` `ne_chunk_embedding` - they
+never touch AutoLab's nodes.
+
+[`lit/neo4j_doc_search.py`](lit/neo4j_doc_search.py) ingests this repo's prose
+(`Sources/`, `AgentTasks/`, `docs/`, top-level `*.md`) and Lean
+(`PhysicsSM/**/*.lean`) straight from disk - full content, since the graph's
+20k-char `Doc.body` cap does not apply. Markdown is chunked by heading, Lean by
+declaration, then size-windowed (~1800 chars, 200 overlap); chunks are embedded
+with `Qwen3-Embedding-0.6B` on the Arc. Currently 799 files / 12000 chunks. Run
+with the lean-explore tool-env python:
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+"$PY" Scripts/lit/neo4j_doc_search.py --dry-run    # list files + chunk counts (no writes)
+"$PY" Scripts/lit/neo4j_doc_search.py              # ingest CHANGED files + build index
+"$PY" Scripts/lit/neo4j_doc_search.py --query "Dirac slash of bundle momentum squares to the Plucker scalar"
+"$PY" Scripts/lit/neo4j_doc_search.py --query "Dirac slash" --format json
+```
+
+Ingest is idempotent (re-chunks a file only when its content `sha` changes), so
+re-run it after editing docs/Lean. A query returns chunks with their parent file
+plus heading (the Lean declaration name), spanning prose and source in one
+ranking. It excludes build/extraction trees (`.lake`, `aristotle-submit`,
+`aristotle-output`, `*extracted*`). Direct Cypher:
+`CALL db.index.vector.queryNodes('ne_chunk_embedding', 10, $vec) YIELD node, score`.
+Query output supports `--format text|json|markdown`. If direct shell use reports
+missing `NEO4J_URI`, `NEO4J_USERNAME`, or `NEO4J_PASSWORD`, run it from a shell
+that inherits the Windows user environment, or drive Neo4j through the MCP
+session.
+
+### Aristotle semantic context packs (2026-06-21)
+
+Before submitting a nontrivial Aristotle job, generate a compact context pack
+from the repo doc/Lean index and the scoped paper index:
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+"$PY" Scripts/aristotle/make_context_pack.py \
+    --query "Dirac slash bundle momentum squares to Pluecker scalar" \
+    --slug dirac-pluecker
+```
+
+The output goes to `AgentTasks/context-packs/` and should be included in the
+submission package instead of broad duplicated context. Use this as context
+selection evidence only; theorem statements, convention choices, and source
+claims still need manual review.
 
 ### Known fixes / caveats
 

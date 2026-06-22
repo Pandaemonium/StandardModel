@@ -147,3 +147,40 @@ files but no `.lake` folder. This is expected from
 `Scripts/prepare_aristotle_submission.ps1`, which intentionally excludes local
 build artifacts and dependency caches. If dependency resolution fails, retry
 with an alternate package strategy.
+
+## Cycle-1 status note
+
+Checked 2026-06-21 after the first 15-minute goal-cycle wait. Aristotle still
+reported task `cdf79ea2-0ac7-47c0-acd8-e934c85fef01` as `IN_PROGRESS`, but the
+UI/log showed the same build-budget failure mode as the Gram-weighted job: a
+full project build failed after a long timeout, followed by a long targeted
+`lake build PhysicsSM.Draft.NullEdgeQuantumMeasureFiniteAristotle`.
+
+Two client-side attempts to fetch or instruct the running task timed out:
+
+```text
+aristotle continue --mode instruct --wait f0f1d88b-d4e5-4d47-bb6d-d9c41598e790 ...
+aristotle show f0f1d88b-d4e5-4d47-bb6d-d9c41598e790 --task cdf79ea2-0ac7-47c0-acd8-e934c85fef01 --limit 40
+```
+
+Do not assume this task is doing useful proof search unless a later status check
+shows returned code. If it remains stuck, resubmit the finite event-additivity,
+grade-2, positivity, and product lemmas as a focused standalone Mathlib package
+that defines `complexAbsSq` locally instead of importing `PhysicsSM.Spinor`.
+
+Canceled 2026-06-21 with:
+
+```text
+aristotle cancel --task-id cdf79ea2-0ac7-47c0-acd8-e934c85fef01
+```
+
+Focused replacement prepared:
+
+```text
+AgentTasks/null-edge-quantum-measure-core-aristotle-2026-06-21.md
+AgentTasks/aristotle-submit/null-edge-quantum-measure-core-20260621-project
+```
+
+Focused replacement submitted as Aristotle project
+`a58ec5b9-c5bf-4a28-bc3d-ccc8975661e3`, task
+`218d7391-1f7d-4d58-b147-7731e428fb71`.

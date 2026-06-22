@@ -68,6 +68,25 @@ import PhysicsSM.Draft.NullEdgeCelestialMixednessAristotle
 import PhysicsSM.Draft.NullEdgeDecoherenceChannelAristotle
 import PhysicsSM.Draft.NullEdgeTwoTwistorHiddenChannelAristotle
 import PhysicsSM.Draft.NullEdgeQuantumMeasureFiniteAristotle
+import PhysicsSM.Draft.NullEdgeGramWeightedMassAristotle
+import PhysicsSM.Draft.NullEdgeDiracSlashCore
+import PhysicsSM.Draft.NullEdgeBundleDiracPluckerCore
+import PhysicsSM.Draft.NullEdgeSuperDiracBlockCore
+import PhysicsSM.Draft.NullEdgeSuperconnectionExpansionCore
+import PhysicsSM.Draft.NullEdgeDiracTwoSheetCore
+import PhysicsSM.Draft.NullEdgeDiracMassShellProjectorsCore
+import PhysicsSM.Draft.NullEdgeCovariantDifferentialCore
+import PhysicsSM.Draft.NullEdgePluckerBargmannPhaseCore
+import PhysicsSM.Draft.NullEdgeGenerationBlindnessCore
+import PhysicsSM.Draft.NullEdgeGenerationBlindnessPort
+import PhysicsSM.Draft.NullEdgeCelestialMomentWrapper
+import PhysicsSM.Draft.NullEdgeBargmannPhasePort
+import PhysicsSM.Draft.NullEdgeZeroEdgeCollinearity
+import PhysicsSM.Draft.NullEdgeBargmannPhaseInvariance
+import PhysicsSM.Draft.NullEdgeGramWeightedOperator
+import PhysicsSM.Draft.NullEdgeGramWeightedHermitian
+import PhysicsSM.Draft.NullEdgeQubitConcurrence
+import PhysicsSM.Draft.NullEdgePathPairInterchange
 
 /-!
 # PhysicsSM draft root

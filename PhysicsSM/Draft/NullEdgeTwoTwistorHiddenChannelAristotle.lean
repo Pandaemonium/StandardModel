@@ -124,6 +124,47 @@ def hiddenMixFinite {m n : Nat}
     (psi : Fin n -> CSpinor) : Fin m -> CSpinor :=
   fun k a => Finset.univ.sum fun i : Fin n => U k i * psi i a
 
+/-- Entrywise form of finite hidden-basis invariance. -/
+theorem visibleReducedDensity_hiddenMixFinite_entry_eq
+    {m n : Nat} (U : Matrix (Fin m) (Fin n) Complex)
+    (psi : Fin n -> CSpinor) (hU : FiniteHiddenColumnIsometry U)
+    (a b : Fin 2) :
+    visibleReducedDensity (hiddenMixFinite U psi) a b =
+      visibleReducedDensity psi a b := by
+  have lhs_rewrite :
+      visibleReducedDensity (hiddenMixFinite U psi) a b =
+        Finset.univ.sum (fun k : Fin m =>
+          (Finset.univ.sum fun i : Fin n => U k i * psi i a) *
+            (Finset.univ.sum fun j : Fin n =>
+              starRingEnd Complex (U k j) * starRingEnd Complex (psi j b))) := by
+    unfold visibleReducedDensity finBundleMomentum hiddenMixFinite rankOneHermitian
+    simp +decide [Matrix.vecMulVec]
+    erw [Finset.sum_apply, Finset.sum_apply]
+    rfl
+  have lhs_fubini :
+      visibleReducedDensity (hiddenMixFinite U psi) a b =
+        Finset.univ.sum (fun i : Fin n =>
+          Finset.univ.sum (fun j : Fin n =>
+            (Finset.univ.sum fun k : Fin m =>
+              U k j * starRingEnd Complex (U k i)) *
+                (psi j a * starRingEnd Complex (psi i b)))) := by
+    rw [lhs_rewrite]
+    simp only [Finset.sum_mul, Finset.mul_sum]
+    rw [Finset.sum_comm]
+    apply Finset.sum_congr rfl
+    intro i _
+    rw [Finset.sum_comm]
+    apply Finset.sum_congr rfl
+    intro j _
+    apply Finset.sum_congr rfl
+    intro k _
+    ring
+  simp_all +decide [FiniteHiddenColumnIsometry]
+  rw [← lhs_rewrite, visibleReducedDensity, finBundleMomentum, Finset.sum_apply,
+    Finset.sum_apply]
+  unfold rankOneHermitian
+  simp +decide [Matrix.vecMulVec]
+
 /--
 Finite hidden basis changes preserve the visible reduced density.
 
@@ -136,7 +177,8 @@ theorem visibleReducedDensity_hiddenMixFinite_eq
     (psi : Fin n -> CSpinor) (hU : FiniteHiddenColumnIsometry U) :
     visibleReducedDensity (hiddenMixFinite U psi) =
       visibleReducedDensity psi := by
-  sorry
+  ext a b
+  exact visibleReducedDensity_hiddenMixFinite_entry_eq U psi hU a b
 
 /--
 Finite hidden basis changes therefore preserve the Pluecker determinant mass.

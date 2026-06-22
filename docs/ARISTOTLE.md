@@ -40,8 +40,53 @@ not ask Aristotle to prove a statement that is probably malformed,
 convention-mismatched, or mathematically false unless the purpose is
 counterexample search.
 
+## Semantic context-pack preflight
+
+Before preparing a nontrivial Aristotle submission, query the local semantic
+index over this repo's docs and Lean files, plus the scoped null-edge paper
+index. This should replace broad manual context dumps whenever possible.
+
+Refresh the indexes after meaningful doc or Lean edits:
+
+```powershell
+$py = "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+& $py Scripts/lit/neo4j_doc_search.py
+& $py Scripts/lit/neo4j_paper_search.py
+```
+
+Create a focused context pack for the target:
+
+```powershell
+$py = "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+& $py Scripts/aristotle/make_context_pack.py `
+  --query "Dirac slash bundle momentum squares to the Pluecker scalar" `
+  --slug dirac-pluecker
+```
+
+The output lands in `AgentTasks/context-packs/`. Include that Markdown file in
+the Aristotle submission and cite it from the task note. The pack is evidence
+for context selection, not proof: still review theorem statements, convention
+choices, and source claims manually.
+
+Paper search is scoped by default to this project's collections
+`9W59V3K9` and `null-edge-lit`. Use `--all-papers` only when you intentionally
+want the shared Neo4j graph to return other projects' papers.
+
+If the scripts report missing `NEO4J_URI`, `NEO4J_USERNAME`, or
+`NEO4J_PASSWORD`, run them from a shell that inherits the Windows user
+environment, or use the MCP/Claude session where Neo4j is already configured.
+
 ## Submission tips
 
+- Default to a focused standalone package for proof-only jobs whose target can
+  be isolated to Mathlib plus a few copied definitions. Recent long-running
+  jobs showed a recurring failure mode: Aristotle spends the budget on a full
+  `PhysicsSM` build, then times out before proof search. Use the full-repo
+  package only when the target genuinely depends on many project modules.
+- Use `Scripts/prepare_aristotle_focused_submission.ps1` for isolated finite
+  algebra, matrix, list, finset, or small API-wrapper targets. The helper writes
+  a tiny Lake project under `AgentTasks/aristotle-submit/` with only Mathlib and
+  the Lean files you explicitly copy in.
 - Prefer `Scripts/prepare_aristotle_submission.ps1` to create a clean submission
   copy under `AgentTasks/aristotle-submit/`. The CLI archives the project
   directory, so stale `AgentTasks/aristotle-output/` extracts, `.lake`, old
@@ -56,6 +101,34 @@ counterexample search.
   expected modules, and submission-project paths immediately in the task file.
 - Transient upload or SSL errors can happen. Check `aristotle list` before
   retrying so duplicate jobs are not created.
+
+Focused-package pattern:
+
+```powershell
+pwsh Scripts/prepare_aristotle_focused_submission.ps1 `
+  -JobName null-edge-gram-cauchy-binet-core-20260621 `
+  -RootModule NullEdgeGramCore `
+  -SourceRoot AgentTasks/aristotle-standalone/null-edge-gram-cauchy-binet-core-20260621 `
+  -LeanPath NullEdgeGramCore/WeightedCauchyBinet.lean `
+  -TaskNote AgentTasks/null-edge-gram-weighted-cauchy-binet-core-aristotle-2026-06-21.md
+```
+
+For this pattern, the standalone source root should already contain a small
+Lean file whose imports are limited to `Mathlib` and other files in the same
+focused package. Do not point it at a `PhysicsSM/Draft/...` target that still
+imports the full project; that recreates the same build-budget problem.
+
+When submitting a focused package, tell Aristotle to run the narrow command
+first:
+
+```text
+lake env lean NullEdgeGramCore/WeightedCauchyBinet.lean
+```
+
+Avoid asking for a full `lake build` until after the proof holes are closed.
+If Aristotle starts by building the entire project and hits a long build error,
+use `aristotle continue --mode instruct` to ask it to stop waiting and return
+the current target file, then resubmit a focused package.
 
 Preferred task-note metadata block:
 

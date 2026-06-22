@@ -48,6 +48,36 @@ proofs.
 
 ## Aristotle submission packages
 
+For proof-only jobs that can be isolated to Mathlib and a few copied
+definitions, prefer the focused helper:
+
+```powershell
+pwsh Scripts/prepare_aristotle_focused_submission.ps1 `
+  -JobName null-edge-gram-cauchy-binet-core-20260621 `
+  -RootModule NullEdgeGramCore `
+  -SourceRoot AgentTasks/aristotle-standalone/null-edge-gram-cauchy-binet-core-20260621 `
+  -LeanPath NullEdgeGramCore/WeightedCauchyBinet.lean `
+  -TaskNote AgentTasks/null-edge-gram-weighted-cauchy-binet-core-aristotle-2026-06-21.md
+```
+
+This creates a tiny Lake project under `AgentTasks/aristotle-submit/` with
+Mathlib and the explicitly listed Lean files. It is the preferred path for
+finite algebra proof jobs, because full PhysicsSM submissions can spend the
+Aristotle budget building unrelated modules.
+
+Before nontrivial submissions, generate a semantic context pack from the local
+Neo4j doc/Lean and scoped paper indexes:
+
+```powershell
+$py = "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+& $py Scripts/aristotle/make_context_pack.py `
+  --query "target theorem or research branch" `
+  --slug short-target-name
+```
+
+Include the resulting `AgentTasks/context-packs/*.md` file in the submission
+instead of broad duplicated context.
+
 Use `Scripts/prepare_aristotle_submission.ps1` to create a slim project copy
 under `AgentTasks/aristotle-submit/` before calling Aristotle:
 
@@ -102,12 +132,17 @@ Scripts/
   pre-commit.cmd        - Windows wrapper for a repo-local pre-commit cache
   pre-commit.ps1        - run pre-commit with a repo-local cache
   check_forbidden_lean_tokens.py - comment-aware Lean placeholder scanner
+  prepare_aristotle_focused_submission.ps1 - create a tiny proof-only Aristotle package
   prepare_aristotle_submission.ps1 - create a slim Aristotle project copy
   MCP_SERVERS.md        - MCP server reference (scholarly/zotero/neo4j/local-qwen)
   mcp/
     mcp_call.py         - minimal stdio MCP client for ad-hoc tool calls
   aristotle/
     integrate_completed.py - fetch, inspect, and optionally integrate Aristotle outputs
+    make_context_pack.py - create semantic context packs for Aristotle jobs
+  lit/
+    neo4j_doc_search.py - semantic search over this repo's docs and Lean chunks
+    neo4j_paper_search.py - scoped semantic search over paper nodes
   oracle/
     sage_roots.py       — generate root system fixtures via SageMath
     lieart_branching.py — generate branching rule fixtures via LieART (Mathematica)

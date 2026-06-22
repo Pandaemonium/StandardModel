@@ -146,3 +146,40 @@ files but no `.lake` folder. This is expected from
 `Scripts/prepare_aristotle_submission.ps1`, which intentionally excludes local
 build artifacts and dependency caches. If dependency resolution fails, retry
 with an alternate package strategy.
+
+## Cycle-1 status note
+
+Checked 2026-06-21 after the first 15-minute goal-cycle wait. Aristotle still
+reported task `201f5535-84f3-4d85-997f-4bd0a2d1dd69` as `IN_PROGRESS`, but the
+UI/log showed the same build-budget failure mode as the Gram-weighted job: a
+full project build failed after a long timeout, followed by a long targeted
+`lake build PhysicsSM.Draft.NullEdgeTwoTwistorHiddenChannelAristotle`.
+
+Two client-side attempts to fetch or instruct the running task timed out:
+
+```text
+aristotle continue --mode instruct --wait 7a9ae403-7a8c-44ee-8c65-570d71865a3c ...
+aristotle show 7a9ae403-7a8c-44ee-8c65-570d71865a3c --task 201f5535-84f3-4d85-997f-4bd0a2d1dd69 --limit 40
+```
+
+Do not assume this task is doing useful proof search unless a later status check
+shows returned code. If it remains stuck, resubmit the main finite
+hidden-isometry theorem as a focused standalone Mathlib package, then port the
+proof back into the PhysicsSM wrapper.
+
+Canceled 2026-06-21 with:
+
+```text
+aristotle cancel --task-id 201f5535-84f3-4d85-997f-4bd0a2d1dd69
+```
+
+Focused replacement prepared:
+
+```text
+AgentTasks/null-edge-hidden-isometry-core-aristotle-2026-06-21.md
+AgentTasks/aristotle-submit/null-edge-hidden-isometry-core-20260621-project
+```
+
+Focused replacement submitted as Aristotle project
+`34463997-1e52-4f88-be99-0c96651d7ddb`, task
+`a4870afc-c25c-4488-9a19-ee2088dc5fac`.

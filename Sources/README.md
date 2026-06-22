@@ -81,6 +81,10 @@ subdirectory, recording:
   post-spinor-geometry next-wave plan, including promotion criteria, dynamics
   targets, twistor/projective targets, diamond composition, cochains, and graph
   gravity observables.
+- `Null_Edge_Causal_Graph_Publication_Plan.md` - candidate publications for the
+  program (P1-P11), each labeled banked / near / synthesis / aspirational, with
+  the trusted-vs-draft Lean anchors, lead venue, and claim boundary; plus a
+  recommended sequencing.
 - `Null_Edge_Attachment_Extraction_2026-06-21.md` - triage of the attached
   ChatGPT synthesis note, separating redundant material from useful theorem
   targets, numerical pilots, and reference follow-ups.

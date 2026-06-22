@@ -12,6 +12,8 @@ operational detail lives in linked docs:
 - Build, toolchain pin, Windows fix, verification commands:
   [`docs/BUILD.md`](docs/BUILD.md)
 - Aristotle submission/integration mechanics: [`docs/ARISTOTLE.md`](docs/ARISTOTLE.md)
+- Lean MCP tooling (live LSP goals/diagnostics + Mathlib/PhysLean search):
+  [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md)
 - Research/MCP tooling (literature search, Zotero, Neo4j, local LLM):
   [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md)
 
@@ -44,8 +46,8 @@ Sources/  Scripts/  AgentTasks/  Index/
 
 ## Trusted vs draft code
 
-- Trusted theorem files must compile without `s o r r y`, `a d m i t`, fake axioms, or
-  hidden assumptions.
+- Trusted theorem files must compile without `s o r r y`, `a d m i t`, fake
+  `a x i o m` declarations, or hidden assumptions.
 - Draft files may contain `s o r r y` if accompanied by a useful proof plan or
   failure note. A `s o r r y` is a handoff marker, not success.
 - It is acceptable to stop after inserting a documented `s o r r y` when stuck - do
@@ -81,6 +83,10 @@ report the issue.
 
 1. Read the issue, task file, nearby Lean files, and relevant source notes.
 2. Search existing mathlib and project declarations before creating new ones.
+   Prefer the Lean MCP tools over blind grep: `lean-lsp`
+   (`lean_leansearch`/`lean_loogle`/`lean_leanfinder`/`lean_state_search`, and
+   `lean_local_search` to confirm a name exists) and `lean-explore`
+   (offline semantic search over Mathlib **and PhysLean**).
 3. Identify the smallest useful target statement.
 4. Add or modify definitions only when necessary.
 5. State the theorem precisely.
@@ -111,8 +117,9 @@ passed unless it was actually run.
 
 ## Lean style
 
-Prefer mathlib style and names. Search before defining new abstractions,
-especially under `Mathlib.Algebra.*`, `Mathlib.LinearAlgebra.*` (incl.
+Prefer mathlib style and names. Search before defining new abstractions
+(use the `lean-lsp` / `lean-explore` MCP search tools; see the Lean workflow
+above), especially under `Mathlib.Algebra.*`, `Mathlib.LinearAlgebra.*` (incl.
 `CliffordAlgebra.*`, `RootSystem.*`), `Mathlib.Algebra.Lie.*`, and
 `Mathlib.RepresentationTheory.*`.
 
@@ -199,18 +206,51 @@ search, clustered `s o r r y`s, unclear intermediate lemmas, possible
 counterexamples, or paper-proof formalization. Do not weaken a statement just to
 make progress - hand it to Aristotle instead.
 
+For proof-only targets that can be isolated to Mathlib plus a few copied
+definitions, prefer a focused standalone Aristotle package. Full `PhysicsSM`
+submission packages can spend Aristotle's budget on project builds before proof
+search begins. Use the full-repo package only when the target truly needs the
+project import graph.
+
+Before a nontrivial Aristotle submission, generate a semantic context pack with
+`Scripts/aristotle/make_context_pack.py` unless the target is tiny and already
+self-contained. Include the pack in the submission instead of broad duplicated
+repo context. Refresh `Scripts/lit/neo4j_doc_search.py` after meaningful doc or
+Lean edits; paper search is scoped to the null-edge collections by default.
+
 Full mechanics (submission helper, task-note metadata block, integration helper,
 post-integration checklist, preferred loop) are in
 [`docs/ARISTOTLE.md`](docs/ARISTOTLE.md). The Lean kernel checks the proof, not
 that the statement is the intended one - semantic alignment is the reviewing
 agent's responsibility.
 
-## Research tooling (MCP)
+## Research and Lean tooling (MCP)
 
-Literature search, Zotero, the Neo4j knowledge graph, and a local LLM are wired
-as MCP servers; see [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md) for the
-servers, tools, and the search -> triage -> Zotero -> Neo4j workflow. These are
-research/developer tooling, not part of the Lean build.
+Six MCP servers are wired in [`.mcp.json`](.mcp.json); full setup and tool lists
+are in [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md). None are part of the
+Lean build, and all load at session start - if one is added or changed
+mid-session, reconnect with `/mcp` (or drive it out of session via
+`Scripts/mcp/mcp_call.py`).
+
+Two help directly with proofs:
+
+- `lean-lsp` - the live Lean language server on this repo: `lean_goal` (proof
+  state at a position; the most useful one), `lean_diagnostic_messages`,
+  `lean_hover_info`, `lean_completions`, `lean_term_goal`, `lean_build`, plus
+  Mathlib search via `lean_local_search` / `lean_leansearch` / `lean_loogle` /
+  `lean_leanfinder` / `lean_state_search` / `lean_hammer_premise`. First call
+  cold-starts `lake serve`, so goal/diagnostic tools lag until the project is
+  built; the search tools are instant. Use it to check goals and find lemmas
+  before preparing an Aristotle handoff rather than churning.
+- `lean-explore` - offline semantic search over Lean 4 declarations in Mathlib
+  **and PhysLean** (the physics library `lean-lsp`'s online search does not
+  index): `search_summary` first, then `get_source_code` / `get_docstring` /
+  `get_dependencies` on the hits you want. Runs on the local Intel Arc GPU.
+
+The rest are research/developer tooling: literature search, Zotero, the Neo4j
+knowledge graph, and a local LLM; see
+[`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md) for the search -> triage ->
+Zotero -> Neo4j workflow.
 
 When adding papers, avoid duplicates: use the canonical `paper_key` = bare Zotero
 item key (no `zotero:` prefix), normalize `arxiv_id`/`doi`, and run the low-cost

@@ -77,7 +77,8 @@ theorem eventAmplitude_union_of_disjoint [DecidableEq Omega]
     (hAB : Disjoint A B) :
     eventAmplitude amp (A ∪ B) =
       eventAmplitude amp A + eventAmplitude amp B := by
-  sorry
+  unfold eventAmplitude
+  exact Finset.sum_union hAB
 
 /-- The decoherence functional is additive in its left event argument. -/
 theorem decoherenceFunctional_union_left_of_disjoint [DecidableEq Omega]
@@ -85,7 +86,9 @@ theorem decoherenceFunctional_union_left_of_disjoint [DecidableEq Omega]
     (hAB : Disjoint A B) :
     decoherenceFunctional amp (A ∪ B) C =
       decoherenceFunctional amp A C + decoherenceFunctional amp B C := by
-  sorry
+  unfold decoherenceFunctional
+  rw [eventAmplitude_union_of_disjoint amp A B hAB]
+  ring
 
 /-- The decoherence functional is additive in its right event argument. -/
 theorem decoherenceFunctional_union_right_of_disjoint [DecidableEq Omega]
@@ -93,7 +96,9 @@ theorem decoherenceFunctional_union_right_of_disjoint [DecidableEq Omega]
     (hAB : Disjoint A B) :
     decoherenceFunctional amp C (A ∪ B) =
       decoherenceFunctional amp C A + decoherenceFunctional amp C B := by
-  sorry
+  unfold decoherenceFunctional
+  rw [eventAmplitude_union_of_disjoint amp A B hAB, map_add]
+  ring
 
 /--
 Finite grade-2 quantum-measure sum rule for three pairwise-disjoint events.
@@ -105,7 +110,14 @@ theorem qMeasure_grade2_sum_rule_of_pairwise_disjoint [DecidableEq Omega]
       qMeasure amp (A ∪ B) + qMeasure amp (A ∪ C) +
         qMeasure amp (B ∪ C) -
         qMeasure amp A - qMeasure amp B - qMeasure amp C := by
-  sorry
+  have hABC : Disjoint (A ∪ B) C := Finset.disjoint_union_left.mpr ⟨hAC, hBC⟩
+  unfold qMeasure complexAbsSq
+  rw [eventAmplitude_union_of_disjoint amp (A ∪ B) C hABC,
+    eventAmplitude_union_of_disjoint amp A B hAB,
+    eventAmplitude_union_of_disjoint amp A C hAC,
+    eventAmplitude_union_of_disjoint amp B C hBC]
+  simp only [map_add]
+  ring
 
 /-! ## Strong positivity -/
 
@@ -135,7 +147,14 @@ theorem decoherenceQuadraticForm_eq_absSq [DecidableEq Omega] {n : Nat}
         (Finset.univ.sum fun i : Fin n =>
           (starRingEnd Complex) (c i) *
             eventAmplitude amp (events i)) := by
-  sorry
+  unfold decoherenceQuadraticForm decoherenceMatrix decoherenceFunctional complexAbsSq
+  rw [map_sum, Finset.sum_mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _
+  apply Finset.sum_congr rfl
+  intro j _
+  simp only [map_mul, RingHomCompTriple.comp_apply, RingHom.id_apply]
+  ring
 
 /-- Strong positivity of the finite rank-one decoherence functional. -/
 theorem decoherenceFunctional_stronglyPositive_gram [DecidableEq Omega]
@@ -160,7 +179,8 @@ theorem eventAmplitude_product [DecidableEq Omega] [DecidableEq Lambda]
     (A : FiniteEvent Omega) (B : FiniteEvent Lambda) :
     eventAmplitude (productAmplitude ampA ampB) (A.product B) =
       eventAmplitude ampA A * eventAmplitude ampB B := by
-  sorry
+  unfold eventAmplitude productAmplitude
+  rw [Finset.product_eq_sprod, Finset.sum_product, ← Finset.sum_mul_sum]
 
 /--
 The rank-one decoherence functional is closed under tensor products on
@@ -174,7 +194,9 @@ theorem decoherenceFunctional_product_rectangle
       (A.product B) (C.product D) =
       decoherenceFunctional ampA A C *
         decoherenceFunctional ampB B D := by
-  sorry
+  unfold decoherenceFunctional
+  rw [eventAmplitude_product, eventAmplitude_product, map_mul]
+  ring
 
 /-- Quantum measures multiply on rectangular finite events. -/
 theorem qMeasure_product_rectangle
@@ -183,7 +205,9 @@ theorem qMeasure_product_rectangle
     (A : FiniteEvent Omega) (B : FiniteEvent Lambda) :
     qMeasure (productAmplitude ampA ampB) (A.product B) =
       qMeasure ampA A * qMeasure ampB B := by
-  sorry
+  unfold qMeasure complexAbsSq
+  rw [eventAmplitude_product, map_mul]
+  ring
 
 end PhysicsSM.Draft.NullEdgeQuantumMeasureFinite
 

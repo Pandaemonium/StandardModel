@@ -63,3 +63,44 @@ outputs are generated and git-ignored.
   takes a few minutes. Suited to offline/overnight batch use, not interactive.
 - Approval/ingest is intentionally a separate, not-yet-built step. Keep
   concept/claim graph edges human-curated; do not let the harness write them.
+- Embed step (wired in): after any ingest adds `Paper` nodes to Neo4j, run the
+  idempotent embedder so new papers are semantically searchable. It is cheap when
+  nothing is new (it skips the model load). When `lit_ingest.py` is built, it
+  should call `neo4j_paper_search.ensure_embeddings()` as its final action.
+
+  ```bash
+  PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+  "$PY" Scripts/lit/neo4j_paper_search.py        # embed new papers + ensure index
+  ```
+
+  See [`../MCP_SERVERS.md`](../MCP_SERVERS.md) -> "Semantic vector search over
+  papers" for the model, index, and query usage.
+
+## Semantic repo and paper search
+
+Two Neo4j-backed semantic search helpers are available when using the
+lean-explore tool-env Python:
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+"$PY" Scripts/lit/neo4j_doc_search.py --query "Dirac slash Pluecker scalar" --format markdown
+"$PY" Scripts/lit/neo4j_paper_search.py --query "spin foam simplicity" --format json
+```
+
+`neo4j_doc_search.py` searches this repo's own docs and Lean chunks under the
+isolated `:NEDoc` / `:NEChunk` labels. `neo4j_paper_search.py` searches papers
+and scopes query results to the null-edge collections (`9W59V3K9`,
+`null-edge-lit`) by default; pass `--all-projects` only when cross-project paper
+recall is intentional.
+
+Before submitting a nontrivial Aristotle job, create a compact context pack:
+
+```bash
+"$PY" Scripts/aristotle/make_context_pack.py \
+    --query "target theorem or research branch" \
+    --slug short-target-name
+```
+
+The generated `AgentTasks/context-packs/*.md` file is meant to travel with the
+Aristotle submission so proof jobs get targeted context without large duplicated
+repo snapshots.
