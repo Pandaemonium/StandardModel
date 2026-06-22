@@ -46,11 +46,10 @@ passed the semantic/convention review required to be a trusted public surface.
 | P4 | Luminal checkerboard dynamics, formalized | Banked | ITP / math-phys |
 | P5 | Finite quantum measure on causal events | Near | Foundations / quantum info |
 | P6 | Flavor as an internal Gram-overlap problem | Synthesis | Physics (flavor), framed as structural |
-| P7 | Relative-entropy monotonicity as a shared spine | Synthesis | Foundations / QI + gravity |
+| P7 | Observer channels and relative-entropy monotonicity | Synthesis | Foundations / QI + gravity |
 | P8 | The null-edge causal graph program (manifesto) | Synthesis | Foundations / quantum gravity |
 | P9 | Cosmological-constant source visibility from diamond closure | Aspirational | Quantum gravity |
 | P10 | Generations from the exceptional Jordan / triality layer | Aspirational | Math-phys / particle |
-| P11 | A semantic proof-and-literature pipeline for a physics formalization | Synthesis | ITP / tools track |
 
 ## Part I: formalization papers (banked or near-banked)
 
@@ -137,10 +136,12 @@ of the defect, and vertical and horizontal composition laws for path-pair
 defects.
 
 Remaining. The decisive structural test queued in
-`PhysicsSM.Draft.CausalDiamondHigherGaugeAristotle`: whether the vertical and
-horizontal composition laws satisfy the double-category / crossed-module
-interchange law. A positive result upgrades the paper to a 2-categorical
-discrete-gauge statement; a negative result is a publishable obstruction.
+`PhysicsSM.Draft.NullEdgePathPairInterchange`: the vertical and horizontal
+composition laws satisfy the double-category-style interchange law, and the
+Abelian `2 x 2` grid defect factors as expected. The next step is no longer
+"does interchange hold?" but the crossed-module / fake-flatness wrapper:
+identify which finite `H`-valued 2-cell labels, endpoint actions, and
+surface-transport conditions are actually forced by the trusted path-pair API.
 
 Lead venue. An interactive-theorem-proving venue or a discrete-gravity /
 classical-and-quantum-gravity venue.
@@ -240,11 +241,17 @@ Claim boundary. The Plucker / Gram identities are finite algebra. No claim of
 predicted Yukawa couplings or mixing angles is made unless the internal overlaps
 are derived, not assigned.
 
-### P7. Relative-entropy monotonicity as a shared spine
+### P7. Observer channels and relative-entropy monotonicity
 
-Core claim (new, from the 2026-06-21 semantic cross-search). Two of the
-program's branches that look independent are corollaries of one principle,
-monotonicity of relative entropy:
+Core claim. Two of the program's branches that look independent are controlled
+by one instruction:
+
+```text
+define the observer channel first.
+```
+
+Once the visible/internal or diamond/source observer map is named, both branches
+ask for monotonicity of information under that map:
 
 ```text
 gravity / source branch : averaged null energy condition (ANEC)
@@ -257,24 +264,56 @@ entropy applied to a modular Hamiltonian; the proper-time branch restricts its
 data-processing principle. The paper argues that the allowed-dynamics question in
 both branches has one answer and one guardrail.
 
+The new useful sharpening is recoverability. Petz recovery and the
+Fawzi-Renner approximate-Markov-chain theorem turn "approximately invisible to
+the observer" into a quantitative statement: the relative-entropy loss is small
+exactly when the coarse-graining is approximately reversible. This gives P7 a
+finite diagnostic for P9: source invisibility should mean not merely that a
+source functional vanishes, but that the hidden bookkeeping is recoverable from
+the observer algebra up to a measured information-loss gap.
+
 Banked / near Lean. The visible concurrence side has finite footing:
 `NullEdgeCelestialMixednessAristotle` reduced densities, hidden-isometry
 invariance, and the trusted Plucker determinant. The ANEC side is cited, not
-formalized.
+formalized. The next finite Lean layer should avoid full Type-III QFT and start
+with matrix channels:
+
+- `massRatio_eq_sqrt_one_minus_blochNormSq`;
+- `relativeEntropy_partialTrace_monotone`, or a focused finite data-processing
+  lemma if the mathlib API supports it;
+- `massRatio_monotone_under_unital_bloch_contraction`;
+- `petzRecoverable_iff_relativeEntropyLoss_zero`, if a small finite matrix
+  statement can be isolated;
+- `recoverabilityGap_bounds_sourceVisibilityDefect`, initially as a definition
+  and conjectural inequality.
 
 Remaining. A precise statement of which finite channels are LOCC on the
-visible/internal cut; the explicit qubit-channel construction (see Ruskai
-`quant-ph/0101003`, which gives the affine Bloch-ball action and extreme points
-without needing general CPTP theory).
+visible/internal cut; the explicit qubit-channel construction; and a finite
+observer-channel API shared by P7 and P9. Ruskai `quant-ph/0101003` gives the
+affine Bloch-ball form and is the practical route for the celestial qubit before
+we attempt a general CPTP formalization.
 
 Lead venue. Foundations / quantum information with a gravity angle.
 
-Literature anchors. Faulkner et al. ANEC (`1605.08072`); Jacobson
-entanglement equilibrium; Connes-Rovelli thermal time; Ruskai-Szarek-Werner
-qubit CPTP maps.
+Literature anchors. Faulkner et al. ANEC (`1605.08072`, Zotero `B68T629C`);
+Ceyhan-Faulkner QNEC/ANEC recovery (`1812.04683`, `TFGTQQTU`); Casini's
+relative-entropy Bekenstein bound (`0804.2182`, `S9FTNNRU`); Fawzi-Renner
+recoverability (`1410.0664`, `BHNTND4W`); Ruskai-Szarek-Werner qubit CPTP
+maps; Jacobson entanglement equilibrium; Connes-Rovelli thermal time.
+
+Optional extensions. The QGT/QFI and resource-theory material is promising but
+should remain gated. The safe finite claim is that the celestial `CP^1` layer
+already has a Fubini-Study/Berry geometry. The stronger claim that mass is an
+asymmetry or coherence monotone should wait until a resource theory and its free
+operations are fixed. Yamaguchi-Mitsuhashi-Shitara-Tajima (`2411.04766`,
+`45FTB5VF`) is a useful source if that gate opens. The Renyi-alpha family
+(`1310.7178`, `MKJFW9HM`) is likewise a theorem menu, not a physics claim: only
+parameter ranges with data processing should be allowed.
 
 Claim boundary. The unification is conceptual plus finite-algebraic. The ANEC
-itself is imported QFT, not reproved here.
+and QNEC themselves are imported QFT/operator-algebra theorems, not reproved
+here. The finite paper proves or defines Type-I matrix analogues and uses them
+as disciplined targets for later diamond-source work.
 
 ### P8. The null-edge causal graph program (manifesto)
 
@@ -307,16 +346,74 @@ is not yet proved. They should be promoted to Part II only when the gate clears.
 
 ### P9. Cosmological-constant source visibility from diamond closure
 
-Gate. A finite visibility lemma: coherent / internal vacuum bookkeeping that
-satisfies closure (`sum_f B_f = 0`) contributes only boundary-like or mean-zero
-diamond source, while a visible Plucker excitation appears as a local closure
-violation / diamond defect. This is the program's highest-leverage,
+Gate. A finite visibility lemma that separates three notions that should not be
+conflated:
+
+```text
+visible momentum closure  C = sum_i w_i n_i = 0
+BF / surface closure      sum_f B_f = 0
+observer invisibility     source functional vanishes or is boundary-only
+```
+
+The completed spinor-network closure job shows that visible closure is a
+rest-frame condition, not source invisibility:
+
+```text
+pairwise angular mass = ((sum_i w_i)^2 - |C|^2) / 4.
+```
+
+Thus `C = 0` usually means a massive rest-frame fan, not no matter. The P9 gate
+is sharper: coherent / internal or BF-closed bookkeeping should contribute only
+boundary-like or mean-zero diamond source, while visible Plucker mass/energy
+should appear as a bulk source term. This is the program's highest-leverage,
 highest-risk physics target; it collides directly with everpresent-Lambda
 causal-set cosmology.
 
 Footing. Spinor-network closure as a moment-map constraint
 (Dupuis-Speziale-Tambornino `1201.2120`); the trusted `SL(2,C)` invariance of the
-determinant mass is the covariance half of the closure identity.
+determinant mass is the covariance half of the closure identity. Aristotle
+project `f1be6e52-31cc-411b-86b7-a841b1cfd318` completed the finite
+spinor-network closure identity as a focused standalone proof; it still needs
+repo integration and semantic review before being cited as part of the trusted
+surface.
+
+Next finite definitions. Define a `DiamondSourceVisibility` API before claiming
+cosmology:
+
+- finite diamond / screen;
+- visible fan and closure vector on that screen;
+- BF/surface closure predicate;
+- boundary-exact vs bulk source functional;
+- observer/coarse-graining map;
+- source pairing with a diamond holonomy or curvature defect.
+
+First safe theorem targets:
+
+- `closed_visibleFan_mass_eq_restEnergy`;
+- `boundaryExact_source_eq_zero`;
+- `bfClosure_implies_no_bulkDivergence`;
+- `visiblePluckerMass_nonzero_of_noncollinear`;
+- `relativeEntropyDataProcessing_for_diamondObserver`, as the ANEC/QNEC
+  positivity gate;
+- `sjDiamondReferenceState_def`, first as a finite matrix reference object;
+- `diamondRelativeEntropy_secondDifference_nonnegative`, after the observer
+  channel and reference state are fixed;
+- `petzRecoverabilityGap_controls_sourceVisibility`, initially as a finite
+  definition and Aristotle strategy target.
+
+Information-theoretic sharpening. The Sorkin-Johnston causal-set entropy papers
+(`1311.7146`, `8TA2W3MV`; `1611.10281`, `G2JGSV9B`) give P9 a native discrete
+reference-state candidate: a finite diamond can use an SJ-style correlation
+state as the reference `sigma` in the relative entropy. The caveat is essential:
+the SJ entropy literature needs Pauli-Jordan spectral truncation to recover an
+area law in the tested causal-set diamonds. Any P9 source-visibility pilot must
+state the truncation or explicitly work before the area-law claim.
+
+Recoverability gate. Approximate source invisibility should be measured by a
+relative-entropy loss or conditional-mutual-information gap, not only by a zero
+source functional. If the Petz or rotated-Petz recovery map cannot approximately
+reconstruct hidden bookkeeping from the observer algebra, then the hidden sector
+is not really invisible; it has merely been ignored.
 
 Decision threshold. If coherent hidden bookkeeping sources a volume term, or the
 residual inherits the everpresent-Lambda amplitude tension without a suppression
@@ -350,40 +447,19 @@ mixing data would weaken or kill the branch.
 - Higher-dimensional checkerboard universality (the dynamics theorem behind P4);
   gated on a scaling/renewal statement, not yet finite.
 
-## P11. Methods: a semantic proof-and-literature pipeline
-
-Core claim. A reproducible tooling contribution: a local, offline-capable
-pipeline that fuses live Lean LSP goals/diagnostics, semantic search over Mathlib
-and PhysLean, and vector search over a project's own papers and Lean source in a
-Neo4j knowledge graph, accelerated on consumer Intel Arc (XPU) hardware, used to
-drive a proof-specialist agent (Aristotle) for a physics formalization.
-
-Footing. The pipeline exists and is wired in this repository (see
-[`../Scripts/MCP_SERVERS.md`](../Scripts/MCP_SERVERS.md)): `lean-lsp` and
-`lean-explore` MCP servers, the paper and document vector-search helpers
-(`Scripts/lit/neo4j_paper_search.py`, `Scripts/lit/neo4j_doc_search.py`), and the
-context-pack workflow for Aristotle submissions.
-
-Lead venue. An interactive-theorem-proving tools track, or a physics-software /
-formalization venue. The sound-use-of-AI-in-proof-discovery framing is explicitly
-in scope at several such venues.
-
-Claim boundary. The contribution is methodology and reproducibility, not new
-mathematics. Any theorem found with the pipeline still stands or falls on the
-Lean kernel.
-
 ## Recommended sequencing
 
 1. P1 first. It is the most banked, most self-contained, and underpins the rest.
    Promote the celestial-moment wrapper, then write the artifact paper.
-2. P3 and P4 in parallel. Both are trusted; P3 needs only the interchange-law
-   decision to know whether it is a 2-categorical paper or an obstruction note.
+2. P3 and P4 in parallel. Both are trusted at the core; P3 now has a
+   draft-integrated interchange law, so the next decision is whether the
+   crossed-module/fake-flatness layer is forced or merely optional packaging.
 3. P2 after a convention audit of the Dirac square-root cluster, since it is the
    program's most distinctive operator-level contribution.
 4. P7 as a short, high-signal synthesis note; it captures a genuinely new
    cross-branch observation and is cheap to write.
 5. P8 once P1-P4 exist to cite, so the manifesto rests on artifacts.
-6. P5, P6, P11 opportunistically; P9 and P10 only after their gates clear.
+6. P5 and P6 opportunistically; P9 and P10 only after their gates clear.
 
 ## Honesty rules for every candidate
 

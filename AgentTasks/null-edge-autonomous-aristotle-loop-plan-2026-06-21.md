@@ -9,6 +9,11 @@ autonomous loop with Aristotle while keeping the research program honest:
 definition work first, focused proof jobs second, and physics interpretation
 only after a finite theorem has a stable statement.
 
+For the overnight version of this loop, use
+`AgentTasks/null-edge-overnight-run-plan-2026-06-21.md`. That note adds the
+hourly cycle, semantic-search/literature cadence, manuscript-sketch blocks, and
+P9-specific gates.
+
 The immediate inputs are:
 
 - `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
@@ -47,6 +52,10 @@ The next autonomous batches should incorporate the newest program sharpening:
 - treat proper-time/concurrence monotonicity and ANEC/QNEC source visibility as
   two instances of the same relative-entropy/data-processing audit. Every such
   job must first name the observer channel or coarse-graining map;
+- add recoverability as the quantitative version of observer invisibility:
+  small relative-entropy loss, Petz/rotated-Petz recovery, or approximate
+  Markov structure should be the diagnostic for hidden bookkeeping that is
+  claimed to be invisible;
 - make `pathPairDefect_interchange` the next decisive higher-gauge theorem.
   If it holds, continue to crossed-module/fake-flatness wrappers; if it fails,
   record the obstruction;
@@ -60,6 +69,8 @@ The next autonomous batches should incorporate the newest program sharpening:
   coherent/internal bookkeeping satisfying `sum_f B_f = 0` should be
   boundary-like, while visible Pluecker excitations should appear as closure
   violation or diamond source defects.
+- for the discrete entropy side, use Sorkin-Johnston-style diamond reference
+  states only with explicit Pauli-Jordan truncation conventions;
 - add Hopf-link volume simplicity only as a spin-foam geometricity guardrail:
   define boundary-graph functionals and compare them with pairwise Pluecker
   simplicity plus closure, without claiming full Plebanski-sector isolation;
@@ -307,10 +318,10 @@ placeholder body (see the proof-job template precondition). A job is not
 | det-nonneg | finite bundle det is real `>= 0` | `Spinor/PluckerMass.lean` | (unsubmitted) | trusted PluckerMass | QUEUED | `lake env lean` + module build |
 | static-spine | `leftRightDiracBlock_sq_eq_pluckerMass`, `diracSlash_massless_iff_common_spinor_direction`, mass-shell projector bridge | `Draft/NullEdgeBundleDiracPluckerCore.lean` | (unsubmitted) | trusted PluckerMass, slash cores | QUEUED | `lake env lean` + module build |
 | celestial-moment | `fin_bundle_det_eq_bloch_minkowski_norm`, `mass_zero_iff_bloch_dipole_saturates` | `Spinor/CelestialPluckerMass.lean ?` | (unsubmitted) | trusted PluckerMass | QUEUED | `lake env lean` + module build |
-| spinor-network-closure | `pluckerMass_eq_energy_sq_sub_closureDefect_sq`, `closed_spinorFan_is_restFrame` | `NullEdgeSpinorNetworkClosure/Finite.lean` | `f1be6e52-31cc-411b-86b7-a841b1cfd318` | RUNNING | celestial-moment | focused standalone check + integration review |
+| spinor-network-closure | `pluckerMass_eq_energy_sq_sub_closureDefect_sq`, `closed_spinorFan_is_restFrame` | `NullEdgeSpinorNetworkClosure/Finite.lean` | `f1be6e52-31cc-411b-86b7-a841b1cfd318` | COMPLETE | celestial-moment | focused standalone check + integration review |
 | positive-grassmannian | `pluckerMinorVanishingPattern_refines_nullEdgeDegeneration`, `positiveOrderedFan_has_nonnegative_pairwiseMass` | `Draft/PositiveGrassmannianNullEdge.lean ?` | (unsubmitted) | trusted PluckerMass | QUEUED | `lake env lean` + module build |
 | reduced-density | `properTimeRate_eq_two_sqrt_det_visibleDensity` | `Draft/ReducedCelestialMixedness.lean ?` | (unsubmitted) | det-nonneg, exact trace norm | QUEUED | `lake env lean` + module build |
-| celestial-channel | `normSq_scalarBlochChannel`, `scalarChannel_massRatioSq_mono_of_contraction` | `NullEdgeCelestialScalarChannel/Finite.lean` | `d2ffbd94-bb7c-4582-94b5-1bafdc2ab481` | RUNNING | reduced-density | focused standalone check + integration review |
+| celestial-channel | `normSq_scalarBlochChannel`, `scalarChannel_massRatioSq_mono_of_contraction` | `NullEdgeCelestialScalarChannel/Finite.lean` | `d2ffbd94-bb7c-4582-94b5-1bafdc2ab481` | COMPLETE | reduced-density | focused standalone check + integration review |
 | simplicity-defect | `bivector_massDefect_eq_plucker` | `Draft/NullEdgeBivector.lean ?` | (unsubmitted) | core-design (BivectorB), EPRL/FK audit | QUEUED | `lake env lean` + module build |
 | hopf-volume | `hopfLinkVolumeSimplicity_functional`, `hopfLinkVolumeSimplicity_refines_pairwise_simplicity` | `Draft/NullEdgeHopfVolumeSimplicity.lean ?` | (unsubmitted) | simplicity-defect, boundary-graph defs | QUEUED | `lake env lean` + module build |
 | observable-nullity | `exact_one_cochain_has_trivial_cycle_holonomy`, `tree_phase_assignment_is_gauge_trivial` | `Draft/ObservableNullity.lean ?` | (unsubmitted) | - | QUEUED | `lake env lean` + module build |
@@ -318,13 +329,13 @@ placeholder body (see the proof-job template precondition). A job is not
 | edge-locality | `edgeNeighborN_finite`, `edgeNeighborN_subdiamond_mono` | `Draft/EdgeNeighborLocality.lean ?` | (unsubmitted) | finite causal-set defs | QUEUED | `lake env lean` + module build |
 | dbg-pilot | topological-Dirac vs Laplacian/message-passing simulation | script/design only | (unsubmitted) | topological-dirac | QUEUED | pilot report, no Lean trust claim |
 | diamond-source | `DiamondSourceVisibility` defs | design only | (unsubmitted) | - | QUEUED | API + dep graph note |
-| qnec-audit | `relativeEntropyDataProcessing_for_diamondObserver`, `visiblePluckerFlux_satisfies_discreteANEC`, `diamondRelativeEntropy_secondDifference_nonnegative` | design/proof split | (unsubmitted) | diamond-source, relative-entropy observer channel | QUEUED | source/entropy API + observer-channel proof split |
+| qnec-audit | `relativeEntropyDataProcessing_for_diamondObserver`, `visiblePluckerFlux_satisfies_discreteANEC`, `diamondRelativeEntropy_secondDifference_nonnegative`, `sjDiamondReferenceState_def`, `petzRecoverabilityGap_controls_sourceVisibility` | design/proof split | (unsubmitted) | diamond-source, relative-entropy observer channel | QUEUED | source/entropy API + observer-channel proof split |
 | super-dirac | `superDirac_sq_eq_laplacian_plus_curvature_plus_higgs` | `Draft/CausalSuperDirac.lean ?` | (unsubmitted) | static-spine, topological-dirac, diamond-source | QUEUED | `lake env lean` + module build |
 | spectral-triple-audit | `firstOrderCondition_fails_or_forces_YukawaLegality`, `higgsPhi_is_innerFluctuation_of_finiteDirac` | `Draft/CausalSuperDiracSpectralTripleAudit.lean ?` | (unsubmitted) | super-dirac | QUEUED | `lake env lean` + design note |
 | swerve-pilot | stochastic flip residual momentum diffusion | script/design only | (unsubmitted) | celestial-channel | QUEUED | pilot report, no Lean trust claim |
 | strategy | roadmap | - | `f5f8699c-...` | STRATEGY-ONLY | - | - |
-| strategy-v2 | complete strengthened-program proof scaffold | strategy/scaffold output | `ba66d47f-68d3-4752-b6a0-ac1f10830f5d` | RUNNING | current plan docs | roadmap output, no Lean trust claim |
-| physics-audit | semantic confidence scoring and comment/docstring suggestions | audit/comment output | `51bf086e-37da-441c-9657-75f15f6036c7` | RUNNING | current plan docs, null-edge theorem surface | audit table + comment-only patches, no theorem changes |
+| strategy-v2 | complete strengthened-program proof scaffold | strategy/scaffold output | `ba66d47f-68d3-4752-b6a0-ac1f10830f5d` | COMPLETE | current plan docs | roadmap output, no Lean trust claim |
+| physics-audit | semantic confidence scoring and comment/docstring suggestions | audit/comment output | `51bf086e-37da-441c-9657-75f15f6036c7` | COMPLETE | current plan docs, null-edge theorem surface | audit table + comment-only patches, no theorem changes |
 
 Keep the table current: every status change updates the matching row in the same
 edit that updates the task note. Independent rows (no shared `deps`) may run as

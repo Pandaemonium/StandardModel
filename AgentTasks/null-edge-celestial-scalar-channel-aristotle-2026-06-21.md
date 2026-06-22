@@ -67,9 +67,16 @@ aristotle:
   expected_module: NullEdgeCelestialScalarChannel.Finite
   submission_project: AgentTasks/aristotle-submit/null-edge-celestial-scalar-channel-20260621-project
   output_dir: AgentTasks/aristotle-output/d2ffbd94-bb7c-4582-94b5-1bafdc2ab481
-  status: running
+  status: complete_with_errors
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
 `d2ffbd94-bb7c-4582-94b5-1bafdc2ab481`; `aristotle tasks` reported task
 `f0360b7d-e1c9-4dd2-aa7d-7461f09d38c5` as `IN_PROGRESS`.
+
+Completed 2026-06-21 with Aristotle status `COMPLETE_WITH_ERRORS`, but the
+reported target file itself checks cleanly. Aristotle filled `normSq_nonneg`
+and `normSq_scalarBlochChannel` without changing theorem statements, and
+reported that `lake env lean NullEdgeCelestialScalarChannel/Finite.lean`
+succeeds with no warnings and no remaining proof holes. Inspect and verify
+locally before integration.

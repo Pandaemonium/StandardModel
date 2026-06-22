@@ -65,9 +65,17 @@ aristotle:
   expected_module: NullEdgeSpinorNetworkClosure.Finite
   submission_project: AgentTasks/aristotle-submit/null-edge-spinor-network-closure-20260621-project
   output_dir: AgentTasks/aristotle-output/f1be6e52-31cc-411b-86b7-a841b1cfd318
-  status: running
+  status: complete
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
 `f1be6e52-31cc-411b-86b7-a841b1cfd318`; `aristotle tasks` reported task
 `f46b9cc7-bf48-4bda-b3c1-7dbbe3678ec5` as `IN_PROGRESS`.
+
+Completed 2026-06-21. Aristotle reported that
+`pluckerMass_eq_energy_sq_sub_closureDefect_sq` was proved without changing
+the theorem statement. The target file reportedly passes
+`lake env lean NullEdgeSpinorNetworkClosure/Finite.lean` with no warnings and
+no remaining proof holes. The proof is finite algebra: expand `E^2`, expand
+`|C|^2`, use the unit-direction hypothesis to remove diagonal terms, and pair
+the symmetric off-diagonal double sum into the `i < j` angular-mass sum.

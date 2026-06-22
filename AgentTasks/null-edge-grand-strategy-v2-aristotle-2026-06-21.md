@@ -46,10 +46,25 @@ aristotle:
   expected_module: none
   submission_project: AgentTasks/aristotle-submit/null-edge-grand-strategy-v2-20260621-project
   output_dir: AgentTasks/aristotle-output/ba66d47f-68d3-4752-b6a0-ac1f10830f5d
-  status: running
+  status: complete
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
 `ba66d47f-68d3-4752-b6a0-ac1f10830f5d`; `aristotle tasks` reported task
 `1df25830-f75a-4091-b6d7-02ea6f8f4e33` as `QUEUED`, then `aristotle list`
 reported the project as `RUNNING`.
+
+Completed 2026-06-21. Aristotle reported a strategy/scaffold deliverable at:
+
+```text
+AgentTasks/null-edge-grand-strategy-v2-output.md
+```
+
+It also produced clearly labelled non-compiling handoff scaffolds under:
+
+```text
+PhysicsSM/Draft/NullEdgeRoadmap/
+```
+
+These outputs must be downloaded, inspected, and treated as roadmap material,
+not integrated Lean.

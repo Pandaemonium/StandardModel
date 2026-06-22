@@ -133,6 +133,37 @@ This also clarifies what the LOCC restriction in the concurrence branch is
 doing: it is not a separate ad hoc rule, but the channel class under which the
 chosen reduced observable is monotone.
 
+**2026-06-21 information-theory source additions.** Added the following to
+Zotero collection `9W59V3K9` and Neo4j: Faulkner-Leigh-Parrikar-Wang ANEC
+`B68T629C` (`1605.08072`), Ceyhan-Faulkner QNEC/ANEC `TFGTQQTU`
+(`1812.04683`), Casini relative-entropy Bekenstein bound `S9FTNNRU`
+(`0804.2182`), Fawzi-Renner recoverability `BHNTND4W` (`1410.0664`),
+Saravani-Sorkin-Yazdi spacetime entropy `8TA2W3MV` (`1311.7146`),
+Sorkin-Yazdi causal-set entropy `G2JGSV9B` (`1611.10281`),
+Yamaguchi-Mitsuhashi-Shitara-Tajima QGT/asymmetry `45FTB5VF`
+(`2411.04766`), and Audenaert-Datta alpha-z Renyi relative entropies
+`MKJFW9HM` (`1310.7178`).
+
+The most useful new handle is recoverability. Petz recovery and the
+Fawzi-Renner approximate-Markov-chain bound make "observer invisibility"
+quantitative. Exact or approximate source invisibility should correspond to
+small relative-entropy loss under the observer channel, equivalently to an
+exact or approximate recovery map. This is the finite meaning of "hidden
+bookkeeping is boundary-like/invisible" that P9 should test.
+
+The Sorkin-Johnston entropy papers give the diamond-source branch a native
+causal-set reference object. A finite P9 pilot can define a diamond reference
+state from an SJ-style correlation matrix and set `K_disc = -log sigma_diamond`.
+The caveat is also part of the target: the causal-set entropy examples need
+Pauli-Jordan spectral truncation to obtain area-law behavior, so any SJ-based
+source-visibility claim must name its truncation convention.
+
+The QGT/resource-theory and Renyi-alpha material stays gated. It is worth
+tracking because it may turn the celestial Fubini-Study/Berry layer into an
+asymmetry monotone, and because Renyi divergences provide a family of
+data-processing tests. But it becomes a program branch only after the resource
+theory/free operations or the admissible Renyi parameter region is specified.
+
 The same triage tightened several footholds. The Albert substrate already has
 trusted Lean support under `PhysicsSM.Algebra.Jordan.H3O` and related modules;
 the open generation gap is representation/Yukawa/mixing, not the existence of
@@ -695,6 +726,15 @@ a candidate for boundary-only contribution.
 - `bfClosure_satisfied_implies_boundaryDiamondPairing`: the separate BF-style
   source-visibility target for `sum_f B_f = 0`.
 
+**Status update, 2026-06-21.** Aristotle project
+`f1be6e52-31cc-411b-86b7-a841b1cfd318` completed the focused standalone proof
+of `pluckerMass_eq_energy_sq_sub_closureDefect_sq` without changing the theorem
+statement. It should be integrated after local inspection. The physics lesson is
+already clear: visible closure `C = 0` gives a rest-frame mass value, not source
+invisibility. The P9 source-visibility theorem must therefore be about
+BF/boundary/exact bookkeeping or an observer source functional, not merely about
+visible momentum closure.
+
 **Falsification.** This bridge fails if the spinor-network closure vector does
 not align with the Pluecker/celestial convention, if BF closure and visible
 momentum closure are conflated, or if closure-satisfying internal bookkeeping
@@ -992,10 +1032,10 @@ hypercharge neutrality of a `Ψ_L ⊗ H → Ψ_R` vertex from existing charge as
 **Literature (tag `mass-twistor`).** The two-twistor models above plus Bars'
 single-twistor multi-sector description (`hep-th/0512091`) give the incidence machinery.
 
-**Next step.** A narrow source note / Lean draft `TwistorPluckerMass`: define only the
-spinor part of the two-twistor invariant, record `SL(2,C)` / dotted-undotted / signature
-conventions, and prove the reduction to `|psi_1 ∧ psi_2|^2`. Defer Penrose transform and
-twistor cohomology.
+**Next step.** Extend the trusted `PhysicsSM.Spinor.TwistorPluckerMass`
+wrapper only after preserving its narrow scope: spinor-chart mass invariants,
+explicit `SL(2,C)` / dotted-undotted / signature conventions, and the reduction
+to the Pluecker squared norm. Defer Penrose transform and twistor cohomology.
 
 **Status update, 2026-06-21.** `PhysicsSM.Spinor.TwistorPluckerMass`
 now provides this narrow spinor-chart wrapper as trusted code, promoted from
@@ -1186,7 +1226,13 @@ Targets:
 - `diamondRelativeEntropy_secondDifference_nonnegative`;
 - `visiblePluckerFlux_satisfies_discreteANEC`;
 - `sourceVisibility_implies_discreteQNEC`, only after the source observable
-  and entropy proxy are defined.
+  and entropy proxy are defined;
+- `sjDiamondReferenceState_def`, with the Pauli-Jordan truncation convention
+  explicit when an area-law interpretation is intended;
+- `petzRecoverabilityGap_controls_sourceVisibility`, first as a finite
+  definition/diagnostic and only later as an inequality;
+- `relativeEntropyLoss_zero_iff_exactObserverRecovery`, if a small finite
+  Petz-recovery theorem can be isolated for Aristotle.
 
 **Falsification.** Edge-count entropy and momentum flux do not yield
 Raychaudhuri/Clausius behavior under coarse-graining; finite diamond
@@ -1537,6 +1583,13 @@ incidence differs from almost-commutative geometry.
 Null-energy addendum: Stage 2/3 should define the finite diamond source before
 attempting ANEC/QNEC analogues. Once defined, positivity of null flux versus
 entropy second difference is a hard gate on the gravity branch.
+
+Information-theory addendum: Stage 2 should make the observer-channel API a
+shared object for the concurrence and source-visibility branches. The first
+finite targets are the Bloch-ball mass-ratio identity, data processing for the
+visible/internal partial trace or a focused finite channel class, and a Petz-
+style recoverability diagnostic. Stage 3 can then test SJ-referenced nested
+diamonds numerically before any continuum ANEC/QNEC claim is promoted.
 
 **Stage 3 — numerical/probabilistic pilots (oracle scripts):** isotropic flip-ensemble
 dispersion; effective-mass universality test; abelian diamond holonomy on random diamonds;

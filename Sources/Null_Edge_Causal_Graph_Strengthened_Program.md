@@ -179,6 +179,29 @@ the observer map or coarse-graining first, then ask which null observable is
 monotone under it. Without that map, both "proper time increases" and "visible
 null flux is positive" are underspecified slogans.
 
+The useful information-theoretic upgrade is recoverability. Petz recovery and
+the Fawzi-Renner approximate-Markov-chain theorem turn "invisible to the
+observer" into a finite diagnostic: the relative-entropy loss under the
+observer channel should be zero or small exactly when the hidden bookkeeping is
+exactly or approximately recoverable from what the observer retains. This gives
+the source-visibility branch a sharper target than a bare zero-source slogan.
+
+For the causal-diamond branch, the Sorkin-Johnston entropy literature supplies
+a native discrete reference-state candidate. A finite diamond can be equipped
+with an SJ-style correlation state and a modular surrogate
+`K_disc = -log sigma_diamond`; the proposed ANEC/QNEC analogue then becomes a
+second-difference or convexity test for relative entropy along nested diamonds.
+The caveat is essential: causal-set entropy examples recover area-law behavior
+only after a Pauli-Jordan spectral truncation, so any SJ-based pilot must state
+that truncation before making horizon-entropy claims.
+
+The QGT/QFI, resource-theory, and Renyi-alpha extensions should remain gated.
+They are promising because the celestial `CP^1` layer already has a real
+Fubini-Study metric and imaginary Berry curvature, and because only some
+divergence families obey data processing. They become theorem branches only
+after the resource theory, free operations, or admissible parameter region is
+fixed.
+
 The dynamical version should be a finite qubit-channel statement. A CPTP
 channel on the visible celestial density matrix acts affinely on the Bloch
 ball,
@@ -957,6 +980,12 @@ that closure defects are moment-map defects that can pair with a finite
 diamond source functional, while closure-satisfying internal bookkeeping is a
 candidate for boundary-only contribution.
 
+Aristotle project `f1be6e52-31cc-411b-86b7-a841b1cfd318` has now completed the
+focused standalone proof of the finite closure identity, pending local
+integration. This strengthens the guardrail: visible closure is a rest-frame
+condition, so P9 must prove invisibility for BF/boundary-exact or internal
+bookkeeping data, not for visible closed massive fans.
+
 ### 0b. Observable-relative nullity wrapper
 
 The term "null edge" should be treated as relative to an observable, not as a
@@ -1552,9 +1581,14 @@ visible null flux >= entropy second difference.
 Candidate targets are
 `diamondRelativeEntropy_secondDifference_nonnegative`,
 `visiblePluckerFlux_satisfies_discreteANEC`, and
-`sourceVisibility_implies_discreteQNEC`. If the finite source observable
-violates this kind of positivity, the null-horizon gravity route should be
-demoted before any continuum claims are made.
+`sourceVisibility_implies_discreteQNEC`. The new finite-information targets
+are `sjDiamondReferenceState_def`,
+`petzRecoverabilityGap_controls_sourceVisibility`, and
+`relativeEntropyLoss_zero_iff_exactObserverRecovery`. If the finite source
+observable violates this kind of positivity, or if hidden bookkeeping is not
+recoverable from the observer algebra in the cases advertised as invisible,
+the null-horizon gravity route should be demoted before any continuum claims
+are made.
 
 This is also the same data-processing question as the proper-time/concurrence
 branch. In both cases the hard work is to name a finite observer channel and
@@ -1956,6 +1990,7 @@ Every major conjecture should have a stated failure mode.
 | Irrep-labeled spinor table stabilizes the program | The program continues to conflate the scalar `Lambda^2 S` Pluecker bracket with `Sym^2 S` curvature or with `S tensor Sbar` momentum, producing theorem statements that change representation under convention audit |
 | Klein quadric is the correct pairwise bivector hub | The pairwise Pluecker/Klein/simplicity identities fail under the chosen spinor/twistor conventions, or the `n > 2` assembly cannot be expressed through pairwise simplicity plus closure/Gauss-law data |
 | Spinor-network closure is the source-visibility phase space | The closure vector does not match the celestial dipole convention, visible momentum closure and BF face closure cannot be kept separate, or closure-satisfying internal bookkeeping still contributes a bulk diamond source |
+| Observer-channel recoverability captures source invisibility | The hidden bookkeeping advertised as invisible is not recoverable from the observer algebra, the relative-entropy loss is large, or the Petz/rotated-Petz recovery diagnostic is not compatible with the finite source functional |
 | Bivector/BF wrapper unifies mass and diamond curvature | The `B` simplicity defect cannot be matched to the Plucker mass without convention changes, or `B`-weighted diamond pairings fail to respect the finite composition laws; Lorentzian reality conditions may also block the continuum reading |
 | Hopf-link volume simplicity strengthens the spin-foam bridge | The Hopf-link volume functionals cannot be stated on the boundary graphs used by the null-edge program, fail to be invariant under the relevant finite moves, or do not add geometricity information beyond the pairwise Pluecker simplicity defect |
 | Mass is Pluecker spread / missing celestial dipole of null edges | Mismatch with physical invariant mass conventions, failure of the Bloch angular-variance rewrite, or misuse outside the positive Hermitian spinor-bundle setting where the theorem applies |
@@ -1973,6 +2008,7 @@ Every major conjecture should have a stated failure mode.
 | Twistor incidence is the right continuum target | Two-twistor mass invariant does not match the Pluecker mass term, or incidence reconstruction requires extra non-null structure |
 | Causal diamonds replace plaquettes | Path-comparison defects are not gauge invariant, or their continuum limit fails to reproduce field strength |
 | Diamond-source gravity satisfies null-energy positivity | The finite source violates ANEC/QNEC-style positivity, entropy second differences have the wrong sign, or visible Plucker flux cannot be tied to a positive null-energy observable |
+| Sorkin-Johnston reference states ground the discrete diamond entropy | No natural finite SJ/correlation reference state exists for the diamond class, the necessary Pauli-Jordan truncation is unstable or ad hoc, or the resulting entropy has volume-law behavior where the P9 argument needs boundary/area behavior |
 | Kahler-Dirac order-complex route gives fermions | The graph cochain operator cannot reproduce a Weyl/Dirac continuum sector without reintroducing hidden lattice structure |
 | Energetic-causal-set edge locality supports finite propagation | The `edgeNeighbor_N` cutoff is not stable under the coarse-grainings used by the program, fails to produce local action sums, or merely hides Lorentzian nonlocality in a frame-dependent parameter |
 | Dirac-Bianconi simulation adds value | Topological-Dirac/DBGNN propagation does not preserve relevant cochain, phase, or Pluecker-spread information better than ordinary Laplacian/message-passing baselines |
@@ -2014,6 +2050,7 @@ identifications, not the bare unification slogan.
 | Barnum-Graydon-Wilce composites of Euclidean Jordan algebras (arXiv:1606.09331) | Exceptional Jordan summands obstruct the usual non-signaling composite constructions under stated categorical/probabilistic axioms | A cautious tensorial-autonomy guardrail for treating `H_3(O)` as an internally rigid substrate, not a derivation of the Standard Model |
 | Klyachko quantum marginal problem (quant-ph/0511102) | Linear/moment-polytope constraints on compatible reduced spectra | A finite hierarchy audit: the internal generation layer should constrain visible mass spectra before it claims Yukawa leverage |
 | Faulkner-Leigh-Parrikar-Wang ANEC from modular Hamiltonians (arXiv:1605.08072) | Null-energy positivity from relative entropy and modular Hamiltonians | A discrete ANEC/QNEC-style positivity gate for the diamond-source gravity branch |
+| Casini, Ceyhan-Faulkner, Fawzi-Renner, and Sorkin-Johnston entropy (`S9FTNNRU`, `TFGTQQTU`, `BHNTND4W`, `8TA2W3MV`, `G2JGSV9B`) | Relative entropy as Bekenstein/ANEC/QNEC control; recoverability as approximate Markov structure; causal-set entropy from SJ/correlation data with truncation caveats | A finite observer-channel API: source visibility should be measured by relative-entropy loss and recoverability, using SJ-style diamond reference states only with explicit truncation conventions |
 | Dowker-Philpott-Sorkin swerves (arXiv:0810.5591; Phys. Rev. D 79, 124047) | Lorentz-invariant energy-momentum diffusion as a phenomenological consequence of causal-set discreteness | A warning/pilot for stochastic flip dynamics: coherent mass generation must be separated from diffusion-producing decoherence |
 | Causal fermion systems | Operator-theoretic local correlation operators and a causal action principle | A stress test for whether visible density and super-Dirac data admit an action-principle translation; failure would clarify the difference rather than refute the null-edge program |
 | Spielman-Srivastava sparsification, Hodge edge-flow, magnetic-Laplacian, and gain-graph literatures | Effective-resistance edge scores, Hodge decomposition on edge flows, switching/gauge equivalence, magnetic spectra, and graph gain phases | A disciplined observable-relative vocabulary for saying which finite null-edge observables can or cannot see an edge, chain, quotient class, or gauge phase |

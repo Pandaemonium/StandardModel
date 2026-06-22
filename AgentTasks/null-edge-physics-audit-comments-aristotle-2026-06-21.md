@@ -48,10 +48,21 @@ aristotle:
   expected_module: none
   submission_project: AgentTasks/aristotle-submit/null-edge-physics-audit-comments-20260621-project
   output_dir: AgentTasks/aristotle-output/51bf086e-37da-441c-9657-75f15f6036c7
-  status: running
+  status: complete
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
 `51bf086e-37da-441c-9657-75f15f6036c7`; `aristotle tasks` reported task
 `cee4db5c-b012-4c08-9e22-5e2ebbe63fee` as `QUEUED`, then `aristotle list`
 reported the project as `RUNNING`.
+
+Completed 2026-06-21. Aristotle reported an audit at:
+
+```text
+AgentTasks/null-edge-physics-audit-report-aristotle-20260622.md
+```
+
+It also reported comment-only patches to
+`PhysicsSM/Draft/NullEdgePluckerBargmannPhaseCore.lean` and
+`PhysicsSM/Draft/NullEdgeQubitConcurrence.lean`. These must be downloaded and
+reviewed before applying, since no repository build was run in the audit job.

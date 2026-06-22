@@ -3,10 +3,11 @@
 Companion to [`Null_Edge_Causal_Graph_Strengthened_Program.md`](Null_Edge_Causal_Graph_Strengthened_Program.md)
 and the research plan [`Null_Edge_Causal_Graph_Research_Plan.md`](Null_Edge_Causal_Graph_Research_Plan.md).
 
-**Updated:** 2026-06-21.
+**Updated:** 2026-06-22.
 **Library:** Zotero collection "Null-Edge Causal Graph Program" (`9W59V3K9`) and the
 Neo4j `coglab` graph (`Collection {collection_key:"9W59V3K9"}`).
-**Count:** 79 papers, tagged `null-edge-program` plus a per-cluster tag.
+**Count:** curated Zotero/Neo4j collection, tagged `null-edge-program` plus
+per-cluster tags.
 **Source:** INSPIRE-HEP and OpenAlex via the `scholarly` MCP server; see
 [`../Scripts/MCP_SERVERS.md`](../Scripts/MCP_SERVERS.md). Per-pillar context and the
 Lean targets each cluster feeds are in the research-plan companion.
@@ -83,6 +84,21 @@ Lean targets each cluster feeds are in the research-plan companion.
 - (2015) Entanglement Equilibrium and the Einstein Equation — `arXiv:1505.04753`
 - (2018) Spacetime from Entanglement — `doi:10.1146/annurev-conmatphys-033117-054219`
 - (2024) Quantum-gravitational null Raychaudhuri equation — `arXiv:2312.17214`
+
+## E2. Relative entropy, recoverability & source visibility
+
+2026-06-22 Zotero/Neo4j additions for the observer-channel/source-visibility
+spine: `B68T629C`, `TFGTQQTU`, `S9FTNNRU`, `BHNTND4W`, `8TA2W3MV`,
+`G2JGSV9B`, `45FTB5VF`, and `MKJFW9HM`.
+
+- (2008) Relative entropy and the Bekenstein bound - `arXiv:0804.2182`
+- (2013) Spacetime Entanglement Entropy in 1+1 Dimensions - `arXiv:1311.7146`
+- (2013) alpha-z-relative Renyi entropies - `arXiv:1310.7178`
+- (2014) Quantum conditional mutual information and approximate Markov chains - `arXiv:1410.0664`
+- (2016) Modular Hamiltonians for Deformed Half-Spaces and the Averaged Null Energy Condition - `arXiv:1605.08072`
+- (2016) Entanglement Entropy in Causal Set Theory - `arXiv:1611.10281`
+- (2018) Recovering the QNEC from the ANEC - `arXiv:1812.04683`
+- (2024) Quantum geometric tensor determines the pure-state iid conversion rate in the resource theory of asymmetry for any compact Lie group - `arXiv:2411.04766`
 
 ## F. Gauge curvature, holonomy & discrete gravity
 
