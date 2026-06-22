@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import dataclasses
+import difflib
 import pathlib
 import re
 import shutil
@@ -38,6 +39,11 @@ PLACEHOLDER_RE = re.compile(
 LEAN_CANDIDATE_RE = re.compile(r"Aristotle\.lean$")
 TASK_FIELD_RE = re.compile(
     r"^\s*(project_id|job_id|task_id|target_file|expected_module|output_dir):\s*(.+?)\s*$"
+)
+THEOREM_SIGNATURE_RE = re.compile(
+    r"(?ms)^[ \t]*(?:@[^\n]*\n[ \t]*)*"
+    r"(?:(?:private|protected|noncomputable)\s+)*"
+    r"(theorem|lemma)\s+([A-Za-z0-9_'.]+)\b.*?:=\s*by"
 )
 
 
@@ -318,6 +324,68 @@ def module_name(path: pathlib.Path) -> str:
     return ".".join(no_suffix.parts)
 
 
+def theorem_signatures(text: str) -> dict[str, str]:
+    return {match.group(2): match.group(0) for match in THEOREM_SIGNATURE_RE.finditer(text)}
+
+
+def changed_line_counts(old_text: str, new_text: str) -> tuple[int, int]:
+    added = 0
+    removed = 0
+    diff = difflib.unified_diff(
+        old_text.splitlines(),
+        new_text.splitlines(),
+        lineterm="",
+    )
+    for line in diff:
+        if line.startswith(("+++", "---", "@@")):
+            continue
+        if line.startswith("+"):
+            added += 1
+        elif line.startswith("-"):
+            removed += 1
+    return added, removed
+
+
+def signature_report(candidate: Candidate) -> list[str]:
+    destination = REPO_ROOT / candidate.repo_relative
+    if not destination.exists():
+        return ["live file: missing; review full candidate before applying"]
+
+    old_text = destination.read_text(encoding="utf-8")
+    new_text = candidate.source.read_text(encoding="utf-8")
+    added, removed = changed_line_counts(old_text, new_text)
+
+    old_signatures = theorem_signatures(old_text)
+    new_signatures = theorem_signatures(new_text)
+    old_names = set(old_signatures)
+    new_names = set(new_signatures)
+    added_names = sorted(new_names - old_names)
+    removed_names = sorted(old_names - new_names)
+    changed_names = sorted(
+        name
+        for name in old_names & new_names
+        if old_signatures[name] != new_signatures[name]
+    )
+
+    report = [f"diff stats: +{added} / -{removed} lines"]
+    if not added_names and not removed_names and not changed_names:
+        report.append("theorem/lemma signatures: unchanged")
+    else:
+        pieces = []
+        if changed_names:
+            pieces.append("changed " + ", ".join(changed_names[:8]))
+        if added_names:
+            pieces.append("added " + ", ".join(added_names[:8]))
+        if removed_names:
+            pieces.append("removed " + ", ".join(removed_names[:8]))
+        report.append("theorem/lemma signatures: " + "; ".join(pieces))
+    report.append(
+        "review diff: git diff --no-index -- "
+        f"{rel(destination)} {rel(candidate.source)}"
+    )
+    return report
+
+
 def copy_candidate(candidate: Candidate) -> None:
     destination = REPO_ROOT / candidate.repo_relative
     assert_under(destination, REPO_ROOT)
@@ -368,6 +436,8 @@ def print_project_report(
         print(f"      -> {candidate.repo_relative.as_posix()}")
         print(f"      module: {candidate.module}")
         print(f"      placeholders: {hits}")
+        for line in signature_report(candidate):
+            print(f"      {line}")
 
 
 def main() -> int:

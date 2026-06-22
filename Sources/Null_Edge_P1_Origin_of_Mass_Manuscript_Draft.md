@@ -74,8 +74,8 @@ and QCD dynamics of observed matter.
 
 # Part I. How mass can come from lightlike motion
 
-*(Two pages, intended to be read by a curious high-school student. No formulas
-are needed to follow it; the equations return in Part II.)*
+*(Intended to be read by a curious high-school student. No formulas are needed
+to follow it; the equations return in Part II.)*
 
 ## A question that sounds silly until you try to answer it
 
@@ -166,11 +166,104 @@ light-speed motion -- the very same effect as the two-photon box, just bound up 
 the strong force instead of mirrors. Mass is mostly *confined, restless
 lightlike motion*.
 
-The Higgs field, famous as "the origin of mass," is real and important. It gives
-elementary particles such as quarks and electrons their intrinsic masses, and
-that small contribution matters enormously for chemistry and for the structure
-of atoms. The larger contribution to the mass of ordinary matter is geometry,
-field energy, and trapped motion inside protons and neutrons.
+## But what about the rest? The Higgs field
+
+That trapped-light story explains almost all of the mass of ordinary matter, but
+not quite all of it, and it does not by itself explain the electron at all. The
+electron is not made of smaller pieces you could trap in a box; as far as anyone
+has ever measured, it is elementary, a single point. Yet it has a mass. And the
+tiny intrinsic masses of the quarks -- the few percent the strong force did not
+account for -- are elementary in the same way. Where do *those* masses come from?
+This is the part of the story the Higgs field tells, and remarkably, it turns out
+to be the same trick once more.
+
+Start again from the rule that anything massless must travel at the speed of
+light. A spinning massless particle has one extra feature: its spin is locked to
+its direction of motion. It is either *left-handed* (spinning like a left-handed
+screw as it goes) or *right-handed*. At the speed of light this handedness is
+absolute -- everyone agrees on it, no matter how they are moving -- because no one
+can ever overtake the particle and look at it from the other side. So a massless
+electron would really be two separate things that never mix: a "lefty" that races
+forever at `c`, and a "righty" that does the same.
+
+Here is the key idea, and it is the idea from earlier in this paper wearing a new
+costume. *Mass is what makes the lefty and the righty turn into each other.* A
+massive electron is one that constantly flips: lefty, righty, lefty, righty, as it
+travels. And anything that keeps flipping cannot move at the speed of light --
+because at light speed the handedness was frozen, with no way to change. So the
+flipping forces the electron below light speed, which means it now has a frame in
+which it sits still, which, as we said at the very start, is exactly what having
+mass means. The electron is, deep down, two light-speed motions -- a lefty and a
+righty -- stitched together so tightly that it zig-zags between them instead of
+going straight. Its mass is the price of that zig-zag.
+
+What does the stitching? An invisible field that fills all of space, even where
+there is nothing else: the Higgs field. The strange part is why it is switched on
+in empty space at all. Most fields are quietest -- lowest energy -- when they are
+set to zero everywhere. The Higgs field is the opposite: its lowest-energy state
+is *not* zero. A good picture is a pencil balanced perfectly on its tip. Balanced,
+it is symmetric -- no direction is special -- but that position is a hilltop, and
+the slightest nudge makes it topple and point some particular way. The early
+universe was like that pencil. The Higgs field "fell" off its symmetric peak and
+settled into a steady, nonzero value that now fills every cubic centimeter of
+space. Empty space is not empty; it is soaked in a frozen Higgs value.
+
+That frozen background is the stitching. Each time the racing lefty electron
+brushes against it, it is turned into a righty, and then back -- the relentless
+zig-zag that is the electron's mass. A particle that interacts strongly with the
+Higgs background flips often and comes out heavy; one that barely interacts flips
+rarely and stays light; one that ignores it completely, like the photon, never
+flips and stays massless, forever at `c`.
+
+> **An elementary particle's mass is how strongly it is forced to flip its
+> handedness against the ever-present Higgs field. No flipping, no mass -- just a
+> massless thing that flies at light speed forever. The Higgs supplies the flips;
+> the flips are the mass.**
+
+The Higgs does one more famous job, and it shows the same pattern at the level of
+forces. Forces are carried by particles: electricity and magnetism by the massless
+photon, and the *weak* force -- the one behind certain kinds of radioactivity and
+behind the reactions that let the Sun shine -- by two heavy particles called the W
+and the Z. "Heavy" is an understatement: the W and Z weigh about eighty to ninety
+times as much as a proton. That weight has a dramatic consequence. A force carried
+by a massless particle, like the photon, can reach clear across the universe,
+which is why you can see light from distant stars. A force carried by very heavy
+particles can only reach across a tiny distance -- here, far smaller than an atomic
+nucleus -- which is why the weak force is so feeble and so short-ranged, and why
+radioactive decay is usually so slow.
+
+Where did the W and Z get all that mass? From the same frozen Higgs field. In the
+early, symmetric universe the photon, the W, and the Z were a single family of
+massless, light-speed force-carriers. When the Higgs field toppled off its peak,
+it weighed down the W and the Z -- the universe's frozen field refusing to let them
+travel freely at `c`, the very same way it refuses to let the electron go straight
+-- while leaving one particular combination, the photon, completely untouched. That
+is why, in the universe we actually live in, light stays massless and
+electromagnetism reaches forever, while the weak force is heavy and hides inside
+the nucleus.
+
+So every kind of mass in this paper is one idea wearing different clothes. The
+proton: many lightlike pieces trapped by the strong force, all pointing different
+ways. The electron: a single lightlike lefty and righty, stitched into a zig-zag by
+the Higgs field. The W and Z: force-carriers the frozen Higgs field will not let
+travel at light speed. In every case, mass is lightlike motion that something
+prevents from going perfectly straight -- and the theorem at the heart of this
+paper makes the kinematic core of that statement exact: lightlike pieces whose
+directions disagree carry mass, equal to the disagreement. (Making the electron's
+left-right zig-zag precise in this language is the subject of a companion paper in
+this program, P2, on the "Dirac square root" of the mass; the literal zig-zag of
+light has its own finite model, the checkerboard of P4.)
+
+Two honest cautions before we leave the words behind. First, the Higgs explains
+*that* elementary particles have intrinsic mass, and *why* some force-carriers are
+heavy while light is not, but it does not explain *why each mass has the size it
+does*. The electron, the quarks, and the rest differ from one another by factors
+of hundreds of thousands, and those numbers are measured and put into the theory
+by hand, not derived. Our theorem does not fix them either. Second, the pictures
+here -- handedness flipping, a field freezing across the sky -- are honest cartoons
+of mathematics that is genuinely about chirality and broken symmetry. They are
+meant to convey the shape of the idea, not to replace the equations. Supplying the
+equations is what the rest of this program is for.
 
 ## Our contribution: making "disagreeing light" exact
 

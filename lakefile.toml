@@ -29,6 +29,27 @@ relaxedAutoImplicit = false
 weak.linter.mathlibStandardSet = true
 maxSynthPendingDepth = 3
 
+# This repository contains many generated finite tables and long coordinate
+# proofs. Keep semantic checks live, but suppress project-wide style/proof-script
+# lints that create high-volume build noise without catching mathematical
+# convention drift.
+linter.dupNamespace = false
+linter.flexible = false
+linter.unreachableTactic = false
+linter.unusedSectionVars = false
+linter.unusedSimpArgs = false
+linter.unusedTactic = false
+linter.style.cases = false
+linter.style.induction = false
+linter.style.longLine = false
+linter.style.maxHeartbeats = false
+linter.style.multiGoal = false
+linter.style.refine = false
+linter.style.setOption = false
+linter.style.show = false
+linter.style.whitespace = false
+weak.linter.unnecessarySeqFocus = false
+
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"

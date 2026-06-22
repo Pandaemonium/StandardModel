@@ -3,6 +3,8 @@ import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
 import Mathlib.Tactic.FinCases
 import Mathlib.Tactic.NormNum
 
+set_option linter.style.nativeDecide false
+
 /-!
 # Lie.Exceptional.E8
 
