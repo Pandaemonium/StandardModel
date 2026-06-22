@@ -12,7 +12,7 @@ These are developer/research tooling, not part of the Lean build.
 | Name | Purpose | Command | Source |
 |---|---|---|---|
 | `lean-lsp` | Live Lean LSP on this repo: goal states, diagnostics, hover, completions, build, plus LeanSearch / Loogle / Lean Finder / Lean Hammer / Lean State Search | `uvx lean-lsp-mcp` | [lean-lsp-mcp](https://github.com/oOo0oOo/lean-lsp-mcp) (PyPI) |
-| `lean-explore` | Semantic search over Lean 4 declarations (Mathlib, **PhysLean**, Batteries, Init, Lean, Std, ...), offline local index, models on the **Intel Arc A750 (XPU)** | `<tool-env python> Scripts/mcp/lean_explore_xpu.py` | [lean-explore](https://github.com/justincasher/lean-explore) (PyPI) |
+| `lean-explore` | Semantic search over Lean 4 declarations (Mathlib, **PhysLean** - package label `Physlib`, Batteries, Init, Lean, Std, ...), offline local index, models on the **Intel Arc A750 (XPU)** | `<tool-env python> Scripts/mcp/lean_explore_xpu.py` | [lean-explore](https://github.com/justincasher/lean-explore) (PyPI) |
 | `scholarly` | Literature search across **Semantic Scholar, OpenAlex, arXiv, INSPIRE-HEP, Crossref, Europe PMC, Unpaywall** | `python .../scholarly_wrapper/src/server.py` | `C:/Projects/AutoLab/COGLab/infrastructure/mcp/scholarly_wrapper/src/server.py` |
 | `zotero_write` | Write items into the Zotero library (user `19894138`) | `python .../zotero-writer/src/server.py` | `C:/Tools/mcp/zotero-writer/src/server.py` |
 | `neo4j_graph` | Read/write a Neo4j knowledge graph | `cmd.exe /c .../neo4j_mcp/run.bat` | Go binary `neo4j-mcp.exe` |
@@ -40,6 +40,22 @@ lag until the project is built; the external search tools work immediately.
 This complements Aristotle: the coding agent checks goal states and finds
 existing lemmas *before* preparing a handoff, rather than churning.
 
+`lean_local_search` is the only tool here that searches *this repo's own*
+`PhysicsSM.*` declarations (not Mathlib/PhysLean - `lean-explore` does not index
+our namespace), so it is the right tool for "does this lemma already exist
+here?". Gotcha (verified 2026-06-22): it shells out to a real system `rg`
+(ripgrep) binary on the server process's PATH and errors `ripgrep (rg) was not
+found on your PATH` when absent. The harness `Grep`/`Glob` tools are unaffected
+because they use a private bundled ripgrep exposed only as a shell *function*
+(`rg`) inside the agent shell, which child processes like the MCP server cannot
+see. Fix applied: `winget install -e --id BurntSushi.ripgrep.MSVC` plus a copy of
+`rg.exe` into `C:/Users/Owner/.local/bin` (already on the persistent user PATH,
+alongside `lean-lsp-mcp.exe`); winget's own `Links` alias symlink silently fails
+without Windows Developer Mode, so the `.local/bin` copy is the reliable path. A
+running session must `/mcp`-reconnect (or fully restart Claude Code) afterward:
+the server caches the `rg` lookup at startup, so it will not see a newly
+installed `rg` until re-spawned.
+
 ### lean-explore tools (added 2026-06-21, Arc/XPU 2026-06-21)
 
 `lean-explore` is a semantic declaration search engine over a downloaded
@@ -47,7 +63,12 @@ offline index (`lean-explore data fetch`, one-time, ~3.8 GB: a 2.1 GB SQLite DB
 plus a 1.7 GB FAISS index). Its indexed corpus includes **PhysLean**, which
 overlaps this project's physics formalization goals - and is the main reason to
 run it alongside `lean-lsp` (whose online LeanSearch/Loogle index Mathlib but
-not PhysLean). Two ~1.2 GB models do the work: `Qwen/Qwen3-Embedding-0.6B`
+not PhysLean). Gotcha: the physics library is registered under the package label
+`Physlib` (module prefix `Physlib.*`), not `PhysLean`. To scope a search pass
+`packages=["Physlib"]`; `packages=["PhysLean"]` matches nothing and errors with
+`max() iterable argument is empty`. Omit `packages` to search Mathlib and
+Physlib together (the usual mode). Two ~1.2 GB models do the work:
+`Qwen/Qwen3-Embedding-0.6B`
 (retrieval) and `Qwen/Qwen3-Reranker-0.6B` (reranking). Both are pre-cached in
 `~/.cache/huggingface/hub/`. The server is fully offline (no API key).
 

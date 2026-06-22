@@ -67,7 +67,7 @@ aristotle:
   expected_module: NullEdgeCelestialScalarChannel.Finite
   submission_project: AgentTasks/aristotle-submit/null-edge-celestial-scalar-channel-20260621-project
   output_dir: AgentTasks/aristotle-output/d2ffbd94-bb7c-4582-94b5-1bafdc2ab481
-  status: complete_with_errors
+  status: integrated_standalone
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
@@ -80,3 +80,21 @@ and `normSq_scalarBlochChannel` without changing theorem statements, and
 reported that `lake env lean NullEdgeCelestialScalarChannel/Finite.lean`
 succeeds with no warnings and no remaining proof holes. Inspect and verify
 locally before integration.
+
+Integration review 2026-06-21:
+
+- Copied the completed target into
+  `AgentTasks/aristotle-standalone/null-edge-celestial-scalar-channel-20260621/NullEdgeCelestialScalarChannel/Finite.lean`.
+- Scanned the integrated Lean artifact for executable proof holes and
+  escape-hatch declarations; no hits.
+- Locally verified:
+
+  ```text
+  lake env lean AgentTasks/aristotle-standalone/null-edge-celestial-scalar-channel-20260621/NullEdgeCelestialScalarChannel/Finite.lean
+  ```
+
+  Result: passed.
+
+The project-level Aristotle status was noisy, but the returned target file is a
+locally checked standalone artifact. It has not yet been promoted into a
+trusted `PhysicsSM` module.

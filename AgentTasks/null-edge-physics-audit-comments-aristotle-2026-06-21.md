@@ -48,7 +48,7 @@ aristotle:
   expected_module: none
   submission_project: AgentTasks/aristotle-submit/null-edge-physics-audit-comments-20260621-project
   output_dir: AgentTasks/aristotle-output/51bf086e-37da-441c-9657-75f15f6036c7
-  status: complete
+  status: comment_integrated
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
@@ -66,3 +66,23 @@ It also reported comment-only patches to
 `PhysicsSM/Draft/NullEdgePluckerBargmannPhaseCore.lean` and
 `PhysicsSM/Draft/NullEdgeQubitConcurrence.lean`. These must be downloaded and
 reviewed before applying, since no repository build was run in the audit job.
+
+Integration review 2026-06-21:
+
+- Copied the audit report into
+  `AgentTasks/null-edge-physics-audit-report-aristotle-20260622.md`.
+- Applied only comment/docstring clarifications to:
+  - `PhysicsSM/Draft/NullEdgePluckerBargmannPhaseCore.lean`
+  - `PhysicsSM/Draft/NullEdgeQubitConcurrence.lean`
+- The executable declarations, theorem statements, proofs, imports, and
+  namespaces were not changed.
+- Locally verified:
+
+  ```text
+  lake env lean PhysicsSM/Draft/NullEdgePluckerBargmannPhaseCore.lean
+  lake env lean PhysicsSM/Draft/NullEdgeQubitConcurrence.lean
+  lake build PhysicsSM.Draft.NullEdgePluckerBargmannPhaseCore
+  lake build PhysicsSM.Draft.NullEdgeQubitConcurrence
+  ```
+
+  Result: all passed.

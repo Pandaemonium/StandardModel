@@ -65,7 +65,7 @@ aristotle:
   expected_module: NullEdgeSpinorNetworkClosure.Finite
   submission_project: AgentTasks/aristotle-submit/null-edge-spinor-network-closure-20260621-project
   output_dir: AgentTasks/aristotle-output/f1be6e52-31cc-411b-86b7-a841b1cfd318
-  status: complete
+  status: integrated_standalone
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
@@ -79,3 +79,21 @@ the theorem statement. The target file reportedly passes
 no remaining proof holes. The proof is finite algebra: expand `E^2`, expand
 `|C|^2`, use the unit-direction hypothesis to remove diagonal terms, and pair
 the symmetric off-diagonal double sum into the `i < j` angular-mass sum.
+
+Integration review 2026-06-21:
+
+- Copied the completed target into
+  `AgentTasks/aristotle-standalone/null-edge-spinor-network-closure-20260621/NullEdgeSpinorNetworkClosure/Finite.lean`.
+- Scanned the integrated Lean artifact for executable proof holes and
+  escape-hatch declarations; no hits.
+- Locally verified:
+
+  ```text
+  lake env lean AgentTasks/aristotle-standalone/null-edge-spinor-network-closure-20260621/NullEdgeSpinorNetworkClosure/Finite.lean
+  ```
+
+  Result: passed.
+
+This is integrated as a checked standalone artifact. It has not yet been
+promoted into a trusted `PhysicsSM` module; that should be a later API,
+naming, and provenance pass.

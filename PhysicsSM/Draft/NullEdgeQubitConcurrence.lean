@@ -44,6 +44,15 @@ def linearEntropyComplex (rho : Matrix (Fin 2) (Fin 2) Complex) : Complex :=
 /--
 Complexified concurrence squared, represented by the determinant expression
 `4 * det rho`.
+
+Audit note (naming/positivity convention): "concurrence" here is the
+single-qubit linear-entropy / tangle form `4 det rho`, i.e. the squared
+concurrence of the two-qubit pure state whose reduced density is `rho`; it is
+not the Wootters two-qubit concurrence formula. This wrapper deliberately
+bundles no Hermiticity, positivity, or trace-one axioms (those are factored
+into the `htrace` hypothesis where needed and into downstream wrappers), so the
+physical reading as an entanglement measure only holds for a genuine
+nonnegative-eigenvalue density matrix.
 -/
 def concurrenceSqComplex (rho : Matrix (Fin 2) (Fin 2) Complex) : Complex :=
   4 * rho.det

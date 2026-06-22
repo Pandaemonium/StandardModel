@@ -33,6 +33,70 @@ Already integrated before this plan:
 - `PhysicsSM.Draft.NullEdgeQubitConcurrence`;
 - `PhysicsSM.Draft.NullEdgePathPairInterchange`.
 
+Cycle-1 update:
+
+- Spinor-network closure was integrated as a locally checked standalone
+  artifact.
+- Celestial scalar channel was integrated as a locally checked standalone
+  artifact despite the noisy project-level Aristotle status.
+- Grand strategy v2 was copied as roadmap material only.
+- The physics audit report was copied, and its comment-only patches were
+  applied and locally checked.
+- Submitted two no-build design jobs:
+  - P9 source-visibility API:
+    `f01ec82f-ccac-44b6-b2c3-7b55433a2394`
+  - relative-entropy observer-channel API:
+    `eb02f565-4285-416e-8eba-feddf43e6120`
+
+Cycle-2 P9 update:
+
+- P9 source-visibility API completed and was copied to
+  `AgentTasks/null-edge-p9-source-visibility-api-output.md`.
+- The useful correction is decisive: visible closure is rest-frame closure;
+  BF/surface closure is the source-invisibility candidate; squared source
+  additivity requires an orthogonality condition.
+- The optional scaffold remains in the Aristotle output directory until it is
+  reviewed and converted into a clean repo module.
+
+Cycle-2 literature update:
+
+- Recorded the literature pass in
+  `AgentTasks/null-edge-overnight-literature-log-2026-06-21.md`.
+- Confirmed existing Fawzi-Renner, Faulkner-Leigh-Parrikar-Wang, and
+  Saravani-Sorkin-Yazdi anchors.
+- Confirmed Ceyhan-Faulkner under canonical key `TFGTQQTU` as the ANEC-to-QNEC /
+  relative-entropy guardrail for the P9 Gate-4 positivity layer.
+- Removed the accidental duplicate Ceyhan-Faulkner Neo4j node `UEU4CUDW`;
+  Zotero still needs manual duplicate cleanup for `UEU4CUDW` because this shell
+  lacks the Zotero API key.
+
+Cycle-2 manuscript update:
+
+- Started the P1 manuscript skeleton at
+  `Sources/Null_Edge_P1_Plucker_Mass_Manuscript_Skeleton.md`, focused on the
+  trusted Pluecker mass theorem, celestial moment form, twistor chart wrapper,
+  and static Dirac square-root bridge.
+
+Cycle-2 submission update:
+
+- Submitted focused P9 proof-fill job
+  `9b37228c-352d-4406-a29d-6946cb567b85` for the three remaining holes in the
+  diamond source-visibility scaffold.
+
+Cycle-3 integration update:
+
+- Integrated relative-entropy observer-channel report
+  `AgentTasks/null-edge-relative-entropy-observer-channel-output.md`.
+- Copied and locally checked the standalone finite KL/data-processing scaffold
+  at
+  `AgentTasks/aristotle-standalone/null-edge-relative-entropy-observer-channel-20260622/PhysicsSM/Draft/NullEdgeRelativeEntropyObserverRoadmap.lean`.
+- Copied and locally checked the completed P9 proof-fill scaffold at
+  `AgentTasks/aristotle-standalone/null-edge-diamond-source-visibility-core-20260622/PhysicsSM/Draft/NullEdgeDiamondSourceVisibilityRoadmap.lean`.
+- New finite P9 proofs banked as standalone artifacts:
+  `diamondSource_additive_iff_orthogonal`,
+  `closed_visibleFan_mass_eq_restEnergy`, and
+  `visiblePluckerMass_sources_bulkTerm`.
+
 ## Non-negotiable loop rules
 
 1. Reconcile `aristotle list` and task notes at the start of every cycle.

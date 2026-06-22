@@ -46,7 +46,7 @@ aristotle:
   expected_module: none
   submission_project: AgentTasks/aristotle-submit/null-edge-grand-strategy-v2-20260621-project
   output_dir: AgentTasks/aristotle-output/ba66d47f-68d3-4752-b6a0-ac1f10830f5d
-  status: complete
+  status: strategy_only_integrated
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
@@ -68,3 +68,12 @@ PhysicsSM/Draft/NullEdgeRoadmap/
 
 These outputs must be downloaded, inspected, and treated as roadmap material,
 not integrated Lean.
+
+Integration review 2026-06-21:
+
+- Copied the strategy deliverable into
+  `AgentTasks/null-edge-grand-strategy-v2-output.md`.
+- Did not import or copy the non-compiling scaffold Lean into the live
+  `PhysicsSM` module graph.
+- Treat this as roadmap material for future focused proof jobs, not as a
+  trusted formal artifact.

@@ -41,12 +41,19 @@ def scalarBlochChannel (c : Real) (r : Vec3) : Vec3 :=
 /-- Squared norm is nonnegative. -/
 theorem normSq_nonneg (r : Vec3) :
     0 <= normSq r := by
-  sorry
+  unfold normSq dot
+  apply Finset.sum_nonneg
+  intro k _
+  exact mul_self_nonneg (r k)
 
 /-- Scalar Bloch contraction scales squared norm by `c^2`. -/
 theorem normSq_scalarBlochChannel (c : Real) (r : Vec3) :
     normSq (scalarBlochChannel c r) = c ^ 2 * normSq r := by
-  sorry
+  unfold normSq dot scalarBlochChannel
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro k _
+  ring
 
 /-- The normalized mass-ratio square after a scalar Bloch channel. -/
 theorem massRatioSq_after_scalarChannel (c : Real) (r : Vec3) :

@@ -44,7 +44,15 @@ def spinorNormSq (psi : CSpinor) : Complex :=
 def rankOneKetBra (psi phi : CSpinor) : Matrix (Fin 2) (Fin 2) Complex :=
   Matrix.vecMulVec psi fun a => starRingEnd Complex (phi a)
 
-/-- Rank-one spinor projector `|psi><psi|`. -/
+/-- Rank-one spinor projector `|psi><psi|`.
+
+Audit note (naming convention): this matrix is a genuine idempotent orthogonal
+projector only when `psi` is a unit spinor (`spinorNormSq psi = 1`); in general
+its square is `spinorNormSq psi` times itself, not itself. Likewise the
+Bargmann/Pancharatnam triple-trace below returns the geometric phase invariant
+only after normalization (see `bargmannTripleTrace_rankOne` for the
+unnormalized cyclic-overlap form and `normalized_plucker_eq_one_sub_overlap`
+for the unit case). -/
 def rankOneProjector (psi : CSpinor) : Matrix (Fin 2) (Fin 2) Complex :=
   rankOneKetBra psi psi
 

@@ -244,7 +244,9 @@ Two help directly with proofs:
   before preparing an Aristotle handoff rather than churning.
 - `lean-explore` - offline semantic search over Lean 4 declarations in Mathlib
   **and PhysLean** (the physics library `lean-lsp`'s online search does not
-  index): `search_summary` first, then `get_source_code` / `get_docstring` /
+  index; PhysLean is registered under the package label `Physlib`, so scope with
+  `packages=["Physlib"]`, not `["PhysLean"]` which matches nothing and errors):
+  `search_summary` first, then `get_source_code` / `get_docstring` /
   `get_dependencies` on the hits you want. Runs on the local Intel Arc GPU.
 
 The rest are research/developer tooling: literature search, Zotero, the Neo4j

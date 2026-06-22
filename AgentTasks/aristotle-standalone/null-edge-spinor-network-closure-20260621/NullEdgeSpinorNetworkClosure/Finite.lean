@@ -63,7 +63,22 @@ theorem pluckerMass_eq_energy_sq_sub_closureDefect_sq
     {n : Nat} (w : Fin n -> Real) (u : Fin n -> Vec3)
     (hunit : ∀ i : Fin n, normSq (u i) = 1) :
     pairwiseAngularMass w u = momentMassSq w u := by
-  sorry
+  -- By definition of $energy$ and $closureVector$, we can expand $energy w^2 - normSq (closureVector w u)$.
+  have h_expand : (energy w)^2 - normSq (closureVector w u) = ∑ i, ∑ j, (w i * w j * (1 - (dot (u i) (u j)))) := by
+    simp +decide [ mul_sub, Finset.mul_sum, pow_two, mul_comm, mul_left_comm, dot, normSq, closureVector, energy ];
+    exact Finset.sum_comm.trans ( Finset.sum_congr rfl fun _ _ => Finset.sum_comm );
+  -- By definition of $pairwiseAngularMass$, we can rewrite the right-hand side of the equation.
+  have h_pairwise : (energy w)^2 - normSq (closureVector w u) = 2 * ∑ p ∈ (Finset.univ : Finset (Fin n × Fin n)).filter fun p => p.1 < p.2, w p.1 * w p.2 * (1 - (dot (u p.1) (u p.2))) := by
+    have h_split : ∑ i, ∑ j, w i * w j * (1 - dot (u i) (u j)) = ∑ i, ∑ j ∈ Finset.univ.filter (fun j => i < j), w i * w j * (1 - dot (u i) (u j)) + ∑ i, ∑ j ∈ Finset.univ.filter (fun j => i > j), w i * w j * (1 - dot (u i) (u j)) := by
+      simp +decide only [Finset.sum_filter, ← Finset.sum_add_distrib];
+      congr with i ; congr with j ; split_ifs <;> simp_all +decide [ lt_asymm ];
+      simp_all +decide [ le_antisymm ‹_› ‹_›, normSq ];
+    rw [ h_expand, h_split, two_mul ];
+    simp +decide only [Finset.sum_filter];
+    erw [ Finset.sum_product, Finset.sum_comm ];
+    simp +decide [ mul_comm, dot ];
+  unfold pairwiseAngularMass momentMassSq;
+  rw [ ← Finset.sum_div _ _ _, h_pairwise ] ; ring
 
 /--
 If the weighted fan is closed, its moment-map mass square is the rest-frame
