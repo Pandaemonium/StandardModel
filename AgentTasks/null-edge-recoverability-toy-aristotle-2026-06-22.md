@@ -30,7 +30,7 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdgeRecoverabilityToy
   submission_project: AgentTasks/aristotle-submit/null-edge-recoverability-toy-20260622-project
   output_dir: AgentTasks/aristotle-output/95795ba9-6e20-4590-a6aa-6785a68607f7
-  status: submitted
+  status: integrated
 ```
 
 Submitted 2026-06-22. `aristotle submit` created project
@@ -42,3 +42,22 @@ Packaging note: focused package with the standalone relative-entropy scaffold
 and the toy target. The helper found five intended proof holes and no
 escape-hatch declarations. A local package build timed out during dependency
 setup before reaching the target, so post-return local verification is required.
+
+## Result
+
+Integrated 2026-06-22 from Aristotle project
+`95795ba9-6e20-4590-a6aa-6785a68607f7`. The returned
+`NullEdgeRecoverabilityToy` proof closed the finite hidden-bit merge witness:
+strict observer loss, no exact recovery, and strictly positive recoverability
+gap for every candidate recovery channel. Its dependency
+`NullEdgeRelativeEntropyObserverRoadmap` was also promoted from standalone
+artifact to live draft scaffold and imported by `PhysicsSMDraft.lean`.
+
+Verification:
+
+```text
+lake build PhysicsSM.Draft.NullEdgeRelativeEntropyObserverRoadmap
+lake env lean PhysicsSM/Draft/NullEdgeRecoverabilityToy.lean
+lake build PhysicsSM.Draft.NullEdgeRecoverabilityToy
+python Scripts/check_forbidden_lean_tokens.py --include-draft --forbid-native-decide PhysicsSM/Draft/NullEdgeRelativeEntropyObserverRoadmap.lean PhysicsSM/Draft/NullEdgeRecoverabilityToy.lean PhysicsSM/Draft/NullEdgePluckerCelestialBridge.lean
+```

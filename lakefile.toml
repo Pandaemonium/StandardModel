@@ -33,21 +33,21 @@ maxSynthPendingDepth = 3
 # proofs. Keep semantic checks live, but suppress project-wide style/proof-script
 # lints that create high-volume build noise without catching mathematical
 # convention drift.
-linter.dupNamespace = false
-linter.flexible = false
-linter.unreachableTactic = false
-linter.unusedSectionVars = false
-linter.unusedSimpArgs = false
-linter.unusedTactic = false
-linter.style.cases = false
-linter.style.induction = false
-linter.style.longLine = false
-linter.style.maxHeartbeats = false
-linter.style.multiGoal = false
-linter.style.refine = false
-linter.style.setOption = false
-linter.style.show = false
-linter.style.whitespace = false
+weak.linter.dupNamespace = false
+weak.linter.flexible = false
+weak.linter.unreachableTactic = false
+weak.linter.unusedSectionVars = false
+weak.linter.unusedSimpArgs = false
+weak.linter.unusedTactic = false
+weak.linter.style.cases = false
+weak.linter.style.induction = false
+weak.linter.style.longLine = false
+weak.linter.style.maxHeartbeats = false
+weak.linter.style.multiGoal = false
+weak.linter.style.refine = false
+weak.linter.style.setOption = false
+weak.linter.style.show = false
+weak.linter.style.whitespace = false
 weak.linter.unnecessarySeqFocus = false
 
 [[require]]

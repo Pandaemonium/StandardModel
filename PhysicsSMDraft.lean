@@ -87,6 +87,18 @@ import PhysicsSM.Draft.NullEdgeGramWeightedOperator
 import PhysicsSM.Draft.NullEdgeGramWeightedHermitian
 import PhysicsSM.Draft.NullEdgeQubitConcurrence
 import PhysicsSM.Draft.NullEdgePathPairInterchange
+import PhysicsSM.Draft.NullEdgePluckerCelestialBridge
+import PhysicsSM.Draft.NullEdgeRelativeEntropyObserverRoadmap
+import PhysicsSM.Draft.NullEdgeRecoverabilityToy
+import PhysicsSM.Draft.NullEdgeP9BoundarySource
+import PhysicsSM.Draft.NullEdgeP9BFClosure
+import PhysicsSM.Draft.NullEdgeP9DiamondVisibility
+import PhysicsSM.Draft.NullEdgeP9MeanZeroFluctuation
+import PhysicsSM.Draft.NullEdgeP9VisibleClosureSource
+import PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore
+import PhysicsSM.Draft.NullEdgeP9FluctuationScaling
+import PhysicsSM.Draft.NullEdgeP9WeightedFluctuation
+import PhysicsSM.Draft.NullEdgeP9UniformSuppression
 
 /-!
 # PhysicsSM draft root

@@ -211,7 +211,7 @@ moreLeanArgs = ["-s65536"]
     Copy-FileOrDirectory $source (Join-Path $projectDir $relative)
   }
 
-  foreach ($pathText in $taskNotes + $extraPaths) {
+  foreach ($pathText in @($taskNotes) + @($extraPaths)) {
     $source = if ([System.IO.Path]::IsPathRooted($pathText)) {
       Get-FullPath $pathText
     } else {

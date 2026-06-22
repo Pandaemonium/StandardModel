@@ -54,9 +54,9 @@ proof, not that the statement is the intended one.
   capacity, fill open slots from the highest-value *ready* job: dependencies are
   all `INTEGRATED`, the target decl already elaborates with a lone placeholder
   body, and the result would change a publication claim, a gate, or a dependency
-  frontier. It is acceptable to leave capacity unused when the next available
-  target is filler. Never submit a job whose target decl will be renamed or
-  re-typed by a pending consolidation job.
+  frontier. It is acceptable, and often better, to leave capacity unused when the
+  next available target is filler. Never submit a job whose target decl will be
+  renamed or re-typed by a pending consolidation job.
 - **One integration at a time.** Fetching and placeholder-scanning may be
   batched; draft-to-trusted promotion is strictly serial, one theorem per
   semantic review, per the inherited checklist.
@@ -108,10 +108,10 @@ job ledger; only the lane head and immediate next jobs are summarized here.
 ### Lane A - Plucker / celestial bridge integration and repair (P1, P6 edge)
 
 - **State.** `PhysicsSM.Spinor.PluckerMass` and `TwistorPluckerMass` trusted. The
-  six-cycle run's celestial-bridge standalone (`ac0430a9-...`) is fetched, no
-  placeholders, awaiting live-repo verification and ASCII cleanup.
-- **Ready queue.** (1) verify + promote the celestial-bridge standalone into the
-  trusted surface; (2) celestial-moment wrapper
+  six-cycle run's celestial-bridge result (`ac0430a9-...`) is integrated as
+  `PhysicsSM.Draft.NullEdgePluckerCelestialBridge`.
+- **Ready queue.** (1) semantic review before any trusted promotion; (2)
+  celestial-moment wrapper
   (`fin_bundle_det_eq_bloch_minkowski_norm`,
   `mass_zero_iff_bloch_dipole_saturates`); (3) Gram-weighted generalization
   bridge to P6, scoped orthonormal-vs-coherent.
@@ -134,10 +134,11 @@ job ledger; only the lane head and immediate next jobs are summarized here.
 ### Lane C - relative entropy / recoverability scaffold (P7)
 
 - **State.** The relative-entropy observer-channel scaffold and the
-  recoverability-toy witness (`95795ba9-...`) are fetched; the toy depends on the
-  observer-channel scaffold, which is not yet promoted.
-- **Ready queue.** (1) promote the finite observer-channel + classical KL/data-
-  processing scaffold; (2) `massRatio_eq_sqrt_one_minus_blochNormSq` and
+  recoverability-toy witness (`95795ba9-...`) are integrated as draft modules:
+  `NullEdgeRelativeEntropyObserverRoadmap` and `NullEdgeRecoverabilityToy`.
+- **Ready queue.** (1) semantic review of the finite observer-channel and
+  classical KL/data-processing statements; (2)
+  `massRatio_eq_sqrt_one_minus_blochNormSq` and
   `massRatio_monotone_under_unital_bloch_contraction`; (3)
   `petzRecoverable_iff_relativeEntropyLoss_zero` as a finite matrix statement, if
   isolable. Every job in this lane must **name the observer channel first**;
@@ -148,7 +149,19 @@ job ledger; only the lane head and immediate next jobs are summarized here.
 - **State.** The diamond-source-visibility core (`9b37228c-...`) and the QNEC
   finite KL/DPI scaffold (`eb02f565-...`) are integrated as standalone artifacts;
   the spinor-network closure identity (`f1be6e52-...`) is integrated standalone,
-  not yet promoted to `PhysicsSM`.
+  not yet promoted to `PhysicsSM`. The first focused boundary-source visibility
+  job (`ea84d10d-...`) is integrated as
+  `PhysicsSM.Draft.NullEdgeP9BoundarySource`; it proves the finite
+  integration-by-parts theorem `boundaryExact_source_eq_zero`. The next focused
+  BF-closure/no-bulk toy job (`789f2c53-...`) is integrated as
+  `PhysicsSM.Draft.NullEdgeP9BFClosure`. The finite
+  `DiamondSourceVisibility` wrapper/sanity-check job (`4b710873-...`) is
+  integrated as `PhysicsSM.Draft.NullEdgeP9DiamondVisibility`. The finite
+  mean-zero fluctuation job (`11e12028-...`) is integrated as
+  `PhysicsSM.Draft.NullEdgeP9MeanZeroFluctuation`. The visible-closure
+  source guardrail job (`e3558146-...`) is integrated as
+  `PhysicsSM.Draft.NullEdgeP9VisibleClosureSource`. The P9 strategy/audit job
+  (`b4a64238-...`) is running to rank the next nontrivial proof targets.
 - **Scientific role.** This is the cosmological-constant flagship lane. Its job
   is not to "solve Lambda" in prose; it is to make the finite visibility test
   sharp enough that the branch can either clear the P9 gate or be demoted.
@@ -348,9 +361,10 @@ Pause the loop and report (do not keep submitting) if:
 - a lane stays interpretive after two definition-design passes;
 - repeated jobs spend their budget on broad builds rather than proof search
   (switch them to focused packages first; if that fails twice, stop and report);
-- the pipeline cannot find at least four high-value ready jobs for three
-  consecutive cycles (the backlog is exhausted or wholly dependency-blocked -
-  escalate to a strategy job, then to the user);
+- the pipeline repeatedly finds only filler jobs or wholly dependency-blocked
+  jobs after the ready high-leverage work is integrated - escalate to a strategy
+  job, then to the user if the strategy job does not expose a substantive next
+  step;
 - the P9 branch cannot define a source functional that separates boundary-exact,
   BF-closed/internal, and visible Plucker-excitation cases;
 - coherent/internal or BF-closed bookkeeping produces an unavoidable bulk

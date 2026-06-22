@@ -40,7 +40,7 @@ aristotle:
   expected_module: none
   submission_project: AgentTasks/aristotle-submit/null-edge-relative-entropy-observer-channel-20260621-project
   output_dir: AgentTasks/aristotle-output/eb02f565-4285-416e-8eba-feddf43e6120
-  status: report_and_standalone_integrated
+  status: report_and_draft_scaffold_integrated
 ```
 
 Submitted 2026-06-21. `aristotle submit` created project
@@ -74,3 +74,9 @@ as a standalone artifact: finite distributions, column-stochastic observer
 maps, pushforward, composition, finite KL divergence, Gibbs nonnegativity,
 data processing, observer-loss nonnegativity, and exact recoverability
 saturating data processing.
+
+Update 2026-06-22: the scaffold has now been promoted from standalone artifact
+to live draft module
+`PhysicsSM/Draft/NullEdgeRelativeEntropyObserverRoadmap.lean`, imported by
+`PhysicsSMDraft.lean`. This is still a draft scaffold and not a trusted physics
+surface, but it is now the shared finite observer-channel API for P7/P9 work.

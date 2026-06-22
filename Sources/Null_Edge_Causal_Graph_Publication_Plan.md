@@ -355,27 +355,60 @@ BF / surface closure      sum_f B_f = 0
 observer invisibility     source functional vanishes or is boundary-only
 ```
 
-The completed spinor-network closure job shows that visible closure is a
-rest-frame condition, not source invisibility:
+New finite footholds. The P9 branch now has a small theorem spine, but not yet a
+cosmology paper. The integrated draft modules
+`PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore`,
+`PhysicsSM.Draft.NullEdgeP9FluctuationScaling`, and
+`PhysicsSM.Draft.NullEdgeP9WeightedFluctuation`, and
+`PhysicsSM.Draft.NullEdgeP9UniformSuppression` prove two pieces that make the
+branch sharper:
+
+- boundary-exact bookkeeping is invisible to closed bulk tests;
+- successive boundary maps produce no bulk source under a chain-complex law;
+- antisymmetric finite source relabelings are mean-zero;
+- a closed visible fan has moment mass square `E^2 / 4`, so visible closure is a
+  rest-frame condition rather than source invisibility;
+- independent two-sign residual sources have zero ensemble mean and exact second
+  moment `N * 2^N`, giving a finite variance-`N` / RMS-`sqrt(N)` pilot;
+- weighted independent residual sources have normalized variance
+  `sum_i amp_i^2`, giving the finite algebra needed for nonuniform diamond
+  cells, suppression factors, or residual-source weighting;
+- uniformly spreading a fixed total scale `A` over `N` independent sign cells
+  gives normalized second moment `A^2 / N`, the first exact finite suppression
+  law for the branch.
+
+The finite visible-fan theorem is:
 
 ```text
-pairwise angular mass = ((sum_i w_i)^2 - |C|^2) / 4.
+closed_visibleFan_mass_eq_restEnergy
+closed_visibleFan_massSource_pairing_eq_restEnergy
 ```
 
-Thus `C = 0` usually means a massive rest-frame fan, not no matter. The P9 gate
-is sharper: coherent / internal or BF-closed bookkeeping should contribute only
-boundary-like or mean-zero diamond source, while visible Plucker mass/energy
-should appear as a bulk source term. This is the program's highest-leverage,
-highest-risk physics target; it collides directly with everpresent-Lambda
+Thus `C = 0` usually means a massive rest-frame fan, not no matter. The finite
+fluctuation theorem is:
+
+```text
+ensembleMeanTotal_eq_zero
+ensembleSecondMoment_eq_card_times_configs
+weightedEnsembleSecondMoment_eq_amplitudeSqSum_times_configs
+normalizedWeightedSecondMoment_eq_amplitudeSqSum
+normalizedUniformSecondMoment_eq_totalSq_div_card
+```
+
+Together these results clarify the gate. Coherent / internal or BF-closed
+bookkeeping should contribute only boundary-like or mean-zero diamond source,
+while visible Plucker mass/energy should appear as a bulk source term. Residual
+source noise can then be tested against the finite `sqrt(N)` scaling theorem,
+against the weighted `sum_i amp_i^2` suppression theorem, or against the uniform
+`A^2 / N` suppression law. This remains the program's highest-leverage,
+highest-risk physics target because it collides directly with everpresent-Lambda
 causal-set cosmology.
 
 Footing. Spinor-network closure as a moment-map constraint
 (Dupuis-Speziale-Tambornino `1201.2120`); the trusted `SL(2,C)` invariance of the
-determinant mass is the covariance half of the closure identity. Aristotle
-project `f1be6e52-31cc-411b-86b7-a841b1cfd318` completed the finite
-spinor-network closure identity as a focused standalone proof; it still needs
-repo integration and semantic review before being cited as part of the trusted
-surface.
+determinant mass is the covariance half of the closure identity. The new P9
+modules are kernel-clean draft Lean and should be cited as draft theorem
+footholds until they receive semantic review and promotion.
 
 Next finite definitions. Define a `DiamondSourceVisibility` API before claiming
 cosmology:
@@ -389,10 +422,12 @@ cosmology:
 
 First safe theorem targets:
 
-- `closed_visibleFan_mass_eq_restEnergy`;
-- `boundaryExact_source_eq_zero`;
+- consolidate the `NullEdgeP9*` draft modules into one reviewed
+  `DiamondSourceVisibility` API;
 - `bfClosure_implies_no_bulkDivergence`;
 - `visiblePluckerMass_nonzero_of_noncollinear`;
+- `diamondResidualVariance_scales_with_independentCells`, now using the weighted
+  theorem after a diamond screen/cell model is fixed;
 - `relativeEntropyDataProcessing_for_diamondObserver`, as the ANEC/QNEC
   positivity gate;
 - `sjDiamondReferenceState_def`, first as a finite matrix reference object;
