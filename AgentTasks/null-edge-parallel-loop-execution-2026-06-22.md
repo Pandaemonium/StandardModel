@@ -786,3 +786,67 @@ closed visible fans with nonzero energy have positive source pairing
 The post-suppression audit says this is still not a cosmology result until a
 diamond/screen/curvature/observer definition layer is fixed, but it is now a
 much sharper finite theorem spine for the cosmological-constant branch.
+
+## Cycle 19
+
+Status: loop resumed; P9 non-collinearity no-go submitted.
+
+### Reconciled Aristotle state
+
+Resumed the loop. `aristotle list --limit 20` showed every prior project `IDLE`
+(finished) and already reconciled; the 18-cycle batch is fully integrated and
+uncommitted in the working tree. Re-ran the forbidden-token scan on all nine P9
+draft modules: clean, no proof-hole or escape-hatch tokens. No un-integrated
+completed work remained, so this cycle is a fresh refill rather than an
+integration.
+
+### New Aristotle submission
+
+The post-suppression audit's top ranked finite proof target (and one of the
+three theorem types its pass/fail threshold requires) is the non-collinearity
+no-go: visible non-collinearity gives nonzero mass and a visible source. It is
+statable purely on the existing
+`NullEdgeP9DiamondSourceVisibilityCore` definitions, so it cannot be invalidated
+by the still-pending geometric-API consolidation.
+
+Submitted focused standalone job `bd449f16-805c-411d-af73-e8c21e374308`, task
+`7dff096c-aeb9-4afa-b03e-67f16541276e`.
+
+Target package:
+
+```text
+AgentTasks/aristotle-submit/null-edge-p9-noncollinear-mass-nogo-20260622-project
+```
+
+Target theorem cluster:
+
+```text
+visibleFan_mass_nonneg
+visiblePluckerMass_nonzero_of_noncollinear
+visiblePluckerMass_source_visible_of_noncollinear
+```
+
+Key identity handed to Aristotle:
+`E^2 - |C|^2 = sum_{i,j} weight i * weight j * (1 - <dir i, dir j>)`, each term
+nonnegative for unit directions (Cauchy-Schwarz), with the off-diagonal term for
+two positively-weighted distinct unit directions strictly positive since
+`|dir i - dir j|^2 = 2 (1 - <dir i, dir j>) > 0`.
+
+### Verification this cycle
+
+```text
+python Scripts/check_forbidden_lean_tokens.py --include-draft --forbid-native-decide <nine P9 draft modules>
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-noncollinear-mass-nogo-20260622/NullEdgeP9NoncollinearMassNogo/Core.lean
+```
+
+The token scan passed on all nine P9 modules. The standalone target elaborated
+with exactly the three intended placeholder warnings and no other errors, so the
+proof-job precondition (lone placeholder body) is satisfied.
+
+### Next action
+
+- After a spacing interval, check project
+  `bd449f16-805c-411d-af73-e8c21e374308`; integrate the returned no-go cluster
+  into `PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore` (or a new module)
+  if statement identity is preserved, then refill from the audit's next ranked
+  target.
