@@ -203,6 +203,9 @@ import PhysicsSM.Draft.NullEdgeP9PositiveWeightNoiseZero
 import PhysicsSM.Draft.NullEdgeP7BlochContractionStrict
 import PhysicsSM.Draft.NullEdgeP11MetastableLifetimeMonotone
 import PhysicsSM.Draft.NullEdgeQWUnitarity
+import PhysicsSM.Draft.NullEdgeSuperDiracKreinCore
+import PhysicsSM.Draft.NullEdgeObserverChannelCore
+import PhysicsSM.Draft.NullEdgeSchmidtDeterminantCore
 
 /-!
 # PhysicsSM draft root

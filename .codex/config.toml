@@ -1,8 +1,53 @@
 [shell_environment_policy]
-inherit = "core"
+inherit = "all"
+ignore_default_excludes = true
+include_only = [
+    "ALLUSERSPROFILE",
+    "APPDATA",
+    "COMSPEC",
+    "HOME",
+    "HOMEDRIVE",
+    "HOMEPATH",
+    "LOCALAPPDATA",
+    "NUMBER_OF_PROCESSORS",
+    "OS",
+    "PATH",
+    "PATHEXT",
+    "PROCESSOR_ARCHITECTURE",
+    "PROCESSOR_IDENTIFIER",
+    "PSMODULEPATH",
+    "SYSTEMROOT",
+    "TEMP",
+    "TMP",
+    "USERDOMAIN",
+    "USERNAME",
+    "USERPROFILE",
+    "WINDIR",
+    "PYTHONIOENCODING",
+    "ANTHROPIC_API_KEY",
+    "ANTHROPIC_AUTH_TOKEN",
+    "ARISTOTLE_API_KEY",
+    "GEMINI_API_KEY",
+    "GOOGLE_API_KEY",
+    "GOOGLE_APPLICATION_CREDENTIALS",
+    "OPENAI_API_KEY",
+    "NEO4J_URI",
+    "NEO4J_USERNAME",
+    "NEO4J_PASSWORD",
+    "NEO4J_DATABASE",
+    "OPENALEX_API_KEY",
+    "SEMANTIC_SCHOLAR_API_KEY",
+    "UNPAYWALL_EMAIL",
+    "ZOTERO_API_KEY",
+]
 
-[shell_environment_policy.set]
-ARISTOTLE_API_KEY = "arstl__JyM7Yftqfu9YvOvTCn1m6ucPMz3sO9E-8XTTOPcNgM"
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 8
+max_depth = 1
+job_max_runtime_seconds = 3600
 
 [mcp_servers.local-qwen]
 command = "python"

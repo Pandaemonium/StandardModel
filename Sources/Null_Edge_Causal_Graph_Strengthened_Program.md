@@ -157,6 +157,23 @@ Lorentz-invariant statement:
 m^2=\det P_{\rm vis}.
 \]
 
+The word "observer" should now be split into two operations. A resolution
+observer chooses which internal labels are unresolved and takes the partial
+trace; this produces \(P_{\rm vis}\). A kinematic observer chooses a timelike
+frame/energy normalization and produces a normalized density matrix. These
+steps have different covariance properties. If a visible boost acts as
+`A tensor I_int`, then
+
+```text
+Tr_int[(A tensor I) |Psi><Psi| (A^dagger tensor I)]
+  = A (Tr_int |Psi><Psi|) A^dagger,
+```
+
+so \(P_{\rm vis}\) transforms by congruence and
+`det(A P_vis A^dagger)=det(P_vis)` for `A in SL(2,C)`. By contrast, the
+normalized state is obtained only after the kinematic normalization and changes
+by filtering and renormalization under frame changes.
+
 After choosing a timelike observer convention and normalizing
 \(\rho=P_{\rm vis}/\operatorname{Tr}P_{\rm vis}\),
 \[
@@ -175,11 +192,32 @@ the bipartite concurrence of the visible/internal cut. The safe theorem target
 is therefore not merely "mixedness-style"; it is
 `normalized_mass_ratio_eq_concurrence`.
 
-This concurrence reading also gives the monotonicity boundary. Proper-time
-monotonicity can be imported only for hidden dynamics that are local operations
-or LOCC on the visible/internal bipartition. Hidden dynamics that entangle the
-visible celestial qubit with the internal layer can increase the concurrence
-and should not be advertised as monotone.
+The resolution channel is concrete in the nonorthogonal-label case. If visible
+spinors are columns of a `2 x n` matrix `V` and the hidden labels have Gram
+matrix `G`, then
+
+```text
+P_vis = V G V^dagger,
+det(P_vis) = w^dagger (Lambda^2 G) w,
+w_ij = v_i wedge v_j.
+```
+
+For two labels, `det(P_vis)=|v_1 wedge v_2|^2 det(G)`. Thus orthogonal or
+decohered labels recover the Plucker sum, rank-one coherent labels collapse the
+exterior square and give zero visible mass, and dephasing the internal overlap
+increases the visible determinant toward the orthogonal Plucker value. This is
+the cleanest finite mechanism currently available for turning hidden coherence
+into visible mass.
+
+This concurrence reading also gives the monotonicity boundary. The static
+identity \(m/E=d\tau/dt\) is time dilation rewritten in qubit language; it is
+valuable vocabulary but not by itself a new dynamical principle. A genuine
+monotonicity theorem requires a named channel class. For unital CPTP channels
+on the normalized visible celestial qubit, data processing relative to the
+fixed point `I/2` contracts the Bloch vector and makes `m/E` non-decreasing.
+Hidden dynamics that entangle the visible celestial qubit with the internal
+layer are not channels on `rho_vis` alone and can violate that monotonicity, so
+they should be listed as the explicit failure class.
 
 This is the same mathematical spine as the null-energy/source-visibility audit,
 not a separate principle. The concurrence branch uses data processing for
@@ -196,6 +234,11 @@ observer" into a finite diagnostic: the relative-entropy loss under the
 observer channel should be zero or small exactly when the hidden bookkeeping is
 exactly or approximately recoverable from what the observer retains. This gives
 the source-visibility branch a sharper target than a bare zero-source slogan.
+On the mass side, the off-diagonal internal Gram data play the role of the
+recoverable coherence. If the Petz-style recovery reconstructs those overlaps,
+the attribution of visible mass to lost hidden coherence is ambiguous; if the
+coherence is not recoverable, the observer-channel mass is locked in by the
+resolution map.
 
 For the causal-diamond branch, the Sorkin-Johnston entropy literature supplies
 a native discrete reference-state candidate. A finite diamond can be equipped
@@ -217,18 +260,20 @@ The frame-invariance audit adds a new mandatory theorem layer. Under
 `SL(2,C)` spin-frame changes,
 
 ```text
-P |-> A P A^dagger,
-det(A P A^dagger) = det(P),
+P_vis |-> A P_vis A^dagger,
+det(A P_vis A^dagger) = det(P_vis),
 ```
 
-so `det(P) = m^2` is the Lorentz scalar. By contrast,
-`rho = P / Tr(P)` depends on the observer's timelike normalization, and
-`det(rho) = det(P) / Tr(P)^2` computes `(m/E)^2`. The finite program should
-therefore add explicit wrappers:
+so `det(P_vis) = m^2` is the Lorentz scalar. By contrast,
+`rho = P_vis / Tr(P_vis)` depends on the observer's timelike normalization, and
+`det(rho) = det(P_vis) / Tr(P_vis)^2` computes `(m/E)^2`. The finite program
+should therefore add explicit wrappers:
 
 ```lean
-sl2_det_conj_invariant
-det_normalizedMomentum_eq_det_div_trace_sq
+visibleReduced_boost_eq_congruence
+det_visibleReduced_boost_invariant
+normalizedVisible_boost_is_filtering
+normalizedVisible_det_eq_massRatio_sq
 restFrame_iff_normalizedMomentum_maximallyMixed
 ```
 
@@ -252,8 +297,10 @@ r |-> T r + t,
 while the mass ratio is `sqrt(1 - |r|^2)`. Thus the l=1 relaxation conjecture
 should be stated as a spectral property of a channel or generator, not as a
 raw flip-count slogan. Visible unitaries preserve `|r|`; depolarizing or
-entangling hidden channels can increase the mass ratio; LOCC/local hidden
-channels are the only safe setting for monotonicity.
+unital visible channels can increase the mass ratio by contracting `|r|`;
+entangling hidden dynamics are not visible channels and can reverse the
+monotonicity. Broad LOCC/local language should be replaced by the explicit
+channel class being used.
 
 The new big-physics development note
 `Sources/Null_Edge_Big_Physics_Inquiry_Development.md` sharpens this into
@@ -263,8 +310,9 @@ orthogonal Pluecker sum by an exterior-square Gram formula
 draft Lean handoff `PhysicsSM.Draft.NullEdgeGramWeightedMassAristotle` and is
 the finite spine for the flavor-overlap/Yukawa-hierarchy proposal. Second,
 the normalized determinant identity makes `2 sqrt(det rho_vis) = m/E` a
-proper-time-rate/concurrence wrapper, with monotonicity claims restricted to
-explicit LOCC or local-channel classes. Third, the cosmological-constant route
+proper-time-rate/concurrence wrapper, with monotonicity claims restricted first
+to explicit unital visible-channel classes and with entangling hidden dynamics
+kept as the failure case. Third, the cosmological-constant route
 is phrased as a finite causal-diamond source-visibility problem: define screen flux,
 entropy change, and curvature pairing, then test whether coherent/internal
 vacuum bookkeeping is invisible or boundary-like while visible Pluecker-mass
@@ -469,6 +517,35 @@ spectral nullity around the existing Plucker and diamond observables.
   abstract two-sheet algebra to the concrete chiral Dirac slash. On a mass
   shell `minkowskiNorm p = m*m`, it proves idempotence, orthogonality, and
   the `+m`/`-m` eigenvalue equations for the slash branch projectors.
+
+- **Finite observer-channel mass core.**
+  `PhysicsSM.Draft.NullEdgeObserverChannelCore` packages the sharpened
+  observer-channel conjecture into finite theorem surfaces. It distinguishes
+  the unnormalized resolution output from the kinematic normalization, proves
+  `SL(2,C)` determinant invariance for the resolution output, records scalar
+  filtering of normalized visible data, factors the two-label internal Gram
+  channel as visible Plucker spread times the hidden Gram determinant, proves
+  dephasing monotonicity of that factor, proves the unital visible-channel
+  mass-ratio-square monotone, and records a toy counterexample showing why
+  entangling hidden dynamics cannot be covered by an unrestricted monotonicity
+  slogan.
+
+- **Finite Schmidt determinant bridge.**
+  `PhysicsSM.Draft.NullEdgeSchmidtDeterminantCore` proves that, for a real
+  two-qubit pure-state coefficient matrix, the visible reduced determinant and
+  chirality/internal reduced determinant are equal, and both equal the square
+  of the coefficient determinant. This banks the determinant part of the
+  mixedness/coherence duality while leaving the boosted chirality-coherence
+  interpretation behind an explicit balance/frame convention.
+
+- **Finite super-Dirac Krein core.**
+  `PhysicsSM.Draft.NullEdgeSuperDiracKreinCore` formalizes the Lorentzian
+  refinement of the super-Dirac conjecture. It defines finite
+  `J`-self-adjointness, the mass-shell branch symmetry `J = (1 / m) D`, proves
+  that `J^2 = 1` when `D^2 = m^2 I`, identifies this `J` with the difference of
+  the plus and minus branch projectors, and introduces a `MassShellConstraint`
+  predicate to record equality of the kinetic Pluecker symbol and Yukawa square
+  rather than adding them as two mass blocks.
 
 ### Remaining high-value challenges
 
@@ -1945,9 +2022,10 @@ Priority:
    decomposition, angular-variance identity, and dipole-saturation
    masslessness criterion;
 4. add the reduced-celestial-density wrapper: visible partial trace,
-   determinant as concurrence, mass ratio
-   \(m/E=2\sqrt{\det\rho_{\rm vis}}\), LOCC/local-channel monotonicity
-   boundary, and the internal-coherence caveat;
+   determinant as concurrence, two-observer factorization, internal Gram law,
+   mass ratio \(m/E=2\sqrt{\det\rho_{\rm vis}}\), unital visible-channel
+   monotonicity, entangling-channel counterexamples, and the
+   internal-coherence caveat;
 5. package the null-step projector theorem with the Pluecker mass theorem;
 6. package the static square-root theorem
    `diracSlash_bundleMomentum_sq_eq_pluckerMass` as the operator-level
@@ -2054,11 +2132,13 @@ Every major conjecture should have a stated failure mode.
 | Finite causal super-Dirac operator is the master structure | No natural odd Krein/J-self-adjoint first-order operator exists on the causal order complex whose square simultaneously yields the kinetic Pluecker symbol, diamond curvature block, Higgs kinetic cross term, and Higgs/Yukawa chirality-flip block; or the construction double-counts mass by adding `det(P)` and `Phi^dagger Phi` instead of imposing their on-shell equality |
 | Finite spectral-triple audit upgrades the super-Dirac operator | The causal order-complex operator has no coherent real structure, first-order condition, inner-fluctuation behavior, or low-order spectral action matching the Pluecker/diamond/Higgs blocks |
 | Dirac slash square-root of Plucker mass is the right finite operator bridge | Gamma/Pauli/signature conventions cannot be aligned with the trusted determinant mass, or the square-root theorem factors only a number but cannot be connected to any graph propagation or chirality-flip operator |
-| Normalized celestial mixedness is used only frame-relatively | The program treats `det(P / Tr(P))` as a Lorentz scalar, hides the timelike normalization choice, or fails to prove the unnormalized `det(A P A^dagger) = det(P)` invariant wrapper |
+| Normalized celestial mixedness is used only frame-relatively | The program treats `det(P_vis / Tr(P_vis))` as a Lorentz scalar, hides the timelike normalization choice, or fails to prove the unnormalized `det(A P_vis A^dagger) = det(P_vis)` invariant wrapper |
+| Two-observer factorization is the right mass-channel interface | The visible boost fails to commute with the internal trace in the physical model, the resolution observer cannot be represented by a finite Gram-bearing internal label family, or the kinematic observer cannot be separated cleanly from the irreversible coarse-graining |
+| Internal Gram law is the concrete observer channel | The physical hidden labels are not described by a stable Gram matrix, `det(P_vis)=w^dagger (Lambda^2 G) w` is not the relevant determinant, dephasing of `G` is not monotone in the intended dynamics, or the two-label factorization has no operational meaning |
 | Higgs/Yukawa flips are the off-diagonal mass block | The legal flip bookkeeping cannot be realized as an odd left/right operator whose square gives the expected Yukawa mass matrix, or the Yukawa block cannot be equated on shell with the kinetic Pluecker determinant without convention drift or double-counting |
 | Complex Plucker amplitude is the first-order mass/phase object | The wedge phase cannot be made invariant under the relevant spinor/gauge rephasings, does not match Bargmann/Pancharatnam phase on triangles, or fails to commute with the graph-native holonomy layer |
 | Two-sheet structure is forced by the mass square root | The sign branch of the finite Dirac square root cannot be tied to any coherent particle/antiparticle, CPT, or in/out construction without adding extraneous structure |
-| CPTP celestial channels give the right dynamics language | The affine Bloch-channel formalism cannot represent the hidden/chiral dynamics, l=1 relaxation is not a channel/generator spectral property, or the predicted mass/proper-time change conflicts with unitary/LOCC monotonicity boundaries |
+| CPTP celestial channels give the right dynamics language | The affine Bloch-channel formalism cannot represent the hidden/chiral dynamics, l=1 relaxation is not a channel/generator spectral property, no physically relevant dynamics induce a unital visible channel, or the predicted mass/proper-time change conflicts with the explicit entangling-channel counterexamples |
 | Irrep-labeled spinor table stabilizes the program | The program continues to conflate the scalar `Lambda^2 S` Pluecker bracket with `Sym^2 S` curvature or with `S tensor Sbar` momentum, producing theorem statements that change representation under convention audit |
 | Klein quadric is the correct pairwise bivector hub | The pairwise Pluecker/Klein/simplicity identities fail under the chosen spinor/twistor conventions, or the `n > 2` assembly cannot be expressed through pairwise simplicity plus closure/Gauss-law data |
 | Spinor-network closure is the source-visibility phase space | The closure vector does not match the celestial dipole convention, visible momentum closure and BF face closure cannot be kept separate, or closure-satisfying internal bookkeeping still contributes a bulk diamond source |
@@ -2067,7 +2147,7 @@ Every major conjecture should have a stated failure mode.
 | Hopf-link volume simplicity strengthens the spin-foam bridge | The Hopf-link volume functionals cannot be stated on the boundary graphs used by the null-edge program, fail to be invariant under the relevant finite moves, or do not add geometricity information beyond the pairwise Pluecker simplicity defect |
 | Mass is Pluecker spread / missing celestial dipole of null edges | Mismatch with physical invariant mass conventions, failure of the Bloch angular-variance rewrite, or misuse outside the positive Hermitian spinor-bundle setting where the theorem applies |
 | Positive-Grassmannian/positroid stratification helps classify histories | The complex Pluecker phases cannot be gauge-fixed to a useful real ordered sector, minor-vanishing strata do not match causal or factorization degenerations, or positivity adds no constraint beyond ordinary squared-modulus nonnegativity |
-| Mass ratio is reduced celestial concurrence | The normalized determinant fails to match \(m/E\), the visible partial trace is not the correct observable, the pure-state visible/internal bipartition does not give concurrence, prior-art/frame-dependence boundaries are hidden, or monotonicity is claimed outside LOCC/local hidden-channel hypotheses |
+| Mass ratio is reduced celestial concurrence | The normalized determinant fails to match \(m/E\), the resolution partial trace is not the correct observable, boosts do not commute with the actual resolution map, the pure-state visible/internal bipartition does not give concurrence, prior-art/frame-dependence boundaries are hidden, or monotonicity is claimed outside an explicit channel class such as unital visible CPTP maps |
 | Quantum marginal constraints give hierarchy leverage | The proposed internal state space imposes no useful constraints on visible reduced spectra, observed Yukawa hierarchies are not near natural polytope faces, or the constraints require ad hoc embedding choices |
 | Fubini-Study / QGT reading of pairwise mass and spin phase | The real part fails to match chordal Fubini-Study distance on CP^1, the Berry/Pancharatnam phase does not survive the graph-native holonomy layer, or the proposed spin interpretation has no invariant finite observable |
 | Massive ambitwistor symplectic data is the phase target | The Pluecker/Bargmann phase is not compatible with little-group quotienting, does not transform correctly under diamond transport, or cannot be related to known massive-twistor symplectic forms |
@@ -2103,7 +2183,7 @@ identifications, not the bare unification slogan.
 | Prior work | What it already covers | What this program adds |
 |---|---|---|
 | Arkani-Hamed-Huang-Huang massive spinor-helicity (arXiv:1709.04891): \(\langle\lambda^I\lambda^J\rangle = m\,\epsilon^{IJ}\), \(\det p = m^2\) | The two-spinor mass-as-determinant identity (the \(n=2\) case) | The Cauchy-Binet / Gr(2,n) generalization to a bundle of \(n\) null edges, kernel-checked |
-| Chin-Lee momentum bispinor / two-qubit entanglement (arXiv:1407.2492), Peres-Scudo-Terno reduced spin entropy (quant-ph/0203033), Gingrich-Adami moving-body entanglement (quant-ph/0205179), and Fullwood-Vedral-Guzman-Gonzalez Lorentzian quantum information (arXiv:2604.07471) | Mass/concurrence and Bloch-ball analogies, together with the warning that normalized reduced spin or entanglement data are frame-dependent under boosts; recent work emphasizes unnormalized linear-entropy/Lorentzian invariants | A stricter invariant/frame-relative split: Lean-check `det(P)=m^2` and `det(A P A^dagger)=det(P)` for the unnormalized block, while treating `det(P/Tr(P))` only as the frame-relative `m/E` wrapper |
+| Chin-Lee momentum bispinor / two-qubit entanglement (arXiv:1407.2492), Peres-Scudo-Terno reduced spin entropy (quant-ph/0203033), Gingrich-Adami moving-body entanglement (quant-ph/0205179), and Fullwood-Vedral-Guzman-Gonzalez Lorentzian quantum information (arXiv:2604.07471) | Mass/concurrence and Bloch-ball analogies, together with the warning that normalized reduced spin or entanglement data are frame-dependent under boosts; recent work emphasizes unnormalized linear-entropy/Lorentzian invariants | A stricter invariant/frame-relative split: Lean-check `det(P_vis)=m^2` and `det(A P_vis A^dagger)=det(P_vis)` for the unnormalized resolution output, treat `det(P_vis/Tr(P_vis))` only as the frame-relative `m/E` wrapper, and use the internal Gram law `det(V G V^dagger)=w^dagger (Lambda^2 G) w` as the concrete observer-channel mechanism |
 | Dupuis-Speziale-Tambornino spinors/twistors in loop gravity (arXiv:1201.2120) | Spinor-network phase space, twisted geometries, holonomy-flux reconstruction, and closure as a node constraint | A corrected finite closure/source bridge: Pluecker mass is the Casimir of energy and closure vector, while closure defects pair with diamond source observables |
 | Arkani-Hamed et al. positive Grassmannian (arXiv:1212.5605) | Positroid cells and positive Grassmannian stratification of on-shell diagrams | A cautious finite classification of null-edge bundles by Pluecker-minor vanishing/sign/phase data, with positivity restricted to real ordered sectors |
 | Cortes-Smolin energetic causal sets (arXiv:1308.2206; PRD 90, 084007; arXiv:1407.0032) | Energy-momentum on causal links, conserved at events, a twistorial representation, and a spin-foam/BF link; supplies a dynamics | The CP^1 Pluecker/mass geometry and the Lean-checked finite holonomy and mass theorems, which ECS lacks |

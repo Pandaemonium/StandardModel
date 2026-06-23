@@ -101,6 +101,16 @@ Dirac-type operator can square to Laplacian, curvature, and scalar/Higgs terms.
 Bianconi's topological Dirac operator for networks (`8ITHD4PG`) gives a finite
 network analogue of `D = d + delta` with a Hodge-Laplacian square.
 
+The Lorentzian/Krein warning is also sourced. Van den Dungen (`5DURW8DU`)
+frames Lorentzian spectral triples as reverse Wick rotations over Krein spaces.
+Bizi-Brouder-Besnard (`PM83B8QI`) develop indefinite spectral triples over
+Krein spaces and space/time dimension bookkeeping. Besnard-Bizi (`5VWPZ8BP`)
+emphasize the role of time orientation and the Krein product. Devastato-
+Farnsworth-Lizzi-Martinetti (`5RJUDATF`) and Martinetti-Singh (`Q6R3PCGJ`)
+show how twisting Euclidean spectral triples is tied to Lorentzian signature
+and fermionic actions. These sources make ordinary positive-definite
+self-adjointness the wrong default target for the causal operator.
+
 The null-edge addition is more specific. The kinetic symbol of the graph Dirac
 block should be the Lean-checked Pluecker determinant of a bundle of null
 spinors; the Yukawa block should equal it only as an on-shell constraint; and
@@ -128,6 +138,12 @@ The pieces are mostly banked separately:
 - `PhysicsSM.Draft.NullEdgeYukawaMassOperator` proves a finite off-diagonal
   scalar mass operator that anticommutes with chirality and squares to the
   expected mass-square block.
+- `PhysicsSM.Draft.NullEdgeSuperDiracKreinCore` now gives the Lorentzian/Krein
+  finite algebra: `J`-self-adjointness, the mass-shell branch symmetry
+  `J = (1 / m) D`, the involution theorem `J^2 = 1` when `D^2 = m^2 I`, the
+  equality with plus-minus branch projectors, and an explicit
+  `MassShellConstraint` predicate recording equality rather than addition of
+  kinetic and Yukawa mass squares.
 
 ### Why it matters
 
@@ -210,19 +226,51 @@ det(P) = m^2,
 P = sum_i psi_i psi_i^dagger.
 ```
 
-The observer-conditioned statement is:
+There are two observer operations, and keeping them separate is now part of
+the conjecture.
+
+The **resolution observer** chooses which internal/chiral/Higgs labels are
+unresolved and traces them out. If a visible boost acts as `A tensor I_int`,
+then this resolution step commutes with the boost:
 
 ```text
-rho_{p|u} = P / Tr_u(P),
+Tr_int[(A tensor I) |Psi><Psi| (A^dagger tensor I)]
+  = A (Tr_int |Psi><Psi|) A^dagger.
+```
+
+Thus the unnormalized visible block transforms by congruence,
+
+```text
+P_vis |-> A P_vis A^dagger,
+det(A P_vis A^dagger) = det(P_vis)
+```
+
+for `A in SL(2,C)`. This is the invariant mass statement:
+
+```text
+det(P_vis) = m^2.
+```
+
+The **kinematic observer** then chooses a timelike frame/energy normalization.
+Only after this step do we form a normalized celestial qubit:
+
+```text
+rho_{p|u} = P_vis / Tr_u(P_vis),
 2 sqrt(det(rho_{p|u})) = m / E_u.
 ```
 
-The conjecture is that this is the correct finite origin-of-mass interface:
-massive visible particles are not single massive elementary edges, but
-observer-channel reductions of internally structured null processes. The Higgs
-does not simply "add mass" as a scalar after the fact. It makes left/right
-chirality transitions legal and creates chirality coherence of size `m / E_u`;
-observer tracing or dephasing can then convert that coherence into the visible
+This normalized density is not a Lorentz scalar. Under a change of frame it is
+filtered and renormalized, in the same SLOCC-like sense familiar from
+relativistic quantum information. The invariant object is `P_vis` and its
+determinant; the frame-relative object is `rho_{p|u}` and its mixedness.
+
+The conjecture is that this two-observer interface is the correct finite
+origin-of-mass interface: massive visible particles are not single massive
+elementary edges, but resolution-channel reductions of internally structured
+null processes, followed by a chosen kinematic normalization. The Higgs does
+not simply "add mass" as a scalar after the fact. It makes left/right chirality
+transitions legal and creates chirality coherence; observer tracing or
+dephasing can then convert that coherence into the visible
 determinant/mixedness signal.
 
 ### What the literature says
@@ -271,6 +319,36 @@ The channel/chirality side has a growing finite core:
   `NullEdgeP2ProjectorDephasedDetMassRatio` show how dephasing removes
   coherence and changes determinant/purity observables.
 - `PhysicsSM.Draft.NullEdgeP6Concurrence` covers finite concurrence algebra.
+- `PhysicsSM.Draft.NullEdgeObserverChannelCore` packages the sharpened
+  observer-channel interface: unnormalized visible boost congruence,
+  `SL(2,C)` determinant invariance, scalar kinematic filtering, the two-label
+  Gram determinant factorization, dephasing monotonicity, unital visible
+  mass-ratio monotonicity, and a scalar counterexample to overbroad hidden
+  monotonicity claims.
+- `PhysicsSM.Draft.NullEdgeSchmidtDeterminantCore` proves the finite pure-state
+  Schmidt determinant bridge: the visible and chirality reduced determinants
+  agree, and both equal the square of the `2 x 2` coefficient determinant.
+
+The concrete observer-channel algebra is also now sharp. If visible spinors are
+the columns of a `2 x n` matrix `V` and unresolved internal labels have Gram
+matrix `G`, then the resolution observer produces
+
+```text
+P_vis = V G V^dagger,
+det(P_vis) = w^dagger (Lambda^2 G) w,
+w_ij = v_i wedge v_j.
+```
+
+For two labels this becomes
+
+```text
+det(P_vis) = |v_1 wedge v_2|^2 det(G).
+```
+
+This makes the physical content vivid: orthogonal/decohered internal labels
+recover the Plucker sum, rank-one coherent internal labels collapse the
+exterior square and give zero visible mass, and dephasing increases the
+visible determinant toward the orthogonal Plucker value.
 
 ### Why it matters
 
@@ -285,21 +363,32 @@ lightlike pieces" without confusing invariant mass with observer-dependent
 normalization.
 
 If the conjecture fails, it will pinpoint the failure: either the observer
-state is the wrong normalization, the Higgs/chirality channel is not the right
-purification, or the concurrence language is only an analogy.
+split is wrong, the physical internal labels are not modeled by a finite Gram
+family, the Higgs/chirality channel is not the right purification, or the
+concurrence language is only an analogy.
 
 ### What we would like to show
 
 Near-term theorem targets:
 
 ```lean
-observerConditionedDensity_covariant_under_frame_change
+visibleReduced_boost_eq_congruence
+det_visibleReduced_boost_invariant
+normalizedVisible_boost_is_filtering
+normalizedVisible_det_eq_massRatio_sq
 visibleDensity_from_internal_purification
+det_visibleReduced_eq_gramWeighted_plucker
+det_visibleReduced_twoLabel_eq_wedge_times_detGram  -- banked in ObserverChannelCore
+dephasing_internalGram_mass_monotone                -- banked in ObserverChannelCore
+rankOne_internalGram_iff_massless
 normalized_mass_ratio_eq_concurrence
-chiralityCoherence_unitaryDilation_eq_massRatio
+visibleMixedness_eq_chiralityCoherence_schmidt       -- determinant bridge banked
+chiralityPopulations_balanced_iff_coherence_eq_massRatio
 dephasing_visibleMixedness_eq_lostChiralityCoherence
-loCC_or_local_channel_massRatio_monotone
-frameChange_transforms_rho_p_given_u_without_changing_detP
+massRatioSq_eq_linearEntropy_visible
+unital_visibleChannel_massRatio_monotone
+entangling_hiddenChannel_massRatio_nonmonotone
+internalCoherenceLoss_eq_relativeEntropyDeficit
 ```
 
 Publication-level statement:
@@ -315,16 +404,23 @@ Publication-level statement:
 The core risk is physical interpretation. The algebra is finite and strong, but
 we still need:
 
-- a justified observer channel, not only a scalar normalization;
+- the two-observer split: resolution partial trace versus kinematic
+  normalization;
 - a clean unitary dilation from visible spinor plus internal/chirality labels;
 - a precise distinction between invariant mass and frame-relative `m/E_u`;
+- an internal Gram model that is physically motivated rather than assigned
+  post hoc;
 - a proof that physically relevant Higgs/Yukawa dynamics create exactly the
   coherence parameter used in the finite model;
-- monotonicity statements limited to actual local or LOCC-like channel classes.
+- monotonicity statements restricted to actual channel classes, with unital
+  visible channels as the safe positive case and entangling hidden channels as
+  the expected failure case.
 
 Failure mode: the normalized determinant remains true but does not arise from a
-natural observer/Higgs channel, making "mass as mixedness" a useful analogy
-rather than a physical mechanism.
+natural observer/Higgs channel; boosts do not commute with the actual
+resolution map; internal coherence is not recoverable or operationally
+detectable; or the proper-time/purity statement is only a static rewrite of
+time dilation rather than a dynamical constraint.
 
 ## 3. P9 source-visibility/noise conjecture
 

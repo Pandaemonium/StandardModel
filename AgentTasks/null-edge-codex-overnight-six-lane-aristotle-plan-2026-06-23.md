@@ -1,11 +1,12 @@
-# Codex overnight six-lane Aristotle research plan
+# Codex six-lane Aristotle + multi-model research plan
 
-Date: 2026-06-23
+Date: 2026-06-23. Updated morning 2026-06-23 for Spark/Gemini/Claude access.
 
 Purpose: run Codex autonomously overnight on the null-edge causal graph program,
 with up to six simultaneous Aristotle jobs queued when the targets are genuinely
-worth the proof budget. The run should optimize for publishable progress, not
-for activity. A good night produces one or more of:
+worth the proof budget, and with Spark/Gemini/Claude used as force multipliers
+for research, integration, and hard-problem analysis. The run should optimize
+for publishable progress, not for activity. A good run produces one or more of:
 
 - a new finite theorem that strengthens a paper claim;
 - a sharper definition that unifies several theorem islands;
@@ -71,6 +72,106 @@ operator, source functional, or falsification gate.
    - Read diffs and helper reports, not whole extracted projects.
    - Verify theorem statement identity mechanically where possible.
    - Run targeted checks before broad builds.
+
+6. Use GPT-5.3-Codex-Spark subagents liberally as an experiment.
+   - Prefer Spark for bounded, parallelizable work: literature triage,
+     semantic-search summaries, Aristotle completion triage, diff inspection,
+     task-note cleanup, source crosswalks, small manuscript sketches, and
+     verification/checklist passes.
+   - Keep Codex's main thread focused on high-level strategy, physics judgment,
+     claim boundaries, final integration decisions, and critical review.
+   - Assign Spark tasks with disjoint write scopes when edits are allowed. For
+     read-only work, ask for a concise evidence-backed report with file paths,
+     source keys, job IDs, and concrete next actions.
+   - Do not let Spark promote draft code to trusted code or make commits.
+   - Record where Spark performs well or struggles in
+     `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`.
+
+7. Use Gemini and Claude as hard-problem external critics.
+   - Query Gemini when a difficult issue would benefit from a broad independent
+     synthesis, especially novel physics, P9, ontology-to-theorem translation,
+     manuscript framing, or a surprising Aristotle result.
+   - Query Claude when a difficult issue would benefit from adversarial
+     critique, theorem-statement sharpening, physics guardrails, or source
+     skepticism.
+   - Nominal cadence: Gemini about once per six Aristotle jobs and Claude about
+     once per twelve Aristotle jobs. Treat this as a reminder, not a quota:
+     query them when the problem is important enough to justify multiple takes.
+   - Do not paste secrets or private credentials into prompts. Use concise
+     context packs and ask for actionable theorem targets, failure modes, and
+     literature leads.
+   - Record where Gemini and Claude do well or struggle in the same evaluation
+     log.
+
+## Multi-model delegation protocol
+
+The run should deliberately test what the new model stack is good for.
+
+### Spark subagents
+
+Use GPT-5.3-Codex-Spark subagents as the default delegation layer for bounded
+tasks. Good Spark prompts have:
+
+- a fixed input scope, such as one task note, one Aristotle output, one doc
+  section, or one small Lean module cluster;
+- one concrete objective;
+- at most three fallback questions;
+- an explicit output format: changed files, candidate diffs, source keys,
+  theorem names, risk list, or next-action list;
+- a warning not to revert unrelated work and not to promote trusted modules.
+
+Prefer Spark for:
+
+- literature triage and source relevance checks;
+- semantic-search result summarization;
+- Aristotle job integration triage: candidate files, diff summaries, statement
+  drift checks, proof-hole scans, and verification-command proposals;
+- small bounded repo edits in disjoint files;
+- manuscript section sketches when theorem anchors are already known;
+- lint/noise audits on touched files;
+- queue/ledger bookkeeping.
+
+Do not use Spark for:
+
+- final physics judgment;
+- broad ontology synthesis without a finite target;
+- trusted promotion decisions;
+- silent theorem-statement changes;
+- committing.
+
+### Gemini and Claude escalation
+
+Gemini and Claude are not routine workers. They are external critical lenses for
+hard problems. Use the available API/CLI helpers when configured; if no helper is
+available in the active shell, record that as a tooling blocker rather than
+stalling the run.
+
+Use Gemini when the run needs:
+
+- broad synthesis over many lines of inquiry;
+- speculative but disciplined theorem proposals;
+- literature-search angles for a difficult physics branch;
+- alternative ways to phrase a manuscript argument;
+- a fresh attempt to connect P9, P7, P1/P6, or P2/P3.
+
+Use Claude when the run needs:
+
+- adversarial critique;
+- convention and physics-claim audits;
+- theorem-statement sharpening;
+- failure modes and demotion criteria;
+- skepticism about whether a claimed result is actually new.
+
+Nominal cadence:
+
+- Gemini once per roughly six Aristotle jobs submitted or integrated.
+- Claude once per roughly twelve Aristotle jobs submitted or integrated.
+
+These are prompts to remember escalation, not quotas. If the highest-value
+problem is hard, ask earlier. If the current batch is clean Lean plumbing, skip.
+
+Every Spark/Gemini/Claude use must be recorded in
+`AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`.
 
 ## Current state snapshot
 
@@ -144,6 +245,18 @@ $py = "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
 If Neo4j credentials are missing, do not spend the night repairing environment
 state unless it directly blocks the next best theorem target. Fall back to local
 files, context packs, and explicit literature MCP searches.
+
+Spark startup delegation:
+
+- Spawn one Spark subagent to review `aristotle list --limit 30` output and
+  identify completed jobs likely worth integrating.
+- Spawn one Spark subagent, if useful, to run/read semantic-search outputs for
+  the highest-risk active lane and return only the top source/theorem leads.
+- Keep Codex on strategy: choose which jobs matter, decide whether a result is
+  publication-moving, and resolve contradictions between model reports.
+
+Do not block the whole startup waiting for Spark unless the next action depends
+on its result. Continue with non-overlapping status checks and local builds.
 
 ## Six overnight lanes
 
@@ -354,11 +467,29 @@ At least three active jobs should be proof jobs. At most one active job should
 be manuscript/literature-only unless a source discovery clearly unlocks a
 theorem.
 
+Model cadence and escalation:
+
+- Keep a running job counter in the ledger for Aristotle jobs submitted or
+  integrated.
+- Around every sixth Aristotle job, run one Gemini escalation on the highest-risk
+  unresolved lane unless current lanes are purely mechanical.
+- Around every twelfth Aristotle job, run one Claude escalation for independent
+  critique of the current risk profile.
+- If Spark flags low confidence, repeated convention risk, or possible
+  novelty/prior-art conflict, use Gemini or Claude before adding more jobs in
+  that lane.
+- If Gemini/Claude returns a new constraint or contradiction risk, re-baseline
+  the active queue before submitting additional jobs.
+
 Track the literature cadence in the run ledger. After every fifth Aristotle job
 submitted or integrated, pause long enough to run one focused literature pass
 against the highest-risk active claim. The search can be quick, but it must end
 with a concrete decision: add a source to Zotero/Neo4j, update a claim boundary,
 change a theorem statement, or record that no useful source was found.
+
+Spark should usually run the first-pass literature triage. Codex should review
+the source quality and decide whether to add papers, update claims, or change
+the theorem target.
 
 Do not submit a new job if:
 
@@ -425,13 +556,28 @@ lake env lean PhysicsSMDraft.lean
 
 6. Update the run ledger with:
    - job ID;
+   - model/subagent used, if any: Spark, Gemini, Claude, Aristotle, Codex;
+   - task type: proof, integration, literature, verification, manuscript,
+     strategy, critique;
    - what was proved or returned;
    - whether integrated;
    - verification commands;
    - scientific significance;
+   - model outcome: success, partial, failed, blocked, or noisy;
+   - quality score `0-3` and one-sentence reason;
+   - whether escalation was used or skipped, and why;
    - next target.
 
-7. Only after a stable batch, run broader checks:
+7. Add or update the model evaluation log:
+
+```text
+[timestamp] [lane] [job/model] [task-type] [status] [quality 0-3]
+what worked:
+what worried:
+follow-up:
+```
+
+8. Only after a stable batch, run broader checks:
 
 ```powershell
 git diff --check
@@ -448,6 +594,15 @@ The default cadence is at least one focused literature pass per five Aristotle
 jobs. Count both submitted and integrated jobs; if the run submits five jobs
 before any have completed, search before submitting the sixth unless an urgent
 repair job is needed to save a running lane.
+
+Default pattern:
+
+1. Give Spark a bounded literature triage task: one claim, one lane, or one
+   theorem target.
+2. Use local Neo4j semantic search and provider-specific scholarly searches.
+3. Ask Gemini/Claude only if the source landscape changes a high-risk claim or
+   if the literature conflicts with our current framing.
+4. Codex decides whether to add sources to Zotero/Neo4j or update the docs.
 
 Priority questions:
 
@@ -559,6 +714,10 @@ Summary:
 - jobs integrated:
 - most significant scientific result:
 - most important negative result or demotion:
+- model/subagent experiment summary:
+  - Spark:
+  - Gemini:
+  - Claude:
 
 Files changed:
 - ...
@@ -575,4 +734,6 @@ Remaining issues:
 ```
 
 Also leave or update a run ledger in `AgentTasks/` with job IDs, statuses, and
-next actions. Do not commit.
+next actions. Also update
+`AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md` with
+specific observations about Spark/Gemini/Claude performance. Do not commit.

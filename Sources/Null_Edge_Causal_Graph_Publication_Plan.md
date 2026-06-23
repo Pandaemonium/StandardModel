@@ -45,11 +45,21 @@ critique also tightens the Higgs claim: Yukawa/Higgs coupling directly creates
 left/right chirality coherence; visible mixedness appears only after an explicit
 dephasing, partial trace, detector restriction, or observer channel.
 
+The observer-channel version now needs one more split. A **resolution observer**
+traces out internal/chiral labels and produces the unnormalized visible block
+`P_vis`; this step is the irreversible coarse-graining and commutes with visible
+`SL(2,C)` boosts. A **kinematic observer** then chooses the timelike energy
+normalization and produces `rho_{p|u}`; this step is an invertible
+filtering/renormalization and is exactly where frame dependence enters. Thus
+`det(P_vis)=m^2` is the invariant, while `det(rho_{p|u})=(m/2E_u)^2` is the
+frame-relative rate.
+
 The same guidance also gives the publication series a compact spine:
 
 ```text
 Plucker geometry
--> observer-conditioned celestial qubit
+-> resolution observer P_vis
+-> kinematic observer rho_{p|u}
 -> chirality coherence
 -> null-step dynamics
 -> stable or metastable channel sectors.
@@ -123,11 +133,27 @@ det(sum_i psi_i psi_i^dagger) = sum_{i<j} |psi_i wedge psi_j|^2,
 
 with mass zero exactly when the bundle is projectively collinear. A celestial
 rewrite expresses the same unnormalized scalar as a monopole/dipole deficit on
-`CP^1`. The observer-facing state is obtained only after fixing a unit timelike
-observer `u`:
+`CP^1`. If the fine state also carries internal labels, the resolution observer
+first traces those labels and produces an unnormalized visible block
 
 ```text
-rho_{p|u} = U^{-1/2} P U^{-1/2} / Tr(U^{-1} P),
+P_vis = V G V^dagger,
+det(P_vis) = w^dagger (Lambda^2 G) w.
+```
+
+This is the coarse-graining step, not a frame choice. Under a visible boost
+`A in SL(2,C)`, it transforms by congruence and preserves the determinant:
+
+```text
+P_vis |-> A P_vis A^dagger,
+det(A P_vis A^dagger) = det(P_vis).
+```
+
+The observer-facing normalized state is obtained only after fixing a unit
+timelike observer `u`:
+
+```text
+rho_{p|u} = U^{-1/2} P_vis U^{-1/2} / Tr(U^{-1} P_vis),
 U = u.sigma.
 ```
 
@@ -155,13 +181,20 @@ identity, real nonnegativity, mass-zero/common-direction criterion. Trusted
 twistor-chart matching in `PhysicsSM.Spinor.TwistorPluckerMass` (promoted, no
 `s o r r y`). `SL(2,C)` covariance of the determinant mass in
 `PhysicsSM.Draft.NullEdgeSpinorGeometryTargets`
-(`finBundleMomentum_det_sl2_invariant`, kernel-clean).
+(`finBundleMomentum_det_sl2_invariant`, kernel-clean). The draft
+`PhysicsSM.Draft.NullEdgeObserverChannelCore` now packages the sharpened
+observer-channel layer: unnormalized boost congruence, determinant invariance,
+scalar normalization/filtering, the two-label Gram factorization, dephasing
+monotonicity, and the unital-versus-entangling monotonicity boundary.
+`PhysicsSM.Draft.NullEdgeSchmidtDeterminantCore` adds the finite pure-state
+Schmidt determinant bridge equating visible and chirality reduced determinants.
 
 Remaining. Promote the celestial-moment wrapper (Bloch monopole/dipole form),
-add the observer-conditioned normalization theorem, add the observer-relative
-two-null decomposition lemma, and promote the Gram-weighted generalization (see
-P6) into the trusted surface, or scope the paper to the orthonormal case and
-cite the rest as extensions.
+add the unnormalized boost-congruence theorem, add the frame-conditioned
+normalization/filtering theorem, add the observer-relative two-null
+decomposition lemma, and promote the Gram-weighted generalization (see P6) into
+the trusted surface, or scope the paper to the orthonormal case and cite the
+rest as extensions.
 
 Lead venue. A formalized-mathematics venue (artifact + informal/formal
 correspondence) with a math-physics secondary (the invariant-mass identity is of
@@ -236,9 +269,11 @@ Reproducibility appendix checklist:
 Robustness / toy-example checklist:
 
 - boosted two-spinor or finite-bundle example showing `det(P)` invariant while
-  observer-conditioned `rho_{p|u}` changes covariantly with the observer;
+  observer-conditioned `rho_{p|u}` changes by filtering/renormalization with
+  the observer;
 - alternate trace/energy normalizations and the conversion factor;
-- nonorthogonal hidden-label example via the Gram-weighted theorem;
+- nonorthogonal hidden-label example via the Gram-weighted theorem, including
+  the two-label product `det(P_vis)=|v_1 wedge v_2|^2 det(G)`;
 - simple qubit observer-channel example;
 - at least one small causal-diamond picture only as future-facing context, not
   as part of the P1 proof burden.
@@ -277,6 +312,10 @@ the program's most distinctive math contribution after P1.
 Literature anchors. Quillen superconnections; Chamseddine-Connes spectral
 action; Ackermann-Tolksdorf generalized Lichnerowicz; Bianconi topological Dirac;
 Foldy-Wouthuysen / Newton-Wigner / Thaller as branch-interpretation guardrails.
+For the Lorentzian/Krein audit, cite van den Dungen (`5DURW8DU`),
+Bizi-Brouder-Besnard (`PM83B8QI`), Besnard-Bizi (`5VWPZ8BP`),
+Devastato-Farnsworth-Lizzi-Martinetti (`5RJUDATF`), and Martinetti-Singh
+(`Q6R3PCGJ`).
 
 Claim boundary. The square-root identities are finite algebra. The
 particle/antiparticle and localization reading of the two sheets must stay
@@ -486,10 +525,15 @@ mass / time branch      : monotonicity of frame-relative visible m/E concurrence
 
 Faulkner-Leigh-Parrikar-Wang prove the ANEC from monotonicity of relative
 entropy applied to a modular Hamiltonian; the proper-time branch restricts its
-`d tau / dt = 2 sqrt(det rho_vis)` monotonicity claim to LOCC and to a fixed
-observer-time convention, which is the same data-processing principle plus the
-frame audit. The paper argues that the allowed-dynamics question in both
-branches has one answer and one guardrail.
+`d tau / dt = 2 sqrt(det rho_vis)` monotonicity claim to named channel classes
+and to a fixed observer-time convention, which is the same data-processing
+principle plus the frame audit. The safest positive class is a unital CPTP
+channel on the normalized visible celestial qubit: it fixes the rest state
+`I/2`, contracts the Bloch vector, and makes `m/E` non-decreasing. Entangling
+hidden dynamics are not channels on `rho_vis` alone and should be treated as
+the named counterexample class, not hidden under a broad LOCC slogan. The paper
+argues that the allowed-dynamics question in both branches has one answer and
+one guardrail.
 
 The new useful sharpening is recoverability, with a strict caveat.
 Recoverability is not the same thing as invisibility. Small data-processing loss
@@ -506,20 +550,30 @@ invariance, and the trusted Plucker determinant. The ANEC side is cited, not
 formalized. The next finite Lean layer should avoid full Type-III QFT and start
 with matrix channels:
 
-- `det_normalizedMomentum_eq_det_div_trace_sq`;
-- `sl2_det_conj_invariant`;
+- `visibleReduced_boost_eq_congruence`;
+- `det_visibleReduced_boost_invariant`;
+- `normalizedVisible_boost_is_filtering`;
+- `normalizedVisible_det_eq_massRatio_sq`;
+- `det_visibleReduced_eq_gramWeighted_plucker`;
+- `det_visibleReduced_twoLabel_eq_wedge_times_detGram` (banked in
+  `NullEdgeObserverChannelCore`);
+- `dephasing_internalGram_mass_monotone` (banked in
+  `NullEdgeObserverChannelCore`);
 - `restFrame_iff_normalizedMomentum_maximallyMixed`;
 - `massRatio_eq_sqrt_one_minus_blochNormSq`;
 - `relativeEntropy_partialTrace_monotone`, or a focused finite data-processing
   lemma if the mathlib API supports it;
-- `massRatio_monotone_under_unital_bloch_contraction`;
+- `unital_visibleChannel_massRatioSq_monotone` (banked in
+  `NullEdgeObserverChannelCore`);
+- `entangling_hiddenChannel_massRatioSq_can_decrease` (banked toy
+  counterexample in `NullEdgeObserverChannelCore`);
 - `petzRecoverable_iff_relativeEntropyLoss_zero`, if a small finite matrix
   statement can be isolated;
 - `recoverabilityGap_bounds_sourceVisibilityDefect`, initially as a definition
   and conjectural inequality.
 
-Remaining. A precise statement of which finite channels are LOCC on the
-visible/internal cut; the explicit qubit-channel construction; and a finite
+Remaining. A precise statement of the resolution observer, the kinematic
+observer, the explicit unital visible-channel construction, and a finite
 observer-channel API shared by P7 and P9. Ruskai-Szarek-Werner
 (`quant-ph/0101003`, DOI `10.1016/s0024-3795(01)00547-x`, Zotero `M6HR9WD6`)
 gives the affine Bloch-ball form and is the practical route for the celestial
