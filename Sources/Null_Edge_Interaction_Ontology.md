@@ -23,23 +23,52 @@ The mature ontology is:
 
 > The fundamental objects are not particles in spacetime, but quantum-labeled
 > null transitions in a causal incidence structure. A particle is a stable
-> sector of the resulting transfer algebra. Its mass is the determinant of the
-> observer-visible reduced null-direction state, equivalently the Pluecker
-> spread of unresolved null components. Higgs/Yukawa couplings are legal
-> chirality-changing operators that can generate this visible mixedness. Spin is
-> the phase-coherent structure discarded by the scalar determinant. Gauge
-> curvature is the holonomy defect between alternative histories. Gravity is
-> the finite-diamond response to the subset of interaction bookkeeping visible
-> as a bulk source.
+> or metastable sector of the resulting transfer channel. Its invariant mass
+> square is the determinant of the unnormalized observer-visible momentum block,
+> equivalently the Pluecker spread of unresolved null components. An
+> observer-conditioned celestial state measures the ratio `m / E_u`, not
+> invariant mass itself. Higgs/Yukawa couplings are legal chirality-changing mass
+> operators that first create left/right chirality coherence; visible mixedness
+> appears only after an explicit dephasing, trace, detector restriction, or
+> observer channel. Spin is the phase-coherent structure discarded by the scalar
+> determinant. Gauge curvature is the holonomy defect between alternative
+> histories. Gravity is the finite-diamond response to the subset of interaction
+> bookkeeping visible as a bulk source.
 
 The safe theorem-level core remains narrower:
 
 > A timelike visible momentum can be represented as a finite bundle or reduced
 > visible state of null spinor directions, and its invariant mass is exactly the
-> Pluecker spread, or celestial mixedness, of those null components.
+> unnormalized Pluecker spread of those null components. After an observer-time
+> normalization is fixed, the corresponding normalized celestial mixedness is
+> the frame-relative ratio `m/E`.
 
 The full ontology is still conjectural. The new sharpening is that
-observer-channel mixedness should be treated as the master finite principle.
+observer-channel compression should be treated as the master finite principle,
+while the invariant/frame-relative split must be explicit.
+
+The most disciplined mathematical core can be stated without the full ontology:
+a future-causal momentum is a positive Hermitian spinor matrix; its determinant
+is invariant mass squared; rank-one factorizations resolve it into null
+spinors; and a chosen timelike observer turns the same matrix into a celestial
+qubit whose mixedness measures `m / E_u`. The proposed dynamics then asks
+whether a finite null-step Dirac transfer makes this same ratio appear as
+chirality coherence and as the stable-sector readout of a causal quantum
+channel.
+
+So the compressed research spine is:
+
+```text
+positive Hermitian momentum
+-> Plucker null-spinor resolution
+-> observer-conditioned celestial qubit
+-> chirality coherence
+-> null-step transfer dynamics
+-> stable or metastable particle sectors.
+```
+
+The broad claim that null interactions are ontologically fundamental should be
+read as an interpretation of this spine, not as evidence for it.
 
 ## Master principle
 
@@ -55,9 +84,11 @@ Equivalently:
 > channel.
 
 Here "observer" does not mean a subjective mind. It means a physical channel,
-quotient, sector projection, detector algebra, or coarse-graining map. Once the
-relevant physical channel is fixed, the resulting visible invariants are not
-arbitrary.
+quotient, sector projection, detector algebra, or coarse-graining map. The
+channel must be specified before a claim can be invariant, monotone, or
+recoverable. In particular, a channel that normalizes by `Tr(P)` has also chosen
+a timelike reference vector or energy convention; it is a frame-relative
+observable, not a Lorentz scalar by itself.
 
 This gives a unifying defect dictionary:
 
@@ -70,7 +101,110 @@ gravity   = source defect visible to diamond observables
 
 The strongest compact slogan is:
 
-> Mass is what nullity looks like after information has been physically hidden.
+> Invariant mass is the unnormalized Pluecker defect of null data; normalized
+> mixedness is what that defect looks like to a specified observer frame.
+
+## Frame-invariance correction
+
+The referee audit forces an important correction. The invariant object is the
+unnormalized `2 x 2` Hermitian momentum block:
+
+```text
+P = sum_i psi_i psi_i^dagger.
+```
+
+Its determinant is the Lorentz scalar:
+
+```text
+det(P) = m^2.
+```
+
+Under a spin-frame/Lorentz transformation `A in SL(2,C)`,
+
+```text
+P |-> A P A^dagger,
+det(A P A^dagger) = det(P).
+```
+
+The normalized visible state
+
+```text
+rho_vis = P / Tr(P)
+```
+
+is different. Since `Tr(P) = 2E` uses the time component of the four-momentum,
+`rho_vis` depends on a chosen timelike observer or rest-frame convention. Its
+determinant measures:
+
+```text
+det(rho_vis) = det(P) / Tr(P)^2,
+2 sqrt(det(rho_vis)) = m / E.
+```
+
+Thus normalized visible mixedness is a frame-relative mass-ratio/proper-time
+rate, not invariant mass itself. This does not kill the null-edge mass theorem;
+it improves its precision. The paper should lead with `det(P) = m^2` and then
+use normalized `rho_vis` only after explicitly fixing the observer channel or
+frame.
+
+This also changes the novelty claim. The kinematic relation between massive
+two-spinor/twistor data and concurrence has prior art, especially Chin and Lee
+(`arXiv:1407.2492`, Zotero `3VBEK82X`), and the non-covariance of reduced spin
+entropy is a standard warning from Peres-Scudo-Terno
+(`Phys. Rev. Lett. 88, 230402`, also `quant-ph/0203033`) and Gingrich-Adami
+(`Phys. Rev. Lett. 89, 270402`, also `quant-ph/0205179`). The program's
+defensible novelty is the finite
+null-edge/Lean-checked packaging, the unnormalized invariant/channel split, and
+the still-open dynamical proposal connecting proper-time rate to null-edge
+coarse-graining.
+
+The clean observer-conditioned state is:
+
+```text
+rho_{p|u} = U^{-1/2} P U^{-1/2} / Tr(U^{-1} P),
+U = u.sigma,
+```
+
+for a unit timelike observer `u`. With the standard bispinor convention,
+
+```text
+det(rho_{p|u}) = m^2 / (4 (p dot u)^2),
+2 sqrt(det(rho_{p|u})) = m / (p dot u).
+```
+
+The formula `rho_vis = P / Tr(P)` is a special-frame shorthand. It should not
+be used as the canonical Lorentz-covariant definition in publication text.
+
+Fixing the observer also supplies a distinguished two-null resolution of a
+timelike momentum. With
+
+```text
+E_u = p dot u,
+q = p - E_u u,
+s = sqrt(E_u^2 - m^2),
+n = q / s,
+```
+
+one may set
+
+```text
+k_+ = ((E_u + s) / 2) (u + n),
+k_- = ((E_u - s) / 2) (u - n).
+```
+
+Then
+
+```text
+k_+^2 = k_-^2 = 0,
+k_+ + k_- = p.
+```
+
+This is a clean theorem target because it makes the two-null picture canonical
+after choosing `u` and the observed momentum direction. It is also a guardrail:
+null resolutions are not unique in general, so different spinor bundles
+realizing the same `P` should be treated as purification, hidden-isometry, or
+observer-channel freedom rather than as directly distinguishable constituent
+realities.
 
 ## Finite causal quantum instrument
 
@@ -101,6 +235,18 @@ finite models, the same symbol can denote a quotient, sector projection,
 partial trace, or restriction to an observable algebra. The point is not that an
 observer chooses reality, but that a physically specified channel defines which
 invariants are visible.
+
+One extra calibration is essential. A normalized quantum channel preserves
+probability, not absolute energy scale. Therefore a particle-sector model needs
+a separate momentum readout
+
+```text
+P = M(rho)
+```
+
+before any observer normalization such as `rho_{p|u}` is applied. Without this
+readout, a channel can describe information flow but cannot by itself define an
+invariant mass.
 
 The full process may carry data like:
 
@@ -158,13 +304,37 @@ This is sharper than saying that a particle is a bundle. A bundle explains a
 kinematic mass invariant. A stable channel sector can also explain persistence,
 decay, scattering, and measurement.
 
-This is analogous to superselection sectors in algebraic quantum field theory.
-In the Doplicher-Haag-Roberts picture, particle charges are organized by
-localized endomorphisms of an observable algebra, with fusion and statistics
-encoded by sector structure. The null-edge program should not claim to have
-reproduced DHR theory. The useful lesson is narrower: particle identity should
-be represented by stable sectors of an observable or transfer algebra, not by
-primitive beads.
+The sharper quantum-channel version uses a completely positive transfer channel
+`T`. Particle identity should be looked for in fixed observable algebras of
+`T^dagger`, noiseless subsystems, peripheral modes with `|lambda| = 1`, and
+metastable modes with `|lambda| < 1` close to one. For a discrete time step
+`Delta t`, a metastable eigenmode has the natural lifetime
+
+```text
+tau = - Delta t / log |lambda|.
+```
+
+With momentum labels present, a particle branch should have
+
+```text
+lambda_a(k) ~= exp(-((Gamma_a(k) / 2) + i E_a(k)) Delta t),
+E_a(k)^2 ~= |k|^2 + m_a^2.
+```
+
+This imports the right quantum-information vocabulary: preserved information,
+fixed points, noiseless subsystems, and long-lived spectral sectors. It also
+keeps the ontology honest: a projector by itself is not a particle species
+until the transfer channel and its spectral branch are specified.
+
+This is analogous to superselection sectors in algebraic quantum field theory,
+but only as a loose structural analogy. In the Doplicher-Haag-Roberts picture,
+particle charges are organized by localized, transportable endomorphisms of a
+local observable algebra, with fusion, statistics, and gauge reconstruction
+coming from locality hypotheses. A finite null-edge transfer-sector model does
+not yet have those inputs, and DHR is not naturally built for the massless
+sectors that this program treats as primitive. The useful lesson is therefore
+narrower: particle identity should be represented by stable sectors of an
+observable or transfer algebra, not by primitive beads.
 
 An unstable particle is a metastable null-edge pattern with leakage into other
 sectors. A muon is not a heavier bead in the primitive ontology. It is a
@@ -197,7 +367,14 @@ Thus a single visible edge is massless, and a collinear family of edges is still
 massless. Mass appears when the visible null directions fail to be projectively
 collinear.
 
-Normalize:
+After fixing a timelike observer convention, normalize in an observer-conditioned
+way:
+
+```text
+rho_{p|u} = U^{-1/2} P U^{-1/2} / Tr(U^{-1} P).
+```
+
+In a special frame this may reduce to the shorthand:
 
 ```text
 rho_vis = P / Tr(P).
@@ -206,10 +383,10 @@ rho_vis = P / Tr(P).
 Then, with the usual momentum convention,
 
 ```text
-m / E = 2 sqrt(det rho_vis).
+m / E_u = 2 sqrt(det rho_{p|u}).
 ```
 
-This gives the observer-channel reading:
+This gives the frame-relative observer-channel reading:
 
 ```text
 massless particle = observer sees a pure null-direction state
@@ -219,17 +396,19 @@ rest frame        = observer sees maximal celestial mixedness
 
 So:
 
-> Mass is which-null-direction information hidden from the visible channel.
+> Invariant mass is the unnormalized Pluecker spread of visible null data; the
+> normalized mixedness is the observer-conditioned ratio `m/E_u`.
 
 The word "hidden" is physical, not psychological. It means hidden by tracing out
 or quotienting internal, chiral, history, phase, detector, or coarse-grained
 degrees of freedom. The massive effective state is not "really slow" at the
 fine level; the fine visible transfers remain null. What becomes timelike is
-the visible reduced state.
+the unnormalized visible momentum block.
 
 ## Proper time as visible impurity
 
-The same formula gives a proper-time interpretation. For a null edge:
+The same normalized formula gives a proper-time interpretation once a lab time
+or observer frame has been fixed. For a null edge:
 
 ```text
 det(rho_vis) = 0.
@@ -270,16 +449,19 @@ sqrt(1 - |v|^2)
 So:
 
 > Proper time is the rate at which a null-edge process appears impure to the
-> physically relevant visible channel.
+> physically relevant visible channel, after the observer time convention has
+> been fixed.
 
 This suggests a Page-Wootters-style research bridge. In relational clock
 constructions, time is read from correlations between a clock subsystem and the
 rest of the state rather than imposed as an external background parameter. The
-null-edge version would ask whether the visible impurity rate of a stable
-channel sector can act as the local clock variable for an effective massive
-particle. This is a lead, not a theorem: the finite mass-ratio identity is the
-bankable part, while the Page-Wootters interpretation requires a specified clock
-subsystem, constraint, and conditional-state construction.
+null-edge version would ask whether the frame-relative visible impurity rate of
+a stable channel sector can act as the local clock variable for an effective
+massive particle. This is a lead, not a theorem: the finite mass-ratio identity
+is the bankable part, while the Page-Wootters interpretation requires a
+specified clock subsystem, constraint, conditional-state construction, and a
+clear explanation of how the frame-relative `m/E` quantity is reconciled with
+the invariant `det(P)` mass.
 
 This is a promising publication-level conceptual bridge once the finite qubit
 theorems are packaged cleanly.
@@ -329,31 +511,66 @@ D^2 =
   + commutator / covariant-derivative terms.
 ```
 
-The new conjectural bridge is:
-
-> Yukawa coupling measures the legal entangling power between visible null
-> direction and hidden chiral/internal labels.
-
+The sharpened bridge is chirality coherence first, observer mixedness second.
 The proposed channel chain is:
 
 ```text
 Yukawa / Higgs insertion
 -> legal left/right coupling
--> internal labels become correlated with visible null direction
--> the visible channel traces out internal bookkeeping
--> rho_vis becomes mixed
--> det(rho_vis) becomes nonzero
+-> left/right chirality coherence
+-> explicit dephasing, partial trace, detector restriction, or observer channel
+-> rho_{p|u} becomes mixed
+-> det(rho_{p|u}) becomes nonzero
 -> effective mass appears.
 ```
 
 This is stronger than "null zigzags create mass." It says:
 
-> Higgs mass is dynamically generated visible null-direction mixedness.
+> Higgs/Yukawa coupling supplies the legal first-order chirality mass operator;
+> visible mixedness is the observer-channel shadow of that coherent coupling.
 
 The bridge remains a theorem target. The Standard Model tells us that the
 Higgs/Yukawa term supplies the left/right mass coupling; the null-edge program
-must still prove a finite channel model showing that this coupling creates the
-visible mixedness measured by the Pluecker determinant.
+must still prove a finite channel model in which the Higgs/Yukawa singular value
+and the Pluecker determinant are the same on-shell scalar. It should not count
+an independent Higgs mass term and an independent Pluecker mass term as two
+separate sources of mass.
+
+## Null-step dynamics and chirality coherence
+
+The ontology becomes much more credible when the null-edge story is tied to a
+finite dynamics, not only to a kinematic decomposition. A promising exact model
+is the discrete null-step quantum walk
+
+```text
+U_a(k) = exp(-i k a sigma_z) exp(-i mu a sigma_x).
+```
+
+Its quasienergy satisfies
+
+```text
+cos(omega a) = cos(k a) cos(mu a).
+```
+
+For a nondegenerate eigenstate, the `z`-chirality coherence is
+
+```text
+C_z = |sin(mu a)| / |sin(omega a)|.
+```
+
+In the continuum limit this tends to
+
+```text
+mu / sqrt(k^2 + mu^2) = m / E.
+```
+
+This is exactly the kind of bridge the ontology needs: luminal conditional
+shifts, chirality-flip amplitude, Dirac dispersion, and the observer-visible
+proper-time ratio appear in one finite model. It should be treated as a
+priority theorem target for the P2/P4 dynamics paper. The interpretive slogan
+"all elementary visible movement is lightlike" is strongest when it can be
+backed by this kind of first-order transfer operator, not merely by the fact
+that any timelike momentum admits null decompositions.
 
 ## Spin as the phase data discarded by mass
 
@@ -395,6 +612,14 @@ This is not a claim that spin is literal mechanical rotation. Fermion spin is
 representation and phase data of a spinor state. The research target is to keep
 the complex wedge and projective phase information before reducing to the
 scalar determinant.
+
+There is also an important invariant-theory caveat. A single phase of
+`W_ij = psi_i wedge psi_j` changes under spinor rephasings, so raw Plucker
+phases are not automatically physical spin. The safe observables are
+rephasing-invariant combinations, such as Bargmann/Pancharatnam products around
+closed spinor triples or loops, together with the standard massive `SU(2)`
+little-group representation. The useful finite task is to identify which
+phase data survive the observer channel and holonomy quotient.
 
 The classical gyroscope analogy has limited value. It suggests that a coherent
 internal pattern can resist reconfiguration. In the finite theory, that
@@ -467,6 +692,14 @@ The program must distinguish:
 - bulk source pairing;
 - residual fluctuation scaling.
 
+A source functional is still not gravity by itself. To become a gravitational
+claim, the branch must also specify a response law, a conservation identity, a
+universality or equivalence-principle statement, and a continuum or scaling
+limit. Jacobson-style and entanglement-equilibrium derivations recover Einstein
+dynamics only after substantial geometric and field-theoretic assumptions. The
+null-edge program should use those results as guardrails, not as proof that a
+finite diamond source functional already reproduces gravity.
+
 The cosmological-constant branch becomes:
 
 > Why does enormous internal or vacuum bookkeeping fail to appear as a
@@ -478,9 +711,15 @@ If visible Pluecker mass/energy does source a bulk diamond functional, the
 program gets a sharp distinction between visible matter and hidden bookkeeping.
 
 This is the possible route toward cosmological-constant leverage. It remains
-high risk. If hidden bookkeeping generically sources bulk volume, or if residual
-fluctuations inherit known everpresent-Lambda amplitude tensions without a new
-suppression mechanism, the branch should be demoted.
+high risk. The program must either derive an everpresent-Lambda-style
+`1 / sqrt(V)` fluctuation law from finite counting/source data, or explain with
+a concrete observer channel why the residual amplitude differs. It must also
+avoid contradicting Jacobson-style horizon thermodynamics, where entropy
+balance is supposed to recover Einstein sourcing by the stress tensor. If
+hidden bookkeeping generically sources bulk volume, if residual fluctuations
+inherit known everpresent-Lambda amplitude tensions without a new suppression
+mechanism, or if source invisibility is imposed rather than derived, the branch
+should be demoted.
 
 ## Measurement and observer-relative nullity
 
@@ -500,15 +739,23 @@ The same edge or chain can be:
 Thus "null" is observable-relative. A null edge is not an edge with no content.
 It is null with respect to a specified invariant or observer map.
 
-The information-theoretic sharpening is:
+The information-theoretic sharpening has two distinct parts:
 
 ```text
-hidden to observer
-= small information loss / recoverability gap under the observer channel.
+observer-invisible
+= distinct fine sources have the same or nearly the same observer output
+
+recoverable
+= fine information can be reconstructed from the observer output and a
+  reference state/channel.
 ```
 
 Relative entropy, data processing, and Petz-style recoverability are natural
-finite tools for making this precise.
+finite tools for making reversibility precise. They are not automatic
+invisibility theorems. In P9 source-visibility language, invisibility must be
+defined by the chosen diamond source functional or observer algebra; a small
+recoverability gap is evidence that coarse-graining is reversible, not that a
+source has been erased.
 
 ## Candidate finite action principle
 
@@ -589,7 +836,7 @@ This should become the mathematical spine of the synthesis.
 
 ## New theorem targets
 
-### Theorem A: observer-channel mass theorem
+### Theorem A: frame-audited observer-channel mass-ratio theorem
 
 Let the full state be a pure null-edge state:
 
@@ -603,7 +850,8 @@ Trace out internal labels:
 rho_vis = Tr_int |Psi><Psi|.
 ```
 
-Then the visible mass ratio is:
+After fixing the observer energy normalization `Tr(P) = 2E`, the visible mass
+ratio is:
 
 ```text
 m / E = 2 sqrt(det rho_vis).
@@ -612,11 +860,23 @@ m / E = 2 sqrt(det rho_vis).
 Interpretation:
 
 ```text
-mass = concurrence / mixedness generated by hidden null-direction information.
+mass ratio m/E = concurrence / mixedness generated by hidden null-direction
+                 information.
 ```
 
-This is probably the best bridge between the Pluecker theorem and quantum
-information.
+This is a useful bridge between the Pluecker theorem and quantum information,
+but it is frame-relative because the normalization by `Tr(P)` uses the chosen
+time component. The Lorentz-invariant theorem is the unnormalized statement
+`det(P) = m^2`, together with `det(A P A^dagger) = det(P)` for
+`A in SL(2,C)`. A new Lean target should make the contrast explicit:
+
+```text
+det_normalizedMomentum_eq_det_div_trace_sq
+sl2_det_conj_invariant
+normalized_mixedness_is_frame_ratio
+observer_twoNullDecomposition_sum_eq_momentum
+observer_twoNullDecomposition_each_null
+```
 
 ### Theorem B: massless iff recoverable null direction
 
@@ -651,7 +911,10 @@ rho_vis = I / 2
 <-> m / E = 1.
 ```
 
-This is clean, finite, and physically interpretable.
+This is clean, finite, and physically interpretable, but it should now be read
+as a frame-dependence witness. Maximal normalized mixedness identifies the rest
+frame of a timelike bundle; boosting the same invariant `P` changes
+`rho_vis = P / Tr(P)` while leaving `det(P)` fixed.
 
 ### Theorem D: gauge curvature as non-recoverable path information
 
@@ -685,8 +948,12 @@ D^2 =
   + boundary / source defect.
 ```
 
-This is the theorem that would make the program feel like finite physics rather
-than only ontology.
+This should be stated as a finite Weitzenbock/Lichnerowicz-style matrix
+identity plus one genuinely program-specific block identification. The generic
+fact that a Dirac-type operator squares to Laplacian plus curvature and
+zero-form mass terms is standard. The potentially new theorem is narrower:
+the Higgs/Yukawa or visible scalar block of this finite square must be shown to
+equal the Pluecker determinant mass block already proved in the spinor theorem.
 
 ## Extended dictionary
 
@@ -784,16 +1051,18 @@ guiding expectations:
 |---|---|
 | A finite bundle of null spinors can have timelike total momentum | Banked finite algebra |
 | The determinant mass equals total pairwise Pluecker spread | Banked finite algebra |
+| Unnormalized `det(P) = m^2` is the Lorentz-invariant mass scalar | Banked finite algebra / near Lean wrapper |
 | Masslessness is equivalent to common visible null direction | Banked finite algebra |
-| Normalized mass ratio is visible celestial mixedness / concurrence | Strong finite target with partial draft support |
-| Rest frame is maximal celestial mixedness | Strong finite target |
-| Proper-time rate equals visible impurity | Strong finite target, physics interpretation requires convention audit |
+| Normalized mass ratio `m/E` is visible celestial mixedness / concurrence after a frame or observer-time convention is fixed | Strong finite target with partial draft support; prior-art and frame audit required |
+| Rest frame is maximal celestial mixedness | Strong finite target and frame-dependence witness |
+| Proper-time rate equals visible impurity | Strong finite target, physics interpretation requires frame and clock-construction audit |
 | The Dirac slash of bundle momentum squares to the Pluecker scalar | Kernel-clean draft support |
 | Higgs/Yukawa insertion is the gauge-legal chirality-flip gate | Kernel-clean bookkeeping support plus standard physics |
-| Higgs/Yukawa coupling generates visible mixedness | Conjectural finite channel target |
+| Higgs/Yukawa coupling creates left/right chirality coherence | Standard physics plus finite operator target |
+| Visible mixedness appears after chirality dephasing, partial trace, detector restriction, or observer channel | Conjectural finite channel target |
 | Gauge curvature is causal-diamond holonomy defect | Banked finite gauge theorem |
 | Particles are stable channel sectors | Ontological and operator-theoretic conjecture |
-| Particle identity resembles a finite superselection-sector problem | Useful analogy and formal target, not yet a theorem |
+| Particle identity resembles a finite superselection-sector problem | Loose analogy and formal target, not DHR correspondence |
 | Page-Wootters clock language explains proper time | Research lead beyond the finite mass-ratio identity |
 | Holographic screen data organize diamond source visibility | Research lead and guardrail for P9 |
 | All elementary visible movement is lightlike | Guiding conjecture |
@@ -807,17 +1076,20 @@ The ontology should be weakened or demoted if:
 
 - massive propagation cannot be connected to a natural first-order null-edge
   operator;
-- observer channels make mass arbitrary rather than invariant under a physically
-  fixed visible sector;
+- the program treats normalized `rho_vis = P / Tr(P)` mixedness as Lorentz
+  invariant rather than as a frame-relative `m/E` quantity;
+- observer channels make the unnormalized mass scalar arbitrary rather than
+  invariant under the physically fixed visible sector;
 - stable particle sectors cannot be formulated without adding primitive
   particle labels by hand;
 - Higgs/Yukawa chirality mixing cannot be represented as a finite odd operator
   whose square gives the expected mass block;
-- the Higgs/channel model cannot show how left/right coupling generates visible
-  mixedness;
+- the Higgs/channel model cannot show how left/right coupling generates
+  chirality coherence, or cannot identify the observer/dephasing/trace channel
+  that turns that coherence into visible mixedness;
 - spinor phase data cannot be made compatible with the graph holonomy layer;
 - the source-visibility branch fails to distinguish visible Pluecker mass from
-  hidden/internal bookkeeping;
+  hidden/internal bookkeeping, or imposes invisibility instead of deriving it;
 - hidden bookkeeping generically produces volume-scaling bulk sources;
 - the holographic/screen reading supplies only metaphor and no finite diamond
   source functional;
@@ -833,14 +1105,17 @@ from conjecture. A safe high-level phrasing is:
 > We propose that massive propagation can be modeled as the visible
 > coarse-graining of fundamentally null components through a physical observer
 > channel. In this model, each elementary visible step is lightlike and
-> massless, while invariant mass appears from the non-collinearity, chirality
-> mixing, or hidden-label entanglement of those null components.
+> massless, while invariant mass square appears as the unnormalized Pluecker
+> determinant of the non-collinearity, chirality mixing, or hidden-label
+> entanglement of those null components. Normalized visible mixedness measures
+> the frame-relative ratio `m/E`.
 
 A stronger speculative version is:
 
 > Interactions, not particles, are fundamental. Particles are stable sectors of
 > finite null-edge transfer channels, and mass is an emergent invariant of the
-> observer-visible mixedness of their null-direction data.
+> unnormalized observer-visible null-direction data. Frame-relative mixedness
+> describes how that invariant appears to a specified observer channel.
 
 The first form belongs in the main theorem-facing paper. The second form
 belongs in a clearly labeled ontology or manifesto section until the operator
@@ -851,11 +1126,13 @@ and source-visibility layers are stronger.
 The null-edge interaction ontology says that the world is a quantum grammar of
 allowed causal-null transitions. A physical observer channel compresses this
 grammar into visible states and invariants. Particles are stable sectors of the
-resulting transfer algebra. Mass is the determinant/mixedness of the
-observer-visible null-direction state. Proper time is accumulated visible
-impurity. Spin is the phase-coherent data discarded by the scalar mass.
-Gauge curvature is disagreement between histories. Gravity is the
-finite-diamond response to observer-visible source defects.
+resulting transfer algebra. Invariant mass is the determinant of the
+unnormalized observer-visible momentum block; normalized mixedness is the
+frame-relative `m/E` shadow of that determinant. Proper time is accumulated
+visible impurity only after the observer time convention is fixed. Spin is the
+phase-coherent data discarded by the scalar mass. Gauge curvature is
+disagreement between histories. Gravity is the finite-diamond response to
+observer-visible source defects.
 
 The finite Pluecker mass theorem makes the central kinematic idea real. The new
 observer-channel reframing makes the program sharper: mass, curvature,

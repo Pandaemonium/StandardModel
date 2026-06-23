@@ -42,7 +42,7 @@ lemma log_sum_ineq {n : Nat} (a b : Fin n -> Real)
     · exact fun i _ => div_nonneg ( hb i ) ( Finset.sum_nonneg fun _ _ => hb _ );
     · rw [ ← Finset.sum_div, div_self <| ne_of_gt <| lt_of_lt_of_le ( lt_of_le_of_ne ( hb h.choose ) <| Ne.symm h.choose_spec ) <| Finset.single_le_sum ( fun i _ => hb i ) <| Finset.mem_univ _ ];
     · exact fun i _ => div_nonneg ( ha i ) ( hb i );
-  simp_all +decide [ ← mul_assoc, ← Finset.sum_div _ _ _, div_mul_eq_mul_div ];
+  simp_all +decide [← Finset.sum_div _ _ _, div_mul_eq_mul_div];
   convert mul_le_mul_of_nonneg_right h_jensen ( show 0 ≤ ∑ k, b k from Finset.sum_nonneg fun _ _ => hb _ ) using 1;
   · rw [ div_mul_cancel₀ _ ( by obtain ⟨ j, hj ⟩ := h; exact ne_of_gt ( lt_of_lt_of_le ( lt_of_le_of_ne ( hb j ) ( Ne.symm hj ) ) ( Finset.single_le_sum ( fun i _ => hb i ) ( Finset.mem_univ j ) ) ) ) ] ; congr ; ext i ; by_cases hi : b i = 0 <;> simp +decide [ *, mul_div_cancel₀ ] ;
     exact funext fun i => by by_cases hi : b i = 0 <;> simp +decide [ *, mul_div_cancel₀ ] ;
@@ -94,7 +94,15 @@ theorem petzMap_col_sum {m n : Nat} (T : Fin m -> Fin n -> Real) (q : Fin n -> R
   rw [h_eq]
   exact div_self (ne_of_gt (hTq y))
 
-/-- The Petz map always recovers the reference state q. -/
+/--
+The Petz map recovers the reference state `q`.
+
+The column-stochasticity hypothesis `hcol` is mathematically essential. Without
+it the statement is false: in the one-point case with `T 0 0 = 1 / 2` and
+`q 0 = 1`, the reconstructed state has total weight `1 / 2`, not `1`. This is
+the finite classical version of the usual Petz setting, where the channel
+preserves normalization.
+-/
 theorem petzMap_recovers_q {m n : Nat} (T : Fin m -> Fin n -> Real) (q : Fin n -> Real)
     (hcol : ∀ j, Finset.univ.sum (fun i => T i j) = 1)
     (hTq : ∀ y, 0 < applyMap T q y) :

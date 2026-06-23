@@ -533,6 +533,18 @@ null data. *Status:* draft (kernel-clean) in
 `PhysicsSM.Draft.NullEdgeSpinorGeometryTargets`; a convention/semantic review is
 required before promotion to the trusted surface.
 
+The manuscript should keep this unnormalized invariant separate from the
+normalized reduced-state language. If
+
+```text
+rho_vis = P / Tr(P),
+```
+
+then `det(rho_vis) = det(P) / Tr(P)^2` measures `(m/E)^2` after choosing a
+timelike observer or lab-energy convention. That is useful for proper-time-rate
+and concurrence language, but it is not the invariant mass. The invariant
+statement is `det(P) = m^2`.
+
 ## 8. Twistor-chart matching
 
 In the spinor chart `Z = (omega^A, pi_{A'})` -- with only the `pi` spinor entering
@@ -580,6 +592,14 @@ this paper.
 - **Two-twistor mass models** realize a massive particle from two twistors; our
   twistor-chart section recovers exactly this as the `n = 2` case and then
   generalizes.
+- **Mass/concurrence prior art and frame-dependence.** Chin-Lee
+  (`1407.2492`) explicitly identify the two-twistor/momentum-bispinor mass with
+  two-qubit concurrence in the normalized-energy setting. Peres-Scudo-Terno
+  (`quant-ph/0203033`, PRL 88, 230402) and Gingrich-Adami
+  (`quant-ph/0205179`, PRL 89, 270402) are the guardrails: reduced spin or
+  entanglement quantities can be frame-dependent under boosts. The novelty of
+  this paper should therefore be the finite null-edge bundle theorem and its
+  formalized packaging, not the bare mass/concurrence analogy.
 - **Grassmannian / Pluecker geometry.** The right-hand side is a sum of squared
   `Gr(2,n)` Pluecker coordinates; the massless locus is the cone where all minors
   vanish (projective collinearity). This connects to the positive-Grassmannian

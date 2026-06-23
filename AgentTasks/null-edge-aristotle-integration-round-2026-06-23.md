@@ -124,6 +124,67 @@ Main declarations:
 Value: a finite Pauli-matrix commutator anchor for the spin/gauge convention
 layer.
 
+### Yukawa mass operator bridge
+
+Project: `24156b85-0176-455e-9f92-e80cb94502b8`
+
+New module:
+
+```text
+PhysicsSM.Draft.NullEdgeYukawaMassOperator
+```
+
+Main declarations:
+
+- `physicalYukawaFlip_gaugeLegal`
+- `candidateGaugeLegal_iff_exists_yukawaFlip`
+- `scalarYukawaFlipOperator_anticommutes_chirality`
+- `scalarYukawaFlipOperator_sq_eq_massSq`
+- `legalCandidate_has_yukawaMassOperator`
+
+Value: connects the finite Higgs/Yukawa legality layer to the first-order
+operator audit. A legal Yukawa flip now has a scalar off-diagonal mass operator
+that anticommutes with chirality and squares to the expected `mass * mass`
+diagonal block.
+
+### P7 observer-loss factorization
+
+Project: `3cfb5bcc-f262-45a2-8941-3151350a4617`
+
+New module:
+
+```text
+PhysicsSM.Draft.NullEdgeP7ObserverLoss
+```
+
+Main declarations:
+
+- `recoverabilityGap_eq_observerLoss_plus_recoveryLoss`
+- `sourceDefect_le_recoverabilityGap_of_le_observerLoss`
+
+Value: separates observer loss, post-recovery loss, and total recoverability
+gap. This keeps the P7/P9 bridge honest: recoverability bookkeeping is useful,
+but it is not automatically the same thing as source invisibility.
+
+### P1 SL(2,C) determinant frame audit
+
+Project: `c91d864e-60d7-44dc-bbf7-1bfa97e5ac4a`
+
+New module:
+
+```text
+PhysicsSM.Draft.NullEdgeP1SL2Frame
+```
+
+Main declaration:
+
+- `sl2_congruence_det_invariant`
+
+Value: proves the finite determinant-invariance lemma behind the P1
+frame-audit: the unnormalized two-spinor momentum determinant is invariant
+under `SL(2,C)` congruence, while normalized celestial mixedness remains
+observer-conditioned.
+
 ## Completed design/strategy outputs reviewed
 
 The following completed Aristotle outputs were extracted and reviewed at summary
@@ -199,6 +260,25 @@ Useful content:
 
 Integration decision: useful design note for later order-complex consolidation.
 
+### P9 diamond source-visibility API skeleton
+
+Project: `45929669-f4b1-4cbf-9f49-e4f624ef66bc`
+
+Useful content:
+
+- proposes a unified `DiamondScreen`, `CellMeasure`, `CurvatureDefect`, and
+  `Observer` API for the source-visibility branch;
+- makes abstract amplitudes geometric as `density * cellVol`;
+- replaces the old toy test with closed curvature/holonomy-defect cochains;
+- ranks boundary-exact invisibility, residual variance scaling, mean-zero
+  residual invisibility, and everpresent-Lambda comparison as next proof
+  targets.
+
+Integration decision: do not copy the returned Lean skeleton into live code.
+It is explicitly a handoff API with proof holes and needs adjustment to the new
+Pro-critique caveat that recoverability and invisibility are distinct notions.
+Use it as guidance for the next focused P9 proof jobs.
+
 ### Octonion / exceptional-Jordan scaffold
 
 Project: `a582880e-9f8b-42cb-9742-33522a1f799e`
@@ -221,6 +301,16 @@ python Scripts/check_forbidden_lean_tokens.py --include-draft --forbid-native-de
 lake env lean <six extracted result files>
 python Scripts/check_forbidden_lean_tokens.py --include-draft --forbid-native-decide <six integrated draft modules>
 lake env lean <six integrated draft modules>
+python Scripts/check_forbidden_lean_tokens.py --include-draft --forbid-native-decide PhysicsSM/Draft/NullEdgeYukawaMassOperator.lean
+lake env lean PhysicsSM/Draft/NullEdgeYukawaMassOperator.lean
+lake build PhysicsSM.Draft.NullEdgeYukawaMassOperator
+lake env lean PhysicsSMDraft.lean
+pre-commit run --files PhysicsSM/Draft/NullEdgeYukawaMassOperator.lean PhysicsSMDraft.lean
+lake env lean PhysicsSM/Draft/NullEdgeP7ObserverLoss.lean
+lake build PhysicsSM.Draft.NullEdgeP7ObserverLoss
+lake env lean PhysicsSM/Draft/NullEdgeP1SL2Frame.lean
+lake build PhysicsSM.Draft.NullEdgeP1SL2Frame
+lake env lean PhysicsSMDraft.lean
 ```
 
 All checks above passed. Two minor linter warnings from the extracted results

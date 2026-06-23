@@ -10,7 +10,7 @@ aristotle:
   expected_module: NullEdgeP9ResidualVarianceCellArea.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-p9-residual-variance-cell-area-20260623-project
   output_dir: AgentTasks/aristotle-output/ce4d21d4-0b8d-4344-977c-db3bee6bd950
-  status: submitted
+  status: integrated
 ```
 
 ## Context
