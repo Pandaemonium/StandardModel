@@ -1,0 +1,1523 @@
+{
+  "all_boundary_regressions_pass": true,
+  "all_projected_psd_pass": true,
+  "any_threshold_pass": true,
+  "comparisons": [
+    {
+      "abs_delta": 0.010456508057694991,
+      "cycle_size": 3,
+      "deformed_mean": 0.4271231747243617,
+      "flat_mean": 0.4166666666666667,
+      "passes_threshold": true,
+      "quantity": "projected_noise_trace_density",
+      "separation_ratio": null,
+      "within_family_spread": 0.0
+    },
+    {
+      "abs_delta": 0.010456508057694991,
+      "cycle_size": 3,
+      "deformed_mean": 0.4271231747243617,
+      "flat_mean": 0.4166666666666667,
+      "passes_threshold": true,
+      "quantity": "coarse_block_1_trace_density",
+      "separation_ratio": null,
+      "within_family_spread": 0.0
+    },
+    {
+      "abs_delta": 0.007110779522786159,
+      "cycle_size": 3,
+      "deformed_mean": 0.5071107795227862,
+      "flat_mean": 0.5,
+      "passes_threshold": true,
+      "quantity": "coarse_block_2_trace_density",
+      "separation_ratio": null,
+      "within_family_spread": 0.0
+    },
+    {
+      "abs_delta": 0.014221559045572419,
+      "cycle_size": 3,
+      "deformed_mean": 0.014221559045572449,
+      "flat_mean": 2.891205793294679e-17,
+      "passes_threshold": true,
+      "quantity": "coarse_block_4_trace_density",
+      "separation_ratio": null,
+      "within_family_spread": 0.0
+    },
+    {
+      "abs_delta": 0.010412733452500766,
+      "cycle_size": 4,
+      "deformed_mean": 0.4479959050287623,
+      "flat_mean": 0.43758317157626153,
+      "passes_threshold": false,
+      "quantity": "projected_noise_trace_density",
+      "separation_ratio": 2.25506681174028,
+      "within_family_spread": 0.004617483348293815
+    },
+    {
+      "abs_delta": 0.010412733452500766,
+      "cycle_size": 4,
+      "deformed_mean": 0.4479959050287623,
+      "flat_mean": 0.43758317157626153,
+      "passes_threshold": false,
+      "quantity": "coarse_block_1_trace_density",
+      "separation_ratio": 2.25506681174028,
+      "within_family_spread": 0.004617483348293815
+    },
+    {
+      "abs_delta": 0.007952112780664211,
+      "cycle_size": 4,
+      "deformed_mean": 0.508456081973169,
+      "flat_mean": 0.5005039691925048,
+      "passes_threshold": false,
+      "quantity": "coarse_block_2_trace_density",
+      "separation_ratio": 1.2090442241583181,
+      "within_family_spread": 0.0065771893382974575
+    },
+    {
+      "abs_delta": 0.01590422556132856,
+      "cycle_size": 4,
+      "deformed_mean": 0.015904225561328547,
+      "flat_mean": -1.3614868780986722e-17,
+      "passes_threshold": true,
+      "quantity": "coarse_block_4_trace_density",
+      "separation_ratio": 35.31120292675784,
+      "within_family_spread": 0.00045040169246901487
+    },
+    {
+      "abs_delta": 0.01042866633427375,
+      "cycle_size": 5,
+      "deformed_mean": 0.46129494295609225,
+      "flat_mean": 0.4508662766218185,
+      "passes_threshold": false,
+      "quantity": "projected_noise_trace_density",
+      "separation_ratio": 3.5230662125747476,
+      "within_family_spread": 0.0029601107969674553
+    },
+    {
+      "abs_delta": 0.01042866633427375,
+      "cycle_size": 5,
+      "deformed_mean": 0.46129494295609225,
+      "flat_mean": 0.4508662766218185,
+      "passes_threshold": false,
+      "quantity": "coarse_block_1_trace_density",
+      "separation_ratio": 3.5230662125747476,
+      "within_family_spread": 0.0029601107969674553
+    },
+    {
+      "abs_delta": 0.008452070395225553,
+      "cycle_size": 5,
+      "deformed_mean": 0.5093032676379623,
+      "flat_mean": 0.5008511972427367,
+      "passes_threshold": false,
+      "quantity": "coarse_block_2_trace_density",
+      "separation_ratio": 1.4046885595928598,
+      "within_family_spread": 0.006017042238654903
+    },
+    {
+      "abs_delta": 0.01690414079045106,
+      "cycle_size": 5,
+      "deformed_mean": 0.016904140790451064,
+      "flat_mean": 4.007753330592667e-18,
+      "passes_threshold": true,
+      "quantity": "coarse_block_4_trace_density",
+      "separation_ratio": 47.40247935229267,
+      "within_family_spread": 0.000356608789696851
+    },
+    {
+      "abs_delta": 0.010389706663159803,
+      "cycle_size": 6,
+      "deformed_mean": 0.4690557357389413,
+      "flat_mean": 0.4586660290757815,
+      "passes_threshold": false,
+      "quantity": "projected_noise_trace_density",
+      "separation_ratio": 2.3974986595976633,
+      "within_family_spread": 0.004333560989311817
+    },
+    {
+      "abs_delta": 0.010389706663159803,
+      "cycle_size": 6,
+      "deformed_mean": 0.4690557357389413,
+      "flat_mean": 0.4586660290757815,
+      "passes_threshold": false,
+      "quantity": "coarse_block_1_trace_density",
+      "separation_ratio": 2.3974986595976633,
+      "within_family_spread": 0.004333560989311817
+    },
+    {
+      "abs_delta": 0.00879369949418718,
+      "cycle_size": 6,
+      "deformed_mean": 0.5090189216049354,
+      "flat_mean": 0.5002252221107483,
+      "passes_threshold": false,
+      "quantity": "coarse_block_2_trace_density",
+      "separation_ratio": 1.2876336132076098,
+      "within_family_spread": 0.006829349128500375
+    },
+    {
+      "abs_delta": 0.017587398988374272,
+      "cycle_size": 6,
+      "deformed_mean": 0.017587398988374275,
+      "flat_mean": 2.5850316172938238e-18,
+      "passes_threshold": true,
+      "quantity": "coarse_block_4_trace_density",
+      "separation_ratio": 66.68423053575833,
+      "within_family_spread": 0.0002637415000079114
+    },
+    {
+      "abs_delta": 0.010395536688523777,
+      "cycle_size": 7,
+      "deformed_mean": 0.4752663974354524,
+      "flat_mean": 0.4648708607469286,
+      "passes_threshold": false,
+      "quantity": "projected_noise_trace_density",
+      "separation_ratio": 3.6266462732049614,
+      "within_family_spread": 0.002866432484835906
+    },
+    {
+      "abs_delta": 0.010395536688523777,
+      "cycle_size": 7,
+      "deformed_mean": 0.4752663974354524,
+      "flat_mean": 0.4648708607469286,
+      "passes_threshold": false,
+      "quantity": "coarse_block_1_trace_density",
+      "separation_ratio": 3.6266462732049614,
+      "within_family_spread": 0.002866432484835906
+    },
+    {
+      "abs_delta": 0.009066540185031613,
+      "cycle_size": 7,
+      "deformed_mean": 0.5085875930224034,
+      "flat_mean": 0.4995210528373718,
+      "passes_threshold": false,
+      "quantity": "coarse_block_2_trace_density",
+      "separation_ratio": 1.450113925053934,
+      "within_family_spread": 0.006252295097914049
+    },
+    {
+      "abs_delta": 0.018133080370063347,
+      "cycle_size": 7,
+      "deformed_mean": 0.01813308037006334,
+      "flat_mean": -8.418829869349943e-18,
+      "passes_threshold": true,
+      "quantity": "coarse_block_4_trace_density",
+      "separation_ratio": 57.86007080479474,
+      "within_family_spread": 0.0003133954058099891
+    },
+    {
+      "abs_delta": 0.010393800001409326,
+      "cycle_size": 8,
+      "deformed_mean": 0.4798371316602495,
+      "flat_mean": 0.46944333165884017,
+      "passes_threshold": false,
+      "quantity": "projected_noise_trace_density",
+      "separation_ratio": 4.089251316509852,
+      "within_family_spread": 0.0025417366644709823
+    },
+    {
+      "abs_delta": 0.010393800001409326,
+      "cycle_size": 8,
+      "deformed_mean": 0.4798371316602495,
+      "flat_mean": 0.46944333165884017,
+      "passes_threshold": false,
+      "quantity": "coarse_block_1_trace_density",
+      "separation_ratio": 4.089251316509852,
+      "within_family_spread": 0.0025417366644709823
+    },
+    {
+      "abs_delta": 0.00926129477532145,
+      "cycle_size": 8,
+      "deformed_mean": 0.5084337081244731,
+      "flat_mean": 0.49917241334915163,
+      "passes_threshold": false,
+      "quantity": "coarse_block_2_trace_density",
+      "separation_ratio": 1.9590319072485622,
+      "within_family_spread": 0.004727485418207829
+    },
+    {
+      "abs_delta": 0.018522589550643197,
+      "cycle_size": 8,
+      "deformed_mean": 0.018522589550643193,
+      "flat_mean": -2.116989445072673e-18,
+      "passes_threshold": true,
+      "quantity": "coarse_block_4_trace_density",
+      "separation_ratio": 109.94671219626737,
+      "within_family_spread": 0.00016846878984046627
+    }
+  ],
+  "family_summaries": [
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.0000000000000009,
+            "mean": 1.0000000000000009,
+            "minimum": 1.0000000000000009,
+            "stdev": 0.0
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 5.0,
+            "mean": 5.0,
+            "minimum": 5.0,
+            "stdev": 0.0
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.4166666666666667,
+            "mean": 0.4166666666666667,
+            "minimum": 0.4166666666666667,
+            "stdev": 0.0
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.0000000000000004,
+            "mean": 1.0000000000000004,
+            "minimum": 1.0000000000000004,
+            "stdev": 0.0
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 3.0,
+            "mean": 3.0,
+            "minimum": 3.0,
+            "stdev": 0.0
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5,
+            "mean": 0.5,
+            "minimum": 0.5,
+            "stdev": 0.0
+          }
+        },
+        "4": {
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 8.673617379884035e-17,
+            "mean": 8.673617379884035e-17,
+            "minimum": 8.673617379884035e-17,
+            "stdev": 0.0
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 2.891205793294679e-17,
+            "mean": 2.891205793294679e-17,
+            "minimum": 2.891205793294679e-17,
+            "stdev": 0.0
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.0000000000000009,
+        "mean": 1.0000000000000009,
+        "minimum": 1.0000000000000009,
+        "stdev": 0.0
+      },
+      "counts": {
+        "E": 12,
+        "F": 0,
+        "V": 8,
+        "configs": 4096
+      },
+      "cycle_size": 3,
+      "family": "flat_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 5.0,
+        "mean": 5.0,
+        "minimum": 5.0,
+        "stdev": 0.0
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.4166666666666667,
+        "mean": 0.4166666666666667,
+        "minimum": 0.4166666666666667,
+        "stdev": 0.0
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.0441016548026847,
+            "mean": 1.0441016548026847,
+            "minimum": 1.0441016548026847,
+            "stdev": 0.0
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 5.12547809669234,
+            "mean": 5.12547809669234,
+            "minimum": 5.12547809669234,
+            "stdev": 0.0
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.4271231747243616,
+            "mean": 0.4271231747243617,
+            "minimum": 0.4271231747243616,
+            "stdev": 0.0
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 116.83790175597672,
+            "mean": 116.83790175597672,
+            "minimum": 116.83790175597672,
+            "stdev": 0.0
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 3.042664677136717,
+            "mean": 3.042664677136717,
+            "minimum": 3.042664677136717,
+            "stdev": 0.0
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5071107795227862,
+            "mean": 0.5071107795227862,
+            "minimum": 0.5071107795227862,
+            "stdev": 0.0
+          }
+        },
+        "4": {
+          "cond2": {
+            "count": 10,
+            "maximum": 71.70632652415733,
+            "mean": 71.70632652415733,
+            "minimum": 71.70632652415733,
+            "stdev": 0.0
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 0.042664677136717344,
+            "mean": 0.042664677136717344,
+            "minimum": 0.042664677136717344,
+            "stdev": 0.0
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.014221559045572449,
+            "mean": 0.014221559045572449,
+            "minimum": 0.014221559045572449,
+            "stdev": 0.0
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.0441016548026847,
+        "mean": 1.0441016548026847,
+        "minimum": 1.0441016548026847,
+        "stdev": 0.0
+      },
+      "counts": {
+        "E": 12,
+        "F": 0,
+        "V": 8,
+        "configs": 4096
+      },
+      "cycle_size": 3,
+      "family": "de_sitter_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 5.12547809669234,
+        "mean": 5.12547809669234,
+        "minimum": 5.12547809669234,
+        "stdev": 0.0
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.4271231747243616,
+        "mean": 0.4271231747243617,
+        "minimum": 0.4271231747243616,
+        "stdev": 0.0
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.2448124580816406,
+            "mean": 1.206270073739534,
+            "minimum": 1.1694944186673162,
+            "stdev": 0.024539055132937772
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 7.108164310455322,
+            "mean": 7.0013307452201845,
+            "minimum": 6.895462989807129,
+            "stdev": 0.07204196088703846
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.44426026940345764,
+            "mean": 0.43758317157626153,
+            "minimum": 0.43096643686294556,
+            "stdev": 0.004502622555439904
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.160856046308344,
+            "mean": 1.1168706020743762,
+            "minimum": 1.0765623088404879,
+            "stdev": 0.02837533516394569
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 4.07103395462036,
+            "mean": 4.004031753540039,
+            "minimum": 3.9214322566986075,
+            "stdev": 0.05261751470637966
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.508879244327545,
+            "mean": 0.5005039691925048,
+            "minimum": 0.49017903208732594,
+            "stdev": 0.0065771893382974575
+          }
+        },
+        "4": {
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": -2.0383000842727483e-17,
+            "mean": -5.445947512394689e-17,
+            "minimum": -7.849623728795052e-17,
+            "stdev": 2.301371037701164e-17
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": -5.095750210681871e-18,
+            "mean": -1.3614868780986722e-17,
+            "minimum": -1.962405932198763e-17,
+            "stdev": 5.75342759425291e-18
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.2448124580816406,
+        "mean": 1.206270073739534,
+        "minimum": 1.1694944186673162,
+        "stdev": 0.024539055132937772
+      },
+      "counts": {
+        "E": 16,
+        "F": 0,
+        "V": 10,
+        "configs": 2048
+      },
+      "cycle_size": 4,
+      "family": "flat_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 7.108164310455322,
+        "mean": 7.0013307452201845,
+        "minimum": 6.895462989807129,
+        "stdev": 0.07204196088703846
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.44426026940345764,
+        "mean": 0.43758317157626153,
+        "minimum": 0.43096643686294556,
+        "stdev": 0.004502622555439904
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.2550937690074135,
+            "mean": 1.2151005170007507,
+            "minimum": 1.1803497011060864,
+            "stdev": 0.022086848838466178
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 7.277056561731845,
+            "mean": 7.167934480460197,
+            "minimum": 7.059730844774742,
+            "stdev": 0.07387973357270104
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.4548160351082403,
+            "mean": 0.4479959050287623,
+            "minimum": 0.44123317779842136,
+            "stdev": 0.004617483348293815
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 244.19645534531,
+            "mean": 232.14375621453783,
+            "minimum": 216.61003565471674,
+            "stdev": 8.586172319352878
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 4.134300331828498,
+            "mean": 4.067648655785352,
+            "minimum": 3.988088755463858,
+            "stdev": 0.05160252829218382
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5167875414785622,
+            "mean": 0.508456081973169,
+            "minimum": 0.49851109443298225,
+            "stdev": 0.0064503160365229776
+          }
+        },
+        "4": {
+          "cond2": {
+            "count": 10,
+            "maximum": 94.55745813225973,
+            "mean": 86.32458444565069,
+            "minimum": 81.46570190921615,
+            "stdev": 4.121161335355755
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 0.06665649876525022,
+            "mean": 0.06361690224531419,
+            "minimum": 0.060600230118510644,
+            "stdev": 0.0018016067698760595
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.016664124691312555,
+            "mean": 0.015904225561328547,
+            "minimum": 0.015150057529627661,
+            "stdev": 0.00045040169246901487
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.2550937690074135,
+        "mean": 1.2151005170007507,
+        "minimum": 1.1803497011060864,
+        "stdev": 0.022086848838466178
+      },
+      "counts": {
+        "E": 16,
+        "F": 0,
+        "V": 10,
+        "configs": 2048
+      },
+      "cycle_size": 4,
+      "family": "de_sitter_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 7.277056561731845,
+        "mean": 7.167934480460197,
+        "minimum": 7.059730844774742,
+        "stdev": 0.07387973357270104
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.4548160351082403,
+        "mean": 0.4479959050287623,
+        "minimum": 0.44123317779842136,
+        "stdev": 0.004617483348293815
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.2819967730353627,
+            "mean": 1.2290479910251604,
+            "minimum": 1.1954748781837454,
+            "stdev": 0.029628473376512886
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 9.124310374259949,
+            "mean": 9.01732553243637,
+            "minimum": 8.92278480529785,
+            "stdev": 0.057746514935890725
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.4562155187129974,
+            "mean": 0.4508662766218185,
+            "minimum": 0.4461392402648925,
+            "stdev": 0.002887325746794531
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.2078249657840228,
+            "mean": 1.144488652511615,
+            "minimum": 1.1010639007095362,
+            "stdev": 0.03544577982118783
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 5.087958812713621,
+            "mean": 5.008511972427367,
+            "minimum": 4.901682138442992,
+            "stdev": 0.06017042238654907
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5087958812713621,
+            "mean": 0.5008511972427367,
+            "minimum": 0.4901682138442992,
+            "stdev": 0.006017042238654903
+          }
+        },
+        "4": {
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 1.1758172560605296e-16,
+            "mean": 2.0038766652963334e-17,
+            "minimum": -1.49890950346121e-16,
+            "stdev": 9.749218276660308e-17
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 2.3516345121210592e-17,
+            "mean": 4.007753330592667e-18,
+            "minimum": -2.99781900692242e-17,
+            "stdev": 1.9498436553320615e-17
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.2819967730353627,
+        "mean": 1.2290479910251604,
+        "minimum": 1.1954748781837454,
+        "stdev": 0.029628473376512886
+      },
+      "counts": {
+        "E": 20,
+        "F": 0,
+        "V": 12,
+        "configs": 2048
+      },
+      "cycle_size": 5,
+      "family": "flat_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 9.124310374259949,
+        "mean": 9.01732553243637,
+        "minimum": 8.92278480529785,
+        "stdev": 0.057746514935890725
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.4562155187129974,
+        "mean": 0.4508662766218185,
+        "minimum": 0.4461392402648925,
+        "stdev": 0.002887325746794531
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.2947875950109726,
+            "mean": 1.2434441467995612,
+            "minimum": 1.213100038332306,
+            "stdev": 0.031153722285961527
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 9.336520740137233,
+            "mean": 9.225898859121845,
+            "minimum": 9.12910952814634,
+            "stdev": 0.05920221593934927
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.46682603700686165,
+            "mean": 0.46129494295609225,
+            "minimum": 0.45645547640731704,
+            "stdev": 0.0029601107969674553
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 389.52565278554863,
+            "mean": 371.22240865235506,
+            "minimum": 358.44807692534755,
+            "stdev": 9.138447740370493
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 5.171158821644122,
+            "mean": 5.093032676379623,
+            "minimum": 4.988936564068331,
+            "stdev": 0.059114323348671415
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5171158821644122,
+            "mean": 0.5093032676379623,
+            "minimum": 0.49889365640683314,
+            "stdev": 0.005911432334867127
+          }
+        },
+        "4": {
+          "cond2": {
+            "count": 10,
+            "maximum": 107.58879507193188,
+            "mean": 99.39996690694166,
+            "minimum": 90.49761140470729,
+            "stdev": 5.618714996597478
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 0.08725442562533915,
+            "mean": 0.08452070395225532,
+            "minimum": 0.0817550680710616,
+            "stdev": 0.0017830439484842553
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.01745088512506783,
+            "mean": 0.016904140790451064,
+            "minimum": 0.01635101361421232,
+            "stdev": 0.000356608789696851
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.2947875950109726,
+        "mean": 1.2434441467995612,
+        "minimum": 1.213100038332306,
+        "stdev": 0.031153722285961527
+      },
+      "counts": {
+        "E": 20,
+        "F": 0,
+        "V": 12,
+        "configs": 2048
+      },
+      "cycle_size": 5,
+      "family": "de_sitter_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 9.336520740137233,
+        "mean": 9.225898859121845,
+        "minimum": 9.12910952814634,
+        "stdev": 0.05920221593934927
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.46682603700686165,
+        "mean": 0.46129494295609225,
+        "minimum": 0.45645547640731704,
+        "stdev": 0.0029601107969674553
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.3175742209962733,
+            "mean": 1.2648057355861817,
+            "minimum": 1.2243054689958677,
+            "stdev": 0.0319425672136769
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 11.244930624961855,
+            "mean": 11.007984697818756,
+            "minimum": 10.898720860481262,
+            "stdev": 0.10176217370697772
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.46853877604007726,
+            "mean": 0.4586660290757815,
+            "minimum": 0.45411336918671924,
+            "stdev": 0.0042400905711240736
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.2079654361998684,
+            "mean": 1.1755433807595617,
+            "minimum": 1.121647092808251,
+            "stdev": 0.027519063825538398
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 6.116955995559692,
+            "mean": 6.00270266532898,
+            "minimum": 5.877393960952759,
+            "stdev": 0.0819521895420044
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5097463329633077,
+            "mean": 0.5002252221107483,
+            "minimum": 0.48978283007939655,
+            "stdev": 0.006829349128500375
+          }
+        },
+        "4": {
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 9.020562075079397e-17,
+            "mean": 1.5510189703762945e-17,
+            "minimum": -8.033938098117588e-17,
+            "stdev": 5.472627508370776e-17
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 1.5034270125132327e-17,
+            "mean": 2.5850316172938238e-18,
+            "minimum": -1.338989683019598e-17,
+            "stdev": 9.121045847284627e-18
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.3175742209962733,
+        "mean": 1.2648057355861817,
+        "minimum": 1.2243054689958677,
+        "stdev": 0.0319425672136769
+      },
+      "counts": {
+        "E": 24,
+        "F": 0,
+        "V": 14,
+        "configs": 2048
+      },
+      "cycle_size": 6,
+      "family": "flat_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 11.244930624961855,
+        "mean": 11.007984697818756,
+        "minimum": 10.898720860481262,
+        "stdev": 0.10176217370697772
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.46853877604007726,
+        "mean": 0.4586660290757815,
+        "minimum": 0.45411336918671924,
+        "stdev": 0.0042400905711240736
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.3294194289523846,
+            "mean": 1.2741884142508244,
+            "minimum": 1.2311137062935336,
+            "stdev": 0.03365768367976064
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 11.499392789407473,
+            "mean": 11.257337657734592,
+            "minimum": 11.143267170283334,
+            "stdev": 0.10400546374348363
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.4791413662253114,
+            "mean": 0.4690557357389413,
+            "minimum": 0.4643027987618056,
+            "stdev": 0.004333560989311817
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 566.1555783289157,
+            "mean": 549.6958191352027,
+            "minimum": 539.5616973570039,
+            "stdev": 9.284187816587684
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 6.224446003100277,
+            "mean": 6.1082270592592245,
+            "minimum": 5.984838656416825,
+            "stdev": 0.08131335028664013
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5187038335916897,
+            "mean": 0.5090189216049354,
+            "minimum": 0.49873655470140205,
+            "stdev": 0.0067761125238866736
+          }
+        },
+        "4": {
+          "cond2": {
+            "count": 10,
+            "maximum": 120.99307859768417,
+            "mean": 113.37000102305915,
+            "minimum": 107.62640960351702,
+            "stdev": 4.712174801398555
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 0.10749000754058423,
+            "mean": 0.10552439393024567,
+            "minimum": 0.10333949911693166,
+            "stdev": 0.00158244900004747
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.017915001256764037,
+            "mean": 0.017587398988374275,
+            "minimum": 0.017223249852821945,
+            "stdev": 0.0002637415000079114
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.3294194289523846,
+        "mean": 1.2741884142508244,
+        "minimum": 1.2311137062935336,
+        "stdev": 0.03365768367976064
+      },
+      "counts": {
+        "E": 24,
+        "F": 0,
+        "V": 14,
+        "configs": 2048
+      },
+      "cycle_size": 6,
+      "family": "de_sitter_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 11.499392789407473,
+        "mean": 11.257337657734592,
+        "minimum": 11.143267170283334,
+        "stdev": 0.10400546374348363
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.4791413662253114,
+        "mean": 0.4690557357389413,
+        "minimum": 0.4643027987618056,
+        "stdev": 0.004333560989311817
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.3836881085424293,
+            "mean": 1.3113248984377668,
+            "minimum": 1.2700266600142718,
+            "stdev": 0.03949835804534352
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 13.199020624160768,
+            "mean": 13.016384100914001,
+            "minimum": 12.934877872467041,
+            "stdev": 0.0781570604794737
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.4713935937200274,
+            "mean": 0.4648708607469286,
+            "minimum": 0.46195992401668,
+            "stdev": 0.002791323588552628
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.229530496278241,
+            "mean": 1.1862466961740088,
+            "minimum": 1.1310555432360951,
+            "stdev": 0.030711194956177797
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 7.088813781738281,
+            "mean": 6.993294739723206,
+            "minimum": 6.866905450820923,
+            "stdev": 0.0875321313707966
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5063438415527344,
+            "mean": 0.4995210528373718,
+            "minimum": 0.49049324648720877,
+            "stdev": 0.006252295097914049
+          }
+        },
+        "4": {
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 3.2255014631443757e-17,
+            "mean": -5.893180908544959e-17,
+            "minimum": -1.7466496998741476e-16,
+            "stdev": 6.840903185382287e-17
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 4.607859233063394e-18,
+            "mean": -8.418829869349943e-18,
+            "minimum": -2.495213856963068e-17,
+            "stdev": 9.77271883626041e-18
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.3836881085424293,
+        "mean": 1.3113248984377668,
+        "minimum": 1.2700266600142718,
+        "stdev": 0.03949835804534352
+      },
+      "counts": {
+        "E": 28,
+        "F": 0,
+        "V": 16,
+        "configs": 2048
+      },
+      "cycle_size": 7,
+      "family": "flat_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 13.199020624160768,
+        "mean": 13.016384100914001,
+        "minimum": 12.934877872467041,
+        "stdev": 0.0781570604794737
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.4713935937200274,
+        "mean": 0.4648708607469286,
+        "minimum": 0.46195992401668,
+        "stdev": 0.002791323588552628
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.391621610374447,
+            "mean": 1.3241911218606328,
+            "minimum": 1.2686218708252128,
+            "stdev": 0.04109880902246928
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 13.494075827826801,
+            "mean": 13.307459128192667,
+            "minimum": 13.226593103227032,
+            "stdev": 0.08026010957540554
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.4819312795652429,
+            "mean": 0.4752663974354524,
+            "minimum": 0.47237832511525113,
+            "stdev": 0.002866432484835906
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 795.5767349258484,
+            "mean": 757.2007137114938,
+            "minimum": 707.7293944354694,
+            "stdev": 31.01940568848916
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 7.215996860737229,
+            "mean": 7.1202263023136485,
+            "minimum": 6.995274993173071,
+            "stdev": 0.08641376683562445
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5154283471955163,
+            "mean": 0.5085875930224034,
+            "minimum": 0.49966249951236225,
+            "stdev": 0.006172411916830319
+          }
+        },
+        "4": {
+          "cond2": {
+            "count": 10,
+            "maximum": 135.88799260181875,
+            "mean": 129.99420085475205,
+            "minimum": 119.55033379427344,
+            "stdev": 5.550262021458624
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 0.13027361183673836,
+            "mean": 0.1269315625904434,
+            "minimum": 0.12347822682670004,
+            "stdev": 0.0021937678406699266
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.018610515976676907,
+            "mean": 0.01813308037006334,
+            "minimum": 0.017639746689528578,
+            "stdev": 0.0003133954058099891
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.391621610374447,
+        "mean": 1.3241911218606328,
+        "minimum": 1.2686218708252128,
+        "stdev": 0.04109880902246928
+      },
+      "counts": {
+        "E": 28,
+        "F": 0,
+        "V": 16,
+        "configs": 2048
+      },
+      "cycle_size": 7,
+      "family": "de_sitter_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 13.494075827826801,
+        "mean": 13.307459128192667,
+        "minimum": 13.226593103227032,
+        "stdev": 0.08026010957540554
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.4819312795652429,
+        "mean": 0.4752663974354524,
+        "minimum": 0.47237832511525113,
+        "stdev": 0.002866432484835906
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.3906594358457889,
+            "mean": 1.3390988805358424,
+            "minimum": 1.302742206599889,
+            "stdev": 0.023160537115391712
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 15.170255780220032,
+            "mean": 15.022186613082885,
+            "minimum": 14.939739227294922,
+            "stdev": 0.07925880845875789
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.474070493131876,
+            "mean": 0.46944333165884017,
+            "minimum": 0.4668668508529663,
+            "stdev": 0.002476837764336184
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.2406334014745515,
+            "mean": 1.2213934469615289,
+            "minimum": 1.1965834045372807,
+            "stdev": 0.017632469854447663
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 8.081072568893433,
+            "mean": 7.986758613586426,
+            "minimum": 7.8808789253234846,
+            "stdev": 0.07563976669132526
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5050670355558395,
+            "mean": 0.49917241334915163,
+            "minimum": 0.4925549328327178,
+            "stdev": 0.004727485418207829
+          }
+        },
+        "4": {
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 1.0992454776287408e-16,
+            "mean": -1.6935915560581384e-17,
+            "minimum": -1.3205582460873444e-16,
+            "stdev": 6.881791685978892e-17
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 1.374056847035926e-17,
+            "mean": -2.116989445072673e-18,
+            "minimum": -1.6506978076091805e-17,
+            "stdev": 8.602239607473615e-18
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.3906594358457889,
+        "mean": 1.3390988805358424,
+        "minimum": 1.302742206599889,
+        "stdev": 0.023160537115391712
+      },
+      "counts": {
+        "E": 32,
+        "F": 0,
+        "V": 18,
+        "configs": 2048
+      },
+      "cycle_size": 8,
+      "family": "flat_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 15.170255780220032,
+        "mean": 15.022186613082885,
+        "minimum": 14.939739227294922,
+        "stdev": 0.07925880845875789
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.474070493131876,
+        "mean": 0.46944333165884017,
+        "minimum": 0.4668668508529663,
+        "stdev": 0.002476837764336184
+      }
+    },
+    {
+      "boundary_ok_count": 10,
+      "coarse_by_block": {
+        "1": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1.3979700280215068,
+            "mean": 1.3421315660353057,
+            "minimum": 1.2979296687662962,
+            "stdev": 0.026310227243256358
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 15.507414866841295,
+            "mean": 15.354788213127984,
+            "minimum": 15.273478683870561,
+            "stdev": 0.08133557326307143
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.48460671458879045,
+            "mean": 0.4798371316602495,
+            "minimum": 0.47729620887095503,
+            "stdev": 0.0025417366644709823
+          }
+        },
+        "2": {
+          "cond2": {
+            "count": 10,
+            "maximum": 1054.9527226913963,
+            "mean": 1011.5190124034261,
+            "minimum": 971.9797600526423,
+            "stdev": 29.537462355644898
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 8.228890164400722,
+            "mean": 8.13493932999157,
+            "minimum": 8.028472390705433,
+            "stdev": 0.0755403618972879
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.5143056352750451,
+            "mean": 0.5084337081244731,
+            "minimum": 0.5017795244190896,
+            "stdev": 0.004721272618580494
+          }
+        },
+        "4": {
+          "cond2": {
+            "count": 10,
+            "maximum": 155.37105759573674,
+            "mean": 147.07035122738685,
+            "minimum": 131.32986194003345,
+            "stdev": 7.619205744313487
+          },
+          "psd_ok_count": 10,
+          "trace": {
+            "count": 10,
+            "maximum": 0.1504287359802151,
+            "mean": 0.14818071640514555,
+            "minimum": 0.1460268094810811,
+            "stdev": 0.0013477503187237301
+          },
+          "trace_density": {
+            "count": 10,
+            "maximum": 0.01880359199752689,
+            "mean": 0.018522589550643193,
+            "minimum": 0.018253351185135137,
+            "stdev": 0.00016846878984046627
+          }
+        }
+      },
+      "cond2": {
+        "count": 10,
+        "maximum": 1.3979700280215068,
+        "mean": 1.3421315660353057,
+        "minimum": 1.2979296687662962,
+        "stdev": 0.026310227243256358
+      },
+      "counts": {
+        "E": 32,
+        "F": 0,
+        "V": 18,
+        "configs": 2048
+      },
+      "cycle_size": 8,
+      "family": "de_sitter_diamond",
+      "psd_ok_count": 10,
+      "trace": {
+        "count": 10,
+        "maximum": 15.507414866841295,
+        "mean": 15.354788213127984,
+        "minimum": 15.273478683870561,
+        "stdev": 0.08133557326307143
+      },
+      "trace_density": {
+        "count": 10,
+        "maximum": 0.48460671458879045,
+        "mean": 0.4798371316602495,
+        "minimum": 0.47729620887095503,
+        "stdev": 0.0025417366644709823
+      }
+    }
+  ],
+  "parameters": {
+    "abs_separation_tol": 1e-06,
+    "coarse_block_sizes": [
+      1,
+      2,
+      4
+    ],
+    "expansion_rate": 0.35,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sizes": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "tol": 1e-09
+  },
+  "purpose": "Matched flat-vs-deformed P9 coarse readout pilot with seed spreads and a simple separation threshold.",
+  "run_id": "p9-matched-diamond-ensemble"
+}

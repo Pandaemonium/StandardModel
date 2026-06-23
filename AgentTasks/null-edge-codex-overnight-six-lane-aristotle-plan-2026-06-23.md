@@ -54,6 +54,21 @@ operator, source functional, or falsification gate.
    - Prioritize P9 while there is a realistic finite route to source visibility,
      residual suppression, or a reference-state/recoverability theorem.
    - Demote P9 for the night if the best available work becomes only metaphor.
+   - Replace Aristotle's "ill-conditioned / no continuum interpretation" gate
+     with a discrete-first gate. Do not demote P9 merely because the microscopic
+     model is ill-conditioned, non-manifold-like, or lacks a literal
+     fine-grained continuum interpretation. A fundamentally discrete model is
+     acceptable, and continuum-like behavior may be an emergent large-scale
+     phenomenon rather than a fine-grained property. The real gate is whether a
+     stable coarse-grained, renormalized, observer-channel, or large-scale
+     observable survives without hand-tuned metric weights, boundary artifacts,
+     or geometry-blind statistics.
+   - Ask of each P9 result: what survives at the scale of the observer's
+     channel? Pointwise continuum behavior is optional; a specified effective
+     readout, plateau, scaling law, or no-go theorem is mandatory.
+   - Treat numerical or microscopic ill-conditioning as a failure only when it
+     contaminates the specified large-scale readout after the named
+     coarse-graining or renormalization step.
    - Keep the Pro critique caveat visible: recoverability is not invisibility.
      Recoverability says fine information can be reconstructed from an observer
      output; invisibility says distinct fine sources become indistinguishable to
@@ -520,6 +535,14 @@ Every job note should include:
 - local check command;
 - context pack path, when available;
 - claim boundary: what the theorem does and does not prove physically.
+
+For P9 strategy or audit jobs, include the corrected discrete-first gate
+explicitly. Aristotle should not treat lack of a pointwise microscopic
+continuum interpretation as failure. The failure condition is instead the
+absence of a stable pre-specified coarse-grained, renormalized,
+observer-channel, or large-scale emergent readout, or a readout that survives
+only because of hand-tuned weights, offset choices, boundary artifacts, or
+geometry-blind statistics.
 
 For nontrivial targets, make a context pack:
 

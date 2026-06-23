@@ -1,0 +1,114 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 8.326672684688674e-17,
+    "noise_rel_err": 1.1102230246251565e-16,
+    "projected_psd_min_eig": 0.0,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 5,
+    "F": 2,
+    "V": 4,
+    "configs": 32
+  },
+  "geometry_family": "two_triangle_disk",
+  "geometry_params": {
+    "edge_weights": [
+      0.47611008475876554,
+      0.9587679722369621,
+      0.6756323708391494,
+      1.9307215999281615,
+      0.9587679722369621
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        3
+      ]
+    ],
+    "metric_profile": "expanded",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      1.0,
+      2.0,
+      3.0
+    ]
+  },
+  "metrics": {
+    "betti1": 0,
+    "harm_dim": 0,
+    "laplacian_eigs": [
+      1.734170016939658,
+      2.1539484883829294,
+      2.9284044734390546,
+      5.337425509621287,
+      5.51054732419956
+    ],
+    "mean_norm": 0.0,
+    "metric_weight_spread": 4.055199966844675,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": null,
+    "projected_noise_eigs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "projected_noise_trace": 0.0
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "two_triangle_disk-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 6.25,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 6.25
+  }
+}

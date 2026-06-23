@@ -1,0 +1,80 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 1.1102230246251565e-16,
+    "noise_rel_err": 1.1102230246251565e-16,
+    "projected_psd_min_eig": -1.331314732377499e-17,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 4,
+    "F": 0,
+    "V": 4,
+    "configs": 16
+  },
+  "geometry_family": "cycle4",
+  "geometry_params": {
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "faces": [],
+    "seed": 0,
+    "tol": 1e-09
+  },
+  "metrics": {
+    "betti1": 1,
+    "harm_dim": 1,
+    "laplacian_eigs": [
+      -7.546047120499111e-16,
+      2.0,
+      2.0,
+      3.9999999999999996
+    ],
+    "mean_norm": 0.0,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": 1.0,
+    "projected_noise_eigs": [
+      -1.331314732377499e-17,
+      5.0627531406953304e-17,
+      1.4547790937475852e-16,
+      0.9999999999999998
+    ],
+    "projected_noise_trace": 0.9999999999999996
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "cycle4-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 4.0,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 4.0
+  }
+}

@@ -36,5 +36,17 @@ aristotle:
   expected_module: NullEdgeObserverPartialTrace.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-observer-partial-trace-20260623-project
   output_dir: AgentTasks/aristotle-output/24d7e228-3636-4398-801f-32dc0cca70a6
-  status: submitted
+  status: integrated
 ```
+
+## Integration note
+
+Integrated as:
+
+```text
+PhysicsSM.Draft.NullEdgeObserverPartialTrace
+```
+
+Scientific value: finite hidden partial trace commutes with visible congruence,
+and `SL(2,C)` visible congruence preserves the determinant of the unnormalized
+resolution output.

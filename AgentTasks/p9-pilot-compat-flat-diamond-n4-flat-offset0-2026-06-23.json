@@ -1,0 +1,249 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "coarse_projection_ok": true,
+    "mean_rel_err": 2.0816681711721685e-17,
+    "noise_rel_err": 4.3017987415281057e-16,
+    "projected_psd_min_eig": -2.801833500579513e-16,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 16,
+    "F": 0,
+    "V": 10,
+    "configs": 2048
+  },
+  "geometry_family": "flat_diamond",
+  "geometry_params": {
+    "coarse_block_sizes": [
+      1,
+      2,
+      4
+    ],
+    "coarse_offsets": [
+      0
+    ],
+    "cycle_size": 4,
+    "edge_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [],
+    "metric_profile": "flat",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      0.5,
+      0.25,
+      0.75,
+      0.5,
+      1.0,
+      0.75,
+      1.25,
+      1.0,
+      1.5
+    ]
+  },
+  "metrics": {
+    "betti1": 7,
+    "coarse_projection": [
+      {
+        "block_size": 1,
+        "coarse_edges": 16,
+        "cond2": 1.202895908582727,
+        "max_eig": 1.1135904240631707,
+        "min_eig": -2.801833500579513e-16,
+        "offset": 0,
+        "prefix_dropped": 0,
+        "psd_ok": true,
+        "tail_dropped": 0,
+        "trace": 7.04981803894043,
+        "trace_density": 0.44061362743377686
+      },
+      {
+        "block_size": 2,
+        "coarse_edges": 8,
+        "cond2": 1.0848393885824013,
+        "max_eig": 1.0116219050807804,
+        "min_eig": -1.144395522975662e-16,
+        "offset": 0,
+        "prefix_dropped": 0,
+        "psd_ok": true,
+        "tail_dropped": 0,
+        "trace": 3.9214322566986075,
+        "trace_density": 0.49017903208732594
+      },
+      {
+        "block_size": 4,
+        "coarse_edges": 4,
+        "cond2": null,
+        "max_eig": 3.104344720947093e-17,
+        "min_eig": -5.560509517328935e-17,
+        "offset": 0,
+        "prefix_dropped": 0,
+        "psd_ok": true,
+        "tail_dropped": 0,
+        "trace": -7.849623728795052e-17,
+        "trace_density": -1.962405932198763e-17
+      }
+    ],
+    "harm_dim": 7,
+    "laplacian_eigs": [
+      -5.774519276641733e-16,
+      -2.8252099121603498e-16,
+      6.774558553973093e-17,
+      2.5192822497857006e-16,
+      4.446273778027205e-16,
+      6.368957762114395e-16,
+      1.1389459129677879e-15,
+      0.7639320225002098,
+      2.0000000000000004,
+      2.0000000000000013,
+      2.7639320225002106,
+      3.9999999999999987,
+      3.9999999999999996,
+      4.000000000000001,
+      5.23606797749979,
+      7.23606797749979
+    ],
+    "mean_norm": 0.06314516859502817,
+    "metric_weight_spread": 1.0,
+    "noise_eigs": [
+      0.8537476400430908,
+      0.8688953316878558,
+      0.9055126449978321,
+      0.9256926966867998,
+      0.9387541935114846,
+      0.9506228441045267,
+      0.9865980745335368,
+      0.9994291572334727,
+      1.0113339968530242,
+      1.0291124896784551,
+      1.054012400526383,
+      1.057194142343047,
+      1.063575440351617,
+      1.0826702270470037,
+      1.128802495914559,
+      1.1400589121704126
+    ],
+    "projected_noise_cond2": 1.202895908582727,
+    "projected_noise_eigs": [
+      -2.801833500579513e-16,
+      -2.1506087761654222e-16,
+      -1.4247942089551475e-17,
+      4.835221341358174e-18,
+      9.851653695688606e-18,
+      6.293339926480313e-17,
+      9.815893895574875e-17,
+      2.2181289251765263e-16,
+      3.8019499359134475e-16,
+      0.9257579281113545,
+      0.9493759885859142,
+      0.9886678492969747,
+      1.0011481104738806,
+      1.0123853915912975,
+      1.0588923468178362,
+      1.1135904240631707
+    ],
+    "projected_noise_trace": 7.04981803894043
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement",
+      "geometry movement does not persist under coarse projection"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "flat_diamond-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 64.0,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 64.0
+  }
+}

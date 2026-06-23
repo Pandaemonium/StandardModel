@@ -34,5 +34,16 @@ aristotle:
   expected_module: NullEdgeDiamondTwoTriangleCurvature.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-diamond-two-triangle-curvature-20260623-project
   output_dir: AgentTasks/aristotle-output/c60a6698-2567-49f6-92c4-541094a1f322
-  status: submitted
+  status: integrated
 ```
+
+## Integration note
+
+Integrated as:
+
+```text
+PhysicsSM.Draft.NullEdgeDiamondTwoTriangleCurvature
+```
+
+Scientific value: proves the scalar Abelian seed that a minimal additive
+diamond defect is the difference of two triangle curvature defects.

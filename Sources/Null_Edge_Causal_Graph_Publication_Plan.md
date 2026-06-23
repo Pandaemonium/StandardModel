@@ -373,15 +373,17 @@ composition laws, replacing the lattice plaquette.
 Banked Lean. `PhysicsSM.Gauge.CausalDiamondHolonomy` (trusted): Abelian gauge
 invariance, non-Abelian endpoint covariance, gauge invariance of class functions
 of the defect, and vertical and horizontal composition laws for path-pair
-defects.
+defects. `PhysicsSM.Draft.NullEdgeP3CrossedModule` (draft, kernel-checked)
+adds the first higher-gauge wrapper: fake-flatness is preserved by vertical and
+horizontal 2-cell composition, and the crossed-module 2-cell labels satisfy the
+double-category interchange law.
 
-Remaining. The decisive structural test queued in
-`PhysicsSM.Draft.NullEdgePathPairInterchange`: the vertical and horizontal
-composition laws satisfy the double-category-style interchange law, and the
-Abelian `2 x 2` grid defect factors as expected. The next step is no longer
-"does interchange hold?" but the crossed-module / fake-flatness wrapper:
-identify which finite `H`-valued 2-cell labels, endpoint actions, and
-surface-transport conditions are actually forced by the trusted path-pair API.
+Remaining. The decisive structural test is no longer "does interchange hold?"
+at the abstract 2-cell level; that is now banked. The next step is semantic and
+geometric: identify which finite `H`-valued 2-cell labels, endpoint actions,
+surface-transport rules, and fake-flatness constraints are actually forced by
+the trusted path-pair API and by physically meaningful causal diamonds. This is
+finite higher-gauge algebra, not a continuum Stokes theorem.
 
 Lead venue. An interactive-theorem-proving venue or a discrete-gravity /
 classical-and-quantum-gravity venue.
@@ -425,6 +427,37 @@ This is the strongest proposed bridge from the kinematic Plucker theorem to a
 real dynamics paper, because it puts the lightlike shift, chirality flip,
 dispersion relation, and proper-time ratio in one auditable finite model.
 
+Sharpened P4 split. The publishable near-term claim should be the homogeneous
+fixed-point theorem, not the full causal-set frontier. In the homogeneous
+quantum-walk setting, the finite target is:
+
+```text
+null-step unitary symbol
+-> L plus R doubling forced by no 2 x 2 mass term
+-> scalar off-diagonal flip is the Dirac mass
+-> small-momentum Dirac dispersion
+-> unnormalized visible determinant det(P_vis) = m^2
+-> normalized det(P_vis / Tr(P_vis)) gives the frame-relative m/E readout
+```
+
+The hard frontier is separate: a Lorentz-invariant spinor hop-stop propagator on
+a Poisson-sprinkled causal set, extending Johnston's scalar propagator. That is
+where the ontology would become genuinely new dynamics, but it should not be
+folded into the banked P4 paper until the homogeneous fixed-point package and
+single-cone/doubler accounting are under control.
+
+New finite anchors. Two of the fixed-point package guardrails are now
+kernel-checked draft modules. `PhysicsSM.Draft.NullEdgeP4PauliNo2x2Mass`
+proves that a single `2 x 2` Weyl space cannot contain an invertible matrix
+anticommuting with all Pauli matrices; the mass term therefore requires the
+doubled `L plus R` Dirac space. `PhysicsSM.Draft.NullEdgeP4VisibleDetInvariant`
+proves that determinant-one visible congruence preserves the unnormalized
+visible determinant and records the trace-normalized determinant formulas that
+turn it into the observer-conditioned readout.
+`PhysicsSM.Draft.NullEdgeP4ScalarFlipIsotropy` proves that Pauli isotropy forces the flip
+generator to be scalar, making vector flip components anisotropic couplings
+rather than mass.
+
 Lead venue. ITP or math-physics.
 
 Literature anchors. Earle checkerboard notes; Foster-Jacobson 4D checkerboard;
@@ -436,10 +469,16 @@ with ultraviolet cutoff (`G7NXEZBU`); Arnault-Perez-Arrighi-Farrelly on
 discrete-time quantum walks as fermions of lattice gauge theory (`PTHQB2RM`);
 Arrighi-Facchini-Forets on discrete Lorentz covariance (`VHPN6G7D`); and
 Bisio-D'Ariano-Perinotti-Tosini QCA derivations of Weyl, Dirac, and Maxwell
-dynamics (`BVJBTK8J`, `KCQGEDJE`).
+dynamics (`BVJBTK8J`, `KCQGEDJE`). Farrelly's QCA review (`964TN6X7`)
+is now the broad prior-art guardrail, and Eon-Di Molfetta-Magnifico-Arrighi's
+3+1 discrete QED construction (`VIAIBSRI`) is especially relevant because it
+uses lightlike circuit wires, starts from a Dirac quantum walk, and extends it
+to gauge-invariant multi-particle dynamics.
 
-Claim boundary. A finite path-sum / recurrence result in `1+1`. It is not a
-proof of higher-dimensional Dirac universality.
+Claim boundary. A finite path-sum / recurrence result in `1+1`, plus a
+homogeneous null-step quantum-walk fixed-point package if the new targets land.
+It is not yet a proof of generic higher-dimensional Dirac universality or a
+causal-set spinor propagator.
 
 ### P5. Finite quantum measure on causal events
 
@@ -711,8 +750,8 @@ cosmology paper. The integrated draft modules
 `PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore`,
 `PhysicsSM.Draft.NullEdgeP9FluctuationScaling`, and
 `PhysicsSM.Draft.NullEdgeP9WeightedFluctuation`, and
-`PhysicsSM.Draft.NullEdgeP9UniformSuppression` prove two pieces that make the
-branch sharper:
+`PhysicsSM.Draft.NullEdgeP9UniformSuppression` prove several pieces that make
+the branch sharper:
 
 - boundary-exact bookkeeping is invisible to closed bulk tests;
 - successive boundary maps produce no bulk source under a chain-complex law;
@@ -727,6 +766,22 @@ branch sharper:
 - uniformly spreading a fixed total scale `A` over `N` independent sign cells
   gives normalized second moment `A^2 / N`, the first exact finite suppression
   law for the branch.
+
+A second P9 batch adds the first abstract Hodge/projector and noise-kernel
+guardrails:
+
+- `PhysicsSM.Draft.NullEdgeP9ClosedWitness` proves that a closed bulk test with
+  nonzero source pairing certifies visible source content and rules out
+  boundary-exact bookkeeping;
+- `PhysicsSM.Draft.NullEdgeP9BoundaryVisibleDecomp` proves that closed tests
+  see the residual/visible component and ignore boundary-exact perturbations;
+- `PhysicsSM.Draft.NullEdgeP9WeightedNoiseBound` bounds weighted diagonal noise
+  response by the observer-test bound times the weighted amplitude square;
+- `PhysicsSM.Draft.NullEdgeP9HarmonicProjectorResponse` proves that harmonic
+  tests see only the projected source when the finite projector is self-adjoint
+  and annihilates boundary sources;
+- `PhysicsSM.Draft.NullEdgeP9ProjectedNoiseKernel` proves that projecting a
+  noise kernel preserves positive-semidefinite response.
 
 The finite visible-fan theorem is:
 
@@ -796,6 +851,178 @@ First safe theorem targets:
   channel and reference state are fixed;
 - `petzRecoverabilityGap_controls_sourceVisibility`, initially as a finite
   definition and Aristotle strategy target.
+- `hodgeProjector_annihilates_boundaryExact`, upgrading the current abstract
+  projector algebra to an explicit finite Gram-matrix projector rather than an
+  appeal to Hodge theory;
+- `harmonicNoiseKernel_positiveDefinite_iff_no_hidden_null_modes`, separating
+  true harmonic-source visibility from generic positive-semidefinite noise;
+- `harmonicNoiseKernel_conditionNumber_refinement_bound`, not as a demand for
+  fine-grained continuum behavior, but as a diagnostic of whether a stable
+  coarse-grained or renormalized harmonic channel survives refinement.
+
+Adversarial finite gate. The current boundary and noise lemmas are necessary
+plumbing, but they are not yet cosmological-constant leverage. The next P9
+result must use some causal-diamond-specific input: a chosen SJ/correlation
+metric, an explicit harmonic projector, Betti-number or harmonic-dimension
+scaling, a noise spectrum/condition-number bound, or a response law. If the
+same theorem remains unchanged on an arbitrary finite complex with no causal
+data, treat it as support infrastructure rather than a physics result.
+
+Numerical pilots:
+
+- compute the finite Hodge projector on small sprinkled or hand-built causal
+  diamonds and report harmonic dimension and noise-kernel spectrum;
+- prioritize the coarse-grained noise-kernel variance
+  `Var(k) = tr(R K R^T)` as the first publishable P9 pilot, with the
+  coarse-graining map `R` fixed before seeing the statistic and reused for flat
+  and de Sitter-like diamonds;
+- compare flat and de Sitter-like finite diamonds to test whether the harmonic
+  residual channel distinguishes geometry beyond triangulation noise;
+- add a boundary-exact perturbation regression test that verifies closed-test
+  responses are unchanged at floating-point tolerance;
+- construct an explicit visible Plucker/closure-defect source and verify the
+  selected source observable drops to zero when the defect is removed.
+
+Geometry-discriminating pilot gate. The flat-vs-de Sitter comparison should not
+count as evidence merely because two hand-tuned metric choices give different
+numbers. A publishable pilot needs a named metric statistic, such as harmonic
+dimension, the smallest positive eigenvalue of the projected noise kernel, the
+projected condition number, or a normalized projected trace, and that statistic
+should differ between the flat and de Sitter-like diamond by more than the
+sprinkling spread. A useful working threshold is: the flat/de Sitter separation
+should exceed ten times the within-family spread and should vary monotonically
+as the de Sitter scale or expansion parameter is changed. The same statistic
+must survive boundary-exact perturbations and either refinement checks or an
+explicit coarse-graining/renormalization prescription. Fine-scale
+ill-conditioning is not by itself a failure in a fundamentally discrete model;
+it is a failure only if no stable large-scale readout remains.
+
+Ordering. Build the coarse-grained noise-kernel variance route first: positive
+kernels, Cauchy-Schwarz bounds, and projected-response modules already provide
+most of the finite well-definedness layer. Treat Green-function
+source-response susceptibility as the stronger follow-up, because it requires a
+stable inverse or regulated Green operator on the visible/projected subspace.
+New formal support: `PhysicsSM.Draft.NullEdgeP9CoarseResidualVariance` proves
+the block-sum variance identity, `NullEdgeP9CoarseKernelPSD` proves that a
+fixed coarse map sends PSD kernels to PSD coarse kernels and gives a
+nonnegative coarse trace, `NullEdgeP9RankOneHarmonicTrace` proves the
+rank-one harmonic trace-density toy theorem,
+`NullEdgeP9WeightedAdjointCore` fixes the weighted codifferential convention,
+`NullEdgeP9WeightedLaplacianEnergy` proves the weighted sum-of-squares energy
+identity and nonnegativity, and `NullEdgeP9HarmonicKernelCore` proves the
+weighted finite Hodge kernel identity `harmonic iff closed and coclosed`.
+`NullEdgeP9WeightedLap1SelfAdjoint` adds the missing bilinear operator fact:
+the explicit weighted 1-Laplacian is self-adjoint for the weighted degree-1
+pairing, which is the finite algebra needed before using spectral subspaces as
+coarse observer channels.
+`NullEdgeP9HodgeProjectorInstantiation` then proves the finite
+source-visibility bridge: a self-adjoint idempotent projector into that
+harmonic sector annihilates exact boundary bookkeeping and preserves projected
+responses/pairings under exact boundary perturbations.
+`NullEdgeP9WeightedProjectorResidualOrthogonal` adds the weighted
+observer-channel decomposition law: projected tests see only the projected
+source, and the residual source is weighted-orthogonal to every projected test.
+`NullEdgeP9WeightedProjectorPythagorean` adds the matching energy split:
+weighted source energy is exactly projected/coarse energy plus residual energy.
+`NullEdgeP9CoarseBoundaryInvariance` adds the boundary-artifact guardrail for a
+fixed coarse-graining map, and `NullEdgeP9TwoCellTraceSeparation` adds a
+minimal non-vacuity check showing that a two-cell coarse trace can detect
+movement in diagonal kernel weights. `NullEdgeP9CausalSupportBound` adds the
+first causal-support guardrail: a finite response kernel supported inside a
+chosen causal relation cannot propagate a localized source outside its discrete
+causal reach, and causally separated source/target tests have zero response.
+`NullEdgeP9RetardedNilpotentReach` adds the finite acyclic-retarded horizon:
+when the response support relation strictly decreases a rank on a finite
+diamond, exact reach is empty beyond the rank height and the iterated response
+kernel vanishes. `NullEdgeP9EdgeNeighborReach` adds the effective-locality
+wrapper: `edgeNeighbor_N` is a subrelation stable under induced subdiamonds,
+neighborhood-supported kernels are causally supported, and step-supported
+kernels keep responses inside exact finite step reach.
+`NullEdgeP9RetardedGreenSeries` adds the finite response-law scaffold: under
+nilpotence on a vector, the terminating retarded series
+`sum_{m < H} K^m x` solves `(I - K) y = x` exactly. This is the clean finite
+substitute for a formal Green function in the current P9 toy layer.
+This prevents the P9 response layer from being purely arbitrary matrix algebra,
+but it still must be paired with a source functional and response law before it
+counts as cosmological-constant leverage.
+
+New numerical guardrail: `Scripts/p9/pilot_ensemble.py` now runs a matched
+flat-diamond versus deformed/de-Sitter-style diamond ensemble over several
+sizes and seeds, reporting projected-noise trace density, coarse block trace
+density, seed spread, and a `10 * within-family spread` separation threshold.
+The first aggregate output
+`AgentTasks/p9-pilot-matched-diamond-ensemble-2026-06-23.json` is useful mainly
+because it is discriminating. Boundary perturbation and projected-PSD checks
+passed, but the main fine projected-noise trace-density signal failed the
+`10x` spread threshold for sizes `4..8`; the block-size `4` coarse statistic
+passed but is plausibly a coarse-map alignment artifact. This should be treated
+as a guardrail and target generator, not as evidence for cosmological-constant
+leverage.
+The offset sweep
+`AgentTasks/p9-pilot-matched-diamond-offset-sweep-2026-06-23.json` confirms the
+artifact concern. Shifting the block-size `4` coarse grid away from offset `0`
+makes the flat trace density nonzero, and offset `2` makes the flat/deformed
+separation fail. The next numerical milestone is therefore not "larger
+block-size `4` evidence"; it is an offset-invariant or geometry-intrinsic
+coarse map, preferably defined by causal intervals or another pre-specified
+diamond construction.
+
+P9 demotion tests are now explicit. Demote the cosmological-constant claim if:
+
+- all harmonic/projected statistics are geometry-blind between flat and
+  de Sitter-like diamonds;
+- the apparent separation vanishes or fails to stabilize under refinement after
+  any stated coarse-graining or renormalization step;
+- the discriminating statistic changes under boundary-exact perturbations or
+  admissible regraduations of the diamond;
+- the effect disappears once the metric blocks are constrained to come from the
+  chosen geometry rather than arbitrary weights;
+- the statistic has no response law linking it to vacuum energy, curvature,
+  expansion, or a unimodular conjugate variable.
+
+Positive finite scaffold: `PhysicsSM.Draft.NullEdgeP9SelectedSectorTraceDensity`
+now proves that a Boolean-selected sector with `k` visible coordinate modes in
+an `n`-cell readout has trace density `k/n`, and that a boundary-size bound on
+`k` gives a boundary-over-volume density bound. This is only algebra until the
+selected sector is geometrically forced, but it is the exact finite statement
+the P9 area-vs-volume route needs.
+Negative/guardrail scaffold:
+`PhysicsSM.Draft.NullEdgeP9BlockAliasingGuardrail` proves that a size-4 block
+average annihilates any rank-one mode with zero within-block sum. This is the
+formal version of the offset-sweep warning: a zero coarse trace can be an
+alignment artifact unless the coarse map is intrinsic or the statistic is
+offset-invariant.
+`PhysicsSM.Draft.NullEdgeP9OffsetWindowGuardrail` strengthens this warning:
+one block-window zero need not survive a shift, and all shifted four-cell
+window traces can still annihilate a nonzero high-frequency mode. Thus
+offset-sweeping is a necessary negative control, not a sufficient proof of
+source invisibility.
+`PhysicsSM.Draft.NullEdgeP9BoundaryVolumeScaling` supplies the finite
+area-vs-volume arithmetic behind the selected-sector route: in the toy
+four-dimensional scaling model, boundary-over-volume density is `C / L`, drops
+below a chosen threshold after a scale bound, and halves when the linear scale
+doubles.
+`PhysicsSM.Draft.NullEdgeP9DefectSensitivityBenchmark` supplies the first
+minimal defect-sensitivity benchmark: common-mode two-triangle curvature
+bookkeeping is invisible to the linearized diamond-defect readout, while
+differential curvature perturbations are visible and create nonzero defect from
+a flat baseline.
+
+First scaffold: `Scripts/p9/pilot.py` now implements the hand-built part of
+this pilot for `cycle4`, `filled_triangle`, and `two_triangle_disk`, with output
+schema `Scripts/p9/p9_schema.json`. Initial smoke runs correctly separate a
+one-cycle harmonic sector from filled-disk examples with no harmonic sector.
+The pilot now also has a toy metric-profile hook: on the same `cycle4`
+combinatorics, a flat edge metric gives projected harmonic-noise trace `1.0`,
+while a normalized expanded edge-weight profile gives trace about `1.113` and a
+different Laplacian spectrum, with boundary perturbations still invisible and
+the projected covariance kept positive by using the covariance convention
+`P K P^T`. This is only a metric-sensitivity diagnostic; the
+publication-relevant test still requires a causal-diamond family with recorded
+metric conventions. A parameterized cycle-size hook now gives a preliminary size
+sweep: for normalized expanded cycles of size `4, 6, 8`, the harmonic dimension
+stays `1`, projected covariance remains positive, and projected trace is roughly
+`1.03-1.04`. That is a useful harness sanity check, not a causal-diamond result.
 
 Information-theoretic sharpening. The Sorkin-Johnston causal-set entropy papers
 (`1311.7146`, `8TA2W3MV`; `1611.10281`, `G2JGSV9B`) give P9 a native discrete
@@ -819,7 +1046,8 @@ recoverable from the screen algebra, or outside the bulk source functional.
 
 Stochastic-gravity guardrail. Hu and Verdaguer's stochastic-gravity reviews
 (`PRCWRMFC`, `TXN5JSZ5`), Hu-Matacz's Einstein-Langevin backreaction paper
-(`PW8MXJ8I`), Campos-Verdaguer's weakly inhomogeneous cosmology application
+(`PW8MXJ8I`), the Martin-Verdaguer Einstein-Langevin derivation
+(`4KXZ8IJE`), Campos-Verdaguer's weakly inhomogeneous cosmology application
 (`K8SI5KZ9`), and Phillips-Hu's explicit noise-kernel construction
 (`5T5BQ6PT`) are the right comparison points for the P9
 mean-zero/second-moment theorems. Semiclassical gravity sources the mean stress
@@ -828,6 +1056,114 @@ fluctuations. Therefore a finite P9 theorem that proves "mean zero but nonzero
 second moment" has not made the source invisible. It has only moved the
 question to the diamond response/noise-kernel layer unless the observer channel
 or boundary functional kills that fluctuation source too.
+
+Hodge/conservation sharpening. The best current route is to define P9
+bookkeeping as a finite cochain on a diamond order complex, with the inner
+product supplied by the chosen Sorkin-Johnston correlation metric. Once that
+metric is fixed, the source-visibility problem should be split by a finite
+Hodge-Helmholtz decomposition:
+
+```text
+im d                   boundary/gauge bookkeeping
+closure or codifferential defect  visible matter source
+ker d cap ker delta    candidate harmonic Lambda-channel
+harmonic covariance    stochastic noise kernel
+```
+
+This is useful because it makes the cosmological-constant branch falsifiable by
+finite topology and scaling, not by prose. Boundary-exact invisibility becomes a
+discrete Stokes/adjointness statement, closure defects become the visible source
+channel, and the entire residual cosmological risk is localized in the harmonic
+sector. The high-value pilot is therefore not another broad source slogan, but
+Betti-number and harmonic-noise scaling for sprinkled diamond order complexes
+under the same SJ truncation/window that is used for screen entropy.
+
+This Hodge/projector route now has more precise source anchors. FEEC
+(`DM6NREPA`) and the Arnold-Falk-Winther stability review (`8JFSI9CS`) are the
+stability and commuting-complex guardrails; Hansen-Ghrist cellular sheaf
+Laplacians (`CWXAFIF4`) supply the spectral/cohomological language on cell data;
+Dodziuk finite Hodge approximation (`TSAQXS9N`) is the finite harmonic-form
+precedent; Edelsbrunner-Olsbock tri-partitions (`D7352JCI`) give constructive
+cell decompositions and harmonic bases; and Ribando-Gros et al. (`9RE64BCV`)
+warn that combinatorial graph Laplacians and metric-compatible Hodge Laplacians
+are not interchangeable. The corrected discrete-first gate should also cite
+Laplacian renormalization / coarse-graining sources: higher-order Laplacian
+renormalization (`RA8QNNKW`), heterogeneous Laplacian RG (`AN5RZGJZ`), and
+Laplacian coarse graining in complex networks (`UR5ADCBP`), plus Loukas'
+spectral/cut-guaranteed graph reduction (`PTU4XM4U`) as the guardrail for using
+a pre-specified coarse-graining operator `R`. The DEC/FEEC stability bridge
+`WB8WBSBX` strengthens the same point on the finite-Hodge side: stability needs
+stated geometric conditions, not arbitrary projector algebra. These sources
+make the right demand explicit: P9 does not need microscopic continuum
+behavior, but it does need a stable coarse-grained or renormalized
+harmonic/source observable. A discrete model can be accepted on its own terms;
+continuum language should enter as an optional scaling or universality target,
+not as a fine-grained admission criterion.
+Eichhorn-Mack-Le-Wagner's causal-set configuration-space survey (`RC5XF8RD`)
+adds a current intrinsic-observable guardrail: link-degree distributions,
+symmetrized-Hasse graph Laplacian spectra, and causal-interval abundance
+distinguish causal-set classes with relatively small fluctuations. The next P9
+pilot should therefore test these intrinsic observables, or a coarse map derived
+from them, before treating block averages as physically meaningful.
+`NullEdgeP9IntrinsicOrderObservables` formalizes the first Lean bridge to this
+literature: interval abundance and out-degree histograms are invariant under
+finite relabeling, so they are genuinely order-intrinsic diagnostics rather
+than label/grid artifacts.
+These sources should constrain the next theorem statements before P9 is
+advertised as more than abstract finite linear algebra.
+The latest Aristotle strategy job turns this into a concrete gate:
+P9 should seek an iso-histogram separation theorem. The target is a pair of
+finite causal sets with identical out-degree and interval-abundance histograms,
+but different values of a frozen projected observer readout, with the
+separation invariant under order isomorphism and stable under a pre-specified
+Alexandrov or spectral coarse map with an explicit scale-uniform bound. This
+would show that the observer channel is seeing causal-order geometry not
+already captured by current graph-observable histograms. Failure to find such a
+pair, or failure under offset sweeps, weight scrambles, or boundary-stripped
+controls, is a demotion signal.
+Claude's critique adds an important publication boundary. The global
+marginals-vs-joint witness is now formalized in
+`PhysicsSM.Draft.NullEdgeP9IsohistogramSeparation`, but it is too cheap to
+carry the P9 claim by itself: it mainly proves that separate marginal
+histograms do not determine a frozen joint readout. The stronger T1 witness is
+now formalized in `PhysicsSM.Draft.NullEdgeP9DiamondLocalSeparation`: it
+matches joint in/out-degree and global interval-abundance signatures, keeps the
+chosen diamond the same size, and separates by the diamond's local interval-size
+signature. T2 should be a paired coarse-map program: the erasure side is now
+banked in `PhysicsSM.Draft.NullEdgeP9CoarseMapErasureGuardrail`, where a
+natural critical-collapse map erases the T1 separator; preservation should be
+claimed only for a pre-specified admissible class. T3 is now banked in
+`PhysicsSM.Draft.NullEdgeP9DiamondLocalityNoiseInvariance`: if the closed
+diamond and all relation entries internal to it agree, external relation noise
+does not change the local interval-size signature. The positive T2 Class A
+route is now banked in
+`PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout`: under a
+transitive causal relation, a closed subdiamond is convex and the local
+interval-size readout restricted to that subdiamond agrees with direct
+measurement in the subdiamond. The next refinement is a finite witness
+corollary contrasting this preserving map with the critical-collapse erasure
+map.
+For the causal-support side, Aslanbeigi-Saravani-Sorkin's generalized causal-set
+d'Alembertians (`DQ9CF6I2`) are now the key comparison source: they are retarded
+and Lorentz-invariant but nonlocal, include infrared recovery conditions, and
+carry explicit stability caveats. P9 kernels should therefore not merely be
+finite-support matrices; they should say which relation or neighborhood plays
+the retarded-support role, what large-scale operator they approximate, and
+whether the induced evolution is stable.
+Boguna-Krioukov's local causal-set d'Alembertian (`I72KXVQA`) gives the other
+side of the guardrail: locality may be recoverable from intrinsic causal-set
+distance data. The `edgeNeighbor_N` line should therefore be tested as a finite
+effective-locality relation, not dismissed as naive bounded valency and not
+promoted without comparing its scaling behavior to known causal-set
+d'Alembertian constructions.
+
+The claim boundary is strict. Identifying the continuum cosmological constant
+with the harmonic projection is conjectural. Area-law source noise is not yet an
+area-law Lambda fluctuation; that implication needs a separate response law
+from finite source/noise data to curvature, expansion, or a unimodular
+conjugate variable. If the harmonic Betti numbers or harmonic-noise trace scale
+with volume, or if the response law imports the everpresent-Lambda CMB-era
+amplitude tension unchanged, P9 should be demoted.
 
 Decision threshold. If coherent hidden bookkeeping sources a volume term, if
 source invisibility is imposed rather than derived, or if the residual inherits
@@ -855,6 +1191,16 @@ thermodynamic derivations, including Jacobson's (`1505.04753`, Zotero
 field-theoretic assumptions, so P9 should cite them as guardrails rather than
 as results already reproduced by the null-edge model.
 
+Next P9 work packages:
+
+- finite `DiamondHodgeMetric` / `DiamondBookkeepingCochain` definitions;
+- adjoint/codifferential convention tied to the chosen SJ metric;
+- exact/coexact/harmonic projection API in finite dimension;
+- pilot scripts for Betti-number scaling of sprinkled diamond order complexes;
+- pilot scripts for harmonic-noise trace scaling under independent versus
+  cell-local paired residuals;
+- a response-law strategy note before any cosmological-constant amplitude claim.
+
 ### P10. Generations from the exceptional Jordan / triality layer
 
 Gate. The Albert / `H_3(O)` internal layer must house the required Standard Model
@@ -880,8 +1226,9 @@ mixing data would weaken or kill the branch.
 - Bivector / BF simplicity defect as the Klein-quadric pairwise mass criterion,
   with linear-simplicity and closure constraints; gated on the finite `B`-cochain
   interface compatible with the diamond composition laws.
-- Higher-dimensional checkerboard universality (the dynamics theorem behind P4);
-  gated on a scaling/renewal statement, not yet finite.
+- Null-step Dirac universality (the dynamics theorem behind P4); gated first
+  on the homogeneous fixed-point package, invariant `det(P_vis)=m^2` bridge,
+  and single-cone/doubler accounting, then on a causal-set spinor propagator.
 
 ## Recommended sequencing
 
@@ -889,11 +1236,13 @@ mixing data would weaken or kill the branch.
    Promote the celestial-moment wrapper, add the reproducibility appendix, and
    write the artifact paper before reopening broad ontology claims.
 2. Combine P2/P4 into the next dynamics paper if the null-step quantum-walk
-   target lands: luminal conditional shifts, chirality coherence, Dirac
-   dispersion, and observer-visible `m/E` in one finite model.
-3. P3 next or in parallel. It is trusted at the core; the decisive follow-up is
-   whether the crossed-module/fake-flatness layer is forced or optional
-   packaging.
+   target lands: luminal conditional shifts, chirality coherence, scalar
+   off-diagonal mass, Dirac dispersion, invariant `det(P_vis)=m^2`, and
+   observer-visible `m/E` in one finite model.
+3. P3 next or in parallel. It is trusted at the core and now has a
+   kernel-checked crossed-module/fake-flatness wrapper; the decisive follow-up is
+   whether the finite 2-cell labels and fake-flatness law are forced by the
+   causal-diamond geometry or remain optional packaging.
 4. P7 as a short, high-signal synthesis note; it captures a genuinely new
    cross-branch observation and is cheap to write.
 5. P8 once P1-P4 exist to cite, so the manifesto rests on artifacts.

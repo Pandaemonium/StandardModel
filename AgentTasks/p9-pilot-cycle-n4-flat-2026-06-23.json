@@ -1,0 +1,96 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 1.1102230246251565e-16,
+    "noise_rel_err": 1.1102230246251565e-16,
+    "projected_psd_min_eig": -3.7112460523829977e-17,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 4,
+    "F": 0,
+    "V": 4,
+    "configs": 16
+  },
+  "geometry_family": "cycle",
+  "geometry_params": {
+    "cycle_size": 4,
+    "edge_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [],
+    "metric_profile": "flat",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      0.5,
+      1.0,
+      0.5
+    ]
+  },
+  "metrics": {
+    "betti1": 1,
+    "harm_dim": 1,
+    "laplacian_eigs": [
+      -8.586881206085195e-16,
+      2.0,
+      2.0000000000000004,
+      3.9999999999999996
+    ],
+    "mean_norm": 0.0,
+    "metric_weight_spread": 1.0,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": 1.0,
+    "projected_noise_eigs": [
+      -3.7112460523829977e-17,
+      0.0,
+      6.486803613945886e-17,
+      1.0
+    ],
+    "projected_noise_trace": 1.0
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "cycle-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 4.0,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 4.0
+  }
+}

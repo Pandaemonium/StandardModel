@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Null-edge P9 finite pilot result",
+  "type": "object",
+  "required": [
+    "run_id",
+    "geometry_family",
+    "geometry_params",
+    "counts",
+    "metrics",
+    "checks",
+    "witnesses",
+    "results"
+  ],
+  "properties": {
+    "run_id": { "type": "string" },
+    "geometry_family": { "type": "string" },
+    "geometry_params": { "type": "object" },
+    "counts": {
+      "type": "object",
+      "required": ["V", "E", "F", "configs"],
+      "properties": {
+        "V": { "type": "integer" },
+        "E": { "type": "integer" },
+        "F": { "type": "integer" },
+        "configs": { "type": "integer" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "betti1",
+        "harm_dim",
+        "laplacian_eigs",
+        "noise_eigs",
+        "projected_noise_eigs",
+        "projected_noise_trace",
+        "projected_noise_cond2",
+        "mean_norm"
+      ],
+      "properties": {
+        "betti1": { "type": "integer" },
+        "harm_dim": { "type": "integer" },
+        "laplacian_eigs": { "type": "array" },
+        "noise_eigs": { "type": "array" },
+        "projected_noise_eigs": { "type": "array" },
+        "projected_noise_trace": { "type": "number" },
+        "projected_noise_cond2": { "type": ["number", "null"] },
+        "mean_norm": { "type": "number" },
+        "metric_weight_spread": { "type": "number" },
+        "coarse_projection": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "block_size",
+              "offset",
+              "coarse_edges",
+              "prefix_dropped",
+              "tail_dropped",
+              "trace",
+              "trace_density",
+              "min_eig",
+              "max_eig",
+              "cond2",
+              "psd_ok"
+            ],
+            "properties": {
+              "block_size": { "type": "integer" },
+              "offset": { "type": "integer" },
+              "coarse_edges": { "type": "integer" },
+              "prefix_dropped": { "type": "integer" },
+              "tail_dropped": { "type": "integer" },
+              "trace": { "type": "number" },
+              "trace_density": { "type": "number" },
+              "min_eig": { "type": "number" },
+              "max_eig": { "type": "number" },
+              "cond2": { "type": ["number", "null"] },
+              "psd_ok": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "required": [
+        "mean_rel_err",
+        "noise_rel_err",
+        "projected_psd_min_eig",
+        "boundary_perturb_ok",
+        "projected_psd_ok"
+      ],
+      "properties": {
+        "coarse_projection_ok": { "type": "boolean" }
+      }
+    },
+    "witnesses": {
+      "type": "object",
+      "required": [
+        "pluckerSq",
+        "closureDefectSq",
+        "momentMassSq",
+        "unitVisiblePairing"
+      ]
+    },
+    "results": {
+      "type": "object",
+      "required": ["positive_signal", "demote_if"]
+    }
+  }
+}

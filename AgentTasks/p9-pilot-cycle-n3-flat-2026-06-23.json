@@ -1,0 +1,87 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 5.551115123125783e-17,
+    "noise_rel_err": 0.0,
+    "projected_psd_min_eig": -6.845750164402933e-17,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 3,
+    "F": 0,
+    "V": 3,
+    "configs": 8
+  },
+  "geometry_family": "cycle",
+  "geometry_params": {
+    "cycle_size": 3,
+    "edge_weights": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [],
+    "metric_profile": "flat",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      0.6666666666666666,
+      0.6666666666666666
+    ]
+  },
+  "metrics": {
+    "betti1": 1,
+    "harm_dim": 1,
+    "laplacian_eigs": [
+      -1.1102230246251565e-16,
+      3.0,
+      3.0
+    ],
+    "mean_norm": 0.0,
+    "metric_weight_spread": 1.0,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": 1.0,
+    "projected_noise_eigs": [
+      -6.845750164402933e-17,
+      6.845750164402928e-17,
+      1.0
+    ],
+    "projected_noise_trace": 1.0
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "cycle-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 2.25,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 2.25
+  }
+}

@@ -1334,6 +1334,1559 @@ rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/
 
 All checks passed. The placeholder scan was clean.
 
+## Literature pass: P9 Hodge/projector guardrails
+
+Semantic Scholar was rate-limited, so this pass used OpenAlex, arXiv, Crossref,
+Zotero duplicate checks, and Neo4j linking.
+
+Already present and re-emphasized:
+
+- `DM6NREPA`: Arnold-Falk-Winther finite element exterior calculus.
+- `PU8Q5WKT` and `G2JGSV9B`: causal-set Sorkin-Johnston entropy and the
+  area-law/volume-law truncation caveat.
+
+Added to Zotero collection `9W59V3K9` and linked in Neo4j:
+
+- `CWXAFIF4`: Hansen-Ghrist, *Toward a spectral theory of cellular sheaves*.
+- `TSAQXS9N`: Dodziuk, *Finite-Difference Approach to the Hodge Theory of
+  Harmonic Forms*.
+- `D7352JCI`: Edelsbrunner-Olsbock, *Tri-partitions and Bases of an Ordered
+  Complex*.
+
+Scientific consequence: next P9 jobs should not merely prove abstract
+zero-pairing or mean-zero lemmas. They should move toward explicit finite
+Hodge projectors, harmonic-basis/projected-source separation, projected noise
+positivity/strictness, and condition-number or spectrum diagnostics.
+
+## Submitted P9 harmonic/projector follow-up jobs
+
+Submitted four Aristotle jobs after the P9 Hodge/projector literature pass:
+
+- `a0dadc4c-2ea3-4741-b96b-508a795d1e1b`:
+  `null-edge-p9-orthogonal-projector-core-20260623`.
+- `6dfa769d-2271-4cbf-aca6-4a05e7827254`:
+  `null-edge-p9-strict-projected-kernel-20260623`.
+- `e6ef0730-727a-48e9-a5df-5be70830db99`:
+  `null-edge-p9-conditioned-response-bound-20260623`.
+- `689020dd-79b1-4b50-9971-6d40ac8dd801`:
+  no-code `null-edge-p9-explicit-hodge-projector-strategy-20260623`.
+
+All three proof jobs were submitted as focused standalone packages whose target
+files typechecked locally with only the intended proof-hole warnings. The
+strategy job asks Aristotle to design the explicit finite diamond Hodge
+projector and projected source/noise theorem scaffold before we overclaim P9.
+
+## Integrated P9 orthogonal-projector core
+
+Integrated Aristotle project `a0dadc4c-2ea3-4741-b96b-508a795d1e1b` into:
+
+- `PhysicsSM.Draft.NullEdgeP9OrthogonalProjectorCore`
+
+Theorems:
+
+- `projected_is_harmonicTest`
+- `harmonic_pairing_eq_projected_pairing`
+- `residual_orthogonal_to_harmonicTest`
+- `harmonic_tests_see_only_projected_source`
+
+Scientific role: this proves the clean abstract projector statement that P9 now
+needs. For a finite self-adjoint idempotent projector, harmonic tests see only
+the projected source and the residual is orthogonal to harmonic tests. This is
+still abstract linear algebra; it becomes physically meaningful only when the
+projector is supplied by a concrete finite diamond metric/Hodge construction.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9OrthogonalProjectorCore.lean
+lake build PhysicsSM.Draft.NullEdgeP9OrthogonalProjectorCore
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9OrthogonalProjectorCore.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9OrthogonalProjectorCore.lean
+```
+
+All targeted checks passed; placeholder and non-ASCII scans were clean.
+
+## Received P9 explicit Hodge-projector strategy result
+
+Aristotle project `689020dd-79b1-4b50-9971-6d40ac8dd801` returned a no-code
+strategy/audit artifact:
+
+```text
+AgentTasks/aristotle-output/689020dd-79b1-4b50-9971-6d40ac8dd801/extracted/project-files.tar/null-edge-p9-explicit-hodge-projector-strategy-20260623_aristotle/P9_STRATEGY.md
+```
+
+Key takeaways:
+
+- The current P9 spine is generic finite linear algebra until the projector is
+  pinned to a geometry-dependent finite Hodge Laplacian.
+- Tier A should define and prove well-posedness of explicit cochain spaces,
+  incidence maps, SPD metric blocks, adjoints, self-adjointness, and the
+  Laplacian sum-of-squares PSD identity.
+- Tier B's keystone is `ker L1 = ker d1 cap ker d0star`; this is the theorem
+  that turns the harmonic channel into a real finite Hodge object.
+- Tier C then proves exact-source invisibility and projected-noise/rank bounds
+  with respect to that concrete projector.
+- Tier D is the physics-making target: a fixed finite diamond response
+  separation where harmonic rank, trace, spectrum, or response differs between
+  explicit incidence-plus-metric choices.
+
+The optional returned `P9Skeleton.lean` is not integrated because it is a design
+skeleton with proof holes and was not build-checked. Next proof jobs should be
+Tier A, not more abstract projector lemmas.
+
+## Submitted P9 Tier-A weighted Hodge jobs
+
+Submitted two focused Aristotle jobs for the explicit finite Hodge layer:
+
+- `32a7fb73-8801-453d-8f8c-5c794e4dbe30`:
+  `null-edge-p9-weighted-adjoint-core-20260623`.
+- `23a1472a-e255-48b5-9314-6b13b6286af1`:
+  `null-edge-p9-weighted-laplacian-energy-20260623`.
+
+Both target files typechecked locally with only the intended proof-hole
+warnings. These jobs move P9 from abstract projector folklore toward an
+explicit diagonal-metric Hodge API: weighted adjoints, then a 1-Laplacian
+sum-of-squares identity.
+
+## Literature pass: P9 Tier-A finite Hodge guardrails
+
+Used OpenAlex/Crossref after Semantic Scholar rate limits. Added to Zotero
+collection `9W59V3K9` and linked in Neo4j:
+
+- `8JFSI9CS`: Arnold-Falk-Winther, *Finite element exterior calculus: from
+  Hodge theory to numerical stability*.
+- `9RE64BCV`: Ribando-Gros et al., *Combinatorial and Hodge Laplacians:
+  Similarities and Differences*.
+
+Scientific consequence: the Tier-A weighted-adjoint and Laplacian-energy jobs
+should be read as a metric-compatible finite Hodge scaffold, not as generic
+graph Laplacian folklore. The Ribando-Gros et al. guardrail is especially useful:
+P9 must state which metric/Hodge operator it uses, because a combinatorial graph
+Laplacian does not automatically give the same decomposition or continuum
+interpretation.
+
+## Integrated P9 strict projected-kernel and conditioned-response cores
+
+Integrated Aristotle projects:
+
+- `6dfa769d-2271-4cbf-aca6-4a05e7827254` into
+  `PhysicsSM.Draft.NullEdgeP9StrictProjectedKernel`.
+- `e6ef0730-727a-48e9-a5df-5be70830db99` into
+  `PhysicsSM.Draft.NullEdgeP9ConditionedResponseBound`.
+
+New strict/no-hidden-mode theorems:
+
+- `projectedKernel_response_eq_response_projectedTest`
+- `projectedKernel_strict_on_nonzero_projectedTest`
+- `projectedKernel_response_zero_iff_projectedTest_zero`
+
+New conditioned-response theorems:
+
+- `normSq_nonneg`
+- `zero_response_forces_zero_projected_norm`
+- `response_ratio_le_beta`
+- `alpha_le_response_ratio`
+- `response_ratio_between`
+
+Scientific role: these are the finite guardrails requested by the P9 critique.
+The projected noise response is no longer merely positive-semidefinite: under a
+positive-definite finite kernel, it has no hidden null modes except tests killed
+by projection. Separately, a two-sided response bound gives a condition-number
+style interval for the response-to-projected-norm ratio.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9StrictProjectedKernel.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9ConditionedResponseBound.lean
+lake build PhysicsSM.Draft.NullEdgeP9StrictProjectedKernel
+lake build PhysicsSM.Draft.NullEdgeP9ConditionedResponseBound
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9StrictProjectedKernel.lean PhysicsSM/Draft/NullEdgeP9ConditionedResponseBound.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9StrictProjectedKernel.lean PhysicsSM/Draft/NullEdgeP9ConditionedResponseBound.lean
+```
+
+All targeted checks passed; placeholder and non-ASCII scans were clean.
+
+## Integrated P9 harmonic/source-visibility cluster
+
+Integrated five completed Aristotle jobs that make the P9 source-visibility
+conjecture more algebraically concrete.
+
+Draft modules:
+
+- `PhysicsSM.Draft.NullEdgeP9ClosedWitness`
+  - `boundarySource_pairing_eq_boundary_potential_pairing`
+  - `boundaryExact_invisible_to_closed_tests`
+  - `not_invisible_of_closed_witness`
+  - `not_boundaryExact_of_closed_witness`
+  - Role: a closed bulk test with nonzero pairing certifies visible source
+    content and rules out boundary-exact bookkeeping.
+- `PhysicsSM.Draft.NullEdgeP9BoundaryVisibleDecomp`
+  - Role: closed bulk tests see the residual/visible source component, while
+    boundary-exact perturbations vanish against closed tests.
+- `PhysicsSM.Draft.NullEdgeP9WeightedNoiseBound`
+  - Role: bounded observer tests and small cell weights bound the diagonal
+    noise response by `T * eps * ampSqSum`.
+- `PhysicsSM.Draft.NullEdgeP9HarmonicProjectorResponse`
+  - Role: a self-adjoint finite projector makes harmonic tests see only the
+    projected source; boundary perturbations vanish if the projector
+    annihilates boundary sources.
+- `PhysicsSM.Draft.NullEdgeP9ProjectedNoiseKernel`
+  - Role: projected noise-kernel response equals the original kernel response
+    on the projected test, so positive-semidefinite response is preserved by
+    projection.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9ClosedWitness.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9BoundaryVisibleDecomp.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9WeightedNoiseBound.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9HarmonicProjectorResponse.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9ProjectedNoiseKernel.lean
+lake build PhysicsSM.Draft.NullEdgeP9ClosedWitness
+lake build PhysicsSM.Draft.NullEdgeP9BoundaryVisibleDecomp
+lake build PhysicsSM.Draft.NullEdgeP9WeightedNoiseBound
+lake build PhysicsSM.Draft.NullEdgeP9HarmonicProjectorResponse
+lake build PhysicsSM.Draft.NullEdgeP9ProjectedNoiseKernel
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" <five P9 harmonic/source modules>
+rg -n "[^\x00-\x7F]" <five P9 harmonic/source modules>
+```
+
+All targeted checks passed. The placeholder and non-ASCII scans were clean
+after replacing Aristotle's Unicode tactic sugar with ASCII proof structure.
+
+## P4 critique and next P9 queue decision
+
+External-model and Spark delegation:
+
+- Gemini 2.5 Pro reviewed the sharpened null-step Dirac universality package.
+  Its strongest contribution was to confirm the claim boundary: the invariant
+  dynamical mass target is the unnormalized determinant `det(P_vis) = m^2`,
+  while `det(rho_vis)` is an observer-conditioned `m / E` readout. It also
+  sharpened the prior-art warning around homogeneous quantum walks and QCAs:
+  the publishable dynamics target must derive Dirac dispersion and low-energy
+  Dirac spinors, not just repeat known walk unitarity.
+- Spark/Goodall reviewed the overnight plan and proposed the next non-duplicate
+  Aristotle queue. Its highest-value immediate targets were finite P9
+  source-visibility statements: a visibility API spine, BF-closure/no-bulk
+  divergence, and residual variance / weighted noise suppression.
+
+Decision:
+
+- Keep the three P4 jobs already running.
+- Use the remaining Aristotle capacity for three focused P9 jobs, provided the
+  statements are narrowed to finite toy algebra rather than broad physics
+  slogans.
+- Hold the observer-channel invariant stack until the current P4 visible
+  determinant job returns.
+- Hold the next super-Dirac first-order package until the smaller P4/P9 layers
+  stabilize.
+
+Submitted P9 jobs:
+
+- `24bc10a1-69f5-4402-aca1-7d703ea6c0ae`
+  `null-edge-p9-closed-witness-20260623`: closed-test nonzero pairing witnesses
+  bulk visibility and rules out boundary-exact bookkeeping.
+- `3f39ceda-a85a-4c36-bda7-908cf513215d`
+  `null-edge-p9-boundary-visible-decomp-20260623`: boundary-exact perturbations
+  do not change closed-test source pairings or invisibility.
+- `9812606b-fbd9-4207-8833-3fc79a33e1bf`
+  `null-edge-p9-weighted-noise-bound-20260623`: bounded observer tests plus
+  max-weight cell suppression imply a combined weighted noise-response bound.
+
+Literature/graph pass:
+
+- Local `neo4j_doc_search.py` was unavailable in the base shell because the
+  `neo4j` Python package is installed only in the tool environment, so this
+  pass used the Neo4j MCP and OpenAlex/Crossref-style scholarly search.
+- Existing graph support already includes everpresent-Lambda papers and
+  stochastic-gravity/noise-kernel guardrails.
+- Added Zotero item `4KXZ8IJE`: Martin-Verdaguer, *Stochastic semiclassical
+  gravity*, Phys. Rev. D 60 (1999), DOI `10.1103/physrevd.60.084008`.
+- Linked `4KXZ8IJE` in Neo4j to the null-edge claim "P9 mean-zero source is not
+  noise invisibility" as a response-law/noise-kernel guardrail.
+- Updated `Sources/Null_Edge_Key_Conjectures.md` and
+  `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` to cite `4KXZ8IJE`.
+
+Claude critique:
+
+- Claude Sonnet 4.6 gave a useful adversarial read on P9. The main warning was
+  that boundary-exact invisibility and zero-mean residual lemmas are generic
+  finite algebra unless the next layer uses causal-diamond-specific structure.
+- Useful promoted targets: explicit finite Hodge/harmonic projector, rank/nullity
+  or Betti-number separation, harmonic-noise positive-definiteness, condition
+  number under refinement, and flat-vs-de-Sitter finite diamond pilots.
+- Less useful output: a continuation drifted into observational foreground and
+  dark-energy Fisher-matrix issues, which are premature before the finite
+  response law exists.
+- Updated `Sources/Null_Edge_Key_Conjectures.md` and
+  `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` with the harmonic
+  projector and numerical-pilot gates.
+
+## Integrated P4 fixed-point/no-go results
+
+Integrated three completed Aristotle jobs:
+
+- `5b9efeba-acde-470a-9b66-812acb8f488e` ->
+  `PhysicsSM.Draft.NullEdgeP4VisibleDetInvariant`
+  - `visibleBoost_det_invariant`
+  - `traceNormalize_det_eq_det_div_trace_sq`
+  - `traceNormalize_det_eq_det_inv_trace_sq`
+  - Role: the unnormalized visible determinant is invariant under
+    determinant-one visible congruence, while trace-normalized determinant
+    formulas explicitly encode the observer-conditioned readout.
+- `a3346e59-dd7a-4760-a761-31a048aa19a6` ->
+  `PhysicsSM.Draft.NullEdgeP4PauliNo2x2Mass`
+  - `no_2x2_anticommutant_of_all_pauli`
+  - `mass_term_forces_LR_doubling`
+  - Role: a single Weyl `2 x 2` Pauli space cannot host an invertible mass
+    matrix anticommuting with all Pauli matrices; the Dirac mass term forces
+    a doubled `L plus R` space.
+- `b6f7bbc8-2376-461d-98aa-253cda38ed21` ->
+  `PhysicsSM.Draft.NullEdgeP4ScalarFlipIsotropy`
+  - `isotropicFlip_iff_scalar`
+  - `scalarFlip_commutes_all`
+  - Role: Pauli isotropy forces the flip generator to have no vector part;
+    the scalar flip commutes with all Pauli directions, while vector flip
+    components are anisotropic couplings rather than mass.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP4VisibleDetInvariant.lean
+lake env lean PhysicsSM/Draft/NullEdgeP4PauliNo2x2Mass.lean
+lake build PhysicsSM.Draft.NullEdgeP4VisibleDetInvariant
+lake build PhysicsSM.Draft.NullEdgeP4PauliNo2x2Mass
+lake env lean PhysicsSM/Draft/NullEdgeP4ScalarFlipIsotropy.lean
+lake build PhysicsSM.Draft.NullEdgeP4ScalarFlipIsotropy
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP4VisibleDetInvariant.lean PhysicsSM/Draft/NullEdgeP4PauliNo2x2Mass.lean PhysicsSM/Draft/NullEdgeP4ScalarFlipIsotropy.lean
+```
+
+All checks passed. The first `PhysicsSMDraft.lean` check was run in parallel
+with targeted builds and failed because the new `.olean` did not exist yet;
+rerunning after the targeted builds passed.
+
+## Submitted P9 projector/noise jobs
+
+Motivation: the Claude adversarial critique was right that P9 needs an explicit
+projector/noise layer to avoid becoming generic boundary-exact vocabulary.
+
+Submitted:
+
+- `dcaa53fb-7c55-441f-b56b-ded744d7e6ed`
+  `null-edge-p9-harmonic-projector-response-20260623`: harmonic tests see only
+  the projected source, and boundary-exact perturbations vanish when the
+  projector annihilates boundary sources.
+- `914a99b2-b1b7-4721-9cf0-c7f50558bd39`
+  `null-edge-p9-projected-noise-kernel-20260623`: projected-kernel response is
+  the original response on projected tests, so positive kernels remain positive
+  after projection.
+
+## Submitted P9 harmonic pilot strategy job
+
+- `de152449-2632-4a5f-b1dc-e0f22d5a07a6`
+  `null-edge-p9-harmonic-pilot-strategy-20260623`: no-code Aristotle audit of
+  the finite `DiamondSourceVisibility` / harmonic-projector API, theorem
+  targets, numerical pilot specification, demotion criteria, and literature
+  guardrails. This fills a lane with strategy rather than another duplicate
+  proof job, matching the run requirement to intersperse proof work with
+  critique/grand-strategy work.
+
+Spark/Newton numerical-pilot plan:
+
+- Smallest feasible script: `Scripts/p9/pilot.py` plus
+  `Scripts/p9/p9_schema.json`.
+- Quantities: finite chain maps `D0`, `D1`, metric blocks, Hodge-style
+  projector `Pi_H`, Betti number by SVD rank, projected noise spectrum/trace/
+  condition number, boundary perturbation regression, and Pluecker/closure
+  source witnesses.
+- Positive signal: boundary perturbations are invisible up to tolerance,
+  harmonic trace has a stable coarse-grained or renormalized large-scale
+  statistic, projected kernel stays positive on the visible harmonic sector, and
+  witnesses agree with source pairing.
+- Demotion signal: boundary regression failure, volume-scaling harmonic trace
+  after the stated coarse-graining, no stable large-scale readout despite
+  refinement or renormalization, projected-kernel PSD failure, or witness false
+  positives/negatives.
+
+## Implemented first P9 numerical pilot scaffold
+
+Added:
+
+- `Scripts/p9/pilot.py`
+- `Scripts/p9/p9_schema.json`
+
+The script builds small finite chain segments, computes the 1-cochain Hodge
+projector from `D0`, `D1`, computes Betti number by SVD ranks, projects a
+finite residual noise kernel, reports projected-noise eigenvalues/trace/
+condition number, and runs boundary-exact perturbation regression for closed
+tests.
+
+Smoke runs:
+
+```text
+python Scripts/p9/pilot.py --geometry cycle4 --out AgentTasks/p9-pilot-cycle4-2026-06-23.json
+python Scripts/p9/pilot.py --geometry filled_triangle --out AgentTasks/p9-pilot-filled-triangle-2026-06-23.json
+python Scripts/p9/pilot.py --geometry two_triangle_disk --out AgentTasks/p9-pilot-two-triangle-disk-2026-06-23.json
+```
+
+Initial sanity results:
+
+- `cycle4`: `betti1 = 1`, `harm_dim = 1`, projected-noise trace approximately
+  `1`, condition number `1`, boundary regression at floating-point tolerance.
+- `filled_triangle` and `two_triangle_disk`: `betti1 = 0`, `harm_dim = 0`,
+  projected-noise trace `0`, boundary regression at floating-point tolerance.
+
+Interpretation: this is a working finite diagnostic harness for the P9
+harmonic-projector gate. It is not yet evidence for cosmological-constant
+leverage; that requires a size sweep and geometry-sensitive causal-diamond
+family.
+
+## Updated P9 numerical pilot with metric-profile hook
+
+Extended `Scripts/p9/pilot.py` with diagonal edge metric weights:
+
+- `--metric-profile flat` keeps the original identity metric.
+- `--metric-profile expanded --expansion-rate 0.35` applies a normalized
+  exponential edge-midpoint-time weight as a toy expanded metric profile.
+
+Important convention fix: for a weighted, non-Euclidean projector, the projected
+covariance/noise kernel must use `P K P^T`, not `P K P`; otherwise the expanded
+toy can spuriously lose positive-semidefiniteness.
+
+New smoke runs:
+
+```text
+python Scripts/p9/pilot.py --geometry cycle4 --metric-profile flat --out AgentTasks/p9-pilot-cycle4-flat-2026-06-23.json
+python Scripts/p9/pilot.py --geometry cycle4 --metric-profile expanded --expansion-rate 0.35 --out AgentTasks/p9-pilot-cycle4-expanded-2026-06-23.json
+python Scripts/p9/pilot.py --geometry filled_triangle --metric-profile expanded --expansion-rate 0.35 --out AgentTasks/p9-pilot-filled-triangle-expanded-2026-06-23.json
+python Scripts/p9/pilot.py --geometry two_triangle_disk --metric-profile flat --out AgentTasks/p9-pilot-two-triangle-disk-flat-2026-06-23.json
+python Scripts/p9/pilot.py --geometry two_triangle_disk --metric-profile expanded --expansion-rate 0.35 --out AgentTasks/p9-pilot-two-triangle-disk-expanded-2026-06-23.json
+```
+
+Results:
+
+- `cycle4` flat: harmonic dimension `1`, projected-noise trace `1.0`,
+  projected PSD check passes.
+- `cycle4` expanded: harmonic dimension `1`, projected-noise trace about
+  `1.1131485`, shifted Laplacian spectrum, projected PSD check passes.
+- filled examples: harmonic dimension `0`, projected-noise trace `0`, projected
+  PSD check passes.
+
+Interpretation: the pilot can now detect metric sensitivity without changing
+the combinatorics, but this is still a toy edge-weight profile. The next
+scientific step is to replace it with a recorded SJ/correlation or
+causal-diamond metric and run a size/refinement sweep.
+
+Added a parameterized `--geometry cycle --cycle-size N` hook and ran a first toy
+expanded-metric size sweep:
+
+```text
+python Scripts/p9/pilot.py --geometry cycle --cycle-size 4 --metric-profile expanded --expansion-rate 0.35 --out AgentTasks/p9-pilot-cycle-n4-expanded-2026-06-23.json
+python Scripts/p9/pilot.py --geometry cycle --cycle-size 6 --metric-profile expanded --expansion-rate 0.35 --out AgentTasks/p9-pilot-cycle-n6-expanded-2026-06-23.json
+python Scripts/p9/pilot.py --geometry cycle --cycle-size 8 --metric-profile expanded --expansion-rate 0.35 --out AgentTasks/p9-pilot-cycle-n8-expanded-2026-06-23.json
+```
+
+Toy sweep result:
+
+- `N=4`: harmonic dimension `1`, projected trace about `1.0300`, PSD and
+  boundary-regression checks pass.
+- `N=6`: harmonic dimension `1`, projected trace about `1.0358`, PSD and
+  boundary-regression checks pass.
+- `N=8`: harmonic dimension `1`, projected trace about `1.0379`, PSD and
+  boundary-regression checks pass.
+
+This is a harness sanity check only: it shows the metric-weighted projector can
+register a stable nontrivial response on a one-cycle family, not that P9 has a
+cosmological-constant mechanism.
+
+## Meta-analysis: P4 null-step Dirac universality feedback
+
+Integrated the user-supplied null-step Dirac universality development note into
+the active roadmap.
+
+Main sharpenings:
+
+- P4 should be split into a near-term homogeneous null-step quantum-walk
+  fixed-point package and a harder causal-set spinor-propagator frontier.
+- The finite homogeneous package should prove the forced `L plus R` doubling,
+  scalar off-diagonal flip as mass, small-momentum Dirac dispersion, and the
+  invariant bridge `det(P_vis)=m^2`.
+- Normalized `det(rho_vis)` belongs only to the frame-relative `m/E` readout.
+- An `l=1` flip component is a Lorentz-violating vector/axial coupling unless
+  removed by isotropy; the `l=1` sector remains a direction-autocorrelation and
+  dipole-deficit diagnostic, not the primitive mass term.
+- The static/dynamical bridge should first be tested in decohered or Markov
+  channel limits before being claimed for coherent unitary walks.
+
+Docs updated:
+
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+- `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
+- `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`
+
+Next useful Aristotle targets:
+
+```text
+no_2x2_anticommutant_of_all_pauli
+mass_term_forces_LR_doubling
+isotropicFlip_iff_scalar
+flipGenerator_scalarPart_eq_diracMass
+flipGenerator_l1_vectorPart_breaks_isotropy
+walkVisibleMomentum_det_eq_massSq
+walkVisibleMomentum_det_sl2_invariant
+walkNormalizedCoin_det_eq_massRatioSq
+```
+
+## Integrated Aristotle tranche: P11/QW/P7/P9 finite lemmas
+
+Integrated six completed focused Aristotle jobs as draft modules:
+
+- `PhysicsSM.Draft.NullEdgeP11LifetimeThreshold`
+  - `lifetime_gt_threshold_of_exp_bound`
+  - Role: finite logarithmic threshold condition for the P11 long-lived-sector
+    story.
+- `PhysicsSM.Draft.NullEdgeQWNormPreservation`
+  - `Rz_preserves_normSq`
+  - `Rx_preserves_normSq`
+  - `Ua_preserves_normSq`
+  - Role: concrete norm preservation for the null-step quantum-walk gates.
+- `PhysicsSM.Draft.NullEdgeP7BlochContractionPurity`
+  - `blochContraction_purity_antitone`
+  - `blochContraction_purity_strict`
+  - Role: observer-channel Bloch contraction decreases purity.
+- `PhysicsSM.Draft.NullEdgeP9DeltaPairTestBasis`
+  - `noiseResponse_deltaTest_eq_noiseKernel_self`
+  - `noiseResponse_pairTest_eq_diag_diag_cross`
+  - `noiseInvisible_of_delta_pair_tests_zero`
+  - Role: finite delta/pair tests detect entries of a symmetric noise kernel.
+- `PhysicsSM.Draft.NullEdgeP9NoiseBilinearCauchy`
+  - `noiseBilinear_cauchy_schwarz`
+  - Role: positive-semidefinite bilinear control for finite P9 noise response.
+- `PhysicsSM.Draft.NullEdgeP9NoiseResponseAmplitudeZero`
+  - `noiseResponse_eq_weighted_square_sum`
+  - `noiseResponse_eq_zero_iff_testAmplitude_zero`
+  - Role: under positive weights, zero response is equivalent to vanishing
+    centered test amplitudes.
+
+Integration notes:
+
+- The `integrate_completed.py` helper successfully fetched five outputs but
+  did not discover candidates because focused-package targets are named
+  `Core.lean`; one output hit a Windows extraction path issue after the target
+  file had already extracted. Exact target files were inspected and copied into
+  draft modules.
+- Namespaces were adjusted to `PhysicsSM.Draft.*`, and `PhysicsSMDraft.lean`
+  imports were added.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP11LifetimeThreshold.lean
+lake env lean PhysicsSM/Draft/NullEdgeQWNormPreservation.lean
+lake env lean PhysicsSM/Draft/NullEdgeP7BlochContractionPurity.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9DeltaPairTestBasis.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9NoiseBilinearCauchy.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9NoiseResponseAmplitudeZero.lean
+lake build PhysicsSM.Draft.NullEdgeP11LifetimeThreshold
+lake build PhysicsSM.Draft.NullEdgeQWNormPreservation
+lake build PhysicsSM.Draft.NullEdgeP7BlochContractionPurity
+lake build PhysicsSM.Draft.NullEdgeP9DeltaPairTestBasis
+lake build PhysicsSM.Draft.NullEdgeP9NoiseBilinearCauchy
+lake build PhysicsSM.Draft.NullEdgeP9NoiseResponseAmplitudeZero
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" <six new modules>
+```
+
+All targeted checks passed. The placeholder scan was clean.
+
+## Literature cadence: P4 null-step/QCA frontier
+
+Ran a P4 literature pass after integrating the six-job tranche. Semantic
+Scholar was rate-limited, so the search used arXiv/OpenAlex/Crossref and exact
+Zotero/Neo4j duplicate checks.
+
+Added to Zotero and linked in Neo4j to
+`null-edge-p2p4-null-step-qw-dirac-bridge`:
+
+- `964TN6X7`: Terry Farrelly, *A review of Quantum Cellular Automata*,
+  Quantum 4, 368 (2020), DOI `10.22331/q-2020-11-30-368`.
+  Role: broad QCA prior-art guardrail for locality, bounded-speed unitary
+  dynamics, continuum limits, and classification context.
+- `VIAIBSRI`: Nathanael Eon, Giuseppe Di Molfetta, Giuseppe Magnifico, Pablo
+  Arrighi, *A relativistic discrete spacetime formulation of 3+1 QED*,
+  Quantum 7, 1179 (2023), DOI `10.22331/q-2023-11-08-1179`.
+  Role: high-relevance P4 source because it uses lightlike circuit wires,
+  starts from the Dirac quantum walk, and extends to gauge-invariant
+  multi-particle QED dynamics.
+
+Search result:
+
+- The causal-set spinor-propagator frontier remains less sourced in the local
+  library. ArXiv/OpenAlex searches for "causal set Dirac/fermion propagator"
+  did not reveal a clean Johnston-style spinor extension, which supports
+  keeping that target as a hard frontier rather than a near-term theorem claim.
+
+## Submitted P4 finite theorem batch
+
+Submitted three focused Aristotle jobs from the sharpened null-step Dirac
+universality feedback:
+
+- `a3346e59-dd7a-4760-a761-31a048aa19a6`:
+  `null-edge-p4-pauli-no-2x2-mass-20260623`.
+  Targets: `no_2x2_anticommutant_of_all_pauli`,
+  `mass_term_forces_LR_doubling`.
+- `b6f7bbc8-2376-461d-98aa-253cda38ed21`:
+  `null-edge-p4-scalar-flip-isotropy-20260623`.
+  Targets: `isotropicFlip_iff_scalar`, `scalarFlip_commutes_all`.
+- `5b9efeba-acde-470a-9b66-812acb8f488e`:
+  `null-edge-p4-visible-det-invariant-20260623`.
+  Targets: `visibleBoost_det_invariant`,
+  `traceNormalize_det_eq_det_div_trace_sq`,
+  `traceNormalize_det_eq_det_inv_trace_sq`.
+
+These are intentionally Tier-A finite packages: no causal-set propagator or
+full scaling-limit claim is being asked of Aristotle in this batch.
+
+## Meta-analysis and P9 refocus: Hodge/conservation feedback
+
+New user-supplied Claude feedback sharpened P9 in a useful way. The productive
+pattern in the overnight run has been finite toy theorems plus explicit
+guardrails; the risk is accumulating many scalar lemmas without a single
+geometric object. The Hodge/conservation framing gives the next geometric
+object:
+
+```text
+diamond bookkeeping cochain
+SJ-style finite metric / adjoint
+exact sector       -> boundary/gauge invisibility
+defect sector      -> visible matter/closure source
+harmonic sector    -> candidate Lambda-channel
+harmonic covariance -> stochastic noise kernel
+```
+
+Refocus decision: stop prioritizing additional mean-zero scalar variants unless
+they feed this Hodge package. P9 should now prioritize:
+
+- a finite `DiamondHodgeMetric` / codifferential scaffold;
+- exact/coexact/harmonic projection definitions;
+- theorem targets for exact-sector invisibility and defect-sector visibility;
+- numerical Betti-scaling and harmonic-noise-trace pilots;
+- a response-law strategy before claiming cosmological-constant amplitude
+  leverage.
+
+Docs updated:
+
+- `Sources/Null_Edge_Key_Conjectures.md`
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+
+## Integrated P9 block-aliasing guardrail
+
+Integrated Aristotle project:
+
+- `ec32c1bf-13b1-43f8-a749-9455d7c15265`
+  `null-edge-p9-block-aliasing-guardrail-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9BlockAliasingGuardrail`
+
+Theorems:
+
+- `blockAverageCoarseTrace4_eq_average_sq`
+- `blockAverage4_eq_zero_of_sum_zero`
+- `blockAverageCoarseTrace4_eq_zero_of_sum_zero`
+- `blockAverageCoarseTrace4_nonneg`
+
+Scientific role: this is the finite artifact guardrail extracted from the P9
+offset sweep. A size-4 block-average coarse map annihilates a rank-one mode
+with zero within-block sum, and the rank-one coarse trace is nonnegative as a
+square. Thus a zero coarse trace can be pure block alignment, not physical
+source invisibility.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9BlockAliasingGuardrail.lean
+lake build PhysicsSM.Draft.NullEdgeP9BlockAliasingGuardrail
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9BlockAliasingGuardrail.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9BlockAliasingGuardrail.lean
+```
+
+All targeted checks passed. The first `PhysicsSMDraft.lean` check raced the
+targeted build and failed before the `.olean` existed; rerunning after the
+targeted build passed.
+
+## Integrated P9 retarded Green-series scaffold
+
+Integrated Aristotle project:
+
+- `5f79548b-1c36-473a-8780-7ef254b090c8`
+  `null-edge-p9-retarded-green-series-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9RetardedGreenSeries`
+
+Theorems:
+
+- `applyKernel_vecSum_range`
+- `applyKernel_iterateApply`
+- `oneMinusK_retardedSeries_eq_of_nilpotent`
+- `retardedSeries_is_right_inverse_on_nilpotent_vector`
+
+Scientific role: this is the finite response-law scaffold for P9. Under
+nilpotence on a vector, the finite retarded/Neumann series terminates and
+solves `(I - K) y = x` exactly. This is deliberately discrete-first: it gives a
+finite replacement for a formal Green function without assuming pointwise
+continuum behavior.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9RetardedGreenSeries.lean
+lake build PhysicsSM.Draft.NullEdgeP9RetardedGreenSeries
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9RetardedGreenSeries.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9RetardedGreenSeries.lean
+```
+
+All targeted checks passed. Aristotle reported no statement or definition
+changes, no remaining proof holes, and no added assumptions or nonstandard
+constructs.
+
+## P9 matched flat-vs-deformed ensemble pilot
+
+Added script:
+
+- `Scripts/p9/pilot_ensemble.py`
+
+Generated aggregate output:
+
+- `AgentTasks/p9-pilot-matched-diamond-ensemble-2026-06-23.json`
+
+The wrapper reuses `Scripts/p9/pilot.py` and runs matched flat-diamond versus
+deformed/de-Sitter-style diamond families across sizes `3..8` and seeds `0..9`.
+It reports projected-noise trace density, coarse block trace densities,
+within-family seed spread, flat-vs-deformed separation, and a simple
+`10 * spread` threshold with an absolute tolerance fallback.
+
+Scientific result:
+
+- boundary perturbation regressions passed for all runs;
+- projected PSD checks passed for all runs;
+- the main fine projected-noise trace-density signal did not meet the `10x`
+  spread threshold for sizes `4..8` (ratios were about `2.3..4.1`);
+- the coarse block-size `4` statistic did pass the threshold for sizes `4..8`,
+  but this is plausibly a coarse-map alignment artifact and should be treated
+  as a guardrail target, not as a cosmological signal.
+
+Interpretation: the pilot is now discriminating enough to demote easy
+overclaims. P9 still has a live finite route, but the publishable numerical
+claim should be phrased as a controlled readout program: fixed coarse map,
+seed/error bars, boundary-invariance check, and separation thresholds before
+any cosmological-constant language.
+
+Verification:
+
+```text
+python -m py_compile Scripts/p9/pilot_ensemble.py
+python Scripts/p9/pilot_ensemble.py --sizes 3,4,5,6,7,8 --seeds 0,1,2,3,4,5,6,7,8,9 --out AgentTasks/p9-pilot-matched-diamond-ensemble-2026-06-23.json
+```
+
+## Submitted P9 selected-sector trace-density proof job
+
+Submitted focused Aristotle job:
+
+- `28e0de6b-bf59-4e3e-ac0c-4c1a92669e3c`
+  `null-edge-p9-selected-sector-trace-density-20260623`
+  (`task_id: 4aa6de33-bd9c-407f-9395-9e16092a067c`)
+
+Target:
+
+```lean
+selectedProjector_basis_diag_mem
+selectedProjector_basis_diag_not_mem
+selectedProjector_trace_eq_count
+selectedProjector_trace_density_eq_count_div
+selectedProjector_trace_density_le_boundary_div
+```
+
+Scientific role: this formalizes the finite area-vs-volume trace-density
+scaffold. A Boolean-selected observer sector with `k` visible modes in an
+`n`-cell space has coordinate trace `k` and trace density `k/n`; if geometry
+later bounds `k` by a boundary-size count, the density has the corresponding
+finite boundary-over-volume bound.
+
+Pre-submit verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-selected-sector-trace-density-20260623/NullEdgeP9SelectedSectorTraceDensity/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-selected-sector-trace-density-20260623-project/NullEdgeP9SelectedSectorTraceDensity/Core.lean
+rg -n "^\s*sorry\b|^\s*admit\b|\baxiom\b|\bopaque\b|\bunsafe\b|\bnative_decide\b" AgentTasks/aristotle-standalone/null-edge-p9-selected-sector-trace-density-20260623/NullEdgeP9SelectedSectorTraceDensity/Core.lean
+rg -n "[^\x00-\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-selected-sector-trace-density-20260623/NullEdgeP9SelectedSectorTraceDensity/Core.lean AgentTasks/null-edge-p9-selected-sector-trace-density-aristotle-2026-06-23.md
+```
+
+The Lean preflight found exactly five intended proof-hole warnings and no other
+errors. Non-ASCII scan was clean. Aristotle accepted the submission and reported
+the task as queued/running.
+
+## Integrated P9 selected-sector trace-density scaffold
+
+Integrated Aristotle project:
+
+- `28e0de6b-bf59-4e3e-ac0c-4c1a92669e3c`
+  `null-edge-p9-selected-sector-trace-density-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9SelectedSectorTraceDensity`
+
+Theorems:
+
+- `selectedProjector_basis_diag_mem`
+- `selectedProjector_basis_diag_not_mem`
+- `selectedProjector_trace_eq_count`
+- `selectedProjector_trace_density_eq_count_div`
+- `selectedProjector_trace_density_le_boundary_div`
+
+Scientific role: this banks the finite area-vs-volume trace-density scaffold.
+A Boolean-selected observer sector with `k` selected modes in an `n`-cell
+readout has trace density `k/n`; a later geometry theorem can turn a
+boundary-size bound on `k` into a boundary-over-volume readout bound.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9SelectedSectorTraceDensity.lean
+lake build PhysicsSM.Draft.NullEdgeP9SelectedSectorTraceDensity
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9SelectedSectorTraceDensity.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9SelectedSectorTraceDensity.lean
+```
+
+All targeted checks passed. Aristotle reported no statement or definition
+changes, no remaining proof holes, and no added assumptions or nonstandard
+constructs. The integration helper hit an archive-extraction issue on the
+task-note path, so the returned target file was diffed manually and integrated
+with ASCII Lean syntax.
+
+## P9 block-offset aliasing critique and sweep
+
+Gemini reviewed the matched-ensemble pilot and flagged the block-size `4`
+separation as likely aliasing: the offset-0 block grid appears to annihilate
+flat harmonic fluctuations by alignment, while the deformed metric breaks that
+alignment.
+
+Implemented offset-aware coarse projections in:
+
+- `Scripts/p9/pilot.py`
+- `Scripts/p9/pilot_ensemble.py`
+- `Scripts/p9/p9_schema.json`
+
+Generated:
+
+- `AgentTasks/p9-pilot-matched-diamond-offset-sweep-2026-06-23.json`
+- `AgentTasks/p9-pilot-compat-flat-diamond-n4-flat-offset0-2026-06-23.json`
+
+Observed result:
+
+- boundary perturbation regressions still pass;
+- projected PSD checks still pass;
+- offset `0` reproduces the dramatic flat block-4 near-zero statistic;
+- offset `1` makes the flat block-4 trace density about `0.17..0.18`;
+- offset `3` makes the flat block-4 trace density about `0.29..0.30`;
+- offset `2` gives both flat and deformed trace densities near `0.50`, and the
+  flat-vs-deformed separation fails the `10x` threshold.
+
+Scientific consequence: the block-size `4` result should be treated as an
+aliasing guardrail, not as a positive geometry signal. P9 needs either an
+offset-invariant statistic or an intrinsic coarse map, such as a causal
+Alexandrov/block construction, before coarse trace separation can be advertised.
+
+Verification:
+
+```text
+python -m py_compile Scripts/p9/pilot.py Scripts/p9/pilot_ensemble.py
+python Scripts/p9/pilot.py --geometry flat_diamond --cycle-size 4 --metric-profile flat --coarse-block-sizes 1,2,4 --out AgentTasks/p9-pilot-compat-flat-diamond-n4-flat-offset0-2026-06-23.json
+python Scripts/p9/pilot_ensemble.py --sizes 4,5,6,7,8 --seeds 0,1,2,3,4,5,6,7,8,9 --coarse-block-sizes 4 --coarse-offsets 0,1,2,3 --out AgentTasks/p9-pilot-matched-diamond-offset-sweep-2026-06-23.json
+```
+
+## Integrated P9 causal support bound
+
+Integrated Aristotle project:
+
+- `1dc86a62-8505-45d2-80b5-cffbb4a6b82c`
+  `null-edge-p9-causal-support-bound-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9CausalSupportBound`
+
+Theorems:
+
+- `applyKernel_vanishes_off_reach`
+- `response_zero_of_causally_separated_supports`
+- `response_eq_zero_of_target_outside_reach`
+
+Scientific role: this is the first finite causal-support guardrail added after
+the C4/Hodge spine. A response kernel supported inside a chosen causal relation
+cannot propagate a localized source outside that source's discrete causal
+reach, and causally separated source/target supports have zero response. This
+does not solve P9's cosmological response-law problem, but it prevents the
+source-response layer from being merely arbitrary matrix algebra.
+
+Verification:
+
+```text
+python Scripts/aristotle/integrate_completed.py --task-note AgentTasks/null-edge-p9-causal-support-bound-aristotle-2026-06-23.md 1dc86a62-8505-45d2-80b5-cffbb4a6b82c
+lake env lean PhysicsSM/Draft/NullEdgeP9CausalSupportBound.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9CausalSupportBound.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9CausalSupportBound.lean
+lake build PhysicsSM.Draft.NullEdgeP9CausalSupportBound
+lake env lean PhysicsSMDraft.lean
+```
+
+All targeted checks passed. The first draft-root import check raced the
+targeted build before the new `.olean` existed; rerunning after the targeted
+build passed.
+
+## Literature pass: causal-set retarded/nonlocal response guardrail
+
+Spark literature triage identified a missing source anchor for the P9
+causal-support and response-law lane.
+
+New source added to Zotero collection `9W59V3K9`:
+
+- `DQ9CF6I2`: Siavash Aslanbeigi, Mehdi Saravani, and Rafael D. Sorkin,
+  "Generalized Causal Set d'Alembertians," arXiv `1403.1622`.
+
+Neo4j link added:
+
+- `DQ9CF6I2` supports claim
+  `P9_retarded_nonlocal_causal_response_guardrail`.
+
+Scientific consequence: P9 kernels should be compared against causal-set
+retarded/nonlocal d'Alembertian operators, including infrared recovery
+conditions and stability caveats. The finite support theorem is a guardrail,
+not a replacement for a stable large-scale response operator.
+
+Additional source added after the first pass:
+
+- `I72KXVQA`: Marian Boguna and Dmitri Krioukov, "Local d'Alembertian for causal
+  sets," arXiv `2506.18745`.
+
+Neo4j link added:
+
+- `I72KXVQA` supports claim
+  `P9_edge_neighbor_local_dalembertian_guardrail`.
+
+Scientific consequence: the `edgeNeighbor_N` lane should be judged against both
+nonlocal retarded causal-set operators and newer claims that local causal-set
+d'Alembertian operators can converge using intrinsic causal-set distance data.
+This strengthens the case for testing finite effective locality instead of
+assuming microscopic bounded point valency.
+
+## Submitted P9 edge-neighbor reach job
+
+Submitted Aristotle project:
+
+- `af7b61f3-c743-428a-b989-f30239f3fc03`
+  `null-edge-p9-edge-neighbor-reach-20260623`
+
+Task:
+
+- `d88f469d-1a0a-4efb-bed7-b8a5601be0ee`
+
+Staged source:
+
+- `AgentTasks/aristotle-standalone/null-edge-p9-edge-neighbor-reach-20260623/NullEdgeP9EdgeNeighborReach/Core.lean`
+
+Task note:
+
+- `AgentTasks/null-edge-p9-edge-neighbor-reach-aristotle-2026-06-23.md`
+
+Targets:
+
+- `edgeNeighborN_subrelation`
+- `edgeNeighborN_induced_of_original`
+- `kernelSupported_edgeNeighborN_to_rel`
+- `iterateApply_supported_in_exact_reach`
+- `responseAtStep_zero_of_target_outside_exact_reach`
+
+Scientific role: this job attacks the next P9 locality layer after the causal
+support theorem. It formalizes `edgeNeighbor_N` as effective link locality, not
+a fundamental bounded-valency assumption, and asks Aristotle to prove that
+iterated finite response kernels cannot escape bounded step reach.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-edge-neighbor-reach-20260623/NullEdgeP9EdgeNeighborReach/Core.lean
+rg -n "^\s*sorry\b|^\s*admit\b|\baxiom\b|\bopaque\b|\bunsafe\b|\bnative_decide\b" AgentTasks/aristotle-standalone/null-edge-p9-edge-neighbor-reach-20260623/NullEdgeP9EdgeNeighborReach/Core.lean
+rg -n "[^\x00-\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-edge-neighbor-reach-20260623/NullEdgeP9EdgeNeighborReach/Core.lean
+```
+
+The Lean preflight found exactly the five intended proof-hole warnings and no
+other errors; non-ASCII scan was clean. The focused package helper reported
+five proof-hole lines, zero proof-escape tokens, and zero unsafe tokens.
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9EdgeNeighborReach`
+
+Verification:
+
+```text
+python Scripts/aristotle/integrate_completed.py --task-note AgentTasks/null-edge-p9-edge-neighbor-reach-aristotle-2026-06-23.md af7b61f3-c743-428a-b989-f30239f3fc03
+lake env lean PhysicsSM/Draft/NullEdgeP9EdgeNeighborReach.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9EdgeNeighborReach.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9EdgeNeighborReach.lean
+lake build PhysicsSM.Draft.NullEdgeP9EdgeNeighborReach
+lake env lean PhysicsSMDraft.lean
+```
+
+All targeted checks passed. The first draft-root import check raced the
+targeted build before the new `.olean` existed; rerunning after the targeted
+build passed.
+
+## Submitted P9 retarded nilpotent reach job
+
+Submitted Aristotle project:
+
+- `dd4fb31d-a4d4-4d1e-a565-510c57aafe3a`
+  `null-edge-p9-retarded-nilpotent-reach-20260623`
+
+Task:
+
+- `a24c6395-edc0-44dc-bd1e-71a8a9b95213`
+
+Staged source:
+
+- `AgentTasks/aristotle-standalone/null-edge-p9-retarded-nilpotent-reach-20260623/NullEdgeP9RetardedNilpotentReach/Core.lean`
+
+Task note:
+
+- `AgentTasks/null-edge-p9-retarded-nilpotent-reach-aristotle-2026-06-23.md`
+
+Targets:
+
+- `applyKernel_vanishes_off_reach`
+- `iterateApply_supported_in_exact_reach`
+- `no_reach_beyond_rank`
+- `iterateApply_eq_zero_beyond_rank`
+
+Scientific role: this job turns the causal-set retarded/nonlocal response
+literature into a finite theorem target. If a support relation strictly
+decreases a rank on a finite diamond, exact reach is empty beyond the rank
+height and iterated response kernels vanish. This would give P9 a clean finite
+retarded-horizon theorem, independent of any fine-grained continuum limit.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-retarded-nilpotent-reach-20260623/NullEdgeP9RetardedNilpotentReach/Core.lean
+rg -n "^\s*sorry\b|^\s*admit\b|\baxiom\b|\bopaque\b|\bunsafe\b|\bnative_decide\b" AgentTasks/aristotle-standalone/null-edge-p9-retarded-nilpotent-reach-20260623/NullEdgeP9RetardedNilpotentReach/Core.lean
+rg -n "[^\x00-\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-retarded-nilpotent-reach-20260623/NullEdgeP9RetardedNilpotentReach/Core.lean
+```
+
+The Lean preflight found exactly the four intended proof-hole warnings and no
+other errors; non-ASCII scan was clean. The focused package helper reported
+four proof-hole lines, zero proof-escape tokens, and zero unsafe tokens.
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9RetardedNilpotentReach`
+
+Verification:
+
+```text
+python Scripts/aristotle/integrate_completed.py --task-note AgentTasks/null-edge-p9-retarded-nilpotent-reach-aristotle-2026-06-23.md dd4fb31d-a4d4-4d1e-a565-510c57aafe3a
+lake env lean PhysicsSM/Draft/NullEdgeP9RetardedNilpotentReach.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9RetardedNilpotentReach.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9RetardedNilpotentReach.lean
+lake build PhysicsSM.Draft.NullEdgeP9RetardedNilpotentReach
+lake env lean PhysicsSMDraft.lean
+```
+
+All targeted checks passed. The first draft-root import check raced the
+targeted build before the new `.olean` existed; rerunning after the targeted
+build passed.
+
+## Banked explicit P9 Ward/conservation theorem name
+
+Spark/Boyle suggested submitting
+`eventConservation_kills_defect_source` as the next finite Ward target. Main
+thread review found the theorem was already proved under the older name
+`PhysicsSM.Draft.NullEdgeP9BoundarySource.boundaryExact_source_eq_zero` and
+also packaged as
+`PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore.boundaryExact_invisible_to_closed_tests`.
+
+Added a discoverability alias:
+
+- `PhysicsSM.Draft.NullEdgeP9BoundarySource.eventConservation_kills_defect_source`
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9BoundarySource.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9BoundarySource.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9BoundarySource.lean
+lake build PhysicsSM.Draft.NullEdgeP9BoundarySource
+lake env lean PhysicsSMDraft.lean
+```
+
+All targeted checks passed. Scientific role: this makes the finite Ward seed
+discoverable under the plan's own theorem name and avoids duplicate Aristotle
+work. The open P9 work is now the geometry-dependent source functional,
+metric/codifferential convention, response law, and scaling/stability pilot.
+
+## Submitted P9 finite retarded Green series job
+
+Submitted Aristotle project:
+
+- `5f79548b-1c36-473a-8780-7ef254b090c8`
+  `null-edge-p9-retarded-green-series-20260623`
+
+Task:
+
+- `8c0c3b2b-2a54-49be-bcba-3614fabcb9ee`
+
+Staged source:
+
+- `AgentTasks/aristotle-standalone/null-edge-p9-retarded-green-series-20260623/NullEdgeP9RetardedGreenSeries/Core.lean`
+
+Task note:
+
+- `AgentTasks/null-edge-p9-retarded-green-series-aristotle-2026-06-23.md`
+
+Targets:
+
+- `applyKernel_vecSum_range`
+- `applyKernel_iterateApply`
+- `oneMinusK_retardedSeries_eq_of_nilpotent`
+- `retardedSeries_is_right_inverse_on_nilpotent_vector`
+
+Scientific role: this is the first finite P9 response-law scaffold after the
+support/horizon lemmas. Under a nilpotence assumption `K^H x = 0`, the finite
+retarded series `sum_{m < H} K^m x` should solve `(I - K)Gx = x`. If proved,
+this gives the acyclic-retarded branch a terminating Green operator rather than
+only a support theorem.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-retarded-green-series-20260623/NullEdgeP9RetardedGreenSeries/Core.lean
+rg -n "^\s*sorry\b|^\s*admit\b|\baxiom\b|\bopaque\b|\bunsafe\b|\bnative_decide\b" AgentTasks/aristotle-standalone/null-edge-p9-retarded-green-series-20260623/NullEdgeP9RetardedGreenSeries/Core.lean
+rg -n "[^\x00-\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-retarded-green-series-20260623/NullEdgeP9RetardedGreenSeries/Core.lean
+```
+
+The Lean preflight found exactly the four intended proof-hole warnings and no
+other errors; non-ASCII scan was clean. The focused package helper reported
+four proof-hole lines, zero proof-escape tokens, and zero unsafe tokens.
+
+## Literature pass: finite Hodge/DEC stability guardrails
+
+Cadence reason: this slice integrated or submitted five P9/C4 Aristotle jobs,
+so it triggered the overnight plan's literature-search floor.
+
+Semantic Scholar remained rate-limited. The pass used Zotero, Neo4j, OpenAlex,
+Crossref, and a targeted web search. Existing active anchors were confirmed:
+
+- `DM6NREPA`: Arnold-Falk-Winther, "Finite element exterior calculus,
+  homological techniques, and applications" (2006).
+- `8JFSI9CS`: Arnold-Falk-Winther, "Finite element exterior calculus: from
+  Hodge theory to numerical stability" (2010).
+
+New source added to Zotero collection `9W59V3K9`:
+
+- `WB8WBSBX`: Zhu-Christiansen-Hu-Hirani, "Convergence and Stability of
+  Discrete Exterior Calculus for the Hodge Laplace Problem in Two Dimensions",
+  arXiv `2505.08966`.
+
+Neo4j link added:
+
+- `WB8WBSBX` supports claim `P9_discrete_hodge_stability_guardrail`.
+
+Scientific consequence: the Hodge-projector route should cite FEEC/DEC as
+prior art for finite complexes, bounded/stable projection, and geometric
+conditions. The null-edge novelty should be the source/noise observer-channel
+readout and its geometry-moving coarse statistic, not generic finite Hodge
+decomposition.
+
+## Submitted P9 causal-support bound
+
+Submitted Aristotle project:
+
+- `1dc86a62-8505-45d2-80b5-cffbb4a6b82c`
+  `null-edge-p9-causal-support-bound-20260623`
+
+Task:
+
+- `54127700-6d2b-4e9f-a187-3c582b93b070`
+
+Target:
+
+- `AgentTasks/aristotle-standalone/null-edge-p9-causal-support-bound-20260623/NullEdgeP9CausalSupportBound/Core.lean`
+
+Scientific role: Gemini's adversarial critique correctly flagged that the P9
+C4 package is still generic finite linear algebra unless it knows about causal
+support or geometry movement. This job isolates the smallest finite causal
+guardrail: a response kernel supported inside a causal relation cannot send a
+localized source outside that source's discrete causal reach, and causally
+separated source/target supports have zero response.
+
+Local preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-causal-support-bound-20260623/NullEdgeP9CausalSupportBound/Core.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" AgentTasks/aristotle-standalone/null-edge-p9-causal-support-bound-20260623/NullEdgeP9CausalSupportBound/Core.lean AgentTasks/null-edge-p9-causal-support-bound-aristotle-2026-06-23.md
+rg -n "[^\x00-\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-causal-support-bound-20260623/NullEdgeP9CausalSupportBound/Core.lean AgentTasks/null-edge-p9-causal-support-bound-aristotle-2026-06-23.md
+```
+
+The Lean preflight found exactly three intended proof holes; non-ASCII scan was
+clean.
+
+## P9 geometry-moving pilot check
+
+Spark/Aquinas inspected `Scripts/p9/*` and reported a bounded pilot state with
+flat/de Sitter-like diamond families and coarse projection diagnostics. Main
+thread ran:
+
+```text
+python Scripts/p9/pilot.py --geometry flat_diamond --cycle-size 3 --metric-profile flat --coarse-block-sizes 1,2,4 --seed 0 --out AgentTasks/p9-pilot-flat-diamond-n3-flat-2026-06-23.json
+python Scripts/p9/pilot.py --geometry de_sitter_diamond --cycle-size 3 --metric-profile expanded --expansion-rate 0.35 --coarse-block-sizes 1,2,4 --seed 0 --out AgentTasks/p9-pilot-de-sitter-diamond-n3-expanded-2026-06-23.json
+python -m json.tool AgentTasks/p9-pilot-flat-diamond-n3-flat-2026-06-23.json
+python -m json.tool AgentTasks/p9-pilot-de-sitter-diamond-n3-expanded-2026-06-23.json
+```
+
+Both JSON outputs parse cleanly. Hygiene checks on `Scripts/p9/pilot.py`,
+`Scripts/p9/p9_schema.json`, and the two output JSON files passed for non-ASCII
+and trailing whitespace.
+
+Pilot measurements:
+
+- Flat diamond, `n=3`, block sizes `1,2,4`: projected trace `5.0`, coarse
+  traces `5.0`, `3.0`, and approximately `0`; boundary and PSD checks passed.
+- De Sitter-like diamond, `n=3`, expanded metric, block sizes `1,2,4`:
+  projected trace about `5.125478`, coarse traces about `5.125478`,
+  `3.042665`, and `0.042665`; boundary and PSD checks passed.
+
+Interpretation: this is a toy but correctly shaped geometry-moving pilot. It
+does not prove cosmological-constant leverage. It does show that the existing
+pilot machinery can detect metric/geometry movement in the coarse projected
+noise statistic while preserving the boundary and PSD checks. The next pilot
+should pre-register a size sweep and pass/demote threshold.
+
+Follow-up exact-enumeration diamond check:
+
+```text
+python Scripts/p9/pilot.py --geometry flat_diamond --cycle-size 2 --metric-profile flat --coarse-block-sizes 1,2,4 --seed 0 --out AgentTasks/p9-pilot-flat-diamond-n2-flat-2026-06-23.json
+python Scripts/p9/pilot.py --geometry de_sitter_diamond --cycle-size 2 --metric-profile expanded --expansion-rate 0.35 --coarse-block-sizes 1,2,4 --seed 0 --out AgentTasks/p9-pilot-de-sitter-diamond-n2-expanded-2026-06-23.json
+python -m json.tool AgentTasks/p9-pilot-flat-diamond-n2-flat-2026-06-23.json
+python -m json.tool AgentTasks/p9-pilot-de-sitter-diamond-n2-expanded-2026-06-23.json
+```
+
+Summary over the exact-enumeration diamond strip sizes:
+
+| case | edges | harmonic dim | projected trace | block-2 trace | block-4 trace | checks |
+|---|---:|---:|---:|---:|---:|---|
+| flat `n=2` | 8 | 3 | `3.0` | `2.0` | `~0` | boundary/PSD/coarse ok |
+| de Sitter-like `n=2` | 8 | 3 | `3.084243` | `2.021724` | `0.021724` | boundary/PSD/coarse ok |
+| flat `n=3` | 12 | 5 | `5.0` | `3.0` | `~0` | boundary/PSD/coarse ok |
+| de Sitter-like `n=3` | 12 | 5 | `5.125478` | `3.042665` | `0.042665` | boundary/PSD/coarse ok |
+
+The geometry-moving signal is consistent but small: the expanded/de Sitter-like
+profile raises the projected trace by roughly `2.5%` to `2.8%` in these two
+toy cases. The coarse block-4 signal remains nonzero for the expanded profile
+while the flat toy collapses to numerical zero. Caveat: the coarse block-2 and
+block-4 condition proxies become large in the expanded cases, so the next pilot
+must distinguish real geometry movement from emerging conditioning problems.
+
+## Integrated P9 coarse boundary-invariance core
+
+Integrated Aristotle project:
+
+- `e9a2ef62-0ab6-4db5-97a8-b2c904585fae`
+  `null-edge-p9-coarse-boundary-invariance-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9CoarseBoundaryInvariance`
+
+Theorems:
+
+- `pushforward_boundary_invariant`
+- `response_boundary_invariant`
+- `pushforward_boundary_invariant_pointwise`
+
+Scientific role: this is the boundary-artifact guardrail for the C4 P9
+coarse-grained variance route. If a fixed coarse-graining map annihilates a
+boundary perturbation, the coarse source and any quadratic response built from
+that coarse source are unchanged. This supports the corrected discrete-first
+gate by making the observer-scale readout invariant under declared invisible
+bookkeeping.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9CoarseBoundaryInvariance.lean
+lake build PhysicsSM.Draft.NullEdgeP9CoarseBoundaryInvariance
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9CoarseBoundaryInvariance.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9CoarseBoundaryInvariance.lean
+```
+
+All targeted checks passed. Statement-identity review showed only proof-body
+changes. The integration helper hit an archive extraction edge case on this
+focused package, so the returned `Core.lean` was inspected directly from the
+downloaded archive.
+
+## Integrated P9 two-cell trace separation
+
+Integrated Aristotle project:
+
+- `99cd5c39-15f2-445c-a065-2e7a05555ea8`
+  `null-edge-p9-two-cell-trace-separation-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9TwoCellTraceSeparation`
+
+Theorems:
+
+- `trace_diagonalKernel2`
+- `identityR2_coarse_diagonal_trace`
+- `two_cell_trace_separates`
+- `two_cell_trace_strict_mono`
+
+Scientific role: this is a small non-vacuity theorem for the C4 P9 route. A
+fixed two-cell readout can distinguish explicit diagonal kernels, and the
+coarse trace is strictly monotone with the sum of the two diagonal weights.
+It does not yet encode causal geometry, but it proves the coarse statistic can
+move when the finite kernel weights move.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9TwoCellTraceSeparation.lean
+lake build PhysicsSM.Draft.NullEdgeP9TwoCellTraceSeparation
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9TwoCellTraceSeparation.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9TwoCellTraceSeparation.lean
+```
+
+All targeted checks passed. Statement-identity review showed only proof-body
+changes.
+
+## Submitted P9 Hodge-projector instantiation
+
+Submitted Aristotle project:
+
+- `8f067f6a-5b77-47ed-be85-0bbe9c22b7db`
+  `null-edge-p9-hodge-projector-instantiation-20260623`
+
+Task:
+
+- `d09cdb60-5a9f-4d66-8089-fc940dd2e80a`
+
+Target:
+
+- `AgentTasks/aristotle-standalone/null-edge-p9-hodge-projector-instantiation-20260623/NullEdgeP9HodgeProjectorInstantiation/Core.lean`
+
+Scientific role: this is the next P9 bridge recommended by the Spark/Bohr C4
+triage. It aims to prove that a self-adjoint idempotent projector whose range
+lies in the weighted finite Hodge harmonic sector annihilates exact boundary
+bookkeeping, so projected pairings and quadratic responses become
+boundary-invariant. If successful, it upgrades the current abstract projector
+API into a concrete finite Hodge/source-visibility mechanism.
+
+Local preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-hodge-projector-instantiation-20260623/NullEdgeP9HodgeProjectorInstantiation/Core.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" AgentTasks/aristotle-standalone/null-edge-p9-hodge-projector-instantiation-20260623/NullEdgeP9HodgeProjectorInstantiation/Core.lean AgentTasks/null-edge-p9-hodge-projector-instantiation-aristotle-2026-06-23.md
+rg -n "[^\x00-\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-hodge-projector-instantiation-20260623/NullEdgeP9HodgeProjectorInstantiation/Core.lean AgentTasks/null-edge-p9-hodge-projector-instantiation-aristotle-2026-06-23.md
+```
+
+The Lean preflight found exactly four intended proof holes; non-ASCII scan was
+clean.
+
+## Integrated P9 Hodge-projector instantiation
+
+Integrated Aristotle project:
+
+- `8f067f6a-5b77-47ed-be85-0bbe9c22b7db`
+  `null-edge-p9-hodge-projector-instantiation-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9HodgeProjectorInstantiation`
+
+Theorems:
+
+- `hodgeProjector_annihilates_exact`
+- `hodgeProjector_boundary_invariant`
+- `hodgeProjector_projectedResponse_boundary_invariant`
+- `hodgeProjector_pairing_boundary_invariant`
+
+Scientific role: this is the concrete finite-Hodge bridge that the P9
+source-visibility lane needed. If `Pi_H` is self-adjoint, idempotent, and its
+range lies in the weighted finite Hodge harmonic sector, then `Pi_H` kills
+exact boundary bookkeeping. Therefore projected sources, projected quadratic
+responses, and projected pairings are invariant under adding exact boundary
+bookkeeping. This upgrades earlier abstract projector assumptions into a
+finite Hodge/source-visibility mechanism.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9HodgeProjectorInstantiation.lean
+lake build PhysicsSM.Draft.NullEdgeP9HodgeProjectorInstantiation
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9HodgeProjectorInstantiation.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9HodgeProjectorInstantiation.lean
+```
+
+All targeted checks passed. The returned proof used Unicode bullets; the
+integrated proof was translated to ASCII Lean syntax.
+
+## Integrated P9 coarse-kernel PSD core
+
+Integrated Aristotle project:
+
+- `6d1abbf8-7cdd-4e8b-a74f-9b2be12e35f3`
+  `null-edge-p9-coarse-kernel-psd-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9CoarseKernelPSD`
+
+Theorems:
+
+- `response_coarseKernel_eq_response_pullback`
+- `coarseKernel_psd`
+- `psd_diag_nonneg`
+- `trace_coarseKernel_nonneg`
+
+Scientific role: this is the core C4 well-definedness theorem package. A fixed
+coarse-graining map pushes a finite PSD noise kernel to a PSD coarse kernel,
+coarse response equals fine response against the pulled-back test, and the
+coarse trace is nonnegative. It makes `tr(R K R^T)` a legitimate finite
+observer-scale variance statistic before the harder geometry-sensitivity
+question is asked.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9CoarseKernelPSD.lean
+lake build PhysicsSM.Draft.NullEdgeP9CoarseKernelPSD
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9CoarseKernelPSD.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9CoarseKernelPSD.lean
+```
+
+All targeted checks passed. Statement-identity review showed only proof-body
+changes and cosmetic comment changes. Aristotle used a Unicode reverse arrow in
+one proof; the integrated version was translated to ASCII syntax.
+
+Index refresh:
+
+```text
+Scripts/lit/neo4j_paper_search.py
+Scripts/lit/neo4j_doc_search.py
+```
+
+The paper index embedded the new Loukas item, and the doc index refreshed the
+touched plan, conjecture, ledger, task-note, and new P9 Lean chunks.
+
+## Submitted C4 coarse-kernel and boundary-invariance jobs
+
+Submitted two focused Aristotle jobs that directly implement the C4 roadmap
+from the discrete coarse-graining strategy:
+
+- `6d1abbf8-7cdd-4e8b-a74f-9b2be12e35f3`
+  `null-edge-p9-coarse-kernel-psd-20260623`
+  (`task_id: bd1b57d2-df97-47fa-aba2-002cb92e2466`):
+  prove that coarse response equals fine response on pulled-back tests, that
+  `R K R^T` preserves PSD, and that the coarse kernel trace is nonnegative.
+- `e9a2ef62-0ab6-4db5-97a8-b2c904585fae`
+  `null-edge-p9-coarse-boundary-invariance-20260623`
+  (`task_id: 8318fbeb-3689-4698-9528-2cc3128ff1a2`):
+  prove that if `R` annihilates a boundary perturbation, then the coarse source
+  and quadratic coarse response are unchanged.
+- `99cd5c39-15f2-445c-a065-2e7a05555ea8`
+  `null-edge-p9-two-cell-trace-separation-20260623`
+  (`task_id: 6c7310c0-9ea8-4345-81aa-b8a6a0219985`):
+  prove that a fixed two-cell coarse readout distinguishes explicit diagonal
+  kernels, giving a small non-vacuity witness for geometry-sensitive trace
+  motion.
+
+Scientific role: these are the first focused finite theorem jobs aimed
+specifically at the P9 C4 variance route. They test
+well-definedness, boundary-artifact invariance, and trace sensitivity for a
+fixed coarse-graining operator before any flat-vs-de-Sitter pilot is allowed to
+count as evidence.
+- `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
+
+Model log updated:
+
+- `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`
+
+## Integrated observer/super-Dirac Aristotle tranche
+
+Integrated five completed Aristotle jobs:
+
+- `24d7e228-3636-4398-801f-32dc0cca70a6`
+  `null-edge-observer-partial-trace-20260623`
+  -> `PhysicsSM.Draft.NullEdgeObserverPartialTrace`.
+  Role: hidden partial trace commutes with visible congruence, and determinant
+  is invariant under determinant-one visible congruence.
+- `c0ddd3bf-04b6-44c4-8eff-db4472f226e9`
+  `null-edge-super-dirac-product-grading-krein-20260623`
+  -> `PhysicsSM.Draft.NullEdgeSuperDiracProductGradingKrein`.
+  Role: product grading oddness and finite `J`-self-adjointness scaffolding.
+- `1de5924b-07e9-4052-bc88-161e881d896b`
+  `null-edge-super-dirac-mass-shell-bridge-20260623`
+  -> `PhysicsSM.Draft.NullEdgeSuperDiracMassShellBridge`.
+  Role: no-double-count mass-shell constraint between kinetic Pluecker symbol
+  and Yukawa square.
+- `c60a6698-2567-49f6-92c4-541094a1f322`
+  `null-edge-diamond-two-triangle-curvature-20260623`
+  -> `PhysicsSM.Draft.NullEdgeDiamondTwoTriangleCurvature`.
+  Role: scalar additive diamond defect equals a difference of two triangle
+  curvature defects.
+- `6387b084-fa39-4e19-bc2c-64828962b899`
+  `null-edge-superconnection-cross-term-higgs-kinetic-20260623`
+  -> `PhysicsSM.Draft.NullEdgeSuperconnectionCrossTermHiggsKinetic`.
+  Role: finite superconnection cross terms are explicitly Higgs kinetic blocks.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeObserverPartialTrace.lean
+lake env lean PhysicsSM/Draft/NullEdgeSuperDiracProductGradingKrein.lean
+lake env lean PhysicsSM/Draft/NullEdgeSuperDiracMassShellBridge.lean
+lake env lean PhysicsSM/Draft/NullEdgeDiamondTwoTriangleCurvature.lean
+lake env lean PhysicsSM/Draft/NullEdgeSuperconnectionCrossTermHiggsKinetic.lean
+lake build PhysicsSM.Draft.NullEdgeObserverPartialTrace
+lake build PhysicsSM.Draft.NullEdgeSuperDiracProductGradingKrein
+lake build PhysicsSM.Draft.NullEdgeSuperDiracMassShellBridge
+lake build PhysicsSM.Draft.NullEdgeDiamondTwoTriangleCurvature
+lake build PhysicsSM.Draft.NullEdgeSuperconnectionCrossTermHiggsKinetic
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" <five new modules>
+git diff --check -- <five new modules plus touched docs>
+```
+
+All checks passed. The placeholder scan returned no matches.
+
 ## Submitted third six-job batch
 
 Submitted another six focused standalone Aristotle jobs after integrating the
@@ -2041,3 +3594,1644 @@ git diff --check -- <P1 frame-audit modules>
 ```
 
 All checks passed. The placeholder scan was clean.
+
+## Integrated P9 source-visibility/noise feedback
+
+The latest source-visibility/noise feedback was useful because it tightened the
+P9 gate from "prove Hodge/projector facts" to "prove geometry-discriminating
+Hodge/projector facts." I updated the program docs to require a flat-vs-de
+Sitter-like finite diamond pilot with explicit pass/fail criteria:
+
+- compare harmonic dimension, projected-noise trace, smallest positive projected
+  eigenvalue, or projected condition number;
+- require separation larger than within-family sprinkling spread, with a working
+  target of `> 10x` the spread;
+- require monotone response as the expansion parameter varies;
+- require boundary-exact perturbation invariance and either refinement
+  stability or a named coarse-graining / renormalization prescription;
+- demote P9 if the effect is geometry-blind, unstable after that stated
+  coarse-graining, boundary-artifactual, hand-tuned through arbitrary metric
+  weights, or lacks a response law to curvature, expansion, vacuum energy, or a
+  unimodular conjugate variable.
+
+Files updated:
+
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+- `Sources/Null_Edge_Key_Conjectures.md`
+- `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
+
+This should keep the next P9 proof and pilot jobs aimed at publishable content
+rather than generic finite Hodge algebra.
+
+## Corrected P9 conditioning gate after user pushback
+
+User pushback: the Aristotle strategy job was too strict when it treated an
+ill-conditioned fine-scale harmonic channel as automatically meaning "no
+continuum interpretation." The null-edge program is allowed to be fundamentally
+discrete, with continuum-like behavior emerging only after coarse-graining or
+renormalization.
+
+Updated gate: fine-scale ill-conditioning is a diagnostic, not a fatal failure.
+P9 should be demoted only if no stable large-scale statistic survives after the
+stated coarse-graining/renormalization prescription, or if the discriminating
+quantity is geometry-blind, boundary-artifactual, hand-tuned through arbitrary
+weights, or unconnected to a source/curvature response law.
+
+Files updated:
+
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+- `Sources/Null_Edge_Key_Conjectures.md`
+- `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
+- `AgentTasks/null-edge-codex-overnight-run-ledger-2026-06-23.md`
+
+## Submitted P9 harmonic-kernel core job
+
+Submitted focused Aristotle job:
+
+- `0a6aa9da-d023-4af4-a70a-d966975b8b84`
+  `null-edge-p9-harmonic-kernel-core-20260623`: prove the finite weighted
+  Hodge kernel theorem `harmonic_iff_closed_and_coclosed`, with positive
+  diagonal weights and explicit `codiff w0 w1 d0` convention.
+
+This job was shaped by Spark/Huygens theorem-audit feedback. It also respects
+the corrected discrete-first gate: the theorem is a finite algebraic Hodge
+kernel statement, not yet a claim that fine-grained continuum behavior exists.
+The later physics gate is stable coarse-grained or renormalized harmonic
+response, not microscopic condition-number niceness.
+
+## Submitted P9 discrete coarse-graining strategy job
+
+Submitted no-code Aristotle strategy/audit job:
+
+- `6b4325a0-5dd1-4985-80c2-fef93375f77d`
+  `null-edge-p9-discrete-coarse-graining-strategy-20260623`: ask Aristotle to
+  design P9 coarse-grained or renormalized harmonic/source observables under the
+  corrected discrete-first gate.
+
+Spark/Banach independently triaged candidate observables:
+
+- harmonic-sector density;
+- projected-noise trace density;
+- projected spectral edge / condition number after coarse-graining;
+- closed-test source-response split;
+- renormalized residual-fluctuation law.
+
+Most publishable near-term route: source-split with projected observables, then
+projected trace/eigenvalue scaling under a stated coarse-graining or
+renormalization prescription.
+
+## Literature cadence: P9 Laplacian coarse-graining guardrail
+
+Ran a focused source pass for the corrected P9 discrete-first gate. Semantic
+Scholar was not needed; OpenAlex, arXiv, and Crossref were sufficient.
+
+Added to Zotero collection `9W59V3K9` and linked in Neo4j to claim
+`P9_discrete_coarse_grained_harmonic_observables`:
+
+- `RA8QNNKW`: Nurisso et al., "Higher-order Laplacian renormalization,"
+  *Nature Physics* 21 (2025), DOI `10.1038/s41567-025-02784-1`.
+- `AN5RZGJZ`: Caldarelli et al., "Laplacian renormalization group: an
+  introduction to heterogeneous coarse-graining," *JSTAT* (2024), DOI
+  `10.1088/1742-5468/ad57b1`.
+- `UR5ADCBP`: Loures, Piovesana, and Brum, "Laplacian Coarse Graining in
+  Complex Networks," arXiv `2302.07093`.
+
+Scientific consequence: the corrected P9 gate now has external support. The
+program can tolerate fine-scale discrete ill-conditioning if a
+coarse-grained/renormalized harmonic-source statistic is stable and
+geometry-discriminating. The next pilot should report trace densities,
+harmonic-sector densities, or projected spectral edges after an explicit
+coarse-graining map, rather than treating microscopic condition numbers as a
+binary pass/fail criterion.
+
+## Submitted P9 coarse residual-variance proof job
+
+Submitted focused Aristotle job:
+
+- `5626ed17-206a-4c75-8073-a1aec026a458`
+  `null-edge-p9-coarse-residual-variance-20260623`: prove that a block map from
+  fine residual cells to coarse cells preserves total residual variance when
+  coarse block variance is defined as the sum of fine variances in the block.
+
+Scientific role: this is the first small formal spine for the corrected
+coarse-grained P9 gate. It says the residual-noise statistic can be moved from
+fine cells to coarse cells by an explicit map without changing total variance;
+later work can add scale normalization, geometry, and response laws.
+
+## Integrated P3 crossed-module fake-flatness job
+
+Integrated Aristotle project:
+
+- `1f2a340d-e077-4dfe-a682-c018f5e99fea`
+  `null-edge-p3-crossed-module-fake-flatness-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP3CrossedModule`
+
+Theorems:
+
+- `fakeFlat_verticalCompose`
+- `fakeFlat_horizontalCompose`
+- `crossedModule_2cell_interchange`
+
+Scientific role: this banks the finite higher-gauge algebra behind P3. A
+crossed-module 2-cell label remains fake-flat under vertical and horizontal
+composition, and the 2-cell labels satisfy the double-category interchange law.
+The remaining physics task is no longer the abstract interchange law; it is to
+define the causal-diamond surface label and show that fake-flatness is forced by
+the finite geometry rather than optional packaging.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP3CrossedModule.lean
+lake build PhysicsSM.Draft.NullEdgeP3CrossedModule
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP3CrossedModule.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP3CrossedModule.lean
+```
+
+The targeted Lean checks passed. Placeholder and non-ASCII scans were clean
+after replacing Aristotle's Unicode proof text with ASCII proof structure.
+
+## P9 numerical pilot: cycle-size harmonic trace sweep
+
+Ran the finite P9 pilot on cycle graphs with `3 <= E <= 12`, for both the flat
+edge metric and the toy expanded metric profile:
+
+```text
+python Scripts/p9/pilot.py --geometry cycle --cycle-size <n> --metric-profile flat
+python Scripts/p9/pilot.py --geometry cycle --cycle-size <n> --metric-profile expanded --expansion-rate 0.35
+```
+
+Outputs were written to:
+
+```text
+AgentTasks/p9-pilot-cycle-n<n>-flat-2026-06-23.json
+AgentTasks/p9-pilot-cycle-n<n>-expanded-2026-06-23.json
+```
+
+Observed summary:
+
+- `harm_dim = 1` for every cycle, as expected for the one harmonic 1-cycle.
+- flat projected-noise trace stays numerically `1`.
+- expanded projected-noise trace stays near `1.01` to `1.04` despite increasing
+  edge count and a metric weight spread growing to about `1.79`.
+- projected condition number remains `1`.
+- boundary-exact perturbation regression passes for all runs.
+
+Scientific interpretation: this is a toy positive signal for the corrected
+discrete-first P9 gate. The harmonic-channel trace is an `O(1)` topological /
+coarse observable on this family, not a microscopic volume-scaling quantity.
+Equivalently, trace density decays like `1/E`. This does not yet give
+cosmological-constant leverage because cycles are not causal diamonds and the
+metric profile is artificial, but it supports the strategy of testing stable
+coarse-grained harmonic observables rather than rejecting the model for
+fine-scale discrete ill-conditioning.
+
+Next pilot target: replace bare cycles with nested causal-diamond-like cell
+families and compare flat versus expanded/deformed metrics using the same
+reported observables: harmonic dimension, projected-noise trace, trace density,
+smallest projected spectral edge, condition number, and boundary-perturbation
+regression.
+
+## Submitted P9 rank-one harmonic trace proof job
+
+Submitted focused Aristotle job:
+
+- `a775c905-af53-4cba-8b49-81d5822fdc10`
+  `null-edge-p9-rankone-harmonic-trace-20260623`
+  (`task_id: 7b2b43ad-55dd-4f36-9a30-270b746ffbba`)
+
+Target:
+
+```lean
+meanProjector_basis_diag
+meanProjector_trace_eq_one
+meanProjector_trace_density
+```
+
+Scientific role: formalize the toy cycle-pilot signal as finite algebra. The
+rank-one mean/harmonic projector has trace `1`, so its trace density is `1/n`.
+This does not prove a causal-diamond cosmology claim, but it gives a small
+kernel-checkable theorem for the corrected P9 gate: stable large-scale
+projected observables can be meaningful in a fundamentally discrete model even
+when microscopic continuum behavior is not assumed.
+
+Local pre-submit check:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-rankone-harmonic-trace-20260623/NullEdgeP9RankOneHarmonicTrace/Core.lean
+```
+
+The check passed with exactly the three intended proof-hole warnings.
+
+## Reviewed P9 discrete coarse-graining strategy job
+
+Reviewed no-code Aristotle project:
+
+- `6b4325a0-5dd1-4985-80c2-fef93375f77d`
+  `null-edge-p9-discrete-coarse-graining-strategy-20260623`
+
+Main result: Aristotle endorsed the corrected discrete-first gate but sharpened
+the burden. P9 should not be killed by microscopic ill-conditioning or by the
+absence of a pointwise continuum field limit. It should be tested by a
+pre-specified coarse-graining map `R` and a large-scale statistic that:
+
+- reaches a stable plateau under the fixed coarse-graining ladder;
+- moves with geometry, especially flat versus de Sitter-like diamonds;
+- is invariant under boundary-exact perturbations;
+- is not produced by hand-tuned metric weights or a post-hoc `R`.
+
+Prioritization change: build the coarse-grained noise-kernel variance route
+first. Push the already-positive finite kernel to `R K R^T` and track
+`tr(R K R^T)`. This reuses the existing PSD/Cauchy-Schwarz/noise-kernel spine
+and asks one sharp question: does the plateau retain flat-vs-de-Sitter
+dependence? Treat Green-function/source-response susceptibility as the stronger
+follow-up after visible-subspace invertibility and regulated Green-operator
+stability are in hand.
+
+Docs updated:
+
+- `Sources/Null_Edge_Key_Conjectures.md`
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+
+## Integrated P9 coarse residual-variance identity
+
+Integrated Aristotle project:
+
+- `5626ed17-206a-4c75-8073-a1aec026a458`
+  `null-edge-p9-coarse-residual-variance-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9CoarseResidualVariance`
+
+Theorems:
+
+- `blockVariance_nonneg`
+- `coarseVariance_eq_amplitudeSqSum`
+- `coarseVariance_density_eq_amplitudeSqSum_div_scale`
+
+Scientific role: this is a small but clean formal spine for the corrected P9
+coarse-graining gate. If fine residual amplitudes are assigned to coarse
+blocks, the total coarse block variance equals the original fine variance.
+Thus variance readouts can be moved through an explicit coarse-graining map
+before adding geometry, response laws, or normalization.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9CoarseResidualVariance.lean
+lake build PhysicsSM.Draft.NullEdgeP9CoarseResidualVariance
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9CoarseResidualVariance.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9CoarseResidualVariance.lean
+```
+
+All targeted checks passed. The first `PhysicsSMDraft.lean` check timed out at
+180 seconds; rerunning with a longer timeout passed.
+
+## Integrated P9 rank-one harmonic trace toy theorem
+
+Integrated Aristotle project:
+
+- `a775c905-af53-4cba-8b49-81d5822fdc10`
+  `null-edge-p9-rankone-harmonic-trace-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9RankOneHarmonicTrace`
+
+Theorems:
+
+- `meanProjector_basis_diag`
+- `meanProjector_trace_eq_one`
+- `meanProjector_trace_density`
+
+Scientific role: this formalizes the simplest toy version of the P9 cycle
+pilot. The mean projector onto constant vectors has coordinate trace `1`, so
+its trace density is `1/n`. This is not a causal-diamond theorem, but it is a
+kernel-checked finite witness for the discrete-first idea that a projected
+harmonic statistic can be `O(1)` while the microscopic cell count grows.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9RankOneHarmonicTrace.lean
+lake build PhysicsSM.Draft.NullEdgeP9RankOneHarmonicTrace
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9RankOneHarmonicTrace.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9RankOneHarmonicTrace.lean
+```
+
+All targeted checks passed. The returned proof used a Unicode not-equal symbol;
+the integrated proof uses ASCII `Not (...)` instead. The first umbrella import
+check raced the targeted build and failed before the `.olean` existed; rerunning
+after the targeted build passed.
+
+## Integrated P9 weighted adjoint core
+
+Integrated Aristotle project:
+
+- `32a7fb73-8801-453d-8f8c-5c794e4dbe30`
+  `null-edge-p9-weighted-adjoint-core-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9WeightedAdjointCore`
+
+Theorems:
+
+- `weighted_adjoint_coboundary_codiff`
+- `codiff_zero_of_zero_target_metric`
+
+Scientific role: this is the first explicit Tier-A finite Hodge ingredient for
+P9. Given diagonal weights on adjacent cochain spaces, the `codiff` definition
+is the weighted adjoint of the coboundary. This moves the harmonic-projector
+story away from generic "there exists a projector" algebra and toward a
+metric-dependent finite diamond Hodge API.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9WeightedAdjointCore.lean
+lake build PhysicsSM.Draft.NullEdgeP9WeightedAdjointCore
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9WeightedAdjointCore.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9WeightedAdjointCore.lean
+```
+
+All targeted checks passed. Aristotle's returned proof used Unicode inverse,
+sum, forall, and not-equal symbols; the integrated proof was translated to
+ASCII Lean syntax. The first umbrella import check raced the targeted build and
+failed before the `.olean` existed; rerunning after the targeted build passed.
+
+## Integrated P9 harmonic-kernel core
+
+Integrated Aristotle project:
+
+- `0a6aa9da-d023-4af4-a70a-d966975b8b84`
+  `null-edge-p9-harmonic-kernel-core-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9HarmonicKernelCore`
+
+Theorems:
+
+- `dotW_self_eq_zero_iff_of_pos`
+- `weighted_adjoint_coboundary_codiff`
+- `weighted_lap1_energy_eq_down_plus_up`
+- `harmonic_iff_closed_and_coclosed`
+
+Scientific role: this is the strongest P9 formal result integrated in this
+continuation. With positive diagonal weights, the kernel of the finite weighted
+1-Laplacian is exactly the intersection of closed and coclosed 1-cochains. This
+makes the P9 slogan `ker d cap ker delta` a concrete finite theorem and gives
+the source-visibility/noise branch an explicit Hodge kernel, not merely an
+abstract projector.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9HarmonicKernelCore.lean
+lake build PhysicsSM.Draft.NullEdgeP9HarmonicKernelCore
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9HarmonicKernelCore.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9HarmonicKernelCore.lean
+```
+
+All targeted checks passed. Aristotle's returned proof used Unicode tactic
+syntax and symbols; the integrated proof was translated to ASCII Lean control
+flow and notation.
+
+## Integrated P9 weighted Laplacian energy core
+
+Integrated Aristotle project:
+
+- `23a1472a-e255-48b5-9314-6b13b6286af1`
+  `null-edge-p9-weighted-laplacian-energy-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9WeightedLaplacianEnergy`
+
+Theorems:
+
+- `weighted_adjoint_coboundary_codiff`
+- `dotW_comm`
+- `dotW_self_nonneg`
+- `weighted_lap1_energy_eq_down_plus_up`
+- `weighted_lap1_energy_nonneg`
+
+Scientific role: this is the Tier-A finite Hodge sum-of-squares identity for
+P9. The weighted 1-Laplacian pairing splits into down-energy and up-energy
+terms, and is nonnegative under nonnegative source/face weights. Together with
+`NullEdgeP9HarmonicKernelCore`, this gives the harmonic-channel branch an
+explicit finite Hodge algebra rather than only abstract projector assumptions.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9WeightedLaplacianEnergy.lean
+lake build PhysicsSM.Draft.NullEdgeP9WeightedLaplacianEnergy
+lake env lean PhysicsSMDraft.lean
+rg -n "\b(sorry|admit|axiom|opaque|unsafe def|native_decide)\b" PhysicsSM/Draft/NullEdgeP9WeightedLaplacianEnergy.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9WeightedLaplacianEnergy.lean
+```
+
+All targeted checks passed. Aristotle's returned proof used Unicode inverse,
+reverse-rewrite, and not-equal symbols; the integrated proof was translated to
+ASCII Lean syntax. The first umbrella import check raced the targeted build and
+failed before the `.olean` existed; rerunning after the targeted build passed.
+
+## Literature pass: C4 coarse-graining operator guardrail
+
+Semantic Scholar remained rate-limited, so this pass used OpenAlex, Crossref,
+arXiv, and the local Neo4j paper index. The local index confirmed that the
+already-added Laplacian coarse-graining sources `AN5RZGJZ` and `UR5ADCBP` are
+the closest existing project anchors.
+
+New source added to Zotero collection `9W59V3K9`:
+
+- `PTU4XM4U`: Andreas Loukas, "Graph reduction with spectral and cut
+  guarantees," arXiv `1808.10650`.
+
+Neo4j link added:
+
+- `PTU4XM4U` supports claim `P9_prespecified_coarse_graining_operator`.
+
+Scientific consequence: the C4 P9 pilot should not invent or tune a
+coarse-graining map after seeing the output. It should choose `R` from an
+established graph/cellular reduction family with spectral/cut guarantees, then
+test whether `tr(R K R^T)` has a stable, geometry-moving plateau.
+
+Docs updated:
+
+- `Sources/Null_Edge_Key_Conjectures.md`
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+## Submitted P9 coarse-map guardrail batch
+
+Submitted three Aristotle jobs after the block-aliasing/offset-sweep result
+made the next P9 issue clearer:
+
+- `f9b645e7-80d3-464b-95ba-ce79a91fe374`
+  (`task_id: 93422773-9511-4e4a-867a-87c52aa2f7f0`):
+  `null-edge-p9-offset-window-guardrail-20260623`. Proof target for the
+  finite offset-artifact warning: a single block-window zero is not
+  offset-invariant, and even all shifted four-cell window traces can annihilate
+  a nonzero high-frequency mode.
+- `e831cb23-db32-4cf6-b2ad-6f03c0908f15`
+  (`task_id: d83def02-f759-483e-b0a8-c0fc7cb66fcf`):
+  `null-edge-p9-boundary-volume-scaling-20260623`. Proof target for the
+  area-vs-volume density scaffold: in the toy four-dimensional scaling model,
+  boundary-over-volume density is `C / L`, falls below `eps` beyond a scale
+  threshold, and halves when the linear scale doubles.
+- `a27b17de-4660-46b9-88dc-976dc237c903`
+  (`task_id: 1d228ef7-ca88-4c2d-badb-f154c90fdbfb`):
+  no-code strategy/audit job asking Aristotle for intrinsic or observer-forced
+  P9 coarse maps after the block-aliasing warning.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-offset-window-guardrail-20260623/NullEdgeP9OffsetWindowGuardrail/Core.lean
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-boundary-volume-scaling-20260623/NullEdgeP9BoundaryVolumeScaling/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-offset-window-guardrail-20260623-project/NullEdgeP9OffsetWindowGuardrail/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-boundary-volume-scaling-20260623-project/NullEdgeP9BoundaryVolumeScaling/Core.lean
+```
+
+All four Lean preflight checks passed with exactly the intended proof-hole
+warnings. The focused submission helper reported no proof-escape or unsafe
+tokens. Non-ASCII scans on the new staged files were clean.
+
+Scientific reason: this batch keeps P9 honest under the corrected
+discrete-first gate. Fine-scale discreteness is acceptable; after-the-fact or
+alignment-sensitive coarse maps are not.
+
+## Literature pass: intrinsic causal-set graph observables
+
+Focused search target:
+
+```text
+causal set coarse graining intrinsic graph observables causal diamonds
+```
+
+Local semantic doc search first recovered the existing C4/coarse-graining
+guardrail notes and the Loukas graph-reduction source. External search then
+surfaced a new, directly relevant paper:
+
+- Zotero `RC5XF8RD`: Astrid Eichhorn, Harald Mack, Kim Tuyen Le, Fabian Wagner,
+  "Charting causal set configuration space with graph observables," arXiv
+  `2605.27514`.
+
+Neo4j update:
+
+- Added Paper `RC5XF8RD` to collection `9W59V3K9`.
+- Added claim `P9_intrinsic_graph_observable_guardrail`.
+- Linked `RC5XF8RD -[:SUPPORTS {relation: 'guardrail'}]->` that claim.
+
+Scientific consequence: the next P9 numerical and theorem work should test
+intrinsic causal-set observables before treating block-average coarse maps as
+physical. The useful candidates from the paper are link-degree distributions,
+symmetrized-Hasse graph Laplacian spectra, and causal-interval abundance. These
+are better aligned with a discrete-first ontology than a hand-tuned continuum
+curvature statistic.
+
+Docs updated:
+
+- `Sources/Null_Edge_Key_Conjectures.md`
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+- `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
+
+## Integrated P9 offset-window guardrail
+
+Integrated Aristotle project:
+
+- `f9b645e7-80d3-464b-95ba-ce79a91fe374`
+  `null-edge-p9-offset-window-guardrail-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9OffsetWindowGuardrail`
+
+Theorems:
+
+- `single_window_zero_not_offset_invariant`
+- `nonzero_mode_all_window_traces_zero`
+- `all_window_sums_zero_implies_all_traces_zero`
+
+Scientific role: this formalizes the negative-control lesson from the P9
+offset sweep. A single aligned block zero need not survive offset shift, and
+even all shifted four-cell block traces can annihilate a nonzero high-frequency
+mode. This proves that block-average invisibility can be arithmetic alignment,
+not source invisibility.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9OffsetWindowGuardrail.lean
+lake build PhysicsSM.Draft.NullEdgeP9OffsetWindowGuardrail
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9OffsetWindowGuardrail.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9OffsetWindowGuardrail.lean
+```
+
+All targeted checks passed after translating Aristotle's proof syntax to ASCII.
+
+## Integrated P9 boundary-over-volume scaling scaffold
+
+Integrated Aristotle project:
+
+- `e831cb23-db32-4cf6-b2ad-6f03c0908f15`
+  `null-edge-p9-boundary-volume-scaling-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9BoundaryVolumeScaling`
+
+Theorems:
+
+- `boundaryDensity4_eq_C_div_L`
+- `boundaryDensity4_le_eps_of_scale_ge`
+- `boundaryDensity4_double_scale`
+
+Scientific role: this is the small finite arithmetic scaffold behind the P9
+area-vs-volume route. In the toy four-dimensional scaling model, a
+boundary-sized visible sector has density `C / L`, falls below any positive
+threshold once the scale is large enough, and halves under scale-doubling.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9BoundaryVolumeScaling.lean
+lake build PhysicsSM.Draft.NullEdgeP9BoundaryVolumeScaling
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9BoundaryVolumeScaling.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9BoundaryVolumeScaling.lean
+```
+
+All targeted checks passed. The nonnegative coefficient hypothesis is retained
+as the physical boundary-size regime even though the algebraic proof does not
+need it.
+
+## Reviewed P9 intrinsic coarse-map strategy
+
+Reviewed Aristotle project:
+
+- `a27b17de-4660-46b9-88dc-976dc237c903`
+  `null-edge-p9-intrinsic-coarse-map-strategy-20260623`
+
+Useful result: Aristotle independently recommends spectral Hodge coarse modes
+as the first publishable intrinsic route, with Alexandrov/interval abundance
+and Sorkin-Johnston screen/window channels as alternatives. The strategy is
+aligned with the new `RC5XF8RD` literature guardrail and with the corrected
+discrete-first gate: microscopic ill-conditioning is allowed only if the
+large-scale observer statistic remains stable under nuisance sweeps.
+
+## Submitted P9 intrinsic order-observable invariance job
+
+Submitted Aristotle project:
+
+- `e71998cf-0c45-4dba-8677-639cf47576af`
+  (`task_id: 29e79cdc-dcca-4536-b3b4-61b8147221d1`)
+  `null-edge-p9-intrinsic-order-observables-20260623`
+
+Targets:
+
+- `intervalCard_transportRel`
+- `intervalAbundance_transportRel`
+- `outDegree_transportRel`
+- `outDegreeHistogram_transportRel`
+
+Scientific role: first formal bridge from the new causal-set observable source
+`RC5XF8RD` into Lean-facing theorem work. The target proves that interval
+abundance and out-degree histograms are invariant under finite relabeling, so
+they are genuinely intrinsic order observables rather than artifacts of a block
+grid or vertex labeling.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-intrinsic-order-observables-20260623/NullEdgeP9IntrinsicOrderObservables/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-intrinsic-order-observables-20260623-project/NullEdgeP9IntrinsicOrderObservables/Core.lean
+```
+
+Both checks passed with exactly four intended proof-hole warnings.
+
+## Submitted P9 weighted-projector residual orthogonality job
+
+Submitted Aristotle project:
+
+- `d9318fe9-73b3-4e86-9553-95cbf3b4cc9b`
+  (`task_id: 4024001a-7719-4981-a2f3-68d89a814945`)
+  `null-edge-p9-weighted-projector-residual-orthogonal-20260623`
+
+Targets:
+
+- `weighted_projected_pairing_eq`
+- `weighted_residual_orthogonal_to_projected`
+- `weighted_projected_test_pairing_decomposition`
+
+Scientific role: this follows Aristotle's P9 intrinsic coarse-map strategy by
+turning the spectral/Hodge-coarse-mode idea into a finite algebra target. A
+weighted self-adjoint idempotent projector should make residual source
+components invisible to projected/coarse tests, giving the P9 observer-channel
+readout a clean orthogonal decomposition.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-weighted-projector-residual-orthogonal-20260623/NullEdgeP9WeightedProjectorResidualOrthogonal/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-weighted-projector-residual-orthogonal-20260623-project/NullEdgeP9WeightedProjectorResidualOrthogonal/Core.lean
+```
+
+Both checks passed with exactly three intended proof-hole warnings; non-ASCII
+and escape-hatch scans were clean.
+
+## Integrated P9 intrinsic order-observable invariance
+
+Integrated Aristotle project:
+
+- `e71998cf-0c45-4dba-8677-639cf47576af`
+  `null-edge-p9-intrinsic-order-observables-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9IntrinsicOrderObservables`
+
+Theorems:
+
+- `intervalCard_transportRel`
+- `intervalAbundance_transportRel`
+- `outDegree_transportRel`
+- `outDegreeHistogram_transportRel`
+
+Scientific role: this is the first formal bridge from the new causal-set graph
+observable source `RC5XF8RD` into Lean. It proves that interval abundance and
+out-degree histograms are invariant under finite relabeling, so they are
+intrinsic order observables rather than artifacts of a chosen vertex labeling.
+This directly supports the corrected discrete-first P9 gate: use intrinsic
+order observables or observer-forced coarse maps before trusting block-offset
+statistics.
+
+Integration note: Aristotle returned `COMPLETE_WITH_ERRORS`, but the completion
+report says all targets were solved, statements unchanged, and no proof holes
+or escape hatches remained. The only remaining issue was benign linter noise
+about unused decidable hypotheses. The live module adds targeted linter
+suppression for that warning. The helper again hit the Windows bundled-task-note
+extraction-path issue, so integration used the returned target file and
+`git diff --no-index`.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9IntrinsicOrderObservables.lean
+lake build PhysicsSM.Draft.NullEdgeP9IntrinsicOrderObservables
+lake env lean PhysicsSMDraft.lean
+rg -n "^\s*sorry\b|^\s*admit\b|\baxiom\b|\bopaque\b|\bunsafe\b|\bnative_decide\b" PhysicsSM/Draft/NullEdgeP9IntrinsicOrderObservables.lean
+```
+
+All targeted checks passed.
+
+## Gemini critique: P9 Hodge/intrinsic-observable next gates
+
+Queried Gemini CLI with a concise P9 context pack after integrating the weighted
+projector, intrinsic-order, and weighted-Laplacian self-adjointness results.
+
+Main steering:
+
+- The current P9 stack is formally clean but can still be generic finite linear
+  algebra unless it couples to causal-order geometry.
+- Highest-value next targets:
+  1. defect/curvature sensitivity benchmark;
+  2. covariant coarse-graining stability;
+  3. Sorkin-style fluctuation scaling from intrinsic graph/spectral data.
+- Recommended framing: "kinematic filtering mechanism for bulk noise," not a
+  claimed solution of the cosmological-constant problem.
+- Failure modes: observer tuning, boundary-artifact dominance, and
+  graph-theoretic degeneracy/isohistogram blindness.
+
+Follow-up: stage a focused no-code Aristotle strategy job asking for a
+Lean-friendly theorem ladder for those three P9 gates.
+
+## Integrated P9 weighted-projector residual orthogonality
+
+Integrated Aristotle project:
+
+- `d9318fe9-73b3-4e86-9553-95cbf3b4cc9b`
+  `null-edge-p9-weighted-projector-residual-orthogonal-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9WeightedProjectorResidualOrthogonal`
+
+Theorems:
+
+- `weighted_projected_pairing_eq`
+- `weighted_residual_orthogonal_to_projected`
+- `weighted_projected_test_pairing_decomposition`
+
+Scientific role: this is the weighted version of the P9 projected-source
+orthogonality theorem. It says that a weighted self-adjoint idempotent
+projector splits a finite source into projected and residual components, and
+projected observer tests see only the projected component. This strengthens the
+spectral/Hodge coarse-mode route because it gives the observer-channel readout a
+weighted orthogonality law rather than an unweighted toy law.
+
+Integration note: `integrate_completed.py` downloaded the result but hit a
+Windows extraction-path issue on a bundled task-note path. The target file was
+still extracted; the integration used `git diff --no-index` against the staged
+source and manually copied the proof bodies with ASCII Lean syntax.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9WeightedProjectorResidualOrthogonal.lean
+lake build PhysicsSM.Draft.NullEdgeP9WeightedProjectorResidualOrthogonal
+lake env lean PhysicsSMDraft.lean
+rg -n "^\s*sorry\b|^\s*admit\b|\baxiom\b|\bopaque\b|\bunsafe\b|\bnative_decide\b" PhysicsSM/Draft/NullEdgeP9WeightedProjectorResidualOrthogonal.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9WeightedProjectorResidualOrthogonal.lean
+```
+
+All targeted checks passed.
+
+## Submitted P9 weighted 1-Laplacian self-adjointness job
+
+Submitted Aristotle project:
+
+- `bfbb0923-97d7-4966-9051-53e69c3b4d75`
+  (`task_id: 7f89b5ce-8d1c-44fa-bf55-f401a69cdc3e`)
+  `null-edge-p9-weighted-lap1-self-adjoint-20260623`
+
+Targets:
+
+- `dotW_lap1_bilinear_eq_down_plus_up`
+- `weighted_lap1_selfAdjoint`
+
+Scientific role: this is the spectral-legitimacy bridge for the P9 Hodge route.
+The existing weighted-adjoint and energy identities show positivity on the
+diagonal; this target asks for the bilinear/self-adjoint form needed before
+using the explicit finite weighted Laplacian to define spectral coarse modes.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-weighted-lap1-self-adjoint-20260623/NullEdgeP9WeightedLap1SelfAdjoint/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-weighted-lap1-self-adjoint-20260623-project/NullEdgeP9WeightedLap1SelfAdjoint/Core.lean
+```
+
+Both checks passed with exactly two intended proof-hole warnings; non-ASCII and
+escape-hatch scans were clean.
+
+## Integrated P9 weighted 1-Laplacian self-adjointness
+
+Integrated Aristotle project:
+
+- `bfbb0923-97d7-4966-9051-53e69c3b4d75`
+  `null-edge-p9-weighted-lap1-self-adjoint-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9WeightedLap1SelfAdjoint`
+
+Theorems:
+
+- `dotW_lap1_bilinear_eq_down_plus_up`
+- `weighted_lap1_selfAdjoint`
+
+Scientific role: this is a high-leverage finite Hodge result for P9. The
+existing weighted-Laplacian energy theorem was a diagonal sum-of-squares
+identity. This module proves the bilinear version and self-adjointness of the
+explicit weighted 1-Laplacian, which is the algebra needed before treating its
+spectral subspaces/projectors as observer-channel coarse modes.
+
+Integration note: Aristotle's focused package also checked that the new
+theorems depend only on standard axioms. The helper downloaded the result but
+hit the recurring Windows bundled-task-note extraction issue; integration used
+the extracted target file and `git diff --no-index`, with manual ASCII
+translation of left-arrow tokens.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9WeightedLap1SelfAdjoint.lean
+lake build PhysicsSM.Draft.NullEdgeP9WeightedLap1SelfAdjoint
+lake env lean PhysicsSMDraft.lean
+rg -n "^\s*sorry\b|^\s*admit\b|\baxiom\b|\bopaque\b|\bunsafe\b|\bnative_decide\b" PhysicsSM/Draft/NullEdgeP9WeightedLap1SelfAdjoint.lean
+rg -n "[^\x00-\x7F]" PhysicsSM/Draft/NullEdgeP9WeightedLap1SelfAdjoint.lean
+```
+
+All targeted checks passed.
+
+## Submitted P9 weighted-projector Pythagorean identity job
+
+Submitted Aristotle project:
+
+- `4e23c58d-5c87-4a94-aa27-e728babc395e`
+  (`task_id: 87e7ba4d-9b7a-4a81-bfd8-9f43fbcd664c`)
+  `null-edge-p9-weighted-projector-pythagorean-20260623`
+
+Targets:
+
+- `weighted_residual_orthogonal_to_projected`
+- `source_eq_projected_plus_residual`
+- `weighted_projector_pythagorean`
+
+Scientific role: this is the norm/noise companion to the newly integrated
+weighted residual-orthogonality theorem. If proved, it splits source energy
+into projected observer-channel energy plus residual energy, which is a much
+stronger P9 readout than a zero-pairing statement alone.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-weighted-projector-pythagorean-20260623/NullEdgeP9WeightedProjectorPythagorean/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-weighted-projector-pythagorean-20260623-project/NullEdgeP9WeightedProjectorPythagorean/Core.lean
+```
+
+Both checks passed with exactly three intended proof-hole warnings; non-ASCII
+and escape-hatch scans were clean.
+
+## Corrected P9 discrete-first gate
+
+Updated the overnight plan and P9 explicit-Hodge strategy pack to remove
+Aristotle's overstrict "no continuum interpretation" failure gate. A
+fundamentally discrete model is acceptable. The relevant failure condition is
+the absence of a stable pre-specified coarse-grained, renormalized, or
+observer-channel readout, or a readout that survives only through hand-tuned
+weights, boundary artifacts, or geometry-blind statistics.
+
+## Submitted P9 defect/coarse-stability strategy job
+
+Submitted no-code Aristotle strategy/audit project:
+
+- `cd647147-43b7-4ca2-a5ef-bc8e88b535c9`
+  (`task_id: 9ddbb804-85ba-47f4-b6f2-793ddfaa9560`)
+  `null-edge-p9-defect-coarse-stability-strategy-20260623`
+
+Scientific role: ask Aristotle for a concrete theorem/numerical ladder for
+defect sensitivity, covariant coarse-graining stability, and Sorkin-style
+fluctuation scaling. The prompt frames P9 as a kinematic filtering mechanism
+for bulk noise, not as a solved cosmological-constant problem.
+
+## Literature pass: P9 defect/coarse-stability anchors
+
+Ran local semantic searches:
+
+```text
+Scripts/lit/neo4j_doc_search.py --query "P9 source visibility finite Hodge projector intrinsic causal order observables coarse graining stability defect curvature sensitivity Sorkin fluctuations"
+Scripts/lit/neo4j_paper_search.py --query "causal set graph observables interval abundance coarse graining Hodge Laplacian source visibility cosmological constant fluctuations Sorkin"
+```
+
+Top paper anchors returned from the null-edge collections:
+
+- `RC5XF8RD`: graph observables for causal-set configuration space;
+- `G3FT8BXC`: Sorkin discreteness residue/cosmological constant;
+- `8QCBDKVD` and `ZCN6Q6IB`: causal-set links/directions;
+- `K5CFI3HI`: everpresent Lambda fluctuation model;
+- `I37GR6S4`: bosonic fields in causal-set theory;
+- `WCCDDR3H`: Benincasa-Dowker-Glaser continuum-limit guardrail.
+
+The search reinforces the next P9 emphasis: couple the finite Hodge/projector
+stack to intrinsic causal-order observables and defect sensitivity, rather
+than adding more generic linear-algebra wrappers.
+
+## Spark integration/backlog triage
+
+Spark worker `Franklin` checked the recent Aristotle queue and task notes.
+Result: no completed Lean Aristotle project was found waiting for integration
+in the sampled recent queue. The one missing live module is the still-running
+weighted-projector Pythagorean job `4e23c58d-5c87-4a94-aa27-e728babc395e`.
+The active no-code strategy job `cd647147-43b7-4ca2-a5ef-bc8e88b535c9` has no
+Lean integration action until it returns a strategy report.
+
+## Submitted P9 defect-sensitivity benchmark proof job
+
+Submitted focused Aristotle project:
+
+- `aca96818-d575-44e4-97cb-949aa461dfe6`
+  (`task_id: d899a2a1-0ace-4926-833f-a305b80c22c3`)
+  `null-edge-p9-defect-sensitivity-benchmark-20260623`
+
+Targets:
+
+- `defectReadout_add_commonMode`
+- `defectReadout_add_differentialMode`
+- `defectReadout_eq_zero_iff_equal`
+- `defectResponse_nonneg`
+- `differentialMode_creates_defect_of_ne_zero`
+
+Scientific role: this is the smallest formal defect-sensitivity benchmark for
+P9. Common-mode two-triangle curvature bookkeeping should be invisible to the
+diamond-defect readout, while a differential curvature perturbation should be
+visible. This directly answers the latest P9 critique that the program needs
+defect/curvature sensitivity, not only Hodge projector algebra.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-defect-sensitivity-benchmark-20260623/NullEdgeP9DefectSensitivityBenchmark/Core.lean
+```
+
+The preflight passed with exactly five intended proof-hole warnings; non-ASCII
+and escape-hatch scans were clean.
+
+## Integrated P9 weighted-projector Pythagorean identity
+
+Integrated Aristotle project:
+
+- `4e23c58d-5c87-4a94-aa27-e728babc395e`
+  `null-edge-p9-weighted-projector-pythagorean-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9WeightedProjectorPythagorean`
+
+Theorems:
+
+- `weighted_residual_orthogonal_to_projected`
+- `source_eq_projected_plus_residual`
+- `weighted_projector_pythagorean`
+
+Scientific role: this is the weighted norm/noise decomposition companion to
+the residual-orthogonality theorem. A weighted self-adjoint idempotent
+projector splits a finite source into projected observer-channel energy plus
+residual energy. This turns P9's projected-source readout from a zero-pairing
+statement into a genuine Pythagorean energy split.
+
+Integration note: the helper downloaded the result but hit the recurring
+Windows bundled-task-note extraction path issue. The target file was still
+extracted and reviewed with `git diff --no-index`; only proof bodies changed.
+The extracted file had mojibake around left-arrow tokens, so the live module
+uses equivalent ASCII Lean syntax.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9WeightedProjectorPythagorean.lean
+lake build PhysicsSM.Draft.NullEdgeP9WeightedProjectorPythagorean
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9WeightedProjectorPythagorean.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9WeightedProjectorPythagorean.lean
+```
+
+All targeted checks passed. The first draft-root check raced the targeted build
+and failed before the `.olean` existed; rerunning sequentially passed.
+
+## Integrated P9 defect-sensitivity benchmark
+
+Integrated Aristotle project:
+
+- `aca96818-d575-44e4-97cb-949aa461dfe6`
+  `null-edge-p9-defect-sensitivity-benchmark-20260623`
+
+Integrated module:
+
+- `PhysicsSM.Draft.NullEdgeP9DefectSensitivityBenchmark`
+
+Theorems:
+
+- `defectReadout_add_commonMode`
+- `defectReadout_add_differentialMode`
+- `defectReadout_eq_zero_iff_equal`
+- `defectResponse_nonneg`
+- `differentialMode_creates_defect_of_ne_zero`
+
+Scientific role: this is the first formal defect-sensitivity benchmark in the
+new P9 gate. Common-mode two-triangle curvature bookkeeping is invisible to the
+linearized diamond-defect readout, while a differential curvature perturbation
+is visible and creates a nonzero defect from a flat baseline.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9DefectSensitivityBenchmark.lean
+lake build PhysicsSM.Draft.NullEdgeP9DefectSensitivityBenchmark
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9DefectSensitivityBenchmark.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9DefectSensitivityBenchmark.lean
+```
+
+All targeted checks passed. The first draft-root check raced the targeted build
+and failed before the `.olean` existed; rerunning sequentially passed.
+
+## Strategy result: P9 iso-histogram separation gate
+
+Aristotle strategy project:
+
+- `cd647147-43b7-4ca2-a5ef-bc8e88b535c9`
+  `null-edge-p9-defect-coarse-stability-strategy-20260623`
+
+Most important output: P9 should graduate from generic finite Hodge algebra
+only after an iso-histogram separation result. The target is a pair of finite
+causal sets with identical out-degree and interval-abundance histograms,
+separated by a frozen projected observer readout, with order-isomorphism
+invariance and stability under a pre-specified Alexandrov or spectral coarse
+map with an explicit scale-uniform bound.
+
+Demotion/failure modes: observer tuning, block/grid aliasing, boundary-artifact
+dominance, global-weight leakage, histogram blindness, and vacuous
+non-uniform stability bounds. The Sorkin-style numerical pilot should test
+`Delta R / mean(R) ~ 1 / sqrt(N)` against iso-histogram, random-weight, and
+boundary-stripped null controls.
+
+## Submitted P9 iso-histogram separation proof job
+
+Submitted focused Aristotle project:
+
+- `66f5c60f-a1db-4764-8e42-8ff665ebd271`
+  (`task_id: a3bf2e9e-8627-4563-b79a-ac6735521231`)
+  `null-edge-p9-isohistogram-separation-20260623`
+
+Targets:
+
+- `relA_irreflexive`
+- `relA_transitive`
+- `relB_irreflexive`
+- `relB_transitive`
+- `same_outDegreeSignature`
+- `same_inDegreeSignature`
+- `same_intervalSignature`
+- `jointReadout21_relA`
+- `jointReadout21_relB`
+- `jointReadout21_separates`
+
+Scientific role: this is the next proof target from the strategy report. It
+exhibits two five-point strict transitive relations with the same out-degree,
+in-degree, and interval-abundance signatures, but a frozen joint in/out-degree
+readout separates them. If Aristotle proves it, P9 has its first explicit
+finite witness that common intrinsic histograms can be incomplete.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-isohistogram-separation-20260623/NullEdgeP9IsohistogramSeparation/Core.lean
+```
+
+The preflight passed with exactly ten intended proof-hole warnings; non-ASCII
+and escape-hatch scans were clean.
+
+## Claude critique: cheap iso-histogram witness is not enough
+
+Queried Claude CLI for an adversarial critique of the `Fin 5`
+iso-histogram witness. Claude's useful verdict: the target is true but cheap,
+because it mainly proves that marginal histograms do not determine a joint
+distribution. It is missing a diamond-local observer channel, a coarse map, and
+a noise class.
+
+Follow-up target recommended by Claude:
+
+- T1: matched joint in/out-degree histograms and global interval-abundance
+  histograms, but a diamond-local interval readout differs;
+- T2: add a pre-specified coarse map and prove equivariance/stability;
+- T3: add a noise class and prove the diamond-local separation survives
+  geometry-blind external noise.
+
+## Submitted P9 diamond-local separation proof job
+
+Submitted focused Aristotle project:
+
+- `04524791-1cc4-4ccc-816d-e0d278a7e770`
+  (`task_id: 347422a5-12b0-4e8e-b9b2-055f09d95ac7`)
+  `null-edge-p9-diamond-local-separation-20260623`
+
+Targets:
+
+- `relA_irreflexive`
+- `relA_transitive`
+- `relB_irreflexive`
+- `relB_transitive`
+- `same_jointDegreeSignature`
+- `same_intervalSignature`
+- `diamondCard_relA_0_4`
+- `diamondCard_relB_0_4`
+- `localIntervalSignature_relA_0_4_at_one`
+- `localIntervalSignature_relB_0_4_at_one`
+- `localIntervalSignature_0_4_separates`
+
+Scientific role: this is the stronger T1 witness. Two six-point strict
+transitive relations have the same joint in/out-degree signature and same
+global interval-abundance signature. The chosen diamond from `0` to `4` has
+the same cardinality in both relations, but the local interval-size signature
+differs. This is much closer to an observer-channel separator than the cheap
+global marginals-vs-joint witness.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-diamond-local-separation-20260623/NullEdgeP9DiamondLocalSeparation/Core.lean
+```
+
+The preflight passed with exactly eleven intended proof-hole warnings; non-ASCII
+and escape-hatch scans were clean.
+
+## Integrated P9 iso-histogram sanity witness
+
+Integrated Aristotle project:
+
+- `66f5c60f-a1db-4764-8e42-8ff665ebd271`
+  (`task_id: a3bf2e9e-8627-4563-b79a-ac6735521231`)
+  `null-edge-p9-isohistogram-separation-20260623`
+
+Live module:
+
+- `PhysicsSM.Draft.NullEdgeP9IsohistogramSeparation`
+
+Banked theorem cluster:
+
+- `relA_irreflexive`
+- `relA_transitive`
+- `relB_irreflexive`
+- `relB_transitive`
+- `same_outDegreeSignature`
+- `same_inDegreeSignature`
+- `same_intervalSignature`
+- `jointReadout21_relA`
+- `jointReadout21_relB`
+- `jointReadout21_separates`
+
+Scientific role: this is a low-weight guardrail, not a P9 flagship theorem.
+It proves that separate in-degree, out-degree, and interval-abundance histograms
+do not determine a frozen joint in/out-degree readout. The result justifies the
+stricter T1/T2/T3 ladder, but it does not by itself show source visibility,
+coarse stability, or cosmological leverage.
+
+Verification:
+
+```text
+git diff --no-index -- AgentTasks/aristotle-standalone/null-edge-p9-isohistogram-separation-20260623/NullEdgeP9IsohistogramSeparation/Core.lean AgentTasks/aristotle-output/66f5c60f-a1db-4764-8e42-8ff665ebd271/extracted/project-files.tar/null-edge-p9-isohistogram-separation-20260623-project_aristotle/NullEdgeP9IsohistogramSeparation/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9IsohistogramSeparation.lean
+lake build PhysicsSM.Draft.NullEdgeP9IsohistogramSeparation
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9IsohistogramSeparation.lean AgentTasks/null-edge-p9-isohistogram-separation-aristotle-2026-06-23.md
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9IsohistogramSeparation.lean AgentTasks/null-edge-p9-isohistogram-separation-aristotle-2026-06-23.md
+```
+
+Next action: check and integrate the stronger diamond-local T1 witness if
+Aristotle completes it successfully.
+
+## Literature/semantic pass: P9 coarse-map stability
+
+Ran local semantic searches for P9 coarse-map stability, diamond-local interval
+signatures, and source-visibility observer channels.
+
+Commands:
+
+```text
+$env:PYTHONIOENCODING='utf-8'; $py='C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe'; & $py Scripts/lit/neo4j_doc_search.py --query 'P9 coarse map stability equivariant Alexandrov spectral coarse graining diamond local interval signature observer channel source visibility'
+$py='C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe'; & $py Scripts/lit/neo4j_paper_search.py --query 'causal set observables coarse graining interval abundance spectral Laplacian coarse graining source visibility cosmological constant'
+```
+
+Useful hits:
+
+- `RC5XF8RD`, causal-set graph observables, remains the main guardrail for
+  intrinsic interval/degree/Laplacian diagnostics.
+- `AN5RZGJZ` and `UR5ADCBP`, Laplacian renormalization / Laplacian coarse
+  graining, support making T2 a stability/equivariance test for an explicit
+  coarse map rather than demanding fine-grained continuum behavior.
+- `G3FT8BXC`, `K5CFI3HI`, and `IHVSDGUC` remain the P9 cosmological-constant
+  collision sources: finite P9 filtering is interesting only if it gives a
+  structural mean-zero/noise-channel mechanism, not just another fluctuating
+  Lambda slogan.
+
+No new Zotero additions were needed in this pass because the key papers are
+already present in the null-edge paper index.
+
+## Submitted P9 coarse-map erasure guardrail
+
+Submitted focused Aristotle project:
+
+- `748e6c8d-509e-49de-b022-758c8b921ba6`
+  `null-edge-p9-coarse-map-erasure-guardrail-20260623`
+
+Targets:
+
+- `coarseRel_equal_implies_localSignature_equal`
+- `collapseCritical_identifies_swapped_vertices`
+- `collapseCritical_preserves_endpoints`
+- `collapseCritical_coarseRel_eq`
+- `collapseCritical_diamondCard_eq`
+- `collapseCritical_localIntervalSignature_eq`
+- `collapseCritical_erases_T1_at_one`
+
+Scientific role: this is a T2 failure-control theorem. It does not claim that
+the P9 observer channel is stable under coarse graining. It proves the opposite
+guardrail for a natural critical-collapse map: coarse preprocessing can erase
+the T1 diamond-local separator. The upshot is that every positive P9 coarse
+map must be pre-specified and tested; stability cannot be assumed from the
+finite separation witness alone.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-coarse-map-erasure-guardrail-20260623/NullEdgeP9CoarseMapErasureGuardrail/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-coarse-map-erasure-guardrail-20260623-project/NullEdgeP9CoarseMapErasureGuardrail/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-coarse-map-erasure-guardrail-20260623/NullEdgeP9CoarseMapErasureGuardrail/Core.lean
+```
+
+Both Lean checks passed with exactly seven intended proof-hole warnings; the
+non-ASCII scan was clean.
+
+## Integrated P9 diamond-local T1 separation witness
+
+Integrated Aristotle project:
+
+- `04524791-1cc4-4ccc-816d-e0d278a7e770`
+  (`task_id: 347422a5-12b0-4e8e-b9b2-055f09d95ac7`)
+  `null-edge-p9-diamond-local-separation-20260623`
+
+Live module:
+
+- `PhysicsSM.Draft.NullEdgeP9DiamondLocalSeparation`
+
+Banked theorem cluster:
+
+- `relA_irreflexive`
+- `relA_transitive`
+- `relB_irreflexive`
+- `relB_transitive`
+- `same_jointDegreeSignature`
+- `same_intervalSignature`
+- `diamondCard_relA_0_4`
+- `diamondCard_relB_0_4`
+- `localIntervalSignature_relA_0_4_at_one`
+- `localIntervalSignature_relB_0_4_at_one`
+- `localIntervalSignature_0_4_separates`
+
+Scientific role: this is the first genuinely useful P9 T1 witness. The two
+six-point strict transitive relations match joint in/out-degree and global
+interval-abundance signatures. The diamond from `0` to `4` has cardinality
+four in both, but the local interval-size signature differs. This is stronger
+than the cheap `Fin 5` marginals-vs-joint witness because the separation is
+diamond-local and survives common global signature controls. It is still not
+source-visibility physics without T2 coarse-map stability and T3 noise
+robustness.
+
+Review notes:
+
+- Aristotle reported no statement or definition changes and no remaining proof
+  holes.
+- The extracted proof used Unicode logical symbols in two local helper
+  statements; the integrated file normalizes those proof bodies to ASCII.
+
+Verification:
+
+```text
+aristotle show 04524791-1cc4-4ccc-816d-e0d278a7e770 --limit 100
+python Scripts/aristotle/integrate_completed.py --task-note AgentTasks/null-edge-p9-diamond-local-separation-aristotle-2026-06-23.md 04524791-1cc4-4ccc-816d-e0d278a7e770
+git diff --no-index -- AgentTasks/aristotle-standalone/null-edge-p9-diamond-local-separation-20260623/NullEdgeP9DiamondLocalSeparation/Core.lean AgentTasks/aristotle-output/04524791-1cc4-4ccc-816d-e0d278a7e770/extracted/project-files.tar/null-edge-p9-diamond-local-separation-20260623-project_aristotle/NullEdgeP9DiamondLocalSeparation/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9DiamondLocalSeparation.lean
+lake build PhysicsSM.Draft.NullEdgeP9DiamondLocalSeparation
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9DiamondLocalSeparation.lean AgentTasks/null-edge-p9-diamond-local-separation-aristotle-2026-06-23.md
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9DiamondLocalSeparation.lean AgentTasks/null-edge-p9-diamond-local-separation-aristotle-2026-06-23.md
+```
+
+Next action: integrate the coarse-map erasure guardrail if Aristotle completes
+it, then design the positive admissible coarse-map class carefully rather than
+hand-tuning a preserving map.
+
+## Integrated P9 coarse-map erasure guardrail
+
+Integrated Aristotle project:
+
+- `748e6c8d-509e-49de-b022-758c8b921ba6`
+  (`task_id: 2fc5836a-227c-4fb2-939a-d1d50b9f0c7f`)
+  `null-edge-p9-coarse-map-erasure-guardrail-20260623`
+
+Live module:
+
+- `PhysicsSM.Draft.NullEdgeP9CoarseMapErasureGuardrail`
+
+Banked theorem cluster:
+
+- `coarseRel_equal_implies_localSignature_equal`
+- `collapseCritical_identifies_swapped_vertices`
+- `collapseCritical_preserves_endpoints`
+- `collapseCritical_coarseRel_eq`
+- `collapseCritical_diamondCard_eq`
+- `collapseCritical_localIntervalSignature_eq`
+- `collapseCritical_erases_T1_at_one`
+
+Scientific role: this is the negative T2 guardrail. It proves that the
+diamond-local T1 separator is not automatically stable under coarse graining:
+the explicit map collapsing the critical swapped vertices makes the coarse
+relations, diamond cardinalities, local interval signatures, and the readout at
+`1` agree. This is exactly the kind of falsification control we want: positive
+T2 preservation now has to name a pre-specified admissible coarse-map class.
+
+Review notes:
+
+- Aristotle reported no statement or definition changes and no remaining proof
+  holes.
+- The extracted proof contained a mojibake arrow in the final congruence helper
+  and no final newline; the integrated file normalizes those proof bodies to
+  ASCII.
+- The helper hit the known Windows extraction issue for a bundled task note, so
+  integration used manual diff inspection.
+
+Verification:
+
+```text
+aristotle show 748e6c8d-509e-49de-b022-758c8b921ba6 --limit 100
+python Scripts/aristotle/integrate_completed.py --task-note AgentTasks/null-edge-p9-coarse-map-erasure-guardrail-aristotle-2026-06-23.md 748e6c8d-509e-49de-b022-758c8b921ba6
+git diff --no-index -- AgentTasks/aristotle-standalone/null-edge-p9-coarse-map-erasure-guardrail-20260623/NullEdgeP9CoarseMapErasureGuardrail/Core.lean AgentTasks/aristotle-output/748e6c8d-509e-49de-b022-758c8b921ba6/extracted/project-files.tar/null-edge-p9-coarse-map-erasure-guardrail-20260623-project_aristotle/NullEdgeP9CoarseMapErasureGuardrail/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9CoarseMapErasureGuardrail.lean
+lake build PhysicsSM.Draft.NullEdgeP9CoarseMapErasureGuardrail
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9CoarseMapErasureGuardrail.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9CoarseMapErasureGuardrail.lean
+```
+
+Next action: submit the T3 diamond-locality/noise-invariance theorem, which
+formalizes that external relation changes cannot affect the local interval
+signature when closed-diamond membership and internal diamond relation data are
+held fixed.
+
+## Submitted P9 diamond-locality/noise-invariance theorem
+
+Submitted focused Aristotle project:
+
+- `5d92d60b-eeb0-48b2-99ea-642040c54bf9`
+  `null-edge-p9-diamond-locality-noise-invariance-20260623`
+
+Targets:
+
+- `localIntervalCard_eq_of_diamond_local_agreement`
+- `localIntervalAbundance_eq_of_diamond_local_agreement`
+- `localIntervalSignature_eq_of_diamond_local_agreement`
+
+Scientific role: this is the clean T3 locality/noise-invariance theorem. It
+abstracts the diamond-local readout away from the small witnesses: if two finite
+relations have the same closed diamond and agree on all relation entries among
+vertices in that diamond, then the local interval-size signature is identical.
+This is the formal statement that external geometry-blind relation noise cannot
+affect a frozen local observer channel when it does not change the measured
+diamond.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-diamond-locality-noise-invariance-20260623/NullEdgeP9DiamondLocalityNoiseInvariance/Core.lean
+lake env lean AgentTasks/aristotle-submit/null-edge-p9-diamond-locality-noise-invariance-20260623-project/NullEdgeP9DiamondLocalityNoiseInvariance/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-diamond-locality-noise-invariance-20260623/NullEdgeP9DiamondLocalityNoiseInvariance/Core.lean
+```
+
+Both Lean checks passed with exactly three intended proof-hole warnings; the
+non-ASCII scan was clean.
+
+## Submitted P9 positive T2 coarse-map strategy job
+
+Submitted no-code Aristotle strategy project:
+
+- `412b3682-fc82-47fb-abaf-fe5465a3d201`
+  `null-edge-p9-positive-t2-coarse-map-strategy-20260623`
+
+Prompt:
+
+- `AgentTasks/aristotle-strategy-packs/null-edge-p9-positive-t2-coarse-map-strategy-20260623/PROMPT.md`
+
+Scientific role: after banking the T1 diamond-local separator and the negative
+T2 critical-collapse erasure guardrail, this asks Aristotle to propose the next
+positive admissible coarse-map class. The requested output is a ranked theorem
+scaffold, not Lean code, with explicit warnings against hand-tuned preserving
+maps.
+
+## Spark/literature triage: admissible positive T2 coarse maps
+
+Spark/Sartre produced:
+
+- `AgentTasks/spark-p9-positive-t2-coarse-map-literature-triage-2026-06-23.md`
+
+Local paper search also returned the same main anchors:
+
+- `RC5XF8RD`: causal-set graph observables, especially interval abundance and
+  intrinsic order diagnostics.
+- `AN5RZGJZ`, `UR5ADCBP`, `RA8QNNKW`: Laplacian renormalization/coarse graining
+  as the mathematical template for a fixed spectral/Hodge coarse map.
+- `PTU4XM4U`: graph reduction/spectral-cut style guarantees, useful for
+  observer-forced graph-reduction controls.
+
+Triage result:
+
+- C1 Alexandrov/subdiamond restriction is the most publishable/physics-facing
+  class because it is closest to causal-set order geometry.
+- C2 spectral/Hodge projector maps are the most Lean-friendly next theorem
+  class because the repo already has finite projector, PSD, Hodge, and
+  boundary-invariance scaffolds.
+- C3 fixed graph-reduction maps are useful for pilots but need strict
+  admissibility metadata to avoid post-hoc block alignment.
+
+No new Zotero/Neo4j additions were needed; all cited anchors are already in the
+null-edge index.
+
+Meta-analysis: the Lean-friendly C2 route is partly already banked. In
+particular, `PhysicsSM.Draft.NullEdgeP9CoarseKernelPSD` proves that coarse
+response for `R K R^T` equals fine response against the pulled-back test and
+that PSD kernels stay PSD. `PhysicsSM.Draft.NullEdgeP9ProjectedNoiseKernel`
+proves the analogous projection identity. The next positive T2 theorem should
+therefore not duplicate generic PSD transport; it should connect a fixed
+coarse map or projector to the diamond-local observable and include a
+nontriviality/admissibility condition that rules out the critical-collapse
+erasure guardrail.
+
+## Integrated P9 diamond-locality/noise-invariance theorem
+
+Integrated focused Aristotle project:
+
+- `5d92d60b-eeb0-48b2-99ea-642040c54bf9`
+  `null-edge-p9-diamond-locality-noise-invariance-20260623`
+
+Live module:
+
+- `PhysicsSM.Draft.NullEdgeP9DiamondLocalityNoiseInvariance`
+
+Task note:
+
+- `AgentTasks/null-edge-p9-diamond-locality-noise-invariance-aristotle-2026-06-23.md`
+
+Theorems integrated:
+
+- `localIntervalCard_eq_of_diamond_local_agreement`
+- `localIntervalAbundance_eq_of_diamond_local_agreement`
+- `localIntervalSignature_eq_of_diamond_local_agreement`
+
+Scientific role: this is the banked T3 locality/noise guardrail. If two finite
+relations have the same closed diamond and agree on every relation entry among
+vertices in that diamond, then the local interval-size signature is identical.
+External relation noise cannot affect the frozen diamond-local observer channel
+unless it changes the measured diamond membership or the internal relation data.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9DiamondLocalityNoiseInvariance.lean
+lake build PhysicsSM.Draft.NullEdgeP9DiamondLocalityNoiseInvariance
+lake env lean PhysicsSMDraft.lean
+```
+
+## Reviewed P9 positive T2 coarse-map strategy
+
+Completed no-code Aristotle strategy project:
+
+- `412b3682-fc82-47fb-abaf-fe5465a3d201`
+  `null-edge-p9-positive-t2-coarse-map-strategy-20260623`
+
+Task:
+
+- `e005b18e-1c9e-448c-bafa-5cdc56075a00`
+
+Report:
+
+- `AgentTasks/aristotle-output/412b3682-fc82-47fb-abaf-fe5465a3d201/extracted-strategy/null-edge-p9-positive-t2-coarse-map-strategy-20260623_aristotle/P9_PositiveT2_CoarseMap_Strategy.md`
+
+Scientific result: Aristotle selected Class A, Alexandrov endpoint-preserving
+subdiamond restriction, as the best positive T2 proof target. The backup routes
+are interval-rank threshold filtration as a scale-window dichotomy and
+spectral/Laplacian projection as an expected no-go or weighted-rescue theorem.
+
+Next proof package:
+
+- `NullEdgeP9SubdiamondRestrictionPreservesLocalReadout`
+- primary lemmas `subdiamond_convex`,
+  `subdiamond_restriction_preserves_ic`, and
+  `subdiamond_restriction_preserves_localIntervalSignature`
+- follow-up finite witness corollary
+  `NullEdgeP9SubdiamondRestrictionSeparatesWitness`
+
+Guardrail: the endpoint rule must be fixed before comparing the T1 pair and
+should be intrinsic/order-isomorphism-invariant or explicitly observer-forced.
+The positive theorem should be contrasted with the banked critical-collapse
+erasure guardrail so the preservation result is not hand-tuned.
+
+## Submitted P9 subdiamond restriction positive-T2 proof job
+
+Submitted focused Aristotle project:
+
+- `a46df819-3986-4fb0-a404-c441aaaf9653`
+  `null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623`
+
+Task:
+
+- `7e27b984-0f9b-4cce-a631-85911429833b`
+
+Standalone source:
+
+- `AgentTasks/aristotle-standalone/null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout/Core.lean`
+
+Submission project:
+
+- `AgentTasks/aristotle-submit/null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623-project`
+
+Targets:
+
+- `subdiamond_convex`
+- `subdiamond_restriction_preserves_ic`
+- `subdiamond_restriction_preserves_localIntervalAbundance`
+- `subdiamond_restriction_preserves_localIntervalSignature`
+
+Scientific role: this is the first positive T2 Class A theorem package. It
+formalizes the order-theoretic claim that Alexandrov/subdiamond restriction is
+an admissible observer-forced coarse map: subdiamonds are convex under a
+transitive causal relation, and the local interval readout restricted to a
+subdiamond agrees with direct measurement in that subdiamond. If solved, it
+will be the positive companion to the banked critical-collapse erasure
+guardrail.
+
+Preflight:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout/Core.lean AgentTasks/null-edge-p9-subdiamond-restriction-preserves-local-readout-aristotle-2026-06-23.md
+```
+
+The standalone source check passed with exactly four intended proof holes and
+the non-ASCII scan was clean. A packaged-project local check failed only because
+the new focused Lake project had no built Mathlib oleans after dependency clone;
+the generated `.lake` directory was removed before upload.
+
+## Locally integrated P9 subdiamond restriction positive-T2 theorem
+
+Codex completed the submitted Class A theorem locally before Aristotle returned,
+then canceled Aristotle task `7e27b984-0f9b-4cce-a631-85911429833b` in project
+`a46df819-3986-4fb0-a404-c441aaaf9653` to avoid spending proof budget twice on
+the same finite order-theory lemma.
+
+Live module:
+
+- `PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout`
+
+Imported in:
+
+- `PhysicsSMDraft.lean`
+
+Theorems proved:
+
+- `subdiamond_convex`
+- `subdiamond_restriction_preserves_ic`
+- `subdiamond_restriction_preserves_localIntervalAbundance`
+- `subdiamond_restriction_preserves_localIntervalSignature`
+
+Scientific role: this is the first positive T2 Class A theorem. It proves that
+Alexandrov/subdiamond restriction is a preserving observer-forced coarse map for
+the local interval-size readout under a transitive causal relation. It is the
+positive companion to the banked critical-collapse erasure guardrail, and it
+turns P9's coarse-map question from "some maps erase the signal" into "the
+admissible class matters."
+
+Verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout.lean
+lake build PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout
+lake env lean PhysicsSMDraft.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout.lean AgentTasks/aristotle-standalone/null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout/Core.lean AgentTasks/null-edge-p9-subdiamond-restriction-preserves-local-readout-aristotle-2026-06-23.md
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout.lean AgentTasks/aristotle-standalone/null-edge-p9-subdiamond-restriction-preserves-local-readout-20260623/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout/Core.lean
+```
+
+Follow-up: instantiate this generic preservation theorem on the six-point T1
+witness, or prove the Class B interval-rank threshold dichotomy if the witness
+instantiation is too tautological.

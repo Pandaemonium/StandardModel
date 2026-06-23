@@ -2,13 +2,18 @@
 
 ```yaml
 job_name: null-edge-p3-crossed-module-fake-flatness-20260623
-status: submitted
+status: integrated
 project_id: 1f2a340d-e077-4dfe-a682-c018f5e99fea
 source_staged_from: AgentTasks/aristotle-standalone/null-edge-p3-crossed-module
 prepared_project: AgentTasks/aristotle-submit/null-edge-p3-crossed-module-fake-flatness-20260623-project
 target_module: NullEdgeP3CrossedModule.Core
 target_file: NullEdgeP3CrossedModule/Core.lean
 expected_check: lake env lean NullEdgeP3CrossedModule/Core.lean
+integrated_module: PhysicsSM.Draft.NullEdgeP3CrossedModule
+integrated_file: PhysicsSM/Draft/NullEdgeP3CrossedModule.lean
+verification:
+  - lake env lean PhysicsSM/Draft/NullEdgeP3CrossedModule.lean
+  - lake build PhysicsSM.Draft.NullEdgeP3CrossedModule
 ```
 
 ## Task
@@ -35,3 +40,10 @@ Please end with a brief report listing:
 - any statement or definition changes;
 - remaining proof holes, if any;
 - any assumptions or nonstandard constructs used.
+
+## Integration note
+
+Integrated into `PhysicsSM.Draft.NullEdgeP3CrossedModule` on 2026-06-23.
+The integrated module proves `fakeFlat_verticalCompose`,
+`fakeFlat_horizontalCompose`, and `crossedModule_2cell_interchange`, with
+ASCII-clean proof text and no placeholder or escape-hatch tokens in the file.

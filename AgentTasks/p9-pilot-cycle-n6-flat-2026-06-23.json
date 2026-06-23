@@ -1,0 +1,114 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 7.771561172376096e-16,
+    "noise_rel_err": 2.2204460492503126e-16,
+    "projected_psd_min_eig": -2.0941992096618074e-16,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 6,
+    "F": 0,
+    "V": 6,
+    "configs": 64
+  },
+  "geometry_family": "cycle",
+  "geometry_params": {
+    "cycle_size": 6,
+    "edge_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [],
+    "metric_profile": "flat",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      0.3333333333333333,
+      0.6666666666666666,
+      1.0,
+      0.6666666666666666,
+      0.3333333333333333
+    ]
+  },
+  "metrics": {
+    "betti1": 1,
+    "harm_dim": 1,
+    "laplacian_eigs": [
+      -2.7755575615628914e-16,
+      0.9999999999999991,
+      0.9999999999999999,
+      2.9999999999999996,
+      3.0000000000000004,
+      3.999999999999999
+    ],
+    "mean_norm": 0.0,
+    "metric_weight_spread": 1.0,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": 1.0,
+    "projected_noise_eigs": [
+      -2.0941992096618074e-16,
+      -2.002926225074494e-17,
+      -1.246962096187388e-17,
+      2.803621244729082e-17,
+      8.442928993489716e-17,
+      1.0000000000000004
+    ],
+    "projected_noise_trace": 1.0000000000000007
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "cycle-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 9.0,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 9.0
+  }
+}

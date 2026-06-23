@@ -34,5 +34,17 @@ aristotle:
   expected_module: NullEdgeSuperDiracProductGradingKrein.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-super-dirac-product-grading-krein-20260623-project
   output_dir: AgentTasks/aristotle-output/c0ddd3bf-04b6-44c4-8eff-db4472f226e9
-  status: submitted
+  status: integrated
 ```
+
+## Integration note
+
+Integrated as:
+
+```text
+PhysicsSM.Draft.NullEdgeSuperDiracProductGradingKrein
+```
+
+Scientific value: product grading anticommutes with external degree-odd and
+internal chirality-odd blocks, and ordinary self-adjointness plus commutation
+with `J` implies finite `J`-self-adjointness.

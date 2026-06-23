@@ -1,0 +1,114 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 7.771561172376096e-16,
+    "noise_rel_err": 2.2204460492503126e-16,
+    "projected_psd_min_eig": -6.804718036971479e-17,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 6,
+    "F": 0,
+    "V": 6,
+    "configs": 64
+  },
+  "geometry_family": "cycle",
+  "geometry_params": {
+    "cycle_size": 6,
+    "edge_weights": [
+      0.7777113926024851,
+      0.9820957689847035,
+      1.2401928384128114,
+      1.2401928384128114,
+      0.9820957689847035,
+      0.7777113926024851
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [],
+    "metric_profile": "expanded",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      0.3333333333333333,
+      0.6666666666666666,
+      1.0,
+      0.6666666666666666,
+      0.3333333333333333
+    ]
+  },
+  "metrics": {
+    "betti1": 1,
+    "harm_dim": 1,
+    "laplacian_eigs": [
+      2.220446049250313e-16,
+      0.9643076644038407,
+      0.9820957689847033,
+      2.720164271300843,
+      2.999999999999999,
+      4.33343229531061
+    ],
+    "mean_norm": 0.0,
+    "metric_weight_spread": 1.5946697582283154,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": 1.0,
+    "projected_noise_eigs": [
+      -6.804718036971479e-17,
+      -3.0263035094159966e-17,
+      -7.809226210207317e-18,
+      2.894572534975532e-17,
+      3.972146957214858e-17,
+      1.0358084620305927
+    ],
+    "projected_noise_trace": 1.0358084620305927
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "cycle-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 9.0,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 9.0
+  }
+}

@@ -34,5 +34,17 @@ aristotle:
   expected_module: NullEdgeSuperDiracMassShellBridge.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-super-dirac-mass-shell-bridge-20260623-project
   output_dir: AgentTasks/aristotle-output/1de5924b-07e9-4052-bc88-161e881d896b
-  status: submitted
+  status: integrated
 ```
+
+## Integration note
+
+Integrated as:
+
+```text
+PhysicsSM.Draft.NullEdgeSuperDiracMassShellBridge
+```
+
+Scientific value: records the corrected no-double-count rule. The kinetic
+Pluecker symbol and Yukawa square are equated on shell; they are not added as
+two independent mass-square terms.

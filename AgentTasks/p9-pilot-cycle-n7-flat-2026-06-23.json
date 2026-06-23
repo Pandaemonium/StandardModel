@@ -1,0 +1,123 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 2.7755575615628914e-17,
+    "noise_rel_err": 1.1102230246251565e-16,
+    "projected_psd_min_eig": -1.6857942031489104e-16,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 7,
+    "F": 0,
+    "V": 7,
+    "configs": 128
+  },
+  "geometry_family": "cycle",
+  "geometry_params": {
+    "cycle_size": 7,
+    "edge_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [],
+    "metric_profile": "flat",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      0.2857142857142857,
+      0.5714285714285714,
+      0.8571428571428571,
+      0.8571428571428571,
+      0.5714285714285714,
+      0.2857142857142857
+    ]
+  },
+  "metrics": {
+    "betti1": 1,
+    "harm_dim": 1,
+    "laplacian_eigs": [
+      -8.881784197001252e-16,
+      0.7530203962825331,
+      0.7530203962825334,
+      2.4450418679126282,
+      2.44504186791263,
+      3.801937735804838,
+      3.80193773580484
+    ],
+    "mean_norm": 0.0,
+    "metric_weight_spread": 1.0,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": 1.0,
+    "projected_noise_eigs": [
+      -1.6857942031489104e-16,
+      -3.202986619128024e-17,
+      1.3288916616271925e-32,
+      1.0081442337282025e-18,
+      5.1835752901863726e-18,
+      8.339526451974088e-17,
+      0.9999999999999997
+    ],
+    "projected_noise_trace": 0.9999999999999999
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "cycle-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 12.25,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 12.25
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "checks": {
+    "boundary_perturb_ok": true,
+    "mean_rel_err": 8.326672684688674e-17,
+    "noise_rel_err": 0.0,
+    "projected_psd_min_eig": -6.735289532761158e-17,
+    "projected_psd_ok": true
+  },
+  "counts": {
+    "E": 10,
+    "F": 0,
+    "V": 10,
+    "configs": 1024
+  },
+  "geometry_family": "cycle",
+  "geometry_params": {
+    "cycle_size": 10,
+    "edge_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        9,
+        0
+      ]
+    ],
+    "expansion_rate": 0.35,
+    "faces": [],
+    "metric_profile": "flat",
+    "seed": 0,
+    "tol": 1e-09,
+    "vertex_times": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0,
+      0.8,
+      0.6,
+      0.4,
+      0.2
+    ]
+  },
+  "metrics": {
+    "betti1": 1,
+    "harm_dim": 1,
+    "laplacian_eigs": [
+      5.689893001203927e-16,
+      0.3819660112501043,
+      0.3819660112501051,
+      1.3819660112501049,
+      1.381966011250106,
+      2.618033988749895,
+      2.618033988749895,
+      3.618033988749895,
+      3.6180339887498962,
+      3.9999999999999996
+    ],
+    "mean_norm": 0.0,
+    "metric_weight_spread": 1.0,
+    "noise_eigs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "projected_noise_cond2": 1.0,
+    "projected_noise_eigs": [
+      -6.735289532761158e-17,
+      -1.9441438201261065e-17,
+      -9.152265121052857e-18,
+      -4.373934863695074e-18,
+      -9.623638702291306e-36,
+      1.5417063193800244e-32,
+      5.9736237146955685e-18,
+      2.4507543164390218e-17,
+      1.8086166909705037e-16,
+      1.0000000000000002
+    ],
+    "projected_noise_trace": 0.9999999999999998
+  },
+  "results": {
+    "demote_if": [
+      "boundary perturbation regression fails",
+      "harmonic trace scales like volume in size sweep",
+      "projected kernel loses positive-semidefiniteness",
+      "condition number grows rapidly under refinement"
+    ],
+    "positive_signal": true
+  },
+  "run_id": "cycle-seed0",
+  "witnesses": {
+    "closureDefectSq": 2.25,
+    "momentMassSq": 25.0,
+    "pluckerSq": 1.0,
+    "unitVisiblePairing": 25.0
+  }
+}

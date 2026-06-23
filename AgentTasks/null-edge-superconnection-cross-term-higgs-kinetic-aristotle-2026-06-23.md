@@ -35,5 +35,17 @@ aristotle:
   expected_module: NullEdgeSuperconnectionCrossTermHiggsKinetic.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-superconnection-cross-term-higgs-kinetic-20260623-project
   output_dir: AgentTasks/aristotle-output/6387b084-fa39-4e19-bc2c-64828962b899
-  status: submitted
+  status: integrated
 ```
+
+## Integration note
+
+Integrated as:
+
+```text
+PhysicsSM.Draft.NullEdgeSuperconnectionCrossTermHiggsKinetic
+```
+
+Scientific value: names the cross terms in the finite superconnection square as
+Higgs kinetic/covariant-derivative blocks instead of treating them as terms to
+discard.

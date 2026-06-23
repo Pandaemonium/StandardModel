@@ -92,6 +92,20 @@ theorem boundaryExact_source_eq_zero
   rw [hclosed]
   simp [dot]
 
+/--
+Ward-style name for the same finite conservation identity.
+
+Boundary-generated defect/source bookkeeping has zero response against every
+bulk test whose adjoint divergence vanishes. This is the exact finite theorem
+the P9 plan calls `eventConservation_kills_defect_source`.
+-/
+theorem eventConservation_kills_defect_source
+    {b f : Nat} (D : Fin b -> Fin f -> Real)
+    (a : Cochain b) (test : Cochain f)
+    (hclosed : BulkClosed D test) :
+    sourcePairing (boundarySource D a) test = 0 :=
+  boundaryExact_source_eq_zero D a test hclosed
+
 /-- Boundary-source invisibility is invariant under adding boundary bookkeeping. -/
 theorem sourcePairing_eq_of_boundary_difference
     {b f : Nat} (D : Fin b -> Fin f -> Real)
