@@ -1,380 +1,514 @@
-# Gemini + Aristotle autonomous run plan
+# Gemini + Aristotle ambitious autonomous research plan
 
 Date: 2026-06-23
 
-Purpose: prepare an autonomous Gemini run that uses Aristotle as the proof
-engine, while avoiding the two failure modes exposed by the previous runs:
+Purpose: run Gemini as a serious autonomous research collaborator on the
+null-edge causal graph program, using Aristotle as the proof engine and using
+the repo's semantic-search, Neo4j, Zotero, and literature tooling as active
+research infrastructure.
 
-- activity measured by number of jobs rather than publication value;
-- broad uncommitted theorem surface that outruns semantic review.
+The goal is not to keep Aristotle busy. The goal is to create publishable
+progress: sharper claims, better definitions, new finite theorem targets,
+verified proof artifacts, source-backed manuscript sections, and clear
+demotion criteria for branches that do not survive scrutiny.
 
-The goal is top-quality progress toward publishable null-edge results, especially
-P9 source visibility and the P7/P6 information-theoretic spine, not maximum
-throughput.
+## User-approved launch parameters
 
-## Questions for the user before launch
+Gemini has the following permissions and constraints:
 
-These are tuning questions, not blockers. The default recommendations are shown
-after each question.
+1. Repository edits are allowed.
+   - Gemini may edit `AgentTasks/`, `Sources/`, docs, scripts, and draft Lean
+     files when the edit directly advances the research program.
+   - Gemini may integrate Aristotle results into draft Lean after the documented
+     review gates.
+   - Gemini must not silently rewrite broad unrelated surfaces.
 
-1. Should Gemini be allowed to edit repository files, or should it produce only
-   task notes, prompts, and review reports?
-   Default: allow edits only in `AgentTasks/` plus small draft Lean/doc edits
-   needed for focused Aristotle handoffs.
+2. Aristotle concurrency: up to 3 simultaneous jobs.
+   - These can be proof, strategy/design, or audit jobs.
+   - Gemini should not keep all three slots full for their own sake.
+   - A slot is worth filling only when the target could move a publication gate.
 
-2. What Aristotle concurrency should Gemini use during the first phase?
-   Default: at most 2 active proof jobs plus 1 strategy/design job until the
-   current Claude batch is triaged; raise to 4-5 only after integration debt is
-   under control.
+3. P9 is the default top priority, not a prison.
+   - P9 source visibility / cosmological constant remains the highest-risk,
+     highest-upside branch.
+   - Gemini should begin by asking whether P9 still has a realistic route to a
+     substantial finite result.
+   - If semantic search, literature, or theorem triage shows that another lane
+     has higher impact or a cleaner near-term breakthrough, Gemini may pivot and
+     must explain why.
 
-3. Should P9 dominate the run?
-   Default: yes. P9 is the flagship high-risk/high-leverage physics branch. P7
-   and P6 should support it through observer-channel, relative-entropy, and
-   concurrence tools.
+4. Zotero/Neo4j writes are allowed for important papers.
+   - Add papers only when they are real guardrails for a live claim, theorem, or
+     manuscript section.
+   - Always run duplicate checks by DOI/arXiv before adding.
+   - Record what claim the source supports.
 
-4. Should Gemini be allowed to add papers to Zotero/Neo4j?
-   Default: yes, but only after a source is verified as a guardrail for a live
-   theorem or claim boundary. No broad literature dumps.
-
-5. Should Gemini be allowed to commit?
-   Default: no. It should leave a clean ledger, verified diffs, and an explicit
-   final report. Commit only after human approval.
-
-## Core division of labor
-
-Gemini's role:
-
-- read the publication plan and post-mortems;
-- triage uncommitted results;
-- do semantic and literature searches for live gates;
-- design definitions and theorem statements;
-- prepare focused Aristotle packages;
-- integrate only mechanically clean results;
-- write clear review notes and manuscript-facing summaries.
-
-Aristotle's role:
-
-- fill focused Lean proof holes;
-- prove helper lemmas;
-- test whether a proposed theorem is false or underspecified;
-- return completion reports with solved targets, statement changes, remaining
-  proof holes, and assumptions used.
-
-Gemini should not burn time on hard Lean proof search when Aristotle is
-available. Gemini should also not submit vague theorem targets to Aristotle.
-Every proof job must have a typechecking statement and a focused package before
-submission.
+5. No commits.
+   - Leave clean diffs, ledgers, verification output, and a final report.
+   - Do not run `git commit`.
 
 ## North star
 
-Every action should answer one question:
+Every autonomous cycle should answer:
 
 ```text
-Does this make a publication claim more credible, sharper, or more honestly
-falsifiable?
+What is the most publication-worthy thing we can make more true, more precise,
+or more falsifiable today?
 ```
 
-If the answer is no, Gemini should not do it, even if a slot is idle.
+The run should prefer a single serious insight over ten mechanical support
+lemmas. A good outcome may be a theorem, but it may also be a source-backed
+definition, a no-go result, a manuscript-ready argument, a decisive literature
+connection, or a clear reason to demote a tempting branch.
 
-The highest-value immediate publication gates are:
+## Required reading before action
 
-1. P9: finite source visibility for the cosmological-constant branch.
-2. P7: observer channels, relative-entropy monotonicity, recoverability.
-3. P6: reduced visible concurrence / Gram-overlap support for mass.
-4. P1/P2 support: accessible mass manuscript anchors and operator conventions.
+Gemini should start by reading these files:
 
-## Lessons incorporated from previous runs
+- `AGENTS.md`
+- `docs/BUILD.md`
+- `docs/ARISTOTLE.md`
+- `Scripts/MCP_SERVERS.md`
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+- `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
+- `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md`
+- `AgentTasks/null-edge-claude-autonomous-run-postmortem-2026-06-23.md`
+- `AgentTasks/null-edge-autonomous-run-postmortem-2026-06-23.md`
+- `AgentTasks/null-edge-goal-50-jobs-2026-06-22.md`
 
-### From the 18-cycle Aristotle run
+Then immediately run a semantic repo search on the live question it chooses,
+rather than relying on memory or keyword grep.
 
-- Focused standalone packages worked. Full-repo Aristotle jobs often waste time
-  on broad builds.
-- P9 advanced when the loop pursued finite pass/fail theorems, not slot usage.
-- Strategy jobs were valuable only when they changed the next queue.
-- The final cycle should close and verify, not create new integration debt.
-- Ledger boundaries matter. Do not append a new autonomous run to an old run
-  without a new section or file.
+## Tooling Gemini should actively use
 
-### From Claude's 50-job run
+### Aristotle
 
-- Breadth can be productive, but only if followed by review.
-- The best new result is the P9 non-collinearity/source-visibility no-go
-  cluster.
-- The uncommitted surface is already wide: 20 new draft modules plus many
-  standalone packages and strategy reports.
-- More jobs before triage will convert useful theorem atoms into debt.
-- The next useful state is not "50 jobs completed"; it is "P9 and P7/P6 packets
-  semantically reviewed, consolidated, verified, and connected to papers."
+Use `docs/ARISTOTLE.md` as the canonical workflow. The preferred pattern is:
 
-### From low-token integration feedback
+1. Use semantic search and context packs first.
+2. Prepare a focused standalone package when possible.
+3. Make the theorem statement elaborate locally.
+4. Submit to Aristotle only after the target is clear.
+5. Ask Aristotle for a completion report: solved targets, statement changes,
+   remaining proof holes, and assumptions used.
+6. Integrate by helper report and diff, not by reading giant output trees.
 
-- Read diffs and helper reports, not whole extracted trees.
-- Use statement-identity checks before semantic review.
-- Use placeholder scans and Lean checks as trust gates.
-- Use `lake env lean <file>` first, targeted `lake build <module>` second, one
-  full `lake build` per batch.
-- Reuse context packs at integration time.
-- Ask Aristotle for a completion report in every submission prompt.
+Useful commands:
+
+```powershell
+aristotle list --limit 30
+aristotle tasks <project-id> --limit 10
+python Scripts/aristotle/integrate_completed.py <project-id>
+python Scripts/aristotle/integrate_completed.py --from-list
+```
+
+Focused package helper:
+
+```powershell
+& .\Scripts\prepare_aristotle_focused_submission.ps1 `
+  -JobName <job-name> `
+  -RootModule <RootModule> `
+  -SourceRoot <standalone-source-root> `
+  -LeanPath <RootModule>/Core.lean `
+  -TaskNote AgentTasks/<task-note>.md
+```
+
+### Semantic search over our own work
+
+Use this before creating theorem targets, strategy notes, or manuscript claims:
+
+```powershell
+$py = "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+& $py Scripts/lit/neo4j_doc_search.py --query "<repo-context query>" --format markdown
+```
+
+Examples:
+
+```powershell
+& $py Scripts/lit/neo4j_doc_search.py --query "P9 source visibility boundary exact bookkeeping visible Plucker mass" --format markdown
+& $py Scripts/lit/neo4j_doc_search.py --query "relative entropy observer channel recoverability source visibility" --format markdown
+& $py Scripts/lit/neo4j_doc_search.py --query "Dirac square root Plucker mass superconnection block square" --format markdown
+```
+
+Refresh after meaningful edits:
+
+```powershell
+& $py Scripts/lit/neo4j_doc_search.py
+```
+
+### Semantic paper search over our Zotero/Neo4j library
+
+Use this before deciding whether a physics claim is new or well grounded:
+
+```powershell
+& $py Scripts/lit/neo4j_paper_search.py --query "<paper/source query>" --format markdown
+```
+
+Examples:
+
+```powershell
+& $py Scripts/lit/neo4j_paper_search.py --query "causal set cosmological constant everpresent Lambda observational amplitude tension" --format markdown
+& $py Scripts/lit/neo4j_paper_search.py --query "relative entropy ANEC recoverability quantum null energy condition" --format markdown
+& $py Scripts/lit/neo4j_paper_search.py --query "Sorkin Johnston causal set entropy diamond area law truncation" --format markdown
+& $py Scripts/lit/neo4j_paper_search.py --query "spin foam closure simplicity constraint coherent intertwiners source" --format markdown
+```
+
+### External literature search
+
+Use MCP scholarly search or the shell helper described in
+`Scripts/MCP_SERVERS.md` when the local library is missing a key source. Add
+papers to Zotero only if they become active sources for a claim.
+
+Minimum source workflow:
+
+1. Search local Neo4j paper index first.
+2. Search arXiv / Semantic Scholar / Crossref if the library is missing a
+   needed source.
+3. Check DOI/arXiv duplicates before adding to Zotero.
+4. Add the paper to Zotero only if it is important.
+5. Refresh paper embeddings.
+6. Record the claim supported by the source in the run ledger or plan.
+
+### Context packs for Aristotle
+
+Before any nontrivial Aristotle job:
+
+```powershell
+& $py Scripts/aristotle/make_context_pack.py --query "<target>" --slug "<slug>"
+```
+
+Include the generated context pack in the task note or submission package. Reuse
+the same pack during integration as the review cheat-sheet.
+
+## Research agenda and dynamic priorities
+
+Gemini should maintain a live ranked list of the top three active research
+opportunities. The initial ranking is:
+
+1. P9: cosmological constant / source visibility from diamond closure.
+2. P7: observer channels, relative entropy, recoverability, and source
+   invisibility.
+3. P1/P2/P6 support: origin of mass, Dirac square root, concurrence, and
+   internal Gram overlap.
+
+This ranking is provisional. Gemini should update it when evidence changes.
+
+### P9 decision question
+
+The P9 branch is worth top priority only if Gemini can identify a finite
+theorem or definition that does at least one of the following:
+
+- separates visible momentum closure from BF/surface closure and observer
+  invisibility;
+- proves that a class of boundary-exact or internally coherent bookkeeping is
+  invisible to closed bulk tests;
+- proves that visible Plucker mass/energy sources a bulk diamond functional;
+- gives a finite residual-noise scaling law strong enough to compare with
+  everpresent-Lambda tension;
+- imports a relative-entropy or recoverability diagnostic that turns "hidden"
+  into a quantitative observer statement.
+
+If Gemini cannot identify such a result after honest semantic and literature
+search, it should demote P9 for this run and pivot to the next highest-impact
+lane.
+
+### P7 as P9's information-theoretic spine
+
+P7 should not be treated as a separate essay unless it helps P9. The key
+question is:
+
+```text
+Can source invisibility be formulated as information loss under a finite
+observer channel, with relative entropy / recoverability measuring the gap?
+```
+
+Promising finite targets:
+
+- finite data-processing inequalities for classical distributions or matrices;
+- Petz/recoverability toy lemmas;
+- observer-channel definitions shared by P7 and P9;
+- a finite Sorkin-Johnston-style reference state for a causal diamond;
+- a relative-entropy second-difference diagnostic for diamond source visibility.
+
+### P1/P2/P6 as the stable theorem spine
+
+If P9 stalls, Gemini should not flail. It should consolidate the strongest
+banked line:
+
+- P1: Plucker mass from null spinor bundles.
+- P2: finite Dirac square root of Plucker mass.
+- P6: internal Gram overlap / concurrence interpretation.
+
+High-value work here includes:
+
+- manuscript sections that make the Higgs/chirality/null-edge story accessible;
+- convention tables and theorem-to-physics audits;
+- promotion plans for kernel-clean draft modules;
+- new finite theorem targets connecting concurrence, Gram overlap, and the mass
+  manuscript.
+
+## High-payoff autonomous behaviors
+
+Gemini should look for work that could pay off big. Examples:
+
+1. Find a missing definition that makes several theorem islands one theorem.
+   - Example: a `DiamondSourceVisibility` API that unifies P9 boundary-exact
+     invisibility, visible Plucker source, residual noise, and observer
+     coarse-graining.
+
+2. Turn a fuzzy physics phrase into a finite pass/fail theorem.
+   - Example: replace "vacuum bookkeeping does not gravitate" with "boundary
+     exact source cochains vanish against closed bulk tests."
+
+3. Prove or ask Aristotle to prove a small no-go theorem that prevents bad
+   interpretation.
+   - Example: visible fan closure is a rest-frame massive condition, not source
+     invisibility.
+
+4. Use literature to add a guardrail that saves months of wrong framing.
+   - Example: everpresent-Lambda observational amplitude tension, SJ entropy
+     truncation, spin-foam simplicity-sector caveats, or ANEC recoverability
+     hypotheses.
+
+5. Draft a manuscript-ready argument while proofs run.
+   - Example: a P9 section titled "Three Closures That Must Not Be Confused" or
+     a P1 section explaining how the Higgs permits chirality flips without
+     saying that the Higgs is a literal drag force.
+
+6. Ask Aristotle for strategic proof scaffolding when definitions are immature.
+   - Example: "Given this full P9 API sketch, identify the strongest finite
+     theorem that is likely provable in Mathlib/Lean this week."
+
+7. Demote a branch cleanly.
+   - Example: if P9 can only restate causal-set everpresent Lambda without a new
+     suppression or visibility theorem, record that and pivot.
+
+8. Collapse duplicated draft surfaces.
+   - Example: if three P9 modules prove variants of the same boundary-exact
+     lemma, propose one shared API and one theorem naming convention.
+
+9. Use semantic search to discover prior internal work before writing.
+   - Example: query the repo for "closed visible fan rest energy" before
+     designing a new source-visibility theorem.
+
+10. Keep an evidence ledger.
+    - For every claim, record whether it is trusted Lean, kernel-clean draft,
+      source-backed prose, heuristic, or speculation.
 
 ## Launch phases
 
-### Phase 0: preflight, no new Aristotle jobs
+### Phase 0: orient and choose the live research question
 
-Budget: first 30-60 minutes.
+Timebox: 30-45 minutes.
 
-Gemini must:
+Actions:
 
-1. Read:
-   - `AGENTS.md`
-   - `docs/ARISTOTLE.md`
-   - `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
-   - `AgentTasks/null-edge-claude-autonomous-run-postmortem-2026-06-23.md`
-   - `AgentTasks/null-edge-autonomous-run-postmortem-2026-06-23.md`
-   - `AgentTasks/null-edge-goal-50-jobs-2026-06-22.md`
+1. Read the required files above.
 2. Run:
    - `git status --short`
-   - `aristotle list --limit 20`
-   - `lake env lean PhysicsSMDraft.lean`
-   - the placeholder/escape-hatch token scan on the 20 Claude-integrated draft
-     modules.
-3. Write a fresh run ledger:
+   - `aristotle list --limit 30`
+   - semantic repo search for P9, P7, and P1/P2/P6.
+   - semantic paper search for the strongest live physics question.
+3. Create or update:
    - `AgentTasks/null-edge-gemini-aristotle-run-ledger-2026-06-23.md`
 4. Record:
    - active Aristotle jobs;
    - completed but unintegrated jobs;
-   - integrated modules needing semantic review;
-   - design/strategy outputs needing extraction;
-   - build/token-scan status.
+   - the top three live research opportunities;
+   - whether P9 still appears to have a realistic high-impact route;
+   - the first proposed action.
 
-No new proof jobs are allowed in Phase 0.
+No new Aristotle job is required in Phase 0. Gemini may submit only if it finds
+an obvious completed/staged blocker whose value is high and whose target is
+already clean.
 
-### Phase 1: triage Claude's uncommitted batch
+### Phase 1: research synthesis and target selection
 
-Budget: first substantive work block.
+Timebox: first substantive work block.
 
-Classify every uncommitted Claude artifact into one of five buckets:
+Gemini must produce a short research memo in the run ledger:
 
 ```text
-KEEP-REVIEW      valuable and should be semantically reviewed soon
-KEEP-INFRA       useful support lemma / convention anchor, not a paper result
-EXTRACT-REPORT   strategy/design output that should become an AgentTasks note
-PARK             harmless but low-priority standalone artifact
-RETRY/REFUTE     failed, incomplete, or statement likely wrong
+Best current opportunity:
+Claim it could support:
+Existing Lean/prose anchors:
+Key literature guardrails:
+What would make it publishable:
+What would kill or demote it:
+Next theorem / definition / manuscript action:
 ```
 
-Minimum first-pass priorities:
+For P9, the memo must explicitly distinguish:
 
-1. P9 review packet:
-   - `NullEdgeP9NoncollinearMassNogo`
-   - `NullEdgeP9MassCombine`
-   - `NullEdgeP9EverpresentLambdaScaling`
-   - `NullEdgeP9EverpresentLambdaTension`
-   - completed visible-fan characterization job, if available
-   - diamond-visibility geometric API design report
-2. P7/P6 review packet:
-   - `NullEdgeP7KLDataProcessing`
-   - `NullEdgeP7StochasticContraction`
-   - `NullEdgeP7BinaryEntropyBound`
-   - `NullEdgeP6Concurrence`
-   - `NullEdgeGramDeterminant`
-3. P1/P2 support packet:
-   - `NullEdgeRankOneNullMomentum`
-   - `NullEdgeTwoNullMassive`
-   - `NullEdgePauliSlash`
-   - `NullEdgeChiralityProjectors`
-   - `NullEdgeHiggsPotential`
+```text
+visible momentum closure
+BF / surface closure
+observer invisibility
+boundary-exact bookkeeping
+bulk source pairing
+residual fluctuation scaling
+```
 
-Phase 1 output:
+For P7, the memo must explicitly name:
 
-- a short triage table in the run ledger;
-- no more than 3 proposed next Aristotle jobs;
-- one recommendation about whether P9 is ready for a focused manuscript
-  section.
+```text
+observer algebra or channel
+reference state
+relative entropy / recoverability quantity
+finite theorem target
+connection to P9
+```
 
-### Phase 2: consolidate before expanding
+For P1/P2/P6, the memo must explicitly name:
 
-Gemini should create or update planning notes before submitting more proof jobs.
-The key consolidation targets are:
+```text
+state space
+first-order operator or reduced-density object
+exact square/determinant/concurrence identity
+Higgs/chirality interpretation boundary
+manuscript section affected
+```
 
-1. P9 shared API plan:
-   - one reviewed `DiamondSourceVisibility` draft API;
-   - separation of visible momentum closure, BF/surface closure, and observer
-     invisibility;
-   - explicit source pairing and observer-channel definitions.
-2. P7 shared observer-channel plan:
-   - finite distributions or matrices;
-   - observer/coarse-graining channel;
-   - relative-entropy loss;
-   - recoverability gap;
-   - exact connection point to P9 source visibility.
-3. P6 concurrence/mass-ratio plan:
-   - reduced visible density normalization;
-   - concurrence or linear-entropy identity;
-   - hypotheses under which monotonicity is valid.
+### Phase 2: execute with up to 3 active Aristotle jobs
 
-Only after these plans are clear should Gemini submit new theorem jobs.
+Gemini may keep up to 3 Aristotle jobs active, chosen from independent lanes.
+Good combinations:
 
-## New Aristotle job policy
+- 1 focused proof job + 1 strategy scaffold + 1 audit job;
+- 2 focused proof jobs + 1 literature-grounded design job;
+- 1 P9 job + 1 P7 job + 1 P1/P2 support job.
 
-### Allowed job types
+Gemini should avoid three simultaneous jobs in the same narrow module unless the
+results are obviously independent.
 
-1. Proof job
-   - A standalone Lean file elaborates except for intended proof holes.
-   - Imports are limited to Mathlib and copied local definitions unless a
-     full-repo import is truly necessary.
-   - A semantic context pack exists.
-   - The prompt asks Aristotle to report statement changes, assumptions, solved
-     targets, and remaining proof holes.
+Before each submission:
 
-2. Definition-design job
-   - No code build is expected.
-   - The output must rank definitions by downstream theorem value.
-   - The job must identify false starts and demotion criteria.
+1. Check `aristotle list --limit 30` to avoid duplicates.
+2. Generate or reuse a context pack.
+3. Verify the target file elaborates locally, if it is a proof job.
+4. Write a task note with project metadata, expected check command, source
+   context, and completion-report request.
+5. Submit.
+6. Record the project ID immediately.
 
-3. Audit job
-   - No code generation required.
-   - Aristotle or Gemini scores definitions/theorems against physics alignment.
-   - The output is a report, not an integrated Lean file.
+### Phase 3: integrate, consolidate, and write
 
-4. Counterexample/no-go job
-   - Explicitly allowed when a branch is underdefined.
-   - A refutation is success if it sharpens the gate.
+Whenever a job completes, Gemini should:
 
-### Disallowed jobs
+1. Run the integration helper in dry-run mode.
+2. Read the helper report and diff, not the whole extracted tree.
+3. Stop if theorem statements changed unexpectedly.
+4. Run placeholder/escape-hatch scans on candidate Lean.
+5. Run `lake env lean <file>`, then targeted `lake build <module>`.
+6. Update the run ledger.
+7. If the result is scientifically important, update the relevant plan or
+   manuscript section.
 
-- broad "prove this whole program" jobs;
-- proof jobs whose statement has not elaborated locally;
-- jobs over full `PhysicsSM` imports when a focused package would work;
-- jobs submitted to keep concurrency full;
-- jobs that duplicate a completed result without checking `aristotle list`;
-- jobs that ask Aristotle to invent physics definitions without a claim boundary.
+Gemini should use waiting time well:
 
-## Recommended first new jobs after triage
+- perform literature searches;
+- add important sources to Zotero/Neo4j;
+- write manuscript sketches;
+- consolidate APIs;
+- prepare next theorem statements;
+- produce audit notes.
 
-Submit none until Phase 1 is complete. Then choose at most two proof jobs and
-one strategy/design job from this list.
+## Ambitious Aristotle job menu
 
-### Highest-value P9 jobs
+Gemini should not submit this menu blindly. It should choose after analysis.
 
-1. `DiamondSourceVisibility` API design refinement
-   - Type: design/audit.
-   - Goal: turn the P9 theorem atoms into one coherent finite API.
-   - Output: definition list, theorem dependency graph, demotion criteria.
+### P9 flagship candidates
 
-2. `visibleFan_characterization`
-   - Type: proof.
-   - Goal: characterize when a positive visible fan has zero moment mass/source.
-   - Why: completes the non-collinearity no-go into an iff-style guardrail.
+1. `DiamondSourceVisibility` strategy/audit job
+   - Ask Aristotle to read the P9 plan/context pack and propose a minimal finite
+     API that separates visible closure, BF closure, observer invisibility, and
+     source pairings.
+   - Success: a definition dependency graph and three theorem targets.
 
-3. `bfClosure_implies_no_bulkDivergence`
-   - Type: proof, if the source API is ready.
-   - Goal: distinguish BF/surface closure from visible rest-frame closure.
+2. `boundaryExact_invisible_to_closedBulkTests`
+   - Proof job if already isolated.
+   - Success: a finite cochain/source theorem showing exact bookkeeping is
+     invisible to closed bulk observables.
 
-4. `weightedResidual_vs_everpresentLambda_tension`
-   - Type: proof or counterexample.
-   - Goal: state exactly when weighted suppression beats `1 / sqrt(V)`.
+3. `visiblePluckerMass_sources_bulkPairing`
+   - Proof or design job.
+   - Success: a finite theorem showing non-collinear visible null fans generate
+     a nonzero bulk source functional under explicit hypotheses.
 
-### Highest-value P7/P6 jobs
+4. `weightedResidualSuppression_threshold`
+   - Proof/counterexample job.
+   - Success: exact finite inequality identifying when weighted residual noise
+     beats or fails to beat everpresent-Lambda scaling.
 
-1. `relativeEntropyDataProcessing_finiteChannel`
-   - Type: proof, only if hypotheses are clean.
-   - Goal: finite observer-channel monotonicity.
+5. `sjReferenceState_for_finiteDiamond`
+   - Strategy/design job with literature context.
+   - Success: a finite matrix definition that could support relative entropy on
+     causal diamonds without overclaiming continuum entropy.
 
-2. `massRatio_eq_concurrence_finiteQubit`
-   - Type: proof.
-   - Goal: connect normalized determinant mass ratio to concurrence/linear
-     entropy in the exact finite convention used by P1/P6.
+### P7 information candidates
 
-3. `recoverabilityGap_controls_sourceVisibility_definitional`
-   - Type: design.
-   - Goal: make P7 usable by P9 without overclaiming ANEC/QNEC.
+1. `finiteObserverChannel_dataProcessing`
+   - Proof job in classical finite distributions or matrices.
+   - Success: a reusable finite monotonicity lemma.
 
-### Manuscript support jobs
+2. `recoverabilityGap_controls_visibility_toy`
+   - Design/proof hybrid.
+   - Success: a toy theorem or definition that makes source visibility a
+     recoverability statement.
 
-1. `rankOneNullMomentum_source_aligned`
-   - Type: review/proof cleanup.
-   - Goal: connect "each fine piece is massless" directly to the P1 manuscript.
+3. `qubitConcurrence_massRatio_monotonicity_boundary`
+   - Proof/audit job.
+   - Success: exact finite qubit identities plus a clear statement that
+     monotonicity needs local/LOCC hypotheses.
 
-2. `twoNullMassive_collinearity_iff`
-   - Type: proof.
-   - Goal: strengthen the accessible origin-of-mass explanation with a clean
-     equality criterion.
+### P1/P2/P6 consolidation candidates
 
-## Gemini run loop
+1. `massRatio_eq_concurrence_finiteQubit`
+   - Proof job.
+   - Success: clean theorem connecting normalized determinant mass to
+     concurrence / linear entropy.
 
-Each cycle:
+2. `higgsChiralityFlip_operator_audit`
+   - Audit/design job.
+   - Success: score each Higgs/chirality definition against Standard Model
+     physics and propose comments for ambiguous code.
 
-1. Reconcile:
-   - `git status --short`
-   - `aristotle list --limit 20`
-   - task notes for active jobs only.
-2. Integrate before refill:
-   - dry-run `integrate_completed.py`;
-   - inspect helper report and diff;
-   - check statement identity;
-   - scan candidate files;
-   - run `lake env lean <file>`;
-   - only then copy/apply.
-3. Update ledger:
-   - status rows;
-   - one-sentence scientific value;
-   - next action.
-4. Refill only if:
-   - integration debt is below threshold;
-   - the target is publication-relevant;
-   - the statement or design prompt is clear.
-5. Stop or pause if:
-   - a proof requires changing the theorem statement;
-   - P9 APIs remain duplicated after another proof;
-   - two jobs in a row are support lemmas with no paper gate;
-   - broad build problems recur;
-   - semantic search or source grounding is unavailable for a source-sensitive
-     claim.
+3. `originOfMass_accessible_section`
+   - Manuscript job for Gemini itself, not Aristotle.
+   - Success: a high-school-accessible but honest Higgs/null-edge explanation.
 
-## Concurrency rules
+4. `internalGramOverlap_flavor_literature_bridge`
+   - Literature + manuscript job.
+   - Success: source-backed comparison to Froggatt-Nielsen, split fermions,
+     quantum marginals, and Jarlskog constraints, with explicit claim boundary.
 
-Phase 0:
+## Literature and Zotero/Neo4j rules
 
-- 0 new Aristotle jobs.
+Gemini may add papers when important. A paper is important if it is one of:
 
-Phase 1:
+- a primary source for a theorem target;
+- a guardrail that prevents an overclaim;
+- a direct prior-art comparison for a manuscript;
+- a mathematical source needed to state a Lean theorem correctly.
 
-- 0-1 new Aristotle jobs, only if the job fixes a direct integration blocker.
+Do not add broad "maybe related" papers.
 
-Phase 2:
+For every added paper, record:
 
-- Up to 2 proof jobs plus 1 strategy/design job.
+```text
+title:
+doi/arxiv:
+Zotero key:
+Neo4j status:
+claim supported:
+where cited or planned:
+```
 
-After the P9/P7 review packets are triaged:
-
-- Up to 4-5 total active jobs if there are truly independent high-value targets.
-
-Do not exceed 5 active Aristotle jobs without explicit user approval.
-
-## Semantic search and literature rules
-
-Use semantic search before literature-heavy claims:
+After adding, refresh:
 
 ```powershell
-$py = "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
-& $py Scripts/lit/neo4j_doc_search.py --query "<repo-context query>"
-& $py Scripts/lit/neo4j_paper_search.py --query "<paper/source query>"
+& $py Scripts/lit/neo4j_paper_search.py
 ```
-
-Use context packs before nontrivial Aristotle jobs:
-
-```powershell
-$py = "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
-& $py Scripts/aristotle/make_context_pack.py --query "<target>" --slug "<slug>"
-```
-
-Add papers to Zotero/Neo4j only when:
-
-- the paper is a primary guardrail or source for a live theorem/claim;
-- DOI/arXiv duplicate checks pass;
-- the plan records exactly what claim the paper supports.
-
-Do not let literature search become a way to avoid theorem/API work.
 
 ## Integration quality gates
 
@@ -401,7 +535,26 @@ pre-commit passed
 
 No batch promotion from draft to trusted.
 
-## Required Gemini output format
+## Stop, pivot, and demotion rules
+
+Gemini should stop or pivot when:
+
+- P9 only restates everpresent Lambda without a new finite source-visibility,
+  suppression, or recoverability theorem;
+- a theorem requires weakening the statement;
+- a definition conflates visible momentum closure, BF closure, and observer
+  invisibility;
+- literature search reveals the claim is already known and the repo adds no
+  formalization or new finite wrapper;
+- two consecutive jobs produce only low-level support lemmas with no manuscript
+  gate;
+- broad build or packaging failures recur;
+- semantic search or source grounding is unavailable for a source-sensitive
+  claim.
+
+Demotion is progress if it keeps the program honest.
+
+## Required checkpoint format
 
 Every Gemini checkpoint should end with:
 
@@ -418,6 +571,11 @@ Aristotle state:
 - integrated:
 - blocked:
 
+Literature / Neo4j state:
+- searches run:
+- papers added:
+- claim support updated:
+
 Verification:
 - ...
 
@@ -428,53 +586,67 @@ Stop/demotion signals:
 - ...
 ```
 
-This keeps the run auditable and prevents "activity fog."
-
 ## Launch prompt for Gemini
 
 ```text
-You are running an autonomous Gemini + Aristotle loop in the StandardModel Lean
-repo. Your goal is publishable null-edge progress, not job count.
+You are running an ambitious autonomous Gemini + Aristotle research sprint in
+the StandardModel Lean repo. Your goal is publishable null-edge progress, not job
+count.
 
-First read AGENTS.md, docs/ARISTOTLE.md,
-Sources/Null_Edge_Causal_Graph_Publication_Plan.md,
+You may edit repository files, including docs, task notes, manuscript drafts,
+and draft Lean, but you must not commit. You may run up to three simultaneous
+Aristotle jobs, but only when the targets are independent and publication-
+relevant. You may add important papers to Zotero/Neo4j after duplicate checks.
+
+Start by reading AGENTS.md, docs/BUILD.md, docs/ARISTOTLE.md,
+Scripts/MCP_SERVERS.md, Sources/Null_Edge_Causal_Graph_Publication_Plan.md,
+Sources/Null_Edge_Causal_Graph_Strengthened_Program.md,
+Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md,
 AgentTasks/null-edge-claude-autonomous-run-postmortem-2026-06-23.md,
-AgentTasks/null-edge-autonomous-run-postmortem-2026-06-23.md, and
-AgentTasks/null-edge-gemini-aristotle-autonomous-run-plan-2026-06-23.md.
+AgentTasks/null-edge-autonomous-run-postmortem-2026-06-23.md,
+AgentTasks/null-edge-goal-50-jobs-2026-06-22.md, and this plan.
 
-Phase 0 has no new Aristotle submissions. Reconcile the workspace, Aristotle
-state, and Claude's uncommitted batch. Create or update
-AgentTasks/null-edge-gemini-aristotle-run-ledger-2026-06-23.md. Classify the
-uncommitted artifacts into KEEP-REVIEW, KEEP-INFRA, EXTRACT-REPORT, PARK, or
-RETRY/REFUTE.
+Then run semantic searches over the repo and paper library before choosing your
+research direction. P9 source visibility / cosmological constant is the default
+top priority, but you may pivot if your analysis shows another lane has higher
+impact or a cleaner near-term breakthrough. Explain any pivot.
 
-Prioritize P9 source visibility and the P7/P6 information-theoretic support
-lane. Do not optimize for number of jobs. Submit new Aristotle jobs only after
-triage, only with focused packages or clear strategy/design prompts, and only
-when the result would move a publication gate.
+Create or update
+AgentTasks/null-edge-gemini-aristotle-run-ledger-2026-06-23.md. In the ledger,
+rank the top three research opportunities, name the finite theorem or
+definition each could produce, record the literature guardrails, and choose the
+first action.
 
-Use semantic search and context packs for source-sensitive or nontrivial proof
-jobs. Read diffs and integration helper reports, not whole output trees. Never
-weaken theorem statements silently. Keep continuum physics claims conjectural
-unless the finite theorem actually supports them.
+Use Aristotle as a proof specialist. For proof jobs, prepare focused packages
+whose theorem statements elaborate locally. Generate context packs for
+nontrivial jobs. Ask Aristotle for completion reports. Integrate with the repo
+helper, diff review, placeholder scans, Lean checks, and targeted builds.
+
+Use waiting time for serious research: literature searches, Zotero/Neo4j adds
+for important papers, manuscript sketches, API consolidation, theorem design,
+and audit notes. Look for high-payoff moves: definitions that unify theorem
+islands, no-go results that sharpen claim boundaries, source-backed guardrails,
+and manuscript-ready arguments.
 
 End every checkpoint with Scientific progress, Files changed, Aristotle state,
-Verification, Next best action, and Stop/demotion signals.
+Literature / Neo4j state, Verification, Next best action, and Stop/demotion
+signals.
 ```
 
 ## Expected good end state
 
 A successful Gemini run should leave:
 
-- a clean run ledger;
-- a reviewed classification of Claude's batch;
-- P9/P7/P6 packets prioritized by publication value;
-- no broad new unreviewed theorem sprawl;
-- one or two genuinely high-value Aristotle submissions, if warranted;
-- extracted strategy/design reports that are actually useful;
-- updated publication-plan notes only where the new results justify them;
-- clear stop/demotion signals for P9 if the finite source-visibility gate fails.
+- a clear run ledger with ranked research opportunities;
+- a real assessment of whether P9 still deserves top priority;
+- one or more high-value Aristotle jobs, up to three active at a time;
+- integrated completed results only when they pass review gates;
+- source-backed P9/P7/P1-P2-P6 research notes;
+- important papers added to Zotero/Neo4j with claim support recorded;
+- manuscript-ready paragraphs or section outlines where appropriate;
+- fewer duplicated theorem surfaces, not more;
+- explicit demotion criteria for branches that fail;
+- no commits.
 
-The best possible outcome is not that Gemini keeps Aristotle busy. The best
-outcome is that it converts the current theorem burst into a smaller number of
-reviewed, sourced, manuscript-ready claims.
+The best possible result is that Gemini discovers the next genuinely strong
+paper claim and builds the proof/literature/manuscript scaffolding around it.

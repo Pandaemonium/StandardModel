@@ -125,6 +125,13 @@ import PhysicsSM.Draft.NullEdgeSU2Algebra
 import PhysicsSM.Draft.NullEdgeP9FluctuationScaling
 import PhysicsSM.Draft.NullEdgeP9WeightedFluctuation
 import PhysicsSM.Draft.NullEdgeP9UniformSuppression
+import PhysicsSM.Draft.NullEdgeFermionOscillator
+import PhysicsSM.Draft.NullEdgeMassRatioMonotone
+import PhysicsSM.Draft.NullEdgeP7PetzRecovery
+import PhysicsSM.Draft.NullEdgeP9WeightedSuppressionThreshold
+import PhysicsSM.Draft.NullEdgeP3CrossedModule
+import PhysicsSM.Draft.NullEdgeP7RecoverabilityGap
+import PhysicsSM.Draft.NullEdgeP9ResidualVarianceCellArea
 
 /-!
 # PhysicsSM draft root
