@@ -1177,6 +1177,47 @@ it is not a second mass term to be added to `Phi^dagger Phi`. The cross term
 `[D_U, Phi]` should be interpreted as the finite gauged Higgs kinetic block,
 not as noise to be discarded.
 
+The newest super-Dirac audit sharpens this further. The missing theorem is not
+another abstract expansion of `D^2`; it is the soldering or symbol theorem
+showing that the first-order causal operator has local symbol equal to the
+Dirac slash of the null-edge momentum bundle:
+
+```text
+[D, M_f]_x
+  -> sum_y a_xy (f(y)-f(x)) gamma.p_xy
+  -> weighted Pluecker mass after squaring.
+```
+
+This is the theorem that would make the static Dirac-Pluecker square root and
+the order-complex Hodge/superconnection operator the same object. Without it,
+the program has adjacent square-root theorems, not yet a unified causal
+operator.
+
+The correct product grading should also be explicit. There is a form/cochain
+grading `Gamma_K` on the order complex and a left/right chirality grading
+`Gamma_F` on the internal finite space. The clean product operator is better
+written schematically as
+
+```text
+D_total = D_U + Gamma_K M_Phi,
+Gamma_total = Gamma_K Gamma_F.
+```
+
+This keeps `Phi` degree-zero on the causal complex and odd only in chirality,
+so the cross term is the gauged Higgs derivative rather than an uncontrolled
+degree-mixing artifact.
+
+The Lorentzian notation must distinguish three structures:
+
+```text
+eta      -- linear fundamental symmetry for the Krein product
+JReal/C  -- antilinear real structure / charge conjugation
+Sigma_m  -- mass-shell sheet involution D / m
+```
+
+The branch-projector theorem concerns `Sigma_m`. It should not be conflated
+with the Krein fundamental symmetry or the antilinear real structure.
+
 The program's theorem islands then become blocks of one square:
 
 ```text
@@ -1201,19 +1242,31 @@ orientability or volume-cycle surrogate, and low-order spectral-action terms.
 If the audit fails, that is useful: it tells us exactly where causal incidence
 differs from the Connes-Chamseddine template.
 
+The closest graph-level prior art is Marcolli-van Suijlekom gauge networks
+(arXiv:1301.3480), so the novelty claim must be narrower than "graph spectral
+triple with Higgs." The null-edge contribution is the causal-directed,
+Lorentzian/Krein, Pluecker-kinetic version. Perez-Sanchez's 2025 comment on
+gauge networks is a useful failure mode: if the Higgs/Yukawa block becomes
+constant or disappears under the relevant coarse-graining, then the finite
+operator has not produced a dynamical Higgs sector.
+
 Prize targets:
 
 ```lean
 superDirac_productGrading_def
 superDirac_kreinForm_def
 superDirac_is_odd
-superDirac_is_KreinSelfAdjoint
-superDirac_J_grading_eq_twoSheet
+superDirac_total_grading_def
+superDirac_etaKreinAdjoint_def
+superDirac_is_etaSelfAdjoint_or_antiSelfAdjoint
+realStructure_chargeConjugation_def
+massShellSign_eq_plusProjector_sub_minusProjector
 covariantOrderDifferential_sq_eq_diamondCurvature
-diamondHolonomy_eq_curvatureBlock_linearized
+diamond_pathDefect_eq_holonomySubOne_mul_reference
 higgsBlock_sq_eq_yukawaMassMatrix
-superDiracSq_kineticSymbol_eq_pluckerDet
-massShell_kinetic_eq_yukawa
+nullGraphDirac_commutator_eq_localSymbol
+localNullSymbol_sq_eq_weightedPluckerMass
+massShellConstraint_iff_kernel_on_bundleMode
 superDiracSq_crossTerm_eq_gaugedHiggsKinetic
 firstOrderFlipGenerator_eigenvalue_eq_mass
 causalSuperDirac_has_realStructure
@@ -2326,32 +2379,37 @@ Priority:
 17. prove the topological Dirac targets on the order complex
    (`topological_dirac_sq_eq_laplacian`, `gapped_dirac_spectrum`) together with
    the no-doubling argument;
-18. define the finite causal super-Dirac candidate
+18. prove the super-Dirac symbol/soldering gate: identify the first-order graph
+   commutator with the local slash of the weighted null-edge momentum bundle,
+   then square it to the weighted Pluecker mass and null-cone/collinearity
+   zero locus;
+19. define the finite causal super-Dirac candidate
    `D_{U,Phi}=d_U+delta_U+Phi+Phi^dagger` and prove the first block-square
    formula under explicit anticommutation and covariance hypotheses;
-19. audit the finite causal super-Dirac candidate against spectral-triple
-   conditions: grading, real structure, first-order condition, inner
-   fluctuations, and low-order spectral-action terms;
-20. prove the pairwise Klein-quadric wrapper
+20. audit the finite causal super-Dirac candidate against spectral-triple
+   conditions: total grading, Krein fundamental symmetry, antilinear real
+   structure, first-order condition, inner fluctuations, and low-order
+   spectral-action terms;
+21. prove the pairwise Klein-quadric wrapper
    `massless_iff_repeated_principal_spinor` /
    `mass_eq_squared_distance_from_klein_quadric`, keeping the scalar
    `Lambda^2 S` Pluecker bracket separate from `Sym^2 S` curvature;
-21. connect the kernel-checked crossed-module/fake-flatness wrapper to a
+22. connect the kernel-checked crossed-module/fake-flatness wrapper to a
    geometric causal-diamond surface-label API, including endpoint covariance,
    fake-flatness, and surface transport;
-22. prove the simplicity / `B wedge B = 0` form of the zero-mass criterion and
+23. prove the simplicity / `B wedge B = 0` form of the zero-mass criterion and
    wire it into the bivector wrapper, matching the modern linear simplicity
    constraint (EPRL/FK) and keeping the single-bivector condition separate from
    the cross-bivector relations;
-23. add a Hopf-link volume-simplicity scaffold for finite boundary graphs, as a
+24. add a Hopf-link volume-simplicity scaffold for finite boundary graphs, as a
    guardrail for any claim that the `B` wrapper reaches spin-foam geometricity
    or Plebanski-sector control;
-24. after defining the diamond source observable, test discrete ANEC/QNEC-style
+25. after defining the diamond source observable, test discrete ANEC/QNEC-style
    positivity before promoting the gravity branch;
-25. add `edgeNeighbor_N` as the finite energetic-causal-set locality relation,
+26. add `edgeNeighbor_N` as the finite energetic-causal-set locality relation,
    explicitly separating effective link locality from fundamental bounded
    valency;
-26. keep observable-relative nullity as a support API around the Plucker and
+27. keep observable-relative nullity as a support API around the Plucker and
    diamond observables, not as an independent ontology.
 
 ### Stage 3: numerical and probabilistic pilots
@@ -2407,8 +2465,9 @@ definitions.
 | The Lambda-channel is the harmonic sector of diamond bookkeeping | No stable coarse-grained, renormalized, or continuum-flow readout sends the source channel to a Laplacian zero-mode/harmonic representative, the identification depends unstably on the SJ metric/window, or the relevant diamond cohomology is geometry-blind at the observer scale |
 | Hodge acyclicity gives structural source suppression | Betti numbers of sprinkled diamond order complexes grow with volume, physical diamonds are generically topologically nontrivial in the relevant degree, or the finite Hodge metric makes the harmonic sector unstable |
 | Area-law harmonic noise improves the P9 branch | Cell-local antisymmetric pairings fail to telescope, boundary terms reintroduce volume scaling, or area-law source noise does not translate into an improved Lambda fluctuation because the response law is nonlocal or absent |
-| Finite causal super-Dirac operator is the master structure | No natural odd Krein/J-self-adjoint first-order operator exists on the causal order complex whose square simultaneously yields the kinetic Pluecker symbol, diamond curvature block, Higgs kinetic cross term, and Higgs/Yukawa chirality-flip block; or the construction double-counts mass by adding `det(P)` and `Phi^dagger Phi` instead of imposing their on-shell equality |
-| Finite spectral-triple audit upgrades the super-Dirac operator | The causal order-complex operator has no coherent real structure, first-order condition, inner-fluctuation behavior, or low-order spectral action matching the Pluecker/diamond/Higgs blocks |
+| Finite causal super-Dirac operator is the master structure | No natural odd Krein/J-self-adjoint first-order operator exists on the causal order complex whose square simultaneously yields the kinetic Pluecker symbol, diamond curvature block, Higgs kinetic cross term, and Higgs/Yukawa chirality-flip block; the construction double-counts mass by adding `det(P)` and `Phi^dagger Phi`; or the mass-shell equality cannot be forced as a kernel/spectral condition |
+| Super-Dirac symbol/soldering theorem is the missing bridge | The first-order graph commutator cannot be identified with a local slash of the weighted null-edge momentum bundle, or the squared local symbol does not reduce to the weighted Pluecker mass with the expected null-cone/collinearity zero locus |
+| Finite spectral-triple audit upgrades the super-Dirac operator | The causal order-complex operator has no coherent grading, Krein fundamental symmetry, antilinear real structure, first-order condition, inner-fluctuation behavior, or low-order spectral action matching the Pluecker/diamond/Higgs blocks; or the Higgs block disappears/becomes constant under the relevant coarse-graining |
 | Dirac slash square-root of Plucker mass is the right finite operator bridge | Gamma/Pauli/signature conventions cannot be aligned with the trusted determinant mass, or the square-root theorem factors only a number but cannot be connected to any graph propagation or chirality-flip operator |
 | Normalized celestial mixedness is used only frame-relatively | The program treats `det(P_vis / Tr(P_vis))` as a Lorentz scalar, hides the timelike normalization choice, or fails to prove the unnormalized `det(A P_vis A^dagger) = det(P_vis)` invariant wrapper |
 | Two-observer factorization is the right mass-channel interface | The visible boost fails to commute with the internal trace in the physical model, the resolution observer cannot be represented by a finite Gram-bearing internal label family, or the kinematic observer cannot be separated cleanly from the irreversible coarse-graining |
@@ -2473,6 +2532,7 @@ identifications, not the bare unification slogan.
 | D'Ariano-Mosco-Perinotti-Tosini, Bisio-D'Ariano-Perinotti-Tosini, Arrighi-Nesme-Forets, Farrelly, Sato-Katori, Eon-Di Molfetta-Magnifico-Arrighi, and related Dirac quantum-walk/QCA work (`JZEJ4VXA`, `BVJBTK8J`, `KCQGEDJE`, `4F87TGCN`, `964TN6X7`, `G7NXEZBU`, `VIAIBSRI`) | Homogeneous Weyl/Dirac quantum walks and QCA, small-momentum Dirac limits, discrete covariance issues, ultraviolet cutoff/convergence guardrails, and lightlike-wire discrete QED constructions | The null-edge interface: forced `L plus R` mass doubling, scalar flip as the mass selection rule, invariant `det(P_vis)=m^2` tied to the Pluecker theorem, and a clean separation between the homogeneous fixed-point package and the causal-set spinor-propagator frontier |
 | Sorkin / Das-Nasiri-Yazdi everpresent Lambda (`ZP7E648U`, `K5CFI3HI`, `IHVSDGUC`) | Fluctuating sign-changing cosmological constant of order `1 / sqrt(V)` from causal-set discreteness plus unimodular conjugacy, together with observational tests and amplitude tension | A possible finite source-visibility reason for the mean-zero target: coherent/internal vacuum bookkeeping should be boundary-like while visible Plucker excitations source bulk diamond defects |
 | Quillen superconnections (`WNATKBT5`), Ackermann-Tolksdorf generalized Lichnerowicz (`BQJAG9TR`), Chamseddine-Connes spectral action (`6WURA7MF`), and Lee superconnection gauge-Higgs (`3Z543SD3`) | The general principle that Dirac-type operators square to Laplacians plus curvature, scalar, and Higgs/gauge terms | The finite causal-order-complex version whose kinetic symbol is the Lean-checked Pluecker determinant, whose Higgs/Yukawa block is equated with it on shell, and whose curvature block is causal-diamond holonomy |
+| Marcolli-van Suijlekom gauge networks (arXiv:1301.3480) and Perez-Sanchez's comment on their continuum limit (arXiv:2508.17338) | Graph/quiver Dirac operators in finite spectral-triple language, with lattice gauge/Higgs spectral-action terms; plus the warning that the naive continuum limit can lose the Higgs scalar and become pure Yang-Mills | The causal-directed, Lorentzian/Krein, Pluecker-kinetic specialization: the missing contribution is a symbol/soldering theorem and a check that the `Phi` block survives as a genuine causal/Higgs field rather than finite bookkeeping |
 | Foldy-Wouthuysen (`NFMI3A99`), Newton-Wigner (`74NU4C33`), and Thaller's *The Dirac Equation* (`UI9343SX`) | Standard branch diagonalization, positive/negative-energy projectors, and localization caveats for Dirac theory | A finite algebraic two-sheet projector theorem that must be interpreted cautiously before being tied to particle/antiparticle, CPT, or scattering boundary data |
 | Kim-Lee massive ambitwistor zig-zag theory (arXiv:2301.06203) and massive twistor particle models | Massive spinning-particle phase spaces, symplectic perturbations, little-group quotient data, and background-field coupling | A continuum target for the finite Pluecker/Bargmann phase and diamond-holonomy phase transport |
 | Ruskai-Szarek-Werner CPTP qubit maps (quant-ph/0101003) | Complete positivity constraints and affine Bloch-ball form of qubit channels | A finite dynamics language for reduced celestial mass/proper-time evolution and l=1 channel/generator spectral gaps |

@@ -5235,3 +5235,838 @@ rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnati
 Follow-up: instantiate this generic preservation theorem on the six-point T1
 witness, or prove the Class B interval-rank threshold dichotomy if the witness
 instantiation is too tautological.
+## 2026-06-23 continuation: P9/P7 focused restart
+
+Queue check:
+
+- `aristotle list --limit 30` showed the recent queue mostly `IDLE`, with the
+  newest P9 cluster already locally integrated or recorded.
+- Verified the high-value P9 T1/T2/T3 modules rather than duplicating them:
+  - `PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout`
+  - `PhysicsSM.Draft.NullEdgeP9DiamondLocalSeparation`
+  - `PhysicsSM.Draft.NullEdgeP9CoarseMapErasureGuardrail`
+  - `PhysicsSM.Draft.NullEdgeP9DiamondLocalityNoiseInvariance`
+  - `PhysicsSM.Draft.NullEdgeP9WeightedProjectorResidualOrthogonal`
+  - `PhysicsSM.Draft.NullEdgeP9DefectSensitivityBenchmark`
+
+Verification run:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9SubdiamondRestrictionPreservesLocalReadout.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9DiamondLocalSeparation.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9CoarseMapErasureGuardrail.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9DiamondLocalityNoiseInvariance.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9WeightedProjectorResidualOrthogonal.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9DefectSensitivityBenchmark.lean
+```
+
+All six targeted checks passed.
+
+Literature/semantic pass:
+
+- Ran local semantic searches for P9 source visibility, Alexandrov/subdiamond
+  coarse maps, interval abundance, causal-set graph observables, and
+  everpresent-Lambda comparison.
+- Useful local hits were already indexed: `RC5XF8RD`, `AN5RZGJZ`, `UR5ADCBP`,
+  `G3FT8BXC`, `K5CFI3HI`, and `IHVSDGUC`.
+- External scholarly fallback: OpenAlex returned Surya's causal-set review
+  (`10.1007/s41114-019-0023-1`), already conceptually covered; Crossref results
+  were mostly generic coarse-graining or unrelated molecular papers. arXiv
+  meta-search hit rate limits and INSPIRE timed out. No new Zotero additions.
+
+Model/subagent use:
+
+- Spark/Dewey triaged the recent Aristotle queue. It correctly identified the
+  P9 T1/T2/T3 cluster as the highest-value integration surface and confirmed
+  the updated overnight plan already contains mandatory physics context,
+  Aristotle next-step requests, Gemini/Claude alternation, scoring, and priority
+  refreshes.
+- Gemini CLI attempt failed with a socket/API error after noisy workspace
+  scanning. No scientific guidance used.
+- Claude bare adversarial critique succeeded. Main useful guidance: demote T3
+  unless "external" noise is independently characterized, require quantitative
+  visibility/lower-bound packaging for T1, and prioritize the observer-channel
+  theorem that determinant mass does not reconstruct hidden coherence.
+
+Fresh Aristotle submissions:
+
+- `9beafa4e-1932-4276-8aeb-59bea669c6ac`
+  `null-edge-p9-operational-gap-20260623`, task
+  `87d5fc11-bb04-4c75-9a76-cb5673faa476`, status `RUNNING`.
+  Scientific value: packages the T1 diamond-local separation as an explicit
+  operational readout gap.
+- `c8076caa-ae7f-4bb0-99d2-0856f5bfe786`
+  `null-edge-p7-coherence-not-determined-by-det-20260623`, task
+  `855b5ab6-6047-4324-ad6a-2716922a2380`, status `RUNNING`.
+  Scientific value: finite counterexample showing trace-one determinant mass
+  does not determine off-diagonal chirality coherence.
+
+Next actions:
+
+- Integrate the two running jobs when they become `IDLE`.
+- If the P7 counterexample succeeds, submit the positive-semidefinite companion
+  so the witness lives inside the intended physical density class.
+- If the P9 operational gap succeeds, submit a follow-up T2 quantitative
+  preservation/erasure threshold rather than another qualitative scaffold.
+
+## 2026-06-23 continuation: fresh job integration
+
+Integrated fresh Aristotle/local jobs:
+
+- `9beafa4e-1932-4276-8aeb-59bea669c6ac`
+  `null-edge-p9-operational-gap-20260623`, task
+  `87d5fc11-bb04-4c75-9a76-cb5673faa476`.
+  Integrated as `PhysicsSM.Draft.NullEdgeP9OperationalGap`.
+  Result: the T1 diamond-local separation witness now has an explicit
+  operational readout gap at bucket `1`.
+- `c8076caa-ae7f-4bb0-99d2-0856f5bfe786`
+  `null-edge-p7-coherence-not-determined-by-det-20260623`, task
+  `855b5ab6-6047-4324-ad6a-2716922a2380`.
+  Integrated as `PhysicsSM.Draft.NullEdgeP7CoherenceNotDeterminedByDet`.
+  Result: two trace-one real symmetric density proxies have the same determinant
+  but different squared off-diagonal coherence.
+
+Verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-operational-gap-20260623/NullEdgeP9OperationalGap/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9OperationalGap.lean
+lake build PhysicsSM.Draft.NullEdgeP9OperationalGap
+lake env lean AgentTasks/aristotle-standalone/null-edge-p7-coherence-not-determined-by-det-20260623/NullEdgeP7CoherenceNotDeterminedByDet/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP7CoherenceNotDeterminedByDet.lean
+lake build PhysicsSM.Draft.NullEdgeP7CoherenceNotDeterminedByDet
+lake env lean PhysicsSMDraft.lean
+```
+
+Low-token integration notes:
+
+- `Scripts/aristotle/integrate_completed.py` fetched both jobs, but focused
+  standalone packages do not auto-map as `PhysicsSM/...` candidates.
+- The helper also hit the known nested-path extraction issue on the P7 job after
+  the useful files had already been extracted.
+- Diff review confirmed Aristotle changed proof bodies only; Codex adapted the
+  P9 proof to ASCII `Fin.mk` syntax before integrating.
+
+Next high-value follow-ups:
+
+- P7: positive-semidefinite / trace-one companion for the coherence
+  counterexample.
+- P9: quantitative T2 threshold showing when the operational gap survives,
+  shrinks, or is erased under a pre-specified coarse map.
+
+## 2026-06-23 continuation: local guardrails and audit submission
+
+Local finite theorem progress:
+
+- Extended `PhysicsSM.Draft.NullEdgeP7CoherenceNotDeterminedByDet` with
+  `psdProxy` and
+  `determinant_does_not_determine_coherenceSq_in_densityClass`.
+  Role: the same-det different-coherence witness now lives in a conservative
+  trace-one positive-semidefinite proxy class, not merely in arbitrary
+  trace-one symmetric matrices.
+- Extended the same P7 module with `tracePair`, `offDiagReadout`, and
+  `determinant_does_not_determine_operationalReadout_in_densityClass`.
+  Role: the determinant/coherence gap is operationally separable by an explicit
+  off-diagonal finite readout, not merely by inspecting a hidden coordinate.
+- After Aristotle's audit, strengthened the P7 separator again with
+  `effectProxy`, `xBasisEffect`, and
+  `determinant_does_not_determine_positiveEffectReadout_in_densityClass`.
+  Role: the same-det different-coherence pair is separated by a bounded
+  X-basis-style positive effect, a cleaner finite POVM-style witness.
+- Added `determinant_does_not_determine_twoOutcomeReadout_in_densityClass`.
+  Role: the positive effect plus its complement sums to the trace-one total, so
+  the witness is now a two-outcome finite readout proxy rather than a single
+  free linear functional.
+- Added `PhysicsSM.Draft.NullEdgeP9OperationalGapCoarseMap`.
+  Role: packages the T2 erasure guardrail operationally; the named critical
+  coarse map sends the bucket-`1` gap to zero and fails threshold-one
+  distinguishability.
+- Added `PhysicsSM.Draft.NullEdgeP9SubdiamondNonvacuity`.
+  Role: answers the adversarial vacuity critique by proving the proper
+  subdiamond `(0,3)` still separates the two six-point histories by the local
+  signature readout.
+
+External model escalation:
+
+- Gemini constructive query succeeded after moving out of the repo working
+  directory. Its most useful suggestion was a coarse-map/decoherence bridge,
+  but it overreached by assuming geometric coarse maps should determine the
+  `2 x 2` coherence proxies. Provisional score: 5/10.
+- Claude adversarial query identified three sharper finite tests: coarse-map
+  universality, subdiamond non-vacuity, and operational distinguishability of
+  the P7 coherence gap. The subdiamond non-vacuity test was immediately
+  validated by finite search and Lean proof. Provisional score: 8/10.
+
+Aristotle submission:
+
+- Submitted no-code adversarial audit project
+  `080f98c5-8d0c-4ae6-9967-d63d8ab86528`, task
+  `da56c47e-a08a-4411-b59a-e7f4f0dc29ac`.
+  Task note:
+  `AgentTasks/null-edge-p9-p7-operational-adversarial-audit-aristotle-2026-06-23.md`.
+  Role: ask Aristotle to rank the next P9/P7 theorem targets after the local
+  operational-gap, coarse-map erasure, non-vacuity, and density-class
+  coherence guardrails.
+- Integrated the audit substance into the task note. Main useful outputs:
+  strongest next P9 target is a coarse-map dichotomy/negative-class test, and
+  strongest P7 polishing target is a positive X-basis effect separator. The P7
+  separator is now locally banked.
+- Local finite search found that the strongest P9 dichotomy is false for all
+  surjective `Fin 6 -> Fin 5` maps: the map
+  `0,1,2,3,4,5 |-> 0,1,2,3,3,4` keeps the critical pair `1,2` distinct while
+  erasing the bucket-one local signature. This is a useful demotion guardrail:
+  P9 must name an admissible coarse-map class.
+- Submitted focused Aristotle proof job
+  `fc1b0531-466f-4dec-93e6-d983f1024e56`, task
+  `66649453-d495-43c1-b6d1-5c3c455a8af8`, to formalize that noncritical
+  coarse-erasure counterexample without importing a broken draft module.
+- Integrated the completed proof as
+  `PhysicsSM.Draft.NullEdgeP9NoncriticalCoarseErasure`.
+  Result: `nonCriticalErasingMap_is_noncritical_erasure` proves that the map
+  `0,1,2,3,4,5 |-> 0,1,2,3,3,4` keeps the critical pair `1,2` distinct but
+  erases the bucket-one local signature after induced coarse relation. This
+  demotes unrestricted surjective coarse-map universality and forces P9 to
+  specify an admissible coarse-map/observer-channel class.
+
+Verification run so far:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP7CoherenceNotDeterminedByDet.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9OperationalGapCoarseMap.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9SubdiamondNonvacuity.lean
+lake env lean PhysicsSMDraft.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9NoncriticalCoarseErasure.lean
+```
+
+Next actions:
+
+- Poll and integrate the Aristotle audit result.
+- Add docs references for the new P7 density-class guardrail and P9
+  non-vacuity/erasure wrappers.
+- Run `lake env lean PhysicsSMDraft.lean` after the aggregate import settles.
+
+## 2026-06-23 continuation: verification and strategy triage
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP7CoherenceNotDeterminedByDet.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9NoncriticalCoarseErasure.lean
+lake build PhysicsSM.Draft.NullEdgeP7CoherenceNotDeterminedByDet PhysicsSM.Draft.NullEdgeP9NoncriticalCoarseErasure PhysicsSM.Draft.NullEdgeP9OperationalGapCoarseMap PhysicsSM.Draft.NullEdgeP9SubdiamondNonvacuity
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP7CoherenceNotDeterminedByDet.lean PhysicsSM/Draft/NullEdgeP9OperationalGap.lean PhysicsSM/Draft/NullEdgeP9OperationalGapCoarseMap.lean PhysicsSM/Draft/NullEdgeP9SubdiamondNonvacuity.lean PhysicsSM/Draft/NullEdgeP9NoncriticalCoarseErasure.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP7CoherenceNotDeterminedByDet.lean PhysicsSM/Draft/NullEdgeP9OperationalGap.lean PhysicsSM/Draft/NullEdgeP9OperationalGapCoarseMap.lean PhysicsSM/Draft/NullEdgeP9SubdiamondNonvacuity.lean PhysicsSM/Draft/NullEdgeP9NoncriticalCoarseErasure.lean
+git diff --check
+```
+
+Outcome: all checks passed after repairing the P7 two-outcome theorem proof to
+avoid invalid generated case tags.
+
+Aristotle completion triage:
+
+- Spark triage found one non-integrated-looking item:
+  `AgentTasks/null-edge-p11-channel-sector-strategy-aristotle-2026-06-23.md`
+  (`40413c03-ef9e-4692-be1e-7a60df4ce689`), plus several already-reviewed P9
+  strategy notes.
+- Reviewed the P11 strategy output. The returned scaffold is useful but the
+  extracted source/report contains mojibake in physics notation, so it was not
+  copied into the repo.
+- Integrated the substance into the task note and marked it
+  `strategy-reviewed`. Main lesson: a P11 particle-sector model must keep a
+  calibrated readout containing both normalized celestial state and discarded
+  trace/energy scale; normalized channel output alone cannot define invariant
+  mass.
+
+Scientific significance:
+
+- Publication-value score `2`: useful guardrail for ontology/P11, but lower
+  priority than the active P7/P1 observer-channel theorem and P9 admissible
+  coarse-map/source-visibility lane.
+
+Next action:
+
+- Submit at most one high-value follow-up proof job after the focused
+  literature/model triage returns, prioritizing either an observer-channel
+  relative-entropy/readout theorem or an admissible P9 coarse-map theorem.
+
+## 2026-06-23 late loop: admissible coarse-map job
+
+Literature/model triage:
+
+- Spark/Lovelace docs triage highlighted already-cited P7/P9 references and
+  confirmed the claim boundary: keep recoverability/invisibility one-way, keep
+  visible determinant and diamond-source branches distinct, and require a
+  formal admissible coarse-map hypothesis before any T2 non-erasure theorem.
+- Gemini constructive analysis proposed using P7 information preservation to
+  define a P9 safe coarse-map class.
+- Claude adversarial analysis sharpened the target away from raw KL equality
+  toward common exact recovery, because exact recovery is constructive and
+  avoids zero-support pitfalls.
+
+Fresh Aristotle submission:
+
+- Submitted focused proof job
+  `406f955e-dbb7-45a4-9e64-66d4ffb9cde5`, task
+  `e1a1b690-1250-411a-8885-9e46d1181562`.
+  Task note:
+  `AgentTasks/null-edge-p9-exact-recovery-admissible-coarse-map-aristotle-2026-06-23.md`.
+  Target:
+  `exactRecovery_pullsBack_distinguishingTest`.
+  Scientific value: defines a constructive admissible coarse-map guardrail for
+  P9. If a common recovery map restores both fine sources, every selected fine
+  distinguishing test pulls back to a coarse observer test. This is a positive
+  counterpart to the noncritical coarse-erasure counterexample.
+
+Preflight verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-exact-recovery-admissible-coarse-map-20260623/NullEdgeP9ExactRecoveryAdmissibleCoarseMap/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-exact-recovery-admissible-coarse-map-20260623/NullEdgeP9ExactRecoveryAdmissibleCoarseMap/Core.lean AgentTasks/null-edge-p9-exact-recovery-admissible-coarse-map-aristotle-2026-06-23.md
+```
+
+Outcome: source file typechecks with exactly one intended proof hole and no
+non-ASCII in the staged file/task note.
+
+Local integration while Aristotle runs:
+
+- Added `PhysicsSM.Draft.NullEdgeP9ExactRecoveryAdmissibleCoarseMap`.
+- Proved locally:
+  - `exactRecovery_preserves_distinction`;
+  - `erased_distinction_not_exactRecoverable`;
+  - `exactRecovery_pullsBack_distinguishingTest`.
+- Imported the module in `PhysicsSMDraft.lean`.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP9ExactRecoveryAdmissibleCoarseMap.lean
+lake build PhysicsSM.Draft.NullEdgeP9ExactRecoveryAdmissibleCoarseMap
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9ExactRecoveryAdmissibleCoarseMap.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9ExactRecoveryAdmissibleCoarseMap.lean
+```
+
+Outcome: all passed. Aristotle job remains useful for an independent proof
+check and its requested next-step recommendations.
+
+Aristotle completion:
+
+- `406f955e-dbb7-45a4-9e64-66d4ffb9cde5`, task
+  `e1a1b690-1250-411a-8885-9e46d1181562`, completed.
+- Aristotle solved `exactRecovery_pullsBack_distinguishingTest` with unchanged
+  theorem statement and no assumptions or escape hatches.
+- The extracted Aristotle proof used non-ASCII syntax in the standalone
+  namespace, so the already-integrated ASCII repo module remains the live
+  source.
+- Useful next-step guidance: continue the lane; add a composition lemma for
+  admissible/recoverable channels; add a no-go check against known erasing
+  maps; and strengthen the abstract channel shell with genuine stochastic
+  positivity/normalization before advertising an information-theoretic recovery
+  result.
+
+Scientific significance:
+
+- Publication-value score `3`: this supplies the first positive
+  information-theoretic admissibility certificate for P9 coarse maps, paired
+  with the existing erasure counterexamples.
+
+Follow-up Aristotle submission:
+
+- Submitted focused proof job
+  `6ba5e2b1-389a-47e6-b784-d225d691868e`, task
+  `c88eab9e-03ff-4ac8-93a4-e99446d0f348`.
+  Task note:
+  `AgentTasks/null-edge-p9-stochastic-exact-recovery-observable-pullback-aristotle-2026-06-23.md`.
+  Target:
+  `exactRecovery_pullsBack_distinguishingObservable`.
+  Scientific value: upgrades the algebraic exact-recovery guardrail to finite
+  normalized distributions, column-stochastic observer channels, and observable
+  expectations.
+
+Preflight verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-observable-pullback-20260623/NullEdgeP9StochasticExactRecoveryObservablePullback/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-observable-pullback-20260623/NullEdgeP9StochasticExactRecoveryObservablePullback/Core.lean AgentTasks/null-edge-p9-stochastic-exact-recovery-observable-pullback-aristotle-2026-06-23.md
+```
+
+Outcome: source file typechecks with exactly three intended proof holes and no
+non-ASCII in the staged file/task note.
+
+Local integration while Aristotle runs:
+
+- Added `PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryObservablePullback`.
+- Proved:
+  - stochastic pushforward normalization for finite distributions;
+  - `expect_pullbackObservable_eq_expect_recovered`;
+  - `exactRecovery_pullsBack_distinguishingObservable`.
+- Imported the module in `PhysicsSMDraft.lean`.
+
+Scientific significance:
+
+- Publication-value score `3`: this upgrades the P9 admissible coarse-map
+  theorem from an abstract channel/test shell to normalized finite
+  distributions, column-stochastic observer channels, and observable
+  expectations. It is now a genuine finite stochastic exact-recovery guardrail:
+  if a coarse observer channel has a common stochastic recovery for two fine
+  source distributions, every fine observable that distinguishes the sources
+  pulls back to a coarse observable distinguishing the coarse outputs.
+
+Verification:
+
+```text
+lake build PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryObservablePullback
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b" PhysicsSM/Draft/NullEdgeP9StochasticExactRecoveryObservablePullback.lean
+rg -n "[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP9StochasticExactRecoveryObservablePullback.lean
+git diff --check
+```
+
+Outcome: all passed. A first parallel `PhysicsSMDraft.lean` check raced the
+targeted build and failed because the new `.olean` did not yet exist; the rerun
+after the targeted build passed.
+
+Open Aristotle status:
+
+- `6ba5e2b1-389a-47e6-b784-d225d691868e`, task
+  `c88eab9e-03ff-4ac8-93a4-e99446d0f348`, remained running at the time of
+  local integration. Use it for independent proof comparison and requested
+  next-step guidance when complete.
+
+Aristotle completion:
+
+- `6ba5e2b1-389a-47e6-b784-d225d691868e`, task
+  `c88eab9e-03ff-4ac8-93a4-e99446d0f348`, completed.
+- Aristotle reported unchanged theorem statements, no remaining proof holes,
+  no added assumptions, and no escape hatches.
+- Returned code was not copied because it used the standalone namespace and
+  Unicode Lean notation; the verified ASCII repo module remains the source of
+  record.
+- Useful next-step guidance: prove quantitative gap preservation for the
+  pulled-back observable, test that `col_sum` is load-bearing, and audit
+  channel/recovery orientation against the P7 Petz/data-processing scaffold.
+
+## 2026-06-23 late loop: stochastic recovery composition
+
+Spark/Pasteur source triage:
+
+- Judged stochastic exact-recovery composition scientifically meaningful rather
+  than mere bookkeeping, because it is the closure property needed for an
+  admissible observer-channel class.
+- Relevant prior-art neighborhood: finite Markov kernels, Blackwell
+  sufficiency/comparison of experiments, Le Cam/Torgersen randomization, Petz
+  recovery, and data-processing equality.
+- Recommendation: continue the lane, while keeping the theorem source-pair
+  scoped and explicitly excluding the known erasing-map counterexamples.
+
+Fresh Aristotle submission:
+
+- Submitted focused proof job
+  `53d2e069-8b2e-4478-8c25-53282f26b36b`, task
+  `5a59d5b0-8bc2-4edc-9c9c-3979aae1cdb0`.
+  Task note:
+  `AgentTasks/null-edge-p9-stochastic-exact-recovery-composition-aristotle-2026-06-23.md`.
+  Target:
+  `Stoch.apply_comp` and `PairExactRecoverable.comp`.
+  Scientific value: proves that the exact stochastic admissible observer-channel
+  class is closed under composition on the selected source pair, making the
+  P9 positive class structurally usable.
+
+Preflight verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-composition-20260623/NullEdgeP9StochasticExactRecoveryComposition/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-composition-20260623/NullEdgeP9StochasticExactRecoveryComposition/Core.lean
+```
+
+Outcome: source file typechecks with exactly two intended proof holes and no
+non-ASCII in the staged file.
+
+Local integration while Aristotle runs:
+
+- Added `PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryComposition`.
+- Proved:
+  - `FinDist.ext`;
+  - `Stoch.comp`;
+  - `Stoch.apply_comp`;
+  - `PairExactRecoverable.comp`.
+- Imported the module in `PhysicsSMDraft.lean`.
+
+Scientific significance:
+
+- Publication-value score `3`: exact stochastic recovery is now closed under
+  composition on the selected source pair. This makes the exact-recovery
+  admissible observer-channel class structurally usable, rather than a one-off
+  witness, while keeping the claim boundary finite and exact.
+
+Verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-composition-20260623/NullEdgeP9StochasticExactRecoveryComposition/Core.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b|[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-composition-20260623/NullEdgeP9StochasticExactRecoveryComposition/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9StochasticExactRecoveryComposition.lean
+lake build PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryComposition
+lake env lean PhysicsSMDraft.lean
+git diff --check
+```
+
+Outcome: all passed. Aristotle job
+`53d2e069-8b2e-4478-8c25-53282f26b36b`, task
+`5a59d5b0-8bc2-4edc-9c9c-3979aae1cdb0`, remained in progress at local
+integration time and should be used for independent proof comparison and
+next-step advice when complete.
+
+Aristotle completion:
+
+- `53d2e069-8b2e-4478-8c25-53282f26b36b`, task
+  `5a59d5b0-8bc2-4edc-9c9c-3979aae1cdb0`, completed.
+- Aristotle independently solved `Stoch.apply_comp` and
+  `PairExactRecoverable.comp`, reported unchanged theorem statements, no proof
+  holes, no added assumptions, and no escape hatches.
+- The live repo module was kept instead of copying returned code because it is
+  ASCII-clean and extends the existing stochastic API instead of duplicating it.
+- Useful next-step guidance: prove associativity/functoriality of `Stoch.comp`,
+  test that erasing channels are not recoverable for separated pairs, and decide
+  whether P9 requires fixed-pair or family-uniform recoverability.
+
+Follow-up Aristotle submission:
+
+- Submitted focused proof job
+  `ebd742af-00c2-45eb-9bf1-51e775195ed4`, task
+  `6417d07e-520e-4db9-adf7-08e258f4de66`.
+  Task note:
+  `AgentTasks/null-edge-p9-stochastic-exact-recovery-gap-aristotle-2026-06-23.md`.
+  Target:
+  `exactRecovery_preserves_observableGap`.
+  Scientific value: sharpens the stochastic pullback theorem from qualitative
+  non-equality preservation to exact preservation of the numerical expectation
+  gap under common exact recovery.
+
+Preflight verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-gap-20260623/NullEdgeP9StochasticExactRecoveryGap/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-gap-20260623/NullEdgeP9StochasticExactRecoveryGap/Core.lean
+```
+
+Outcome: source file typechecks with exactly one intended proof hole and no
+non-ASCII in the staged file.
+
+## 2026-06-23 late loop: P2 partial-dephasing rate scaffold
+
+Local Lean integration:
+
+- Added `PhysicsSM.Draft.NullEdgeP2PartialDephasingRateBridge`.
+- Proved exact one-step identities for the real two-level chiral proxy
+  `[[q,c],[c,1-q]]` under partial dephasing `c |-> a*c`:
+  - `partialDephasing_det_gap`;
+  - `partialDephasing_purity_loss`;
+  - `partialDephasing_massRatioSq_gap`;
+  - `partialDephasing_det_monotone`;
+  - `partialDephasing_purity_antitone`;
+  - `partialDephasing_massRatioSq_monotone`;
+  - `partialDephasing_massRatioSq_strict`.
+- Extended the same module with:
+  - `iteratedPartialDephasing_massRatioSq_gap`;
+  - `iteratedPartialDephasing_massRatioSq_monotone`.
+- Imported the module in `PhysicsSMDraft.lean`.
+
+Scientific significance:
+
+- Publication-value score `2`: this is still a one-step finite channel theorem,
+  not a continuum dynamics result. It nevertheless directly upgrades the P7/P1
+  observer-channel story from a scalar rewrite to a named dephasing-channel
+  increment law: dephasing increases determinant/mass-ratio-square exactly by
+  the lost squared coherence. The iterated theorem upgrades this to an
+  `n`-step finite scaffold, still without claiming a continuum generator.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP2PartialDephasingRateBridge.lean
+lake build PhysicsSM.Draft.NullEdgeP2PartialDephasingRateBridge
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b|[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP2PartialDephasingRateBridge.lean
+git diff --check
+```
+
+Outcome: targeted file checks and targeted module build passed. The scan
+returned no matches.
+
+## 2026-06-23 late loop: P7 recoverability audit completion
+
+Aristotle completion:
+
+- Project `d9eae3c7-a4f9-4c1d-be04-667be344b27d`, task
+  `0d2ecb15-2ab0-4503-a61b-3a63c5b20fa2`, completed.
+- Task note:
+  `AgentTasks/null-edge-p7-proper-time-recoverability-audit-aristotle-2026-06-23.md`.
+- No Lean edits or builds were requested.
+
+Useful accepted guidance:
+
+- Next high-value P7/P1/P4 theorem: a concrete same-determinant but different
+  KL/data-processing-deficit witness under the same observer channel.
+- Treat KL/Petz equality as support-sensitive; do not state an equality/recovery
+  physics claim without full-support or interior hypotheses.
+- The P2 partial-dephasing scaffold is the right cheap step toward a finite
+  proper-time rate law.
+
+Deferred or rejected guidance:
+
+- Approximate recovery remains deferred until a metric or deficiency notion is
+  selected.
+- Broad KL equality characterization is lower priority than the concrete
+  same-mass/different-deficit witness.
+
+Next action:
+
+- Spark/Noether is doing a bounded read-only triage of the existing KL and
+  observer-channel files to decide whether the same-determinant/different-
+  deficit witness should be proved locally or submitted to Aristotle.
+
+Spark/Noether completion:
+
+- Noether found that the rational witness is feasible using the existing
+  `rhoCoh` and `rhoTilt` same-determinant states and a common complete-dephasing
+  two-outcome channel.
+- It recommended local scaffolding for the definitions and Aristotle for the
+  strict KL non-equality, because the remaining proof touches logarithmic
+  inequalities.
+
+Follow-up Aristotle submission:
+
+- Submitted focused proof job
+  `83bb049d-c38a-42d0-b8bf-f6cc839f1a0c`, task
+  `a21280df-00ac-4e67-8b81-4d616aa31186`.
+- Task note:
+  `AgentTasks/null-edge-p7-same-det-different-dp-deficit-aristotle-2026-06-23.md`.
+- Target:
+  `same_det_different_dpDeficit`.
+- Scientific value: if solved, this proves determinant/mass-ratio agreement
+  does not determine KL data-processing deficit under the same observer
+  channel, giving P7 operational bite beyond scalar mixedness.
+
+Preflight verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p7-same-det-different-dp-deficit-20260623/NullEdgeP7SameDetDifferentDPDeficit/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p7-same-det-different-dp-deficit-20260623/NullEdgeP7SameDetDifferentDPDeficit/Core.lean
+```
+
+Outcome: source file typechecks with exactly one intended proof handoff and no
+non-ASCII.
+
+## 2026-06-23 interruption: super-Dirac analysis integrated into docs
+
+User supplied two super-Dirac analyses focused on Lorentzian/Krein structure,
+gauge-network prior art, and the missing symbol theorem.
+
+Integrated doc changes:
+
+- `Sources/Null_Edge_Key_Conjectures.md`
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`
+- `Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`
+
+Scientific significance:
+
+- Publication-value score `3`: the super-Dirac branch is now sharpened around
+  the symbol/soldering theorem rather than more abstract `D^2` algebra.
+  The docs now identify Marcolli-van Suijlekom gauge networks as the closest
+  graph spectral-triple prior art, add Perez-Sanchez's Higgs-loss continuum
+  warning, separate `eta` / `JReal` / `Sigma_m`, and promote
+  `massShellConstraint_iff_kernel_on_bundleMode` plus low-order finite spectral
+  action as clean theorem gates.
+
+Verification:
+
+```text
+git diff --check -- Sources/Null_Edge_Key_Conjectures.md Sources/Null_Edge_Causal_Graph_Publication_Plan.md Sources/Null_Edge_Causal_Graph_Strengthened_Program.md
+```
+
+Outcome: passed.
+
+Local integration while Aristotle runs:
+
+- Added `PhysicsSM.Draft.NullEdgeP9StochasticErasureNotRecoverable`.
+- Proved `erased_pair_not_exactRecoverable`.
+- Imported the module in `PhysicsSMDraft.lean`.
+
+Scientific significance:
+
+- Publication-value score `3`: exact stochastic recovery now excludes fully
+  erased separated source pairs. This is the no-go counterpart to the positive
+  admissibility class and directly fences off the known P9 erasing-map
+  counterexamples.
+
+Verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-stochastic-erasure-not-recoverable-20260623/NullEdgeP9StochasticErasureNotRecoverable/Core.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b|[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-stochastic-erasure-not-recoverable-20260623/NullEdgeP9StochasticErasureNotRecoverable/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9StochasticErasureNotRecoverable.lean
+lake build PhysicsSM.Draft.NullEdgeP9StochasticErasureNotRecoverable
+lake env lean PhysicsSMDraft.lean
+git diff --check
+```
+
+Outcome: all passed. Aristotle job
+`65561c72-4f30-468c-9193-e25290d8ea79`, task
+`742a157e-e016-4db6-b941-0db89b32ddbf`, remained in progress at local
+integration time and should be used for independent proof comparison and
+next-step advice when complete.
+
+Aristotle completion:
+
+- `65561c72-4f30-468c-9193-e25290d8ea79`, task
+  `742a157e-e016-4db6-b941-0db89b32ddbf`, completed.
+- Aristotle independently solved `erased_pair_not_exactRecoverable`, reported
+  unchanged theorem statement, no proof holes, no added assumptions, and no
+  escape hatches.
+- The live repo module was kept instead of copying returned code because it is
+  ASCII-clean and extends the existing stochastic API.
+- Useful next-step guidance: build an explicit two-source erasing-channel
+  example, add a positive sharpness example, and postpone approximate recovery
+  until a metric/deficiency notion is defined.
+
+## 2026-06-23 late loop: P7 proper-time / purity bridge
+
+Spark/Lorentz P7 theorem triage:
+
+- Recommended several high-value P7 targets: recoverability-gap/source-
+  visibility bounds, data-processing equality characterization, same-det but
+  different recoverability deficit, and a two-level coherence-to-dephased-mass
+  bridge.
+- The highest-return targets are support-sensitive and touch older files with
+  convention/encoding risks, so this slice banked a clean scalar bridge first.
+
+Local Lean integration:
+
+- Added `PhysicsSM.Draft.NullEdgeP7ProperTimePurityBridge`.
+- Proved:
+  - `properTimeRatioSq_eq_two_linearEntropy`;
+  - `purity_eq_one_sub_half_properTimeRatioSq`;
+  - `blochContraction_linearEntropy_monotone`;
+  - `blochContraction_properTimeRatioSq_monotone`;
+  - `blochContraction_linearEntropy_strict`;
+  - `blochContraction_properTimeRatioSq_strict`.
+- Imported the module in `PhysicsSMDraft.lean`.
+
+Scientific significance:
+
+- Publication-value score `2`: this is finite scalar algebra rather than a new
+  dynamics theorem, but it cleanly names the static bridge the P7/P1/P4 story
+  uses: for a normalized celestial qubit, squared proper-time ratio equals twice
+  visible linear entropy, and unital visible contractions monotonically increase
+  both.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdgeP7ProperTimePurityBridge.lean
+lake build PhysicsSM.Draft.NullEdgeP7ProperTimePurityBridge
+lake env lean PhysicsSMDraft.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b|[^\\x00-\\x7F]" PhysicsSM/Draft/NullEdgeP7ProperTimePurityBridge.lean
+git diff --check
+```
+
+Outcome: all passed.
+
+Fresh Aristotle strategy submission:
+
+- Submitted no-code audit job
+  `d9eae3c7-a4f9-4c1d-be04-667be344b27d`, task
+  `0d2ecb15-2ab0-4503-a61b-3a63c5b20fa2`.
+  Task note:
+  `AgentTasks/null-edge-p7-proper-time-recoverability-audit-aristotle-2026-06-23.md`.
+  Source prompt:
+  `AgentTasks/aristotle-strategy-packs/null-edge-p7-proper-time-recoverability-audit-20260623/PROMPT.md`.
+- Purpose: ask Aristotle to choose the next hard P7/P1/P4 theorem target after
+  the proper-time/purity bridge, with particular attention to KL equality,
+  exact-recovery gap, same-det/different-deficit witnesses, and finite rate-law
+  scaffolds.
+
+Literature pass:
+
+- Semantic Scholar-backed meta-search hit a rate limit, so the fallback ladder
+  used OpenAlex and Crossref directly.
+- Added to Zotero:
+  - `QAQA2SRN`: Le Cam, "Comparison of experiments---a short review", DOI
+    `10.1214/lnms/1215453569`;
+  - `QJGJ6KA7`: Torgersen, "Stochastic orders and comparison of experiments",
+    DOI `10.1214/lnms/1215459865`;
+  - `9SN4VCVJ`: Fritz, Gonda, Perrone, and Rischel, "Representable Markov
+    categories and comparison of statistical experiments in categorical
+    probability", DOI `10.1016/j.tcs.2023.113896`.
+- Added project-scoped Neo4j `Paper` nodes and linked them to claim
+  `p9_exact_stochastic_recovery_admissible_channels`.
+- Claim-boundary effect: exact recovery should be framed as a classical
+  comparison-of-experiments / Markov-kernel sufficiency certificate, not as a
+  new standalone information-theory principle.
+
+Local integration while Aristotle runs:
+
+- Added `PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryGap`.
+- Proved `exactRecovery_preserves_observableGap`.
+- Imported the module in `PhysicsSMDraft.lean`.
+
+Scientific significance:
+
+- Publication-value score `3`: common exact stochastic recovery now preserves
+  the numerical expectation gap of any fine observable after pullback to the
+  coarse observer channel. This is a stronger operational source-visibility
+  statement than merely preserving non-equality.
+
+Verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-gap-20260623/NullEdgeP9StochasticExactRecoveryGap/Core.lean
+rg -n "^\\s*sorry\\b|^\\s*admit\\b|\\baxiom\\b|\\bopaque\\b|\\bunsafe\\b|\\bnative_decide\\b|[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-stochastic-exact-recovery-gap-20260623/NullEdgeP9StochasticExactRecoveryGap/Core.lean
+lake env lean PhysicsSM/Draft/NullEdgeP9StochasticExactRecoveryGap.lean
+lake build PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryGap
+lake env lean PhysicsSMDraft.lean
+git diff --check
+```
+
+Outcome: all passed. Aristotle job
+`ebd742af-00c2-45eb-9bf1-51e775195ed4`, task
+`6417d07e-520e-4db9-adf7-08e258f4de66`, remained in progress at local
+integration time and should be used for independent proof comparison and
+next-step advice when complete.
+
+Aristotle completion:
+
+- `ebd742af-00c2-45eb-9bf1-51e775195ed4`, task
+  `6417d07e-520e-4db9-adf7-08e258f4de66`, completed.
+- Aristotle independently solved `exactRecovery_preserves_observableGap`,
+  reported unchanged theorem statement, no proof holes, no added assumptions,
+  and no escape hatches.
+- The live repo module was kept instead of copying returned code because it is
+  ASCII-clean and extends the existing stochastic API.
+- Useful next-step guidance: prove a family version, prove strictness/nonzero
+  variants, prove that erased separated pairs are not exactly recoverable, and
+  audit the same-recovery-channel semantics against Blackwell/Petz conventions.
+
+Follow-up Aristotle submission:
+
+- Submitted focused proof job
+  `65561c72-4f30-468c-9193-e25290d8ea79`, task
+  `742a157e-e016-4db6-b941-0db89b32ddbf`.
+  Task note:
+  `AgentTasks/null-edge-p9-stochastic-erasure-not-recoverable-aristotle-2026-06-23.md`.
+  Target:
+  `erased_pair_not_exactRecoverable`.
+  Scientific value: proves the no-go side of the admissible-channel story. If
+  a stochastic observer channel collapses two genuinely distinct fine source
+  distributions to the same coarse output, then it cannot be exactly
+  recoverable for that pair.
+
+Preflight verification:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/null-edge-p9-stochastic-erasure-not-recoverable-20260623/NullEdgeP9StochasticErasureNotRecoverable/Core.lean
+rg -n "[^\\x00-\\x7F]" AgentTasks/aristotle-standalone/null-edge-p9-stochastic-erasure-not-recoverable-20260623/NullEdgeP9StochasticErasureNotRecoverable/Core.lean
+```
+
+Outcome: source file typechecks with exactly one intended proof hole and no
+non-ASCII in the staged file.

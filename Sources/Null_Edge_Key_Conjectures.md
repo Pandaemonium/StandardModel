@@ -171,6 +171,26 @@ Dirac-type operator can square to Laplacian, curvature, and scalar/Higgs terms.
 Bianconi's topological Dirac operator for networks (`8ITHD4PG`) gives a finite
 network analogue of `D = d + delta` with a Hodge-Laplacian square.
 
+The closest direct prior art is Marcolli-van Suijlekom gauge networks
+(arXiv:1301.3480). They already build graph/quiver Dirac operators in the
+category of finite spectral triples and obtain lattice gauge plus Higgs terms
+from a spectral action. This is a major sharpening of the novelty claim: a
+generic graph spectral triple with a Higgs block is not new. The null-edge
+contribution has to live in the conjunction of three extra constraints:
+
+```text
+causal directed order/dag complex
++ Lorentzian/Krein rather than Riemannian Hilbert structure
++ Pluecker-null kinetic symbol rather than generic graph momentum.
+```
+
+Perez-Sanchez's comment on gauge networks (arXiv:2508.17338) is an important
+guardrail: in the naive gauge-network lattice model, the continuum limit loses
+the Higgs scalar and becomes pure Yang-Mills. Therefore the causal/directed
+`Phi` block must survive coarse-graining as a genuine dynamical or covariantly
+transported field; otherwise the super-Dirac Higgs term is only a finite
+bookkeeping block.
+
 The Lorentzian/Krein warning is also sourced. Van den Dungen (`5DURW8DU`)
 frames Lorentzian spectral triples as reverse Wick rotations over Krein spaces.
 Bizi-Brouder-Besnard (`PM83B8QI`) develop indefinite spectral triples over
@@ -244,6 +264,29 @@ asymptotic symbol for a refining family
 Without one of these, "the kinetic symbol equals the Pluecker determinant" is
 undefined rather than merely unproved.
 
+The latest sharpening makes the symbol/soldering theorem the flagship target.
+The already banked static theorem
+
+```text
+(gamma . P)^2 = det(P) I
+```
+
+is not enough unless the causal order-complex operator has a first-order
+commutator whose local symbol is exactly the slash of the weighted null-edge
+momentum bundle. For an edge-weighted local covector `xi`, the desired finite
+statement is:
+
+```text
+sigma_x(xi) = sum_{e incident x} a_e xi_e gamma.p_e
+sigma_x(xi)^2 =
+  (sum_{e<f} a_e a_f xi_e xi_f |psi_e wedge psi_f|^2) I.
+```
+
+With nonnegative active weights, the scalar is nonnegative and vanishes exactly
+when all active null directions are collinear. This would identify the graph
+operator's characteristic variety with the null cone, turning the Lorentzian
+non-ellipticity of a Krein Dirac operator into a feature rather than a defect.
+
 ### What we have formally proven
 
 The pieces are mostly banked separately:
@@ -264,11 +307,25 @@ The pieces are mostly banked separately:
   scalar mass operator that anticommutes with chirality and squares to the
   expected mass-square block.
 - `PhysicsSM.Draft.NullEdgeSuperDiracKreinCore` now gives the Lorentzian/Krein
-  finite algebra: `J`-self-adjointness, the mass-shell branch symmetry
-  `J = (1 / m) D`, the involution theorem `J^2 = 1` when `D^2 = m^2 I`, the
-  equality with plus-minus branch projectors, and an explicit
+  finite algebra: a self-adjointness wrapper, the mass-shell branch symmetry
+  currently written as `(1 / m) D`, the involution theorem when
+  `D^2 = m^2 I`, the equality with plus-minus branch projectors, and an explicit
   `MassShellConstraint` predicate recording equality rather than addition of
   kinetic and Yukawa mass squares.
+
+The notation in that cluster should be audited before promotion. In the
+Lorentzian spectral-triple literature, three structures must not all be called
+`J`:
+
+```text
+eta        -- linear fundamental symmetry defining the Krein product
+C or JReal -- antilinear real structure / charge conjugation
+Sigma_m    -- mass-shell sheet involution D / m
+```
+
+The branch-projector theorem concerns `Sigma_m`, not the fundamental symmetry
+`eta` and not the antilinear real structure. The adjoint used to state
+Lorentzian self-adjointness must be defined from `eta` before `D / m` is formed.
 
 ### Why it matters
 
@@ -287,26 +344,39 @@ unified finite theory.
 
 Near-term theorem targets:
 
+Status: proposed target names. They are not current Lean theorem inventory
+unless the surrounding text names an implemented module explicitly.
+
 ```lean
 superDirac_productGrading_def
 superDirac_kreinForm_def
 superDirac_is_odd
-superDirac_is_KreinSelfAdjoint
-superDirac_J_grading_eq_twoSheet
+superDirac_total_grading_def
+dU_deltaU_odd_form_grading
+phi_odd_chirality_grading
+superDirac_etaKreinAdjoint_def
+superDirac_is_etaSelfAdjoint_or_antiSelfAdjoint
+realStructure_chargeConjugation_def
+massShellSign_def
+massShellSign_eq_plusProjector_sub_minusProjector
 productGradedSuperDirac_sq
 covariantOrderDifferential_sq_eq_diamondCurvature
 superDirac_oneDiamond_curvatureBlock_eq_holonomyDefect
 diamondAdditiveDefect_eq_holonomyMinusId
-diamondHolonomy_eq_curvatureBlock_linearized
+diamond_pathDefect_eq_holonomySubOne_mul_reference
 higgsBlock_sq_eq_yukawaMassMatrix
-superDiracSq_kineticSymbol_eq_pluckerDet
-massShell_kinetic_eq_yukawa
+nullGraphDirac_commutator_eq_localSymbol
+localNullSymbol_eq_slash_weightedBundleMomentum
+localNullSymbol_sq_eq_weightedPluckerMass
+localNullSymbol_sq_zero_iff_activeDirections_collinear
+massShellConstraint_iff_kernel_on_bundleMode
 massShell_statewise_kinetic_eq_yukawa
 flatSuperDiracSymbol_has_lorentzianMassShell
 oneDiamond_naturalOperator_classification
 superDiracSq_crossTerm_eq_gaugedHiggsKinetic
 superDirac_sq_eq_laplacian_plus_curvature_plus_higgs
 superDirac_kreinForm_signature_eq_causal
+spectralAction_TrDsq_eq_plucker_yukawa_diamond
 ```
 
 Publication-level statement:
@@ -337,8 +407,13 @@ The missing pieces are structural rather than computational:
   complex model with transitive-diagonal independence;
 - a proof that the Pluecker determinant is the kinetic symbol/eigenvalue, not a
   second additive mass block;
-- an on-shell mass-shell constraint equating the kinetic Pluecker determinant
-  with the Higgs/Yukawa block;
+- a soldering/symbol theorem identifying the first-order graph commutator with
+  the Dirac slash of the weighted null-edge momentum bundle;
+- an on-shell mass-shell theorem, preferably
+  `massShellConstraint_iff_kernel_on_bundleMode`, showing that equality between
+  the kinetic Pluecker determinant and the Higgs/Yukawa block is forced by the
+  first-order equation under flat/covariantly-constant hypotheses rather than
+  imposed as a definition;
 - a statewise or spectral mass-shell statement rather than an equality between
   a scalar determinant and a flavor-space matrix;
 - a restricted definition of symbol: Bloch, frozen-coefficient local, or
@@ -346,17 +421,23 @@ The missing pieces are structural rather than computational:
 - a finite classification of natural operators on a single edge, one diamond,
   vertically glued diamonds, and horizontally glued diamonds;
 - a product grading combining simplicial degree and chirality;
+- a disambiguation of `eta`, `JReal`, and `Sigma_m = D / m`;
 - a proof that the cross term is the gauged Higgs kinetic term rather than an
   unwanted error term;
 - a two-triangle decomposition relating diamond holonomy to `d_U^2` curvature;
+- a finite low-order spectral-action statement such as
+  `Tr(D^2) = graph kinetic + Yukawa + diamond curvature` before attempting
+  heat-kernel or continuum claims;
 - convention audits for signature, chirality, grading, and normalization.
 
 Failure mode: no natural odd Krein/J-self-adjoint first-order operator can be
 defined without adding arbitrary structure; the only self-adjoint version is
 positive-definite and therefore Wick-rotated rather than Lorentzian; the kinetic
 Pluecker determinant and the Yukawa block cannot be related by an on-shell
-constraint without double-counting; or the diamond curvature and Higgs kinetic
-cross term fail to fit the same graded operator surface.
+kernel condition without double-counting; the graph operator has no Pluecker
+symbol; the Higgs/Yukawa block disappears or becomes constant under the relevant
+coarse-graining; or the diamond curvature and Higgs kinetic cross term fail to
+fit the same graded operator surface.
 
 ## 2. Observer-channel mass conjecture
 
@@ -633,6 +714,28 @@ linear-entropy production or coherence-decay rate along a null-step/chirality-
 flip walk is controlled by the flip frequency, with the static determinant
 identity arising only after integration and observer normalization.
 
+A first finite channel step has now been banked in
+`PhysicsSM.Draft.NullEdgeP2PartialDephasingRateBridge`. In the real two-level
+chiral proxy `[[q,c],[c,1-q]]`, partial dephasing `c |-> a*c` changes the
+determinant, purity, and normalized mass-ratio-square by exact algebraic gaps:
+
+```text
+det gap              = (1 - a^2)c^2
+purity loss          = 2(1 - a^2)c^2
+mass-ratio-square gap = 4(1 - a^2)c^2.
+```
+
+The same module also banks the iterated version:
+
+```text
+n-step mass-ratio-square gap = 4(1 - (a^n)^2)c^2.
+```
+
+This is the right kind of result for the observer-channel conjecture: it names
+the channel and identifies the precise coherence loss that becomes visible as
+mass-ratio/proper-time-square. It should still be advertised as a finite
+dephasing-channel scaffold, not as a continuum flip-rate theorem.
+
 ### What might be missing
 
 The core risk is physical interpretation. The algebra is finite and strong, but
@@ -647,6 +750,21 @@ we still need:
 - an operational coherence deficit, preferably relative-entropy or
   recoverability based, that distinguishes coherent from dephased internal
   labels without being determined by `m` alone;
+- the finite counterexample now banked in
+  `PhysicsSM.Draft.NullEdgeP7CoherenceNotDeterminedByDet` shows that even among
+  trace-one real symmetric two-state density proxies, determinant mass does not
+  determine squared off-diagonal chirality coherence. The same module now
+  packages the witness inside a conservative positive-semidefinite proxy class
+  via `determinant_does_not_determine_coherenceSq_in_densityClass`, and names an
+  explicit off-diagonal trace-pairing readout in
+  `determinant_does_not_determine_operationalReadout_in_densityClass`. It also
+  banks the stronger bounded-effect witness
+  `determinant_does_not_determine_positiveEffectReadout_in_densityClass`, using
+  an X-basis-style positive effect. The same file also proves
+  `determinant_does_not_determine_twoOutcomeReadout_in_densityClass`, where the
+  effect and its complement sum to the trace-one total. The next strengthening
+  is to move from these finite operational separators to a
+  relative-entropy or recoverability deficit;
 - a covariance test showing that the physical representation acts as
   `A tensor V_int`, with `V_int` unitary on unresolved labels, so partial trace
   commutes with visible transformations;
@@ -942,12 +1060,66 @@ The P9 theorem spine is now sizable, though still toy-level:
   signatures can still differ on a same-size diamond-local interval readout.
 - `PhysicsSM.Draft.NullEdgeP9CoarseMapErasureGuardrail` proves the negative T2
   control: a natural critical-collapse coarse map erases that T1 separator.
+- `PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout` proves
+  the first positive T2 control: under a transitive causal relation,
+  Alexandrov/subdiamond restriction preserves the relevant local interval
+  readout inside the chosen subdiamond.
+- `PhysicsSM.Draft.NullEdgeP9OperationalGap` packages the T1 readout difference
+  as an explicit finite observer-channel gap. This is the right publication
+  language for "visible to the observer" at the finite-witness layer, while the
+  scaling and cosmological interpretation layers remain unproved.
+- `PhysicsSM.Draft.NullEdgeP9OperationalGapCoarseMap` packages the negative T2
+  control in the same language: the named critical coarse map erases the
+  bucket-level operational gap, so visibility is not automatic under
+  coarse-graining.
+- `PhysicsSM.Draft.NullEdgeP9SubdiamondNonvacuity` answers a vacuity concern:
+  the proper subdiamond `(0,3)` still separates the two histories by local
+  signature, so the subdiamond-preservation theorem is not merely a
+  whole-diamond tautology.
+- `PhysicsSM.Draft.NullEdgeP9NoncriticalCoarseErasure` proves an important
+  negative guardrail: a surjective coarse map can keep the critical swapped pair
+  distinct and still erase the bucket-one local signature. Thus P9 cannot claim
+  unrestricted coarse-map universality; it must specify an admissible observer
+  or coarse-map class.
+- `PhysicsSM.Draft.NullEdgeP9ExactRecoveryAdmissibleCoarseMap` supplies the
+  first positive information-theoretic admissibility certificate: if a common
+  exact recovery map reconstructs both fine source signals from their coarse
+  outputs, then every selected fine distinguishing test pulls back to a coarse
+  observer test. This is a sufficient guardrail, not a characterization of all
+  physically admissible coarse maps and not an approximate-recovery theorem.
+- `PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryObservablePullback`
+  strengthens that guardrail with finite probability structure: normalized
+  source distributions, column-stochastic observer channels, and observable
+  expectations. Under common exact stochastic recovery, every fine observable
+  that separates the two source distributions has a pulled-back coarse
+  observable that separates their coarse observer outputs.
+- `PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryGap` sharpens the same
+  statement quantitatively: the pulled-back coarse observable preserves the
+  exact expectation gap of the fine observable on the selected source pair.
+- `PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryComposition` proves the
+  corresponding closure law: exact stochastic recovery is stable under
+  composition of observer channels on the selected source pair. This is what
+  makes exact recovery a usable sufficient class of admissible P9 channels,
+  rather than a single isolated certificate.
+  The prior-art frame is comparison of experiments and stochastic sufficiency:
+  Le Cam `QAQA2SRN`, Torgersen `QJGJ6KA7`, and the Markov-category formulation
+  `9SN4VCVJ` are now the guardrails for this interpretation.
+- `PhysicsSM.Draft.NullEdgeP9StochasticErasureNotRecoverable` proves the no-go
+  counterpart: if a stochastic observer channel sends two genuinely distinct
+  source distributions to the same coarse output, then it cannot be exactly
+  recoverable for that pair. This fences the admissible-channel class against
+  the known erasing-map counterexamples.
 - `PhysicsSM.Draft.NullEdgeP9DiamondLocalityNoiseInvariance` proves the T3
   locality/noise guardrail: once the closed diamond and all relation entries
   internal to it agree, external relation noise cannot change the local
   interval-size readout.
 - `PhysicsSM.Draft.NullEdgeP7RecoverabilityInvisibilitySeparation` supplies an
   important warning: recoverability is not source invisibility.
+- `PhysicsSM.Draft.NullEdgeP7ProperTimePurityBridge` supplies the scalar
+  normalized-qubit bridge: squared proper-time ratio equals twice visible
+  linear entropy, and unital Bloch-radius contractions monotonically increase
+  that proper-time-square. This is still a static observer-channel theorem, not
+  a flip-rate dynamics theorem.
 
 The Hodge version now has an abstract projector algebra, but it has not yet been
 grounded in a geometry-dependent finite diamond metric. It should reuse the

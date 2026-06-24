@@ -1,24 +1,40 @@
-# Codex six-lane Aristotle + multi-model research plan
+# Gemini six-lane Aristotle autonomous research plan
 
-Date: 2026-06-23. Updated evening 2026-06-23 for Spark/Gemini/Claude access,
-Aristotle physics-context prompts, and the four-layer conjecture audit.
-Updated with mandatory Aristotle next-step requirements and explicit turn-based model
-escalation.
-Updated late evening 2026-06-23 to require physics context and next-step
-guidance in every Aristotle prompt, heavier Gemini/Claude constructive and
-adversarial review, and priority changes after the newest P7/P9 finite results.
+Date: 2026-06-23. Forked from the Codex overnight plan and rewritten for a
+Gemini-led autonomous loop.
 
-Purpose: run Codex autonomously overnight on the null-edge causal graph program,
-with up to six simultaneous Aristotle jobs queued when the targets are genuinely
-worth the proof budget, and with Spark/Gemini/Claude used as force multipliers
-for research, integration, and hard-problem analysis. The run should optimize
-for publishable progress, not for activity. A good run produces one or more of:
+Purpose: run Gemini autonomously on the null-edge causal graph program, with up
+to six simultaneous Aristotle jobs queued when the targets are genuinely worth
+the proof budget. Gemini is the primary strategic agent for this run. Aristotle
+is the proof-specialist. Claude should be used as an adversarial or constructive
+co-critic when available. Spark/Codex-style subagents, if available in the
+runtime, should be used for bounded mechanical tasks such as literature triage,
+diff inspection, source crosswalks, and small manuscript sketches.
+
+Gemini rate-limit posture: treat Gemini turns as scarce. Gemini should spend
+tokens on choosing the next high-value move, interpreting completed results,
+and writing concise handoffs. It should not repeatedly reread long documents,
+large Lean modules, complete Aristotle outputs, or whole literature-search
+transcripts when a diff, helper report, semantic-search result, or Claude audit
+can answer the question. When in doubt, ask Aristotle for proof work and Claude
+for critique, then let Gemini make the final priority decision from compact
+reports.
+
+The run should optimize for publishable progress, not for activity. A good run
+produces one or more of:
 
 - a new finite theorem that strengthens a paper claim;
 - a sharper definition that unifies several theorem islands;
 - a strategy/audit report that changes the priority order;
 - a manuscript-ready section backed by theorem and source references;
 - a clean no-go or demotion criterion for an overextended branch.
+
+Gemini-specific operating rule: do not treat "autonomous" as permission to
+spray jobs or spend context. Each queued Aristotle job should carry a physics
+context, an exact finite target, and a reason it would change a paper,
+conjecture, or priority decision. If the highest-value next step is a
+literature search, manuscript section, or no-go audit, outsource the first pass
+where possible and keep Gemini's own review concise.
 
 The default scientific north star is now the relative-entropy observer-channel
 bridge between origin of mass and null-step dynamics. The highest-value target
@@ -123,12 +139,12 @@ Batch preflight checklist:
    visibility, then one-diamond super-Dirac or higher-gauge gates. Deviate only
    when a fresh result or model critique makes another lane more publication
    valuable.
-3. Gemini and Claude are being used as scientific co-critics, not decoration:
+3. External model calls are being used as scientific co-critics, not decoration:
    alternate constructive/adversarial roles, record provisional 1-10 scores,
    and revisit the scores after proof or literature checks show whether the
    advice actually helped.
 4. The run ledger records Aristotle's suggested next steps separately from
-   Codex's accepted next actions. A suggestion is not a decision until it has
+   Gemini's accepted next actions. A suggestion is not a decision until it has
    survived local review, literature/source checks when relevant, and at least
    one adversarial pass for high-risk claims.
 
@@ -153,8 +169,22 @@ layers.
    - Do not commit.
    - Do not promote draft modules to trusted modules during the autonomous run.
 
+1a. OpenAI/GPT access assumption.
+   - Do not assume Gemini can call GPT models through the user's ChatGPT
+     subscription. If Gemini needs GPT-family help, use an explicitly configured
+     tool, Codex surface, or OpenAI API key.
+   - Treat ChatGPT/Codex subscription access and OpenAI API-key access as
+     separate authentication/billing paths unless the active environment proves
+     otherwise.
+   - If no configured GPT tool is visible, outsource proof work to Aristotle and
+     critique to Claude rather than spending time trying to route Gemini through
+     ChatGPT.
+
 2. Aristotle concurrency is up to six simultaneous jobs.
    - Six is a ceiling, not a target.
+   - Gemini should usually submit at most three new Aristotle jobs in one wake
+     cycle. Submit four to six only when the targets are genuinely independent,
+     already scoped, and require little additional Gemini context to monitor.
    - A slot is worth filling only if success would move a publication claim,
      theorem spine, falsification criterion, or important manuscript section.
    - Avoid six near-duplicate jobs. The queue should cover different failure
@@ -172,6 +202,10 @@ layers.
      the research-guidance task. Ask for the proof or audit first, then ask for
      next theorem targets, likely counterexamples, source/convention checks, and
      whether the result should promote, demote, or redirect the lane.
+   - Push more work into Aristotle prompts: ask Aristotle to return compact
+     completion reports, candidate next theorem statements, and any statement
+     drift or convention risks. Gemini should not reconstruct those reports by
+     reading full output trees unless the helper report is suspicious.
 
 3. Priorities are claim-driven, not lane-driven.
    - Prioritize the proper-time/purity-rate bridge when there is a realistic
@@ -215,45 +249,46 @@ layers.
    - Verify theorem statement identity mechanically where possible.
    - Run targeted checks before broad builds.
 
-6. Use GPT-5.3-Codex-Spark subagents liberally as an experiment.
-   - Prefer Spark for bounded, parallelizable work: literature triage,
+6. Use Spark/Codex-style subagents when the runtime exposes them.
+   - Prefer subagents for bounded, parallelizable work: literature triage,
      semantic-search summaries, Aristotle completion triage, diff inspection,
      task-note cleanup, source crosswalks, small manuscript sketches, and
      verification/checklist passes.
-   - Keep Codex's main thread focused on high-level strategy, physics judgment,
-     claim boundaries, final integration decisions, and critical review.
-   - Assign Spark tasks with disjoint write scopes when edits are allowed. For
-     read-only work, ask for a concise evidence-backed report with file paths,
-     source keys, job IDs, and concrete next actions.
-   - Do not let Spark promote draft code to trusted code or make commits.
-   - Record where Spark performs well or struggles in
+   - Keep Gemini's main reasoning focused on high-level strategy, physics
+     judgment, claim boundaries, final integration decisions, and critical
+     review.
+   - Assign subagent tasks with disjoint write scopes when edits are allowed.
+     For read-only work, ask for a concise evidence-backed report with file
+     paths, source keys, job IDs, and concrete next actions.
+   - Do not let a subagent promote draft code to trusted code or make commits.
+   - Record where subagents perform well or struggle in
      `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`.
 
-7. Use Gemini and Claude more heavily as hard-problem co-critics.
-   - Use them in turn, alternating roles: one model gives constructive synthesis
-     and theorem proposals, the other gives adversarial critique, failure modes,
-     and prior-art skepticism. On the next comparable issue, swap roles.
-   - Query Gemini when a difficult issue would benefit from broad independent
-     synthesis, literature angles, cross-lane connections, manuscript framing,
-     or speculative but disciplined theorem proposals.
-   - Query Claude when a difficult issue would benefit from adversarial
-     critique, theorem-statement sharpening, physics guardrails, convention
-     audits, or source skepticism.
-   - Nominal cadence: run one model every 2 Aristotle jobs (alternating lane-to-lane),
-     and run a paired constructive/adversarial turn when a lane has >2 proof jobs
-     in a row. Use both models together before any major priority change, demotion,
-     manuscript claim, or high-risk batch submission. Treat this as a floor, not
-     a quota: query them whenever multiple independent takes could prevent wasted
-     proof work.
-   - For a difficult physics or math problem, prefer a two-pass review:
-     constructive model first to propose definitions and theorem targets, then
-     adversarial model to attack those targets. For a possible no-go or demotion,
-     reverse the order: adversarial model first, constructive model second to
-     salvage a narrower statement.
+7. Use Claude, and only sparingly use a separate Gemini API instance, as
+   hard-problem co-critics.
+   - Gemini's own main pass supplies the primary constructive synthesis. Do not
+     count ordinary self-reflection as an external-model query.
+   - Use Claude when a difficult issue would benefit from adversarial critique,
+     theorem-statement sharpening, physics guardrails, convention audits, or
+     source skepticism.
+   - Use a separate Gemini API/model instance only for rare cases where a second
+     Gemini-style synthesis is likely to change the lane choice. Because Gemini
+     rate limits are tighter, default to Claude for external critique and to
+     Aristotle for proof/strategy scaffolding.
+   - Nominal cadence: after roughly every 3-5 Aristotle jobs, run one Claude
+     critique/synthesis turn unless the work is purely mechanical. Use a
+     separate Gemini-style pass only before a major priority change, demotion,
+     manuscript claim, or high-risk batch where Claude and Aristotle disagree or
+     leave an important ambiguity.
+   - For a difficult physics or math problem, prefer a two-pass review: a
+     constructive pass proposes definitions and theorem targets, then an
+     adversarial pass attacks those targets. For a possible no-go or demotion,
+     reverse the order: adversarial first, constructive second to salvage a
+     narrower statement.
    - Do not paste secrets or private credentials into prompts. Use concise
      context packs and ask for actionable theorem targets, failure modes, and
      literature leads.
-   - Score each Gemini/Claude query from 1 to 10 (constructive/adversarial/
+   - Score each external-model query from 1 to 10 (constructive/adversarial/
      literature/manuscript, as requested) in the model evaluation log.
      Scores may be delayed until later proof/literature checks confirm or refute
      a recommendation.
@@ -261,20 +296,23 @@ layers.
      A beautiful critique that does not change theorem choices, source use, or
      manuscript boundaries should score lower than a plain but actionable theorem
      correction.
-   - Prefer paired prompts for high-value problems: one model proposes the
-     strongest finite theorem or manuscript claim it can; the other model attacks
-     that proposal for false assumptions, convention drift, missing literature,
-     and overclaiming. The next Aristotle job should use the narrowed theorem
-     that survives the pair.
+   - Prefer a low-token two-pass pattern for high-value problems: Aristotle or
+     Gemini proposes the strongest finite theorem or manuscript claim; Claude
+     attacks that proposal for false assumptions, convention drift, missing
+     literature, and overclaiming. Use an independent Gemini-style pass only if
+     the critique leaves two plausible high-value directions.
 
 ## Multi-model delegation protocol
 
-The run should deliberately test what the new model stack is good for.
+The run should deliberately test what Gemini is good for as the primary
+autonomous researcher, while still using Aristotle, Claude, and any available
+subagents for the work they are best suited to do.
 
-### Spark subagents
+### Subagents
 
-Use GPT-5.3-Codex-Spark subagents as the default delegation layer for bounded
-tasks. Good Spark prompts have:
+Use Spark/Codex-style subagents as the default delegation layer for bounded
+tasks when they are available in the active environment. Good subagent prompts
+have:
 
 - a fixed input scope, such as one task note, one Aristotle output, one doc
   section, or one small Lean module cluster;
@@ -284,7 +322,7 @@ tasks. Good Spark prompts have:
   theorem names, risk list, or next-action list;
 - a warning not to revert unrelated work and not to promote trusted modules.
 
-Prefer Spark for:
+Prefer subagents for:
 
 - literature triage and source relevance checks;
 - semantic-search result summarization;
@@ -295,7 +333,7 @@ Prefer Spark for:
 - lint/noise audits on touched files;
 - queue/ledger bookkeeping.
 
-Do not use Spark for:
+Do not use subagents for:
 
 - final physics judgment;
 - broad ontology synthesis without a finite target;
@@ -303,17 +341,20 @@ Do not use Spark for:
 - silent theorem-statement changes;
 - committing.
 
-### Gemini and Claude escalation
+### Claude-first escalation
 
-Gemini and Claude are routine force multipliers for hard scientific choices,
-not just emergency critics. Use the available API/CLI helpers when configured;
-if no helper is available in the active shell, record that as a tooling blocker
-rather than stalling the run. Do not use them for purely mechanical proof
-integration when Spark or local checks are enough.
+Claude is the default external force multiplier for hard scientific choices in
+this Gemini-led run. An independent Gemini API/model surface is optional and
+rate-limited; reserve it for unusually important synthesis or tie-breaking. Use
+the available API/CLI helpers when configured; if no helper is available in the
+active shell, record that as a tooling blocker rather than stalling the run. Do
+not use external models for purely mechanical proof integration when subagents
+or local checks are enough.
 
-Use Gemini when the run needs:
+Use an independent Gemini-style pass only when the run needs:
 
-- broad synthesis over many lines of inquiry;
+- broad synthesis over many lines of inquiry that cannot be reduced to a
+  semantic-search report plus Gemini's own analysis;
 - speculative but disciplined theorem proposals;
 - literature-search angles for a difficult physics branch;
 - alternative ways to phrase a manuscript argument;
@@ -327,34 +368,38 @@ Use Claude when the run needs:
 - failure modes and demotion criteria;
 - skepticism about whether a claimed result is actually new.
 
-Alternate constructive and adversarial roles:
+If both external surfaces are available and the issue is important enough to
+justify the Gemini tokens, alternate constructive and adversarial roles:
 
 ```text
 Issue 1:
-  Gemini constructive synthesis
+  independent Gemini constructive synthesis
   Claude adversarial critique
 
 Issue 2:
   Claude constructive synthesis
-  Gemini adversarial critique
+  independent Gemini adversarial critique
 ```
 
-For a high-impact or confusing issue, use both models before submitting the next
-major batch. Ask the constructive model for theorem statements, proof routes,
-literature leads, and manuscript framing. Ask the adversarial model for
-counterexamples, convention traps, prior-art collisions, and demotion tests.
+For a high-impact or confusing issue, ask Claude first before submitting the
+next major batch. Use the independent Gemini-style pass only when a second
+synthesis is likely to change the next queue. Ask the constructive pass for
+theorem statements, proof routes, literature leads, and manuscript framing. Ask
+the adversarial pass for counterexamples, convention traps, prior-art
+collisions, and demotion tests.
 
 Nominal cadence for this run:
 
-- at least one model call per roughly every 2 Aristotle jobs submitted or
-  integrated;
-- pair-wise turn-taking for difficult lanes: after 3-4 jobs in the same lane, call
-  the alternate model for the opposite role (constructive/adversarial) before the
-  next batch.
-- both Gemini and Claude before any major priority change, demotion, manuscript
-  claim, or high-risk batch submission;
-- both models after a surprising Aristotle result if it changes the science
-  story.
+- at least one Claude call per roughly every 3-5 Aristotle jobs submitted or
+  integrated, unless the current work is purely mechanical;
+- after 3-4 jobs in the same lane, call Claude for the opposite role
+  (constructive/adversarial) before the next batch;
+- use an independent Gemini-style pass only for major priority changes,
+  demotions, manuscript claims, or high-risk batches where Claude/Aristotle
+  feedback leaves a real strategic fork;
+- after a surprising Aristotle result that changes the science story, use
+  Claude first; use independent Gemini only if a second synthesis is likely to
+  change the next job queue.
 
 These are prompts to remember escalation, not quotas. If the highest-value
 problem is hard, ask earlier. If the current batch is clean Lean plumbing, skip.
@@ -362,15 +407,15 @@ problem is hard, ask earlier. If the current batch is clean Lean plumbing, skip.
 Turn tracker:
 
 - Keep a simple lane-level turn marker in the delegation log:
-  `next_turn = Gemini_constructive` or `next_turn = Claude_constructive`
-  and switch after each external-model query.
+  `next_turn = Claude_constructive` or `next_turn = Claude_adversarial`.
+  Add `independent_Gemini_needed = yes/no` only for strategic forks.
 - When the lane is technical, request one constructive turn and one adversarial
-  turn before deciding the next Aristotle batch.
+  Claude turn across the batch before deciding the next Aristotle queue.
 
-Every Spark/Gemini/Claude use must be recorded in
+Every subagent, Claude, and independent Gemini-style use must be recorded in
 `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`.
 
-Gemini/Claude scoring rule:
+External-model scoring rule:
 
 ```text
 score 1-10 (per model query):
@@ -494,17 +539,55 @@ If Neo4j credentials are missing, do not spend the night repairing environment
 state unless it directly blocks the next best theorem target. Fall back to local
 files, context packs, and explicit literature MCP searches.
 
-Spark startup delegation:
+Optional startup delegation:
 
-- Spawn one Spark subagent to review `aristotle list --limit 30` output and
-  identify completed jobs likely worth integrating.
-- Spawn one Spark subagent, if useful, to run/read semantic-search outputs for
+- If subagents are available, spawn one bounded subagent to review
+  `aristotle list --limit 30` output and identify completed jobs likely worth
+  integrating.
+- If useful, spawn one bounded subagent to run/read semantic-search outputs for
   the highest-risk active lane and return only the top source/theorem leads.
-- Keep Codex on strategy: choose which jobs matter, decide whether a result is
+- Keep Gemini on strategy: choose which jobs matter, decide whether a result is
   publication-moving, and resolve contradictions between model reports.
 
-Do not block the whole startup waiting for Spark unless the next action depends
-on its result. Continue with non-overlapping status checks and local builds.
+Do not block the whole startup waiting for a subagent unless the next action
+depends on its result. Continue with non-overlapping status checks and local
+builds.
+
+## Gemini context and sleep budget
+
+Gemini should run in compact wake cycles:
+
+1. Inspect queue status and helper summaries.
+2. Integrate or delegate at most the completed jobs that look publication-moving.
+3. Submit at most three new well-scoped Aristotle jobs unless the queue is empty
+   and several independent targets are already prepared.
+4. Run one focused literature pass or delegate it if the five-job cadence is due.
+5. Write a compact ledger update.
+6. Sleep when no high-value Gemini decision is pending.
+
+Avoid reading large files directly when a narrower surface exists:
+
+- prefer `aristotle list`, `aristotle tasks <id>`, integration dry-run reports,
+  and diffs over whole output trees;
+- prefer semantic-search snippets and source keys over full papers unless a
+  theorem statement or manuscript paragraph depends on the details;
+- prefer targeted file slices over entire Markdown plans;
+- prefer Aristotle completion reports and Claude critiques over independent
+  re-analysis of every proof output;
+- summarize accepted state in the ledger so the next wake cycle does not need
+  to reconstruct it.
+
+Sleep policy:
+
+- If all worthwhile Aristotle slots are occupied, no completed job needs
+  integration, and the next literature/search target is already planned, sleep
+  for 30 minutes.
+- If Aristotle jobs are long-running and the last two wake cycles found no
+  actionable changes, sleep for 45-60 minutes.
+- If there is an active failure, build breakage, or a job completion likely to
+  unblock the queue, sleep for 10-15 minutes.
+- Do not wake every 10 minutes merely to poll. Use short sleeps only when a
+  near-term decision is realistically expected.
 
 ## Six overnight lanes
 
@@ -754,16 +837,16 @@ Model cadence and escalation:
 
 - Keep a running job counter in the ledger for Aristotle jobs submitted or
   integrated.
-- Around every 2-3 Aristotle jobs, run at least one Gemini or Claude
-  escalation on the highest-risk unresolved lane unless current lanes are purely
-  mechanical.
-- Before a major batch, priority change, demotion, or manuscript claim, use both
-  Gemini and Claude in alternating constructive/adversarial roles.
-- If Spark flags low confidence, repeated convention risk, or possible
-  novelty/prior-art conflict, use Gemini or Claude before adding more jobs in
+- Around every 3-5 Aristotle jobs, run one Claude escalation on the highest-risk
+  unresolved lane unless current lanes are purely mechanical.
+- Before a major batch, priority change, demotion, or manuscript claim, use
+  Claude first. Add an independent Gemini-style pass only if there is a genuine
+  strategic fork after Claude and Aristotle have weighed in.
+- If a subagent flags low confidence, repeated convention risk, or possible
+  novelty/prior-art conflict, use external critique before adding more jobs in
   that lane.
-- If Gemini/Claude returns a new constraint or contradiction risk, re-baseline
-  the active queue before submitting additional jobs.
+- If an external model returns a new constraint or contradiction risk,
+  re-baseline the active queue before submitting additional jobs.
 
 Track the literature cadence in the run ledger. After every fifth Aristotle job
 submitted or integrated, pause long enough to run one focused literature pass
@@ -771,9 +854,10 @@ against the highest-risk active claim. The search can be quick, but it must end
 with a concrete decision: add a source to Zotero/Neo4j, update a claim boundary,
 change a theorem statement, or record that no useful source was found.
 
-Spark should usually run the first-pass literature triage. Codex should review
-the source quality and decide whether to add papers, update claims, or change
-the theorem target.
+Subagents should usually run the first-pass literature triage when available.
+Claude should do adversarial source/novelty review for high-risk claims. Gemini
+should make the final source-quality decision from compact reports, not by
+rerunning the whole search.
 
 Do not submit a new job if:
 
@@ -845,8 +929,8 @@ Completion report:
 ```
 
 The next-step suggestions are advisory. Do not follow them automatically; use
-Codex review, local proof checks, literature search, and Gemini/Claude critique
-before turning them into new jobs.
+Gemini review, local proof checks, literature search, and external-model
+critique before turning them into new jobs.
 Record the suggestions in the run ledger under "Aristotle suggested next steps,"
 then separately record which suggestions were accepted, rejected, or deferred.
 
@@ -902,7 +986,8 @@ lake env lean PhysicsSMDraft.lean
 
 6. Update the run ledger with:
    - job ID;
-   - model/subagent used, if any: Spark, Gemini, Claude, Aristotle, Codex;
+   - model/subagent used, if any: Gemini, Claude, Aristotle, Spark/subagent,
+     or local tooling;
    - task type: proof, integration, literature, verification, manuscript,
      strategy, critique;
    - what was proved or returned;
@@ -911,8 +996,9 @@ lake env lean PhysicsSMDraft.lean
    - scientific significance;
    - model outcome: success, partial, failed, blocked, or noisy;
    - publication-value score `0-3` and one-sentence reason;
-   - Gemini/Claude score `1-10`, if used; default is `provisional` and should be
-     upgraded to `validated` only after proof/literature checks verify the advice.
+   - external-model score `1-10`, if used; default is `provisional` and should
+     be upgraded to `validated` only after proof/literature checks verify the
+     advice.
    - whether escalation was used or skipped, and why;
    - next target.
 
@@ -921,7 +1007,7 @@ lake env lean PhysicsSMDraft.lean
 ```text
 [timestamp] [lane] [job/model] [task-type] [status]
 publication-value 0-3:
-Gemini/Claude score 1-10 + status (provisional/validated), if applicable:
+External-model score 1-10 + status (provisional/validated), if applicable:
 role requested: constructive / adversarial / literature / manuscript
 what worked:
 what worried:
@@ -949,14 +1035,16 @@ repair job is needed to save a running lane.
 
 Default pattern:
 
-1. Give Spark a bounded literature triage task: one claim, one lane, or one
-   theorem target.
+1. Give a subagent a bounded literature triage task when available: one claim,
+   one lane, or one theorem target.
 2. Use local Neo4j semantic search and provider-specific scholarly searches.
-3. Ask Gemini or Claude for a constructive or adversarial read whenever the
-   source landscape touches a priority lane, an apparent novelty claim, a
-   demotion gate, or a theorem statement with physics interpretation. Use both
-   models if the literature would affect the next Aristotle batch.
-4. Codex decides whether to add sources to Zotero/Neo4j or update the docs.
+3. Ask Claude for a constructive or adversarial read whenever the source
+   landscape touches a priority lane, an apparent novelty claim, a demotion
+   gate, or a theorem statement with physics interpretation.
+4. Use an independent Gemini-style pass only when Claude's critique and
+   Aristotle's guidance leave two or more plausible high-impact directions.
+5. Gemini decides whether to add sources to Zotero/Neo4j or update the docs from
+   the compact reports.
 
 Priority questions:
 
@@ -1073,11 +1161,13 @@ Summary:
 - most significant scientific result:
 - most important negative result or demotion:
 - model/subagent experiment summary:
-  - Spark:
-  - Gemini: include 1-10 ratings and whether ratings are provisional or
-    proof-checked.
-  - Claude: include 1-10 ratings and whether ratings are provisional or
-    proof-checked.
+  - Gemini as primary autonomous agent:
+  - Aristotle:
+  - subagents/Spark, if used:
+  - Claude, if used: include 1-10 ratings and whether ratings are provisional
+    or proof-checked.
+  - independent Gemini-style API/model calls, if used: include 1-10 ratings and
+    whether ratings are provisional or proof-checked.
 - Aristotle suggested next steps worth considering:
 - Aristotle suggested next steps rejected or deferred:
 
@@ -1098,4 +1188,5 @@ Remaining issues:
 Also leave or update a run ledger in `AgentTasks/` with job IDs, statuses, and
 next actions. Also update
 `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md` with
-specific observations about Spark/Gemini/Claude performance. Do not commit.
+specific observations about Gemini, Aristotle, Claude, and any subagent
+performance. Do not commit.

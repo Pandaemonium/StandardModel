@@ -326,6 +326,20 @@ additive mass block. The Higgs/Yukawa block is the internal mass block, and the
 on-shell content is the constraint that the kinetic Plucker scalar equals the
 Yukawa scalar.
 
+The newest super-Dirac critique sharpens this: the missing theorem is not
+another abstract block expansion. It is the symbol/soldering theorem proving
+that the causal order-complex operator has first-order symbol equal to the
+Dirac slash of the weighted null-edge momentum bundle. In finite target form:
+
+```text
+[D, M_f] near x
+-> sum_y a_xy (f(y)-f(x)) gamma.p_xy
+-> Plucker mass after squaring.
+```
+
+Without this, the static `gamma.P` theorem and the order-complex `d+delta`
+theorem remain adjacent square roots rather than one operator.
+
 Banked / near Lean (kernel-clean drafts). `NullEdgeDiracSlashCore`
 (`(+---)` Weyl-block square), `NullEdgeBundleDiracPluckerCore`
 (`chiralDiracSlash_bundleMomentum_sq_eq_pluckerMass`),
@@ -341,20 +355,56 @@ Krein/J-self-adjoint operator rather than automatically as an ordinary
 positive-definite Hilbert self-adjoint operator; otherwise the construction may
 be only a Euclidean or Wick-rotated shadow.
 
+The grading also needs to be fixed before the broad operator story is promoted.
+There are two distinct `Z2` gradings: cochain/form degree on the order complex
+and left/right chirality on the internal finite space. The product operator
+should be written as
+
+```text
+D_total = D_U + Gamma_K M_Phi,
+Gamma_total = Gamma_K Gamma_F,
+```
+
+so that the external piece is odd in form degree, the Higgs/Yukawa block is odd
+in chirality but degree-zero on the complex, and the cross term is the gauged
+Higgs derivative rather than an arbitrary degree-mixing artifact.
+
 Lead venue. Formalized-math or math-physics. The operator-factorization story is
 the program's most distinctive math contribution after P1.
 
 Literature anchors. Quillen superconnections; Chamseddine-Connes spectral
 action; Ackermann-Tolksdorf generalized Lichnerowicz; Bianconi topological Dirac;
-Foldy-Wouthuysen / Newton-Wigner / Thaller as branch-interpretation guardrails.
+Marcolli-van Suijlekom gauge networks (arXiv:1301.3480) as the closest graph /
+finite-spectral-triple prior art; and Perez-Sanchez's comment on gauge networks
+(arXiv:2508.17338) as a warning that a naive lattice spectral action may lose
+the Higgs scalar in the continuum limit. Foldy-Wouthuysen / Newton-Wigner /
+Thaller remain branch-interpretation guardrails.
 For the Lorentzian/Krein audit, cite van den Dungen (`5DURW8DU`),
 Bizi-Brouder-Besnard (`PM83B8QI`), Besnard-Bizi (`5VWPZ8BP`),
 Devastato-Farnsworth-Lizzi-Martinetti (`5RJUDATF`), and Martinetti-Singh
-(`Q6R3PCGJ`).
+(`Q6R3PCGJ`), with Strohmaier (`math-ph/0110001`), Franco (`arXiv:1210.6575`),
+and Besnard/Bizi (`arXiv:1611.07830`, `1611.07842`) as additional Lorentzian
+spectral-spacetime guardrails.
 
 Claim boundary. The square-root identities are finite algebra. The
 particle/antiparticle and localization reading of the two sheets must stay
 conditional on the standard Dirac branch literature.
+
+Notation guardrail. The Krein/spectral-triple layer should reserve `eta` for
+the linear fundamental symmetry defining the Krein product, `JReal` or `C` for
+the antilinear real structure, and `Sigma_m = D / m` for the mass-shell sheet
+involution. The existing two-sheet projector theorem concerns `Sigma_m`, not
+the real structure or the fundamental symmetry.
+
+Finite spectral-action target. On a finite complex, the low-order spectral
+action is finite linear algebra rather than asymptotic heat-kernel analysis.
+The first useful target is:
+
+```text
+Tr(D_total^2) = graph kinetic trace + Yukawa trace + diamond-curvature trace
+```
+
+This should be attempted before any continuum spectral-action claim.
 
 Higgs/Yukawa boundary. The safe theorem-level claim is that Higgs/Yukawa
 insertions are gauge-legal chirality-changing mass operators, and that a scalar
@@ -663,7 +713,25 @@ with matrix channels:
 - `recoverabilityGap_bounds_sourceVisibilityDefect`, initially as a definition
   and conjectural inequality.
 - `internalCoherenceLoss_eq_relativeEntropyDeficit`;
-- `coherenceDeficit_not_determined_by_mass_alone`;
+- `coherenceDeficit_not_determined_by_mass_alone` (finite same-det,
+  different-coherence density-class guardrail banked in
+  `NullEdgeP7CoherenceNotDeterminedByDet`);
+- `sameDet_different_operationalReadout` (banked in the same module via an
+  explicit off-diagonal trace-pairing observable);
+- `sameDet_different_positiveEffectReadout` (banked via an X-basis-style
+  bounded positive-effect proxy in the finite real-symmetric model);
+- `sameDet_different_twoOutcomeReadout` (banked with the positive effect and
+  its complement summing to the trace-one total);
+- `properTimeRatioSq_eq_two_linearEntropy` (banked in
+  `NullEdgeP7ProperTimePurityBridge`, making the normalized static bridge
+  explicit);
+- `blochContraction_properTimeRatioSq_monotone` and strict variant (banked in
+  the same module, giving the unital-channel monotonicity form);
+- `partialDephasing_massRatioSq_gap`,
+  `iteratedPartialDephasing_massRatioSq_gap`, and related determinant/purity
+  gap identities (banked in `NullEdgeP2PartialDephasingRateBridge`, giving
+  one-step and `n`-step dephasing-channel laws for the loss of off-diagonal
+  coherence);
 - `linearEntropyRate_visible_eq_flipFrequency`, shared with the null-step
   dynamics paper.
 
@@ -673,6 +741,13 @@ observer-channel API shared by P7 and P9. Ruskai-Szarek-Werner
 (`quant-ph/0101003`, DOI `10.1016/s0024-3795(01)00547-x`, Zotero `M6HR9WD6`)
 gives the affine Bloch-ball form and is the practical route for the celestial
 qubit before we attempt a general CPTP formalization.
+
+The newest audit boundary is important: the proper-time/purity bridge is no
+longer only a static scalar rewrite, because the partial-dephasing module now
+records exact finite one-step and `n`-step channel increments. It is still not a
+continuum rate law or a Higgs/Yukawa dynamics theorem. The next
+publication-grade strengthening is to connect the finite iterated formula to a
+named null-step transfer channel.
 
 Lead venue. Foundations / quantum information with a gravity angle.
 
@@ -1196,9 +1271,37 @@ route is now banked in
 `PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout`: under a
 transitive causal relation, a closed subdiamond is convex and the local
 interval-size readout restricted to that subdiamond agrees with direct
-measurement in the subdiamond. The next refinement is a finite witness
-corollary contrasting this preserving map with the critical-collapse erasure
-map.
+measurement in the subdiamond. The finite operational refinement is now banked
+in `PhysicsSM.Draft.NullEdgeP9OperationalGap`: the T1 readout difference is
+packaged as an explicit observer-channel gap. The next refinement is no longer
+another qualitative witness, but a quantitative T2 theorem stating when that
+gap survives, shrinks, or is erased under a pre-specified coarse map.
+`PhysicsSM.Draft.NullEdgeP9ExactRecoveryAdmissibleCoarseMap` adds the first
+information-theoretic positive class: if a common exact recovery map restores
+both fine source signals, then every fine distinguishing test pulls back to a
+coarse observer test. This should be cited as a sufficient admissibility
+certificate only; it does not characterize all physical coarse maps or prove
+approximate recovery.
+`PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryObservablePullback` upgrades
+this certificate to normalized finite distributions, column-stochastic observer
+channels, and observable expectations: under common exact stochastic recovery,
+each fine observable that distinguishes the source distributions has a coarse
+pulled-back observable that distinguishes the observer outputs.
+`PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryGap` sharpens this to exact
+gap preservation: the pulled-back coarse observable has the same expectation
+gap as the original fine observable on the selected source pair.
+`PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryComposition` proves that this
+exact stochastic recovery certificate composes on the selected source pair, so
+it is a structurally usable sufficient class of observer channels rather than a
+single-stage witness.
+`PhysicsSM.Draft.NullEdgeP9StochasticErasureNotRecoverable` gives the matching
+no-go: a channel that sends two genuinely distinct source distributions to the
+same observer output cannot be exactly recoverable for that pair.
+The right prior-art frame is classical comparison of experiments and Markov
+kernel sufficiency: Le Cam's review `QAQA2SRN`, Torgersen's stochastic-order
+comparison source `QJGJ6KA7`, and the Markov-category formulation of statistical
+experiment comparison `9SN4VCVJ` now serve as guardrails for how strongly to
+interpret exact recovery.
 For the causal-support side, Aslanbeigi-Saravani-Sorkin's generalized causal-set
 d'Alembertians (`DQ9CF6I2`) are now the key comparison source: they are retarded
 and Lorentz-invariant but nonlocal, include infrared recovery conditions, and

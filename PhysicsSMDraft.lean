@@ -165,6 +165,7 @@ import PhysicsSM.Draft.NullEdgeP1NormalizedDetZero
 import PhysicsSM.Draft.NullEdgeP2DephasingStrict
 import PhysicsSM.Draft.NullEdgeP9ClosureVisibleAny
 import PhysicsSM.Draft.NullEdgeP9PairedFluctuationPositive
+import PhysicsSM.Draft.NullEdgeP2PartialDephasingRateBridge
 import PhysicsSM.Draft.NullEdgeP1TwoNullEnergyPositive
 import PhysicsSM.Draft.NullEdgeP1NormalizedDetPositive
 import PhysicsSM.Draft.NullEdgeP2DephasingGap
@@ -199,10 +200,16 @@ import PhysicsSM.Draft.NullEdgeP2ProjectorDephasedDetMassRatio
 import PhysicsSM.Draft.NullEdgeP1ObserverTwoNullAlgebra
 import PhysicsSM.Draft.NullEdgeP11MetastableLogLifetime
 import PhysicsSM.Draft.NullEdgeP7BlochContractionMixedness
+import PhysicsSM.Draft.NullEdgeP7ProperTimePurityBridge
 import PhysicsSM.Draft.NullEdgeP9ResponseCharacterization
 import PhysicsSM.Draft.NullEdgeP9NoiseCauchySchwarz
 import PhysicsSM.Draft.NullEdgeP9PositiveWeightNoiseZero
 import PhysicsSM.Draft.NullEdgeP7BlochContractionStrict
+import PhysicsSM.Draft.NullEdgeP7CoherenceNotDeterminedByDet
+import PhysicsSM.Draft.NullEdgeP7SameDetDifferentDPDeficit
+import PhysicsSM.Draft.NullEdgeP9OperationalGapCoarseMap
+import PhysicsSM.Draft.NullEdgeP9SubdiamondNonvacuity
+import PhysicsSM.Draft.NullEdgeP9NoncriticalCoarseErasure
 import PhysicsSM.Draft.NullEdgeP11MetastableLifetimeMonotone
 import PhysicsSM.Draft.NullEdgeQWUnitarity
 import PhysicsSM.Draft.NullEdgeSuperDiracKreinCore
@@ -255,6 +262,12 @@ import PhysicsSM.Draft.NullEdgeP9DiamondLocalSeparation
 import PhysicsSM.Draft.NullEdgeP9CoarseMapErasureGuardrail
 import PhysicsSM.Draft.NullEdgeP9DiamondLocalityNoiseInvariance
 import PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout
+import PhysicsSM.Draft.NullEdgeP9OperationalGap
+import PhysicsSM.Draft.NullEdgeP9ExactRecoveryAdmissibleCoarseMap
+import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryObservablePullback
+import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryComposition
+import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryGap
+import PhysicsSM.Draft.NullEdgeP9StochasticErasureNotRecoverable
 
 /-!
 # PhysicsSM draft root

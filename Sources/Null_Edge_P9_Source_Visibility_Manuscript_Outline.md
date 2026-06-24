@@ -55,6 +55,45 @@ P9 becomes publication-worthy if it delivers:
 6. A clear bridge to the cosmological-constant literature as motivation, not as
    a solved phenomenological result.
 
+Newest finite theorem anchors:
+
+- `NullEdgeP9OperationalGap`: the six-point T1 witness has an explicit
+  bucket-level operational gap.
+- `NullEdgeP9OperationalGapCoarseMap`: the named critical coarse map erases
+  that operational gap, so visibility is not automatic under coarse-graining.
+- `NullEdgeP9SubdiamondRestrictionPreservesLocalReadout`: Alexandrov/subdiamond
+  restriction preserves local interval readouts under transitivity.
+- `NullEdgeP9SubdiamondNonvacuity`: the proper subdiamond `(0,3)` still
+  separates the two histories, so the preservation result is not merely a
+  whole-diamond tautology.
+- `NullEdgeP9NoncriticalCoarseErasure`: unrestricted surjective coarse maps are
+  too broad; one map keeps the critical swapped pair distinct while still
+  erasing the bucket-one local signature. The paper must therefore define an
+  admissible coarse-map or observer-channel class before making stability
+  claims.
+- `NullEdgeP9ExactRecoveryAdmissibleCoarseMap`: common exact recovery is one
+  sufficient admissibility certificate. A recoverable coarse map pulls every
+  chosen fine distinguishing test back to a coarse observer test. This is a
+  positive guardrail beside the erasure examples, not a claim that arbitrary or
+  approximately recoverable coarse maps preserve visibility.
+- `NullEdgeP9StochasticExactRecoveryObservablePullback`: the same sufficient
+  admissibility idea now has a normalized stochastic version. For finite
+  distributions and column-stochastic observer channels, common exact recovery
+  pulls every fine distinguishing observable back to a coarse distinguishing
+  observable.
+- `NullEdgeP9StochasticExactRecoveryGap`: common exact stochastic recovery
+  preserves the numerical expectation gap of the fine observable after
+  pullback. This is the cleanest finite operational source-visibility theorem
+  in the current P9 lane.
+- `NullEdgeP9StochasticExactRecoveryComposition`: exact stochastic recovery is
+  closed under composition on a selected source pair. This turns exact recovery
+  from a one-shot certificate into a structurally usable sufficient class of
+  admissible observer channels.
+- `NullEdgeP9StochasticErasureNotRecoverable`: if a stochastic observer channel
+  sends two genuinely distinct source distributions to the same coarse output,
+  then exact recovery is impossible for that pair. This is the no-go side of
+  the admissible-channel story.
+
 ## Proposed paper structure
 
 ### 1. Accessible overview
@@ -336,11 +375,27 @@ Lean spine:
 
 Narrative:
 
-- source visibility should survive at least some intrinsic causal-order
-  readouts;
+- in the six-point T1 witness, a diamond-local interval readout separates
+  histories that global histograms miss;
 - block/window artifacts must be diagnosed;
-- some coarse maps erase the signal by construction;
-- Alexandrov-local restrictions preserve local interval-abundance readouts.
+- the named critical-collapse coarse map erases that witness signal;
+- Alexandrov-local restrictions preserve local interval-abundance readouts
+  under the hypotheses of the banked finite theorem;
+- unrestricted surjective coarse maps are too broad: a noncritical erasing map
+  shows that P9 must specify an admissible coarse-map or observer-channel class.
+- exact recovery gives one clean admissible observer-channel class: if a common
+  recovery map restores the fine pair, the fine source test has a pulled-back
+  coarse observer test.
+- the stochastic exact-recovery version upgrades this from abstract tests to
+  normalized finite source distributions, column-stochastic observer channels,
+  and observable expectations.
+- exact stochastic recovery preserves the actual expectation gap of pulled-back
+  observables, not merely the existence of a distinguishing test.
+- exact stochastic recovery composes, so the sufficient admissible-channel class
+  survives layering of observer channels when each layer has common exact
+  recovery on the relevant source pair.
+- fully erased separated source pairs are not exactly recoverable, so this
+  admissible-channel class excludes the known erasing-map pathology by design.
 - spectral coarse maps should use whole eigenspace bands rather than individual
   eigenvectors when degeneracies are present.
 - any coarse map should be fixed before inspecting flat/de Sitter labels and
@@ -349,9 +404,11 @@ Narrative:
 
 This section is the current best finite result from the autonomous run:
 
-> Local source-visibility signals are meaningful only relative to an admissible
-> observer channel. Collapsing the channel can erase them; restricting to a
-> causal subdiamond can preserve them.
+> In the implemented six-point witness, local source-visibility signals are
+> meaningful only relative to a specified observer channel. The critical
+> collapse erases the bucket-level gap, a proper subdiamond still sees a
+> separator, and a noncritical erasing map shows that unrestricted coarse maps
+> are not an admissible stability class.
 
 ### 10. The T1/T2/T3 ladder
 
@@ -496,6 +553,9 @@ P9 should be promoted if:
 - simulations show the same separation without tuning.
 
 ## Suggested theorem targets for the next Aristotle rounds
+
+Status: proposed target names, not current Lean theorem inventory unless a
+module path is named explicitly.
 
 1. `subdiamond_restriction_separates_witness`
    - strengthen the current preservation theorem by adding an explicit visible

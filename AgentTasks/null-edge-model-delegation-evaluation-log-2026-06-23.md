@@ -855,3 +855,204 @@ its final message, so permanent docs should keep using spaced prose forms.
 
 Follow-up: Use Spark for bounded report triage like this, but keep main-thread
 ownership of the final theorem statement and claim boundary.
+
+### 2026-06-23 continuation - Spark queue triage
+
+```text
+[2026-06-23] [P9/P7] [Spark/Dewey] [Aristotle integration triage] [success] [quality 8 provisional]
+```
+
+Input scope: recent `aristotle list --limit 30`, `docs/ARISTOTLE.md`, and the
+overnight six-lane plan.
+
+What worked: Dewey correctly ranked the recent P9 T1/T2/T3 cluster, identified
+the operationally important jobs (`DiamondLocalSeparation`,
+`CoarseMapErasureGuardrail`, `SubdiamondRestrictionPreservesLocalReadout`, and
+`DiamondLocalityNoiseInvariance`), and noticed that the plan already includes
+the required physics-context and next-step prompt controls. This saved main
+thread time and prevented duplicate integration.
+
+What worried: It suggested replaying integration for some modules that were
+already live in `PhysicsSM.Draft`; main-thread verification was still needed.
+
+Follow-up: Continue using Spark for queue triage, but treat it as a priority
+filter rather than an integration decision-maker.
+
+### 2026-06-23 continuation - Gemini constructive query
+
+```text
+[2026-06-23] [P9/P7] [Gemini CLI] [constructive theorem prioritization] [failed] [quality 1 validated]
+```
+
+Input scope: compact P9/P7 theorem-spine summary.
+
+What worked: No usable scientific guidance was returned.
+
+What worried: The CLI scanned noisy workspace directories, emitted unreadable
+directory warnings, and then failed with a socket/API error. This should be run
+in a lighter or more isolated mode next time.
+
+Follow-up: Retry Gemini only with a no-workspace or tightly scoped prompt mode
+when available.
+
+### 2026-06-23 continuation - Claude adversarial query
+
+```text
+[2026-06-23] [P9/P7] [Claude bare CLI] [adversarial critique] [success] [quality 8 provisional]
+```
+
+Input scope: compact summary of banked P9 T1/T2/T3 modules and the P1/P7
+observer-channel priority.
+
+What worked: Claude gave actionable critique. It flagged that T3 noise
+invariance is only strong if "external" noise is independently characterized,
+that positive subdiamond restriction needs quantitative preservation language
+to avoid domain-shopping, and that the P1/P7 observer-channel lane needs a
+theorem showing determinant mass does not determine hidden coherence. This
+directly shaped the two fresh Aristotle submissions.
+
+What worried: The proposed relative-entropy/proper-time rate theorem is
+scientifically valuable but not yet reduced to a small Lean target; it should
+be treated as a strategy target until the finite channel and rate observable
+are pinned down.
+
+Follow-up: Validate the critique by integrating the P9 operational-gap and P7
+coherence-counterexample jobs, then submit positive-density and quantitative
+T2 follow-ups if they succeed.
+## 2026-06-23 continuation: P9/P7 next-theorem escalation
+
+[2026-06-23] [P9/P7] [Gemini] [constructive theorem planning] [partial]
+
+- publication-value 0-3: 1
+- Gemini score: 5/10 provisional
+- role requested: constructive theorem proposals
+- what worked: suggested looking for a bridge between geometric coarse maps and
+  observer-channel coherence, and framed determinant/coherence separation as a
+  possible operational issue rather than mere algebra.
+- what worried: the top proposal assumed a pushforward from causal coarse maps
+  to the `2 x 2` density proxies that the current program has not defined; this
+  risks adding a fake naturality layer.
+- what later proof/literature checks confirmed or refuted: not validated yet.
+  Treat as speculative strategy input only.
+- follow-up: use only after defining an explicit observer channel from causal
+  histories to density proxies.
+
+[2026-06-23] [P9/P7] [Claude] [adversarial theorem audit] [useful]
+
+- publication-value 0-3: 3
+- Claude score: 8/10 provisional, partially validated
+- role requested: adversarial critique and finite theorem targets
+- what worked: identified three concrete ambiguity reducers: all/some
+  order-preserving coarse maps, non-vacuity of the subdiamond-preservation
+  theorem, and operational POVM/readout separation for the same-det
+  different-coherence pair.
+- what worried: the coarse-map universality target may be combinatorially
+  heavier than its immediate publishable value unless bounded by a very small
+  class.
+- what later proof/literature checks confirmed or refuted: the subdiamond
+  non-vacuity concern was validated as important and answered by the new
+  `PhysicsSM.Draft.NullEdgeP9SubdiamondNonvacuity` theorem.
+- follow-up: prioritize P7 operational readout separation and a bounded
+  coarse-map class audit.
+
+[2026-06-23] [P9/P7] [Spark/Darwin] [Aristotle queue triage] [useful]
+
+- publication-value 0-3: 2
+- role requested: read-only triage of recent Aristotle jobs
+- what worked: identified the highest-value not-yet-acted-on surfaces:
+  positive-T2 coarse-map strategy, intrinsic coarse-map strategy, and the need
+  to translate strategy outputs into finite theorem jobs.
+- what worried: the report referred to `ARISTOTLE_SUMMARY.md` as an evidence
+  surface, while the repo workflow treats helper/diff inspection and task notes
+  as canonical; still useful as a quick queue map.
+- follow-up: use Darwin's concentration picks when selecting the next P9 job.
+
+## 2026-06-23 late loop: P7/P9 admissible coarse-map theorem
+
+[2026-06-23] [P7/P9] [Gemini API] [constructive theorem selection] [useful]
+
+- publication-value 0-3: 3 if validated
+- Gemini score: 7/10 provisional
+- role requested: constructive theorem selection
+- what worked: proposed using P7 data-processing/equality as an admissibility
+  criterion for P9 coarse maps, directly connecting the newest P9 negative
+  coarse-map result to the relative-entropy observer-channel spine.
+- what worried: the initial KL-equality target risked being support-fragile and
+  too close to a nonnegativity tautology if stated without exact recovery.
+- what later proof/literature checks confirmed or refuted: Claude adversarial
+  review confirmed the direction but recommended exact recovery rather than raw
+  KL equality.
+- follow-up: package an exact-recovery/admissible-map theorem for Aristotle.
+
+[2026-06-23] [P7/P9] [Claude API] [adversarial theorem sharpening] [useful]
+
+- publication-value 0-3: 3 if validated
+- Claude score: 8/10 provisional
+- role requested: adversarial theorem sharpening
+- what worked: identified support pitfalls for one-direction KL equality and
+  sharpened the theorem to a common exact recovery map preserving source
+  distinction. This gives P9 a constructive admissibility definition rather than
+  a fragile equality condition.
+- what worried: the recovery theorem may be mathematically simple; its value is
+  as a named P9 guardrail, not as a deep information-theory theorem.
+- what later proof/literature checks confirmed or refuted: pending Aristotle/local
+  proof integration.
+- follow-up: submit `null-edge-p9-exact-recovery-admissible-coarse-map`.
+
+[2026-06-23] [P9] [Spark/Pasteur] [literature and claim triage] [useful]
+
+- publication-value 0-3: 2
+- Spark score: 8/10 provisional
+- role requested: bounded literature/claim triage for stochastic exact-recovery
+  composition.
+- what worked: identified the composition theorem as scientifically meaningful
+  because it supplies closure for the admissible observer-channel class, and
+  connected it to the correct prior-art neighborhood: finite Markov kernels,
+  Blackwell sufficiency/comparison of experiments, Le Cam/Torgersen
+  randomization, Petz recovery, and data-processing equality.
+- what worried: some named source anchors are still broad or only indirectly
+  tied to the classical finite theorem; the next literature pass should add a
+  direct Blackwell/Le Cam/Torgersen source if the lane remains central.
+- what later proof/literature checks confirmed or refuted: pending Aristotle
+  result for `PairExactRecoverable.comp`.
+- follow-up: keep the composition theorem source-pair scoped and explicitly
+  separate it from arbitrary coarse-map invariance.
+
+[2026-06-23] [P7/P1] [Spark/Lorentz] [theorem target triage] [useful]
+
+- publication-value 0-3: 2
+- Spark score: 8/10 provisional
+- role requested: bounded read-only triage for the next observer-channel /
+  proper-time theorem target.
+- what worked: identified the right high-value frontier: recoverability-gap
+  bounds, equality conditions for data processing, same-determinant but
+  different recoverability deficit, and a two-level coherence-to-mass bridge.
+- what worried: the top KL/equality targets are support-sensitive and the
+  existing recoverability files have convention/encoding risks, so immediate
+  editing there could create churn.
+- what later proof/literature checks confirmed or refuted: the run banked a
+  safer nearby theorem in `NullEdgeP7ProperTimePurityBridge`, making the
+  static proper-time / linear-entropy relation explicit before attempting the
+  harder equality/recoverability characterization.
+- follow-up: use Lorentz's list when preparing the next nontrivial Aristotle
+  P7 batch, especially the recoverability-gap and same-det/different-deficit
+  targets.
+
+[2026-06-23] [P7/P1] [Spark/Noether] [KL-deficit witness triage] [useful]
+
+- publication-value 0-3: 3 if Aristotle solves the strict KL step
+- Spark score: 8/10 provisional
+- role requested: bounded read-only triage for same-determinant but different
+  KL/data-processing-deficit theorem.
+- what worked: identified a concrete rational witness using the already banked
+  `rhoCoh` and `rhoTilt` states, the `xBasisEffect` two-outcome readout, and a
+  common complete-dephasing channel. It correctly separated local scaffolding
+  from the hard logarithmic non-equality proof.
+- what worried: the strict KL non-equality still depends on real-log
+  inequalities, so the job may need Aristotle rather than local tactic cleanup.
+- what later proof/literature checks confirmed or refuted: local standalone
+  scaffolding typechecks; Aristotle job `83bb049d-c38a-42d0-b8bf-f6cc839f1a0c`
+  is queued for the final proof.
+- follow-up: integrate if Aristotle closes `same_det_different_dpDeficit`; if it
+  fails, ask for a weaker witness with one side of the deficit explicitly zero
+  and the other proved positive.
