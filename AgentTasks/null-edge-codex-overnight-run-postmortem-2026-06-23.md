@@ -327,21 +327,45 @@ P9 is not yet a cosmology result.
 P9 is now a good finite source-visibility research program.
 ```
 
-### P1/P2/P4 look more publishable than P9
+### P1/P2/P4 plus P7 now look more publishable than P9
 
 For near-term publication, the safer path is still:
 
 - P1: Pluecker mass and observer-conditioned mixedness;
 - P2: finite Dirac square root and operator block structure;
 - P4: homogeneous null-step quantum-walk fixed-point theorem package;
+- P7: relative-entropy observer channels and recoverability diagnostics;
 - P3: causal-diamond holonomy and higher-gauge finite algebra.
 
-P9 should be framed as an ambitious finite-guardrail paper or a later section,
-unless the next numerical/response-law layer lands.
+The most attractive new bridge is the proper-time/purity rate target connecting
+P1/P2/P4/P7. The static identity `2 sqrt(det rho) = m/E` is useful, but the
+rate law would make it dynamical: chirality or flip dynamics produce a visible
+entropy/coherence rate, and the observer-conditioned proper-time ratio appears
+after integration and normalization.
+
+P9 should be framed as an ambitious finite source-visibility/noise-channel paper
+or a later section, unless the next numerical/response-law layer lands and beats
+the everpresent-Lambda `1 / sqrt(V)` benchmark in amplitude or correlation
+structure.
 
 ## Best next actions
 
-### 1. Finish the P9 T1/T2 witness package
+### 1. Build the relative-entropy observer-channel bridge
+
+The highest-leverage next package is now:
+
+```text
+internalCoherenceLoss_eq_relativeEntropyDeficit
+coherenceDeficit_not_determined_by_mass_alone
+linearEntropyRate_visible_eq_flipFrequency
+```
+
+This is the common spine for the origin-of-mass paper, the null-step dynamics
+paper, P9 source visibility, and later stable particle sectors. It is also the
+cleanest way to avoid treating observer-channel mass as a static rewrite of
+time dilation.
+
+### 2. Finish the P9 T1/T2 witness package
 
 The immediate next theorem should instantiate the generic Class A preservation
 theorem on the six-point T1 witness:
@@ -360,7 +384,7 @@ Alexandrov subdiamond restriction preserves the local readout
 This gives a clean publishable subsection on admissible versus inadmissible
 coarse maps.
 
-### 2. Consolidate P9 APIs
+### 3. Consolidate P9 APIs
 
 There are now many P9 modules with related definitions of source tests, kernels,
 projectors, local diamonds, and coarse maps. Before another large P9 proof wave,
@@ -378,7 +402,7 @@ coarse-map API
 This will reduce duplicate definitions and make manuscript claims easier to
 state.
 
-### 3. Draft a P9 guardrails manuscript section
+### 4. Draft a P9 guardrails manuscript section
 
 Do not wait for the cosmology solution. A useful section can already be written:
 
@@ -389,7 +413,7 @@ Finite guardrails for source visibility in causal diamonds
 It should be explicit that the result is finite/source-observer theory, not a
 solution to Lambda.
 
-### 4. Use fewer, sharper Aristotle jobs
+### 5. Use fewer, sharper Aristotle jobs
 
 The next autonomous loop should submit fewer jobs unless each job is tied to a
 specific ladder step. Good examples:
@@ -399,11 +423,12 @@ specific ladder step. Good examples:
 - spectral/Laplacian no-go pair;
 - explicit diamond-local API consolidation theorem;
 - P1 observer-channel frame-audit cleanup;
-- P4 quantum-walk fixed-point proof target.
+- P4 quantum-walk fixed-point proof target;
+- P7 relative-entropy/recoverability deficit target.
 
 Avoid broad waves whose results will require days of semantic cleanup.
 
-### 5. Keep Spark/Gemini/Claude, but with stricter prompts
+### 6. Keep Spark/Gemini/Claude, but with stricter prompts
 
 Use Spark for:
 

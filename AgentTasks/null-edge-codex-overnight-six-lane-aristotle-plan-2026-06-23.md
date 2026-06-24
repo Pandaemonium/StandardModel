@@ -1,6 +1,7 @@
 # Codex six-lane Aristotle + multi-model research plan
 
-Date: 2026-06-23. Updated morning 2026-06-23 for Spark/Gemini/Claude access.
+Date: 2026-06-23. Updated evening 2026-06-23 for Spark/Gemini/Claude access,
+Aristotle physics-context prompts, and the four-layer conjecture audit.
 
 Purpose: run Codex autonomously overnight on the null-edge causal graph program,
 with up to six simultaneous Aristotle jobs queued when the targets are genuinely
@@ -14,11 +15,13 @@ for publishable progress, not for activity. A good run produces one or more of:
 - a manuscript-ready section backed by theorem and source references;
 - a clean no-go or demotion criterion for an overextended branch.
 
-The default scientific north star is P9, the cosmological-constant/source-
-visibility branch. P9 remains the highest-upside lane only while it is producing
-finite definitions, proofs, or falsifiable guardrails. If it stalls into
-vocabulary, pivot to the strongest theorem spine: origin of mass, observer
-channels, Dirac square roots, and higher-gauge curvature.
+The default scientific north star is now the relative-entropy observer-channel
+bridge between origin of mass and null-step dynamics. The highest-value target
+is a proper-time/purity rate theorem: chirality or flip dynamics should produce
+a visible entropy/coherence rate, with the static `m/E` determinant identity
+appearing only after integration and observer normalization. P9 remains a
+high-upside lane while it produces finite definitions, proofs, or falsifiable
+guardrails, but it should not crowd out the observer-channel/dynamics spine.
 
 The compact Pro-guided spine for the night is:
 
@@ -35,6 +38,30 @@ clarifies a link in this chain. Broad ontology, gravity, or particle-language
 jobs should be allowed only when they specify a finite channel, readout,
 operator, source functional, or falsification gate.
 
+The latest priority update is:
+
+```text
+1. P7/P1/P4 relative-entropy proper-time bridge.
+2. P9 finite source visibility, response law, and everpresent-Lambda comparison.
+3. One-diamond super-Dirac gate before broad superconnection work.
+4. Null-step fixed-point stability with full Brillouin-zone cone census.
+5. P10/generations only after doubler, chirality, and family multiplicities are
+   separated.
+```
+
+Every major conjecture should be audited in four layers:
+
+```text
+exact finite identity
+existence or naturality claim
+scaling or dynamical theorem
+physical interpretation
+```
+
+Prioritize jobs that move one layer from vague to precise. Do not let a proved
+finite identity silently promote the naturality, scaling, or interpretation
+layers.
+
 ## User-approved operating constraints
 
 1. Repository edits are allowed.
@@ -49,11 +76,23 @@ operator, source functional, or falsification gate.
      theorem spine, falsification criterion, or important manuscript section.
    - Avoid six near-duplicate jobs. The queue should cover different failure
      modes.
+   - Every Aristotle prompt must include a concise physics-context block, even
+     for proof-only jobs. The block should say which paper/conjecture the target
+     serves, what the finite theorem means physically, and what would falsify or
+     demote the interpretation.
+   - Every Aristotle prompt must ask for a short "suggested next steps" section
+     in addition to the proof. These suggestions are advisory, not binding, but
+     they may reveal useful theorem targets, counterexamples, or priority
+     changes.
 
-3. P9 is the default top priority, not a prison.
+3. Priorities are claim-driven, not lane-driven.
+   - Prioritize the proper-time/purity-rate bridge when there is a realistic
+     finite route to a theorem, counterexample, or manuscript-ready proof sketch.
    - Prioritize P9 while there is a realistic finite route to source visibility,
      residual suppression, or a reference-state/recoverability theorem.
-   - Demote P9 for the night if the best available work becomes only metaphor.
+   - Demote P9 for the night if the best available work becomes only metaphor
+     or merely reproduces everpresent-Lambda scaling without a new amplitude or
+     correlation handle.
    - Replace Aristotle's "ill-conditioned / no continuum interpretation" gate
      with a discrete-first gate. Do not demote P9 merely because the microscopic
      model is ill-conditioned, non-manifold-like, or lacks a literal
@@ -102,21 +141,27 @@ operator, source functional, or falsification gate.
    - Record where Spark performs well or struggles in
      `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`.
 
-7. Use Gemini and Claude as hard-problem external critics.
-   - Query Gemini when a difficult issue would benefit from a broad independent
-     synthesis, especially novel physics, P9, ontology-to-theorem translation,
-     manuscript framing, or a surprising Aristotle result.
+7. Use Gemini and Claude more heavily as hard-problem co-critics.
+   - Use them in turn, alternating roles: one model gives constructive synthesis
+     and theorem proposals, the other gives adversarial critique, failure modes,
+     and prior-art skepticism. On the next comparable issue, swap roles.
+   - Query Gemini when a difficult issue would benefit from broad independent
+     synthesis, literature angles, cross-lane connections, manuscript framing,
+     or speculative but disciplined theorem proposals.
    - Query Claude when a difficult issue would benefit from adversarial
-     critique, theorem-statement sharpening, physics guardrails, or source
-     skepticism.
-   - Nominal cadence: Gemini about once per six Aristotle jobs and Claude about
-     once per twelve Aristotle jobs. Treat this as a reminder, not a quota:
-     query them when the problem is important enough to justify multiple takes.
+     critique, theorem-statement sharpening, physics guardrails, convention
+     audits, or source skepticism.
+   - Nominal cadence: run at least one Gemini or Claude escalation about every
+     three Aristotle jobs, and use both models before any major priority change,
+     demotion, manuscript claim, or high-risk batch submission. Treat this as a
+     floor, not a quota: query them whenever multiple independent takes could
+     prevent wasted proof work.
    - Do not paste secrets or private credentials into prompts. Use concise
      context packs and ask for actionable theorem targets, failure modes, and
      literature leads.
-   - Record where Gemini and Claude do well or struggle in the same evaluation
-     log.
+   - Score each Gemini/Claude prompt from 1 to 10 in the model evaluation log.
+     The score may be delayed until after proof work or literature checks reveal
+     whether the suggestion held up.
 
 ## Multi-model delegation protocol
 
@@ -156,10 +201,11 @@ Do not use Spark for:
 
 ### Gemini and Claude escalation
 
-Gemini and Claude are not routine workers. They are external critical lenses for
-hard problems. Use the available API/CLI helpers when configured; if no helper is
-available in the active shell, record that as a tooling blocker rather than
-stalling the run.
+Gemini and Claude are routine force multipliers for hard scientific choices,
+not just emergency critics. Use the available API/CLI helpers when configured;
+if no helper is available in the active shell, record that as a tooling blocker
+rather than stalling the run. Do not use them for purely mechanical proof
+integration when Spark or local checks are enough.
 
 Use Gemini when the run needs:
 
@@ -177,16 +223,51 @@ Use Claude when the run needs:
 - failure modes and demotion criteria;
 - skepticism about whether a claimed result is actually new.
 
+Alternate constructive and adversarial roles:
+
+```text
+Issue 1:
+  Gemini constructive synthesis
+  Claude adversarial critique
+
+Issue 2:
+  Claude constructive synthesis
+  Gemini adversarial critique
+```
+
+For a high-impact or confusing issue, use both models before submitting the next
+major batch. Ask the constructive model for theorem statements, proof routes,
+literature leads, and manuscript framing. Ask the adversarial model for
+counterexamples, convention traps, prior-art collisions, and demotion tests.
+
 Nominal cadence:
 
-- Gemini once per roughly six Aristotle jobs submitted or integrated.
-- Claude once per roughly twelve Aristotle jobs submitted or integrated.
+- at least one Gemini or Claude escalation per roughly three Aristotle jobs
+  submitted or integrated;
+- both Gemini and Claude before any major priority change, demotion, manuscript
+  claim, or high-risk batch submission;
+- both models after a surprising Aristotle result if it changes the science
+  story.
 
 These are prompts to remember escalation, not quotas. If the highest-value
 problem is hard, ask earlier. If the current batch is clean Lean plumbing, skip.
 
 Every Spark/Gemini/Claude use must be recorded in
 `AgentTasks/null-edge-model-delegation-evaluation-log-2026-06-23.md`.
+
+Gemini/Claude scoring rule:
+
+```text
+score 1-10:
+what role was requested: constructive / adversarial / literature / manuscript
+what worked:
+what failed or was misleading:
+whether later proof/literature work confirmed the advice:
+```
+
+The score may be delayed. It is better to rate after checking whether a proposed
+theorem, source, or counterexample actually held up than to score immediately on
+style.
 
 ## Current state snapshot
 
@@ -354,13 +435,21 @@ Failure criterion:
 - the lane proves only that a mean source vanishes while leaving a nonzero
   noise/source second moment with no diamond response law.
 
-### Lane D: P7 observer-channel recoverability
+### Lane D: P7/P1/P4 relative-entropy proper-time bridge
 
-Purpose: make observer-channel mixedness the information-theoretic spine for
-source visibility.
+Purpose: make observer-channel mixedness the information-theoretic and
+dynamical spine for the origin-of-mass story, while keeping P9 source
+visibility connected to recoverability without conflating the two.
 
 Good Aristotle jobs:
 
+- prove or scaffold `internalCoherenceLoss_eq_relativeEntropyDeficit`;
+- prove a finite witness that the coherence deficit is not determined by
+  `det(P_vis)` alone;
+- prove or design `linearEntropyRate_visible_eq_flipFrequency` in a two-level
+  chirality/flip model;
+- connect the proper-time/mass-ratio identity to a rate law rather than a
+  static rewrite;
 - strengthen classical observer-channel data processing/recoverability lemmas;
 - relate source invisibility to zero observer loss in a finite model;
 - define a toy source-visibility defect bounded by recoverability gap;
@@ -371,12 +460,16 @@ Good Aristotle jobs:
 
 Success criterion:
 
-- a finite theorem or precise no-go saying whether the selected observer channel
-  gives recoverability, indistinguishability, or both; no conflation of the two.
+- a finite theorem, counterexample, or proof sketch that turns observer-channel
+  mass into an operational information-loss statement, while saying exactly
+  whether the selected channel gives recoverability, indistinguishability, or
+  both.
 
 Failure criterion:
 
-- recoverability remains disconnected from diamond source observables.
+- every proposed coherence/recoverability functional collapses to a function of
+  `det(P_vis)` or remains disconnected from null-step dynamics and diamond
+  source observables.
 
 ### Lane E: P1/P6 origin-of-mass frame audit and manuscript spine
 
@@ -437,6 +530,8 @@ Good Aristotle jobs:
   causal-diamond holonomy API;
 - prove a genuine interchange law over existing path-pair composition, or
   isolate the obstruction;
+- set up the one-diamond `D^2` computation and compare the curvature block with
+  the trusted causal-diamond holonomy defect;
 - advance the finite super-Dirac square:
   `d_U + delta_U + Phi + Phi^dagger`;
 - produce an audit explaining which existing scalar invariants are squares of
@@ -463,20 +558,36 @@ Failure criterion:
 When starting the overnight run, aim for this first queue if the targets are
 ready:
 
-1. Lane A proof/design: P9 diamond source visibility API.
-2. Lane B proof: finite SJ Hermitian/positive-part scaffold.
-3. Lane C proof: residual suppression threshold or benchmark comparison.
-4. Lane D proof: observer loss / recoverability gap controls a toy visibility
-   defect.
+1. Lane D proof/design: relative-entropy/proper-time bridge.
+2. Lane A proof/design: P9 diamond source visibility API.
+3. Lane B proof: finite SJ Hermitian/positive-part scaffold.
+4. Lane C proof: residual suppression threshold or benchmark comparison.
 5. Lane E proof or manuscript: frame-invariance audit for unnormalized `det(P)`,
    normalized `m/E` wrapper, Higgs/chirality audit, or the null-step
    quantum-walk coherence bridge.
-6. Lane F proof/design: existing diamond interchange/crossed-module bridge.
+6. Lane F proof/design: one-diamond super-Dirac gate or existing diamond
+   interchange/crossed-module bridge.
 
 If a fresh strategy pass says the channel-sector direction is currently the
 highest-impact route, let it displace the weakest active lane for one job. Do
 not run it as broad ontology: require a concrete channel, readout, spectral
 branch, and mass-shell target.
+
+Current theorem/counterexample sequence to prefer when choosing fresh jobs:
+
+1. `observerSpinFrame_wellDefined_up_to_SU2`;
+2. `gramWeightedPlucker_eq_exteriorSquare`;
+3. `massless_iff_rank_VGsqrt_le_one`;
+4. `threeLabel_dephasing_not_monotone`;
+5. `twoLevelYukawa_coherence_to_dephasedDet`;
+6. `productGradedSuperDirac_sq`;
+7. `diamondAdditiveDefect_eq_holonomyMinusId`;
+8. `flatSuperDiracSymbol_has_lorentzianMassShell`;
+9. `oneDiamond_naturalOperator_classification`;
+10. `closedIntervalOrderComplex_contractible`;
+11. `weightedHodgeProjector_eq_pseudoinverseProjector`;
+12. `bandLimitedNullWalk_convergesToDirac` plus
+    `brillouinZone_coneCensus`.
 
 At least three active jobs should be proof jobs. At most one active job should
 be manuscript/literature-only unless a source discovery clearly unlocks a
@@ -486,10 +597,11 @@ Model cadence and escalation:
 
 - Keep a running job counter in the ledger for Aristotle jobs submitted or
   integrated.
-- Around every sixth Aristotle job, run one Gemini escalation on the highest-risk
-  unresolved lane unless current lanes are purely mechanical.
-- Around every twelfth Aristotle job, run one Claude escalation for independent
-  critique of the current risk profile.
+- Around every third Aristotle job, run at least one Gemini or Claude
+  escalation on the highest-risk unresolved lane unless current lanes are purely
+  mechanical.
+- Before a major batch, priority change, demotion, or manuscript claim, use both
+  Gemini and Claude in alternating constructive/adversarial roles.
 - If Spark flags low confidence, repeated convention risk, or possible
   novelty/prior-art conflict, use Gemini or Claude before adding more jobs in
   that lane.
@@ -510,11 +622,26 @@ Do not submit a new job if:
 
 - a nearly identical job is already running or idle but not integrated;
 - the theorem statement does not elaborate locally;
+- the prompt lacks a physics-context block and an explicit request for
+  suggested next steps;
 - the target can be solved locally in under roughly 20 minutes;
 - the job would mostly ask Aristotle to read broad repo context instead of a
   focused package or compact task note.
 
 ## Aristotle submission template
+
+Every Aristotle prompt must include a physics context block before the proof
+request. Keep it concise, but do not omit it even for focused standalone
+packages:
+
+```text
+Physics context:
+- Program lane / paper:
+- Four-layer status: finite identity / naturality / dynamics / interpretation
+- Why this theorem matters physically:
+- What would weaken or falsify the interpretation:
+- Relevant conventions or sources:
+```
 
 Every proof job should ask Aristotle to end with a compact completion report:
 
@@ -525,7 +652,14 @@ Completion report:
 - remaining proof holes:
 - assumptions or escape hatches used:
 - suggested next theorem:
+- suggested next physics/context check:
+- suggested literature or convention check:
+- highest-risk remaining gap:
 ```
+
+The next-step suggestions are advisory. Do not follow them automatically; use
+Codex review, local proof checks, literature search, and Gemini/Claude critique
+before turning them into new jobs.
 
 Every job note should include:
 
@@ -587,16 +721,22 @@ lake env lean PhysicsSMDraft.lean
    - verification commands;
    - scientific significance;
    - model outcome: success, partial, failed, blocked, or noisy;
-   - quality score `0-3` and one-sentence reason;
+   - publication-value score `0-3` and one-sentence reason;
+   - Gemini/Claude score `1-10`, if used; this may be filled in later after
+     proof or literature checks show whether the advice held up;
    - whether escalation was used or skipped, and why;
    - next target.
 
 7. Add or update the model evaluation log:
 
 ```text
-[timestamp] [lane] [job/model] [task-type] [status] [quality 0-3]
+[timestamp] [lane] [job/model] [task-type] [status]
+publication-value 0-3:
+Gemini/Claude score 1-10, if applicable:
+role requested: constructive / adversarial / literature / manuscript
 what worked:
 what worried:
+what later proof/literature checks confirmed or refuted:
 follow-up:
 ```
 
@@ -623,21 +763,27 @@ Default pattern:
 1. Give Spark a bounded literature triage task: one claim, one lane, or one
    theorem target.
 2. Use local Neo4j semantic search and provider-specific scholarly searches.
-3. Ask Gemini/Claude only if the source landscape changes a high-risk claim or
-   if the literature conflicts with our current framing.
+3. Ask Gemini or Claude for a constructive or adversarial read whenever the
+   source landscape touches a priority lane, an apparent novelty claim, a
+   demotion gate, or a theorem statement with physics interpretation. Use both
+   models if the literature would affect the next Aristotle batch.
 4. Codex decides whether to add sources to Zotero/Neo4j or update the docs.
 
 Priority questions:
 
-1. P9: What does everpresent-Lambda actually require for amplitude suppression
+1. P7/P1/P4: Which relative-entropy or recoverability quantity distinguishes
+   coherent from dephased internal labels without being fixed by mass alone?
+2. P7/P4: What finite rate law can connect chirality-flip frequency to visible
+   linear-entropy or coherence production?
+3. P9: What does everpresent-Lambda actually require for amplitude suppression
    or observational viability?
-2. P9: What finite SJ truncation facts are known for causal diamonds and area
+4. P9: What finite SJ truncation facts are known for causal diamonds and area
    laws?
-3. P7: Which recoverability facts are safe in classical finite channels, and
+5. P7: Which recoverability facts are safe in classical finite channels, and
    what requires full quantum matrix relative entropy?
-4. P1/P6: Which concurrence/mixedness statements are standard, and which are
+6. P1/P6: Which concurrence/mixedness statements are standard, and which are
    our finite null-edge packaging?
-5. P3/P2: Which crossed-module/fake-flatness or superconnection facts are
+7. P3/P2: Which crossed-module/fake-flatness or superconnection facts are
    standard enough to cite rather than rediscover?
 
 When adding a paper to Zotero/Neo4j, record:
@@ -720,10 +866,10 @@ Stop a lane for the night if:
 
 Pivot order:
 
-1. P9 source visibility and reference state.
-2. P7 observer-channel/recoverability theorem spine.
+1. P7/P1/P4 relative-entropy proper-time bridge.
+2. P9 source visibility, reference state, and everpresent-Lambda comparison.
 3. P1/P6 origin-of-mass and concurrence manuscript theorem wrappers.
-4. P2/P3 operator and higher-gauge bridges.
+4. P2/P3 one-diamond operator gate and higher-gauge bridges.
 5. Literature/manuscript consolidation.
 
 ## Final overnight handoff
@@ -739,8 +885,12 @@ Summary:
 - most important negative result or demotion:
 - model/subagent experiment summary:
   - Spark:
-  - Gemini:
-  - Claude:
+  - Gemini: include 1-10 ratings and whether ratings are provisional or
+    proof-checked.
+  - Claude: include 1-10 ratings and whether ratings are provisional or
+    proof-checked.
+- Aristotle suggested next steps worth considering:
+- Aristotle suggested next steps rejected or deferred:
 
 Files changed:
 - ...

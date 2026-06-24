@@ -33,10 +33,45 @@ The four best conjectures are:
    chirality-flip/coherence parameter controlling the effective mass and the
    Pluecker/mixedness theorem as its static shadow.
 
-The first conjecture is the deepest unification target. The second is the
-cleanest origin-of-mass story. The third is the high-risk/high-value
-cosmological-constant route. The fourth is the dynamics bridge that decides how
-far the ontology "all elementary movement is lightlike" can be pushed.
+The current priority order is slightly different from the numbering. The
+highest-leverage near-term target is the interface between the
+observer-channel mass conjecture and the null-step dynamics conjecture: a
+proper-time/purity rate law that turns the static determinant identity into a
+dynamical statement. The second priority is P9 as a finite source-visibility
+and noise-channel paper, with cosmological-constant claims gated by an explicit
+amplitude/correlation comparison. The finite super-Dirac conjecture remains the
+deepest unification target, but it should be gated by the one-diamond `D^2`
+calculation before broad formalization continues.
+
+Relative entropy and recoverability should now be treated as shared
+infrastructure across these conjectures, not as a side analogy. The question
+"what does an observer channel forget, preserve, or make recoverable?" appears
+in observer-channel mass, P9 source visibility, stable particle sectors, and
+the manuscript's broader measurement/coarse-graining claims.
+
+Every conjecture should now be split into four evidence layers:
+
+```text
+exact finite identity       -- theorem-level algebra we can bank now
+existence/naturality claim  -- whether the finite object is canonical
+scaling/dynamical theorem   -- whether it survives limits or evolution
+physical interpretation     -- what the finite result means in physics
+```
+
+Most current progress is in the first layer. The danger is accidentally using a
+proved finite identity as if it had already supplied the naturality, scaling,
+and interpretation layers. The useful publication discipline is therefore:
+promote finite identities aggressively, but label existence, scaling, and
+physics claims separately.
+
+The current fast-falsifier table is:
+
+| Conjecture | Promote now | Genuine open claim | Fastest falsifier |
+| --- | --- | --- | --- |
+| Super-Dirac | product-graded square formula | canonical Lorentzian operator with the right symbol | flat-space sign test and one-diamond classification |
+| Observer channel | covariant determinant, Schmidt, and exterior-square identities | physical Yukawa dilation and privileged observer channel | three-label channel counterexamples and covariance failure |
+| P9 | finite Hodge, Ward, PSD, and coarse-map identities | geometry-sensitive sub-volume gravitational response | topology audit and preregistered coarse-map tests |
+| Null-step walk | band-limited convergence for a specified walk | stability/universality and invariant mass bridge | full Brillouin-zone cone census |
 
 ## 1. Finite super-Dirac conjecture
 
@@ -62,6 +97,14 @@ order complex with visible spinor fibers and internal left/right labels:
 D_{U,Phi} = d_U + delta_U + Phi + Phi^dagger.
 ```
 
+The geometry must be specified before this slogan is formalized. The full order
+complex of a poset contains transitive edges `x < z` whenever `x < y < z`; these
+diagonal edges need not represent elementary null propagation. The cleaner
+null-edge operator should therefore start from the Hasse graph of elementary
+null edges and attach explicit 2-cells to causal diamonds. The alternative is
+to use the full order complex while marking the Hasse edges as physical and
+proving independence from transitive diagonals, but that is a harder claim.
+
 Here `d_U + delta_U` is a transported order-complex Dirac/Hodge operator and
 `Phi` is the odd Higgs/Yukawa finite Dirac block. The crucial correction is
 that the Pluecker determinant should not be added as a second mass block. It is
@@ -86,6 +129,33 @@ D_{U,Phi}^2 =
   + Higgs/Yukawa mass block
   + gauged Higgs kinetic cross term.
 ```
+
+The product grading should be built into the candidate operator. On finite
+cochains with simplicial grading `Gamma_K`, the cleaner model is
+
+```text
+D_U = d_U + d_U^x
+M_Phi = offDiagonal(Phi)
+D_{U,Phi} = D_U + Gamma_K M_Phi.
+```
+
+The factor `Gamma_K` matters: without it, even a constant internal mass block
+can produce the wrong cross terms. The exact finite square identity should be
+treated as a theorem-level algebra target:
+
+```text
+D_{U,Phi}^2 =
+  d_U d_U^x + d_U^x d_U
+  + d_U^2 + (d_U^x)^2
+  + M_Phi^2
+  - Gamma_K [D_U, M_Phi].
+```
+
+In this decomposition, the first line is the covariant Hodge Laplacian, the
+second line is the additive curvature defect, `M_Phi^2` is the Yukawa mass
+block, and the commutator is the finite gauged Higgs derivative. This identity
+is not by itself the deep conjecture; the deep parts are Lorentzian sign,
+diamond-holonomy identification, symbol definition, and naturality.
 
 The non-tautological content is the consistency claim: the same finite operator
 surface should make the kinetic Pluecker determinant, the Yukawa mass block, and
@@ -118,6 +188,61 @@ the curvature block should be the causal-diamond holonomy defect rather than an
 ordinary plaquette curvature. This is a sharper claim than merely saying that
 `D^2` contains a Laplacian and a mass term, since those features are generic in
 Dirac-type constructions.
+
+The decisive near-term gate is deliberately small: build the natural `D` on one
+causal diamond, or equivalently one oriented two-simplex with two competing
+paths, and compute `D^2` coefficient by coefficient. The conjecture earns
+content only if the curvature block is the independently defined diamond
+path-pair defect, not merely some curvature term in the generic superconnection
+sense. If the one-diamond square does not recover the diamond holonomy defect
+with fixed conventions, the super-Dirac conjecture should be weakened before
+further Lean investment.
+
+On a diamond with two path transports `T1` and `T2`, the additive curvature
+defect and multiplicative holonomy should be related exactly:
+
+```text
+H_diamond = T1 * T2^{-1}
+F_diamond = T1 - T2 = (H_diamond - I) * T2.
+```
+
+Only a comparison with `log H_diamond` requires a small-curvature approximation
+and a branch choice. Thus the best finite target is additive, not logarithmic:
+the `d_U^2` matrix on the diamond 2-cell equals `T1 - T2`, hence equals
+`(H_diamond - I) * T2`.
+
+The Krein part has the same discipline. Existence of an indefinite form is not
+enough, since many finite operators can be made self-adjoint for some chosen
+indefinite form. The target is a causally forced split signature and time
+orientation compatible with the causal order and the plus/minus branch
+projectors.
+
+The mass-shell statement also needs correct typing. Since `Phi^dagger Phi` is
+generally a flavor/internal matrix, the honest condition is statewise or
+spectral:
+
+```text
+(det(P) I_F - M_Phi^2) Psi = 0
+```
+
+or, on a mass eigenchannel `f_r`,
+
+```text
+M_Phi^2 f_r = m_r^2 f_r
+det(P_r) = m_r^2.
+```
+
+The word "symbol" should also be restricted. An irregular finite graph has no
+canonical momentum-space principal symbol. The claim should be one of:
+
+```text
+exact Bloch symbol on a periodic diamond complex
+frozen-coefficient local symbol
+asymptotic symbol for a refining family
+```
+
+Without one of these, "the kinetic symbol equals the Pluecker determinant" is
+undefined rather than merely unproved.
 
 ### What we have formally proven
 
@@ -168,13 +293,20 @@ superDirac_kreinForm_def
 superDirac_is_odd
 superDirac_is_KreinSelfAdjoint
 superDirac_J_grading_eq_twoSheet
+productGradedSuperDirac_sq
 covariantOrderDifferential_sq_eq_diamondCurvature
+superDirac_oneDiamond_curvatureBlock_eq_holonomyDefect
+diamondAdditiveDefect_eq_holonomyMinusId
 diamondHolonomy_eq_curvatureBlock_linearized
 higgsBlock_sq_eq_yukawaMassMatrix
 superDiracSq_kineticSymbol_eq_pluckerDet
 massShell_kinetic_eq_yukawa
+massShell_statewise_kinetic_eq_yukawa
+flatSuperDiracSymbol_has_lorentzianMassShell
+oneDiamond_naturalOperator_classification
 superDiracSq_crossTerm_eq_gaugedHiggsKinetic
 superDirac_sq_eq_laplacian_plus_curvature_plus_higgs
+superDirac_kreinForm_signature_eq_causal
 ```
 
 Publication-level statement:
@@ -198,10 +330,21 @@ The missing pieces are structural rather than computational:
 - a robust notion of transported coboundary `d_U` on higher simplices;
 - a precise relation between diamond holonomy and the curvature block in
   `d_U^2`;
+- a one-diamond symbolic computation proving that the curvature block is the
+  existing diamond path-pair defect, not merely a generic transported
+  differential curvature;
+- a choice between a Hasse-graph-with-diamond-2-cells model and a full-order-
+  complex model with transitive-diagonal independence;
 - a proof that the Pluecker determinant is the kinetic symbol/eigenvalue, not a
   second additive mass block;
 - an on-shell mass-shell constraint equating the kinetic Pluecker determinant
   with the Higgs/Yukawa block;
+- a statewise or spectral mass-shell statement rather than an equality between
+  a scalar determinant and a flavor-space matrix;
+- a restricted definition of symbol: Bloch, frozen-coefficient local, or
+  asymptotic over a refining family;
+- a finite classification of natural operators on a single edge, one diamond,
+  vertically glued diamonds, and horizontally glued diamonds;
 - a product grading combining simplicial degree and chirality;
 - a proof that the cross term is the gauged Higgs kinetic term rather than an
   unwanted error term;
@@ -288,6 +431,17 @@ frame-sensitive under Lorentz transformations. Ruskai-Szarek-Werner
 Fawzi-Renner recoverability (`BHNTND4W`), and related relative-entropy
 monotonicity sources constrain what may be claimed about observer channels.
 
+This makes the determinant only the first invariant, not the whole content. If
+the only observable is `det(P_vis) = m^2`, then the Gram factorization into
+visible Pluecker spread and internal coherence is underdetermined: many
+different spread/coherence pairs can produce the same mass. The load-bearing
+observable is therefore a relative-entropy or recoverability deficit between
+coherent and dephased resolution channels, and it must not collapse to a
+function of `m` alone. A priority literature check is whether recent
+relativistic-quantum-information observer-channel frameworks already make the
+invariant-versus-frame-relative split; if so, the novelty here narrows to the
+Gram/Higgs-source mechanism.
+
 ### What we have formally proven
 
 The invariant algebra is strong:
@@ -350,6 +504,73 @@ recover the Plucker sum, rank-one coherent internal labels collapse the
 exterior square and give zero visible mass, and dephasing increases the
 visible determinant toward the orthogonal Plucker value.
 
+The general masslessness criterion is not "the internal Gram matrix has rank
+one." The correct exterior-square statement is:
+
+```text
+P_vis = V G V^dagger
+det(P_vis) = (Lambda^2 V) (Lambda^2 G) (Lambda^2 V)^dagger
+det(P_vis) = 0 iff rank(V G^{1/2}) <= 1.
+```
+
+Thus `rankOne_internalGram_iff_massless` is false without hypotheses on the
+visible columns. If all visible spinors are collinear, then `G = I` can have
+full rank while the visible determinant is zero. For two labels with
+`v_1 wedge v_2 != 0`, the reduced formula above does make masslessness
+equivalent to `det(G) = 0`.
+
+There is also a useful negative result for dephasing. The two-label monotonicity
+can hold under its hypotheses, but unrestricted `n`-label dephasing
+monotonicity is false. A concrete three-label counterexample is:
+
+```text
+V = [[1, 0, 1],
+     [0, 1, 1]]
+
+G = [[1,   1/5, 1/5],
+     [1/5, 1,   1/5],
+     [1/5, 1/5, 1  ]]
+```
+
+The Gram matrix is positive semidefinite, but `det(V G V^dagger) = 16 / 5`,
+while complete hidden-label dephasing sends `G` to `I` and gives
+`det(V V^dagger) = 3`. Thus dephasing decreases the determinant in this
+example. Any positive theorem for more than two labels needs phase-alignment,
+orthogonality, channel, or visible-column hypotheses.
+
+The manuscript should also separate three notions that have been bundled under
+"coherence":
+
+```text
+hidden-label overlaps       -- entries of G
+left/right chirality term   -- off-diagonal Yukawa coherence
+visible mixedness/Schmidt   -- reduced observer state impurity
+```
+
+They can move in opposite directions, so claims about one should not be used as
+evidence about another without an explicit channel theorem.
+
+A clean first-order bridge is the helicity-reduced Dirac/Yukawa two-level
+model:
+
+```text
+H_h(p) = h |p| sigma_z + m sigma_x
+E = sqrt(|p|^2 + |m|^2).
+```
+
+The positive-energy projector has off-diagonal left/right coherence
+`|m| / (2 E)`. After copying the chirality record to an unresolved environment,
+or equivalently dephasing in the chirality basis, the dephased state has
+
+```text
+2 sqrt(det(rho_h^dephased)) = |m| / E.
+```
+
+This is a precise finite theorem target connecting first-order Yukawa
+coherence to determinant mixedness. The physical conjecture is that the actual
+Yukawa dynamics and detector algebra select this dilation rather than an
+arbitrarily assigned purification.
+
 ### Why it matters
 
 This conjecture gives the paper an accessible but precise claim:
@@ -378,17 +599,23 @@ normalizedVisible_boost_is_filtering
 normalizedVisible_det_eq_massRatio_sq
 visibleDensity_from_internal_purification
 det_visibleReduced_eq_gramWeighted_plucker
+gramWeightedPlucker_eq_exteriorSquare
+massless_iff_rank_VGsqrt_le_one
 det_visibleReduced_twoLabel_eq_wedge_times_detGram  -- banked in ObserverChannelCore
 dephasing_internalGram_mass_monotone                -- banked in ObserverChannelCore
-rankOne_internalGram_iff_massless
+threeLabel_dephasing_not_monotone
+twoLabel_noncollinear_massless_iff_detGram_zero
 normalized_mass_ratio_eq_concurrence
 visibleMixedness_eq_chiralityCoherence_schmidt       -- determinant bridge banked
 chiralityPopulations_balanced_iff_coherence_eq_massRatio
 dephasing_visibleMixedness_eq_lostChiralityCoherence
+twoLevelYukawa_coherence_to_dephasedDet
 massRatioSq_eq_linearEntropy_visible
 unital_visibleChannel_massRatio_monotone
 entangling_hiddenChannel_massRatio_nonmonotone
 internalCoherenceLoss_eq_relativeEntropyDeficit
+coherenceDeficit_not_determined_by_mass_alone
+linearEntropyRate_visible_eq_flipFrequency
 ```
 
 Publication-level statement:
@@ -398,6 +625,13 @@ Publication-level statement:
 > Higgs/Yukawa-permitted chirality coherence is the first-order source of this
 > ratio, and observer channels determine which coherence becomes visible
 > determinant mixedness.
+
+The dynamical upgrade is a proper-time/purity rate law. The static identity
+`2 sqrt(det rho) = m / E` is too close to time dilation to carry the
+origin-of-mass story by itself. A non-tautological theorem would prove that the
+linear-entropy production or coherence-decay rate along a null-step/chirality-
+flip walk is controlled by the flip frequency, with the static determinant
+identity arising only after integration and observer normalization.
 
 ### What might be missing
 
@@ -410,6 +644,12 @@ we still need:
 - a precise distinction between invariant mass and frame-relative `m/E_u`;
 - an internal Gram model that is physically motivated rather than assigned
   post hoc;
+- an operational coherence deficit, preferably relative-entropy or
+  recoverability based, that distinguishes coherent from dephased internal
+  labels without being determined by `m` alone;
+- a covariance test showing that the physical representation acts as
+  `A tensor V_int`, with `V_int` unitary on unresolved labels, so partial trace
+  commutes with visible transformations;
 - a proof that physically relevant Higgs/Yukawa dynamics create exactly the
   coherence parameter used in the finite model;
 - monotonicity statements restricted to actual channel classes, with unital
@@ -469,6 +709,38 @@ if the harmonic dimension or harmonic-noise trace is sub-volume, ideally
 constant or area-law; it loses if the harmonic sector scales like volume or if
 the response law turns even area-law source noise into the usual
 everpresent-Lambda amplitude problem.
+
+The hard comparison is not just volume versus area. Sorkin-style everpresent
+Lambda already predicts a `1 / sqrt(V)` amplitude from number-volume
+fluctuations, so P9 advances the physics only if its response law produces a
+parametrically different amplitude, correlation structure, or suppression
+mechanism. If the finite Hodge/noise channel simply reproduces the
+everpresent-Lambda scaling in new notation, the branch should be demoted to a
+finite causal-diamond Hodge theory result.
+
+Before another harmonic-sector push, P9 needs a topology audit. The full order
+complex of a closed finite causal interval `[a,b]` is typically contractible
+because chains can be coned by the minimum or maximum endpoint. With a positive
+definite finite Hodge metric, exact positive-degree harmonic cohomology may
+therefore vanish:
+
+```text
+H^k(K) = 0, ker Delta_k = 0 for k > 0
+```
+
+on the full closed interval. P9 must explicitly choose among:
+
+```text
+proper interval with endpoints removed
+relative cohomology H(K, boundary K)
+constant H^0 mode
+top-degree relative mode
+low-lying near-harmonic spectral modes rather than exact cohomology
+```
+
+A metric cannot create nontrivial cohomology if it is positive definite. If the
+SJ-style form is semidefinite or indefinite, the ordinary finite Hodge
+conclusions must be replaced by a quotient or Krein-style formulation.
 
 ### What the literature says
 
@@ -554,6 +826,10 @@ The P9 theorem spine is now sizable, though still toy-level:
   `NullEdgeP9ResidualVarianceCellArea`, `NullEdgeP9MaxWeightResidualBound`,
   and `NullEdgeP9WeightedBenchmarkBound` give finite residual-suppression
   estimates.
+- `PhysicsSM.Draft.NullEdgeP9EverpresentLambdaScaling` and
+  `NullEdgeP9EverpresentLambdaTension` formalize the comparison target: the
+  everpresent-Lambda RMS scale is `1 / sqrt(V)`, and any uniform or weighted
+  suppression mechanism must beat that benchmark rather than merely rename it.
 - `PhysicsSM.Draft.NullEdgeP9ClosedWitness` and
   `NullEdgeP9BoundaryVisibleDecomp` prove the first Hodge-style witness
   direction: boundary-exact sources are invisible to closed bulk tests, while a
@@ -682,12 +958,40 @@ bookkeeping is advertised as cosmological physics.
 The adversarial gate is now sharper. Boundary-exact invisibility and
 zero-mean/nonzero-variance residuals are generic finite algebra unless they are
 attached to a causal-diamond metric, a harmonic projector, and a response law.
-The next decisive finite object is therefore an explicit projector
-`Pi_H = I - d G^{-1} d^* - d^* H^{-1} d` or an equivalent Gram-matrix
-construction on the chosen finite diamond complex. P9 earns physics content
-only when the harmonic/noise subspace has computable dimension, spectrum, and
-conditioning that depend on the causal diamond geometry rather than only on an
-arbitrary finite complex.
+The next decisive finite object is therefore an explicit weighted Hodge
+projector on the chosen finite diamond complex. The robust version is
+
+```text
+Delta_k = d_{k-1} d_{k-1}^* + d_k^* d_k
+Pi_H = I - Delta_k^+ Delta_k,
+```
+
+with the Moore-Penrose inverse taken in the stated weighted metric. Formulas
+using ordinary inverses of the up and down Laplacians require invertibility on
+their ranges and fail precisely where harmonic modes occur. P9 earns physics
+content only when the harmonic/noise subspace has computable dimension,
+spectrum, and conditioning that depend on the causal diamond geometry rather
+than only on an arbitrary finite complex.
+
+The source and response law must also be derived rather than defined by
+annihilation. A finite Stokes theorem says exact sources are invisible to closed
+tests, but the physics needs independently specified geometry variables and an
+action or transfer law:
+
+```text
+S_geom(q_N), S_matter(psi, q_N)
+J_N = - partial S_matter / partial q_N
+L_N = partial^2 S_geom / partial q_N^2
+L_N h_N = J_N + xi_N
+E[xi_N] = 0
+Cov(xi_N) = K_N.
+```
+
+On a gauge-fixed visible subspace with Green operator `G_N`, the
+gravitationally relevant residual is `G_N K_N G_N^*`, not merely `tr(K_N)`.
+Ward-type identities such as `B_N J_N = 0` and
+`B_N K_N = K_N B_N^* = 0` should come from gauge, boundary, action, or transfer
+symmetry rather than from the definition of invisibility.
 
 The latest strategy/audit gate is sharper still. P9 becomes more than generic
 finite Hodge algebra only after it exhibits an iso-histogram separation: two
@@ -735,6 +1039,12 @@ too-strong claim. A zero mean is not enough. The program must either control the
 noise response or explain why its correlations/amplitude differ from the usual
 everpresent-Lambda and stochastic-gravity concerns.
 
+The top-line falsification test is therefore
+`predicted_deltaLambda_amplitude_vs_everpresent`: compute the amplitude and
+correlation structure implied by the finite response law, compare it with the
+everpresent-Lambda `1 / sqrt(V)` benchmark, and demote the branch if the result
+is only a reformulation without a new suppression or correlation handle.
+
 ### What we would like to show
 
 Near-term theorem targets:
@@ -757,9 +1067,16 @@ sjWindowedScreenEntropy_area_law_finite_model
 diamondSource_response_conservation_identity
 hodgeProjector_annihilates_boundaryExact
 hodgeProjector_is_idempotent_selfAdjoint
+closedIntervalOrderComplex_contractible
+weightedHodgeProjector_eq_pseudoinverseProjector
 harmonicNoiseKernel_restricts_to_projected_source
 harmonicNoiseKernel_positiveDefinite_iff_no_hidden_null_modes
 harmonicNoiseKernel_conditionNumber_refinement_bound
+predicted_deltaLambda_amplitude_vs_everpresent
+sjWindow_rule_is_intrinsic_and_preSpecified
+areaLaw_noiseTrace_not_window_alignment_artifact
+propagatedNoiseCovariance_eq_GKGadjoint
+coarseMap_is_intrinsic_normalized_stable
 ```
 
 The finite Ward/conservation seed behind `eventConservation_kills_defect_source`
@@ -835,6 +1152,28 @@ artifact reading: the offset-0 block map nearly annihilates the flat readout,
 while other offsets make the flat trace density large and can erase the
 separation. This makes "offset invariance or intrinsic coarse map" a hard
 pilot gate.
+
+Every coarse map should be intrinsic and normalized before the data are
+inspected. For a coarse map `R_N`, require relabeling invariance, stated
+weighted normalization such as `R_N R_N^* = I`, stability under small relation
+or weight perturbations, and refinement equivariance where applicable. For
+spectral coarse modes, use projectors onto whole eigenvalue bands rather than
+individual eigenvectors, since degenerate eigenspaces have no canonical basis.
+Require a spectral gap and perturbation bound.
+
+Scaling exponents should be named rather than grouped under one "area" label.
+If `N ~ L^d`, then:
+
+```text
+bulk                      N
+codimension-1 boundary    N^((d-1)/d)
+codimension-2 screen      N^((d-2)/d)
+topological               N^0
+```
+
+In four dimensions, `N^(3/4)` and `N^(1/2)` are different claims. A
+Sorkin-Johnston window or selected-sector trace should specify which exponent
+it predicts and why the window was fixed independently of the desired result.
 The new strategy/audit result
 `AgentTasks/null-edge-p9-intrinsic-coarse-map-strategy-aristotle-2026-06-23.md`
 recommends spectral Hodge coarse modes as the first publishable route, with
@@ -857,13 +1196,23 @@ The missing ingredients are the hard ones:
 - a response law connecting finite source tests to curvature or expansion;
 - a conservation identity or Ward-like constraint;
 - a finite spectral/windowing rule for SJ-style screen entropy;
+- an intrinsic, pre-specified window rule; hand-tuned spectral windows are the
+  same epistemic failure mode as a coarse map selected after seeing the data;
 - a finite Hodge metric and codifferential convention for the diamond
   bookkeeping cochains;
+- a topology audit deciding whether the full closed interval has trivial
+  positive-degree harmonic sector, and if so whether P9 uses a proper interval,
+  relative cohomology, constant mode, top relative mode, or near-harmonic
+  spectral band;
+- a pseudoinverse-based harmonic projector in the chosen weighted metric;
 - evidence for Betti-number or harmonic-noise scaling in sprinkled diamonds;
 - a proof that cell-local antisymmetric pairings telescope to area-law noise
   rather than volume-law noise;
 - a scaling theorem for residual noise amplitude;
-- a comparison to cosmological bounds rather than only finite algebra;
+- a comparison to the everpresent-Lambda amplitude and to cosmological bounds
+  rather than only finite algebra;
+- a propagated-noise estimate for `G_N K_N G_N^*`, not only a trace estimate for
+  the source noise kernel;
 - a proof that the hidden sector is boundary-exact or closure-satisfying for
   physical reasons, not by definition.
 
@@ -903,6 +1252,36 @@ null-step walk fixed point
 -> normalized det(rho_vis) is only the frame-relative m/E readout
 ```
 
+For the near-term paper, "fixed-point stability" is the safer phrase than full
+"universality." A genuine universality theorem needs an explicit RG or
+coarse-graining map on walk space. Before that exists, the publishable target is
+to classify stable translation-invariant null-step fixed points, show that the
+scalar flip is the unique mass-like isotropic direction, and bound
+isotropy-preserving perturbations to leading order.
+
+The specified walk class should be explicit. A clean homogeneous target uses a
+translation-invariant, finite-range unitary `U_a` on
+`l2(a Z^d) tensor C^r`, with unit-speed shifts, an analytic Bloch matrix
+`U_a(k)` near `k = 0`, an isolated quasienergy band, stated isotropy/parity/time
+reversal assumptions, and an interchirality coupling `m a + O(a^2)`. Choose the
+logarithm on the isolated low-energy band:
+
+```text
+H_a(k) = (i / a) Log U_a(k).
+```
+
+The rigorous stability theorem should be a band-limited estimate:
+
+```text
+sup_{|k| <= Lambda}
+  || H_a(k) - (alpha . k + beta m) ||
+  <= C a (Lambda^2 + m^2),
+```
+
+and Duhamel's formula should then compare `U_a^{floor(t/a)}` with Dirac
+evolution on band-limited states for bounded times. This is a real scaling
+limit theorem; a low-order Taylor expansion of one walk is not enough.
+
 The homogeneous theorem and the causal-set theorem should be separated. The
 homogeneous lattice/QW setting can be attacked by finite symbol algebra and
 known convergence theorems. The causal-set version, a Lorentz-invariant spinor
@@ -922,6 +1301,10 @@ discrete-time walks to fermions in lattice gauge theory. Arrighi-Facchini-Forets
 provide a Dirac quantum-walk ultraviolet-cutoff guardrail. Arnault et al.
 (`I7G53I6T`) give a relativistic quantum diffusion route. Strauch (`XK9ZRDNJ`,
 `QSB24VR9`) is useful for early discrete-time quantum walk Dirac limits.
+Bisio-D'Ariano-Tosini (`arXiv:1212.2839`) is especially relevant because it
+sets the QCA/Dirac comparison as an operational convergence problem. The 2025
+QCA fermion-doubling analysis (`arXiv:2505.07900`) makes full Brillouin-zone
+species accounting a theorem obligation for this program.
 
 So the novelty cannot be "Dirac from quantum walks." The novelty must be the
 null-edge interface: Pluecker mass, observer-conditioned mixedness,
@@ -1006,17 +1389,28 @@ walkProjectorCoherence_eq_massRatio
 checkerboardTransfer_sq_eq_kgRecurrence
 qwContinuumLimit_matches_diracHamiltonian
 universality_under_small_unitary_perturbations
+diracFixedPoint_stable_under_isotropyPreserving_perturbations
+properTimePurityRate_eq_flipFrequency
 ```
 
 Analysis-level and frontier targets:
 
 ```lean
 nullStepWalk_scalingLimit_eq_diracPropagator
+bandLimitedNullWalk_convergesToDirac
 nullStepWalk_doublerBranches_at_BZ_fixedPoints
+brillouinZone_coneCensus
 decoheredFlip_static_variance_eq_integrated_autocorr
 causalSetNullWalk_propagator_lorentzInvariant
 kahlerDirac_doublers_vs_generations_disjoint
 ```
+
+The doubler/generation bookkeeping is a gate, not a side note. Lattice and walk
+models can produce Brillouin-zone or staggered/Kahler-Dirac multiplicities,
+while the internal `H_3(O)` story supplies a separate candidate family
+multiplicity. Before dynamics and generation claims are presented together, the
+program must show that these multiplicities are disjoint, or else state a no-go
+explaining which apparent generations are discretization artifacts.
 
 Publication-level statement:
 
@@ -1033,6 +1427,10 @@ universality theorem:
 - a class of allowed walks with precise locality/unitarity/covariance
   hypotheses;
 - a scaling limit theorem rather than a Taylor expansion in one toy model;
+- a band-limited convergence estimate using an isolated quasienergy branch and
+  a controlled logarithm;
+- a full Brillouin-zone census of gap closings, cone locations, chiralities,
+  multiplicities, and effective masses;
 - a connection between the walk spinor/chirality space and the visible/internal
   observer-channel space;
 - an invariant `det P_vis = m^2` bridge, separate from the frame-relative
@@ -1052,20 +1450,38 @@ Another failure mode is that the walk mass can only be matched to the
 frame-normalized `det rho_vis`, with no invariant unnormalized determinant
 statement. That would weaken the claimed bridge to P1.
 
+The invariant mass bridge should be derived independently from the walk
+dispersion. Starting from a quasienergy `epsilon_a(k)`, prove either an exact
+deformed shell
+
+```text
+epsilon_a(k)^2 - |q_a(k)|^2 = m^2
+```
+
+for a naturally derived lattice momentum `q_a(k)`, or an asymptotic shell
+
+```text
+epsilon_a(k)^2 - |k|^2 = m^2 + O(a (|k|^3 + m^3)).
+```
+
+Only after that should one form `P_a(k) = epsilon_a(k) I + q_a(k) . sigma` and
+prove `det P_a(k) = m^2` up to the stated error.
+
 ## Cross-conjecture dependencies
 
 These four conjectures should be tested in a deliberate order.
 
-1. The observer-channel mass conjecture is the cleanest publication unit because
-   it already has the strongest finite proof support.
-2. The null-step Dirac universality conjecture is the dynamics gate for the
-   ontology. It should become the second paper if the current quantum-walk
-   theorem cluster continues to behave well.
-3. The finite super-Dirac conjecture is the master synthesis. It should absorb
-   P1/P2/P4 only after the operator surface is natural enough to survive review.
-4. The P9 source-visibility/noise conjecture should continue, but only under
+1. The observer-channel mass and null-step dynamics conjectures should now be
+   developed together through the proper-time/purity rate target. That is the
+   cheapest way to turn the static determinant identity into a dynamical claim.
+2. The finite super-Dirac conjecture should be gated by the one-diamond `D^2`
+   computation before broad operator formalization continues.
+3. The P9 source-visibility/noise conjecture should continue, but only under
    the strict rule that zero mean is not enough. It needs source response,
-   noise-kernel control, and comparison with stochastic gravity.
+   noise-kernel control, and an amplitude/correlation comparison with
+   everpresent Lambda and stochastic gravity.
+4. The generation/dynamics interface should wait until doubler, chirality, and
+   internal-family multiplicities are proven disjoint or explicitly identified.
 
 The best sign that the program is becoming real physics is not that all four
 conjectures become true. It is that each conjecture becomes sharp enough that a

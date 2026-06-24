@@ -72,6 +72,28 @@ and P11 should wait until there is a concrete transfer channel, calibrated
 momentum readout, and momentum-dependent spectral branch. The broad ontology is
 useful only insofar as it helps organize these finite artifacts.
 
+The 2026-06-23 conjecture review updates the priority map. The next highest
+value target is not another static invariant, but a bridge between
+observer-channel mass and null-step dynamics:
+
+```text
+chirality / flip dynamics
+-> visible entropy or coherence rate
+-> observer-conditioned proper-time ratio
+-> invariant Plucker determinant after integration and normalization.
+```
+
+Relative entropy and recoverability should be treated as the shared
+observer-channel infrastructure for this bridge, for P9 source visibility, and
+for later stable-particle-sector work. P9 remains high-value, but its near-term
+publication form is finite source visibility, noise kernels, and coarse-map
+guardrails; cosmological-constant leverage is gated by a comparison with the
+everpresent-Lambda `1 / sqrt(V)` amplitude and correlation structure. The
+super-Dirac synthesis should wait on a one-diamond `D^2` computation showing
+that its curvature block is the existing causal-diamond holonomy defect.
+Generation/triality papers should wait until walk/Kahler-Dirac doublers,
+chirality doubling, and internal-family multiplicities are separated.
+
 ## How to read this plan
 
 Each candidate has a readiness label:
@@ -100,6 +122,19 @@ Ontology      interpretive proposal supported only through lower-level results
 This is not defensive writing; it is part of the method. It lets a referee
 evaluate the finite theorem without being forced to accept the ontology.
 
+Every conjectural manuscript should also split its claims into four layers:
+
+```text
+exact finite identity       -- theorem-level algebra or combinatorics
+existence/naturality claim  -- whether the object is canonical
+scaling/dynamical theorem   -- whether it survives evolution or limits
+physical interpretation     -- what the finite result means physically
+```
+
+Do not let success in one layer silently promote the others. A paper may be
+publishable if it cleanly proves the finite identity and honestly states the
+remaining naturality, scaling, and interpretation gates.
+
 ## Overview
 
 | ID | Working title | Readiness | Lead venue |
@@ -110,7 +145,7 @@ evaluate the finite theorem without being forced to accept the ontology.
 | P4 | Luminal checkerboard dynamics, formalized | Banked | ITP / math-phys |
 | P5 | Finite quantum measure on causal events | Near | Foundations / quantum info |
 | P6 | Flavor as an internal Gram-overlap problem | Synthesis | Physics (flavor), framed as structural |
-| P7 | Observer channels and relative-entropy monotonicity | Synthesis | Foundations / QI + gravity |
+| P7 | Relative-entropy observer channels | Synthesis | Foundations / QI + gravity |
 | P8 | The null-edge causal graph program (manifesto) | Synthesis | Foundations / quantum gravity |
 | P11 | Stable particle sectors of finite causal quantum channels | Aspirational | Foundations / quantum information |
 | P9 | Cosmological-constant source visibility from diamond closure | Aspirational | Quantum gravity |
@@ -574,6 +609,23 @@ the named counterexample class, not hidden under a broad LOCC slogan. The paper
 argues that the allowed-dynamics question in both branches has one answer and
 one guardrail.
 
+Updated priority. P7 should no longer be treated as merely a short analogy note.
+It is the common infrastructure for several publication targets:
+
+```text
+P1/P2: coherent vs dephased internal labels and visible determinant mass
+P4: proper-time/purity rate along a null-step chirality-flip walk
+P9: source visibility versus recoverability under diamond observer channels
+P11: stable sectors as information preserved by finite transfer channels
+```
+
+The strongest new finite target is a relative-entropy or recoverability
+deficit that distinguishes coherent from dephased internal labels without being
+determined by `m` alone. This is the operational content missing from a bare
+Gram factorization: if every coherence-distinguishing functional is only a
+function of `det(P_vis)`, the observer-channel mass story should be demoted to
+an invariant reformulation.
+
 The new useful sharpening is recoverability, with a strict caveat.
 Recoverability is not the same thing as invisibility. Small data-processing loss
 means the fine information can be reconstructed from the observer output.
@@ -610,6 +662,10 @@ with matrix channels:
   statement can be isolated;
 - `recoverabilityGap_bounds_sourceVisibilityDefect`, initially as a definition
   and conjectural inequality.
+- `internalCoherenceLoss_eq_relativeEntropyDeficit`;
+- `coherenceDeficit_not_determined_by_mass_alone`;
+- `linearEntropyRate_visible_eq_flipFrequency`, shared with the null-step
+  dynamics paper.
 
 Remaining. A precise statement of the resolution observer, the kinematic
 observer, the explicit unital visible-channel construction, and a finite
@@ -1179,6 +1235,14 @@ leverage until all three objects exist in one finite model:
 3. a quantitative comparison against everpresent-Lambda-style scaling, or a
    derived alternative residual law with stated observational target.
 
+The topology gate now comes before the harmonic-channel claim. The full order
+complex of a closed finite causal interval may be contractible, so an exact
+positive-degree harmonic Lambda channel may be trivial. P9 must specify whether
+it uses a proper interval, relative cohomology, the constant `H^0` mode, a top
+relative mode, or near-harmonic spectral bands. The harmonic projector should be
+written using the pseudoinverse form `Pi_H = I - Delta^+ Delta` in the chosen
+weighted metric.
+
 Until then, P9 is a high-value research lane and a falsification-aware program
 section, not a paper claiming progress on the cosmological constant problem.
 
@@ -1196,9 +1260,13 @@ Next P9 work packages:
 - finite `DiamondHodgeMetric` / `DiamondBookkeepingCochain` definitions;
 - adjoint/codifferential convention tied to the chosen SJ metric;
 - exact/coexact/harmonic projection API in finite dimension;
+- topology audit for closed interval contractibility and the chosen alternative
+  harmonic channel;
+- pseudoinverse-based Hodge projector theorem;
 - pilot scripts for Betti-number scaling of sprinkled diamond order complexes;
 - pilot scripts for harmonic-noise trace scaling under independent versus
   cell-local paired residuals;
+- propagated-noise estimate for `G_N K_N G_N^*`, not merely `tr(K_N)`;
 - a response-law strategy note before any cosmological-constant amplitude claim.
 
 ### P10. Generations from the exceptional Jordan / triality layer
@@ -1232,23 +1300,41 @@ mixing data would weaken or kill the branch.
 
 ## Recommended sequencing
 
-1. P1 first. It is the most banked, most self-contained, and underpins the rest.
-   Promote the celestial-moment wrapper, add the reproducibility appendix, and
-   write the artifact paper before reopening broad ontology claims.
-2. Combine P2/P4 into the next dynamics paper if the null-step quantum-walk
-   target lands: luminal conditional shifts, chirality coherence, scalar
-   off-diagonal mass, Dirac dispersion, invariant `det(P_vis)=m^2`, and
-   observer-visible `m/E` in one finite model.
-3. P3 next or in parallel. It is trusted at the core and now has a
-   kernel-checked crossed-module/fake-flatness wrapper; the decisive follow-up is
-   whether the finite 2-cell labels and fake-flatness law are forced by the
-   causal-diamond geometry or remain optional packaging.
-4. P7 as a short, high-signal synthesis note; it captures a genuinely new
-   cross-branch observation and is cheap to write.
-5. P8 once P1-P4 exist to cite, so the manifesto rests on artifacts.
+1. P1 remains the first theorem paper. It is the most banked, most
+   self-contained, and underpins the rest. Promote the celestial-moment wrapper,
+   add the reproducibility appendix, and write the artifact paper before
+   reopening broad ontology claims.
+2. Develop P2/P4/P7 together around the proper-time/purity rate target:
+   luminal conditional shifts, chirality coherence, scalar off-diagonal mass,
+   Dirac dispersion, invariant `det(P_vis)=m^2`, observer-visible `m/E`, and a
+   finite relative-entropy/recoverability diagnostic in one auditable lane.
+3. P9 should continue as a finite source-visibility/noise-channel paper. Its
+   cosmological-constant claim stays gated on a response law and comparison with
+   the everpresent-Lambda `1 / sqrt(V)` amplitude/correlation benchmark.
+4. P3 can run in parallel, but the super-Dirac synthesis should be gated by the
+   one-diamond `D^2` computation before broad operator formalization continues.
+5. P8 should wait until P1 plus at least one dynamics/observer-channel artifact
+   exists to cite, so the manifesto rests on artifacts.
 6. P11 after P2/P4 have a concrete transfer operator and P7 has a usable
    observer-channel API.
-7. P5 and P6 opportunistically; P9 and P10 only after their gates clear.
+7. P5 and P6 opportunistically; P10 only after doubler, chirality, and
+   internal-family multiplicities are proven disjoint or explicitly identified.
+
+The most useful theorem/counterexample sequence after P1 is:
+
+1. `observerSpinFrame_wellDefined_up_to_SU2`;
+2. `gramWeightedPlucker_eq_exteriorSquare`;
+3. `massless_iff_rank_VGsqrt_le_one`;
+4. `threeLabel_dephasing_not_monotone`;
+5. `twoLevelYukawa_coherence_to_dephasedDet`;
+6. `productGradedSuperDirac_sq`;
+7. `diamondAdditiveDefect_eq_holonomyMinusId`;
+8. `flatSuperDiracSymbol_has_lorentzianMassShell`;
+9. `oneDiamond_naturalOperator_classification`;
+10. `closedIntervalOrderComplex_contractible`;
+11. `weightedHodgeProjector_eq_pseudoinverseProjector`;
+12. `bandLimitedNullWalk_convergesToDirac` plus
+    `brillouinZone_coneCensus`.
 
 Near-term editorial work order:
 
