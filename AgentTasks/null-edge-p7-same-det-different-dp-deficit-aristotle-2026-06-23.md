@@ -2,7 +2,7 @@
 
 ```yaml
 job_name: null-edge-p7-same-det-different-dp-deficit-20260623
-status: submitted
+status: integrated
 project_id: 83bb049d-c38a-42d0-b8bf-f6cc839f1a0c
 task_id: a21280df-00ac-4e67-8b81-4d616aa31186
 submission_project: AgentTasks/aristotle-submit/null-edge-p7-same-det-different-dp-deficit-20260623-project

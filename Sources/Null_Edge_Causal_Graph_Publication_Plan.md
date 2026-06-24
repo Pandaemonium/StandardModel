@@ -21,6 +21,24 @@ kernel-checked algebra and combinatorics; keep continuum physics in an explicitl
 conjectural layer. A small theorem with exact provenance and a kernel-checked
 proof is a publishable artifact; a large speculative synthesis is not.
 
+This plan now distinguishes stable program topics from manuscript types. The
+topic IDs `P1`, `P2`, ..., `P11` remain stable because many task notes, Lean
+modules, and source documents already use them. Candidate manuscripts add a
+suffix:
+
+```text
+-F  formalization paper: established or mostly established math/physics,
+    implemented, audited, and packaged in Lean
+-E  expository paper: plain-English ontology, pedagogy, and interpretation,
+    status-labeled and not sold as a theorem
+-R  research paper: a new theorem, model, obstruction, scaling law, or
+    prediction that goes beyond formalizing known material
+```
+
+Not every topic needs all three manuscript types. Some areas are only
+formalization targets; some are only research conjectures; some are best kept
+expository until the theorem layer matures.
+
 The 2026-06-23 external review sharpens this rule into a publication contract:
 do not ask one paper to be a theorem paper, an operator-physics synthesis, a
 Standard-Model bridge, a quantum-gravity program, and an ontology manifesto at
@@ -53,6 +71,18 @@ normalization and produces `rho_{p|u}`; this step is an invertible
 filtering/renormalization and is exactly where frame dependence enters. Thus
 `det(P_vis)=m^2` is the invariant, while `det(rho_{p|u})=(m/2E_u)^2` is the
 frame-relative rate.
+
+Neutrinos are the cleanest stress-test for this split, but should be treated as
+motivation rather than a solved result. Weak interactions see neutrinos almost
+entirely through a left-handed, nearly null channel. Oscillation data imply that
+at least two neutrino masses are nonzero; current direct KATRIN bounds constrain
+the effective electron-neutrino mass below the sub-eV scale, while cosmological
+mass-sum bounds are tighter but model-dependent. In this program's language, a
+massive neutrino is naturally read as an almost pure weak-visible null mode with
+tiny hidden chirality/sterile/Majorana bookkeeping. P1 may use this as an
+edge-case illustration of observer-channel impurity, but it must not claim to
+derive Dirac versus Majorana structure, PMNS mixing, mass ordering, or the
+absolute mass scale.
 
 The same guidance also gives the publication series a compact spine:
 
@@ -96,7 +126,9 @@ chirality doubling, and internal-family multiplicities are separated.
 
 ## How to read this plan
 
-Each candidate has a readiness label:
+Each candidate manuscript has a type suffix and a readiness label. The suffix
+says what sort of contribution the paper is trying to make; the readiness label
+says how close the central claim is to being defensible.
 
 ```text
 Banked       core result is trusted Lean (compiles, no s o r r y)
@@ -137,19 +169,26 @@ remaining naturality, scaling, and interpretation gates.
 
 ## Overview
 
-| ID | Working title | Readiness | Lead venue |
-| --- | --- | --- | --- |
-| P1 | Mass as Plucker spread of null spinors | Banked | Formalized-math / math-phys |
-| P2 | A finite Dirac square root of the Plucker mass | Near | Formalized-math / math-phys |
-| P3 | Causal-diamond holonomy: finite gauge curvature without plaquettes | Banked | ITP / discrete gravity |
-| P4 | Luminal checkerboard dynamics, formalized | Banked | ITP / math-phys |
-| P5 | Finite quantum measure on causal events | Near | Foundations / quantum info |
-| P6 | Flavor as an internal Gram-overlap problem | Synthesis | Physics (flavor), framed as structural |
-| P7 | Relative-entropy observer channels | Synthesis | Foundations / QI + gravity |
-| P8 | The null-edge causal graph program (manifesto) | Synthesis | Foundations / quantum gravity |
-| P11 | Stable particle sectors of finite causal quantum channels | Aspirational | Foundations / quantum information |
-| P9 | Cosmological-constant source visibility from diamond closure | Aspirational | Quantum gravity |
-| P10 | Generations from the exceptional Jordan / triality layer | Aspirational | Math-phys / particle |
+| ID | Type | Working title | Readiness | Lead venue |
+| --- | --- | --- | --- | --- |
+| P1-F | Formalization | Mass as Plucker spread of null spinors | Banked | Formalized-math / math-phys |
+| P1-E | Expository | The origin of mass from unresolved null motion | Active draft | Broad math-physics / public-facing preprint |
+| P1-R | Research | A dynamics theorem deriving Plucker mass from null-step evolution | Aspirational | Math-phys / quantum foundations |
+| P2-F | Formalization | A finite Dirac square root of the Plucker mass | Near | Formalized-math / math-phys |
+| P2-R | Research | One causal super-Dirac operator with Plucker, Higgs, and diamond blocks | Aspirational | Math-phys / noncommutative geometry |
+| P3-F | Formalization | Causal-diamond holonomy: finite gauge curvature without plaquettes | Banked | ITP / discrete gravity |
+| P3-R | Research | Higher-gauge diamond curvature and fake-flatness from causal path pairs | Near/Aspirational | Higher gauge / discrete gravity |
+| P4-F | Formalization | Luminal checkerboard dynamics, formalized | Banked | ITP / math-phys |
+| P4-R | Research | Null-step Dirac universality and chirality-coherence dynamics | Aspirational | Math-phys / quantum walks |
+| P5-F | Formalization | Finite quantum measure on causal events | Near | Foundations / quantum info |
+| P6-R | Research | Flavor as an internal Gram-overlap problem | Synthesis | Physics (flavor), framed as structural |
+| P7-F | Formalization | Finite observer-channel and relative-entropy infrastructure | Near | Formalized QI / foundations |
+| P7-R | Research | Proper-time, coherence, and recoverability in observer channels | Synthesis | Foundations / QI + gravity |
+| P8-E | Expository | The null-edge causal graph program | Synthesis | Foundations / quantum gravity |
+| P9-F | Formalization | Finite source visibility, noise kernels, and coarse-map guardrails | Near | Formalized math / discrete gravity |
+| P9-R | Research | Cosmological-constant source response from diamond closure | Aspirational | Quantum gravity |
+| P10-R | Research | Generations from the exceptional Jordan / triality layer | Aspirational | Math-phys / particle |
+| P11-R | Research | Stable particle sectors of finite causal quantum channels | Aspirational | Foundations / quantum information |
 
 ## Part I: formalization papers (banked or near-banked)
 
@@ -157,7 +196,7 @@ These are the safest publications because the central object is already in the
 kernel. They are best framed as formalized-mathematics artifacts: state the
 informal physics claim, then exhibit the exact Lean theorem and its conventions.
 
-### P1. Mass as Plucker spread of null spinors
+### P1-F. Mass as Plucker spread of null spinors
 
 Core claim. For a finite bundle of visible null spinors, the invariant mass
 squared is the total pairwise Plucker spread of their null directions:
@@ -244,12 +283,17 @@ frame-dependence guardrails; Fullwood-Vedral-
 Guzman-Gonzalez (`2604.07471`) for the recent unnormalized linear-entropy /
 Lorentzian-symmetry framing; the local Zotero guardrail keys are `QDUD2CDE`
 for Peres-Scudo-Terno and `Z2MFSJJU` for Gingrich-Adami; Arkani-Hamed et al. positive Grassmannian
-(`1212.5605`) for the `Gr(2,n)` minor-stratification angle.
+(`1212.5605`) for the `Gr(2,n)` minor-stratification angle. For the neutrino
+stress-test, cite KATRIN's direct sub-eV bound and Planck-style cosmological
+mass-sum constraints only as current experimental guardrails, not as theorem
+inputs.
 
 Claim boundary. This is a finite linear-algebra identity and its geometric
 equality condition. It is not a continuum Dirac limit and does not by itself
 fix a mass spectrum. The invariant is `det(P)=m^2`; normalized mixedness is a
 frame-relative `m/E` statement after choosing an observer time convention.
+Neutrinos are an instructive nearly-null example, but P1 does not solve the
+neutrino mass mechanism, flavor mixing, or absolute mass scale.
 
 P1 paper contract. The first paper should make one headline contribution:
 
@@ -313,7 +357,7 @@ Robustness / toy-example checklist:
 - at least one small causal-diamond picture only as future-facing context, not
   as part of the P1 proof burden.
 
-### P2. A finite Dirac square root of the Plucker mass
+### P2-F. A finite Dirac square root of the Plucker mass
 
 Core claim. The program's quadratic invariants (determinant mass, squared
 Plucker modulus, reduced mixedness, Laplacian seeds) are squares of a finite
@@ -449,7 +493,7 @@ pair phases are not themselves physical spin observables. Individual
 targets are rephasing-invariant Bargmann/Pancharatnam products, plus the
 standard massive `SU(2)` little-group representation for physical spin.
 
-### P3. Causal-diamond holonomy: finite gauge curvature without plaquettes
+### P3-F. Causal-diamond holonomy: finite gauge curvature without plaquettes
 
 Core claim. Gauge curvature on a causal graph can be measured by holonomy
 defects across causal diamonds, with finite, kernel-checked invariance and
@@ -479,7 +523,7 @@ gauge theory; Wilson lattice gauge theory as the contrast object.
 Claim boundary. These are finite gauge-invariant defects and their composition
 algebra, not a continuum Stokes theorem.
 
-### P4. Luminal checkerboard dynamics, formalized
+### P4-F. Luminal checkerboard dynamics, formalized
 
 Core claim. Relativistic `1+1` propagation has an exact finite description by
 lightlike microscopic steps with a corner chirality-flip amplitude, with the
@@ -565,7 +609,7 @@ homogeneous null-step quantum-walk fixed-point package if the new targets land.
 It is not yet a proof of generic higher-dimensional Dirac universality or a
 causal-set spinor propagator.
 
-### P5. Finite quantum measure on causal events
+### P5-F. Finite quantum measure on causal events
 
 Core claim. A finite, kernel-checked core of Sorkin's quantum-measure /
 decoherence-functional framework: event-amplitude additivity, the grade-2 sum
@@ -589,13 +633,32 @@ context for the Bell layer.
 Claim boundary. Finite-state results only; the known failure of measure
 extension in finite and causal-set examples must be stated, not hidden.
 
-## Part II: synthesis and physics-facing papers
+## Part II: expository and physics-facing papers
 
-These papers carry partial banked algebra inside a conceptual frame. They are
-higher-risk than Part I and must be written so the finite content is separable
-from the interpretation.
+These papers carry partial banked algebra inside a conceptual frame, or explain
+the ontology in plain English. They are higher-risk than Part I and must be
+written so the finite content is separable from the interpretation. Expository
+papers are allowed to be vivid and pedagogical, but they must status-label the
+theorems, conjectures, analogies, and ontology.
 
-### P6. Flavor as an internal Gram-overlap problem
+### P1-E. The origin of mass from unresolved null motion
+
+Core claim. The expository P1 paper explains the intuitive null-edge picture:
+each microscopic visible step is lightlike and individually massless, while a
+stable coarse-grained particle can be timelike because the observer sees a
+bundle of lightlike directions rather than one perfectly collinear ray. The
+Higgs/Yukawa story is presented carefully: Higgs coupling permits and weights
+left/right chirality coherence; visible mixedness appears only after a named
+observer channel, detector restriction, dephasing, or partial trace.
+
+Audience. This is the right home for the high-school-accessible opening,
+electron/neutrino examples, the gyroscope analogy with caveats, and the broader
+interaction ontology.
+
+Claim boundary. This paper teaches the worldview. It should cite P1-F for the
+actual theorem and should not claim that the ontology is proved.
+
+### P6-R. Flavor as an internal Gram-overlap problem
 
 Core claim. If visible mass is the Plucker determinant of a reduced visible
 density, then flavor hierarchy and mixing are controlled by one internal
@@ -629,7 +692,7 @@ Claim boundary. The Plucker / Gram identities are finite algebra. No claim of
 predicted Yukawa couplings or mixing angles is made unless the internal overlaps
 are derived, not assigned.
 
-### P7. Observer channels and relative-entropy monotonicity
+### P7-F/P7-R. Observer channels and relative-entropy monotonicity
 
 Core claim. Two of the program's branches that look independent are controlled
 by one instruction:
@@ -772,7 +835,7 @@ and QNEC themselves are imported QFT/operator-algebra theorems, not reproved
 here. The finite paper proves or defines Type-I matrix analogues and uses them
 as disciplined targets for later diamond-source work.
 
-### P8. The null-edge causal graph program (manifesto)
+### P8-E. The null-edge causal graph program
 
 Core claim. A single theorem-first statement of the program: fundamental
 histories are amplitudes over causal incidence structures; visible edges carry
@@ -796,7 +859,7 @@ Claim boundary. The manifesto must not claim a replacement for quantum field
 theory or general relativity. Its defensible novelty is the finite, Lean-verified
 package plus the graph-native synthesis.
 
-### P11. Stable particle sectors of finite causal quantum channels
+### P11-R. Stable particle sectors of finite causal quantum channels
 
 Core claim. A particle should not be defined merely as a bundle of null edges.
 The stronger finite definition is spectral: a particle species is a stable or
@@ -860,12 +923,13 @@ the same normalized state but different determinant mass. This should precede
 the spectral-sector package, because a normalized channel alone cannot define
 invariant mass.
 
-## Part III: aspirational targets (not yet papers)
+## Part III: research targets (not yet papers)
 
 These are listed so the program tracks them, but each is gated on a theorem that
-is not yet proved. They should be promoted to Part II only when the gate clears.
+is not yet proved. They become `-R` manuscripts only when the gate clears. Their
+supporting finite theorem packages may still become `-F` papers first.
 
-### P9. Cosmological-constant source visibility from diamond closure
+### P9-F/P9-R. Source visibility, noise, and cosmological response
 
 Gate. A finite visibility lemma that separates three notions that should not be
 conflated:
@@ -944,6 +1008,22 @@ Sorkin-style `1 / sqrt(V)` law from finite counting/source data, or prove a
 different residual-amplitude law from the stated observer channel. A mechanism
 that merely declares vacuum bookkeeping invisible relocates the cosmological
 constant problem.
+
+New physics guardrail. A different residual-amplitude law can cut two ways. If
+P9 pushes local vacuum residuals from a volume law to a screen law, then in four
+spacetime dimensions the residual may scale like `sqrt(A) / V ~ L^(-3)` for a
+codimension-two screen, or like `L^(-5/2)` for a null-hypersurface support. That
+is strong local vacuum filtering, but probably too suppressed to be the observed
+dark-energy scale by itself. The P9 paper should therefore separate two claims:
+
+```text
+local UV vacuum filtering: exact/projected/screen-supported source noise is small
+observed Lambda-scale residual: surviving global/harmonic/unimodular mode
+```
+
+The first is a finite source-visibility result. The second requires an explicit
+harmonic/global quotient and a quantitative comparison with the
+everpresent-Lambda `L^(-2)` scale.
 
 Footing. Spinor-network closure as a moment-map constraint
 (Dupuis-Speziale-Tambornino `1201.2120`); the trusted `SL(2,C)` invariance of the
@@ -1372,7 +1452,7 @@ Next P9 work packages:
 - propagated-noise estimate for `G_N K_N G_N^*`, not merely `tr(K_N)`;
 - a response-law strategy note before any cosmological-constant amplitude claim.
 
-### P10. Generations from the exceptional Jordan / triality layer
+### P10-R. Generations from the exceptional Jordan / triality layer
 
 Gate. The Albert / `H_3(O)` internal layer must house the required Standard Model
 family representation and mixing data, with three appearing structurally (broken
@@ -1403,24 +1483,27 @@ mixing data would weaken or kill the branch.
 
 ## Recommended sequencing
 
-1. P1 remains the first theorem paper. It is the most banked, most
+1. P1-F remains the first theorem paper. It is the most banked, most
    self-contained, and underpins the rest. Promote the celestial-moment wrapper,
    add the reproducibility appendix, and write the artifact paper before
    reopening broad ontology claims.
-2. Develop P2/P4/P7 together around the proper-time/purity rate target:
+2. P1-E can proceed in parallel as the accessible explanation, but it should cite
+   P1-F for the theorem and label the ontology as interpretation.
+3. Develop P2-R/P4-R/P7-R together around the proper-time/purity rate target:
    luminal conditional shifts, chirality coherence, scalar off-diagonal mass,
    Dirac dispersion, invariant `det(P_vis)=m^2`, observer-visible `m/E`, and a
    finite relative-entropy/recoverability diagnostic in one auditable lane.
-3. P9 should continue as a finite source-visibility/noise-channel paper. Its
+4. P9-F should continue as a finite source-visibility/noise-channel paper. Its
    cosmological-constant claim stays gated on a response law and comparison with
-   the everpresent-Lambda `1 / sqrt(V)` amplitude/correlation benchmark.
-4. P3 can run in parallel, but the super-Dirac synthesis should be gated by the
+   the everpresent-Lambda `1 / sqrt(V)` amplitude/correlation benchmark. P9-R
+   should wait for that response law.
+5. P3-F can run in parallel, but the super-Dirac synthesis should be gated by the
    one-diamond `D^2` computation before broad operator formalization continues.
-5. P8 should wait until P1 plus at least one dynamics/observer-channel artifact
+6. P8-E should wait until P1-F plus at least one dynamics/observer-channel artifact
    exists to cite, so the manifesto rests on artifacts.
-6. P11 after P2/P4 have a concrete transfer operator and P7 has a usable
+7. P11-R after P2/P4 have a concrete transfer operator and P7 has a usable
    observer-channel API.
-7. P5 and P6 opportunistically; P10 only after doubler, chirality, and
+8. P5-F and P6-R opportunistically; P10-R only after doubler, chirality, and
    internal-family multiplicities are proven disjoint or explicitly identified.
 
 The most useful theorem/counterexample sequence after P1 is:

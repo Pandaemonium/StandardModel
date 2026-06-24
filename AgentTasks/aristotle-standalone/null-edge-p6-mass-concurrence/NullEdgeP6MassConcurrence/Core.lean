@@ -14,6 +14,10 @@ def concurrence (a b c d : Real) : Real :=
 
 theorem concurrence_sq_eq_four_mul_det (a b c d : Real) :
     concurrence a b c d ^ 2 = 4 * (rho a b c d).det := by
-  sorry
+  unfold concurrence rho
+  rw [mul_pow, sq_abs]
+  simp [Matrix.det_fin_two]
+  ring
+
 
 end NullEdgeP6MassConcurrence

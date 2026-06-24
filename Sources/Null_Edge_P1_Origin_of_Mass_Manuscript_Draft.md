@@ -242,6 +242,37 @@ is why, in the universe we actually live in, light stays massless and
 electromagnetism reaches forever, while the weak force is heavy and hides inside
 the nucleus.
 
+## Neutrinos: almost light, but not quite
+
+Neutrinos are the most delicate test of this story. For a long time physicists
+thought they might be exactly massless. They interact only through the weak
+force, and the weak force sees them almost entirely as left-handed particles.
+That is very close to the cleanest possible lightlike picture: one handedness,
+one direction of motion, racing almost exactly at the speed of light.
+
+But neutrinos oscillate. They change flavor as they travel, and that can happen
+only if at least two of the neutrino mass states have nonzero mass. Direct
+laboratory measurements still have not weighed them exactly; KATRIN's current
+model-independent bound is that the effective electron-neutrino mass is below
+about `0.45 eV` at 90 percent confidence, more than a million times lighter than
+the electron. Cosmology gives even tighter but more model-dependent constraints
+on the sum of the neutrino masses.
+
+In the null-edge language, a massless neutrino would be a nearly pure left-handed
+null mode. A massive neutrino is almost that, but with a tiny coupling to
+something the weak detector does not directly see: perhaps a right-handed
+sterile partner in a Dirac-mass story, or a Majorana mass mechanism in which the
+neutrino is related to its own antiparticle. Either way, the neutrino is a
+beautiful edge case: it is almost a perfect lightlike particle, with mass showing
+up as a tiny impurity or hidden-sector coupling.
+
+This paper does not solve the neutrino problem. It does not decide whether
+neutrinos are Dirac or Majorana particles, explain their mixing angles, determine
+their mass ordering, or predict the absolute mass scale. What it does provide is
+the right kind of finite language for the question: when a visible weak channel
+sees something almost null, what hidden chirality or internal bookkeeping would
+make the visible state just impure enough to have mass?
+
 So every kind of mass in this paper is one idea wearing different clothes. The
 proton: many lightlike pieces trapped by the strong force, all pointing different
 ways. The electron: a single lightlike lefty and righty, stitched into a zig-zag by
@@ -634,6 +665,9 @@ Separate work required for the full physics program:
 - a continuum Dirac equation from null-edge dynamics;
 - a Standard-Model mass spectrum and predicted Yukawa couplings;
 - a derivation of QCD confinement, the proton mass, or the strong force;
+- a neutrino-mass mechanism: Dirac versus Majorana, sterile/right-handed
+  sectors, seesaw scale, PMNS mixing, mass ordering, and the absolute mass scale
+  remain outside this theorem;
 - a cosmological / source-visibility theorem (that is gated work, P9);
 - a Higgs/Yukawa dynamics layer explaining which chirality flips are allowed;
 - projective twistor geometry beyond the checked spinor chart.
@@ -703,6 +737,14 @@ pieces.
    QCD field/kinetic energy. The Pluecker theorem explains the finite kinematic
    invariant of a bundle of null momenta. The QCD part of the program must still
    derive confinement, the trace anomaly, and the hadron spectrum.
+
+   Neutrinos should be treated as a stress-test for this bridge. Oscillations
+   prove that at least two neutrino masses are nonzero, while direct bounds keep
+   the effective electron-neutrino mass below the sub-eV scale. The null-edge
+   reading is therefore "almost pure weak-visible null propagation plus tiny
+   hidden chirality/sterile/Majorana bookkeeping," not an explanation of the
+   neutrino spectrum. A complete treatment must decide Dirac versus Majorana,
+   specify the hidden sector, and recover PMNS mixing and mass ordering.
 
 3. **Separate kinematics from dynamics.** The theorem answers: given a finite
    family of null visible momenta, what invariant mass does the family have? A

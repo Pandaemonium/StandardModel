@@ -27,7 +27,32 @@ theorem pairwise_wedge_zero_iff_all_zero_or_common_direction
     {n : Nat} (psi : Fin n -> CSpinor) :
     PairwiseWedgeZero psi ↔
       AllZero psi ∨ HasNonzeroCommonDirection psi := by
-  sorry
+  constructor
+  · intro h
+    by_cases hz : AllZero psi
+    · left; exact hz
+    · right
+      unfold AllZero at hz
+      push_neg at hz
+      obtain ⟨base, hbase_ne⟩ := hz
+      have hbase : psi base 0 ≠ 0 ∨ psi base 1 ≠ 0 := by
+        by_contra hc
+        push_neg at hc
+        apply hbase_ne
+        ext i
+        fin_cases i
+        · exact hc.1
+        · exact hc.2
+      refine ⟨base, hbase, ?_⟩
+      exact (pairwise_wedge_zero_iff_common_direction psi base hbase).mp h
+  · rintro (hz | hdir)
+    · intro i j
+      have h1 := hz i
+      have h2 := hz j
+      rw [h1, h2]
+      simp [spinorWedge]
+    · obtain ⟨base, hbase, c, hc⟩ := hdir
+      exact all_smul_implies_pairwise_wedge_zero psi base c hc
 
 /--
 The finite bundle determinant vanishes exactly when the visible spinors are all
@@ -37,7 +62,11 @@ theorem fin_bundle_mass_zero_iff_all_zero_or_common_direction
     {n : Nat} (psi : Fin n -> CSpinor) :
     (finBundleMomentum psi).det = 0 ↔
       AllZero psi ∨ HasNonzeroCommonDirection psi := by
-  sorry
+  rw [fin_bundle_plucker_mass_identity,
+    finPairwisePluckerMass_eq_zero_iff_pair_terms_zero,
+    pair_terms_zero_iff_pairwise]
+  exact pairwise_wedge_zero_iff_all_zero_or_common_direction psi
+
 
 end NullEdgeZeroEdgeCollinearity
 

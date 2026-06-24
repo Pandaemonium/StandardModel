@@ -127,6 +127,26 @@ theorem twoOutcome_rhoTilt_sum :
     twoOutcome xBasisEffect rhoTilt 0 + twoOutcome xBasisEffect rhoTilt 1 = 1 := by
   norm_num [twoOutcome, xBasisEffect_rhoTilt, xBasisComplement_rhoTilt]
 
+theorem dpDeficit_rhoCoh_rhoCoh :
+    dpDeficit completeDephase
+        (twoOutcome xBasisEffect rhoCoh)
+        (twoOutcome xBasisEffect rhoCoh) = 0 := by
+  unfold dpDeficit;
+  unfold kl2; norm_num [ Fin.sum_univ_two ] ;
+
+theorem dpDeficit_rhoTilt_rhoCoh :
+    dpDeficit completeDephase
+        (twoOutcome xBasisEffect rhoTilt)
+        (twoOutcome xBasisEffect rhoCoh)
+      = 7 / 10 * Real.log (14 / 15) + 3 / 10 * Real.log (6 / 5) := by
+  unfold dpDeficit twoOutcome completeDephase xBasisEffect rhoTilt rhoCoh;
+  unfold kl2 applyMap2 tracePair sub idEffect; norm_num [ Fin.sum_univ_succ ] ;
+
+theorem dpDeficit_value_ne_zero :
+    (7 : Real) / 10 * Real.log (14 / 15) + 3 / 10 * Real.log (6 / 5) ≠ 0 := by
+  field_simp;
+  norm_num [ ← Real.log_rpow, ← Real.log_mul, Real.log_pos ]
+
 /--
 The focused observer-channel witness: determinant mass agrees for the two
 states, but the KL data-processing deficit against the coherent readout
@@ -144,6 +164,7 @@ theorem same_det_different_dpDeficit :
   case left =>
     exact same_det_rhoCoh_rhoTilt
   case right =>
-    sorry
+    rw [bne_iff_ne, dpDeficit_rhoCoh_rhoCoh, dpDeficit_rhoTilt_rhoCoh]
+    exact (dpDeficit_value_ne_zero).symm
 
 end NullEdgeP7SameDetDifferentDPDeficit

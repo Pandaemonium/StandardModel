@@ -20,7 +20,9 @@ def chiralityCoherence (offdiag : Real) : Real :=
 theorem chiralityCoherence_positiveProjectorLR_sq
     (m E : Real) (hE : 0 < E) :
     chiralityCoherence (positiveProjectorLR m E) ^ 2 = m ^ 2 / E ^ 2 := by
-  sorry
+  unfold chiralityCoherence positiveProjectorLR
+  rw [mul_pow, sq_abs]
+  field_simp
 
 theorem walk_limit_ratio_eq_projector_coherence_sq
     (k m : Real) (hpos : 0 < k ^ 2 + m ^ 2) :
@@ -28,6 +30,9 @@ theorem walk_limit_ratio_eq_projector_coherence_sq
       =
     chiralityCoherence
       (positiveProjectorLR m (Real.sqrt (k ^ 2 + m ^ 2))) ^ 2 := by
-  sorry
+  rw [chiralityCoherence_positiveProjectorLR_sq]
+  · rw [Real.sq_sqrt hpos.le]
+  · positivity
+
 
 end NullEdgeP2WalkProjectorCoherenceBridge

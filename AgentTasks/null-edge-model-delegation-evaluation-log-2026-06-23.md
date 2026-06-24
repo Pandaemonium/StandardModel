@@ -1056,3 +1056,57 @@ T2 follow-ups if they succeed.
 - follow-up: integrate if Aristotle closes `same_det_different_dpDeficit`; if it
   fails, ask for a weaker witness with one side of the deficit explicitly zero
   and the other proved positive.
+
+### 2026-06-24 batch integration - Aristotle proofs
+
+```text
+[2026-06-24] [P7/P9] [Aristotle] [proof integration] [success] [quality 3]
+```
+
+Input scope: Batch of completed Aristotle projects: `83bb049d` (same-det-different-deficit), `65561c72` (erasure-not-recoverable), `ebd742af` (exact-recovery-gap), `53d2e069` (exact-recovery-composition), `6ba5e2b1` (observable-pullback), `406f955e` (admissible-coarse-map), `fc1b0531` (noncritical-coarse-erasure), `c8076caa` (coherence-not-determined-by-det), `ce4d21d4` (residual-variance-cell-area), and `9beafa4e` (operational-gap).
+
+What worked: Aristotle successfully resolved all proof holes/sorries in these standalone packages, producing clean proofs using standard tactics (such as `decide`, `simp`, `rintro`, and `rw`). The integration script was successfully run in batch mode using a custom short output root (`ao/`) to bypass Windows `MAX_PATH` limitations, and all 9 standalone files compiled cleanly under local verification without any errors or warnings.
+
+What worried: The default output directory `AgentTasks/aristotle-output/` initially triggered Windows `MAX_PATH` errors during extraction. Also, task notes with nested `target_file` parameters that lacked the full directory prefix initially copied candidates to the repository root instead of their correct standalone subfolders, which required updating the integration script's metadata parsing logic to respect the `source_staged_from` parameter.
+
+Follow-up: Bank the completed standalone modules, mark the corresponding task notes as integrated, and proceed with the overnight lane strategy.
+
+### 2026-06-24 - Aristotle submissions (SJ reference state, Stochastic erasure, Geometry API design)
+
+```text
+[2026-06-24] [P7/P9] [Aristotle] [proof & design submission] [success] [quality 9 provisional]
+```
+
+Input scope:
+1. SJ reference state Hermiticity proof: standalone focused package.
+2. Concrete stochastic erasure no-go proof: standalone focused package.
+3. Geometric visibility API design: full-repository strategy project.
+
+What worked: Prepared the focused packages using the powershell script `prepare_aristotle_focused_submission.ps1`, which successfully isolated Mathlib dependencies and generated `Core.lean` files with `sorry` for targets. Submitted the projects using `aristotle submit` with robust physics contexts and research guidance prompts, and recorded their project and task IDs in the task note metadata.
+
+What worried: Nothing yet; all three jobs were queued successfully.
+
+Follow-up: Wait for Aristotle to complete these jobs, then fetch and integrate them.
+
+### 2026-06-24 - Aristotle integrations (SJ Reference State, Stochastic Erasure, Geometry API Design)
+
+```text
+[2026-06-24] [P7/P9] [Aristotle] [proof & design integration] [success] [quality 9 validated]
+```
+
+Input scope:
+1. SJ Reference State Hermiticity: Project `28237017-fd29-4e70-abde-8a29cc61525d`, task `c87de24f-9848-4775-94bd-446cdc831a8c`.
+2. Concrete Stochastic Erasure: Project `2194f18a-9ac7-46b2-ad6a-7333bc642730`, task `3c2aef5c-8214-44ae-98ee-0021f951a5aa`.
+3. Geometric Visibility API Design: Project `464942fa-f75d-430e-acff-29d052525c48`, task `65ad5e8f-73ce-4113-b989-41b26055e8e5`.
+
+What worked:
+- SJ Reference State: Aristotle successfully identified the missing `Mathlib.LinearAlgebra.Matrix.Hermitian` import and the broken pre-existing linter warning/proof of `pauliJordanReal_antisymm`. It fixed both and proved the target theorem `iDelta_isHermitian` cleanly.
+- Stochastic Erasure: Aristotle successfully proved `erased_pair_concrete_not_exactRecoverable` in term-mode. It also resolved pre-existing build/recursion-depth errors in `pDist` and `qDist` and added a clean `@[ext]` extensionality lemma `FinDist.ext` to fix `ext` on `FinDist`.
+- Visibility API Design: Aristotle returned a highly detailed, 400+ line strategy report mapping out the new `DiamondScreen`/`DiamondMeasure`/`Observer`/`CurvatureDefect` API, 3 legacy bridge lemmas, and 8 ranked future theorem signatures (including the falsification target). The file was extracted bypassing MAX_PATH limits.
+- All files build and verify cleanly under targeted and full project builds.
+
+What worried:
+- The full-repository submission for the design job contained a deep file tree that triggered Windows MAX_PATH extraction errors when using the default Python `extractall` logic. We had to write a targeted Python extractor to pull only the design report out of the tarball.
+
+Follow-up:
+- Build the new `NullEdgeP9DiamondScreen.lean` module in the next phase using the proposed design report, and migrate abstract toy modules to use the new unified geometric API.

@@ -47,19 +47,23 @@ def rhoCoh : RealSym2 :=
 
 theorem rhoDiag_trace_one :
     tr rhoDiag = 1 := by
-  norm_num [tr, rhoDiag]
+  unfold tr rhoDiag
+  norm_num
 
 theorem rhoCoh_trace_one :
     tr rhoCoh = 1 := by
-  norm_num [tr, rhoCoh]
+  unfold tr rhoCoh
+  norm_num
 
 theorem rhoDiag_det :
     det rhoDiag = (3 : Real) / 16 := by
-  norm_num [det, rhoDiag]
+  unfold det rhoDiag
+  norm_num
 
 theorem rhoCoh_det :
     det rhoCoh = (3 : Real) / 16 := by
-  norm_num [det, rhoCoh]
+  unfold det rhoCoh
+  norm_num
 
 theorem same_det :
     det rhoDiag = det rhoCoh := by
@@ -67,18 +71,16 @@ theorem same_det :
 
 theorem different_coherenceSq :
     coherenceSq rhoDiag != coherenceSq rhoCoh := by
-  norm_num [coherenceSq, rhoDiag, rhoCoh]
+  unfold coherenceSq rhoDiag rhoCoh
+  norm_num
 
 theorem determinant_does_not_determine_coherenceSq :
     exists rho sigma : RealSym2,
       tr rho = 1 /\ tr sigma = 1 /\
       det rho = det sigma /\
       coherenceSq rho != coherenceSq sigma := by
-  refine Exists.intro rhoDiag (Exists.intro rhoCoh ?_)
-  refine And.intro rhoDiag_trace_one ?_
-  refine And.intro rhoCoh_trace_one ?_
-  refine And.intro same_det ?_
-  exact different_coherenceSq
+  exact ⟨rhoDiag, rhoCoh, rhoDiag_trace_one, rhoCoh_trace_one, same_det,
+    different_coherenceSq⟩
 
 end NullEdgeP7CoherenceNotDeterminedByDet
 

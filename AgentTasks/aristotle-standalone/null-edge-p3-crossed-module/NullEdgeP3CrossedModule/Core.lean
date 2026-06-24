@@ -56,13 +56,18 @@ def horizontalCompose2Cell (hP hQ : H) : H :=
 theorem fakeFlat_verticalCompose (X : CrossedModule G H) (P Q : PathPair G) (hP hQ : H)
     (hfP : FakeFlat X P hP) (hfQ : FakeFlat X Q hQ) :
     FakeFlat X (verticalComposePathPair P Q) (verticalCompose2Cell X P Q hP hQ) := by
-  sorry
+  unfold verticalComposePathPair verticalCompose2Cell FakeFlat at *
+  simp +decide [hfP, hfQ, X.toHom_act, pathPairDefect]
+  group
 
 /-- Horizontal composition preserves fake-flatness. -/
 theorem fakeFlat_horizontalCompose (X : CrossedModule G H) (P Q : PathPair G) (hP hQ : H)
     (hcomp : P.right = Q.left) (hfP : FakeFlat X P hP) (hfQ : FakeFlat X Q hQ) :
     FakeFlat X (horizontalComposePathPair P Q) (horizontalCompose2Cell hP hQ) := by
-  sorry
+  unfold FakeFlat horizontalComposePathPair horizontalCompose2Cell
+  rw [map_mul, hfP, hfQ]
+  simp +decide [pathPairDefect, hcomp]
+  simp +decide [<- mul_assoc]
 
 /-- The double-category interchange law holds for fake-flat 2-cells. -/
 theorem crossedModule_2cell_interchange (X : CrossedModule G H)
@@ -72,6 +77,14 @@ theorem crossedModule_2cell_interchange (X : CrossedModule G H)
     horizontalCompose2Cell (verticalCompose2Cell X A C hA hC) (verticalCompose2Cell X B D hB hD) =
       verticalCompose2Cell X (horizontalComposePathPair A B) (horizontalComposePathPair C D)
         (horizontalCompose2Cell hA hB) (horizontalCompose2Cell hC hD) := by
-  sorry
+  unfold horizontalCompose2Cell verticalCompose2Cell
+  have h_eq : hC * X.act D.left⁻¹ hB = X.act C.left⁻¹ hB * hC := by
+    have h_tohom : X.toHom hC * D.left⁻¹ = C.left⁻¹ := by
+      simp_all [FakeFlat, pathPairDefect]
+    rw [<- h_tohom, X.act_mul_assoc]
+    simp [X.peiffer, mul_assoc]
+  simp_all [<- mul_assoc, CrossedModule.act_mul]
+  simp_all [mul_assoc, horizontalComposePathPair]
+
 
 end NullEdgeP3CrossedModule

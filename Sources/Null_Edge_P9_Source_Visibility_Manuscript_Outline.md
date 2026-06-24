@@ -5,7 +5,8 @@
 noise in causal diamonds.
 **Related docs:** `Sources/Null_Edge_Key_Conjectures.md`,
 `Sources/Null_Edge_Causal_Graph_Publication_Plan.md`,
-`Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`, and
+`Sources/Null_Edge_Causal_Graph_Strengthened_Program.md`,
+`Sources/Null_Edge_P9_Physics_Development.md`, and
 `AgentTasks/null-edge-codex-overnight-run-postmortem-2026-06-23.md`.
 
 ## One-sentence thesis
@@ -33,12 +34,30 @@ The paper should explicitly avoid these stronger claims:
 - no claim that zero-mean microscopic bookkeeping is sufficient;
 - no claim that every coarse-graining preserves the visible defect;
 - no claim that fine-grained continuum behavior is required.
+- no claim that beating the everpresent-Lambda `V^(-1/2)` benchmark is by
+  itself enough to explain observed dark energy. A screen-supported residual
+  may be too suppressed; an observed nonzero Lambda-scale signal likely needs a
+  surviving global, harmonic, or unimodular residual mode.
 
 The discrete-first standard is:
 
 > Failure of fine-grained continuum resemblance is not a failure of P9. Failure
 > means there is no stable, pre-specified coarse-grained observer channel whose
 > large-scale readout separates hidden bookkeeping from visible source defects.
+
+The physics target is now two-component:
+
+```text
+local vacuum bookkeeping -> exact/projected/screen-supported sector
+observed Lambda-scale residual -> global or harmonic quotient, if present
+```
+
+This prevents a false victory. If source visibility suppresses local vacuum
+noise from `V^(-1/2)` down to a codimension-two screen law
+`sqrt(A) / V ~ V^(-3/4)` in four spacetime dimensions, that is excellent
+vacuum filtering but is probably too small to be the observed dark energy by
+itself. The program must separately identify any surviving `closed / exact`
+harmonic mode that keeps the Hubble-scale `L^(-2)` order of magnitude.
 
 ## Intended contribution
 
@@ -144,6 +163,14 @@ The manuscript should make `predicted_deltaLambda_amplitude_vs_everpresent` a
 top-line falsification gate. A finite channel that reproduces the usual
 `1 / sqrt(V)` story without a new correlation or suppression handle is still
 interesting finite Hodge theory, but it is not cosmological-constant leverage.
+Conversely, a finite channel that suppresses residuals faster than
+`1 / sqrt(V)` is source-filtering leverage, but not automatically a dark-energy
+mechanism. The manuscript should separate:
+
+```text
+UV vacuum filtering:        local/exact/projected noise is invisible or small
+observed dark-energy scale: surviving global/harmonic residual, if any
+```
 
 ### 3. Finite causal-diamond setup
 
@@ -247,6 +274,25 @@ Potential central theorem:
 If source covariance lies mostly in the observer-channel kernel, then the
 visible residual variance is bounded by the projected weight of the source.
 ```
+
+The paper should include the finite scaling audit from
+`Sources/Null_Edge_P9_Physics_Development.md`. If the surviving independent
+fluctuations live on a codimension-two screen with area `A ~ L^2` in four
+spacetime dimensions, then
+
+```text
+RMS(delta Lambda) ~ sqrt(A) / V ~ L^(-3) = V^(-3/4).
+```
+
+If they live on a null hypersurface measure `B ~ L^3`, then
+
+```text
+RMS(delta Lambda) ~ sqrt(B) / V ~ L^(-5/2) = V^(-5/8).
+```
+
+Both suppress faster than the everpresent-Lambda `V^(-1/2) ~ L^(-2)` law. This
+is useful for filtering local vacuum noise, but it pushes the observed nonzero
+dark-energy scale into a surviving harmonic/global sector.
 
 ### 7. Hodge/projector observer channels
 

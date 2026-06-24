@@ -22,22 +22,6 @@ structure FinDist (Omega : Type*) [Fintype Omega] where
   nonneg : forall x, 0 <= p x
   sum_one : Finset.univ.sum p = 1
 
-namespace FinDist
-
-/-- Finite distributions are equal when their probability functions agree. -/
-theorem ext {Omega : Type*} [Fintype Omega] {d e : FinDist Omega}
-    (h : forall x, d.p x = e.p x) : d = e := by
-  cases d with
-  | mk dp dnon dsum =>
-  cases e with
-  | mk ep enon esum =>
-  dsimp at h
-  have hp : dp = ep := funext h
-  subst hp
-  rfl
-
-end FinDist
-
 /-- A column-stochastic finite observer channel, acting from `Omega` to
 `Kappa`. -/
 structure Stoch (Omega Kappa : Type*) [Fintype Omega] [Fintype Kappa] where
@@ -90,24 +74,17 @@ noncomputable def comp {Omega Kappa Lambda : Type*}
             rw [<- Finset.sum_mul, S.col_sum y, one_mul]
       _ = 1 := T.col_sum x
 
-/-- Applying a composite stochastic channel is the same as applying the two
-channels successively. -/
+/-
+Applying a composite stochastic channel is the same as applying the two
+channels successively.
+-/
 theorem apply_comp {Omega Kappa Lambda : Type*}
     [Fintype Omega] [Fintype Kappa] [Fintype Lambda]
     (T : Stoch Omega Kappa) (S : Stoch Kappa Lambda) (d : FinDist Omega) :
     (comp T S).apply d = S.apply (T.apply d) := by
-  apply FinDist.ext
-  intro z
-  unfold apply comp
-  dsimp
-  simp_rw [Finset.sum_mul]
-  rw [Finset.sum_comm]
-  refine Finset.sum_congr rfl ?_
-  intro y _
-  rw [Finset.mul_sum]
-  refine Finset.sum_congr rfl ?_
-  intro x _
-  ring
+  unfold Stoch.apply;
+  simp +decide [ Finset.mul_sum, mul_assoc, mul_comm, mul_left_comm, Stoch.comp ];
+  exact funext fun y => Finset.sum_comm
 
 end Stoch
 
@@ -118,7 +95,7 @@ def PairExactRecoverable {Omega Kappa : Type*}
   exists R : Stoch Kappa Omega,
     R.apply (T.apply p) = p /\ R.apply (T.apply q) = q
 
-/--
+/-
 Exact stochastic recoverability composes for a fixed source pair. If `T`
 is recoverable on `p,q`, and `S` is recoverable on the already coarsened pair
 `T.apply p, T.apply q`, then `Stoch.comp T S` is recoverable on `p,q`.
@@ -130,17 +107,9 @@ theorem PairExactRecoverable.comp {Omega Kappa Lambda : Type*}
     (hT : PairExactRecoverable T p q)
     (hS : PairExactRecoverable S (T.apply p) (T.apply q)) :
     PairExactRecoverable (Stoch.comp T S) p q := by
-  cases hT with
-  | intro RT hTR =>
-  cases hTR with
-  | intro hTp hTq =>
-  cases hS with
-  | intro RS hSR =>
-  cases hSR with
-  | intro hSp hSq =>
-  refine Exists.intro (Stoch.comp RS RT) ?_
-  exact And.intro
-    (by rw [Stoch.apply_comp, Stoch.apply_comp, hSp, hTp])
-    (by rw [Stoch.apply_comp, Stoch.apply_comp, hSq, hTq])
+  obtain ⟨ R, hR₁, hR₂ ⟩ := hT;
+  obtain ⟨ R', hR₁', hR₂' ⟩ := hS;
+  use R'.comp R;
+  simp_all +decide [ Stoch.apply_comp ]
 
 end NullEdgeP9StochasticExactRecoveryComposition

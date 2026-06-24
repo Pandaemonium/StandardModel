@@ -68,16 +68,19 @@ def inClosedDiamond5 (R : Fin 5 -> Fin 5 -> Prop) [DecidableRel R]
     (x y z : Fin 5) : Prop :=
   (z = x \/ R x z) /\ (z = y \/ R z y)
 
+instance inClosedDiamond5_decidable (R : Fin 5 -> Fin 5 -> Prop) [DecidableRel R]
+    (x y z : Fin 5) : Decidable (inClosedDiamond5 R x y z) := by
+  unfold inClosedDiamond5
+  infer_instance
+
 def localIntervalCard5 (R : Fin 5 -> Fin 5 -> Prop) [DecidableRel R]
-    (x y a b : Fin 5) : Nat := by
-  classical
-  exact (Finset.univ.filter fun z : Fin 5 =>
+    (x y a b : Fin 5) : Nat :=
+  (Finset.univ.filter fun z : Fin 5 =>
     inClosedDiamond5 R x y z /\ R a z /\ R z b).card
 
 def localIntervalAbundance5 (R : Fin 5 -> Fin 5 -> Prop) [DecidableRel R]
-    (x y : Fin 5) (k : Nat) : Nat := by
-  classical
-  exact (Finset.univ.filter fun p : Prod (Fin 5) (Fin 5) =>
+    (x y : Fin 5) (k : Nat) : Nat :=
+  (Finset.univ.filter fun p : Prod (Fin 5) (Fin 5) =>
     inClosedDiamond5 R x y p.1 /\
     inClosedDiamond5 R x y p.2 /\
     localIntervalCard5 R x y p.1 p.2 = k).card
@@ -113,7 +116,7 @@ theorem nonCriticalErasingMap_erases_bucket_one :
         (nonCriticalErasingMap 0) (nonCriticalErasingMap 4) 1 =
       localIntervalSignature5 (coarseRel relB nonCriticalErasingMap)
         (nonCriticalErasingMap 0) (nonCriticalErasingMap 4) 1 := by
-  sorry
+  decide
 
 theorem nonCriticalErasingMap_is_noncritical_erasure :
     nonCriticalErasingMap 1 != nonCriticalErasingMap 2 /\

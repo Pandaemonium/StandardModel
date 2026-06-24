@@ -208,22 +208,22 @@ theorem natGap_zero_left (n : Nat) :
 
 theorem t1_localSignature_gap_at_one :
     signatureGapAt (localIntervalSignature relA 0 4)
-      (localIntervalSignature relB 0 4) (Fin.mk 1 (by decide)) = 2 := by
-  have hk : (Fin.mk 1 (by decide) : Fin 7) = (1 : Fin 7) := rfl
+      (localIntervalSignature relB 0 4) ⟨1, by decide⟩ = 2 := by
+  have hk : (⟨1, by decide⟩ : Fin 7) = (1 : Fin 7) := rfl
   unfold signatureGapAt
   rw [hk, localIntervalSignature_relA_0_4_at_one,
     localIntervalSignature_relB_0_4_at_one, natGap_zero_left]
 
 theorem t1_localSignature_distinguishable_threshold_one :
     distinguishableAt (localIntervalSignature relA 0 4)
-      (localIntervalSignature relB 0 4) (Fin.mk 1 (by decide)) 1 := by
+      (localIntervalSignature relB 0 4) ⟨1, by decide⟩ 1 := by
   unfold distinguishableAt
   rw [t1_localSignature_gap_at_one]
   decide
 
 theorem t1_localSignature_distinguishable_threshold_two :
     distinguishableAt (localIntervalSignature relA 0 4)
-      (localIntervalSignature relB 0 4) (Fin.mk 1 (by decide)) 2 := by
+      (localIntervalSignature relB 0 4) ⟨1, by decide⟩ 2 := by
   unfold distinguishableAt
   rw [t1_localSignature_gap_at_one]
 

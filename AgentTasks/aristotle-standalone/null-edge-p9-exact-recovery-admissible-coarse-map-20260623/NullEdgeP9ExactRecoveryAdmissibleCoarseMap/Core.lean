@@ -113,6 +113,18 @@ theorem exactRecovery_pullsBack_distinguishingTest {Omega Kappa : Type*}
     (htest : Distinguishes test p q) :
     exists obsTest : Test Kappa,
       Distinguishes obsTest (T.apply p) (T.apply q) := by
-  sorry
+  cases hrec with
+  | intro R h =>
+  cases h with
+  | intro hp hq =>
+  refine ⟨Test.pullback R test, ?_⟩
+  intro heq
+  apply htest
+  have hpp : (Test.pullback R test).eval (T.apply p) = test.eval p := by
+    simp [Test.pullback, hp]
+  have hqq : (Test.pullback R test).eval (T.apply q) = test.eval q := by
+    simp [Test.pullback, hq]
+  rw [← hpp, ← hqq]
+  exact heq
 
 end NullEdgeP9ExactRecoveryAdmissibleCoarseMap

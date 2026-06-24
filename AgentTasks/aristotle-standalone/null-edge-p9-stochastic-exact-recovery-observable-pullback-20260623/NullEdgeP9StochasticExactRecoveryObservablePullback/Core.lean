@@ -32,7 +32,9 @@ structure Stoch (Omega Kappa : Type*) [Fintype Omega] [Fintype Kappa] where
   nonneg : forall y x, 0 <= M y x
   col_sum : forall x, Finset.univ.sum (fun y => M y x) = 1
 
-/-- Push a distribution through a stochastic channel. -/
+/-
+Push a distribution through a stochastic channel.
+-/
 noncomputable def Stoch.apply {Omega Kappa : Type*}
     [Fintype Omega] [Fintype Kappa]
     (T : Stoch Omega Kappa) (d : FinDist Omega) : FinDist Kappa where
@@ -41,15 +43,8 @@ noncomputable def Stoch.apply {Omega Kappa : Type*}
     intro y
     exact Finset.sum_nonneg fun x _ => mul_nonneg (T.nonneg y x) (d.nonneg x)
   sum_one := by
-    calc
-      Finset.univ.sum (fun y => Finset.univ.sum fun x => T.M y x * d.p x)
-          = Finset.univ.sum (fun x => Finset.univ.sum fun y => T.M y x * d.p x) := by
-            rw [Finset.sum_comm]
-      _ = Finset.univ.sum (fun x => d.p x) := by
-            refine Finset.sum_congr rfl ?_
-            intro x _
-            rw [<- Finset.sum_mul, T.col_sum x, one_mul]
-      _ = 1 := d.sum_one
+    rw [ ← Finset.sum_comm ];
+    simp +decide only [← Finset.sum_mul, T.col_sum, one_mul, d.sum_one]
 
 /-- Expected value of a finite observable. -/
 def expect {Omega : Type*} [Fintype Omega]
@@ -69,23 +64,18 @@ def PairExactRecoverable {Omega Kappa : Type*}
   exists R : Stoch Kappa Omega,
     R.apply (T.apply p) = p /\ R.apply (T.apply q) = q
 
-/-- Pullback expectation agrees with recovered expectation. -/
+/-
+Pullback expectation agrees with recovered expectation.
+-/
 theorem expect_pullbackObservable_eq_expect_recovered {Omega Kappa : Type*}
     [Fintype Omega] [Fintype Kappa]
     (R : Stoch Kappa Omega) (f : Omega -> Real) (d : FinDist Kappa) :
     expect (pullbackObservable R f) d = expect f (R.apply d) := by
-  unfold expect pullbackObservable Stoch.apply
-  dsimp
-  simp_rw [Finset.sum_mul]
-  rw [Finset.sum_comm]
-  refine Finset.sum_congr rfl ?_
-  intro x _
-  rw [Finset.mul_sum]
-  refine Finset.sum_congr rfl ?_
-  intro y _
-  ring
+  unfold expect pullbackObservable;
+  simp +decide only [Finset.sum_mul, mul_assoc];
+  rw [ Finset.sum_comm, Finset.sum_congr rfl ] ; intros ; rw [ Stoch.apply ] ; simp +decide [ mul_left_comm, Finset.mul_sum _ _ _ ]
 
-/--
+/-
 If a common exact recovery map restores both fine distributions, then every fine
 observable distinguishing them pulls back to a coarse observable distinguishing
 their coarse outputs.
@@ -97,16 +87,8 @@ theorem exactRecovery_pullsBack_distinguishingObservable
     (hf : expect f p = expect f q -> False) :
     exists g : Kappa -> Real,
       expect g (T.apply p) = expect g (T.apply q) -> False := by
-  cases hrec with
-  | intro R h =>
-  cases h with
-  | intro hp hq =>
-  refine Exists.intro (pullbackObservable R f) ?_
-  intro hcoarse
-  apply hf
-  rw [<- hp, <- hq]
-  rw [<- expect_pullbackObservable_eq_expect_recovered R f (T.apply p)]
-  rw [<- expect_pullbackObservable_eq_expect_recovered R f (T.apply q)]
-  exact hcoarse
+  obtain ⟨ R, hp, hq ⟩ := hrec;
+  refine' ⟨ pullbackObservable R f, _ ⟩;
+  rw [ expect_pullbackObservable_eq_expect_recovered, expect_pullbackObservable_eq_expect_recovered, hp, hq ] ; tauto
 
 end NullEdgeP9StochasticExactRecoveryObservablePullback

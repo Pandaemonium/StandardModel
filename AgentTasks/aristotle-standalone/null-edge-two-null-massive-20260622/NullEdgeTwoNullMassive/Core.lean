@@ -33,7 +33,8 @@ def massSq (p : Four) : Real := mink p p
 theorem two_null_sum_massSq (p q : Four)
     (hp : massSq p = 0) (hq : massSq q = 0) :
     massSq (fun i => p i + q i) = 2 * mink p q := by
-  sorry
+  unfold massSq mink at *
+  linear_combination hp + hq
 
 /-- For two future-pointing null momenta (positive energy, on the light cone),
 the Minkowski product is nonnegative, so the combined system is non-tachyonic. -/
@@ -41,6 +42,33 @@ theorem mink_two_null_nonneg (p q : Four)
     (hp : p 0 ^ 2 = spaceNormSq p) (hq : q 0 ^ 2 = spaceNormSq q)
     (hpe : 0 ≤ p 0) (hqe : 0 ≤ q 0) :
     0 ≤ mink p q := by
-  sorry
+  unfold mink
+  have hcs : (p 1 * q 1 + p 2 * q 2 + p 3 * q 3) ^ 2 <= spaceNormSq p * spaceNormSq q := by
+    have hdiff : (spaceNormSq p) * (spaceNormSq q) - (p 1 * q 1 + p 2 * q 2 + p 3 * q 3)^2 =
+      (p 1 * q 2 - p 2 * q 1)^2 + (p 2 * q 3 - p 3 * q 2)^2 + (p 3 * q 1 - p 1 * q 3)^2 := by
+        unfold spaceNormSq; ring
+    have hsq1 : 0 <= (p 1 * q 2 - p 2 * q 1)^2 := sq_nonneg _
+    have hsq2 : 0 <= (p 2 * q 3 - p 3 * q 2)^2 := sq_nonneg _
+    have hsq3 : 0 <= (p 3 * q 1 - p 1 * q 3)^2 := sq_nonneg _
+    linarith
+  rw [<- hp, <- hq] at hcs
+  have hprod : 0 <= p 0 * q 0 := mul_nonneg hpe hqe
+  have hbound : p 1 * q 1 + p 2 * q 2 + p 3 * q 3 <= p 0 * q 0 := by
+    have hdiff2 : (p 0 * q 0) ^ 2 - (p 1 * q 1 + p 2 * q 2 + p 3 * q 3) ^ 2 = (p 0 * q 0 - (p 1 * q 1 + p 2 * q 2 + p 3 * q 3)) * (p 0 * q 0 + (p 1 * q 1 + p 2 * q 2 + p 3 * q 3)) := by ring
+    have hle_sq : (p 1 * q 1 + p 2 * q 2 + p 3 * q 3) ^ 2 <= (p 0 * q 0) ^ 2 := by
+      calc
+        (p 1 * q 1 + p 2 * q 2 + p 3 * q 3) ^ 2 <= p 0 ^ 2 * q 0 ^ 2 := hcs
+        _ = (p 0 * q 0) ^ 2 := by ring
+    by_cases hsign : p 1 * q 1 + p 2 * q 2 + p 3 * q 3 <= 0
+    · linarith
+    · push_neg at hsign
+      have hsum : 0 < p 0 * q 0 + (p 1 * q 1 + p 2 * q 2 + p 3 * q 3) := add_pos_of_nonneg_of_pos hprod hsign
+      have hprod2 : 0 <= p 0 * q 0 - (p 1 * q 1 + p 2 * q 2 + p 3 * q 3) := by
+        have hnum : 0 <= (p 0 * q 0) ^ 2 - (p 1 * q 1 + p 2 * q 2 + p 3 * q 3) ^ 2 := by linarith
+        rw [hdiff2] at hnum
+        exact (mul_nonneg_iff_of_pos_right hsum).mp hnum
+      linarith
+  linarith
+
 
 end NullEdgeTwoNullMassive

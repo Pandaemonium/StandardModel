@@ -69,12 +69,8 @@ theorem erased_pair_not_exactRecoverable {Omega Kappa : Type*}
     (T : Stoch Omega Kappa) (p q : FinDist Omega)
     (herase : T.apply p = T.apply q) (hneq : p = q -> False) :
     PairExactRecoverable T p q -> False := by
-  intro hrec
-  cases hrec with
-  | intro R h =>
-  cases h with
-  | intro hp hq =>
+  rintro ⟨R, hp, hq⟩
   apply hneq
-  rw [<- hp, <- hq, herase]
+  rw [← hp, ← hq, herase]
 
 end NullEdgeP9StochasticErasureNotRecoverable

@@ -5,7 +5,12 @@ import Mathlib.Analysis.Convex.Jensen
 
 namespace NullEdgeP7PetzRecovery
 
+noncomputable section
+
+set_option linter.unusedSimpArgs false
+
 open BigOperators
+
 
 /-- Finite Kullback-Leibler divergence. -/
 def kl {n : Nat} (p q : Fin n -> Real) : Real :=
@@ -86,16 +91,16 @@ theorem petzMap_col_sum {m n : Nat} (T : Fin m -> Fin n -> Real) (q : Fin n -> R
 
 /-- The Petz map always recovers the reference state q. -/
 theorem petzMap_recovers_q {m n : Nat} (T : Fin m -> Fin n -> Real) (q : Fin n -> Real)
+    (hcol : ∀ j, Finset.univ.sum (fun i => T i j) = 1)
     (hTq : ∀ y, 0 < applyMap T q y) :
     applyMap (petzMap T q) (applyMap T q) = q := by
   ext x
-  unfold applyMap petzMap
-  have h_sum : (∑ y, (q x * T y x / applyMap T q y) * applyMap T q y) = ∑ y, q x * T y x := by
-    exact Finset.sum_congr rfl (fun y _ => mul_div_cancel₀ _ (ne_of_gt (hTq y)))
-  rw [h_sum, ← Finset.mul_sum]
-  -- Under classical probability setup, the column sum of T is 1. We assume this:
-  -- We'll specialize this within the main theorem.
-  sorry
+  show (∑ y, petzMap T q x y * applyMap T q y) = q x
+  have h_term : ∀ y, petzMap T q x y * applyMap T q y = q x * T y x := by
+    intro y
+    simp only [petzMap]
+    rw [div_mul_cancel₀ _ (ne_of_gt (hTq y))]
+  rw [Finset.sum_congr rfl (fun y _ => h_term y), ← Finset.mul_sum, hcol x, mul_one]
 
 /--
 If the Petz map recovers the state p, then the relative entropy loss is zero
@@ -111,6 +116,16 @@ theorem kl_equality_of_petz_recovery {m n : Nat}
     (hTpos : ∀ y, 0 < applyMap T p y)
     (h_recover_p : applyMap (petzMap T q) (applyMap T p) = p) :
     kl (applyMap T p) (applyMap T q) = kl p q := by
-  sorry
+  refine le_antisymm (kl_data_processing T hnonneg hcol p q hp hq) ?_
+  have hforward := kl_data_processing (petzMap T q)
+    (petzMap_nonneg T q hnonneg (fun x => le_of_lt (hq x)) hTq)
+    (petzMap_col_sum T q hTq)
+    (applyMap T p) (applyMap T q)
+    (fun i => le_of_lt (hTpos i)) hTq
+  rw [h_recover_p, petzMap_recovers_q T q hcol hTq] at hforward
+  exact hforward
+
+
+end
 
 end NullEdgeP7PetzRecovery

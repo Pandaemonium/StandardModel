@@ -2,8 +2,11 @@
 
 ```yaml
 job_name: null-edge-p9-diamond-source-visibility-api-design-20260623
-status: submitted
-project_id: 45929669-f4b1-4cbf-9f49-e4f624ef66bc
+status: integrated
+integrated_at: 2026-06-24T04:22:00Z
+report_extracted_to: AgentTasks/aristotle-p9-diamond-visibility-api-design-report.md
+project_id: 464942fa-f75d-430e-acff-29d052525c48
+task_id: 65ad5e8f-73ce-4113-b989-41b26055e8e5
 prepared_project: AgentTasks/aristotle-submit/null-edge-p9-diamond-source-visibility-api-design-20260623-project
 target_file: AgentTasks/aristotle-p9-diamond-visibility-api-design-report.md
 ```

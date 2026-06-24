@@ -41,6 +41,13 @@ def minkowskiSq (a : Spinor) : Real := pT a ^ 2 - pX a ^ 2 - pY a ^ 2 - pZ a ^ 2
 
 /-- The rank-one momentum of a single spinor is null. -/
 theorem rankOne_momentum_is_null (a : Spinor) : minkowskiSq a = 0 := by
-  sorry
+  unfold minkowskiSq pT pX pY pZ
+  generalize h0 : a 0 = z0
+  generalize h1 : a 1 = z1
+  obtain ⟨x, y⟩ : ∃ x y : ℝ, z0 = ⟨x, y⟩ := ⟨z0.re, z0.im, Complex.ext rfl rfl⟩
+  obtain ⟨u, v⟩ : ∃ u v : ℝ, z1 = ⟨u, v⟩ := ⟨z1.re, z1.im, Complex.ext rfl rfl⟩
+  subst z0 z1
+  simp only [normSq_apply, star_def, conj_re, conj_im, mul_re, mul_im]
+  ring
 
 end NullEdgeRankOneNullMomentum

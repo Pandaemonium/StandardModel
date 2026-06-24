@@ -33,12 +33,21 @@ theorem kl_nonneg {n : Nat} (p q : Fin n -> Real)
     (hp : forall i, 0 <= p i) (hq : forall i, 0 < q i)
     (hsp : Finset.univ.sum p = 1) (hsq : Finset.univ.sum q = 1) :
     0 <= kl p q := by
-  sorry
+  have h_kl_nonneg : ∀ i, p i * Real.log (p i / q i) ≥ p i - q i := by
+    intro i
+    by_cases hpi : p i = 0
+    · simpa [hpi] using le_of_lt (hq i)
+    · have hpos := lt_of_le_of_ne (hp i) (Ne.symm hpi)
+      have hlog := Real.log_le_sub_one_of_pos (div_pos (hq i) hpos)
+      rw [show p i / q i = (q i / p i)⁻¹ by rw [inv_div], Real.log_inv]
+      nlinarith [hp i, hq i, mul_div_cancel₀ (q i) hpi]
+  exact le_trans (by norm_num [hsp, hsq]) (Finset.sum_le_sum fun i _ => h_kl_nonneg i)
 
 /-- Relative entropy of a distribution with itself vanishes. -/
 theorem kl_self {n : Nat} (p : Fin n -> Real)
     (hp : forall i, 0 < p i) :
     kl p p = 0 := by
-  sorry
+  exact Finset.sum_eq_zero fun i _ => by simp [ne_of_gt (hp i)]
+
 
 end NullEdgeP7RelativeEntropyNonneg

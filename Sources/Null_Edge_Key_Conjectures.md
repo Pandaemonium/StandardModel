@@ -836,6 +836,33 @@ mechanism. If the finite Hodge/noise channel simply reproduces the
 everpresent-Lambda scaling in new notation, the branch should be demoted to a
 finite causal-diamond Hodge theory result.
 
+There is also an opposite trap. If the finite observer channel suppresses local
+vacuum residuals from volume scaling down to a screen law, that may be excellent
+vacuum filtering but too suppressed to explain the observed nonzero dark energy.
+In four spacetime dimensions, a codimension-two screen gives
+
+```text
+sqrt(A) / V ~ L^(-3) = V^(-3/4),
+```
+
+while the everpresent-Lambda order is
+
+```text
+sqrt(V) / V ~ L^(-2) = V^(-1/2).
+```
+
+Thus the sharp P9 model should be two-component:
+
+```text
+local UV vacuum bookkeeping -> exact/projected/screen-supported sector
+observed Lambda-scale residual -> surviving global/harmonic/unimodular sector
+```
+
+This makes the win condition more precise. P9 can explain why local vacuum
+bookkeeping does not gravitate as a bulk source. It explains the observed
+Lambda-scale only if the harmonic/global quotient has a quantitative
+`L^(-2)`-scale residual, or if another sourced dark-energy sector is named.
+
 Before another harmonic-sector push, P9 needs a topology audit. The full order
 complex of a closed finite causal interval `[a,b]` is typically contractible
 because chains can be coned by the minimum or maximum endpoint. With a positive

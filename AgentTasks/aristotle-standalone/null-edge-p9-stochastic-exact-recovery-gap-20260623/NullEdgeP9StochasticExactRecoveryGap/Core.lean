@@ -96,13 +96,9 @@ theorem exactRecovery_preserves_observableGap
     exists g : Kappa -> Real,
       expect g (T.apply p) - expect g (T.apply q) =
         expect f p - expect f q := by
-  cases hrec with
-  | intro R h =>
-  cases h with
-  | intro hp hq =>
-  refine Exists.intro (pullbackObservable R f) ?_
-  rw [expect_pullbackObservable_eq_expect_recovered]
-  rw [expect_pullbackObservable_eq_expect_recovered]
-  rw [hp, hq]
+  obtain ⟨R, hp, hq⟩ := hrec
+  refine ⟨pullbackObservable R f, ?_⟩
+  rw [expect_pullbackObservable_eq_expect_recovered,
+      expect_pullbackObservable_eq_expect_recovered, hp, hq]
 
 end NullEdgeP9StochasticExactRecoveryGap

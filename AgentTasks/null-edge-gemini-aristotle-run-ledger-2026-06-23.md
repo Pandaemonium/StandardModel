@@ -4,18 +4,15 @@ Date: 2026-06-23
 
 ## Status of Aristotle jobs
 
-- **Active:**
-  - `45929669-f4b1-4cbf-9f49-e4f624ef66bc` (null-edge-p9-diamond-source-visibility-api-design, design)
-  - `ce4d21d4-0b8d-4344-977c-db3bee6bd950` (null-edge-p9-residual-variance-cell-area, proof)
-- **Completed:**
-  - Job 33 `3251b4c5-cf8b-40a7-a885-db4f790fdfcf` (fermion-oscillator) is completed (IDLE).
-  - `3feed7da-777d-4e16-8b46-345be34536fc` (null-edge-p7-qubit-concurrence-mass-ratio-monotonicity) is completed (IDLE).
-  - `73c17dac-d779-4546-85c9-effd69048ed1` (null-edge-p7-petz-recovery) is completed (IDLE).
-  - `f8caf89b-6245-489d-b5b3-ae3e0a9ebf80` (null-edge-p6-mass-concurrence-20260623) is completed (IDLE).
-  - `5579296d-ca61-4852-8d9a-592cdf3676ca` (null-edge-p9-weighted-residual-suppression-threshold-20260623) is completed (IDLE).
-  - `bff2387a-31ae-486d-b42a-66d2b76e50c8` (null-edge-p9-sj-reference-state-20260623) is completed (IDLE).
-  - `1f2a340d-e077-4dfe-a682-c018f5e99fea` (null-edge-p3-crossed-module-fake-flatness-20260623) is completed (IDLE).
+- **Active:** None
+- **Completed:** None
 - **Integrated:**
+  - `28237017-fd29-4e70-abde-8a29cc61525d` is integrated as `NullEdgeP9SJReferenceState.Core` under standalone projects.
+  - `2194f18a-9ac7-46b2-ad6a-7333bc642730` is integrated as `NullEdgeP9StochasticErasure.Core` under standalone projects.
+  - `464942fa-f75d-430e-acff-29d052525c48` has its design report saved as `AgentTasks/aristotle-p9-diamond-visibility-api-design-report.md`.
+  - Rank-One Null Momentum (`null-edge-rank-one-null-momentum-20260622`) is solved locally and integrated as `NullEdgeRankOneNullMomentum.Core` under standalone projects.
+  - Two Null Massive (`null-edge-two-null-massive-20260622`) is solved locally and integrated as `NullEdgeTwoNullMassive.Core` under standalone projects.
+  - Zero-Edge Collinearity (`null-edge-zero-edge-collinearity-20260621`) is solved locally and integrated as `NullEdgeZeroEdgeCollinearity.Finite` under standalone projects.
   - Job 33 is now integrated as `PhysicsSM.Draft.NullEdgeFermionOscillator` and imported in `PhysicsSMDraft.lean`.
   - `3feed7da-777d-4e16-8b46-345be34536fc` is integrated as `PhysicsSM.Draft.NullEdgeMassRatioMonotone` and imported in `PhysicsSMDraft.lean`.
   - `73c17dac-d779-4546-85c9-effd69048ed1` is integrated as `PhysicsSM.Draft.NullEdgeP7PetzRecovery` and imported in `PhysicsSMDraft.lean`.
@@ -26,6 +23,21 @@ Date: 2026-06-23
   - `NullEdgeP7RecoverabilityGap.lean` has been created, verified, built and integrated as `PhysicsSM.Draft.NullEdgeP7RecoverabilityGap` in `PhysicsSMDraft.lean`.
   - `null-edge-p2-higgs-chirality-flip-audit` has its report saved to `AgentTasks/aristotle-p2-higgs-audit-report.md` (copied to artifacts folder).
   - `null-edge-p6-internal-gram-overlap-flavor-bridge` has its report saved to `AgentTasks/aristotle-p6-flavor-bridge-report.md` (copied to artifacts folder).
+  - `83bb049d-c38a-42d0-b8bf-f6cc839f1a0c` is integrated as `NullEdgeP7SameDetDifferentDPDeficit.Core` under standalone projects.
+  - `65561c72-4f30-468c-9193-e25290d8ea79` is integrated as `NullEdgeP9StochasticErasureNotRecoverable.Core` under standalone projects.
+  - `ebd742af-00c2-45eb-9bf1-51e775195ed4` is integrated as `NullEdgeP9StochasticExactRecoveryGap.Core` under standalone projects.
+  - `53d2e069-8b2e-4478-8c25-53282f26b36b` is integrated as `NullEdgeP9StochasticExactRecoveryComposition.Core` under standalone projects.
+  - `6ba5e2b1-389a-47e6-b784-d225d691868e` is integrated as `NullEdgeP9StochasticExactRecoveryObservablePullback.Core` under standalone projects.
+  - `406f955e-dbb7-45a4-9e64-66d4ffb9cde5` is integrated as `NullEdgeP9ExactRecoveryAdmissibleCoarseMap.Core` under standalone projects.
+  - `fc1b0531-466f-4dec-93e6-d983f1024e56` is integrated as `NullEdgeP9NoncriticalCoarseErasure.Core` under standalone projects.
+  - `c8076caa-ae7f-4bb0-99d2-0856f5bfe786` is integrated as `NullEdgeP7CoherenceNotDeterminedByDet.Core` under standalone projects.
+  - `ce4d21d4-0b8d-4344-977c-db3bee6bd950` is integrated as `NullEdgeP9ResidualVarianceCellArea.Core` under standalone projects.
+  - `9beafa4e-1932-4276-8aeb-59bea669c6ac` is integrated as `NullEdgeP9OperationalGap.Core` under standalone projects.
+  - SU2 Commutation Relations (`null-edge-su2-algebra-20260622`) is solved locally and integrated as `NullEdgeSU2Algebra.Core` under standalone projects.
+  - `d9eae3c7-a4f9-4c1d-be04-667be344b27d` is completed as proper-time/recoverability audit. Recommendations for same-determinant/different-deficit witness and one-step dephasing step law accepted and banked.
+  - `080f98c5-8d0c-4ae6-9967-d63d8ab86528` is completed as operational adversarial audit. Recommendations for P9 coarse-map dichotomy and rational same-det witness accepted and banked.
+
+
 
 
 - **Blocked/Backlog:** None

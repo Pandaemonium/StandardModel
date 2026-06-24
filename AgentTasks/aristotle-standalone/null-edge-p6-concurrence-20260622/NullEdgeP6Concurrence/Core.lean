@@ -24,16 +24,19 @@ def normSq (a b c d : Real) : Real := a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2
 
 /-- Concurrence is nonnegative. -/
 theorem concurrence_nonneg (a b c d : Real) : 0 ≤ concurrence a b c d := by
-  sorry
+  exact mul_nonneg zero_le_two ( abs_nonneg _ )
 
 /-- Concurrence is bounded by the squared norm (so `C <= 1` when normalized). -/
 theorem concurrence_le_normSq (a b c d : Real) :
     concurrence a b c d ≤ normSq a b c d := by
-  sorry
+  unfold concurrence normSq
+  cases abs_cases (a * d - b * c) <;>
+    linarith [sq_nonneg (a - d), sq_nonneg (a + d), sq_nonneg (b - c), sq_nonneg (b + c)]
 
 /-- Concurrence vanishes exactly on product (separable) states. -/
 theorem concurrence_zero_iff_product (a b c d : Real) :
     concurrence a b c d = 0 ↔ a * d = b * c := by
-  sorry
+  grind +locals
+
 
 end NullEdgeP6Concurrence

@@ -354,6 +354,17 @@ reference state. Constant or area-law scaling would be real leverage. Volume-law
 scaling, or a response law that imports the everpresent-Lambda amplitude tension
 unchanged, would demote the branch.
 
+The area-law possibility must also be interpreted carefully. In four spacetime
+dimensions, everpresent-Lambda volume fluctuations give
+`sqrt(V) / V ~ L^(-2)`, the right Hubble-scale order. If P9 suppresses local
+vacuum residuals to a codimension-two screen law, the scaling becomes
+`sqrt(A) / V ~ L^(-3)`; if the relevant support is a null hypersurface, it is
+roughly `L^(-5/2)`. These are valuable vacuum-filtering laws, but they are
+probably too suppressed to be the observed dark energy by themselves. The
+sharp model is therefore two-component: local UV vacuum bookkeeping should live
+in exact/projected/screen-supported sectors, while any observed Lambda-scale
+residual must live in a surviving global, harmonic, or unimodular quotient.
+
 The finite pilot should be judged by a geometry-discriminating statistic, not by
 generic projector algebra. A flat-vs-de Sitter-like diamond comparison should
 track harmonic dimension, projected-noise trace, smallest positive projected
@@ -1691,6 +1702,18 @@ becomes mixed after the internal/chiral/Higgs label is ignored. In that
 language, the Yukawa coupling controls the entangling amplitude of the
 internal transition, and the observed determinant mass is a reduced visible
 mixedness, not a dissipative loss of probability.
+
+Neutrinos are the sharpest elementary-particle stress test for this language.
+The weak-visible channel sees neutrinos almost entirely as left-handed,
+nearly-null propagation, while oscillations prove that at least two mass
+eigenstates are not exactly massless. In this program's terms, a massive
+neutrino should be modeled as an almost pure weak-visible null mode with a tiny
+hidden chirality, sterile, or Majorana-sector coupling. This is a motivation for
+the observer-channel formalism, not a solved theorem: the program does not yet
+decide Dirac versus Majorana mass, PMNS mixing, mass ordering, sterile-sector
+content, or the absolute mass scale. Current direct KATRIN bounds and
+cosmological mass-sum constraints should be used only as experimental
+guardrails for this nearly-null regime.
 
 The strengthened conjecture should be spectral:
 

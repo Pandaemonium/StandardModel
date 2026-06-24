@@ -38,7 +38,7 @@ PLACEHOLDER_RE = re.compile(
 )
 LEAN_CANDIDATE_RE = re.compile(r"Aristotle\.lean$")
 TASK_FIELD_RE = re.compile(
-    r"^\s*(project_id|job_id|task_id|target_file|expected_module|output_dir):\s*(.+?)\s*$"
+    r"^\s*(project_id|job_id|task_id|target_file|expected_module|output_dir|source_staged_from):\s*(.+?)\s*$"
 )
 THEOREM_SIGNATURE_RE = re.compile(
     r"(?ms)^[ \t]*(?:@[^\n]*\n[ \t]*)*"
@@ -54,6 +54,7 @@ class TaskMetadata:
     target_file: str | None = None
     expected_module: str | None = None
     output_dir: str | None = None
+    source_staged_from: str | None = None
     note_path: pathlib.Path | None = None
 
 
@@ -155,10 +156,16 @@ def parse_task_notes(paths: Iterable[pathlib.Path]) -> dict[str, TaskMetadata]:
                 record.expected_module = value
             elif key == "output_dir":
                 record.output_dir = value
+            elif key == "source_staged_from":
+                record.source_staged_from = value
         if not found_explicit_project:
             project_ids = {match.group(0).lower() for match in UUID_RE.finditer(text)}
             for project_id in project_ids:
                 metadata.setdefault(project_id, TaskMetadata(project_id=project_id, note_path=note))
+    for record in metadata.values():
+        if record.target_file and record.source_staged_from:
+            if not record.target_file.startswith("AgentTasks/"):
+                record.target_file = f"{record.source_staged_from}/{record.target_file}"
     return metadata
 
 
@@ -176,6 +183,11 @@ def safe_extract_tar(archive: pathlib.Path, destination: pathlib.Path) -> None:
         for member in tar.getmembers():
             parts = pathlib.Path(member.name).parts
             if any(p == ".lake" for p in parts):
+                continue
+            # On Windows, long paths can exceed MAX_PATH. Only extract Lean files and summary.md
+            # to keep path lengths short and avoid FileNotFoundError.
+            name_lower = member.name.lower()
+            if not (name_lower.endswith(".lean") or name_lower.endswith("summary.md")):
                 continue
             target = destination / member.name
             assert_under(target, destination)
@@ -285,8 +297,15 @@ def discover_summary_files(job_dir: pathlib.Path) -> list[pathlib.Path]:
 def discover_candidates(job_dir: pathlib.Path, metadata: TaskMetadata | None) -> list[Candidate]:
     candidate_paths: set[pathlib.Path] = set()
     if metadata and metadata.target_file:
+        suffix = metadata.target_file.replace("\\", "/")
+        if metadata.expected_module:
+            suffix = metadata.expected_module.replace(".", "/") + ".lean"
+        else:
+            parts = pathlib.Path(metadata.target_file).parts
+            if len(parts) >= 2:
+                suffix = "/".join(parts[-2:])
         for path in job_dir.rglob(pathlib.Path(metadata.target_file).name):
-            if path.as_posix().endswith(metadata.target_file.replace("\\", "/")):
+            if path.as_posix().replace("\\", "/").endswith(suffix):
                 candidate_paths.add(path)
     else:
         for path in job_dir.rglob("*.lean"):
@@ -297,14 +316,18 @@ def discover_candidates(job_dir: pathlib.Path, metadata: TaskMetadata | None) ->
 
     candidates: list[Candidate] = []
     for source in sorted(candidate_paths):
-        try:
-            physics_index = source.parts.index("PhysicsSM")
-        except ValueError:
-            continue
-        repo_relative = pathlib.Path(*source.parts[physics_index:])
-        if repo_relative.parts[0] != "PhysicsSM":
-            continue
-        module = module_name(repo_relative)
+        if metadata and metadata.target_file:
+            repo_relative = pathlib.Path(metadata.target_file)
+            module = metadata.expected_module or module_name(repo_relative)
+        else:
+            try:
+                physics_index = source.parts.index("PhysicsSM")
+            except ValueError:
+                continue
+            repo_relative = pathlib.Path(*source.parts[physics_index:])
+            if repo_relative.parts[0] != "PhysicsSM":
+                continue
+            module = module_name(repo_relative)
         text = source.read_text(encoding="utf-8")
         clean_text = strip_lean_comments(text)
         hits = sorted({match.group(1) for match in PLACEHOLDER_RE.finditer(clean_text)})
