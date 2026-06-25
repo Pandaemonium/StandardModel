@@ -1,35 +1,43 @@
-# Aristotle focused job: P9 screen-supported variance bound
+# Aristotle task: P9 screen variance bound
 
-```yaml
-aristotle:
-  project_id: 1d7c0d2c-1d64-4a39-a4c6-b4535535ce83
-  task_id: 2d3b69ac-7b52-41de-938a-a3c97a7e80a1
-  target_file: NullEdgeP9ScreenVarianceBound/Core.lean
-  expected_module: NullEdgeP9ScreenVarianceBound.Core
-  submission_project: AgentTasks/aristotle-submit/null-edge-p9-screen-variance-bound-20260624-project
-  source_staged_from: AgentTasks/aristotle-standalone/null-edge-p9-screen-variance-bound-20260624
-  status: submitted
+Submitted: 2026-06-24.
+
+## Scientific role
+
+This task advances the `P9-F` source-visibility and finite noise-suppression
+lane.
+
+The current P9 branch has several finite guardrails: exact or boundary-like
+bookkeeping is invisible to closed bulk tests, projected tests see only the
+projected source, and weighted residual-source sums give exact finite
+variance laws. The next useful publication-facing step is a very small screen
+support bound:
+
+```text
+if every residual source amplitude on a screen has squared size at most sigmaSq,
+then the screen second moment is at most screen.card * sigmaSq.
 ```
 
-## Physics context
+This is not a cosmological-constant result by itself. Its value is that it
+turns a local per-cell residual bound into a finite screen-cardinality scaling
+law. It supports the P9 distinction between volume-supported residuals,
+screen-supported residuals, and any later harmonic/global residual mode.
 
-This job formalizes the scaling audit from
-`Sources/Null_Edge_P9_Physics_Development.md`. If residual source noise is
-supported on screen cells rather than volume cells, the second moment is bounded
-by screen cell count. This is valuable as a local vacuum-source filtering result,
-but the prompt should not overclaim that it explains the observed cosmological
-constant. The updated physical reading is that observed dark energy, if treated
-in this branch, likely requires a surviving harmonic/global/unimodular mode.
+## Aristotle instructions
 
-## Target
-
-Fill the proof holes in:
+Please work on:
 
 ```text
 NullEdgeP9ScreenVarianceBound/Core.lean
 ```
 
-The central targets are:
+Run the narrow check first:
+
+```text
+lake env lean NullEdgeP9ScreenVarianceBound/Core.lean
+```
+
+Primary targets:
 
 ```lean
 screenSecondMoment_le_card_mul_sigmaSq
@@ -37,25 +45,46 @@ normalized_screen_variance_bound
 screen_bound_le_volume_bound
 ```
 
-## Constraints
+Guardrails:
 
-- Do not weaken theorem statements.
-- Do not add fake constants or hidden assumptions.
-- Small helper lemmas are welcome if useful.
-- Keep imports minimal.
-- Run:
+- Keep this as finite real algebra over `Finset (Fin n)`.
+- Do not introduce physics assumptions, continuum limits, hidden asymptotics,
+  or fake hypotheses.
+- Do not weaken the statements unless one is mathematically false; if a
+  statement needs an extra positivity hypothesis, explain exactly why.
+- Prefer short reusable lemmas only if they reduce the proof burden.
+- This should stay a focused P9-F theorem package: screen support gives a
+  finite variance bound, not a full gravitational response law.
 
-```bash
-lake env lean NullEdgeP9ScreenVarianceBound/Core.lean
+Please finish with a concise completion report:
+
+- which targets were solved;
+- whether any statement/API change was needed;
+- any hidden assumptions or theorem-strength concerns;
+- suggested next finite P9 theorem, especially one connecting screen support to
+  a named observer/coarse-graining map, harmonic sector, or response law.
+
+## Metadata
+
+```yaml
+aristotle:
+  project_id: 443ba768-3578-4725-8fca-d1df1ff566ba
+  task_id: f878249e-29a4-43f0-8f21-18f62c979da7
+  target_file: NullEdgeP9ScreenVarianceBound/Core.lean
+  expected_module: NullEdgeP9ScreenVarianceBound.Core
+  submission_project: AgentTasks/aristotle-submit/null-edge-p9-screen-variance-bound-20260624-project
+  output_dir: AgentTasks/aristotle-output/443ba768-3578-4725-8fca-d1df1ff566ba
+  status: integrated
 ```
 
-## Completion report requested
+## Integration result
 
-Please end with:
+Integrated 2026-06-24 into:
 
-- solved targets;
-- any statement or definition changes;
-- remaining proof holes, if any;
-- assumptions or nonstandard constructs used;
-- suggested next theorem targets for screen, null-boundary, and harmonic
-  residual scaling.
+- `PhysicsSM.Draft.NullEdgeP9ScreenVarianceBound`
+- `PhysicsSMDraft.lean`
+
+The live draft module proves the screen second-moment bound, the normalized
+variance bound after dividing by `volume^2`, and the comparison between
+screen-cardinality and volume-cardinality bounds. The result is finite
+screen-support arithmetic only; it does not assert a gravitational response law.

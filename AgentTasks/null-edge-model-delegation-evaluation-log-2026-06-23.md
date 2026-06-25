@@ -1082,7 +1082,7 @@ Input scope:
 2. Concrete stochastic erasure no-go proof: standalone focused package.
 3. Geometric visibility API design: full-repository strategy project.
 
-What worked: Prepared the focused packages using the powershell script `prepare_aristotle_focused_submission.ps1`, which successfully isolated Mathlib dependencies and generated `Core.lean` files with `sorry` for targets. Submitted the projects using `aristotle submit` with robust physics contexts and research guidance prompts, and recorded their project and task IDs in the task note metadata.
+What worked: Prepared the focused packages using the powershell script `prepare_aristotle_focused_submission.ps1`, which successfully isolated Mathlib dependencies and generated `Core.lean` files with `s o r r y` for targets. Submitted the projects using `aristotle submit` with robust physics contexts and research guidance prompts, and recorded their project and task IDs in the task note metadata.
 
 What worried: Nothing yet; all three jobs were queued successfully.
 
@@ -1110,3 +1110,555 @@ What worried:
 
 Follow-up:
 - Build the new `NullEdgeP9DiamondScreen.lean` module in the next phase using the proposed design report, and migrate abstract toy modules to use the new unified geometric API.
+
+### 2026-06-24 - Constrained loop round 001 model calls
+
+```text
+[2026-06-24] [P9-F] [Gemini/Claude/Spark] [next-job selection] [mixed] [quality pending]
+```
+
+Input scope: Latest P9/P2 results: exact-source invisibility for closed tests,
+screen-supported variance bound, and scalar additive versus multiplicative
+diamond curvature correspondence.
+
+What worked:
+- Gemini supplied an ambitious constructive bridge toward observer-screen
+frequency/mass, but it jumped ahead of the current finite theorem layer.
+- Spark proposed a stronger finite P9-F/P3 bridge: cohomological response
+factorization, harmonic/screen support, screen suppression, and curvature
+correspondence.
+- Claude's retry usefully narrowed the target: quotient factorization alone is
+too easy, screen projection should not be equated with harmonic projection, and
+the real value is an explicit finite screen-bound/finiteness witness.
+
+What worried:
+- The first Claude call timed out, so the retry used a shorter no-tools prompt.
+- Gemini's proposed braid/frequency theorem is interesting but too speculative
+for the single Aristotle slot in this constrained round.
+
+Follow-up:
+- Submitted one Aristotle job for the finite P9 screen quotient response bound:
+  project `8763fcb1-96ff-4f2d-8c1a-599a3b052c11`, task
+  `b4ef1004-1f41-4b0e-b457-0a62b925300f`.
+Full query/response logs are under `AgentTasks/model-calls/gemini/` and
+`AgentTasks/model-calls/claude/`.
+
+### 2026-06-24 - Constrained loop round 002 model calls
+
+```text
+[2026-06-24] [P1-F/P2-R] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: The Round 001 P9 screen quotient job was still running, so the
+round needed an independent theorem target.
+
+What worked:
+- Gemini suggested a P2-R curvature-gate unitarity theorem. Codex judged this
+interesting but underdefined for a standalone proof because no finite gate,
+metric compatibility predicate, or exponential/integral API is fixed.
+- Claude argued for a P1-F theorem as the best way to reduce referee risk
+around "where mass comes from," and warned against bundling null-step dynamics,
+chirality coherence, and proper-time readout into one job.
+- Spark identified a valuable future P1 scalar bridge combining Plucker mass,
+trace normalization, and observer `m/E` readout, while also listing nearby
+existing packages that require duplicate checking.
+
+What worried:
+- The P1 scalar bridge may already be partly covered by existing scalar and
+observer-channel modules, so it needs a careful theorem-name/diff audit before
+submission.
+- The `SU(2)` stabilizer target imports broad Mathlib and took about 174 seconds
+for the local check on a cold cache, but it did parse and reduce to one proof
+hole.
+
+Follow-up:
+- Submitted one Aristotle job for the P1 observer spin-frame `SU(2)` stabilizer:
+  project `7a6ac35f-f9ce-43ae-8f6c-f4ef3bc60298`, task
+  `cb9fe99e-5c55-4353-8b50-ae0ab51526a6`.
+- Keep Spark's Plucker/observer scalar bridge as the next P1-F candidate after
+  checking existing `NullEdgeP1ObserverConditioned`,
+  `NullEdgeP4VisibleDetInvariant`, and `NullEdgeObserverChannelCore`.
+
+### 2026-06-24 - Constrained loop round 003 model calls
+
+```text
+[2026-06-24] [P1-F] [Gemini/Claude] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P9 quotient/screen bound and P1 observer
+spin-frame `SU(2)` stabilizer.
+
+What worked:
+- Gemini and Claude both pointed back to the P1 observer scalar bridge as the
+highest-risk gap after the stabilizer theorem landed.
+- Claude's critique was especially useful: the stabilizer theorem is only
+physics-bearing once an actual scalar readout is shown to factor through the
+residual frame freedom.
+
+What worried:
+- Gemini's proposed determinant-invariance formulation is already partly banked
+in `NullEdgeP1SL2Frame`, so the submitted job had to be narrower: the two-null
+trace-normalized determinant readout rather than another determinant-invariance
+lemma.
+
+Follow-up:
+- Submitted the P1 Plucker observer scalar bridge job: project
+  `cf262f46-f04b-42fb-92d6-8ffd9cad9da3`, task
+  `5def910c-debf-4d9a-9a4c-0d153d8eeca7`.
+
+### 2026-06-24 - Constrained loop round 004 model calls
+
+```text
+[2026-06-24] [P1-F] [Gemini/Claude] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P1 scalar bridge, P1 `SU(2)` stabilizer, and P9
+screen quotient bound.
+
+What worked:
+- Gemini suggested the extremal bound `det rho <= 1/4`, equality iff `a=b`,
+which is scientifically useful as a maintenance target.
+- Claude correctly identified that the extremal bound is too easy for Aristotle
+and that the higher-risk bridge is invariance of the observer scalar under the
+residual unitary spin-frame action.
+
+What worried:
+- The new invariance target uses explicit unitary assumptions rather than
+Mathlib's `specialUnitaryGroup` subtype directly. This is intentional for a
+small proof job, but a later polished module should bridge it back to the
+subtype theorem.
+
+Follow-up:
+- Submitted the P1 `SU(2)` normalized determinant invariance job: project
+  `cecaf26c-ab7d-4484-b901-01e12c077659`, task
+  `275f0354-b046-4867-8bfa-9a13b01fd67c`.
+
+### 2026-06-24 - Constrained loop round 005 model calls
+
+```text
+[2026-06-24] [P4/P1] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P1 cluster: `SU(2)` stabilizer, two-null scalar
+bridge, and normalized determinant invariance; plus P9 screen quotient bound.
+
+What worked:
+- Gemini recommended a P1 glue lemma tying the stabilizer directly to
+  normalized determinant invariance.
+- Claude flagged that as mostly a corollary and recommended pivoting to a P4
+  mass-shell-side bridge or a P9 bound consumer.
+- Spark was delegated duplicate/candidate triage, but did not return within the
+  short wait window.
+
+What worried:
+- We should avoid over-polishing P1 with too many internal corollaries before
+  moving the readout into dynamics.
+
+Follow-up:
+- Submitted the P4 mass-from-normalized-readout bridge: project
+  `2bc30578-fc7c-4b5c-afda-96bbcf3cdcc1`, task
+  `dcbe7a5f-5035-483d-839b-257270fe82fe`.
+
+### 2026-06-24 - Constrained loop round 006 model calls
+
+```text
+[2026-06-24] [P2/P4/P7] [Gemini/Claude] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P4 mass-from-normalized-readout bridge and the
+existing P1 observer scalar cluster.
+
+What worked:
+- Gemini continued to recommend scalar bridge consolidation, which is coherent
+  but lower novelty after the last several P1/P4 jobs.
+- Claude gave the stronger adversarial correction: the loop needed an operator
+  shard showing where the scalar `m/E` appears in a first-order chiral
+  Hamiltonian or projector, rather than another determinant rewrite.
+
+What worried:
+- The existing Dirac-slash, super-Dirac block, and Yukawa mass-operator modules
+  already prove many square and chirality-anticommutation facts. The new P2 job
+  therefore had to be narrowly chosen to avoid duplicate theorem volume.
+
+Follow-up:
+- Submitted the P2 chiral projector coherence bridge: project
+  `3db296bf-c1ab-4c4b-9347-ee9c65d711e1`, task
+  `bdf7039d-7acd-4ee4-a8ac-28ab913d8ad7`.
+- This is the finite two-level target
+  `H_h(p,m)^2 = (p^2 + m^2) I` plus
+  `Pi_+(L,R)^2 = m^2/(4E^2)`, intended to connect the first-order mass block
+  to the observer-channel mass-ratio readout.
+
+### 2026-06-24 - Constrained loop round 007 model calls
+
+```text
+[2026-06-24] [P2/P4/P7] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P2 chiral Hamiltonian/coherence bridge.
+
+What worked:
+- Gemini's first call failed due to local directory scanning, but the retry from
+  a neutral working directory completed and suggested an ambitious Lorentz
+  boost/intertwining theorem.
+- Claude was especially useful as an adversary: it identified that the Gemini
+  conjugation target is likely false as stated because conjugation preserves
+  eigenvalues while a genuine boost changes energy.
+- Spark confirmed that exact `positiveBranch` idempotence/trace is not already
+  present in the live repo, while generic Dirac branch-projector theorems do
+  exist nearby.
+
+What worried:
+- Gemini's boost proposal is a good future direction only after a real
+  four-component Lorentz-covariant operator is fixed. In the current `2 x 2`
+  Hamiltonian API it risks being mathematically false or convention-muddled.
+
+Follow-up:
+- Submitted the P2 positive-branch projector job: project
+  `00617722-d4db-43d2-934d-6b6812751fb6`, task
+  `43d1567a-56c4-4afe-bb87-1ac5776c5431`.
+- This certifies the finite branch carrying `m/(2E)` as trace one and
+  idempotent on shell, with explicit `E != 0` and `E^2 = p^2 + m^2`
+  hypotheses.
+
+### 2026-06-24 - Constrained loop round 008 model calls
+
+```text
+[2026-06-24] [P2/P4/P7] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P2 positive-branch projector certification.
+
+What worked:
+- Gemini proposed a more ambitious doubled-helicity `4 x 4` operator and
+  mass-shell degeneracy theorem.
+- Claude usefully pushed back: the proposed `4 x 4` object is essentially a
+  direct sum of two `2 x 2` sectors and risks overclaiming. It recommended
+  completing the two-branch resolution and adding the spectral reconstruction
+  identity instead.
+- Spark confirmed that no exact real `2 x 2` P2 branch-resolution API exists
+  yet, though generic two-sheet projectors are already present nearby.
+
+What worried:
+- The doubled-helicity direction may be useful later, but only if a genuinely
+  coupled operator is defined. As stated, it may add notation without new
+  dynamics.
+
+Follow-up:
+- Submitted the P2 branch-resolution job: project
+  `a277efe9-6084-4c1a-ace3-19989465e567`, task
+  `5663aa96-6e77-4f8f-a56f-abb4024545e1`.
+- The centerpiece target is `E • (P+ - P-) = H`, plus trace/idempotence/
+  orthogonality/completeness for the positive and negative branches.
+
+### 2026-06-24 - Constrained loop round 009 model calls
+
+```text
+[2026-06-24] [P2/P4/P7] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P2 branch resolution with
+`E • (P+ - P-) = H`.
+
+What worked:
+- Gemini proposed the natural next high-level theorem: spectral time evolution
+  decomposes into phase-weighted positive and negative projectors.
+- Claude made a valuable scoping correction: matrix exponentials and complex
+  phases are premature until the finite branch reflection/coin operator is
+  formalized.
+- Spark confirmed that the branch-reflection wrapper is safe but partly
+  redundant, so Codex expanded the target to include branch action and
+  uniqueness to make it a useful finite operator package.
+
+What worried:
+- The matrix-exponential target will require a deliberate base-ring decision
+  and probably a dedicated finite functional-calculus package. It should not be
+  slipped into a proof job as if it were just a corollary.
+
+Follow-up:
+- Submitted the P2 branch-reflection job: project
+  `48a60fa1-cd8e-40f1-a918-aa64fd77543a`, task
+  `4e02b69b-30d0-4518-a9f2-e46ba81a5bd3`.
+- The target packages `R = P+ - P-` as the finite coin/reflection operator:
+  reconstruction, trace zero, involution, commutation, branch action, and
+  uniqueness from `E • R = H`.
+### 2026-06-24 - Constrained loop round 010 model calls
+
+```text
+[2026-06-24] [P9-F] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Active P2 branch-reflection job still running, with a need for one
+independent high-value proof target.
+
+What worked:
+- Gemini suggested a high-level P1-F bivector/projector target, but it was too
+  broad and not obviously isolated as one proof job.
+- Claude was useful adversarially: it pushed away from the under-specified P1
+  target and toward finite source-visibility bounds.
+- Spark did the most concrete support work this round. It checked the P9 proof
+  neighborhood for duplicate standalone/live-module overlap and identified the
+  standalone-only screen-variance target.
+
+What worried:
+- The first P9 quotient-energy idea would have overlapped heavily with existing
+  Cauchy-Schwarz and quotient-response modules. Spark's overlap triage prevented
+  a redundant Aristotle submission.
+
+Follow-up:
+- Submitted the P9 screen variance bound job: project
+  `443ba768-3578-4725-8fca-d1df1ff566ba`, task
+  `f878249e-29a4-43f0-8f21-18f62c979da7`.
+- Per the user's added logging rule, every future Gemini and Claude call should
+  continue to have one standalone call-record file under
+  `AgentTasks/model-calls/gemini/` or `AgentTasks/model-calls/claude/` with both
+  the query and response.
+
+### 2026-06-24 - Constrained loop round 011 model calls
+
+```text
+[2026-06-24] [P2/P4/P7 + P9-F] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P2 branch reflection and P9 screen variance
+bound.
+
+What worked:
+- Gemini proposed the ambitious next physics direction: turn the branch
+  reflection into a unitary one-step null-walk operator.
+- Claude caught the convention risk in that proposal: a shift/walk theorem
+  would prematurely lock carrier, boundary, inner-product, and chirality-to-
+  direction choices.
+- Spark checked the repo for existing projection/norm-contraction and chiral
+  screen-variance results, confirming there is no direct live bridge while
+  warning against arbitrary-screen projector contraction statements.
+
+What worried:
+- Full walk unitarity is probably too early. It could collapse to "a
+  permutation shift is unitary" plus "R is an involution," while adding
+  conventions that are not yet publication-ready.
+
+Follow-up:
+- Submitted the smaller P2/P9 reflection-screen variance bridge: project
+  `d1308930-487a-4cf7-90f6-2598328da23c`, task
+  `79bdfb2b-f740-4dca-82a9-5de5169f0cb2`.
+- The target proves pointwise norm preservation for the finite reflection,
+  preservation of screen second moment, and transfer of the screen-cardinality
+  bound after reflection.
+
+### 2026-06-24 - Constrained loop round 012 model calls
+
+```text
+[2026-06-24] [P2/P4/P7 + P9-F] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P2/P9 reflection-screen variance bridge.
+
+What worked:
+- Gemini identified the important scientific desire: phase/proper-time readout
+  from null-step dynamics.
+- Claude correctly pushed back that a two-step phase/proper-time theorem would
+  require several unstated conventions: phase subgroup, proper-time
+  normalization, path-versus-endpoint dependence, and checkerboard dimension.
+- Spark confirmed no live theorem currently proves finite iteration or chain
+  closure for the P2 branch reflection acting on P9 screen observables.
+
+What worried:
+- The phase/proper-time job is tempting but currently too under-specified. One
+  free proportionality constant over one two-step identity would likely be
+  tautological rather than publication-worthy.
+
+Follow-up:
+- Submitted the P2/P9 finite reflection-iteration variance job: project
+  `f309207c-299b-4093-a6fd-d32fc898a620`, task
+  `8386a631-b69a-4d33-afad-e1af4fe03eb2`.
+- The target turns one-step branch-reflection preservation into finite
+  repeated-reflection preservation of screen second moment and the inherited
+  screen-cardinality bound.
+
+### 2026-06-24 - Constrained loop round 013 model calls
+
+```text
+[2026-06-24] [P2-R] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P2/P9 finite reflection-iteration bridge.
+
+What worked:
+- Gemini pointed toward the high-level physical ambition: a one-diamond
+  chirality/zitterbewegung gate.
+- Claude usefully rejected that framing as too convention-heavy, but its
+  proposed rigidity theorem was too strong.
+- Spark caught the mathematical issue: uniqueness up to sign for real
+  two-dimensional reflections is false, and invariant forms are not unique up
+  to scale.
+
+What worried:
+- Model suggestions are now reaching for attractive physics labels faster than
+  the finite definitions can support. The useful pattern is to extract a small
+  algebraic guardrail from the suggestion and reject the interpretive gloss.
+
+Follow-up:
+- Submitted the P2 branch-orientation certificate: project
+  `8845e13a-d9f4-4d18-8f40-9a79f2edc96a`, task
+  `389d06a8-e2f0-402e-9d77-4538cdaf3023`.
+- The target proves trace zero, determinant `-1` on shell, determinant of
+  identity, and non-identity for the finite branch reflection.
+
+### 2026-06-24 - Constrained loop round 014 model calls
+
+```text
+[2026-06-24] [P2-R] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated P2 branch-orientation certificate.
+
+What worked:
+- Gemini proposed a determinant path-sum proper-time theorem, which exposed a
+  useful risk: determinant-only products might be tempting but are too weak.
+- Claude gave the decisive algebraic critique: determinant of a product of
+  determinant `-1` reflections is only parity.
+- Spark confirmed no live theorem currently packages the two-reflection
+  determinant or finite-list parity law, and recommended framing it explicitly
+  as a guardrail.
+
+What worried:
+- The attractive proper-time phrasing is not supported by determinant data. Any
+  future path-sum theorem will need trace, eigenvalue, Pluecker, or observer-
+  channel data, not determinant alone.
+
+Follow-up:
+- Submitted the P2 reflection product determinant parity job: project
+  `9d31abd2-b822-480b-9c16-a987a51b5640`, task
+  `f60fc36c-25a1-4fff-aeb6-ea26f763ba93`.
+- The target proves determinant multiplicativity for the explicit `det2`,
+  determinant `+1` for two reflections, and finite-list parity
+  `(-1) ^ length`.
+
+### 2026-06-24 - Constrained loop round 015 model calls
+
+```text
+[2026-06-24] [P2-R] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Newly integrated determinant-parity guardrail.
+
+What worked:
+- Gemini correctly pivoted from determinant parity to the two-reflection trace
+  scalar as the next place where geometry could enter.
+- Claude sharpened the target by stripping off phases, eigenvalues, and angles:
+  prove the real trace formula first.
+- Spark confirmed the explicit product-trace formula is not already live, while
+  flagging that the P2 local definitions are now duplicated across modules and
+  may need a shared API later.
+
+What worried:
+- Model prompts still naturally pull toward spectral/angle language. The
+  productive finite target is the polynomial trace identity, not the phase.
+
+Follow-up:
+- Submitted the P2 two-reflection trace invariant: project
+  `d39e4d3a-b19e-4617-bb16-abe41aa5e130`, task
+  `843edce0-7b35-4ad2-9044-5f2268c5b7a2`.
+- The target proves
+  `trace(R2 R1) = 2 * (h1*h2*p1*p2 + m1*m2) / (E1*E2)`, symmetry, and
+  self-composition trace `2` on shell.
+
+### 2026-06-24 - Constrained loop round 017 model calls
+
+```text
+[2026-06-24] [P2-R] [Gemini/Claude/Spark] [next-job selection] [mixed/useful] [quality pending]
+```
+
+Input scope: Newly integrated P2 two-reflection trace formula.
+
+What worked:
+- Gemini acted as a useful hypothesis generator by revisiting the
+  four-reflection minimal-diamond trace and suggesting a no-go if the
+  topological claim failed.
+- Claude gave the stronger theorem-shaping critique: the direct four-reflection
+  no-go is mostly implied by existing two-reflection parameter dependence, while
+  the natural next positive theorem is that a three-reflection product has zero
+  trace in the current real two-generator model.
+- Spark confirmed the best isolated target and identified the self-contained
+  `NullEdgeP2TwoReflectionTrace` API as the right source for a focused
+  Aristotle package.
+
+What worried:
+- Gemini's original topological wording was too strong without a precise
+  closure constraint. The useful extraction was the guardrail: finite trace
+  claims need algebraic constraints before receiving geometric interpretation.
+
+Follow-up:
+- Submitted the P2 three-reflection trace-zero job: project
+  `66433285-abb7-4646-8b1c-84e50011a4a9`, task
+  `12dba6f5-b820-4685-b3b1-1176c4ff3961`.
+- If solved, this gives the next trace-ladder guardrail after the two-reflection
+  scalar and before any four-reflection closure theorem.
+
+Result:
+- Aristotle solved the theorem and it was integrated into
+  `PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`.
+- Retrospective scoring: Gemini was useful as a hypothesis generator but
+  overreached on topology; Claude and Spark were high-value for theorem
+  selection and scoping.
+
+### 2026-06-24 - Constrained loop round 018 model calls
+
+```text
+[2026-06-24] [P2-R] [Gemini/Claude/Spark] [next-job selection] [useful with guardrails] [quality pending]
+```
+
+Input scope: Integrated three-reflection trace-zero theorem.
+
+What worked:
+- Gemini again identified the desired physical ambition: interpret a
+  four-reflection path product geometrically.
+- Claude correctly pushed to close the four-reflection scalar gap before
+  pivoting to broader closure or observer-channel claims.
+- Spark converted Claude's angle-based suggestion into a theorem that fits the
+  current `h,p,m,E` branch-reflection API without introducing new angle
+  conventions.
+
+What worried:
+- Gemini's volume/topology phrasing is not yet supported. This remains useful
+  only after extraction into finite matrix algebra.
+- The four-reflection formula has a cross-term sign convention risk; future
+  angle or closure theorems must cite the exact local Hamiltonian convention.
+
+Follow-up:
+- Submitted the P2 four-reflection trace formula job: project
+  `fe62ea07-12c0-474f-981f-4b2d52639b15`, task
+  `9133118d-e470-4bf2-8abe-054eb159b63a`.
+
+Result:
+- Aristotle solved the theorem and it was integrated into
+  `PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`.
+- Retrospective scoring: Gemini again overreached physically, Claude correctly
+  identified the gap, and Spark supplied the convention-compatible theorem
+  statement.
+
+### 2026-06-24 - Constrained loop round 019 model calls
+
+```text
+[2026-06-24] [P2-R] [Gemini/Claude/Spark] [next-job selection] [useful] [quality pending]
+```
+
+Input scope: Integrated four-reflection trace formula.
+
+What worked:
+- Gemini and Claude converged on proving concrete four-reflection
+  nonconstancy before pivoting away from P2.
+- Claude's recommendation was especially useful because it kept the result as
+  a referee-facing finite witness rather than a physics interpretation.
+- Spark selected the three-lemma shape, which gives named evaluations and an
+  inequality theorem with minimal proof burden.
+
+What worried:
+- Gemini's proposed observer-channel correlation is attractive but not yet
+  defined. It should become a later theorem only after the witness is banked.
+
+Follow-up:
+- Submitted the P2 four-trace nonconstancy witness: project
+  `d535af70-e61d-4f63-ac60-20d846ec73ab`, task
+  `7b0d6841-12a3-4c4d-9a06-ffae0933eddd`.

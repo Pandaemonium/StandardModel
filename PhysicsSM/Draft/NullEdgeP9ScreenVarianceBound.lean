@@ -1,19 +1,20 @@
 import Mathlib.Tactic
 
 /-!
-# P9 screen-supported variance bound
+# Draft.NullEdgeP9ScreenVarianceBound
 
-This standalone file isolates the finite scaling inequality needed by the P9
-source-visibility/noise branch.
+This module isolates a finite screen-supported variance bound for the P9
+source-visibility/noise lane.
 
-Physics context: if the observer-visible residual source is supported only on
-screen cells rather than volume cells, the residual second moment scales with
-the screen cell count. This is useful as a vacuum-source filtering theorem, but
-it may suppress the residual more strongly than the observed cosmological
-constant unless a global or harmonic mode survives.
+If the observer-visible residual source is supported only on screen cells and
+each screen amplitude has squared size at most `sigmaSq`, then the total second
+moment is bounded by the screen cardinality times `sigmaSq`. This is a finite
+scaling theorem only: it supports a screen-versus-volume noise distinction, but
+does not by itself supply a gravitational response law or a cosmological
+constant amplitude.
 -/
 
-namespace NullEdgeP9ScreenVarianceBound.Core
+namespace PhysicsSM.Draft.NullEdgeP9ScreenVarianceBound
 
 open BigOperators
 
@@ -29,16 +30,15 @@ noncomputable def screenSecondMoment {n : Nat} (screen : Finset (Fin n))
 If every screen-supported amplitude has squared size at most `sigmaSq`, the
 screen second moment is at most `screen.card * sigmaSq`.
 
-Note: the `0 <= sigmaSq` hypothesis is preserved from the requested statement
-but turns out to be unnecessary (it is implied by `hbound` whenever `screen`
-is nonempty, and both sides vanish otherwise); it is kept and marked unused.
+The nonnegativity hypothesis is kept for publication-facing clarity even though
+the finite sum proof does not need it directly.
 -/
 theorem screenSecondMoment_le_card_mul_sigmaSq {n : Nat}
     (screen : Finset (Fin n)) (amp : Amp n) (sigmaSq : Real)
     (_hsigma_nonneg : 0 <= sigmaSq)
     (hbound : forall i, i ∈ screen -> (amp i) ^ 2 <= sigmaSq) :
     screenSecondMoment screen amp <= (screen.card : Real) * sigmaSq := by
-  exact le_trans ( Finset.sum_le_sum hbound ) ( by simp +decide [ mul_comm ] )
+  exact le_trans (Finset.sum_le_sum hbound) (by simp [mul_comm])
 
 /--
 Normalized residual variance bound. This is the finite form of the P9 scaling
@@ -56,8 +56,8 @@ theorem normalized_screen_variance_bound {n : Nat}
 
 /--
 If `screen.card <= volumeCells`, the screen-supported bound is no larger than
-the corresponding volume-count bound. This theorem is intentionally modest:
-it shows filtering, not by itself the observed dark-energy amplitude.
+the corresponding volume-count bound. This theorem is intentionally modest: it
+shows filtering, not by itself the observed dark-energy amplitude.
 -/
 theorem screen_bound_le_volume_bound {n : Nat}
     (screen : Finset (Fin n)) (volumeCells : Nat) (sigmaSq volume : Real)
@@ -68,4 +68,4 @@ theorem screen_bound_le_volume_bound {n : Nat}
       <= ((volumeCells : Real) * sigmaSq) / (volume ^ 2) := by
   gcongr
 
-end NullEdgeP9ScreenVarianceBound.Core
+end PhysicsSM.Draft.NullEdgeP9ScreenVarianceBound
