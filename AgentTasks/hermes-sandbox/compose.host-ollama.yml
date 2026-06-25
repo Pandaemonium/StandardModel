@@ -1,0 +1,29 @@
+name: hermes-host-ollama-sandbox
+
+services:
+  hermes:
+    image: nousresearch/hermes-agent:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./data:/opt/data
+      - ./workspace:/workspace
+    environment:
+      HERMES_DASHBOARD: "0"
+      NO_COLOR: "1"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 4g
+    cpus: 2
+    tmpfs:
+      - /tmp:rw,nosuid,size=512m
+      - /var/tmp:rw,noexec,nosuid,size=256m

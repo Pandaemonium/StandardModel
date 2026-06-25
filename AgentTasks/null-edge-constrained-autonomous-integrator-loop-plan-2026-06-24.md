@@ -34,6 +34,72 @@ it succeeds.
 
 Each round has six steps.
 
+## External LLM model and context policy
+
+Gemini and Claude are not cheap keyword oracles in this loop. Use them as
+serious scientific collaborators. Each call should use the strongest available
+model and enough context for the model to understand the actual null-edge
+program, not just opaque labels like `P1`, `P4`, `P7`, or `source visibility`.
+
+Preferred models:
+
+```text
+Gemini: gemini-3.1-pro-preview
+Claude: opus
+```
+
+If a preferred model name is unavailable, retry with the strongest available
+replacement and record the fallback in the standalone model-call file and the
+model-delegation log. Do not silently fall back to older or cheaper models such
+as Gemini 2.5 or Claude Sonnet for scientific strategy calls. Sonnet or smaller
+models are acceptable only for explicitly bounded mechanical tasks, and the log
+must say why the cheaper model was chosen.
+
+Each Gemini/Claude prompt should include the relevant gestalt for the query:
+enough program context, theorem state, physics motivation, publication pressure,
+prior model output, and current uncertainty for the model to reason as if it had
+been following the project. Do not force every call into a rigid checklist. The
+right context depends on the question.
+
+Useful ingredients to include when relevant:
+
+- what the lane labels mean (`P1-F`, `P2-R`, `P7-R`, `P9-F`, etc.);
+- the latest integrated Lean declarations/modules and which are trusted versus
+  draft;
+- the publication plan or conjecture excerpt that makes the decision important;
+- the candidate theorem/job, with the current Lean API or statement shape;
+- recent failed or overstrong interpretations to avoid;
+- the exact decision Codex needs help making;
+- requested output: theorem/counterexample/design target, physics value,
+  failure mode, source/literature check, and recommended next step.
+
+The rule is: pass the API calls all context they need to answer the actual
+question well. Avoid unexplained shorthand, but also avoid mechanical context
+dumping that buries the decision under unrelated prose.
+
+For broad strategy rounds, include larger excerpts from:
+
+```text
+Sources/Null_Edge_Causal_Graph_Publication_Plan.md
+Sources/Null_Edge_Key_Conjectures.md
+AgentTasks/null-edge-constrained-integrator-loop-ledger-2026-06-24.md
+```
+
+Prefer a generated context/gestalt packet or carefully selected excerpts over
+dumping entire large files. The key requirement is not brevity; it is relevance
+and enough context for the model to reason about the actual program.
+
+For each round, write the shared context/gestalt packet to:
+
+```text
+AgentTasks/model-calls/context-packs/YYYY-MM-DD-round-NNN-context.md
+```
+
+Use the same base gestalt for Gemini and Claude unless the second call needs a
+specific addendum responding to the first model. The standalone Gemini and
+Claude call files should link to the context file and still include the full
+prompt actually sent.
+
 ## Model-call logging invariant
 
 Every Gemini or Claude call must leave an auditable standalone markdown record,
@@ -44,13 +110,16 @@ Use these folders:
 ```text
 AgentTasks/model-calls/gemini/
 AgentTasks/model-calls/claude/
+AgentTasks/model-calls/context-packs/
 ```
 
 Use one file per call. Each file should include:
 
 - round number and local timestamp;
 - model/provider and command metadata;
+- model name requested and model name actually used, including any fallback;
 - exit status or timeout/truncation note;
+- context/gestalt packet path;
 - exact prompt sent;
 - raw response received, including error text when relevant;
 - short summary and later-usefulness rating field.
@@ -76,20 +145,50 @@ Do not resubmit a stalled-looking job until `aristotle list` and
 
 ### 2. Query Gemini once
 
-Send Gemini one concise prompt. Prefer constructive synthesis:
+Use the best available Gemini model. Prefer:
 
-```text
-We are advancing the null-edge causal graph program. Current publication lanes:
-P1-F formal Plucker mass/observer normalization, P1/P4/P7 null-step dynamics
-and proper-time readout, P2 super-Dirac one-diamond gate, P9 finite source
-visibility/noise. Given the latest theorem state [short bullets], what is the
-single highest-value next scientific move? Please propose one theorem target,
-one possible failure mode, and one literature/source check. Be concrete.
+```powershell
+gemini -p $prompt --model gemini-3.1-pro-preview --output-format text
 ```
 
-Keep the Gemini prompt short. Include only the latest round result and the
-publication priority table if needed. Do not paste entire program documents
-unless running a rare strategy round.
+If that model is unavailable, try the strongest available `gemini-pro-latest`
+style alias and log the fallback. Do not use `gemini-2.5-pro` for scientific
+strategy unless no stronger Gemini model is available.
+
+Gemini does not have a fixed role. Use it constructively, adversarially, as a
+source-audit partner, or as a comparison judge depending on what the round
+needs. Rotate roles across rounds so neither Gemini nor Claude becomes typecast.
+The prompt should include the relevant gestalt described above and should not
+rely on bare labels such as `P1/P4/P7` without explaining them. Typical
+constructive shape:
+
+```text
+We are advancing the null-edge causal graph program.
+
+[lane glossary]
+[latest integrated theorem state]
+[relevant publication priority excerpt]
+[candidate theorem/job or open decision]
+
+Constructive task:
+What is the single highest-value next scientific move? Propose one concrete
+finite Lean theorem/counterexample/design target, why it matters physically,
+one failure/demotion mode, one literature/source check, and recommended next
+step. Be concrete and use the current Lean API when possible.
+```
+
+Typical adversarial shape:
+
+```text
+We are advancing the null-edge causal graph program.
+
+[relevant gestalt for this query]
+
+Adversarial task:
+Attack the proposed next theorem/job. What is overclaimed, duplicated, false,
+under-contextualized, or not publication-worthy? If it is weak, propose exactly
+one better finite target.
+```
 
 Record the response in the model-delegation log with a provisional score. Also
 write one standalone call record under `AgentTasks/model-calls/gemini/`
@@ -103,13 +202,50 @@ field that can be filled in after proof work tests the suggestion.
 
 ### 3. Query Claude once
 
-Send Claude a complementary prompt. Prefer adversarial analysis:
+Use the best available Claude model. Prefer:
+
+```powershell
+claude -p --bare --tools "" --model opus --output-format text $prompt
+```
+
+If `opus` is unavailable, try the strongest available Claude model and log the
+fallback. Do not use `sonnet` for scientific strategy unless Opus or a stronger
+Claude model is unavailable, or unless the task is explicitly mechanical.
+
+Claude does not have a fixed role. Use it constructively, adversarially, as a
+source-audit partner, or as a comparison judge depending on what the round
+needs. Prefer cycling roles with Gemini; for example, if Gemini was
+constructive, Claude can be adversarial, and in the next round the roles can be
+reversed. Claude should receive the relevant gestalt for the query and should
+be able to understand what `P1`, `P4`, `P7`, and `P9` mean from the prompt
+itself. Typical adversarial shape:
 
 ```text
-Please critique this proposed next null-edge theorem/job: [target]. Is it
-actually new, physically meaningful, and well-scoped? What would make it
-publishable? What hidden convention, prior-art, or false-statement risk should
-we check before spending Aristotle budget?
+We are advancing the null-edge causal graph program.
+
+[lane glossary]
+[latest integrated theorem state]
+[relevant publication priority excerpt]
+[candidate theorem/job or open decision]
+
+Adversarial task:
+Critique the proposed next theorem/job. Is it actually new, physically
+meaningful, and well-scoped? What hidden convention, prior-art, or
+false-statement risk should we check before spending Aristotle budget? If the
+target is weak, propose exactly one stronger finite target.
+```
+
+Typical constructive shape:
+
+```text
+We are advancing the null-edge causal graph program.
+
+[relevant gestalt for this query]
+
+Constructive task:
+Given the current theorem state and publication priorities, propose one concrete
+finite theorem/counterexample/design target and explain why it is the best next
+move.
 ```
 
 If Gemini already raised a strong alternative, ask Claude to compare the two.
@@ -209,12 +345,16 @@ Aristotle status before round:
 
 Gemini query:
 - prompt type: constructive / strategy / comparison
+- model requested / model used:
+- context/gestalt packet:
 - output summary:
 - provisional score 0-3:
 - accepted actions:
 
 Claude query:
 - prompt type: adversarial / comparison / source audit
+- model requested / model used:
+- context/gestalt packet:
 - output summary:
 - provisional score 0-3:
 - accepted actions:
@@ -326,7 +466,8 @@ Stop the constrained loop, or ask the user before continuing, if:
 ## Budget discipline
 
 - One Aristotle job per round, no exceptions.
-- One Gemini query and one Claude query per round, concise prompts only.
+- One Gemini query and one Claude query per round, using the strongest
+  available model and a sufficient context/gestalt packet.
 - Spark handles bounded support work whenever capacity allows.
 - Codex reads diffs, summaries, and focused source passages; avoid full-file
   rereads unless doing semantic review.

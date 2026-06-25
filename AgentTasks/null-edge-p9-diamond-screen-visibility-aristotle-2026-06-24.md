@@ -8,7 +8,7 @@ aristotle:
   expected_module: NullEdgeP9DiamondScreenVisibility.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-p9-diamond-screen-visibility-20260624-project
   source_staged_from: AgentTasks/aristotle-standalone/null-edge-p9-diamond-screen-visibility-20260624
-  status: submitted
+  status: integrated
 ```
 
 ## Physics context
@@ -58,3 +58,22 @@ Please end with:
 - remaining proof holes, if any;
 - assumptions or nonstandard constructs used;
 - suggested next theorem targets for the P9 source-visibility program.
+
+## Integration
+
+Aristotle solved all three targets without statement changes, proof holes, or
+extra assumptions. Integrated into:
+
+- `PhysicsSM/Draft/NullEdgeP9DiamondScreenVisibility.lean`
+- `AgentTasks/aristotle-standalone/null-edge-p9-diamond-screen-visibility-20260624/NullEdgeP9DiamondScreenVisibility/Core.lean`
+
+Verification:
+
+```powershell
+lake env lean PhysicsSM\Draft\NullEdgeP9DiamondScreenVisibility.lean
+lake env lean AgentTasks\aristotle-standalone\null-edge-p9-diamond-screen-visibility-20260624\NullEdgeP9DiamondScreenVisibility\Core.lean
+lake build PhysicsSM.Draft.NullEdgeP9DiamondScreenVisibility
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.

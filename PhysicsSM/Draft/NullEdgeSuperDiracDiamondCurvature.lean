@@ -1,20 +1,22 @@
 import Mathlib.Tactic
 
 /-!
-# One-diamond curvature gate for the super-Dirac conjecture
+# Draft.NullEdgeSuperDiracDiamondCurvature
 
-This standalone file isolates the finite additive/multiplicative identity that
-the super-Dirac square must match on one causal diamond.
+This module isolates the finite additive/multiplicative identity that the
+super-Dirac square must match on one scalar causal diamond.
 
-Physics context: the covariant differential square `d_U^2` sees an additive
-path-comparison defect, while the causal-diamond gauge layer uses a
-multiplicative holonomy defect. On one scalar diamond these must agree through
-the exact identity `T1 - T2 = (T1 / T2 - 1) * T2` when the comparison path is
-invertible. No logarithm or small-curvature approximation is needed for this
-finite gate.
+The covariant differential square `d_U^2` sees an additive path-comparison
+defect, while the causal-diamond gauge layer uses a multiplicative holonomy
+defect. On one scalar diamond these are related by the exact finite identity
+`left - right = (left / right - 1) * right` when the reference path is
+invertible.
+
+This is finite algebra only: no logarithms, no small-curvature approximation,
+and no continuum Stokes theorem.
 -/
 
-namespace NullEdgeSuperDiracDiamondCurvature.Core
+namespace PhysicsSM.Draft.NullEdgeSuperDiracDiamondCurvature
 
 /-- Additive triangle curvature relative to a direct comparison edge. -/
 def triangleCurvature (pathTransport directTransport : Real) : Real :=
@@ -58,9 +60,9 @@ zero, assuming the comparison path is invertible.
 -/
 theorem multiplicative_trivial_iff_additive_zero
     (leftPath rightPath : Real) (hright : Not (rightPath = 0)) :
-    Iff (multiplicativeDiamondDefect leftPath rightPath = 1)
-      (additiveDiamondDefect leftPath rightPath = 0) := by
+    (multiplicativeDiamondDefect leftPath rightPath = 1)
+      <-> (additiveDiamondDefect leftPath rightPath = 0) := by
   unfold multiplicativeDiamondDefect additiveDiamondDefect
   rw [div_eq_one_iff_eq hright, sub_eq_zero]
 
-end NullEdgeSuperDiracDiamondCurvature.Core
+end PhysicsSM.Draft.NullEdgeSuperDiracDiamondCurvature

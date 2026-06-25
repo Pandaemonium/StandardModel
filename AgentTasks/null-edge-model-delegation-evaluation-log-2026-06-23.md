@@ -1662,3 +1662,154 @@ Follow-up:
 - Submitted the P2 four-trace nonconstancy witness: project
   `d535af70-e61d-4f63-ac60-20d846ec73ab`, task
   `7b0d6841-12a3-4c4d-9a06-ffae0933eddd`.
+
+Result:
+- Aristotle solved all three witness theorems and they were integrated into
+  `PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`.
+- Retrospective scoring: model delegation was high-value. Gemini supplied the
+  scientific motivation, Claude narrowed the target, and Spark selected the
+  exact three-lemma proof shape.
+
+### 2026-06-24 - Constrained loop round 021 model calls
+
+```text
+[2026-06-24] [P2-R/P3 bridge] [Gemini/Claude/Spark] [next-job selection] [useful with correction] [quality pending]
+```
+
+Input scope: Newly integrated one-diamond scalar defect bridge and P9 diamond
+screen visibility module, plus the existing P2 trace ladder through
+four-reflection nonconstancy.
+
+What worked:
+- Gemini gave the strongest immediately stageable target: the Mandelstam-style
+  trace reduction for real traceless `2 x 2` matrices. This sharpens the P2
+  trace ladder by showing which four-trace data are already determined by
+  pairwise traces.
+- Claude pushed in the scientifically right direction, toward a one-diamond
+  super-Dirac bridge, but named an API that does not currently exist in the
+  live module.
+- Spark triage was decisive: it confirmed the missing `diamondRight` issue and
+  recommended submitting the finite Mandelstam identity first.
+
+What worried:
+- Claude's advice was useful strategically but not directly executable. Future
+  Claude prompts should include the exact live declarations when asking for a
+  proof-stageable bridge.
+- Gemini's theorem is algebraically strong, but it does not by itself prove a
+  super-Dirac curvature theorem. The later bridge must provide the substitution
+  map from trace pairings to diamond data.
+
+Follow-up:
+- Submitted the P2 Mandelstam trace identity job: project
+  `1aa53d34-0951-4677-a96a-9643aa84437d`, task
+  `c3db14b7-6d7a-4feb-b124-4dae6bdc2cfb`.
+
+Result:
+- Aristotle solved the theorem and it was integrated into
+  `PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`.
+- Retrospective scoring: Gemini 8/10 for a true, stageable theorem; Claude 6/10
+  because the strategic direction was right but the named API was absent; Spark
+  9/10 for fast repo-grounded triage and selecting the exact next proof target.
+
+### 2026-06-24 - Constrained loop round 022 model calls
+
+```text
+[2026-06-24] [P2-R] [Gemini/Claude/Spark] [branch-reflection instantiation] [useful] [quality pending]
+```
+
+Input scope: General P2 Mandelstam identity integrated into
+`PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`.
+
+What worked:
+- Gemini correctly recommended staying on P2 and warned that a coordinate
+  bridge from `branchReflection` to explicit `tracelessMat` coordinates was the
+  likely proof risk.
+- Claude improved the theorem shape: a bare instantiation would be too thin,
+  so the job should bundle explicit coordinates, a pairwise trace polynomial,
+  the four-reflection Mandelstam specialization, and an on-shell convention
+  audit.
+- Spark confirmed the exact sign and order conventions needed for the staged
+  theorem.
+
+What worried:
+- The bundled job is larger than a one-line corollary and may need helper
+  lemmas or more heartbeats, but the added scope is scientifically worthwhile
+  because it prevents convention drift.
+
+Follow-up:
+- Submitted the P2 branch-reflection Mandelstam package: project
+  `91206432-2d5d-4679-a86c-488e4375e6e0`, task
+  `42e52ee4-7a8e-4ea9-9d6c-5b98349319b1`.
+
+Result:
+- Aristotle solved all five theorem targets and they were integrated into
+  `PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`.
+- Retrospective scoring: Gemini 8/10 for selecting the right lane and naming
+  the coordinate mismatch; Claude 9/10 for turning a thin corollary into a
+  publication-useful bundled theorem package; Spark 9/10 for confirming the
+  sign/order convention before submission.
+
+### 2026-06-24 - Constrained loop round 023 model calls
+
+```text
+[2026-06-24] [P2-R/P3 guardrail] [Gemini/Claude/Spark] [closure sum rule] [useful] [quality pending]
+```
+
+Input scope: Branch-reflection Mandelstam package integrated.
+
+What worked:
+- Gemini was valuable adversarially: it called out that a bare one-diamond
+  substitution wrapper would be empty formalism without closure/holonomy
+  constraints.
+- Claude supplied the right criterion for a non-empty theorem: put the physics
+  content in closure/shell assumptions, not in a suggestive name.
+- Spark confirmed no live one-diamond API exists and recommended a closure-
+  constrained theorem over an underspecified P1/P7 pivot.
+
+What worried:
+- Claude's first proposed closed-diamond sum-rule RHS was not pinned down.
+  Codex therefore staged the more precise branch-coordinate closure theorem:
+  closed unit coordinate vectors imply a six-pair trace sum of `-4`.
+
+Follow-up:
+- Submitted the P2 closed branch-coordinate sum-rule job: project
+  `9225aabb-45af-445f-97fe-2f2575252eb2`, task
+  `6316f8f1-7412-46ad-bf2c-356802bdd1b1`.
+
+Result:
+- Aristotle solved all five closure sum-rule targets and they were integrated
+  into `PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`.
+- Retrospective scoring: Gemini 8/10 for catching the empty-wrapper risk;
+  Claude 8/10 for pushing closure/shell constraints, though its exact RHS was
+  not pinned down; Spark 7/10 for confirming the stageability of a constrained
+  theorem, though Codex chose a stronger branch-coordinate sum rule than the
+  trivial closed-by-trace version.
+
+### 2026-06-24 - Constrained loop round 024 model calls
+
+```text
+[2026-06-24] [P2-R/P3 guardrail] [Gemini/Claude/Spark] [closed four-trace reduction] [useful] [quality pending]
+```
+
+Input scope: Closed branch-coordinate sum rule integrated.
+
+What worked:
+- Gemini suggested looking for a four-trace polynomial in Mandelstam-like
+  channel invariants, which is the right scientific direction.
+- Claude correctly rejected the undefined complex `BranchCoord`/holonomy
+  overclaim and sharpened the target to a real closure-reduced theorem.
+- Spark derived the exact finite algebra: opposite pair traces coincide under
+  closure/unit assumptions, and the ordered four-trace reduces to a two-channel
+  polynomial.
+
+What worried:
+- The word "holonomy" is still not earned in this P2 module. The submitted
+  theorem deliberately calls the object an ordered four-reflection trace.
+
+Follow-up:
+- Submitted the P2 closed four-trace reduction job: project
+  `5f8c5b00-c088-4a2c-b34b-092a1d4aca1c`, task
+  `70ea26fb-f43c-4db8-aa98-23d4771a097a`.
+
+Result:
+- Pending Aristotle result.

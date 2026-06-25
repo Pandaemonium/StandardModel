@@ -1,0 +1,58 @@
+name: hermes-private-ollama-sandbox
+
+services:
+  hermes:
+    image: nousresearch/hermes-agent:latest
+    stdin_open: true
+    tty: true
+    depends_on:
+      - ollama
+    volumes:
+      - ./data:/opt/data
+      - ./workspace:/workspace
+    environment:
+      HERMES_DASHBOARD: "0"
+      NO_COLOR: "1"
+    networks:
+      - hermes-private
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 4g
+    cpus: 2
+    tmpfs:
+      - /tmp:rw,nosuid,size=512m
+      - /var/tmp:rw,noexec,nosuid,size=256m
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - hermes-private
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 12g
+    cpus: 4
+
+networks:
+  hermes-private:
+    internal: true
+
+volumes:
+  ollama-data:

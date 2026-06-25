@@ -1,0 +1,49 @@
+ID,Module,Theorem,Status,Dependencies,Notes
+NS00,Conventions,hermitian_det_eq_minkowskiSq,BANKED/READY,Pauli conventions,Consolidate existing theorem surface
+NS01,NullFiber.Basic,nullFiber_equiv_restSphere,READY,NS00,Finite algebra
+NS02,NullFiber.FiniteDesign,octaNull_mean_eq_timelike,READY,NS01,Exact finite 3+1 null resolution
+NS03,NullFiber.IntrinsicMeasure,intrinsicNullMeasure_isProbability,CONDITIONAL,NS01 + sphere measure,Measure foundation
+NS04,NullFiber.IntrinsicMeasure,intrinsicNullMeasure_firstMoment,CONDITIONAL,NS03,Symmetry/Bochner integral
+NS05,NullFiber.IntrinsicMeasure,intrinsicNullMeasure_lorentzCovariant,CONDITIONAL,NS03,Lorentz action and pushforward
+NS06,NullFiber.FluxMeasure,fluxMeasure_isProbability,READY after NS04,NS04,Flux factor normalization
+NS07,NullFiber.FluxMeasure,fluxDirectionMean_eq_relativeVelocity,READY after NS04,NS04,Coordinate-free key theorem
+NS08,NullFiber.FluxMeasure,fluxDirectionVariance_eq_massRatioSq,READY,NS07,Elementary variance identity
+NS09,NullFiber.RegulatorNoGo,uniformComponent_bounds_meanNorm,READY,Finite probability,Regulator obstruction
+NS10,ZigZag.ChiralCurrent,rightCurrent_futureCausal,READY,Pauli identity,Strict future-null requires nonzero spinor
+NS11,ZigZag.ChiralCurrent,leftCurrent_futureCausal,READY,Pauli identity,Strict future-null requires nonzero spinor
+NS12,ZigZag.TransferCurrent,dirac_massTransfer_eq_two_m_im_inner,CONDITIONAL,Dirac PDE API,Sign convention audit
+NS13,ZigZag.MinimalRates,minimalRates_netTransfer,READY,Real positive part,Pointwise algebra
+NS14,ZigZag.MinimalRates,minimalRates_equivariant,CONDITIONAL,NS13 + continuity equation,Master equation
+NS15,ZigZag.EntropicTraffic,entropicTraffic_product_eq_referenceSq,READY,Elementary algebra,Nonminimal traffic
+NS16,ZigZag.EntropicTraffic,entropicTraffic_uniqueMinimizer,CONDITIONAL,Convex calculus,Selection principle
+NS17,ZigZag.LatticeBeable,coinBornTransport_isStochastic,READY,Checkerboard coin,Exact finite model
+NS18,ZigZag.LatticeBeable,latticeBeable_oneStep_equivariant,READY,NS17,Exact Born preservation
+NS19,ZigZag.LatticeBeable,actualShift_speed_eq_c,READY,Lattice geometry,Primitive null step
+NS20,NullLift.FiniteResidualCurrent,residualCurrent_divergence_eq,READY,Finite sums,Generic null lift
+NS21,NullLift.FiniteEquivariance,finiteNullLift_equivariant,READY,NS20,Finite complete theorem
+NS22,NullLift.FiniteLeastAction,weightedLaplacian_kernel_eq_constants,READY,Connected finite graph,Spectral linear algebra
+NS23,NullLift.FiniteLeastAction,leastActionDrift_unique,READY,NS22,Canonical finite flow
+NS24,Ergodic.RefreshChain,refreshKernel_spectralGap_eq_r,READY,Finite spectral theorem,Exactly solvable dynamics
+NS25,Ergodic.CoarseTrajectory,iidNullTrajectory_coarseVelocity_tendsto_timelike,READY,Strong law,Single-history result
+NS26,Ergodic.ReversibleFiniteChain,finiteLazyIrreducibleMarkov_empiricalMean_tendsto,FOUNDATIONAL,Finite Markov ergodic theorem,Separate Poincare and absolute gaps
+NS27,Ergodic.SphereDiffusion,comptonLockedGenerator_spectralGap,OPEN,Continuum generator,Load-bearing analytic gate
+NS28,Clock.StrandParameter,fluxMean_strandRate_eq_invGamma,READY after NS06,NS06,Expectation not pathwise theorem
+NS29,Clock.ProperTimeReadout,strandClock_longRunRate_eq_coarseProperTimeRate,CONDITIONAL,NS26/NS27,Requires ergodicity
+NS30,Clock.InternalHolonomy,internalHolonomy_concat,READY,Finite ordered products,Non-Abelian clock algebra
+NS31,Clock.InternalHolonomy,internalHolonomy_unitary_of_hermitian,READY,Matrix exponential,Finite algebra/analysis
+NS32,Entanglement.ProductNullRepresentation,productDirectionRepresentation_iff_separable,READY finite,Finite convex mixtures,Do finite case first
+NS33,Entanglement.SeparabilityObstruction,entangledState_has_no_localPositiveProductNullRepresentation,READY,NS32,No-go theorem
+NS34,Synchronization.DiamondDefect,synchronizationDiamondDefect_eq_zero_iff_orderIndependent,READY,Kernel composition,Definition-level theorem
+NS35,Synchronization.BellPairPilot,bellPair_minimalKernel_defect,OPEN COMPUTATION,Explicit kernel choice,First physics probe
+NS36,Synchronization.Curvature,separabilityObstruction_iff_synchCurvatureNonzero,DO NOT STATE,Missing axioms,Conjecture currently too strong
+NS37,BellQFT.FiniteCurrent,quantumCurrent_antisymm,READY,Self-adjoint H + orthogonal projectors,Bell current algebra
+NS38,BellQFT.MinimalJumpRates,minimalBellRate_masterEquation,READY finite,NS37,Finite cutoff
+NS39,BellQFT.FockCutoff,fockNullLift_equivariant,CONDITIONAL,NS21 + NS38,Finite creation/annihilation
+NS40,Graph.BellSupport,operatorSupport_implies_bellCurrentSupport,READY,NS37,Tautological but useful bridge
+NS41,Graph.Symbol,superDirac_symbol_eq_nullSlash,OPEN,Concrete graph operator,Interpretation-to-theory gate
+NS42,Graph.Symbol,superDirac_symbol_sq_eq_weightedPluckerMass,OPEN,NS41 + Pluecker core,Symbol/soldering theorem
+NS43,Graph.SuperDirac,superDirac_supportedOnNullContinuations,OPEN,Concrete operator support,Must be exhibited not assumed
+NS44,Graph.LocalityAlternatives,exists_covariant_nullLocal_firstOrder_with_correctContinuumSquare,OPEN,Operator and scaling theory,Central causal-set dilemma
+NS45,Master.FiniteModel,finiteNullStrand_master,READY after NS21+NS24+NS25,Finite model,First complete endpoint
+NS46,Master.FoliatedManyParticle,foliatedManyParticleNullStrand_master,CONDITIONAL,Continuity + existence + ergodicity,Foliation explicit
+NS47,Master.GraphDerived,causalSuperDirac_master,OPEN,NS41-NS44,Genuine new-dynamics endpoint

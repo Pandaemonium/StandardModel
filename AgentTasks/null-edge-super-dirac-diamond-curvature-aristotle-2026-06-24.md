@@ -8,7 +8,7 @@ aristotle:
   expected_module: NullEdgeSuperDiracDiamondCurvature.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-super-dirac-diamond-curvature-20260624-project
   source_staged_from: AgentTasks/aristotle-standalone/null-edge-super-dirac-diamond-curvature-20260624
-  status: submitted
+  status: integrated
 ```
 
 ## Physics context
@@ -63,3 +63,22 @@ Please end with:
 - assumptions or nonstandard constructs used;
 - suggested next theorem targets connecting this scalar identity to the
   non-Abelian causal-diamond and super-Dirac square layers.
+
+## Integration
+
+Aristotle solved all three targets without statement changes, proof holes, or
+extra assumptions. Integrated into:
+
+- `PhysicsSM/Draft/NullEdgeSuperDiracDiamondCurvature.lean`
+- `AgentTasks/aristotle-standalone/null-edge-super-dirac-diamond-curvature-20260624/NullEdgeSuperDiracDiamondCurvature/Core.lean`
+
+Verification:
+
+```powershell
+lake env lean PhysicsSM\Draft\NullEdgeSuperDiracDiamondCurvature.lean
+lake env lean AgentTasks\aristotle-standalone\null-edge-super-dirac-diamond-curvature-20260624\NullEdgeSuperDiracDiamondCurvature\Core.lean
+lake build PhysicsSM.Draft.NullEdgeSuperDiracDiamondCurvature
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.

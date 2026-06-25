@@ -139,6 +139,478 @@ Result: passed with only the intended draft proof-hole warning.
 Per the constrained loop plan, sleep for 20 minutes after hygiene checks, then
 resume by checking Aristotle status.
 
+## Round 020 - 2026-06-24
+
+### Aristotle status
+
+The Round 019 nonconstancy witness job completed:
+
+- project: `d535af70-e61d-4f63-ac60-20d846ec73ab`;
+- task: `7b0d6841-12a3-4c4d-9a06-ffae0933eddd`;
+- status: `COMPLETE`.
+
+### Integration
+
+Integrated into:
+
+- `PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace`;
+- standalone handoff package
+  `AgentTasks/aristotle-standalone/null-edge-p2-four-trace-nonconstant-20260624/NullEdgeP2FourTraceNonconstant/Core.lean`.
+
+New live declarations:
+
+```lean
+trace2_four_diagWitness_eq_two
+trace2_four_alternatingWitness_eq_neg_two
+trace2_four_branchReflections_nonconstant
+```
+
+### Verification
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-four-trace-nonconstant-20260624\NullEdgeP2FourTraceNonconstant\Core.lean
+lake env lean PhysicsSM\Draft\NullEdgeP2TwoReflectionTrace.lean
+lake build PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.
+
+### Scientific value
+
+The simplest on-shell witnesses now prove that unconstrained four-reflection
+trace is not constant:
+
+```text
+trace(A A A A) = 2
+trace(B A B A) = -2
+```
+
+with `A = branchReflection 1 1 0 1` and
+`B = branchReflection 1 0 1 1`. This closes the immediate P2 guardrail: generic
+four-reflection traces are finite algebraic observables, not topology-only
+labels. Any future diamond/topological statement must add explicit closure or
+geometric hypotheses.
+
+## Round 021 - 2026-06-24
+
+### Restart status and completed integrations
+
+On restarting the constrained loop, `aristotle list --limit 20` showed two
+older submitted projects idle. Their task-level status was complete:
+
+- Super-Dirac one-diamond curvature gate:
+  project `e2d46570-f294-4cbc-b4aa-9a172ec283b1`, task
+  `7a6fe11f-ec2f-473e-8227-d4df4ae39435`.
+- P9 diamond screen visibility:
+  project `d9be7683-bbab-48c3-ab52-4222a8aa8535`, task
+  `b788daf7-b395-4a6e-b3a4-37b788112637`.
+
+Spark integration triage found no statement/signature changes and no
+placeholders in either returned file.
+
+### Integrated modules
+
+Integrated into live draft modules:
+
+- `PhysicsSM.Draft.NullEdgeSuperDiracDiamondCurvature`
+- `PhysicsSM.Draft.NullEdgeP9DiamondScreenVisibility`
+
+Also updated their standalone Aristotle handoff files and task notes.
+
+### Verification
+
+```text
+lake env lean PhysicsSM\Draft\NullEdgeSuperDiracDiamondCurvature.lean
+lake env lean PhysicsSM\Draft\NullEdgeP9DiamondScreenVisibility.lean
+lake env lean AgentTasks\aristotle-standalone\null-edge-super-dirac-diamond-curvature-20260624\NullEdgeSuperDiracDiamondCurvature\Core.lean
+lake env lean AgentTasks\aristotle-standalone\null-edge-p9-diamond-screen-visibility-20260624\NullEdgeP9DiamondScreenVisibility\Core.lean
+lake build PhysicsSM.Draft.NullEdgeSuperDiracDiamondCurvature
+lake build PhysicsSM.Draft.NullEdgeP9DiamondScreenVisibility
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.
+
+### Scientific value
+
+- P2/P3/P2-R super-Dirac gate: the additive scalar diamond defect and the
+  multiplicative scalar holonomy defect are exactly related by finite algebra,
+  without logarithms or continuum approximation.
+- P9-F source visibility: exact local screen bookkeeping pairs to zero with
+  closed tests, rank-one exact-source noise also vanishes, and any nonzero
+  closed-test response cannot be exact.
+
+This restart began by reducing integration debt rather than submitting a fresh
+job immediately.
+
+### Round 021 model calls
+
+Context packet:
+
+```text
+AgentTasks/model-calls/context-packs/2026-06-24-round-021-context.md
+```
+
+Model-call records:
+
+- Gemini adversarial:
+  `AgentTasks/model-calls/gemini/2026-06-24-round-021-adversarial-next-target.md`
+- Claude constructive:
+  `AgentTasks/model-calls/claude/2026-06-24-round-021-constructive-next-target.md`
+
+Gemini recommended a Mandelstam-style trace identity for real traceless
+`2 x 2` matrices as the cleanest P2/P3 bridge target. Claude recommended a
+one-diamond bridge but referenced a `diamondRight` API that does not exist in
+the current live modules. Spark triage confirmed the Gemini target is true and
+stageable now, while Claude's target needs an explicit substitution-map design
+before it can become a proof job.
+
+### Round 021 Aristotle submission
+
+Single job submitted for the remainder of the round:
+
+- Task note:
+  `AgentTasks/null-edge-p2-mandelstam-trace-identity-aristotle-2026-06-24.md`
+- Standalone source:
+  `AgentTasks/aristotle-standalone/null-edge-p2-mandelstam-trace-identity-20260624/NullEdgeP2MandelstamTraceIdentity/Core.lean`
+- Submission project:
+  `AgentTasks/aristotle-submit/null-edge-p2-mandelstam-trace-identity-20260624-project`
+- Aristotle project: `1aa53d34-0951-4677-a96a-9643aa84437d`
+- Aristotle task: `c3db14b7-6d7a-4feb-b124-4dae6bdc2cfb`
+- Initial status: queued.
+
+Local checks:
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-mandelstam-trace-identity-20260624\NullEdgeP2MandelstamTraceIdentity\Core.lean
+lake exe cache get
+lake env lean NullEdgeP2MandelstamTraceIdentity\Core.lean
+```
+
+The first command checked the standalone target from the main repo. The latter
+two commands fetched the focused project's Mathlib cache and checked the target
+inside the submission project. Both Lean checks passed with the intended proof
+placeholder warning.
+
+### Decision
+
+The single Aristotle slot went to `P2-R`: prove that a four-trace of real
+traceless `2 x 2` matrices is determined by pairwise two-traces. If successful,
+this becomes the algebraic guardrail behind any future claim that a
+four-step/diamond scalar is reducible to pairwise branch data.
+
+### Round 021 result
+
+Aristotle completed the Mandelstam trace identity with the theorem statement
+unchanged and no helper lemmas. The proof was integrated into:
+
+```text
+AgentTasks/aristotle-standalone/null-edge-p2-mandelstam-trace-identity-20260624/NullEdgeP2MandelstamTraceIdentity/Core.lean
+PhysicsSM/Draft/NullEdgeP2TwoReflectionTrace.lean
+```
+
+New live declarations:
+
+```text
+tracelessMat
+trace2_mul_four_traceless_mandelstam
+```
+
+Verification:
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-mandelstam-trace-identity-20260624\NullEdgeP2MandelstamTraceIdentity\Core.lean
+lake env lean PhysicsSM\Draft\NullEdgeP2TwoReflectionTrace.lean
+lake build PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.
+
+Scientific value: the P2 trace ladder now has a finite algebraic reduction
+saying a four-trace in the real traceless `2 x 2` model is determined by
+pairwise two-traces. The next bridge should instantiate this theorem for
+`branchReflection` rather than claiming new geometric content.
+
+## Round 022 - 2026-06-24
+
+### Starting point
+
+Round 021 banked the general Mandelstam trace identity in the live P2 trace
+ladder:
+
+```text
+trace2_mul_four_traceless_mandelstam
+```
+
+The next question was whether to instantiate it for `branchReflection`, pivot
+to P9/P1/P7, or ask for a design/audit job for the future one-diamond
+substitution map.
+
+### Model calls
+
+Context packet:
+
+```text
+AgentTasks/model-calls/context-packs/2026-06-24-round-022-context.md
+```
+
+Model-call records:
+
+- Gemini constructive:
+  `AgentTasks/model-calls/gemini/2026-06-24-round-022-constructive-next-target.md`
+- Claude adversarial:
+  `AgentTasks/model-calls/claude/2026-06-24-round-022-adversarial-next-target.md`
+
+Gemini recommended staying on P2 and proving the branch-reflection
+Mandelstam instantiation. Claude agreed with the lane but argued that a bare
+corollary would be too thin; the job should include explicit coordinates,
+pairwise trace polynomial, four-reflection Mandelstam specialization, and an
+on-shell consistency audit.
+
+Spark sanity-check confirmed the sign/order convention:
+
+```text
+branchReflection h p m E = tracelessMat (-(h*p)/E) (m/E) (m/E)
+R4 * R3 * R2 * R1
+```
+
+### Aristotle submission
+
+- Task note:
+  `AgentTasks/null-edge-p2-branch-reflection-mandelstam-aristotle-2026-06-24.md`
+- Standalone source:
+  `AgentTasks/aristotle-standalone/null-edge-p2-branch-reflection-mandelstam-20260624/NullEdgeP2BranchReflectionMandelstam/Core.lean`
+- Submission project:
+  `AgentTasks/aristotle-submit/null-edge-p2-branch-reflection-mandelstam-v2-20260624-project`
+- Aristotle project: `91206432-2d5d-4679-a86c-488e4375e6e0`
+- Aristotle task: `42e52ee4-7a8e-4ea9-9d6c-5b98349319b1`
+- Initial status: queued.
+
+Local checks:
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-branch-reflection-mandelstam-20260624\NullEdgeP2BranchReflectionMandelstam\Core.lean
+lake exe cache get
+lake env lean NullEdgeP2BranchReflectionMandelstam\Core.lean
+```
+
+The standalone and focused submission-project checks passed with the five
+intended proof placeholders.
+
+### Decision
+
+The single Aristotle slot went to `P2-R`: make the branch-reflection
+Mandelstam reduction explicit and audited. If solved, the next P2/P3 task
+should be a design/proof job for the one-diamond substitution map, not another
+generic trace identity.
+
+### Round 022 result
+
+Aristotle completed all five target theorems with statements unchanged and no
+helper lemmas. The proof-complete standalone file was copied back, and the
+theorem cluster was integrated into:
+
+```text
+PhysicsSM/Draft/NullEdgeP2TwoReflectionTrace.lean
+```
+
+New live declarations:
+
+```text
+branchReflection_eq_tracelessMat_coords
+trace2_mul_tracelessMat_coords
+trace2_mul_two_branchReflections_from_coords
+trace2_mul_four_branchReflections_mandelstam_ordered
+trace2_branchReflection_sq_eq_two_on_massShell_from_coords
+```
+
+Verification:
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-branch-reflection-mandelstam-20260624\NullEdgeP2BranchReflectionMandelstam\Core.lean
+lake env lean PhysicsSM\Draft\NullEdgeP2TwoReflectionTrace.lean
+lake build PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.
+
+Scientific value: the P2 trace ladder now has the explicit branch-reflection
+coordinate bridge and the branch-reflection Mandelstam reduction. This closes
+the finite algebra guardrail: the real two-generator model's four-step trace is
+generated by pairwise two-traces, and any future one-diamond curvature claim
+needs a named substitution map.
+
+## Round 023 - 2026-06-24
+
+### Starting point
+
+Round 022 closed the explicit branch-reflection Mandelstam reduction. The open
+question was whether to submit a one-diamond substitution wrapper, pivot to
+P1/P7 observer channels, pivot to P9 source visibility, or find a non-empty P2
+closure theorem.
+
+### Model calls
+
+Context packet:
+
+```text
+AgentTasks/model-calls/context-packs/2026-06-24-round-023-context.md
+```
+
+Model-call records:
+
+- Gemini adversarial:
+  `AgentTasks/model-calls/gemini/2026-06-24-round-023-adversarial-next-target.md`
+- Claude constructive:
+  `AgentTasks/model-calls/claude/2026-06-24-round-023-constructive-next-target.md`
+
+Gemini correctly attacked a bare `oneDiamondSub` wrapper as empty formalism and
+suggested an observer-channel pivot, though its concrete theorem was
+underspecified. Claude agreed that an empty wrapper is bad, and proposed adding
+real closure/shell constraints. Spark confirmed there is no live one-diamond API
+yet and that a closure-constrained theorem is the best immediate P2/P3-style
+target.
+
+### Decision
+
+Rather than submit the too-easy closed-by-trace wrapper, this round stages a
+stronger finite closure sum rule. In branch coordinates
+
+```text
+a = -(h*p)/E
+b = m/E
+```
+
+the pairwise two-trace is `2 * (a_i*a_j + b_i*b_j)`. If four unit branch
+coordinate vectors close, the sum of all six pairwise trace invariants is
+`-4`. This is a real finite constraint, not a renamed four-trace.
+
+### Aristotle submission
+
+- Task note:
+  `AgentTasks/null-edge-p2-closed-branch-coordinate-sum-rule-aristotle-2026-06-24.md`
+- Standalone source:
+  `AgentTasks/aristotle-standalone/null-edge-p2-closed-branch-coordinate-sum-rule-20260624/NullEdgeP2ClosedBranchCoordinateSumRule/Core.lean`
+- Submission project:
+  `AgentTasks/aristotle-submit/null-edge-p2-closed-branch-coordinate-sum-rule-20260624-project`
+- Aristotle project: `9225aabb-45af-445f-97fe-2f2575252eb2`
+- Aristotle task: `6316f8f1-7412-46ad-bf2c-356802bdd1b1`
+- Initial status: queued.
+
+Local checks:
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-closed-branch-coordinate-sum-rule-20260624\NullEdgeP2ClosedBranchCoordinateSumRule\Core.lean
+lake exe cache get
+lake env lean NullEdgeP2ClosedBranchCoordinateSumRule\Core.lean
+```
+
+The standalone and focused submission-project checks passed with the five
+intended proof placeholders.
+
+### Round 023 result
+
+Aristotle completed all five closure sum-rule targets with statements unchanged
+and no helper lemmas. The proof-complete theorem cluster was integrated into:
+
+```text
+PhysicsSM/Draft/NullEdgeP2TwoReflectionTrace.lean
+```
+
+New live declarations:
+
+```text
+branchA
+branchB
+coordPairTrace
+branchPairTrace
+branchPairTrace_eq_coordPairTrace
+coordPairTrace_sum_eq_neg_four_of_closed_unit
+branchPairTrace_sum_eq_neg_four_of_coordClosed_unit
+branchCoord_norm_sq_eq_one_onMassShell
+branchPairTrace_sum_eq_neg_four_of_closed_onMassShell
+```
+
+Verification:
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-closed-branch-coordinate-sum-rule-20260624\NullEdgeP2ClosedBranchCoordinateSumRule\Core.lean
+lake env lean PhysicsSM\Draft\NullEdgeP2TwoReflectionTrace.lean
+lake build PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.
+
+Scientific value: this is the first P2/P3-adjacent result in the current run
+where a closure constraint carries real algebraic content. Four on-shell
+branch-coordinate vectors that close have a fixed six-pair trace sum `-4`.
+This gives any future one-diamond substitution map a nontrivial invariant to
+preserve.
+
+## Round 024 - 2026-06-24
+
+### Starting point
+
+Round 023 proved the closed branch-coordinate six-pair sum rule. The open
+question was whether the next job should be a one-diamond substitution-map
+design, a further P2/P3 proof, or a pivot to observer channels/source
+visibility.
+
+### Model calls
+
+Context packet:
+
+```text
+AgentTasks/model-calls/context-packs/2026-06-24-round-024-context.md
+```
+
+Model-call records:
+
+- Gemini constructive:
+  `AgentTasks/model-calls/gemini/2026-06-24-round-024-constructive-next-target.md`
+- Claude adversarial:
+  `AgentTasks/model-calls/claude/2026-06-24-round-024-adversarial-next-target.md`
+
+Gemini suggested a diamond/Mandelstam polynomial target but used undefined
+complex objects and overclaimed "holonomy." Claude corrected the target: stay
+in the real branch-coordinate API and prove closure-reduced four-trace content,
+not a wrapper around the already banked general Mandelstam theorem. Spark
+derived exact theorem shapes: opposite-pair trace coincidence and a two-channel
+ordered four-trace polynomial.
+
+### Aristotle submission
+
+- Task note:
+  `AgentTasks/null-edge-p2-closed-four-trace-reduction-aristotle-2026-06-24.md`
+- Standalone source:
+  `AgentTasks/aristotle-standalone/null-edge-p2-closed-four-trace-reduction-20260624/NullEdgeP2ClosedFourTraceReduction/Core.lean`
+- Submission project:
+  `AgentTasks/aristotle-submit/null-edge-p2-closed-four-trace-reduction-20260624-project`
+- Aristotle project: `5f8c5b00-c088-4a2c-b34b-092a1d4aca1c`
+- Aristotle task: `70ea26fb-f43c-4db8-aa98-23d4771a097a`
+- Initial status: queued.
+
+Local checks:
+
+```text
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-closed-four-trace-reduction-20260624\NullEdgeP2ClosedFourTraceReduction\Core.lean
+lake exe cache get
+lake env lean NullEdgeP2ClosedFourTraceReduction\Core.lean
+```
+
+The standalone and focused submission-project checks passed with the four
+intended proof placeholders.
+
+### Decision
+
+The single Aristotle slot went to `P2-R`: closure-reduced ordered four-trace
+algebra. This is a better next step than a substitution-map strategy job because
+it gives the future map a concrete invariant to preserve and stays fully finite.
+
 ## Round 019 - 2026-06-24
 
 ### Aristotle status after sleep

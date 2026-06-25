@@ -45,7 +45,9 @@ theorem trace2_four_diagWitness_eq_two :
         branchReflection 1 1 0 1 *
         branchReflection 1 1 0 1 *
         branchReflection 1 1 0 1) = 2 := by
-  sorry
+  simp only [trace2, branchReflection, chiralHamiltonian]
+  norm_num [Matrix.mul_fin_two, Matrix.smul_apply, Matrix.cons_val_zero,
+    Matrix.cons_val_one]
 
 /-- The alternating witness `B A B A` has trace `-2`. -/
 theorem trace2_four_alternatingWitness_eq_neg_two :
@@ -53,7 +55,9 @@ theorem trace2_four_alternatingWitness_eq_neg_two :
         branchReflection 1 1 0 1 *
         branchReflection 1 0 1 1 *
         branchReflection 1 1 0 1) = -2 := by
-  sorry
+  simp only [trace2, branchReflection, chiralHamiltonian]
+  norm_num [Matrix.mul_fin_two, Matrix.smul_apply, Matrix.cons_val_zero,
+    Matrix.cons_val_one]
 
 /--
 The unconstrained four-reflection trace is not constant on the simplest
@@ -68,7 +72,8 @@ theorem trace2_four_branchReflections_nonconstant :
         branchReflection 1 1 0 1 *
         branchReflection 1 0 1 1 *
         branchReflection 1 1 0 1) := by
-  sorry
+  rw [trace2_four_diagWitness_eq_two, trace2_four_alternatingWitness_eq_neg_two]
+  norm_num
 
 end NullEdgeP2FourTraceNonconstant
 

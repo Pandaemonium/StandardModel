@@ -73,6 +73,7 @@ import PhysicsSM.Draft.NullEdgeGramWeightedMassAristotle
 import PhysicsSM.Draft.NullEdgeDiracSlashCore
 import PhysicsSM.Draft.NullEdgeBundleDiracPluckerCore
 import PhysicsSM.Draft.NullEdgeSuperDiracBlockCore
+import PhysicsSM.Draft.NullEdgeSuperDiracDiamondCurvature
 import PhysicsSM.Draft.NullEdgeSuperconnectionExpansionCore
 import PhysicsSM.Draft.NullEdgeDiracTwoSheetCore
 import PhysicsSM.Draft.NullEdgeDiracMassShellProjectorsCore
@@ -113,6 +114,7 @@ import PhysicsSM.Draft.NullEdgeP9MeanZeroFluctuation
 import PhysicsSM.Draft.NullEdgeP9MeanFluctuation
 import PhysicsSM.Draft.NullEdgeP9VisibleClosureSource
 import PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore
+import PhysicsSM.Draft.NullEdgeP9DiamondScreenVisibility
 import PhysicsSM.Draft.NullEdgeP9ScreenQuotientBound
 import PhysicsSM.Draft.NullEdgeP9ScreenVarianceBound
 import PhysicsSM.Draft.NullEdgeP9NoncollinearMassNogo

@@ -1,18 +1,21 @@
 import Mathlib.Tactic
 
 /-!
-# P9 diamond screen visibility core
+# Draft.NullEdgeP9DiamondScreenVisibility
 
-This standalone file isolates the finite source-visibility algebra behind the
-P9 cosmological-constant branch.
+This module isolates the finite source-visibility algebra behind the P9
+cosmological-constant branch.
 
-Physics context: a local vacuum-bookkeeping source should be invisible to
-closed curvature-defect tests when it is boundary-exact. A genuine surviving
-cosmological residual should therefore live in a visible source sector or in a
-harmonic/global quotient, not in the exact local bookkeeping sector.
+Physics context: local vacuum-bookkeeping sources should be invisible to closed
+curvature-defect tests when they are boundary-exact. A surviving cosmological
+residual must therefore live in a visible source sector or in a harmonic/global
+quotient, not in the exact local bookkeeping sector.
+
+This is finite linear algebra on a screen complex. It is not yet a response law
+from source data to curvature, expansion, or an observed cosmological constant.
 -/
 
-namespace NullEdgeP9DiamondScreenVisibility.Core
+namespace PhysicsSM.Draft.NullEdgeP9DiamondScreenVisibility
 
 open BigOperators
 
@@ -48,16 +51,17 @@ def ClosedTest {S : DiamondScreen} (mu : S.Measure)
   forall r : Fin S.nRim,
     (Finset.univ.sum fun f => mu.faceArea f * S.rimInc f r * test f) = 0
 
-/-
+/--
 Exact local bookkeeping is invisible to every closed curvature-defect test.
 -/
 theorem exactSource_pairing_closedTest_zero {S : DiamondScreen} (mu : S.Measure)
     (a : S.RimCochain) (test : S.FaceCochain) (hclosed : ClosedTest mu test) :
     pairing mu (exactSource mu a) test = 0 := by
   unfold pairing exactSource
-  have h : ∀ f : Fin S.nFace,
-      mu.faceArea f * (∑ r, S.rimInc f r * a r) * test f
-        = ∑ r, a r * (mu.faceArea f * S.rimInc f r * test f) := by
+  have h : forall f : Fin S.nFace,
+      mu.faceArea f * (Finset.univ.sum fun r => S.rimInc f r * a r) * test f
+        = Finset.univ.sum fun r =>
+            a r * (mu.faceArea f * S.rimInc f r * test f) := by
     intro f
     rw [Finset.mul_sum, Finset.sum_mul]
     exact Finset.sum_congr rfl fun r _ => by ring
@@ -66,15 +70,16 @@ theorem exactSource_pairing_closedTest_zero {S : DiamondScreen} (mu : S.Measure)
   refine Finset.sum_eq_zero fun r _ => ?_
   rw [← Finset.mul_sum, hclosed r, mul_zero]
 
-/-
+/--
 Rank-one covariance response of an exact source vanishes on closed tests.
 -/
 theorem exactSource_rankOne_noise_closedTest_zero {S : DiamondScreen} (mu : S.Measure)
     (a : S.RimCochain) (test : S.FaceCochain) (hclosed : ClosedTest mu test) :
     (pairing mu (exactSource mu a) test) ^ 2 = 0 := by
-  rw [ exactSource_pairing_closedTest_zero mu a test hclosed, zero_pow ] ; norm_num
+  rw [exactSource_pairing_closedTest_zero mu a test hclosed, zero_pow]
+  norm_num
 
-/-
+/--
 If all exact sources are invisible to closed tests, any source with a nonzero
 closed-test response cannot be exact. This is the finite harmonic/global
 survival gate: exact filtering does not remove visible quotient modes.
@@ -83,8 +88,9 @@ theorem nonzero_closed_response_not_exact {S : DiamondScreen} (mu : S.Measure)
     (source : S.FaceCochain) (test : S.FaceCochain) (hclosed : ClosedTest mu test)
     (hvis : Not (pairing mu source test = 0)) :
     (exists a : S.RimCochain, source = exactSource mu a) -> False := by
-  exact fun ⟨a, ha⟩ => hvis <| by simp only [ha, exactSource_pairing_closedTest_zero _ _ _ hclosed]
+  exact fun ⟨a, ha⟩ => hvis <| by
+    simp only [ha, exactSource_pairing_closedTest_zero _ _ _ hclosed]
 
 end DiamondScreen
 
-end NullEdgeP9DiamondScreenVisibility.Core
+end PhysicsSM.Draft.NullEdgeP9DiamondScreenVisibility

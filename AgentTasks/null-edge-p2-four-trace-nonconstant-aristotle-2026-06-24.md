@@ -81,7 +81,7 @@ aristotle:
   expected_module: NullEdgeP2FourTraceNonconstant.Core
   submission_project: AgentTasks/aristotle-submit/null-edge-p2-four-trace-nonconstant-20260624-project
   output_dir: AgentTasks/aristotle-output/d535af70-e61d-4f63-ac60-20d846ec73ab
-  status: submitted
+  status: integrated
 ```
 
 ## Local preflight
@@ -103,3 +103,24 @@ Submitted to Aristotle:
 Submission note: the CLI warned that the focused package has no `.lake` folder.
 This is expected for the helper-created focused package, and the prompt asks
 Aristotle to run the narrow `lake env lean` command first.
+
+## Integration
+
+Aristotle solved all three witness theorems without changing theorem statements
+and without introducing proof holes or extra assumptions.
+
+Integrated into:
+
+- `PhysicsSM/Draft/NullEdgeP2TwoReflectionTrace.lean`
+- `AgentTasks/aristotle-standalone/null-edge-p2-four-trace-nonconstant-20260624/NullEdgeP2FourTraceNonconstant/Core.lean`
+
+Verification:
+
+```powershell
+lake env lean AgentTasks\aristotle-standalone\null-edge-p2-four-trace-nonconstant-20260624\NullEdgeP2FourTraceNonconstant\Core.lean
+lake env lean PhysicsSM\Draft\NullEdgeP2TwoReflectionTrace.lean
+lake build PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace
+lake env lean PhysicsSMDraft.lean
+```
+
+All checks passed.
