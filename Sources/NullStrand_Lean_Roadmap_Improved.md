@@ -722,3 +722,60 @@ Each PR should close one coherent dependency cluster and update:
 8. Only then begin the generic residual-current lift, least-action selector, and covariant sphere measure.
 
 That sequence produces a coherent, certified answer to the central question before the program takes on its hardest continuum and graph-dynamics obligations.
+
+## 16. Implementation progress (2026-06-25)
+
+This section records the state of the Lean implementation against the manifest.
+Live tree: `PhysicsSM/NullStrand/`, built under the pinned toolchain
+`leanprover/lean4:v4.28.0`. Ledger: `AgentTasks/null-strand-overnight-ledger-2026-06-25.md`.
+
+### Gate G0 — verified finite bank: ACHIEVED
+
+`lake build PhysicsSM.NullStrand` succeeds (exit 0, 8064 jobs). The full
+NullStrand module set compiles. The only remaining `sorry`s are two documented
+Aristotle handoffs in `Clock/InternalHolonomy.lean`: HOL-002
+`internalSegment_unitary_of_hermitian` (matrix-exponential unitarity, blocked by a
+`NormedAlgebra` instance diamond) and HOL-003 `internalHolonomy_gaugeCovariant_path`
+(matrix-exp conjugation). All other modules are `sorry`/`axiom`-free.
+
+### Nodes proven and integrated into the live tree (Aristotle, verified clean)
+
+Each was proved as a focused standalone Aristotle job, verified
+`sorry`/`admit`/`axiom`-free with `lake env lean` and a `git diff` confirming the
+statement was not weakened, then integrated and rebuilt green:
+
+| node | declaration | live module |
+|---|---|---|
+| KIN-006 | `finiteFluxDirectionMean_eq_relativeVelocity` | `NullFiber/FluxFinite.lean` |
+| KIN-009 | `finiteFluxMean_dsdt_eq_invGamma` | `NullFiber/FluxFinite.lean` |
+| KIN-010 | `uniformComponent_bounds_meanNorm` | `NullFiber/RegulatorMeanNorm.lean` |
+| KIN-011 | `meanNorm_eq_one_implies_support_collinear` | `NullFiber/BoundaryNoGo.lean` |
+| DEF-006/007, STO-001/002 | `FiniteKernel`, `FiniteJumpGenerator`, `pushforward_comp`, `masterEquation_mass_conserved` | `Probability/Finite.lean` |
+| ERG-001 | `iidNullSteps_empiricalMean_tendsto` (pathwise SLLN) | `Ergodic/IIDStrongLaw.lean` |
+| ENT-001 | `pureDirectionProjector` (+trace/Hermitian/idempotent) | `Entanglement/DirectionProjector.lean` |
+| BELL-004 | `operatorBlockZero_implies_currentZero` | `BellQFT/BlockSupport.lean` |
+| GRAPH-002 | `support_square_subset_relComp` | `Graph/Support.lean` |
+
+Additionally already present/proven in the live tree from the prior wave:
+KIN-001 `nullFiber_equiv_restSphere`, KIN-003 `octaNull_mean_eq_timelike`,
+ZZ-002 `minimalRates_netTransfer`, ZZ-006..009 lattice-beable equivariance,
+LA-001 `weightedLaplacian_kernel_eq_constants`, REF-001..004 refresh-chain
+(invariant, mean-zero eigenvalue, spectral gap, correlation),
+LIFT-001 `residualCurrent_divergence_eq`, GRAPH-001
+`operatorSupport_implies_bellCurrentSupport`, and (via the finite-core proof job)
+`quantumCurrent_antisymm`, `minimalBellRate_masterEquation`,
+`productDirectionRepresentation_iff_separable`.
+
+### Open / remaining
+
+- READY/CONDITIONAL nodes not yet attempted are tracked in the ledger's
+  next-wave list (e.g. ZZ-005 two-state coupling, SYNC-001/002 synchronization
+  defect, LA-002/003 least-action range/uniqueness, CONT-001 Lax-Milgram wrapper,
+  DEF-004 PMF null-resolution, MASTER-001/002 finite capstones).
+- The G4-G5 OPEN registry nodes (O1-O8: full covariant mixing gap, continuum
+  process near nodes, entanglement-vs-curvature, operational internal clock,
+  graph super-Dirac symbol GRAPH-004, null-local/continuum-correct operator,
+  natural null dilation, observed mass spectrum) remain research questions, not
+  theorems to assume; per this roadmap they are completed only by exhibiting a
+  concrete construction or a precise impossibility result, and are intentionally
+  left open rather than discharged.

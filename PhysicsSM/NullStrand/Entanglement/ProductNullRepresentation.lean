@@ -25,8 +25,8 @@ def IsProbability {Q : Type*} [Fintype Q] (ρ : Law Q) : Prop :=
   (∀ q, 0 ≤ ρ q) ∧ (∑ q, ρ q = 1)
 
 /-- Finite convex-weights for a mixture over an index set. -/
-def IsConvexWeights {N : Type*} [Fintype N] (λ : N → ℝ) : Prop :=
-  (∀ i, 0 ≤ λ i) ∧ (∑ i, λ i = 1)
+def IsConvexWeights {N : Type*} [Fintype N] (w : N → ℝ) : Prop :=
+  (∀ i, 0 ≤ w i) ∧ (∑ i, w i = 1)
 
 /-- A finite product-law representation of a joint direction distribution. -/
 def productDirectionRepresentation

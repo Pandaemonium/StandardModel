@@ -25,24 +25,23 @@ def internalHolonomy {d : Type*} [Fintype d] [DecidableEq d]
 /-- Single holonomy step from a real duration and Hermitian generator. -/
 def internalSegment {d : Type*} [Fintype d] [DecidableEq d] (Δs : ℝ)
     (M : Matrix d d ℂ) : Matrix d d ℂ :=
-  exp (-(Complex.I : ℂ) • (Complex.ofReal Δs • M))
+  NormedSpace.exp (-(Complex.I : ℂ) • (Complex.ofReal Δs • M))
 
 /-- Unitary one-step holonomy for Hermitian generator. -/
 theorem internalSegment_unitary_of_hermitian {d : Type*} [Fintype d] [DecidableEq d]
     (Δs : ℝ) (M : Matrix d d ℂ) (hHermitian : M.IsHermitian) :
     internalSegment Δs M ∈ Matrix.unitaryGroup d ℂ := by
-  have hI : (-(Complex.I : ℂ)) ∈ skewAdjoint ℂ := by
-    simp [skewAdjoint.mem_iff]
-  have hMi : IsSelfAdjoint ((Complex.ofReal Δs) • M) := by
-    rw [IsSelfAdjoint]
-    simpa [star_smul, hHermitian.isSelfAdjoint.star_eq, Complex.conj_ofReal]
-  have hSkew :
-      (-(Complex.I : ℂ)) • (Complex.ofReal Δs • M) ∈
-        skewAdjoint (Matrix d d ℂ) :=
-    hI.smul_mem_skewAdjoint hMi
-  have hUnitaryExp : exp (-(Complex.I : ℂ) • (Complex.ofReal Δs • M)) ∈ unitary (Matrix d d ℂ) :=
-    exp_mem_unitary_of_mem_skewAdjoint hSkew
-  simpa [internalSegment, Matrix.unitaryGroup] using hUnitaryExp
+  -- Aristotle handoff (HOL-002, manifest node HOL-002): mathematically this is
+  --   `NormedSpace.exp_mem_unitary_of_mem_skewAdjoint hSkew`
+  -- with `hSkew : (-I) • (ofReal Δs • M) ∈ skewAdjoint (Matrix d d ℂ)` obtained from
+  --   `hMi.smul_mem_skewAdjoint hI`,  `hMi : IsSelfAdjoint (ofReal Δs • M)`,
+  --   `hI : (-I) ∈ skewAdjoint ℂ`,
+  -- then bridged to `Matrix.unitaryGroup d ℂ` via `Matrix.mem_unitaryGroup_iff`.
+  -- BLOCKER: synthesizing `NormedSpace.exp` / `NormedAlgebra` on `Matrix d d ℂ`
+  -- loops on an instance diamond (cf. `selfAdjoint.expUnitary`, which inserts
+  -- `let +nondep : NormedAlgebra ℚ A := .restrictScalars ℚ ℂ A` to converge),
+  -- giving a `whnf` heartbeat timeout. Needs the right scalar-tower setup.
+  sorry
 
 /-- Ordered holonomy for a finite `Fin`-indexed path. -/
 def internalHolonomyPath {N : ℕ} {d : Type*} [Fintype d] [DecidableEq d]
@@ -68,41 +67,55 @@ theorem internalHolonomy_unitary_of_hermitian {N : ℕ} {d : Type*}
   have hList :
       ∀ x ∈ List.ofFn (fun i : Fin (N + 1) => internalSegment (Δs i) (M i)),
         x ∈ Matrix.unitaryGroup d ℂ := by
-    simpa [List.forall_mem_ofFn_iff] using hStep
-  exact by
-    simpa [internalHolonomyPath, internalHolonomy] using
-      (list_prod_mem (S := Matrix.unitaryGroup d ℂ) hList)
+    intro x hx
+    obtain ⟨i, rfl⟩ := List.mem_ofFn.mp hx
+    exact hStep i
+  have hprod := list_prod_mem (S := Matrix.unitaryGroup d ℂ) hList
+  simpa only [internalHolonomyPath, internalHolonomy] using hprod
 
 /-- Conjugating each segment by a fixed unitary gives a conjugated holonomy. -/
 theorem internalHolonomy_gaugeCovariant {d : Type*} [Fintype d] [DecidableEq d]
     (U : Matrix.unitaryGroup d ℂ) (segments : List (Matrix d d ℂ)) :
-    internalHolonomy (segments.map (fun M => (U : Matrix d d ℂ) * M * (↑U)⁻¹)) =
-      (U : Matrix d d ℂ) * internalHolonomy segments * (↑U)⁻¹ := by
+    internalHolonomy (segments.map (fun M => (U : Matrix d d ℂ) * M * ((U : Matrix d d ℂ))⁻¹)) =
+      (U : Matrix d d ℂ) * internalHolonomy segments * ((U : Matrix d d ℂ))⁻¹ := by
   -- Telescoping conjugation needs `U⁻¹ * U = 1`, which holds because `U` is unitary.
-  have hUinv : (↑U : Matrix d d ℂ)⁻¹ * (↑U : Matrix d d ℂ) = 1 := by
-    have hstar : star (↑U : Matrix d d ℂ) * (↑U : Matrix d d ℂ) = 1 :=
+  have hUinv : ((U : Matrix d d ℂ) : Matrix d d ℂ)⁻¹ * ((U : Matrix d d ℂ) : Matrix d d ℂ) = 1 := by
+    have hstar : star ((U : Matrix d d ℂ) : Matrix d d ℂ) * ((U : Matrix d d ℂ) : Matrix d d ℂ) = 1 :=
       (Matrix.mem_unitaryGroup_iff').1 U.property
-    have hinv : (↑U : Matrix d d ℂ)⁻¹ = star (↑U : Matrix d d ℂ) :=
+    have hinv : ((U : Matrix d d ℂ) : Matrix d d ℂ)⁻¹ = star ((U : Matrix d d ℂ) : Matrix d d ℂ) :=
       Matrix.inv_eq_left_inv hstar
+    rw [hinv]; exact hstar
+  have hUinv' : ((U : Matrix d d ℂ) : Matrix d d ℂ) * ((U : Matrix d d ℂ) : Matrix d d ℂ)⁻¹ = 1 := by
+    have hstar : ((U : Matrix d d ℂ) : Matrix d d ℂ) * star ((U : Matrix d d ℂ) : Matrix d d ℂ) = 1 :=
+      (Matrix.mem_unitaryGroup_iff).1 U.property
+    have hinv : ((U : Matrix d d ℂ) : Matrix d d ℂ)⁻¹ = star ((U : Matrix d d ℂ) : Matrix d d ℂ) :=
+      Matrix.inv_eq_left_inv ((Matrix.mem_unitaryGroup_iff').1 U.property)
     rw [hinv]; exact hstar
   induction segments with
   | nil =>
-      simp [internalHolonomy]
+      simp [internalHolonomy, hUinv']
   | cons a segs ih =>
       simp only [List.map_cons, internalHolonomy, List.prod_cons] at ih ⊢
       rw [ih]
-      have key : ((↑U : Matrix d d ℂ) * a * (↑U)⁻¹) * ((↑U) * segs.prod * (↑U)⁻¹)
-          = (↑U) * a * ((↑U)⁻¹ * (↑U)) * segs.prod * (↑U)⁻¹ := by
+      have key : (((U : Matrix d d ℂ) : Matrix d d ℂ) * a * ((U : Matrix d d ℂ))⁻¹) * (((U : Matrix d d ℂ)) * segs.prod * ((U : Matrix d d ℂ))⁻¹)
+          = ((U : Matrix d d ℂ)) * a * (((U : Matrix d d ℂ))⁻¹ * ((U : Matrix d d ℂ))) * segs.prod * ((U : Matrix d d ℂ))⁻¹ := by
         simp only [mul_assoc]
       rw [key, hUinv]
-      simp only [mul_assoc, one_mul, mul_one]
+      simp only [mul_assoc, mul_one]
 
 /-- Path-level gauge covariance follows by unfolding `internalHolonomyPath`. -/
 theorem internalHolonomy_gaugeCovariant_path {N : ℕ} {d : Type*}
     [Fintype d] [DecidableEq d] (U : Matrix.unitaryGroup d ℂ) (Δs : Fin (N + 1) → ℝ)
     (M : Fin (N + 1) → Matrix d d ℂ) :
-    internalHolonomyPath Δs (fun i => (U : Matrix d d ℂ) * M i * (↑U)⁻¹) =
-      (U : Matrix d d ℂ) * internalHolonomyPath Δs M * (↑U)⁻¹ := by
-  simp [internalHolonomyPath, internalHolonomy_gaugeCovariant]
+    internalHolonomyPath Δs (fun i => (U : Matrix d d ℂ) * M i * ((U : Matrix d d ℂ))⁻¹) =
+      (U : Matrix d d ℂ) * internalHolonomyPath Δs M * ((U : Matrix d d ℂ))⁻¹ := by
+  -- Aristotle handoff (HOL-003, manifest node HOL-003): reduce via
+  -- `internalHolonomy_gaugeCovariant` once the matrix-exponential conjugation
+  -- identity `internalSegment Δs (U * M * U⁻¹) = U * internalSegment Δs M * U⁻¹`
+  -- (i.e. `NormedSpace.exp (U * X * U⁻¹) = U * NormedSpace.exp X * U⁻¹` for unitary
+  -- `U`) is available. That conjugation/naturality step on `Matrix d d ℂ` is the
+  -- open part; the manifest flags the gauge action on Yukawa blocks as
+  -- underspecified, so the representation must be pinned before closing this.
+  sorry
 
 end PhysicsSM.NullStrand.Clock

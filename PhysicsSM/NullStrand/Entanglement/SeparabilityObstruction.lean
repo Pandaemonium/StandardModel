@@ -28,7 +28,9 @@ theorem entangledState_has_no_localPositiveProductNullRepresentation
   {A B : Type*} [Fintype A] [Fintype B] (ρ : Law (A × B))
     (hEnt : entangledState (A := A) (B := B) ρ) :
     ¬ localPositiveProductNullRepresentation (A := A) (B := B) ρ := by
-  unfold entangledState localPositiveProductNullRepresentation at hEnt
-  exact hEnt
+  -- `entangledState ρ = ¬ separableState ρ` and both `separableState` and
+  -- `localPositiveProductNullRepresentation` reduce to `productDirectionRepresentation ρ`.
+  intro h
+  exact hEnt h
 
 end PhysicsSM.NullStrand.Entanglement
