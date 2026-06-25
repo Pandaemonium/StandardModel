@@ -1,0 +1,30 @@
+pr_id,title,depends_on,nodes,deliverable,exit_criteria,parallel_track,effort,risk
+PR00,Reproducible build and theorem-bank audit,,AUD-001;AUD-002;AUD-003,"Pinned build, audit import, axiom/sorry report",Clean CI build; every reported declaration #checks; no forbidden placeholders,Core,M,low
+PR01,Canonical conventions and representation firewall,PR00,DEF-001;DEF-003,Single public convention import and deprecation map,All trusted finite modules compile through the wrapper,Core,M,medium
+PR02,Finite probability primitives,PR00,DEF-006;DEF-007;STO-001;STO-002,PMF kernels and finite jump generators,Composition and mass-conservation lemmas proven,Probability,M,low
+PR03,Null fiber and exact octahedral resolution,PR01,KIN-001;KIN-002;KIN-003;DEF-004;KIN-004,Exact 3+1 finite null fan,"Nullity, normalization, first and second moments proven",Kinematics,M,low
+PR04,Abstract finite flux theorem,PR02;PR03,KIN-005;KIN-006;KIN-007;KIN-009,"Observer flux PMF, mean, variance, clock rate",All formulas proved without coordinates,Kinematics,M,medium
+PR05,Mass-ratio and regulator guardrails,PR04;PR01,KIN-008;KIN-010;KIN-011,Determinant bridge and no-go lemmas,Normalization factors audited; finite floor theorem proven,Kinematics,M,medium
+PR06,Two-state minimal coupling and lattice beable,PR01;PR02,ZZ-005;ZZ-006;ZZ-007;ZZ-008;ZZ-009,Exact checkerboard hidden process,One-step and n-step equivariance; every increment null,Checkerboard,L,medium
+PR07,Trajectory measures and i.i.d. strong law,PR02;PR03,TRAJ-001;ERG-001;ERG-002,Infinite finite-state histories and pathwise timelike drift,Actual trajectory measure exists; almost-sure limit proven,Probability,L,medium
+PR08,Finite capstones,PR04;PR06;PR07,MASTER-001;MASTER-002,Two first publication-grade master theorems,No sorry; #print axioms approved; examples execute,Core,M,low
+PR09,Finite residual-current null lift,PR02,DEF-009;LIFT-001;LIFT-002;LIFT-003,Generic finite equivariant unravelling,Residual current and forward equation proven,Dynamics,L,medium
+PR10,Minimum-energy finite angular current,PR02;PR09,DEF-010;LA-001;LA-002;LA-003;LA-004,Canonical finite least-action selector,Unique minimizer and induced rates proven on positive support,Dynamics,XL,medium
+PR11,Refresh-chain exact dynamics,PR02;PR04,REF-001;REF-002;REF-003;REF-004,"Exact invariant law, contraction, gap, correlation",Closed-form proofs and numerical examples agree,Probability,M,low
+PR12,Chiral current and minimal-rate interface,PR01;PR02,ZZ-001;DEF-008;ZZ-002;ZZ-003,One-particle zig-zag algebra independent of PDE,Null currents and denominator-safe rates proven,ZigZag,M,medium
+PR13,Intrinsic sphere-measure API spike,PR01,MEA-001,Feasibility report and compiling minimal sphere file,Go/no-go decision for invariant measure implementation,Continuum,S,medium
+PR14,Covariant intrinsic and flux measures,PR13;PR04,DEF-005;MEA-002;MEA-003;MEA-004;MEA-005;MEA-006;MEA-007,Continuum one-particle kinematic measure layer,"First moment, covariance, flux mean and variance proven",Continuum,XL,high
+PR15,Internal holonomy finite algebra,PR01,HOL-001;HOL-002;HOL-003,Path-ordered mass/Yukawa holonomy API,"Composition, unitarity, endpoint covariance proven",Internal,L,medium
+PR16,Finite product-null separability obstruction,PR01,ENT-001;ENT-002;ENT-003;ENT-004,Entanglement no-go theorem,Finite equivalence or one-way theorem with explicit definitions,Entanglement,L,medium
+PR17,Synchronization kernel framework,PR02,DEF-012;SYNC-001;SYNC-002,Named hidden rules and diamond defect,Two-order compositions typecheck and defect criterion is proven,Synchronization,M,medium
+PR18,Bell-pair synchronization pilots,PR10;PR16;PR17,SYNC-004;SYNC-005,Executable exact comparison of at least two hidden rules,Results recorded without overgeneralizing to all rules,Synchronization,XL,high
+PR19,Finite Bell current and rates,PR01;PR02,BELL-001;BELL-002;BELL-003;BELL-004,Finite Bell-type QFT current core,"Antisymmetry, safety, master equation, support all proven",BellQFT,L,medium
+PR20,Finite Fock cutoff null lift,PR09;PR19,BELL-005;MASTER-003,Finite sector-changing forward-equation model,Extended law equivariant at finite cutoff,BellQFT,XL,high
+PR21,Graph support and checkerboard operator instance,PR06;PR19,DEF-013;GRAPH-001;GRAPH-002;GRAPH-003,Operator-support theorem plus concrete nontrivial instance,Checkerboard operator passes support audit,Graph,L,medium
+PR22,Audit existing super-Dirac algebra,PR00;PR01,GRAPH-007,Reviewed wrapper for reported block-square results,No mass double-counting; conventions documented,Graph,M,medium
+PR23,Super-Dirac symbol/soldering pilot,PR21;PR22,GRAPH-004;GRAPH-005;GRAPH-006,One concrete graph operator and local-symbol computation,Either theorem proved or a precise obstruction/counterexample recorded,Graph,XL,very high
+PR24,Abstract continuum analytic certificates,PR00,DEF-015;CONT-001,Lax-Milgram wrapper and gap interfaces,Abstract theorems compile without claiming sphere instances,Continuum,M,medium
+PR25,Continuum sphere process research branch,PR14;PR24,CONT-002;CONT-003;CONT-005;MASTER-004,Conditional continuum model,All assumptions explicit; no hidden existence or gap claims,Continuum,XL,very high
+PR26,Causal-set locality and null-dilation audit,PR21,GRAPH-008;DEF-014;GRAPH-009,Formal property matrix and finite dilation experiments,No blanket no-go; candidates compared under identical predicates,CausalSet,XL,very high
+PR27,Foliated many-particle interface,PR16;PR17;PR20;PR24,MASTER-005,Conditional many-particle theorem charter and finite cut model,Foliation and all analytic hypotheses are explicit structures,ManyBody,XL,very high
+PR28,Graph-derived master gate,PR23;PR26,MASTER-006,Final conditional master theorem for a concrete operator,"Only opened after support, square, and scaling nodes exist",Graph,XL,very high

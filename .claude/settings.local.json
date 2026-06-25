@@ -1,7 +1,4 @@
 {
-  "env": {
-    "ARISTOTLE_API_KEY": "arstl__JyM7Yftqfu9YvOvTCn1m6ucPMz3sO9E-8XTTOPcNgM"
-  },
   "permissions": {
     "allow": [
       "Bash(elan --version)",
