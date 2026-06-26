@@ -23,12 +23,27 @@ def expectation {Ω : Type*} [Fintype Ω] {E : Type*} [NormedAddCommGroup E] [No
     (μ : Ω → ℝ) (direction : Ω → E) : E :=
   ∑ ω, μ ω • direction ω
 
-/-- If a distribution has an `ε`-uniform component, then the mean norm is bounded by `1 - ε`.
+/-
+If a distribution has an `ε`-uniform component, then the mean norm is bounded by `1 - ε`.
 
 This is the finite-algebraic backbone of the regulator no-go statement.
+
+Naming/de-duplication note (2026-06-25 G0 firewall+dedup audit):
+This `expectation`-operator variant was previously also named
+`uniformComponent_bounds_meanNorm`, colliding on its fully-qualified name with
+the canonical KIN-010 statement
+`PhysicsSM.NullStrand.NullFiber.uniformComponent_bounds_meanNorm` in
+`NullStrand.NullFiber.RegulatorMeanNorm`. The two statements are genuinely
+different (this one assumes `‖direction ω‖ ≤ 1`, an explicit uniform mixture
+weight `μ ω = ε / card + (1 - ε) * q ω`, and `∑ direction ω = 0`; KIN-010 assumes
+`‖dir ω‖ = 1` and a free mean-zero component `u`). To remove the latent
+same-name clash (e.g. when both files are imported by an audit module), this
+orphan variant is renamed to `expectation_uniformComponent_bounds_meanNorm`.
+This file is not imported by `PhysicsSM.NullStrand`, so the rename has no external
+referents. No statement, sign, or convention is changed.
 -/
-theorem uniformComponent_bounds_meanNorm
-    {Ω : Type*} [Fintype Ω] [DecidableEq Ω]
+theorem expectation_uniformComponent_bounds_meanNorm
+    {Ω : Type*} [Fintype Ω]
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (direction : Ω → E)
     (hdir_norm : ∀ ω, ‖direction ω‖ ≤ 1)
@@ -37,62 +52,15 @@ theorem uniformComponent_bounds_meanNorm
     (hq_nonneg : ∀ ω, 0 ≤ q ω)
     (hq_sum : ∑ ω, q ω = 1)
     (ε : ℝ)
-    (hε : 0 ≤ ε) (hε₁ : ε ≤ 1)
+    (_hε : 0 ≤ ε) (hε₁ : ε ≤ 1)
     (μ : Ω → ℝ)
     (hμ : ∀ ω, μ ω = ε / (Fintype.card Ω : ℝ) + (1 - ε) * q ω) :
     ‖expectation μ direction‖ ≤ 1 - ε := by
-  have hsplit :
-      expectation μ direction =
-        ε / (Fintype.card Ω : ℝ) • (∑ ω, direction ω) +
-          (1 - ε) • expectation q direction := by
-    unfold expectation
-    calc
-      ∑ ω, μ ω • direction ω
-          = ∑ ω, (ε / (Fintype.card Ω : ℝ) + (1 - ε) * q ω) • direction ω := by
-              simp [hμ]
-      _ = ∑ ω, (ε / (Fintype.card Ω : ℝ) • direction ω +
-            ((1 - ε) * q ω) • direction ω) := by
-          simp [add_smul]
-      _ = ∑ ω, (ε / (Fintype.card Ω : ℝ)) • direction ω +
-            ∑ ω, ((1 - ε) * q ω) • direction ω := by
-          simpa [Finset.sum_add_distrib]
-      _ = ε / (Fintype.card Ω : ℝ) • (∑ ω, direction ω) +
-            (1 - ε) • expectation q direction := by
-        congr 2
-        · simpa using (smul_sum (ε / (Fintype.card Ω : ℝ)) (fun ω => direction ω))
-        ·
-          calc
-            ∑ ω, ((1 - ε) * q ω) • direction ω
-                = ∑ ω, ((1 - ε) : ℝ) • (q ω • direction ω) := by
-                    refine Finset.sum_congr rfl ?_ ; intro ω hω
-                    simp [smul_smul, mul_comm, mul_left_comm, mul_assoc]
-            _ = (1 - ε) • expectation q direction := by
-                  symm
-                  exact smul_sum (1 - ε) (fun ω => q ω • direction ω)
-  have hmean :
-      expectation μ direction = (1 - ε) • expectation q direction := by
-    calc
-      expectation μ direction = ε / (Fintype.card Ω : ℝ) • (∑ ω, direction ω) +
-          (1 - ε) • expectation q direction := hsplit
-      _ = (1 - ε) • expectation q direction := by simp [hUniformMean]
-  have hqBound : ‖expectation q direction‖ ≤ 1 := by
-    calc
-      ‖expectation q direction‖ = ‖∑ ω, q ω • direction ω‖ := rfl
-      _ ≤ ∑ ω, ‖q ω • direction ω‖ := norm_sum_le
-      _ = ∑ ω, |q ω| * ‖direction ω‖ := by
-            refine Finset.sum_congr rfl ?_ ; intro ω hω
-            simp [norm_smul, abs_of_nonneg (hq_nonneg ω)]
-      _ ≤ ∑ ω, q ω * 1 := by
-            refine Finset.sum_le_sum ?_
-            intro ω hω
-            exact mul_le_mul_of_nonneg_left (hdir_norm ω) (hq_nonneg ω)
-      _ = 1 := by simpa using hq_sum
-  have hε₂ : 0 ≤ 1 - ε := sub_nonneg.mpr hε₁
-  calc
-    ‖expectation μ direction‖ = ‖(1 - ε) • expectation q direction‖ := by simpa [hmean]
-    _ = |1 - ε| * ‖expectation q direction‖ := by simp [norm_smul]
-    _ = (1 - ε) * ‖expectation q direction‖ := by rw [abs_of_nonneg hε₂]
-    _ ≤ (1 - ε) * 1 := mul_le_mul_of_nonneg_left hqBound hε₂
-    _ = 1 - ε := by ring
+  unfold expectation;
+  simp +decide [ hμ, Finset.sum_add_distrib, add_smul ];
+  simp_all +decide [ ← Finset.smul_sum ];
+  refine' le_trans ( norm_sum_le _ _ ) _;
+  simp +decide [ norm_smul, abs_of_nonneg ( sub_nonneg.2 hε₁ ), abs_of_nonneg ( hq_nonneg _ ) ];
+  exact le_trans ( Finset.sum_le_sum fun _ _ => mul_le_mul_of_nonneg_left ( hdir_norm _ ) ( mul_nonneg ( sub_nonneg.2 hε₁ ) ( hq_nonneg _ ) ) ) ( by simp +decide [ ← Finset.mul_sum _ _ _, hq_sum ] )
 
 end PhysicsSM.NullStrand.NullFiber

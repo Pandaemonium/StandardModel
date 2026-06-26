@@ -124,6 +124,21 @@ that its curvature block is the existing causal-diamond holonomy defect.
 Generation/triality papers should wait until walk/Kahler-Dirac doublers,
 chirality doubling, and internal-family multiplicities are separated.
 
+The 2026-06-25 Aristotle wave-3 integration updates the Lean-status guard for
+this publication plan. The named G1 null-strand capstones now exist and build as
+first candidates: `finiteIIDNullStrand_master` and
+`checkerboardBohmBell_master`. Papers may cite them as candidate assembled finite
+models after quoting their exact hypotheses, but should not yet present G1 as
+fully publication-closed until semantic alignment, assumption-whitelist review,
+and manifest regeneration are complete.
+
+The 2026-06-25 wave-4 semantic audit strengthens that guard. The i.i.d. capstone
+now carries explicit null-step, barycenter, process-nullity, and octahedral
+witness lemmas; the checkerboard capstone now names its finite-model caveat
+instead of overselling it. The publication-safe phrasing is therefore:
+"G1 has concrete, compiling Lean capstone candidates with semantic audit notes;
+publication closure awaits generated assumption and manifest reports."
+
 ## How to read this plan
 
 Each candidate manuscript has a type suffix and a readiness label. The suffix
@@ -131,14 +146,14 @@ says what sort of contribution the paper is trying to make; the readiness label
 says how close the central claim is to being defensible.
 
 ```text
-Banked       core result is trusted Lean (compiles, no s o r r y)
-Near         core is kernel-clean draft Lean (no s o r r y) needing promotion + writeup
+Banked       core result is trusted Lean (compiles, no proof holes)
+Near         core is kernel-clean draft Lean (no proof holes) needing promotion + writeup
 Synthesis    conceptual paper with partial banked algebra; needs framing, not new kernels
 Aspirational gated on an unproven theorem; listed as a target, not a ready paper
 ```
 
 Trusted vs draft is tracked exactly because it changes what can be claimed. A
-draft module that is kernel-clean (no `s o r r y`) is strong evidence but has not
+draft module that is kernel-clean (no proof holes) is strong evidence but has not
 passed the semantic/convention review required to be a trusted public surface.
 
 Every manuscript should include an early claim-status matrix with these labels:
@@ -189,6 +204,7 @@ remaining naturality, scaling, and interpretation gates.
 | P9-R | Research | Cosmological-constant source response from diamond closure | Aspirational | Quantum gravity |
 | P10-R | Research | Generations from the exceptional Jordan / triality layer | Aspirational | Math-phys / particle |
 | P11-R | Research | Stable particle sectors of finite causal quantum channels | Aspirational | Foundations / quantum information |
+| P12-F | Formalization | Exterior-history finite grade-2 mass capacity | Near | Formalized-math / quantum foundations |
 
 ## Part I: formalization papers (banked or near-banked)
 
@@ -253,7 +269,7 @@ ontology proof that those two null components are uniquely real.
 Banked Lean. `PhysicsSM.Spinor.PluckerMass` (trusted): finite determinant
 identity, real nonnegativity, mass-zero/common-direction criterion. Trusted
 twistor-chart matching in `PhysicsSM.Spinor.TwistorPluckerMass` (promoted, no
-`s o r r y`). `SL(2,C)` covariance of the determinant mass in
+proof holes). `SL(2,C)` covariance of the determinant mass in
 `PhysicsSM.Draft.NullEdgeSpinorGeometryTargets`
 (`finBundleMomentum_det_sl2_invariant`, kernel-clean). The draft
 `PhysicsSM.Draft.NullEdgeObserverChannelCore` now packages the sharpened
@@ -434,6 +450,46 @@ Claim boundary. The square-root identities are finite algebra. The
 particle/antiparticle and localization reading of the two sheets must stay
 conditional on the standard Dirac branch literature.
 
+#### 2026-06-25 super-Dirac refinement (concrete gate)
+
+A new concrete proposal is the **null-diamond super-Dirac operator**:
+
+```text
+D_N = Σ_i c(ℓ_i) (T_i - P_i),   D = i D_N + Γ_5 Φ
+```
+
+`c(ℓ_i)` is the null Clifford symbol for direction `i`, `T_i` is the pullback
+shift, `P_i` is the existence projector, and `Φ` is the odd self-adjoint Yukawa
+operator on the internal finite space.
+
+This proposal enforces the key refinement: **Plücker mass is the square of the
+kinetic symbol, not an extra zero-order addend in `D_N^2`.** `Φ^2` is the only
+mass block. The finite square should split as
+
+```text
+D^2 = -□_null - 𝒞_diamond - 𝒯_frame + Φ^2
+      - i Γ_5 Σ_i c(ℓ_i)[∇_i, Φ]
+```
+
+where `□_null` is the null-direction second-order propagation, `𝒞_diamond` is the
+causal-diamond holonomy curvature term, and `𝒯_frame` is the frame-variation term
+that vanishes under a finite tetrad postulate.
+
+In a flat, frame-covariantly constant regime, the shell condition is:
+
+```text
+-□_null + Φ^2 = 0  on shell
+```
+
+equivalently, on a local mode with symbol momentum `P(ξ)` and a `Φ`-eigenvector
+`Φ^2 ψ = m^2 ψ`:
+
+```text
+P(ξ)^2 = m^2.
+```
+
+This is exactly the non-double-counting message.
+
 Notation guardrail. The Krein/spectral-triple layer should reserve `eta` for
 the linear fundamental symmetry defining the Krein product, `JReal` or `C` for
 the antilinear real structure, and `Sigma_m = D / m` for the mass-shell sheet
@@ -607,7 +663,10 @@ to gauge-invariant multi-particle dynamics.
 Claim boundary. A finite path-sum / recurrence result in `1+1`, plus a
 homogeneous null-step quantum-walk fixed-point package if the new targets land.
 It is not yet a proof of generic higher-dimensional Dirac universality or a
-causal-set spinor propagator.
+causal-set spinor propagator. It also is not yet the G1
+`checkerboardBohmBell_master`: that capstone still requires a trajectory measure
+and concrete assembly of null steps with Born equivariance from the banked
+checkerboard lemmas.
 
 ### P5-F. Finite quantum measure on causal events
 
@@ -847,7 +906,11 @@ generation-blindness of the visible geometry.
 
 Banked Lean. This paper cites the whole trusted spine (P1, P3, P4) and the
 kernel-clean clusters (P2, P5, P6) as evidence that the program is a finite
-theorem spine, not a slogan.
+theorem spine, not a slogan. It may cite the G1 master theorem pair as candidate
+assembled finite artifacts now that `finiteIIDNullStrand_master` and
+`checkerboardBohmBell_master` exist as concrete Lean declarations with wave-4
+semantic audit notes, while still marking generated assumption and manifest
+reports as pending.
 
 Remaining. Mostly writing and honest scoping. The value is the falsification-aware
 priority map and the two-layer architecture, not a new kernel.
@@ -1508,18 +1571,22 @@ mixing data would weaken or kill the branch.
 
 The most useful theorem/counterexample sequence after P1 is:
 
-1. `observerSpinFrame_wellDefined_up_to_SU2`;
-2. `gramWeightedPlucker_eq_exteriorSquare`;
-3. `massless_iff_rank_VGsqrt_le_one`;
-4. `threeLabel_dephasing_not_monotone`;
-5. `twoLevelYukawa_coherence_to_dephasedDet`;
-6. `productGradedSuperDirac_sq`;
-7. `diamondAdditiveDefect_eq_holonomyMinusId`;
-8. `flatSuperDiracSymbol_has_lorentzianMassShell`;
-9. `oneDiamond_naturalOperator_classification`;
-10. `closedIntervalOrderComplex_contractible`;
-11. `weightedHodgeProjector_eq_pseudoinverseProjector`;
-12. `bandLimitedNullWalk_convergesToDirac` plus
+1. `localNullSymbol_sq_eq_weightedPluckerMass`;
+2. `nullDirac_commutator_mul_eq_edgeDifferences`;
+3. `superDirac_isOdd`;
+4. `flatSuperDiracSymbol_has_lorentzianMassShell`;
+5. `productGradedSuperDirac_sq`;
+6. `diamondAdditiveDefect_eq_holonomyMinusId`;
+7. `oneDiamond_naturalOperator_classification`;
+8. `superDirac_sq_eq_finiteLichnerowicz`;
+9. `observerSpinFrame_wellDefined_up_to_SU2`;
+10. `gramWeightedPlucker_eq_exteriorSquare`;
+11. `massless_iff_rank_VGsqrt_le_one`;
+12. `threeLabel_dephasing_not_monotone`;
+13. `twoLevelYukawa_coherence_to_dephasedDet`;
+14. `closedIntervalOrderComplex_contractible`;
+15. `weightedHodgeProjector_eq_pseudoinverseProjector`;
+16. `bandLimitedNullWalk_convergesToDirac` plus
     `brillouinZone_coneCensus`.
 
 Near-term editorial work order:
@@ -1543,3 +1610,75 @@ Near-term editorial work order:
   theorems.
 - Cite a source only after its statement and conventions have been checked
   against ours.
+
+
+### P12-F. Plucker-Sorkin exterior-history target
+
+#### Candidate publication target: Relational mass as a finite grade-2 history capacity
+
+This lane is now concrete and self-contained:
+
+- Input data: finite edge alternatives `E` with Weyl spinors `\psi_e : \mathbb C^2`.
+- Bundle momentum: `P_A = \sum_{e \in A} \psi_e \psi_e^\dagger` on finite edge events `A \subseteq E`.
+- Observable:
+
+\[
+M(A) = \det P_A.
+\]
+
+Cauchy\u2013Binet gives
+
+\[
+M(A)=\sum_{\{e,f\}\subseteq A}|\psi_e\wedge\psi_f|^2.
+\]
+
+Immediate consequences:
+
+- `M(\varnothing)=0`, `M(A) \ge 0`, and monotonicity on finite set inclusion.
+- `M({e})=0` for singleton edges.
+- Finite Mobius transform is exactly supported on two-element subsets.
+- `I_2(A,B)=M(A\cup B)-M(A)-M(B)=\sum_{e\in A}\sum_{f\in B}|\psi_e\wedge\psi_f|^2 \ge 0`.
+- `I_3(A,B,C)=0` for disjoint `A,B,C`; pure grade-2 capacity.
+
+### Strong-positivity interpretation (key interpretive move)
+
+- If a standard strongly positive decoherence functional had diagonal `D(A,A)=M(A)` on singleton-edge histories, singleton diagonals force `D({e},B)=0` for all `e,B`, hence all of `D` is zero.
+- Therefore nonzero Plucker mass cannot be the singleton-edge decoherence diagonal.
+- Suggested ontology split: `M` is an observable on unordered edge pairs/relational histories, not elementary edge histories.
+
+### Canonical pair-history lift
+
+- Pair-history space: `\Pi_2(E)=\{{e,f\}:e\neq f\}`.
+- Additive measure `\nu` on `\Pi_2(E)` with `\nu({\{e,f\}})=|\psi_e\wedge\psi_f|^2`.
+- Edge lift: `M(A)=\nu(C_2(A))`, where `C_2(A)` are pairs contained in `A`.
+- Uniqueness by set-additivity.
+
+### Coherent pair-history pullback
+
+- For PSD Hermitian `K` on pairs, pullback via pair incidence gives edge set function with Mobius support only at cardinalities `2,3,4`.
+- This yields controlled third/fourth-order edge interference from ordinary pair-level quantum coherence.
+- Off-diagonal coherence phases (e.g. Abelian holonomy on diamonds) are invisible to diagonal `M` but visible in coherent interference terms.
+
+### Lean integration status
+
+- Add two modules:
+  - `PhysicsSM/NullStrand/Histories/ExteriorMassMeasure.lean`
+  - `PhysicsSM/NullStrand/Histories/ExteriorRankMeasure.lean`
+- Primary dependencies already in-tree:
+  - `PhysicsSM/Spinor/PluckerMass`
+  - `PhysicsSM/Draft/NullEdgeQuantumMeasureFiniteAristotle`
+- This is immediately consistent with current ontology:
+  - trusted Plucker determinant identity
+  - finite grade-2 quantum-measure machinery
+  - ready insertion point for publication-facing formalization artifacts.
+
+### Source reference
+
+- `Sources/Plucker_Sorkin_Exterior_History_Theorem.md`
+
+### Integration status
+
+- Added as a planned publication lane in this roadmap, aligned with
+  `Sources/NullStrand_Lean_Roadmap_Improved.md`.
+- This lane is covered by the completed 2026-06-25 Aristotle batch entries in
+  `AgentTasks/null-strand-overnight-ledger-2026-06-25.md`.

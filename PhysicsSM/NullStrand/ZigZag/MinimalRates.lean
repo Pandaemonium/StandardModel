@@ -56,4 +56,50 @@ theorem minimalRates_netTransfer_of_source_ne_zero {X : Type*} (d : ChiralTransf
     rateLtoR d x * d.rhoL x - rateRtoL d x * d.rhoR x = d.F x := by
   exact minimalRates_netTransfer d x
 
+/-! ## Minimal-coupling least-action uniqueness (ZZ least-action of rates)
+
+The minimal rates are *one-sided*: at any point at most one chiral direction is
+active, so the two rates never fire simultaneously. Among all nonnegative rate
+pairs realizing the same net source current, this no-simultaneous-flow condition
+singles out a unique minimal coupling, which is exactly `(rateLtoR, rateRtoL)`. -/
+
+-- `realPos_mul_realPos_neg` now lives in the shared module
+-- `PhysicsSM.NullStrand.RealPositivePart` (resolved here via parent-namespace lookup).
+
+/-- The two minimal rates never fire simultaneously: their product vanishes. -/
+theorem minimalRates_product_zero {X : Type*} (d : ChiralTransferData X) (x : X) :
+    rateLtoR d x * rateRtoL d x = 0 := by
+  unfold rateLtoR rateRtoL
+  rw [div_mul_div_comm, realPos_mul_realPos_neg, zero_div]
+
+/-- **Least-action rate uniqueness.** With strictly positive densities, the minimal
+rates `(rateLtoR, rateRtoL)` are the unique nonnegative pair that both realizes the
+net source current and carries no simultaneous two-way flow (`a * b = 0`). -/
+theorem minimalRates_unique {X : Type*} (d : ChiralTransferData X) (x : X)
+    (hLpos : 0 < d.rhoL x) (hRpos : 0 < d.rhoR x)
+    (a b : ℝ) (_ha : 0 ≤ a) (_hb : 0 ≤ b)
+    (hnet : a * d.rhoL x - b * d.rhoR x = d.F x) (hmin : a * b = 0) :
+    a = rateLtoR d x ∧ b = rateRtoL d x := by
+  rcases mul_eq_zero.mp hmin with ha0 | hb0
+  · subst ha0
+    have hF : d.F x = -(b * d.rhoR x) := by linarith
+    have hFle : d.F x ≤ 0 := by rw [hF]; nlinarith
+    refine ⟨?_, ?_⟩
+    · unfold rateLtoR realPos
+      rw [max_eq_right hFle]; simp
+    · unfold rateRtoL realPos
+      have hneg : -d.F x = b * d.rhoR x := by rw [hF]; ring
+      rw [hneg, max_eq_left (by nlinarith)]
+      field_simp
+  · subst hb0
+    have hF : d.F x = a * d.rhoL x := by linarith
+    have hFge : 0 ≤ d.F x := by rw [hF]; nlinarith
+    refine ⟨?_, ?_⟩
+    · unfold rateLtoR realPos
+      rw [hF, max_eq_left (by nlinarith)]
+      field_simp
+    · unfold rateRtoL realPos
+      have hneg : -d.F x ≤ 0 := by linarith
+      rw [max_eq_right hneg]; simp
+
 end PhysicsSM.NullStrand.ZigZag

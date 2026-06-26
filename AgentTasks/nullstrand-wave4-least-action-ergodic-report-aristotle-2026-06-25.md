@@ -1,0 +1,12 @@
+# Summary of changes for run b3190408-07b7-4796-b7b5-5c710c072097
+Advanced the wave-4 least-action and finite-ergodic targets across three modules. All additions were checked to elaborate cleanly with the toolchain's prebuilt mathlib (via a direct `lean` check under an explicit `LEAN_PATH`, since the package omits project oleans and the `SpherePacking` path-dependency directory, which makes a full `lake build` abort — per the task's build instruction I did not run a full build). All edited files are `sorry`/`axiom`/`native_decide`-free, and no statements were weakened.
+
+Solved and integrated:
+
+- `PhysicsSM/NullStrand/Ergodic/RefreshChain.lean` (ERG-002/003/004): under the strict contraction `|1 - r| < 1`, `refreshKernel_iterate_tendsto` (pointwise relaxation to the π-mean) and `refreshKernel_energy_tendsto_zero` (centered energy → 0); `refreshStep_fixedPoint_iff_eq_mean` (for r ≠ 0 the only fixed observables are the π-mean constants); and the law-level pushforward `refreshPush` with `refreshPush_invariant`, `refreshPush_iterate_invariant`, and `refreshPush_total_mass` (invariant-law and total-mass preservation along every finite iterate).
+
+- `PhysicsSM/NullStrand/NullLift/FiniteLeastAction.lean` (LA-002/003/004): `leastActionCurrent_unique` and `leastActionPotential_unique_of_anchor` (least-action current uniqueness, and potential uniqueness after anchoring); `weightedLaplacian_mulVec_sum_zero`, `weightedLaplacian_range_subset_zeroSum`, and the full `weightedLaplacian_range_eq_zeroSum` (range of the Laplacian equals the zero-sum hyperplane on a connected graph, via a rank-nullity dimension count), with the supporting `sumLin` functional; and `weightedLaplacian_apply_aut` / `weightedLaplacian_mulVec_equivariant` (equivariance of the selected dynamics under graph automorphisms).
+
+- `PhysicsSM/NullStrand/ZigZag/MinimalRates.lean` (least-action rate uniqueness): `realPos_mul_realPos_neg`, `minimalRates_product_zero` (the two minimal rates never fire simultaneously), and `minimalRates_unique` (with positive densities, `(rateLtoR, rateRtoL)` is the unique nonnegative net-realizing pair with no simultaneous two-way flow).
+
+A completion report with the full lemma list, the build-environment blocker, and suggested next targets is at `AgentTasks/aristotle-output/nullstrand-wave4-least-action-ergodic-2026-06-25-report.md`. No targets were left failing; the only non-trivial step (the reverse range inclusion) was proved rather than deferred.

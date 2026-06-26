@@ -267,4 +267,106 @@ theorem refreshKernel_spectralGap_eq_r
     _ = (1 - r) ^ 2 * (∑ ω, (f ω - refreshMean π f) ^ 2) := by
           rw [← Finset.mul_sum]
 
+/-! ## Finite ergodic consequences (ERG-002/ERG-003/ERG-004)
+
+The centered power-decay identity `refreshKernel_correlation_eq_pow` upgrades to
+genuine finite ergodic statements once the contraction factor is strict,
+`|1 - r| < 1` (equivalently `0 < r < 2`): every observable relaxes pointwise to
+its `π`-mean, the centered energy collapses to zero, the only fixed observables
+are the `π`-mean constants, and the law-level pushforward keeps `π` (and total
+mass) invariant along every finite iterate. -/
+
+/-- ERG-002. Under the strict contraction `|1 - r| < 1`, every observable relaxes
+pointwise to its `π`-mean along the refresh iteration. -/
+theorem refreshKernel_iterate_tendsto
+    (r : ℝ) (π : Ω → ℝ) (hπ : SimplexLaw π) (hr : |1 - r| < 1) (f : Ω → ℝ) (ω : Ω) :
+    Filter.Tendsto (fun n : ℕ => ((refreshStep r π)^[n] f) ω) Filter.atTop
+      (nhds (refreshMean π f)) := by
+  have hpow : Filter.Tendsto (fun n : ℕ => (1 - r) ^ n * (f ω - refreshMean π f))
+      Filter.atTop (nhds 0) := by
+    have := (tendsto_pow_atTop_nhds_zero_of_abs_lt_one hr).mul_const (f ω - refreshMean π f)
+    simpa using this
+  have hshift : Filter.Tendsto (fun n : ℕ => ((refreshStep r π)^[n] f) ω - refreshMean π f)
+      Filter.atTop (nhds 0) := by
+    simpa [refreshKernel_correlation_eq_pow r π hπ] using hpow
+  have := hshift.add_const (refreshMean π f)
+  simpa using this
+
+/-- ERG-003. The centered energy of the iterate collapses to zero under the strict
+contraction `|1 - r| < 1`. -/
+theorem refreshKernel_energy_tendsto_zero
+    (r : ℝ) (π : Ω → ℝ) (hπ : SimplexLaw π) (hr : |1 - r| < 1) (f : Ω → ℝ) :
+    Filter.Tendsto (fun n : ℕ => ∑ ω, (((refreshStep r π)^[n] f) ω - refreshMean π f) ^ 2)
+      Filter.atTop (nhds 0) := by
+  have hsum : ∀ n : ℕ,
+      (∑ ω, (((refreshStep r π)^[n] f) ω - refreshMean π f) ^ 2)
+        = ((1 - r) ^ n) ^ 2 * (∑ ω, (f ω - refreshMean π f) ^ 2) := by
+    intro n
+    rw [Finset.mul_sum]
+    refine Finset.sum_congr rfl ?_
+    intro ω _
+    rw [refreshKernel_correlation_eq_pow r π hπ]
+    ring
+  have hg : Filter.Tendsto (fun n : ℕ => (1 - r) ^ n) Filter.atTop (nhds 0) :=
+    tendsto_pow_atTop_nhds_zero_of_abs_lt_one hr
+  have hg2 : Filter.Tendsto (fun n : ℕ => ((1 - r) ^ n) ^ 2) Filter.atTop (nhds 0) := by
+    simpa using hg.pow 2
+  have hpow := hg2.mul_const (∑ ω, (f ω - refreshMean π f) ^ 2)
+  simpa [hsum] using hpow
+
+/-- ERG-004 (observable level). For a genuine refresh (`r ≠ 0`) the only fixed
+observables of one refresh step are the ones constantly equal to their `π`-mean. -/
+theorem refreshStep_fixedPoint_iff_eq_mean
+    (r : ℝ) (hr : r ≠ 0) (π : Ω → ℝ) (f : Ω → ℝ) :
+    refreshStep r π f = f ↔ ∀ ω, f ω = refreshMean π f := by
+  constructor
+  · intro hfix ω
+    have h := refreshKernel_centered_formula r π f ω
+    rw [congrFun hfix ω] at h
+    have hz : r * (f ω - refreshMean π f) = 0 := by nlinarith [h]
+    have := (mul_eq_zero.mp hz).resolve_left hr
+    linarith
+  · intro hf
+    funext ω
+    have h := refreshKernel_centered_formula r π f ω
+    rw [hf ω] at h ⊢
+    nlinarith [h]
+
+/-- Law-level pushforward `(ν P)_{ω'} = ∑_ω ν_ω P_{ω ω'}` of a finite law `ν`
+through the refresh kernel. -/
+def refreshPush (r : ℝ) (π : Ω → ℝ) (ν : Ω → ℝ) : Ω → ℝ :=
+  fun ω' => ∑ ω, ν ω * refreshKernel r π ω ω'
+
+/-- ERG-004 (law level). The target law `π` is invariant for the pushforward. -/
+theorem refreshPush_invariant (r : ℝ) (π : Ω → ℝ) (hπ : SimplexLaw π) :
+    refreshPush r π π = π := by
+  funext ω'
+  exact refreshKernel_invariant r π hπ ω'
+
+/-- The invariant law `π` is preserved along every finite iterate of the
+pushforward. -/
+theorem refreshPush_iterate_invariant (r : ℝ) (π : Ω → ℝ) (hπ : SimplexLaw π) (n : ℕ) :
+    (refreshPush r π)^[n] π = π := by
+  induction n with
+  | zero => simp
+  | succ n ih => rw [Function.iterate_succ_apply', ih, refreshPush_invariant r π hπ]
+
+/-- The pushforward preserves total mass (a stochastic-kernel conservation law). -/
+theorem refreshPush_total_mass (r : ℝ) (π : Ω → ℝ) (hπ : SimplexLaw π) (ν : Ω → ℝ) :
+    ∑ ω', refreshPush r π ν ω' = ∑ ω, ν ω := by
+  rcases hπ with ⟨_, hπsum⟩
+  unfold refreshPush
+  rw [Finset.sum_comm]
+  calc
+    ∑ ω, ∑ ω', ν ω * refreshKernel r π ω ω'
+        = ∑ ω, ν ω * (∑ ω', refreshKernel r π ω ω') := by
+          refine Finset.sum_congr rfl ?_; intro ω _; rw [Finset.mul_sum]
+    _ = ∑ ω, ν ω * 1 := by
+          refine Finset.sum_congr rfl ?_; intro ω _
+          congr 1
+          unfold refreshKernel
+          rw [Finset.sum_add_distrib, ← Finset.mul_sum, ← Finset.mul_sum]
+          simp [hπsum]
+    _ = ∑ ω, ν ω := by simp
+
 end PhysicsSM.NullStrand.Ergodic

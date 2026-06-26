@@ -14,7 +14,7 @@ The earlier roadmap has the right conceptual decomposition, but it still mixes f
 
 This revision makes the following changes.
 
-- **Reported banked results are not called verified.** They become `REPORTED_EXISTING` until a clean build, import audit, and axiom audit pass.
+- **Reported banked results are not called verified.** They become `REPORTED_EXISTING` until a clean build, import audit, and assumption audit pass.
 - **The first complete pathwise model is i.i.d. and finite.** This uses the existing Banach-valued strong law and avoids making a new finite Markov-chain ergodic theorem a hidden prerequisite.
 - **The exact checkerboard Bohm model is a separate capstone.** It proves null steps and Born equivariance, while the i.i.d. capstone proves a single-history timelike coarse limit.
 - **Discrete-time kernels, continuous-time jump generators, and continuum drifts are different APIs.** The old plan occasionally treated them as one object.
@@ -59,8 +59,11 @@ Required outputs:
 
 - clean pinned build;
 - generated import audit for every reported theorem;
+- generated declaration inventory that `#check`s every banked public name;
+- public-capstone assumption audit with an explicit whitelist;
 - convention and normalization map;
-- no unapproved `sorry`, `admit`, or axiom dependencies in public capstones.
+- no proof-hole or unapproved assumption dependencies in public capstones;
+- one canonical definition for each core API object used downstream.
 
 No later “banked” claim should be used before G0.
 
@@ -124,6 +127,8 @@ The project should not begin with continuum diffusion, multi-time Dirac PDEs, or
 ```text
 G0 audit
   -> canonical conventions
+  -> duplicate-definition cleanup
+  -> generated declaration inventory + assumption audit
   -> finite PMF kernels
   -> null fiber + octahedral finite resolution
   -> abstract finite flux theorem
@@ -248,6 +253,10 @@ PhysicsSM/
 - `BellQFT` may import the finite null-lift API, never the converse.
 - `Graph.Symbol` may import the banked static Dirac/Pluecker bridge; static spinor modules must not import graph ontology.
 - Draft/conjectural modules must never be imported by trusted finite capstones.
+- Every trusted public capstone must have a transitive import audit: either the
+  depended-on draft core is promoted to a trusted namespace, or the capstone's
+  transitive closure is checked by an assumption/proof-hole guard before the
+  theorem is counted as banked.
 
 ## 6. Core public interfaces
 
@@ -323,7 +332,7 @@ Separate the relation into spacetime-changing null propagation and zero-displace
 Deliverables:
 
 - `Audit.Inventory` imports and `#check`s every claimed declaration;
-- `Audit.Axioms` records approved axiom dependencies of capstones;
+- `Audit.Axioms` records approved kernel dependencies of capstones;
 - machine-readable theorem manifest generated from annotations;
 - human-readable blueprint with stable node IDs;
 - one command regenerates CSV/JSON/DOT status artifacts.
@@ -499,11 +508,16 @@ Use the following staged audit.
 1. generic support-transfer theorem;
 2. `support(D^2) subset R composed R`;
 3. concrete checkerboard operator instance;
-4. reviewed super-Dirac block square;
-5. local symbol/soldering theorem;
-6. null-support theorem for the concrete operator;
-7. continuum/scaling theorem;
-8. Bell histories and prediction.
+4. reviewed super-Dirac block square with explicit `D = i D_N + Γ₅ Φ` decomposition;
+5. local symbol/soldering theorem:
+   `nullDirac_commutator_mul_eq_edgeDifferences` (first-order symbol identity),
+   then `localNullSymbol_sq_eq_weightedPluckerMass` (Plücker kinetic scalar);
+6. frame/curvature decomposition on one diamond:
+   `superDirac_sq_eq_finiteLichnerowicz` in the two-direction case:
+   `-□_null - curvature - frame defect + Φ^2 - i Γ₅ d_Φ`;
+7. null-support theorem for the concrete operator;
+8. continuum/scaling theorem;
+9. Bell histories and prediction.
 
 Do not let the easy support-transfer lemma stand in for steps 5–7.
 
@@ -547,6 +561,20 @@ theorem finiteIIDNullStrand_master :
 
 The actual Lean statement will use a trajectory probability space and the project’s vector type. It proves that one actual history can be everywhere null microscopically and timelike macroscopically.
 
+Status update from the 2026-06-25 Aristotle wave-3 integration: the named
+declaration `finiteIIDNullStrand_master` now exists in
+`PhysicsSM.NullStrand.Master.FiniteModel` and builds in the live tree. Treat it
+as a first concrete G1 capstone candidate, not as final publication closure,
+until its hypotheses, construction fields, and assumption surface have been
+reviewed against the intended physical claim.
+
+Wave-4 semantic-audit update: Aristotle strengthened this capstone with explicit
+null-step, barycenter, and process-nullity conclusions plus an octahedral
+i.i.d. witness family. The remaining publication gate is now mechanical and
+semantic rather than existential: generate the assumption whitelist, regenerate
+the manifest from Lean declarations, and quote the exact finite hypotheses in
+any paper.
+
 ### 8.2 Checkerboard Bohm–Bell master
 
 ```lean
@@ -557,6 +585,20 @@ theorem checkerboardBohmBell_master :
 ```
 
 This is the cleanest formal answer to the original physical intuition.
+
+Status update from the 2026-06-25 Aristotle wave-3 integration: the named
+declaration `checkerboardBohmBell_master` now exists in
+`PhysicsSM.NullStrand.Master.Checkerboard` and builds in the live tree. It should
+be read as the first finite checkerboard master theorem candidate. The next
+review step is semantic: confirm that the finite trajectory measure,
+Born-equivariance statement, and null-step statement are the intended ones and
+are not only a renamed one-step shell.
+
+Wave-4 semantic-audit update: the module now documents the precise checkerboard
+caveat rather than hiding it. The theorem is a real finite checkerboard capstone
+for the current model, but the plan should keep the stronger full Minkowski
+nullity formulation as a separate closure task until the statement and witness
+are aligned.
 
 ### 8.3 Generic finite lift master
 
@@ -594,7 +636,7 @@ Search for a stopped-process theorem first. A global theorem should not hide exc
 
 ### O3 — entanglement and synchronization curvature
 
-Do not seek an unconditional iff. Seek theorem families parameterized by locality, positivity, covariance, and regularity axioms on `HiddenTransportRule`.
+Do not seek an unconditional iff. Seek theorem families parameterized by locality, positivity, covariance, and regularity assumptions on `HiddenTransportRule`.
 
 ### O4 — operational internal clock
 
@@ -603,10 +645,25 @@ Specify a gauge-invariant record variable and a coupling from relative holonomy 
 ### O5 — graph super-Dirac symbol
 
 This is the highest-value operator theorem. The search object is a concrete `D`, not another abstract square identity.
+Priority target (from the 2026-06-25 super-Dirac proposal):
+
+```text
+D = i Σ_i c(ℓ_i)(T_i - P_i) + Γ₅ Φ
+```
+
+with graded oddness, locality, and exact finite decomposition:
+
+```text
+D^2 = -□_null - 𝒞_diamond - 𝒯_frame + Φ^2
+      - i Γ₅ Σ_i c(ℓ_i)[∇_i, Φ]
+```
+
+where the first three terms are finite geometric data and no additional
+Plücker term is added to `Φ^2`.
 
 ### O6 — null-local/covariant/continuum-correct operator
 
-Keep regular layered graphs and causal-set candidates as separate instances of one property audit. A theorem may be positive, negative, or a tradeoff result, but its axioms must be explicit.
+Keep regular layered graphs and causal-set candidates as separate instances of one property audit. A theorem may be positive, negative, or a tradeoff result, but its assumptions must be explicit.
 
 ### O7 — natural null dilation
 
@@ -652,8 +709,8 @@ Every trusted PR should run:
 
 ```text
 lake build
-source scan for sorry/admit/axiom
-public capstone axiom audit
+source scan for proof holes and unapproved assumptions
+public capstone assumption audit
 blueprint/manifest consistency check
 lint/documentation check
 selected example evaluation
@@ -729,20 +786,33 @@ This section records the state of the Lean implementation against the manifest.
 Live tree: `PhysicsSM/NullStrand/`, built under the pinned toolchain
 `leanprover/lean4:v4.28.0`. Ledger: `AgentTasks/null-strand-overnight-ledger-2026-06-25.md`.
 
-### Gate G0 — verified finite bank: ACHIEVED
+### Gate G0 — verified finite bank: build-green, audit still to generate
 
-`lake build PhysicsSM.NullStrand` succeeds (exit 0, 8064 jobs). The full
-NullStrand module set compiles. The only remaining `sorry`s are two documented
-Aristotle handoffs in `Clock/InternalHolonomy.lean`: HOL-002
-`internalSegment_unitary_of_hermitian` (matrix-exponential unitarity, blocked by a
-`NormedAlgebra` instance diamond) and HOL-003 `internalHolonomy_gaugeCovariant_path`
-(matrix-exp conjugation). All other modules are `sorry`/`axiom`-free.
+`lake build` succeeds under the pinned toolchain (exit 0, 8292 jobs in the
+2026-06-25 integration pass). The live `PhysicsSM/NullStrand/` tree compiles,
+and the previously documented `Clock/InternalHolonomy.lean` handoffs have now
+been closed:
+
+- HOL-002 `internalSegment_unitary_of_hermitian`;
+- HOL-003 `internalHolonomy_gaugeCovariant_path`;
+- helper lemma `internalSegment_conj`.
+
+Do not treat this as the full G0 audit until the generated import inventory and
+public-capstone assumption-whitelist reports are committed. The current status is
+"build green and targeted proof integrations checked"; the remaining G0 work is
+mechanical but still required for publication-grade claims.
+
+The 2026-06-25 Aristotle hardening review also makes G0 include three concrete
+cleanup gates before G2/G3 reuse: de-duplicate `FiniteNullResolution`, unify the
+`minkowskiInner` convention surface, and keep only one public proof of
+`uniformComponent_bounds_meanNorm`; generate the declaration inventory from Lean
+rather than treating the hand-maintained manifest as authoritative.
 
 ### Nodes proven and integrated into the live tree (Aristotle, verified clean)
 
-Each was proved as a focused standalone Aristotle job, verified
-`sorry`/`admit`/`axiom`-free with `lake env lean` and a `git diff` confirming the
-statement was not weakened, then integrated and rebuilt green:
+Each was proved as a focused standalone Aristotle job, verified with
+`lake env lean`, token scans, and a `git diff` confirming the statement was not
+weakened, then integrated and rebuilt green:
 
 | node | declaration | live module |
 |---|---|---|
@@ -755,6 +825,24 @@ statement was not weakened, then integrated and rebuilt green:
 | ENT-001 | `pureDirectionProjector` (+trace/Hermitian/idempotent) | `Entanglement/DirectionProjector.lean` |
 | BELL-004 | `operatorBlockZero_implies_currentZero` | `BellQFT/BlockSupport.lean` |
 | GRAPH-002 | `support_square_subset_relComp` | `Graph/Support.lean` |
+| HOL-002/HOL-003 | `internalSegment_unitary_of_hermitian`, `internalSegment_conj`, `internalHolonomy_gaugeCovariant_path` | `Clock/InternalHolonomy.lean` |
+| CONT-001 | `coerciveWeightedPoisson_exists_unique` | `Continuum/AbstractPoisson.lean` |
+| DEF-004, KIN-004 | `FiniteNullResolution`, `octahedralResolution` | `NullFiber/Barycentric.lean` |
+| BELL-002 | `zeroBornWeight_implies_noOutgoingCurrent` | `BellQFT/BornSafety.lean` |
+| TRAJ-001 | `iidTrajMeasure_isProbability` | `Probability/Trajectory.lean` |
+| KIN-003 | `octa_secondMoment_isotropic` | `NullFiber/OctaSecondMoment.lean` |
+
+### Additional in-tree verified jobs (documented in ledger)
+
+This cycle also completed the following follow-on job IDs as verified and integrated:
+
+| project_id | primary node(s) |
+|---|---|
+| `eea53903-3816-424b-8344-341b014e8ed0` | `CONT-001` |
+| `43e6ddc9-dc11-49cf-a5bf-0f843da02247` | `KIN-003` |
+| `e675d945-d923-4298-807b-4f0c74f52b9e` | `DEF-004`, `KIN-004` |
+| `cdfbad1c-bd1d-44e3-89a5-4ea7c821b29c` | `BELL-002` |
+| `2ccba4dc-906b-43d2-b1e9-bd51760c1499` | `TRAJ-001` |
 
 Additionally already present/proven in the live tree from the prior wave:
 KIN-001 `nullFiber_equiv_restSphere`, KIN-003 `octaNull_mean_eq_timelike`,
@@ -766,12 +854,56 @@ LIFT-001 `residualCurrent_divergence_eq`, GRAPH-001
 `quantumCurrent_antisymm`, `minimalBellRate_masterEquation`,
 `productDirectionRepresentation_iff_separable`.
 
+### Standalone proof jobs integrated but not yet promoted
+
+The 2026-06-25 next-wave Aristotle batch also produced focused standalone proofs
+that were locally checked and staged under `AgentTasks/aristotle-standalone/`.
+Some are intentionally not yet promoted because their standalone contracts use a
+simplified API or need a deliberate live-module home:
+
+- KIN-007 `weighted_variance_eq_one_sub_normSq`;
+- KIN-008 `massRatioSq_eq_invGammaSq`, `invGammaSq_eq_massRatioSq`;
+- ZZ-005 `minimalTwoStateCoupling_unique`, `minimalTwoStateCoupling_net`;
+- LA-002 `lapMatrix_range_eq_zeroSum`;
+- SYNC-001/002 `applyKernel_applyKernel`,
+  `defect_zero_iff_all_initial_laws`;
+- BELL/Fock `preservesDirectionMarginal_comp`;
+- ENT-003 standalone finite separable marginal probability lemmas;
+- TRAJ/MASTER standalone stochastic-iterate probability preservation;
+- GRAPH support-powers lemmas.
+
+Promotion order should favor the Mathlib-only or API-stable results first; the
+Laplacian range theorem needs a live module placement decision, while KIN-008
+and GRAPH square/decomposition claims retain a bank/audit dependency.
+The Fock/BELL lane naming audit has now been resolved in the live tree:
+`fockNullLift_total_mass_preserved` is the honest total-mass theorem, while
+`fockNullLift_preserves_direction_marginal` records the stronger direction-law
+preservation under the explicit direction-equivariance hypothesis. The old
+`fockNullLift_equivariant` name is retained only as a deprecated alias.
+
 ### Open / remaining
 
-- READY/CONDITIONAL nodes not yet attempted are tracked in the ledger's
-  next-wave list (e.g. ZZ-005 two-state coupling, SYNC-001/002 synchronization
-  defect, LA-002/003 least-action range/uniqueness, CONT-001 Lax-Milgram wrapper,
-  DEF-004 PMF null-resolution, MASTER-001/002 finite capstones).
+- READY/CONDITIONAL nodes advanced by the wave-4 integration include
+  least-action uniqueness, refresh-chain invariance/iteration facts,
+  synchronization path-independence and defect lemmas, graph support powers, and
+  Fock/Bell direction-marginal preservation. The next useful jobs should now
+  combine these lemmas into selected finite dynamics, a concrete graph
+  super-Dirac data structure, and script-level audit automation.
+- MASTER-001/002 are declaration-complete and semantically audited as first
+  candidates: `finiteIIDNullStrand_master` and `checkerboardBohmBell_master`
+  now exist, compile, and have wave-4 audit notes. They still need generated
+  assumption-whitelist and manifest reports before papers should call G1 fully
+  publication-closed.
+- G0 hardening remains partly open: a lightweight in-tree audit scaffold now
+  exists under `PhysicsSM.NullStrand.Audit`, `CapstoneAxioms`, and
+  `DuplicateNames`; the duplicate theorem in `RegulatorNoGo.lean` was renamed
+  to `expectation_uniformComponent_bounds_meanNorm`; and the newly intentional
+  `comp`/`iterate` method-name collisions are classified. Remaining work
+  includes script-level generated inventory, public-capstone assumption audit,
+  transitive draft-import guard automation, and manifest regeneration from Lean
+  annotations. The wave-4 audit-automation archive did not include the scripts
+  and docs named in its completion summary, so that recovery is an explicit
+  next-wave job.
 - The G4-G5 OPEN registry nodes (O1-O8: full covariant mixing gap, continuum
   process near nodes, entanglement-vs-curvature, operational internal clock,
   graph super-Dirac symbol GRAPH-004, null-local/continuum-correct operator,
@@ -779,3 +911,1044 @@ LIFT-001 `residualCurrent_divergence_eq`, GRAPH-001
   theorems to assume; per this roadmap they are completed only by exhibiting a
   concrete construction or a precise impossibility result, and are intentionally
   left open rather than discharged.
+
+### Aristotle roadmap-review integration note
+
+Aristotle project `aa4a545c-e992-4744-bf2f-d38b662cd695` reviewed the roadmap
+package and returned `AgentTasks/nullstrand-roadmap-review-report-aristotle-2026-06-25.md`.
+The review package contained planning files rather than the full repository, so
+its strongest headline claim that "no Lean tree exists" is a package-scope
+artifact and is not true of this checkout. The following recommendations remain
+valid and are adopted here:
+
+- keep G0 split into build-green, import-inventory, and assumption-whitelist stages;
+- do not put the `Clock/InternalHolonomy` lane on the G1 capstone critical path;
+- mark KIN-008, GRAPH-005, GRAPH-007, and mass-spectrum claims as depending on
+  the audited bank and convention map;
+- expand `MASTER-001` and `MASTER-002` as real trajectory-measure /
+  `infinitePi` plumbing tasks rather than one-line assemblies;
+- reconcile manifest status, declaration-name drift, entanglement scope, and
+  node-count drift by generated metadata rather than prose edits.
+
+### Aristotle roadmap-hardening integration note
+
+Aristotle project `219d6dc6-c805-41ec-a907-b763e3701bee` performed the
+full-tree roadmap-hardening review and returned
+`AgentTasks/null-strand-roadmap-hardening-report-aristotle-2026-06-25.md`.
+Unlike the earlier package-limited review, this pass inspected the live
+`PhysicsSM/NullStrand/` Lean tree. The adopted corrections are:
+
+- the live finite tree is materially clean, but G1 is not substantively reached
+  until `finiteIIDNullStrand_master` and `checkerboardBohmBell_master` exist as
+  concrete-hypothesis theorems with constructed instances;
+- `finiteNullStrand_master` is a projection shell, and
+  `foliatedManyParticleNullStrand_master` is an acceptable conditional G4
+  schema, not evidence that G1 has been assembled;
+- BELL-005/Fock claims must be scoped as total-mass preservation unless a true
+  direction-marginal equivariance theorem is stated and proved;
+- duplicate core APIs (`FiniteNullResolution`, `minkowskiInner`,
+  `uniformComponent_bounds_meanNorm`) are G0 blockers before downstream import;
+- the manifest, backlog, and traceability tables should become generated
+  artifacts from Lean declaration tags and audits.
+
+
+## New Lean target: Exterior-history mass/measure layer
+
+### Module bundle to add next
+
+- `PhysicsSM/NullStrand/Histories/ExteriorMassMeasure.lean`
+- `PhysicsSM/NullStrand/Histories/ExteriorRankMeasure.lean`
+
+### Minimal theorem surface
+
+1. `massCapacity_eq_sum_pairWeights`
+2. `massCapacity_mono`
+3. `massCapacity_singleton_eq_zero`
+4. `massCapacity_i2_eq_crossPlucker`
+5. `massCapacity_i3_eq_zero`
+6. `massCapacity_mobius_support_eq_pairs`
+7. `massBimeasure_diag_eq_massCapacity`
+8. `stronglyPositive_zeroDiagonal_row`
+9. `massCapacity_not_stronglyPositiveDiagonal_of_noncollinear`
+10. `pairLift_recovers_massCapacity`
+11. `pairLift_unique`
+12. `pairPullback_support_card_le_four`
+
+### Dependencies
+
+- `PhysicsSM/Spinor/PluckerMass`
+- `PhysicsSM/Draft/NullEdgeQuantumMeasureFiniteAristotle`
+
+### Publication alignment
+
+This is the first formal package where finite Plücker mass and Sorkin-style set functions are combined as a single theorem cluster with ontology-level consequences (pair-history observables and controlled higher-order edge interference pullback).
+
+## Analysis integration note: frontier answers to open questions (2026-06-25)
+
+Two attached frontier-model analyses were reviewed against
+`NullStrand_Open_Questions_For_Frontier_Models.md` and this roadmap. They do not
+promote any G4/G5 question to a completed theorem, but they sharpen the next
+Lean targets.
+
+### Updated scientific status
+
+- **Q5 super-Dirac finite identity:** upgraded from vague OPEN to
+  `STATEMENT_DESIGNED / READY_TO_PROVE` for the finite algebraic square, provided
+  the grading, shift, projector, and Yukawa compatibility hypotheses are stated
+  explicitly.
+- **Q5 no-double-counting mass:** resolved at the conceptual level. `Phi^2` is
+  the zero-order mass block; Pluecker mass is the kinetic principal-symbol
+  invariant. The equality `P(xi)^2 = m^2` is an on-shell dispersion relation, not
+  a second additive mass term.
+- **Q5 true blockers:** the decisive audits are now the grading/sign convention,
+  the residual Lichnerowicz endomorphism, and the symbol/soldering obstruction.
+  Positive hidden-process Markov weights cannot also serve as continuum Dirac
+  coefficients, because their second-moment tensor is positive semidefinite on
+  covectors and cannot reconstruct the indefinite Lorentz metric.
+- **Q6/Q7 locality and dilation:** keep as `BLOCKED_ON_MODEL`, but replace broad
+  no-go language with a sharper property matrix. The strongest current negative
+  target is "primitive-null-only + positive finite-valence coefficients +
+  continuum Dirac symbol" rather than all causal-set locality/covariance
+  combinations.
+- **Q1/Q2 continuum dynamics:** remain conditional G4 targets. Q1 should pursue
+  finite irreducible-chain and hypocoercive estimates with explicit degeneration
+  hypotheses. Q2 should pursue stopped/local weighted Dirichlet-form statements
+  near nodes, with capacity or Muckenhoupt-type assumptions before any global
+  theorem is advertised.
+- **Q3 synchronization curvature:** the flatness theorem is now a clean
+  groupoid/2-cell holonomy target. Entanglement-forces-curvature remains
+  rule-dependent and conditional.
+- **Q4 operational clock:** internal holonomy needs a relational pointer/readout
+  coupling before it can be called a clock. Microscopic null segments carry zero
+  proper time, so the readout tracks affine count or relative phase first, and
+  proper time only after calibration plus an ergodic theorem.
+- **Q8 mass spectrum:** still out of near-term scope. Quantum-marginal or
+  entanglement-polytope methods can yield inequalities or allowed regions, not
+  observed Yukawa ratios without extra structure.
+
+### New immediate Lean targets from the synthesis
+
+1. **Finite Krein API (`F4`)**
+
+   Add a small finite-dimensional API before claiming Lorentzian honesty for the
+   graph operator:
+
+   ```text
+   fundamental symmetry J, J = J^dagger, J^2 = 1
+   indefinite form [u,v] = <J u, v>
+   J-adjoint A^sharp = J A^dagger J
+   J-self-adjointness A^sharp = A
+   closure lemmas for sums, block matrices, Clifford symbols, and D^2 expansions
+   ```
+
+   Proposed module home: `PhysicsSM/NullStrand/Graph/Krein.lean` or a more
+   general `PhysicsSM/LinearAlgebra/KreinFinite.lean` if other workstreams will
+   reuse it.
+
+2. **Super-Dirac data and square**
+
+   State a trusted finite structure for the decorated graph operator, separating
+   three gradings that must not be conflated:
+
+   ```text
+   order-complex/form degree
+   internal left/right chirality Gamma_5
+   any additional finite internal grading under which Phi is odd
+   ```
+
+   The first theorem should be the algebraic square
+
+   ```text
+   (i D_N + Gamma_5 Phi)^2
+     = -D_N^2 + Phi^2 - i Gamma_5 [D_N, Phi]
+   ```
+
+   under explicit hypotheses. Do not yet claim continuum soldering.
+
+3. **Residual-endomorphism audit**
+
+   For each finite super-Dirac candidate, define a computable residual:
+
+   ```text
+   residualE = D^2 - kineticNullSquare - curvatureDiamond - frameDefect - Phi^2
+   ```
+
+   Then prove basic trace/block-support facts and compute small examples. This is
+   the finite analogue of checking whether a Lichnerowicz scalar/endomorphism is
+   forced beyond `Phi^2`.
+
+4. **Positive-soldering obstruction**
+
+   Prove the linear-algebra obstruction as a standalone theorem:
+
+   ```text
+   A(q,q) = sum_i a_i * (q dot ell_i)^2, with a_i >= 0
+   -> A is positive semidefinite on real covectors
+   ```
+
+   Then record the corollary that such an `A` cannot equal the Lorentz inverse
+   metric on a space containing both timelike and spacelike covectors. This is the
+   clean theorem that separates hidden-variable probabilities from Dirac-symbol
+   coefficients.
+
+5. **Signed/dual/Krein soldering alternatives**
+
+   After the obstruction, try one positive construction:
+
+   ```text
+   signed or complex edge coefficients
+   dual null coframes rather than raw edge vectors
+   doubled advanced/retarded Krein construction
+   ```
+
+   The success criterion is a local symbol theorem, not another abstract square
+   identity.
+
+6. **Stopped continuum process charter**
+
+   Update the continuum charter so Q2 first targets an exit-time theorem on
+   `{rho >= epsilon}` and treats global node avoidance as a separate capacity or
+   polarity assumption.
+
+7. **Finite Markov-chain SLLN route**
+
+   For F1, prefer the Poisson-equation proof plan on the zero-mean subspace:
+
+   ```text
+   (I - P) g = f - pi f
+   additive sums = martingale difference + telescoping boundary
+   spectral gap + Borel-Cantelli -> strong law
+   ```
+
+   This is likely easier to formalize than importing a broad ergodic theorem.
+
+### Updated stop/go refinement
+
+Do not freeze the graph branch merely because positive Markov weights cannot be
+the Dirac soldering coefficients. Instead, mark that as a failed soldering
+attempt and try signed/complex coefficients, dual null coframes, or a
+Krein-doubled construction. Freeze the branch only if all Lorentzian-honest
+soldering attempts fail or require hiding continuum data in an unconstrained
+ancilla.
+
+### Second Q5 refinement from attached analysis (2026-06-25)
+
+A later analysis makes the Q5 graph-operator gate sharper. The diagonal null
+operator
+
+```text
+D_N = sum_i b_i c(ell_i) nabla_i
+```
+
+is not merely hard to solder to the continuum Dirac symbol; it is algebraically
+impossible as written. Its continuum symbol induces
+
+```text
+A xi = sum_i b_i xi(ell_i) ell_i^flat,
+```
+
+and `tr(A) = sum_i b_i g(ell_i, ell_i) = 0`, while the identity on `T^*V` has
+trace `4`. This kills the diagonal `c(ell_i) nabla_{ell_i}` soldering target even
+with signed or complex scalar coefficients.
+
+The corrected target keeps primitive null finite differences but uses dual or
+cross-soldered Clifford coefficients:
+
+```text
+NullSolderFrame:
+  ell   : finite family of null directions
+  alpha : finite family of covectors
+  dual  : xi = sum_a xi(ell_a) alpha^a
+
+D_sol = sum_a c(alpha^a) nabla_a.
+```
+
+A concrete tetrahedral frame has four future-null directions `ell_A = (1, n_A)`
+with regular tetrahedron spatial parts. If `G_AB = g(ell_A, ell_B)`, then
+
+```text
+G_AA = 0,
+G_AB = 4/3 for A != B,
+G^AA = -1/2,
+G^AB = 1/4 for A != B,
+alpha^A = sum_B G^AB ell_B^flat,
+D_tet = sum_A,B G^AB c(ell_B^flat) nabla_A.
+```
+
+This should replace the previous diagonal super-Dirac symbol in the roadmap. The
+support remains primitive-null; the soldering is carried by the inverse Gram
+matrix.
+
+Updated Lean target order:
+
+1. Prove `diagonal_null_symbol_trace_zero` for sums of null rank-one soldering
+   terms, and record the trace obstruction to the identity symbol.
+2. Define `NullSolderFrame` with null directions, dual covectors, and the dual
+   identity `xi = sum_a xi(ell_a) alpha^a`.
+3. Prove `dual_solder_commutator` for `sum_a clifford (alpha a) * nabla a` at the
+   principal-symbol level.
+4. Specialize to the tetrahedral null frame and inverse Gram coefficients.
+5. Prove the corrected finite square with `C_a = c(alpha^a)`:
+
+   ```text
+   D^2 =
+     -Box_null
+     -C_diamond
+     -T_frame
+     +Phi^2
+     -i Gamma_5 sum_a C_a [nabla_a, Phi].
+   ```
+
+6. Audit the retarded/advanced doubled operator
+
+   ```text
+   D_double = [[0, D_-],
+               [D_+, 0]]
+   ```
+
+   as the bounded-dimension, blockwise-null, functorial natural-dilation
+   candidate for Q6/Q7.
+
+This changes the graph branch stop rule. Do not freeze the branch because the
+diagonal symbol fails. Freeze only if the dual/cross-soldered or Krein-doubled
+operators fail the Lorentzian symbol, square, and naturality audits.
+
+The same analysis also sharpens two non-graph targets:
+
+- F1/Q1: finite continuous-time Markov-chain SLLN should use the Poisson equation
+  `-Q g = f - pi f`, martingale decomposition, bounded endpoint term, and
+  quadratic-variation growth `O(t)`.
+- Q2: stopped weighted diffusion near nodes should record the Bessel-dimension
+  heuristic `delta = d_perp + alpha`; the node is inaccessible in the radial
+  approximation when `delta >= 2`.
+### Physical consequence map from earlier analysis (2026-06-26)
++
++An earlier attached analysis is useful, but mostly downstream of the immediate
++dual-soldering task. It should be treated as a consequence map for what the
++super-Dirac operator could buy us after the symbol and square are trusted.
++
++#### Consequences now worth adding to the roadmap
++
++1. **Null-pair mass-area theorem**
++
++   Exact finite target: for null `p` and `q`, pair mass and simple bivector area
++   are not independent. The scalar Clifford projection gives the Pluecker mass
++   contribution; the antisymmetric projection preserves oriented pair-area data.
++
++   Proposed module home: `PhysicsSM/NullStrand/Graph/NullPairGeometry.lean` or a
++   spinor/Clifford-adjacent module if it should reuse existing Pluecker code.
++
++   First declarations:
++
++   ```text
++   nullPair_massSq_eq_two_inner
++   nullPair_bivectorNormSq_eq_neg_half_massFourth
++   nullPair_bivector_dualPairing_eq_zero
++   nullPair_cliffordProduct_eq_scalar_add_bivector
++   ```
++
++2. **Universal principal symbol as an equivalence-principle statement**
++
++   Once the dual-soldered principal symbol is trusted, prove that internal
++   species share the same one-edge support and characteristic cone when only the
++   lower-order Yukawa block varies by species. This is a clean finite statement
++   of universal microscopic causal support.
++
++   First declarations:
++
++   ```text
++   principalSymbol_independentOfInternalState
++   characteristicSet_eq_nullCone
++   speciesUniversal_oneEdgeSupport
++   equivalenceViolation_requires_nonuniversalPrincipalData
++   ```
++
++3. **Spectral mass-shell matching**
++
++   In a flat/constant-`Phi` finite envelope, if
++   `D^2 = -K tensor I + I tensor M^2`, then on-shell states are exactly matching
++   eigenspaces of `K` and `M^2`. This is exact finite linear algebra and may be a
++   promising bridge from assigned masses to constrained spectral compatibility.
++
++   First declarations:
++
++   ```text
++   kernel_tensorDifference_eq_matchingEigenspaces
++   massShellMultiplicity_eq_sum_matchingMultiplicities
++   ```
++
++4. **Supersymmetric-quantum-mechanics envelope**
++
++   The block operator `Q = [[0, A^dagger], [A, 0]]` gives nonzero spectral
++   pairing and zero-mode imbalance equal to the index of `A`. This gives a
++   finite topological sector without claiming spacetime supersymmetry.
++
++   First declarations:
++
++   ```text
++   superDirac_nonzeroSpectrum_paired
++   superDirac_zeroModeImbalance_eq_index
++   wittenIndex_eq_chiralKernelDifference
++   ```
++
++5. **Defect and Weitzenbock zero-mode pilots**
++
++   A sign-changing finite mass/Yukawa field should be modeled first on a finite
++   chain as a domain-wall pilot. Separately, a positive-envelope Weitzenbock form
++   `H = nabla^dagger nabla + V` gives gap/zero-mode tests by finite Rayleigh
++   inequalities.
++
++   First declarations:
++
++   ```text
++   zeroMode_absent_of_positiveWeitzenbockPotential
++   zeroMode_requires_nonpositiveEffectivePotential
++   finiteChain_domainWall_zeroMode_draft
++   ```
++
++6. **Local dilation and Schur complement**
++
++   A sparse local microscopic operator on visible plus hidden sheets can yield a
++   dense effective visible operator after eliminating the hidden sector:
++
++   ```text
++   D_eff = D_vis - B D_hid^{-1} C.
++   ```
++
++   This gives a concrete algebraic mechanism for reconciling microscopic null
++   locality with nonlocal effective chirality or causal-set-like tails.
++
++   First declarations:
++
++   ```text
++   localBlockOperator_schurComplement
++   localDilation_effectiveOperator_eq_schurComplement
++   sparseMicroscopicOperator_canYield_denseEffectiveOperator
++   ```
++
++7. **Spectral action and superconnection curvature**
++
++   After the square theorem, the dynamical upgrade is a finite spectral action
++   from `H = D^sharp D`, with trace identities for curvature squares, Higgs
++   kinetic terms, and Higgs quartics. The `[nabla, Phi]` term should be treated
++   as superconnection curvature, not a leftover.
++
++   First declarations:
++
++   ```text
++   trace_superDiracSq_decomposition
++   trace_superDiracFourth_curvatureSq
++   trace_superDiracFourth_higgsKinetic
++   trace_superDiracFourth_higgsQuartic
++   spectralAction_gaugeInvariant
++   ```
++
++8. **Octonionic 3-cell associator track**
++
++   Ordinary curvature is two-step diamond disagreement. Octonionic
++   nonassociativity first appears in triple products, so any exceptional-sector
++   extension should attach associator data to oriented triples or 3-cells. Keep
++   this separate from the immediate super-Dirac proof path.
++
++   First declarations:
++
++   ```text
++   octonionicThreePathAssociator_def
++   octonionicThreePathAssociator_alternating
++   octonionicThreePathAssociator_vanishes_onAssociativeSector
++   ```
++
++9. **Spectral dimension diagnostic**
++
++   Use the positive envelope heat trace `Z(t) = Tr exp(-tH)` to define a finite
++   scale-dependent spectral dimension. This is a model-selection diagnostic for
++   graph families, not yet a theorem about the physical continuum.
++
++#### Priority order
++
++Keep the dual-soldered Q5 core first. After that, prioritize exact finite
++algebra in this order:
++
++```text
++null-pair mass-area
++spectral mass-shell matching
++SUSY-QM spectral pairing
++Schur-complement local dilation
++Weitzenbock gap/zero-mode inequalities
++spectral-action trace decomposition
++octonionic 3-cell associator
++spectral dimension diagnostics
++```
++
++This analysis is physically useful because it turns the operator work into a
++larger testable architecture: one-edge data gives universal propagation;
++two-edge data gives mass, area, spin coupling, and curvature; defects and
++spectral flow give protected matter; and triples may carry octonionic higher
++flux.
+### ChatGPT Pro refinement incorporated (2026-06-26)
+
+A ChatGPT Pro answer confirms the dual-soldered path and sharpens the next Lean
+jobs.
+
+#### Implementation-critical refinements
+
+1. **Canonical tetrahedral convention**
+
+   Formalize the observer-normalized unit tetrahedron first:
+
+   ```text
+   ell_A = (1, n_A),  n_A = s_A / sqrt(3)
+   G_AA = 0, G_AB = 4/3 for A != B
+   G^{-1}_AA = -1/2, G^{-1}_AB = 1/4 for A != B
+   alpha^A = (1/4) dt + (3/4) n_A . d x
+   alpha^A(ell_B) = delta^A_B
+   ```
+
+   The scaled directions `L_A = (sqrt(3), s_A)` are acceptable only with scaled
+   dual covectors `beta^A = alpha^A / sqrt(3)`. Mixing the unit and scaled
+   conventions silently rescales the Dirac symbol.
+
+2. **Higgs grading/sign guardrail**
+
+   In the theorem for `D = i D_N + Gamma_s Phi`, require:
+
+   ```text
+   Gamma_s^2 = 1
+   {Gamma_s, C_a} = 0
+   [Gamma_s, nabla_a] = 0
+   [Gamma_s, Phi] = 0
+   [C_a, Phi] = 0
+   ```
+
+   Then `+Phi^2` is correct. If `Phi` anticommutes with `Gamma_s`, the square
+   gives `-Phi^2`. Therefore `Phi` can be odd only with respect to a separate
+   internal grading `chi_E`, not the spacetime chirality `Gamma_s` used in the
+   displayed product formula.
+
+3. **Mass-shell sign convention**
+
+   Decide and document whether `Box_null` is the kinetic mass-shell operator or
+   the analytic d'Alembertian. In mostly-minus signature, the desired equation
+   `P^2 = m^2` from `-Box_null + Phi^2 = 0` requires the plane-wave symbol of
+   `Box_null` to be `P^2`.
+
+4. **Frame term audit**
+
+   The exact finite frame term
+
+   ```text
+   T_frame = sum_a,b C_a [nabla_a, C_b] nabla_b
+   ```
+
+   vanishes under `[nabla_a, C_b] = 0`. It is physical if it represents the
+   discrete spin-connection/tetrad variation; it is contamination if frame
+   variation is not transported covariantly.
+
+#### New Aristotle wave direction
+
+The next large Lean jobs should be constructive and proof-heavy:
+
+```text
+A. Tetrahedral `NullSolderFrame` and unit/scaled normalization audit.
+B. Dual-soldered commutator and kinetic quadratic form.
+C. Graded super-Dirac square with explicit `Gamma_s`, `chi_E`, and sign guards.
+D. Finite Krein API plus retarded/advanced doubled operator.
+E. Spectral mass-shell matching and Schur-complement local dilation.
+F. Finite Markov-chain Poisson-equation SLLN and stopped-node proxy lemmas.
+```
+
+#### Literature leads for the super-Dirac wave (2026-06-26)
+
+A Neo4j + arXiv/INSPIRE search pass curated concrete prior art for these jobs
+(full mapping in `Sources/NullStrand_Open_Questions_For_Frontier_Models.md`
+section 6.10; all items in Zotero collection `9W59V3K9` and the Neo4j paper
+graph, semantically searchable via `Scripts/lit/neo4j_paper_search.py`):
+
+- Jobs A-C (square structure, grading, g=2): Bianconi *Dirac gauge theory for
+  topological spinors in 3+1 networks* (arXiv:2212.05621) -- the closest
+  existing construction, with `{D,D}`/`[D,D]` giving metric/curvature and
+  magnetic-field terms and the right gyromagnetic moment in the
+  non-relativistic limit.
+- Job D (Krein doubled / index): Post *First order approach and index theorems
+  for discrete and metric graphs* (arXiv:0708.3707, supersymmetric doubled
+  graph Dirac with decorated `C^d` vertex spaces and a graph index theorem);
+  van den Dungen *Krein spectral triples and the fermionic action*
+  (arXiv:1505.01939); Bizi thesis (arXiv:1812.00038).
+- Finite-Clifford Lean API: Casiday-Contreras et al. *Laplace and Dirac
+  Operators on Graphs* (arXiv:2203.02782, graph Clifford algebras + gluing
+  identities).
+- D^2 forced-term audit: Ackermann-Tolksdorf generalized Lichnerowicz formula
+  (arXiv:hep-th/9503153, already curated).
+- Continuum-limit caution (Job E / G5 scaling): Aslanbeigi-Saravani-Sorkin
+  *Generalized causal-set d'Alembertians* (arXiv:1403.1622, already curated) --
+  the 4D causet d'Alembertian is unstable; use as a falsification probe and a
+  motivation for the retarded/advanced doubling. Pairs with Sorkin
+  arXiv:1107.0698.
+- Prediction gate (G5): Chamseddine-Connes-Marcolli (arXiv:hep-th/0610241) --
+  the canonical spectral-action prediction precedent and its cautionary Higgs
+  miss.
+
+### Prediction-gate clarification incorporated (2026-06-26)
+
+A prediction-focused discussion clarifies how to state G5 without undervaluing a
+successful null-edge reconstruction of known physics.
+
+#### Revised G5 split
+
+```text
+G5a -- reconstruction gate:
+  one concrete dual-soldered null-edge/Krein super-Dirac architecture reproduces
+  the known Dirac, gauge, Higgs/Yukawa, and Born-equivariant structures with
+  exact finite algebra and controlled scaling.
+
+G5b -- rigidity/prediction gate:
+  the finite null/spectral axioms force a proper lower-dimensional image in
+  continuum EFT parameter space, yielding at least one relation, exclusion, or
+  correction not inserted by hand.
+```
+
+G5a is already scientifically worthwhile. G5b is the stronger new-dynamics gate.
+This avoids making the project look unsuccessful merely because an exactly
+Born-equivariant hidden-variable reconstruction reproduces ordinary quantum
+statistics.
+
+#### Prediction certificate
+
+A claimed prediction must be a parameter-free or lower-parameter relation in the
+continuum EFT image of the finite model, stable under field redefinitions and RG,
+and not absorbable into the spectral function, cutoff, Yukawa block, internal
+algebra choice, graph ensemble, holonomy normalization, or hidden-sector data.
+
+Checklist:
+
+```text
+frozen input;
+parameter deficit;
+field-redefinition audit;
+RG survival;
+no hidden absorption;
+falsifiable width.
+```
+
+This should be used before promoting any finite algebra theorem into a physics
+prediction.
+
+#### Prediction ledger for current claims
+
+```text
+kinematic representation:
+  timelike motion as averaged null motion
+  Pluecker mass identity
+
+architecture/consistency:
+  diagonal null-symbol obstruction
+  dual-soldered Dirac symbol
+  super-Dirac square
+  Phi^2 as sole zero-order mass block
+  P(xi)^2 = m^2 as mass-shell matching
+
+normalization tests:
+  g = 2 from Clifford square, unless independent Pauli terms are forbidden
+  frame-term scaling and tetrad-postulate audit
+
+potential rigidity/prediction tracks:
+  absence of O(E/Lambda) Lorentz-violation terms
+  fixed gauge-coupling or Higgs relations from a spectral action
+  anomaly/index constraints on internal sectors
+  forced gauge group or representation content
+  forced dimension or generation count
+```
+
+#### Moduli-count gate
+
+Before phenomenology, define the continuous finite knobs:
+
+```text
+edge weights, frame choices, holonomy normalizations, Phi, spectral function f,
+cutoff Lambda, internal algebra moduli, hidden-sector couplings, graph ensemble.
+```
+
+Compare with target EFT parameters. If the finite moduli have enough local
+freedom to fit all Standard Model parameters, the program is a reconstruction or
+reparametrization, not a prediction. A rigidity theorem should show that the
+rank of the finite-to-EFT parameter map is deficient.
+
+#### Nielsen-Ninomiya and chirality pressure test
+
+Put the lattice-chirality obstruction near the front of G5. The corrected
+operator is local, first-order, graph-based, and wants chirality. The program
+should state explicitly which Nielsen-Ninomiya assumption it evades:
+
+```text
+ordinary Hermiticity;
+translation invariance;
+strict locality after projection;
+exact chiral symmetry;
+single-layer visible Hilbert space.
+```
+
+Likely exits are Krein/non-Hilbert self-adjointness, retarded/advanced doubling,
+domain-wall or overlap mechanisms, nonlocal effective visible operators, or
+finite causal graphs without lattice translation symmetry.
+
+#### Cheapest decisive tests
+
+Prioritize these symbolic/finite tests before expensive phenomenology:
+
+```text
+1. flat-symbol / doubling test;
+2. graded square sign audit;
+3. Pauli coefficient normalization on one U(1) diamond;
+4. minimal spectral-action trace on a periodic null-diamond complex;
+5. frame-term scaling test;
+6. anomaly cancellation of the proposed internal sector;
+7. parameter-moduli audit;
+8. Lorentz-dispersion expansion through O(h^2);
+9. finite-N equivariance correction estimate;
+10. domain-wall zero-mode pilot.
+```
+
+This reframing should guide future claims: a formalism that exactly reproduces
+known physics is a valid G5a endpoint; new predictions require the additional
+G5b rigidity certificate.
+
+### Commuting-square and finite-core refinement (2026-06-26)
+
+A further ChatGPT Pro analysis sharpens the roadmap around a publishable finite
+core. The super-Dirac track should be decomposed into four commuting tests rather
+than one omnibus theorem:
+
+```text
+finite operator -> finite square -> finite spectral facts
+continuum symbol -> continuum Lichnerowicz limit -> physical EFT/prediction
+```
+
+Equivalently:
+
+```text
+D_h  --finite square-->  D_h^2
+ |                         |
+ h -> 0                    h -> 0
+ v                         v
+D_cont --Lichnerowicz--> D_cont^2
+```
+
+Use the following names and statuses:
+
+```text
+finiteSuperDiracSquare    -- near-term trusted finite algebra;
+dualSolderedSymbolLimit   -- symbol/asymptotic target, with finite affine proxies;
+squareLimitCompatibility  -- hard G5 continuum bridge.
+```
+
+#### Publishable finite-core theorem package
+
+A focused finite-core paper should target exactly these eight theorem clusters:
+
+1. **Simplex null-solder frame**
+
+   Prove the general `d`-dimensional simplex construction, with the tetrahedral
+   3+1 case as a corollary:
+
+   ```text
+   sum_A xi(ell_A) alpha^A = xi.
+   ```
+
+   This prevents the false claim that the tetrahedron itself derives four
+   spacetime dimensions.
+
+2. **Diagonal trace obstruction**
+
+   ```text
+   trace (sum_a b_a ell_a^flat tensor ell_a) = 0 != d.
+   ```
+
+   This is the negative theorem that retires diagonal null soldering.
+
+3. **Dual-soldered symbol theorem**
+
+   ```text
+   D_h = sum_a c(alpha^a) (T_a - I)/h
+   [D_h, M_f] -> c(df)
+   ```
+
+   Keep trusted Lean to exact finite or affine symbol proxies unless a true
+   continuum API is available.
+
+4. **Graded square theorem**
+
+   Under explicit hypotheses
+
+   ```text
+   {Gamma_s, C_a} = 0,
+   [Gamma_s, nabla_a] = 0,
+   [Gamma_s, Phi] = 0,
+   [C_a, Phi] = 0,
+   Gamma_s^2 = 1,
+   ```
+
+   prove
+
+   ```text
+   D^2 = -Box - C_diamond - T_frame + Phi^2
+         - i Gamma_s sum_a C_a [nabla_a, Phi].
+   ```
+
+5. **Frame/tetrad-postulate theorem**
+
+   ```text
+   [nabla_a, C_b] = 0 -> T_frame = 0.
+   ```
+
+   Add metric-compatibility audits using `nabla_a {C_b, C_c} = 0`.
+
+6. **Retarded-symbol zero theorem**
+
+   For
+
+   ```text
+   D_+(q) = sum_a C_a (exp(i q_a) - 1)/h,
+   ```
+
+   prove that the only Brillouin-torus zero is the continuum zero, assuming the
+   `alpha^a` basis and Clifford injectivity. Compare with the symmetric sine
+   derivative, which has the `2^d` naive zero pattern. This is the new high-value
+   Nielsen-Ninomiya pressure test.
+
+7. **Krein doubled self-adjointness theorem**
+
+   If `D_- = D_+^sharp`, prove
+
+   ```text
+   D_dbl = [[0, D_-], [D_+, 0]]
+   ```
+
+   is `J_dbl`-self-adjoint. This states the explicit evasion route: ordinary
+   Hilbert self-adjointness is replaced by a retarded/Krein doubled structure.
+
+8. **Spectral mass-shell matching theorem**
+
+   ```text
+   ker(-K tensor I + I tensor M^2)
+     = direct sum_lambda E_lambda(K) tensor E_lambda(M^2).
+   ```
+
+   This proves no-double-counting at finite spectral level without claiming mass
+   prediction.
+
+#### Reordered near-term pressure tests
+
+Prioritize these before phenomenology:
+
+```text
+1. dual-soldered symbol theorem;
+2. graded square sign audit;
+3. retarded Brillouin zero / no-naive-doubling test;
+4. Krein doubled audit;
+5. frame/tetrad-postulate test;
+6. Pauli coefficient test on one U(1) diamond;
+7. Schur-complement locality test;
+8. parameter-rank ledger.
+```
+
+The first five are finite and cheap relative to continuum physics.
+
+#### Covariance and dimension guardrails
+
+The simplex frame generalizes to any spacetime dimension `d`, so `d = 4` remains
+input unless a separate spectral-dimension, anomaly, finite-algebra, or
+Lorentzian/Krein theorem selects it. For Q6, the real pressure point is whether a
+finite-valence primitive-null neighbor rule can be chosen covariantly without an
+extra local timelike/reference datum. A massive strand can use `U` or `n`; a
+universal field operator needs a dynamical tetrad, random covariant structure,
+graph-derived local data, or an explicit covariance limitation.
+
+#### Probability route refinement
+
+For finite Markov-chain strong laws, prefer a regenerative-cycle route before
+continuous-time martingales: decompose a finite irreducible discrete-time chain
+into i.i.d. return cycles and apply the existing i.i.d. strong law to rewards and
+cycle lengths. Continuous-time chains can be approached later through
+uniformization. This is likely lower-cost in Lean than building a new
+continuous-time martingale API.
+### Nielsen-Ninomiya evasion and null-frame source (2026-06-26)
+
+A further ChatGPT Pro analysis clarifies two governance choices for the finite
+operator program.
+
+#### Declared no-go evasion route
+
+The program should explicitly state which Nielsen-Ninomiya-type assumption it
+violates:
+
+```text
+ordinary single-layer Hilbert Hermiticity / anti-Hermiticity is violated by the
+retarded block D_+.
+```
+
+Retardedness is the physical reason:
+
+```text
+D_+ = sum_a C_a (T_a - I)/h.
+```
+
+Non-Hermiticity is therefore a consequence of causal support, not an ad hoc
+spectrum fix. The Lorentzian audit object is the Krein double:
+
+```text
+A^sharp = J_0 A^dagger J_0,
+D_- = D_+^sharp,
+D_dbl = [[0, D_-], [D_+, 0]],
+D_dbl^sharp = D_dbl.
+```
+
+This is not yet a solved chiral-fermion theorem. Add the following tests to the
+finite-core pressure suite:
+
+```text
+1. assumption ledger for Nielsen-Ninomiya hypotheses;
+2. retarded determinant branch count det D_+(omega,k)=0;
+3. doubled branch count for D_dbl^2 = diag(D_-D_+, D_+D_-);
+4. anomaly/index test for any claimed chiral gauge sector.
+```
+
+The slogan to keep in review notes:
+
+```text
+no naive doublers is not the same as Standard Model chirality.
+```
+
+#### Decorated null-tetrad graph as finite object
+
+The finite formalization target should be a decorated null-tetrad graph, not a
+bare graph pretending to contain a canonical Lorentz frame. At each vertex it
+has:
+
+```text
+ell_A(x), alpha^A(x), spin transport U_A(x), edge scale h_A(x),
+with sum_A xi(ell_A(x)) alpha^A(x) = xi.
+```
+
+The retarded operator is:
+
+```text
+D_+ = sum_A c(alpha^A(x)) (U_A T_A - I)/h_A.
+```
+
+For continuum field interpretation, these decorations should be supplied by a
+dynamical tetrad and spin connection:
+
+```text
+ell_A(x) = e_0(x) + n_A^i e_i(x),
+alpha^A(x) = (1/4)e^0(x) + (3/4)n_A^i e^i(x).
+```
+
+A fixed observer direction may normalize the hidden strand's null fiber, but it
+should not define the universal field operator unless a preferred foliation is
+explicit physical structure. A random covariant structure is the better bare
+causal-set route, but it likely conflicts with canonical finite valence.
+
+#### Review implication
+
+When integrating Aristotle patches, check that declarations and comments do not
+say or imply:
+
+```text
+Krein doubling solves chirality;
+observer direction supplies the universal field frame;
+bare graph data canonically gives a finite null frame;
+absence of naive doublers proves anomaly consistency.
+```
+
+The correct claim is narrower and stronger:
+
+```text
+retarded D_+ explicitly violates ordinary Hermiticity, and Krein doubling is the
+finite Lorentzian audit object; decorated null-tetrad graphs are the trusted
+finite objects, with dynamical tetrads supplying the continuum interpretation.
+```
+## Strategy memo incorporated: finite-core paper target and decisive branch-count test (2026-06-26)
+
+The latest strategy memo upgrades the roadmap in one important way: the finite core should be packaged as a **dual-soldered null-edge Dirac algebra**, not as a complete physical theory. This gives us a strong publishable reconstruction target while keeping continuum scaling, chirality, and prediction claims honestly gated.
+
+### Roadmap correction: no-doubling is determinant-level
+
+Retarded differences prove only that the coefficient vector
+
+```text
+p(q) = h^{-1} sum_a (exp(i q_a) - 1) alpha^a
+```
+
+has no extra zeros when the `alpha^a` form a basis. That is not enough for a Lorentzian Dirac operator, because a nonzero null Clifford vector can still have a kernel. The real test is
+
+```text
+det(i D_+(q) + Gamma_s Phi) = 0,
+```
+
+or, in the massless flat case, `p(q)^2 = 0`. The tetrahedral Brillouin point `q = (pi, pi, pi, 0)` is already a warning example: `p(q) != 0` but `p(q)^2 = 0`. This should become the next decisive finite numerical/algebraic test. Retardedness alone should no longer be described as a no-doubling proof.
+
+### Revised finite-core theorem package
+
+The finite-core paper should aim for this package:
+
+1. `NullSolderFrame`: simplex null directions `ell_A` and dual covectors `alpha^A`, with exact reconstruction `xi = sum_A xi(ell_A) alpha^A`.
+2. `DiagonalTraceObstruction`: diagonal null soldering cannot have the continuum Dirac symbol because its induced trace is zero.
+3. `DualSolderedCommutator`: exact affine commutator theorem and separate smooth `O(h)` symbol-limit theorem.
+4. `GradedSquare`: for `D = i D_N + Gamma_s Phi`, with `Phi` commuting with spacetime chirality but odd under internal grading, prove the square with `+Phi^2`.
+5. `FrameTermAudit`: decompose `D_N^2` into `Box_null + C_diamond + T_frame`, and prove the finite tetrad postulate kills `T_frame`.
+6. `KreinDouble`: define `A^sharp = J A^dagger J`, `D_- = D_+^sharp`, and prove the retarded/advanced block operator is `J`-self-adjoint.
+7. `BranchCountProtocol`: solve determinant-zero branches over the Brillouin domain, including real high-momentum branches and complex branches.
+8. `SpectralMassShellMatching`: prove the finite diagonalizable self-adjoint kernel theorem for `-K tensor I + I tensor M^2`.
+9. `PauliDiamondNormalization`: verify the coefficient of `1/4 [C_a, C_b] [nabla_a, nabla_b]` and isolate all holonomy/soldering normalization factors.
+10. `ClaimBoundaryLedger`: classify each result as finite identity, asymptotic theorem, reconstruction, consistency check, or prediction.
+
+### Decorated null-tetrad graph convention
+
+For a universal field operator, the null frame should come from a dynamical tetrad or spin frame, not from observer data. In four dimensions,
+
+```text
+ell_A(x) = e_0(x) + n_A^i e_i(x),
+alpha^A(x) = 1/4 e^0(x) + 3/4 n_A^i e^i(x).
+```
+
+The finite object should be called a decorated null-tetrad graph carrying
+
+```text
+V, E, ell_a(x), alpha^a(x), h_a(x), U_a(x), J_x,
+Gamma_s, chi_E, Phi_x,
+```
+
+plus compatibility laws. We should not claim that a bare graph canonically supplies the tetrad/null-frame data unless that is separately derived.
+
+### Updated scaling sequence
+
+The scaling and physics tests should now be ordered:
+
+1. Flat symbol test on a fixed decorated periodic graph.
+2. Flat determinant/branch-count test for real and complex branches.
+3. Curved tetrad test with smooth frame and spin connection.
+4. Commuting-square test: finite square then limit equals continuum Dirac then Lichnerowicz square.
+5. Stochastic or covariant graph ensemble test only after the decorated deterministic case works.
+
+The finite square can be exact but still fail the continuum square limit if the frame term survives, holonomy normalization is wrong, Pauli normalization is wrong, high-frequency branches do not decouple, or the Lichnerowicz endomorphism is wrong.
+
+### Claim boundaries and prediction gate
+
+The current dual-soldered square is a reconstruction and finite identity, not yet new physics. A prediction requires a rank-deficient map
+
+```text
+F : M_finite -> M_EFT
+```
+
+or another independently forced restriction. The ledger should track graph decorations, soldering choices, holonomy normalizations, `Phi`, internal algebra, spectral function, cutoff, orientations, hidden-sector couplings, and allowed counterterms. If these parameters span the EFT freely, the construction is a reparametrization.
+
+### New high-priority jobs
+
+- `Branch-count audit`: compute/characterize determinant-zero branches for the tetrahedral retarded operator, including the `q = (pi, pi, pi, 0)` null singularity.
+- `Frame compatibility theorem`: formalize the finite tetrad postulate and classify frame, curvature, torsion, and nonmetricity defects.
+- `Krein spectral warning`: separate finite `J`-self-adjointness from stronger spectral properties such as real spectrum or stability.
+- `Pauli normalization diamond`: prove the finite coefficient and identify exactly where holonomy normalization enters.
+- `Regenerative Markov SLLN`: use return cycles for finite irreducible chains, then reduce CTMCs by uniformization.
+- `Stopped-node theorem charter`: state only stopped/local elliptic results near Born nodes until a weighted-capacity theorem is proved.
+
+Top failure modes are now explicit: determinant-level high-momentum massless branches or complex instabilities; conflating spacetime chirality with internal Higgs parity; uncontrolled frame contamination; arbitrary tetrad decoration; full-rank finite-to-EFT reparametrization; wrong spectral-action signs; and ad hoc anomaly repair.

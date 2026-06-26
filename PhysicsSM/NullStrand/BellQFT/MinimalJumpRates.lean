@@ -34,12 +34,6 @@ lemma minimalBellRate_neg_mul_density {Q : Type*} [Fintype Q] (J : Q → Q → �
   unfold minimalBellRate_neg
   field_simp [hρ]
 
-theorem realPos_sub_realPos_neg (x : ℝ) : realPos x - realPos (-x) = x := by
-  by_cases hx : 0 ≤ x
-  · simp [realPos, max_eq_left hx, max_eq_right (neg_nonpos.mpr hx)]
-  · have hx' : x < 0 := lt_of_not_ge hx
-    simp [realPos, max_eq_right (le_of_lt hx'), max_eq_left (neg_nonneg.mpr (le_of_lt hx'))]
-
 theorem minimalBellRate_nonneg {Q : Type*} [Fintype Q] (J : Q → Q → ℝ) (ρ : Q → ℝ)
     (q q' : Q) (hρ : 0 ≤ ρ q) :
     0 ≤ minimalBellRate J ρ q q' := by

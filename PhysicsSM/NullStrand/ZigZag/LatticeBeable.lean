@@ -33,10 +33,21 @@ structure CoinKernel where
   rowSum : ∀ c, (∑ c' : Chiral, kernel c c') = 1
 
 -- Null-step bookkeeping for each chirality branch.
+--
+-- The record now carries *genuine Minkowski nullity* (`null`) in addition to the
+-- time-component normalization (`timeComponent`).  Concretely, each chirality
+-- branch shift is a null 4-vector in the `(+---)` convention
+-- (`minkowskiSq (step c) = 0`), i.e. its time component squared equals the
+-- squared norm of its spatial part.  This is the full physical content of a
+-- "null shift"; the older version only recorded `step c 0 = lightSpeed`, which
+-- by itself does not pin down the spatial magnitude.
 structure NullShift where
   step : Chiral → Minkowski4
   lightSpeed : ℝ
   timeComponent : ∀ c, step c 0 = lightSpeed
+  /-- Genuine Minkowski nullity: each chirality branch shift is a null 4-vector
+  in the `(+---)` convention. -/
+  null : ∀ c, PhysicsSM.NullStrand.minkowskiSq (step c) = 0
 
 -- Minimal finite model data for one-step lattice beable transport.
 structure LatticeBeable (L : Type*) [Fintype L] where
@@ -145,5 +156,16 @@ The model records a common time component `lightSpeed` for each chirality branch
 theorem actualShift_speed_eq_c {L : Type*} [Fintype L] (M : LatticeBeable L) (c : Chiral) :
     M.shift.step c 0 = M.shift.lightSpeed := by
   exact M.shift.timeComponent c
+
+/-- Genuine Minkowski nullity of the per-branch shift in this finite abstraction.
+
+Each chirality branch shift is a null 4-vector in the `(+---)` convention:
+`minkowskiSq (step c) = 0`, i.e. the squared time component equals the squared
+spatial norm.  Unlike `actualShift_speed_eq_c` (which only fixes the time
+component), this is the full Minkowski-nullity statement and is the datum now
+recorded by `NullShift.null`. -/
+theorem actualShift_isNull {L : Type*} [Fintype L] (M : LatticeBeable L) (c : Chiral) :
+    PhysicsSM.NullStrand.minkowskiSq (M.shift.step c) = 0 :=
+  M.shift.null c
 
 end PhysicsSM.NullStrand.ZigZag

@@ -1,9 +1,14 @@
 import Mathlib
+import PhysicsSM.NullStrand.RealPositivePart
 
 /-!
 # NullStrand.BellQFT.FiniteCurrent
 
 Finite-dimensional Bell-current algebra used by the null-strand roadmap.
+
+The positive-part scalar `realPos` and its lemmas now live in the shared module
+`PhysicsSM.NullStrand.RealPositivePart`; this file picks them up via the usual
+parent-namespace resolution (`PhysicsSM.NullStrand.realPos`).
 -/
 
 noncomputable section
@@ -12,11 +17,6 @@ namespace PhysicsSM.NullStrand.BellQFT
 
 open scoped BigOperators
 open Matrix
-
-/-- Positive part of a real scalar. -/
-def realPos (z : Real) : Real := max z 0
-
-@[simp] theorem realPos_nonneg (z : Real) : 0 <= realPos z := le_max_right _ _
 
 /-- Apply a finite matrix to a vector. -/
 def matVec {Q : Type*} [Fintype Q] (A : Matrix Q Q Complex) (v : Q -> Complex) : Q -> Complex :=

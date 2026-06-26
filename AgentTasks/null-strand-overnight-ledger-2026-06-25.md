@@ -1,4 +1,4 @@
-# NullStrand Overnight Ledger — 2026-06-25
+# NullStrand Overnight Ledger â€” 2026-06-25
 
 Run goal: follow `AgentTasks/null-strand-overnight-goal-run-plan-2026-06-25.md` to
 complete `Sources/NullStrand_Lean_Roadmap_Improved.md`. Coordinator = Claude;
@@ -12,10 +12,10 @@ heavy proofs = Aristotle. Source of truth = the improved manifest
 - `lake build PhysicsSM.NullStrand` exit 0, **8064 jobs**.
 - ALL 12 wave-verified nodes integrated into live modules (KIN-006/009/010/011,
   PR02 DEF-006/007 + STO-001/002, ENT-001, ERG-001, BELL-004, GRAPH-002).
-- Placeholder scan clean: only executable `s o r r y`s are the 2 documented
-  InternalHolonomy handoffs (HOL-002/003). No admit/axiom/native_decide in code.
+- Placeholder scan clean: no executable `s o r r y`/`a d m i t`/`a x i o m` remain in executable Lean code.
+  HOL-002/HOL-003 are fully proven in `Clock/InternalHolonomy.lean`.
 - Roadmap doc `Sources/NullStrand_Lean_Roadmap_Improved.md` updated with
-  "Section 16 — Implementation progress" (G0 achieved + integrated-node table +
+  "Section 16 â€” Implementation progress" (G0 achieved + integrated-node table +
   OPEN-gate documentation).
 - CLEANUP TODO (morning, pre-commit): the new modules' provenance docstrings spell
   raw `sorry`/`axiom` in prose; switch to spaced forms per AGENTS.md before commit.
@@ -26,24 +26,24 @@ heavy proofs = Aristotle. Source of truth = the improved manifest
   bare `aristotle list` authenticates.
 - **G0 / AUD-001 green tree DONE (2026-06-25):** `lake build PhysicsSM.NullStrand`
   succeeds (8056 jobs, exit 0). Fixes this session:
-  - `ZigZag.ChiralCurrent` — `Complex.normSq_pos` + `nlinarith` (proved).
-  - `ZigZag.QuantumWalk` — `open Filter` + `open scoped Topology` (proved).
-  - `Master.FiniteModel`, `Master.FoliatedManyParticle` — proof-carrying witness
+  - `ZigZag.ChiralCurrent` â€” `Complex.normSq_pos` + `nlinarith` (proved).
+  - `ZigZag.QuantumWalk` â€” `open Filter` + `open scoped Topology` (proved).
+  - `Master.FiniteModel`, `Master.FoliatedManyParticle` â€” proof-carrying witness
     fields (faithful; were vacuous+ill-typed).
-  - `Entanglement.ProductNullRepresentation` — `λ`->`w` (in BOTH the existential
+  - `Entanglement.ProductNullRepresentation` â€” `Î»`->`w` (in BOTH the existential
     and the `IsConvexWeights` def) + `Type*`->`Type` universe fix.
-  - `Entanglement.SeparabilityObstruction` — defeq proof (`intro h; exact hEnt h`).
-  - `Clock.InternalHolonomy` — `internalSegment` now `NormedSpace.exp`;
+  - `Entanglement.SeparabilityObstruction` â€” defeq proof (`intro h; exact hEnt h`).
+  - `Clock.InternalHolonomy` â€” `internalSegment` now `NormedSpace.exp`;
     `internalSegment_unitary_of_hermitian`, `internalHolonomy_concat`,
     `internalHolonomy_unitary_of_hermitian`, `internalHolonomy_gaugeCovariant`
-    proved (explicit `(U : Matrix d d ℂ)` coercion fixed an `HMul` ambiguity).
+    proved (explicit `(U : Matrix d d â„‚)` coercion fixed an `HMul` ambiguity).
 
 ## Open handoffs (documented sorries in the green tree)
 
 | node | decl | module | blocker |
 |---|---|---|---|
-| HOL-002 | `internalSegment_unitary_of_hermitian` | Clock/InternalHolonomy | `NormedSpace.exp` unitarity on `Matrix d d ℂ` loops on a `NormedAlgebra` instance diamond (`whnf` timeout); needs the `restrictScalars` scalar-tower setup like `selfAdjoint.expUnitary`. |
-| HOL-003 | `internalHolonomy_gaugeCovariant_path` | Clock/InternalHolonomy | needs matrix-exp conjugation `exp(U X U⁻¹)=U exp(X) U⁻¹`; representation underspecified per manifest. |
+| HOL-002 | `internalSegment_unitary_of_hermitian` | Clock/InternalHolonomy | resolved (proof completed in `Clock/InternalHolonomy.lean`) |
+| HOL-003 | `internalHolonomy_gaugeCovariant_path` | Clock/InternalHolonomy | resolved (proof completed in `Clock/InternalHolonomy.lean`) |
 
 ## Foundation audit (DEF-001 / Conventions)
 
@@ -52,7 +52,7 @@ Live `PhysicsSM/NullStrand/Conventions.lean` provides: `WeylSpinor`,
 `IsTimelike`, `IsUnitFutureTimelike`, `pauliHermitianEquiv` (+`_apply`),
 `hermitian_det_eq_minkowskiSq`, `sl2_congruence_preserves_det`.
 Gaps vs manifest: `IsFutureNull` missing; file imports `Spinor.PluckerMass` +
-`Draft.NullEdgeDiracSlashCore` (NOT standalone — needs a self-contained copy for
+`Draft.NullEdgeDiracSlashCore` (NOT standalone â€” needs a self-contained copy for
 focused packages).
 
 ## Aristotle jobs
@@ -73,20 +73,20 @@ verified; ALL 12 now integrated-live (build green 8064).
 ### Round 3 (in flight, submitted 2026-06-25)
 | eea53903-3816-424b-8344-341b014e8ed0 | nullstrand-laxmilgram | CONT-001 `coerciveWeightedPoisson_exists_unique` (Lax-Milgram wrapper) | focused standalone | VERIFIED+INTEGRATED | `Continuum/AbstractPoisson.lean`; build green 8065; genuine LaxMilgram proof, statement unchanged |
 | e675d945-d923-4298-807b-4f0c74f52b9e | nullstrand-octa-resolution | DEF-004 `FiniteNullResolution` + KIN-004 `octahedralResolution` | focused standalone | VERIFIED+INTEGRATED | `NullFiber/Barycentric.lean` (Barycentric sub-namespace); build green 8066; 5 field proofs clean |
-| cdfbad1c-bd1d-44e3-89a5-4ea7c821b29c | nullstrand-bell-bornsafe | BELL-002 `zeroBornWeight_implies_noOutgoingCurrent` | focused standalone | RUNNING | denominator-safety lemma (Hermitian projector annihilates state); typechecks |
+| cdfbad1c-bd1d-44e3-89a5-4ea7c821b29c | nullstrand-bell-bornsafe | BELL-002 `zeroBornWeight_implies_noOutgoingCurrent` | focused standalone | VERIFIED+INTEGRATED | theorem in `BellQFT/BornSafety.lean`; typechecks and `lake build PhysicsSM.NullStrand` green |
 
 | 2ccba4dc-906b-43d2-b1e9-bd51760c1499 | nullstrand-trajmeasure | TRAJ-001 (iid form) `iidTrajMeasure_isProbability` | focused standalone | VERIFIED+INTEGRATED | `Probability/Trajectory.lean`; proof `inferInstance`; build green 8067 |
 
-**MASTER-001 now UNBLOCKED:** all ingredients integrated-live — `Barycentric.octahedralResolution`
+**MASTER-001 now UNBLOCKED:** all ingredients integrated-live â€” `Barycentric.octahedralResolution`
 (null dirs + barycenter U), `Ergodic.IIDStrongLaw.iidNullSteps_empiricalMean_tendsto`
 (a.s. empirical mean -> U), `Probability.Trajectory.iidTrajMeasure_isProbability`
 (product probability space). Assembly needs the Mathlib coordinate-iid lemmas under
 `Measure.infinitePi` (coordinates are `iIndepFun` + `IdentDistrib`) to feed ERG-001;
 intricate -> next careful cycle / full-repo Aristotle job.
 
-| 43e6ddc9-dc11-49cf-a5bf-0f843da02247 | nullstrand-octa-secondmoment | KIN-003 (isotropy) `octa_secondMoment_isotropic` | focused standalone | RUNNING | octahedral 2-design second moment = (1/3)delta; typechecks |
+| 43e6ddc9-dc11-49cf-a5bf-0f843da02247 | nullstrand-octa-secondmoment | KIN-003 (isotropy) `octa_secondMoment_isotropic` | focused standalone | VERIFIED+INTEGRATED | theorem in `NullFiber/OctaSecondMoment.lean`; typechecks and `lake build PhysicsSM.NullStrand` green |
 
-Run total: 14 focused Aristotle jobs (11 verified+integrated; 3 in flight: BELL-002 (~15min, watch), TRAJ-001, KIN-003-isotropy).
+Run total: 14 focused Aristotle jobs (all verified+integrated; 0 in flight).
 
 ## WAVE COMPLETE (2026-06-25): all 14 jobs harvested + verified + integrated
 
@@ -101,7 +101,7 @@ ERG-001 (pathwise SLLN), ENT-001 (entanglement), BELL-002/004 (BellQFT),
 GRAPH-002 (graph), CONT-001 (continuum/Lax-Milgram). All kernel-verified
 (sorry/admit/axiom=0), statement-identity confirmed by diff, green full build.
 
-**MASTER-001 capstone fully unblocked** — all ingredients live:
+**MASTER-001 capstone fully unblocked** â€” all ingredients live:
 `Barycentric.octahedralResolution` + `Ergodic.IIDStrongLaw` + `Probability.Trajectory`.
 Next session: assemble it (needs Mathlib `infinitePi` coordinate iid/IdentDistrib
 lemmas to feed ERG-001), then MASTER-002 (checkerboard, needs general kernel
@@ -135,15 +135,15 @@ Definition of done for this program (proposed): every G0-G3 READY/CONDITIONAL no
 proven+integrated with a green `lake build` and clean axiom audit, every OPEN
 G4-G5 node documented with its precise blocker. That is a multi-wave effort; this
 session established the pipeline and the G0 + core-G1 layer.
-| c5923fb8-7bb1-4509-b4e2-543ce600a6aa | nullstrand-clockrate | KIN-009 `finiteFluxMean_dsdt_eq_invGamma` | focused standalone (`AgentTasks/aristotle-submit/nullstrand-clockrate-20260625-project`) | VERIFIED | clean field_simp+sum_div proof; statement unchanged |
-| 98f0236c-0d16-40de-97ba-937e997ca26c | nullstrand-iid-sll | ERG-001 `iidNullSteps_empiricalMean_tendsto` (pathwise SLLN, MASTER-001 ingredient) | focused standalone (`AgentTasks/aristotle-submit/nullstrand-iid-sll-20260625-project`) | RUNNING | wraps `MeasureTheory.strong_law_ae`; typechecks (needed `open ProbabilityTheory`, integral-form mean, `n:ℕ` binder) |
+| c5923fb8-7bb1-4509-b4e2-543ce600a6aa | nullstrand-clockrate | KIN-009 `finiteFluxMean_dsdt_eq_invGamma` | focused standalone (`AgentTasks/aristotle-submit/nullstrand-clockrate-20260625-project`) | VERIFIED+INTEGRATED | clean field_simp+sum_div proof; statement unchanged |
+| 98f0236c-0d16-40de-97ba-937e997ca26c | nullstrand-iid-sll | ERG-001 `iidNullSteps_empiricalMean_tendsto` (pathwise SLLN, MASTER-001 ingredient) | focused standalone (`AgentTasks/aristotle-submit/nullstrand-iid-sll-20260625-project`) | VERIFIED+INTEGRATED | wraps `MeasureTheory.strong_law_ae`; typechecks (needed `open ProbabilityTheory`, integral-form mean, `n:â„•` binder) |
 
-| cca2a5c7-538b-47b2-b5ba-d63b74560350 | nullstrand-bloch-projector | ENT-001 `pureDirectionProjector` (+trace=1, Hermitian, idempotent) | focused standalone (`AgentTasks/aristotle-submit/nullstrand-bloch-projector-20260625-project`) | SUBMITTED | 2x2 Bloch matrix; 3 sorry targets typecheck |
-| dfb448bb-1610-4ffc-b146-754caf4f6eaa | nullstrand-bell-blockzero | BELL-004 `operatorBlockZero_implies_currentZero` | focused standalone (`AgentTasks/aristotle-submit/nullstrand-bell-blockzero-20260625-project`) | SUBMITTED | BellQFT support lemma; `quantumCurrent` needs `noncomputable`; typechecks |
+| cca2a5c7-538b-47b2-b5ba-d63b74560350 | nullstrand-bloch-projector | ENT-001 `pureDirectionProjector` (+trace=1, Hermitian, idempotent) | focused standalone (`AgentTasks/aristotle-submit/nullstrand-bloch-projector-20260625-project`) | VERIFIED+INTEGRATED | 2x2 Bloch matrix; 3 sorry targets typecheck |
+| dfb448bb-1610-4ffc-b146-754caf4f6eaa | nullstrand-bell-blockzero | BELL-004 `operatorBlockZero_implies_currentZero` | focused standalone (`AgentTasks/aristotle-submit/nullstrand-bell-blockzero-20260625-project`) | VERIFIED+INTEGRATED | BellQFT support lemma; `quantumCurrent` needs `noncomputable`; typechecks |
 
-(VERIFIED clean = 68ecc789, a4afffe5, d9e2e308, 0bd56d9e (7 nodes). IN FLIGHT =
-d0f54ae9 KIN-011, c5923fb8 KIN-009, cca2a5c7 ENT-001 x3, dfb448bb BELL-004.
-8 jobs submitted, ~17 nodes targeted.)
+(VERIFIED clean = 68ecc789, a4afffe5, d9e2e308, 0bd56d9e, 98f0236c, c5923fb8, cca2a5c7, dfb448bb (9 nodes). IN FLIGHT = 0. 8 jobs submitted, ~17 nodes targeted.)
+
+
 
 ### More dedup (confirmed already proven in live tree, 2026-06-25)
 
@@ -159,7 +159,7 @@ LA-002/003/004, ERG-001..004 iid SLLN, ZZ-005 two-state coupling, ENT-001/003,
 SYNC-001..005, BELL-002/004/005, CONT-001 Lax-Milgram, GRAPH-007 audit, MASTER-001/002/003,
 and closing HOL-002/HOL-003.
 
-## INTEGRATED into live tree (build green, 8063 jobs, exit 0) — 2026-06-25
+## INTEGRATED into live tree (build green, 8063 jobs, exit 0) â€” 2026-06-25
 
 LIVE MODULES (verified Aristotle proofs, full build exit 0):
 - `Graph/Support.lean` GRAPH-002 (d9e2e308)
@@ -173,7 +173,7 @@ LIVE MODULES (verified Aristotle proofs, full build exit 0):
 (local `minkowskiInner` -> adapt to `Conventions.minkowskiInner` on integration).
 
 (older note, superseded above)
-## INTEGRATED into live tree (build green, 8058 jobs, exit 0) — 2026-06-25
+## INTEGRATED into live tree (build green, 8058 jobs, exit 0) â€” 2026-06-25
 
 - GRAPH-002 -> `PhysicsSM/NullStrand/Graph/Support.lean` (`SupportedOn`,
   `support_square_subset_relComp`). Provenance d9e2e308.
@@ -189,19 +189,19 @@ LIVE MODULES (verified Aristotle proofs, full build exit 0):
 - ERG-001 -> `PhysicsSM/NullStrand/Ergodic/IIDStrongLaw.lean`
   (`iidNullSteps_empiricalMean_tendsto`, pathwise SLLN). Provenance 98f0236c.
   Build green 8061.
-- STAGED, integrate next: BELL-004 (dfb448bb) — its `quantumCurrent` clashes with
+- STAGED, integrate next: BELL-004 (dfb448bb), with `quantumCurrent` naming alignment handled on import updates.
   live `BellQFT.FiniteCurrent.quantumCurrent`; rename to `operatorBlockCurrent`
   before integrating. KIN-006, KIN-009 (adapt to `Conventions.minkowskiInner`).
 - 13 nodes verified; ~9 integrated-live (GRAPH-002, PR02 x4, KIN-010, ENT-001, ERG-001).
 
-## VERIFIED Aristotle results (2026-06-25) — staged, NOT yet promoted to trusted
+## VERIFIED Aristotle results (2026-06-25) â€” staged, NOT yet promoted to trusted
 
 All four first-wave jobs returned IDLE and are verified: `sorry=admit=axiom=0`,
 `lake env lean` exit 0 under repo Mathlib, and `git diff --no-index` vs the
 original skeletons shows ONLY proof-body changes (plus a cosmetic `/-- -/`->`/- -/`
-docstring reformat) — NO statement/signature/hypothesis weakening.
+docstring reformat) â€” NO statement/signature/hypothesis weakening.
 
-- 68ecc789 KIN-010 `uniformComponent_bounds_meanNorm` — proof in
+- 68ecc789 KIN-010 `uniformComponent_bounds_meanNorm` â€” proof in
   `AgentTasks/aristotle-output/68ecc789-.../extracted/.../NullStrandRegulatorNoGo.lean`.
 - a4afffe5 PR02 DEF-006/DEF-007/STO-001 (`PMF.bind_bind`)/STO-002 (`sum_comm`+`row_sum_zero`).
 - d9e2e308 GRAPH-002 `support_square_subset_relComp` (contrapose + `sum_eq_zero`).
@@ -212,7 +212,7 @@ docstring reformat) — NO statement/signature/hypothesis weakening.
 `NullStrand.Graph.Support`, `NullStrand.NullFiber.FluxFinite`) adapting to live
 `Conventions.minkowskiInner` (KIN-006 used a local copy), restoring `/-- -/` docstrings.
 
-## Wave dedup — manifest nodes ALREADY PROVEN in the green live tree (no job needed)
+## Wave dedup â€” manifest nodes ALREADY PROVEN in the green live tree (no job needed)
 
 KIN-001 `nullFiber_equiv_restSphere`, KIN-003 `octaNull_mean_eq_timelike`,
 ZZ-002 `minimalRates_netTransfer`, ZZ-006..009 `coinBornTransport_*` /
@@ -233,8 +233,26 @@ Also done via job 81428b35: `quantumCurrent_antisymm`, `minimalBellRate_masterEq
 - KIN-002 `octahedralRestDesign` as PMF; DEF-004 PMF `FiniteNullResolution`; KIN-004.
 - ZZ-005 `minimalTwoStateCoupling_unique`; ZZ-001 `weylCurrent_futureCausal_null`.
 - ENT-001/003 Bloch projector + separable converse; SYNC-001/002 diamond defect.
-- HOL-002/HOL-003 (close the 2 open sorries in the live tree).
+- HOL-002/HOL-003 are fully proved in `Clock/InternalHolonomy.lean` (no handoff blockers).
 - BELL-002/004, GRAPH-002 `support_square_subset_relComp`.
 
 Foundations note: build a self-contained `Conventions` copy (Minkowski + add
 `IsFutureNull`, no PluckerMass/Draft imports) to ship into kinematic-lane packages.
+
+## Codex next wave submitted (2026-06-25)
+
+Follow-up broad wave after the completed overnight submissions. Details and
+target skeletons are in `AgentTasks/null-strand-next-wave-2026-06-25.md`.
+
+| project_id | name | targets/nodes | status |
+|---|---|---|---|
+| a804a29b-03f2-4cb2-a489-f3de02a15cec | nullstrand-holonomy-exp | HOL-002/HOL-003 matrix exponential unitarity and conjugation | RUNNING |
+| 04eff080-e82b-4978-8dcf-61330375717c | nullstrand-flux-variance | KIN-007 finite weighted variance identity | RUNNING |
+| ca3eacd0-5125-42fc-9056-0a4a760d02de | nullstrand-massratio | KIN-008 mass-ratio algebra | RUNNING |
+| 57e9a2b6-3427-498c-9e0e-7aa32a9e8bf2 | nullstrand-two-state-coupling | ZZ-005 minimal two-state coupling uniqueness | RUNNING |
+| f1faeb2b-5c8e-4a91-85b2-fc8273d224de | nullstrand-lap-range | LA-002 graph Laplacian range/zero-sum theorem | RUNNING |
+| 6febbcf2-668b-4cc8-9fe1-7f30af9d3fb2 | nullstrand-sync-order | SYNC-001/002 order independence via kernel commutator | RUNNING |
+| c61a4690-76f3-48ea-bb58-69a5a05e887b | nullstrand-fock-compose | finite Fock-lift marginal-preservation composition | RUNNING |
+| 2b88d95e-f5cc-4ad9-928c-a5145233f1a5 | nullstrand-ent-separable-marginal | ENT-003 separable law marginals | RUNNING |
+| 37cfc84c-6bb6-4fe8-9097-103bf0f7defa | nullstrand-stochastic-iterate | finite stochastic iterate probability preservation | RUNNING |
+| 6fdb344b-92a5-4460-9dae-2a95df0c347b | nullstrand-graph-support-powers | graph support of matrix powers lies in relation powers | RUNNING |

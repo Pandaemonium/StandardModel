@@ -1,5 +1,6 @@
 import Mathlib
 import PhysicsSM.NullStrand.Conventions
+import PhysicsSM.NullStrand.RealPositivePart
 
 /-!
 # NullStrand.ZigZag.TransferCurrent
@@ -21,16 +22,9 @@ open scoped BigOperators
 
 abbrev RealRate (X : Type*) := X → ℝ
 
-/-- Positive part of a real scalar. -/
-def realPos (z : ℝ) : ℝ := max z 0
-
-@[simp] theorem realPos_nonneg (z : ℝ) : 0 ≤ realPos z := le_max_right _ _
-
-theorem realPos_sub_realPos_neg (x : ℝ) : realPos x - realPos (-x) = x := by
-  by_cases hx : 0 ≤ x
-  · simp [realPos, max_eq_left hx, max_eq_right (neg_nonpos.mpr hx)]
-  · have hx' : x < 0 := lt_of_not_ge hx
-    simp [realPos, max_eq_right (le_of_lt hx'), max_eq_left (neg_nonneg.mpr (le_of_lt hx'))]
+-- `realPos`, `realPos_nonneg`, and `realPos_sub_realPos_neg` now live in the
+-- shared module `PhysicsSM.NullStrand.RealPositivePart` and are resolved here via
+-- parent-namespace lookup.
 
 /-- Abstract two-chiral transfer interface used by several finite APIs. -/
 structure ChiralTransferData (X : Type*) where
