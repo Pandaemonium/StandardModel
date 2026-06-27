@@ -135,6 +135,8 @@ import PhysicsSM.Gauge.CausalDiamondHolonomy
 import PhysicsSM.Gauge.CausalDiamondStack
 import PhysicsSM.Gauge.OrderComplexCochain
 import PhysicsSM.Spinor.PluckerMass
+import PhysicsSM.Spinor.PluckerObstruction
+import PhysicsSM.Spinor.PluckerMassCovariance
 import PhysicsSM.Spinor.TwistorPluckerMass
 import PhysicsSM.Spinor.Checkerboard
 import PhysicsSM.Spinor.CheckerboardDynamics
@@ -202,6 +204,7 @@ import PhysicsSM.Algebra.Furey.JbarElectroweakAnomaly
 import PhysicsSM.Algebra.Furey.JbarLinearIndependence
 import PhysicsSM.Algebra.Furey.JbarActionTable
 import PhysicsSM.Algebra.Furey.JbarCoordinateEquiv
+import PhysicsSM.Algebra.Furey.ConjugateIdeal
 import PhysicsSM.Algebra.Furey.WeakIsospinDoublets
 import PhysicsSM.Algebra.Furey.WeakIsospinLadder
 import PhysicsSM.Algebra.Furey.WeakIsospinLadderDerived

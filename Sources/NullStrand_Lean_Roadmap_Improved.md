@@ -1952,3 +1952,1098 @@ or another independently forced restriction. The ledger should track graph decor
 - `Stopped-node theorem charter`: state only stopped/local elliptic results near Born nodes until a weighted-capacity theorem is proved.
 
 Top failure modes are now explicit: determinant-level high-momentum massless branches or complex instabilities; conflating spacetime chirality with internal Higgs parity; uncontrolled frame contamination; arbitrary tetrad decoration; full-rank finite-to-EFT reparametrization; wrong spectral-action signs; and ad hoc anomaly repair.
+
+## Null-edge mass blocker gates update - 2026-06-26
+
+Provenance: integrated from ChatGPT Pro feedback on Aristotle's blocker list, attachment `14004817-5927-4a53-a6a7-b159e201e4df/pasted-text.txt`. Full detail is in `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 20.
+
+For Lean and Aristotle scheduling, resolve the unified-mass blockers through gates rather than as one flat list:
+
+```text
+Gate A: convention freeze
+Gate B: finite dual-soldered algebra
+Gate C: flat branch and stability audit
+Gate D: continuum square limit
+Gate E: physics audits
+Gate F: prediction gate
+```
+
+Immediate theorem/audit order:
+
+1. Freeze `Gamma_s`, `chi_E`, `epsilon_form`, signs, and the super-Dirac square sign audit.
+2. Prove finite dual-soldered algebra targets: affine commutator symbol, square decomposition, tetrad-postulate frame-term vanishing, and scalar/gauge null kinetic reconstruction.
+3. Run determinant-level flat branch-count tests using `det D_+(q) = 0`, not only coefficient-vector zeros.
+4. Add Krein self-adjointness and finite-box stability audits without claiming real spectrum or physical stability from `J`-self-adjointness alone.
+5. Only then attempt continuum square-limit/Lichnerowicz compatibility.
+6. Keep electroweak, anomaly, and prediction claims ledgered as reconstruction, structural theorem, or prediction.
+
+Add blocker zero to all future mass-unification handoffs:
+
+```text
+Define canonical obstruction datum and enforce the claim ledger.
+```
+
+A mass claim must identify a natural obstruction map `B` and its status. `B_Pl` is canonical and proved; `B_Y` and `B_EW` are reconstruction/structural maps once SM inputs are supplied; `B_QCD` is not yet available.
+
+Updated stop rule:
+
+```text
+If the finite operator package works but the finite-to-EFT map is full rank,
+keep the result as null-edge reconstruction rather than prediction.
+```
+
+## Gate H addendum: Furey internal-spectrum and anomaly bridge - 2026-06-26
+
+Provenance: integrated from ChatGPT Pro feedback on the Furey/anomaly work,
+attachment `ed7c2aa4-281b-4576-9f2c-b0d502052127/pasted-text.txt`. Full
+detail is in `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 22.
+
+The Furey/formal anomaly work should be routed through a separate internal-sector
+gate:
+
+```text
+Gate H: internal-spectrum and anomaly gate.
+```
+
+Division of labor:
+
+```text
+Furey/formal anomaly work:
+  internal Standard Model spectrum, chiral charge table, anomaly cancellation,
+  and legal Yukawa bookkeeping.
+
+Null-edge work:
+  null kinetic geometry, Pluecker mass, dual soldering, super-Dirac square,
+  determinant branch count, Krein audit, and continuum scaling.
+```
+
+Gate H is useful because it can make the internal `Phi_H` sector
+non-arbitrary. If a null-edge internal spectrum maps to the existing
+`standardModelOneGeneration` anomaly table, the program can inherit local and
+Witten anomaly freedom from the existing Standard Model anomaly package.
+
+Near-term formal target:
+
+```text
+NullEdgeInternalSpectrum.toChiralMultipletList =
+  standardModelOneGeneration
+```
+
+Then prove anomaly inheritance:
+
+```text
+LocalAnomalyFree NullEdgeInternalSpectrum.toChiralMultipletList
+WittenSU2AnomalyFree NullEdgeInternalSpectrum.toChiralMultipletList
+```
+
+Stronger Furey bridge:
+
+```text
+FureyInternalSpectrum realizes NullEdgeInternalSpectrum.internalFiber.
+```
+
+The `Phi_H` bridge should build the zero-order Higgs/Yukawa block only from
+legal flips:
+
+```text
+Phi_H = sum over legal Yukawa flips of y_f Phi_f
+```
+
+with each `Phi_f` gauge-neutral after the correct Higgs or conjugate-Higgs
+insertion.
+
+Keep the grading convention explicit:
+
+```text
+Phi_H is odd under internal grading chi_E.
+Phi_H commutes with spacetime chirality Gamma_s.
+```
+
+Claim boundary:
+
+```text
+Furey supplies a candidate anomaly-safe internal fiber.
+It does not solve null-edge kinetic/symbol/square/branch/Krein/continuum/QCD
+blockers and does not derive numerical Yukawa values.
+```
+
+Roadmap placement:
+
+1. P1: mention only as future internal-sector support, if at all.
+2. P1.5: legal Yukawa blocks may reference anomaly-safe internal-spectrum work,
+   but should not require Furey machinery.
+3. P2: use Gate H as a candidate internal fiber for the super-Dirac `Phi_H`
+   block.
+4. Prediction gate: use Gate H only if it constrains representations,
+   generation structure, Yukawa texture, rank, or forced zeros.
+
+Add Gate H jobs to future Aristotle waves:
+
+```text
+H1: NullEdgeInternalSpectrum record.
+H2: Furey-to-SM one-generation bridge.
+H3: anomaly inheritance theorem.
+H4: legal Yukawa flip classification.
+H5: Phi_H from legal flips.
+H6: singlet-completion audit.
+H7: triality/generation audit.
+H8: internal-sector prediction/codimension audit.
+```
+
+## Gate C literature correction - 2026-06-26
+
+Provenance: integrated from Claude Semantic Scholar triage supplied
+2026-06-26, with source-level arXiv spot checks. Detailed integration lives in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 23.
+
+The branch/no-doubling gate should now be phrased as:
+
+```text
+Gate C = determinant/propagator-zero classification,
+not coefficient-vector zero testing.
+```
+
+The relevant comparison class is minimally doubled fermions:
+
+```text
+Misumi 2025, arXiv:2512.22609:
+  nodal structures, single-Weyl targets, species-splitting masses, and
+  Ginsparg-Wilson-type protection.
+
+Golterman-Shamir 2025, arXiv:2505.20436:
+  propagator zeros as kinematical singularities and generalized no-go pressure
+  for chiral spectra.
+
+Weber 2023, arXiv:2312.08526:
+  spin-taste structure and Boricci-Creutz counterterm warnings.
+
+Weber 2025, arXiv:2502.16500:
+  Karsten-Wilczek spin-taste and determinant-derived counterterm constraints.
+
+Capitani-Weber-Wittig 2009, arXiv:0910.2597:
+  one-loop counterterms and operator mixing for Boricci-Creutz and
+  Karsten-Wilczek fermions on the hyperdiamond.
+```
+
+The current Gate C classification table should include, for every determinant
+zero:
+
+```text
+branch location;
+whether p(q) = 0 or only p(q)^2 = 0;
+pole versus propagator zero;
+physical doubler versus kinematical zero;
+ghost-like or complex-instability warning;
+species/taste interpretation;
+chirality and internal grading;
+Krein signature and doubled multiplicity;
+whether Phi_H lifts or preserves the branch;
+whether a counterterm/projection/redesign is required.
+```
+
+Counterterm rule:
+
+```text
+Any counterterm needed to control Gate C branches must be added to the
+finite-to-EFT moduli ledger before prediction language is used.
+```
+
+Related chirality/anomaly source lead:
+
+```text
+Butt-Catterall-Pradhan-Toga 2021, arXiv:2101.01026:
+  Kähler-Dirac anomalies and symmetric mass generation; use as a form-degree
+  anomaly/flavor-count comparison for null-edge cochains.
+
+Li-Wang-You 2024, arXiv:2412.19691:
+  C-R-T and internal anomaly constraints for symmetric mass generation.
+```
+
+Support references:
+
+```text
+Feinberg-Riser 2021, arXiv:2109.09221:
+  pseudo-Hermitian spectra are real or complex-conjugate paired; useful for
+  Krein caution, not a stability theorem.
+
+Franco-Eckstein 2015, arXiv:1502.04683:
+  two-sheet Lorentzian spectral-triple causality; useful for two-sheet
+  intuition, not a branch-count solution.
+```
+
+Add near-term jobs:
+
+```text
+C13: minimally doubled comparison audit.
+C14: propagator-zero classification table.
+C15: counterterm/moduli audit.
+C16: high-symmetry nodal-structure Lean theorem.
+H10: Kähler-Dirac anomaly comparison.
+F11: counterterm-rank impact audit.
+```
+
+Gate C remains unresolved until the determinant/propagator-zero table is
+classified against this literature-backed protocol.
+
+## Additional literature leads from Codex search - 2026-06-26
+
+Provenance: Codex literature search on 2026-06-26. Direct Semantic Scholar use
+was attempted but returned HTTP 429 in this session; these leads are based on
+arXiv/source-page confirmation.
+
+### Gate D: DEC and connection-Laplacian convergence
+
+The most important new direction is to treat Gate D as an adaptation problem
+against existing Hodge-Dirac and connection-Laplacian convergence theorems.
+
+Primary Gate D leads:
+
+```text
+Dabetic-Hiptmair 2025/2026, arXiv:2507.19405:
+  convergence of Discrete Exterior Calculus for the Hodge-Dirac operator.
+
+Zahariev 2006, arXiv:math/0609464:
+  discrete connection Laplacians.
+
+Singer-Wu 2013, arXiv:1306.1587:
+  spectral convergence of connection Laplacians from random samples.
+
+Boguna-Krioukov 2025, arXiv:2506.18745:
+  local causal-set d'Alembertian and causal-set continuum-limit warnings.
+```
+
+Roadmap consequence:
+
+```text
+Gate D should first ask whether the null-edge cochain operator can be expressed
+as a DEC/Hodge-Dirac operator plus controlled null-edge perturbations.
+```
+
+If yes, the continuum proof can inherit known structure. If no, the project must
+state precisely which null-edge feature lies outside DEC/FEEC convergence and
+why that replacement is stable.
+
+### Gate C: graph-native species and chirality diagnostics
+
+Additional Gate C leads:
+
+```text
+Yumoto-Misumi 2021/2022, arXiv:2112.13501:
+  lattice fermions as spectral graphs.
+
+Basak-Chakrabarti-Kishore 2025, arXiv:2501.10336:
+  eigenspectra of minimally doubled fermions and modified chirality diagnostics.
+
+Catterall 2023/2024, arXiv:2311.02487:
+  reduced Kahler-Dirac fermions and chiral/mirror issues.
+```
+
+Roadmap consequence:
+
+```text
+Gate C should classify both momentum-symbol zeros and finite graph spectral
+matrix nullities, with ordinary chirality and modified/flavored chirality both
+audited.
+```
+
+### Gate E/F: quiver spectral action and FMS discipline
+
+New comparison target:
+
+```text
+van Suijlekom et al. 2024, arXiv:2401.03705:
+  Bratteli networks and spectral action on quivers.
+```
+
+Use this to compare null-edge finite graph claims against an existing
+quiver/spectral-action reconstruction of Yang-Mills-Higgs terms. The novelty
+line should be:
+
+```text
+not "finite graphs can produce Yang-Mills-Higgs",
+but "null-soldered causal graph data produce the specific kinetic square,
+branch behavior, Lorentzian/Krein structure, and possible moduli restrictions."
+```
+
+FMS/electroweak leads:
+
+```text
+Maas 2023, arXiv:2305.01960;
+lattice weak/Higgs follow-up, arXiv:2603.12882.
+```
+
+Use these to keep electroweak wording gauge-invariant and composite-observable
+first.
+
+### Gate H and super-Dirac square source leads
+
+Internal-sector leads:
+
+```text
+Furey 2025, arXiv:2505.07923;
+Cacic 2009, arXiv:0902.2068;
+Bochniak-Sitarz 2018, arXiv:1804.09482.
+```
+
+Super-Dirac/Lichnerowicz leads:
+
+```text
+Ackermann-Tolksdorf 1995, arXiv:hep-th/9503153;
+Tolksdorf 1996, arXiv:hep-th/9612149.
+```
+
+Use these for generalized Dirac-square theorem templates and finite
+spectral-triple moduli comparison. They support the architecture but do not by
+themselves prove null-edge specificity.
+
+## Pro synthesis addendum after the Codex literature pass - 2026-06-26
+
+Provenance: ChatGPT Pro feedback supplied in attachment
+`492f4b4d-8bb9-45bc-a2d2-e0baf0513631/pasted-text.txt`. Full integration is in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 25.
+
+### Gate D scheduling correction
+
+Gate D should be staged as:
+
+```text
+positive DEC/Hodge-Dirac proxy
+  -> connection/holonomy perturbation
+  -> dual-soldered Clifford-symbol perturbation
+  -> Lorentzian/Krein audit
+  -> retarded/advanced non-self-adjoint perturbation.
+```
+
+Do not try to prove the Lorentzian retarded null-edge convergence theorem first.
+The first target is the flat local commutator/symbol theorem
+
+```text
+[D_h,M_f] = c(df) + O(h)
+```
+
+and the scalar/gauge inverse-Gram quadrature theorem
+
+```text
+g^{-1}(xi,eta) = sum_{a,b} G^{ab} xi(ell_a) eta(ell_b).
+```
+
+The DEC/Hodge-Dirac literature supplies a convergence scaffold, not a proof that
+the retarded/Krein operator already lies in the convergence class.
+
+### Gate C scheduling correction
+
+Gate C is stricter than a no-naive-doubler test:
+
+```text
+retardedness removes coefficient-zero sine doublers,
+but determinant-level Lorentzian branches remain open.
+```
+
+Every high-momentum zero should be treated as an unclassified branch singularity
+until the audit records:
+
+```text
+p(q)=0 or only p(q)^2=0;
+nullity of D_+(q);
+dispersion after energy/momentum split;
+Krein signature;
+gauge-perturbation response;
+whether composite/interpolating fields remove it;
+whether a counterterm, projection, or redesign is required.
+```
+
+Modified/flavored chirality should wait until the branch set is known. It is
+plausible for finitely many isolated branches and probably the wrong tool for a
+continuous high-momentum null locus or complex spectral set.
+
+### Gate E/F scheduling correction
+
+FMS language is not optional for electroweak physical states. The finite theorem
+target is a gauge-invariant Higgs-link stiffness/stabilizer statement first,
+then a corrected finite composite observable whose vacuum/trivialization
+expansion recovers the usual W/Z field component.
+
+Quiver spectral-action and finite spectral-triple work raise the prediction bar.
+Finite graph Yang-Mills-Higgs reconstruction is not enough. Prediction language
+requires a codimension result after counting graph data, null/tetrad frames,
+Hodge-star choices, edge weights, counterterms, gauge representations,
+`Phi_H`, spectral-function data, cutoff, and allowed irrelevant operators.
+
+### Gate H placement
+
+Furey/internal-spectrum work should continue to be routed through Gate H:
+
+```text
+use it for internal representation, anomaly inheritance, and legal Yukawa maps;
+do not use it as a solution to the null kinetic core.
+```
+
+The bridge remains a tensor/product architecture:
+
+```text
+H_total = H_null/spin/graph tensor H_internal/Furey
+D_N acts on the null/spin/graph factor
+Phi_H acts on the internal/Furey factor
+```
+
+with `Phi_H` odd under `chi_E` but commuting with spacetime `Gamma_s`.
+
+
+## Pro follow-up: release-gate refinements after the literature pass - 2026-06-26
+
+Provenance: ChatGPT Pro feedback supplied in attachment
+`b0575fe8-3825-4615-90e4-d250135768b7/pasted-text.txt`. Full integration is in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 26.
+
+### Gate C becomes a staged release gate
+
+Do not treat Gate C as a coefficient-zero or branch-count-only task. The release
+standard is now:
+
+```text
+1. determinant/nodal branch classification;
+2. Gamma_f or an explicit reason no flavored chirality exists;
+3. flavored-mass or spectral-flow branch separation;
+4. cutoff symmetry-breaking and counterterm audit;
+5. gauge-coupled ghost / propagator-zero audit;
+6. Krein signature and complex-branch audit.
+```
+
+The first task is branch geometry:
+
+```text
+What is the determinant-zero / nodal set of the actual dual-soldered symbol?
+```
+
+Only if that set is finite and isolated should the flavored-chirality theorem
+proceed via branch projectors and signs. If the set is an extended nodal surface,
+high-momentum cone, or complex branch sheet, then the modified-chirality analogy
+is probably the wrong tool and the operator needs redesign or branch lifting.
+
+### Gate D gets an explicit D0 proxy
+
+Add a preliminary continuum gate:
+
+```text
+D0: positive DEC/Hodge-Dirac proxy.
+```
+
+The Gate D path should be:
+
+```text
+positive DEC/Hodge-Dirac convergence
+  -> connection/Clifford perturbation
+  -> dual-soldered null quadrature
+  -> Lorentzian/Krein audit
+  -> retarded/advanced audit.
+```
+
+The positive proxy can borrow the DEC/Hodge-Dirac convergence scaffold. It does
+not prove the Lorentzian retarded/Krein target by itself.
+
+### Gate E/F/H claim discipline
+
+Electroweak claims should be theorem-level FMS claims:
+
+```text
+S_H = sum_e |U_e H_{t(e)} - H_{s(e)}|^2
+```
+
+is gauge-invariant, stabilizer directions have zero quadratic cost, and
+non-stabilizer directions acquire orbit stiffness. Physical W/Z language should
+wait for a corrected gauge-invariant finite composite observable whose
+vacuum/trivialization expansion recovers the usual W/Z component.
+
+Prediction language requires a moduli ledger that counts graph data, null/tetrad
+frames, inverse-Gram or Hodge-star choices, edge weights, branch counterterms,
+gauge representations, `Phi_H`, Higgs potentials, spectral functions, cutoffs,
+and allowed irrelevant operators. If these absorb the EFT parameters, the result
+is reconstruction, not prediction.
+
+Gate H remains internal legality and anomaly inheritance only. Furey/internal
+spectrum work may constrain `Phi_H`, but it does not solve the null kinetic
+operator, branch, Krein, continuum, QCD, or numerical-mass gates.
+
+### Demoted probability blocker
+
+Finite irreducible Markov-chain strong laws should be treated as
+formalization/library work unless the process is nonstationary, nonirreducible,
+or time-dependent. They should not block the null-edge mass program.
+
+### Updated stop rules
+
+```text
+unavoidable physical doublers -> redesign or controlled branch lifting;
+gauge-coupled ghost-like zeros -> fatal unless removed by composite theorem;
+no viable Gamma_f/index mechanism -> downgrade SM chirality claim;
+DEC proxy failure -> finite algebra only;
+Krein growing modes -> redesign retarded/Krein layer;
+FMS composite failure -> stabilizer algebra only;
+full-rank finite-to-EFT map -> reconstruction, not prediction;
+no B_QCD theorem -> QCD remains motivation/boundary.
+```
+
+
+## Gate C spin-taste correction from targeted literature search - 2026-06-26
+
+Provenance: Claude literature-search results in attachment
+`99aecf52-9edf-412e-a01a-0e30d2ed2fe2/pasted-text.txt`, plus Codex source
+checks. Full detail is in `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md`
+Section 27.
+
+The next Gate C target is sharper than `OperatorForcesAlignment` as originally
+phrased. The literature suggests that raw ordinary chirality on the bare
+Clifford branch kernel is probably mixed, and that the aligned branch sign is
+really a spin-taste or species-projected chirality.
+
+Use the following two-route fork:
+
+```text
+Route A: bare-symbol release
+  Define the actual tetrahedral Clifford symbol c(p(q)).
+  Compute the branch kernel and prove Pker Gamma_s Pker = g5_a Pker.
+  Then OperatorForcesAlignment discharges as stated.
+
+Route B: species-split release
+  Compute Pker Gamma_s Pker and find mixed/traceless chirality on the raw kernel.
+  Then define point-split / spin-taste / flavored-mass projectors and prove the
+  aligned signs only for the modified operator.
+```
+
+Route B is now the literature-favored expectation, not an embarrassment. Durr
+and Weber show the bare KW/BC operators can be topology-blind until a
+species-splitting term is added. Creutz point splitting supplies the branch-mode
+isolation pattern. Weber's spin-taste work supplies the machinery for assigning
+taste/chirality, and Kimura-Creutz-Misumi plus the later four-dimensional work
+show that spectral flow and modified chirality are the right index diagnostics.
+
+Concrete next Lean module:
+
+```text
+PhysicsSM/Draft/NullEdgeTetrahedralCliffordSymbol.lean
+```
+
+Minimum roadmap target:
+
+```text
+cliff(branch a)^2 = 0;
+finrank ker(cliff(branch a)) = 2, if true;
+compute Pker Gamma_s Pker;
+branch to Route A or Route B from that computation.
+```
+
+Updated release rule:
+
+```text
+Gate C may release for the bare operator only if Route A holds.
+If Route B holds, Gate C can release only for the controlled species-split or
+spin-taste operator, and every added splitting/counterterm enters the moduli
+ledger before prediction language is used.
+```
+
+
+## Gate C release theorem v2: nodal dimension and point-split chirality - 2026-06-26
+
+Provenance: ChatGPT Pro response in attachment
+`eb7adca4-b47f-4874-9135-8aa1fa43f553/pasted-text.txt`. Full integration is in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 28.
+
+Route B is now the default expectation until Lean proves otherwise. For a
+nonzero null four-component Clifford slash, the raw kernel is expected to be
+two-dimensional and chiral-paired. Therefore the meaningful Gate C branch sign
+is likely flavored/taste/point-split chirality, not raw `Gamma_s` chirality.
+
+The first finite computation remains:
+
+```text
+Pker Gamma_s Pker.
+```
+
+But the minimum Gate C fork test should also include local nodal dimension:
+
+```text
+local dimension of {q : det D_+(q) = 0}
+```
+
+near each high-momentum branch. If the determinant-zero set is an extended curve
+or sheet, minimally doubled branch/projector language may need modification.
+
+Add these outputs to the tetrahedral Clifford-symbol module:
+
+```text
+rank c(p_a);
+dim ker c(p_a);
+dim(ker c(p_a) cap H_+);
+dim(ker c(p_a) cap H_-);
+trace and finite spectrum of Pker Gamma_s Pker;
+local dimension of p(q)^2 = 0 near q_a.
+```
+
+Point-split projector model for high branches:
+
+```text
+P_a(q) = ((1 + cos q_a) / 2)
+         * product_{b != a} ((1 - cos q_b) / 2).
+```
+
+This separates the four three-pi branches from each other and from the origin,
+but it is only a free-field momentum-space projector until made gauge-covariant
+or link-dressed.
+
+Updated release rule:
+
+```text
+Gate C releases for the bare operator only if the bare symbol has isolated
+branches and scalar aligned raw chirality.
+
+If raw chirality is mixed, Gate C can release only for a specified point-split /
+spin-taste / species-split operator, with branch projectors, flavored chirality,
+Krein signatures, gauge-ghost audit, and counterterm/moduli accounting.
+```
+
+Publication language:
+
+```text
+Route A: the bare symbol discharges the chirality-alignment hypothesis, but Gate
+C still needs determinant-completeness, Krein, ghost, and counterterm audits.
+
+Route B: the bare symbol is chiral-paired; the signs (+,+,-,-) are taste signs,
+not ordinary raw branch chiralities. This is a publishable branch-audit result
+and a controlled redesign route, not a failed program.
+```
+
+
+## Gate C Route B hand-proof package - 2026-06-26
+
+Provenance: ChatGPT Pro response supplied in attachment
+`5e70b9a3-b369-4973-80bc-a41be4c54d7c/pasted-text.txt`. Full integration is in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 29.
+
+Route B is now the default proof plan unless Lean finds a surprise. The key
+hand-proof chain is:
+
+```text
+q^(a)_a = 0, q^(a)_b = pi for b != a
+  -> p(q^(a)) = -3/2 ell_a^flat
+  -> D_+(q^(a)) is a nonzero null Clifford slash
+  -> D_+(q^(a))^2 = 0 but D_+(q^(a)) != 0
+  -> rank D_+(q^(a)) = 2 and dim ker D_+(q^(a)) = 2
+  -> the kernel contains one plus-chiral and one minus-chiral line
+  -> Pker Gamma_s Pker is mixed/traceless, not +/- Pker.
+```
+
+If this chain lands in Lean, bare `OperatorForcesAlignment` is false for the
+four-component symbol. That is the expected result, not a program failure.
+
+Add an exact nodal-line theorem to the Clifford-symbol target:
+
+```text
+q_a = 0,
+q_b = pi + t for b != a
+  -> p(q)^2 = 0.
+```
+
+This checks whether the high branch is part of an extended determinant-zero
+curve rather than an isolated species point.
+
+Route B branch-control targets:
+
+```text
+P_a(q) = ((1 + cos q_a) / 2)
+         * product_{b != a} ((1 - cos q_b) / 2),
+P_a(q^(b)) = delta_ab,
+P_a(0,0,0,0) = 0.
+```
+
+For signs `s = (+,+,-,-)`, the lower-range taste function
+
+```text
+T_lin(q) = 1/2 (cos q_1 + cos q_2 - cos q_3 - cos q_4)
+```
+
+satisfies `T_lin(q^(a)) = s_a`. Along the exact branch line it behaves like
+`s_a (1 + cos t) / 2`, so `M_split = r T_lin` is a candidate for lifting the
+high-momentum nodal line while leaving the origin unlifted.
+
+Scheduling update:
+
+```text
+1. First prove the exact branch covector and nodal-line facts.
+2. Then prove the nonzero-null-slash kernel/chirality split.
+3. If the split is chiral-paired, stop asking for bare Route A and move Gate C
+   to the point-split/species-split Route B package.
+4. Record every species-splitting coefficient and sign choice in the moduli
+   ledger unless it is forced by tetrahedral, gauge, locality, and taste data.
+```
+
+
+## Gate C Route B literature addendum - 2026-06-26
+
+Provenance: Claude literature review supplied in chat on 2026-06-26. Full
+integration is in `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md`
+Section 30.
+
+The Route B proof plan is now literature-backed enough to schedule as the
+default:
+
+```text
+bare symbol -> chiral-paired kernel -> point-split/taste branch operators
+-> species splitting -> ghost/Krein/counterterm audits.
+```
+
+Key sources to wire into proof jobs:
+
+```text
+2112.13501 Yumoto-Misumi:
+  spectral-graph / DFT method for classifying zero-eigenvalue loci.
+  Use this for local determinant-zero geometry and nodal-line classification.
+
+1611.08388 Weber:
+  flavored minimally doubled QCD and a possible no-fine-tuning mechanism.
+  Use this before deciding whether M_split = r T is a free modulus.
+
+2311.12790 Golterman-Shamir:
+  propagator zeros can become gauge-coupled ghost-like states.
+  Use this as the mandatory Gate C ghost-audit source.
+```
+
+Lean scheduling update:
+
+```text
+1. Add a spectral-graph-informed nodal-set classification target before
+   claiming branch projectors exhaust the determinant zeros.
+2. Add a species-splitting no-fine-tuning audit before marking `r` or the 2+2
+   taste partition as free.
+3. Add a ghost-zero hypothesis or theorem to the final Gate C release criterion.
+4. If the ghost audit fails, Gate C remains blocked even if the flavored index
+   computes correctly.
+```
+
+Updated claim discipline:
+
+```text
+The flavored index is a branch/taste diagnostic, not ordinary spacetime
+chirality and not a Nielsen-Ninomiya evasion by itself.
+
+Species splitting is publishable as controlled branch architecture only if its
+symmetry, locality, gauge covariance, and Krein placement are documented.
+
+Prediction language remains off unless the splitting/counterterm data are
+forced rather than tuned.
+```
+
+
+## Post-C21 Gate C projected-release architecture - 2026-06-26
+
+Provenance: Gemini Deep Research report supplied in attachment
+`dd68f951-5bd4-4377-bb31-12b20bda5a05/pasted-text.txt`, filtered through the
+C21 and C22 kernel-checked outcomes. Full integration is in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 31.
+
+C21 kills bare Route A:
+
+```text
+no_full_symbol_single_chirality:
+  the actual four-component tetrahedral Clifford symbol does not assign one
+  ordinary chirality sign to a high branch.
+```
+
+The new Gate C target is:
+
+```text
+OperatorForcesAlignmentAfterProjection.
+```
+
+This should be decomposed, not treated as one monolithic existence claim:
+
+```text
+NodalSetControlled;
+BranchProjectorsControlled;
+ProjectedKernelOneDim;
+ProjectedChiralityAligned;
+ProjectedKreinPositive;
+GhostZeroSafe;
+SpeciesSplittingAudited.
+```
+
+Lean roadmap update:
+
+```text
+1. Keep C21's bare no-go as the base theorem.
+2. Build a post-C21 release-criterion module with the predicates above.
+3. Prove projected chirality only for an explicit point-split/taste projector.
+4. Prove Krein positivity separately from chirality, respecting C22.
+5. Treat ghost-zero safety as a hard gate: flavored index alone cannot release
+   Gate C.
+6. Keep stable-C-symmetry language as a theorem target, not an assumption.
+```
+
+Recommended modules:
+
+```text
+PhysicsSM/Draft/NullEdgeProjectedGateCRelease.lean
+PhysicsSM/Draft/NullEdgeProjectedBranchChirality.lean
+PhysicsSM/Draft/NullEdgeKreinPositiveReleaseCriterion.lean
+PhysicsSM/Draft/NullEdgeGateCGhostZeroSafety.lean
+```
+
+Claim discipline:
+
+```text
+Gate C can release only for a specified projected or species-split physical
+operator D_phys. It does not release for the bare D_+ after C21.
+```
+
+
+## Furey/Baez/DVT internal spectral-triple bridge - 2026-06-26
+
+Provenance: Claude follow-up analysis supplied in attachment
+`66a2b3a1-f6dd-48f3-be76-73d4d74a1143/pasted-text.txt`, plus the Furey
+internal-selector analysis now integrated in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Sections 32-33.
+
+Roadmap correction:
+
+```text
+Furey is probably not the primary Gate C branch-fix.
+Furey is the primary candidate for the derived finite internal spectral-triple
+half that fills the abstract Phi_H / chi_E slot.
+```
+
+The target product is:
+
+```text
+D = i D_N tensor 1 + Gamma_s tensor Phi_H.
+```
+
+Existing null-edge work supplies the external finite Dirac `D_N` and its square.
+Existing Furey/Baez/DVT work supplies much of the internal data: minimal ideal
+`J`, colour/gauge structure, internal complex structure/grading candidates,
+left-sector one-generation data, anomaly inheritance, and DVT/Jordan scaffolding.
+
+Lean priority sequence:
+
+```text
+FUR-H1:
+  replace fureyStyleRealization's posited charge table with charges computed
+  from the actual MinimalLeftIdeal J-states.
+
+FUR-H2:
+  identify chi_E with the Furey/Krasnov complex-structure or grading data.
+
+FUR-H3:
+  formalize J* and close FureyRightHandedSectorOpen.
+
+FUR-H4:
+  define Phi_H : J -> J* and prove gauge covariance, chi_E oddness, and
+  Gamma_s-even compatibility.
+
+FUR-H5:
+  assemble the finite almost-commutative product and reuse the Gate A square.
+
+FUR-H6:
+  test DVT/Jordan cubic/triality constraints on legal Phi_H textures.
+```
+
+Guardrails:
+
+```text
+Furey supplies internal spectrum/anomaly/gauge structure, not mass values.
+Right-handed singlets remain open until J* is formalized.
+Three generations remain future/scaffolding only.
+Phi_H magnitudes remain moduli unless a rank/codimension theorem is proved.
+Gate C remains a kinetic branch/safety problem for D_N, though internal projectors
+may later constrain admissible physical-sector selectors.
+```
+
+Literature ingestion priority:
+
+```text
+1806.00612 Furey;
+1810.10465 Furey;
+0904.1556 Baez-Huerta.
+```
+
+
+## Wave 12/13 update - Route-B Gate C and Furey finite layer
+
+Recent Aristotle integrations sharpen two central tracks.
+
+### Gate C
+
+The bare tetrahedral Clifford symbol is no longer a viable release route: each
+null branch has a chirality-balanced two-dimensional kernel. The Route-B path is
+now the official proof chain. The integrated modules add:
+
+| Module | Role |
+|---|---|
+| `NullEdgeProjectedBranchChirality` | Proves the projected branch keeps the `gamma5 = g5 a` line. |
+| `NullEdgeSpeciesSplitNodalLine` | Shows a species split can lift the high-momentum nodal line, while leaving the split coefficient free. |
+| `NullEdgeGaugeCovariantBranchProjectors` | Gives a gauge-covariant projector scaffold. |
+| `NullEdgeCompositeZeroEscape` | Separates removable composite zeros from fatal propagator zeros. |
+
+Gate C should now be targeted as a projected, Krein-positive, ghost-safe release
+theorem. A flavored index alone is not enough.
+
+### Furey/internal layer
+
+The Furey work has moved from suggestive background to a concrete finite-layer
+candidate. The useful pieces are the computed internal spectrum, the warning that
+`chi_E` should be number-parity rather than complex structure, the conjugate-ideal
+coordinate bridge, the abstract `Phi_H` interface, the almost-commutative product
+with the null-edge super-Dirac square, and the match between the Furey EM
+generator and the null-edge photon stabilizer.
+
+The next Lean targets are concrete bridge theorems: realize the abstract
+`Phi_H`/`chi_E` interface on the live `J` and `J*` modules, then test whether any
+Yukawa/intertwiner texture is forced rather than chosen.
+
+
+### Wave 14 partial update: selector theorem
+
+`NullEdgeCanonicalSpeciesSelector` proves that the physical retained sector is
+canonical relative to locked Krein-sign data: the retained pair is the unique
+maximal Krein-positive branch sector. It also proves a no-go for absolute
+canonicity from chirality/taste/energy/grading alone. Future Gate C statements
+should therefore use the structural phrase "maximal Krein-positive sector" and
+future Gate F statements should not treat the literal branch labels as predicted.
+
+
+## Literature update - Gate C and Furey finite layer
+
+A 2026-06-26 literature pass added eight papers to Zotero/Neo4j and confirmed
+that the most important Route-B warnings were already curated. Detailed report:
+`AgentTasks/null-edge-literature-gate-furey-search-2026-06-26.md`.
+
+Lean-facing implications:
+
+| Target | Literature-guided next move |
+|---|---|
+| C63 ghost safety | Strengthen from index/nonzero statements to pole-like positive-residue survivor predicates. Use dispersion/eigenvalue/taste-splitting diagnostics. |
+| C64 nodal exhaustion | Use spectral-graph matrix normal forms to classify the full determinant-zero locus. |
+| K3 Krein lock | Literature did not derive the Krein branch sign from MDF taste data. Prove an origin from causal/Krein structure or keep it explicit. |
+| FUR-H7A/H8A/H9A | Build coordinate bridges first; avoid one giant Furey bridge job. |
+| FUR-H10 | Audit the dimension/codimension of admissible Furey `Phi_H` intertwiners. Do not claim Yukawa magnitudes are predicted. |
+
+The route remains coherent: the finite/internal literature supports the Furey
+layer as a representation scaffold, while the MDF literature supports Route B for
+Gate C. Neither line yet closes the prediction gate.
+
+
+### Missed returned results: C63 and K3
+
+`NullEdgeProjectedGhostSafety` is integrated. It reduces Gate C's ghost clause to
+residue control / the `PostGaugeGhostSafe` contract, and proves that chirality,
+index, and gauge covariance alone are insufficient.
+
+`NullEdgeKreinLockOrigin` is integrated. It proves the Krein branch pattern is
+not derivable from currently formalized branch data; a sheet/causal orientation
+lock is the missing input that makes C65's selector canonical.
+
+
+## Furey edge-fiber and left-action convention - 2026-06-26
+
+Provenance: ChatGPT Pro feedback supplied in attachment
+`ed9b7b7e-37d6-4e91-9267-fd2514c0a742/pasted-text.txt`. Detailed integration is
+in `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 36.
+
+### Roadmap correction
+
+The roadmap should treat Furey data as the finite internal fiber of the
+null-edge product architecture:
+
+```text
+H_edge =
+  H_null/spin/Krein/branch tensor H_Furey/internal
+
+D =
+  i D_N tensor 1 + Gamma_s tensor Phi_H
+```
+
+The null-edge operator acts on the external factor. The Furey layer supplies
+internal state labels, charges, `chi_E`, conjugate/dual modules, anomaly
+inheritance, and legal `Phi_H` maps. This is Gate H/internal-spectral-triple
+work, not the null kinetic core.
+
+### Permanent wording guardrail
+
+Do not state the Furey states as unqualified ideals of the raw complex
+octonions. The robust object is:
+
+```text
+A_F = Alg_C { L_x : x in C tensor O_C } subset End_C(C tensor O_C)
+J   = A_F p
+```
+
+where `A_F` is the associative left-action algebra generated by complex-octonion
+left multiplication operators and `p` is a primitive idempotent.
+
+Roadmap phrase:
+
+```text
+Furey particle states are modules, or minimal left ideals, for the associative
+left-action algebra generated by complex-octonion left multiplication
+operators.
+```
+
+This keeps nonassociativity contained in the definition of the left/right
+multiplication operators. Node composition should use linear maps and
+intertwiners, not raw unparenthesized octonion products.
+
+### Edge and node API targets
+
+Add the following implementation concepts to the Gate H/Furey queue:
+
+```text
+OctonionLeftActionAlgebra
+FureyIdealModule
+PrimitiveIdempotentReference
+FureyConjugateIdeal
+FureyDualIdeal
+OccupationNumberParityChiE
+OrientedEdgeInternalFiber
+NullEdgeFureyBundle
+NodeIntertwiner
+GaugeCovariantYukawaFlip
+PhiHFromFureyIdeals
+IntertwinerCodimensionAudit
+PreservesFureyIdealStructure
+```
+
+The most important bridge theorem remains:
+
+```text
+PhiHFromFureyIdeals:
+  construct Phi_H on J plus J* or conjugate sectors;
+  prove gauge covariance;
+  prove chi_E oddness;
+  prove Gamma_s evenness;
+  feed it into the existing finite super-Dirac square.
+```
+
+### Structures that must remain separate
+
+Future Lean statements and docs should not identify any of the following without
+a theorem:
+
+```text
+edge reversal;
+incoming/outgoing dualization;
+charge conjugation;
+spacetime chirality Gamma_s;
+internal grading chi_E;
+Krasnov/Furey complex structure;
+Krein sign;
+branch/taste sign.
+```
+
+C21, C22, C65, and K3 already show that several two-valued structures that look
+similar in prose are mathematically independent in the current formalization.
+
+### Gate interaction
+
+Furey can help Gate H and the finite mass/Yukawa layer immediately. It can help
+Gate C only if a later theorem proves compatibility between Furey projectors and
+the projected physical sector. Even then, Gate C still needs nodal-set control,
+Krein positivity, and ghost-zero safety. Furey should not be presented as a
+standalone solution to branch doubling or ghost zeros.

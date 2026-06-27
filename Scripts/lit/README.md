@@ -61,12 +61,13 @@ outputs are generated and git-ignored.
   or strong model must approve before anything reaches Zotero/Neo4j.
 - gemma4:12b runs ~15 tok/s on CPU here, so a full topic (keyword gen + triage)
   takes a few minutes. Suited to offline/overnight batch use, not interactive.
-- Approval/ingest is intentionally a separate, not-yet-built step. Keep
-  concept/claim graph edges human-curated; do not let the harness write them.
+- Approval/ingest is a separate step, `lit_ingest.py` (see **Ingest** below).
+  Keep concept/claim graph edges human-curated; do not let the harness write them.
 - Embed step (wired in): after any ingest adds `Paper` nodes to Neo4j, run the
   idempotent embedder so new papers are semantically searchable. It is cheap when
-  nothing is new (it skips the model load). When `lit_ingest.py` is built, it
-  should call `neo4j_paper_search.ensure_embeddings()` as its final action.
+  nothing is new (it skips the model load). `lit_ingest.py` (below) already calls
+  `neo4j_paper_search.ensure_embeddings()` as its final step, so a normal ingest
+  needs no separate embed run.
 
   ```bash
   PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
@@ -75,6 +76,31 @@ outputs are generated and git-ignored.
 
   See [`../MCP_SERVERS.md`](../MCP_SERVERS.md) -> "Semantic vector search over
   papers" for the model, index, and query usage.
+
+## Ingest (`lit_ingest.py`)
+
+Adds approved papers to Zotero **and** the Neo4j paper graph, then embeds them.
+Run it with the lean-explore tool-env interpreter (it carries the `neo4j` driver
+and the embedding stack); credentials come from the environment (`ZOTERO_API_KEY`,
+`NEO4J_URI`/`NEO4J_USERNAME`/`NEO4J_PASSWORD`).
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+"$PY" Scripts/lit/lit_ingest.py 2502.16500 2312.08526 1502.04683
+"$PY" Scripts/lit/lit_ingest.py --from-staging Scripts/lit/staging.jsonl
+"$PY" Scripts/lit/lit_ingest.py 1502.04683 --dry-run    # dedup check only, no writes
+```
+
+Per paper it: (1) dedup-checks Neo4j on normalized `arxiv_id`/`doi` and skips
+anything already present; (2) adds the item to Zotero via the `zotero_write` MCP
+server (driven through `Scripts/mcp/mcp_call.py`; idempotent); (3) upserts a
+canonical `:Paper` node with `IN_COLLECTION` (default collection `9W59V3K9` =
+null-edge-lit) + `AUTHORED_BY` + `HAS_TAG` edges -- the `IN_COLLECTION` edge is
+**required** for the paper to appear in the default null-edge-scoped vector
+search. Finally it calls `neo4j_paper_search.ensure_embeddings()` once. Flags:
+`--collection`, `--tag` (repeatable), `--from-staging`, `--dry-run`, `--no-embed`,
+`--force`. The Gemma triage over-includes, so keep a human/strong-model glance on
+the `INCLUDE` rows before ingesting.
 
 ## Semantic repo and paper search
 

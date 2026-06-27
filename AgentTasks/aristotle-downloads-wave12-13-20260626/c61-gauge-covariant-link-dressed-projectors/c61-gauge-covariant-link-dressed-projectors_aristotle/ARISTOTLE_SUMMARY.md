@@ -1,0 +1,15 @@
+# Summary of changes for run 58ea75f5-cf5e-4ed2-9bf0-ffa205616775
+Completed the C61 gauge-covariant link-dressed branch projector strategy/API job, delivering both requested artifacts.
+
+## Deliverables
+
+1. **Report/plan** `AgentTasks/null-edge-gauge-covariant-branch-projectors-plan.md` — covers all six tasks: (1) the Lean-facing API for link-dressed branch projectors on a finite graph with gauge link variables; (2) the two transformation laws (covariance for an open projector, invariance for a closed composite); (3) the three deployment contexts kept separate (strictly retarded causal update block; retarded/advanced Krein spectral double; gauge-invariant composite/interpolating observable); (4) an admissibility table identifying which finite shift combinations are acceptable in each context, with the key finding that the symmetric `cos`-filter `S + S†` is inadmissible in the strict causal-update context but admissible in the Krein double and (when closed) the composite; (5) the implemented module skeleton; (6) the tie to `GhostZeroSafe` with the explicit guardrail that gauge covariance is necessary but not sufficient and that the free-field projectors are not physical after gauge coupling without link dressing AND a ghost audit.
+
+2. **Lean module** `PhysicsSM/Draft/NullEdgeGaugeCovariantBranchProjectors.lean` — self-contained (`import Mathlib` plus the self-contained C47/C48 ghost-zero file), builds cleanly with no warnings, no `sorry`, and only the standard axioms (`propext`, `Classical.choice`, `Quot.sound`). It proves, at theorem level:
+   - transport/link algebra: `gaugeLink_comp` (path covariance via intermediate-gauge cancellation), `dressedHop_gauge`;
+   - the central **`dressedProjector_gauge_covariant`** (a link-dressed finite shift combination transforms by a single base-point gauge factor);
+   - **`loopComposite_gauge_invariant`** (a closed-loop singlet composite is exactly gauge invariant);
+   - the three contexts as `ProjCtx` with `AdmissibleIn`, plus `causal_admissible_iff`, `not_causal_of_advanced`, and the concrete `cosFilter_not_causal`, `cosFilter_kreinDouble`, `retFilter_causal`;
+   - the ghost-safety tie-in: **`gaugeCovariant_not_ghostSafe`** (a perfectly gauge-covariant dressed projector can still harbour a Golterman–Shamir fatal ghost), `LinkDressedSafe`, `linkDressedSafe_nonvacuous`, and the summary `c61_gauge_covariance_summary`.
+
+The module reuses (rather than duplicates) the C47/C48 `GhostZeroSafe`, `ZeroDatum`, and witness infrastructure from `NullEdgeGateCGhostZeroSafety` (which builds standalone; the other sibling Draft files import upstream modules absent from this snapshot, a pre-existing condition unrelated to this task). No physical dynamics are assumed: the dressed Clifford symbol, post-gauge-coupling residue signs, and Krein-positivity remain recorded as open obligations. The report's honest verdict is that link dressing secures covariance at theorem level, but Route B stays PENDING-SAFETY on the post-gauge-coupling ghost-zero audit.

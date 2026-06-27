@@ -1,0 +1,344 @@
+import Mathlib
+import PhysicsSM.Coding.E8BasisSpanning
+import PhysicsSM.Lie.Exceptional.E8
+
+/-!
+# Dependency-free SPL-bridge shape theorems for the E8 Construction A lattice
+
+This module collects reusable, s o r r y-free facts about the E8 Construction A
+lattice that are formulated to be directly portable into a future
+Sphere-Packing-Lean (SPL) integration branch. Nothing here imports SPL.
+
+## Mathematical context
+
+The Sphere-Packing-Lean project (`math-inc/Sphere-Packing-Lean`) formalizes
+Viazovska's proof that the E8 lattice achieves the optimal sphere packing
+density in dimension 8. Their E8 model uses the half-integer/integer
+even-sum coordinate representation. Our model uses Construction A from the
+extended Hamming code over ℤ⁸.
+
+Bridging between the two models requires:
+1. **A common type**: our `AddSubgroup (Fin 8 → ℤ)` lifted to `Submodule ℤ`.
+2. **Gram matrix identification**: an explicit basis-change showing the two
+   Gram matrices are related by a unimodular change of coordinates.
+3. **Simple-root lattice vectors**: explicit vectors with the E8 Dynkin
+   diagram inner products, witnessing that our lattice contains a copy of
+   the E8 root system.
+
+## Contents of this module
+
+1. **`e8IntLatticeSubmodule`** — the Construction A lattice lifted from
+   `AddSubgroup (Fin 8 → ℤ)` to `Submodule ℤ (Fin 8 → ℤ)`.
+
+2. **Integer dot product API** (`intDotSPL`): bilinear form on ℤ⁸ with
+   Gram-matrix, symmetry, and linearity lemmas.
+
+3. **Scaled Gram matrix** (`e8ScaledGramQ`): the ℚ-valued matrix
+   `e8CodeBasisGram / 2`, whose determinant is 1 (unimodularity).
+
+4. **Change-of-basis matrix** (`e8BasisChangeMatrix`): an explicit 8×8
+   integer matrix `P` with `det P = −1` and
+   `Pᵀ · e8CodeBasisGram · P = 2 · e8Cartan`.
+   This is the concrete Gram–Cartan bridge: our Construction A basis and
+   the standard E8 simple-root basis generate the same lattice.
+
+5. **Simple-root lattice vectors** (`e8SimpleRootBasis`): the columns of
+   `B · P` (basis matrix times change-of-basis), giving explicit short
+   vectors in the lattice with inner products matching `2 · e8Cartan`.
+
+## Finite-computation trust boundary
+
+Most matrix-equality lemmas use kernel-reduced proofs (`decide`, `norm_num`,
+`fin_cases`). A few dense computations (marked below) still use `n a t i v e _ d e c i d e`;
+`#print axioms` for those declarations reports `Lean.trustCompiler`.
+
+| Declaration                       | Proof method                  | trustCompiler? |
+|-----------------------------------|-------------------------------|----------------|
+| `e8BasisChangeMatrix_det`         | `norm_num` + `n a t i v e _ d e c i d e`  | yes            |
+| `e8BasisChange_gram_eq_cartan`    | `ext` + `fin_cases` + `decide`| no             |
+| `e8SimpleRootBasis_sqNorm`        | `fin_cases` + `n a t i v e _ d e c i d e` | yes            |
+| `e8SimpleRootBasis_gram`          | `fin_cases` + `n a t i v e _ d e c i d e` | yes            |
+| `e8ScaledGramQ_det`               | algebraic (`norm_num`)        | no             |
+
+## Source / provenance
+
+- Conway & Sloane, *Sphere Packings, Lattices and Groups*, Ch. 7–8.
+- Bourbaki, *Lie Groups and Lie Algebras*, Ch. 4–6 (Dynkin diagram
+  labelling and Cartan matrix conventions).
+- Aristotle job P5 for PhysicsSM, 2026-05-07.
+-/
+
+set_option linter.style.longLine false
+set_option linter.style.nativeDecide false
+set_option linter.unusedSimpArgs false
+
+namespace PhysicsSM.Coding
+
+/-! ## 1. Submodule wrapper
+
+SPL works with `Submodule ℤ (Fin 8 → ℝ)` (after embedding integers into
+the reals). To prepare for the bridge, we lift our `AddSubgroup` to a
+`Submodule ℤ (Fin 8 → ℤ)`. This matches the type skeleton expected by SPL,
+with the caveat that the real embedding is applied at the bridge step.
+-/
+
+/-- The Construction A lattice for the extended Hamming code, promoted from
+`AddSubgroup (Fin 8 → ℤ)` to `Submodule ℤ (Fin 8 → ℤ)`.
+
+An additive subgroup of a ℤ-module that is closed under scalar multiplication
+by all integers is the same data as a ℤ-submodule. The `e8IntLattice` is
+such a subgroup because it is a subgroup of the free ℤ-module `ℤ⁸`.
+
+This type matches the shape `Submodule ℤ (Fin 8 → ℝ)` used by SPL after the
+coordinate embedding `ℤ → ℝ` is applied. -/
+def e8IntLatticeSubmodule : Submodule ℤ (Fin 8 → ℤ) where
+  carrier  := e8IntLattice
+  zero_mem' := e8IntLattice.zero_mem
+  add_mem' := fun ha hb => e8IntLattice.add_mem ha hb
+  smul_mem' := by
+    intro c x hx
+    simp only [SetLike.mem_coe] at *
+    exact e8IntLattice.zsmul_mem hx c
+
+/-- Membership in the ℤ-submodule agrees with membership in the additive
+subgroup — these are the same underlying predicate. -/
+@[simp]
+theorem mem_e8IntLatticeSubmodule (z : Fin 8 → ℤ) :
+    z ∈ e8IntLatticeSubmodule ↔ z ∈ e8IntLattice := Iff.rfl
+
+/-- The ℤ-submodule equals the ℤ-span of the explicit basis `e8CodeBasisInt`.
+
+This is the submodule version of the spanning theorem from `E8BasisSpanning`:
+the Construction A lattice is generated by eight explicit vectors, giving a
+concrete ℤ-module presentation ready for comparison with SPL's lattice. -/
+theorem e8IntLatticeSubmodule_eq_span :
+    e8IntLatticeSubmodule = Submodule.span ℤ (Set.range e8CodeBasisInt) := by
+  ext z
+  simp only [mem_e8IntLatticeSubmodule]
+  exact ⟨e8CodeBasisInt_spans_hammingConstructionALattice z,
+         e8CodeBasisInt_span_subset z⟩
+
+/-! ## 2. Integer dot product API
+
+We define a bilinear form `intDotSPL u v = ∑ i, u i * v i` on `ℤ⁸` and
+establish its basic algebraic properties. This is the standard integer inner
+product used by SPL's lattice infrastructure.
+
+The Gram matrix entry `e8CodeBasisGram i j` equals `intDotSPL (e8CodeBasisInt i) (e8CodeBasisInt j)`,
+connecting our explicit integer arithmetic to the Gram matrix formalism.
+-/
+
+/-- The standard integer dot product on `Fin 8 → ℤ`.
+
+This is the restriction of the standard real inner product to integer
+coordinates: `⟨u, v⟩ = ∑ i, u i * v i`. It is symmetric and bilinear over ℤ. -/
+def intDotSPL (u v : Fin 8 → ℤ) : ℤ :=
+  ∑ i, u i * v i
+
+/-- The dot product of two basis vectors equals the corresponding entry of the
+explicit Gram matrix `e8CodeBasisGram`. -/
+theorem intDotSPL_basis_eq_gram (i j : Fin 8) :
+    intDotSPL (e8CodeBasisInt i) (e8CodeBasisInt j) = e8CodeBasisGram i j := by
+  simp only [intDotSPL, ← e8CodeBasisGram_eq i j]
+
+/-- The integer dot product is symmetric: `⟨u, v⟩ = ⟨v, u⟩`. -/
+theorem intDotSPL_comm (u v : Fin 8 → ℤ) : intDotSPL u v = intDotSPL v u := by
+  simp only [intDotSPL, mul_comm]
+
+/-- The integer dot product is bilinear in the first argument (additive). -/
+theorem intDotSPL_add_left (u v w : Fin 8 → ℤ) :
+    intDotSPL (u + v) w = intDotSPL u w + intDotSPL v w := by
+  simp only [intDotSPL, Pi.add_apply, add_mul, Finset.sum_add_distrib]
+
+/-- The integer dot product is bilinear in the first argument (scalar). -/
+theorem intDotSPL_smul_left (c : ℤ) (u v : Fin 8 → ℤ) :
+    intDotSPL (c • u) v = c * intDotSPL u v := by
+  simp only [intDotSPL, Pi.smul_apply, smul_eq_mul, mul_assoc, Finset.mul_sum]
+
+/-! ## 3. Scaled Gram matrix (ℚ-valued)
+
+The Construction A basis `e8CodeBasisInt` uses integer coordinates where
+the minimum squared norm is 4 (equivalently, root vectors have length √4 = 2).
+The standard E8 convention has root squared norm 2 (root length √2).
+
+The scaling factor is `1/√2`: we send each vector `z` to `z/√2`. Under
+this scaling, the Gram matrix transforms as:
+  `G_scaled[i,j] = ⟨bᵢ/√2, bⱼ/√2⟩ = ⟨bᵢ, bⱼ⟩ / 2 = e8CodeBasisGram[i,j] / 2`
+
+The ℚ-valued matrix `e8ScaledGramQ = e8CodeBasisGram / 2` is the Gram matrix
+of the scaled basis. Its determinant is 1 (unimodularity of the scaled lattice).
+-/
+
+/-- The ℚ-valued scaled Gram matrix: entry `[i,j] = e8CodeBasisGram[i,j] / 2`.
+
+This represents the inner products of the Construction A basis vectors after
+the conventional `1/√2` scaling that normalises the minimum root squared norm
+from 4 to 2. All entries are half-integers (since `e8CodeBasisGram` has all
+entries divisible by 2, as proved in `E8Basis.lean`). -/
+def e8ScaledGramQ : Matrix (Fin 8) (Fin 8) ℚ :=
+  Matrix.of fun i j => (e8CodeBasisGram i j : ℚ) / 2
+
+/-- The scaled Gram matrix has determinant 1, confirming unimodularity.
+
+Proof: `det(G/2) = det(G) / 2⁸ = 256 / 256 = 1` using multilinearity of
+the determinant and `e8CodeBasisGram_det = 256`. -/
+theorem e8ScaledGramQ_det : e8ScaledGramQ.det = 1 := by
+  have h2 : e8ScaledGramQ = (2⁻¹ : ℚ) • (e8CodeBasisGram.map (Int.castRingHom ℚ)) := by
+    ext i j
+    simp [e8ScaledGramQ, Matrix.smul_apply, Matrix.map_apply, div_eq_mul_inv, mul_comm]
+  rw [h2, Matrix.det_smul, Fintype.card_fin]
+  have hdet : (e8CodeBasisGram.map (Int.castRingHom ℚ)).det = (256 : ℚ) := by
+    rw [show e8CodeBasisGram.map (Int.castRingHom ℚ) =
+        (Int.castRingHom ℚ).mapMatrix e8CodeBasisGram from rfl]
+    rw [← RingHom.map_det, e8CodeBasisGram_det]; norm_num
+  rw [hdet]; norm_num
+
+/-- All diagonal entries of the scaled Gram matrix equal 2.
+
+This means the scaled basis vectors have squared norm 2, which is the standard
+E8 root normalization. -/
+theorem e8ScaledGramQ_diag (i : Fin 8) : e8ScaledGramQ i i = 2 := by
+  simp [e8ScaledGramQ, e8CodeBasisGram_diag]; norm_num
+
+/-- All entries of the scaled Gram matrix are integers (despite being ℚ-valued).
+
+This follows because `e8CodeBasisGram` has all entries divisible by 2
+(`e8CodeBasisGram_even` from `E8Basis.lean`). -/
+theorem e8ScaledGramQ_int_valued (i j : Fin 8) :
+    ∃ n : ℤ, e8ScaledGramQ i j = (n : ℚ) := by
+  obtain ⟨k, hk⟩ := e8CodeBasisGram_even i j
+  exact ⟨k, by simp [e8ScaledGramQ]; rw [hk]; push_cast; ring⟩
+
+/-! ## 4. Change-of-basis matrix: Construction A basis → simple-root basis
+
+The Construction A basis `e8CodeBasisInt` and the standard E8 simple-root
+basis (Bourbaki labelling) both generate the same lattice E8. The change-of-
+basis matrix `P` relates the two bases: the simple roots, expressed as integer
+linear combinations of the Construction A basis, are the columns of `B · P`
+where `B` is the matrix with the Construction A basis as columns.
+
+The key identity `Pᵀ · e8CodeBasisGram · P = 2 · e8Cartan` means that when
+we compute inner products of simple roots using `intDotSPL`, we get
+exactly `2 · e8Cartan[i,j]`. This matches the conventional E8 Cartan matrix
+normalization (diagonal = 2, off-diagonal = −1 for adjacent nodes, 0 otherwise).
+
+The matrix `P` was found by a computational search among the 240 short vectors
+of the Construction A lattice, requiring the resulting simple-root inner products
+to match the E8 Dynkin diagram. The verification that `Pᵀ G P = 2 Cartan` is
+a finite integer matrix computation, proved by `decide`.
+-/
+
+open PhysicsSM.Lie.Exceptional.E8
+
+/-- The change-of-basis matrix `P : ℤ^{8×8}` from the Construction A basis
+to the E8 simple-root basis (Bourbaki ordering).
+
+Each column of `P` gives the coefficients for expressing one simple root as a
+ℤ-linear combination of the 8 Construction A basis vectors `e8CodeBasisInt`.
+The matrix was found by searching for 8 short vectors (squared norm 4) in the
+Construction A lattice whose pairwise inner products reproduce the E8 Dynkin
+diagram — i.e., satisfy `⟨rᵢ, rⱼ⟩ = 2 · e8Cartan[i,j]`. -/
+def e8BasisChangeMatrix : Matrix (Fin 8) (Fin 8) ℤ :=
+  !![ 2,  0, -1,  0,  0,  0,  0,  0;
+      2, -1, -1,  1, -1, -1,  2,  0;
+      2, -1, -1,  1, -1,  0,  0,  0;
+     -4,  1,  2, -1,  1,  1, -1, -1;
+     -1,  1,  1, -1,  0,  1, -1,  0;
+     -1,  0,  1, -1,  1,  0,  0,  0;
+      2, -1, -1,  1, -1,  0,  0,  1;
+     -3,  1,  2, -1,  1,  0, -1,  0]
+
+-- Dense 8×8 ℤ determinant: norm_num + n a t i v e _ d e c i d e.
+set_option maxHeartbeats 800000 in
+/-- The change-of-basis matrix has determinant −1, so it is unimodular.
+`|det P| = 1` confirms that `P` is an invertible integer matrix — the simple
+roots form a ℤ-basis for the same lattice as the Construction A basis. -/
+theorem e8BasisChangeMatrix_det : e8BasisChangeMatrix.det = -1 := by
+  norm_num [Matrix.det_apply'] at *
+  native_decide +revert
+
+/-- **Gram–Cartan bridge identity.**
+
+The change-of-basis matrix transforms the Construction A Gram matrix into
+`2 · e8Cartan`:
+
+  `Pᵀ · e8CodeBasisGram · P = 2 · e8Cartan`
+
+This is the central connection between our concrete Construction A model and
+the abstract E8 Cartan matrix. It means:
+
+1. The 8 simple roots (columns of `B · P`, where `B` is the basis matrix)
+   have inner products given by `2 · e8Cartan[i,j]`.
+2. After the `1/√2` scaling, the inner products become `e8Cartan[i,j]` — the
+   standard Cartan matrix with diagonal 2 and off-diagonals 0 or −1.
+
+**Proof**: Direct finite integer matrix computation via `decide`. -/
+theorem e8BasisChange_gram_eq_cartan :
+    e8BasisChangeMatrix.transpose *
+      (e8CodeBasisGram : Matrix (Fin 8) (Fin 8) ℤ) *
+      e8BasisChangeMatrix = 2 • e8Cartan := by
+  ext i j; fin_cases i <;> fin_cases j <;> decide
+
+/-! ## 5. The simple-root basis as lattice vectors
+
+The simple roots of E8 (in the integer lattice coordinates of our Construction
+A model) are the columns of the matrix `B · P`, where `B` is the 8×8 matrix
+with `e8CodeBasisInt i` as its `i`-th row (or column, depending on convention).
+
+Since each column of `P` gives integer coefficients, and each basis vector
+`e8CodeBasisInt i` is in the lattice, each simple root is a ℤ-linear combination
+of lattice vectors, hence in the lattice.
+
+The simple roots have:
+- Squared norm 4 in the integer model (= 2 in the scaled model).
+- Gram matrix `2 · e8Cartan` — the correct E8 Cartan matrix times 2.
+-/
+
+/-- The 8 E8 simple roots in the integer coordinates of the Construction A
+lattice. Root `j` is `∑ i, e8BasisChangeMatrix[i,j] · e8CodeBasisInt[i]`,
+the `j`-th column of `B · P` expressed coordinatewise. -/
+def e8SimpleRootBasis (j : Fin 8) : Fin 8 → ℤ :=
+  fun k => ∑ i : Fin 8, e8BasisChangeMatrix i j * e8CodeBasisInt i k
+
+/-- Every simple root is a member of the Construction A lattice.
+
+Proof: Each simple root is a ℤ-linear combination of the basis vectors
+`e8CodeBasisInt i`, which span the lattice by `e8IntLatticeSubmodule_eq_span`.
+-/
+theorem e8SimpleRootBasis_mem (j : Fin 8) :
+    e8SimpleRootBasis j ∈ e8IntLattice := by
+  have hmem : e8SimpleRootBasis j ∈ Submodule.span ℤ (Set.range e8CodeBasisInt) := by
+    change (fun k => ∑ i : Fin 8, e8BasisChangeMatrix i j * e8CodeBasisInt i k) ∈ _
+    have : (fun k => ∑ i : Fin 8, e8BasisChangeMatrix i j * e8CodeBasisInt i k) =
+        ∑ i : Fin 8, e8BasisChangeMatrix i j • e8CodeBasisInt i := by
+      ext k; simp [Finset.sum_apply, smul_eq_mul]
+    rw [this]
+    apply Submodule.sum_mem
+    intro i _
+    exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨i, rfl⟩)
+  rwa [← e8IntLatticeSubmodule_eq_span] at hmem
+
+/-- Every simple root has squared norm 4 in the integer model.
+
+In the standard `1/√2` normalization, this becomes squared norm 2 — the
+correct value for E8 simple roots. Verified by finite computation. -/
+theorem e8SimpleRootBasis_sqNorm (j : Fin 8) :
+    sqNorm (e8SimpleRootBasis j) = 4 := by
+  fin_cases j <;> native_decide
+
+/-- **The simple-root basis has Gram matrix `2 · e8Cartan`.**
+
+The inner product `⟨rᵢ, rⱼ⟩ = intDotSPL (e8SimpleRootBasis i) (e8SimpleRootBasis j)`
+equals `2 · e8Cartan[i,j]` for all `i, j`. This verifies that our explicitly
+constructed lattice vectors reproduce the correct E8 Dynkin diagram:
+- Diagonal entries: `2 · 2 = 4` (squared norm of each simple root)
+- Adjacent nodes in E8 diagram: `2 · (−1) = −2`
+- Non-adjacent nodes: `2 · 0 = 0`
+
+Verified by finite computation over the 8×8 Gram matrix. -/
+theorem e8SimpleRootBasis_gram (i j : Fin 8) :
+    intDotSPL (e8SimpleRootBasis i) (e8SimpleRootBasis j) =
+      2 * e8Cartan i j := by
+  fin_cases i <;> fin_cases j <;> native_decide
+
+end PhysicsSM.Coding

@@ -1778,3 +1778,124 @@ A serious finite-core paper can aim to prove the following package without claim
 Top failure modes are determinant-level high-momentum massless branches or complex instabilities, grading conflation, uncontrolled frame contamination, arbitrary tetrad decoration, full-rank finite-to-EFT reparametrization, wrong spectral-action signs, and anomaly repair by ad hoc spectators.
 
 Top near-term success is a dual-soldered finite null-edge Dirac algebra with correct graded square, finite tetrad postulate, Krein retarded/advanced audit, clean branch-count result, and mass-shell matching. A full G5 physics endpoint additionally needs controlled continuum scaling, anomaly-safe chirality, and a finite spectral action with a real codimension constraint.
+
+### 6.14 Lineage and prior-art leads (2026-06-26)
+
+A second literature pass located the program's *home* literature -- published
+pilot-wave and lattice-fermion work that the roadmap should cite as ancestry and
+mine for technique, rather than re-derive. All items below were added to Zotero
+collection `9W59V3K9` and the Neo4j paper graph (embedded, searchable via
+`Scripts/lit/neo4j_paper_search.py`); lane tags in brackets. arXiv IDs were
+individually verified -- two "MDF index theorem" IDs from the source analysis
+(`2501.10336`, `2602.19767`) were hallucinated and replaced by the real papers
+`1110.2482` and `1011.0761`.
+
+Pilot-wave / Bohm-Bell lineage (the ontology's published ancestors):
+
+- Colin, Wiseman, *The zig-zag road to reality*, arXiv:1107.4909
+  [pilot-wave, zigzag]. The most direct ancestor: a Dirac pilot-wave theory in
+  which a massive electron is a superposition of same-helicity Weyl particles
+  and can move luminally, mass coupling the two chiralities. This is the
+  published physics version of `checkerboardBohmBell_master` and the W7 chiral
+  zig-zag. State NSBB's honest delta as the null-edge causal-graph substrate +
+  Lean formalization, not the zig-zag idea.
+- Struyve, *On the zig-zag pilot-wave approach for fermions*, arXiv:1201.4169
+  [pilot-wave, zigzag]. Makes the zig-zag a rigorous stochastic jump process
+  (luminal for one particle, subluminal for many), with the non-relativistic
+  limit -- the technique template for the trajectory layer.
+- Duerr, Goldstein, Tumulka, Zanghi, *Quantum Hamiltonians and Stochastic
+  Jumps*, arXiv:quant-ph/0303056, and *Bell-Type Quantum Field Theories*,
+  arXiv:quant-ph/0407116 [bell-qft, jump-process]. The rigorous backbone of the
+  whole W11/BellQFT lane: |Psi|^2-distributed jump processes for QFT, with the
+  jump-rate formula using the positive-part bracket the roadmap reaches for
+  independently. The W11 safety lemma and positive-part rate are special cases.
+- Georgii, Tumulka, *Global Existence of Bell's Time-Inhomogeneous Jump Process
+  for Lattice QFT*, arXiv:math/0312294 [bell-qft, jump-process]. The published
+  existence theorem for exactly this process class -- the precedent for the
+  trajectory-measure existence being assembled via Ionescu-Tulcea. The Lean
+  result can be advertised as the first kernel-checked verification of this.
+- Colin, *The continuum limit of the Bell model*, arXiv:quant-ph/0301119
+  [bell-qft, continuum-limit]. The matching continuum-limit study for W4/W13.
+- Berndl, Durr, Goldstein, Peruzzi, Zanghi, *On the Global Existence of Bohmian
+  Mechanics*, arXiv:quant-ph/9503013 [pilot-wave, node-avoidance]. The
+  non-relativistic theorem behind Q2: trajectories almost surely avoid the node
+  set, via equivariance + quantum-flux control. The right framing for Q2 is
+  "the null/relativistic analogue of this established global-existence theorem,"
+  with the Bessel-dimension heuristic as the local picture.
+
+Lattice chiral fermions = the lattice cousin of the dual-soldered null frame
+(Q5/Q6); inherit symbol, doubler, counterterm, and anomaly results:
+
+- Creutz, *Four-dimensional graphene and chiral fermions*, arXiv:0712.1201
+  [lattice-fermion, super-dirac]. The hyperdiamond construction: five bond
+  vectors with tetrahedral symmetry and `cos theta = -1/4` -- structurally the
+  `NullSolderFrame` simplex relation (`G_AB = 4/3`, `G^AB = 1/4`). The
+  dual-soldered Q5 core is, up to signature, a Lorentzian Borici-Creutz operator.
+- Borici, *Minimally Doubled Fermion Revival*, arXiv:0812.0092; Capitani,
+  Creutz, Weber, Wittig, *Renormalization of minimally doubled fermions*,
+  arXiv:1006.2009; Weber, *Properties of minimally doubled fermions*,
+  arXiv:1706.07104 [lattice-fermion, super-dirac]. The Boricic-Creutz/
+  Karsten-Wilczek operators and the hard cautionary result for Q6/G5b: a
+  covariant primitive-null operator that reproduces the correct continuum limit
+  must break a discrete symmetry, single out a direction, and add THREE
+  non-covariant counterterms (one power-law divergent). This is the documented
+  price of the "broken hypercubic symmetry + two species + exact chiral
+  symmetry" Nielsen-Ninomiya exit -- distinct from the Krein/retarded-doubling
+  exit; the two evasions should be named as alternatives and one chosen.
+- Drissi, Saidi, *On Dirac Zero Modes in Hyperdiamond Model*, arXiv:1103.1316
+  [lattice-fermion, index-anomaly]. Zero modes captured by an `Omega_mu^l` tensor
+  (4x5) linking SO(4) to the 5 of SU(5) -- a bridge to generation-counting and
+  exceptional-structure threads (Q8).
+- Kimura, Misumi, *Higher-Dimensional Hyperdiamond Lattices*, arXiv:0907.3774
+  [lattice-fermion]. The minimal-doubling parameter range shrinks as dimension
+  grows -- a weak but real pressure toward low d (a Q6/G5 rigidity datum).
+- Kimura, Creutz, Misumi, *Index Theorem and Overlap Formalism...*,
+  arXiv:1110.2482 and arXiv:1011.0761 [lattice-fermion, index-anomaly]. The
+  lattice realization of the Witten-index / zero-mode-imbalance consequence map
+  (section 6.8): spectral flow detects the index of would-be zero modes.
+
+Relativistic-Bohm foliation = the published form of the Q3 "hidden transport
+rule":
+
+- Durr, Goldstein, Munch-Berndl, Zanghi, *Hypersurface Bohm-Dirac models*,
+  arXiv:quant-ph/9801070 [foliation, synchronization]. Lorentz-invariant
+  Bohmian dynamics for N entangled Dirac particles via a foliation into
+  spacelike hypersurfaces with an equivariant per-leaf measure -- the foliation
+  *is* the hidden transport rule. Position W10 against this.
+- Durr, Goldstein, Norsen, Struyve, Zanghi, *Can Bohmian mechanics be made
+  relativistic?*, arXiv:1307.1714, and Nikolic, *Time and probability...*,
+  arXiv:1309.0400 [foliation, synchronization]. The two camps: a foliation
+  covariantly determined by the wavefunction vs. a no-preferred-foliation
+  spacetime-probability theory. The "zero elementary-diamond defect ->
+  path-independent transport" target is the finite, discrete version of
+  foliation integrability; keep the forcing half conditional (no unconditional
+  entanglement-iff-curvature).
+
+Q4 operational clock:
+
+- Goldstein, Tumulka, Zanghi, *Arrival Times Versus Detection Times*,
+  arXiv:2405.04607 [clock, operational]. Supports the insistence on a readout
+  coupling before calling internal holonomy a clock: arrival time without
+  detectors need not equal the detection time. No shortcut here -- the readout
+  coupling is genuinely necessary.
+
+Adjacent framework to position against (not adopt):
+
+- Finster, *Causal Fermion Systems -- An Overview*, arXiv:1505.05075
+  [causal-fermion-systems]. Derives spacetime, spinors, and Dirac dynamics from
+  a causal variational principle (fermion-first); the most developed established
+  program in the spinor-bundle-plus-causal-structure space. Worth a pass to
+  distinguish NSBB from it.
+- Note: the Besnard-Bizi "split Dirac / spectral spacetime" pair
+  (arXiv:1611.07830, arXiv:1611.07842) is already curated; `1611.07842` is
+  *On the definition of spacetimes in NCG, Part II*. Its reconstructible-iff-
+  a-parallel-exists clause is the continuum-NCG sibling of the W10 flatness
+  theorem and the F4 Krein module -- read before finalizing `Krein.lean` /
+  `FlatConnection.lean`.
+
+Program-level implication: the biggest single move is to reframe the
+dual-soldered Q5 core as "a Lorentzian/null Borici-Creutz-type operator," cite
+the lattice line, and inherit its symbol/doubler/counterterm/anomaly results.
+Then `diagonal_null_symbol_trace_zero` becomes a clean Lean statement of a known
+lattice fact, and the genuinely novel content concentrates where it belongs --
+the Krein structure and the Bohm-Bell ontology.

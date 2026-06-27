@@ -40,6 +40,11 @@ import PhysicsSM.NullStrand.Histories.ExteriorRankMeasure
 import PhysicsSM.NullStrand.Master.FiniteModel
 import PhysicsSM.NullStrand.Master.FoliatedManyParticle
 import PhysicsSM.NullStrand.Master.Checkerboard
+import PhysicsSM.NullStrand.DualSolder.DualSolderSymbolKinetic
+import PhysicsSM.NullStrand.DualSolder.GradedSuperDiracSquare
+import PhysicsSM.NullStrand.DualSolder.FiniteKreinDoubled
+import PhysicsSM.NullStrand.DualSolder.SpectralSchur
+import PhysicsSM.NullStrand.FiniteMarkovPoissonRoute
 import PhysicsSM.NullStrand.Audit
 
 /-!

@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Owner\.local\bin\aristotle.exe\__main__.py", line 10, in <module>
+  File "C:\Users\Owner\AppData\Roaming\uv\tools\aristotlelib\Lib\site-packages\aristotlelib\cli\controller.py", line 171, in main
+    return args.func(args)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Owner\AppData\Roaming\uv\tools\aristotlelib\Lib\site-packages\aristotlelib\cli\api_action.py", line 84, in run
+    asyncio.run(self.run_action(args))
+  File "C:\Users\Owner\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Owner\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Owner\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Owner\AppData\Roaming\uv\tools\aristotlelib\Lib\site-packages\aristotlelib\cli\command\submit.py", line 50, in run_action
+    project = await Project.create_from_directory(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Owner\AppData\Roaming\uv\tools\aristotlelib\Lib\site-packages\aristotlelib\project.py", line 120, in create_from_directory
+    local_file_utils.check_lake_manifest_references_local_deps(project_dir)
+  File "C:\Users\Owner\AppData\Roaming\uv\tools\aristotlelib\Lib\site-packages\aristotlelib\local_file_utils.py", line 280, in check_lake_manifest_references_local_deps
+    raise LeanProjectError(error_msg)
+aristotlelib.local_file_utils.LeanProjectError: Aristotle does not support projects with local dependencies. This project contains the local package SpherePacking

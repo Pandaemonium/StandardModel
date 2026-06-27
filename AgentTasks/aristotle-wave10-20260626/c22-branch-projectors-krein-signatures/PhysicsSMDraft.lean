@@ -1,0 +1,346 @@
+import PhysicsSM
+import PhysicsSM.Draft.E8ThetaSeriesMoonshot
+import PhysicsSM.Draft.E8SpherePackingIsometryHelper
+import PhysicsSM.Draft.E8EvenUnimodularUniqueness
+import PhysicsSM.Draft.Hamming844Uniqueness
+import PhysicsSM.Draft.E8SpherePackingBridge
+import PhysicsSM.Draft.E8ThetaModularAristotle
+import PhysicsSM.Draft.E8ShortVectorsStructuralAristotle
+import PhysicsSM.Draft.E8RootSemanticAristotle
+import PhysicsSM.Draft.HammingE8E8StructuralAristotle
+import PhysicsSM.Draft.ConstructionAThetaConvolutionAristotle
+import PhysicsSM.Draft.ConstructionAThetaNoNativeAristotle
+import PhysicsSM.Draft.ConstructionAThetaBoundedShellAristotle
+import PhysicsSM.Draft.E8ThetaWeightEnumeratorBridgeAristotle
+import PhysicsSM.Draft.E8ThetaDuplicationHelper
+import PhysicsSM.Draft.E8ThetaQExpansionBridgeAristotle
+import PhysicsSM.Draft.E8ThetaCoeffGapAristotle
+import PhysicsSM.Draft.E8ThetaDuplicationAristotle
+import PhysicsSM.Draft.E8ThetaMFBridgeHelper
+import PhysicsSM.Draft.E8ThetaMFBridgeAristotle
+import PhysicsSM.Draft.ThetaDuplicationIdentities
+import PhysicsSM.Draft.E8ThetaSPLBridgeAristotle
+import PhysicsSM.Draft.E8WeylSemanticAristotle
+import PhysicsSM.Draft.E8ShortVectorsNoNativeAristotle
+import PhysicsSM.Draft.Hamming844SystematicNoNativeAristotle
+import PhysicsSM.Draft.HammingWeightEnumeratorNoNativeAristotle
+import PhysicsSM.Draft.Hamming844PermutationNoNativeAristotle
+import PhysicsSM.Draft.Hamming844UniquenessNoNativeAristotle
+import PhysicsSM.Draft.Hamming844ConcreteNoNativeAristotle
+import PhysicsSM.Draft.E8ThetaDim8Helpers
+import PhysicsSM.Draft.DualLatticeHelper
+import PhysicsSM.Draft.E8ThetaDim8MF
+import PhysicsSM.Draft.ConstructionATypeIIAristotle
+import PhysicsSM.Draft.Sedenions.CayleyDicksonSignTable
+import PhysicsSM.Draft.Sedenions.ReedMullerCode
+import PhysicsSM.Draft.Sedenions.CocycleQuadraticPhase
+import PhysicsSM.Draft.Sedenions.StabilizerPlaquettes
+import PhysicsSM.Draft.Sedenions.GL32Action
+import PhysicsSM.Draft.Sedenions.S3PsiAction
+import PhysicsSM.Draft.Sedenions.S3PsiActionAbstract
+import PhysicsSM.Draft.Sedenions.StabilizerMagicMoonshot
+import PhysicsSM.Draft.Sedenions.GenerationCancellationGeometry
+import PhysicsSM.Draft.Sedenions.PSL27FlavorGeometry
+import PhysicsSM.Draft.Sedenions.FanoComplementGeneration
+import PhysicsSM.Draft.Sedenions.AnomalyCancellationAnalogue
+import PhysicsSM.Draft.Sedenions.BarnesWallFirstShell
+import PhysicsSM.Draft.CheckerboardSpinorRecursionAristotle
+import PhysicsSM.Draft.CheckerboardCornerCountAristotle
+import PhysicsSM.Draft.CheckerboardKernelClosedFormsAristotle
+import PhysicsSM.Draft.SpinCoherentProjectorAristotle
+import PhysicsSM.Draft.SpinorHelicityRankOneAristotle
+import PhysicsSM.Draft.CheckerboardSupportSymmetryAristotle
+import PhysicsSM.Draft.SpinCoherentCollapseAristotle
+import PhysicsSM.Draft.WeylCliffordBridgeAristotle
+import PhysicsSM.Draft.SpinorHelicityQuaternionAristotle
+import PhysicsSM.Draft.NullEdgeCoreAristotle
+import PhysicsSM.Draft.NullEdgeDiamondNonabelian
+import PhysicsSM.Draft.NullEdgeCochainDiamond
+import PhysicsSM.Draft.NullEdgePluckerGeneralAristotle
+import PhysicsSM.Draft.NullEdgeSpinorGeometryTargets
+import PhysicsSM.Draft.TwistorPluckerMass
+import PhysicsSM.Draft.NullEdgeYukawaFlip
+import PhysicsSM.Draft.NullEdgeYukawaGaugeAristotle
+import PhysicsSM.Draft.NullEdgeYukawaMassOperator
+import PhysicsSM.Draft.CausalDiamondHigherGaugeAristotle
+import PhysicsSM.Draft.NullEdgeOvernightSynthesisAristotle
+import PhysicsSM.Draft.NullEdgePhysicsBridgeAristotle
+import PhysicsSM.Draft.NullEdgeCelestialMixednessAristotle
+import PhysicsSM.Draft.NullEdgeDecoherenceChannelAristotle
+import PhysicsSM.Draft.NullEdgeTwoTwistorHiddenChannelAristotle
+import PhysicsSM.Draft.NullEdgeQuantumMeasureFiniteAristotle
+import PhysicsSM.Draft.NullEdgeGramWeightedMassAristotle
+import PhysicsSM.Draft.NullEdgeDiracSlashCore
+import PhysicsSM.Draft.NullEdgeBundleDiracPluckerCore
+import PhysicsSM.Draft.NullEdgeSuperDiracBlockCore
+import PhysicsSM.Draft.NullEdgeSuperDiracDiamondCurvature
+import PhysicsSM.Draft.NullEdgeSuperconnectionExpansionCore
+import PhysicsSM.Draft.NullEdgeDiracTwoSheetCore
+import PhysicsSM.Draft.NullEdgeDiracMassShellProjectorsCore
+import PhysicsSM.Draft.NullEdgeCovariantDifferentialCore
+import PhysicsSM.Draft.NullEdgePluckerBargmannPhaseCore
+import PhysicsSM.Draft.NullEdgeGenerationBlindnessCore
+import PhysicsSM.Draft.NullEdgeGenerationBlindnessPort
+import PhysicsSM.Draft.NullEdgeCelestialMomentWrapper
+import PhysicsSM.Draft.NullEdgeBargmannPhasePort
+import PhysicsSM.Draft.NullEdgeZeroEdgeCollinearity
+import PhysicsSM.Draft.NullEdgeBargmannPhaseInvariance
+import PhysicsSM.Draft.NullEdgeGramWeightedOperator
+import PhysicsSM.Draft.NullEdgeGramWeightedHermitian
+import PhysicsSM.Draft.NullEdgeQubitConcurrence
+import PhysicsSM.Draft.NullEdgePathPairInterchange
+import PhysicsSM.Draft.NullEdgePluckerCelestialBridge
+import PhysicsSM.Draft.NullEdgeP1SL2Frame
+import PhysicsSM.Draft.NullEdgeObserverSpinFrameSU2
+import PhysicsSM.Draft.NullEdgeP1PluckerObserverScalarBridge
+import PhysicsSM.Draft.NullEdgeP1SU2NormalizedDetInvariance
+import PhysicsSM.Draft.NullEdgeP4MassFromNormalizedReadout
+import PhysicsSM.Draft.NullEdgeP2ChiralProjectorCoherence
+import PhysicsSM.Draft.NullEdgeP2PositiveBranchProjector
+import PhysicsSM.Draft.NullEdgeP2BranchResolution
+import PhysicsSM.Draft.NullEdgeP2BranchReflection
+import PhysicsSM.Draft.NullEdgeP2BranchOrientation
+import PhysicsSM.Draft.NullEdgeP2ReflectionProductDetParity
+import PhysicsSM.Draft.NullEdgeP2TwoReflectionTrace
+import PhysicsSM.Draft.NullEdgeP2P9ReflectionScreenVariance
+import PhysicsSM.Draft.NullEdgeP2P9ReflectionIterationVariance
+import PhysicsSM.Draft.NullEdgeRelativeEntropyObserverRoadmap
+import PhysicsSM.Draft.NullEdgeRecoverabilityToy
+import PhysicsSM.Draft.NullEdgeP9BoundarySource
+import PhysicsSM.Draft.NullEdgeP9BoundaryExact
+import PhysicsSM.Draft.NullEdgeP9BFClosure
+import PhysicsSM.Draft.NullEdgeP9DiamondVisibility
+import PhysicsSM.Draft.NullEdgeP9MeanZeroFluctuation
+import PhysicsSM.Draft.NullEdgeP9MeanFluctuation
+import PhysicsSM.Draft.NullEdgeP9VisibleClosureSource
+import PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore
+import PhysicsSM.Draft.NullEdgeP9DiamondScreenVisibility
+import PhysicsSM.Draft.NullEdgeP9ScreenQuotientBound
+import PhysicsSM.Draft.NullEdgeP9ScreenVarianceBound
+import PhysicsSM.Draft.NullEdgeP9NoncollinearMassNogo
+import PhysicsSM.Draft.NullEdgeRankOneNullMomentum
+import PhysicsSM.Draft.NullEdgePauliSlash
+import PhysicsSM.Draft.NullEdgeP9MassCombine
+import PhysicsSM.Draft.NullEdgeKleinQuadricMassless
+import PhysicsSM.Draft.NullEdgeP7BinaryEntropyBound
+import PhysicsSM.Draft.NullEdgeP7StochasticContraction
+import PhysicsSM.Draft.NullEdgeGramDeterminant
+import PhysicsSM.Draft.NullEdgeOrderComplexLaplacian
+import PhysicsSM.Draft.NullEdgeP9EverpresentLambdaTension
+import PhysicsSM.Draft.NullEdgeP9EverpresentLambdaScaling
+import PhysicsSM.Draft.NullEdgeP7KLDataProcessing
+import PhysicsSM.Draft.NullEdgeP7BlochMassRatio
+import PhysicsSM.Draft.NullEdgeP7ObserverLoss
+import PhysicsSM.Draft.NullEdgeP7RelativeEntropyNonneg
+import PhysicsSM.Draft.NullEdgeBivectorSimplicity
+import PhysicsSM.Draft.NullEdgeChiralityProjectors
+import PhysicsSM.Draft.NullEdgeP3SurfaceHolonomy
+import PhysicsSM.Draft.NullEdgeP6Concurrence
+import PhysicsSM.Draft.NullEdgeSymmetric2x2Spectrum
+import PhysicsSM.Draft.NullEdgeTwoNullMassive
+import PhysicsSM.Draft.NullEdgeHiggsPotential
+import PhysicsSM.Draft.NullEdgeCausetOrderingFraction
+import PhysicsSM.Draft.NullEdgeP9VisibleFanMassCharacterization
+import PhysicsSM.Draft.NullEdgeTraceIdentities
+import PhysicsSM.Draft.NullEdgeLorentzBoost
+import PhysicsSM.Draft.NullEdgeSU2Algebra
+import PhysicsSM.Draft.NullEdgeP9FluctuationScaling
+import PhysicsSM.Draft.NullEdgeP9WeightedFluctuation
+import PhysicsSM.Draft.NullEdgeP9UniformSuppression
+import PhysicsSM.Draft.NullEdgeFermionOscillator
+import PhysicsSM.Draft.NullEdgeMassRatioMonotone
+import PhysicsSM.Draft.NullEdgeP7PetzRecovery
+import PhysicsSM.Draft.NullEdgeP9WeightedSuppressionThreshold
+import PhysicsSM.Draft.NullEdgeP3CrossedModule
+import PhysicsSM.Draft.NullEdgeP7RecoverabilityGap
+import PhysicsSM.Draft.NullEdgeP9ResidualVarianceCellArea
+import PhysicsSM.Draft.NullEdgeP9CoarseResidualVariance
+import PhysicsSM.Draft.NullEdgeP9RankOneHarmonicTrace
+import PhysicsSM.Draft.NullEdgeP9AntisymmetricMeanZero
+import PhysicsSM.Draft.NullEdgeP1ObserverConditioned
+import PhysicsSM.Draft.NullEdgeP2ChiralityCoherence
+import PhysicsSM.Draft.NullEdgeP1CelestialMoment
+import PhysicsSM.Draft.NullEdgeP1RestFrameBloch
+import PhysicsSM.Draft.NullEdgeP2DephasingDeterminant
+import PhysicsSM.Draft.NullEdgeP9WeightedAntisymmetricMeanZero
+import PhysicsSM.Draft.NullEdgeP7RecoverabilityInvisibilitySeparation
+import PhysicsSM.Draft.NullEdgeP9VisiblePluckerSourceAPI
+import PhysicsSM.Draft.NullEdgeP1NormalizedBlochDet
+import PhysicsSM.Draft.NullEdgeP1MassRatioVelocity
+import PhysicsSM.Draft.NullEdgeP2DephasingPurity
+import PhysicsSM.Draft.NullEdgeP9PairedCancellation
+import PhysicsSM.Draft.NullEdgeP9MaxWeightResidualBound
+import PhysicsSM.Draft.NullEdgeP7ConstantTestPerturbation
+import PhysicsSM.Draft.NullEdgeP1NormalizedDetNonneg
+import PhysicsSM.Draft.NullEdgeP1MassRatioBounds
+import PhysicsSM.Draft.NullEdgeP2DephasingDetMonotone
+import PhysicsSM.Draft.NullEdgeP9ClosureDefect
+import PhysicsSM.Draft.NullEdgeP9ClosureVisibleSource
+import PhysicsSM.Draft.NullEdgeP9MeanZeroFluctuation
+import PhysicsSM.Draft.NullEdgeP1TwoNullSplit
+import PhysicsSM.Draft.NullEdgeP1NormalizedDetZero
+import PhysicsSM.Draft.NullEdgeP2DephasingStrict
+import PhysicsSM.Draft.NullEdgeP9ClosureVisibleAny
+import PhysicsSM.Draft.NullEdgeP9PairedFluctuationPositive
+import PhysicsSM.Draft.NullEdgeP2PartialDephasingRateBridge
+import PhysicsSM.Draft.NullEdgeP1TwoNullEnergyPositive
+import PhysicsSM.Draft.NullEdgeP1NormalizedDetPositive
+import PhysicsSM.Draft.NullEdgeP2DephasingGap
+import PhysicsSM.Draft.NullEdgeP9PairedZeroCharacterization
+import PhysicsSM.Draft.NullEdgeP9WeightedBenchmarkBound
+import PhysicsSM.Draft.NullEdgeP11ReadoutCore
+import PhysicsSM.Draft.NullEdgeP2DephasingEqualityIff
+import PhysicsSM.Draft.NullEdgeP9PairedPositiveIff
+import PhysicsSM.Draft.NullEdgeP1NormalizedDetSign
+import PhysicsSM.Draft.NullEdgeP1TwoNullUniqueness
+import PhysicsSM.Draft.NullEdgeP2DephasingPurityEquality
+import PhysicsSM.Draft.NullEdgeP9NoiseResponseSuppression
+import PhysicsSM.Draft.NullEdgeP1TwoNullMassProduct
+import PhysicsSM.Draft.NullEdgeP11ReadoutRescale
+import PhysicsSM.Draft.NullEdgeP9DiamondNoiseSource
+import PhysicsSM.Draft.NullEdgeNullStepQuantumWalkCore
+import PhysicsSM.Draft.NullEdgeP9UnitNoisePositiveIff
+import PhysicsSM.Draft.NullEdgeP11ReadoutInjective
+import PhysicsSM.Draft.NullEdgeP1TwoNullMasslessIff
+import PhysicsSM.Draft.NullEdgeP9NoiseDiagonalTest
+import PhysicsSM.Draft.NullEdgeP9BoundaryExactNoiseInvisible
+import PhysicsSM.Draft.NullEdgeQWExpProvenance
+import PhysicsSM.Draft.NullEdgeP11NormalizeSameIffScale
+import PhysicsSM.Draft.NullEdgeP9GravInvisibleAPI
+import PhysicsSM.Draft.NullEdgeP1TwoNullMassRatioVelocity
+import PhysicsSM.Draft.NullEdgeP2WalkProjectorCoherenceBridge
+import PhysicsSM.Draft.NullEdgeP9BoundaryExactPerturbationInvariant
+import PhysicsSM.Draft.NullEdgeP9NoiseKernelDeterminedByTests
+import PhysicsSM.Draft.NullEdgeP9NoiseKernelEntryRecovery
+import PhysicsSM.Draft.NullEdgeP9NoiseResponseNonneg
+import PhysicsSM.Draft.NullEdgeP2ProjectorDephasedDetMassRatio
+import PhysicsSM.Draft.NullEdgeP1ObserverTwoNullAlgebra
+import PhysicsSM.Draft.NullEdgeP11MetastableLogLifetime
+import PhysicsSM.Draft.NullEdgeP7BlochContractionMixedness
+import PhysicsSM.Draft.NullEdgeP7ProperTimePurityBridge
+import PhysicsSM.Draft.NullEdgeP9ResponseCharacterization
+import PhysicsSM.Draft.NullEdgeP9NoiseCauchySchwarz
+import PhysicsSM.Draft.NullEdgeP9PositiveWeightNoiseZero
+import PhysicsSM.Draft.NullEdgeP7BlochContractionStrict
+import PhysicsSM.Draft.NullEdgeP7CoherenceNotDeterminedByDet
+import PhysicsSM.Draft.NullEdgeP7SameDetDifferentDPDeficit
+import PhysicsSM.Draft.NullEdgeP9OperationalGapCoarseMap
+import PhysicsSM.Draft.NullEdgeP9SubdiamondNonvacuity
+import PhysicsSM.Draft.NullEdgeP9NoncriticalCoarseErasure
+import PhysicsSM.Draft.NullEdgeP11MetastableLifetimeMonotone
+import PhysicsSM.Draft.NullEdgeQWUnitarity
+import PhysicsSM.Draft.NullEdgeSuperDiracKreinCore
+import PhysicsSM.Draft.NullEdgeObserverChannelCore
+import PhysicsSM.Draft.NullEdgeSchmidtDeterminantCore
+import PhysicsSM.Draft.NullEdgeObserverPartialTrace
+import PhysicsSM.Draft.NullEdgeSuperDiracProductGradingKrein
+import PhysicsSM.Draft.NullEdgeSuperDiracMassShellBridge
+import PhysicsSM.Draft.NullEdgeDiamondTwoTriangleCurvature
+import PhysicsSM.Draft.NullEdgeSuperconnectionCrossTermHiggsKinetic
+import PhysicsSM.Draft.NullEdgeDualSolderedCommutator
+import PhysicsSM.Draft.NullEdgeYukawaCheckerboard
+import PhysicsSM.Draft.NullEdgeAbelianHiggsLink
+import PhysicsSM.Draft.NullEdgeFiniteTetradPostulate
+import PhysicsSM.Draft.NullEdgeScalarKineticReconstruction
+import PhysicsSM.Draft.NullEdgeElectroweakStabilizer
+import PhysicsSM.Draft.StandardModelAnomalyAudit
+import PhysicsSM.Draft.TetrahedralHighMomentumNullBranch
+import PhysicsSM.Draft.NullEdgeKineticNormalization
+import PhysicsSM.Draft.KreinDoubleAndCounterexamples
+import PhysicsSM.Draft.NullSolderFrameFoundations
+import PhysicsSM.Draft.NullEdgeSuperDiracSignAudit
+import PhysicsSM.Draft.NullEdgeSuperDiracSignBridge
+import PhysicsSM.Draft.NullEdgeInternalSpectrum
+import PhysicsSM.Draft.NullEdgeFlavoredChirality
+import PhysicsSM.Draft.NullEdgeGateCReleaseCriterion
+import PhysicsSM.Draft.NullEdgeForbiddenCountertermCodim
+import PhysicsSM.Draft.NullEdgeFiniteLichnerowiczBridge
+import PhysicsSM.Draft.NullEdgeScalarGaugeNullQuadrature
+import PhysicsSM.Draft.NullEdgeP11LifetimeThreshold
+import PhysicsSM.Draft.NullEdgeQWNormPreservation
+import PhysicsSM.Draft.NullEdgeP7BlochContractionPurity
+import PhysicsSM.Draft.NullEdgeP9DeltaPairTestBasis
+import PhysicsSM.Draft.NullEdgeP9NoiseBilinearCauchy
+import PhysicsSM.Draft.NullEdgeP9NoiseResponseAmplitudeZero
+import PhysicsSM.Draft.NullEdgeP4VisibleDetInvariant
+import PhysicsSM.Draft.NullEdgeP4PauliNo2x2Mass
+import PhysicsSM.Draft.NullEdgeP4ScalarFlipIsotropy
+import PhysicsSM.Draft.NullEdgeP9ClosedWitness
+import PhysicsSM.Draft.NullEdgeP9BoundaryVisibleDecomp
+import PhysicsSM.Draft.NullEdgeP9WeightedNoiseBound
+import PhysicsSM.Draft.NullEdgeP9HarmonicProjectorResponse
+import PhysicsSM.Draft.NullEdgeP9ProjectedNoiseKernel
+import PhysicsSM.Draft.NullEdgeP9OrthogonalProjectorCore
+import PhysicsSM.Draft.NullEdgeP9StrictProjectedKernel
+import PhysicsSM.Draft.NullEdgeP9ConditionedResponseBound
+import PhysicsSM.Draft.NullEdgeP9WeightedAdjointCore
+import PhysicsSM.Draft.NullEdgeP9WeightedLaplacianEnergy
+import PhysicsSM.Draft.NullEdgeP9HarmonicKernelCore
+import PhysicsSM.Draft.NullEdgeP9CoarseKernelPSD
+import PhysicsSM.Draft.NullEdgeP9CoarseBoundaryInvariance
+import PhysicsSM.Draft.NullEdgeP9TwoCellTraceSeparation
+import PhysicsSM.Draft.NullEdgeP9HodgeProjectorInstantiation
+import PhysicsSM.Draft.NullEdgeP9CausalSupportBound
+import PhysicsSM.Draft.NullEdgeP9RetardedNilpotentReach
+import PhysicsSM.Draft.NullEdgeP9EdgeNeighborReach
+import PhysicsSM.Draft.NullEdgeP9RetardedGreenSeries
+import PhysicsSM.Draft.NullEdgeP9SelectedSectorTraceDensity
+import PhysicsSM.Draft.NullEdgeP9BlockAliasingGuardrail
+import PhysicsSM.Draft.NullEdgeP9OffsetWindowGuardrail
+import PhysicsSM.Draft.NullEdgeP9BoundaryVolumeScaling
+import PhysicsSM.Draft.NullEdgeP9WeightedProjectorResidualOrthogonal
+import PhysicsSM.Draft.NullEdgeP9IntrinsicOrderObservables
+import PhysicsSM.Draft.NullEdgeP9WeightedLap1SelfAdjoint
+import PhysicsSM.Draft.NullEdgeP9WeightedProjectorPythagorean
+import PhysicsSM.Draft.NullEdgeP9DefectSensitivityBenchmark
+import PhysicsSM.Draft.NullEdgeP9IsohistogramSeparation
+import PhysicsSM.Draft.NullEdgeP9DiamondLocalSeparation
+import PhysicsSM.Draft.NullEdgeP9CoarseMapErasureGuardrail
+import PhysicsSM.Draft.NullEdgeP9DiamondLocalityNoiseInvariance
+import PhysicsSM.Draft.NullEdgeP9SubdiamondRestrictionPreservesLocalReadout
+import PhysicsSM.Draft.NullEdgeP9OperationalGap
+import PhysicsSM.Draft.NullEdgeP9ExactRecoveryAdmissibleCoarseMap
+import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryObservablePullback
+import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryComposition
+import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryGap
+import PhysicsSM.Draft.NullEdgeP9StochasticErasureNotRecoverable
+
+/-!
+# PhysicsSM draft root
+
+This optional root collects draft and frontier modules that were intentionally
+kept out of the trusted `PhysicsSM` root. Some imported modules may contain
+documented `s o r r y` handoff markers.
+
+Build this target explicitly with:
+
+```text
+lake build PhysicsSMDraft
+```
+
+The direct Sphere-Packing-Lean bridge
+`PhysicsSM.Draft.E8SpherePackingImported` is not imported here because it
+requires the external Sphere-Packing-Lean dependency and is platform-sensitive
+on native Windows.
+
+The general theta-convolution and no-native-grouping Aristotle results are now
+imported here only as provenance wrappers.  Their useful proofs have been
+promoted to `PhysicsSM.Coding.ConstructionAThetaConvolution`, where they reuse
+the trusted theta-weight bridge API.
+
+The bounded-shell bridge and conditional modular-route theta scaffold are also
+imported here. They are draft-facing results: the bounded-shell bridge is
+s o r r y-free, while the modular-route file is a conditional theorem isolating the
+missing analytic modular-forms facts.
+
+The sedenion modules imported here are draft-facing Aristotle results for the
+new zero-divisor research program. They are s o r r y-free finite theorem clusters,
+but they intentionally remain outside the trusted root while the convention and
+publication story mature.
+
+The Spin(10) ten-dimensional Fierz identity, formerly drafted here as
+`PhysicsSM.Draft.SpinorTenfoldFierzAristotle` behind a `n a t i v e _ d e c i d e`, has
+been kernel-cleaned and promoted to the trusted modules
+`PhysicsSM.Spinor.SpinorTenfoldFierzKernel` and
+`PhysicsSM.Spinor.SpinorTenfoldFierz`.
+-/

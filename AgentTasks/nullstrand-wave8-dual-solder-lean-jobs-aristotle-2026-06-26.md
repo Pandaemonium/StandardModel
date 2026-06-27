@@ -199,3 +199,98 @@ jobs:
   E: 2a7819c8-ebc3-414c-b9ba-63b903d677d1
   F: 1bc30afc-7100-40b3-85bd-16af1fcd3b47
 ```
+
+## Cancellation and sharpened resubmission (2026-06-26)
+
+Jobs B-F ran for ~8 hours `IN_PROGRESS` without returning: the package is the
+full 679-module `PhysicsSM` repo, so Aristotle spent the whole budget on the
+project build before proof search (the failure mode `docs/ARISTOTLE.md` warns
+about). Job A (`98ed0198`) reached `IDLE` and is pending harvest (not resubmitted).
+
+Cancelled the five running tasks with `aristotle cancel --project-id <id>`
+(B `1e5aec30`, C `5c813e27`, D `f9d4c8f3`, E `2a7819c8`, F `1bc30afc`).
+
+Resubmitted B-F from the same package with sharpened prompts (in
+`scratchpad/w8_preamble.txt` + `w8_job{B..F}.txt`). The sharpening:
+
+- **Skip the full build.** Each module must import ONLY `Mathlib` (copy any tiny
+  project def in with provenance), and be verified with `lake env lean <file>`
+  only -- never a project `lake build`. The targets are Mathlib-only finite
+  algebra, so the full build is unnecessary; this is the fix for the 8h stall.
+- **Self-contained.** `PhysicsSM/NullStrand/DualSolder/` does not exist in the
+  tree or the package, so each job creates its own minimal `NullSolderFrame`
+  inline rather than depending on a sibling module.
+- **Literature anchors** (from open-questions section 6.14): the operator is the
+  Lorentzian Borici-Creutz / 4D-hyperdiamond minimally-doubled Dirac operator
+  (Creutz 0712.1201, Borici 0812.0092); the diagonal trace obstruction is a known
+  lattice fact; Krein/index anchors Post 0708.3707 + van den Dungen 1505.01939;
+  Job F anchors Georgii-Tumulka math/0312294 + Berndl et al quant-ph/9503013.
+- **Determinant-level no-doubling guardrail** (section 6.13.7): Job C records that
+  the honest no-doubling claim is `det(i D_+(q) + Gamma_s Phi) = 0`, not the
+  coefficient-zero condition; the Brillouin point `q=(pi,pi,pi,0)` has nonzero
+  coefficients but `p(q)^2 = 0`.
+- **Grading/sign guardrails** kept explicit (`[Gamma_s, Phi] = 0` for `+Phi^2`;
+  `chi_E` separate; sign-flip warning).
+
+```yaml
+resubmitted:
+  A: 98ed0198-8f76-4d92-88e2-29cfb1e44d90   # not resubmitted; IDLE, pending harvest
+  B: d2a1a6ca-156a-4d77-8b0d-70547ab69cfc
+  C: a7b32f6c-d3db-46c7-828c-9d6549f5b383
+  D: ad178148-e88a-4e89-89aa-0f80686443e0
+  E: 78a4806c-40a9-4a19-aa45-bdb653592faa
+  F: c1ef613e-e6a3-4c0f-afb3-efe1a32f8ef7
+  status: submitted
+  submission_project: AgentTasks/aristotle-submit/nullstrand-wave8-dual-solder-lean-20260626-project
+```
+
+## Integration into live tree (2026-06-26)
+
+The five sharpened resubmissions all reached `IDLE` in ~1 hour (vs the 8h stall) --
+the skip-build + Mathlib-only sharpening worked. Each returned exactly one new
+self-contained Mathlib-only module. All five were integrated into the trusted
+tree:
+
+| job | project | new module |
+|---|---|---|
+| B | d2a1a6ca | `PhysicsSM/NullStrand/DualSolder/DualSolderSymbolKinetic.lean` |
+| C | a7b32f6c | `PhysicsSM/NullStrand/DualSolder/GradedSuperDiracSquare.lean` |
+| D | ad178148 | `PhysicsSM/NullStrand/DualSolder/FiniteKreinDoubled.lean` |
+| E | 78a4806c | `PhysicsSM/NullStrand/DualSolder/SpectralSchur.lean` |
+| F | c1ef613e | `PhysicsSM/NullStrand/FiniteMarkovPoissonRoute.lean` |
+
+Headline declarations: `NullSolderFrame` + `dualSymbol_reconstructs_covector` +
+`dualSolder_commutator_exact` (B); `square_decomposition_quarter` +
+`superDirac_graded_square` with all five grading hypotheses load-bearing +
+`mass_sign_flip` guardrail + determinant-level no-doubling caveat in the
+docstring (C); `kreinAdjoint`/`kreinAdjoint_involutive`/`IsJSelfAdjoint`/
+`retardedAdvancedDouble*` (D); `kernel_tensorDifference_eq_matchingEigenspaces` +
+`massShellMultiplicity_eq_sum_matchingMultiplicities` + `schurComplement` (E);
+`finiteMarkov_poissonEquation_telescope_discrete` +
+`besselDimension_nodeThreshold_integralProxy` (F).
+
+Verification:
+- All five wired into `PhysicsSM/NullStrand.lean`; `lake build PhysicsSM.NullStrand`
+  exit 0 (8085 jobs).
+- `#print axioms` on the headline theorem of each module: only
+  `propext, Classical.choice, Quot.sound`.
+- Placeholder/escape-hatch scan clean (no executable `sorry`/`admit`/`axiom`/
+  `opaque`/`unsafe`/`native_decide`).
+- `pre-commit run --files <the five modules + aggregator>` passes.
+
+Cleanups applied on integration (proof bodies unchanged):
+- `GradedSuperDiracSquare.lean`: top namespace `NullStrand.DualSolder` ->
+  `PhysicsSM.NullStrand.DualSolder` (match siblings + AGENTS.md); inner concrete
+  section `Tetrahedron` -> `GradedTetrahedron` to avoid a `dualPair` name clash
+  with Job B's `Tetrahedron` section.
+- `DualSolderSymbolKinetic.lean`: prose "reconstruction axiom" -> "reconstruction
+  property"; dropped an unused `simp` argument.
+- `FiniteMarkovPoissonRoute.lean`: underscored three context hypotheses
+  (`_hstoch`/`_hinv`/`_hc`) on the telescope theorem that the algebraic identity
+  does not consume (kept as documented stochastic/invariant context).
+
+Status: B-F INTEGRATED + build-green. Job A (`98ed0198`, the tetrahedral
+`NullSolderFrame`/normalization audit) remains IDLE and un-harvested -- note that
+Job B already shipped a `NullSolderFrame` + tetrahedral frame, so harvest A only
+to recover anything additional (e.g. the scaled-witness bridge) and dedup against
+`DualSolderSymbolKinetic.lean`.

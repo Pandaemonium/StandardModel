@@ -34,8 +34,14 @@ UUID_RE = re.compile(
     r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b"
 )
 PLACEHOLDER_RE = re.compile(
-    r"\b(sorry|admit|axiom|opaque|unsafe|native_decide)\b"
+    r"\b(sorry|admit|axiom|opaque|unsafe)\b"
 )
+# native_decide is a *complete* proof, not an incomplete-handoff marker, and is
+# permitted in draft/experimental code (AGENTS.md "Trusted vs draft code"). It
+# expands the axiom base with Lean.ofReduceBool / Lean.trustCompiler, so it is
+# reported as a note rather than hard-blocking the draft harvest; it must be
+# replaced by a kernel-checked proof before promotion from draft to trusted.
+NATIVE_DECIDE_RE = re.compile(r"\bnative_decide\b")
 LEAN_CANDIDATE_RE = re.compile(r"Aristotle\.lean$")
 TASK_FIELD_RE = re.compile(
     r"^\s*(project_id|job_id|task_id|target_file|expected_module|output_dir|source_staged_from):\s*(.+?)\s*$"
@@ -64,6 +70,7 @@ class Candidate:
     repo_relative: pathlib.Path
     module: str
     placeholder_hits: list[str]
+    native_decide_hits: int = 0
 
 
 def rel(path: pathlib.Path) -> str:
@@ -331,12 +338,14 @@ def discover_candidates(job_dir: pathlib.Path, metadata: TaskMetadata | None) ->
         text = source.read_text(encoding="utf-8")
         clean_text = strip_lean_comments(text)
         hits = sorted({match.group(1) for match in PLACEHOLDER_RE.finditer(clean_text)})
+        nd_hits = len(NATIVE_DECIDE_RE.findall(clean_text))
         candidates.append(
             Candidate(
                 source=source,
                 repo_relative=repo_relative,
                 module=module,
                 placeholder_hits=hits,
+                native_decide_hits=nd_hits,
             )
         )
     return candidates
@@ -459,6 +468,11 @@ def print_project_report(
         print(f"      -> {candidate.repo_relative.as_posix()}")
         print(f"      module: {candidate.module}")
         print(f"      placeholders: {hits}")
+        if candidate.native_decide_hits:
+            print(
+                f"      native_decide: {candidate.native_decide_hits} "
+                "(draft-OK note; not a blocker; replace before trusted promotion)"
+            )
         for line in signature_report(candidate):
             print(f"      {line}")
 
