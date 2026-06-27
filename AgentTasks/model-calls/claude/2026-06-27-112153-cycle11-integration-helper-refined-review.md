@@ -1,3 +1,67 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `opus`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-06-27T11:21:23`
+- Finished: `2026-06-27T11:21:53`
+- Timeout seconds: `600`
+- Max budget USD: `1.50`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model opus --max-budget-usd 1.50 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Claude adversarial review request: refined cycle 11 integration helper patch
+
+Date: 2026-06-27.
+
+Please review the attached `Scripts/aristotle/integrate_completed.py` after the
+second refinement.
+
+## What changed after your first review
+
+The helper now:
+
+- recognizes repo-shaped payloads under nested archive roots;
+- uses the last `PhysicsSM` path segment and rejects relative payloads with
+  `..`;
+- restricts no-metadata fallback discovery to `PhysicsSM/Draft/**`;
+- normalizes BOM and line endings before comparing returned files to repo files;
+- applies the same `differs_from_repo` check to the fallback `Aristotle.lean`
+  branch;
+- deduplicates candidates by repo-relative path and raises on conflicting
+  duplicate payloads.
+
+## Question
+
+Is this refined patch safe enough as an integration-helper improvement for the
+autonomous loop, or is there still a blocker-level risk that should be fixed
+before relying on it for future Aristotle returns?
+
+Please answer briefly with:
+
+- accept / accept with caveat / reject;
+- any remaining blocker-level issue;
+- whether the next loop can move back to science integration work.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### Scripts/aristotle/integrate_completed.py (636 lines)
+
+```python
 #!/usr/bin/env python3
 """Fetch, inspect, and optionally integrate idle Aristotle projects.
 
@@ -373,9 +437,6 @@ def discover_candidates(job_dir: pathlib.Path, metadata: TaskMetadata | None) ->
                 suffix = "/".join(parts[-2:])
         for path in job_dir.rglob(pathlib.Path(metadata.target_file).name):
             if path.as_posix().replace("\\", "/").endswith(suffix):
-                # With explicit task metadata, report the declared target even
-                # if it is byte-identical.  Re-applying an identical target is
-                # idempotent, and the explicit metadata is the allow-list.
                 repo_relative = pathlib.Path(metadata.target_file)
                 add_candidate_source(candidate_sources, repo_relative, path)
     else:
@@ -384,6 +445,13 @@ def discover_candidates(job_dir: pathlib.Path, metadata: TaskMetadata | None) ->
             if (
                 repo_relative is not None
                 and is_draft_payload(repo_relative)
+                and differs_from_repo(path, repo_relative)
+            ):
+                add_candidate_source(candidate_sources, repo_relative, path)
+            elif (
+                repo_relative is not None
+                and is_draft_payload(repo_relative)
+                and LEAN_CANDIDATE_RE.search(path.name)
                 and differs_from_repo(path, repo_relative)
             ):
                 add_candidate_source(candidate_sources, repo_relative, path)
@@ -629,3 +697,35 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+**Review verdict**
+
+- **accept with caveat**
+
+**Remaining issues (none blocker-level):**
+
+- Dead branch in `discover_candidates`: the no-metadata `else` has two `elif`-style arms with identical guards except the second additionally requires `LEAN_CANDIDATE_RE.search(path.name)`. Since the first arm already matches every `.lean` file under `PhysicsSM/Draft` that differs from repo, the second arm is unreachable. Not a safety issue, but the explicit `Aristotle.lean` fallback the change-log mentions is effectively absorbed by the broader first arm — confirm that is intended, and consider deleting the second arm for clarity.
+- Minor: in the metadata branch, `differs_from_repo` is intentionally not applied (idempotent copy), which is fine but worth a one-line comment so a future refactor does not "fix" it by mistake.
+- Minor: `comparable_text` reads with `utf-8-sig`, which silently masks an unexpected BOM in the live repo file when comparing. Acceptable for the harmless-drift use case stated, but if you ever want BOM regressions to surface, log a warning when the destination has a BOM.
+
+The path-traversal hardening (`assert_under`, last-`PhysicsSM` segment, `..` rejection, `filter="data"`), the conflicting-payload `RuntimeError`, the placeholder-block on `--apply`, and the BOM/CRLF-normalized `differs_from_repo` together close the blocker-class risks from the prior review.
+
+**Next loop:** yes — the helper is safe enough to rely on for upcoming Aristotle returns; the next cycle can move back to science integration work (null-edge C-gate / ghost-safety countermodel queue), with the dead-branch cleanup tracked as a non-urgent follow-up.
+
+```
+
+## Response stderr
+
+```text
+
+```

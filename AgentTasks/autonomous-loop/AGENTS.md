@@ -246,3 +246,44 @@ pretend to solve external branch control. Do not call reconstruction prediction.
 These harness files are operational documents. Prefer clear, short updates over
 large rewrites. Preserve the templates unless a real loop exposes a better
 shape.
+
+## Autonomous loop concurrency policy - 2026-06-27
+
+Do not impose a blanket wait while Aristotle jobs are running. The loop is allowed to keep roughly 6-8 jobs in flight when the jobs are independent and well-scoped. Waiting is required only for a hard dependency, such as a returned theorem/API shape/countermodel/convention that the next job must import or instantiate.
+
+Before submitting another job, classify it:
+
+```text
+Independent: can run now without any active job returning.
+Soft-dependent: can run now if written with explicit assumptions and no release claim.
+Hard-dependent: must wait for a specific active result.
+```
+
+The loop should favor independent and soft-dependent jobs that improve the C0/C1/Gate-C/Gate-H decision matrix. Hard-dependent jobs should be packetized locally but not launched until the dependency returns.
+
+Mandatory cycle steps remain mandatory even under high concurrency: literature search, meta-review, progress logging, friction logging, and at least one meaningful local work product or integration decision. If a cycle cannot make Lean progress, it should still improve the research state by tightening a theorem target, preparing a prompt, auditing assumptions, or reducing workflow friction.
+
+## Scheduler behavior
+
+Use dependency-aware scheduling, not a global wait rule.
+
+Classify each candidate job before launch:
+
+- `Independent`: no active result is needed.
+- `Soft-dependent`: can run with explicit assumptions and no release claim.
+- `Hard-dependent`: must wait for a returned theorem, API, counterexample, or convention.
+
+Default queue posture:
+
+- Under about 6 running jobs: actively look for the best independent or soft-dependent submission.
+- Around 6-8 running jobs: submit only sharply scoped jobs that are not blocked by active work.
+- Above about 8 running jobs: prefer integration, local Lean/docs work, literature, meta-review, and packet preparation.
+
+Hard-dependent jobs should still progress locally:
+
+- draft the prompt;
+- state the dependency;
+- define acceptance criteria;
+- identify the first theorem to request once the dependency returns.
+
+Do not submit a hard-dependent job early just to maintain activity. Do not hold an independent job merely because unrelated Aristotle jobs are still running.

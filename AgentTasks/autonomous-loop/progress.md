@@ -556,3 +556,466 @@ Next action:
 - Cycle 3 should check C89/C90/C93/C82/C70, integrate any returns, and if no
   returns are ready, prepare the C94-instantiation packet for the C93-to-RA-Wilson
   attempt.
+
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 3
+
+State:
+
+```text
+C93_SUBMITTED_MONITOR_C89_C90_C93 -> C92_C93_SUBMITTED_MONITOR_RETURNS
+```
+
+Objective:
+
+- Run cycle 3 of the requested 20 full autonomous-loop cycles, focused on
+  Golterman-Shamir ghost-safety guardrails.
+
+Actions taken:
+
+- Checked Aristotle status with `aristotle list --limit 20`.
+- Confirmed C89/C90/C93/C82 remain running.
+- Ran mandatory ghost-safety literature search.
+- Created and submitted C92: Golterman-Shamir ghost-safety API.
+- Queried Claude Opus for C92 adversarial review.
+- Created `AgentTasks/null-edge-c92-ghost-safety-countermodel-plan-2026-06-27.md`.
+- Updated state, Aristotle queue, Claude queue, literature queue, progress, and
+  meta-review.
+
+Aristotle submission:
+
+- C92: `03c6e63f-3a39-420e-81d3-173f2611b362`.
+
+Literature search:
+
+- Neo4j paper query:
+  `Golterman Shamir propagator zeros ghost gauge coupled BRST Krein positivity residue lattice chiral gauge`.
+- Neo4j repo-doc query:
+  `ghost zero safety PostGaugeResiduePositive BRST Krein NoGaugeCoupledGhostZeros C90 C92`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-102042-c92-ghost-safety-review.md`.
+- Verdict: C92 is useful only if it returns concrete non-implication witnesses,
+  not an empty Prop hierarchy.
+
+Local artifact:
+
+- `AgentTasks/null-edge-c92-ghost-safety-countermodel-plan-2026-06-27.md`.
+
+Next action:
+
+- Cycle 4 should check returns. If C93/C92 are still running, prepare the
+  C94-instantiation packet or draft concrete ghost-safety countermodel skeletons.
+## 2026-06-27 - concurrency policy update
+
+Updated the autonomous-loop plan to remove the accidental hard-wait rule for active Aristotle jobs. The loop may keep about 6-8 independent jobs running simultaneously, while waiting only on specific hard dependencies. Mandatory cycle steps remain mandatory: literature search, meta-review, local work, integration checks, Claude/adversarial review when useful, and durable logging.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 4
+
+State:
+
+```text
+C92_C93_SUBMITTED_MONITOR_RETURNS -> C95_SUBMITTED_C90_RECONSTRUCTED_MONITOR_RETURNS
+```
+
+Objective:
+
+- Run cycle 4 of the requested 20 full autonomous-loop cycles.
+- Integrate any returned Aristotle results.
+- Keep the C1 path moving without submitting hard-dependent C94 prematurely.
+
+Actions taken:
+
+- Checked Aristotle status with `aristotle list --limit 40`.
+- Found C90 idle/returned while C89, C92, C93, C82, and C70 remain running.
+- Ran mandatory literature search for overlap/GW/interface instantiation.
+- Ran mandatory repo-doc search; first attempt hit encoding friction, UTF-8 rerun completed.
+- Patched `Scripts/aristotle/integrate_completed.py` to create parent directories before tar extraction.
+- Inspected C90 with focused integration helper and raw `aristotle tasks` output.
+- Determined C90 was not a no-op: raw summary reported hardening of `NullEdgeProjectedGateCWilsonRelease.lean`, but archive omitted that file.
+- Reconstructed the C90 hardening manually in `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`.
+- Prepared C94 as a hard-dependent packet, not submitted until C93 returns.
+- Queried Claude Opus for C94/C95 scheduling review.
+- Strengthened and submitted C95 anti-vectorialization guardrail.
+
+Aristotle submission:
+
+- C95: `406dd6b0-7866-419b-8dbc-e29c758fe5e9`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-103017-c94-c95-scheduling-review.md`.
+- Verdict: hold C94; strengthen C95 with explicit vectorlike countermodel; do not treat C90 missing-payload result as a benign no-op.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-wave22-c94-overlap-interface-instantiation-plan-2026-06-27.md`.
+- `AgentTasks/null-edge-wave23-c95-anti-vectorialization-guardrail-aristotle-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-c94-c95-scheduling-2026-06-27.md`.
+
+Next action:
+
+- Cycle 5 should check C89/C92/C93/C95/C82/C70. If C93 returns, audit it and then launch C94. If C95 returns first, integrate the anti-vectorialization guardrail and wire its witness field into the C1 release ledger.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 5
+
+State:
+
+```text
+C95_SUBMITTED_C90_RECONSTRUCTED_MONITOR_RETURNS -> C97_SUBMITTED_C96_HELD_MONITOR_RETURNS
+```
+
+Objective:
+
+- Run cycle 5 of the requested 20 full autonomous-loop cycles.
+- Keep working while C89/C92/C93/C95/C82/C70 run.
+- Decide whether the regulator-removal consistency lane is ready for Aristotle.
+
+Actions taken:
+
+- Checked Aristotle status with `aristotle list --limit 40`.
+- Confirmed C95, C92, C93, C89, C82, and C70 remain running; no new active integration completed.
+- Ran mandatory literature and repo searches for regulator-removal / mirror/vectorlike collapse.
+- Drafted C96 regulator-removal stability guardrail.
+- Queried Claude Opus for adversarial review of C96.
+- Held C96 after Claude identified the abstract API as too tautological.
+- Created C97 to repair/validate the reconstructed C90 Wilson-release hardening.
+- Attempted full-repo C97 Aristotle submission; it failed because Aristotle rejects the repo's local `SpherePacking` dependency.
+- Submitted C97 prompt-only as a weaker repair/report job.
+
+Aristotle submission:
+
+- C97: `789e2eab-7432-4558-af5a-c757cf43512b`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-103910-c96-regulator-removal-review.md`.
+- Verdict: C96's concern is real but the current draft is fake-progress-prone. Hold until concrete table APIs arrive from C92/C95.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-wave23-c96-regulator-removal-c1-stability-aristotle-2026-06-27.md`.
+- `AgentTasks/null-edge-wave23-c97-c90-wilson-release-repair-aristotle-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-c96-regulator-removal-2026-06-27.md`.
+
+Next action:
+
+- Cycle 6 should check returns. If C97 returns first, use it to repair the reconstructed C90 module. If C95/C92 return, integrate them and then revive C96 with concrete finite table APIs. If C93 returns, audit and launch C94.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 6
+
+State:
+
+```text
+C97_SUBMITTED_C96_HELD_MONITOR_RETURNS -> C98_SUBMITTED_C1_LEDGER_CORRECTED_MONITOR_RETURNS
+```
+
+Objective:
+
+- Run cycle 6 of the requested 20 full autonomous-loop cycles.
+- Continue while C89/C92/C93/C95/C97/C82/C70 run.
+- Tighten the C1 release predicate and submit only an independent guardrail job.
+
+Actions taken:
+
+- Checked Aristotle status with `aristotle list --limit 40`.
+- Confirmed active jobs remain running; no new active integration was ready.
+- Ran mandatory literature and repo searches on mirror/vectorlike decoupling, anomaly conservation, and finite C1 witnesses.
+- Created `AgentTasks/null-edge-gate-c1-release-predicate-ledger-2026-06-27.md`.
+- Queried Claude Opus for adversarial review of the C1 ledger.
+- Corrected the ledger to require one shared `D_reg/D_phys/D_limit` package rather than six independently supplied fields.
+- Created and submitted C98, a finite guardrail showing interface shape alone does not imply a chiral index witness.
+
+Aristotle submission:
+
+- C98: `c2133e78-9c1a-4336-b3b3-d1a8330c34c6`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-104535-c1-ledger-review.md`.
+- Verdict: add shared-operator-lineage, nonzero index witness, locality, gauge-equivariant witness, separate ghost/Krein/BRST fields, and split moduli/counterterm audit.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-gate-c1-release-predicate-ledger-2026-06-27.md`.
+- `AgentTasks/null-edge-wave23-c98-chiral-index-witness-guardrail-aristotle-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-c1-ledger-2026-06-27.md`.
+
+Next action:
+
+- Cycle 7 should check returns. If C98 returns, integrate the interface-shaped zero-index guardrail. If C93 returns, audit and launch C94. If C95/C92 return, use them to revive C96 with concrete table APIs.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 7
+
+State:
+
+```text
+C98_SUBMITTED_C1_LEDGER_CORRECTED_MONITOR_RETURNS -> C95_INTEGRATED_C96_HELD_DEPENDENCY_AWARE_SCHEDULER
+```
+
+Objective:
+
+- Run cycle 7 of the requested 20 full autonomous-loop cycles.
+- Integrate returned work, perform the mandatory literature search, obtain adversarial review, and update the scheduler plan.
+
+Actions taken:
+
+- Checked Aristotle status and found C95 returned/idle while C89, C92, C93, C97, C98, C82, and C70 remained active.
+- Ran mandatory literature/repo search for anti-vectorialization, vectorlike spectrum, chiral index, branch tables, and lattice chiral gauge guardrails.
+- Integrated C95 manually because the integration helper did not detect the archive path.
+- Added `PhysicsSM/Draft/NullEdgeAntiVectorializationGuardrail.lean` and imported it from `PhysicsSMDraft.lean`.
+- Created the C95 integration note and a Claude adversarial review packet.
+- Queried Claude Opus on C95's strength, C96 readiness, and fake-progress risks.
+- Updated the autonomous-loop plan to use dependency-aware scheduling instead of a blanket wait rule.
+
+Aristotle integration:
+
+- C95: `406dd6b0-7866-419b-8dbc-e29c758fe5e9`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-105806-c95-integration-review.md`.
+- Verdict: C95 is a clean planning guardrail, not a C1 release substrate. Harden it before downstream use. Hold C96 until C92 ghost-safety and C89 regulator/removal APIs return.
+
+Local artifacts:
+
+- `PhysicsSM/Draft/NullEdgeAntiVectorializationGuardrail.lean`.
+- `AgentTasks/null-edge-c95-anti-vectorialization-integration-note-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-c95-integration-2026-06-27.md`.
+
+Next action:
+
+- Cycle 8 should monitor returns, harden C95 if capacity allows, keep C96 held, and launch only independent or soft-dependent jobs that declare their dependency class.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 8
+
+State:
+
+```text
+C95_INTEGRATED_C96_HELD_DEPENDENCY_AWARE_SCHEDULER -> C97_C98_INTEGRATED_C99_SUBMITTED_MONITOR_C89_C92_C93
+```
+
+Objective:
+
+- Run cycle 8 of the requested 20 full autonomous-loop cycles.
+- Integrate newly returned C97/C98, perform mandatory literature review, get adversarial review, and submit an independent next job if justified.
+
+Actions taken:
+
+- Checked Aristotle status. C97 and C98 were idle/complete; C89, C92, C93, C82, and C70 remained running.
+- Ran mandatory literature search around overlap/GW index, vectorlike mirrors, propagator zeros, and chiral gauge no-go pressure.
+- Integrated C98: `PhysicsSM/Draft/NullEdgeChiralIndexWitnessGuardrail.lean`.
+- Integrated C97: `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`.
+- Added both imports to `PhysicsSMDraft.lean`.
+- Fixed the Claude wrapper UTF-8 subprocess encoding bug exposed by Lean math symbols in source packets.
+- Queried Claude Opus with the actual C97/C98 source files.
+- Submitted C99 as an independent finite operator-theoretic chiral-index substrate job.
+
+Aristotle integration:
+
+- C97: `789e2eab-7432-4558-af5a-c757cf43512b`.
+- C98: `c2133e78-9c1a-4336-b3b3-d1a8330c34c6`.
+
+Aristotle submission:
+
+- C99: `4fd2e530-eb89-4e94-83c1-dc97b254e0c4`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-110704-c97-c98-integration-review.md`.
+- Verdict: C97/C98 are semantically aligned as planning-only guardrails, not physical release evidence. C99 is the recommended independent follow-up.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-wave24-c99-finite-chiral-index-substrate-aristotle-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-c97-c98-integration-2026-06-27.md`.
+
+Next action:
+
+- Cycle 9 should monitor C99 plus C89/C92/C93/C82/C70. Keep C94 and C96 held on their hard dependencies. Consider small naming-hardening in C97/C98 before any downstream import.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 9
+
+State:
+
+```text
+C97_C98_INTEGRATED_C99_SUBMITTED_MONITOR_C89_C92_C93 -> C97_C98_HARDENED_MONITOR_C99_C89_C92_C93
+```
+
+Objective:
+
+- Run cycle 9 of the requested 20 full autonomous-loop cycles.
+- Check returns, refresh literature, do bounded local hardening, query Claude, and decide whether another Aristotle job is justified.
+
+Actions taken:
+
+- Checked Aristotle status. C99, C89, C92, C93, C82, and C70 remained running. No new completed integration was available.
+- Ran mandatory literature search around finite chiral index, Ginsparg-Wilson index, and finite matrix/kernel chiral zero-mode diagnostics.
+- Locally hardened C97 by renaming `PostGaugeResiduePositive.toGoltermanShamirSafe_trivialBRST` to `PostGaugeResiduePositive.toGoltermanShamirSafe_vacuousBRST` and strengthening the docstring warning.
+- Locally hardened C98 by renaming `ChiralIndexWitness` to `ToyChiralIndexNonzero` and strengthening the planning-only docstring warning.
+- Queried Claude Opus with the actual hardened sources.
+- Did not submit a new Aristotle job because Claude judged the hardening adequate and no independent high-value job was justified before C99/C93/C92/C89 return.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-111238-cycle9-c97-c98-hardening-review.md`.
+- Verdict: hardening is adequate; no new semantic hazard; leave files as-is until returns.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-claude-adversarial-review-cycle9-hardening-2026-06-27.md`.
+
+Next action:
+
+- Cycle 10 should monitor C99/C89/C92/C93/C82/C70. If C99 returns, integrate it first. If C93 returns, audit and consider C94. If C92 and C89 return, revive C96 with concrete dependencies.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 10
+
+State:
+
+```text
+C97_C98_HARDENED_MONITOR_C99_C89_C92_C93 -> CYCLE10_NO_SUBMIT_C99_GRADING_CRITERION_ADDED
+```
+
+Objective:
+
+- Run cycle 10 of the requested 20 full autonomous-loop cycles.
+- Check returns, perform mandatory literature refresh, prepare local C99 acceptance analysis, query Claude, and decide whether to submit another job.
+
+Actions taken:
+
+- Checked Aristotle status. C99, C89, C92, C93, C82, and C70 remained running. No new completed integration was available.
+- Ran mandatory literature search around finite-dimensional chiral index, GW index, and finite matrix/kernel chiral zero modes.
+- Created `AgentTasks/null-edge-cycle10-finite-chiral-index-substrate-note-2026-06-27.md` with a C99 acceptance checklist.
+- Queried Claude Opus on whether the no-submit decision was correct.
+- Updated the C99 acceptance checklist with Claude's grading-involution criterion.
+- Did not submit a new Aristotle job because the active queue already covers all independent C1-adjacent axes.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-111618-cycle10-no-submit-review.md`.
+- Verdict: no-submit is correct; add explicit grading-involution criterion to C99 acceptance.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-cycle10-finite-chiral-index-substrate-note-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-cycle10-no-submit-2026-06-27.md`.
+
+Next action:
+
+- Cycle 11 should monitor C99/C89/C92/C93/C82/C70. If C99 returns, audit it against the grading-involution criterion. If C93 returns, audit and consider C94. If C92 and C89 return, revive C96 with concrete dependencies.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 11
+
+State:
+
+```text
+CYCLE10_NO_SUBMIT_C99_GRADING_CRITERION_ADDED -> CYCLE11_INTEGRATION_HELPER_HARDENED_MONITOR_CORE_RETURNS
+```
+
+Objective:
+
+- Run cycle 11 of the requested 20 full autonomous-loop cycles.
+- Check returns, perform mandatory literature refresh, and if no return is available reduce repeated tooling friction.
+
+Actions taken:
+
+- Checked Aristotle status. C99, C89, C92, C93, C82, and C70 remained running. No new completed integration was available.
+- Ran mandatory literature search around overlap/domain-wall mirror decoupling and finite lattice chiral gauge constraints.
+- Repaired `Scripts/aristotle/integrate_completed.py` to detect nested Aristotle `PhysicsSM/Draft/*.lean` payloads that are new or differ from the repo.
+- Hardened the helper after Claude review: Draft-only fallback, `..` rejection, last-`PhysicsSM` path segment, normalized line-ending/BOM comparison, conflicting-duplicate detection, and metadata-branch comment.
+- Queried Claude twice: once on the first patch and once on the refined patch.
+- Did not submit a new Aristotle job because no science trigger fired and the helper repair was the highest-value local action.
+
+Claude result:
+
+- First review: `AgentTasks/model-calls/claude/2026-06-27-112015-cycle11-integration-helper-review.md`.
+- Refined review: `AgentTasks/model-calls/claude/2026-06-27-112153-cycle11-integration-helper-refined-review.md`.
+- Verdict: refined helper accepted with caveat; no blocker-level issue remains; next loop can return to science integration work.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-claude-adversarial-review-cycle11-integration-helper-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-cycle11-integration-helper-refined-2026-06-27.md`.
+
+Next action:
+
+- Cycle 12 should use the hardened helper for returned jobs. If none return, avoid API-forking jobs and do only high-value prep or friction reduction.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 12
+
+State:
+
+```text
+CYCLE11_INTEGRATION_HELPER_HARDENED_MONITOR_CORE_RETURNS -> C99B_SUBMITTED_MONITOR_CORE_RETURNS
+```
+
+Objective:
+
+- Run cycle 12 of the requested 20 full autonomous-loop cycles.
+- Check returns, perform mandatory literature refresh, prepare C99 audit criteria, query Claude, and submit only if a genuinely independent job is justified.
+
+Actions taken:
+
+- Checked Aristotle status. C99, C89, C92, C93, C82, and C70 remained running. No completed job was available for integration.
+- Ran mandatory literature search around Neuberger overlap index, finite-volume Ginsparg-Wilson index, and domain-wall/overlap mirror sectors.
+- Created `AgentTasks/null-edge-c99-finite-chiral-index-substrate-audit-template-2026-06-27.md`.
+- Queried Claude Opus on the C99 audit template and whether any independent job should launch.
+- Patched the C99 audit template with grading/operator compatibility, finiteness, common-framework, provenance, convention-separation, and native-decision guardrails.
+- Created and submitted C99b, a narrow independent finite graded-operator index benchmark.
+
+Aristotle submission:
+
+- C99b: `309944d6-800a-4399-a2fc-3d294883ce28`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-112545-cycle12-c99-audit-template-review.md`.
+- Verdict: template accepted with caveat; add missing criteria; launch one small independent C99b benchmark job.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-c99-finite-chiral-index-substrate-audit-template-2026-06-27.md`.
+- `AgentTasks/null-edge-wave24-c99b-finite-graded-operator-index-template-aristotle-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-cycle12-c99-audit-template-2026-06-27.md`.
+
+Next action:
+
+- Cycle 13 should monitor C99/C99b/C89/C92/C93/C82/C70. If C99b returns first, integrate as benchmark/fallback only. If C99 returns, audit against the template. If C93 returns, consider C94. If C92 and C89 return, revive C96.
+## 2026-06-27 - Autonomous loop 20-cycle run: cycle 13
+
+State:
+
+```text
+C99B_SUBMITTED_MONITOR_CORE_RETURNS -> C99_INTEGRATED_FALLBACK_C99V2_SUBMITTED
+```
+
+Objective:
+
+- Run cycle 13 of the requested 20 full autonomous-loop cycles.
+- Integrate C99 if returned, audit it against the C99 template, query Claude, and submit only a dependency-safe follow-up.
+
+Actions taken:
+
+- Checked Aristotle status. C99 was idle/complete. C99b, C89, C92, C93, C82, and C70 remained running.
+- Ran mandatory literature search around finite-dimensional GW index, overlap index, and finite-volume lattice chiral zero modes.
+- Used the hardened integration helper in dry-run mode; it discovered the nested C99 returned module automatically.
+- Audited C99 against the template and sent Claude the returned source plus checklist.
+- Integrated C99 as fallback/planning substrate.
+- Added `import PhysicsSM.Draft.NullEdgeFiniteChiralIndexSubstrate` to `PhysicsSMDraft.lean`.
+- Created C99 integration note documenting limitations and n a t i v e _ d e c i d e footprint.
+- Submitted C99-v2 as an independent structural upgrade job.
+
+Aristotle integration:
+
+- C99: `4fd2e530-eb89-4e94-83c1-dc97b254e0c4`.
+
+Aristotle submission:
+
+- C99-v2: `b97de9d7-3661-4feb-a8b6-0e138bb597b5`.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-113127-c99-return-review.md`.
+- Verdict: integrate C99 as fallback/planning infrastructure; queue C99-v2 immediately.
+
+Local artifacts:
+
+- `AgentTasks/null-edge-c99-finite-chiral-index-substrate-integration-note-2026-06-27.md`.
+- `AgentTasks/null-edge-wave24-c99-v2-grading-involution-substrate-aristotle-2026-06-27.md`.
+- `AgentTasks/null-edge-claude-adversarial-review-c99-return-2026-06-27.md`.
+
+Next action:
+
+- Cycle 14 should monitor C99b/C99-v2/C89/C92/C93/C82/C70. Integrate C99b or C99-v2 if either returns. Keep C94 and C96 hard-held on their dependencies.

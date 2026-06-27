@@ -1,3 +1,85 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `opus`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-06-27T11:19:34`
+- Finished: `2026-06-27T11:20:15`
+- Timeout seconds: `600`
+- Max budget USD: `1.50`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model opus --max-budget-usd 1.50 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Claude adversarial review request: cycle 11 Aristotle integration helper patch
+
+Date: 2026-06-27.
+
+Please review the attached source file:
+
+```text
+Scripts/aristotle/integrate_completed.py
+```
+
+## Context
+
+The autonomous loop repeatedly hit the same friction:
+
+- C95 returned `PhysicsSM/Draft/NullEdgeAntiVectorializationGuardrail.lean`, but
+  `integrate_completed.py` reported no candidates.
+- C98 returned `PhysicsSM/Draft/NullEdgeChiralIndexWitnessGuardrail.lean`, but
+  `integrate_completed.py` again reported no candidates.
+- C97 returned `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean` under
+  a nested archive root.
+
+The common pattern was:
+
+```text
+AgentTasks/aristotle-output/<project>/extracted/project-files.tar/<task>_aristotle/PhysicsSM/Draft/Foo.lean
+```
+
+The old helper only discovered files named `Aristotle.lean` when no task metadata
+was provided, so direct returned modules were invisible.
+
+## Patch intent
+
+The patch adds:
+
+- `repo_relative_from_payload(path)` to recognize repo-shaped `PhysicsSM/*.lean`
+  payloads inside nested Aristotle archives;
+- `differs_from_repo(source, repo_relative)` to ignore unchanged context copies;
+- broader fallback discovery for no-metadata projects: include returned
+  `PhysicsSM/*.lean` files only if they are new or differ from the live repo.
+
+## Questions
+
+1. Does the patch address the C95/C97/C98 nested archive miss without making the
+   helper too eager?
+2. Is there a path-safety or accidental-copy risk I missed?
+3. Are there edge cases where unchanged context files would still be listed as
+   candidates?
+4. Should this patch be accepted as-is, or should the next loop cycle refine it?
+
+Please answer briefly and adversarially.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### Scripts/aristotle/integrate_completed.py (600 lines)
+
+```python
 #!/usr/bin/env python3
 """Fetch, inspect, and optionally integrate idle Aristotle projects.
 
@@ -313,27 +395,14 @@ def repo_relative_from_payload(path: pathlib.Path) -> pathlib.Path | None:
     ignoring request-project scaffolding such as `RequestProject/Main.lean`.
     """
 
-    physics_indices = [i for i, part in enumerate(path.parts) if part == "PhysicsSM"]
-    for physics_index in reversed(physics_indices):
-        repo_relative = pathlib.Path(*path.parts[physics_index:])
-        if not repo_relative.parts or repo_relative.parts[0] != "PhysicsSM":
-            continue
-        if repo_relative.is_absolute() or any(part in {"", ".."} for part in repo_relative.parts):
-            continue
-        return repo_relative
-    return None
-
-
-def is_draft_payload(repo_relative: pathlib.Path) -> bool:
-    return len(repo_relative.parts) >= 2 and repo_relative.parts[:2] == ("PhysicsSM", "Draft")
-
-
-def comparable_text(path: pathlib.Path) -> str:
-    """Text comparison normalized for harmless archive line-ending drift."""
-
-    text = path.read_text(encoding="utf-8-sig")
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
-    return text.rstrip("\n") + "\n"
+    try:
+        physics_index = path.parts.index("PhysicsSM")
+    except ValueError:
+        return None
+    repo_relative = pathlib.Path(*path.parts[physics_index:])
+    if not repo_relative.parts or repo_relative.parts[0] != "PhysicsSM":
+        return None
+    return repo_relative
 
 
 def differs_from_repo(source: pathlib.Path, repo_relative: pathlib.Path) -> bool:
@@ -342,27 +411,11 @@ def differs_from_repo(source: pathlib.Path, repo_relative: pathlib.Path) -> bool
     destination = REPO_ROOT / repo_relative
     if not destination.exists():
         return True
-    return comparable_text(source) != comparable_text(destination)
-
-
-def add_candidate_source(
-    candidate_sources: dict[pathlib.Path, pathlib.Path],
-    repo_relative: pathlib.Path,
-    source: pathlib.Path,
-) -> None:
-    existing = candidate_sources.get(repo_relative)
-    if existing is None:
-        candidate_sources[repo_relative] = source
-        return
-    if comparable_text(existing) != comparable_text(source):
-        raise RuntimeError(
-            "Conflicting Aristotle payloads map to the same repo path: "
-            f"{rel(existing)} and {rel(source)} -> {repo_relative.as_posix()}"
-        )
+    return source.read_text(encoding="utf-8") != destination.read_text(encoding="utf-8")
 
 
 def discover_candidates(job_dir: pathlib.Path, metadata: TaskMetadata | None) -> list[Candidate]:
-    candidate_sources: dict[pathlib.Path, pathlib.Path] = {}
+    candidate_paths: set[pathlib.Path] = set()
     if metadata and metadata.target_file:
         suffix = metadata.target_file.replace("\\", "/")
         if metadata.expected_module:
@@ -373,27 +426,24 @@ def discover_candidates(job_dir: pathlib.Path, metadata: TaskMetadata | None) ->
                 suffix = "/".join(parts[-2:])
         for path in job_dir.rglob(pathlib.Path(metadata.target_file).name):
             if path.as_posix().replace("\\", "/").endswith(suffix):
-                # With explicit task metadata, report the declared target even
-                # if it is byte-identical.  Re-applying an identical target is
-                # idempotent, and the explicit metadata is the allow-list.
-                repo_relative = pathlib.Path(metadata.target_file)
-                add_candidate_source(candidate_sources, repo_relative, path)
+                candidate_paths.add(path)
     else:
         for path in job_dir.rglob("*.lean"):
             repo_relative = repo_relative_from_payload(path)
-            if (
-                repo_relative is not None
-                and is_draft_payload(repo_relative)
-                and differs_from_repo(path, repo_relative)
-            ):
-                add_candidate_source(candidate_sources, repo_relative, path)
+            if repo_relative is not None and differs_from_repo(path, repo_relative):
+                candidate_paths.add(path)
+            elif LEAN_CANDIDATE_RE.search(path.name) and "PhysicsSM" in path.parts:
+                candidate_paths.add(path)
 
     candidates: list[Candidate] = []
-    for repo_relative, source in sorted(candidate_sources.items()):
+    for source in sorted(candidate_paths):
         if metadata and metadata.target_file:
             repo_relative = pathlib.Path(metadata.target_file)
             module = metadata.expected_module or module_name(repo_relative)
         else:
+            repo_relative = repo_relative_from_payload(source)
+            if repo_relative is None:
+                continue
             module = module_name(repo_relative)
         text = source.read_text(encoding="utf-8")
         clean_text = strip_lean_comments(text)
@@ -629,3 +679,56 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+# Adversarial review: integrate_completed.py cycle-11 patch
+
+## 1. Does the patch address C95/C97/C98 misses without being too eager?
+
+**Mostly yes, but with caveats.** The fallback now picks up any `*.lean` whose path contains a `PhysicsSM/` segment and which differs from the live repo. That correctly recovers the three nested-archive cases. However:
+
+- **Eagerness risk**: any returned file under any `PhysicsSM/` ancestor — including `PhysicsSM/Algebra/Octonion/Basic.lean` if Aristotle ships a perturbed *context* copy (e.g., reformatted whitespace, a CRLF/LF flip, or a trailing-newline change) — will be picked up as a candidate and, with `--apply`, will be **silently overwritten** by the Aristotle copy. There is no `metadata.target_file` guard in the no-metadata branch, and no allow-list constraining which file Aristotle is "allowed" to return. A single accidental edit in an unrelated context module becomes a real patch.
+- **First-match `PhysicsSM`**: `path.parts.index("PhysicsSM")` takes the *first* occurrence. If a payload contains `something/PhysicsSM/.../PhysicsSM/Draft/Foo.lean` (unlikely but possible with nested staging), the repo-relative path is wrong and could resolve to a non-existent destination — harmless for inspection but produces a misleading "new file" report.
+
+## 2. Path-safety / accidental-copy risks
+
+- `copy_candidate` calls `assert_under(destination, REPO_ROOT)` but **does not resolve `repo_relative`** for `..` segments before joining. `repo_relative_from_payload` blindly takes `path.parts[physics_index:]`; if a tar member is crafted as `foo/PhysicsSM/../../etc/passwd.lean`, `parts` will literally contain `'..'` and `REPO_ROOT / repo_relative` escapes the repo. `safe_extract_tar` uses `filter="data"` so the *extracted* file stays inside the destination, but the candidate's `repo_relative` is derived from the **member name as recorded**, which can still legally contain `..` after the first `PhysicsSM` segment. `assert_under` does call `.resolve()` and should catch this — verify that's actually true on Windows for non-existent parents (it is, but worth an explicit test). Recommend rejecting any `repo_relative` whose parts contain `..` or absolute anchors up front.
+- No check that `repo_relative` is actually under `PhysicsSM/` after normalization — only that `parts[0] == "PhysicsSM"`. Fine, but combined with the no-metadata branch this means **any** repo file under `PhysicsSM/` is overwriteable, including trusted (non-Draft) modules. Strongly consider restricting the no-metadata fallback to `PhysicsSM/Draft/**` only, since that's the documented Aristotle return location.
+- `differs_from_repo` does a byte-level compare. A pure newline-style change (CRLF on the Aristotle side, LF on the repo side) will register as "differs" and be applied, silently flipping line endings — violating the repo's LF hygiene rule in `AGENTS.md`.
+
+## 3. Edge cases where unchanged context files still appear as candidates
+
+- **BOM / trailing newline / whitespace drift**: byte-equal comparison flags these as changes. Aristotle archives are not guaranteed byte-identical to repo source even when semantically unchanged.
+- **Line-ending drift** as above.
+- **Multiple archives, same file**: if two nested tars under the same project both contain `PhysicsSM/Draft/Foo.lean` with different staging timestamps but identical semantics, both get added to `candidate_paths` (set of `Path` objects — distinct paths), and `print_project_report` will list both, with the second `--apply` silently winning. Recommend deduplicating by `repo_relative` and erroring if two distinct sources map to the same destination with differing content.
+- `LEAN_CANDIDATE_RE` branch (`Aristotle.lean` files containing `PhysicsSM` in parts) is **still included even when it matches the repo byte-for-byte**, because the `elif` skips the `differs_from_repo` check. Asymmetric with the new branch; probably unintended.
+
+## 4. Accept as-is or refine next cycle?
+
+**Refine next cycle.** The patch unblocks the immediate loop friction (good), but as written it is one accidental Aristotle context-file perturbation away from silently overwriting a trusted module. Minimum follow-ups:
+
+1. Restrict no-metadata fallback to `PhysicsSM/Draft/**`.
+2. Reject `repo_relative` containing `..` before any copy.
+3. Normalize line endings (and ideally trailing newline) before `differs_from_repo` to avoid spurious hits.
+4. Apply `differs_from_repo` to the `Aristotle.lean` branch too, for symmetry.
+5. Deduplicate candidates by `repo_relative` and refuse to apply on conflicting duplicates.
+6. Print a louder warning (or require `--allow-overwrite-trusted`) when a candidate's `repo_relative` is **not** under `Draft/`.
+
+Ship the current patch to unblock the loop, file the six items as a cycle-12 hardening task.
+
+```
+
+## Response stderr
+
+```text
+
+```

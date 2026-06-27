@@ -156,10 +156,14 @@ _SECTION = re.compile(r"\\(?:sub)*section\*?\s*\{([^}]*)\}")
 def delatex(src: str) -> str:
     """Reduce LaTeX source to readable prose with heading sentinels for chunking."""
     src = _COMMENT.sub("", src)
-    # Restrict to the document body if delimited.
-    m = re.search(r"\\begin\{document\}(.*)\\end\{document\}", src, re.DOTALL)
-    if m:
-        src = m.group(1)
+    # Drop the leading preamble (everything before the first \begin{document}),
+    # but keep everything after - in multi-file papers _pick_main concatenates the
+    # \input'd section files after the main file's \end{document}, and a greedy
+    # \begin..\end{document} match would discard exactly that prose.
+    idx = src.find("\\begin{document}")
+    if idx != -1:
+        src = src[idx + len("\\begin{document}") :]
+    src = src.replace("\\end{document}", " ")
     for env in _ENVS_DROP:
         src = re.sub(
             rf"\\begin\{{{re.escape(env)}\}}.*?\\end\{{{re.escape(env)}\}}",

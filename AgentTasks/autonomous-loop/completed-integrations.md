@@ -191,3 +191,46 @@ Remaining issues:
   described as concrete null-edge evidence.
 - C90 hardening is needed before C72-style projected release language is safe
   for downstream citation.
+## 2026-06-27 cycle 8 - C97 and C98 integrated
+
+C97:
+
+- Project ID: `789e2eab-7432-4558-af5a-c757cf43512b`.
+- Integrated file: `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`.
+- Role: planning-only/type-level C90 Wilson-release predicate scaffold.
+- Claude classification: conditional accept as planning-only API scaffold; not kernel-checked physics.
+
+C98:
+
+- Project ID: `c2133e78-9c1a-4336-b3b3-d1a8330c34c6`.
+- Integrated file: `PhysicsSM/Draft/NullEdgeChiralIndexWitnessGuardrail.lean`.
+- Role: planning-only guardrail showing interface shape does not imply nonzero chiral index.
+- Claude classification: accepted as planning-only guardrail; do not import into C1 release predicates as a substrate.
+## 2026-06-27 cycle 13 - C99 integrated as fallback substrate
+
+Project ID: `4fd2e530-eb89-4e94-83c1-dc97b254e0c4`
+File: `PhysicsSM/Draft/NullEdgeFiniteChiralIndexSubstrate.lean`
+Status: draft fallback / planning infrastructure only.
+
+What it provides:
+
+- `FiniteChiralData` with finite dimension, basis chirality labels, and rational matrix `D`.
+- Basis-kernel predicate derived from `D` columns.
+- Plus/minus kernel-state sets derived from `(D, chirality)`.
+- `ChiralIndex` from derived finite sets.
+- Explicit zero-index and nonzero-index examples.
+- Interface-shape-does-not-imply-nonzero-index guardrail.
+
+Limitations:
+
+- No explicit grading involution `Gamma`.
+- No `D`/`Gamma` compatibility law.
+- Sectors are basis labels, not eigenspaces.
+- Kernel is coordinate-basis only, not `LinearMap.ker`.
+- Nonzero example is hand-set.
+- Headline examples use `n a t i v e _ d e c i d e`, so axiom footprint includes `Lean.ofReduceBool` / `Lean.trustCompiler`.
+
+Review:
+
+- Claude log: `AgentTasks/model-calls/claude/2026-06-27-113127-c99-return-review.md`.
+- Verdict: integrate as fallback, then queue C99-v2.

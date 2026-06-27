@@ -244,3 +244,262 @@ Takeaways:
   explicitly treats domain-wall vectorialization as a side condition.
 - A future C94 should probably instantiate C93 against RA-Wilson and report the
   first missing field, rather than starting a second abstract interface.
+
+## 2026-06-27 - Cycle 3 ghost-safety source refresh
+
+Status: triaged
+Related gate: C0 | C1
+
+Question:
+
+- What literature supports separating scalar residue positivity, Krein
+  positivity, exact chirality, and C0 species health from full ghost safety?
+
+Searches:
+
+- Neo4j paper search:
+  `Golterman Shamir propagator zeros ghost gauge coupled BRST Krein positivity residue lattice chiral gauge`
+- Neo4j repo-doc search:
+  `ghost zero safety PostGaugeResiduePositive BRST Krein NoGaugeCoupledGhostZeros C90 C92`
+
+Candidate sources:
+
+- Golterman-Shamir `2311.12790`, propagator zeros as gauge-coupled ghost states.
+- Golterman-Shamir `2505.20436`, interpolating-field/composite-basis lesson.
+- Catterall/reduced Kahler-Dirac mirror-sector measure literature.
+- Luscher `hep-lat/9802011`, exact chirality not equal to ghost safety.
+- `2402.09774`, domain-wall vectorialization warning.
+
+Zotero/Neo4j status:
+
+- Returned sources are already present locally. No new ingestion was required.
+
+Takeaways:
+
+- C92 should include concrete countermodels or it should be considered weak.
+- Exact chirality and Krein positivity must be kept separate from ghost safety.
+## 2026-06-27 cycle 4
+
+Mandatory literature/repo search performed.
+
+Paper query:
+
+```text
+overlap Ginsparg Wilson interface concrete instantiation Wilson kernel spectral gap index nontrivial null edge
+```
+
+Key hits:
+
+- Kimura-Creutz-Misumi overlap/index work for naive/minimally doubled fermions, arXiv:1110.2482 and arXiv:1011.0761.
+- Nielsen-Ninomiya extension warning, arXiv:hep-lat/9803002.
+- Luscher exact lattice chiral symmetry / GW relation, arXiv:hep-lat/9802011.
+
+Repo-doc query:
+
+```text
+C94 instantiate C93 overlap interface RA Wilson kernel gap index anti vectorialization
+```
+
+The first run hit a Windows stdout encoding failure; UTF-8 rerun completed.
+## 2026-06-27 cycle 5
+
+Mandatory literature/repo search performed.
+
+Paper query:
+
+```text
+Wilson regulator removal overlap chiral index vectorlike mirror decoupling Ginsparg Wilson regulator limit
+```
+
+Key hits:
+
+- Luescher exact chiral symmetry / Ginsparg-Wilson relation, arXiv:hep-lat/9802011.
+- Reduced Kahler-Dirac mirror/measure warnings, arXiv:2311.02487.
+- Golterman-Shamir propagator-zero ghost warning, arXiv:2311.12790.
+- Golterman-Shamir SMG constraints, arXiv:2505.20436.
+- Nielsen-Ninomiya extension, arXiv:hep-lat/9803002.
+- Minimally doubled counterterm warnings, arXiv:0910.2597 and arXiv:1006.2009.
+
+Repo-doc query:
+
+```text
+regulator removal consistency C1 anti vectorialization Wilson overlap null edge
+```
+## 2026-06-27 cycle 6
+
+Mandatory literature/repo search performed.
+
+Paper query:
+
+```text
+lattice chiral gauge mirror decoupling anomaly conservation nonvectorlike witness finite branch table regulator removal
+```
+
+Key hits:
+
+- Reduced Kahler-Dirac mirror/measure warnings, arXiv:2311.02487.
+- Golterman-Shamir propagator-zero ghost warning, arXiv:2311.12790.
+- Golterman-Shamir SMG constraints, arXiv:2505.20436.
+- Luescher exact chiral symmetry / Ginsparg-Wilson relation, arXiv:hep-lat/9802011.
+- Nielsen-Ninomiya / absence of lattice neutrinos no-go lane.
+- Minimally doubled counterterm/taste-breaking warnings.
+
+Repo-doc query:
+
+```text
+C95 anti-vectorialization C96 regulator removal vectorlike witness anomaly conservation
+```
+## 2026-06-27 cycle 7 literature record
+
+Query/source:
+
+- Web/arXiv-style search phrase: `anti-vectorialization vectorlike spectrum chiral index finite branch table lattice chiral gauge`.
+- Repo search phrase: `C95 anti-vectorialization vectorlike spectrum nonzero index C0 health branch table`.
+
+Result summary:
+
+- Relevant comparison lanes remain overlap/Ginsparg-Wilson chiral index, Nielsen-Ninomiya pressure, minimally doubled spectral/index diagnostics, Golterman-Shamir propagator-zero safety, reduced Kahler-Dirac chiral regularization, and spectral-graph species counting.
+- Repo search found no stronger pre-existing C95-style finite anti-vectorialization API beyond the returned C95 module.
+
+Plan impact:
+
+- Reinforced that C95 is only a finite bookkeeping guardrail unless connected to a real operator/regulator line.
+- Reinforced the need for a data-carrying nonzero chiral witness rather than interface shape alone.
+
+Follow-up:
+
+- Use these lanes when hardening C95 and when auditing C98/C93 returns.
+## 2026-06-27 cycle 8 literature record
+
+Query/source:
+
+- Web/arXiv query: `overlap Ginsparg Wilson chiral index mirror fermions vectorlike regulator removal lattice chiral gauge theories`.
+- Web/arXiv query: `Golterman Shamir propagator zeros lattice chiral gauge theories ghost mirror fermions`.
+- Web/arXiv query: `anti-vectorlike chiral index lattice fermion spectrum vectorlike pairs`.
+
+Sources opened:
+
+- Golterman-Shamir, `arXiv:2311.12790`, `Propagator zeros and lattice chiral gauge theories`.
+- Golterman-Shamir, `arXiv:2505.20436`, `Constraints on the symmetric mass generation paradigm for lattice chiral gauge theories`.
+- Luscher, `arXiv:hep-lat/9802011`, `Exact chiral symmetry on the lattice and the Ginsparg-Wilson relation`.
+
+Result summary:
+
+- Propagator zeros and mirror-sector vectorlike constraints remain central hazards for any C1 release claim.
+- Overlap/Ginsparg-Wilson chiral-index language remains the correct comparison class for a future non-toy index witness.
+
+Plan impact:
+
+- Supports C99 as an independent finite chiral-index substrate job.
+- Reinforces that C97/C98 must stay planning-only until connected to real operator data.
+## 2026-06-27 cycle 9 literature record
+
+Query/source:
+
+- Web/arXiv query: `finite dimensional chiral index Z2 graded operator kernel dimension plus minus linear algebra`.
+- Web/arXiv query: `Ginsparg Wilson finite dimensional index trace gamma5 Dirac operator kernel chiral zero modes`.
+- Web/arXiv query: `lattice chiral index finite matrix gamma5 hermitian Dirac operator kernel plus minus`.
+
+Source anchors:
+
+- Luscher, `arXiv:hep-lat/9802011`, exact chiral symmetry and the Ginsparg-Wilson relation.
+- Golterman-Shamir, `arXiv:2311.12790`, propagator zeros and lattice chiral gauge theories.
+- Golterman-Shamir, `arXiv:2505.20436`, constraints on symmetric mass generation for lattice chiral gauge theories.
+
+Result summary:
+
+- Reinforced that the next useful C1 index layer must compute index from operator/kernel data, not from arbitrary toy count fields.
+- No new source displaced the current C99-first plan.
+
+Plan impact:
+
+- Keep C99 as the active finite index-substrate job.
+- Avoid more toy count-field jobs unless C99 fails.
+## 2026-06-27 cycle 10 literature record
+
+Query/source:
+
+- Web/arXiv query: `finite-dimensional Ginsparg Wilson relation index theorem trace gamma5 finite matrix`.
+- Web/arXiv query: `overlap Dirac operator finite lattice index kernel chirality theorem`.
+- Web/arXiv query: `Ginsparg Wilson index finite lattice chiral zero modes trace gamma5`.
+
+Source anchors:
+
+- Luscher, `arXiv:hep-lat/9802011`, exact chiral symmetry and the Ginsparg-Wilson relation.
+- Golterman-Shamir, `arXiv:2311.12790`, propagator zeros and lattice chiral gauge theories.
+- Golterman-Shamir, `arXiv:2505.20436`, constraints on symmetric mass generation for lattice chiral gauge theories.
+
+Result summary:
+
+- Reinforced that a finite chiral-index substrate needs a grading/gamma5 analogue and index computed from kernel data.
+- No new literature lead displaced the current C99/C93/C92/C89 wait strategy.
+
+Plan impact:
+
+- Added explicit grading-involution criterion to the C99 acceptance note.
+## 2026-06-27 cycle 11 literature record
+
+Query/source:
+
+- Web/arXiv query: `lattice chiral gauge theory overlap domain wall mirror fermion decoupling exact chiral symmetry review`.
+- Web/arXiv query: `Kaplan domain wall fermions chiral gauge mirror decoupling overlap Narayanan Neuberger`.
+- Web/arXiv query: `finite lattice chiral gauge theory Ginsparg Wilson domain wall mirror fermions no-go`.
+
+Source anchors:
+
+- Luscher, `arXiv:hep-lat/9802011`, exact chiral symmetry and Ginsparg-Wilson relation.
+- Golterman-Shamir, `arXiv:2311.12790`, propagator zeros and lattice chiral gauge theories.
+- Golterman-Shamir, `arXiv:2505.20436`, constraints on symmetric mass generation for lattice chiral gauge theories.
+
+Result summary:
+
+- No new source displaced the current queue. The literature continues to support waiting for the overlap/GW interface, ghost-zero API, and regulator/removal handle before reviving C94/C96.
+
+Plan impact:
+
+- No new science job launched. Local effort went to integration-helper repair.
+## 2026-06-27 cycle 12 literature record
+
+Query/source:
+
+- Web/arXiv query: `Neuberger overlap Dirac operator index theorem finite lattice gamma5 trace`.
+- Web/arXiv query: `Ginsparg Wilson relation exact lattice chiral symmetry finite volume index theorem`.
+- Web/arXiv query: `domain wall fermions overlap index chiral gauge finite lattice mirror sector`.
+
+Source anchors:
+
+- Luscher, `arXiv:hep-lat/9802011`, exact lattice chiral symmetry and Ginsparg-Wilson relation.
+- Neuberger / overlap-Dirac index literature as the finite-volume index comparison lane.
+- Golterman-Shamir, `arXiv:2311.12790` and `arXiv:2505.20436`, for propagator-zero and mirror/vectorlike hazards.
+
+Result summary:
+
+- Reinforced that C99 needs a gamma5-like grading/operator compatibility relation, not just derived counts.
+- Reinforced that C99/C99b remain substrate/template layers, not release evidence.
+
+Plan impact:
+
+- C99 audit template hardened.
+- C99b benchmark job submitted.
+## 2026-06-27 cycle 13 literature record
+
+Query/source:
+
+- Web/arXiv query: `Ginsparg Wilson relation finite dimensional index grading involution chiral operator`.
+- Web/arXiv query: `finite lattice overlap Dirac operator index gamma5 kernel theorem Neuberger`.
+- Web/arXiv query: `Luscher exact chiral symmetry lattice index theorem Ginsparg Wilson finite volume`.
+
+Source anchors:
+
+- Luscher, `arXiv:hep-lat/9802011`, exact lattice chiral symmetry and Ginsparg-Wilson relation.
+- Neuberger / overlap-Dirac finite index lane.
+- Golterman-Shamir, `arXiv:2311.12790` and `arXiv:2505.20436`, for propagator-zero and mirror/vectorlike hazards.
+
+Result summary:
+
+- Reinforced the C99-v2 requirement: explicit gamma5-like grading/involution and D/Gamma compatibility are needed before the finite index substrate can be called strong.
+
+Plan impact:
+
+- C99 integrated only as fallback.
+- C99-v2 submitted for the missing structural layer.

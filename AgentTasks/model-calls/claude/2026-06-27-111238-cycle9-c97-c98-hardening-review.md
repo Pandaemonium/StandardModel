@@ -1,3 +1,72 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `opus`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-06-27T11:12:03`
+- Finished: `2026-06-27T11:12:38`
+- Timeout seconds: `600`
+- Max budget USD: `1.50`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model opus --max-budget-usd 1.50 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Claude adversarial review request: cycle 9 C97/C98 naming hardening
+
+Date: 2026-06-27.
+
+Please review the actual attached Lean sources after a small local hardening pass.
+
+## Context
+
+In the prior review of C97/C98 you classified both files as useful
+planning-only guardrails, not physical C1 release evidence.
+
+You flagged two naming hazards:
+
+- C97 had `PostGaugeResiduePositive.toGoltermanShamirSafe_trivialBRST`, which
+  produces `PostGaugeGoltermanShamirSafe d True` and might be misread as
+  satisfying the canonical `BRSTSafe d` obligation.
+- C98 used the release-flavored name `ChiralIndexWitness` for a toy predicate
+  meaning only `plusCount != minusCount`.
+
+## Local hardening done
+
+- Renamed the C97 theorem to
+  `PostGaugeResiduePositive.toGoltermanShamirSafe_vacuousBRST` and strengthened
+  the docstring warning.
+- Renamed C98's predicate to `ToyChiralIndexNonzero` and strengthened the
+  docstring warning that it is not the eventual C1 witness.
+
+## Review questions
+
+1. Does this hardening adequately reduce the immediate naming hazard?
+2. Did it introduce any new semantic hazard?
+3. Should these files now be left as-is until C99 returns, or should another
+   immediate hardening be done locally?
+4. Is there any reason to launch another Aristotle job before C99/C93/C92/C89
+   return?
+
+Please answer with a short verdict and concrete next action.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean (259 lines)
+
+```lean
 import Mathlib
 
 /-!
@@ -256,3 +325,174 @@ theorem c72_wilson_release_summary :
   wilsonReleasedData_releases_full_audit
 
 end PhysicsSM.Draft
+
+```
+
+### PhysicsSM/Draft/NullEdgeChiralIndexWitnessGuardrail.lean (105 lines)
+
+```lean
+/-
+# Null-Edge Gate C: interface-shape does not imply a chiral index witness
+
+This is a tiny, self-contained finite model establishing a guardrail for the
+null-edge Gate C program (C93/C94 overlap / Ginsparg-Wilson / domain-wall
+interfaces):
+
+> An algebraic *interface shape* by itself can be satisfied by trivial or
+> zero-index models. A genuine C1 (physical chiral release) must additionally
+> require a *nonzero chiral / index witness*.
+
+We model a candidate by a toy record carrying enough information to distinguish
+"form" (does it have the interface shape?) from "content" (does it carry a
+nonzero net chirality / index?). We then prove:
+
+* `interface_shape_not_index_witness` — a concrete interface-shaped *zero-index*
+  countermodel (form without content);
+* `interface_shape_with_index_witness` — a concrete interface-shaped *nonzero
+  index* witness (non-vacuity: the shape *can* coexist with a real witness);
+* `zero_index_blocks_chiral_witness` — the reusable guardrail consumed by
+  C93/C94: a zero index can never supply a chiral index witness.
+
+The file is intentionally independent of the full null-edge operator and uses
+only finite/decidable data.
+-/
+
+namespace PhysicsSM.Draft.NullEdgeChiralIndexWitnessGuardrail
+
+/-- A toy candidate interface.  `hasInterfaceShape` records whether the candidate
+satisfies the algebraic overlap / Ginsparg-Wilson / domain-wall *interface shape*.
+`plusCount` and `minusCount` record the number of positive- and negative-chirality
+zero modes, so their difference is the toy "index". -/
+structure InterfaceToy where
+  hasInterfaceShape : Bool
+  plusCount : Nat
+  minusCount : Nat
+deriving DecidableEq, Repr
+
+/-- The candidate satisfies the algebraic interface shape.  Crucially this
+predicate refers *only* to `hasInterfaceShape`; it says nothing about the
+index counts, so it cannot smuggle in a nonzero index. -/
+def InterfaceShape (T : InterfaceToy) : Prop := T.hasInterfaceShape = true
+
+/-- Toy-level nonzero net chirality: the number of positive- and negative-chirality
+modes differ.
+
+The `Toy` prefix is intentional. This predicate is a planning guardrail, not the eventual
+C1 chiral-index witness for a concrete null-edge/overlap/domain-wall operator. -/
+def ToyChiralIndexNonzero (T : InterfaceToy) : Prop := T.plusCount ≠ T.minusCount
+
+/-- The candidate has zero net index: equally many positive- and
+negative-chirality modes (the vectorlike / zero-operator trap). -/
+def ZeroIndex (T : InterfaceToy) : Prop := T.plusCount = T.minusCount
+
+instance (T : InterfaceToy) : Decidable (InterfaceShape T) := by
+  unfold InterfaceShape; infer_instance
+instance (T : InterfaceToy) : Decidable (ToyChiralIndexNonzero T) := by
+  unfold ToyChiralIndexNonzero; infer_instance
+instance (T : InterfaceToy) : Decidable (ZeroIndex T) := by
+  unfold ZeroIndex; infer_instance
+
+/-! ## Concrete countermodel: interface shape without index witness -/
+
+/-- Interface-shaped, but vectorlike: one `+` mode and one `-` mode, net index `0`. -/
+def zeroIndexToy : InterfaceToy :=
+  { hasInterfaceShape := true, plusCount := 1, minusCount := 1 }
+
+/-- Interface-shaped *and* carrying a genuine index witness: one `+` mode,
+no `-` modes, net index `1`. -/
+def witnessToy : InterfaceToy :=
+  { hasInterfaceShape := true, plusCount := 1, minusCount := 0 }
+
+/-! ## Required guardrail theorems -/
+
+/-- **Form is not content.**  There is a candidate with the interface shape that
+nonetheless has *no* chiral index witness: the concrete vectorlike `zeroIndexToy`. -/
+theorem interface_shape_not_index_witness :
+    ∃ T : InterfaceToy, InterfaceShape T ∧ ¬ ToyChiralIndexNonzero T := by
+  exact ⟨zeroIndexToy, by decide, by decide⟩
+
+/-- **Non-vacuity.**  The interface shape is compatible with a genuine index
+witness: the concrete `witnessToy` has both. -/
+theorem interface_shape_with_index_witness :
+    ∃ T : InterfaceToy, InterfaceShape T ∧ ToyChiralIndexNonzero T := by
+  exact ⟨witnessToy, by decide, by decide⟩
+
+/-- **Reusable guardrail for C93/C94.**  A zero net index can never provide a
+chiral index witness.  Consumers should therefore treat overlap / Ginsparg-Wilson
+/ domain-wall interface shape as C1 release *only* when paired with a candidate
+for which `ZeroIndex` fails (equivalently, `ChiralIndexWitness` holds). -/
+theorem zero_index_blocks_chiral_witness (T : InterfaceToy) :
+    ZeroIndex T → ¬ ToyChiralIndexNonzero T := by
+  intro h hw
+  exact hw h
+
+/-- Convenience corollary: the headline non-implication, packaged as the failure
+of the universal "shape ⇒ witness" statement.  This is what protects against the
+zero-operator / vectorlike-interface trap. -/
+theorem shape_does_not_imply_witness :
+    ¬ (∀ T : InterfaceToy, InterfaceShape T → ToyChiralIndexNonzero T) := by
+  intro h
+  exact (h zeroIndexToy (by decide)) (by decide)
+
+end PhysicsSM.Draft.NullEdgeChiralIndexWitnessGuardrail
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+# Review: C97/C98 naming hardening (cycle 9)
+
+## Verdict
+
+**Adequate.** The renames address the two flagged hazards correctly and introduce no new semantic hazard. Files should be left as-is until C99/C93/C92/C89 return. Do **not** launch another Aristotle job now.
+
+## Semantic alignment check (verbatim sources)
+
+### C97: `PostGaugeResiduePositive.toGoltermanShamirSafe_vacuousBRST`
+
+- Statement: `PostGaugeResiduePositive d → PostGaugeGoltermanShamirSafe d True`.
+- Construction: `brst := trivial`, with `residuePositive`/`noGhostZeros` forwarded from `h`.
+- Intended reading: an upgrade from the full residue package to a Golterman–Shamir bundle whose BRST slot is the **vacuous** proposition `True`, not the canonical `BRSTSafe d`.
+- Match: yes. The name `vacuousBRST` now correctly advertises the BRST slot as trivially filled. The docstring explicitly warns against misreading it as discharging `BRSTSafe d`. The canonical release path `projectedWilsonGateCRelease_under_full_audit` continues to require `PostGaugeGoltermanShamirSafe d (BRSTSafe d)`, so this lemma cannot accidentally route into C1 release through unification — `True` will not unify with `BRSTSafe d`.
+
+No regression: the previous `toGhostZeroSafe`, `toKreinPositive`, `kreinPositive_not_noGhostZeros`, and `projectedWilsonRelease_not_bareGateCRelease` guardrails are untouched and still correctly state that residue positivity alone does not give ghost-zero safety and that bare Gate-C is strictly weaker than Wilson release.
+
+### C98: `ToyChiralIndexNonzero`
+
+- Statement: `T.plusCount ≠ T.minusCount`.
+- Intended reading: a *toy* counting-level non-equality, not a genuine index/anomaly witness for any null-edge/overlap/domain-wall operator.
+- Match: yes. The `Toy` prefix and the strengthened docstring make the planning-only status explicit. All downstream theorems (`interface_shape_not_index_witness`, `interface_shape_with_index_witness`, `zero_index_blocks_chiral_witness`, `shape_does_not_imply_witness`) are consistently renamed and still type-check semantically against the new predicate.
+
+One small residual: the docstring of `zero_index_blocks_chiral_witness` still says "equivalently, `ChiralIndexWitness` holds" — that referenced name no longer exists. This is a stale comment, not a semantic hazard, but worth a one-line fix next time the file is touched.
+
+## New hazards introduced
+
+None at the kernel level. The only nit is the stale `ChiralIndexWitness` mention in a docstring (C98, `zero_index_blocks_chiral_witness`).
+
+## Answers
+
+1. **Yes** — `vacuousBRST` and `ToyChiralIndexNonzero` both signal "not the canonical obligation" in the name itself, which is the strongest cheap defense against misuse by later C1 wiring.
+2. **No new semantic hazard.** Only a stale docstring reference in C98.
+3. **Leave as-is until C99 returns.** Further local churn here risks merge friction with the in-flight Aristotle jobs (C99/C93/C92/C89), which are likely to touch the same predicate surface (especially the real chiral-index witness in C93/C94). Defer the stale-comment fix to the next natural edit.
+4. **No.** No new Aristotle job is justified before the outstanding returns. These two files are now planning-only guardrails with correctly hedged names; spending Aristotle budget on them would not change their evidentiary status for C1.
+
+## Concrete next action
+
+Do nothing to these files now. When C99/C93/C92/C89 return:
+
+- Fix the stale `ChiralIndexWitness` mention in C98's `zero_index_blocks_chiral_witness` docstring (one-line edit to read "equivalently, `ToyChiralIndexNonzero` holds").
+- Re-evaluate whether C98's toy predicate should be replaced (not merely renamed) by whatever real index witness C93/C94 produces, and whether C97's `vacuousBRST` lemma should be deleted outright once a real BRST discharge exists, since at that point it has no callers and only invites misuse.
+
+```
+
+## Response stderr
+
+```text
+
+```

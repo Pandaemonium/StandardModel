@@ -245,3 +245,89 @@ Proposed fix:
 - Set UTF-8 environment defaults inside `send_claude_review.py`, or have the
   harness always set `PYTHONIOENCODING=utf-8` and `PYTHONUTF8=1` before model
   calls on Windows.
+
+## 2026-06-27 cycle 4 friction
+
+- `Scripts/aristotle/integrate_completed.py --from-list` was too broad and swept older idle jobs, then blocked on unrelated placeholder hits. Prefer focused project-id integration for active-round jobs.
+- Aristotle archive extraction failed on C90 because tar members lacked explicit parent directory entries. Patched `Scripts/aristotle/integrate_completed.py` to create parent directories for file members before extraction.
+- C90 raw task summary claimed edits to `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`, but the downloaded archive omitted that target file. The result had to be reconstructed manually from `aristotle tasks`. Follow-up tooling should fail loudly when a task summary claims changed files but the downloadable payload is context-only.
+- `Scripts/lit/neo4j_doc_search.py` again hit Windows stdout encoding on non-ASCII replacement characters. Workaround: run with `PYTHONIOENCODING=utf-8` and `PYTHONUTF8=1`.
+## 2026-06-27 cycle 5 friction
+
+- Full `aristotle submit --project-dir .` for C97 failed because Aristotle rejects the repo's local `SpherePacking` dependency from `lake-manifest.json`. Workaround used: prompt-only C97 submission. This is weaker than a kernel-checked full-repo Aristotle package.
+- C96 fake-progress trap logged: a regulator-removal theorem whose positive result is merely `(P -> Q) -> P -> Q` is not a guardrail. Future C96 must use concrete finite table content, data-carrying witnesses, and a computed limit map.
+## 2026-06-27 cycle 6 friction
+
+- No new tooling failure occurred in this cycle.
+- Existing blocker remains: full-repo Aristotle submissions fail on the local `SpherePacking` dependency. Claude advised deferring a full tooling cycle unless this blocks a specific ready submission.
+- Process guardrail reinforced: avoid adding more science jobs unless they are genuinely independent; prioritize returned-job integration now that the active queue is near the concurrency target.
+## 2026-06-27 cycle 7 - C95 integration helper missed archive member
+
+Friction:
+
+- `Scripts/aristotle/integrate_completed.py` fetched and extracted C95 but reported no candidate files.
+- The returned Lean module existed inside the extracted Aristotle archive under a full-repo subdirectory and had to be copied manually.
+
+Impact:
+
+- Manual archive inspection was required before integration.
+
+Potential fix:
+
+- Update the integration helper to detect newly returned files under nested archive roots and compare them against the repo by relative suffix.
+
+## 2026-06-27 cycle 7 - model-call log extraction should be targeted
+
+Friction:
+
+- A raw read of the Claude model-call log produced too much output and hit Windows console Unicode issues on mathematical symbols.
+
+Impact:
+
+- The loop risked context flooding while trying to inspect a review result.
+
+Potential fix:
+
+- Use a small extractor script or command pattern that prints only response headings, matched verdict lines, and tails, with UTF-8 output configured.
+## 2026-06-27 cycle 8 - Claude wrapper subprocess encoding fixed
+
+Friction:
+
+- Sending C97/C98 source files to Claude failed because `subprocess.run(..., text=True)` used the Windows cp1252 console encoding and could not encode Lean/math symbols such as `↔`.
+
+Fix:
+
+- Updated `Scripts/autonomous_loop/send_claude_review.py` to pass `encoding="utf-8"` and `errors="replace"` to `subprocess.run`.
+
+Impact:
+
+- The same C97/C98 review call succeeded after the patch and logged normally.
+
+## 2026-06-27 cycle 8 - integration helper missed another nested Aristotle return
+
+Friction:
+
+- `integrate_completed.py` again reported no candidates for C98 even though the returned Lean file existed under a nested Aristotle archive root.
+- C97 also returned useful files under nested archive paths.
+
+Potential fix:
+
+- Same as cycle 7: teach the helper to discover files by repo-relative suffix inside nested archive roots.
+## 2026-06-27 cycle 11 - nested Aristotle archive discovery repaired
+
+Friction:
+
+- C95, C97, and C98 returned useful files under nested archive roots, but `integrate_completed.py` did not discover them without manual inspection.
+
+Fix:
+
+- Updated `Scripts/aristotle/integrate_completed.py` to discover no-metadata `PhysicsSM/Draft/*.lean` payloads under nested Aristotle archives when they are new or differ from the repo.
+- Added suspicious path rejection, normalized line-ending/BOM comparison, and conflicting duplicate detection.
+
+Review:
+
+- Claude refined review accepted the patch with caveat and no blocker-level issue.
+
+Remaining caveat:
+
+- The patch has not been locally validated by running the helper against an archive in this cycle.

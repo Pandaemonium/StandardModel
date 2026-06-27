@@ -102,3 +102,145 @@ Takeaways:
 - Next job should likely instantiate C93 against C89's RA-Wilson operator and
   report which fields cannot be populated, rather than starting a parallel
   domain-wall interface immediately.
+
+## Cycle 3 C92 ghost-safety review
+
+Status: answered
+Aristotle round: C92 ghost-safety API submission
+Packet:
+`AgentTasks/null-edge-claude-adversarial-review-c92-ghost-safety-2026-06-27.md`
+Log:
+`AgentTasks/model-calls/claude/2026-06-27-102042-c92-ghost-safety-review.md`
+
+Takeaways:
+
+- Verdict: C92 is conditionally worthwhile but high risk of empty packaging.
+- The value is in concrete non-implication witnesses, not predicate names.
+- Required countermodel slots: scalar residue not ghost safety, Krein positivity
+  not ghost safety, C0 species health not ghost safety, exact chirality not
+  ghost safety.
+- Do not integrate a pure Prop hierarchy as strategically successful.
+## 2026-06-27 cycle 4
+
+- Packet: `AgentTasks/null-edge-claude-adversarial-review-c94-c95-scheduling-2026-06-27.md`
+- Log: `AgentTasks/model-calls/claude/2026-06-27-103017-c94-c95-scheduling-review.md`
+- Verdict: hold C94 until C93 returns; strengthen C95 around an explicit C0-healthy vectorlike countermodel; do not treat C90 as no-op until raw task logs are checked.
+## 2026-06-27 cycle 5
+
+- Packet: `AgentTasks/null-edge-claude-adversarial-review-c96-regulator-removal-2026-06-27.md`
+- Log: `AgentTasks/model-calls/claude/2026-06-27-103910-c96-regulator-removal-review.md`
+- Verdict: C96's concern is real but the draft is too tautological. Hold until concrete C92/C95 table APIs exist; require data-carrying anti-vectorlike witnesses and a computed limit/decoupling map.
+## 2026-06-27 cycle 6
+
+- Packet: `AgentTasks/null-edge-claude-adversarial-review-c1-ledger-2026-06-27.md`
+- Log: `AgentTasks/model-calls/claude/2026-06-27-104535-c1-ledger-review.md`
+- Verdict: ledger fields are mostly right, but release must be a conjunction over one shared `D_reg/D_phys/D_limit` package, not a linear implication chain. Add index witness, locality, gauge-equivariant witness, separate ghost/Krein/BRST, split moduli/counterterm audit, and block witness mixing.
+## 2026-06-27 cycle 7 - C95 integration review
+
+Status: completed
+Log: `AgentTasks/model-calls/claude/2026-06-27-105806-c95-integration-review.md`
+Packet: `AgentTasks/null-edge-claude-adversarial-review-c95-integration-2026-06-27.md`
+
+Verdict:
+
+- C95 is useful as a planning guardrail, not as a C1 release substrate.
+- Harden C95 before downstream imports of `AntiVectorlikeWitness`.
+- Hold C96 until C92 and C89 return concrete APIs.
+
+Action carried forward:
+
+- Update scheduler and current objective accordingly.
+## 2026-06-27 cycle 8 - C97/C98 integration review
+
+Status: completed
+Log: `AgentTasks/model-calls/claude/2026-06-27-110704-c97-c98-integration-review.md`
+Packet: `AgentTasks/null-edge-claude-adversarial-review-c97-c98-integration-2026-06-27.md`
+
+Verdict:
+
+- C97: conditionally accepted as planning-only predicate-shape scaffold; not physical Wilson evidence.
+- C98: accepted as planning-only guardrail; not safe as a substrate for C1 release predicates.
+- Recommended C99: finite operator-theoretic chiral-index substrate, independent of C89/C92/C93.
+
+Action carried forward:
+
+- C99 submitted.
+- Future modules should avoid laundering C97/C98 toy witnesses into C1 release language.
+## 2026-06-27 cycle 9 - C97/C98 naming hardening review
+
+Status: completed
+Log: `AgentTasks/model-calls/claude/2026-06-27-111238-cycle9-c97-c98-hardening-review.md`
+Packet: `AgentTasks/null-edge-claude-adversarial-review-cycle9-hardening-2026-06-27.md`
+
+Verdict:
+
+- Hardening adequate.
+- No new semantic hazard.
+- Leave C97/C98 as-is until C99/C93/C92/C89 return.
+- Do not launch another Aristotle job now.
+
+Action carried forward:
+
+- Monitor returns; one stale C98 docstring can be fixed next time the file is naturally touched.
+## 2026-06-27 cycle 10 - no-submit decision review
+
+Status: completed
+Log: `AgentTasks/model-calls/claude/2026-06-27-111618-cycle10-no-submit-review.md`
+Packet: `AgentTasks/null-edge-claude-adversarial-review-cycle10-no-submit-2026-06-27.md`
+
+Verdict:
+
+- No-submit is correct.
+- Add explicit grading-involution criterion to C99 acceptance.
+- Decision changes when C99 returns, C93 returns, C92+C89 return, or a running job errors/times out.
+
+Action carried forward:
+
+- Current objective updated with these triggers.
+## 2026-06-27 cycle 11 - integration helper review
+
+Status: completed
+Initial log: `AgentTasks/model-calls/claude/2026-06-27-112015-cycle11-integration-helper-review.md`
+Refined log: `AgentTasks/model-calls/claude/2026-06-27-112153-cycle11-integration-helper-refined-review.md`
+Packets:
+
+- `AgentTasks/null-edge-claude-adversarial-review-cycle11-integration-helper-2026-06-27.md`
+- `AgentTasks/null-edge-claude-adversarial-review-cycle11-integration-helper-refined-2026-06-27.md`
+
+Verdict:
+
+- First patch addressed the miss but was too eager.
+- Refined patch accepted with caveat; no blocker-level issue remains.
+- Next loop can return to science integration work.
+## 2026-06-27 cycle 12 - C99 audit template review
+
+Status: completed
+Log: `AgentTasks/model-calls/claude/2026-06-27-112545-cycle12-c99-audit-template-review.md`
+Packet: `AgentTasks/null-edge-claude-adversarial-review-cycle12-c99-audit-template-2026-06-27.md`
+
+Verdict:
+
+- Accept with caveat.
+- Add grading/operator compatibility, kernel-on-sector well-definedness, finite witnesses, provenance/convention separation, and stronger rejection criteria.
+- Launch one small independent C99b benchmark job.
+
+Action carried forward:
+
+- C99 audit template hardened.
+- C99b submitted.
+## 2026-06-27 cycle 13 - C99 return review
+
+Status: completed
+Log: `AgentTasks/model-calls/claude/2026-06-27-113127-c99-return-review.md`
+Packet: `AgentTasks/null-edge-claude-adversarial-review-c99-return-2026-06-27.md`
+
+Verdict:
+
+- Integrate C99 as fallback/planning infrastructure.
+- Record limitations: no grading involution, no D/Gamma compatibility, basis-label sectors, coordinate-basis kernel, native_decide examples.
+- Queue C99-v2 immediately.
+
+Action carried forward:
+
+- C99 integrated.
+- C99-v2 submitted.

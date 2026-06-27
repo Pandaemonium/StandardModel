@@ -299,6 +299,8 @@ def main() -> None:
                 command,
                 input=prompt,
                 text=True,
+                encoding="utf-8",
+                errors="replace",
                 capture_output=True,
                 cwd=ROOT,
                 timeout=args.timeout_seconds,

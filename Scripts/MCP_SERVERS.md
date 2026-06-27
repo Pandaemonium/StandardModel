@@ -363,7 +363,11 @@ server cannot).
 Caveat: de-LaTeX preserves prose and section structure but **degrades math
 symbols** (subscripts/operators flatten to plain tokens), so chunk search is
 strong on conceptual/derivational text and weak on pure-formula matching. Full
-text lives only in Neo4j; no PDFs are stored in Zotero or the repo.
+text lives only in Neo4j; no PDFs are stored in Zotero or the repo. The PDF
+fallback uses `pymupdf` (`fitz`), `uv pip install`ed into the lean-explore tool
+env (re-add with `uv pip install --python <tool-env python> pymupdf` if that env
+is reinstalled). First null-edge pass (2026-06-27): 196/196 papers chunked into
+5345 `PaperChunk` nodes.
 
 ### Semantic search over the repo's own docs + Lean (Neo4j, 2026-06-21)
 

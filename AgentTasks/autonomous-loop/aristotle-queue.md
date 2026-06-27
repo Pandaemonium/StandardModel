@@ -339,3 +339,146 @@ Semantic review notes:
   kernel-gap-hypothesis, anti-vectorialization, and C0-not-C1 guardrails.
 - Audit returned output against
   `AgentTasks/null-edge-c93-overlap-interface-audit-template-2026-06-27.md`.
+
+## C92 - Golterman-Shamir ghost-safety API
+
+Status: submitted
+Project ID: `03c6e63f-3a39-420e-81d3-173f2611b362`
+Target: `PhysicsSM/Draft/NullEdgeGateCGhostSafetyAPI.lean`
+Prompt path:
+`AgentTasks/null-edge-wave22-c92-golterman-shamir-ghost-safety-api-aristotle-2026-06-27.md`
+Submitted: 2026-06-27
+
+Purpose:
+
+- Define a ghost-safety API that prevents scalar residue positivity, Krein
+  positivity, exact chirality, or C0 species health from being cited as full
+  Golterman-Shamir safety.
+
+Semantic review notes:
+
+- Claude says C92 is useful only if it returns concrete non-implication
+  witnesses/countermodels, not merely opaque Prop fields.
+- Audit against
+  `AgentTasks/null-edge-c92-ghost-safety-countermodel-plan-2026-06-27.md`.
+## 2026-06-27 cycle 4
+
+- C90 `d53724a6-a0aa-4f8a-9c85-5285177fd16b`: returned `IDLE`; integration helper initially missed the payload. Raw `aristotle tasks` summary reports a hardening of `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`. The downloadable archive omitted that target file, so the C90 API hardening was reconstructed manually from the task summary.
+- C95 `406dd6b0-7866-419b-8dbc-e29c758fe5e9`: submitted. Target: finite anti-vectorialization guardrail with an explicit C0-healthy vectorlike countermodel and a nonzero-index discriminator.
+- C94 remains hard-dependent on C93 and is packetized locally only.
+## 2026-06-27 cycle 5
+
+- C96: drafted but held after Claude review. Regulator-removal stability is scientifically real, but the current abstract API risks a fake theorem reducible to modus ponens. Hold until C92/C95 provide concrete finite table APIs.
+- C97 `789e2eab-7432-4558-af5a-c757cf43512b`: submitted prompt-only. Target: repair/validate the reconstructed C90 hardening of `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`. A full `--project-dir .` submission failed because Aristotle rejects the local `SpherePacking` dependency.
+## 2026-06-27 cycle 6
+
+- No new active returned jobs were ready for integration.
+- C98 `c2133e78-9c1a-4336-b3b3-d1a8330c34c6`: submitted. Target: finite guardrail showing interface shape alone does not imply a chiral index witness; should return a concrete interface-shaped zero-index countermodel and a concrete interface-shaped nonzero-index witness.
+## C95 - Anti-vectorialization planning guardrail
+
+Status: integrated manually from Aristotle archive
+Project ID: `406dd6b0-7866-419b-8dbc-e29c758fe5e9`
+Target: `PhysicsSM/Draft/NullEdgeAntiVectorializationGuardrail.lean`
+Integrated: 2026-06-27
+
+Result:
+
+- Added a finite `Spectrum` bookkeeping API with `VectorlikeSpectrum`, `C0Healthy`, `AntiVectorlikeWitness`, and concrete C0-healthy vectorlike / anti-vectorlike examples.
+- Proved the planning guardrail that nonzero index forbids the finite vectorlike involution.
+
+Adversarial review:
+
+- Claude says C95 is useful as a planning guardrail, not as a C1 release substrate.
+- Required hardening before downstream C1 use: well-formed chirality signs, nonzero multiplicity discipline or explicit convention, integer-vs-Nat witness equivalence, data-carrying imbalance witness, and toy naming for `C0Healthy`.
+
+Follow-up status:
+
+- C96 remains held pending C92 and C89.
+- A C95-hardening micro-task is a good independent follow-up if the queue has room.
+## C97 - C90 Wilson-release hardening repair/validation
+
+Status: integrated
+Project ID: `789e2eab-7432-4558-af5a-c757cf43512b`
+Target: `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`
+Integrated: 2026-06-27
+
+Result:
+
+- Returned a self-contained finite `GaugeData` implementation of the C90 Wilson-release predicate shape.
+- Integrated as planning-only / predicate-shape infrastructure.
+- Claude flagged `PostGaugeResiduePositive.toGoltermanShamirSafe_trivialBRST` as a naming hazard because it produces `BRST := True`.
+
+## C98 - Interface shape vs chiral index witness guardrail
+
+Status: integrated
+Project ID: `c2133e78-9c1a-4336-b3b3-d1a8330c34c6`
+Target: `PhysicsSM/Draft/NullEdgeChiralIndexWitnessGuardrail.lean`
+Integrated: 2026-06-27
+
+Result:
+
+- Added an `InterfaceToy` countermodel showing interface shape alone does not imply nonzero chiral index.
+- Claude accepted it as planning-only and recommended an operator-theoretic substrate next.
+
+## C99 - Finite operator-theoretic chiral index substrate
+
+Status: submitted
+Project ID: `4fd2e530-eb89-4e94-83c1-dc97b254e0c4`
+Target: `PhysicsSM/Draft/NullEdgeFiniteChiralIndexSubstrate.lean`
+Prompt path: `AgentTasks/null-edge-wave24-c99-finite-chiral-index-substrate-aristotle-2026-06-27.md`
+Submitted: 2026-06-27
+
+Dependency class:
+
+- Independent.
+
+Purpose:
+
+- Replace C98's forgeable `InterfaceToy` with a finite substrate where index values are computed from actual finite state/operator data rather than arbitrary plus/minus count fields.
+## C99b - Finite graded-operator chiral-index benchmark
+
+Status: submitted
+Project ID: `309944d6-800a-4399-a2fc-3d294883ce28`
+Target: `PhysicsSM/Draft/NullEdgeFiniteGradedOperatorIndexTemplate.lean`
+Prompt path: `AgentTasks/null-edge-wave24-c99b-finite-graded-operator-index-template-aristotle-2026-06-27.md`
+Submitted: 2026-06-27
+
+Dependency class:
+
+- Independent.
+
+Purpose:
+
+- Provide a small finite graded-operator benchmark/fallback for C99.
+- Counts/index must be derived from finite states and a grading/operator relation, not arbitrary count fields.
+
+Non-goals:
+
+- No C1 release, ghost-zero safety, regulator-removal stability, overlap/GW release, domain-wall release, anomaly cancellation, or physical anti-vectorialization.
+## C99 - Finite chiral-index substrate
+
+Status: integrated as fallback/planning substrate
+Project ID: `4fd2e530-eb89-4e94-83c1-dc97b254e0c4`
+Target: `PhysicsSM/Draft/NullEdgeFiniteChiralIndexSubstrate.lean`
+Integrated: 2026-06-27
+
+Review status:
+
+- Useful improvement over C98 because counts are derived from `(D, chirality)` rather than arbitrary fields.
+- Not strong C99: no explicit grading involution, no D/Gamma compatibility, basis-label sectors only, coordinate-basis kernel only, and n a t i v e _ d e c i d e in headline examples.
+
+## C99-v2 - Grading-involution chiral-index substrate
+
+Status: submitted
+Project ID: `b97de9d7-3661-4feb-a8b6-0e138bb597b5`
+Target: `PhysicsSM/Draft/NullEdgeFiniteGradingInvolutionIndex.lean`
+Prompt path: `AgentTasks/null-edge-wave24-c99-v2-grading-involution-substrate-aristotle-2026-06-27.md`
+Submitted: 2026-06-27
+
+Dependency class:
+
+- Independent.
+
+Purpose:
+
+- Upgrade C99 with explicit Gamma, Gamma^2, D/Gamma compatibility, eigenspace-derived sectors, and non-native trusted index examples if feasible.

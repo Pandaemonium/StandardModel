@@ -148,3 +148,65 @@ A useful packet must include:
 
 If the packet is not self-contained enough for a fresh model to give useful
 one-shot feedback, improve the packet before calling the API.
+
+## Policy update 2026-06-27: Aristotle concurrency and mandatory cycle steps
+
+The autonomous loop should not wait merely because Aristotle jobs are already running. Keep the pipeline warm unless a specific result is a hard dependency for the next action, or the external service is rejecting new work because of capacity.
+
+Default concurrency target:
+
+```text
+About 6-8 simultaneously running Aristotle jobs is acceptable.
+```
+
+Use dependency-aware scheduling:
+
+```text
+Submit ahead when the next job is independent.
+Wait only when the next job needs a returned theorem, API shape, counterexample, or convention from a running job.
+Prefer local preparation while waiting on hard-gated jobs: write the packet, define acceptance criteria, identify blockers, and prepare integration notes.
+```
+
+Every autonomous cycle must still include all core steps:
+
+```text
+1. analyze goals and blockers;
+2. check and integrate completed Aristotle work;
+3. run literature search;
+4. do local Lean/docs/analysis work;
+5. run meta-review for real progress and strategy correction;
+6. call Claude once per Aristotle round or active cycle when adversarial feedback is useful;
+7. submit new Aristotle jobs when independent work is ready;
+8. log progress, friction, questions, and next actions.
+```
+
+Concurrency is not a license to spray vague jobs. Each submitted job should state what it depends on, what it does not depend on, and what result would change the next planning decision.
+
+## Dependency-aware scheduling algorithm
+
+At the start of each cycle, classify every candidate Aristotle job:
+
+- `Independent`: can run now without any active job returning.
+- `Soft-dependent`: can run now only if its assumptions are explicit and it makes no release claim.
+- `Hard-dependent`: must wait for a specific active theorem, API shape, counterexample, or convention.
+
+Use this scheduler:
+
+- If fewer than about 6 useful jobs are running, prefer launching the best independent or soft-dependent job after integration checks.
+- If about 6-8 jobs are running, launch only if the new job is genuinely independent, sharply scoped, and likely to change the next decision.
+- If more than about 8 jobs are running, default to integration, local Lean/docs work, literature, meta-review, and packet preparation unless a new job is exceptionally high leverage.
+- Never launch a hard-dependent job just to keep the queue busy. Prepare its packet and acceptance criteria locally, then wait for the dependency.
+- Never wait merely because unrelated jobs are running.
+
+Each submitted job packet should include a short dependency declaration:
+
+```text
+Dependency class: Independent / Soft-dependent / Hard-dependent.
+Does not depend on: ...
+Hard dependencies, if any: ...
+Decision changed if this returns: ...
+```
+
+This keeps the loop from both failure modes: starving the proof queue while
+jobs run, and spraying low-quality jobs that fork the theorem APIs before the
+right dependencies return.
