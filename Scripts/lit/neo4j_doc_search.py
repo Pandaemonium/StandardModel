@@ -17,7 +17,8 @@ Run with the lean-explore tool-env interpreter (it carries `+xpu` torch,
 
     PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
     "$PY" Scripts/lit/neo4j_doc_search.py --dry-run     # list files + chunk counts, no writes/model
-    "$PY" Scripts/lit/neo4j_doc_search.py               # ingest changed files + build index
+    "$PY" Scripts/lit/neo4j_doc_search.py               # ingest (sha-skips unchanged) + build index
+    "$PY" Scripts/lit/neo4j_doc_search.py --changed     # fast: only git-changed files (avoids full per-file scan)
     "$PY" Scripts/lit/neo4j_doc_search.py --reembed     # re-ingest everything
     "$PY" Scripts/lit/neo4j_doc_search.py --query "where is the Plucker mass determinant identity proved"
     "$PY" Scripts/lit/neo4j_doc_search.py --query "Dirac slash" --format markdown
@@ -32,6 +33,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -109,17 +111,48 @@ def _excluded(p: Path) -> bool:
     return any(sub in part for part in parts for sub in EXCLUDE_SUBSTR)
 
 
-def iter_files():
-    """All repo docs/lean to ingest, excluding build/vendor/extraction trees."""
+def _git_changed_paths():
+    """Resolved paths of git-changed files (staged, unstaged, untracked), or None
+    if git is unavailable. Used by --changed to skip the full per-file scan."""
+    try:
+        res = subprocess.run(
+            ["git", "-C", str(REPO), "status", "--porcelain"],
+            capture_output=True, text=True, check=True,
+        )
+    except (OSError, subprocess.CalledProcessError) as exc:
+        print(f"  [changed] git status failed ({exc}); falling back to full scan",
+              file=sys.stderr)
+        return None
+    paths = set()
+    for line in res.stdout.splitlines():
+        if not line.strip():
+            continue
+        entry = line[3:]  # strip the two status columns + space
+        if " -> " in entry:  # rename/copy: take the destination path
+            entry = entry.split(" -> ", 1)[1]
+        entry = entry.strip().strip('"')
+        paths.add((REPO / entry).resolve())
+    return paths
+
+
+def iter_files(changed_only: bool = False):
+    """Repo docs/lean to ingest, excluding build/vendor/extraction trees. With
+    `changed_only`, restrict to git-changed files (cheap incremental refresh)."""
+    changed = _git_changed_paths() if changed_only else None
+
+    def keep(p: Path) -> bool:
+        return changed is None or p.resolve() in changed
+
     for p in sorted(REPO.glob("*.md")):
-        yield p
+        if keep(p):
+            yield p
     for d in MD_DIRS:
         for p in sorted((REPO / d).rglob("*.md")):
-            if not _excluded(p):
+            if not _excluded(p) and keep(p):
                 yield p
     for d in LEAN_DIRS:
         for p in sorted((REPO / d).rglob("*.lean")):
-            if not _excluded(p):
+            if not _excluded(p) and keep(p):
                 yield p
 
 
@@ -221,8 +254,8 @@ def _read(path: Path):
         return None
 
 
-def dry_run() -> None:
-    files = list(iter_files())
+def dry_run(changed_only: bool = False) -> None:
+    files = list(iter_files(changed_only=changed_only))
     total, by_kind, biggest = 0, {"md": 0, "lean": 0}, []
     leaked = [p for p in files if ".lake" in p.parts]
     for p in files:
@@ -259,8 +292,8 @@ def _setup(session) -> None:
     )
 
 
-def ingest(reembed: bool) -> None:
-    files = list(iter_files())
+def ingest(reembed: bool, changed_only: bool = False) -> None:
+    files = list(iter_files(changed_only=changed_only))
     driver, db = _driver()
     model = None
     try:
@@ -412,6 +445,12 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--query", help="natural-language search; omit to ingest")
     ap.add_argument("--reembed", action="store_true", help="re-ingest all files")
+    ap.add_argument(
+        "--changed",
+        action="store_true",
+        help="ingest only git-changed files (staged/unstaged/untracked); fast "
+        "incremental refresh after a few edits",
+    )
     ap.add_argument("--dry-run", action="store_true", help="list files + chunk counts, no writes")
     ap.add_argument("--k", type=int, default=10, help="number of search results")
     ap.add_argument(
@@ -423,11 +462,11 @@ def main() -> None:
     ns = ap.parse_args()
 
     if ns.dry_run:
-        dry_run()
+        dry_run(changed_only=ns.changed)
     elif ns.query:
         query(ns.query, ns.k, ns.format)
     else:
-        ingest(ns.reembed)
+        ingest(ns.reembed, changed_only=ns.changed)
 
 
 if __name__ == "__main__":

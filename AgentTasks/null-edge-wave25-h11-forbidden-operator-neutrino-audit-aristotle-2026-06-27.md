@@ -7,7 +7,7 @@ aristotle:
   expected_module: n/a
   submission_project: AgentTasks/aristotle-submit/null-edge-wave25-lateral-analysis-20260627-project
   output_dir: AgentTasks/aristotle-output/29b72890-a3d1-4474-a39f-bafa4e07c0f2
-  status: lean_skeleton_integrated_report_missing
+  status: integrated
   initial_project_status: RUNNING
   initial_task_status: IN_PROGRESS
   integrated: 2026-06-27
@@ -103,26 +103,16 @@ explain what additional internal-algebra data are needed to upgrade from
 
 ## Integration review
 
-Status: Lean skeleton integrated 2026-06-27; requested Markdown report was not
-present in the downloaded project files.
+Status: integrated 2026-06-27. The Lean skeleton integrated first; the Markdown
+report was recovered and integrated in cycle 15 after the Aristotle extraction
+helper was fixed to preserve Markdown payloads and Windows long paths.
 
 Integrated artifact:
 
 ```text
 PhysicsSM/Draft/NullEdgeLegalFiniteDiracNeutrinoAudit.lean
-```
-
-Returned-but-not-integrated artifact:
-
-```text
 AgentTasks/null-edge-gate-h-forbidden-operator-neutrino-audit.md
 ```
-
-Reason:
-
-- Aristotle's task summary described the requested report, but the local
-  returned archive exposed only the Lean skeleton plus summary metadata. The
-  report file itself was not available for a faithful integration copy.
 
 Result:
 
@@ -131,10 +121,13 @@ Result:
 - The skeleton records gauge/hypercharge/color/weak-singlet-style legality
   clauses and sample theorems for Standard Model Yukawa, wrong-Higgs,
   leptoquark, Dirac-neutrino, and Majorana-neutrino branch behavior.
+- Added the H11 strategy report decomposing gauge-only, grading, `J_F`, and
+  order-one mechanisms, plus the neutrino decision table and next Lean theorem
+  targets.
 
 Review notes:
 
 - Treat this as Gate H/Gate F planning infrastructure, not as a completed
   forbidden-operator theorem.
-- The missing report should be re-requested or reconstructed from a fresh
-  Aristotle/Claude review before relying on the prose audit as project guidance.
+- The report's strongest near-term target is the finite
+  `legal_yukawa_complete` absence/completeness theorem.

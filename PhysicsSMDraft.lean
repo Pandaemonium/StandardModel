@@ -348,6 +348,14 @@ import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryObservablePullback
 import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryComposition
 import PhysicsSM.Draft.NullEdgeP9StochasticExactRecoveryGap
 import PhysicsSM.Draft.NullEdgeP9StochasticErasureNotRecoverable
+import PhysicsSM.Draft.NullEdgeAntiVectorializationGuardrail
+import PhysicsSM.Draft.NullEdgeBranchClassifierAPI
+import PhysicsSM.Draft.NullEdgeBranchLocusPhysicalSectorAPI
+import PhysicsSM.Draft.NullEdgeChiralIndexWitnessGuardrail
+import PhysicsSM.Draft.NullEdgeDirectOverlapSingularCrossing
+import PhysicsSM.Draft.NullEdgeFiniteChiralIndexSubstrate
+import PhysicsSM.Draft.NullEdgeLegalFiniteDiracNeutrinoAudit
+import PhysicsSM.Draft.NullEdgeScalarOriginBalancedKernelNoGo
 
 /-!
 # PhysicsSM draft root
@@ -388,9 +396,3 @@ been kernel-cleaned and promoted to the trusted modules
 `PhysicsSM.Spinor.SpinorTenfoldFierzKernel` and
 `PhysicsSM.Spinor.SpinorTenfoldFierz`.
 -/
-import PhysicsSM.Draft.NullEdgeAntiVectorializationGuardrail
-import PhysicsSM.Draft.NullEdgeBranchLocusPhysicalSectorAPI
-import PhysicsSM.Draft.NullEdgeChiralIndexWitnessGuardrail
-import PhysicsSM.Draft.NullEdgeFiniteChiralIndexSubstrate
-import PhysicsSM.Draft.NullEdgeLegalFiniteDiracNeutrinoAudit
-import PhysicsSM.Draft.NullEdgeProjectedGateCWilsonRelease

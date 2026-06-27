@@ -7,9 +7,10 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdgeDirectOverlapSingularCrossing
   submission_project: AgentTasks/aristotle-submit/null-edge-wave26-gate-c-branch-release-20260627-project
   output_dir: AgentTasks/aristotle-output/1af1a6a5-d795-4321-9153-e16b88a2ff69
-  status: submitted
+  status: integrated
   initial_project_status: RUNNING
   initial_task_status: QUEUED
+  integrated: 2026-06-27
 
 Dependency class: Independent C1 hazard theorem.
 
@@ -91,3 +92,34 @@ locus.
 - No new proof placeholders or escape-hatch declarations.
 - The module/report explicitly says raw overlap requires a mass-window
   assumption before it can be used as a C1 route.
+
+## Integration review
+
+Status: integrated 2026-06-27.
+
+Integrated artifact:
+
+```text
+PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean
+```
+
+Result:
+
+- Added a finite conditional hazard theorem for raw direct overlap on the full
+  bare branch locus.
+- The core theorem packages the fact that a bare zero branch crossing the
+  Wilson mass shell makes the shifted overlap kernel singular.
+- Added `direct_overlap_requires_mass_window`, the contrapositive guardrail:
+  raw overlap requires a mass-window assumption excluding such crossings.
+- After Claude review, added the fixed-symbol equivalence
+  `directOverlap_requires_per_symbol_mass_window`, which is the usable
+  non-vacuous mass-window guardrail.
+
+Review notes:
+
+- This does not prove overlap failure in general and does not prove a C1 release.
+- It justifies prioritizing projected-overlap / branch-classifier routes unless
+  a concrete mass-window theorem is later proved.
+- Claude flagged the original `direct_overlap_requires_mass_window` as too
+  globally quantified over arbitrary packaged data to serve as the headline
+  guardrail. Use `directOverlap_requires_per_symbol_mass_window` downstream.

@@ -42,9 +42,11 @@ contents of each.
   Lanes include the mixedness/observer-channel reading, the Plucker hierarchy
   `k > 2`, the obstruction-stiffness unification, and measure-valued P1.5.
 
-Equal weight means: every cycle should make real progress on both tracks, or the
-meta-review must state explicitly why one track produced no action this cycle.
-Track B is allowed to spawn Aristotle jobs once a target is sharp and
+Equal weight means: across the run, both tracks get real attention - NOT that
+every single cycle must manufacture an artifact for each track. If a track has no
+real action available this cycle (e.g. its next move is blocked on a running
+job), say so in the meta-review and leave it. Do not fabricate output to fill the
+slot. Track B is allowed to spawn Aristotle jobs once a target is sharp and
 self-contained, classified for dependency like any other job.
 
 Track B does not relax the project's discipline. Lateral thinking is encouraged,
@@ -56,6 +58,39 @@ invariant `det P` statement. If a Track B generalization matures into a candidat
 change to the program's headline framing, stop and surface it via
 `questions-for-user.md` instead of silently reframing (this is also a
 `stop_conditions` entry in `state.json`).
+
+Record Track B overclaim/no-go guardrails (the "X is not a release/audit/
+certificate" findings) as one entry each in the living note
+`AgentTasks/null-edge-gate-c-overclaim-guardrails.md`. Do not create a new
+per-cycle guardrail file, and do not re-prove a guardrail already listed there.
+
+## Honest idle is a complete cycle
+
+When every available real action is blocked - all decisive jobs are running, no
+return is ready to integrate, and no sharp new target exists - an explicit IDLE
+cycle is a valid, complete cycle. An idle cycle still does the cheap mandatory
+steps (poll Aristotle, one literature query, meta-review) and then records the
+block and stops. It MUST NOT manufacture make-work to look busy: no trivial Lean
+module, no near-duplicate note, no restating a planning checklist as a theorem.
+"Activity is not progress" applies most exactly here. Prefer a one-line "idle:
+waiting on <jobs>; nothing decisive available" meta-review entry over a
+low-value artifact.
+
+## No checklist-as-Lean
+
+A `PhysicsSM/Draft` Lean module must make a statement about the program's
+mathematical objects - operators, matrices, spinors, modules, kernels - not about
+a self-defined `Bool`/`structure` record that merely restates a planning
+checklist. Kernel-checking a tautology over flags you defined this cycle (e.g.
+"a record with one flag set lacks the other six") is not formal progress; it only
+launders a checklist into the trusted/draft namespace and creates a false
+impression of a proved result. Such guardrails belong in markdown (see the
+overclaim-guardrails note), not in Lean. Litmus test before adding a draft
+module: does its main theorem mention a real mathematical type tied to the
+program (`Matrix`, `Module`, `LinearMap`, `Fin n -> C`, a defined operator)? If
+not, it is a note, not a module. Pattern to follow:
+`NullEdgeBranchClassifierAPI` / `NullEdgeScalarOriginBalancedKernelNoGo`;
+anti-pattern (removed 2026-06-27): the `*Toy` Bool-record modules.
 
 ## Required start-of-loop behavior
 
@@ -106,19 +141,25 @@ Every autonomous cycle must execute the whole loop, not just the easiest part:
 - analyze goals and blockers;
 - check/integrate/submit Aristotle work when there are active or ready jobs;
 - perform literature search;
-- do local analysis and Lean/doc work on Track A (convergent gates);
-- do at least one Track B action (qubit/information or generalization): sharpen a
-  conjecture, state a finite target, prepare a context pack or packet, or submit a
-  sharp Track B job;
+- advance Track A (convergent gates) with real analysis/Lean/doc work *when a
+  real action is available*;
+- advance Track B (qubit/information or generalization) *when a real action is
+  available*: sharpen a conjecture, state a finite target, prepare a context
+  pack/packet, or submit a sharp job;
 - run meta-review (must check both tracks);
 - log friction and improve tooling when repeated friction appears;
-- prepare or send Claude adversarial review once per Aristotle round;
+- send a Claude adversarial review every autonomous cycle/round on the
+  highest-value available subject, even if no Aristotle result returned;
 - prepare Pro/Gemini packets when a hard question needs external reasoning.
 
-There are no optional steps in this list. If time, budget, tool capacity, or
-context limits are tight, shrink the scope of each step rather than omitting a
-step. For example, do one targeted literature query, one bounded Aristotle
-status check, one local analysis/Lean/doc action, and one concise meta-review.
+Literature search and meta-review are unconditional every cycle. The Track A and
+Track B work items are real-action-gated: if a track has no decisive move this
+cycle (blocked on a running job, nothing sharp to state), record that in the
+meta-review and leave it - see "Honest idle is a complete cycle." Do NOT
+substitute make-work (a trivial Lean module, a near-duplicate note, a
+checklist-as-Lean) for a genuine action. If time, budget, tool capacity, or
+context limits are tight, shrink the scope of the real steps rather than padding
+with low-value artifacts.
 
 If a step produces no action, record that fact and why. For example:
 
@@ -236,9 +277,12 @@ explicit accepted cost.
 
 ## Claude and Pro behavior
 
-Claude is an adversarial reviewer, not a co-pilot. Use it once per Aristotle
-round to attack assumptions, theorem statements, overclaims, and next-job
-choices.
+Claude is an adversarial reviewer, not a co-pilot. Use it every autonomous
+cycle/round to attack the highest-value available subject: a newly returned
+Aristotle result, a proposed theorem statement, a route/no-go decision, a
+documentation claim boundary, a next-job packet, or a tooling/integration
+hazard. A cycle with no Claude call is incomplete unless the call tooling itself
+failed and that failure is logged as friction.
 
 Adversarial Claude calls reviewing Lean must embed the **actual source** of the
 declarations under review (and the API they wrap) via
@@ -319,7 +363,25 @@ shape.
 
 ## Autonomous loop concurrency policy - 2026-06-27
 
-Do not impose a blanket wait while Aristotle jobs are running. The loop is allowed to keep roughly 6-8 jobs in flight when the jobs are independent and well-scoped. Waiting is required only for a hard dependency, such as a returned theorem/API shape/countermodel/convention that the next job must import or instantiate.
+Do not impose a blanket wait while Aristotle jobs are running. The loop is
+allowed to keep up to roughly 15 jobs in flight when the jobs are independent
+and well-scoped. Waiting is required for a hard dependency, or when the queue is
+already saturated and no result has returned.
+
+Update, 2026-06-27: the preferred maximum Aristotle concurrency is now 15
+running jobs, not 8. The loop should normally try to both integrate returned
+work and launch a new independent or soft-dependent Aristotle job in each cycle.
+If the queue is already full at or above 15 active jobs and no completed result
+is available, wait 10 minutes, poll Aristotle again, and then continue with the
+best local Track A/Track B work if still nothing has returned. Log the wait in
+`progress.md` and any repeated wait friction in `friction-log.md`.
+
+Long-running Aristotle jobs should not be allowed to consume the queue
+indefinitely. At each poll, any active Aristotle job older than 2 hours should
+be treated as stale-long-running: stop/cancel it if the tooling allows, preserve
+its prompt/context, and continue it as a no-build/prompt-only job that does not
+spend budget building the full repo. Record the transition in
+`aristotle-queue.md`.
 
 Before submitting another job, classify it:
 
@@ -345,9 +407,13 @@ Classify each candidate job before launch:
 
 Default queue posture:
 
-- Under about 6 running jobs: actively look for the best independent or soft-dependent submission.
-- Around 6-8 running jobs: submit only sharply scoped jobs that are not blocked by active work.
-- Above about 8 running jobs: prefer integration, local Lean/docs work, literature, meta-review, and packet preparation.
+- Under about 15 running jobs: actively look for the best independent or
+  soft-dependent submission after integrating any returned work.
+- At or above 15 running jobs with no returned work: wait 10 minutes, poll
+  again, and only then proceed to local Lean/docs/literature/meta-review if
+  nothing has returned.
+- Above 15 running jobs should be temporary; prefer stopping stale jobs older
+  than 2 hours and continuing them as no-build jobs before launching more.
 
 Hard-dependent jobs should still progress locally:
 

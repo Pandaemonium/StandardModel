@@ -27,6 +27,20 @@ Gate F:  prediction/codimension (absence theorems first, not mass magnitudes).
 
 Current bounded actions:
 
+0. Fold the latest C1 origin-polarization analysis into the Gate C spine and
+   prioritize the C106 decision stack:
+   - C106a `OriginPolarizationEscapeHatch`: prove balanced-commutant zero
+     chiral index.
+   - C106b `NativeOriginCommutantNoGo`: if the native gauge-safe origin algebra
+     lies in the balance commutant, native finite/local C1 is impossible.
+   - C106c `OriginPolarizerCertificate`: define the non-vacuous data required
+     for a native `T0`.
+   - C106d+ only after C106a/b/c: branch-classifier extension, bad-sector
+     inverse gap, ghost-zero rejection, locality certificate soundness, and
+     C1 assembly.
+   - Treat projected overlap and domain-wall as fallback escape contracts that
+     require certified branch split, mass window, locality, anomaly, and
+     ghost-zero audits.
 1. Monitor and integrate returned jobs with the hardened integration helper:
    - C99b `309944d6-800a-4399-a2fc-3d294883ce28`
    - C99-v2 `b97de9d7-3661-4feb-a8b6-0e138bb597b5`
@@ -91,11 +105,21 @@ reframing.
 ## Scheduling / policy
 
 - Running Aristotle jobs do not automatically block new submissions.
-- About 6-8 simultaneous jobs is acceptable when jobs are independent.
+- Up to about 15 simultaneous jobs is acceptable when jobs are independent and
+  sharply scoped.
+- Prefer cycles that both integrate returned Aristotle work and submit one new
+  independent or soft-dependent Aristotle job.
 - Submit ready jobs from either track when concurrency is acceptable unless a
   running job's output is an explicit import, theorem prerequisite, or semantic
   dependency for the new target.
+- If the active queue is already at or above 15 jobs and no result has returned,
+  wait 10 minutes, poll again, and then continue with local Track A/Track B work
+  if still nothing has returned.
+- Jobs running longer than 2 hours should be stopped/canceled if possible and
+  continued as no-build/prompt-only jobs with the original context preserved.
 - Classify each candidate job as independent, soft-dependent, or hard-dependent
   before launch.
 - Every autonomous-loop cycle must still perform literature search and
   meta-review, and the meta-review must check both tracks.
+- Under the latest C1 analysis, the highest-value independent Aristotle job is
+  C106a unless a completed active job is ready to integrate first.

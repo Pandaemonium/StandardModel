@@ -3,13 +3,13 @@
   "created": "2026-06-27",
   "updated": "2026-06-27",
   "mode": "manual_autonomous_loop",
-  "current_state": "TWO_TRACK_RESTART_GATE_C_PLUS_EXPLORATION",
-  "current_objective": "Run the loop as two co-equal tracks (see current-objective.md). Track A: Gate C0/C1/H/F convergent work - monitor/integrate C99b/C99-v2/C89/C92/C93/C82/C70, treat C99 as fallback substrate only, keep C94 hard-dependent on C93, hold C96 until C92/C89 return, and prioritize the Gate H LegalFiniteDiracForbiddenOperator absence theorem. Track B: qubit/information + generalization - mixedness det(rho)=(m/E_u)^2, Plucker hierarchy k>2, obstruction-stiffness unification, measure-valued P1.5; may spawn Aristotle jobs once a target is sharp; counts as progress only with a named failure mode, a finite theorem target, or a falsifiable prediction. Both tracks every cycle; meta-review checks both.",
+  "current_state": "C1_ORIGIN_POLARIZATION_ANALYSIS_FOLDED_READY_FOR_STRICT_LOOP",
+  "current_objective": "Run the loop as two co-equal tracks (see current-objective.md). Track A: Gate C0/C1/H/F convergent work - first integrate any returned active jobs, then prioritize C106a OriginPolarizationEscapeHatch as the next independent C1 decision job; continue monitoring C99b/C99-v2/C89/C92/C93/C82/C70, treat C99 as fallback substrate only, keep C94 hard-dependent on C93, hold C96 until C92/C89 return, and prioritize the Gate H LegalFiniteDiracForbiddenOperator absence theorem when Gate C is blocked. Track B: qubit/information + generalization - mixedness det(rho)=(m/E_u)^2, Plucker hierarchy k>2, obstruction-stiffness unification, measure-valued P1.5; may spawn Aristotle jobs once a target is sharp; counts as progress only with a named failure mode, a finite theorem target, or a falsifiable prediction. Both tracks every cycle; meta-review checks both.",
   "tracks": {
     "A_convergent_gates": "Gate C0/C1/H/F theorem + integration spine",
     "B_exploration": "qubit/information + generalization (obstruction-geometry reframe), may spawn Aristotle jobs, falsifiability-gated"
   },
-  "cycles_completed": 13,
+  "cycles_completed": 30,
   "autonomy": {
     "aristotle_submissions": true,
     "aristotle_integrations": true,
@@ -17,9 +17,10 @@
     "zotero_neo4j_writes": true,
     "local_lean_work": true,
     "validation_when_claiming_trusted_results": true,
-    "claude_api_cadence": "once_per_aristotle_round",
+    "claude_api_cadence": "every_cycle_highest_value_subject",
     "pro_question_packaging": true,
-    "friction_tooling_improvements": true
+    "friction_tooling_improvements": true,
+    "prefer_aristotle_integration_and_new_submission_each_cycle": true
   },
   "cycle_policy": {
     "all_major_steps_mandatory": true,
@@ -29,9 +30,15 @@
     "incomplete_cycle_rule": "record_missing_step_as_process_failure",
     "aristotle_concurrency": "running_jobs_are_not_blanket_blockers",
     "aristotle_wait_rule": "wait_only_for_hard_dependency_or_capacity_rejection",
-    "default_aristotle_concurrency": "about_6_to_8_running_jobs_when_independent"
+    "default_aristotle_concurrency": "up_to_15_running_jobs_when_independent_or_soft_dependent",
+    "max_concurrent_aristotle_jobs": 15,
+    "saturated_queue_wait_seconds": 600,
+    "saturated_queue_wait_rule": "if_queue_at_or_above_15_and_no_completed_result_then_wait_10_minutes_and_poll_again",
+    "stale_aristotle_job_threshold_seconds": 7200,
+    "stale_aristotle_job_policy": "stop_or_cancel_if_possible_then_continue_as_no_build_prompt_only_job_with_context_preserved",
+    "claude_review_every_cycle": true
   },
-  "active_aristotle_round": "cycle13-c99-integrated-c99v2-submitted",
+  "active_aristotle_round": "cycle30-closeout-complete",
   "active_aristotle_projects": [
     {
       "label": "C82",
@@ -42,6 +49,31 @@
       "label": "C70",
       "project_id": "e3986d7f-4928-4296-a7c8-cb4fb87eefae",
       "status": "RUNNING"
+    },
+    {
+      "label": "P16",
+      "project_id": "8dbe5125-d0e9-4c8f-a7c4-ab2ca98550da",
+      "status": "RUNNING"
+    },
+    {
+      "label": "P17",
+      "project_id": "3c535234-4b61-414c-b004-f7202be553d6",
+      "status": "RUNNING"
+    },
+    {
+      "label": "C101",
+      "project_id": "cfaa6a95-5c5c-4a10-8363-c191163a7d0b",
+      "status": "RUNNING"
+    },
+    {
+      "label": "C102",
+      "project_id": "1af1a6a5-d795-4321-9153-e16b88a2ff69",
+      "status": "INTEGRATED"
+    },
+    {
+      "label": "C104",
+      "project_id": "054ff61b-1271-432f-ae14-bde0a03b77e4",
+      "status": "INTEGRATED"
     },
     {
       "label": "C89",
@@ -81,16 +113,41 @@
     {
       "label": "C99b",
       "project_id": "309944d6-800a-4399-a2fc-3d294883ce28",
-      "status": "RUNNING"
+      "status": "RETURNED_PAYLOAD_MISSING"
     },
     {
       "label": "C99-v2",
       "project_id": "b97de9d7-3661-4feb-a8b6-0e138bb597b5",
-      "status": "SUBMITTED"
+      "status": "RETURNED_PAYLOAD_MISSING"
+    },
+    {
+      "label": "P15",
+      "project_id": "56e5e922-f4bb-43b0-9a3d-6df24099661a",
+      "status": "INTEGRATED"
+    },
+    {
+      "label": "C100",
+      "project_id": "fe79fdc5-e44f-420d-bdda-8e509ea66819",
+      "status": "INTEGRATED"
+    },
+    {
+      "label": "H11",
+      "project_id": "29b72890-a3d1-4474-a39f-bafa4e07c0f2",
+      "status": "INTEGRATED"
+    },
+    {
+      "label": "C103",
+      "project_id": "b2361c23-fde0-4d07-9a03-4c9e37f5cc6d",
+      "status": "INTEGRATED"
+    },
+    {
+      "label": "C105",
+      "project_id": "c633c689-2dd4-4748-97fd-869802a471eb",
+      "status": "INTEGRATED"
     }
   ],
   "pending_integrations": [],
-  "last_claude_review_round": "cycle13-c99-return-review",
+  "last_claude_review_round": "cycle16-c102-c104-review",
   "pending_claude_packets": [],
   "pending_pro_packets": [],
   "open_user_questions": [],
@@ -102,5 +159,7 @@
     "destructive_filesystem_or_history_edit",
     "strategic_choice_requires_owner_taste",
     "track_b_generalization_ready_to_change_headline_framing"
-  ]
+  ],
+  "last_updated": "2026-06-27",
+  "last_cycle_summary": "Latest C1 analysis folded into docs/control plane: Gate C1 is now framed as a native origin-polarizer decision first, with C106a balanced-commutant zero-index as the next highest-value independent Aristotle target."
 }

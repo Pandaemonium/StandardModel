@@ -7,9 +7,10 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdgeScalarOriginBalancedKernelNoGo
   submission_project: AgentTasks/aristotle-submit/null-edge-wave26-gate-c-branch-release-20260627-project
   output_dir: AgentTasks/aristotle-output/b2361c23-fde0-4d07-9a03-4c9e37f5cc6d
-  status: submitted
+  status: integrated
   initial_project_status: RUNNING
   initial_task_status: QUEUED
+  integrated: 2026-06-27
 
 Dependency class: Independent finite no-go theorem.
 
@@ -78,3 +79,32 @@ projection/domain-wall construction.
 - No new proof placeholders or escape-hatch declarations.
 - The no-go is finite and honest; it does not claim to classify all analytic
   deformations unless the hypotheses are stated.
+
+## Integration review
+
+Status: integrated 2026-06-27.
+
+Integrated artifact:
+
+```text
+PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean
+```
+
+Result:
+
+- Added the finite two-line scalar-on-origin no-go package.
+- Added the module to `PhysicsSMDraft.lean`.
+- Recorded the dichotomy: an origin-vanishing scalar preserves both balanced
+  origin lines, while a nonzero scalar removes the origin kernel rather than
+  selecting a Weyl line.
+- After Claude review, strengthened the artifact with the D0-aware theorem
+  `deformed_scalar_on_origin_never_selects_weyl_line`.
+
+Review notes:
+
+- This is a finite Gate C1 guardrail, not a full classification of analytic
+  deformations.
+- The escape hatch remains explicitly non-scalar spinor-line / branch-line,
+  projected-overlap, or domain-wall/boundary structure.
+- Claude initially flagged the pure-scalar headline theorem as too narrow; the
+  D0-aware theorem was added before the cycle was closed.

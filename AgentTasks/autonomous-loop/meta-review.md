@@ -1110,3 +1110,550 @@ Mandatory cycle-step audit:
 Next decisive action:
 
 - Cycle 14: integrate C99b or C99-v2 if returned; otherwise monitor C93/C92/C89 and avoid broad C1 jobs.
+## 2026-06-27 - 30-cycle autonomous run, cycle 14 meta-review
+
+Loop or round:
+
+- Cycle 14 of requested 30 full autonomous-loop cycles.
+
+Real progress:
+
+- Yes. Track A moved materially: C103 is now integrated and strengthened after
+  adversarial review into the actual D0-aware scalar-on-origin no-go.
+- Track B moved materially: the qubit/information reframe produced two finite
+  theorem targets with named failure modes rather than a loose analogy.
+
+Evidence:
+
+- C103 integrated file:
+  `PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean`.
+- C103 targeted Lean check passed after patch.
+- Claude log:
+  `AgentTasks/model-calls/claude/2026-06-27-124149-cycle14-c103-c105-review.md`.
+- Track B note:
+  `AgentTasks/null-edge-track-b-cycle14-finite-obstruction-targets-2026-06-27.md`.
+- Literature query recorded in `progress.md`.
+
+What did not move:
+
+- C105 did not produce an integrable report artifact despite reporting
+  completion.
+- C99b and C99-v2 remain payload-missing locally.
+- C89/C92/C93/C82/C70 remain running.
+- No aggregate `PhysicsSMDraft.lean` build was run this cycle.
+
+Current highest-leverage blocker:
+
+- Returned C102/C104/C93/C92/C89 artifacts. C102/C104 are especially relevant
+  because Claude recommends overlap mass-window dichotomy before any Route-B
+  release assembly.
+
+Strategy check:
+
+- Continue. The loop should prefer integration and audit over new submissions
+  while concurrency is high and several C1-relevant jobs are already running.
+
+Harness improvements needed:
+
+- Repeated Aristotle report-payload loss is now real friction: H11 and C105 both
+  reported Markdown deliverables in summaries while the downloaded project files
+  omitted the report. The integration helper or runbook should add a report-file
+  existence audit for report-only jobs.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; C103/C105 returns selected as bounded objective.
+- Aristotle check/integration/submission: done; C103 integrated, C105 marked
+  summary-only/missing-payload, no new job submitted due high concurrency.
+- Literature search: done; Neo4j chunk query recorded.
+- Local Lean/doc/analysis work: done; C103 D0-aware theorem patch and Track B
+  target note.
+- Track A action: done; C103 Gate C1 guardrail integrated.
+- Track B action: done; two finite theorem targets with named failure modes.
+- Claude adversarial review cadence: done; source-backed review sent.
+- Friction logging/tooling: friction identified; report-payload loss needs
+  helper/runbook hardening.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Cycle 15: poll returned Wave 26 jobs first. If C102 returns, audit mass-window
+  theorem against Claude's criteria. If C104 returns, audit branch-classifier
+  data before any Route-B release assembly.
+## 2026-06-27 - 30-cycle autonomous run, cycle 15 meta-review
+
+Loop or round:
+
+- Cycle 15 of requested 30 full autonomous-loop cycles.
+
+Real progress:
+
+- Yes. The cycle converted an apparent Aristotle payload failure into a fixed
+  local extraction bug, recovered two previously missing strategy reports, and
+  prepared the next Track B theorem packet without overloading Aristotle.
+
+Evidence:
+
+- Helper patch: `Scripts/aristotle/integrate_completed.py`.
+- Recovered C105 report:
+  `AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md`.
+- Recovered H11 report:
+  `AgentTasks/null-edge-gate-h-forbidden-operator-neutrino-audit.md`.
+- Held B15 packet:
+  `AgentTasks/null-edge-wave27-b15-normalized-det-observer-mixedness-aristotle-2026-06-27.md`.
+- Helper validation commands recorded in `progress.md`.
+
+What did not move:
+
+- No new C101/C102/C104/P16/P17/C89/C92/C93/C82/C70 return was available.
+- No new Aristotle job was submitted because concurrency is already high.
+- No Lean theorem file changed this cycle.
+
+Current highest-leverage blocker:
+
+- C102 and C104 returns. C102 decides the raw-overlap mass-window hazard; C104
+  decides whether a local/gauge-safe branch classifier is available for Route B.
+
+Strategy check:
+
+- Continue. Fixing the extractor was high-value because it changed two prior
+  "missing payload" conclusions into integrated evidence and will prevent the
+  same mistake on future report-only jobs.
+
+Harness improvements needed:
+
+- The helper now extracts Markdown and reports expected non-Lean targets. A
+  future small improvement would be optional `--apply-report`, but manual copy
+  after review is acceptable for now.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; no new returns, report-extraction friction
+  selected.
+- Aristotle check/integration/submission: done; status checked, H11/C105 reports
+  integrated, no-submit decision justified by concurrency.
+- Literature search: done; Neo4j chunk query recorded.
+- Local Lean/doc/analysis work: done; helper patched, reports integrated, B15
+  packet prepared.
+- Track A action: done; Gate C/H strategy reports integrated and helper fixed.
+- Track B action: done; B15 finite theorem packet prepared with named failure
+  mode.
+- Claude adversarial review cadence: no new round; previous cycle's C103/C105
+  review remains the active review.
+- Pro/Gemini packet: no hard external reasoning question this cycle.
+- Friction logging/tooling: done; repeated Markdown payload friction repaired.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Cycle 16: poll C101/C102/C104/P16/P17 first. If none return, prefer aggregate
+  validation or a small report-apply helper improvement over launching new jobs.
+## 2026-06-27 - 30-cycle autonomous run, cycle 16 meta-review
+
+Loop or round:
+
+- Cycle 16 of requested 30 full autonomous-loop cycles.
+
+Real progress:
+
+- Yes. Track A moved materially: C102 and C104 are integrated, and C102 was
+  strengthened after Claude found a real quantifier/vacuity problem.
+- Track B moved materially: the cycle recorded a named separation between
+  overlap shell-crossing failure and observer normalization failure, protecting
+  the mixedness story from Gate C terminology bleed.
+
+Evidence:
+
+- C102 integrated/repaired file:
+  `PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean`.
+- C104 integrated file:
+  `PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean`.
+- Claude log:
+  `AgentTasks/model-calls/claude/2026-06-27-125829-cycle16-c102-c104-review.md`.
+- Track B note:
+  `AgentTasks/null-edge-track-b-cycle16-normalization-vs-mass-window-2026-06-27.md`.
+- Targeted Lean checks recorded in `progress.md`.
+
+What did not move:
+
+- C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- No new Aristotle job was submitted.
+- Aggregate `PhysicsSMDraft.lean` was not validated because the direct check hit
+  a missing preexisting `.olean` cache artifact.
+
+Current highest-leverage blocker:
+
+- C101 return for C0 scalar-Wilson closeout; C92/C93/C89 returns for the ghost /
+  overlap / concrete RA-Wilson spine; P16/P17 returns for Track B Pluecker
+  generalization.
+
+Strategy check:
+
+- Continue. The C102 repair means the program now has a usable fixed-symbol
+  mass-window guardrail, which is exactly what C105 asked to establish before
+  trusting raw overlap Route A.
+
+Harness improvements needed:
+
+- C104 has harmless unused-simp warnings and proof fragility noted by Claude.
+  Clean those before any trusted promotion, but they are acceptable in draft.
+- Aggregate validation may need a cache-warming build for older draft modules
+  before checking `PhysicsSMDraft.lean`.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; C102/C104 returns selected.
+- Aristotle check/integration/submission: done; C102/C104 integrated; no new job
+  submitted due enough active jobs and local repair being available.
+- Literature search: done; Neo4j chunk query recorded.
+- Local Lean/doc/analysis work: done; C102 repaired, imports wired, Track B note
+  created.
+- Track A action: done; Gate C raw-overlap hazard and branch-classifier API
+  integrated.
+- Track B action: done; observer-normalization-vs-overlap-window failure modes
+  separated.
+- Claude adversarial review cadence: done; source-backed C102/C104 review sent.
+- Pro/Gemini packet: no standalone hard question required this cycle.
+- Friction logging/tooling: aggregate cache issue noted but not yet repaired.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Cycle 17: poll active jobs. If no return is ready, warm/build the missing
+  draft aggregate dependencies or clean C104 warnings rather than submitting a
+  new job.
+
+## Cycle 17 meta-review - 2026-06-27
+
+What moved:
+
+- The aggregate draft root is healthier: the late-import source error in `PhysicsSMDraft.lean` was repaired, and the top-level draft check now succeeds.
+- The literature loop sharpened a concrete Track B guardrail: any Gate C release route using projected overlap/sign functions must carry an explicit locality or quasi-locality certificate.
+
+What did not move:
+
+- No new Aristotle jobs returned during this poll, so there was no fresh proof artifact to integrate.
+- No new Gate C release theorem was proved; this cycle was primarily integration hygiene plus obstruction/audit refinement.
+
+Process note:
+
+- Cold `.olean` misses can masquerade as aggregate failures. The useful signal this cycle was the later source-level import-order error, which is now fixed.
+
+## Cycle 18 meta-review - 2026-06-27
+
+What moved:
+
+- C90 is now integrated from the actual Aristotle archive rather than only represented by the C97 reconstruction. This improves provenance and aligns the module with the intended dependency-based C72/C90 API.
+- The Gate C ghost-safety split is stronger: residue/Krein positivity, no gauge-coupled ghost zeros, BRST/Krein obligation, and regulator-moduli audit are visibly separate obligations.
+- Track B gained a clean guardrail: observer erasure/invisibility cannot be cited as ghost-zero safety.
+
+What did not move:
+
+- C89, C92, C93, C101, C82, C70, P16, and P17 remain unintegrated/running by current state.
+- No new physical release is claimed; C90 is an API hardening, not a C1 construction.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; stale C90 status reconciled.
+- Aristotle check/integration/submission: done; C90 original payload integrated; no new job submitted because active concurrency remains high and integration was available.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C90 integrated and validated.
+- Track B action: done; observer-erasure-not-ghost-safety finite target recorded.
+- Claude cadence: no new review sent; prior Wave 21 C89/C90 review already exists, and this was provenance recovery plus local validation.
+- Pro/Gemini packet: not needed this cycle.
+- Friction logging: integration-helper failure recorded.
+- Meta-review: this entry.
+
+## Cycle 19 meta-review - 2026-06-27
+
+What moved:
+
+- A real integration-helper crash from cycle 18 is fixed and validated.
+- The helper now gets far enough to reveal the more important integration policy hazard: full-repo Aristotle archives can contain stale versions of unrelated files, so target-file metadata and theorem-signature regression checks matter.
+- Track B gained a clean guardrail against letting presentation-dependent chiral symmetry leak into invariant mixedness language.
+
+What did not move:
+
+- No new Aristotle proof result returned.
+- No new Gate C physical release theorem was attempted.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected repeated integration friction.
+- Aristotle check/integration/submission: done; no new ready job, C90 helper path rechecked.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; integration helper patched and validated.
+- Track B action: done; deformation-dependent-invariant leak note created.
+- Claude cadence: no new Aristotle round requiring review.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: done; crash fixed and next hazard recorded.
+- Meta-review: this entry.
+
+## Cycle 20 meta-review - 2026-06-27
+
+What moved:
+
+- Integration safety improved materially: `--apply` now refuses theorem/lemma removals unless an explicit override is given.
+- The guard was tested against the stale C90 archive candidate and blocked the dangerous copy path.
+- Track B gained a projection-not-release guardrail, aligned with the reduced-fermion/no-go literature hits.
+
+What did not move:
+
+- No new Aristotle scientific artifact returned.
+- No new Lean theorem for Gate C was added this cycle; the value was harness safety.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected stale-candidate regression hazard.
+- Aristotle check/integration/submission: done; no new ready job, C90 stale-candidate path tested.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; helper hardened and validated.
+- Track B action: done; projection-as-release finite target recorded.
+- Claude cadence: no new round requiring review.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: done.
+- Meta-review: this entry.
+
+## Cycle 21 meta-review - 2026-06-27
+
+What moved:
+
+- The public-facing results doc now matches the actual integration state for C90.
+- The C90 claim boundary is documented where future readers are most likely to look: Gate C results/status.
+- Track B gained a concrete warning against route-label overclaim.
+
+What did not move:
+
+- No new Aristotle result returned.
+- No proof/code theorem was added.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C90 documentation gap.
+- Aristotle check/integration/submission: done; no new ready job.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; results doc updated.
+- Track B action: done; GW-vocabulary overclaim note created.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction beyond already logged helper hazards.
+- Meta-review: this entry.
+
+## Cycle 22 meta-review - 2026-06-27
+
+What moved:
+
+- The live working plan now matches the integrated C90 state and points future projected-overlap release-contract work at the right API.
+- Track B separated geometric localization from full physical release audits.
+
+What did not move:
+
+- No new Aristotle artifact returned.
+- No new theorem statement was submitted or proved.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected working-plan drift after C90 recovery.
+- Aristotle check/integration/submission: done; no ready job.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; working plan updated.
+- Track B action: done; localization-as-audit fallacy note created.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+## Cycle 23 meta-review - 2026-06-27
+
+What moved:
+
+- Track B guardrails became Lean artifacts rather than only planning notes.
+- Gate C planning language is now backed by finite counterexamples: route labels, projections, and localized candidate lines are each independent from full release audits.
+- The new module is intentionally draft/toy-level but kernel-checked.
+
+What did not move:
+
+- No concrete null-edge `D_phys` release was constructed.
+- No active Aristotle result returned.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected route/projection/localization overclaim guardrail.
+- Aristotle check/integration/submission: done; no ready job.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; new Lean module added and wired.
+- Track B action: done; finite toy counterexamples proved.
+- Claude cadence: no new round requiring review.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+## Cycle 24 meta-review - 2026-06-27
+
+What moved:
+
+- The locality audit is now represented by a small kernel-checked draft module.
+- The program has a finite guardrail against conflating formal projectors, quasi-locality, and ultralocality.
+
+What did not move:
+
+- No analytic locality theorem for an actual overlap/sign kernel was proved.
+- No active Aristotle result returned.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected locality-certificate overclaim.
+- Aristotle check/integration/submission: done; no ready job.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; new Lean locality toy module added and wired.
+- Track B action: done; finite locality guardrails proved.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+## Cycle 25 meta-review - 2026-06-27
+
+What moved:
+
+- The next bridge from toy guardrails to the real Gate C API stack is now packetized and ready for Aristotle.
+- The scheduler avoided unnecessary concurrency creep while still making the future job standalone.
+
+What did not move:
+
+- No job was submitted.
+- No new Lean theorem was added this cycle.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C90/C100/C104 bridge target.
+- Aristotle check/integration/submission: done; no ready job, packet prepared and held.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C106 packet prepared.
+- Track B action: done; finite guardrails packaged as theorem obligations.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+## Cycle 26 meta-review - 2026-06-27
+
+What moved:
+
+- The always-consulted NullStrand guidance now reflects C90 and the new finite guardrail modules.
+- This reduces the chance that future agents will accidentally promote route vocabulary into release claims.
+
+What did not move:
+
+- No new theorem/code was added this cycle.
+- No active Aristotle result returned.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected agent-facing documentation drift.
+- Aristotle check/integration/submission: done; no ready job.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; NullStrand docs updated.
+- Track B action: done; overclaim warning modules promoted into guidance.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+## Cycle 27 meta-review - 2026-06-27
+
+What moved:
+
+- The loop identified a real tooling risk: repo semantic search may lag the latest Lean/docs changes when changed-file ingest times out.
+- A Track B retrieval-freshness guardrail was recorded.
+
+What did not move:
+
+- The Neo4j repo-doc index refresh did not complete, so future repo semantic-search results may be stale for the files edited in cycles 18-26.
+- No new theorem or docs claim was added beyond the freshness note.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected semantic-index freshness after edits.
+- Aristotle check/integration/submission: done; no ready job.
+- Literature search: done; Neo4j paper chunk query recorded.
+- Track A action: attempted doc-search refresh; timed out and logged.
+- Track B action: done; semantic-index-staleness note created.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: done; timeout logged.
+- Meta-review: this entry.
+
+## Cycle 28 meta-review - 2026-06-27
+
+What moved:
+
+- The doc-search timeout from cycle 27 produced a small kernel-checked freshness guardrail instead of remaining only operational frustration.
+- The module is process/toy-level, but it documents a real condition for search-dependent claims after local edits.
+
+What did not move:
+
+- The Neo4j repo-doc index still has not been refreshed successfully.
+- No physical Gate C theorem advanced this cycle.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected retrieval freshness after index timeout.
+- Aristotle check/integration/submission: done; no ready job.
+- Literature search: done; Neo4j paper chunk query recorded as negative/no-strategy-change.
+- Track A action: done; new Lean freshness toy module added and wired.
+- Track B action: done; freshness failure mode formalized.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction beyond cycle 27 timeout.
+- Meta-review: this entry.
+
+## Cycle 29 meta-review - 2026-06-27
+
+What moved:
+
+- The current Gate C release-audit landscape is now explicit in one dependency matrix.
+- This should reduce duplicated reasoning and make C106 or the next local bridge module easier to scope.
+
+What did not move:
+
+- No active Aristotle result returned.
+- No theorem/code was added this cycle.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected dependency-matrix synthesis.
+- Aristotle check/integration/submission: done; no ready job.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; Gate C dependency matrix added.
+- Track B action: done; guardrails preserved as planning dependencies.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+## Cycle 30 meta-review - 2026-06-27
+
+What moved:
+
+- The 30-cycle run is complete with a documented closeout.
+- C90 is faithfully integrated from the original payload, the draft root validates, and several guardrail modules now kernel-check the most common overclaim traps.
+- The next-action surface is clearer: integrate running returns first; otherwise C106 is the best scoped bridge job.
+
+What did not move:
+
+- No new active Aristotle returns arrived at final poll.
+- C1 is still open. There is still no concrete `D_phys` release theorem.
+- The repo semantic-search refresh remains incomplete after timeout.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected closeout and next-action synthesis.
+- Aristotle check/integration/submission: done; no ready job, no new submission.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; closeout note and final draft-root validation.
+- Track B action: done; guardrail synthesis preserved in closeout.
+- Claude cadence: no new review required.
+- Pro/Gemini packet: not needed.
+- Friction logging/tooling: doc-search timeout remains logged.
+- Meta-review: this entry.

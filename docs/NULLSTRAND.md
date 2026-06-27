@@ -354,6 +354,32 @@ default. The decision-log entry is
   classifier/projector (`T_br` or `Pi_br`) that is not scalar on the balanced
   origin kernel and separates branch germs rather than tastes only.
 
+- **C1 first asks for an origin polarizer.** If the balanced origin kernel has a
+  chirality-flipping balance symmetry `J`, then any origin projector commuting
+  with `J` has zero chiral index. A physical one-Weyl-line projector must
+  therefore escape the balance commutant. The next native Gate C fork is:
+  either find a gauge-safe Hermitian involution `T0` in the native origin algebra
+  with nonzero `Tr(Gamma0 (1 + T0)/2)`, then extend it to an analytic/local
+  branch classifier `T_br(q,U)`; or prove all native gauge-safe origin
+  endomorphisms commute with `J`, which rules out native finite/local
+  `T_br`/non-scalar-Wilson C1 under those assumptions. Projected overlap and
+  domain-wall routes are then fallback escape structures, not magic fixes.
+
+- **C90 is release-audit plumbing, not C1 closure.** The recovered
+  `NullEdgeProjectedGateCWilsonRelease` payload exposes
+  `ProjectedWilsonGateCRelease D_phys` and separates residue/Krein positivity,
+  no gauge-coupled ghost zeros, BRST/Krein obligations, and Wilson-regulator
+  moduli fields. Use it as the current projected Wilson-release API spine, but
+  do not cite it as a construction of `D_phys`, a release of bare `D_+`, or a
+  proof of C1.
+
+- **Route labels, projections, localization, and formal projectors are not
+  release audits.** `NullEdgeReleaseAuditToyGuardrails` and
+  `NullEdgeLocalityCertificateToy` are finite draft guardrails showing that a
+  Ginsparg-Wilson/overlap label, a projection, a localized one-Weyl-line
+  candidate, or a formal projector does not by itself supply the full release
+  audit. Treat these as warning modules when writing future Gate C claims.
+
 - **Prediction-grade should start with absence theorems.** Before numerical mass
   values, prefer forbidden-operator, codimension, rank, texture, and map-choice
   constraints. In particular, Gate H/Gate F should prioritize legal finite

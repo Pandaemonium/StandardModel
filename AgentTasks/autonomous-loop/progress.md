@@ -1019,3 +1019,372 @@ Local artifacts:
 Next action:
 
 - Cycle 14 should monitor C99b/C99-v2/C89/C92/C93/C82/C70. Integrate C99b or C99-v2 if either returns. Keep C94 and C96 hard-held on their dependencies.
+## 2026-06-27 - Autonomous loop 30-cycle run: cycle 14
+
+State:
+
+```text
+C99_INTEGRATED_FALLBACK_C99V2_SUBMITTED -> CYCLE14_C103_INTEGRATED_C105_SUMMARY_ONLY_TRACK_B_TARGETS
+```
+
+Objective:
+
+- Run cycle 14 of the requested 30 full autonomous-loop cycles.
+- Integrate returned Aristotle work, perform mandatory literature refresh, keep
+  both Track A and Track B moving, and record any payload friction.
+
+Actions taken:
+
+- Checked autonomous-loop control files and Aristotle status.
+- Integrated prior ready returns from the current work session: P15, C100, and
+  the available H11 Lean skeleton; recorded H11 report-payload absence.
+- Confirmed C99b and C99-v2 were remotely complete but locally lacked candidate
+  project files, so they remain not integrated.
+- C103 returned complete; integrated
+  `PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean`.
+- Added `import PhysicsSM.Draft.NullEdgeScalarOriginBalancedKernelNoGo` to
+  `PhysicsSMDraft.lean`.
+- C105 returned summary-only; the requested
+  `AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md` was absent
+  from the downloaded payload, so no report was integrated.
+- Ran mandatory literature search:
+  `neo4j_paper_search.py --chunks --query "scalar Wilson origin kernel chiral release overlap domain wall propagator zeros"`.
+- Literature result: top hits again favored Wilson/species-lifting and
+  domain-wall/overlap mechanisms; no source changed the C0/C1 split, but the
+  search reinforced that scalar Wilson lifting is not a chirality selector.
+- Created Track B note
+  `AgentTasks/null-edge-track-b-cycle14-finite-obstruction-targets-2026-06-27.md`
+  with two finite targets and named failure modes: observer normalization
+  failure and dimension-collapse failure.
+- Sent source-backed Claude review on C103 plus the C100 branch-locus API.
+- Claude found the C103 headline theorem was too narrow because it was about
+  pure `s • I`, not `D0 + s • I`.
+- Patched C103 with the D0-aware theorem
+  `deformed_scalar_on_origin_never_selects_weyl_line`.
+
+Verification:
+
+- `lake env lean PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean`
+  timed out once at 120 seconds before the Claude-driven patch.
+- After the patch, `lake env lean PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean`
+  passed.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-124149-cycle14-c103-c105-review.md`.
+- Verdict: C103 was only partially aligned before patch; after patch the key
+  missing D0-aware theorem is present. Claude recommends prioritizing overlap
+  mass-window dichotomy before Route-B release assembly.
+
+Next action:
+
+- Cycle 15 should monitor C101/C102/C104/P16/P17/C89/C92/C93/C82/C70.
+- Treat C105 as missing-payload until the actual report is recovered.
+- If C102 or C104 returns, integrate/audit before launching any Route-B release
+  assembly job.
+## 2026-06-27 - Autonomous loop 30-cycle run: cycle 15
+
+State:
+
+```text
+CYCLE14_C103_INTEGRATED_C105_SUMMARY_ONLY_TRACK_B_TARGETS -> CYCLE15_REPORT_EXTRACTION_FIXED_H11_C105_INTEGRATED_B15_HELD
+```
+
+Objective:
+
+- Run cycle 15 of the requested 30 full autonomous-loop cycles.
+- Poll active Aristotle jobs, perform mandatory literature refresh, reduce
+  repeated report-integration friction, and keep both tracks moving without
+  increasing already-high Aristotle concurrency.
+
+Actions taken:
+
+- Checked loop control files and Aristotle status. C101/C102/C104/P16/P17/C89/
+  C92/C93/C82/C70 were still running; no new returned Lean job was ready.
+- Ran mandatory literature search:
+  `neo4j_paper_search.py --chunks --query "density matrix determinant trace normalization Plucker mixedness Cauchy Binet"`.
+- Literature result: no new source changed the plan; the useful Track B action
+  remained finite determinant normalization and higher Pluecker target
+  sharpening, not a new literature pivot.
+- Investigated repeated H11/C105 report-payload friction.
+- Found the root cause: `Scripts/aristotle/integrate_completed.py` only
+  extracted Lean files plus `summary.md`, so report-only Markdown artifacts were
+  filtered out; after enabling Markdown extraction, Windows long-path handling
+  was also needed for nested report paths over 260 characters.
+- Patched `Scripts/aristotle/integrate_completed.py` to extract `.md` artifacts,
+  write files using Windows long-path prefixes, and report expected non-Lean
+  Markdown targets explicitly.
+- Re-extracted the H11 and C105 archives.
+- Integrated recovered reports:
+  `AgentTasks/null-edge-gate-h-forbidden-operator-neutrino-audit.md` and
+  `AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md`.
+- Updated H11/C105 task notes and Aristotle queue statuses from missing-payload
+  to integrated.
+- Prepared held Track B packet
+  `AgentTasks/null-edge-wave27-b15-normalized-det-observer-mixedness-aristotle-2026-06-27.md`.
+- Did not submit B15 because active concurrency is already above the preferred
+  6-8 range and P16/P17 may return adjacent infrastructure.
+
+Validation:
+
+- `python -m py_compile Scripts/aristotle/integrate_completed.py` passed.
+- `python Scripts/aristotle/integrate_completed.py --task-note AgentTasks/null-edge-wave26-c105-release-datum-domain-wall-audit-aristotle-2026-06-27.md --no-fetch c633c689-2dd4-4748-97fd-869802a471eb` now reports the expected C105 report found.
+- `python Scripts/aristotle/integrate_completed.py --task-note AgentTasks/null-edge-wave25-h11-forbidden-operator-neutrino-audit-aristotle-2026-06-27.md --no-fetch 29b72890-a3d1-4474-a39f-bafa4e07c0f2` now reports the expected H11 report found.
+
+Claude / Pro:
+
+- No new Claude call was sent this cycle because there was no new Aristotle
+  round or source artifact requiring adversarial review; the cycle's main source
+  change was validated helper friction repair.
+- No Pro packet was prepared; no strategic decision required owner/user taste.
+
+Next action:
+
+- Cycle 16 should poll C101/C102/C104 first. If C102 returns, audit it against
+  the overlap mass-window criteria from C105/Claude. If C104 returns, audit the
+  branch-classifier API before any Route-B release assembly job.
+- Keep B15 held until concurrency drops or P16/P17 clarify the adjacent Track B
+  infrastructure.
+## 2026-06-27 - Autonomous loop 30-cycle run: cycle 16
+
+State:
+
+```text
+CYCLE15_REPORT_EXTRACTION_FIXED_H11_C105_INTEGRATED_B15_HELD -> CYCLE16_C102_C104_INTEGRATED_C102_REPAIRED
+```
+
+Objective:
+
+- Run cycle 16 of the requested 30 full autonomous-loop cycles.
+- Integrate the newly returned C102/C104 Gate C jobs, perform mandatory
+  literature refresh, adversarially audit them, and keep Track B distinct from
+  Gate C mass-window language.
+
+Actions taken:
+
+- Checked loop state and Aristotle status. C102 and C104 were newly idle; C101,
+  P16, P17, C89, C92, C93, C82, and C70 remained running.
+- Ran mandatory literature search:
+  `neo4j_paper_search.py --chunks --query "overlap mass window branch classifier sign kernel singular crossing Wilson mass"`.
+- Literature result: strongest hits again supported the overlap/flavored-mass
+  framing; no new source changed the plan, but the search reinforced that raw
+  overlap must be controlled by a mass-window-style theorem.
+- Integrated C102:
+  `PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean`.
+- Integrated C104:
+  `PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean`.
+- Added both modules to `PhysicsSMDraft.lean`.
+- Ran targeted Lean checks. C102 passed. C104 initially failed because
+  `NullEdgeTasteOnlyOriginNoGo.olean` was not built; after
+  `lake build PhysicsSM.Draft.NullEdgeTasteOnlyOriginNoGo`, C104 passed with
+  only unused-simp-argument warnings.
+- Sent source-backed Claude review for C102/C104 plus the C100 branch-locus API.
+- Claude found a real C102 issue: `direct_overlap_requires_mass_window` was too
+  globally quantified over arbitrary packaged data to serve as the usable
+  guardrail.
+- Patched C102 with
+  `directOverlap_requires_per_symbol_mass_window`, the fixed-symbol equivalence
+  between "the shifted kernel never annihilates a nonzero bare zero mode" and
+  "the bare zero locus avoids the Wilson shell."
+- Re-ran `lake env lean PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean`;
+  it passed.
+- Tried `lake env lean PhysicsSMDraft.lean`; it failed on a missing preexisting
+  `.olean` for `PhysicsSM.Draft.NullEdgeNodalSetCyclotomic`, so no aggregate
+  draft-root check is claimed this cycle.
+- Created Track B note
+  `AgentTasks/null-edge-track-b-cycle16-normalization-vs-mass-window-2026-06-27.md`
+  separating overlap shell-crossing failure from observer trace-normalization
+  failure.
+
+Validation:
+
+- `lake env lean PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean`
+  passed after the C102 repair.
+- `lake build PhysicsSM.Draft.NullEdgeTasteOnlyOriginNoGo` passed.
+- `lake env lean PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean` passed with
+  unused-simp-argument warnings.
+- `lake env lean PhysicsSMDraft.lean` failed due missing
+  `NullEdgeNodalSetCyclotomic.olean`; this was not from the new modules.
+
+Claude result:
+
+- Log: `AgentTasks/model-calls/claude/2026-06-27-125829-cycle16-c102-c104-review.md`.
+- Verdict: C104 semantically aligned as an algebraic API with proof-robustness
+  caveats. C102 needed the fixed-symbol mass-window theorem, which was added
+  locally before closing the cycle.
+
+Next action:
+
+- Cycle 17 should poll C101/P16/P17/C89/C92/C93/C82/C70 first.
+- If no relevant return appears, prefer either aggregate-cache validation or a
+  small C104 proof-cleanup pass over launching another Aristotle job.
+
+## Cycle 17 - 2026-06-27 - aggregate root repair and locality-vs-ultralocality guardrail
+
+- Aristotle poll: checked the active queue; no newly completed Aristotle jobs were available to integrate. Previously integrated C102/C104 remain the latest returned Gate C artifacts.
+- Literature search: ran `Scripts/lit/neo4j_paper_search.py --chunks --query "projected overlap branch classifier locality gauge covariance sign kernel chiral lattice"`.
+- Literature result: the most relevant chunks reinforced that Ginsparg-Wilson/overlap/sign-function routes should not be assumed ultralocal; projected release constructions need explicit locality or quasi-locality certificates.
+- Track A: built `PhysicsSM.Draft.NullEdgeNodalSetCyclotomic`; the module checked successfully.
+- Track A: `PhysicsSMDraft.lean` initially exposed a real root-source issue, with late `import` commands after the module docstring. Moved the Gate C/branch-audit draft imports to the initial import block.
+- Validation: `lake env lean PhysicsSMDraft.lean` now passes after the import-order repair.
+- Track B: added `AgentTasks/null-edge-track-b-cycle17-locality-vs-ultralocality-2026-06-27.md`, recording locality certificates as an explicit Gate C audit obligation.
+- External review: no Claude/Gemini/Pro packet was sent this cycle because no new Aristotle result or new theorem statement needed semantic review.
+
+## Cycle 18 - 2026-06-27 - C90 original payload integrated
+
+- Aristotle poll/reconciliation: C90 `d53724a6-a0aa-4f8a-9c85-5285177fd16b` is `IDLE`, and its task `11f9dc3d-1834-4413-a5b4-4c14342691c2` is `COMPLETE`.
+- Integration helper note: default inspect mode redownloaded/extracted the archive but crashed while comparing an unrelated missing candidate path. A targeted manual check found the actual C90 target file in the redownloaded archive.
+- Track A integration: replaced `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean` with the original dependency-based C90 payload from Aristotle, superseding the earlier C97 self-contained reconstruction.
+- Track A cleanup: removed a duplicate `PhysicsSMDraft.lean` import of `PhysicsSM.Draft.NullEdgeProjectedGateCWilsonRelease`.
+- Validation: `lake env lean PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean` passed.
+- Validation: `lake env lean PhysicsSMDraft.lean` passed.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "Golterman Shamir propagator zeros residue positivity ghost zeros gauge coupled overlap Wilson"`.
+- Literature result: top chunks were Golterman-Shamir `Propagator zeros and lattice chiral gauge theories` and the 2025 SMG constraint paper; they reinforce C90's split between residue positivity and full ghost-zero safety.
+- Track B: added `AgentTasks/null-edge-track-b-cycle18-observer-erasure-not-ghost-safety-2026-06-27.md`, naming the erasure-as-release fallacy and proposing a finite observer-channel counterexample target.
+- Claude/Pro: no new call sent; a prior Wave 21 C89/C90 review exists, and this cycle's work was to recover the original C90 payload plus validate it locally.
+
+## Cycle 19 - 2026-06-27 - Aristotle helper missing-candidate guard
+
+- Aristotle poll: active queue unchanged; C101, P16, P17, C89, C92, C93, C82, and C70 remain running, while C90 is now integrated.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "lattice chiral gauge theory integration provenance payload missing proof audit theorem assumptions"`.
+- Literature result: top hits included Luscher on exact Ginsparg-Wilson lattice chiral symmetry, Nielsen-Ninomiya extensions, and Golterman-Shamir propagator-zero warnings. Plan impact: keep presentation-dependent chiral symmetry separate from invariant obstruction/mixedness claims.
+- Track A/tooling: patched `Scripts/aristotle/integrate_completed.py` so missing/non-file extracted candidates are skipped instead of aborting candidate discovery.
+- Validation: `python -m py_compile Scripts/aristotle/integrate_completed.py` passed.
+- Validation: reran `python Scripts/aristotle/integrate_completed.py d53724a6-a0aa-4f8a-9c85-5285177fd16b`; it no longer crashed.
+- Tooling caveat: the helper now exposes a stale full-repo candidate that would remove `normalizedVisibleDensity_trace` if blindly applied. This confirms the next hardening should be target-file metadata/allow-list discipline, not broad archive apply.
+- Track B: added `AgentTasks/null-edge-track-b-cycle19-deformation-dependent-invariant-leak-2026-06-27.md` with the named deformation-dependent-invariant leak failure mode and a finite counterexample target.
+- Claude/Pro: no new external call; this was local tooling and guardrail work.
+
+## Cycle 20 - 2026-06-27 - signature-removal apply guard
+
+- Aristotle poll: no newly completed active jobs beyond already handled C90/C102/C103/C104/C105/H11/P15/C100. C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "proof assistant theorem signature regression integration apply stale archive lattice chiral"`.
+- Literature result: top hits included reduced/Kahler-Dirac fermions, Luscher/Ginsparg-Wilson, Nielsen-Ninomiya extension, and Golterman-Shamir. Plan impact: no new physics route; reinforced projection/reduction guardrails.
+- Track A/tooling: hardened `Scripts/aristotle/integrate_completed.py` with an apply-time blocker for theorem/lemma signature removals, plus `--allow-signature-removals` for explicit manual override.
+- Validation: `python -m py_compile Scripts/aristotle/integrate_completed.py` passed.
+- Validation: `python Scripts/aristotle/integrate_completed.py d53724a6-a0aa-4f8a-9c85-5285177fd16b --apply --no-fetch` correctly exited nonzero before copying because the stale candidate would remove `normalizedVisibleDensity_trace`.
+- Track B: added `AgentTasks/null-edge-track-b-cycle20-projection-not-release-2026-06-27.md`, naming the projection-as-release fallacy and giving a finite counterexample target.
+- Claude/Pro: no new call; this was local tooling plus guardrail work.
+
+## Cycle 21 - 2026-06-27 - results doc C90 provenance update
+
+- Aristotle poll: no newly completed active jobs beyond already integrated/handled work; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "projected Wilson Gate C release Ginsparg Wilson exact chiral symmetry no bare release"`.
+- Literature result: top hits were Luscher/Ginsparg-Wilson exact chiral symmetry, minimally doubled fermion locality discussion, Wilson fermions, and Golterman-Shamir/SMG constraints. Plan impact: keep C90 as API hardening and avoid treating GW/overlap route vocabulary as a release certificate.
+- Track A/docs: updated `NULL_EDGE_RESULTS.md` Gate C section to record the recovered original C90 payload and its exact claim boundary: `ProjectedWilsonGateCRelease D_phys`, not bare `D_+`, not C1 closure.
+- Track B: added `AgentTasks/null-edge-track-b-cycle21-gw-vocabulary-overclaim-2026-06-27.md`, naming the GW-vocabulary overclaim failure mode and a finite counterexample target.
+- Validation: docs-only cycle; no Lean or pre-commit run.
+- Claude/Pro: no new call.
+
+## Cycle 22 - 2026-06-27 - working plan C90 spine update
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "domain wall overlap chiral gauge mirror gap locality release datum Wilson regulator"`.
+- Literature result: top hits emphasized Ginsparg-Wilson non-ultralocality and domain-wall/single-curved-surface Weyl mechanisms. Plan impact: C1 candidates remain serious but audit-heavy; no route label is enough.
+- Track A/docs: updated `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` section 13.7 to record the recovered C90 payload as the current projected Wilson-release API spine and to state its non-release boundary.
+- Track B: added `AgentTasks/null-edge-track-b-cycle22-localization-not-release-audit-2026-06-27.md`, naming the localization-as-audit fallacy and a finite counterexample target.
+- Validation: docs-only cycle; no Lean or pre-commit run.
+- Claude/Pro: no new call.
+
+## Cycle 23 - 2026-06-27 - finite release-audit toy guardrails formalized
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "projection localization Ginsparg Wilson route label not sufficient chiral release audit"`.
+- Literature result: top hits again emphasized Ginsparg-Wilson non-ultralocality, exact lattice chiral symmetry, Dirac-Kahler projection, point splitting, and domain-wall/localized Weyl warnings. Plan impact: formalize the route-label/projection/localization-is-not-release guardrail locally.
+- Track A/Lean: added `PhysicsSM/Draft/NullEdgeReleaseAuditToyGuardrails.lean`, a finite draft module proving that a GW/overlap route label, a projection, or a localized one-Weyl-line candidate does not imply the full release-audit bundle.
+- Track A/root wiring: imported the new module in `PhysicsSMDraft.lean`.
+- Track B: the new module kernel-checks the finite targets from cycles 20-22 in a toy setting, keeping observer/projection/localization language separate from physical release.
+- Validation: `lake env lean PhysicsSM/Draft/NullEdgeReleaseAuditToyGuardrails.lean` passed.
+- Validation: `lake build PhysicsSM.Draft.NullEdgeReleaseAuditToyGuardrails` passed.
+- Validation: `lake env lean PhysicsSMDraft.lean` passed after building the new module.
+- Claude/Pro: no new call.
+
+## Cycle 24 - 2026-06-27 - finite locality-certificate guardrails formalized
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "Ginsparg Wilson non ultralocal quasi local overlap locality certificate projector"`.
+- Literature result: top hit again noted that Ginsparg-Wilson operators sacrifice ultralocality; other hits involved local/no-go constraints. Plan impact: formalize the difference between formal projectors, quasi-local decay certificates, and finite-range locality certificates.
+- Track A/Lean: added `PhysicsSM/Draft/NullEdgeLocalityCertificateToy.lean`, proving a formal projector does not imply any locality certificate, and a decay/quasi-local certificate is not the same as a finite-range certificate.
+- Track A/root wiring: imported the new module in `PhysicsSMDraft.lean`.
+- Track B: the new module formalizes the locality-vs-ultralocality guardrail from cycle 17 in finite toy form.
+- Validation: `lake env lean PhysicsSM/Draft/NullEdgeLocalityCertificateToy.lean` passed.
+- Validation: `lake build PhysicsSM.Draft.NullEdgeLocalityCertificateToy` passed.
+- Validation: `lake env lean PhysicsSMDraft.lean` passed.
+- Claude/Pro: no new call.
+
+## Cycle 25 - 2026-06-27 - C106 release-audit bridge packet prepared and held
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "release audit record physical sector projector ghost locality anomaly chiral gauge"`.
+- Literature result: top hits emphasized Golterman-Shamir propagator-zero hazards, projection/reduction literature, and Ginsparg-Wilson locality limits. Plan impact: bridge the new toy guardrails into the real Gate C API stack before any release assembly.
+- Track A/Aristotle prep: created held packet `AgentTasks/null-edge-wave27-c106-release-audit-bridge-held-aristotle-2026-06-27.md` for a future `NullEdgeReleaseAuditBridge.lean` module connecting toy guardrails to C90/C100/C104.
+- Track B: the packet preserves the information/projection/locality guardrails as finite theorem obligations rather than analogies.
+- Scheduler decision: did not submit because active Aristotle concurrency is still near the 6-8 upper band.
+- Validation: packet/docs-only cycle; no Lean or pre-commit run.
+- Claude/Pro: no new call.
+
+## Cycle 26 - 2026-06-27 - NullStrand guardrails updated for C90 and toy modules
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "agent guardrail chiral release projection overlap ghost locality not sufficient"`.
+- Literature result: top hits reinforced Ginsparg-Wilson non-ultralocality, projection/reduction caveats, QCA locality/no-go issues, and SMG ghost hazards. Plan impact: update the agent-facing NullStrand guardrails.
+- Track A/docs: updated `docs/NULLSTRAND.md` to record that C90 is release-audit plumbing, not C1 closure, and that route labels/projections/localization/formal projectors are not release audits.
+- Track B: the new guardrail text points future agents at `NullEdgeReleaseAuditToyGuardrails` and `NullEdgeLocalityCertificateToy` as warning modules for overclaim control.
+- Validation: docs-only cycle; no Lean or pre-commit run.
+- Claude/Pro: no new call.
+
+## Cycle 27 - 2026-06-27 - doc semantic-index refresh attempted, timed out
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "semantic documentation search release audit branch classifier ghost locality null edge"`.
+- Literature result: top paper chunks were not strongly Gate-C-specific, but included finite spectral triple, null twisted geometry, Hodge/PageRank, and pseudo-Hermitian matrix material. Plan impact: no physics strategy change; this cycle focused on repo semantic-search freshness.
+- Track A/tooling: checked `Scripts/lit/neo4j_doc_search.py --help`, confirming no-argument mode performs idempotent changed-file ingest.
+- Track A/tooling: attempted `$PY Scripts/lit/neo4j_doc_search.py` to refresh the repo document/Lean semantic index after recent edits. The command timed out after five minutes, so no successful refresh is claimed.
+- Track B: added `AgentTasks/null-edge-track-b-cycle27-semantic-index-freshness-2026-06-27.md`, naming the semantic-index-staleness fallacy and proposing a finite freshness metadata target.
+- Validation: no successful doc-index refresh; timeout logged as friction.
+- Claude/Pro: no new call.
+
+## Cycle 28 - 2026-06-27 - semantic-search freshness toy formalized
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "semantic search stale index changed files theorem retrieval freshness formal proof"`.
+- Literature result: no strong paper source changed the project physics strategy; this is a repo-process/retrieval hygiene issue rather than a literature-derived physics claim.
+- Track A/Lean: added `PhysicsSM/Draft/NullEdgeRetrievalFreshnessToy.lean`, a finite draft module proving that a changed-file-dependent query is not search-fresh if the index was not refreshed.
+- Track A/root wiring: imported the new module in `PhysicsSMDraft.lean`.
+- Track B: formalized the semantic-index-staleness failure mode from cycle 27 as a checkable toy theorem.
+- Validation: `lake env lean PhysicsSM/Draft/NullEdgeRetrievalFreshnessToy.lean` passed.
+- Validation: `lake build PhysicsSM.Draft.NullEdgeRetrievalFreshnessToy` passed.
+- Validation: `lake env lean PhysicsSMDraft.lean` passed.
+- Claude/Pro: no new call.
+
+## Cycle 29 - 2026-06-27 - Gate C release-audit dependency matrix
+
+- Aristotle poll: no newly completed active jobs; C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "chiral gauge release audit anomaly ghost locality mirror gap overlap domain wall"`.
+- Literature result: top hits again emphasized Golterman-Shamir ghost hazards, single-surface/domain-wall Weyl candidates, reduced/Kahler-Dirac anomaly/measure issues, and mirror-gap concerns. Plan impact: synthesize the audit axes rather than claim a new route.
+- Track A/docs: added `AgentTasks/null-edge-gate-c-release-audit-dependency-matrix-2026-06-27.md`, mapping current modules/jobs to Gate C release-audit obligations.
+- Track B: the matrix preserves route/projection/locality/retrieval guardrails as planning dependencies, not analogies.
+- Validation: docs-only cycle; no Lean or pre-commit run.
+- Claude/Pro: no new call.
+
+## Cycle 30 - 2026-06-27 - closeout and final poll
+
+- Aristotle poll: no newly completed active jobs appeared. C101, P16, P17, C89, C92, C93, C82, and C70 remain running.
+- Literature search: ran `neo4j_paper_search.py --chunks --query "next steps chiral gauge lattice ghost locality anomaly overlap domain wall no-go"`.
+- Literature result: top hits emphasized single-curved-surface/domain-wall Weyl candidates, Nielsen-Ninomiya/no-go pressure, Ginsparg-Wilson non-ultralocality, and Golterman-Shamir ghost hazards. Plan impact: next action remains integration of returns or C106 bridge, not a new overclaiming route.
+- Track A/docs: added `AgentTasks/autonomous-loop/cycle30-closeout-2026-06-27.md` summarizing cycles 18-30, C90 integration, new guardrail modules, held C106, validation, and open friction.
+- Track B: closeout preserves the obstruction-calculus guardrails: route/projection/localization/locality/retrieval freshness each require explicit certificates.
+- Validation: `lake env lean PhysicsSMDraft.lean` passed.
+- Claude/Pro: no new call.
+
+## Policy update - 2026-06-27 - stricter autonomous-loop cadence
+
+User clarified the intended loop cadence:
+
+- Send a Claude adversarial review every autonomous cycle/round on the highest-value available subject, not only after returned Aristotle integrations.
+- Prefer cycles that both integrate returned Aristotle work and submit a new independent or soft-dependent Aristotle job.
+- Raise preferred maximum concurrent Aristotle jobs from about 8 to 15.
+- If the queue is saturated at or above 15 active jobs and no result has returned, wait 10 minutes, poll again, and then continue with local work if still no return.
+- If a job has been running longer than 2 hours, stop/cancel it if possible and continue it as a no-build/prompt-only job with context preserved.
+
+Updated `AgentTasks/autonomous-loop/AGENTS.md`, `current-objective.md`, and `state.json` to reflect this policy.

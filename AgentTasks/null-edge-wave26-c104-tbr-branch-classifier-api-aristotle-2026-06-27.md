@@ -7,9 +7,10 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdgeBranchClassifierAPI
   submission_project: AgentTasks/aristotle-submit/null-edge-wave26-gate-c-branch-release-20260627-project
   output_dir: AgentTasks/aristotle-output/054ff61b-1271-432f-ae14-bde0a03b77e4
-  status: submitted
+  status: integrated
   initial_project_status: RUNNING
   initial_task_status: QUEUED
+  integrated: 2026-06-27
 
 Dependency class: C1-facing branch-line design job.
 
@@ -81,3 +82,28 @@ projected-overlap, or controlled quasi-local field-space construction.
 - No new proof placeholders or escape-hatch declarations.
 - Names and docstrings must prevent this API from being mistaken for actual
   Gate C release.
+
+## Integration review
+
+Status: integrated 2026-06-27.
+
+Integrated artifact:
+
+```text
+PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean
+```
+
+Result:
+
+- Added the `T_br` / `Pi_br` algebraic branch-classifier API.
+- Added projector, gauge-neutrality, non-scalar-on-origin, branch-germ
+  separation, and taste-only no-go guardrails.
+- Added a non-vacuous algebraic witness and the C1 route no-go fork.
+
+Review notes:
+
+- This is a finite algebraic API, not a physical local/gauge/Krein/ghost-safe
+  Gate C release.
+- The crucial open obligation is now concrete: construct an actual local
+  gauge-safe branch classifier for the null-edge symbol or take the projected
+  overlap / domain-wall / quasi-local fork.

@@ -331,3 +331,129 @@ Review:
 Remaining caveat:
 
 - The patch has not been locally validated by running the helper against an archive in this cycle.
+
+## 2026-06-27 - Report payload missing for returned Aristotle jobs
+
+Observed in cycle 14:
+
+- H11 summary reported `AgentTasks/null-edge-gate-h-forbidden-operator-neutrino-audit.md`, but the returned archive exposed only a Lean skeleton plus summary metadata.
+- C105 summary reported `AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md`, but the returned archive exposed only `ARISTOTLE_SUMMARY.md`.
+
+Impact:
+
+- Report-only or report-plus-skeleton tasks cannot be faithfully integrated from summaries alone.
+
+Proposed repair:
+
+- Harden the integration helper or runbook to audit expected Markdown report paths explicitly and classify `summary_only_report_payload_missing` as a first-class status.
+## 2026-06-27 - Resolved: Markdown report extraction and Windows long paths
+
+Observed:
+
+- H11 and C105 report files were present in Aristotle archives but not extracted by `Scripts/aristotle/integrate_completed.py`.
+- Root causes: helper filtered extraction to `.lean` plus `summary.md`, and nested report paths exceeded the classic Windows 260-character path limit.
+
+Repair:
+
+- `Scripts/aristotle/integrate_completed.py` now extracts `.md` artifacts.
+- The extractor writes files through a Windows long-path-aware helper.
+- Dry runs now report expected non-Lean Markdown targets as found or missing.
+
+Validation:
+
+- `python -m py_compile Scripts/aristotle/integrate_completed.py`
+- C105 and H11 dry runs both reported the expected report files found.
+## 2026-06-27 - Aggregate draft-root check blocked by cold `.olean` cache
+
+Observed in cycle 16:
+
+- `lake env lean PhysicsSMDraft.lean` failed on missing `PhysicsSM.Draft.NullEdgeNodalSetCyclotomic.olean` before reaching the new C102/C104 imports.
+
+Impact:
+
+- The new modules were individually checked, but the aggregate draft import root was not validated this cycle.
+
+Potential repair:
+
+- Warm/build the missing draft dependencies, or run `lake build PhysicsSMDraft` in a cycle dedicated to validation once integration pressure drops.
+## 2026-06-27 - Cycle 17 aggregate draft-root friction
+
+- Symptom: aggregate checks first hit cold `.olean` misses while draft imports were being warmed.
+- Real issue found after warming: `PhysicsSMDraft.lean` had late `import` commands after the module docstring, which Lean rejects.
+- Resolution: moved the Gate C/branch-audit draft imports into the initial import block.
+- Verification: `lake env lean PhysicsSMDraft.lean` passes.
+
+## 2026-06-27 - Cycle 18 C90 helper redownload/candidate comparison failure
+
+- Symptom: `python Scripts/aristotle/integrate_completed.py d53724a6-a0aa-4f8a-9c85-5285177fd16b` redownloaded the C90 archive but crashed while comparing an unrelated missing candidate file from the extracted tree.
+- Impact: the helper did not complete its normal candidate report, even though the actual C90 target file was present.
+- Workaround: manually located `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean` in the redownloaded archive, copied it into the repo, removed the duplicate draft-root import, and validated the target plus `PhysicsSMDraft.lean`.
+- Follow-up: harden `integrate_completed.py` so missing candidate files are skipped with a warning instead of aborting the whole integration pass.
+
+## 2026-06-27 - Cycle 19 stale full-repo candidate hazard
+
+- Fixed: `integrate_completed.py` now skips missing/non-file extracted candidate paths instead of aborting.
+- Validation: `python -m py_compile Scripts/aristotle/integrate_completed.py` passed, and the C90 inspection no longer crashes.
+- New hazard exposed: without target metadata, the helper can still report stale unrelated files from a full-repo Aristotle archive. In the C90 redownload, it found a stale `NullEdgeCelestialMixednessAristotle.lean` candidate that would remove `normalizedVisibleDensity_trace` if blindly applied.
+- Follow-up: prefer `--task-note`/target-file metadata for old full-repo archives, and harden the helper to warn loudly about theorem-signature removals before any apply.
+
+## 2026-06-27 - Cycle 20 theorem-signature removal guard
+
+- Issue: broad Aristotle archives can contain stale unrelated files; applying them can remove theorem/lemma signatures from newer local work.
+- Fix: `integrate_completed.py` now blocks `--apply` when candidate files remove theorem/lemma names, unless `--allow-signature-removals` is passed.
+- Validation: the C90 stale candidate was blocked before copy because it would remove `normalizedVisibleDensity_trace`.
+
+## 2026-06-27 - Cycle 27 Neo4j doc-search ingest timeout
+
+- Command: `$PY Scripts/lit/neo4j_doc_search.py`.
+- Purpose: refresh the repo's own document/Lean semantic index after meaningful Lean and Markdown edits.
+- Result: timed out after five minutes with no successful refresh claimed.
+- Impact: `neo4j_doc_search.py --query ...` may not include the latest cycle 18-26 edits until ingest completes.
+- Follow-up: add a faster changed-file-only mode with progress output, or run the refresh out-of-band with a longer timeout and log completion.
+
+## 2026-06-27 - Cycle 27 doc-search timeout fixed: --changed mode added
+
+Area: Neo4j
+Severity: medium
+Status: fixed
+
+What happened:
+- The cycle-27 `neo4j_doc_search.py` full refresh timed out at five minutes. Root
+  cause was not embedding cost (sha-skip already avoids re-embedding unchanged
+  files) but one Neo4j round-trip per file across ~799 files before any work.
+
+Fix:
+- Added `--changed` to `Scripts/lit/neo4j_doc_search.py`: ingest only git-changed
+  files (staged/unstaged/untracked), scoped through the same dir/exclude filters.
+  A post-edit refresh now touches ~40 files instead of 799.
+- Usage: `$PY Scripts/lit/neo4j_doc_search.py --changed` (or `--changed --dry-run`
+  to preview). Full `--reembed` still available for a rebuild.
+
+Follow-up:
+- After a run that edits docs/Lean, refresh with `--changed` in-band; reserve the
+  full scan for periodic rebuilds run out-of-band.
+
+## 2026-06-27 - Recurrent Aristotle payload-extraction friction
+
+Area: Aristotle
+Severity: medium
+Status: mitigated
+
+What happened:
+- Across the run, the dominant workflow drag was Aristotle payload extraction, not
+  proof search: the C90 archive redownload crashed `integrate_completed.py` on an
+  unrelated missing candidate, and C99b / C99-v2 returned with payloads the helper
+  could not extract (`RETURNED_PAYLOAD_MISSING`). Full-repo archives also surfaced
+  stale unrelated candidates that would have removed live theorem signatures.
+
+Mitigations already landed (cycles 18-20):
+- `integrate_completed.py` now skips missing/non-file candidates instead of
+  aborting, and blocks `--apply` when a candidate removes theorem/lemma signatures
+  unless `--allow-signature-removals` is passed.
+
+Open follow-up (larger, not attempted this pass):
+- Standardize on focused per-target Aristotle packages with task-note/target-file
+  metadata so integration does not have to diff full-repo archives. Add a clear
+  diagnostic when a returned archive has no extractable payload for the target,
+  instead of a silent `PAYLOAD_MISSING`. Treat this as the next harness-hardening
+  target if extraction friction recurs.

@@ -274,7 +274,7 @@ Semantic review notes:
 
 ## C90 - Projected Gate C Wilson release hardening
 
-Status: submitted
+Status: integrated
 Project ID: `d53724a6-a0aa-4f8a-9c85-5285177fd16b`
 Task ID: n/a
 Target: `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`
@@ -291,6 +291,12 @@ Acceptance criteria:
 - Avoid bare `GateCReleased` ambiguity, separate BRST/Krein/ghost-zero clauses,
   and add explicit not-bare-release guardrails.
 
+Integration update:
+
+- 2026-06-27: redownloaded the Aristotle archive and found the original target file.
+- Replaced the local C97 self-contained reconstruction with the original dependency-based C90 payload.
+- Validated with `lake env lean PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean` and `lake env lean PhysicsSMDraft.lean`.
+- Kept C97's role as a useful repair/validation step, but the repo module now tracks the original C90 hardening.
 ## Wave 21 next C1-facing jobs after C89/C90
 
 Status: proposed
@@ -583,7 +589,7 @@ Integration notes:
 
 ## H11 - Forbidden finite operators and neutrino stress-test audit
 
-Status: lean_skeleton_integrated_report_missing
+Status: integrated
 Project ID: `29b72890-a3d1-4474-a39f-bafa4e07c0f2`
 Task ID: `ff3b3c1c-ef80-45f6-b88c-47449c60744a`
 Target: `AgentTasks/null-edge-gate-h-forbidden-operator-neutrino-audit.md`
@@ -600,8 +606,8 @@ Integration notes:
 
 - Integrated the returned Lean skeleton
   `PhysicsSM/Draft/NullEdgeLegalFiniteDiracNeutrinoAudit.lean`.
-- The requested Markdown audit report was not present in the downloaded project
-  files, so it remains missing rather than reconstructed.
+- Integrated the requested Markdown audit report after cycle 15 fixed Markdown
+  extraction and Windows long-path handling.
 
 ## Wave 26 - Gate C branch-release literature round
 
@@ -642,26 +648,38 @@ Purpose:
 
 ## C102 - Direct-overlap singular-crossing theorem
 
-Status: submitted
+Status: integrated
 Project ID: `1af1a6a5-d795-4321-9153-e16b88a2ff69`
 Task ID: `f6d9c1f1-a160-4545-a551-706a5b18855a`
 Target: `PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean`
 Prompt path: `AgentTasks/null-edge-wave26-c102-direct-overlap-singular-crossing-aristotle-2026-06-27.md`
 Initial status: project `RUNNING`, task `QUEUED`.
+Integrated: 2026-06-27
 
 Purpose:
 
 - Formalize the conditional hazard that an unwanted zero branch crossing the
   shifted Wilson mass shell makes direct unprojected overlap singular.
 
+Integration notes:
+
+- Added `PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean`.
+- The result is a guardrail: direct/raw overlap requires a mass-window theorem;
+  it is not itself an overlap release or no-go for all overlap routes.
+- Claude flagged the original packaged contrapositive as too globally
+  quantified; cycle 16 added
+  `directOverlap_requires_per_symbol_mass_window` as the usable fixed-symbol
+  equivalence.
+
 ## C103 - Scalar-origin balanced-kernel no-go
 
-Status: submitted
+Status: integrated
 Project ID: `b2361c23-fde0-4d07-9a03-4c9e37f5cc6d`
 Task ID: `72769d93-323c-4ec7-a2b7-68db506a5f68`
 Target: `PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean`
 Prompt path: `AgentTasks/null-edge-wave26-c103-scalar-origin-balanced-kernel-no-go-aristotle-2026-06-27.md`
 Initial status: project `RUNNING`, task `QUEUED`.
+Integrated: 2026-06-27
 
 Purpose:
 
@@ -669,30 +687,92 @@ Purpose:
   preserve a balanced origin kernel, while nonzero scalars remove the origin
   mode rather than selecting one Weyl line.
 
+Integration notes:
+
+- Added `PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean`.
+- Wired the module into `PhysicsSMDraft.lean`.
+- Scope is finite and honest: scalar-on-origin only, with non-scalar
+  branch-line/projected-overlap/domain-wall mechanisms left as the escape hatch.
+- Claude flagged the original pure-scalar headline theorem as too narrow; cycle
+  14 added `deformed_scalar_on_origin_never_selects_weyl_line`, the D0-aware
+  version.
+
 ## C104 - Branch classifier API
 
-Status: submitted
+Status: integrated
 Project ID: `054ff61b-1271-432f-ae14-bde0a03b77e4`
 Task ID: `722c441f-cc78-49ba-b066-b58a1b973f1a`
 Target: `PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean`
 Prompt path: `AgentTasks/null-edge-wave26-c104-tbr-branch-classifier-api-aristotle-2026-06-27.md`
 Initial status: project `RUNNING`, task `QUEUED`.
+Integrated: 2026-06-27
 
 Purpose:
 
 - Define the `T_br` / `Pi_br` branch classifier fork and guard against
   taste-only or scalar-on-origin substitutes.
 
+Integration notes:
+
+- Added `PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean`.
+- The result is an algebraic classifier/projector scaffold, not a physical
+  branch release. Locality, nontrivial gauge safety, Krein positivity, and
+  ghost-zero safety remain open obligations.
+
 ## C105 - Release datum and domain-wall/projected-overlap audit
 
-Status: submitted
+Status: integrated
 Project ID: `c633c689-2dd4-4748-97fd-869802a471eb`
 Task ID: `bcf75a14-3044-4f9a-851c-bec41c1d21ec`
 Target: `AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md`
 Prompt path: `AgentTasks/null-edge-wave26-c105-release-datum-domain-wall-audit-aristotle-2026-06-27.md`
 Initial status: project `RUNNING`, task `QUEUED`.
+Reviewed: 2026-06-27
 
 Purpose:
 
 - Produce a route audit comparing raw overlap, projected overlap, spinor-line
   Wilson, domain-wall/boundary, and controlled quasi-local projector releases.
+
+Integration notes:
+
+- Integrated the requested report after cycle 15 fixed Markdown extraction and
+  Windows long-path handling in `Scripts/aristotle/integrate_completed.py`.
+- Next targets: overlap mass-window dichotomy before Route-B projected-overlap
+  release assembly.
+
+## B15 - Normalized determinant / observer-channel mixedness
+
+Status: held_packet_prepared
+Project ID: n/a
+Target: `PhysicsSM/Draft/NullEdgeObserverMixednessDeterminant.lean`
+Prompt path: `AgentTasks/null-edge-wave27-b15-normalized-det-observer-mixedness-aristotle-2026-06-27.md`
+Prepared: 2026-06-27
+
+Dependency class:
+
+- Soft-dependent Track B packet. Hold while P16/P17 and the current high
+  concurrency wave are running.
+
+Purpose:
+
+- Prove the finite determinant-scaling identity
+  `det(rho) = det(P) / trace(P)^2` for normalized 2 by 2 visible density data,
+  with an explicit nonzero trace hypothesis and no spectrum/prediction claim.
+
+## C106 - Release-audit bridge from toy guardrails to Gate C APIs
+
+Status: held_packet_prepared
+Project ID: n/a
+Target: `PhysicsSM/Draft/NullEdgeReleaseAuditBridge.lean`
+Prompt path: `AgentTasks/null-edge-wave27-c106-release-audit-bridge-held-aristotle-2026-06-27.md`
+Prepared: 2026-06-27
+Dependency class: independent / soft-dependent
+
+Purpose:
+
+- Connect `NullEdgeReleaseAuditToyGuardrails` and `NullEdgeLocalityCertificateToy` to the real C90/C100/C104 release-audit APIs without claiming a physical release.
+
+Hold reason:
+
+- Active Aristotle concurrency remains around the preferred upper band. Submit once a running C89/C92/C93/C101/P16/P17/C82/C70 job returns or if the user wants a new independent job despite concurrency.

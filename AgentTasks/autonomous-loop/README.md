@@ -35,17 +35,23 @@ Every autonomous cycle must include every major loop function:
 
 - goal/blocker analysis;
 - Aristotle status/integration/submission work when any job is active or ready;
-- literature search;
-- Track A local analysis and Lean/doc work (convergent gates C0/C1/H/F);
-- Track B action (qubit/information or generalization), falsifiability-gated;
+- literature search (unconditional);
+- Track A local analysis and Lean/doc work (convergent gates C0/C1/H/F) when a
+  real action is available;
+- Track B action (qubit/information or generalization), falsifiability-gated, when
+  a real action is available;
 - meta-analysis of whether the activity is producing real progress on both tracks;
 - friction logging and harness/tooling improvement when friction appears;
 - Claude review once per Aristotle round, with a self-contained packet.
 
-Hard rule: these are required cycle steps, not optional lanes. If the run is
-time-limited or blocked by tool capacity, do a smaller version of every step
-rather than dropping one. A cycle that omits a required step is incomplete and
-must be recorded as a process failure in `meta-review.md`.
+Hard rule: literature search and meta-review are required every cycle and may
+only be shrunk, never skipped (a skip is a process failure recorded in
+`meta-review.md`). The Track A/Track B *work* items are real-action-gated: when a
+track is blocked on a running job or has nothing decisive to do, record that in
+the meta-review and idle it - see the loop `AGENTS.md` section "Honest idle is a
+complete cycle." Never pad a cycle with make-work (trivial Lean, near-duplicate
+notes, checklist-as-Lean) to satisfy the invariant; an honest idle cycle is
+complete, a padded one is not.
 
 ## Aristotle concurrency policy
 

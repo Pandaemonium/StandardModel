@@ -7,9 +7,11 @@ aristotle:
   expected_module: n/a
   submission_project: AgentTasks/aristotle-submit/null-edge-wave26-gate-c-branch-release-20260627-project
   output_dir: AgentTasks/aristotle-output/c633c689-2dd4-4748-97fd-869802a471eb
-  status: submitted
+  status: integrated
   initial_project_status: RUNNING
   initial_task_status: QUEUED
+  reviewed: 2026-06-27
+  integrated: 2026-06-27
 
 Dependency class: C1 strategy/audit job.
 
@@ -79,3 +81,28 @@ controlled quasi-local projector
 - It does not advertise C0 as C1 or full Gate C release.
 - It treats propagator-zero mirror removal as disallowed for gauge-charged
   branches unless an explicit ghost-safety theorem is supplied.
+
+## Integration review
+
+Status: integrated 2026-06-27 after cycle-15 extraction-helper fix.
+
+Integrated artifact:
+
+```text
+AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md
+```
+
+Result:
+
+- Added the C105 release-datum / domain-wall / projected-overlap audit report.
+- The report fixes ten C1 release clauses, compares raw overlap, projected
+  overlap, matrix-valued Wilson, domain-wall, and quasi-local projector routes,
+  and recommends overlap mass-window dichotomy before Route-B release assembly.
+
+Review notes:
+
+- The earlier missing-payload diagnosis was local extractor friction: the
+  Aristotle archive did contain the report, but the helper filtered out general
+  Markdown files and then hit Windows long-path limits. That helper is now
+  patched.
+- Treat the report as strategy guidance, not a release theorem.

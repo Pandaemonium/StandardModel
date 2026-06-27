@@ -234,3 +234,153 @@ Review:
 
 - Claude log: `AgentTasks/model-calls/claude/2026-06-27-113127-c99-return-review.md`.
 - Verdict: integrate as fallback, then queue C99-v2.
+
+## 2026-06-27 - Cycle 14 Aristotle integrations
+
+- P15 integrated: `PhysicsSM/Draft/NullEdgeCelestialMixednessAristotle.lean` updated with `normalizedVisibleDensity_trace`.
+- C100 integrated: `PhysicsSM/Draft/NullEdgeBranchLocusPhysicalSectorAPI.lean` added as C1-facing branch-locus API.
+- H11 partially integrated: `PhysicsSM/Draft/NullEdgeLegalFiniteDiracNeutrinoAudit.lean` added; requested report payload missing.
+- C103 integrated: `PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean` added and strengthened with `deformed_scalar_on_origin_never_selects_weyl_line` after Claude review.
+- C105 not integrated as report: Aristotle summary returned, but requested report payload missing.
+## 2026-06-27 - Cycle 15 report integrations recovered
+
+- H11 report integrated after Markdown extraction fix: `AgentTasks/null-edge-gate-h-forbidden-operator-neutrino-audit.md`.
+- C105 report integrated after Markdown extraction fix: `AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md`.
+- The earlier missing-payload status was local extraction friction, not absent Aristotle payload.
+## 2026-06-27 - Cycle 16 Gate C integrations
+
+- C102 integrated and repaired: `PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean` now includes `directOverlap_requires_per_symbol_mass_window` after Claude flagged the original packaged contrapositive as too globally quantified.
+- C104 integrated: `PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean` adds the algebraic `T_br` / `Pi_br` classifier scaffold and no-go fork.
+- Both modules were added to `PhysicsSMDraft.lean`.
+## 2026-06-27 - Cycle 17 draft-root import-order repair
+
+- Status: completed.
+- Scope: integration hygiene, not a new Aristotle proof return.
+- Change: repaired `PhysicsSMDraft.lean` so the C102/C104-era Gate C draft imports live in the legal top import block.
+- Verification: `lake env lean PhysicsSMDraft.lean` passes.
+
+## 2026-06-27 - C90 / NullEdgeProjectedGateCWilsonRelease original payload
+
+Source:
+
+- Aristotle project: `d53724a6-a0aa-4f8a-9c85-5285177fd16b`
+- Aristotle task: `11f9dc3d-1834-4413-a5b4-4c14342691c2`
+- Archive path: `AgentTasks/aristotle-output/d53724a6-a0aa-4f8a-9c85-5285177fd16b/extracted/redownload-c90.tar/...`
+
+Files integrated:
+
+- `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`
+- `PhysicsSMDraft.lean` duplicate import cleanup
+
+What it proves or records:
+
+- Hardened projected Wilson Gate C release API for `D_phys` only.
+- Separates scalar/Krein residue positivity from no gauge-coupled ghost-zero safety and the full Golterman-Shamir package.
+- Exposes regulator-moduli audit fields explicitly.
+- Keeps the release as conditional API infrastructure, not a physical C1 construction.
+
+Semantic review:
+
+- C0/C1 distinction remains intact: the physical-release obligations are hypotheses, not derived facts.
+- The earlier C97 reconstruction remains useful as repair/validation history, but the repo now tracks the original C90 Aristotle payload.
+
+Validation:
+
+- `lake env lean PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean`
+- `lake env lean PhysicsSMDraft.lean`
+
+Remaining issues:
+
+- The integration helper needs a missing-candidate guard so one absent extracted path does not abort inspection of a valid target file.
+- C90 still does not instantiate the API on a concrete physical null-edge operator.
+
+## 2026-06-27 - Cycle 23 / NullEdgeReleaseAuditToyGuardrails
+
+Source:
+
+- Local autonomous-loop work, motivated by cycles 20-22 literature and Track B notes.
+
+Files integrated:
+
+- `PhysicsSM/Draft/NullEdgeReleaseAuditToyGuardrails.lean`
+- `PhysicsSMDraft.lean` import
+
+What it proves or records:
+
+- A route label does not imply a full release audit.
+- A projection/visible-sector reduction does not imply a full release audit.
+- A localized one-Weyl-line candidate does not imply a full release audit.
+
+Semantic review:
+
+- Draft/toy finite guardrail only. It prevents language overclaim; it does not model the analytic null-edge operator and does not solve Gate C1.
+
+Validation:
+
+- `lake env lean PhysicsSM/Draft/NullEdgeReleaseAuditToyGuardrails.lean`
+- `lake build PhysicsSM.Draft.NullEdgeReleaseAuditToyGuardrails`
+- `lake env lean PhysicsSMDraft.lean`
+
+Remaining issues:
+
+- Future work can connect these toy fields to the richer C90/C100/C104 release-datum APIs.
+
+## 2026-06-27 - Cycle 24 / NullEdgeLocalityCertificateToy
+
+Source:
+
+- Local autonomous-loop work, motivated by Neo4j full-text searches on Ginsparg-Wilson non-ultralocality and overlap/projector locality.
+
+Files integrated:
+
+- `PhysicsSM/Draft/NullEdgeLocalityCertificateToy.lean`
+- `PhysicsSMDraft.lean` import
+
+What it proves or records:
+
+- A formal projector/sign-kernel description does not imply any locality certificate.
+- A quasi-local decay certificate is not the same as an ultralocal/finite-range certificate.
+
+Semantic review:
+
+- Draft/toy finite guardrail only. It supports planning discipline but does not prove locality for a concrete null-edge operator.
+
+Validation:
+
+- `lake env lean PhysicsSM/Draft/NullEdgeLocalityCertificateToy.lean`
+- `lake build PhysicsSM.Draft.NullEdgeLocalityCertificateToy`
+- `lake env lean PhysicsSMDraft.lean`
+
+Remaining issues:
+
+- A future C1 release API should connect this toy distinction to the real locality fields in C90/C100/C104-style release records.
+
+## 2026-06-27 - Cycle 28 / NullEdgeRetrievalFreshnessToy
+
+Source:
+
+- Local autonomous-loop work, motivated by the cycle 27 Neo4j repo-doc semantic-index timeout.
+
+Files integrated:
+
+- `PhysicsSM/Draft/NullEdgeRetrievalFreshnessToy.lean`
+- `PhysicsSMDraft.lean` import
+
+What it proves or records:
+
+- A changed-file-dependent semantic-search query is not fresh when the index was not refreshed after the file changed.
+- A refreshed index discharges the toy freshness obligation.
+
+Semantic review:
+
+- Draft/toy process guardrail only. It does not model physics, but protects search-dependent research claims.
+
+Validation:
+
+- `lake env lean PhysicsSM/Draft/NullEdgeRetrievalFreshnessToy.lean`
+- `lake build PhysicsSM.Draft.NullEdgeRetrievalFreshnessToy`
+- `lake env lean PhysicsSMDraft.lean`
+
+Remaining issues:
+
+- The actual Neo4j repo-doc index still needs a successful changed-file ingest after recent edits.

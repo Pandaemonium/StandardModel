@@ -160,3 +160,55 @@ Consequences:
 Revisit if:
 
 - C99b duplicates C99 or returns too toy-like to be a useful benchmark.
+
+## 2026-06-27 - Autonomous-loop cadence policy clarified
+
+Decision:
+
+- A future autonomous cycle should include a Claude call every cycle/round on the highest-value available subject.
+- Aristotle concurrency target is now up to 15 active jobs.
+- Queue saturation policy: at or above 15 active jobs with no returns, wait 10 minutes and poll again before falling back to local work.
+- Stale-job policy: any Aristotle job running longer than 2 hours should be stopped/canceled if possible and continued as a no-build/prompt-only job.
+
+Rationale:
+
+- The prior loop interpretation counted poll/local-work cycles as complete even without new Aristotle submissions or Claude calls. The clarified policy makes cycles more external-review-heavy and keeps Aristotle throughput higher while bounding long-running build waste.
+## 2026-06-27 - C1 origin-polarizer decision checkpoint
+
+Decision:
+
+```text
+Treat Gate C1 as a native origin-polarization decision before treating it as a
+release-audit assembly.
+```
+
+Concrete fork:
+
+```text
+Can the native gauge-safe origin algebra produce a Hermitian involution T0 with
+nonzero chiral-index projector (1 + T0)/2?
+```
+
+If yes:
+
+```text
+Build T0 -> T_br(q,U), then prove branch-germ separation, locality or
+controlled quasi-locality, gauge safety, true bad-sector inverse gap,
+ghost-zero exclusion, Krein positivity, anomaly accounting, and regulator
+stability.
+```
+
+If no:
+
+```text
+Native finite/local T_br and non-scalar Wilson C1 release are ruled out under
+the stated assumptions. Pivot to certified projected-overlap or domain-wall
+escape contracts.
+```
+
+Immediate theorem/job consequence:
+
+```text
+Submit C106a_OriginPolarizationEscapeHatch as the next independent Aristotle
+job unless a completed active job is ready to integrate first.
+```

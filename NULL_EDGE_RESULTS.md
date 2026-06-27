@@ -196,6 +196,46 @@ shell, the overlap sign kernel becomes singular. The null-edge-native C1 route
 is therefore either a genuine branch classifier/projector (`T_br` or `Pi_br`) or
 a controlled domain-wall/projected-overlap construction after that branch split.
 
+C90 recovered payload (2026-06-27): the projected Wilson-release API is now
+integrated from the original Aristotle archive, not only from the C97
+reconstruction. It exposes the public verdict as
+`ProjectedWilsonGateCRelease D_phys`, keeps legacy `GateCReleased` only as a
+deprecated compatibility shim, and separates the required audits:
+post-gauge residue/Krein positivity, no gauge-coupled ghost zeros, an explicit
+BRST/Krein obligation, and Wilson-regulator moduli clauses. This is valuable
+Gate C plumbing, but it is still conditional infrastructure for `D_phys`; it
+does not construct `D_phys`, does not release bare `D_+`, and does not close C1.
+
+Origin-polarization refinement (2026-06-27): C1 should now be treated as a
+finite decision problem before it is treated as a release-assembly problem. The
+first object to decide is whether the native gauge-safe origin algebra contains
+a noncentral polarizer for the balanced origin kernel. In finite terms, if
+`K0 = ker D_+(0)` has chirality `Gamma0` and a balance symmetry `J` satisfying
+`J Gamma0 J^-1 = -Gamma0`, then every origin projector commuting with `J` has
+zero chiral index. Therefore a one-Weyl-line C1 projector must escape the
+balance commutant.
+
+This gives the native C1 fork:
+
+```text
+If a native, gauge-safe origin involution T0 exists with
+  T0^2 = 1,
+  T0^dagger = T0,
+  [T0, gauge] = 0,
+  Tr(Gamma0 (1 + T0)/2) != 0,
+then T0 is the honest starting point for T_br / non-scalar bad-sector mass.
+
+If every native gauge-safe origin endomorphism commutes with J,
+then native finite/local T_br and non-scalar Wilson release are impossible
+under the stated assumptions, and the program must pivot to a certified
+projected-overlap or domain-wall escape.
+```
+
+The next decisive Gate C theorem target is therefore not another scalar
+regulator lemma. It is the origin-polarization escape-hatch/no-go stack:
+balanced-commutant zero index, native-origin-algebra no-go, and, if the escape
+exists, analytic/local/gauge-safe extension from `T0` to `T_br(q,U)`.
+
 ---
 
 ## 6. Internal algebra: the Furey/Baez bridge (Gate H, PROMISING SUPPORT)

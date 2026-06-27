@@ -6,6 +6,7 @@ The script is intentionally conservative:
 * Results are stored under AgentTasks/aristotle-output/<project-id>/.
 * Archives are extracted with path traversal checks.
 * Candidate Lean files are copied only with --apply.
+* Report-only Markdown deliverables are extracted and reported explicitly.
 * Targeted Lake builds are opt-in with --build.
 
 It does not replace review. It gives the reviewer a deterministic report and
@@ -78,6 +79,21 @@ def rel(path: pathlib.Path) -> str:
         return path.resolve().relative_to(REPO_ROOT).as_posix()
     except ValueError:
         return str(path)
+
+
+def filesystem_path(path: pathlib.Path) -> str:
+    """Return a path string suitable for direct filesystem APIs.
+
+    Windows still reports some >260-character paths as FileNotFoundError unless
+    they use the extended-length prefix.  Aristotle report payloads can exceed
+    that once nested under `AgentTasks/aristotle-output/.../extracted/...`.
+    """
+
+    resolved = path.resolve()
+    text = str(resolved)
+    if sys.platform == "win32" and not text.startswith("\\\\?\\"):
+        return "\\\\?\\" + text
+    return text
 
 
 def run_command(
@@ -186,24 +202,29 @@ def assert_under(child: pathlib.Path, parent: pathlib.Path) -> None:
 def safe_extract_tar(archive: pathlib.Path, destination: pathlib.Path) -> None:
     destination.mkdir(parents=True, exist_ok=True)
     with tarfile.open(archive) as tar:
-        members_to_extract = []
         for member in tar.getmembers():
             parts = pathlib.Path(member.name).parts
             if any(p == ".lake" for p in parts):
                 continue
-            # On Windows, long paths can exceed MAX_PATH. Only extract Lean files and summary.md
-            # to keep path lengths short and avoid FileNotFoundError.
+            # On Windows, long paths can exceed MAX_PATH. Extract source/report
+            # artifacts, not the whole returned project cache, to keep path
+            # lengths short and avoid FileNotFoundError.
             name_lower = member.name.lower()
-            if not (name_lower.endswith(".lean") or name_lower.endswith("summary.md")):
+            if not (name_lower.endswith(".lean") or name_lower.endswith(".md")):
                 continue
             target = destination / member.name
             assert_under(target, destination)
-            if member.isfile():
-                target.parent.mkdir(parents=True, exist_ok=True)
-            members_to_extract.append(member)
-        # "data" filter also rejects symlinks/devices, which the name check
-        # above does not cover (and silences the Python 3.12+ deprecation).
-        tar.extractall(destination, members=members_to_extract, filter="data")
+            # Extract regular files only.  Avoid extractall here: report files
+            # are often nested under AgentTasks/, and extracting one member at a
+            # time after creating its parent is more robust on Windows.
+            if not member.isfile():
+                continue
+            source = tar.extractfile(member)
+            if source is None:
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with source, open(filesystem_path(target), "wb") as output:
+                shutil.copyfileobj(source, output)
 
 
 
@@ -303,6 +324,25 @@ def discover_summary_files(job_dir: pathlib.Path) -> list[pathlib.Path]:
     return sorted(job_dir.rglob("summary.md"))
 
 
+def discover_expected_report_files(
+    job_dir: pathlib.Path, metadata: TaskMetadata | None
+) -> list[pathlib.Path]:
+    if not metadata or not metadata.target_file:
+        return []
+    target = metadata.target_file.replace("\\", "/")
+    if target.endswith(".lean"):
+        return []
+    target_name = pathlib.Path(target).name
+    matches: list[pathlib.Path] = []
+    for path in job_dir.rglob(target_name):
+        if not path.is_file():
+            continue
+        path_text = path.as_posix().replace("\\", "/")
+        if path_text.endswith(target) or path.name == target_name:
+            matches.append(path)
+    return sorted(matches)
+
+
 def repo_relative_from_payload(path: pathlib.Path) -> pathlib.Path | None:
     """Return the repo-relative PhysicsSM path for a returned Lean payload.
 
@@ -339,6 +379,8 @@ def comparable_text(path: pathlib.Path) -> str:
 def differs_from_repo(source: pathlib.Path, repo_relative: pathlib.Path) -> bool:
     """Whether `source` is new or differs from its repo destination."""
 
+    if not source.is_file():
+        return False
     destination = REPO_ROOT / repo_relative
     if not destination.exists():
         return True
@@ -350,8 +392,13 @@ def add_candidate_source(
     repo_relative: pathlib.Path,
     source: pathlib.Path,
 ) -> None:
+    if not source.is_file():
+        return
     existing = candidate_sources.get(repo_relative)
     if existing is None:
+        candidate_sources[repo_relative] = source
+        return
+    if not existing.is_file():
         candidate_sources[repo_relative] = source
         return
     if comparable_text(existing) != comparable_text(source):
@@ -478,6 +525,19 @@ def signature_report(candidate: Candidate) -> list[str]:
     return report
 
 
+def removed_theorem_signatures(candidate: Candidate) -> list[str]:
+    """The theorem/lemma names that would disappear if `candidate` were applied."""
+
+    destination = REPO_ROOT / candidate.repo_relative
+    if not destination.exists() or not candidate.source.is_file():
+        return []
+    old_text = destination.read_text(encoding="utf-8")
+    new_text = candidate.source.read_text(encoding="utf-8")
+    old_names = set(theorem_signatures(old_text))
+    new_names = set(theorem_signatures(new_text))
+    return sorted(old_names - new_names)
+
+
 def copy_candidate(candidate: Candidate) -> None:
     destination = REPO_ROOT / candidate.repo_relative
     assert_under(destination, REPO_ROOT)
@@ -517,6 +577,16 @@ def print_project_report(
         print(f"  Summary: {rel(summary)}")
     if len(summaries) > 3:
         print(f"  Summary: ... plus {len(summaries) - 3} more")
+    reports = discover_expected_report_files(job_dir, metadata)
+    if metadata and metadata.target_file and not metadata.target_file.endswith(".lean"):
+        if reports:
+            for report in reports[:3]:
+                print(f"  Expected report: found {rel(report)}")
+            if len(reports) > 3:
+                print(f"  Expected report: ... plus {len(reports) - 3} more")
+            print("  Report apply: copy manually after review")
+        else:
+            print("  Expected report: missing from extracted payload")
 
     if not candidates:
         print("  Candidates: none discovered")
@@ -567,6 +637,11 @@ def main() -> int:
     )
     parser.add_argument("--no-fetch", action="store_true", help="Inspect existing output only.")
     parser.add_argument("--apply", action="store_true", help="Copy candidate files into the repo.")
+    parser.add_argument(
+        "--allow-signature-removals",
+        action="store_true",
+        help="Allow --apply even when candidate files remove theorem/lemma signatures.",
+    )
     parser.add_argument("--build", action="store_true", help="Run targeted lake builds after copying.")
     args = parser.parse_args()
     if args.status is None:
@@ -611,6 +686,25 @@ def main() -> int:
         blocked = [candidate for candidate in candidates if candidate.placeholder_hits]
         if blocked:
             print("  Apply: blocked by placeholder hits")
+            any_failure = True
+            continue
+        signature_removals = [
+            (candidate, removed_theorem_signatures(candidate))
+            for candidate in candidates
+        ]
+        signature_removals = [
+            (candidate, removed)
+            for candidate, removed in signature_removals
+            if removed
+        ]
+        if args.apply and signature_removals and not args.allow_signature_removals:
+            print("  Apply: blocked by theorem/lemma signature removals")
+            for candidate, removed in signature_removals:
+                names = ", ".join(removed[:8])
+                if len(removed) > 8:
+                    names += ", ..."
+                print(f"    - {candidate.repo_relative.as_posix()}: removes {names}")
+            print("  Re-run with --allow-signature-removals only after manual review.")
             any_failure = True
             continue
         if args.apply:
