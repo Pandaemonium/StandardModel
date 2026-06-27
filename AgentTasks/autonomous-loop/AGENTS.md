@@ -19,9 +19,43 @@ Activity is not progress. Progress means one or more of:
 - a publication claim becomes safer or sharper;
 - a Pro/Claude question is packaged with enough context to matter;
 - a literature source changes the strategy;
-- repeated friction is reduced by a harness or tooling improvement.
+- repeated friction is reduced by a harness or tooling improvement;
+- (Track B) a generalization or qubit/information insight is sharpened into a
+  conjecture with a NAMED failure mode, a finite theorem target precise enough
+  to hand to Aristotle, or a falsifiable prediction/absence theorem.
+
+A Track B "nice analogy" with no failure mode is NOT progress. It may be recorded
+briefly, but it does not satisfy the success standard on its own; the meta-review
+should push it toward a failure mode, a finite target, or drop it.
 
 If none of these happened, say so in `meta-review.md` and change approach.
+
+## Two-track objective (2026-06-27)
+
+The loop runs two co-equal tracks; see `current-objective.md` for the live
+contents of each.
+
+- Track A - convergent gate work: Gate C0/C1/H/F theorem, audit, and integration
+  spine. This is the existing discipline and is unchanged.
+- Track B - exploration: the qubit/information angle and broader generalization
+  of the program as a finite obstruction calculus (mass as the `d = 2` case).
+  Lanes include the mixedness/observer-channel reading, the Plucker hierarchy
+  `k > 2`, the obstruction-stiffness unification, and measure-valued P1.5.
+
+Equal weight means: every cycle should make real progress on both tracks, or the
+meta-review must state explicitly why one track produced no action this cycle.
+Track B is allowed to spawn Aristotle jobs once a target is sharp and
+self-contained, classified for dependency like any other job.
+
+Track B does not relax the project's discipline. Lateral thinking is encouraged,
+but the success standard for Track B is falsifiability, not beauty: a result
+counts only if it yields a named failure mode, a finite theorem target, or a
+falsifiable prediction/absence theorem. Keep the `docs/NULLSTRAND.md`
+claim-boundary labels; never let mixedness/observer language leak into the
+invariant `det P` statement. If a Track B generalization matures into a candidate
+change to the program's headline framing, stop and surface it via
+`questions-for-user.md` instead of silently reframing (this is also a
+`stop_conditions` entry in `state.json`).
 
 ## Required start-of-loop behavior
 
@@ -72,8 +106,11 @@ Every autonomous cycle must execute the whole loop, not just the easiest part:
 - analyze goals and blockers;
 - check/integrate/submit Aristotle work when there are active or ready jobs;
 - perform literature search;
-- do local analysis and Lean/doc work;
-- run meta-review;
+- do local analysis and Lean/doc work on Track A (convergent gates);
+- do at least one Track B action (qubit/information or generalization): sharpen a
+  conjecture, state a finite target, prepare a context pack or packet, or submit a
+  sharp Track B job;
+- run meta-review (must check both tracks);
 - log friction and improve tooling when repeated friction appears;
 - prepare or send Claude adversarial review once per Aristotle round;
 - prepare Pro/Gemini packets when a hard question needs external reasoning.
@@ -144,6 +181,39 @@ Prefer searches tied to the live blocker, not generic browsing. Examples:
 
 If no useful source is found, record the negative result. If a source is useful,
 queue ingestion into Zotero/Neo4j and update the relevant plan or task note.
+
+### Full text is available - use it, do not stop at abstracts
+
+The Neo4j graph holds paper **full text**, not just titles/abstracts: each paper
+is stored as embedded `:PaperChunk` nodes (section-aware ~600-word chunks). As of
+2026-06-27 the entire null-edge collection is chunked (196/196 papers). Two moves,
+and the loop should use both rather than reasoning from abstracts or memory:
+
+```powershell
+$PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+# semantic search over body text: WHERE a lemma/derivation/convention lives
+& $PY Scripts/lit/neo4j_paper_search.py --chunks --query "overlap Wilson null-edge chiral release"
+# read a whole paper end to end (de-overlapped, section headings restored)
+& $PY Scripts/lit/neo4j_paper_search.py --list-fulltext        # which papers have full text
+& $PY Scripts/lit/neo4j_paper_search.py --read 2311.12790      # arXiv id or Zotero paper_key
+```
+
+Rules of thumb:
+
+- Use `--query` (abstract index) to find *which* papers matter; use `--chunks` to
+  find *where* in them the relevant claim lives; use `--read` to audit a paper in
+  full before relying on it for a convention, no-go, or theorem statement.
+- Whenever a decision depends on a paper's internal content (a derivation, a
+  convention, a no-go's exact hypotheses), read the chunks or the full text - do
+  not trust the abstract or chat memory. This is the same standard the root
+  `AGENTS.md` sets for `--chunks`.
+- `--read` reconstructs from chunks: faithful prose but degraded math symbols. For
+  verbatim equations go to the arXiv/PDF.
+- If a needed paper is abstract-only (no chunks; `--read` reports none), queue
+  `Scripts/lit/lit_fulltext.py --ids <arxiv_id>` to add body text, then proceed.
+
+Full setup and the chunk schema are in `Scripts/MCP_SERVERS.md` and
+`Scripts/lit/README.md`.
 
 ## Friction logging rules
 

@@ -917,3 +917,24 @@ Octonions, Furey, Baez, and DVT:
   Algebra with S3 Family Symmetry", arXiv:2601.07857.
 - John C. Baez and Paul Schwahn, "Projective Geometry and the Exceptional
   Jordan Algebra", 2026 slides.
+
+## Lateral-analysis note (2026-06-27): absence theorem as first prediction
+
+A lateral read of the null-edge mass program flags this outline's internal
+algebra as the natural source of the program's first prediction-grade result,
+and the recommended framing is structural rather than numerical:
+
+> The first prediction is not a mass value. It is an absence theorem.
+
+Concretely: the `R (x) C (x) H (x) O` / Clifford internal algebra should make
+precise which finite Dirac/Higgs (Yukawa) maps are legal, and exclude
+leptoquark, diquark, proton-decay, wrong-hypercharge, and colored-Higgs blocks
+outright. The program's advantage is to state this allowed-operator/codimension
+theorem precisely and tie it to the finite Dirac/Higgs block. This is the
+Gate H target `LegalFiniteDiracForbiddenOperator`
+(`AgentTasks/null-edge-gate-h-legal-finite-dirac-forbidden-operator-plan.md`),
+and it matches the prediction-ledger verdicts
+(`AgentTasks/null-edge-f15-genuine-prediction-candidate-ledger.md`,
+`AgentTasks/null-edge-post-route-b-prediction-ledger.md`). Relevant motivation:
+Furey arXiv:1611.09182 ("Standard model physics from an algebra?") and the
+S3-family Clifford three-generation work arXiv:2601.07857 already cited above.

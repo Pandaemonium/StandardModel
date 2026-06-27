@@ -22,3 +22,30 @@ Completed the Gate C Golterman–Shamir ghost-zero safety audit (C47/C48).
 The module builds cleanly (no errors, no warnings), is `sorry`-free, adds no axioms or `@[implemented_by]`, and the summary theorem `gateC_ghostzero_audit_summary` uses only the standard axioms (propext, Classical.choice, Quot.sound). All physical inputs (actual Clifford symbol, residue signs, weak-coupling deformation) are recorded as stated-but-open obligations rather than trusted assumptions.
 
 Note: the pre-existing sibling files (`NullEdgeGateCReleaseCriterion.lean`, `NullEdgeBranchKreinSignatures.lean`) import upstream files (`NullEdgeFlavoredChirality`, `KreinDoubleAndCounterexamples`) that are absent from this project snapshot, so the default build target does not compile; this is pre-existing and unrelated to the new module, which I deliberately kept self-contained so it builds and verifies on its own.
+
+## Three-line branch audit as a standing proof obligation (2026-06-27)
+
+The 2026-06-27 lateral analysis sharpens the Golterman-Shamir lesson from a
+warning into a mandatory check. Golterman-Shamir show that propagator zeros in
+lattice chiral gauge theories can behave as coupled ghost states once gauge
+fields are turned on, and can contribute anomalies like poles while damaging
+unitarity. So no gauge-charged branch may be removed solely by a propagator zero.
+
+Make every proposed Gate C1 release candidate (including the matrix-valued
+spinor-line Wilson lift in `AgentTasks/null-edge-gate-c-redesign-roadmap.md`
+section 6.3) pass a three-line audit for each unwanted branch before any release
+language is used:
+
+```text
+unwanted branch =>
+  1. true inverse-propagator mass gap (not a propagator zero)?
+  2. positive / physical spectral contribution?
+  3. correct anomaly accounting without ghost substitution?
+```
+
+This is the prose face of the kernel-checked `index_nonzero_not_sufficient`
+separation theorem above: a computed flavored index never releases Gate C on its
+own. The audit maps onto the existing six-way `ZeroKind` classification (a fatal
+ghost zero fails line 1 or 2; a composite-removable zero must be shown removable
+by field redefinition, not assumed). It is the cheap, lattice-recognizable safety
+gate to apply before spending an Aristotle job on a release attempt.

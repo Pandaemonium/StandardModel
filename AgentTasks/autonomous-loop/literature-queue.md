@@ -503,3 +503,43 @@ Plan impact:
 
 - C99 integrated only as fallback.
 - C99-v2 submitted for the missing structural layer.
+## 2026-06-27 - Lateral-analysis new lanes (energy correlators, causal fermion systems, 1D SMG)
+
+Status: proposed
+Related gate: publication | C1 | other
+
+Question:
+
+- Which genuinely new (not-yet-ingested) sources does the 2026-06-27 lateral
+  analysis introduce, beyond the lattice-chiral lane already in this queue?
+
+Candidate sources (ingest pending; not yet in Zotero/Neo4j):
+
+- Larkoski-Salam-Thaler, energy correlation functions for jet substructure,
+  `arXiv:1305.0007`, and the review `arXiv:2410.16368`. Collision for the
+  Plucker hierarchy (conjecture 5 in `Sources/Null_Edge_Key_Conjectures.md`):
+  energies plus pairwise angles, higher-point correlators for multi-prong
+  substructure; the `k=2` Plucker obstruction may be the two-point member of a
+  null-edge event-shape ladder.
+- Causal fermion systems introduction, `arXiv:2411.06450`. Boundary marker for
+  `Sources/Null_Edge_Interaction_Ontology.md`: test whether the Plucker spread
+  is a simple finite causal-action term.
+- One-dimensional symmetric mass generation without fermion doubling,
+  `arXiv:2606.24713`. Toy-zoo mirror for the Gate C redesign roadmap section 6.5.
+- Kaplan lattice-fermion lectures, `arXiv:0912.2560`, review anchor for the
+  C1-alternatives framing (domain-wall / overlap / Ginsparg-Wilson).
+
+Zotero/Neo4j status:
+
+- Not yet ingested. Pending user go-ahead, run `Scripts/lit/lit_ingest.py` with
+  the `IN_COLLECTION` edge to `9W59V3K9`; pre-add existence check keyed on
+  arxiv_id (not title) to avoid duplicates. The Golterman-Shamir,
+  reduced-Kahler-Dirac, and Ginsparg-Wilson sources cited by the lateral
+  analysis are already present from earlier cycles and must not be re-added.
+
+Takeaways:
+
+- The energy-correlator lane is the concrete payoff of the Plucker-hierarchy
+  idea and is the most novel addition; prioritize it for ingest.
+- Among the lattice-chiral additions only `2606.24713` (1D SMG) and `0912.2560`
+  (Kaplan review) are candidate new entries; the rest are already covered.

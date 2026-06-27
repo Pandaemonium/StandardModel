@@ -102,6 +102,44 @@ and P11 should wait until there is a concrete transfer channel, calibrated
 momentum readout, and momentum-dependent spectral branch. The broad ontology is
 useful only insofar as it helps organize these finite artifacts.
 
+The 2026-06-27 lateral analysis reframes the publication posture one level up:
+the program is best sold as obstruction geometry, not as a claim that every mass
+is literally one Plucker-spread formula. The common target is:
+
+```text
+zero locus / moduli locus
+canonical obstruction section or map
+quadratic norm, determinant, Hessian, or inverse-propagator gap
+```
+
+This gives the near-term series three clean tracks:
+
+```text
+Paper A: Plucker mass as mixedness and celestial variance.
+Paper B: Gate C branch obstruction taxonomy and physical-sector alternatives.
+Paper C: forbidden finite operators and codimension/absence theorems.
+```
+
+Paper A is the safest theorem paper. Paper B is a branch-locus and release
+contract paper until C1 is actually released. Paper C is the first plausible
+prediction-grade lane because an absence theorem can be structural before any
+mass values are derived.
+
+Paper B should include a specific Gate C split:
+
+```text
+C0: anti-Hermitian plus positive scalar Wilson gap theorem;
+C1: release datum with branch-line projector/classifier, true mirror gap,
+    locality or controlled quasi-locality, ghost safety, anomaly accounting,
+    and positive physical sector.
+```
+
+It should also test a direct-overlap obstruction before using overlap language
+as a release mechanism. If an unwanted zero branch germ reaches the origin and
+crosses the shifted Wilson mass shell, the unprojected overlap sign kernel is
+singular. Therefore raw overlap on the full bare `D_+` should be presented as a
+conditional route, not as the default C1 solution.
+
 The 2026-06-23 conjecture review updates the priority map. The next highest
 value target is not another static invariant, but a bridge between
 observer-channel mass and null-step dynamics:
@@ -1547,9 +1585,10 @@ mixing data would weaken or kill the branch.
 ## Recommended sequencing
 
 1. P1-F remains the first theorem paper. It is the most banked, most
-   self-contained, and underpins the rest. Promote the celestial-moment wrapper,
-   add the reproducibility appendix, and write the artifact paper before
-   reopening broad ontology claims.
+   self-contained, and underpins the rest. Frame it as Plucker mass as finite
+   mixedness / celestial variance, promote the celestial-moment wrapper, add the
+   reproducibility appendix, and write the artifact paper before reopening broad
+   ontology claims.
 2. P1-E can proceed in parallel as the accessible explanation, but it should cite
    P1-F for the theorem and label the ontology as interpretation.
 3. Develop P2-R/P4-R/P7-R together around the proper-time/purity rate target:
@@ -1564,9 +1603,15 @@ mixing data would weaken or kill the branch.
    one-diamond `D^2` computation before broad operator formalization continues.
 6. P8-E should wait until P1-F plus at least one dynamics/observer-channel artifact
    exists to cite, so the manifesto rests on artifacts.
-7. P11-R after P2/P4 have a concrete transfer operator and P7 has a usable
+7. Gate C branch-taxonomy work should be separated from C0 regulator success:
+   publish branch-locus, kernel-sheaf, projection, gap, and ghost-safety
+   alternatives as a taxonomy/contract unless a concrete C1 release is proved.
+8. Gate H/Gate F forbidden-operator work should be treated as the first
+   prediction-grade lane: prove absences and codimensions before claiming mass
+   values, and use neutrinos as the explicit Dirac/Majorana/seesaw stress test.
+9. P11-R after P2/P4 have a concrete transfer operator and P7 has a usable
    observer-channel API.
-8. P5-F and P6-R opportunistically; P10-R only after doubler, chirality, and
+10. P5-F and P6-R opportunistically; P10-R only after doubler, chirality, and
    internal-family multiplicities are proven disjoint or explicitly identified.
 
 The most useful theorem/counterexample sequence after P1 is:
@@ -1682,3 +1727,21 @@ Immediate consequences:
   `Sources/NullStrand_Lean_Roadmap_Improved.md`.
 - This lane is covered by the completed 2026-06-25 Aristotle batch entries in
   `AgentTasks/null-strand-overnight-ledger-2026-06-25.md`.
+
+## 16. Lateral extension notes (2026-06-27)
+
+- Use a strict 4-layer contract in each paper entry: finite identity -> existence/naturality -> scaling/dynamics -> physical interpretation.
+- For P1 and descendants, keep the strongest split explicit:
+  - `det(P)` is an invariant finite kinematic object,
+  - `det(rho_{p|u})` is observer-conditioned mixedness (`m/E_u` rate),
+  - Higgs/chirality channels enter through the same obstruction schema but are separate entries.
+
+- For publication sequencing, elevate the near-term structural-output target:
+  - a formal finite forbidden-operator/codimension theorem (including SM-block exclusivity and null off-diagonal exclusions) can be publication-safe before numerical mass fitting.
+- A secondary research direction from this analysis is a P1.5/observational bridge: finite Plucker hierarchy (`k>2`) as a canonical obstruction ladder and possible event-shape analogue.
+- Treat Gate C as a branch-locus paper before treating it as a release paper:
+  `Z = {q | det D_+(q) = 0}`, kernel/projector data, inverse-propagator gaps,
+  ghost-zero safety, and branch involutions are first-class publication objects.
+- Keep neutrinos as the named Gate H stress test: every legal finite-Dirac
+  proposal should state whether `nu_R`, Dirac masses, Majorana masses, and
+  seesaw reduction are allowed, optional, or forbidden.

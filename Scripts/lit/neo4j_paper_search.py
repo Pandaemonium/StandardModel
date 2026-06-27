@@ -29,6 +29,7 @@ by default. Pass `--all-projects` only when shared-graph recall is intentional.
 import argparse
 import json
 import os
+import re
 import sys
 
 # Models are cached; keep HuggingFace offline and quiet.
@@ -304,6 +305,128 @@ def query(
         _print_text(text, results, scoped)
 
 
+# --------------------------------------------------------------------------- #
+# Full-text read (reconstruct a whole paper from its chunks)
+# --------------------------------------------------------------------------- #
+# Chunks are written by lit_fulltext.py with a 90-word overlap *inside* each
+# section (WORDS_PER_CHUNK=600, WORD_OVERLAP=90); section changes start a fresh
+# window with no overlap. To read a paper end to end we pull all its chunks in
+# `ord` order and de-overlap consecutive same-section chunks. Scan a little above
+# the nominal 90 for robustness.
+MAX_OVERLAP_SCAN = 200
+
+
+def fetch_chunks(ident: str):
+    """Return (meta, rows) for a paper identified by arXiv id or paper_key.
+
+    rows are PaperChunk dicts ordered by `ord`. `ident` is matched against both
+    `arxiv_id` and `paper_key`; an arXiv version suffix (e.g. ``v2``) is stripped
+    so ``1611.08388v2`` still resolves. Returns ``(None, [])`` if no chunks exist
+    (the paper may be ingested abstract-only; run ``lit_fulltext.py`` to add body
+    text).
+    """
+    _require_env()
+    ident = ident.strip()
+    bare = re.sub(r"v\d+$", "", ident)
+    driver, db = _driver()
+    try:
+        with driver.session(database=db) as session:
+            rows = session.run(
+                "MATCH (p:Paper)-[:HAS_CHUNK]->(pc:PaperChunk) "
+                "WHERE p.arxiv_id IN $ids OR p.paper_key = $ident "
+                "RETURN p.title AS title, p.arxiv_id AS arxiv, p.paper_key AS key, "
+                "pc.ord AS ord, pc.section AS section, pc.text AS text "
+                "ORDER BY pc.ord",
+                ids=[ident, bare],
+                ident=ident,
+            ).data()
+    finally:
+        driver.close()
+    if not rows:
+        return None, []
+    meta = {
+        "title": rows[0]["title"],
+        "arxiv": rows[0]["arxiv"],
+        "key": rows[0]["key"],
+        "n": len(rows),
+    }
+    return meta, rows
+
+
+def _overlap_len(a, b) -> int:
+    """Largest L such that the last L words of `a` equal the first L words of `b`."""
+    cap = min(len(a), len(b), MAX_OVERLAP_SCAN)
+    for length in range(cap, 0, -1):
+        if a[-length:] == b[:length]:
+            return length
+    return 0
+
+
+def reconstruct_fulltext(rows, with_sections: bool = True) -> str:
+    """Stitch ordered chunks back into readable body text.
+
+    Consecutive same-section chunks are de-overlapped by detecting the shared
+    boundary; section changes start a fresh segment. The result is the de-LaTeX'd
+    prose the semantic index sees - good for reading or auditing a whole paper, not
+    a substitute for the canonical PDF when quoting exact equations.
+    """
+    parts: list[str] = []
+    prev_section = None
+    prev_words: list[str] = []
+    for r in rows:
+        words = (r.get("text") or "").split()
+        if not words:
+            continue
+        section = r.get("section") or ""
+        if not parts:
+            if with_sections and section:
+                parts.append(f"## {section}\n\n")
+            parts.append(" ".join(words))
+        elif section != prev_section:
+            parts.append(f"\n\n## {section}\n\n" if (with_sections and section) else "\n\n")
+            parts.append(" ".join(words))
+        else:
+            tail = words[_overlap_len(prev_words, words):]
+            if tail:
+                parts.append(" " + " ".join(tail))
+        prev_section = section
+        prev_words = words
+    return "".join(parts).strip()
+
+
+def read_fulltext(ident: str, with_sections: bool = True):
+    """Return a dict {title, arxiv, key, n, text} for one paper, or None."""
+    meta, rows = fetch_chunks(ident)
+    if not meta:
+        return None
+    meta = dict(meta)
+    meta["text"] = reconstruct_fulltext(rows, with_sections=with_sections)
+    return meta
+
+
+def list_fulltext(collections=None, all_projects: bool = False):
+    """List papers that have full-text chunks (with chunk counts), scoped to the
+    null-edge collections by default."""
+    _require_env()
+    collections = list(collections or NULL_EDGE_COLLECTIONS)
+    driver, db = _driver()
+    try:
+        with driver.session(database=db) as session:
+            rows = session.run(
+                "MATCH (p:Paper)-[:HAS_CHUNK]->(pc:PaperChunk) "
+                "OPTIONAL MATCH (p)-[:IN_COLLECTION]->(c:Collection) "
+                "WITH p, collect(DISTINCT c.collection_key) AS cols, count(pc) AS n "
+                "WHERE $all_projects OR any(key IN cols WHERE key IN $collections) "
+                "RETURN p.title AS title, p.arxiv_id AS arxiv, p.paper_key AS key, n "
+                "ORDER BY p.arxiv_id",
+                collections=collections,
+                all_projects=all_projects,
+            ).data()
+    finally:
+        driver.close()
+    return rows
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--query", help="natural-language search; omit to ingest")
@@ -311,6 +434,27 @@ def main() -> None:
         "--chunks",
         action="store_true",
         help="search paper full-text chunks (:PaperChunk) instead of abstracts",
+    )
+    ap.add_argument(
+        "--read",
+        metavar="ARXIV_OR_KEY",
+        help="reconstruct and print one paper's full text from its stored chunks "
+        "(matches arXiv id or Zotero paper_key)",
+    )
+    ap.add_argument(
+        "--list-fulltext",
+        action="store_true",
+        help="list papers that have full-text chunks (with chunk counts)",
+    )
+    ap.add_argument(
+        "--save",
+        metavar="PATH",
+        help="with --read, also write the reconstructed text to PATH (UTF-8, LF)",
+    )
+    ap.add_argument(
+        "--no-sections",
+        action="store_true",
+        help="with --read, omit reconstructed section headings",
     )
     ap.add_argument("--reembed", action="store_true", help="re-embed all papers, not just new ones")
     ap.add_argument("--k", type=int, default=10, help="number of search results")
@@ -333,7 +477,39 @@ def main() -> None:
     )
     ns = ap.parse_args()
 
-    if ns.query:
+    if ns.list_fulltext:
+        rows = list_fulltext(
+            collections=ns.collection, all_projects=ns.all_projects
+        )
+        if ns.format == "json":
+            print(json.dumps({"count": len(rows), "papers": rows}, indent=2, ensure_ascii=False))
+        else:
+            print(f"\n{len(rows)} papers with full-text chunks\n")
+            for r in rows:
+                print(f"  {r['n']:>4} chunks  arXiv:{r.get('arxiv') or '-':<14} {r['title']}")
+            print("\nRead one end to end with: --read <arXiv id or paper_key>")
+    elif ns.read:
+        paper = read_fulltext(ns.read, with_sections=not ns.no_sections)
+        if not paper:
+            raise SystemExit(
+                f"No full-text chunks for '{ns.read}'. The paper may be abstract-only; "
+                "add body text with Scripts/lit/lit_fulltext.py --ids <arxiv_id>."
+            )
+        if ns.format == "json":
+            print(json.dumps(paper, indent=2, ensure_ascii=False))
+        else:
+            print(f"# {paper['title']}")
+            print(f"arXiv:{paper.get('arxiv')}  paper_key:{paper.get('key')}  "
+                  f"({paper['n']} chunks)\n")
+            print(paper["text"])
+        if ns.save:
+            with open(ns.save, "w", encoding="utf-8", newline="\n") as handle:
+                handle.write(f"# {paper['title']}\n")
+                handle.write(f"arXiv:{paper.get('arxiv')}  paper_key:{paper.get('key')}"
+                             f"  ({paper['n']} chunks)\n\n")
+                handle.write(paper["text"] + "\n")
+            print(f"\n[saved {len(paper['text'])} chars to {ns.save}]", file=sys.stderr)
+    elif ns.query:
         collections = ns.collection or list(NULL_EDGE_COLLECTIONS)
         query(ns.query, ns.k, ns.format, collections, ns.all_projects, chunks=ns.chunks)
     else:

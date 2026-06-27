@@ -142,3 +142,27 @@ research plan.
 - (2021) Hodgelets: Localized Spectral Representations of Flows on Simplicial Complexes — `arXiv:2109.08728`
 - (2022) Matching number, Hamiltonian graphs and magnetic Laplacian matrices — `doi:10.1016/j.laa.2022.02.006`
 - (2022) Normalized Laplacians for gain graphs — `doi:10.63151/amjc.v1i.3`
+
+## J. Lateral-analysis additions (2026-06-27, ingest pending)
+
+New candidate sources from the 2026-06-27 lateral read. These are **not yet
+ingested** into Zotero/Neo4j; ingest is queued in
+[`../AgentTasks/autonomous-loop/literature-queue.md`](../AgentTasks/autonomous-loop/literature-queue.md)
+and should run via `Scripts/lit/lit_ingest.py` with the `IN_COLLECTION` edge to
+`9W59V3K9`. Several lattice-chiral sources from the lateral analysis
+(Golterman-Shamir propagator zeros, reduced Kahler-Dirac, Ginsparg-Wilson) are
+already in the graph via the literature queue and are not duplicated here.
+
+Energy-correlator hierarchy (collision for the Plucker hierarchy, conjecture 5):
+
+- (2013) Energy Correlation Functions for Jet Substructure (Larkoski-Salam-Thaler) — `arXiv:1305.0007`
+- (2024) New Angles on Energy Correlators — `arXiv:2410.16368`
+
+Boundary-marker / comparison frameworks:
+
+- (2024) Causal Fermion Systems: An Introduction to Fundamental Structures, Methods and Applications — `arXiv:2411.06450`
+- (2026) Symmetric mass generation of interacting chiral fermions on a one-dimensional lattice without fermion doubling — `arXiv:2606.24713`
+
+Lattice chiral-fermion reference (review):
+
+- (2009) Chiral Symmetry and Lattice Fermions (Kaplan lectures) — `arXiv:0912.2560`

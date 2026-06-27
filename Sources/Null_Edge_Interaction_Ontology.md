@@ -1141,3 +1141,44 @@ richer null data through finite physical channels. The remaining work is to
 prove the dynamical operator story, connect Higgs/Yukawa bookkeeping to visible
 mixedness, make spin and phase graph-native, and test whether source visibility
 gives genuine cosmological-constant leverage.
+
+## Obstruction geometry: the program may be bigger than mass (2026-06-27)
+
+A lateral read suggests the program is not only "mass from null-edge spread." It
+may be a general theory of *when a one-beam / one-branch / one-orbit description
+fails*, with mass as the quadratic norm of that failure. The mass mechanisms in
+the dictionary are then faces of a single obstruction geometry rather than a list
+of analogies:
+
+- **Mixedness** (null bundle): mass is the impurity of a null-direction density
+  matrix. Normalize `rho = P / Tr(P)`; in Bloch language `det rho =
+  (1 - |r|^2)/4`, so a massless bundle is a *pure* celestial spin state and a
+  massive bundle is *mixed*. Equivalently, with `|Psi> = sum_i psi_i (x) |i>` the
+  bundle is massless exactly when the spinor direction factorizes from the
+  edge-label space: mass appears when the null direction is correlated with hidden
+  bundle structure. (Carry only as observer-conditioned language per the
+  `docs/NULLSTRAND.md` guardrail.)
+- **Stiffness** (Yukawa / electroweak / Higgs): mass is the quadratic normal
+  stiffness of a canonical zero locus, a pair `(M, s)` of moduli/orbit locus and
+  section/Hessian. See the obstruction-stiffness table in
+  `Sources/Null_Edge_Key_Conjectures.md` (conjecture 6).
+- **Branch topology** (Gate C): the failure to select one chiral line over the
+  branch locus `Z = { q : det D_+(q) = 0 }`.
+- **Internal algebra** (Gate H): the forbidden-vs-legal structure of finite
+  Dirac/Higgs maps.
+- **Forbidden maps**: the absence theorems that say certain dangerous operators
+  are not legal at all.
+
+The compact reframing:
+
+> The program classifies the canonical ways a system fails to remain a single
+> free null mode: mixedness, stiffness, branch topology, internal algebra, and
+> forbidden maps are faces of the same obstruction geometry.
+
+This is a manifesto-level statement. It stays here, clearly labeled, until the
+unifying object (the Morse-Bott pair `(M, s)`, conjecture 6) has a finite
+theorem spine. A nearby external boundary marker is causal fermion systems,
+where fermionic and causal structure are also primitive; the useful question is
+whether the Pluecker spread is a simple finite causal-action term, and if not,
+what makes the null-transport obstruction algebra distinctive (see the
+bibliography addition).

@@ -36,8 +36,9 @@ Every autonomous cycle must include every major loop function:
 - goal/blocker analysis;
 - Aristotle status/integration/submission work when any job is active or ready;
 - literature search;
-- local analysis and Lean/doc work;
-- meta-analysis of whether the activity is producing real progress;
+- Track A local analysis and Lean/doc work (convergent gates C0/C1/H/F);
+- Track B action (qubit/information or generalization), falsifiability-gated;
+- meta-analysis of whether the activity is producing real progress on both tracks;
 - friction logging and harness/tooling improvement when friction appears;
 - Claude review once per Aristotle round, with a self-contained packet.
 

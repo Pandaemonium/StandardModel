@@ -421,3 +421,17 @@ gauge covariance — the only safety input anywhere is the residue-sign certific
   (theorem 5); the residue magnitude `Z_j` is frame-relative (Q2).
 - All negative guardrails of C59/C63 remain in force and must continue to compile
   alongside the new module.
+
+## Cross-reference: three-line branch audit (2026-06-27)
+
+The 2026-06-27 lateral analysis recasts the residue-sign certificate as line 1-2
+of a standing three-line branch audit (true inverse-propagator gap, not a
+propagator zero; positive/physical spectral contribution; anomaly accounting
+without ghost substitution). `PostGaugeResiduePositive` discharges the
+sign/positivity lines for the modeled symbol but, as the honesty ledger states,
+does not by itself close ghost safety: anomaly accounting and the
+not-a-propagator-zero distinction remain separate obligations. The canonical
+statement of the audit lives in
+`AgentTasks/null-edge-golterman-shamir-ghost-zero-audit.md`; keep this plan's
+residue formula aligned with it rather than treating residue positivity as
+sufficient.

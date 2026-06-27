@@ -360,6 +360,26 @@ default; `--ids` overrides. Direct Cypher for the vectors:
 score` - but you still need the python path to embed the query string (the MCP
 server cannot).
 
+**Reading a whole paper, not just chunks.** Semantic `--chunks` search finds
+*where* a result lives; to read or audit a paper end to end, reconstruct it from
+its stored chunks (de-overlapped, section headings restored) instead of pasting
+chunks together by hand:
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+"$PY" Scripts/lit/neo4j_paper_search.py --list-fulltext            # which papers have full text (+ chunk counts)
+"$PY" Scripts/lit/neo4j_paper_search.py --read 1011.0761           # print one paper end to end (arXiv id or paper_key)
+"$PY" Scripts/lit/neo4j_paper_search.py --read 1011.0761 --save scratch/paper.md   # also write to a file
+"$PY" Scripts/lit/neo4j_paper_search.py --read 1011.0761 --format json             # {title, arxiv, key, n, text}
+```
+
+`--read` matches an arXiv id (version suffix tolerated) or a Zotero `paper_key`,
+pulls all `:PaperChunk` nodes in `ord` order, and removes the 90-word inter-chunk
+overlap so the body reads continuously. The same de-LaTeX math caveat applies: it
+is faithful prose for reading/auditing, not a source of verbatim equations - go to
+the arXiv/PDF for exact formulas. If a paper has no chunks, run `lit_fulltext.py
+--ids <id>` to add body text first.
+
 Caveat: de-LaTeX preserves prose and section structure but **degrades math
 symbols** (subscripts/operators flatten to plain tokens), so chunk search is
 strong on conceptual/derivational text and weak on pure-formula matching. Full

@@ -134,3 +134,31 @@ What this paper should not claim:
   promoted before submission or cited as an appendix/handoff result.
 - Write a two-page proof sketch of the Cauchy-Binet identity in conventional
   mathematical prose.
+
+## Mixedness section and continuum bridge (2026-06-27 lateral analysis)
+
+Two section additions to mirror the corresponding update in
+`Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md`. Keep the invariant
+identity primary and the normalized reading clearly labeled (see the
+`docs/NULLSTRAND.md` guardrail).
+
+- **Mixedness reading of the determinant.** After the `det P = m^2` theorem, add
+  a short subsection: normalize `rho = P / Tr(P)`; then `det rho` is the
+  determinant of a qubit density matrix and, in Bloch form, `det rho =
+  (1 - |r|^2)/4`. The massless case is *purity* (projective rank-one); a massive
+  finite bundle is a *mixed* celestial spin state, with the celestial-moment
+  form `m^2 = (E^2 - |C|^2)/4` as the monopole/dipole statement. Slogan, kept in
+  an interpretation paragraph only: mass is the impurity of a null-direction
+  density matrix. State `det rho_{p|u} = (m / E_u)^2` as the observer-conditioned
+  proxy, not as the invariant.
+
+- **Measure-valued null dust (continuum / P1.5 bridge).** Add a forward-pointing
+  subsection: the finite sum `P = sum_i psi_i psi_i^dagger` generalizes to
+  `P = integral psi psi^dagger dmu(psi)` over a positive measure `mu` on the
+  celestial sphere, with `det P ~ (1/2) integral integral |psi wedge phi|^2
+  dmu dmu`. The massless criterion becomes: `mu` is supported on one projective
+  spinor direction. This is the cleanest bridge from finite P1 algebra to the
+  DEC/continuum scaffold and is the natural "P1.5" theorem (finite bundles, then
+  positive measures, then approximation/convergence). It does not claim QCD or
+  Higgs dynamics are derived; it says any continuum object built from null
+  directions has invariant mass equal to angular second moment.

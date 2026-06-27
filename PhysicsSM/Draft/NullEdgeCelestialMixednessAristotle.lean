@@ -30,6 +30,11 @@ Mathematical intent:
 
 Claim boundary:
 
+* this is a finite density-matrix reformulation of the trusted P1 Pluecker-mass
+  core (`PhysicsSM.Spinor.PluckerMass`), recasting `det(sum_i psi_i psi_i^dagger)`
+  as visible reduced-state mixedness.  It is a finite identity / finite
+  reconstruction, **not** a mass-spectrum prediction and not a QCD, Higgs,
+  Yukawa, or Standard Model mass claim;
 * no continuum limit, scattering amplitude, or Penrose transform is asserted;
 * no nonorthogonal partial trace theorem is asserted here;
 * the reduced-density statements model the orthogonal/decohered internal-label
@@ -290,6 +295,21 @@ theorem normalizedVisibleDensity_det_eq_plucker_over_trace_sq
       (finPairwisePluckerMassReal psi : Complex) / (visibleTrace psi) ^ 2 := by
   rw [normalizedVisibleDensity_det_eq_det_div_trace_sq,
     visibleReducedDensity_det_eq_plucker]
+
+/--
+The normalized reduced visible density `rho = P / tr(P)` is a genuine
+trace-one density matrix, provided the visible trace is nonzero.  This is the
+finite normalization that turns the unnormalized Pluecker momentum `P` into a
+bona fide visible celestial state.
+-/
+theorem normalizedVisibleDensity_trace
+    {n : Nat} (psi : Fin n -> CSpinor) (h : visibleTrace psi != 0) :
+    Matrix.trace (normalizedVisibleDensity psi) = 1 := by
+  have h' : visibleTrace psi ≠ 0 := by simpa using h
+  unfold normalizedVisibleDensity
+  rw [Matrix.trace_smul, smul_eq_mul]
+  change (visibleTrace psi)⁻¹ * visibleTrace psi = 1
+  exact inv_mul_cancel₀ h'
 
 /-! ## 4. Generation/internal-label blindness -/
 

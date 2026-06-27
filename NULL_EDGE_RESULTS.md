@@ -22,9 +22,16 @@ parameter fixed or restricted). The program has **no predictions yet**.
 > effective mass appears as a canonical quadratic obstruction to remaining a
 > single free gapless null mode.
 
+The project should now be read as an **obstruction-geometry program**, not only
+as "mass from null-edge spread." The finite Plucker theorem is the trusted core,
+but the broader target is to classify when a one-beam, one-branch, one-orbit, or
+one-canonical-mode description fails.
+
 The deliberately *non*-claim: not all mass is literally one Plucker-spread
-formula. Different sectors (Yukawa, electroweak, QCD, Higgs) realize the same
-*obstruction pattern* through different canonical maps.
+formula. Different sectors (Yukawa, electroweak, QCD, Higgs, Gate C branch
+release) realize the same *obstruction pattern* through different canonical
+maps: finite rank/mixedness defects, stiffness/Hessian directions, branch-line
+selection failures, and forbidden internal maps.
 
 ---
 
@@ -65,9 +72,13 @@ mass (the seam to the P2 operator program).
 
 **Reading.** This makes the old "trapped, disagreeing light" / "mass without
 mass" intuition exact and machine-checked: a finite bundle of null momenta has
-invariant mass exactly to the extent its directions fail to align. It is finite
-kinematics -- not a continuum Dirac limit, not a particle spectrum, not QCD or
-Higgs dynamics.
+invariant mass exactly to the extent its directions fail to align. Equivalently,
+with `P = sum_i psi_i psi_i^dagger` and `rho = P / Tr(P)` after a chosen visible
+normalization, the massless locus is the pure/projectively rank-one locus and
+mass is the visible null-direction impurity. The invariant theorem remains
+`det(P) = m^2`; normalized mixedness is the observer-conditioned `m/E` reading.
+It is finite kinematics -- not a continuum Dirac limit, not a particle spectrum,
+not QCD or Higgs dynamics.
 
 ---
 
@@ -88,6 +99,19 @@ mass mechanisms. Status per sector:
 The word **canonical** is load-bearing: a map only counts if it is forced by
 geometry, representation theory, gauge covariance, or finite algebra. A map
 chosen *after* the mass is known is just reparametrization.
+
+The common template is:
+
+```text
+zero locus / moduli locus
++ canonical obstruction section or map
++ quadratic norm, determinant, Hessian, or gap
+= mass-like stiffness or release criterion
+```
+
+This is the intended unifying language. It lets P1 stay a finite identity while
+allowing Gate C, Gate H, electroweak stiffness, and neutrino map choices to have
+their own honest mechanisms.
 
 ---
 
@@ -152,6 +176,26 @@ Current posture: the bare operator is labeled **FATAL-FOR-NAIVE-FLAT, not fatal
 for the program**. Release, if it happens, is for a specified regulated/projected
 `D_phys`, not for `D_+`.
 
+Pro Gate C refinement (2026-06-27): treat C0 as the clean species-health theorem
+and C1 as a separate **release datum** problem. If the doubled external symbol is
+anti-Hermitian and the scalar Wilson weight satisfies `W(q) >= 0`, then
+`A(q) + r W(q) I` has a quantitative gap bounded by `r W(q)`; this can gap
+non-origin real-torus zeros without classifying the full branch locus. That is
+C0 evidence only. C1 requires additional data:
+
+```text
+(D_gap, Pi_phys, D_phys, Gamma_lat, physical/Krein data)
+```
+
+with a one-Weyl-line origin sector, true inverse-propagator gaps on mirror or
+unwanted branch components, locality or controlled quasi-locality, ghost-zero
+safety, anomaly accounting, and positive physical residues. Direct unprojected
+overlap on the full bare `D_+` is now a risk to test, not a default route: if an
+unwanted zero branch germ reaches the origin and crosses the shifted Wilson mass
+shell, the overlap sign kernel becomes singular. The null-edge-native C1 route
+is therefore either a genuine branch classifier/projector (`T_br` or `Pi_br`) or
+a controlled domain-wall/projected-overlap construction after that branch split.
+
 ---
 
 ## 6. Internal algebra: the Furey/Baez bridge (Gate H, PROMISING SUPPORT)
@@ -187,6 +231,17 @@ To prevent overclaim, the program explicitly does **not** have:
 - a neutrino mechanism (Dirac vs Majorana, seesaw, mixing) -- treated only as a
   stress test.
 
+Prediction discipline:
+
+```text
+first target: absence / forbidden-operator / codimension theorems;
+next target: rank, texture, or map-choice constraints;
+later target: numerical mass values, only after a constrained finite-to-EFT map.
+```
+
+This means the first genuine prediction-grade output may be a structural
+exclusion, not a number.
+
 ---
 
 ## 8. Bottom line
@@ -205,3 +260,28 @@ for the null-edge operator.
 Even if no prediction ever appears, the trusted P1 theorem plus a formalized
 reconstruction of known mass mechanisms is a coherent, defensible result on its
 own.
+
+## 9. Lateral-analysis updates (2026-06-27)
+
+- **Mixedness reformulation (finite + observer-conditioned):**
+  For any finite bundle define `P = sum_i psi_i psi_i^\dagger` and `rho = P / Tr(P)` in a chosen visible sector.
+  The trusted identity remains `det P = m^2`, while `det rho = (m/(2E_u))^2` is an observer-conditioned impurity rate in the chosen timelike frame.
+  Massless is equivalent to projective rank-one (`rho` pure); mass is finite impurity of the resolved visible null sector. This is strongest when phrased as a finite “resolution-observer vs kinematic-observer” split.
+
+- **Plucker hierarchy lens:**
+  The current theorem is the `k=2` member `sum_{i<j}|psi_i \wedge psi_j|^2`.
+  A natural program extension is the full Cauchy–Binet ladder `e_k(Psi Psi^\dagger)` / higher exterior-power obstruction, with physical meaning as higher-mode rank bounds and multibranch structure diagnostics.
+
+- **Gate C topology-first framing:**
+  Keep `Z = { q : det D_+(q) = 0 }` as a first-class branch object.
+  Gate C is not a scalar-coefficient tweak target alone; it is a branch-line/sheet selection and kernel-sheaf problem with nodal-control, projection, branch involution, gap, and ghost-zero safety clauses made explicit.
+
+- **Prediction-priority adjustment:**
+  Before mass-value predictions, prioritize prediction-grade structural outputs:
+  (i) forbidden-operator and codimension theorems (no leptoquark/diquark/proton-decay/colored-Higgs legal blocks),
+  (ii) rank-defect constraints, and
+  (iii) C0/C1 split discharge with ghost-safe, Krein-positive physical sector data.
+
+- **Neutrino as sharp stress test:**
+  Keep neutrinos as the most immediate map-choice stress test, not a solved mechanism.
+  Treat Dirac/Majorana/seesaw as branchable options constrained by canonical obstruction and projection architecture.

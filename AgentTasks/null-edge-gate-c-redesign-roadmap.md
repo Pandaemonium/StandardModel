@@ -350,3 +350,68 @@ per-branch physical classification and formal 1.8 escalation PENDING the
 `krein_sign` / `gauge_content` / `h_scaling` / `growth_rate` / `chirality`
 columns; kill switch ENGAGED; redesign (domain-wall first, overlap second,
 Wilson fallback) required to attempt passage.**
+
+---
+
+## 6. Branch-topology reframing (2026-06-27 lateral analysis)
+
+This section reframes the redesign as a branch-topology / algebraic-geometry
+problem rather than an operator-coefficient search. It records design hypotheses
+only; it certifies nothing and runs no build. Convention/claim-label backing is
+in `docs/NULLSTRAND.md` (lateral-analysis guardrails) and
+`AgentTasks/null-edge-decision-log-2026-06-27.md` (D25).
+
+### 6.1 Branch locus and kernel sheaf as first-class objects
+
+Define the branch locus `Z = { q : det D_+(q) = 0 }` and study the kernel sheaf
+over `Z` (the kernels of `D_+(q)` as `q` ranges over `Z`). The known structure to
+encode: balanced origin kernel, off-branch zeros, and the `S_4` / cyclotomic
+orbit of extra zeros (C21/C43/C88; the C66 cyclotomic nodal-set report). Gate C1
+then reads:
+
+> Does there exist a gauge-safe, Krein-safe, equivariant spinor-line subbundle
+> over the physical branch germ, with all other germs receiving true
+> inverse-propagator gaps?
+
+This is a line-bundle / index / equivariance question, not a coefficient tweak.
+
+### 6.2 Branch involution as more than bookkeeping
+
+Promote the branch involution `T_br` to the object that defines the split between
+the physical line and the mirror line, so that a release is the choice of a
+`T_br`-equivariant physical sheet, not a global scalar deformation.
+
+### 6.3 Matrix-valued (branch-equivariant) Wilson lift
+
+Since the scalar Wilson no-go is sharp, the next object is not a better scalar
+Wilson. Consider `D_phys(q) = D_+(q) + W(q) . Pi_bad(q)` where `Pi_bad` is a
+branch-equivariant spinor-line projector (not taste-only, not internal-only). The
+hard part is making `Pi_bad` local or acceptably quasi-local, gauge-covariant,
+Krein-safe, and smooth near the origin. Target design hypothesis:
+
+> Scalar Wilson cannot polarize chirality, but a branch-equivariant line Wilson
+> can, provided it is a true inverse-propagator gap and not a propagator zero.
+
+Every candidate must pass the three-line branch audit (see
+`AgentTasks/null-edge-golterman-shamir-ghost-zero-audit.md`).
+
+### 6.4 C1-alternatives classification (prove before tuning)
+
+Rather than trying projected-Weyl / domain-wall / overlap variants one at a time,
+first attempt a classification:
+
+> Under locality, covariance, branch symmetry, and ghost safety, a release must
+> use one of: boundary inflow, overlap / sign projection, non-ultralocality,
+> matrix-valued spinor-line Wilson mass, or explicit branch involution.
+
+Even a partial classification narrows the redesign and tells us which lattice
+lesson applies (Kaplan's domain-wall/overlap/Ginsparg-Wilson framing).
+
+### 6.5 Lower-dimensional toy zoo as stress-test laboratories
+
+Build a small "null-edge C1 zoo" in 1+1D or 2+1D and ask which failure modes
+reproduce the C21/C43/C88 pattern. If the same obstruction pattern appears in
+toy systems, Gate C is less idiosyncratic and more publishable. Use the
+symmetric-mass-generation and reduced Kahler-Dirac literature (already in the
+`literature-queue.md`, plus the 2606.24713 one-dimensional SMG addition) as
+controlled mirrors, not as solutions.

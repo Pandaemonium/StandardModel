@@ -437,11 +437,13 @@ Purpose:
 - Replace C98's forgeable `InterfaceToy` with a finite substrate where index values are computed from actual finite state/operator data rather than arbitrary plus/minus count fields.
 ## C99b - Finite graded-operator chiral-index benchmark
 
-Status: submitted
+Status: returned_payload_missing
 Project ID: `309944d6-800a-4399-a2fc-3d294883ce28`
+Task ID: `35587dfb-4bc1-4ac6-b5f6-83ebbdc1cf2b`
 Target: `PhysicsSM/Draft/NullEdgeFiniteGradedOperatorIndexTemplate.lean`
 Prompt path: `AgentTasks/null-edge-wave24-c99b-finite-graded-operator-index-template-aristotle-2026-06-27.md`
 Submitted: 2026-06-27
+Reviewed: 2026-06-27
 
 Dependency class:
 
@@ -455,6 +457,12 @@ Purpose:
 Non-goals:
 
 - No C1 release, ghost-zero safety, regulator-removal stability, overlap/GW release, domain-wall release, anomaly cancellation, or physical anti-vectorialization.
+
+Integration notes:
+
+- Aristotle reported completion and summarized a candidate module.
+- The local output contained no project-files archive or candidate Lean file, so
+  nothing was faithfully integrated.
 ## C99 - Finite chiral-index substrate
 
 Status: integrated as fallback/planning substrate
@@ -469,11 +477,13 @@ Review status:
 
 ## C99-v2 - Grading-involution chiral-index substrate
 
-Status: submitted
+Status: returned_payload_missing
 Project ID: `b97de9d7-3661-4feb-a8b6-0e138bb597b5`
+Task ID: `60506b55-ad7a-4690-8336-6db840c04440`
 Target: `PhysicsSM/Draft/NullEdgeFiniteGradingInvolutionIndex.lean`
 Prompt path: `AgentTasks/null-edge-wave24-c99-v2-grading-involution-substrate-aristotle-2026-06-27.md`
 Submitted: 2026-06-27
+Reviewed: 2026-06-27
 
 Dependency class:
 
@@ -482,3 +492,207 @@ Dependency class:
 Purpose:
 
 - Upgrade C99 with explicit Gamma, Gamma^2, D/Gamma compatibility, eigenspace-derived sectors, and non-native trusted index examples if feasible.
+
+Integration notes:
+
+- Aristotle reported completion and summarized a candidate module.
+- The local output contained no project-files archive or candidate Lean file, so
+  nothing was faithfully integrated.
+
+## Wave 25 - Lateral-analysis Aristotle round
+
+Status: submitted
+Submitted: 2026-06-27
+Submission project: `AgentTasks/aristotle-submit/null-edge-wave25-lateral-analysis-20260627-project`
+Context pack: `AgentTasks/context-packs/null-edge-wave25-lateral-analysis-20260627-114614.md`
+
+Purpose:
+
+- Convert the new lateral analysis into focused Aristotle jobs around finite
+  mixedness, finite weighted-measure Pluecker identities, a higher Pluecker
+  obstruction ladder, Gate C branch-locus/physical-sector alternatives, and
+  Gate H forbidden-operator/neutrino stress tests.
+
+## P15 - Pluecker mass as finite density-matrix mixedness
+
+Status: integrated
+Project ID: `56e5e922-f4bb-43b0-9a3d-6df24099661a`
+Task ID: `b52ad67c-be91-4377-9d85-6d227bffe6a9`
+Target: `PhysicsSM/Draft/NullEdgeCelestialMixednessAristotle.lean`
+Prompt path: `AgentTasks/null-edge-wave25-p15-mixedness-density-theorem-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+Integrated: 2026-06-27
+
+Purpose:
+
+- Harden the finite density-matrix/mixedness reading of the Pluecker mass
+  theorem and record exact theorem names or missing next theorem targets.
+
+Integration notes:
+
+- Added `normalizedVisibleDensity_trace` and clarified the finite
+  density-matrix claim boundary.
+
+## P16 - Finite weighted-measure Pluecker theorem
+
+Status: submitted
+Project ID: `8dbe5125-d0e9-4c8f-a7c4-ab2ca98550da`
+Task ID: `749797a7-a2f5-4d93-86ee-6e46b20e7d08`
+Target: `PhysicsSM/Draft/NullEdgeMeasurePluckerApproximation.lean`
+Prompt path: `AgentTasks/null-edge-wave25-p16-weighted-measure-plucker-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+
+Purpose:
+
+- Prove a finite positive-weight proxy for the proposed measure-valued null-dust
+  Pluecker theorem.
+
+## P17 - Pluecker hierarchy / higher obstruction ladder
+
+Status: submitted
+Project ID: `3c535234-4b61-414c-b004-f7202be553d6`
+Task ID: `be7cfcbd-843e-4a14-bde8-2470fff7af34`
+Target: `PhysicsSM/Draft/NullEdgePluckerHierarchyAristotle.lean`
+Prompt path: `AgentTasks/null-edge-wave25-p17-plucker-hierarchy-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `IN_PROGRESS`.
+
+Purpose:
+
+- Build a finite hierarchy API for higher Cauchy-Binet/Pluecker obstruction
+  diagnostics without claiming particle-count predictions.
+
+## C100 - Gate C branch locus and release alternatives
+
+Status: integrated
+Project ID: `fe79fdc5-e44f-420d-bdda-8e509ea66819`
+Task ID: `e7c5f428-3b83-4e56-a0b9-1cb14c5e4fd0`
+Target: `PhysicsSM/Draft/NullEdgeBranchLocusPhysicalSectorAPI.lean`
+Prompt path: `AgentTasks/null-edge-wave25-c100-branch-locus-sheaf-alternatives-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+Integrated: 2026-06-27
+
+Purpose:
+
+- Recast Gate C as branch-locus/kernel-sheaf/physical-sector data and separate
+  scalar C0 lifting from C1 branch-line release alternatives.
+
+Integration notes:
+
+- Added a C1-facing branch-locus/physical-sector API with explicit
+  non-implication guardrails and matrix-valued spinor-line Wilson design slots.
+
+## H11 - Forbidden finite operators and neutrino stress-test audit
+
+Status: lean_skeleton_integrated_report_missing
+Project ID: `29b72890-a3d1-4474-a39f-bafa4e07c0f2`
+Task ID: `ff3b3c1c-ef80-45f6-b88c-47449c60744a`
+Target: `AgentTasks/null-edge-gate-h-forbidden-operator-neutrino-audit.md`
+Prompt path: `AgentTasks/null-edge-wave25-h11-forbidden-operator-neutrino-audit-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `IN_PROGRESS`.
+Integrated: 2026-06-27
+
+Purpose:
+
+- Separate gauge-only, `J_F`/order-one, and ideal-compatibility reasons for
+  forbidden blocks, with neutrinos treated as a branchable stress test.
+
+Integration notes:
+
+- Integrated the returned Lean skeleton
+  `PhysicsSM/Draft/NullEdgeLegalFiniteDiracNeutrinoAudit.lean`.
+- The requested Markdown audit report was not present in the downloaded project
+  files, so it remains missing rather than reconstructed.
+
+## Wave 26 - Gate C branch-release literature round
+
+Status: submitted
+Submitted: 2026-06-27
+Submission project: `AgentTasks/aristotle-submit/null-edge-wave26-gate-c-branch-release-20260627-project`
+Context pack: `AgentTasks/context-packs/null-edge-wave26-gate-c-branch-release-20260627-121710.md`
+Literature memo: `AgentTasks/null-edge-gate-c-neo4j-lit-lateral-analysis-2026-06-27.md`
+
+Search/tooling note:
+
+- Neo4j MCP is reachable.
+- `SHOW FULLTEXT INDEXES` returned no native full-text indexes.
+- Vector indexes `paper_embedding`, `paper_chunk_embedding`, and
+  `ne_chunk_embedding` are online.
+- Semantic paper full-text search is available via
+  `Scripts/lit/neo4j_paper_search.py --chunks`.
+
+Purpose:
+
+- Use the literature pass to push Gate C from broad branch-topology framing into
+  concrete theorem obligations: C0 closeout, direct-overlap singular crossing,
+  scalar origin no-go, branch classifier data, and release-datum/domain-wall
+  audit.
+
+## C101 - C0 scalar-Wilson gap closeout
+
+Status: submitted
+Project ID: `cfaa6a95-5c5c-4a10-8363-c191163a7d0b`
+Task ID: `ad8f8170-89cf-4aa9-a56d-0416819b45e6`
+Target: `PhysicsSM/Draft/NullEdgeC0ScalarWilsonGapCloseout.lean`
+Prompt path: `AgentTasks/null-edge-wave26-c101-c0-scalar-wilson-gap-closeout-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+
+Purpose:
+
+- Bank the anti-Hermitian plus positive scalar Wilson gap theorem as C0 only.
+
+## C102 - Direct-overlap singular-crossing theorem
+
+Status: submitted
+Project ID: `1af1a6a5-d795-4321-9153-e16b88a2ff69`
+Task ID: `f6d9c1f1-a160-4545-a551-706a5b18855a`
+Target: `PhysicsSM/Draft/NullEdgeDirectOverlapSingularCrossing.lean`
+Prompt path: `AgentTasks/null-edge-wave26-c102-direct-overlap-singular-crossing-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+
+Purpose:
+
+- Formalize the conditional hazard that an unwanted zero branch crossing the
+  shifted Wilson mass shell makes direct unprojected overlap singular.
+
+## C103 - Scalar-origin balanced-kernel no-go
+
+Status: submitted
+Project ID: `b2361c23-fde0-4d07-9a03-4c9e37f5cc6d`
+Task ID: `72769d93-323c-4ec7-a2b7-68db506a5f68`
+Target: `PhysicsSM/Draft/NullEdgeScalarOriginBalancedKernelNoGo.lean`
+Prompt path: `AgentTasks/null-edge-wave26-c103-scalar-origin-balanced-kernel-no-go-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+
+Purpose:
+
+- Generalize the scalar Wilson no-go: origin-vanishing scalar deformations
+  preserve a balanced origin kernel, while nonzero scalars remove the origin
+  mode rather than selecting one Weyl line.
+
+## C104 - Branch classifier API
+
+Status: submitted
+Project ID: `054ff61b-1271-432f-ae14-bde0a03b77e4`
+Task ID: `722c441f-cc78-49ba-b066-b58a1b973f1a`
+Target: `PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean`
+Prompt path: `AgentTasks/null-edge-wave26-c104-tbr-branch-classifier-api-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+
+Purpose:
+
+- Define the `T_br` / `Pi_br` branch classifier fork and guard against
+  taste-only or scalar-on-origin substitutes.
+
+## C105 - Release datum and domain-wall/projected-overlap audit
+
+Status: submitted
+Project ID: `c633c689-2dd4-4748-97fd-869802a471eb`
+Task ID: `bcf75a14-3044-4f9a-851c-bec41c1d21ec`
+Target: `AgentTasks/null-edge-gate-c-release-datum-domain-wall-audit.md`
+Prompt path: `AgentTasks/null-edge-wave26-c105-release-datum-domain-wall-audit-aristotle-2026-06-27.md`
+Initial status: project `RUNNING`, task `QUEUED`.
+
+Purpose:
+
+- Produce a route audit comparing raw overlap, projected overlap, spinor-line
+  Wilson, domain-wall/boundary, and controlled quasi-local projector releases.

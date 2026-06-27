@@ -534,3 +534,28 @@ Potentially new as a combined result:
 - the conclusion that mass and causal-diamond curvature naturally share a two-history layer.
 
 A preliminary literature search did not locate this complete theorem package, but that is not a guarantee of priority.
+
+## 12. Lateral-analysis note (2026-06-27)
+
+The general exterior-rank theorem in section 8 (`M_d(A) = sum_{|S|=d}
+|det V_S|^2`, mass being the `d = 2` case) already realizes the "Plucker
+hierarchy" extension raised in the 2026-06-27 lateral analysis: it is the
+Cauchy-Binet ladder `e_k(Psi Psi^dagger)` in capacity form. Two pointers added
+so the connection is not rediscovered:
+
+- This section is the spine for conjecture 5 (Plucker hierarchy) in
+  `Sources/Null_Edge_Key_Conjectures.md`. The physical reading proposed there is
+  that the `k`-th obstruction counts independent beams/branches/internal modes,
+  with the higher exterior powers becoming nontrivial only in enlarged spaces
+  (`d > 2` here: twistor, internal/branch, or form-degree).
+- Literature collision: collider energy-correlator hierarchies are built from
+  energies and pairwise angles, with higher-point correlators sensitive to
+  multi-prong substructure. The `d = 2` mass capacity may be the two-point member
+  of a null-edge event-shape ladder. See the energy-correlator additions in
+  `Sources/Null_Edge_Causal_Graph_Bibliography.md`.
+
+Separately, the `d = 2` determinant `det P` has the qubit-mixedness reading
+(`rho = P / Tr(P)`, massless = pure, massive = mixed) developed in the P1
+manuscript and skeleton; that is the normalized, observer-conditioned shadow of
+the grade-2 capacity here and must keep that claim label
+(see `docs/NULLSTRAND.md`).

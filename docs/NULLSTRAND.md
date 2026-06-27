@@ -309,3 +309,53 @@ Start with:
 - `AgentTasks/`
 
 These files are allowed to evolve faster than AGENTS.md.
+
+## Lateral-analysis guardrails (2026-06-27)
+
+Guardrails added after a lateral read of the mass program. These are
+convention/claim-label rules, recorded here so future agents apply them by
+default. The decision-log entry is
+`AgentTasks/null-edge-decision-log-2026-06-27.md` (D25).
+
+- **Treat the project as obstruction geometry, not only mass from spread.** The
+  finite Plucker theorem is the trusted core example, but the wider program is
+  the classification of canonical failures of one-beam, one-branch, one-orbit,
+  or one-mode descriptions. Use the pattern `zero locus / moduli locus +
+  canonical obstruction + quadratic norm, determinant, Hessian, or gap`. Do not
+  force Yukawa, Higgs, QCD, Gate C, and internal finite algebra into one literal
+  Plucker formula.
+
+- **Observer-conditioned mixedness is a separate claim label from the invariant
+  Pluecker mass.** Keep `det P = m^2` as the invariant finite statement on the
+  unnormalized visible momentum block `P = sum_i psi_i psi_i^dagger`. Only the
+  normalized form `det rho_{p|u} = (m / E_u)^2`, with `rho = P / Tr(P)` in a
+  chosen visible sector and `E_u` a chosen timelike normalization, may carry
+  "mixedness" / "impurity" language, and it must be labeled observer-conditioned:
+  it depends on both a resolution observer (the partial trace over hidden labels)
+  and a kinematic observer (the timelike frame). Do not let frame-relative
+  mixedness language leak into statements about the invariant determinant.
+
+- **Gate C is a branch-topology problem, not a scalar-coefficient tweak.** Treat
+  the branch locus `Z = { q : det D_+(q) = 0 }`, its kernel sheaf, and the branch
+  involution as first-class objects. Do not describe a Gate C1 release as scalar
+  Wilson tuning: the scalar Wilson no-go is sharp. Log any candidate release in
+  terms of nodal control, kernel/spinor-line projection, a true inverse-propagator
+  mass gap (not a propagator zero), ghost-zero safety, and chirality alignment.
+  This sharpens the existing guardrail that retardedness alone is not a
+  no-doubling proof: the determinant-level test lives on `Z`.
+
+- **C1 is release data, not a bare corrected symbol.** A C1 claim needs at least
+  `(D_gap, Pi_phys, D_phys, Gamma_lat, physical/Krein data)` with a selected
+  one-Weyl-line origin sector, true gaps on mirror/unwanted branch components,
+  locality or controlled quasi-locality, and anomaly/ghost audits. Treat direct
+  unprojected overlap on the full bare `D_+` as unsafe until a shifted-kernel
+  mass-window theorem proves there is no singular crossing from an unwanted
+  zero branch germ. The null-edge-native route to try first is a branch
+  classifier/projector (`T_br` or `Pi_br`) that is not scalar on the balanced
+  origin kernel and separates branch germs rather than tastes only.
+
+- **Prediction-grade should start with absence theorems.** Before numerical mass
+  values, prefer forbidden-operator, codimension, rank, texture, and map-choice
+  constraints. In particular, Gate H/Gate F should prioritize legal finite
+  Dirac/Higgs block classification and neutrino branch decisions before any
+  Yukawa-value rhetoric.

@@ -554,3 +554,20 @@ Read against the live tree (not assumed):
 `Gauge/StandardModelProductCoveringTrueQuotientSMBlock`, the Wave-20 briefing
 digest, and the Wave-19 taste-involution origin-polarization audit.
 ```
+
+---
+
+## 13. Priority note (2026-06-27 lateral analysis)
+
+A lateral read of the mass program independently identified this gate's target,
+`LegalFiniteDiracForbiddenOperator`, as the best near-term prediction-grade
+result: an absence theorem (the legal finite Dirac/Higgs operator has exactly the
+SM block form, with no leptoquark, diquark, proton-decay, wrong-hypercharge, or
+colored-Higgs blocks) is more plausible and arguably more valuable than any
+numerical mass prediction. The recommended framing is "the first prediction is
+not a mass value, it is an absence theorem." This matches the prediction-ledger
+verdicts (`AgentTasks/null-edge-f15-genuine-prediction-candidate-ledger.md`,
+`AgentTasks/null-edge-post-route-b-prediction-ledger.md`) and the related
+division-algebra motivation in
+`Sources/Furey_Baez_DVT_Formalization_Paper_Outline.md`. The lateral analysis
+adds emphasis only; the structural-theorem plan above is unchanged.

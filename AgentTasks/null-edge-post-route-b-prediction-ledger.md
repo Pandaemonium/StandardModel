@@ -250,3 +250,14 @@ flavored index taken alone.
   the only honest "prediction" language is conditional and names its falsifier.
 - Caveat: C47 (`NullEdgeProjectedGateCRelease.lean`) was not in the tree and could
   not be scored; recovering it can at most strengthen R1/R4, not revive `r`.
+
+## Convergence note (2026-06-27 lateral analysis)
+
+A lateral read of the program independently concluded that the first
+prediction-grade output should be a forbidden-operator / absence theorem rather
+than a mass magnitude, which matches this ledger's standing verdict (all of
+R1-R4 are forbidden-operator / codimension / rank-deficit / discrete-forcing
+mechanisms; none is a magnitude). No new prediction is added here. The only
+adjustment is emphasis: prioritize R3 (forbidden-counterterm codimension to
+`M_EFT`) and the Gate H `LegalFiniteDiracForbiddenOperator` absence theorem as
+the near-term publication-safe structural targets, ahead of any spectrum claim.

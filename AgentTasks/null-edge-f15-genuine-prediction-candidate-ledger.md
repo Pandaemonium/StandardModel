@@ -21,3 +21,15 @@ What it contains, addressing each task:
 5. **Adversarial verdict** — stated plainly: the formalized targets are all reconstruction/consistency and the free EFT moduli make `F` full-rank as written; the only genuine structural route is the Gate-C branch-chirality forcing, which remains PENDING until its falsifiable operator lemma is kernel-checked.
 
 The report uses no prediction language for any target without naming an explicit rank/codimension/forcing mechanism, and proposes no new axioms (all suggested targets are ordinary `sorry` handoffs).
+
+## Convergence note (2026-06-27 lateral analysis)
+
+An independent lateral read of the program reached the same verdict this ledger
+already records: the first prediction-grade result should be an **absence
+theorem**, not a mass value ("the program does not predict `m_e`, but it predicts
+that certain dangerous maps are not legal at all"). This is reinforcement, not a
+new claim. It maps onto R3 here (forbidden-counterterm codimension promoted to
+`M_EFT`) and the Gate H target `LegalFiniteDiracForbiddenOperator` in
+`AgentTasks/null-edge-gate-h-legal-finite-dirac-forbidden-operator-plan.md`. The
+ranking above is unchanged; the lateral analysis only raises the priority of the
+forbidden-operator / codimension family relative to any magnitude target.

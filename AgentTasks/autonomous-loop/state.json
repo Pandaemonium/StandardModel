@@ -3,8 +3,12 @@
   "created": "2026-06-27",
   "updated": "2026-06-27",
   "mode": "manual_autonomous_loop",
-  "current_state": "C99_INTEGRATED_FALLBACK_C99V2_SUBMITTED",
-  "current_objective": "Run cycle 14 with dependency-aware scheduling: monitor C99b/C99-v2/C89/C92/C93/C82/C70, treat C99 as integrated fallback/planning substrate only, integrate C99b or C99-v2 if returned, keep C94 hard-dependent on C93, and keep C96 held until C92 ghost-safety and C89 regulator/removal APIs return.",
+  "current_state": "TWO_TRACK_RESTART_GATE_C_PLUS_EXPLORATION",
+  "current_objective": "Run the loop as two co-equal tracks (see current-objective.md). Track A: Gate C0/C1/H/F convergent work - monitor/integrate C99b/C99-v2/C89/C92/C93/C82/C70, treat C99 as fallback substrate only, keep C94 hard-dependent on C93, hold C96 until C92/C89 return, and prioritize the Gate H LegalFiniteDiracForbiddenOperator absence theorem. Track B: qubit/information + generalization - mixedness det(rho)=(m/E_u)^2, Plucker hierarchy k>2, obstruction-stiffness unification, measure-valued P1.5; may spawn Aristotle jobs once a target is sharp; counts as progress only with a named failure mode, a finite theorem target, or a falsifiable prediction. Both tracks every cycle; meta-review checks both.",
+  "tracks": {
+    "A_convergent_gates": "Gate C0/C1/H/F theorem + integration spine",
+    "B_exploration": "qubit/information + generalization (obstruction-geometry reframe), may spawn Aristotle jobs, falsifiability-gated"
+  },
   "cycles_completed": 13,
   "autonomy": {
     "aristotle_submissions": true,
@@ -96,6 +100,7 @@
     "public_claim_boundary_changes",
     "negative_result_should_be_reframed_as_main_story",
     "destructive_filesystem_or_history_edit",
-    "strategic_choice_requires_owner_taste"
+    "strategic_choice_requires_owner_taste",
+    "track_b_generalization_ready_to_change_headline_framing"
   ]
 }

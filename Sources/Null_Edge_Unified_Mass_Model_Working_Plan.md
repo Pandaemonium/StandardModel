@@ -25,6 +25,11 @@ effective mass appears as a canonical quadratic obstruction to remaining a
 single free gapless null mode.
 ```
 
+Read this as an obstruction-geometry program, not as a single-formula mass
+program. The trusted finite Plucker theorem is the core example, but the
+larger target is to classify canonical failures of one-beam, one-branch,
+one-orbit, or one-mode descriptions.
+
 Do not claim:
 
 ```text
@@ -43,6 +48,15 @@ The word `canonical` is load-bearing. A map `B` is useful only when it is forced
 by geometry, representation theory, gauge covariance, finite algebra, or an
 explicit physical structure. If `B` is chosen after the mass is known, the claim
 is just reparametrization.
+
+Use this template when proposing new mechanisms:
+
+```text
+zero locus / moduli locus
+canonical obstruction map or section
+quadratic norm, determinant, Hessian, or inverse-propagator gap
+claim label: finite identity / reconstruction / structural theorem / prediction
+```
 
 ## 2. Claim labels
 
@@ -75,6 +89,18 @@ Gate F prediction: open; no numerical mass prediction yet.
 Gate H Furey/internal spectrum: promising support, not a Gate C solution.
 ```
 
+Prediction ladder:
+
+```text
+Level 0: finite identity or reconstruction, no prediction claimed.
+Level 1: absence theorem / forbidden operator / codimension result.
+Level 2: rank, texture, or map-choice constraint.
+Level 3: constrained finite-to-EFT relation R(theta_EFT)=0.
+Level 4: numerical mass/coupling value.
+```
+
+Near-term Gate F should aim at Level 1 before mass-value claims.
+
 ## 3. Canonical obstruction table
 
 | Mechanism | Canonical obstruction | Current status |
@@ -86,6 +112,18 @@ Gate H Furey/internal spectrum: promising support, not a Gate C solution.
 | Higgs boson | radial Hessian/stiffness of `V` at vacuum | Scalar-potential reconstruction. |
 | Neutrino | Dirac/Majorana/seesaw block | Stress test; no mechanism selected. |
 | QCD/hadron mass | no clean finite `B` yet | QCD supplies confinement; Plucker supplies invariant accounting once momenta are given. |
+
+Neutrino checkpoint:
+
+| Option | Program meaning | Status |
+| --- | --- | --- |
+| `nu_R` absent | no sterile/right-handed block in the finite carrier | viable branch to audit, not selected |
+| `nu_R` present, Dirac only | `M_D : E_R -> E_L` is legal, `M_R` forbidden or absent | stress-test branch |
+| `nu_R` present with Majorana | `M_R : E_R -> E_R^c` is legal under finite-algebra clauses | stress-test branch |
+| seesaw | second-order effective obstruction after integrating out heavy legal block | downstream only after legality is settled |
+
+Do not hide this decision in prose. Every finite-algebra proposal should say
+which row it supports, forbids, or leaves optional.
 
 ## 4. Paper path
 
@@ -196,6 +234,17 @@ Until then, use `reconstruction` or `structural theorem`, not `prediction`.
 
 Gate C is no longer a simple no-doubling or coefficient-zero problem. The
 physical object is determinant/propagator-zero structure.
+
+Named rule:
+
+```text
+Gate C is a branch-locus / physical-sector theorem,
+not a scalar regulator theorem.
+```
+
+Scalar lifting can support Gate C0 species health. It cannot be advertised as
+Gate C1 chiral release without branch-line/projector/index data and ghost-safe
+inverse-propagator gaps.
 
 Distinguish:
 
@@ -987,6 +1036,77 @@ GateC1ChiralPhysicalRelease;
 StagedGateCReleased_from_C0_C1_GateH.
 ```
 
+### 13.7 Pro Gate C branch-line update
+
+Update, 2026-06-27: the latest Pro memo sharpens Gate C into two theorem
+families.
+
+First, C0 should be promoted as a clean species-health theorem. For an
+anti-Hermitian external symbol `A(q)` and scalar Wilson weight `W(q) >= 0`,
+
+```text
+||(A(q) + r W(q) I) v||^2
+  = ||A(q) v||^2 + r^2 W(q)^2 ||v||^2
+```
+
+because the cross term vanishes. Therefore:
+
+```text
+sigma_min(A(q) + r W(q) I) >= r W(q).
+```
+
+For `W(q) = sum_a (1 - cos q_a)`, this gaps every non-origin real-torus zero
+without requiring a full classification of `Z = {q | det D_+(q) = 0}`. This is
+species health, not chiral release.
+
+Second, C1 should be formulated as a release datum, not as a bare operator:
+
+```text
+ReleaseData =
+  (D_gap, Pi_phys, D_phys, Gamma_lat, physical/Krein data)
+```
+
+Required clauses:
+
+```text
+C0SpeciesGap;
+PhysicalProjectorLocalOrQuasilocal;
+OriginWeylLineSelected;
+MirrorAbsentOrInversePropagatorGapped;
+NoGaugeChargedPropagatorZeroRemoval;
+ContinuumWeylSymbolOnRetainedLine;
+PositivePhysicalKreinOrHilbertSector;
+AnomalyAccounting;
+```
+
+Direct unprojected overlap on the full bare `D_+` is now suspect until a mass
+window theorem is proved. The target obstruction is:
+
+```text
+If an unwanted determinant-zero branch q(t) -> 0 satisfies
+D_+(q(t)) v(t) = 0 and W(q(t)) crosses rho/r,
+then X_rho(q) = D_+(q) + r W(q) I - rho I is singular.
+```
+
+Immediate theorem targets from this update:
+
+```text
+C0_antiHermitian_scalarWilson_gap;
+scalar_originVanishing_deformation_cannot_polarize_balanced_kernel;
+directOverlap_massWindow_safe_or_singularCrossing;
+Tbr_branchClassifier_exists_or_noGo;
+PiBr_projectedOverlap_release_contract;
+domainWall_release_contract_after_branchSplit;
+```
+
+The native C1 fork is:
+
+```text
+T_br or Pi_br exists and is analytic/local/gauge-safe;
+or no such branch classifier exists, forcing domain-wall/projected-overlap or
+controlled quasi-local structure.
+```
+
 Use this claim language:
 
 ```text
@@ -1222,3 +1342,28 @@ Treat `nu_R` with a flag:
 optional as pure gauge data;
 possibly canonical under finite-triple or J_F closure.
 ```
+
+## 16. Lateral-analysis updates (2026-06-27)
+
+### 16.1 Core language upgrades already to carry forward
+
+- Add explicit observer-conditioned mixedness language alongside finite Plucker: `det(P)` is invariant, while `det(rho_{p|u}) = (m / E_u)^2` is frame-normalized.
+- Record both observer operations used in the split:
+  1) resolution observer (partial trace over hidden labels),
+  2) kinematic observer (timelike normalization).
+- Phrase Gate C as an algebraic-geometric branch problem: `Z := {q | det D_+(q) = 0}` plus branch-sheet/projector/cokernel data.
+
+### 16.2 Additions to immediate work queues
+
+- Gate C immediate tasks:
+  1. branch locus/sheaf formulation (`det D_+(q)=0`) and local nodal charts;
+  2. explicit branch-index or branch-involution theorem candidates (or no-go);
+  3. gap proofs for lifted branches that are by inverse-propagator mass, not propagator-zero removal;
+  4. explicit projected-physical-sector definition (`B_phys`, `P_phys`, `Gamma_phys`, ghost policy).
+
+- Internal algebra tasks:
+  1. treat forbidden-operator/codimension result as Gate F priority;
+  2. run the intertwiner codimension audit after gauge/`J_F`/order constraints are explicit.
+
+- Mass program sequencing:
+  keep P1/P1.5/P2 separation, defer scalar spectrum claims, and keep “prediction” labels tied to constrained map geometry or codimension results.

@@ -1,5 +1,23 @@
 # Aristotle C99b: finite graded-operator chiral-index benchmark
 
+Integration status: returned remotely, not integrated locally.
+
+Project ID: `309944d6-800a-4399-a2fc-3d294883ce28`
+Task ID: `35587dfb-4bc1-4ac6-b5f6-83ebbdc1cf2b`
+Reviewed: 2026-06-27
+
+Reason:
+
+- Aristotle reported the task complete and summarized a candidate module
+  `PhysicsSM/Draft/NullEdgeFiniteGradedOperatorIndexTemplate.lean`.
+- The local downloaded output did not contain the project-files archive or the
+  candidate Lean file, so there was no faithful artifact to integrate.
+
+Next action:
+
+- Retry artifact download or resubmit as a narrow job if the graded-operator
+  benchmark is still needed.
+
 Dependency class: Independent.
 
 Does not depend on:

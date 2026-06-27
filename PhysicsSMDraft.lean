@@ -389,6 +389,8 @@ been kernel-cleaned and promoted to the trusted modules
 `PhysicsSM.Spinor.SpinorTenfoldFierz`.
 -/
 import PhysicsSM.Draft.NullEdgeAntiVectorializationGuardrail
+import PhysicsSM.Draft.NullEdgeBranchLocusPhysicalSectorAPI
 import PhysicsSM.Draft.NullEdgeChiralIndexWitnessGuardrail
 import PhysicsSM.Draft.NullEdgeFiniteChiralIndexSubstrate
+import PhysicsSM.Draft.NullEdgeLegalFiniteDiracNeutrinoAudit
 import PhysicsSM.Draft.NullEdgeProjectedGateCWilsonRelease

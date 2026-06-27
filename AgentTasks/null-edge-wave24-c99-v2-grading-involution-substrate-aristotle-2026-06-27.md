@@ -1,5 +1,23 @@
 # Aristotle C99-v2: finite grading-involution chiral-index substrate
 
+Integration status: returned remotely, not integrated locally.
+
+Project ID: `b97de9d7-3661-4feb-a8b6-0e138bb597b5`
+Task ID: `60506b55-ad7a-4690-8336-6db840c04440`
+Reviewed: 2026-06-27
+
+Reason:
+
+- Aristotle reported the task complete and summarized a candidate module
+  `PhysicsSM/Draft/NullEdgeFiniteGradingInvolutionIndex.lean`.
+- The local downloaded output did not contain the project-files archive or the
+  candidate Lean file, so there was no faithful artifact to integrate.
+
+Next action:
+
+- Retry artifact download or resubmit as a narrow job if the explicit
+  grading-involution substrate is still needed.
+
 Dependency class: Independent.
 
 Does not depend on:

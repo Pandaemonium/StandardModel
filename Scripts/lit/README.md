@@ -119,6 +119,28 @@ and scopes query results to the null-edge collections (`9W59V3K9`,
 `null-edge-lit`) by default; pass `--all-projects` only when cross-project paper
 recall is intentional.
 
+### Full text: search the chunks, then read the whole paper
+
+Paper **body text** is in the graph as embedded `:PaperChunk` nodes (see
+[`../MCP_SERVERS.md`](../MCP_SERVERS.md) -> "Full-text chunk search over papers").
+There are two distinct moves, and you usually want both:
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+# 1. semantic search over chunks: WHERE in the corpus a lemma/derivation/convention lives
+"$PY" Scripts/lit/neo4j_paper_search.py --chunks --query "flavored mass overlap from naive kernel"
+# 2. read a whole paper end to end (de-overlapped, section headings restored)
+"$PY" Scripts/lit/neo4j_paper_search.py --list-fulltext          # which papers have full text
+"$PY" Scripts/lit/neo4j_paper_search.py --read 1011.0761         # arXiv id or Zotero paper_key
+"$PY" Scripts/lit/neo4j_paper_search.py --read 1011.0761 --save scratch/paper.md
+```
+
+Use `--chunks` to locate; use `--read` to audit a paper in full instead of
+stitching chunks by hand. `--read` reconstructs from the stored chunks, so it
+carries the same de-LaTeX caveat (faithful prose, degraded math symbols) - go to
+the arXiv/PDF for verbatim equations. A paper with no chunks is abstract-only;
+add body text with `lit_fulltext.py --ids <arxiv_id>`.
+
 Before submitting a nontrivial Aristotle job, create a compact context pack:
 
 ```bash

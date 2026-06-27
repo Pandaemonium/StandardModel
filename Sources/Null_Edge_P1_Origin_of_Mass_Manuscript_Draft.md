@@ -813,3 +813,13 @@ pieces.
   remaining anchor to verify: the non-arXiv Wilczek "mass without mass".
 - Choose the lead venue framing (formalized-mathematics artifact vs.
   math-physics) per the publication plan.
+
+## 2026-06-27 lateral update addendum
+
+- This draft keeps P1 as a finite identity paper.
+- Recommended wording for the observer language:
+  - keep `det(P)` as the invariant finite statement,
+  - use `rho = P/Tr(P)` and `det(rho_{p|u}) = (m / E_u)^2` only as the frame-normalized mixedness proxy.
+- Suggested stress-test insertion:
+  - treat neutrinos as a channel-observer coherence example (left-dominant null support with tiny hidden-channel coupling), not a solved mechanism.
+- Refrain from any “mass is only Plucker” overclaim and from “numeric mass spectrum” claims in this document.

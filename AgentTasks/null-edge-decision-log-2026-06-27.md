@@ -580,3 +580,21 @@ Gauge equivariance kills wrong-hypercharge and colored-Higgs blocks.
 Leptoquark, diquark, and proton-decay blocks require order-one plus J_F/ideal
 structure, not gauge alone.
 ```
+
+## D25. Observer-conditioned mixedness + branch-topology upgrade
+
+Decision:
+
+```text
+Adopt two explicit but linked layers: (i) invariant finite Plucker spread `det(P)`;
+(ii) observer-conditioned mixedness via visible reduction `rho = P_vis / Tr(P_vis)` and chosen kinematic frame.
+
+Also reframe Gate C as a branch-topology/sheaf problem before coefficient tuning:
+`Z = {q : det D_+(q)=0}`; release is about admissible physical-sheet selection with true gaps.
+```
+
+Consequence:
+
+```text
+Public-facing and internal summaries should avoid scalar-Wilson release language for Gate C1 and should log any Gate C release in terms of nodal control + kernel projection + ghost-safe mass-gap + chirality alignment.
+``` 

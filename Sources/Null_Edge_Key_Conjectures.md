@@ -1685,3 +1685,50 @@ These four conjectures should be tested in a deliberate order.
 The best sign that the program is becoming real physics is not that all four
 conjectures become true. It is that each conjecture becomes sharp enough that a
 negative result would actually teach us what to abandon.
+
+## Two further conjectures from the 2026-06-27 lateral read
+
+These extend the list above. Each has a finite theorem spine close to the
+trusted P1 core, a literature collision, and a clear failure mode.
+
+5. **Pluecker hierarchy conjecture.** The current mass identity is the `k = 2`
+   member of a Cauchy-Binet ladder `e_k(Psi Psi^dagger) = sum_{|S|=k}
+   |wedge_{i in S} psi_i|^2`. For Weyl two-spinors only `k <= 2` survives, but in
+   enlarged spaces (twistor, internal/branch, form-degree) the higher exterior
+   powers should classify how many independent beams/branches/internal modes a
+   bundle carries: the `k`-th obstruction is the failure to reduce to fewer than
+   `k` canonical modes.
+   - Spine: define `e_k` on `Psi Psi^dagger` and prove the elementary-symmetric /
+     squared-minor identity finitely (`k = 2` is already trusted).
+   - Collision: collider energy-correlator hierarchies (Larkoski-Salam-Thaler
+     energy-correlation functions and higher-point energy correlators) are built
+     from energies and pairwise angles; the `k = 2` Pluecker obstruction may be
+     the two-point member of a null-edge event-shape ladder. See the bibliography
+     energy-correlator additions.
+   - Failure mode: if no enlarged space gives `k > 2` a clean physical reading,
+     the ladder is a curiosity and the program stays at `k = 2`.
+
+6. **Obstruction-stiffness unification conjecture.** Every mass mechanism in the
+   program's dictionary is the quadratic normal stiffness of a canonical zero
+   locus: a pair `(M, s)` of a moduli/orbit/stabilizer locus `M` and a section
+   or Hessian, with `m^2 ~ |s|^2` or `Hessian_perp`. Massless modes are tangent
+   to `M`; massive modes are normal directions with nonzero squared section norm
+   or radial Hessian.
+
+   | Sector       | Zero locus                    | Obstruction                |
+   | ------------ | ----------------------------- | -------------------------- |
+   | Null bundle  | rank-one projective beam locus| Pluecker section           |
+   | Yukawa       | kernel / chiral split locus   | mass map `M : E_R -> E_L`  |
+   | Electroweak  | Higgs stabilizer orbit        | `X |-> X H_0`              |
+   | Higgs scalar | vacuum manifold               | radial Hessian             |
+   | Gate C       | physical branch line          | failure of chiral line selection |
+
+   - Spine: make "canonical obstruction datum" (already in `docs/CONVENTIONS.md`)
+     the Morse-Bott pair `(M, s)` and check each row reduces to it.
+   - Failure mode: if the rows do not share one normal-stiffness schema, the
+     dictionary stays a list of analogies, not one geometry.
+
+The strongest meta-claim attached to conjecture 6 (the program may be a general
+theory of when a one-beam/one-orbit description fails) belongs in
+`Sources/Null_Edge_Interaction_Ontology.md`, not here, until conjecture 6 has a
+finite spine.
