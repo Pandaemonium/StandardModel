@@ -1,0 +1,47 @@
+[
+  {
+    "id": "C70",
+    "note": "AgentTasks/null-edge-wave17-c70-null-wilson-regulator-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeNullWilsonRegulator.lean",
+    "project_id": "e3986d7f-4928-4296-a7c8-cb4fb87eefae",
+    "task_id": "14f3be5e-cae4-47ee-a617-ccbc072a598c",
+    "returncode": 0,
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: e3986d7f-4928-4296-a7c8-cb4fb87eefae"
+  },
+  {
+    "id": "C71",
+    "note": "AgentTasks/null-edge-wave17-c71-null-wilson-operator-placement-audit-aristotle-2026-06-27.md",
+    "target": "AgentTasks/null-edge-null-wilson-operator-placement-audit-report.md",
+    "project_id": "6c68f266-8c43-47be-b960-6cb5f6f91b69",
+    "task_id": "1e4197e1-bec4-4aba-ae4c-e3389f35548b",
+    "returncode": 0,
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 6c68f266-8c43-47be-b960-6cb5f6f91b69"
+  },
+  {
+    "id": "C72",
+    "note": "AgentTasks/null-edge-wave17-c72-projected-gate-c-wilson-release-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean",
+    "project_id": "b34c82a7-383c-4325-9eaa-62a0d3ef7f37",
+    "task_id": "3772d7e7-61c1-411e-aea0-5309f795a074",
+    "returncode": 0,
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: b34c82a7-383c-4325-9eaa-62a0d3ef7f37"
+  },
+  {
+    "id": "C73",
+    "note": "AgentTasks/null-edge-wave17-c73-null-wilson-gauge-covariance-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeNullWilsonGaugeCovariance.lean",
+    "project_id": "852e9a44-de95-4bb4-ab53-c4fa87e0653f",
+    "task_id": "3793d153-e466-4d39-8cf3-d9bcf1f820bd",
+    "returncode": 0,
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 852e9a44-de95-4bb4-ab53-c4fa87e0653f"
+  },
+  {
+    "id": "C74",
+    "note": "AgentTasks/null-edge-wave17-c74-null-wilson-residue-ghost-safety-aristotle-2026-06-27.md",
+    "target": "AgentTasks/null-edge-null-wilson-residue-ghost-safety-plan.md",
+    "project_id": "ab8a2120-6957-447f-8020-3963c67ea39e",
+    "task_id": "b70f8e3d-c83f-4abb-a31a-78a022de3f2e",
+    "returncode": 0,
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: ab8a2120-6957-447f-8020-3963c67ea39e"
+  }
+]

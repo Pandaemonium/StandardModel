@@ -27,19 +27,22 @@ data that the octonion-coordinate eigenvalue theorems
 `PhysicsSM.Algebra.Furey.AnomalyBridge.Q_op_*` establish state-by-state; here it
 is obtained directly from the occupation lattice on which `Q_op` is diagonal.
 
-## Import boundary (why the octonion `Q_op` theorems are not used directly)
+## Import boundary (why the octonion `Q_op` theorems are not imported here)
 
 The octonion stack that defines the *coordinate* realization of the `J` states
 and the operator `Q_op` — `PhysicsSM.Algebra.Octonion.ComplexOctonion`,
 `PhysicsSM.Algebra.Furey.LadderOperators`,
 `PhysicsSM.Algebra.Furey.OperatorRepresentations`,
-`PhysicsSM.Algebra.Furey.MinimalLeftIdeal`, … — is **absent from this checkout**,
-so the eigenvalue theorems `Q_op_omega_bar`, `Q_op_vbar1`, …, `Q_op_nu_bar`
-cannot be imported.  The occupation-lattice model used here is the faithful
-computational stand-in: it lives at exactly the number-operator level on which
+`PhysicsSM.Algebra.Furey.MinimalLeftIdeal`, … — is **present in the project**,
+and the eigenvalue theorems `Q_op_omega_bar`, `Q_op_vbar1`, …, `Q_op_nu_bar`
+are proved in `PhysicsSM.Algebra.Furey.AnomalyBridge`.  This module
+deliberately stays on the lighter occupation-lattice model rather than pulling
+in that stack: the lattice lives at exactly the number-operator level on which
 those theorems operate, and reproduces the same charge multiset
 `{0, -1/3, -1/3, -1/3, -2/3, -2/3, -2/3, -1}` proved there for `Jbar`
-(equivalently, the reversed multiset for `J`).
+(equivalently, the reversed multiset for `J`).  For the fully
+coordinate-derived statement see `AnomalyBridge.Q_op_*` and
+`FureyRealizesOneGeneration.fureyRealizesOneGenerationPackage`.
 
 ## All-left vs. physical Dirac basis (convention guard)
 

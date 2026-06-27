@@ -1,0 +1,5 @@
+AgentTasks/null-edge-wave17-c70-null-wilson-regulator-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave17-c71-null-wilson-operator-placement-audit-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave17-c72-projected-gate-c-wilson-release-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave17-c73-null-wilson-gauge-covariance-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave17-c74-null-wilson-residue-ghost-safety-aristotle-2026-06-27.md

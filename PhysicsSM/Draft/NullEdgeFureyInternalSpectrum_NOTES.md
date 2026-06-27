@@ -24,38 +24,32 @@ for the `native_decide` lattice computations):
 - `fureyStyleRealization_eq_computedJ` (and `…multiplets_eq_computedJ`) — the
   earlier bookkeeping instance coincides with the computed instance.
 
-## Import boundary (this checkout is incomplete)
+## Import boundary and build
 
-The provided checkout is missing the foundational modules that the Furey pillar
-depends on, including (transitively, via the existing files' `import` lines):
+The foundational Furey/octonion modules are **present** in the project
+(`PhysicsSM.Algebra.Octonion.ComplexOctonion`,
+`PhysicsSM.Algebra.Furey.LadderOperators`,
+`PhysicsSM.Algebra.Furey.OperatorRepresentations`,
+`PhysicsSM.Algebra.Furey.MinimalLeftIdeal`,
+`PhysicsSM.Algebra.Furey.AnomalyBridge`,
+`PhysicsSM.Algebra.Furey.ElectroweakAnomalyBridge` and its deps
+(`ElectroweakCompletePackage`, `ElectroweakPaperPackage`,
+`OneGenerationPackage`, `JbarElectroweakAnomaly`, `QopElectroweakConsistency`),
+`PhysicsSM.StandardModel.AnomalyPackage`,
+`PhysicsSM.StandardModel.OneGenerationTable`, …), and the octonion-coordinate
+eigenvalue theorems (`AnomalyBridge.Q_op_omega_bar`, `Q_op_vbar1`, …) are
+available there.
 
-- `PhysicsSM.Algebra.Octonion.ComplexOctonion`
-- `PhysicsSM.Algebra.Furey.LadderOperators`
-- `PhysicsSM.Algebra.Furey.OperatorRepresentations`
-- `PhysicsSM.Algebra.Furey.ElectroweakAnomalyBridge` deps
-  (`ElectroweakCompletePackage`, `ElectroweakPaperPackage`,
-  `OneGenerationPackage`, `JbarElectroweakAnomaly`, `QopElectroweakConsistency`)
-- `PhysicsSM.StandardModel.AnomalyPackage` (the anomaly package)
-- `PhysicsSM.StandardModel.OneGenerationTable`,
-  `PhysicsSM.StandardModel.FamilyAnomalyNaturality`
-
-Because of this, none of the originally-shipped `.lean` files compiled, and the
-octonion-coordinate eigenvalue theorems (`AnomalyBridge.Q_op_omega_bar`,
-`Q_op_vbar1`, …) could **not** be imported.
-
-To make the bridge build, `PhysicsSM/StandardModel/AnomalyPackage.lean` was
-reconstructed here as a self-contained, Mathlib-only, pure list/rational
-combinatorial development matching the API that
-`PhysicsSM/Draft/NullEdgeInternalSpectrum.lean` requires. The new bridge then
+`PhysicsSM/StandardModel/AnomalyPackage.lean` is the shared, Mathlib-only,
+pure list/rational combinatorial anomaly package; it is the same module
+imported by the live Furey bridge (`AnomalyBridge.lean`,
+`OneGenerationPackage.lean`, `FureyRealizesOneGeneration.lean`) and by the
+null-edge API (`NullEdgeInternalSpectrum.lean`). This draft intentionally
 models the Furey `J` states at the **number-operator / occupation level** — the
 exact level on which `Q_op` is diagonal — reproducing the same charge multiset
-the missing coordinate theorems would prove.
+the coordinate theorems prove, without importing the heavier stack.
 
-## Building
-
-The whole-library `lake build` still fails on the other absent octonion modules
-(pre-existing, not introduced here). Build the self-contained bridge DAG
-explicitly:
+Build the bridge DAG explicitly:
 
 ```
 lake build PhysicsSM.StandardModel.AnomalyPackage

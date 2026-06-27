@@ -1,0 +1,47 @@
+[
+  {
+    "code": "C80",
+    "note": "AgentTasks/null-edge-wave19-c80-regulator-legality-api-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeRegulatorLegalityAPI.lean",
+    "returncode": 0,
+    "project_id": "a59f4a9d-9480-47dd-9775-7dd990e8141d",
+    "task_id": "b3d08dbd-7eea-4b98-8c82-39dc58f8e359",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: a59f4a9d-9480-47dd-9775-7dd990e8141d\n"
+  },
+  {
+    "code": "C81",
+    "note": "AgentTasks/null-edge-wave19-c81-krein-overlap-sign-trap-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeKreinOverlapSignTrap.lean",
+    "returncode": 0,
+    "project_id": "0c61513a-85ac-4c19-bc41-9eaa6142f254",
+    "task_id": "fbd0b724-ec20-40d5-b1ef-3a9ca9d695be",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 0c61513a-85ac-4c19-bc41-9eaa6142f254\n"
+  },
+  {
+    "code": "C82",
+    "note": "AgentTasks/null-edge-wave19-c82-internal-grading-no-kinetic-fix-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeInternalGradingNoKineticFix.lean",
+    "returncode": 0,
+    "project_id": "893fe869-0e3c-40c5-b0cd-aa302f1a21ea",
+    "task_id": "9340871d-3a1f-4bdf-acb6-adcb136e0790",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 893fe869-0e3c-40c5-b0cd-aa302f1a21ea\n"
+  },
+  {
+    "code": "C83",
+    "note": "AgentTasks/null-edge-wave19-c83-taste-involution-origin-polarization-aristotle-2026-06-27.md",
+    "target": "AgentTasks/null-edge-taste-involution-origin-polarization-audit.md",
+    "returncode": 0,
+    "project_id": "04ee30a0-0058-4b7f-b525-ee2a30e4836c",
+    "task_id": "469e0f4a-10c0-4b14-a19b-3d7ad06a3757",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 04ee30a0-0058-4b7f-b525-ee2a30e4836c\n"
+  },
+  {
+    "code": "C84",
+    "note": "AgentTasks/null-edge-wave19-c84-gate-c-v4-release-contract-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeRegulatorLegalGateCRelease.lean",
+    "returncode": 0,
+    "project_id": "10f74338-940c-4335-8a90-280a6b1b09e1",
+    "task_id": "217995da-fa39-4973-8bb5-4320fdd387d2",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 10f74338-940c-4335-8a90-280a6b1b09e1\n"
+  }
+]

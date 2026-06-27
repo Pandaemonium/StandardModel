@@ -1,0 +1,5 @@
+AgentTasks/null-edge-wave20-c85-ra-wilson-accretive-gap-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave20-c86-gate-c0-species-health-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave20-c87-gate-c-split-audit-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave20-c88-taste-only-origin-no-go-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave20-h9-legal-finite-dirac-forbidden-operator-aristotle-2026-06-27.md

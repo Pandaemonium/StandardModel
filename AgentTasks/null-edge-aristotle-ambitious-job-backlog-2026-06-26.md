@@ -1085,3 +1085,118 @@ Unsafe:
   Furey proves Gate C, ghost safety, Krein positivity, right-handed completion,
   three generations, or numerical Yukawa values.
 ```
+
+
+## Claude calibration after Furey-fiber synthesis
+
+Provenance: Claude analysis supplied in attachment
+`dd8b5295-8531-402c-b340-c20a8701799b/pasted-text.txt`. Full synthesis is in
+`Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` Section 37.
+
+### Backlog correction
+
+Many broad Furey bridge jobs are now lower priority because the repo already has
+kernel-checked versions of the main bridge surface: internal spectrum, anomaly
+inheritance, lawful `Phi_H`, occupation-parity `chi_E`, and the
+almost-commutative product square. Keep Furey work focused on right-handed
+completion, moduli/codimension, and theorem consolidation.
+
+The binding blocker is Gate C after C64:
+
+```text
+the bare determinant-zero locus has off-branch zeros;
+the natural g5 species split does not gap q_star;
+full nodal-set control is not yet proved.
+```
+
+### Added/refocused jobs
+
+| ID | Status | Type | Ambitious target | Why it matters | Output |
+| --- | --- | --- | --- | --- | --- |
+| C66 | Next | Proof/Strategy | Full cyclotomic nodal-set classification for the tetrahedral determinant-zero locus. | Stops discovering off-branch zeros one at a time and attacks the actual C64 blocker. | `PhysicsSM/Draft/NullEdgeNodalSetCyclotomic.lean` |
+| C67 | Contingent | Proof | Richer species-splitting term that gaps the full classified off-branch locus while preserving the origin. | Tests whether Route B can control all unwanted zeros after C66 identifies them. | `PhysicsSM/Draft/NullEdgeCyclotomicSpeciesSplit.lean` |
+| C68 | Contingent | Proof/API | Projected-sector nodal-control release theorem. | Honest fallback if bare full-locus control is too strong: Gate C releases only for projected physical zeros, not the bare determinant locus. | `PhysicsSM/Draft/NullEdgeProjectedNodalControl.lean` |
+| C69 | Contingent | Audit | Off-branch zero sector audit: Krein sign, residue, and ghost status of every non-branch component. | Determines whether off-branch zeros are fatal, discardable, or removable by composite/projection data. | `AgentTasks/null-edge-off-branch-zero-sector-audit.md` |
+| FUR-H17 | Next | Proof/Consolidation | `NullEdgeInvolutionDistinctness`: theorem-level non-identification witnesses among `Gamma_s`, `chi_E`, Krein `J`, edge orientation, charge conjugation, dualization, Furey complex structure, and branch/taste sign. | Cheap defensive module preventing the most likely convention conflations. | `PhysicsSM/Draft/NullEdgeInvolutionDistinctness.lean` |
+| FUR-H18 | Contingent | Proof/Promotion | Consolidate existing Furey bridge theorems into one review-friendly interface module. | Avoids redundant proof work while making the already-formalized Furey-fiber bridge easy to cite. | `PhysicsSM/Draft/NullEdgeFureyBridgeSummary.lean` |
+
+### Scheduling note
+
+Recommended next serious Gate C package:
+
+```text
+1. C66 full nodal-set classification;
+2. C69 off-branch zero sector audit;
+3. either C67 richer split or C68 projected-sector release, depending on what
+   C66 finds.
+```
+
+Recommended cheap safety package:
+
+```text
+FUR-H17 NullEdgeInvolutionDistinctness.
+```
+
+Recommended Track A pause:
+
+```text
+Wait for the FUR-H10-style intertwiner/moduli audit before upgrading any Furey
+claim from reconstruction to prediction.
+```
+## Furey/Baez source-ingest backlog refinement - 2026-06-27
+
+Provenance: follow-up Furey/Baez analysis in attachment
+`81a90b3d-0fff-4d16-9783-12ccb41c01e3/pasted-text.txt`; papers ingested via
+`Scripts/lit/lit_ingest.py` into Zotero and Neo4j.
+
+### Source anchors now available
+
+| arXiv ID | Zotero key | Use |
+| --- | --- | --- |
+| `2606.15235` | `DJRMU4CB` | Exceptional-Jordan source for SM gauge group and internal stabilizer comparison. |
+| `2209.13016` | `6VI58VGH` | Furey-Hughes one-generation internal-spectrum docking source. |
+| `1806.00612` | `Z232K7IU` | Division-algebraic ladder-operator gauge-symmetry source. |
+| `0904.1556` | `MZZEZUWA` | Baez-Huerta GUT/SM representation scaffold. |
+| `math/0105155` | `WRIM6ZI7` | Octonion/Clifford/spinor background and convention anchor. |
+
+### Promoted/refined jobs
+
+| ID | Status | Type | Ambitious target | Why it matters | Output |
+| --- | --- | --- | --- | --- | --- |
+| FUR-H16 | Promote to Next | Audit/Prediction | `FureyBaezIntertwinerCodimensionAudit`: compute the legal `Phi_H`/Yukawa intertwiner space over the Furey/Baez/DVT internal module and compare its dimension/codimension with generic SM Yukawa freedom. | This is the cleanest Gate F test for whether Furey/Baez gives structural prediction rather than reconstruction. | `AgentTasks/null-edge-furey-baez-intertwiner-codimension-audit.md` |
+| FUR-E2 | Next | Proof/Audit | `FureyBaezEMStabilizerComparison`: compare the internal electromagnetic generator/stabilizer from Furey/Baez/DVT with `ker(X -> X H_0)` in the finite electroweak orbit-stiffness theorem. | Tests whether photon survival is selected by both the internal algebra and the Higgs stabilizer theorem. | `PhysicsSM/Draft/NullEdgeFureyBaezEMStabilizerComparison.lean` or report first. |
+| FUR-H19 | Next | Proof/API | `FureyRightHandedSectorCompletion`: formalize the `J*` or conjugate-sector bridge and prove the missing right-handed singlets match the all-left SM convention. | Closes the main internal-spectrum docking gap before stronger Furey claims are made. | `PhysicsSM/Draft/NullEdgeFureyRightHandedSector.lean` |
+| FUR-H20 | As needed | Proof/API | `FureyLeftActionConventionBridge`: state the associative left-action operator-algebra guardrail and expose bridge lemmas avoiding raw octonion associativity assumptions. | Protects all Furey/null-edge docking work from nonassociative convention drift. | `PhysicsSM/Draft/NullEdgeFureyLeftActionConventionBridge.lean` |
+
+### Scheduling rule
+
+```text
+Run FUR-H16/FUR-E2/FUR-H19 as Gate H/F support.
+Do not treat them as Gate C release jobs.
+Gate C remains a separate kinetic/nodal/Krein/ghost problem.
+```
+## Wave 17 null-Wilson Gate C pivot - 2026-06-27
+
+Provenance: Pro analysis in attachment
+`cb87110d-9401-4269-8256-a94546549fe0/pasted-text.txt`, responding to the
+post-C66 Gate C state.
+
+### Strategic decision
+
+```text
+Do not release Gate C for bare D_+.
+Release Gate C, if possible, for a regulated/projected physical operator D_phys.
+```
+
+Bare `D_+` should be marked `FATAL-FOR-NAIVE-FLAT`, not fatal for the broader
+program. The next wave should prove or audit the null-Wilson/projected route.
+
+### Added jobs
+
+| ID | Status | Type | Ambitious target | Why it matters | Output |
+| --- | --- | --- | --- | --- | --- |
+| C70 | Next | Proof | `NullEdgeNullWilsonRegulator`: prove `W(q)=sum_a(1-cos q_a)` vanishes only at the origin on the real torus and is positive on every non-origin real point; specialize to known C64/C66 witnesses. | Converts the full-nodal-locus blocker into a standard Wilson-regulator cost ledger. | `PhysicsSM/Draft/NullEdgeNullWilsonRegulator.lean` |
+| C71 | Next | Audit/Strategy | Null-Wilson operator placement: should the term be `Gamma_s R_W`, a scalar Wilson kernel, an overlap/domain-wall kernel, or a projected physical-sector regulator? | Prevents a sign/grading mistake from contaminating Gate A and the chiral sector. | `AgentTasks/null-edge-null-wilson-operator-placement-audit-report.md` |
+| C72 | Next | Proof/API | `NullEdgeProjectedGateCWilsonRelease`: state and prove the v3 API theorem that regulated nodal control plus projected chirality, Krein positivity, post-gauge residue positivity, and moduli audit imply Gate C release for `D_phys`. | Makes the new release target explicit and prevents accidental release claims for bare `D_+`. | `PhysicsSM/Draft/NullEdgeProjectedGateCWilsonRelease.lean` |
+| C73 | Next | Proof/Audit | Gauge-covariant null-Wilson link dressing for `R_W^A = (r/(2h)) sum_a (2 - T_a^A - (T_a^A)^sharp)`. | Ensures the regulator can live in the gauge-covariant null-edge architecture. | `PhysicsSM/Draft/NullEdgeNullWilsonGaugeCovariance.lean` |
+| C74 | Next | Audit/Strategy | Post-gauge residue/ghost-safety theorem plan for the regulated/projected operator. | Converts Golterman-Shamir ghost warnings into concrete finite residue-sign obligations. | `AgentTasks/null-edge-null-wilson-residue-ghost-safety-plan.md` |

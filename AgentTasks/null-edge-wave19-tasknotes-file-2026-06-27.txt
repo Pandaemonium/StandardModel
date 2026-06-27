@@ -1,0 +1,5 @@
+AgentTasks/null-edge-wave19-c80-regulator-legality-api-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave19-c81-krein-overlap-sign-trap-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave19-c82-internal-grading-no-kinetic-fix-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave19-c83-taste-involution-origin-polarization-aristotle-2026-06-27.md
+AgentTasks/null-edge-wave19-c84-gate-c-v4-release-contract-aristotle-2026-06-27.md

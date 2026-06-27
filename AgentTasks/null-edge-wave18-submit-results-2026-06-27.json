@@ -1,0 +1,47 @@
+[
+  {
+    "code": "C75",
+    "note": "AgentTasks/null-edge-wave18-c75-flavored-mass-overlap-strategy-aristotle-2026-06-27.md",
+    "target": "AgentTasks/null-edge-flavored-mass-overlap-gate-c-strategy.md",
+    "returncode": 0,
+    "project_id": "5cbe6395-0dce-4357-bb60-a302ad5a6899",
+    "task_id": "579b86b8-9ba7-4aff-8f78-2ec2a0bf1530",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 5cbe6395-0dce-4357-bb60-a302ad5a6899\n"
+  },
+  {
+    "code": "C76",
+    "note": "AgentTasks/null-edge-wave18-c76-c64-witness-regulator-lift-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeC64WitnessRegulatorLift.lean",
+    "returncode": 0,
+    "project_id": "13131a2b-6428-440b-9372-decd7603a608",
+    "task_id": "545cb058-0bef-4b9a-8a4a-b69f2c10d22e",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 13131a2b-6428-440b-9372-decd7603a608\n"
+  },
+  {
+    "code": "C77",
+    "note": "AgentTasks/null-edge-wave18-c77-flavored-spectral-flow-api-aristotle-2026-06-27.md",
+    "target": "PhysicsSM/Draft/NullEdgeFlavoredSpectralFlowAPI.lean",
+    "returncode": 0,
+    "project_id": "6e2c7a9f-8edf-47f7-8edf-faf3dc19b3eb",
+    "task_id": "0af107ae-20d9-4773-bf0e-ddc126bdf458",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 6e2c7a9f-8edf-47f7-8edf-faf3dc19b3eb\n"
+  },
+  {
+    "code": "C78",
+    "note": "AgentTasks/null-edge-wave18-c78-overlap-locality-gap-audit-aristotle-2026-06-27.md",
+    "target": "AgentTasks/null-edge-overlap-locality-gap-audit.md",
+    "returncode": 0,
+    "project_id": "ccad841a-746c-4403-9a1e-5d9e049fa365",
+    "task_id": "a4c1b24f-ff12-4152-9690-5f4439c4cfd0",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: ccad841a-746c-4403-9a1e-5d9e049fa365\n"
+  },
+  {
+    "code": "C79",
+    "note": "AgentTasks/null-edge-wave18-c79-point-split-gauge-covariant-flavored-mass-aristotle-2026-06-27.md",
+    "target": "AgentTasks/null-edge-point-split-gauge-covariant-flavored-mass-plan.md",
+    "returncode": 0,
+    "project_id": "1f6b303d-334f-48f7-9036-41f195d28098",
+    "task_id": "09e5d3db-13d9-4d1c-b66f-df1371ff2234",
+    "output": "WARNING: Your project contains .lean files but no .lake folder.\nAristotle works better with access to your project's dependencies.\nDid you forget to run `lake build`?\n\nProject created: 1f6b303d-334f-48f7-9036-41f195d28098\n"
+  }
+]
