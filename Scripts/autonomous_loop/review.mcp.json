@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "scholarly": {
+      "command": "python",
+      "args": ["C:/Projects/AutoLab/COGLab/infrastructure/mcp/scholarly_wrapper/src/server.py"],
+      "env": {
+        "OPENALEX_API_KEY": "${OPENALEX_API_KEY}",
+        "SEMANTIC_SCHOLAR_API_KEY": "${SEMANTIC_SCHOLAR_API_KEY}",
+        "UNPAYWALL_EMAIL": "${UNPAYWALL_EMAIL}"
+      }
+    },
+    "neo4j_graph": {
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "C:\\Projects\\AutoLab\\COGLab\\infrastructure\\mcp\\neo4j_mcp\\run.bat"
+      ],
+      "env": {
+        "NEO4J_URI": "${NEO4J_URI}",
+        "NEO4J_USERNAME": "${NEO4J_USERNAME}",
+        "NEO4J_PASSWORD": "${NEO4J_PASSWORD}",
+        "NEO4J_DATABASE": "${NEO4J_DATABASE}",
+        "NEO4J_READ_ONLY": "true",
+        "NEO4J_TELEMETRY": "false"
+      }
+    },
+    "lean-explore": {
+      "command": "C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe",
+      "args": ["c:/Projects/StandardModel/Scripts/mcp/lean_explore_xpu.py"]
+    }
+  }
+}

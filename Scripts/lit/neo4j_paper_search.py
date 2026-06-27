@@ -187,6 +187,64 @@ def query_results(
     return results
 
 
+CHUNK_INDEX = "paper_chunk_embedding"
+
+
+def query_chunks(
+    text: str,
+    k: int,
+    collections=None,
+    all_projects: bool = False,
+):
+    """Full-text search over :PaperChunk nodes (paper *body* text), scoped via the
+    parent :Paper's collection. Complements query_results (abstract-level)."""
+    _require_env()
+
+    from sentence_transformers import SentenceTransformer
+
+    model = SentenceTransformer(MODEL_NAME, device=_device())
+    qvec = model.encode(
+        [text], prompt_name="query", normalize_embeddings=True, convert_to_numpy=True
+    )[0]
+    qvec = [float(x) for x in qvec]
+    collections = list(collections or NULL_EDGE_COLLECTIONS)
+    candidate_k = k if all_projects else max(k * 8, 50)
+
+    driver, db = _driver()
+    try:
+        with driver.session(database=db) as session:
+            results = session.run(
+                f"CALL db.index.vector.queryNodes('{CHUNK_INDEX}', $candidate_k, $vec) "
+                "YIELD node, score "
+                "MATCH (p:Paper)-[:HAS_CHUNK]->(node) "
+                "OPTIONAL MATCH (p)-[:IN_COLLECTION]->(c:Collection) "
+                "WITH node, score, p, collect(DISTINCT c.collection_key) AS collections "
+                "WHERE $all_projects OR any(key IN collections WHERE key IN $collections) "
+                "RETURN p.title AS title, p.arxiv_id AS arxiv, p.paper_key AS key, "
+                "node.section AS section, node.ord AS ord, node.text AS text, score "
+                "ORDER BY score DESC LIMIT $k",
+                candidate_k=candidate_k,
+                k=k,
+                vec=qvec,
+                collections=collections,
+                all_projects=all_projects,
+            ).data()
+    finally:
+        driver.close()
+    return results
+
+
+def _print_chunks(text: str, results, scoped: bool) -> None:
+    scope = "null-edge collections" if scoped else "all projects"
+    print(f'\nTop {len(results)} chunks for: "{text}" ({scope})\n')
+    for r in results:
+        head = f" [{r['section']}]" if r.get("section") else ""
+        loc = f"{r['title']} (arXiv:{r.get('arxiv')}, chunk {r.get('ord')})"
+        print(f"  {r['score']:.3f}  {loc}{head}")
+        snippet = " ".join((r.get("text") or "").split())
+        print(f"        {snippet[:400]}\n")
+
+
 def _print_text(text: str, results, scoped: bool) -> None:
     scope = "all projects" if not scoped else "null-edge collections"
     print(f'\nTop {len(results)} papers for: "{text}" ({scope})\n')
@@ -217,14 +275,20 @@ def _print_markdown(text: str, results, scoped: bool) -> None:
         print()
 
 
-def query(text: str, k: int, fmt: str, collections, all_projects: bool) -> None:
-    results = query_results(text, k, collections=collections, all_projects=all_projects)
+def query(
+    text: str, k: int, fmt: str, collections, all_projects: bool, chunks: bool = False
+) -> None:
+    if chunks:
+        results = query_chunks(text, k, collections=collections, all_projects=all_projects)
+    else:
+        results = query_results(text, k, collections=collections, all_projects=all_projects)
     scoped = not all_projects
     if fmt == "json":
         print(
             json.dumps(
                 {
                     "query": text,
+                    "mode": "chunks" if chunks else "papers",
                     "scope": "all-projects" if all_projects else list(collections),
                     "results": results,
                 },
@@ -232,6 +296,8 @@ def query(text: str, k: int, fmt: str, collections, all_projects: bool) -> None:
                 ensure_ascii=False,
             )
         )
+    elif chunks:
+        _print_chunks(text, results, scoped)
     elif fmt == "markdown":
         _print_markdown(text, results, scoped)
     else:
@@ -241,6 +307,11 @@ def query(text: str, k: int, fmt: str, collections, all_projects: bool) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--query", help="natural-language search; omit to ingest")
+    ap.add_argument(
+        "--chunks",
+        action="store_true",
+        help="search paper full-text chunks (:PaperChunk) instead of abstracts",
+    )
     ap.add_argument("--reembed", action="store_true", help="re-embed all papers, not just new ones")
     ap.add_argument("--k", type=int, default=10, help="number of search results")
     ap.add_argument(
@@ -264,7 +335,7 @@ def main() -> None:
 
     if ns.query:
         collections = ns.collection or list(NULL_EDGE_COLLECTIONS)
-        query(ns.query, ns.k, ns.format, collections, ns.all_projects)
+        query(ns.query, ns.k, ns.format, collections, ns.all_projects, chunks=ns.chunks)
     else:
         ensure_embeddings(ns.reembed)
 

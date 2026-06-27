@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "created": "2026-06-27",
+  "updated": "2026-06-27",
+  "mode": "manual_autonomous_loop",
+  "current_state": "C93_SUBMITTED_MONITOR_C89_C90_C93",
+  "current_objective": "Monitor C89/C90/C93/C82/C70, integrate returned jobs, audit C93 against non-release guardrails, and prepare C94-instantiation against RA-Wilson if C93 returns a clean interface.",
+  "autonomy": {
+    "aristotle_submissions": true,
+    "aristotle_integrations": true,
+    "literature_search": true,
+    "zotero_neo4j_writes": true,
+    "local_lean_work": true,
+    "validation_when_claiming_trusted_results": true,
+    "claude_api_cadence": "once_per_aristotle_round",
+    "pro_question_packaging": true,
+    "friction_tooling_improvements": true
+  },
+  "cycle_policy": {
+    "all_major_steps_mandatory": true,
+    "literature_search_every_cycle": true,
+    "meta_review_every_cycle": true,
+    "if_constrained": "shrink_each_step_do_not_skip_steps",
+    "incomplete_cycle_rule": "record_missing_step_as_process_failure",
+    "aristotle_concurrency": "running_jobs_are_not_blanket_blockers",
+    "aristotle_wait_rule": "wait_only_for_hard_dependency_or_capacity_rejection"
+  },
+  "active_aristotle_round": "post-C85-C72-integration",
+  "active_aristotle_projects": [
+    {
+      "label": "C82",
+      "project_id": "893fe869-0e3c-40c5-b0cd-aa302f1a21ea",
+      "status": "RUNNING"
+    },
+    {
+      "label": "C70",
+      "project_id": "e3986d7f-4928-4296-a7c8-cb4fb87eefae",
+      "status": "RUNNING"
+    },
+    {
+      "label": "C89",
+      "project_id": "f481d8f1-4995-4b05-bfbc-398ca9b6810b",
+      "status": "SUBMITTED"
+    },
+    {
+      "label": "C90",
+      "project_id": "d53724a6-a0aa-4f8a-9c85-5285177fd16b",
+      "status": "SUBMITTED"
+    },
+    {
+      "label": "C93",
+      "project_id": "6ff32d74-0779-424b-b8a2-9d767251c3ea",
+      "status": "SUBMITTED"
+    }
+  ],
+  "pending_integrations": [],
+  "last_claude_review_round": "cycle2-c1-route-c93",
+  "pending_claude_packets": [],
+  "pending_pro_packets": [],
+  "open_user_questions": [],
+  "stop_conditions": [
+    "theorem_statement_needs_weakening",
+    "new_physics_assumption_needed",
+    "public_claim_boundary_changes",
+    "negative_result_should_be_reframed_as_main_story",
+    "destructive_filesystem_or_history_edit",
+    "strategic_choice_requires_owner_taste"
+  ]
+}

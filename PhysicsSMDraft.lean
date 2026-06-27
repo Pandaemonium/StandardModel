@@ -276,9 +276,11 @@ import PhysicsSM.Draft.NullEdgeProjectedGhostSafety
 import PhysicsSM.Draft.NullEdgeNodalSetExhaustion
 import PhysicsSM.Draft.NullEdgeNodalSetCyclotomic
 import PhysicsSM.Draft.NullEdgeOffBranchZeroSector
+import PhysicsSM.Draft.NullEdgeProjectedGateCWilsonRelease
 import PhysicsSM.Draft.NullEdgeFlavoredSpectralFlowAPI
 import PhysicsSM.Draft.NullEdgeNullWilsonPlacement
 import PhysicsSM.Draft.NullEdgeNullWilsonGaugeCovariance
+import PhysicsSM.Draft.NullEdgeRAWilsonGap
 import PhysicsSM.Draft.NullEdgeRegulatorLegalityAPI
 import PhysicsSM.Draft.NullEdgeKreinOverlapSignTrap
 import PhysicsSM.Draft.NullEdgeRegulatorLegalGateCRelease

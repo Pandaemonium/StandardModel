@@ -311,6 +311,55 @@ knowledge graph, and a local LLM; see
 [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md) for the search -> triage ->
 Zotero -> Neo4j workflow.
 
+The Neo4j paper graph has two non-interchangeable access modes; pick by the
+question, not by habit. Use the `neo4j_graph` MCP server (Cypher) for **exact**
+queries - by arxiv_id/doi/title/tag/author/collection, traversal, counts, dedup -
+and the python vector scripts for **meaning-based** search, because the MCP
+server has no embedder and cannot rank by meaning. For papers:
+`Scripts/lit/neo4j_paper_search.py --query` ranks abstracts (which papers are
+relevant) and `--chunks` ranks full-text body chunks (where in a paper a lemma,
+derivation, or convention lives); for this repo's own docs + Lean,
+`Scripts/lit/neo4j_doc_search.py`. Whenever a claim depends on a paper's internal
+content, use `--chunks` full text rather than trusting the abstract. The three
+vector indexes are `paper_embedding`, `paper_chunk_embedding`, and
+`ne_chunk_embedding`; details in [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md).
+
+## External model-call logging
+
+Autonomous-loop Claude and Gemini calls must use the repo wrappers unless the
+user explicitly requests a different path:
+
+```text
+Scripts/autonomous_loop/send_claude_review.py
+Scripts/autonomous_loop/send_gemini_review.py
+```
+
+The Claude wrapper targets Opus through the installed Claude CLI. The Gemini
+wrapper targets the current Gemini Pro API model recorded in the script. Every
+call must create one Markdown log under `AgentTasks/model-calls/claude/` or
+`AgentTasks/model-calls/gemini/` containing the full prompt and full response or
+error. Never log API keys.
+
+Prompts sent to these wrappers must be standalone. Assume the external model is
+blind to this repository and chat history. Include the project context, current
+gate status, theorem names, known failures, exact question, success/failure
+criteria, and requested output format before making the call.
+
+When the call reviews Lean, embed the **verbatim source** of every declaration
+under review (and the API/predicates it wraps) with
+`send_claude_review.py --source-file <path>` (repeatable), and state the intended
+reading separately. A prose paraphrase cannot expose a semantic mismatch between
+the intended math and the kernel-checked statement, which is the review's whole
+point. Budget for the larger packet (`--max-budget-usd 1.50`+).
+
+By default the Claude wrapper now gives the reviewer read/search tools and
+read-only MCP (neo4j read-only, scholarly, lean-explore) via
+`--tools default --permission-mode bypassPermissions` plus a write denylist, so it
+can read the graph, keyword-search code and paper full text, run literature and
+Mathlib/PhysLean searches, and run the read-only semantic-search scripts; file,
+graph, and Zotero writes are blocked. Use `--safe` to also block Bash, or
+`--no-tools` for the legacy prose-only call.
+
 When adding papers, avoid duplicates: use the canonical `paper_key` = bare Zotero
 item key (no `zotero:` prefix), normalize `arxiv_id`/`doi`, and run the low-cost
 pre-add existence check (keyed on arxiv_id/doi, not title) documented in

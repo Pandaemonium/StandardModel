@@ -263,6 +263,34 @@ Known leftover: 5 pre-existing `zotero:`-prefixed duplicate nodes
 (hep-th/0510161, 2203.08087, 1709.04891, 1409.7169, hep-th/0512091) are not yet
 merged.
 
+### Which search tool for which question (read first)
+
+Several engines touch the literature; they are **not** interchangeable, and the
+most common mistake is reaching for `neo4j_graph` Cypher to find papers "about" a
+topic - it has no embedder and cannot rank by meaning.
+
+- **Meaning-based search over papers** (concepts, "find work on X"): the Neo4j
+  paper vector indexes, driven by [`lit/neo4j_paper_search.py`](lit/neo4j_paper_search.py),
+  at two granularities:
+  - `--query` ranks **abstracts** - which papers are relevant;
+  - `--chunks` ranks **full body text** - where in a paper a lemma, derivation,
+    or sign convention actually lives.
+- **Exact graph queries over papers** (by arxiv_id / doi / title / tag / author /
+  collection, traversal, counts, dedup pre-checks): the `neo4j_graph` MCP server
+  with Cypher.
+- **Meaning-based search over THIS repo's own docs + Lean**:
+  [`lit/neo4j_doc_search.py`](lit/neo4j_doc_search.py)
+  (`:NEDoc` / `:NEChunk`, index `ne_chunk_embedding`).
+- **Lean / Mathlib / PhysLean declarations**: `lean-lsp` / `lean-explore`.
+- **Discovering NEW papers** not yet in the library: `scholarly`.
+
+Rule of thumb: "by meaning" -> a python vector script; "by exact field or
+relationship" -> `neo4j_graph` Cypher. The three vector indexes are
+`paper_embedding` (abstracts), `paper_chunk_embedding` (paper full text), and
+`ne_chunk_embedding` (this repo's docs/Lean). Library scope: collection
+`9W59V3K9`; a paper is only visible to scoped search if it has the
+`IN_COLLECTION` edge.
+
 ### Semantic vector search over papers (Neo4j, 2026-06-21)
 
 Papers are searchable by **meaning**, not just by id/title/tag. Each `Paper`
@@ -299,6 +327,43 @@ Benchmark"). The CLI now scopes query results to the two null-edge collections
 by default; use `--all-projects` only when you intentionally want cross-project
 paper recall. Use repeatable `--collection <key>` to override the scoped set.
 Query output supports `--format text|json|markdown`.
+
+### Full-text chunk search over papers (Neo4j, 2026-06-27)
+
+Beyond the abstract-level `paper_embedding` index, paper **body text** is now
+searchable. [`lit/lit_fulltext.py`](lit/lit_fulltext.py) fetches each paper's
+source (arXiv LaTeX e-print first - cleaner than PDF: real sections, math intact,
+no column/ligature garbage; `pymupdf` PDF->text only as a fallback for
+source-less papers), de-LaTeXes to prose with section headings, splits into
+section-aware ~600-word chunks (90-word overlap), embeds each chunk with the same
+`Qwen3-Embedding-0.6B` model, and upserts:
+
+    (:Paper)-[:HAS_CHUNK]->(:PaperChunk {chunk_key, paper_key, arxiv_id, ord,
+                                         section, text, embedding})
+
+under a dedicated `VECTOR INDEX paper_chunk_embedding` (cosine, 1024-dim). This
+keeps "which paper" (abstracts) separate from "where in the paper" (chunks).
+
+```bash
+PY="C:/Users/Owner/AppData/Roaming/uv/tools/lean-explore/Scripts/python.exe"
+"$PY" Scripts/lit/lit_fulltext.py                      # null-edge collection, new papers only
+"$PY" Scripts/lit/lit_fulltext.py --ids 1011.0761      # specific papers
+"$PY" Scripts/lit/lit_fulltext.py --refresh            # re-chunk already-chunked papers
+"$PY" Scripts/lit/lit_fulltext.py --dry-run --limit 3  # fetch + chunk, print counts, no writes
+"$PY" Scripts/lit/neo4j_paper_search.py --chunks --query "flavored mass overlap from naive kernel"
+```
+
+Idempotent: skips papers that already have chunks (stable `chunk_key` =
+`<arxiv_id>#<ord>`; `--refresh` replaces). Scoped to collection `9W59V3K9` by
+default; `--ids` overrides. Direct Cypher for the vectors:
+`CALL db.index.vector.queryNodes('paper_chunk_embedding', 10, $vec) YIELD node,
+score` - but you still need the python path to embed the query string (the MCP
+server cannot).
+
+Caveat: de-LaTeX preserves prose and section structure but **degrades math
+symbols** (subscripts/operators flatten to plain tokens), so chunk search is
+strong on conceptual/derivational text and weak on pure-formula matching. Full
+text lives only in Neo4j; no PDFs are stored in Zotero or the repo.
 
 ### Semantic search over the repo's own docs + Lean (Neo4j, 2026-06-21)
 
