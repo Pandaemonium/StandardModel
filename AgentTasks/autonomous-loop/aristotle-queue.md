@@ -776,3 +776,576 @@ Purpose:
 Hold reason:
 
 - Active Aristotle concurrency remains around the preferred upper band. Submit once a running C89/C92/C93/C101/P16/P17/C82/C70 job returns or if the user wants a new independent job despite concurrency.
+## Active 30-cycle run - cycle 1 updates - 2026-06-27
+
+### C106a - Origin-polarization escape hatch
+
+Status: returned_complete_report_preserved_from_transcript
+Project ID: `7483eed6-e966-442a-adba-2eba49be8fa1`
+Task ID: `b94043ac-3ac4-4116-912f-8ce2edf82c92`
+Target:
+`AgentTasks/aristotle-standalone/c106a-origin-polarization-20260627/C106aOriginPolarization/OriginPolarizationEscapeHatch.lean`
+
+Result:
+
+- Aristotle reports both target theorems completed:
+  `balance_commutant_zero_chiralIndex` and
+  `nonzero_index_requires_balance_escape`.
+- Statement repair: changed `!=` Bool comparison to propositional inequality
+  `≠`; marked `ChiralIndex` noncomputable.
+- Reported narrow check passed.
+
+Integration note:
+
+- `integrate_completed.py` found no candidate files in the downloaded output.
+- Proof was preserved locally from the Aristotle transcript in the standalone
+  task area, but not yet integrated into main project modules.
+- No local verification was run in this cycle.
+
+### C108/C110 precursor - Path-sum control
+
+Status: submitted_running
+Project ID: `b6dfe1f0-c970-4c47-8cae-926e71a408e5`
+Task ID: `d9d5cc01-289f-4d84-add1-e2b0506b253d`
+Target:
+`AgentTasks/aristotle-standalone/c108-path-sum-control-20260627/C108PathSumControl/PathSumControl.lean`
+
+Purpose:
+
+- Prove that subcritical path-count growth plus per-path damping implies
+  summability of length-indexed path contributions.
+
+Claude follow-up:
+
+- Claude review says the theorem is sound but too weak for kernel control.
+- Sent live instruction asking Aristotle to complete the submitted theorems and,
+  if feasible, add or report the next kernel-envelope bridge theorem.
+
+## Active 30-cycle run - cycle 2 updates - 2026-06-27
+
+### C108/C110 precursor - Path-sum control
+
+Status: returned_complete_report_payload_missing
+Project ID: `b6dfe1f0-c970-4c47-8cae-926e71a408e5`
+Task ID: `d9d5cc01-289f-4d84-add1-e2b0506b253d`
+Target:
+`AgentTasks/aristotle-standalone/c108-path-sum-control-20260627/C108PathSumControl/PathSumControl.lean`
+
+Result:
+
+- Aristotle reports both submitted summability theorems completed.
+- Narrow check reportedly passed with only an unused-variable warning.
+- `integrate_completed.py` found no candidate files.
+- Follow-up ask for full file contents did not immediately recover the file.
+
+Next:
+
+- Treat as report-complete but not integrated until file contents are recovered
+  or locally reconstructed.
+- Next theorem should bridge length-envelope summability to actual kernel shell
+  control.
+
+### C107 - Finite spectral-projector covariance seed
+
+Status: submitted_running
+Project ID: `0ab24ab1-3f6a-465f-9d47-678856fc1a77`
+Target:
+`AgentTasks/aristotle-standalone/c107-finite-spectral-projector-20260627/C107FiniteSpectralProjector/ConjugationPowers.lean`
+
+Purpose:
+
+- Prove that conjugation by an inverse pair preserves powers and idempotent
+  matrices.
+
+Claude follow-up:
+
+- Claude says this is sound but only a finite algebra seed.
+- Sent live instruction asking Aristotle to complete the submitted lemmas and,
+  if feasible, add or report polynomial covariance as the next theorem.
+
+## Active 30-cycle run - cycle 3 updates - 2026-06-27
+
+### C107 - Finite spectral-projector covariance seed
+
+Status: returned_complete_report_payload_missing
+Project ID: `0ab24ab1-3f6a-465f-9d47-678856fc1a77`
+Task ID: `667bb1b0-c01b-451b-9fb4-220bc2c2037a`
+
+Reported result:
+
+- `conjugate_pow` proved.
+- `conjugate_preserves_idempotent` proved.
+- `conjugate_aeval` added and proved as the polynomial covariance successor.
+- Aristotle reports narrow check passed in its environment.
+
+Integration note:
+
+- `integrate_completed.py` found no candidate files.
+- Artifact-recovery ask sent requesting complete final file contents.
+
+### C92 - Ghost-safety hardening candidate
+
+Status: returned_candidate_rejected_checklist_as_Lean
+Project ID: `03c6e63f-3a39-420e-81d3-173f2611b362`
+Continuation task ID: `afc9c36b-757c-4208-9310-359c32696793`
+
+Result:
+
+- Candidate `NullEdgeGateCGhostSafetyHardened.lean` exists and has no proof
+  holes by scan.
+- Rejected under the autonomous-loop no-checklist-as-Lean rule because it is a
+  self-defined `Prop`-field checklist rather than a theorem about real program
+  objects.
+
+Next:
+
+- Convert the idea to markdown audit discipline or rewrite around real
+  propagator-zero, residue, Krein, or gauge-coupled branch data.
+
+### C110a - Path-shell kernel bridge
+
+Status: submitted_running
+Project ID: `c804899f-1d36-4ba3-bc16-f656c105f164`
+Task ID: `3ffcb065-1ec7-4f48-af4b-02cc5eca318c`
+
+Purpose:
+
+- Bridge finite path-count and per-path bounds to finite shell contribution
+  bounds.
+
+Claude caveat:
+
+- The submitted skeleton needs syntax repair and is scalar/signed. The next
+  robust target should be the normed-space shell bound.
+
+## Active 30-cycle run - cycle 4 updates - 2026-06-27
+
+### C107 - Finite spectral-projector covariance seed
+
+Status: recovered_source_preserved_claude_accepted
+Project ID: `0ab24ab1-3f6a-465f-9d47-678856fc1a77`
+Task ID: `667bb1b0-c01b-451b-9fb4-220bc2c2037a`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c107-finite-spectral-projector-20260627/C107FiniteSpectralProjector/ConjugationPowers.lean`
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-152854-cycle4-c107-recovered-source-review.md`
+- Verdict: accept as C107 finite matrix algebra seed.
+
+### C110a - Path-shell scalar bridge
+
+Status: recovered_source_preserved_scalar_only
+Project ID: `c804899f-1d36-4ba3-bc16-f656c105f164`
+Task ID: `3ffcb065-1ec7-4f48-af4b-02cc5eca318c`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c110a-path-shell-kernel-bridge-20260627/C110aPathShellKernel/PathShellEnvelope.lean`
+
+Caveat:
+
+- Scalar finite shell contribution theorem only. Next robust target remains
+  C110b normed finite-shell kernel bound.
+
+### C107b - Polynomial projector idempotence
+
+Status: submitted_queued
+Project ID: `96cce035-7b33-4df7-9b83-64e97bb67554`
+Task ID: `1a01a781-2dc7-42e5-9c5e-42ce9eba65ba`
+
+Purpose:
+
+- Prove that `Polynomial.aeval B (p * p - p) = 0` implies
+  `Polynomial.aeval B p` is an idempotent matrix.
+
+## Active 30-cycle run - cycle 5 updates - 2026-06-27
+
+### C107b - Polynomial projector idempotence
+
+Status: recovered_source_preserved_not_locally_verified
+Project ID: `96cce035-7b33-4df7-9b83-64e97bb67554`
+Task ID: `1a01a781-2dc7-42e5-9c5e-42ce9eba65ba`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c107b-polynomial-projector-idempotence-20260627/C107bPolynomialProjector/PolynomialProjector.lean`
+
+Reported result:
+
+- `polynomial_projector_idempotent` proved.
+- `polynomial_projector_idempotent_of_aeval_mul_eq` proved.
+- No spectral/gauge/physical claims introduced.
+
+### C110b - Normed path-shell kernel bridge
+
+Status: submitted_running
+Project ID: `9650d454-c348-4c88-86ce-f4e99196518e`
+Task ID: `c03a6d2c-0853-4125-836b-851c86d8152e`
+
+Purpose:
+
+- Prove the finite norm bound for shell amplitude sums.
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-153535-cycle5-c110b-normed-shell-review.md`
+- Verdict: accept with caveats; next theorem should be Banach-valued shell
+  summability.
+
+## Active 30-cycle run - cycle 6 updates - 2026-06-27
+
+### C110b - Normed path-shell kernel bridge
+
+Status: running
+Project ID: `9650d454-c348-4c88-86ce-f4e99196518e`
+Task ID: `c03a6d2c-0853-4125-836b-851c86d8152e`
+
+### C107c - Polynomial projector covariance assembly
+
+Status: submitted_queued
+Project ID: `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c`
+Task ID: `fecc1b89-15bf-4b81-b685-b4038ac798b6`
+
+Purpose:
+
+- Combine C107 polynomial covariance and C107b projector idempotence into the
+  finite statement that the conjugated polynomial projector is idempotent and
+  equals the polynomial projector of the conjugated matrix.
+
+Claude basis:
+
+- `AgentTasks/model-calls/claude/2026-06-27-153906-cycle6-c107b-recovered-source-review.md`
+- Verdict: C107b accepted; C107c is the next theorem before origin-index work.
+
+## Active 30-cycle run - cycle 7 updates - 2026-06-27
+
+### C110b - Normed path-shell kernel bridge
+
+Status: running
+Project ID: `9650d454-c348-4c88-86ce-f4e99196518e`
+Task ID: `c03a6d2c-0853-4125-836b-851c86d8152e`
+
+### C107c - Polynomial projector covariance assembly
+
+Status: running
+Project ID: `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c`
+Task ID: `fecc1b89-15bf-4b81-b685-b4038ac798b6`
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-154219-cycle7-c107c-projector-covariance-review.md`
+- Verdict: accept C107c theorem statement.
+
+### C101 - C0 scalar branch-health continuation
+
+Status: continuation_failed
+Project ID: `cfaa6a95-5c5c-4a10-8363-c191163a7d0b`
+Continuation task ID: `47aeb63c-69f0-4d5c-827c-5d62fb5a53ed`
+
+Note:
+
+- Original long-running task had already been canceled; continuation failed.
+- No integration action this cycle.
+
+## Active 30-cycle run - cycle 8 updates - 2026-06-27
+
+### C110b - Normed path-shell kernel bridge
+
+Status: recovered_source_preserved_not_locally_verified
+Project ID: `9650d454-c348-4c88-86ce-f4e99196518e`
+Task ID: `c03a6d2c-0853-4125-836b-851c86d8152e`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c110b-normed-path-shell-kernel-bridge-20260627/C110bPathShellKernel/NormedPathShell.lean`
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-154702-cycle8-c110b-c111-review.md`
+- Verdict: accept with proof-style caveat; re-derive proof cleanly before
+  trusted promotion.
+
+### C111 - Banach-valued shell summability bridge
+
+Status: submitted_running
+Project ID: `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`
+Task ID: `37a1ef47-c165-4cde-8724-8a605d7c1bca`
+
+Purpose:
+
+- Prove summability of Banach-valued shell kernels from a summable scalar
+  envelope.
+
+Claude caveat:
+
+- Nonnegativity of the scalar envelope is implicit in the submitted statement;
+  splitting summability and norm-bound conclusions may be cleaner.
+
+## Active 30-cycle run - cycle 9 updates - 2026-06-27
+
+### C107c - Polynomial projector covariance assembly
+
+Status: running
+Project ID: `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c`
+Task ID: `fecc1b89-15bf-4b81-b685-b4038ac798b6`
+
+### C111 - Banach-valued shell summability bridge
+
+Status: running
+Project ID: `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`
+Task ID: `37a1ef47-c165-4cde-8724-8a605d7c1bca`
+
+### C108 - Origin branch-observable certificate
+
+Status: submitted_running
+Project ID: `efd86260-78ff-4278-888d-03eff60216eb`
+Task ID: `ced781b1-832c-4e7e-9732-625aa4047223`
+
+Purpose:
+
+- Prove that a balance-commuting origin branch observable cannot produce a
+  polynomial selector with nonzero chiral trace.
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-155100-cycle9-c108-origin-certificate-review.md`
+- Verdict: accept with caveats; explicit anti-commutation parenthesization
+  sent to Aristotle.
+
+## Active 30-cycle run - cycle 10 updates - 2026-06-27
+
+### C107c - Polynomial projector covariance assembly
+
+Status: running
+Project ID: `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c`
+Task ID: `fecc1b89-15bf-4b81-b685-b4038ac798b6`
+
+### C111 - Banach-valued shell summability bridge
+
+Status: running
+Project ID: `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`
+Task ID: `37a1ef47-c165-4cde-8724-8a605d7c1bca`
+
+### C108 - Origin branch-observable certificate
+
+Status: running
+Project ID: `efd86260-78ff-4278-888d-03eff60216eb`
+Task ID: `ced781b1-832c-4e7e-9732-625aa4047223`
+
+### C108b - Nontrivial branch-observable component
+
+Status: submitted_running
+Project ID: `9686beef-8138-4c7d-9e11-03792420c27f`
+Task ID: `e9f9f04d-1875-4028-93f0-f773a2ba88c1`
+
+Purpose:
+
+- Prove that nonzero chiral trace of a polynomial selector requires a nonzero
+  `J`-odd component of the branch observable.
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-155511-cycle10-c108b-nontrivial-observable-review.md`
+- Verdict: accept with caveats; factor even/odd decomposition lemmas later.
+
+## Active 30-cycle run - cycle 11 updates - 2026-06-27
+
+### C107c - Polynomial projector covariance assembly
+
+Status: recovered_source_preserved_not_locally_verified
+Project ID: `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c`
+Task ID: `fecc1b89-15bf-4b81-b685-b4038ac798b6`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c107c-polynomial-projector-covariance-20260627/C107cPolynomialProjector/ProjectorCovariance.lean`
+
+### C111 - Banach-valued shell summability bridge
+
+Status: running
+Project ID: `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`
+Task ID: `37a1ef47-c165-4cde-8724-8a605d7c1bca`
+
+### C108 - Origin branch-observable certificate
+
+Status: running
+Project ID: `efd86260-78ff-4278-888d-03eff60216eb`
+Task ID: `ced781b1-832c-4e7e-9732-625aa4047223`
+
+### C108b - Nontrivial branch-observable component
+
+Status: running
+Project ID: `9686beef-8138-4c7d-9e11-03792420c27f`
+Task ID: `e9f9f04d-1875-4028-93f0-f773a2ba88c1`
+
+### C108c - Odd-part chiral trace identity
+
+Status: submitted_running
+Project ID: `addf8b0a-c702-48d9-b66d-b20f121568d4`
+Task ID: `14009121-10d1-46d7-85a2-a309bb668d6e`
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-155834-cycle11-c108c-oddpart-review.md`
+- Verdict: accept; next theorem should relate `J`-odd `B` to odd-degree
+  polynomial components.
+
+## Active 30-cycle run - cycle 12 updates - 2026-06-27
+
+### C111 - Banach-valued shell summability bridge
+
+Status: recovered_source_preserved_rewrite_complete_not_locally_verified
+Project ID: `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`
+Completed task ID: `37a1ef47-c165-4cde-8724-8a605d7c1bca`
+Rewrite continuation task ID: `7439e16f-cbb2-4275-be29-a6cd24fb6bc2`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c111-shell-summability-20260627/C111ShellSummability/ShellSummability.lean`
+
+Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-160243-cycle12-c111-recovered-source-review.md`
+- Verdict: statement accepted with caveats; proof rewrite requested.
+
+Cycle 13 update:
+
+- Rewrite continuation completed.
+- Rewritten source preserved at the same standalone path.
+- No local Lean verification was run.
+
+### C108 - Origin branch-observable certificate
+
+Status: recovered_source_preserved_claude_accepted_with_caveats
+Project ID: `efd86260-78ff-4278-888d-03eff60216eb`
+Task ID: `ced781b1-832c-4e7e-9732-625aa4047223`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c108-origin-branch-observable-certificate-20260627/C108OriginBranchObservable/ZeroIndexCertificate.lean`
+
+Cycle 13 Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-161224-cycle13-c108-recovered-source-review.md`
+- Verdict: accept with caveats. Semantically aligned; proof style should be
+  cleaned before trusted promotion.
+
+### C108b - Nontrivial branch-observable component
+
+Status: recovered_source_preserved_claude_accepted_with_caveats
+Project ID: `9686beef-8138-4c7d-9e11-03792420c27f`
+Task ID: `e9f9f04d-1875-4028-93f0-f773a2ba88c1`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c108b-nontrivial-branch-observable-20260627/C108bNontrivialBranchObservable/NontrivialBranchObservable.lean`
+
+Cycle 14 Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-161900-cycle14-c108b-recovered-source-review.md`
+- Verdict: accept with caveats. Semantically aligned; proof style should be
+  cleaned and axiom-audited before trusted promotion.
+
+### C108c - Odd-part chiral trace identity
+
+Status: recovered_source_preserved_claude_accepted_with_caveats
+Project ID: `addf8b0a-c702-48d9-b66d-b20f121568d4`
+Task ID: `14009121-10d1-46d7-85a2-a309bb668d6e`
+
+Recovered source:
+
+`AgentTasks/aristotle-standalone/c108c-oddpart-chiraltrace-20260627/C108cOddPartChiralTrace/OddPartTrace.lean`
+
+Cycle 15 Claude:
+
+- `AgentTasks/model-calls/claude/2026-06-27-162236-cycle15-c108c-recovered-source-review.md`
+- Verdict: accept with caveats. Semantically aligned; proof style should be
+  cleaned and locally checked before trusted promotion.
+
+### C108d - Odd-moment witness and nonzero trace criterion
+
+Status: in_progress_live_hint_sent
+Project ID: `00918b10-3d0f-415e-a012-1059581f1f48`
+Task ID: `3d3903ff-45c6-4658-a58e-707e1495f067`
+Target:
+`AgentTasks/aristotle-standalone/c108d-oddmoment-witness-20260627/C108dOddMomentWitness/OddMomentWitness.lean`
+Prompt path:
+`AgentTasks/null-edge-c108d-oddmoment-witness-aristotle-2026-06-27.md`
+Submitted: 2026-06-27
+
+Dependency class:
+
+- Independent finite algebra successor to C108/C108b/C108c.
+
+Purpose:
+
+- Package the nonzero C108c criterion as an iff and exhibit a concrete 2 by 2
+  witness with `Gamma2 = diag(1,-1)`, `Jswap2`, `B = Gamma2`, and `p = X`.
+
+Cycle 16 update:
+
+- `aristotle tasks` reports the task is in progress.
+- Claude statement review:
+  `AgentTasks/model-calls/claude/2026-06-27-162730-cycle16-c108d-statement-review.md`.
+- Verdict: accept with caveats. Witness arithmetic is correct; optional
+  less-trivial polynomial witness would harden the target.
+- Sent a live continuation hint with finite `Fin 2` tactic guidance and optional
+  `X^2 + X` sibling witness.
+
+Cycle 17 update:
+
+- `aristotle tasks` still reports the task is in progress.
+- C109 design review:
+  `AgentTasks/model-calls/claude/2026-06-27-163050-cycle17-c109-lift-design-review.md`.
+- Design verdict: split next step into soft-dependent `C109a` passive origin-data
+  packaging and hard-dependent `C109b` consequence lemmas after C108d returns.
+
+Cycle 18 update:
+
+- `aristotle tasks` still reports the task is in progress.
+- Prepared held C109a packet:
+  `AgentTasks/null-edge-c109a-origin-polarizer-api-held-aristotle-2026-06-27.md`.
+- Claude C109a review:
+  `AgentTasks/model-calls/claude/2026-06-27-163426-cycle18-c109a-held-packet-review.md`.
+- Verdict: hold and revise. Edits applied; packet remains held until C108d
+  returns.
+
+Cycle 19 update:
+
+- `aristotle tasks` still reports C108d is in progress.
+- Revised C109a packet reviewed:
+  `AgentTasks/model-calls/claude/2026-06-27-163713-cycle19-c109a-revised-held-packet-review.md`.
+- Verdict: safe-held. Additional edits applied; packet remains held until C108d
+  returns.
+
+Cycle 20 update:
+
+- `aristotle tasks` still reports C108d is in progress.
+- Claude contingency review:
+  `AgentTasks/model-calls/claude/2026-06-27-163946-cycle20-c108d-contingency-review.md`.
+- If C108d stalls, narrow to a concrete finite nonzero witness using explicit
+  `Fin 2` functions and prove `≠ 0` rather than exact `= 2`.
+
+Cycle 21 update:
+
+- `aristotle tasks` still reports C108d is in progress.
+- Sent the narrowing instruction to Aristotle.
+- Claude narrowing review:
+  `AgentTasks/model-calls/claude/2026-06-27-164241-cycle21-c108d-narrowing-review.md`.
+- Verdict: good narrowing. If only the narrowed witness returns, record the full
+  iff/general arbitrary-`J` statements as theorem debt.
+
+Cycle 22 update:
+
+- C108d completed.
+- `integrate_completed.py` found no candidates, but direct archive inspection
+  found the returned Lean file.
+- Recovered source:
+  `AgentTasks/aristotle-standalone/c108d-oddmoment-witness-20260627/C108dOddMomentWitness/OddMomentWitness.lean`.
+- Claude review:
+  `AgentTasks/model-calls/claude/2026-06-27-164720-cycle22-c108d-recovered-source-review.md`.
+- Verdict: accept with caveats. Full nonzero iff and concrete witnesses are
+  semantically aligned; proof style should be cleaned before trusted promotion.

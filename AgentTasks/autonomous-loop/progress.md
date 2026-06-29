@@ -1388,3 +1388,1419 @@ User clarified the intended loop cadence:
 - If a job has been running longer than 2 hours, stop/cancel it if possible and continue it as a no-build/prompt-only job with context preserved.
 
 Updated `AgentTasks/autonomous-loop/AGENTS.md`, `current-objective.md`, and `state.json` to reflect this policy.
+
+## Direction update - 2026-06-27 - Gate C1 non-ultralocal branch
+
+User accepted dropping ultralocality as a possible Gate C1 direction, with a
+preference for combinatorial Feynman/path-integral-style path sums over making
+exponential decay the primitive locality certificate.
+
+Updated the autonomous-loop plan:
+
+- `Gate C1_local` remains as the local/quasi-local no-go and escape-hatch audit
+  branch, including C106a/C106b origin-polarization and native-commutant work.
+- `Gate C1_NL` is now a constructive non-ultralocal release branch following
+  `Sources/Null_Edge_Gate_C1_Nonultralocal_Release_Plan.md`.
+- Highest-value C1_NL targets are now:
+  `C106_NonultralocalGateC1`,
+  `C107_RieszProjectorGaugeCovariance`,
+  `C108_PathSumControl`,
+  `C109_NonlocalBlockGapRelease`,
+  and `C110_DeterminantLineAnomalyContract`.
+- Path-sum control is the native nonlocality certificate; exponential decay is
+  a useful corollary when path-count growth and per-path damping imply it, not
+  the default definition.
+
+Validation:
+
+- Docs/control-plane update only; no Lean or pre-commit run.
+
+## Direction refinement - 2026-06-27 - Gate C1_NU before C1_NL
+
+Pro analysis sharpened the non-ultralocal plan:
+
+- Use `GateC1_NU` for controlled non-ultralocal release.
+- Reserve `GateC1_NL` for explicit declared-nonlocal fallback.
+- Stage `GateC1_NU` into `Free`, `BackgroundGauge`, and `Quantum` levels.
+- Formalize finite polynomial spectral projectors before Riesz contour
+  projectors.
+- Require every branch observable `B` to pass an origin chiral-index test;
+  balance-commuting observables are rejected by the C106a trace theorem.
+- Reorder the constructive theorem stack around
+  `C106_NonultralocalGateC1_API`,
+  `C107_FiniteSpectralProjectorGaugeCovariance`,
+  `C108_OriginBranchObservableCertificate`,
+  `C109_NonultralocalBlockGapRelease`,
+  `C110_PathSumControl`,
+  and `C112_DeterminantLineAnomalyContract`.
+
+Note:
+
+- A path-sum control Aristotle job had already been submitted as C108 before
+  this numbering sharpened. Treat it as an early `C110_PathSumControl` result
+  or renumber during integration.
+
+Validation:
+
+- Docs/control-plane update only; no Lean or pre-commit run.
+
+## Research integration - 2026-06-27 - Gemini non-ultralocal warnings
+
+Gemini Deep Research reinforced the non-ultralocal branch and added historical
+warning lanes:
+
+- SLAC-type nonlocal derivatives: useful no-doubler comparison class, but
+  long-range tails can create interacting/scaling pathologies. Plan impact:
+  path-sum control must record tail class and gauge/regulator stability, not
+  merely summability.
+- Stacey/tangent-style kernels: useful single-cone/nonlocal comparison class,
+  but zone-edge poles and large-volume normalization issues are risks. Plan
+  impact: spectral-island and regulator-normalization audits are mandatory.
+- SMG remains a parallel interaction-based route, not part of `GateC1_NU`.
+  Plan impact: propagator-zero mirror removal remains forbidden; `C1_NU`
+  requires a true inverse bad-sector gap.
+- Overlap/Ginsparg-Wilson remains the controlled sign/resolvent comparison
+  class. Exponential locality is a sufficient theorem under gap/smoothness
+  hypotheses, not the primitive definition.
+
+Updated `Sources/Null_Edge_Gate_C1_Nonultralocal_Release_Plan.md` with a
+historical nonlocal-warning lane and an added tail/scaling pathology risk.
+
+Validation:
+
+- Docs-only update; no Lean or pre-commit run.
+
+## Active 30-cycle run - cycle 1 - 2026-06-27
+
+Objective:
+
+- Start the requested new 30-cycle autonomous-loop run under the updated
+  Claude-every-cycle and C1_NU policy.
+
+Aristotle:
+
+- Poll showed C106a `7483eed6-e966-442a-adba-2eba49be8fa1` returned `IDLE`
+  with task `b94043ac-3ac4-4116-912f-8ce2edf82c92` complete.
+- Aristotle reported C106a proved both standalone theorems:
+  `balance_commutant_zero_chiralIndex` and
+  `nonzero_index_requires_balance_escape`.
+- The download helper found no candidate files, so the proof was preserved
+  locally from the task transcript in
+  `AgentTasks/aristotle-standalone/c106a-origin-polarization-20260627/C106aOriginPolarization/OriginPolarizationEscapeHatch.lean`.
+- Local Lean verification was not run this cycle; Aristotle reported its narrow
+  `lake env lean` check passed.
+- Submitted C108/C110 precursor path-sum control project
+  `b6dfe1f0-c970-4c47-8cae-926e71a408e5`.
+- Sent a live instruction to C108 after Claude review: complete the two
+  submitted summability theorems, and if feasible add or report the next
+  kernel-envelope bridge theorem.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "nonlocal chiral lattice fermions SLAC derivative path integral path sum gauge covariance Riesz projector overlap non ultralocal"`.
+- Result summary:
+  top hits included Ginsparg-Wilson non-ultralocality, 4D Feynman checkerboard
+  path-integral material, QCA Dirac/Weyl lattice material, Dirac-Kaehler
+  projection material, Nielsen-Ninomiya/minimally doubled warnings, and point
+  splitting.
+- Plan impact:
+  supports treating path sums as the native non-ultralocal control language,
+  while keeping Ginsparg-Wilson/overlap as the comparison class.
+
+Track A:
+
+- Folded Gemini's non-ultralocal research into
+  `Sources/Null_Edge_Gate_C1_Nonultralocal_Release_Plan.md`.
+- Updated the plan around `GateC1_NU` first, `GateC1_NL` as declared-nonlocal
+  fallback, polynomial spectral projectors before Riesz integrals, and
+  historical warnings from SLAC/Stacey/SMG/overlap lanes.
+
+Track B:
+
+- Added
+  `AgentTasks/null-edge-track-b-cycle1-path-sum-envelope-vs-kernel-control-2026-06-27.md`.
+- Named the failure mode:
+  `Envelope-as-kernel-control fallacy`.
+- Next finite target:
+  `PathShellEnvelopeBoundsKernel`.
+
+Claude:
+
+- Sent mandatory Claude review packet for the cycle:
+  `AgentTasks/model-calls/claude/2026-06-27-150707-c108-path-sum-control-review.md`.
+- Claude verdict:
+  C108 is mathematically sound but too weak as a path-sum certificate; it proves
+  length-envelope summability, not actual kernel control or gauge covariance.
+- Follow-up:
+  sent Claude's correction to the running C108 Aristotle job.
+
+Validation:
+
+- No local Lean/pre-commit run; this cycle did docs/task notes and Aristotle
+  submission/triage only.
+
+Next cycle:
+
+- Poll C108 first.
+- If C108 returns, integrate only after auditing whether it proves the submitted
+  summability theorems and whether it added or reported the kernel-envelope
+  bridge.
+- If no return is useful, prepare `C107_FiniteSpectralProjectorGaugeCovariance`
+  or `C108_OriginBranchObservableCertificate` under the refined numbering.
+
+## Active 30-cycle run - cycle 2 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run, prioritizing the constructive
+  `GateC1_NU` theorem stack.
+
+Aristotle:
+
+- C108/C110 precursor path-sum control project
+  `b6dfe1f0-c970-4c47-8cae-926e71a408e5` returned `IDLE` with task
+  `d9d5cc01-289f-4d84-add1-e2b0506b253d` marked `COMPLETE_WITH_ERRORS`.
+- The task report says both summability theorems were proved and the narrow
+  Lean check passed, with only an unused-variable warning.
+- `integrate_completed.py` found no candidate files in the archive.
+- A follow-up ask for the full file contents did not immediately recover the
+  file; treat C108 as report-complete but payload-missing until recovered.
+- Submitted C107 finite spectral-projector covariance seed project
+  `0ab24ab1-3f6a-465f-9d47-678856fc1a77`.
+- Sent Claude feedback to C107 asking Aristotle to complete the two submitted
+  lemmas and, if feasible, add or report polynomial covariance as the immediate
+  successor.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "finite spectral projector polynomial gauge covariance branch observable chiral lattice non ultralocal path sum kernel control"`.
+- Result summary:
+  top hits again emphasized Ginsparg-Wilson non-ultralocality, path-integral
+  formulations, Nielsen-Ninomiya extension pressure, Feynman checkerboard
+  path sums, QCA Weyl/Dirac lattices, and point splitting.
+- Plan impact:
+  no source changed the C1_NU plan; it reinforces polynomial/spectral
+  covariance plus path-sum control as the right constructive branch.
+
+Track A:
+
+- Submitted C107, the finite algebra seed for later polynomial spectral
+  projector gauge covariance.
+
+Track B:
+
+- Added
+  `AgentTasks/null-edge-track-b-cycle2-polynomial-covariance-not-branch-observable-2026-06-27.md`.
+- Named the failure mode:
+  `Covariance-seed-as-branch-observable fallacy`.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-151231-c107-finite-spectral-projector-review.md`.
+- Claude verdict:
+  C107 is sound but too weak; it is a finite conjugation seed, not yet spectral
+  projector covariance.
+- Follow-up:
+  sent Claude's correction to the running C107 Aristotle job.
+
+Validation:
+
+- No local Lean/pre-commit run; this cycle did task prep, Aristotle
+  submission/triage, docs/task notes, and Claude review.
+
+Next cycle:
+
+- Poll C107 first.
+- If C107 returns with candidate proof contents, integrate or preserve them.
+- If C107 is still running, prepare `C108_OriginBranchObservableCertificate` or
+  the path-shell kernel bridge theorem depending on C108 recovery status.
+
+## Active 30-cycle run - cycle 3 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run, prioritizing the constructive
+  `GateC1_NU` theorem stack while respecting stale-job and Claude-every-cycle
+  policy.
+
+Aristotle:
+
+- Polled C107 first as planned.
+- C107 project `0ab24ab1-3f6a-465f-9d47-678856fc1a77` completed during the
+  cycle. Aristotle reports `conjugate_pow`,
+  `conjugate_preserves_idempotent`, and `conjugate_aeval` proved, with narrow
+  check passing in the Aristotle environment.
+- `integrate_completed.py` found no C107 candidate files, so C107 is
+  report-complete but payload-missing. Sent an artifact-recovery ask requesting
+  the complete final Lean file.
+- Audited stale/continued active projects. C70/P16/P17/C92/C93 had returned
+  candidates; C89 continuation failed; C82/C101 continuations remain in
+  progress.
+- Rejected the C92 new Lean candidate as checklist-as-Lean after Claude review.
+- Submitted C110a path-shell kernel bridge project
+  `c804899f-1d36-4ba3-bc16-f656c105f164`, task
+  `3ffcb065-1ec7-4f48-af4b-02cc5eca318c`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "path shell amplitude bound kernel path sum nonlocal lattice fermion gauge covariance spectral projector chiral"`.
+- Result summary:
+  top hits included Foster/Jacobson checkerboard path sums for Weyl
+  propagation, Ginsparg-Wilson non-ultralocality, Nielsen-Ninomiya extension
+  pressure, QCA Dirac/Weyl lattices, and Dirac-Kahler projection literature.
+- Plan impact:
+  reinforced that C110/C111 must bridge path-sum language to actual kernel
+  estimates; no source changed the `C1_NU` branch split.
+
+Track A:
+
+- Submitted C110a as an independent finite bridge target.
+- Triaged C107 as complete-by-report and asked for missing file contents.
+- Triaged C92 as not Lean-integrable under the no-checklist-as-Lean rule.
+
+Track B:
+
+- No separate Track B theorem was launched this cycle. The cycle had real Track
+  A returns and a new C1_NU job; manufacturing a qubit/generalization artifact
+  would have been padding.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-152254-cycle3-c110a-c92-review.md`.
+- Claude verdict:
+  C92 should be rejected as checklist-as-Lean; C110a is useful in intent but
+  needs statement repair, and the real next theorem should be a normed-space
+  finite shell bound.
+
+Validation:
+
+- No local Lean/pre-commit run. This cycle did Aristotle polling/triage,
+  one focused submission, literature search, Claude review, and docs/task
+  logging only.
+
+Next cycle:
+
+- Poll C107 artifact-recovery ask and C110a.
+- If C107 returns final file contents, preserve or integrate after semantic
+  review.
+- If C110a returns only the scalar theorem, decide whether to continue it toward
+  Claude's normed-space kernel bound or submit a fresh `C110b` target.
+
+## Active 30-cycle run - cycle 4 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run, focusing on recovered C107/C110a
+  artifacts and the next finite spectral-projector theorem.
+
+Aristotle:
+
+- C107 artifact recovery succeeded via transcript. Preserved recovered source
+  in
+  `AgentTasks/aristotle-standalone/c107-finite-spectral-projector-20260627/C107FiniteSpectralProjector/ConjugationPowers.lean`.
+- C110a returned complete by report; archive still had no candidates, but a
+  recovery ask returned the scalar shell-bound source. Preserved it in
+  `AgentTasks/aristotle-standalone/c110a-path-shell-kernel-bridge-20260627/C110aPathShellKernel/PathShellEnvelope.lean`.
+- Submitted C107b polynomial projector idempotence project
+  `96cce035-7b33-4df7-9b83-64e97bb67554`, task
+  `1a01a781-2dc7-42e5-9c5e-42ce9eba65ba`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "norm of finite path sum bounded by sum of path amplitudes lattice fermion kernel operator norm path integral"`.
+- Result summary:
+  top hits included Foster/Jacobson path-integral evaluation for Weyl
+  propagation, causal-set chain sums, QCA/lattice gas propagation, and
+  Nielsen-Ninomiya/Ginsparg-Wilson comparison material.
+- Plan impact:
+  reinforced that C110's next useful theorem should be normed finite path sums
+  rather than another scalar envelope theorem.
+
+Track A:
+
+- Preserved recovered C107 and C110a standalone proof sources.
+- Sent recovered C107 to Claude for semantic review.
+- Submitted C107b, the next finite algebra theorem toward polynomial
+  projectors.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful work was
+  returned-proof recovery and C1_NU theorem-stack advancement; no independent
+  qubit/generalization move was sharp enough to justify a separate artifact.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-152854-cycle4-c107-recovered-source-review.md`.
+- Claude verdict:
+  accept C107 as the finite matrix algebra seed; next theorem should be
+  polynomial projector idempotence from a finite `aeval` idempotence
+  hypothesis.
+
+Validation:
+
+- No local Lean/pre-commit run. The recovered sources are preserved as
+  Aristotle standalone artifacts and have not been locally checked.
+
+Next cycle:
+
+- Poll C107b first.
+- Poll C82/C101 continuations if they remain active.
+- Decide whether to launch a separate C110b normed finite-shell theorem once
+  the C107b state is known.
+
+## Active 30-cycle run - cycle 5 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C107b, refreshing literature
+  around finite polynomial projectors, and advancing the independent normed
+  path-shell bridge.
+
+Aristotle:
+
+- C107b project `96cce035-7b33-4df7-9b83-64e97bb67554` completed.
+- `integrate_completed.py` again found no candidate files, but `aristotle show`
+  with UTF-8 output returned the full source.
+- Preserved recovered C107b source in
+  `AgentTasks/aristotle-standalone/c107b-polynomial-projector-idempotence-20260627/C107bPolynomialProjector/PolynomialProjector.lean`.
+- Submitted C110b normed path-shell bridge project
+  `9650d454-c348-4c88-86ce-f4e99196518e`, task
+  `c03a6d2c-0853-4125-836b-851c86d8152e`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "finite polynomial spectral projector idempotent matrix polynomial functional calculus gauge covariance chiral lattice"`.
+- Result summary:
+  top hits included causal-set functional calculus, finite spectral triples on
+  gauge networks, Nielsen-Ninomiya extension pressure, and Luescher
+  Ginsparg-Wilson material.
+- Plan impact:
+  no change; C107b remains the right finite algebra step before projector
+  covariance assembly.
+
+Track A:
+
+- Preserved C107b recovered source.
+- Submitted C110b.
+- Recorded the next theorem direction after C110b: Banach-valued summability
+  over length-indexed shells.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful work remained
+  C1_NU theorem-stack advancement.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-153535-cycle5-c110b-normed-shell-review.md`.
+- Claude verdict:
+  accept C110b with caveats; next theorem should be a Banach-valued
+  summability bridge.
+
+Validation:
+
+- No local Lean/pre-commit run. Recovered C107b source was preserved but not
+  locally checked.
+
+Next cycle:
+
+- Poll C110b first.
+- Consider Claude review of recovered C107b source if C110b is still running.
+- If C110b completes, recover/preserve source and prepare the Banach-valued
+  shell summability theorem.
+
+## Active 30-cycle run - cycle 6 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C110b, refreshing literature
+  around normed shell summability, reviewing recovered C107b, and submitting the
+  projector covariance assembly theorem.
+
+Aristotle:
+
+- C110b project `9650d454-c348-4c88-86ce-f4e99196518e` remains in progress.
+- Submitted C107c polynomial projector covariance assembly project
+  `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c`, task
+  `fecc1b89-15bf-4b81-b685-b4038ac798b6`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "summable normed path shells kernel bound Banach valued path integral lattice fermion nonlocal operator"`.
+- Result summary:
+  top hits included Foster/Jacobson checkerboard path sums, causal-set chain
+  sums, QCA Dirac/Weyl lattice work, and Nielsen-Ninomiya comparison material.
+- Plan impact:
+  no change; C110b remains the finite bridge and Banach-valued summability is
+  the expected successor.
+
+Track A:
+
+- Claude-reviewed C107b recovered source.
+- Submitted C107c projector covariance assembly.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful action was the
+  finite C1_NU projector theorem stack.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-153906-cycle6-c107b-recovered-source-review.md`.
+- Claude verdict:
+  accept C107b; next theorem should be polynomial projector covariance.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C110b and C107c.
+- If either returns, recover/preserve source first.
+- If both remain running, prepare C111 Banach-valued shell summability or the
+  C108 origin branch-observable zero-index certificate packet.
+
+## Active 30-cycle run - cycle 7 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C110b/C107c, refreshing
+  literature around projector covariance, and getting adversarial review of the
+  live C107c theorem statement.
+
+Aristotle:
+
+- C110b project `9650d454-c348-4c88-86ce-f4e99196518e` remains in progress.
+- C107c project `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c` remains in progress.
+- C101 continuation task `47aeb63c-69f0-4d5c-827c-5d62fb5a53ed` failed after
+  its original long-running task was canceled.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "polynomial projector covariance finite matrix spectral island gauge conjugation chiral lattice branch observable"`.
+- Result summary:
+  top hits included gauge-network finite spectral-triple material,
+  Nielsen-Ninomiya extension pressure, SMG/projector ghost warnings,
+  Dirac-Kahler projection material, and Ginsparg-Wilson non-ultralocality.
+- Plan impact:
+  no change; C107c remains the right finite assembly theorem before spectral
+  island/gauge-wrapper claims.
+
+Track A:
+
+- Reviewed C107c with Claude while the Aristotle job runs.
+- Recorded C101 continuation failure.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful action was C1_NU
+  theorem statement review and queue maintenance.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-154219-cycle7-c107c-projector-covariance-review.md`.
+- Claude verdict:
+  accept C107c; next theorem after it lands should be finite spectral-island
+  projector conjugation covariance.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C110b and C107c first.
+- If C107c returns, recover/preserve source and prepare spectral-island
+  covariance.
+- If C110b returns, recover/preserve source and prepare Banach-valued shell
+  summability.
+
+## Active 30-cycle run - cycle 8 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by integrating the completed C110b report,
+  refreshing literature around shell summability, submitting C111, and getting
+  Claude review of the C110b/C111 path-sum ladder.
+
+Aristotle:
+
+- C110b project `9650d454-c348-4c88-86ce-f4e99196518e` completed.
+- `integrate_completed.py` again found no candidate files, but `aristotle show`
+  with UTF-8 output returned complete final source.
+- Preserved recovered C110b source in
+  `AgentTasks/aristotle-standalone/c110b-normed-path-shell-kernel-bridge-20260627/C110bPathShellKernel/NormedPathShell.lean`.
+- Submitted C111 shell summability project
+  `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`, task
+  `37a1ef47-c165-4cde-8724-8a605d7c1bca`.
+- C107c remains in progress.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "Banach valued summability finite shell kernel norm bound path integral lattice fermion nonlocal operator dominated convergence"`.
+- Result summary:
+  top hits included Foster/Jacobson checkerboard path sums, dominated
+  convergence/norm-bound material, Nielsen-Ninomiya comparison, causal-set
+  nonlocal operators, and minimally doubled finite-volume estimates.
+- Plan impact:
+  no strategic change; the path-sum ladder should continue from finite shell
+  bounds to summability and tail/truncation bounds.
+
+Track A:
+
+- Preserved C110b recovered source.
+- Submitted C111.
+- Kept C107c on the poll list.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful action was C1_NU
+  path-sum theorem-stack advancement.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-154702-cycle8-c110b-c111-review.md`.
+- Claude verdict:
+  accept C110b with proof-style caveat; accept C111 with caveats around
+  implicit nonnegativity and theorem splitting.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C107c and C111 first.
+- If C107c returns, recover/preserve source and prepare spectral-island
+  covariance.
+- If C111 returns, recover/preserve source and prepare C112 tail/truncation
+  control.
+
+## Active 30-cycle run - cycle 9 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C107c/C111, refreshing
+  projector-covariance literature, and submitting the C108 origin
+  branch-observable rejection certificate.
+
+Aristotle:
+
+- C107c project `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c` remains in progress.
+- C111 project `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d` remains in progress.
+- Submitted C108 origin branch-observable certificate project
+  `efd86260-78ff-4278-888d-03eff60216eb`, task
+  `ced781b1-832c-4e7e-9732-625aa4047223`.
+- Sent live clarification to C108 to parenthesize the anti-commutation sign as
+  `J * Gamma = -(Gamma * J)`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "finite spectral island projector covariance matrix spectrum conjugation polynomial selector chiral lattice gauge"`.
+- Result summary:
+  top hits included Dirac-Kahler chiral/flavour projection, gauge-network
+  finite spectral triples, Nielsen-Ninomiya extension pressure, Weyl surface
+  spectral plots, SMG projector/ghost-zero warnings, and Ginsparg-Wilson
+  non-ultralocality.
+- Plan impact:
+  no strategic change; C108 complements the C107 projector ladder by rejecting
+  balance-commuting origin observables.
+
+Track A:
+
+- Submitted C108 and patched the local C108 source according to Claude's
+  statement-clarity caveat.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful action was the
+  C1_NU origin-certificate theorem.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-155100-cycle9-c108-origin-certificate-review.md`.
+- Claude verdict:
+  accept C108 with caveats; do not require `P` to be idempotent.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C107c, C111, and C108 first.
+- If any returns, recover/preserve source before deciding the next theorem.
+
+## Active 30-cycle run - cycle 10 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C107c/C111/C108, refreshing
+  literature around origin chiral-trace failure modes, and submitting the C108b
+  nontrivial branch-observable component theorem.
+
+Aristotle:
+
+- C107c, C111, and C108 remain in progress.
+- Submitted C108b project `9686beef-8138-4c7d-9e11-03792420c27f`, task
+  `e9f9f04d-1875-4028-93f0-f773a2ba88c1`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "chiral projector trace zero balance symmetry anticommutes chirality polynomial observable lattice fermion"`.
+- Result summary:
+  top hits included Dirac-Kahler chiral/flavour projection, Luescher exact
+  lattice chiral symmetry, minimal doubling/point splitting, octonion
+  internal-space projectors, and Ginsparg-Wilson comparison material.
+- Plan impact:
+  no strategy change; C108b is a useful finite necessity theorem for origin
+  branch-observable candidates.
+
+Track A:
+
+- Submitted C108b and got Claude review on the theorem surface.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful action was the
+  finite C1_NU origin-observable theorem stack.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-155511-cycle10-c108b-nontrivial-observable-review.md`.
+- Claude verdict:
+  accept C108b with caveats; factor even/odd decomposition lemmas later.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C107c, C111, C108, and C108b first.
+- If none returns, prepare the quantitative odd-part chiral-trace identity
+  suggested by Claude, but do not overclaim it as a construction.
+
+## Active 30-cycle run - cycle 11 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling active jobs, refreshing
+  literature around odd/even chiral decomposition, submitting C108c, and
+  recovering C107c after it returned.
+
+Aristotle:
+
+- C107c project `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c` completed.
+- `integrate_completed.py` found no candidate files, but UTF-8 `aristotle show`
+  returned complete final source.
+- Preserved recovered C107c source in
+  `AgentTasks/aristotle-standalone/c107c-polynomial-projector-covariance-20260627/C107cPolynomialProjector/ProjectorCovariance.lean`.
+- Submitted C108c odd-part chiral trace project
+  `addf8b0a-c702-48d9-b66d-b20f121568d4`, task
+  `14009121-10d1-46d7-85a2-a309bb668d6e`.
+- C111/C108/C108b remain in progress.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "chirality trace odd even decomposition grading involution polynomial projector lattice chiral fermion"`.
+- Result summary:
+  top hits included Dirac-Kahler chiral/flavour projection, spin-taste
+  decomposition, graded charge conjugation, octonion internal-space projection,
+  Ginsparg-Wilson symmetry, and minimal-doubling material.
+- Plan impact:
+  no strategy change; C108c is the right finite quantitative identity before
+  looking for actual branch observables.
+
+Track A:
+
+- Recovered/preserved C107c.
+- Submitted C108c and obtained Claude review.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful action was the
+  C1_NU finite projector/origin-observable theorem stack.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-155834-cycle11-c108c-oddpart-review.md`.
+- Claude verdict:
+  accept C108c; next theorem should relate `J`-odd `B` to the odd-degree
+  component of polynomial selectors.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C111, C108, C108b, and C108c first.
+- If C108c returns, recover/preserve source.
+- Consider reviewing recovered C107c source before building spectral-island
+  covariance on top of it.
+
+## Active 30-cycle run - cycle 12 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling active jobs, recovering C111,
+  refreshing literature around odd polynomial/projector decomposition, and
+  reviewing recovered C111 source.
+
+Aristotle:
+
+- C111 project `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d` completed.
+- `integrate_completed.py` found no candidate files, but UTF-8 `aristotle show`
+  returned complete final source.
+- Preserved recovered C111 source in
+  `AgentTasks/aristotle-standalone/c111-shell-summability-20260627/C111ShellSummability/ShellSummability.lean`.
+- Sent C111 continuation `7439e16f-cbb2-4275-be29-a6cd24fb6bc2` requesting
+  readable proof rewrite based on Claude review.
+- C108/C108b/C108c remain in progress.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "odd polynomial component chiral trace grading involution projector lattice fermion balance symmetry"`.
+- Result summary:
+  top hits included Dirac-Kahler projection, Luescher/Ginsparg-Wilson exact
+  lattice symmetry, graded/involutive tensor-product material, octonion
+  internal-space projectors, and symmetry/fractionalization material.
+- Plan impact:
+  no change; C111 is statement-complete by report but proof-style pending.
+
+Track A:
+
+- Recovered/preserved C111.
+- Sent C111 proof-rewrite continuation.
+
+Track B:
+
+- No separate Track B artifact was created. The cycle's useful action was C1_NU
+  path-sum theorem recovery and review.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-160243-cycle12-c111-recovered-source-review.md`.
+- Claude verdict:
+  accept the statement with caveats; rewrite proof before trusted promotion.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C111 continuation, C108, C108b, and C108c first.
+- If C111 rewrite returns, recover/preserve rewritten source.
+- If an origin job returns, recover/preserve and review it.
+
+## Active 30-cycle run - cycle 13 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C111 rewrite/C108/C108b/C108c,
+  preserving returned source, refreshing literature around spectral branch
+  projectors, and reviewing the returned origin-observable certificate.
+
+Aristotle:
+
+- C111 rewrite project `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`, task
+  `7439e16f-cbb2-4275-be29-a6cd24fb6bc2`, completed.
+- Preserved the rewritten C111 source in
+  `AgentTasks/aristotle-standalone/c111-shell-summability-20260627/C111ShellSummability/ShellSummability.lean`.
+- C108 project `efd86260-78ff-4278-888d-03eff60216eb`, task
+  `ced781b1-832c-4e7e-9732-625aa4047223`, completed.
+- Preserved completed C108 source in
+  `AgentTasks/aristotle-standalone/c108-origin-branch-observable-certificate-20260627/C108OriginBranchObservable/ZeroIndexCertificate.lean`.
+- C108b and C108c status polls timed out before returning usable status.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "Riesz spectral projector gauge covariance finite dimensional chiral lattice fermion branch observable origin index"`.
+- Result summary:
+  top chunks included Nielsen-Ninomiya extension material, Ginsparg-Wilson
+  non-ultralocality, lattice gauge/spectral-network covariance, Dirac-Kahler
+  projection, exact lattice chiral symmetry, and Wilson/Brillouin material.
+- Plan impact:
+  no strategy change; spectral/sign/projector routes remain C1_NU control
+  candidates, but C108 is only an origin rejection certificate.
+
+Track A:
+
+- Recovered/preserved C108 and the C111 proof rewrite.
+- Sent C108 to Claude for adversarial review.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  the C1_NU finite projector/origin-observable theorem stack.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-161224-cycle13-c108-recovered-source-review.md`.
+- Claude verdict:
+  accept with caveats; C108 is semantically aligned but proof style should be
+  cleaned before trusted promotion.
+- Claude recommended the contrapositive/non-vacuity companion theorem, aligned
+  with the already running C108b job.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108b and C108c first.
+- If C108b returns, recover/preserve and review it as the non-vacuity companion
+  to C108.
+- If no origin companion returns, consider C108 proof cleanup before downstream
+  use.
+
+## Active 30-cycle run - cycle 14 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by using a safer Aristotle polling command,
+  recovering C108b, refreshing literature around the odd-component criterion,
+  and reviewing the returned nontrivial branch-observable theorem.
+
+Aristotle:
+
+- `aristotle tasks` worked as a non-streaming status poll.
+- C108b project `9686beef-8138-4c7d-9e11-03792420c27f`, task
+  `e9f9f04d-1875-4028-93f0-f773a2ba88c1`, reported complete.
+- C108c project `addf8b0a-c702-48d9-b66d-b20f121568d4`, task
+  `14009121-10d1-46d7-85a2-a309bb668d6e`, remains in progress.
+- `integrate_completed.py` found no candidate files for C108b.
+- Recovered/preserved C108b from transcript:
+  `AgentTasks/aristotle-standalone/c108b-nontrivial-branch-observable-20260627/C108bNontrivialBranchObservable/NontrivialBranchObservable.lean`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "nonzero chiral trace grading involution odd component polynomial observable lattice fermion branch selection"`.
+- Result summary:
+  top chunks included Ginsparg-Wilson finite-volume measure/anomaly issues,
+  Nielsen-Ninomiya eigenmode pairing, Wilson/Brillouin and minimally doubled
+  material, single curved-surface Weyl fermions, and Dirac-Kahler projection.
+- Plan impact:
+  no strategy change; finite chiral asymmetry must escape the balance symmetry,
+  but this remains an origin algebra criterion, not a release.
+
+Track A:
+
+- Recovered/preserved C108b.
+- Sent C108b to Claude for review.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  the C1_NU finite origin-observable theorem stack.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-161900-cycle14-c108b-recovered-source-review.md`.
+- Claude verdict:
+  accept with caveats; semantically aligned, proof style should be cleaned and
+  axiom-audited before trusted promotion.
+- Claude recommended a positive odd-moment/search criterion after C108c.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108c first.
+- If C108c returns, recover/preserve and review it.
+- If C108c remains running, consider packetizing the positive odd-moment/search
+  theorem as the next soft-dependent job.
+
+## Active 30-cycle run - cycle 15 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling/recovering C108c, reviewing the
+  odd-part chiral trace identity, and submitting a finite non-vacuity witness
+  successor.
+
+Aristotle:
+
+- C108c project `addf8b0a-c702-48d9-b66d-b20f121568d4`, task
+  `14009121-10d1-46d7-85a2-a309bb668d6e`, reported complete.
+- `integrate_completed.py` found no candidate files for C108c.
+- Recovered/preserved C108c from transcript:
+  `AgentTasks/aristotle-standalone/c108c-oddpart-chiraltrace-20260627/C108cOddPartChiralTrace/OddPartTrace.lean`.
+- Submitted C108d odd-moment witness / nonzero trace criterion:
+  project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "odd part polynomial moment chiral trace grading involution spectral projector branch observable"`.
+- Result summary:
+  top chunks emphasized graded charge conjugation, tensor-product grading
+  involutions, indefinite spectral triple grading/Krein context, functional
+  calculus on causal sets, octonion chirality/hypercharge projection, and
+  Golterman-Shamir SMG constraints.
+- Plan impact:
+  no strategy change; the finite witness is algebraic non-vacuity, not a
+  physical release.
+
+Track A:
+
+- Recovered/preserved C108c.
+- Sent C108c to Claude for review.
+- Submitted C108d.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  the C1_NU finite origin-observable theorem stack.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-162236-cycle15-c108c-recovered-source-review.md`.
+- Claude verdict:
+  accept with caveats; semantically aligned, proof style should be cleaned and
+  locally checked before trusted promotion.
+- Claude recommended the finite non-vacuity/detection theorem; C108d was
+  submitted to cover that next step.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108d first.
+- If C108d returns, recover/preserve and review it.
+- If C108d remains queued/running, prepare the norm-bound or moment-search
+  strengthening as a soft-dependent follow-up but do not overclaim it.
+
+## Active 30-cycle run - cycle 16 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C108d, searching finite witness
+  literature, and reviewing the C108d statement/package while it remains in
+  progress.
+
+Aristotle:
+
+- C108d project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`, remains in progress.
+- Sent a live continuation hint with finite `Fin 2` matrix-computation tactic
+  guidance and an optional sibling witness using `X^2 + X` if cheap.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "finite chiral index two by two witness trace gamma grading involution polynomial selector"`.
+- Result summary:
+  top chunks emphasized graded charge conjugation, tensor-product grading
+  involutions, spin-taste/chirality representation material, finite trace-style
+  gamma identities, and minimally doubled spin-taste structure.
+- Plan impact:
+  no strategy change; C108d remains the right finite non-vacuity target.
+
+Track A:
+
+- Reviewed C108d statement/package through Claude.
+- Sent the review's useful tactic guidance back to Aristotle.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  C1_NU finite witness hardening.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-162730-cycle16-c108d-statement-review.md`.
+- Claude verdict:
+  accept with caveats; the witness arithmetic is right, but `p = X` is a clean
+  degenerate witness and a second less-trivial polynomial witness would harden
+  the claim.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108d first.
+- If C108d returns, recover/preserve and review it.
+- If C108d remains in progress, avoid hard-dependent submissions and prepare
+  only soft-dependent follow-up packets.
+
+## Active 30-cycle run - cycle 17 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C108d, refreshing literature
+  around finite-witness-to-origin-data lifting, and reviewing C109 design before
+  submitting any hard-dependent job.
+
+Aristotle:
+
+- C108d project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`, remains in progress.
+- No new Aristotle job was submitted because C109b should wait for C108d.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "branch observable finite witness lift grading involution chiral index projector spectral island"`.
+- Result summary:
+  top chunks included Dirac-Kahler chiral/flavour projection, Wilson/Brillouin
+  and minimally doubled material, Nielsen-Ninomiya extension, tensor-product
+  grading involutions, spectral flow/index material, and graded charge
+  conjugation.
+- Plan impact:
+  no strategy change; keep origin certificates separate from spectral/gauge
+  release data.
+
+Track A:
+
+- Sent C109 lift-design packet to Claude.
+- Recorded the recommended `C109a` / `C109b` split.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  C1_NU theorem-stack design discipline.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-163050-cycle17-c109-lift-design-review.md`.
+- Claude verdict:
+  revise, and partially wait for C108d.
+- Recommendation:
+  prepare `C109a` as passive origin-data packaging/guardrails, but gate `C109b`
+  consequence lemmas and witness instantiation on C108d's return.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108d first.
+- If C108d returns, recover/preserve and review it.
+- If C108d remains in progress, prepare C109a as a soft-dependent packet or doc
+  skeleton, not a hard-dependent proof job.
+
+## Active 30-cycle run - cycle 18 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C108d, preparing the
+  soft-dependent C109a held packet, reviewing it for overclaim/checklist risk,
+  and keeping C109b blocked on C108d.
+
+Aristotle:
+
+- C108d project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`, remains in progress.
+- Prepared but did not submit:
+  `AgentTasks/null-edge-c109a-origin-polarizer-api-held-aristotle-2026-06-27.md`.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "origin polarizer certificate finite data non release guardrail spectral island gap gauge covariance chiral trace"`.
+- Result summary:
+  top chunks included minimally doubled vacuum-polarization/counterterm
+  material, Golterman-Shamir propagator-zero warnings, gauge-constraint
+  material, almost-commutative indefinite spectral triple context, and
+  non-release-relevant gauge/locality caveats.
+- Plan impact:
+  no strategy change; origin certificates stay separate from spectral island,
+  gap, gauge, and anomaly claims.
+
+Track A:
+
+- Drafted and reviewed the C109a held packet.
+- Applied Claude's packet cleanups.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  C1_NU API guardrail design.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-163426-cycle18-c109a-held-packet-review.md`.
+- Claude verdict:
+  hold and revise; edits applied to remove content-free `True` fields/theorems
+  and pin the certificate to `≠ (0 : Complex)`.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108d first.
+- If C108d returns, recover/preserve and review it.
+- Keep C109a held until C108d clarifies the witness shape.
+
+## Active 30-cycle run - cycle 19 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C108d, refreshing literature
+  around finite non-vacuity and non-release boundaries, and re-reviewing the
+  revised C109a held packet.
+
+Aristotle:
+
+- C108d project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`, remains in progress.
+- C109a remains held and was not submitted.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "finite nonvacuity witness chiral trace origin certificate not release spectral gap propagator zero"`.
+- Result summary:
+  top chunks emphasized SMG constraints, propagator-zero ghost warnings,
+  finite projector/block examples, odd trace cancellation in finite spectral
+  settings, and spectral/gap warnings in minimally doubled fermions.
+- Plan impact:
+  no strategy change; finite origin non-vacuity and release/gap/ghost safety
+  remain separate obligations.
+
+Track A:
+
+- Re-reviewed revised C109a held packet.
+- Applied safe-held packet edits.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  C1_NU API guardrail hardening.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-163713-cycle19-c109a-revised-held-packet-review.md`.
+- Claude verdict:
+  safe-held; keep C109a held until C108d returns.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108d first.
+- If C108d returns, recover/preserve and review it.
+- If C108d remains in progress, do not submit C109a unless there is a strategic
+  reason to spend Aristotle budget on passive packaging.
+
+## Active 30-cycle run - cycle 20 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C108d, refreshing literature
+  around finite witness proof tactics, and preparing a contingency if C108d
+  stalls.
+
+Aristotle:
+
+- C108d project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`, remains in progress.
+- No narrowing instruction was sent because the job is not stale.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "2x2 matrix witness chiral trace finite projector grading involution proof tactics Lean matrix"`.
+- Result summary:
+  top chunks included matrix inequality material, finite spectral triple
+  projections, checkerboard spin matrix norms, charge conjugation matrices,
+  tensor-product grading involutions, finite projector identities, nonabelian
+  trace formulas, and Dirac matrix representation material.
+- Plan impact:
+  no strategy change; C108d remains a finite witness computation.
+
+Track A:
+
+- Polled C108d.
+- Sent C108d contingency review to Claude.
+- Recorded a fallback plan if C108d stalls.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  C1_NU finite witness contingency planning.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-163946-cycle20-c108d-contingency-review.md`.
+- Claude recommendation:
+  if C108d stalls, narrow to a concrete finite nonzero witness using explicit
+  `Fin 2` functions and prove `≠ 0` rather than exact `= 2`.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108d first.
+- If C108d is still in progress, consider whether to send the narrowing
+  instruction.
+- If C108d returns, recover/preserve and review it.
+
+## Active 30-cycle run - cycle 21 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling C108d, sending the prepared
+  narrowing instruction after another in-progress status, and reviewing whether
+  the narrowed target preserves useful theorem content.
+
+Aristotle:
+
+- C108d project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`, remains in progress.
+- Sent narrowing instruction:
+  prioritize concrete 2 by 2 nonzero witness, allow `≠ 0` instead of exact
+  `= 2`, allow dropping the full iff if needed, and preserve the no-release
+  boundary.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "finite witness nonzero trace exact value unnecessary chiral index origin matrix example"`.
+- Result summary:
+  top chunks included Nielsen-Ninomiya chiral-block matrices, Dirac-Kahler
+  chiral/flavour projection, minimally doubled chiralities and spectral flow,
+  finite trace simplifications in loop diagrams, nonabelian trace formulas, and
+  finite matrix norm examples.
+- Plan impact:
+  no strategy change; finite explicit witnesses are non-vacuity checks only.
+
+Track A:
+
+- Sent C108d narrowing instruction.
+- Sent narrowing decision to Claude.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  C1_NU finite witness narrowing.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-164241-cycle21-c108d-narrowing-review.md`.
+- Claude verdict:
+  good narrowing; finite non-vacuity is preserved, while full iff/general
+  arbitrary-`J` lemmas remain theorem debt if omitted.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Poll C108d first.
+- If it returns, recover/preserve and review it.
+- If still blocked, consider splitting into two tiny explicit examples.
+
+## Active 30-cycle run - cycle 22 - 2026-06-27
+
+Objective:
+
+- Continue the requested 30-cycle run by polling/recovering C108d, refreshing
+  literature around theorem debt, and reviewing the returned finite witness.
+
+Aristotle:
+
+- C108d project `00918b10-3d0f-415e-a012-1059581f1f48`, task
+  `3d3903ff-45c6-4658-a58e-707e1495f067`, completed.
+- `integrate_completed.py` reported no candidates, but the returned Lean file
+  existed in the downloaded archive.
+- Preserved C108d source in:
+  `AgentTasks/aristotle-standalone/c108d-oddmoment-witness-20260627/C108dOddMomentWitness/OddMomentWitness.lean`.
+- Returned result includes the full nonzero iff, the concrete `p = X` witness,
+  and the optional quadratic witness.
+
+Literature search:
+
+- Query/source:
+  `neo4j_paper_search.py --chunks --query "chiral trace odd part iff theorem debt finite witness arbitrary involution grading projector"`.
+- Result summary:
+  top chunks emphasized graded charge conjugation, tensor-product grading
+  involutions, spin-taste/Weyl block structure, Dirac-Kahler projection,
+  indefinite spectral triple grading, and finite spectral triple grading
+  compatibility.
+- Plan impact:
+  no strategy change; C108d completes finite non-vacuity but not native
+  branch-observable/release obligations.
+
+Track A:
+
+- Recovered/preserved C108d.
+- Sent C108d to Claude for review.
+
+Track B:
+
+- No separate Track B artifact was created. The useful action this cycle was
+  C1_NU finite origin-observable stack completion.
+
+Claude:
+
+- Sent mandatory cycle review:
+  `AgentTasks/model-calls/claude/2026-06-27-164720-cycle22-c108d-recovered-source-review.md`.
+- Claude verdict:
+  accept with caveats; the finite non-vacuity theorem is semantically aligned,
+  but proof style should be cleaned before trusted promotion.
+
+Validation:
+
+- No local Lean/pre-commit run.
+
+Next cycle:
+
+- Begin C109a/C109b transition now that C108d has returned.
+- Prefer passive C109a packaging or a held C109b packet over any premature
+  native `B(U)` release claim.

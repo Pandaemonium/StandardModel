@@ -1485,3 +1485,2326 @@ possibly canonical under finite-triple or J_F closure.
 
 - Mass program sequencing:
   keep P1/P1.5/P2 separation, defer scalar spectrum claims, and keep “prediction” labels tied to constrained map geometry or codimension results.
+
+## 17. Gate C architecture update: Wilson/Neuberger + CKM texture (2026-06-27)
+
+The Gate C1 route has sharpened since the earlier branch-line and projected
+release notes.
+
+Current first physical architecture:
+
+```text
+Wilson/Neuberger overlap reference
+  + CKM finite branch/flavor texture
+  + null-edge homotopy/certificate stack.
+```
+
+Interpretation:
+
+```text
+Wilson/Neuberger resolves spacetime momentum doublers.
+CKM splits finite branch/flavor sectors.
+The null-edge endpoint must be gapped-homotopic to that reference.
+```
+
+Do not use literal naive CKM as the spacetime doubler-resolution operator.
+CKM is a mass table/texture, not the primary kinetic lattice regulator.
+
+The current reference kernel is:
+
+```text
+H_ref =
+  Gamma_ref [
+    D_W^0 tensor I_CKM
+    + I tensor r_b(15I - M_CKM)
+    - m0 I
+  ].
+```
+
+The current null-edge endpoint is:
+
+```text
+H_ne =
+  Gamma_K [
+    D_ne^cov
+    + W_NE,space
+    + r_b(15R_ne - M_CKM^ne)
+    - m0 R_ne
+  ].
+```
+
+The combined free mass-window target is:
+
+```text
+0 < m0 < min(2 r_W, 16 r_b).
+```
+
+This produces:
+
+```text
+one light sector:
+  spacetime corner n = 0 and CKM level ell = 0;
+
+heavy sectors:
+  all spacetime doublers n >= 1 and all CKM-heavy levels ell > 0.
+```
+
+The assembled Gate C1 certificate stack is now:
+
+```text
+CKM table;
+shifted CKM/Wilson mass window;
+sector-signature match;
+C170/C181 sub-gap homotopy constants;
+overlap sign/GW algebra;
+true bad-sector inverse gap;
+no propagator-zero mirror removal;
+SMActsInternally or exact gauge dressing;
+anomaly/index source theorem;
+Krein-sign continuity;
+non-ultralocal path-shell/resolvent control;
+GateC1_NU assembly theorem.
+```
+
+Consequences for the unified mass program:
+
+```text
+Gate C is no longer an undefined “find a projector” blocker.
+It is now a conditional reference-import theorem.
+```
+
+But it is still not closed:
+
+```text
+the actual null-edge Wilsonized kinetic operator must be specified;
+the kinetic mismatch kappa must be bounded;
+SMActsInternally must be checked in the Furey/Hughes convention;
+reference index/locality/determinant/Krein/source certificates must be supplied;
+returned Lean artifacts remain external until promoted and locally checked.
+```
+
+Mass/yukawa/prediction claims must still wait until this Gate C1 import is
+instantiated. Gate H and CKM texture can support the construction, but they do
+not replace the Wilson/Neuberger reference-import proof.
+
+## 18. Gate C priority update: prove the null-edge endpoint is a Wilson-overlap import
+
+Date: 2026-06-27
+Source: Pro analysis pasted in
+`C:\Users\Owner\.codex\attachments\9bc42fda-a54b-45e8-870c-9aec20a37454\pasted-text.txt`.
+
+The unified mass program should treat Gate C1 as a reference-import theorem,
+not as a request to invent a wholly new fermion-doubling solution.
+
+The working architecture is:
+
+```text
+known Wilson/Neuberger overlap physics
+  + CKM finite branch/flavor texture
+  + null-edge gapped homotopy and sector-signature match.
+```
+
+This changes priorities:
+
+```text
+1. First prove the combined Wilson+CKM free mass window.
+2. Specify the actual null-edge Wilsonized kinetic operator.
+3. Bound kappa against the Wilson/Neuberger reference.
+4. Keep omega and rho zero in the first theorem by using the same CKM table and R = I.
+5. Add gauge/admissibility, branch-frame, anomaly, Krein, and determinant controls only after the free import theorem is stable.
+```
+
+Do not ask CKM alone to solve spacetime doubling. CKM is still valuable, but its
+safe first role is:
+
+```text
+finite internal branch/flavor mass splitting.
+```
+
+The decisive mass window is:
+
+```text
+0 < m0 < min(2 r_W, 16 r_b).
+```
+
+This should be the theorem that separates:
+
+```text
+one light sector:
+  spacetime corner n = 0 and CKM level ell = 0;
+
+all heavy sectors:
+  spacetime doublers n >= 1 and CKM-heavy levels ell > 0.
+```
+
+The project should now avoid speculative mass/yukawa predictions until the
+following concrete objects exist:
+
+```text
+H_ref;
+H_ne;
+sector-signature map S;
+sub-gap homotopy bound;
+overlap sign-kernel import theorem;
+bad-sector inverse gap;
+SMActsInternally certificate;
+non-ultralocal control certificate.
+```
+
+Short version:
+
+```text
+Gate C1 is now a conditional import of a known working model.
+The novelty is not replacing Wilson/Neuberger.
+The novelty is interpreting a null-edge endpoint as lying in that same gapped
+overlap component, with CKM as the finite branch/flavor texture.
+```
+
+## 19. C193 update: free Wilson+CKM reference window is now available
+
+Date: 2026-06-27
+Source: Aristotle project `e63bde80-6cec-4422-a350-0189a78037dc`, task
+`0678f49b-4230-465f-94fa-4c0210598cdd`.
+
+The combined Wilson+CKM free mass-window certificate has now been returned as a
+standalone Lean theorem package.
+
+This proves, for the reference shifted mass
+
+```text
+mu(n, ell) = 2 r_W n + w(ell) - m0
+```
+
+with
+
+```text
+w(0) = 0;
+w(ell > 0) = 16 r_b,
+```
+
+that the window
+
+```text
+r_W > 0;
+0 < m0 < min(2 r_W, 16 r_b)
+```
+
+gives:
+
+```text
+one light sector:
+  (n, ell) = (0, 0);
+
+all heavy sectors:
+  spacetime doublers n >= 1;
+  CKM-heavy sectors ell > 0;
+
+uniform reference margin:
+  gamma_free = min(m0, 2 r_W - m0, 16 r_b - m0).
+```
+
+This is an important status change:
+
+```text
+The first finite reference theorem is no longer merely a plan.
+It is now an external Aristotle Lean artifact awaiting local promotion/checking.
+```
+
+What this unlocks:
+
+```text
+sector-signature matching can use mu(n,ell) < 0 iff (n,ell) = (0,0);
+C170/C181 homotopy budgets can use gamma_free as the explicit reference gap;
+the next operator-level work can focus on kappa, alpha, beta rather than the
+free Wilson+CKM sign table.
+```
+
+What it does not unlock:
+
+```text
+No full GateC1_NU claim yet.
+No actual H_ne kappa bound yet.
+No gauge/admissibility/anomaly/determinant/Krein certificate yet.
+No local promotion into project Lean has been performed in this cycle.
+```
+
+## 20. C194-C203 update: C193 becomes the gap input, kappa is the critical path
+
+Date: 2026-06-27
+Source: completed Aristotle jobs C194-C203.
+
+The program has now moved from "find the mass window" to "prove the actual
+null-edge endpoint stays inside that window's gap budget."
+
+The key result from C194 is the clean operator-level theorem:
+
+```text
+if H_ref has gap g;
+if transported H_ne differs from H_ref by at most kappa;
+if kappa < g;
+then the straight-line homotopy remains gapped.
+```
+
+Together with C193, the natural choice is:
+
+```text
+g = gamma_free.
+```
+
+C201 gives the matching scalar and operator-style sign-stability theorem:
+
+```text
+perturbation below gamma_free cannot flip the physical/heavy sign pattern.
+```
+
+This makes the immediate Gate C proof target very crisp:
+
+```text
+ReferenceIsGapped:
+  prove the CKM-decorated Wilson/Neuberger reference has gap gamma_free.
+
+NullEdgeKineticCloseEnough:
+  prove transported H_ne is within kappa of H_ref, with kappa < gamma_free.
+```
+
+C202 gives the branch-line lift language:
+
+```text
+maintained spectral island;
+Riesz-style projector;
+rank stability;
+chiral-index stability.
+```
+
+C196 gives the sector-signature map that must match before reference import is
+allowed. The signature slots are:
+
+```text
+rank;
+chirality;
+branch parity;
+gauge representation;
+mass sign;
+Krein sign;
+index weight.
+```
+
+C197 makes the Furey/Hughes audit precise:
+
+```text
+SM gauge generators must centralize the branch factor carrying J, Gamma_K, R,
+and W_CKM, or an exact gauge-dressed substitute must be provided.
+```
+
+C195 and C203 prevent source overclaims:
+
+```text
+GW algebra does not imply determinant-line control.
+Locality requires admissibility or an explicit non-ultralocal control
+certificate.
+Anomaly/index claims require physical-window/source hypotheses.
+Ghost-zero exclusion is mandatory for the quantum target.
+```
+
+C198 is the fallback if a direct kappa estimate fails:
+
+```text
+H_Wilson+CKM -> H_abs.block -> H_ne.
+```
+
+It is a useful scaffold, but not yet a fully closed analytic theorem.
+
+C200 is a caution, not a port:
+
+```text
+C200 reconstructed C193 without seeing the actual C193 Lean source.
+Do not use that reconstructed port as authoritative.
+Promote the real C193 artifact instead.
+```
+
+Updated short status:
+
+```text
+C193/C201 close the free sign-window and below-margin sign-stability layer.
+C194 closes the abstract kappa-to-gapped-homotopy layer.
+C196/C197/C202 define the import audits.
+C195/C203 define source-contract boundaries.
+The remaining hard mathematical object is the concrete H_ne and its kappa
+bound relative to the Wilson+CKM reference.
+```
+
+## 21. C204-C208 update: abstract GateC1_NU_Free is assembled
+
+Date: 2026-06-27
+Source: completed Aristotle jobs C204-C208.
+
+The free Gate C1 branch has crossed another threshold:
+
+```text
+There is now an external abstract Lean assembly theorem for GateC1_NU_Free.
+```
+
+This should not be overread. It is not the physical theorem yet, because its
+key hypotheses still need concrete null-edge instantiation. But the logical
+plumbing is no longer fuzzy.
+
+Current structure:
+
+```text
+C193:
+  Wilson+CKM mass window and gamma_free.
+
+C205:
+  ReferenceIsGapped gamma_free H_ref,
+  assuming the concrete Clifford anticommutation/norm identity.
+
+C194:
+  kappa < gap gives gapped homotopy.
+
+C201:
+  perturbations below gamma_free preserve the sign split.
+
+C202:
+  maintained spectral island gives projector/rank/chiral-index persistence.
+
+C207:
+  these pieces assemble into GateC1_NU_Free.
+```
+
+C206 clarifies the exact missing null-edge data:
+
+```text
+H_ne = Gamma_K[D + W + r_b(15R - M_CKM) - m0 R].
+```
+
+with:
+
+```text
+kappa =
+  kappaBranch + kappaKin + kappaWil + kappaCKM + kappaRm0.
+```
+
+First theorem simplification:
+
+```text
+kappaCKM = 0 if the CKM table transports exactly;
+kappaRm0 = 0 if R transports exactly;
+then only kappaBranch + kappaKin + kappaWil must be bounded.
+```
+
+The main remaining proof obligation is now:
+
+```text
+kappaBranch + kappaKin + kappaWil < gamma_free.
+```
+
+plus concrete instantiation of:
+
+```text
+H_ne;
+transport S and Sinv;
+Gamma_K / Clifford anticommutation;
+sector-signature map;
+SMActsInternally.
+```
+
+C208 updates the source plan. Add/ingest next:
+
+```text
+Kato for Riesz projection stability;
+Davis-Kahan for finite-dimensional spectral subspace perturbation;
+Hasenfratz-Laliena-Niedermayer for GW index theorem;
+Narayanan-Neuberger for vacuum-overlap/determinant line;
+Fujikawa as secondary chiral-Jacobian support.
+```
+
+Short status:
+
+```text
+We now have an abstract free-gate theorem stack.
+We still lack the concrete null-edge endpoint data and its kappa bound.
+```
+
+## 22. C209-C213 update: still choosing the concrete operator
+
+Date: 2026-06-27
+Source: completed Aristotle jobs C209-C213.
+
+The latest batch gives an important reality check:
+
+```text
+We have an abstract GateC1_NU_Free theorem stack.
+We do not yet have a frozen concrete operator model.
+```
+
+C212 states the boundary most clearly. We are still choosing the operator until
+the following are fixed:
+
+```text
+finite carrier, basis, and exact field;
+explicit H_ref matrix entries;
+explicit H_ne matrix entries;
+explicit kappa value or interval;
+free side-condition zeros.
+```
+
+Once these are fixed, the task becomes a proof about a model rather than a model
+selection process.
+
+C210 gives the best-case kappa theorem:
+
+```text
+exact branch, kinetic/Wilson, CKM, and R transport
+  -> kappa = 0.
+```
+
+The realistic first theorem is:
+
+```text
+exact CKM/R transport
+  -> kappa = kappaBranch + kappaKin + kappaWil.
+```
+
+Thus the concrete target is:
+
+```text
+kappaBranch + kappaKin + kappaWil < gamma_free.
+```
+
+C209 says the C205 Clifford/gap input should be connected to existing project
+modules before inventing anything new:
+
+```text
+PhysicsSM/Draft/NullEdgeActualCliffordSymbol.lean;
+PhysicsSM/Draft/NullEdgeBranchClassifierAPI.lean.
+```
+
+C211 gives the execution plan for promoting the real returned Lean artifacts
+into `PhysicsSM/Draft/NullEdge/GateC1/`. This should be the next local Lean
+engineering task, but it requires local checks before any claim that the project
+builds with those files.
+
+C213 updates determinant-line provenance:
+
+```text
+Narayanan-Neuberger:
+  overlap determinant origin and phase ambiguity.
+
+Kaplan-Schmaltz:
+  domain-wall eta-invariant / partial inflow cross-check.
+
+Hasenfratz-Laliena-Niedermayer:
+  still needed for the GW index-theorem source contract.
+```
+
+Short status:
+
+```text
+We have the abstract theorem stack.
+We need to freeze and formalize the concrete finite operator.
+The next highest-value work is not another abstract certificate; it is concrete
+operator instantiation and artifact promotion.
+```
+
+## 23. C214-C218 update: pivot from external abstraction to local promotion
+
+Date: 2026-06-27
+Source: completed Aristotle jobs C214-C218.
+
+The strongest message from C218 is operational:
+
+```text
+Stop submitting broad abstract jobs until the external theorem stack is locally
+promoted and the concrete operator is frozen.
+```
+
+C214-C217 are useful scaffolds:
+
+```text
+C214:
+  proposes a Fin 3 generation/CKM carrier over Complex.
+
+C215:
+  proposes a momentum-corner diagonal H_ref model.
+
+C216:
+  gives a toy finite H_ne transport model with exact CKM/R transport and
+  nonzero branch/kinetic/Wilson residuals.
+
+C217:
+  gives exact rational arithmetic for a balanced gamma_free window.
+```
+
+But they are not yet the final operator:
+
+```text
+The C214 Fin 3 carrier is generation-only.
+The C215 H_ref corner model omits full spinor/internal carrier composition.
+The C216 H_ne matrices are illustrative unless adopted.
+The C217 numeric residual is a template unless derived from actual H_ne.
+```
+
+Therefore the unified mass program should pause speculative theorem expansion
+and do the local engineering step:
+
+```text
+promote the real C193/C194/C201/C202 artifacts into Draft;
+locally check them;
+choose the authoritative first finite carrier;
+define H_ref and H_ne;
+derive kappa pieces from those definitions.
+```
+
+Only after that should we ask for more external proof work, and those jobs
+should be narrow implementation jobs against the local modules.
+
+## 24. C219-C221 update: local handoff is ready
+
+Date: 2026-06-27
+Source: completed Aristotle jobs C219-C221.
+
+C219 gives the readiness checklist for local promotion:
+
+```text
+read the real artifact files;
+create thin Draft modules C193/C194/C201/C202;
+use aliases or exact wrappers;
+preserve statement identity;
+run targeted checks before claiming success.
+```
+
+C220 gives the Clifford bridge target:
+
+```text
+Use C21 actual Clifford-symbol conventions.
+Do not invent a new gamma convention.
+Keep the chirality-balanced bare-branch obstruction explicit.
+Prove only the local anticommutation/norm bridge into C205.
+```
+
+C221 gives the finite Wilson reference source route:
+
+```text
+Wilson term = graph Laplacian / second difference;
+corner-basis is enough for the first free theorem;
+full DFT can wait for non-corner dispersion.
+```
+
+Operational consequence:
+
+```text
+Stop external broad-job expansion.
+Proceed to local Draft promotion and targeted local Lean checks when approved.
+```
+
+## 25. C222-C224 update: exact promotion surface
+
+Date: 2026-06-28
+Source: completed Aristotle jobs C222-C224.
+
+The exact promotion surface is now:
+
+```text
+C193 -> CKMWilsonWindow.lean;
+C194 -> GappedHomotopy.lean;
+C201 -> SignStability.lean;
+C202 -> ProjectorPersistence.lean.
+```
+
+The local C21/branch files should not be copied into the Gate C1 Draft package.
+They remain external sources for a later bridge theorem.
+
+The first bridge theorem should be:
+
+```text
+branchKernel_chiralIndex_zero.
+```
+
+This is intentionally not a release theorem. It only translates the known
+chirality-balanced C21 result into the C202/C205 projector/chiral-index
+vocabulary.
+
+The graph-matrix sources support `H_ref` only:
+
+```text
+arXiv:2112.13501;
+arXiv:2311.11320.
+```
+
+They support Wilson-Laplacian/corner-basis representation and species-count
+checks, not the null-edge endpoint `H_ne`.
+
+Operational consequence:
+
+```text
+The next concrete step is additive Draft promotion of the four artifacts,
+followed by targeted local checks if/when requested.
+```
+
+## 26. Local Draft promotion applied
+
+Date: 2026-06-28
+
+The four self-contained Gate C1 artifacts have been copied into Draft modules:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/CKMWilsonWindow.lean;
+PhysicsSM/Draft/NullEdge/GateC1/GappedHomotopy.lean;
+PhysicsSM/Draft/NullEdge/GateC1/SignStability.lean;
+PhysicsSM/Draft/NullEdge/GateC1/ProjectorPersistence.lean.
+```
+
+This is a local promotion milestone, but not a verification milestone:
+
+```text
+No local Lean checks were run.
+The files are Draft-only.
+They must not be treated as trusted until checked and reviewed.
+```
+
+The next proof-facing step is to check the promoted leaves and then build the
+C220 bridge target:
+
+```text
+branchKernel_chiralIndex_zero.
+```
+
+## 27. Pro operator-freeze update: CKM is internal texture, not the spacetime resolver
+
+Date: 2026-06-28
+Source: Pro analysis in
+`C:\Users\Owner\.codex\attachments\9bc42fda-a54b-45e8-870c-9aec20a37454\pasted-text.txt`.
+
+The compact Gate C plan should now be read through one firm architectural rule:
+
+```text
+Wilson/Neuberger overlap resolves spacetime doublers.
+CKM supplies the finite branch/flavor mass texture.
+The null-edge endpoint must be gapped-homotopic to that reference.
+```
+
+This is important because it keeps the project from trying to re-solve a known
+fermion-doubling problem from scratch. The reference model is the established
+Wilson/Neuberger overlap architecture. The null-edge work is to show that the
+null-edge endpoint lies in the same gapped component and carries the same
+sector signature.
+
+The reference kernel is:
+
+```text
+H_ref =
+  Gamma_ref [
+    D_W^0 tensor I_CKM
+    + I tensor r_b(15I - M_CKM)
+    - m0 I
+  ].
+```
+
+The null-edge endpoint is:
+
+```text
+H_ne =
+  Gamma_K [
+    D_ne^cov
+    + W_NE,space
+    + r_b(15R_ne - M_CKM^ne)
+    - m0 R_ne
+  ].
+```
+
+The clean free mass window remains:
+
+```text
+0 < m0 < min(2 r_W, 16 r_b).
+```
+
+This separates:
+
+```text
+one light sector:
+  spacetime corner n = 0 and CKM level ell = 0;
+
+all heavy sectors:
+  spacetime doublers n >= 1 and CKM-heavy levels ell > 0.
+```
+
+The current proof priority is therefore:
+
+```text
+1. Verify the promoted Draft theorem leaves.
+2. Freeze the finite carrier and authoritative H_ref/H_ne definitions.
+3. Keep omega and rho zero in the first theorem by exact CKM transport and R = I.
+4. Prove the remaining kappa-style endpoint mismatch is below gamma_free.
+5. Only then assemble GateC1_NU_Free.
+```
+
+Do not overclaim:
+
+```text
+CKM texture alone does not prove spacetime no-doubling.
+Ginsparg-Wilson algebra alone does not prove determinant-line control.
+The free overlap import does not by itself prove anomaly, gauge, Krein, ghost,
+or quantum chiral-gauge consistency.
+```
+
+The most important next theorem is not another broad audit. It is a concrete
+operator-freeze theorem:
+
+```text
+the chosen null-edge H_ne, after transport, differs from the
+Wilson/Neuberger+CKM H_ref by less than gamma_free.
+```
+
+## 28. C225-C227 update: local Gate C1 Draft API spine
+
+Date: 2026-06-28
+Source: completed Aristotle jobs C225-C227.
+
+Local integration applied:
+
+```text
+Fixed the leading provenance comment in the four promoted Draft leaves so
+import Mathlib can be first.
+
+Added two projector/chiral-index obstruction lemmas to ProjectorPersistence:
+  chiralIndex_zero_of_rank_balanced;
+  chiralIndex_zero_of_trace_zero.
+
+Added Draft module:
+  PhysicsSM/Draft/NullEdge/GateC1/OperatorFreeze.lean.
+```
+
+The new `OperatorFreeze` API freezes:
+
+```text
+H_ref;
+H_ne;
+transport S and Sinv;
+gammaFree;
+kappa + omega + rho + alpha + beta.
+```
+
+The current first-pass close shape is now:
+
+```text
+omega = 0   exact CKM transport;
+rho   = 0   R_ref = R_ne = I;
+alpha = 0   free theory U = 1;
+beta  = 0   flat branch frame;
+kappa < gammaFree.
+```
+
+Then:
+
+```text
+FrozenOverlap + BudgetDecomposition + kappa < gammaFree
+  -> transported H_ne is gapped-homotopic to H_ref.
+```
+
+C227 adds a useful formal guardrail:
+
+```text
+CKM cannot lift spacetime doublers when r_W = 0.
+Wilson/Neuberger supplies the spacetime doubler gap.
+```
+
+C226 clarifies the next obstruction bridge:
+
+```text
+branchKernel_chiralIndex_zero
+```
+
+should prove the bare C21 branch kernel has zero chiral index in the GateC1
+projector vocabulary. This preserves the known failure of the bare branch
+symbol and prevents accidental overclaim.
+
+Status:
+
+```text
+All changes are Draft/local.
+No live-repo Lean checks were run in this integration pass.
+No trusted code was promoted.
+No full GateC1_NU theorem is claimed.
+```
+
+Next concrete local work:
+
+```text
+1. Verify the promoted Draft leaves plus OperatorFreeze when requested.
+2. Resolve any live import/namespace issues.
+3. Add the branchKernel_chiralIndex_zero bridge.
+4. Freeze concrete H_ref/H_ne and prove the first-pass kappa bound.
+```
+
+## 29. C228-C230 update: source contracts and projector persistence boundaries
+
+Date: 2026-06-28
+Source: completed Aristotle jobs C228-C230.
+
+C228 makes the source-contract split explicit:
+
+```text
+Neuberger:
+  overlap/Ginsparg-Wilson reference construction.
+
+Hernandez-Jansen-Luscher:
+  locality only under smooth/admissible gauge hypotheses.
+
+Creutz-Kimura-Misumi:
+  flavored mass/overlap support; not proof of null-edge spacetime
+  no-doubling.
+
+Luscher:
+  anomaly-free abelian chiral gauge construction; not automatic nonabelian SM
+  determinant-line closure.
+
+Adams:
+  overlap anomaly/index density in the physical mass window; null-edge import
+  requires gapped homotopy and sector-signature match.
+
+Golterman-Shamir:
+  propagator-zero mirror removal is forbidden.
+```
+
+C229 sharpens the branch-projector lift:
+
+```text
+Gapped homotopy alone is not yet a physical projector theorem.
+It must feed a spectral-island/Riesz projector chain with a real spectral/range
+condition and then chiral-index persistence.
+```
+
+Do not use the weak fingerprint:
+
+```text
+idempotent + commuting + equal rank
+```
+
+as a Riesz projector uniqueness theorem. It is underdetermined.
+
+C230 parks the Dirac-Kahler chiral/flavour projection analogy:
+
+```text
+useful as bookkeeping warning about noncommuting chiral/flavour projectors;
+not a Gate C1 mechanism;
+not a replacement for Wilson/Neuberger;
+not evidence for bad-sector inverse gap or anomaly/Krein/determinant safety.
+```
+
+Updated next work:
+
+```text
+1. Check the Draft GateC1 local API spine when verification is requested.
+2. Build the GappedReferenceImportCertificate API after OperatorFreeze.
+3. Strengthen the Riesz/projector API with spectral/range data.
+4. Keep Watterson/Dirac-Kahler as a parked literature note only.
+```
+
+## 30. C231 and C233 update: live-port hygiene and stronger spectral projector data
+
+Date: 2026-06-28
+Source: completed Aristotle jobs C231 and C233.
+
+C231 confirms the `OperatorFreeze` port is structurally right but still
+unverified live:
+
+```text
+OperatorFreeze depends only on CKMWilsonWindow, GappedHomotopy, and
+SignStability.
+It does not need ProjectorPersistence.
+Its namespace risk is low.
+The live PhysicsSM.Draft.NullEdge.GateC1 import prefix remains to be verified
+by a local Lean check.
+```
+
+Applied local fix:
+
+```text
+Demoted the stale duplicate doc comment before
+chiralIndex_zero_of_rank_balanced in ProjectorPersistence.
+```
+
+C233 replaces the weak Riesz projector fingerprint:
+
+```text
+idempotent + commuting + equal rank
+```
+
+with the stronger uniqueness data:
+
+```text
+range equals the target generalized-eigenspace sum;
+kernel equals the complementary generalized-eigenspace sum.
+```
+
+Do not port C233's standalone Lean artifact verbatim:
+
+```text
+it uses names under GateC1.OperatorFreeze that would collide with the C227
+OperatorFreeze API.
+```
+
+Instead, future local work should create a deliberately named module:
+
+```text
+SpectralProjectorAPI.lean
+```
+
+with:
+
+```text
+eq_of_isIdempotent_range_ker;
+weak_fingerprint_not_unique;
+IsSpectralProjector with range/kernel spectral data;
+IsSpectralProjector.unique.
+```
+
+Status:
+
+```text
+No live Lean checks were run.
+The next verification request should check the Draft GateC1 leaves and
+OperatorFreeze before adding an aggregator.
+```
+
+## 31. C232 and C234 update: zero-index bridge core and SpectralProjectorAPI
+
+Date: 2026-06-28
+Source: completed Aristotle jobs C232 and C234.
+
+New Draft modules:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/BranchKernelChiralIndexZero.lean;
+PhysicsSM/Draft/NullEdge/GateC1/SpectralProjectorAPI.lean.
+```
+
+C232 proves the generic branch-kernel obstruction:
+
+```text
+nonzero null p;
+P idempotent;
+P commutes with gamma5;
+range(P) = ker(cliffordSymbol p);
+=> chiralIndex gamma5 P = 0.
+```
+
+This is exactly the claim discipline we need:
+
+```text
+the bare branch kernel is chirality-balanced;
+therefore the bare branch kernel cannot be the final C1 physical Weyl release.
+```
+
+The actual branch specialization still needs the live high-momentum branch
+geometry:
+
+```text
+TetrahedralHighMomentumNullBranch.lean
+```
+
+to discharge:
+
+```text
+branchP_ne_zero;
+branchP_mink_zero.
+```
+
+C234 provides the safe spectral-projector module we wanted after C233:
+
+```text
+GateC1.SpectralProjectorAPI
+```
+
+with:
+
+```text
+range/kernel uniqueness for idempotents;
+weak-fingerprint counterexample;
+IsSpectralProjector with generalized-eigenspace range/kernel data;
+Kato and Davis-Kahan source-contract placeholders.
+```
+
+Status:
+
+```text
+Both modules are Draft-only.
+No live Lean checks were run.
+No trusted code was promoted.
+```
+
+Next concrete local work:
+
+```text
+1. Integrate C235 when it completes, especially the branchP specialization.
+2. Then, if verification is requested, check the GateC1 Draft module spine.
+3. Only after checks pass, add a clean GateC1 aggregator.
+```
+
+## 32. Pro architecture update: Gate C should use a Null-Edge Overlap release
+
+Date: 2026-06-28
+Source: Pro analysis in
+`C:\Users\Owner\.codex\attachments\5230e00c-8f61-493e-b9e2-b467d63d70a6\pasted-text.txt`.
+
+This is the clearest current Gate C architectural rule:
+
+```text
+The finite null-edge seed should not be the complete chiral-release operator.
+
+The finite null-edge seed should define the null-edge/path-combinatorial kernel
+inside a Wilson/flavored-Wilson Hermitian overlap construction.
+
+The overlap sign function or equivalent domain-wall transfer construction
+should supply the C1 chiral release.
+```
+
+The preferred operator pipeline is:
+
+```text
+null-edge finite kernel
+  -> gamma5-Hermitian Wilson/flavored-Wilson Hermitian kernel H_ne
+  -> Neuberger overlap sign operator sign(H_ne)
+  -> Ginsparg-Wilson chiral projectors
+  -> Weyl determinant / anomaly-free multiplet construction
+```
+
+Domain-wall form is an equivalent implementation:
+
+```text
+null-edge-derived four-dimensional kernel
+  -> five-dimensional domain-wall transfer/sign engine
+  -> boundary overlap operator in the infinite-wall limit.
+```
+
+Do not make the fifth/domain-wall direction a physical null direction in the
+first theorem. Treat it as the spectral-flow/sign-function direction.
+
+### 32.1 What this changes in the unified mass program
+
+This keeps the main project thesis intact:
+
+```text
+primitive propagation is organized by discrete lightlike/null-edge steps;
+mass and branch structure arise from obstructions, gaps, and path sums.
+```
+
+But it changes the Gate C burden:
+
+```text
+Do not ask the retarded finite null-edge operator D_+ to be one-handed by
+itself.
+
+Ask it to supply a null-edge kernel whose overlap/domain-wall completion has
+the correct chiral index and branch-mass signs.
+```
+
+This is not a retreat from the null-edge program. It is the least-risk bridge
+from null-edge path combinatorics to known successful chiral lattice fermion
+machinery.
+
+### 32.2 Candidate operator
+
+For allowed null-edge shifts `T_ell(U)`, define a symmetrized kernel:
+
+```text
+D_ne^0 =
+  (1 / 2a) sum_{ell in S_+}
+    c_ell Gamma_ell (T_ell - T_ell^dagger).
+```
+
+Add a Wilson/species-splitting term:
+
+```text
+W_ne =
+  (r / a) sum_{ell in S_+} b_ell (2 - T_ell - T_ell^dagger)
+  + W_flav.
+```
+
+Then:
+
+```text
+A_ne = D_ne^0 + W_ne - rho/a;
+H_ne = gamma5 A_ne;
+D_ov,ne = (rho/a)(1 + gamma5 sign(H_ne)).
+```
+
+Use `W_flav = 0` only if scalar Wilson branch masses separate the actual
+null-edge branches. Otherwise use a flavored or matrix-valued Wilson mass.
+
+The physical Weyl theory should be stated with Ginsparg-Wilson projectors:
+
+```text
+gamma5_hat = gamma5 (1 - (a/rho) D_ov,ne);
+P_hat_pm = (1 +/- gamma5_hat) / 2;
+P_pm = (1 +/- gamma5) / 2.
+```
+
+This matters for claim discipline:
+
+```text
+The physical one-handed theory is a GW projected determinant/measure problem.
+It is not literally the statement that the finite seed has only one Weyl pole.
+```
+
+### 32.3 Branch-mass window as the next concrete target
+
+If the free null-edge kernel has branch zeros `p_j`, define:
+
+```text
+m_j = W_ne(p_j) - rho/a.
+```
+
+The first real C1 operator theorem should prove a branch-mass sign pattern:
+
+```text
+desired physical branch:
+  m_j < 0;
+
+mirror/doubler branches:
+  m_j > 0.
+```
+
+Then prove:
+
+```text
+H_ne(p)^2 >= g^2 > 0
+```
+
+away from controlled topological-sector boundaries. This is the true
+inverse-propagator gap statement. It must not be replaced by propagator-zero
+mirror removal.
+
+### 32.4 Assumptions to discard or relax
+
+Discard:
+
+```text
+finite seed as complete release operator;
+retardedness as a C1 proof;
+scalar Wilson lift as direct mirror removal;
+CKM/flavor as spacetime doubler removal;
+novelty as a requirement for the first working C1 operator.
+```
+
+Relax:
+
+```text
+ultralocality and exact finite range;
+strict translation invariance outside the free-symbol theorem.
+```
+
+Postpone:
+
+```text
+deriving the tetrad/null frame from a bare graph.
+```
+
+Gate C should use the known chiral lattice solution path first, then interpret
+its kernel/sign/path-sum structure in null-edge language.
+
+### 32.5 Updated near-term work
+
+Replace broad abstract C1 searching with this concrete stack:
+
+```text
+1. Define the gamma5-Hermitian null-edge kernel H_ne.
+2. Prove its continuum branch expansion.
+3. Classify free branch zeros and branch masses.
+4. Prove a scalar Wilson branch window or show that a flavored/matrix Wilson
+   mass is required.
+5. Prove the free overlap gap and no mirror pole.
+6. Prove the Ginsparg-Wilson relation for D_ov,ne.
+7. Prove gapped homotopy to the Wilson/Neuberger+CKM reference, or compute the
+   index directly.
+8. Add admissible-gauge/locality or controlled path-sum hypotheses.
+9. Only after that, address determinant-line/anomaly/Krein/ghost audits for the
+   Standard Model multiplet.
+```
+
+Current status:
+
+```text
+The program now has a sharper candidate C1 operator architecture.
+It still does not have the explicit H_ne branch-mass window, overlap gap, or
+full Standard Model determinant/anomaly construction.
+```
+
+## 33. Higher-context Pro update: retarded seed is not the overlap sign kernel
+
+Date: 2026-06-28
+Source: Pro analysis in
+`C:\Users\Owner\.codex\attachments\42a823cf-1c8c-4337-a9e8-59cc85d1e72a\pasted-text.txt`.
+
+The higher-context response confirms the direction in Section 32, but sharpens
+one critical implementation rule:
+
+```text
+Do not apply the overlap sign function directly to the raw retarded null-edge
+operator D_+.
+```
+
+If `D_+` is retarded or non-Hermitian, it should be treated as a primitive
+path/propagator seed. The overlap sign construction needs a Hermitian or
+Hilbertized Hermitian kernel.
+
+Allowed first-pass routes:
+
+```text
+Option A:
+  replace D_+ by a symmetric / Euclideanized / gamma-Hermitian null-edge kernel.
+
+Option B:
+  build a Hermitian retarded/advanced dilation:
+
+    H_RA =
+      [ 0                         D_+ + W - m0 R ]
+      [ (D_+ + W - m0 R)^dagger   0             ],
+
+  then apply the sign function to H_RA.
+```
+
+The retarded/Feynman-checkerboard intuition should re-enter through:
+
+```text
+propagators;
+resolvent expansions;
+domain-wall transfer matrices;
+path-sum representations of sign(H_NE).
+```
+
+### 33.1 Refined Gate C endpoint
+
+Use:
+
+```text
+D_ov,NE(U) = rho [ 1 + Gamma_NE sign(H_NE(U)) ],
+```
+
+where:
+
+```text
+H_NE(U) =
+  Gamma_NE [
+    D_NE,sym^cov(U)
+    + W_NE,space(U)
+    + W_NE,int(U)
+    - m0 R_NE
+  ].
+```
+
+First theorem simplification:
+
+```text
+R_NE = I;
+W_NE,int = 0;
+Gamma_NE = S gamma5 S^-1;
+free theory U = 1.
+```
+
+Then later add CKM/internal texture:
+
+```text
+W_NE,int = S(I tensor W_CKM)S^-1 + controlled error.
+```
+
+Do not make `R_NE` arbitrary in the first theorem. If `R_NE` is nontrivial, the
+mass-window problem becomes:
+
+```text
+W_NE,int v = m0 R_NE v,
+```
+
+which is a generalized eigenvalue problem and should be delayed.
+
+### 33.2 First decisive theorem
+
+The first theorem should be a reference-import theorem:
+
+```text
+NullEdgeOverlapReferenceImport:
+  H_ref has the known Wilson/overlap mass window and gap;
+  H_NE is Hermitian or Hilbertized Hermitian;
+  H_NE is transported to the reference Hilbert space by S;
+  ||H_NE - S H_ref S^-1|| <= epsilon < gap(H_ref);
+  therefore the straight-line homotopy remains gapped;
+  sign(H_NE) is well-defined;
+  the index/sector signature is imported from H_ref.
+```
+
+If the direct estimate is too crude, use:
+
+```text
+H_ref -> H_block -> H_NE
+```
+
+where `H_block` has the null-edge sector table and a deliberately large gap.
+
+### 33.3 Updated claim labels
+
+Keep this distinction:
+
+```text
+GateC1_local:
+  local/quasi-local conventional release.
+
+GateC1_NU:
+  controlled non-ultralocal release.
+
+GateC1_formal:
+  algebraic toy or projector-only result.
+```
+
+`GateC1_formal` cannot close C1. It may help with obstruction theorems, APIs,
+or finite sanity checks only.
+
+### 33.4 Updated next work
+
+The next proof order is:
+
+```text
+1. Define the Hermitian or RA-dilated null-edge kernel.
+2. Prove the free symbol/sector match to Wilson/overlap reference data.
+3. Prove the reference mass window.
+4. Prove the gapped homotopy/reference import theorem.
+5. Derive sign/GW algebra and index persistence.
+6. Prove branch-line spectral lift.
+7. Prove true bad-sector inverse gap and no propagator-zero mirror removal.
+8. Add gauge covariance/dressing and path-sum/resolvent/domain-wall control.
+9. Only then address determinant-line/anomaly/Krein/regulator closure for the
+   Standard Model multiplet.
+```
+
+Current status:
+
+```text
+The project has a safer and more explicit operator architecture.
+The raw retarded seed remains valuable, but only as path/combinatorial input.
+The missing object is still the actual Hermitian H_NE and its reference-import
+gap bound.
+```
+
+## 34. C238 update: make `H_ne` the primitive, not `D_ov,ne`
+
+Date: 2026-06-28
+Source: completed Aristotle job C238.
+
+C238 strongly supports the new Null-Edge Overlap direction, with one important
+discipline rule:
+
+```text
+H_ne is the primitive Gate C1 kernel.
+D_ov,ne is a derived release operator.
+```
+
+Therefore the immediate work is not "prove the overlap release works" in one
+step. It is:
+
+```text
+T1:
+  prove H_ne is self-adjoint on a named Hilbert structure.
+
+T2:
+  prove the tetrahedral free-symbol/doubler/gap theorem, or identify the
+  surviving branch that forces M_br.
+
+T3:
+  prove sign(H_ne) gives the Ginsparg-Wilson algebra once T1 and the gap hold.
+```
+
+C238's highest-risk warning is the tetrahedral Brillouin-zone geometry:
+
+```text
+Do not use cubic lattice doubler intuition.
+The tetrahedral shift set must have its own dual-cell / branch-count / gap
+analysis.
+```
+
+Current assumption changes:
+
+```text
+Discard:
+  bare retarded seed as release operator;
+  propagator-zero mirror removal;
+  chirality-balanced branch kernel as an acceptable endpoint;
+  implicit self-adjointness of D_+;
+  cubic Brillouin-zone intuition.
+
+Keep:
+  true inverse-propagator bad-sector gap;
+  named Hilbert or Hilbertized structure;
+  gauge-covariant adjointness;
+  anomaly/determinant-line source contracts;
+  path-sum/resolvent control as a later theorem.
+```
+
+Local consequence:
+
+```text
+The first useful Draft Lean target is the abstract algebra:
+  if D is gamma-odd anti-self-adjoint and E, mu are gamma-even
+  self-adjoint, then gamma(D + E - mu) is self-adjoint.
+
+The second useful Draft target is conditional:
+  if gamma^2 = 1 and eps^2 = 1, then
+  D = 1 + gamma eps satisfies the normalized Ginsparg-Wilson algebra.
+
+The hard physics target remains:
+  tetrahedral free-field branch/gap analysis.
+```
+
+Status:
+
+```text
+C238 is integrated as strategy guidance.
+No live Lean checks were run.
+No GateC1_NU theorem is claimed.
+```
+
+## 40. C240 update: tetrahedral scalar-Wilson branch table is now proved in Draft package
+
+Date: 2026-06-28
+Source: completed Aristotle job C240.
+
+C240 proves the finite/free branch-table calculation for the proposed
+tetrahedral Null-Edge Overlap kernel. The returned Lean module has been copied
+into:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/TetrahedralBranchWindow.lean
+```
+
+The result is significant but bounded.
+
+What it proves:
+
+```text
+1. The tetrahedral coframe identities for B_A.
+2. The concrete tetrahedral moment identities.
+3. Linear independence of the four homogeneous rows (1, v_A).
+4. The branch inference:
+     sum_A B_A sin(k_A) = 0
+     => sin(k_A) = 0 for every A.
+5. At branch points, scalar Wilson gives:
+     m_n = (2 r n - rho) / a.
+6. In the window a > 0 and 0 < rho < 2r:
+     m_0 < 0,
+     m_n > 0 for n = 1, ..., 4.
+```
+
+What it assumes:
+
+```text
+The four k_A are independent 2*pi-periodic coordinates on the null-edge
+Brillouin torus.
+```
+
+This assumption should be upgraded to a theorem next:
+
+```text
+For Lambda = span_Z {n_A}, prove that p -> (n_A dot p)_A identifies the dual
+Brillouin torus with (R / 2*pi Z)^4.
+```
+
+Meaning for Gate C:
+
+```text
+The old scalar-Wilson no-go still applies to direct chiral selection on the
+balanced bare branch kernel.
+
+C240 uses scalar Wilson differently: as a branch-mass term inside the Hermitian
+overlap sign kernel.
+```
+
+Therefore the current default is:
+
+```text
+Use M_br = 0 for the first free model unless the global free gap or torus
+geometry theorem finds an unlifted residual branch.
+```
+
+The next decisive work is:
+
+```text
+1. lattice-duality / Brillouin-torus theorem;
+2. global free no-zero/gap theorem for the C240 scalar Wilson window;
+3. sign(H_ne) and Ginsparg-Wilson algebra assembly;
+4. bad-sector inverse-gap and no-ghost audit;
+5. later gauge/anomaly/Krein/source-contract layers.
+```
+
+Status:
+
+```text
+Aristotle reported the focused C240 package built without proof placeholders.
+The live repo copy is Draft-only and has not been locally checked.
+No trusted code was promoted.
+No GateC1_NU theorem is claimed.
+```
+
+## 35. C235 update: actual bare-branch obstruction is proved in Draft package
+
+Date: 2026-06-28
+Source: completed Aristotle job C235.
+
+C235 proves the actual branch-kernel zero-index obstruction against the C21
+Clifford-symbol conventions. The returned proof has been copied into:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/BranchKernelActualChiralIndexZero.lean
+```
+
+Claim:
+
+```text
+Any idempotent projector P whose fixed space is the actual branch kernel
+ker(cliffordSymbol(branchP a)) and that commutes with gamma5 has
+chiralIndex gamma5 P = 0.
+```
+
+Meaning:
+
+```text
+The bare branch kernel is chirality-balanced in the actual symbol layer.
+It has one gamma5-positive and one gamma5-negative Weyl line.
+No chirality-commuting projector onto that bare kernel can produce a nonzero
+physical chiral index.
+```
+
+This strengthens the current Gate C diagnosis:
+
+```text
+The finite retarded/null-edge seed remains valuable as a path/combinatorial
+kinetic input.
+It cannot itself be the C1 release if the release is a chirality-commuting
+projector onto the bare branch kernel.
+```
+
+Connection to the new Null-Edge Overlap path:
+
+```text
+The overlap route does not contradict C235.
+It escapes the obstruction by changing the object:
+  from bare branch-kernel projector
+  to Hermitian Wilson kernel + sign(H_ne) + Ginsparg-Wilson projectors.
+```
+
+Status:
+
+```text
+Aristotle reported the focused package built without proof placeholders.
+The live repo copy is Draft-only and has not been locally checked.
+No trusted code was promoted.
+No GateC1_NU theorem is claimed.
+```
+
+## 39. C241 update: scalar Wilson first, constrained branch mass only if needed
+
+Date: 2026-06-28
+Source: completed Aristotle job C241.
+
+C241 resolves the scalar-vs-flavored branch-mass policy.
+
+Default:
+
+```text
+M_br = 0.
+```
+
+Use `M_br` only if the actual branch test finds:
+
+```text
+two branches are zeros of D_ne^0;
+scalar W_ne assigns them the same branch mass;
+one branch must be kept and the other lifted.
+```
+
+C241 proves:
+
+```text
+scalar_shift_preserves_degeneracy:
+  a constant scalar shift cannot split a Wilson-degenerate pair.
+```
+
+It also proves:
+
+```text
+branch_mass_interpolation_four:
+  on 16 branch points, the cos-product Walsh basis can realize any branch-mass
+  profile uniquely.
+```
+
+This supports:
+
+```text
+If scalar Wilson fails on distinct branch points, a cos-product M_br can
+separate them.
+```
+
+But it also creates a predictivity warning:
+
+```text
+unconstrained M_br can fit anything on the 16 branches.
+```
+
+Therefore:
+
+```text
+M_br must be sparse, symmetry-constrained, and introduced only by necessity.
+Every coefficient must be recorded as extra moduli freedom.
+```
+
+Integrated Draft module:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/BranchMass.lean
+```
+
+Current proof order:
+
+```text
+1. Finish the tetrahedral branch/gap test.
+2. If scalar W_ne succeeds, keep M_br = 0.
+3. If scalar W_ne fails, use C241 to construct the minimal needed M_br.
+4. Separately prove Hermiticity/gamma5-even/gauge-covariant realization for
+   the chosen M_br.
+5. Separately prove no-ghost inverse gap.
+```
+
+Status:
+
+```text
+Aristotle reported the C241 focused file built without proof placeholders.
+The live repo copy is Draft-only and has not been locally checked.
+No trusted code was promoted.
+No GateC1_NU theorem is claimed.
+```
+
+## 37. Literature update: proof pressure is now on the tetrahedral branch test
+
+Date: 2026-06-28
+Source note:
+
+```text
+AgentTasks/null-edge-gate-c1-overlap-kernel-literature-review-2026-06-28.md
+```
+
+The literature review reinforces the current architecture:
+
+```text
+Use Wilson/Neuberger overlap and Ginsparg-Wilson/domain-wall machinery for the
+chiral release.
+
+Use null-edge path combinatorics to build the Hermitian kernel H_ne and
+interpret sign/resolvent kernels as path sums.
+```
+
+It also reinforces the main technical risk:
+
+```text
+The tetrahedral/non-orthogonal branch geometry must be proved directly.
+```
+
+Relevant source lessons:
+
+```text
+Neuberger:
+  the overlap operator solves the reference no-doubling/sign problem.
+
+Luescher:
+  GW chirality is the safe chiral-symmetry realization.
+
+Hernandez-Jansen-Luescher:
+  locality is conditional and belongs at the background-gauge/source-contract
+  layer.
+
+Kaplan:
+  domain-wall gives the same sign mechanism in unfolded/topological form.
+
+Adams and flavored-overlap work:
+  add M_br only if scalar Wilson fails the branch-mass test.
+
+Creutz and hyperdiamond literature:
+  non-orthogonal lattice fermions can have subtle doubling/symmetry/fine-tuning
+  tradeoffs.
+
+Golterman-Shamir:
+  never count propagator zeros as healthy mirror removal.
+```
+
+Near-term proof target:
+
+```text
+tetrahedral centered null-edge kinetic + scalar Wilson branch theorem.
+```
+
+If that theorem succeeds:
+
+```text
+M_br = 0 is acceptable for the first free Gate C1 theorem.
+```
+
+If it fails:
+
+```text
+introduce a constrained gamma5-even Hermitian M_br and record the added freedom
+as a branch/flavor mass choice, not a prediction.
+```
+
+## 38. C239 update: Hermitian kernel validity is now a Draft API
+
+Date: 2026-06-28
+Source: completed Aristotle job C239.
+
+C239 proves the abstract algebraic piece behind the proposed first Gate C1
+kernel. The returned module is integrated at:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/NullEdgeOverlapKernel.lean
+```
+
+The formal payload:
+
+```text
+If D is gamma5-odd and anti-Hermitian,
+and E is gamma5-even and Hermitian,
+and the mass shift is real,
+then
+  H = gamma5 (D + E - rho/a)
+is Hermitian.
+```
+
+The split theorem covers:
+
+```text
+E = W_ne + M_br,
+```
+
+where both terms are Hermitian and gamma5-even.
+
+Program meaning:
+
+```text
+The first Gate C1 operator target can now be stated cleanly:
+  build D_ne^0, W_ne, and optionally M_br so that they satisfy the C239
+  structural assumptions.
+```
+
+This does not prove:
+
+```text
+spectral gap;
+branch mass window;
+overlap sign existence;
+Ginsparg-Wilson release;
+locality/path-sum control;
+anomaly or determinant-line closure.
+```
+
+It proves only the kernel-validity layer needed before those questions can be
+asked.
+
+Next proof pressure:
+
+```text
+Prove the tetrahedral centered kernel actually satisfies the C239 assumptions,
+then prove the free branch/gap theorem.
+```
+
+Status:
+
+```text
+Aristotle reported the C239 focused file built without proof placeholders.
+The live repo copy is Draft-only and has not been locally checked.
+No trusted code was promoted.
+No GateC1_NU theorem is claimed.
+```
+
+## 36. C242 update: reference import is now an explicit Draft API
+
+Date: 2026-06-28
+Source: completed Aristotle job C242.
+
+C242 adds the clean mathematical bridge needed by the Null-Edge Overlap route.
+The returned Draft module is now copied into:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/NullEdgeOverlapReferenceImport.lean
+```
+
+The key theorem shape is:
+
+```text
+H_refS = S H_ref S^-1;
+||H_ne - H_refS|| <= epsilon < gap(H_refS);
+
+then
+
+H_t = (1 - t) H_refS + t H_ne
+```
+
+has a uniform inverse gap:
+
+```text
+gap(H_t) >= gap - epsilon > 0.
+```
+
+This is the formal version of the current Gate C strategy:
+
+```text
+Do not prove chiral release from scratch.
+Prove that the null-edge Hermitian kernel remains in the same gapped
+sign/index sector as the Wilson/Neuberger reference.
+```
+
+C242 also adds a claim-layer discipline:
+
+```text
+formal:
+  sector equality only;
+
+NU_Free:
+  add Neuberger and Ginsparg-Wilson contracts;
+
+NU_BackgroundGauge:
+  add locality/admissible-background contract;
+
+NU_Quantum:
+  add determinant-line and anomaly contracts.
+```
+
+Source contracts remain hypotheses, not theorems:
+
+```text
+Neuberger overlap;
+Ginsparg-Wilson algebra;
+Hernandez-Jansen-Luscher locality;
+Luscher determinant/measure;
+anomaly accounting.
+```
+
+Immediate consequence:
+
+```text
+The concrete H_ne task is now sharply reduced:
+  define the Hermitian null-edge kernel;
+  prove its reference gap estimate;
+  feed that estimate into NullEdgeOverlapReferenceImport.
+```
+
+Status:
+
+```text
+Aristotle reported the C242 focused file built without proof placeholders.
+The live repo copy is Draft-only and has not been locally checked.
+No trusted code was promoted.
+No GateC1_NU theorem is claimed.
+```
+
+## 41. Pro feedback update: direct tetrahedral scalar-Wilson proof before reference import
+
+Date: 2026-06-28
+Source note:
+
+```text
+AgentTasks/null-edge-pro-feedback-tetrahedral-scalar-wilson-2026-06-28.md
+```
+
+The first free Gate C1 model should now be treated as:
+
+```text
+rank-4 tetrahedral null-edge lattice
+  -> Euclidean/Hilbert Hermitian sign kernel H_tet
+  -> scalar Wilson branch mass with 0 < rho < 2r
+  -> direct global free gap theorem
+  -> overlap/Ginsparg-Wilson operator D_ov,tet
+  -> no-mirror-pole theorem
+```
+
+Do not prove the free theorem by vague reference to hypercubic Wilson.  The
+lattice model must be stated as:
+
+```text
+Lambda_tet ~= Z^4 generated by e_A = a n_A;
+Hom(Lambda_tet, U(1)) ~= (R / 2*pi Z)^4;
+T_A -> exp(i k_A).
+```
+
+The key trap is avoided by saying:
+
+```text
+H_tet is the gapped sign kernel.
+D_ov,tet is the operator with the physical zero.
+```
+
+So:
+
+```text
+H_tet(0) = -(rho/a) gamma5;
+D_ov,tet(0) = 0.
+```
+
+The Euclidean/Hilbert convention must be explicit:
+
+```text
+B_A dagger = B_A;
+{gamma5, B_A} = 0;
+D_ne^0 dagger = -D_ne^0;
+{D_ne^0, gamma5} = 0;
+H_tet dagger = H_tet.
+```
+
+Current Aristotle launch priorities:
+
+```text
+C244: rank-4 lattice/BZ theorem.
+C247: Euclidean Clifford convention and centered kernel theorem.
+C243: global free gap theorem.
+C248: corrected overlap/GW algebra.
+C249: free no-mirror-pole theorem.
+C246: post-C240 strategy audit.
+```
+
+`M_br` remains fallback only:
+
+```text
+M_br = 0 unless scalar Wilson fails a proved branch/gap test.
+```
+
+Status:
+
+```text
+This is a free-kernel strategy update, not a completed Gate C1 release.
+No trusted Lean theorem, gauge theorem, anomaly theorem, or Standard Model
+chiral determinant claim is promoted here.
+```
+## 42. C246 update: theorem ladder is now fixed until the free model passes or fails
+
+Date: 2026-06-28
+Source:
+
+```text
+AgentTasks/null-edge-c246-next-wave-queue-aristotle-2026-06-28.md
+```
+
+C246 confirms the current short ladder:
+
+```text
+1. C244 rank-4 lattice/BZ theorem.
+2. C247 Euclidean Clifford sign-kernel convention.
+3. C243 global free gap.
+4. C248 overlap/GW algebra and corrected projectors.
+5. C249 free no-mirror-pole theorem.
+```
+
+Only after those pass should the program move to:
+
+```text
+reference-import cross-check;
+BackgroundGauge layer;
+Quantum/anomaly/determinant-line layer.
+```
+
+If C243 or C249 finds a residual branch or mirror pole, that specific failure
+is the only trigger for:
+
+```text
+C245 fallback M_br.
+```
+
+Current decision:
+
+```text
+M_br = 0 unless scalar Wilson fails a proved branch/gap test.
+```
+
+Status:
+
+```text
+C246 is planning integration only.
+No Lean theorem was changed or promoted.
+No Gate C release is claimed.
+```
+## 43. D4 update: useful envelope, not the active Gate C lattice
+
+Date: 2026-06-28
+Source:
+
+```text
+AgentTasks/null-edge-pro-d4-lattice-guidance-2026-06-28.md
+```
+
+D4 is now a parallel lane, not a mainline replacement.
+
+Precise lattice relation:
+
+```text
+L_H subset D4,
+[D4 : L_H] = 8,
+D4 / L_H ~= (Z/2Z)^3.
+```
+
+Dual/BZ relation:
+
+```text
+T_D4 -> T_LH is an 8-fold cover.
+```
+
+Therefore the tetrahedral phases `k_A` are complete coordinates for the
+current tetrahedral torus, but not for the full D4 torus.
+
+Important physics consequence:
+
+```text
+D4 with only h_A shifts gives 8 disconnected copies.
+D4 with D4 roots adds timelike/spacelike primitive steps.
+Full D4 changes the branch theorem and scalar-Wilson proof.
+```
+
+So the active C1 proof stays on:
+
+```text
+L_H = span_Z {h_A}.
+```
+
+D4 is useful later for:
+
+```text
+symmetry envelope;
+triality / Spin(8) bridge;
+24-cell / F4 geometry;
+coset bookkeeping;
+possible M_br constraint if scalar Wilson fails a proved test.
+```
+
+Rule:
+
+```text
+D4 is an envelope, not the Gate C1 release lattice.
+```
+
+Follow-up correction from C250/Pro:
+
+```text
+T_D4 -> T_LH is an 8-fold cover/unfolding.
+The D4 momentum torus covers the tetrahedral momentum torus.
+The tetrahedral torus is the folded quotient.
+```
+
+Do not say that the D4 torus is the folded one.
+
+Stronger null-only guardrail:
+
+```text
+L_same =
+  {x in Z^4 : x_0, x_1, x_2, x_3 all have the same parity}.
+
+L_H subset L_same subset D4,
+[L_same : L_H] = 2,
+[D4 : L_same] = 4.
+```
+
+Any integral null translation for:
+
+```text
+q(x) = -x_0^2 + (1/3)(x_1^2 + x_2^2 + x_3^2)
+```
+
+lies in `L_same`, so null translations alone cannot connect full D4.
+
+Therefore:
+
+```text
+D4 sites with only h_A shifts:
+  8 disconnected copies.
+
+D4 sites with D4 root shifts:
+  connected, but not purely null-edge.
+
+All-eight-future-null body-diagonal model:
+  possible later experiment on L_same, not a harmless relabeling of L_H.
+```
+
+Recommended side-lane jobs:
+
+```text
+D4 inclusion/index/SNF;
+D4 dual and BZ cover theorem;
+D4 causal shell classification;
+D4 disconnected-copy theorem;
+L_same null-vector theorem;
+optional all-eight-null L_same branch analysis only after the L_H proof.
+```
+
+## 45. C244 update: tetrahedral Brillouin-torus theorem integrated
+
+Date: 2026-06-28
+Source:
+
+```text
+AgentTasks/null-edge-c244-tetrahedral-lattice-duality-aristotle-2026-06-28.md
+```
+
+C244 integrated the completed Draft Lean theorem:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/TetrahedralLatticeDuality.lean
+```
+
+This closes the main C240 caveat for the active tetrahedral lattice:
+
+```text
+For the rank-4 translation lattice L_H = span_Z {h_A}, the four k_A are
+independent 2*pi-periodic Brillouin-torus coordinates.
+```
+
+Formal payload:
+
+```text
+NtetMat_det = -16;
+NtetMatZ_det_natAbs = 16;
+homogeneousTetraMap_injective;
+toTorusHom_surjective;
+mem_nullEdgeDualLattice;
+tetraTorusEquiv :
+  ((Fin 4 -> R) / nullEdgeDualLattice) ~= (Fin 4 -> AddCircle (2*pi)).
+```
+
+Meaning:
+
+```text
+The C240 branch-window calculation now rests on a formalized rank-4
+tetrahedral torus model, not an implicit cubic Brillouin-zone analogy.
+```
+
+Boundary:
+
+```text
+This does not prove the global free gap C243.
+This does not prove the overlap projector algebra C248.
+This does not claim Gate C1_NU.
+It was integrated in Draft code only and was not locally checked in this pass.
+```
+
+## 46. Stay/coin update: onsite fiber evolution is allowed
+
+Date: 2026-06-28
+Source:
+
+```text
+AgentTasks/null-edge-stay-move-decision-memo-2026-06-28.md
+```
+
+Use this physical claim:
+
+```text
+All nontrivial spatial transport steps are lightlike/null.
+The update rule may also include local onsite fiber evolution.
+```
+
+Layering:
+
+```text
+transport graph:
+  null spatial shifts;
+
+onsite fiber dynamics:
+  local coin/rest/mass/Yukawa/Wilson/internal terms;
+
+path sum / propagator:
+  histories made from null transports and onsite factors.
+```
+
+This is useful because massive Dirac behavior, Wilson branch lifting, Higgs/
+Yukawa mixing, finite internal Dirac data, and quantum-walk coin rotations are
+local fiber effects rather than spatial transport effects.
+
+Gate C meaning:
+
+```text
+The current overlap kernel already has a null-transport plus onsite/fiber split.
+
+Kinetic null-shift part:
+  (i/a) sum_A B_A sin(k_A)
+
+Onsite branch-shaping part:
+  (1/a)(r sum_A(1 - cos k_A) - rho)
+```
+
+Admissible onsite terms should be:
+
+```text
+local;
+gauge-covariant or gauge-scalar;
+tetrahedral-symmetric unless intentionally broken;
+Hermitian and gamma5-even for Wilson/branch-mass use;
+or explicitly identified as Yukawa/chirality/internal finite-Dirac data;
+recorded as added moduli if not symmetry-forced.
+```
+
+Practical impact:
+
+```text
+Keep the active L_H scalar-Wilson overlap proof unchanged.
+Interpret Wilson, Yukawa, finite internal Dirac, and possible M_br terms as
+onsite/fiber-layer structure.
+Add a future API theorem:
+  onsite fiber operators do not alter the null transport graph.
+```
+
+## 44. Continued literature analysis: what should influence the next proof step
+
+Date: 2026-06-28
+Source:
+
+```text
+AgentTasks/null-edge-continued-lit-analysis-2026-06-28.md
+```
+
+The broader literature reinforces the current path:
+
+```text
+overlap/Ginsparg-Wilson:
+  use as the chiral-release engine;
+
+hyperdiamond / minimally doubled fermions:
+  use as warnings about non-orthogonal branch geometry;
+
+flavored mass overlap:
+  use only if scalar Wilson fails a named branch/gap test;
+
+A4*/exact symmetry lattices:
+  use as evidence that high-symmetry non-cubic lattices are useful, not as a
+  Gate C shortcut;
+
+D4/triality:
+  use as envelope/internal-symmetry lane, not active release lattice.
+```
+
+Concrete conclusion:
+
+```text
+Do not branch further until C244/C247/C243 return.
+```
+
+If C243 succeeds:
+
+```text
+move to C248/C249 integration.
+```
+
+If C243 fails:
+
+```text
+activate C245 only for the specific residual zero or mirror pole.
+```
+
+Potential later jobs:
+
+```text
+C254 D4 inclusion/index/SNF theorem.
+C255 finite-volume parity theorem for pi corners.
+C256 hyperdiamond warning audit.
+C257 BackgroundGauge locality/admissibility source-contract API.
+C258 M_br proved-need API.
+```

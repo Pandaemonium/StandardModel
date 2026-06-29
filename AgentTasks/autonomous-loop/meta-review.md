@@ -1657,3 +1657,1342 @@ Mandatory cycle-step audit:
 - Pro/Gemini packet: not needed.
 - Friction logging/tooling: doc-search timeout remains logged.
 - Meta-review: this entry.
+
+## Active 30-cycle run, cycle 1 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 1 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. The loop integrated new C1_NU direction into the durable plan, handled
+  the returned C106a theorem report, submitted a new path-sum control Aristotle
+  job, and got mandatory Claude review on the path-sum target.
+
+Evidence:
+
+- C106a project `7483eed6-e966-442a-adba-2eba49be8fa1` task
+  `b94043ac-3ac4-4116-912f-8ce2edf82c92` reports complete, with Aristotle
+  claiming a passing narrow Lean check.
+- Local standalone C106a source was updated from the transcript to include the
+  proof and propositional inequality repair.
+- C108/C110 precursor project `b6dfe1f0-c970-4c47-8cae-926e71a408e5` was
+  submitted.
+- Claude log:
+  `AgentTasks/model-calls/claude/2026-06-27-150707-c108-path-sum-control-review.md`.
+- Track B note:
+  `AgentTasks/null-edge-track-b-cycle1-path-sum-envelope-vs-kernel-control-2026-06-27.md`.
+
+What did not move:
+
+- C106a was not integrated into the main `PhysicsSM/Draft` tree.
+- No local verification was run on the transcript-preserved C106a proof.
+- C1_NU still lacks the actual branch observable `B(U)`.
+- C108 is still running.
+
+Current highest-leverage blocker:
+
+- Turn path-sum envelope summability into actual kernel control, and in parallel
+  start finite spectral projector/gauge covariance for branch observables.
+
+Strategy check:
+
+- continue, with constructive C1_NU favored over more local no-go work unless a
+  returned no-go result requires integration.
+
+Harness improvements needed:
+
+- The C106a archive did not expose a candidate file despite the task report
+  returning proof contents. Preserve transcript-proofs carefully and prefer
+  focused packages that return files reliably.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C1_NU path-sum/spectral branch.
+- Aristotle check/integration/submission: done; C106a triaged, C108 submitted,
+  stale/no-build returns noted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C1_NU plan updated with Gemini warnings and theorem
+  reordering.
+- Track B action: done; envelope-as-kernel-control failure mode note added.
+- Claude review: done; C108 reviewed by Claude and feedback sent to Aristotle.
+- Friction logging/tooling: C106a missing candidate archive noted here.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Cycle 2 should poll C108, then either integrate its result or submit
+  `C107_FiniteSpectralProjectorGaugeCovariance` / 
+  `C108_OriginBranchObservableCertificate`.
+
+## Active 30-cycle run, cycle 2 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 2 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. The cycle triaged C108 as mathematically complete by report but
+  payload-missing, submitted C107 as the next finite spectral-projector seed,
+  and got adversarial Claude review before closing the cycle.
+
+Evidence:
+
+- C108 project `b6dfe1f0-c970-4c47-8cae-926e71a408e5` task
+  `d9d5cc01-289f-4d84-add1-e2b0506b253d` reports both summability theorems
+  proved, but the integration helper discovered no candidate files.
+- C107 project `0ab24ab1-3f6a-465f-9d47-678856fc1a77` submitted.
+- Claude log:
+  `AgentTasks/model-calls/claude/2026-06-27-151231-c107-finite-spectral-projector-review.md`.
+- Track B note:
+  `AgentTasks/null-edge-track-b-cycle2-polynomial-covariance-not-branch-observable-2026-06-27.md`.
+
+What did not move:
+
+- No C108 proof was integrated because no candidate file was available.
+- C107 remains running.
+- The actual native branch observable `B(U)` is still not constructed.
+
+Current highest-leverage blocker:
+
+- Recover C108 proof payload or treat it as report-only, then get C107's
+  finite conjugation proof and move to polynomial covariance / origin
+  branch-observable certification.
+
+Strategy check:
+
+- continue with C1_NU constructive stack.
+
+Harness improvements needed:
+
+- Repeated payload-missing results from focused Aristotle jobs are now a real
+  friction pattern. Prefer prompts that explicitly ask for final file contents
+  in the final response, not only downloadable archives.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C1_NU spectral-projector covariance.
+- Aristotle check/integration/submission: done; C108 triaged, C107 submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C107 submitted.
+- Track B action: done; covariance-seed fallacy note added.
+- Claude review: done; C107 reviewed and feedback sent to Aristotle.
+- Friction logging/tooling: payload-missing pattern noted.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Cycle 3 should poll C107 first and either integrate/preserve it or launch the
+  origin branch-observable certificate.
+
+## Active 30-cycle run, cycle 3 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 3 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes, but with one self-inflicted repair item. The cycle found and triaged
+  completed stale continuations, submitted C110a, obtained Claude review, and
+  caught that the C110a skeleton should have been a normed-space theorem rather
+  than a scalar signed-sum theorem.
+
+Evidence:
+
+- C107 report:
+  `aristotle show 0ab24ab1-3f6a-465f-9d47-678856fc1a77 --limit 100`.
+- C110a project:
+  `c804899f-1d36-4ba3-bc16-f656c105f164`.
+- Cycle triage note:
+  `AgentTasks/null-edge-cycle3-aristotle-return-triage-2026-06-27.md`.
+- Claude log:
+  `AgentTasks/model-calls/claude/2026-06-27-152254-cycle3-c110a-c92-review.md`.
+
+What did not move:
+
+- No C107 proof file was integrated because the archive had no candidate files.
+- C92 was not integrated because it violates the no-checklist-as-Lean rule.
+- No separate Track B artifact was created; this was recorded rather than
+  padded.
+
+Current highest-leverage blocker:
+
+- Recover C107's final file or reproduce its theorem stack safely.
+- Convert C110a into the true normed finite-shell kernel bound:
+  finite path shell plus per-path norm bound implies norm of the shell sum is
+  bounded by path-count times amplitude.
+
+Strategy check:
+
+- Continue with the controlled `C1_NU` stack.
+- Keep rejecting logical checklist Lean unless it is tied to real mathematical
+  objects.
+
+Harness improvements needed:
+
+- Focused Aristotle prompts should continue requesting final file contents in
+  the final answer. The C107 result shows the payload-missing failure is still
+  recurring.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected path-shell kernel-control bridge and
+  C107/C92 triage.
+- Aristotle check/integration/submission: done; C107/C92/stale continuations
+  triaged and C110a submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C110a submitted and C107/C92 triaged.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C110a/C92 reviewed.
+- Friction logging/tooling: payload-missing and C110a statement repair logged.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C107 artifact recovery and C110a first.
+- If C107 remains payload-missing, decide whether to reconstruct locally or ask
+  Aristotle once more.
+- For path-sum control, prioritize the normed-space shell theorem over the
+  scalar signed-sum form.
+
+## Active 30-cycle run, cycle 4 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 4 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C107 moved from report-complete/payload-missing to recovered-source
+  preserved and Claude-accepted. C110a moved from payload-missing to recovered
+  scalar source preserved with caveat. C107b was submitted as the next finite
+  algebra theorem.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle4-c107-c110a-c107b-integration-2026-06-27.md`.
+- C107 recovered source:
+  `AgentTasks/aristotle-standalone/c107-finite-spectral-projector-20260627/C107FiniteSpectralProjector/ConjugationPowers.lean`.
+- C110a recovered source:
+  `AgentTasks/aristotle-standalone/c110a-path-shell-kernel-bridge-20260627/C110aPathShellKernel/PathShellEnvelope.lean`.
+- Claude C107 review:
+  `AgentTasks/model-calls/claude/2026-06-27-152854-cycle4-c107-recovered-source-review.md`.
+- C107b project:
+  `96cce035-7b33-4df7-9b83-64e97bb67554`.
+
+What did not move:
+
+- No local Lean verification was run.
+- C110a remains scalar; it is not the final normed kernel theorem.
+- Track B did not produce a separate artifact this cycle.
+
+Current highest-leverage blocker:
+
+- C107b return, then either:
+  polynomial-projector covariance assembly, or
+  C108 origin branch-observable zero-index certificate.
+
+Strategy check:
+
+- Continue C1_NU finite projector stack. C107b is the right immediate bridge
+  between C107 covariance and future branch-observable projectors.
+
+Harness improvements needed:
+
+- Artifact recovery asks worked, but only after an extra round. Keep embedding
+  "return complete final file contents" in every focused prompt.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C107 recovery and C107b successor.
+- Aristotle check/integration/submission: done; C107/C110a recovered and C107b
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C107/C110a preserved and C107b submitted.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; recovered C107 source reviewed.
+- Friction logging/tooling: payload-missing mitigation continued.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C107b first.
+- If C107b returns cleanly, prepare the finite polynomial-projector covariance
+  assembly theorem.
+- If C107b stalls, submit or prepare C110b normed finite-shell bound.
+
+## Active 30-cycle run, cycle 5 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 5 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C107b completed and the recovered source was preserved. C110b was
+  submitted and Claude-reviewed as the correct normed finite-shell theorem.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle5-c107b-c110b-progress-2026-06-27.md`.
+- C107b recovered source:
+  `AgentTasks/aristotle-standalone/c107b-polynomial-projector-idempotence-20260627/C107bPolynomialProjector/PolynomialProjector.lean`.
+- C110b project:
+  `9650d454-c348-4c88-86ce-f4e99196518e`.
+- Claude C110b review:
+  `AgentTasks/model-calls/claude/2026-06-27-153535-cycle5-c110b-normed-shell-review.md`.
+
+What did not move:
+
+- C110b has not returned yet.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C110b return. After that, the path-sum branch can move to Banach-valued
+  summability over shells.
+
+Strategy check:
+
+- Continue the two finite ladders:
+  C107/C107b toward polynomial projector covariance and C108 origin-index tests;
+  C110a/C110b toward path-sum kernel control and summability.
+
+Harness improvements needed:
+
+- Use `$env:PYTHONIOENCODING='utf-8'` before `aristotle show` on Windows when
+  Lean symbols may appear.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C107b recovery and C110b successor.
+- Aristotle check/integration/submission: done; C107b recovered and C110b
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C107b preserved and C110b submitted.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C110b reviewed.
+- Friction logging/tooling: Unicode `aristotle show` mitigation recorded.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C110b first.
+- If C110b returns, recover and preserve source, then prepare shell-summability.
+- If C110b stalls, use the cycle to review C107b and prepare projector
+  covariance assembly.
+
+## Active 30-cycle run, cycle 6 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 6 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. The recovered C107b source was adversarially reviewed and accepted as a
+  finite seed, and C107c was submitted as the next projector covariance
+  assembly theorem.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle6-c107c-projector-covariance-2026-06-27.md`.
+- Claude C107b review:
+  `AgentTasks/model-calls/claude/2026-06-27-153906-cycle6-c107b-recovered-source-review.md`.
+- C107c project:
+  `e5b6e8b5-3277-40fb-8cb8-c674d6d4994c`.
+
+What did not move:
+
+- C110b remains in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of either C110b or C107c. C110b unlocks Banach-valued shell
+  summability; C107c unlocks origin branch-observable and projector covariance
+  assembly.
+
+Strategy check:
+
+- Continue C1_NU finite proof stack. The current split into algebraic projector
+  control and path-sum kernel control is productive.
+
+Harness improvements needed:
+
+- None new beyond continued payload recovery and UTF-8 show commands.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C107b review and C107c submission.
+- Aristotle check/integration/submission: done; C110b polled and C107c
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C107b reviewed and C107c submitted.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C107b reviewed.
+- Friction logging/tooling: no new friction beyond known payload/encoding
+  issues.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C110b and C107c first.
+- If both remain in progress, prepare but do not overclaim C111 shell
+  summability.
+
+## Active 30-cycle run, cycle 7 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 7 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes, but mostly review/queue progress rather than integration. C107c was
+  adversarially reviewed and accepted as the right finite assembly theorem;
+  C101 continuation failure was surfaced; C110b and C107c remain running.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle7-c107c-review-c110b-poll-2026-06-27.md`.
+- Claude C107c review:
+  `AgentTasks/model-calls/claude/2026-06-27-154219-cycle7-c107c-projector-covariance-review.md`.
+
+What did not move:
+
+- No Aristotle result was integrated this cycle because C110b/C107c remain in
+  progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of C107c or C110b.
+
+Strategy check:
+
+- Continue waiting on the two finite proof jobs. If both remain active next
+  cycle, use the time to prepare C111 shell summability or the finite spectral
+  island covariance packet, but do not submit hard-dependent jobs early.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C107c theorem review while jobs run.
+- Aristotle check/integration/submission: done; C110b/C107c/C101 polled.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C107c reviewed and queue state updated.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C107c reviewed.
+- Friction logging/tooling: C101 failure recorded in progress/queue.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C110b/C107c first. Integrate whichever returns.
+
+## Active 30-cycle run, cycle 8 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 8 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C110b completed and was preserved from recovered transcript source.
+  C111 was submitted as the Banach-valued summability successor and reviewed by
+  Claude.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle8-c110b-c111-progress-2026-06-27.md`.
+- C110b recovered source:
+  `AgentTasks/aristotle-standalone/c110b-normed-path-shell-kernel-bridge-20260627/C110bPathShellKernel/NormedPathShell.lean`.
+- C111 project:
+  `212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d`.
+- Claude C110b/C111 review:
+  `AgentTasks/model-calls/claude/2026-06-27-154702-cycle8-c110b-c111-review.md`.
+
+What did not move:
+
+- C107c remains in progress.
+- C111 remains in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of C107c or C111.
+
+Strategy check:
+
+- Continue both finite ladders:
+  projector algebra toward spectral-island covariance;
+  path-sum control toward summability and tail/truncation estimates.
+
+Harness improvements needed:
+
+- Repeated missing candidate archives continue; transcript recovery remains the
+  working mitigation.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C110b recovery and C111 submission.
+- Aristotle check/integration/submission: done; C110b recovered and C111
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C110b preserved and C111 submitted.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C110b/C111 reviewed.
+- Friction logging/tooling: payload-missing persistence recorded in cycle note.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C107c/C111 first. Integrate whichever returns.
+
+## Active 30-cycle run, cycle 9 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 9 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108 was submitted as an independent origin rejection certificate and
+  reviewed by Claude. The local statement was sharpened before the Aristotle job
+  returned.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle9-c108-origin-certificate-2026-06-27.md`.
+- C108 project:
+  `efd86260-78ff-4278-888d-03eff60216eb`.
+- Claude C108 review:
+  `AgentTasks/model-calls/claude/2026-06-27-155100-cycle9-c108-origin-certificate-review.md`.
+
+What did not move:
+
+- C107c, C111, and C108 remain in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of C107c, C111, or C108.
+
+Strategy check:
+
+- Continue C1_NU finite proof stack. C108 is a useful negative/rejection
+  theorem and should prevent non-polarizing `B` candidates from looking like
+  progress.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108 origin certificate while C107c/C111
+  run.
+- Aristotle check/integration/submission: done; C107c/C111 polled and C108
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108 submitted and statement clarified.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108 reviewed.
+- Friction logging/tooling: no new friction beyond known payload issues.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C107c/C111/C108 first. Integrate whichever returns.
+
+## Active 30-cycle run, cycle 10 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 10 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108b was submitted and reviewed as the constructive complement to C108,
+  while C107c/C111/C108 remain running.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle10-c108b-nontrivial-observable-2026-06-27.md`.
+- C108b project:
+  `9686beef-8138-4c7d-9e11-03792420c27f`.
+- Claude C108b review:
+  `AgentTasks/model-calls/claude/2026-06-27-155511-cycle10-c108b-nontrivial-observable-review.md`.
+
+What did not move:
+
+- No Aristotle result was integrated this cycle.
+- C107c, C111, C108, and C108b remain in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of one of C107c/C111/C108/C108b.
+
+Strategy check:
+
+- Continue C1_NU finite algebra stack. The origin-observable branch now has
+  both a rejection theorem (C108) and constructive necessity theorem (C108b) in
+  flight.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108b while earlier jobs run.
+- Aristotle check/integration/submission: done; active jobs polled and C108b
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108b submitted.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108b reviewed.
+- Friction logging/tooling: no new friction beyond known payload issues.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C107c/C111/C108/C108b first. Recover whichever returns.
+
+## Active 30-cycle run, cycle 11 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 11 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C107c completed and was preserved from transcript source. C108c was
+  submitted and reviewed as a valid quantitative odd-part chiral trace identity.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle11-c107c-recovery-c108c-oddpart-2026-06-27.md`.
+- C107c recovered source:
+  `AgentTasks/aristotle-standalone/c107c-polynomial-projector-covariance-20260627/C107cPolynomialProjector/ProjectorCovariance.lean`.
+- C108c project:
+  `addf8b0a-c702-48d9-b66d-b20f121568d4`.
+- Claude C108c review:
+  `AgentTasks/model-calls/claude/2026-06-27-155834-cycle11-c108c-oddpart-review.md`.
+
+What did not move:
+
+- C111, C108, C108b, and C108c remain in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of the origin-observable jobs C108/C108b/C108c or C111.
+
+Strategy check:
+
+- Continue C1_NU. The finite polynomial projector ladder has a completed C107c
+  source, but recovered proof style should be reviewed before trusted promotion.
+
+Harness improvements needed:
+
+- Payload-missing archive issue continues; transcript recovery remains required.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108c and C107c recovery.
+- Aristotle check/integration/submission: done; C107c recovered and C108c
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C107c preserved and C108c submitted.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108c reviewed.
+- Friction logging/tooling: payload-missing persistence recorded in cycle note.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C111/C108/C108b/C108c first.
+
+## Active 30-cycle run, cycle 12 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 12 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C111 completed, was recovered, and was adversarially reviewed. The review
+  caught proof-style fragility, and a targeted rewrite continuation was queued.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle12-c111-recovery-review-2026-06-27.md`.
+- C111 recovered source:
+  `AgentTasks/aristotle-standalone/c111-shell-summability-20260627/C111ShellSummability/ShellSummability.lean`.
+- Claude C111 review:
+  `AgentTasks/model-calls/claude/2026-06-27-160243-cycle12-c111-recovered-source-review.md`.
+- C111 rewrite continuation:
+  `7439e16f-cbb2-4275-be29-a6cd24fb6bc2`.
+
+What did not move:
+
+- C108/C108b/C108c remain in progress.
+- C111 is not promoted as trusted; proof rewrite/local validation still needed.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of C111 rewrite or any origin-observable job.
+
+Strategy check:
+
+- Continue C1_NU. The path-sum branch now has the right C111 statement, but
+  proof style should be cleaned before reuse.
+
+Harness improvements needed:
+
+- None new beyond payload recovery.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C111 recovery/review.
+- Aristotle check/integration/submission: done; C111 recovered and rewrite
+  continuation queued.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C111 reviewed and continuation queued.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C111 reviewed.
+- Friction logging/tooling: payload-missing persistence recorded in cycle note.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C111 rewrite/C108/C108b/C108c first.
+
+## Active 30-cycle run, cycle 13 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 13 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108 completed and was preserved, giving the finite origin
+  branch-observable rejection certificate. The C111 proof rewrite also
+  completed and was preserved.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle13-c108-c111-rewrite-recovery-2026-06-27.md`.
+- C108 recovered source:
+  `AgentTasks/aristotle-standalone/c108-origin-branch-observable-certificate-20260627/C108OriginBranchObservable/ZeroIndexCertificate.lean`.
+- C111 rewritten source:
+  `AgentTasks/aristotle-standalone/c111-shell-summability-20260627/C111ShellSummability/ShellSummability.lean`.
+- Claude C108 review:
+  `AgentTasks/model-calls/claude/2026-06-27-161224-cycle13-c108-recovered-source-review.md`.
+
+What did not move:
+
+- C108b and C108c status polls timed out and need to be retried.
+- C108 and C111 are not promoted to trusted project modules.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of C108b/C108c, especially C108b as the non-vacuity/contrapositive
+  companion to C108.
+
+Strategy check:
+
+- Continue C1_NU. C108 is the correct rejection certificate: if a candidate
+  `B` commutes with the balance symmetry, polynomial selectors have zero chiral
+  trace. The next needed result is a non-vacuity or odd-component witness, not a
+  premature release claim.
+
+Harness improvements needed:
+
+- `aristotle show` can block long enough to time out for running jobs. Polling
+  should prefer a non-waiting status command if available, or use smaller
+  timeout/limit settings and log the uncertainty.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108/C111 recovery and C108 review.
+- Aristotle check/integration/submission: done; C108 and C111 rewrite recovered,
+  C108b/C108c poll timeout recorded.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108 and C111 standalone sources preserved.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108 reviewed.
+- Friction logging/tooling: poll timeout and transcript-recovery reliance
+  recorded.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108b/C108c again first, preferably with a non-waiting status path.
+
+## Active 30-cycle run, cycle 14 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 14 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. The cycle-13 polling friction was reduced by using `aristotle tasks`.
+  C108b completed, was recovered, and was adversarially reviewed.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle14-c108b-recovery-review-2026-06-27.md`.
+- C108b recovered source:
+  `AgentTasks/aristotle-standalone/c108b-nontrivial-branch-observable-20260627/C108bNontrivialBranchObservable/NontrivialBranchObservable.lean`.
+- Claude C108b review:
+  `AgentTasks/model-calls/claude/2026-06-27-161900-cycle14-c108b-recovered-source-review.md`.
+
+What did not move:
+
+- C108c remains in progress.
+- C108b is not promoted to trusted project modules.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Return of C108c, the odd-part chiral-trace identity, or a successor theorem
+  converting the odd-component necessity into a positive search/moment criterion.
+
+Strategy check:
+
+- Continue C1_NU. C108+C108b now give a clean finite origin acceptance test:
+  any successful branch observable must escape the balance-even commutant and
+  have a nonzero `J`-odd component. This still does not construct `B(U)`.
+
+Harness improvements needed:
+
+- Use `aristotle tasks` for status polling before `aristotle show`.
+- Payload-missing friction persists for C108b; transcript recovery remains
+  necessary.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108b recovery/review.
+- Aristotle check/integration/submission: done; C108b recovered, C108c still in
+  progress.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108b standalone source preserved.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108b reviewed.
+- Friction logging/tooling: `tasks` polling improvement and payload-missing
+  recurrence recorded.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108c first. If still running, prepare but do not necessarily submit the
+  positive odd-moment/search theorem until C108c returns.
+
+## Active 30-cycle run, cycle 15 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 15 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108c completed, was recovered, and was reviewed. C108d was submitted as
+  the finite non-vacuity / positive search criterion successor.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle15-c108c-recovery-c108d-submit-2026-06-27.md`.
+- C108c recovered source:
+  `AgentTasks/aristotle-standalone/c108c-oddpart-chiraltrace-20260627/C108cOddPartChiralTrace/OddPartTrace.lean`.
+- Claude C108c review:
+  `AgentTasks/model-calls/claude/2026-06-27-162236-cycle15-c108c-recovered-source-review.md`.
+- C108d project:
+  `00918b10-3d0f-415e-a012-1059581f1f48`.
+
+What did not move:
+
+- C108/C108b/C108c are not promoted to trusted project modules.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C108d return. It should tell us whether the finite origin criterion has a
+  clean explicit witness and nonzero-trace iff package.
+
+Strategy check:
+
+- Continue C1_NU. The origin-observable finite algebra stack is now strong
+  enough to guide the search for candidate `B(U)`, but still says nothing about
+  spectral islands, gauge covariance, bad-sector gaps, or release.
+
+Harness improvements needed:
+
+- Standalone C108d submission warned that the project folder had no
+  `lean-toolchain` or `.lake`. This is acceptable for a tiny Mathlib-only
+  package, but if build friction appears, add a minimal standalone project
+  template.
+- Payload-missing friction persists for C108c.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108c recovery/review and C108d
+  submission.
+- Aristotle check/integration/submission: done; C108c recovered and C108d
+  submitted.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108c source preserved and C108d submitted.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108c reviewed.
+- Friction logging/tooling: payload-missing recurrence and standalone metadata
+  warnings recorded.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108d first.
+
+## Active 30-cycle run, cycle 22 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 22 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108d completed, was recovered, and was reviewed. The finite
+  origin-observable stack now has an explicit non-vacuity witness.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle22-c108d-recovery-review-2026-06-27.md`.
+- C108d recovered source:
+  `AgentTasks/aristotle-standalone/c108d-oddmoment-witness-20260627/C108dOddMomentWitness/OddMomentWitness.lean`.
+- Claude C108d review:
+  `AgentTasks/model-calls/claude/2026-06-27-164720-cycle22-c108d-recovered-source-review.md`.
+
+What did not move:
+
+- C108d is not promoted to trusted project modules.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- Transition from finite origin algebra to C109a/C109b packaging without
+  overclaiming native `B(U)` or release.
+
+Strategy check:
+
+- Continue C1_NU. C108d completes the finite non-vacuity criterion, but all
+  release-level obligations remain open.
+
+Harness improvements needed:
+
+- `integrate_completed.py` missed the returned C108d Lean file even though it
+  existed in the archive. Candidate discovery should inspect nested
+  `*_aristotle` folders more aggressively.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108d recovery/review.
+- Aristotle check/integration/submission: done; C108d recovered.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108d standalone source preserved.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108d reviewed.
+- Friction logging/tooling: archive candidate-miss recorded.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Prepare the C109a/C109b transition now that C108d returned.
+
+## Active 30-cycle run, cycle 21 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 21 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108d was still in progress, so the prepared narrowing instruction was
+  sent. Claude confirmed the narrowing preserves the finite non-vacuity value.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle21-c108d-narrowing-2026-06-27.md`.
+- Claude C108d narrowing review:
+  `AgentTasks/model-calls/claude/2026-06-27-164241-cycle21-c108d-narrowing-review.md`.
+
+What did not move:
+
+- C108d remains in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C108d return after narrowing.
+
+Strategy check:
+
+- Continue C1_NU. If C108d returns only a narrowed finite witness, record the
+  full iff and uniformity lemmas as theorem debt rather than pretending they were
+  proved.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108d narrowing.
+- Aristotle check/integration/submission: done; C108d polled and narrowing sent.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108d narrowed.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; narrowing reviewed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108d first.
+
+## Active 30-cycle run, cycle 20 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 20 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108d remains in progress, but a precise contingency plan now exists if
+  it stalls: preserve finite non-vacuity, drop optional strengthening, and use
+  explicit `Fin 2` functions.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle20-c108d-contingency-review-2026-06-27.md`.
+- Claude C108d contingency review:
+  `AgentTasks/model-calls/claude/2026-06-27-163946-cycle20-c108d-contingency-review.md`.
+
+What did not move:
+
+- C108d remains in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C108d return or enough elapsed-time evidence to justify a narrowing
+  instruction.
+
+Strategy check:
+
+- Continue C1_NU. Do not narrow C108d prematurely, but keep the contingency ready
+  to preserve useful finite non-vacuity if the witness arithmetic stalls.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108d poll and contingency review.
+- Aristotle check/integration/submission: done; C108d polled, no narrowing yet.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; contingency plan recorded.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108d contingency reviewed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108d first.
+
+## Active 30-cycle run, cycle 19 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 19 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C109a is now a safe-held packet after a second adversarial review and
+  cleanup. C108d remains the active hard dependency.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle19-c109a-revised-held-review-2026-06-27.md`.
+- Revised C109a held packet:
+  `AgentTasks/null-edge-c109a-origin-polarizer-api-held-aristotle-2026-06-27.md`.
+- Claude C109a revised review:
+  `AgentTasks/model-calls/claude/2026-06-27-163713-cycle19-c109a-revised-held-packet-review.md`.
+
+What did not move:
+
+- C108d remains in progress.
+- C109a was not submitted.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C108d return.
+
+Strategy check:
+
+- Continue C1_NU. The C109a packet is now safe to keep held, but C109b and any
+  witness instantiation must wait for C108d.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108d poll and C109a revised review.
+- Aristotle check/integration/submission: done; C108d polled, no hard-dependent
+  submission.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C109a packet hardened.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; revised C109a packet reviewed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108d first.
+
+## Active 30-cycle run, cycle 18 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 18 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108d remains in progress, but C109a was prepared as a held packet,
+  reviewed, and revised to avoid checklist-as-Lean and release overclaim.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle18-c109a-held-packet-review-2026-06-27.md`.
+- Held C109a packet:
+  `AgentTasks/null-edge-c109a-origin-polarizer-api-held-aristotle-2026-06-27.md`.
+- Claude C109a review:
+  `AgentTasks/model-calls/claude/2026-06-27-163426-cycle18-c109a-held-packet-review.md`.
+
+What did not move:
+
+- C108d remains in progress.
+- C109a was not submitted.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C108d return.
+
+Strategy check:
+
+- Continue C1_NU. C109a should remain passive and held until C108d returns.
+  Avoid checklist-as-Lean and avoid origin-certificate-as-release drift.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108d poll and C109a held packet.
+- Aristotle check/integration/submission: done; C108d polled, no hard-dependent
+  submission.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C109a held packet drafted/revised.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C109a packet reviewed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108d first.
+
+## Active 30-cycle run, cycle 17 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 17 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108d remains in progress, but the next-step design was sharpened:
+  split C109 into passive origin-data packaging (`C109a`) and hard-dependent
+  consequence lemmas (`C109b`).
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle17-c109-lift-design-review-2026-06-27.md`.
+- Claude C109 design review:
+  `AgentTasks/model-calls/claude/2026-06-27-163050-cycle17-c109-lift-design-review.md`.
+- C108d project:
+  `00918b10-3d0f-415e-a012-1059581f1f48`.
+
+What did not move:
+
+- C108d remains in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C108d return.
+
+Strategy check:
+
+- Continue C1_NU, but do not let the origin-certificate stack become release
+  language. `C109a` may be prepared now; `C109b` waits for C108d.
+
+Harness improvements needed:
+
+- None new.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108d poll and C109 design review.
+- Aristotle check/integration/submission: done; C108d polled, no hard-dependent
+  submission.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C109 split design recorded.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C109 design reviewed.
+- Friction logging/tooling: no new friction.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108d first.
+
+## Active 30-cycle run, cycle 16 meta-review - 2026-06-27
+
+Loop or round:
+
+- Cycle 16 of the active requested 30-cycle autonomous-loop run.
+
+Real progress:
+
+- Yes. C108d did not return, but Claude accepted the theorem target and the
+  useful tactic/witness guidance was sent back to Aristotle while the task was
+  still running.
+
+Evidence:
+
+- Cycle note:
+  `AgentTasks/null-edge-cycle16-c108d-statement-review-2026-06-27.md`.
+- Claude C108d statement review:
+  `AgentTasks/model-calls/claude/2026-06-27-162730-cycle16-c108d-statement-review.md`.
+- C108d project:
+  `00918b10-3d0f-415e-a012-1059581f1f48`.
+
+What did not move:
+
+- C108d remains in progress.
+- No local Lean verification was run.
+- No separate Track B artifact was produced.
+
+Current highest-leverage blocker:
+
+- C108d return.
+
+Strategy check:
+
+- Continue C1_NU. The finite origin theorem stack is now at the non-vacuity
+  stage. Do not jump to `B(U)` construction until C108d or an equivalent witness
+  is in hand.
+
+Harness improvements needed:
+
+- None new. The live continuation path worked and did not create a separate
+  visible task id.
+
+Mandatory cycle-step audit:
+
+- Goal/blocker analysis: done; selected C108d poll and statement review.
+- Aristotle check/integration/submission: done; C108d polled and live hint sent.
+- Literature search: done; Neo4j chunk query recorded.
+- Track A action: done; C108d statement hardened while in progress.
+- Track B action: no decisive action available this cycle; explicitly recorded
+  to avoid make-work.
+- Claude review: done; C108d statement reviewed.
+- Friction logging/tooling: no new friction beyond already-recorded standalone
+  metadata warning.
+- Meta-review: this entry.
+
+Next decisive action:
+
+- Poll C108d first.

@@ -173,6 +173,55 @@ Decision:
 Rationale:
 
 - The prior loop interpretation counted poll/local-work cycles as complete even without new Aristotle submissions or Claude calls. The clarified policy makes cycles more external-review-heavy and keeps Aristotle throughput higher while bounding long-running build waste.
+## 2026-06-27 - Gate C1 non-ultralocal branch checkpoint
+
+Decision:
+
+```text
+Do not keep treating ultralocality as mandatory for every C1 attempt.
+Introduce Gate C1_NU as a controlled non-ultralocal release target, and reserve
+Gate C1_NL for explicit declared nonlocal fallback.
+```
+
+Claim boundary:
+
+```text
+C1_NU may claim one retained Weyl branch, true bad-sector inverse gap,
+ghost-zero exclusion, gauge covariance/dressing, Krein-positive physical
+residue, anomaly accounting at the appropriate level, regulator stability, and
+path-sum/resolvent/spectral/finite-volume non-ultralocal control.
+
+C1_NL may additionally allow declared nonlocal fallback, but must not claim
+controlled non-ultralocality unless a control certificate is actually supplied.
+
+Neither C1_NU nor C1_NL may claim finite-range locality, exponential locality,
+cluster decomposition, ordinary local continuum QFT, or a gauge-invariant
+quantum gauge theory unless those are separately proved.
+```
+
+Native control principle:
+
+```text
+Use combinatorial path-sum control as the primitive nonlocality certificate.
+Exponential decay is only a sufficient corollary when path-count growth and
+per-path damping are subcritical.
+```
+
+Immediate loop consequence:
+
+```text
+When the loop wants constructive C1 progress, prefer:
+  C106_NonultralocalGateC1_API,
+  C107_FiniteSpectralProjectorGaugeCovariance,
+  C108_OriginBranchObservableCertificate,
+  C109_NonultralocalBlockGapRelease,
+  C110_PathSumControl,
+  C112_DeterminantLineAnomalyContract.
+
+When the loop wants local/no-go clarification, continue C106a/C106b origin
+polarization and native-commutant work.
+```
+
 ## 2026-06-27 - C1 origin-polarizer decision checkpoint
 
 Decision:
@@ -212,3 +261,39 @@ Immediate theorem/job consequence:
 Submit C106a_OriginPolarizationEscapeHatch as the next independent Aristotle
 job unless a completed active job is ready to integrate first.
 ```
+
+## 2026-06-27 - Gemini nonlocal research integrated as audit obligations
+
+Decision:
+
+- Treat Gemini's nonlocal Gate C1 memo as support for the controlled
+  non-ultralocal branch, not as a replacement for the repo's `C1_NU` /
+  `C1_NL` distinction.
+- Map external umbrella `GateC1_NL` wording to `C1_NU` when the construction
+  has path-sum, resolvent, spectral-island, finite-volume, or tail-control
+  data.
+- Reserve `C1_NL` for explicitly declared nonlocal fallback where no controlled
+  non-ultralocality certificate is claimed.
+
+Why:
+
+- The Gemini research reinforces that dropping ultralocality attacks a real
+  Nielsen-Ninomiya assumption.
+- It also reinforces that long-range kernels have historical pathologies:
+  SLAC-type interacting scaling issues, Stacey/tangent zone-edge and
+  normalization issues, domain-wall residual/bulk issues, and SMG
+  propagator-zero ghost issues.
+
+Consequences:
+
+- Add SLAC/Mermin-Wagner-style tail audits, Stacey finite-volume normalization
+  audits, and domain-wall bulk-to-boundary bridge requirements to the C1_NU
+  plan.
+- Do not claim ordinary local QFT, cluster decomposition, or quantum gauge
+  consistency from a nonlocal projector without separate proofs.
+
+Revisit if:
+
+- A native branch observable `B(U)` passes the origin chiral-index test and the
+  remaining question becomes whether its tails qualify as controlled
+  `C1_NU` or only declared `C1_NL`.

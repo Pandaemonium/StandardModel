@@ -221,7 +221,10 @@ Prefer searches tied to the live blocker, not generic browsing. Examples:
 - Gate F: finite spectral-action moduli, counterterms, prediction/codimension.
 
 If no useful source is found, record the negative result. If a source is useful,
-queue ingestion into Zotero/Neo4j and update the relevant plan or task note.
+ingest it - do not just cite it: `lit_ingest.py <arxiv_id>` (Zotero + null-edge
+Neo4j collection + embedding) then `lit_fulltext.py --ids <arxiv_id>` for full
+text, and update the relevant plan or task note. See the root `AGENTS.md` ("Ingest
+useful papers") for the command, the dedup behavior, and the `--force` footgun.
 
 ### Full text is available - use it, do not stop at abstracts
 

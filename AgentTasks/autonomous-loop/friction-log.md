@@ -457,3 +457,168 @@ Open follow-up (larger, not attempted this pass):
   diagnostic when a returned archive has no extractable payload for the target,
   instead of a silent `PAYLOAD_MISSING`. Treat this as the next harness-hardening
   target if extraction friction recurs.
+## 2026-06-27 - Cycle 3: recurring Aristotle payload-missing and C110a statement repair
+
+Friction:
+
+- C107 reports a complete proof stack, including `conjugate_aeval`, but
+  `integrate_completed.py` found no candidate files in the downloaded archive.
+- C110a was submitted with useful intent but Claude caught syntax and semantic
+  statement issues: the true kernel bridge should be a normed-space finite sum
+  bound, not a scalar signed-sum bound.
+
+Impact:
+
+- C107 cannot be integrated from source yet.
+- C110a may need a continuation or replacement job even if Aristotle repairs
+  the submitted scalar statement.
+
+Mitigation:
+
+- Sent a C107 artifact-recovery ask for the complete final file.
+- Continue requiring focused Aristotle prompts to include "return the complete
+  final file contents" in the final response.
+- For the next path-sum job, start directly from the normed-space theorem
+  suggested in Claude's cycle-3 review.
+
+Follow-up:
+
+- Cycle 4 artifact-recovery asks succeeded for C107 and C110a, and both
+  recovered sources were preserved in standalone task areas.
+- The archive extraction still returned no candidates for either project, so the
+  underlying payload-missing friction remains unresolved.
+
+## 2026-06-27 - Cycle 5: Aristotle show Unicode output crash on Windows
+
+Friction:
+
+- `aristotle show 96cce035-7b33-4df7-9b83-64e97bb67554 --limit 100` crashed
+  under the default Windows `cp1252` console encoding when Lean symbols appeared
+  in the progress output.
+
+Impact:
+
+- The first C107b transcript read failed even though the task had completed.
+
+Mitigation:
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'; aristotle show <project-id> --limit 100
+```
+
+Follow-up:
+
+- Use this environment variable for future `aristotle show` calls that may
+  include Lean Unicode.
+
+## 2026-06-27 - Cycle 8: C110b archive still payload-missing
+
+Friction:
+
+- C110b completed, but `integrate_completed.py` found no candidate files in the
+  downloaded archive.
+
+Impact:
+
+- Source preservation again depended on transcript recovery through
+  `aristotle show`.
+
+Mitigation:
+
+- Used `$env:PYTHONIOENCODING='utf-8'` and copied the final source from the
+  transcript into the standalone task area.
+
+Follow-up:
+
+- Keep asking Aristotle to include complete final file contents in the final
+  response for focused jobs.
+
+## 2026-06-27 - Cycle 13: Aristotle show polling can time out on running jobs
+
+Friction:
+
+- C108b and C108c `aristotle show` status polls timed out after roughly two
+  minutes without returning usable status.
+- C108 and the C111 rewrite did return usable transcript output, so the issue is
+  specifically polling still-running or slow projects through `show`.
+
+Impact:
+
+- Cycle 13 could not confidently classify C108b/C108c as still running versus
+  completed-with-large-output.
+
+Mitigation:
+
+- Recorded the status as `poll_timed_out_cycle13_still_pending` rather than
+  treating the jobs as completed or failed.
+- Next poll should prefer a non-waiting status command if available, or use
+  smaller `--limit`/timeout settings and immediately fall back to a direct
+  integration attempt only if the status reports completion.
+
+Follow-up:
+
+- Cycle 14 confirmed `aristotle tasks <project-id> --limit 5` is the safer
+  status-polling command. Use it before `aristotle show`.
+
+## 2026-06-27 - Cycle 14: C108b archive payload missing
+
+Friction:
+
+- C108b completed, but `integrate_completed.py` again found no candidate files
+  in the downloaded archive.
+
+Impact:
+
+- Source preservation depended on transcript recovery from task-specific
+  `aristotle show`.
+
+Mitigation:
+
+- Recovered the complete final file from
+  `aristotle show 9686beef-8138-4c7d-9e11-03792420c27f --task e9f9f04d-1875-4028-93f0-f773a2ba88c1 --limit 100`.
+- Continue requiring prompts to request complete final file contents.
+
+## 2026-06-27 - Cycle 15: C108c archive payload missing and standalone metadata warnings
+
+Friction:
+
+- C108c completed, but `integrate_completed.py` again found no candidate files
+  in the downloaded archive.
+- C108d submission warned that the standalone folder had no `lean-toolchain` and
+  no `.lake` folder.
+
+Impact:
+
+- C108c preservation again depended on transcript recovery.
+- C108d may spend Aristotle budget on dependency setup or fail if the default
+  environment does not infer the intended Mathlib setup.
+
+Mitigation:
+
+- Recovered C108c from task-specific transcript output.
+- If C108d reports build/setup friction, create a minimal reusable standalone
+  Mathlib package template for future focused jobs.
+
+## 2026-06-27 - Cycle 22: C108d candidate discovery missed nested returned file
+
+Friction:
+
+- C108d completed and the downloaded archive contained
+  `C108dOddMomentWitness/OddMomentWitness.lean` under a nested
+  `*_aristotle` folder, but `integrate_completed.py` reported no candidates.
+
+Impact:
+
+- Integration required direct archive inspection even though the Lean payload was
+  present.
+
+Mitigation:
+
+- Located the file manually with `Get-ChildItem` under
+  `AgentTasks/aristotle-output/00918b10-3d0f-415e-a012-1059581f1f48`.
+- Preserved the returned source in the standalone task area.
+
+Follow-up:
+
+- Candidate discovery should inspect nested `*_aristotle` folders and not rely
+  only on expected target paths.

@@ -3,13 +3,16 @@
   "created": "2026-06-27",
   "updated": "2026-06-27",
   "mode": "manual_autonomous_loop",
-  "current_state": "C1_ORIGIN_POLARIZATION_ANALYSIS_FOLDED_READY_FOR_STRICT_LOOP",
-  "current_objective": "Run the loop as two co-equal tracks (see current-objective.md). Track A: Gate C0/C1/H/F convergent work - first integrate any returned active jobs, then prioritize C106a OriginPolarizationEscapeHatch as the next independent C1 decision job; continue monitoring C99b/C99-v2/C89/C92/C93/C82/C70, treat C99 as fallback substrate only, keep C94 hard-dependent on C93, hold C96 until C92/C89 return, and prioritize the Gate H LegalFiniteDiracForbiddenOperator absence theorem when Gate C is blocked. Track B: qubit/information + generalization - mixedness det(rho)=(m/E_u)^2, Plucker hierarchy k>2, obstruction-stiffness unification, measure-valued P1.5; may spawn Aristotle jobs once a target is sharp; counts as progress only with a named failure mode, a finite theorem target, or a falsifiable prediction. Both tracks every cycle; meta-review checks both.",
+  "current_state": "GATE_C1_NU_CONTROLLED_NONULTRALOCAL_BRANCH",
+  "current_objective": "Run the loop as two co-equal tracks (see current-objective.md). Track A: Gate C0/C1/H/F convergent work - first integrate any returned active jobs, then split Gate C1 into C1_local no-go/escape-hatch work, C1_NU controlled non-ultralocal release work, and C1_NL declared-nonlocal fallback only if control certificates fail. C1_local continues C106a/C106b origin-polarization and native-commutant no-go targets. C1_NU follows Sources/Null_Edge_Gate_C1_Nonultralocal_Release_Plan.md: define GateC1_NU_Free/BackgroundGauge/Quantum, NonultralocalControlKind, path-sum control, finite polynomial spectral-projector gauge covariance, origin branch-observable certificate, non-ultralocal block-gap release, and determinant-line anomaly contract. Continue monitoring C99b/C99-v2/C89/C92/C93/C82/C70, treat C99 as fallback substrate only, keep C94 hard-dependent on C93, hold C96 until C92/C89 return, and prioritize Gate H LegalFiniteDiracForbiddenOperator when Gate C is blocked. Track B: qubit/information + generalization - mixedness det(rho)=(m/E_u)^2, Plucker hierarchy k>2, obstruction-stiffness unification, measure-valued P1.5; may spawn Aristotle jobs once a target is sharp; counts as progress only with a named failure mode, a finite theorem target, or a falsifiable prediction. Both tracks every cycle; meta-review checks both.",
   "tracks": {
     "A_convergent_gates": "Gate C0/C1/H/F theorem + integration spine",
     "B_exploration": "qubit/information + generalization (obstruction-geometry reframe), may spawn Aristotle jobs, falsifiability-gated"
   },
-  "cycles_completed": 30,
+  "cycles_completed": 53,
+  "active_goal_cycles_requested": 30,
+  "active_goal_cycles_completed": 23,
+  "active_goal_current_cycle": 24,
   "autonomy": {
     "aristotle_submissions": true,
     "aristotle_integrations": true,
@@ -38,32 +41,32 @@
     "stale_aristotle_job_policy": "stop_or_cancel_if_possible_then_continue_as_no_build_prompt_only_job_with_context_preserved",
     "claude_review_every_cycle": true
   },
-  "active_aristotle_round": "cycle30-closeout-complete",
+  "active_aristotle_round": "active-30-cycle-run-cycle23-complete-c109a-submitted",
   "active_aristotle_projects": [
     {
       "label": "C82",
       "project_id": "893fe869-0e3c-40c5-b0cd-aa302f1a21ea",
-      "status": "RUNNING"
+      "status": "CONTINUATION_IN_PROGRESS"
     },
     {
       "label": "C70",
       "project_id": "e3986d7f-4928-4296-a7c8-cb4fb87eefae",
-      "status": "RUNNING"
+      "status": "RETURNED_CANDIDATES_NOT_APPLIED"
     },
     {
       "label": "P16",
       "project_id": "8dbe5125-d0e9-4c8f-a7c4-ab2ca98550da",
-      "status": "RUNNING"
+      "status": "RETURNED_CANDIDATES_NOT_APPLIED"
     },
     {
       "label": "P17",
       "project_id": "3c535234-4b61-414c-b004-f7202be553d6",
-      "status": "RUNNING"
+      "status": "RETURNED_CANDIDATES_NOT_APPLIED"
     },
     {
       "label": "C101",
       "project_id": "cfaa6a95-5c5c-4a10-8363-c191163a7d0b",
-      "status": "RUNNING"
+      "status": "CONTINUATION_FAILED_ORIGINAL_CANCELED"
     },
     {
       "label": "C102",
@@ -78,17 +81,17 @@
     {
       "label": "C89",
       "project_id": "f481d8f1-4995-4b05-bfbc-398ca9b6810b",
-      "status": "RUNNING"
+      "status": "CONTINUATION_FAILED_ORIGINAL_CANCELED"
     },
     {
       "label": "C92",
       "project_id": "03c6e63f-3a39-420e-81d3-173f2611b362",
-      "status": "RUNNING"
+      "status": "RETURNED_CANDIDATE_REJECTED_CHECKLIST_AS_LEAN"
     },
     {
       "label": "C93",
       "project_id": "6ff32d74-0779-424b-b8a2-9d767251c3ea",
-      "status": "RUNNING"
+      "status": "RETURNED_CANDIDATES_NOT_APPLIED"
     },
     {
       "label": "C95",
@@ -144,10 +147,65 @@
       "label": "C105",
       "project_id": "c633c689-2dd4-4748-97fd-869802a471eb",
       "status": "INTEGRATED"
+    },
+    {
+      "label": "C107",
+      "project_id": "0ab24ab1-3f6a-465f-9d47-678856fc1a77",
+      "status": "RECOVERED_SOURCE_PRESERVED_CLAUDE_ACCEPTED"
+    },
+    {
+      "label": "C110a",
+      "project_id": "c804899f-1d36-4ba3-bc16-f656c105f164",
+      "status": "RECOVERED_SOURCE_PRESERVED_SCALAR_ONLY"
+    },
+    {
+      "label": "C107b",
+      "project_id": "96cce035-7b33-4df7-9b83-64e97bb67554",
+      "status": "RECOVERED_SOURCE_PRESERVED_NOT_LOCALLY_VERIFIED"
+    },
+    {
+      "label": "C110b",
+      "project_id": "9650d454-c348-4c88-86ce-f4e99196518e",
+      "status": "RECOVERED_SOURCE_PRESERVED_NOT_LOCALLY_VERIFIED"
+    },
+    {
+      "label": "C107c",
+      "project_id": "e5b6e8b5-3277-40fb-8cb8-c674d6d4994c",
+      "status": "RECOVERED_SOURCE_PRESERVED_NOT_LOCALLY_VERIFIED"
+    },
+    {
+      "label": "C111",
+      "project_id": "212cd6b6-7c6a-4817-a513-3b7b3f1cfb4d",
+      "status": "RECOVERED_SOURCE_PRESERVED_REWRITE_COMPLETE_NOT_LOCALLY_VERIFIED"
+    },
+    {
+      "label": "C108",
+      "project_id": "efd86260-78ff-4278-888d-03eff60216eb",
+      "status": "RECOVERED_SOURCE_PRESERVED_CLAUDE_ACCEPTED_WITH_CAVEATS"
+    },
+    {
+      "label": "C108b",
+      "project_id": "9686beef-8138-4c7d-9e11-03792420c27f",
+      "status": "RECOVERED_SOURCE_PRESERVED_CLAUDE_ACCEPTED_WITH_CAVEATS"
+    },
+    {
+      "label": "C108c",
+      "project_id": "addf8b0a-c702-48d9-b66d-b20f121568d4",
+      "status": "RECOVERED_SOURCE_PRESERVED_CLAUDE_ACCEPTED_WITH_CAVEATS"
+    },
+    {
+      "label": "C108d",
+      "project_id": "00918b10-3d0f-415e-a012-1059581f1f48",
+      "status": "RECOVERED_SOURCE_PRESERVED_CLAUDE_ACCEPTED_WITH_CAVEATS"
+    },
+    {
+      "label": "C109a",
+      "project_id": "48ec3412-77ee-4ff0-af55-fe6cf1fc1272",
+      "status": "SUBMITTED_QUEUED_CLAUDE_ACCEPTED_WITH_CAVEATS"
     }
   ],
   "pending_integrations": [],
-  "last_claude_review_round": "cycle16-c102-c104-review",
+  "last_claude_review_round": "active-cycle23-c109a-submitted-review",
   "pending_claude_packets": [],
   "pending_pro_packets": [],
   "open_user_questions": [],
@@ -161,5 +219,5 @@
     "track_b_generalization_ready_to_change_headline_framing"
   ],
   "last_updated": "2026-06-27",
-  "last_cycle_summary": "Latest C1 analysis folded into docs/control plane: Gate C1 is now framed as a native origin-polarizer decision first, with C106a balanced-commutant zero-index as the next highest-value independent Aristotle target."
+  "last_cycle_summary": "Active 30-cycle run cycle 23 complete: C109a passive origin polarizer API submitted as project 48ec3412-77ee-4ff0-af55-fe6cf1fc1272 and Claude accepted the skeleton with typeclass-resolution caveats; next cycle should poll C109a first."
 }

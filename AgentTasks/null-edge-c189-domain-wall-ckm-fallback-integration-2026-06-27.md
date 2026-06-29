@@ -1,0 +1,13 @@
+# Summary of changes for run ff41e757-c249-4ee3-a315-af7677e7b482
+Designed the domain-wall / boundary version of the Gate C1 import architecture with CKM texture, delivered as a compiling Lean API plus a prose design document. Both build cleanly; the import theorem uses only the standard kernel dependencies (propext, Classical.choice, Quot.sound) and contains no proof placeholders.
+
+Files added:
+- `RequestProject/GateC1DomainWall.lean` — the formal architecture in namespace `GateC1_NU`:
+  - `OverlapReference` (Wilson/Neuberger reference operator `D_ov` + integer index) and `DomainWallData` (5D slab data: `Lz`, bulk-boundary operator, finite-`Lz` effective operator, residual mass, mirror gap, CKM defect, boundary index, the `CKMTexture` table, and a `CKMPlacement`).
+  - `CKMPlacement` enumerates the four candidate homes for the texture; the architecture commits to `boundaryFlavorCoupling` (item 2).
+  - `C1Certificates` — the explicit certificate stack (item 3), one field per required certificate: residual-mass bound (C1.a), boundary index/anomaly-inflow (C1.b), true mirror gap (C1.c), determinant/ghost control (C1.d), SM internality as gauge-commutation of the texture (C1.e), locality/transfer-matrix control (C1.f), and CKM near-unitarity (C1.g).
+  - `domainWall_import` (item 5) — the conditional import combinator: from the certificate stack it derives `C1Import`, whose `operator_close` field gives the explicit boundary↔overlap error budget `‖D_eff − D_ov‖ ≤ ε + κ` (residual ⊕ locality via the operator triangle inequality), plus index match, mirror gap, texture internality and near-unitarity. The companion `domainWall_exact` shows the `ε = κ = 0` limit recovers Neuberger exactly (`D_eff = D_ov`).
+  - The design is deliberately *conditional*: closure is exactly the conjunction of the certificate fields, so domain-wall does not close C1 automatically.
+- `DomainWall_Design.md` — prose for items 1, 2, 4, 6: the concrete 5D bulk-operator schematic and its boundary reduction to overlap (item 1); the CKM placement decision table (item 2); the Wilson/Neuberger comparison of which certificates get easier (locality, determinant/ghost, geometric index) versus harder (residual mass, true mirror gap, mode-count bookkeeping) (item 4); and a failure-mode table mapping each failure (residual mass not small, mirror not gapped, CKM coupled to gauge / branch-mixing, boundary mode-count mismatch, plus ghost zero-mode and non-unitary texture) to the specific certificate field that catches it (item 6).
+
+`RequestProject/Main.lean` now imports the new module so it is part of the default build target.

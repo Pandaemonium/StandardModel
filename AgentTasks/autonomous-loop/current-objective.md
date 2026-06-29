@@ -17,9 +17,13 @@ labels.
 
 ```text
 Gate C0: external species health via RA-Wilson / regulator legality.
-Gate C1: physical chiral release, requiring shared-operator-lineage release
-         package, nonzero chiral/index witness, anti-vectorialization, and
-         regulator-removal stability.
+Gate C1: physical chiral release. Split the target explicitly:
+         C1_local keeps local/quasi-local release discipline and should now be
+         treated mostly as a no-go/escape-hatch audit; C1_NU drops finite-range
+         / exponential locality as a release requirement while keeping explicit
+         path-sum/resolvent/spectral/finite-volume control; C1_NL is reserved
+         for declared nonlocal fallback. Both nonlocal branches still require
+         true bad-sector inverse gap and ghost/anomaly/Krein/gauge audits.
 Gate H:  internal Furey/Baez/DVT legality, anomaly, and finite Dirac operator
          constraints.
 Gate F:  prediction/codimension (absence theorems first, not mass magnitudes).
@@ -27,8 +31,17 @@ Gate F:  prediction/codimension (absence theorems first, not mass magnitudes).
 
 Current bounded actions:
 
-0. Fold the latest C1 origin-polarization analysis into the Gate C spine and
-   prioritize the C106 decision stack:
+0. Fold the latest C1 origin-polarization and non-ultralocal analysis into the
+   Gate C spine. Keep two branches separate:
+   - `C1_local`: prove the origin-polarizer/no-go decision stack and avoid
+     pretending ultralocal/free `T_br` is likely.
+   - `C1_NU`: pursue controlled non-ultralocal release with a canonical
+     finite spectral/Riesz/sign/path-sum projector, path-sum/resolvent/
+     finite-volume control rather than primitive exponential locality, true
+     bad-sector inverse gap, and full ghost/anomaly/Krein/gauge audits.
+   - `C1_NL`: reserve for explicit declared nonlocal fallback if controlled
+     non-ultralocal certificates cannot be proved.
+1. For the local/no-go branch, prioritize the C106 decision stack:
    - C106a `OriginPolarizationEscapeHatch`: prove balanced-commutant zero
      chiral index.
    - C106b `NativeOriginCommutantNoGo`: if the native gauge-safe origin algebra
@@ -38,10 +51,33 @@ Current bounded actions:
    - C106d+ only after C106a/b/c: branch-classifier extension, bad-sector
      inverse gap, ghost-zero rejection, locality certificate soundness, and
      C1 assembly.
-   - Treat projected overlap and domain-wall as fallback escape contracts that
-     require certified branch split, mass window, locality, anomaly, and
-     ghost-zero audits.
-1. Monitor and integrate returned jobs with the hardened integration helper:
+2. For the non-ultralocal branch, treat
+   `Sources/Null_Edge_Gate_C1_Nonultralocal_Release_Plan.md` as the active
+   plan. Highest-value theorem/API targets:
+   - Translate external-model umbrella `GateC1_NL` language carefully:
+     controlled path-sum/resolvent/spectral/finite-volume constructions belong
+     to `C1_NU`; `C1_NL` is only the declared-nonlocal fallback when no control
+     certificate is claimed.
+   - `C106_NonultralocalGateC1_API`: define `GateC1_NU_Free`,
+     `GateC1_NU_BackgroundGauge`, `GateC1_NU_Quantum`,
+     `NonultralocalControlKind`, `PathSumCertificate`,
+     `UniformBadSectorInverseGap`, and declared-nonlocal fallback boundaries.
+   - `C107_FiniteSpectralProjectorGaugeCovariance`: prove polynomial spectral
+     projectors are projectors and inherit gauge covariance from the branch
+     observable; postpone Riesz integrals.
+   - `C108_OriginBranchObservableCertificate`: prove balance-commuting branch
+     observables give zero chiral index, so every candidate `B` must polarize
+     the origin.
+   - `C109_NonultralocalBlockGapRelease`: assemble physical Weyl block plus
+     true bad-sector gap into `GateC1_NU_Free` or
+     `GateC1_NU_BackgroundGauge`.
+   - `C110_PathSumControl`: prove finite graph/path-count tail criteria; use
+     exponential decay only as a corollary of combinatorics, not as the
+     primitive definition.
+   - `C112_DeterminantLineAnomalyContract`: keep anomaly/determinant-line
+     obligations explicit so non-ultralocal release is not overclaimed as a
+     full gauge theory.
+3. Monitor and integrate returned jobs with the hardened integration helper:
    - C99b `309944d6-800a-4399-a2fc-3d294883ce28`
    - C99-v2 `b97de9d7-3661-4feb-a8b6-0e138bb597b5`
    - C89 `f481d8f1-4995-4b05-bfbc-398ca9b6810b`
@@ -121,5 +157,9 @@ reframing.
   before launch.
 - Every autonomous-loop cycle must still perform literature search and
   meta-review, and the meta-review must check both tracks.
-- Under the latest C1 analysis, the highest-value independent Aristotle job is
-  C106a unless a completed active job is ready to integrate first.
+- Under the latest C1 analysis, the highest-value independent Aristotle jobs
+  are now either C106a/C106b for the local/no-go fork or
+  C106_NonultralocalGateC1_API / C107_FiniteSpectralProjectorGaugeCovariance /
+  C108_OriginBranchObservableCertificate for the C1_NU fork. Prefer the
+  controlled non-ultralocal fork when the loop's goal is constructive release
+  rather than no-go clarification.
