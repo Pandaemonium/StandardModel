@@ -46,6 +46,34 @@ per momentum; NOT a gauge-background index theorem (Gate C2) and NOT a continuum
 or Lorentz-invariant claim. The free global index may be zero, which is expected
 (the free C1 goal is a valid GW involution + Weyl projectors, not a nonzero
 vacuum index).
+
+## Adversarial red-team validation + honesty notes (Aristotle `feae0495`, 2026-07-03)
+
+An adversarial semantic audit confirmed the chiral release is FAITHFUL: because
+`H` is self-adjoint and `H^2 = coeff . I` with `coeff > 0`, the spectrum of `H`
+is exactly the symmetric two-point set `+- sqrt(coeff)` with no zero mode, so
+`signSymbol = coeff^{-1/2} H` acts as `+-1` on each eigenspace and genuinely
+equals the spectral sign `H (H^2)^{-1/2}` - the "scalar square makes the sign
+elementary" headline is a real shortcut, not sleight of hand. The audit also
+numerically re-confirmed the tetrahedral Gram form (diag 5/8, off-diag -1/8) is
+positive definite (eigenvalues 1/4, 3/4), so `Q` is a genuine non-degenerate
+slash and `coeff` is honestly the gap coefficient.
+
+Honest caveats the audit flagged (recorded here, not defects):
+* The spectral-sign identification `eps = H (H^2)^{-1/2}` is the intended
+  READING; the Lean content is exactly `eps^2 = 1` + `star eps = eps` (a
+  self-adjoint involution). There is no separate Lean `sign(.)` object.
+* The operative hypothesis is `0 < sqCoeff` (weaker and more honest than the
+  full "first Wilson band"; the band + branch window IMPLY it via
+  `scalarWilsonCoeff_pos_of_firstBand`).
+* Existence of a `gamma5` meeting the three relations is ASSUMED here, not
+  exhibited; a concrete tetrahedral chirality witness would strengthen it.
+* The `weylProjPlus/Minus` are the complementary spectral idempotents of `eps`
+  (i.e. the projectors onto the `+-1 = sign(H)` eigenspaces = the physical Weyl
+  chiral projectors); tying them explicitly to `Dov`'s deformed chirality is a
+  successor, not proved here.
+* Statements hold trivially if `Spin` is empty (standard finite-dimensional
+  caveat).
 -/
 
 noncomputable section
