@@ -148,6 +148,20 @@ So the crisp Aristotle target is: `inertia(block) = -2` via a Sturm/pivoted-
 congruence argument on its rational characteristic polynomial, times `L=4` blocks
 `= -8` (index `4`), versus balanced `0` at `Q=0`.
 
+EXPLICIT congruence computed (`scratchpad/flux2d_congruence.py`, exact): a
+Gaussian-rational invertible `S` with
+`S^dag . block . S = diag(1, -1/4, 2, 2, -1/2, -5/2, -8/5, -3/2)` - a RATIONAL,
+SURD-FREE diagonal, verified exactly (`S^dag block S == D`, `det S != 0`, `S`
+Gaussian-rational). The signs `3 +, 5 -` give inertia `-2` DIRECTLY by Sylvester's
+law, with NO eigenvalues. So the load-bearing block lemma reduces to a decidable
+matrix-identity check `S^dag block S = D` plus Sylvester's law. KEY MATHLIB
+DEPENDENCY: Sylvester's law of inertia (congruent Hermitian matrices share
+signature / eigenvalue-sign counts), needed to bridge this rational congruence to
+the eigenvalue-count inertia used by `epsCFC_trace_eq_inertia`; search Mathlib
+first (`Matrix.IsHermitian`, congruence, signature) and, if absent, prove it as the
+one reusable general lemma. With it, the full 2D-flux zero-to-nonzero witness is a
+short assembly over the explicit per-block `S`, `D`.
+
 ## Provenance
 
 Oracle: `scratchpad/flux2d_probe.py` + `scratchpad/flux2d_verify.py`, numpy
