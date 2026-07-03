@@ -2275,3 +2275,31 @@ For the rest of the run I'm in monitoring + coordination mode: keeping the tree
 green as integration proceeds, available for cross-review, and will do the final
 morning-report reconciliation with @codex before 07:30. Ping me on any review
 thread.
+
+## [07:20] claude :: idea:index-density+operator-zero (anomaly-bridge rung 1 landed)
+
+Two more C2 theorems banked while the flux job (f3296d38) runs, both
+kernel-checked with clean axioms:
+
+- `TetraFreeIndexDensity.lean` (commit e87cfc2): the real-space KERNEL of
+  sign(Hfree) (`signKernel`, identified via `signHfree_apply_eq_kernel_sum`), the
+  translation invariance of its diagonal (`signKernel_diag`: K(x,x) = nf^2 sum_m
+  signSymbol(k_m), x-independent, via pointwise unit-modulus characters), the
+  per-momentum tracelessness (`trace_signSymbol_eq_zero`), and the headline:
+  **the local index density q(x) = (1/2)(Tr g5 - Tr K(x,x)) VANISHES AT EVERY
+  SITE** (`freeIndexDensity_eq_zero`). This is anomaly-bridge rung 1 - the free
+  theory has no topology LOCALLY; the gauge deformation of q(x) (where it becomes
+  the topological charge density) is the open frontier. Thanks @codex for the
+  concurrent simplification of the kernel-sum proof.
+
+- `FlagshipOperatorIndexZero.lean` (commit 47a4e4e): **the flagship operator
+  index is exactly ZERO** (`flagship_operatorIndex_eq_zero`) - the exact-value
+  companion of the integrality keystone. Mechanism: End-trace = site-sum of
+  kernel-diagonal spin-traces (`trace_signHfreeL`, via Pi.basis of Pi.basisFun +
+  the kernel representation), each block traceless; `trace_Gamma5opL =
+  card.Tr(g5) = 0`. So the free chiral operator's index is 0 exactly, closing the
+  free benchmark at ALL THREE levels: symbol, certified-integer, operator value.
+
+C2 now: 13 theorem files. The flux construction job f3296d38 (pi-flux plaquette,
+genuine holonomy) is the one open piece in flight - will harvest + review when it
+returns.

@@ -380,3 +380,17 @@ OverlapSignExistence/OverlapWindingSignJoin + FLUX_BRIEF.md. Harvest via
 Final-sweep C2 documentation review in progress. Live Aristotle list still shows
 `f3296d38` RUNNING; no harvest yet. Reviewing the new C2 technical summary and
 morning report for claim-scope/ASCII hygiene, with no Lean surface changes.
+
+## Heartbeat 05:35 codex
+Picked up the newly tracked C2 free index-density module `e87cfc2`, found its
+kernel-expansion proof did not pass `lake env lean`, repaired the finite-sum
+reordering in `signHfree_apply_eq_kernel_sum`, and verified the module build,
+placeholder scan, dependency audit, and full root `lake build`. Report/source/
+roadmap reconciliation now in progress; `f3296d38` still needs polling.
+
+## Heartbeat 07:20 claude
+Anomaly-bridge rung 1 + operator-value-zero landed (e87cfc2, 47a4e4e): index
+DENSITY vanishes site-wise (kernel + translation-invariant diagonal), and the
+flagship operator index = 0 exactly (End-trace via kernel diagonal). 13 C2 files,
+all kernel-clean. Full build running. Flux job f3296d38 RUNNING (will harvest).
+C2 write-up committed (Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md).
