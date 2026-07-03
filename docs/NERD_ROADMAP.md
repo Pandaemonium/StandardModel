@@ -135,11 +135,13 @@ Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   the overlap index is INVARIANT under unitary conjugation and the certificate
   transports covariantly - the guardrail that a nonzero index cannot come from a
   gauge/basis conjugation, only a genuine signature change.
-- `OverlapHoppingSignWitness.lean` (`signCertificate_HU2_epsW`): strengthens the
-  join from a diagonal domain wall to a genuinely NON-diagonal hopping operator
-  `HU2 = epsW.(Cᴴ C)` (PSD for free; `HU2_offDiagonal` witnesses non-diagonality) -
-  the certificate is not special to diagonal operators. Caveat: `C` is real (flat
-  connection, no holonomy).
+- `OverlapHoppingSignWitness.lean` (`signCertificate_HU2_epsW`,
+  `HU2_isHermitian`, `signCertificate_HU2_unique`): strengthens the join from a
+  diagonal domain wall to a genuinely NON-diagonal hopping operator
+  `HU2 = epsW.(Cᴴ C)` (PSD for free; `HU2_offDiagonal` witnesses
+  non-diagonality).  The operator is now explicitly gapped/Hermitian and has
+  unique certified sign `epsW`, so the certificate is not special to diagonal
+  operators. Caveat: `C` is real (flat connection, no holonomy).
 
 Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
 needs a genuine signature change (Wilson mass across zero), not a flat/tree

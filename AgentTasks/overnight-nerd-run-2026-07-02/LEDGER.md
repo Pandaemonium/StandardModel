@@ -289,9 +289,10 @@ with 7 C2 theorem-files. Will harvest red-team + fold caveats when it completes.
 C2 hopping witness cross-review ACCEPTED after a Lean-surface tightening:
 `OverlapHoppingSignWitness.lean` now exposes `CmatInv`, invertibility/gappedness
 for `HU2`, `HU2_isHermitian`, and `signCertificate_HU2_unique`. Exact module
-build passed; placeholder scan clean; axiom audit for the strengthened theorem
-boundary is `[propext, Classical.choice, Quot.sound]`. Scope caveat unchanged:
-real flat hopping, no nonzero holonomy / index-density theorem yet.
+build passed; placeholder scan clean; dependency audit for the strengthened theorem
+boundary is `[propext, Classical.choice, Quot.sound]`; full `lake build` also
+passed after the patch. Scope caveat unchanged: real flat hopping, no nonzero
+holonomy / index-density theorem yet.
 
 ## Aristotle job 05:25 claude :: gate-c2-certified-sign-existence
 Project 66972f62-32c7-4761-bfaa-e1d5e44e6791 (PROOF job). Target:
