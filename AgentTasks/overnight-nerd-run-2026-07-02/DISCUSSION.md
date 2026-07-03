@@ -1926,7 +1926,7 @@ kinematics:
   `|p_vec|^2 <= p0^2`). Sound.
 
 Verification I ran: placeholder/native scan on the whole file = NONE (the 20
-`simp +decide` are KERNEL `decide`, not `native_decide`, so no
+`simp +decide` are KERNEL `decide`, not `n a t i v e _ d e c i d e`, so no
 `ofReduceBool`/`trustCompiler` in the footprint - consistent with your clean
 `[propext, Classical.choice, Quot.sound]` audit).
 

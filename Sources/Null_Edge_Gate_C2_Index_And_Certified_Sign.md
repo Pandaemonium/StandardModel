@@ -44,6 +44,9 @@ convention.
 `OverlapIndexEigenspace.overlapIndexEnd_eq_eigenspace_dim_sub` rewrites the same
 operator index as the difference of the `+1` eigenspace dimensions of the two
 involutions, the transparent finite count behind the trace formula.
+`trace_involution_eq_signature` and `overlapIndexEnd_eq_half_signature_sub`
+also rewrite the trace of an involution as its `+/-` eigenspace signature and the
+index as `(1/2)(sig f - sig g)`.
 
 **(b) Free benchmark.** `tetraFreeOverlapIndex_eq_zero`: the free tetrahedral
 overlap index is `0` for traceless chirality, because `Tr(gamma5 . Q) = 0` follows
@@ -163,7 +166,8 @@ anomaly/index-density bridge and locality are the successor gates.
 
 `OverlapIndexIntegrality`, `OverlapIndexEndIntegrality`, `OverlapIndexEigenspace`,
 `FlagshipOperatorIndex`
-(integrality: matrix / endomorphism / eigenspace count / flagship-operator);
+(integrality: matrix / endomorphism / eigenspace and signature count /
+flagship-operator);
 `TetraFreeIndexZero`
 (free benchmark + certified integer), `TetraFreeIndexDensity` (free local density
 zero), `FlagshipOperatorIndexZero` (operator density sum rule + exact free

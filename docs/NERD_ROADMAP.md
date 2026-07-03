@@ -120,9 +120,10 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   End-level index is the trace of the Luscher modified chirality
   `f * (1 - (1/2) Dov)`.
 - `OverlapIndexEigenspace.lean` (`specProjEnd_range_eq_eigenspace`,
-  `overlapIndexEnd_eq_eigenspace_dim_sub`): the operator overlap index is the
-  difference of the `+1` eigenspace dimensions of the two involutions, giving the
-  physics-transparent count behind the End trace formula.
+  `overlapIndexEnd_eq_eigenspace_dim_sub`, `trace_involution_eq_signature`,
+  `overlapIndexEnd_eq_half_signature_sub`): the operator overlap index is the
+  difference of the `+1` eigenspace dimensions of the two involutions, and
+  equivalently `(1/2)(sig f - sig g)` via the trace-as-signature theorem.
 - `TetraFreeIndexZero.lean` (`tetraFreeOverlapIndex_eq_zero`): the free
   benchmark - the free tetrahedral overlap index is 0 for traceless chirality
   (`Tr(gamma5.Q)=0` from `{gamma5,Q}=0` + cyclicity, `Tr gamma5 = 0`).

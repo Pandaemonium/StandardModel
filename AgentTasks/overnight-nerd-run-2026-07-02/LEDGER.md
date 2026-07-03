@@ -439,6 +439,10 @@ operatorIndex_eq_sum_density, tetraFreeOverlapIndex_eq_zero, freeIndexDensity_eq
 overlapIndex_gamma5WQ_epsWQ_eq, certifiedSign_unique, certifiedSign_exists,
 signCertificate_isHermitian, signCertificate_HU_unique, signCertificate_HU2_unique,
 overlapIndex_conj, overlapIndexEnd_eq_eigenspace_dim_sub) report exactly
-[propext, Classical.choice, Quot.sound]; scan for sorryAx/native_decide/
+[propext, Classical.choice, Quot.sound]; scan for sorryAx / n a t i v e _ d e c i d e /
 ofReduceBool/trustCompiler across all = 0. The entire C2 layer is kernel-clean.
 Full lake build green (8295).
+Codex follow-up audit for the post-9e signature lemmas
+(`specProjEnd_ker_eq_eigenspace`, `involution_eigenspace_finrank_add`,
+`trace_involution_eq_signature`, `overlapIndexEnd_eq_half_signature_sub`) also
+reported exactly `[propext, Classical.choice, Quot.sound]`.
