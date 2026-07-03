@@ -222,7 +222,11 @@ momentum-window version and position-space sampling/interpolation bridge.
 - C2 2D-flux oracle checks: `python -m py_compile
   Scripts/oracle/validate_flux2d_wilson_dirac.py`; `python
   Scripts/oracle/validate_flux2d_wilson_dirac.py` passed, reproducing the
-  `L=4,Q=1` index `4` table row and four `8 x 8` blocks of signature `-2`.
+  `L=4,Q=1` index `4` table row and four `8 x 8` blocks of signature `-2`;
+  `python Scripts/oracle/validate_flux2d_wilson_dirac.py --exact-block` passed,
+  checking in SymPy exact arithmetic that the `k_x=0` block has characteristic
+  polynomial `(lambda + 1)(lambda^2 - 3)(lambda^2 - 2lambda - 1)(lambda^3 +
+  lambda^2 - 5lambda - 1)` and root sign count `3/5`.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build

@@ -589,3 +589,9 @@ oracle for the even-lattice C2 frontier. Command run:
 plain-x Fourier block reduction off-block max `2.77e-16`; each of the four
 `8 x 8` blocks has signature `-2`. The script also reproduces the `L=3,4,5`,
 `Q=0,1,2` table from the plan. This remains oracle evidence only, not a proof.
+
+Extended the script with optional exact mode and ran
+`python Scripts/oracle/validate_flux2d_wilson_dirac.py --exact-block` (sympy
+1.14.0). Exact `k_x=0` block characteristic polynomial:
+`(lambda + 1)*(lambda^2 - 3)*(lambda^2 - 2*lambda - 1)*(lambda^3 + lambda^2 - 5*lambda - 1)`,
+determinant `-3`, root sign count `n_+=3`, `n_-=5`, signature `-2`.

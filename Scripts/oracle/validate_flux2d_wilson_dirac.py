@@ -21,8 +21,12 @@ index 4 via index = -inertia/2.  The plaquette holonomy is
 exp(+2*pi*i*Q/L), so the full L x L torus carries L*Q flux quanta; this is a
 finite zero-to-nonzero witness, not a unit-flux continuum normalization.
 
-Tool: Python 3.x + numpy (version printed at run time)
+Tool: Python 3.x + numpy (version printed at run time); optional sympy for
+      --exact-block
 Run:  python Scripts/oracle/validate_flux2d_wilson_dirac.py
+Optional exact check:
+      python Scripts/oracle/validate_flux2d_wilson_dirac.py --exact-block
+      (requires sympy; prints the exact k=0 block characteristic polynomial)
 License: project (Apache-2.0)
 """
 
@@ -155,6 +159,80 @@ def block_reduce_x(mat: np.ndarray, L: int) -> tuple[np.ndarray, float, list[Ine
     return block_mat, max(off_block, default=0.0), per_block
 
 
+def exact_l4_q1_k0_block_check() -> bool:
+    """Exact sympy check of the L=4, Q=1, k_x=0 block characteristic polynomial."""
+    try:
+        import sympy as sp
+    except ImportError:
+        print("\nexact block check skipped: sympy is not installed")
+        return False
+
+    L = 4
+    imag = sp.I
+
+    def old_idx(x: int, y: int) -> int:
+        return y * L + x
+
+    tx = sp.zeros(L * L)
+    phases = [1, -imag, -1, imag]
+    for y in range(L):
+        for x in range(L):
+            tx[old_idx((x + 1) % L, y), old_idx(x, y)] = phases[y]
+
+    ty = sp.zeros(L * L)
+    for y in range(L):
+        for x in range(L):
+            ty[old_idx(x, (y + 1) % L), old_idx(x, y)] = 1
+
+    sx = sp.Matrix([[0, 1], [1, 0]])
+    sy = sp.Matrix([[0, -imag], [imag, 0]])
+    sz = sp.Matrix([[1, 0], [0, -1]])
+    eye = sp.eye(L * L)
+    dx = (tx - tx.conjugate().T) / (2 * imag)
+    dy = (ty - ty.conjugate().T) / (2 * imag)
+    wilson = 2 * eye - (tx + tx.conjugate().T) / 2 - (ty + ty.conjugate().T) / 2
+    ham = (
+        sp.kronecker_product(dx, sx)
+        + sp.kronecker_product(dy, sy)
+        + sp.kronecker_product(-eye + wilson, sz)
+    )
+
+    # k_x = 0 plain-x Fourier block: average over x at fixed y.
+    u0 = sp.zeros(L, L * L)
+    for y in range(L):
+        for x in range(L):
+            u0[y, old_idx(x, y)] = sp.Rational(1, 2)
+    block = sp.kronecker_product(u0, sp.eye(2)) * ham * sp.kronecker_product(
+        u0, sp.eye(2)
+    ).conjugate().T
+
+    lam = sp.Symbol("lambda")
+    charpoly = sp.factor(block.charpoly(lam).as_expr())
+    expected = sp.factor(
+        (lam + 1)
+        * (lam**2 - 3)
+        * (lam**2 - 2 * lam - 1)
+        * (lam**3 + lam**2 - 5 * lam - 1)
+    )
+    roots = [complex(root) for root in sp.nroots(charpoly)]
+    positive = sum(root.real > 1e-10 for root in roots)
+    negative = sum(root.real < -1e-10 for root in roots)
+    ok = (
+        block == block.conjugate().T
+        and sp.factor(charpoly - expected) == 0
+        and positive == 3
+        and negative == 5
+    )
+
+    print("\nexact sympy block check for L=4, Q=1, k_x=0")
+    print(f"sympy={sp.__version__}")
+    print(f"charpoly={charpoly}")
+    print(f"det={sp.factor(block.det())}")
+    print(f"root sign count: n+={positive} n-={negative} signature={positive - negative}")
+    print("exact block check OK" if ok else "exact block check FAILED")
+    return ok
+
+
 def validate(args: argparse.Namespace) -> int:
     print("2D Wilson-Dirac flux oracle")
     print(f"python={platform.python_version()} numpy={np.__version__}")
@@ -218,8 +296,11 @@ def validate(args: argparse.Namespace) -> int:
                 print(f"  ERROR: expected block signature -2, got {res.signature}")
 
     if ok:
-        print("\nOK: oracle checks passed")
-        return 0
+        if args.exact_block:
+            ok = exact_l4_q1_k0_block_check()
+        if ok:
+            print("\nOK: oracle checks passed")
+            return 0
     print("\nFAILED: oracle checks did not match expected values")
     return 1
 
@@ -236,6 +317,11 @@ def build_parser() -> argparse.ArgumentParser:
         dest="assert_default",
         action="store_false",
         help="print values without checking the default L=3,4,5 table",
+    )
+    parser.add_argument(
+        "--exact-block",
+        action="store_true",
+        help="also run the exact sympy characteristic-polynomial check for the L=4,Q=1,k_x=0 block",
     )
     parser.set_defaults(assert_default=True)
     return parser

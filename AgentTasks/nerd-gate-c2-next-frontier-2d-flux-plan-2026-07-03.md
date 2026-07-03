@@ -35,8 +35,9 @@ Oracle check (`scratchpad/flux2d_probe.py`, numpy eigvalsh):
 - triangle `n = 3`: inertia `-1` (flux `+1`) and `+1` (flux `-1`) - nonzero always.
 
 Tracked follow-up oracle: `Scripts/oracle/validate_flux2d_wilson_dirac.py`
-reproduces the 2D Wilson-Dirac table below and the `L=4,Q=1` plain-x Fourier
-block reduction.
+reproduces the 2D Wilson-Dirac table below, the `L=4,Q=1` plain-x Fourier block
+reduction, and (with `--exact-block`) the exact `k_x=0` block characteristic
+polynomial.
 
 Conclusion: a genuine zero-to-nonzero flux index needs a term that BREAKS the
 bipartite/chiral symmetry - i.e. a WILSON MASS term `r (2 - sum_mu cos p_mu)` added
@@ -180,13 +181,22 @@ Tracked oracle: `Scripts/oracle/validate_flux2d_wilson_dirac.py`, run with:
 
 ```text
 python Scripts/oracle/validate_flux2d_wilson_dirac.py
+python Scripts/oracle/validate_flux2d_wilson_dirac.py --exact-block
 ```
 
-Observed environment during Codex review: Python 3.12.10, numpy 2.4.3. The script
-reproduces the numeric index table and verifies that the `L=4,Q=1` operator
-plain-x Fourier block-diagonalizes into four `8 x 8` blocks, each with signature
-`-2`. It is exploratory (validates the design claims; NOT a trusted proof and NOT
-a CI fixture).
+Observed environment during Codex review: Python 3.12.10, numpy 2.4.3, sympy
+1.14.0. The script reproduces the numeric index table, verifies that the
+`L=4,Q=1` operator plain-x Fourier block-diagonalizes into four `8 x 8` blocks
+each with signature `-2`, and verifies the exact `k_x=0` block characteristic
+polynomial:
+
+```text
+(lambda + 1)*(lambda^2 - 3)*(lambda^2 - 2*lambda - 1)*(lambda^3 + lambda^2 - 5*lambda - 1)
+```
+
+The exact mode gives root sign count `n_+=3`, `n_-=5` for that block. It is
+exploratory (validates the design claims; NOT a trusted proof and NOT a CI
+fixture).
 
 Additional scratchpad references in this note (`scratchpad/flux2d_probe.py`,
 `scratchpad/flux2d_verify.py`, `scratchpad/flux2d_exact*.py`,
