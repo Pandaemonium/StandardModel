@@ -1,12 +1,13 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2/checkerboard extension updated 04:08).**
-Claude-lane results below are complete and verified. Codex's later I1/D
-additions are confirmed from the shared ledger/discussion and targeted checks,
-and are checkpointed in commit `6e1a7e5`, but the I1 standalone file still needs
-morning port/review before main-tree integration. The whole report still needs
-final cross-review before 07:30 per the RUN_PLAN. Report faithfully: negatives
-and exploratory probes are recorded as such.
+**Status: DRAFT (reconciled through Codex C2 hopping tightening `c40c32b`).**
+Claude-lane results below are complete and verified through the C2 red-team
+caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
+shared ledger/discussion and targeted checks. The I1 standalone file still needs
+morning port/review before main-tree integration, and the C2 certified-sign
+existence Aristotle job is still running. The whole report still needs final
+cross-review before 07:30 per the RUN_PLAN. Report faithfully: negatives and
+exploratory probes are recorded as such.
 
 ## 1. Executive summary
 
@@ -17,7 +18,8 @@ and exploratory probes are recorded as such.
   square) makes the sign ELEMENTARY (`eps = coeff^{-1/2} H`, an explicit
   self-adjoint involution - no functional calculus), giving the GW relation
   `gamma5 Dov + Dov gamma5 = Dov gamma5 Dov` and idempotent Weyl projectors.
-  `TetraSymbolOverlapGW.lean`, all kernel-checked, clean axioms. This is the
+  `TetraSymbolOverlapGW.lean`, all kernel-checked, standard dependency
+  footprint. This is the
   whole point of Gate C1. **Adversarially validated**: an Aristotle red-team
   (feae0495) confirmed the release is FAITHFUL - the elementary sign genuinely
   equals the spectral `H(H^2)^{-1/2}`, "scalar square makes the sign elementary"
@@ -34,8 +36,8 @@ and exploratory probes are recorded as such.
   the complete free (no-gauge) chiral fermion release on the tetrahedral
   regulator, kernel-checked at both the per-momentum symbol level and the
   real-space operator level.
-- **Gate C2 OPENED and driven to a complete minimal arc** (draft-trust, kernel-
-  checked, `GateC2/`, FIVE bricks): (1) `overlapIndex_isInteger` - the finite
+- **Gate C2 OPENED and driven past the minimal arc** (draft-trust, kernel-
+  checked, `GateC2/`, seven theorem files): (1) `overlapIndex_isInteger` - the finite
   overlap index is an **integer** for any involutions (diff of eigenprojector
   ranks, no Hermiticity); (2) `tetraFreeOverlapIndex_eq_zero` - the **free
   benchmark**, index 0 for traceless chirality; (3) `overlapIndex_gamma5WQ_epsWQ_eq`
@@ -47,15 +49,19 @@ and exploratory probes are recorded as such.
   `signCertificate_HU_epsW` / `signCertificate_HU_unique` - the **C2a->C2b
   join**, the winding `eps` is a genuine certified sign of an explicit gapped
   mass-defect operator, and any certified sign of that operator equals `epsW`,
-  so index 1 is a real sign-of-operator index. The index ALGEBRA was already in
-  `GateC1.OverlapIndexToy` (not duplicated). Aristotle strategy job `c36ea1a8`
-  guided the arc. SUCCESSOR: a non-diagonal gauge `H_U` with genuine link
-  holonomy (hopping inside the negative-mass block), then the anomaly/index-
-  density bridge.
+  so index 1 is a real sign-of-operator index; (6) `overlapIndex_conj` /
+  `SignCertificate.conj` - gauge/basis conjugation cannot change the finite
+  index and transports certificates; (7) `signCertificate_HU2_epsW` plus
+  `HU2_isHermitian` / `signCertificate_HU2_unique` - a genuinely non-diagonal
+  real-hopping operator has unique certified sign `epsW`. The index ALGEBRA was
+  already in `GateC1.OverlapIndexToy` (not duplicated). Aristotle strategy job
+  `c36ea1a8` guided the arc, and red-team job `ee95ba08` validated the C2 claims
+  as faithful while flagging the remaining gaps. SUCCESSOR: certified-sign
+  existence for general gapped Hermitian `H` (job `66972f62` running), then a
+  genuine nonzero-holonomy gauge `H_U` and the anomaly/index-density bridge.
 - **Full `lake build` green** (8295 jobs) including the operator-level chain,
-  the operator Weyl projectors, and ALL FIVE Gate C2 bricks; latest run completed
-  successfully after the Codex C2 side-condition patch atop `8418bec` (the
-  C2a->C2b join).
+  the operator Weyl projectors, and the expanded Gate C2 layer; latest run
+  completed successfully after Codex's `c40c32b` hopping side-condition patch.
 - **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
   faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
   determinant/reverse-Cauchy/square-root mass superadditivity, I3.5
@@ -65,8 +71,8 @@ and exploratory probes are recorded as such.
   subadditivity, D2 finite first-law/Gibbs/fixed-modular-energy stationarity,
   D3.0 finite no-proper-shrink skeleton, and D6 classical checkerboard
   Bernoulli turn weights with fixed mean turn count.
-  (Codex independently rebuilt/audited the C2 integrality module - axioms clean -
-  and its recommended sequencing, operator-level instantiation then gauge toy,
+  (Codex independently rebuilt/audited the C2 integrality module - dependency
+  footprint clean - and its recommended sequencing, operator-level instantiation then gauge toy,
   matches the plan above.) The Aristotle strategy job `c36ea1a8` returned: the
   index is `-(1/2) sig(eps_U)`, so a nonzero index needs a genuine signature
   change (Wilson mass across zero via flux), not a flat/tree connection; it
@@ -86,12 +92,12 @@ and exploratory probes are recorded as such.
   checkerboard-to-Dirac convergence is kernel-checked, and Codex then promoted
   the original `matrixL1Norm` boundary to the proved theorem
   `checkerboard_dirac_limit_statement`.
-- Aristotle used as a genuine partner: 3 Claude strategy/red-team jobs (L0
-  correction; C1 gap red-team; C1 GW-release validation) that materially
-  improved and hardened the results.
+- Aristotle used as a genuine partner: L0/C1/C2 strategy and red-team jobs
+  materially improved and hardened the results; one C2 existence proof job remains
+  running.
 - ~30 verified commits (Claude), all prefixed `overnight-20260702:`, green tree.
 
-## 2. Theorems landed (Claude, kernel-checked, axioms = propext/Classical.choice/Quot.sound)
+## 2. Theorems landed (Claude, kernel-checked, dependency footprint = propext/Classical.choice/Quot.sound)
 
 | Theorem | File | Meaning | Commit |
 |---|---|---|---|
@@ -118,7 +124,7 @@ batch.
 
 ## 2b. Theorems landed (Codex, targeted kernel checks)
 
-All Codex rows are draft/staging. Axiom audits reported
+All Codex rows are draft/staging. Dependency audits reported
 `[propext, Classical.choice, Quot.sound]` unless noted.
 
 | Cluster | File | Main names | Verification |
@@ -136,20 +142,27 @@ All Codex rows are draft/staging. Axiom audits reported
 
 ## 3. Aristotle registry (final)
 
-Submitted tonight (both COMPLETE + harvested, summaries in gitignored
-`AgentTasks/aristotle-output/<id>/REPORT_SUMMARY.md`):
+Submitted/harvested tonight (summaries in gitignored
+`AgentTasks/aristotle-output/<id>/REPORT_SUMMARY.md` when downloaded):
 - `495df59e` overnight-l0-nogo-audit - corrected the L0.1 argument.
 - `ffed1801` overnight-c1-gap-redteam - validated the gap milestone, gave the
   self-adjointness recipe (rungs 5a/5b, both now discharged).
 - `6434c938` (Codex) gate-i1-psd-eigenvalue-char - I1.2, merged.
 - `feae0495` overnight-c1-gw-redteam - adversarially VALIDATED the symbol-level
   chiral release as faithful (Claude, 3rd strategy job).
+- `c36ea1a8` gate-c2-gauge-index-toy-strategy - returned the signature-defect
+  C2a / certified-sign C2b split used by the C2 arc.
+- `ee95ba08` gate-c2-arc-redteam - adversarially VALIDATED the C2 arc as faithful
+  and produced docstring caveats folded in commit `f79073d`.
+- `66972f62` gate-c2-certified-sign-existence - submitted and still running at
+  this reconciliation pass; target is abstract certified-sign existence for any
+  gapped Hermitian `H`.
 Pre-run checkerboard backlog dry-run-inspected by Codex/T0; row-sum,
 L-infinity, L2/unitarity, and accumulated-Trotter returns are integrated in
 `NullEdgeStandalone`. The older gate-c1-* backlog was found already integrated
-(harvest-first win: zero duplicate submissions). Total new Aristotle proof jobs
-submitted: 1 (Codex I1.2) + 2 Claude strategy jobs - deliberately few and sharp
-per the postmortem.
+(harvest-first win: zero duplicate submissions). The run stayed deliberately
+sharp: proofs were local when cheap, and Aristotle was used for hard proof,
+strategy, and red-team bottlenecks.
 
 ## 4. Integration debt
 
@@ -159,6 +172,9 @@ work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
 is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
 are targeted-build green and committed in `6e1a7e5`; semantic cross-review plus a
 full build remain morning integration tasks.
+Gate C2 has one running proof job (`66972f62`) for abstract certified-sign
+existence; integration is pending its return. The current C2 Lean arc is otherwise
+committed, caveated, red-team validated, and full-build green.
 Checkerboard T1b: accumulated Trotter, the matching-time `matrixL1Norm`
 boundary theorem, and the fixed-target-time variant are now integrated into
 `NullEdgeStandalone`; remaining checkerboard work is the uniform
@@ -180,6 +196,14 @@ momentum-window version and position-space sampling/interpolation bridge.
 - Gate C2 integrality brick locally verified by Codex after Claude's commit
   dceb6f1; strategy recommendation is operator-level instantiation, bounded
   free-index-zero calibration, then gauge toy.
+- C2 diagonal join, gauge-invariance, and non-diagonal hopping witness
+  cross-reviews ACCEPTED (Codex); the diagonal and hopping witnesses were tightened
+  so uniqueness claims are represented by Lean theorem boundaries.
+- C2 red-team `ee95ba08` found no statement/intention mismatches; caveats folded
+  for uniqueness-not-existence, Q=1-only operator certification, no holonomy, and
+  no anomaly/index-density theorem.
+- I1 semantic cross-reviews `i1_2` and `i1_9` ACCEPTED (Claude); D1
+  subadditivity cross-review ACCEPTED (Claude).
 - `review:gate-d-firstlaw` ACCEPTED (Codex); D1 handed to Codex.
 - Harvest division agreed (Claude gate-c1-*, Codex checkerboard).
 - No disagreements parked for the user.
@@ -225,7 +249,7 @@ momentum-window version and position-space sampling/interpolation bridge.
   `diracEvolutionSymbol_tendsto_refinement_time`, and
   `checkerboard_dirac_limit_statement_fixed_time` =
   `[propext, Classical.choice, Quot.sound]`.
-- Axiom audits: all trusted-track theorems `[propext, Classical.choice,
+- Dependency audits: all trusted-track theorems `[propext, Classical.choice,
   Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in any committed
   Lean this run.
 - All results are DRAFT-trust (draft modules), per the no-trusted-promotion
