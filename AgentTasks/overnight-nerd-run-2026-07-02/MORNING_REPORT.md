@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D extension updated 02:12).**
+**Status: DRAFT (Claude side final ~03:55; Codex I1/D extension updated 02:29).**
 Claude-lane results below are complete and verified. Codex's later I1/D
 additions are confirmed from the shared ledger/discussion and targeted checks,
 but remain uncommitted staging/draft work pending morning port/review. The whole
@@ -21,18 +21,26 @@ faithfully: negatives and exploratory probes are recorded as such.
   (feae0495) confirmed the release is FAITHFUL - the elementary sign genuinely
   equals the spectral `H(H^2)^{-1/2}`, "scalar square makes the sign elementary"
   is a real shortcut not sleight of hand - with honesty caveats folded into the
-  docstring. Operator-level step 1 also banked: `TetraFourierInverse.lean`
-  (inverse Fourier + round-trip), the infra the operator-level `sign(Hfree)`
-  packaging needs.
-- **Full `lake build` green** (8295 jobs) for Claude's integrated batch; Codex's
-  later staging additions have targeted checks but not a post-addition full
-  build.
+  docstring. And now **lifted to the FULL OPERATOR LEVEL**: the two-sided Fourier
+  isomorphism (`TetraFourierInverse.lean`), `sign(Hfree)` proved a self-adjoint
+  involution (`signHfree_involutive` + `signHfree_selfAdjoint`), and the
+  real-space overlap Dirac operator `DovOp = 1 + Gamma5.signHfree` satisfying the
+  **operator-level Ginsparg-Wilson relation** (`TetraOperatorOverlapGW.lean`,
+  `operator_ginsparg_wilson`: `Gamma5 Dov + Dov Gamma5 = Dov Gamma5 Dov` as
+  real-space operators, via the Fourier-transport pattern). This is the complete
+  free (no-gauge) chiral fermion release on the tetrahedral regulator, kernel-
+  checked at both the per-momentum symbol level and the real-space operator level.
+- **Full `lake build` green** (8295 jobs) including the operator-level chain
+  (`TetraFourierInverse` + `TetraOperatorOverlapGW`); confirmed post-integration
+  at 2026-07-03. Codex's later staging additions have targeted checks; any
+  additions after this build should be re-confirmed with a full build.
 - **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
-  faithfulness, A2 determinant/cross-term spine, and I3.5 determinant-line
-  clock algebra.
+  faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
+  determinant/cross-term spine, and I3.5 determinant-line clock algebra.
 - **Gate D finite stack** kernel-checked through D1 product-marginal
-  subadditivity, D2 finite first-law/Gibbs, D3.0 finite no-proper-shrink
-  skeleton, and D6 classical checkerboard Bernoulli turn weights.
+  subadditivity, D2 finite first-law/Gibbs/fixed-modular-energy stationarity,
+  D3.0 finite no-proper-shrink skeleton, and D6 classical checkerboard
+  Bernoulli turn weights.
 - **Gate L0.1** no-go argument corrected via an Aristotle red-team (Palm
   marginalization + proximality + first-moment dichotomy) - the original sketch
   was refuted and repaired.
@@ -55,7 +63,8 @@ faithfully: negatives and exploratory probes are recorded as such.
 | `H_symbol_hermitian` | `.../TetraSymbolHermitian.lean` | momentum-symbol Hermiticity from gamma5-Herm + `{gamma5,Q}=0` | 52de79d |
 | `Hfree_selfAdjoint`, `fourierUnitary_inner_siteN` | `.../TetraFreeOperatorSelfAdjoint.lean` | real-space self-adjointness + sesquilinear Parseval | 93929ab |
 | `H_symbol_sq`, `signSymbol_sq/_star`, `symbol_ginsparg_wilson`, Weyl projectors | `.../TetraSymbolOverlapGW.lean` | **symbol-level chiral release**: Clifford scalar square -> elementary sign involution -> GW relation -> Weyl projectors | 191d3f8 / 6dd97ae |
-| `fourierUnitaryInv_fourierUnitary` | `.../TetraFourierInverse.lean` | inverse Fourier + round-trip (operator-level GW infra) | 4db38f8 |
+| `fourierUnitaryInv_fourierUnitary`, `fourierUnitary_fourierUnitaryInv`, `fourierChar_row_orthogonality` | `.../TetraFourierInverse.lean` | two-sided finite Fourier isomorphism (both round-trips) - the operator-level GW infra | 4db38f8 / af0e6ef |
+| `signHfree_involutive`, `signHfree_selfAdjoint`, `fourierUnitary_DovOp`, `operator_ginsparg_wilson` | `.../TetraOperatorOverlapGW.lean` | **operator-level chiral release**: `sign(Hfree)` a self-adjoint involution -> real-space overlap `DovOp` -> operator GW `Gamma5 Dov + Dov Gamma5 = Dov Gamma5 Dov` | c9902ac / 5b31126 |
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
@@ -70,10 +79,12 @@ All Codex rows are draft/staging. Axiom audits reported
 | Cluster | File | Main names | Verification |
 |---|---|---|---|
 | I1.1-I1.6 kinematic core | `AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean` | `i1_1_soldering_det`, `i1_2_minkHerm_posSemidef_iff_futureCone`, `i1_2_minkHerm_eigenvalues_nonneg_iff_futureCone`, `i1_3_rank_one_rank_dichotomy`, `i1_4_rank_one_factorization`, `i1_5_cauchy_binet_mass_identity`, `i1_6_kinematic_cross_check` | `lake env lean ...\Core.lean` |
-| I1.8-I1.9 + I3.5 | same | `det_normalizedMinkHerm`, `trace_normalizedMinkHerm_sq`, `linearEntropy_normalizedMinkHerm`, `i1_9_minkHerm_mul_bar_eq_minkowskiSq`, `i1_9_bar_mul_minkHerm_eq_minkowskiSq`, `i3_5_clock_projector_invariant`, `i3_5_clock_det` | same |
+| I1.8-I1.9 + I3.5 | same | `normalizedMinkHerm_posSemidef_of_futureCone`, `normalizedMinkHerm_faithful_of_futureTimelike`, `det_normalizedMinkHerm`, `trace_normalizedMinkHerm_sq`, `linearEntropy_normalizedMinkHerm`, `i1_9_minkHerm_mul_bar_eq_minkowskiSq`, `i1_9_bar_mul_minkHerm_eq_minkowskiSq`, `i3_5_clock_projector_invariant`, `i3_5_clock_det` | same |
 | I2 finite faithfulness shadow | same | `faithful2_det_ne_zero`, `i2_rankOne_not_faithful`, `i2_null_not_faithful`, `i2_minkHerm_faithful_of_futureTimelike`, `i2_minkHerm_faithful_iff_futureTimelike` | same |
+| A1 finite boost algebra | same | `a1_spatialPauli_sq`, `a1_boost_minkHerm_form`, `a1_boost_minkowskiSq`, `a1_boost_eigenvalue_ratio`, `a1_boost_faithful` | same |
 | A2 determinant spine | same | `spatialDot_sq_le`, `minkowskiSq_add`, `a2_det_minkHerm_add`, `minkowskiInner_nonneg_of_futureCone`, `a2_minkowskiSq_add_ge_of_futureCone` | same |
 | D1 finite product-marginal subadditivity | `PhysicsSM/Draft/NullEdge/GateD/FiniteBernoulliMaxEntropy.lean` | `crossEntropy_productOfMarginals`, `d1_joint_entropy_subadditivity` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy` |
+| D2 fixed modular-energy stationarity | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | `entropy_gap_eq_relEntropy_of_fixed_crossEntropy`, `d2_shannon_le_of_fixed_crossEntropy` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw` |
 | D3.0 finite no-proper-shrink skeleton | `PhysicsSM/Draft/NullEdge/GateD/FiniteHalfSidedInclusion.lean` | `permImage_eq_of_subset`, `permImage_pow_eq_of_halfSided`, `subspaceImage_eq_of_le`, `subspaceImage_pow_eq_of_halfSided` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion` |
 | D6 classical checkerboard turns | `PhysicsSM/Draft/NullEdge/GateD/FiniteCheckerboardTurns.lean` | `bernoulliTurnWeight_nonneg`, `bernoulliTurnWeight_sum`, `d6_classical_growth_is_bernoulli`, `classicalCheckerboardGrowthWeight_sum` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns` |
 
@@ -117,9 +128,10 @@ deferred, not on the critical path).
 ## 6. Build + hygiene
 
 - Full `lake build`: 8295 jobs, "Build completed successfully" after Claude's
-  integrated batch. Not rerun after Codex's later uncommitted I2/A2/D6 staging
-  additions and I2 iff tightening.
+  integrated batch. Not rerun after Codex's later uncommitted I2/A1/A2/D6/D2
+  stationarity staging additions and I2 iff tightening.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
+  PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns`; diff/trailing
