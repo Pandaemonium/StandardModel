@@ -197,3 +197,19 @@ NO functional calculus in the final formula. TWO Aristotle jobs are now in fligh
 (flux f3296d38 = concrete construction; inertia 25f0b738 = general spectral
 bridge); harvest whichever returns. Neither is required for the abstract chain,
 which is complete and kernel-checked.
+
+## 10. The eigenvalue-count capstone is STAGED (one-line discharge on inertia harvest)
+
+New kernel-clean file `PhysicsSM/Draft/NullEdge/GateC2/GaugeIndexInertiaForm.lean`
+(commit 9f921dc) proves:
+- `gaugeOverlap_index_trace_form` (UNCONDITIONAL): gauge index =
+  `(1/2)(sig gamma5 - trace(epsCFC H))`.
+- `gaugeOverlap_index_inertia_form` (conditional on
+  `hinertia : (epsCFC H).trace = nPos - nNeg`): index =
+  `(1/2)(sig gamma5 - (nPos - nNeg))`.
+When the Aristotle inertia lemma (25f0b738, `epsCFC_trace_eq_inertia`) lands and
+is ported, `hinertia` is dischargeable directly, upgrading
+`gaugeOverlap_index_inertia_form` to an UNCONDITIONAL eigenvalue-count index.
+That is the final capstone of the gauge-index-from-signature chain: the gauge
+chiral index computed purely from the eigenvalue signs of the gauge Wilson
+operator `H`. Axioms `[propext, Classical.choice, Quot.sound]`.
