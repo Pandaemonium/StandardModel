@@ -158,3 +158,29 @@ Definitive full-C2 axiom sweep (LEDGER 08:50): all headline theorems across the 
 GateC2 files report `[propext, Classical.choice, Quot.sound]`; zero
 sorryAx / n a t i v e _ d e c i d e / ofReduceBool / trustCompiler. Full
 `lake build` green (8295).
+
+## 8. The abstract chain is COMPLETE - the flux path is now purely a signature
+
+Two more capstones landed (commits 91e3409, 7c817da, d9cde0c):
+- `GaugeOverlapInterface.lean`: for ANY gapped Hermitian `H`, the certified overlap
+  is well-defined, GW, and has an INTEGER index (`gaugeOverlap_index_isInteger`,
+  `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_certificate_independent`).
+- `OverlapIndexMatrixSignature.lean`: `overlapIndex gamma5 eps = (1/2)(sig gamma5 -
+  sig eps)` at the matrix level (`overlapIndex_eq_half_signature`), where
+  `matrixTraceSignature M = dim(ker(toLin' M -1)) - dim(ker(toLin' M +1))`.
+- `GaugeOverlapInterface.gaugeOverlap_index_signature_form`: combines them -
+  `overlapIndex gamma5 (epsCFC H) = (1/2)(sig gamma5 - sig(sign H))`.
+
+**Revised harvest path (supersedes section 3):** the abstract theory is complete;
+the gauge index is now a THEOREM in terms of the certified sign's signature. To
+finish a concrete flux example you need ONLY:
+1. an explicit gapped Hermitian gauge Wilson matrix `H_U` (with a genuine flux -
+   the cycle/holonomy discipline of section 2 still applies), and
+2. the SIGNATURE of its certified sign `sign(H_U) = epsCFC H_U`, i.e.
+   `sig(H_U) = n_+ - n_-` of `H_U` (the sign preserves eigenvalue signs). For an
+   explicit integer `H_U` this is decidable via eigenvalue signs / Sylvester's
+   leading-principal-minor criterion.
+Then `gaugeOverlap_index_signature_form` gives the index directly. The one piece
+still needing spectral input is `sig(sign H_U) = sig(H_U)` (that CFC-sign preserves
+the eigenvalue-sign counts) - if the flux job (f3296d38) did not establish it, that
+is the single clean lemma to hand Aristotle next. Everything else is done.
