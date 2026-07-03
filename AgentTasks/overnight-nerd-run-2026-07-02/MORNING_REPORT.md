@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2 extension updated 03:33).**
+**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2/checkerboard extension updated 03:55).**
 Claude-lane results below are complete and verified. Codex's later I1/D
 additions are confirmed from the shared ledger/discussion and targeted checks,
 and are checkpointed in commit `6e1a7e5`, but the I1 standalone file still needs
