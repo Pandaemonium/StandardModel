@@ -1,11 +1,12 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review extension updated 03:14).**
+**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2 extension updated 03:27).**
 Claude-lane results below are complete and verified. Codex's later I1/D
 additions are confirmed from the shared ledger/discussion and targeted checks,
-but remain uncommitted staging/draft work pending morning port/review. The whole
-report still needs final cross-review before 07:30 per the RUN_PLAN. Report
-faithfully: negatives and exploratory probes are recorded as such.
+and are checkpointed in commit `6e1a7e5`, but the I1 standalone file still needs
+morning port/review before main-tree integration. The whole report still needs
+final cross-review before 07:30 per the RUN_PLAN. Report faithfully: negatives
+and exploratory probes are recorded as such.
 
 ## 1. Executive summary
 
@@ -46,6 +47,12 @@ faithfully: negatives and exploratory probes are recorded as such.
   subadditivity, D2 finite first-law/Gibbs/fixed-modular-energy stationarity,
   D3.0 finite no-proper-shrink skeleton, and D6 classical checkerboard
   Bernoulli turn weights with fixed mean turn count.
+- **Gate C2 opened** with finite overlap-index integrality
+  (`OverlapIndexIntegrality.lean`, commit dceb6f1): for abstract involutions the
+  finite overlap index is an integer, a difference of spectral-projector ranks.
+  Codex locally rebuilt/audited the module and recommended an operator-level
+  instantiation, bounded free-index-zero calibration, and a parallel gauge-toy
+  strategy job.
 - **Gate L0.1** no-go argument corrected via an Aristotle red-team (Palm
   marginalization + proximality + first-moment dichotomy) - the original sketch
   was refuted and repaired.
@@ -112,12 +119,12 @@ duplicate submissions). Total new Aristotle proof jobs submitted: 1 (Codex I1.2)
 
 ## 4. Integration debt
 
-None outstanding on the Claude side: every theorem is committed, verified, and
-the full tree built after that batch. Codex's I1/P2 work lives in the standalone
-staging file (kernel-checked) and is not yet ported into the main `PhysicsSM`
-tree. Codex's new Gate D draft files are targeted-build green but uncommitted.
-That port/commit + semantic cross-review is the main open integration item for
-the morning.
+None outstanding on the Claude side through the C1 free release: every theorem
+is committed, verified, and the full tree built after that batch. Codex's I1/P2
+work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
+is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
+are targeted-build green and committed in `6e1a7e5`; semantic cross-review plus a
+full build remain morning integration tasks.
 Checkerboard T1b harvest (8 IDLE projects) remains un-integrated (dry-run clean;
 deferred, not on the critical path).
 
@@ -134,6 +141,9 @@ deferred, not on the critical path).
 - Operator Weyl projectors ACCEPTED (Codex quick review); add/sub/idempotent and
   `+1` eigenspace laws judged semantically aligned with the free/no-gauge
   operator-level release.
+- Gate C2 integrality brick locally verified by Codex after Claude's commit
+  dceb6f1; strategy recommendation is operator-level instantiation, bounded
+  free-index-zero calibration, then gauge toy.
 - `review:gate-d-firstlaw` ACCEPTED (Codex); D1 handed to Codex.
 - Harvest division agreed (Claude gate-c1-*, Codex checkerboard).
 - No disagreements parked for the user.
@@ -141,14 +151,19 @@ deferred, not on the critical path).
 ## 6. Build + hygiene
 
 - Full `lake build`: 8295 jobs, "Build completed successfully" after Claude's
-  integrated batch. Not rerun after Codex's later uncommitted I2/A1/A2/U2/D6/D2
-  stationarity staging additions and I2 iff tightening.
+  integrated C1 batch. Not rerun after Codex checkpoint `6e1a7e5` or Claude's
+  later C2 integrality brick `dceb6f1`.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns`; diff/trailing
-  whitespace scans clean. `pre-commit run --files` still needed before commit.
+  whitespace scans clean. `pre-commit run --files ...` passed before Codex
+  checkpoint `6e1a7e5`.
+- Codex local C2 verification: `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexIntegrality`; placeholder scan
+  clean; dependency audit for `overlapIndex_isInteger` and
+  `specProj_trace_eq_finrank` = `[propext, Classical.choice, Quot.sound]`.
 - Axiom audits: all trusted-track theorems `[propext, Classical.choice,
   Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in any committed
   Lean this run.
@@ -172,8 +187,8 @@ deferred, not on the critical path).
 ## 8. Recommended next three actions
 
 1. Port/commit Codex's I1/P2 and Gate D staging cluster into the main
-   `PhysicsSM` tree, then run pre-commit, targeted builds, full `lake build`,
-   and semantic cross-review.
+   `PhysicsSM` tree, then run targeted builds, full `lake build`, and semantic
+   cross-review.
 2. Scope Gate C2 with an explicit strategy/red-team packet before gauge
    construction: gauge-link covariance and admissible-sign interface first,
    finite index density/anomaly bridge after that facade is pinned.
