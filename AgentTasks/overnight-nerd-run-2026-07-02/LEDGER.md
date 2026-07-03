@@ -79,6 +79,7 @@ Append one line per cycle: `HH:MM agent task next-step`.
 00:49 codex accepted D1 sublane under T3: finite KL-to-product/subadditivity theorem reusing `FiniteFirstLaw.relEntropy_nonneg`; Claude stays on C1/T6
 00:51 codex T2 Aristotle 6434c938 COMPLETE and merged: added `minkHerm_isHermitian`, `i1_2_minkHerm_posSemidef_iff_futureCone`, `i1_2_minkHerm_eigenvalues_nonneg_iff_futureCone`; local Lean check, placeholder scan, and axiom audit green; next resume D1 sublane
 00:59 codex T3 BANKED D1: new `FiniteBernoulliMaxEntropy.lean` proves product-marginal cross-entropy splitting and `d1_joint_entropy_subadditivity`; rebuilt GateD FirstLaw + D1, placeholder scan and axiom audit green; next review Claude C1 self-adjointness
+01:01 codex review:c1-selfadjoint semantic sign-off posted; docstring corrected to separate self-adjointness hypotheses from gap theorem unitary hypothesis; builds/axiom audits green; next choose fresh open lane
 ```
 
 ## Decision log
@@ -88,6 +89,7 @@ Append: time, decision, who agreed, link to discussion thread.
 ```text
 23:58 harvest division agreed: Codex owns fresh checkerboard dry-run rows feeding T1b; Claude owns gate-c1-* harvest/T1; see `DISCUSSION.md` `triage:harvest-division`
 01:10 C1 FLAGSHIP milestone tetraFreeOperator_gap_equalN REVIEWED + ACCEPTED (Codex sign-off, review:c1-gap-equalN). Wording adopted: "coercive inverse-propagator gap" not "spectral gap"; gamma5 unitarity-only hypothesis noted. Next C1 rung = Hfree self-adjointness (explicit gamma5-Hermitian + anticommutation hyps), parked behind red-team ffed1801 Q5
+03:12 C1 FREE-OPERATOR HALF COMPLETE (Claude): gap + symbol-Herm + self-adjointness + no-zero-modes all kernel-checked & reviewed. GREEN TREE CONFIRMED: full `lake build` = 8295 jobs, Build completed successfully with all 4 new C1/GateD files integrated. Next rung sign(Hfree)/GW scoped in nerd-gate-c1-gw-release-setup-2026-07-03.md (multi-hour, deferred not half-started). Commits 6acb549..2edc23d
 ```
 
 ## Parked for user
@@ -109,4 +111,5 @@ commands run, review thread id, commit hash.
 01:28 claude | NEW draft file PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean (Gate D2: finite_first_law identity + relEntropy_nonneg Gibbs) | verified: lake build ok 13s + #print axioms = propext/Classical.choice/Quot.sound for both | review thread review:gate-d-firstlaw (pending) | commit: 8c86467
 00:51 codex | MERGED Aristotle project 6434c938 I1.2 proof block into AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean (manual merge because output archive nested standalone path and live file had newer I1.8/I1.9 additions) | verified: `lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean` ok; placeholder scan no hits; #print axioms for three new theorems = propext/Classical.choice/Quot.sound | review thread idea:t2-i1-psd-merged | commit: uncommitted
 00:59 codex | NEW draft file PhysicsSM/Draft/NullEdge/GateD/FiniteBernoulliMaxEntropy.lean plus docstring correction in PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean | verified: `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`; `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`; placeholder scan no hits; #print axioms for `crossEntropy_productOfMarginals` and `d1_joint_entropy_subadditivity` = propext/Classical.choice/Quot.sound | review thread idea:gate-d-d1-banked | commit: uncommitted
+01:01 codex | REVIEWED Claude C1 self-adjointness and adjusted TetraFreeOperatorSelfAdjoint module docstring wording only | verified: `lake build PhysicsSM.Draft.NullEdge.GateC1.TetraFreeOperatorSelfAdjoint`; `lake build PhysicsSM.Draft.NullEdge.GateC1.TetraFreeOperatorGapEqualN`; placeholder scan no hits; #print axioms for `fourierUnitary_inner_siteN`, `Hfree_selfAdjoint`, `Hfree_ker_trivial` = propext/Classical.choice/Quot.sound | review thread reply:review:c1-selfadjoint | commit: uncommitted
 ```
