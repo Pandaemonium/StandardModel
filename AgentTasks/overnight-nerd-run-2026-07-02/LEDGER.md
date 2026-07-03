@@ -456,10 +456,19 @@ chatter only). Flux job `f3296d38` still RUNNING at the previous poll.
 Verified `GaugeOverlapInterface.lean` and `OverlapIndexMatrixSignature.lean`:
 target builds passed; placeholder scans clean; dependency audits for
 `gaugeOverlap_index_isInteger`, `gaugeOverlap_ginspargWilson`,
-`gaugeOverlap_index_certificate_independent`, `matrix_trace_eq_signature`, and
-`overlapIndex_eq_half_signature` all report
+`gaugeOverlap_index_certificate_independent`, `gaugeOverlap_index_signature_form`,
+`matrix_trace_eq_signature`, and `overlapIndex_eq_half_signature` all report
 `[propext, Classical.choice, Quot.sound]`. GateC2 now has 16 committed theorem
 files. Flux job `f3296d38` remained RUNNING at the latest poll.
+
+## Verification 06:35 codex :: current-tree full build
+`aristotle list --limit 20` still shows flux job `f3296d38` RUNNING. Verified
+`PhysicsSM.Draft.NullEdge.GateC2.GaugeOverlapInterface` after capstone commit
+`d9cde0c`; placeholder scan for that file is clean; dependency audits for the
+four gauge-interface theorem names report exactly
+`[propext, Classical.choice, Quot.sound]`. Full root `lake build` then passed:
+8295 jobs, "Build completed successfully" with existing info/linter/deprecation
+chatter only. Morning report updated to make this the latest build anchor.
 
 ## Heartbeat 09:35 claude :: PHASE = harvest-monitoring
 Abstract C2 theory SATURATED and verified: 15 GateC2 files, definitive axiom

@@ -1,7 +1,8 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
 **Status: DRAFT (C2 report/source/roadmap and handoff docs reconciled; live
-Aristotle job `f3296d38` RUNNING as of 2026-07-03 06:24 PDT).**
+Aristotle job `f3296d38` RUNNING as of 2026-07-03 06:35 PDT; current-tree
+full `lake build` passed after capstone commit `d9cde0c`).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 standalone file still needs
@@ -55,14 +56,14 @@ exploratory probes are recorded as such.
 | `certifiedSign_unique`, `signCertificate_mul_sq`, `SignCertificate.dov_ginspargWilson` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignCertificate.lean` | **C2b uniqueness backbone**: for gapped Hermitian H, an involution with `[eps,H]=0` and `eps.H` PSD is UNIQUE (= sign(H)), via PSD-sqrt uniqueness (NO functional calculus); a certified sign yields a GW overlap | 9f97af2 |
 | `certifiedSign_exists`, `certifiedSign_eq_epsCFC` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignExistence.lean` | **C2b existence closure**: for every gapped Hermitian `H`, `epsCFC = CFC.sqrt(H^2) * H^-1` is a `SignCertificate`; uniqueness then makes every certificate equal to this explicit sign | 3ffc63d |
 | `signCertificate_isHermitian`, `epsCFC_isSelfAdjoint_involution` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignHermitian.lean` | **C2b self-consistency closure**: any certified sign for an invertible Hermitian `H` is automatically Hermitian/self-adjoint; the explicit certified sign `epsCFC` is therefore a self-adjoint involution | 7865b48 + 3004173 |
-| `gaugeOverlap_index_isInteger`, `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_certificate_independent` | `PhysicsSM/Draft/NullEdge/GateC2/GaugeOverlapInterface.lean` | **C2 abstract gauge-overlap interface**: any gapped Hermitian `H` plugs into the certified-sign machinery to give a well-defined integer index, GW overlap, and certificate-choice-independent index value | 91e3409 |
+| `gaugeOverlap_index_isInteger`, `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_certificate_independent`, `gaugeOverlap_index_signature_form` | `PhysicsSM/Draft/NullEdge/GateC2/GaugeOverlapInterface.lean` | **C2 abstract gauge-overlap interface**: any gapped Hermitian `H` plugs into the certified-sign machinery to give a well-defined integer index, GW overlap, certificate-choice-independent index value, and computable signature form | 91e3409 + d9cde0c |
 | `signCertificate_HU_epsW`, `HU_isHermitian`, `signCertificate_HU_unique` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapWindingSignJoin.lean` | **C2a->C2b join**: the winding `epsW` is a genuine certified sign of an explicit gapped mass-defect operator `HU=diag(-2,-3,-1,5)`, and every certified sign of `HU` equals `epsW`; index 1 is a real sign-of-operator (domain-wall) index | 8418bec + Codex review patch |
 | `overlapIndex_conj`, `SignCertificate.conj` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexGaugeInvariance.lean` | **C2 gauge invariance**: the overlap index is invariant under unitary conjugation and the sign certificate transports covariantly - the guardrail that a nonzero index cannot come from a gauge/basis conjugation, only a signature change | 68f2bff |
 | `signCertificate_HU2_epsW`, `HU2_isHermitian`, `signCertificate_HU2_unique`, `HU2_offDiagonal` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapHoppingSignWitness.lean` | **C2 non-diagonal certified sign**: a genuinely non-diagonal hopping operator `HU2=epsW.(C^H C)` has certified sign `epsW` (PSD for free from `C^H C`), is gapped/Hermitian, and has unique certified sign `epsW` - the certificate is not special to diagonal operators. Caveat: real hopping (flat connection, no holonomy) | fa291f9 + Codex review patch |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
-(clean); the full-tree `lake build` (8295 jobs) passed after the C2 existence
-harvest and Codex reconciliation pass.
+(clean); the latest full-tree `lake build` (8295 jobs) passed after the C2
+gauge-interface signature-form capstone `d9cde0c`.
 
 ## 2b. Theorems landed (Codex, targeted kernel checks)
 
@@ -184,9 +185,9 @@ momentum-window version and position-space sampling/interpolation bridge.
 
 ## 6. Build + hygiene
 
-- Full `lake build`: 8295 jobs, "Build completed successfully" after the latest
-  C2 code commit `9e9d3fe` and docs reconciliation `60219c9` (root build;
-  existing info/linter/deprecation chatter only).
+- Latest full `lake build`: 8295 jobs, "Build completed successfully" after the
+  C2 gauge-interface signature-form capstone `d9cde0c` (root build; existing
+  info/linter/deprecation chatter only).
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
@@ -221,7 +222,7 @@ momentum-window version and position-space sampling/interpolation bridge.
   PhysicsSM.Draft.NullEdge.GateC2.GaugeOverlapInterface`; placeholder scans
   clean; dependency audit for `matrix_trace_eq_signature`,
   `overlapIndex_eq_half_signature`, `gaugeOverlap_index_isInteger`,
-  `gaugeOverlap_ginspargWilson`, and
+  `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_signature_form`, and
   `gaugeOverlap_index_certificate_independent` =
   `[propext, Classical.choice, Quot.sound]`.
 - Codex C2 flagship operator-index cross-review: `lake build
