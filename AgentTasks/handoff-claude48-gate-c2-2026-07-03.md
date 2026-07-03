@@ -184,3 +184,16 @@ Then `gaugeOverlap_index_signature_form` gives the index directly. The one piece
 still needing spectral input is `sig(sign H_U) = sig(H_U)` (that CFC-sign preserves
 the eigenvalue-sign counts) - if the flux job (f3296d38) did not establish it, that
 is the single clean lemma to hand Aristotle next. Everything else is done.
+
+## 9. The spectral-bridge lemma is now SUBMITTED (Aristotle 25f0b738)
+
+The "single clean lemma to hand Aristotle" from section 8 has been submitted:
+`AgentTasks/aristotle-standalone/gate-c2-sign-trace-inertia-20260703/` targets
+`epsCFC_trace_eq_inertia` (`Tr(sign H) = #positive eig - #negative eig` for gapped
+Hermitian H, via the spectral theorem). Harvest job 25f0b738 the same way as the
+flux job. If it lands, port `epsCFC_trace_eq_inertia`, then the gauge index is
+`(1/2)(sig gamma5 - inertia(H))` - fully computable from `H`'s eigenvalue signs,
+NO functional calculus in the final formula. TWO Aristotle jobs are now in flight
+(flux f3296d38 = concrete construction; inertia 25f0b738 = general spectral
+bridge); harvest whichever returns. Neither is required for the abstract chain,
+which is complete and kernel-checked.
