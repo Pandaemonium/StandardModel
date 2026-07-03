@@ -1,8 +1,8 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
 **Status: DRAFT (C2 report/source/roadmap and handoff docs reconciled; live
-Aristotle job `f3296d38` RUNNING as of 2026-07-03 06:35 PDT; current-tree
-full `lake build` passed after capstone commit `d9cde0c`).**
+Aristotle jobs `f3296d38` and `25f0b738` RUNNING as of 2026-07-03 06:38 PDT;
+current-tree full `lake build` passed after capstone commit `d9cde0c`).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 standalone file still needs
@@ -22,7 +22,8 @@ exploratory probes are recorded as such.
   self-adjointness, gauge covariance, non-diagonal hopping, the free local-density
   benchmark, and the exact free operator-index-zero/sum-rule bridge; a concrete
   nonzero-flux operator remains next, with Aristotle flux-index frontier job
-  `f3296d38` currently running.
+  `f3296d38` currently running; focused inertia bridge job `25f0b738` is also
+  running and has no harvested Lean result yet.
 - Codex's I1/P2 standalone stack and Gate D draft stack are kernel-checked and
   semantically cross-reviewed, but the I1/P2 stack still needs main-tree porting.
 - Checkerboard T1b landed accumulated/fixed-time pointwise Dirac-limit theorems
@@ -126,6 +127,10 @@ Submitted/harvested tonight (summaries in gitignored
 - `f3296d38` gate-c2-flux-index - RUNNING at latest check; ambitious frontier
   construction/proof attempt for the first genuinely fluxed finite-lattice C2
   index. No Lean result has been harvested or integrated yet.
+- `25f0b738` gate-c2-sign-trace-inertia - RUNNING at latest check; focused
+  spectral bridge proving `Tr(sign H)` equals the inertia of a gapped Hermitian
+  `H`. Submitted/registered in commit `40427b6`; no Lean result has been
+  harvested or integrated yet.
 Pre-run checkerboard backlog dry-run-inspected by Codex/T0; row-sum,
 L-infinity, L2/unitarity, and accumulated-Trotter returns are integrated in
 `NullEdgeStandalone`. The older gate-c1-* backlog was found already integrated
@@ -144,8 +149,9 @@ passed, while broader semantic review remains before any trusted promotion.
 Gate C2's abstract certified-sign existence job (`66972f62`) has been harvested
 and integrated in `OverlapSignExistence.lean`; the C2 Lean arc is committed,
 caveated, red-team validated, and full-build green after the post-existence
-refresh. A fresh C2 flux-index Aristotle frontier job (`f3296d38`) is running;
-no theorem from that job is integrated yet.
+refresh. Fresh C2 Aristotle jobs are running for the flux-index frontier
+(`f3296d38`) and sign-trace/inertia bridge (`25f0b738`); no theorem from either
+job is integrated yet.
 Checkerboard T1b: accumulated Trotter, the matching-time `matrixL1Norm`
 boundary theorem, and the fixed-target-time variant are now integrated into
 `NullEdgeStandalone`; remaining checkerboard work is the uniform
@@ -277,8 +283,11 @@ momentum-window version and position-space sampling/interpolation bridge.
   `checkerboard_dirac_limit_statement_fixed_time` =
   `[propext, Classical.choice, Quot.sound]`.
 - Dependency audits: all trusted-track theorems `[propext, Classical.choice,
-  Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in any committed
-  Lean this run.
+  Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in committed
+  `PhysicsSM` or `NullEdgeStandalone` Lean this run. The standalone Aristotle
+  packet `AgentTasks/aristotle-standalone/gate-c2-sign-trace-inertia-20260703/`
+  intentionally contains an unproved proof target and is not integrated into the
+  built Lean tree.
 - All results are DRAFT-trust (draft modules), per the no-trusted-promotion
   guardrail. Promotion to trusted is a morning-review decision.
 
