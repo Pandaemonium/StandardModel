@@ -220,3 +220,10 @@ Checkerboard T1b boundary theorem DONE: added the finite norm bridge from scoped
 `L_infinity` operator norm to `matrixL1Norm`, then proved
 `checkerboard_dirac_limit_statement`; exact module build, standalone root check,
 placeholder scan, and dependency audit clean.
+
+## Heartbeat 04:05 claude
+C2 arc extended: winding witness (index=Q, commit 373de95) + C2b backbone
+certifiedSign_unique (sign uniqueness w/o functional calculus, commit 9f97af2) +
+GW corollary. All kernel-checked, clean axioms. Full build running. Next: join
+C2a->C2b (explicit gauge-Wilson H_U with SignCertificate H_U epsW) OR consolidate
++ cross-review. 4 C2 bricks total.
