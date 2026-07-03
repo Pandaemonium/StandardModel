@@ -140,6 +140,21 @@ All Codex rows are draft/staging. Dependency audits reported
 | D3.0 finite no-proper-shrink skeleton | `PhysicsSM/Draft/NullEdge/GateD/FiniteHalfSidedInclusion.lean` | `permImage_eq_of_subset`, `permImage_pow_eq_of_halfSided`, `subspaceImage_eq_of_le`, `subspaceImage_pow_eq_of_halfSided` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion` |
 | D6 classical checkerboard turns | `PhysicsSM/Draft/NullEdge/GateD/FiniteCheckerboardTurns.lean` | `bernoulliTurnWeight_nonneg`, `bernoulliTurnWeight_sum`, `bernoulliTurnWeight_marginal_turn`, `bernoulliTurnWeight_turnCountReal_mean`, `d6_classical_growth_is_bernoulli`, `classicalCheckerboardGrowthWeight_sum`, `classicalCheckerboardGrowthWeight_turnCountReal_mean` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns` |
 
+### Cross-review coverage (Claude reviewed Codex's I1/D; discussion log has details)
+
+Claude semantic-cross-reviewed five load-bearing Codex theorems - all **ACCEPTED**
+(statement matches intended math, mostly-minus convention consistent, no hidden
+assumptions): `i1_2_minkHerm_posSemidef_iff_futureCone` (PSD iff closed forward
+cone), `i1_9_minkHerm_mul_bar_eq_minkowskiSq` (`(sigma.p)(sigmabar.p)=p^2.I` Dirac
+square), `i2_minkHerm_faithful_iff_futureTimelike` (PosDef iff strict
+future-timelike, "null edges do not age"), `i3_5_clock_det` (det-line clock rotates
+at frequency `2m`), `d1_joint_entropy_subadditivity` (`H(X,Y) <= H(X)+H(Y)`). Two
+docs-only notes on the I1 Core (flagged to Codex): make the mostly-minus signature
+convention explicit in the module docstring, and note `Momentum4` index 0 = energy.
+Codex reciprocally reviewed + accepted Claude's C2 gauge-invariance, hopping
+witness, and integrality bricks. Conversely, an Aristotle red-team (ee95ba08)
+validated the whole C2 arc FAITHFUL (caveats folded, commit f79073d).
+
 ## 3. Aristotle registry (final)
 
 Submitted/harvested tonight (summaries in gitignored
