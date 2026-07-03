@@ -209,10 +209,12 @@ Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO ind
 needs a genuine signature change (Wilson mass across zero), not a flat/tree
 connection. The first genuine nonzero-FLUX witness is now the `pi`-flux triangle.
 SUCCESSOR: an even-lattice / 2D-torus Wilson-Dirac flux model with a
-zero-to-nonzero index, then the anomaly/index-density bridge. The `H^2=coeff.I`
-scalar-square shortcut breaks under such a background - the certified-sign
-interface (`SignCertificate`) is how `sign(H_U)` is pinned without a functional
-calculus.
+zero-to-nonzero index, then the anomaly/index-density bridge. The tracked oracle
+`Scripts/oracle/validate_flux2d_wilson_dirac.py` pins the current finite target
+(`L=4,m=-1,Q=1`, total flux `4`, index `4`, four `8 x 8` blocks of signature
+`-2`) as design evidence, not proof. The `H^2=coeff.I` scalar-square shortcut
+breaks under such a background - the certified-sign interface
+(`SignCertificate`) is how `sign(H_U)` is pinned without a functional calculus.
 
 ## Tracks
 
