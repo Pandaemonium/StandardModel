@@ -53,7 +53,7 @@ transformation) leaves `overlapIndex` unchanged. -/
 theorem overlapIndex_conj (g eps U : Matrix n n ℂ)
     (hg : g * g = 1) (hU : Uᴴ * U = 1) :
     overlapIndex (U * g * Uᴴ) (U * eps * Uᴴ) = overlapIndex g eps := by
-  have hU' : U * Uᴴ = 1 := Matrix.mul_eq_one_comm.mp hU
+  have hU' : U * Uᴴ = 1 := mul_eq_one_comm.mp hU
   have hgc : (U * g * Uᴴ) * (U * g * Uᴴ) = 1 := by
     rw [show (U * g * Uᴴ) * (U * g * Uᴴ) = U * g * (Uᴴ * U) * g * Uᴴ by noncomm_ring,
       hU, show U * g * 1 * g * Uᴴ = U * (g * g) * Uᴴ by noncomm_ring, hg,
@@ -67,7 +67,7 @@ theorem SignCertificate.conj (H eps U : Matrix n n ℂ) (hU : Uᴴ * U = 1)
     (hc : SignCertificate H eps) :
     SignCertificate (U * H * Uᴴ) (U * eps * Uᴴ) where
   involution := by
-    have hU' : U * Uᴴ = 1 := Matrix.mul_eq_one_comm.mp hU
+    have hU' : U * Uᴴ = 1 := mul_eq_one_comm.mp hU
     rw [show (U * eps * Uᴴ) * (U * eps * Uᴴ) = U * eps * (Uᴴ * U) * eps * Uᴴ by
         noncomm_ring, hU,
       show U * eps * 1 * eps * Uᴴ = U * (eps * eps) * Uᴴ by noncomm_ring,

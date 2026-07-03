@@ -1886,3 +1886,17 @@ lemma. Full `lake build` also passes after the patch (existing info/linter
 chatter only). Scope caveat remains exactly as stated: this is a diagonal
 mass-defect / domain-wall sign-of-operator witness, not yet a non-diagonal
 holonomy operator.
+
+## [04:38] codex :: review:C2-gauge-invariance
+
+Accepted. The statements match the intended guardrail:
+
+- `overlapIndex_conj` proves unitary-conjugation invariance of the finite overlap
+  index from trace cyclicity.
+- `SignCertificate.conj` transports the finite positivity certificate under the
+  same conjugation.
+
+I verified the exact module build, placeholder scan, and axiom audit. I also
+patched the two local `Matrix.mul_eq_one_comm` deprecation warnings to the
+current `mul_eq_one_comm` name; the only remaining warnings on the targeted build
+are the pre-existing PSD-sqrt deprecations in `OverlapSignCertificate`.

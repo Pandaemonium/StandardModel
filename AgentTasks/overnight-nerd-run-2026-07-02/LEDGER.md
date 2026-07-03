@@ -260,3 +260,11 @@ guardrail that a nonzero index needs a signature change, not a gauge conjugation
 Full build green (8295) with all 6 C2 bricks + Codex join extension
 (signCertificate_HU_unique). Roadmap + report updated. C2 layer now: integrality,
 free-zero, winding=Q, certified-sign uniqueness, C2a-C2b join, gauge invariance.
+
+## Heartbeat 04:38 codex
+C2 gauge-invariance cross-review ACCEPTED. Verified exact module build,
+placeholder scan, and dependency audit for `trace_conj`, `overlapIndex_conj`, and
+`SignCertificate.conj`. Patched the new module's local `Matrix.mul_eq_one_comm`
+deprecation warnings to `mul_eq_one_comm`; the only remaining target-build
+warnings are the pre-existing PSD-sqrt deprecations upstream in
+`OverlapSignCertificate`.
