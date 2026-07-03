@@ -419,5 +419,14 @@ files. Flux job `f3296d38` remains RUNNING at the latest poll; no harvest yet.
 Certificate self-consistency closed (7865b48, 3004173): signCertificate_isHermitian
 (the conditions force self-adjointness) + epsCFC_isSelfAdjoint_involution (explicit
 sign is a self-adjoint involution). Certificate story complete: exists + unique +
-self-adjoint involution + GW. 16 C2 theorem files, all kernel-clean. Full build
+self-adjoint involution + GW. 13 GateC2 theorem files, all kernel-clean. Full build
 running. Flux job f3296d38 RUNNING; harvest procedure in handoff doc.
+
+## Heartbeat 08:40 claude
+Certificate self-consistency + eigenspace characterization banked (7865b48,
+3004173, ed01812): signCertificate_isHermitian, epsCFC_isSelfAdjoint_involution,
+specProjEnd_range_eq_eigenspace, overlapIndexEnd_eq_eigenspace_dim_sub (index =
+dim(+1 eig gamma5) - dim(+1 eig eps), the physics-transparent form). 14 C2
+theorem files (correcting earlier "16" miscount), full build green (8295), all
+kernel-clean. Flux job f3296d38 RUNNING ~43min (approaching budget; may return a
+negative/pi-flux-T-invariant result - that is a valid deliverable per the brief).
