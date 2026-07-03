@@ -98,6 +98,8 @@ Append one line per cycle: `HH:MM agent task next-step`.
 02:46 codex T2 added I1.8 normalized characteristic determinant and spectral-root zero lemmas; standalone Lean check, placeholder scan, and dependency audit clean; next monitor/report or bounded I1.8 entropy/A2 theorem
 02:54 codex T3 strengthened D6 checkerboard turn weights with one-site marginal and fixed mean turn-count theorems; targeted build, placeholder scan, and dependency audit clean; next coordination pass then bounded D/I/Q theorem
 02:56 codex review:c1-operator-gw ACCEPTED: operator-level Fourier transport, `signHfree_selfAdjoint`, and `operator_ginsparg_wilson` semantically checked; build/scan/dependency audit clean; next monitor Claude Weyl projectors or continue bounded D/I
+03:09 codex T2 upgraded A2 to square-root mass superadditivity (`a2_sqrt_minkowskiSq_add_ge_of_futureCone`) via Lorentz reverse Cauchy; standalone Lean check, placeholder scan, and dependency audit clean; next monitor review pings or bounded I1/D
+03:14 codex operator Weyl projector quick-review ACCEPTED; targeted build, placeholder scan, and dependency audit clean; C2 recommendation posted: gauge-link/covariance/admissible-sign interface before index density
 ```
 
 ## Decision log
@@ -110,6 +112,7 @@ Append: time, decision, who agreed, link to discussion thread.
 03:12 C1 FREE-OPERATOR HALF COMPLETE (Claude): gap + symbol-Herm + self-adjointness + no-zero-modes all kernel-checked & reviewed. GREEN TREE CONFIRMED: full `lake build` = 8295 jobs, Build completed successfully with all 4 new C1/GateD files integrated. Next rung sign(Hfree)/GW scoped in nerd-gate-c1-gw-release-setup-2026-07-03.md (multi-hour, deferred not half-started). Commits 6acb549..2edc23d
 02:07 C1 SYMBOL-LEVEL GW RELEASE REVIEWED + ACCEPTED (Codex sign-off, review:c1-symbol-gw). Scalar-square `H^2 = coeff.I` is semantically honest under Hermitian/unitary chirality plus `{gamma5,Q}=0`; scope remains per-momentum free regulator-level, with first-band positivity supplied by upstream adapter lemmas rather than this primitive theorem.
 02:56 C1 OPERATOR-LEVEL GW RELEASE REVIEWED + ACCEPTED (Codex sign-off, review:c1-operator-gw). `signHfree_selfAdjoint` and `operator_ginsparg_wilson` genuinely transport symbol identities through the two-sided finite Fourier isomorphism to real-space field identities; scope remains free/no-gauge fixed-regulator operator level.
+03:14 C1 OPERATOR WEYL PROJECTORS REVIEWED + ACCEPTED (Codex sign-off, reply:operator-weyl+c2-order). `P+/P-` package the real-space spectral resolution of `signHfree`; add/sub/idempotent and `+1` eigenspace laws are kernel-checked. Gate C2 should begin with gauge-link covariance plus an admissible-sign interface before index density/anomaly claims.
 ```
 
 ## Parked for user
@@ -144,6 +147,7 @@ commands run, review thread id, commit hash.
 02:41 codex | EXTENDED I1 standalone Core with finite U(2) spin-clock split algebra (`phase_smul_specialUnitary2_det`, `phase_smul_specialUnitary2_unitary`, `u2_phase_su_decomposition`, `spinClock_kernel_square_one`, `spinClock_kernel_suPart`, `complex_sq_eq_one_iff`) | verified: `lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean`; placeholder scan no hits; dependency audit for the new cluster = propext/Classical.choice/Quot.sound | review thread idea:t2-u2-spin-clock-split | commit: uncommitted
 02:46 codex | EXTENDED I1 standalone Core with normalized characteristic determinant and spectral-root zeros (`velocityNormSq_nonneg`, `det_normalizedMinkHerm_sub_smul_one`, `normalizedMinkHerm_spectralPlus_det_zero`, `normalizedMinkHerm_spectralMinus_det_zero`) | verified: `lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean`; placeholder scan no hits; dependency audit for four lemmas = propext/Classical.choice/Quot.sound | review thread idea:t2-i1-8-normalized-spectral-roots | commit: uncommitted
 02:54 codex | EXTENDED PhysicsSM/Draft/NullEdge/GateD/FiniteCheckerboardTurns.lean with fixed-mean turn-rate identities (`turnCountReal`, `bernoulliTurnWeight_marginal_turn`, `bernoulliTurnWeight_turnCountReal_mean`, `classicalCheckerboardGrowthWeight_turnCountReal_mean`) | verified: `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns`; placeholder scan no hits; dependency audit for new theorem cluster = propext/Classical.choice/Quot.sound | review thread idea:gate-d-d6-fixed-mean | commit: uncommitted
+03:09 codex | EXTENDED I1 standalone Core with A2 square-root mass superadditivity (`lorentzReverseCauchy_aux`, `minkowskiSq_nonneg_of_futureCone`, `minkowskiInner_sq_ge_mul_minkowskiSq_of_futureCone`, `sqrt_minkowskiSq_mul_le_minkowskiInner_of_futureCone`, `a2_sqrt_minkowskiSq_add_ge_of_futureCone`) | verified: `lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean`; placeholder scan no hits; dependency audit for new theorem cluster = propext/Classical.choice/Quot.sound | review thread idea:t2-a2-sqrt-superadditivity | commit: uncommitted
 ```
 
 ## Heartbeat 02:45 claude
@@ -157,3 +161,16 @@ Operator Weyl projectors DONE (commit ac48b87): spectral resolution of signHfree
 P+ + P- = 1, P+ - P- = signHfree, idempotents, +1 chirality eigenspace. Free
 chiral release complete end to end. Axioms clean. Roadmap + morning report
 updated. Next: Gate C2 scoping (gauge/index/anomaly).
+
+## Heartbeat 03:14 codex
+Operator Weyl projector quick-review accepted after targeted build, scan, and
+dependency audit. Posted C2 order recommendation: gauge-link decoration,
+covariance, and admissible-sign interface first; finite index facade and anomaly
+density later.
+
+## Heartbeat 03:25 claude
+Gate C2 OPENED. First brick: overlapIndex_isInteger (commit dceb6f1) - finite
+overlap index is an integer (diff of eigenprojector ranks), kernel-checked, clean
+axioms. Posted C2 scoping thread (crux: gauge breaks the H^2=scalar shortcut).
+Next: operator-level index integrality for the flagship (End-level), + Aristotle
+planning job on a gauge toy with nonzero index.
