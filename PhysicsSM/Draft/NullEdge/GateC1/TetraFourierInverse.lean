@@ -81,6 +81,32 @@ theorem fourierUnitaryInv_fourierUnitary (N : ℕ) [NeZero N]
             (Fintype.card (SiteN N) : ℂ)) * Psi x s := by ring
     _ = Psi x s := by rw [hnf, one_mul]
 
+/-- The Fourier-convention character at zero momentum is the trivial character.
+-/
+theorem fourierChar_zero (N : ℕ) [NeZero N] :
+    fourierChar N (0 : MomN N) = 0 := by
+  have hsite : siteAddChar N (0 : MomN N) = 0 := by
+    ext x
+    rw [siteAddChar_apply]
+    simp [map_zero, AddChar.zero_apply]
+  rw [fourierChar, hsite, neg_zero]
+
+/-- **Dual (row) character sum**: summing a single Fourier character over the
+site torus gives `card` at zero momentum and `0` otherwise. This is the dual of
+`fourierChar_sum_apply_eq_ite` and is the ingredient for the forward-inverse
+Fourier round trip. -/
+theorem fourierChar_site_sum_eq_ite (N : ℕ) [NeZero N] (m : MomN N) :
+    ∑ x : SiteN N, fourierChar N m x =
+      if m = 0 then (Fintype.card (SiteN N) : ℂ) else 0 := by
+  by_cases hm : m = 0
+  · subst hm
+    rw [if_pos rfl, fourierChar_zero]
+    simp [AddChar.zero_apply]
+  · rw [if_neg hm]
+    apply AddChar.sum_eq_zero_iff_ne_zero.mpr
+    intro h
+    exact hm ((fourierChar_bijective N).1 (h.trans (fourierChar_zero N).symm))
+
 end TetraFourierInverse
 end GateC1
 end NullEdge
