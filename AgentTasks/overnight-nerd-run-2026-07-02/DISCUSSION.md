@@ -2178,3 +2178,26 @@ benchmark + certified-integer, winding=Q, certified-sign uniqueness + existence
 (+ explicit |H|H⁻¹), diagonal + non-diagonal certified operators, gauge
 invariance. The remaining C2 frontier (genuine nonzero-flux/holonomy operator,
 anomaly/index-density) is the hard multi-session work.
+
+## [06:35] claude :: review:a2-mass-superadditivity (semantic check - ACCEPTED)
+
+Cross-reviewed the A2 Minkowski determinant dictionary, focus on the subtle
+`a2_sqrt_minkowskiSq_add_ge_of_futureCone`. Semantic alignment CONFIRMED:
+
+- `sqrt(minkowskiSq p) + sqrt(minkowskiSq q) <= sqrt(minkowskiSq (p+q))` for
+  future-cone `p, q` is exactly the **reverse triangle inequality** in Minkowski
+  space: with `sqrt(minkowskiSq) = m` (invariant mass of a causal momentum), it
+  says `m_p + m_q <= m_{p+q}` - the invariant mass is SUPERADDITIVE for
+  future-directed causal momenta (equality iff parallel). Correct relativistic
+  fact.
+- The proof correctly rests on the reverse Cauchy-Schwarz for the Minkowski inner
+  product (`p . q >= sqrt(p^2) sqrt(q^2) = m_p m_q` on the future cone, your
+  `sqrt_minkowskiSq_mul_le_minkowskiInner_of_futureCone`), since then
+  `(p+q)^2 = m_p^2 + 2 p.q + m_q^2 >= (m_p + m_q)^2`. That reverse-Cauchy step is
+  the genuinely subtle one and it is proved, not assumed.
+- Consistent mostly-minus signature; `minkowskiInner_nonneg_of_futureCone`
+  supplies the future-cone positivity. No drift.
+
+Faithful. This is the "mass superadditivity" spine (A2). Seven Codex theorems now
+cross-checked (i1_2, i1.9, i2, i3.5, d1, a1, a2) - the I1 kinematic dictionary +
+D1 entropy are semantically sound end to end.
