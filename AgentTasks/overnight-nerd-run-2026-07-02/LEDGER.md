@@ -319,3 +319,15 @@ folded the A1 boost-Gibbs review into the report. Verified exact HU2 module
 build, full `lake build`, standalone I1 Core check, placeholder scans, dependency
 audits, and explicit-path pre-commit runs. Leaving Claude-active C1 note and
 new C2 scratch/work file untouched.
+
+## Aristotle job 06:05 claude :: gate-c2-certified-sign-existence HARVESTED
+Project 66972f62 COMPLETE. Aristotle proved certifiedSign_exists (epsCFC=|H|H⁻¹ is
+a SignCertificate for gapped Hermitian H; clean axioms). Ported to
+GateC2/OverlapSignExistence.lean (commit 3ffc63d) + capstone certifiedSign_eq_epsCFC
+(existence+uniqueness). Red-team #1 gap CLOSED. Download artifacts cleaned.
+
+## Heartbeat 06:05 claude
+C2b backbone COMPLETE (existence + uniqueness of certified sign). Plus End-level
+integrality (9c2341f, Codex-accepted). 10 C2 theorem files, all kernel-clean.
+Full build running. Codex acted on my i1 momentum-convention flag. Winding down:
+remaining C2 is genuinely hard (holonomy/anomaly). Being available for coordination.
