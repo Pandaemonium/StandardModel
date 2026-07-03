@@ -1085,6 +1085,87 @@ scan returned no hits. Axiom audit for `H_symbol_sq`, `signSymbol_sq`,
 `weylProjPlus_idem`, `weylProjMinus_idem`, and `signSymbol_weylProj_idem`
 reports `[propext, Classical.choice, Quot.sound]`.
 
+## [02:12] codex :: idea:t2-i2-faithfulness-iff
+
+Tightened the I2 finite-support shadow in the standalone I1 Core file:
+`AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean`.
+
+New theorem:
+
+- `i2_minkHerm_faithful_iff_futureTimelike`
+
+Meaning: for a soldered `2 x 2` Hermitian momentum block, finite
+faithfulness is exactly strict future-timelikeness:
+`faithful2 (minkHerm p) <-> 0 < p 0 /\ 0 < minkowskiSq p`.
+
+The forward direction uses `PosDef.posSemidef` to recover the future cone via
+the existing I1.2 theorem, and `Matrix.PosDef.det_pos` plus
+`det_minkHerm_eq_minkowskiSq` to recover positive mass square. The backward
+direction is the previously banked `i2_minkHerm_faithful_of_futureTimelike`.
+
+Verification:
+
+`lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean`
+
+passed. Placeholder/escape-hatch scan returned no hits. Dependency audit for
+the new theorem reports `[propext, Classical.choice, Quot.sound]`.
+
+## [02:19] codex :: idea:t2-a1-boost-algebra
+
+Banked a finite A1 boost-Gibbs algebra slice in the same standalone I1 Core
+file.
+
+New names:
+
+- `spatialUnit`
+- `spatialPauli`
+- `a1_spatialPauli_sq`
+- `boostMomentum`
+- `a1_boost_minkHerm_form`
+- `a1_boost_minkowskiSq`
+- `a1_boost_eigenvalue_ratio`
+- `a1_boost_faithful`
+
+Meaning: for a unit spatial direction `n`, the Pauli slash satisfies
+`(n.sigma)^2 = I`; the boosted momentum solders as
+`m (cosh eta I + sinh eta n.sigma)`; its mostly-minus mass square is `m^2`;
+the scalar eigenweight ratio is `exp(2 eta)`; and positive-mass boosts give
+faithful finite `minkHerm` blocks via the new I2 iff.
+
+Scope guardrail: this is not yet the full `Matrix.exp` theorem
+`m exp(eta n.sigma)` nor the finite modular-log/Bisognano-Wichmann statement.
+It is the explicit finite algebra core those statements should consume.
+
+Verification:
+
+`lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean`
+
+passed. Placeholder/escape-hatch scan returned no hits. Dependency audit for
+the A1 theorem cluster reports `[propext, Classical.choice, Quot.sound]`.
+
+## [02:24] codex :: idea:t2-i1-8-normalized-psd
+
+Added two normalized-density bridge lemmas to the standalone I1 Core file:
+
+- `normalizedMinkHerm_posSemidef_of_futureCone`
+- `normalizedMinkHerm_faithful_of_futureTimelike`
+
+Meaning: future-causal momenta normalize to positive semidefinite trace-one
+blocks, and strict future-timelike momenta normalize to faithful finite blocks.
+The proofs are just positive complex rescaling of the existing unnormalized
+PSD/faithfulness theorems.
+
+Scope guardrail: this still does not assert the full normalized eigenvalue or
+binary-entropy dictionary; it supplies the positivity/faithfulness side needed
+before those entropy statements.
+
+Verification:
+
+`lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean`
+
+passed. Placeholder/escape-hatch scan returned no hits. Dependency audit for
+the two new lemmas reports `[propext, Classical.choice, Quot.sound]`.
+
 ## [06:20] claude :: idea:gw-validated + operator-level step 1
 
 Two updates:
@@ -1133,3 +1214,103 @@ I have reached a comprehensive completion (29 commits; Gate C1 symbol-level
 chiral release complete + adversarially validated + operator step 1; Gate D2;
 4 Q2 numerics; L0 correction; C0 audit; 3 Aristotle audits). Shifting to
 consolidation + monitoring, ready for the 07:00 morning-report finalization.
+
+## [02:29] codex :: idea:gate-d-d2-stationarity
+
+Extended Gate D2's finite first-law module with the constrained max-entropy
+corollary that was still missing from the finite classical package.
+
+New names:
+
+- `entropy_gap_eq_relEntropy_of_fixed_crossEntropy`
+- `d2_shannon_le_of_fixed_crossEntropy`
+
+Meaning: if a probability vector `p` has the same `q`-modular energy as the
+strictly positive reference probability vector `q`, then `q` has at least as
+large Shannon entropy. The exact gap theorem first identifies
+`S(q) - S(p)` with `S_rel(p || q)` under the fixed-cross-entropy constraint;
+the inequality then follows from the existing Gibbs theorem.
+
+Scope guardrail: this is only the finite classical constrained-stationarity
+result for one fixed reference weight. It does not prove the continuum
+first-law, a universal Lagrange multiplier, or any gravitational reconstruction.
+
+Verification:
+
+`lake build PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`
+
+passed. Placeholder/escape-hatch scan returned no hits. Dependency audit for
+both new theorems reports `[propext, Classical.choice, Quot.sound]`.
+
+## [02:41] codex :: idea:t2-u2-spin-clock-split
+
+Added the concrete finite `U(2)` spin-clock determinant-line split algebra to
+the standalone I1 Core file.
+
+New names:
+
+- `unitary2`, `specialUnitary2`, `phaseUnit`
+- `phaseUnit_inv`
+- `phase_smul_unitary2`
+- `phase_smul_specialUnitary2_det`
+- `phase_smul_specialUnitary2_unitary`
+- `u2_phase_su_decomposition`
+- `spinClock_kernel_square_one`
+- `spinClock_kernel_suPart`
+- `complex_sq_eq_one_iff`
+
+Meaning: a `U(1)` phase times an `SU(2)` matrix is unitary, its determinant is
+the phase squared, and any unitary `2 x 2` matrix splits as a phase times an
+`SU(2)` part once a phase square root of its determinant is chosen. The kernel
+projection says a phase-spin product equal to identity has scalar phase square
+one, hence the scalar ambiguity is exactly `+1`/`-1`.
+
+Scope guardrail: this is the concrete finite algebra behind the
+`U(2) = (SU(2) x U(1)) / Z_2` slogan. It does not yet build the quotient
+isomorphism as a bundled group equivalence or tie the `SU(2)` action to a full
+Stiefel-fiber theorem.
+
+Verification:
+
+`lake env lean AgentTasks\aristotle-standalone\gate-i1-kinematic-core-20260702\GateI1KinematicCore\Core.lean`
+
+passed. Placeholder/escape-hatch scan returned no hits. Dependency audit for
+the new U(2) cluster reports `[propext, Classical.choice, Quot.sound]`.
+
+## [02:45] claude :: idea:operator-level-GW-COMPLETE (flagship fully landed)
+
+Closing my own `idea:operator-level-GW-scoping` handoff from earlier: the
+operator-level Ginsparg-Wilson packaging is now DONE and kernel-checked, not just
+scoped. The full chain landed:
+
+- `TetraFourierInverse.lean`: two-sided finite Fourier isomorphism -
+  `fourierUnitaryInv_fourierUnitary` AND `fourierUnitary_fourierUnitaryInv` (via
+  new `fourierChar_row_orthogonality`). `fourierUnitary` is now a genuine
+  isometric iso, not just an isometry.
+- `TetraOperatorOverlapGW.lean`:
+  - `signHfree = fourierUnitaryInv o (blockwise signSymbol *v) o fourierUnitary`
+  - `signHfree_involutive` (`signHfree (signHfree Psi) = Psi`) and
+    `signHfree_selfAdjoint` (via `fourierUnitary_inner_siteN` Parseval, the same
+    pattern as `Hfree_selfAdjoint`).
+  - `DovOp Psi = Psi + Gamma5op (signHfree Psi)` with `Gamma5op = matrixFieldAction gamma5`.
+  - `fourierUnitary_DovOp`: block-diagonalizes DovOp to the symbol `Dov gamma5 signSymbol`.
+  - `operator_ginsparg_wilson`: `Gamma5op (DovOp Psi) + DovOp (Gamma5op Psi) = DovOp (Gamma5op (DovOp Psi))`
+    as REAL-SPACE operators, proved by the Fourier-transport pattern
+    (transport to momentum via `fourierUnitary_DovOp`/`fourierUnitary_Gamma5op`,
+    apply per-block `symbol_ginsparg_wilson`, transport back via injectivity).
+
+Full `lake build` green (8295 jobs) WITH this chain, confirmed post-integration.
+Commits c9902ac / 45e5ed0 / 5b31126, roadmap + morning report updated (bd40a3c /
+91f0075).
+
+@codex this is the whole free (no-gauge) chiral release now complete at the
+real-space operator level. A cross-review of `operator_ginsparg_wilson` and
+`signHfree_selfAdjoint` would be welcome when you surface (thread
+`review:c1-operator-gw`) - the key thing to sanity-check is the Fourier-transport
+argument: that `fourierUnitary` being a two-sided iso genuinely lets me pull the
+per-momentum GW back to a real-space operator identity with no gap.
+
+Next on my lane: operator Weyl projectors (immediate from `signHfree_involutive`)
+to fully close C1, then scoping Gate C2 (gauge backgrounds -> index -> anomaly),
+which is the ambitious next gate and warrants a joint discussion + likely an
+Aristotle strategy job before heavy construction.
