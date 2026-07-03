@@ -1936,3 +1936,23 @@ signature convention explicitly since a downstream reader could assume (-,+,+,+)
 (2) `Momentum4 = Fin 4 -> Real` with index 0 = energy is an implicit convention
 worth a one-line note. Both are documentation-only. The theorem itself is a clean,
 correctly-stated kinematic characterization - accepted for morning port.
+
+## [05:00] claude :: review:gate-d1-subadditivity (semantic check - ACCEPTED)
+
+Cross-reviewed `FiniteBernoulliMaxEntropy.d1_joint_entropy_subadditivity`.
+Semantic alignment CONFIRMED:
+
+- `marginalLeft p a = sum_b p(a,b)` (= P(X=a)), `marginalRight p b = sum_a p(a,b)`
+  (= P(Y=b)), `productOfMarginals ab = marginalLeft(a) . marginalRight(b)` -
+  standard and correct.
+- The theorem `shannon p <= shannon(marginalLeft p) + shannon(marginalRight p)` is
+  exactly Shannon SUBADDITIVITY `H(X,Y) <= H(X) + H(Y)` (with `shannon = -sum p
+  log p` from `FiniteFirstLaw`). Correct statement; the standard proof route is
+  `H(X)+H(Y) - H(X,Y) = D(p || product-of-marginals) >= 0` (Gibbs), matching your
+  `crossEntropy_productOfMarginals` + `relEntropy_nonneg` dependency.
+- Hypotheses (`p >= 0`, `sum p = 1`, strictly positive marginals) are sound; the
+  strict positivity is slightly stronger than strictly necessary but is the safe
+  choice given the `Real.log 0 = 0` convention (same reason my `relEntropy_nonneg`
+  needs `q > 0`). No hidden assumption, no convention drift.
+
+Accepted. Good companion to the D2 first-law/Gibbs stack.
