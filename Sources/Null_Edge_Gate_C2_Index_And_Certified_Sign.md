@@ -52,24 +52,16 @@ translation-invariant, each free sign symbol is traceless, and therefore the fre
 local index density vanishes site-wise. This is the free/no-gauge local version of
 the zero-index benchmark; it is not a gauge anomaly theorem.
 
-**(b3) Operator sum rule and exact free value.** `operatorIndex_eq_sum_density`
-proves the finite operator overlap index is exactly the site-sum of the local
-index density. `flagship_operatorIndex_eq_zero` then computes the flagship free
-operator index to be exactly `0`, using `trace_signHfreeL`, `trace_Gamma5opL`,
-and the vanishing kernel diagonal. This is still free/no-gauge, but it supplies
-the structural "index = integral of density" identity needed before a gauge
-anomaly bridge.
-
 **(b3) Operator value and the sum rule** (`FlagshipOperatorIndexZero.lean`).
 `trace_signHfreeL`: the endomorphism trace of the operator sign equals the
 site-sum of its kernel-diagonal spin-traces (product-basis computation), and
 `trace_Gamma5opL = card . Tr gamma5`.  Consequences:
+`operatorIndex_eq_sum_density` - unconditionally, the operator index equals the
+site-sum of the local density, the finite exact form of "index = integral of the
+index density" whose gauge-background version is the anomaly statement - and
 `flagship_operatorIndex_eq_zero` - the free chiral OPERATOR index equals `0`
-exactly (the benchmark now holds at all three levels: symbol, certified-integer,
-operator value) - and `operatorIndex_eq_sum_density` - unconditionally, the
-operator index equals the site-sum of the local density, the finite exact form of
-"index = integral of the index density" whose gauge-background version is the
-anomaly statement.
+exactly.  The free benchmark now holds at all three levels: symbol,
+certified-integer, operator value.  Still free/no-gauge.
 
 **(c) The certified sign (no functional calculus).** The key C2b interface. A
 **sign certificate** for a gapped (invertible) Hermitian `H` is a matrix `eps`

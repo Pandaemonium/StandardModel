@@ -166,7 +166,8 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   End-trace = site-sum of kernel-diagonal spin-traces (`trace_signHfreeL` via
   `Pi.basis` + the kernel representation; `trace_Gamma5opL = card.Tr gamma5`),
   each diagonal block traceless.  The free benchmark now holds at all three
-  levels: symbol, certified-integer, operator value.
+  levels: symbol, certified-integer, operator value. `operatorIndex_eq_sum_density`
+  is the finite structural sum rule: operator index = site-sum of local density.
 
 Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
 needs a genuine signature change (Wilson mass across zero), not a flat/tree
