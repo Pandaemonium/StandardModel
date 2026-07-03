@@ -23,8 +23,8 @@ before continuing Gate C2. Companion documents:
   projectors (`PhysicsSM/Draft/NullEdge/GateC1/`). Red-team-validated (feae0495).
 - Gate C2 has 14 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
   integrality (matrix `OverlapIndexIntegrality` / End `OverlapIndexEndIntegrality`
-  incl. `trace_ghatEnd` / eigenspace count `OverlapIndexEigenspace` / flagship
-  `FlagshipOperatorIndex`), free benchmark at
+  incl. `trace_ghatEnd` / eigenspace-signature count `OverlapIndexEigenspace` /
+  flagship `FlagshipOperatorIndex`), free benchmark at
   three levels (`TetraFreeIndexZero`, `FlagshipOperatorIndexZero`), index density
   + sum rule (`TetraFreeIndexDensity`, `operatorIndex_eq_sum_density`), certified
   sign uniqueness + existence + self-adjointness (`OverlapSignCertificate`,
@@ -121,3 +121,37 @@ certified sign existence+uniqueness+self-adjointness, gauge invariance, density 
 sum rule, free benchmark at all levels) and red-team-validated; the single open frontier is the
 genuine nonzero-flux operator, with Aristotle job f3296d38 in flight on exactly
 that - harvest it first.
+
+## 7. Additions after this handoff was first written (all committed, kernel-clean)
+
+Landed while the flux job ran (all `[propext, Classical.choice, Quot.sound]`):
+
+- **Anomaly-bridge rungs** (`TetraFreeIndexDensity.lean`,
+  `FlagshipOperatorIndexZero.lean`): the real-space kernel `signKernel` of
+  `sign(Hfree)` with `signHfree_apply_eq_kernel_sum`; translation-invariant
+  diagonal `signKernel_diag`; the local density `freeIndexDensity_eq_zero`
+  (vanishes site-wise); the operator value `flagship_operatorIndex_eq_zero`
+  (= 0 exactly); and the SUM RULE `operatorIndex_eq_sum_density` (index =
+  site-sum of local density, unconditional - the finite "index = integral of
+  density"). The gauge version of these is the anomaly bridge - transport the
+  same kernel/trace machinery to `sign(H_U)` once the flux operator exists.
+- **Certificate self-consistency** (`OverlapSignHermitian.lean`):
+  `signCertificate_isHermitian` (the three conditions force self-adjointness) and
+  `epsCFC_isSelfAdjoint_involution` (the explicit sign is a self-adjoint
+  involution). Certificate story is now complete: exists + unique + self-adjoint
+  involution + GW.
+- **Index = signature** (`OverlapIndexEigenspace.lean`):
+  `specProjEnd_range_eq_eigenspace` / `_ker_eq_eigenspace` (range/ker of the +1
+  projector are the +/-1 eigenspaces), `involution_eigenspace_finrank_add` (the
+  +/-1 spectral decomposition), `trace_involution_eq_signature`
+  (`Tr f = n_+ - n_-`), `overlapIndexEnd_eq_eigenspace_dim_sub`, and
+  `overlapIndexEnd_eq_half_signature_sub` (`= (1/2)(sig f - sig g)`). This makes
+  the design brief's CONTROLLING FACT (`overlapIndex = -(1/2) sig(eps)`) a
+  kernel-checked theorem - the deepest structural result of the layer, and the
+  bridge for turning any future flux operator's SIGNATURE directly into its index.
+- **`trace_ghatEnd`** (in `OverlapIndexEndIntegrality.lean`): the End index = trace
+  of the Luscher modified chirality (the trace-index formula is a theorem).
+
+Definitive full-C2 axiom sweep (LEDGER 08:50): all headline theorems across the 14
+GateC2 files report `[propext, Classical.choice, Quot.sound]`; zero
+sorryAx/native_decide/ofReduceBool/trustCompiler. Full `lake build` green (8295).
