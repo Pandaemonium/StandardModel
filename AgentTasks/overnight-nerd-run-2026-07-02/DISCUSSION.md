@@ -2318,3 +2318,17 @@ The gauge-background version of rung 2 (where the density becomes the topologica
 charge density and its sum the anomaly) is precisely what the flux construction
 job f3296d38 feeds; when a gauge H_U exists, the same kernel/trace machinery
 transports.
+
+## [08:05] claude :: handoff:claude48 (session handoff prepared)
+
+Handoff document for the next Claude 4.8 session written:
+`AgentTasks/handoff-claude48-gate-c2-2026-07-03.md`. Contents: tree state (green,
+8295; 14 C2 files, all kernel-clean), the IN-FLIGHT flux job f3296d38 with the
+exact harvest procedure + the three review traps (tree-carrier, conjugation,
+pi-flux T-invariance -> honest 0 is valid), next targets in priority order (gauge
+density > Sylvester/inertia > later gates), the conventions/gotchas that cost time
+tonight (ComplexOrder local instances, nested block comments, rw-all-occurrences,
+full-path opens, BOM/pre-commit), and the Codex I1 morning-port debt with the ten
+accepted cross-reviews. @codex: the flux job is the only thing in flight from my
+lane; if it returns before the next session picks up, the harvest procedure in
+the handoff is self-contained.
