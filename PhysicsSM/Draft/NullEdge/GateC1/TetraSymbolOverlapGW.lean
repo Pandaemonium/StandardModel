@@ -170,6 +170,68 @@ theorem symbol_ginsparg_wilson
   exact dov_ginsparg_wilson gamma5 (signSymbol gamma5 D a r rho k) hg2
     (signSymbol_sq gamma5 D a r rho k hgU hgH hanti hpos)
 
+/-- Chiral Weyl projectors from a sign involution: `P_pm = (1 ± eps)/2`. -/
+def weylProjPlus (eps : Matrix Spin Spin ℂ) : Matrix Spin Spin ℂ :=
+  (2 : ℂ)⁻¹ • ((1 : Matrix Spin Spin ℂ) + eps)
+
+/-- The `-` chiral Weyl projector `(1 - eps)/2`. -/
+def weylProjMinus (eps : Matrix Spin Spin ℂ) : Matrix Spin Spin ℂ :=
+  (2 : ℂ)⁻¹ • ((1 : Matrix Spin Spin ℂ) - eps)
+
+/-- The Weyl projectors sum to the identity: `P_+ + P_- = 1`. -/
+theorem weylProj_add (eps : Matrix Spin Spin ℂ) :
+    weylProjPlus eps + weylProjMinus eps = (1 : Matrix Spin Spin ℂ) := by
+  unfold weylProjPlus weylProjMinus
+  rw [← smul_add]
+  have : (1 : Matrix Spin Spin ℂ) + eps + (1 - eps) = (2 : ℂ) • 1 := by
+    rw [two_smul]; abel
+  rw [this, smul_smul, inv_mul_cancel₀ (two_ne_zero), one_smul]
+
+/-- **Idempotency of the `+` Weyl projector**, from `eps^2 = 1`. -/
+theorem weylProjPlus_idem (eps : Matrix Spin Spin ℂ)
+    (heps : eps * eps = (1 : Matrix Spin Spin ℂ)) :
+    weylProjPlus eps * weylProjPlus eps = weylProjPlus eps := by
+  unfold weylProjPlus
+  have expand : ((1 : Matrix Spin Spin ℂ) + eps) * (1 + eps)
+      = (2 : ℂ) • ((1 : Matrix Spin Spin ℂ) + eps) := by
+    have h : ((1 : Matrix Spin Spin ℂ) + eps) * (1 + eps)
+        = 1 + eps + eps + eps * eps := by noncomm_ring
+    rw [h, heps]; module
+  rw [Matrix.smul_mul, Matrix.mul_smul, smul_smul, expand, smul_smul,
+    show (2 : ℂ)⁻¹ * (2 : ℂ)⁻¹ * (2 : ℂ) = (2 : ℂ)⁻¹ from by norm_num]
+
+/-- **Idempotency of the `-` Weyl projector**, from `eps^2 = 1`. -/
+theorem weylProjMinus_idem (eps : Matrix Spin Spin ℂ)
+    (heps : eps * eps = (1 : Matrix Spin Spin ℂ)) :
+    weylProjMinus eps * weylProjMinus eps = weylProjMinus eps := by
+  unfold weylProjMinus
+  have expand : ((1 : Matrix Spin Spin ℂ) - eps) * (1 - eps)
+      = (2 : ℂ) • ((1 : Matrix Spin Spin ℂ) - eps) := by
+    have h : ((1 : Matrix Spin Spin ℂ) - eps) * (1 - eps)
+        = 1 - eps - eps + eps * eps := by noncomm_ring
+    rw [h, heps]; module
+  rw [Matrix.smul_mul, Matrix.mul_smul, smul_smul, expand, smul_smul,
+    show (2 : ℂ)⁻¹ * (2 : ℂ)⁻¹ * (2 : ℂ) = (2 : ℂ)⁻¹ from by norm_num]
+
+/-- The concrete tetrahedral Weyl projectors (from the sign symbol `eps`) are
+idempotent throughout the first Wilson band. -/
+theorem signSymbol_weylProj_idem
+    (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ) (k : Fin 4 → ℝ)
+    (hgU : star gamma5 * gamma5 = (1 : Matrix Spin Spin ℂ))
+    (hgH : star gamma5 = gamma5)
+    (hanti : gamma5 * TetraEuclideanSlashData.Q D (sinCoeffs k)
+        + TetraEuclideanSlashData.Q D (sinCoeffs k) * gamma5 = 0)
+    (hpos : 0 < sqCoeff D a r rho k) :
+    weylProjPlus (signSymbol gamma5 D a r rho k) *
+        weylProjPlus (signSymbol gamma5 D a r rho k) =
+      weylProjPlus (signSymbol gamma5 D a r rho k) ∧
+    weylProjMinus (signSymbol gamma5 D a r rho k) *
+        weylProjMinus (signSymbol gamma5 D a r rho k) =
+      weylProjMinus (signSymbol gamma5 D a r rho k) :=
+  ⟨weylProjPlus_idem _ (signSymbol_sq gamma5 D a r rho k hgU hgH hanti hpos),
+   weylProjMinus_idem _ (signSymbol_sq gamma5 D a r rho k hgU hgH hanti hpos)⟩
+
 end TetraSymbolOverlapGW
 end GateC1
 end NullEdge
