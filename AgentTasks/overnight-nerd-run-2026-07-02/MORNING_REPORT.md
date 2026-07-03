@@ -342,6 +342,10 @@ momentum-window version and position-space sampling/interpolation bridge.
 - C2 technical summary/paper seed now lives at
   `Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md`; it records the honest
   finite-algebra scope and the flux/holonomy frontier for follow-up writing.
+- C2 even-lattice frontier plan now has a tracked numerical oracle,
+  `Scripts/oracle/validate_flux2d_wilson_dirac.py`, reproducing the `L=4,m=-1`
+  Wilson-Dirac zero-to-nonzero index witness and plain-x block reduction. This is
+  design evidence only; the Lean proof must use explicit matrix/congruence data.
 - D3.1 modular defect: DONE and validated (commit 511ed49). The discrete QNEC
   deficit (null-cut 2nd difference of entropy) remains the next Q2 rung.
 - L0 Lean sub-lemmas (CP^1 no-finite-invariant-subset, 3-point stabilizer,

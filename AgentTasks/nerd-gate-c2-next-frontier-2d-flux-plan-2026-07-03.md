@@ -34,6 +34,10 @@ Oracle check (`scratchpad/flux2d_probe.py`, numpy eigvalsh):
   inertia `= 0` in every case (balanced, as predicted);
 - triangle `n = 3`: inertia `-1` (flux `+1`) and `+1` (flux `-1`) - nonzero always.
 
+Tracked follow-up oracle: `Scripts/oracle/validate_flux2d_wilson_dirac.py`
+reproduces the 2D Wilson-Dirac table below and the `L=4,Q=1` plain-x Fourier
+block reduction.
+
 Conclusion: a genuine zero-to-nonzero flux index needs a term that BREAKS the
 bipartite/chiral symmetry - i.e. a WILSON MASS term `r (2 - sum_mu cos p_mu)` added
 to the naive Dirac hopping, exactly the standard lattice mechanism by which the
@@ -172,18 +176,28 @@ assembly over the explicit per-block `S`, `D`.
 
 ## Provenance
 
-Oracle: `scratchpad/flux2d_probe.py` + `scratchpad/flux2d_verify.py`, numpy
-`linalg.eigvalsh`, 2026-07-03,
-exploratory (validates the design claims; NOT a trusted proof and NOT a CI
-fixture). Framework: the certified-sign interface + `epsCFC_trace_eq_inertia`
+Tracked oracle: `Scripts/oracle/validate_flux2d_wilson_dirac.py`, run with:
+
+```text
+python Scripts/oracle/validate_flux2d_wilson_dirac.py
+```
+
+Observed environment during Codex review: Python 3.12.10, numpy 2.4.3. The script
+reproduces the numeric index table and verifies that the `L=4,Q=1` operator
+plain-x Fourier block-diagonalizes into four `8 x 8` blocks, each with signature
+`-2`. It is exploratory (validates the design claims; NOT a trusted proof and NOT
+a CI fixture).
+
+Additional scratchpad references in this note (`scratchpad/flux2d_probe.py`,
+`scratchpad/flux2d_verify.py`, `scratchpad/flux2d_exact*.py`,
+`scratchpad/flux2d_congruence.py`) were not present as tracked repo files during
+Codex review. Treat the exact congruence/eigenvalue claims from those scripts as
+design guidance until the scripts, exact inputs, dependency versions, and
+generation commands are promoted to a reproducible artifact under
+`Scripts/oracle/` (or an equivalent tracked location).
+
+Framework: the certified-sign interface + `epsCFC_trace_eq_inertia`
 (`GateC2/GaugeIndexInertiaForm.lean`). Convention: `H_U` Hermitian, index
 `= -(1/2)(n_+ - n_-)` against traceless `gamma5U = 1 (x) sz`, matching
-`FluxOverlapIndex`.
-
-Codex reproducibility note, 2026-07-03 07:55 PDT: the `scratchpad/flux2d_*.py`
-files cited above were not present as tracked repo files during review. Treat the
-oracle numbers as design guidance until the scripts, exact inputs, dependency
-versions, and generation commands are promoted to a reproducible artifact under
-`Scripts/oracle/` (or an equivalent tracked location). The Lean theorem should
-ultimately depend on the explicit matrices/congruences and kernel proofs, not on
-the scratchpad output.
+`FluxOverlapIndex`. The Lean theorem should ultimately depend on the explicit
+matrices/congruences and kernel proofs, not on oracle output.

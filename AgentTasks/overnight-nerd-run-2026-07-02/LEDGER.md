@@ -578,3 +578,14 @@ oracle numbers as design guidance until the scripts, exact inputs, dependency
 versions, and generation commands are promoted to `Scripts/oracle/` or another
 tracked location. The Lean theorem should rest on explicit matrices/congruences
 and kernel proofs, not on untracked scratchpad output.
+
+## Verification 08:01 codex :: tracked 2D Wilson-Dirac numeric oracle
+Added `Scripts/oracle/validate_flux2d_wilson_dirac.py`, a tracked numerical
+oracle for the even-lattice C2 frontier. Command run:
+`python Scripts/oracle/validate_flux2d_wilson_dirac.py` (Python 3.12.10, numpy
+2.4.3). Output checks passed: with convention
+`U_x(y)=exp(-2*pi*i*Q*y/L)`, `L=4,m=-1,Q=1` has total flux `4`, inertia
+`n_+ - n_- = -8`, index `4`, gap about `0.193937`, determinant about `81`, and
+plain-x Fourier block reduction off-block max `2.77e-16`; each of the four
+`8 x 8` blocks has signature `-2`. The script also reproduces the `L=3,4,5`,
+`Q=0,1,2` table from the plan. This remains oracle evidence only, not a proof.
