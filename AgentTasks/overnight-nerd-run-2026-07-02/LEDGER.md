@@ -277,3 +277,10 @@ esp. (1) is certifiedSign_unique honestly "no functional calculus"? (2) winding
 witness + diagonal join - genuine or sleight-of-hand? (6) biggest gap. Mirrors the
 C1 GW red-team feae0495. Harvest via `aristotle show ee95ba08...` when IDLE; fold
 caveats into docstrings.
+
+## Heartbeat 04:55 claude
+Non-diagonal hopping certified operator banked (signCertificate_HU2_epsW, commit
+fa291f9): HU2=epsW.(Cᴴ C) non-diagonal, certified sign epsW, PSD for free. Answers
+"certificate only for diagonal ops?" - no. C2 red-team ee95ba08 RUNNING (adversarial
+faithfulness of the whole arc). Roadmap + report updated. Full build green (8295)
+with 7 C2 theorem-files. Will harvest red-team + fold caveats when it completes.

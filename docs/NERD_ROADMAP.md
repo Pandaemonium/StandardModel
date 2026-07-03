@@ -135,14 +135,19 @@ Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   the overlap index is INVARIANT under unitary conjugation and the certificate
   transports covariantly - the guardrail that a nonzero index cannot come from a
   gauge/basis conjugation, only a genuine signature change.
+- `OverlapHoppingSignWitness.lean` (`signCertificate_HU2_epsW`): strengthens the
+  join from a diagonal domain wall to a genuinely NON-diagonal hopping operator
+  `HU2 = epsW.(Cᴴ C)` (PSD for free; `HU2_offDiagonal` witnesses non-diagonality) -
+  the certificate is not special to diagonal operators. Caveat: `C` is real (flat
+  connection, no holonomy).
 
 Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
 needs a genuine signature change (Wilson mass across zero), not a flat/tree
-connection. SUCCESSOR: a non-diagonal gauge `HU` with genuine link holonomy
-(block-diagonal w.r.t. the `epsW`-eigenspaces, hopping inside the negative-mass
-block, real link phase), then the anomaly/index-density bridge. The `H^2=coeff.I`
-scalar-square shortcut breaks under such a background - the certified-sign
-interface (`SignCertificate`) is how `sign(H_U)` is pinned without a functional
+connection. SUCCESSOR: a genuine nonzero-FLUX operator (COMPLEX link phases,
+nontrivial holonomy around a loop; the real-hopping `HU2` is flat), then the
+anomaly/index-density bridge. The `H^2=coeff.I` scalar-square shortcut breaks under
+such a background - the certified-sign interface (`SignCertificate`) is how
+`sign(H_U)` is pinned without a functional
 calculus.
 
 ## Tracks
