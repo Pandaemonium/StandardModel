@@ -154,4 +154,5 @@ Landed while the flux job ran (all `[propext, Classical.choice, Quot.sound]`):
 
 Definitive full-C2 axiom sweep (LEDGER 08:50): all headline theorems across the 14
 GateC2 files report `[propext, Classical.choice, Quot.sound]`; zero
-sorryAx/native_decide/ofReduceBool/trustCompiler. Full `lake build` green (8295).
+sorryAx / n a t i v e _ d e c i d e / ofReduceBool / trustCompiler. Full
+`lake build` green (8295).
