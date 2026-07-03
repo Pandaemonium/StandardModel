@@ -1,7 +1,8 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (reconciled through C2 End-index Ghat cleanup `7af42f7`;
-live Aristotle job `f3296d38` RUNNING).**
+**Status: DRAFT (C2 report/source/roadmap reconciled through `9df3636`;
+latest ledger heartbeat `3a692fc`; live Aristotle job `f3296d38` RUNNING as of
+2026-07-03 05:40 PDT).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 standalone file still needs
@@ -179,8 +180,9 @@ momentum-window version and position-space sampling/interpolation bridge.
 ## 6. Build + hygiene
 
 - Full `lake build`: 8295 jobs, "Build completed successfully" after the C2
-  operator density sum-rule commit `4b6c161` and Codex report reconciliation
-  (root build; existing info/linter/deprecation chatter only).
+  End-index warning cleanup `7af42f7` (root build; existing
+  info/linter/deprecation chatter only). Later commits `9df3636` and `3a692fc`
+  were docs/ledger-only.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
