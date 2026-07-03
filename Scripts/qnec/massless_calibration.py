@@ -58,14 +58,20 @@ from pathlib import Path
 import numpy as np
 
 
-def correlation_matrix(n_sites: int) -> np.ndarray:
-    """Ground-state two-point correlation matrix of the half-filled ring."""
-    # Hopping Hamiltonian (real symmetric, periodic).
+def correlation_matrix(n_sites: int, dimerization: float = 0.0) -> np.ndarray:
+    """Ground-state two-point correlation matrix of the half-filled ring.
+
+    `dimerization` in [0, 1) opens a mass gap via alternating hopping
+    `t_i = 1 +- dimerization` (the lattice mass of the (1+1)d Dirac fermion).
+    `dimerization = 0` is the massless (c = 1) critical chain.
+    """
+    # Hopping Hamiltonian (real symmetric, periodic), optionally dimerized.
     h = np.zeros((n_sites, n_sites))
     for i in range(n_sites):
         j = (i + 1) % n_sites
-        h[i, j] -= 1.0
-        h[j, i] -= 1.0
+        t = 1.0 + dimerization * (1.0 if i % 2 == 0 else -1.0)
+        h[i, j] -= t
+        h[j, i] -= t
     # Single-particle eigenmodes, ascending energy.
     energies, modes = np.linalg.eigh(h)
     order = np.argsort(energies)
@@ -93,8 +99,8 @@ def entanglement_entropy(corr: np.ndarray, region: np.ndarray) -> float:
     return float(-np.sum(nu * np.log(nu) + (1.0 - nu) * np.log(1.0 - nu)))
 
 
-def run(n_sites: int) -> dict:
-    corr = correlation_matrix(n_sites)
+def run(n_sites: int, dimerization: float = 0.0) -> dict:
+    corr = correlation_matrix(n_sites, dimerization)
     # Contiguous intervals [0, l) over a window that avoids the smallest-l
     # lattice regime and the l -> N finite-size wrap.
     l_min = max(4, n_sites // 16)
@@ -121,6 +127,21 @@ def run(n_sites: int) -> dict:
         "intercept": float(intercept),
         "central_charge_fit": float(c_fit),
         "residual_sq": resid,
+        "dimerization": float(dimerization),
+        # Saturation diagnostics (meaningful in the massive/dimerized case),
+        # measured over the MIDDLE THIRD of the interval range to avoid both
+        # the small-l lattice regime and the l -> N/2 ring finite-size wrap.
+        # A dimerized gapped chain saturates to a flat AREA LAW, but S(l)
+        # carries a genuine period-2 dimer-parity oscillation (cutting a
+        # strong vs weak bond), so saturation is judged PER PARITY: each of
+        # the two l-parity subseries must be flat.
+        "s_plateau_even": float(np.mean(
+            ys[len(ys) // 3: 2 * len(ys) // 3][0::2])),
+        "s_plateau_odd": float(np.mean(
+            ys[len(ys) // 3: 2 * len(ys) // 3][1::2])),
+        "plateau_spread": float(max(
+            np.std(ys[len(ys) // 3: 2 * len(ys) // 3][0::2]),
+            np.std(ys[len(ys) // 3: 2 * len(ys) // 3][1::2]))),
         "numpy_version": np.__version__,
     }
 
@@ -129,24 +150,38 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--n", type=int, default=256,
                         help="number of ring sites (even)")
+    parser.add_argument("--dimerization", type=float, default=0.0,
+                        help="alternating-hopping gap in [0,1); 0 = massless")
     parser.add_argument("--json", action="store_true",
                         help="also write JSON fixture under Scripts/qnec/out/")
     args = parser.parse_args()
     if args.n % 2 != 0:
         raise SystemExit("n must be even (half filling)")
 
-    result = run(args.n)
-    print(f"# Gate Q2 massless calibration (Peschel free-fermion), "
-          f"N = {result['n_sites']}, numpy {result['numpy_version']}")
-    print(f"# CFT fit: c = 3 * slope = {result['central_charge_fit']:.4f} "
-          f"(target 1.0), intercept = {result['intercept']:.4f}, "
-          f"residual_sq = {result['residual_sq']:.3e}")
+    result = run(args.n, args.dimerization)
+    massive = args.dimerization != 0.0
+    label = ("massive/dimerized" if massive else "massless critical")
+    print(f"# Gate Q2 {label} run (Peschel free-fermion), "
+          f"N = {result['n_sites']}, dimerization = {result['dimerization']}, "
+          f"numpy {result['numpy_version']}")
     print(f"{'l':>5} {'S(l) [nats]':>14} {'X=chord':>12}")
     for length, s, chord in result["rows"]:
         print(f"{length:>5} {s:>14.6f} {chord:>12.6f}")
-    verdict = abs(result["central_charge_fit"] - 1.0)
-    print(f"# |c_fit - 1| = {verdict:.4f} -> "
-          f"{'CALIBRATED (within 3%)' if verdict < 0.03 else 'CHECK: off target'}")
+    if not massive:
+        print(f"# CFT fit: c = 3 * slope = {result['central_charge_fit']:.4f} "
+              f"(target 1.0), intercept = {result['intercept']:.4f}, "
+              f"residual_sq = {result['residual_sq']:.3e}")
+        verdict = abs(result["central_charge_fit"] - 1.0)
+        print(f"# |c_fit - 1| = {verdict:.4f} -> "
+              f"{'CALIBRATED (within 3%)' if verdict < 0.03 else 'CHECK: off target'}")
+    else:
+        # Massive signature: the entropy saturates to a flat area law (per
+        # dimer-cut parity) rather than growing logarithmically.
+        print(f"# massive: area-law plateaus (per dimer-cut parity) = "
+              f"{result['s_plateau_even']:.6f} / {result['s_plateau_odd']:.6f} "
+              f"nats; per-parity flatness spread = "
+              f"{result['plateau_spread']:.3e}")
+        print(f"# -> {'SATURATED (flat area-law plateau per parity, gapped)' if result['plateau_spread'] < 1e-3 else 'not yet saturated: raise N or dimerization'}")
 
     if args.json:
         out_dir = Path(__file__).resolve().parent / "out"

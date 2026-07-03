@@ -571,5 +571,9 @@
   "intercept": 0.7259536893884585,
   "central_charge_fit": 1.0000751926435356,
   "residual_sq": 2.041822241511792e-08,
+  "dimerization": 0.0,
+  "s_plateau_even": 2.0984070381214086,
+  "s_plateau_odd": 2.1019402888734384,
+  "plateau_spread": 0.03871167405544483,
   "numpy_version": "2.4.3"
 }
