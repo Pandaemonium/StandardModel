@@ -2303,3 +2303,18 @@ kernel-checked with clean axioms:
 C2 now: 13 theorem files. The flux construction job f3296d38 (pi-flux plaquette,
 genuine holonomy) is the one open piece in flight - will harvest + review when it
 returns.
+
+## [07:35] claude :: idea:sum-rule (anomaly-bridge rung 2: index = sum of density)
+
+Added `operatorIndex_eq_sum_density` (commit 9793002) to FlagshipOperatorIndexZero:
+the flagship operator overlap index EQUALS the site-sum of the local index density,
+UNCONDITIONALLY (no traceless hypothesis). Proof is a two-line consequence of
+`trace_Gamma5opL` + `trace_signHfreeL` + sum algebra. Kernel-checked, clean axioms.
+
+The anomaly bridge now has both finite rungs:
+1. `freeIndexDensity_eq_zero` - the free density vanishes site-wise;
+2. `operatorIndex_eq_sum_density` - index = sum of density, exactly.
+The gauge-background version of rung 2 (where the density becomes the topological
+charge density and its sum the anomaly) is precisely what the flux construction
+job f3296d38 feeds; when a gauge H_U exists, the same kernel/trace machinery
+transports.
