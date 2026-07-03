@@ -10,8 +10,9 @@ operator sign `sign(Hfree)` and proves that the **local index density**
 
     q(x) := (1/2) . (Tr_spin gamma5 - Tr_spin K(x, x))
 
-vanishes at EVERY site `x` (for traceless chirality, throughout the first Wilson
-band).  This is the local sharpening of the global free-index-zero benchmark
+vanishes at EVERY site `x` under the same traceless-chirality and
+anticommutation hypotheses used in the free-index-zero benchmark. This is the
+local sharpening of the global free-index-zero benchmark
 (`TetraFreeIndexZero.tetraFreeOverlapIndex_eq_zero`): the free theory carries no
 topology not merely in total, but site-by-site.
 
@@ -143,9 +144,10 @@ def freeIndexDensity (gamma5 : Matrix Spin Spin ℂ)
     (D : TetraEuclideanSlashData Spin) (a r rho : ℝ) (x : SiteN N) : ℂ :=
   (2 : ℂ)⁻¹ * (gamma5.trace - (signKernel N gamma5 D a r rho x x).trace)
 
-/-- **The free index density vanishes at every site** (traceless chirality,
-first Wilson band): the free tetrahedral overlap carries no topology locally, not
-merely in total.  First rung of the index-density / anomaly bridge; the gauge
+/-- **The free index density vanishes at every site** (traceless chirality plus
+per-momentum chirality anticommutation): the free tetrahedral overlap carries no
+topology locally, not merely in total. First rung of the index-density / anomaly
+bridge; the gauge
 deformation of this density (where it becomes the topological charge density) is
 the open C2 frontier. -/
 theorem freeIndexDensity_eq_zero (gamma5 : Matrix Spin Spin ℂ)
