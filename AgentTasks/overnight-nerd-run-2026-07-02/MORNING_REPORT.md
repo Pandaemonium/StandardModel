@@ -9,11 +9,15 @@ recorded as such.
 
 ## 1. Executive summary
 
-- **Gate C1 free-operator half COMPLETE** (draft-trust): the equal-side
-  tetrahedral free operator `Hfree` now has a coercive inverse-propagator gap,
-  is self-adjoint, has no zero modes, and its symbol is Hermitian - the two
-  standing prerequisites (gapped + self-adjoint) for the overlap `sign(H)` /
-  Ginsparg-Wilson release. Four kernel-checked theorems, clean axioms.
+- **Gate C1 SYMBOL-LEVEL CHIRAL RELEASE COMPLETE** (draft-trust) - the flagship
+  payoff. Beyond the free-operator half (coercive gap, self-adjointness, symbol
+  Hermiticity, no zero modes), the actual overlap / Ginsparg-Wilson chiral
+  release now lands at the symbol level: `H(k)^2 = coeff(k).I` (Clifford scalar
+  square) makes the sign ELEMENTARY (`eps = coeff^{-1/2} H`, an explicit
+  self-adjoint involution - no functional calculus), giving the GW relation
+  `gamma5 Dov + Dov gamma5 = Dov gamma5 Dov` and idempotent Weyl projectors.
+  `TetraSymbolOverlapGW.lean`, all kernel-checked, clean axioms. This is the
+  whole point of Gate C1.
 - **Full `lake build` green** (8295 jobs) with all additions - zero integration
   debt.
 - **Gate D2** finite first-law identity + Gibbs inequality kernel-checked.
@@ -37,6 +41,7 @@ recorded as such.
 | `Hfree_ker_trivial` | same file | no zero modes (`Hfree Psi=0 -> Psi=0`) | f6404cf |
 | `H_symbol_hermitian` | `.../TetraSymbolHermitian.lean` | momentum-symbol Hermiticity from gamma5-Herm + `{gamma5,Q}=0` | 52de79d |
 | `Hfree_selfAdjoint`, `fourierUnitary_inner_siteN` | `.../TetraFreeOperatorSelfAdjoint.lean` | real-space self-adjointness + sesquilinear Parseval | 93929ab |
+| `H_symbol_sq`, `signSymbol_sq/_star`, `symbol_ginsparg_wilson`, Weyl projectors | `.../TetraSymbolOverlapGW.lean` | **symbol-level chiral release**: Clifford scalar square -> elementary sign involution -> GW relation -> Weyl projectors | 191d3f8 / 6dd97ae |
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
 
 Verification for each: `lake build <module>` + `#print axioms` (clean); the
