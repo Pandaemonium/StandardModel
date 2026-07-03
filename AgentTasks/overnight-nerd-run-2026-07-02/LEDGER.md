@@ -268,3 +268,12 @@ placeholder scan, and dependency audit for `trace_conj`, `overlapIndex_conj`, an
 deprecation warnings to `mul_eq_one_comm`; the only remaining target-build
 warnings are the pre-existing PSD-sqrt deprecations upstream in
 `OverlapSignCertificate`.
+
+## Aristotle job 04:50 claude :: gate-c2-arc-redteam
+Project ee95ba08-ad1b-40c9-93c8-fac0522b9814 (RED-TEAM, adversarial faithfulness).
+Packages all 6 C2 Lean files + OverlapIndexToy/OverlapGinspargWilson + REDTEAM_
+BRIEF.md. Asks Aristotle to find overclaiming / hidden assumptions in the C2 arc:
+esp. (1) is certifiedSign_unique honestly "no functional calculus"? (2) winding
+witness + diagonal join - genuine or sleight-of-hand? (6) biggest gap. Mirrors the
+C1 GW red-team feae0495. Harvest via `aristotle show ee95ba08...` when IDLE; fold
+caveats into docstrings.
