@@ -1,6 +1,7 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (reconciled through C2 certified-sign existence `3ffc63d`).**
+**Status: DRAFT (reconciled through C2 flux-index frontier submission
+`a4df2d4`; live Aristotle job `f3296d38` RUNNING).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 standalone file still needs
@@ -12,96 +13,19 @@ exploratory probes are recorded as such.
 
 ## 1. Executive summary
 
-- **Gate C1 SYMBOL-LEVEL CHIRAL RELEASE COMPLETE** (draft-trust) - the flagship
-  payoff. Beyond the free-operator half (coercive gap, self-adjointness, symbol
-  Hermiticity, no zero modes), the actual overlap / Ginsparg-Wilson chiral
-  release now lands at the symbol level: `H(k)^2 = coeff(k).I` (Clifford scalar
-  square) makes the sign ELEMENTARY (`eps = coeff^{-1/2} H`, an explicit
-  self-adjoint involution - no functional calculus), giving the GW relation
-  `gamma5 Dov + Dov gamma5 = Dov gamma5 Dov` and idempotent Weyl projectors.
-  `TetraSymbolOverlapGW.lean`, all kernel-checked, standard dependency
-  footprint. This is the
-  whole point of Gate C1. **Adversarially validated**: an Aristotle red-team
-  (feae0495) confirmed the release is FAITHFUL - the elementary sign genuinely
-  equals the spectral `H(H^2)^{-1/2}`, "scalar square makes the sign elementary"
-  is a real shortcut not sleight of hand - with honesty caveats folded into the
-  docstring. And now **lifted to the FULL OPERATOR LEVEL**: the two-sided Fourier
-  isomorphism (`TetraFourierInverse.lean`), `sign(Hfree)` proved a self-adjoint
-  involution (`signHfree_involutive` + `signHfree_selfAdjoint`), and the
-  real-space overlap Dirac operator `DovOp = 1 + Gamma5.signHfree` satisfying the
-  **operator-level Ginsparg-Wilson relation** (`TetraOperatorOverlapGW.lean`,
-  `operator_ginsparg_wilson`: `Gamma5 Dov + Dov Gamma5 = Dov Gamma5 Dov` as
-  real-space operators, via the Fourier-transport pattern), plus real-space Weyl
-  projectors (`TetraOperatorWeylProjectors.lean`) with `P+ + P- = 1`,
-  `P+ - P- = signHfree`, idempotency, and the `+1` eigenspace theorem. This is
-  the complete free (no-gauge) chiral fermion release on the tetrahedral
-  regulator, kernel-checked at both the per-momentum symbol level and the
-  real-space operator level.
-- **Gate C2 OPENED and driven past the minimal arc** (draft-trust, kernel-
-  checked, `GateC2/`, nine theorem files): (1) `overlapIndex_isInteger` - the
-  finite overlap index is an **integer** for any involutions (diff of
-  eigenprojector ranks, no Hermiticity); (2) `overlapIndexEnd_isInteger` - the
-  same integrality interface for finite complex endomorphisms, so operator
-  indices do not need a matrix choice; (3) `tetraFreeOverlapIndex_eq_zero` - the
-  **free benchmark**, index 0 for traceless chirality; (4)
-  `overlapIndex_gamma5WQ_epsWQ_eq` - the **C2a winding witness**, a graded
-  involution family with index exactly Q (realizes every winding charge, defeats
-  the free-zero); (5) `certifiedSign_unique` - the **C2b uniqueness backbone**,
-  an involution commuting with a gapped Hermitian `H` and with `eps.H` PSD is
-  UNIQUE (= sign(H)) via PSD-sqrt uniqueness; (6) `certifiedSign_exists` /
-  `certifiedSign_eq_epsCFC` - the **C2b existence closure**, `epsCFC = |H| H^-1`
-  is a certificate and any certificate equals it; (7)
-  `signCertificate_HU_epsW` / `signCertificate_HU_unique` - the **C2a->C2b
-  join**, the winding `eps` is a genuine certified sign of an explicit gapped
-  mass-defect operator, and any certified sign of that operator equals `epsW`,
-  so index 1 is a real sign-of-operator index; (8) `overlapIndex_conj` /
-  `SignCertificate.conj` - gauge/basis conjugation cannot change the finite
-  index and transports certificates; (9) `signCertificate_HU2_epsW` plus
-  `HU2_isHermitian` / `signCertificate_HU2_unique` - a genuinely non-diagonal
-  real-hopping operator has unique certified sign `epsW`. The index ALGEBRA was
-  already in `GateC1.OverlapIndexToy` (not duplicated). Aristotle strategy job
-  `c36ea1a8` guided the arc, red-team job `ee95ba08` validated the C2 claims as
-  faithful while flagging caveats, and Aristotle proof job `66972f62` closed the
-  general certified-sign existence gap. SUCCESSOR: a genuine nonzero-holonomy
-  gauge `H_U` and the anomaly/index-density bridge.
-- **Full `lake build` green** (8295 jobs) including the operator-level chain,
-  the operator Weyl projectors, and the expanded Gate C2 layer; latest run
-  completed successfully after the `3ffc63d` C2 existence harvest and Codex's
-  docstring/report reconciliation.
-- **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
-  faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
-  determinant/reverse-Cauchy/square-root mass superadditivity, I3.5
-  determinant-line clock algebra, and a conditional finite `U(2)` spin-clock
-  split algebra.
-- **Gate D finite stack** kernel-checked through D1 product-marginal
-  subadditivity, D2 finite first-law/Gibbs/fixed-modular-energy stationarity,
-  D3.0 finite no-proper-shrink skeleton, and D6 classical checkerboard
-  Bernoulli turn weights with fixed mean turn count.
-  (Codex independently rebuilt/audited the C2 integrality module - dependency
-  footprint clean - and its recommended sequencing, operator-level instantiation then gauge toy,
-  matches the plan above.) The Aristotle strategy job `c36ea1a8` returned: the
-  index is `-(1/2) sig(eps_U)`, so a nonzero index needs a genuine signature
-  change (Wilson mass across zero via flux), not a flat/tree connection; it
-  recommends a C2a algebra/topology bridge (explicit tunable-signature involution,
-  `overlapIndex = Q`) before the hard C2b `eps_U = sign(H_U)` positivity
-  certificate.
-- **Gate L0.1** no-go argument corrected via an Aristotle red-team (Palm
-  marginalization + proximality + first-moment dichotomy) - the original sketch
-  was refuted and repaired.
-- **Gate Q2** numerics (FOUR validated results): massless c=1 CFT calibration,
-  massive area-law saturation, the **D3.1 modular defect** (modular Hamiltonian
-  commutes with the parabolic BW boost, defect ~1/L^2 - the "time is modular" /
-  F-M2 datum), and the **lattice first law** dS = d<K> (ratio -> 1, the
-  numerical bridge to the kernel-checked Gate D2 identity `finite_first_law`).
-- **Checkerboard T1b accumulated Trotter return integrated** in
-  `NullEdgeStandalone`: pointwise-in-momentum scoped `L_infinity`
-  checkerboard-to-Dirac convergence is kernel-checked, and Codex then promoted
-  the original `matrixL1Norm` boundary to the proved theorem
-  `checkerboard_dirac_limit_statement`.
-- Aristotle used as a genuine partner: L0/C1/C2 strategy, red-team, and proof
-  jobs materially improved and hardened the results; the C2 certified-sign
-  existence proof was harvested and integrated.
-- ~30 verified commits (Claude), all prefixed `overnight-20260702:`, green tree.
+- C1 free chiral release is kernel-checked through operator-level GW, Weyl
+  projectors, and the C2 operator-index bridge; the latest full `lake build` passed.
+- C2 now has ten committed draft theorem files: integrality, operator-index
+  packaging, free-zero, winding, certified-sign uniqueness/existence, gauge
+  covariance, and a non-diagonal hopping witness; holonomy/anomaly remain next,
+  with Aristotle flux-index frontier job `f3296d38` currently running.
+- Codex's I1/P2 standalone stack and Gate D draft stack are kernel-checked and
+  semantically cross-reviewed, but the I1/P2 stack still needs main-tree porting.
+- Checkerboard T1b landed accumulated/fixed-time pointwise Dirac-limit theorems
+  in `NullEdgeStandalone`; uniform momentum-window and position-space bridges
+  remain.
+- Aristotle materially changed the night: L0.1 corrected, C1/C2 red-teamed, C2
+  strategy shaped, and `66972f62` closed certified-sign existence.
 
 ## 2. Theorems landed (Claude, kernel-checked, dependency footprint = propext/Classical.choice/Quot.sound)
 
@@ -118,6 +42,7 @@ exploratory probes are recorded as such.
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
 | `overlapIndex_isInteger`, `specProj_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexIntegrality.lean` | **Gate C2 opened**: the finite overlap chiral index is an INTEGER (diff of eigenprojector ranks; trace-of-idempotent = finrank); needs only involution, not Hermiticity | dceb6f1 |
 | `overlapIndexEnd_isInteger`, `specProjEnd_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexEndIntegrality.lean` | **C2 End-native integrality**: the operator overlap index `(1/2)(Tr f - Tr g)` for finite complex endomorphism involutions is an integer, as a difference of projector range dimensions; no matrix choice needed | 9c2341f |
+| `flagship_operatorIndex_isInteger`, `signHfreeL_mul_self`, `Gamma5opL_mul_self` | `PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndex.lean` | **C1<->C2 operator bridge**: bundles `Gamma5op` and `signHfree` as finite complex endomorphisms, proves both are involutions, and instantiates End-integrality so the free tetrahedral operator overlap index is an integer | 38aba2b |
 | `tetraFreeOverlapIndex_eq_zero`, `trace_gamma5_mul_Q_eq_zero` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexZero.lean` | **C2 free benchmark**: the free tetrahedral overlap index is 0 for traceless chirality (`Tr(g5.Q)=0` from `{g5,Q}=0`+cyclicity); the no-topology-in-free-theory calibration | 239b9e6 |
 | `overlapIndex_gamma5WQ_epsWQ_eq` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexWindingWitness.lean` | **C2a winding witness**: block-stacked graded involution family with overlap index EXACTLY Q (realizes every winding charge; defeats free-zero). Bridge - `eps` constructed with target signature | 373de95 |
 | `certifiedSign_unique`, `signCertificate_mul_sq`, `SignCertificate.dov_ginspargWilson` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignCertificate.lean` | **C2b uniqueness backbone**: for gapped Hermitian H, an involution with `[eps,H]=0` and `eps.H` PSD is UNIQUE (= sign(H)), via PSD-sqrt uniqueness (NO functional calculus); a certified sign yields a GW overlap | 9f97af2 |
@@ -150,21 +75,27 @@ All Codex rows are draft/staging. Dependency audits reported
 
 ### Cross-review coverage (Claude reviewed Codex's I1/D; discussion log has details)
 
-Claude semantic-cross-reviewed six load-bearing Codex theorems - all **ACCEPTED**
-(statement matches intended math, mostly-minus convention consistent, no hidden
-assumptions): `i1_2_minkHerm_posSemidef_iff_futureCone` (PSD iff closed forward
-cone), `i1_9_minkHerm_mul_bar_eq_minkowskiSq` (`(sigma.p)(sigmabar.p)=p^2.I` Dirac
+Claude semantic-cross-reviewed ten load-bearing Codex theorem clusters - all
+**ACCEPTED** (statement matches intended math, mostly-minus convention
+consistent, no hidden assumptions): `i1_2_minkHerm_posSemidef_iff_futureCone`
+(PSD iff closed forward cone), `i1_9_minkHerm_mul_bar_eq_minkowskiSq` (Dirac
 square), `i2_minkHerm_faithful_iff_futureTimelike` (PosDef iff strict
-future-timelike, "null edges do not age"), `i3_5_clock_det` (det-line clock rotates
-at frequency `2m`), `d1_joint_entropy_subadditivity` (`H(X,Y) <= H(X)+H(Y)`), and
-`a1_boost_eigenvalue_ratio` (boost-Gibbs eigenvalue ratio `exp(2 eta)`). The I1
-Core docstring now explicitly records the mostly-minus signature and `Momentum4`
-coordinate order (`p 0` = energy).
+future-timelike, "null edges do not age"), `i3_5_clock_det` (det-line clock
+rotates at frequency `2m`), `a1_boost_eigenvalue_ratio` (boost-Gibbs eigenvalue
+ratio `exp(2 eta)`), `a2_sqrt_minkowskiSq_add_ge_of_futureCone` (reverse
+triangle inequality for future masses), `u2_phase_su_decomposition` (finite
+`U(2)` phase/SU split), `d1_joint_entropy_subadditivity`
+(`H(X,Y) <= H(X)+H(Y)`), `subspaceImage_pow_eq_of_halfSided` (finite
+half-sided-shrink skeleton), and `d6_classical_growth_is_bernoulli`
+(checkerboard Bernoulli growth weights). The I1 Core docstring now explicitly
+records the mostly-minus signature and `Momentum4` coordinate order (`p 0` =
+energy).
 Codex reciprocally reviewed + accepted Claude's C2 gauge-invariance, hopping
-witness, and integrality bricks. Conversely, an Aristotle red-team (ee95ba08)
-validated the whole C2 arc FAITHFUL (caveats folded, commit f79073d).
+witness, integrality, certified-sign existence, and flagship operator-index
+bricks. Conversely, an Aristotle red-team (ee95ba08) validated the whole C2 arc
+FAITHFUL (caveats folded, commit f79073d).
 
-## 3. Aristotle registry (final)
+## 3. Aristotle registry (current)
 
 Submitted/harvested tonight (summaries in gitignored
 `AgentTasks/aristotle-output/<id>/REPORT_SUMMARY.md` when downloaded):
@@ -182,6 +113,9 @@ Submitted/harvested tonight (summaries in gitignored
   `OverlapSignExistence.lean`; proves abstract certified-sign existence for any
   gapped Hermitian `H` and combines with uniqueness in
   `certifiedSign_eq_epsCFC`.
+- `f3296d38` gate-c2-flux-index - RUNNING at latest check; ambitious frontier
+  construction/proof attempt for the first genuinely fluxed finite-lattice C2
+  index. No Lean result has been harvested or integrated yet.
 Pre-run checkerboard backlog dry-run-inspected by Codex/T0; row-sum,
 L-infinity, L2/unitarity, and accumulated-Trotter returns are integrated in
 `NullEdgeStandalone`. The older gate-c1-* backlog was found already integrated
@@ -195,12 +129,13 @@ None outstanding on the Claude side through the C1 free release: every theorem
 is committed, verified, and the full tree built after that batch. Codex's I1/P2
 work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
 is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
-are targeted-build green and committed in `6e1a7e5`; semantic cross-review plus a
-full build remain morning integration tasks.
+are targeted-build green and committed in `6e1a7e5`; full-tree build has since
+passed, while broader semantic review remains before any trusted promotion.
 Gate C2's abstract certified-sign existence job (`66972f62`) has been harvested
 and integrated in `OverlapSignExistence.lean`; the C2 Lean arc is committed,
 caveated, red-team validated, and full-build green after the post-existence
-refresh.
+refresh. A fresh C2 flux-index Aristotle frontier job (`f3296d38`) is running;
+no theorem from that job is integrated yet.
 Checkerboard T1b: accumulated Trotter, the matching-time `matrixL1Norm`
 boundary theorem, and the fixed-target-time variant are now integrated into
 `NullEdgeStandalone`; remaining checkerboard work is the uniform
@@ -222,6 +157,9 @@ momentum-window version and position-space sampling/interpolation bridge.
 - Gate C2 integrality brick locally verified by Codex after Claude's commit
   dceb6f1; strategy recommendation is operator-level instantiation, bounded
   free-index-zero calibration, then gauge toy.
+- C2 flagship operator-index bridge ACCEPTED (Codex); `Gamma5op` and
+  `signHfree` are bundled as endomorphisms and instantiate End-integrality, but
+  this remains a free/no-gauge operator-index statement, not a holonomy theorem.
 - C2 diagonal join, gauge-invariance, and non-diagonal hopping witness
   cross-reviews ACCEPTED (Codex); the diagonal and hopping witnesses were tightened
   so uniqueness claims are represented by Lean theorem boundaries.
@@ -229,8 +167,8 @@ momentum-window version and position-space sampling/interpolation bridge.
   uniqueness-not-existence caveat is now closed by `66972f62`/`3ffc63d`, while
   Q=1-only operator certification, no holonomy, and no anomaly/index-density
   theorem remain explicit caveats.
-- I1 semantic cross-reviews `i1_2`, `i1_9`, `i2`, `i3.5`, and `a1` ACCEPTED
-  (Claude); D1 subadditivity cross-review ACCEPTED (Claude).
+- Claude semantic cross-reviews ACCEPTED all ten Codex clusters: I1.2, I1.9,
+  I2, I3.5, A1, A2, U(2), D1, D3.0, and D6.
 - `review:gate-d-firstlaw` ACCEPTED (Codex); D1 handed to Codex.
 - Harvest division agreed (Claude gate-c1-*, Codex checkerboard).
 - No disagreements parked for the user.
@@ -238,8 +176,8 @@ momentum-window version and position-space sampling/interpolation bridge.
 ## 6. Build + hygiene
 
 - Full `lake build`: 8295 jobs, "Build completed successfully" after the C2
-  existence harvest `3ffc63d` and Codex docstring/report reconciliation (existing
-  info/linter/deprecation chatter only).
+  flagship operator-index bridge `38aba2b` and Codex report reconciliation
+  (existing info/linter/deprecation chatter only).
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
@@ -262,6 +200,12 @@ momentum-window version and position-space sampling/interpolation bridge.
   clean; dependency audit for `specProjEnd_isIdempotent`,
   `specProjEnd_trace_eq_finrank`, `overlapIndexEnd_eq_specProj_sub`, and
   `overlapIndexEnd_isInteger` = `[propext, Classical.choice, Quot.sound]`.
+- Codex C2 flagship operator-index cross-review: `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.FlagshipOperatorIndex`; placeholder scan
+  clean; dependency audit for `signHfree_add`, `signHfree_smul`,
+  `signHfreeL_mul_self`, `Gamma5opL_mul_self`, and
+  `flagship_operatorIndex_isInteger` =
+  `[propext, Classical.choice, Quot.sound]`; full `lake build` passed afterward.
 - Codex C2 certified-sign existence cross-review: `lake build
   PhysicsSM.Draft.NullEdge.GateC2.OverlapSignExistence`; placeholder scan clean
   for `OverlapSignExistence.lean` and `OverlapSignCertificate.lean`; dependency
