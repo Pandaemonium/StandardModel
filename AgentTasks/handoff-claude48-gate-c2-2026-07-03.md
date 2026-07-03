@@ -14,7 +14,7 @@ before continuing Gate C2. Companion documents:
 ## 1. State of the tree
 
 - Full `lake build` GREEN (8295 jobs), last confirmed after code cleanup
-  `7af42f7`; later commits through `040e513` were docs/ledger/handoff-only.
+  `7af42f7`; later final-sweep commits were docs/ledger/handoff-only.
 - Everything below is draft-trust, kernel-checked, dependency footprint exactly
   `[propext, Classical.choice, Quot.sound]` (consolidated audit in LEDGER
   heartbeat 05:35). No `s o r r y` / `n a t i v e _ d e c i d e` anywhere in
