@@ -107,6 +107,60 @@ theorem fourierChar_site_sum_eq_ite (N : ℕ) [NeZero N] (m : MomN N) :
     intro h
     exact hm ((fourierChar_bijective N).1 (h.trans (fourierChar_zero N).symm))
 
+/-- **Row orthogonality** of the Fourier-convention character table: summing the
+product `chi_m(x) . conj(chi_{m'}(x))` over sites `x` gives `card . delta_{m m'}`.
+Reduces to the `siteAddChar` pair orthogonality via the character identities. -/
+theorem fourierChar_row_orthogonality (N : ℕ) [NeZero N] (m m' : MomN N) :
+    ∑ x : SiteN N, fourierChar N m x * star (fourierChar N m' x) =
+      if m = m' then (Fintype.card (SiteN N) : ℂ) else 0 := by
+  rw [← siteAddChar_pair_orthogonality_mom_eq_ite N m m']
+  apply Finset.sum_congr rfl
+  intro x _
+  unfold fourierChar
+  rw [AddChar.add_apply]
+  congr 1
+  rw [AddChar.neg_apply, AddChar.map_neg_eq_conj, starRingEnd_apply, star_star]
+
+/-- **Forward-inverse round trip**: the forward transform undoes the inverse
+transform, `fourierUnitary (fourierUnitaryInv Phi) = Phi`.  Together with
+`fourierUnitaryInv_fourierUnitary` this makes `fourierUnitary` a genuine finite
+isometric isomorphism, the two-sided inverse needed to package the per-momentum
+sign symbols into a real-space `sign(Hfree)` operator. -/
+theorem fourierUnitary_fourierUnitaryInv (N : ℕ) [NeZero N]
+    (Phi : MomN N → Spin → ℂ) :
+    fourierUnitary N (fourierUnitaryInv N Phi) = Phi := by
+  funext m s
+  have hnf : (fourierNormFactor N : ℂ) * (fourierNormFactor N : ℂ) *
+      (Fintype.card (SiteN N) : ℂ) = 1 := by
+    exact_mod_cast fourierNormFactor_sq_mul_card N
+  unfold fourierUnitary fourierUnitaryInv rawFourier
+  rw [Finset.mul_sum]
+  simp_rw [Finset.mul_sum]
+  rw [Finset.sum_comm]
+  have factored : ∀ m' : MomN N,
+      (∑ x : SiteN N, (fourierNormFactor N : ℂ) *
+        (fourierChar N m x * ((fourierNormFactor N : ℂ) *
+          (star (fourierChar N m' x) * Phi m' s))))
+      = ((fourierNormFactor N : ℂ) * (fourierNormFactor N : ℂ) * Phi m' s) *
+          ∑ x : SiteN N, fourierChar N m x * star (fourierChar N m' x) := by
+    intro m'
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro x _
+    ring
+  rw [Finset.sum_congr rfl (fun m' _ => factored m')]
+  simp_rw [fourierChar_row_orthogonality, mul_ite, mul_zero]
+  rw [Finset.sum_ite_eq Finset.univ m
+    (fun m' => (fourierNormFactor N : ℂ) * (fourierNormFactor N : ℂ) * Phi m' s *
+      (Fintype.card (SiteN N) : ℂ))]
+  simp only [Finset.mem_univ, if_true]
+  calc
+    (fourierNormFactor N : ℂ) * (fourierNormFactor N : ℂ) * Phi m s *
+        (Fintype.card (SiteN N) : ℂ)
+        = ((fourierNormFactor N : ℂ) * (fourierNormFactor N : ℂ) *
+            (Fintype.card (SiteN N) : ℂ)) * Phi m s := by ring
+    _ = Phi m s := by rw [hnf, one_mul]
+
 end TetraFourierInverse
 end GateC1
 end NullEdge
