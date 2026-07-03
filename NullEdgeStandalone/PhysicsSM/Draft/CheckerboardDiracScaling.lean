@@ -1563,6 +1563,33 @@ section RefinementLimit
 
 open scoped Matrix.Norms.Operator
 
+/-- The continuum Dirac evolution symbol is continuous in the time parameter.
+
+This is the analytic bridge needed to replace the matching discrete total time
+`(R.data k).totalTime` by the fixed target time `R.T` in refinement limits. -/
+theorem diracEvolutionSymbol_continuous_time (m p : Real) :
+    Continuous (fun t : Real => diracEvolutionSymbol m p t) := by
+  unfold diracEvolutionSymbol
+  have hcoef : Continuous (fun t : Real => (-Complex.I * (t : Complex))) := by
+    exact continuous_const.mul Complex.continuous_ofReal
+  have hinner : Continuous (fun t : Real => (-Complex.I * (t : Complex)) •
+      diracHamiltonianSymbol m p) := by
+    exact hcoef.smul continuous_const
+  simpa [Function.comp_def] using
+    (NormedSpace.exp_continuous
+      (𝔸 := Matrix Direction Direction Complex)).comp hinner
+
+/-- Along a refinement family, the continuum comparison at the matching
+discrete total time converges to the continuum comparison at the fixed target
+time `R.T`. -/
+theorem diracEvolutionSymbol_tendsto_refinement_time
+    (R : CheckerboardDiracRefinement) (p : Real) :
+    Filter.Tendsto
+      (fun k => diracEvolutionSymbol (R.data k).m p (R.data k).totalTime)
+      Filter.atTop (nhds (diracEvolutionSymbol (R.data 0).m p R.T)) := by
+  have ht := (diracEvolutionSymbol_continuous_time (R.data 0).m p).tendsto R.T
+  simpa [R.mass_const] using ht.comp R.totalTime_tendsto
+
 /-
 Eventual per-step second-order discrepancy bound along a refinement family:
 there is a nonnegative constant `C` with `‖raw - cont‖ ≤ C * eps ^ 2` for all
@@ -1626,24 +1653,77 @@ theorem checkerboard_dirac_limit_statement
       (tendsto_const_nhds.mul
         (linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero R p))
 
+/-- Pointwise-in-momentum checkerboard-to-Dirac limit at the fixed target time.
+
+This upgrades `checkerboard_dirac_limit_statement`, which compares against the
+continuum symbol at the matching discrete total time, by using continuity of the
+continuum Dirac evolution in the time parameter and the refinement hypothesis
+`(R.data k).totalTime -> R.T`. -/
+theorem checkerboard_dirac_limit_statement_fixed_time
+    (R : CheckerboardDiracRefinement) (p : Real) :
+    Filter.Tendsto
+      (fun k => matrixL1Norm (momentumEvolution (R.data k) p -
+        diracEvolutionSymbol (R.data 0).m p R.T))
+      Filter.atTop (nhds 0) := by
+  let C := diracEvolutionSymbol (R.data 0).m p R.T
+  have hmatch : Filter.Tendsto
+      (fun k => diracEvolutionSymbol (R.data k).m p (R.data k).totalTime)
+      Filter.atTop (nhds C) := by
+    simpa [C] using diracEvolutionSymbol_tendsto_refinement_time R p
+  have htail : Filter.Tendsto
+      (fun k => matrixL1Norm (diracEvolutionSymbol (R.data k).m p
+        (R.data k).totalTime - C))
+      Filter.atTop (nhds 0) := by
+    refine matrixL1Norm_tendsto_zero ?_
+    simpa [C] using hmatch.sub (tendsto_const_nhds (x := C))
+  refine squeeze_zero
+    (fun k => matrixL1Norm_nonneg (momentumEvolution (R.data k) p - C))
+    (g := fun k => momentumEvolutionDiscrepancy (R.data k) p +
+      matrixL1Norm (diracEvolutionSymbol (R.data k).m p
+        (R.data k).totalTime - C))
+    (fun k => ?_) ?_
+  · have hsplit : momentumEvolution (R.data k) p - C =
+        (momentumEvolution (R.data k) p -
+          diracEvolutionSymbol (R.data k).m p (R.data k).totalTime) +
+        (diracEvolutionSymbol (R.data k).m p (R.data k).totalTime - C) := by
+      abel
+    calc
+      matrixL1Norm (momentumEvolution (R.data k) p - C)
+          = matrixL1Norm ((momentumEvolution (R.data k) p -
+              diracEvolutionSymbol (R.data k).m p (R.data k).totalTime) +
+            (diracEvolutionSymbol (R.data k).m p
+              (R.data k).totalTime - C)) := by
+              rw [hsplit]
+      _ ≤ matrixL1Norm (momentumEvolution (R.data k) p -
+              diracEvolutionSymbol (R.data k).m p (R.data k).totalTime) +
+            matrixL1Norm (diracEvolutionSymbol (R.data k).m p
+              (R.data k).totalTime - C) :=
+          matrixL1Norm_add_le _ _
+      _ = momentumEvolutionDiscrepancy (R.data k) p +
+            matrixL1Norm (diracEvolutionSymbol (R.data k).m p
+              (R.data k).totalTime - C) := by
+          rfl
+  · simpa using (checkerboard_dirac_limit_statement R p).add htail
+
 end RefinementLimit
 
 /-!
-## Proven theorem boundary: `checkerboard_dirac_limit_statement`
+## Proven theorem boundary
 
 The pointwise-in-momentum finite-dimensional checkerboard-to-Dirac limit is now
-proved in `matrixL1Norm` above. The theorem compares the finite `N`-step
-momentum-space checkerboard symbol with the continuum Dirac evolution at the
-matching discrete total time `(R.data k).totalTime`, under the explicit
-refinement-family assumptions `eps -> 0`, fixed mass, and matched total time.
+proved in `matrixL1Norm` above. The theorem
+`checkerboard_dirac_limit_statement` compares the finite `N`-step
+momentum-space checkerboard symbol with the continuum Dirac evolution at
+matching discrete total time `(R.data k).totalTime`. The theorem
+`checkerboard_dirac_limit_statement_fixed_time` upgrades this to the fixed
+target time `R.T`, under the explicit refinement-family assumptions
+`eps -> 0`, fixed mass, and matched total time.
 
 Remaining refinements for the next checkerboard layer:
 
-1. State a fixed-target-time variant against `diracEvolutionSymbol m p R.T`,
-   using continuity in the time parameter and `R.totalTime_tendsto`.
-2. Add a uniform-on-window version for `MomentumWindow`, rather than the current
+1. Add a uniform-on-window version for `MomentumWindow`, rather than the current
    pointwise-in-momentum theorem.
-3. Connect this momentum-space limit to the intended position-space sampling and
+2. Connect this momentum-space limit to the intended position-space sampling and
    interpolation API.
 -/
 

@@ -144,10 +144,10 @@ work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
 is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
 are targeted-build green and committed in `6e1a7e5`; semantic cross-review plus a
 full build remain morning integration tasks.
-Checkerboard T1b: accumulated Trotter and the `matrixL1Norm` boundary theorem
-are now integrated into `NullEdgeStandalone`; remaining checkerboard work is the
-fixed-target-time variant, uniform momentum-window version, and any still-
-deferred older checkerboard returns not on tonight's critical path.
+Checkerboard T1b: accumulated Trotter, the matching-time `matrixL1Norm`
+boundary theorem, and the fixed-target-time variant are now integrated into
+`NullEdgeStandalone`; remaining checkerboard work is the uniform
+momentum-window version and position-space sampling/interpolation bridge.
 
 ## 5. Decisions + review outcomes
 
@@ -197,6 +197,13 @@ deferred older checkerboard returns not on tonight's critical path.
   `matrixL1Norm_le_two_mul_linftyOpNorm` and
   `checkerboard_dirac_limit_statement` =
   `[propext, Classical.choice, Quot.sound]`.
+- Checkerboard fixed-target-time follow-up checks: `lake build
+  PhysicsSM.Draft.CheckerboardDiracScaling`, `lake env lean PhysicsSM.lean`,
+  `lake build NullEdgeStandalone`; placeholder scan clean; dependency audit for
+  `diracEvolutionSymbol_continuous_time`,
+  `diracEvolutionSymbol_tendsto_refinement_time`, and
+  `checkerboard_dirac_limit_statement_fixed_time` =
+  `[propext, Classical.choice, Quot.sound]`.
 - Axiom audits: all trusted-track theorems `[propext, Classical.choice,
   Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in any committed
   Lean this run.
@@ -225,8 +232,9 @@ deferred older checkerboard returns not on tonight's critical path.
 2. Scope Gate C2 with an explicit strategy/red-team packet before gauge
    construction: gauge-link covariance and admissible-sign interface first,
    finite index density/anomaly bridge after that facade is pinned.
-3. For checkerboard T1b, upgrade the proved pointwise `matrixL1Norm` boundary to
-   a fixed-target-time theorem and then a uniform momentum-window version.
+3. For checkerboard T1b, upgrade the fixed-target-time pointwise theorem to a
+   uniform momentum-window version, then connect the momentum-space limit to the
+   position-space sampling/interpolation API.
 
 ## 9. Literature log summary
 

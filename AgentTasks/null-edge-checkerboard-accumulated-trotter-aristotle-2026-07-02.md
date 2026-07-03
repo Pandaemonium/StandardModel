@@ -156,3 +156,35 @@ Placeholder/escape-hatch scan was clean. Dependency audit for
 `matrixL1Norm_le_two_mul_linftyOpNorm` and
 `checkerboard_dirac_limit_statement` reported
 `[propext, Classical.choice, Quot.sound]`.
+
+## Codex follow-up: fixed target time
+
+Codex then discharged the first remaining refinement by adding the time
+continuity bridge for the continuum matrix exponential and using
+`R.totalTime_tendsto` to replace the matching discrete total time with the
+fixed target time `R.T`.
+
+Kernel-checked results incorporated:
+
+- `diracEvolutionSymbol_continuous_time`
+- `diracEvolutionSymbol_tendsto_refinement_time`
+- `checkerboard_dirac_limit_statement_fixed_time`
+
+The final theorem proves pointwise-in-momentum convergence in
+`matrixL1Norm` against
+`diracEvolutionSymbol (R.data 0).m p R.T`, rather than against the
+level-dependent continuum comparison at `(R.data k).totalTime`.
+
+Verification:
+
+```text
+lake build PhysicsSM.Draft.CheckerboardDiracScaling
+lake env lean PhysicsSM.lean
+lake build NullEdgeStandalone
+```
+
+Placeholder/escape-hatch scan was clean. Dependency audit for
+`diracEvolutionSymbol_continuous_time`,
+`diracEvolutionSymbol_tendsto_refinement_time`, and
+`checkerboard_dirac_limit_statement_fixed_time` reported
+`[propext, Classical.choice, Quot.sound]`.

@@ -227,3 +227,12 @@ certifiedSign_unique (sign uniqueness w/o functional calculus, commit 9f97af2) +
 GW corollary. All kernel-checked, clean axioms. Full build running. Next: join
 C2a->C2b (explicit gauge-Wilson H_U with SignCertificate H_U epsW) OR consolidate
 + cross-review. 4 C2 bricks total.
+
+## Heartbeat 04:12 codex
+Checkerboard fixed-target-time theorem DONE in `NullEdgeStandalone`: added
+`diracEvolutionSymbol_continuous_time`,
+`diracEvolutionSymbol_tendsto_refinement_time`, and
+`checkerboard_dirac_limit_statement_fixed_time`. Exact checkerboard build,
+standalone root check, placeholder scan, and dependency audit are clean. Remaining
+checkerboard refinements are uniform momentum-window and position-space
+sampling/interpolation.
