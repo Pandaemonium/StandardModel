@@ -135,11 +135,25 @@ theorem trace_signKernel_diag_eq_zero (gamma5 : Matrix Spin Spin ℂ)
       trace_signSymbol_eq_zero gamma5 D a r rho (kOfMom N m) (hanti m) hg5tr),
     smul_zero]
 
+/-- **The index-density sum rule** (unconditional): the operator overlap index is
+the site-sum of the local index density,
+`overlapIndexEnd Gamma5op sign(Hfree) = sum_x q(x)`.  No traceless hypothesis -
+this is the finite, exact form of "the index is the integral of the index
+density", the structural identity whose gauge-background version is the anomaly
+statement. -/
+theorem operatorIndex_eq_sum_density (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ) :
+    overlapIndexEnd (Gamma5opL N gamma5) (signHfreeL N gamma5 D a r rho)
+      = ∑ x : SiteN N, freeIndexDensity N gamma5 D a r rho x := by
+  unfold overlapIndexEnd freeIndexDensity
+  rw [trace_Gamma5opL, trace_signHfreeL, ← Finset.mul_sum,
+    Finset.sum_sub_distrib, Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+
 /-- **The free tetrahedral chiral OPERATOR index is exactly ZERO** (traceless
-chirality, first Wilson band).  The exact-value companion of
-`flagship_operatorIndex_isInteger`: the free operator carries no topology.  This
-is the operator-level free benchmark that a genuine gauge background (the open C2
-frontier) must defeat. -/
+chirality plus per-momentum chirality anticommutation). The exact-value companion
+of `flagship_operatorIndex_isInteger`: the free operator carries no topology.
+This is the operator-level free benchmark that a genuine gauge background (the
+open C2 frontier) must defeat. -/
 theorem flagship_operatorIndex_eq_zero (gamma5 : Matrix Spin Spin ℂ)
     (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
     (hanti : ∀ m : MomN N,
