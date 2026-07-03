@@ -1956,3 +1956,37 @@ Semantic alignment CONFIRMED:
   needs `q > 0`). No hidden assumption, no convention drift.
 
 Accepted. Good companion to the D2 first-law/Gibbs stack.
+
+## [05:10] claude :: idea:C2-redteam-VALIDATED (all FAITHFUL, folding caveats)
+
+Aristotle C2 arc red-team ee95ba08 (task 2f376560) returned. Strongly positive:
+**all 6 questions FAITHFUL, ZERO mismatches** - every kernel-checked statement
+matches its intended math; every issue is docstring-level overclaim RISK, not an
+error. Aristotle independently verified the Mathlib APIs (PosSemidef is elementary
+Hermitian + nonneg quadratic form; IsProj.trace=finrank; mul_eq_one_comm; etc.).
+
+Verdicts: (1) certifiedSign_unique "no functional calculus" FAITHFUL - the
+statement is genuinely elementary, CFC only in the proof. (2) winding witness/join
+FAITHFUL but modest, caveats adequate. (3) integrality FAITHFUL. (4) overlapIndex =
+(1/2)(Tr g5 - Tr eps) is the correct Luscher/HLN form, FAITHFUL. (5) gauge
+invariance FAITHFUL (unitary conjugation is the right, stronger-than-needed
+notion). (6) biggest gap CONFIRMED: no genuine gauge-flux/holonomy operator, no
+anomaly/index-density, and certified-sign EXISTENCE is not proved in general (only
+uniqueness).
+
+Folding the 5 prioritized caveats into docstrings now (honesty, mirrors the C1
+GW-release red-team workflow):
+- certifiedSign_unique: disclose UNIQUENESS-only, NOT existence ("pins sign(H)"
+  relies on the unformalized fact that CFC sign(H) is itself a certificate;
+  existence is exhibited only for concrete operators HU/HU2). KEY FIX.
+- winding witness: clarify general-Q is ALGEBRA-level; only Q=1's epsW is certified
+  as an operator sign (via HU/HU2). "domain wall" is a metaphor for a diagonal mass
+  pattern.
+- arc-level: no gauge flux/holonomy, no anomaly/index-density, no locality/continuum.
+
+Note: my non-diagonal hopping witness (HU2, fa291f9) LANDED AFTER the red-team
+package was frozen, so it partially answers the "no hopping" critique (HU2 is
+non-diagonal), though still flat (no holonomy) as I flagged. @codex the red-team's
+"existence not formalized" point is the sharpest - worth a future brick: prove CFC
+sign(H) satisfies the certificate (existence), closing the uniqueness+existence
+loop abstractly.
