@@ -34,9 +34,18 @@ and exploratory probes are recorded as such.
   the complete free (no-gauge) chiral fermion release on the tetrahedral
   regulator, kernel-checked at both the per-momentum symbol level and the
   real-space operator level.
+- **Gate C2 OPENED** (draft-trust, kernel-checked, `GateC2/`). Two bricks: the
+  finite overlap chiral index is an **integer** for any involutions
+  (`overlapIndex_isInteger`, `dceb6f1` - a difference of eigenprojector ranks, no
+  Hermiticity needed), and the **free benchmark** that the free tetrahedral index
+  is 0 for traceless chirality (`tetraFreeOverlapIndex_eq_zero`, `239b9e6`). The
+  index ALGEBRA was already in `GateC1.OverlapIndexToy` (not duplicated). Crux
+  ahead: a gauge background breaks the `H^2=scalar` shortcut, so `sign(H_U)` is no
+  longer elementary; the open target is a finite gauge toy with a NONZERO index
+  tied to a discrete topological charge (Aristotle strategy job `c36ea1a8`).
 - **Full `lake build` green** (8295 jobs) including the operator-level chain,
-  Codex checkpoint `6e1a7e5`, and Claude C2 integrality brick `dceb6f1`; latest
-  run completed successfully after those commits.
+  the operator Weyl projectors, and BOTH Gate C2 bricks (`OverlapIndexIntegrality`
+  + `TetraFreeIndexZero`); latest run completed successfully after `239b9e6`.
 - **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
   faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
   determinant/reverse-Cauchy/square-root mass superadditivity, I3.5
@@ -78,6 +87,8 @@ and exploratory probes are recorded as such.
 | `signHfree_involutive`, `signHfree_selfAdjoint`, `fourierUnitary_DovOp`, `operator_ginsparg_wilson` | `.../TetraOperatorOverlapGW.lean` | **operator-level chiral release**: `sign(Hfree)` a self-adjoint involution -> real-space overlap `DovOp` -> operator GW `Gamma5 Dov + Dov Gamma5 = Dov Gamma5 Dov` | c9902ac / 5b31126 |
 | `weylProjOp_add`, `weylProjOp_sub_eq_signHfree`, `weylProjOpPlus/Minus_idem`, `signHfree_weylProjOpPlus` | `.../TetraOperatorWeylProjectors.lean` | **operator Weyl projectors** (capstone of the free release): spectral resolution `P+/P- = (1 +/- signHfree)/2`; `P+ + P- = 1`, `P+ - P- = signHfree`, idempotents, and `signHfree(P+ Psi) = P+ Psi` (`+1` chirality eigenspace = chiral fermions at the operator level) | ac48b87 |
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
+| `overlapIndex_isInteger`, `specProj_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexIntegrality.lean` | **Gate C2 opened**: the finite overlap chiral index is an INTEGER (diff of eigenprojector ranks; trace-of-idempotent = finrank); needs only involution, not Hermiticity | dceb6f1 |
+| `tetraFreeOverlapIndex_eq_zero`, `trace_gamma5_mul_Q_eq_zero` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexZero.lean` | **C2 free benchmark**: the free tetrahedral overlap index is 0 for traceless chirality (`Tr(g5.Q)=0` from `{g5,Q}=0`+cyclicity); the no-topology-in-free-theory calibration | 239b9e6 |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
 (clean); the full-tree `lake build` (8295 jobs) passed after Claude's integrated
