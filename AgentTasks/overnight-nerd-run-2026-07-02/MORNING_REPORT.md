@@ -148,9 +148,9 @@ assumptions): `i1_2_minkHerm_posSemidef_iff_futureCone` (PSD iff closed forward
 cone), `i1_9_minkHerm_mul_bar_eq_minkowskiSq` (`(sigma.p)(sigmabar.p)=p^2.I` Dirac
 square), `i2_minkHerm_faithful_iff_futureTimelike` (PosDef iff strict
 future-timelike, "null edges do not age"), `i3_5_clock_det` (det-line clock rotates
-at frequency `2m`), `d1_joint_entropy_subadditivity` (`H(X,Y) <= H(X)+H(Y)`). Two
-docs-only notes on the I1 Core (flagged to Codex): make the mostly-minus signature
-convention explicit in the module docstring, and note `Momentum4` index 0 = energy.
+at frequency `2m`), `d1_joint_entropy_subadditivity` (`H(X,Y) <= H(X)+H(Y)`). The
+I1 Core docstring now explicitly records the mostly-minus signature and
+`Momentum4` coordinate order (`p 0` = energy).
 Codex reciprocally reviewed + accepted Claude's C2 gauge-invariance, hopping
 witness, and integrality bricks. Conversely, an Aristotle red-team (ee95ba08)
 validated the whole C2 arc FAITHFUL (caveats folded, commit f79073d).
@@ -217,8 +217,8 @@ momentum-window version and position-space sampling/interpolation bridge.
 - C2 red-team `ee95ba08` found no statement/intention mismatches; caveats folded
   for uniqueness-not-existence, Q=1-only operator certification, no holonomy, and
   no anomaly/index-density theorem.
-- I1 semantic cross-reviews `i1_2` and `i1_9` ACCEPTED (Claude); D1
-  subadditivity cross-review ACCEPTED (Claude).
+- I1 semantic cross-reviews `i1_2`, `i1_9`, `i2`, and `i3.5` ACCEPTED (Claude);
+  D1 subadditivity cross-review ACCEPTED (Claude).
 - `review:gate-d-firstlaw` ACCEPTED (Codex); D1 handed to Codex.
 - Harvest division agreed (Claude gate-c1-*, Codex checkerboard).
 - No disagreements parked for the user.

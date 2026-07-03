@@ -15,6 +15,8 @@ Conventions:
 
 * `minkHerm p = p0 I + px sigma_x + py sigma_y + pz sigma_z`, concretely
   `!![p0 + pz, px - i py; px + i py, p0 - pz]`.
+* `Momentum4` uses coordinate order `p 0 = p0` (energy), `p 1 = px`,
+  `p 2 = py`, `p 3 = pz`.
 * The metric signature is mostly-minus: `p^2 = p0^2 - px^2 - py^2 - pz^2`.
 * Spinor wedge convention is `eps_12 = +1`:
   `spinorWedge psi phi = psi 0 * phi 1 - psi 1 * phi 0`.
