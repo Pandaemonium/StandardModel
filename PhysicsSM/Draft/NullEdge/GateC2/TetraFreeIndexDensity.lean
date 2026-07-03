@@ -90,15 +90,18 @@ theorem signHfree_apply_eq_kernel_sum (gamma5 : Matrix Spin Spin ℂ)
   funext s
   unfold signHfree fourierUnitaryInv fourierUnitary rawFourier signKernel
   simp only [Matrix.mulVec, dotProduct, Matrix.smul_apply, Matrix.sum_apply,
-    Finset.sum_apply, smul_eq_mul, Finset.mul_sum]
+    Finset.sum_apply, smul_eq_mul, Finset.mul_sum, Finset.sum_mul]
   -- Reorder the three finite sums so both sides have the same site/spin/momentum
   -- nesting, then discharge the scalar associativity.
   rw [Finset.sum_comm]
-  apply Finset.sum_congr rfl
-  intro t _
+  conv_lhs =>
+    enter [2, t]
+    rw [Finset.sum_comm]
   rw [Finset.sum_comm]
   apply Finset.sum_congr rfl
   intro y _
+  apply Finset.sum_congr rfl
+  intro t _
   apply Finset.sum_congr rfl
   intro m _
   ring
