@@ -46,6 +46,6 @@ Layer map (see `Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md`):
 * concrete nonzero flux: `FluxOverlapIndex` (the pi-flux triangle).
 
 All modules are draft-trust: kernel-checked, no `s o r r y`, no
-`n a t i v e _ d e c i d e`; axiom footprint `[propext, Classical.choice,
-Quot.sound]`.
+`n a t i v e _ d e c i d e`; dependency footprint
+`[propext, Classical.choice, Quot.sound]`.
 -/
