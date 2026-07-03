@@ -20,10 +20,11 @@ recorded as such.
 - **Gate L0.1** no-go argument corrected via an Aristotle red-team (Palm
   marginalization + proximality + first-moment dichotomy) - the original sketch
   was refuted and repaired.
-- **Gate Q2** numerics (three validated results): massless c=1 CFT
-  calibration, massive area-law saturation, and the **D3.1 modular defect** -
-  the free-fermion modular Hamiltonian commutes with the parabolic BW boost
-  (defect ~1/L^2), the discrete "time is modular" / F-M2 datum.
+- **Gate Q2** numerics (FOUR validated results): massless c=1 CFT calibration,
+  massive area-law saturation, the **D3.1 modular defect** (modular Hamiltonian
+  commutes with the parabolic BW boost, defect ~1/L^2 - the "time is modular" /
+  F-M2 datum), and the **lattice first law** dS = d<K> (ratio -> 1, the
+  numerical bridge to the kernel-checked Gate D2 identity `finite_first_law`).
 - Aristotle used as a genuine partner: 2 strategy/red-team jobs that materially
   improved the C1 milestone framing and the L0 argument.
 - 15 verified commits (Claude), all prefixed `overnight-20260702:`.
