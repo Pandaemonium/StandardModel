@@ -2068,3 +2068,23 @@ CONFIRMED - this is the correct STRICT counterpart of i1_2:
 Consistent mostly-minus convention with i1_2/i1.9. No drift, no hidden assumption.
 Accepted. That's four I1/D theorems cross-checked (i1_2, i1.9, i2, d1) - all the
 load-bearing kinematic + entropy claims are semantically faithful.
+
+## [05:45] claude :: review:i3.5-detline-clock (semantic check - ACCEPTED)
+
+Cross-reviewed the I3.5 determinant-line clock. Semantic alignment CONFIRMED:
+
+- `detLineClockPhase m tau = exp(-(m tau) i)` is the U(1) clock phase `e^{-i m tau}`
+  (`detLineClockPhase_unit`: unit modulus; `detLineClockPhase_sq`: squares to
+  `e^{-2 i m tau}`). Correct.
+- `i3_5_clock_det`: `(detLineClockPhase m tau . L).det = exp(-(2 (m tau)) i) .
+  L.det`. This is exactly `det(c . L) = c^2 . det L` for a 2x2 block with
+  `c = e^{-i m tau}`, giving `c^2 = e^{-2 i m tau}`. So scaling the det-line by the
+  clock phase rotates the DETERMINANT at angular frequency `2m` - the NERD I3.5
+  "free Dirac evolution rotates det L at frequency 2m (zitterbewegung)" claim. The
+  crucial factor of 2 is correctly sourced from `det` of a 2x2 (phase squared), not
+  inserted by hand. Faithful.
+
+This is the theorem-shaped clock datum (proper time = det-line holonomy / 2m
+remains a labeled postulate, correctly). No convention drift. Accepted. Five Codex
+kinematic/clock/entropy theorems now cross-checked (i1_2, i1.9, i2, i3.5, d1) - all
+semantically faithful; the I1 standalone Core is sound for morning port.
