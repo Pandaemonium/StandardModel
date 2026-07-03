@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2 extension updated 03:27).**
+**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2 extension updated 03:33).**
 Claude-lane results below are complete and verified. Codex's later I1/D
 additions are confirmed from the shared ledger/discussion and targeted checks,
 and are checkpointed in commit `6e1a7e5`, but the I1 standalone file still needs
@@ -34,10 +34,9 @@ and exploratory probes are recorded as such.
   the complete free (no-gauge) chiral fermion release on the tetrahedral
   regulator, kernel-checked at both the per-momentum symbol level and the
   real-space operator level.
-- **Full `lake build` green** (8295 jobs) including the operator-level chain
-  (`TetraFourierInverse` + `TetraOperatorOverlapGW`); confirmed post-integration
-  at 2026-07-03. Codex's later staging additions have targeted checks; any
-  additions after this build should be re-confirmed with a full build.
+- **Full `lake build` green** (8295 jobs) including the operator-level chain,
+  Codex checkpoint `6e1a7e5`, and Claude C2 integrality brick `dceb6f1`; latest
+  run completed successfully after those commits.
 - **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
   faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
   determinant/reverse-Cauchy/square-root mass superadditivity, I3.5
@@ -150,9 +149,9 @@ deferred, not on the critical path).
 
 ## 6. Build + hygiene
 
-- Full `lake build`: 8295 jobs, "Build completed successfully" after Claude's
-  integrated C1 batch. Not rerun after Codex checkpoint `6e1a7e5` or Claude's
-  later C2 integrality brick `dceb6f1`.
+- Full `lake build`: 8295 jobs, "Build completed successfully" after Codex
+  checkpoint `6e1a7e5`, Claude C2 integrality brick `dceb6f1`, and shared-note
+  checkpoint `f861fce` (existing info/linter chatter only).
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
