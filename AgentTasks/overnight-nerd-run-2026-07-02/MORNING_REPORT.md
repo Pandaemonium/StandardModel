@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (reconciled through C2 free index-density repair `2e468f9`;
+**Status: DRAFT (reconciled through C2 operator density sum-rule commit `4b6c161`;
 live Aristotle job `f3296d38` RUNNING).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
@@ -15,11 +15,11 @@ exploratory probes are recorded as such.
 
 - C1 free chiral release is kernel-checked through operator-level GW, Weyl
   projectors, and the C2 operator-index bridge; the latest full `lake build` passed.
-- C2 now has eleven committed draft theorem files: integrality, operator-index
+- C2 now has twelve committed draft theorem files: integrality, operator-index
   packaging, free-zero, winding, certified-sign uniqueness/existence, gauge
-  covariance, non-diagonal hopping, and the free local-density benchmark;
-  holonomy/gauge anomaly remain next, with Aristotle flux-index frontier job
-  `f3296d38` currently running.
+  covariance, non-diagonal hopping, the free local-density benchmark, and the
+  exact free operator-index-zero/sum-rule bridge; holonomy/gauge anomaly remain
+  next, with Aristotle flux-index frontier job `f3296d38` currently running.
 - Codex's I1/P2 standalone stack and Gate D draft stack are kernel-checked and
   semantically cross-reviewed, but the I1/P2 stack still needs main-tree porting.
 - Checkerboard T1b landed accumulated/fixed-time pointwise Dirac-limit theorems
@@ -44,6 +44,7 @@ exploratory probes are recorded as such.
 | `overlapIndex_isInteger`, `specProj_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexIntegrality.lean` | **Gate C2 opened**: the finite overlap chiral index is an INTEGER (diff of eigenprojector ranks; trace-of-idempotent = finrank); needs only involution, not Hermiticity | dceb6f1 |
 | `overlapIndexEnd_isInteger`, `specProjEnd_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexEndIntegrality.lean` | **C2 End-native integrality**: the operator overlap index `(1/2)(Tr f - Tr g)` for finite complex endomorphism involutions is an integer, as a difference of projector range dimensions; no matrix choice needed | 9c2341f |
 | `flagship_operatorIndex_isInteger`, `signHfreeL_mul_self`, `Gamma5opL_mul_self` | `PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndex.lean` | **C1<->C2 operator bridge**: bundles `Gamma5op` and `signHfree` as finite complex endomorphisms, proves both are involutions, and instantiates End-integrality so the free tetrahedral operator overlap index is an integer | 38aba2b |
+| `flagship_operatorIndex_eq_zero`, `operatorIndex_eq_sum_density`, `trace_signHfreeL`, `trace_Gamma5opL` | `PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndexZero.lean` | **C2 operator exact-zero bridge**: proves the operator overlap index is the site-sum of the local density, computes the bundled free sign/chirality traces via the kernel diagonal, and pins the flagship free operator index to exactly 0. Free/no-gauge; this is the structural sum-rule predecessor to anomaly work | 47a4e4e + Codex sum-rule/doc repair 4b6c161 |
 | `tetraFreeOverlapIndex_eq_zero`, `trace_gamma5_mul_Q_eq_zero` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexZero.lean` | **C2 free benchmark**: the free tetrahedral overlap index is 0 for traceless chirality (`Tr(g5.Q)=0` from `{g5,Q}=0`+cyclicity); the no-topology-in-free-theory calibration | 239b9e6 |
 | `freeIndexDensity_eq_zero`, `signKernel_diag`, `trace_signSymbol_eq_zero`, `signHfree_apply_eq_kernel_sum` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexDensity.lean` | **C2 free local-density benchmark**: expands `signHfree` as a real-space kernel, proves the diagonal is translation-invariant and the per-momentum free sign symbol is traceless, so the free local index density vanishes site-wise. Free/no-gauge; not an anomaly theorem | e87cfc2 + Codex proof repair 2e468f9 |
 | `overlapIndex_gamma5WQ_epsWQ_eq` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexWindingWitness.lean` | **C2a winding witness**: block-stacked graded involution family with overlap index EXACTLY Q (realizes every winding charge; defeats free-zero). Bridge - `eps` constructed with target signature | 373de95 |
@@ -178,8 +179,8 @@ momentum-window version and position-space sampling/interpolation bridge.
 ## 6. Build + hygiene
 
 - Full `lake build`: 8295 jobs, "Build completed successfully" after the C2
-  free density repair `2e468f9` and Codex report reconciliation (root build;
-  existing info/linter/deprecation chatter only).
+  operator density sum-rule commit `4b6c161` and Codex report reconciliation
+  (root build; existing info/linter/deprecation chatter only).
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
@@ -219,6 +220,14 @@ momentum-window version and position-space sampling/interpolation bridge.
   clean; dependency audit for `fourierChar_star_mul_self`,
   `signHfree_apply_eq_kernel_sum`, `signKernel_diag`,
   `trace_signSymbol_eq_zero`, and `freeIndexDensity_eq_zero` =
+  `[propext, Classical.choice, Quot.sound]`; full root `lake build` passed
+  afterward.
+- Codex C2 operator-index-zero/sum-rule repair: `lake env lean
+  PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndexZero.lean`; `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.FlagshipOperatorIndexZero`; placeholder scan
+  clean; dependency audit for `trace_signHfreeL`, `trace_Gamma5opL`,
+  `trace_signKernel_diag_eq_zero`, `operatorIndex_eq_sum_density`, and
+  `flagship_operatorIndex_eq_zero` =
   `[propext, Classical.choice, Quot.sound]`; full root `lake build` passed
   afterward.
 - Checkerboard accumulated-Trotter integration checks:

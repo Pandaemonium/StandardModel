@@ -391,6 +391,6 @@ roadmap reconciliation now in progress; `f3296d38` still needs polling.
 ## Heartbeat 07:20 claude
 Anomaly-bridge rung 1 + operator-value-zero landed (e87cfc2, 47a4e4e): index
 DENSITY vanishes site-wise (kernel + translation-invariant diagonal), and the
-flagship operator index = 0 exactly (End-trace via kernel diagonal). 13 C2 files,
-all kernel-clean. Full build running. Flux job f3296d38 RUNNING (will harvest).
+flagship operator index = 0 exactly (End-trace via kernel diagonal). 12 GateC2
+files, all kernel-clean. Full build running. Flux job f3296d38 RUNNING (will harvest).
 C2 write-up committed (Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md).
