@@ -79,11 +79,23 @@ functional-calculus-free defining conditions of `sign(H) = H |H|^{-1}`
   ported): `epsCFC H = CFC.sqrt(H^2) . H^{-1} = |H| H^{-1}` is a certificate. The
   load-bearing step is `Commute (CFC.sqrt(H^2)) H` (a continuous-functional-
   calculus commutation).
+- SELF-ADJOINTNESS (`OverlapSignHermitian.signCertificate_isHermitian`): any
+  certificate for an invertible Hermitian `H` is automatically Hermitian, so the
+  finite certificate conditions force a genuine self-adjoint involution.
 Together (`certifiedSign_eq_epsCFC`): the certified overlap sign of any gapped
 Hermitian is well-defined AND explicitly `|H| H^{-1}`. The STATEMENTS use only
 involution + commutation + the Loewner order; the CFC appears only as a proof tool
 for existence. A certified sign yields a GW overlap
 (`SignCertificate.dov_ginspargWilson`).
+
+Self-consistency (`OverlapSignHermitian.lean`): the three certificate conditions
+already FORCE self-adjointness (`signCertificate_isHermitian` - `eps H` PSD is
+Hermitian, so `H eps^* = H eps`, cancel `H`), so `eps^* = eps` is not an extra
+hypothesis.  Hence `epsCFC H` is a genuine SELF-ADJOINT INVOLUTION - an orthogonal
+reflection (`epsCFC_isSelfAdjoint_involution`).  The certificate story is thus
+complete: the overlap sign of any gapped Hermitian EXISTS, is UNIQUE, is a
+self-adjoint involution, and gives a GW overlap - a fully functional-calculus-free
+characterization of `sign(H)`.
 
 **(d) Gauge invariance guardrail.** `overlapIndex_conj`: the index is invariant
 under unitary conjugation. `SignCertificate.conj`: certificates transport
@@ -152,7 +164,8 @@ anomaly/index-density bridge and locality are the successor gates.
 zero), `FlagshipOperatorIndexZero` (operator density sum rule + exact free
 operator index 0); `OverlapIndexWindingWitness` (winding = Q);
 `OverlapSignCertificate` (certificate + uniqueness + GW), `OverlapSignExistence`
-(existence + explicit `|H|H^{-1}`); `OverlapWindingSignJoin` (diagonal certified
+(existence + explicit `|H|H^{-1}`), `OverlapSignHermitian` (automatic
+self-adjointness of certified signs); `OverlapWindingSignJoin` (diagonal certified
 operator), `OverlapHoppingSignWitness` (non-diagonal certified operator);
 `OverlapIndexGaugeInvariance` (conjugation invariance). Prerequisite: the Gate C1
 `GateC1/` overlap release and `GateC1.OverlapIndexToy` index algebra.
