@@ -18,15 +18,21 @@ line `gamma5 = 1 (x) sigma3` on `Fin 4` with a one-site defect
 `eps = diag(-1,-1,-1,1)`, giving index `1`.  Block-stacking `Q` copies realizes
 any winding charge `Q`.
 
-## HONESTY CAVEAT (scope)
+## HONESTY CAVEAT (scope; red-team ee95ba08)
 
 This is the **bridge**, NOT yet a gauge index theorem.  The involution `eps` here
 is CONSTRUCTED to carry the target signature; it is not (yet) derived as
 `sign(H_U)` for a genuine gauge-Wilson operator `H_U`.  That derivation - the
 finite positivity certificate `eps_U = eps_U^*`, `eps_U^2 = 1`, `[eps_U, H_U] = 0`,
-`eps_U . H_U` positive semidefinite - is the hard **C2b** target and is NOT done.
-What is proved here: the overlap-index *framework* realizes every integer charge,
-so the free-index-zero result is not a degeneracy of the construction.
+`eps_U . H_U` positive semidefinite - is the hard **C2b** target.  Crucially, the
+general-`Q` family here is ALGEBRA-LEVEL only: `overlapIndex_gamma5WQ_epsWQ_eq`
+computes the index of a CONSTRUCTED involution pair; it does NOT certify those
+`gamma5WQ/epsWQ` as the sign of any operator.  Only the `Q = 1` unit `epsW` is
+later certified as a genuine operator sign (of the diagonal `HU` in
+`OverlapWindingSignJoin`, and the non-diagonal `HU2` in
+`OverlapHoppingSignWitness`).  What is proved here: the overlap-index *framework*
+realizes every integer charge, so the free-index-zero result is not a degeneracy
+of the construction.
 
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`; kernel-checked.
 Claim label: **finite identity / consistency witness** (algebra-topology bridge;
