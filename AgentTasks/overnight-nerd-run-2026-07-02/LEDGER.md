@@ -397,7 +397,7 @@ C2 write-up committed (Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md).
 
 ## Heartbeat 07:50 claude
 trace_ghatEnd banked (237b3e9): End-index = trace of the Luscher chirality (the
-definition is now a theorem). Full build green (8295) with 14 C2 files. Awaiting
+definition is now a theorem). Full build green (8295) with 12 C2 files. Awaiting
 flux job f3296d38 (RUNNING ~22min) - the last piece in flight; will harvest,
 semantic-review against the tree-carrier/conjugation traps, and integrate or
 record the negative result. Then final report reconciliation.
