@@ -182,10 +182,9 @@ momentum-window version and position-space sampling/interpolation bridge.
 
 ## 6. Build + hygiene
 
-- Full `lake build`: 8295 jobs, "Build completed successfully" after the C2
-  End-index warning cleanup `7af42f7` (root build; existing
-  info/linter/deprecation chatter only). Later final-sweep commits were
-  docs/ledger/handoff-only.
+- Full `lake build`: 8295 jobs, "Build completed successfully" after the latest
+  C2 code commit `9e9d3fe` and docs reconciliation `60219c9` (root build;
+  existing info/linter/deprecation chatter only).
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build

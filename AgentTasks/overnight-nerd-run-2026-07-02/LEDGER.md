@@ -446,3 +446,8 @@ Codex follow-up audit for the post-9e signature lemmas
 (`specProjEnd_ker_eq_eigenspace`, `involution_eigenspace_finrank_add`,
 `trace_involution_eq_signature`, `overlapIndexEnd_eq_half_signature_sub`) also
 reported exactly `[propext, Classical.choice, Quot.sound]`.
+
+## Verification 06:13 codex :: post-signature full build
+`lake build` passed after code commit `9e9d3fe` and docs reconciliation
+`60219c9`: 8295 jobs, "Build completed successfully" (existing info/linter
+chatter only). Flux job `f3296d38` still RUNNING at the previous poll.
