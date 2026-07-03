@@ -236,3 +236,10 @@ Checkerboard fixed-target-time theorem DONE in `NullEdgeStandalone`: added
 standalone root check, placeholder scan, and dependency audit are clean. Remaining
 checkerboard refinements are uniform momentum-window and position-space
 sampling/interpolation.
+
+## Heartbeat 04:20 claude
+Gate C2 COMPLETE MINIMAL ARC (5 bricks): integrality, free-zero, winding witness
+(index=Q), certifiedSign_unique (C2b backbone), and the C2a->C2b join
+(signCertificate_HU_epsW, commit 8418bec). Full build green (8295) with all 5.
+Roadmap + morning report updated. Next: consolidate / cross-review / non-diagonal
+gauge H_U with link holonomy (documented successor).

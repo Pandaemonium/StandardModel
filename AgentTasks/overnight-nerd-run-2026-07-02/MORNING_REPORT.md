@@ -34,18 +34,25 @@ and exploratory probes are recorded as such.
   the complete free (no-gauge) chiral fermion release on the tetrahedral
   regulator, kernel-checked at both the per-momentum symbol level and the
   real-space operator level.
-- **Gate C2 OPENED** (draft-trust, kernel-checked, `GateC2/`). Two bricks: the
-  finite overlap chiral index is an **integer** for any involutions
-  (`overlapIndex_isInteger`, `dceb6f1` - a difference of eigenprojector ranks, no
-  Hermiticity needed), and the **free benchmark** that the free tetrahedral index
-  is 0 for traceless chirality (`tetraFreeOverlapIndex_eq_zero`, `239b9e6`). The
-  index ALGEBRA was already in `GateC1.OverlapIndexToy` (not duplicated). Crux
-  ahead: a gauge background breaks the `H^2=scalar` shortcut, so `sign(H_U)` is no
-  longer elementary; the open target is a finite gauge toy with a NONZERO index
-  tied to a discrete topological charge (Aristotle strategy job `c36ea1a8`).
+- **Gate C2 OPENED and driven to a complete minimal arc** (draft-trust, kernel-
+  checked, `GateC2/`, FIVE bricks): (1) `overlapIndex_isInteger` - the finite
+  overlap index is an **integer** for any involutions (diff of eigenprojector
+  ranks, no Hermiticity); (2) `tetraFreeOverlapIndex_eq_zero` - the **free
+  benchmark**, index 0 for traceless chirality; (3) `overlapIndex_gamma5WQ_epsWQ_eq`
+  - the **C2a winding witness**, a graded involution family with index exactly Q
+  (realizes every winding charge, defeats the free-zero); (4) `certifiedSign_unique`
+  - the **C2b backbone**, a self-adjoint involution commuting with a gapped
+  Hermitian `H` with `eps.H` PSD is UNIQUE (= sign(H)) via PSD-sqrt uniqueness, so
+  `sign(H_U)` is pinned WITHOUT a functional calculus; (5) `signCertificate_HU_epsW`
+  - the **C2a->C2b join**, the winding `eps` is a genuine certified sign of an
+  explicit gapped mass-defect operator, so index 1 is a real sign-of-operator
+  index. The index ALGEBRA was already in `GateC1.OverlapIndexToy` (not
+  duplicated). Aristotle strategy job `c36ea1a8` guided the arc. SUCCESSOR: a
+  non-diagonal gauge `H_U` with genuine link holonomy (hopping inside the
+  negative-mass block), then the anomaly/index-density bridge.
 - **Full `lake build` green** (8295 jobs) including the operator-level chain,
-  the operator Weyl projectors, and BOTH Gate C2 bricks (`OverlapIndexIntegrality`
-  + `TetraFreeIndexZero`); latest run completed successfully after `239b9e6`.
+  the operator Weyl projectors, and ALL FIVE Gate C2 bricks; latest run completed
+  successfully after `8418bec` (the C2a->C2b join).
 - **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
   faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
   determinant/reverse-Cauchy/square-root mass superadditivity, I3.5
@@ -96,6 +103,9 @@ and exploratory probes are recorded as such.
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
 | `overlapIndex_isInteger`, `specProj_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexIntegrality.lean` | **Gate C2 opened**: the finite overlap chiral index is an INTEGER (diff of eigenprojector ranks; trace-of-idempotent = finrank); needs only involution, not Hermiticity | dceb6f1 |
 | `tetraFreeOverlapIndex_eq_zero`, `trace_gamma5_mul_Q_eq_zero` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexZero.lean` | **C2 free benchmark**: the free tetrahedral overlap index is 0 for traceless chirality (`Tr(g5.Q)=0` from `{g5,Q}=0`+cyclicity); the no-topology-in-free-theory calibration | 239b9e6 |
+| `overlapIndex_gamma5WQ_epsWQ_eq` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexWindingWitness.lean` | **C2a winding witness**: block-stacked graded involution family with overlap index EXACTLY Q (realizes every winding charge; defeats free-zero). Bridge - `eps` constructed with target signature | 373de95 |
+| `certifiedSign_unique`, `signCertificate_mul_sq`, `SignCertificate.dov_ginspargWilson` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignCertificate.lean` | **C2b backbone**: for gapped Hermitian H, a self-adjoint involution with `[eps,H]=0` and `eps.H` PSD is UNIQUE (= sign(H)), via PSD-sqrt uniqueness (NO functional calculus); a certified sign yields a GW overlap | 9f97af2 |
+| `signCertificate_HU_epsW` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapWindingSignJoin.lean` | **C2a->C2b join**: the winding `epsW` is a genuine certified sign of an explicit gapped mass-defect operator `HU=diag(-2,-3,-1,5)`, so index 1 is a real sign-of-operator (domain-wall) index | 8418bec |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
 (clean); the full-tree `lake build` (8295 jobs) passed after Claude's integrated

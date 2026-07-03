@@ -117,12 +117,28 @@ Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
 - `TetraFreeIndexZero.lean` (`tetraFreeOverlapIndex_eq_zero`): the free
   benchmark - the free tetrahedral overlap index is 0 for traceless chirality
   (`Tr(gamma5.Q)=0` from `{gamma5,Q}=0` + cyclicity, `Tr gamma5 = 0`).
+- `OverlapIndexWindingWitness.lean` (`overlapIndex_gamma5WQ_epsWQ_eq`): the C2a
+  bridge - a block-stacked graded involution family (2-site Wilson line unit,
+  one-site signature defect) with overlap index EXACTLY Q, realizing every winding
+  charge and defeating the free-zero benchmark.
+- `OverlapSignCertificate.lean` (`certifiedSign_unique`): the C2b backbone - for a
+  gapped Hermitian H, a self-adjoint involution with `[eps,H]=0` and `eps.H` PSD is
+  UNIQUE (= sign(H)), proved via PSD-sqrt uniqueness (no functional calculus, no
+  eigendecomposition). `SignCertificate.dov_ginspargWilson`: a certified sign gives
+  a GW overlap. This is the abstract admissible-sign interface for gauge overlap.
+- `OverlapWindingSignJoin.lean` (`signCertificate_HU_epsW`): joins C2a to C2b - the
+  winding involution `epsW` is a genuine certified sign of an explicit gapped
+  mass-defect (domain-wall) operator `HU = diag(-2,-3,-1,5)`, so the index 1 is a
+  real sign-of-operator index.
 
-CRUX for the rest of C2: the `H^2 = coeff.I` scalar-square shortcut (which made
-the free sign elementary) BREAKS under a gauge background - `sign(H_U)` becomes a
-genuinely nonlocal spectral object. The open target is a finite gauge toy with a
-NONZERO index tied to a discrete topological charge (Aristotle strategy job
-c36ea1a8 planning the minimal construction).
+Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
+needs a genuine signature change (Wilson mass across zero), not a flat/tree
+connection. SUCCESSOR: a non-diagonal gauge `HU` with genuine link holonomy
+(block-diagonal w.r.t. the `epsW`-eigenspaces, hopping inside the negative-mass
+block, real link phase), then the anomaly/index-density bridge. The `H^2=coeff.I`
+scalar-square shortcut breaks under such a background - the certified-sign
+interface (`SignCertificate`) is how `sign(H_U)` is pinned without a functional
+calculus.
 
 ## Tracks
 
