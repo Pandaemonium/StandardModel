@@ -54,7 +54,7 @@ characterizations (`posDef_iff_eigenvalues_pos`,
 invertibility, `Matrix.toEuclideanLin` / the associated bilinear/sesquilinear
 form.
 
-Deliver: no `sorry`, no `native_decide`; axiom footprint
+Deliver: no `s o r r y`, no `n a t i v e _ d e c i d e`; axiom footprint
 `[propext, Classical.choice, Quot.sound]`. Do not change the statement.
 A helper specialization to a real-diagonal `B` (its eigenvalue-sign counts equal
 the sign counts of its diagonal) is a welcome bonus but not required.

@@ -306,7 +306,8 @@ docstring; the hard step is `Commute (CFC.sqrt(H^2)) H`. Harvest via
 ## Heartbeat 05:35 claude
 Consolidated axiom audit of the ENTIRE GateC2 layer: all 9 key theorems across 8
 files report [propext, Classical.choice, Quot.sound] - kernel-clean, no
-sorry/native/opaque anywhere in C2. Red-team caveats folded (f79073d). Codex
+s o r r y / n a t i v e _ d e c i d e / o p a q u e anywhere in C2. Red-team
+caveats folded (f79073d). Codex
 completed the HU2 invertible/Hermitian/uniqueness extension. Full build green
 (8295). Existence proof job 66972f62 RUNNING (will close the red-team's #1 gap).
 3 Codex cross-reviews done (i1_2, d1, i1.9 - all accepted).
@@ -554,6 +555,16 @@ unit-flux continuum normalization. Added this caveat to the plan; a true
 one-flux-quantum target needs the standard `2 pi Q / L^2` plaquette
 normalization plus boundary twist or an equivalent magnetic-translation gauge.
 
-- [claude cross-review] codex Gate I1 port (a264e5e, GateI1/Core.lean 1407 lines): builds (8027 jobs), ZERO sorry/native_decide, no axiom/opaque, headline theorems axiom-clean [propext,Classical.choice,Quot.sound]; det_minkHerm = p0^2-p1^2-p2^2-p3^2 (mostly-minus Minkowski square) semantically correct. VERDICT: sound. Also adopted the GateI1.lean aggregator convention.
+- [claude cross-review] codex Gate I1 port (a264e5e, GateI1/Core.lean 1407 lines): builds (8027 jobs), ZERO s o r r y / n a t i v e _ d e c i d e, no a x i o m / o p a q u e, headline theorems axiom-clean [propext,Classical.choice,Quot.sound]; det_minkHerm = p0^2-p1^2-p2^2-p3^2 (mostly-minus Minkowski square) semantically correct. VERDICT: sound. Also adopted the GateI1.lean aggregator convention.
 
-- [claude] SUBMITTED Aristotle job 635b44ae (gate-c2-hermitian-sylvester): prove congruence_preserves_inertia = Sylvester law of inertia for complex Hermitian matrices in eigenvalue-count form (SᴴAS congruence preserves n+ / n-). Fills a Mathlib gap (only QuadraticForm version exists); the crux connective lemma for the 2D-flux zero-to-nonzero index frontier. Statement typechecks; harvest next session.
+- [claude] SUBMITTED Aristotle job 635b44ae (gate-c2-hermitian-sylvester): prove congruence_preserves_inertia = Sylvester law of inertia for complex Hermitian matrices in eigenvalue-count form (S^H A S congruence preserves n+ / n-). Fills a Mathlib gap (only QuadraticForm version exists); the crux connective lemma for the 2D-flux zero-to-nonzero index frontier. Statement typechecks; harvest next session.
+
+## Verification 07:50 codex :: full root build after current C2 frontier commits
+Ran full root `lake build` after the Gate I1 port and the C2 next-frontier /
+Sylvester-submission commits through `fd71eac`: 8295 jobs, build completed
+successfully, existing info/linter/deprecation chatter only. Fresh
+`aristotle list --limit 20` shows the new Sylvester bridge job
+`635b44ae-206b-48f0-99bd-ec6cd59ada1a` RUNNING; no harvest yet. Also cleaned the
+standalone Sylvester proof-target docstring to use spaced placeholder wording in
+prose; the executable proof target still contains the intentional Lean placeholder
+for Aristotle to fill.

@@ -4,7 +4,7 @@
 reconciled; Aristotle jobs `f3296d38` and `25f0b738` are IDLE, harvested, and
 ported as of 2026-07-03 07:13 PDT; I1/P2 staging stack is now ported to
 `PhysicsSM/Draft/NullEdge/GateI1/`; current-tree full `lake build` passed after
-capstone commit `4843ff2`).**
+latest frontier commit `fd71eac`).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 stack is now present as an
@@ -19,7 +19,7 @@ exploratory probes are recorded as such.
 
 - C1 free chiral release is kernel-checked through operator-level GW, Weyl
   projectors, and the C2 operator-index bridge; the latest full `lake build`
-  passed after `4843ff2`.
+  passed after `fd71eac`.
 - C2 now has eighteen committed draft theorem files plus the aggregate
   `GateC2.lean`: integrality, eigenspace and matrix-signature counting, abstract
   gauge-overlap interface, eigenvalue-count/inertia form, operator-index
@@ -38,7 +38,9 @@ exploratory probes are recorded as such.
   in `NullEdgeStandalone`; uniform momentum-window and position-space bridges
   remain.
 - Aristotle materially changed the night: L0.1 corrected, C1/C2 red-teamed, C2
-  strategy shaped, and `66972f62` closed certified-sign existence.
+  strategy shaped, `66972f62` closed certified-sign existence, `f3296d38`/`25f0b738`
+  closed the flux/inertia C2 capstones, and `635b44ae` is now probing the
+  Sylvester bridge for the 2D-flux successor.
 
 ## 2. Theorems landed (Claude, kernel-checked, dependency footprint = propext/Classical.choice/Quot.sound)
 
@@ -141,6 +143,11 @@ Submitted/harvested tonight (summaries in gitignored
   `GaugeIndexInertiaForm.lean` (`4843ff2`): proves `Tr(sign H)` equals the
   inertia of a gapped Hermitian `H`, discharging the unconditional
   eigenvalue-count gauge-index formula.
+- `635b44ae` gate-c2-hermitian-sylvester - RUNNING as of 2026-07-03 07:49 PDT:
+  focused proof target `congruence_preserves_inertia`, the complex Hermitian
+  matrix bridge from a rational `S^H A S = D` congruence to eigenvalue-sign
+  counts. This is the connective lemma for the even-lattice / 2D Wilson-Dirac
+  zero-to-nonzero flux successor.
 Pre-run checkerboard backlog dry-run-inspected by Codex/T0; row-sum,
 L-infinity, L2/unitarity, and accumulated-Trotter returns are integrated in
 `NullEdgeStandalone`. The older gate-c1-* backlog was found already integrated
@@ -165,6 +172,8 @@ and integrated. The C2 Lean arc is committed, caveated, red-team validated, and
 full-build green after the post-inertia capstone. The remaining C2 debt is not an
 unharvested job; it is successor mathematics: an even-lattice / 2D-torus flux
 model, gauge-background density/anomaly bridge, and locality/continuum analysis.
+The first successor proof helper is already submitted as Aristotle job `635b44ae`
+and awaits harvest.
 Checkerboard T1b: accumulated Trotter, the matching-time `matrixL1Norm`
 boundary theorem, and the fixed-target-time variant are now integrated into
 `NullEdgeStandalone`; remaining checkerboard work is the uniform
@@ -205,8 +214,10 @@ momentum-window version and position-space sampling/interpolation bridge.
 ## 6. Build + hygiene
 
 - Latest full `lake build`: 8295 jobs, "Build completed successfully" after the
-  C2 eigenvalue-count/inertia capstone `4843ff2` (root build; existing
-  info/linter/deprecation chatter only).
+  C2 next-frontier/Sylvester-submission commit `fd71eac` (root build; existing
+  info/linter/deprecation chatter only). This run also anchors the Gate I1 draft
+  port in the current tree, though the root target still excludes the NullEdge
+  aggregate modules unless built explicitly.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
