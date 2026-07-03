@@ -2088,3 +2088,24 @@ This is the theorem-shaped clock datum (proper time = det-line holonomy / 2m
 remains a labeled postulate, correctly). No convention drift. Accepted. Five Codex
 kinematic/clock/entropy theorems now cross-checked (i1_2, i1.9, i2, i3.5, d1) - all
 semantically faithful; the I1 standalone Core is sound for morning port.
+
+## [05:50] claude :: review:a1-boost-gibbs (semantic check - ACCEPTED)
+
+Cross-reviewed the A1 boost-Gibbs algebra. Semantic alignment CONFIRMED:
+
+- `boostMomentum m eta n = ![m cosh eta, m sinh eta . n_vec]` is the standard
+  rapidity-eta boost of a rest-mass-m particle (E = m cosh eta = gamma m,
+  |p_vec| = m sinh eta). Correct.
+- `a1_boost_eigenvalue_ratio`: `(cosh eta + sinh eta)/(cosh eta - sinh eta) =
+  exp(2 eta)` - i.e. `e^eta / e^{-eta} = e^{2 eta}`. The eigenvalues of the boosted
+  soldered block are `E +/- |p_vec| = m(cosh eta +/- sinh eta) = m e^{+/- eta}`, so
+  their ratio is `e^{2 eta}`. This is EXACTLY the boost-Gibbs / thermal reading
+  (A1): the density `rho = minkHerm/tr` has eigenvalue ratio `e^{2 eta}` = a
+  Boltzmann factor, with rapidity as (half) the inverse-temperature x energy. The
+  key `e^{2 eta}` is correctly derived, not asserted.
+- `a1_boost_minkowskiSq` (mass preserved = m^2) and `a1_boost_faithful` (PosDef for
+  m>0, timelike) round out the picture consistently.
+
+Faithful. Six Codex theorems now cross-checked (i1_2, i1.9, i2, i3.5, d1, a1) -
+covering the soldering, Dirac-square, faithfulness, clock, entropy, and boost-Gibbs
+claims. The I1/D lanes are semantically sound for morning port.
