@@ -3,7 +3,7 @@
 Status: in-repo development summary, 2026-07-03. This document consolidates the
 Gate C2 layer built during the 2026-07-02/03 overnight run into one coherent
 mathematical narrative, records the honest scope, and states the open frontier
-precisely. All Lean is draft-trust but kernel-checked, axiom footprint
+precisely. All Lean is draft-trust but kernel-checked, dependency footprint
 `[propext, Classical.choice, Quot.sound]`, under `PhysicsSM/Draft/NullEdge/GateC2/`.
 It extends the completed Gate C1 free chiral (overlap/Ginsparg-Wilson) release; it
 does NOT claim a gauge index theorem, an anomaly, locality, or a continuum limit.

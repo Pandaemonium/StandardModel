@@ -1,7 +1,7 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (reconciled through C2 flux-index frontier submission
-`a4df2d4`; live Aristotle job `f3296d38` RUNNING).**
+**Status: DRAFT (reconciled through C2 technical summary commit `7e72812`;
+live Aristotle job `f3296d38` RUNNING).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 standalone file still needs
@@ -49,7 +49,7 @@ exploratory probes are recorded as such.
 | `certifiedSign_exists`, `certifiedSign_eq_epsCFC` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignExistence.lean` | **C2b existence closure**: for every gapped Hermitian `H`, `epsCFC = CFC.sqrt(H^2) * H^-1` is a `SignCertificate`; uniqueness then makes every certificate equal to this explicit sign | 3ffc63d |
 | `signCertificate_HU_epsW`, `HU_isHermitian`, `signCertificate_HU_unique` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapWindingSignJoin.lean` | **C2a->C2b join**: the winding `epsW` is a genuine certified sign of an explicit gapped mass-defect operator `HU=diag(-2,-3,-1,5)`, and every certified sign of `HU` equals `epsW`; index 1 is a real sign-of-operator (domain-wall) index | 8418bec + Codex review patch |
 | `overlapIndex_conj`, `SignCertificate.conj` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexGaugeInvariance.lean` | **C2 gauge invariance**: the overlap index is invariant under unitary conjugation and the sign certificate transports covariantly - the guardrail that a nonzero index cannot come from a gauge/basis conjugation, only a signature change | 68f2bff |
-| `signCertificate_HU2_epsW`, `HU2_isHermitian`, `signCertificate_HU2_unique`, `HU2_offDiagonal` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapHoppingSignWitness.lean` | **C2 non-diagonal certified sign**: a genuinely non-diagonal hopping operator `HU2=epsW.(Cᴴ C)` has certified sign `epsW` (PSD for free from `Cᴴ C`), is gapped/Hermitian, and has unique certified sign `epsW` - the certificate is not special to diagonal operators. Caveat: real hopping (flat connection, no holonomy) | fa291f9 + Codex review patch |
+| `signCertificate_HU2_epsW`, `HU2_isHermitian`, `signCertificate_HU2_unique`, `HU2_offDiagonal` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapHoppingSignWitness.lean` | **C2 non-diagonal certified sign**: a genuinely non-diagonal hopping operator `HU2=epsW.(C^H C)` has certified sign `epsW` (PSD for free from `C^H C`), is gapped/Hermitian, and has unique certified sign `epsW` - the certificate is not special to diagonal operators. Caveat: real hopping (flat connection, no holonomy) | fa291f9 + Codex review patch |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
 (clean); the full-tree `lake build` (8295 jobs) passed after the C2 existence
@@ -243,6 +243,9 @@ momentum-window version and position-space sampling/interpolation bridge.
   reviewed. Remaining out-of-scope-next work is Gate C2 scoping for gauge-link
   backgrounds, admissible-sign/GW transport, finite index facade, and anomaly
   bridge.
+- C2 technical summary/paper seed now lives at
+  `Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md`; it records the honest
+  finite-algebra scope and the flux/holonomy frontier for follow-up writing.
 - D3.1 modular defect: DONE and validated (commit 511ed49). The discrete QNEC
   deficit (null-cut 2nd difference of entropy) remains the next Q2 rung.
 - L0 Lean sub-lemmas (CP^1 no-finite-invariant-subset, 3-point stabilizer,

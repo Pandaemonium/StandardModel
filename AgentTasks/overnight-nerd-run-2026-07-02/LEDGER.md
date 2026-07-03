@@ -280,7 +280,7 @@ caveats into docstrings.
 
 ## Heartbeat 04:55 claude
 Non-diagonal hopping certified operator banked (signCertificate_HU2_epsW, commit
-fa291f9): HU2=epsW.(Cᴴ C) non-diagonal, certified sign epsW, PSD for free. Answers
+fa291f9): HU2=epsW.(C^H C) non-diagonal, certified sign epsW, PSD for free. Answers
 "certificate only for diagonal ops?" - no. C2 red-team ee95ba08 RUNNING (adversarial
 faithfulness of the whole arc). Roadmap + report updated. Full build green (8295)
 with 7 C2 theorem-files. Will harvest red-team + fold caveats when it completes.
@@ -296,7 +296,7 @@ holonomy / index-density theorem yet.
 
 ## Aristotle job 05:25 claude :: gate-c2-certified-sign-existence
 Project 66972f62-32c7-4761-bfaa-e1d5e44e6791 (PROOF job). Target:
-`certifiedSign_exists` - for gapped Hermitian H, `epsCFC = CFC.sqrt(H^2).H⁻¹` is a
+`certifiedSign_exists` - for gapped Hermitian H, `epsCFC = CFC.sqrt(H^2).H^-1` is a
 SignCertificate (closes the red-team's #1 gap: existence, complementing the repo's
 certifiedSign_unique). Self-contained Mathlib-only skeleton with strategy in the
 docstring; the hard step is `Commute (CFC.sqrt(H^2)) H`. Harvest via
@@ -375,3 +375,8 @@ the flux/topological charge (or =0 with explanation - a valid negative result).
 Uses the certified-sign interface. Context: OverlapIndexToy/OverlapSignCertificate/
 OverlapSignExistence/OverlapWindingSignJoin + FLUX_BRIEF.md. Harvest via
 `aristotle show f3296d38...` when IDLE. If it lands, first genuine gauge index.
+
+## Heartbeat 05:20 codex
+Final-sweep C2 documentation review in progress. Live Aristotle list still shows
+`f3296d38` RUNNING; no harvest yet. Reviewing the new C2 technical summary and
+morning report for claim-scope/ASCII hygiene, with no Lean surface changes.
