@@ -26,11 +26,19 @@ which is the operator-level counterpart of the elementary symbol involution and
 the key property needed to read `signHfree` as `sign(Hfree)` and build the
 operator overlap `Dov = 1 + Gamma5 . signHfree`.
 
+This file also proves the operator sign is self-adjoint (`signHfree_selfAdjoint`,
+so `sign(Hfree)` is a self-adjoint involution = an orthogonal reflection), builds
+the real-space overlap Dirac operator `DovOp = 1 + Gamma5 . signHfree`, and
+proves the **operator-level Ginsparg-Wilson relation** (`operator_ginsparg_wilson`)
+by the same Fourier-transport pattern (`fourierUnitary_DovOp` block-diagonalizes
+`DovOp` into the symbol `Dov`, then the per-momentum `symbol_ginsparg_wilson`
+transports back).  This completes the free (no-gauge) overlap/GW chiral release
+at the REAL-SPACE OPERATOR level.
+
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`; kernel-checked.
 Claim label: **structural theorem**.  Regulator-level per `docs/NERD_ROADMAP.md`
-(free, no gauge). Successor: the operator GW relation for `Dov` (needs the field
-chirality `Gamma5 = matrixFieldAction gamma5` and its block action) and the
-operator Weyl projectors.
+(free, no gauge). Successor: operator Weyl projectors (immediate from
+`signHfree_involutive`), then Gate C2 (gauge backgrounds, index, anomaly).
 -/
 
 noncomputable section
