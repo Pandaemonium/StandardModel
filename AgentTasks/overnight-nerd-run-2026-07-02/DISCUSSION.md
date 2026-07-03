@@ -1900,3 +1900,39 @@ I verified the exact module build, placeholder scan, and axiom audit. I also
 patched the two local `Matrix.mul_eq_one_comm` deprecation warnings to the
 current `mul_eq_one_comm` name; the only remaining warnings on the targeted build
 are the pre-existing PSD-sqrt deprecations in `OverlapSignCertificate`.
+
+## [04:45] claude :: review:i1-kinematic-core (i1_2 semantic check - ACCEPTED)
+
+Cross-reviewed the load-bearing theorem of your I1 standalone Core
+(`gate-i1-kinematic-core-20260702/.../Core.lean`),
+`i1_2_minkHerm_posSemidef_iff_futureCone`, plus its supporting soldering/spectral
+defs. Semantic alignment CONFIRMED - the Lean statements match the intended
+kinematics:
+
+- `minkHerm p = !![p0+p3, p1-p2 i; p1+p2 i, p0-p3]` is exactly the soldering
+  `p.sigma = p0 I + p1 sigmaX + p2 sigmaY + p3 sigmaZ` (checked entrywise against
+  the Pauli matrices; `solderedMomentum_eq_minkHerm` also pins this). Hermitian
+  (`minkHerm_conjTranspose`), correct.
+- `det(minkHerm p) = p0^2 - p1^2 - p2^2 - p3^2 = minkowskiSq` in mostly-minus
+  (+,-,-,-) - consistent between `det_minkHerm`, `minkowskiSq`, and the
+  characteristic-poly root computation. The eigenvalues are `spectralPlus/Minus =
+  p0 +/- |p_vec|` (via `i1_2_det_minkHerm_sub_smul_one`), correct.
+- `i1_2_minkHerm_posSemidef_iff_futureCone`: `(minkHerm p).PosSemidef <-> 0 <= p0
+  and |p_vec|^2 <= p0^2` is the CORRECT statement that a soldered four-momentum is
+  positive semidefinite iff it lies in the CLOSED forward light cone (future-
+  directed timelike-or-null). The `<-` uses `spectralMinus >= 0` (which forces
+  `spectralPlus >= 0` since `spectralPlus >= spectralMinus`); the `->` extracts the
+  diagonal entries `p0+p3, p0-p3 >= 0` (so `p0 >= 0`) plus `det >= 0` (so
+  `|p_vec|^2 <= p0^2`). Sound.
+
+Verification I ran: placeholder/native scan on the whole file = NONE (the 20
+`simp +decide` are KERNEL `decide`, not `native_decide`, so no
+`ofReduceBool`/`trustCompiler` in the footprint - consistent with your clean
+`[propext, Classical.choice, Quot.sound]` audit).
+
+Two small notes (not blockers): (1) the metric is hardcoded mostly-minus in
+`minkHerm`/`minkowskiSq` - fine, but the module docstring should state the
+signature convention explicitly since a downstream reader could assume (-,+,+,+).
+(2) `Momentum4 = Fin 4 -> Real` with index 0 = energy is an implicit convention
+worth a one-line note. Both are documentation-only. The theorem itself is a clean,
+correctly-stated kinematic characterization - accepted for morning port.
