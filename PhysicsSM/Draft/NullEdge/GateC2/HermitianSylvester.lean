@@ -3,21 +3,21 @@ import Mathlib
 /-!
 # Sylvester's law of inertia for complex Hermitian matrices (eigenvalue-count form)
 
-Proof returned by Aristotle job `635b44ae-206b-48f0-99bd-ec6cd59ada1a`.
-Self-contained (Mathlib only). This fills a genuine Mathlib-facing gap: Mathlib
-has Sylvester's law of inertia for quadratic forms
+Draft-trust Mathlib-only port of Aristotle job
+`635b44ae-206b-48f0-99bd-ec6cd59ada1a`. This fills a useful Mathlib-facing
+bridge: Mathlib has Sylvester's law of inertia for quadratic forms
 (`QuadraticForm.equivalent_signType_weighted_sum_squared`,
 `QuadraticForm.sigPos_of_equiv_weightedSumSquares`,
 `QuadraticForm.sigNeg_of_equiv_weightedSumSquares`,
 `QuadraticForm.sigPos_add_sigNeg_add_radical`), but not the complex-Hermitian
 matrix form in terms of `Matrix.IsHermitian.eigenvalues`.
 
-## The target
+## The theorem
 
 `congruence_preserves_inertia`: if `A`, `B` are complex Hermitian matrices,
 `S` is invertible, and `B = Sᴴ A S` (a `*`-congruence), then `A` and `B` have the
-SAME number of positive eigenvalues and the SAME number of negative eigenvalues
-(counted with `Matrix.IsHermitian.eigenvalues`). Do NOT change the statement.
+same number of positive eigenvalues and the same number of negative eigenvalues
+(counted with `Matrix.IsHermitian.eigenvalues`).
 
 ## Proof strategy (min-max / subspace dimension)
 
@@ -43,7 +43,7 @@ set (no reindexing needed).
 
 open Matrix
 
-namespace HermitianSylvester
+namespace PhysicsSM.Draft.NullEdge.GateC2.HermitianSylvester
 
 variable {n : Type*} [Fintype n] [DecidableEq n]
 
@@ -303,4 +303,4 @@ theorem congruence_preserves_inertia
   · rw [← hposA, ← hposB, hposInv]
   · rw [← hnegA, ← hnegB, hnegInv]
 
-end HermitianSylvester
+end PhysicsSM.Draft.NullEdge.GateC2.HermitianSylvester

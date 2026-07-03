@@ -170,10 +170,12 @@ implies equal eigenvalue-sign counts (`Matrix.IsHermitian.eigenvalues`), the exa
 form `epsCFC_trace_eq_inertia` consumes. That bridge - Hermitian-form signature =
 eigenvalue-sign count, invariant under `*`-congruence - is the ONE connective lemma
 to assemble, and is a clean focused Aristotle target on its own (reusable well
-beyond this witness). SUBMITTED: Aristotle job 635b44ae
+beyond this witness). HARVESTED/PORTED: Aristotle job 635b44ae
 (`AgentTasks/aristotle-standalone/gate-c2-hermitian-sylvester-20260703`,
-`congruence_preserves_inertia`); harvest it, then the 2D witness is a short assembly. With it, the full 2D-flux zero-to-nonzero witness is a short
-assembly over the explicit per-block `S`, `D`.
+`congruence_preserves_inertia`) is now integrated as
+`PhysicsSM/Draft/NullEdge/GateC2/HermitianSylvester.lean`. With it, the full
+2D-flux zero-to-nonzero witness is a short assembly over the explicit per-block
+`S`, `D`.
 
 ## Provenance
 

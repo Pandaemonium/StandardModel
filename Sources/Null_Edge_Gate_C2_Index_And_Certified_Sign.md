@@ -121,6 +121,13 @@ ported) is proved. So the gauge index is read directly off the eigenvalue signs 
 `H_U`, no functional calculus in the final formula. The constructive frontier - exhibit a
 genuine flux `H_U` with a nonzero index - is now REALIZED (section 2f).
 
+Hermitian congruence bridge (`HermitianSylvester.lean`): the 2D Wilson-Dirac
+successor can use explicit rational `S^H A S = D` block congruences without
+opening eigenvalue radicals. Aristotle job 635b44ae proves
+`congruence_preserves_inertia`: for complex Hermitian matrices, invertible
+`*`-congruence preserves the positive and negative eigenvalue counts reported by
+`Matrix.IsHermitian.eigenvalues`.
+
 **(d) Gauge invariance guardrail.** `overlapIndex_conj`: the index is invariant
 under unitary conjugation. `SignCertificate.conj`: certificates transport
 covariantly. Consequence: a nonzero index can NEVER come from a gauge/basis
@@ -206,7 +213,10 @@ The remaining frontier is now (i) an EVEN lattice / 2D Wilson-Dirac operator on 
 torus with net flux `2 pi`, giving a genuine ZERO-to-nonzero flux index (the odd
 triangle carries an index at every flux); (ii) the anomaly / index-density bridge
 connecting a gauge-background local density to the index; and (iii) locality and
-the continuum limit. These are the successor gates.
+the continuum limit. The Hermitian Sylvester bridge is now available for the first
+item: an explicit per-block congruence can be converted into eigenvalue-sign
+counts without solving the characteristic polynomial. These are the successor
+gates.
 
 ## 5. File map
 
@@ -223,10 +233,11 @@ operator index 0); `OverlapIndexWindingWitness` (winding = Q);
 self-adjointness of certified signs + explicit self-adjoint `epsCFC`),
 `GaugeOverlapInterface` (abstract gauge-overlap interface), `GaugeIndexInertiaForm`
 (index in trace / eigenvalue-count form + the spectral bridge
-`epsCFC_trace_eq_inertia`); `OverlapWindingSignJoin` (diagonal certified operator),
+`epsCFC_trace_eq_inertia`), `HermitianSylvester` (Hermitian congruence preserves
+eigenvalue-sign counts); `OverlapWindingSignJoin` (diagonal certified operator),
 `OverlapHoppingSignWitness` (non-diagonal certified operator);
 `OverlapIndexGaugeInvariance` (conjugation invariance); `FluxOverlapIndex` (the
 concrete `pi`-flux triangle nonzero-index witness). The aggregator `GateC2.lean`
 imports the whole layer: `lake build PhysicsSM.Draft.NullEdge.GateC2` kernel-checks
-all 18 modules together. Prerequisite: the Gate C1 `GateC1/` overlap release and
+all 19 modules together. Prerequisite: the Gate C1 `GateC1/` overlap release and
 `GateC1.OverlapIndexToy` index algebra.

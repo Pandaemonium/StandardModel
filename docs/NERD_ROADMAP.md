@@ -167,6 +167,11 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   gapped Hermitian gauge/Wilson operator `H`, namely
   `(1/2)(sig gamma5 - (n_+ - n_-))`. The sign-trace/inertia spectral bridge was
   harvested from Aristotle job `25f0b738`.
+- `HermitianSylvester.lean` (`congruence_preserves_inertia`): the complex
+  Hermitian matrix form of Sylvester's law needed by the 2D flux successor -
+  invertible `S^H A S` congruence preserves positive and negative eigenvalue
+  counts (`Matrix.IsHermitian.eigenvalues`). Harvested from Aristotle job
+  `635b44ae`.
 - `OverlapWindingSignJoin.lean` (`signCertificate_HU_epsW`, `signCertificate_HU_unique`):
   joins C2a to C2b - the winding involution `epsW` is a genuine certified sign of an
   explicit gapped mass-defect (domain-wall) operator `HU = diag(-2,-3,-1,5)`, and
@@ -215,6 +220,8 @@ zero-to-nonzero index, then the anomaly/index-density bridge. The tracked oracle
 `-2`) as design evidence, not proof. The `H^2=coeff.I` scalar-square shortcut
 breaks under such a background - the certified-sign interface
 (`SignCertificate`) is how `sign(H_U)` is pinned without a functional calculus.
+The harvested Hermitian Sylvester bridge now turns explicit rational congruence
+data for the `8 x 8` blocks into eigenvalue-sign counts.
 
 ## Tracks
 

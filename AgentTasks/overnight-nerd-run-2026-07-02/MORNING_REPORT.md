@@ -1,17 +1,18 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
 **Status: FINAL-SWEEP DRAFT (C2 report/source/roadmap and handoff docs
-reconciled; Aristotle jobs `f3296d38` and `25f0b738` are IDLE, harvested, and
-ported as of 2026-07-03 07:13 PDT; I1/P2 staging stack is now ported to
-`PhysicsSM/Draft/NullEdge/GateI1/`; full `lake build` passed after latest
-Lean-relevant frontier commit `fd71eac`, with later docs/oracle commits verified
+reconciled; Aristotle jobs `f3296d38`, `25f0b738`, and `635b44ae` are IDLE,
+harvested, and ported; I1/P2 staging stack is now ported to
+`PhysicsSM/Draft/NullEdge/GateI1/`; full `lake build` passed after frontier commit
+`fd71eac`, with later docs/oracle/Sylvester-targeted checks verified
 separately).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 stack is now present as an
 in-repo draft module but still needs a semantic review/module-splitting pass
-before any trusted promotion; the C2 certified-sign existence, flux-index, and
-sign-trace/inertia Aristotle jobs have been harvested into the C2 draft layer.
+before any trusted promotion; the C2 certified-sign existence, flux-index,
+sign-trace/inertia, and Hermitian-Sylvester Aristotle jobs have been harvested
+into the C2 draft layer.
 The whole report still needs final cross-review before handoff per the RUN_PLAN.
 Report faithfully: negatives and
 exploratory probes are recorded as such.
@@ -21,10 +22,11 @@ exploratory probes are recorded as such.
 - C1 free chiral release is kernel-checked through operator-level GW, Weyl
   projectors, and the C2 operator-index bridge; the latest full `lake build`
   passed after `fd71eac`.
-- C2 now has eighteen committed draft theorem files plus the aggregate
+- C2 now has nineteen committed draft theorem files plus the aggregate
   `GateC2.lean`: integrality, eigenspace and matrix-signature counting, abstract
-  gauge-overlap interface, eigenvalue-count/inertia form, operator-index
-  packaging, free-zero, winding, certified-sign uniqueness/existence/
+  gauge-overlap interface, eigenvalue-count/inertia form, Hermitian congruence
+  inertia invariance, operator-index packaging, free-zero, winding,
+  certified-sign uniqueness/existence/
   self-adjointness, gauge covariance, non-diagonal hopping, the free local-density
   benchmark, the exact free operator-index-zero/sum-rule bridge, and a genuine
   `pi`-flux triangle witness with nonzero index. The next C2 frontier is no longer
@@ -40,8 +42,8 @@ exploratory probes are recorded as such.
   remain.
 - Aristotle materially changed the night: L0.1 corrected, C1/C2 red-teamed, C2
   strategy shaped, `66972f62` closed certified-sign existence, `f3296d38`/`25f0b738`
-  closed the flux/inertia C2 capstones, and `635b44ae` is now probing the
-  Sylvester bridge for the 2D-flux successor.
+  closed the flux/inertia C2 capstones, and `635b44ae` closed the Sylvester
+  bridge for the 2D-flux successor.
 
 ## 2. Theorems landed (Claude, kernel-checked, dependency footprint = propext/Classical.choice/Quot.sound)
 
@@ -96,6 +98,7 @@ All Codex rows are draft/staging. Dependency audits reported
 | D2 fixed modular-energy stationarity | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | `entropy_gap_eq_relEntropy_of_fixed_crossEntropy`, `d2_shannon_le_of_fixed_crossEntropy` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw` |
 | D3.0 finite no-proper-shrink skeleton | `PhysicsSM/Draft/NullEdge/GateD/FiniteHalfSidedInclusion.lean` | `permImage_eq_of_subset`, `permImage_pow_eq_of_halfSided`, `subspaceImage_eq_of_le`, `subspaceImage_pow_eq_of_halfSided` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion` |
 | D6 classical checkerboard turns | `PhysicsSM/Draft/NullEdge/GateD/FiniteCheckerboardTurns.lean` | `bernoulliTurnWeight_nonneg`, `bernoulliTurnWeight_sum`, `bernoulliTurnWeight_marginal_turn`, `bernoulliTurnWeight_turnCountReal_mean`, `d6_classical_growth_is_bernoulli`, `classicalCheckerboardGrowthWeight_sum`, `classicalCheckerboardGrowthWeight_turnCountReal_mean` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns` |
+| C2 Hermitian Sylvester bridge | `PhysicsSM/Draft/NullEdge/GateC2/HermitianSylvester.lean` | `congruence_preserves_inertia` | `lake build PhysicsSM.Draft.NullEdge.GateC2.HermitianSylvester`; `lake build PhysicsSM.Draft.NullEdge.GateC2` |
 
 ### Cross-review coverage (Claude reviewed Codex's I1/D; discussion log has details)
 
@@ -144,11 +147,11 @@ Submitted/harvested tonight (summaries in gitignored
   `GaugeIndexInertiaForm.lean` (`4843ff2`): proves `Tr(sign H)` equals the
   inertia of a gapped Hermitian `H`, discharging the unconditional
   eigenvalue-count gauge-index formula.
-- `635b44ae` gate-c2-hermitian-sylvester - RUNNING as of 2026-07-03 07:49 PDT:
-  focused proof target `congruence_preserves_inertia`, the complex Hermitian
-  matrix bridge from a rational `S^H A S = D` congruence to eigenvalue-sign
-  counts. This is the connective lemma for the even-lattice / 2D Wilson-Dirac
-  zero-to-nonzero flux successor.
+- `635b44ae` gate-c2-hermitian-sylvester - COMPLETE and harvested into
+  `HermitianSylvester.lean`: proves `congruence_preserves_inertia`, the complex
+  Hermitian matrix bridge from an invertible `S^H A S = D` congruence to
+  eigenvalue-sign counts. This is the connective lemma for the even-lattice /
+  2D Wilson-Dirac zero-to-nonzero flux successor.
 Pre-run checkerboard backlog dry-run-inspected by Codex/T0; row-sum,
 L-infinity, L2/unitarity, and accumulated-Trotter returns are integrated in
 `NullEdgeStandalone`. The older gate-c1-* backlog was found already integrated
@@ -168,13 +171,12 @@ promotion. Codex's new Gate D draft files are targeted-build green and committed
 in `6e1a7e5`; full-tree build has since passed, while broader semantic review
 remains before any trusted promotion.
 Gate C2's abstract certified-sign existence job (`66972f62`), flux-index job
-(`f3296d38`), and sign-trace/inertia bridge (`25f0b738`) have all been harvested
-and integrated. The C2 Lean arc is committed, caveated, red-team validated, and
-full-build green after the post-inertia capstone. The remaining C2 debt is not an
-unharvested job; it is successor mathematics: an even-lattice / 2D-torus flux
-model, gauge-background density/anomaly bridge, and locality/continuum analysis.
-The first successor proof helper is already submitted as Aristotle job `635b44ae`
-and awaits harvest.
+(`f3296d38`), sign-trace/inertia bridge (`25f0b738`), and Hermitian Sylvester
+bridge (`635b44ae`) have all been harvested and integrated. The C2 Lean arc is
+committed, caveated, red-team validated, and targeted-build green after the
+post-Sylvester port. The remaining C2 debt is not an unharvested job; it is
+successor mathematics: an even-lattice / 2D-torus flux model, gauge-background
+density/anomaly bridge, and locality/continuum analysis.
 Checkerboard T1b: accumulated Trotter, the matching-time `matrixL1Norm`
 boundary theorem, and the fixed-target-time variant are now integrated into
 `NullEdgeStandalone`; remaining checkerboard work is the uniform
@@ -219,6 +221,11 @@ momentum-window version and position-space sampling/interpolation bridge.
   info/linter/deprecation chatter only). This run also anchors the Gate I1 draft
   port in the current tree, though the root target still excludes the NullEdge
   aggregate modules unless built explicitly.
+- Sylvester harvest checks: `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.HermitianSylvester`; `lake env lean
+  AgentTasks/aristotle-standalone/gate-c2-hermitian-sylvester-20260703/HermitianSylvester/Sylvester.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateC2`; placeholder scan and dependency
+  audit clean for `congruence_preserves_inertia`.
 - C2 2D-flux oracle checks: `python -m py_compile
   Scripts/oracle/validate_flux2d_wilson_dirac.py`; `python
   Scripts/oracle/validate_flux2d_wilson_dirac.py` passed, reproducing the

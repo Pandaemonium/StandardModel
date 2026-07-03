@@ -595,3 +595,21 @@ Extended the script with optional exact mode and ran
 1.14.0). Exact `k_x=0` block characteristic polynomial:
 `(lambda + 1)*(lambda^2 - 3)*(lambda^2 - 2*lambda - 1)*(lambda^3 + lambda^2 - 5*lambda - 1)`,
 determinant `-3`, root sign count `n_+=3`, `n_-=5`, signature `-2`.
+
+## Verification 08:18 codex :: Aristotle Sylvester bridge harvested and ported
+
+Aristotle job `635b44ae-206b-48f0-99bd-ec6cd59ada1a` is COMPLETE. The returned
+proof keeps the focused statement `congruence_preserves_inertia` and proves the
+complex Hermitian matrix/eigenvalue-count form of Sylvester's law: an invertible
+`S^H A S` congruence preserves the number of positive and negative eigenvalues
+reported by `Matrix.IsHermitian.eigenvalues`. Ported the result into
+`PhysicsSM/Draft/NullEdge/GateC2/HermitianSylvester.lean`, synced the retained
+standalone package file, and added the new module to the C2 aggregate.
+
+Verification run so far: `lake build
+PhysicsSM.Draft.NullEdge.GateC2.HermitianSylvester`; `lake env lean
+AgentTasks/aristotle-standalone/gate-c2-hermitian-sylvester-20260703/HermitianSylvester/Sylvester.lean`;
+`lake build PhysicsSM.Draft.NullEdge.GateC2`. The live module builds without new
+linter warnings; the aggregate build retains only older C1/C2 warnings/infos.
+Placeholder scan is clean, and the dependency audit for
+`congruence_preserves_inertia` is `[propext, Classical.choice, Quot.sound]`.
