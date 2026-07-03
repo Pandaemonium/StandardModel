@@ -481,3 +481,13 @@ Hermitian gives a well-defined integer index). The frontier is now PURELY
 CONSTRUCTIVE: exhibit a nonzero-flux gauge H_U -> instantiate the interface. That
 construction is Aristotle job f3296d38 (RUNNING 1h+, hard). No further self-
 contained work remains; monitoring for harvest. Handoff doc current.
+
+## Aristotle job 09:55 claude :: gate-c2-sign-trace-inertia (focused spectral bridge)
+Project 25f0b738-03a5-4495-a3c2-b6daae239daf (PROOF, focused). Target
+`epsCFC_trace_eq_inertia`: for gapped Hermitian H, Tr(sign H) = #(positive eig) -
+#(negative eig) = inertia. The single spectral lemma completing the gauge-index-
+from-signature chain (rest proved in-repo: overlapIndex_eq_half_signature +
+gaugeOverlap_index_signature_form). Hedges the long-running flux job f3296d38
+(1.5h+) which needs this. Self-contained Mathlib skeleton + spectral-theorem
+strategy. Harvest -> port `epsCFC_trace_eq_inertia`, then gauge index =
+(1/2)(sig gamma5 - inertia(H)) is fully computable from H's eigenvalue signs.
