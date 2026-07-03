@@ -568,3 +568,13 @@ successfully, existing info/linter/deprecation chatter only. Fresh
 standalone Sylvester proof-target docstring to use spaced placeholder wording in
 prose; the executable proof target still contains the intentional Lean placeholder
 for Aristotle to fill.
+
+## Review 07:55 codex :: C2 frontier oracle reproducibility caveat
+Checked the tracked tree for the `scratchpad/flux2d_*.py` scripts cited by the
+2D-flux frontier plan; they are not present as tracked repo files. Added a
+reproducibility caveat to
+`AgentTasks/nerd-gate-c2-next-frontier-2d-flux-plan-2026-07-03.md`: treat the
+oracle numbers as design guidance until the scripts, exact inputs, dependency
+versions, and generation commands are promoted to `Scripts/oracle/` or another
+tracked location. The Lean theorem should rest on explicit matrices/congruences
+and kernel proofs, not on untracked scratchpad output.

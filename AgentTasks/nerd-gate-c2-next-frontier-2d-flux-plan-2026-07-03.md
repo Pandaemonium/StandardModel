@@ -179,3 +179,11 @@ fixture). Framework: the certified-sign interface + `epsCFC_trace_eq_inertia`
 (`GateC2/GaugeIndexInertiaForm.lean`). Convention: `H_U` Hermitian, index
 `= -(1/2)(n_+ - n_-)` against traceless `gamma5U = 1 (x) sz`, matching
 `FluxOverlapIndex`.
+
+Codex reproducibility note, 2026-07-03 07:55 PDT: the `scratchpad/flux2d_*.py`
+files cited above were not present as tracked repo files during review. Treat the
+oracle numbers as design guidance until the scripts, exact inputs, dependency
+versions, and generation commands are promoted to a reproducible artifact under
+`Scripts/oracle/` (or an equivalent tracked location). The Lean theorem should
+ultimately depend on the explicit matrices/congruences and kernel proofs, not on
+the scratchpad output.
