@@ -8,7 +8,7 @@ precisely. All Lean is draft-trust but kernel-checked, dependency footprint
 It extends the completed Gate C1 free chiral (overlap/Ginsparg-Wilson) release; it
 does NOT claim a gauge index theorem, an anomaly, locality, or a continuum limit.
 
-Claim label: **structural theorems** (finite matrix/operator algebra), with two
+Claim label: **structural theorems** (finite matrix/operator algebra), with
 explicit **consistency witnesses** and one documented **open construction**.
 
 ## 1. Setup
@@ -45,6 +45,31 @@ from the chirality anticommutation `{gamma5, Q} = 0` plus trace cyclicity, and t
 Wilson mass term is scalar. `tetraOverlapIndex_isInteger` certifies the concrete
 free index is an integer. So the free theory carries no topology - the benchmark a
 genuine gauge background must defeat.
+
+**(b2) Free local-density benchmark.** `freeIndexDensity_eq_zero`: the operator
+sign `signHfree` is expanded as a real-space kernel, the kernel diagonal is shown
+translation-invariant, each free sign symbol is traceless, and therefore the free
+local index density vanishes site-wise. This is the free/no-gauge local version of
+the zero-index benchmark; it is not a gauge anomaly theorem.
+
+**(b3) Operator sum rule and exact free value.** `operatorIndex_eq_sum_density`
+proves the finite operator overlap index is exactly the site-sum of the local
+index density. `flagship_operatorIndex_eq_zero` then computes the flagship free
+operator index to be exactly `0`, using `trace_signHfreeL`, `trace_Gamma5opL`,
+and the vanishing kernel diagonal. This is still free/no-gauge, but it supplies
+the structural "index = integral of density" identity needed before a gauge
+anomaly bridge.
+
+**(b3) Operator value and the sum rule** (`FlagshipOperatorIndexZero.lean`).
+`trace_signHfreeL`: the endomorphism trace of the operator sign equals the
+site-sum of its kernel-diagonal spin-traces (product-basis computation), and
+`trace_Gamma5opL = card . Tr gamma5`.  Consequences:
+`flagship_operatorIndex_eq_zero` - the free chiral OPERATOR index equals `0`
+exactly (the benchmark now holds at all three levels: symbol, certified-integer,
+operator value) - and `operatorIndex_eq_sum_density` - unconditionally, the
+operator index equals the site-sum of the local density, the finite exact form of
+"index = integral of the index density" whose gauge-background version is the
+anomaly statement.
 
 **(c) The certified sign (no functional calculus).** The key C2b interface. A
 **sign certificate** for a gapped (invertible) Hermitian `H` is a matrix `eps`
@@ -97,8 +122,9 @@ FAITHFUL, zero mismatches; caveats folded into docstrings):
    or a flat-connection hopping. No operator with nontrivial holonomy around a loop
    (a real magnetic flux) is constructed, so no index has yet been shown to equal a
    gauge-invariant topological charge. This is the central open problem (section 4).
-2. **No anomaly / index-density.** The trace-index has not been connected to a
-   local index density or a chiral anomaly.
+2. **No gauge anomaly / gauge index-density theorem.** The free local density is
+   zero site-wise, but no gauge-background density has been connected to a chiral
+   anomaly.
 3. **No locality or continuum limit.**
 4. The winding family (e) is algebra-level; only the `Q = 1` unit is tied to an
    operator.
@@ -127,7 +153,9 @@ anomaly/index-density bridge and locality are the successor gates.
 
 `OverlapIndexIntegrality`, `OverlapIndexEndIntegrality`, `FlagshipOperatorIndex`
 (integrality: matrix / endomorphism / flagship-operator); `TetraFreeIndexZero`
-(free benchmark + certified integer); `OverlapIndexWindingWitness` (winding = Q);
+(free benchmark + certified integer), `TetraFreeIndexDensity` (free local density
+zero), `FlagshipOperatorIndexZero` (operator density sum rule + exact free
+operator index 0); `OverlapIndexWindingWitness` (winding = Q);
 `OverlapSignCertificate` (certificate + uniqueness + GW), `OverlapSignExistence`
 (existence + explicit `|H|H^{-1}`); `OverlapWindingSignJoin` (diagonal certified
 operator), `OverlapHoppingSignWitness` (non-diagonal certified operator);
