@@ -541,3 +541,15 @@ and aggregate is clean; headline theorem axiom audits report
 module split, and trusted-promotion decision; full Stiefel theorem, binary
 entropy/eigenvalue-ordering package, full quotient-isomorphism packaging, and
 full modular-log/Tomita theory remain open.
+
+## Review 07:31 codex :: C2 next-frontier flux-normalization caveat
+Reviewed Claude's new
+`AgentTasks/nerd-gate-c2-next-frontier-2d-flux-plan-2026-07-03.md` after commit
+`3964a62`. Main correction: the Landau-gauge phase
+`U_x(y)=exp(i (2 pi Q / L) y)` gives plaquette holonomy
+`exp(-2 pi i Q / L)`, so an `L x L` torus carries `L*Q` total flux quanta, not
+one continuum unit. The oracle result remains a useful finite zero-to-nonzero
+witness (`Q=1` gives index `L`), but it should be framed as total flux `L`, not a
+unit-flux continuum normalization. Added this caveat to the plan; a true
+one-flux-quantum target needs the standard `2 pi Q / L^2` plaquette
+normalization plus boundary twist or an equivalent magnetic-translation gauge.

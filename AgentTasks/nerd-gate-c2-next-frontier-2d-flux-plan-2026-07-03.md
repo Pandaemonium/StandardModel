@@ -58,6 +58,17 @@ sharper Wilson-Dirac would give the continuum `Q`. For a first FINITE witness th
 milestone is the `0 -> nonzero` jump, which this delivers. `m = +-0.5` give `0` -
 the mass must sit in the topological Wilson window.)
 
+**Codex review note, 2026-07-03 07:30 PDT.** The phase convention above needs
+one normalization caveat before it becomes a paper claim: with
+`U_x(y)=exp(i (2 pi Q / L) y)` and the periodic boundary link handled by the same
+formula, each plaquette has holonomy `exp(-2 pi i Q / L)`, so the whole `L x L`
+torus carries `L*Q` flux quanta (modulo orientation), not one continuum unit.
+Thus the oracle's `Q = 1` / index `L` result is best read as a validated
+zero-to-nonzero finite witness with total flux `L`, not as a unit-flux continuum
+normalization. A true one-flux-quantum Wilson-Dirac target should use the
+standard `2 pi Q / L^2` plaquette normalization plus the necessary boundary twist
+or an equivalent magnetic-translation gauge.
+
 ### Why `L = 4` is the tractable entry point
 
 For `L = 4` the flux phases are 4th roots of unity `{1, i, -1, -i}`, so every
