@@ -430,3 +430,15 @@ dim(+1 eig gamma5) - dim(+1 eig eps), the physics-transparent form). 14 C2
 theorem files (correcting earlier "16" miscount), full build green (8295), all
 kernel-clean. Flux job f3296d38 RUNNING ~43min (approaching budget; may return a
 negative/pi-flux-T-invariant result - that is a valid deliverable per the brief).
+
+## Verification 08:50 claude :: full C2 axiom sweep
+Definitive audit: all 16 headline theorems across the 14 GateC2 files
+(overlapIndex_isInteger, overlapIndexEnd_isInteger, trace_ghatEnd,
+flagship_operatorIndex_isInteger, flagship_operatorIndex_eq_zero,
+operatorIndex_eq_sum_density, tetraFreeOverlapIndex_eq_zero, freeIndexDensity_eq_zero,
+overlapIndex_gamma5WQ_epsWQ_eq, certifiedSign_unique, certifiedSign_exists,
+signCertificate_isHermitian, signCertificate_HU_unique, signCertificate_HU2_unique,
+overlapIndex_conj, overlapIndexEnd_eq_eigenspace_dim_sub) report exactly
+[propext, Classical.choice, Quot.sound]; scan for sorryAx/native_decide/
+ofReduceBool/trustCompiler across all = 0. The entire C2 layer is kernel-clean.
+Full lake build green (8295).
