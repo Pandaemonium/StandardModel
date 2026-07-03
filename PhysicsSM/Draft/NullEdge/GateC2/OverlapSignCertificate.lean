@@ -55,6 +55,7 @@ namespace OverlapSignCertificate
 
 open Matrix
 open scoped ComplexOrder
+open PhysicsSM.Draft.NullEdge.GateC1.OverlapGinspargWilson
 
 -- The Loewner (positive-semidefinite) order on complex matrices is an `abbrev`,
 -- not a global instance; activate it locally for the CFC square-root API.
@@ -103,6 +104,17 @@ theorem certifiedSign_unique (H eps1 eps2 : Matrix n n ℂ) [Invertible H]
   have heq : eps1 * H = eps2 * H := by rw [← hs1, hs2]
   have hcancel := congrArg (· * (⅟H : Matrix n n ℂ)) heq
   simpa [mul_assoc, mul_invOf_self, mul_one] using hcancel
+
+/-- **A certified sign yields a Ginsparg-Wilson overlap.**  For any chirality
+involution `gamma5` and any certified sign `eps` of `H`, the overlap
+`Dov = 1 + gamma5 . eps` satisfies the Ginsparg-Wilson relation.  Combined with
+`certifiedSign_unique`, this is the abstract admissible-sign interface for gauge
+overlap: certify one `eps_U`, and the overlap is both well-defined and GW. -/
+theorem SignCertificate.dov_ginspargWilson (H eps gamma5 : Matrix n n ℂ)
+    (hg : gamma5 * gamma5 = 1) (hc : SignCertificate H eps) :
+    gamma5 * Dov gamma5 eps + Dov gamma5 eps * gamma5
+      = Dov gamma5 eps * gamma5 * Dov gamma5 eps :=
+  dov_ginsparg_wilson gamma5 eps hg hc.involution
 
 end OverlapSignCertificate
 end GateC2
