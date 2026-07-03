@@ -137,16 +137,20 @@ already cover I1.1.
 
 ## Overnight Lean-name mapping (2026-07-03)
 
-Current staging file:
+Current in-repo draft module:
+`PhysicsSM/Draft/NullEdge/GateI1/Core.lean`, with aggregate import
+`PhysicsSM/Draft/NullEdge/GateI1.lean`.
+
+This is the 2026-07-03 port of the standalone staging file:
 `AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean`.
 It imports only `Mathlib` and currently checks with:
 
 ```text
-lake env lean AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean
+lake build PhysicsSM.Draft.NullEdge.GateI1
 ```
 
-No executable placeholder or escape-hatch tokens are present in the staging
-file.  These are draft/staging declarations, not trusted-module promotions.
+No executable placeholder or escape-hatch tokens are present in the ported draft
+module. These are draft declarations, not trusted-module promotions.
 
 | Claim | Lean names | Status |
 |-------|------------|--------|

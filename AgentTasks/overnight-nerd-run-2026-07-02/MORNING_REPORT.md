@@ -2,15 +2,16 @@
 
 **Status: FINAL-SWEEP DRAFT (C2 report/source/roadmap and handoff docs
 reconciled; Aristotle jobs `f3296d38` and `25f0b738` are IDLE, harvested, and
-ported as of 2026-07-03 07:13 PDT; current-tree full `lake build` passed after
+ported as of 2026-07-03 07:13 PDT; I1/P2 staging stack is now ported to
+`PhysicsSM/Draft/NullEdge/GateI1/`; current-tree full `lake build` passed after
 capstone commit `4843ff2`).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
-shared ledger/discussion and targeted checks. The I1 standalone file still needs
-morning port/review before main-tree integration, and the C2 certified-sign
-existence, flux-index, and sign-trace/inertia Aristotle jobs have been harvested
-into the C2 draft layer. The whole report still needs final cross-review before
-handoff per the RUN_PLAN.
+shared ledger/discussion and targeted checks. The I1 stack is now present as an
+in-repo draft module but still needs a semantic review/module-splitting pass
+before any trusted promotion; the C2 certified-sign existence, flux-index, and
+sign-trace/inertia Aristotle jobs have been harvested into the C2 draft layer.
+The whole report still needs final cross-review before handoff per the RUN_PLAN.
 Report faithfully: negatives and
 exploratory probes are recorded as such.
 
@@ -28,8 +29,11 @@ exploratory probes are recorded as such.
   `pi`-flux triangle witness with nonzero index. The next C2 frontier is no longer
   "find first flux"; it is the even-lattice / 2D-torus flux model plus
   gauge-density/anomaly and locality/continuum successors.
-- Codex's I1/P2 standalone stack and Gate D draft stack are kernel-checked and
-  semantically cross-reviewed, but the I1/P2 stack still needs main-tree porting.
+- Codex's I1/P2 stack has been ported from standalone staging into
+  `PhysicsSM/Draft/NullEdge/GateI1/Core.lean` with aggregate `GateI1.lean`; it is
+  kernel-checked and axiom-audited as draft code, with semantic review/module
+  splitting still pending. Gate D draft stack remains kernel-checked and
+  semantically cross-reviewed.
 - Checkerboard T1b landed accumulated/fixed-time pointwise Dirac-limit theorems
   in `NullEdgeStandalone`; uniform momentum-window and position-space bridges
   remain.
@@ -79,7 +83,7 @@ All Codex rows are draft/staging. Dependency audits reported
 
 | Cluster | File | Main names | Verification |
 |---|---|---|---|
-| I1.1-I1.6 kinematic core | `AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean` | `i1_1_soldering_det`, `i1_2_minkHerm_posSemidef_iff_futureCone`, `i1_2_minkHerm_eigenvalues_nonneg_iff_futureCone`, `i1_3_rank_one_rank_dichotomy`, `i1_4_rank_one_factorization`, `i1_5_cauchy_binet_mass_identity`, `i1_6_kinematic_cross_check` | `lake env lean ...\Core.lean` |
+| I1.1-I1.6 kinematic core | `PhysicsSM/Draft/NullEdge/GateI1/Core.lean` | `i1_1_soldering_det`, `i1_2_minkHerm_posSemidef_iff_futureCone`, `i1_2_minkHerm_eigenvalues_nonneg_iff_futureCone`, `i1_3_rank_one_rank_dichotomy`, `i1_4_rank_one_factorization`, `i1_5_cauchy_binet_mass_identity`, `i1_6_kinematic_cross_check` | `lake build PhysicsSM.Draft.NullEdge.GateI1.Core`; `lake build PhysicsSM.Draft.NullEdge.GateI1` |
 | I1.8-I1.9 + I3.5 | same | `det_normalizedMinkHerm_sub_smul_one`, `normalizedMinkHerm_spectralPlus_det_zero`, `normalizedMinkHerm_spectralMinus_det_zero`, `normalizedMinkHerm_posSemidef_of_futureCone`, `normalizedMinkHerm_faithful_of_futureTimelike`, `det_normalizedMinkHerm`, `trace_normalizedMinkHerm_sq`, `linearEntropy_normalizedMinkHerm`, `i1_9_minkHerm_mul_bar_eq_minkowskiSq`, `i1_9_bar_mul_minkHerm_eq_minkowskiSq`, `i3_5_clock_projector_invariant`, `i3_5_clock_det` | same |
 | I2 finite faithfulness shadow | same | `faithful2_det_ne_zero`, `i2_rankOne_not_faithful`, `i2_null_not_faithful`, `i2_minkHerm_faithful_of_futureTimelike`, `i2_minkHerm_faithful_iff_futureTimelike` | same |
 | A1 finite boost algebra | same | `a1_spatialPauli_sq`, `a1_boost_minkHerm_form`, `a1_boost_minkowskiSq`, `a1_boost_eigenvalue_ratio`, `a1_boost_faithful` | same |
@@ -148,10 +152,13 @@ strategy, and red-team bottlenecks.
 
 None outstanding on the Claude side through the C1 free release: every theorem
 is committed, verified, and the full tree built after that batch. Codex's I1/P2
-work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
-is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
-are targeted-build green and committed in `6e1a7e5`; full-tree build has since
-passed, while broader semantic review remains before any trusted promotion.
+work has now been ported into the main draft tree at
+`PhysicsSM/Draft/NullEdge/GateI1/Core.lean` with aggregate
+`PhysicsSM/Draft/NullEdge/GateI1.lean`; targeted builds and axiom audit are
+green. A semantic review/module-splitting pass remains before any trusted
+promotion. Codex's new Gate D draft files are targeted-build green and committed
+in `6e1a7e5`; full-tree build has since passed, while broader semantic review
+remains before any trusted promotion.
 Gate C2's abstract certified-sign existence job (`66972f62`), flux-index job
 (`f3296d38`), and sign-trace/inertia bridge (`25f0b738`) have all been harvested
 and integrated. The C2 Lean arc is committed, caveated, red-team validated, and
@@ -207,6 +214,12 @@ momentum-window version and position-space sampling/interpolation bridge.
   PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns`; diff/trailing
   whitespace scans clean. `pre-commit run --files ...` passed before Codex
   checkpoint `6e1a7e5`.
+- Codex I1 in-repo port checks: `lake env lean
+  AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Core`; `lake build
+  PhysicsSM.Draft.NullEdge.GateI1`; placeholder scan clean for the ported module
+  and aggregate; headline theorem axiom audits report
+  `[propext, Classical.choice, Quot.sound]`.
 - Codex local C2 verification: `lake build
   PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexIntegrality`; placeholder scan
   clean; dependency audit for `overlapIndex_isInteger` and
@@ -327,9 +340,8 @@ momentum-window version and position-space sampling/interpolation bridge.
 
 ## 8. Recommended next three actions
 
-1. Port/commit Codex's I1/P2 staging cluster into the main `PhysicsSM` tree, then
-   run targeted builds, full `lake build`, and semantic cross-review; use that
-   pass to decide draft->trusted promotions.
+1. Semantically review and split the newly ported Gate I1/P2 draft stack into
+   smaller modules, then decide which pieces are ready for trusted promotion.
 2. Continue Gate C2 on the true successor frontier: an even-lattice / 2D-torus
    Wilson-Dirac flux model with zero-to-nonzero index, then the gauge-background
    density/anomaly bridge using the existing sum-rule machinery.

@@ -19,7 +19,7 @@ in `RUN_PLAN.md` applies to every task; log ingests in `LIT_LOG.md`.
 | T0 | P0 | Preflight + harvest sweep: `aristotle list` reconcile; dry-run `integrate_completed.py` on every IDLE project; record registry baseline below; prune anything already proven locally | AgentTasks/aristotle-output/**, AgentTasks/overnight-nerd-run-2026-07-02/LEDGER.md, AgentTasks/overnight-nerd-run-2026-07-02/DISCUSSION.md, Scripts/aristotle/integrate_completed.py | done | Codex | Fresh checkerboard slice done per `triage:harvest-division`; 8 recent checkerboard projects dry-run inspected with no placeholder hits; broader list paginated through 300 entries and split with Claude for C1 harvest |
 | T1 | P0 | Gate C1 critical path. HARVEST CLOSED (c200-c276 all integrated/failed per task notes; zero to resubmit). PIVOT: assess live gap chain + assemble the operator-gap milestone | PhysicsSM/Draft/NullEdge/GateC1/** | claimed-claude | claude | Live TetraFreeOperator.lean HAS Kfree, Hfree + Fourier symbol diagonalizations proven. Remaining: instantiate FourierBlockDiagonalizationBridge + UniformTetraSymbolSquareGap for Hfree -> unconditional operator gap. Assessing support files (TetraQSquareExact, TetraFiniteTorusEqual, FiniteFourierParseval). See discussion idea:ambition-targets C1 flagship |
 | T1b | P0 | Checkerboard harvest integration: integrate the IDLE checkerboard returns into `NullEdgeStandalone/PhysicsSM/Draft/` per checklist | NullEdgeStandalone/PhysicsSM/Draft/** | open | - | Pre-tonight submissions: checklist + post-hoc review note suffices |
-| T2 | P1 | Gate I1 stack in Lean: clusters (I1.1-I1.6) then (I1.7-I1.8); local-first, then focused Aristotle packages | AgentTasks/aristotle-standalone/gate-i1-**, AgentTasks/nerd-gate-i1-kinematic-core-lean-plan-2026-07-02.md, AgentTasks/overnight-nerd-run-2026-07-02/LEDGER.md, AgentTasks/overnight-nerd-run-2026-07-02/DISCUSSION.md | claimed-codex | Codex | Standalone `GateI1KinematicCore/Core.lean` created and kernel-checked: I1.1 determinant, full I1.2 PosSemidef/eigenvalue future-cone characterization, I1.3 rank-one PSD/rank dichotomy, null/rank-one factorization bridge, I1.5 Pluecker/Cauchy-Binet identity, I1.6 real nonnegative cross-check, I1.8 normalized determinant, I1.9 Weyl-block square, I2 finite faithfulness shadow (future-timelike -> faithful; null/rank-one -> not faithful), A2 determinant/cross-term algebraic spine, I3.5 determinant-line clock phase; Aristotle 6434c938 COMPLETE and merged |
+| T2 | P1 | Gate I1 stack in Lean: clusters (I1.1-I1.6) then (I1.7-I1.8); local-first, then focused Aristotle packages | AgentTasks/aristotle-standalone/gate-i1-**, PhysicsSM/Draft/NullEdge/GateI1/**, AgentTasks/nerd-gate-i1-kinematic-core-lean-plan-2026-07-02.md, AgentTasks/overnight-nerd-run-2026-07-02/LEDGER.md, AgentTasks/overnight-nerd-run-2026-07-02/DISCUSSION.md | claimed-codex | Codex | Standalone `GateI1KinematicCore/Core.lean` created, then ported to `PhysicsSM/Draft/NullEdge/GateI1/Core.lean` + aggregate `GateI1.lean`; kernel-checked: I1.1 determinant, full I1.2 PosSemidef/eigenvalue future-cone characterization, I1.3 rank-one PSD/rank dichotomy, null/rank-one factorization bridge, I1.5 Pluecker/Cauchy-Binet identity, I1.6 real nonnegative cross-check, I1.8 normalized determinant, I1.9 Weyl-block square, I2 finite faithfulness shadow (future-timelike -> faithful; null/rank-one -> not faithful), A2 determinant/cross-term algebraic spine, I3.5 determinant-line clock phase; Aristotle 6434c938 COMPLETE and merged |
 | T3 | P1 | Gate D finite stack: D1, D2(i)-(ii), D6(i)-(ii) local-first; D3.0 statement drafted + cross-reviewed + submitted | AgentTasks/aristotle-standalone/gate-d-**, PhysicsSM/Draft/NullEdge/GateD/** | claimed-claude/codex-sublane | claude + codex | Claude banked D2; Codex banked D1 finite KL-to-product/subadditivity, D3.0 finite carrier/subspace no-proper-shrink skeleton, and D6 classical checkerboard Bernoulli turn-weight normalization; full almost-periodic modular-flow theorem and Lorentzian continuation remain open |
 | T4 | P1 | Aristotle-as-partner jobs (2): (a) L0.1 no-go argument audit from `AgentTasks/nerd-gate-l0-lorentz-ensemble-nogo-plan-2026-07-02.md`; (b) C1 semantic red-team: do the TetraFreeOperator statements mean the intended math; what would demote the claim | AgentTasks/aristotle-prompts/overnight-*, AgentTasks/aristotle-submit/overnight-* | done | claude | Both COMPLETE + harvested 01:50. Summaries in aristotle-output/{ffed1801,495df59e}/REPORT_SUMMARY.md (gitignored). Red-team validated gap + gave self-adj recipe; L0 audit corrected the no-go (commit 3063d39). See discussion triage:partner-jobs-back |
 | T5 | P2 | Q2 massless calibration numerics + D3.1 modular-defect measurement (new `Scripts/qnec/`) | Scripts/qnec/** | claimed-claude (calibration done) | claude | DONE: massless c=1 calibration (c=1.0000 at N=512, residual ~1e-9) + massive dimerized area-law saturation (per-parity, spread ~1e-10). commits 131a180, 02670e5. NEXT RUNGS (higher value, more involved): discrete-QNEC deficit (2nd difference on null cuts) + D3.1 modular defect (entanglement Hamiltonian K_A = log((1-C)/C) vs boost = F-M2 data). Notes in Scripts/qnec/ header + T5 results note |
@@ -519,3 +519,25 @@ inertia theorems all report `[propext, Classical.choice, Quot.sound]`. Honest
 C2 frontier updated: first flux witness is landed; successor is an even-lattice /
 2D-torus zero-to-nonzero flux model, then gauge density/anomaly and
 locality/continuum work.
+
+## Verification 07:27 codex :: Gate I1/P2 standalone stack ported to draft tree
+Ported the Mathlib-only I1 staging file into the live draft tree as
+`PhysicsSM/Draft/NullEdge/GateI1/Core.lean`, with aggregate import
+`PhysicsSM/Draft/NullEdge/GateI1.lean`. The port keeps the standalone file's
+finite kinematic dictionary intact while moving it under the project namespace:
+I1.1 soldering determinant, I1.2 future-cone PSD/eigenvalue characterization,
+I1.3/I1.4 rank/null and rank-one factorization shadow, I1.5/I1.6 Pluecker mass
+identity and cross-check, I1.8 normalized determinant/purity dictionary, I1.9
+Weyl-block first-order bridge, I2 finite faithfulness shadow, A1 finite boost
+algebra, A2 determinant superadditivity, I3.5 determinant-line clock, and finite
+`U(2)` spin-clock split algebra.
+
+Verification: staging file still checks with `lake env lean
+AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean`;
+`lake build PhysicsSM.Draft.NullEdge.GateI1.Core` passed; `lake build
+PhysicsSM.Draft.NullEdge.GateI1` passed; placeholder scan over the ported module
+and aggregate is clean; headline theorem axiom audits report
+`[propext, Classical.choice, Quot.sound]`. Remaining I1 work: semantic review,
+module split, and trusted-promotion decision; full Stiefel theorem, binary
+entropy/eigenvalue-ordering package, full quotient-isomorphism packaging, and
+full modular-log/Tomita theory remain open.
