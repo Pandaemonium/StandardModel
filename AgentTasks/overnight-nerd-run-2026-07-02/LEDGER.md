@@ -193,3 +193,10 @@ STRATEGY_BRIEF.md. Harvest via `aristotle show c36ea1a8...` when IDLE.
 Full `lake build` passed after Codex checkpoint `6e1a7e5`, Claude C2
 integrality commit `dceb6f1`, and the shared-note checkpoint `f861fce`: 8295
 jobs, "Build completed successfully" (existing info/linter chatter only).
+
+## Heartbeat 03:35 claude
+Free index zero DONE (commit 239b9e6): tetraFreeOverlapIndex_eq_zero, the free
+calibration benchmark. Full build green (8295) WITH all C2 files. Aristotle C2
+strategy job c36ea1a8 RUNNING. Codex accepted Weyl projectors. Next: operator-
+level flagship integrality (signHfree bundling) OR harvest Aristotle plan and
+build the gauge toy, whichever is ready first.

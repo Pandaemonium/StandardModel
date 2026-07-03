@@ -104,7 +104,25 @@ Both outcomes publish without narrative rewrites.
 | 17 | D5/D7/D8 | Coin rigidity (little-group covariance fixes coins); growth realizes modular translation; positivity probe | Formulated; D8 is a numerics afternoon | queue |
 
 Gate C2 (gauge backgrounds) follows C1 on the day track, with the added
-J_K-covariance audit and two-grading discipline from C0.
+J_K-covariance audit and two-grading discipline from C0. **C2 OPENED
+(2026-07-03, draft-trust, kernel-checked, axioms propext/Classical.choice/
+Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
+
+- Index ALGEBRA already existed in `GateC1.OverlapIndexToy` (`overlapIndex =
+  (1/2)(Tr gamma5 - Tr eps)`, zero-index-if-anticomm, Fin 2 witnesses).
+- `OverlapIndexIntegrality.lean` (`overlapIndex_isInteger`): the finite overlap
+  index is an INTEGER for any involutions - it equals a difference of
+  eigenprojector ranks (trace of idempotent = finrank via `LinearMap.IsProj.trace`
+  + `Matrix.trace_toLin'_eq`); needs only involution, not Hermiticity.
+- `TetraFreeIndexZero.lean` (`tetraFreeOverlapIndex_eq_zero`): the free
+  benchmark - the free tetrahedral overlap index is 0 for traceless chirality
+  (`Tr(gamma5.Q)=0` from `{gamma5,Q}=0` + cyclicity, `Tr gamma5 = 0`).
+
+CRUX for the rest of C2: the `H^2 = coeff.I` scalar-square shortcut (which made
+the free sign elementary) BREAKS under a gauge background - `sign(H_U)` becomes a
+genuinely nonlocal spectral object. The open target is a finite gauge toy with a
+NONZERO index tied to a discrete topological charge (Aristotle strategy job
+c36ea1a8 planning the minimal construction).
 
 ## Tracks
 
