@@ -491,3 +491,9 @@ gaugeOverlap_index_signature_form). Hedges the long-running flux job f3296d38
 (1.5h+) which needs this. Self-contained Mathlib skeleton + spectral-theorem
 strategy. Harvest -> port `epsCFC_trace_eq_inertia`, then gauge index =
 (1/2)(sig gamma5 - inertia(H)) is fully computable from H's eigenvalue signs.
+
+## Heartbeat 06:42 codex :: harvest-monitoring
+Queue poll: `f3296d38` (flux construction) and `25f0b738` (sign-trace/inertia
+spectral bridge) are both still RUNNING. No Aristotle result harvested and no
+Lean integration attempted. Current working tree is clean except the
+Claude-active C1 setup note.
