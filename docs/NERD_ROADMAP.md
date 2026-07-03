@@ -120,6 +120,11 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
 - `TetraFreeIndexZero.lean` (`tetraFreeOverlapIndex_eq_zero`): the free
   benchmark - the free tetrahedral overlap index is 0 for traceless chirality
   (`Tr(gamma5.Q)=0` from `{gamma5,Q}=0` + cyclicity, `Tr gamma5 = 0`).
+- `TetraFreeIndexDensity.lean` (`freeIndexDensity_eq_zero`): the free local
+  index-density benchmark - `signHfree` is expanded as a real-space kernel, its
+  diagonal is translation-invariant, the free sign symbol is traceless at each
+  momentum, and the local density vanishes site-wise. Free/no-gauge; not an
+  anomaly theorem.
 - `OverlapIndexWindingWitness.lean` (`overlapIndex_gamma5WQ_epsWQ_eq`): the C2a
   bridge - a block-stacked graded involution family (2-site Wilson line unit,
   one-site signature defect) with overlap index EXACTLY Q, realizing every winding
@@ -146,7 +151,7 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
 - `OverlapHoppingSignWitness.lean` (`signCertificate_HU2_epsW`,
   `HU2_isHermitian`, `signCertificate_HU2_unique`): strengthens the join from a
   diagonal domain wall to a genuinely NON-diagonal hopping operator
-  `HU2 = epsW.(Cᴴ C)` (PSD for free; `HU2_offDiagonal` witnesses
+  `HU2 = epsW.(C^H C)` (PSD for free; `HU2_offDiagonal` witnesses
   non-diagonality).  The operator is now explicitly gapped/Hermitian and has
   unique certified sign `epsW`, so the certificate is not special to diagonal
   operators. Caveat: `C` is real (flat connection, no holonomy).
@@ -156,6 +161,12 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   `matrixFieldAction` add/smul/comp/one), each an End-involution, and instantiates
   the End-integrality so the free tetrahedral chiral OPERATOR overlap index is a
   well-defined integer.  Connects the two gates end to end.
+- `FlagshipOperatorIndexZero.lean` (`flagship_operatorIndex_eq_zero`): the exact
+  VALUE - the flagship operator index equals 0 (traceless chirality, Wilson band).
+  End-trace = site-sum of kernel-diagonal spin-traces (`trace_signHfreeL` via
+  `Pi.basis` + the kernel representation; `trace_Gamma5opL = card.Tr gamma5`),
+  each diagonal block traceless.  The free benchmark now holds at all three
+  levels: symbol, certified-integer, operator value.
 
 Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
 needs a genuine signature change (Wilson mass across zero), not a flat/tree
