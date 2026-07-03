@@ -25,7 +25,7 @@ in `RUN_PLAN.md` applies to every task; log ingests in `LIT_LOG.md`.
 | T5 | P2 | Q2 massless calibration numerics + D3.1 modular-defect measurement (new `Scripts/qnec/`) | Scripts/qnec/** | claimed-claude (calibration done) | claude | DONE: massless c=1 calibration (c=1.0000 at N=512, residual ~1e-9) + massive dimerized area-law saturation (per-parity, spread ~1e-10). commits 131a180, 02670e5. NEXT RUNGS (higher value, more involved): discrete-QNEC deficit (2nd difference on null cuts) + D3.1 modular defect (entanglement Hamiltonian K_A = log((1-C)/C) vs boost = F-M2 data). Notes in Scripts/qnec/ header + T5 results note |
 | T6 | P2 | C0 audit note: three-J and claim-scope terminology audit of GateC1 + super-Dirac docstrings; audit note only, no mass rewrite | AgentTasks/overnight-nerd-run-2026-07-02/c0-audit-note.md, PhysicsSM/Draft/NullEdge/GateC1/TetraFreeOperatorGapEqualN.lean, PhysicsSM/Draft/NullEdge/GateC1/SpectralIslandIndexPredicates.lean, PhysicsSM/Draft/NullEdge/GateC1/TetraFlavoredOverlapCandidate.lean, PhysicsSM/Draft/TetrahedralHighMomentumNullBranch.lean | done | Codex | Audit note complete; fixed coercive-vs-spectral wording and local `J_K`/`Jbalance` hygiene; residual public-API/doc debt recorded for `FiniteKreinDoubled` and release-plan `J_bal` naming |
 | T7 | P3 (stretch) | D4 checkerboard dictionary docstrings + coin-weighted kernel lemma; D8 positivity probe script | NullEdgeStandalone/PhysicsSM/Draft/Checkerboard*, Scripts/dynamics/** | open | - | Only if T1-T3 are moving |
-| T8 | P0 (end) | Morning report per RUN_PLAN spec; cross-reviewed | AgentTasks/overnight-nerd-run-2026-07-02/MORNING_REPORT.md | open | - | Whoever is active at 07:00 drafts; other reviews |
+| T8 | P0 (end) | Morning report per RUN_PLAN spec; cross-reviewed | AgentTasks/overnight-nerd-run-2026-07-02/MORNING_REPORT.md | claimed-codex | Codex | Codex final reconciliation pass in progress: compress executive summary, verify registry/build claims, then request/await cross-review |
 
 ## Aristotle registry
 
@@ -342,3 +342,18 @@ PhysicsSM.Draft.NullEdge.GateC2.OverlapSignExistence`, placeholder scan on the
 existence/certificate files, dependency audit for both existence-facing theorem
 names, and a full `lake build` (8295 jobs). Left the untracked
 `FlagshipOperatorIndex.lean` scratch file untouched.
+
+## Heartbeat 06:20 codex
+Claimed T8 final reconciliation. Live `aristotle list --limit 20` confirms the
+fresh L0/C1/C2/I1 jobs are IDLE/harvested; compressed the morning report executive
+summary to the RUN_PLAN five-line shape while preserving details in theorem,
+registry, and verification sections. Next: scan report for stale claims and run
+pre-commit on the report/ledger-only reconciliation.
+
+## Heartbeat 06:20 claude
+C1<->C2 keystone landed: flagship_operatorIndex_isInteger (commit 38aba2b) - the
+free chiral OPERATOR index is a well-defined integer, via bundling sign(Hfree)/
+Gamma5op as End-involutions + the End-integrality. 11 C2 theorem files, full build
+green (8295), all kernel-clean. C2 layer comprehensive; remaining frontier is
+hard (flux/holonomy, anomaly). Winding down productive Lean; available for
+coordination + morning report finalization.

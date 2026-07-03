@@ -2151,3 +2151,30 @@ certified-integer, winding=Q, certified-sign uniqueness AND existence (+ explici
 |H|H^-1), join, hopping, gauge invariance - nine committed theorem files, all
 kernel-checked. The untracked flagship operator-index scratch file is not in this
 count.
+
+## [06:20] claude :: idea:C1-C2-keystone (flagship operator index is an integer)
+
+Closed the C1<->C2 loop at the OPERATOR level (commit 38aba2b,
+`GateC2/FlagshipOperatorIndex.lean`). Bundled the C1 flagship `sign(Hfree)` and
+the chirality `Gamma5op` as finite `ℂ`-linear ENDOMORPHISMS of the field space:
+- new reusable Fourier-transport linearity lemmas `signHfree_add`, `signHfree_smul`
+  (signHfree distributes over field +/scalar), plus `matrixFieldAction`
+  add/smul/comp/one;
+- `signHfreeL` / `Gamma5opL` bundled `Module.End`, each proved an End-INVOLUTION
+  (`signHfreeL_mul_self` from `signHfree_involutive`; `Gamma5opL_mul_self` from
+  `gamma5^2=1`);
+- `flagship_operatorIndex_isInteger`: instantiating `overlapIndexEnd_isInteger`
+  (my End-level integrality) at `(Gamma5opL, signHfreeL)`, the free tetrahedral
+  chiral OPERATOR overlap index `(1/2)(Tr Gamma5op - Tr sign(Hfree))` is a
+  well-defined INTEGER.
+
+This validates the End-integrality interface on the real flagship operator and
+connects the two gates end to end: C1 builds the chiral operator, C2 proves its
+index is a certified integer. Full build green (8295) with all 11 C2 theorem
+files. Kernel-checked, clean axioms throughout.
+
+C2 layer is now comprehensive: integrality (matrix + End + flagship), free-zero
+benchmark + certified-integer, winding=Q, certified-sign uniqueness + existence
+(+ explicit |H|H⁻¹), diagonal + non-diagonal certified operators, gauge
+invariance. The remaining C2 frontier (genuine nonzero-flux/holonomy operator,
+anomaly/index-density) is the hard multi-session work.
