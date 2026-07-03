@@ -44,7 +44,7 @@ open TetraBranchWilsonSymbol
 def gamma5 : Matrix (Fin 4) (Fin 4) ℂ :=
   Matrix.diagonal (fun i => if i.val < 2 then 1 else -1)
 
-/-- Balance involution `J = X tensor I` swapping `gamma5` partners `0<->2`,
+/-- Balance involution `Jbalance = X tensor I` swapping `gamma5` partners `0<->2`,
 `1<->3`. -/
 def Jbalance : Matrix (Fin 4) (Fin 4) ℂ :=
   Matrix.of (fun i j => if (i.val + 2) % 4 = j.val then 1 else 0)

@@ -7,7 +7,7 @@ import PhysicsSM.Draft.NullEdge.GateC1.TetraSymbolHermitian
 This Draft module completes the Gate C1 self-adjointness rung: the real-space
 finite/free operator `Hfree` on the equal-side tetrahedral torus is self-adjoint
 with respect to the finite field inner product, provided the chirality `gamma5`
-is a Hermitian involution anticommuting with the kinetic slash `Q`.
+is Hermitian and anticommutes with the kinetic slash `Q`.
 
 It supplies the two pieces the C1 gap semantic red-team (Aristotle `ffed1801`,
 finding 5b) flagged as missing:
@@ -25,8 +25,9 @@ an inner-product isometry, `Hfree` acts blockwise by the Hermitian symbols
 `H(k_m)`, and Hermiticity transports back.
 
 Together with `TetraFreeOperatorGapEqualN.tetraFreeOperator_gap_equalN` (the
-coercive gap), this gives the two standing prerequisites for the overlap
-`sign(Hfree)` / Ginsparg-Wilson release: a self-adjoint, gapped free operator.
+coercive gap, under its unitary `gamma5` hypothesis), this gives the two
+standing prerequisites for the overlap `sign(Hfree)` / Ginsparg-Wilson release:
+a self-adjoint, gapped free operator.
 
 ## Status and claim scope
 
@@ -34,7 +35,8 @@ Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`; kernel-checked.
 Claim label: **structural theorem**.  Regulator-level per `docs/NERD_ROADMAP.md`.
 The self-adjointness upgrades the earlier *coercive* inverse-propagator gap to a
 genuine self-adjoint operator; the spectral-gap reading of the coercive bound is
-now unambiguous under the two `gamma5` Clifford relations assumed here.
+now unambiguous when the gap theorem's unitary `gamma5` hypothesis is combined
+with the Hermiticity and anticommutation hypotheses assumed here.
 -/
 
 noncomputable section

@@ -113,28 +113,28 @@ structure BranchRetentionCertificate
 /-! ## 5. Zero-index commuting trap (decisive no-go theorem) -/
 
 /-
-**Zero-index commuting trap.**  If a balance symmetry `J` is a Hermitian-free
-involution (`J² = 1`) that *anticommutes* with the chirality `gamma5` and
-*commutes* with the island projector `P`, then the chiral index vanishes:
-`Tr (gamma5 * P) = 0`.
+**Zero-index commuting trap.**  If a balance involution `Jb` is a
+Hermitian-free involution (`Jb² = 1`) that *anticommutes* with the chirality
+`gamma5` and *commutes* with the island projector `P`, then the chiral index
+vanishes: `Tr (gamma5 * P) = 0`.
 
 This is the structural obstruction the C262/C263 documents warn about:
 balance-commuting spectral projectors classify route/taste, not chirality, and
-carry zero index.  A physical `W_branch` must therefore break this `J`-symmetry
-on the target island.
+carry zero index.  A physical `W_branch` must therefore break this balance
+symmetry on the target island.
 
-Proof: conjugation by the involution `J` preserves the trace
-(`Tr (J X J) = Tr X`), while `J (gamma5 * P) J = (J gamma5 J)(J P J)
+Proof: conjugation by the balance involution preserves the trace
+(`Tr (Jb X Jb) = Tr X`), while `Jb (gamma5 * P) Jb = (Jb gamma5 Jb)(Jb P Jb)
 = (-gamma5)(P)`, so `Tr (gamma5 P) = -Tr (gamma5 P)`.
 -/
 theorem zero_index_commuting_trap
-    (gamma5 P J : Matrix n n ℂ)
-    (hJ : J * J = 1)
-    (hanti : J * gamma5 = -(gamma5 * J))
-    (hcomm : J * P = P * J) :
+    (gamma5 P Jb : Matrix n n ℂ)
+    (hJb : Jb * Jb = 1)
+    (hanti : Jb * gamma5 = -(gamma5 * Jb))
+    (hcomm : Jb * P = P * Jb) :
     chiralIndex gamma5 P = 0 := by
-  have h_trace : (J * (gamma5 * P) * J).trace = (gamma5 * P).trace := by
-    rw [ ← Matrix.trace_mul_comm ] ; simp +decide [ ← mul_assoc, hJ ] ;
+  have h_trace : (Jb * (gamma5 * P) * Jb).trace = (gamma5 * P).trace := by
+    rw [ ← Matrix.trace_mul_comm ] ; simp +decide [ ← mul_assoc, hJb ] ;
   simp_all +decide [ ← mul_assoc, chiralIndex ];
   grind
 

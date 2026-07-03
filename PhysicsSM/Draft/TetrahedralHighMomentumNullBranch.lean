@@ -49,7 +49,7 @@ theorem.
 * This is finite branch data, NOT a physical doubler theorem.  Being a
   determinant-level / quadratic-form null is necessary but not sufficient to be
   a physical doubler.
-* Physical classification still needs the Krein `J`-sign, gauge content,
+* Physical classification still needs the Krein `J_K`-sign, gauge content,
   energy-slice (real vs complex) data, and `h`-scaling of each branch.
 * Retardedness avoids coefficient-zero doublers only; these determinant-level
   null branches remain to be physically classified.

@@ -27,7 +27,7 @@ Main results:
 * `finite_first_law` : `S(p) - S(q) = <K_q>_p - <K_q>_q - S_rel(p||q)`,
   an *unconditional* identity (no normalization or positivity hypothesis).
 * `relEntropy_nonneg` : Gibbs' inequality `S_rel(p||q) >= 0` for probability
-  vectors (`p, q >= 0`, `sum p = sum q = 1`), via `log x <= x - 1`.
+  vectors (`p >= 0`, `q > 0`, `sum p = sum q = 1`), via `log x <= x - 1`.
 
 ## Status and claim scope
 
@@ -99,6 +99,19 @@ theorem finite_first_law (p q : ι → ℝ) :
   rw [hq, relEntropy_eq]
   ring
 
+/-- **Fixed modular-energy entropy gap.**
+
+If `p` has the same `q`-modular energy as `q` itself, then the entropy deficit
+from `q` to `p` is exactly the relative entropy `S_rel(p || q)`.  This is the
+finite constrained-stationarity form of the first-law identity; positivity of
+the deficit is supplied separately by Gibbs' inequality. -/
+theorem entropy_gap_eq_relEntropy_of_fixed_crossEntropy (p q : ι → ℝ)
+    (hK : crossEntropy p q = crossEntropy q q) :
+    shannon q - shannon p = relEntropy p q := by
+  have hfl := finite_first_law p q
+  rw [hK] at hfl
+  linarith
+
 /-- **Gibbs' inequality (finite relative entropy is nonnegative).**
 
 For a probability vector `p` (nonnegative, summing to one) and a *strictly
@@ -149,6 +162,26 @@ theorem relEntropy_nonneg (p q : ι → ℝ)
     _ ≤ ∑ i, p i * (Real.log (p i) - Real.log (q i)) :=
         Finset.sum_le_sum hterm
     _ = relEntropy p q := rfl
+
+/-- **Finite fixed-modular-energy maximum entropy.**
+
+Among probability vectors `p` with the same `q`-modular energy as the strictly
+positive reference probability vector `q`, the reference vector has at least as
+large Shannon entropy.  This is the finite Gate D2 stationarity corollary: the
+first-law identity reduces the entropy gap to relative entropy, then Gibbs'
+inequality makes the gap nonnegative.
+
+This is not yet the continuum or universal-multiplier claim; it is only the
+finite classical constrained-maximum theorem for one fixed reference weight. -/
+theorem d2_shannon_le_of_fixed_crossEntropy (p q : ι → ℝ)
+    (hp : ∀ i, 0 ≤ p i) (hq : ∀ i, 0 < q i)
+    (hpsum : ∑ i, p i = 1) (hqsum : ∑ i, q i = 1)
+    (hK : crossEntropy p q = crossEntropy q q) :
+    shannon p ≤ shannon q := by
+  have hgap := entropy_gap_eq_relEntropy_of_fixed_crossEntropy p q hK
+  have hrel : 0 ≤ relEntropy p q :=
+    relEntropy_nonneg p q hp hq hpsum hqsum
+  linarith
 
 end FiniteFirstLaw
 end GateD

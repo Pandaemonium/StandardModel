@@ -3,9 +3,9 @@ import PhysicsSM.Draft.NullEdge.GateC1.TetraFreeOperator
 /-!
 # Gate C1: the equal-side tetrahedral finite/free operator gap (assembled)
 
-This Draft module assembles the unconditional finite/free operator spectral
-gap for the real-space Hermitian overlap-seed kernel `Hfree` on the equal-side
-tetrahedral torus.  It discharges the two abstract obligations recorded in
+This Draft module assembles the unconditional finite/free coercive
+inverse-propagator gap for the real-space overlap-seed kernel `Hfree` on the
+equal-side tetrahedral torus.  It discharges the two abstract obligations recorded in
 `TetraFreeOperatorGap.lean` (`FourierBlockDiagonalizationBridge` and
 `UniformTetraSymbolSquareGap`) by instantiating the generic
 `FiniteBlockDiagonalGap.UnitaryBlockDiagonalization` interface with concrete,
@@ -15,8 +15,8 @@ already kernel-checked components:
   (the normalized finite Fourier transform preserves the finite field L2 norm
   square);
 * `diagonalizes`  := `TetraFreeOperator.fourierUnitary_Hfree_trig`
-  (Fourier transform intertwines `Hfree` with the per-momentum Hermitian
-  Wilson symbol `H`);
+  (Fourier transform intertwines `Hfree` with the per-momentum
+  `gamma5`-transferred Wilson symbol `H`);
 * pointwise gap   := `TetraScalarWilsonSymbol.H_symbol_l2NormSq_gap`
   (a uniform positive lower bound on the symbol square throughout the first
   Wilson band).
@@ -28,14 +28,14 @@ linear-algebra glue, so there is no remaining analysis.
 
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`; kernel-checked.
 
-Claim label: **structural theorem** (a uniform spectral gap is *forced* once
-the finite first-Wilson-band inputs `0 < rho < 2 r`, `0 < a`, and a unitary
-chirality `gamma5` are assumed).
+Claim label: **structural theorem** (a uniform coercive square gap is *forced*
+once the finite first-Wilson-band inputs `0 < rho < 2 r`, `0 < a`, and a
+unitary chirality `gamma5` are assumed).
 
 This is a **regulator-level** statement in the sense of `docs/NERD_ROADMAP.md`:
 it is a property of the fixed equal-side tetrahedral regulator operator, not a
-Lorentz-invariant ontology claim.  The gap is on the `gamma5`-Hermitian seed
-`Hfree` (an inverse-propagator / `H^2`-level statement), which is exactly the
+Lorentz-invariant ontology claim.  The bound is on the `gamma5`-transferred
+seed `Hfree` (an inverse-propagator / `H^2`-level statement), which is exactly the
 overlap branch-selection condition (doublers lifted by inverse-propagator
 gaps, not by propagator zeros); it is **not** by itself a bare-propagator
 no-doubling theorem.

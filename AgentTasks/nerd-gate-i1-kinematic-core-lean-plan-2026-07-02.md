@@ -135,14 +135,47 @@ already cover I1.1.
     Mathlib group-theory infrastructure for unitary groups
     (`Matrix.unitaryGroup`, `Matrix.specialUnitaryGroup`) should carry this.
 
+## Overnight Lean-name mapping (2026-07-03)
+
+Current staging file:
+`AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean`.
+It imports only `Mathlib` and currently checks with:
+
+```text
+lake env lean AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean
+```
+
+No executable placeholder or escape-hatch tokens are present in the staging
+file.  These are draft/staging declarations, not trusted-module promotions.
+
+| Claim | Lean names | Status |
+|-------|------------|--------|
+| I1.1 soldering determinant | `solderedMomentum_eq_minkHerm`, `i1_1_soldering_det`, `det_minkHerm`, `det_minkHerm_eq_minkowskiSq` | kernel-checked locally |
+| I1.2 algebraic spectral roots | `i1_2_det_minkHerm_sub_smul_one`, `i1_2_spectralPlus_det_zero`, `i1_2_spectralMinus_det_zero`, `i1_2_spectralMinus_nonneg_iff_futureCone`, `i1_2_spectralRoots_nonneg_of_futureCone` | kernel-checked locally |
+| I1.2 full PSD/eigenvalue characterization | `minkHerm_isHermitian`, `i1_2_minkHerm_posSemidef_iff_futureCone`, `i1_2_minkHerm_eigenvalues_nonneg_iff_futureCone` | Aristotle project `6434c938-66c9-4025-a376-ae5ca9c106d4` returned COMPLETE; proof block merged into the live staging file without overwriting later I1.8/I1.9 additions; kernel-checked locally |
+| I1.3 rank-one rank dichotomy | `rankOne_posSemidef`, `finBundleMomentum_posSemidef`, `rankOne_rank_le_one`, `rankOne_rank_eq_zero_iff`, `rankOne_rank_eq_one`, `i1_3_rank_one_rank_dichotomy` | kernel-checked locally |
+| I1.4 rank-one null factorization | `minkHerm_momentumOf`, `momentumOf_null`, `momentumOf_nonneg`, `i1_4_rank_one_factorization` | kernel-checked locally; uniqueness up to phase not yet stated |
+| I1.5 Cauchy-Binet mass identity | `two_edge_plucker_mass_identity`, `i1_5_cauchy_binet_mass_identity`, `i1_5_det_eq_ofReal_pluckerMassReal` | kernel-checked locally |
+| I1.6 real nonnegative cross-check | `i1_6_det_re_nonneg`, `i1_6_det_im_eq_zero`, `i1_6_kinematic_cross_check` | kernel-checked locally |
+| I1.8 normalized determinant dictionary | `normalizedMinkHerm`, `velocityNormSq`, `velocityNormSq_nonneg`, `det_normalizedMinkHerm_sub_smul_one`, `normalizedMinkHerm_spectralPlus_det_zero`, `normalizedMinkHerm_spectralMinus_det_zero`, `trace_normalizedMinkHerm`, `normalizedMinkHerm_posSemidef_of_futureCone`, `normalizedMinkHerm_faithful_of_futureTimelike`, `det_normalizedMinkHerm`, `det_normalizedMinkHerm_eq_one_sub_velocityNormSq`, `trace_normalizedMinkHerm_sq`, `linearEntropy_normalizedMinkHerm` | kernel-checked locally for determinant, purity, normalized spectral-root determinant zeros, PSD, and faithfulness; bundled eigenvalue-ordering/binary-entropy pieces still open |
+| I1.9 first-order Weyl-block bridge | `minkHermBar`, `i1_9_minkHerm_mul_bar_eq_minkowskiSq`, `i1_9_bar_mul_minkHerm_eq_minkowskiSq` | kernel-checked locally |
+| I2 finite modular faithfulness shadow | `faithful2`, `finiteModularHamiltonianAvailable`, `finiteModularHamiltonianAvailable_iff`, `faithful2_isUnit`, `faithful2_det_ne_zero`, `i2_rankOne_not_faithful`, `i2_momentumOf_not_faithful`, `i2_null_not_faithful`, `i2_minkHerm_faithful_of_futureTimelike`, `i2_minkHerm_faithful_iff_futureTimelike` | kernel-checked locally; this is the finite matrix-support/timelike-faithful shadow, not a full Tomita/logarithm construction |
+| A1 boost-Gibbs finite algebra | `spatialUnit`, `spatialPauli`, `a1_spatialPauli_sq`, `boostMomentum`, `a1_boost_minkHerm_form`, `a1_boost_minkowskiSq`, `a1_boost_eigenvalue_ratio`, `a1_boost_faithful` | kernel-checked locally for the finite Pauli boost form, unit-direction square law, mass-square identity, scalar detailed-balance ratio, and positive-mass faithfulness; full `Matrix.exp`/finite modular-log statement remains open |
+| A2 determinant superadditivity algebra | `spatialDot`, `minkowskiInner`, `minkHerm_add`, `spatialDot_sq_le`, `minkowskiSq_add`, `a2_det_minkHerm_add`, `minkowskiInner_nonneg_of_futureCone`, `lorentzReverseCauchy_aux`, `minkowskiSq_nonneg_of_futureCone`, `minkowskiInner_sq_ge_mul_minkowskiSq_of_futureCone`, `sqrt_minkowskiSq_mul_le_minkowskiInner_of_futureCone`, `a2_minkowskiSq_add_ge_of_futureCone`, `a2_sqrt_minkowskiSq_add_ge_of_futureCone` | kernel-checked locally for the determinant expansion, concrete spatial Cauchy-Schwarz, nonnegative future cross-term, reverse Cauchy, mass-square superadditivity, and the square-root mass superadditivity theorem; equality cases remain open |
+| I3.5 determinant-line clock | `detLineProjector`, `i3_5_phase_projector_invariant`, `i3_5_phase_det`, `detLineClockPhase`, `detLineClockPhase_unit`, `detLineClockPhase_sq`, `i3_5_clock_projector_invariant`, `i3_5_clock_det` | kernel-checked locally for arbitrary unit phases and the `exp(-i m tau)` specialization with determinant rotation `exp(-2 i m tau)`; proper-time holonomy remains a prose postulate |
+| U(2) spin-clock split finite algebra | `unitary2`, `specialUnitary2`, `phaseUnit`, `phaseUnit_inv`, `phase_smul_unitary2`, `phase_smul_specialUnitary2_det`, `phase_smul_specialUnitary2_unitary`, `u2_phase_su_decomposition`, `spinClock_kernel_square_one`, `spinClock_kernel_suPart`, `complex_sq_eq_one_iff` | kernel-checked locally for the concrete determinant-line split once a square root of `det U` is chosen, the phase-times-`SU(2)` product determinant, and the square-one scalar kernel; full quotient-isomorphism packaging remains open |
+| I1.7, full A1, full A2, full U(2) quotient factorization | not yet stated in this staging file beyond the finite A1/A2/U(2) algebraic spines above | open |
+
 ## What is deliberately NOT in scope
 
 - No thermal-time claims: the statement "the modular flow of the momentum
   state is the physical clock" is false at rest and withdrawn (v2.1). I3.5
   is the theorem; "proper time = det-line holonomy / 2m" is a labeled
   postulate that belongs in prose, not in Lean.
-- No Gate I2 modular theory (finite Tomita) in this package; it is a
-  separate small gate after I1 lands.
+- No full Gate I2 modular theory (finite Tomita operators, matrix logarithms,
+  or geometric modular flow) in this package. The staging file contains only
+  the finite matrix-support shadow: future-timelike blocks are faithful, and
+  weakly future-pointing null/rank-one blocks are not faithful.
 - No lattice, overlap, or C1 content. This stack must not import GateC1
   modules and must not touch the C1 critical path.
 

@@ -201,7 +201,7 @@ def assert_under(child: pathlib.Path, parent: pathlib.Path) -> None:
 
 def safe_extract_tar(archive: pathlib.Path, destination: pathlib.Path) -> None:
     destination.mkdir(parents=True, exist_ok=True)
-    with tarfile.open(archive) as tar:
+    with tarfile.open(filesystem_path(archive)) as tar:
         for member in tar.getmembers():
             parts = pathlib.Path(member.name).parts
             if any(p == ".lake" for p in parts):
@@ -258,7 +258,11 @@ def extract_archives(job_dir: pathlib.Path) -> None:
             continue
         if extract_root in path.parents:
             continue
-        if not tarfile.is_tarfile(path):
+        try:
+            is_archive = tarfile.is_tarfile(filesystem_path(path))
+        except (FileNotFoundError, OSError):
+            continue
+        if not is_archive:
             continue
         relative_parent = path.parent.relative_to(job_dir)
         target = extract_root / relative_parent / path.stem
