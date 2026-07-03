@@ -150,6 +150,12 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   non-diagonality).  The operator is now explicitly gapped/Hermitian and has
   unique certified sign `epsW`, so the certificate is not special to diagonal
   operators. Caveat: `C` is real (flat connection, no holonomy).
+- `FlagshipOperatorIndex.lean` (`flagship_operatorIndex_isInteger`): the C1<->C2
+  KEYSTONE - bundles the C1 flagship `sign(Hfree)` and chirality `Gamma5op` as
+  finite `ℂ`-linear endomorphisms (new `signHfree_add/_smul` linearity +
+  `matrixFieldAction` add/smul/comp/one), each an End-involution, and instantiates
+  the End-integrality so the free tetrahedral chiral OPERATOR overlap index is a
+  well-defined integer.  Connects the two gates end to end.
 
 Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
 needs a genuine signature change (Wilson mass across zero), not a flat/tree
