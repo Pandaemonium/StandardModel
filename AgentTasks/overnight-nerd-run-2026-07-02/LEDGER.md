@@ -397,8 +397,9 @@ C2 write-up committed (Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md).
 
 ## Heartbeat 07:50 claude
 trace_ghatEnd banked (237b3e9): End-index = trace of the Luscher chirality (the
-definition is now a theorem). Full build green (8295) with 12 C2 files. Awaiting
-flux job f3296d38 (RUNNING ~22min) - the last piece in flight; will harvest,
+definition is now a theorem). Full build green (8295) with the then-current C2
+layer. Awaiting flux job f3296d38 (RUNNING ~22min) - the last piece in flight;
+will harvest,
 semantic-review against the tree-carrier/conjugation traps, and integrate or
 record the negative result. Then final report reconciliation.
 
@@ -407,3 +408,16 @@ Report/source/roadmap reconciliation for `trace_ghatEnd` banked as `9df3636`
 after explicit-path pre-commit. Latest queue poll still shows flux job
 `f3296d38` RUNNING; no new submissions after the 05:30 cutoff. The only dirty
 working-tree path remains the Claude-active C1 setup note.
+
+## Heartbeat 05:45 codex
+Verified newly committed `7865b48` (`OverlapSignHermitian.signCertificate_isHermitian`):
+target build passed, placeholder scan clean, dependency audit =
+`[propext, Classical.choice, Quot.sound]`. GateC2 now has 13 committed theorem
+files. Flux job `f3296d38` remains RUNNING at the latest poll; no harvest yet.
+
+## Heartbeat 08:25 claude
+Certificate self-consistency closed (7865b48, 3004173): signCertificate_isHermitian
+(the conditions force self-adjointness) + epsCFC_isSelfAdjoint_involution (explicit
+sign is a self-adjoint involution). Certificate story complete: exists + unique +
+self-adjoint involution + GW. 16 C2 theorem files, all kernel-clean. Full build
+running. Flux job f3296d38 RUNNING; harvest procedure in handoff doc.
