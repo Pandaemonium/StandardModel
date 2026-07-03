@@ -1,7 +1,7 @@
 # Null-edge checkerboard accumulated Trotter Aristotle job
 
 Date: 2026-07-02
-Status: submitted.
+Status: integrated.
 
 ## Purpose
 
@@ -89,3 +89,38 @@ After submission, Codex proved `linftyOpNorm_nullShiftSymbol_le_one` locally.
 An Aristotle `continue --mode instruct` update was sent on 2026-07-02 asking the
 running job to focus remaining effort on the isotropic mass-step/raw-step
 L-infinity factor bounds and accumulated fixed-time Trotter assembly.
+
+## Integration result
+
+Integrated on 2026-07-03 into
+`NullEdgeStandalone/PhysicsSM/Draft/CheckerboardDiracScaling.lean`.
+
+Kernel-checked results incorporated:
+
+- `linftyOpNorm_nullShiftSymbol_eq_one`
+- `linftyOpNorm_isotropicStep_eq`
+- `linftyOpNorm_momentumStepSymbolRaw_le_exp`
+- `linftyOpNorm_momentumEvolution_sub_diracEvolution_exp_bound`
+- `exists_eventually_stepDiscrepancy_le`
+- `linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero`
+
+Verification:
+
+```text
+lake env lean ..\AgentTasks\aristotle-output\130705c7-9455-41d1-92fc-c7360a411bf0\extracted\project-files.tar\null-edge-checkerboard-accumulated-trotter-20260702-project_aristotle\PhysicsSM\Draft\CheckerboardDiracScaling.lean
+lake env lean PhysicsSM\Draft\CheckerboardDiracScaling.lean
+lake build PhysicsSM.Draft.CheckerboardDiracScaling
+lake env lean PhysicsSM.lean
+lake build NullEdgeStandalone
+```
+
+Placeholder/escape-hatch scan was clean. Dependency audit for
+`linftyOpNorm_momentumStepSymbolRaw_le_exp`,
+`linftyOpNorm_momentumEvolution_sub_diracEvolution_exp_bound`,
+`exists_eventually_stepDiscrepancy_le`, and
+`linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero` reported
+`[propext, Classical.choice, Quot.sound]`.
+
+Post-integration note: `lake build NullEdgeStandalone` does not rebuild this
+module because the default root does not import `CheckerboardDiracScaling`; use
+`lake build PhysicsSM.Draft.CheckerboardDiracScaling` for this target.

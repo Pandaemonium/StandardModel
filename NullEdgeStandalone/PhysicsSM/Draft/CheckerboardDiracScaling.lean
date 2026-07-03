@@ -334,6 +334,59 @@ theorem l2OpNorm_momentumStepSymbol
 
 end L2OperatorNorm
 
+/-! ## Scoped `L∞` operator-norm factor bounds
+
+These are the finite per-factor norm bounds feeding the accumulated Trotter
+estimate. They live in the scoped `L_infinity` operator norm and add no global
+instance. -/
+
+section LinftyFactorBounds
+
+open scoped Matrix.Norms.Operator
+
+/-
+The null-transport phase is an isometry in the scoped `L∞` operator norm:
+it is a diagonal matrix all of whose entries are unit-modulus phases.
+-/
+theorem linftyOpNorm_nullShiftSymbol_eq_one (eps p : Real) :
+    ‖nullShiftSymbol eps p‖ = 1 := by
+  convert Matrix.linfty_opNorm_diagonal _ using 1;
+  refine' le_antisymm _ _ <;> norm_num [ Pi.norm_def ]; all_goals norm_num [ ← NNReal.coe_le_coe, Complex.norm_exp ]
+
+/-- L∞ operator-norm bound for the null phase. -/
+theorem linftyOpNorm_nullShiftSymbol_le_one (eps p : Real) :
+    ‖nullShiftSymbol eps p‖ ≤ 1 :=
+  (linftyOpNorm_nullShiftSymbol_eq_one eps p).le
+
+/-- Exact `L∞` operator-norm (maximum absolute row sum) of the isotropic
+mass-mixing step. Both rows of `isotropicStep theta = !![cos, i sin; i sin, cos]`
+have the same absolute row sum `|cos theta| + |sin theta|`. -/
+theorem linftyOpNorm_isotropicStep_eq (theta : Real) :
+    ‖isotropicStep theta‖ = |Real.cos theta| + |Real.sin theta| := by
+  rw [Matrix.linfty_opNorm_def, isotropicStep, checkerStep_eq,
+    show (Finset.univ : Finset Direction) = {0, 1} by decide,
+    Finset.sup_insert, Finset.sup_singleton]
+  simp [add_comm]
+  norm_cast
+
+/-- `L∞` operator-norm bound for the isotropic mass-mixing step. -/
+theorem linftyOpNorm_isotropicStep_le_one_add_abs (theta : Real) :
+    ‖isotropicStep theta‖ ≤ 1 + |theta| := by
+  rw [linftyOpNorm_isotropicStep_eq]
+  exact add_le_add (Real.abs_cos_le_one _) Real.abs_sin_le_abs
+
+/-- Finite per-step raw factor bound in the scoped `L∞` operator norm. -/
+theorem linftyOpNorm_momentumStepSymbolRaw_le_one_add_abs
+    (eps m p : Real) :
+    ‖momentumStepSymbolRaw eps m p‖ ≤ 1 + |eps * m| := by
+  refine le_trans (linftyOpNorm_mul_le _ _) ?_
+  refine le_trans (mul_le_mul_of_nonneg_left
+    (linftyOpNorm_isotropicStep_le_one_add_abs _) (norm_nonneg _)) ?_
+  exact mul_le_of_le_one_left (by positivity)
+    (linftyOpNorm_nullShiftSymbol_le_one _ _)
+
+end LinftyFactorBounds
+
 /-! ## Zero-step sanity checks -/
 
 /-- At zero spacing, the raw momentum step is the identity. -/
@@ -887,66 +940,6 @@ theorem linftyOpNorm_continuumStepSymbol_le_exp (eps m p : Real) :
   rw [norm_smul, norm_mul, norm_neg, Complex.norm_I, one_mul, Complex.norm_real,
     Real.norm_eq_abs]
 
-/-- The diagonal null-transport phase has scoped L-infinity operator norm at
-most `1`. -/
-theorem linftyOpNorm_nullShiftSymbol_le_one (eps p : Real) :
-    ‖nullShiftSymbol eps p‖ ≤ 1 := by
-  rw [Matrix.linfty_opNorm_def]
-  unfold nullShiftSymbol
-  simp only [Fin.sum_univ_two]
-  change ↑(Finset.univ.sup fun i : Direction =>
-    ‖(Matrix.diagonal
-      (fun d : Direction =>
-        if d = 0 then Complex.exp (-(Complex.I * ((p * eps : Real) : Complex)))
-        else Complex.exp (Complex.I * ((p * eps : Real) : Complex)))) i 0‖₊ +
-    ‖(Matrix.diagonal
-      (fun d : Direction =>
-        if d = 0 then Complex.exp (-(Complex.I * ((p * eps : Real) : Complex)))
-        else Complex.exp (Complex.I * ((p * eps : Real) : Complex)))) i 1‖₊) ≤ (1 : Real)
-  exact_mod_cast (by
-    refine Finset.sup_le fun i _hi => ?_
-    have hneg :
-        ‖Complex.exp (-(Complex.I * ((p : Complex) * (eps : Complex))))‖₊ = 1 := by
-      convert Complex.nnnorm_exp_I_mul_ofReal (-(p * eps)) using 2
-      congr 1
-      rw [Complex.ofReal_neg, Complex.ofReal_mul]
-      ring
-    have hpos :
-        ‖Complex.exp (Complex.I * ((p : Complex) * (eps : Complex)))‖₊ = 1 := by
-      convert Complex.nnnorm_exp_I_mul_ofReal (p * eps) using 2
-      congr 1
-      rw [Complex.ofReal_mul]
-    fin_cases i <;> simp [hneg, hpos])
-
-/-- The isotropic one-step symbol has scoped L-infinity operator norm bounded by
-the row sum `|cos theta| + |sin theta|`. -/
-theorem linftyOpNorm_isotropicStep_le_abs_cos_add_abs_sin (theta : Real) :
-    ‖isotropicStep theta‖ ≤ |Real.cos theta| + |Real.sin theta| := by
-  rw [Matrix.linfty_opNorm_def]
-  simp +decide [isotropicStep, checkerStep]
-  simp +decide [Fin.univ_succ, nullTransport, massFlip]
-  simp +decide [reversal]
-  norm_cast
-  norm_num [add_comm]
-
-/-- A simple row-sum bound for the isotropic one-step symbol: its scoped
-L-infinity operator norm is at most `1 + |theta|`. -/
-theorem linftyOpNorm_isotropicStep_le_one_add_abs (theta : Real) :
-    ‖isotropicStep theta‖ ≤ 1 + |theta| :=
-  le_trans (linftyOpNorm_isotropicStep_le_abs_cos_add_abs_sin theta)
-    (add_le_add (Real.abs_cos_le_one _) Real.abs_sin_le_abs)
-
-/-- The finite raw momentum one-step symbol has scoped L-infinity operator norm
-at most `1 + |eps * m|`. -/
-theorem linftyOpNorm_momentumStepSymbolRaw_le_one_add_abs
-    (eps m p : Real) :
-    ‖momentumStepSymbolRaw eps m p‖ ≤ 1 + |eps * m| := by
-  refine le_trans (linftyOpNorm_mul_le _ _) ?_
-  exact le_trans
-    (mul_le_mul_of_nonneg_left (linftyOpNorm_isotropicStep_le_one_add_abs (eps * m))
-      (by positivity))
-    (by nlinarith [linftyOpNorm_nullShiftSymbol_le_one eps p, abs_nonneg (eps * m)])
-
 /--
 The combined per-step estimate. The finite raw momentum step and the continuum
 one-step exponential differ to second order in `eps`, in the scoped
@@ -1051,6 +1044,65 @@ theorem linftyOpNorm_momentumEvolution_sub_diracEvolution_le
   rw [CheckerboardDiracScalingData.totalTime]
   rw [← continuumStepSymbol_pow_eq_diracEvolutionSymbol D.eps D.m p D.N]
   exact linftyOpNorm_momentumEvolution_sub_continuumPow_le D p M delta hA hB hAB
+
+/-! ## Accumulated Trotter bound with explicit exponential stability factor
+
+These results specialize the abstract power-stability wrapper
+`linftyOpNorm_momentumEvolution_sub_diracEvolution_le` to the concrete
+checkerboard step. The stability factor is chosen as `exp(|eps| * ‖H(p)‖)`,
+which simultaneously dominates the raw finite step (`≤ 1 + |eps*m|`) and the
+continuum one-step exponential factor. Everything is pointwise in momentum `p`
+and stays in the scoped `L_infinity` operator norm. -/
+
+section AccumulatedTrotter
+
+open scoped Matrix.Norms.Operator
+
+/-
+The `L∞` operator norm (maximum absolute row sum) of the Dirac Hamiltonian
+symbol `H(p) = !![p, -m; -m, -p]` is `|p| + |m|`.
+-/
+theorem linftyOpNorm_diracHamiltonianSymbol_eq (m p : Real) :
+    ‖diracHamiltonianSymbol m p‖ = |p| + |m| := by
+  unfold diracHamiltonianSymbol;
+  norm_num [ Matrix.linfty_opNorm_def, directionGrade, reversal ];
+  erw [ show ( Finset.univ : Finset ( Fin 2 ) ) = { 0, 1 } by decide, Finset.sup_insert, Finset.sup_singleton ] ; norm_num;
+  linarith
+
+/-
+The finite raw checkerboard step is dominated by the exponential stability
+factor `exp(|eps| * ‖H(p)‖)`.
+-/
+theorem linftyOpNorm_momentumStepSymbolRaw_le_exp
+    (eps m p : Real) :
+    ‖momentumStepSymbolRaw eps m p‖
+      ≤ Real.exp (|eps| * ‖diracHamiltonianSymbol m p‖) := by
+  refine' le_trans ( linftyOpNorm_momentumStepSymbolRaw_le_one_add_abs _ _ _ ) _;
+  rw [ linftyOpNorm_diracHamiltonianSymbol_eq ];
+  rw [ abs_mul ];
+  exact le_trans ( by nlinarith [ abs_nonneg eps, abs_nonneg m, abs_nonneg p ] ) ( Real.add_one_le_exp _ )
+
+/-
+Accumulated finite `N`-step bound comparing the checkerboard evolution with
+the continuum Dirac evolution at the matching total time, using the explicit
+exponential stability factor. The per-step second-order discrepancy `delta`
+is supplied as a hypothesis (e.g. from
+`linftyOpNorm_momentumStep_sub_continuumStep_isBigO_sq`).
+-/
+theorem linftyOpNorm_momentumEvolution_sub_diracEvolution_exp_bound
+    (D : CheckerboardDiracScalingData) (p delta : Real)
+    (hAB : ‖momentumStepSymbolRaw D.eps D.m p
+      - continuumStepSymbol D.eps D.m p‖ ≤ delta) :
+    ‖momentumEvolution D p - diracEvolutionSymbol D.m p D.totalTime‖
+      ≤ (D.N : Real)
+        * Real.exp (|D.eps| * ‖diracHamiltonianSymbol D.m p‖) ^ (D.N - 1)
+        * delta := by
+  apply linftyOpNorm_momentumEvolution_sub_diracEvolution_le
+  · exact linftyOpNorm_momentumStepSymbolRaw_le_exp D.eps D.m p
+  · exact linftyOpNorm_continuumStepSymbol_le_exp D.eps D.m p
+  · exact hAB
+
+end AccumulatedTrotter
 
 /-! ## Observation / interpolation API -/
 
@@ -1472,6 +1524,61 @@ theorem accumulatedAngle_tendsto :
     R.mass_const] using h
 
 end CheckerboardDiracRefinement
+
+/-! ## Pointwise-in-momentum continuum limit along a refinement family
+
+This is the accumulated fixed-time Trotter assembly. Its hypotheses are the
+explicit refinement-family assumptions (`eps -> 0`, `totalTime -> T`, fixed
+mass), so it is a genuine continuum-limit statement rather than a scaffold. It
+stays pointwise in momentum `p` and in the scoped `L_infinity` operator norm. -/
+
+section RefinementLimit
+
+open scoped Matrix.Norms.Operator
+
+/-
+Eventual per-step second-order discrepancy bound along a refinement family:
+there is a nonnegative constant `C` with `‖raw - cont‖ ≤ C * eps ^ 2` for all
+large `k`. This transports the pointwise-in-`eps` `O(eps^2)` bound
+`linftyOpNorm_momentumStep_sub_continuumStep_isBigO_sq` along `eps_k -> 0`.
+-/
+theorem exists_eventually_stepDiscrepancy_le
+    (R : CheckerboardDiracRefinement) (p : Real) :
+    ∃ C : Real, 0 ≤ C ∧ ∀ᶠ k in Filter.atTop,
+      ‖momentumStepSymbolRaw (R.data k).eps (R.data k).m p
+        - continuumStepSymbol (R.data k).eps (R.data k).m p‖
+        ≤ C * (R.data k).eps ^ 2 := by
+  obtain ⟨C, hC⟩ : ∃ C : ℝ, ∀ᶠ k in Filter.atTop, ‖momentumStepSymbolRaw (R.data k).eps (R.data 0).m p - continuumStepSymbol (R.data k).eps (R.data 0).m p‖ ≤ C * (R.data k).eps ^ 2 := by
+    have := linftyOpNorm_momentumStep_sub_continuumStep_isBigO_sq ( R.data 0 |> CheckerboardDiracScalingData.m ) p;
+    rw [ Asymptotics.isBigO_iff ] at this;
+    obtain ⟨ C, hC ⟩ := this; use C; filter_upwards [ hC.filter_mono ( R.eps_tendsto_zero ) ] with k hk; simpa [ abs_mul, abs_pow ] using hk;
+  refine' ⟨ Max.max C 0, le_max_right _ _, hC.mono fun k hk => _ ⟩ ; simp_all +decide [ R.mass_const ];
+  exact le_trans hk ( mul_le_mul_of_nonneg_right ( le_max_left _ _ ) ( sq_nonneg _ ) )
+
+/-
+Pointwise-in-momentum continuum limit: along any refinement family the
+finite `N`-step checkerboard momentum evolution converges in the scoped `L∞`
+operator norm to the continuum Dirac evolution at the matching total time.
+-/
+theorem linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero
+    (R : CheckerboardDiracRefinement) (p : Real) :
+    Filter.Tendsto
+      (fun k => ‖momentumEvolution (R.data k) p
+        - diracEvolutionSymbol (R.data k).m p (R.data k).totalTime‖)
+      Filter.atTop (nhds 0) := by
+  obtain ⟨C, hC_nonneg, hC_bound⟩ := exists_eventually_stepDiscrepancy_le R p;
+  refine' squeeze_zero_norm' _ _;
+  use fun k => Real.exp ( ( |p| + |( R.data 0 ).m| ) * |( R.data k ).totalTime| ) * ( C * ( ( R.data k ).totalTime * ( R.data k ).eps ) );
+  · filter_upwards [ hC_bound, Filter.eventually_gt_atTop 0 ] with k hk₁ hk₂;
+    convert le_trans ( linftyOpNorm_momentumEvolution_sub_diracEvolution_exp_bound ( R.data k ) p _ hk₁ ) _ using 1;
+    · norm_num;
+    · rw [ ← Real.exp_nat_mul ] ; norm_num [ CheckerboardDiracScalingData.totalTime ] ; ring_nf;
+      rw [ linftyOpNorm_diracHamiltonianSymbol_eq ] ; norm_num [ R.mass_const k ] ; ring_nf;
+      rcases n : ( R.data k |> CheckerboardDiracScalingData.N ) with ( _ | n ) <;> simp_all +decide [ Nat.cast_succ, mul_assoc, mul_comm, mul_left_comm ];
+      exact mul_le_mul_of_nonneg_left ( mul_le_mul_of_nonneg_left ( mul_le_mul_of_nonneg_left ( Real.exp_le_exp.mpr <| by nlinarith [ abs_nonneg p, abs_nonneg ( R.data k |> CheckerboardDiracScalingData.eps ), abs_nonneg ( R.data 0 |> CheckerboardDiracScalingData.m ) ] ) <| by positivity ) <| by positivity ) <| by positivity;
+  · simpa using Filter.Tendsto.mul ( Real.continuous_exp.continuousAt.tendsto.comp ( tendsto_const_nhds.mul ( R.totalTime_tendsto.abs ) ) ) ( tendsto_const_nhds.mul ( R.totalTime_tendsto.mul R.eps_tendsto_zero ) )
+
+end RefinementLimit
 
 /-!
 ## Intended theorem boundary: `checkerboard_dirac_limit_statement`

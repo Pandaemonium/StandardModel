@@ -55,12 +55,14 @@ and exploratory probes are recorded as such.
   subadditivity, D2 finite first-law/Gibbs/fixed-modular-energy stationarity,
   D3.0 finite no-proper-shrink skeleton, and D6 classical checkerboard
   Bernoulli turn weights with fixed mean turn count.
-- **Gate C2 opened** with finite overlap-index integrality
-  (`OverlapIndexIntegrality.lean`, commit dceb6f1): for abstract involutions the
-  finite overlap index is an integer, a difference of spectral-projector ranks.
-  Codex locally rebuilt/audited the module and recommended an operator-level
-  instantiation, bounded free-index-zero calibration, and a parallel gauge-toy
-  strategy job.
+  (Codex independently rebuilt/audited the C2 integrality module - axioms clean -
+  and its recommended sequencing, operator-level instantiation then gauge toy,
+  matches the plan above.) The Aristotle strategy job `c36ea1a8` returned: the
+  index is `-(1/2) sig(eps_U)`, so a nonzero index needs a genuine signature
+  change (Wilson mass across zero via flux), not a flat/tree connection; it
+  recommends a C2a algebra/topology bridge (explicit tunable-signature involution,
+  `overlapIndex = Q`) before the hard C2b `eps_U = sign(H_U)` positivity
+  certificate.
 - **Gate L0.1** no-go argument corrected via an Aristotle red-team (Palm
   marginalization + proximality + first-moment dichotomy) - the original sketch
   was refuted and repaired.
@@ -69,6 +71,11 @@ and exploratory probes are recorded as such.
   commutes with the parabolic BW boost, defect ~1/L^2 - the "time is modular" /
   F-M2 datum), and the **lattice first law** dS = d<K> (ratio -> 1, the
   numerical bridge to the kernel-checked Gate D2 identity `finite_first_law`).
+- **Checkerboard T1b accumulated Trotter return integrated** in
+  `NullEdgeStandalone`: pointwise-in-momentum scoped `L_infinity`
+  checkerboard-to-Dirac convergence
+  `linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero`
+  is kernel-checked.
 - Aristotle used as a genuine partner: 3 Claude strategy/red-team jobs (L0
   correction; C1 gap red-team; C1 GW-release validation) that materially
   improved and hardened the results.
@@ -122,10 +129,12 @@ Submitted tonight (both COMPLETE + harvested, summaries in gitignored
 - `6434c938` (Codex) gate-i1-psd-eigenvalue-char - I1.2, merged.
 - `feae0495` overnight-c1-gw-redteam - adversarially VALIDATED the symbol-level
   chiral release as faithful (Claude, 3rd strategy job).
-Pre-run checkerboard backlog (8 projects) dry-run-inspected by Codex/T0; the
-older gate-c1-* backlog was found already integrated (harvest-first win: zero
-duplicate submissions). Total new Aristotle proof jobs submitted: 1 (Codex I1.2)
-+ 2 Claude strategy jobs - deliberately few and sharp per the postmortem.
+Pre-run checkerboard backlog dry-run-inspected by Codex/T0; row-sum,
+L-infinity, L2/unitarity, and accumulated-Trotter returns are integrated in
+`NullEdgeStandalone`. The older gate-c1-* backlog was found already integrated
+(harvest-first win: zero duplicate submissions). Total new Aristotle proof jobs
+submitted: 1 (Codex I1.2) + 2 Claude strategy jobs - deliberately few and sharp
+per the postmortem.
 
 ## 4. Integration debt
 
@@ -135,8 +144,10 @@ work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
 is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
 are targeted-build green and committed in `6e1a7e5`; semantic cross-review plus a
 full build remain morning integration tasks.
-Checkerboard T1b harvest (8 IDLE projects) remains un-integrated (dry-run clean;
-deferred, not on the critical path).
+Checkerboard T1b: accumulated Trotter is now integrated into
+`NullEdgeStandalone`; remaining checkerboard work is the short norm bridge from
+scoped `L_infinity` operator norm to `matrixL1Norm`, plus any still-deferred
+older checkerboard returns not on tonight's critical path.
 
 ## 5. Decisions + review outcomes
 
@@ -174,6 +185,12 @@ deferred, not on the critical path).
   PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexIntegrality`; placeholder scan
   clean; dependency audit for `overlapIndex_isInteger` and
   `specProj_trace_eq_finrank` = `[propext, Classical.choice, Quot.sound]`.
+- Checkerboard accumulated-Trotter integration checks:
+  `lake env lean PhysicsSM\Draft\CheckerboardDiracScaling.lean`,
+  `lake build PhysicsSM.Draft.CheckerboardDiracScaling`,
+  `lake env lean PhysicsSM.lean`, `lake build NullEdgeStandalone`;
+  placeholder scan clean; dependency audit for the new accumulated-limit cluster
+  = `[propext, Classical.choice, Quot.sound]`.
 - Axiom audits: all trusted-track theorems `[propext, Classical.choice,
   Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in any committed
   Lean this run.
@@ -198,12 +215,12 @@ deferred, not on the critical path).
 
 1. Port/commit Codex's I1/P2 and Gate D staging cluster into the main
    `PhysicsSM` tree, then run targeted builds, full `lake build`, and semantic
-   cross-review.
+   cross-review; use that pass to decide draft->trusted promotions.
 2. Scope Gate C2 with an explicit strategy/red-team packet before gauge
    construction: gauge-link covariance and admissible-sign interface first,
    finite index density/anomaly bridge after that facade is pinned.
-3. Decide draft->trusted promotions for the reviewed C1 and Gate D theorems
-   after the morning semantic pass.
+3. For checkerboard T1b, prove the finite norm bridge from scoped `L_infinity`
+   operator norm to `matrixL1Norm`, then promote the commented boundary theorem.
 
 ## 9. Literature log summary
 
