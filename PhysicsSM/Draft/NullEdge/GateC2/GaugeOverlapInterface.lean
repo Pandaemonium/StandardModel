@@ -1,6 +1,7 @@
 import PhysicsSM.Draft.NullEdge.GateC1.OverlapIndexToy
 import PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexIntegrality
 import PhysicsSM.Draft.NullEdge.GateC2.OverlapSignExistence
+import PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexMatrixSignature
 
 /-!
 # Gate C2: the abstract gauge-overlap interface
@@ -39,6 +40,7 @@ open PhysicsSM.Draft.NullEdge.GateC1.OverlapIndexToy
 open PhysicsSM.Draft.NullEdge.GateC1.OverlapGinspargWilson
 open PhysicsSM.Draft.NullEdge.GateC2.OverlapSignCertificate
 open PhysicsSM.Draft.NullEdge.GateC2.OverlapSignExistence
+open PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexMatrixSignature
 
 variable {n : Type*} [Fintype n] [DecidableEq n]
 
@@ -69,6 +71,20 @@ theorem gaugeOverlap_index_certificate_independent (H eps gamma5 : Matrix n n �
     [Invertible H] (hHherm : H.IsHermitian) (hc : SignCertificate H eps) :
     overlapIndex gamma5 eps = overlapIndex gamma5 (epsCFC H) := by
   rw [certifiedSign_eq_epsCFC H eps hHherm hc]
+
+/-- **The gauge overlap index in computable signature form.**  For a gapped
+Hermitian `H` and chirality involution `gamma5`, `overlapIndex gamma5 (epsCFC H) =
+(1/2)(sig gamma5 - sig(epsCFC H))`.  This is the exact form a concrete gauge
+Wilson operator `H_U` instantiates: once its certified sign's signature is known
+(e.g. from the eigenvalue signs of `H_U`), the index is read off directly.  For a
+balanced `gamma5` this is `-(1/2) sig(sign H)`. -/
+theorem gaugeOverlap_index_signature_form (H gamma5 : Matrix n n ℂ) [Invertible H]
+    (hHherm : H.IsHermitian) (hg5 : gamma5 * gamma5 = 1) :
+    overlapIndex gamma5 (epsCFC H)
+      = (2 : ℂ)⁻¹ *
+          (matrixTraceSignature gamma5 - matrixTraceSignature (epsCFC H)) :=
+  overlapIndex_eq_half_signature gamma5 (epsCFC H) hg5
+    (certifiedSign_exists H hHherm).involution
 
 end GaugeOverlapInterface
 end GateC2

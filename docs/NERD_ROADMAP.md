@@ -124,6 +124,10 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   `overlapIndexEnd_eq_half_signature_sub`): the operator overlap index is the
   difference of the `+1` eigenspace dimensions of the two involutions, and
   equivalently `(1/2)(sig f - sig g)` via the trace-as-signature theorem.
+- `OverlapIndexMatrixSignature.lean` (`matrix_trace_eq_signature`,
+  `overlapIndex_eq_half_signature`): transports the End signature formula through
+  `Matrix.toLin'`, so explicit matrix witnesses and future gauge Wilson matrices
+  get the same concrete `(1/2)(sig gamma5 - sig eps)` index formula.
 - `TetraFreeIndexZero.lean` (`tetraFreeOverlapIndex_eq_zero`): the free
   benchmark - the free tetrahedral overlap index is 0 for traceless chirality
   (`Tr(gamma5.Q)=0` from `{gamma5,Q}=0` + cyclicity, `Tr gamma5 = 0`).
@@ -151,6 +155,11 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   invertible Hermitian `H`, every certified sign is automatically
   Hermitian/self-adjoint, and the explicit `epsCFC` sign is a self-adjoint
   involution.
+- `GaugeOverlapInterface.lean` (`gaugeOverlap_index_isInteger`,
+  `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_certificate_independent`):
+  any gapped Hermitian gauge/Wilson operator plugs into the certified-sign
+  interface to give a well-defined integer index, GW overlap, and
+  certificate-choice-independent index value.
 - `OverlapWindingSignJoin.lean` (`signCertificate_HU_epsW`, `signCertificate_HU_unique`):
   joins C2a to C2b - the winding involution `epsW` is a genuine certified sign of an
   explicit gapped mass-defect (domain-wall) operator `HU = diag(-2,-3,-1,5)`, and

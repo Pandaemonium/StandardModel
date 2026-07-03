@@ -47,6 +47,9 @@ involutions, the transparent finite count behind the trace formula.
 `trace_involution_eq_signature` and `overlapIndexEnd_eq_half_signature_sub`
 also rewrite the trace of an involution as its `+/-` eigenspace signature and the
 index as `(1/2)(sig f - sig g)`.
+`OverlapIndexMatrixSignature.overlapIndex_eq_half_signature` transports this
+controlling fact to concrete matrices via `Matrix.toLin'`, so explicit witnesses
+and future gauge Wilson matrices have the same signature-index formula.
 
 **(b) Free benchmark.** `tetraFreeOverlapIndex_eq_zero`: the free tetrahedral
 overlap index is `0` for traceless chirality, because `Tr(gamma5 . Q) = 0` follows
@@ -102,6 +105,12 @@ reflection (`epsCFC_isSelfAdjoint_involution`).  The certificate story is thus
 complete: the overlap sign of any gapped Hermitian EXISTS, is UNIQUE, is a
 self-adjoint involution, and gives a GW overlap - a fully functional-calculus-free
 characterization of `sign(H)`.
+
+Abstract gauge interface (`GaugeOverlapInterface.lean`): for any gapped Hermitian
+operator `H` and chirality involution `gamma5`, `epsCFC H` gives a
+certificate-choice-independent integer overlap index and a GW overlap. The
+remaining frontier is therefore constructive: exhibit a genuine flux `H_U` with a
+nonzero index.
 
 **(d) Gauge invariance guardrail.** `overlapIndex_conj`: the index is invariant
 under unitary conjugation. `SignCertificate.conj`: certificates transport
@@ -165,16 +174,17 @@ anomaly/index-density bridge and locality are the successor gates.
 ## 5. File map
 
 `OverlapIndexIntegrality`, `OverlapIndexEndIntegrality`, `OverlapIndexEigenspace`,
-`FlagshipOperatorIndex`
+`OverlapIndexMatrixSignature`, `FlagshipOperatorIndex`
 (integrality: matrix / endomorphism / eigenspace and signature count /
-flagship-operator);
+matrix-signature bridge / flagship-operator);
 `TetraFreeIndexZero`
 (free benchmark + certified integer), `TetraFreeIndexDensity` (free local density
 zero), `FlagshipOperatorIndexZero` (operator density sum rule + exact free
 operator index 0); `OverlapIndexWindingWitness` (winding = Q);
 `OverlapSignCertificate` (certificate + uniqueness + GW), `OverlapSignExistence`
 (existence + explicit `|H|H^{-1}`), `OverlapSignHermitian` (automatic
-self-adjointness of certified signs + explicit self-adjoint `epsCFC`);
+`OverlapSignHermitian` (automatic self-adjointness of certified signs + explicit
+self-adjoint `epsCFC`), `GaugeOverlapInterface` (abstract gauge-overlap interface);
 `OverlapWindingSignJoin` (diagonal certified operator),
 `OverlapHoppingSignWitness` (non-diagonal certified operator);
 `OverlapIndexGaugeInvariance` (conjugation invariance). Prerequisite: the Gate C1

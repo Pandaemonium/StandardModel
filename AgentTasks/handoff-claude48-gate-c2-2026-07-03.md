@@ -21,10 +21,12 @@ before continuing Gate C2. Companion documents:
   GateC1/GateC2.
 - Gate C1 (free chiral release) is COMPLETE: symbol + operator GW, operator Weyl
   projectors (`PhysicsSM/Draft/NullEdge/GateC1/`). Red-team-validated (feae0495).
-- Gate C2 has 14 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
+- Gate C2 has 16 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
   integrality (matrix `OverlapIndexIntegrality` / End `OverlapIndexEndIntegrality`
   incl. `trace_ghatEnd` / eigenspace-signature count `OverlapIndexEigenspace` /
-  flagship `FlagshipOperatorIndex`), free benchmark at
+  matrix signature `OverlapIndexMatrixSignature` / flagship
+  `FlagshipOperatorIndex`), abstract gauge interface `GaugeOverlapInterface`,
+  free benchmark at
   three levels (`TetraFreeIndexZero`, `FlagshipOperatorIndexZero`), index density
   + sum rule (`TetraFreeIndexDensity`, `operatorIndex_eq_sum_density`), certified
   sign uniqueness + existence + self-adjointness (`OverlapSignCertificate`,
