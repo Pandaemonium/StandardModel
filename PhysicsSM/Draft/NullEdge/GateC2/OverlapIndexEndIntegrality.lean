@@ -46,12 +46,12 @@ def specProjEnd (f : Module.End ℂ V) : Module.End ℂ V :=
 def overlapIndexEnd (f g : Module.End ℂ V) : ℂ :=
   (2 : ℂ)⁻¹ * (LinearMap.trace ℂ V f - LinearMap.trace ℂ V g)
 
+omit [FiniteDimensional ℂ V] in
 /-- **The operator index is the trace of the Luscher modified chirality.**  For
 a chirality involution `f` (`f * f = 1`) and any `g`, the endomorphism-level
 Luscher chirality `Ghat = f (1 - (1/2) Dov)` with `Dov = 1 + f g` has trace equal
 to `overlapIndexEnd f g` - so the definition above is the honest `End`-level
 counterpart of `OverlapIndexToy.overlapIndex` (a theorem, not a convention). -/
-omit [FiniteDimensional ℂ V] in
 theorem trace_ghatEnd (f g : Module.End ℂ V) (hf : f * f = 1) :
     LinearMap.trace ℂ V (f * (1 - (2 : ℂ)⁻¹ • (1 + f * g)))
       = overlapIndexEnd f g := by
@@ -66,8 +66,8 @@ theorem trace_ghatEnd (f g : Module.End ℂ V) (hf : f * f = 1) :
   simp only [smul_eq_mul]
   ring
 
-/-- For an involution `f`, the spectral projector `(1 + f)/2` is idempotent. -/
 omit [FiniteDimensional ℂ V] in
+/-- For an involution `f`, the spectral projector `(1 + f)/2` is idempotent. -/
 theorem specProjEnd_isIdempotent (f : Module.End ℂ V) (hf : f * f = 1) :
     IsIdempotentElem (specProjEnd f) := by
   show specProjEnd f * specProjEnd f = specProjEnd f
@@ -86,9 +86,9 @@ theorem specProjEnd_trace_eq_finrank (f : Module.End ℂ V) (hf : f * f = 1) :
       = (Module.finrank ℂ (LinearMap.range (specProjEnd f)) : ℂ) :=
   (specProjEnd_isIdempotent f hf).isProj_range.trace
 
+omit [FiniteDimensional ℂ V] in
 /-- Index as a difference of eigenprojector traces (pure trace linearity: the
 `trace 1` contributions cancel). -/
-omit [FiniteDimensional ℂ V] in
 theorem overlapIndexEnd_eq_specProj_sub (f g : Module.End ℂ V) :
     overlapIndexEnd f g
       = LinearMap.trace ℂ V (specProjEnd f) - LinearMap.trace ℂ V (specProjEnd g) := by
