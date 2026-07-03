@@ -9,7 +9,9 @@ It extends the completed Gate C1 free chiral (overlap/Ginsparg-Wilson) release; 
 does NOT claim a gauge index theorem, an anomaly, locality, or a continuum limit.
 
 Claim label: **structural theorems** (finite matrix/operator algebra), with
-explicit **consistency witnesses** and one documented **open construction**.
+explicit **consistency witnesses** and a concrete **nonzero-flux witness** (the
+`pi`-flux triangle); the even-lattice / 2D-torus flux index and the anomaly bridge
+remain the documented open frontier.
 
 ## 1. Setup
 
@@ -108,9 +110,16 @@ characterization of `sign(H)`.
 
 Abstract gauge interface (`GaugeOverlapInterface.lean`): for any gapped Hermitian
 operator `H` and chirality involution `gamma5`, `epsCFC H` gives a
-certificate-choice-independent integer overlap index and a GW overlap. The
-remaining frontier is therefore constructive: exhibit a genuine flux `H_U` with a
-nonzero index.
+certificate-choice-independent integer overlap index and a GW overlap. Reduced to
+computable form (`GaugeIndexInertiaForm.lean`): the index is
+`(1/2)(sig gamma5 - Tr(epsCFC H))` UNCONDITIONALLY, and
+`(1/2)(sig gamma5 - (n_+ - n_-))` in eigenvalue-count form
+(`gaugeOverlap_index_eigenvalue_count_form`), now UNCONDITIONAL: the spectral
+bridge `epsCFC_trace_eq_inertia` (`Tr(sign H) = n_+ - n_-`, via the continuous
+functional calculus identity `epsCFC H = cfc sign H`; Aristotle job 25f0b738,
+ported) is proved. So the gauge index is read directly off the eigenvalue signs of
+`H_U`, no functional calculus in the final formula. The constructive frontier - exhibit a
+genuine flux `H_U` with a nonzero index - is now REALIZED (section 2f).
 
 **(d) Gauge invariance guardrail.** `overlapIndex_conj`: the index is invariant
 under unitary conjugation. `SignCertificate.conj`: certificates transport
@@ -135,15 +144,39 @@ one.
   this is a hopping operator with a FLAT connection (no complex link phase, no
   holonomy).
 
+**(f) Genuine nonzero-FLUX index (the frontier witness).**
+`FluxOverlapIndex.lean` (Aristotle job f3296d38, rewired onto the trusted repo
+`overlapIndex` / `SignCertificate`) exhibits the smallest genuinely-fluxed model:
+a `pi`-flux TRIANGLE (3-cycle) with links `u01=u12=1, u20=-1` and gauge-invariant
+holonomy `-1` (`plaquette_gauge_invariant` - invariant under arbitrary site-phase
+gauge transforms, so the flux is not a gauge artifact). The Hermitian gapped
+hopping `Mtri` (rational spectrum `{1,1,-2}`) has certified RATIONAL sign
+`epsTri=(2/3)Mtri+(1/3)`, pinned as `sign(Mtri)` by the finite positivity
+certificate + uniqueness (`signCert_Mtri_unique`). With traceless
+`gamma5U=1(x)sigma3` on `Fin 3 x Fin 2` and `HU=Mtri(x)1`,
+`overlapIndex_flux : overlapIndex gamma5U epsU = -1` is a nonzero integer - the
+trace of `sign(H_U)` of a genuine gauge-hopping operator, NOT a constructed defect
+(`flux_is_nonzero_integer_witness` instantiates the abstract interface's
+integrality with this nonzero value). The zero-flux triangle has index `+1`, and
+`flux_shifts_index` proves `pi`-flux insertion shifts the index by `-2`: the
+gauge-invariant holonomy demonstrably reaches the index. Honest scope: an odd
+3-cycle carries a nonzero index at EVERY flux (a parity feature of odd loops), so
+the sharp flux-driven statement is the `Delta=-2` jump, and a zero-to-nonzero flux
+index needs an even lattice (section 4).
+
 ## 3. Honest scope: what is NOT proved
 
 Validated by an adversarial Aristotle red-team (project ee95ba08: all statements
 FAITHFUL, zero mismatches; caveats folded into docstrings):
 
-1. **No genuine gauge flux / holonomy.** Every operator exhibited is a mass defect
-   or a flat-connection hopping. No operator with nontrivial holonomy around a loop
-   (a real magnetic flux) is constructed, so no index has yet been shown to equal a
-   gauge-invariant topological charge. This is the central open problem (section 4).
+1. **Genuine gauge flux realized on an odd cycle; zero-to-nonzero / even-lattice
+   case open.** The `pi`-flux triangle (section 2f) IS a genuine gauge flux -
+   gauge-invariant holonomy `-1`, index `-1` as the trace of `sign(H_U)`, index
+   response `Delta=-2` to flux insertion. What is NOT yet done: because an odd
+   cycle carries an index at every flux, a flux-vs-no-flux ZERO-to-nonzero jump
+   needs an EVEN lattice, where a `2x2` plaquette `pi`-flux gives a balanced
+   `+-sqrt 2` spectrum and index `0`; a genuine zero-to-nonzero flux index needs a
+   2D Wilson-Dirac operator on a torus with net flux `2 pi` (section 4).
 2. **No gauge anomaly / gauge index-density theorem.** The free local density is
    zero site-wise, but no gauge-background density has been connected to a chiral
    anomaly.
@@ -163,13 +196,15 @@ constraints (from the Aristotle strategy job c36ea1a8 and the red-team):
   (REAL entries, no surds), the cleanest nontrivial case; e.g. a small periodic
   plaquette/torus with an odd number of `-1` links (a `Z_2` flux).
 
-Concretely: build an explicit gapped Wilson Hermitian `H_U` on such a lattice with
-integer/`+/-1` entries, use the certified-sign interface to pin `eps_U = sign(H_U)`
-(exhibit + verify, or via `certifiedSign_exists`), and prove `overlapIndex gamma5
-eps_U` equals the flux charge (`+/- 1`) - or prove it is `0` at that size and give
-the smallest size that would be nonzero (an equally valuable negative result). An
-Aristotle construction job (f3296d38) is attempting this. After it, the
-anomaly/index-density bridge and locality are the successor gates.
+Concretely (ACHIEVED - `FluxOverlapIndex.lean`, Aristotle job f3296d38): the
+`pi`-flux triangle builds an explicit gapped Wilson Hermitian `H_U` with `+/-1`
+entries, pins `eps_U = sign(H_U)` via the certified-sign interface, and proves
+`overlapIndex gamma5U eps_U = -1` with a `Delta=-2` response to flux insertion.
+The remaining frontier is now (i) an EVEN lattice / 2D Wilson-Dirac operator on a
+torus with net flux `2 pi`, giving a genuine ZERO-to-nonzero flux index (the odd
+triangle carries an index at every flux); (ii) the anomaly / index-density bridge
+connecting a gauge-background local density to the index; and (iii) locality and
+the continuum limit. These are the successor gates.
 
 ## 5. File map
 
@@ -183,9 +218,13 @@ zero), `FlagshipOperatorIndexZero` (operator density sum rule + exact free
 operator index 0); `OverlapIndexWindingWitness` (winding = Q);
 `OverlapSignCertificate` (certificate + uniqueness + GW), `OverlapSignExistence`
 (existence + explicit `|H|H^{-1}`), `OverlapSignHermitian` (automatic
-`OverlapSignHermitian` (automatic self-adjointness of certified signs + explicit
-self-adjoint `epsCFC`), `GaugeOverlapInterface` (abstract gauge-overlap interface);
-`OverlapWindingSignJoin` (diagonal certified operator),
+self-adjointness of certified signs + explicit self-adjoint `epsCFC`),
+`GaugeOverlapInterface` (abstract gauge-overlap interface), `GaugeIndexInertiaForm`
+(index in trace / eigenvalue-count form + the spectral bridge
+`epsCFC_trace_eq_inertia`); `OverlapWindingSignJoin` (diagonal certified operator),
 `OverlapHoppingSignWitness` (non-diagonal certified operator);
-`OverlapIndexGaugeInvariance` (conjugation invariance). Prerequisite: the Gate C1
-`GateC1/` overlap release and `GateC1.OverlapIndexToy` index algebra.
+`OverlapIndexGaugeInvariance` (conjugation invariance); `FluxOverlapIndex` (the
+concrete `pi`-flux triangle nonzero-index witness). The aggregator `GateC2.lean`
+imports the whole layer: `lake build PhysicsSM.Draft.NullEdge.GateC2` kernel-checks
+all 18 modules together. Prerequisite: the Gate C1 `GateC1/` overlap release and
+`GateC1.OverlapIndexToy` index algebra.
