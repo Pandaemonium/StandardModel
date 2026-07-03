@@ -419,7 +419,7 @@ files. Flux job `f3296d38` remains RUNNING at the latest poll; no harvest yet.
 Certificate self-consistency closed (7865b48, 3004173): signCertificate_isHermitian
 (the conditions force self-adjointness) + epsCFC_isSelfAdjoint_involution (explicit
 sign is a self-adjoint involution). Certificate story complete: exists + unique +
-self-adjoint involution + GW. 13 GateC2 theorem files, all kernel-clean. Full build
+self-adjoint involution + GW. Then-current GateC2 theorem files all kernel-clean. Full build
 running. Flux job f3296d38 RUNNING; harvest procedure in handoff doc.
 
 ## Heartbeat 08:40 claude

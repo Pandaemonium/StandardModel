@@ -21,13 +21,15 @@ before continuing Gate C2. Companion documents:
   GateC1/GateC2.
 - Gate C1 (free chiral release) is COMPLETE: symbol + operator GW, operator Weyl
   projectors (`PhysicsSM/Draft/NullEdge/GateC1/`). Red-team-validated (feae0495).
-- Gate C2 has 12 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
+- Gate C2 has 14 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
   integrality (matrix `OverlapIndexIntegrality` / End `OverlapIndexEndIntegrality`
-  incl. `trace_ghatEnd` / flagship `FlagshipOperatorIndex`), free benchmark at
+  incl. `trace_ghatEnd` / eigenspace count `OverlapIndexEigenspace` / flagship
+  `FlagshipOperatorIndex`), free benchmark at
   three levels (`TetraFreeIndexZero`, `FlagshipOperatorIndexZero`), index density
   + sum rule (`TetraFreeIndexDensity`, `operatorIndex_eq_sum_density`), certified
-  sign uniqueness + existence (`OverlapSignCertificate`, `OverlapSignExistence` -
-  existence proof by Aristotle 66972f62, ported), witnesses (`OverlapIndexWindingWitness`,
+  sign uniqueness + existence + self-adjointness (`OverlapSignCertificate`,
+  `OverlapSignExistence`, `OverlapSignHermitian` - existence proof by Aristotle
+  66972f62, ported), witnesses (`OverlapIndexWindingWitness`,
   `OverlapWindingSignJoin`, `OverlapHoppingSignWitness`), gauge invariance
   (`OverlapIndexGaugeInvariance`). C2 arc red-team-validated (ee95ba08, all
   FAITHFUL; caveats folded into docstrings).
@@ -115,7 +117,7 @@ lake build                                             # full (8295 jobs, green)
 ## 6. One-line summary
 
 C1 free chiral release complete; C2 index layer comprehensive (integrality,
-certified sign existence+uniqueness, gauge invariance, density + sum rule, free
-benchmark at all levels) and red-team-validated; the single open frontier is the
+certified sign existence+uniqueness+self-adjointness, gauge invariance, density +
+sum rule, free benchmark at all levels) and red-team-validated; the single open frontier is the
 genuine nonzero-flux operator, with Aristotle job f3296d38 in flight on exactly
 that - harvest it first.

@@ -1,7 +1,7 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
 **Status: DRAFT (C2 report/source/roadmap and handoff docs reconciled; live
-Aristotle job `f3296d38` RUNNING as of 2026-07-03 05:44 PDT).**
+Aristotle job `f3296d38` RUNNING as of 2026-07-03 05:57 PDT).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 standalone file still needs
@@ -15,11 +15,13 @@ exploratory probes are recorded as such.
 
 - C1 free chiral release is kernel-checked through operator-level GW, Weyl
   projectors, and the C2 operator-index bridge; the latest full `lake build` passed.
-- C2 now has twelve committed draft theorem files: integrality, operator-index
-  packaging, free-zero, winding, certified-sign uniqueness/existence, gauge
-  covariance, non-diagonal hopping, the free local-density benchmark, and the
-  exact free operator-index-zero/sum-rule bridge; holonomy/gauge anomaly remain
-  next, with Aristotle flux-index frontier job `f3296d38` currently running.
+- C2 now has fourteen committed draft theorem files: integrality, eigenspace
+  counting, operator-index
+  packaging, free-zero, winding, certified-sign uniqueness/existence/
+  self-adjointness, gauge covariance, non-diagonal hopping, the free local-density
+  benchmark, and the exact free operator-index-zero/sum-rule bridge; holonomy/gauge
+  anomaly remain next, with Aristotle flux-index frontier job `f3296d38` currently
+  running.
 - Codex's I1/P2 standalone stack and Gate D draft stack are kernel-checked and
   semantically cross-reviewed, but the I1/P2 stack still needs main-tree porting.
 - Checkerboard T1b landed accumulated/fixed-time pointwise Dirac-limit theorems
@@ -43,6 +45,7 @@ exploratory probes are recorded as such.
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
 | `overlapIndex_isInteger`, `specProj_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexIntegrality.lean` | **Gate C2 opened**: the finite overlap chiral index is an INTEGER (diff of eigenprojector ranks; trace-of-idempotent = finrank); needs only involution, not Hermiticity | dceb6f1 |
 | `overlapIndexEnd_isInteger`, `trace_ghatEnd`, `specProjEnd_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexEndIntegrality.lean` | **C2 End-native integrality and Ghat trace**: the operator overlap index `(1/2)(Tr f - Tr g)` is both an integer for involutions and the trace of the End-level Luscher modified chirality `f * (1 - (1/2) Dov)`; no matrix choice needed | 9c2341f + 237b3e9 + Codex warning cleanup 7af42f7 |
+| `specProjEnd_range_eq_eigenspace`, `overlapIndexEnd_eq_eigenspace_dim_sub` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexEigenspace.lean` | **C2 End eigenspace count**: the `+1` spectral projector range is the `+1` eigenspace, so the operator overlap index is the difference of the `+1` eigenspace dimensions | ed01812 |
 | `flagship_operatorIndex_isInteger`, `signHfreeL_mul_self`, `Gamma5opL_mul_self` | `PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndex.lean` | **C1<->C2 operator bridge**: bundles `Gamma5op` and `signHfree` as finite complex endomorphisms, proves both are involutions, and instantiates End-integrality so the free tetrahedral operator overlap index is an integer | 38aba2b |
 | `flagship_operatorIndex_eq_zero`, `operatorIndex_eq_sum_density`, `trace_signHfreeL`, `trace_Gamma5opL` | `PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndexZero.lean` | **C2 operator exact-zero bridge**: proves the operator overlap index is the site-sum of the local density, computes the bundled free sign/chirality traces via the kernel diagonal, and pins the flagship free operator index to exactly 0. Free/no-gauge; this is the structural sum-rule predecessor to anomaly work | 47a4e4e + Codex sum-rule/doc repair 4b6c161 |
 | `tetraFreeOverlapIndex_eq_zero`, `trace_gamma5_mul_Q_eq_zero` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexZero.lean` | **C2 free benchmark**: the free tetrahedral overlap index is 0 for traceless chirality (`Tr(g5.Q)=0` from `{g5,Q}=0`+cyclicity); the no-topology-in-free-theory calibration | 239b9e6 |
@@ -50,6 +53,7 @@ exploratory probes are recorded as such.
 | `overlapIndex_gamma5WQ_epsWQ_eq` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexWindingWitness.lean` | **C2a winding witness**: block-stacked graded involution family with overlap index EXACTLY Q (realizes every winding charge; defeats free-zero). Bridge - `eps` constructed with target signature | 373de95 |
 | `certifiedSign_unique`, `signCertificate_mul_sq`, `SignCertificate.dov_ginspargWilson` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignCertificate.lean` | **C2b uniqueness backbone**: for gapped Hermitian H, an involution with `[eps,H]=0` and `eps.H` PSD is UNIQUE (= sign(H)), via PSD-sqrt uniqueness (NO functional calculus); a certified sign yields a GW overlap | 9f97af2 |
 | `certifiedSign_exists`, `certifiedSign_eq_epsCFC` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignExistence.lean` | **C2b existence closure**: for every gapped Hermitian `H`, `epsCFC = CFC.sqrt(H^2) * H^-1` is a `SignCertificate`; uniqueness then makes every certificate equal to this explicit sign | 3ffc63d |
+| `signCertificate_isHermitian`, `epsCFC_isSelfAdjoint_involution` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignHermitian.lean` | **C2b self-consistency closure**: any certified sign for an invertible Hermitian `H` is automatically Hermitian/self-adjoint; the explicit certified sign `epsCFC` is therefore a self-adjoint involution | 7865b48 + 3004173 |
 | `signCertificate_HU_epsW`, `HU_isHermitian`, `signCertificate_HU_unique` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapWindingSignJoin.lean` | **C2a->C2b join**: the winding `epsW` is a genuine certified sign of an explicit gapped mass-defect operator `HU=diag(-2,-3,-1,5)`, and every certified sign of `HU` equals `epsW`; index 1 is a real sign-of-operator (domain-wall) index | 8418bec + Codex review patch |
 | `overlapIndex_conj`, `SignCertificate.conj` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexGaugeInvariance.lean` | **C2 gauge invariance**: the overlap index is invariant under unitary conjugation and the sign certificate transports covariantly - the guardrail that a nonzero index cannot come from a gauge/basis conjugation, only a signature change | 68f2bff |
 | `signCertificate_HU2_epsW`, `HU2_isHermitian`, `signCertificate_HU2_unique`, `HU2_offDiagonal` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapHoppingSignWitness.lean` | **C2 non-diagonal certified sign**: a genuinely non-diagonal hopping operator `HU2=epsW.(C^H C)` has certified sign `epsW` (PSD for free from `C^H C`), is gapped/Hermitian, and has unique certified sign `epsW` - the certificate is not special to diagonal operators. Caveat: real hopping (flat connection, no holonomy) | fa291f9 + Codex review patch |
@@ -204,6 +208,11 @@ momentum-window version and position-space sampling/interpolation bridge.
   clean; dependency audit for `trace_ghatEnd`, `specProjEnd_isIdempotent`,
   `specProjEnd_trace_eq_finrank`, `overlapIndexEnd_eq_specProj_sub`, and
   `overlapIndexEnd_isInteger` = `[propext, Classical.choice, Quot.sound]`.
+- Codex C2 End-eigenspace cross-check: `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexEigenspace`; placeholder scan
+  clean; dependency audit for `specProjEnd_range_eq_eigenspace` and
+  `overlapIndexEnd_eq_eigenspace_dim_sub` =
+  `[propext, Classical.choice, Quot.sound]`.
 - Codex C2 flagship operator-index cross-review: `lake build
   PhysicsSM.Draft.NullEdge.GateC2.FlagshipOperatorIndex`; placeholder scan
   clean; dependency audit for `signHfree_add`, `signHfree_smul`,
@@ -215,6 +224,11 @@ momentum-window version and position-space sampling/interpolation bridge.
   for `OverlapSignExistence.lean` and `OverlapSignCertificate.lean`; dependency
   audit for `certifiedSign_exists` and `certifiedSign_eq_epsCFC` =
   `[propext, Classical.choice, Quot.sound]`; full `lake build` passed afterward.
+- Codex C2 certified-sign Hermitian cross-check: `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.OverlapSignHermitian`; placeholder scan clean;
+  dependency audit for `signCertificate_isHermitian` and
+  `epsCFC_isSelfAdjoint_involution` =
+  `[propext, Classical.choice, Quot.sound]`.
 - Codex C2 free index-density repair: `lake env lean
   PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexDensity.lean`; `lake build
   PhysicsSM.Draft.NullEdge.GateC2.TetraFreeIndexDensity`; placeholder scan

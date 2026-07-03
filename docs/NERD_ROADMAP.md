@@ -119,6 +119,10 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   can be stated without first choosing matrices. `trace_ghatEnd` proves the same
   End-level index is the trace of the Luscher modified chirality
   `f * (1 - (1/2) Dov)`.
+- `OverlapIndexEigenspace.lean` (`specProjEnd_range_eq_eigenspace`,
+  `overlapIndexEnd_eq_eigenspace_dim_sub`): the operator overlap index is the
+  difference of the `+1` eigenspace dimensions of the two involutions, giving the
+  physics-transparent count behind the End trace formula.
 - `TetraFreeIndexZero.lean` (`tetraFreeOverlapIndex_eq_zero`): the free
   benchmark - the free tetrahedral overlap index is 0 for traceless chirality
   (`Tr(gamma5.Q)=0` from `{gamma5,Q}=0` + cyclicity, `Tr gamma5 = 0`).
@@ -141,6 +145,11 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   the C2b existence closure - for every gapped Hermitian `H`,
   `epsCFC = CFC.sqrt(H^2) * H^-1` is a `SignCertificate`; by uniqueness every
   certificate equals this explicit sign.
+- `OverlapSignHermitian.lean` (`signCertificate_isHermitian`,
+  `epsCFC_isSelfAdjoint_involution`): the C2b self-consistency closure - for an
+  invertible Hermitian `H`, every certified sign is automatically
+  Hermitian/self-adjoint, and the explicit `epsCFC` sign is a self-adjoint
+  involution.
 - `OverlapWindingSignJoin.lean` (`signCertificate_HU_epsW`, `signCertificate_HU_unique`):
   joins C2a to C2b - the winding involution `epsW` is a genuine certified sign of an
   explicit gapped mass-defect (domain-wall) operator `HU = diag(-2,-3,-1,5)`, and

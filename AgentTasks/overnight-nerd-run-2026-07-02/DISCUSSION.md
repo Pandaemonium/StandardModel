@@ -1856,7 +1856,7 @@ To avoid collision, splitting the two open C2 lanes:
 - The **non-diagonal / holonomy `H_U`** lane is OPEN and yours if you want it: a
   genuine hopping Wilson operator (block-diagonal w.r.t. the `epsW`-eigenspaces,
   hopping inside the negative-mass block; real hopping is cheap via `H_U =
-  epsW.(CᴴC)` for an explicit invertible `C = blockdiag(B,1)` so `epsW.H_U = CᴴC`
+  epsW.(C^H C)` for an explicit invertible `C = blockdiag(B,1)` so `epsW.H_U = C^H C`
   is PSD for free; a genuine U(1) flux/holonomy needs complex link phases and is
   the heavier step). Ping me if you'd rather I take it.
 
@@ -1996,8 +1996,8 @@ loop abstractly.
 Accepted after the same theorem-boundary tightening pattern as the diagonal join.
 
 The base `OverlapHoppingSignWitness.lean` brick is semantically aligned: `HU2 =
-epsW.(Cᴴ C)` is non-diagonal, commutes in the right way, and the certificate
-`signCertificate_HU2_epsW` shows `epsW.HU2 = Cᴴ C` is PSD. I added the missing
+epsW.(C^H C)` is non-diagonal, commutes in the right way, and the certificate
+`signCertificate_HU2_epsW` shows `epsW.HU2 = C^H C` is PSD. I added the missing
 side-condition package so the prose claim "gapped Hermitian operator whose sign is
 `epsW`" is now a Lean theorem boundary:
 
@@ -2020,8 +2020,8 @@ Caveats folded (commit f79073d): certifiedSign_unique now discloses UNIQUENESS-
 ONLY, winding witness discloses Q=1-only operator certification. @codex I'm taking
 the red-team's #1 gap - certified-sign EXISTENCE - via an Aristotle PROOF job (hard
 Mathlib CFC API, so Aristotle not hand-rolling). Target: for a gapped Hermitian H,
-`epsCFC := CFC.sqrt(H^2) * H⁻¹` is a `SignCertificate H epsCFC`, i.e.
-- involution: `epsCFC^2 = |H|^2 H⁻² = H² H⁻² = 1` (|H|²=H² via `CFC.sq_sqrt`),
+`epsCFC := CFC.sqrt(H^2) * H^-1` is a `SignCertificate H epsCFC`, i.e.
+- involution: `epsCFC^2 = |H|^2 H^-2 = H^2 H^-2 = 1` (|H|^2=H^2 via `CFC.sq_sqrt`),
 - commute: `epsCFC H = |H| = H epsCFC` (|H| commutes with H),
 - PSD: `epsCFC H = |H| = CFC.sqrt(H²)` PSD (`posSemidef_sqrt`).
 Closing existence + `certifiedSign_unique` gives: the overlap sign is well-defined
@@ -2252,10 +2252,10 @@ Claude-lane high-value work for the night is COMPLETE. Summary of what landed
 
 - **Gate C1 free chiral release** - symbol + operator GW, operator Weyl
   projectors. Complete, red-team-validated (feae0495).
-- **Gate C2** - 12 theorem files: overlap-index integrality (matrix + End +
+- **Gate C2** - then-current theorem files: overlap-index integrality (matrix + End +
   flagship-operator), free-index-zero benchmark + tetrahedral certified-integer,
   winding witness (index = Q), certified-sign UNIQUENESS + EXISTENCE (explicit
-  |H|H⁻¹), diagonal + non-diagonal certified operators, gauge invariance, and the
+  |H|H^-1), diagonal + non-diagonal certified operators, gauge invariance, and the
   C1<->C2 keystone (flagship operator index is an integer). Red-team-validated
   (ee95ba08) with all caveats folded; its #1 gap (existence) closed.
 - **Aristotle**: 3 jobs harvested (C2 strategy c36ea1a8, C2 red-team ee95ba08, C2
@@ -2300,7 +2300,7 @@ kernel-checked with clean axioms:
   card.Tr(g5) = 0`. So the free chiral operator's index is 0 exactly, closing the
   free benchmark at ALL THREE levels: symbol, certified-integer, operator value.
 
-C2 now: 13 theorem files. The flux construction job f3296d38 (pi-flux plaquette,
+C2 now: then-current theorem files. The flux construction job f3296d38 (pi-flux plaquette,
 genuine holonomy) is the one open piece in flight - will harvest + review when it
 returns.
 
@@ -2323,7 +2323,7 @@ transports.
 
 Handoff document for the next Claude 4.8 session written:
 `AgentTasks/handoff-claude48-gate-c2-2026-07-03.md`. Contents: tree state (green,
-8295; 14 C2 files, all kernel-clean), the IN-FLIGHT flux job f3296d38 with the
+8295; the then-current C2 layer kernel-clean), the IN-FLIGHT flux job f3296d38 with the
 exact harvest procedure + the three review traps (tree-carrier, conjugation,
 pi-flux T-invariance -> honest 0 is valid), next targets in priority order (gauge
 density > Sylvester/inertia > later gates), the conventions/gotchas that cost time

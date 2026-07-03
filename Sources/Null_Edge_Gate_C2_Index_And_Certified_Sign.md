@@ -41,6 +41,9 @@ Gate C1 and Gate C2 end to end. `trace_ghatEnd` also identifies the End-level
 index with the trace of the Luscher modified chirality
 `f * (1 - (1/2) Dov)`, so the trace-index formula is a theorem rather than a
 convention.
+`OverlapIndexEigenspace.overlapIndexEnd_eq_eigenspace_dim_sub` rewrites the same
+operator index as the difference of the `+1` eigenspace dimensions of the two
+involutions, the transparent finite count behind the trace formula.
 
 **(b) Free benchmark.** `tetraFreeOverlapIndex_eq_zero`: the free tetrahedral
 overlap index is `0` for traceless chirality, because `Tr(gamma5 . Q) = 0` follows
@@ -158,14 +161,17 @@ anomaly/index-density bridge and locality are the successor gates.
 
 ## 5. File map
 
-`OverlapIndexIntegrality`, `OverlapIndexEndIntegrality`, `FlagshipOperatorIndex`
-(integrality: matrix / endomorphism / flagship-operator); `TetraFreeIndexZero`
+`OverlapIndexIntegrality`, `OverlapIndexEndIntegrality`, `OverlapIndexEigenspace`,
+`FlagshipOperatorIndex`
+(integrality: matrix / endomorphism / eigenspace count / flagship-operator);
+`TetraFreeIndexZero`
 (free benchmark + certified integer), `TetraFreeIndexDensity` (free local density
 zero), `FlagshipOperatorIndexZero` (operator density sum rule + exact free
 operator index 0); `OverlapIndexWindingWitness` (winding = Q);
 `OverlapSignCertificate` (certificate + uniqueness + GW), `OverlapSignExistence`
 (existence + explicit `|H|H^{-1}`), `OverlapSignHermitian` (automatic
-self-adjointness of certified signs); `OverlapWindingSignJoin` (diagonal certified
-operator), `OverlapHoppingSignWitness` (non-diagonal certified operator);
+self-adjointness of certified signs + explicit self-adjoint `epsCFC`);
+`OverlapWindingSignJoin` (diagonal certified operator),
+`OverlapHoppingSignWitness` (non-diagonal certified operator);
 `OverlapIndexGaugeInvariance` (conjugation invariance). Prerequisite: the Gate C1
 `GateC1/` overlap release and `GateC1.OverlapIndexToy` index algebra.
