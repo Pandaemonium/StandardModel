@@ -20,9 +20,10 @@ recorded as such.
 - **Gate L0.1** no-go argument corrected via an Aristotle red-team (Palm
   marginalization + proximality + first-moment dichotomy) - the original sketch
   was refuted and repaired.
-- **Gate Q2** numerics: massless c=1 CFT calibration and massive area-law
-  saturation both validated; D3.1 modular-defect probe done with a documented
-  (negative) finding fixing the correct next observable.
+- **Gate Q2** numerics (three validated results): massless c=1 CFT
+  calibration, massive area-law saturation, and the **D3.1 modular defect** -
+  the free-fermion modular Hamiltonian commutes with the parabolic BW boost
+  (defect ~1/L^2), the discrete "time is modular" / F-M2 datum.
 - Aristotle used as a genuine partner: 2 strategy/red-team jobs that materially
   improved the C1 milestone framing and the L0 argument.
 - 15 verified commits (Claude), all prefixed `overnight-20260702:`.
@@ -93,11 +94,10 @@ deferred, not on the critical path).
 - sign(Hfree)/GW release: scoped in
   `AgentTasks/nerd-gate-c1-gw-release-setup-2026-07-03.md` (multi-hour;
   representation bridge R1/R2, then the GW relation is algebra).
-- D3.1 modular defect proper: the correct observable is the Eisler-Peschel
-  commuting operator (not raw `h_A` entries) - documented in
-  `Scripts/qnec/modular_defect.py`.
-- Discrete QNEC deficit (null-cut 2nd difference); L0 Lean sub-lemmas
-  (CP^1 no-finite-invariant-subset, 3-point stabilizer, boost north-south).
+- D3.1 modular defect: DONE and validated (commit 511ed49). The discrete QNEC
+  deficit (null-cut 2nd difference of entropy) remains the next Q2 rung.
+- L0 Lean sub-lemmas (CP^1 no-finite-invariant-subset, 3-point stabilizer,
+  boost north-south) - need Mobius/homogeneous-space Lean infrastructure.
 - L0-paper literature ingest (Palm calculus, Zimmer amenability, proximal
   dynamics, Douady-Earle) - logged in `LIT_LOG.md`, not ingested.
 
