@@ -497,3 +497,25 @@ Queue poll: `f3296d38` (flux construction) and `25f0b738` (sign-trace/inertia
 spectral bridge) are both still RUNNING. No Aristotle result harvested and no
 Lean integration attempted. Current working tree is clean except the
 Claude-active C1 setup note.
+
+## Verification 07:13 codex :: C2 Aristotle harvest reconciled
+Fresh queue poll: `f3296d38` and `25f0b738` are IDLE. Both have now been
+harvested, ported, verified, and committed in the live C2 draft layer:
+`f3296d38` -> `PhysicsSM/Draft/NullEdge/GateC2/FluxOverlapIndex.lean`
+(`389c713`, plus aggregate `GateC2.lean` / docstring cleanup `0b64b96`) and
+`25f0b738` -> `PhysicsSM/Draft/NullEdge/GateC2/GaugeIndexInertiaForm.lean`
+(`4843ff2`). Main new facts: genuine `pi`-flux triangle with gauge-invariant
+holonomy `-1`, certified rational sign, index `-1`, zero-flux triangle index
+`+1`, and flux response `Delta=-2`; and the unconditional eigenvalue-count gauge
+index formula via `epsCFC_trace_eq_inertia`.
+
+Verification already run before this docs reconciliation:
+`lake build PhysicsSM.Draft.NullEdge.GateC2.FluxOverlapIndex`;
+`lake build PhysicsSM.Draft.NullEdge.GateC2.GaugeIndexInertiaForm`;
+`lake build PhysicsSM.Draft.NullEdge.GateC2`; full root `lake build` after
+`4843ff2` (8295 jobs, build completed successfully); placeholder scans clean for
+the harvested C2 modules and aggregate; axiom audits for the flux theorems and
+inertia theorems all report `[propext, Classical.choice, Quot.sound]`. Honest
+C2 frontier updated: first flux witness is landed; successor is an even-lattice /
+2D-torus zero-to-nonzero flux model, then gauge density/anomaly and
+locality/continuum work.

@@ -1,29 +1,33 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (C2 report/source/roadmap and handoff docs reconciled; live
-Aristotle jobs `f3296d38` and `25f0b738` RUNNING as of 2026-07-03 06:38 PDT;
-current-tree full `lake build` passed after capstone commit `d9cde0c`).**
+**Status: FINAL-SWEEP DRAFT (C2 report/source/roadmap and handoff docs
+reconciled; Aristotle jobs `f3296d38` and `25f0b738` are IDLE, harvested, and
+ported as of 2026-07-03 07:13 PDT; current-tree full `lake build` passed after
+capstone commit `4843ff2`).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 standalone file still needs
 morning port/review before main-tree integration, and the C2 certified-sign
-existence Aristotle job has been harvested into `OverlapSignExistence.lean`. The
-whole report still needs final cross-review before 07:30 per the RUN_PLAN.
+existence, flux-index, and sign-trace/inertia Aristotle jobs have been harvested
+into the C2 draft layer. The whole report still needs final cross-review before
+handoff per the RUN_PLAN.
 Report faithfully: negatives and
 exploratory probes are recorded as such.
 
 ## 1. Executive summary
 
 - C1 free chiral release is kernel-checked through operator-level GW, Weyl
-  projectors, and the C2 operator-index bridge; the latest full `lake build` passed.
-- C2 now has sixteen committed draft theorem files: integrality, eigenspace and
-  matrix-signature counting, abstract gauge-overlap interface, operator-index
+  projectors, and the C2 operator-index bridge; the latest full `lake build`
+  passed after `4843ff2`.
+- C2 now has eighteen committed draft theorem files plus the aggregate
+  `GateC2.lean`: integrality, eigenspace and matrix-signature counting, abstract
+  gauge-overlap interface, eigenvalue-count/inertia form, operator-index
   packaging, free-zero, winding, certified-sign uniqueness/existence/
   self-adjointness, gauge covariance, non-diagonal hopping, the free local-density
-  benchmark, and the exact free operator-index-zero/sum-rule bridge; a concrete
-  nonzero-flux operator remains next, with Aristotle flux-index frontier job
-  `f3296d38` currently running; focused inertia bridge job `25f0b738` is also
-  running and has no harvested Lean result yet.
+  benchmark, the exact free operator-index-zero/sum-rule bridge, and a genuine
+  `pi`-flux triangle witness with nonzero index. The next C2 frontier is no longer
+  "find first flux"; it is the even-lattice / 2D-torus flux model plus
+  gauge-density/anomaly and locality/continuum successors.
 - Codex's I1/P2 standalone stack and Gate D draft stack are kernel-checked and
   semantically cross-reviewed, but the I1/P2 stack still needs main-tree porting.
 - Checkerboard T1b landed accumulated/fixed-time pointwise Dirac-limit theorems
@@ -58,13 +62,15 @@ exploratory probes are recorded as such.
 | `certifiedSign_exists`, `certifiedSign_eq_epsCFC` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignExistence.lean` | **C2b existence closure**: for every gapped Hermitian `H`, `epsCFC = CFC.sqrt(H^2) * H^-1` is a `SignCertificate`; uniqueness then makes every certificate equal to this explicit sign | 3ffc63d |
 | `signCertificate_isHermitian`, `epsCFC_isSelfAdjoint_involution` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignHermitian.lean` | **C2b self-consistency closure**: any certified sign for an invertible Hermitian `H` is automatically Hermitian/self-adjoint; the explicit certified sign `epsCFC` is therefore a self-adjoint involution | 7865b48 + 3004173 |
 | `gaugeOverlap_index_isInteger`, `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_certificate_independent`, `gaugeOverlap_index_signature_form` | `PhysicsSM/Draft/NullEdge/GateC2/GaugeOverlapInterface.lean` | **C2 abstract gauge-overlap interface**: any gapped Hermitian `H` plugs into the certified-sign machinery to give a well-defined integer index, GW overlap, certificate-choice-independent index value, and computable signature form | 91e3409 + d9cde0c |
+| `gaugeOverlap_index_trace_form`, `gaugeOverlap_index_inertia_form`, `epsCFC_trace_eq_inertia`, `gaugeOverlap_index_eigenvalue_count_form` | `PhysicsSM/Draft/NullEdge/GateC2/GaugeIndexInertiaForm.lean` | **C2 eigenvalue-count capstone**: the gauge-overlap index is `(1/2)(sig gamma5 - Tr(sign H))`, and unconditionally `(1/2)(sig gamma5 - (n_+ - n_-))` for a gapped Hermitian gauge/Wilson operator `H`; the spectral bridge `Tr(sign H)=n_+-n_-` was harvested from Aristotle `25f0b738` | 9f921dc + 4843ff2 |
 | `signCertificate_HU_epsW`, `HU_isHermitian`, `signCertificate_HU_unique` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapWindingSignJoin.lean` | **C2a->C2b join**: the winding `epsW` is a genuine certified sign of an explicit gapped mass-defect operator `HU=diag(-2,-3,-1,5)`, and every certified sign of `HU` equals `epsW`; index 1 is a real sign-of-operator (domain-wall) index | 8418bec + Codex review patch |
 | `overlapIndex_conj`, `SignCertificate.conj` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexGaugeInvariance.lean` | **C2 gauge invariance**: the overlap index is invariant under unitary conjugation and the sign certificate transports covariantly - the guardrail that a nonzero index cannot come from a gauge/basis conjugation, only a signature change | 68f2bff |
 | `signCertificate_HU2_epsW`, `HU2_isHermitian`, `signCertificate_HU2_unique`, `HU2_offDiagonal` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapHoppingSignWitness.lean` | **C2 non-diagonal certified sign**: a genuinely non-diagonal hopping operator `HU2=epsW.(C^H C)` has certified sign `epsW` (PSD for free from `C^H C`), is gapped/Hermitian, and has unique certified sign `epsW` - the certificate is not special to diagonal operators. Caveat: real hopping (flat connection, no holonomy) | fa291f9 + Codex review patch |
+| `plaquette_gauge_invariant`, `overlapIndex_flux`, `overlapIndex_noflux`, `flux_shifts_index`, `flux_is_nonzero_integer_witness` | `PhysicsSM/Draft/NullEdge/GateC2/FluxOverlapIndex.lean` | **C2 genuine flux witness**: a `pi`-flux triangle has gauge-invariant holonomy `-1`, a certified rational sign for its gapped hopping Hamiltonian, overlap index `-1`, zero-flux triangle index `+1`, and flux shift `-2`. Honest caveat: the odd 3-cycle has a parity index at every flux, so the sharp flux claim is the `Delta=-2` response; zero-to-nonzero flux remains an even/toroidal successor | 389c713 |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
 (clean); the latest full-tree `lake build` (8295 jobs) passed after the C2
-gauge-interface signature-form capstone `d9cde0c`.
+eigenvalue-count/inertia capstone `4843ff2`.
 
 ## 2b. Theorems landed (Codex, targeted kernel checks)
 
@@ -124,13 +130,13 @@ Submitted/harvested tonight (summaries in gitignored
   `OverlapSignExistence.lean`; proves abstract certified-sign existence for any
   gapped Hermitian `H` and combines with uniqueness in
   `certifiedSign_eq_epsCFC`.
-- `f3296d38` gate-c2-flux-index - RUNNING at latest check; ambitious frontier
-  construction/proof attempt for the first genuinely fluxed finite-lattice C2
-  index. No Lean result has been harvested or integrated yet.
-- `25f0b738` gate-c2-sign-trace-inertia - RUNNING at latest check; focused
-  spectral bridge proving `Tr(sign H)` equals the inertia of a gapped Hermitian
-  `H`. Submitted/registered in commit `40427b6`; no Lean result has been
-  harvested or integrated yet.
+- `f3296d38` gate-c2-flux-index - COMPLETE and harvested into
+  `FluxOverlapIndex.lean` (`389c713`): first genuine flux witness, a `pi`-flux
+  triangle with certified sign, nonzero index, and `Delta=-2` flux response.
+- `25f0b738` gate-c2-sign-trace-inertia - COMPLETE and harvested into
+  `GaugeIndexInertiaForm.lean` (`4843ff2`): proves `Tr(sign H)` equals the
+  inertia of a gapped Hermitian `H`, discharging the unconditional
+  eigenvalue-count gauge-index formula.
 Pre-run checkerboard backlog dry-run-inspected by Codex/T0; row-sum,
 L-infinity, L2/unitarity, and accumulated-Trotter returns are integrated in
 `NullEdgeStandalone`. The older gate-c1-* backlog was found already integrated
@@ -146,12 +152,12 @@ work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
 is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
 are targeted-build green and committed in `6e1a7e5`; full-tree build has since
 passed, while broader semantic review remains before any trusted promotion.
-Gate C2's abstract certified-sign existence job (`66972f62`) has been harvested
-and integrated in `OverlapSignExistence.lean`; the C2 Lean arc is committed,
-caveated, red-team validated, and full-build green after the post-existence
-refresh. Fresh C2 Aristotle jobs are running for the flux-index frontier
-(`f3296d38`) and sign-trace/inertia bridge (`25f0b738`); no theorem from either
-job is integrated yet.
+Gate C2's abstract certified-sign existence job (`66972f62`), flux-index job
+(`f3296d38`), and sign-trace/inertia bridge (`25f0b738`) have all been harvested
+and integrated. The C2 Lean arc is committed, caveated, red-team validated, and
+full-build green after the post-inertia capstone. The remaining C2 debt is not an
+unharvested job; it is successor mathematics: an even-lattice / 2D-torus flux
+model, gauge-background density/anomaly bridge, and locality/continuum analysis.
 Checkerboard T1b: accumulated Trotter, the matching-time `matrixL1Norm`
 boundary theorem, and the fixed-target-time variant are now integrated into
 `NullEdgeStandalone`; remaining checkerboard work is the uniform
@@ -192,7 +198,7 @@ momentum-window version and position-space sampling/interpolation bridge.
 ## 6. Build + hygiene
 
 - Latest full `lake build`: 8295 jobs, "Build completed successfully" after the
-  C2 gauge-interface signature-form capstone `d9cde0c` (root build; existing
+  C2 eigenvalue-count/inertia capstone `4843ff2` (root build; existing
   info/linter/deprecation chatter only).
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
@@ -247,6 +253,18 @@ momentum-window version and position-space sampling/interpolation bridge.
   dependency audit for `signCertificate_isHermitian` and
   `epsCFC_isSelfAdjoint_involution` =
   `[propext, Classical.choice, Quot.sound]`.
+- C2 flux/inertia harvest checks: `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.FluxOverlapIndex`; `lake build
+  PhysicsSM.Draft.NullEdge.GateC2.GaugeIndexInertiaForm`; `lake build
+  PhysicsSM.Draft.NullEdge.GateC2`; placeholder scans clean for the harvested
+  modules and aggregate; dependency audits for `plaquette_gauge_invariant`,
+  `signCert_Mtri_unique`, `signCert_HU_unique`, `overlapIndex_flux`,
+  `overlapIndex_noflux`, `flux_shifts_index`,
+  `flux_is_nonzero_integer_witness`, `epsCFC_trace_eq_inertia`,
+  `gaugeOverlap_index_eigenvalue_count_form`, `gaugeOverlap_index_trace_form`,
+  and `gaugeOverlap_index_inertia_form` =
+  `[propext, Classical.choice, Quot.sound]`; full root `lake build` passed after
+  `4843ff2`.
 - Codex C2 free index-density repair: `lake env lean
   PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexDensity.lean`; `lake build
   PhysicsSM.Draft.NullEdge.GateC2.TetraFreeIndexDensity`; placeholder scan
@@ -282,12 +300,11 @@ momentum-window version and position-space sampling/interpolation bridge.
   `diracEvolutionSymbol_tendsto_refinement_time`, and
   `checkerboard_dirac_limit_statement_fixed_time` =
   `[propext, Classical.choice, Quot.sound]`.
-- Dependency audits: all trusted-track theorems `[propext, Classical.choice,
-  Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in committed
-  `PhysicsSM` or `NullEdgeStandalone` Lean this run. The standalone Aristotle
-  packet `AgentTasks/aristotle-standalone/gate-c2-sign-trace-inertia-20260703/`
-  intentionally contains an unproved proof target and is not integrated into the
-  built Lean tree.
+- Dependency audits: all trusted-track theorem audits reported
+  `[propext, Classical.choice, Quot.sound]`; no `s o r r y`, no
+  `n a t i v e _ d e c i d e` in committed `PhysicsSM` or `NullEdgeStandalone`
+  Lean this run. Standalone Aristotle submission packets are historical staging
+  artifacts and are not part of the built Lean tree.
 - All results are DRAFT-trust (draft modules), per the no-trusted-promotion
   guardrail. Promotion to trusted is a morning-review decision.
 
@@ -310,12 +327,12 @@ momentum-window version and position-space sampling/interpolation bridge.
 
 ## 8. Recommended next three actions
 
-1. Port/commit Codex's I1/P2 and Gate D staging cluster into the main
-   `PhysicsSM` tree, then run targeted builds, full `lake build`, and semantic
-   cross-review; use that pass to decide draft->trusted promotions.
-2. Scope Gate C2 with an explicit strategy/red-team packet before gauge
-   construction: gauge-link covariance and admissible-sign interface first,
-   finite index density/anomaly bridge after that facade is pinned.
+1. Port/commit Codex's I1/P2 staging cluster into the main `PhysicsSM` tree, then
+   run targeted builds, full `lake build`, and semantic cross-review; use that
+   pass to decide draft->trusted promotions.
+2. Continue Gate C2 on the true successor frontier: an even-lattice / 2D-torus
+   Wilson-Dirac flux model with zero-to-nonzero index, then the gauge-background
+   density/anomaly bridge using the existing sum-rule machinery.
 3. For checkerboard T1b, upgrade the fixed-target-time pointwise theorem to a
    uniform momentum-window version, then connect the momentum-space limit to the
    position-space sampling/interpolation API.

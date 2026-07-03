@@ -156,10 +156,17 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   Hermitian/self-adjoint, and the explicit `epsCFC` sign is a self-adjoint
   involution.
 - `GaugeOverlapInterface.lean` (`gaugeOverlap_index_isInteger`,
-  `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_certificate_independent`):
+  `gaugeOverlap_ginspargWilson`, `gaugeOverlap_index_certificate_independent`,
+  `gaugeOverlap_index_signature_form`):
   any gapped Hermitian gauge/Wilson operator plugs into the certified-sign
   interface to give a well-defined integer index, GW overlap, and
-  certificate-choice-independent index value.
+  certificate-choice-independent index value, with matrix-signature form.
+- `GaugeIndexInertiaForm.lean` (`gaugeOverlap_index_trace_form`,
+  `epsCFC_trace_eq_inertia`, `gaugeOverlap_index_eigenvalue_count_form`): the
+  gauge-overlap index is computable directly from the eigenvalue signs of the
+  gapped Hermitian gauge/Wilson operator `H`, namely
+  `(1/2)(sig gamma5 - (n_+ - n_-))`. The sign-trace/inertia spectral bridge was
+  harvested from Aristotle job `25f0b738`.
 - `OverlapWindingSignJoin.lean` (`signCertificate_HU_epsW`, `signCertificate_HU_unique`):
   joins C2a to C2b - the winding involution `epsW` is a genuine certified sign of an
   explicit gapped mass-defect (domain-wall) operator `HU = diag(-2,-3,-1,5)`, and
@@ -189,14 +196,22 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   each diagonal block traceless.  The free benchmark now holds at all three
   levels: symbol, certified-integer, operator value. `operatorIndex_eq_sum_density`
   is the finite structural sum rule: operator index = site-sum of local density.
+- `FluxOverlapIndex.lean` (`plaquette_gauge_invariant`, `overlapIndex_flux`,
+  `overlapIndex_noflux`, `flux_shifts_index`,
+  `flux_is_nonzero_integer_witness`): Aristotle job `f3296d38`, ported. A
+  `pi`-flux triangle has gauge-invariant holonomy `-1`, a certified rational
+  sign for its gapped hopping Hamiltonian, overlap index `-1`, zero-flux
+  triangle index `+1`, and `Delta=-2` response to flux insertion. Honest scope:
+  the odd 3-cycle has a parity index at every flux, so this is a genuine flux
+  response witness, not yet the even-lattice zero-to-nonzero index.
 
 Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
 needs a genuine signature change (Wilson mass across zero), not a flat/tree
-connection. SUCCESSOR: a genuine nonzero-FLUX operator (COMPLEX link phases,
-nontrivial holonomy around a loop; the real-hopping `HU2` is flat), then the
-anomaly/index-density bridge. The `H^2=coeff.I` scalar-square shortcut breaks under
-such a background - the certified-sign interface (`SignCertificate`) is how
-`sign(H_U)` is pinned without a functional
+connection. The first genuine nonzero-FLUX witness is now the `pi`-flux triangle.
+SUCCESSOR: an even-lattice / 2D-torus Wilson-Dirac flux model with a
+zero-to-nonzero index, then the anomaly/index-density bridge. The `H^2=coeff.I`
+scalar-square shortcut breaks under such a background - the certified-sign
+interface (`SignCertificate`) is how `sign(H_U)` is pinned without a functional
 calculus.
 
 ## Tracks

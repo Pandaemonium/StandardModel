@@ -11,21 +11,32 @@ before continuing Gate C2. Companion documents:
   registry, heartbeats), DISCUSSION.md (threaded review log), MORNING_REPORT.md
   (the full night's report; cross-review coverage recorded).
 
+**Update 2026-07-03 07:13 PDT (Codex):** the two jobs that were live in this
+handoff are now harvested and ported. `f3296d38` produced the
+`FluxOverlapIndex.lean` `pi`-flux triangle witness (commit `389c713`), and
+`25f0b738` produced the sign-trace/inertia spectral bridge in
+`GaugeIndexInertiaForm.lean` (commit `4843ff2`). Full root `lake build` passed
+after `4843ff2`. Where older prose below describes a job as in flight, this
+update supersedes it.
+
 ## 1. State of the tree
 
-- Full `lake build` GREEN (8295 jobs), last confirmed after code cleanup
-  `7af42f7`; later final-sweep commits were docs/ledger/handoff-only.
+- Full `lake build` GREEN (8295 jobs), last confirmed after Gate C2
+  sign-trace/inertia port `4843ff2`; existing info/linter/deprecation chatter
+  only.
 - Everything below is draft-trust, kernel-checked, dependency footprint exactly
   `[propext, Classical.choice, Quot.sound]` (consolidated audit in LEDGER
   heartbeat 05:35). No `s o r r y` / `n a t i v e _ d e c i d e` anywhere in
   GateC1/GateC2.
 - Gate C1 (free chiral release) is COMPLETE: symbol + operator GW, operator Weyl
   projectors (`PhysicsSM/Draft/NullEdge/GateC1/`). Red-team-validated (feae0495).
-- Gate C2 has 16 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
+- Gate C2 has 18 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/` plus
+  the aggregate import `PhysicsSM/Draft/NullEdge/GateC2.lean`:
   integrality (matrix `OverlapIndexIntegrality` / End `OverlapIndexEndIntegrality`
   incl. `trace_ghatEnd` / eigenspace-signature count `OverlapIndexEigenspace` /
   matrix signature `OverlapIndexMatrixSignature` / flagship
   `FlagshipOperatorIndex`), abstract gauge interface `GaugeOverlapInterface`,
+  eigenvalue-count/inertia form `GaugeIndexInertiaForm`,
   free benchmark at
   three levels (`TetraFreeIndexZero`, `FlagshipOperatorIndexZero`), index density
   + sum rule (`TetraFreeIndexDensity`, `operatorIndex_eq_sum_density`), certified
@@ -33,19 +44,23 @@ before continuing Gate C2. Companion documents:
   `OverlapSignExistence`, `OverlapSignHermitian` - existence proof by Aristotle
   66972f62, ported), witnesses (`OverlapIndexWindingWitness`,
   `OverlapWindingSignJoin`, `OverlapHoppingSignWitness`), gauge invariance
-  (`OverlapIndexGaugeInvariance`). C2 arc red-team-validated (ee95ba08, all
-  FAITHFUL; caveats folded into docstrings).
+  (`OverlapIndexGaugeInvariance`), and genuine flux witness
+  `FluxOverlapIndex`. C2 arc red-team-validated (ee95ba08, all FAITHFUL; caveats
+  folded into docstrings).
 
-## 2. IN FLIGHT - harvest this first
+## 2. HARVESTED - flux result
 
 **Aristotle flux-index job `f3296d38-89c2-4ffa-95f5-1916cdd65a6d`**
-(`gate-c2-flux-index-20260703`, submitted ~05:10, still RUNNING at handoff).
-The ambitious frontier construction: smallest finite lattice with a genuine
-nonzero flux (cycle + holonomy; brief recommends pi-flux = real -1 links, no
-surds) + gapped Hermitian `H_U` + certified sign + kernel-checked index value.
+(`gate-c2-flux-index-20260703`, submitted ~05:10, later IDLE/COMPLETE) has been
+harvested and ported as `PhysicsSM/Draft/NullEdge/GateC2/FluxOverlapIndex.lean`
+in commit `389c713`. The result is the first genuine-flux witness: a `pi`-flux
+triangle with gauge-invariant holonomy `-1`, certified rational sign, overlap
+index `-1`, zero-flux triangle index `+1`, and `Delta=-2` flux response. Honest
+caveat: the odd 3-cycle has a parity index at every flux, so the remaining
+successor is an even-lattice / 2D-torus zero-to-nonzero flux index.
 Brief and context pack: `AgentTasks/aristotle-standalone/gate-c2-flux-index-20260703/`.
 
-Harvest procedure:
+Historical harvest procedure (already performed):
 1. `aristotle list --limit 5` until IDLE; `aristotle tasks f3296d38...` for the
    task id; `aristotle show f3296d38... --task <tid>` for the summary.
 2. `cd AgentTasks/aristotle-standalone/gate-c2-flux-index-20260703 && aristotle
@@ -62,19 +77,18 @@ Harvest procedure:
 4. If sound: port under `PhysicsSM/Draft/NullEdge/GateC2/` (pattern: the
    `OverlapSignExistence.lean` port), axiom-audit every theorem, placeholder
    scan, module build, full `lake build`, commit, update the C2 summary doc +
-   roadmap + ledger.
+   roadmap + ledger. This checklist was completed for the repo-adapted port.
 
 ## 3. Next targets after the harvest (priority order)
 
-1. **Gauge index-density**: once a gauge `H_U` exists, transport the density
-   machinery (`signKernel`/`freeIndexDensity` pattern in `TetraFreeIndexDensity`)
-   to `sign(H_U)`; the sum rule `operatorIndex_eq_sum_density` is the finite
+1. **Even/toroidal flux index**: upgrade the odd `pi`-flux triangle witness to an
+   even lattice / 2D Wilson-Dirac torus with net flux and a zero-to-nonzero index.
+2. **Gauge index-density**: transport the density machinery
+   (`signKernel`/`freeIndexDensity` pattern in `TetraFreeIndexDensity`) to
+   `sign(H_U)`; the sum rule `operatorIndex_eq_sum_density` is the finite
    "index = integral of density" and its gauge version is the anomaly statement.
-2. **Sylvester/inertia route for explicit indices**: for a concrete gapped integer
-   `H_U`, `n_-` = sign variations in the leading principal minors. Mathlib
-   probably lacks Jacobi/Sylvester inertia - consider a focused Aristotle job if
-   an explicit spectrum is unavailable.
-3. Locality/continuum are documented later gates - do not scope-creep into them.
+3. **Locality/continuum**: documented successor gates; keep them separate from
+   the finite witness layer.
 
 ## 4. Conventions and gotchas (cost real time tonight)
 
@@ -118,11 +132,12 @@ lake build                                             # full (8295 jobs, green)
 
 ## 6. One-line summary
 
-C1 free chiral release complete; C2 index layer comprehensive (integrality,
-certified sign existence+uniqueness+self-adjointness, gauge invariance, density +
-sum rule, free benchmark at all levels) and red-team-validated; the single open frontier is the
-genuine nonzero-flux operator, with Aristotle job f3296d38 in flight on exactly
-that - harvest it first.
+C1 free chiral release complete; C2 index layer comprehensive and
+red-team-validated: integrality, certified sign existence+uniqueness+
+self-adjointness, gauge invariance, density + sum rule, free benchmark at all
+levels, eigenvalue-count gauge index, and first genuine `pi`-flux witness. The
+single open C2 frontier has moved to the even-lattice / 2D-torus zero-to-nonzero
+flux model and gauge-density/anomaly bridge.
 
 ## 7. Additions after this handoff was first written (all committed, kernel-clean)
 
@@ -180,36 +195,34 @@ finish a concrete flux example you need ONLY:
    `sig(H_U) = n_+ - n_-` of `H_U` (the sign preserves eigenvalue signs). For an
    explicit integer `H_U` this is decidable via eigenvalue signs / Sylvester's
    leading-principal-minor criterion.
-Then `gaugeOverlap_index_signature_form` gives the index directly. The one piece
-still needing spectral input is `sig(sign H_U) = sig(H_U)` (that CFC-sign preserves
-the eigenvalue-sign counts) - if the flux job (f3296d38) did not establish it, that
-is the single clean lemma to hand Aristotle next. Everything else is done.
+Then `gaugeOverlap_index_signature_form` gives the index directly. The spectral
+input `Tr(sign H) = n_+ - n_-` is now proved in
+`GaugeIndexInertiaForm.epsCFC_trace_eq_inertia`, so the abstract gauge-index
+chain is unconditional. The concrete `pi`-flux triangle also exists in
+`FluxOverlapIndex.lean`; the successor is the even-lattice / torus version, not a
+missing spectral bridge.
 
-## 9. The spectral-bridge lemma is now SUBMITTED (Aristotle 25f0b738)
+## 9. The spectral-bridge lemma is now HARVESTED (Aristotle 25f0b738)
 
-The "single clean lemma to hand Aristotle" from section 8 has been submitted:
+The "single clean lemma to hand Aristotle" from section 8 was submitted and
+returned COMPLETE:
 `AgentTasks/aristotle-standalone/gate-c2-sign-trace-inertia-20260703/` targets
 `epsCFC_trace_eq_inertia` (`Tr(sign H) = #positive eig - #negative eig` for gapped
-Hermitian H, via the spectral theorem). Harvest job 25f0b738 the same way as the
-flux job. If it lands, port `epsCFC_trace_eq_inertia`, then the gauge index is
+Hermitian H, via the spectral theorem). It is ported in
+`GaugeIndexInertiaForm.lean` (commit `4843ff2`). The gauge index is now
 `(1/2)(sig gamma5 - inertia(H))` - fully computable from `H`'s eigenvalue signs,
-NO functional calculus in the final formula. TWO Aristotle jobs are now in flight
-(flux f3296d38 = concrete construction; inertia 25f0b738 = general spectral
-bridge); harvest whichever returns. Neither is required for the abstract chain,
-which is complete and kernel-checked.
+with no functional calculus in the final formula.
 
-## 10. The eigenvalue-count capstone is STAGED (one-line discharge on inertia harvest)
+## 10. The eigenvalue-count capstone is COMPLETE
 
 New kernel-clean file `PhysicsSM/Draft/NullEdge/GateC2/GaugeIndexInertiaForm.lean`
-(commit 9f921dc) proves:
+(commits `9f921dc`, `4843ff2`) proves:
 - `gaugeOverlap_index_trace_form` (UNCONDITIONAL): gauge index =
   `(1/2)(sig gamma5 - trace(epsCFC H))`.
-- `gaugeOverlap_index_inertia_form` (conditional on
-  `hinertia : (epsCFC H).trace = nPos - nNeg`): index =
-  `(1/2)(sig gamma5 - (nPos - nNeg))`.
-When the Aristotle inertia lemma (25f0b738, `epsCFC_trace_eq_inertia`) lands and
-is ported, `hinertia` is dischargeable directly, upgrading
-`gaugeOverlap_index_inertia_form` to an UNCONDITIONAL eigenvalue-count index.
+- `epsCFC_trace_eq_inertia`: trace of the certified sign equals
+  `nPos - nNeg`.
+- `gaugeOverlap_index_eigenvalue_count_form`: gauge index =
+  `(1/2)(sig gamma5 - (nPos - nNeg))` unconditionally.
 That is the final capstone of the gauge-index-from-signature chain: the gauge
 chiral index computed purely from the eigenvalue signs of the gauge Wilson
 operator `H`. Axioms `[propext, Classical.choice, Quot.sound]`.
