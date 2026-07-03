@@ -1,5 +1,6 @@
 import PhysicsSM.Draft.NullEdge.GateC1.TetraSymbolOverlapGW
 import PhysicsSM.Draft.NullEdge.GateC1.OverlapIndexToy
+import PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexIntegrality
 
 /-!
 # Gate C2: the free tetrahedral overlap has zero chiral index
@@ -88,6 +89,27 @@ theorem tetraFreeOverlapIndex_eq_zero
       Matrix.trace_add, smul_eq_mul, hgQ, hg5tr, mul_zero, add_zero]
   rw [overlapIndex_eq gamma5 (signSymbol gamma5 D a r rho k) hg5sq, hg5tr, hsig]
   ring
+
+/-- **The tetrahedral overlap index is a certified integer.**  Instantiating the
+general integrality result at the concrete free tetrahedral sign symbol: for a
+Hermitian-unitary chirality anticommuting with the kinetic slash, throughout the
+first Wilson band, the overlap index `overlapIndex gamma5 (signSymbol ...)` is an
+integer.  (With traceless chirality `tetraFreeOverlapIndex_eq_zero` pins the value
+to `0`; this corollary certifies integrality without the traceless hypothesis.) -/
+theorem tetraOverlapIndex_isInteger
+    (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ) (k : Fin 4 → ℝ)
+    (hgH : star gamma5 = gamma5)
+    (hgU : star gamma5 * gamma5 = (1 : Matrix Spin Spin ℂ))
+    (hanti : gamma5 * TetraEuclideanSlashData.Q D (sinCoeffs k)
+        + TetraEuclideanSlashData.Q D (sinCoeffs k) * gamma5 = 0)
+    (hpos : 0 < sqCoeff D a r rho k) :
+    ∃ nn : ℤ, overlapIndex gamma5 (signSymbol gamma5 D a r rho k) = (nn : ℂ) := by
+  have hg5sq : gamma5 * gamma5 = (1 : Matrix Spin Spin ℂ) := by
+    nth_rewrite 1 [← hgH]; exact hgU
+  exact OverlapIndexIntegrality.overlapIndex_isInteger gamma5
+    (signSymbol gamma5 D a r rho k) hg5sq
+    (signSymbol_sq gamma5 D a r rho k hgU hgH hanti hpos)
 
 end TetraFreeIndexZero
 end GateC2
