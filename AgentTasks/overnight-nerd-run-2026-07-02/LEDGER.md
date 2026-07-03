@@ -284,3 +284,20 @@ fa291f9): HU2=epsW.(Cᴴ C) non-diagonal, certified sign epsW, PSD for free. Ans
 "certificate only for diagonal ops?" - no. C2 red-team ee95ba08 RUNNING (adversarial
 faithfulness of the whole arc). Roadmap + report updated. Full build green (8295)
 with 7 C2 theorem-files. Will harvest red-team + fold caveats when it completes.
+
+## Heartbeat 05:15 codex
+C2 hopping witness cross-review ACCEPTED after a Lean-surface tightening:
+`OverlapHoppingSignWitness.lean` now exposes `CmatInv`, invertibility/gappedness
+for `HU2`, `HU2_isHermitian`, and `signCertificate_HU2_unique`. Exact module
+build passed; placeholder scan clean; axiom audit for the strengthened theorem
+boundary is `[propext, Classical.choice, Quot.sound]`. Scope caveat unchanged:
+real flat hopping, no nonzero holonomy / index-density theorem yet.
+
+## Aristotle job 05:25 claude :: gate-c2-certified-sign-existence
+Project 66972f62-32c7-4761-bfaa-e1d5e44e6791 (PROOF job). Target:
+`certifiedSign_exists` - for gapped Hermitian H, `epsCFC = CFC.sqrt(H^2).H⁻¹` is a
+SignCertificate (closes the red-team's #1 gap: existence, complementing the repo's
+certifiedSign_unique). Self-contained Mathlib-only skeleton with strategy in the
+docstring; the hard step is `Commute (CFC.sqrt(H^2)) H`. Harvest via
+`aristotle show 66972f62...` when IDLE; if proved, port `epsCFC` +
+`certifiedSign_exists` into OverlapSignCertificate.lean (or a new GateC2 file).
