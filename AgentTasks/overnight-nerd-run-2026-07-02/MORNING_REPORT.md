@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D extension updated 02:29).**
+**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review extension updated 02:56).**
 Claude-lane results below are complete and verified. Codex's later I1/D
 additions are confirmed from the shared ledger/discussion and targeted checks,
 but remain uncommitted staging/draft work pending morning port/review. The whole
@@ -36,11 +36,12 @@ faithfully: negatives and exploratory probes are recorded as such.
   additions after this build should be re-confirmed with a full build.
 - **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
   faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
-  determinant/cross-term spine, and I3.5 determinant-line clock algebra.
+  determinant/cross-term spine, I3.5 determinant-line clock algebra, and a
+  conditional finite `U(2)` spin-clock split algebra.
 - **Gate D finite stack** kernel-checked through D1 product-marginal
   subadditivity, D2 finite first-law/Gibbs/fixed-modular-energy stationarity,
   D3.0 finite no-proper-shrink skeleton, and D6 classical checkerboard
-  Bernoulli turn weights.
+  Bernoulli turn weights with fixed mean turn count.
 - **Gate L0.1** no-go argument corrected via an Aristotle red-team (Palm
   marginalization + proximality + first-moment dichotomy) - the original sketch
   was refuted and repaired.
@@ -65,6 +66,7 @@ faithfully: negatives and exploratory probes are recorded as such.
 | `H_symbol_sq`, `signSymbol_sq/_star`, `symbol_ginsparg_wilson`, Weyl projectors | `.../TetraSymbolOverlapGW.lean` | **symbol-level chiral release**: Clifford scalar square -> elementary sign involution -> GW relation -> Weyl projectors | 191d3f8 / 6dd97ae |
 | `fourierUnitaryInv_fourierUnitary`, `fourierUnitary_fourierUnitaryInv`, `fourierChar_row_orthogonality` | `.../TetraFourierInverse.lean` | two-sided finite Fourier isomorphism (both round-trips) - the operator-level GW infra | 4db38f8 / af0e6ef |
 | `signHfree_involutive`, `signHfree_selfAdjoint`, `fourierUnitary_DovOp`, `operator_ginsparg_wilson` | `.../TetraOperatorOverlapGW.lean` | **operator-level chiral release**: `sign(Hfree)` a self-adjoint involution -> real-space overlap `DovOp` -> operator GW `Gamma5 Dov + Dov Gamma5 = Dov Gamma5 Dov` | c9902ac / 5b31126 |
+| `weylProjOp_add`, `weylProjOp_sub_eq_signHfree`, `weylProjOpPlus/Minus_idem`, `signHfree_weylProjOpPlus` | `.../TetraOperatorWeylProjectors.lean` | **operator Weyl projectors** (capstone of the free release): spectral resolution `P+/P- = (1 +/- signHfree)/2`; `P+ + P- = 1`, `P+ - P- = signHfree`, idempotents, and `signHfree(P+ Psi) = P+ Psi` (`+1` chirality eigenspace = chiral fermions at the operator level) | ac48b87 |
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
@@ -79,14 +81,15 @@ All Codex rows are draft/staging. Axiom audits reported
 | Cluster | File | Main names | Verification |
 |---|---|---|---|
 | I1.1-I1.6 kinematic core | `AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean` | `i1_1_soldering_det`, `i1_2_minkHerm_posSemidef_iff_futureCone`, `i1_2_minkHerm_eigenvalues_nonneg_iff_futureCone`, `i1_3_rank_one_rank_dichotomy`, `i1_4_rank_one_factorization`, `i1_5_cauchy_binet_mass_identity`, `i1_6_kinematic_cross_check` | `lake env lean ...\Core.lean` |
-| I1.8-I1.9 + I3.5 | same | `normalizedMinkHerm_posSemidef_of_futureCone`, `normalizedMinkHerm_faithful_of_futureTimelike`, `det_normalizedMinkHerm`, `trace_normalizedMinkHerm_sq`, `linearEntropy_normalizedMinkHerm`, `i1_9_minkHerm_mul_bar_eq_minkowskiSq`, `i1_9_bar_mul_minkHerm_eq_minkowskiSq`, `i3_5_clock_projector_invariant`, `i3_5_clock_det` | same |
+| I1.8-I1.9 + I3.5 | same | `det_normalizedMinkHerm_sub_smul_one`, `normalizedMinkHerm_spectralPlus_det_zero`, `normalizedMinkHerm_spectralMinus_det_zero`, `normalizedMinkHerm_posSemidef_of_futureCone`, `normalizedMinkHerm_faithful_of_futureTimelike`, `det_normalizedMinkHerm`, `trace_normalizedMinkHerm_sq`, `linearEntropy_normalizedMinkHerm`, `i1_9_minkHerm_mul_bar_eq_minkowskiSq`, `i1_9_bar_mul_minkHerm_eq_minkowskiSq`, `i3_5_clock_projector_invariant`, `i3_5_clock_det` | same |
 | I2 finite faithfulness shadow | same | `faithful2_det_ne_zero`, `i2_rankOne_not_faithful`, `i2_null_not_faithful`, `i2_minkHerm_faithful_of_futureTimelike`, `i2_minkHerm_faithful_iff_futureTimelike` | same |
 | A1 finite boost algebra | same | `a1_spatialPauli_sq`, `a1_boost_minkHerm_form`, `a1_boost_minkowskiSq`, `a1_boost_eigenvalue_ratio`, `a1_boost_faithful` | same |
 | A2 determinant spine | same | `spatialDot_sq_le`, `minkowskiSq_add`, `a2_det_minkHerm_add`, `minkowskiInner_nonneg_of_futureCone`, `a2_minkowskiSq_add_ge_of_futureCone` | same |
+| U(2) spin-clock split algebra | same | `phase_smul_specialUnitary2_det`, `phase_smul_specialUnitary2_unitary`, `u2_phase_su_decomposition`, `spinClock_kernel_square_one`, `spinClock_kernel_suPart`, `complex_sq_eq_one_iff` | same |
 | D1 finite product-marginal subadditivity | `PhysicsSM/Draft/NullEdge/GateD/FiniteBernoulliMaxEntropy.lean` | `crossEntropy_productOfMarginals`, `d1_joint_entropy_subadditivity` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy` |
 | D2 fixed modular-energy stationarity | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | `entropy_gap_eq_relEntropy_of_fixed_crossEntropy`, `d2_shannon_le_of_fixed_crossEntropy` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw` |
 | D3.0 finite no-proper-shrink skeleton | `PhysicsSM/Draft/NullEdge/GateD/FiniteHalfSidedInclusion.lean` | `permImage_eq_of_subset`, `permImage_pow_eq_of_halfSided`, `subspaceImage_eq_of_le`, `subspaceImage_pow_eq_of_halfSided` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion` |
-| D6 classical checkerboard turns | `PhysicsSM/Draft/NullEdge/GateD/FiniteCheckerboardTurns.lean` | `bernoulliTurnWeight_nonneg`, `bernoulliTurnWeight_sum`, `d6_classical_growth_is_bernoulli`, `classicalCheckerboardGrowthWeight_sum` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns` |
+| D6 classical checkerboard turns | `PhysicsSM/Draft/NullEdge/GateD/FiniteCheckerboardTurns.lean` | `bernoulliTurnWeight_nonneg`, `bernoulliTurnWeight_sum`, `bernoulliTurnWeight_marginal_turn`, `bernoulliTurnWeight_turnCountReal_mean`, `d6_classical_growth_is_bernoulli`, `classicalCheckerboardGrowthWeight_sum`, `classicalCheckerboardGrowthWeight_turnCountReal_mean` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteCheckerboardTurns` |
 
 ## 3. Aristotle registry (final)
 
@@ -121,6 +124,9 @@ deferred, not on the critical path).
 - `review:c1-selfadjoint` ACCEPTED (Codex); docstring precision fix applied.
 - `review:c1-symbol-gw` ACCEPTED (Codex); scalar-square shortcut judged
   semantically honest at symbol/per-momentum scope.
+- `review:c1-operator-gw` ACCEPTED (Codex); Fourier transport judged
+  semantically honest for `signHfree_selfAdjoint` and
+  `operator_ginsparg_wilson` as real-space operator identities.
 - `review:gate-d-firstlaw` ACCEPTED (Codex); D1 handed to Codex.
 - Harvest division agreed (Claude gate-c1-*, Codex checkerboard).
 - No disagreements parked for the user.
@@ -128,7 +134,7 @@ deferred, not on the critical path).
 ## 6. Build + hygiene
 
 - Full `lake build`: 8295 jobs, "Build completed successfully" after Claude's
-  integrated batch. Not rerun after Codex's later uncommitted I2/A1/A2/D6/D2
+  integrated batch. Not rerun after Codex's later uncommitted I2/A1/A2/U2/D6/D2
   stationarity staging additions and I2 iff tightening.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
@@ -144,11 +150,10 @@ deferred, not on the critical path).
 
 ## 7. Ideas raised, out of scope tonight
 
-- C1 sign/GW: symbol-level release is kernel-checked AND adversarially validated;
-  operator-level step 1 (inverse Fourier round-trip) is banked; the full
-  operator-level packaging is precisely scoped (row orthogonality -> fwd-inv
-  round-trip -> signHfree -> operator GW) in `DISCUSSION.md`
-  `idea:operator-level-GW-scoping` - a ~1.5h fresh-session construction.
+- C1 next layer: symbol-level and operator-level free GW release are both
+  kernel-checked and reviewed. Remaining out-of-scope-next work is operator Weyl
+  projector packaging (immediate from `signHfree_involutive`) and Gate C2
+  scoping for gauge backgrounds/index/anomaly.
 - D3.1 modular defect: DONE and validated (commit 511ed49). The discrete QNEC
   deficit (null-cut 2nd difference of entropy) remains the next Q2 rung.
 - L0 Lean sub-lemmas (CP^1 no-finite-invariant-subset, 3-point stabilizer,
@@ -161,9 +166,8 @@ deferred, not on the critical path).
 1. Port/commit Codex's I1/P2 and Gate D staging cluster into the main
    `PhysicsSM` tree, then run pre-commit, targeted builds, full `lake build`,
    and semantic cross-review.
-2. Execute the scoped operator-level GW packaging (the symbol-level release is
-   already reviewed + adversarially validated; step 1 done) to lift the chiral
-   release from per-momentum to the real-space operator.
+2. Review/commit the operator Weyl projector packaging if it lands, then scope
+   Gate C2 with an explicit strategy/red-team packet before gauge construction.
 3. Decide draft->trusted promotions for the reviewed C1 and Gate D theorems
    after the morning semantic pass.
 
