@@ -1,6 +1,7 @@
 import PhysicsSM.Draft.NullEdge.GateC1.TetraFourierInverse
 import PhysicsSM.Draft.NullEdge.GateC1.TetraSymbolOverlapGW
 import PhysicsSM.Draft.NullEdge.GateC1.TetraPhaseTrigEqual
+import PhysicsSM.Draft.NullEdge.GateC1.TetraFreeOperatorSelfAdjoint
 
 /-!
 # Gate C1: operator-level overlap sign `sign(Hfree)` and its involution
@@ -47,6 +48,7 @@ open TetraScalarWilsonSymbol
 open TetraQMatrixSquareExact
 open TetraSymbolOverlapGW
 open TetraFourierInverse
+open TetraFreeOperatorSelfAdjoint
 
 variable (N : ℕ) [NeZero N]
 variable {Spin : Type*} [Fintype Spin] [DecidableEq Spin]
@@ -95,6 +97,54 @@ theorem signHfree_involutive
   rw [fourierUnitary_signHfree, fourierUnitary_signHfree, Matrix.mulVec_mulVec,
     signSymbol_sq gamma5 D a r rho (kOfMom N m) hgU hgH (hanti m) (hpos m),
     Matrix.one_mulVec]
+
+/-- **The operator sign is self-adjoint** for the finite field inner product:
+`fieldInner (signHfree Psi) Phi = fieldInner Psi (signHfree Phi)`.  Mirrors
+`Hfree_selfAdjoint`: transform to momentum space (`fourierUnitary_inner_siteN`),
+where `signHfree` acts blockwise by the self-adjoint sign symbols
+(`signSymbol_star`), and the per-block adjoint move transports back.
+
+Together with `signHfree_involutive`, `signHfree` is a self-adjoint involution -
+a genuine orthogonal reflection = the operator `sign(Hfree)`. -/
+theorem signHfree_selfAdjoint
+    (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (hgH : star gamma5 = gamma5)
+    (hanti : ∀ m : MomN N,
+      gamma5 * TetraEuclideanSlashData.Q D (sinCoeffs (kOfMom N m))
+        + TetraEuclideanSlashData.Q D (sinCoeffs (kOfMom N m)) * gamma5 = 0)
+    (Psi Phi : SiteN N → Spin → ℂ) :
+    fieldInner N (signHfree N gamma5 D a r rho Psi) Phi =
+      fieldInner N Psi (signHfree N gamma5 D a r rho Phi) := by
+  rw [← fourierUnitary_inner_siteN N (signHfree N gamma5 D a r rho Psi) Phi,
+      ← fourierUnitary_inner_siteN N Psi (signHfree N gamma5 D a r rho Phi)]
+  unfold blockInner
+  apply Finset.sum_congr rfl
+  intro m _
+  have hSsym : star (signSymbol gamma5 D a r rho (kOfMom N m)) =
+      signSymbol gamma5 D a r rho (kOfMom N m) :=
+    signSymbol_star gamma5 D a r rho (kOfMom N m) hgH (hanti m)
+  have hadj :
+      star ((signSymbol gamma5 D a r rho (kOfMom N m)).mulVec
+          (fourierUnitary N Psi m)) ⬝ᵥ (fourierUnitary N Phi m)
+        = star (fourierUnitary N Psi m) ⬝ᵥ
+            (signSymbol gamma5 D a r rho (kOfMom N m)).mulVec
+              (fourierUnitary N Phi m) := by
+    rw [Matrix.star_mulVec, ← Matrix.dotProduct_mulVec,
+      ← Matrix.star_eq_conjTranspose, hSsym]
+  have hL : (∑ s : Spin,
+      star (fourierUnitary N (signHfree N gamma5 D a r rho Psi) m s) *
+        fourierUnitary N Phi m s)
+      = star ((signSymbol gamma5 D a r rho (kOfMom N m)).mulVec
+          (fourierUnitary N Psi m)) ⬝ᵥ (fourierUnitary N Phi m) := by
+    rw [fourierUnitary_signHfree]; rfl
+  have hR : (∑ s : Spin, star (fourierUnitary N Psi m s) *
+      fourierUnitary N (signHfree N gamma5 D a r rho Phi) m s)
+      = star (fourierUnitary N Psi m) ⬝ᵥ
+          (signSymbol gamma5 D a r rho (kOfMom N m)).mulVec
+            (fourierUnitary N Phi m) := by
+    rw [fourierUnitary_signHfree]; rfl
+  rw [hL, hR, hadj]
 
 end TetraOperatorOverlapGW
 end GateC1
