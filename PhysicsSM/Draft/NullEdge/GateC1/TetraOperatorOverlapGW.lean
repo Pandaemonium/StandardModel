@@ -49,6 +49,8 @@ open TetraQMatrixSquareExact
 open TetraSymbolOverlapGW
 open TetraFourierInverse
 open TetraFreeOperatorSelfAdjoint
+open TetraFreeOperator
+open OverlapGinspargWilson
 
 variable (N : ℕ) [NeZero N]
 variable {Spin : Type*} [Fintype Spin] [DecidableEq Spin]
@@ -145,6 +147,89 @@ theorem signHfree_selfAdjoint
             (fourierUnitary N Phi m) := by
     rw [fourierUnitary_signHfree]; rfl
   rw [hL, hR, hadj]
+
+/-- `Pi.add` adapter for `fourierUnitary_add` (defeq to the explicit-lambda
+form), so it rewrites `fourierUnitary N (Psi + Phi) m`. -/
+theorem fourierUnitary_piAdd (Psi Phi : SiteN N → Spin → ℂ) (m : MomN N) :
+    fourierUnitary N (Psi + Phi) m =
+      fourierUnitary N Psi m + fourierUnitary N Phi m :=
+  fourierUnitary_add N Psi Phi m
+
+/-- The field chirality operator `Gamma5 = matrixFieldAction gamma5`. -/
+def Gamma5op (gamma5 : Matrix Spin Spin ℂ) (Psi : SiteN N → Spin → ℂ) :
+    SiteN N → Spin → ℂ :=
+  matrixFieldAction N gamma5 Psi
+
+/-- The real-space overlap Dirac operator `Dov = 1 + Gamma5 . signHfree`. -/
+def DovOp (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (Psi : SiteN N → Spin → ℂ) : SiteN N → Spin → ℂ :=
+  Psi + Gamma5op N gamma5 (signHfree N gamma5 D a r rho Psi)
+
+/-- `DovOp` is block-diagonalized by the Fourier transform into the per-momentum
+overlap symbols `Dov gamma5 (signSymbol k_m)`. -/
+theorem fourierUnitary_DovOp
+    (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (Psi : SiteN N → Spin → ℂ) (m : MomN N) :
+    fourierUnitary N (DovOp N gamma5 D a r rho Psi) m =
+      (Dov gamma5 (signSymbol gamma5 D a r rho (kOfMom N m))).mulVec
+        (fourierUnitary N Psi m) := by
+  unfold DovOp Gamma5op Dov
+  rw [fourierUnitary_piAdd, fourierUnitary_matrixFieldAction,
+    fourierUnitary_signHfree, Matrix.mulVec_mulVec, Matrix.add_mulVec,
+    Matrix.one_mulVec]
+
+/-- **Operator-level Ginsparg-Wilson relation.**
+
+The real-space overlap Dirac operator `Dov = 1 + Gamma5 . signHfree` satisfies
+the Ginsparg-Wilson relation
+
+    Gamma5 (Dov Psi) + Dov (Gamma5 Psi) = Dov (Gamma5 (Dov Psi))
+
+for a Hermitian unitary chirality `gamma5` anticommuting with the kinetic slash,
+throughout the first Wilson band.  Proved by transporting to momentum space
+(where `DovOp` block-diagonalizes to the symbol `Dov`) and applying the
+per-momentum `symbol_ginsparg_wilson`, then Fourier injectivity - the same
+pattern as `signHfree_involutive`.  This lifts the symbol-level chiral release
+to the real-space operator. -/
+theorem operator_ginsparg_wilson
+    (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (hgU : star gamma5 * gamma5 = (1 : Matrix Spin Spin ℂ))
+    (hgH : star gamma5 = gamma5)
+    (hanti : ∀ m : MomN N,
+      gamma5 * TetraEuclideanSlashData.Q D (sinCoeffs (kOfMom N m))
+        + TetraEuclideanSlashData.Q D (sinCoeffs (kOfMom N m)) * gamma5 = 0)
+    (hpos : ∀ m : MomN N, 0 < sqCoeff D a r rho (kOfMom N m))
+    (Psi : SiteN N → Spin → ℂ) :
+    Gamma5op N gamma5 (DovOp N gamma5 D a r rho Psi)
+        + DovOp N gamma5 D a r rho (Gamma5op N gamma5 Psi) =
+      DovOp N gamma5 D a r rho
+        (Gamma5op N gamma5 (DovOp N gamma5 D a r rho Psi)) := by
+  apply Function.LeftInverse.injective (fourierUnitaryInv_fourierUnitary N)
+  funext m
+  set v := fourierUnitary N Psi m with hv
+  set S := Dov gamma5 (signSymbol gamma5 D a r rho (kOfMom N m)) with hS
+  have hgw : gamma5 * S + S * gamma5 = S * gamma5 * S :=
+    symbol_ginsparg_wilson gamma5 D a r rho (kOfMom N m) hgU hgH (hanti m) (hpos m)
+  -- Fourier-transform both sides into symbol mulVec form.
+  have hlhs :
+      fourierUnitary N (Gamma5op N gamma5 (DovOp N gamma5 D a r rho Psi)
+          + DovOp N gamma5 D a r rho (Gamma5op N gamma5 Psi)) m
+        = (gamma5 * S + S * gamma5).mulVec v := by
+    unfold Gamma5op
+    rw [fourierUnitary_piAdd, fourierUnitary_matrixFieldAction, fourierUnitary_DovOp,
+      fourierUnitary_DovOp, fourierUnitary_matrixFieldAction, ← hv, ← hS,
+      Matrix.mulVec_mulVec, Matrix.mulVec_mulVec, Matrix.add_mulVec]
+  have hrhs :
+      fourierUnitary N (DovOp N gamma5 D a r rho
+          (Gamma5op N gamma5 (DovOp N gamma5 D a r rho Psi))) m
+        = (S * gamma5 * S).mulVec v := by
+    unfold Gamma5op
+    rw [fourierUnitary_DovOp, fourierUnitary_matrixFieldAction, fourierUnitary_DovOp,
+      ← hv, ← hS, Matrix.mulVec_mulVec, Matrix.mulVec_mulVec]
+  rw [hlhs, hrhs, hgw]
 
 end TetraOperatorOverlapGW
 end GateC1
