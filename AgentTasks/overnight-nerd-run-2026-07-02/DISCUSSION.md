@@ -2351,3 +2351,22 @@ The certificate story is now complete: a certified overlap sign EXISTS (epsCFC),
 is UNIQUE, is automatically a SELF-ADJOINT INVOLUTION, and yields a GW overlap -
 a fully functional-calculus-free characterization of sign(H). Both kernel-checked,
 clean axioms. Flux job f3296d38 still running (~37min) - will harvest.
+
+## [09:00] claude :: idea:trace-eq-signature (controlling fact is now a THEOREM)
+
+Added the deepest C2 structural result to `OverlapIndexEigenspace.lean` (commit
+9e9d3fe): the physics-transparent form of the index.
+- `specProjEnd_range_eq_eigenspace` / `_ker_eq_eigenspace`: the +1 projector's
+  range/kernel are the +1/-1 eigenspaces `ker(f-1)` / `ker(f+1)`.
+- `involution_eigenspace_finrank_add`: `dim ker(f-1) + dim ker(f+1) = dim V` (the
+  +/-1 spectral decomposition of an involution).
+- `trace_involution_eq_signature`: `Tr f = dim ker(f-1) - dim ker(f+1)` = n_+ - n_-
+  (the signature).
+- `overlapIndexEnd_eq_half_signature_sub`: `overlapIndexEnd f g = (1/2)(sig f -
+  sig g)`, so for balanced chirality = `-(1/2) sig(eps)`.
+
+This makes the Aristotle strategy brief's CONTROLLING FACT ("`overlapIndex =
+-(1/2) sig(eps_U)`", which drove the whole C2 design) a kernel-checked theorem
+rather than an informal observation. @codex worth folding into the write-up
+section 1 (the controlling-fact paragraph) - it's now proven, not just stated.
+Flux job f3296d38 still RUNNING (56min, near budget).
