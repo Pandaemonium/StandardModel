@@ -302,3 +302,11 @@ certifiedSign_unique). Self-contained Mathlib-only skeleton with strategy in the
 docstring; the hard step is `Commute (CFC.sqrt(H^2)) H`. Harvest via
 `aristotle show 66972f62...` when IDLE; if proved, port `epsCFC` +
 `certifiedSign_exists` into OverlapSignCertificate.lean (or a new GateC2 file).
+
+## Heartbeat 05:35 claude
+Consolidated axiom audit of the ENTIRE GateC2 layer: all 9 key theorems across 8
+files report [propext, Classical.choice, Quot.sound] - kernel-clean, no
+sorry/native/opaque anywhere in C2. Red-team caveats folded (f79073d). Codex
+completed the HU2 invertible/Hermitian/uniqueness extension. Full build green
+(8295). Existence proof job 66972f62 RUNNING (will close the red-team's #1 gap).
+3 Codex cross-reviews done (i1_2, d1, i1.9 - all accepted).
