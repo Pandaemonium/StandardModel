@@ -9,15 +9,16 @@ story (the uniqueness half is `OverlapSignCertificate.certifiedSign_unique`).  I
 proves that for every gapped (invertible) Hermitian `H` a certificate EXISTS, by
 exhibiting the explicit candidate
 
-    epsCFC H := CFC.sqrt (H ^ 2) * H⁻¹        -- i.e. |H| H⁻¹
+    epsCFC H := CFC.sqrt (H ^ 2) * H^-1       -- i.e. |H| H^-1
 
 and proving `SignCertificate H (epsCFC H)` (`certifiedSign_exists`).  Combined with
 `certifiedSign_unique`, the certified overlap sign of any gapped Hermitian `H` is
-both well-defined and explicitly `|H| H⁻¹` (`certifiedSign_eq_epsCFC`) - answering
+both well-defined and explicitly `|H| H^-1` (`certifiedSign_eq_epsCFC`) - answering
 the red-team (ee95ba08) "existence not formalized" gap.
 
-The core proof was produced by Aristotle (project 66972f62, kernel-checked, axiom
-footprint `[propext, Classical.choice, Quot.sound]`) following the strategy: with
+The core proof was produced by Aristotle (project 66972f62, kernel-checked,
+dependency footprint `[propext, Classical.choice, Quot.sound]`) following the
+strategy: with
 `A := CFC.sqrt (H^2)`, `A^2 = H^2` (`CFC.sq_sqrt`), `A` PSD (`CFC.sqrt_nonneg`),
 and the load-bearing commutation `Commute A H` (`Commute.cfcₙ_nnreal`, since
 `CFC.sqrt = cfcₙ NNReal.sqrt` and `H` commutes with `H^2`); then `epsCFC H * H = A`
@@ -83,7 +84,7 @@ theorem certifiedSign_exists (H : Matrix n n ℂ) [Invertible H]
     rw [hepsH]; exact hApsd
 
 /-- **The certified overlap sign is well-defined and explicit.**  For a gapped
-Hermitian `H`, every sign certificate equals `epsCFC H = |H| H⁻¹` (existence +
+Hermitian `H`, every sign certificate equals `epsCFC H = |H| H^-1` (existence +
 uniqueness). -/
 theorem certifiedSign_eq_epsCFC (H eps : Matrix n n ℂ) [Invertible H]
     (hHherm : H.IsHermitian) (hc : SignCertificate H eps) :

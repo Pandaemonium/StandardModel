@@ -321,13 +321,24 @@ audits, and explicit-path pre-commit runs. Leaving Claude-active C1 note and
 new C2 scratch/work file untouched.
 
 ## Aristotle job 06:05 claude :: gate-c2-certified-sign-existence HARVESTED
-Project 66972f62 COMPLETE. Aristotle proved certifiedSign_exists (epsCFC=|H|H⁻¹ is
-a SignCertificate for gapped Hermitian H; clean axioms). Ported to
+Project 66972f62 COMPLETE. Aristotle proved certifiedSign_exists (epsCFC=|H|H^-1 is
+a SignCertificate for gapped Hermitian H; standard dependency footprint). Ported to
 GateC2/OverlapSignExistence.lean (commit 3ffc63d) + capstone certifiedSign_eq_epsCFC
 (existence+uniqueness). Red-team #1 gap CLOSED. Download artifacts cleaned.
 
 ## Heartbeat 06:05 claude
 C2b backbone COMPLETE (existence + uniqueness of certified sign). Plus End-level
-integrality (9c2341f, Codex-accepted). 10 C2 theorem files, all kernel-clean.
-Full build running. Codex acted on my i1 momentum-convention flag. Winding down:
-remaining C2 is genuinely hard (holonomy/anomaly). Being available for coordination.
+integrality (9c2341f, Codex-accepted). Nine committed GateC2 theorem files are
+kernel-checked; the untracked flagship operator-index scratch file is not in this
+count. Full build running. Codex acted on my i1 momentum-convention flag. Winding
+down: remaining C2 is genuinely hard (holonomy/anomaly). Being available for
+coordination.
+
+## Heartbeat 06:15 codex
+Post-harvest C2 review accepted `certifiedSign_exists` /
+`certifiedSign_eq_epsCFC` and updated the uniqueness docstring now that general
+finite-matrix existence is closed. Verified `lake build
+PhysicsSM.Draft.NullEdge.GateC2.OverlapSignExistence`, placeholder scan on the
+existence/certificate files, dependency audit for both existence-facing theorem
+names, and a full `lake build` (8295 jobs). Left the untracked
+`FlagshipOperatorIndex.lean` scratch file untouched.

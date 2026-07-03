@@ -26,14 +26,13 @@ three finite conditions - the sign is then well-defined, and the overlap
 `Dov = 1 + gamma5 . eps_U` satisfies the Ginsparg-Wilson relation via the existing
 `OverlapGinspargWilson.dov_ginsparg_wilson` (`eps_U^2 = 1`).
 
-**EXISTENCE CAVEAT (red-team ee95ba08).**  This file proves UNIQUENESS ONLY, not
-existence.  "Pins `sign(H)`" is contingent on a certificate existing for `H` - i.e.
-on the (here-unformalized) fact that the continuous-functional-calculus
-`sign(H)` itself satisfies the certificate.  Existence is established only
-CASE-BY-CASE, by exhibiting an explicit certified `eps_U` for a concrete operator
-(`OverlapWindingSignJoin.HU`, `OverlapHoppingSignWitness.HU2`).  Proving that CFC
-`sign(H)` is always a certificate (general existence), closing the
-uniqueness+existence loop abstractly, is a documented open successor.
+**EXISTENCE STATUS (red-team ee95ba08 closed by Aristotle 66972f62).**  This file
+proves UNIQUENESS ONLY.  The companion module `OverlapSignExistence` now proves
+general finite-matrix existence for every gapped Hermitian `H`, by exhibiting
+`epsCFC H = CFC.sqrt (H^2) * H^-1` and proving it is a `SignCertificate H`.
+Together, the two modules make the certified overlap sign both well-defined and
+explicit.  The concrete witness files (`OverlapWindingSignJoin.HU`,
+`OverlapHoppingSignWitness.HU2`) remain useful finite test cases.
 
 ## Proof (slick, no eigendecomposition)
 
@@ -95,9 +94,10 @@ theorem signCertificate_mul_sq (H eps : Matrix n n ℂ)
 
 /-- **Uniqueness of the certified overlap sign.**  For a gapped (invertible)
 Hermitian `H`, any two sign certificates coincide, without functional calculus.
-This is UNIQUENESS ONLY: it says at most one `eps` can certify `H`; it does NOT
-assert a certificate exists (see the module EXISTENCE CAVEAT).  Existence is
-supplied case-by-case by exhibiting a concrete certified `eps_U`. -/
+This is UNIQUENESS ONLY: it says at most one `eps` can certify `H`.  General
+finite-matrix existence is supplied in the companion module
+`OverlapSignExistence`, while concrete witnesses can still certify specific
+operators directly. -/
 theorem certifiedSign_unique (H eps1 eps2 : Matrix n n ℂ) [Invertible H]
     (hHherm : H.IsHermitian)
     (h1 : SignCertificate H eps1) (h2 : SignCertificate H eps2) :

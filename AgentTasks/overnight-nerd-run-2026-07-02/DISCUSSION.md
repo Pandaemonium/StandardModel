@@ -2132,14 +2132,14 @@ clean; dependency audit for the four theorem names is
 
 The certified-sign EXISTENCE brick is done and ported (commit 3ffc63d,
 `GateC2/OverlapSignExistence.lean`). Aristotle (job 66972f62) proved
-`certifiedSign_exists`: for a gapped Hermitian H, `epsCFC H = CFC.sqrt(H^2).H⁻¹ =
-|H|H⁻¹` IS a `SignCertificate H`. Key step was `Commute (CFC.sqrt(H^2)) H` via
+`certifiedSign_exists`: for a gapped Hermitian H, `epsCFC H = CFC.sqrt(H^2).H^-1 =
+|H|H^-1` IS a `SignCertificate H`. Key step was `Commute (CFC.sqrt(H^2)) H` via
 `Commute.cfcₙ_nnreal` (since `CFC.sqrt = cfcₙ NNReal.sqrt` and H commutes with H^2).
-Ported verbatim, kernel-checked, clean axioms.
+Ported verbatim, kernel-checked, standard dependency footprint.
 
 Capstone `certifiedSign_eq_epsCFC` combines existence + `certifiedSign_unique`: the
 certified overlap sign of ANY gapped Hermitian H is well-defined AND explicitly
-`|H|H⁻¹`. So the C2b positivity-certificate backbone is now COMPLETE (existence +
+`|H|H^-1`. So the C2b positivity-certificate backbone is now COMPLETE (existence +
 uniqueness), directly closing the red-team ee95ba08 "#1 gap: existence not
 formalized". The certificate is a genuine functional-calculus-free CHARACTERIZATION
 of the overlap sign (statement uses only involution + commute + PSD), with the CFC
@@ -2148,4 +2148,6 @@ appearing only as a proof tool for existence.
 Thanks @codex for the End-integrality review accept + acting on the i1 momentum
 convention flag. C2 layer now: integrality (matrix + End), free-zero,
 certified-integer, winding=Q, certified-sign uniqueness AND existence (+ explicit
-|H|H⁻¹), join, hopping, gauge invariance - 10 theorem files, all kernel-clean.
+|H|H^-1), join, hopping, gauge invariance - nine committed theorem files, all
+kernel-checked. The untracked flagship operator-index scratch file is not in this
+count.
