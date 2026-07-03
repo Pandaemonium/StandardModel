@@ -155,12 +155,18 @@ SURD-FREE diagonal, verified exactly (`S^dag block S == D`, `det S != 0`, `S`
 Gaussian-rational). The signs `3 +, 5 -` give inertia `-2` DIRECTLY by Sylvester's
 law, with NO eigenvalues. So the load-bearing block lemma reduces to a decidable
 matrix-identity check `S^dag block S = D` plus Sylvester's law. KEY MATHLIB
-DEPENDENCY: Sylvester's law of inertia (congruent Hermitian matrices share
-signature / eigenvalue-sign counts), needed to bridge this rational congruence to
-the eigenvalue-count inertia used by `epsCFC_trace_eq_inertia`; search Mathlib
-first (`Matrix.IsHermitian`, congruence, signature) and, if absent, prove it as the
-one reusable general lemma. With it, the full 2D-flux zero-to-nonzero witness is a
-short assembly over the explicit per-block `S`, `D`.
+DEPENDENCY (checked via lean-explore): Sylvester's law of inertia IS in Mathlib
+for QUADRATIC FORMS - `QuadraticForm.equivalent_signType_weighted_sum_squared`,
+`QuadraticForm.sigPos_of_equiv_weightedSumSquares`,
+`QuadraticForm.sigNeg_of_equiv_weightedSumSquares`,
+`QuadraticForm.sigPos_add_sigNeg_add_radical`. What is NOT directly present is the
+complex-Hermitian-MATRIX bridge: congruence `S^dag blk S = D` (with `S` invertible)
+implies equal eigenvalue-sign counts (`Matrix.IsHermitian.eigenvalues`), the exact
+form `epsCFC_trace_eq_inertia` consumes. That bridge - Hermitian-form signature =
+eigenvalue-sign count, invariant under `*`-congruence - is the ONE connective lemma
+to assemble, and is a clean focused Aristotle target on its own (reusable well
+beyond this witness). With it, the full 2D-flux zero-to-nonzero witness is a short
+assembly over the explicit per-block `S`, `D`.
 
 ## Provenance
 
