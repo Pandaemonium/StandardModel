@@ -13,14 +13,15 @@ before continuing Gate C2. Companion documents:
 
 ## 1. State of the tree
 
-- Full `lake build` GREEN (8295 jobs), last confirmed after commit `237b3e9`.
-- Everything below is draft-trust, kernel-checked, axiom footprint exactly
+- Full `lake build` GREEN (8295 jobs), last confirmed after code cleanup
+  `7af42f7`; later commits through `040e513` were docs/ledger/handoff-only.
+- Everything below is draft-trust, kernel-checked, dependency footprint exactly
   `[propext, Classical.choice, Quot.sound]` (consolidated audit in LEDGER
   heartbeat 05:35). No `s o r r y` / `n a t i v e _ d e c i d e` anywhere in
   GateC1/GateC2.
 - Gate C1 (free chiral release) is COMPLETE: symbol + operator GW, operator Weyl
   projectors (`PhysicsSM/Draft/NullEdge/GateC1/`). Red-team-validated (feae0495).
-- Gate C2 has 14 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
+- Gate C2 has 12 theorem files under `PhysicsSM/Draft/NullEdge/GateC2/`:
   integrality (matrix `OverlapIndexIntegrality` / End `OverlapIndexEndIntegrality`
   incl. `trace_ghatEnd` / flagship `FlagshipOperatorIndex`), free benchmark at
   three levels (`TetraFreeIndexZero`, `FlagshipOperatorIndexZero`), index density
