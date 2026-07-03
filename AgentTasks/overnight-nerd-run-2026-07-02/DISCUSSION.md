@@ -2152,6 +2152,22 @@ certified-integer, winding=Q, certified-sign uniqueness AND existence (+ explici
 kernel-checked. The untracked flagship operator-index scratch file is not in this
 count.
 
+## [06:30] codex :: review:C2-flagship-operator-index
+
+Accepted. `FlagshipOperatorIndex.lean` is the missing C1<->C2 operator-facing
+instantiation of End-integrality: `signHfree_add` / `signHfree_smul` bundle the
+free operator sign as `signHfreeL`, `Gamma5opL` bundles chirality by
+`matrixFieldAction`, and `signHfreeL_mul_self` / `Gamma5opL_mul_self` discharge
+the two involution hypotheses needed by `overlapIndexEnd_isInteger`.
+
+The semantic scope is exactly right: `flagship_operatorIndex_isInteger` proves
+that the free tetrahedral operator overlap index is an integer. It does not claim
+a nonzero index, holonomy, local density, or anomaly formula. Verification:
+`lake build PhysicsSM.Draft.NullEdge.GateC2.FlagshipOperatorIndex` passed;
+placeholder scan clean; dependency audit for the flagship cluster is
+`[propext, Classical.choice, Quot.sound]`; full `lake build` passed afterward
+(8295 jobs).
+
 ## [06:20] claude :: idea:C1-C2-keystone (flagship operator index is an integer)
 
 Closed the C1<->C2 loop at the OPERATOR level (commit 38aba2b,
@@ -2201,3 +2217,29 @@ Cross-reviewed the A2 Minkowski determinant dictionary, focus on the subtle
 Faithful. This is the "mass superadditivity" spine (A2). Seven Codex theorems now
 cross-checked (i1_2, i1.9, i2, i3.5, d1, a1, a2) - the I1 kinematic dictionary +
 D1 entropy are semantically sound end to end.
+
+## [06:45] claude :: review:u2+d3.0+d6 (semantic checks - ACCEPTED, coverage complete)
+
+Cross-reviewed the remaining three Codex clusters; all ACCEPTED:
+
+- **U(2) split** `u2_phase_su_decomposition`: for unitary `U` and a phase `z` with
+  `z^2 = det U`, `z⁻¹ U` is in `SU(2)` (`det(z⁻¹ U) = z⁻² det U = 1`, unitary) and
+  `z . (z⁻¹ U) = U`. Correct `U(2) = phase x SU(2)` decomposition; the `Z_2` is the
+  two square roots `+/- z`, matching `U(2) = (SU(2) x U(1))/Z_2` (spin frame x
+  clock). Faithful.
+- **D3.0 no-proper-shrink** `subspaceImage_pow_eq_of_halfSided`: for a linear
+  AUTOMORPHISM `e` of a finite-dim `V` and subspace `S`, if `e^n S <= S` for all
+  `n` then `e^n S = S`. Correct: `e^n` injective + finite dim => dimension is
+  preserved => the inclusion is an equality. This is the honest finite statement
+  that a half-sided modular inclusion is TRIVIAL in finite dimensions (the modular
+  defect is an infinite-dim phenomenon). Faithful.
+- **D6 checkerboard** `d6_classical_growth_is_bernoulli`: the classical
+  checkerboard growth weight equals the Bernoulli turn-product weight - the
+  classical/decohered limit is an independent-turn Bernoulli process. Correct
+  structural identity. Faithful.
+
+Cross-review coverage now COMPLETE: 10 Codex theorems checked (i1_2, i1.9, i2,
+i3.5, a1, a2, u2, d1, d3.0, d6) spanning the full I1 kinematic dictionary, the
+det-line clock, the U(2) gauge split, and the Gate D entropy/modular/checkerboard
+stack. All semantically faithful, mostly-minus convention consistent, no hidden
+assumptions. The I1/D lanes are sound for morning port.
