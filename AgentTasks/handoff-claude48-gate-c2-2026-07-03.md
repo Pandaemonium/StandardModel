@@ -213,3 +213,30 @@ is ported, `hinertia` is dischargeable directly, upgrading
 That is the final capstone of the gauge-index-from-signature chain: the gauge
 chiral index computed purely from the eigenvalue signs of the gauge Wilson
 operator `H`. Axioms `[propext, Classical.choice, Quot.sound]`.
+
+## 11. BOTH Aristotle harvests COMPLETE - the C2 chain is unconditional + fluxed
+
+Both live jobs are harvested, integrated, and kernel-verified (aggregate build
+`lake build PhysicsSM.Draft.NullEdge.GateC2` = 8063 jobs green, all 18 modules):
+
+- FLUX (f3296d38 -> `FluxOverlapIndex.lean`, commit 389c713, claude): the pi-flux
+  triangle - a genuine gauge flux (gauge-invariant holonomy -1), certified
+  rational sign, `overlapIndex_flux = -1`, `flux_shifts_index` Delta=-2. Rewired
+  onto the trusted repo `overlapIndex`/`SignCertificate`;
+  `flux_is_nonzero_integer_witness` instantiates the abstract interface with a
+  nonzero value. Semantic review vs all three documented traps: clean.
+- INERTIA (25f0b738 -> `GaugeIndexInertiaForm.lean`, commit 4843ff2, codex,
+  cross-reviewed by claude): `epsCFC_trace_eq_inertia` (`Tr(sign H) = n_+ - n_-`
+  via `epsCFC H = cfc sign H`) + the UNCONDITIONAL capstone
+  `gaugeOverlap_index_eigenvalue_count_form`. Axiom-clean, verified.
+
+Net: the gauge chiral index of any gapped Hermitian gauge operator is now computed
+purely from the eigenvalue signs of `H`, unconditionally, AND there is a concrete
+nonzero-flux operator realizing it. New convenience: `GateC2.lean` aggregator
+(one-command build of the whole layer; NOT a default target - the no-arg
+`lake build` is the SPL-free core and does NOT include the NullEdge gate tree).
+
+NEXT FRONTIER (from the write-up section 4): an EVEN lattice / 2D Wilson-Dirac
+operator on a torus with net flux 2 pi (a genuine ZERO-to-nonzero flux index; the
+odd triangle carries an index at every flux), then the anomaly / index-density
+bridge, then locality / continuum.
