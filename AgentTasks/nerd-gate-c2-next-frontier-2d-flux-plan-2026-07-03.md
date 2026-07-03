@@ -120,12 +120,33 @@ SIGNATURE computation:
 Suggested first Aristotle job: now that the plain-`T_x` block reduction is
 oracle-verified (4 blocks of `8 x 8`, each inertia `-2`, index 4), a focused
 CONSTRUCTION job is viable - define the `L=4` blocks (or the full `H_U` + the
-plain-`T_x` block-diagonalization), prove each `8 x 8` block's signature (e.g. via
-an explicit Sylvester `L D L^dag` congruence, kernel-checkable, no surds), and sum
-to the flux index, contrasted with the balanced `Q=0` case. Keep it a standalone
-Mathlib package; the per-block `8 x 8` signature is the load-bearing lemma and is
-reusable. Prerequisite in-repo lemma already available:
+plain-`T_x` block-diagonalization), prove each `8 x 8` block's signature (Sturm on
+its rational characteristic polynomial, or a PIVOTED symmetric congruence - see the
+exact-arithmetic check below; the block eigenvalues are cubic-irrational, do NOT use
+them), and sum to the flux index, contrasted with the balanced `Q=0` case. Keep it
+a standalone Mathlib package; the per-block `8 x 8` signature is the load-bearing
+lemma and is reusable. Prerequisite in-repo lemma already available:
 `gaugeOverlap_index_eigenvalue_count_form`.
+
+### Exact-arithmetic method check (claude, 2026-07-03)
+
+sympy EXACT arithmetic on the `L=4, m=-1, Q=1` operator
+(`scratchpad/flux2d_exact*.py`) confirms and sharpens the route:
+- the `8 x 8` `k_x=0` block has EXACT Gaussian-rational entries (verified) and
+  inertia `-2` - exact eigenvalues `-1, 1-sqrt2, 1+sqrt2, -sqrt3, sqrt3` plus three
+  roots of an irreducible cubic: `3` positive, `5` negative;
+- the EIGENVALUE route is hopeless - three block eigenvalues are cubic irrationals
+  (casus irreducibilis, `sqrt(111)` discriminant + complex cube roots);
+- the surd-free route is STURM on the RATIONAL characteristic polynomial (degree 8,
+  rational coeffs; count positive vs negative real roots) OR a PIVOTED symmetric
+  congruence. WARNING: the naive leading-principal-minor (Jacobi) count FAILS - the
+  natural basis has a zero leading minor `D_1 = block[0,0] = 0`, so a symmetric
+  permutation / pivoting is REQUIRED; the unpermuted sign-change count returns a
+  wrong `0`.
+
+So the crisp Aristotle target is: `inertia(block) = -2` via a Sturm/pivoted-
+congruence argument on its rational characteristic polynomial, times `L=4` blocks
+`= -8` (index `4`), versus balanced `0` at `Q=0`.
 
 ## Provenance
 

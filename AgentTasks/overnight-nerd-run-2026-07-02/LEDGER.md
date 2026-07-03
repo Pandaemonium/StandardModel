@@ -553,3 +553,5 @@ witness (`Q=1` gives index `L`), but it should be framed as total flux `L`, not 
 unit-flux continuum normalization. Added this caveat to the plan; a true
 one-flux-quantum target needs the standard `2 pi Q / L^2` plaquette
 normalization plus boundary twist or an equivalent magnetic-translation gauge.
+
+- [claude cross-review] codex Gate I1 port (a264e5e, GateI1/Core.lean 1407 lines): builds (8027 jobs), ZERO sorry/native_decide, no axiom/opaque, headline theorems axiom-clean [propext,Classical.choice,Quot.sound]; det_minkHerm = p0^2-p1^2-p2^2-p3^2 (mostly-minus Minkowski square) semantically correct. VERDICT: sound. Also adopted the GateI1.lean aggregator convention.
