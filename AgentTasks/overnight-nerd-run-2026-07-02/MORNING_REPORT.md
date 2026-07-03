@@ -3,8 +3,9 @@
 **Status: FINAL-SWEEP DRAFT (C2 report/source/roadmap and handoff docs
 reconciled; Aristotle jobs `f3296d38` and `25f0b738` are IDLE, harvested, and
 ported as of 2026-07-03 07:13 PDT; I1/P2 staging stack is now ported to
-`PhysicsSM/Draft/NullEdge/GateI1/`; current-tree full `lake build` passed after
-latest frontier commit `fd71eac`).**
+`PhysicsSM/Draft/NullEdge/GateI1/`; full `lake build` passed after latest
+Lean-relevant frontier commit `fd71eac`, with later docs/oracle commits verified
+separately).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
 shared ledger/discussion and targeted checks. The I1 stack is now present as an
@@ -218,6 +219,10 @@ momentum-window version and position-space sampling/interpolation bridge.
   info/linter/deprecation chatter only). This run also anchors the Gate I1 draft
   port in the current tree, though the root target still excludes the NullEdge
   aggregate modules unless built explicitly.
+- C2 2D-flux oracle checks: `python -m py_compile
+  Scripts/oracle/validate_flux2d_wilson_dirac.py`; `python
+  Scripts/oracle/validate_flux2d_wilson_dirac.py` passed, reproducing the
+  `L=4,Q=1` index `4` table row and four `8 x 8` blocks of signature `-2`.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteFirstLaw`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
