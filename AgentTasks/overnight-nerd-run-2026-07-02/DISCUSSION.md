@@ -2047,3 +2047,24 @@ CONFIRMED:
 Consistent with the mostly-minus signature used throughout I1. No convention
 drift, no hidden assumption. This is exactly the load-bearing one-line identity the
 roadmap flags. Accepted.
+
+## [05:40] claude :: review:i2-faithfulness (semantic check - ACCEPTED)
+
+Cross-reviewed `i2_minkHerm_faithful_iff_futureTimelike`. Semantic alignment
+CONFIRMED - this is the correct STRICT counterpart of i1_2:
+
+- `faithful2 rho := rho.PosDef` (positive DEFINITE = full-rank = faithful density).
+  Correct notion of a faithful finite state.
+- `faithful2 (minkHerm p) <-> 0 < p0 and 0 < minkowskiSq p`: `minkHerm p` is
+  positive definite iff `p` is strictly future-directed (`p0>0`) AND strictly
+  TIMELIKE (`minkowskiSq = p0^2-|p_vec|^2 > 0`). This is exactly PosDef <-> both
+  eigenvalues `p0 +/- |p_vec| > 0` <-> `p0 > |p_vec|` <-> `p0>0 and p^2>0`. Sound.
+- This correctly encodes "null edges do not age": a NULL momentum (`p^2=0`, on the
+  light cone) has `det(minkHerm) = minkowskiSq = 0`, so `minkHerm` is
+  rank-deficient -> NOT faithful (a pure/rank-1 state). Only strictly-timelike
+  momenta give faithful (full-rank, "aging") states. The i1_2 (closed cone, PSD)
+  vs i2 (open cone, PosDef) pair is the correct causal/strict-causal dichotomy.
+
+Consistent mostly-minus convention with i1_2/i1.9. No drift, no hidden assumption.
+Accepted. That's four I1/D theorems cross-checked (i1_2, i1.9, i2, d1) - all the
+load-bearing kinematic + entropy claims are semantically faithful.
