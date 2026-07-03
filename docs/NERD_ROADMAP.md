@@ -126,10 +126,15 @@ Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   UNIQUE (= sign(H)), proved via PSD-sqrt uniqueness (no functional calculus, no
   eigendecomposition). `SignCertificate.dov_ginspargWilson`: a certified sign gives
   a GW overlap. This is the abstract admissible-sign interface for gauge overlap.
-- `OverlapWindingSignJoin.lean` (`signCertificate_HU_epsW`): joins C2a to C2b - the
-  winding involution `epsW` is a genuine certified sign of an explicit gapped
-  mass-defect (domain-wall) operator `HU = diag(-2,-3,-1,5)`, so the index 1 is a
-  real sign-of-operator index.
+- `OverlapWindingSignJoin.lean` (`signCertificate_HU_epsW`, `signCertificate_HU_unique`):
+  joins C2a to C2b - the winding involution `epsW` is a genuine certified sign of an
+  explicit gapped mass-defect (domain-wall) operator `HU = diag(-2,-3,-1,5)`, and
+  every certified sign of `HU` equals `epsW`, so the index 1 is a real
+  sign-of-operator index.
+- `OverlapIndexGaugeInvariance.lean` (`overlapIndex_conj`, `SignCertificate.conj`):
+  the overlap index is INVARIANT under unitary conjugation and the certificate
+  transports covariantly - the guardrail that a nonzero index cannot come from a
+  gauge/basis conjugation, only a genuine signature change.
 
 Design brief (Aristotle c36ea1a8): index `= -(1/2) sig(eps_U)`, so a NONZERO index
 needs a genuine signature change (Wilson mass across zero), not a flat/tree

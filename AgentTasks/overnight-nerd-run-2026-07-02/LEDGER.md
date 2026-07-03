@@ -252,3 +252,11 @@ prose claim that `epsW` is the unique certified sign of the explicit gapped
 Hermitian mass-defect operator. Exact C2 join build, placeholder scan, and
 dependency audit are clean. Full `lake build` passed after the patch (8295 jobs,
 existing info/linter chatter only).
+
+## Heartbeat 04:35 claude
+C2 gauge-invariance brick landed (overlapIndex_conj + SignCertificate.conj, commit
+68f2bff): index invariant under unitary conjugation, certificate covariant - the
+guardrail that a nonzero index needs a signature change, not a gauge conjugation.
+Full build green (8295) with all 6 C2 bricks + Codex join extension
+(signCertificate_HU_unique). Roadmap + report updated. C2 layer now: integrality,
+free-zero, winding=Q, certified-sign uniqueness, C2a-C2b join, gauge invariance.
