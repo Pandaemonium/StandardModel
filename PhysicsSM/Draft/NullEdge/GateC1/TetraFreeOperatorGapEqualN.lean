@@ -127,6 +127,52 @@ theorem tetraFreeOperator_gap_equalN
     (hfreeBlockDiagonalization N gamma5 D a r rho)
     ⟨gamma, hgamma, fun m psi => hpoint (kOfMom N m) psi⟩
 
+/-- **No zero modes (trivial kernel) of the free operator.**
+
+A direct corollary of the coercive gap: `Hfree Psi = 0` forces `Psi = 0`.  A
+nonzero field cannot be annihilated by `Hfree`, because the gap bounds its image
+norm below by a positive multiple of its own norm.  This is the operator-level
+"no massless doubler" statement for the free equal-side tetrahedral operator
+(regulator-level; the branch is selected with no zero mode). -/
+theorem Hfree_ker_trivial
+    (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (hgamma5 : star gamma5 * gamma5 = (1 : Matrix Spin Spin ℂ))
+    (ha : 0 < a) (hband : FirstWilsonBand r rho)
+    (Psi : SiteN N -> Spin -> ℂ)
+    (hker : TetraFreeOperator.Hfree N gamma5 D a r rho Psi = 0) :
+    Psi = 0 := by
+  obtain ⟨gamma, hgamma, hbound⟩ :=
+    tetraFreeOperator_gap_equalN N gamma5 D a r rho hgamma5 ha hband
+  have h0 := hbound Psi
+  rw [hker] at h0
+  have hz : TetraFiniteTorusEqual.fieldL2NormSq N
+      (0 : SiteN N -> Spin -> ℂ) = 0 := by
+    simp [TetraFiniteTorusEqual.fieldL2NormSq, l2NormSq]
+  rw [hz] at h0
+  have hnn : 0 ≤ TetraFiniteTorusEqual.fieldL2NormSq N Psi := by
+    unfold TetraFiniteTorusEqual.fieldL2NormSq
+    exact Finset.sum_nonneg (fun x _ => l2NormSq_nonneg (Psi x))
+  have hfle : TetraFiniteTorusEqual.fieldL2NormSq N Psi ≤ 0 := by
+    by_contra h
+    push_neg at h
+    nlinarith [h0, mul_pos hgamma h]
+  have hfz : TetraFiniteTorusEqual.fieldL2NormSq N Psi = 0 :=
+    le_antisymm hfle hnn
+  -- Positive-definiteness: the field L2 norm square vanishes only at 0.
+  funext x s
+  have hx : l2NormSq (Psi x) = 0 := by
+    have hsum :
+        (∑ x : SiteN N, l2NormSq (Psi x)) = 0 := hfz
+    exact (Finset.sum_eq_zero_iff_of_nonneg
+      (fun x _ => l2NormSq_nonneg (Psi x))).mp hsum x (Finset.mem_univ x)
+  have hs : Complex.normSq (Psi x s) = 0 := by
+    have hsum :
+        (∑ s : Spin, Complex.normSq (Psi x s)) = 0 := hx
+    exact (Finset.sum_eq_zero_iff_of_nonneg
+      (fun s _ => Complex.normSq_nonneg (Psi x s))).mp hsum s (Finset.mem_univ s)
+  simpa using Complex.normSq_eq_zero.mp hs
+
 end TetraFreeOperatorGapEqualN
 end GateC1
 end NullEdge
