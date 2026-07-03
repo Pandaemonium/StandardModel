@@ -89,9 +89,9 @@ def hfreeBlockDiagonalization
 /-- **Gate C1 finite/free operator gap (equal-side tetrahedral torus).**
 
 For the first Wilson band `0 < rho < 2 r`, positive lattice spacing `a`, and a
-unitary chirality operator `gamma5`, the real-space Hermitian overlap-seed
-operator `Hfree` on the equal-side tetrahedral torus has a strictly positive
-uniform finite-L2 spectral gap:
+*unitary* chirality operator `gamma5`, the real-space overlap-seed operator
+`Hfree` on the equal-side tetrahedral torus satisfies a strictly positive
+uniform finite-L2 coercive lower bound:
 
 `gamma * fieldL2NormSq Psi <= fieldL2NormSq (Hfree Psi)`  for every field `Psi`.
 
@@ -99,7 +99,18 @@ This is the unconditional finite/free operator-gap milestone
 (`TetraFreeOperatorGap_equalN`): the abstract Fourier-bridge and uniform
 symbol-gap obligations of `TetraFreeOperatorGap.lean` are discharged here by
 the concrete normalized Fourier transform and the checked scalar Wilson symbol
-gap.  See the module docstring for the regulator-level claim scope. -/
+gap.
+
+Wording discipline (partner review `review:c1-gap-equalN`, 2026-07-03): call
+this a *coercive inverse-propagator gap* for the free `Hfree` operator, not yet
+a "spectral gap".  The only hypothesis on `gamma5` is unitarity
+(`star gamma5 * gamma5 = 1`), which suffices for the L2 norm transfer and the
+coercive bound; it is deliberately weaker than the Hermitian-involution audit
+required to read this as a self-adjoint spectral gap.  Self-adjointness of
+`Hfree` (needing `gamma5` Hermitian and anticommuting with the kinetic slash)
+is the successor rung; only after it lands does "spectral gap" and the
+`sign(H)` / Ginsparg-Wilson release become unambiguous.  See the module
+docstring for the regulator-level claim scope. -/
 theorem tetraFreeOperator_gap_equalN
     (gamma5 : Matrix Spin Spin ℂ)
     (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
