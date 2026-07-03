@@ -91,21 +91,30 @@ SIGNATURE computation:
      - the signs of the diagonal `D` give the inertia, kernel-checkable without
      eigenvalues or surds;
    - or a Sturm/characteristic-polynomial sign-change count;
-   - or block-diagonalize by a MAGNETIC translation `T^{mag}_y = P_gauge . T_y`
-     (naive translation composed with the compensating Landau-gauge phase). The
-     NAIVE `T_y` does NOT commute with `H_U` (oracle-checked: `[H_U, T_y (x) 1] !=
-     0`); the magnetic one should by construction. If it commutes it reduces the
-     `32 x 32` signature to `L` smaller blocks - a reusable lemma, but it must be
-     CONSTRUCTED and verified, not assumed.
+   - **RECOMMENDED - block-diagonalize by the PLAIN x-translation `T_x`.** In
+     Landau gauge the x-hop phase depends on `y` only, so nothing depends on `x`:
+     ordinary x-translation is a symmetry and splits `H_U` into `L` x-momentum
+     blocks of size `2L x 2L`. ORACLE-VERIFIED (`flux2d_block.py`, `L=4`): the
+     plain-`T_x` Fourier transform block-diagonalizes the `32 x 32` into 4 blocks
+     of `8 x 8` (off-block `< 3e-16`), each with inertia `-2`, summing to `-8`
+     (index 4). Each `8 x 8` block is a small fixed-`k_x` Gaussian-rational
+     Hermitian matrix (no surds), whose signature is very tractable. This turns one
+     hard `32 x 32` signature into `L` easy `2L x 2L` ones. (NB: the COVARIANT
+     phase-carrying shift `T_x` from `torus_shifts` does NOT commute; the PLAIN
+     shift is the symmetry. The `T_y` translations do not commute in this gauge.)
 4. Conclude `overlapIndex gamma5U (epsCFC H_U) != 0 = overlapIndex gamma5U
    (epsCFC H_0)` via `gaugeOverlap_index_eigenvalue_count_form` - a genuine
    flux-driven ZERO-to-nonzero index on an even 2D lattice.
 
-Suggested first Aristotle job: a STRATEGY/feasibility job on step 3 (the cleanest
-kernel-checked route to the signature of a fixed `32 x 32` integer Hermitian
-matrix, ideally exploiting the magnetic-translation block reduction), NOT a blind
-construction job. The magnetic-translation reduction is the most promising lead and
-is itself a reusable lemma.
+Suggested first Aristotle job: now that the plain-`T_x` block reduction is
+oracle-verified (4 blocks of `8 x 8`, each inertia `-2`, index 4), a focused
+CONSTRUCTION job is viable - define the `L=4` blocks (or the full `H_U` + the
+plain-`T_x` block-diagonalization), prove each `8 x 8` block's signature (e.g. via
+an explicit Sylvester `L D L^dag` congruence, kernel-checkable, no surds), and sum
+to the flux index, contrasted with the balanced `Q=0` case. Keep it a standalone
+Mathlib package; the per-block `8 x 8` signature is the load-bearing lemma and is
+reusable. Prerequisite in-repo lemma already available:
+`gaugeOverlap_index_eigenvalue_count_form`.
 
 ## Provenance
 
