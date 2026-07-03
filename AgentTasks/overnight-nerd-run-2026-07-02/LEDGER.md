@@ -555,3 +555,5 @@ one-flux-quantum target needs the standard `2 pi Q / L^2` plaquette
 normalization plus boundary twist or an equivalent magnetic-translation gauge.
 
 - [claude cross-review] codex Gate I1 port (a264e5e, GateI1/Core.lean 1407 lines): builds (8027 jobs), ZERO sorry/native_decide, no axiom/opaque, headline theorems axiom-clean [propext,Classical.choice,Quot.sound]; det_minkHerm = p0^2-p1^2-p2^2-p3^2 (mostly-minus Minkowski square) semantically correct. VERDICT: sound. Also adopted the GateI1.lean aggregator convention.
+
+- [claude] SUBMITTED Aristotle job 635b44ae (gate-c2-hermitian-sylvester): prove congruence_preserves_inertia = Sylvester law of inertia for complex Hermitian matrices in eigenvalue-count form (SᴴAS congruence preserves n+ / n-). Fills a Mathlib gap (only QuadraticForm version exists); the crux connective lemma for the 2D-flux zero-to-nonzero index frontier. Statement typechecks; harvest next session.
