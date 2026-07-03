@@ -1,5 +1,6 @@
 import Mathlib
 import PhysicsSM.Draft.NullEdge.GateC2.OverlapSignCertificate
+import PhysicsSM.Draft.NullEdge.GateC2.OverlapSignExistence
 
 /-!
 # Gate C2: a certified sign is automatically Hermitian
@@ -51,6 +52,20 @@ theorem signCertificate_isHermitian (H eps : Matrix n n ℂ) [Invertible H]
   rw [hHherm.eq, hc.commute] at hEq
   have hcancel := congrArg (fun M => (⅟H : Matrix n n ℂ) * M) hEq
   simpa only [← mul_assoc, invOf_mul_self, one_mul] using hcancel
+
+/-- **The explicit certified sign is a self-adjoint involution.**  For a gapped
+Hermitian `H`, `epsCFC H = |H| H^{-1}` is both Hermitian and an involution - a
+genuine orthogonal reflection (`= sign(H)`).  This packages existence
+(`OverlapSignExistence.certifiedSign_exists`) with the automatic Hermiticity
+above: the certified overlap sign is not merely an involution but a self-adjoint
+one, exactly as a spectral `sign(H)` should be. -/
+theorem epsCFC_isSelfAdjoint_involution (H : Matrix n n ℂ) [Invertible H]
+    (hHherm : H.IsHermitian) :
+    (OverlapSignExistence.epsCFC H).IsHermitian
+      ∧ OverlapSignExistence.epsCFC H * OverlapSignExistence.epsCFC H = 1 :=
+  ⟨signCertificate_isHermitian H _ hHherm
+      (OverlapSignExistence.certifiedSign_exists H hHherm),
+    (OverlapSignExistence.certifiedSign_exists H hHherm).involution⟩
 
 end OverlapSignHermitian
 end GateC2
