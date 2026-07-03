@@ -1,0 +1,44 @@
+name = "NullEdgeStandalone"
+version = "0.1.0"
+keywords = ["math", "physics", "null-edge", "spinors", "lattice"]
+defaultTargets = ["NullEdgeStandalone"]
+packagesDir = "../.lake/packages"
+
+# Standalone, mathlib-only extraction of the null-edge theorem spine.
+# It intentionally reuses the monorepo mathlib cache when built in-place.
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+weak.linter.dupNamespace = false
+weak.linter.flexible = false
+weak.linter.unreachableTactic = false
+weak.linter.unusedSectionVars = false
+weak.linter.unusedSimpArgs = false
+weak.linter.unusedTactic = false
+weak.linter.style.cases = false
+weak.linter.style.induction = false
+weak.linter.style.longLine = false
+weak.linter.style.maxHeartbeats = false
+weak.linter.style.multiGoal = false
+weak.linter.style.refine = false
+weak.linter.style.setOption = false
+weak.linter.style.show = false
+weak.linter.style.whitespace = false
+weak.linter.unnecessarySeqFocus = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.28.0"
+
+[[lean_lib]]
+name = "NullEdgeStandalone"
+moreLeanArgs = ["-s65536"]
+
+[[lean_lib]]
+name = "PhysicsSM"
+moreLeanArgs = ["-s65536"]

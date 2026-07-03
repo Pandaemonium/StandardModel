@@ -1,0 +1,41 @@
+import PhysicsSM.Spinor.PluckerMass
+import PhysicsSM.Spinor.TwistorPluckerMass
+import PhysicsSM.Draft.NullEdgeDiracSlashCore
+import PhysicsSM.Draft.NullEdgeBundleDiracPluckerCore
+import PhysicsSM.NullStrand.Conventions
+import PhysicsSM.NullStrand.FiniteCore
+import PhysicsSM.NullStrand.DualSolder.DualSolderSymbolKinetic
+import PhysicsSM.NullStrand.DualSolder.GradedSuperDiracSquare
+import PhysicsSM.NullStrand.DualSolder.FiniteKreinDoubled
+import PhysicsSM.NullStrand.DualSolder.SpectralSchur
+import PhysicsSM.Draft.NullEdgeFiniteTetradPostulate
+import PhysicsSM.Draft.NullEdgeSuperDiracMassShellBridge
+import PhysicsSM.Draft.TetrahedralHighMomentumNullBranch
+import PhysicsSM.Draft.NullEdgeFlavoredChirality
+import PhysicsSM.Draft.NullEdgeGateCReleaseCriterion
+import PhysicsSM.Draft.NullEdgeGateCGhostZeroSafety
+import PhysicsSM.Draft.KreinDoubleAndCounterexamples
+import PhysicsSM.Draft.NullEdgeBranchKreinSignatures
+import PhysicsSM.Draft.NullEdgeActualCliffordSymbol
+import PhysicsSM.Draft.NullEdgeHyperdiamondNoGo
+import PhysicsSM.Draft.NullEdgeHyperdiamondBridge
+import PhysicsSM.Draft.NullEdgeHyperdiamondOperatorScaffold
+import PhysicsSM.Draft.NullEdgeSymmetryForcedSpeciesSplit
+import PhysicsSM.Draft.NullEdgeSpectralGraphNodalSet
+import PhysicsSM.Draft.NullEdgeKreinPositiveReleaseCriterion
+import PhysicsSM.Draft.NullEdgeProjectedGateCRelease
+import PhysicsSM.Draft.NullEdgeProjectedGateCWilsonRelease
+import PhysicsSM.Draft.NullEdgeGateC1FiniteSeedCriterion
+import PhysicsSM.Draft.NullEdgeGateC1FiniteSeed
+import PhysicsSM.Draft.Checkerboard1D
+import PhysicsSM.Draft.CheckerboardContinuumScaffold
+import PhysicsSM.Draft.CheckerboardContinuumNext
+import PhysicsSM.Draft.CheckerboardSpacetimeCounts
+import PhysicsSM.Draft.CheckerboardDiracScaling
+
+/-!
+# PhysicsSM null-edge standalone root
+
+Local root for the copied `PhysicsSM.*` modules included in
+`NullEdgeStandalone`.
+-/

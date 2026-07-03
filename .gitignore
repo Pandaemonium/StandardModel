@@ -1,5 +1,6 @@
 /.lake
 /CodeLatticeE8Standalone/.lake/
+/NullEdgeStandalone/.lake/
 /.elan_sandbox
 /.cache/
 /.pre-commit-cache*/

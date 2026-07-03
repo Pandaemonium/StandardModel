@@ -143,6 +143,51 @@ Keep these distinct:
 Do not use form degree or internal grading to silently repair a spacetime
 chirality sign error.
 
+### Three J operators (Gate C0)
+
+Status: Locked as a separation rule.
+
+Three distinct (anti)involutions appear in the null-edge operator package and
+must never be conflated or written as a bare `J`:
+
+```text
+J_K    Krein fundamental symmetry. Linear, J_K^2 = +1, J_K^dagger = J_K.
+       Defines the indefinite pairing; equals gamma_5 in the lattice
+       realization. gamma_5-Hermiticity D^dagger = gamma_5 D gamma_5 is
+       Krein self-adjointness with respect to J_K. Kinematic.
+
+J_C    Charge conjugation / real structure. Antiunitary. KO-dimension datum
+       of the (Krein) spectral triple; particle/antiparticle. Kinematic.
+
+J_mod  Tomita modular conjugation. Antiunitary and STATE-DEPENDENT.
+       Belongs to thermal-time/node-clock statements only. Must never
+       appear in kinematic theorems.
+```
+
+Every theorem statement that consumes one of these must name which one.
+Spectral calculus (gaps, sign function, functional calculus) happens in the
+Hilbert space after the `J_K` transfer, never in the Krein space directly.
+
+### Tetrahedral lattice and ensemble claim scope (Gate L0)
+
+Status: Locked as a claim boundary (adopted from the v2.1 revision,
+`Sources/NERD_4.md` section 5; see `docs/NERD_ROADMAP.md`).
+
+- The tetrahedral/finite-valency null-direction lattice is a gauge-fixed
+  regulator, not the program ontology. Exact Lorentz-invariance claims for
+  finite-valency null graphs are withdrawn pending Gate L0.
+- In ontology statements, "null edges" refers to the link structure
+  (covering relation) of a Poisson-sprinkled causal order, Lorentz-invariant
+  in distribution. Any dynamical use of links must factor through a damped,
+  layered transport kernel (Benincasa-Dowker type); single realizations are
+  noisy and only ensemble statements are covariant.
+- Gate C1 statements are regulator-level operator statements (exhibiting a
+  doubling-free kernel) and are unaffected as mathematics.
+- The metric-from-ensemble statement is: the metric is the principal symbol
+  of the invariant transport kernel, not a raw direction covariance. Raw
+  second moments of a finite direction set are Euclidean-positive and must
+  not be presented as the Lorentzian metric.
+
 ### Frame/tetrad defect
 
 Status: Working.

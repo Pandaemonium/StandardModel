@@ -7722,3 +7722,560 @@ followed by the block-gap instantiation:
 ```text
 TetraFreeOperatorGap_equalN
 ```
+
+## 83. C263 index/anomaly bridge plan is integrated
+
+Date: 2026-06-29
+
+Status: full-physical C1 anomaly/index planning milestone.
+
+Aristotle C263 returned a concrete plan for the missing middle layer between
+the overlap/Ginsparg-Wilson algebra and the existing Standard Model anomaly
+package. The key point is now sharp:
+
+```text
+GW / overlap algebra
+  -> finite lattice chiral index
+  -> charge-weighted anomaly functional
+  -> existing Standard Model anomaly cancellation package
+```
+
+The existing anomaly files remain valuable, but only as the particle-content
+certificate. They prove that the target one-generation spectrum is anomaly-free;
+they do not yet prove that the constructed null-edge overlap operator realizes
+the correct lattice index/anomaly with no mirror or ghost contribution.
+
+The new bridge should be split into two small modules:
+
+- `PhysicsSM/Draft/NullEdge/GateC1/OverlapIndex.lean`.
+- `PhysicsSM/Draft/NullEdge/GateC1/IndexAnomalyBridge.lean`.
+
+`OverlapIndex.lean` should stay finite-dimensional at first. It should import
+the abstract overlap algebra and define:
+
+```text
+Ghat(gamma5, eps)
+overlapIndex(gamma5, eps) = Tr(Ghat)
+```
+
+where `eps` is the sign-like involution supplied later by `sign(H_ne)`. The
+first theorem stack should be pure matrix algebra:
+
+```text
+Ghat_eq
+overlapIndex_eq
+Ghat_sq_or_involution_statement
+overlapIndex_int
+zero-index commuting case
+nonzero-index anticommuting toy witness
+```
+
+This gives us an early acceptance test for a possible trap: if the candidate
+release only classifies route/taste labels and commutes with chirality, its
+index is zero and it is not a physical chiral release. A true C1 release needs
+the anticommuting/nonzero-index side, not merely a formal projector.
+
+`IndexAnomalyBridge.lean` should then connect the finite overlap index to the
+existing anomaly bookkeeping:
+
+```text
+weightedOverlapAnomaly
+index_matches_gravitational
+index_matches_cubic
+overlapIndex_anomaly_free_of_localAnomalyFree
+```
+
+The recommended first join is against
+`PhysicsSM/StandardModel/AnomalyPackage.lean`, not the Furey bridge files,
+because `AnomalyPackage` is the clean self-contained content certificate. The
+Furey/Hughes layer remains useful later for identifying internal-state content,
+but the C1 operator/index bridge should not depend on those heavier imports.
+
+Claim boundary:
+
+- This bridge does not construct `sign(H_ne)`.
+- It does not prove overlap locality or exponential tails.
+- It does not prove gauge covariance or admissible-background stability.
+- It does not prove Krein positivity.
+- It does not prove the Furey realization of a full generation.
+
+What it does provide is the finite-dimensional operator-side anomaly account
+that `AnomalyAccounted` should consume later: the overlap index is an integer,
+and its charge-weighted sums are the same sums already proved to vanish for
+the Standard Model content.
+
+Recommended next proof order:
+
+1. Add `OverlapIndex.lean` with definitions and the easy trace rewrites.
+2. Prove the normalized overlap index formula using
+   `OverlapGinspargWilson.dov_ginsparg_wilson`.
+3. Add a small finite anticommuting toy witness to rule out the zero-index trap.
+4. Add `IndexAnomalyBridge.lean` and reuse
+   `standardModelOneGeneration_anomalyFree`.
+5. Only after this finite index layer is stable, connect `eps` to
+   `sign(H_ne)` and the tetrahedral symbol gap.
+
+Full report:
+
+```text
+AgentTasks/null-edge-c263-index-anomaly-bridge-plan-2026-06-29.md
+```
+
+## 84. C262 branch-retention audit is integrated
+
+Date: 2026-06-29
+
+Status: scalar Wilson role clarified; flavored branch mass remains open.
+
+Aristotle C262 audited the scalar Wilson/free-symbol chain against the physical
+branch-retention criterion. The result sharpens the C1 architecture:
+
+```text
+scalar Wilson:
+  yes  -> uniform inverse-symbol gap for K/H in the first Wilson band
+  no   -> branch/flavor selection, spectral island, or nonzero origin chiral index
+
+flavored / matrix branch mass:
+  still required for physical branch retention unless overlap-index machinery
+  supplies an equivalent island/index selection
+```
+
+The scalar Wilson theorem stack should therefore be used exactly as follows:
+
+- It proves a real inverse-symbol gap, not a propagator-zero trick.
+- It makes the free Hermitian kernel suitable for a sign/overlap construction.
+- It does not by itself identify a retained physical branch.
+- It does not by itself carry a nonzero chiral index.
+
+This resolves a possible confusion in the project narrative. The earlier
+scalar-Wilson no-go still stands for direct chiral selection. The scalar
+Wilson term is acceptable only as the scalar gap ingredient inside a Hermitian
+overlap kernel. It is not the final C1 release operator.
+
+The physical branch-retention theorem should be stated with three separate
+obligations:
+
+```text
+1. target spectral island separated by delta > 0;
+2. target island has nonzero chiral/origin index;
+3. complement has a true inverse-propagator gap.
+```
+
+The existing scalar Wilson chain supplies only obligation 3 in the free symbol
+setting. Obligations 1 and 2 need a new layer:
+
+- an Adams-style flavored/species-splitting branch mass `W_branch`; or
+- an equivalent overlap-index/spectral-island construction that is non-scalar
+  on the relevant branch/chirality fiber.
+
+The next non-blocking theorem program should isolate a matrix-valued branch
+mass abstractly. A first target is:
+
+```text
+K_branch(k) = a^{-1} (i Q(sin k) + W_branch(k))
+```
+
+with explicit hypotheses making the cross terms in
+
+```text
+K_branch(k)^* K_branch(k)
+```
+
+manageable. The scalar proof works because `m(k) I` is central; any real
+flavored branch mass must replace that hidden centrality with an explicit
+commutation or anticommutation hypothesis. Once this abstract square theorem
+exists, the scalar uniform-gap proof becomes the template for transferring a
+true bad-sector gap to the flavored setting.
+
+Integration decision:
+
+- Do not replace the live `TetrahedralGlobalGap.lean` with Aristotle's slim
+  packet reconstruction. The live repository already has the fuller
+  branch-window dependency; C262's reconstructed file is useful provenance but
+  not a better source of truth.
+- Do preserve the audit conclusion and use it to guide the next Aristotle wave:
+  matrix/flavored Wilson square, spectral-island/index predicates, and
+  zero-index trap tests.
+
+Full report:
+
+```text
+AgentTasks/null-edge-c262-branch-retention-audit-2026-06-29.md
+```
+
+## 85. C261/C264/C265/C266 jobs are integrated
+
+Date: 2026-06-29
+
+Status: locality, branch-mass, spectral-island, and overlap-index support
+modules integrated as draft helper layers.
+
+Four Gate C1 Aristotle jobs returned and have now been integrated, excluding
+unrelated non-Gate-C1 projects.
+
+### C261: overlap locality theorem plan
+
+C261 produced a finite-dimensional locality scaffold:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/OverlapLocality.lean
+Sources/Null_Edge_Gate_C1_C261_Overlap_Locality_Theorem_Plan.md
+```
+
+The module introduces a finite site pseudo-distance, finite-range matrix
+predicates, polynomial finite-range closure, and an exponential-locality target
+for sign-kernel approximants. This does not prove physical overlap locality for
+interacting gauge fields, but it gives the first formal bridge:
+
+```text
+finite-range H
+  + polynomial sign approximants with linearly growing degree
+  + exponentially good approximation error
+  -> exponential locality of eps = sign(H) surrogate
+```
+
+This is the right finite-dimensional skeleton for the later
+Hernandez-Jansen-Luscher-style locality theorem.
+
+### C264: flavored Wilson square/gap transfer
+
+C264 clarified the exact algebraic obstacle for a matrix-valued branch mass:
+
+```text
+(-i Q + W)(i Q + W) = Q^2 + W^2 + i(WQ - QW)
+```
+
+The scalar Wilson proof works because `W = m I` is central. For a real
+flavored/species-splitting branch mass, the new module should not pretend that
+`K_branch^* K_branch = coeff I`. The honest replacement is:
+
+```text
+K_branch^* K_branch = a^{-2}(qExact I + W_branch^2)
+```
+
+under explicit Hermiticity plus commutation hypotheses, followed by a quadratic
+form gap rather than a scalar coefficient gap. Scalar `firstBandMu` can only be
+reused per species or per complement block; a true retained island must be
+excluded from the uniform heavy-sector gap.
+
+### C265: spectral-island/index predicates
+
+C265 produced a draft predicate module:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/SpectralIslandIndexPredicates.lean
+```
+
+It defines the finite-dimensional vocabulary needed for physical branch
+retention:
+
+```text
+HasSeparatedIsland
+IsIslandProjector
+chiralIndex
+BranchRetentionCertificate
+```
+
+The certificate has exactly the three desired clauses:
+
+1. separated target spectral island;
+2. nonzero chiral/origin index;
+3. true inverse bad-sector gap on the complement.
+
+It also proves a zero-index trap: if a balance symmetry anticommutes with
+chirality and commutes with the island projector, the chiral index vanishes.
+This is the structural no-go that a future `W_branch` must avoid.
+
+### C266: overlap-index toy layer
+
+C266 produced a draft finite overlap-index module:
+
+```text
+PhysicsSM/Draft/NullEdge/GateC1/OverlapIndexToy.lean
+```
+
+The important correction is conceptual. With the normalization
+
+```text
+Dov = 1 + gamma5 eps
+Ghat = gamma5 (1 - 1/2 Dov)
+overlapIndex = Tr(Ghat)
+```
+
+we get
+
+```text
+overlapIndex = 1/2 (Tr gamma5 - Tr eps)
+```
+
+and under `Tr gamma5 = 0`, the index is `-1/2 Tr eps`. In this convention, the
+clean zero-index theorem is the anticommuting case. A commuting classifier can
+carry nonzero index, as shown by the finite `Fin 2` toy witness. This corrects
+the earlier C263 intuition that commuting automatically meant zero index.
+
+### Integration boundary
+
+The imported helper modules are draft-support modules. They are useful theorem
+scaffolds, not full physical C1. They do not yet prove:
+
+- full finite/free `Hfree` operator gap;
+- physical overlap locality for admissible gauge fields;
+- a concrete `W_branch` with target spectral island;
+- Standard Model anomaly/index realization;
+- Krein positivity or ghost exclusion.
+
+Local verification note: targeted `lake build` and `lake env lean` are currently
+blocked before file elaboration by the repo's SpherePacking manifest issue.
+A direct `lean` fallback timed out. The modules were reported by Aristotle as
+building in their slim packets; they should be rechecked locally after the Lake
+manifest issue is repaired.
+
+Full reports:
+
+```text
+AgentTasks/null-edge-c261-overlap-locality-theorem-plan-2026-06-29.md
+AgentTasks/null-edge-c264-flavored-wilson-square-gap-plan-2026-06-29.md
+AgentTasks/null-edge-c265-spectral-island-index-predicates-2026-06-29.md
+AgentTasks/null-edge-c266-overlap-index-toy-layer-2026-06-29.md
+```
+
+
+## 86. Lean update: finite free kernel and branch Wilson facade
+
+Date: 2026-06-29
+
+The Lean finite-operator layer now has two new checked bridge points.
+
+First, `TetraFreeOperator.lean` contains the real-space centered kinetic slash field and proves that the normalized finite Fourier transform sends it to the momentum symbol `i Q(sin k)`.  The same file now defines the full finite/free scalar Wilson kernel `Kfree` and proves that its Fourier transform is the already audited scalar Wilson symbol `TetraScalarWilsonSymbol.K`.
+
+This means the scalar Wilson overlap seed is no longer only a momentum-space object: it has a checked finite real-space transport operator behind it.
+
+Second, `OverlapIndex.lean` now provides the production-facing finite overlap-index facade.  It re-exports the checked finite trace identities from `OverlapIndexToy.lean` under C1-facing names.  The key warning is preserved: an everywhere anticommuting sign classifier has zero finite index, while a commuting classifier can carry nonzero finite index.
+
+Third, `TetraBranchWilsonSymbol.lean` records the branch-retention decision in Lean.  The scalar Wilson term remains the checked gap/sign-kernel brick.  It should not be treated as the physical branch selector.  Physical branch selection is represented by a separate matrix-valued branch Wilson correction or projector layer:
+
+```text
+K_branch(k) = a^{-1} (i Q(sin k) + W_branch(k)).
+```
+
+The new scaffold includes hermiticity, scalar-specialization, chirality-commutation, chirality-anticommutation, and lightweight branch-audit predicates.  It intentionally does not claim locality, gauge covariance, anomaly matching, or physical Standard Model branch selection.  Those remain the next C1 obligations.
+
+Near-term implication: future Aristotle jobs and local proof work should target the matrix-valued `W_branch`/spectral-island layer, not reopen scalar Wilson as if it solved chirality.  Scalar Wilson is validated as the overlap seed; C1 still needs a physical branch-retention mechanism on top of that seed.
+
+## 87. Aristotle C267-C269 integration and C270-C272 wave
+
+Date: 2026-06-29
+
+C267, C268, and C269 returned completed outputs.
+
+Integrated now:
+
+- C268 supplied the finite overlap-index integrality route.  `OverlapIndex.lean` now proves the index is a difference of chiral-projector ranks and hence is integer-valued for involutive chirality/classifier data.
+- C269 supplied the richer locality certificate bundle.  `OverlapLocalityCertificates.lean` now includes bounded hopping, spectral gap, polynomial sign-approximation, gauge-admissibility placeholder, bundled locality certificates, and the conditional analytic frontier theorem.
+- C267 supplied stronger matrix-valued branch Wilson square and form-gap targets.  Its output was not applied wholesale because it rewrote the live scaffold and removed the scalar-specialization API.  Instead, it has been turned into the C270 follow-up target: adapt the stronger branch square/gap-transfer theorems onto the current facade while preserving backwards-compatible names.
+
+New non-gating Aristotle wave submitted:
+
+- C270: adapt matrix-valued branch Wilson square/gap-transfer theorems onto `TetraBranchWilsonSymbol.lean`.
+- C271: add `Hfree` and prove its real-space Fourier symbol theorem against `TetraScalarWilsonSymbol.H`.
+- C272: high-level full C1 strategy audit after the checked finite/free operator, production index facade, branch Wilson scaffold, and locality certificates.
+
+Working status: the finite/free scalar Wilson operator is now represented both as a checked real-space transport operator and as a checked momentum symbol.  The remaining physical C1 problem is not the scalar seed; it is the branch-retention/anomaly/locality synthesis on top of the overlap architecture.
+
+## 88. Lean update: Hfree real-space Hermitian seed closed
+
+Date: 2026-06-29
+
+`TetraFreeOperator.lean` now defines the real-space Hermitian overlap-seed kernel
+
+```text
+Hfree(gamma5, D, a, r, rho) = gamma5 * Kfree(D, a, r, rho)
+```
+
+as pointwise finite spin-matrix action on the checked real-space `Kfree` operator.
+
+The module also proves `fourierUnitary_Hfree_trig`: under the normalized finite Fourier transform, `Hfree` is exactly the momentum-space symbol `TetraScalarWilsonSymbol.H gamma5 D a r rho (kOfMom m)` acting on the transformed field.
+
+This closes the finite/free Kfree/Hfree assembly item locally.  The remaining work is no longer to identify the scalar overlap seed in real space; it is to build the physical C1 layer on top of that seed: matrix-valued branch retention, anomaly matching, positivity/Krein audit, and locality/quasi-locality certificates.
+
+## 89. Lean update: physical C1 certificate target
+
+Date: 2026-06-29
+
+`PhysicsSM/Draft/NullEdge/GateC1/PhysicalC1Criteria.lean` now records the physical C1 target as a Lean-level certificate interface.
+
+The point of this module is to stop treating C1 as a vague phrase.  A future construction should aim to instantiate `PhysicalC1Certificate` or its branch-Wilson specialization `BranchWilsonPhysicalC1Certificate`.
+
+The certificate requires:
+
+- branch retention: a separated target spectral island, nonzero chiral island index, and true inverse bad-sector gap;
+- finite overlap index/integrality input;
+- anomaly matching against the Standard Model anomaly target;
+- locality or controlled quasi-locality of the sign classifier;
+- positivity/Krein/no-ghost audit;
+- for the branch-Wilson route, realization by `Kbranch` and `Hbranch` plus the branch-Wilson audit.
+
+Important boundary: this does not prove physical C1.  It names the exact theorem target.  The missing construction is still a concrete branch selector, likely a matrix-valued `W_branch`, spectral projector, overlap/domain-wall mechanism, or equivalent nonlocal projector, that can satisfy this certificate.
+
+Near-term proof targets:
+
+1. Adapt the stronger C267 branch-square/gap-transfer theorem onto `TetraBranchWilsonSymbol.lean` without deleting the scalar-specialization API.
+2. Propose and test a concrete `W_branch` candidate against the `BranchWilsonPhysicalC1Certificate` obligations.
+3. Connect `OverlapIndex.overlapIndex` to the repository anomaly-cancellation layer by defining the Standard Model anomaly target used by `AnomalyMatchingCertificate`.
+4. Replace the abstract positivity/no-ghost propositions with concrete finite-matrix or Krein-space predicates.
+5. Replace the abstract locality certificate with either a Hernandez-Jansen-Luscher style analytic import or an explicitly accepted nonlocal/path-sum certificate.
+
+## 90. Aristotle integration update: C271 helper merged
+
+Date: 2026-06-29
+
+C271 completed and was integrated selectively.  The live `TetraFreeOperator.lean` already had `Hfree` and `fourierUnitary_Hfree_trig`, so the useful new contribution was the helper theorem:
+
+```text
+fourierUnitary_matrixFieldAction_Kfree_trig
+```
+
+This lemma states that applying a constant spin matrix after `Kfree` Fourier-diagonalizes to left multiplication of the momentum-space `K` symbol.  `fourierUnitary_Hfree_trig` now follows by rewriting through this helper.
+
+C272 failed without a substantive response, so there was no strategy result to integrate.  C270 remains in progress; an in-progress snapshot contained only the existing branch-Wilson scaffold and no new branch-square theorem work yet.
+
+Near-term implication: the next local or Aristotle target remains the same: strengthen `TetraBranchWilsonSymbol.lean` with matrix-valued branch-square/gap-transfer theorems, then use those theorems to attack `BranchWilsonPhysicalC1Certificate`.
+
+
+## 91. Aristotle C273-C276 integration: concrete C1 operator search target
+
+Date: 2026-06-29
+
+The C273-C276 Aristotle wave sharpened the C1 program substantially.
+
+The recommended architecture is now a null-edge flavored overlap operator:
+
+```text
+H_ne(k) = Gamma_K (i Q(sin k) + W_br(k) - m0 R)
+eps(k)  = sign(H_ne(k))
+D_ov(k) = a^{-1} (1 + Gamma_K eps(k))
+```
+
+The crucial object is not a new origin-fiber projector.  It is a concrete
+matrix-valued, branch-sensitive Wilson/flavored-mass term `W_br(k)` with a mass
+window in which exactly one desired branch is retained and all mirror branches
+receive a true inverse-propagator gap.  The origin fiber alone remains a trap:
+its chirality-balanced kernel carries zero index under the existing balance
+symmetry.  The index must be a global Brillouin-zone/overlap index, with
+off-origin branches included in the accounting.
+
+C274 supplied the decisive algebraic bridge for the matrix-valued branch-Wilson
+route.  The new Lean module `BranchWilsonSquareCore.lean` proves the abstract
+identity
+
+```text
+star K * K = a^{-2} (Q^2 + W^2 + i (W Q - Q W))
+```
+
+for `K = a^{-1}(i Q + W)` with Hermitian `Q` and `W`.  It also proves a sector
+bad-gap transfer theorem: a positive lower bound for
+`W^2 + i[W,Q]` on the mirror sector transfers to a true inverse-propagator gap
+for `K` on that sector.  This theorem does not require `[W,Q]=0`, which is
+important: the commuting/scalar specialization is useful for C0 bookkeeping but
+is exactly the wrong regime for physical C1 release.
+
+The immediate Lean-facing target is now split in two pieces:
+
+1. Use `TetraBranchWilsonSymbol.lean` plus `BranchWilsonSquareCore.lean` to make
+the inverse-gap side of `BranchRetentionCertificate` quantitative for a concrete
+`W_branch`.
+2. Use the new `TetraFlavoredOverlap.lean` branch-mass scan interface to test
+whether a candidate `W_branch` has a one-branch mass window and nonzero retained
+chirality-weighted branch index.
+
+The smallest decisive experiment is a finite branch-mass window scan.  We need a
+candidate branch/taste matrix family, likely Adams/flavored-Wilson-like, and must
+check:
+
+- the retained branch mass is negative;
+- every non-target branch mass is positive;
+- the retained branch chirality contribution is nonzero;
+- the same `W_branch` passes the sector gap-transfer theorem;
+- the removed mirror sector is removed by an inverse gap, not by a propagator
+  zero.
+
+The lattice decision was also clarified.  Keep the rank-4 tetrahedral null-edge
+seed as the active release lattice; use hypercubic Neuberger overlap as the
+reference architecture for homotopy/index/locality import; keep D4 as an envelope
+or sanity check rather than promoting it to the motion lattice; and treat a
+"stay" move as an onsite branch-mass/coin channel folded into `W_branch`, not as
+a fifth geometric null direction.
+
+Full physical C1 remains open.  The missing physical bridges are now explicit:
+
+- a concrete `W_branch` and mass window;
+- an island/projector theorem with nonzero chiral index;
+- a true inverse bad-sector gap and no-ghost/no-propagator-zero audit;
+- an index-transport theorem along a gapped homotopy to a known overlap reference;
+- a real Standard Model anomaly bridge rather than an abstract equality;
+- locality and Krein/positivity certificates for the chosen operator.
+
+Near-term work should prioritize the concrete finite `W_branch` search.  If the
+rank-4 branch-mass scan succeeds, C1 becomes a certificate assembly and homotopy
+import problem.  If it fails for all gauge-safe branch matrices, the likely
+blocker is insufficient flavor/taste dimension rather than the lattice itself.
+
+## 92. C278 review: Pro Taste16 is a mass-window benchmark, not the physical lane
+
+Date: 2026-06-29
+
+Aristotle C278 reviewed Pro's branch-locked Taste16 `W_branch` proposal against
+the C277 directional-cosine candidate.
+
+The result is a useful course correction.  Pro's literal Taste16 proposal has a
+sound mass table:
+
+```text
+mu(b,t) = 2 r d(b,t) + 2 lam wt(t) - m0.
+```
+
+The symbolic window
+
+```text
+r > 0, lam > 0, 0 < m0 < 2 min(r, lam)
+```
+
+retains exactly the target branch/taste sector and gives positive mass to every
+other sector.  This is now recorded in
+`PhysicsSM/Draft/NullEdge/GateC1/ProTaste16Review.lean`.
+
+However, the literal operator should not be promoted as the physical C1 release
+operator.  In Pro's form,
+
+```text
+W = I_spin tensor W_taste
+Q = Q_spin tensor I_taste
+```
+
+so `W` commutes with the spin-only slash `Q`.  The commutator contribution
+`i[W,Q]` in the C274 square theorem vanishes.  Therefore the literal Taste16
+operator passes the mass-window test but falls back into the commuting/index-trap
+regime.
+
+The C278 policy is:
+
+- keep C277 as the live finite witness because it is non-scalar on the spin
+  fiber and can potentially escape the trap;
+- keep literal Taste16 as a benchmark and negative control;
+- develop a corrected Adams-style spin-taste operator, schematically
+  `gamma5 tensor xi5`, as the serious flavored physical lane.
+
+The next C1 proof targets are now sharper:
+
+1. upgrade the C277 spin-island chiral trace marker into a full computed
+   overlap/GW sign/index;
+2. prove a true mirror-sector lower bound for `W^2 + i[W,Q]`;
+3. feed that bound into the C274 inverse-gap theorem;
+4. build a corrected spin-taste candidate and first prove nonzero commutator
+   before investing in its full physical audits.
+
+Local follow-up completed in the C278 integration pass: the C277 retained
+chirality marker is now tied to the checked finite spin-line trace theorem
+`chiralIndex_E00 : (gamma5 * E00).trace = 1` via `chiralTraceE00_cast` and
+`chiralityCand_cast`.  This is still not the full overlap/GW index, but it
+removes the previous unexplained constant from the finite mass-window witness.

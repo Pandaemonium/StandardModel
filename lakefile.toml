@@ -83,9 +83,14 @@ rev = "v0.0.87"
 #   Source: SpherePacking.Dim8.E8.Basic + SpherePacking.Dim8.E8.Packing
 #   License: Apache-2.0
 #
-[[require]]
-name = "SpherePacking"
-path = "AgentTasks/external/Sphere-Packing-Lean-windows-safe"
+# Keep SPL disabled in the default Windows workspace.  The optional
+# `PhysicsSMSPL`/`CodeLatticeE8SPL` roots remain in this file so SPL-enabled
+# checkouts can turn the dependency back on deliberately, but the normal
+# Gate C / NullStrand workflow must not require it.
+#
+# [[require]]
+# name = "SpherePacking"
+# path = "AgentTasks/external/Sphere-Packing-Lean-windows-safe"
 
 # Upstream form for Linux/macOS or WSL2:
 # [[require]]

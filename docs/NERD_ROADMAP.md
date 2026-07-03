@@ -1,0 +1,179 @@
+# NERD / NRQG program roadmap (post-v2.1)
+
+This is the consolidated guide for the Null-Edge Relativistic Dynamics /
+Null-Edge Relational Quantum Geometry program after the v2.1 revision. It
+exists so that agents and task files pull from one ladder, one claim
+discipline, and one track assignment instead of re-deriving them from the
+four source treatises.
+
+Source documents, in reading order:
+
+- `Sources/NERD_1.md` - v1 treatise: null-edge ontology, overlap/GW release
+  architecture, gates C1-C3 and G1-G2, failure modes F1-F10.
+- `Sources/NERD_2.md` - v2 informational reformulation: Cauchy-Binet mass
+  identity, mass as entanglement, geometry as sufficient statistic, gravity
+  from entropy monotonicity, QEC reading of Ginsparg-Wilson, gates I1/I2 and
+  Lambda1, failure modes F-M1..F-L1.
+- `Sources/NERD_3.md` - round 3: boost-Gibbs form (A1), Minkowski determinant
+  dictionary (A2), discrete QNEC protocol (A3), lattice prior-art positioning
+  (A4), publication portfolio P1-P9, phased research plan.
+- `Sources/NERD_4.md` - v2.1 revision after external review: disposition
+  ledger, Gate C0 conventions, determinant-line clock (I3), Lorentz-ensemble
+  viability (L0), relative-cohomology Lambda fix, revised ladder, explicit
+  non-claims.
+- `Sources/Null_Edge_Dynamics_Gate_D.md` - Gate D dynamics proposal
+  (2026-07-02, in-repo development): the maximum-entropy equilibrium route,
+  the modular-generation route (Borchers-Wiesbrock), coin-decorated
+  sequential growth, the X1-X3 consistency triangle, gates D0-D8, failure
+  modes F-D1..F-D6.
+
+When a statement here conflicts with an earlier NERD document, v2.1
+(`NERD_4`) wins; the Gate D document extends v2.1 without overriding it.
+
+## The two structural revisions every task must respect
+
+1. **Ontology revision (L0).** The tetrahedral/finite-valency null-direction
+   lattice is a gauge-fixed regulator, not the ontology. Exact
+   Lorentz-invariance claims for any finite-valency null graph are withdrawn
+   pending Gate L0. In ontology statements, "null edges" means the link
+   structure (covering relation) of a Poisson-sprinkled causal order,
+   Lorentz-invariant in distribution, and every dynamical use of links must
+   factor through a damped, layered transport kernel (Benincasa-Dowker type).
+   Gate C1 is unaffected as mathematics but is a regulator-level statement.
+
+2. **Clock revision (I3).** The de Broglie/internal clock is provably NOT the
+   modular flow of the momentum state (trivial at rest). The theorem-shaped
+   clock is the determinant line of the minimal null split: free Dirac
+   evolution rotates `det L` at angular frequency `2m` (zitterbewegung), and
+   the minimal-split gauge group factorizes as `U(2) = (SU(2) x U(1))/Z_2`
+   with `SU(2)` = spin frame (massive little group) and `U(1)` = internal
+   clock. "Proper time = det-line holonomy / 2m" remains a labeled postulate.
+
+## Claim discipline
+
+Two label systems are in force; use both where relevant.
+
+- Manuscript/task-note claim labels (locked in `docs/CONVENTIONS.md`):
+  representation, reconstruction, structural theorem, prediction.
+- NERD theory-document status labels (from `NERD_4`): THEOREM (finite math,
+  proof included or one line from standard results), IMPORT (real literature
+  theorem whose hypotheses we have not reproduced), PROPOSAL (checkable
+  theory development), SPECULATIVE (labeled).
+
+Standing non-claims (from `NERD_4` section 14; do not drift back):
+
+- Gravity has not been derived. The exact finite content of the "gravity is
+  DPI" slogan is Q1 (positivity and monotonicity of vacuum-subtracted
+  relative entropy along nested cuts); the QNEC content is the second
+  difference (Q2) and is open. Jacobson-style equation-of-state derivations
+  are IMPORT.
+- No exact Lorentz invariance of any finite-valency structure.
+- The de Broglie clock is not derived from modular flow (it provably is not).
+- SMG erasure is not guaranteed by anomaly freedom; anomaly freedom is
+  necessary, sufficiency only in exhibited models.
+- The spectral action is a consistency gate (G1'.4), not evidence.
+
+C1 paper framing (pre-registered): if the gap is proved, the result is a
+machine-checked doubling-free exotic-kernel construction with a null
+interpretation, positioned against the hyperdiamond/minimal-doubling no-go
+literature (Bedaque et al.; Kimura-Misumi; Creutz-Kimura-Misumi as nearest
+prior art). If the gap fails, the obstruction result is itself the paper.
+Both outcomes publish without narrative rewrites.
+
+## The gate ladder (v2.1 order)
+
+| # | Gate | Content | Status (2026-07-02) | Track |
+|---|------|---------|---------------------|-------|
+| 0 | C0 | Three-J table; grading split; convention audit | Conventions recorded in `docs/CONVENTIONS.md`; audit of existing super-Dirac statements pending | day (cheap, do before any Krein/gamma_5 formalization) |
+| 1 | I1 | Plucker mass identity build order (soldering det -> PSD cone -> rank/null -> 2xn Cauchy-Binet -> cross-check) | Lean-ready, not started; plan: `AgentTasks/nerd-gate-i1-kinematic-core-lean-plan-2026-07-02.md` | night |
+| 2 | I1.7 | Stiefel splitting; little group = minimal-split gauge | Lean-ready | night |
+| 3 | I1.8 | Normalized dictionary (det rho = m^2/4E^2, concurrence = m/E, entropy-velocity) | Lean-ready | night |
+| 4 | I1.9 | First-order bridge `(gamma . P)^2 = det(P) 1` | Lean-ready, one line, load-bearing | night |
+| 5 | I2 | Finite modular faithfulness (timelike iff faithful iff finite modular Hamiltonian; null iff pure: "null edges do not age") | Not started; small | night |
+| 6 | I3 | Determinant-line clock; Prop I3.5 (frequency 2m); U(2) = spin x clock | Theorem-shaped, not started | night |
+| 7 | L0 | Lorentz ensemble: prove L0.1 no-go; links + damped kernel; tetrahedral = regulator | Plan: `AgentTasks/nerd-gate-l0-lorentz-ensemble-nogo-plan-2026-07-02.md` | paper-level |
+| 8 | C1 | Tetrahedral operator gap -> self-adjointness -> sign/GW release | ACTIVE CRITICAL PATH (`PhysicsSM/Draft/NullEdge/GateC1/`); unchanged by v2/v2.1 | day |
+| 9 | Q1 | Finite DPI (Uhlmann/Petz) on nested algebras | Check Lean-QuantumInfo/PhysLean for existing DPI before building | night |
+| 10 | Q2 | Discrete QNEC, Peschel-exact ladder on checkerboard null cuts | Protocol: `AgentTasks/nerd-gate-q2-discrete-qnec-protocol-2026-07-02.md` | paper-level (numerics) |
+| 11 | Lambda1' | Relative Hodge decomposition; Lambda = harmonic representative of `H^4(D, boundary D)` volume class | Formulated; finite linear algebra | night (after I1) |
+| 12 | S1 | Mirror erasure, Fidkowski-Kitaev Z_8 instance | Formulated; finite, decidable; not scheduled | queue |
+| 13 | M1'/G1' | Metric as principal symbol of the invariant kernel; emergent geometry | After L0 and Q2 | queue |
+| 14 | D1-D2 | Dynamics, equilibrium route: finite max-ent shadow; exact first-law identity `Delta S = Delta<K> - S_rel` | Lean-ready; source: `Sources/Null_Edge_Dynamics_Gate_D.md` | night |
+| 15 | D3 | Finite half-sided-modular-inclusion triviality no-go; modular defect functionals and their scaling | No-go theorem-shaped (Lean-medium); defect numerics share the Q2 code | night + paper-level |
+| 16 | D4/D6 | Checkerboard decorated-growth dictionary; toy equilibrium = stationarity cross-check | Lean-light on the existing `NullEdgeStandalone` checkerboard stack | night |
+| 17 | D5/D7/D8 | Coin rigidity (little-group covariance fixes coins); growth realizes modular translation; positivity probe | Formulated; D8 is a numerics afternoon | queue |
+
+Gate C2 (gauge backgrounds) follows C1 on the day track, with the added
+J_K-covariance audit and two-grading discipline from C0.
+
+## Tracks
+
+- **Day track (critical path):** finish `TetraFreeOperatorGap_equalN` ->
+  full Fourier diagonalization -> finite/free operator gap ->
+  self-adjointness -> only then the sign/GW layer. No new active-proof scope.
+  All new ideas queue behind this. Aristotle-driven per `docs/ARISTOTLE.md`.
+- **Night/slack track (Lean, zero C1 interference):** the I1 stack, then I2,
+  then the Gate D finite stack (D1, D2, D6, then D3.0), then Lambda1'.1-2.
+  All finite matrix algebra, Mathlib-only Aristotle packages. Output =
+  papers P2 and the D-note.
+- **Paper-level track (no Lean dependency):** L0.1 no-go proof attempt; Q2
+  massless calibration numerics (now including the D3.1 modular-defect
+  measurement as a fourth deliverable); the Q2 literature check; the D8
+  positivity probe.
+- **Community track:** one contact email to PhysLean maintainers offering P2;
+  establish arXiv endorsement route; small Mathlib/PhysLean PRs as calling
+  cards.
+
+## Decision points and kill conditions
+
+- **C1 gap fails:** switch to the pre-registered obstruction-paper framing
+  (joins the Bedaque et al. no-go genre). Not a program failure.
+- **L0.1 proves false** (a Lorentz-invariant finite-valency ensemble exists):
+  pleasant shock; revisit the ontology revision. The proof attempt is cheap
+  either way.
+- **Lambda1' projection fails** (bookkeeping cochain's harmonic part does not
+  project onto the relative volume class under Dirichlet boundary
+  conditions): the Lambda story dies cleanly. This is the designed kill test.
+- **Q2 finds a finite-spacing QNEC violation:** publishable discovery about
+  discretization, not a failure. All three Q2 outcomes are papers.
+- **P9 moonshot (verified first law -> Einstein equation of state):** attempt
+  only if the Q2/P3 Gaussian theorem lands AND the type I / type III
+  continuum-limit problem (F-M2) shows a tractable handle. Otherwise it stays
+  a named target.
+
+## Publication mapping (short)
+
+| Paper | Content | Gate dependency | Sequence |
+|-------|---------|-----------------|----------|
+| P2 | Verified kinematic dictionary + I3.5 + U(2) factorization | I1, I1.7-I1.9, I2, A2, I3 | first (wedge) |
+| P8 | Expository companion (matrix-analysis kinematics) | P2 content | with/after P2 |
+| P5 | Semantic auditing of AI-generated Lean physics | existing toolkit | opportunistic |
+| P1 | Verified chiral lattice fermion (or obstruction) | C1 | flagship |
+| P3 | Discrete QNEC | Q2 (+ Q1 formalized) | after P2 code exists |
+| P6 | Discrete (relative) Hodge + Lambda note | Lambda1' | after wedge |
+| D-note | "The first law is an identity; the content is universality" + modular defect | D1-D3 | after wedge; on-ramp to P9 |
+| P4 | Program paper (hardened v2.1 treatise) | P1 + P2 landed | last |
+| P9 | Verified first law -> Einstein (moonshot) | P3 theorem + F-M2 progress | gated, unscheduled |
+
+## Watch items
+
+- **Slogan drift.** The informational slogans (time is modular, gravity is
+  DPI, mass is entanglement) are postulates or IMPORTs unless the named gate
+  is closed. Every physics sentence in a task note should be traceable to a
+  gate and a claim label.
+- **Terminology audit.** Pre-v2.1 files (including Gate C1 Lean docstrings
+  and release plans) may still speak v1 language ("null edges" as primitive
+  finite adjacency, exact invariance). When touching such a file, align its
+  claims with this roadmap; do not mass-rewrite otherwise.
+- **F-M2 (type I vs type III)** is the program's hard analytic problem.
+  Nothing on the current ladder touches it except Q2's Gaussian theorem
+  attempt. Keep it visible; do not let program papers imply it is solved.
+- **Unnormalized vs normalized.** Mass-invariance statements live at the
+  level of unnormalized `P` (`det P = m^2`); normalized states know only
+  `m/E`. Language: "Plucker norm / unnormalized concurrence". Never claim
+  frame invariance for `det rho`.
+
+## One-line priority
+
+C1 critical path by day; Gate I1 in Lean by night; one email to PhysLean;
+buy the two cheap insurance policies (C0 audit, L0.1 attempt) this month.

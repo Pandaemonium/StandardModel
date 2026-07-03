@@ -255,6 +255,155 @@ theorem fourierUnitary_scalarWilsonMassField_trig (r rho : ℝ)
         ∑ x : Fin 4, (↑r - ↑r * Complex.cos ↑(kOfMom N m x)) := by
           rw [Finset.mul_sum]
 
+section Slash
+
+variable [DecidableEq Spin]
+
+/-- Real-space kinetic slash field built from the canonical centered null-edge
+transport differences.  The factor `1/2` converts
+`T_A - T_A^{-1}` into the symbol coefficient `i sin(k_A)`. -/
+def kineticSlashField (D : TetraEuclideanSlashData Spin)
+    (Psi : SiteN N -> Spin -> ℂ) : SiteN N -> Spin -> ℂ :=
+  fun x s =>
+    ∑ A : Fin 4,
+      scalarFieldAction N (1 / 2 : ℂ)
+        (matrixFieldAction N (D.B A) (centeredTransportDiff N A Psi)) x s
+
+/-- Normalized Fourier diagonalization of the real-space kinetic slash field.
+
+This is the kinetic half of the finite/free symbol-intertwining theorem:
+the centered transport differences become the symbol
+`i Q(sin(k))`. -/
+theorem fourierUnitary_kineticSlashField_trig
+    (D : TetraEuclideanSlashData Spin)
+    (Psi : SiteN N -> Spin -> ℂ) (m : MomN N) :
+    fourierUnitary N (kineticSlashField N D Psi) m =
+      (Complex.I • TetraEuclideanSlashData.Q D (sinCoeffs (kOfMom N m))).mulVec
+        (fourierUnitary N Psi m) := by
+  unfold kineticSlashField
+  rw [fourierUnitary_finset_sum N Finset.univ
+    (fun A =>
+      scalarFieldAction N (1 / 2 : ℂ)
+        (matrixFieldAction N (D.B A) (centeredTransportDiff N A Psi))) m]
+  funext s
+  have hsum :
+      ∑ A : Fin 4,
+          fourierUnitary N
+            (scalarFieldAction N (1 / 2 : ℂ)
+              (matrixFieldAction N (D.B A) (centeredTransportDiff N A Psi))) m s
+        =
+      ∑ A : Fin 4,
+        (1 / 2 : ℂ) *
+          ((D.B A).mulVec
+            (fun t =>
+              (2 * (Real.sin ((kOfMom N m) A) : ℂ) * Complex.I) *
+                fourierUnitary N Psi m t)) s := by
+    apply Finset.sum_congr rfl
+    intro A _hA
+    rw [fourierUnitary_scalarFieldAction]
+    rw [fourierUnitary_matrixFieldAction]
+    rw [fourierUnitary_centeredTransportDiff_trig]
+  rw [hsum]
+  simp +decide [TetraEuclideanSlashData.Q, Matrix.mulVec, dotProduct,
+    sinCoeffs, kOfMom,
+    Finset.mul_sum, Finset.sum_mul, mul_assoc, mul_left_comm, mul_comm]
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro t _ht
+  trans
+    ∑ A : Fin 4,
+      (Complex.I * fourierUnitary N Psi m t) *
+        (Complex.sin ((kAngle N m A : ℝ) : ℂ) * D.B A s t)
+  · apply Finset.sum_congr rfl
+    intro A _hA
+    ring
+  · rw [← Finset.mul_sum]
+    have hentry :
+        (∑ A : Fin 4, Complex.sin ((kAngle N m A : ℝ) : ℂ) • D.B A) s t =
+          ∑ A : Fin 4, Complex.sin ((kAngle N m A : ℝ) : ℂ) * D.B A s t := by
+      rfl
+    rw [hentry]
+    ring_nf
+
+/-- Real-space finite/free Wilson kernel before the lattice-spacing scale
+factor.  It combines the centered kinetic slash with the scalar Wilson mass
+profile. -/
+def freeWilsonKernelField (D : TetraEuclideanSlashData Spin)
+    (r rho : ℝ) (Psi : SiteN N -> Spin -> ℂ) : SiteN N -> Spin -> ℂ :=
+  fun x s =>
+    kineticSlashField N D Psi x s +
+      scalarWilsonMassField N r rho Psi x s
+
+/-- Real-space finite/free Wilson operator with lattice-spacing scale `a`.
+
+This is the operator whose momentum symbol is `TetraScalarWilsonSymbol.K`. -/
+def Kfree (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (Psi : SiteN N -> Spin -> ℂ) : SiteN N -> Spin -> ℂ :=
+  scalarFieldAction N ((a : ℂ)⁻¹) (freeWilsonKernelField N D r rho Psi)
+
+/-- Normalized Fourier diagonalization of the real-space finite/free Wilson
+operator.
+
+This is the main finite/free glue theorem for the scalar Wilson kernel: the
+checked real-space transport operator is intertwined by the normalized Fourier
+transform with the already audited symbol `K`. -/
+theorem fourierUnitary_Kfree_trig
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (Psi : SiteN N -> Spin -> ℂ) (m : MomN N) :
+    fourierUnitary N (Kfree N D a r rho Psi) m =
+      (TetraScalarWilsonSymbol.K D a r rho (kOfMom N m)).mulVec
+        (fourierUnitary N Psi m) := by
+  unfold Kfree freeWilsonKernelField
+  rw [fourierUnitary_scalarFieldAction]
+  rw [fourierUnitary_add]
+  rw [fourierUnitary_kineticSlashField_trig]
+  rw [fourierUnitary_scalarWilsonMassField_trig]
+  funext s
+  simp +decide [TetraScalarWilsonSymbol.K, Matrix.mulVec, dotProduct,
+    Matrix.add_apply, Matrix.smul_apply, Matrix.one_apply, Finset.mul_sum,
+    Finset.sum_add_distrib, Finset.sum_mul, mul_add, add_mul,
+    mul_assoc, mul_left_comm, mul_comm]
+
+/-- Applying a constant spin matrix after `Kfree` is intertwined by the
+normalized Fourier transform with left matrix multiplication of the symbol
+`K`. -/
+theorem fourierUnitary_matrixFieldAction_Kfree_trig
+    (M : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (Psi : SiteN N -> Spin -> ℂ) (m : MomN N) :
+    fourierUnitary N (matrixFieldAction N M (Kfree N D a r rho Psi)) m =
+      (M * TetraScalarWilsonSymbol.K D a r rho (kOfMom N m)).mulVec
+        (fourierUnitary N Psi m) := by
+  rw [fourierUnitary_matrixFieldAction]
+  rw [fourierUnitary_Kfree_trig]
+  rw [Matrix.mulVec_mulVec]
+
+/-- Real-space Hermitian overlap-seed kernel obtained by left multiplication
+with a finite chirality matrix. -/
+def Hfree (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (Psi : SiteN N -> Spin -> ℂ) : SiteN N -> Spin -> ℂ :=
+  matrixFieldAction N gamma5 (Kfree N D a r rho Psi)
+
+/-- Normalized Fourier diagonalization of the real-space Hermitian overlap-seed
+kernel.
+
+This is the real-space finite/free counterpart of
+`TetraScalarWilsonSymbol.H`: after Fourier transform, `Hfree` is exactly left
+multiplication by the Hermitian sign-kernel symbol. -/
+theorem fourierUnitary_Hfree_trig
+    (gamma5 : Matrix Spin Spin ℂ)
+    (D : TetraEuclideanSlashData Spin) (a r rho : ℝ)
+    (Psi : SiteN N -> Spin -> ℂ) (m : MomN N) :
+    fourierUnitary N (Hfree N gamma5 D a r rho Psi) m =
+      (TetraScalarWilsonSymbol.H gamma5 D a r rho (kOfMom N m)).mulVec
+        (fourierUnitary N Psi m) := by
+  unfold Hfree
+  rw [fourierUnitary_matrixFieldAction_Kfree_trig]
+  rfl
+
+end Slash
+
 end TetraFreeOperator
 end GateC1
 end NullEdge

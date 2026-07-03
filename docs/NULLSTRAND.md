@@ -11,6 +11,18 @@ The near-term publishable target is a dual-soldered finite null-edge Dirac
 algebra. It should be presented as a finite algebraic and formalization result,
 not as a completed physical theory.
 
+The NERD/NRQG synthesis treatises live in `Sources/NERD_1.md` through
+`Sources/NERD_4.md` (v2.1, `NERD_4`, supersedes earlier versions where they
+conflict), and the Gate D dynamics proposal lives in
+`Sources/Null_Edge_Dynamics_Gate_D.md`. The consolidated post-v2.1 gate
+ladder, claim discipline, track
+assignments, and kill conditions live in
+[`docs/NERD_ROADMAP.md`](NERD_ROADMAP.md). Consult the roadmap before opening
+new NERD-related task files; in particular, the tetrahedral lattice is now a
+gauge-fixed regulator (not the ontology) and the three-J / claim-scope
+conventions in [`docs/CONVENTIONS.md`](CONVENTIONS.md) apply to all new
+operator statements.
+
 The strongest current finite-core package is:
 
 1. Simplex null-solder frame.
