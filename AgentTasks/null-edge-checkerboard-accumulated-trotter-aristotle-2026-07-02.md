@@ -124,3 +124,35 @@ Placeholder/escape-hatch scan was clean. Dependency audit for
 Post-integration note: `lake build NullEdgeStandalone` does not rebuild this
 module because the default root does not import `CheckerboardDiracScaling`; use
 `lake build PhysicsSM.Draft.CheckerboardDiracScaling` for this target.
+
+## Codex follow-up: matrixL1 boundary theorem
+
+After integrating the Aristotle return, Codex added the finite two-row norm
+bridge
+
+```text
+matrixL1Norm_le_two_mul_linftyOpNorm
+```
+
+and used it to promote the previously commented boundary into the proved theorem
+
+```text
+checkerboard_dirac_limit_statement
+```
+
+This gives pointwise-in-momentum convergence in the original `matrixL1Norm` to
+the continuum Dirac evolution at the matching discrete total time
+`(R.data k).totalTime`.
+
+Verification:
+
+```text
+lake build PhysicsSM.Draft.CheckerboardDiracScaling
+lake env lean PhysicsSM.lean
+lake build NullEdgeStandalone
+```
+
+Placeholder/escape-hatch scan was clean. Dependency audit for
+`matrixL1Norm_le_two_mul_linftyOpNorm` and
+`checkerboard_dirac_limit_statement` reported
+`[propext, Classical.choice, Quot.sound]`.

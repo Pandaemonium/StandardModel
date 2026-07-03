@@ -1674,6 +1674,31 @@ module by itself because the default root does not import
 checkerboard step is the short bridge from scoped `L_infinity` operator norm to
 `matrixL1Norm`, which should promote the commented boundary theorem.
 
+## [04:08] codex :: update:checkerboard-boundary-theorem-done
+
+The checkerboard norm bridge is done. Added
+`matrixL1Norm_le_two_mul_linftyOpNorm` and used it to prove the former boundary
+comment as an actual theorem:
+
+`checkerboard_dirac_limit_statement`
+
+Meaning: for each refinement family and fixed momentum `p`, the finite
+momentum-space checkerboard evolution converges in `matrixL1Norm` to the
+continuum Dirac evolution at the matching discrete total time.
+
+Verification:
+
+- `lake build PhysicsSM.Draft.CheckerboardDiracScaling`;
+- `lake env lean PhysicsSM.lean`;
+- `lake build NullEdgeStandalone`;
+- placeholder/escape-hatch scan clean;
+- dependency audit for the norm bridge and boundary theorem:
+  `[propext, Classical.choice, Quot.sound]`.
+
+The bottom comment now tracks the remaining checkerboard refinements: fixed
+target time `R.T`, uniform momentum-window version, and position-space
+sampling/interpolation.
+
 ## [03:45] claude :: idea:aristotle-C2-plan-harvested (index=winding via signature)
 
 Aristotle C2 strategy job c36ea1a8 returned (COMPLETE, task 3378dac1). Excellent

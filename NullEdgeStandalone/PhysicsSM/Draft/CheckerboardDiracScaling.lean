@@ -231,6 +231,33 @@ theorem linftyOpNorm_le_matrixL1Norm
         _ = ‖A 0 0‖₊ + ‖A 0 1‖₊ + (‖A 1 0‖₊ + ‖A 1 1‖₊) := by
               rw [add_assoc])
 
+/-- In the two-direction checkerboard fiber, the entrywise L1 norm is at most
+twice the scoped `L_infinity` operator norm.  This finite bridge turns a
+stable-operator-norm convergence statement into the entrywise norm used by the
+original boundary statement. -/
+theorem matrixL1Norm_le_two_mul_linftyOpNorm
+    (A : Matrix Direction Direction Complex) :
+    matrixL1Norm A ≤ 2 * ‖A‖ := by
+  rw [Matrix.linfty_opNorm_def]
+  unfold matrixL1Norm
+  simp only [Fin.sum_univ_two]
+  let r0 : NNReal := ‖A 0 0‖₊ + ‖A 0 1‖₊
+  let r1 : NNReal := ‖A 1 0‖₊ + ‖A 1 1‖₊
+  let s : NNReal :=
+    Finset.univ.sup fun i : Direction => ‖A i 0‖₊ + ‖A i 1‖₊
+  have h0 : (r0 : ℝ) ≤ (s : ℝ) := by
+    have h0nn : r0 ≤ s := by
+      simpa [r0, s] using Finset.le_sup (s := (Finset.univ : Finset Direction))
+        (f := fun i : Direction => ‖A i 0‖₊ + ‖A i 1‖₊) (Finset.mem_univ 0)
+    exact_mod_cast h0nn
+  have h1 : (r1 : ℝ) ≤ (s : ℝ) := by
+    have h1nn : r1 ≤ s := by
+      simpa [r1, s] using Finset.le_sup (s := (Finset.univ : Finset Direction))
+        (f := fun i : Direction => ‖A i 0‖₊ + ‖A i 1‖₊) (Finset.mem_univ 1)
+    exact_mod_cast h1nn
+  change (r0 : ℝ) + (r1 : ℝ) ≤ 2 * (s : ℝ)
+  linarith
+
 end LinftyOperatorNorm
 
 /-! ## Scoped `L2` operator-norm bridge and unitary stability
@@ -1578,39 +1605,46 @@ theorem linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero
       exact mul_le_mul_of_nonneg_left ( mul_le_mul_of_nonneg_left ( mul_le_mul_of_nonneg_left ( Real.exp_le_exp.mpr <| by nlinarith [ abs_nonneg p, abs_nonneg ( R.data k |> CheckerboardDiracScalingData.eps ), abs_nonneg ( R.data 0 |> CheckerboardDiracScalingData.m ) ] ) <| by positivity ) <| by positivity ) <| by positivity;
   · simpa using Filter.Tendsto.mul ( Real.continuous_exp.continuousAt.tendsto.comp ( tendsto_const_nhds.mul ( R.totalTime_tendsto.abs ) ) ) ( tendsto_const_nhds.mul ( R.totalTime_tendsto.mul R.eps_tendsto_zero ) )
 
+/-- Pointwise-in-momentum continuum limit in the original entrywise
+`matrixL1Norm`.  This promotes the boundary statement recorded below from a
+comment to a theorem, using only the finite two-row bridge from `matrixL1Norm`
+to the scoped stable `L_infinity` operator norm. -/
+theorem checkerboard_dirac_limit_statement
+    (R : CheckerboardDiracRefinement) (p : Real) :
+    Filter.Tendsto
+      (fun k => momentumEvolutionDiscrepancy (R.data k) p)
+      Filter.atTop (nhds 0) := by
+  refine squeeze_zero (fun k => momentumEvolutionDiscrepancy_nonneg (R.data k) p)
+    (g := fun k => 2 * ‖momentumEvolution (R.data k) p
+        - diracEvolutionSymbol (R.data k).m p (R.data k).totalTime‖)
+    (fun k => ?_) ?_
+  · simpa [momentumEvolutionDiscrepancy] using
+      matrixL1Norm_le_two_mul_linftyOpNorm
+      (momentumEvolution (R.data k) p -
+        diracEvolutionSymbol (R.data k).m p (R.data k).totalTime)
+  · simpa [mul_zero] using
+      (tendsto_const_nhds.mul
+        (linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero R p))
+
 end RefinementLimit
 
 /-!
-## Intended theorem boundary: `checkerboard_dirac_limit_statement`
+## Proven theorem boundary: `checkerboard_dirac_limit_statement`
 
-This is an analytic scaffold, not a proved theorem. It is recorded here in a
-comment so that no proof placeholder is introduced. With
-`R : CheckerboardDiracRefinement` and a fixed observed momentum `p` in every
-window, the intended pointwise-in-momentum finite-dimensional claim is:
+The pointwise-in-momentum finite-dimensional checkerboard-to-Dirac limit is now
+proved in `matrixL1Norm` above. The theorem compares the finite `N`-step
+momentum-space checkerboard symbol with the continuum Dirac evolution at the
+matching discrete total time `(R.data k).totalTime`, under the explicit
+refinement-family assumptions `eps -> 0`, fixed mass, and matched total time.
 
-```text
-theorem checkerboard_dirac_limit_statement
-    (R : CheckerboardDiracRefinement) (p : Real)
-    (hp : forall k, MomentumWindow (R.data k) p) :
-    Filter.Tendsto
-      (fun k => momentumEvolutionDiscrepancy (R.data k) p)
-      Filter.atTop (nhds 0)
-```
+Remaining refinements for the next checkerboard layer:
 
-Reading: for each fixed momentum in the observation window, the finite `N`-step
-momentum-space checkerboard symbol converges in `matrixL1Norm` to the continuum
-1+1D Dirac evolution symbol as `eps -> 0`, `N * eps -> T`, and
-`theta = eps * m`.
-
-Missing analytic dependencies before this comment can become a theorem:
-
-1. A per-step expansion of `momentumStepSymbol D p` around
-   `1 - i * eps * diracHamiltonianSymbol D.m p`, preferably uniform on the
-   momentum window.
-2. A matrix-power/Trotter stability estimate turning a per-step second-order
-   remainder into an accumulated first-order-in-`eps` bound over `N` steps.
-3. Continuity lemmas for `NormedSpace.exp` and the matrix norm under the
-   refinement limits.
+1. State a fixed-target-time variant against `diracEvolutionSymbol m p R.T`,
+   using continuity in the time parameter and `R.totalTime_tendsto`.
+2. Add a uniform-on-window version for `MomentumWindow`, rather than the current
+   pointwise-in-momentum theorem.
+3. Connect this momentum-space limit to the intended position-space sampling and
+   interpolation API.
 -/
 
 end PhysicsSM.Draft.CheckerboardDiracScaling

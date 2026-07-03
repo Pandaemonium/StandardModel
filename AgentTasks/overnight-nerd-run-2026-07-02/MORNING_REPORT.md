@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2/checkerboard extension updated 03:55).**
+**Status: DRAFT (Claude side final ~03:55; Codex I1/D/review/C2/checkerboard extension updated 04:08).**
 Claude-lane results below are complete and verified. Codex's later I1/D
 additions are confirmed from the shared ledger/discussion and targeted checks,
 and are checkpointed in commit `6e1a7e5`, but the I1 standalone file still needs
@@ -73,9 +73,9 @@ and exploratory probes are recorded as such.
   numerical bridge to the kernel-checked Gate D2 identity `finite_first_law`).
 - **Checkerboard T1b accumulated Trotter return integrated** in
   `NullEdgeStandalone`: pointwise-in-momentum scoped `L_infinity`
-  checkerboard-to-Dirac convergence
-  `linftyOpNorm_momentumEvolution_sub_diracEvolution_tendsto_zero`
-  is kernel-checked.
+  checkerboard-to-Dirac convergence is kernel-checked, and Codex then promoted
+  the original `matrixL1Norm` boundary to the proved theorem
+  `checkerboard_dirac_limit_statement`.
 - Aristotle used as a genuine partner: 3 Claude strategy/red-team jobs (L0
   correction; C1 gap red-team; C1 GW-release validation) that materially
   improved and hardened the results.
@@ -144,10 +144,10 @@ work lives in the standalone staging file (kernel-checked, commit `6e1a7e5`) and
 is not yet ported into the main `PhysicsSM` tree. Codex's new Gate D draft files
 are targeted-build green and committed in `6e1a7e5`; semantic cross-review plus a
 full build remain morning integration tasks.
-Checkerboard T1b: accumulated Trotter is now integrated into
-`NullEdgeStandalone`; remaining checkerboard work is the short norm bridge from
-scoped `L_infinity` operator norm to `matrixL1Norm`, plus any still-deferred
-older checkerboard returns not on tonight's critical path.
+Checkerboard T1b: accumulated Trotter and the `matrixL1Norm` boundary theorem
+are now integrated into `NullEdgeStandalone`; remaining checkerboard work is the
+fixed-target-time variant, uniform momentum-window version, and any still-
+deferred older checkerboard returns not on tonight's critical path.
 
 ## 5. Decisions + review outcomes
 
@@ -191,6 +191,12 @@ older checkerboard returns not on tonight's critical path.
   `lake env lean PhysicsSM.lean`, `lake build NullEdgeStandalone`;
   placeholder scan clean; dependency audit for the new accumulated-limit cluster
   = `[propext, Classical.choice, Quot.sound]`.
+- Checkerboard boundary follow-up checks: `lake build
+  PhysicsSM.Draft.CheckerboardDiracScaling`, `lake env lean PhysicsSM.lean`,
+  `lake build NullEdgeStandalone`; placeholder scan clean; dependency audit for
+  `matrixL1Norm_le_two_mul_linftyOpNorm` and
+  `checkerboard_dirac_limit_statement` =
+  `[propext, Classical.choice, Quot.sound]`.
 - Axiom audits: all trusted-track theorems `[propext, Classical.choice,
   Quot.sound]`; no `s o r r y`, no `n a t i v e _ d e c i d e` in any committed
   Lean this run.
@@ -219,8 +225,8 @@ older checkerboard returns not on tonight's critical path.
 2. Scope Gate C2 with an explicit strategy/red-team packet before gauge
    construction: gauge-link covariance and admissible-sign interface first,
    finite index density/anomaly bridge after that facade is pinned.
-3. For checkerboard T1b, prove the finite norm bridge from scoped `L_infinity`
-   operator norm to `matrixL1Norm`, then promote the commented boundary theorem.
+3. For checkerboard T1b, upgrade the proved pointwise `matrixL1Norm` boundary to
+   a fixed-target-time theorem and then a uniform momentum-window version.
 
 ## 9. Literature log summary
 
