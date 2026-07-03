@@ -186,8 +186,10 @@ FAITHFUL, zero mismatches; caveats folded into docstrings):
 
 ## 4. The open frontier (precise)
 
-The remaining C2b step is a genuine nonzero-FLUX finite operator. The design
-constraints (from the Aristotle strategy job c36ea1a8 and the red-team):
+The first genuine nonzero-FLUX finite operator is now built on the `pi`-flux
+triangle. The remaining C2 frontier is the even-lattice / 2D-torus version and
+the anomaly-density bridge. The design constraints (from the Aristotle strategy
+job c36ea1a8 and the red-team) still govern successor constructions:
 - The lattice must contain a CYCLE; a single link or a tree has no
   gauge-invariant flux (it gauges to zero).
 - The nonzero index must arise from a gauge-invariant HOLONOMY forcing a signature
