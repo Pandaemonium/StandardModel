@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (Claude side final ~03:55; Codex I1/D extension added 01:57).**
+**Status: DRAFT (Claude side final ~03:55; Codex I1/D extension updated 02:12).**
 Claude-lane results below are complete and verified. Codex's later I1/D
 additions are confirmed from the shared ledger/discussion and targeted checks,
 but remain uncommitted staging/draft work pending morning port/review. The whole
@@ -41,9 +41,10 @@ faithfully: negatives and exploratory probes are recorded as such.
   commutes with the parabolic BW boost, defect ~1/L^2 - the "time is modular" /
   F-M2 datum), and the **lattice first law** dS = d<K> (ratio -> 1, the
   numerical bridge to the kernel-checked Gate D2 identity `finite_first_law`).
-- Aristotle used as a genuine partner: 2 strategy/red-team jobs that materially
-  improved the C1 milestone framing and the L0 argument.
-- 15 verified commits (Claude), all prefixed `overnight-20260702:`.
+- Aristotle used as a genuine partner: 3 Claude strategy/red-team jobs (L0
+  correction; C1 gap red-team; C1 GW-release validation) that materially
+  improved and hardened the results.
+- ~30 verified commits (Claude), all prefixed `overnight-20260702:`, green tree.
 
 ## 2. Theorems landed (Claude, kernel-checked, axioms = propext/Classical.choice/Quot.sound)
 
@@ -70,7 +71,7 @@ All Codex rows are draft/staging. Axiom audits reported
 |---|---|---|---|
 | I1.1-I1.6 kinematic core | `AgentTasks/aristotle-standalone/gate-i1-kinematic-core-20260702/GateI1KinematicCore/Core.lean` | `i1_1_soldering_det`, `i1_2_minkHerm_posSemidef_iff_futureCone`, `i1_2_minkHerm_eigenvalues_nonneg_iff_futureCone`, `i1_3_rank_one_rank_dichotomy`, `i1_4_rank_one_factorization`, `i1_5_cauchy_binet_mass_identity`, `i1_6_kinematic_cross_check` | `lake env lean ...\Core.lean` |
 | I1.8-I1.9 + I3.5 | same | `det_normalizedMinkHerm`, `trace_normalizedMinkHerm_sq`, `linearEntropy_normalizedMinkHerm`, `i1_9_minkHerm_mul_bar_eq_minkowskiSq`, `i1_9_bar_mul_minkHerm_eq_minkowskiSq`, `i3_5_clock_projector_invariant`, `i3_5_clock_det` | same |
-| I2 finite faithfulness shadow | same | `faithful2_det_ne_zero`, `i2_rankOne_not_faithful`, `i2_null_not_faithful`, `i2_minkHerm_faithful_of_futureTimelike` | same |
+| I2 finite faithfulness shadow | same | `faithful2_det_ne_zero`, `i2_rankOne_not_faithful`, `i2_null_not_faithful`, `i2_minkHerm_faithful_of_futureTimelike`, `i2_minkHerm_faithful_iff_futureTimelike` | same |
 | A2 determinant spine | same | `spatialDot_sq_le`, `minkowskiSq_add`, `a2_det_minkHerm_add`, `minkowskiInner_nonneg_of_futureCone`, `a2_minkowskiSq_add_ge_of_futureCone` | same |
 | D1 finite product-marginal subadditivity | `PhysicsSM/Draft/NullEdge/GateD/FiniteBernoulliMaxEntropy.lean` | `crossEntropy_productOfMarginals`, `d1_joint_entropy_subadditivity` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy` |
 | D3.0 finite no-proper-shrink skeleton | `PhysicsSM/Draft/NullEdge/GateD/FiniteHalfSidedInclusion.lean` | `permImage_eq_of_subset`, `permImage_pow_eq_of_halfSided`, `subspaceImage_eq_of_le`, `subspaceImage_pow_eq_of_halfSided` | `lake build PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion` |
@@ -107,6 +108,8 @@ deferred, not on the critical path).
 - `review:c1-gap-equalN` ACCEPTED (Codex); wording refined to "coercive
   inverse-propagator gap".
 - `review:c1-selfadjoint` ACCEPTED (Codex); docstring precision fix applied.
+- `review:c1-symbol-gw` ACCEPTED (Codex); scalar-square shortcut judged
+  semantically honest at symbol/per-momentum scope.
 - `review:gate-d-firstlaw` ACCEPTED (Codex); D1 handed to Codex.
 - Harvest division agreed (Claude gate-c1-*, Codex checkerboard).
 - No disagreements parked for the user.
@@ -115,7 +118,7 @@ deferred, not on the critical path).
 
 - Full `lake build`: 8295 jobs, "Build completed successfully" after Claude's
   integrated batch. Not rerun after Codex's later uncommitted I2/A2/D6 staging
-  additions.
+  additions and I2 iff tightening.
 - Codex targeted checks run: `lake env lean ...\Core.lean`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteBernoulliMaxEntropy`, `lake build
   PhysicsSM.Draft.NullEdge.GateD.FiniteHalfSidedInclusion`, `lake build
@@ -129,8 +132,11 @@ deferred, not on the critical path).
 
 ## 7. Ideas raised, out of scope tonight
 
-- C1 sign/GW: symbol-level release is now kernel-checked; next open question is
-  how far to push real-space/operator-level release and representation bridges.
+- C1 sign/GW: symbol-level release is kernel-checked AND adversarially validated;
+  operator-level step 1 (inverse Fourier round-trip) is banked; the full
+  operator-level packaging is precisely scoped (row orthogonality -> fwd-inv
+  round-trip -> signHfree -> operator GW) in `DISCUSSION.md`
+  `idea:operator-level-GW-scoping` - a ~1.5h fresh-session construction.
 - D3.1 modular defect: DONE and validated (commit 511ed49). The discrete QNEC
   deficit (null-cut 2nd difference of entropy) remains the next Q2 rung.
 - L0 Lean sub-lemmas (CP^1 no-finite-invariant-subset, 3-point stabilizer,
@@ -143,8 +149,9 @@ deferred, not on the critical path).
 1. Port/commit Codex's I1/P2 and Gate D staging cluster into the main
    `PhysicsSM` tree, then run pre-commit, targeted builds, full `lake build`,
    and semantic cross-review.
-2. Review the C1 symbol-level GW release and decide the next real-space /
-   operator-level release target.
+2. Execute the scoped operator-level GW packaging (the symbol-level release is
+   already reviewed + adversarially validated; step 1 done) to lift the chiral
+   release from per-momentum to the real-space operator.
 3. Decide draft->trusted promotions for the reviewed C1 and Gate D theorems
    after the morning semantic pass.
 
