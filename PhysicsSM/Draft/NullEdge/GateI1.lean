@@ -1,4 +1,5 @@
 import PhysicsSM.Draft.NullEdge.GateI1.Core
+import PhysicsSM.Draft.NullEdge.GateI1.MassCoinBridge
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -9,7 +10,8 @@ Pauli/Hermitian soldering, the future-cone PSD dictionary, rank-one/null
 factorization, the 2-edge Pluecker mass identity, normalized determinant
 dictionary, first-order Weyl-block bridge, finite faithfulness shadow,
 boost-Gibbs algebra, determinant superadditivity, determinant-line clock, and
-the finite `U(2)` spin-clock split algebra.
+the finite `U(2)` spin-clock split algebra; plus the P1/P2 no-double-counting
+bridge and null-step walk coherence suite (`MassCoinBridge`).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 

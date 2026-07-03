@@ -47,3 +47,48 @@
   + file map (20 modules); P1 manuscript v2.1 (abstract, sections 11/14/16, change
   log): layer 2 closed at 1+1D, layer 3 protection proved, layer 4 keystone proved
   in minimal instance, layer 5 Koide gate rescoped after the F2.0 kill.
+- [claude] NEW: Sources/Null_Edge_Measure_Problem.md - first dedicated status +
+  strategy document for the program's central open problem. Consolidates Rounds
+  4-8 + Gate D routes; 11-row entrance checklist (null-Markov fingerprint as the
+  sharpest necessary condition); breakthrough ladder B-2..B+1 + negative tiers;
+  candidate classes ranked; near-term queue: MP1 fingerprint test (new), G2' A_s
+  freeze-then-scan, MP2 classical no-go (new, Lean-able), D4/D6 decorated-growth
+  toy as the B0 vehicle, MP3 uniqueness squeeze (new); kill list; verification-
+  debt register. Free-sector acceptance tests now machine-checked (MassCoinBridge
+  1+1D; Gates C1-C2 tetra) - noted as the measure search's boundary conditions.
+
+## 2026-07-03 SCG integration + follow-ups (claude)
+- [claude] Reviewed + verified the external SCG measure-candidate analysis:
+  Gram/positivity lemma checked by hand; mixture-CMI dichotomy reproduced
+  independently (scratchpad/cmi_mixture_check.py: components exactly Markov,
+  mixture 0.500 bits at full routing swap, quadratic vanishing).
+- [claude] SUBMITTED Aristotle 970e20fe (measure-scg-gram-positivity-20260703):
+  4 targets - gramDecoherence_posSemidef (+event level), deformed
+  _posSemidef_of_posSemidef, deformed_posSemidef_iff (the back-reaction
+  PSD-kernel criterion). Statements typecheck; harvest to a new GateMP module.
+- [claude] MP1' v0 EXECUTED: Scripts/mp1_concentration.py (two-curve protocol;
+  region-local JW Gaussian reconstruction, fermionically clean middle blocks;
+  paired common-random-number estimates). Self-checks 1e-15/1e-12; excess = 0
+  exactly at zero spread; superlinear growth (eff. exponent ~2.6); findings:
+  kill criterion must target the mixture curve (excess not sign-constrained),
+  v1 needs sprinkled 2D orders + SJ state + null cuts + stencil clause.
+- [claude] Sources/Null_Edge_Measure_Problem.md updated (458 lines): SCG as
+  candidate class 4(e) with grading table + pre-registered R7 kill test;
+  MP1->MP1' (v0 results in-doc); MP2 rescoped; NEW gate MP4 (BC-Q freeze);
+  kill list + bottom line + debt register updated (B-1 tier now has its first
+  entrant, one definition gate short of complete grading).
+
+## 2026-07-03 SCG Gram harvest (claude)
+- [claude] HARVESTED 970e20fe -> PhysicsSM/Draft/NullEdge/GateMP/SCGGramPositivity.lean
+  (all 4 theorems proved, NO statement changed; builds 8027 green, axiom-clean).
+  Verified the necessity-direction mechanism by hand: deformed(deformed W A)(A^-1)
+  = W exactly under full support (A^-1*A and conj(A)*conj(A)^-1 cancel), so
+  necessity reuses the sufficiency lemma twice - cleaner than the quadratic-form
+  route originally sketched. New GateMP/ area + GateMP.lean aggregator (first
+  Lean content for the Measure Problem sector). Also fixed a gap: MassCoinBridge
+  (harvested earlier today) was never wired into the GateI1.lean aggregator -
+  added; GateI1 aggregate now 8028 jobs green.
+- [claude] Sources/Null_Edge_Measure_Problem.md updated (476 lines): R4 in the
+  SCG grading table upgraded T-once-landed -> T-done; strong positivity and the
+  back-reaction criterion now cited as kernel-checked theorems throughout
+  (candidate 4(e), the D4/D6 queue item, the bottom line).
