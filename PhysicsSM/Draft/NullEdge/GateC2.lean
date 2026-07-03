@@ -17,6 +17,7 @@ import PhysicsSM.Draft.NullEdge.GateC2.OverlapWindingSignJoin
 import PhysicsSM.Draft.NullEdge.GateC2.OverlapHoppingSignWitness
 import PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexGaugeInvariance
 import PhysicsSM.Draft.NullEdge.GateC2.FluxOverlapIndex
+import PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexVanishing
 
 /-!
 # Gate C2 aggregator: the index / gauge / certified-sign layer
@@ -46,7 +47,9 @@ Layer map (see `Sources/Null_Edge_Gate_C2_Index_And_Certified_Sign.md`):
   `TetraFreeIndexZero`, `TetraFreeIndexDensity`;
 * witnesses: `OverlapIndexWindingWitness`, `OverlapWindingSignJoin`,
   `OverlapHoppingSignWitness`, `OverlapIndexGaugeInvariance`;
-* concrete nonzero flux: `FluxOverlapIndex` (the pi-flux triangle).
+* concrete nonzero flux: `FluxOverlapIndex` (the pi-flux triangle);
+* index-forced zero modes: `OverlapIndexVanishing` (gapped => index 0;
+  nonzero index => exact zero mode; instantiated at the flux witness).
 
 All modules are draft-trust: kernel-checked, no `s o r r y`, no
 `n a t i v e _ d e c i d e`; dependency footprint

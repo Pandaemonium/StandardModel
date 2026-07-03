@@ -71,16 +71,23 @@ Weyl projectors Phat_pm := (1 +- gammahat5)/2 ; Phat_pm^2 = Phat_pm
 ```
 
 The GW relation itself is then an ALGEBRAIC identity in `sign(Hfree)`,
-`gamma5`, given `sign^2 = 1` and the anticommutation `{gamma5, sign(Hfree)}`
-structure - provable once the sign function is constructed, largely without
-further spectral input. So the rung splits cleanly:
+`gamma5`. So the rung splits cleanly - and the easy half is ALREADY DONE:
 
-- **Hard half:** construct `sign(Hfree)` with its three properties (needs R1
-  or R2 + the eigenvalue gap). This is the multi-hour infrastructure piece.
-- **Easy half:** the GW relation, `gammahat5`, and the Weyl projector
-  idempotency are algebra in `sign` and `gamma5` (mirrors the existing
-  `OverlapGinspargWilson.lean` abstract algebra, which already carries the
-  `eps = sign(H)` template).
+- **Easy half: ALREADY PROVEN (verified 2026-07-03).**
+  `OverlapGinspargWilson.dov_ginsparg_wilson` proves the full normalized
+  Ginsparg-Wilson relation `gamma5 * Dov + Dov * gamma5 = Dov * gamma5 * Dov`
+  for `Dov = 1 + gamma5 * eps` from ONLY `gamma5^2 = 1` and `eps^2 = 1` - no
+  anticommutation or spectral input needed. So once `eps = sign(Hfree)` exists
+  as a self-adjoint involution, the GW relation is immediate (instantiate that
+  theorem), and the Weyl projectors follow.
+- **Hard half (the ONLY remaining gate): construct `eps = sign(Hfree)`** with
+  `eps^2 = 1` and `eps` self-adjoint, from the now-proven gapped self-adjoint
+  `Hfree`. This needs R1 or R2 (the matrix/`cfc` representation bridge) plus
+  the eigenvalue gap. It is the multi-hour infrastructure piece and the SINGLE
+  thing standing between the completed free-operator half and the free chiral
+  release. There is NO clean intermediate Lean win between the two (the
+  eigenvalue gap and the sign construction both require the representation
+  bridge).
 
 ## Recommended execution
 

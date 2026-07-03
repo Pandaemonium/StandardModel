@@ -171,6 +171,26 @@ gauge-invariant holonomy demonstrably reaches the index. Honest scope: an odd
 the sharp flux-driven statement is the `Delta=-2` jump, and a zero-to-nonzero flux
 index needs an even lattice (section 4).
 
+**(g) The vanishing theorem: index-forced zero modes (topological protection
+of masslessness).** `OverlapIndexVanishing.lean` (Aristotle job 2b9ab4ce,
+rewired onto the repo `Dov` / `overlapIndex` via `overlapIndex_eq`): for ANY
+involutions `gamma5`, `eps` - Hermiticity turned out to be unnecessary, so the
+ported statements are strictly more general than the submitted ones -
+
+- `overlapIndex_eq_zero_of_isUnit_dov` (gapped form): an invertible overlap
+  operator `Dov = 1 + gamma5 eps` forces index `0`;
+- `exists_zero_mode_of_overlapIndex_ne_zero` (zero-mode form): a nonzero
+  chiral index forces an exact zero mode of `Dov` - masslessness is
+  topologically protected;
+- `flux_witness_has_zero_mode`: instantiated at the pi-flux triangle, whose
+  index `-1` therefore pins a genuine exact zero mode.
+
+Proof mechanism (fully algebraic, no spectral theory): `A = gamma5 - eps` and
+`B = gamma5 + eps` anticommute; `(eps gamma5) Dov^2 = B^2` makes `B` invertible
+whenever `Dov` is; then `B^{-1} A B = -A` gives `Tr(gamma5 - eps) = 0`. This
+closes the free-layer index arc in both directions: flux drives the index
+(section 2f), and the index obstructs the gap (this section).
+
 ## 3. Honest scope: what is NOT proved
 
 Validated by an adversarial Aristotle red-team (project ee95ba08: all statements
@@ -237,7 +257,9 @@ self-adjointness of certified signs + explicit self-adjoint `epsCFC`),
 eigenvalue-sign counts); `OverlapWindingSignJoin` (diagonal certified operator),
 `OverlapHoppingSignWitness` (non-diagonal certified operator);
 `OverlapIndexGaugeInvariance` (conjugation invariance); `FluxOverlapIndex` (the
-concrete `pi`-flux triangle nonzero-index witness). The aggregator `GateC2.lean`
+concrete `pi`-flux triangle nonzero-index witness); `OverlapIndexVanishing`
+(index-forced zero modes: gapped => index 0, nonzero index => exact zero mode,
+instantiated at the flux witness). The aggregator `GateC2.lean`
 imports the whole layer: `lake build PhysicsSM.Draft.NullEdge.GateC2` kernel-checks
-all 19 modules together. Prerequisite: the Gate C1 `GateC1/` overlap release and
+all 20 modules together. Prerequisite: the Gate C1 `GateC1/` overlap release and
 `GateC1.OverlapIndexToy` index algebra.
