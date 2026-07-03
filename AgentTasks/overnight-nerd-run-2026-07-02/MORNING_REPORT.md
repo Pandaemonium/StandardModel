@@ -43,16 +43,19 @@ and exploratory probes are recorded as such.
   (realizes every winding charge, defeats the free-zero); (4) `certifiedSign_unique`
   - the **C2b backbone**, a self-adjoint involution commuting with a gapped
   Hermitian `H` with `eps.H` PSD is UNIQUE (= sign(H)) via PSD-sqrt uniqueness, so
-  `sign(H_U)` is pinned WITHOUT a functional calculus; (5) `signCertificate_HU_epsW`
-  - the **C2a->C2b join**, the winding `eps` is a genuine certified sign of an
-  explicit gapped mass-defect operator, so index 1 is a real sign-of-operator
-  index. The index ALGEBRA was already in `GateC1.OverlapIndexToy` (not
-  duplicated). Aristotle strategy job `c36ea1a8` guided the arc. SUCCESSOR: a
-  non-diagonal gauge `H_U` with genuine link holonomy (hopping inside the
-  negative-mass block), then the anomaly/index-density bridge.
+  `sign(H_U)` is pinned WITHOUT a functional calculus; (5)
+  `signCertificate_HU_epsW` / `signCertificate_HU_unique` - the **C2a->C2b
+  join**, the winding `eps` is a genuine certified sign of an explicit gapped
+  mass-defect operator, and any certified sign of that operator equals `epsW`,
+  so index 1 is a real sign-of-operator index. The index ALGEBRA was already in
+  `GateC1.OverlapIndexToy` (not duplicated). Aristotle strategy job `c36ea1a8`
+  guided the arc. SUCCESSOR: a non-diagonal gauge `H_U` with genuine link
+  holonomy (hopping inside the negative-mass block), then the anomaly/index-
+  density bridge.
 - **Full `lake build` green** (8295 jobs) including the operator-level chain,
   the operator Weyl projectors, and ALL FIVE Gate C2 bricks; latest run completed
-  successfully after `8418bec` (the C2a->C2b join).
+  successfully after the Codex C2 side-condition patch atop `8418bec` (the
+  C2a->C2b join).
 - **Gate I1/P2 staging stack** kernel-checked through I1.1-I1.9, I2 finite
   faithfulness iff strict future-timelikeness, finite A1 boost algebra, A2
   determinant/reverse-Cauchy/square-root mass superadditivity, I3.5
@@ -105,7 +108,8 @@ and exploratory probes are recorded as such.
 | `tetraFreeOverlapIndex_eq_zero`, `trace_gamma5_mul_Q_eq_zero` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexZero.lean` | **C2 free benchmark**: the free tetrahedral overlap index is 0 for traceless chirality (`Tr(g5.Q)=0` from `{g5,Q}=0`+cyclicity); the no-topology-in-free-theory calibration | 239b9e6 |
 | `overlapIndex_gamma5WQ_epsWQ_eq` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexWindingWitness.lean` | **C2a winding witness**: block-stacked graded involution family with overlap index EXACTLY Q (realizes every winding charge; defeats free-zero). Bridge - `eps` constructed with target signature | 373de95 |
 | `certifiedSign_unique`, `signCertificate_mul_sq`, `SignCertificate.dov_ginspargWilson` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapSignCertificate.lean` | **C2b backbone**: for gapped Hermitian H, a self-adjoint involution with `[eps,H]=0` and `eps.H` PSD is UNIQUE (= sign(H)), via PSD-sqrt uniqueness (NO functional calculus); a certified sign yields a GW overlap | 9f97af2 |
-| `signCertificate_HU_epsW` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapWindingSignJoin.lean` | **C2a->C2b join**: the winding `epsW` is a genuine certified sign of an explicit gapped mass-defect operator `HU=diag(-2,-3,-1,5)`, so index 1 is a real sign-of-operator (domain-wall) index | 8418bec |
+| `signCertificate_HU_epsW`, `HU_isHermitian`, `signCertificate_HU_unique` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapWindingSignJoin.lean` | **C2a->C2b join**: the winding `epsW` is a genuine certified sign of an explicit gapped mass-defect operator `HU=diag(-2,-3,-1,5)`, and every certified sign of `HU` equals `epsW`; index 1 is a real sign-of-operator (domain-wall) index | 8418bec + Codex review patch |
+| `overlapIndex_conj`, `SignCertificate.conj` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexGaugeInvariance.lean` | **C2 gauge invariance**: the overlap index is invariant under unitary conjugation and the sign certificate transports covariantly - the guardrail that a nonzero index cannot come from a gauge/basis conjugation, only a signature change | 68f2bff |
 
 Verification for each Claude row: `lake build <module>` + `#print axioms`
 (clean); the full-tree `lake build` (8295 jobs) passed after Claude's integrated

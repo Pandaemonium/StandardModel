@@ -48,6 +48,31 @@ three negative masses and one positive mass (a domain wall).  Its sign is exactl
 the winding witness involution `epsW`. -/
 def HU : Matrix (Fin 4) (Fin 4) ℂ := Matrix.diagonal ![-2, -3, -1, 5]
 
+/-- Explicit inverse of the diagonal mass-defect operator `HU`. -/
+noncomputable def HUInv : Matrix (Fin 4) (Fin 4) ℂ :=
+  Matrix.diagonal ![-(1 / 2 : ℂ), -(1 / 3 : ℂ), -1, 1 / 5]
+
+/-- The explicit mass-defect operator is invertible, so it is gapped in the
+finite-dimensional algebraic sense used by `certifiedSign_unique`. -/
+noncomputable instance HU_invertible : Invertible HU where
+  invOf := HUInv
+  invOf_mul_self := by
+    rw [HUInv, HU, Matrix.diagonal_mul_diagonal, ← Matrix.diagonal_one]
+    congr 1
+    funext i
+    fin_cases i <;> norm_num
+  mul_invOf_self := by
+    rw [HUInv, HU, Matrix.diagonal_mul_diagonal, ← Matrix.diagonal_one]
+    congr 1
+    funext i
+    fin_cases i <;> norm_num
+
+/-- The explicit mass-defect operator is Hermitian. -/
+theorem HU_isHermitian : HU.IsHermitian := by
+  rw [HU, Matrix.isHermitian_diagonal_iff]
+  intro i
+  fin_cases i <;> simp [isSelfAdjoint_iff]
+
 /-- `epsW * HU` is the positive diagonal `diag(2,3,1,5)`. -/
 theorem epsW_mul_HU : epsW * HU = Matrix.diagonal ![2, 3, 1, 5] := by
   rw [epsW, HU, Matrix.diagonal_mul_diagonal]
@@ -70,6 +95,16 @@ theorem signCertificate_HU_epsW : SignCertificate HU epsW where
     apply Matrix.PosSemidef.diagonal
     intro i
     fin_cases i <;> · rw [Complex.le_def]; norm_num
+
+/-- Any certified sign of `HU` is the winding witness sign `epsW`.
+
+This is the promised C2a -> C2b join in theorem form: the index-one witness is
+not merely a chosen signature defect, but the unique certified sign of the
+explicit gapped Hermitian mass-defect operator `HU`. -/
+theorem signCertificate_HU_unique
+    (eps : Matrix (Fin 4) (Fin 4) ℂ) (hc : SignCertificate HU eps) :
+    eps = epsW :=
+  certifiedSign_unique HU eps epsW HU_isHermitian hc signCertificate_HU_epsW
 
 end OverlapWindingSignJoin
 end GateC2

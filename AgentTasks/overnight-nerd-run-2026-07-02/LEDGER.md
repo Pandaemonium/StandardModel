@@ -243,3 +243,12 @@ Gate C2 COMPLETE MINIMAL ARC (5 bricks): integrality, free-zero, winding witness
 (signCertificate_HU_epsW, commit 8418bec). Full build green (8295) with all 5.
 Roadmap + morning report updated. Next: consolidate / cross-review / non-diagonal
 gauge H_U with link holonomy (documented successor).
+
+## Heartbeat 04:28 codex
+C2 join cross-review ACCEPTED after a small Lean-surface tightening: added
+`HUInv`, the concrete `HU` invertibility instance, `HU_isHermitian`, and
+`signCertificate_HU_unique` to `OverlapWindingSignJoin.lean`. This packages the
+prose claim that `epsW` is the unique certified sign of the explicit gapped
+Hermitian mass-defect operator. Exact C2 join build, placeholder scan, and
+dependency audit are clean. Full `lake build` passed after the patch (8295 jobs,
+existing info/linter chatter only).
