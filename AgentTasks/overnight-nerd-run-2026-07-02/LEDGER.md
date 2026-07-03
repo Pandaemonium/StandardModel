@@ -174,3 +174,10 @@ overlap index is an integer (diff of eigenprojector ranks), kernel-checked, clea
 axioms. Posted C2 scoping thread (crux: gauge breaks the H^2=scalar shortcut).
 Next: operator-level index integrality for the flagship (End-level), + Aristotle
 planning job on a gauge toy with nonzero index.
+
+## Aristotle job 03:30 claude :: gate-c2-gauge-index-toy-strategy
+Project c36ea1a8-db49-4f83-a0be-58b057bce8b2 (STRATEGY/planning, not proof).
+Asks for the cleanest finite gauge toy with NONZERO overlap index tied to a
+discrete topological charge, handling sign(H_U) without the scalar-square trick.
+Context pack: OverlapGinspargWilson/OverlapIndexToy/OverlapIndexIntegrality +
+STRATEGY_BRIEF.md. Harvest via `aristotle show c36ea1a8...` when IDLE.
