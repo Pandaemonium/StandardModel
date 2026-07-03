@@ -47,6 +47,58 @@ decoration), not per-realization; and the celestial sphere here is the
 boost orbit structure at a point, so the reduction from graphs to
 direction sets at a point must be stated as a marginalization lemma.
 
+## L0.1 audit outcome (Aristotle red-team, 2026-07-03)
+
+An adversarial audit (Aristotle project `495df59e`, summary in
+`AgentTasks/aristotle-output/495df59e-.../REPORT_SUMMARY.md`) confirms **the
+conclusion L0.1 is true, but the sketch in steps 1-3 above is not a proof.**
+Three real defects, and the corrected argument:
+
+**Defects.**
+- **(H1, decisive)** Steps 1-3 run through a deterministic equivariant
+  *selection map* (per-realization equivariance), which is strictly stronger
+  than the distributional-invariance hypothesis actually available. The
+  "care point" above flagged this risk; the audit shows steps 1-3 still fall
+  into it.
+- **(H2)** "Stabilizer of a finite subset of `CP^1` is virtually compact" is
+  false: size 1 gives a Borel subgroup, size 2 gives `C^* x Z/2`; and even for
+  size `>= 3` (finite stabilizer) the compactness criterion is backwards (a
+  compact stabilizer of a noncompact group yields an infinite-volume
+  quotient).
+- **(H3)** "No invariant mean" is a red herring: `PSL(2,C)` acting on `CP^1`
+  is Zimmer-amenable. The real input is **proximal north-south dynamics** of
+  boosts.
+
+**Corrected argument (adopt as the L0.1 route).** Model the decorated graph as
+a **Poincare-invariant marked point process** with an a.s.-finite
+`CP^1`-valued outgoing-direction mark and positive edge intensity.
+Marginalize to a single point via the **Palm distribution** (Lorentz fixes the
+Palm base point and preserves Lebesgue, `det = 1`), producing an honest
+`PSL(2,C)`-invariant probability measure on finite subsets of `CP^1` **with no
+selection map** - this kills H1. Then close by a **uniform proximality**
+lemma (equivalently: no configuration stabilizer is a lattice, so no orbit
+carries finite invariant volume). Headline:
+
+> **First-moment dichotomy.** The only `PSL(2,C)`-invariant direction-intensity
+> on `CP^1 = G/B` (with `B` non-unimodular) is either zero or non-sigma-finite.
+
+This simultaneously proves L0.1 and *explains* L0.2/L0.3: the unique escape
+from the dichotomy is infinite valency (the link relation), whose invariant
+intensity is exactly the non-sigma-finite branch.
+
+**BHS transfer.** Bombelli-Henson-Sorkin (no measurable Poincare-equivariant
+timelike-direction field on the noncompact `H^3`) does *not* transfer
+verbatim: the null-direction problem lives on the compact boundary `CP^1` with
+noncompact stabilizer, needing the proximality input. A Douady-Earle
+conformal-barycenter reduction recovers BHS for sizes `>= 3` but is undefined
+for sizes 1 and 2 - the irreducibly new content.
+
+**Lean-worthy discrete sub-lemmas** (finite targets, future): (i) no finite
+`PSL(2,C)`-invariant subset of `CP^1`; (ii) sharp 3-transitivity / trivial
+3-point stabilizer of `PSL(2,C)`; (iii) north-south dynamics of a boost. The
+Palm and invariant-measure analysis remain paper-level (Mobius /
+homogeneous-space API is not in the local Mathlib).
+
 ## L0.2 (the escape that is also a theorem)
 
 In a Poisson sprinkling, the **link relation** (covering relation of the
