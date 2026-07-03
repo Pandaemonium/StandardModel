@@ -37,7 +37,10 @@ property, not Hermiticity. Lifted to finite-dimensional endomorphisms
 (`OverlapIndexEndIntegrality.overlapIndexEnd_isInteger`) and instantiated at the
 flagship free operator (`FlagshipOperatorIndex.flagship_operatorIndex_isInteger`):
 the free tetrahedral chiral OPERATOR index is a well-defined integer, connecting
-Gate C1 and Gate C2 end to end.
+Gate C1 and Gate C2 end to end. `trace_ghatEnd` also identifies the End-level
+index with the trace of the Luscher modified chirality
+`f * (1 - (1/2) Dov)`, so the trace-index formula is a theorem rather than a
+convention.
 
 **(b) Free benchmark.** `tetraFreeOverlapIndex_eq_zero`: the free tetrahedral
 overlap index is `0` for traceless chirality, because `Tr(gamma5 . Q) = 0` follows

@@ -116,7 +116,9 @@ propext/Classical.choice/Quot.sound), `PhysicsSM/Draft/NullEdge/GateC2/`:**
   + `Matrix.trace_toLin'_eq`); needs only involution, not Hermiticity.
 - `OverlapIndexEndIntegrality.lean` (`overlapIndexEnd_isInteger`): the same
   integrality theorem at the finite `Module.End ℂ V` level, so operator indices
-  can be stated without first choosing matrices.
+  can be stated without first choosing matrices. `trace_ghatEnd` proves the same
+  End-level index is the trace of the Luscher modified chirality
+  `f * (1 - (1/2) Dov)`.
 - `TetraFreeIndexZero.lean` (`tetraFreeOverlapIndex_eq_zero`): the free
   benchmark - the free tetrahedral overlap index is 0 for traceless chirality
   (`Tr(gamma5.Q)=0` from `{gamma5,Q}=0` + cyclicity, `Tr gamma5 = 0`).

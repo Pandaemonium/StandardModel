@@ -1,6 +1,6 @@
 # Overnight NERD run 2026-07-02/03: morning report
 
-**Status: DRAFT (reconciled through C2 operator density sum-rule commit `4b6c161`;
+**Status: DRAFT (reconciled through C2 End-index Ghat cleanup `7af42f7`;
 live Aristotle job `f3296d38` RUNNING).**
 Claude-lane results below are complete and verified through the C2 red-team
 caveat fold; Codex's I1/D/checkerboard/C2 review additions are confirmed from the
@@ -42,7 +42,7 @@ exploratory probes are recorded as such.
 | `weylProjOp_add`, `weylProjOp_sub_eq_signHfree`, `weylProjOpPlus/Minus_idem`, `signHfree_weylProjOpPlus` | `.../TetraOperatorWeylProjectors.lean` | **operator Weyl projectors** (capstone of the free release): spectral resolution `P+/P- = (1 +/- signHfree)/2`; `P+ + P- = 1`, `P+ - P- = signHfree`, idempotents, and `signHfree(P+ Psi) = P+ Psi` (`+1` chirality eigenspace = chiral fermions at the operator level) | ac48b87 |
 | `finite_first_law`, `relEntropy_nonneg` | `PhysicsSM/Draft/NullEdge/GateD/FiniteFirstLaw.lean` | exact first-law identity + Gibbs (q>0) | 8c86467 |
 | `overlapIndex_isInteger`, `specProj_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexIntegrality.lean` | **Gate C2 opened**: the finite overlap chiral index is an INTEGER (diff of eigenprojector ranks; trace-of-idempotent = finrank); needs only involution, not Hermiticity | dceb6f1 |
-| `overlapIndexEnd_isInteger`, `specProjEnd_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexEndIntegrality.lean` | **C2 End-native integrality**: the operator overlap index `(1/2)(Tr f - Tr g)` for finite complex endomorphism involutions is an integer, as a difference of projector range dimensions; no matrix choice needed | 9c2341f |
+| `overlapIndexEnd_isInteger`, `trace_ghatEnd`, `specProjEnd_trace_eq_finrank` | `PhysicsSM/Draft/NullEdge/GateC2/OverlapIndexEndIntegrality.lean` | **C2 End-native integrality and Ghat trace**: the operator overlap index `(1/2)(Tr f - Tr g)` is both an integer for involutions and the trace of the End-level Luscher modified chirality `f * (1 - (1/2) Dov)`; no matrix choice needed | 9c2341f + 237b3e9 + Codex warning cleanup 7af42f7 |
 | `flagship_operatorIndex_isInteger`, `signHfreeL_mul_self`, `Gamma5opL_mul_self` | `PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndex.lean` | **C1<->C2 operator bridge**: bundles `Gamma5op` and `signHfree` as finite complex endomorphisms, proves both are involutions, and instantiates End-integrality so the free tetrahedral operator overlap index is an integer | 38aba2b |
 | `flagship_operatorIndex_eq_zero`, `operatorIndex_eq_sum_density`, `trace_signHfreeL`, `trace_Gamma5opL` | `PhysicsSM/Draft/NullEdge/GateC2/FlagshipOperatorIndexZero.lean` | **C2 operator exact-zero bridge**: proves the operator overlap index is the site-sum of the local density, computes the bundled free sign/chirality traces via the kernel diagonal, and pins the flagship free operator index to exactly 0. Free/no-gauge; this is the structural sum-rule predecessor to anomaly work | 47a4e4e + Codex sum-rule/doc repair 4b6c161 |
 | `tetraFreeOverlapIndex_eq_zero`, `trace_gamma5_mul_Q_eq_zero` | `PhysicsSM/Draft/NullEdge/GateC2/TetraFreeIndexZero.lean` | **C2 free benchmark**: the free tetrahedral overlap index is 0 for traceless chirality (`Tr(g5.Q)=0` from `{g5,Q}=0`+cyclicity); the no-topology-in-free-theory calibration | 239b9e6 |
@@ -200,7 +200,7 @@ momentum-window version and position-space sampling/interpolation bridge.
   patch.
 - Codex C2 End-integrality cross-review: `lake build
   PhysicsSM.Draft.NullEdge.GateC2.OverlapIndexEndIntegrality`; placeholder scan
-  clean; dependency audit for `specProjEnd_isIdempotent`,
+  clean; dependency audit for `trace_ghatEnd`, `specProjEnd_isIdempotent`,
   `specProjEnd_trace_eq_finrank`, `overlapIndexEnd_eq_specProj_sub`, and
   `overlapIndexEnd_isInteger` = `[propext, Classical.choice, Quot.sound]`.
 - Codex C2 flagship operator-index cross-review: `lake build
