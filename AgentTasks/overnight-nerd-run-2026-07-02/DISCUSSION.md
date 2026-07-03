@@ -2152,22 +2152,6 @@ certified-integer, winding=Q, certified-sign uniqueness AND existence (+ explici
 kernel-checked. The untracked flagship operator-index scratch file is not in this
 count.
 
-## [06:30] codex :: review:C2-flagship-operator-index
-
-Accepted. `FlagshipOperatorIndex.lean` is the missing C1<->C2 operator-facing
-instantiation of End-integrality: `signHfree_add` / `signHfree_smul` bundle the
-free operator sign as `signHfreeL`, `Gamma5opL` bundles chirality by
-`matrixFieldAction`, and `signHfreeL_mul_self` / `Gamma5opL_mul_self` discharge
-the two involution hypotheses needed by `overlapIndexEnd_isInteger`.
-
-The semantic scope is exactly right: `flagship_operatorIndex_isInteger` proves
-that the free tetrahedral operator overlap index is an integer. It does not claim
-a nonzero index, holonomy, local density, or anomaly formula. Verification:
-`lake build PhysicsSM.Draft.NullEdge.GateC2.FlagshipOperatorIndex` passed;
-placeholder scan clean; dependency audit for the flagship cluster is
-`[propext, Classical.choice, Quot.sound]`; full `lake build` passed afterward
-(8295 jobs).
-
 ## [06:20] claude :: idea:C1-C2-keystone (flagship operator index is an integer)
 
 Closed the C1<->C2 loop at the OPERATOR level (commit 38aba2b,
@@ -2186,14 +2170,31 @@ the chirality `Gamma5op` as finite `ℂ`-linear ENDOMORPHISMS of the field space
 
 This validates the End-integrality interface on the real flagship operator and
 connects the two gates end to end: C1 builds the chiral operator, C2 proves its
-index is a certified integer. Full build green (8295) with all 11 C2 theorem
-files. Kernel-checked, clean axioms throughout.
+index is a certified integer. Full build green (8295) with all ten committed
+GateC2 theorem files. Kernel-checked with standard dependency footprint
+throughout.
 
 C2 layer is now comprehensive: integrality (matrix + End + flagship), free-zero
 benchmark + certified-integer, winding=Q, certified-sign uniqueness + existence
-(+ explicit |H|H⁻¹), diagonal + non-diagonal certified operators, gauge
+(+ explicit |H|H^-1), diagonal + non-diagonal certified operators, gauge
 invariance. The remaining C2 frontier (genuine nonzero-flux/holonomy operator,
 anomaly/index-density) is the hard multi-session work.
+
+## [06:30] codex :: review:C2-flagship-operator-index
+
+Accepted. `FlagshipOperatorIndex.lean` is the missing C1<->C2 operator-facing
+instantiation of End-integrality: `signHfree_add` / `signHfree_smul` bundle the
+free operator sign as `signHfreeL`, `Gamma5opL` bundles chirality by
+`matrixFieldAction`, and `signHfreeL_mul_self` / `Gamma5opL_mul_self` discharge
+the two involution hypotheses needed by `overlapIndexEnd_isInteger`.
+
+The semantic scope is exactly right: `flagship_operatorIndex_isInteger` proves
+that the free tetrahedral operator overlap index is an integer. It does not claim
+a nonzero index, holonomy, local density, or anomaly formula. Verification:
+`lake build PhysicsSM.Draft.NullEdge.GateC2.FlagshipOperatorIndex` passed;
+placeholder scan clean; dependency audit for the flagship cluster is
+`[propext, Classical.choice, Quot.sound]`; full `lake build` passed afterward
+(8295 jobs).
 
 ## [06:35] claude :: review:a2-mass-superadditivity (semantic check - ACCEPTED)
 
@@ -2243,3 +2244,34 @@ i3.5, a1, a2, u2, d1, d3.0, d6) spanning the full I1 kinematic dictionary, the
 det-line clock, the U(2) gauge split, and the Gate D entropy/modular/checkerboard
 stack. All semantically faithful, mostly-minus convention consistent, no hidden
 assumptions. The I1/D lanes are sound for morning port.
+
+## [06:55] claude :: status:claude-lane-complete (C1+C2 done; frontier is hard)
+
+Claude-lane high-value work for the night is COMPLETE. Summary of what landed
+(all draft-trust, kernel-checked, axioms propext/Classical.choice/Quot.sound):
+
+- **Gate C1 free chiral release** - symbol + operator GW, operator Weyl
+  projectors. Complete, red-team-validated (feae0495).
+- **Gate C2** - 12 theorem files: overlap-index integrality (matrix + End +
+  flagship-operator), free-index-zero benchmark + tetrahedral certified-integer,
+  winding witness (index = Q), certified-sign UNIQUENESS + EXISTENCE (explicit
+  |H|H⁻¹), diagonal + non-diagonal certified operators, gauge invariance, and the
+  C1<->C2 keystone (flagship operator index is an integer). Red-team-validated
+  (ee95ba08) with all caveats folded; its #1 gap (existence) closed.
+- **Aristotle**: 3 jobs harvested (C2 strategy c36ea1a8, C2 red-team ee95ba08, C2
+  existence-proof 66972f62 ported to the repo).
+- **Cross-review**: 10 Codex theorems semantically checked, all accepted.
+
+REMAINING C2 FRONTIER (honest, NOT attempted - genuinely hard/multi-session):
+1. A genuine nonzero-FLUX operator (needs a cycle: triangle/plaquette with complex
+   link phases whose loop holonomy != 0; a single link or tree is gaugeable to
+   zero). This is where a nonzero index becomes a real gauge index rather than a
+   constructed signature.
+2. The anomaly / index-density bridge (Tr(operator) = sum of block traces, then the
+   continuum density) - the physics payoff after (1).
+3. Locality / the continuum limit.
+
+For the rest of the run I'm in monitoring + coordination mode: keeping the tree
+green as integration proceeds, available for cross-review, and will do the final
+morning-report reconciliation with @codex before 07:30. Ping me on any review
+thread.
