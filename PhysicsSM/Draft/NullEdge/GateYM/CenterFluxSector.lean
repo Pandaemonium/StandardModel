@@ -4,20 +4,21 @@ import Mathlib
 # Gate YM T3: abstract center-shift electric flux sectors
 
 This draft module is the first kernel-checked response to the Fable Q3
-redesign (`review:fable-q3-flux-sector`).  It deliberately starts with the
-finite identity spine rather than a concrete finite-group lattice:
+redesign (`review:fable-q3-flux-sector`).  It has two finite-identity
+layers:
 
 * a finite configuration space equipped with flux-shift permutations;
 * electric flux sectors as eigenconditions for those shifts;
 * shift-invariant diagonal observables preserving electric sectors;
 * shift-invariant finite transfer kernels preserving electric sectors by
   finite reindexing.
+* a concrete finite-group torus link-field model with center-shift
+  permutations and plaquette-holonomy invariance under those shifts.
 
-The intended later instance is the center-shift action on finite-group torus
-link fields.  This file does not construct that action, prove plaquette
-holonomy invariance, or identify Q2's transfer matrix.  It is the abstract
-sector-preservation layer that the concrete center-shift file should
-instantiate.
+This file still does not identify Q2's transfer matrix, build the D12 Hilbert
+space, or prove a spectral statement.  Its concrete torus theorem says only
+that local observables factoring through plaquette holonomies are invariant
+under the center shifts, hence preserve the abstract electric sectors.
 
 Provenance: `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`, section 14
 Q3, and Fable call
@@ -131,6 +132,217 @@ theorem inElectricSector_applyKernel [Fintype Config]
           ring
 
 end ShiftSystem
+
+/-! ## Concrete finite-group torus center shifts -/
+
+/-- A finite-group link field on an `Lx` by `Ly` periodic torus.
+
+`hLink i j` is the horizontal link from `(i,j)` to `(i+1,j)`, and
+`vLink i j` is the vertical link from `(i,j)` to `(i,j+1)`, with periodic
+wrap implemented by `finRotate` in plaquette formulas. -/
+structure TorusLinkFieldG (G : Type*) (Lx Ly : Nat) where
+  hLink : Fin Lx -> Fin Ly -> G
+  vLink : Fin Lx -> Fin Ly -> G
+deriving Fintype
+
+namespace TorusLinkFieldG
+
+variable {G : Type*} {Lx Ly : Nat}
+
+/-- Extensionality for concrete torus link fields. -/
+@[ext]
+theorem ext {U V : TorusLinkFieldG G Lx Ly}
+    (hh : forall i j, U.hLink i j = V.hLink i j)
+    (hv : forall i j, U.vLink i j = V.vLink i j) : U = V := by
+  cases U with
+  | mk Uh Uv =>
+    cases V with
+    | mk Vh Vv =>
+      congr
+      · funext i j
+        exact hh i j
+      · funext i j
+        exact hv i j
+
+end TorusLinkFieldG
+
+variable {G : Type*} [Group G] {Lx Ly : Nat}
+
+/-- Plaquette holonomy based at `(i,j)`, with counterclockwise convention:
+bottom horizontal, right vertical, inverse top horizontal, inverse left
+vertical. -/
+def plaquetteHol (U : TorusLinkFieldG G Lx Ly) (i : Fin Lx) (j : Fin Ly) :
+    G :=
+  U.hLink i j * U.vLink (finRotate Lx i) j *
+    (U.hLink i (finRotate Ly j))⁻¹ * (U.vLink i j)⁻¹
+
+/-- The full plaquette-holonomy field of a torus link field. -/
+def plaquetteField (U : TorusLinkFieldG G Lx Ly) :
+    Fin Lx -> Fin Ly -> G :=
+  fun i j => plaquetteHol U i j
+
+/-- Central x-flux shift: multiply every horizontal link in column `i0` by
+the central element `z`. -/
+def xFluxShift (z : Subgroup.center G) (i0 : Fin Lx)
+    (U : TorusLinkFieldG G Lx Ly) : TorusLinkFieldG G Lx Ly where
+  hLink i j := if i = i0 then (z : G) * U.hLink i j else U.hLink i j
+  vLink := U.vLink
+
+/-- Central y-flux shift: multiply every vertical link in row `j0` by the
+central element `z`. -/
+def yFluxShift (z : Subgroup.center G) (j0 : Fin Ly)
+    (U : TorusLinkFieldG G Lx Ly) : TorusLinkFieldG G Lx Ly where
+  hLink := U.hLink
+  vLink i j := if j = j0 then (z : G) * U.vLink i j else U.vLink i j
+
+/-- Moving a central factor across two group elements and cancelling it with
+its inverse.  This is the x-shift cancellation pattern in a plaquette. -/
+theorem center_mul_two_mul_inv_cancel (z : Subgroup.center G) (a b c : G) :
+    (z : G) * a * b * (c * (z : G)⁻¹) = a * b * c := by
+  have hza : (z : G) * a = a * (z : G) :=
+    (Subgroup.mem_center_iff.mp z.2 a).symm
+  have hzb : (z : G) * b = b * (z : G) :=
+    (Subgroup.mem_center_iff.mp z.2 b).symm
+  have hzc : (z : G) * c = c * (z : G) :=
+    (Subgroup.mem_center_iff.mp z.2 c).symm
+  calc
+    (z : G) * a * b * (c * (z : G)⁻¹)
+        = a * (z : G) * b * (c * (z : G)⁻¹) := by rw [hza]
+    _ = a * (b * (z : G)) * (c * (z : G)⁻¹) := by
+          rw [← hzb]
+          simp [mul_assoc]
+    _ = a * b * ((z : G) * c * (z : G)⁻¹) := by
+          simp [mul_assoc]
+    _ = a * b * (c * (z : G) * (z : G)⁻¹) := by rw [hzc]
+    _ = a * b * c := by simp [mul_assoc]
+
+/-- Moving a central factor across the remaining plaquette factors and
+cancelling it with its inverse.  This is the y-shift cancellation pattern. -/
+theorem mul_center_mul_two_inv_cancel (z : Subgroup.center G) (a b c d : G) :
+    a * ((z : G) * b) * c * (d * (z : G)⁻¹) =
+      a * b * c * d := by
+  have hzb : (z : G) * b = b * (z : G) :=
+    (Subgroup.mem_center_iff.mp z.2 b).symm
+  have hzc : (z : G) * c = c * (z : G) :=
+    (Subgroup.mem_center_iff.mp z.2 c).symm
+  have hzd : (z : G) * d = d * (z : G) :=
+    (Subgroup.mem_center_iff.mp z.2 d).symm
+  calc
+    a * ((z : G) * b) * c * (d * (z : G)⁻¹)
+        = a * (b * (z : G)) * c * (d * (z : G)⁻¹) := by
+          rw [hzb]
+    _ = a * b * ((z : G) * c) * (d * (z : G)⁻¹) := by
+          simp [mul_assoc]
+    _ = a * b * (c * (z : G)) * (d * (z : G)⁻¹) := by rw [hzc]
+    _ = a * b * c * ((z : G) * d * (z : G)⁻¹) := by
+          simp [mul_assoc]
+    _ = a * b * c * (d * (z : G) * (z : G)⁻¹) := by rw [hzd]
+    _ = a * b * c * d := by simp [mul_assoc]
+
+/-- An x-flux shift is a permutation of the finite configuration space. -/
+def xFluxShiftEquiv (z : Subgroup.center G) (i0 : Fin Lx) :
+    Equiv.Perm (TorusLinkFieldG G Lx Ly) where
+  toFun := xFluxShift z i0
+  invFun := xFluxShift z⁻¹ i0
+  left_inv U := by
+    ext i j <;> by_cases hi : i = i0 <;> simp [xFluxShift, hi]
+  right_inv U := by
+    ext i j <;> by_cases hi : i = i0 <;> simp [xFluxShift, hi]
+
+/-- A y-flux shift is a permutation of the finite configuration space. -/
+def yFluxShiftEquiv (z : Subgroup.center G) (j0 : Fin Ly) :
+    Equiv.Perm (TorusLinkFieldG G Lx Ly) where
+  toFun := yFluxShift z j0
+  invFun := yFluxShift z⁻¹ j0
+  left_inv U := by
+    ext i j <;> by_cases hj : j = j0 <;> simp [yFluxShift, hj]
+  right_inv U := by
+    ext i j <;> by_cases hj : j = j0 <;> simp [yFluxShift, hj]
+
+/-- Central x-shifts preserve every plaquette holonomy. -/
+theorem plaquetteHol_xFluxShift (z : Subgroup.center G) (i0 : Fin Lx)
+    (U : TorusLinkFieldG G Lx Ly) (i : Fin Lx) (j : Fin Ly) :
+    plaquetteHol (xFluxShift z i0 U) i j = plaquetteHol U i j := by
+  by_cases hi : i = i0
+  · subst i
+    simpa [plaquetteHol, xFluxShift] using
+      center_mul_two_mul_inv_cancel z
+        (U.hLink i0 j)
+        (U.vLink (finRotate Lx i0) j)
+        ((U.hLink i0 (finRotate Ly j))⁻¹)
+  · simp [plaquetteHol, xFluxShift, hi]
+
+/-- Central y-shifts preserve every plaquette holonomy. -/
+theorem plaquetteHol_yFluxShift (z : Subgroup.center G) (j0 : Fin Ly)
+    (U : TorusLinkFieldG G Lx Ly) (i : Fin Lx) (j : Fin Ly) :
+    plaquetteHol (yFluxShift z j0 U) i j = plaquetteHol U i j := by
+  by_cases hj : j = j0
+  · subst j
+    simpa [plaquetteHol, yFluxShift] using
+      mul_center_mul_two_inv_cancel z
+        (U.hLink i j0)
+        (U.vLink (finRotate Lx i) j0)
+        ((U.hLink i (finRotate Ly j0))⁻¹)
+        ((U.vLink i j0)⁻¹)
+  · simp [plaquetteHol, yFluxShift, hj]
+
+/-- A single generator of the torus center-shift family: either an x-shift by
+a central element at a column, or a y-shift by a central element at a row. -/
+inductive TorusCenterShift (G : Type*) [Group G] (Lx Ly : Nat) where
+  | x : Subgroup.center G -> Fin Lx -> TorusCenterShift G Lx Ly
+  | y : Subgroup.center G -> Fin Ly -> TorusCenterShift G Lx Ly
+
+/-- The abstract `ShiftSystem` induced by the concrete torus center shifts. -/
+def torusCenterShiftSystem (G : Type*) [Group G] (Lx Ly : Nat) :
+    ShiftSystem (TorusLinkFieldG G Lx Ly) (TorusCenterShift G Lx Ly) where
+  shift
+    | TorusCenterShift.x z i0 => xFluxShiftEquiv z i0
+    | TorusCenterShift.y z j0 => yFluxShiftEquiv z j0
+
+/-- Every concrete center-shift generator preserves every plaquette holonomy. -/
+theorem plaquetteHol_torusCenterShift
+    (s : TorusCenterShift G Lx Ly) (U : TorusLinkFieldG G Lx Ly)
+    (i : Fin Lx) (j : Fin Ly) :
+    plaquetteHol
+        ((torusCenterShiftSystem G Lx Ly).shiftConfig s U) i j =
+      plaquetteHol U i j := by
+  cases s with
+  | x z i0 =>
+      simpa [ShiftSystem.shiftConfig, torusCenterShiftSystem] using
+        plaquetteHol_xFluxShift z i0 U i j
+  | y z j0 =>
+      simpa [ShiftSystem.shiftConfig, torusCenterShiftSystem] using
+        plaquetteHol_yFluxShift z j0 U i j
+
+/-- Any observable that factors through the full plaquette-holonomy field is
+invariant under concrete torus center shifts.  This is the finite local
+plaquette-algebra preservation input for Q3. -/
+theorem shiftInvariant_of_factorsThroughPlaquettes
+    (f : (Fin Lx -> Fin Ly -> G) -> Complex) :
+    ShiftSystem.ShiftInvariantObservable
+      (torusCenterShiftSystem G Lx Ly)
+      (fun U : TorusLinkFieldG G Lx Ly => f (plaquetteField U)) := by
+  intro s U
+  apply congrArg f
+  funext i j
+  exact plaquetteHol_torusCenterShift s U i j
+
+/-- Multiplication by a plaquette-field observable preserves every electric
+sector for the concrete torus center-shift system. -/
+theorem inElectricSector_multiplyPlaquetteObservable
+    (character : TorusCenterShift G Lx Ly -> Complex)
+    (f : (Fin Lx -> Fin Ly -> G) -> Complex)
+    (psi : TorusLinkFieldG G Lx Ly -> Complex)
+    (hpsi : ShiftSystem.InElectricSector
+      (torusCenterShiftSystem G Lx Ly) character psi) :
+    ShiftSystem.InElectricSector
+      (torusCenterShiftSystem G Lx Ly) character
+      (ShiftSystem.multiplyObservable
+        (fun U : TorusLinkFieldG G Lx Ly => f (plaquetteField U)) psi) :=
+  ShiftSystem.inElectricSector_multiplyObservable
+    (torusCenterShiftSystem G Lx Ly) character
+    (fun U : TorusLinkFieldG G Lx Ly => f (plaquetteField U)) psi
+    (shiftInvariant_of_factorsThroughPlaquettes f) hpsi
 
 end CenterFluxSector
 end GateYM

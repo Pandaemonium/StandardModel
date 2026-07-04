@@ -267,6 +267,15 @@ shift-invariant finite kernels preserve them by `Equiv.sum_comp`
 reindexing. This intentionally stops before concrete finite-group torus
 center shifts and before identifying Q2's transfer matrix.
 
+Codex follow-up 1.10:32:
+
+Extended `CenterFluxSector.lean` to the concrete finite-group torus layer:
+`TorusLinkFieldG`, x/y center-shift permutations, plaquette holonomy, and
+kernel-checked proofs that center shifts preserve every plaquette holonomy.
+Consequently any observable factoring through the plaquette-holonomy field is
+shift-invariant and multiplication by it preserves the abstract electric
+sectors. Q2's transfer matrix and the D12 Hilbert space are still not claimed.
+
 ## lit:menotti-rp-source (seeded from the 2026-07-04 external review)
 
 The review cited a Springer item as "Menotti - general proof of OS

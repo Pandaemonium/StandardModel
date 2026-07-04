@@ -222,9 +222,12 @@ nonnegativity/positivity lemmas; no transfer matrix construction yet);
 center-shift/electric-sector API over a configuration space with shift
 permutations; electric sectors as shift eigenconditions; shift-invariant
 diagonal observables preserve sectors; shift-invariant finite kernels preserve
-sectors by finite reindexing. This is the non-vacuous electric-sector
-bookkeeping layer, but it does not yet construct the concrete finite-group
-torus center shifts or Q2 transfer matrix);
+sectors by finite reindexing. It also adds a concrete finite-group torus
+link-field model with x/y center-shift permutations and proves that all
+plaquette holonomies, hence all observables factoring through the plaquette
+field, are invariant under those shifts and preserve the abstract electric
+sectors. This is non-vacuous electric-sector bookkeeping; it does not yet
+construct the Q2 transfer matrix);
 `FluxSectorGeneral` (T3/Q3 abstract finite sector-support API: sector label
 maps, sector support predicates, diagonal sector projections, label-preserving
 finite transfer kernels, projection idempotence/orthogonality, finite
