@@ -122,13 +122,20 @@ character bound `|chi(g)| <= chi(1)` (vacuum dominance `|gamma| <= 1`), and
 any identification with `TransferGapDefinition.finiteMassGap` - those are the
 next honest gap-lane targets; axiom footprint
 [propext, Classical.choice, Quot.sound]);
+`FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every
+finite-dimensional complex representation of a finite group admits a
+unitary matrix model - Weyl's unitarian trick in pure matrix algebra
+(Weyl-averaged Gram matrix, its `M h`-intertwining identity, conjugation
+by its `CFC.sqrt`), holding for EVERY `FDRep`, not just simple ones;
+axiom footprint [propext, Classical.choice, Quot.sound]);
 `WilsonVacuumDominance` (YM1/gap lane: vacuum dominance for unitary matrix
 models - diagonal entries of a unitary matrix have modulus at most 1, hence
 `|tr M| <= n`, hence `|wilsonNormalizedGamma| <= 1` and NONNEGATIVE string
-tension, all under an explicit `R.character g = tr (rho' g)` unitary
-matrix-model hypothesis; discharging that hypothesis for every simple `R`
-is finite-group unitarizability, an honestly-open follow-up; axiom footprint
-[propext, Classical.choice, Quot.sound]);
+tension, under an explicit `R.character g = tr (rho' g)` unitary
+matrix-model hypothesis, PLUS the UNCONDITIONAL forms
+`norm_wilsonNormalizedGamma_le_one'` / `wilsonStringTension_nonneg'` for
+every simple `R` (queue item Q4 closed, via `FDRepUnitarizable`); axiom
+footprint [propext, Classical.choice, Quot.sound]);
 `EnsembleComplexBridge` (YM0/YM1 connector: the complex Wilson link
 partition/numerator/expectation of `TreeGaugeBridge` are literally the casts
 of the real T3 `PlaquetteEnsemble` ones, and the complex Wilson link

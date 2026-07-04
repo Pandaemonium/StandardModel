@@ -9,12 +9,12 @@ section 14 (Q-items).
 
 | task | queue | status | owner | file globs | notes |
 |------|-------|--------|-------|-----------|-------|
-| T0 preflight | - | open | - | (read-only + this dir) | day 1 first cycle |
+| T0 preflight | - | done-claude | claude | (read-only + this dir) | day 1 first cycle; git clean at 6a235b9; oracle/build pending final check |
 | T1 Wilson cut factorization | Q1 | open | - | PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionPositivity*.lean | flagship; after T0 |
 | T2 transfer Hilbert space | Q2 | open | - | PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert*.lean | design thread first |
 | T3 D12 sector decomposition | Q3 | open | - | PhysicsSM/Draft/NullEdge/GateYM/FluxSector*.lean | design thread first |
-| T4 harvest unitarizability | Q4 | open | - | PhysicsSM/Draft/NullEdge/GateYM/FDRepUnitarizable.lean, WilsonVacuumDominance.lean | d4a9bd1f; harvest-first |
-| T5 eigenvalue reality/ordering | Q5 | open | - | PhysicsSM/Draft/NullEdge/GateYM/FusionTransferSpectrum.lean (extend) | after T4 |
+| T4 harvest unitarizability | Q4 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FDRepUnitarizable.lean, WilsonVacuumDominance.lean | d4a9bd1f harvested + integrated; unconditional corollaries added |
+| T5 eigenvalue reality/ordering | Q5 | open | - | PhysicsSM/Draft/NullEdge/GateYM/FusionTransferSpectrum.lean (extend) | after T4; T4 now done, ready to claim |
 | T6 KP finite conclusion | Q6 | open | - | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean | strategy job first |
 | T7 strong-coupling polymer map | Q7 | open | - | PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymer*.lean | statement layer |
 | T8 exponential clustering | Q8 | open | - | (after T6/T7) | gated |
@@ -30,7 +30,7 @@ section 14 (Q-items).
 
 | project id | name | rung | status | owner | notes |
 |-----------|------|------|--------|-------|-------|
-| d4a9bd1f | ym-gap-unitarizability | Q4 | RUNNING (at planning) | unclaimed | harvest checklist in task note 2026-07-04 |
+| d4a9bd1f | ym-gap-unitarizability | Q4 | COMPLETE+HARVESTED+INTEGRATED | closed | task 955405d9; integrated as FDRepUnitarizable.lean; see task note for full harvest record |
 | 1d9b5b19 | ym1-treegauge-rect | Q-done | COMPLETE+INTEGRATED | closed | RectTreeGauge.lean |
 | 3435c7a3 | ym1-fusion-2dexact v2 | done | COMPLETE+INTEGRATED | closed | historical |
 | bf525f23 / 8c4d10be | (non-YM audits) | - | not ours | - | do not touch |
@@ -40,3 +40,6 @@ section 14 (Q-items).
 (none yet)
 
 ## Heartbeat log (append-only: `<day>.<HH:MM> <agent> <task> <next-step>`)
+
+1.09:00 claude T0 git status clean at 6a235b9; aristotle list shows d4a9bd1f IDLE (COMPLETE) -> harvesting per T4 before continuing T0 checks; next: oracle + aggregate build
+1.09:20 claude T4 d4a9bd1f harvested: statement byte-identical to skeleton (no Simple R added, literal unitarity eq, Matrix.trace conclusion preserved), local lake env lean clean, axioms [propext, Classical.choice, Quot.sound] on all 4 declarations; integrated as GateYM/FDRepUnitarizable.lean, added norm_wilsonNormalizedGamma_le_one' + wilsonStringTension_nonneg' (unconditional) to WilsonVacuumDominance.lean, wired into aggregator; aggregate GateYM build green (8061 jobs); next: T0 remaining checks (oracle, full lake build), then commit, then claim T1
