@@ -29,6 +29,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
+import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
@@ -216,12 +217,20 @@ invariance under those weights);
 Gauss-invariant/zero-momentum/trivial-flux vacuum-sector predicate and
 finite real spectral-ratio gap `-log(lambda1/lambda0)` with elementary
 nonnegativity/positivity lemmas; no transfer matrix construction yet);
+`FluxSectorGeneral` (T3/Q3 abstract finite sector-support API: sector label
+maps, sector support predicates, diagonal sector projections, label-preserving
+finite transfer kernels, and the theorem that such kernels preserve
+sector-supported wavefunctions. This is definition/support bookkeeping only:
+no physical finite-G flux labels, transfer-matrix construction, or spectral
+claim is made here);
 `FluxSectorZ2` (T3/Q3 first Z2-torus sector layer: names the two winding
 flux bits, builds the trivial-flux predicate into the D12
 `SymmetrySector`, records abstract quantum-number preservation lemmas, and
 separates `fluxGap` from `localGlueballGap`; it also starts the concrete
-Bool-array base-cycle winding-label realization, with gauge/transfer
-preservation theorems still unclaimed);
+Bool-array base-cycle winding-label realization, proves concrete Z2
+vertex-gauge updates preserve winding labels, and proves diagonal local
+observable multiplication preserves winding-sector support; transfer-kernel
+instantiation remains future work);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

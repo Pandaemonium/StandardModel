@@ -13,10 +13,12 @@ sector. Current Lean status:
   concrete Z2 vertex-gauge updates preserve the winding label, and has a
   draft support-level local-algebra slice saying diagonal observable
   multiplication preserves each winding sector.
+- `PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral` adds the abstract
+  finite-sector support API: sector label maps, sector projections,
+  label-preserving finite transfer kernels, and the theorem that such
+  kernels preserve sector-supported wavefunctions.
 - The current support-level slice is verified by direct file check and
-  targeted module build, but not yet committed because the aggregate
-  GateYM build is temporarily blocked by a concurrent T5 import cycle in
-  `FusionTransferSpectrum` / `WilsonVacuumDominance`.
+  targeted module build; it is committed as `ac38785`.
 - Q3's required baseline is: define the flux-sector decomposition,
   prove transfer preserves it at least on the Z2 torus, and prove the
   local plaquette algebra preserves the trivial-flux sector. The strong
@@ -26,6 +28,7 @@ sector. Current Lean status:
 When executing this call, attach the source file verbatim:
 
 ```text
+--source-file PhysicsSM/Draft/NullEdge/GateYM/FluxSectorGeneral.lean
 --source-file PhysicsSM/Draft/NullEdge/GateYM/FluxSectorZ2.lean
 ```
 
@@ -36,14 +39,15 @@ python Scripts/autonomous_loop/send_claude_review.py \
   --model claude-fable-5 \
   --slug fable-A-q3-flux-sector-20260704 \
   --prompt-file AgentTasks/fable-prompts/fable-A-q3-flux-sector-20260704.md \
+  --source-file PhysicsSM/Draft/NullEdge/GateYM/FluxSectorGeneral.lean \
   --source-file PhysicsSM/Draft/NullEdge/GateYM/FluxSectorZ2.lean \
   --max-budget-usd 15
 ```
 
 ## Verbatim Material
 
-Use the attached `FluxSectorZ2.lean` as the verbatim material under
-review. Also read these local run files for context:
+Use the attached `FluxSectorGeneral.lean` and `FluxSectorZ2.lean` as the
+verbatim material under review. Also read these local run files for context:
 
 - `AgentTasks/fourday-ym-run-2026-07-05/RUN_PLAN.md`
 - `AgentTasks/fourday-ym-run-2026-07-05/TASK_DIRECTIONS.md`, T3/Q3
