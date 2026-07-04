@@ -4,30 +4,36 @@ import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflectionEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
 
 /-!
-# Gate YM3: Wilson weights and the opposite reflection convention
+# Gate YM3: Wilson weights and the reflection convention
 
 This module supplies the Wilson-specific bridge needed after
-`PlaquetteReflection.productWeight_reflectLinkField_mirrorPlaquette`.
-Reflecting a plaquette boundary reverses noncommutative multiplication order, so
-the reflected product naturally lands in `MulOpposite G`. For a representation
-`rho : G -> Mat_n(C)`, the honest representation of `MulOpposite G` is
+`PlaquetteReflection.localWeight_hol_mirrorPlaquette`.
 
-`rhoOppositeInv rho h = rho h.unop^{-1}`.
+**N3-corrected convention (Route B).** `ReflectionCore.reflectLinkField` now
+carries a group inverse (`(theta U) e = (U (reflectE e))^{-1}`), which makes
+the genuine mirror-plaquette holonomy the honest GROUP INVERSE of the
+original plaquette holonomy at the reflected configuration
+(`PlaquetteReflection.hol_mirrorPlaquette_eq_inv`) - a conjugacy-class
+invariant, unlike the previous pure word reversal that node N3
+(`MirrorHolonomyConjugation.lean`) showed was false for nonabelian gauge
+groups. Consequently the Wilson-specific bridge needed here is simply
+inversion-invariance of the Wilson local weight
+(`WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary`, an immediate
+consequence of unitarity), applied directly in `G` - no `MulOpposite`
+detour, no separate "opposite representation" `rhoOppositeInv`. (The
+previous version of this module built exactly such an opposite-inverse
+representation as a workaround for the uncorrected, non-conjugacy-invariant
+mirror convention; that workaround is no longer needed and has been
+removed.)
 
-The inverse is load-bearing: it corrects the order reversal in the opposite
-group. Under the usual unitarity hypothesis, the Wilson local weight for this
-opposite representation agrees pointwise with the `h.unop` local weight used by
-the generic reflection product theorem. This gives Wilson-specialized
-single-plaquette, product-weight, and `PlaquetteEnsemble.weight` reflection
-identities, and rephrases the mirror-stable/paired-family product and ensemble
-wrappers with a Wilson-language local compatibility hypothesis against
-`rhoOppositeInv`.
-The same opposite representation also inherits the existing Wilson kernel-PSD,
-gauge-invariance, and partition-positivity wrappers. The module still stops
-before discharging that same-family compatibility for a concrete plaquette
-family, or proving any cut factorization, positive-side algebra, or RP-LINK
-inequality; the kernel PSD transfer below is only the Route B one-link input
-for the opposite inverse representation.
+This gives Wilson-specialized single-plaquette, product-weight, and
+`PlaquetteEnsemble.weight` reflection identities, and rephrases the
+mirror-stable/paired-family product and ensemble wrappers with a Wilson
+inversion-invariance hypothesis. The module still stops before discharging
+that same-family compatibility for a concrete plaquette family, or proving
+any cut factorization, positive-side algebra, or RP-LINK inequality; see
+`MirrorHolonomyResolution.lean` for the general (independent-configuration)
+mirror-plaquette Wilson-weight identity this bridge feeds into.
 
 Draft-trust: kernel-checked, no `s o r r y`, no
 `n a t i v e _ d e c i d e`.
@@ -45,80 +51,12 @@ open GaugeCoreGeneral ReflectionCore PlaquetteCore PlaquetteReflection
 
 variable {G : Type*} [Group G] {n : ℕ}
 
-/-- The inverse-pulled representation on the opposite group.
-
-For `h : MulOpposite G`, the underlying group element is `h.unop`; the inverse
-makes the multiplication law covariant rather than contravariant. -/
-noncomputable def rhoOppositeInv
-    (rho : G → Matrix (Fin n) (Fin n) ℂ) (h : MulOpposite G) :
-    Matrix (Fin n) (Fin n) ℂ :=
-  rho h.unop⁻¹
-
-/-- `rhoOppositeInv` is multiplicative when `rho` is multiplicative. -/
-theorem rhoOppositeInv_mul
-    (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
-    (g h : MulOpposite G) :
-    rhoOppositeInv rho (g * h) = rhoOppositeInv rho g * rhoOppositeInv rho h := by
-  simp [rhoOppositeInv, hmul]
-
-/-- `rhoOppositeInv` sends the opposite identity to the identity matrix. -/
-theorem rhoOppositeInv_one
-    (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hone : rho 1 = 1) :
-    rhoOppositeInv rho 1 = 1 := by
-  simp [rhoOppositeInv, hone]
-
-/-- If `rho` is unitary, then the opposite inverse representation is unitary. -/
-theorem rhoOppositeInv_unitary
-    (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
-    (h : MulOpposite G) :
-    (rhoOppositeInv rho h)ᴴ * rhoOppositeInv rho h = 1 := by
-  simp [rhoOppositeInv, hunit]
-
-/-- The Wilson local weight for the opposite inverse representation agrees
-with the generic reflected-product local weight `h |-> w(h.unop)`.
-
-The proof uses the existing unitarity-dependent inversion symmetry of the real
-character, so no extra reflection or plaquette geometry is hidden here. -/
-theorem wilsonLocalWeight_rhoOppositeInv
-    (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
-    (hone : rho 1 = 1)
-    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
-    (h : MulOpposite G) :
-    WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho) h =
-      WilsonLocalWeight.wilsonLocalWeight beta rho h.unop := by
-  unfold WilsonLocalWeight.wilsonLocalWeight WilsonWeightPositivity.reChar rhoOppositeInv
-  rw [WilsonWeightPositivity.rho_inv_eq_conjTranspose rho hmul hone hunit]
-  simp [Matrix.trace_conjTranspose]
-
-set_option linter.unusedFintypeInType false in
-/-- The Route B Wilson kernel PSD theorem transfers to the opposite inverse
-representation.
-
-This is still only the one-link kernel positivity input, now indexed by
-`MulOpposite G`. It does not assert any lattice cut factorization or
-reflection-positivity inequality. -/
-theorem wilsonOppositeKernel_posSemidef [Fintype G]
-    (beta : ℝ) (hbeta : 0 ≤ beta)
-    (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
-    (hone : rho 1 = 1)
-    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1) :
-    (WilsonWeightPositivity.wilsonKernel beta (rhoOppositeInv rho)).PosSemidef := by
-  letI : Fintype (MulOpposite G) := Fintype.ofEquiv G MulOpposite.opEquiv
-  exact WilsonWeightPositivity.wilsonKernel_posSemidef (G := MulOpposite G)
-    beta hbeta (rhoOppositeInv rho)
-    (rhoOppositeInv_mul rho hmul)
-    (rhoOppositeInv_one rho hone)
-    (rhoOppositeInv_unitary rho hunit)
-
 /-- Single-plaquette Wilson reflection identity.
 
-The reflected plaquette holonomy for `rho` is measured by the mirrored plaquette
-over `opLinkField U` using the opposite inverse representation. -/
+For a unitary representation, the mirror plaquette's Wilson weight at `U`
+equals the original plaquette's Wilson weight at the reflected link field
+`theta U` - a direct consequence of `hol_mirrorPlaquette_eq_inv` plus
+inversion-invariance of the Wilson weight. -/
 theorem localWeight_hol_reflectLinkField_mirrorPlaquette_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     (p : Plaquette Λ) (beta : ℝ)
@@ -127,22 +65,17 @@ theorem localWeight_hol_reflectLinkField_mirrorPlaquette_wilson
     (hone : rho 1 = 1)
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (U : Λ.LinkField (G := G)) :
-    WilsonLocalWeight.wilsonLocalWeight beta rho (p.hol (R.reflectLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        ((mirrorPlaquette R p).hol (ReflectionCore.Reflection.opLinkField U)) := by
-  have hgen := PlaquetteReflection.localWeight_hol_reflectLinkField_mirrorPlaquette R
-    (WilsonLocalWeight.wilsonLocalWeight beta rho) p U
-  rw [hgen]
-  exact (wilsonLocalWeight_rhoOppositeInv beta rho hmul hone hunit
-    ((mirrorPlaquette R p).hol (ReflectionCore.Reflection.opLinkField U))).symm
+    WilsonLocalWeight.wilsonLocalWeight beta rho ((mirrorPlaquette R p).hol U) =
+      WilsonLocalWeight.wilsonLocalWeight beta rho (p.hol (R.reflectLinkField U)) :=
+  PlaquetteReflection.localWeight_hol_mirrorPlaquette R
+    (WilsonLocalWeight.wilsonLocalWeight beta rho)
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) p U
 
 /-- Wilson-specialized reflected product-weight identity.
 
-Reflecting a plaquette family sends the Wilson product for `rho` to the mirrored
-plaquette family with the opposite inverse representation `rhoOppositeInv rho`.
-This is the precise Wilson/opposite compatibility statement available at the
-pure product-weight level. It does not assert reflection invariance of a chosen
-plaquette set. -/
+Reflecting a plaquette family sends the Wilson product for `rho` at the
+mirror family evaluated at `U` to the original family's Wilson product at
+the reflected link field `theta U`. -/
 theorem productWeight_reflectLinkField_mirrorPlaquette_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     {ι : Type*} [Fintype ι]
@@ -152,16 +85,13 @@ theorem productWeight_reflectLinkField_mirrorPlaquette_wilson
     (hone : rho 1 = 1)
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (U : Λ.LinkField (G := G)) :
-    PlaquetteCore.productWeight P (WilsonLocalWeight.wilsonLocalWeight beta rho)
-        (R.reflectLinkField U) =
-      PlaquetteCore.productWeight (fun i => mirrorPlaquette R (P i))
-        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho))
-        (ReflectionCore.Reflection.opLinkField U) := by
-  rw [PlaquetteReflection.productWeight_reflectLinkField_mirrorPlaquette]
-  unfold PlaquetteCore.productWeight
-  refine Finset.prod_congr rfl ?_
-  intro i _hi
-  rw [wilsonLocalWeight_rhoOppositeInv beta rho hmul hone hunit]
+    PlaquetteCore.productWeight (fun i => mirrorPlaquette R (P i))
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) U =
+      PlaquetteCore.productWeight P (WilsonLocalWeight.wilsonLocalWeight beta rho)
+        (R.reflectLinkField U) :=
+  PlaquetteReflection.productWeight_reflectLinkField_mirrorPlaquette R P
+    (WilsonLocalWeight.wilsonLocalWeight beta rho)
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) U
 
 /-- `PlaquetteEnsemble.weight` wrapper for the Wilson reflected product-weight
 identity. This is just the ensemble-level name for
@@ -175,20 +105,14 @@ theorem weight_reflectLinkField_mirrorPlaquette_wilson
     (hone : rho 1 = 1)
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (U : Λ.LinkField (G := G)) :
-    PlaquetteEnsemble.weight P (WilsonLocalWeight.wilsonLocalWeight beta rho)
-        (R.reflectLinkField U) =
-      PlaquetteEnsemble.weight (fun i => mirrorPlaquette R (P i))
-        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho))
-        (ReflectionCore.Reflection.opLinkField U) := by
+    PlaquetteEnsemble.weight (fun i => mirrorPlaquette R (P i))
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) U =
+      PlaquetteEnsemble.weight P (WilsonLocalWeight.wilsonLocalWeight beta rho)
+        (R.reflectLinkField U) := by
   unfold PlaquetteEnsemble.weight
   exact productWeight_reflectLinkField_mirrorPlaquette_wilson R P beta rho hmul hone hunit U
 
-/-- Wilson product-weight reflection for a mirror-stable plaquette family,
-assuming the Wilson local compatibility for the fixed link field `U`.
-
-This is the product-level analogue of
-`weight_reflectLinkField_of_mirrorStable_wilson`; it keeps the compatibility
-hypothesis local to the displayed `U`. -/
+/-- Wilson product-weight reflection for a mirror-stable plaquette family. -/
 theorem productWeight_reflectLinkField_of_mirrorStable_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     {ι : Type*} [Fintype ι]
@@ -198,26 +122,16 @@ theorem productWeight_reflectLinkField_of_mirrorStable_wilson
     (hone : rho 1 = 1)
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hstable : IsMirrorStableFamily R P τ)
-    (U : Λ.LinkField (G := G))
-    (hopWilson : ∀ i : ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U)) :
+    (U : Λ.LinkField (G := G)) :
     PlaquetteCore.productWeight P (WilsonLocalWeight.wilsonLocalWeight beta rho)
         (R.reflectLinkField U) =
-      PlaquetteCore.productWeight P (WilsonLocalWeight.wilsonLocalWeight beta rho) U := by
-  refine PlaquetteReflection.productWeight_reflectLinkField_of_mirrorStable
-    R P τ (WilsonLocalWeight.wilsonLocalWeight beta rho) hstable U ?_
-  intro i
-  change WilsonLocalWeight.wilsonLocalWeight beta rho
-      (((P i).hol (ReflectionCore.Reflection.opLinkField U)).unop) =
-    WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U)
-  rw [← wilsonLocalWeight_rhoOppositeInv beta rho hmul hone hunit]
-  exact hopWilson i
+      PlaquetteCore.productWeight P (WilsonLocalWeight.wilsonLocalWeight beta rho) U :=
+  PlaquetteReflection.productWeight_reflectLinkField_of_mirrorStable
+    R P τ (WilsonLocalWeight.wilsonLocalWeight beta rho) hstable
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) U
 
-/-- Wilson product-weight reflection for a paired plaquette family whose halves
-are explicit mirror partners, assuming the Wilson local compatibility for the
-fixed link field `U`. -/
+/-- Wilson product-weight reflection for a paired plaquette family whose
+halves are explicit mirror partners. -/
 theorem productWeight_reflectLinkField_of_mirrorPair_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     {ι : Type*} [Fintype ι]
@@ -228,60 +142,17 @@ theorem productWeight_reflectLinkField_of_mirrorPair_wilson
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hPQ : ∀ i : ι, mirrorPlaquette R (P i) = Q i)
     (hQP : ∀ i : ι, mirrorPlaquette R (Q i) = P i)
-    (U : Λ.LinkField (G := G))
-    (hopWilson : ∀ i : Bool × ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        (((mirrorPairFamily P Q) i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho (((mirrorPairFamily P Q) i).hol U)) :
+    (U : Λ.LinkField (G := G)) :
     PlaquetteCore.productWeight (mirrorPairFamily P Q)
         (WilsonLocalWeight.wilsonLocalWeight beta rho) (R.reflectLinkField U) =
       PlaquetteCore.productWeight (mirrorPairFamily P Q)
-        (WilsonLocalWeight.wilsonLocalWeight beta rho) U := by
-  refine PlaquetteReflection.productWeight_reflectLinkField_of_mirrorPair
-    R P Q (WilsonLocalWeight.wilsonLocalWeight beta rho) hPQ hQP U ?_
-  intro i
-  change WilsonLocalWeight.wilsonLocalWeight beta rho
-      ((((mirrorPairFamily P Q) i).hol
-          (ReflectionCore.Reflection.opLinkField U)).unop) =
-    WilsonLocalWeight.wilsonLocalWeight beta rho (((mirrorPairFamily P Q) i).hol U)
-  rw [← wilsonLocalWeight_rhoOppositeInv beta rho hmul hone hunit]
-  exact hopWilson i
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) U :=
+  PlaquetteReflection.productWeight_reflectLinkField_of_mirrorPair
+    R P Q (WilsonLocalWeight.wilsonLocalWeight beta rho) hPQ hQP
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) U
 
-/-- Convert the Wilson-language opposite-inverse local compatibility into the
-generic `h.unop` compatibility expected by the mirror-stable reflection
-theorems.
-
-This lemma does not prove the compatibility hypothesis; it only rewrites it
-from the representation `rhoOppositeInv rho` to the generic opposite-group
-local-weight form. -/
-theorem wilsonLocalOppositeCompatibility_of_rhoOppositeInv
-    {Λ : OrientedLattice} {ι : Type*}
-    (P : ι → Plaquette Λ) (beta : ℝ)
-    (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
-    (hone : rho 1 = 1)
-    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
-    (hopWilson : ∀ U : Λ.LinkField (G := G), ∀ i : ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U)) :
-    ∀ U : Λ.LinkField (G := G), ∀ i : ι,
-      (fun h : MulOpposite G => WilsonLocalWeight.wilsonLocalWeight beta rho h.unop)
-        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U) := by
-  intro U i
-  change WilsonLocalWeight.wilsonLocalWeight beta rho
-      (((P i).hol (ReflectionCore.Reflection.opLinkField U)).unop) =
-    WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U)
-  rw [← wilsonLocalWeight_rhoOppositeInv beta rho hmul hone hunit]
-  exact hopWilson U i
-
-/-- Wilson same-family weight reflection for a mirror-stable plaquette family,
-assuming the local Wilson compatibility is supplied using `rhoOppositeInv`.
-
-This packages `PlaquetteReflectionEnsemble.weight_reflectLinkField_of_mirrorStable`
-with the Wilson/opposite bridge; it does not discharge the local compatibility
-hypothesis. -/
+/-- Wilson same-family weight reflection for a mirror-stable plaquette
+family. -/
 theorem weight_reflectLinkField_of_mirrorStable_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     {ι : Type*} [Fintype ι]
@@ -291,21 +162,15 @@ theorem weight_reflectLinkField_of_mirrorStable_wilson
     (hone : rho 1 = 1)
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hstable : IsMirrorStableFamily R P τ)
-    (hopWilson : ∀ U : Λ.LinkField (G := G), ∀ i : ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U))
     (U : Λ.LinkField (G := G)) :
     PlaquetteEnsemble.weight P (WilsonLocalWeight.wilsonLocalWeight beta rho)
         (R.reflectLinkField U) =
-      PlaquetteEnsemble.weight P (WilsonLocalWeight.wilsonLocalWeight beta rho) U := by
-  exact PlaquetteReflectionEnsemble.weight_reflectLinkField_of_mirrorStable
+      PlaquetteEnsemble.weight P (WilsonLocalWeight.wilsonLocalWeight beta rho) U :=
+  PlaquetteReflectionEnsemble.weight_reflectLinkField_of_mirrorStable
     R P τ (WilsonLocalWeight.wilsonLocalWeight beta rho) hstable
-    (wilsonLocalOppositeCompatibility_of_rhoOppositeInv P beta rho hmul hone hunit
-      hopWilson) U
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) U
 
-/-- Wilson numerator reflection for a mirror-stable plaquette family, under the
-same explicit Wilson local compatibility hypothesis. -/
+/-- Wilson numerator reflection for a mirror-stable plaquette family. -/
 theorem numerator_observable_comp_reflectLinkField_of_mirrorStable_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     {ι : Type*} [Fintype ι] [Fintype (Λ.LinkField (G := G))]
@@ -315,23 +180,17 @@ theorem numerator_observable_comp_reflectLinkField_of_mirrorStable_wilson
     (hone : rho 1 = 1)
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hstable : IsMirrorStableFamily R P τ)
-    (hopWilson : ∀ U : Λ.LinkField (G := G), ∀ i : ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U))
     (observable : Λ.LinkField (G := G) → ℝ) :
     PlaquetteEnsemble.numerator P (WilsonLocalWeight.wilsonLocalWeight beta rho)
         (fun U => observable (R.reflectLinkField U)) =
       PlaquetteEnsemble.numerator P (WilsonLocalWeight.wilsonLocalWeight beta rho)
-        observable := by
-  exact PlaquetteReflectionEnsemble.numerator_observable_comp_reflectLinkField_of_mirrorStable
+        observable :=
+  PlaquetteReflectionEnsemble.numerator_observable_comp_reflectLinkField_of_mirrorStable
     R P τ (WilsonLocalWeight.wilsonLocalWeight beta rho) hstable
-    (wilsonLocalOppositeCompatibility_of_rhoOppositeInv P beta rho hmul hone hunit
-      hopWilson)
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit)
     observable
 
-/-- Wilson expectation reflection for a mirror-stable plaquette family, under
-the same explicit Wilson local compatibility hypothesis. -/
+/-- Wilson expectation reflection for a mirror-stable plaquette family. -/
 theorem expectation_observable_comp_reflectLinkField_of_mirrorStable_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     {ι : Type*} [Fintype ι] [Fintype (Λ.LinkField (G := G))]
@@ -341,23 +200,18 @@ theorem expectation_observable_comp_reflectLinkField_of_mirrorStable_wilson
     (hone : rho 1 = 1)
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hstable : IsMirrorStableFamily R P τ)
-    (hopWilson : ∀ U : Λ.LinkField (G := G), ∀ i : ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho ((P i).hol U))
     (observable : Λ.LinkField (G := G) → ℝ) :
     PlaquetteEnsemble.expectation P (WilsonLocalWeight.wilsonLocalWeight beta rho)
         (fun U => observable (R.reflectLinkField U)) =
       PlaquetteEnsemble.expectation P (WilsonLocalWeight.wilsonLocalWeight beta rho)
-        observable := by
-  exact PlaquetteReflectionEnsemble.expectation_observable_comp_reflectLinkField_of_mirrorStable
+        observable :=
+  PlaquetteReflectionEnsemble.expectation_observable_comp_reflectLinkField_of_mirrorStable
     R P τ (WilsonLocalWeight.wilsonLocalWeight beta rho) hstable
-    (wilsonLocalOppositeCompatibility_of_rhoOppositeInv P beta rho hmul hone hunit
-      hopWilson)
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit)
     observable
 
 /-- Wilson weight reflection for a paired plaquette family whose halves are
-explicit mirror partners, under the Wilson local compatibility hypothesis. -/
+explicit mirror partners. -/
 theorem weight_reflectLinkField_of_mirrorPair_wilson
     {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
     {ι : Type*} [Fintype ι]
@@ -368,19 +222,14 @@ theorem weight_reflectLinkField_of_mirrorPair_wilson
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hPQ : ∀ i : ι, mirrorPlaquette R (P i) = Q i)
     (hQP : ∀ i : ι, mirrorPlaquette R (Q i) = P i)
-    (hopWilson : ∀ U : Λ.LinkField (G := G), ∀ i : Bool × ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        (((mirrorPairFamily P Q) i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho (((mirrorPairFamily P Q) i).hol U))
     (U : Λ.LinkField (G := G)) :
     PlaquetteEnsemble.weight (mirrorPairFamily P Q)
         (WilsonLocalWeight.wilsonLocalWeight beta rho) (R.reflectLinkField U) =
       PlaquetteEnsemble.weight (mirrorPairFamily P Q)
-        (WilsonLocalWeight.wilsonLocalWeight beta rho) U := by
-  exact PlaquetteReflectionEnsemble.weight_reflectLinkField_of_mirrorPair
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) U :=
+  PlaquetteReflectionEnsemble.weight_reflectLinkField_of_mirrorPair
     R P Q (WilsonLocalWeight.wilsonLocalWeight beta rho) hPQ hQP
-    (wilsonLocalOppositeCompatibility_of_rhoOppositeInv
-      (mirrorPairFamily P Q) beta rho hmul hone hunit hopWilson) U
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) U
 
 /-- Wilson numerator reflection for a paired mirror-family package. -/
 theorem numerator_observable_comp_reflectLinkField_of_mirrorPair_wilson
@@ -393,20 +242,15 @@ theorem numerator_observable_comp_reflectLinkField_of_mirrorPair_wilson
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hPQ : ∀ i : ι, mirrorPlaquette R (P i) = Q i)
     (hQP : ∀ i : ι, mirrorPlaquette R (Q i) = P i)
-    (hopWilson : ∀ U : Λ.LinkField (G := G), ∀ i : Bool × ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        (((mirrorPairFamily P Q) i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho (((mirrorPairFamily P Q) i).hol U))
     (observable : Λ.LinkField (G := G) → ℝ) :
     PlaquetteEnsemble.numerator (mirrorPairFamily P Q)
         (WilsonLocalWeight.wilsonLocalWeight beta rho)
         (fun U => observable (R.reflectLinkField U)) =
       PlaquetteEnsemble.numerator (mirrorPairFamily P Q)
-        (WilsonLocalWeight.wilsonLocalWeight beta rho) observable := by
-  exact PlaquetteReflectionEnsemble.numerator_observable_comp_reflectLinkField_of_mirrorPair
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) observable :=
+  PlaquetteReflectionEnsemble.numerator_observable_comp_reflectLinkField_of_mirrorPair
     R P Q (WilsonLocalWeight.wilsonLocalWeight beta rho) hPQ hQP
-    (wilsonLocalOppositeCompatibility_of_rhoOppositeInv
-      (mirrorPairFamily P Q) beta rho hmul hone hunit hopWilson) observable
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) observable
 
 /-- Wilson expectation reflection for a paired mirror-family package. -/
 theorem expectation_observable_comp_reflectLinkField_of_mirrorPair_wilson
@@ -419,62 +263,15 @@ theorem expectation_observable_comp_reflectLinkField_of_mirrorPair_wilson
     (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
     (hPQ : ∀ i : ι, mirrorPlaquette R (P i) = Q i)
     (hQP : ∀ i : ι, mirrorPlaquette R (Q i) = P i)
-    (hopWilson : ∀ U : Λ.LinkField (G := G), ∀ i : Bool × ι,
-      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
-        (((mirrorPairFamily P Q) i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      WilsonLocalWeight.wilsonLocalWeight beta rho (((mirrorPairFamily P Q) i).hol U))
     (observable : Λ.LinkField (G := G) → ℝ) :
     PlaquetteEnsemble.expectation (mirrorPairFamily P Q)
         (WilsonLocalWeight.wilsonLocalWeight beta rho)
         (fun U => observable (R.reflectLinkField U)) =
       PlaquetteEnsemble.expectation (mirrorPairFamily P Q)
-        (WilsonLocalWeight.wilsonLocalWeight beta rho) observable := by
-  exact PlaquetteReflectionEnsemble.expectation_observable_comp_reflectLinkField_of_mirrorPair
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) observable :=
+  PlaquetteReflectionEnsemble.expectation_observable_comp_reflectLinkField_of_mirrorPair
     R P Q (WilsonLocalWeight.wilsonLocalWeight beta rho) hPQ hQP
-    (wilsonLocalOppositeCompatibility_of_rhoOppositeInv
-      (mirrorPairFamily P Q) beta rho hmul hone hunit hopWilson) observable
-
-/-- The opposite inverse Wilson product weight is gauge invariant on
-`MulOpposite G`-valued link fields. -/
-theorem wilsonOppositeWeight_gauge {ι : Type*} [Fintype ι]
-    {Λ : GaugeCoreGeneral.OrientedLattice} (P : ι → Plaquette Λ)
-    (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
-    (g : Λ.V → MulOpposite G) (U : Λ.LinkField (G := MulOpposite G)) :
-    PlaquetteEnsemble.weight P
-        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho))
-        (Λ.gauge g U) =
-      PlaquetteEnsemble.weight P
-        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)) U := by
-  exact WilsonLocalWeight.wilsonWeight_gauge P beta (rhoOppositeInv rho)
-    (rhoOppositeInv_mul rho hmul) (rhoOppositeInv_one rho hone) g U
-
-/-- The opposite inverse Wilson expectation is invariant under applying a fixed
-`MulOpposite G` gauge transformation to the observable. -/
-theorem wilsonOppositeExpectation_observable_comp_gauge {ι : Type*} [Fintype ι]
-    {Λ : GaugeCoreGeneral.OrientedLattice} [Fintype (Λ.LinkField (G := MulOpposite G))]
-    (P : ι → Plaquette Λ)
-    (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ)
-    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
-    (g : Λ.V → MulOpposite G) (observable : Λ.LinkField (G := MulOpposite G) → ℝ) :
-    PlaquetteEnsemble.expectation P
-        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho))
-        (fun U => observable (Λ.gauge g U)) =
-      PlaquetteEnsemble.expectation P
-        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)) observable := by
-  exact WilsonLocalWeight.wilsonExpectation_observable_comp_gauge P beta (rhoOppositeInv rho)
-    (rhoOppositeInv_mul rho hmul) (rhoOppositeInv_one rho hone) g observable
-
-/-- The opposite inverse Wilson plaquette ensemble has positive partition
-function, by the same exponential positivity argument as the original Wilson
-weight. -/
-theorem wilsonOppositePartition_pos {ι : Type*} [Fintype ι]
-    {Λ : GaugeCoreGeneral.OrientedLattice} [Fintype (Λ.LinkField (G := MulOpposite G))]
-    (P : ι → Plaquette Λ)
-    (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ) :
-    0 < PlaquetteEnsemble.partition P
-        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)) := by
-  exact WilsonLocalWeight.wilsonPartition_pos P beta (rhoOppositeInv rho)
+    (WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit) observable
 
 end WilsonReflectionCompatibility
 end GateYM

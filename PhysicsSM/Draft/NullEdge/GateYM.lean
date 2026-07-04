@@ -22,6 +22,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflection
 import PhysicsSM.Draft.NullEdge.GateYM.MirrorHolonomyConjugation
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflectionEnsemble
+import PhysicsSM.Draft.NullEdge.GateYM.MirrorHolonomyResolution
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity

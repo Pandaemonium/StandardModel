@@ -32,13 +32,17 @@ demotion-test discussion).
    R`, `DependsOnPositiveSide F`, saying `F` agrees on any two link
    fields that agree on every positive-side link. This avoids
    restructuring `LinkField` into a dependent/subtype form.
-3. **`theta` lifted to link fields** as the direct pullback `(theta U) e
-   := U (reflectE e)`, with NO extra group-inverse twist. Justified
-   post-hoc by `reflectLinkField_involutive` below (a genuine involution
-   without needing one) - but this is a design CHOICE, not a derived
-   necessity; a future presentation with a different `reflectE`
-   convention might need the inverse variant instead. Flagged for
-   cross-review, not asserted as final.
+3. **`theta` lifted to link fields** with the group-INVERSE twist
+   `(theta U) e := (U (reflectE e))^{-1}` (N3-corrected convention, Route B).
+   The first pass used the inverse-free pullback `(theta U) e := U (reflectE
+   e)`; that was flagged as a provisional design CHOICE, and node N3
+   (`MirrorHolonomyConjugation.lean`) then showed it makes the genuine
+   mirror-plaquette holonomy a pure WORD REVERSAL, which is not a
+   conjugacy-class invariant for nonabelian groups, breaking the Wilson
+   weight identity. The inverse variant adopted here makes the mirror
+   holonomy the honest group INVERSE of the original at the reflected
+   configuration (`ReflectionWalk.hol_mirrorWalk_eq_inv`), and remains a
+   genuine involution (`reflectLinkField_involutive`).
 
 ## What this file proves (first pass only)
 
@@ -128,21 +132,31 @@ theorem reflectE_cutLink {e : Λ.E} (he : R.cutLink e) : R.cutLink (R.reflectE e
   rw [R.reflect_src, R.reflect_tgt]
   tauto
 
-variable {G : Type*}
+variable {G : Type*} [Group G]
 
-/-- The pullback action of reflection on link fields (design decision 3
-above: NO extra group inverse). -/
+/-- The pullback action of reflection on link fields.
+
+**Convention correction (N3 fix, Route B).** The reflection pullback now
+includes the group INVERSE: `(theta U) e = (U (reflectE e))^{-1}`. This is
+the inverse variant flagged as possibly-necessary in design decision 3 of
+the module docstring. It is what makes the genuine mirror-plaquette
+holonomy come out to the group INVERSE of the original plaquette holonomy
+(evaluated at the reflected configuration), rather than a mere word
+reversal - see `MirrorHolonomyConjugation.lean` for why the previous
+inverse-free pullback produced a non-conjugacy-invariant word for
+nonabelian gauge groups, and `ReflectionWalk.hol_mirrorWalk_eq_inv` for the
+corrected identity this choice unlocks. -/
 def reflectLinkField (U : Λ.LinkField (G := G)) : Λ.LinkField (G := G) :=
-  fun e => U (R.reflectE e)
+  fun e => (U (R.reflectE e))⁻¹
 
 /-- The reflection action on link fields is an involution - `theta` is
-its own inverse, as a reflection must be. -/
+its own inverse, as a reflection must be. The extra inverse in
+`reflectLinkField` is cancelled by applying it twice (`inv_inv`). -/
 theorem reflectLinkField_involutive :
     Function.Involutive (R.reflectLinkField (G := G)) := by
   intro U
   funext e
-  unfold reflectLinkField
-  rw [R.reflectE_involutive e]
+  simp only [reflectLinkField, inv_inv, R.reflectE_involutive e]
 
 /-- An observable `F` depends only on the positive-side sublink field: it
 agrees on any two link fields that agree on every positive-side link.
@@ -151,35 +165,28 @@ on the positive side." -/
 def DependsOnPositiveSide {Rt : Type*} (F : Λ.LinkField (G := G) → Rt) : Prop :=
   ∀ U V : Λ.LinkField (G := G), (∀ e, R.positiveLink e → U e = V e) → F U = F V
 
-variable [Group G]
+/-- Single-step compatibility, forward-traversal case (N3-corrected
+convention).
 
-/-- Single-step compatibility (answers `review:reflection-core-first-pass`'s
-requested check against the `Step.rev` convention, forward-traversal
-case): the reflected link field's forward-step holonomy at `e` equals
-the original link field's forward-step holonomy at the reflected edge
-`reflectE e`. Immediate from the definitions - `reflectLinkField` was
-built exactly so this holds without needing `reflect_src`/`reflect_tgt`
-at the single-step level (those govern how the REFLECTED step's
-endpoints relate to the original, not the holonomy value itself). -/
+Because `reflectLinkField` now carries a group inverse
+(`(theta U) e = (U (reflectE e))^{-1}`), the reflected link field's
+FORWARD-step holonomy at `e` equals the original link field's REVERSE-step
+holonomy at the reflected edge `reflectE e` - the `fwd`/`rev` roles are
+swapped relative to the previous inverse-free convention. Both sides equal
+`(U (reflectE e))^{-1}`, so this is still definitional. -/
 theorem stepHol_reflectLinkField_fwd (U : Λ.LinkField (G := G)) (e : Λ.E) :
     OrientedLattice.stepHol (R.reflectLinkField U) (OrientedLattice.Step.fwd e)
-      = OrientedLattice.stepHol U (OrientedLattice.Step.fwd (R.reflectE e)) :=
-  rfl
-
-/-- Single-step compatibility, reverse-traversal case: the reflected link
-field's reverse-step holonomy at `e` (which is `(U (reflectE e))⁻¹` by
-the `Step.rev` convention) equals the original link field's reverse-step
-holonomy at the reflected edge. Together with the `fwd` case above, this
-is exactly the "one new compatibility theorem" `review:reflection-core-
-first-pass` asked for at the single-step level; the WALK-level
-generalization (relating `hol` of a full walk to `hol` of a suitably
-reversed-and-reflected walk, which needs a `Walk` reversal/concatenation
-operation not yet built in `GaugeCoreGeneral`) is a documented handoff,
-not attempted here. -/
-theorem stepHol_reflectLinkField_rev (U : Λ.LinkField (G := G)) (e : Λ.E) :
-    OrientedLattice.stepHol (R.reflectLinkField U) (OrientedLattice.Step.rev e)
       = OrientedLattice.stepHol U (OrientedLattice.Step.rev (R.reflectE e)) :=
   rfl
+
+/-- Single-step compatibility, reverse-traversal case (N3-corrected
+convention): the reflected link field's REVERSE-step holonomy at `e`
+equals the original link field's FORWARD-step holonomy at the reflected
+edge. Both sides equal `U (reflectE e)` (the two inverses cancel). -/
+theorem stepHol_reflectLinkField_rev (U : Λ.LinkField (G := G)) (e : Λ.E) :
+    OrientedLattice.stepHol (R.reflectLinkField U) (OrientedLattice.Step.rev e)
+      = OrientedLattice.stepHol U (OrientedLattice.Step.fwd (R.reflectE e)) := by
+  simp [OrientedLattice.stepHol, reflectLinkField]
 
 end Reflection
 end ReflectionCore

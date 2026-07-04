@@ -6,17 +6,26 @@ Status: outline only; draft Lean inventory, not a promotion request.
 
 ## Working scope
 
-This unit should present the finite, algebraic reflection-positivity stack for
-GateYM. The safest current headline is:
+**UPDATED 1.16:25 (post Aristotle `e6e46e9f` harvest, N3 redesign):** this
+outline predates a convention correction and is partially stale - see the
+declaration-list notes below marked "REMOVED"/"RENAMED". This unit should
+present the finite, algebraic reflection-positivity stack for GateYM. The
+safest current headline is:
 
 > A kernel-checked draft stack for reflection geometry, reflection
-> change-of-variables, positive Wilson local kernels, and a baseline doubled
-> Wilson reflection-form theorem, with the full Wilson ensemble identification
-> and OS/GNS transfer Hilbert-space construction still open.
+> change-of-variables, positive Wilson local kernels, and a doubled Wilson
+> reflection-form theorem for which the genuine two-plaquette ensemble
+> weight IS now identified (for the zero-cut construction, at
+> mirror-coordinate configurations) - with cut-plaquette (shocking tier)
+> reflection positivity and the OS/GNS transfer Hilbert-space construction
+> still open.
 
-Do not claim that RP-LINK is fully closed. The current T1 baseline theorem is
-real progress, but the run ledger explicitly keeps ensemble-identification and
-cut-plaquette strong-tier work open.
+Do not claim that RP-LINK is fully closed: the zero-cut doubled-lattice
+construction is a well-definedness/consistency instance of reflection
+positivity, not the case with actual cut plaquettes (Osterwalder-Seiler's
+genuinely nontrivial content). The T1 zero-cut tier (baseline AND
+ensemble-identification) is now closed; cut-plaquette strong/shocking-tier
+work remains open.
 
 ## Theorem inventory
 
@@ -26,10 +35,23 @@ Reflection geometry:
   - `Reflection`
   - `positiveLink`, `negativeLink`, `cutLink`
   - `reflectE_positiveLink`, `reflectE_negativeLink`, `reflectE_cutLink`
-  - `reflectLinkField`, `reflectLinkField_involutive`
+  - `reflectLinkField`, `reflectLinkField_involutive` - **RENAMED CONVENTION
+    1.16:25**: `reflectLinkField` now includes a group inverse
+    (`(theta U) e = (U (reflectE e))^-1`, N3 fix, Route B); the old
+    inverse-free pullback was refuted by `MirrorHolonomyConjugation.lean`.
   - `DependsOnPositiveSide`
-  - `stepHol_reflectLinkField_fwd`
-  - `stepHol_reflectLinkField_rev`
+  - `stepHol_reflectLinkField_fwd`, `stepHol_reflectLinkField_rev` -
+    fwd/rev roles swapped on the RHS under the corrected convention.
+- `PhysicsSM/Draft/NullEdge/GateYM/MirrorHolonomyConjugation.lean` (NEW,
+  N3 negative result): `mirrorConj_counterexample`, `mirrorConj_not_always`,
+  `mirrorHol_eq_p0Hol_of_comm`, `ordinaryReversal_eq_p0Hol_inv` - proves the
+  raw (old-convention) mirror holonomy is NOT generally conjugate to the
+  original or its inverse (S3 counterexample).
+- `PhysicsSM/Draft/NullEdge/GateYM/MirrorHolonomyResolution.lean` (NEW, N3
+  resolution): `liftStepPos`, `liftPlaquettePos`, `hol_liftPlaquettePos`,
+  `mirrorConfig`, `hol_mirrorPlaquette_mirrorConfig`,
+  `mirrorPlaquette_wilsonWeight_eq` - the general (independent-configuration)
+  Wilson-weight identity the old convention could not deliver.
 - `PhysicsSM/Draft/NullEdge/GateYM/ReflectionDouble.lean`
   - `doubleLattice`
   - `doubleReflection`
@@ -51,8 +73,12 @@ Plaquette reflection:
 - `PhysicsSM/Draft/NullEdge/GateYM/PlaquetteReflection.lean`
   - `mirrorPlaquette`
   - `mirrorPlaquette_walk`
-  - `op_hol_reflectLinkField_mirrorPlaquette`
-  - `localWeight_hol_reflectLinkField_mirrorPlaquette`
+  - `hol_mirrorPlaquette_eq_inv` (RENAMED 1.16:25, was
+    `op_hol_reflectLinkField_mirrorPlaquette`; now a same-group identity,
+    no `MulOpposite`)
+  - `localWeight_hol_mirrorPlaquette` (RENAMED, was
+    `localWeight_hol_reflectLinkField_mirrorPlaquette`; hypothesis is now
+    plain inversion-invariance `hinv`, not opposite-group compatibility)
   - `productWeight_reflectLinkField_mirrorPlaquette`
   - `IsMirrorStableFamily`
   - `mirrorPairFamily_isMirrorStable`
@@ -79,15 +105,17 @@ Wilson local positivity:
   - `wilsonLocalWeight_pos`
   - `wilsonPartition_pos`
 - `PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionCompatibility.lean`
-  - `rhoOppositeInv`
-  - `rhoOppositeInv_unitary`
-  - `wilsonLocalWeight_rhoOppositeInv`
-  - `wilsonOppositeKernel_posSemidef`
+  - **REMOVED 1.16:25**: `rhoOppositeInv`, `rhoOppositeInv_unitary`,
+    `wilsonLocalWeight_rhoOppositeInv`, `wilsonOppositeKernel_posSemidef`,
+    `wilsonLocalOppositeCompatibility_of_rhoOppositeInv` - the entire
+    `MulOpposite`/opposite-representation bridge was a workaround for the
+    old, N3-refuted convention and is no longer needed.
   - `localWeight_hol_reflectLinkField_mirrorPlaquette_wilson`
   - `productWeight_reflectLinkField_mirrorPlaquette_wilson`
   - `weight_reflectLinkField_mirrorPlaquette_wilson`
-  - `wilsonLocalOppositeCompatibility_of_rhoOppositeInv`
-  - mirror-stable and mirror-pair Wilson reflection theorems.
+  - mirror-stable and mirror-pair Wilson reflection theorems (now take a
+    direct inversion-invariance hypothesis, not opposite-group
+    compatibility).
 
 Reflection-positive kernel:
 
@@ -105,13 +133,18 @@ Reflection-positive kernel:
 Baseline Wilson reflection positivity:
 
 - `PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionPositivity.lean`
-  - `liftStepPos`
-  - `liftPlaquettePos`
-  - `stepHol_liftStepPos`
-  - `hol_liftPlaquettePos`
-  - `mirrorPlaquette_liftPlaquettePos_hol`
+  - `liftPlaquettePos`, `hol_liftPlaquettePos` (now imported from
+    `MirrorHolonomyResolution.lean`, not duplicated locally)
+  - `mirrorPlaquette_liftPlaquettePos_hol` (RESTATED 1.16:25: now the
+    GENERAL independent-configuration identity via `mirrorConfig a b`, not
+    just reflection-derived configurations)
   - `doubledWilsonWeight`
   - `doubled_wilson_reflectionForm_nonneg`
+  - `mirrorPair`, `doubledWilsonWeight_eq_ensembleWeight_mirrorConfig` (NEW
+    1.16:25): identifies `doubledWilsonWeight` with the GENUINE
+    `PlaquetteEnsemble.weight` of the two-plaquette family at
+    `mirrorConfig a b` - closes the ensemble-identification gap this
+    outline previously listed as open.
 
 Transfer/Hilbert-space adjacent:
 
@@ -151,11 +184,15 @@ GateYM build, then record fresh command output here or in a task note.
 
 ## Remaining gaps
 
-- RP-LINK is not fully closed: the baseline doubled Wilson theorem does not yet
-  identify the whole genuine two-plaquette mirror ensemble weight for the
-  nonabelian Wilson action.
-- Q2 transfer Hilbert space is design-proposed and review-requested, not
-  frozen in Lean.
+- RP-LINK is not fully closed: the zero-cut doubled-lattice construction (now
+  including genuine ensemble-weight identification, per `e6e46e9f`) is a
+  well-definedness/consistency instance of reflection positivity, not the
+  case with actual cut plaquettes - Osterwalder-Seiler's genuinely
+  nontrivial content, needing `ReflectionPositivityKernel.cutKernel_posSemidef_of_mixture`
+  (Q1 shocking tier, not attempted).
+- Q2 transfer Hilbert space: `TransferHilbert.lean` has landed (Aristotle
+  `6f8903cc`); check the ledger/DISCUSSION.md for current status before
+  citing, this outline predates that file.
 - The paper unit should not claim positivity, stability, spectrum, or physical
   Hilbert-space interpretation beyond the exact finite algebraic statements
   already kernel-checked.

@@ -63,56 +63,52 @@ theorem mirrorPlaquette_walk (p : Plaquette Λ) :
 
 variable {G : Type*} [Group G]
 
-/-- Plaquette-level form of the reflected-walk holonomy identity.
+/-- **Plaquette-level mirror holonomy identity (N3 fix).**
 
-The opposite group is load-bearing: for nonabelian gauge groups, reflecting a
-boundary reverses multiplication order, so a same-group inverse statement would
-be false in general. -/
-theorem op_hol_reflectLinkField_mirrorPlaquette
+With the corrected inverse-carrying `reflectLinkField`, the mirror plaquette's
+holonomy at `U` is the GROUP INVERSE of the original plaquette's holonomy at
+the reflected link field `theta U`. This is the honest same-group replacement
+for the previous `MulOpposite`-valued `op_hol_reflectLinkField_mirrorPlaquette`
+(pure word reversal), which was not a conjugacy-class invariant for nonabelian
+groups (see `MirrorHolonomyConjugation.lean`). -/
+theorem hol_mirrorPlaquette_eq_inv
     (p : Plaquette Λ) (U : Λ.LinkField (G := G)) :
-    MulOpposite.op (p.hol (R.reflectLinkField U)) =
-      (mirrorPlaquette R p).hol (ReflectionCore.Reflection.opLinkField U) := by
-  change MulOpposite.op (OrientedLattice.hol (R.reflectLinkField U) p.walk) =
-      OrientedLattice.hol (ReflectionCore.Reflection.opLinkField U)
-        (mirrorPlaquette R p).walk
+    (mirrorPlaquette R p).hol U = (p.hol (R.reflectLinkField U))⁻¹ := by
+  change OrientedLattice.hol U (mirrorPlaquette R p).walk =
+      (OrientedLattice.hol (R.reflectLinkField U) p.walk)⁻¹
   rw [mirrorPlaquette_walk]
-  exact R.op_hol_reflectLinkField_mirrorWalk U p.walk
+  exact R.hol_mirrorWalk_eq_inv U p.walk
 
-/-- Pointwise local-weight form of plaquette reflection.
+/-- Pointwise local-weight form of plaquette reflection (N3 fix).
 
-The reflected plaquette over a `G`-valued link field is compared with the
-mirrored plaquette over the pointwise opposite-group link field. This packages
-`op_hol_reflectLinkField_mirrorPlaquette` in the form needed for product
-weights. -/
-theorem localWeight_hol_reflectLinkField_mirrorPlaquette
+If a local weight is invariant under group inversion (`hinv`, e.g. the real
+character of a unitary representation), its value on the mirror plaquette at
+`U` equals its value on the original plaquette at the reflected link field
+`theta U` - no `MulOpposite` needed. -/
+theorem localWeight_hol_mirrorPlaquette
     {α : Type*} (localWeight : G → α)
+    (hinv : ∀ g : G, localWeight g⁻¹ = localWeight g)
     (p : Plaquette Λ) (U : Λ.LinkField (G := G)) :
-    localWeight (p.hol (R.reflectLinkField U)) =
-      (fun h : MulOpposite G => localWeight h.unop)
-        ((mirrorPlaquette R p).hol (ReflectionCore.Reflection.opLinkField U)) := by
-  have h := op_hol_reflectLinkField_mirrorPlaquette R p U
-  rw [← h]
-  simp
+    localWeight ((mirrorPlaquette R p).hol U) =
+      localWeight (p.hol (R.reflectLinkField U)) := by
+  rw [hol_mirrorPlaquette_eq_inv, hinv]
 
-/-- Finite product-weight form of plaquette reflection.
+/-- Finite product-weight form of plaquette reflection (N3 fix).
 
-This is the first product-level bridge from reflected link fields to mirrored
-plaquette families. It intentionally stops before asserting that a chosen
-plaquette family is reflection-stable or that a Wilson local weight has the
-extra symmetry needed to identify the opposite-group expression with the
-original Wilson action. -/
+For an inversion-invariant local weight, the product weight of the mirrored
+plaquette family at `U` equals the product weight of the original family at
+the reflected link field `theta U`. -/
 theorem productWeight_reflectLinkField_mirrorPlaquette
     {ι M : Type*} [Fintype ι] [CommMonoid M]
     (P : ι → Plaquette Λ) (localWeight : G → M)
+    (hinv : ∀ g : G, localWeight g⁻¹ = localWeight g)
     (U : Λ.LinkField (G := G)) :
-    PlaquetteCore.productWeight P localWeight (R.reflectLinkField U) =
-      PlaquetteCore.productWeight (fun i => mirrorPlaquette R (P i))
-        (fun h : MulOpposite G => localWeight h.unop)
-        (ReflectionCore.Reflection.opLinkField U) := by
+    PlaquetteCore.productWeight (fun i => mirrorPlaquette R (P i)) localWeight U =
+      PlaquetteCore.productWeight P localWeight (R.reflectLinkField U) := by
   unfold PlaquetteCore.productWeight
   refine Finset.prod_congr rfl ?_
   intro i _hi
-  exact localWeight_hol_reflectLinkField_mirrorPlaquette R localWeight (P i) U
+  exact localWeight_hol_mirrorPlaquette R localWeight hinv (P i) U
 
 /-- A finite plaquette family is stable under reflection if reflection mirrors
 the family up to a finite reindexing. -/
@@ -158,39 +154,31 @@ theorem mirrorPairFamily_isMirrorStable {ι : Type*} (P Q : ι → Plaquette Λ)
       cases b <;> simp [mirrorPairFamily, mirrorPairIndexEquiv, hPQ, hQP]
 
 /-- Reflection invariance of a product plaquette weight for a mirror-stable
-family, assuming the local weight has the required opposite-group compatibility.
+family (N3-corrected convention).
 
-The compatibility hypothesis is intentionally explicit. For a concrete Wilson
-weight it should come from the chosen orientation/unitarity convention; this
-theorem only proves the finite reindexing and product bookkeeping. -/
+The local weight need only be invariant under group inversion (`hinv`); for a
+concrete Wilson weight this is exactly the unitary-representation inversion
+symmetry `Re chi(g^{-1}) = Re chi(g)`. This replaces the previous
+opposite-group compatibility hypothesis, which was the workaround for the
+uncorrected word-reversal convention. This theorem still only handles the
+finite reindexing and product bookkeeping. -/
 theorem productWeight_reflectLinkField_of_mirrorStable
     {ι M : Type*} [Fintype ι] [CommMonoid M]
     (P : ι → Plaquette Λ) (τ : ι ≃ ι) (localWeight : G → M)
     (hstable : IsMirrorStableFamily R P τ)
-    (U : Λ.LinkField (G := G))
-    (hop : ∀ i : ι,
-      (fun h : MulOpposite G => localWeight h.unop)
-        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      localWeight ((P i).hol U)) :
+    (hinv : ∀ g : G, localWeight g⁻¹ = localWeight g)
+    (U : Λ.LinkField (G := G)) :
     PlaquetteCore.productWeight P localWeight (R.reflectLinkField U) =
       PlaquetteCore.productWeight P localWeight U := by
-  rw [productWeight_reflectLinkField_mirrorPlaquette R P localWeight U]
   unfold PlaquetteCore.productWeight
   calc
-    (∏ i : ι,
-        (fun h : MulOpposite G => localWeight h.unop)
-          ((mirrorPlaquette R (P i)).hol (ReflectionCore.Reflection.opLinkField U)))
-        =
-      ∏ i : ι,
-        (fun h : MulOpposite G => localWeight h.unop)
-          ((P (τ i)).hol (ReflectionCore.Reflection.opLinkField U)) := by
+    (∏ i : ι, localWeight ((P i).hol (R.reflectLinkField U)))
+        = ∏ i : ι, localWeight ((P (τ i)).hol U) := by
           refine Finset.prod_congr rfl ?_
           intro i _hi
-          rw [hstable i]
-    _ = ∏ i : ι, localWeight ((P (τ i)).hol U) := by
-          refine Finset.prod_congr rfl ?_
-          intro i _hi
-          rw [hop (τ i)]
+          have h := hol_mirrorPlaquette_eq_inv R (P i) U
+          rw [hstable i] at h
+          rw [h, hinv]
     _ = ∏ i : ι, localWeight ((P i).hol U) := by
           simpa using (Equiv.prod_comp τ (fun i => localWeight ((P i).hol U)))
 
@@ -202,16 +190,13 @@ theorem productWeight_reflectLinkField_of_mirrorPair
     (P Q : ι → Plaquette Λ) (localWeight : G → M)
     (hPQ : ∀ i : ι, mirrorPlaquette R (P i) = Q i)
     (hQP : ∀ i : ι, mirrorPlaquette R (Q i) = P i)
-    (U : Λ.LinkField (G := G))
-    (hop : ∀ i : Bool × ι,
-      (fun h : MulOpposite G => localWeight h.unop)
-        (((mirrorPairFamily P Q) i).hol (ReflectionCore.Reflection.opLinkField U)) =
-      localWeight (((mirrorPairFamily P Q) i).hol U)) :
+    (hinv : ∀ g : G, localWeight g⁻¹ = localWeight g)
+    (U : Λ.LinkField (G := G)) :
     PlaquetteCore.productWeight (mirrorPairFamily P Q) localWeight (R.reflectLinkField U) =
       PlaquetteCore.productWeight (mirrorPairFamily P Q) localWeight U := by
   exact productWeight_reflectLinkField_of_mirrorStable R (mirrorPairFamily P Q)
     (mirrorPairIndexEquiv (ι := ι)) localWeight
-    (mirrorPairFamily_isMirrorStable R P Q hPQ hQP) U hop
+    (mirrorPairFamily_isMirrorStable R P Q hPQ hQP) hinv U
 
 end PlaquetteReflection
 end GateYM

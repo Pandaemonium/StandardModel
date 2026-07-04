@@ -121,14 +121,17 @@ def doubleLinkFieldEquiv :
     intro p
     rfl
 
-omit [Group G] in
-/-- Under `doubleLinkFieldEquiv`, reflection swaps the two factors: the
-negative-side coordinate of the reflected field is the ORIGINAL positive-side
-factor, and vice versa. This is the precise "negative side by mirror image"
-convention `ReflectionPositivityKernel.reflectionForm` requires. -/
+/-- Under `doubleLinkFieldEquiv`, reflection swaps the two factors AND
+inverts them pointwise (N3-corrected convention): the negative-side
+coordinate of the reflected field is the pointwise INVERSE of the original
+positive-side factor, and vice versa. The pointwise inverse is exactly the
+group inverse that `reflectLinkField` now carries; it is the "negative side
+by mirror image" convention `ReflectionPositivityKernel.reflectionForm`
+requires, with the time-reflection inverse made explicit. -/
 theorem reflectLinkField_doubleReflection_eq (U : (doubleLattice L0).LinkField (G := G)) :
     doubleLinkFieldEquiv L0 ((doubleReflection L0).reflectLinkField U)
-      = ((doubleLinkFieldEquiv L0 U).2, (doubleLinkFieldEquiv L0 U).1) := by
+      = ((fun e => ((doubleLinkFieldEquiv L0 U).2 e)⁻¹),
+         (fun e => ((doubleLinkFieldEquiv L0 U).1 e)⁻¹)) := by
   rfl
 
 end ReflectionDouble

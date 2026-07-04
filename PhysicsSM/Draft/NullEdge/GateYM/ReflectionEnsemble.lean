@@ -29,7 +29,7 @@ namespace ReflectionEnsemble
 open GaugeCoreGeneral ReflectionCore
 
 variable {Λ : OrientedLattice}
-variable {G : Type*}
+variable {G : Type*} [Group G]
 
 /-- Reflection is an equivalence of link-field configuration space. -/
 def reflectLinkFieldEquiv (R : ReflectionCore.Reflection Λ) :

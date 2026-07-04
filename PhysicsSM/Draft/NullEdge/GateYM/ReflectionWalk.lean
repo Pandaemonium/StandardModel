@@ -63,28 +63,26 @@ def reflectStep : {x y : Λ.V} → GaugeCoreGeneral.OrientedLattice.Step Λ x y 
         (R.reflect_tgt e) (R.reflect_src e)
         (GaugeCoreGeneral.OrientedLattice.Step.rev (R.reflectE e))
 
-/-- Step-level compatibility between `reflectLinkField` and the mirrored step.
-This packages the forward/reverse lemmas from `ReflectionCore` into one typed
-statement, with endpoint casts handled by `Step.castEndpoints`. -/
+/-- Step-level compatibility between `reflectLinkField` and the mirrored step
+(N3-corrected convention).
+
+Since `reflectLinkField` now carries a group inverse, the reflected step's
+holonomy is the INVERSE of the mirrored step's holonomy at the original link
+field: `stepHol (theta U) s = (stepHol U (reflectStep s))^{-1}`. This is the
+single-step seed of the walk-level `hol_mirrorWalk_eq_inv` below. -/
 theorem stepHol_reflectLinkField_reflectStep (U : Λ.LinkField (G := G))
     {x y : Λ.V} (s : GaugeCoreGeneral.OrientedLattice.Step Λ x y) :
     OrientedLattice.stepHol (R.reflectLinkField U) s =
-      OrientedLattice.stepHol U (R.reflectStep s) := by
+      (OrientedLattice.stepHol U (R.reflectStep s))⁻¹ := by
   cases s with
   | fwd e =>
-      rw [reflectStep, OrientedLattice.stepHol_castEndpoints]
-      exact R.stepHol_reflectLinkField_fwd U e
+      rw [reflectStep, OrientedLattice.stepHol_castEndpoints,
+        R.stepHol_reflectLinkField_fwd U e]
+      simp [OrientedLattice.stepHol]
   | rev e =>
-      rw [reflectStep, OrientedLattice.stepHol_castEndpoints]
-      exact R.stepHol_reflectLinkField_rev U e
-
-/-- Opposite-group version of reflected-step compatibility. -/
-theorem stepHol_opLinkField_reflectStep (U : Λ.LinkField (G := G))
-    {x y : Λ.V} (s : GaugeCoreGeneral.OrientedLattice.Step Λ x y) :
-    OrientedLattice.stepHol (opLinkField U) (R.reflectStep s) =
-      MulOpposite.op (OrientedLattice.stepHol (R.reflectLinkField U) s) := by
-  rw [stepHol_opLinkField]
-  rw [stepHol_reflectLinkField_reflectStep]
+      rw [reflectStep, OrientedLattice.stepHol_castEndpoints,
+        R.stepHol_reflectLinkField_rev U e]
+      simp [OrientedLattice.stepHol]
 
 /-- The walk-level mirror: reverse traversal order and reflect each step.
 The endpoint reversal in `reflectStep` forces the order reversal if the result
@@ -96,19 +94,33 @@ def mirrorWalk :
       Walk.append (mirrorWalk w)
         (Walk.cons (reflectStep R s) (Walk.nil _))
 
-/-- Walk-level reflection compatibility, stated in the opposite group to record
-the order reversal of noncommutative holonomy multiplication. -/
-theorem op_hol_reflectLinkField_mirrorWalk (U : Λ.LinkField (G := G))
+/-- **Walk-level mirror holonomy identity (N3 fix).**
+
+With the corrected inverse-carrying `reflectLinkField`, the mirror walk's
+holonomy at an arbitrary link field `U` is the GROUP INVERSE of the original
+walk's holonomy at the reflected link field `theta U`:
+`hol U (mirrorWalk w) = (hol (theta U) w)^{-1}`.
+
+This is the honest, `MulOpposite`-free replacement for the previous
+`op_hol_reflectLinkField_mirrorWalk`. Both the order reversal (from
+`mirrorWalk`/`Step.reverse`) and the per-letter inversion (from the inverse
+in `reflectLinkField`) are now accounted for in `G` itself, so for a closed
+walk the mirror holonomy is literally the group inverse - a conjugacy-class
+invariant, unlike the previous pure word reversal (see
+`MirrorHolonomyConjugation.lean`). -/
+theorem hol_mirrorWalk_eq_inv (U : Λ.LinkField (G := G))
     {x y : Λ.V} (w : Walk Λ x y) :
-    MulOpposite.op (OrientedLattice.hol (R.reflectLinkField U) w) =
-      OrientedLattice.hol (opLinkField U) (R.mirrorWalk w) := by
+    OrientedLattice.hol U (R.mirrorWalk w) =
+      (OrientedLattice.hol (R.reflectLinkField U) w)⁻¹ := by
   induction w with
   | nil x =>
       simp [mirrorWalk, OrientedLattice.hol]
   | cons s w ih =>
-      rw [mirrorWalk, OrientedLattice.hol_append]
-      rw [← ih]
-      simp [OrientedLattice.hol, stepHol_opLinkField_reflectStep]
+      rw [mirrorWalk, OrientedLattice.hol_append, ih]
+      have hs : OrientedLattice.stepHol U (R.reflectStep s)
+          = (OrientedLattice.stepHol (R.reflectLinkField U) s)⁻¹ := by
+        rw [R.stepHol_reflectLinkField_reflectStep U s, inv_inv]
+      simp only [OrientedLattice.hol, mul_one, hs, mul_inv_rev]
 
 end Reflection
 end ReflectionCore
