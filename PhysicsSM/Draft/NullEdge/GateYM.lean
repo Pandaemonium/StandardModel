@@ -26,6 +26,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionCompatibility
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
@@ -251,6 +252,26 @@ mirror-coordinate parametrization from the T3 reflection stack and the
 Wilson cut-plaquette kernel-PSD assembly via `wilsonKernel_posSemidef` +
 Schur products - see the program document work queue. Mathlib-only imports
 by design; axiom footprint [propext, Classical.choice, Quot.sound]);
+`WilsonReflectionPositivity` (YM3 Q1 baseline instance: RP-KER meets a
+GENUINE Wilson local weight function. `ReflectionDouble.doubleLattice`'s
+mirror coordinates plus `doubledWilsonWeight` (the same Wilson weight
+function applied independently to both mirror coordinates) instantiate
+`ReflectionPositivityKernel.reflectionForm_nonneg_of_factorized` directly
+(`doubled_wilson_reflectionForm_nonneg`), for any finite group, base
+lattice, plaquette, and representation. Also proves
+`mirrorPlaquette_liftPlaquettePos_hol`, the genuine geometric bridge
+(mirror plaquette's opposite-inverse Wilson weight under reflected
+configurations equals the original Wilson weight of the negative-side
+restriction), resolving `design:q1-reflection-orientation`'s twist
+question for reflected configurations. EXPLICITLY NOT YET PROVEN: that the
+genuine two-plaquette mirror ENSEMBLE weight (not just the weight
+function's algebraic shape) reduces to this factorized form for
+independent mirror coordinates - by hand computation the raw mirror
+holonomy is a differently-ordered word not evidently conjugate to the
+negative-side holonomy for nonabelian G; flagged honestly rather than
+papered over. No cut plaquettes in this instance (the strong/shocking Q1
+tier, needing `cutKernel_posSemidef_of_mixture`, is separate future work);
+axiom footprint [propext, Classical.choice, Quot.sound]);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original
