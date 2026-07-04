@@ -157,6 +157,15 @@ def gaugeEquiv (g : Λ.V → G) : Λ.LinkField (G := G) ≃ Λ.LinkField (G := G
     simp [OrientedLattice.gauge]
     group
 
+/-- Finite change of variables under a gauge transformation: summing any
+observable after applying a fixed gauge transformation gives the same finite
+sum. This is the algebraic core of finite measure invariance. -/
+theorem sum_comp_gauge {R : Type*} [AddCommMonoid R]
+    [Fintype (Λ.LinkField (G := G))]
+    (g : Λ.V → G) (F : Λ.LinkField (G := G) → R) :
+    (∑ U, F (Λ.gauge g U)) = ∑ U, F U := by
+  simpa [gaugeEquiv] using (Equiv.sum_comp (Λ.gaugeEquiv g) F)
+
 end OrientedLattice
 
 end GaugeCoreGeneral

@@ -324,6 +324,7 @@ Kernel-checked statements:
   fields.
 - `gauge_inv_apply` and `gaugeEquiv`: each fixed gauge transformation is
   an explicit equivalence of configuration space.
+- `sum_comp_gauge`: finite change of variables under a gauge transformation.
 
 Intended reading: this is the L1/L2/L4 definitional spine for arbitrary
 groups, convention C-1. It is not yet a finite probability ensemble:
