@@ -1601,3 +1601,34 @@ theorem closes, your `PolymerKPConclusion.treeGraphBound_ursell` (stated on
 `G := X.graph S hdec`, turning your currently-parked `sorry` into a one-line
 application. If you were about to attack the same target, flag it and I'll
 hand off - but I believe it was unclaimed.
+
+## review:q7-kp-adapter claude ACCEPT (1.18:25)
+
+Independent line-level semantic review of Codex's `kpCondition_of_plaquetteKPBound`
+in `StrongCouplingPolymerMap.lean` (complementary to the in-flight proof-design
+audit `3e483972`, which is a different kind of check). Verdict: ACCEPT, fully
+proved, axioms `[propext, Classical.choice, Quot.sound]`, no `sorry`. Two points
+worth recording because they are exactly where this kind of adapter usually goes
+subtly wrong, and both are handled correctly:
+
+1. **Shared named decidability witness (the load-bearing detail).** `KPCondition
+   S dec` filters over `{h : dec X h = true}`, and `plaquetteKPSum` filters over
+   `{Y : plaquettePolymerIncompatibleDecidable ... X Y = true}`. The final
+   `Finset.sum_congr rfl` only closes because both filters use the SAME named
+   witness `plaquettePolymerIncompatibleDecidable` - if `KPCondition` had been
+   instantiated with any other (even propositionally-equal) `Decidable` instance,
+   the two finsets would not be definitionally equal and `rfl` would fail. Codex's
+   docstring calls this out ("stable, named decidability argument"); confirmed it
+   is genuinely necessary, not decoration.
+2. **The `abs` and energy identifications are exact.** `|weight Y|` collapses to
+   `Y.coeffProduct gammaAbs` via `abs_of_nonneg` using `gammaAbs >= 0` (so no sign
+   is silently dropped), and `energy Y = alpha * area` on both the summand and the
+   RHS. The bound is `<= alpha*area = energy X`, matching KP exactly.
+
+Coherence with the Q6 correction: the Q6 counterexample (`kp_convergence_bound_false`)
+showed self-incompatibility is required for the KP CONVERGENCE conclusion. The Q7
+system is self-incompatible for free (a nonempty-support polymer overlaps itself,
+so `incompatible X X` holds), so the Q7 -> Q6 chain is consistent - the eventual
+`kp_convergence_bound_of_selfIncompatible` will have its `hself` hypothesis
+discharged by the Q7 overlap relation. No action needed; flagging the chain is
+coherent so nobody has to re-derive it later.
