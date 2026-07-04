@@ -28,8 +28,10 @@ returned.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
   magnetic + electric sector support/projection API, largely axiom-light
   (`[propext]` or `[propext, Classical.choice, Quot.sound]`).
-- `RectBoundaryLasso.lean`: typechecking statement skeleton with one
-  documented draft-proof placeholder, submitted to Aristotle (93758b7f).
+- `RectBoundaryLasso.lean`: tree-slice lasso identity and `chi` corollary
+  proved from Aristotle `93758b7f`: on the comb tree slice, the full rectangle
+  boundary holonomy equals the reversed row-major ordered product of plaquette
+  holonomies.  Axiom footprint after local integration: `[propext, Quot.sound]`.
 - `PolymerKPConclusion.lean`: Q6 statement-freeze layer plus concrete direct
   finite `spanningTreeCount` and `ursellSum` definitions from Aristotle
   `34d675b8`; Penrose `treeGraphBound_ursell` remains a documented draft
@@ -52,14 +54,15 @@ Day started near-idle. Submitted/returned this cycle: `d4a9bd1f` (Q4,
 COMPLETE+HARVESTED+INTEGRATED), `2427a253` (Q6 strategy, COMPLETE+HARVESTED),
 `63dfd691` (grand-strategy audit, COMPLETE+HARVESTED, both agents
 independently harvested, no conflict), `72cccd22` (Q2 Hermitian bridge,
-COMPLETE+HARVESTED+INTEGRATED), `93758b7f` (T11 lasso, still submitted),
-`0a46d515` (Q1 N3 cut-plaquette conjugation, COMPLETE+HARVESTED+INTEGRATED
-as a counterexample), and `34d675b8` (Q6 tree-graph/Ursell,
-COMPLETE+HARVESTED, definitions integrated), `52f42dd5` (Q7 polymer-map audit,
-COMPLETE+HARVESTED+INTEGRATED), and `788f83b4` (Q7 support-indexed-label
-redesign, RUNNING). Two near-collisions (grand-strategy audit, N3 job) both
+COMPLETE+HARVESTED+INTEGRATED), `93758b7f` (T11 lasso,
+COMPLETE+HARVESTED+INTEGRATED), `0a46d515` (Q1 N3 cut-plaquette conjugation,
+COMPLETE+HARVESTED+INTEGRATED as a counterexample), `34d675b8` (Q6
+tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
+(Q7 polymer-map audit, COMPLETE+HARVESTED+INTEGRATED), and `788f83b4`
+(Q7 support-indexed-label redesign, RUNNING). Two near-collisions
+(grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after Codex review: `788f83b4`, `6f8903cc`, `e6e46e9f`, `93758b7f`.
+queue after T11 harvest: `788f83b4`, `6f8903cc`, `e6e46e9f`.
 
 ## 4. Board state
 
@@ -71,8 +74,9 @@ tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
 remain. T7 has map-freeze plus audit-harvest done; the next blocker is
 support-indexed labels plus decidable overlap-or-touch before any
 `KPCondition` instantiation. T7 P2 is submitted as `788f83b4`.
-T9 baseline-done. T11 submitted-codex, gated on `93758b7f`. T12/T13 done.
-T14 v0.3, 44/44 oracle green.
+T9 baseline-done. T11 lasso identity integrated; the remaining YM1 gap is the
+ensemble/partition bridge to the full Theorem 2 expectation statement.
+T12/T13 done. T14 v0.3, 44/44 oracle green.
 
 ## 5. Decisions and reviews
 
@@ -89,10 +93,10 @@ after a genuine construction failure on naive uniform-reflection lattices.
 
 ## 6. Build and hygiene
 
-Aggregate `GateYM` green through the day; latest post-Q6/Q7 support checks:
+Aggregate `GateYM` green through the day; latest post-Q6/Q7/T11 checks:
 `lake build PhysicsSM.Draft.NullEdge.GateYM` green (8072 jobs, known existing
 warnings only). Full `lake build` was green earlier in the day (8295 jobs)
-before the latest Q6/Q7 support slices, so rerun it at the next day-end or
+before the latest Q6/Q7/T11 slices, so rerun it at the next day-end or
 promotion checkpoint before making a fresh full-build claim. Oracle
 `validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit this
 session.
@@ -117,14 +121,14 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 
 ## 8. Tomorrow's plan
 
-1. Poll/harvest `93758b7f` as it completes; keep Q11's lasso proof package
-   moving without changing the frozen statement.
-2. Harvest `788f83b4` and integrate the support-indexed Q7 carrier redesign if
+1. Harvest `788f83b4` and integrate the support-indexed Q7 carrier redesign if
    it verifies; only then state KP/Q8 packages over the plaquette-polymer
    system.
-3. Start the next Q6 package: the abstract KP proof package against
+2. Start the next Q6 package: the abstract KP proof package against
    `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
    focused proof package is ready.
+3. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition
+   bridge to the full Theorem 2 expectation statement.
 4. Redesign T1 strong tier around the `0a46d515` counterexample and finish the
    Q2 shift-covariance question before creating a transfer-Hilbert statement
    file.

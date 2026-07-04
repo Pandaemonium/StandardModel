@@ -144,6 +144,114 @@ def reversedRowMajorPlaquetteProd (Lx Ly : Nat)
     (List.ofFn fun i : Fin Lx =>
       (rectPlaquette Lx Ly (i.rev, j)).hol U).prod).prod
 
+/-! ## Helper lemmas for the lasso identity -/
+
+/-- Abstract reversed telescoping product in a group: for `f : Fin (n+1) -> G`,
+the reversed product of the differences `f (i+1) * (f i)⁻¹` collapses to
+`f (last) * (f 0)⁻¹`. -/
+theorem reversed_telescope_prod {n : Nat} (f : Fin (n + 1) -> G) :
+    (List.ofFn fun i : Fin n => f (i.rev.succ) * (f (i.rev.castSucc))⁻¹).prod
+      = f (Fin.last n) * (f 0)⁻¹ := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+      rw [List.ofFn_succ_last, List.prod_append]
+      have hpre : (List.ofFn fun i : Fin n =>
+            (f (i.castSucc.rev.succ) * (f (i.castSucc.rev.castSucc))⁻¹)).prod
+          = f ((Fin.last n).succ) * (f ((0 : Fin (n + 1)).succ))⁻¹ := by
+        have := ih (fun k => f k.succ)
+        simpa [Fin.rev_castSucc, Fin.castSucc_succ] using this
+      simp only [Fin.rev_last]
+      rw [hpre]
+      simp only [Fin.succ_zero_eq_one, List.prod_cons, List.prod_nil, mul_one,
+        Fin.castSucc_zero, Fin.succ_last]
+      rw [mul_assoc, inv_mul_cancel_left]
+
+/-- Holonomy of the vertical walk from the bottom boundary to row `k` is the
+left-parenthesized product of the vertical link values below row `k`. -/
+theorem rectVerticalWalkAux_hol {Lx Ly : Nat}
+    (U : (rectLattice Lx Ly).LinkField (G := G)) (i : Fin (Lx + 1)) :
+    forall (k : Nat) (hk : k <= Ly),
+      OrientedLattice.hol U (rectVerticalWalkAux Lx Ly i k hk)
+        = (List.ofFn fun m : Fin k =>
+            U (Sum.inr (i, ⟨m, Nat.lt_of_lt_of_le m.2 hk⟩))).prod := by
+  intro k hk
+  induction' k with k ih generalizing i
+  · rfl
+  · convert congr_arg₂ ( · * · ) ( ih i ( Nat.le_of_succ_le hk ) )
+      ( show OrientedLattice.hol U ( OrientedLattice.Walk.cons
+          ( OrientedLattice.Step.castEndpoints _ _
+            ( OrientedLattice.Step.fwd
+              ( Sum.inr ( i, ⟨ k, Nat.lt_of_succ_le hk ⟩ ) ) ) )
+          ( OrientedLattice.Walk.nil _ ) ) =
+          U ( Sum.inr ( i, ⟨ k, Nat.lt_of_succ_le hk ⟩ ) ) from ?_ ) using 1
+    convert OrientedLattice.hol_append _ _ _ using 1
+    · rw [ List.ofFn_succ' ]
+      aesop
+    · simp +decide [ OrientedLattice.hol ]
+      rw [OrientedLattice.stepHol_castEndpoints]
+      rfl
+
+/-- Holonomy of the full vertical walk along column `i` is the product of the
+vertical link values in that column. -/
+theorem rectVerticalWalk_hol {Lx Ly : Nat}
+    (U : (rectLattice Lx Ly).LinkField (G := G)) (i : Fin (Lx + 1)) :
+    OrientedLattice.hol U (rectVerticalWalk Lx Ly i)
+      = (List.ofFn fun j : Fin Ly => U (Sum.inr (i, j))).prod := by
+  unfold rectVerticalWalk
+  rw [rectVerticalWalkAux_hol U i Ly le_rfl]
+
+/-- Holonomy of the horizontal walk vanishes when all horizontal links are `1`. -/
+theorem rectHorizontalWalk_hol_one {Lx Ly : Nat}
+    (U : (rectLattice Lx Ly).LinkField (G := G)) (j : Fin (Ly + 1))
+    (hh : forall h, U (Sum.inl h) = (1 : G)) :
+    OrientedLattice.hol U (rectHorizontalWalk Lx Ly j) = 1 := by
+  have h_ind : forall (k : Nat) (hk : k <= Lx),
+      OrientedLattice.hol U (rectHorizontalWalkAux Lx Ly j k hk) = 1 := by
+    intro k hk
+    induction' k with k ih
+    · rfl
+    · convert congr_arg₂ ( · * · ) ( ih ( Nat.le_of_succ_le hk ) )
+        ( show OrientedLattice.hol U ( OrientedLattice.Walk.cons
+            ( OrientedLattice.Step.castEndpoints _ _
+              ( OrientedLattice.Step.fwd
+                ( Sum.inl ( ⟨ k, Nat.lt_of_succ_le hk ⟩, j ) ) ) )
+            ( OrientedLattice.Walk.nil _ ) ) = 1 from ?_ ) using 1
+      convert OrientedLattice.hol_append _ _ _ using 1
+      · norm_num
+      · simp +decide [ OrientedLattice.hol ]
+        exact hh _
+  exact h_ind _ le_rfl
+
+/-- Under the comb tree slice, a plaquette holonomy collapses to the difference
+of its right and left vertical links. -/
+theorem rectPlaquette_hol_treeSlice {Lx Ly : Nat}
+    (U : (rectLattice Lx Ly).LinkField (G := G))
+    (hTree : IsCombTreeSlice Lx Ly U) (p : Fin Lx × Fin Ly) :
+    (rectPlaquette Lx Ly p).hol U
+      = U (Sum.inr (p.1.succ, p.2)) * (U (Sum.inr (p.1.castSucc, p.2)))⁻¹ := by
+  have h1 : U (Sum.inl (p.1, p.2.castSucc)) = 1 := hTree (Sum.inl (p.1, p.2.castSucc))
+  have h2 : U (Sum.inl (p.1, p.2.succ)) = 1 := hTree (Sum.inl (p.1, p.2.succ))
+  rw [rectPlaquette_hol_formula, h1, h2]
+  group
+
+/-- Under the comb tree slice, the reversed product of the plaquette holonomies
+in row `j` telescopes to the right-boundary vertical link at row `j`. -/
+theorem rectRowProd_treeSlice {Lx Ly : Nat}
+    (U : (rectLattice Lx Ly).LinkField (G := G))
+    (hTree : IsCombTreeSlice Lx Ly U) (j : Fin Ly) :
+    (List.ofFn fun i : Fin Lx => (rectPlaquette Lx Ly (i.rev, j)).hol U).prod
+      = U (Sum.inr (Fin.last Lx, j)) := by
+  have hstep : (fun i : Fin Lx => (rectPlaquette Lx Ly (i.rev, j)).hol U)
+      = (fun i : Fin Lx =>
+          (fun k : Fin (Lx + 1) => U (Sum.inr (k, j))) (i.rev.succ)
+            * ((fun k : Fin (Lx + 1) => U (Sum.inr (k, j))) (i.rev.castSucc))⁻¹) := by
+    funext i
+    simpa using rectPlaquette_hol_treeSlice U hTree (i.rev, j)
+  rw [hstep, reversed_telescope_prod (fun k : Fin (Lx + 1) => U (Sum.inr (k, j)))]
+  have h0 : U (Sum.inr ((0 : Fin (Lx + 1)), j)) = 1 := hTree (Sum.inr j)
+  simp [h0]
+
 /-- Tree-slice lasso identity: on the comb tree slice, the full rectangle
 boundary holonomy equals the ordered product of all plaquette holonomies, with
 row-major order and reversed horizontal index inside each row.
@@ -155,20 +263,29 @@ theorem rectBoundary_hol_eq_reversedRowMajorPlaquetteProd_of_treeSlice {Lx Ly : 
     (hTree : IsCombTreeSlice Lx Ly U) :
     OrientedLattice.hol U (rectBoundaryWalk Lx Ly)
       = reversedRowMajorPlaquetteProd Lx Ly U := by
-  /-
-  Proof handoff:
-  Current target is the accepted T11 tree-slice lasso identity.  Use
-  `rectPlaquette_hol_formula` and `rectBoundary_hol_formula`.
-  Under `hTree`, all horizontal links and the leftmost vertical links are `1`.
-  Each plaquette in row `j` should reduce to
-  `U (Sum.inr (i.succ, j)) * (U (Sum.inr (i.castSucc, j)))^-1`.
-  Multiplying the row in reversed `i` order telescopes to the right boundary
-  vertical link at row `j` times the inverse left-column tree link.  The left
-  term is `1` by `hTree`, and products over increasing `j` give the right
-  vertical boundary holonomy.  The top, bottom, and left boundary factors are
-  tree links and vanish by `hTree`.
-  -/
-  sorry
+  have hh : forall h, U (Sum.inl h) = (1 : G) := fun h => hTree (Sum.inl h)
+  have hv0 : (List.ofFn fun j : Fin Ly =>
+        U (Sum.inr ((0 : Fin (Lx + 1)), j))).prod = 1 := by
+    apply List.prod_eq_one
+    intro x hx
+    simp only [List.mem_ofFn] at hx
+    obtain ⟨j, rfl⟩ := hx
+    exact hTree (Sum.inr j)
+  have hRHS : reversedRowMajorPlaquetteProd Lx Ly U
+      = (List.ofFn fun j : Fin Ly => U (Sum.inr (Fin.last Lx, j))).prod := by
+    unfold reversedRowMajorPlaquetteProd
+    have hfun : (fun j : Fin Ly =>
+          (List.ofFn fun i : Fin Lx =>
+            (rectPlaquette Lx Ly (i.rev, j)).hol U).prod)
+        = (fun j : Fin Ly => U (Sum.inr (Fin.last Lx, j))) := by
+      funext j
+      exact rectRowProd_treeSlice U hTree j
+    rw [hfun]
+  rw [rectBoundary_hol_formula, rectHorizontalWalk_hol_one U 0 hh,
+    rectHorizontalWalk_hol_one U (Fin.last Ly) hh,
+    rectVerticalWalk_hol U (Fin.last Lx),
+    rectVerticalWalk_hol U (0 : Fin (Lx + 1)), hv0, hRHS]
+  group
 
 /-- Observable form of the tree-slice lasso identity.  This is intentionally
 stated for any function `chi`; no class-function or ensemble reduction is used
