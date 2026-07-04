@@ -88,6 +88,21 @@ theorem iterConv_eigen (w chi : G → ℂ) (c : ℂ)
         _ = c ^ (n + 1) * chi A := by
                 ring
 
+/-- Identity-evaluation form of `iterConv_eigen`. If `chi(1) = d` and the
+one-step convolution eigenvalue is `gamma`, then `n` independent plaquette
+convolutions give exactly `d * gamma^n` at the identity.
+
+This is the algebraic shape of the open-rectangle 2D exact solution after the
+character-theoretic fusion lemma supplies
+`gamma = w_hat_R / (d_R * w_hat_0)` and `d = d_R`. -/
+theorem iterConv_eigen_at_one (w chi : G → ℂ) (gamma d : ℂ)
+    (hchi_one : chi 1 = d)
+    (heig : ∀ A : G, convLeft w chi A = gamma * chi A)
+    (n : ℕ) :
+    iterConv w chi n 1 = d * gamma ^ n := by
+  rw [iterConv_eigen w chi gamma heig n 1, hchi_one]
+  ring
+
 end FusionConvolution
 end GateYM
 end NullEdge
