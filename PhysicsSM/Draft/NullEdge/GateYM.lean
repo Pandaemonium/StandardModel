@@ -219,10 +219,12 @@ finite real spectral-ratio gap `-log(lambda1/lambda0)` with elementary
 nonnegativity/positivity lemmas; no transfer matrix construction yet);
 `FluxSectorGeneral` (T3/Q3 abstract finite sector-support API: sector label
 maps, sector support predicates, diagonal sector projections, label-preserving
-finite transfer kernels, and the theorem that such kernels preserve
-sector-supported wavefunctions and commute with sector projections. This is
-definition/support bookkeeping only: no physical finite-G flux labels,
-transfer-matrix construction, or spectral claim is made here);
+finite transfer kernels, projection idempotence/orthogonality, finite
+decomposition as a sum over sector projections, and the theorem that
+label-preserving kernels preserve sector-supported wavefunctions and commute
+with sector projections. This is definition/support bookkeeping only: no
+physical finite-G flux labels, transfer-matrix construction, or spectral claim
+is made here);
 `FluxSectorZ2` (T3/Q3 first Z2-torus sector layer: names the two winding
 flux bits, builds the trivial-flux predicate into the D12
 `SymmetrySector`, records abstract quantum-number preservation lemmas, and
@@ -230,9 +232,11 @@ separates `fluxGap` from `localGlueballGap`; it also starts the concrete
 Bool-array base-cycle winding-label realization, proves concrete Z2
 vertex-gauge updates preserve winding labels, and proves diagonal local
 observable multiplication preserves winding-sector support. The concrete Z2
-projection/transfer wrapper proves that any winding-label-preserving finite
-kernel preserves sectors and commutes with the winding-sector projection; the
-actual Q2 transfer-kernel construction remains future work);
+projection API proves winding-sector projection idempotence/orthogonality,
+decomposition as the sum over all four winding labels, and that any
+winding-label-preserving finite kernel preserves sectors and commutes with
+the winding-sector projection; the actual Q2 transfer-kernel construction
+remains future work);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

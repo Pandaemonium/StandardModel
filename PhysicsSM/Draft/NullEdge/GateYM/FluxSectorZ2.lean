@@ -15,6 +15,8 @@ the file is deliberately narrow:
 * distinguish the global flux gap from the local/glueball gap in Lean names;
 * record the abstract preservation lemma needed by later transfer and local
   plaquette-algebra statements;
+* prove idempotence/orthogonality for winding-sector projections and the
+  finite decomposition of a wavefunction as the sum of its winding sectors;
 * expose the diagonal sector projection and prove that any kernel with no
   matrix entries between different winding labels preserves sectors and
   commutes with the projection.
@@ -47,7 +49,7 @@ fundamental cycle. `false` is the trivial Z2 holonomy bit. -/
 structure FluxLabel where
   xFlux : Bool
   yFlux : Bool
-deriving DecidableEq, Repr
+deriving DecidableEq, Fintype, Repr
 
 namespace FluxLabel
 
@@ -460,6 +462,37 @@ theorem windingSectorProjection_eq_self_of_supportedInFlux
     windingSectorProjection hLx hLy label psi = psi :=
   FluxSectorGeneral.SectorData.sectorProjection_eq_self_of_supported
     (windingSectorData hLx hLy) label psi hpsi
+
+/-- Winding-sector projections are idempotent. -/
+theorem windingSectorProjection_idempotent
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex) :
+    windingSectorProjection hLx hLy label
+        (windingSectorProjection hLx hLy label psi) =
+      windingSectorProjection hLx hLy label psi :=
+  FluxSectorGeneral.SectorData.sectorProjection_idempotent
+    (windingSectorData hLx hLy) label psi
+
+/-- Projecting onto two distinct winding sectors in succession gives zero. -/
+theorem windingSectorProjection_windingSectorProjection_eq_zero_of_ne
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    {first second : FluxLabel} (psi : TorusLinkField Lx Ly -> Complex)
+    (hne : first ≠ second) :
+    windingSectorProjection hLx hLy second
+        (windingSectorProjection hLx hLy first psi) = fun _ => 0 :=
+  FluxSectorGeneral.SectorData.sectorProjection_sectorProjection_eq_zero_of_ne
+    (windingSectorData hLx hLy) psi hne
+
+/-- Every concrete Z2 torus wavefunction is the sum of its four
+winding-sector projections. -/
+theorem sum_windingSectorProjection_eq_self
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (psi : TorusLinkField Lx Ly -> Complex) :
+    (fun U : TorusLinkField Lx Ly =>
+      ∑ label : FluxLabel, windingSectorProjection hLx hLy label psi U) =
+      psi :=
+  FluxSectorGeneral.SectorData.sum_sectorProjection_eq_self
+    (windingSectorData hLx hLy) psi
 
 /-- A winding-label-preserving finite kernel maps sector-supported
 wavefunctions back into the same concrete Z2 winding sector. -/

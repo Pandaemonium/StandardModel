@@ -15,13 +15,15 @@ sector. Current Lean status:
   multiplication preserves each winding sector.
 - `PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral` adds the abstract
   finite-sector support API: sector label maps, sector projections,
-  label-preserving finite transfer kernels, and the theorem that such
-  kernels preserve sector-supported wavefunctions and commute with the
-  diagonal sector projection.
+  projection idempotence/orthogonality, finite decomposition as a sum
+  over sector projections, label-preserving finite transfer kernels, and
+  the theorem that such kernels preserve sector-supported wavefunctions
+  and commute with the diagonal sector projection.
 - `FluxSectorZ2.lean` now exposes the concrete Z2 winding-sector data,
   winding-sector projection, winding-label-preserving-kernel predicate,
-  abstract finite kernel action, and the support/projection commutation
-  wrappers for those kernels.
+  abstract finite kernel action, projection algebra, finite four-sector
+  decomposition, and the support/projection commutation wrappers for
+  those kernels.
 - The current support-level slice is verified by direct file check and
   targeted module build; it is committed as `ac38785`.
 - Q3's required baseline is: define the flux-sector decomposition,

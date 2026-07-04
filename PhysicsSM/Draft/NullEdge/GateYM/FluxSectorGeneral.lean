@@ -12,9 +12,10 @@ need once those labels and kernels are supplied:
 * a sector label map on a finite configuration space;
 * support of a wavefunction in one sector;
 * the diagonal projection onto a sector;
+* idempotence, orthogonality, and finite decomposition by sector projections;
 * a transfer kernel that has zero matrix entries between different sectors;
 * the finite identity that such a transfer maps sector-supported
-  wavefunctions back into the same sector.
+  wavefunctions back into the same sector and commutes with projection.
 
 Provenance: `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`, section 14
 Q3, and `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`,
@@ -79,6 +80,33 @@ theorem sectorProjection_eq_self_of_supported [DecidableEq Label] (S : SectorDat
       by_contra hnonzero
       exact hlabel (hpsi x hnonzero)
     simp [sectorProjection, hlabel, hzero]
+
+/-- Sector projections are idempotent. -/
+theorem sectorProjection_idempotent [DecidableEq Label] (S : SectorData Config Label)
+    (target : Label) (psi : Config -> Complex) :
+    sectorProjection S target (sectorProjection S target psi) =
+      sectorProjection S target psi :=
+  sectorProjection_eq_self_of_supported S target (sectorProjection S target psi)
+    (supportedInSector_sectorProjection S target psi)
+
+/-- Projecting onto two distinct sectors in succession gives zero. -/
+theorem sectorProjection_sectorProjection_eq_zero_of_ne [DecidableEq Label]
+    (S : SectorData Config Label) {first second : Label}
+    (psi : Config -> Complex) (hne : first ≠ second) :
+    sectorProjection S second (sectorProjection S first psi) = fun _ => 0 := by
+  funext x
+  by_cases hfirst : S.label x = first
+  · simp [sectorProjection, hfirst, hne]
+  · simp [sectorProjection, hfirst]
+
+/-- A finite label set decomposes every wavefunction as the sum of its
+sector projections. -/
+theorem sum_sectorProjection_eq_self [Fintype Label] [DecidableEq Label]
+    (S : SectorData Config Label) (psi : Config -> Complex) :
+    (fun x : Config => ∑ target : Label, sectorProjection S target psi x) =
+      psi := by
+  funext x
+  simp [sectorProjection]
 
 /-- A finite transfer kernel acts by summing over the source configuration.
 
