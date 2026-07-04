@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
@@ -58,7 +59,12 @@ the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
 [propext, Classical.choice, Quot.sound]; includes `hadamard_posSemidef`,
 a genuinely reusable Schur-product-theorem lemma this repo's pinned
-Mathlib lacks under any name); `TransferPositivity` (YM3, single-link
+Mathlib lacks under any name); `WilsonLocalWeight` (YM0/YM3 connector:
+the Wilson local weight `exp(beta Re chi(h))` is a class function -
+needing only multiplicativity of `rho`, not unitarity - so the T3
+`PlaquetteEnsemble` skeleton is gauge invariant for the ACTUAL Wilson
+weight, not just an abstract placeholder; axiom footprint
+[propext, Classical.choice, Quot.sound]); `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original
 "Corollary 3b"/"transfer matrix" framing overstated what is indexed:
