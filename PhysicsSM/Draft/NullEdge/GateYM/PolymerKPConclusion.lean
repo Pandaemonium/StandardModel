@@ -85,6 +85,27 @@ def energyOf (S : PolymerSystem Gamma) (X : Cluster S) : Real :=
   (Finset.univ : Finset (Fin X.n)).sum
     (fun i => S.energy (X.poly i))
 
+/-- Cluster absolute weights are nonnegative. -/
+theorem absWeight_nonneg (S : PolymerSystem Gamma) (X : Cluster S) :
+    0 <= X.absWeight S := by
+  exact Finset.prod_nonneg (fun i _hi => abs_nonneg (S.weight (X.poly i)))
+
+/-- Cluster KP energies are nonnegative. -/
+theorem energyOf_nonneg (S : PolymerSystem Gamma) (X : Cluster S) :
+    0 <= X.energyOf S := by
+  exact Finset.sum_nonneg (fun i _hi => S.energy_nonneg (X.poly i))
+
+/-- The exponential energy factor is strictly positive. -/
+theorem exp_energyOf_pos (S : PolymerSystem Gamma) (X : Cluster S) :
+    0 < Real.exp (X.energyOf S) :=
+  Real.exp_pos _
+
+/-- The absolute-weight times exponential-energy factor is nonnegative. -/
+theorem absWeight_mul_exp_energyOf_nonneg
+    (S : PolymerSystem Gamma) (X : Cluster S) :
+    0 <= X.absWeight S * Real.exp (X.energyOf S) := by
+  exact mul_nonneg (X.absWeight_nonneg S) (le_of_lt (X.exp_energyOf_pos S))
+
 end Cluster
 
 /-- Number of labeled spanning trees of the cluster incompatibility graph.
@@ -208,6 +229,21 @@ structure ClusterCoeffData (S : PolymerSystem Gamma)
     forall X : Cluster S,
       |coeff X| * (Nat.factorial X.n : Real)
         <= (spanningTreeCount S hdec X : Real)
+
+/-- Coefficient-weight terms in the bare cluster sum are nonnegative. -/
+theorem clusterCoeff_absWeight_nonneg (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (D : ClusterCoeffData S hdec) (X : Cluster S) :
+    0 <= |D.coeff X| * X.absWeight S := by
+  exact mul_nonneg (abs_nonneg (D.coeff X)) (X.absWeight_nonneg S)
+
+/-- Coefficient-weight-energy terms in the KP convergence sum are nonnegative. -/
+theorem clusterCoeff_absWeight_exp_nonneg (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (D : ClusterCoeffData S hdec) (X : Cluster S) :
+    0 <= |D.coeff X| * X.absWeight S * Real.exp (X.energyOf S) := by
+  exact mul_nonneg (clusterCoeff_absWeight_nonneg S hdec D X)
+    (le_of_lt (X.exp_energyOf_pos S))
 
 /-- Bare-KP absolute summability of clusters touching a fixed polymer.
 
