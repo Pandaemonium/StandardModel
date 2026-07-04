@@ -287,6 +287,15 @@ plaquette-bit field preserves those sectors, including the trivial electric
 sector. Still open: four electric-sector projections and the Q2 transfer
 kernel.
 
+Codex follow-up 1.10:52:
+
+Added those four Z2 electric-sector projections. The projection is the
+four-term average over the base x/y center shifts with the selected Z2
+characters. Kernel-checked facts: x/y shifts commute, each projection lands
+in the requested electric sector, is idempotent, and the nested Bool sum over
+the four electric sectors is the identity on wavefunctions. Still open: Q2
+transfer-kernel construction/preservation for the actual transfer matrix.
+
 ## lit:menotti-rp-source (seeded from the 2026-07-04 external review)
 
 The review cited a Springer item as "Menotti - general proof of OS

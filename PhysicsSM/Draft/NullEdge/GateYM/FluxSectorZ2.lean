@@ -23,7 +23,8 @@ the file is deliberately narrow:
   commutes with the projection.
 * start the concrete electric/center-shift layer: x/y Z2 center shifts,
   plaquette-bit invariance, Z2 electric sectors as shift eigenconditions,
-  and preservation of those sectors by plaquette-bit observables.
+  electric-sector projections, decomposition as the sum of the four electric
+  projections, and preservation of those sectors by plaquette-bit observables.
 
 It does not construct the transfer matrix, prove a spectral theorem, or claim
 that the local gap is positive. The concrete winding-cycle holonomy
@@ -41,8 +42,7 @@ non-vacuous transfer-preservation theorem.
 
 The electric/center-shift declarations in this file are the first concrete
 Z2 instance of that corrected target. They still do not construct the Q2
-transfer matrix or prove the four electric-sector projections resolve the
-identity.
+transfer matrix.
 
 Provenance: `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`, section 14,
 Q3, and `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`,
@@ -432,6 +432,19 @@ theorem yShift_involutive (j0 : Fin Ly) :
   cases U
   simp [yShift, yShiftFactor, applyLinkFactor]
 
+/-- Concrete Z2 x- and y-center shifts commute. -/
+theorem xShift_yShift_comm (i0 : Fin Lx) (j0 : Fin Ly)
+    (U : TorusLinkField Lx Ly) :
+    xShift i0 (yShift j0 U) = yShift j0 (xShift i0 U) := by
+  cases U
+  simp [xShift, yShift, xShiftFactor, yShiftFactor, applyLinkFactor]
+
+/-- The symmetric form of `xShift_yShift_comm`. -/
+theorem yShift_xShift_comm (i0 : Fin Lx) (j0 : Fin Ly)
+    (U : TorusLinkField Lx Ly) :
+    yShift j0 (xShift i0 U) = xShift i0 (yShift j0 U) :=
+  (xShift_yShift_comm i0 j0 U).symm
+
 /-- The Z2 plaquette holonomy bit around the plaquette based at `(i,j)`.
 
 This is the Bool/XOR analogue of the finite-group plaquette holonomy in
@@ -481,6 +494,76 @@ def InElectricFluxSector (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
 def TrivialElectricFlux (hLx : 0 < Lx) (hLy : 0 < Ly)
     (psi : TorusLinkField Lx Ly -> Complex) : Prop :=
   InElectricFluxSector hLx hLy false false psi
+
+/-- The diagonal projection onto a concrete Z2 electric-flux sector.
+
+This is the standard four-term average over the base x/y center shifts, with
+the two Z2 characters selecting the requested sector. -/
+def electricSectorProjection (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey : Bool) (psi : TorusLinkField Lx Ly -> Complex) :
+    TorusLinkField Lx Ly -> Complex :=
+  fun U =>
+    (1 / 4 : Complex) *
+      (psi U + z2Character ex * psi (xShift (baseX hLx) U) +
+        z2Character ey * psi (yShift (baseY hLy) U) +
+        z2Character ex * z2Character ey *
+          psi (xShift (baseX hLx) (yShift (baseY hLy) U)))
+
+/-- The electric-sector projection lands in the requested sector. -/
+theorem electricSectorProjection_inElectricFluxSector
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey : Bool) (psi : TorusLinkField Lx Ly -> Complex) :
+    InElectricFluxSector hLx hLy ex ey
+      (electricSectorProjection hLx hLy ex ey psi) := by
+  constructor
+  · intro U
+    unfold electricSectorProjection
+    rw [xShift_involutive (baseX hLx) U]
+    rw [← xShift_yShift_comm (baseX hLx) (baseY hLy) U]
+    rw [xShift_involutive (baseX hLx) (yShift (baseY hLy) U)]
+    cases ex <;> cases ey <;> simp [z2Character]
+    all_goals ring
+  · intro U
+    unfold electricSectorProjection
+    rw [yShift_involutive (baseY hLy) U]
+    cases ex <;> cases ey <;> simp [z2Character]
+    all_goals ring
+
+/-- Projecting a wavefunction already in a concrete Z2 electric sector leaves
+it unchanged. -/
+theorem electricSectorProjection_eq_self_of_inElectricFluxSector
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey : Bool) (psi : TorusLinkField Lx Ly -> Complex)
+    (hpsi : InElectricFluxSector hLx hLy ex ey psi) :
+    electricSectorProjection hLx hLy ex ey psi = psi := by
+  funext U
+  unfold electricSectorProjection
+  rw [hpsi.1 U, hpsi.2 U, hpsi.1 (yShift (baseY hLy) U), hpsi.2 U]
+  cases ex <;> cases ey <;> simp [z2Character]
+  all_goals ring
+
+/-- Concrete Z2 electric-sector projections are idempotent. -/
+theorem electricSectorProjection_idempotent
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey : Bool) (psi : TorusLinkField Lx Ly -> Complex) :
+    electricSectorProjection hLx hLy ex ey
+        (electricSectorProjection hLx hLy ex ey psi) =
+      electricSectorProjection hLx hLy ex ey psi :=
+  electricSectorProjection_eq_self_of_inElectricFluxSector hLx hLy ex ey
+    (electricSectorProjection hLx hLy ex ey psi)
+    (electricSectorProjection_inElectricFluxSector hLx hLy ex ey psi)
+
+/-- Every concrete Z2 torus wavefunction is the sum of its four electric
+center-shift sector projections. -/
+theorem sum_electricSectorProjection_eq_self
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (psi : TorusLinkField Lx Ly -> Complex) :
+    (fun U : TorusLinkField Lx Ly =>
+      ∑ ex : Bool, ∑ ey : Bool, electricSectorProjection hLx hLy ex ey psi U) =
+      psi := by
+  funext U
+  simp [electricSectorProjection, z2Character]
+  ring
 
 /-- A diagonal observable is invariant under all concrete Z2 center shifts. -/
 def CenterShiftInvariantObservable (O : TorusLinkField Lx Ly -> Complex) : Prop :=

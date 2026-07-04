@@ -254,8 +254,10 @@ marked irreducible to avoid silent definitional conflation. The file now also
 starts the corrected electric/center-shift Z2 layer: concrete x/y center
 shifts, plaquette-bit invariance under those shifts, electric sectors as base
 shift eigenconditions, and preservation of those sectors by plaquette-bit
-observables. The actual Q2 transfer-kernel construction and the four electric
-sector projection/decomposition theorem remain future work);
+observables. It also proves the four-term electric-sector projections land in
+the requested sectors, are idempotent, and sum to the identity over the four
+Z2 electric sectors. The actual Q2 transfer-kernel construction remains future
+work);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
