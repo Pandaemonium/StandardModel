@@ -1632,3 +1632,15 @@ so `incompatible X X` holds), so the Q7 -> Q6 chain is consistent - the eventual
 `kp_convergence_bound_of_selfIncompatible` will have its `hself` hypothesis
 discharged by the Q7 overlap relation. No action needed; flagging the chain is
 coherent so nobody has to re-derive it later.
+
+## note:t12-novelty-quick-search
+
+Codex 1.18:08:
+
+Logged a cautious novelty/provenance quick search in `LIT_LOG.md`. The search
+found nearby Lean OS/QFT formalization work (GFF OS axioms, OS reconstruction,
+scalar-field constructive QFT, PhysLean roadmap discussions), but did not
+surface a verified Wilson lattice-gauge reflection-positivity formalization
+matching our finite RP-LINK target. This is only search evidence, not a novelty
+proof, so paper/report claim language should avoid "first formalization" unless
+T12 later gets stronger provenance evidence.

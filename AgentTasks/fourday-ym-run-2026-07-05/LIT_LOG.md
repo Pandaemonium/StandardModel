@@ -231,3 +231,64 @@ abstract Ursell/coefficient interface with tree-graph bound, and the
 `sum incompatible |weight| * exp(energy) <= energy` KP hypothesis shape. It
 still does NOT clear the original Kotecky-Preiss 1986 exact statement, nor any
 distance-tail theorem without extra metric/coercivity hypotheses.
+
+## 2026-07-04 18:08 - Codex - novelty/provenance quick search
+
+Status: QUICK WEB SEARCH ONLY; NOT A NOVELTY PROOF.
+
+Queries:
+
+- `Lean formalization reflection positivity lattice gauge theory Osterwalder Seiler`
+- `Coq Isabelle formalization reflection positivity lattice gauge theory`
+- `"reflection positivity" "Lean" formalization`
+- `"Osterwalder-Seiler" formalization`
+- `"OSforGFF" Lean`
+- `"Wightman Axioms" Lean formalization quantum field theory "Osterwalder"`
+- `"reflection positivity" "lattice gauge" "formalization"`
+- `"Osterwalder Schrader" "Lean" "GitHub"`
+
+Relevant hits:
+
+- OSforGFF:
+  https://github.com/mrdouglasny/OSforGFF
+  Lean 4 formalization of the Gaussian Free Field and OS/Glimm-Jaffe axioms;
+  adjacent to reflection positivity, but not Wilson lattice-gauge RP.
+- Formalization of QFT:
+  https://arxiv.org/html/2603.15770v1
+  Discusses OS reconstruction, lattice gauge theory, reflection positivity,
+  and formalization targets; no completed Wilson LGT RP theorem identified in
+  this quick pass.
+- Phi4:
+  https://github.com/xiyin137/Phi4
+  Constructive two-dimensional scalar-field QFT project aiming at OS axioms and
+  reconstruction; not Wilson lattice-gauge RP.
+- OSreconstruction:
+  https://github.com/xiyin137/OSreconstruction/blob/main/README.md
+  Lean 4 formalization of OS reconstruction/Wightman-theorem infrastructure;
+  not Wilson lattice-gauge RP.
+- PhysLean/Physlib issue 938:
+  https://github.com/leanprover-community/physlib/issues/938
+  Roadmap/API discussion around OS/Glimm-Jaffe/AQFT infrastructure, not a
+  completed Wilson LGT RP result.
+- Shariq81 Yang-Mills mass-gap repository:
+  https://github.com/Shariq81/yang-mills-mass-gap/blob/master/main.tex
+  Low-confidence, unreviewed search hit with formal-methods claim language; do
+  not use without inspecting actual proof artifacts, build status, statements,
+  and assumptions.
+
+Finding:
+
+The quick search found several nearby Lean OS/QFT formalization projects and
+roadmaps. It did not identify, in this limited pass, a verified Lean/Coq/
+Isabelle formalization of Osterwalder-Seiler/Menotti-Pelissetto Wilson-action
+lattice-gauge reflection positivity matching this repo's finite Wilson RP-LINK
+target.
+
+Claim boundary:
+
+Do not write "first formalization" in papers or reports from this search alone.
+A safe internal phrasing is: "quick web search found existing Lean
+formalizations or blueprints around OS axioms/reconstruction and constructive
+free/scalar-field QFT, but did not surface a verified Wilson lattice-gauge
+reflection-positivity formalization matching our target; novelty remains an
+open provenance check."
