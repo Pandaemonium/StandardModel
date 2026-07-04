@@ -8,7 +8,7 @@ aristotle:
   expected_module: null
   submission_project: null
   output_dir: AgentTasks/aristotle-output/63dfd691-3462-44bf-ae8d-a72284ae592f
-  status: submitted
+  status: harvested
 ```
 
 ## Purpose
@@ -54,15 +54,34 @@ After cancellation:
 - project `6f70c1a7-2080-49ab-b223-1b7ba19187c2` was `IDLE` with canceled task
   `9fb72f38-d634-4b68-99a9-7223e9c08987`.
 
-## Harvest checklist
+## Harvest record
 
-When the project becomes `IDLE`:
+Harvested 2026-07-04 12:13 by Codex.
 
-1. Download the result under
-   `AgentTasks/aristotle-output/63dfd691-3462-44bf-ae8d-a72284ae592f/`.
-2. Inspect the report for claim-language drift, especially RP-LINK, Q3 sector
-   status, and finite-vs-continuum mass-gap wording.
-3. Summarize actionable decisions in
-   `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`.
-4. Update the ledger registry and this task note from `submitted` to
-   `harvested`.
+- Downloaded archive:
+  `AgentTasks/aristotle-output/63dfd691-3462-44bf-ae8d-a72284ae592f/fourday-ym-day1-grand-strategy.zip`
+- Extracted report:
+  `AgentTasks/aristotle-output/63dfd691-3462-44bf-ae8d-a72284ae592f/fourday-ym-day1-grand-strategy-20260704-project_aristotle/FourDay_YM_Day1_Strategy_Audit.md`
+- Summary:
+  `AgentTasks/aristotle-output/63dfd691-3462-44bf-ae8d-a72284ae592f/fourday-ym-day1-grand-strategy-20260704-project_aristotle/ARISTOTLE_SUMMARY.md`
+
+Key harvest points:
+
+- The logical Q1-to-Q9 spine remains right, but Q1/Q2/Q3 are a co-design
+  fixed point: link reflection positivity, finite OS/GNS space, and
+  center-shift sector action must be frozen together.
+- Q6/Q7/Q8 form an independent clustering rail and should keep moving in
+  parallel; they join the transfer rail only at the finite-gap assembly.
+- Biggest hidden risk: the doubled-lattice zero-cut construction is a
+  degenerate RP instance and must not be reported as full RP-LINK closure.
+- Q2 must include center-shift covariance of the PSD matrix/range if Q3
+  projections are to restrict to the transfer space.
+- Q6/Q8 need an explicit polymer size/diameter bridge: size decay from
+  activities must be converted into observable-distance decay.
+- Recommended immediate Aristotle ranking:
+  1. Q1 cut-plaquette conjugation strategy;
+  2. Q2 finite-matrix bridge with shift covariance;
+  3. Q11 tree-slice lasso proof attempt.
+
+The report's literature references are useful leads for verification, not
+source-cleared claim language.
