@@ -15,6 +15,8 @@ supplied explicitly as a hypothesis.
 The file also provides a small paired-family constructor: if two finite
 plaquette families are explicitly identified as each other's mirrors, their
 disjoint union is mirror-stable by swapping the pair index.
+The paired-family constructor also has a direct product-weight corollary, so it
+can feed either the abstract product API or the real-valued ensemble wrappers.
 The result is still algebraic scaffolding, not reflection positivity: it does
 not prove Wilson action reflection covariance for a reflection-stable plaquette
 set, cut factorization, or the RP-LINK inequality.
@@ -191,6 +193,25 @@ theorem productWeight_reflectLinkField_of_mirrorStable
           rw [hop (τ i)]
     _ = ∏ i : ι, localWeight ((P i).hol U) := by
           simpa using (Equiv.prod_comp τ (fun i => localWeight ((P i).hol U)))
+
+/-- Product-weight reflection invariance for a paired plaquette family whose two
+halves are explicitly identified as mirror partners. This is the paired-family
+specialization of `productWeight_reflectLinkField_of_mirrorStable`. -/
+theorem productWeight_reflectLinkField_of_mirrorPair
+    {ι M : Type*} [Fintype ι] [CommMonoid M]
+    (P Q : ι → Plaquette Λ) (localWeight : G → M)
+    (hPQ : ∀ i : ι, mirrorPlaquette R (P i) = Q i)
+    (hQP : ∀ i : ι, mirrorPlaquette R (Q i) = P i)
+    (U : Λ.LinkField (G := G))
+    (hop : ∀ i : Bool × ι,
+      (fun h : MulOpposite G => localWeight h.unop)
+        (((mirrorPairFamily P Q) i).hol (ReflectionCore.Reflection.opLinkField U)) =
+      localWeight (((mirrorPairFamily P Q) i).hol U)) :
+    PlaquetteCore.productWeight (mirrorPairFamily P Q) localWeight (R.reflectLinkField U) =
+      PlaquetteCore.productWeight (mirrorPairFamily P Q) localWeight U := by
+  exact productWeight_reflectLinkField_of_mirrorStable R (mirrorPairFamily P Q)
+    (mirrorPairIndexEquiv (ι := ι)) localWeight
+    (mirrorPairFamily_isMirrorStable R P Q hPQ hQP) U hop
 
 end PlaquetteReflection
 end GateYM

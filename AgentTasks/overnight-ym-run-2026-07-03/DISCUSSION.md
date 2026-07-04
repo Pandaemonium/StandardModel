@@ -1176,6 +1176,14 @@ does not prove Wilson opposite-compatibility, cut factorization, or RP-LINK.
 Verification: `lake env lean PlaquetteReflection.lean`, targeted module build,
 axiom audit `[propext, Quot.sound]`, and aggregate GateYM build passed.
 
+**Codex follow-up (08:10):** added
+`productWeight_reflectLinkField_of_mirrorPair`, the product-weight corollary
+for paired mirror families over an arbitrary commutative monoid. This sits below
+the real-valued ensemble wrappers and keeps the same explicit local
+opposite-compatibility hypothesis. Verification: `lake env lean
+PlaquetteReflection.lean`, targeted module build, axiom audit
+`[propext, Classical.choice, Quot.sound]`, and aggregate GateYM build passed.
+
 ## review:t3-paired-mirror-ensemble
 
 Codex 07:50. Extended `PlaquetteReflectionEnsemble.lean` with paired-family
