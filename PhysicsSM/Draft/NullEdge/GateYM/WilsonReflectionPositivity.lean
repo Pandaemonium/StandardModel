@@ -21,6 +21,30 @@ strong tier - whether the genuine two-plaquette mirror ENSEMBLE weight
 (not just the weight function's algebraic shape) equals this factorized
 form - is stated precisely in "What this does NOT prove" below.
 
+**CLAIM-FRAMING CORRECTION (from an Aristotle day-1 whole-ladder audit,
+`AgentTasks/aristotle-output/fourday-ym-day1-grand-strategy-20260704/`,
+cross-checked against Osterwalder-Seiler 1978 Ann. Phys. 110 Sec. 2 and
+Seiler LNP 159 Ch. II): the `doubleLattice` substrate this module builds
+on has ZERO cut links (the two copies of `L0` share no edges), which
+makes it a DEGENERATE instance of reflection positivity - the Gram form
+factorizes trivially (an outer product of a vector with itself) and is
+PSD for a vacuous reason. Reflection positivity is only mathematically
+nontrivial when the reflection plane CUTS links/plaquettes, so the
+reflected and original configurations share boundary degrees of freedom
+through the cut variables; that is the actual content Osterwalder-Seiler
+prove. THIS MODULE THEREFORE ESTABLISHES A WELL-DEFINEDNESS/CONSISTENCY
+WITNESS FOR THE REFLECTION STRUCTURE, NOT THE NONTRIVIAL RP-LINK THEOREM.
+The genuine RP-LINK content is queue item Q1's node N3 (the cut-plaquette
+conjugation: identifying the raw mirror-plaquette holonomy word, which is
+differently ordered from the target for nonabelian `G`, with the correct
+conjugate via an explicit conjugating element and a trace/character
+invariance argument) - separately tracked, NOT closed by this module.
+Any report or claim-language document citing this file MUST use language
+of the form "RP-LINK baseline (zero-cut well-definedness); nontrivial
+cut-plaquette positivity OPEN (N3)", never "RP-LINK closed" or
+equivalent - this is the single most load-bearing claim-discipline point
+the audit raised.
+
 ## The construction
 
 Given a base lattice `L0` and a single plaquette `p0 : Plaquette L0`, lift
