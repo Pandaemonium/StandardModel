@@ -5,6 +5,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
 import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
+import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
@@ -79,6 +80,19 @@ with norm form `norm_wilson_loop_expectation` giving exponential area decay
 whenever `|gamma| < 1`. The remaining layer of freeze Theorem 2 is geometric:
 the tree-gauge change of variables from the 2D open-rectangle LINK ensemble to
 this independent-plaquette ensemble; axiom footprint
+[propext, Classical.choice, Quot.sound]);
+`TreeGaugeBridge` (YM1 generic tree-gauge bridge: the abstract
+`PlaquetteCoordinatization` interface - link fields equivalent to plaquette
+coordinates times residual coordinates, with plaquette holonomies AS the
+plaquette coordinates - under which the complex link-ensemble expectation of
+`chi(orderedProd of in-region plaquette holonomies)` collapses to
+`IndependentPlaquetteEnsemble.loopExpectation` with the `|G|^(card tau)`
+residual factors cancelling, and the Wilson specialization
+`wilson_link_loop_expectation_area_law` gives `chi_R(1) * gamma^m` at the
+link-ensemble level. Remaining geometric gap, stated in the module docstring:
+constructing a coordinatization for the concrete 2D open rectangle and the
+comb-ordering lasso identification of the boundary-circuit Wilson loop with
+the ordered plaquette-holonomy product; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
