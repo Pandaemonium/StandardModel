@@ -117,6 +117,64 @@ noncomputable def ursellSum (S : PolymerSystem Gamma)
       (fun T : SimpleGraph (Fin X.n) => T <= X.graph S hdec /\ T.Connected)).sum
       (fun T => (-1 : Int) ^ T.edgeFinset.card)
 
+/-- A tree subgraph of the cluster graph witnesses connectedness of the
+cluster itself. -/
+theorem connected_of_isTree_le (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) {T : SimpleGraph (Fin X.n)}
+    (hTle : T <= X.graph S hdec) (hT : T.IsTree) :
+    X.Connected S hdec := by
+  exact hT.isConnected.mono hTle
+
+/-- A connected subgraph of the cluster graph witnesses connectedness of the
+cluster itself. -/
+theorem connected_of_connected_le (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) {T : SimpleGraph (Fin X.n)}
+    (hTle : T <= X.graph S hdec) (hT : T.Connected) :
+    X.Connected S hdec := by
+  exact hT.mono hTle
+
+/-- Disconnected clusters have no spanning-tree subgraphs. -/
+theorem spanningTreeCount_eq_zero_of_not_connected (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) (hX : Not (X.Connected S hdec)) :
+    spanningTreeCount S hdec X = 0 := by
+  classical
+  unfold spanningTreeCount
+  rw [Finset.card_eq_zero]
+  apply Finset.filter_false_of_mem
+  intro T _ hT
+  exact hX (connected_of_isTree_le S hdec X hT.1 hT.2)
+
+/-- Connected clusters admit at least one spanning-tree subgraph. -/
+theorem spanningTreeCount_pos_of_connected (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) (hX : X.Connected S hdec) :
+    0 < spanningTreeCount S hdec X := by
+  classical
+  obtain ⟨T, hTle, hTtree⟩ := hX.exists_isTree_le
+  unfold spanningTreeCount
+  exact Finset.card_pos.mpr
+    ⟨T, by
+      simp [hTle, hTtree]⟩
+
+/-- Disconnected clusters have zero concrete Ursell sum. -/
+theorem ursellSum_eq_zero_of_not_connected (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) (hX : Not (X.Connected S hdec)) :
+    ursellSum S hdec X = 0 := by
+  classical
+  unfold ursellSum
+  have hfilter :
+      (Finset.univ.filter
+        (fun T : SimpleGraph (Fin X.n) =>
+          T <= X.graph S hdec /\ T.Connected)) = ∅ := by
+    apply Finset.filter_false_of_mem
+    intro T _ hT
+    exact hX (connected_of_connected_le S hdec X hT.1 hT.2)
+  simp [hfilter]
+
 /-- The parked Penrose tree-graph inequality for the concrete Ursell sum.
 
 Aristotle project `34d675b8` confirmed this is the unavoidable hard
