@@ -284,6 +284,23 @@ The package is deliberately abstract: it should not claim a physical transfer
 matrix, Hamiltonian, spectral gap, or concrete torus/Z2 Wilson transfer
 instantiation.
 
+Harvest/integration 1.15:18 codex:
+
+Aristotle `8e1e11b0` returned COMPLETE and is integrated as
+`TransferHilbertBlockShift.lean`.  The accepted bridge defines the product
+shift system on `C x A`, the simultaneous-invariance predicate
+`BlockWeightInvariantUnderShifts SC SA W`, and proves:
+
+- `rpBlockMatrix_kernelInvariantUnderBlockShifts`;
+- `rpBlockMatrix_commutes_blockShifts`;
+- `shiftOp_preserves_rpHilbertSpace_rpBlockMatrix`.
+
+Local checks passed: direct file check, targeted module build, aggregator file
+check, aggregate GateYM build, placeholder scan, and axiom audit
+`[propext, Classical.choice, Quot.sound]`.  Scope boundary unchanged: this is
+finite block-kernel/sector infrastructure, not a physical transfer matrix,
+Hamiltonian, concrete torus/Z2 Wilson-transfer invariance, or gap claim.
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:

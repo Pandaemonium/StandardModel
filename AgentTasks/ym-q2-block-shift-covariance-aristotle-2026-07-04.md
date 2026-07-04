@@ -8,7 +8,7 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlockShift
   submission_project: AgentTasks/aristotle-submit/ym-q2-block-shift-covariance-20260704-project
   output_dir: AgentTasks/aristotle-output/8e1e11b0-9f24-4384-ada1-ca19de7d7869
-  status: submitted
+  status: harvested+integrated
 ```
 
 ## Purpose
@@ -75,4 +75,52 @@ Submission:
 Project created: 8e1e11b0-9f24-4384-ada1-ca19de7d7869
 Task: 2781513b-303a-41e6-95b3-81302a0500f1
 Project status after submit: RUNNING
+```
+
+## Harvest / Integration
+
+Aristotle returned COMPLETE and supplied
+`PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlockShift.lean`.
+
+Integrated declarations:
+
+- `blockShiftSystem`
+- `blockShiftSystem_shiftConfig`
+- `BlockWeightInvariantUnderShifts`
+- `rpBlockMatrix_kernelInvariantUnderBlockShifts`
+- `rpBlockMatrix_commutes_blockShifts`
+- `shiftOp_preserves_rpHilbertSpace_rpBlockMatrix`
+
+Semantic review: accepted.  The file proves exactly the requested abstract
+Q2/Q3 bridge: simultaneous invariance of a block weight `W a c b` under cut
+and positive/mirror shifts implies `rpBlockMatrix W` is invariant/commutes
+with product block shifts, hence the corresponding shift operators preserve
+`rpHilbertSpace (rpBlockMatrix W)`.  It does not claim a physical transfer
+matrix, Hamiltonian, concrete torus/Z2 Wilson-transfer invariance, or spectral
+gap.
+
+Local verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlockShift.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlockShift
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The direct check, targeted build, aggregator check, and aggregate GateYM build
+all passed.  The aggregate build reported only existing warnings and the known
+Q6 draft proof placeholders in `PolymerKPConclusion.lean`.
+
+Placeholder/escape-hatch scan on `TransferHilbertBlockShift.lean`: no hits.
+
+Axiom audit:
+
+```text
+rpBlockMatrix_kernelInvariantUnderBlockShifts:
+  [propext, Classical.choice, Quot.sound]
+rpBlockMatrix_commutes_blockShifts:
+  [propext, Classical.choice, Quot.sound]
+shiftOp_preserves_rpHilbertSpace_rpBlockMatrix:
+  [propext, Classical.choice, Quot.sound]
 ```

@@ -44,6 +44,12 @@ returned.
   `C x A`, proves the pairing bridge to `reflectionForm`, and proves PSD from
   `IsReflectionPositive`.  This makes the finite OS range model concrete for
   reflection-positive weights, still without any physical transfer/gap claim.
+- `TransferHilbertBlockShift.lean`: Q2/Q3 bridge from Aristotle `8e1e11b0`;
+  product shifts on block indices `C x A`, simultaneous invariance of
+  `W a c b`, block-matrix shift invariance/commutation, and preservation of
+  `rpHilbertSpace (rpBlockMatrix W)` under those shifts.  Still abstract:
+  no physical transfer matrix, concrete torus/Z2 Wilson-transfer
+  instantiation, or gap claim.
 - `RectBoundaryLasso.lean`: tree-slice lasso identity and `chi` corollary
   proved from Aristotle `93758b7f`: on the comb tree slice, the full rectangle
   boundary holonomy equals the reversed row-major ordered product of plaquette
@@ -87,11 +93,14 @@ tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 `2c127e31` (Q8 exponential-clustering bridge audit,
 COMPLETE+HARVESTED+INTEGRATED), `e6e46e9f` (T1 N3 redesign/ensemble
 identification, COMPLETE+HARVESTED+INTEGRATED by Claude), `50024abf`
-(Q2 block instantiation, COMPLETE+HARVESTED+INTEGRATED), and `071d1370`
-(Q6 abstract KP C1/C2 proof package, RUNNING). Two near-collisions
+(Q2 block instantiation, COMPLETE+HARVESTED+INTEGRATED), `8e1e11b0`
+(Q2/Q3 block-shift covariance, COMPLETE+HARVESTED+INTEGRATED), `071d1370`
+(Q6 abstract KP C1/C2 proof package, COMPLETE pending harvest), and
+`acedaea2` (Q11 boundary expectation bridge, RUNNING). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after the T1 audit submission: `071d1370` and `3e2051c3`.
+queue after the Q11 boundary-expectation submission: `3e2051c3` and
+`acedaea2`.
 
 ## 4. Board state
 
@@ -100,11 +109,13 @@ closed after `e6e46e9f`; the remaining Q1 gap is the genuinely nontrivial
 cut-plaquette/shocking tier. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
-`cutKernel` block matrix and pairing/reflection-form bridge.
+`cutKernel` block matrix and pairing/reflection-form bridge, while
+`TransferHilbertBlockShift.lean` proves the abstract block-shift covariance
+bridge needed by Q3.
 T3 baseline-done-gated-by-T2. T6
 statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose remains parked and abstract KP
-C1/C2 proof package `071d1370` is running. T7 has map-freeze plus both audit
+C1/C2 proof package `071d1370` is complete pending harvest. T7 has map-freeze plus both audit
 harvests done; the support-indexed
 carrier and decidable overlap-or-touch layer are integrated. The next blocker
 is an honest `KPCondition` instantiation carrying an explicit finite KP sum
@@ -122,7 +133,8 @@ T12/T13 done. T14 v0.3, 44/44 oracle green.
 The follow-up Q2 shift-covariance audit returned and is integrated as
 `TransferHilbert.lean`; the square-root range model preserves center shifts
 when the kernel commutes with them. Follow-up Q2 block-instantiation job
-`50024abf` is running.
+`50024abf` and block-shift bridge job `8e1e11b0` are both harvested and
+integrated.
 `review:q6-kp-freeze` ACCEPT (claude), follow-up tree-graph job returned and
 confirmed the normalization/direct-definition path.
 `idea:q7-polymer-map` audit returned ACCEPT WITH CHANGES: the current total
@@ -187,14 +199,15 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
    volume-uniform KP from the small-torus oracle rows.
 2. Red-team the new T1 zero-cut ensemble-identification claim, then move Q1
    toward the actual cut-plaquette kernel target.
-3. Wire the integrated `TransferHilbertBlock.lean` layer toward the torus/Z2
-   center-shift sector language; do not claim a physical transfer matrix.
-4. Harvest `071d1370` when it returns; keep the concrete Penrose theorem parked
-   unless a focused proof package is ready.
-5. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition
-   bridge to the full Theorem 2 expectation statement.
-6. Keep Q2 integration focused on the block-kernel instantiation rather than
-   physical transfer claims.
+3. Instantiate the integrated `TransferHilbertBlockShift.lean` layer against
+   the torus/Z2 center-shift sector language; do not claim a physical transfer
+   matrix.
+4. Harvest `071d1370`; keep the concrete Penrose theorem parked unless a
+   focused proof package is ready.
+5. Harvest or continue `acedaea2` when it returns; until then, use the
+   integrated T11 lasso identity as the YM1 expectation-bridge anchor.
+6. Keep Q2 integration focused on finite block-kernel/sector infrastructure
+   rather than physical transfer claims.
 7. Keep Aristotle utilization at or above 4/8 slots at the next midday
    integration point per the binding mandate; prefer new design/review
    threads over idle capacity.

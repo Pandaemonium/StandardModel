@@ -34,6 +34,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
+import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlockShift
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.CyclicityPrereq
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
@@ -354,7 +355,14 @@ on each block; proves same-cut/off-cut entry lemmas, the
 `reflectionForm W`, and `rpBlockMatrix_posSemidef_of_reflectionPositive`.
 This makes the finite OS/GNS range model concrete for reflection-positive
 weights while still claiming no physical transfer matrix, Hamiltonian, or
-gap); `BanksCasherShadow`
+gap); `TransferHilbertBlockShift` (YM3/Q2-Q3 bridge from Aristotle
+`8e1e11b0`: product shift systems on block indices `C x A`, simultaneous
+shift-invariance of the block weight `W a c b`, entrywise block-kernel
+invariance, matrix commutation with block shifts, and preservation of
+`rpHilbertSpace (rpBlockMatrix W)` under those shifts. This is still an
+abstract finite algebraic bridge for later torus/Z2 instantiation, not a
+physical transfer matrix, Hamiltonian, or spectral-gap theorem);
+`BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and
 `gamma5 * Dov` is Hermitian, given gamma5/eps both Hermitian involutions,
