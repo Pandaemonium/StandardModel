@@ -126,3 +126,46 @@ as evidence that the original Kotecky-Preiss theorem itself was tree-graph based
   and bibliographic records.
 - INSPIRE's Menotti/Pelissetto page requires JavaScript in the fetched view, but
   the search result still matched the Springer title and bibliographic data.
+
+## 2026-07-04 11:17 - Codex - graph/ingest and source-internal access addendum
+
+Status: INGEST DEBT IDENTIFIED; ONE MODERN FULL-TEXT SOURCE ACCESSIBLE.
+
+Graph pre-add checks:
+
+- Direct Neo4j driver checks by stable id returned no existing `Paper` rows for
+  Menotti/Pelissetto `10.1007/BF01221251`, Osterwalder-Seiler
+  `10.1016/0003-4916(78)90039-8`, Kotecky-Preiss
+  `10.1007/BF01211762`, or Fernandez-Procacci `math-ph/0605041`.
+- `Scripts/lit/lit_ingest.py math-ph/0605041 --dry-run` returned
+  `would-add` for Fernandez-Procacci, confirming that the arXiv paper is
+  eligible for the normal ingest path.
+- Actual ingest was not attempted: this Codex session's `.mcp.json` exposes
+  only `lean-lsp` and `lean-explore`, and those entries point at
+  `C:/Projects/EisensteinGoldbach`, so the Zotero writer server needed by
+  `lit_ingest.py` is unavailable here. This is tooling debt, not a source
+  judgment.
+
+Source-internal access:
+
+- Project Euclid PDF URLs for Kotecky-Preiss and Menotti/Pelissetto returned
+  Incapsula anti-bot HTML when fetched from the shell, so they were not treated
+  as source-internal evidence.
+- Springer DOI PDF endpoints redirected to article-preview pages. The preview
+  pages are adequate for bibliographic and abstract-level scope only; they do
+  not expose the full proof text without institutional/purchase access.
+- The Fernandez-Procacci author PDF is accessible. Its text confirms the
+  intended modern route more strongly than the abstract alone: it frames
+  polymer gases via an incompatibility graph, defines clusters using connected
+  incompatible subgraphs, states absolute/uniform convergence consequences,
+  and gives a later tree-bound proposition using rooted-tree expansions. It
+  should be used as the modern tree-graph proof-plan source, not as a claim
+  that Kotecky-Preiss itself used tree combinatorics.
+
+Claim boundary update:
+
+The run may cite the CMP and Annals papers by title/DOI and abstract-level
+scope, but should not say the current Lean statements implement their exact
+theorems until full text is obtained and checked. For Q6 statement design,
+Fernandez-Procacci supports a tree-graph lemma DAG and KP-comparison language;
+the original Kotecky-Preiss exact hypotheses remain a full-text review item.

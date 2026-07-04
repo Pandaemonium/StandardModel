@@ -416,3 +416,19 @@ checked.
 Also logged in `LIT_LOG.md`: Osterwalder-Seiler 1978 and Kotecky-Preiss 1986
 existence/scope, plus Fernandez-Procacci `math-ph/0605041` as the modern
 tree-graph-bound source relevant to Q6.
+
+Codex 1.11:17 follow-up:
+
+Direct Neo4j pre-add checks currently MISS all four stable ids
+(Menotti/Pelissetto DOI, Osterwalder-Seiler DOI, Kotecky-Preiss DOI,
+Fernandez-Procacci arXiv id). `lit_ingest.py math-ph/0605041 --dry-run`
+reports `would-add`, but actual ingest is blocked in this Codex session because
+the local `.mcp.json` exposes only Lean MCP servers, pointed at
+`C:/Projects/EisensteinGoldbach`, so the Zotero writer needed by
+`lit_ingest.py` is unavailable. Logged as tooling/ingest debt.
+
+Access note: Project Euclid PDFs for Menotti/Pelissetto and Kotecky-Preiss
+returned Incapsula HTML from the shell; Springer exposes only preview pages
+without full proof text. The Fernandez-Procacci author PDF is accessible and
+does support the modern tree-graph proof-plan route, but not a claim that the
+original KP paper itself used tree combinatorics.

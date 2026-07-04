@@ -21,7 +21,7 @@ section 14 (Q-items).
 | T9 cyclicity prerequisite | Q9 | open | - | (statement file only) | stretch |
 | T10 infinite-volume statement | Q10 | open | - | (statement file only) | stretch, day 4 |
 | T11 lasso identification | Q11 | open | - | PhysicsSM/Draft/NullEdge/GateYM/RectBoundary*.lean + standalone pkg | ordering pre-derived |
-| T12 YM-LIT | - | claimed-codex | codex | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | RP/KP attribution and novelty-source verification while T6 strategy job runs |
+| T12 YM-LIT | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | source checkpoint + graph/ingest debt logged; next lit slice needs full-text access and Zotero ingest path |
 | T13 paper-unit outlines | - | open | - | AgentTasks/paper-units/*.md | day-end lane |
 | T14 oracle fixtures v0.3 | - | open | - | Scripts/oracle/validate_lgt_core.py | support lane |
 | T15 daily/final reports | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/DAY_*.md, FINAL_REPORT.md | alternate drafters |
@@ -68,3 +68,4 @@ section 14 (Q-items).
 1.11:00 codex T6 claimed KP finite conclusion lane after parking T3 baseline on T2; next read T6 directions, PolymerKPCriterion, and Aristotle mechanics for the strategy job.
 1.11:08 codex T6 submitted KP finite-conclusion strategy/report job `2427a253` (task `08da7500`) after posting candidate statement signatures in `idea:q6-kp-statement-shape`; next poll once, then prepare only non-freezing local scaffolding while waiting.
 1.11:12 codex T12 claimed YM-LIT while T6 strategy job runs; next verify the Menotti-style Wilson RP source and log exact attribution status before any RP paper-unit claim language.
+1.11:17 codex T12 logged RP/KP source checkpoint, Neo4j pre-add misses, Fernandez-Procacci dry-run `would-add`, and blocked Zotero ingest path; T12 released, next claim T14 oracle fixture unless T6 Aristotle returns first.
