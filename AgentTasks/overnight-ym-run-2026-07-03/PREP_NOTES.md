@@ -34,10 +34,32 @@ Confirms and extends freeze s15. All names checked against the index:
   `Representation.IsIrreducible.bijective_or_eq_zero` (Schur) - present,
   as s15 said. The s15 trap stands: `char_conj` is class-function
   conjugation-invariance, NOT complex conjugation.
-- **`Matrix.PosSemidef.kronecker` and `Matrix.PosDef.kronecker` EXIST.**
-  Cor 3b's tensor-product-of-kernels step is a citation, not a proof.
-- **`Matrix.PosSemidef.hadamard` EXISTS (Schur product theorem).** See
-  section 3 below - this changes the recommended proof route.
+- **`Matrix.PosSemidef.kronecker` and `Matrix.PosDef.kronecker` EXIST**
+  (`Mathlib/Analysis/Matrix/Order.lean`, for any `RCLike 𝕜`, so `𝕜 = ℝ`
+  works directly). Cor 3b's tensor-product-of-kernels step is a citation,
+  not a proof.
+- **CORRECTION (00:40, claude, mid-T1): `Matrix.PosSemidef.hadamard` does
+  NOT exist** in this repo's pinned Mathlib (`mathlib4` commit `8f9d9cf`,
+  2026-02-16 - checked via direct grep of
+  `.lake/packages/mathlib/Mathlib/{LinearAlgebra,Analysis}/Matrix/*.lean`,
+  not just lean-explore). The Schur product theorem (Hadamard product of
+  two PSD matrices is PSD) is simply absent under any name searched. The
+  earlier "VERIFIED present" claim was wrong - lean-explore's index
+  apparently reaches a newer/different Mathlib snapshot than what this
+  repo vendors. **Lesson for the rest of the night: lean-explore hits are
+  a lead, not a fact - confirm load-bearing citations against
+  `.lake/packages/mathlib` directly (grep or `lean_declaration_file`)
+  before designing a proof plan around them, especially for anything
+  Aristotle will be told to "just cite".**
+  Good news: it is cheaply DERIVABLE from what IS present -
+  `A ⊙ B = (A ⊗ₖ B).submatrix (fun i => (i,i)) (fun i => (i,i))`
+  (Hadamard product is the Kronecker product restricted to the diagonal
+  embedding), and `Matrix.PosSemidef.submatrix (hM) (e : m → n) :
+  (M.submatrix e e).PosSemidef` holds for ANY `e` (no injectivity
+  needed) - both confirmed present. See `WilsonWeightPositivity.lean`'s
+  new `hadamard_posSemidef` lemma (added this session) for the proof;
+  it is a genuinely reusable, Mathlib-shaped result this repo now owns
+  and should consider upstreaming.
 - `Matrix.PosSemidef.submatrix` (compressions), `Matrix.posSemidef_sum`,
   `Matrix.PosSemidef.add/.smul`, `Matrix.posSemidef_conjTranspose_mul_self`
   and `_self_mul_conjTranspose`, `Matrix.PosSemidef.mul_mul_conjTranspose_same`
