@@ -9,6 +9,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
+import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 
 /-!
@@ -48,6 +49,10 @@ no reflection, cut structure, or transfer matrix yet);
 partition/numerator/expectation for arbitrary local class-function plaquette
 weights, positivity for positive local weights, and observable-gauge
 invariance under those weights);
+`TransferGapDefinition` (YM0/T3 D12 definition shell: explicit
+Gauss-invariant/zero-momentum/trivial-flux vacuum-sector predicate and
+finite real spectral-ratio gap `-log(lambda1/lambda0)` with elementary
+nonnegativity/positivity lemmas; no transfer matrix construction yet);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
