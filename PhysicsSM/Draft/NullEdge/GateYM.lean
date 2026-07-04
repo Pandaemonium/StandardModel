@@ -33,6 +33,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
+import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.CyclicityPrereq
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
@@ -344,7 +345,16 @@ OS-form transfer symmetry/positivity, and the auxiliary
 square-root-conjugated `compressedTransfer` facts. It is finite algebraic
 infrastructure only: no physical transfer matrix, Hamiltonian, continuum
 Hilbert space, or spectral gap is claimed; dependency footprint
-[propext, Classical.choice, Quot.sound]); `BanksCasherShadow`
+[propext, Classical.choice, Quot.sound]); `TransferHilbertBlock` (YM3/Q2
+block-instantiation layer from Aristotle `50024abf`: builds
+`rpBlockMatrix W : Matrix (C x A) (C x A) Complex`, block diagonal in the
+cut coordinate and agreeing with `ReflectionPositivityKernel.cutKernel W c`
+on each block; proves same-cut/off-cut entry lemmas, the
+`reflectionPairingVec` bridge from the block matrix's OS pairing to
+`reflectionForm W`, and `rpBlockMatrix_posSemidef_of_reflectionPositive`.
+This makes the finite OS/GNS range model concrete for reflection-positive
+weights while still claiming no physical transfer matrix, Hamiltonian, or
+gap); `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and
 `gamma5 * Dov` is Hermitian, given gamma5/eps both Hermitian involutions,

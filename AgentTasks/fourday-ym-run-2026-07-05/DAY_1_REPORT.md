@@ -39,6 +39,11 @@ returned.
   symmetry/positivity, and electric-sector preservation over the existing
   `CenterFluxSector` API.  It is finite algebraic infrastructure, not a
   physical Hamiltonian or spectral-gap claim.
+- `TransferHilbertBlock.lean`: Q2 block instantiation from Aristotle
+  `50024abf`; `rpBlockMatrix` packages the direct sum of cut kernels over
+  `C x A`, proves the pairing bridge to `reflectionForm`, and proves PSD from
+  `IsReflectionPositive`.  This makes the finite OS range model concrete for
+  reflection-positive weights, still without any physical transfer/gap claim.
 - `RectBoundaryLasso.lean`: tree-slice lasso identity and `chi` corollary
   proved from Aristotle `93758b7f`: on the comb tree slice, the full rectangle
   boundary holonomy equals the reversed row-major ordered product of plaquette
@@ -81,11 +86,12 @@ tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 (Q7 support-indexed-label redesign, COMPLETE+HARVESTED+INTEGRATED), and
 `2c127e31` (Q8 exponential-clustering bridge audit,
 COMPLETE+HARVESTED+INTEGRATED), `e6e46e9f` (T1 N3 redesign/ensemble
-identification, COMPLETE+HARVESTED+INTEGRATED by Claude), and `071d1370`
+identification, COMPLETE+HARVESTED+INTEGRATED by Claude), `50024abf`
+(Q2 block instantiation, COMPLETE+HARVESTED+INTEGRATED), and `071d1370`
 (Q6 abstract KP C1/C2 proof package, RUNNING). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after the Q6 package submission: `50024abf` and `071d1370`.
+queue after the T1 audit submission: `071d1370` and `3e2051c3`.
 
 ## 4. Board state
 
@@ -93,8 +99,8 @@ T0/T4/T5 done. T1 zero-cut baseline plus ensemble-identification tier is now
 closed after `e6e46e9f`; the remaining Q1 gap is the genuinely nontrivial
 cut-plaquette/shocking tier. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
-OS/GNS statement layer; Q2 block-instantiation proof job `50024abf` is running
-for the concrete `cutKernel` block matrix and pairing/reflection-form bridge.
+OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
+`cutKernel` block matrix and pairing/reflection-form bridge.
 T3 baseline-done-gated-by-T2. T6
 statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose remains parked and abstract KP
@@ -181,8 +187,8 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
    volume-uniform KP from the small-torus oracle rows.
 2. Red-team the new T1 zero-cut ensemble-identification claim, then move Q1
    toward the actual cut-plaquette kernel target.
-3. Harvest `50024abf` when it returns and integrate or park the
-   `TransferHilbertBlock.lean` cut-kernel block layer.
+3. Wire the integrated `TransferHilbertBlock.lean` layer toward the torus/Z2
+   center-shift sector language; do not claim a physical transfer matrix.
 4. Harvest `071d1370` when it returns; keep the concrete Penrose theorem parked
    unless a focused proof package is ready.
 5. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition

@@ -233,6 +233,35 @@ The focused source package warned that it has no `.lake` folder, so treat it as
 a proof package to verify locally on harvest.  It deliberately does not touch
 the dirty T1 reflection files.
 
+Harvest/integration 1.16:48 codex:
+
+Aristotle project `50024abf`, task `4961dec1`, returned COMPLETE and was
+integrated as `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlock.lean`.
+The delivered API is the requested finite block-instantiation layer:
+
+- `rpBlockMatrix : Matrix (C x A) (C x A) Complex`, block diagonal in the cut
+  coordinate and agreeing with `cutKernel W c` on each block;
+- `rpBlockMatrix_sameCut` and `rpBlockMatrix_neCut`;
+- `reflectionPairingVec`;
+- `dotProduct_rpBlockMatrix_eq_reflectionForm` and
+  `reflectionPairing_rpBlockMatrix_eq_reflectionForm`;
+- `rpBlockMatrix_posSemidef_of_reflectionPositive`;
+- `rpHilbertSpace_of_reflectionPositive`.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlock.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+all passed after integration.  Placeholder scan on the new file had no hits,
+and the main theorem axiom audit is `[propext, Classical.choice, Quot.sound]`.
+Scope boundary unchanged: finite algebraic OS/GNS infrastructure only, not a
+physical transfer matrix, Hamiltonian, continuum Hilbert space, or gap claim.
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:
