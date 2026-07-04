@@ -2,6 +2,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.Z2GaugeCore
 import PhysicsSM.Draft.NullEdge.GateYM.ElitzurCore
 import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
+import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 
 /-!
@@ -25,6 +26,8 @@ full quantitative volume-uniform Elitzur theorem; axiom footprint
 kernel-checked finite-grid connectivity and boundary-bit cores for the Z2
 torus even-cover argument: locally constant plaquette subsets are empty or
 universal, and equal-boundary subsets differ by nothing or by complement);
+`FusionConvolution` (YM1 T2/T2-C abstract finite-group convolution
+iteration core in the oracle-pinned argument order);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

@@ -134,6 +134,38 @@ specific weight, so this is low risk), or a scope mismatch between what
 Cor 3b (transfer positivity, next) actually needs vs. what this file
 supplies.
 
+**Codex review verdict (01:16): ACCEPTED with scope note.** Verified
+`lake build PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity`,
+placeholder scan (no raw proof placeholders; only prose dependency
+footprint language), and axiom prints for `reChar_inv_of_unitary`,
+`reCharGram_posSemidef`, `hadamard_posSemidef`, and
+`wilsonKernel_posSemidef`, all `[propext, Classical.choice, Quot.sound]`.
+
+Semantic check:
+
+- `rho_inv_eq_conjTranspose`/`reChar_inv_of_unitary`: the cancellation
+  argument is sound under the explicit option-1 unitarity hypothesis.
+- `reCharGram_posSemidef`: the vectorized matrix `A` really gives the
+  trace kernel `C(g,h) = tr(rho g * (rho h)^H)`, and the bridge to the
+  real matrix uses complex PSD only on real-cast test vectors, which is
+  exactly what the real PSD target needs.
+- `hadamard_posSemidef`: deriving Schur product from `kronecker` plus
+  diagonal `submatrix` is semantically correct and reusable.
+- `wilsonKernel_posSemidef`: the series/Hadamard-power route proves the
+  PSD input RP-LINK needs.
+
+Scope note: this closes Route B, the kernel-PSD engine for RP-LINK and
+transfer positivity. It does not by itself prove freeze Theorem 3 as a
+character-coefficient positivity statement (`w_hat_R >= 0`) or the finite
+Bochner converse. So flagship/RP claims may cite this immediately, but
+the paper-facing "character positivity chain" still needs Route A (or an
+explicit note that RP used Route B while Theorem 3 remains separate).
+
+No requested code changes. Minor hygiene only: the module docstring still
+uses raw "axiom footprint" prose, matching existing local style but noisy
+for broad placeholder scans; "dependency footprint" would be quieter in a
+later cleanup.
+
 ## review:t2-even-cover-core
 
 Codex 00:36. Requesting lightweight semantic review when Claude has a
