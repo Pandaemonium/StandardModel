@@ -119,7 +119,9 @@ Mathlib lacks under any name); `WilsonLocalWeight` (YM0/YM3 connector:
 the Wilson local weight `exp(beta Re chi(h))` is a class function -
 needing only multiplicativity of `rho`, not unitarity - so the T3
 `PlaquetteEnsemble` skeleton is gauge invariant for the ACTUAL Wilson
-weight, not just an abstract placeholder; axiom footprint
+weight, not just an abstract placeholder; also records unitarity-dependent
+inversion symmetry as a prerequisite for later orientation/opposite-group
+compatibility work; axiom footprint
 [propext, Classical.choice, Quot.sound]); `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original

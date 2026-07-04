@@ -38,7 +38,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
   Verification: `lake env lean PhysicsSM/Draft/NullEdge/GateYM/PlaquetteCore.lean`, aggregate GateYM build. Axioms: standard project footprint.
 - `partition`, `numerator`, `expectation`, positivity, gauge-change-of-variables, and `gaugeOrbitAverageObservable` numerator equality in `LatticeEnsemble.lean`.
   Verification: targeted/module/aggregate checks. Axioms: standard project footprint.
-- `PlaquetteEnsemble.lean` and `WilsonLocalWeight.lean`: finite product-plaquette partition/numerator/expectation, positive local weight -> positive partition, Wilson local weight class-function invariance, Wilson partition positivity.
+- `PlaquetteEnsemble.lean` and `WilsonLocalWeight.lean`: finite product-plaquette partition/numerator/expectation, positive local weight -> positive partition, Wilson local weight class-function invariance, unitarity-dependent inversion symmetry, Wilson partition positivity.
   Verification: targeted checks and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
 - `TransferGapDefinition.lean`: D12 shell separating Gauss invariance, zero momentum, and trivial 't Hooft flux; `finiteMassGap` real-valued spectral-ratio definition (`-Real.log (lambda1 / lambda0)`) plus elementary log nonnegativity/positivity lemmas under `0 < lambda1 <= lambda0`. No transfer matrix construction, spectral theorem, or oracle-number evaluation is claimed.
   Verification: targeted check and aggregate GateYM build.

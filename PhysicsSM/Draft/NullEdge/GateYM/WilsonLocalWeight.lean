@@ -22,6 +22,8 @@ trace cyclicity/conjugation-invariance alone
 (`Matrix.trace_mul_comm`-style bookkeeping) - unitarity is a separate
 hypothesis needed elsewhere (for PSD of the kernel, in
 `WilsonWeightPositivity.lean`), not for this fact.
+The inversion symmetry of the Wilson local weight, by contrast, does use
+unitarity and is recorded separately as `wilsonLocalWeight_inv_of_unitary`.
 
 This does NOT yet define a reflection plane, cut structure, or transfer
 matrix - it makes the EXISTING finite ensemble skeleton gauge invariant
@@ -38,6 +40,8 @@ namespace Draft
 namespace NullEdge
 namespace GateYM
 namespace WilsonLocalWeight
+
+open scoped Matrix
 
 open GaugeCoreGeneral
 open PlaquetteCore
@@ -73,6 +77,21 @@ theorem wilsonLocalWeight_class (beta : ℝ)
         rw [← mul_assoc, hinv, one_mul]
   unfold wilsonLocalWeight WilsonWeightPositivity.reChar
   rw [htrace]
+
+/-- For a unitary representation, the Wilson local weight is invariant under
+group inversion. This packages `WilsonWeightPositivity.reChar_inv_of_unitary`
+at the real-exponential weight level and is a prerequisite for later
+orientation/opposite-group compatibility arguments. -/
+theorem wilsonLocalWeight_inv_of_unitary (beta : ℝ)
+    [Group G]
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (g : G) :
+    wilsonLocalWeight beta rho g⁻¹ = wilsonLocalWeight beta rho g := by
+  unfold wilsonLocalWeight
+  rw [WilsonWeightPositivity.reChar_inv_of_unitary rho hmul hone hunit]
 
 /-- The Wilson-weighted finite plaquette product is gauge invariant. -/
 theorem wilsonWeight_gauge {ι : Type*} [Fintype ι]

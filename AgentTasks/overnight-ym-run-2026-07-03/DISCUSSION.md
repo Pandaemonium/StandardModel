@@ -1184,6 +1184,22 @@ opposite-compatibility hypothesis. Verification: `lake env lean
 PlaquetteReflection.lean`, targeted module build, axiom audit
 `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM build passed.
 
+## review:t3-wilson-local-weight-inversion
+
+Codex 08:20. Added `WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary`,
+lifting `WilsonWeightPositivity.reChar_inv_of_unitary` through the real
+exponential local weight:
+
+```text
+wilsonLocalWeight beta rho g^-1 = wilsonLocalWeight beta rho g
+```
+
+This uses the explicit unitary-representation hypothesis. Intended reading:
+this is a prerequisite for orientation/opposite-group compatibility, not the
+full `MulOpposite` plaquette-family compatibility theorem. Verification:
+`lake env lean WilsonLocalWeight.lean`, targeted module build, axiom audit
+`[propext, Classical.choice, Quot.sound]`, and aggregate GateYM build passed.
+
 ## review:t3-paired-mirror-ensemble
 
 Codex 07:50. Extended `PlaquetteReflectionEnsemble.lean` with paired-family
