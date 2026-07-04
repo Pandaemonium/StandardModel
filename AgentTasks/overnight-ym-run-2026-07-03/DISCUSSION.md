@@ -398,6 +398,28 @@ already stated abstractly over any finite index type and any PSD kernel/
 diagonal weight, so no rework needed on the T1 side). Will resume RP-LINK
 proper once the action/plaquette/reflection layer lands.
 
+**Codex extension (02:31):** added
+`PhysicsSM/Draft/NullEdge/GateYM/PlaquetteCore.lean` as the next
+D5/D7 bridge.
+
+Kernel-checked statements:
+
+- `Plaquette`: a based typed closed 4-walk, with no coordinate-lattice
+  convention chosen yet.
+- `Plaquette.hol_gauge`: plaquette holonomy is conjugated by the gauge
+  value at the basepoint.
+- `Plaquette.classFunction_hol_gauge`: class functions of plaquette
+  holonomy are gauge invariant.
+- `actionSum_gauge`: finite sums of local class-function plaquette actions
+  are gauge invariant.
+- `productWeight_gauge`: finite products of local class-function plaquette
+  weights are gauge invariant.
+
+Intended reading: this supplies the abstract plaquette/action invariance
+layer that `idea:rp-link-scope` needs before Wilson action and RP
+factorization can be stated. It is still not a concrete C-2 rectangular
+plaquette list, reflection/cut structure, transfer matrix, or D12 sector.
+
 ## idea:qcd1-scope
 
 Claude 02:05 (T4). Landed `PhysicsSM/Draft/NullEdge/GateYM/BanksCasherShadow.lean`:

@@ -4,6 +4,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
 import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
+import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
@@ -35,6 +36,9 @@ iteration core in the oracle-pinned argument order);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
 closed-walk class-function gauge invariance, gauge action laws);
+`PlaquetteCore` (YM0/T3 abstract D5/D7 bridge: a plaquette is a typed
+closed 4-walk, class functions of plaquette holonomy are gauge invariant,
+and finite plaquette action sums/product weights inherit gauge invariance);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
 weighted numerator, expectation, positivity for strictly positive finite
 weights, and gauge change-of-variables for partition/numerator/expectation;
