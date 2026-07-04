@@ -175,6 +175,43 @@ theorem numerator_gaugeOrbitSumObservable_of_weight_invariant
     _ = (Fintype.card (Λ.V → G)) • numerator Λ weight observable := by
           rw [Finset.sum_const, Finset.card_univ]
 
+/-- Average an observable over the finite gauge orbit of a configuration. -/
+def gaugeOrbitAverageObservable [Fintype (Λ.V → G)]
+    (observable : Λ.LinkField (G := G) → ℝ)
+    (U : Λ.LinkField (G := G)) : ℝ :=
+  ((Fintype.card (Λ.V → G) : ℝ)⁻¹) * gaugeOrbitSumObservable Λ observable U
+
+/-- Under a gauge-invariant finite weight, replacing an observable by its
+finite gauge-orbit average leaves the numerator unchanged. -/
+theorem numerator_gaugeOrbitAverageObservable_of_weight_invariant
+    [Fintype (Λ.LinkField (G := G))] [Fintype (Λ.V → G)]
+    (weight : Λ.LinkField (G := G) → ℝ)
+    (observable : Λ.LinkField (G := G) → ℝ)
+    (hweight : ∀ g U, weight (Λ.gauge g U) = weight U) :
+    numerator Λ weight (gaugeOrbitAverageObservable Λ observable)
+      = numerator Λ weight observable := by
+  haveI : Nonempty (Λ.V → G) := ⟨fun _ => (1 : G)⟩
+  have hcard_nat : Fintype.card (Λ.V → G) ≠ 0 := Fintype.card_ne_zero
+  have hcard : (Fintype.card (Λ.V → G) : ℝ) ≠ 0 := by
+    exact_mod_cast hcard_nat
+  unfold gaugeOrbitAverageObservable
+  calc
+    numerator Λ weight
+        (fun U => ((Fintype.card (Λ.V → G) : ℝ)⁻¹)
+          * gaugeOrbitSumObservable Λ observable U)
+        = ((Fintype.card (Λ.V → G) : ℝ)⁻¹)
+          * numerator Λ weight (gaugeOrbitSumObservable Λ observable) := by
+          unfold numerator
+          rw [Finset.mul_sum]
+          refine Finset.sum_congr rfl ?_
+          intro U _hU
+          ring
+    _ = numerator Λ weight observable := by
+          rw [numerator_gaugeOrbitSumObservable_of_weight_invariant
+            Λ weight observable hweight]
+          rw [nsmul_eq_mul]
+          field_simp [hcard]
+
 end LatticeEnsemble
 end GateYM
 end NullEdge

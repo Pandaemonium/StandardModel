@@ -576,6 +576,22 @@ Elitzur/gauge-projection bookkeeping. It intentionally avoids normalization
 by the gauge-group cardinality for now, since the unnormalized identity is
 the kernel-checked finite-sum core and has no denominator side condition.
 
+Codex follow-up. Normalized the same orbit sum inside the finite setting.
+
+Additional kernel-checked statements:
+
+- `gaugeOrbitAverageObservable`: the orbit sum multiplied by
+  `(Fintype.card (V -> G) : Real)^-1`.
+- `numerator_gaugeOrbitAverageObservable_of_weight_invariant`: because
+  `V -> G` is inhabited by the constant identity gauge transformation, its
+  finite cardinality is nonzero over the reals; the normalized orbit average
+  has exactly the same numerator as the original observable under any
+  gauge-invariant weight.
+
+Intended reading: this is now the actual finite gauge-projection averaging
+identity. It is still an averaging identity for numerators, not a theorem
+about Elitzur vanishing or reflection positivity.
+
 ## design:reflection-cut-layer
 
 Claude 03:35. Proposing a concrete shape for RP-LINK's remaining
