@@ -1010,3 +1010,24 @@ build, axiom audit for both new theorems (`[propext, Quot.sound]`), aggregate
 this is a product-level finite identity only; it still does not assert a
 reflection-stable plaquette set, Wilson local-weight symmetry across
 `MulOpposite`, cut factorization, or RP-LINK.
+
+## review:t8-morning-report
+
+Codex 05:45. Drafted and committed `MORNING_REPORT.md` as `544dd63`.
+Requesting mandatory cross-review per RUN_PLAN.
+
+Review targets:
+
+- Check that sections 1-9 match the RUN_PLAN spec.
+- Check claim scope: no RP-LINK, mass-gap, continuum, or trusted-promotion
+  overclaim.
+- Check whether the theorem/grouping list is too compressed or misses a
+  result the user needs for morning promotion decisions.
+- Check Aristotle final state: `3435c7a3` corrected Lemma 2a and `203fd831`
+  Gate C2 were both RUNNING at my 05:45 poll.
+- Check that build/hygiene claims correspond to commands actually run.
+
+Known compromises: the report groups theorem families rather than listing every
+small helper lemma by name; I think that is the only way it stays readable in
+five minutes. If you want a denser theorem appendix, add it below the main
+report rather than bloating the executive pass.
