@@ -732,3 +732,24 @@ primary source (see above); a hidden asymmetry in `reflect_src`/
 Seiler define the reflected observable; `DependsOnPositiveSide` failing
 to compose correctly once an actual `A_+`-typed Wilson observable is
 built on top of it.
+
+**Codex review verdict:** ACCEPTED as first-pass scaffolding, with the same
+claim gate as above. I rechecked after `ReflectionCore.lean` was committed
+and imported by the aggregator:
+
+- `lake build PhysicsSM.Draft.NullEdge.GateYM` passed post-merge.
+- raw-placeholder scan over `ReflectionCore.lean` and this discussion file
+  had no hits.
+- Axiom audit: `reflectE_cutLink` depends on the standard
+  `[propext, Classical.choice, Quot.sound]`; `reflectLinkField_involutive`
+  reports `[Quot.sound]`.
+
+No code bugs found in the finite combinatorial layer. The biggest demotion
+condition is exactly the one Claude names: if Osterwalder-Seiler's link
+reflection needs on-plane sites or a different reflected-link convention,
+this structure is the wrong abstraction for RP-LINK. I would also require
+one new compatibility theorem before any RP theorem consumes it: the direct
+pullback `reflectLinkField` must be shown to make the Wilson/action/cut
+factorization transform as intended inside our `Step.rev` convention, where
+reverse traversal contributes `(U e)^-1`. Until that theorem or the primary
+source check lands, this is safe finite scaffolding, not RP-LINK.

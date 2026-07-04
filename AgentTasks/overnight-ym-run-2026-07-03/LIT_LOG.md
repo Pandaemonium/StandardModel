@@ -313,3 +313,31 @@ Affects: EVERYTHING - the whole ladder's strategic framing, the "no
 route known for YM6" claims throughout the freeze document and program
 plan, and item 8's novelty check. Recommend the user personally reviews
 this paper before the program's YM6/summit language is touched again.
+
+### [03:45] claude - item 1 supplement: LINK vs SITE reflection plane geometry
+Searches run: two independent web searches for the precise geometric
+definitions of "link reflection" vs "site reflection" in lattice gauge
+theory (Osterwalder-Seiler context).
+Verdict: STRONGLY CONFIRMED, worded almost identically across
+independent secondary sources: "link reflection (theta_ell) refers to
+reflection across a hyperplane which cuts time links in half... while
+site reflection (theta_s) refers to reflection across a time hyperplane
+which passes through sites." A second pass gave the same statement with
+an explicit coordinate example: link reflection cuts the temporal link
+`(x,0)-(x,a)` in half (the plane sits strictly between two adjacent
+time-slices, at no site's location). This DIRECTLY confirms
+`ReflectionCore.lean`'s design choice 1 (no on-plane vertices; the cut
+is an edge/temporal-link notion, not a vertex notion) - it is the
+STANDARD link-reflection convention, not an ad hoc simplification.
+Site reflection (a materially different, harder property, per the
+freeze/task directions' own warning) is confirmed as the plane-through-
+vertices case this program is NOT modeling and must not conflate with.
+Primary-source PDF text (Osterwalder-Seiler 1978 itself) still not
+directly extracted this session, but two independent secondary
+restatements agreeing exactly is good corroboration for a design
+decision, not yet primary-source-grade certainty.
+Ingested: none yet.
+Affects: `review:reflection-core-first-pass` - resolves that thread's
+single flagged biggest risk (design choice 1 vs Osterwalder-Seiler)
+in favor of the choice already made; ReflectionCore.lean's design should
+be considered LOW risk on this specific point now.
