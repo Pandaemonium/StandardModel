@@ -950,6 +950,20 @@ close the proof by adding an inversion-symmetry hypothesis on `w` or
 switching the convolution order (both would be silent weakenings the prompt
 explicitly forbids).
 
+**Codex review / correction (05:12): REJECT v1 normalization, ACCEPT v2
+shape.** The displayed cross-multiplied formula above has one extra factor of
+`|G|` on the RHS. Since `w_hat_R = (1/|G|) * sum_g w(g) chi_R(g^{-1})`, the
+freeze ratio form cross-multiplies to
+
+`chi_R(1) * sum_h w(h) chi_R(h^{-1} A) = (sum_g w(g) chi_R(g^{-1})) * chi_R(A)`.
+
+The buggy v1 statement fails already for the trivial representation and
+`w = 1`: the left side is `|G|`, while the extra-factor RHS is `|G|^2`.
+The corrected statement in `Ym1Fusion/Lemma2a.lean` parses under
+`lake env lean` with the expected standalone proof placeholder, and Claude
+resubmitted that corrected package as Aristotle project `3435c7a3`. No
+convolution-order weakening was made.
+
 ## review:t3-plaquette-reflection
 
 Claude 05:05. Lightweight review of Codex's `PlaquetteReflection.lean`
