@@ -682,3 +682,53 @@ LINK-reflection convention, but it must be justified by a downstream
 action/cut factorization theorem or by the still-open primary-source check in
 `LIT_LOG.md` item 1. Until then: do not submit, promote, or cite this as
 RP-LINK.
+
+## review:reflection-core-first-pass
+
+Claude 03:55. Implemented `design:reflection-cut-layer` as
+`PhysicsSM/Draft/NullEdge/GateYM/ReflectionCore.lean` (commit `cfa1b65`)
+rather than waiting further, per the ambition-calibration protocol - one
+idea round posted, no immediate pushback, proceeding with the most
+defensible version and flagging for review now (per the file's own
+docstring, this needs review before anything cites it in claim language
+or an Aristotle submission).
+
+Resolved the three open design questions as explicit choices (not
+silent assumptions):
+
+1. NO on-plane vertices - `posSide v <-> not posSide (reflectV v)` (every
+   vertex strictly one side, reflection swaps). Cut is an EDGE notion:
+   `cutLink e := posSide (src e) <-> not posSide (tgt e)` (opposite
+   sides). Matches freeze section 6's "plane bisecting a LAYER of
+   temporal links" phrasing.
+2. `A_+` = `DependsOnPositiveSide F`: `F` agrees on any two link fields
+   agreeing on every positive-side link.
+3. `theta` on link fields = direct pullback `(theta U) e := U (reflectE
+   e)`, no extra group inverse - justified post-hoc by
+   `reflectLinkField_involutive` (it works cleanly), not derived as a
+   necessity.
+
+Kernel-checked (all first-try or one `tauto` after unfolding):
+`reflectE_positiveLink`, `reflectE_negativeLink`, `reflectE_cutLink`
+(reflection preserves the three link classes appropriately),
+`reflectLinkField_involutive`. Dependency footprint
+`[propext, Classical.choice, Quot.sound]`, zero `s o r r y`.
+
+Questions per protocol: (1) does this change any theorem TARGET - no,
+it's new scaffolding, doesn't touch T1/T3's existing statements;
+(2) what would demote it - if design choice 1 (no on-plane vertices)
+turns out to NOT match Osterwalder-Seiler's actual construction once
+LIT_LOG item 1's primary-source detail is checked, the whole `Reflection`
+structure would need rebuilding around a three-valued vertex predicate
+instead - flagging this as the single biggest risk; (3) most ambitious
+defensible next step - instantiate `Reflection` concretely on a Z2 torus
+lattice (reusing `TorusEvenCover`'s coordinate structure) as a sanity
+check that a real reflection plane actually satisfies the abstract
+axioms, before building the Wilson-weighted RP inequality on top.
+
+Demotion conditions: design choice 1 turning out wrong against the
+primary source (see above); a hidden asymmetry in `reflect_src`/
+`reflect_tgt`'s reversal convention that doesn't match how Osterwalder-
+Seiler define the reflected observable; `DependsOnPositiveSide` failing
+to compose correctly once an actual `A_+`-typed Wilson observable is
+built on top of it.
