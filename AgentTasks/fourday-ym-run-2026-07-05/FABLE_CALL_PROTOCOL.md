@@ -8,6 +8,43 @@ is the discipline that keeps the calls high-value. Sonnet 5 owns the
 budget and executes all calls; Codex requests calls by adding entries to
 the queue in `FABLE_CALLS.md`.
 
+## The ambition mandate (read first; binding)
+
+Fable 5 is EXTRAORDINARILY capable - it designed RP-KER (reducing all of
+RP-LINK to a kernel-PSD check) and the definitional-interface pattern
+(which closed the general 2D coordinatization in 16 minutes) in single
+sittings. The most common way to waste a call is NOT asking a bad
+question - it is asking a question two sizes too small. Therefore:
+
+- **Every call's primary deliverable is a SUPER-STRETCH ask** - pitched
+  well beyond what seems realistically possible for one call. Do not ask
+  for an opinion when you can ask for the artifact; do not ask for the
+  artifact when you can ask for the whole lane. Calibration examples:
+  - not "is this statement true?" but "prove or refute it; if true,
+    return the complete formalization-grade proof plan with every lemma
+    stated in Lean syntax; if false, the explicit counterexample and the
+    corrected strongest statement";
+  - not "review this statement file before freezing" but "review it,
+    then redesign the entire lane's statement stack so the hard theorem
+    becomes a corollary of an abstraction we have not thought of, and
+    return the draft module";
+  - not "we are stuck on this goal" but "dissolve this problem: return
+    the abstraction, the full Lean skeleton with the hard content
+    isolated to one named lemma, and the Aristotle package design for
+    that lemma";
+  - not "audit the board" but "audit the board, then produce the
+    complete lemma DAG from where we are to the YM4 finite gap, with
+    each edge labeled provable-now / needs-design / genuinely-open."
+- **Graceful degradation, not sandbagging.** State the stretch ask AND
+  an explicit fallback ("if the full redesign is not achievable in this
+  call, return the three highest-leverage partial results in priority
+  order"). A partial answer to a maximal ask beats a complete answer to
+  a timid one - the timid ask forecloses the upside.
+- **The verification bar never moves.** Stretch asks raise what we
+  request, never what we accept unverified: everything returned is still
+  a lead until kernel-checked, small-case-verified, or oracle-pinned.
+  Budget accordingly: stretch calls default to `--max-budget-usd 15`.
+
 ## What Fable is FOR (call taxonomy, ranked by expected value)
 
 Fable's differential strength over Sonnet/Codex is deep semantic and
@@ -94,10 +131,10 @@ python Scripts/autonomous_loop/send_claude_review.py \
   whole repo into the prompt. But every declaration whose SEMANTICS are
   under review still goes in verbatim via `--source-file` (a paraphrase
   cannot expose a semantic mismatch - standing repo rule).
-- Budget guidance: `--max-budget-usd 10` for tool-enabled deep review
-  (A/C/F), `3` for self-contained falsity checks (B) and adjudications
-  (D). If a call hits budget mid-review, the log will show it -
-  re-scope, do not immediately re-call.
+- Budget guidance: `--max-budget-usd 15` for stretch calls (the
+  default per the ambition mandate), `5` for self-contained falsity
+  checks (B) and adjudications (D). If a call hits budget mid-review,
+  the log will show it - re-scope, do not immediately re-call.
 - Prompts are STANDALONE: Fable is blind to this chat and to the run's
   history. Include: one-paragraph program context; current gate/queue
   status for the question at hand; the exact Lean statements verbatim;
@@ -125,14 +162,17 @@ what decision this call gates>
 mismatch is visible>
 
 ## Questions (numbered, falsifiable)
-1. <primary deliverable - phrased so a wrong answer is checkable:
-   "construct a counterexample or certify", "find the error", "state
-   the strongest defensible version and what it costs">
-2-3. <piggybacks, same context only>
+1. <primary deliverable - the SUPER-STRETCH ask per the ambition
+   mandate: request the complete artifact (full redesign, full proof
+   plan in Lean syntax, full lemma DAG, explicit counterexample), phrased
+   so a wrong answer is checkable>
+2. <explicit fallback: "if 1 is not fully achievable in this call, the
+   three highest-leverage partial results, in priority order">
+3-4. <piggybacks, same context only>
 
 ## Output format
 <markdown sections wanted; decision + rationale + risks + what would
-change your answer>
+change your answer; Lean code blocks ready to paste into draft modules>
 
 ## Guardrails
 ASCII; spaced tokens for s_o_r_r_y-class words (write them spaced);
@@ -159,6 +199,12 @@ entanglement area law; lattice results are never "the prize".
 
 ## Failure modes to watch
 
+- **Under-asking (the most expensive failure).** Asking Fable for a
+  review when it could deliver the redesigned module; asking whether a
+  route exists when it could return the route. If the packet's primary
+  question could plausibly be answered by Sonnet with two more hours,
+  the ask is too small - escalate it per the ambition mandate before
+  sending.
 - **Slot hoarding** (never calling): the flagship lanes (Q1/Q2/Q6) are
   exactly where Fable's statement-design review has proven value - the
   pre-freeze anchors exist so the run does not discover a wrong

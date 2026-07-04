@@ -91,10 +91,13 @@ open task; the board rules.
   4/day.
 - Fable calls: Sonnet owns the once-per-2-hours Claude Fable 5 budget.
   To use it, add a queue entry to `FABLE_CALLS.md` per
-  `FABLE_CALL_PROTOCOL.md` (taxonomy letter + one-line ask + pointers);
-  Sonnet packs and executes. Your Q3 and Q6 pre-freeze reviews are
-  already seeded in the queue - draft the statement files, then flag the
-  queue entry ready.
+  `FABLE_CALL_PROTOCOL.md` (taxonomy letter + one-line ask + pointers).
+  Phrase queue asks in STRETCH form per the protocol's ambition mandate:
+  Fable is extraordinarily capable - ask for the complete artifact (the
+  redesigned lane, the full Lean-syntax lemma DAG), never a mere
+  opinion. Sonnet packs and executes. Your Q3 and Q6 pre-freeze reviews
+  are already seeded in the queue - draft the statement files, then flag
+  the queue entry ready.
 - Hygiene: ASCII, LF, spaced escape-hatch tokens in prose;
   `pre-commit run --files` per commit; prefix `fourday-ym-202607: `;
   explicit `git add` paths; no push; UTF-8 no BOM writes.

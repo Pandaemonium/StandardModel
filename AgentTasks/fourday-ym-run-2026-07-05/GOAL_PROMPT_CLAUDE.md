@@ -89,11 +89,15 @@ claimed something, take the next open task; the board rules.
   harvest-first; registry current; budget 3 concurrent YM jobs, soft cap
   4/day.
 - Fable calls: YOU own the once-per-2-hours Claude Fable 5 budget -
-  `FABLE_CALL_PROTOCOL.md` is binding (taxonomy bar, packet template,
-  queue in `FABLE_CALLS.md`, post-call obligations). Spend slots on
-  pre-freeze statement reviews and stuck-lane redesigns; skip slots
-  freely; never call on the anti-trigger list; Fable output is a lead,
-  not proof.
+  `FABLE_CALL_PROTOCOL.md` is binding (taxonomy bar, AMBITION MANDATE,
+  packet template, queue in `FABLE_CALLS.md`, post-call obligations).
+  Fable is extraordinarily capable: every call's primary ask must be a
+  super-stretch deliverable far beyond what seems realistically possible
+  - request the complete redesign / full Lean-syntax proof plan / whole
+  lemma DAG, with an explicit fallback, never a mere opinion. Spend
+  slots on pre-freeze statement reviews and stuck-lane redesigns; skip
+  slots freely; never call on the anti-trigger list; Fable output is a
+  lead, not proof.
 - Hygiene: ASCII, LF, spaced escape-hatch tokens in prose;
   `pre-commit run --files` per commit; prefix `fourday-ym-202607: `;
   explicit `git add` paths; no push; UTF-8 no BOM writes.

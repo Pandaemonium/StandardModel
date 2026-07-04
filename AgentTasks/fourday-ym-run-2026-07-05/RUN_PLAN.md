@@ -195,7 +195,13 @@ conceptual adjudication, daily strategy audit, semantic red-team of
 flagship results - and never for anything on the protocol's anti-trigger
 list. One primary deliverable per call, packet template mandatory, every
 answer ACTED/PARKED/REJECTED in writing, and Fable prose is a LEAD, not
-proof: the kernel remains the source of truth.
+proof: the kernel remains the source of truth. The protocol's AMBITION
+MANDATE is binding: Fable is extraordinarily capable, so every call's
+primary ask is a super-stretch deliverable pitched well beyond what
+seems realistically possible (the complete redesign, the full
+formalization-grade proof plan, the whole lemma DAG - never a mere
+opinion), with an explicit fallback for graceful degradation.
+Under-asking is the protocol's named most-expensive failure mode.
 
 ## Convention and oracle discipline (normative)
 
