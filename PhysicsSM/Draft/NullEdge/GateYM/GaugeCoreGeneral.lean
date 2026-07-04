@@ -23,6 +23,8 @@ Current trusted-in-draft content:
 * `hol_gauge_closed`: closed-walk holonomy is conjugated at the basepoint.
 * `classFunction_hol_gauge_closed`: class functions of closed-walk holonomy are
   gauge invariant.
+* `Walk.append` / `Walk.reverse` and their holonomy identities, used by later
+  reflection bookkeeping.
 * `gauge_one` and `gauge_comp`: the local gauge transformations act on link
   configurations.
 
@@ -83,6 +85,57 @@ by recursion on the list of steps. -/
 def hol (U : Λ.LinkField (G := G)) : {x y : Λ.V} → Walk Λ x y → G
   | _, _, Walk.nil _ => 1
   | _, _, Walk.cons s w => stepHol U s * hol U w
+
+namespace Step
+
+/-- Reverse a single oriented traversal step. -/
+def reverse {x y : Λ.V} : Step Λ x y → Step Λ y x
+  | fwd e => rev e
+  | rev e => fwd e
+
+end Step
+
+namespace Walk
+
+/-- Concatenate typed walks. -/
+def append {x y z : Λ.V} : Walk Λ x y → Walk Λ y z → Walk Λ x z
+  | nil _, w2 => w2
+  | cons s w1, w2 => cons s (append w1 w2)
+
+/-- Reverse a typed walk by reversing the order of steps and the orientation of
+each step. -/
+def reverse {x y : Λ.V} : Walk Λ x y → Walk Λ y x
+  | nil x => nil x
+  | cons s w => append (reverse w) (cons (Step.reverse s) (nil _))
+
+end Walk
+
+/-- Holonomy is multiplicative under typed-walk concatenation. -/
+theorem hol_append (U : Λ.LinkField (G := G))
+    {x y z : Λ.V} (w1 : Walk Λ x y) (w2 : Walk Λ y z) :
+    hol U (Walk.append w1 w2) = hol U w1 * hol U w2 := by
+  induction w1 with
+  | nil x =>
+      simp [Walk.append, hol]
+  | cons s w ih =>
+      simp [Walk.append, hol, ih, mul_assoc]
+
+/-- Reversing a one-step traversal inverts its holonomy. -/
+theorem stepHol_reverse (U : Λ.LinkField (G := G))
+    {x y : Λ.V} (s : Step Λ x y) :
+    stepHol U (Step.reverse s) = (stepHol U s)⁻¹ := by
+  cases s <;> simp [Step.reverse, stepHol]
+
+/-- Reversing a typed walk inverts its holonomy. -/
+theorem hol_reverse (U : Λ.LinkField (G := G))
+    {x y : Λ.V} (w : Walk Λ x y) :
+    hol U (Walk.reverse w) = (hol U w)⁻¹ := by
+  induction w with
+  | nil x =>
+      simp [Walk.reverse, hol]
+  | cons s w ih =>
+      rw [Walk.reverse, hol_append, ih]
+      simp [hol, stepHol_reverse]
 
 /-- One-step gauge covariance. This is where the reverse-step convention
 `(U_e)^{-1}` is used. -/
