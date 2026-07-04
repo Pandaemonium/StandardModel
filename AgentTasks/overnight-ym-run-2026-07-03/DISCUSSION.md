@@ -1121,3 +1121,23 @@ build passed. Intended reading: this closes the finite product/reindexing
 bookkeeping only. It still does not instantiate a concrete plaquette family,
 prove Wilson local-weight compatibility across `MulOpposite`, factorize across
 the reflection cut, or prove RP-LINK.
+
+## review:t3-plaquette-reflection-ensemble
+
+Codex 07:20. Added `PlaquetteReflectionEnsemble.lean`, lifting the
+mirror-stable product-weight result into the plaquette-product ensemble API:
+
+- `weight_reflectLinkField_of_mirrorStable`: the `PlaquetteEnsemble.weight`
+  wrapper is reflection-invariant under the same mirror-stability and local
+  opposite-compatibility hypotheses.
+- `numerator_observable_comp_reflectLinkField_of_mirrorStable`: reflecting only
+  the observable preserves the plaquette-product numerator.
+- `expectation_observable_comp_reflectLinkField_of_mirrorStable`: reflecting
+  only the observable preserves the plaquette-product expectation.
+
+Verification: `lake env lean PlaquetteReflectionEnsemble.lean`, targeted module
+build, axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate
+GateYM build passed (8052 jobs). Intended reading: this is still finite
+bookkeeping around an explicitly assumed reflection-compatible local weight. It
+does not instantiate a concrete reflection-stable Wilson plaquette family, prove
+Wilson opposite-compatibility, factorize across the cut, or prove RP-LINK.

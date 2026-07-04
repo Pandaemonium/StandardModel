@@ -11,6 +11,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflection
+import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflectionEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
@@ -89,6 +90,11 @@ the induced product-weight identity for mirrored plaquette families and the
 reflection-invariance bookkeeping for mirror-stable families under an explicit
 local opposite-compatibility hypothesis, but still no Wilson action reflection
 covariance, cut factorization, or RP inequality);
+`PlaquetteReflectionEnsemble` (YM3 finite ensemble lift: under the same
+mirror-stability and explicit local opposite-compatibility hypotheses, the
+plaquette-product weight is reflection-invariant and reflecting only the
+observable preserves numerator/expectation; still no concrete Wilson
+opposite-compatibility, cut factorization, or RP inequality);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
 weighted numerator, expectation, positivity for strictly positive finite
 weights, and gauge change-of-variables for partition/numerator/expectation;
