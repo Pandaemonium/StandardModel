@@ -24,6 +24,76 @@ Decisions needed:
    `transferOp`, `transferOp_posSemidef`, `transferOp_isSelfAdjoint`),
    abstract over `W` with only `IsReflectionPositive W`.
 
+Codex 1.11:44 PROPOSED RESOLUTION, review requested before Lean:
+
+1. Pairing order: confirm the seeded order. Define
+   `reflectionPairing W f g` as the same sum as `reflectionForm W f`, but with
+   `g a c` in the linear slot:
+
+   ```lean
+   def reflectionPairing (W : A -> C -> A -> Cplx)
+       (f g : A -> C -> Cplx) : Cplx :=
+     sum c, sum b, sum a, conj (f b c) * W a c b * g a c
+   ```
+
+   Thus `reflectionPairing W f f = reflectionForm W f`, and the antilinear
+   slot is the first argument / mirrored-negative `b` coordinate. This matches
+   RP-KER and the T14 Z3 anti-linear oracle guard.
+
+2. Matrix route: keep the public hypothesis as
+   `ReflectionPositivityKernel.IsReflectionPositive W`, but introduce the
+   proof bridge to the finite matrix:
+
+   - index type `I := C x A` (or an equivalent sigma/product type);
+   - `rpBlockMatrix W : Matrix I I Cplx`, block diagonal in `c`, with
+     entries `W a c b` in the `c` block and zero across unequal cuts;
+   - lemma `reflectionPairing_eq_dotProduct` identifying the pairing with
+     `star fVec dot (rpBlockMatrix W * fVec)`;
+   - lemma `rpBlockMatrix_posSemidef_of_reflectionPositive`. This is the
+     nontrivial polarization/Hermitian bridge: positivity of every diagonal
+     `reflectionForm W f` should imply the block matrix is PSD. If this lemma
+     stalls, use the stronger input `forall c, (cutKernel W c).PosSemidef` only
+     as an internal/bootstrap theorem, not as the final Q2-facing API.
+
+3. Hilbert space object: define the finite OS space as
+   `range (Matrix.toLin (CFC.sqrt (rpBlockMatrix W)))` inside the ambient
+   function space `I -> Cplx`, with the inherited standard inner product. This
+   avoids quotient-definiteness plumbing. The quotient-by-nullspace can be a
+   later equivalence theorem, not the construction.
+
+4. Transfer operator layer: do not claim a physical one-slab transfer until a
+   concrete slab/shift kernel is supplied. First freeze an abstract compression
+   API:
+
+   - an ambient linear operator/matrix `T` on `I -> Cplx`;
+   - hypotheses that `T` preserves the sqrt range and is self-adjoint/PSD on
+     the ambient space or satisfies the corresponding matrix conditions;
+   - define `compressedTransfer` on the range;
+   - prove `compressedTransfer_isSelfAdjoint` and
+     `compressedTransfer_posSemidef`.
+
+   The actual lattice one-slab convolution/compression then instantiates this
+   API later, using `TransferPositivity.compression_posSemidef` where relevant.
+
+5. Suggested deliverable names:
+   `reflectionPairing`, `rpBlockMatrix`, `rpHilbertSpace`,
+   `compressedTransfer`, `compressedTransfer_isSelfAdjoint`,
+   `compressedTransfer_posSemidef`. The file should be
+   `TransferHilbert.lean` and must state in the module docstring that this is
+   the finite OS/GNS algebraic construction, not a Hamiltonian or physical
+   Hilbert-space interpretation.
+
+Review questions:
+
+- Is `IsReflectionPositive W` alone the right public hypothesis, with
+  `rpBlockMatrix_posSemidef_of_reflectionPositive` as a proof obligation, or
+  should the first statement freeze expose the stronger per-cut PSD hypothesis
+  and add the `IsReflectionPositive` bridge later?
+- Should `rpHilbertSpace` be the range of `sqrt K`, as proposed, or the quotient
+  by `ker K` despite the extra definiteness/Cauchy-Schwarz work?
+- What is the most ambitious defensible transfer operator statement at Q2
+  without a concrete one-slab kernel from Q1/Q7?
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:
