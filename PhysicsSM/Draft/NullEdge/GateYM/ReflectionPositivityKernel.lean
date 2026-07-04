@@ -52,6 +52,10 @@ for a positive-side observable `F(a, c, b) = f(a, c)` is exactly
   Schur products (`hadamard_posSemidef`) - that assembly is the remaining
   RP-LINK work, now a kernel-algebra exercise (see the program document
   work queue).
+- `cutKernel_mul`: cut kernels turn pointwise products of weights into
+  Hadamard products of cut kernels. This is the small connector needed to
+  assemble several cut-plaquette coupling kernels before applying Schur
+  product positivity.
 - `reflectionForm_nonneg_of_factorized` / `_of_mixture`: the end-to-end RP
   statements for those two weight classes.
 - `cutKernel_posSemidef_of_reflectionPositive` (**the Q2 bridge, converse
@@ -105,6 +109,17 @@ def reflectionForm (W : A → C → A → ℂ) (f : A → C → ℂ) : ℂ :=
 pairing the mirrored negative side (row) with the positive side (column). -/
 def cutKernel (W : A → C → A → ℂ) (c : C) : Matrix A A ℂ :=
   Matrix.of fun b a => W a c b
+
+omit [Fintype A] [Fintype C] in
+/-- Cut kernels send pointwise products of reflected weights to Hadamard
+products of cut kernels. This is the bookkeeping connector for assembling
+several independent cut-plaquette coupling kernels before a Schur-product
+PSD argument. -/
+theorem cutKernel_mul (W1 W2 : A → C → A → ℂ) (c : C) :
+    cutKernel (fun a c' b => W1 a c' b * W2 a c' b) c =
+      cutKernel W1 c ⊙ cutKernel W2 c := by
+  ext b a
+  simp [cutKernel, Matrix.hadamard_apply]
 
 /-- Reflection positivity of a weight in mirror coordinates: the reflection
 form is nonnegative on every positive-side observable. -/

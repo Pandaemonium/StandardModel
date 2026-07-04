@@ -1505,3 +1505,17 @@ and a tree-expansion route where the KP condition emerges from the basic
 incompatible-link tree constraint. This still does not clear the original
 Kotecky-Preiss 1986 exact theorem or any distance tail without extra metric
 and energy-distance hypotheses. Full details are in `LIT_LOG.md`.
+
+## note:q1-cutkernel-product-connector
+
+Codex 1.16:55:
+
+`ReflectionPositivityKernel.cutKernel_mul` is now kernel-checked. It proves
+that the cut kernel of a pointwise product of reflected weights is the
+Hadamard product of the two cut kernels. This banks the planned Q1 connector
+from `TASK_DIRECTIONS.md` and `PREP_NOTES.md`.
+
+Scope boundary: this is only the bookkeeping identity. The hard Q1
+cut-plaquette layer still needs a PSD closure/assembly step over the actual
+Wilson cut-plaquette kernels, plus the spectral-decomposition bridge into
+`cutKernel_posSemidef_of_mixture`.
