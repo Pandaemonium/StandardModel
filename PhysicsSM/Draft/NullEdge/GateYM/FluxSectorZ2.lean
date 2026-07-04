@@ -138,6 +138,21 @@ theorem xorList_nil : xorList [] = false := rfl
 theorem xorList_cons (b : Bool) (bs : List Bool) :
     xorList (b :: bs) = (b ^^ xorList bs) := rfl
 
+/-- XOR distributes over pointwise XOR of finite tuples. This is the Bool/Z2
+parity bookkeeping used by the winding-label preservation lemmas below. -/
+theorem xorList_ofFn_xor {n : Nat} (a b : Fin n -> Bool) :
+    xorList (List.ofFn (fun i => a i ^^ b i)) =
+      (xorList (List.ofFn a) ^^ xorList (List.ofFn b)) := by
+  induction n with
+  | zero =>
+      simp [xorList]
+  | succ n ih =>
+      rw [List.ofFn_succ, List.ofFn_succ, List.ofFn_succ]
+      simp [xorList, ih]
+      cases a 0 <;> cases b 0 <;>
+        cases xorList (List.ofFn fun i : Fin n => a i.succ) <;>
+        cases xorList (List.ofFn fun i : Fin n => b i.succ) <;> rfl
+
 /-- A concrete Z2 link field on an `Lx` by `Ly` periodic torus, represented
 by horizontal and vertical link bits. `hLink i j` is the link from
 `(i,j)` to `(i+1,j)` and `vLink i j` is the link from `(i,j)` to
@@ -145,6 +160,13 @@ by horizontal and vertical link bits. `hLink i j` is the link from
 structure TorusLinkField (Lx Ly : Nat) where
   hLink : Fin Lx -> Fin Ly -> Bool
   vLink : Fin Lx -> Fin Ly -> Bool
+
+/-- Multiplicative Z2 link factors for updating a torus link field. A later
+file can instantiate these factors as vertex-gauge coboundaries or local
+plaquette flips; this module only proves the base-cycle cancellation rule. -/
+structure LinkFactor (Lx Ly : Nat) where
+  hFactor : Fin Lx -> Fin Ly -> Bool
+  vFactor : Fin Lx -> Fin Ly -> Bool
 
 namespace TorusLinkField
 
@@ -211,6 +233,61 @@ theorem not_hasTrivialWinding_of_yFlux_true (hLx : 0 < Lx) (hLy : 0 < Ly)
   intro htriv
   have hyfalse := (hasTrivialWinding_iff hLx hLy U).mp htriv |>.2
   simp [hy] at hyfalse
+
+/-- Update every link by a Z2 link factor, separately for horizontal and
+vertical links. -/
+def applyLinkFactor (eta : LinkFactor Lx Ly) (U : TorusLinkField Lx Ly) :
+    TorusLinkField Lx Ly where
+  hLink i j := eta.hFactor i j ^^ U.hLink i j
+  vLink i j := eta.vFactor i j ^^ U.vLink i j
+
+/-- Horizontal cycle flux after a link-factor update: it is the original
+cycle flux XOR the factor's horizontal cycle parity. -/
+theorem xCycleFlux_applyLinkFactor (eta : LinkFactor Lx Ly)
+    (U : TorusLinkField Lx Ly) (j : Fin Ly) :
+    (applyLinkFactor eta U).xCycleFlux j =
+      (xorList (List.ofFn (fun i : Fin Lx => eta.hFactor i j)) ^^ U.xCycleFlux j) := by
+  unfold xCycleFlux applyLinkFactor
+  rw [xorList_ofFn_xor]
+
+/-- Vertical cycle flux after a link-factor update: it is the original
+cycle flux XOR the factor's vertical cycle parity. -/
+theorem yCycleFlux_applyLinkFactor (eta : LinkFactor Lx Ly)
+    (U : TorusLinkField Lx Ly) (i : Fin Lx) :
+    (applyLinkFactor eta U).yCycleFlux i =
+      (xorList (List.ofFn (fun j : Fin Ly => eta.vFactor i j)) ^^ U.yCycleFlux i) := by
+  unfold yCycleFlux applyLinkFactor
+  rw [xorList_ofFn_xor]
+
+/-- A link-factor update whose horizontal factors have zero parity around the
+base horizontal cycle preserves the horizontal winding bit. -/
+theorem xCycleFlux_applyLinkFactor_of_base_zero (hLy : 0 < Ly)
+    (eta : LinkFactor Lx Ly) (U : TorusLinkField Lx Ly)
+    (heta : xorList (List.ofFn (fun i : Fin Lx => eta.hFactor i (baseY hLy))) = false) :
+    (applyLinkFactor eta U).xCycleFlux (baseY hLy) = U.xCycleFlux (baseY hLy) := by
+  rw [xCycleFlux_applyLinkFactor, heta]
+  cases U.xCycleFlux (baseY hLy) <;> rfl
+
+/-- A link-factor update whose vertical factors have zero parity around the
+base vertical cycle preserves the vertical winding bit. -/
+theorem yCycleFlux_applyLinkFactor_of_base_zero (hLx : 0 < Lx)
+    (eta : LinkFactor Lx Ly) (U : TorusLinkField Lx Ly)
+    (heta : xorList (List.ofFn (fun j : Fin Ly => eta.vFactor (baseX hLx) j)) = false) :
+    (applyLinkFactor eta U).yCycleFlux (baseX hLx) = U.yCycleFlux (baseX hLx) := by
+  rw [yCycleFlux_applyLinkFactor, heta]
+  cases U.yCycleFlux (baseX hLx) <;> rfl
+
+/-- Link-factor updates with zero parity along both base cycles preserve the
+concrete Z2 winding label. This is the algebraic cancellation core for later
+gauge-coboundary and local-plaquette-preservation statements. -/
+theorem windingLabel_applyLinkFactor_of_base_zero (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (eta : LinkFactor Lx Ly) (U : TorusLinkField Lx Ly)
+    (hetaX : xorList (List.ofFn (fun i : Fin Lx => eta.hFactor i (baseY hLy))) = false)
+    (hetaY : xorList (List.ofFn (fun j : Fin Ly => eta.vFactor (baseX hLx) j)) = false) :
+    windingLabel hLx hLy (applyLinkFactor eta U) = windingLabel hLx hLy U := by
+  exact (FluxLabel.ext_iff _ _).2
+    ⟨xCycleFlux_applyLinkFactor_of_base_zero hLy eta U hetaX,
+      yCycleFlux_applyLinkFactor_of_base_zero hLx eta U hetaY⟩
 
 end TorusLinkField
 
