@@ -1254,11 +1254,16 @@ Wilson/opposite-group algebra from the generic plaquette reflection machinery:
   Wilson-language local compatibility hypothesis using `rhoOppositeInv rho`
   into the generic `h |-> w(h.unop)` hypothesis expected by the mirror-stable
   reflection API.
+- `productWeight_reflectLinkField_of_mirrorStable_wilson`: the product-weight
+  mirror-stable reflection wrapper specialized to Wilson weights, with
+  compatibility local to the displayed link field.
 - `weight_reflectLinkField_of_mirrorStable_wilson`,
   `numerator_observable_comp_reflectLinkField_of_mirrorStable_wilson`, and
   `expectation_observable_comp_reflectLinkField_of_mirrorStable_wilson`: the
   mirror-stable plaquette-ensemble reflection wrappers specialized to Wilson
   weights, with the local compatibility still explicit.
+- `productWeight_reflectLinkField_of_mirrorPair_wilson`: the product-weight
+  paired-family version for a family packaged with its mirror partner.
 - `weight_reflectLinkField_of_mirrorPair_wilson`,
   `numerator_observable_comp_reflectLinkField_of_mirrorPair_wilson`, and
   `expectation_observable_comp_reflectLinkField_of_mirrorPair_wilson`: the
@@ -1270,8 +1275,8 @@ Wilson/opposite-group algebra from the generic plaquette reflection machinery:
 
 Intended reading: this is the honest Wilson/opposite bridge at product-weight
 and ensemble-weight level. Under an explicit Wilson local-compatibility
-hypothesis, it also gives same-family mirror-stable and paired-family
-reflection identities. It does not prove that compatibility for an arbitrary
+hypothesis, it also gives same-family mirror-stable and paired-family product
+and ensemble reflection identities. It does not prove that compatibility for an arbitrary
 chosen family; the concrete same-family Wilson compatibility remains a separate
 geometric/orientation problem. Verification: `lake env lean
 WilsonReflectionCompatibility.lean`,

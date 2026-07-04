@@ -131,7 +131,7 @@ hypotheses on `rho`; the Wilson local weight for `rhoOppositeInv` agrees with
 the generic `h |-> w(h.unop)` opposite local weight, yielding a
 Wilson-specialized reflected single-plaquette/product-weight/ensemble-weight
 identity for mirrored plaquette families and Wilson-language mirror-stable and
-paired-family ensemble wrappers under an explicit local compatibility
+paired-family product/ensemble wrappers under an explicit local compatibility
 hypothesis, plus kernel-PSD, gauge-invariance, and partition-positivity wrappers
 for the opposite inverse Wilson ensemble. This still does not discharge the
 concrete same-family compatibility, cut factorization, or RP-LINK);
