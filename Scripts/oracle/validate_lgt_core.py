@@ -30,6 +30,11 @@ v0.3 (four-day YM run, T14) adds:
     on all functions G -> C. It checks the character eigenvectors, expected
     eigenvalues |G|*w_hat_R/d_R, real spectrum, vacuum ordering, and
     normalized eigenvalues in [-1,1].
+  KP-constant guard: section [12], a small finite Z2 connected-plaquette
+    polymer gas. It enumerates every connected plaquette subset on small
+    tori and checks the KP hypothesis with weight tanh(beta)^area and
+    energy alpha*area. A nearby beta row is intentionally expected to fail
+    with the same constants, guarding against non-volume-uniform claims.
 
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
@@ -474,6 +479,104 @@ check("S3 convLeft matrix has real vacuum-ordered normalized spectrum in [0,1]",
       spectral_ok, "; ".join(spectral_details))
 check("S3 characters are convLeft eigenvectors with eigenvalue |G|*w_hat_R/d_R",
       eigenvector_ok)
+
+print("\n[12] KP constant fixture: small Z2 connected-plaquette polymer gas")
+print("    polymers = connected plaquette subsets; incompatible = touching supports")
+def torus_plaquette_neighbor_bits(Lx, Ly):
+    sites = [(x, y) for y in range(Ly) for x in range(Lx)]
+    idx = {p: i for i, p in enumerate(sites)}
+    out = []
+    for x, y in sites:
+        bits = 0
+        for q in [((x + 1) % Lx, y), ((x - 1) % Lx, y),
+                  (x, (y + 1) % Ly), (x, (y - 1) % Ly)]:
+            bits |= 1 << idx[q]
+        out.append(bits)
+    return out
+
+def connected_polymer_masks(n, neighbor_bits):
+    polys = []
+    for mask in range(1, 1 << n):
+        first = (mask & -mask).bit_length() - 1
+        seen = 0
+        frontier = [first]
+        while frontier:
+            i = frontier.pop()
+            if (seen >> i) & 1:
+                continue
+            seen |= 1 << i
+            next_bits = neighbor_bits[i] & mask & ~seen
+            while next_bits:
+                j = (next_bits & -next_bits).bit_length() - 1
+                frontier.append(j)
+                next_bits &= next_bits - 1
+        if seen == mask:
+            polys.append(mask)
+    return polys
+
+def plaquette_closure(mask, neighbor_bits):
+    out = mask
+    bits = mask
+    while bits:
+        i = (bits & -bits).bit_length() - 1
+        out |= neighbor_bits[i]
+        bits &= bits - 1
+    return out
+
+def z2_polymer_kp_stats(L, beta, alpha):
+    """Exact finite KP sum for connected plaquette polymers on an LxL torus.
+
+    Weight = |tanh(beta)|^area, energy = alpha*area. Two polymers are
+    incompatible when one intersects the one-step plaquette-neighborhood of
+    the other. A subset zeta transform computes incompatible sums without an
+    O(polymer^2) pair loop.
+    """
+    n = L * L
+    neighbor_bits = torus_plaquette_neighbor_bits(L, L)
+    polys = connected_polymer_masks(n, neighbor_bits)
+    weighted = [0.0] * (1 << n)
+    t = abs(math.tanh(beta))
+    for mask in polys:
+        area = mask.bit_count()
+        weighted[mask] = (t ** area) * math.exp(alpha * area)
+    total = math.fsum(weighted)
+    subset_sum = weighted[:]
+    for i in range(n):
+        bit = 1 << i
+        for mask in range(1 << n):
+            if mask & bit:
+                subset_sum[mask] += subset_sum[mask ^ bit]
+    full = (1 << n) - 1
+    worst_ratio = -1.0
+    worst_area = 0
+    for mask in polys:
+        area = mask.bit_count()
+        incompatible_sum = total - subset_sum[full ^ plaquette_closure(mask, neighbor_bits)]
+        ratio = incompatible_sum / (alpha * area)
+        if ratio > worst_ratio:
+            worst_ratio = ratio
+            worst_area = area
+    return {
+        "L": L,
+        "polymer_count": len(polys),
+        "worst_ratio": worst_ratio,
+        "worst_area": worst_area,
+    }
+
+kp_good = [z2_polymer_kp_stats(L, beta=0.04, alpha=0.75) for L in [2, 3, 4]]
+check("Z2 polymer gas: KP(beta=0.04, alpha=0.75) holds on L=2,3,4",
+      all(r["worst_ratio"] <= 1 + 1e-12 for r in kp_good),
+      "; ".join(f"L={r['L']} n={r['polymer_count']} "
+                f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
+                for r in kp_good))
+
+kp_bad = [z2_polymer_kp_stats(L, beta=0.06, alpha=0.75) for L in [2, 3, 4]]
+check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
+      kp_bad[0]["worst_ratio"] <= 1 + 1e-12
+      and any(r["worst_ratio"] > 1 + 1e-12 for r in kp_bad[1:]),
+      "; ".join(f"L={r['L']} n={r['polymer_count']} "
+                f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
+                for r in kp_bad))
 
 print("\n" + "=" * 78)
 n = len(PASS)

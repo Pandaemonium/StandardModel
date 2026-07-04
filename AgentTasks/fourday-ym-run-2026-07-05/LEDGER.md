@@ -23,7 +23,7 @@ section 14 (Q-items).
 | T11 lasso identification | Q11 | partial-boundary-review-requested | - | PhysicsSM/Draft/NullEdge/GateYM/RectBoundary*.lean, AgentTasks/aristotle-submit/ym1-rectboundary-lasso-20260704-*, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | boundary walk + holonomy order pin landed; review:t11-lasso-package opened before Aristotle submission |
 | T12 YM-LIT | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | source checkpoint + graph/ingest debt logged; next lit slice needs full-text access and Zotero ingest path |
 | T13 paper-unit outlines | - | open | - | AgentTasks/paper-units/*.md | day-end lane |
-| T14 oracle fixtures v0.3 | - | partial-v0.3-codex | - | Scripts/oracle/validate_lgt_core.py, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | RP Z3 guard + S3 fusion-spectrum guard landed; oracle v0.3 is 42/42 green; KP-constant fixture remains |
+| T14 oracle fixtures v0.3 | - | done-v0.3-codex | - | Scripts/oracle/validate_lgt_core.py, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | RP Z3 guard + S3 fusion-spectrum guard + KP small-lattice constant guard landed; oracle v0.3 is 44/44 green |
 | T15 daily/final reports | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/DAY_*.md, FINAL_REPORT.md | alternate drafters |
 
 ## Aristotle registry
@@ -79,3 +79,5 @@ section 14 (Q-items).
 1.11:40 codex T14 added S3 fusion-spectrum oracle: actual convLeft matrix has real vacuum-ordered normalized spectrum in [0,1] and S3 characters are eigenvectors with eigenvalue `|G|*w_hat_R/d_R`; `python Scripts/oracle/validate_lgt_core.py` green 42/42; T14 released, KP fixture remains.
 1.11:42 codex T2 claimed transfer Hilbert-space lane for design only; next resolve `design:q2-transfer-polarization` from RP-KER/TransferPositivity without creating a statement file before review.
 1.11:44 codex T2 proposed finite OS/GNS design: pairing first argument antilinear, public `IsReflectionPositive W` with block-matrix PSD bridge obligation, Hilbert space as range of `CFC.sqrt K`, abstract compressed transfer API only; T2 released pending review.
+1.11:43 codex T14 reclaimed KP-constant oracle lane; next add a small-lattice polymer enumeration fixture to test whether the naive strong-coupling KP sum gives volume-stable constants.
+1.11:47 codex T14 added KP constant fixture: connected Z2 plaquette polymers on L=2,3,4 tori, weight `tanh(beta)^area`, energy `alpha*area`, touching-support incompatibility; beta=0.04 alpha=0.75 passes, same alpha at beta=0.06 fails by L>=3; `python Scripts/oracle/validate_lgt_core.py` green 44/44; T14 released.
