@@ -262,6 +262,28 @@ and the main theorem axiom audit is `[propext, Classical.choice, Quot.sound]`.
 Scope boundary unchanged: finite algebraic OS/GNS infrastructure only, not a
 physical transfer matrix, Hamiltonian, continuum Hilbert space, or gap claim.
 
+Follow-up submission 1.16:56 codex:
+
+Submitted Aristotle project `8e1e11b0`, task `2781513b`, for the next Q2/Q3
+bridge.  Target file:
+
+```text
+PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlockShift.lean
+```
+
+Requested statement surface:
+
+- product shift system on `C x A`;
+- explicit `BlockWeightInvariantUnderShifts` for
+  `W : A -> C -> A -> Complex`;
+- `rpBlockMatrix` kernel invariance / `KernelCommutesShifts`;
+- preservation of `TransferHilbert.rpHilbertSpace (rpBlockMatrix W)` by the
+  block shift operators.
+
+The package is deliberately abstract: it should not claim a physical transfer
+matrix, Hamiltonian, spectral gap, or concrete torus/Z2 Wilson transfer
+instantiation.
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:
