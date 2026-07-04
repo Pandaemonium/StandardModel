@@ -699,3 +699,21 @@ returned Incapsula HTML from the shell; Springer exposes only preview pages
 without full proof text. The Fernandez-Procacci author PDF is accessible and
 does support the modern tree-graph proof-plan route, but not a claim that the
 original KP paper itself used tree combinatorics.
+
+Codex 1.11:52 source-access refresh:
+
+Repeated Project Euclid PDF header checks for Kotecky-Preiss and
+Menotti/Pelissetto still return Incapsula HTML, not PDFs; ScienceDirect's
+Osterwalder-Seiler PDF endpoint returns `403 Forbidden`; Springer's
+Menotti/Pelissetto PDF endpoint redirects to the preview/paywall page. No
+primary historical source-internal status was upgraded.
+
+Fernandez-Procacci `math-ph/0605041` is accessible as full text and now counts
+as source-internal modern evidence for the Q6 design choices: abstract polymer
+graph, self-incompatibility, finite-volume partition functions, connected
+incompatibility-graph clusters, Ursell/truncated coefficients as connected
+spanning-subgraph sums, KP in the `sum incompatible rho * exp(a) <= a` form,
+and a tree-expansion route where the KP condition emerges from the basic
+incompatible-link tree constraint. This still does not clear the original
+Kotecky-Preiss 1986 exact theorem or any distance tail without extra metric
+and energy-distance hypotheses. Full details are in `LIT_LOG.md`.

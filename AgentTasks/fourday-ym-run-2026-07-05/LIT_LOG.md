@@ -169,3 +169,65 @@ scope, but should not say the current Lean statements implement their exact
 theorems until full text is obtained and checked. For Q6 statement design,
 Fernandez-Procacci supports a tree-graph lemma DAG and KP-comparison language;
 the original Kotecky-Preiss exact hypotheses remain a full-text review item.
+
+## 2026-07-04 11:52 - Codex - source-access refresh
+
+Status: PRIMARY FULL TEXT STILL BLOCKED; MODERN KP FULL TEXT STRENGTHENED.
+
+Sources and access checks:
+
+- Project Euclid Kotecky-Preiss PDF:
+  https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-103/issue-3/Cluster-expansion-for-abstract-polymer-models/cmp/1104114796.pdf
+- Project Euclid Menotti-Pelissetto PDF:
+  https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-113/issue-3/General-proof-of-Osterwalder-Schrader-positivity-for-the-Wilson-action/cmp/1104160284.pdf
+- Springer Menotti-Pelissetto page/PDF endpoint:
+  https://link.springer.com/article/10.1007/BF01221251
+  and https://link.springer.com/content/pdf/10.1007/BF01221251.pdf
+- ScienceDirect Osterwalder-Seiler page/PDF endpoint:
+  https://www.sciencedirect.com/science/article/pii/0003491678900398
+- Fernandez-Procacci arXiv PDF:
+  https://arxiv.org/pdf/math-ph/0605041
+
+Access findings:
+
+- `curl.exe -L -I` on both Project Euclid PDF URLs returned `Content-Type:
+  text/html`, `Cache-Control: no-cache, no-store`, Incapsula headers/cookies,
+  and short HTML bodies rather than PDFs. They remain bibliographic targets,
+  not usable proof text from this environment.
+- `curl.exe -L -I` on the ScienceDirect PDF endpoint returned `403 Forbidden`
+  with Cloudflare headers. The article preview is accessible and confirms
+  journal, volume, pages, DOI, authors, and abstract-level scope, but not the
+  internal proof text.
+- Springer's PDF endpoint redirects to the article preview page. The preview
+  confirms title, authors, journal/pages/date/DOI, and says the full article
+  PDF is subscription/purchase content.
+- The arXiv Fernandez-Procacci PDF is accessible and parseable. It should now
+  be treated as source-internal evidence for the modern tree-graph proof-plan
+  route.
+
+Fernandez-Procacci internal content now checked:
+
+- The paper adopts an abstract polymer setting as an unoriented graph
+  `G = (P, E)`, with vertices as polymers and edges as incompatibility. It
+  explicitly assumes self-incompatibility.
+- It defines the polymer gas by activities and finite-volume partition
+  functions, and presents the log partition function as a Mayer expansion.
+- It defines clusters by connected incompatibility graphs and identifies the
+  truncated/Ursell coefficient as a sum over connected spanning subgraphs.
+- It states the Kotecky-Preiss condition in both a `rho * exp(sum mu) <= mu`
+  form and the equivalent `sum rho * exp(a) <= a` form, with the sum including
+  the root polymer because of self-incompatibility.
+- It states absolute/uniform convergence consequences and later derives
+  tree-expansion bounds using rooted-tree machinery; it explicitly says the
+  KP condition appears when only the basic tree constraint "tree links relate
+  incompatible objects" is kept.
+
+Claim boundary update:
+
+For Q6, Fernandez-Procacci can now support the following design choices as
+source-internal modern evidence: self-incompatibility, ordered tuple/sequence
+cluster encodings before quotienting, connected incompatibility graph,
+abstract Ursell/coefficient interface with tree-graph bound, and the
+`sum incompatible |weight| * exp(energy) <= energy` KP hypothesis shape. It
+still does NOT clear the original Kotecky-Preiss 1986 exact statement, nor any
+distance-tail theorem without extra metric/coercivity hypotheses.
