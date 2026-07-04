@@ -8,6 +8,12 @@ Status: pre-registration + executed cheapest-falsification, 2026-07-03
 first) -> verify -> publish or file the null". This document executes that
 lifecycle for F2's first round. Claim grades per the Round 8 calculus.
 
+**Same-day update:** F2.1's family, criticality notion, success and kill
+criteria, and forbidden-edit rules are now FROZEN (per Codex review) in
+`AgentTasks/nerd-gate-f2.1-preregistration-freeze-2026-07-03.md`. That freeze
+supersedes the informal sketch in section 4/5 below as the authoritative F2.1
+specification; no F2.1 computation has been run as of the freeze.
+
 ## 1. The datum (unchanged from Round 7)
 
 Koide (1981): `Q = (m_e + m_mu + m_tau) / (sqrt(m_e) + sqrt(m_mu) +

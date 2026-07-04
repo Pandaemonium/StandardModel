@@ -25,6 +25,14 @@ criterion turned out to have a cleaner proof than reviewed: applying the
 sufficiency lemma twice via `deformed (deformed W A) A^{-1} = W` (exact under
 full support), rather than a direct quadratic-form argument on `W`.
 
+Same-day update (2026-07-03, fourth pass, per Codex review of the next-steps
+ordering): gate MP4 (the BC-Q freeze) is FROZEN in
+`AgentTasks/nerd-gate-mp4-bell-causality-quantum-freeze-2026-07-03.md`; SCG's
+grading (section 2, section 4(e)) is updated to reflect entrance requirement
+R2 satisfied under this definition. Gate F2's second-round test (F2.1,
+the democratic-spurion coupling family) is separately FROZEN, unexecuted, in
+`AgentTasks/nerd-gate-f2.1-preregistration-freeze-2026-07-03.md`.
+
 Where it sits: supporting document for the growth sector of
 `docs/NERD_ROADMAP.md` (gates G1-G2, D0-D8); consolidates
 `Sources/nrqg-round4-tower.md` (section 9: the measure as irreducible-unless),
@@ -109,9 +117,17 @@ its deliverable and its verification mode.
   (strongly positive decoherence functional, not a classical Markov chain),
   and Lorentz invariance in distribution. No continuum claim yet.
   Verification: finite mathematics; substantial parts Lean-able.
-  FIRST ENTRANT: the SCG candidate (section 4(e)), complete at this tier
-  modulo one frozen definition (Bell causality for quantum measures, gate
-  MP4).
+  FIRST ENTRANT: the SCG candidate (section 4(e)). Gate MP4 (Bell causality
+  for quantum measures, "BC-Q") is now FROZEN
+  (`AgentTasks/nerd-gate-mp4-bell-causality-quantum-freeze-2026-07-03.md`):
+  SCG's decoration layer satisfies BC-Q by construction (its per-step
+  amplitude is a product of local precursor-only factors), conditional on
+  the imported classical skeleton satisfying ordinary Bell causality
+  (debt-flagged). BC-Q is stated as a SUFFICIENT operational definition for
+  factorized constructions, not a claimed resolution of the general quantum-
+  Bell-causality problem - see the freeze's section 5 for the explicit scope
+  limits. SCG is therefore graded complete at the B-1 tier under this
+  definition.
 - **B0 (the first genuine breakthrough).** B-1 PLUS a provable
   coarse-grained limit reproducing a known continuum theory in some
   dimension. The realistic first target: the 1+1D free Dirac vacuum - i.e. a
@@ -315,7 +331,9 @@ would be needed before it counts as R11 proper).
 
 Grading table (per the review): R1 [T conditional on the skeleton import],
 R3 [T|H via 2D orders], R4 [T, proved and kernel-checked], R5 [T in interleaved
-form], R6 [n/a in 1+1D], free sector [M, kernel-checked]; R2 pending MP4;
+form], R6 [n/a in 1+1D], free sector [M, kernel-checked]; R2 [satisfied under
+the frozen BC-Q definition, gate MP4, conditional on the imported skeleton's
+classical Bell causality];
 R7 pre-registered with quantified failure mode.
 
 ## 5. The near-term program (what would actually be needed)
@@ -364,14 +382,20 @@ gates get MP-numbers.
    dynamics INCLUDING decorations; SCG (classical skeleton, quantum
    decorations) evades it by construction and is the minimal surviving
    quantum extension - exactly what a B-1 vehicle should be.
-4. **MP4 - the BC-Q freeze (new gate; definition work; small).** Bell
-   causality for QUANTUM measures has no settled definition anywhere - a
-   field-frontier gap, and the one entrance requirement (R2) the SCG
-   candidate cannot yet be graded against.  Freeze a definition (SCG
-   satisfies the natural transfer - conditional amplitudes depending only on
-   precursors - which is the obvious starting axiom), check it against the
-   classical Rideout-Sorkin axioms in the classical limit, and file it.  A
-   definition gate: cheap, decisive for grading, publishable as a note.
+4. **MP4 - the BC-Q freeze (new gate; definition work; small).** DONE
+   (2026-07-03): frozen in
+   `AgentTasks/nerd-gate-mp4-bell-causality-quantum-freeze-2026-07-03.md`.
+   BC-Q = classical skeleton Bell causality (unchanged) plus decoration
+   locality (single-step amplitudes factor through precursor-only local
+   kernels). Checked against the classical limit (trivial decoration alphabet
+   reduces BC-Q to ordinary Rideout-Sorkin BC exactly) and confirmed
+   non-vacuous (excludes spectator-dependent amplitude rules). SCG satisfies
+   BC-Q's decoration clause by construction. Explicitly NOT settled:
+   uniqueness of BC-Q as THE quantum generalization (a weaker
+   decoherence-functional-level condition may exist and is the remaining
+   field-frontier question); back-reacting extensions need their own check
+   on the weight kernel `W`. Formalization deliberately deferred pending
+   review of the prose definition (not sent to Aristotle this pass).
 5. **D4/D6 extension - the 1+1D decorated-growth toy (existing gates; the
    B-1/B0 vehicle; weeks-to-months).** Build the coin-decorated sequential
    growth rule on the checkerboard whose free limit is the verified walk:
@@ -440,10 +464,10 @@ The Measure Problem is unsolved, but as of this document's same-day update
 the board is no longer empty: SCG (section 4(e)) is the first fully
 specified B-1 candidate - strong positivity now a KERNEL-CHECKED theorem
 (`GateMP.SCGGramPositivity`), the back-reaction criterion a proved standing
-design constraint on every future interacting extension, one definition gate
-(MP4) short of a complete B-1 grading, and a pre-registered kill test whose
-quantitative teeth were verified in-repo the same day. What has changed - and
-what this document consolidates -
+design constraint on every future interacting extension, its Bell-causality
+grading resolved under the frozen BC-Q definition (MP4), and a
+pre-registered kill test whose quantitative teeth were verified in-repo the
+same day. What has changed - and what this document consolidates -
 is that the problem is no longer shapeless: there is a canonical statement
 (two columns meeting at a fixed point), an eleven-row entrance checklist with
 one uniquely sharp necessary condition (the null-Markov fingerprint), a
