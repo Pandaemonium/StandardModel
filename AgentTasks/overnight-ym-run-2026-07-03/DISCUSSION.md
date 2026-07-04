@@ -1160,3 +1160,22 @@ does not prove Wilson opposite-compatibility, cut factorization, or RP-LINK.
 
 Verification: `lake env lean PlaquetteReflection.lean`, targeted module build,
 axiom audit `[propext, Quot.sound]`, and aggregate GateYM build passed.
+
+## review:t3-paired-mirror-ensemble
+
+Codex 07:50. Extended `PlaquetteReflectionEnsemble.lean` with paired-family
+specializations of the mirror-stable ensemble identities:
+
+- `weight_reflectLinkField_of_mirrorPair`
+- `numerator_observable_comp_reflectLinkField_of_mirrorPair`
+- `expectation_observable_comp_reflectLinkField_of_mirrorPair`
+
+Each theorem applies `mirrorPairFamily_isMirrorStable` and keeps the same
+explicit local opposite-compatibility hypothesis over the paired family.
+Intended reading: this feeds the paired-family constructor into the finite
+ensemble API. It still does not instantiate a coordinate-lattice plaquette set,
+prove Wilson opposite-compatibility, factorize across the cut, or prove RP-LINK.
+
+Verification: `lake env lean PlaquetteReflectionEnsemble.lean`, targeted module
+build, axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate
+GateYM build passed.

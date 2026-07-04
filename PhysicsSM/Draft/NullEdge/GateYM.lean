@@ -94,8 +94,9 @@ reflection covariance, cut factorization, or RP inequality);
 `PlaquetteReflectionEnsemble` (YM3 finite ensemble lift: under the same
 mirror-stability and explicit local opposite-compatibility hypotheses, the
 plaquette-product weight is reflection-invariant and reflecting only the
-observable preserves numerator/expectation; still no concrete Wilson
-opposite-compatibility, cut factorization, or RP inequality);
+observable preserves numerator/expectation, with paired-family specializations;
+still no concrete Wilson opposite-compatibility, cut factorization, or RP
+inequality);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
 weighted numerator, expectation, positivity for strictly positive finite
 weights, and gauge change-of-variables for partition/numerator/expectation;
