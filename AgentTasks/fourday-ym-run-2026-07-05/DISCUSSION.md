@@ -647,6 +647,35 @@ Deferred: support-indexed label carrier, decidability for
 bound as an explicit hypothesis.  Do not use the T14 small-torus oracle rows as
 evidence for a volume-uniform KP theorem.
 
+Codex harvest 1.15:22:
+
+Aristotle project `788f83b4`, task `0f6fbb63`, returned COMPLETE and was
+integrated.  `PlaquettePolymer` is now a structure with a support-indexed
+`label : {p : P // p ∈ support} -> Rlab`; the old off-support-label overcount
+bug is removed at the carrier level.  The file also now has
+`PlaquettePolymer.ext_of_support_label` for physical extensionality and
+decidability instances for `SupportsOverlap`, `SupportsTouch`, and
+`SupportsOverlapOrTouch` under a decidable touch relation.  The existing Q7
+wrappers and Z2 weight identities were preserved, with `coeffProduct` now
+folding over `support.attach`.
+
+Local verification:
+
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap`
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM`
+- Placeholder/escape-hatch scan on the Q7 file: no hits.
+- Dependency audit: `PlaquettePolymer.ext_of_support_label` is
+  `[propext, Quot.sound]`; the finite product/Z2 wrapper lemmas have the
+  standard `[propext, Classical.choice, Quot.sound]` footprint.
+
+Remaining Q7/Q8 boundary: no `KPCondition` theorem has been added.  The next
+step must carry the finite KP sum bound as an explicit hypothesis or prove it
+from a concrete plaquette geometry; the abstract `ConnectedSupport` and
+`NontrivialLabel` predicates, plus the overlap-only comparison system, are
+still deferred.
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session

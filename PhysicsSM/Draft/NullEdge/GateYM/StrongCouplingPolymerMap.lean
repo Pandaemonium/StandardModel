@@ -18,6 +18,16 @@ lemma.
 Draft-trust: statement/definition freeze only.  The definitions feed the Q6
 `PolymerSystem`/`KPCondition` interface, but no volume-uniform KP proof is
 claimed here.
+
+## Support-indexed labels (Q7 redesign)
+
+`PlaquettePolymer` carries a support-indexed label
+`label : {p : P // p ∈ support} -> Rlab`, so off-support values can no longer
+create distinct Lean values for the same physical polymer.  A physical
+extensionality theorem `PlaquettePolymer.ext_of_support_label` records this
+identity, and decidability instances are provided for the three support
+relations so that a downstream Q6/Q8 layer can state a `KPCondition` sum on this
+system.  No volume-uniform KP theorem is proved here.
 -/
 
 noncomputable section
@@ -40,60 +50,74 @@ structure PlaquetteAdjacency (P : Type*) where
   touch : P -> P -> Prop
   touch_symm : forall p q, touch p q -> touch q p
 
-/-- Plaquette polymers as finite supports plus labels.
+/-- Plaquette polymers as finite supports plus support-indexed labels.
 
 `ConnectedSupport` is abstract on purpose.  Q7 needs to connect several
 possible finite plaquette geometries to Q6's polymer interface, and the first
-freeze should not hard-code a particular graph-connectedness API. -/
-abbrev PlaquettePolymer (P Rlab : Type*) [Fintype P] [DecidableEq P]
+freeze should not hard-code a particular graph-connectedness API.
+
+The label is a function on the subtype `{p : P // p ∈ support}`, so that a
+polymer has physical identity: labels outside the support simply do not exist
+and cannot inflate a downstream `KPCondition` sum by a volume-dependent
+factor. -/
+structure PlaquettePolymer (P Rlab : Type*) [Fintype P] [DecidableEq P]
     [Fintype Rlab] (ConnectedSupport : Finset P -> Prop)
-    (NontrivialLabel : Rlab -> Prop) :=
-  {x : Finset P × (P -> Rlab) //
-    x.1.Nonempty /\ ConnectedSupport x.1 /\
-      forall p : P, p ∈ x.1 -> NontrivialLabel (x.2 p)}
+    (NontrivialLabel : Rlab -> Prop) where
+  /-- Finite plaquette support of the polymer. -/
+  support : Finset P
+  /-- The support of a polymer is nonempty. -/
+  support_nonempty : support.Nonempty
+  /-- The support of a polymer is connected. -/
+  support_connected : ConnectedSupport support
+  /-- Label assigned to each plaquette in the support. -/
+  label : {p : P // p ∈ support} -> Rlab
+  /-- Every support label is nontrivial. -/
+  label_nontrivial : forall p : {p : P // p ∈ support}, NontrivialLabel (label p)
 
 namespace PlaquettePolymer
 
 variable {ConnectedSupport : Finset P -> Prop}
 variable {NontrivialLabel : Rlab -> Prop}
 
+/-- The finite type of plaquette polymers.
+
+A polymer is equivalent to a dependent pair of a support together with a
+support-indexed label, cut out by the three defining predicates; both sides are
+finite, so the polymer type is finite. -/
 noncomputable instance fintype :
     Fintype (PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) := by
   classical
-  unfold PlaquettePolymer
-  infer_instance
+  let σ := Σ s : Finset P, ({p : P // p ∈ s} -> Rlab)
+  let pred : σ -> Prop := fun x =>
+    x.1.Nonempty /\ ConnectedSupport x.1 /\
+      forall p : {p : P // p ∈ x.1}, NontrivialLabel (x.2 p)
+  have e : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel ≃
+      {x : σ // pred x} :=
+    { toFun := fun X =>
+        ⟨⟨X.support, X.label⟩,
+          X.support_nonempty, X.support_connected, X.label_nontrivial⟩
+      invFun := fun x => ⟨x.1.1, x.2.1, x.2.2.1, x.1.2, x.2.2.2⟩
+      left_inv := fun X => rfl
+      right_inv := fun x => rfl }
+  exact Fintype.ofEquiv {x : σ // pred x} e.symm
 
-/-- Finite plaquette support of a polymer. -/
-def support (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
-    Finset P :=
-  X.1.1
-
-/-- Label assigned to a plaquette.  Only values on `X.support` are
-semantically meaningful. -/
-def label (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
-    P -> Rlab :=
-  X.1.2
-
-theorem support_nonempty
-    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
-    X.support.Nonempty :=
-  X.2.1
-
-theorem support_connected
-    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
-    ConnectedSupport X.support :=
-  X.2.2.1
-
-theorem label_nontrivial
-    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel)
-    {p : P} (hp : p ∈ X.support) :
-    NontrivialLabel (X.label p) :=
-  X.2.2.2 p hp
+/-- Physical extensionality for support-indexed plaquette polymers. -/
+theorem ext_of_support_label
+    {X Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel}
+    (hs : X.support = Y.support)
+    (hl : forall (p : P) (hpX : p ∈ X.support) (hpY : p ∈ Y.support),
+      X.label ⟨p, hpX⟩ = Y.label ⟨p, hpY⟩) :
+    X = Y := by
+  obtain ⟨sX, hneX, hcX, lX, hntX⟩ := X
+  obtain ⟨sY, hneY, hcY, lY, hntY⟩ := Y
+  subst hs
+  simp only [PlaquettePolymer.mk.injEq, heq_eq_eq, true_and]
+  exact funext fun p => hl p p.2 p.2
 
 /-- Product of absolute normalized character coefficients over the support. -/
 def coeffProduct (gammaAbs : Rlab -> Real)
     (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) : Real :=
-  X.support.prod (fun p => gammaAbs (X.label p))
+  X.support.attach.prod (fun p => gammaAbs (X.label p))
 
 theorem coeffProduct_nonneg (gammaAbs : Rlab -> Real)
     (hgamma : forall r, 0 <= gammaAbs r)
@@ -117,6 +141,28 @@ supports either overlap or touch. -/
 def SupportsOverlapOrTouch (Adj : PlaquetteAdjacency P) (A B : Finset P) :
     Prop :=
   SupportsOverlap A B \/ SupportsTouch Adj A B
+
+/-- Overlap of finite supports is decidable. -/
+instance SupportsOverlap.instDecidable (A B : Finset P) :
+    Decidable (SupportsOverlap A B) := by
+  unfold SupportsOverlap
+  infer_instance
+
+/-- Touching of finite supports is decidable once the plaquette-adjacency
+relation is decidable. -/
+instance SupportsTouch.instDecidable (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] (A B : Finset P) :
+    Decidable (SupportsTouch Adj A B) := by
+  unfold SupportsTouch
+  infer_instance
+
+/-- The conservative overlap-or-touch incompatibility is decidable once the
+plaquette-adjacency relation is decidable. -/
+instance SupportsOverlapOrTouch.instDecidable (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] (A B : Finset P) :
+    Decidable (SupportsOverlapOrTouch Adj A B) := by
+  unfold SupportsOverlapOrTouch
+  infer_instance
 
 omit [Fintype P] [DecidableEq P] in
 theorem SupportsOverlap.symm {A B : Finset P} :
@@ -248,7 +294,7 @@ theorem z2_plaquettePolymer_weight_eq_abs_tanh_area
       (z2GammaAbs beta) alpha halpha).weight X =
       |Real.tanh beta| ^ X.support.card := by
   simp [plaquettePolymerSystem, PlaquettePolymer.coeffProduct, z2GammaAbs,
-    Finset.prod_const]
+    Finset.prod_const, Finset.card_attach]
 
 /-- For `0 <= beta`, `tanh beta` is nonnegative, so `|tanh beta| = tanh beta`. -/
 theorem tanh_nonneg_of_nonneg {beta : Real} (hbeta : 0 <= beta) :

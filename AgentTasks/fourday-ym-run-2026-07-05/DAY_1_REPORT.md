@@ -39,10 +39,11 @@ returned.
   spanning-tree count and zero concrete Ursell sum, while connected clusters
   have positive spanning-tree count.
 - `StrongCouplingPolymerMap.lean`: Q7 finite plaquette-polymer map layer,
-  conservative overlap-or-touch incompatibility, Z2 `|tanh beta| ^ area` and
-  beta-nonnegative `tanh beta ^ area` weight identities, and
-  coefficient-product/weight nonnegativity wrappers.  It remains a map layer,
-  not a KP proof.
+  support-indexed polymer labels, physical extensionality, decidable support
+  overlap/touch relations, conservative overlap-or-touch incompatibility, Z2
+  `|tanh beta| ^ area` and beta-nonnegative `tanh beta ^ area` weight
+  identities, and coefficient-product/weight nonnegativity wrappers.  It
+  remains a map layer, not a KP proof.
 - `MirrorHolonomyConjugation.lean`: Q1/N3 negative result integrated as a
   kernel-checked Lean counterexample from Aristotle `0a46d515`; raw mirror
   holonomy reversal is not generally conjugate to the original plaquette
@@ -59,10 +60,10 @@ COMPLETE+HARVESTED+INTEGRATED), `0a46d515` (Q1 N3 cut-plaquette conjugation,
 COMPLETE+HARVESTED+INTEGRATED as a counterexample), `34d675b8` (Q6
 tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 (Q7 polymer-map audit, COMPLETE+HARVESTED+INTEGRATED), and `788f83b4`
-(Q7 support-indexed-label redesign, RUNNING). Two near-collisions
+(Q7 support-indexed-label redesign, COMPLETE+HARVESTED+INTEGRATED). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after T11 harvest: `788f83b4`, `6f8903cc`, `e6e46e9f`.
+queue after Q7 label-redesign harvest: `6f8903cc`, `e6e46e9f`.
 
 ## 4. Board state
 
@@ -71,9 +72,10 @@ T0/T4/T5 done. T1 baseline reached; strong tier needs redesign after
 integrated; shift-covariance remains open before a full transfer-Hilbert
 statement file. T3 baseline-done-gated-by-T2. T6 statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
-remain. T7 has map-freeze plus audit-harvest done; the next blocker is
-support-indexed labels plus decidable overlap-or-touch before any
-`KPCondition` instantiation. T7 P2 is submitted as `788f83b4`.
+remain. T7 has map-freeze plus both audit harvests done; the support-indexed
+carrier and decidable overlap-or-touch layer are integrated. The next blocker
+is an honest `KPCondition` instantiation carrying an explicit finite KP sum
+bound, plus concrete connected-support/label APIs.
 T9 baseline-done. T11 lasso identity integrated; the remaining YM1 gap is the
 ensemble/partition bridge to the full Theorem 2 expectation statement.
 T12/T13 done. T14 v0.3, 44/44 oracle green.
@@ -86,20 +88,23 @@ T12/T13 done. T14 v0.3, 44/44 oracle green.
 confirmed the normalization/direct-definition path.
 `idea:q7-polymer-map` audit returned ACCEPT WITH CHANGES: the current total
 off-support label function is honest for wrappers but wrong for future KP
-sums; support-indexed labels are now the next submitted package.
+sums. The follow-up support-indexed redesign returned and is integrated, so
+that carrier-level overcount is fixed before any KP sum is stated.
 `review:fable-q3-flux-sector` findings (R3/R4/R5/R7) accepted and integrated
 by codex. `design:q1-reflection-orientation` - claude's doubled-lattice fix
 after a genuine construction failure on naive uniform-reflection lattices.
 
 ## 6. Build and hygiene
 
-Aggregate `GateYM` green through the day; latest post-Q6/Q7/T11 checks:
+Aggregate `GateYM` green through the day; latest post-Q6/Q7/T11 checks,
+including the support-indexed Q7 carrier redesign:
 `lake build PhysicsSM.Draft.NullEdge.GateYM` green (8072 jobs, known existing
 warnings only). Full `lake build` was green earlier in the day (8295 jobs)
 before the latest Q6/Q7/T11 slices, so rerun it at the next day-end or
-promotion checkpoint before making a fresh full-build claim. Oracle
-`validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit this
-session.
+promotion checkpoint before making a fresh full-build claim. The Q7 harvest
+also passed a direct placeholder/escape-hatch scan and standard dependency audit.
+Oracle `validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit
+this session.
 
 ## 7. Honest negatives
 
@@ -110,10 +115,10 @@ inverse. The next RP-LINK attempt must redesign the false-side orientation or
 inverse convention, not push the rejected target. Q6's C3
 exponential-distance tail is NOT a consequence of bare KP - needs an
 explicit metric/coercivity extension (already designed into the freeze).
-Q7 cannot instantiate `KPCondition` on the current total-label
-`PlaquettePolymer`: off-support labels overcount physical polymers by a
-volume-dependent factor. The map layer is honest, but KP/Q8 must wait for the
-support-indexed-label redesign.
+Q7 still cannot instantiate `KPCondition` from the map layer alone: the
+support-indexed redesign fixed the off-support-label overcount, but an explicit
+finite KP sum bound, concrete connected-support API, and label API are still
+needed before KP/Q8 conclusions.
 Fable Q3 call's captured transcript was missing its own Decision verdict
 and R1/R2 (likely log-capture truncation) - flagged, not papered over.
 Primary sources (KP86, OS78) remain paywalled/blocked; relying on
@@ -121,9 +126,9 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 
 ## 8. Tomorrow's plan
 
-1. Harvest `788f83b4` and integrate the support-indexed Q7 carrier redesign if
-   it verifies; only then state KP/Q8 packages over the plaquette-polymer
-   system.
+1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
+   package with the finite KP sum bound as an explicit hypothesis; do not infer
+   volume-uniform KP from the small-torus oracle rows.
 2. Start the next Q6 package: the abstract KP proof package against
    `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
    focused proof package is ready.
