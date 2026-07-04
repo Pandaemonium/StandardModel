@@ -74,8 +74,9 @@ returned.
   support-indexed polymer labels, physical extensionality, decidable support
   overlap/touch relations, conservative overlap-or-touch incompatibility, Z2
   `|tanh beta| ^ area` and beta-nonnegative `tanh beta ^ area` weight
-  identities, and coefficient-product/weight nonnegativity wrappers.  It
-  remains a map layer, not a KP proof.
+  identities, coefficient-product/weight nonnegativity wrappers, and the
+  conditional adapter from an explicit finite `PlaquetteKPBound` to
+  `KPCondition`.  It remains a map layer, not a finite-bound proof.
 - `ExponentialClustering.lean`: Q8 conditional observable bridge from an
   explicit cluster-tail bound plus observable-to-cluster comparison to
   exponential clustering, plus the finite-support observable bridge harvested
@@ -129,9 +130,10 @@ tree-count/Ursell definitions landed; Penrose remains parked and abstract KP
 C1 is reduced to a partial-sum crux while old bare C2 is refuted without
 self-incompatibility. T7 has map-freeze plus both audit
 harvests done; the support-indexed
-carrier and decidable overlap-or-touch layer are integrated. The next blocker
-is an honest `KPCondition` instantiation carrying an explicit finite KP sum
-bound, plus concrete connected-support/label APIs. T8 now has conditional
+carrier and decidable overlap-or-touch layer are integrated, and the
+conditional `PlaquetteKPBound -> KPCondition` adapter is now in place. The
+next blocker is proving an honest explicit finite KP sum bound, plus concrete
+connected-support/label APIs. T8 now has conditional
 anchor and finite-support observable bridges; no unconditional clustering claim
 is made.
 T9 baseline-done. T11 lasso identity integrated; the remaining YM1 gap is the
@@ -197,9 +199,9 @@ explicit metric/coercivity extension (already designed into the freeze).
 Q6's old C2 convergence target is also NOT a consequence of bare KP unless
 self-incompatibility is included; `kp_convergence_bound_false` is the
 kernel-checked one-point counterexample.
-Q7 still cannot instantiate `KPCondition` from the map layer alone: the
-support-indexed redesign fixed the off-support-label overcount, but an explicit
-finite KP sum bound, concrete connected-support API, and label API are still
+Q7 now has the conditional adapter from an explicit finite plaquette KP sum
+bound to `KPCondition`, but it still does not prove that bound. Concrete
+connected-support API, label API, and volume-uniform estimates are still
 needed before KP/Q8 conclusions.
 Q8 remains conditional: the new anchor/support bridges prove only that an
 explicit cluster tail estimate and observable expansion imply exponential

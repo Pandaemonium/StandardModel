@@ -404,8 +404,11 @@ layer: finite plaquette polymers as nonempty connected finite supports with
 support-indexed nontrivial labels, conservative overlap-or-touching
 incompatibility, weights as products of absolute normalized label coefficients,
 energy `alpha * area`, and the Z2 specialization `|tanh beta| ^ area` pinned to
-the v0.3 oracle fixture. No volume-uniform KP proof or general finite-irrep
-coefficient map is claimed); `ExponentialClustering` (YM4/T8 statement bridge:
+the v0.3 oracle fixture. It also names the explicit finite plaquette KP sum
+`plaquetteKPSum`, the bound predicate `PlaquetteKPBound`, and the adapter
+`kpCondition_of_plaquetteKPBound` from that explicit bound to
+`PolymerKPCriterion.KPCondition`. No volume-uniform KP proof or general
+finite-irrep coefficient map is claimed); `ExponentialClustering` (YM4/T8 statement bridge:
 abstract connected-correlator data, named cluster-tail contribution, and the
 kernel-checked implication from an explicit Q6-style tail bound plus an
 observable-to-cluster bridge to exponential clustering. No concrete plaquette

@@ -892,10 +892,12 @@ Integrated the safe P1 patch from the audit:
 - `tanh_nonneg_of_nonneg`
 - `z2_plaquettePolymer_weight_eq_tanh_area`
 
-Deferred: support-indexed label carrier, decidability for
+Deferred at this point: support-indexed label carrier, decidability for
 `SupportsOverlapOrTouch`, and any `KPCondition` restatement carrying the KP sum
 bound as an explicit hypothesis.  Do not use the T14 small-torus oracle rows as
-evidence for a volume-uniform KP theorem.
+evidence for a volume-uniform KP theorem.  Later in the run, the first two
+items were integrated from Aristotle `788f83b4`, and Codex added the
+conditional KP-bound adapter described below.
 
 Codex harvest 1.15:22:
 
@@ -920,11 +922,30 @@ Local verification:
   `[propext, Quot.sound]`; the finite product/Z2 wrapper lemmas have the
   standard `[propext, Classical.choice, Quot.sound]` footprint.
 
-Remaining Q7/Q8 boundary: no `KPCondition` theorem has been added.  The next
-step must carry the finite KP sum bound as an explicit hypothesis or prove it
-from a concrete plaquette geometry; the abstract `ConnectedSupport` and
-`NontrivialLabel` predicates, plus the overlap-only comparison system, are
-still deferred.
+Follow-up adapter 1.15:34 codex:
+
+I added the first conditional `KPCondition` bridge:
+
+- `plaquettePolymerIncompatibleDecidable`, a named decidability witness for
+  the conservative Q7 incompatibility relation;
+- `plaquetteKPSum`, the explicit finite incompatible-polymer sum in
+  nonnegative-weight form;
+- `PlaquetteKPBound`, the finite rooted KP inequality with right side
+  `alpha * area`;
+- `kpCondition_of_plaquetteKPBound`, proving that this explicit bound implies
+  `PolymerKPCriterion.KPCondition` for `plaquettePolymerSystem`.
+
+This is the intended Q7/Q6 interface after the support-indexed label redesign
+and the Q6 self-incompatibility correction: Q7 supplies self-incompatibility
+by overlap, and downstream work only has to prove the explicit finite bound.
+It is not a proof of volume-uniform strong-coupling constants.  The abstract
+`ConnectedSupport` and `NontrivialLabel` predicates, concrete plaquette
+geometry, and any overlap-only comparison system are still deferred.
+
+Verification: direct file check, targeted module build, aggregator file check,
+aggregate GateYM build, placeholder scan, and axiom audit all passed.  The
+adapter theorem has the standard footprint
+`[propext, Classical.choice, Quot.sound]`.
 
 ## idea:q8-exponential-clustering-bridge (opened 1.15:31 codex)
 

@@ -275,6 +275,93 @@ theorem plaquettePolymerSystem_weight_nonneg
   rw [plaquettePolymerSystem_weight]
   exact X.coeffProduct_nonneg gammaAbs hgamma
 
+/-- The canonical decidability witness for the conservative plaquette-polymer
+incompatibility relation.  Downstream KP wrappers use this witness so the
+finite sum in `KPCondition` has a stable, named decidability argument. -/
+def plaquettePolymerIncompatibleDecidable
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (halpha : 0 <= alpha) :
+    forall X Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel,
+      Decidable ((plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+        gammaAbs alpha halpha).incompatible X Y) := by
+  intro X Y
+  unfold plaquettePolymerSystem
+  infer_instance
+
+/-- The explicit finite KP sum for the conservative plaquette-polymer system,
+written in the physical nonnegative-weight form.  The hard strong-coupling
+estimate is precisely to bound this quantity uniformly in volume for a chosen
+plaquette geometry and coefficient system. -/
+def plaquetteKPSum
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) : Real :=
+  ∑ Y ∈ Finset.univ.filter
+      (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+        @Decidable.decide _
+          (plaquettePolymerIncompatibleDecidable Adj ConnectedSupport
+            NontrivialLabel gammaAbs alpha halpha X Y) = true),
+    Y.coeffProduct gammaAbs * Real.exp (alpha * (Y.support.card : Real))
+
+/-- A finite plaquette-polymer KP bound: the explicit incompatible-polymer
+sum rooted at each polymer is bounded by its energy `alpha * area`. -/
+def PlaquetteKPBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (halpha : 0 <= alpha) : Prop :=
+  forall X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel,
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha
+      halpha X <= alpha * (X.support.card : Real)
+
+/-- An explicit finite plaquette-polymer KP bound implies the abstract
+`KPCondition` for the conservative Q7 polymer system.
+
+This is only an adapter theorem: it does not prove the finite sum bound, and
+therefore does not claim any volume-uniform strong-coupling constants. -/
+theorem kpCondition_of_plaquetteKPBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (hBound : PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha) :
+    KPCondition
+      (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+        gammaAbs alpha halpha)
+      (plaquettePolymerIncompatibleDecidable Adj ConnectedSupport
+        NontrivialLabel gammaAbs alpha halpha) := by
+  intro X
+  calc
+    (∑ Y ∈ Finset.univ.filter
+        (fun Y =>
+          @Decidable.decide _
+            (plaquettePolymerIncompatibleDecidable Adj ConnectedSupport
+              NontrivialLabel gammaAbs alpha halpha X Y) = true),
+      |(plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+        gammaAbs alpha halpha).weight Y| *
+        Real.exp ((plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+          gammaAbs alpha halpha).energy Y))
+        = plaquetteKPSum Adj ConnectedSupport NontrivialLabel
+            gammaAbs alpha halpha X := by
+          apply Finset.sum_congr rfl
+          intro Y _hY
+          rw [plaquettePolymerSystem_weight,
+            abs_of_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma),
+            plaquettePolymerSystem_energy]
+    _ <= alpha * (X.support.card : Real) := hBound X
+    _ = (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+          gammaAbs alpha halpha).energy X := by
+        rw [plaquettePolymerSystem_energy]
+
 /-- Z2 strong-coupling coefficient used by the oracle fixture:
 `|tanh beta|` for the unique nontrivial label. -/
 def z2GammaAbs (beta : Real) (_ : PUnit) : Real :=
