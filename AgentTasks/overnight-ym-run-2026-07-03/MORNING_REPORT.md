@@ -42,8 +42,8 @@ Verification shorthand: every module below was covered by targeted `lake env lea
   Verification: targeted checks and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
 - `TransferGapDefinition.lean`: D12 shell separating Gauss invariance, zero momentum, and trivial 't Hooft flux; `finiteMassGap` real-valued spectral-ratio definition (`-Real.log (lambda1 / lambda0)`) plus elementary log nonnegativity/positivity lemmas under `0 < lambda1 <= lambda0`. No transfer matrix construction, spectral theorem, or oracle-number evaluation is claimed.
   Verification: targeted check and aggregate GateYM build.
-- `ReflectionCore.lean`, `ReflectionCutExample.lean`, `ReflectionWalk.lean`, `ReflectionEnsemble.lean`, `PlaquetteReflection.lean`: link-reflection structure, two-layer cut sanity model, opposite-group reflected-walk theorem, reflection finite-sum change-of-variables, plaquette holonomy lift, and product-weight reflection bridge (`1033caa`, `4e3fcba`, `45eb172`, `eb0a90b`).
-  Key names: `reflectLinkField_involutive`, `twoLayerCutReflection_cutLink`, `op_hol_reflectLinkField_mirrorWalk`, `reflectLinkFieldEquiv`, `expectation_observable_comp_reflectLinkField_of_weight_invariant`, `op_hol_reflectLinkField_mirrorPlaquette`, `productWeight_reflectLinkField_mirrorPlaquette`.
+- `ReflectionCore.lean`, `ReflectionCutExample.lean`, `ReflectionWalk.lean`, `ReflectionEnsemble.lean`, `PlaquetteReflection.lean`: link-reflection structure, two-layer cut sanity model, opposite-group reflected-walk theorem, reflection finite-sum change-of-variables, plaquette holonomy lift, product-weight reflection bridge, and mirror-stable-family product bookkeeping (`1033caa`, `4e3fcba`, `45eb172`, `eb0a90b`).
+  Key names: `reflectLinkField_involutive`, `twoLayerCutReflection_cutLink`, `op_hol_reflectLinkField_mirrorWalk`, `reflectLinkFieldEquiv`, `expectation_observable_comp_reflectLinkField_of_weight_invariant`, `op_hol_reflectLinkField_mirrorPlaquette`, `productWeight_reflectLinkField_mirrorPlaquette`, `IsMirrorStableFamily`, `productWeight_reflectLinkField_of_mirrorStable`.
   Verification: targeted file/module checks, axiom audits, aggregate GateYM build. Axioms: `[propext]` or `[propext, Quot.sound]` for the reflected-step/walk/plaquette/product bridge facts.
 
 ### QCD1 and YM4 side lanes
@@ -66,7 +66,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 
 - Finish finite-G Theorem 2 from `Theorem2AreaLaw.lean`: connect the normalized Wilson-weight convolution identity to lattice expectations by proving the tree-gauge independence layer and the partition/prefactor identification.
 - Harvest `203fd831` when it completes; it is Gate C2, not tonight's YM ladder, but it is still owned by the carryover registry.
-- RP-LINK is not assembled. Missing pieces: reflection-stable plaquette family, Wilson local-weight symmetry across `MulOpposite`, cut factorization, positive-side observable algebra, and PSD assembly.
+- RP-LINK is not assembled. Missing pieces: concrete reflection-stable plaquette-family instantiation, Wilson local-weight symmetry across `MulOpposite`, cut factorization, positive-side observable algebra, and PSD assembly.
 - QCD1-i/ii are not proved. The banked C2/GW-circle facts need a designed `lambda_hat` spectral map and chiral-pairing theorem.
 - KP conclusion is not proved. `PolymerKPCriterion.lean` freezes the condition; Ursell/cluster combinatorics and convergence statements are future infrastructure.
 - Primary-source Osterwalder-Seiler PDF text was not extracted; LINK-vs-SITE geometry is strongly corroborated by secondary sources but still wants primary-source confirmation before paper claim language.
@@ -105,7 +105,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 ## 8. Recommended next three actions
 
 1. Finish finite-G YM1 Theorem 2 around `Theorem2AreaLaw.lean`: prove the tree-gauge/independence bridge from `PlaquetteEnsemble` to `iterConv`, then discharge the partition-prefactor identification.
-2. Assemble the next YM3 finite identity, not RP-LINK yet: define a reflection-stable plaquette family and prove Wilson local-weight compatibility across the `MulOpposite` bridge. That is the closest YM3 paper unit after tonight's T3 work.
+2. Instantiate the abstract mirror-stable plaquette-family theorem in a concrete lattice shape and prove Wilson local-weight compatibility across the `MulOpposite` bridge. That is the closest YM3 paper unit after tonight's T3 work.
 3. Poll/harvest `203fd831`; then restore the one-job Aristotle budget rule. The temporary lift paid off, but the v1 Lemma 2a bug showed why cross-review and narrow packages still matter.
 
 ## 9. Literature log summary

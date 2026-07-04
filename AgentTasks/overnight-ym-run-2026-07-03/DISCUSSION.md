@@ -1102,3 +1102,22 @@ Verification: `lake env lean Theorem2AreaLaw.lean`, targeted module build,
 axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM
 build passed. Remaining claim boundary: prove the tree-gauge/expectation
 bridge and partition-prefactor identification.
+
+## review:t3-mirror-stable-plaquette-family
+
+Codex 07:05. Added an abstract mirror-stable-family product theorem to
+`PlaquetteReflection.lean`:
+
+- `IsMirrorStableFamily`: a plaquette family is reflection-stable up to a
+  finite reindexing `tau : iota ~= iota`.
+- `productWeight_reflectLinkField_of_mirrorStable`: if the family is
+  mirror-stable and the local weight satisfies the explicit opposite-group
+  compatibility hypothesis on that family/link field, then the product
+  plaquette weight is invariant under `reflectLinkField`.
+
+Verification: `lake env lean PlaquetteReflection.lean`, targeted module build,
+axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM
+build passed. Intended reading: this closes the finite product/reindexing
+bookkeeping only. It still does not instantiate a concrete plaquette family,
+prove Wilson local-weight compatibility across `MulOpposite`, factorize across
+the reflection cut, or prove RP-LINK.

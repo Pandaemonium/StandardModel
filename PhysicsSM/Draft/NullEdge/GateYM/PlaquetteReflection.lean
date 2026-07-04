@@ -9,6 +9,9 @@ This draft module lifts the walk-level reflection identity from
 `ReflectionWalk` to the abstract four-step plaquettes of `PlaquetteCore`.
 It also records the induced finite product-weight identity after replacing
 the local weight on `G` by the corresponding local weight on `MulOpposite G`.
+For a reflection-stable finite plaquette family, the product weight is
+reflection-invariant once the remaining local opposite-group compatibility is
+supplied explicitly as a hypothesis.
 The result is still algebraic scaffolding, not reflection positivity: it does
 not prove Wilson action reflection covariance for a reflection-stable plaquette
 set, cut factorization, or the RP-LINK inequality.
@@ -105,6 +108,48 @@ theorem productWeight_reflectLinkField_mirrorPlaquette
   refine Finset.prod_congr rfl ?_
   intro i _hi
   exact localWeight_hol_reflectLinkField_mirrorPlaquette R localWeight (P i) U
+
+/-- A finite plaquette family is stable under reflection if reflection mirrors
+the family up to a finite reindexing. -/
+def IsMirrorStableFamily {ι : Type*} (P : ι → Plaquette Λ) (τ : ι ≃ ι) : Prop :=
+  ∀ i : ι, mirrorPlaquette R (P i) = P (τ i)
+
+/-- Reflection invariance of a product plaquette weight for a mirror-stable
+family, assuming the local weight has the required opposite-group compatibility.
+
+The compatibility hypothesis is intentionally explicit. For a concrete Wilson
+weight it should come from the chosen orientation/unitarity convention; this
+theorem only proves the finite reindexing and product bookkeeping. -/
+theorem productWeight_reflectLinkField_of_mirrorStable
+    {ι M : Type*} [Fintype ι] [CommMonoid M]
+    (P : ι → Plaquette Λ) (τ : ι ≃ ι) (localWeight : G → M)
+    (hstable : IsMirrorStableFamily R P τ)
+    (U : Λ.LinkField (G := G))
+    (hop : ∀ i : ι,
+      (fun h : MulOpposite G => localWeight h.unop)
+        ((P i).hol (ReflectionCore.Reflection.opLinkField U)) =
+      localWeight ((P i).hol U)) :
+    PlaquetteCore.productWeight P localWeight (R.reflectLinkField U) =
+      PlaquetteCore.productWeight P localWeight U := by
+  rw [productWeight_reflectLinkField_mirrorPlaquette R P localWeight U]
+  unfold PlaquetteCore.productWeight
+  calc
+    (∏ i : ι,
+        (fun h : MulOpposite G => localWeight h.unop)
+          ((mirrorPlaquette R (P i)).hol (ReflectionCore.Reflection.opLinkField U)))
+        =
+      ∏ i : ι,
+        (fun h : MulOpposite G => localWeight h.unop)
+          ((P (τ i)).hol (ReflectionCore.Reflection.opLinkField U)) := by
+          refine Finset.prod_congr rfl ?_
+          intro i _hi
+          rw [hstable i]
+    _ = ∏ i : ι, localWeight ((P (τ i)).hol U) := by
+          refine Finset.prod_congr rfl ?_
+          intro i _hi
+          rw [hop (τ i)]
+    _ = ∏ i : ι, localWeight ((P i).hol U) := by
+          simpa using (Equiv.prod_comp τ (fun i => localWeight ((P i).hol U)))
 
 end PlaquetteReflection
 end GateYM
