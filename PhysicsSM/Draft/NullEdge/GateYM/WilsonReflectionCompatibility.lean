@@ -16,9 +16,10 @@ the reflected product naturally lands in `MulOpposite G`. For a representation
 The inverse is load-bearing: it corrects the order reversal in the opposite
 group. Under the usual unitarity hypothesis, the Wilson local weight for this
 opposite representation agrees pointwise with the `h.unop` local weight used by
-the generic reflection product theorem. This gives a Wilson-specialized
-reflected-product identity, still stopping before any cut factorization,
-same-family reflection invariance, positive-side algebra, or RP-LINK inequality.
+the generic reflection product theorem. This gives Wilson-specialized
+single-plaquette, product-weight, and `PlaquetteEnsemble.weight` reflection
+identities, still stopping before any cut factorization, same-family reflection
+invariance, positive-side algebra, or RP-LINK inequality.
 
 Draft-trust: kernel-checked, no `s o r r y`, no
 `n a t i v e _ d e c i d e`.
@@ -85,6 +86,27 @@ theorem wilsonLocalWeight_rhoOppositeInv
   rw [WilsonWeightPositivity.rho_inv_eq_conjTranspose rho hmul hone hunit]
   simp [Matrix.trace_conjTranspose]
 
+/-- Single-plaquette Wilson reflection identity.
+
+The reflected plaquette holonomy for `rho` is measured by the mirrored plaquette
+over `opLinkField U` using the opposite inverse representation. -/
+theorem localWeight_hol_reflectLinkField_mirrorPlaquette_wilson
+    {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
+    (p : Plaquette Λ) (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (U : Λ.LinkField (G := G)) :
+    WilsonLocalWeight.wilsonLocalWeight beta rho (p.hol (R.reflectLinkField U)) =
+      WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)
+        ((mirrorPlaquette R p).hol (ReflectionCore.Reflection.opLinkField U)) := by
+  have hgen := PlaquetteReflection.localWeight_hol_reflectLinkField_mirrorPlaquette R
+    (WilsonLocalWeight.wilsonLocalWeight beta rho) p U
+  rw [hgen]
+  exact (wilsonLocalWeight_rhoOppositeInv beta rho hmul hone hunit
+    ((mirrorPlaquette R p).hol (ReflectionCore.Reflection.opLinkField U))).symm
+
 /-- Wilson-specialized reflected product-weight identity.
 
 Reflecting a plaquette family sends the Wilson product for `rho` to the mirrored
@@ -111,6 +133,26 @@ theorem productWeight_reflectLinkField_mirrorPlaquette_wilson
   refine Finset.prod_congr rfl ?_
   intro i _hi
   rw [wilsonLocalWeight_rhoOppositeInv beta rho hmul hone hunit]
+
+/-- `PlaquetteEnsemble.weight` wrapper for the Wilson reflected product-weight
+identity. This is just the ensemble-level name for
+`productWeight_reflectLinkField_mirrorPlaquette_wilson`. -/
+theorem weight_reflectLinkField_mirrorPlaquette_wilson
+    {Λ : OrientedLattice} (R : ReflectionCore.Reflection Λ)
+    {ι : Type*} [Fintype ι]
+    (P : ι → Plaquette Λ) (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (U : Λ.LinkField (G := G)) :
+    PlaquetteEnsemble.weight P (WilsonLocalWeight.wilsonLocalWeight beta rho)
+        (R.reflectLinkField U) =
+      PlaquetteEnsemble.weight (fun i => mirrorPlaquette R (P i))
+        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho))
+        (ReflectionCore.Reflection.opLinkField U) := by
+  unfold PlaquetteEnsemble.weight
+  exact productWeight_reflectLinkField_mirrorPlaquette_wilson R P beta rho hmul hone hunit U
 
 end WilsonReflectionCompatibility
 end GateYM

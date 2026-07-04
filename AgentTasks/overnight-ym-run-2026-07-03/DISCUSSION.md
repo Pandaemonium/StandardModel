@@ -1239,14 +1239,19 @@ Wilson/opposite-group algebra from the generic plaquette reflection machinery:
 - `wilsonLocalWeight_rhoOppositeInv`: under unitarity, the Wilson local weight
   for `rhoOppositeInv rho` agrees with the generic opposite local weight
   `h |-> wilsonLocalWeight beta rho h.unop`.
+- `localWeight_hol_reflectLinkField_mirrorPlaquette_wilson`: the
+  single-plaquette reflected-holonomy wrapper.
 - `productWeight_reflectLinkField_mirrorPlaquette_wilson`: specializing the
   plaquette reflection product bridge, reflecting a Wilson product for `rho`
   gives the mirrored plaquette-family product for `rhoOppositeInv rho`.
+- `weight_reflectLinkField_mirrorPlaquette_wilson`: the same identity at the
+  `PlaquetteEnsemble.weight` wrapper level.
 
 Intended reading: this is the honest Wilson/opposite bridge at product-weight
-level. It does not prove that an arbitrary chosen family is reflection-invariant
-under the same local Wilson weight; the same-family compatibility hypothesis in
-`PlaquetteReflectionEnsemble.lean` is still a separate geometric/orientation
-problem. Verification: `lake env lean WilsonReflectionCompatibility.lean`,
+and ensemble-weight level. It does not prove that an arbitrary chosen family is
+reflection-invariant under the same local Wilson weight; the same-family
+compatibility hypothesis in `PlaquetteReflectionEnsemble.lean` is still a
+separate geometric/orientation problem. Verification: `lake env lean
+WilsonReflectionCompatibility.lean`,
 targeted module build, axiom audit `[propext, Classical.choice, Quot.sound]`,
 and aggregate GateYM build passed.
