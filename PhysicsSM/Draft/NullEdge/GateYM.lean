@@ -7,6 +7,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
@@ -106,6 +107,13 @@ Deliberately NOT claimed: reality/ordering/positivity of eigenvalues, the
 character bound `|chi(g)| <= chi(1)` (vacuum dominance `|gamma| <= 1`), and
 any identification with `TransferGapDefinition.finiteMassGap` - those are the
 next honest gap-lane targets; axiom footprint
+[propext, Classical.choice, Quot.sound]);
+`WilsonVacuumDominance` (YM1/gap lane: vacuum dominance for unitary matrix
+models - diagonal entries of a unitary matrix have modulus at most 1, hence
+`|tr M| <= n`, hence `|wilsonNormalizedGamma| <= 1` and NONNEGATIVE string
+tension, all under an explicit `R.character g = tr (rho' g)` unitary
+matrix-model hypothesis; discharging that hypothesis for every simple `R`
+is finite-group unitarizability, an honestly-open follow-up; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
