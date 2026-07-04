@@ -13,6 +13,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
+import PhysicsSM.Draft.NullEdge.GateYM.ReflectionDouble
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionEnsemble
@@ -154,10 +155,25 @@ pullback reflection action on link fields, proved an involution; includes
 single-step `Step.fwd`/`Step.rev` compatibility lemmas and resolves
 `design:reflection-cut-layer`'s three open questions as documented
 judgment calls, not silent assumptions; no Wilson action, expectation, or
-RP inequality lives here yet); `ReflectionCutExample` (YM3 sanity-check
-model: a two-layer link-reflection lattice with all links crossing the
-reflection plane, proving the abstract `Reflection` structure is inhabited
-by the no-on-plane link-reflection geometry); `ReflectionWalk` (YM3
+RP inequality lives here yet); `ReflectionDouble` (YM3 Q1 substrate: the
+"doubled lattice" - given ANY oriented lattice `L0`, glue a `true`
+(positive) copy with `L0`'s own orientation to a `false` (negative) copy
+with REVERSED orientation into one lattice carrying a canonical, always-
+valid `Reflection` (side-bit flip, no cut links). Resolves a genuine
+construction finding (`design:q1-reflection-orientation` in the four-day
+run's `DISCUSSION.md`): a naive single-orientation reflection of a 2D
+rectangular lattice through either coordinate axis fails
+`ReflectionCore.Reflection`'s endpoint-swap axioms for every edge
+transverse to the reflected direction. `doubleLinkFieldEquiv` gives the
+mirror-coordinate split `LinkField ~ L0.LinkField x L0.LinkField` that
+`ReflectionPositivityKernel`'s factorized class consumes with `C := PUnit`;
+threading a genuine gauge-invariant plaquette-based Wilson weight through
+it (via `PlaquetteReflection.mirrorPlaquette` +
+`WilsonReflectionCompatibility.rhoOppositeInv`, not a naive per-side lift)
+is recorded as the concrete next step, not yet done); `ReflectionCutExample`
+(YM3 sanity-check model: a two-layer link-reflection lattice with all links
+crossing the reflection plane, proving the abstract `Reflection` structure
+is inhabited by the no-on-plane link-reflection geometry); `ReflectionWalk` (YM3
 walk-level reflection transport: mirrored typed walks reverse step order,
 and noncommutative order reversal is recorded by the opposite-group identity
 `op (hol (theta U) w) = hol (op U) (mirrorWalk w)`);
