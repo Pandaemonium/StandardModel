@@ -20,7 +20,7 @@ section 14 (Q-items).
 | T8 exponential clustering | Q8 | open | - | (after T6/T7) | gated |
 | T9 cyclicity prerequisite | Q9 | open | - | (statement file only) | stretch |
 | T10 infinite-volume statement | Q10 | open | - | (statement file only) | stretch, day 4 |
-| T11 lasso identification | Q11 | open | - | PhysicsSM/Draft/NullEdge/GateYM/RectBoundary*.lean + standalone pkg | ordering pre-derived |
+| T11 lasso identification | Q11 | partial-boundary-review-requested | - | PhysicsSM/Draft/NullEdge/GateYM/RectBoundary*.lean, AgentTasks/aristotle-submit/ym1-rectboundary-lasso-20260704-*, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | boundary walk + holonomy order pin landed; review:t11-lasso-package opened before Aristotle submission |
 | T12 YM-LIT | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | source checkpoint + graph/ingest debt logged; next lit slice needs full-text access and Zotero ingest path |
 | T13 paper-unit outlines | - | open | - | AgentTasks/paper-units/*.md | day-end lane |
 | T14 oracle fixtures v0.3 | - | partial-v0.3-codex | - | Scripts/oracle/validate_lgt_core.py, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | RP Z3 anti-linear/mirror-inverse guard landed; oracle v0.3 is 40/40 green; fusion-spectrum and KP-constant fixtures remain |
@@ -73,3 +73,5 @@ section 14 (Q-items).
 1.11:21 codex T14 added v0.3 Z3 RP-KER guard: correct `chi(a*b^{-1})` mirror kernel Hermitian PSD + nonnegative form, no-inverse variant non-Hermitian with complex witness; `python Scripts/oracle/validate_lgt_core.py` green 40/40; T14 released pending later fusion/KP fixtures.
 1.11:24 codex T6 harvested Aristotle strategy report: C1/C2 convergence supported by bare KP, C3 tail needs metric + energy-distance coercivity, cluster encoding ordered `Fin n -> Gamma`, coefficient abstracted by `ClusterCoeffData`; next post exact freeze review before any Lean statement file.
 1.11:26 codex T6 opened `review:q6-kp-freeze` with proposed signatures for `PolymerKPConclusion.lean`; awaiting cross-review before creating or editing any Q6 Lean statement file.
+1.11:28 codex T11 claimed lasso identification lane; next read RectTreeGauge/GaugeCore APIs, define the rectangular boundary walk with a pinned holonomy formula, then package the tree-slice identity for Aristotle.
+1.11:34 codex T11 added `RectBoundaryLasso.lean`: typed full-rectangle boundary walk and holonomy formula bottom/right/inverse-top/inverse-left; direct file check, module build, aggregator check green; axiom audit for `rectBoundary_hol_formula` is [propext]; opened `review:t11-lasso-package` before Aristotle submission.

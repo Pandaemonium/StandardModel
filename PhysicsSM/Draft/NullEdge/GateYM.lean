@@ -7,6 +7,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
 import PhysicsSM.Draft.NullEdge.GateYM.RectTreeGauge
+import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryLasso
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
@@ -115,6 +116,10 @@ bijectivity by per-row `Fin.induction` injectivity + cardinality), and
 Remaining to the freeze Theorem 2 statement: only the boundary-circuit
 lasso identification of the observable; axiom footprint
 [propext, Classical.choice, Quot.sound]);
+`RectBoundaryLasso` (YM1/T11 start: typed full-rectangle boundary walk on
+`RectTreeGauge.rectLattice`, with the boundary holonomy order pinned as bottom,
+right, inverse top, inverse left. It deliberately does not yet prove the hard
+tree-slice lasso identity; that is the next Aristotle package);
 `FusionTransferSpectrum` (YM1/gap lane: the fusion convolution as a linear
 endomorphism of `G -> C` with kernel-checked `Module.End` spectrum - the
 constant function is the vacuum eigenvector with eigenvalue the one-plaquette

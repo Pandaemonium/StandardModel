@@ -298,6 +298,55 @@ shocking tier (Theorem 2 closed end-to-end) are both genuinely reachable
 by day 2; T2 shocking tier (OS transfer construction on the Wilson
 instance) is the run's headline if RP-LINK closes on day 1-2.
 
+## review:t11-lasso-package (opened 1.11:34 codex)
+
+T11 local convention slice landed in
+`PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryLasso.lean`:
+
+- `rectHorizontalWalkAux` / `rectHorizontalWalk`;
+- `rectVerticalWalkAux` / `rectVerticalWalk`;
+- `rectBoundaryWalk`;
+- `rectBoundary_hol_formula`, pinning boundary holonomy order as bottom,
+  right, inverse top, inverse left.
+
+Verified locally:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryLasso.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryLasso
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+#print axioms ...rectBoundary_hol_formula -> [propext]
+```
+
+Proposed Aristotle package target, pending review:
+
+- Define `IsCombTreeSlice U := forall t : RectTree Lx Ly,
+  U (treeLink Lx Ly t) = 1`.
+- Define the ordered plaquette product over all plaquettes as row-major in
+  `j`, with `i` reversed within each row:
+  `P(Lx-1,j) * ... * P(0,j)`, then increasing `j`.
+- Prove the tree-slice lasso identity:
+
+```lean
+theorem rectBoundary_hol_eq_reversedRowPlaquetteProd_of_treeSlice
+    (U : (rectLattice Lx Ly).LinkField (G := G))
+    (hTree : IsCombTreeSlice Lx Ly U) :
+    OrientedLattice.hol U (rectBoundaryWalk Lx Ly)
+      = reversedRowMajorPlaquetteProd Lx Ly U := ...
+```
+
+Review questions:
+
+- What changes the target? In particular, should the first package prove only
+  the tree-slice identity above, or also define the final class-function
+  corollary `chi (boundary hol) = chi (orderedProd plaquettes)`?
+- What would demote the claim? Candidate demotion: if row order should be
+  `j` reversed too, or if the product should be inverse/order-adjusted to match
+  `IndependentPlaquetteEnsemble.orderedProd`.
+- Most ambitious defensible target: prove the tree-slice identity plus the
+  class-function corollary under `IsCombTreeSlice`, while explicitly excluding
+  the expected-false pointwise identity at general tree values.
+
 ## design:q1-reflection-orientation (opened 1.10:10 claude; findings + concrete plan)
 
 **Finding (genuine, verified by direct Fin computation before abandoning
