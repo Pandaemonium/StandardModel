@@ -1103,6 +1103,21 @@ axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM
 build passed. Remaining claim boundary: prove the tree-gauge/expectation
 bridge and partition-prefactor identification.
 
+**Codex follow-up (08:00):** added `wilsonNormalizedGamma` and
+`wilson_iterConv_normalizedGamma_at_one`, a compact named-scalar restatement of
+the normalized Wilson convolution iteration:
+
+```text
+iterConv w chi_R m 1 / Z_w^m =
+  chi_R(1) * wilsonNormalizedGamma(beta, rho, R)^m
+```
+
+No new bridge is claimed; this only gives downstream statements a stable name
+for the scalar already present in `wilson_iterConv_normalized_at_one`.
+Verification: `lake env lean Theorem2AreaLaw.lean`, targeted module build,
+axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM
+build passed.
+
 ## review:t3-mirror-stable-plaquette-family
 
 Codex 07:05. Added an abstract mirror-stable-family product theorem to

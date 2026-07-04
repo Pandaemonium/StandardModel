@@ -27,6 +27,9 @@ explicit rather than derived.
 4. `wilson_iterConv_normalized_at_one`: the same raw convolution divided by
    the one-plaquette normalization scalar, whose nonzero proof is supplied by
    positivity of the real Wilson weights.
+5. `wilsonNormalizedGamma` and
+   `wilson_iterConv_normalizedGamma_at_one`: the same normalized iteration with
+   the area-law scalar named explicitly for downstream statements.
 
 ## What this file does NOT prove (explicit, not silently assumed)
 
@@ -78,6 +81,14 @@ separate tree-gauge/ensemble bridge not proved in this file. -/
 noncomputable def wilsonPlaquetteSumC (beta : ℝ)
     (rho : G → Matrix (Fin n) (Fin n) ℂ) : ℂ :=
   ∑ g : G, wilsonLocalWeightC beta rho g
+
+/-- The normalized Wilson fusion scalar appearing in the algebraic area-law
+iteration. This packages the ratio of the representation-specific one-step
+fusion scalar and the one-plaquette normalization scalar. -/
+noncomputable def wilsonNormalizedGamma (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) (R : FDRep ℂ G) : ℂ :=
+  ((∑ g : G, wilsonLocalWeightC beta rho g * R.character g⁻¹) / R.character 1) /
+    wilsonPlaquetteSumC beta rho
 
 /-- The real single-plaquette Wilson normalization scalar is positive: it is a
 nonempty finite sum of positive exponentials. -/
@@ -179,6 +190,21 @@ theorem wilson_iterConv_normalized_at_one (beta : ℝ)
   rw [wilson_iterConv_eigen_at_one beta rho hmul hone R m]
   rw [div_pow]
   ring_nf
+
+/-- Compact named-scalar form of `wilson_iterConv_normalized_at_one`.
+
+The right-hand side is `chi_R(1) * wilsonNormalizedGamma^m`, matching the
+area-law scalar shape while still leaving the ensemble/tree-gauge bridge as a
+separate future theorem. -/
+theorem wilson_iterConv_normalizedGamma_at_one (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (R : FDRep ℂ G) [Simple R] (m : ℕ) :
+    iterConv (wilsonLocalWeightC beta rho) R.character m 1 /
+        wilsonPlaquetteSumC beta rho ^ m =
+      R.character 1 * wilsonNormalizedGamma beta rho R ^ m := by
+  simpa [wilsonNormalizedGamma] using
+    (wilson_iterConv_normalized_at_one (G := G) beta rho hmul hone R m)
 
 end Theorem2AreaLaw
 end GateYM
