@@ -10,7 +10,7 @@ aristotle:
   source_root: none
   prompt: AgentTasks/aristotle-prompts/ym-kp-finite-conclusion-strategy-20260704.prompt.md
   context_pack: AgentTasks/context-packs/ym-kp-finite-conclusion-strategy-20260704-110414.md
-  status: running
+  status: complete+harvested
 ```
 
 ## Target
@@ -70,15 +70,57 @@ Poll 2026-07-04 11:09 local:
 - `aristotle tasks 2427a253... --limit 10`: task `08da7500...` is
   `IN_PROGRESS`.
 
+Poll/harvest 2026-07-04 11:23 local:
+
+- `aristotle tasks 2427a253... --limit 10`: task `08da7500...` is
+  `COMPLETE`.
+- `aristotle list --limit 5`: project `2427a253...` is `IDLE`.
+- `aristotle show 2427a253...`: delivered
+  `KP_Finite_Conclusion_Strategy.md`; no repository build attempted and
+  `PolymerKPCriterion.lean` left untouched.
+- `aristotle download 2427a253... --destination
+  AgentTasks/aristotle-output/ym-kp-finite-conclusion-strategy-20260704.zip`
+  and `tar -xzf ... -C
+  AgentTasks/aristotle-output/ym-kp-finite-conclusion-strategy-20260704`
+  extracted the report locally.
+
+Extracted report path:
+
+```text
+AgentTasks/aristotle-output/ym-kp-finite-conclusion-strategy-20260704/ym-kp-finite-conclusion-strategy-20260704-project_aristotle/KP_Finite_Conclusion_Strategy.md
+```
+
+## Harvest verdict
+
+Accepted as a strategy and statement-shape verdict, not as proof.
+
+- C1/C2 are supported by the existing frozen shape: bare `PolymerSystem` plus
+  `KPCondition` should suffice for absolute convergence and the per-polymer KP
+  bound, with retained `exp (energyOf)` slack.
+- C3, the exponential distance tail, is not supported by the frozen shape. It
+  requires a metric/pseudometric extension and an explicit energy-distance
+  coercivity hypothesis, or a stronger distance-weighted KP condition.
+- Cluster representation should be ordered: `n : Nat` and `Fin n -> Gamma`,
+  with the incompatibility graph on positions, not values. This keeps repeated
+  polymers available and avoids quotient bookkeeping.
+- Use an abstract `ClusterCoeffData` interface first: coefficient, vanishing on
+  disconnected clusters, and a tree-graph bound. Define/prove exact
+  Mayer/Ursell coefficients only after that interface is frozen.
+- First proof package after statement freeze should be finite tree-graph /
+  spanning-tree-count infrastructure, not the whole KP convergence theorem.
+
+Q6 is therefore strategy-returned but not statement-frozen. Next required step:
+post exact Lean signatures in `review:q6-kp-freeze` and get cross-review before
+creating or editing `PolymerKPConclusion.lean`.
+
 ## Harvest checklist
 
-1. Record project id and task id in this note and in
+1. DONE: Record project id and task id in this note and in
    `AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md`.
-2. When complete, download/extract under
-   `AgentTasks/aristotle-output/<project-id>/`.
-3. Read `KP_Finite_Conclusion_Strategy.md`; do not treat it as proof.
-4. Post the statement-shape verdict in `DISCUSSION.md` under
+2. DONE: Download/extract under `AgentTasks/aristotle-output/...`.
+3. DONE: Read `KP_Finite_Conclusion_Strategy.md`; not treated as proof.
+4. DONE: Post the statement-shape verdict in `DISCUSSION.md` under
    `idea:q6-kp-statement-shape`.
-5. Only then freeze or edit `PolymerKPConclusion.lean` /
+5. PENDING: Freeze or edit `PolymerKPConclusion.lean` /
    `PolymerKPCriterion.lean`, with cross-review before claiming Q6 statement
    freeze.

@@ -15,7 +15,7 @@ section 14 (Q-items).
 | T3 D12 sector decomposition | Q3 | baseline-done-gated-by-T2 | - | PhysicsSM/Draft/NullEdge/GateYM/FluxSector*.lean, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | magnetic Z2 support/projection layer landed; electric/center-shift spine plus concrete Z2 electric projections and abstract shift-invariant kernel preservation landed; actual Q2 transfer-matrix instantiation waits on T2 |
 | T4 harvest unitarizability | Q4 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FDRepUnitarizable.lean, WilsonVacuumDominance.lean | d4a9bd1f harvested + integrated; unconditional corollaries added |
 | T5 eigenvalue reality/ordering | Q5 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FusionTransferSpectrum.lean, WilsonVacuumDominance.lean | CLOSED (7c2b2c3): character_inv_eq_conj (unconditional), wilsonNormalizedGamma_conj_eq_self (reality), wilsonNormalizedGamma_re_mem_Icc (gamma.re in [-1,1]) |
-| T6 KP finite conclusion | Q6 | waiting-aristotle-codex | codex | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean | strategy job `2427a253` running; do not freeze Lean statement until returned + cross-reviewed |
+| T6 KP finite conclusion | Q6 | review-requested-codex | - | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | review:q6-kp-freeze opened; no Lean freeze until cross-review accepts/amends exact signatures |
 | T7 strong-coupling polymer map | Q7 | open | - | PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymer*.lean | statement layer |
 | T8 exponential clustering | Q8 | open | - | (after T6/T7) | gated |
 | T9 cyclicity prerequisite | Q9 | open | - | (statement file only) | stretch |
@@ -31,7 +31,7 @@ section 14 (Q-items).
 | project id | name | rung | status | owner | notes |
 |-----------|------|------|--------|-------|-------|
 | d4a9bd1f | ym-gap-unitarizability | Q4 | COMPLETE+HARVESTED+INTEGRATED | closed | task 955405d9; integrated as FDRepUnitarizable.lean; see task note for full harvest record |
-| 2427a253 | ym-kp-finite-conclusion-strategy-20260704 | Q6 | RUNNING | codex/T6 | task 08da7500 IN_PROGRESS at 1.11:09; strategy/report job for minimal finite KP conclusion package + lemma DAG; task note `AgentTasks/ym-kp-finite-conclusion-strategy-aristotle-2026-07-04.md` |
+| 2427a253 | ym-kp-finite-conclusion-strategy-20260704 | Q6 | COMPLETE+HARVESTED | codex/T6 | task 08da7500 complete; report says bare KP supports convergence but not distance tail; task note `AgentTasks/ym-kp-finite-conclusion-strategy-aristotle-2026-07-04.md` |
 | 1d9b5b19 | ym1-treegauge-rect | Q-done | COMPLETE+INTEGRATED | closed | RectTreeGauge.lean |
 | 3435c7a3 | ym1-fusion-2dexact v2 | done | COMPLETE+INTEGRATED | closed | historical |
 | bf525f23 / 8c4d10be | (non-YM audits) | - | not ours | - | do not touch |
@@ -71,3 +71,5 @@ section 14 (Q-items).
 1.11:17 codex T12 logged RP/KP source checkpoint, Neo4j pre-add misses, Fernandez-Procacci dry-run `would-add`, and blocked Zotero ingest path; T12 released, next claim T14 oracle fixture unless T6 Aristotle returns first.
 1.11:20 codex T14 claimed oracle fixture lane while T6 remains RUNNING; next inspect `validate_lgt_core.py` and add the smallest v0.3 convention-sensitive check that can be verified locally.
 1.11:21 codex T14 added v0.3 Z3 RP-KER guard: correct `chi(a*b^{-1})` mirror kernel Hermitian PSD + nonnegative form, no-inverse variant non-Hermitian with complex witness; `python Scripts/oracle/validate_lgt_core.py` green 40/40; T14 released pending later fusion/KP fixtures.
+1.11:24 codex T6 harvested Aristotle strategy report: C1/C2 convergence supported by bare KP, C3 tail needs metric + energy-distance coercivity, cluster encoding ordered `Fin n -> Gamma`, coefficient abstracted by `ClusterCoeffData`; next post exact freeze review before any Lean statement file.
+1.11:26 codex T6 opened `review:q6-kp-freeze` with proposed signatures for `PolymerKPConclusion.lean`; awaiting cross-review before creating or editing any Q6 Lean statement file.

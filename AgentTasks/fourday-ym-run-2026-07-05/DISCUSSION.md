@@ -142,6 +142,154 @@ Submitted 1.11:08 as Aristotle project
 `2427a253-ccb7-42d4-bd61-754da4ea5b93`, task
 `08da7500-9a84-42e0-af32-8f11898547c1`; first task status was `QUEUED`.
 
+Codex 1.11:24 ARISTOTLE RETURNED - ACCEPTED AS STATEMENT-SHAPE VERDICT,
+NOT PROOF:
+
+Report artifact:
+`AgentTasks/aristotle-output/ym-kp-finite-conclusion-strategy-20260704/ym-kp-finite-conclusion-strategy-20260704-project_aristotle/KP_Finite_Conclusion_Strategy.md`
+(local ignored output); permanent summary also in
+`AgentTasks/ym-kp-finite-conclusion-strategy-aristotle-2026-07-04.md`.
+
+Key decisions for freeze:
+
+- Split Q6 into C1/C2/C3. C1 absolute convergence and C2 per-polymer KP
+  convergence bound are supported by bare `PolymerSystem` + `KPCondition`.
+  No extra hypotheses should be added for those.
+- C3 exponential distance tail is NOT supported by the frozen shape. It is
+  not even statable without distance data, and bare KP gives size/energy
+  control rather than distance decay. Add a metric/pseudometric extension plus
+  an explicit energy-distance coercivity hypothesis, or use a stronger
+  distance-weighted KP condition.
+- Use ordered clusters `n : Nat` plus `Fin n -> Gamma`, with the
+  incompatibility `SimpleGraph` on index positions. Repeated polymers remain
+  representable; do not quotient by multiset/counts at statement-freeze time.
+- Do not define the exact Mayer/Ursell coefficient first. Freeze an abstract
+  `ClusterCoeffData` interface with coefficient, vanishing off disconnected
+  clusters, and a tree-graph bound; prove/link the concrete Ursell coefficient
+  later.
+- First proof package after freeze should target finite tree-graph /
+  spanning-tree-count infrastructure, not the full KP convergence theorem.
+
+Cross-review gate:
+
+Before creating `PolymerKPConclusion.lean`, open/answer a
+`review:q6-kp-freeze` thread with the exact Lean signatures. Required question:
+does the statement file faithfully separate the supported KP theorem from the
+extra geometric tail hypothesis? Until that review lands, Q6 is
+strategy-returned but not statement-frozen.
+
+## review:q6-kp-freeze (opened 1.11:26 codex)
+
+Verdict requested before any Lean file is created. The proposed freeze follows
+the Aristotle strategy report: `ClusterCoeffData` abstracts the tree-graph-bound
+input, and the distance tail carries an explicit coercivity hypothesis.
+
+Candidate Lean-facing shape, with bodies intentionally omitted until review:
+
+```lean
+import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
+
+namespace PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+
+open PolymerKPCriterion
+
+variable {Gamma : Type*} [Fintype Gamma] [DecidableEq Gamma]
+
+structure Cluster (S : PolymerSystem Gamma) where
+  n : Nat
+  poly : Fin n -> Gamma
+
+def Cluster.graph (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (X : Cluster S) :
+    SimpleGraph (Fin X.n) := ...
+
+def Cluster.Connected (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (X : Cluster S) : Prop :=
+  (X.graph S hdec).Connected
+
+def Cluster.Touches (S : PolymerSystem Gamma) (X : Cluster S) (g0 : Gamma) : Prop :=
+  exists i : Fin X.n, X.poly i = g0
+
+noncomputable def Cluster.absWeight (S : PolymerSystem Gamma) (X : Cluster S) : Real :=
+  prod i : Fin X.n, |S.weight (X.poly i)|
+
+noncomputable def Cluster.energyOf (S : PolymerSystem Gamma) (X : Cluster S) : Real :=
+  sum i : Fin X.n, S.energy (X.poly i)
+
+noncomputable def spanningTreeCount (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (X : Cluster S) : Nat := ...
+
+structure ClusterCoeffData (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) where
+  coeff : Cluster S -> Real
+  coeff_disconnected :
+    forall X : Cluster S, not (X.Connected S hdec) -> coeff X = 0
+  treeGraphBound :
+    forall X : Cluster S,
+      |coeff X| * (Nat.factorial X.n : Real)
+        <= (spanningTreeCount S hdec X : Real)
+
+theorem kp_cluster_summable
+    (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (D : ClusterCoeffData S hdec)
+    (hKP : KPCondition S hdec) (g0 : Gamma) :
+    Summable (fun X : {X : Cluster S // X.Connected S hdec /\ X.Touches S g0} =>
+      |D.coeff X.1| * X.1.absWeight S) := ...
+
+theorem kp_convergence_bound
+    (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (D : ClusterCoeffData S hdec)
+    (hKP : KPCondition S hdec) (g0 : Gamma) :
+    tsum (fun X : {X : Cluster S // X.Connected S hdec /\ X.Touches S g0} =>
+        |D.coeff X.1| * X.1.absWeight S * Real.exp (X.1.energyOf S))
+      <= S.energy g0 := ...
+
+structure MetricPolymerSystem (Gamma : Type*) [Fintype Gamma]
+    extends PolymerSystem Gamma where
+  dist : Gamma -> Gamma -> Real
+  dist_nonneg : forall g h, 0 <= dist g h
+  dist_comm : forall g h, dist g h = dist h g
+  dist_triangle : forall g h k, dist g k <= dist g h + dist h k
+
+def Cluster.ReachesFrom (M : MetricPolymerSystem Gamma)
+    (X : Cluster M.toPolymerSystem) (g0 : Gamma) (R : Real) : Prop :=
+  X.Touches M.toPolymerSystem g0 /\
+    exists i : Fin X.n, R <= M.dist g0 (X.poly i)
+
+theorem kp_tail_bound
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (hKP : KPCondition M.toPolymerSystem hdec)
+    (m : Real) (hm : 0 < m)
+    (hcoerce : forall (X : Cluster M.toPolymerSystem),
+        X.Connected M.toPolymerSystem hdec ->
+        forall g0 : Gamma, X.Touches M.toPolymerSystem g0 ->
+        forall i : Fin X.n, m * M.dist g0 (X.poly i)
+          <= X.energyOf M.toPolymerSystem)
+    (g0 : Gamma) (R : Real) (hR : 0 <= R) :
+    tsum (fun X : {X : Cluster M.toPolymerSystem //
+              X.Connected M.toPolymerSystem hdec /\ X.ReachesFrom M g0 R} =>
+        |D.coeff X.1| * X.1.absWeight M.toPolymerSystem)
+      <= M.energy g0 * Real.exp (-(m * R)) := ...
+```
+
+Review questions:
+
+- What changes a theorem target? In particular, should C3 use this
+  theorem-level `hcoerce`, or should a distance-weighted KP condition be the
+  primary tail hypothesis?
+- What would demote the claim? Candidate demotions: the C2 retained
+  `exp(energyOf)` slack is too strong for KP86/FP07; `ClusterCoeffData` has the
+  wrong factorial/normalization; or ordered clusters with repetitions are
+  semantically mismatched for the first freeze.
+- Most ambitious defensible next step: after review, create
+  `PolymerKPConclusion.lean` with this statement layer and documented handoff
+  bodies only, then send the first proof package for `spanningTreeCount` /
+  tree-graph infrastructure.
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session
