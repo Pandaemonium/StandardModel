@@ -128,6 +128,37 @@ theorem sectorProjection_applyTransfer_eq_self [DecidableEq Label] [Fintype Conf
   sectorProjection_eq_self_of_supported S target (applyTransfer K psi)
     (supportedInSector_applyTransfer S K target psi hK hpsi)
 
+/-- A label-preserving finite transfer kernel commutes with the diagonal
+projection onto each sector. -/
+theorem sectorProjection_applyTransfer_commute [DecidableEq Label] [Fintype Config]
+    (S : SectorData Config Label) (K : Config -> Config -> Complex)
+    (target : Label) (psi : Config -> Complex)
+    (hK : KernelPreservesLabels S K) :
+    sectorProjection S target (applyTransfer K psi) =
+      applyTransfer K (sectorProjection S target psi) := by
+  funext x
+  unfold sectorProjection applyTransfer
+  by_cases hx : S.label x = target
+  · simp only [hx, ↓reduceIte]
+    apply Finset.sum_congr rfl
+    intro y _hy
+    by_cases hy : S.label y = target
+    · simp [hy]
+    · have hdiff : S.label x ≠ S.label y := by
+        intro hxy
+        exact hy (hxy.symm.trans hx)
+      simp [hy, hK x y hdiff]
+  · simp only [hx, ↓reduceIte]
+    symm
+    apply Finset.sum_eq_zero
+    intro y _hy
+    by_cases hy : S.label y = target
+    · have hdiff : S.label x ≠ S.label y := by
+        intro hxy
+        exact hx (hxy.trans hy)
+      simp [hy, hK x y hdiff]
+    · simp [hy]
+
 end SectorData
 
 end FluxSectorGeneral

@@ -1,4 +1,5 @@
 import Mathlib
+import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
 
@@ -13,12 +14,15 @@ the file is deliberately narrow:
 * build the trivial-flux clause into the existing `SymmetrySector` API;
 * distinguish the global flux gap from the local/glueball gap in Lean names;
 * record the abstract preservation lemma needed by later transfer and local
-  plaquette-algebra statements.
+  plaquette-algebra statements;
+* expose the diagonal sector projection and prove that any kernel with no
+  matrix entries between different winding labels preserves sectors and
+  commutes with the projection.
 
 It does not construct the transfer matrix, prove a spectral theorem, or claim
 that the local gap is positive. The concrete winding-cycle holonomy
-realization starts here at the Bool-array level; the transfer-kernel
-preservation theorem is a successor task.
+realization starts here at the Bool-array level; the Q2 transfer-matrix
+construction is a successor task.
 
 Provenance: `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`, section 14,
 Q3, and `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`,
@@ -179,6 +183,7 @@ by horizontal and vertical link bits. `hLink i j` is the link from
 structure TorusLinkField (Lx Ly : Nat) where
   hLink : Fin Lx -> Fin Ly -> Bool
   vLink : Fin Lx -> Fin Ly -> Bool
+deriving Fintype
 
 /-- Multiplicative Z2 link factors for updating a torus link field. A later
 file can instantiate these factors as vertex-gauge coboundaries or local
@@ -364,6 +369,35 @@ theorem hasTrivialWinding_applyVertexGauge (hLx : 0 < Lx) (hLy : 0 < Ly)
   unfold HasTrivialWinding
   rw [windingLabel_applyVertexGauge hLx hLy gamma U]
 
+/-! ## Sector projections and label-preserving transfer kernels -/
+
+/-- The concrete winding-label sector data for Z2 torus link fields. -/
+def windingSectorData (hLx : 0 < Lx) (hLy : 0 < Ly) :
+    FluxSectorGeneral.SectorData (TorusLinkField Lx Ly) FluxLabel where
+  label := windingLabel hLx hLy
+
+/-- The diagonal projection onto a concrete Z2 winding-flux sector. -/
+def windingSectorProjection (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex) :
+    TorusLinkField Lx Ly -> Complex :=
+  FluxSectorGeneral.SectorData.sectorProjection
+    (windingSectorData hLx hLy) label psi
+
+/-- A finite kernel on Z2 torus link fields preserves winding sectors when
+it has no matrix entry between fields with different winding labels. -/
+def WindingKernelPreservesLabels (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex) : Prop :=
+  FluxSectorGeneral.SectorData.KernelPreservesLabels
+    (windingSectorData hLx hLy) K
+
+/-- The finite transfer action of an abstract kernel on Z2 torus
+wavefunctions. This is not yet a construction of the Q2 transfer matrix. -/
+def applyWindingTransfer
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex)
+    (psi : TorusLinkField Lx Ly -> Complex) :
+    TorusLinkField Lx Ly -> Complex :=
+  FluxSectorGeneral.SectorData.applyTransfer K psi
+
 /-! ## Diagonal local-observable support preservation -/
 
 /-- A wavefunction on concrete Z2 torus link fields is supported in a named
@@ -406,6 +440,61 @@ theorem supportedInTrivialWinding_multiplyObservable
     (hpsi : SupportedInTrivialWinding hLx hLy psi) :
     SupportedInTrivialWinding hLx hLy (multiplyObservable O psi) :=
   supportedInFlux_multiplyObservable hLx hLy FluxLabel.trivial O psi hpsi
+
+/-- Projecting onto a winding sector produces a wavefunction supported in
+that sector. -/
+theorem supportedInFlux_windingSectorProjection
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex) :
+    SupportedInFlux hLx hLy label
+      (windingSectorProjection hLx hLy label psi) :=
+  FluxSectorGeneral.SectorData.supportedInSector_sectorProjection
+    (windingSectorData hLx hLy) label psi
+
+/-- If a wavefunction is already supported in a winding sector, projecting
+onto that sector leaves it unchanged. -/
+theorem windingSectorProjection_eq_self_of_supportedInFlux
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex)
+    (hpsi : SupportedInFlux hLx hLy label psi) :
+    windingSectorProjection hLx hLy label psi = psi :=
+  FluxSectorGeneral.SectorData.sectorProjection_eq_self_of_supported
+    (windingSectorData hLx hLy) label psi hpsi
+
+/-- A winding-label-preserving finite kernel maps sector-supported
+wavefunctions back into the same concrete Z2 winding sector. -/
+theorem supportedInFlux_applyWindingTransfer
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex)
+    (hK : WindingKernelPreservesLabels hLx hLy K)
+    (hpsi : SupportedInFlux hLx hLy label psi) :
+    SupportedInFlux hLx hLy label (applyWindingTransfer K psi) :=
+  FluxSectorGeneral.SectorData.supportedInSector_applyTransfer
+    (windingSectorData hLx hLy) K label psi hK hpsi
+
+/-- A winding-label-preserving finite kernel commutes with the diagonal
+projection onto each concrete Z2 winding sector. -/
+theorem windingSectorProjection_applyWindingTransfer_commute
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex)
+    (hK : WindingKernelPreservesLabels hLx hLy K) :
+    windingSectorProjection hLx hLy label (applyWindingTransfer K psi) =
+      applyWindingTransfer K (windingSectorProjection hLx hLy label psi) :=
+  FluxSectorGeneral.SectorData.sectorProjection_applyTransfer_commute
+    (windingSectorData hLx hLy) K label psi hK
+
+/-- A winding-label-preserving finite kernel preserves support in the D12
+trivial winding-flux sector. -/
+theorem supportedInTrivialWinding_applyWindingTransfer
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex)
+    (psi : TorusLinkField Lx Ly -> Complex)
+    (hK : WindingKernelPreservesLabels hLx hLy K)
+    (hpsi : SupportedInTrivialWinding hLx hLy psi) :
+    SupportedInTrivialWinding hLx hLy (applyWindingTransfer K psi) :=
+  supportedInFlux_applyWindingTransfer hLx hLy K FluxLabel.trivial psi hK hpsi
 
 end TorusLinkField
 

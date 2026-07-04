@@ -220,17 +220,19 @@ nonnegativity/positivity lemmas; no transfer matrix construction yet);
 `FluxSectorGeneral` (T3/Q3 abstract finite sector-support API: sector label
 maps, sector support predicates, diagonal sector projections, label-preserving
 finite transfer kernels, and the theorem that such kernels preserve
-sector-supported wavefunctions. This is definition/support bookkeeping only:
-no physical finite-G flux labels, transfer-matrix construction, or spectral
-claim is made here);
+sector-supported wavefunctions and commute with sector projections. This is
+definition/support bookkeeping only: no physical finite-G flux labels,
+transfer-matrix construction, or spectral claim is made here);
 `FluxSectorZ2` (T3/Q3 first Z2-torus sector layer: names the two winding
 flux bits, builds the trivial-flux predicate into the D12
 `SymmetrySector`, records abstract quantum-number preservation lemmas, and
 separates `fluxGap` from `localGlueballGap`; it also starts the concrete
 Bool-array base-cycle winding-label realization, proves concrete Z2
 vertex-gauge updates preserve winding labels, and proves diagonal local
-observable multiplication preserves winding-sector support; transfer-kernel
-instantiation remains future work);
+observable multiplication preserves winding-sector support. The concrete Z2
+projection/transfer wrapper proves that any winding-label-preserving finite
+kernel preserves sectors and commutes with the winding-sector projection; the
+actual Q2 transfer-kernel construction remains future work);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
