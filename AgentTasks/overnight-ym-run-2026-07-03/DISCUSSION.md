@@ -1082,9 +1082,10 @@ chi_R(1)^n * iterConv w chi_R n A
 ```
 
 This avoids introducing a denominator or nonzero-dimension side condition while
-still capturing the repeated-fusion algebra needed by Theorem 2. Verification:
-direct file check, targeted module build, axiom audit
-`[propext, Classical.choice, Quot.sound]`, and aggregate GateYM build passed.
-Remaining claim boundary is unchanged but smaller: Wilson/heat-kernel
-specialization, trivial-representation normalization/prefactor, and tree-gauge
+still capturing the repeated-fusion algebra needed by Theorem 2, and it
+complements the concrete Wilson-weight `Theorem2AreaLaw.lean` iteration
+committed as `44fc036`. Verification: direct file check, targeted module
+build, axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate
+GateYM build passed. Remaining claim boundary: the normalized expectation
+bridge, trivial-representation partition prefactor, and tree-gauge
 independence are still separate work.
