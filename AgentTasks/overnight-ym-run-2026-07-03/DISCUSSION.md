@@ -1072,3 +1072,19 @@ for `lemma2a_fusion_convolution` all passed; axiom footprint is
 the one-step finite-group character fusion theorem, not full finite-G Theorem
 2. The next assembly theorem still has to connect it to `iterConv_eigen` /
 `iterConv_eigen_at_one` and any tree-gauge/prefactor normalization layer.
+
+**Codex follow-up (06:35):** added `iterConv_character_fusion_cross`, a
+division-free iteration of Lemma 2a:
+
+```text
+chi_R(1)^n * iterConv w chi_R n A
+  = (sum_g w(g) chi_R(g^-1))^n * chi_R(A).
+```
+
+This avoids introducing a denominator or nonzero-dimension side condition while
+still capturing the repeated-fusion algebra needed by Theorem 2. Verification:
+direct file check, targeted module build, axiom audit
+`[propext, Classical.choice, Quot.sound]`, and aggregate GateYM build passed.
+Remaining claim boundary is unchanged but smaller: Wilson/heat-kernel
+specialization, trivial-representation normalization/prefactor, and tree-gauge
+independence are still separate work.

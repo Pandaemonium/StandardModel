@@ -30,8 +30,9 @@ representation; tracing it and its product with `rho(A)` gives the convolution
 identity.
 
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`.
-Claim label: **finite identity** (finite-group character fusion and abstract
-convolution iteration core for the 2D exact solution).
+Claim label: **finite identity** (finite-group character fusion, its
+division-free iteration, and the abstract convolution iteration core for the 2D
+exact solution).
 -/
 
 noncomputable section
@@ -209,6 +210,64 @@ one more time. -/
 def iterConv (w chi : G → ℂ) : ℕ → G → ℂ
   | 0, A => chi A
   | n + 1, A => ∑ h : G, w h * iterConv w chi n (h⁻¹ * A)
+
+/-- Division-free iteration of Lemma 2a.
+
+Let `d = chi_R(1)` and `s = sum_g w(g) chi_R(g^{-1})`.  Lemma 2a says
+`d * (T_w chi_R)(A) = s * chi_R(A)`.  Iterating this identity gives
+`d^n * T_w^n chi_R(A) = s^n * chi_R(A)`.
+
+This is the finite-group character-fusion part of Theorem 2 before choosing a
+normalization convention that divides by `d` and by the scalar attached to the
+trivial representation. -/
+theorem iterConv_character_fusion_cross
+    (R : FDRep ℂ G) [Simple R] (w : G → ℂ) (hw : IsClassFunction w) :
+    ∀ (n : ℕ) (A : G),
+      R.character 1 ^ n * iterConv w R.character n A =
+        (∑ g : G, w g * R.character g⁻¹) ^ n * R.character A := by
+  intro n
+  induction n with
+  | zero =>
+      intro A
+      simp [iterConv]
+  | succ n ih =>
+      intro A
+      rw [iterConv]
+      calc
+        R.character 1 ^ (n + 1) *
+            (∑ h : G, w h * iterConv w R.character n (h⁻¹ * A))
+            =
+          R.character 1 *
+            (∑ h : G, w h *
+              (R.character 1 ^ n * iterConv w R.character n (h⁻¹ * A))) := by
+                rw [Finset.mul_sum, Finset.mul_sum]
+                refine Finset.sum_congr rfl ?_
+                intro h _hh
+                rw [pow_succ]
+                ring
+        _ =
+          R.character 1 *
+            (∑ h : G, w h *
+              ((∑ g : G, w g * R.character g⁻¹) ^ n * R.character (h⁻¹ * A))) := by
+                congr 1
+                refine Finset.sum_congr rfl ?_
+                intro h _hh
+                rw [ih (h⁻¹ * A)]
+        _ =
+          (∑ g : G, w g * R.character g⁻¹) ^ n *
+            (R.character 1 *
+              (∑ h : G, w h * R.character (h⁻¹ * A))) := by
+                rw [Finset.mul_sum, Finset.mul_sum, Finset.mul_sum]
+                refine Finset.sum_congr rfl ?_
+                intro h _hh
+                ring
+        _ =
+          (∑ g : G, w g * R.character g⁻¹) ^ n *
+            ((∑ g : G, w g * R.character g⁻¹) * R.character A) := by
+                rw [lemma2a_fusion_convolution R w hw A]
+        _ = (∑ g : G, w g * R.character g⁻¹) ^ (n + 1) * R.character A := by
+                rw [pow_succ]
+                ring
 
 /-- If `chi` is an eigenfunction of the convolution operator with eigenvalue
 `c`, then `n` independent plaquette convolutions multiply `chi` by `c^n`.
