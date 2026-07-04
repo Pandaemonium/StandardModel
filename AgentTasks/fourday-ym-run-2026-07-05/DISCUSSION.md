@@ -301,6 +301,35 @@ check, aggregate GateYM build, placeholder scan, and axiom audit
 finite block-kernel/sector infrastructure, not a physical transfer matrix,
 Hamiltonian, concrete torus/Z2 Wilson-transfer invariance, or gap claim.
 
+Follow-up concrete adapter 1.15:36 codex:
+
+I added `TransferHilbertZ2Electric.lean`, which instantiates the abstract
+block-shift bridge against the concrete Z2 base electric shifts from
+`FluxSectorZ2.lean`.
+
+What landed:
+
+- `BaseElectricShift` with generators `x` and `y`;
+- `baseElectricShiftSystem`, the `ShiftSystem` on concrete Z2 torus link
+  fields using `xShiftEquiv (baseX hLx)` and `yShiftEquiv (baseY hLy)`;
+- `plaquetteBitField_shiftConfig`, proving base electric shifts preserve the
+  full plaquette-bit field;
+- `plaquetteTripleWeight` and
+  `plaquetteTripleWeight_blockWeightInvariant`, proving any block weight
+  factoring through the positive/cut/mirror plaquette-bit fields is invariant
+  under simultaneous base shifts;
+- `rpBlockMatrix_commutes_baseElectricShifts` and
+  `shiftOp_preserves_rpHilbertSpace_z2PlaquetteBlock`, applying
+  `TransferHilbertBlockShift` to get block-matrix commutation and finite OS
+  range preservation.
+
+Verification: direct file check, targeted module build, aggregator file check,
+aggregate GateYM build, placeholder scan, and axiom audit all passed.  The
+headline commutation/range-preservation theorems have the standard footprint
+`[propext, Classical.choice, Quot.sound]`.  Scope remains finite identity /
+adapter only: no physical transfer matrix, Hamiltonian, Wilson slab kernel, or
+gap claim.
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:

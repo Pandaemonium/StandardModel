@@ -35,6 +35,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlockShift
+import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.CyclicityPrereq
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
@@ -277,7 +278,8 @@ observables. It also proves the four-term electric-sector projections land in
 the requested sectors, are idempotent, and sum to the identity over the four
 Z2 electric sectors; any finite kernel invariant under the base center shifts
 preserves every electric sector by finite reindexing. The actual Q2 transfer
-matrix construction remains future work);
+matrix construction remains future work, but `TransferHilbertZ2Electric` now
+connects the concrete Z2 shifts to the block OS range model);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
@@ -362,6 +364,13 @@ invariance, matrix commutation with block shifts, and preservation of
 `rpHilbertSpace (rpBlockMatrix W)` under those shifts. This is still an
 abstract finite algebraic bridge for later torus/Z2 instantiation, not a
 physical transfer matrix, Hamiltonian, or spectral-gap theorem);
+`TransferHilbertZ2Electric` (YM3/Q2-Q3 concrete adapter: the base Z2 electric
+center-shift generators from `FluxSectorZ2` form the `ShiftSystem` used by
+`TransferHilbertBlockShift`; any block weight depending on positive, cut, and
+mirror configurations only through their full plaquette-bit fields is invariant
+under simultaneous base shifts, so its `rpBlockMatrix` commutes with the block
+shifts and the finite OS range is preserved. This is still a finite identity,
+not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and

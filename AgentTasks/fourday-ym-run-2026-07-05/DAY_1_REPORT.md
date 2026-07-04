@@ -48,8 +48,13 @@ returned.
   product shifts on block indices `C x A`, simultaneous invariance of
   `W a c b`, block-matrix shift invariance/commutation, and preservation of
   `rpHilbertSpace (rpBlockMatrix W)` under those shifts.  Still abstract:
-  no physical transfer matrix, concrete torus/Z2 Wilson-transfer
-  instantiation, or gap claim.
+  no physical transfer matrix, concrete Wilson-transfer instantiation, or gap
+  claim.
+- `TransferHilbertZ2Electric.lean`: Q2/Q3 concrete adapter; instantiates the
+  block-shift system with `FluxSectorZ2`'s base electric shifts and proves
+  plaquette-bit-field block weights commute with those shifts, preserving the
+  finite OS range.  This closes the finite Z2 adapter layer, still without a
+  physical transfer matrix or gap claim.
 - `RectBoundaryLasso.lean`: tree-slice lasso identity and `chi` corollary
   proved from Aristotle `93758b7f`: on the comb tree slice, the full rectangle
   boundary holonomy equals the reversed row-major ordered product of plaquette
@@ -115,8 +120,10 @@ integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
 `cutKernel` block matrix and pairing/reflection-form bridge, while
 `TransferHilbertBlockShift.lean` proves the abstract block-shift covariance
-bridge needed by Q3.
-T3 baseline-done-gated-by-T2. T6
+bridge needed by Q3, and `TransferHilbertZ2Electric.lean` instantiates that
+bridge against the concrete Z2 base electric shifts for plaquette-bit-field
+block weights.
+T3 baseline-done-with-z2-adapter. T6
 statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose remains parked and abstract KP
 C1 is reduced to a partial-sum crux while old bare C2 is refuted without
@@ -209,9 +216,9 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
    volume-uniform KP from the small-torus oracle rows.
 2. Red-team the new T1 zero-cut ensemble-identification claim, then move Q1
    toward the actual cut-plaquette kernel target.
-3. Instantiate the integrated `TransferHilbertBlockShift.lean` layer against
-   the torus/Z2 center-shift sector language; do not claim a physical transfer
-   matrix.
+3. Push Q2/Q3 from the new `TransferHilbertZ2Electric.lean` adapter toward a
+   genuine Wilson block-weight/transfer-kernel instance; do not claim a
+   physical transfer matrix prematurely.
 4. Rework Q6/Q8 follow-ups around the corrected self-incompatible C2 target;
    keep the concrete Penrose theorem parked unless a focused proof package is
    ready.
