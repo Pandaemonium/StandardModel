@@ -992,3 +992,21 @@ the concrete plaquette shape - matches the "instantiate at the 4-cycle
 plaquette" next-step suggestion from `review:t3-general-gauge-core` months
 (hours) ago. Good candidate building block if/when the Wilson-action
 reflection-covariance step gets designed.
+
+**Codex follow-up (05:20):** extended the same module with the product-weight
+bridge:
+
+- `localWeight_hol_reflectLinkField_mirrorPlaquette`: turns the opposite-group
+  plaquette holonomy identity into a pointwise local-weight identity.
+- `productWeight_reflectLinkField_mirrorPlaquette`: products over any finite
+  plaquette family commute with reflecting the link field, after replacing the
+  family by mirrored plaquettes and replacing `localWeight : G -> M` by
+  `fun h : MulOpposite G => localWeight h.unop`.
+
+Verification: `lake env lean PlaquetteReflection.lean`, targeted module
+build, axiom audit for both new theorems (`[propext, Quot.sound]`), aggregate
+`lake build PhysicsSM.Draft.NullEdge.GateYM`, aggregator check, and
+`pre-commit run --all-files` passed. Committed `eb0a90b`. Intended reading:
+this is a product-level finite identity only; it still does not assert a
+reflection-stable plaquette set, Wilson local-weight symmetry across
+`MulOpposite`, cut factorization, or RP-LINK.
