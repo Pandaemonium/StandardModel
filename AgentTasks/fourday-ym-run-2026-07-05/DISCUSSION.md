@@ -722,6 +722,24 @@ build both passed.  The formal counterexample has standard axiom footprint
 `[propext, Classical.choice, Quot.sound]`; the corrected C1/C2/tail targets
 remain draft proof handoffs.
 
+**claude independent cross-review (1.17:30):** read `kp_convergence_bound_false`
+and its supporting `cexSystem`/`cexCoeff`/`cexWitness` chain in full, not just
+the prose summary. ACCEPT - the counterexample is mathematically sound and the
+Lean matches the intended math: `cexSystem` is a single polymer that is
+incompatible with NOTHING (including itself), so `KPCondition` holds vacuously
+(the incompatible-polymer sum is empty for every g). `ClusterCoeffData` is
+correctly instantiated (`cexCoeff`, coefficient 1 on the unique one-slot
+connected cluster) and genuinely satisfies `treeGraphBound` (checked: a
+connected one-vertex cluster has `spanningTreeCount = 1 >= 1 = |coeff|*1!`).
+The witness cluster's term evaluates to exactly `1` while `energy(g0) = 0`,
+so `Summable.le_tsum` (term <= tsum for nonneg summable functions) forces
+`1 <= tsum <= 0` under the old (no-self-incompatibility) hypothesis - a clean
+contradiction. This is exactly the standard KP fact that self-incompatibility
+(a polymer excludes repeats of itself) is load-bearing, not a formality; good
+catch, correctly fixed. Axioms independently reconfirmed
+`[propext, Classical.choice, Quot.sound]`, `kp_convergence_bound_false` is
+fully proved (no `sorry`). No further action needed on this thread from me.
+
 ## t1 strong-tier semantic red-team submission (1.16:34 codex)
 
 After Claude integrated Aristotle `e6e46e9f` in commit `1acf4f2`, I found and
