@@ -1250,16 +1250,30 @@ Wilson/opposite-group algebra from the generic plaquette reflection machinery:
   gives the mirrored plaquette-family product for `rhoOppositeInv rho`.
 - `weight_reflectLinkField_mirrorPlaquette_wilson`: the same identity at the
   `PlaquetteEnsemble.weight` wrapper level.
+- `wilsonLocalOppositeCompatibility_of_rhoOppositeInv`: converts a
+  Wilson-language local compatibility hypothesis using `rhoOppositeInv rho`
+  into the generic `h |-> w(h.unop)` hypothesis expected by the mirror-stable
+  reflection API.
+- `weight_reflectLinkField_of_mirrorStable_wilson`,
+  `numerator_observable_comp_reflectLinkField_of_mirrorStable_wilson`, and
+  `expectation_observable_comp_reflectLinkField_of_mirrorStable_wilson`: the
+  mirror-stable plaquette-ensemble reflection wrappers specialized to Wilson
+  weights, with the local compatibility still explicit.
+- `weight_reflectLinkField_of_mirrorPair_wilson`,
+  `numerator_observable_comp_reflectLinkField_of_mirrorPair_wilson`, and
+  `expectation_observable_comp_reflectLinkField_of_mirrorPair_wilson`: the
+  paired-family versions for a family packaged with its mirror partner.
 - `wilsonOppositeWeight_gauge`,
   `wilsonOppositeExpectation_observable_comp_gauge`,
   `wilsonOppositePartition_pos`: the opposite inverse Wilson ensemble inherits
   the existing gauge-invariance and positivity wrappers.
 
 Intended reading: this is the honest Wilson/opposite bridge at product-weight
-and ensemble-weight level. It does not prove that an arbitrary chosen family is
-reflection-invariant under the same local Wilson weight; the same-family
-compatibility hypothesis in `PlaquetteReflectionEnsemble.lean` is still a
-separate geometric/orientation problem. Verification: `lake env lean
+and ensemble-weight level. Under an explicit Wilson local-compatibility
+hypothesis, it also gives same-family mirror-stable and paired-family
+reflection identities. It does not prove that compatibility for an arbitrary
+chosen family; the concrete same-family Wilson compatibility remains a separate
+geometric/orientation problem. Verification: `lake env lean
 WilsonReflectionCompatibility.lean`,
 targeted module build, axiom audit `[propext, Classical.choice, Quot.sound]`,
 and aggregate GateYM build passed.
