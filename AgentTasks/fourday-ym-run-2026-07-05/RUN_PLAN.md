@@ -175,27 +175,61 @@ cross-review before new-statement submissions, harvest-first, cancel
 jobs you beat locally, registry always current, and the two-failure park
 rule. The standing one-job rule resumes when the run ends.
 
-**Use the width for more than proofs.** Aristotle is a partner, not just
-a prover - the overnight run's strategy job (`ac230cc8`) and red-team
-(`cb437537`, which caught the TransferPositivity over-claim) were among
-its highest-value returns. Keep roughly 2 of the 8 slots working
-audit/strategy at all times:
+**Use the width for more than proofs - THIS IS UNDERUSED, FIX IT (binding
+update, day 1).** An audit at hour ~3 found ZERO Aristotle jobs running
+against the 8-slot budget, with only one job (the Q6 KP strategy job)
+submitted during the run itself, while multiple `design:`/`review:`
+threads sat waiting on slow peer-to-peer cross-review that Aristotle
+could resolve in parallel. Aristotle is a partner, not just a prover -
+the overnight run's strategy job (`ac230cc8`) and red-team (`cb437537`,
+which caught the TransferPositivity over-claim) were among its
+highest-value returns, and this run has the same eight-slot budget
+sitting idle. The fix is a STANDING RULE, not just aspiration:
 
-- **Grand-strategy reviews** (whole-ladder audits): submit one on day 1
-  (deliverable: sequencing critique of the Q1-Q12 board + the lemma DAG
-  to the YM4 gap + what the run is not seeing) and one at the day-3
-  replan (mid-run course correction against actual progress). Prompt
-  format per `AgentTasks/aristotle-prompts/overnight-ym-ladder-strategy.prompt.md`.
+- **Whenever a `design:` or `review:` thread has a proposed resolution
+  awaiting cross-review, submit an Aristotle audit/strategy job on it
+  IN PARALLEL with peer review, not instead of it.** Do not let a
+  design proposal sit waiting on a single peer's cross-review cycle when
+  a third opinion is one submission away. This applies retroactively:
+  any such thread open right now should get a job today.
+  Rationale: Aristotle
+  cross-review has already SAVED the run real time twice (the Q3
+  Fable/Aristotle-style redesign correcting a false plaquette-flip
+  claim; the Q6 KP strategy job correctly splitting supportable
+  convergence from the unsupportable distance tail) - both of those were
+  themselves audit-style calls, not proofs, and both changed the target
+  before Lean was written.
+- **Grand-strategy reviews** (whole-ladder audits): one on day 1 - THIS
+  IS OVERDUE if not yet submitted; treat it as a same-day priority, not
+  a someday item - (deliverable: sequencing critique of the Q1-Q12
+  board + the lemma DAG to the YM4 gap + what the run is not seeing) and
+  one at the day-3 replan (mid-run course correction against actual
+  progress). Prompt format per
+  `AgentTasks/aristotle-prompts/overnight-ym-ladder-strategy.prompt.md`.
 - **Semantic red-team audits** of every flagship integration (Q1
   RP-LINK, Q2 transfer space, Q3 sector decomposition): the kernel
   checked the proof, the red-team checks the MEANING - over-claim
   scoping, inert hypotheses, convention drift, statement-vs-claim
   mismatch. One audit job per flagship within a day of its integration.
+  This includes DRAFT modules that only reached a baseline tier (e.g.
+  Q1's `doubled_wilson_reflectionForm_nonneg`) - a red-team on a
+  self-scoped-honest baseline can still find something the author missed.
 - **Statement-design jobs** at branch points (Q6 KP shape is the seeded
   example in TASK_DIRECTIONS T6): cheaper than burning proof attempts on
-  a wrongly-shaped statement.
+  a wrongly-shaped statement. Use this proactively for EVERY new design
+  thread, not only ones that stall.
+- **Midday integration-point check (new, binding):** at every midday
+  integration point, before doing anything else, run `aristotle list`
+  and count RUNNING jobs. If fewer than ~4 of 8 slots are in use, that is
+  itself a signal to look across the open `design:`/`review:` threads
+  and the task board for the next audit/strategy/proof submission -
+  treat an empty queue as a finding, not a quiet moment.
 - **Triage** via `aristotle continue --mode ask` on running jobs does
   not consume a slot.
+- Aristotle-for-proofs remains encouraged wherever a proof step is
+  well-specified and Aristotle-sized (per the existing focused-package
+  discipline); the point of this update is ADDING the strategy/audit
+  usage on top, not substituting for proof jobs.
 
 Everything else carries over: focused standalone Mathlib-only packages
 (`Scripts/prepare_aristotle_focused_submission.ps1`, invoked with

@@ -88,11 +88,20 @@ claimed something, take the next open task; the board rules.
 - Aristotle: focused Mathlib-only packages; convention-pin `rfl` lemmas;
   harvest-first; registry current; budget 8 SIMULTANEOUSLY RUNNING YM
   jobs (proof + audit + strategy combined) - no daily submission cap,
-  just never more than 8 running at once. Use the width for more than
-  proofs: keep ~2 slots on audit/strategy work - the day-1 and day-3
-  grand-strategy reviews, a semantic red-team of every flagship
-  integration, and statement-design jobs at branch points (RUN_PLAN
-  Aristotle section has the full list).
+  just never more than 8 running at once. USE IT LIBERALLY, ESPECIALLY
+  AS A STRATEGY/AUDIT AGENT (binding, day-1 update after an early audit
+  found the 8-slot budget sitting idle): whenever a `design:`/`review:`
+  thread has a proposed resolution awaiting cross-review, submit an
+  Aristotle audit job on it IN PARALLEL with peer review - do not let a
+  design sit waiting on a single peer's cycle when a third opinion is
+  one submission away. Check `aristotle list` at every midday
+  integration point; fewer than ~4 of 8 slots running is itself a
+  finding - go looking for the next audit/strategy/proof submission
+  across the open threads and task board. The day-1 grand-strategy
+  whole-ladder audit is a same-day priority if not yet submitted.
+  Proofs remain encouraged wherever a step is Aristotle-sized; this adds
+  the strategy/audit usage on top (RUN_PLAN's Aristotle section has the
+  full list and rationale).
 - Fable calls: YOU own the once-per-2-hours Claude Fable 5 budget -
   `FABLE_CALL_PROTOCOL.md` is binding (taxonomy bar, AMBITION MANDATE,
   packet template, queue in `FABLE_CALLS.md`, post-call obligations).
