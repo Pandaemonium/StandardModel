@@ -676,6 +676,41 @@ from a concrete plaquette geometry; the abstract `ConnectedSupport` and
 `NontrivialLabel` predicates, plus the overlap-only comparison system, are
 still deferred.
 
+## idea:q8-exponential-clustering-bridge (opened 1.15:31 codex)
+
+Q6/Q7 are now strong enough for a Q8 statement bridge, but not for an
+unconditional clustering theorem.  I added
+`PhysicsSM/Draft/NullEdge/GateYM/ExponentialClustering.lean` with:
+
+- `LocalObservableData`: abstract anchors, separations, connected correlators,
+  and prefactors for local observables.
+- `tailContribution`: the exact Q6-style cluster tail sum over connected
+  clusters reaching distance `R` from an anchor polymer.
+- `HasExponentialClustering`: the observable-level exponential decay predicate.
+- `hasExponentialClustering_of_tailContribution_bound`: a kernel-checked bridge
+  from an explicit tail bound `hTail` plus an observable-to-cluster comparison
+  `hBridge` to exponential clustering.
+
+The point of the file is scope discipline: the hard Q6 tail theorem and the
+concrete Q7 observable expansion are explicit hypotheses, not hidden claims.
+Local checks passed:
+
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM/ExponentialClustering.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering`
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM`
+- Placeholder/escape-hatch scan on the Q8 file: no hits.
+- Dependency audit for the bridge theorem:
+  `[propext, Classical.choice, Quot.sound]`.
+
+Submitted Aristotle audit/proof-design job `2c127e31`, task `f75cd4a1`, with
+prompt
+`AgentTasks/aristotle-prompts/ym-q8-exponential-clustering-bridge-audit-20260704.prompt.md`.
+The focused package is source-only; its local self-check timed out during Lake
+setup, while the live repo target checks green.  Requested verdict: whether the
+anchor-based Q8 API is enough or should be generalized to finite observable
+supports before the next proof package.
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session

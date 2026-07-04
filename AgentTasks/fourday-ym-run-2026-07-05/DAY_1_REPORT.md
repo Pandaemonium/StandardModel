@@ -44,6 +44,10 @@ returned.
   `|tanh beta| ^ area` and beta-nonnegative `tanh beta ^ area` weight
   identities, and coefficient-product/weight nonnegativity wrappers.  It
   remains a map layer, not a KP proof.
+- `ExponentialClustering.lean`: Q8 conditional observable bridge from an
+  explicit cluster-tail bound plus observable-to-cluster comparison to
+  exponential clustering.  It is kernel-checked and does not claim the hard Q6
+  tail theorem or a concrete Q7 observable expansion.
 - `MirrorHolonomyConjugation.lean`: Q1/N3 negative result integrated as a
   kernel-checked Lean counterexample from Aristotle `0a46d515`; raw mirror
   holonomy reversal is not generally conjugate to the original plaquette
@@ -60,10 +64,12 @@ COMPLETE+HARVESTED+INTEGRATED), `0a46d515` (Q1 N3 cut-plaquette conjugation,
 COMPLETE+HARVESTED+INTEGRATED as a counterexample), `34d675b8` (Q6
 tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 (Q7 polymer-map audit, COMPLETE+HARVESTED+INTEGRATED), and `788f83b4`
-(Q7 support-indexed-label redesign, COMPLETE+HARVESTED+INTEGRATED). Two near-collisions
+(Q7 support-indexed-label redesign, COMPLETE+HARVESTED+INTEGRATED), and
+`2c127e31` (Q8 exponential-clustering bridge audit, RUNNING). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after Q7 label-redesign harvest: `6f8903cc`, `e6e46e9f`.
+queue after Q8 submission: `2c127e31`; `6f8903cc` and `e6e46e9f` are IDLE
+pending harvest.
 
 ## 4. Board state
 
@@ -75,7 +81,9 @@ tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
 remain. T7 has map-freeze plus both audit harvests done; the support-indexed
 carrier and decidable overlap-or-touch layer are integrated. The next blocker
 is an honest `KPCondition` instantiation carrying an explicit finite KP sum
-bound, plus concrete connected-support/label APIs.
+bound, plus concrete connected-support/label APIs. T8 now has a conditional
+statement bridge and a running Aristotle audit; no unconditional clustering
+claim is made.
 T9 baseline-done. T11 lasso identity integrated; the remaining YM1 gap is the
 ensemble/partition bridge to the full Theorem 2 expectation statement.
 T12/T13 done. T14 v0.3, 44/44 oracle green.
@@ -90,6 +98,10 @@ confirmed the normalization/direct-definition path.
 off-support label function is honest for wrappers but wrong for future KP
 sums. The follow-up support-indexed redesign returned and is integrated, so
 that carrier-level overcount is fixed before any KP sum is stated.
+`idea:q8-exponential-clustering-bridge` opened: accepted local move is a
+conditional observable bridge with the Q6 tail estimate and Q7 observable
+expansion as explicit hypotheses; Aristotle `2c127e31` is auditing whether the
+anchor API should be generalized to finite observable supports.
 `review:fable-q3-flux-sector` findings (R3/R4/R5/R7) accepted and integrated
 by codex. `design:q1-reflection-orientation` - claude's doubled-lattice fix
 after a genuine construction failure on naive uniform-reflection lattices.
@@ -97,12 +109,13 @@ after a genuine construction failure on naive uniform-reflection lattices.
 ## 6. Build and hygiene
 
 Aggregate `GateYM` green through the day; latest post-Q6/Q7/T11 checks,
-including the support-indexed Q7 carrier redesign:
-`lake build PhysicsSM.Draft.NullEdge.GateYM` green (8072 jobs, known existing
+including the support-indexed Q7 carrier redesign and Q8 bridge:
+`lake build PhysicsSM.Draft.NullEdge.GateYM` green (8073 jobs, known existing
 warnings only). Full `lake build` was green earlier in the day (8295 jobs)
 before the latest Q6/Q7/T11 slices, so rerun it at the next day-end or
 promotion checkpoint before making a fresh full-build claim. The Q7 harvest
-also passed a direct placeholder/escape-hatch scan and standard dependency audit.
+and Q8 bridge also passed direct placeholder/escape-hatch scans and standard
+dependency audits.
 Oracle `validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit
 this session.
 
@@ -119,6 +132,8 @@ Q7 still cannot instantiate `KPCondition` from the map layer alone: the
 support-indexed redesign fixed the off-support-label overcount, but an explicit
 finite KP sum bound, concrete connected-support API, and label API are still
 needed before KP/Q8 conclusions.
+Q8 remains conditional: the new bridge proves only that an explicit cluster
+tail estimate and observable expansion imply exponential clustering.
 Fable Q3 call's captured transcript was missing its own Decision verdict
 and R1/R2 (likely log-capture truncation) - flagged, not papered over.
 Primary sources (KP86, OS78) remain paywalled/blocked; relying on
@@ -129,14 +144,16 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
    package with the finite KP sum bound as an explicit hypothesis; do not infer
    volume-uniform KP from the small-torus oracle rows.
-2. Start the next Q6 package: the abstract KP proof package against
+2. Harvest `6f8903cc` (Q2 shift covariance), `e6e46e9f` if Claude wants T1
+   handoff help, and `2c127e31` when the Q8 bridge audit returns.
+3. Start the next Q6 package: the abstract KP proof package against
    `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
    focused proof package is ready.
-3. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition
+4. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition
    bridge to the full Theorem 2 expectation statement.
-4. Redesign T1 strong tier around the `0a46d515` counterexample and finish the
+5. Redesign T1 strong tier around the `0a46d515` counterexample and finish the
    Q2 shift-covariance question before creating a transfer-Hilbert statement
    file.
-5. Keep Aristotle utilization at or above 4/8 slots at the next midday
+6. Keep Aristotle utilization at or above 4/8 slots at the next midday
    integration point per the binding mandate; prefer new design/review
    threads over idle capacity.

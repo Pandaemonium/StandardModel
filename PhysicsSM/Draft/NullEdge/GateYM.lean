@@ -40,6 +40,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
+import PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -364,9 +365,14 @@ explicit. The hard parked theorem is Penrose's concrete tree-graph inequality
 `treeGraphBound_ursell`, not the count definition itself). Not part of the
 default trusted build target; `StrongCouplingPolymerMap` (YM4/T7 statement
 layer: finite plaquette polymers as nonempty connected finite supports with
-nontrivial labels, conservative overlap-or-touching incompatibility, weights as
-products of absolute normalized label coefficients, energy `alpha * area`, and
-the Z2 specialization `|tanh beta| ^ area` pinned to the v0.3 oracle fixture.
-No volume-uniform KP proof or general finite-irrep coefficient map is claimed).
+support-indexed nontrivial labels, conservative overlap-or-touching
+incompatibility, weights as products of absolute normalized label coefficients,
+energy `alpha * area`, and the Z2 specialization `|tanh beta| ^ area` pinned to
+the v0.3 oracle fixture. No volume-uniform KP proof or general finite-irrep
+coefficient map is claimed); `ExponentialClustering` (YM4/T8 statement bridge:
+abstract connected-correlator data, named cluster-tail contribution, and the
+kernel-checked implication from an explicit Q6-style tail bound plus an
+observable-to-cluster bridge to exponential clustering. No concrete plaquette
+geometry, KP proof, or transfer-Hilbert statement is claimed).
 Adding a new YM module? Import it here.
 -/
