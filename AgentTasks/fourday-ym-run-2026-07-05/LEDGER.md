@@ -15,7 +15,7 @@ section 14 (Q-items).
 | T3 D12 sector decomposition | Q3 | baseline-done-gated-by-T2 | - | PhysicsSM/Draft/NullEdge/GateYM/FluxSector*.lean, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | magnetic Z2 support/projection layer landed; electric/center-shift spine plus concrete Z2 electric projections and abstract shift-invariant kernel preservation landed; actual Q2 transfer-matrix instantiation waits on T2 |
 | T4 harvest unitarizability | Q4 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FDRepUnitarizable.lean, WilsonVacuumDominance.lean | d4a9bd1f harvested + integrated; unconditional corollaries added |
 | T5 eigenvalue reality/ordering | Q5 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FusionTransferSpectrum.lean, WilsonVacuumDominance.lean | CLOSED (7c2b2c3): character_inv_eq_conj (unconditional), wilsonNormalizedGamma_conj_eq_self (reality), wilsonNormalizedGamma_re_mem_Icc (gamma.re in [-1,1]) |
-| T6 KP finite conclusion | Q6 | open | - | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean | strategy job first |
+| T6 KP finite conclusion | Q6 | claimed-codex | codex | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean | strategy job first |
 | T7 strong-coupling polymer map | Q7 | open | - | PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymer*.lean | statement layer |
 | T8 exponential clustering | Q8 | open | - | (after T6/T7) | gated |
 | T9 cyclicity prerequisite | Q9 | open | - | (statement file only) | stretch |
@@ -31,6 +31,7 @@ section 14 (Q-items).
 | project id | name | rung | status | owner | notes |
 |-----------|------|------|--------|-------|-------|
 | d4a9bd1f | ym-gap-unitarizability | Q4 | COMPLETE+HARVESTED+INTEGRATED | closed | task 955405d9; integrated as FDRepUnitarizable.lean; see task note for full harvest record |
+| 2427a253 | ym-kp-finite-conclusion-strategy-20260704 | Q6 | RUNNING | codex/T6 | task 08da7500 IN_PROGRESS at 1.11:09; strategy/report job for minimal finite KP conclusion package + lemma DAG; task note `AgentTasks/ym-kp-finite-conclusion-strategy-aristotle-2026-07-04.md` |
 | 1d9b5b19 | ym1-treegauge-rect | Q-done | COMPLETE+INTEGRATED | closed | RectTreeGauge.lean |
 | 3435c7a3 | ym1-fusion-2dexact v2 | done | COMPLETE+INTEGRATED | closed | historical |
 | bf525f23 / 8c4d10be | (non-YM audits) | - | not ours | - | do not touch |
@@ -64,3 +65,5 @@ section 14 (Q-items).
 1.10:42 codex T3 started the concrete Z2 electric center-shift instance in FluxSectorZ2.lean: x/y center shifts, involutivity, plaquette-bit invariance, electric sectors as base-shift eigenconditions, and preservation of those sectors by plaquette-bit observables. Direct file check green; next module/aggregate/full checks, axiom audit, commit.
 1.10:52 codex T3 added concrete Z2 electric-sector projections: x/y shift commutation, four-term projection onto each base-shift character sector, projection lands in sector, idempotence, and sum over the four Bool-labeled electric sectors equals the identity. Direct file check green; next module/aggregate/full checks, axiom audit, commit.
 1.10:57 codex T3 added abstract Z2 electric transfer-kernel preservation: finite kernels invariant under simultaneous base center shifts preserve every concrete Z2 electric sector by reindexing, with trivial-sector corollary; T3 marked baseline-done-gated-by-T2 because actual transfer-matrix instantiation belongs to T2. Direct file check green; next module/aggregate/full checks, axiom audit, commit, then claim T6.
+1.11:00 codex T6 claimed KP finite conclusion lane after parking T3 baseline on T2; next read T6 directions, PolymerKPCriterion, and Aristotle mechanics for the strategy job.
+1.11:08 codex T6 submitted KP finite-conclusion strategy/report job `2427a253` (task `08da7500`) after posting candidate statement signatures in `idea:q6-kp-statement-shape`; next poll once, then prepare only non-freezing local scaffolding while waiting.

@@ -61,6 +61,87 @@ Ursell generality, NO gauge content. One round here, then the strategy
 job, then the proof package. Post candidate Lean signatures in this
 thread before freezing.
 
+Codex candidate statement shape 1.11:08:
+
+This is a candidate surface for the strategy job, not a freeze. I am keeping
+`PolymerKPCriterion.lean` untouched until Aristotle returns and this thread is
+cross-reviewed.
+
+- Cluster encoding candidate:
+
+```lean
+structure PolymerCluster (S : PolymerSystem Gamma)
+    (incompatibleDecidable : forall g h, Decidable (S.incompatible g h)) where
+  n : Nat
+  nonempty : 0 < n
+  member : Fin n -> Gamma
+  connected :
+    (SimpleGraph.fromRel
+      (fun i j : Fin n => i ≠ j /\ S.incompatible (member i) (member j))).Connected
+```
+
+- Basic predicates/functions candidate:
+
+```lean
+def PolymerCluster.touches (C : PolymerCluster S hdec) (g : Gamma) : Prop :=
+  ∃ i, C.member i = g
+
+def PolymerCluster.touchesSet (C : PolymerCluster S hdec)
+    (X : Finset Gamma) : Prop :=
+  ∃ i, C.member i ∈ X
+
+def PolymerCluster.weightAbs (C : PolymerCluster S hdec) : Real :=
+  abs (clusterCoeff C) * Finset.univ.prod (fun i => abs (S.weight (C.member i)))
+
+def PolymerCluster.distanceFromSet
+    (polymerDistance : Gamma -> Gamma -> Nat) (C : PolymerCluster S hdec)
+    (X : Finset Gamma) : Nat := ...
+```
+
+- Conclusion-shape candidate:
+
+```lean
+structure KPConclusionData (S : PolymerSystem Gamma) where
+  clusterCoeff : PolymerCluster S hdec -> Real
+  treeGraphBound : forall C, abs (clusterCoeff C) <= treeBound S C
+
+theorem kp_absolute_cluster_bound
+    (hKP : KPCondition S hdec) :
+    forall g : Gamma,
+      Summable (fun C : PolymerCluster S hdec =>
+        if C.touches g then C.weightAbs else 0) /\
+      (tsum fun C : PolymerCluster S hdec =>
+        if C.touches g then C.weightAbs else 0) <= S.energy g := ...
+
+theorem kp_exponential_tail_bound
+    (hKP : KPCondition S hdec)
+    (hDistanceEnergy : DistanceEnergyHypothesis S polymerDistance m C0) :
+    forall X R,
+      (tsum fun C : PolymerCluster S hdec =>
+        if C.touchesSet X /\ R <= C.distanceFromSet polymerDistance X
+        then C.weightAbs else 0)
+      <= C_X * Real.exp (-(m : Real) * R) := ...
+```
+
+Main risk I want Aristotle to audit: the tail theorem probably does NOT follow
+from the bare `KPCondition` alone. The statement likely needs either a
+distance-weighted KP condition or an explicit lower bound relating the cluster's
+energy/size to its distance from `X`. The strategy prompt asks for a smallest
+counterexample or minimal extra hypotheses if that concern is real.
+
+Submission artifacts:
+
+- Prompt:
+  `AgentTasks/aristotle-prompts/ym-kp-finite-conclusion-strategy-20260704.prompt.md`
+- Task note:
+  `AgentTasks/ym-kp-finite-conclusion-strategy-aristotle-2026-07-04.md`
+- Context pack:
+  `AgentTasks/context-packs/ym-kp-finite-conclusion-strategy-20260704-110414.md`
+
+Submitted 1.11:08 as Aristotle project
+`2427a253-ccb7-42d4-bd61-754da4ea5b93`, task
+`08da7500-9a84-42e0-af32-8f11898547c1`; first task status was `QUEUED`.
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session
