@@ -141,6 +141,21 @@ theorem SupportsOverlapOrTouch.symm (Adj : PlaquetteAdjacency P)
   | inl h => exact Or.inl (SupportsOverlap.symm h)
   | inr h => exact Or.inr (SupportsTouch.symm Adj h)
 
+omit [Fintype P] [DecidableEq P] in
+/-- Overlap is a special case of the conservative overlap-or-touch relation.
+This is the support-level half of the comparison between the overlap-only and
+the overlap-or-touch polymer systems; the full second system is left for a
+later freeze. -/
+theorem SupportsOverlap.orTouch (Adj : PlaquetteAdjacency P) {A B : Finset P} :
+    SupportsOverlap A B -> SupportsOverlapOrTouch Adj A B :=
+  Or.inl
+
+omit [Fintype P] [DecidableEq P] in
+/-- Touching is a special case of the conservative overlap-or-touch relation. -/
+theorem SupportsTouch.orTouch (Adj : PlaquetteAdjacency P) {A B : Finset P} :
+    SupportsTouch Adj A B -> SupportsOverlapOrTouch Adj A B :=
+  Or.inr
+
 /-- The conservative finite plaquette-polymer system used by the Q7 statement
 freeze.  `alpha * support.card` is the KP energy, and `gammaAbs` supplies the
 absolute normalized label coefficient. -/
@@ -199,6 +214,21 @@ theorem plaquettePolymerSystem_self_incompatible
   rcases X.support_nonempty with ⟨p, hp⟩
   exact ⟨p, hp, hp⟩
 
+/-- The KP weight of every polymer is nonnegative when the label coefficient
+`gammaAbs` is nonnegative.  KP consumes `|weight|`, so this lets a downstream
+KP instantiation drop the absolute value on the weight. -/
+theorem plaquettePolymerSystem_weight_nonneg
+    (Adj : PlaquetteAdjacency P)
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
+    0 <= (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha).weight X := by
+  rw [plaquettePolymerSystem_weight]
+  exact X.coeffProduct_nonneg gammaAbs hgamma
+
 /-- Z2 strong-coupling coefficient used by the oracle fixture:
 `|tanh beta|` for the unique nontrivial label. -/
 def z2GammaAbs (beta : Real) (_ : PUnit) : Real :=
@@ -219,6 +249,28 @@ theorem z2_plaquettePolymer_weight_eq_abs_tanh_area
       |Real.tanh beta| ^ X.support.card := by
   simp [plaquettePolymerSystem, PlaquettePolymer.coeffProduct, z2GammaAbs,
     Finset.prod_const]
+
+/-- For `0 <= beta`, `tanh beta` is nonnegative, so `|tanh beta| = tanh beta`. -/
+theorem tanh_nonneg_of_nonneg {beta : Real} (hbeta : 0 <= beta) :
+    0 <= Real.tanh beta := by
+  rw [Real.tanh_eq_sinh_div_cosh]
+  exact div_nonneg (Real.sinh_nonneg_iff.mpr hbeta)
+    (le_of_lt (Real.cosh_pos beta))
+
+/-- Z2 specialization at `0 <= beta`: the polymer weight is
+`tanh beta ^ area`, with no absolute value.  This is the honest KP weight
+statement in the physical regime `beta >= 0`, where the character coefficient
+is already nonnegative. -/
+theorem z2_plaquettePolymer_weight_eq_tanh_area
+    (Adj : PlaquetteAdjacency P)
+    (ConnectedSupport : Finset P -> Prop)
+    (beta alpha : Real) (halpha : 0 <= alpha) (hbeta : 0 <= beta)
+    (X : PlaquettePolymer P PUnit ConnectedSupport (fun _ => True)) :
+    (plaquettePolymerSystem Adj ConnectedSupport (fun _ : PUnit => True)
+      (z2GammaAbs beta) alpha halpha).weight X =
+      Real.tanh beta ^ X.support.card := by
+  rw [z2_plaquettePolymer_weight_eq_abs_tanh_area,
+    abs_of_nonneg (tanh_nonneg_of_nonneg hbeta)]
 
 /-- Z2 specialization: the KP energy is `alpha * area`. -/
 theorem z2_plaquettePolymer_energy_eq_alpha_area

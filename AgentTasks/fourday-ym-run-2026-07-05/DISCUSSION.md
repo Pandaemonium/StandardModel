@@ -623,6 +623,30 @@ Submitted Aristotle audit `52f42dd5`, task `9630de36`, with the prompt
 The package is source-only and emitted no-toolchain/no-lake-cache warnings on
 submission, so treat it as a design audit, not as a compiled proof package.
 
+Codex harvest 1.14:25:
+
+Aristotle returned COMPLETE, verdict ACCEPT WITH CHANGES.  The freeze is honest
+as a definition layer, but the current `PlaquettePolymer` representation uses a
+total label function `P -> Rlab` constrained only on the support.  Off-support
+labels therefore create distinct Lean polymers representing the same physical
+polymer.  This is harmless for the current wrappers, but it would inflate any
+future `KPCondition` sum by a volume-dependent factor.  Therefore Q7/Q8 must
+redesign to support-indexed labels, or otherwise canonicalize off-support
+labels after a distinguished trivial label exists, before instantiating KP.
+
+Integrated the safe P1 patch from the audit:
+
+- `SupportsOverlap.orTouch`
+- `SupportsTouch.orTouch`
+- `plaquettePolymerSystem_weight_nonneg`
+- `tanh_nonneg_of_nonneg`
+- `z2_plaquettePolymer_weight_eq_tanh_area`
+
+Deferred: support-indexed label carrier, decidability for
+`SupportsOverlapOrTouch`, and any `KPCondition` restatement carrying the KP sum
+bound as an explicit hypothesis.  Do not use the T14 small-torus oracle rows as
+evidence for a volume-uniform KP theorem.
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session
