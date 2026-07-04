@@ -53,11 +53,16 @@ the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
 [propext, Classical.choice, Quot.sound]; includes `hadamard_posSemidef`,
 a genuinely reusable Schur-product-theorem lemma this repo's pinned
-Mathlib lacks under any name); `TransferPositivity` (YM3 Corollary 3b:
-the abstract transfer-matrix positivity chain - diagonal-weight
-conjugation and Gauss-projector-style compression both preserve PSD,
-plus the connecting corollary instantiating the Wilson kernel; axiom
-footprint [propext, Classical.choice, Quot.sound]); `BanksCasherShadow`
+Mathlib lacks under any name); `TransferPositivity` (YM3, single-link
+PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
+after Aristotle red-team `cb437537`'s finding that the original
+"Corollary 3b"/"transfer matrix" framing overstated what is indexed:
+`transferMatrix_posSemidef`/`compression_posSemidef` are abstract
+congruence/compression facts over ANY finite index type - no lattice
+ensemble, tensor-product kernel, or Gauss projector exists yet;
+`singleLinkWilsonKernel_diagCongruence_posSemidef` instantiates the
+former at one temporal link's Wilson kernel; axiom footprint
+[propext, Classical.choice, Quot.sound]); `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and
 `gamma5 * Dov` is Hermitian, given gamma5/eps both Hermitian involutions,
