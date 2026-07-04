@@ -573,6 +573,15 @@ pieces. It supersedes ad-hoc task hunting: pick the lowest-numbered
 unclaimed item whose prerequisites are met, follow the protocols, and
 update this section's status notes when an item closes.
 
+**Active run:** a four-day autonomous run (Claude Sonnet 5 + Codex 5.5 +
+Aristotle) executes this queue starting 2026-07-05; its contract, task
+board, and prep notes live in `AgentTasks/fourday-ym-run-2026-07-05/`
+(RUN_PLAN, TASK_DIRECTIONS, LEDGER, PREP_NOTES). During the run the
+ledger there carries live claims; this section stays canonical for
+statements and kill conditions, and the run's FINAL_REPORT syncs status
+back here. The run's Aristotle budget (3 concurrent YM jobs) supersedes
+the one-job rule for its duration only.
+
 **Protocols (binding).** All work lands in the DRAFT tree
 (`PhysicsSM/Draft/NullEdge/GateYM/`), wired into the `GateYM.lean`
 aggregator with a docstring paragraph; explicit claim labels; statements
