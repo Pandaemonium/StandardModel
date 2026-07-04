@@ -19,6 +19,8 @@ It provides the finite sums that those later constructions will consume:
 partition function, numerator, expectation, positivity for positive weights,
 change of variables under a fixed gauge transformation, and the basic
 consequence for gauge-invariant weights acting on transformed observables.
+It also includes the finite orbit-sum identity for gauge-transformed
+observables.
 
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`.
 Claim label: **finite identity** (finite-sum ensemble skeleton).
@@ -131,6 +133,47 @@ theorem expectation_observable_comp_gauge_of_weight_invariant
       = expectation Λ weight observable := by
   unfold expectation
   rw [numerator_observable_comp_gauge_of_weight_invariant Λ g weight observable hweight]
+
+/-- Sum an observable over the finite gauge orbit of a configuration. This is
+the unnormalized gauge average; normalizing by the gauge-group cardinality is a
+later convenience layer. -/
+def gaugeOrbitSumObservable [Fintype (Λ.V → G)]
+    (observable : Λ.LinkField (G := G) → ℝ)
+    (U : Λ.LinkField (G := G)) : ℝ :=
+  ∑ g : Λ.V → G, observable (Λ.gauge g U)
+
+/-- Under a gauge-invariant finite weight, the numerator of the gauge-orbit
+sum of an observable is the size of the finite gauge group times the original
+numerator. -/
+theorem numerator_gaugeOrbitSumObservable_of_weight_invariant
+    [Fintype (Λ.LinkField (G := G))] [Fintype (Λ.V → G)]
+    (weight : Λ.LinkField (G := G) → ℝ)
+    (observable : Λ.LinkField (G := G) → ℝ)
+    (hweight : ∀ g U, weight (Λ.gauge g U) = weight U) :
+    numerator Λ weight (gaugeOrbitSumObservable Λ observable)
+      = (Fintype.card (Λ.V → G)) • numerator Λ weight observable := by
+  have h_each : ∀ g : Λ.V → G,
+      numerator Λ weight (fun U => observable (Λ.gauge g U))
+        = numerator Λ weight observable := by
+    intro g
+    exact numerator_observable_comp_gauge_of_weight_invariant Λ g weight observable
+      (hweight g)
+  unfold numerator gaugeOrbitSumObservable
+  calc
+    (∑ U, (∑ g : Λ.V → G, observable (Λ.gauge g U)) * weight U)
+        = ∑ U, ∑ g : Λ.V → G, observable (Λ.gauge g U) * weight U := by
+          refine Finset.sum_congr rfl ?_
+          intro U _hU
+          rw [Finset.sum_mul]
+    _ = ∑ g : Λ.V → G, ∑ U, observable (Λ.gauge g U) * weight U := by
+          rw [Finset.sum_comm]
+    _ = ∑ _g : Λ.V → G, numerator Λ weight observable := by
+          refine Finset.sum_congr rfl ?_
+          intro g _hg
+          rw [← h_each g]
+          rfl
+    _ = (Fintype.card (Λ.V → G)) • numerator Λ weight observable := by
+          rw [Finset.sum_const, Finset.card_univ]
 
 end LatticeEnsemble
 end GateYM
