@@ -23,7 +23,7 @@ section 14 (Q-items).
 | T11 lasso identification | Q11 | partial-boundary-review-requested | - | PhysicsSM/Draft/NullEdge/GateYM/RectBoundary*.lean, AgentTasks/aristotle-submit/ym1-rectboundary-lasso-20260704-*, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | boundary walk + holonomy order pin landed; review:t11-lasso-package opened before Aristotle submission |
 | T12 YM-LIT | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | source checkpoint + graph/ingest debt logged; next lit slice needs full-text access and Zotero ingest path |
 | T13 paper-unit outlines | - | open | - | AgentTasks/paper-units/*.md | day-end lane |
-| T14 oracle fixtures v0.3 | - | partial-v0.3-codex | - | Scripts/oracle/validate_lgt_core.py, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | RP Z3 anti-linear/mirror-inverse guard landed; oracle v0.3 is 40/40 green; fusion-spectrum and KP-constant fixtures remain |
+| T14 oracle fixtures v0.3 | - | partial-v0.3-codex | - | Scripts/oracle/validate_lgt_core.py, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | RP Z3 guard + S3 fusion-spectrum guard landed; oracle v0.3 is 42/42 green; KP-constant fixture remains |
 | T15 daily/final reports | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/DAY_*.md, FINAL_REPORT.md | alternate drafters |
 
 ## Aristotle registry
@@ -75,3 +75,5 @@ section 14 (Q-items).
 1.11:26 codex T6 opened `review:q6-kp-freeze` with proposed signatures for `PolymerKPConclusion.lean`; awaiting cross-review before creating or editing any Q6 Lean statement file.
 1.11:28 codex T11 claimed lasso identification lane; next read RectTreeGauge/GaugeCore APIs, define the rectangular boundary walk with a pinned holonomy formula, then package the tree-slice identity for Aristotle.
 1.11:34 codex T11 added `RectBoundaryLasso.lean`: typed full-rectangle boundary walk and holonomy formula bottom/right/inverse-top/inverse-left; direct file check, module build, aggregator check green; axiom audit for `rectBoundary_hol_formula` is [propext]; opened `review:t11-lasso-package` before Aristotle submission.
+1.11:38 codex T14 reclaimed oracle fixture lane; next add S3 fusion convolution spectrum numerics to validate real ordered eigenvalues and `|gamma| <= 1` against the closed Q5 theorem shape.
+1.11:40 codex T14 added S3 fusion-spectrum oracle: actual convLeft matrix has real vacuum-ordered normalized spectrum in [0,1] and S3 characters are eigenvectors with eigenvalue `|G|*w_hat_R/d_R`; `python Scripts/oracle/validate_lgt_core.py` green 42/42; T14 released, KP fixture remains.

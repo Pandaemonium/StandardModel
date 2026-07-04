@@ -26,6 +26,10 @@ v0.3 (four-day YM run, T14) adds:
     complex-valued quadratic-form witness. This guards the anti-linear
     reflection slot / mirror-inverse convention used by
     ReflectionPositivityKernel.
+  Fusion-spectrum guard: section [11], the S3 Wilson convolution matrix
+    on all functions G -> C. It checks the character eigenvectors, expected
+    eigenvalues |G|*w_hat_R/d_R, real spectrum, vacuum ordering, and
+    normalized eigenvalues in [-1,1].
 
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
@@ -441,6 +445,35 @@ check("Z3 no-inverse mirror variant K_bad(b,a)=chi(a*b) is not Hermitian",
 check("Z3 no-inverse mirror variant has a complex quadratic-form witness",
       abs(q_bad.imag) > 1e-6,
       f"q_bad={q_bad.real:.6f}+{q_bad.imag:.6f}i")
+
+print("\n[11] S3 fusion spectrum: character eigenvalues real and vacuum-ordered")
+spectral_ok = True
+eigenvector_ok = True
+spectral_details = []
+for beta in [0.1, 0.5, 1.0, 2.0]:
+    wv3 = [math.exp(beta * chi('std', i)) for i in range(6)]
+    what_beta = {R: sum(wv3[INV[i]] * chi(R, i) for i in range(6)) / 6 for R in CHI}
+    conv = np.array([[wv3[MUL[A][INV[B]]] for B in range(6)] for A in range(6)],
+                    dtype=np.float64)
+    evals = np.linalg.eigvalsh(conv)
+    vacuum = math.fsum(wv3)
+    ratios = evals / vacuum
+    spectral_ok &= (
+        np.max(np.abs(conv - conv.T)) < 1e-12
+        and abs(evals[-1] - vacuum) < 1e-10
+        and ratios.min() >= -1e-10
+        and ratios.max() <= 1 + 1e-10
+    )
+    spectral_details.append(f"beta={beta}:min={ratios.min():.6f},max={ratios.max():.6f}")
+    for R in CHI:
+        vec = np.array([chi(R, A) for A in range(6)], dtype=np.complex128)
+        lam = 6 * what_beta[R] / DIM[R]
+        residual = np.linalg.norm(conv.astype(np.complex128) @ vec - lam * vec)
+        eigenvector_ok &= residual < 1e-10
+check("S3 convLeft matrix has real vacuum-ordered normalized spectrum in [0,1]",
+      spectral_ok, "; ".join(spectral_details))
+check("S3 characters are convLeft eigenvectors with eigenvalue |G|*w_hat_R/d_R",
+      eigenvector_ok)
 
 print("\n" + "=" * 78)
 n = len(PASS)
