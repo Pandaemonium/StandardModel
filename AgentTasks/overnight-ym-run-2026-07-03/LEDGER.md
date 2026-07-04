@@ -12,7 +12,7 @@ Status values: `open`, `claimed-claude`, `claimed-codex`, `blocked`,
 |---|---|---|---|---|---|
 | T0 | Preflight + baseline commit + harvest | done | Codex | `AgentTasks/overnight-ym-run-2026-07-03/LEDGER.md`, repo-wide checks only | 00:02 baseline clean enough for lane work: GateYM build green, oracle 36/36, Neo4j reachable; Aristotle list limit 100 reconciled against 2026-07-02 ledger |
 | T1 | YM3 flagship: charpos -> RP-LINK | claimed-claude | Claude | `PhysicsSM/Draft/NullEdge/GateYM/WilsonWeightPositivity.lean`, `CharacterPositivity.lean`, `TransferPositivity.lean`, `ReflectionPositivityLink.lean`, `GateYM.lean` (aggregator wiring only) | Route B (PSD kernel engine) CLOSED, commit `fb4df44`; next Cor 3b (transfer positivity) then RP-LINK proper, or Route A (CharacterPositivity.lean) |
-| T2 | YM1: 2D exact solutions | claimed-codex | Codex | `PhysicsSM/Draft/NullEdge/GateYM/Torus*.lean`, `PhysicsSM/Draft/NullEdge/GateYM/Fusion*.lean`, `PhysicsSM/Draft/NullEdge/GateYM.lean`, shared run files | `TorusEvenCover.lean` landed kernel-checked zero-boundary, same-boundary/complement, exact cover-sum, and ratio cores |
+| T2 | YM1: 2D exact solutions | claimed-codex | Codex | `PhysicsSM/Draft/NullEdge/GateYM/Torus*.lean`, `PhysicsSM/Draft/NullEdge/GateYM/Fusion*.lean`, `PhysicsSM/Draft/NullEdge/GateYM.lean`, shared run files | `TorusEvenCover.lean` landed Z2 torus cover-ratio core; `FusionConvolution.lean` landed abstract finite-group convolution iteration core |
 | T3 | YM0 breadth: general-G core + D12 | open | - | `PhysicsSM/Draft/NullEdge/GateYM/GaugeCoreGeneral.lean`, `TransferGapDefinition.lean` | Definitional layer needs early cross-review |
 | T4 | QCD1 Banks-Casher shadow | open | - | `PhysicsSM/Draft/NullEdge/GateYM/BanksCasher*.lean` | Built on GateC2 spectral assets |
 | T5 | YM4 groundwork: KP + polymers | open | - | `PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean` | KP hypotheses BLOCKED on LIT item 3 |
@@ -29,6 +29,7 @@ row. Project id is the canonical locator.
 | Project id | Name | Rung / freeze section | Status | Owner | Notes |
 |---|---|---|---|---|---|
 | 203fd831 | gate-c2-flux2d-witness (resubmission) | Gate C2 (not YM) | RUNNING at 00:01 poll | Codex/T0 | Poll; harvest on completion; do NOT duplicate |
+| ac230cc8 | ym-ladder-strategy-20260703 (T7 partner job) | strategy audit, all rungs | SUBMITTED 01:15 | claude/T7 | Prompt = `AgentTasks/aristotle-prompts/overnight-ym-ladder-strategy.prompt.md`; deliverable `YM_Ladder_Strategy_Audit.md`; destination `AgentTasks/aristotle-output/ym-ladder-strategy-20260703` |
 | a6ebbbf7 | gate-c2-flux2d-witness (first) | Gate C2 (not YM) | IDLE - RETIRED/SUPERSEDED | Codex/T0 | Superseded by 203fd831 per prior-run ledger context |
 | f501f8c8 | ym1-elitzur-core-20260703 | YM1 / freeze s3, s13 | IDLE - HARVESTED + INTEGRATED | - | Retired as done (ElitzurCore.lean); no action |
 | (backlog) | visible IDLE audit/C2/checkerboard projects | various | IDLE - RETIRED/PREVIOUS-RUN LEDGERED | Codex/T0 | `aristotle list --limit 100` checked 00:02; recent C2/I1/checkerboard rows are already harvested, integrated, superseded, or assigned in the 2026-07-02 ledger; no duplicate harvest tonight |
@@ -43,7 +44,7 @@ Planned submissions (fill id on submit; cross-review BEFORE submit):
 | qcd1-banks-casher-20260703 | QCD1 / s8 | QCD1-i identity; chiral pairing; QCD1-ii sandwich | not submitted |
 | ym4-kp-polymer-20260703 | YM4 / s7 | KP criterion; polymer representation | not submitted (LIT item 3 first; capacity-gated) |
 | overnight-ym3-semantic-redteam | partner job | red-team report | prompt DRAFTED (template; fill `<<PASTE>>` slots after T1 statements) |
-| overnight-ym-ladder-strategy | partner job | strategy report | prompt DRAFTED (fill TONIGHT-STATE block; can submit early) |
+| overnight-ym-ladder-strategy | partner job | strategy report | **SUBMITTED 01:15** as project `ac230cc8-2e92-4a88-b0be-63266b9f3d06`; TONIGHT-STATE filled; owner claude, poll next cycle |
 
 ## Heartbeat log
 
@@ -62,6 +63,8 @@ Format: `HH:MM agent task next-step` - one line per cycle, append only.
 00:48 Codex T2 added finite cover-sum identities `sum_zeroBoundary_weights` and `sum_sameBoundary_weights`; target build and aggregate GateYM build green, axiom footprint `[propext, Classical.choice, Quot.sound]`; next consider exact torus formula statement or fusion route.
 00:52 Codex T2 added capstone ratio theorem `ratio_sameBoundary_zeroBoundary_weights`, matching `(t^A + t^(P-A))/(1+t^P)` at the cover-expansion layer; target and aggregate builds green, placeholder scan clean.
 01:05 Claude T1: CLOSED all three `WilsonWeightPositivity.lean` handoffs, no Aristotle job needed. `reCharGram_posSemidef` done as planned (vectorized Gram). `wilsonKernel_posSemidef` done via `Real.summable_pow_div_factorial` + `Summable.tsum_finsetSum` (finite-sum/tsum swap) + `tsum_nonneg`. EN ROUTE discovered a real Mathlib gap: `Matrix.PosSemidef.hadamard` (Schur product theorem) does NOT exist in this repo's pinned Mathlib (commit `8f9d9cf`) despite PREP_NOTES claiming "VERIFIED present" via lean-explore - corrected in PREP_NOTES.md and derived it myself as new lemma `hadamard_posSemidef` (from `kronecker` + `submatrix` along the diagonal embedding, both genuinely present) plus `hadamard_pow_posSemidef` by induction. All kernel-checked, axiom footprint `[propext, Classical.choice, Quot.sound]`, zero sorry. `lake build PhysicsSM.Draft.NullEdge.GateYM` green (8031 jobs). Committed `fb4df44`. Opening `review:t1-routeB` in DISCUSSION for Codex's convenience (not blocking). Next: Cor 3b (transfer positivity, tensor step) building on `wilsonKernel_posSemidef`, then RP-LINK proper; also submitting the pre-drafted `overnight-ym-ladder-strategy` prompt (T7) since it needs no new statements.
+01:08 Codex T2 added `FusionConvolution.lean`: oracle-order convolution operator and `iterConv_eigen`; target and aggregate builds green, placeholder scan clean, axiom footprint `[propext, Classical.choice, Quot.sound]`. Next answer Claude's `review:t1-routeB`.
+01:15 Claude T7: submitted `overnight-ym-ladder-strategy` (project `ac230cc8`) via `aristotle submit` with the filled TONIGHT-STATE block; also completed `review:t2-even-cover-core` (ACCEPTED). Resuming T1: drafting `TransferPositivity.lean` (Cor 3b) on top of `wilsonKernel_posSemidef`.
 ```
 
 ## Parked for user

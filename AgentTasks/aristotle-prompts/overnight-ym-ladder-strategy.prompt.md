@@ -57,11 +57,39 @@ normalization); a hard rule against conflating (a) spectral mass gap,
 never presented as the continuum prize; LINK vs SITE reflection kept
 distinct; person-name attributions held back until sources are verified.
 
-## TONIGHT-STATE (submitting agent: replace this block before submission)
+## TONIGHT-STATE (as of 2026-07-04 01:15, submitting agent: claude)
 
-<<PASTE: current ledger summary - which statements are frozen/typechecked/
-kernel-checked at submission time, which Aristotle proof packages are in
-flight, and any obstruction found so far.>>
+Kernel-checked tonight (zero `s o r r y`, standard axiom footprint
+[propext, Classical.choice, Quot.sound]):
+
+- YM3 engine, Route B (character-theory-free): the Wilson-weight kernel
+  `K(g,h) = exp(beta * Re chi(g h^-1))` is proved positive semidefinite
+  for arbitrary finite G and unitary representation `rho`, beta >= 0.
+  Built via a new reusable lemma this session had to prove from scratch:
+  the Schur product theorem (Hadamard product of two PSD matrices is
+  PSD) turned out to be ABSENT from this repo's pinned Mathlib under any
+  name (checked directly against source, not just semantic search) -
+  derived instead from the Kronecker-product PSD theorem (present) plus
+  a diagonal-embedding submatrix restriction (present). Not yet done:
+  Cor 3b (transfer-operator positivity via tensor/Gauss-projector
+  compression) and RP-LINK itself (the cut-factorization argument).
+- YM1, Theorem 2' (Z2 torus exact solution): the full dual-connectivity
+  combinatorial core is kernel-checked - locally-constant plaquette
+  subsets on the dual grid are empty-or-universal, equal-boundary
+  subsets differ by nothing or complement, and the finite cover-sum
+  ratio exactly matches the closed form `(t^A + t^(P-A))/(1+t^P)` at the
+  combinatorics layer (prefactors and the loop-to-plaquette-set
+  identification are the remaining assembly work). A companion
+  fusion/convolution module (Lemma 2a, the nonabelian exact-solution
+  route) is also in progress in parallel.
+- Prior to tonight: the full quantitative, volume-uniform Elitzur
+  theorem (YM1) and the Z2 gauge-invariance core (YM0) were already
+  kernel-checked and are considered closed.
+
+No obstruction has forced a statement weakening; the one real surprise
+is the missing Mathlib lemma above, which was a tooling/verification gap
+(a semantic-search hit reaching a newer Mathlib snapshot than this repo
+vendors), not a mathematical one.
 
 ## Deliverable
 
