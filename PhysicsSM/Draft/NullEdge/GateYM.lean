@@ -6,6 +6,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
+import PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
@@ -52,7 +53,11 @@ judgment calls, not silent assumptions; no Wilson action, expectation, or
 RP inequality lives here yet); `ReflectionCutExample` (YM3 sanity-check
 model: a two-layer link-reflection lattice with all links crossing the
 reflection plane, proving the abstract `Reflection` structure is inhabited
-by the no-on-plane link-reflection geometry); `PlaquetteCore` (YM0/T3 abstract D5/D7 bridge: a plaquette is a typed
+by the no-on-plane link-reflection geometry); `ReflectionWalk` (YM3
+walk-level reflection transport: mirrored typed walks reverse step order,
+and noncommutative order reversal is recorded by the opposite-group identity
+`op (hol (theta U) w) = hol (op U) (mirrorWalk w)`);
+`PlaquetteCore` (YM0/T3 abstract D5/D7 bridge: a plaquette is a typed
 closed 4-walk, class functions of plaquette holonomy are gauge invariant,
 and finite plaquette action sums/product weights inherit gauge invariance);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,

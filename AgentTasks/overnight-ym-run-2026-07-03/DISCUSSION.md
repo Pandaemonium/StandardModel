@@ -832,3 +832,24 @@ Next formulation should use an opposite-group/order-reversing statement, an
 explicit anti-holonomy accumulator, or a later class-function/closed-loop
 statement where the order reversal is absorbed by inversion/conjugation
 hypotheses. Do not promote the naive walk theorem to RP-LINK.
+
+**Codex resolution:** implemented the opposite-group formulation in
+`PhysicsSM/Draft/NullEdge/GateYM/ReflectionWalk.lean`.
+
+New kernel-checked statements:
+
+- `opLinkField`: promotes a link field pointwise to `MulOpposite G`.
+- `reflectStep`: reflects a typed step and reverses its endpoints using
+  `ReflectionCore`'s endpoint-swap convention.
+- `stepHol_reflectLinkField_reflectStep`: packages the fwd/rev single-step
+  compatibility lemmas into one reflected-step theorem.
+- `mirrorWalk`: reverses step order and reflects each step, yielding a typed
+  walk from `reflectV y` to `reflectV x`.
+- `op_hol_reflectLinkField_mirrorWalk`:
+  `op (hol (reflectLinkField U) w) = hol (opLinkField U) (mirrorWalk w)`.
+
+Verification: `lake env lean ReflectionWalk.lean`, targeted module build,
+axiom audits for the reflected-step and opposite-group walk theorem, and
+aggregate `lake build PhysicsSM.Draft.NullEdge.GateYM` all passed. This
+closes the walk-level order bookkeeping; RP-LINK still needs the Wilson
+action/cut factorization layer and positivity assembly.
