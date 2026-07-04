@@ -88,8 +88,9 @@ is definitionally the reflected/reversed boundary walk, and plaquette holonomy
 inherits the opposite-group reflection identity from `ReflectionWalk`; includes
 the induced product-weight identity for mirrored plaquette families and the
 reflection-invariance bookkeeping for mirror-stable families under an explicit
-local opposite-compatibility hypothesis, but still no Wilson action reflection
-covariance, cut factorization, or RP inequality);
+local opposite-compatibility hypothesis, plus a paired-family constructor for
+families explicitly split into mirror partners, but still no Wilson action
+reflection covariance, cut factorization, or RP inequality);
 `PlaquetteReflectionEnsemble` (YM3 finite ensemble lift: under the same
 mirror-stability and explicit local opposite-compatibility hypotheses, the
 plaquette-product weight is reflection-invariant and reflecting only the

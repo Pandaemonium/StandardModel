@@ -12,6 +12,9 @@ the local weight on `G` by the corresponding local weight on `MulOpposite G`.
 For a reflection-stable finite plaquette family, the product weight is
 reflection-invariant once the remaining local opposite-group compatibility is
 supplied explicitly as a hypothesis.
+The file also provides a small paired-family constructor: if two finite
+plaquette families are explicitly identified as each other's mirrors, their
+disjoint union is mirror-stable by swapping the pair index.
 The result is still algebraic scaffolding, not reflection positivity: it does
 not prove Wilson action reflection covariance for a reflection-stable plaquette
 set, cut factorization, or the RP-LINK inequality.
@@ -113,6 +116,44 @@ theorem productWeight_reflectLinkField_mirrorPlaquette
 the family up to a finite reindexing. -/
 def IsMirrorStableFamily {ι : Type*} (P : ι → Plaquette Λ) (τ : ι ≃ ι) : Prop :=
   ∀ i : ι, mirrorPlaquette R (P i) = P (τ i)
+
+/-- The index swap for a paired plaquette family containing a family and its
+reflected partner. -/
+def mirrorPairIndexEquiv {ι : Type*} : Bool × ι ≃ Bool × ι where
+  toFun
+    | (false, i) => (true, i)
+    | (true, i) => (false, i)
+  invFun
+    | (false, i) => (true, i)
+    | (true, i) => (false, i)
+  left_inv := by
+    intro x
+    cases x with
+    | mk b i => cases b <;> rfl
+  right_inv := by
+    intro x
+    cases x with
+    | mk b i => cases b <;> rfl
+
+/-- Pair two plaquette families as opposite reflection partners. This is a
+small reusable constructor for concrete finite reflection-stable plaquette sets:
+the geometry-specific work is reduced to proving the two mirror-direction
+equalities used by `mirrorPairFamily_isMirrorStable`. -/
+def mirrorPairFamily {ι : Type*} (P Q : ι → Plaquette Λ) : Bool × ι → Plaquette Λ
+  | (false, i) => P i
+  | (true, i) => Q i
+
+/-- A paired plaquette family is mirror-stable once each half is explicitly
+identified as the mirror of the other half. This avoids assuming a concrete
+coordinate lattice or a canonical plaquette enumeration. -/
+theorem mirrorPairFamily_isMirrorStable {ι : Type*} (P Q : ι → Plaquette Λ)
+    (hPQ : ∀ i : ι, mirrorPlaquette R (P i) = Q i)
+    (hQP : ∀ i : ι, mirrorPlaquette R (Q i) = P i) :
+    IsMirrorStableFamily R (mirrorPairFamily P Q) (mirrorPairIndexEquiv (ι := ι)) := by
+  intro x
+  cases x with
+  | mk b i =>
+      cases b <;> simp [mirrorPairFamily, mirrorPairIndexEquiv, hPQ, hQP]
 
 /-- Reflection invariance of a product plaquette weight for a mirror-stable
 family, assuming the local weight has the required opposite-group compatibility.

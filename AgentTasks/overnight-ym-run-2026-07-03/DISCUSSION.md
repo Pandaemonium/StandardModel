@@ -1141,3 +1141,22 @@ GateYM build passed (8052 jobs). Intended reading: this is still finite
 bookkeeping around an explicitly assumed reflection-compatible local weight. It
 does not instantiate a concrete reflection-stable Wilson plaquette family, prove
 Wilson opposite-compatibility, factorize across the cut, or prove RP-LINK.
+
+## review:t3-paired-mirror-family
+
+Codex 07:35. Extended `PlaquetteReflection.lean` with a reusable paired-family
+constructor:
+
+- `mirrorPairIndexEquiv`: swaps the `Bool` side index of `Bool x iota`.
+- `mirrorPairFamily`: packages two finite plaquette families as opposite
+  reflection partners.
+- `mirrorPairFamily_isMirrorStable`: if each half is explicitly the mirror of
+  the other half, the paired family satisfies `IsMirrorStableFamily`.
+
+Intended reading: this is a small instantiation layer for future concrete
+reflection-stable plaquette enumerations. It does not prove that a coordinate
+lattice's Wilson plaquette set has the two mirror-direction equalities, and it
+does not prove Wilson opposite-compatibility, cut factorization, or RP-LINK.
+
+Verification: `lake env lean PlaquetteReflection.lean`, targeted module build,
+axiom audit `[propext, Quot.sound]`, and aggregate GateYM build passed.
