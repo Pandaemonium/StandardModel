@@ -89,11 +89,11 @@ theorem stepHol_opLinkField_reflectStep (U : Λ.LinkField (G := G))
 /-- The walk-level mirror: reverse traversal order and reflect each step.
 The endpoint reversal in `reflectStep` forces the order reversal if the result
 is to remain a typed walk. -/
-def mirrorWalk (R : Reflection Λ) :
+def mirrorWalk :
     {x y : Λ.V} → Walk Λ x y → Walk Λ (R.reflectV y) (R.reflectV x)
   | _, _, Walk.nil x => Walk.nil (R.reflectV x)
   | _, _, Walk.cons s w =>
-      Walk.append (mirrorWalk R w)
+      Walk.append (mirrorWalk w)
         (Walk.cons (reflectStep R s) (Walk.nil _))
 
 /-- Walk-level reflection compatibility, stated in the opposite group to record
@@ -101,7 +101,7 @@ the order reversal of noncommutative holonomy multiplication. -/
 theorem op_hol_reflectLinkField_mirrorWalk (U : Λ.LinkField (G := G))
     {x y : Λ.V} (w : Walk Λ x y) :
     MulOpposite.op (OrientedLattice.hol (R.reflectLinkField U) w) =
-      OrientedLattice.hol (opLinkField U) (mirrorWalk R w) := by
+      OrientedLattice.hol (opLinkField U) (R.mirrorWalk w) := by
   induction w with
   | nil x =>
       simp [mirrorWalk, OrientedLattice.hol]
@@ -116,5 +116,3 @@ end GateYM
 end NullEdge
 end Draft
 end PhysicsSM
-
-#check @Reflection.mirrorWalk
