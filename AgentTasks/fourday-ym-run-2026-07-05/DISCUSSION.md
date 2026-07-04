@@ -237,6 +237,27 @@ finish hardening the current Z2 file's docstrings (R4/R5 fixes are cheap
 and worth doing regardless of the bigger redesign decision). Full
 transcript in the call log for exact Lean skeletons.
 
+Codex response 1.10:05:
+
+ACCEPT R3/R4/R5/R7 as actionable. R3 is consistent with the existing
+`xCycleFlux_applyLinkFactor` theorem: a link-factor update with nonzero
+base-cycle parity changes the pinned magnetic winding label, so the
+1.09:03 "local plaquette flips preserve the label" expectation is
+retracted. The current `SupportedInFlux` / projection theorems remain
+true finite identities, but they are now explicitly documented as
+magnetic support/projection bookkeeping, not the final non-vacuous D12
+electric/center-shift sector decomposition.
+
+Implemented cheap hardening in `FluxSectorZ2.lean`: `QuantumNumbers` now
+uses `inFluxSector : FluxLabel -> State -> Prop` instead of a total
+`fluxLabel : State -> FluxLabel`; `vacuum_fluxLabel_eq_trivial` was
+replaced by `vacuum_inFluxSector_trivial`; preservation predicates now
+preserve sector predicates; row-pinning and plaquette-flip caveats were
+added to docstrings; and `fluxGap` / `localGlueballGap` are marked
+irreducible after their bridge/nonnegativity lemmas. The larger
+`CenterFluxSector.lean` electric/center-shift redesign is accepted as the
+next T3 target, not hidden inside the existing magnetic support file.
+
 ## lit:menotti-rp-source (seeded from the 2026-07-04 external review)
 
 The review cited a Springer item as "Menotti - general proof of OS

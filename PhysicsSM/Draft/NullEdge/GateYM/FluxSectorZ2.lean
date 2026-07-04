@@ -11,7 +11,8 @@ sector-correct D12 transfer-gap bookkeeping on the Z2 torus. The point of
 the file is deliberately narrow:
 
 * name the two Z2 winding-flux bits;
-* build the trivial-flux clause into the existing `SymmetrySector` API;
+* build a predicate-valued trivial-flux clause into the existing
+  `SymmetrySector` API;
 * distinguish the global flux gap from the local/glueball gap in Lean names;
 * record the abstract preservation lemma needed by later transfer and local
   plaquette-algebra statements;
@@ -25,6 +26,15 @@ It does not construct the transfer matrix, prove a spectral theorem, or claim
 that the local gap is positive. The concrete winding-cycle holonomy
 realization starts here at the Bool-array level; the Q2 transfer-matrix
 construction is a successor task.
+
+Important semantic caveat from the Fable Q3 review
+(`review:fable-q3-flux-sector`): these concrete support/projection
+statements are magnetic winding-label bookkeeping. They are useful finite
+identities, but they are not yet the final D12 electric/center-shift sector
+decomposition. Configuration-level plaquette flips do not preserve the
+base-cycle `windingLabel` in general; diagonal observable multiplication
+preserves support tautologically and should not be mistaken for a
+non-vacuous transfer-preservation theorem.
 
 Provenance: `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`, section 14,
 Q3, and `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`,
@@ -86,12 +96,14 @@ end FluxLabel
 /-- The Z2 torus quantum numbers used by the D12 sector convention.
 
 The fields are intentionally separate: Gauss invariance, spatial momentum,
-and winding flux are different labels. The Q3 local/glueball gap uses the
-trivial-flux sector, not the full Gauss-invariant space. -/
+and winding flux are different predicates. The Q3 local/glueball gap uses the
+trivial-flux sector, not the full Gauss-invariant space. A predicate family is
+used instead of a total label function so cross-sector superpositions need not
+be assigned a definite flux label. -/
 structure QuantumNumbers (State : Type*) where
   gaussInvariant : State -> Prop
   zeroMomentum : State -> Prop
-  fluxLabel : State -> FluxLabel
+  inFluxSector : FluxLabel -> State -> Prop
 
 namespace QuantumNumbers
 
@@ -99,7 +111,7 @@ variable {State : Type*} (Q : QuantumNumbers State)
 
 /-- The trivial winding-flux predicate induced by a Z2 flux label. -/
 def trivialFlux (psi : State) : Prop :=
-  Q.fluxLabel psi = FluxLabel.trivial
+  Q.inFluxSector FluxLabel.trivial psi
 
 /-- The underlying `TransferGapDefinition.SymmetrySector` selected by the
 Z2 torus quantum numbers. This is the API bridge to the existing D12
@@ -111,7 +123,7 @@ def symmetrySector : TransferGapDefinition.SymmetrySector State where
 
 /-- Membership in a named Z2 flux sector. -/
 def InFluxSector (label : FluxLabel) (psi : State) : Prop :=
-  Q.fluxLabel psi = label
+  Q.inFluxSector label psi
 
 theorem inFluxSector_trivial_iff (psi : State) :
     Q.InFluxSector FluxLabel.trivial psi ↔ Q.trivialFlux psi := by
@@ -124,9 +136,9 @@ theorem vacuum_iff (psi : State) :
       Q.gaussInvariant psi ∧ Q.zeroMomentum psi ∧ Q.trivialFlux psi := by
   rfl
 
-theorem vacuum_fluxLabel_eq_trivial {psi : State}
+theorem vacuum_inFluxSector_trivial {psi : State}
     (hpsi : (Q.symmetrySector).vacuum psi) :
-    Q.fluxLabel psi = FluxLabel.trivial :=
+    Q.InFluxSector FluxLabel.trivial psi :=
   hpsi.2.2
 
 end QuantumNumbers
@@ -187,9 +199,11 @@ structure TorusLinkField (Lx Ly : Nat) where
   vLink : Fin Lx -> Fin Ly -> Bool
 deriving Fintype
 
-/-- Multiplicative Z2 link factors for updating a torus link field. A later
-file can instantiate these factors as vertex-gauge coboundaries or local
-plaquette flips; this module only proves the base-cycle cancellation rule. -/
+/-- Multiplicative Z2 link factors for updating a torus link field.
+
+Only zero-parity link updates preserve the pinned base winding label.
+Vertex-gauge coboundaries satisfy that condition; arbitrary plaquette-flip
+updates need not. -/
 structure LinkFactor (Lx Ly : Nat) where
   hFactor : Fin Lx -> Fin Ly -> Bool
   vFactor : Fin Lx -> Fin Ly -> Bool
@@ -214,7 +228,11 @@ def baseY {Ly : Nat} (hLy : 0 < Ly) : Fin Ly :=
 def baseX {Lx : Nat} (hLx : 0 < Lx) : Fin Lx :=
   ⟨0, hLx⟩
 
-/-- The concrete Z2 winding-flux label from the two base cycles. -/
+/-- The concrete Z2 winding-flux label from the two base cycles.
+
+The chosen row/column is part of the convention. Other rows/columns can
+differ by intervening plaquette bits, so this is a pinned magnetic
+configuration label, not a row-independent electric sector label. -/
 def windingLabel (hLx : 0 < Lx) (hLy : 0 < Ly)
     (U : TorusLinkField Lx Ly) : FluxLabel where
   xFlux := U.xCycleFlux (baseY hLy)
@@ -317,8 +335,9 @@ theorem yCycleFlux_applyLinkFactor_of_base_zero (hLx : 0 < Lx)
   cases U.yCycleFlux (baseX hLx) <;> rfl
 
 /-- Link-factor updates with zero parity along both base cycles preserve the
-concrete Z2 winding label. This is the algebraic cancellation core for later
-gauge-coboundary and local-plaquette-preservation statements. -/
+concrete Z2 winding label. This is the algebraic cancellation core for
+gauge-coboundary preservation. It is not a claim about arbitrary local
+plaquette flips. -/
 theorem windingLabel_applyLinkFactor_of_base_zero (hLx : 0 < Lx) (hLy : 0 < Ly)
     (eta : LinkFactor Lx Ly) (U : TorusLinkField Lx Ly)
     (hetaX : xorList (List.ofFn (fun i : Fin Lx => eta.hFactor i (baseY hLy))) = false)
@@ -404,7 +423,11 @@ def applyWindingTransfer
 
 /-- A wavefunction on concrete Z2 torus link fields is supported in a named
 winding-flux sector when every configuration with nonzero amplitude has that
-label. -/
+label.
+
+This is a magnetic support notion for the pinned winding label, not the final
+electric/center-shift isotypic sector notion recommended by the Fable Q3
+review. -/
 def SupportedInFlux (hLx : 0 < Lx) (hLy : 0 < Ly) (label : FluxLabel)
     (psi : TorusLinkField Lx Ly -> Complex) : Prop :=
   forall U : TorusLinkField Lx Ly, psi U ≠ 0 -> windingLabel hLx hLy U = label
@@ -415,15 +438,17 @@ def SupportedInTrivialWinding (hLx : 0 < Lx) (hLy : 0 < Ly)
   SupportedInFlux hLx hLy FluxLabel.trivial psi
 
 /-- Multiplication by a diagonal observable on concrete Z2 torus link fields.
-Local plaquette-class functions are later instances of this general diagonal
-operation. -/
+This preserves magnetic support for the tautological reason that diagonal
+multiplication does not move configurations. Local plaquette-class functions
+are instances, but the load-bearing D12 local-algebra theorem should be the
+future electric/center-shift invariant version. -/
 def multiplyObservable (O psi : TorusLinkField Lx Ly -> Complex) :
     TorusLinkField Lx Ly -> Complex :=
   fun U => O U * psi U
 
 /-- Diagonal observable multiplication preserves support in every winding-flux
-sector. This is the abstract support-level reason local plaquette
-multiplication operators preserve the sector decomposition. -/
+sector. This is true support bookkeeping, not the final non-vacuous local
+plaquette-algebra preservation theorem for electric/center-shift sectors. -/
 theorem supportedInFlux_multiplyObservable (hLx : 0 < Lx) (hLy : 0 < Ly)
     (label : FluxLabel) (O psi : TorusLinkField Lx Ly -> Complex)
     (hpsi : SupportedInFlux hLx hLy label psi) :
@@ -531,31 +556,29 @@ theorem supportedInTrivialWinding_applyWindingTransfer
 
 end TorusLinkField
 
-/-- A state map preserves the Z2 winding-flux label. Later Q3 files will
-instantiate this for the transfer kernel/projection and for local plaquette
-operators. -/
-def PreservesFluxLabel {State : Type*} (Q : QuantumNumbers State)
+/-- A state map preserves every named Z2 flux-sector predicate. Later Q3
+files can instantiate this for transfer or local operators once the
+appropriate sector predicates are frozen. -/
+def PreservesFluxSectors {State : Type*} (Q : QuantumNumbers State)
     (F : State -> State) : Prop :=
-  forall psi : State, Q.fluxLabel (F psi) = Q.fluxLabel psi
+  forall label psi, Q.InFluxSector label psi -> Q.InFluxSector label (F psi)
 
 /-- A state map preserves all three D12 quantum-number predicates. This is
-kept separate from `PreservesFluxLabel` so later theorems can prove only the
-flux part for local plaquette operators when Gauss/momentum preservation is
+kept separate from `PreservesFluxSectors` so later theorems can prove only the
+flux-sector part for local operators when Gauss/momentum preservation is
 handled elsewhere. -/
 def PreservesQuantumNumbers {State : Type*} (Q : QuantumNumbers State)
     (F : State -> State) : Prop :=
   (forall psi : State, Q.gaussInvariant psi -> Q.gaussInvariant (F psi)) ∧
     (forall psi : State, Q.zeroMomentum psi -> Q.zeroMomentum (F psi)) ∧
-    PreservesFluxLabel Q F
+    PreservesFluxSectors Q F
 
-theorem preserves_trivialFlux_of_preservesFluxLabel {State : Type*}
+theorem preserves_trivialFlux_of_preservesFluxSectors {State : Type*}
     (Q : QuantumNumbers State) (F : State -> State)
-    (hF : PreservesFluxLabel Q F) {psi : State}
+    (hF : PreservesFluxSectors Q F) {psi : State}
     (hpsi : Q.trivialFlux psi) :
-    Q.trivialFlux (F psi) := by
-  unfold QuantumNumbers.trivialFlux at hpsi ⊢
-  rw [hF psi]
-  exact hpsi
+    Q.trivialFlux (F psi) :=
+  hF FluxLabel.trivial psi hpsi
 
 theorem preserves_vacuum_of_preservesQuantumNumbers {State : Type*}
     (Q : QuantumNumbers State) (F : State -> State)
@@ -563,7 +586,7 @@ theorem preserves_vacuum_of_preservesQuantumNumbers {State : Type*}
     (hpsi : (Q.symmetrySector).vacuum psi) :
     (Q.symmetrySector).vacuum (F psi) := by
   exact ⟨hF.1 psi hpsi.1, hF.2.1 psi hpsi.2.1,
-    preserves_trivialFlux_of_preservesFluxLabel Q F hF.2.2 hpsi.2.2⟩
+    preserves_trivialFlux_of_preservesFluxSectors Q F hF.2.2 hpsi.2.2⟩
 
 /-- Global winding-flux gap. This name is reserved for the energy separation
 between the trivial sector and nontrivial winding-flux sectors. It is not the
@@ -598,6 +621,8 @@ theorem localGlueballGap_pos {lambda0 lambdaLocal : Real}
     (h0 : 0 < lambda0) (h1 : 0 < lambdaLocal) (hlt : lambdaLocal < lambda0) :
     0 < localGlueballGap lambda0 lambdaLocal :=
   TransferGapDefinition.finiteMassGap_pos h0 h1 hlt
+
+attribute [irreducible] fluxGap localGlueballGap
 
 end FluxSectorZ2
 end GateYM
