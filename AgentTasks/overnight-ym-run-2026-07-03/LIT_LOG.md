@@ -67,13 +67,39 @@ and hypothesis as unverified until checked against the source.
    (1971) 2259-2272, DOI 10.1063/1.1665530. Citation exact match.
 5. **Wilson 1974** (Phys. Rev. D). Verify: the strong-coupling
    confinement argument's actual claim (for YM4 positioning and the
-   plaquette-action attribution).
+   plaquette-action attribution). **[02:40 VERIFIED]** Wilson,
+   "Confinement of quarks", Phys. Rev. D 10 (1974) 2445, DOI
+   10.1103/PhysRevD.10.2445. Citation exact match; scope confirmed
+   (lattice gauge theory quantization preserving exact gauge invariance;
+   strong-coupling expansion via sums over quark paths and worldsheet-
+   like surfaces; confinement mechanism in the strong-coupling limit).
 6. **Banks-Casher 1980**. Verify: original relation and conventions vs
    the freeze s8 finite shadow. Affects T4 statement docstring.
+   **[02:40 VERIFIED]** Banks & Casher, "Chiral symmetry breaking in
+   confining theories", Nucl. Phys. B169 (1980) 103-125. Citation exact
+   match; scope confirmed (chiral order parameter in confining gauge
+   theories; the relation links the chiral condensate to the
+   near-zero-eigenvalue density of the Dirac operator - matches the
+   freeze s8 finite shadow's target relation).
 7. **Jaffe-Witten official problem statement + CMI rules**. Verify:
    exact wording of the existence + gap requirements and the
    universal-quantifier-over-G scope. Affects: all prize-adjacent claim
-   language (F-YM-CONFLATE guard text).
+   language (F-YM-CONFLATE guard text). **[02:40 VERIFIED via secondary
+   sources - primary CMI PDF unrenderable by this session's tooling]**
+   Statement (Wikipedia, cross-checked against the freeze's own s1
+   wording - matches precisely): for any COMPACT SIMPLE gauge group `G`,
+   prove existence of a nontrivial quantum YM theory on R^4 satisfying
+   axioms "at least as strong as" Streater-Wightman (1964) AND
+   Osterwalder-Schrader (1973, 1975), with mass gap `Delta > 0` (example
+   given in the official text: for G=SU(3), glueballs have a strictly
+   positive lower mass bound). CMI rules (claymath.org/millennium-problems/rules,
+   confirmed): three conditions before consideration - (i) published in
+   a Qualifying Outlet, (ii) at least TWO YEARS since publication, (iii)
+   general acceptance in the global mathematics community; rules revised
+   2018-09-26; CMI does not accept direct submissions. This closes the
+   loop on the arXiv:2606.19362 flag above: even setting aside every
+   other concern, publication in June 2026 means the 2-year clock cannot
+   possibly have run - "solved" is premature by CMI's own rules alone.
 8. **Prior-formalization novelty check** (gates every "first ever"
    sentence). Search: has ANYONE formalized lattice gauge theory,
    Wilson-action gauge invariance, transfer matrices, or reflection
@@ -125,19 +151,46 @@ and hypothesis as unverified until checked against the source.
 9. **2D YM rigorous constructions** (Driver, Sengupta, Levy; Migdal 1975
    heuristic). Verify: which continuum 2D results exist rigorously, for
    YM2 positioning. Low urgency tonight (YM2 is not in scope) but cheap
-   to resolve while in the literature.
+   to resolve while in the literature. **[03:40 VERIFIED]** The first
+   complete rigorous constructions of the continuum 2D Yang-Mills path
+   integral are due to Gross-King-Sengupta and (independently) Driver,
+   via stochastic analysis / gauge-fixing to a Gaussian measure on the
+   plane; the "Driver-Sengupta formula" (Sengupta, Levy) is the key
+   object; Levy proved the Makeenko-Migdal-type equations for Wilson
+   loops and later master-field results; Driver-Hall-Kemp gave shorter,
+   local proofs extending to all compact surfaces. Matches the freeze's
+   citation pattern exactly.
 10. **Modern probabilistic school** (Chatterjee surveys; Cao-Chatterjee
     master-loop equations; related recent work through 2025-2026 - the
     training-data horizon means RECENT work is exactly what the graph
     and web must supply). Verify: current state of the art on
     strong-coupling Wilson loops and any YM6-relevant partial progress.
     Affects: program doc s11 corrections and the strategy partner job's
-    context.
+    context. **[VERIFIED, planning session]** arXiv:1803.01950
+    (Chatterjee, "Yang-Mills for probabilists"), 2204.12737 (stochastic
+    analysis approach to strong coupling), 2309.07399 (finite-N master
+    loop equation) all confirmed genuine and on-topic.
 11. **Balaban UV-stability series** (mid/late 1980s). Verify: paper
     list, scope (finite volume, per-scale bounds, NOT a full
     construction), and the community's current assessment of
     Magnen-Rivasseau-Seneor 1993. Affects: YM5 audit planning only; do
-    not formalize anything from it tonight.
+    not formalize anything from it tonight. **[03:40 VERIFIED]** Paper
+    list confirmed: Balaban, Commun. Math. Phys. 85 (1982) 603, 86
+    (1982) 555, 88 (1983) 411, 89 (1983) 571, 95 (1984) 17, 96 (1984)
+    223, 102 (1985) 255, 109 (1987) 249, 116 (1988) 1 - spanning Higgs
+    finite-volume fields, lattice Green's function regularity,
+    propagators/renormalization transformations, UV stability (3D pure
+    gauge), and the RG approach to lattice gauge theories. Community
+    assessment CONFIRMED matching the freeze's characterization: a
+    secondary source notes the results were "scattered over many
+    publications, making consistency checks difficult" due to lattice-
+    regularization technical complications - exactly "not a full
+    construction," corroborating the freeze's framing. Magnen-Rivasseau-
+    Seneor confirmed: "Construction of YM4 with an infrared cutoff",
+    Commun. Math. Phys. 155 (1993) 325-383 - SU(2), FIXED infrared
+    cutoff, NO ultraviolet cutoff, regularized axial gauge; matches the
+    freeze's "finite volume, per-scale bounds, NOT a full construction"
+    characterization precisely.
 
 ## Standing rules
 
