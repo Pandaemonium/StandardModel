@@ -20,6 +20,15 @@ by an elementary argument that needs no diagonalization:
   `|wilsonNormalizedGamma beta rho R| <= 1`. The Wilson weight positivity
   supplies the strictly positive denominator.
 - `wilsonStringTension_nonneg`: hence the string tension is nonnegative.
+- `norm_wilsonNormalizedGamma_le_one'` / `wilsonStringTension_nonneg'`:
+  UNCONDITIONAL forms (queue item Q4 closed) via
+  `FDRepUnitarizable.fdRep_exists_unitary_matrix_model`.
+- `wilsonNormalizedGamma_re_mem_Icc` (queue item Q5 closed): combining
+  `FusionTransferSpectrum.wilsonNormalizedGamma_conj_eq_self` (reality)
+  with `norm_wilsonNormalizedGamma_le_one'`, the normalized Wilson fusion
+  eigenvalue's real part lies in `[-1, 1]` - orders the fusion-operator
+  spectrum below the vacuum eigenvalue `1`, with NO matrix-model
+  hypothesis needed for either `rho` (still required, standard) or `R`.
 
 ## The explicit hypothesis (not smuggled in)
 
@@ -191,6 +200,31 @@ theorem wilsonStringTension_nonneg' {n : ℕ} (beta : ℝ)
   obtain ⟨n', rho', hmul', hone', hunit', hmodel⟩ :=
     FDRepUnitarizable.fdRep_exists_unitary_matrix_model R
   exact wilsonStringTension_nonneg beta rho R rho' hone' hunit' hmodel
+
+/-- **Q5 closed: `wilsonNormalizedGamma` lies in `[-1, 1]`.** Combining
+reality (`FusionTransferSpectrum.wilsonNormalizedGamma_conj_eq_self`) with
+vacuum dominance (`norm_wilsonNormalizedGamma_le_one'`, unconditional for
+every simple `FDRep`): the normalized Wilson fusion eigenvalue, viewed as a
+real number via its self-conjugate cast, lies in the closed interval
+`[-1, 1]`. This does NOT claim `gamma >= 0` (false in general - alternating
+characters can give a negative fusion eigenvalue); the honest statement is
+the two-sided bound. This orders the fusion-operator spectrum below the
+vacuum eigenvalue `1` (attained at the trivial representation), the
+prerequisite queue item Q5 wanted for the D12 gap definition. -/
+theorem wilsonNormalizedGamma_re_mem_Icc {n : ℕ} (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (R : FDRep ℂ G) [Simple R] :
+    (Theorem2AreaLaw.wilsonNormalizedGamma beta rho R).re ∈ Set.Icc (-1 : ℝ) 1 := by
+  have hreal : ((Theorem2AreaLaw.wilsonNormalizedGamma beta rho R).re : ℂ)
+      = Theorem2AreaLaw.wilsonNormalizedGamma beta rho R :=
+    Complex.conj_eq_iff_re.mp
+      (FusionTransferSpectrum.wilsonNormalizedGamma_conj_eq_self beta rho hmul hone hunit R)
+  have hbound : ‖Theorem2AreaLaw.wilsonNormalizedGamma beta rho R‖ ≤ 1 :=
+    norm_wilsonNormalizedGamma_le_one' beta rho R
+  rw [← hreal, Complex.norm_real, Real.norm_eq_abs] at hbound
+  exact abs_le.mp hbound
 
 end WilsonVacuumDominance
 end GateYM

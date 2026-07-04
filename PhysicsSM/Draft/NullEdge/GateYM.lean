@@ -120,11 +120,13 @@ sum, and characters of simple complex `FDRep`s are eigenvectors with the
 fusion eigenvalue, for ANY class-function weight; plus the string-tension
 restatement `|<W_R>| = |chi_R(1)| exp(-sigma * area)` of the
 independent-plaquette area law under an explicit `gamma != 0` hypothesis.
-Deliberately NOT claimed: reality/ordering/positivity of eigenvalues, the
-character bound `|chi(g)| <= chi(1)` (vacuum dominance `|gamma| <= 1`), and
-any identification with `TransferGapDefinition.finiteMassGap` - those are the
-next honest gap-lane targets; axiom footprint
-[propext, Classical.choice, Quot.sound]);
+Also `character_inv_eq_conj` (UNCONDITIONAL `chi(g^-1) = conj(chi(g))` for
+every `FDRep`, via `FDRepUnitarizable`) and `wilsonNormalizedGamma_conj_eq_self`
+(reality of `wilsonNormalizedGamma` for unitary gauge `rho` - queue item Q5's
+reality half, closed). Deliberately NOT (yet) claimed: strict positivity or
+the full spectral-gap assembly, and any identification with
+`TransferGapDefinition.finiteMassGap` - those are the next honest gap-lane
+targets; axiom footprint [propext, Classical.choice, Quot.sound]);
 `FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every
 finite-dimensional complex representation of a finite group admits a
 unitary matrix model - Weyl's unitarian trick in pure matrix algebra
@@ -137,7 +139,10 @@ models - diagonal entries of a unitary matrix have modulus at most 1, hence
 tension, under an explicit `R.character g = tr (rho' g)` unitary
 matrix-model hypothesis, PLUS the UNCONDITIONAL forms
 `norm_wilsonNormalizedGamma_le_one'` / `wilsonStringTension_nonneg'` for
-every simple `R` (queue item Q4 closed, via `FDRepUnitarizable`); axiom
+every simple `R` (queue item Q4 closed, via `FDRepUnitarizable`), and
+`wilsonNormalizedGamma_re_mem_Icc` (queue item Q5's ordering half closed:
+combining reality with vacuum dominance gives `gamma.re in [-1, 1]`,
+ordering the fusion spectrum below the vacuum eigenvalue `1`); axiom
 footprint [propext, Classical.choice, Quot.sound]);
 `EnsembleComplexBridge` (YM0/YM1 connector: the complex Wilson link
 partition/numerator/expectation of `TreeGaugeBridge` are literally the casts

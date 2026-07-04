@@ -2,6 +2,7 @@ import Mathlib
 import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
+import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 
 /-!
 # Gate YM1/YM-gap lane: the fusion convolution as a transfer operator with
@@ -34,15 +35,26 @@ mass-gap definition (`TransferGapDefinition.lean`) will eventually consume:
   `sigma := -log |wilsonNormalizedGamma|`, under the explicit nondegeneracy
   hypothesis `wilsonNormalizedGamma != 0`.
 
+- `character_inv_eq_conj`: UNCONDITIONAL character-inversion-conjugation
+  `chi_R(g^-1) = conj(chi_R(g))` for every `FDRep` (not just simple), via
+  `FDRepUnitarizable`'s unconditional unitary matrix model. Closes queue
+  item Q5's reality prerequisite (previously "needs conjugation symmetry
+  of characters", now discharged for every representation).
+- `wilsonNormalizedGamma_conj_eq_self`: `wilsonNormalizedGamma` is
+  self-conjugate (real), for a unitary gauge representation `rho` and ANY
+  simple `FDRep` observable `R` - the reality half of Q5.
+- The ordering half of Q5 (`wilsonNormalizedGamma_re_mem_Icc`, combining
+  reality with vacuum dominance to give `gamma.re in [-1, 1]`) lives in
+  `WilsonVacuumDominance.lean` to avoid a circular import (that module
+  already imports this one).
+
 ## What this module does NOT claim (explicit)
 
 - No identification with `TransferGapDefinition.finiteMassGap` yet: that
   definition wants REAL ordered eigenvalues `0 < lambda1 <= lambda0`.
-  Missing prerequisites, deliberately not smuggled in: reality of the
-  Wilson fusion eigenvalues (needs conjugation symmetry of characters),
-  the character bound `|chi_R(g)| <= chi_R(1)` giving
-  `|gamma| <= 1` (spectral dominance of the vacuum), and strict
-  positivity. These are the next honest targets for the gap lane.
+  Q5 (eigenvalue reality + the `[-1, 1]` bound) is now closed; strict
+  positivity and the actual spectral-gap assembly remain the next honest
+  targets for the gap lane.
 - No claim that `convLeftLinear` restricted to class functions is the FULL
   transfer matrix of a concrete lattice; that identification goes through
   the tree-gauge layer (`TreeGaugeBridge.lean` and Aristotle job
@@ -50,7 +62,8 @@ mass-gap definition (`TransferGapDefinition.lean`) will eventually consume:
 
 Claim label: **finite identity**. Draft-trust: kernel-checked, no
 `s o r r y`, no `n a t i v e _ d e c i d e`. Prerequisites:
-`FusionConvolution`, `Theorem2AreaLaw`, `IndependentPlaquetteEnsemble`.
+`FusionConvolution`, `Theorem2AreaLaw`, `IndependentPlaquetteEnsemble`,
+`FDRepUnitarizable`.
 -/
 
 noncomputable section
@@ -121,6 +134,7 @@ theorem character_one_ne_zero (R : FDRep ℂ G) [Simple R] :
     omega
   exact_mod_cast Module.finrank_pos.ne'
 
+omit [Fintype G] in
 /-- The character of a simple complex `FDRep` is nonzero as a function. -/
 theorem character_ne_zero (R : FDRep ℂ G) [Simple R] :
     (R.character : G → ℂ) ≠ 0 := by
@@ -233,6 +247,83 @@ theorem norm_wilson_loop_expectation_exp {n : ℕ} (beta : ℝ)
   ring_nf
 
 end StringTension
+
+/-! ## Eigenvalue reality (queue item Q5) -/
+
+section EigenvalueReality
+
+omit [Fintype G] in
+/-- **Unconditional character-inversion-conjugation.** For ANY finite
+group `G` and ANY `FDRep C G` (not just simple ones - no hypothesis on
+`rho` needed, unlike the Route B `reChar_inv_of_unitary` this specializes
+from), `chi(g^-1) = conj(chi(g))`. Discharged via
+`FDRepUnitarizable.fdRep_exists_unitary_matrix_model` (every `FDRep` is
+unitarizable) plus `WilsonWeightPositivity.rho_inv_eq_conjTranspose` and
+trace-conjugate-transpose. This is the `conj(chi_R(g)) = chi_R(g^-1)`
+bridge flagged as absent from Mathlib (freeze section 15), now proved for
+every representation rather than assumed. -/
+theorem character_inv_eq_conj {G : Type} [Group G] [Fintype G]
+    (R : FDRep ℂ G) (g : G) :
+    R.character g⁻¹ = (starRingEnd ℂ) (R.character g) := by
+  obtain ⟨n', rho', hmul', hone', hunit', hmodel⟩ :=
+    FDRepUnitarizable.fdRep_exists_unitary_matrix_model R
+  rw [hmodel g⁻¹, hmodel g,
+    WilsonWeightPositivity.rho_inv_eq_conjTranspose rho' hmul' hone' hunit' g,
+    Matrix.trace_conjTranspose]
+  rfl
+
+/-- **`wilsonNormalizedGamma` is real.** For a unitary gauge representation
+`rho` (the Wilson weight's own hypothesis - already required by every
+`Theorem2AreaLaw`/`WilsonVacuumDominance` theorem), the normalized Wilson
+fusion eigenvalue is self-conjugate for EVERY simple `FDRep` observable `R`,
+with no separate unitarity hypothesis on `R` needed (character conjugation
+is unconditional, see `character_inv_eq_conj`). Route: the numerator
+`sum_g w(g) chi(g^-1)` is self-conjugate by reindexing `g -> g^-1` and using
+`chi(g^-1) = conj(chi(g))` plus `w(g^-1) = w(g)`
+(`Theorem2AreaLaw.wilsonLocalWeightC_inv_of_unitary`); `chi(1)` is a real
+natural-number cast (`FDRep.char_one`); the one-plaquette sum
+`wilsonPlaquetteSumC` is a real cast by construction. -/
+theorem wilsonNormalizedGamma_conj_eq_self {n : ℕ} (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (R : FDRep ℂ G) [Simple R] :
+    (starRingEnd ℂ) (Theorem2AreaLaw.wilsonNormalizedGamma beta rho R)
+      = Theorem2AreaLaw.wilsonNormalizedGamma beta rho R := by
+  unfold Theorem2AreaLaw.wilsonNormalizedGamma
+  have hnum : (starRingEnd ℂ)
+      (∑ g : G, Theorem2AreaLaw.wilsonLocalWeightC beta rho g * R.character g⁻¹)
+      = ∑ g : G, Theorem2AreaLaw.wilsonLocalWeightC beta rho g * R.character g⁻¹ := by
+    rw [map_sum]
+    have hwreal : ∀ g : G, (starRingEnd ℂ) (Theorem2AreaLaw.wilsonLocalWeightC beta rho g)
+        = Theorem2AreaLaw.wilsonLocalWeightC beta rho g := by
+      intro g
+      rw [Theorem2AreaLaw.wilsonLocalWeightC, Complex.conj_ofReal]
+    have hstep : ∀ g : G,
+        (starRingEnd ℂ) (Theorem2AreaLaw.wilsonLocalWeightC beta rho g
+          * R.character g⁻¹)
+          = Theorem2AreaLaw.wilsonLocalWeightC beta rho g⁻¹ * R.character g := by
+      intro g
+      rw [map_mul, character_inv_eq_conj R g, Complex.conj_conj, hwreal g,
+        Theorem2AreaLaw.wilsonLocalWeightC_inv_of_unitary beta rho hmul hone hunit g]
+    simp_rw [hstep]
+    rw [← Equiv.sum_comp (Equiv.inv G)
+      (fun g => Theorem2AreaLaw.wilsonLocalWeightC beta rho g⁻¹ * R.character g)]
+    refine Finset.sum_congr rfl ?_
+    intro g _hg
+    simp only [Equiv.inv_apply, inv_inv]
+  have hchar1 : (starRingEnd ℂ) (R.character 1) = R.character 1 := by
+    rw [FDRep.char_one]
+    simp
+  have hZ : (starRingEnd ℂ) (Theorem2AreaLaw.wilsonPlaquetteSumC beta rho)
+      = Theorem2AreaLaw.wilsonPlaquetteSumC beta rho := by
+    have hcast : Theorem2AreaLaw.wilsonPlaquetteSumC beta rho
+        = ((∑ g : G, WilsonLocalWeight.wilsonLocalWeight beta rho g : ℝ) : ℂ) := by
+      simp [Theorem2AreaLaw.wilsonPlaquetteSumC, Theorem2AreaLaw.wilsonLocalWeightC]
+    rw [hcast, Complex.conj_ofReal]
+  rw [map_div₀, map_div₀, hnum, hchar1, hZ]
+
+end EigenvalueReality
 
 end FusionTransferSpectrum
 end GateYM
