@@ -565,3 +565,158 @@ them in a paper or gate document is an F-YM-CONFLATE-class violation:
 The enforcement rule is the existing F-YM-CONFLATE control (section 9),
 extended by this taxonomy: a claim about one row may not borrow evidence or
 language from another row without an explicit conversion argument.
+
+## 14. Live formalization work queue (frozen 2026-07-04; for agents and Aristotle)
+
+This section is the coordination surface for filling in the ladder's open
+pieces. It supersedes ad-hoc task hunting: pick the lowest-numbered
+unclaimed item whose prerequisites are met, follow the protocols, and
+update this section's status notes when an item closes.
+
+**Protocols (binding).** All work lands in the DRAFT tree
+(`PhysicsSM/Draft/NullEdge/GateYM/`), wired into the `GateYM.lean`
+aggregator with a docstring paragraph; explicit claim labels; statements
+frozen (in the target file's docstring or a task note) BEFORE proof search;
+`lake env lean` on the literal touched file plus the aggregate GateYM build
+before claiming green; axiom audit (`#print axioms`) recorded for every
+public theorem; ONE active YM Aristotle job at a time (focused
+Mathlib-only packages via `Scripts/prepare_aristotle_focused_submission.ps1`;
+convention-pin `rfl` lemmas in the skeleton where applicable - see
+`AgentTasks/ym1-treegauge-rect-aristotle-2026-07-04.md` for the pattern
+that produced a 16-minute general-case success); task note with the yaml
+metadata block per `docs/ARISTOTLE.md`.
+
+**Status snapshot (2026-07-04).** Kernel-checked and integrated, standard
+axiom footprint: Lemma 2a fusion (Aristotle `3435c7a3`), Lemma 2b +
+independent-plaquette area law (`IndependentPlaquetteEnsemble`), generic
+tree-gauge bridge (`TreeGaugeBridge`), concrete 2D comb-gauge
+coordinatization + concrete-lattice area law (Aristotle `1d9b5b19`,
+`RectTreeGauge`), fusion transfer spectrum + string tension
+(`FusionTransferSpectrum`), conditional vacuum dominance
+(`WilsonVacuumDominance`), real/complex ensemble connector
+(`EnsembleComplexBridge`), and RP-KER - the master finite
+reflection-positivity kernel theorem (`ReflectionPositivityKernel`:
+per-cut PSD kernels imply OS positivity; factorized and mixture weight
+classes closed end-to-end). Active Aristotle: `d4a9bd1f`
+(unitarizability, item Q4).
+
+**The attack graph** (adopted 2026-07-04 from a second external model
+review, screened against repo state; its "Job 1" and "Job 6" were already
+done/submitted at adoption time):
+
+```text
+RP-KER (DONE)
+  -> Q1 Wilson cut factorization -> Q2 transfer Hilbert space
+  -> Q3 D12 sector-correct transfer matrix
+  -> Q4 unitarizability (OUT: d4a9bd1f) -> Q5 eigenvalue ordering
+  -> Q6 KP abstract polymer conclusion -> Q7 strong-coupling polymer map
+  -> Q8 exponential clustering -> Q9 finite strong-coupling gap (YM4)
+  -> Q10 infinite-volume state by cluster series
+  -> (later) Peter-Weyl / compact extension; Balaban compression; YM6.
+```
+
+### The queue
+
+- **Q1 (Wilson cut factorization; in-repo agent + possible Aristotle
+  finisher; medium).** Instantiate `ReflectionPositivityKernel` for the
+  Wilson ensemble on a link-reflection lattice: produce the mirror
+  coordinates `(A, C, A)` from the T3 `Reflection` structure
+  (`ReflectionCore` link classification + `WilsonReflectionCompatibility`),
+  show the no-cut-plaquette part of the weight is factorized
+  (`cutKernel_posSemidef_of_factorized`), and reduce the cut-plaquette
+  couplings to the mixture corollary via a spectral decomposition of the
+  one-plaquette kernel: `wilsonKernel_posSemidef` +
+  `hadamard_posSemidef` (Schur products) give the PSD input; any PSD
+  kernel is a nonnegative mixture of rank-one squares. Deliverable:
+  `wilson_reflectionForm_nonneg` on a concrete reflection lattice
+  (the `ReflectionCutExample` two-layer model is the minimal instance).
+  This CLOSES RP-LINK at the finite level.
+- **Q2 (transfer Hilbert space from RP; medium-hard; design first).**
+  From `IsReflectionPositive W`: the sesquilinear form
+  `<f, g> := reflectionForm`-polarized, quotient by the null space,
+  finite-dimensional inner-product space, and the transfer operator as a
+  positive self-adjoint operator on it. Mathlib has the quadratic-form
+  and quotient machinery; the design note should fix the polarization
+  convention first. Kill condition (adopted): if the null-edge/Wilson
+  weight cannot be given a PSD cut kernel (Q1 fails), the transfer route
+  is blocked and this item is renamed, not fudged.
+- **Q3 (D12 sector-correct transfer matrix; design theorem; medium).**
+  Adopted target, superseding any naive Gauss-sector gap statement (the
+  oracle's 2x2-torus discovery stands): define the flux-sector
+  decomposition of the Gauss-invariant space, prove the transfer operator
+  PRESERVES it, and prove the local plaquette algebra preserves the
+  trivial-flux sector. Two named spectral quantities: flux gap vs
+  glueball/local gap. `TransferGapDefinition.finiteMassGap` refers to the
+  LOCAL gap only. Kill condition (adopted): if the lowest excitation is
+  always a global flux sector, the finiteMassGap theorem target must be
+  renamed and redefined - no silent substitution.
+- **Q4 (finite-group unitarizability; OUT at Aristotle `d4a9bd1f`).**
+  Every `FDRep C G` (finite `G`) has a unitary matrix model. Harvest
+  checklist in `AgentTasks/ym-gap-unitarizability-aristotle-2026-07-04.md`;
+  on integration, strip the matrix-model hypothesis from
+  `WilsonVacuumDominance`.
+- **Q5 (eigenvalue reality and ordering; medium; after Q4).** The Wilson
+  fusion eigenvalues (`FusionTransferSpectrum`) are real for
+  inversion-symmetric real weights (proof sketch: `chi(g^-1) =
+  conj(chi(g))` from the unitary matrix model of Q4, then the `g -> g^-1`
+  reindexing); combined with `|gamma| <= 1` this orders the spectrum below
+  the vacuum eigenvalue and feeds the D12 gap definition.
+- **Q6 (KP conclusion as an abstract polymer theorem; hard; Aristotle
+  strategy job first).** Adopted scoping: do NOT start with full Ursell
+  generality. Finite polymer set, finite cluster expansion, tree-graph
+  bound, and the tail estimate
+  `sum over clusters touching X, distance >= R  <= C_X exp(-m R)`.
+  Statement freeze on top of `PolymerKPCriterion.lean` (which froze the
+  CONDITION only). This is the single most reusable analysis asset in the
+  program (Measure Problem shares it).
+- **Q7 (strong-coupling polymer map; medium-hard; after Q6 freeze).** Map
+  the finite-group character/plaquette expansion into the abstract polymer
+  model and verify the KP condition for `beta < beta_0`, with
+  volume-uniform constants. Kill condition (adopted): if the KP constants
+  are not volume-uniform, YM4 does not give an infinite-volume gap -
+  report, do not weaken.
+- **Q8 (exponential clustering of local loop observables; after Q6+Q7).**
+  Connected correlators of local gauge-invariant plaquette/loop operators
+  decay exponentially at strong coupling. Observable-level FIRST (adopted
+  sequencing); the spectral upgrade is Q9.
+- **Q9 (YM4 finite strong-coupling gap; after Q1-Q3, Q8).** Combine the
+  transfer Hilbert space, sector decomposition, and clustering into a
+  finite-volume (target: volume-uniform) spectral gap in the
+  trivial-flux/local sector. The cyclicity/density of the local algebra in
+  the vacuum sector is a NAMED prerequisite lemma, not a footnote -
+  another place a fake gap could slip in.
+- **Q10 (infinite-volume local state via cluster series; after Q6-Q8).**
+  Adopted route: define infinite-volume expectations of local observables
+  DIRECTLY by the absolutely convergent cluster series and prove
+  finite-volume expectations converge to them. Deliberately bypasses
+  general Gibbs-state/weak-* infrastructure at first pass.
+- **Q11 (boundary-circuit lasso identification; medium; independent of
+  Q1-Q10).** The last YM1 Theorem 2 layer: on `RectTreeGauge`'s lattice,
+  `chi(hol of the rectangle boundary) = chi(orderedProd of ALL plaquette
+  holonomies)` in the ensemble, with the ordering already derived
+  (row-major, `i` REVERSED within each row; at tree-links = 1 the per-row
+  products telescope to the right column, and the general case reduces to
+  the tree-gauge slice by a rooted gauge transformation whose plaquette
+  coordinates are componentwise conjugates - class function kills them).
+  Statement freeze + focused Aristotle package; the naive pointwise
+  identity at general tree values is expected FALSE - do not attempt it.
+- **Q12 (Peter-Weyl / compact extension; LATER, do not block).** Adopted
+  posture: finite groups first, then `U(1)`, then hand-built `SU(2)` if
+  needed, then general Peter-Weyl as its own Mathlib-facing project. Kill
+  condition (adopted, advertising rule): until then, all results are
+  advertised as finite-group lattice gauge theorems, never as compact
+  Yang-Mills.
+
+**Deferred (registered, not queued):** Balaban by "dependency
+compression" (dependency graph -> smallest representative kernel estimate
+-> source contract -> red-team one implication; fits the existing YM5
+audit posture); YMG1-UNIV/YMG2-RG universality bridges (Tier 1-adjacent;
+YMG0-CONV in section 6 is the only near-term piece); QCD3.
+
+**Provenance.** Queue structure and sequencing adopted 2026-07-04 from a
+second external model review after screening (its Job 1 = RP-KER was
+already proved in-repo the same day; its Job 6 = Q4 was already submitted;
+its D12 sector design and KP/infinite-volume scoping were adopted; its
+citation of Menotti-Osterwalder-style RP-for-Wilson-action sources is
+UNVERIFIED and goes to the section 11 debt register discipline before any
+paper cites it).
