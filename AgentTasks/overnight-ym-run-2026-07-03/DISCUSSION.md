@@ -420,6 +420,15 @@ layer that `idea:rp-link-scope` needs before Wilson action and RP
 factorization can be stated. It is still not a concrete C-2 rectangular
 plaquette list, reflection/cut structure, transfer matrix, or D12 sector.
 
+**Codex extension (02:43):** extended `LatticeEnsemble.lean` with the
+generic finite-measure consequence of gauge-invariant weights:
+`numerator_observable_comp_gauge_of_weight_invariant` and
+`expectation_observable_comp_gauge_of_weight_invariant`. These say that
+if a weight is invariant under a fixed gauge transformation, applying that
+gauge transformation only to the observable leaves the weighted numerator
+and expectation unchanged. This is still finite-sum bookkeeping, not an
+orbit-average theorem or reflection-positivity statement.
+
 ## idea:qcd1-scope
 
 Claude 02:05 (T4). Landed `PhysicsSM/Draft/NullEdge/GateYM/BanksCasherShadow.lean`:

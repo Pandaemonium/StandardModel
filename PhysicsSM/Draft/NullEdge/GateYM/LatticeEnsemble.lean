@@ -17,7 +17,8 @@ The module intentionally stays abstract:
 
 It provides the finite sums that those later constructions will consume:
 partition function, numerator, expectation, positivity for positive weights,
-and change of variables under a fixed gauge transformation.
+change of variables under a fixed gauge transformation, and the basic
+consequence for gauge-invariant weights acting on transformed observables.
 
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`.
 Claim label: **finite identity** (finite-sum ensemble skeleton).
@@ -95,6 +96,41 @@ theorem expectation_comp_gauge [Fintype (Λ.LinkField (G := G))]
       = expectation Λ weight observable := by
   unfold expectation
   rw [numerator_comp_gauge, partition_comp_gauge]
+
+/-- If the weight is invariant under a fixed gauge transformation, then
+applying that gauge transformation only to the observable does not change the
+weighted numerator. -/
+theorem numerator_observable_comp_gauge_of_weight_invariant
+    [Fintype (Λ.LinkField (G := G))]
+    (g : Λ.V → G)
+    (weight : Λ.LinkField (G := G) → ℝ)
+    (observable : Λ.LinkField (G := G) → ℝ)
+    (hweight : ∀ U, weight (Λ.gauge g U) = weight U) :
+    numerator Λ weight (fun U => observable (Λ.gauge g U))
+      = numerator Λ weight observable := by
+  calc
+    numerator Λ weight (fun U => observable (Λ.gauge g U))
+        = numerator Λ (fun U => weight (Λ.gauge g U))
+            (fun U => observable (Λ.gauge g U)) := by
+          unfold numerator
+          refine Finset.sum_congr rfl ?_
+          intro U _hU
+          rw [← hweight U]
+    _ = numerator Λ weight observable := numerator_comp_gauge Λ g weight observable
+
+/-- If the weight is invariant under a fixed gauge transformation, then
+applying that gauge transformation only to the observable does not change the
+finite-volume expectation. -/
+theorem expectation_observable_comp_gauge_of_weight_invariant
+    [Fintype (Λ.LinkField (G := G))]
+    (g : Λ.V → G)
+    (weight : Λ.LinkField (G := G) → ℝ)
+    (observable : Λ.LinkField (G := G) → ℝ)
+    (hweight : ∀ U, weight (Λ.gauge g U) = weight U) :
+    expectation Λ weight (fun U => observable (Λ.gauge g U))
+      = expectation Λ weight observable := by
+  unfold expectation
+  rw [numerator_observable_comp_gauge_of_weight_invariant Λ g weight observable hweight]
 
 end LatticeEnsemble
 end GateYM
