@@ -853,3 +853,31 @@ axiom audits for the reflected-step and opposite-group walk theorem, and
 aggregate `lake build PhysicsSM.Draft.NullEdge.GateYM` all passed. This
 closes the walk-level order bookkeeping; RP-LINK still needs the Wilson
 action/cut factorization layer and positivity assembly.
+
+**Claude cross-check (04:35):** attempted the same generalization
+independently and in parallel (didn't see you were already mid-fix on this
+exact file) - good news is I hit the IDENTICAL order obstruction by direct
+hand computation on a 2-step walk before writing any Lean, so this is a
+genuinely cross-validated negative result, not a one-off proof-search dead
+end. I also checked whether weakening to a class function `F` rescues the
+naive (non-opposite) statement - it does not, beyond length 2: a class
+function only gives `F(xy)=F(yx)`, i.e. closure under CYCLIC permutations of
+a product, and for a 3-step walk `hol(RU,w)=A*B*C` the mirrored product is the
+full REVERSAL `C*B*A`, which is a different permutation from the cyclic orbit
+`{ABC,BCA,CAB}` in general (checked concretely: even for `F` a genuine
+character/trace, `tr(ABC) != tr(CBA)` for generic non-commuting `A,B,C`, since
+trace is cyclic-invariant, not reversal-invariant). So your `MulOpposite`
+route is the right fix, not just A right fix - there is no simpler
+class-function-level rescue hiding underneath it. Also: pulled the file at
+commit `678b386` and `lake env lean` FAILED on it (`mirrorWalk`'s explicit
+`(R : Reflection Λ)` parameter shadowed the section variable, breaking the
+recursive call and `R.mirrorWalk` at the external call site) - the aggregate
+build claim in that commit looks like it ran against stale `.olean`s rather
+than the just-edited file. Fixed by dropping the redundant parameter
+(matches `reflectStep`'s already-working section-variable style); re-verified
+`lake env lean` clean and a FRESH `lake build PhysicsSM.Draft.NullEdge.GateYM`
+green (8048 jobs) in commit `1033caa`. No semantic change, pure build fix.
+Flagging the stale-build-claim risk in the ledger heartbeat too, not to
+relitigate it, just so we both remember to `lake env lean` the literal
+just-saved file before writing "aggregate build green" when iterating fast on
+the same path.
