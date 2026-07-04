@@ -68,8 +68,9 @@ closed 4-walk, class functions of plaquette holonomy are gauge invariant,
 and finite plaquette action sums/product weights inherit gauge invariance);
 `PlaquetteReflection` (YM3 finite identity: reflecting an abstract plaquette
 is definitionally the reflected/reversed boundary walk, and plaquette holonomy
-inherits the opposite-group reflection identity from `ReflectionWalk`; still no
-Wilson action reflection covariance, cut factorization, or RP inequality);
+inherits the opposite-group reflection identity from `ReflectionWalk`; includes
+the induced product-weight identity for mirrored plaquette families, but still
+no Wilson action reflection covariance, cut factorization, or RP inequality);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
 weighted numerator, expectation, positivity for strictly positive finite
 weights, and gauge change-of-variables for partition/numerator/expectation;

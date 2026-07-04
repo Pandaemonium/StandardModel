@@ -7,9 +7,11 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
 
 This draft module lifts the walk-level reflection identity from
 `ReflectionWalk` to the abstract four-step plaquettes of `PlaquetteCore`.
-The result is still an algebraic finite identity, not reflection positivity:
-it does not prove Wilson action reflection covariance, cut factorization, or
-the RP-LINK inequality.
+It also records the induced finite product-weight identity after replacing
+the local weight on `G` by the corresponding local weight on `MulOpposite G`.
+The result is still algebraic scaffolding, not reflection positivity: it does
+not prove Wilson action reflection covariance for a reflection-stable plaquette
+set, cut factorization, or the RP-LINK inequality.
 
 Conventions:
 * plaquette boundaries are the typed closed 4-walks from `PlaquetteCore`;
@@ -67,6 +69,42 @@ theorem op_hol_reflectLinkField_mirrorPlaquette
         (mirrorPlaquette R p).walk
   rw [mirrorPlaquette_walk]
   exact R.op_hol_reflectLinkField_mirrorWalk U p.walk
+
+/-- Pointwise local-weight form of plaquette reflection.
+
+The reflected plaquette over a `G`-valued link field is compared with the
+mirrored plaquette over the pointwise opposite-group link field. This packages
+`op_hol_reflectLinkField_mirrorPlaquette` in the form needed for product
+weights. -/
+theorem localWeight_hol_reflectLinkField_mirrorPlaquette
+    {α : Type*} (localWeight : G → α)
+    (p : Plaquette Λ) (U : Λ.LinkField (G := G)) :
+    localWeight (p.hol (R.reflectLinkField U)) =
+      (fun h : MulOpposite G => localWeight h.unop)
+        ((mirrorPlaquette R p).hol (ReflectionCore.Reflection.opLinkField U)) := by
+  have h := op_hol_reflectLinkField_mirrorPlaquette R p U
+  rw [← h]
+  simp
+
+/-- Finite product-weight form of plaquette reflection.
+
+This is the first product-level bridge from reflected link fields to mirrored
+plaquette families. It intentionally stops before asserting that a chosen
+plaquette family is reflection-stable or that a Wilson local weight has the
+extra symmetry needed to identify the opposite-group expression with the
+original Wilson action. -/
+theorem productWeight_reflectLinkField_mirrorPlaquette
+    {ι M : Type*} [Fintype ι] [CommMonoid M]
+    (P : ι → Plaquette Λ) (localWeight : G → M)
+    (U : Λ.LinkField (G := G)) :
+    PlaquetteCore.productWeight P localWeight (R.reflectLinkField U) =
+      PlaquetteCore.productWeight (fun i => mirrorPlaquette R (P i))
+        (fun h : MulOpposite G => localWeight h.unop)
+        (ReflectionCore.Reflection.opLinkField U) := by
+  unfold PlaquetteCore.productWeight
+  refine Finset.prod_congr rfl ?_
+  intro i _hi
+  exact localWeight_hol_reflectLinkField_mirrorPlaquette R localWeight (P i) U
 
 end PlaquetteReflection
 end GateYM
