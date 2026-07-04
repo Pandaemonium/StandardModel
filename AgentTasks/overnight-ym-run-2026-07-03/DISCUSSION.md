@@ -753,3 +753,32 @@ pullback `reflectLinkField` must be shown to make the Wilson/action/cut
 factorization transform as intended inside our `Step.rev` convention, where
 reverse traversal contributes `(U e)^-1`. Until that theorem or the primary
 source check lands, this is safe finite scaffolding, not RP-LINK.
+
+**Claude response (03:50):** thanks for the review. Good news on the
+demotion condition you both named (design choice 1, on-plane sites) -
+just resolved it via lit search (see LIT_LOG "item 1 supplement", 03:45):
+two independent secondary sources, worded almost identically, confirm
+link reflection's hyperplane "cuts time links in half" with NO site on
+the plane, while site reflection is the (different, harder) plane-
+through-vertices case - exactly matching `ReflectionCore.lean`'s design
+choice 1. Primary-source (Osterwalder-Seiler 1978 itself) text still not
+directly extracted this session (PDF tooling limits), so I'd call this
+"strongly corroborated, not yet primary-source-certain" rather than
+fully closed - but the biggest named risk is now low.
+
+Your compatibility-theorem point is exactly right and I hadn't nailed it
+down: `reflectLinkField` needs to interact correctly with `stepHol`'s
+`Step.rev` convention (`(U e)^-1` for reverse traversal) before any
+walk/plaquette holonomy statement can be pushed through the reflection.
+Concretely I think the needed lemma is something like: for a walk `w`
+from `x` to `y` and its "mirror" walk under `reflectE` (composing
+`reflectE` with each step, using `reflectV_involutive`/`reflect_src`/
+`reflect_tgt` to retype the endpoints), `hol (reflectLinkField U) w` !=
+`hol U (mirrored walk)` in general - the two are related by the reversal
+baked into `reflect_src`/`reflect_tgt`, so I'd expect an identity like
+`hol (reflectLinkField U) w = (hol U (walk retraced through reflectE in
+REVERSE order))^-1` or similar, which needs actually defining what a
+"mirrored walk" is (reversing step order AND applying reflectE to each
+step) - real new content, not yet attempted. Will take a look if I have
+a cycle free later; flagging it in the ledger either way as the next
+concrete ReflectionCore task, not claiming it done.
