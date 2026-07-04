@@ -73,6 +73,15 @@ def SameBoundary {Lx Ly : ℕ}
     (∀ i : Fin Lx, ∀ {j : ℕ} (hj : j + 1 < Ly),
       yBoundaryBit S i hj = yBoundaryBit A i hj)
 
+/-!
+`ZeroBoundary` and `SameBoundary` deliberately mention only the non-wrapping
+nearest-neighbor dual edges. On a rectangular grid those edges already make the
+dual graph connected, so the wraparound torus-edge constraints are redundant
+for the classification theorems below. The lemmas
+`mem_iff_origin_of_zeroBoundary` and `mem_iff_mem_of_zeroBoundary` make that
+redundancy kernel-checked instead of leaving it as prose.
+-/
+
 /-- A zero horizontal boundary bit is exactly equality of membership across
 that adjacent plaquette pair. -/
 theorem mem_iff_of_xBoundaryBit_eq_false {Lx Ly : ℕ}
@@ -262,6 +271,38 @@ theorem eq_empty_or_univ_of_zero_boundary_bits {Lx Ly : ℕ}
     (fun hi j => mem_iff_of_xBoundaryBit_eq_false S hi j (hxzero hi j))
     (fun i {j} hj => mem_iff_of_yBoundaryBit_eq_false S i (j := j) hj (hyzero i hj))
 
+/-- Zero boundary makes plaquette membership globally equivalent to membership
+at the origin. In particular, any additional wraparound dual-edge constraint is
+automatically satisfied once the non-wrapping adjacent constraints hold. -/
+theorem mem_iff_origin_of_zeroBoundary {Lx Ly : ℕ}
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (S : Finset (Fin Lx × Fin Ly)) (hzero : ZeroBoundary S)
+    (i : Fin Lx) (j : Fin Ly) :
+    ((i, j) ∈ S ↔ ((⟨0, hLx⟩ : Fin Lx), (⟨0, hLy⟩ : Fin Ly)) ∈ S) :=
+  mem_iff_origin_of_adjacent hLx hLy S
+    (fun hi j => mem_iff_of_xBoundaryBit_eq_false S hi j (hzero.1 hi j))
+    (fun i {j} hj => mem_iff_of_yBoundaryBit_eq_false S i (j := j) hj (hzero.2 i hj))
+    i j
+
+/-- Zero-boundary plaquette membership is globally constant. This is the
+explicit kernel-checked form of the statement that the non-wrapping dual edges
+already connect the plaquette grid. -/
+theorem mem_iff_mem_of_zeroBoundary {Lx Ly : ℕ}
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (S : Finset (Fin Lx × Fin Ly)) (hzero : ZeroBoundary S)
+    (p q : Fin Lx × Fin Ly) :
+    (p ∈ S ↔ q ∈ S) := by
+  exact (mem_iff_origin_of_zeroBoundary hLx hLy S hzero p.1 p.2).trans
+    (mem_iff_origin_of_zeroBoundary hLx hLy S hzero q.1 q.2).symm
+
+/-- If two plaquette subsets have the same boundary, their Z2 symmetric
+difference has zero boundary. -/
+theorem zeroBoundary_z2SymmDiff_of_sameBoundary {Lx Ly : ℕ}
+    (S A : Finset (Fin Lx × Fin Ly)) (h : SameBoundary S A) :
+    ZeroBoundary (z2SymmDiff S A) :=
+  ⟨fun hi j => xBoundaryBit_symmDiff_eq_false_of_eq S A hi j (h.1 hi j),
+    fun i {j} hj => yBoundaryBit_symmDiff_eq_false_of_eq S A i (j := j) hj (h.2 i hj)⟩
+
 /-- The empty plaquette subset has zero boundary. -/
 theorem zeroBoundary_empty {Lx Ly : ℕ} :
     ZeroBoundary (∅ : Finset (Fin Lx × Fin Ly)) := by
@@ -310,8 +351,8 @@ theorem eq_or_compl_of_same_boundary_bits {Lx Ly : ℕ}
       yBoundaryBit S i hj = yBoundaryBit A i hj) :
     S = A ∨ S = Finset.univ \ A := by
   have hD := eq_empty_or_univ_of_zero_boundary_bits hLx hLy (z2SymmDiff S A)
-    (fun hi j => xBoundaryBit_symmDiff_eq_false_of_eq S A hi j (hx hi j))
-    (fun i {j} hj => yBoundaryBit_symmDiff_eq_false_of_eq S A i (j := j) hj (hy i hj))
+    (zeroBoundary_z2SymmDiff_of_sameBoundary S A ⟨hx, hy⟩).1
+    (zeroBoundary_z2SymmDiff_of_sameBoundary S A ⟨hx, hy⟩).2
   rcases hD with hD | hD
   · exact Or.inl (eq_of_z2SymmDiff_eq_empty hD)
   · exact Or.inr (eq_compl_of_z2SymmDiff_eq_univ hD)

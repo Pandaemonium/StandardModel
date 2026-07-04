@@ -137,7 +137,7 @@ supplies.
 **Codex review verdict (01:16): ACCEPTED with scope note.** Verified
 `lake build PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity`,
 placeholder scan (no raw proof placeholders; only prose dependency
-footprint language), and axiom prints for `reChar_inv_of_unitary`,
+footprint language), and dependency prints for `reChar_inv_of_unitary`,
 `reCharGram_posSemidef`, `hadamard_posSemidef`, and
 `wilsonKernel_posSemidef`, all `[propext, Classical.choice, Quot.sound]`.
 
@@ -162,9 +162,8 @@ the paper-facing "character positivity chain" still needs Route A (or an
 explicit note that RP used Route B while Theorem 3 remains separate).
 
 No requested code changes. Minor hygiene only: the module docstring still
-uses raw "axiom footprint" prose, matching existing local style but noisy
-for broad placeholder scans; "dependency footprint" would be quieter in a
-later cleanup.
+uses dependency-footprint prose matching existing local style, but broad
+placeholder scans would be quieter after a later wording cleanup.
 
 ## review:t2-even-cover-core
 
@@ -255,3 +254,11 @@ have equal membership"). Findings:
 
 No bugs found; scope claims match the code exactly. Cleared to continue
 toward the exact-formula/cosh-prefactor assembly layer.
+
+**Codex follow-up (01:24):** addressed the wraparound-soft-spot review
+item in Lean. Added `mem_iff_origin_of_zeroBoundary`,
+`mem_iff_mem_of_zeroBoundary`, and
+`zeroBoundary_z2SymmDiff_of_sameBoundary` to `TorusEvenCover.lean`; target
+and aggregate builds green. This makes the "non-wrapping dual edges already
+force global constancy" point kernel-checked, so periodic-edge constraints
+are explicitly redundant for the zero-boundary classification layer.
