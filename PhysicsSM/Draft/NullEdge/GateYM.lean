@@ -40,8 +40,10 @@ full quantitative volume-uniform Elitzur theorem; axiom footprint
 kernel-checked finite-grid connectivity and boundary-bit cores for the Z2
 torus even-cover argument: locally constant plaquette subsets are empty or
 universal, and equal-boundary subsets differ by nothing or by complement);
-`FusionConvolution` (YM1 T2/T2-C abstract finite-group convolution
-iteration core in the oracle-pinned argument order);
+`FusionConvolution` (YM1 T2/T2-C finite-group fusion-by-convolution:
+Aristotle-integrated Lemma 2a character fusion in the oracle-pinned
+`h^-1 * A` argument order, plus the abstract convolution iteration core;
+axiom footprint [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
 closed-walk class-function gauge invariance, gauge action laws);
