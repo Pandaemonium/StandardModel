@@ -4,6 +4,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
 import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
+import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
@@ -63,6 +64,21 @@ resulting area-law scalar for downstream statements; the cross-multiplied
 `wilson_iterConv_normalizedGamma_cross_at_one` restates the named-scalar identity
 without division. This still does not prove the tree-gauge/ensemble expectation
 bridge or partition-function prefactor; axiom footprint
+[propext, Classical.choice, Quot.sound]);
+`IndependentPlaquetteEnsemble` (YM1 Lemma 2b, independent-plaquette form:
+the ordered plaquette-tuple sum IS the iterated convolution
+(`sum_weight_orderedProdInv_eq_iterConv`, no hypotheses; inversion-symmetric
+`w` removes the observable inversion), out-of-region plaquettes integrate out
+of the loop numerator (`loopNumerator_factor`, proved by transporting along a
+`Fin m + complement ~ nu` sum-type enumeration), the partition function is the
+`card nu`-th power of the one-plaquette sum, and the headline
+`wilson_loop_expectation_area_law`: the Wilson-loop expectation in the
+independent-plaquette Wilson ensemble is EXACTLY
+`chi_R(1) * wilsonNormalizedGamma^m` for a region of `m` distinct plaquettes,
+with norm form `norm_wilson_loop_expectation` giving exponential area decay
+whenever `|gamma| < 1`. The remaining layer of freeze Theorem 2 is geometric:
+the tree-gauge change of variables from the 2D open-rectangle LINK ensemble to
+this independent-plaquette ensemble; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
