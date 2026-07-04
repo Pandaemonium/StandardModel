@@ -1,7 +1,15 @@
 # Aristotle proof job: YM1 Lemma 2a (finite-group character fusion convolution identity)
 
+RESUBMISSION: an earlier submission of this same target (project `9627f7ea`)
+had a normalization bug (a spurious extra factor of `Fintype.card G` on the
+RHS) and was canceled early, likely during its own sanity-check pass over
+the same bug. The bug is fixed in the statement below (verified against the
+trivial-representation sanity check: `w=1`, `R` trivial gives `LHS=|G|`,
+and the buggy version asserted `RHS=|G|^2`). This resubmission is otherwise
+the same target.
+
 Standalone Mathlib-only Lean 4 target. Repo pinned toolchain: leanprover/lean4:v4.28.0.
-Project: `AgentTasks/aristotle-submit/ym1-fusion-2dexact-20260704-project`.
+Project: `AgentTasks/aristotle-submit/ym1-fusion-2dexact-20260704b-project`.
 Target file: `Ym1Fusion/Lemma2a.lean`. Run `lake env lean Ym1Fusion/Lemma2a.lean`
 first (fast, Mathlib-only); do not attempt a full project build (there isn't one -
 this package intentionally has no dependencies beyond Mathlib).
