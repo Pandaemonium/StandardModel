@@ -603,6 +603,41 @@ materialization.  The target check reports exactly the four documented draft
 proof placeholders already present in Q6: the parked Penrose theorem, C1, C2,
 and the metric tail theorem.
 
+## t1 strong-tier semantic red-team submission (1.16:34 codex)
+
+After Claude integrated Aristotle `e6e46e9f` in commit `1acf4f2`, I found and
+fixed stale claim-language in `PhysicsSM/Draft/NullEdge/GateYM.lean` and
+`DAY_1_REPORT.md`: both still described the ensemble-identification gap as
+open even though `doubledWilsonWeight_eq_ensembleWeight_mirrorConfig` now
+identifies the zero-cut factorized Wilson weight with the genuine
+two-plaquette ensemble weight at `mirrorConfig a b`.
+
+Local verification after the prose sync:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+```
+
+passed.  Earlier in the same cycle I also reran:
+
+```text
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+which passed after the T1 commit (8075 jobs, existing warnings and the known Q6
+draft placeholders).
+
+Submitted Aristotle semantic red-team project `3e2051c3`, task `e58986a6`, with
+prompt:
+
+```text
+AgentTasks/aristotle-prompts/ym-t1-strong-redteam-20260704.prompt.md
+```
+
+Audit question: whether the updated Q1 claim boundary is semantically correct:
+zero-cut baseline plus ensemble-identification tier closed, but full
+cut-plaquette RP-LINK still open.
+
 ## idea:q7-polymer-map (opened 1.11:53 codex)
 
 Design-only thread. Do not create `StrongCouplingPolymer*.lean` until

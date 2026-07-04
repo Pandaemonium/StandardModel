@@ -289,16 +289,15 @@ weight, not just an abstract placeholder; also records unitarity-dependent
 inversion symmetry as a prerequisite for later orientation/opposite-group
 compatibility work; axiom footprint
 [propext, Classical.choice, Quot.sound]); `WilsonReflectionCompatibility`
-(YM3 connector: the inverse-pulled representation `rhoOppositeInv` on
-`MulOpposite G` is multiplicative, unital, and unitary under the corresponding
-hypotheses on `rho`; the Wilson local weight for `rhoOppositeInv` agrees with
-the generic `h |-> w(h.unop)` opposite local weight, yielding a
-Wilson-specialized reflected single-plaquette/product-weight/ensemble-weight
-identity for mirrored plaquette families and Wilson-language mirror-stable and
-paired-family product/ensemble wrappers under an explicit local compatibility
-hypothesis, plus kernel-PSD, gauge-invariance, and partition-positivity wrappers
-for the opposite inverse Wilson ensemble. This still does not discharge the
-concrete same-family compatibility, cut factorization, or RP-LINK);
+(YM3 connector, N3-corrected: after Aristotle `e6e46e9f`,
+`ReflectionCore.reflectLinkField` carries the group inverse, so the old
+`MulOpposite`/`rhoOppositeInv` bridge is gone. The Wilson reflection wrappers
+now use the same-group identity `hol_mirrorPlaquette_eq_inv` plus the local
+inversion-invariance hypothesis `hinv`, yielding Wilson-specialized reflected
+single-plaquette/product-weight/ensemble-weight identities for mirrored
+plaquette families and Wilson-language mirror-stable and paired-family
+wrappers. This still does not prove cut-plaquette RP-LINK; the nontrivial
+cut-kernel PSD assembly remains a separate Q1 shocking-tier target);
 `ReflectionPositivityKernel` (YM3 RP-KER, the master finite
 reflection-positivity assembly theorem: in mirror coordinates
 `(positive, cut, mirrored-negative)`, if the reflected weight kernel at each
@@ -311,26 +310,23 @@ mirror-coordinate parametrization from the T3 reflection stack and the
 Wilson cut-plaquette kernel-PSD assembly via `wilsonKernel_posSemidef` +
 Schur products - see the program document work queue. Mathlib-only imports
 by design; axiom footprint [propext, Classical.choice, Quot.sound]);
-`WilsonReflectionPositivity` (YM3 Q1 baseline instance: RP-KER meets a
+`WilsonReflectionPositivity` (YM3 Q1 zero-cut instance: RP-KER meets a
 GENUINE Wilson local weight function. `ReflectionDouble.doubleLattice`'s
 mirror coordinates plus `doubledWilsonWeight` (the same Wilson weight
 function applied independently to both mirror coordinates) instantiate
 `ReflectionPositivityKernel.reflectionForm_nonneg_of_factorized` directly
 (`doubled_wilson_reflectionForm_nonneg`), for any finite group, base
-lattice, plaquette, and representation. Also proves
-`mirrorPlaquette_liftPlaquettePos_hol`, the genuine geometric bridge
-(mirror plaquette's opposite-inverse Wilson weight under reflected
-configurations equals the original Wilson weight of the negative-side
-restriction), resolving `design:q1-reflection-orientation`'s twist
-question for reflected configurations. EXPLICITLY NOT YET PROVEN: that the
-genuine two-plaquette mirror ENSEMBLE weight (not just the weight
-function's algebraic shape) reduces to this factorized form for
-independent mirror coordinates - by hand computation the raw mirror
-holonomy is a differently-ordered word not evidently conjugate to the
-negative-side holonomy for nonabelian G; flagged honestly rather than
-papered over. No cut plaquettes in this instance (the strong/shocking Q1
-tier, needing `cutKernel_posSemidef_of_mixture`, is separate future work);
-axiom footprint [propext, Classical.choice, Quot.sound]);
+lattice, plaquette, and representation. After the N3 Route-B correction,
+`mirrorPlaquette_liftPlaquettePos_hol` is now the general
+independent-configuration bridge at `mirrorConfig a b`, and
+`doubledWilsonWeight_eq_ensembleWeight_mirrorConfig` identifies the
+factorized weight with the GENUINE two-plaquette
+`PlaquetteEnsemble.weight` at those mirror-coordinate configurations. This
+closes the zero-cut baseline plus ensemble-identification tier. It is still
+not the nontrivial cut-plaquette RP-LINK theorem: `doubleLattice` has no cut
+links/plaquettes, and the shocking tier still needs an actual cut geometry
+and a `cutKernel_posSemidef_of_mixture`-style PSD assembly; axiom footprint
+[propext, Classical.choice, Quot.sound]);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original

@@ -19,10 +19,15 @@ returned.
   `character_inv_eq_conj`, `wilsonNormalizedGamma_conj_eq_self`,
   `wilsonNormalizedGamma_re_mem_Icc` - CLOSED, Q5 done. Axioms standard.
 - `ReflectionDouble.lean` + `WilsonReflectionPositivity.lean` (cc9c316,
-  cda9671): `doubled_wilson_reflectionForm_nonneg` - genuine Wilson weight
-  meets RP-KER on the zero-cut doubled lattice. BASELINE tier only; docstring
-  now explicitly says this is a well-definedness witness, not the nontrivial
-  RP-LINK theorem (see Honest negatives).
+  cda9671, 1acf4f2): `doubled_wilson_reflectionForm_nonneg` - genuine Wilson
+  weight meets RP-KER on the zero-cut doubled lattice. Aristotle `e6e46e9f`
+  then landed the N3 Route-B inverse convention and
+  `doubledWilsonWeight_eq_ensembleWeight_mirrorConfig`, identifying the
+  factorized doubled Wilson weight with the genuine two-plaquette
+  `PlaquetteEnsemble.weight` at mirror-coordinate configurations. This closes
+  the zero-cut baseline plus ensemble-identification tier, while the
+  nontrivial cut-plaquette RP-LINK theorem remains open (see Honest
+  negatives).
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -74,23 +79,27 @@ COMPLETE+HARVESTED+INTEGRATED as a counterexample), `34d675b8` (Q6
 tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 (Q7 polymer-map audit, COMPLETE+HARVESTED+INTEGRATED), and `788f83b4`
 (Q7 support-indexed-label redesign, COMPLETE+HARVESTED+INTEGRATED), and
-`2c127e31` (Q8 exponential-clustering bridge audit, COMPLETE+HARVESTED+INTEGRATED). Two near-collisions
+`2c127e31` (Q8 exponential-clustering bridge audit,
+COMPLETE+HARVESTED+INTEGRATED), `e6e46e9f` (T1 N3 redesign/ensemble
+identification, COMPLETE+HARVESTED+INTEGRATED by Claude), and `071d1370`
+(Q6 abstract KP C1/C2 proof package, RUNNING). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after Q2 block-instantiation submission: `50024abf`; `e6e46e9f` is IDLE
-pending Claude/T1 harvest.
+queue after the Q6 package submission: `50024abf` and `071d1370`.
 
 ## 4. Board state
 
-T0/T4/T5 done. T1 baseline reached; strong tier needs redesign after
-`0a46d515` refuted the raw mirror-conjugation target. T2 Hermitian bridge
+T0/T4/T5 done. T1 zero-cut baseline plus ensemble-identification tier is now
+closed after `e6e46e9f`; the remaining Q1 gap is the genuinely nontrivial
+cut-plaquette/shocking tier. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; Q2 block-instantiation proof job `50024abf` is running
 for the concrete `cutKernel` block matrix and pairing/reflection-form bridge.
 T3 baseline-done-gated-by-T2. T6
 statement-freeze plus direct
-tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
-remain. T7 has map-freeze plus both audit harvests done; the support-indexed
+tree-count/Ursell definitions landed; Penrose remains parked and abstract KP
+C1/C2 proof package `071d1370` is running. T7 has map-freeze plus both audit
+harvests done; the support-indexed
 carrier and decidable overlap-or-touch layer are integrated. The next blocker
 is an honest `KPCondition` instantiation carrying an explicit finite KP sum
 bound, plus concrete connected-support/label APIs. T8 now has conditional
@@ -137,18 +146,20 @@ Oracle `validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit
 this session.
 
 After the finite-support Q8 harvest, a fresh aggregate GateYM build was
-attempted but is currently blocked by unrelated dirty T1 reflection edits:
-`ReflectionEnsemble.lean` fails with missing `Group G` instances. The Q8 target
-and aggregator file check passed; do not claim a fresh aggregate green build
-until the T1 worktree state is resolved.
+temporarily blocked by in-progress T1 reflection edits. Claude resolved that in
+commit `1acf4f2`, and Codex reran
+`lake build PhysicsSM.Draft.NullEdge.GateYM` successfully afterward
+(8075 jobs, existing warnings plus the known Q6 draft placeholders).
 
 ## 7. Honest negatives
 
-T1 strong/shocking tier (genuine cut-plaquette ensemble identification) is
-OPEN - Aristotle `0a46d515` formalized the S3 counterexample showing the raw
-mirror holonomy is not generally conjugate to the original holonomy or its
-inverse. The next RP-LINK attempt must redesign the false-side orientation or
-inverse convention, not push the rejected target. Q6's C3
+T1 actual cut-plaquette RP-LINK remains OPEN. Aristotle `0a46d515`
+formalized the S3 counterexample showing the raw mirror holonomy is not
+generally conjugate to the original holonomy or its inverse, and `e6e46e9f`
+has now integrated the Route-B inverse convention for the zero-cut
+doubled-lattice tier. What remains open is the genuinely nondegenerate
+reflection geometry with shared cut variables and a mixture/PSD kernel proof.
+Q6's C3
 exponential-distance tail is NOT a consequence of bare KP - needs an
 explicit metric/coercivity extension (already designed into the freeze).
 Q7 still cannot instantiate `KPCondition` from the map layer alone: the
@@ -168,19 +179,16 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
    package with the finite KP sum bound as an explicit hypothesis; do not infer
    volume-uniform KP from the small-torus oracle rows.
-2. Harvest `e6e46e9f` if Claude wants T1 handoff help; resolve or isolate the
-   current dirty T1 reflection worktree before claiming another aggregate
-   GateYM build.
+2. Red-team the new T1 zero-cut ensemble-identification claim, then move Q1
+   toward the actual cut-plaquette kernel target.
 3. Harvest `50024abf` when it returns and integrate or park the
    `TransferHilbertBlock.lean` cut-kernel block layer.
-4. Start the next Q6 package: the abstract KP proof package against
-   `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
-   focused proof package is ready.
+4. Harvest `071d1370` when it returns; keep the concrete Penrose theorem parked
+   unless a focused proof package is ready.
 5. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition
    bridge to the full Theorem 2 expectation statement.
-6. Redesign T1 strong tier around the `0a46d515` counterexample and keep Q2
-   integration focused on the block-kernel instantiation rather than physical
-   transfer claims.
+6. Keep Q2 integration focused on the block-kernel instantiation rather than
+   physical transfer claims.
 7. Keep Aristotle utilization at or above 4/8 slots at the next midday
    integration point per the binding mandate; prefer new design/review
    threads over idle capacity.
