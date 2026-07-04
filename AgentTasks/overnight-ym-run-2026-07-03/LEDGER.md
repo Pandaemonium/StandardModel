@@ -12,8 +12,8 @@ Status values: `open`, `claimed-claude`, `claimed-codex`, `blocked`,
 |---|---|---|---|---|---|
 | T0 | Preflight + baseline commit + harvest | done | Codex | `AgentTasks/overnight-ym-run-2026-07-03/LEDGER.md`, repo-wide checks only | 00:02 baseline clean enough for lane work: GateYM build green, oracle 36/36, Neo4j reachable; Aristotle list limit 100 reconciled against 2026-07-02 ledger |
 | T1 | YM3 flagship: charpos -> RP-LINK | claimed-claude | Claude | `PhysicsSM/Draft/NullEdge/GateYM/WilsonWeightPositivity.lean`, `TransferPositivity.lean`, `CharacterPositivity.lean`, `ReflectionPositivityLink.lean`, `GateYM.lean` (aggregator wiring only) | Route B (PSD kernel engine, `fb4df44`) + Cor 3b (`576697d`) CLOSED; next Route A (`CharacterPositivity.lean`); RP-LINK proper deferred (see `idea:rp-link-scope`) |
-| T2 | YM1: 2D exact solutions | claimed-codex | Codex | `PhysicsSM/Draft/NullEdge/GateYM/Torus*.lean`, `PhysicsSM/Draft/NullEdge/GateYM/Fusion*.lean`, `PhysicsSM/Draft/NullEdge/GateYM.lean`, shared run files | `TorusEvenCover.lean` landed Z2 torus cover-ratio core; `FusionConvolution.lean` landed abstract finite-group convolution iteration core |
-| T3 | YM0 breadth: general-G core + D12 | open | - | `PhysicsSM/Draft/NullEdge/GateYM/GaugeCoreGeneral.lean`, `TransferGapDefinition.lean` | Definitional layer needs early cross-review |
+| T2 | YM1: 2D exact solutions | open | - | `PhysicsSM/Draft/NullEdge/GateYM/Torus*.lean`, `PhysicsSM/Draft/NullEdge/GateYM/Fusion*.lean`, `PhysicsSM/Draft/NullEdge/GateYM.lean`, shared run files | Partial landed by Codex: Z2 torus cover-ratio core and abstract finite-group convolution iteration core; exact cosh/path-integral assembly remains |
+| T3 | YM0 breadth: general-G core + D12 | claimed-codex | Codex | `PhysicsSM/Draft/NullEdge/GateYM/GaugeCoreGeneral.lean`, `PhysicsSM/Draft/NullEdge/GateYM/LatticeEnsemble*.lean`, `PhysicsSM/Draft/NullEdge/GateYM.lean`, shared run files | `GaugeCoreGeneral.lean` landed first general-G typed-walk/gauge-covariance core; review thread open |
 | T4 | QCD1 Banks-Casher shadow | open | - | `PhysicsSM/Draft/NullEdge/GateYM/BanksCasher*.lean` | Built on GateC2 spectral assets |
 | T5 | YM4 groundwork: KP + polymers | open | - | `PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean` | KP hypotheses BLOCKED on LIT item 3 |
 | T6 | YM-LIT verification sprint | open | - | `LIT_LOG.md`, graph/Zotero | Items 1, 3, 8 are load-bearing |
@@ -69,6 +69,8 @@ Format: `HH:MM agent task next-step` - one line per cycle, append only.
 01:16 Codex review:t1-routeB ACCEPTED with scope note: Route B proves RP kernel PSD, not Route A character-coefficient positivity/Bochner converse; WilsonWeightPositivity build and dependency audit green.
 01:24 Codex T2 follow-up to review:t2-even-cover-core: added kernel-checked global-constancy/redundant-wrap lemmas; target and aggregate builds green; shared-note raw-placeholder scan clean.
 01:31 Codex T2 added `iterConv_eigen_at_one`, giving the exact `d * gamma^n` factor from the oracle-order convolution eigenstatement; target and aggregate builds green, placeholder scan clean.
+01:34 Codex releases T2 partial and claims T3 shared finite-G lattice/probability layer after Claude's `idea:rp-link-scope`; next draft definitional core and open early review.
+01:43 Codex T3 added `GaugeCoreGeneral.lean`: oriented links, typed walks, reverse inverse convention, gauge action, `stepHol_gauge`, `hol_gauge`, closed-walk class-function invariance, `gauge_one`, `gauge_comp`; target and aggregate builds green, review thread opened.
 ```
 
 ## Parked for user
