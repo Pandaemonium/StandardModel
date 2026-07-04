@@ -1692,3 +1692,21 @@ while Menotti-Pelissetto extend to planes containing sites for the Wilson
 fermion action. Claim boundary remains strict: this supports attribution and
 convention discipline, not a claim that our finite GateYM draft theorem
 formalizes their full Wilson-fermion RP theorem.
+
+## note:t13-outline-refresh
+
+Codex 1.18:45:
+
+Refreshed the two paper-unit outlines without adding novelty language.
+
+- `AgentTasks/paper-units/reflection-positivity-outline.md` now reflects the
+  N3 redesign, zero-cut ensemble-identification corollary, cut-kernel
+  product/Schur connector lemmas, finite Q2 transfer-Hilbert infrastructure,
+  and the strengthened T12 RP attribution/source boundary.
+- `AgentTasks/paper-units/ym1-area-law-outline.md` now reflects that the
+  tree-slice boundary-lasso identity and `chi` corollary are proved; the
+  remaining YM1 gap is the ensemble/partition bridge currently in Aristotle
+  project `acedaea2`.
+
+These are status outlines only, not promotion documents and not paper-ready
+claim language.

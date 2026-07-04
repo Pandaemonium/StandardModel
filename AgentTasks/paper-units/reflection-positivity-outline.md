@@ -6,19 +6,19 @@ Status: outline only; draft Lean inventory, not a promotion request.
 
 ## Working scope
 
-**UPDATED 1.16:25 (post Aristotle `e6e46e9f` harvest, N3 redesign):** this
-outline predates a convention correction and is partially stale - see the
-declaration-list notes below marked "REMOVED"/"RENAMED". This unit should
-present the finite, algebraic reflection-positivity stack for GateYM. The
-safest current headline is:
+This unit should present the finite, algebraic reflection-positivity stack for
+GateYM after the N3 mirror-holonomy redesign, the zero-cut Wilson
+ensemble-identification tier, and the first cut-kernel product/Schur connector
+lemmas. The safest current headline is:
 
 > A kernel-checked draft stack for reflection geometry, reflection
 > change-of-variables, positive Wilson local kernels, and a doubled Wilson
 > reflection-form theorem for which the genuine two-plaquette ensemble
 > weight IS now identified (for the zero-cut construction, at
-> mirror-coordinate configurations) - with cut-plaquette (shocking tier)
-> reflection positivity and the OS/GNS transfer Hilbert-space construction
-> still open.
+> mirror-coordinate configurations), plus finite cut-kernel product closure
+> lemmas - with cut-plaquette (shocking tier) reflection positivity still open
+> and the Q2 OS/GNS range model present only as finite algebraic
+> infrastructure.
 
 Do not claim that RP-LINK is fully closed: the zero-cut doubled-lattice
 construction is a well-definedness/consistency instance of reflection
@@ -129,6 +129,12 @@ Reflection-positive kernel:
   - `cutKernel_posSemidef_of_mixture`
   - `reflectionForm_nonneg_of_factorized`
   - `reflectionForm_nonneg_of_mixture`
+  - `cutKernel_mul`
+  - `complex_hadamard_posSemidef`
+  - `cutKernel_mul_posSemidef`
+  - `reflectionForm_nonneg_of_mul_posSemidef`
+  - `cutKernel_finset_prod_posSemidef`
+  - `reflectionForm_nonneg_of_finset_prod_posSemidef`
 
 Baseline Wilson reflection positivity:
 
@@ -145,18 +151,32 @@ Baseline Wilson reflection positivity:
     `PlaquetteEnsemble.weight` of the two-plaquette family at
     `mirrorConfig a b` - closes the ensemble-identification gap this
     outline previously listed as open.
+  - `doubled_wilson_ensembleWeight_reflectionForm_nonneg`: named corollary
+    stating the zero-cut RP inequality directly for the genuine two-plaquette
+    ensemble weight at `mirrorConfig`.
 
 Transfer/Hilbert-space adjacent:
 
+- `PhysicsSM/Draft/NullEdge/GateYM/HermitianFromRealQuadraticForm.lean`
+  - `hermitian_of_forall_dotProduct_real`
+  - `posSemidef_of_forall_dotProduct_real_nonneg`
+- `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert.lean`
+  - finite OS/GNS range model `rpHilbertSpace = range (CFC.sqrt K)`
+  - shift-covariant range preservation and OS-form transfer atoms.
+- `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlock.lean`
+  - `rpBlockMatrix`
+  - pairing bridge to `reflectionForm`
+  - PSD/range nonnegativity from `IsReflectionPositive`.
+- `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlockShift.lean`
+  - block-shift covariance for `rpBlockMatrix` and the OS range.
+- `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertZ2Electric.lean`
+  - concrete Z2 electric-shift adapter for plaquette-bit-field block weights.
 - `PhysicsSM/Draft/NullEdge/GateYM/TransferPositivity.lean`
   - `transferMatrix_posSemidef`
   - `compression_posSemidef`
   - `singleLinkWilsonKernel_diagCongruence_posSemidef`
-- Q2 design thread in
-  `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`
-  - proposed `reflectionPairing`, `rpBlockMatrix`, `rpHilbertSpace`, and
-    abstract `compressedTransfer` route.
-  - no `TransferHilbert.lean` statement file has been created yet.
+  The Q2 stack is finite algebraic infrastructure. It is not yet a physical
+  transfer matrix, Hamiltonian, or gap theorem.
 
 ## Verification record to cite
 
@@ -166,6 +186,13 @@ known records include:
 - T1 baseline ran `lake env lean` on `WilsonReflectionPositivity.lean`, an
   aggregate GateYM build, and a full `lake build`, all recorded green in the
   ledger.
+- Codex later ran direct/targeted/aggregate checks for the cut-kernel
+  product/Schur connector lemmas and the red-team corollary
+  `doubled_wilson_ensembleWeight_reflectionForm_nonneg`; use the ledger
+  entries around `1.16:47`-`1.17:48` for exact commands.
+- Q2 `TransferHilbert*` modules and `TransferHilbertZ2Electric.lean` have
+  their own direct/targeted/aggregate check records in the ledger; cite those
+  exact entries rather than this outline.
 - T14 ran `python Scripts/oracle/validate_lgt_core.py` and reached `44/44`,
   including the RP-KER complex-character guard.
 
@@ -174,11 +201,13 @@ GateYM build, then record fresh command output here or in a task note.
 
 ## Provenance and source boundaries
 
-- T12 verified bibliographic/abstract-level existence for Osterwalder-Seiler
-  1978 and Menotti-Pelissetto 1987. Full source-internal convention comparison
+- T12 verified bibliographic details for Osterwalder-Seiler 1978 and
+  Menotti-Pelissetto 1987. A parseable Menotti-Pelissetto mirror supports the
+  LINK-vs-SITE reflection-plane distinction; full Osterwalder-Seiler proof text
   remains open.
 - The current Lean stack should be described as this repo's finite algebraic
-  formalization, not as a direct formalization of either paper's exact theorem.
+  formalization, not as a direct formalization of either paper's exact theorem
+  or of the full Wilson-fermion setting.
 - The RP-KER rows in `Scripts/oracle/validate_lgt_core.py` pin conventions but
   are not proof.
 
@@ -189,12 +218,14 @@ GateYM build, then record fresh command output here or in a task note.
   well-definedness/consistency instance of reflection positivity, not the
   case with actual cut plaquettes - Osterwalder-Seiler's genuinely
   nontrivial content, needing `ReflectionPositivityKernel.cutKernel_posSemidef_of_mixture`
-  (Q1 shocking tier, not attempted).
-- Q2 transfer Hilbert space: `TransferHilbert.lean` has landed (Aristotle
-  `6f8903cc`); check the ledger/DISCUSSION.md for current status before
-  citing, this outline predates that file.
+  and concrete Wilson cut geometry. Aristotle project `8271a64b` is running
+  for the next cut-plaquette assembly strategy/audit.
+- Q2 transfer Hilbert space is finite algebraic infrastructure only. The
+  concrete Wilson slab/physical transfer matrix and gap interpretation remain
+  open.
 - The paper unit should not claim positivity, stability, spectrum, or physical
   Hilbert-space interpretation beyond the exact finite algebraic statements
   already kernel-checked.
-- Novelty and historical positioning require T12 full-text review and a separate
-  novelty sweep.
+- Novelty remains unproved. T12 quick search found nearby Lean OS/QFT
+  formalizations but no verified Wilson lattice-gauge RP formalization matching
+  this finite RP-LINK target in that limited pass.
