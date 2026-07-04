@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
 import PhysicsSM.Draft.NullEdge.GateYM.RectTreeGauge
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
+import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral

@@ -1,5 +1,6 @@
 import Mathlib
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
+import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 
 /-!
 # Gate YM1/gap lane: vacuum dominance for unitary matrix models
@@ -165,6 +166,31 @@ theorem wilsonStringTension_nonneg {n n' : ℕ} (beta : ℝ)
   rw [FusionTransferSpectrum.wilsonStringTension, neg_nonneg]
   exact Real.log_nonpos (norm_nonneg _)
     (norm_wilsonNormalizedGamma_le_one beta rho R rho' hone' hunit' hmodel)
+
+/-- **Vacuum dominance, UNCONDITIONAL** (queue item Q4 closed).
+`FDRepUnitarizable.fdRep_exists_unitary_matrix_model` supplies a unitary
+matrix model for every simple `FDRep`, discharging the explicit
+`rho'`/`hone'`/`hunit'`/`hmodel` hypotheses of
+`norm_wilsonNormalizedGamma_le_one`: the normalized Wilson fusion
+eigenvalue has modulus at most 1 for ANY simple complex `FDRep`
+observable, no matrix-model hypothesis required. -/
+theorem norm_wilsonNormalizedGamma_le_one' {n : ℕ} (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) (R : FDRep ℂ G) [Simple R] :
+    ‖Theorem2AreaLaw.wilsonNormalizedGamma beta rho R‖ ≤ 1 := by
+  obtain ⟨n', rho', hmul', hone', hunit', hmodel⟩ :=
+    FDRepUnitarizable.fdRep_exists_unitary_matrix_model R
+  exact norm_wilsonNormalizedGamma_le_one beta rho R rho' hone' hunit' hmodel
+
+/-- **Nonnegative string tension, UNCONDITIONAL** (queue item Q4 closed).
+The Wilson string tension is nonnegative for ANY simple complex `FDRep`
+observable, with no matrix-model hypothesis: the area law is a decay,
+never a growth, unconditionally. -/
+theorem wilsonStringTension_nonneg' {n : ℕ} (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) (R : FDRep ℂ G) [Simple R] :
+    0 ≤ FusionTransferSpectrum.wilsonStringTension beta rho R := by
+  obtain ⟨n', rho', hmul', hone', hunit', hmodel⟩ :=
+    FDRepUnitarizable.fdRep_exists_unitary_matrix_model R
+  exact wilsonStringTension_nonneg beta rho R rho' hone' hunit' hmodel
 
 end WilsonVacuumDominance
 end GateYM
