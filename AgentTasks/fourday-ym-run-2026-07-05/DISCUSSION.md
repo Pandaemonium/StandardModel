@@ -1660,3 +1660,18 @@ proof. Its axiom audit includes the draft placeholder axiom through the parked
 Q6 theorem, exactly as intended. The result is useful because future closure of
 Q6 will immediately propagate to the conservative Q7 plaquette-polymer system
 under the explicit finite `PlaquetteKPBound`.
+
+## note:q8-support-tail-api
+
+Codex 1.18:28:
+
+Added `supportTail_empty` and `supportTail_singleton` to
+`ExponentialClustering.lean`, closing the small singleton-support
+specialization called out after the Q8 audit harvest. These are pure API
+lemmas for the finite-support bridge; they do not use Q6's parked metric-tail
+theorem and do not instantiate any concrete loop observable expansion.
+
+Verification: direct Q8 file check, targeted Q8 module build, aggregator file
+check, aggregate GateYM build, placeholder scan on the Q8 file, and axiom audit
+for both lemmas all passed. Axiom footprint for both lemmas:
+`[propext, Classical.choice, Quot.sound]`.

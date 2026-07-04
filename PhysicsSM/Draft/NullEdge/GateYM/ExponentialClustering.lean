@@ -133,6 +133,26 @@ def supportTail
     (S : Finset Gamma) (R : Real) : Real :=
   Finset.sum S (fun g0 => tailContribution M hdec D g0 R)
 
+/-- The support-set tail of an empty observable support is zero. -/
+theorem supportTail_empty
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (R : Real) :
+    supportTail M hdec D ∅ R = 0 := by
+  simp [supportTail]
+
+/-- The finite-support tail reduces to the single-anchor tail on singleton
+supports. -/
+theorem supportTail_singleton
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (g0 : Gamma) (R : Real) :
+    supportTail M hdec D ({g0} : Finset Gamma) R =
+      tailContribution M hdec D g0 R := by
+  simp [supportTail]
+
 /-- Exponential clustering for the support-indexed connected correlator. -/
 def HasExponentialClusteringSupport
     (L : LocalObservableSupportData Gamma Obs)

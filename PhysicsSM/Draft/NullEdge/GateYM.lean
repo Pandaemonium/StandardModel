@@ -423,7 +423,8 @@ therefore has the same parked-Q6 proof dependency. No volume-uniform KP proof
 or general finite-irrep coefficient map is claimed); `ExponentialClustering` (YM4/T8 statement bridge:
 abstract connected-correlator data, named cluster-tail contribution, and the
 kernel-checked implication from an explicit Q6-style tail bound plus an
-observable-to-cluster bridge to exponential clustering. No concrete plaquette
+observable-to-cluster bridge to exponential clustering, with `supportTail`
+empty/singleton lemmas for finite-support specialization. No concrete plaquette
 geometry, KP proof, or transfer-Hilbert statement is claimed).
 Adding a new YM module? Import it here.
 -/
