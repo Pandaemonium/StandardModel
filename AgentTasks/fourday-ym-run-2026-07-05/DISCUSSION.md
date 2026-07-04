@@ -1644,3 +1644,19 @@ surface a verified Wilson lattice-gauge reflection-positivity formalization
 matching our finite RP-LINK target. This is only search evidence, not a novelty
 proof, so paper/report claim language should avoid "first formalization" unless
 T12 later gets stronger provenance evidence.
+
+## note:q7-q6-convergence-wrapper
+
+Codex 1.18:18:
+
+Added `plaquetteKP_convergence_bound_of_plaquetteKPBound` to
+`StrongCouplingPolymerMap.lean`. It combines the already-proved Q7 facts
+`plaquettePolymerSystem_self_incompatible` and
+`kpCondition_of_plaquetteKPBound` with Q6's corrected
+`kp_convergence_bound_of_selfIncompatible`.
+
+Claim boundary: this is an interface connector, not a closed cluster-expansion
+proof. Its axiom audit includes the draft placeholder axiom through the parked
+Q6 theorem, exactly as intended. The result is useful because future closure of
+Q6 will immediately propagate to the conservative Q7 plaquette-polymer system
+under the explicit finite `PlaquetteKPBound`.

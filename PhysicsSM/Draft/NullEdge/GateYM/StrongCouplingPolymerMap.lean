@@ -362,6 +362,64 @@ theorem kpCondition_of_plaquetteKPBound
           gammaAbs alpha halpha).energy X := by
         rw [plaquettePolymerSystem_energy]
 
+/-- Conditional Q7-to-Q6 convergence connector.
+
+An explicit finite plaquette-polymer KP bound gives the abstract
+`KPCondition`, and the conservative overlap-or-touch system is
+self-incompatible because every polymer has nonempty support.  Therefore the
+corrected Q6 convergence statement applies to this Q7 polymer system.
+
+Draft boundary: this theorem is only as complete as
+`PolymerKPConclusion.kp_convergence_bound_of_selfIncompatible`, which is still
+the parked Q6 cluster-expansion theorem.  It records the interface wiring; it
+does not prove the cluster-expansion estimate itself. -/
+theorem plaquetteKP_convergence_bound_of_plaquetteKPBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (hBound : PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha)
+    (D : PolymerKPConclusion.ClusterCoeffData
+      (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+        gammaAbs alpha halpha)
+      (plaquettePolymerIncompatibleDecidable Adj ConnectedSupport
+        NontrivialLabel gammaAbs alpha halpha))
+    (X0 : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
+    (tsum (fun X : {X : PolymerKPConclusion.Cluster
+        (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+          gammaAbs alpha halpha) //
+        X.Connected
+          (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+            gammaAbs alpha halpha)
+          (plaquettePolymerIncompatibleDecidable Adj ConnectedSupport
+            NontrivialLabel gammaAbs alpha halpha) /\
+        X.Touches
+          (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+            gammaAbs alpha halpha) X0} =>
+      |D.coeff X.1| *
+        X.1.absWeight
+          (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+            gammaAbs alpha halpha) *
+        Real.exp
+          (X.1.energyOf
+            (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+              gammaAbs alpha halpha))))
+      <= (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+        gammaAbs alpha halpha).energy X0 := by
+  exact PolymerKPConclusion.kp_convergence_bound_of_selfIncompatible
+    (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha)
+    (plaquettePolymerIncompatibleDecidable Adj ConnectedSupport
+      NontrivialLabel gammaAbs alpha halpha)
+    (plaquettePolymerSystem_self_incompatible Adj ConnectedSupport
+      NontrivialLabel gammaAbs alpha halpha)
+    D
+    (kpCondition_of_plaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs hgamma alpha halpha hBound)
+    X0
+
 /-- Z2 strong-coupling coefficient used by the oracle fixture:
 `|tanh beta|` for the unique nontrivial label. -/
 def z2GammaAbs (beta : Real) (_ : PUnit) : Real :=
