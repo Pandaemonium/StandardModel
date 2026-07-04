@@ -182,6 +182,21 @@ folder" warning at submit is expected; `aristotle download --destination
 `tar -xzf`; two failed attempts on the same statement = park with a
 failure note, do not grind.
 
+## Fable escalation resource (new for this run)
+
+Claude Fable 5 may be called via the repo wrapper
+(`send_claude_review.py --model claude-fable-5`) at most once per 2
+hours, per `FABLE_CALL_PROTOCOL.md` in this directory (binding). Sonnet 5
+owns the budget and executes calls; Codex requests via the queue in
+`FABLE_CALLS.md`. Use it for what it is differentially good at -
+pre-freeze statement design review (Q2/Q3/Q6 and any non-verbatim
+Aristotle statement), falsity/sanity analysis, stuck-lane redesign,
+conceptual adjudication, daily strategy audit, semantic red-team of
+flagship results - and never for anything on the protocol's anti-trigger
+list. One primary deliverable per call, packet template mandatory, every
+answer ACTED/PARKED/REJECTED in writing, and Fable prose is a LEAD, not
+proof: the kernel remains the source of truth.
+
 ## Convention and oracle discipline (normative)
 
 Everything from the overnight plan remains binding: freeze conventions

@@ -88,6 +88,12 @@ claimed something, take the next open task; the board rules.
 - Aristotle: focused Mathlib-only packages; convention-pin `rfl` lemmas;
   harvest-first; registry current; budget 3 concurrent YM jobs, soft cap
   4/day.
+- Fable calls: YOU own the once-per-2-hours Claude Fable 5 budget -
+  `FABLE_CALL_PROTOCOL.md` is binding (taxonomy bar, packet template,
+  queue in `FABLE_CALLS.md`, post-call obligations). Spend slots on
+  pre-freeze statement reviews and stuck-lane redesigns; skip slots
+  freely; never call on the anti-trigger list; Fable output is a lead,
+  not proof.
 - Hygiene: ASCII, LF, spaced escape-hatch tokens in prose;
   `pre-commit run --files` per commit; prefix `fourday-ym-202607: `;
   explicit `git add` paths; no push; UTF-8 no BOM writes.

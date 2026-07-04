@@ -89,6 +89,12 @@ open task; the board rules.
 - Aristotle: focused Mathlib-only packages; convention-pin `rfl` lemmas;
   harvest-first; registry current; budget 3 concurrent YM jobs, soft cap
   4/day.
+- Fable calls: Sonnet owns the once-per-2-hours Claude Fable 5 budget.
+  To use it, add a queue entry to `FABLE_CALLS.md` per
+  `FABLE_CALL_PROTOCOL.md` (taxonomy letter + one-line ask + pointers);
+  Sonnet packs and executes. Your Q3 and Q6 pre-freeze reviews are
+  already seeded in the queue - draft the statement files, then flag the
+  queue entry ready.
 - Hygiene: ASCII, LF, spaced escape-hatch tokens in prose;
   `pre-commit run --files` per commit; prefix `fourday-ym-202607: `;
   explicit `git add` paths; no push; UTF-8 no BOM writes.
