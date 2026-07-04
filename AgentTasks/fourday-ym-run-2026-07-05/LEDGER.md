@@ -15,13 +15,13 @@ section 14 (Q-items).
 | T3 D12 sector decomposition | Q3 | baseline-done-gated-by-T2 | - | PhysicsSM/Draft/NullEdge/GateYM/FluxSector*.lean, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | magnetic Z2 support/projection layer landed; electric/center-shift spine plus concrete Z2 electric projections and abstract shift-invariant kernel preservation landed; actual Q2 transfer-matrix instantiation waits on T2 |
 | T4 harvest unitarizability | Q4 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FDRepUnitarizable.lean, WilsonVacuumDominance.lean | d4a9bd1f harvested + integrated; unconditional corollaries added |
 | T5 eigenvalue reality/ordering | Q5 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FusionTransferSpectrum.lean, WilsonVacuumDominance.lean | CLOSED (7c2b2c3): character_inv_eq_conj (unconditional), wilsonNormalizedGamma_conj_eq_self (reality), wilsonNormalizedGamma_re_mem_Icc (gamma.re in [-1,1]) |
-| T6 KP finite conclusion | Q6 | claimed-codex | codex | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean | strategy job first |
+| T6 KP finite conclusion | Q6 | waiting-aristotle-codex | codex | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean | strategy job `2427a253` running; do not freeze Lean statement until returned + cross-reviewed |
 | T7 strong-coupling polymer map | Q7 | open | - | PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymer*.lean | statement layer |
 | T8 exponential clustering | Q8 | open | - | (after T6/T7) | gated |
 | T9 cyclicity prerequisite | Q9 | open | - | (statement file only) | stretch |
 | T10 infinite-volume statement | Q10 | open | - | (statement file only) | stretch, day 4 |
 | T11 lasso identification | Q11 | open | - | PhysicsSM/Draft/NullEdge/GateYM/RectBoundary*.lean + standalone pkg | ordering pre-derived |
-| T12 YM-LIT | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md | standing lane |
+| T12 YM-LIT | - | claimed-codex | codex | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | RP/KP attribution and novelty-source verification while T6 strategy job runs |
 | T13 paper-unit outlines | - | open | - | AgentTasks/paper-units/*.md | day-end lane |
 | T14 oracle fixtures v0.3 | - | open | - | Scripts/oracle/validate_lgt_core.py | support lane |
 | T15 daily/final reports | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/DAY_*.md, FINAL_REPORT.md | alternate drafters |
@@ -67,3 +67,4 @@ section 14 (Q-items).
 1.10:57 codex T3 added abstract Z2 electric transfer-kernel preservation: finite kernels invariant under simultaneous base center shifts preserve every concrete Z2 electric sector by reindexing, with trivial-sector corollary; T3 marked baseline-done-gated-by-T2 because actual transfer-matrix instantiation belongs to T2. Direct file check green; next module/aggregate/full checks, axiom audit, commit, then claim T6.
 1.11:00 codex T6 claimed KP finite conclusion lane after parking T3 baseline on T2; next read T6 directions, PolymerKPCriterion, and Aristotle mechanics for the strategy job.
 1.11:08 codex T6 submitted KP finite-conclusion strategy/report job `2427a253` (task `08da7500`) after posting candidate statement signatures in `idea:q6-kp-statement-shape`; next poll once, then prepare only non-freezing local scaffolding while waiting.
+1.11:12 codex T12 claimed YM-LIT while T6 strategy job runs; next verify the Menotti-style Wilson RP source and log exact attribution status before any RP paper-unit claim language.

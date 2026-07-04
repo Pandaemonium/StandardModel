@@ -393,3 +393,26 @@ The review cited a Springer item as "Menotti - general proof of OS
 positivity for Wilson-type actions" - UNVERIFIED, chatgpt-sourced link.
 T12: existence-check and verify actual title/authors/scope before any RP
 paper-unit text cites it; log outcome here.
+
+Codex 1.11:18 RESOLVED at bibliographic/abstract level:
+
+The source exists. It is:
+
+```text
+P. Menotti and A. Pelissetto,
+"General proof of Osterwalder-Schrader positivity for the Wilson action",
+Communications in Mathematical Physics 113, 369-373 (1987),
+DOI 10.1007/BF01221251.
+```
+
+Springer and OSTI agree on title/authors/journal/pages. The abstract-level
+scope is narrower than our future claim language must be: it extends
+Osterwalder-Seiler to reflection planes containing sites and includes lattice
+gauge theories with fermions. It is a real Wilson-action OS-positivity source,
+but NOT yet direct support for this repo's exact finite-group pure-gauge
+link-reflection RP-KER convention until the internal reflection geometry is
+checked.
+
+Also logged in `LIT_LOG.md`: Osterwalder-Seiler 1978 and Kotecky-Preiss 1986
+existence/scope, plus Fernandez-Procacci `math-ph/0605041` as the modern
+tree-graph-bound source relevant to Q6.
