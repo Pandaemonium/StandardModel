@@ -634,3 +634,40 @@ already-proved local toolbox (`Matrix.PosSemidef`,
 `Matrix.PosSemidef.mul_mul_conjTranspose_same`,
 `Matrix.PosSemidef.conjTranspose_mul_mul_same` - see
 `GateMP/SCGGramPositivity.lean`), not new search.
+
+## 16. Oracle v0.2 + Lemma 2a argument-order correction (2026-07-03, claude)
+
+Planning session for the overnight YM run
+(`AgentTasks/overnight-ym-run-2026-07-03/`). ORACLE-TODO-1 and
+ORACLE-TODO-2 are both CLOSED: `Scripts/oracle/validate_lgt_core.py` is
+now v0.2 (36/36 this session; section [3]'s decay row is a real
+monotonicity check, new section [9] is the Z3 complex-character fixture).
+
+The Z3 fixture found a statement-shape refinement to Lemma 2a (section 4)
+that is NORMATIVE for the Lean statement files. As written,
+`sum_h w(h) chi_R(A h) = |G| w_hat_R chi_R(A) / d_R` is valid exactly
+when the class function is inversion-symmetric (`w(h) = w(h^{-1})`). That
+covers every use in this document, since Wilson weights
+`w = exp(beta Re chi_f)` are inversion-symmetric (`Re chi` is
+inversion-invariant for unitary representations). For a GENERAL class
+function the correct form is the convolution form
+
+    sum_h w(h) chi_R(h^{-1} A) = |G| w_hat_R chi_R(A) / d_R,
+
+with C-5 pinned as the EXPANSION coefficient (`w = sum_R w_hat_R chi_R`).
+The oracle's section [9] guard row exhibits an asymmetric complex class
+function on Z3 for which the naive order genuinely fails. Lean statement
+rule: state Lemma 2a in convolution form; derive the symmetric-weight
+form (this document's display) as a corollary via inversion symmetry.
+No proof in sections 3-6 is affected (all weights used are Wilson
+weights); this is a statement-shape guard, not an error correction in
+any proved result.
+
+Also delivered by the planning session, for the overnight run's use:
+`GateYM/WilsonWeightPositivity.lean` - a typechecked SCAFFOLD (three
+documented handoff markers) for the character-theory-free "Route B" to
+Corollary 3a's PSD direction (Gram kernel + Schur product theorem;
+`Matrix.PosSemidef.hadamard` and `Matrix.PosSemidef.kronecker` verified
+present in Mathlib), so RP-LINK need not wait on the character-expansion
+bookkeeping. Route A (Theorem 3 as stated) remains the paper-facing
+statement and the fusion-lemma feeder.

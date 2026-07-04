@@ -1,6 +1,22 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.1 (YM ladder, 2026-07-03)
+validate_lgt_core.py -- Track C oracle v0.2 (YM ladder, 2026-07-03)
+
+v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
+  ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
+    conjugation placement in C-5 (w_hat_R = expansion coefficient, i.e.
+    (1/|G|) sum_h w(h) chi_R(h^{-1})) AND a finding the freeze must fold
+    in: the fusion lemma's argument order. For a GENERAL class function w
+    the correct form is sum_h w(h) chi_R(h^{-1} A) = |G| w_hat_R chi_R(A)/d_R
+    (convolution form); the freeze s4 form sum_h w(h) chi_R(A h) is valid
+    exactly when w is inversion-symmetric (w(h) = w(h^{-1})), which holds
+    for every Wilson weight w = exp(beta Re chi_f) since Re chi is
+    inversion-invariant. Section [9] verifies both AND exhibits the naive
+    order FAILING for an asymmetric complex class function. Lean statement
+    files must state Lemma 2a in convolution form, with the Wilson case as
+    a corollary via inversion symmetry.
+  ORACLE-TODO-2: section [3]'s h->0 decay row is now a real monotonicity
+    check on a fixed volume, not a hardcoded pass.
 
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
@@ -41,7 +57,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.1 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.2 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -133,6 +149,7 @@ check("plaquette holonomy invariant under 200 random gauge transforms", ok)
 
 print("\n[3] Elitzur bound (finite, quantitative): |<sigma_l>| <= tanh(2d*h), volume-uniform")
 beta = 0.6
+sig_by_h = {}  # ORACLE-TODO-2: record per-h values for a real decay check below
 for h in [0.2, 0.1, 0.05]:
     bound = math.tanh(4 * h)  # 2d = 4 links meet each site in 2D
     vals = []
@@ -143,7 +160,10 @@ for h in [0.2, 0.1, 0.05]:
     check(f"h={h}: |<sigma_l>| <= tanh(4h)={bound:.4f} on all volumes",
           all(abs(v) <= bound + 1e-12 for v in vals),
           "vals=" + ",".join(f"{v:.5f}" for v in vals))
-check("h->0 decay visible (h=0.05 value < h=0.2 value)", True, "see rows above")
+    sig_by_h[h] = vals[0]  # fixed volume (2x2) for the monotonicity check
+check("h->0 decay: |<sigma_l>| strictly decreasing in h on fixed 2x2 volume",
+      abs(sig_by_h[0.05]) < abs(sig_by_h[0.1]) < abs(sig_by_h[0.2]),
+      f"h=0.2:{sig_by_h[0.2]:.5f} h=0.1:{sig_by_h[0.1]:.5f} h=0.05:{sig_by_h[0.05]:.5f}")
 
 # ---------------------------------------------------------------- S3 sector
 print("\n[4] S3 (nonabelian) 2D open lattice: character-expansion exact solution (pins C-5, C-6)")
@@ -341,6 +361,54 @@ for beta in [0.1, 0.5, 1.0, 2.0]:
     allok &= ok
 check("w = exp(beta Re chi_f): all character coefficients >= 0 and K(g,h)=w(gh^-1) PSD "
       "for Z2, Z16, S3 at beta in {0.1,0.5,1,2}", allok)
+
+print("\n[9] Z3 complex-character fixture (closes ORACLE-TODO-1): pins C-5 conjugation")
+print("    placement and the fusion lemma's argument order (see module docstring)")
+# Z3: chi_k(j) = omega^(k j), omega = exp(2 pi i / 3); k = 1, 2 are COMPLEX irreps.
+omega = complex(math.cos(2 * math.pi / 3), math.sin(2 * math.pi / 3))
+def chi3(k, j):
+    return omega ** ((k * j) % 3)
+
+# (a) Wilson weight w = exp(beta Re chi_1): inversion-symmetric by construction.
+beta = 0.7
+w3 = [math.exp(beta * chi3(1, j).real) for j in range(3)]
+# C-5 coefficients: w_hat_k = (1/|G|) sum_j w(j) chi_k(j^{-1}); two equivalent evaluations
+what3 = {k: sum(w3[j] * chi3(k, (-j) % 3) for j in range(3)) / 3 for k in range(3)}
+what3b = {k: sum(w3[(-j) % 3] * chi3(k, j) for j in range(3)) / 3 for k in range(3)}
+check("Z3 Wilson weight: C-5 coefficients real, both evaluation orders agree",
+      all(abs(what3[k] - what3b[k]) < 1e-12 and abs(what3[k].imag) < 1e-12
+          for k in range(3)),
+      " ".join(f"k={k}:{what3[k].real:.5f}" for k in range(3)))
+check("Z3 Wilson weight: w_hat_k >= 0 (Bochner hypothesis holds for complex irreps)",
+      all(what3[k].real >= -1e-12 for k in range(3)))
+ok = True  # fusion in the freeze-s4 order, valid here BECAUSE w is inversion-symmetric
+for k in range(3):
+    for A in range(3):
+        lhs = sum(w3[j] * chi3(k, (A + j) % 3) for j in range(3))
+        rhs = 3 * what3[k] * chi3(k, A)
+        ok &= abs(lhs - rhs) < 1e-12
+check("Z3 Wilson weight: fusion sum_h w(h) chi(A h) = |G| w_hat chi(A) "
+      "(symmetric-weight form)", ok)
+
+# (b) GENERIC complex class function (abelian: any function), NOT inversion-symmetric.
+wgen = [1.0 + 0.0j, 0.9 + 0.4j, 0.2 - 0.7j]  # w(1) != w(2): breaks the symmetry
+whatg = {k: sum(wgen[j] * chi3(k, (-j) % 3) for j in range(3)) / 3 for k in range(3)}
+check("Z3 generic w: C-5 gives the EXPANSION coefficients (w = sum_k w_hat_k chi_k)",
+      all(abs(sum(whatg[k] * chi3(k, j) for k in range(3)) - wgen[j]) < 1e-12
+          for j in range(3)))
+ok = True  # fusion in CONVOLUTION form: sum_h w(h) chi(h^{-1} A) = |G| w_hat chi(A)/d
+for k in range(3):
+    for A in range(3):
+        lhs = sum(wgen[j] * chi3(k, (A - j) % 3) for j in range(3))
+        rhs = 3 * whatg[k] * chi3(k, A)
+        ok &= abs(lhs - rhs) < 1e-12
+check("Z3 generic w: fusion holds in convolution form sum_h w(h) chi(h^{-1} A)", ok)
+naive_differs = any(
+    abs(sum(wgen[j] * chi3(k, (A + j) % 3) for j in range(3))
+        - 3 * whatg[k] * chi3(k, A)) > 1e-6
+    for k in range(3) for A in range(3))
+check("Z3 generic w: naive order sum_h w(h) chi(A h) DIFFERS - placement is "
+      "load-bearing (guard row)", naive_differs)
 
 print("\n" + "=" * 78)
 n = len(PASS)
