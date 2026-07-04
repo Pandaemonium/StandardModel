@@ -27,6 +27,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionCompatibility
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
+import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 
@@ -193,6 +194,11 @@ invariance under those weights);
 Gauss-invariant/zero-momentum/trivial-flux vacuum-sector predicate and
 finite real spectral-ratio gap `-log(lambda1/lambda0)` with elementary
 nonnegativity/positivity lemmas; no transfer matrix construction yet);
+`FluxSectorZ2` (T3/Q3 first Z2-torus sector layer: names the two winding
+flux bits, builds the trivial-flux predicate into the D12
+`SymmetrySector`, records abstract quantum-number preservation lemmas, and
+separates `fluxGap` from `localGlueballGap`; no concrete transfer kernel or
+winding-cycle holonomy realization is claimed yet);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

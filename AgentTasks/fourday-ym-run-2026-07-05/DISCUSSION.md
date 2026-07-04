@@ -35,6 +35,23 @@ Decisions needed:
 3. Confirm the two named quantities (flux gap / local-glueball gap) and
    which one `finiteMassGap` names (per section 14 Q3: the LOCAL one).
 
+RESOLVED 1.09:03 codex:
+
+- Baseline scope is the Z2 torus case, because that is where the oracle
+  exposed the flux-line phenomenon. A general finite-G center/conjugacy
+  label is deferred until the Z2 API is kernel-checked.
+- First Lean file: `FluxSectorZ2.lean`, importing `TransferGapDefinition`
+  and `TorusEvenCover` only as needed. The first slice should name the
+  two notions separately before proving preservation facts.
+- `finiteMassGap` remains the local/glueball-sector quantity. A global
+  winding-flux excitation gets a separate `fluxGap`-named definition; it
+  must not be silently used as the local gap.
+- Initial labels are two Z2 winding bits, one for each fundamental cycle.
+  Required facts for the baseline layer: the label is stable under local
+  plaquette flips / local plaquette algebra, while transfer preservation
+  is stated against the eventual Q2 transfer kernel or, as a first
+  fallback, the already-existing fusion-convolution operator.
+
 ## idea:q6-kp-statement-shape (seeded)
 
 Freeze the finite polymer-conclusion statement on top of
