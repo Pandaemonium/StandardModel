@@ -102,3 +102,31 @@ Also observed: 1709.04891 duplicated in graph (5J5XDKMN + malformed
 key `zotero:SZJE69PE`) - dup-key pathology, log-only for tonight.
 Ingested: none (left to T6 with the pre-add existence check).
 Affects: T6 workload estimate; item 8 scoping; flagship claim language.
+
+### [01:50] claude - Aristotle ladder-strategy report attributions (project ac230cc8)
+Searches run: none yet (attributions below are the AUDITOR's citations,
+themselves cited FROM MEMORY by that model - still need T6 verification,
+not upgraded to [M] grade by merely being repeated here).
+Verdict: the strategy report names precise attributions worth adding to
+the standing register alongside items 1-2 (Osterwalder-Seiler, Elitzur):
+Osterwalder-Seiler, "Gauge field theories on a lattice", Ann. Phys. 110
+(1978) 440 (lattice gauge RP itself); Luscher, "Construction of a
+self-adjoint, strictly positive transfer matrix for Euclidean lattice
+gauge theories", Commun. Math. Phys. 54 (1977) 283 (the H = -log T
+reconstruction and strict positivity - EXPLICITLY NOT
+Osterwalder-Schrader, a common misattribution risk per the report's
+section 5.5); Osterwalder-Schrader, Commun. Math. Phys. 31 (1973) / 42
+(1975) (continuum RP postulates only, the template, not the lattice
+result); 't Hooft, Nucl. Phys. B153 (1979) 141 (flux/twist definitions
+for the D12 sector qualifier); Kogut, Rev. Mod. Phys. 51 (1979) 659 and
+Fradkin-Shenker, Phys. Rev. D 19 (1979) 3682 (finite-G lattice gauge
+theory is a real studied subject, relevant to the "finite-G honestly
+separable as a publication" question in section 2). Also flagged:
+arXiv:2606.07922 (independently found by the planning session too) is
+noted by the auditor as "future-dated (June 2026) and I cannot verify
+it" - corroborates treating it as UNVERIFIED, not citable art, until
+someone actually confirms the identifier resolves.
+Ingested: none yet.
+Affects: T6 priority list (add Luscher 1977 and the
+Osterwalder-Schrader-vs-Luscher misattribution risk as a NEW
+load-bearing item); flagship claim-language attribution correctness.
