@@ -367,6 +367,22 @@ fermion half:
 
 Track B claims no prize relevance. Its value is Measure-Problem-facing.
 
+**Convention note for any future null-edge-native gauge action (YMG0-CONV,
+blocking for that work when it starts).** The Track A ladder deliberately
+works on abstract oriented lattices with standard (hypercubic-style)
+conventions, because that is where the known constructive results live. If
+and when a null-edge-NATIVE Wilson-type plaquette action is defined on the
+tetrahedral/oblique translation lattice (Track B, or a future universality
+comparison), its naive-continuum expansion MUST carry the oblique
+metric/tetrad weights explicitly: the tetrahedral frame vectors are not
+orthonormal, so the hypercubic normalization of the plaquette action
+(`1/(4 g^2) F^2` with unit lattice-direction weights) cannot be borrowed
+blindly. This is the same class of convention hazard the octonion
+ConventionBridge exists for, and it gets the same treatment: freeze the
+weights in a statement file plus oracle fixture BEFORE any Lean work, and
+route any comparison to standard Wilson LGT through an explicit conversion
+lemma, not a silent identification.
+
 ## 7. Track C: oracles
 
 Small-volume strong-coupling series (character expansions), transfer-matrix
@@ -398,7 +414,9 @@ native synergy); (4) YM1 Elitzur.
   the prize target, or conflating mass gap / Wilson area law / entanglement
   area law. Control: the section 1 distinctions are normative; violations
   are constitution violations (Round 8 halo ban) and auto-demote the
-  offending claim.
+  offending claim. The section 13.2 mass taxonomy (fermion mass / Wilson
+  regulator mass / YM gap / gravitational mass) extends this control to
+  cross-lane mass language.
 - **F-YM-PACE:** formalization throughput far below estimate at any rung
   (trigger: >2x the rung's high-end estimate with <50% of targets closed).
   Control: rescope or hand the rung's mathematical content to the community
@@ -473,3 +491,77 @@ formal verification might itself move the mathematics. Every rung pays for
 itself; the lottery ticket rides on top for free. First moves: the YM-LIT
 source pack, the YM0 core package, and the QCD1 Banks-Casher statement -
 none of which displaces the live queue.
+
+## 13. Interpretation appendix: the null-edge mass mechanism and the mass taxonomy
+
+Claim label for this ENTIRE section: **interpretation/mechanism prose**, not
+theorem content. Nothing here is load-bearing for any Track A rung; its job
+is to state, once and in claim-disciplined language, WHY the null-edge
+program cares about this ladder beyond the formalization value, and to keep
+the program's distinct mass notions from bleeding into each other.
+Provenance: distilled 2026-07-04 from an external model review of this
+document; the review's proposed theorem ladder was REJECTED as duplicative
+of Track A (and its Gauss-sector gap statement missed the 't Hooft-flux
+qualification that D12 already carries - see the freeze document); only the
+mechanism framing and taxonomy below survived screening.
+
+### 13.1 The mechanism claim (interpretation)
+
+The null-edge matter-sector story is: primitive transport is null, and
+effective mass arises relationally, from node/onsite/internal structure
+(turns, coin phases, cross terms between null legs). The gauge-sector
+analogue, stated as a mechanism hypothesis rather than a result:
+
+- An open gauge transport `U_(x->y)` is gauge-COVARIANT
+  (`U -> g(x) U g(y)^-1`), not gauge-invariant. There is no gauge-invariant
+  one-edge state; a "gluon edge" is microscopic bookkeeping, not a physical
+  particle. This is a real (finite, provable) statement and is exactly what
+  the YM0/YM1 gauge-invariance layer formalizes.
+- The gauge-invariant sector begins at CLOSED holonomy composites (loops,
+  networks): Wilson loops and plaquette-trace glueball operators. Their
+  propagation in the transfer direction involves node structure, so the
+  matter-sector slogan transfers: massless microscopic transport, massive
+  gauge-invariant composites.
+- The mass gap, in this reading, is the statement that the lightest closed
+  gauge-flux composite has strictly positive transfer energy - a
+  relational/composite property, NOT a primitive mass term. In particular
+  the mechanism is NOT a Proca-style `m^2 A^2` term (which would break gauge
+  invariance); any presentation drifting toward "we add a gauge-boson mass"
+  is an F-YM-CONFLATE-class error.
+- Relation between the gap and confinement, stated carefully because
+  section 1 keeps them normatively distinct: at strong coupling BOTH the
+  Wilson-loop area law and the transfer gap are controlled by the same
+  character/cluster expansion (the same suppression of nontrivial-
+  representation flux), so the mechanism picture treats them as two
+  consequences of one flux-cost structure. That shared origin is a
+  strong-coupling fact; it does NOT make (a) and (b) of section 1
+  interchangeable, and the prize criterion remains (a).
+
+Conjecture-language template consistent with the above (usable when Track B
+or a universality comparison eventually needs it): "the gap is the minimal
+transfer energy of closed gauge-flux excitations; it is not a primitive
+mass assigned to an open gauge edge."
+
+### 13.2 The mass taxonomy (normative for program prose)
+
+Four DISTINCT mass notions circulate in this program. Conflating any two of
+them in a paper or gate document is an F-YM-CONFLATE-class violation:
+
+1. **Fermion rest mass** (mass story / C1 lane): relational, from
+   node/coin/internal phases or hidden null motion on the matter graph.
+2. **Wilson regulator mass** (C1 overlap kernel): the gamma5-even onsite
+   inverse-propagator term `W(k) = r sum_A (1 - cos k_A)` inside the
+   overlap construction. A regulator artifact with a job (doubler
+   removal); never a physical mass, and never to be cited as one.
+3. **Yang-Mills mass gap** (this document): minimal transfer energy of
+   gauge-invariant closed flux composites in PURE gauge theory. Must be
+   explainable with gauge links and gauge-invariant loops alone - fermion
+   Wilson masses and Yukawa/CKM texture are out of bounds as explanations
+   here by construction.
+4. **Gravitational/inertial mass** (far-future dynamical-geometry layer):
+   registered only. If null-edge geometry ever becomes dynamical, all of
+   the above contribute stress-energy; no claims now.
+
+The enforcement rule is the existing F-YM-CONFLATE control (section 9),
+extended by this taxonomy: a claim about one row may not borrow evidence or
+language from another row without an explicit conversion argument.
