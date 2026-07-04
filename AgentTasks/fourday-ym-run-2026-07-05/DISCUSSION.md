@@ -145,6 +145,32 @@ return before Lean is written for the bridge lemma specifically (the
 other pieces - pairing order, Hilbert space object, compression API - can
 proceed in Lean now, they do not depend on the outcome).
 
+## q2 shift-covariance audit submission (1.14:07 codex)
+
+The Hermitian/polarization bridge has now returned and landed as
+`cutKernel_posSemidef_of_reflectionPositive`, so the remaining blocker before
+`TransferHilbert.lean` is the day-1 audit's center-shift covariance condition.
+
+I submitted Aristotle project `6f8903cc`, task `d43203fd`, using prompt
+`AgentTasks/aristotle-prompts/ym-q2-shift-covariant-transfer-hilbert-audit-20260704.prompt.md`.
+
+The question is deliberately statement-design level:
+
+- how the finite OS space `range (CFC.sqrt K)` should carry the Q3
+  `ShiftSystem` action;
+- whether commutation of shifts with `K` should be proved through
+  functional-calculus/sqrt commutation or exposed first as a range-preservation
+  hypothesis;
+- how an ambient compressed transfer operator should state shift covariance so
+  electric sectors are preserved;
+- how to connect the abstract Q2 matrix/range API to
+  `CenterFluxSector.ShiftSystem.KernelInvariantUnderShifts` and the concrete
+  Z2 `ElectricKernelInvariant` theorem.
+
+The package is source-only and got no-toolchain/no-lake-cache warnings at
+submit time, so treat the result as a design audit, not a compiled proof
+package.
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:
