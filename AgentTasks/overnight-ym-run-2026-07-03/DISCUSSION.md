@@ -1031,3 +1031,18 @@ Known compromises: the report groups theorem families rather than listing every
 small helper lemma by name; I think that is the only way it stays readable in
 five minutes. If you want a denser theorem appendix, add it below the main
 report rather than bloating the executive pass.
+
+**Logged Claude review result (05:55):** no blockers. Review log:
+`AgentTasks/model-calls/claude/2026-07-04-024608-t8-morning-report-review.md`.
+
+Applied the requested clarity edits:
+
+- D12 now says `finiteMassGap` definition slot and explicitly denies transfer
+  matrix construction / spectral theorem / oracle-number evaluation.
+- Lemma 2a v1 counterexample is visible in the theorem section.
+- Live Aristotle jobs now cite statement/prompt pointers.
+- Build hygiene now records the `678b386` stale-build near-miss fixed in
+  `1033caa`.
+
+T8 is cross-reviewed and ready unless a human/partner wants a denser theorem
+appendix.

@@ -2,7 +2,7 @@
 
 ## 1. Executive summary
 
-- GateYM went from scattered YM scaffolds to a coherent finite-group lattice ensemble stack, with Wilson local weights, reflection scaffolding, D12 gap vocabulary, and full-repo `lake build` green.
+- GateYM went from scattered YM scaffolds to a coherent finite-group lattice ensemble stack, with Wilson local weights, reflection scaffolding, a D12 flux-qualified `finiteMassGap` definition slot, and full-repo `lake build` green.
 - YM3 Route B closed the Wilson kernel PSD engine; RP-LINK proper was deliberately not claimed, because the lattice cut/factorization/PSD assembly is still real work.
 - YM1 closed the Z2 rectangular-loop Theorem 2' combinatorial formula and submitted the finite-group Lemma 2a character-fusion step to Aristotle after catching and fixing a normalization bug.
 - Literature sprint verified the standing register, found two important novelty/claim-language constraints, and unblocked the KP statement freeze.
@@ -14,18 +14,18 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 
 ### YM3 PSD and transfer atoms
 
-- `wilsonKernel_posSemidef`, `reCharGram_posSemidef`, `hadamard_posSemidef`, `hadamard_pow_posSemidef` in `PhysicsSM/Draft/NullEdge/GateYM/WilsonWeightPositivity.lean`.
+- `wilsonKernel_posSemidef`, `reCharGram_posSemidef`, `hadamard_posSemidef`, `hadamard_pow_posSemidef` in `PhysicsSM/Draft/NullEdge/GateYM/WilsonWeightPositivity.lean` (`fb4df44`).
   Verification: `lake build PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity`, aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
 - `transferMatrix_posSemidef`, `compression_posSemidef`, `singleLinkWilsonKernel_diagCongruence_posSemidef` in `TransferPositivity.lean`.
   Verification: targeted module build, aggregate GateYM build; Aristotle red-team led to the rename/re-scope in `9c4b4d2`. Axioms: `[propext, Classical.choice, Quot.sound]`.
 
 ### YM1 2D exact-solution core
 
-- `eq_empty_or_univ_of_zero_boundary_bits`, `eq_or_compl_of_sameBoundary`, `sum_zeroBoundary_weights`, `sum_sameBoundary_weights`, `ratio_sameBoundary_zeroBoundary_weights`, `rectInside_card`, `ratio_rectInside` in `TorusEvenCover.lean`.
+- `eq_empty_or_univ_of_zero_boundary_bits`, `eq_or_compl_of_sameBoundary`, `sum_zeroBoundary_weights`, `sum_sameBoundary_weights`, `ratio_sameBoundary_zeroBoundary_weights`, `rectInside_card`, `ratio_rectInside` in `TorusEvenCover.lean` (`8bcd861` for the rectangular loop closure).
   Verification: `lake env lean PhysicsSM/Draft/NullEdge/GateYM/TorusEvenCover.lean`, aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
 - `convLeft`, `iterConv`, `iterConv_eigen`, `iterConv_eigen_at_one` in `FusionConvolution.lean`.
   Verification: targeted file/module checks and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
-- Lemma 2a finite-group character fusion is not landed in the repo. Corrected standalone statement parses with the expected proof placeholder; Aristotle project `3435c7a3` is running.
+- Lemma 2a finite-group character fusion is not landed in the repo. Corrected standalone statement parses with the expected proof placeholder; Aristotle project `3435c7a3` is running. The v1 statement was refuted at the trivial representation with `w = 1`: LHS `= |G|`, buggy RHS `= |G|^2`.
 
 ### YM0/T3 finite-group lattice and reflection stack
 
@@ -37,9 +37,9 @@ Verification shorthand: every module below was covered by targeted `lake env lea
   Verification: targeted/module/aggregate checks. Axioms: standard project footprint.
 - `PlaquetteEnsemble.lean` and `WilsonLocalWeight.lean`: finite product-plaquette partition/numerator/expectation, positive local weight -> positive partition, Wilson local weight class-function invariance, Wilson partition positivity.
   Verification: targeted checks and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
-- `TransferGapDefinition.lean`: D12 shell separating Gauss invariance, zero momentum, and trivial 't Hooft flux; finite real spectral-ratio gap with nonnegativity/positivity lemmas.
+- `TransferGapDefinition.lean`: D12 shell separating Gauss invariance, zero momentum, and trivial 't Hooft flux; `finiteMassGap` real-valued spectral-ratio definition (`-Real.log (lambda1 / lambda0)`) plus elementary log nonnegativity/positivity lemmas under `0 < lambda1 <= lambda0`. No transfer matrix construction, spectral theorem, or oracle-number evaluation is claimed.
   Verification: targeted check and aggregate GateYM build.
-- `ReflectionCore.lean`, `ReflectionCutExample.lean`, `ReflectionWalk.lean`, `ReflectionEnsemble.lean`, `PlaquetteReflection.lean`: link-reflection structure, two-layer cut sanity model, opposite-group reflected-walk theorem, reflection finite-sum change-of-variables, plaquette holonomy lift, and product-weight reflection bridge.
+- `ReflectionCore.lean`, `ReflectionCutExample.lean`, `ReflectionWalk.lean`, `ReflectionEnsemble.lean`, `PlaquetteReflection.lean`: link-reflection structure, two-layer cut sanity model, opposite-group reflected-walk theorem, reflection finite-sum change-of-variables, plaquette holonomy lift, and product-weight reflection bridge (`1033caa`, `4e3fcba`, `45eb172`, `eb0a90b`).
   Key names: `reflectLinkField_involutive`, `twoLayerCutReflection_cutLink`, `op_hol_reflectLinkField_mirrorWalk`, `reflectLinkFieldEquiv`, `expectation_observable_comp_reflectLinkField_of_weight_invariant`, `op_hol_reflectLinkField_mirrorPlaquette`, `productWeight_reflectLinkField_mirrorPlaquette`.
   Verification: targeted file/module checks, axiom audits, aggregate GateYM build. Axioms: `[propext]` or `[propext, Quot.sound]` for the reflected-step/walk/plaquette/product bridge facts.
 
@@ -55,8 +55,8 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 - `ac230cc8` `ym-ladder-strategy-20260703`: COMPLETE + HARVESTED. Findings drove sequencing: harden finite results, U(1) Fourier RP before Peter-Weyl, QCD1 before KP/Peter-Weyl, and keep finite-volume/finite-G disclaimers sharp.
 - `cb437537` `ym3-semantic-redteam-20260703`: COMPLETE + HARVESTED. Findings integrated in `9c4b4d2`: TransferPositivity was renamed/re-scoped and one inert hypothesis removed.
 - `9627f7ea` `ym1-fusion-2dexact-20260704` v1: CANCELED/IDLE after a real normalization bug was found. The v1 theorem had an extra `|G|` factor; trivial representation with `w=1` refutes it.
-- `3435c7a3` `ym1-fusion-2dexact-20260704b` v2: RUNNING at last poll. Corrected statement removes the extra factor and preserves the oracle-pinned `h^-1 * A` convolution order.
-- `203fd831` `gate-c2-flux2d-witness`: RUNNING at last poll; non-YM Gate C2 carryover, do not duplicate.
+- `3435c7a3` `ym1-fusion-2dexact-20260704b` v2: RUNNING at last poll. Corrected statement removes the extra factor and preserves the oracle-pinned `h^-1 * A` convolution order. Statement: `AgentTasks/aristotle-standalone/ym1-fusion-2dexact-20260704/Ym1Fusion/Lemma2a.lean`; prompt: `AgentTasks/aristotle-prompts/overnight-ym1-fusion-2dexact.prompt.md`.
+- `203fd831` `gate-c2-flux2d-witness`: RUNNING at last poll; non-YM Gate C2 carryover, do not duplicate. See the T0 registry row in `LEDGER.md`.
 - Older visible IDLE projects remain retired/previous-run-ledgered unless the user asks to reopen them.
 
 ## 4. Integration debt
@@ -83,9 +83,10 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 
 ## 6. Build and hygiene status
 
-- `lake build PhysicsSM.Draft.NullEdge.GateYM`: passed repeatedly; final aggregate was 8050 jobs with known unrelated warnings in Elitzur/Transfer/GateC2 files.
+- `lake build PhysicsSM.Draft.NullEdge.GateYM`: passed repeatedly; final aggregate was 8050 jobs with known unrelated warnings in Elitzur/Transfer/GateC2 files, pre-existing and unchanged by this run.
 - `lake build`: passed after live-tree changes, 8295 jobs. Existing info/linter/deprecation messages appeared outside the new YM changes; no errors.
 - `pre-commit run --all-files`: passed before the final commits.
+- One stale-build near-miss was caught and fixed: `678b386` reported aggregate GateYM green while `lake env lean` on the just-edited `ReflectionWalk.lean` failed on a shadowed section variable; fixed in `1033caa`. Before promotion, rerun per-file `lake env lean` on files touched in the last review cycle.
 - Baseline checks recorded at T0: GateYM build green, oracle v0.2 `validate_lgt_core.py` 36/36, Neo4j reachable, Aristotle list reconciled.
 - Standalone Lemma 2a statement check: `lake env lean AgentTasks/aristotle-standalone/ym1-fusion-2dexact-20260704/Ym1Fusion/Lemma2a.lean` parsed with the expected proof-placeholder warning. The focused submit-package local check failed before typechecking because that ignored package lacked materialized Mathlib `.olean`s; the root-project check is the reliable local parse check.
 

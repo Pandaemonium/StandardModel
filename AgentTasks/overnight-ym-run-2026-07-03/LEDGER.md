@@ -18,7 +18,7 @@ Status values: `open`, `claimed-claude`, `claimed-codex`, `blocked`,
 | T5 | YM4 groundwork: KP + polymers | done-claude | Claude | `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPCriterion.lean` (`6659f53`) | Statement freeze landed: abstract polymer system + KP condition as precise Finset inequality; conclusion (cluster expansion) needs new Ursell infrastructure, documented as handoff |
 | T6 | YM-LIT verification sprint | done-claude | Claude | `LIT_LOG.md` | ALL 11 standing items verified or substantially advanced; 2 major novelty-check finds (arXiv:2606.19362 flagged with skepticism case, arXiv:2603.15770 genuine adjacent art) |
 | T7 | Aristotle partner jobs | done | Claude | `AgentTasks/aristotle-prompts/overnight-ym*.prompt.md` | Both COMPLETE + HARVESTED. Red-team found real naming/scope overreach + one inert hypothesis - fixed in commit `9c4b4d2`. |
-| T8 | Morning report | claimed-codex | Codex | `MORNING_REPORT.md` | Draft created; needs cross-review before final stop |
+| T8 | Morning report | done | Codex + Claude review | `MORNING_REPORT.md` | Draft created, externally cross-reviewed via logged Claude call, and revised |
 
 ## Aristotle registry
 
@@ -106,6 +106,7 @@ Format: `HH:MM agent task next-step` - one line per cycle, append only.
 05:30 Codex final integration sweep: full `lake build` passed (8295 jobs) with existing info/linter/deprecation warnings outside the new YM changes; no errors. No new proof submissions after this point.
 05:40 Codex T8 drafted `MORNING_REPORT.md` per RUN_PLAN sections, including theorem groups, Aristotle final state, integration debt, decisions, build hygiene, next actions, and lit summary; next pre-commit/commit and request cross-review.
 05:45 Codex T8 committed morning-report draft `544dd63`, opened cross-review request, and polled Aristotle: corrected Lemma 2a `3435c7a3` and Gate C2 `203fd831` both still RUNNING.
+05:55 Codex T8 received logged Claude review (`AgentTasks/model-calls/claude/2026-07-04-024608-t8-morning-report-review.md`): no blockers; applied clarity edits on D12 wording, stale-build near-miss, Lemma 2a witness, and live-job poll pointers.
 
 ## Parked for user
 
