@@ -24,6 +24,9 @@ explicit rather than derived.
 3. `wilson_iterConv_eigen_at_one`: the assembled area-law iteration,
    `iterConv w chi_R n 1 = chi_R(1) * gamma_R^n`, by feeding `wilson_gamma`
    into `FusionConvolution.iterConv_eigen_at_one`.
+4. `wilson_iterConv_normalized_at_one`: the same raw convolution divided by
+   the one-plaquette normalization scalar, whose nonzero proof is supplied by
+   positivity of the real Wilson weights.
 
 ## What this file does NOT prove (explicit, not silently assumed)
 
@@ -38,8 +41,8 @@ prove:
   belonging to the `LatticeEnsemble`/`PlaquetteEnsemble` (T3) layer, not
   attempted here.
 - The partition-function prefactor formula `Z_open = |G|^(V-1) (|G| w_hat_0)^P`.
-- Any normalization/prefactor bridging `Z_open` to the exact `<W_R(C_A)> =
-  d_R gamma_R^A` display in the freeze document.
+- The proof that the normalization scalar below is the exact lattice
+  partition-function prefactor after tree gauge.
 
 So this theorem is exactly what its name says: an iterated-convolution
 identity at the concrete Wilson weight, matching the SHAPE of Theorem 2's
@@ -66,6 +69,35 @@ variable {G : Type} [Group G] [Fintype G] {n : ℕ}
 noncomputable def wilsonLocalWeightC (beta : ℝ)
     (rho : G → Matrix (Fin n) (Fin n) ℂ) (h : G) : ℂ :=
   (WilsonLocalWeight.wilsonLocalWeight beta rho h : ℂ)
+
+/-- The single-plaquette Wilson normalization scalar in complex form.
+
+This is the algebraic scalar by which the raw convolution is normalized below;
+identifying its powers with the finite-lattice partition prefactor is the
+separate tree-gauge/ensemble bridge not proved in this file. -/
+noncomputable def wilsonPlaquetteSumC (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) : ℂ :=
+  ∑ g : G, wilsonLocalWeightC beta rho g
+
+/-- The real single-plaquette Wilson normalization scalar is positive: it is a
+nonempty finite sum of positive exponentials. -/
+theorem wilsonPlaquetteSum_pos (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) :
+    0 < ∑ g : G, WilsonLocalWeight.wilsonLocalWeight beta rho g := by
+  refine Finset.sum_pos (fun g _hg => WilsonLocalWeight.wilsonLocalWeight_pos beta rho g) ?_
+  exact ⟨1, Finset.mem_univ 1⟩
+
+/-- The complex-cast one-plaquette Wilson normalization scalar is nonzero. -/
+theorem wilsonPlaquetteSumC_ne_zero (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) :
+    wilsonPlaquetteSumC beta rho ≠ 0 := by
+  have hpos := wilsonPlaquetteSum_pos (G := G) beta rho
+  have hcast :
+      wilsonPlaquetteSumC beta rho =
+        ((∑ g : G, WilsonLocalWeight.wilsonLocalWeight beta rho g : ℝ) : ℂ) := by
+    simp [wilsonPlaquetteSumC, wilsonLocalWeightC]
+  rw [hcast]
+  exact_mod_cast (ne_of_gt hpos)
 
 omit [Fintype G] in
 /-- The complex-cast Wilson local weight is a class function - a direct
@@ -125,6 +157,28 @@ theorem wilson_iterConv_eigen_at_one (beta : ℝ)
   iterConv_eigen_at_one (wilsonLocalWeightC beta rho) R.character
     ((∑ g : G, wilsonLocalWeightC beta rho g * R.character g⁻¹) / R.character 1)
     (R.character 1) rfl (wilson_gamma beta rho hmul hone R) m
+
+/-- Normalized Wilson-weight iteration at the identity.
+
+Dividing the raw iterated convolution by the `m`th power of the one-plaquette
+normalization scalar gives the expected `chi_R(1) * normalizedGamma^m` algebraic
+shape. This is still not the finite-lattice expectation theorem: the tree-gauge
+bridge must identify the normalized convolution with the Wilson-loop
+expectation. -/
+theorem wilson_iterConv_normalized_at_one (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (R : FDRep ℂ G) [Simple R] (m : ℕ) :
+    iterConv (wilsonLocalWeightC beta rho) R.character m 1 /
+        wilsonPlaquetteSumC beta rho ^ m =
+      R.character 1
+        * (((∑ g : G, wilsonLocalWeightC beta rho g * R.character g⁻¹) /
+            R.character 1) / wilsonPlaquetteSumC beta rho) ^ m := by
+  have _hZpow : wilsonPlaquetteSumC beta rho ^ m ≠ 0 :=
+    pow_ne_zero m (wilsonPlaquetteSumC_ne_zero beta rho)
+  rw [wilson_iterConv_eigen_at_one beta rho hmul hone R m]
+  rw [div_pow]
+  ring_nf
 
 end Theorem2AreaLaw
 end GateYM

@@ -1089,3 +1089,16 @@ build, axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate
 GateYM build passed. Remaining claim boundary: the normalized expectation
 bridge, trivial-representation partition prefactor, and tree-gauge
 independence are still separate work.
+
+**Codex follow-up (06:50):** extended `Theorem2AreaLaw.lean` with
+`wilsonPlaquetteSumC`, `wilsonPlaquetteSum_pos`,
+`wilsonPlaquetteSumC_ne_zero`, and `wilson_iterConv_normalized_at_one`. The new
+theorem divides the raw Wilson iterated convolution by the `m`th power of the
+one-plaquette scalar and proves the normalized `chi_R(1) * gamma^m` algebraic
+shape; nonzero of the normalizer is proved from positivity of the real Wilson
+weights.
+
+Verification: `lake env lean Theorem2AreaLaw.lean`, targeted module build,
+axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM
+build passed. Remaining claim boundary: prove the tree-gauge/expectation
+bridge and partition-prefactor identification.

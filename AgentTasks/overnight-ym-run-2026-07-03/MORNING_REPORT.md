@@ -26,9 +26,9 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 - `IsClassFunction`, `lemma2a_fusion_convolution`, `iterConv_character_fusion_cross`, `convLeft`, `iterConv`, `iterConv_eigen`, `iterConv_eigen_at_one` in `FusionConvolution.lean` (`6abcd91` for the Lemma 2a integration).
   Verification: targeted file/module checks and aggregate GateYM build. Axioms for `lemma2a_fusion_convolution` and `iterConv_character_fusion_cross`: `[propext, Classical.choice, Quot.sound]`.
   Aristotle project `3435c7a3` supplied the proof; the v1 statement was refuted at the trivial representation with `w = 1`: LHS `= |G|`, buggy RHS `= |G|^2`.
-- `wilsonLocalWeightC_class`, `wilson_gamma`, `wilson_iterConv_eigen_at_one` in `Theorem2AreaLaw.lean`.
+- `wilsonPlaquetteSumC`, `wilsonPlaquetteSum_pos`, `wilsonPlaquetteSumC_ne_zero`, `wilsonLocalWeightC_class`, `wilson_gamma`, `wilson_iterConv_eigen_at_one`, `wilson_iterConv_normalized_at_one` in `Theorem2AreaLaw.lean`.
   Verification: targeted file/module checks, axiom audit, and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
-  This is the raw Wilson-weight convolution iteration identity; it still does not identify the convolution with a normalized lattice expectation.
+  This is the Wilson-weight convolution iteration identity plus per-plaquette scalar normalization; nonzero of the normalizer is proved from positivity of Wilson weights. It still does not identify the convolution with a normalized lattice expectation.
 
 ### YM0/T3 finite-group lattice and reflection stack
 
@@ -64,7 +64,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 
 ## 4. Integration debt
 
-- Finish finite-G Theorem 2 from `Theorem2AreaLaw.lean`: connect the raw Wilson-weight convolution identity to normalized lattice expectations by proving the tree-gauge independence layer and the trivial-representation partition/prefactor normalization.
+- Finish finite-G Theorem 2 from `Theorem2AreaLaw.lean`: connect the normalized Wilson-weight convolution identity to lattice expectations by proving the tree-gauge independence layer and the partition/prefactor identification.
 - Harvest `203fd831` when it completes; it is Gate C2, not tonight's YM ladder, but it is still owned by the carryover registry.
 - RP-LINK is not assembled. Missing pieces: reflection-stable plaquette family, Wilson local-weight symmetry across `MulOpposite`, cut factorization, positive-side observable algebra, and PSD assembly.
 - QCD1-i/ii are not proved. The banked C2/GW-circle facts need a designed `lambda_hat` spectral map and chiral-pairing theorem.
@@ -98,13 +98,13 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 - U(1) Fourier RP as the next flagship route before full Peter-Weyl.
 - Finite-G RP as a separate publication unit, but only with a sharp finite-volume disclaimer.
 - Shared Schur/Hadamard PSD lemmas as future Mathlib upstream candidates.
-- The remaining finite-G Theorem 2 assembly layer after the raw Wilson iteration identity: normalized expectation bridge, trivial-representation partition prefactor, and tree-gauge independence.
+- The remaining finite-G Theorem 2 assembly layer after the normalized Wilson convolution identity: expectation bridge, partition prefactor, and tree-gauge independence.
 - Site reflection is distinct from link reflection and should not be mixed into the current RP-LINK layer.
 - YM6 / continuum mass gap language must be re-audited in light of arXiv:2606.19362 before any summit-facing claims are made.
 
 ## 8. Recommended next three actions
 
-1. Finish finite-G YM1 Theorem 2 around `Theorem2AreaLaw.lean`: prove the tree-gauge/independence bridge from `PlaquetteEnsemble` to `iterConv`, then normalize by the trivial-representation partition factor with explicit nonzero hypotheses.
+1. Finish finite-G YM1 Theorem 2 around `Theorem2AreaLaw.lean`: prove the tree-gauge/independence bridge from `PlaquetteEnsemble` to `iterConv`, then discharge the partition-prefactor identification.
 2. Assemble the next YM3 finite identity, not RP-LINK yet: define a reflection-stable plaquette family and prove Wilson local-weight compatibility across the `MulOpposite` bridge. That is the closest YM3 paper unit after tonight's T3 work.
 3. Poll/harvest `203fd831`; then restore the one-job Aristotle budget rule. The temporary lift paid off, but the v1 Lemma 2a bug showed why cross-review and narrow packages still matter.
 

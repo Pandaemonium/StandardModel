@@ -53,8 +53,10 @@ explicit nonzero proof, and `wilson_iterConv_eigen_at_one` gives the
 `chi_R(1) * gamma^n` iteration shape - a division-based counterpart to
 `FusionConvolution.iterConv_character_fusion_cross`'s division-free
 cross-multiplied form, specialized to the concrete Wilson weight rather than
-an arbitrary class function. This still does not prove the tree-gauge/
-ensemble expectation bridge or partition-function prefactor; axiom footprint
+an arbitrary class function; `wilson_iterConv_normalized_at_one` divides the
+raw convolution by an explicit one-plaquette scalar, with nonzero supplied by
+positivity of the real Wilson weights. This still does not prove the
+tree-gauge/ensemble expectation bridge or partition-function prefactor; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
