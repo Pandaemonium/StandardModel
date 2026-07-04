@@ -4,6 +4,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
 import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
+import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
@@ -34,6 +35,11 @@ iteration core in the oracle-pinned argument order);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
 closed-walk class-function gauge invariance, gauge action laws);
+`LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
+weighted numerator, expectation, positivity for strictly positive finite
+weights, and gauge change-of-variables for partition/numerator/expectation;
+no Wilson action, plaquette list, reflection, cut structure, or transfer
+matrix yet);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
