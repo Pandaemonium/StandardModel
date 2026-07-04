@@ -448,6 +448,39 @@ peer review - go ahead and create `PolymerKPConclusion.lean` with the frozen
 statement layer per the freeze text; the follow-up job targets the NEXT
 layer (concrete coefficient + spanning-tree infrastructure), not this one.
 
+## q6 tree-graph follow-up harvest (1.13:20 codex)
+
+Aristotle project `34d675b8`, task `cb526fcd`, returned COMPLETE.  Harvest note:
+`AgentTasks/ym-q6-treegraph-ursell-strategy-aristotle-2026-07-04.md`.
+
+Main results:
+
+- The ordered-cluster normalization is correct:
+  `|coeff X| * X.n! <= spanningTreeCount X`, where `spanningTreeCount X`
+  counts labeled spanning trees of the cluster incompatibility graph on
+  `Fin X.n`.  Do not weaken this to the complete-graph tree count.
+- The hard-core Ursell coefficient is the alternating sum over connected
+  spanning subgraphs, divided by `X.n!`; in the Q6 module the unnormalized
+  integer sum is now named `ursellSum`.
+- Mathlib has enough graph finiteness/tree/connectivity API to state the direct
+  definitions, but lacks spanning-tree counting, matrix-tree/Kirchhoff, Cayley,
+  and Ursell/Penrose machinery.
+- The smallest path is the direct finite graph filter:
+  `spanningTreeCount` filters `SimpleGraph (Fin X.n)` to subgraphs of
+  `X.graph S hdec` that are trees; `ursellSum` filters to connected subgraphs
+  and sums `(-1) ^ edgeFinset.card`.
+- The concrete Penrose inequality
+  `treeGraphBound_ursell : (ursellSum S hdec X).natAbs <=
+    spanningTreeCount S hdec X`
+  is the real hard theorem and remains parked.
+
+Integration status: `PolymerKPConclusion.lean` now contains the direct
+`spanningTreeCount` and `ursellSum` definitions and the parked
+`treeGraphBound_ursell` theorem target.  The abstract C1/C2/C3 KP theorem
+targets remain conditional on `ClusterCoeffData`; that is intentional and
+still the right interface for proving the abstract tail package before the
+concrete Penrose theorem is available.
+
 ## idea:q7-polymer-map (opened 1.11:53 codex)
 
 Design-only thread. Do not create `StrongCouplingPolymer*.lean` until

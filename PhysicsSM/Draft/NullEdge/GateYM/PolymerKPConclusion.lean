@@ -15,13 +15,14 @@ Scope discipline:
   Kotecky-Preiss condition from `PolymerKPCriterion`.
 * `kp_tail_bound` adds metric data and an explicit energy/distance coercivity
   hypothesis.  Distance is not folded into the base KP condition.
-* The concrete Mayer/Ursell coefficient and the proof of the tree-graph bound
-  are not defined here.  Aristotle project `34d675b8` is auditing that next
-  combinatorial layer.
+* `spanningTreeCount` and `ursellSum` use the direct finite-graph definitions
+  recommended by Aristotle project `34d675b8`.
+* The proof of the Penrose tree-graph inequality for the concrete Ursell
+  coefficient is parked as its own theorem target.
 
-Draft-trust: statement freeze only.  The theorem bodies and
-`spanningTreeCount` definition are documented proof handoffs, not completed
-proofs.  Claim label: statement freeze / lemma DAG.
+Draft-trust: statement freeze only.  The theorem bodies, including the parked
+`treeGraphBound_ursell`, are documented proof handoffs, not completed proofs.
+Claim label: statement freeze / lemma DAG.
 -/
 
 noncomputable section
@@ -86,21 +87,51 @@ def energyOf (S : PolymerSystem Gamma) (X : Cluster S) : Real :=
 
 end Cluster
 
-/-- Number of spanning trees of the cluster incompatibility graph.
+/-- Number of labeled spanning trees of the cluster incompatibility graph.
 
-This definition is intentionally left as a handoff.  The accepted freeze fixes
-the public interface, while Aristotle job `34d675b8` checks the exact
-tree-counting normalization and Mathlib graph infrastructure before this is
-implemented. -/
+This is the direct finite definition recommended by Aristotle project
+`34d675b8`: filter the finite type of simple graphs on `Fin X.n` to those
+subgraphs of the incompatibility graph that are trees.  No matrix-tree theorem
+or Cayley formula is needed for the KP bound. -/
 noncomputable def spanningTreeCount (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (X : Cluster S) : Nat := by
+  classical
+  exact
+    (Finset.univ.filter
+      (fun T : SimpleGraph (Fin X.n) => T <= X.graph S hdec /\ T.IsTree)).card
+
+/-- The unnormalized Mayer/Ursell alternating sum over connected spanning
+subgraphs of the cluster incompatibility graph.
+
+The genuine ordered-cluster Ursell coefficient is this integer divided by
+`Nat.factorial X.n`.  The hard-core polymer setting makes every nonzero Mayer
+edge factor equal to `-1`, so the concrete sum is unweighted apart from the
+sign `(-1) ^ edge-count`. -/
+noncomputable def ursellSum (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) : Int := by
+  classical
+  exact
+    (Finset.univ.filter
+      (fun T : SimpleGraph (Fin X.n) => T <= X.graph S hdec /\ T.Connected)).sum
+      (fun T => (-1 : Int) ^ T.edgeFinset.card)
+
+/-- The parked Penrose tree-graph inequality for the concrete Ursell sum.
+
+Aristotle project `34d675b8` confirmed this is the unavoidable hard
+combinatorial theorem: Mathlib has tree existence and graph finiteness, but no
+spanning-tree count theorem or Ursell/Penrose inequality. -/
+theorem treeGraphBound_ursell (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) :
+    (ursellSum S hdec X).natAbs <= spanningTreeCount S hdec X := by
   /-
-  Definition handoff:
-  Count labeled spanning trees of `X.graph S hdec` on the vertex type
-  `Fin X.n`.  Do not replace this by a fake constant; the proof package should
-  either build a direct finite-subgraph enumeration or use a Mathlib graph-tree
-  API if Aristotle identifies one.
+  Proof handoff:
+  Prove Penrose's tree-graph inequality by a direct finite combinatorial
+  partition/sign-reversing argument over connected spanning subgraphs.  Do not
+  detour through the matrix-tree theorem or Cayley formula; neither is needed
+  for the KP proof route.
   -/
   sorry
 

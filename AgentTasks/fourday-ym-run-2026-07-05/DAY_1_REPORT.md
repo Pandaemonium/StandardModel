@@ -4,11 +4,11 @@
 
 Landed a genuine Wilson-weight reflection-positivity baseline (T1), closed
 Q4/Q5 unconditionally, extended the finite flux/electric-sector API deeply
-(T3, gated on T2), froze the KP conclusion statement shape (T6, ACCEPTED),
-built a tree-slice lasso identity skeleton (T11, submitted), and - per the
-user's explicit request mid-day - moved from near-zero Aristotle usage to a
-binding strategy/audit mandate, now running 4 real jobs in parallel with
-peer review.
+(T3, gated on T2), froze and partially concretized the KP conclusion layer
+(T6), built a tree-slice lasso identity skeleton (T11, submitted), and - per
+the user's explicit request mid-day - moved from near-zero Aristotle usage to
+a binding strategy/audit mandate with active proof/audit jobs harvested as
+soon as they returned.
 
 ## 2. Theorems landed
 
@@ -29,6 +29,14 @@ peer review.
   (`[propext]` or `[propext, Classical.choice, Quot.sound]`).
 - `RectBoundaryLasso.lean`: typechecking statement skeleton with one
   documented draft-proof placeholder, submitted to Aristotle (93758b7f).
+- `PolymerKPConclusion.lean`: Q6 statement-freeze layer plus concrete direct
+  finite `spanningTreeCount` and `ursellSum` definitions from Aristotle
+  `34d675b8`; Penrose `treeGraphBound_ursell` remains a documented draft
+  handoff.
+- `MirrorHolonomyConjugation.lean`: Q1/N3 negative result integrated as a
+  kernel-checked Lean counterexample from Aristotle `0a46d515`; raw mirror
+  holonomy reversal is not generally conjugate to the original plaquette
+  holonomy or its inverse.
 
 ## 3. Aristotle registry delta
 
@@ -36,26 +44,30 @@ Day started near-idle. Submitted/returned this cycle: `d4a9bd1f` (Q4,
 COMPLETE+HARVESTED+INTEGRATED), `2427a253` (Q6 strategy, COMPLETE+HARVESTED),
 `63dfd691` (grand-strategy audit, COMPLETE+HARVESTED, both agents
 independently harvested, no conflict), `72cccd22` (Q2 Hermitian bridge,
-RUNNING), `93758b7f` (T11 lasso, RUNNING), `0a46d515` (Q1 N3 cut-plaquette
-conjugation, RUNNING), `34d675b8` (Q6 tree-graph/Ursell, RUNNING). 4/8 slots
-in use as of 1.12:55 - meets the run's own binding threshold. Two
-near-collisions (grand-strategy audit, N3 job) both resolved via ledger
-notes with no wasted duplicate proof work.
+COMPLETE+HARVESTED+INTEGRATED), `93758b7f` (T11 lasso, still submitted),
+`0a46d515` (Q1 N3 cut-plaquette conjugation, COMPLETE+HARVESTED+INTEGRATED
+as a counterexample), and `34d675b8` (Q6 tree-graph/Ursell,
+COMPLETE+HARVESTED, definitions integrated). Two near-collisions
+(grand-strategy audit, N3 job) both resolved via ledger notes with no wasted
+duplicate proof work.
 
 ## 4. Board state
 
-T0/T4/T5 done. T1 claimed-claude, baseline reached, strong tier gated on
-`0a46d515`. T2 design-proposed-review-requested, gated on `72cccd22`. T3
-baseline-done-gated-by-T2. T6 review-requested -> ACCEPTED this cycle,
-`PolymerKPConclusion.lean` clear to create. T7 still gated on T6's Lean file
-landing. T9 baseline-done. T11 submitted-codex, gated on `93758b7f`. T12/T13
-done. T14 v0.3, 44/44 oracle green.
+T0/T4/T5 done. T1 baseline reached; strong tier needs redesign after
+`0a46d515` refuted the raw mirror-conjugation target. T2 Hermitian bridge
+integrated; shift-covariance remains open before a full transfer-Hilbert
+statement file. T3 baseline-done-gated-by-T2. T6 statement-freeze plus direct
+tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
+remain. T7 is now unblocked to use the Q6 interface, subject to review.
+T9 baseline-done. T11 submitted-codex, gated on `93758b7f`. T12/T13 done.
+T14 v0.3, 44/44 oracle green.
 
 ## 5. Decisions and reviews
 
 `review:t11-lasso-package` ACCEPT (claude). `design:q2-transfer-polarization`
-- Hermitian-bridge gap found, Aristotle job submitted rather than assumed.
-`review:q6-kp-freeze` ACCEPT (claude), follow-up tree-graph job submitted.
+- Hermitian-bridge gap found, Aristotle job submitted and later integrated.
+`review:q6-kp-freeze` ACCEPT (claude), follow-up tree-graph job returned and
+confirmed the normalization/direct-definition path.
 `review:fable-q3-flux-sector` findings (R3/R4/R5/R7) accepted and integrated
 by codex. `design:q1-reflection-orientation` - claude's doubled-lattice fix
 after a genuine construction failure on naive uniform-reflection lattices.
@@ -69,9 +81,10 @@ Pre-commit clean on every commit this session.
 ## 7. Honest negatives
 
 T1 strong/shocking tier (genuine cut-plaquette ensemble identification) is
-OPEN - the raw mirror holonomy is a differently-ordered group word, not
-evidently conjugate for nonabelian `G`; this is the actual RP-LINK content
-and is now the top-priority open item (N3, job `0a46d515`). Q6's C3
+OPEN - Aristotle `0a46d515` formalized the S3 counterexample showing the raw
+mirror holonomy is not generally conjugate to the original holonomy or its
+inverse. The next RP-LINK attempt must redesign the false-side orientation or
+inverse convention, not push the rejected target. Q6's C3
 exponential-distance tail is NOT a consequence of bare KP - needs an
 explicit metric/coercivity extension (already designed into the freeze).
 Fable Q3 call's captured transcript was missing its own Decision verdict
@@ -81,12 +94,14 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 
 ## 8. Tomorrow's plan
 
-1. Harvest `0a46d515`, `72cccd22`, `34d675b8`, `93758b7f` as they complete;
-   redesign T1 strong tier / T2 Lean file / T6 proof package / T11 proof
-   based on verdicts (escalate to a redesign if any come back negative,
-   per each job's own guardrails).
-2. Create `PolymerKPConclusion.lean` per the accepted Q6 freeze; only then
-   unblock T7's polymer-map interface.
-3. Keep Aristotle utilization at or above 4/8 slots at the next midday
+1. Poll/harvest `93758b7f` as it completes; keep Q11's lasso proof package
+   moving without changing the frozen statement.
+2. Start the next Q6/T7 packages now unblocked by `PolymerKPConclusion.lean`:
+   easy graph support lemmas, abstract KP proof package against
+   `ClusterCoeffData`, and the strong-coupling polymer map interface.
+3. Redesign T1 strong tier around the `0a46d515` counterexample and finish the
+   Q2 shift-covariance question before creating a transfer-Hilbert statement
+   file.
+4. Keep Aristotle utilization at or above 4/8 slots at the next midday
    integration point per the binding mandate; prefer new design/review
    threads over idle capacity.
