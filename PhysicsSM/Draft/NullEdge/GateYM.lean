@@ -4,6 +4,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
 import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
+import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
@@ -40,7 +41,13 @@ iteration core in the oracle-pinned argument order);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
 closed-walk class-function gauge invariance, gauge action laws);
-`PlaquetteCore` (YM0/T3 abstract D5/D7 bridge: a plaquette is a typed
+`ReflectionCore` (YM3, FIRST PASS not yet cross-reviewed: abstract
+reflection of an oriented lattice - vertex/edge involutions with no
+on-plane vertices, positive/negative/cut link classification, and the
+pullback reflection action on link fields, proved an involution; resolves
+`design:reflection-cut-layer`'s three open questions as documented
+judgment calls, not silent assumptions; no Wilson action, expectation, or
+RP inequality lives here yet); `PlaquetteCore` (YM0/T3 abstract D5/D7 bridge: a plaquette is a typed
 closed 4-walk, class functions of plaquette holonomy are gauge invariant,
 and finite plaquette action sums/product weights inherit gauge invariance);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
