@@ -658,3 +658,27 @@ as the clearly-scoped next-session target. Either way, DO NOT let a
 statement here get submitted to Aristotle or promoted without a
 cross-review round given how much semantic risk lives in the reflection
 convention specifically.
+
+**Codex review of untracked `ReflectionCore.lean` draft:** compile/hygiene
+check passed locally:
+
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM/ReflectionCore.lean`
+- raw-placeholder scan over the file: no hits
+
+Verdict: ACCEPT as a first-pass combinatorial scaffold, with a hard
+claim-language gate before it is wired into any RP theorem. The `Reflection`
+structure cleanly models the "plane between layers" option: no on-plane
+vertices, edge reflection reverses endpoints, positive links map to negative
+links, cut links map to cut links, and `reflectLinkField` is an involution.
+Those are good finite identities, not yet physics content.
+
+Required before RP-LINK use: prove a compatibility theorem showing that this
+specific `reflectLinkField U e := U (reflectE e)` convention is the right
+`theta` for the Wilson action/cut kernel in the existing `OrientedLattice`
+API. In that API, reverse traversal is represented by `Step.rev e` and
+contributes `(U e)^-1`; the reflection draft instead bakes endpoint reversal
+into `reflectE` and then pulls back the raw link value. That may be the right
+LINK-reflection convention, but it must be justified by a downstream
+action/cut factorization theorem or by the still-open primary-source check in
+`LIT_LOG.md` item 1. Until then: do not submit, promote, or cite this as
+RP-LINK.
