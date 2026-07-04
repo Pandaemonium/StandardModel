@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.2 (YM ladder, 2026-07-03)
+validate_lgt_core.py -- Track C oracle v0.3 (YM ladder, 2026-07-04)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -17,6 +17,15 @@ v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
     a corollary via inversion symmetry.
   ORACLE-TODO-2: section [3]'s h->0 decay row is now a real monotonicity
     check on a fixed volume, not a hardcoded pass.
+
+v0.3 (four-day YM run, T14) adds:
+  RP-KER guard: section [10], a Z3 complex-character reflection kernel.
+    The mirrored-inverse kernel K(b,a)=chi(a*b^{-1}) is Hermitian PSD and
+    gives a nonnegative reflection form. The same-orientation/no-inverse
+    variant K_bad(b,a)=chi(a*b) is not Hermitian and has an explicit
+    complex-valued quadratic-form witness. This guards the anti-linear
+    reflection slot / mirror-inverse convention used by
+    ReflectionPositivityKernel.
 
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
@@ -57,7 +66,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.2 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.3 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -409,6 +418,29 @@ naive_differs = any(
     for k in range(3) for A in range(3))
 check("Z3 generic w: naive order sum_h w(h) chi(A h) DIFFERS - placement is "
       "load-bearing (guard row)", naive_differs)
+
+print("\n[10] RP-KER Z3 complex-character guard: mirror inverse and anti-linear slot")
+K_rp = np.array([[chi3(1, (a - b) % 3) for a in range(3)] for b in range(3)],
+                dtype=np.complex128)
+eig_rp = np.linalg.eigvalsh(K_rp)
+check("Z3 RP kernel K(b,a)=chi(a*b^{-1}) is Hermitian PSD",
+      np.max(np.abs(K_rp - K_rp.conj().T)) < 1e-12 and eig_rp.min() > -1e-12,
+      "eig=" + ",".join(f"{x:.3e}" for x in eig_rp))
+f_rp = np.array([1.0 + 2.0j, -0.5 + 0.25j, 0.75 - 1.0j], dtype=np.complex128)
+q_rp = np.vdot(f_rp, K_rp @ f_rp)
+check("Z3 RP kernel: reflection form conj(f_b) K(b,a) f_a is nonnegative",
+      abs(q_rp.imag) < 1e-12 and q_rp.real >= -1e-12,
+      f"q={q_rp.real:.6f}+{q_rp.imag:.2e}i")
+
+K_bad = np.array([[chi3(1, (a + b) % 3) for a in range(3)] for b in range(3)],
+                 dtype=np.complex128)
+bad_f = np.array([0.0 + 0.0j, 0.0 + 0.0j, 1.0 + 0.0j], dtype=np.complex128)
+q_bad = np.vdot(bad_f, K_bad @ bad_f)
+check("Z3 no-inverse mirror variant K_bad(b,a)=chi(a*b) is not Hermitian",
+      np.max(np.abs(K_bad - K_bad.conj().T)) > 1e-6)
+check("Z3 no-inverse mirror variant has a complex quadratic-form witness",
+      abs(q_bad.imag) > 1e-6,
+      f"q_bad={q_bad.real:.6f}+{q_bad.imag:.6f}i")
 
 print("\n" + "=" * 78)
 n = len(PASS)

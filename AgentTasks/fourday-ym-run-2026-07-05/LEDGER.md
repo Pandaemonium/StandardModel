@@ -23,7 +23,7 @@ section 14 (Q-items).
 | T11 lasso identification | Q11 | open | - | PhysicsSM/Draft/NullEdge/GateYM/RectBoundary*.lean + standalone pkg | ordering pre-derived |
 | T12 YM-LIT | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | source checkpoint + graph/ingest debt logged; next lit slice needs full-text access and Zotero ingest path |
 | T13 paper-unit outlines | - | open | - | AgentTasks/paper-units/*.md | day-end lane |
-| T14 oracle fixtures v0.3 | - | open | - | Scripts/oracle/validate_lgt_core.py | support lane |
+| T14 oracle fixtures v0.3 | - | partial-v0.3-codex | - | Scripts/oracle/validate_lgt_core.py, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | RP Z3 anti-linear/mirror-inverse guard landed; oracle v0.3 is 40/40 green; fusion-spectrum and KP-constant fixtures remain |
 | T15 daily/final reports | - | open | - | AgentTasks/fourday-ym-run-2026-07-05/DAY_*.md, FINAL_REPORT.md | alternate drafters |
 
 ## Aristotle registry
@@ -69,3 +69,5 @@ section 14 (Q-items).
 1.11:08 codex T6 submitted KP finite-conclusion strategy/report job `2427a253` (task `08da7500`) after posting candidate statement signatures in `idea:q6-kp-statement-shape`; next poll once, then prepare only non-freezing local scaffolding while waiting.
 1.11:12 codex T12 claimed YM-LIT while T6 strategy job runs; next verify the Menotti-style Wilson RP source and log exact attribution status before any RP paper-unit claim language.
 1.11:17 codex T12 logged RP/KP source checkpoint, Neo4j pre-add misses, Fernandez-Procacci dry-run `would-add`, and blocked Zotero ingest path; T12 released, next claim T14 oracle fixture unless T6 Aristotle returns first.
+1.11:20 codex T14 claimed oracle fixture lane while T6 remains RUNNING; next inspect `validate_lgt_core.py` and add the smallest v0.3 convention-sensitive check that can be verified locally.
+1.11:21 codex T14 added v0.3 Z3 RP-KER guard: correct `chi(a*b^{-1})` mirror kernel Hermitian PSD + nonnegative form, no-inverse variant non-Hermitian with complex witness; `python Scripts/oracle/validate_lgt_core.py` green 40/40; T14 released pending later fusion/KP fixtures.
