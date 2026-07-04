@@ -5,11 +5,12 @@
 Landed a genuine Wilson-weight reflection-positivity baseline (T1), closed
 Q4/Q5 unconditionally, extended the finite flux/electric-sector API deeply
 (T3, gated on T2), froze and partially concretized the KP conclusion layer
-(T6), froze and audited the first strong-coupling polymer-map layer (T7), built
-a tree-slice lasso identity skeleton (T11, submitted), and - per the user's
-explicit request mid-day - moved from near-zero Aristotle usage to a binding
-strategy/audit mandate with active proof/audit jobs harvested as soon as they
-returned.
+(T6), froze and audited the first strong-coupling polymer-map layer (T7),
+harvested the tree-slice lasso identity and submitted the remaining YM1
+ensemble bridge (T11), refreshed the literature/paper-unit guardrails
+(T12/T13), and - per the user's explicit request mid-day - moved from near-zero
+Aristotle usage to a binding strategy/audit mandate with active proof/audit jobs
+harvested as soon as they returned.
 
 ## 2. Theorems landed
 
@@ -27,7 +28,10 @@ returned.
   `PlaquetteEnsemble.weight` at mirror-coordinate configurations. This closes
   the zero-cut baseline plus ensemble-identification tier, while the
   nontrivial cut-plaquette RP-LINK theorem remains open (see Honest
-  negatives).
+  negatives). Follow-up connector lemmas in `ReflectionPositivityKernel.lean`
+  prove cut-kernel product/Hadamard/Schur closure, finite-product closure, and
+  the named zero-cut ensemble corollary
+  `doubled_wilson_ensembleWeight_reflectionForm_nonneg`.
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -76,12 +80,16 @@ returned.
   `|tanh beta| ^ area` and beta-nonnegative `tanh beta ^ area` weight
   identities, coefficient-product/weight nonnegativity wrappers, and the
   conditional adapter from an explicit finite `PlaquetteKPBound` to
-  `KPCondition`.  It remains a map layer, not a finite-bound proof.
+  `KPCondition`.  It now also has the draft connector
+  `plaquetteKP_convergence_bound_of_plaquetteKPBound`, which routes explicit Q7
+  KP bounds plus Q7 self-incompatibility into Q6's corrected convergence target.
+  It remains a map layer, not a finite-bound proof.
 - `ExponentialClustering.lean`: Q8 conditional observable bridge from an
   explicit cluster-tail bound plus observable-to-cluster comparison to
   exponential clustering, plus the finite-support observable bridge harvested
-  from Aristotle `2c127e31`. It is kernel-checked and does not claim the hard
-  Q6 tail theorem or a concrete Q7 observable expansion.
+  from Aristotle `2c127e31`, plus `supportTail_empty` and
+  `supportTail_singleton`. It is kernel-checked and does not claim the hard Q6
+  tail theorem or a concrete Q7 observable expansion.
 - `MirrorHolonomyConjugation.lean`: Q1/N3 negative result integrated as a
   kernel-checked Lean counterexample from Aristotle `0a46d515`; raw mirror
   holonomy reversal is not generally conjugate to the original plaquette
@@ -106,11 +114,12 @@ identification, COMPLETE+HARVESTED+INTEGRATED by Claude), `50024abf`
 (Q2 block instantiation, COMPLETE+HARVESTED+INTEGRATED), `8e1e11b0`
 (Q2/Q3 block-shift covariance, COMPLETE+HARVESTED+INTEGRATED), `071d1370`
 (Q6 abstract KP C1/C2 package, COMPLETE+HARVESTED+INTEGRATED-NEGATIVE), and
-`acedaea2` (Q11 boundary expectation bridge, RUNNING). Two near-collisions
-(grand-strategy audit, N3 job) both
-resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after the Q11 boundary-expectation submission: `3e2051c3` and
-`acedaea2`.
+`acedaea2` (Q11 boundary expectation bridge, RUNNING), `ba26fe81` (Q2/Q3 Z2
+electric adapter audit, RUNNING), `3e483972` (Q7 KP-bound adapter audit,
+RUNNING), `8271a64b` (Q1 cut-plaquette assembly strategy/audit, RUNNING), and
+Claude's `e4458430` Penrose tree-graph inequality proof job (RUNNING). Two
+near-collisions (grand-strategy audit, N3 job) both resolved via ledger notes
+with no wasted duplicate proof work.
 
 ## 4. Board state
 
@@ -132,13 +141,17 @@ self-incompatibility. T7 has map-freeze plus both audit
 harvests done; the support-indexed
 carrier and decidable overlap-or-touch layer are integrated, and the
 conditional `PlaquetteKPBound -> KPCondition` adapter is now in place. The
-next blocker is proving an honest explicit finite KP sum bound, plus concrete
-connected-support/label APIs. T8 now has conditional
-anchor and finite-support observable bridges; no unconditional clustering claim
-is made.
+draft `PlaquetteKPBound -> corrected Q6 convergence` connector is also in
+place, but it depends on Q6's parked convergence theorem. The next blocker is
+proving an honest explicit finite KP sum bound, plus concrete
+connected-support/label APIs. T8 now has conditional anchor and finite-support
+observable bridges plus empty/singleton support-tail lemmas; no unconditional
+clustering claim is made.
 T9 baseline-done. T11 lasso identity integrated; the remaining YM1 gap is the
 ensemble/partition bridge to the full Theorem 2 expectation statement.
-T12/T13 done. T14 v0.3, 44/44 oracle green.
+T12 has bibliographic RP/KP/novelty guardrails, including Menotti-Pelissetto
+source-internal support for the LINK-vs-SITE distinction but no novelty proof.
+T13 outlines refreshed. T14 v0.3, 44/44 oracle green.
 
 ## 5. Decisions and reviews
 
@@ -161,21 +174,26 @@ that carrier-level overcount is fixed before any KP sum is stated.
 conditional observable bridge with the Q6 tail estimate and Q7 observable
 expansion as explicit hypotheses; Aristotle `2c127e31` returned ACCEPT and the
 finite-support bridge is integrated.
+`review:q7-kp-adapter` got an independent Claude ACCEPT, and Codex added the
+Q7-to-Q6 corrected-convergence wrapper with the draft dependency explicitly
+recorded. T12 source checks now verify the Menotti-Pelissetto and
+Osterwalder-Seiler bibliographic chain while keeping proof-text/novelty claims
+bounded.
 `review:fable-q3-flux-sector` findings (R3/R4/R5/R7) accepted and integrated
 by codex. `design:q1-reflection-orientation` - claude's doubled-lattice fix
 after a genuine construction failure on naive uniform-reflection lattices.
 
 ## 6. Build and hygiene
 
-Aggregate `GateYM` green through the day; latest post-Q6/Q7/T11 checks,
-including the support-indexed Q7 carrier redesign, Q8 bridge, and Q2
-TransferHilbert layer:
-`lake build PhysicsSM.Draft.NullEdge.GateYM` green (8074 jobs, known existing
-warnings only). Full `lake build` was green earlier in the day (8295 jobs)
-before the latest Q6/Q7/T11 slices, so rerun it at the next day-end or
-promotion checkpoint before making a fresh full-build claim. The Q7 harvest
-and Q8 bridge also passed direct placeholder/escape-hatch scans and standard
-dependency audits; Q2 TransferHilbert passed the same local scan/audit.
+Aggregate `GateYM` green through the day; latest post-Q6/Q7/Q8/T11 checks,
+including the support-indexed Q7 carrier redesign, Q7 convergence connector,
+Q8 support-tail lemmas, and Q2 TransferHilbert layer:
+`lake build PhysicsSM.Draft.NullEdge.GateYM` green (8078 jobs, known existing
+warnings and the intended Q6 draft placeholders only). Full `lake build` was
+rerun at 1.18:48 and passed (8295 jobs), with existing info/linter/deprecation
+messages only. The Q7/Q8 slices also passed direct placeholder/escape-hatch
+scans and standard dependency audits; Q2 TransferHilbert passed the same local
+scan/audit.
 Oracle `validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit
 this session.
 
@@ -208,16 +226,18 @@ explicit cluster tail estimate and observable expansion imply exponential
 clustering.
 Fable Q3 call's captured transcript was missing its own Decision verdict
 and R1/R2 (likely log-capture truncation) - flagged, not papered over.
-Primary sources (KP86, OS78) remain paywalled/blocked; relying on
-cross-confirmed secondary sources (Fernandez-Procacci and others).
+Primary sources are mixed: KP86 and OS78 full proof text remain blocked from
+this environment; Fernandez-Procacci is source-internal modern KP evidence; a
+parseable Menotti-Pelissetto mirror supports the RP plane-distinction note, but
+GateYM is not a formalization of their full Wilson-fermion theorem.
 
 ## 8. Tomorrow's plan
 
 1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
    package with the finite KP sum bound as an explicit hypothesis; do not infer
    volume-uniform KP from the small-torus oracle rows.
-2. Red-team the new T1 zero-cut ensemble-identification claim, then move Q1
-   toward the actual cut-plaquette kernel target.
+2. Harvest `8271a64b` when it returns, then move Q1 toward the actual
+   cut-plaquette kernel target.
 3. Push Q2/Q3 from the new `TransferHilbertZ2Electric.lean` adapter toward a
    genuine Wilson block-weight/transfer-kernel instance; do not claim a
    physical transfer matrix prematurely.
