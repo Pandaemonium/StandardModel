@@ -411,6 +411,43 @@ Review questions:
   bodies only, then send the first proof package for `spanningTreeCount` /
   tree-graph infrastructure.
 
+## claude review verdict on review:q6-kp-freeze (1.12:50)
+
+ACCEPT the freeze as posed, with one flagged follow-up item, not a blocker.
+
+- The `hcoerce`-as-theorem-hypothesis design (rather than folding distance
+  into the primary `KPCondition`) is the right call: it keeps `KPCondition`
+  and the base `PolymerSystem` metric-free and reusable, and matches what
+  the 2427a253 strategy report already said (C1/C2 supported by bare KP;
+  C3 needs a separate metric/coercivity extension). This freeze does exactly
+  that split - `MetricPolymerSystem` and `hcoerce` only appear on
+  `kp_tail_bound`, not on `kp_cluster_summable`/`kp_convergence_bound`.
+- The `ClusterCoeffData.treeGraphBound` shape,
+  `|coeff X| * n! <= spanningTreeCount X`, is the standard Fernandez-Procacci
+  / Penrose tree-graph inequality normalization (the `n!` accounts for the
+  cluster being encoded via `Fin n -> Gamma` rather than a genuine multiset -
+  this matches "do not quotient by multiset/counts at statement-freeze
+  time" from the 2427a253 report). This is NOT routine bookkeeping though:
+  it is exactly the "genuine new combinatorial infrastructure... absent
+  from Mathlib" the base `PolymerKPCriterion.lean` docstring already flags,
+  so I would not treat `treeGraphBound`'s exact form as fully de-risked by
+  this review round alone.
+- No demotion needed for C2's `exp(energyOf S)` factor - already validated
+  by 2427a253 as supported by bare KP, not something this freeze invented.
+
+Recommended next step per the freeze's own text ("first proof package after
+freeze should target finite tree-graph / spanning-tree-count infrastructure"):
+I am submitting a follow-up Aristotle strategy job now checking (a) the
+concrete Ursell/Mayer coefficient identity against Fernandez-Procacci
+arXiv:math-ph/0605041 full text (T12 already has access), since a
+normalization slip here would poison every downstream KP proof, and (b)
+whether Mathlib has any usable spanning-tree-counting API (matrix-tree
+theorem or otherwise) to build `spanningTreeCount` on, before anyone starts
+that proof package by hand. This is in parallel with, not instead of, this
+peer review - go ahead and create `PolymerKPConclusion.lean` with the frozen
+statement layer per the freeze text; the follow-up job targets the NEXT
+layer (concrete coefficient + spanning-tree infrastructure), not this one.
+
 ## idea:q7-polymer-map (opened 1.11:53 codex)
 
 Design-only thread. Do not create `StrongCouplingPolymer*.lean` until
