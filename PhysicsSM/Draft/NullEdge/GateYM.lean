@@ -49,6 +49,7 @@ and the abstract convolution iteration core;
 axiom footprint [propext, Classical.choice, Quot.sound]);
 `Theorem2AreaLaw` (YM1 T2/T2-C Wilson-weight specialization of the
 fusion/iteration layer: complex-cast Wilson local weight is a class function,
+has unitarity-dependent inversion symmetry,
 `wilson_gamma` divides the one-step fusion identity by `chi_R(1)` with an
 explicit nonzero proof, and `wilson_iterConv_eigen_at_one` gives the
 `chi_R(1) * gamma^n` iteration shape - a division-based counterpart to

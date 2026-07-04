@@ -1200,6 +1200,14 @@ full `MulOpposite` plaquette-family compatibility theorem. Verification:
 `lake env lean WilsonLocalWeight.lean`, targeted module build, axiom audit
 `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM build passed.
 
+**Codex follow-up (08:25):** added
+`Theorem2AreaLaw.wilsonLocalWeightC_inv_of_unitary`, the complex-cast version of
+Wilson local-weight inversion symmetry used by the convolution layer. This keeps
+the freeze's order-convention prerequisite available next to
+`wilsonLocalWeightC_class`. Verification: `lake env lean
+Theorem2AreaLaw.lean`, targeted module build, axiom audit
+`[propext, Classical.choice, Quot.sound]`, and aggregate GateYM build passed.
+
 ## review:t3-paired-mirror-ensemble
 
 Codex 07:50. Extended `PlaquetteReflectionEnsemble.lean` with paired-family

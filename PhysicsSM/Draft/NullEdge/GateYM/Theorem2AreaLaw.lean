@@ -17,6 +17,8 @@ explicit rather than derived.
 1. `wilsonLocalWeightC`: the Wilson local weight cast to `C`, and
    `wilsonLocalWeightC_class`: it is a class function (a direct corollary of
    `WilsonLocalWeight.wilsonLocalWeight_class`, real-to-complex cast).
+   `wilsonLocalWeightC_inv_of_unitary` records the corresponding
+   unitarity-dependent inversion symmetry for the complex-cast weight.
 2. `wilson_gamma`: the one-step fusion eigenvalue
    `gamma_R := (sum_g w(g) chi_R(g^-1)) / chi_R(1)` for the Wilson weight `w`,
    derived from `lemma2a_fusion_convolution` by dividing through by
@@ -62,6 +64,8 @@ namespace Draft
 namespace NullEdge
 namespace GateYM
 namespace Theorem2AreaLaw
+
+open scoped Matrix
 
 open FusionConvolution CategoryTheory
 
@@ -122,6 +126,19 @@ theorem wilsonLocalWeightC_class (beta : ℝ)
   intro a h
   unfold wilsonLocalWeightC
   rw [WilsonLocalWeight.wilsonLocalWeight_class beta rho hmul hone]
+
+omit [Fintype G] in
+/-- The complex-cast Wilson local weight is inversion-symmetric for a unitary
+representation. This is the form used by the complex-valued convolution layer. -/
+theorem wilsonLocalWeightC_inv_of_unitary (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (g : G) :
+    wilsonLocalWeightC beta rho g⁻¹ = wilsonLocalWeightC beta rho g := by
+  unfold wilsonLocalWeightC
+  rw [WilsonLocalWeight.wilsonLocalWeight_inv_of_unitary beta rho hmul hone hunit]
 
 /-- The one-step Wilson fusion eigenvalue: `gamma_R := (sum_g w(g) chi_R(g^-1))
 / chi_R(1)`, derived from `lemma2a_fusion_convolution` by dividing through by
