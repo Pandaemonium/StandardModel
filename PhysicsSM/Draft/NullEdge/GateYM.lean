@@ -59,8 +59,10 @@ cross-multiplied form, specialized to the concrete Wilson weight rather than
 an arbitrary class function; `wilson_iterConv_normalized_at_one` divides the
 raw convolution by an explicit one-plaquette scalar, with nonzero supplied by
 positivity of the real Wilson weights, and `wilsonNormalizedGamma` names the
-resulting area-law scalar for downstream statements. This still does not prove
-the tree-gauge/ensemble expectation bridge or partition-function prefactor; axiom footprint
+resulting area-law scalar for downstream statements; the cross-multiplied
+`wilson_iterConv_normalizedGamma_cross_at_one` restates the named-scalar identity
+without division. This still does not prove the tree-gauge/ensemble expectation
+bridge or partition-function prefactor; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,

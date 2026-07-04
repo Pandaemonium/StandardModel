@@ -1118,6 +1118,18 @@ Verification: `lake env lean Theorem2AreaLaw.lean`, targeted module build,
 axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate GateYM
 build passed.
 
+**Codex follow-up (08:55):** added
+`wilson_iterConv_normalizedGamma_cross_at_one`, the cross-multiplied form
+
+```text
+iterConv w chi_R m 1 =
+  Z_w^m * chi_R(1) * wilsonNormalizedGamma(beta, rho, R)^m
+```
+
+This is meant for later partition-prefactor statements that should avoid
+division by `Z_w^m`. No tree-gauge, expectation, or prefactor theorem is
+claimed.
+
 ## review:t3-mirror-stable-plaquette-family
 
 Codex 07:05. Added an abstract mirror-stable-family product theorem to

@@ -26,9 +26,9 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 - `IsClassFunction`, `lemma2a_fusion_convolution`, `iterConv_character_fusion_cross`, `convLeft`, `iterConv`, `iterConv_eigen`, `iterConv_eigen_at_one` in `FusionConvolution.lean` (`6abcd91` for the Lemma 2a integration).
   Verification: targeted file/module checks and aggregate GateYM build. Axioms for `lemma2a_fusion_convolution` and `iterConv_character_fusion_cross`: `[propext, Classical.choice, Quot.sound]`.
   Aristotle project `3435c7a3` supplied the proof; the v1 statement was refuted at the trivial representation with `w = 1`: LHS `= |G|`, buggy RHS `= |G|^2`.
-- `wilsonPlaquetteSumC`, `wilsonPlaquetteSum_pos`, `wilsonPlaquetteSumC_ne_zero`, `wilsonLocalWeightC_class`, `wilsonLocalWeightC_inv_of_unitary`, `wilson_gamma`, `wilson_iterConv_eigen_at_one`, `wilson_iterConv_normalized_at_one`, `wilsonNormalizedGamma`, `wilson_iterConv_normalizedGamma_at_one` in `Theorem2AreaLaw.lean`.
+- `wilsonPlaquetteSumC`, `wilsonPlaquetteSum_pos`, `wilsonPlaquetteSumC_ne_zero`, `wilsonLocalWeightC_class`, `wilsonLocalWeightC_inv_of_unitary`, `wilson_gamma`, `wilson_iterConv_eigen_at_one`, `wilson_iterConv_normalized_at_one`, `wilsonNormalizedGamma`, `wilson_iterConv_normalizedGamma_at_one`, `wilson_iterConv_normalizedGamma_cross_at_one` in `Theorem2AreaLaw.lean`.
   Verification: targeted file/module checks, axiom audit, and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
-  This is the Wilson-weight convolution iteration identity plus per-plaquette scalar normalization; nonzero of the normalizer is proved from positivity of Wilson weights, and the normalized area-law scalar is named for downstream statements. It still does not identify the convolution with a normalized lattice expectation.
+  This is the Wilson-weight convolution iteration identity plus per-plaquette scalar normalization; nonzero of the normalizer is proved from positivity of Wilson weights, and the normalized area-law scalar is named for downstream statements, including a cross-multiplied no-division restatement for future partition-prefactor work. It still does not identify the convolution with a normalized lattice expectation.
 
 ### YM0/T3 finite-group lattice and reflection stack
 

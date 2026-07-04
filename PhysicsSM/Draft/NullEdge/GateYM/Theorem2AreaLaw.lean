@@ -32,6 +32,9 @@ explicit rather than derived.
 5. `wilsonNormalizedGamma` and
    `wilson_iterConv_normalizedGamma_at_one`: the same normalized iteration with
    the area-law scalar named explicitly for downstream statements.
+6. `wilson_iterConv_normalizedGamma_cross_at_one`: the same named-scalar
+   identity cross-multiplied by the one-plaquette normalization power, useful
+   for future partition-prefactor statements without carrying a division.
 
 ## What this file does NOT prove (explicit, not silently assumed)
 
@@ -222,6 +225,25 @@ theorem wilson_iterConv_normalizedGamma_at_one (beta : ℝ)
       R.character 1 * wilsonNormalizedGamma beta rho R ^ m := by
   simpa [wilsonNormalizedGamma] using
     (wilson_iterConv_normalized_at_one (G := G) beta rho hmul hone R m)
+
+/-- Cross-multiplied named-scalar form of
+`wilson_iterConv_normalizedGamma_at_one`.
+
+This avoids division by the one-plaquette scalar in downstream statements. It
+is still only the algebraic convolution identity; the tree-gauge bridge and the
+partition-prefactor interpretation remain separate future work. -/
+theorem wilson_iterConv_normalizedGamma_cross_at_one (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (R : FDRep ℂ G) [Simple R] (m : ℕ) :
+    iterConv (wilsonLocalWeightC beta rho) R.character m 1 =
+      wilsonPlaquetteSumC beta rho ^ m * R.character 1 *
+        wilsonNormalizedGamma beta rho R ^ m := by
+  have hZpow : wilsonPlaquetteSumC beta rho ^ m ≠ 0 :=
+    pow_ne_zero m (wilsonPlaquetteSumC_ne_zero beta rho)
+  have h := wilson_iterConv_normalizedGamma_at_one (G := G) beta rho hmul hone R m
+  field_simp [hZpow] at h
+  simpa using h
 
 end Theorem2AreaLaw
 end GateYM
