@@ -1541,6 +1541,14 @@ The PSD side of the connector is also banked:
 closure for cut kernels, product-weight PSD closure, and the corresponding
 end-to-end finite RP corollary.
 
+Codex 1.17:20 finite-product extension:
+
+`cutKernel_finset_prod_posSemidef` and
+`reflectionForm_nonneg_of_finset_prod_posSemidef` now package the same
+closure over a finite `Finset` of factors. This is the right abstract shape
+for "all cut plaquettes" once each individual coupling factor has been
+identified as a PSD cut kernel.
+
 Scope boundary: this is only the bookkeeping identity. The hard Q1
 cut-plaquette layer still needs the actual Wilson cut-plaquette geometry
 and the spectral-decomposition bridge into

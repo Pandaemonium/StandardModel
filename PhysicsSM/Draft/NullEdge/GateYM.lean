@@ -308,9 +308,10 @@ reflection-positivity assembly theorem: in mirror coordinates
 cut configuration is `Matrix.PosSemidef`, the Osterwalder-Seiler form is
 nonnegative on all positive-side observables (`reflectionForm_nonneg`), with
 end-to-end RP for factorized (no-cut-plaquette) and nonnegative-mixture
-weight classes. It also includes `cutKernel_mul` and
-`cutKernel_mul_posSemidef`, the connectors showing that pointwise products
-of reflected weights become Hadamard products of cut kernels and preserve
+weight classes. It also includes `cutKernel_mul`,
+`cutKernel_mul_posSemidef`, and `cutKernel_finset_prod_posSemidef`, the
+connectors showing that pointwise products of reflected weights become
+Hadamard products of cut kernels and that finite products preserve
 cut-kernel PSD by complex Schur product closure. This reduces RP-LINK to
 a kernel-PSD check in the Route B
 engine's language; the remaining RP-LINK work is the geometric

@@ -59,6 +59,9 @@ for a positive-side observable `F(a, c, b) = f(a, c)` is exactly
 - `complex_hadamard_posSemidef` and `cutKernel_mul_posSemidef`: complex
   Schur-product closure for cut kernels, and the corresponding product-
   weight PSD corollary.
+- `cutKernel_finset_prod_posSemidef`: the finite-product version, intended
+  for the product over all cut-plaquette coupling factors once each factor
+  has been identified as a PSD cut kernel.
 - `reflectionForm_nonneg_of_factorized` / `_of_mixture`: the end-to-end RP
   statements for those two weight classes.
 - `cutKernel_posSemidef_of_reflectionPositive` (**the Q2 bridge, converse
@@ -95,7 +98,7 @@ namespace NullEdge
 namespace GateYM
 namespace ReflectionPositivityKernel
 
-open scoped ComplexOrder Kronecker Matrix
+open scoped BigOperators ComplexOrder Kronecker Matrix
 
 variable {A C : Type} [Fintype A] [Fintype C]
 
@@ -217,6 +220,34 @@ theorem cutKernel_posSemidef_of_factorized (h : A → C → ℂ) (c : C) :
     exact star_mul_self_nonneg _
 
 omit [Fintype C] in
+set_option linter.unusedFintypeInType false in
+/-- Finite-product PSD closure for cut kernels. If every factor indexed by
+`s` has PSD cut kernels at every cut configuration, then the pointwise
+product over `s` also has PSD cut kernels. The empty product is the
+rank-one factorized constant-one kernel. -/
+theorem cutKernel_finset_prod_posSemidef {K : Type} (s : Finset K)
+    (W : K → A → C → A → ℂ)
+    (hW : ∀ k, k ∈ s → ∀ c : C, (cutKernel (W k) c).PosSemidef) (c : C) :
+    (cutKernel (fun a c' b => ∏ k ∈ s, W k a c' b) c).PosSemidef := by
+  classical
+  revert hW c
+  induction s using Finset.induction_on with
+  | empty =>
+      intro _hW c
+      simpa using cutKernel_posSemidef_of_factorized (fun _ _ => (1 : ℂ)) c
+  | insert k s hk ih =>
+      intro hW c
+      have hkPSD : ∀ c : C, (cutKernel (W k) c).PosSemidef :=
+        hW k (Finset.mem_insert_self k s)
+      have hsPSD :
+          ∀ c : C, (cutKernel (fun a c' b => ∏ j ∈ s, W j a c' b) c).PosSemidef := by
+        intro c'
+        exact ih (fun j hj => hW j (Finset.mem_insert_of_mem hj)) c'
+      have hmul := cutKernel_mul_posSemidef (W k)
+        (fun a c' b => ∏ j ∈ s, W j a c' b) hkPSD hsPSD c
+      simpa [Finset.prod_insert hk] using hmul
+
+omit [Fintype C] in
 /-- Nonnegative mixtures of factorized weights have PSD cut kernels. Any
 PSD cross-cut coupling is such a mixture (spectral decomposition), so this
 is the general form the Wilson cut-plaquette layer reduces to. -/
@@ -260,6 +291,17 @@ theorem reflectionForm_nonneg_of_mul_posSemidef (W1 W2 : A → C → A → ℂ)
     IsReflectionPositive (fun a c b => W1 a c b * W2 a c b) :=
   reflectionForm_nonneg _
     (fun c => cutKernel_mul_posSemidef W1 W2 hW1 hW2 c)
+
+/-- End-to-end reflection positivity for finite pointwise products of
+weights whose cut kernels are PSD at every cut configuration. This packages
+the finite cut-plaquette product assembly once each individual coupling
+kernel has been checked. -/
+theorem reflectionForm_nonneg_of_finset_prod_posSemidef {K : Type}
+    (s : Finset K) (W : K → A → C → A → ℂ)
+    (hW : ∀ k, k ∈ s → ∀ c : C, (cutKernel (W k) c).PosSemidef) :
+    IsReflectionPositive (fun a c b => ∏ k ∈ s, W k a c b) :=
+  reflectionForm_nonneg _
+    (fun c => cutKernel_finset_prod_posSemidef s W hW c)
 
 /-- **Converse to `reflectionForm_nonneg` (Q2 bridge).** Reflection
 positivity of `W` alone forces every cut kernel to be positive
