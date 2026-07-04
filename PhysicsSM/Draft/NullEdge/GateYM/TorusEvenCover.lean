@@ -22,9 +22,21 @@ Convention/provenance notes:
   converted into adjacent-equality conditions on plaquette membership. The
   boundary/cosh-expansion bookkeeping belongs in the next T2 module layer.
 
+The file also closes the last item its own `ratio_sameBoundary_zeroBoundary_
+weights` docstring flagged as remaining: identifying a rectangular loop's
+inside set with area `A`. `rectInside`/`rectInside_card`/`ratio_rectInside`
+give a concrete non-wrapping (contractible) rectangular loop and show its
+inside-set cardinality is literally `dx * dy`, so `ratio_rectInside` is
+theorem 2''s displayed formula `<W> = (t^A + t^{P-A}) / (1 + t^P)` with `A`
+now a genuine geometric area rather than an abstract `Finset` parameter. This
+is still the pure finite-combinatorics/cover-expansion layer: it does not
+define a Wilson action, partition function, or lattice ensemble connecting
+this ratio to an actual expectation value - that assembly belongs to a
+successor module bridging to `LatticeEnsemble`/`PlaquetteEnsemble`.
+
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`.
-Claim label: **finite identity** (dual-connectivity core for the Z2 torus
-exact solution).
+Claim label: **finite identity** (dual-connectivity core plus the exact Z2
+torus cover-expansion ratio for a genuine rectangular loop).
 -/
 
 namespace PhysicsSM
@@ -526,6 +538,64 @@ theorem ratio_sameBoundary_zeroBoundary_weights {Lx Ly : ℕ}
         (1 + t ^ Fintype.card (Fin Lx × Fin Ly)) := by
   rw [sum_sameBoundary_weights hLx hLy A t,
     sum_zeroBoundary_weights hLx hLy t, card_univ_sdiff A]
+
+/-- The `Fin L`-indices whose value lies in a half-open range `[i0, i0+d)`. -/
+def finRange (L : ℕ) (i0 d : ℕ) : Finset (Fin L) :=
+  Finset.univ.filter (fun i => i.val ∈ Finset.Ico i0 (i0 + d))
+
+/-- `finRange` has exactly `d` elements once the range fits inside `Fin L`.
+Proved by exhibiting the cardinality-preserving bijection with `Finset.Ico i0
+(i0+d) : Finset ℕ` given by `Fin.val` (injective automatically; surjective
+onto that range since every `n < i0+d <= L` lifts to a genuine `Fin L`). -/
+theorem finRange_card (L : ℕ) (i0 d : ℕ) (h : i0 + d ≤ L) :
+    (finRange L i0 d).card = d := by
+  classical
+  have hcard : (finRange L i0 d).card = (Finset.Ico i0 (i0 + d)).card := by
+    apply Finset.card_bij (fun (i : Fin L) (_ : i ∈ finRange L i0 d) => i.val)
+    · intro i hi
+      simpa [finRange] using hi
+    · intro i1 _ i2 _ heq
+      exact Fin.ext heq
+    · intro n hn
+      refine ⟨⟨n, lt_of_lt_of_le (Finset.mem_Ico.mp hn).2 h⟩, ?_, rfl⟩
+      simpa [finRange] using hn
+  rw [hcard, Nat.card_Ico]
+  omega
+
+/-- The plaquette-inside set of a non-wrapping (contractible) rectangular
+Wilson loop anchored at `(i0, j0)` with width `dx` and height `dy`: exactly
+the plaquettes whose coordinates fall in the half-open box
+`[i0, i0+dx) x [j0, j0+dy)`. Non-wrapping (no `mod Lx`/`mod Ly` reduction) is
+exactly the "contractible loop" case theorem 2' addresses; a wrapping loop is
+a different, topologically nontrivial configuration not claimed here. -/
+def rectInside (Lx Ly : ℕ) (i0 dx j0 dy : ℕ) : Finset (Fin Lx × Fin Ly) :=
+  finRange Lx i0 dx ×ˢ finRange Ly j0 dy
+
+/-- The plaquette-inside set of a non-wrapping rectangular loop of width `dx`
+and height `dy` has exactly `dx * dy` plaquettes - the "area `A`" identified
+with the loop's inside region that `ratio_sameBoundary_zeroBoundary_weights`
+needs. This closes the "identify a rectangular loop's inside set with area
+`A`" gap left open by that theorem's docstring. -/
+theorem rectInside_card (Lx Ly : ℕ) (i0 dx j0 dy : ℕ)
+    (hx : i0 + dx ≤ Lx) (hy : j0 + dy ≤ Ly) :
+    (rectInside Lx Ly i0 dx j0 dy).card = dx * dy := by
+  rw [rectInside, Finset.card_product, finRange_card Lx i0 dx hx, finRange_card Ly j0 dy hy]
+
+/-- Theorem 2' fully assembled for a genuine non-wrapping rectangular loop:
+the Z2 torus cover-expansion ratio, with the loop's inside region concretely
+identified as `rectInside` and its area as the literal product `dx * dy`,
+matching the freeze's displayed formula
+`<W> = (t^A + t^(P-A)) / (1 + t^P)` verbatim once `A := dx * dy`. -/
+theorem ratio_rectInside {Lx Ly : ℕ}
+    (hLx : 0 < Lx) (hLy : 0 < Ly) (i0 dx j0 dy : ℕ)
+    (hx : i0 + dx ≤ Lx) (hy : j0 + dy ≤ Ly) (t : ℝ) :
+    ((sameBoundaryCovers (rectInside Lx Ly i0 dx j0 dy)).sum (fun S => t ^ S.card)) /
+        ((zeroBoundaryCovers Lx Ly).sum (fun S => t ^ S.card))
+      =
+      (t ^ (dx * dy) + t ^ (Fintype.card (Fin Lx × Fin Ly) - dx * dy)) /
+        (1 + t ^ Fintype.card (Fin Lx × Fin Ly)) := by
+  rw [ratio_sameBoundary_zeroBoundary_weights hLx hLy (rectInside Lx Ly i0 dx j0 dy) t,
+    rectInside_card Lx Ly i0 dx j0 dy hx hy]
 
 end TorusEvenCover
 end GateYM
