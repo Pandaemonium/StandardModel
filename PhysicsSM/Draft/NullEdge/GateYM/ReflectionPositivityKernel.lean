@@ -56,6 +56,9 @@ for a positive-side observable `F(a, c, b) = f(a, c)` is exactly
   Hadamard products of cut kernels. This is the small connector needed to
   assemble several cut-plaquette coupling kernels before applying Schur
   product positivity.
+- `complex_hadamard_posSemidef` and `cutKernel_mul_posSemidef`: complex
+  Schur-product closure for cut kernels, and the corresponding product-
+  weight PSD corollary.
 - `reflectionForm_nonneg_of_factorized` / `_of_mixture`: the end-to-end RP
   statements for those two weight classes.
 - `cutKernel_posSemidef_of_reflectionPositive` (**the Q2 bridge, converse
@@ -92,7 +95,7 @@ namespace NullEdge
 namespace GateYM
 namespace ReflectionPositivityKernel
 
-open scoped ComplexOrder Matrix
+open scoped ComplexOrder Kronecker Matrix
 
 variable {A C : Type} [Fintype A] [Fintype C]
 
@@ -120,6 +123,35 @@ theorem cutKernel_mul (W1 W2 : A → C → A → ℂ) (c : C) :
       cutKernel W1 c ⊙ cutKernel W2 c := by
   ext b a
   simp [cutKernel, Matrix.hadamard_apply]
+
+set_option linter.unusedFintypeInType false in
+/-- Complex Schur product theorem: the Hadamard product of two complex PSD
+matrices is PSD. This is the cut-kernel version of the real Schur product
+lemma in `WilsonWeightPositivity`, proved directly from Mathlib's
+Kronecker-product PSD theorem and submatrix closure. -/
+theorem complex_hadamard_posSemidef {ι : Type*} [Fintype ι]
+    {M N : Matrix ι ι ℂ} (hM : M.PosSemidef) (hN : N.PosSemidef) :
+    (M ⊙ N).PosSemidef := by
+  have hK : (M ⊗ₖ N).PosSemidef := hM.kronecker hN
+  have hSub := hK.submatrix (fun i : ι => (i, i))
+  have hEq :
+      (M ⊗ₖ N).submatrix (fun i : ι => (i, i)) (fun i : ι => (i, i)) =
+        M ⊙ N := by
+    ext i j
+    simp [Matrix.submatrix_apply, Matrix.kroneckerMap_apply, Matrix.hadamard_apply]
+  rwa [hEq] at hSub
+
+omit [Fintype C] in
+set_option linter.unusedFintypeInType false in
+/-- Product-weight PSD closure for cut kernels. If two reflected weights
+have PSD cut kernels at every cut configuration, then their pointwise
+product also has PSD cut kernels. -/
+theorem cutKernel_mul_posSemidef (W1 W2 : A → C → A → ℂ)
+    (hW1 : ∀ c : C, (cutKernel W1 c).PosSemidef)
+    (hW2 : ∀ c : C, (cutKernel W2 c).PosSemidef) (c : C) :
+    (cutKernel (fun a c' b => W1 a c' b * W2 a c' b) c).PosSemidef := by
+  rw [cutKernel_mul]
+  exact complex_hadamard_posSemidef (hW1 c) (hW2 c)
 
 /-- Reflection positivity of a weight in mirror coordinates: the reflection
 form is nonnegative on every positive-side observable. -/
@@ -217,6 +249,17 @@ theorem reflectionForm_nonneg_of_mixture {K : Type} [Fintype K]
     IsReflectionPositive
       (fun a c b => ∑ k : K, h k a c * (starRingEnd ℂ) (h k b c)) :=
   reflectionForm_nonneg _ (cutKernel_posSemidef_of_mixture h)
+
+/-- End-to-end reflection positivity for pointwise products of two weights
+whose cut kernels are PSD at every cut configuration. This is the finite
+two-factor assembly step behind products of cut-plaquette coupling
+kernels. -/
+theorem reflectionForm_nonneg_of_mul_posSemidef (W1 W2 : A → C → A → ℂ)
+    (hW1 : ∀ c : C, (cutKernel W1 c).PosSemidef)
+    (hW2 : ∀ c : C, (cutKernel W2 c).PosSemidef) :
+    IsReflectionPositive (fun a c b => W1 a c b * W2 a c b) :=
+  reflectionForm_nonneg _
+    (fun c => cutKernel_mul_posSemidef W1 W2 hW1 hW2 c)
 
 /-- **Converse to `reflectionForm_nonneg` (Q2 bridge).** Reflection
 positivity of `W` alone forces every cut kernel to be positive

@@ -1533,7 +1533,15 @@ that the cut kernel of a pointwise product of reflected weights is the
 Hadamard product of the two cut kernels. This banks the planned Q1 connector
 from `TASK_DIRECTIONS.md` and `PREP_NOTES.md`.
 
+Codex 1.17:08 extension:
+
+The PSD side of the connector is also banked:
+`complex_hadamard_posSemidef`, `cutKernel_mul_posSemidef`, and
+`reflectionForm_nonneg_of_mul_posSemidef` prove complex Schur-product
+closure for cut kernels, product-weight PSD closure, and the corresponding
+end-to-end finite RP corollary.
+
 Scope boundary: this is only the bookkeeping identity. The hard Q1
-cut-plaquette layer still needs a PSD closure/assembly step over the actual
-Wilson cut-plaquette kernels, plus the spectral-decomposition bridge into
+cut-plaquette layer still needs the actual Wilson cut-plaquette geometry
+and the spectral-decomposition bridge into
 `cutKernel_posSemidef_of_mixture`.
