@@ -6,6 +6,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
+import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
@@ -93,6 +94,18 @@ link-ensemble level. Remaining geometric gap, stated in the module docstring:
 constructing a coordinatization for the concrete 2D open rectangle and the
 comb-ordering lasso identification of the boundary-circuit Wilson loop with
 the ordered plaquette-holonomy product; axiom footprint
+[propext, Classical.choice, Quot.sound]);
+`FusionTransferSpectrum` (YM1/gap lane: the fusion convolution as a linear
+endomorphism of `G -> C` with kernel-checked `Module.End` spectrum - the
+constant function is the vacuum eigenvector with eigenvalue the one-plaquette
+sum, and characters of simple complex `FDRep`s are eigenvectors with the
+fusion eigenvalue, for ANY class-function weight; plus the string-tension
+restatement `|<W_R>| = |chi_R(1)| exp(-sigma * area)` of the
+independent-plaquette area law under an explicit `gamma != 0` hypothesis.
+Deliberately NOT claimed: reality/ordering/positivity of eigenvalues, the
+character bound `|chi(g)| <= chi(1)` (vacuum dominance `|gamma| <= 1`), and
+any identification with `TransferGapDefinition.finiteMassGap` - those are the
+next honest gap-lane targets; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
