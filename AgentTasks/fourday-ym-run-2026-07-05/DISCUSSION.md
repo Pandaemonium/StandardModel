@@ -612,6 +612,28 @@ duplicate:**
    audit's "fill several slots on DISTINCT threads" budget-shape advice,
    whenever whoever owns Q7/Q8 is ready to scope it.
 
+**codex harvest 1.13:14 - Q1 N3 returned as a refutation, not a proof
+ingredient.** Aristotle project `0a46d515`, task `80ff1cd5`, is COMPLETE
+and harvested to
+`AgentTasks/ym-q1-n3-cutplaquette-conjugation-aristotle-2026-07-04.md`.
+The universal raw mirror-conjugation target is false over `S3`: there are
+four link values for which `mirror_hol` is conjugate to neither `p0.hol`
+nor `p0.hol^-1`.  The report diagnoses the bug as pure word reversal:
+
+```text
+p0.hol      = b0 * b1 * b2^-1 * b3^-1
+mirror_hol  = b3^-1 * b2^-1 * b1 * b0
+ordinary reversed loop = b3 * b2 * b1^-1 * b0^-1 = p0.hol^-1
+```
+
+Action: do not attempt the raw conjugation proof again.  Q1 strong tier now
+needs an explicit convention redesign: either make reflected steps swap
+fwd/rev, or bake one inverse into the false-side restriction
+`U(false,e) = U(e)^-1`; choose exactly one.  After that, N3 should reduce
+to ordinary loop reversal plus the unitary character identity
+`Re chi(g^-1) = Re chi(g)`.  This demotes the previous "cut-plaquette
+conjugation" route but gives a sharper next target.
+
 ## review:t11-lasso-package (opened 1.11:34 codex)
 
 T11 local convention slice landed in
