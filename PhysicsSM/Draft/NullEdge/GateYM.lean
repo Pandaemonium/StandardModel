@@ -130,9 +130,10 @@ compatibility work; axiom footprint
 hypotheses on `rho`; the Wilson local weight for `rhoOppositeInv` agrees with
 the generic `h |-> w(h.unop)` opposite local weight, yielding a
 Wilson-specialized reflected single-plaquette/product-weight/ensemble-weight
-identity for mirrored plaquette families. This is still not same-family
-reflection invariance, cut factorization, or RP-LINK); `TransferPositivity`
-(YM3, single-link
+identity for mirrored plaquette families, plus gauge-invariance and partition
+positivity wrappers for the opposite inverse Wilson ensemble. This is still not
+same-family reflection invariance, cut factorization, or RP-LINK);
+`TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original
 "Corollary 3b"/"transfer matrix" framing overstated what is indexed:

@@ -1246,6 +1246,10 @@ Wilson/opposite-group algebra from the generic plaquette reflection machinery:
   gives the mirrored plaquette-family product for `rhoOppositeInv rho`.
 - `weight_reflectLinkField_mirrorPlaquette_wilson`: the same identity at the
   `PlaquetteEnsemble.weight` wrapper level.
+- `wilsonOppositeWeight_gauge`,
+  `wilsonOppositeExpectation_observable_comp_gauge`,
+  `wilsonOppositePartition_pos`: the opposite inverse Wilson ensemble inherits
+  the existing gauge-invariance and positivity wrappers.
 
 Intended reading: this is the honest Wilson/opposite bridge at product-weight
 and ensemble-weight level. It does not prove that an arbitrary chosen family is

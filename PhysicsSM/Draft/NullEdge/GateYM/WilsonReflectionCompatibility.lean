@@ -18,8 +18,10 @@ group. Under the usual unitarity hypothesis, the Wilson local weight for this
 opposite representation agrees pointwise with the `h.unop` local weight used by
 the generic reflection product theorem. This gives Wilson-specialized
 single-plaquette, product-weight, and `PlaquetteEnsemble.weight` reflection
-identities, still stopping before any cut factorization, same-family reflection
-invariance, positive-side algebra, or RP-LINK inequality.
+identities. The same opposite representation also inherits the existing
+Wilson gauge-invariance and partition-positivity wrappers. The module still
+stops before any cut factorization, same-family reflection invariance,
+positive-side algebra, or RP-LINK inequality.
 
 Draft-trust: kernel-checked, no `s o r r y`, no
 `n a t i v e _ d e c i d e`.
@@ -153,6 +155,48 @@ theorem weight_reflectLinkField_mirrorPlaquette_wilson
         (ReflectionCore.Reflection.opLinkField U) := by
   unfold PlaquetteEnsemble.weight
   exact productWeight_reflectLinkField_mirrorPlaquette_wilson R P beta rho hmul hone hunit U
+
+/-- The opposite inverse Wilson product weight is gauge invariant on
+`MulOpposite G`-valued link fields. -/
+theorem wilsonOppositeWeight_gauge {ι : Type*} [Fintype ι]
+    {Λ : GaugeCoreGeneral.OrientedLattice} (P : ι → Plaquette Λ)
+    (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (g : Λ.V → MulOpposite G) (U : Λ.LinkField (G := MulOpposite G)) :
+    PlaquetteEnsemble.weight P
+        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho))
+        (Λ.gauge g U) =
+      PlaquetteEnsemble.weight P
+        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)) U := by
+  exact WilsonLocalWeight.wilsonWeight_gauge P beta (rhoOppositeInv rho)
+    (rhoOppositeInv_mul rho hmul) (rhoOppositeInv_one rho hone) g U
+
+/-- The opposite inverse Wilson expectation is invariant under applying a fixed
+`MulOpposite G` gauge transformation to the observable. -/
+theorem wilsonOppositeExpectation_observable_comp_gauge {ι : Type*} [Fintype ι]
+    {Λ : GaugeCoreGeneral.OrientedLattice} [Fintype (Λ.LinkField (G := MulOpposite G))]
+    (P : ι → Plaquette Λ)
+    (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (g : Λ.V → MulOpposite G) (observable : Λ.LinkField (G := MulOpposite G) → ℝ) :
+    PlaquetteEnsemble.expectation P
+        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho))
+        (fun U => observable (Λ.gauge g U)) =
+      PlaquetteEnsemble.expectation P
+        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)) observable := by
+  exact WilsonLocalWeight.wilsonExpectation_observable_comp_gauge P beta (rhoOppositeInv rho)
+    (rhoOppositeInv_mul rho hmul) (rhoOppositeInv_one rho hone) g observable
+
+/-- The opposite inverse Wilson plaquette ensemble has positive partition
+function, by the same exponential positivity argument as the original Wilson
+weight. -/
+theorem wilsonOppositePartition_pos {ι : Type*} [Fintype ι]
+    {Λ : GaugeCoreGeneral.OrientedLattice} [Fintype (Λ.LinkField (G := MulOpposite G))]
+    (P : ι → Plaquette Λ)
+    (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ) :
+    0 < PlaquetteEnsemble.partition P
+        (WilsonLocalWeight.wilsonLocalWeight beta (rhoOppositeInv rho)) := by
+  exact WilsonLocalWeight.wilsonPartition_pos P beta (rhoOppositeInv rho)
 
 end WilsonReflectionCompatibility
 end GateYM
