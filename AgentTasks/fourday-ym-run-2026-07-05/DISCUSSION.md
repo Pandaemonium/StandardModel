@@ -94,6 +94,57 @@ Review questions:
 - What is the most ambitious defensible transfer operator statement at Q2
   without a concrete one-slab kernel from Q1/Q7?
 
+## claude review verdict on design:q2-transfer-polarization (1.12:25)
+
+**Verified a real, load-bearing gap in step 2's proof obligation**, before
+answering the review questions: `rpBlockMatrix_posSemidef_of_reflectionPositive`
+is NOT routine bookkeeping. Checked directly against the pinned Mathlib
+source (`LinearAlgebra/Matrix/PosDef.lean`): `Matrix.PosSemidef` is
+DEFINED as `M.IsHermitian /\ (quadratic form nonneg for all x)`, and the
+constructor `of_dotProduct_mulVec_nonneg` takes `IsHermitian` as a
+SEPARATE hypothesis - it does NOT derive Hermitian-ness from the
+quadratic form alone. Since `ReflectionPositivityKernel.IsReflectionPositive
+W` only asserts `0 <= reflectionForm W f` for all `f` (which, in the
+`ComplexOrder` sense, already forces `reflectionForm W f` to be REAL for
+every `f`, since `0 <= z` for `z : C` implies `z.im = 0`) and does NOT
+separately assume any Hermitian-type symmetry of `W` itself, deriving
+`rpBlockMatrix`'s Hermitian-ness needs a genuine POLARIZATION argument:
+realness of the diagonal quadratic form for every vector forces the
+antisymmetric part of the associated sesquilinear form to vanish. This is
+classical (and Mathlib has adjacent machinery -
+`LinearMap.IsSymmetric.inner_map_polarization` and a "complex polarization
+without the symmetric assumption" companion are present in
+`Analysis/InnerProductSpace/Symmetric.lean`) but I could NOT confirm the
+exact reverse direction (real-diagonal-implies-symmetric) exists
+off-the-shelf, only checking by grep, not by full search.
+
+**Answers:**
+1. Keep `IsReflectionPositive W` as the PUBLIC hypothesis (matches Q1's
+   output type directly, no translation layer needed at the interface),
+   but do NOT understate the bridge lemma's difficulty in the module
+   docstring - it is real linear algebra, not restating a definition.
+2. `range (sqrt K)` over the quotient - agreed, avoids
+   definiteness/Cauchy-Schwarz plumbing entirely, and is the same style
+   already used successfully in `WilsonVacuumDominance`/`FDRepUnitarizable`
+   (`CFC.sqrt` route).
+3. Most ambitious defensible Q2 statement without a concrete slab kernel:
+   the abstract compression API as proposed (hypotheses on an ambient `T`
+   rather than claiming a real one-slab kernel) - agreed, do not
+   overclaim a physical transfer matrix before Q1/Q7 supply one.
+
+**Action taken:** since this bridge lemma gates the ENTIRE Q2
+construction (the run's stated headline "shocking tier" target if Q1
+closes) and its difficulty is genuinely uncertain, submitted a focused
+Aristotle strategy job on exactly this question (search Mathlib for the
+exact fact or nearest analogue, and return a proof plan or a
+counterexample if the claim as stated is subtly wrong) rather than
+letting it sit on peer review alone - per the strengthened Aristotle
+mandate. See Aristotle registry for the project id once submitted.
+ACCEPT the rest of the design as proposed, PENDING that strategy job's
+return before Lean is written for the bridge lemma specifically (the
+other pieces - pairing order, Hilbert space object, compression API - can
+proceed in Lean now, they do not depend on the outcome).
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:
@@ -500,6 +551,45 @@ Review questions:
 - Most ambitious defensible target: prove the tree-slice identity plus the
   class-function corollary under `IsCombTreeSlice`, while explicitly excluding
   the expected-false pointwise identity at general tree values.
+
+## review:t11-lasso-package: claude ACCEPT (1.12:20)
+
+Verified independently: `lake env lean RectBoundaryLasso.lean` clean, the
+boundary-walk convention (bottom L-to-R, right bottom-to-top, reverse
+top, reverse left) is the standard counterclockwise circuit and matches
+`rectBoundary_hol_formula`'s composition order exactly.
+
+On the three review questions:
+
+1. **What changes the target?** Prove ONLY the tree-slice identity
+   (`rectBoundary_hol_eq_reversedRowPlaquetteProd_of_treeSlice`) in the
+   first package - the class-function corollary is a one-line
+   consequence once the identity lands (`congrArg chi` plus unfolding)
+   and doesn't need its own Aristotle budget; fold it into the SAME
+   package as a second target so one submission gets both, but do not
+   let the corollary block or complicate the core identity's proof.
+2. **What would demote the claim?** Agreed with the candidate demotions
+   listed; adding a third: if the tree-gauge-slice reduction (step 3 in
+   the original T11/Q11 derivation - "every configuration is a rooted
+   gauge transform of its tree-slice representative, class functions
+   kill the componentwise conjugation") turns out to need its OWN
+   Aristotle package rather than following from `GaugeCoreGeneral.hol_gauge`
+   as expected, that is a demotion to "tree-slice identity only, ensemble
+   reduction deferred" - still real progress, not a failure.
+3. **Most ambitious defensible target:** agreed - the tree-slice identity
+   plus the class-function corollary, under `IsCombTreeSlice`, explicitly
+   excluding the general-tree-value pointwise identity (confirmed FALSE
+   by the original derivation, not merely unproved).
+
+Independent confirmation of the ordering itself: this matches my own
+prior derivation of the same identity (recorded in this run's
+`PREP_NOTES.md` section 6 and the program document's section 14 Q11
+entry) byte-for-byte - per-row telescoping
+`P(i,j)|_{t=1} = v(i+1,j) * v(i,j)^{-1}` giving the row-major,
+i-reversed-per-row product. Two independent derivations landing on the
+same ordering is a good sign it is right. ACCEPT - proceed to package
+and submit; per the strengthened Aristotle mandate, do not let this sit
+waiting on further review.
 
 ## design:q1-reflection-orientation (opened 1.10:10 claude; findings + concrete plan)
 
