@@ -34,6 +34,45 @@ Confirms and extends freeze s15. All names checked against the index:
   `Representation.IsIrreducible.bijective_or_eq_zero` (Schur) - present,
   as s15 said. The s15 trap stands: `char_conj` is class-function
   conjugation-invariance, NOT complex conjugation.
+
+**CORRECTION (01:35, claude, mid-T1, before starting Route A): the
+`Representation.character` / `Representation.char_tensor` /
+`Representation.char_orthonormal` family does NOT exist** in this
+repo's pinned Mathlib (checked directly:
+`.lake/packages/mathlib/Mathlib/RepresentationTheory/Character.lean`
+defines `character`, `char_tensor`, `char_conj`, `char_dual`,
+`char_orthonormal` ALL under `namespace FDRep`, on the CATEGORICAL type
+`FDRep k G` - not on the raw `Representation k G V` structure). This is
+the SAME pattern as the `Matrix.PosSemidef.hadamard` overclaim in
+section 1: freeze s15 (and lean-explore) named the `Representation.*`
+form as primary and `FDRep.*` as merely "the categorical-layer twin,"
+but only the `FDRep.*` form is actually present here.
+`Representation.IsIrreducible` DOES genuinely exist (in
+`RepresentationTheory/Irreducible.lean`, as an `abbrev` for
+`IsSimpleOrder (Subrepresentation rho)`), but it is NOT the typeclass
+`FDRep.char_orthonormal` uses (that lemma uses the categorical
+`[Simple V]` from `CategoryTheory.Simple`, a different irreducibility
+notion for a different representation type) - the two don't compose
+directly without a bridge.
+
+**Consequence for Route A:** any `CharacterPositivity.lean` statement
+file MUST be written against `V W : FDRep k G` with `[Simple V]`
+(category-theoretic simplicity), not against `rho : Representation k G V`
+with `Representation.IsIrreducible rho`. The step-(i) unitarity gap
+(freeze s15's identified blocker: `conj(chi(g)) = chi(g^-1)`) is now
+ALSO harder to close via `FDRep`, since `FDRep k G` carries no built-in
+inner-product/unitarity structure to hang an explicit hypothesis on the
+way `WilsonWeightPositivity.lean`'s bare-matrix `rho` did - a Route A
+statement file would likely need to define its own unitary-`FDRep`
+wrapper or drop back to a bare-matrix formulation (losing `char_tensor`/
+`char_orthonormal`'s direct applicability). This makes Route A
+GENUINELY HARDER than the freeze assessed, not just "needs an API
+exploration session" - it needs a design decision first. Given Route B
+(`WilsonWeightPositivity.lean`) already supplies everything RP-LINK
+needs (confirmed in `review:t1-routeB`), Route A is deprioritized for
+tonight below T3 (the lattice/D12 layer, which directly unblocks
+RP-LINK's remaining content per `idea:rp-link-scope`) unless someone
+has fresh appetite for the `FDRep` category-theory API specifically.
 - **`Matrix.PosSemidef.kronecker` and `Matrix.PosDef.kronecker` EXIST**
   (`Mathlib/Analysis/Matrix/Order.lean`, for any `RCLike 𝕜`, so `𝕜 = ℝ`
   works directly). Cor 3b's tensor-product-of-kernels step is a citation,

@@ -667,7 +667,72 @@ Also delivered by the planning session, for the overnight run's use:
 `GateYM/WilsonWeightPositivity.lean` - a typechecked SCAFFOLD (three
 documented handoff markers) for the character-theory-free "Route B" to
 Corollary 3a's PSD direction (Gram kernel + Schur product theorem;
-`Matrix.PosSemidef.hadamard` and `Matrix.PosSemidef.kronecker` verified
-present in Mathlib), so RP-LINK need not wait on the character-expansion
-bookkeeping. Route A (Theorem 3 as stated) remains the paper-facing
-statement and the fusion-lemma feeder.
+`Matrix.PosSemidef.kronecker` verified present in Mathlib -
+**correction, section 17: `Matrix.PosSemidef.hadamard` is NOT present;
+the Schur product theorem was derived in-repo instead**), so RP-LINK
+need not wait on the character-expansion bookkeeping. Route A (Theorem 3
+as stated) remains the paper-facing statement and the fusion-lemma
+feeder.
+
+## 17. Route A/B execution report + a second API-verification correction (2026-07-04, claude)
+
+Overnight run (`AgentTasks/overnight-ym-run-2026-07-03/`), T1 lane.
+Route B (this document's section 15-16 Route B, formalized as
+`PhysicsSM/Draft/NullEdge/GateYM/WilsonWeightPositivity.lean`) is
+CLOSED: `wilsonKernel_posSemidef` kernel-checked, zero `s o r r y`,
+dependency footprint `[propext, Classical.choice, Quot.sound]`. Two
+corrections to this document's Mathlib citations surfaced along the way,
+both the same failure mode - a lean-explore hit (or this document's own
+section 15/planning-session citation) named a `Representation.*` /
+generic-looking lemma that turned out to belong to a DIFFERENT,
+newer/unvendored Mathlib snapshot than this repo's pinned commit
+(`mathlib4` `8f9d9cf`, 2026-02-16):
+
+1. **`Matrix.PosSemidef.hadamard` (the Schur product theorem) does NOT
+   exist** under any name in the pinned Mathlib (checked directly via
+   source grep, not semantic search). Derived in-repo instead:
+   `A ⊙ B = (A ⊗ₖ B).submatrix diag diag` (Hadamard product is the
+   Kronecker product restricted to the diagonal embedding), using
+   `Matrix.PosSemidef.kronecker` (genuinely present) and
+   `Matrix.PosSemidef.submatrix` (genuinely present, any reindexing
+   function, no injectivity needed). See
+   `WilsonWeightPositivity.lean`'s `hadamard_posSemidef` /
+   `hadamard_pow_posSemidef`.
+2. **`Representation.character` / `Representation.char_tensor` /
+   `Representation.char_orthonormal` do NOT exist** (checked directly).
+   This repo's pinned Mathlib defines `character`, `char_tensor`,
+   `char_conj`, `char_dual`, `char_orthonormal` ALL under
+   `namespace FDRep` (`Mathlib/RepresentationTheory/Character.lean`), on
+   the CATEGORICAL type `FDRep k G` (finite-dimensional representations
+   as objects of a category, irreducibility via `CategoryTheory.Simple`)
+   - NOT on the raw `Representation k G V` structure section 15 named as
+   primary. `Representation.IsIrreducible` DOES genuinely exist
+   (`RepresentationTheory/Irreducible.lean`, an `abbrev` for
+   `IsSimpleOrder (Subrepresentation rho)`), but it is a DIFFERENT
+   irreducibility notion from the `[Simple V]` that
+   `FDRep.char_orthonormal` actually uses, and the two do not compose
+   without a bridge lemma neither this document nor lean-explore's index
+   supplied. Consequence: Route A's step-(i) unitarity gap (section 15)
+   is HARDER to close via `FDRep` than assessed, since `FDRep k G` has no
+   built-in inner-product/unitary structure to attach an explicit
+   hypothesis to (unlike the bare-matrix `rho : G -> Matrix n n C`
+   formulation Route B used, where `hunit : (rho g)^H * rho g = 1` is a
+   free-standing hypothesis). Route A now needs its own design decision
+   (a unitary-`FDRep` wrapper, or a bare-matrix reformulation that
+   forfeits direct `char_tensor`/`char_orthonormal` use) before a
+   statement file should be authored - not a blind attempt.
+
+**Standing lesson (worth repeating beyond tonight):** when a document's
+"verified Mathlib API" section was populated via lean-explore (or any
+semantic search over a Lean index) rather than by opening the pinned
+`.lake/packages/mathlib` source directly, treat every cited lemma name as
+a LEAD, not a fact, until grepped against this repo's actual vendored
+commit. Two independent instances of the same failure mode in one
+session is a pattern, not a fluke.
+
+**Consequent priority call:** since Route B already supplies everything
+RP-LINK's kernel-PSD engine needs (cross-reviewed, `review:t1-routeB`),
+and Route A now carries fresh unresolved design uncertainty, Route A is
+deprioritized below the lattice/D12 layer (T3, needed for RP-LINK's
+actual remaining content - the probability/reflection apparatus, not
+more PSD algebra) for the remainder of tonight's run.
