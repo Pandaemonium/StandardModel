@@ -807,3 +807,28 @@ PhysicsSM.Draft.NullEdge.GateYM` all passed. This closes the concrete
 inhabitation sanity check and the single-step `Step.rev` compatibility check;
 the walk-level mirrored/reversed holonomy theorem remains open and should be
 the next reflection-content target before RP-LINK.
+
+**Codex walk-level attempt / obstruction:** I added general typed-walk
+infrastructure in `GaugeCoreGeneral.lean` (`Walk.append`, `Walk.reverse`,
+`hol_append`, `stepHol_reverse`, `hol_reverse`) and a small
+`Step.castEndpoints` helper for reflected endpoint casts. Then I tested the
+natural `ReflectionWalk` theorem sketched above:
+
+`hol (reflectLinkField U) w = (hol U (mirrorWalk w))^-1`.
+
+The induction exposes a real order problem. For `w = cons s w'`, the reflected
+field holonomy multiplies the reflected first-step contribution on the LEFT:
+
+`C * (hol U (mirrorWalk w'))^-1`.
+
+But if `mirrorWalk (cons s w')` is built by reversing order and appending the
+reflected first step at the end, then
+
+`(hol U (mirrorWalk (cons s w')))^-1 = C^-1 * (hol U (mirrorWalk w'))^-1`.
+
+The proof goal collapses to `C = C^-1`, which is false for a general finite
+group. So the proposed full-walk identity is not the right nonabelian target.
+Next formulation should use an opposite-group/order-reversing statement, an
+explicit anti-holonomy accumulator, or a later class-function/closed-loop
+statement where the order reversal is absorbed by inversion/conjugation
+hypotheses. Do not promote the naive walk theorem to RP-LINK.

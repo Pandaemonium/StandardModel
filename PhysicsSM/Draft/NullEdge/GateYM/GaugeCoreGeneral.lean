@@ -23,8 +23,8 @@ Current trusted-in-draft content:
 * `hol_gauge_closed`: closed-walk holonomy is conjugated at the basepoint.
 * `classFunction_hol_gauge_closed`: class functions of closed-walk holonomy are
   gauge invariant.
-* `Walk.append` / `Walk.reverse` and their holonomy identities, used by later
-  reflection bookkeeping.
+* endpoint casts, `Walk.append` / `Walk.reverse`, and their holonomy
+  identities, used by later reflection bookkeeping.
 * `gauge_one` and `gauge_comp`: the local gauge transformations act on link
   configurations.
 
@@ -88,6 +88,16 @@ def hol (U : Λ.LinkField (G := G)) : {x y : Λ.V} → Walk Λ x y → G
 
 namespace Step
 
+/-- Transport a typed step across endpoint equalities. This is a small helper
+for reflection constructions, where the same geometric edge is often seen with
+definitionally different endpoint expressions. -/
+def castEndpoints {x y x' y' : Λ.V} (hx : x = x') (hy : y = y') :
+    Step Λ x y → Step Λ x' y' := by
+  intro s
+  subst hx
+  subst hy
+  exact s
+
 /-- Reverse a single oriented traversal step. -/
 def reverse {x y : Λ.V} : Step Λ x y → Step Λ y x
   | fwd e => rev e
@@ -119,6 +129,14 @@ theorem hol_append (U : Λ.LinkField (G := G))
       simp [Walk.append, hol]
   | cons s w ih =>
       simp [Walk.append, hol, ih, mul_assoc]
+
+/-- Endpoint casts do not change the holonomy contribution of a step. -/
+theorem stepHol_castEndpoints (U : Λ.LinkField (G := G))
+    {x y x' y' : Λ.V} (hx : x = x') (hy : y = y') (s : Step Λ x y) :
+    stepHol U (Step.castEndpoints hx hy s) = stepHol U s := by
+  subst hx
+  subst hy
+  rfl
 
 /-- Reversing a one-step traversal inverts its holonomy. -/
 theorem stepHol_reverse (U : Λ.LinkField (G := G))
