@@ -43,6 +43,33 @@ section 12 verification addendum):
   the one-site Z2 gauge flip, recovering the full quantitative,
   volume-uniform Elitzur theorem end to end (freeze document section 14).
   PKG-YM3-A is next, pending a Mathlib character-theory API session.
+- **YM1 Theorem 2 is now a true expectation-value area law modulo one
+  geometric layer** (2026-07-04 day session, all kernel-checked draft,
+  standard axiom footprint): `GateYM/IndependentPlaquetteEnsemble.lean`
+  proves Lemma 2b (ordered plaquette-tuple sums ARE the iterated fusion
+  convolution; out-of-region plaquettes integrate out) and the headline
+  `wilson_loop_expectation_area_law`:
+  `<W_R> = chi_R(1) * wilsonNormalizedGamma^area` EXACTLY in the
+  independent-plaquette ensemble, with norm/exponential-decay forms.
+  `GateYM/TreeGaugeBridge.lean` proves the generic tree-gauge bridge: any
+  `PlaquetteCoordinatization` (link fields ~ plaquette holonomies x tree
+  residuals) collapses the LINK ensemble to that plaquette ensemble. The one
+  remaining layer is geometric and is out at Aristotle `1d9b5b19`
+  (comb-gauge coordinatization of the concrete 2D open rectangle; task note
+  `AgentTasks/ym1-treegauge-rect-aristotle-2026-07-04.md`), after which only
+  the boundary-circuit lasso identification remains.
+- **The YM mass-gap lane opened** (same session):
+  `GateYM/FusionTransferSpectrum.lean` upgrades Lemma 2a to genuine
+  `Module.End` spectral statements (vacuum eigenvector = constant function
+  with eigenvalue the one-plaquette sum; simple-`FDRep` characters are
+  eigenvectors of the fusion transfer operator), plus the string-tension
+  form `|<W_R>| = |chi_R(1)| exp(-sigma * area)`;
+  `GateYM/WilsonVacuumDominance.lean` proves `|gamma| <= 1` and
+  `sigma >= 0` (vacuum dominance) under an explicit unitary matrix-model
+  hypothesis - discharging it is finite-group unitarizability (Weyl
+  averaging), the next gap-lane Aristotle target. NOT yet claimed: any
+  identification with the D12 `finiteMassGap` (needs eigenvalue
+  reality/ordering).
 
 Where it sits: sibling to `Sources/Null_Edge_Measure_Problem.md` (the
 program's central open problem) and `Sources/Null_Edge_Dynamics_Gate_D.md`

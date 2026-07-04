@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
+import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
@@ -114,6 +115,13 @@ models - diagonal entries of a unitary matrix have modulus at most 1, hence
 tension, all under an explicit `R.character g = tr (rho' g)` unitary
 matrix-model hypothesis; discharging that hypothesis for every simple `R`
 is finite-group unitarizability, an honestly-open follow-up; axiom footprint
+[propext, Classical.choice, Quot.sound]);
+`EnsembleComplexBridge` (YM0/YM1 connector: the complex Wilson link
+partition/numerator/expectation of `TreeGaugeBridge` are literally the casts
+of the real T3 `PlaquetteEnsemble` ones, and the complex Wilson link
+partition function is NONZERO by real positivity - making the complex Wilson
+`linkExpectation` non-vacuous for every `beta`, `rho`, finite lattice,
+independent of any coordinatization; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
