@@ -20,6 +20,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflection
+import PhysicsSM.Draft.NullEdge.GateYM.MirrorHolonomyConjugation
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflectionEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
@@ -353,12 +354,13 @@ combinatorial infrastructure not yet designed, documented as a handoff
 rather than guessed at); `PolymerKPConclusion` (YM4/T6 statement-freeze
 layer after strategy job `2427a253` and review thread `review:q6-kp-freeze`:
 ordered finite clusters, the cluster incompatibility graph on distinct slots,
-an abstract `ClusterCoeffData` interface with tree-graph-bound hypothesis, and
-three named theorem targets: bare-KP absolute summability,
-bare-KP convergence with `exp(energyOf)` slack, and a metric tail bound whose
-extra energy-distance coercivity hypothesis is explicit.  The concrete
-Mayer/Ursell coefficient and spanning-tree-count implementation remain draft
-handoffs pending Aristotle job `34d675b8`). Not part of the default trusted
-build target.
+the concrete direct finite definitions `spanningTreeCount` and `ursellSum`
+recommended by Aristotle job `34d675b8`, an abstract `ClusterCoeffData`
+interface with tree-graph-bound hypothesis, and three named theorem targets:
+bare-KP absolute summability, bare-KP convergence with `exp(energyOf)` slack,
+and a metric tail bound whose extra energy-distance coercivity hypothesis is
+explicit. The hard parked theorem is Penrose's concrete tree-graph inequality
+`treeGraphBound_ursell`, not the count definition itself). Not part of the
+default trusted build target.
 Adding a new YM module? Import it here.
 -/
