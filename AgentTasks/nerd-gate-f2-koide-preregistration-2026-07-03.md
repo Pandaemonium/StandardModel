@@ -8,11 +8,23 @@ Status: pre-registration + executed cheapest-falsification, 2026-07-03
 first) -> verify -> publish or file the null". This document executes that
 lifecycle for F2's first round. Claim grades per the Round 8 calculus.
 
-**Same-day update:** F2.1's family, criticality notion, success and kill
-criteria, and forbidden-edit rules are now FROZEN (per Codex review) in
+**Update 2026-07-03:** F2.1's family, criticality notion, success and kill
+criteria, and forbidden-edit rules were FROZEN (per Codex review) in
 `AgentTasks/nerd-gate-f2.1-preregistration-freeze-2026-07-03.md`. That freeze
 supersedes the informal sketch in section 4/5 below as the authoritative F2.1
-specification; no F2.1 computation has been run as of the freeze.
+specification.
+
+**Update 2026-07-04: F2.1 EXECUTED.** Per the frozen spec, exactly and
+without deviation: `dim(S) = 1` (SUCCESS by the letter of the test, cross-
+validated symbolically and numerically), but the one surviving potential -
+`V = (1/9)(tr X - 3 tr(X d))^2`, equivalently the square of the sum of `X`'s
+off-diagonal entries in the generation basis - is critical on the ENTIRE
+3-dimensional locus of diagonal matrices, not distinctively the 2-dimensional
+Koide sub-locus. It gives ZERO differential preference for the 45-degree
+angle over any other diagonal texture. Filed as
+**SUCCESS-WITH-SEVERE-CAVEAT**: real by the frozen letter, but the frozen
+coupling family cannot explain "why 45 degrees" - see the freeze document's
+section 10 for the full derivation, cross-checks, and disposition.
 
 ## 1. The datum (unchanged from Round 7)
 
@@ -130,13 +142,21 @@ formulation.
 
 ## 6. Disposition
 
-- No Aristotle job was needed for the falsification (self-proved in-repo,
-  small). F2.1 is NOT submitted anywhere: its family is not yet frozen, and
-  premature submission would violate the pre-registration discipline.
-- This document plus the Lean module constitute the F2 round-1 record:
-  proposed, piloted, verified, null filed - one day.
+- No Aristotle job was needed for either the F2.0 falsification or the F2.1
+  execution (both self-computed in-repo: a Lean proof and an exact CAS
+  computation respectively).
+- This document plus the Lean module (F2.0) and the freeze document's
+  section 10 (F2.1) constitute the F2 rounds 1-2 record: proposed, piloted,
+  verified, null filed (F2.0); frozen, executed, success-with-severe-caveat
+  filed (F2.1) - two days.
 - Program effects: Round 7 scorecard row "Koide Q = 2/3 | C | 45-degree
   orbit in J_3 - Gate F2" should be annotated "F2.0 killed by proof
-  2026-07-03; F2.1/F2.0' rescope pending freeze"; R4-2 confidence
-  unchanged-to-slightly-down (the pincer and Jordan-cap arguments are
-  untouched; the potential-selection mechanism is constrained).
+  2026-07-03; F2.1 executed 2026-07-04, success-with-severe-caveat (the
+  frozen family cannot distinguish the Koide angle from a generic diagonal
+  texture)"; R4-2 confidence takes a further honest decrement specifically
+  on the potential-selection mechanism (the Jordan-tower-cap and
+  Kobayashi-Maskawa pincer arguments for `N_g = 3` are untouched).
+- Next step, if pursued: a fresh, separately pre-registered F2.2 with a
+  coupling family sensitive to `X`'s eigenvalues relative to `d` (not
+  merely its off-diagonal support), per the freeze document's section 10
+  closing paragraph. Not started; requires its own freeze first.

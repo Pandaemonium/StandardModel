@@ -37,8 +37,12 @@ section 12 verification addendum):
   numbers (oracle-discovered on the 2x2 torus, where the naive Gauss-sector
   gap is a winding flux line, not a glueball).
 - **PKG-YM1-A submitted** (Aristotle f501f8c8, the ladder's one active job
-  per the budget rule); PKG-YM3-A is next, pending a Mathlib
-  character-theory API session.
+  per the budget rule) **and harvested**; **PKG-YM1-lattice is now CLOSED
+  too** (2026-07-04, in-repo assembly, no Aristotle job needed):
+  `GateYM/ElitzurLattice.lean` instantiates the abstract pairing bound at
+  the one-site Z2 gauge flip, recovering the full quantitative,
+  volume-uniform Elitzur theorem end to end (freeze document section 14).
+  PKG-YM3-A is next, pending a Mathlib character-theory API session.
 
 Where it sits: sibling to `Sources/Null_Edge_Measure_Problem.md` (the
 program's central open problem) and `Sources/Null_Edge_Dynamics_Gate_D.md`

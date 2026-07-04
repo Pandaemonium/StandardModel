@@ -188,3 +188,83 @@ Frozen, not executed. Next action: run the section-4 computation exactly as
 specified, report `M` and `S` in full (success or kill), and update the
 disposition sections of both this document and the parent F2 pre-registration
 note. No numbers have been computed or previewed in this document.
+
+## 10. Execution and result (2026-07-04, claude)
+
+Executed exactly as frozen in section 4: the full 6-dimensional gradient of
+`V` (all six `dV/dX_ij`, `i<=j`, over the AMBIENT `Herm_3(R)`, computed
+before any substitution) was evaluated on the Koide locus `X(mu,delta)`,
+expanded as a polynomial in `mu` and a trigonometric polynomial in `delta`
+(basis `cos(delta), sin(delta)` after full angle-addition expansion), and
+every independent `mu^i cos(delta)^j sin(delta)^k` coefficient was collected
+as one linear equation in `(a,b,c,e1,e2,e3)`. This produced a `29 x 6`
+coefficient matrix `M` (29 independent monomial coefficients across the six
+gradient components). No numerical approximation was used for the reported
+result; a numerical cross-check (finite-difference gradients at 8 random
+`(mu,delta)` points, SVD) independently confirms the same rank and null
+vector to 6 decimal places.
+
+**Result: `rank(M) = 5`, `dim(S) = dim(ker M) = 1`.** Per section 5, since
+`1 >= 1` and `1 < 6` (not the suspicious full-space case),
+**F2.1 SUCCEEDS by the letter of the frozen test.** Exact basis of `S`
+(one vector, unique up to overall scale):
+
+```text
+(a, b, c, e1, e2, e3) = (0, 1/9, 0, -2/3, 1, 0)   [scale: (0, 1, 0, -6, 9, 0)]
+```
+
+giving the potential (up to the free positive overall scale)
+
+```text
+V(X) = (1/9) * ( tr(X) - 3 tr(X d) )^2 .
+```
+
+Physical-point cross-check (section 5, mandatory, non-tunable): evaluated at
+`mu=1`, `delta = delta_phys = 0.222229` (Round 7's fitted value) - the
+gradient of this `V` vanishes there too (`~1e-10`, numerical noise), exactly
+as the derivation requires and with no adjustment. Consistency check PASSES.
+
+**The caveat, reported in full per section 6's disposition rule (this is
+NOT a silent upgrade or downgrade - it is the honest reading of the
+algebra).** Simplifying the found linear functional:
+
+```text
+tr(X) - 3 tr(X d) = -2 (X12 + X13 + X23)   (exactly; d = (1/3) J),
+```
+
+i.e. `V = (4/9) (X12 + X13 + X23)^2` - the square of the sum of the
+OFF-DIAGONAL entries of `X` in the generation basis. This vanishes to
+SECOND order (zero value AND zero gradient) on the ENTIRE 3-dimensional
+locus of diagonal matrices in the generation basis - not merely on the
+2-dimensional Koide sub-locus. **The found potential gives zero
+differential preference for the Koide 45-degree angle over ANY other
+diagonal texture.** Its physical content is "no flavor mixing in the
+generation basis" (a statement about the eigenBASIS of `X` alone), not
+"the eigenVALUES sit at the Koide angle." F2.1's success is therefore real
+by the frozen letter of the test, but it does NOT explain why `delta` is
+what it is - the one-dimensional family this gate's coupling space
+supplies is Koide-AGNOSTIC.
+
+**Disposition.** F2.1 is recorded as **SUCCESS-WITH-SEVERE-CAVEAT**: the
+frozen family (three invariants + three single-spurion-insertion terms,
+degree <= 3) is TOO WEAK to distinguish the Koide angle from generic
+diagonal textures; its one surviving direction is democratic-spurion
+window-dressing on an ordinary "diagonal texture" statement. This is
+filed, not silently discarded or reframed: R4-2's confidence takes a
+further honest decrement specifically on the "orbit selects 45 degrees"
+mechanism (the family as frozen cannot deliver that, regardless of
+couplings) - the Jordan-tower-cap and Kobayashi-Maskawa pincer arguments
+for `N_g = 3` are untouched by this finding. A genuinely Koide-SPECIFIC
+mechanism would require a coupling family whose critical locus (or a
+distinguished sub-locus of it) is exactly the 2-dimensional Koide cone
+itself, not a larger diagonal-texture locus containing it - i.e. terms
+sensitive to `X`'s EIGENVALUES relative to `d`, not merely its
+off-diagonal support. That is out of scope for F2.1 (forbidden edit,
+section 7) and would require a fresh, separately pre-registered gate
+(F2.2) with an enlarged or differently-shaped family.
+
+Verification: `scratchpad/f2_1_execution.py` (the frozen computation, exact
+symbolic), `scratchpad/f2_1_crosscheck.py` (numerical SVD cross-check +
+physical-point consistency check), `scratchpad/f2_1_caveat_check.py`
+(confirms the caveat algebraically). Exploratory oracle scripts, not
+trusted proofs; the reported result is the exact symbolic null space.

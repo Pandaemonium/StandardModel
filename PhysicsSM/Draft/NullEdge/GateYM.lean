@@ -1,5 +1,6 @@
 import PhysicsSM.Draft.NullEdge.GateYM.Z2GaugeCore
 import PhysicsSM.Draft.NullEdge.GateYM.ElitzurCore
+import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -15,6 +16,9 @@ kernel-checks the layer:
 Current contents: `Z2GaugeCore` (YM0 gauge-invariance core; Z2/Bool, core
 Lean only, axiom footprint empty-to-[Quot.sound]); `ElitzurCore` (YM1
 Elitzur pairing bound, abstract core; axiom footprint
+[propext, Classical.choice, Quot.sound]); `ElitzurLattice` (PKG-YM1-lattice:
+the abstract bound instantiated at the one-site Z2 gauge flip, giving the
+full quantitative volume-uniform Elitzur theorem; axiom footprint
 [propext, Classical.choice, Quot.sound]). Not part of the default trusted
 build target. Adding a new YM module? Import it here.
 -/

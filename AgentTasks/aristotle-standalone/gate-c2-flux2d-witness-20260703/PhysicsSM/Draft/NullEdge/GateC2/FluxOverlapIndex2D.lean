@@ -5,17 +5,39 @@ import PhysicsSM.Draft.NullEdge.GateC2.HermitianSylvester
 /-!
 # Gate C2: the 2D Wilson-Dirac zero-to-nonzero flux index (PROOF TARGET)
 
-PROOF TARGET for Aristotle. This is the even-lattice / 2D-torus successor to
-the `pi`-flux triangle (`FluxOverlapIndex`, which showed a nonzero index at
-EVERY flux, an odd-cycle parity artifact). Here the target is a genuine
-ZERO-to-NONZERO flux-driven index jump on an `L=4` torus, per the design and
-oracle validation in
+PROOF TARGET for Aristotle, ROUND 2. This is the even-lattice / 2D-torus
+successor to the `pi`-flux triangle (`FluxOverlapIndex`, which showed a
+nonzero index at EVERY flux, an odd-cycle parity artifact). Here the target
+is a genuine ZERO-to-NONZERO flux-driven index jump on an `L=4` torus, per
+the design and oracle validation in
 `AgentTasks/nerd-gate-c2-next-frontier-2d-flux-plan-2026-07-03.md`
 (the block reduction and per-block congruences below are oracle-verified
 EXACTLY by computer algebra - `Scripts/oracle/validate_flux2d_wilson_dirac.py`
 plus the session's scratch scripts - and are given here as concrete data, not
 targets themselves; every `sorry` below is a genuinely new KERNEL proof
 obligation).
+
+**Round 1 result and the fix (2026-07-04).** The first Aristotle pass on
+this file closed 20 of 26 obligations and, exactly as the brief demanded,
+STOPPED and produced a kernel-checked counterexample rather than adjusting
+data: the `TxFlux`/`TxFree`/`Ty` shift definitions had the `+1` on the wrong
+`Matrix.of` argument (`Matrix.of f i j = f i j` puts `i` first/row, `j`
+second/column, and `(T *ᵥ v) i = sum_j T i j * v j` reads column `j` into
+row `i`; matching the oracle's `tx[x+1,x] = phase` convention needs the ROW
+to be the SOURCE-plus-one, i.e. `p.1 = q.1 + 1` with `p` the row argument -
+an earlier revision instead had `q.1 = p.1 + 1`, which builds exactly the
+TRANSPOSE of the intended shift). This has been corrected below and
+verified independently by exact computer algebra to reproduce the literal
+`BFlux`/`BFree` data to the entry (not merely "morally" - the corrected
+construction and the oracle-generating script now compute the identical
+matrix). The 20 already-proved theorems are UNAFFECTED by the fix (six are
+general/structural in an arbitrary shift argument; the rest concern the
+fixed numeric block/congruence/determinant data, which never depended on
+the shift convention) and remain exactly as before. The two now-moot
+falsity witnesses from round 1 have been removed; `HFlux_block_diagonalization`
+and `HFree_block_diagonalization` are believed TRUE as stated with the fix
+and are the primary round-2 targets, together with the Section 5/6
+assembly (2 invertibility instances, 2 capstone index values).
 
 ## Physics content (context, not needed for the proofs)
 
@@ -163,20 +185,32 @@ def sigmaY : Matrix (Fin 2) (Fin 2) ℂ := !![0, -Complex.I; Complex.I, 0]
 def sigmaZ : Matrix (Fin 2) (Fin 2) ℂ := !![1, 0; 0, -1]
 
 /-- Forward `x`-shift, Landau-gauge phase `exp(-2 pi i Q y / 4)` for the
-`Q=1` (flux) sector: phases `(1, -i, -1, i)` for `y = 0,1,2,3`. -/
+`Q=1` (flux) sector: phases `(1, -i, -1, i)` for `y = 0,1,2,3`.
+
+CONVENTION FIX (2026-07-04): the `+1` must land on the ROW (first) argument
+of `Matrix.of`, since `Matrix.of f i j = f i j` puts `i` first/row, `j`
+second/column, and `(T *ᵥ v) i = sum_j T i j * v j` reads column `j` into
+row `i` - i.e. `T[row, col] = phase` means "row receives from col". To
+match the oracle convention `tx[x+1, x] = phase` (site `x` feeds site
+`x+1`), the row index must be the SOURCE-PLUS-ONE, i.e. `p.1 = q.1 + 1`,
+not `q.1 = p.1 + 1` as an earlier revision had it (verified independently
+by exact computer algebra to reproduce the literal `BFlux0`/`BFree0` data
+below to the entry). -/
 def TxFlux : Matrix Site Site ℂ :=
   Matrix.of fun (p : Site) (q : Site) =>
-    if q.1 = p.1 + 1 ∧ q.2 = p.2 then
-      (![(1 : ℂ), -Complex.I, -1, Complex.I] p.2)
+    if p.1 = q.1 + 1 ∧ p.2 = q.2 then
+      (![(1 : ℂ), -Complex.I, -1, Complex.I] q.2)
     else 0
 
-/-- Forward `x`-shift, trivial phase (the `Q=0` / free sector). -/
+/-- Forward `x`-shift, trivial phase (the `Q=0` / free sector). Convention
+fixed as for `TxFlux`. -/
 def TxFree : Matrix Site Site ℂ :=
-  Matrix.of fun (p : Site) (q : Site) => if q.1 = p.1 + 1 ∧ q.2 = p.2 then 1 else 0
+  Matrix.of fun (p : Site) (q : Site) => if p.1 = q.1 + 1 ∧ p.2 = q.2 then 1 else 0
 
-/-- Forward `y`-shift, trivial phase (shared by both sectors). -/
+/-- Forward `y`-shift, trivial phase (shared by both sectors). Convention
+fixed as for `TxFlux`. -/
 def Ty : Matrix Site Site ℂ :=
-  Matrix.of fun (p : Site) (q : Site) => if q.1 = p.1 ∧ q.2 = p.2 + 1 then 1 else 0
+  Matrix.of fun (p : Site) (q : Site) => if p.1 = q.1 ∧ p.2 = q.2 + 1 then 1 else 0
 
 /-- The 2D Wilson-Dirac Hamiltonian built from a given `x`-shift `tx`. -/
 def wilsonDirac (tx : Matrix Site Site ℂ) (m : ℂ) : Matrix (Site × Fin 2) (Site × Fin 2) ℂ :=
@@ -195,14 +229,62 @@ def HFree : Matrix (Site × Fin 2) (Site × Fin 2) ℂ := wilsonDirac TxFree (-1
 /-- The traceless chirality `gamma5U = 1 (x) sigma_z`. -/
 def gamma5U : Matrix (Site × Fin 2) (Site × Fin 2) ℂ := (1 : Matrix Site Site ℂ) ⊗ₖ sigmaZ
 
+theorem sigmaZ_sq : sigmaZ * sigmaZ = 1 := by
+  rw [sigmaZ]; ext i j
+  fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
+
 theorem gamma5U_sq : gamma5U * gamma5U = 1 := by
-  sorry
+  rw [gamma5U, ← Matrix.mul_kronecker_mul, Matrix.one_mul, sigmaZ_sq,
+    Matrix.one_kronecker_one]
 
-theorem HFlux_isHermitian : HFlux.IsHermitian := by
-  sorry
+theorem herm_smul {c : ℂ} (hc : star c = c) {A : Matrix Site Site ℂ} (h : A.IsHermitian) :
+    (c • A).IsHermitian := by
+  unfold Matrix.IsHermitian; rw [Matrix.conjTranspose_smul, hc, h]
 
-theorem HFree_isHermitian : HFree.IsHermitian := by
-  sorry
+theorem herm_add_ct (A : Matrix Site Site ℂ) : (A + A.conjTranspose).IsHermitian := by
+  unfold Matrix.IsHermitian
+  rw [Matrix.conjTranspose_add, Matrix.conjTranspose_conjTranspose, add_comm]
+
+theorem kron_herm {a : Matrix Site Site ℂ} {b : Matrix (Fin 2) (Fin 2) ℂ}
+    (ha : a.IsHermitian) (hb : b.IsHermitian) : (a ⊗ₖ b).IsHermitian := by
+  unfold Matrix.IsHermitian; rw [Matrix.conjTranspose_kronecker, ha, hb]
+
+theorem dmu_herm (t : Matrix Site Site ℂ) :
+    ((1/(2*Complex.I)) • (t - t.conjTranspose)).IsHermitian := by
+  unfold Matrix.IsHermitian
+  rw [Matrix.conjTranspose_smul, Matrix.conjTranspose_sub, Matrix.conjTranspose_conjTranspose,
+    show (star (1/(2*Complex.I)) : ℂ) = -(1/(2*Complex.I)) by
+      simp only [star_div₀, map_mul, map_one, Complex.star_def, map_ofNat, Complex.conj_I]; ring]
+  ext i j; simp only [Matrix.smul_apply, Matrix.sub_apply, smul_eq_mul]; ring
+
+theorem sigmaX_herm : sigmaX.IsHermitian := by
+  rw [Matrix.IsHermitian, sigmaX]; ext i j
+  fin_cases i <;> fin_cases j <;> simp [Matrix.conjTranspose_apply]
+theorem sigmaY_herm : sigmaY.IsHermitian := by
+  rw [Matrix.IsHermitian, sigmaY]; ext i j
+  fin_cases i <;> fin_cases j <;> simp [Matrix.conjTranspose_apply, Complex.conj_I]
+theorem sigmaZ_herm : sigmaZ.IsHermitian := by
+  rw [Matrix.IsHermitian, sigmaZ]; ext i j
+  fin_cases i <;> fin_cases j <;> simp [Matrix.conjTranspose_apply]
+
+theorem wilsonDirac_herm (t : Matrix Site Site ℂ) (m : ℂ) (hm : star m = m) :
+    (wilsonDirac t m).IsHermitian := by
+  unfold wilsonDirac
+  have hw : ((m • (1 : Matrix Site Site ℂ)) + ((2 : ℂ) • (1 : Matrix Site Site ℂ)
+      - (1 / 2 : ℂ) • (t + t.conjTranspose)
+      - (1 / 2 : ℂ) • (Ty + Ty.conjTranspose))).IsHermitian :=
+    (herm_smul hm isHermitian_one).add
+      (((herm_smul (by simp) isHermitian_one).sub
+          (herm_smul (by norm_num [Complex.star_def, Complex.conj_ofReal]) (herm_add_ct t))).sub
+        (herm_smul (by norm_num [Complex.star_def, Complex.conj_ofReal]) (herm_add_ct Ty)))
+  exact ((kron_herm (dmu_herm t) sigmaX_herm).add
+    (kron_herm (dmu_herm Ty) sigmaY_herm)).add (kron_herm hw sigmaZ_herm)
+
+theorem HFlux_isHermitian : HFlux.IsHermitian :=
+  wilsonDirac_herm TxFlux (-1) (by norm_num [Complex.star_def, Complex.conj_ofReal])
+
+theorem HFree_isHermitian : HFree.IsHermitian :=
+  wilsonDirac_herm TxFree (-1) (by norm_num [Complex.star_def, Complex.conj_ofReal])
 
 /-! ## Section 2: the plain-x Fourier block-reduction unitary -/
 
@@ -214,8 +296,52 @@ def Ufour : Matrix (Site × Fin 2) (Site × Fin 2) ℂ :=
       Complex.exp (-2 * Real.pi * Complex.I * (p.1.1 : ℂ) * (q.1.1 : ℂ) / 4) / 2
     else 0
 
+/-- `exp(-2πi/4) = -i`, the primitive 4th root of unity used in the DFT. -/
+theorem exp_neg_half_pi_I : Complex.exp (-2 * (Real.pi:ℂ) * Complex.I / 4) = -Complex.I := by
+  have h : (-2 * (Real.pi:ℂ) * Complex.I / 4) = (-(↑Real.pi / 2)) * Complex.I := by ring
+  rw [h, Complex.exp_mul_I]
+  have hc : Complex.cos (-(↑Real.pi / 2)) = 0 := by
+    rw [Complex.cos_neg, show ((Real.pi:ℂ)/2) = ((Real.pi/2 : ℝ):ℂ) by push_cast; ring,
+      ← Complex.ofReal_cos]; norm_num [Real.cos_pi_div_two]
+  have hs : Complex.sin (-(↑Real.pi / 2)) = -1 := by
+    rw [Complex.sin_neg, show ((Real.pi:ℂ)/2) = ((Real.pi/2 : ℝ):ℂ) by push_cast; ring,
+      ← Complex.ofReal_sin]; norm_num [Real.sin_pi_div_two]
+  rw [hc, hs]; ring
+
+/-- The DFT phase `exp(-2πi n/4)` is the `n`-th power of `-i`. -/
+theorem phase_pow (n : ℕ) :
+    Complex.exp (-2 * (Real.pi:ℂ) * Complex.I * (n:ℂ) / 4) = (-Complex.I) ^ n := by
+  rw [show (-2 * (Real.pi:ℂ) * Complex.I * (n:ℂ) / 4)
+      = (n:ℂ) * (-2 * (Real.pi:ℂ) * Complex.I / 4) by ring,
+    Complex.exp_nat_mul, exp_neg_half_pi_I]
+
+/-- Entrywise form of `Ufour` with the DFT phase written as a power of `-i`. -/
+theorem Ufour_apply (p q : Site × Fin 2) :
+    Ufour p q = if p.1.2 = q.1.2 ∧ p.2 = q.2 then
+      ((-Complex.I) ^ (p.1.1.val * q.1.1.val)) / 2 else 0 := by
+  rw [Ufour, Matrix.of_apply]
+  by_cases h : p.1.2 = q.1.2 ∧ p.2 = q.2
+  · simp only [if_pos h]
+    rw [show (-2 * (Real.pi:ℂ) * Complex.I * (p.1.1 : ℂ) * (q.1.1 : ℂ) / 4)
+        = (-2 * (Real.pi:ℂ) * Complex.I * ((p.1.1.val * q.1.1.val : ℕ) : ℂ) / 4) by
+          push_cast; ring, phase_pow]
+  · simp only [if_neg h]
+
 theorem Ufour_unitary : Ufour * Ufour.conjTranspose = 1 := by
-  sorry
+  ext ⟨ ⟨ k, y ⟩, s ⟩ ⟨ ⟨ k', y' ⟩, s' ⟩;
+  simp +decide [ Matrix.mul_apply, Ufour_apply ];
+  simp +decide [ Finset.sum_ite, Matrix.one_apply ];
+  rw [ show ( Finset.filter ( fun x : Site × Fin 2 => y = x.1.2 ∧ s = x.2 ) Finset.univ ) = Finset.image ( fun x : Fin 4 => ( ( x, y ), s ) ) Finset.univ from ?_ ];
+  · rw [ Finset.sum_image ] <;> simp +decide [ Finset.sum_ite ];
+    · split_ifs <;> simp_all +decide [ Fin.sum_univ_four ];
+      · fin_cases k' <;> norm_num [ pow_succ, pow_mul', Complex.ext_iff ];
+        · norm_num [ Complex.normSq, Complex.div_re, Complex.div_im ];
+        · norm_num [ div_eq_mul_inv ];
+        · norm_num [ Complex.normSq, Complex.div_re, Complex.div_im ];
+      · fin_cases k <;> fin_cases k' <;> norm_num [ pow_succ, pow_mul ] at *;
+        all_goals norm_num [ Complex.ext_iff, div_eq_mul_inv ] ;
+    · aesop_cat;
+  · decide +revert
 
 /-! ## Section 3: the 8 explicit 8x8 blocks (Gaussian-rational, oracle-exact) -/
 
@@ -306,9 +432,45 @@ abbrev BlockIdx := Fin 4 × Fin 2
 /-- Reindexing `((k,y),s) : Site x Fin 2` (with `k` fixed) to `Fin 8`. -/
 def blockEquiv : BlockIdx ≃ Fin 8 := finProdFinEquiv.trans (finCongr (by norm_num))
 
+/-
+**General Fourier reduction of a matrix entry.**  For any operator `H`, the
+conjugated entry `(Ufour * H * Ufourᴴ)` at momenta `k, k'` and positions
+`(y,s), (y',s')` collapses (by the sparsity of `Ufour` in the `(y,s)` labels) to
+a double DFT sum over the two `x`-coordinates, with phases written as powers of
+`-i` / `i`.
+-/
+theorem triple_entry (H : Matrix (Site × Fin 2) (Site × Fin 2) ℂ)
+    (k k' : Fin 4) (y y' : Fin 4) (s s' : Fin 2) :
+    (Ufour * H * Ufour.conjTranspose) ((k, y), s) ((k', y'), s')
+      = ∑ cx : Fin 4, ∑ dx : Fin 4,
+          ((-Complex.I) ^ (k.val * cx.val) / 2) * H ((cx, y), s) ((dx, y'), s')
+            * (Complex.I ^ (k'.val * dx.val) / 2) := by
+  -- Apply the definition of matrix multiplication and the properties of the conjugate transpose.
+  simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Ufour_apply];
+  simp +decide only [starRingEnd_apply, Finset.sum_mul];
+  convert Finset.sum_comm using 1;
+  rw [ ← Finset.sum_subset ( show Finset.image ( fun cx : Fin 4 => ( ( cx, y ), s ) ) Finset.univ ⊆ Finset.univ from Finset.subset_univ _ ) ];
+  · rw [ Finset.sum_image ] <;> simp +decide [ Finset.sum_ite ];
+    · refine' Finset.sum_congr rfl fun x hx => _;
+      rw [ ← Finset.sum_subset ( show Finset.image ( fun dx : Fin 4 => ( ( dx, y' ), s' ) ) Finset.univ ⊆ Finset.univ from Finset.subset_univ _ ) ];
+      · rw [ Finset.sum_image ] <;> simp +decide [ Finset.sum_ite ];
+        · erw [ Complex.conj_ofReal ] ; norm_num;
+        · decide +revert;
+      · aesop;
+    · aesop_cat;
+  · aesop
+
 /-- **Block-diagonalization, `Q=1`.**  `Ufour * HFlux * Ufourᴴ` restricted to
 momentum `k` on both sides equals `BFlux k` (reindexed via `blockEquiv`), and
-vanishes for `k ≠ k'` (stated as one combined entrywise identity). -/
+vanishes for `k ≠ k'` (stated as one combined entrywise identity).
+
+HISTORY NOTE (2026-07-04): an earlier revision of `TxFlux`/`TxFree`/`Ty` had
+the `+1` on the wrong `Matrix.of` argument (column instead of row), which
+made this identity genuinely false as stated - correctly caught by a prior
+Aristotle pass via a kernel-checked counterexample at one cell. The three
+shift definitions above have since been corrected (verified independently,
+by exact computer algebra, to reproduce the literal `BFlux`/`BFree` data
+below to the entry); this identity is believed TRUE as stated now. -/
 theorem HFlux_block_diagonalization (k k' : Fin 4) (yz : BlockIdx) (yz' : BlockIdx) :
     (Ufour * HFlux * Ufour.conjTranspose) ((k, yz.1), yz.2) ((k', yz'.1), yz'.2)
       = if k = k' then
@@ -414,31 +576,112 @@ def SFree3 : Matrix (Fin 8) (Fin 8) ℂ := !![
   (0 : ℂ), (0 : ℂ), (0 : ℂ), (0 : ℂ), (0 : ℂ), (0 : ℂ), (0 : ℂ), (1 : ℂ)]
 def DFree3 : Fin 8 → ℝ := ![1, -2, 3/4, -10/3, 7/10, -26/7, 12/13, -15/4]
 
+-- Uniform entrywise tactic proving each `8×8` congruence `Sᴴ B S = diag D`.
+set_option maxHeartbeats 4000000 in
 theorem congruence_Flux0 : SFlux0.conjTranspose * BFlux0 * SFlux0
-    = Matrix.diagonal (fun i => (DFlux0 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFlux0 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFlux0, BFlux0, DFlux0, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
+set_option maxHeartbeats 4000000 in
 theorem congruence_Flux1 : SFlux1.conjTranspose * BFlux1 * SFlux1
-    = Matrix.diagonal (fun i => (DFlux1 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFlux1 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFlux1, BFlux1, DFlux1, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
+set_option maxHeartbeats 4000000 in
 theorem congruence_Flux2 : SFlux2.conjTranspose * BFlux2 * SFlux2
-    = Matrix.diagonal (fun i => (DFlux2 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFlux2 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFlux2, BFlux2, DFlux2, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
+set_option maxHeartbeats 4000000 in
 theorem congruence_Flux3 : SFlux3.conjTranspose * BFlux3 * SFlux3
-    = Matrix.diagonal (fun i => (DFlux3 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFlux3 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFlux3, BFlux3, DFlux3, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
+set_option maxHeartbeats 4000000 in
 theorem congruence_Free0 : SFree0.conjTranspose * BFree0 * SFree0
-    = Matrix.diagonal (fun i => (DFree0 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFree0 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFree0, BFree0, DFree0, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
+set_option maxHeartbeats 4000000 in
 theorem congruence_Free1 : SFree1.conjTranspose * BFree1 * SFree1
-    = Matrix.diagonal (fun i => (DFree1 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFree1 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFree1, BFree1, DFree1, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
+set_option maxHeartbeats 4000000 in
 theorem congruence_Free2 : SFree2.conjTranspose * BFree2 * SFree2
-    = Matrix.diagonal (fun i => (DFree2 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFree2 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFree2, BFree2, DFree2, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
+set_option maxHeartbeats 4000000 in
 theorem congruence_Free3 : SFree3.conjTranspose * BFree3 * SFree3
-    = Matrix.diagonal (fun i => (DFree3 i : ℂ)) := by sorry
+    = Matrix.diagonal (fun i => (DFree3 i : ℂ)) := by
+  ext i j
+  simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Fin.sum_univ_eight,
+    SFree3, BFree3, DFree3, Matrix.diagonal_apply, Matrix.of_apply, Fin.isValue, Matrix.cons_val]
+  fin_cases i <;> fin_cases j <;> norm_num [Complex.ext_iff]
 
-theorem SFlux0_det_ne_zero : IsUnit SFlux0.det := by sorry
-theorem SFlux1_det_ne_zero : IsUnit SFlux1.det := by sorry
-theorem SFlux2_det_ne_zero : IsUnit SFlux2.det := by sorry
-theorem SFlux3_det_ne_zero : IsUnit SFlux3.det := by sorry
-theorem SFree0_det_ne_zero : IsUnit SFree0.det := by sorry
-theorem SFree1_det_ne_zero : IsUnit SFree1.det := by sorry
-theorem SFree2_det_ne_zero : IsUnit SFree2.det := by sorry
-theorem SFree3_det_ne_zero : IsUnit SFree3.det := by sorry
+theorem SFlux0_det_ne_zero : IsUnit SFlux0.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFlux0.conjTranspose * BFlux0 * SFlux0).det
+      = (Matrix.diagonal (fun i => (DFlux0 i : ℂ))).det := by rw [congruence_Flux0]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFlux0, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
+theorem SFlux1_det_ne_zero : IsUnit SFlux1.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFlux1.conjTranspose * BFlux1 * SFlux1).det
+      = (Matrix.diagonal (fun i => (DFlux1 i : ℂ))).det := by rw [congruence_Flux1]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFlux1, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
+theorem SFlux2_det_ne_zero : IsUnit SFlux2.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFlux2.conjTranspose * BFlux2 * SFlux2).det
+      = (Matrix.diagonal (fun i => (DFlux2 i : ℂ))).det := by rw [congruence_Flux2]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFlux2, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
+theorem SFlux3_det_ne_zero : IsUnit SFlux3.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFlux3.conjTranspose * BFlux3 * SFlux3).det
+      = (Matrix.diagonal (fun i => (DFlux3 i : ℂ))).det := by rw [congruence_Flux3]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFlux3, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
+theorem SFree0_det_ne_zero : IsUnit SFree0.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFree0.conjTranspose * BFree0 * SFree0).det
+      = (Matrix.diagonal (fun i => (DFree0 i : ℂ))).det := by rw [congruence_Free0]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFree0, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
+theorem SFree1_det_ne_zero : IsUnit SFree1.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFree1.conjTranspose * BFree1 * SFree1).det
+      = (Matrix.diagonal (fun i => (DFree1 i : ℂ))).det := by rw [congruence_Free1]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFree1, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
+theorem SFree2_det_ne_zero : IsUnit SFree2.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFree2.conjTranspose * BFree2 * SFree2).det
+      = (Matrix.diagonal (fun i => (DFree2 i : ℂ))).det := by rw [congruence_Free2]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFree2, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
+theorem SFree3_det_ne_zero : IsUnit SFree3.det := by
+  rw [isUnit_iff_ne_zero]; intro h
+  have hc : (SFree3.conjTranspose * BFree3 * SFree3).det
+      = (Matrix.diagonal (fun i => (DFree3 i : ℂ))).det := by rw [congruence_Free3]
+  rw [Matrix.det_mul, Matrix.det_mul, h, mul_zero, Matrix.det_diagonal, Fin.prod_univ_eight] at hc
+  simp only [DFree3, Fin.isValue, Matrix.cons_val] at hc; norm_num [Complex.ext_iff] at hc
 
 /-! ## Section 5: assembling the combined congruence and the inertia counts
 

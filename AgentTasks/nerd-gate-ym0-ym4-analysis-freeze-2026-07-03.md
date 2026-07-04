@@ -483,3 +483,154 @@ in-repo assembly work, not a fresh Aristotle target - natural next step
 whenever the YM1 paper layer is assembled, or folded into PKG-YM3-A's
 session. Next queued rung unchanged: PKG-YM3-A, pending the Mathlib
 character-theory API exploration.
+
+## 14. PKG-YM1-lattice assembly (2026-07-04, claude)
+
+**PKG-YM1-lattice is CLOSED**, in-repo, no Aristotle job needed. New module
+`PhysicsSM/Draft/NullEdge/GateYM/ElitzurLattice.lean`, wired into the
+`GateYM.lean` aggregator (`lake build PhysicsSM.Draft.NullEdge.GateYM` =
+8029 jobs green). This instantiates `ElitzurCore.abstract_elitzur_bound`
+(section 13) at the concrete Z2 lattice, recovering Theorem 1 in full:
+
+- `flipAt x0 := Z2GaugeCore.gauge (fun v => decide (v = x0))` - the one-site
+  flip is exactly a `Z2GaugeCore.gauge` transformation at the indicator of
+  `x0`.
+- `flipAt_involutive` - direct instance of the already-proved `gauge_invol`.
+- `plaqSpins_flipAt_invariant` - direct instance of the already-proved
+  `plaqSpins_gauge`; covers the Wilson action and any Wilson-loop insertion,
+  for any `beta`, since gauge invariance is all that's used (item (a) of the
+  freeze's decomposition, section 3).
+- `sourceTerm_flipAt` - the new bookkeeping lemma: splitting the edge set `E`
+  by incidence to `x0` (`Finset.sum_filter_add_sum_filter_not`) and using
+  that `spin` flips sign exactly on incident, non-self-loop links,
+  `sourceTerm E (flipAt x0 U) = sourceTerm E U - 2 * K E x0 U` with `K E x0 U`
+  the freeze's `K_x`. Requires the natural hypothesis `NoSelfLoopAt E x0`
+  (physical: no `(x0,x0)` lattice link).
+- `abs_K_le_card` - `|K E x0 U| <= q_x0` (the coordination number
+  `(linksAt E x0).card`), termwise from `|spin _| <= 1`.
+- `elitzur_bound` - assembles all of the above into
+  `abstract_elitzur_bound` with `K := h * (K E x0 ·)` and
+  `b := h * q_x0`, giving exactly Theorem 1: `|sum f w| <= c * tanh(q_x0 h)
+  * sum w`, volume-uniform, coupling-uniform (any `beta`), and robust to any
+  additional gauge-invariant action term.
+
+Verified: `lake env lean` clean (0 errors, 0 `s o r r y`), axiom audit via
+`lean-lsp`'s `lean_verify` on all 5 new theorems: `flipAt_involutive` and
+`plaqSpins_flipAt_invariant` at `[propext, Quot.sound]`;
+`sourceTerm_flipAt`, `abs_K_le_card`, `elitzur_bound` at
+`[propext, Classical.choice, Quot.sound]`. No `n a t i v e _ d e c i d e`.
+One implementation note for future editors of this file: `LinkField V` is a
+plain `def` (`V -> V -> Bool`), so instance search does not unfold it on its
+own - a local `instance : Fintype (LinkField V)` (via `inferInstanceAs`) is
+required before any `sum over LinkField V` or call into
+`abstract_elitzur_bound` typechecks.
+
+**This closes the full quantitative Elitzur theorem for the Z2 ladder**
+(Theorem 1, freeze section 3, top to bottom, kernel-checked). Next queued
+rung unchanged: PKG-YM3-A, pending the Mathlib character-theory API
+exploration session (Schur orthogonality in convolution form, tensor-product
+character multiplicativity - see that session's notes for exact lemma
+names once run).
+
+## 15. PKG-YM3-A prep: Mathlib character-theory API map (2026-07-04, claude)
+
+Exploration session (via the `lean-explore` MCP tool, offline semantic
+search over Mathlib) for Theorem 3 (section 5) and Corollary 3a, run before
+authoring any PKG-YM3-A statement file, per section 12's queued next step.
+All items live in `Mathlib.RepresentationTheory.Character` unless noted;
+`import Mathlib` (this project's existing style) covers everything below.
+
+**Ready to use, directly matches the freeze's Theorem 3 proof sketch:**
+
+- `Representation.character (ρ : Representation k G V) (g : G) : k` -
+  `LinearMap.trace k V (ρ g)`. Generic in `k`/`G`; the sum-over-group steps
+  below need `[Fintype G]`.
+- `Representation.char_tensor : (tprod ρ σ).character = ρ.character *
+  σ.character` - **exactly** step (ii) ("products of characters are
+  characters", tensor product = pointwise product of characters, as
+  functions `G → k`). `FDRep.char_tensor` is the categorical-layer twin.
+- `Representation.char_orthonormal [IsIrreducible ρ] [IsIrreducible σ] :
+  (Nat.card G : k)⁻¹ * ∑ g, ρ.character g * σ.character g⁻¹ = if
+  Nonempty (Equiv σ ρ) then 1 else 0` - the Schur orthogonality relations
+  themselves, stated for "algebraically closed field whose characteristic
+  doesn't divide the order of the group"; `k = ℂ` (char `0`) satisfies this
+  side condition unconditionally for every finite `G`, so this applies
+  as-is. Rests on `Representation.card_inv_mul_sum_char_mul_char_eq_finrank`
+  (scalar product of two characters = `finrank` of the intertwiner space,
+  i.e. `dim Hom_G(V,W)` - the pre-Schur averaging identity) and Schur's
+  lemma proper, `Representation.IsIrreducible.bijective_or_eq_zero`.
+- `Representation.IsIrreducible` - `abbrev` for `IsSimpleOrder
+  (Subrepresentation ρ)` (module `Mathlib.RepresentationTheory.Irreducible`).
+  Bridges to `Representation.irreducible_iff_isSimpleModule_asModule` if the
+  simple-module route is ever more convenient.
+- `Representation.directSum` / `directSum_apply` - direct sum of
+  representations (for "nonnegative-integer combination of irreducible
+  characters" = character of a direct sum of copies of irreducibles).
+- `Representation.char_linHom (linHom ρ σ).character g = ρ.character g⁻¹ *
+  σ.character g` and `Representation.linHom` (the `V →ₗ[k] W` conjugation
+  representation) - the mechanism behind `char_tensor`/`char_dual` (proved
+  via the `Equiv.dualTensorHom` natural iso); useful if a Hom-space
+  argument is more convenient than raw tensor/dual bookkeeping.
+- `Representation.char_dual (g) : ρ.dual.character g = ρ.character g⁻¹` -
+  relates the dual representation's character to `chi(g⁻¹)`, NOT directly
+  to the complex conjugate `conj(chi(g))` (see the gap below).
+
+**Naming trap for whoever writes the statement file:** `Representation.char_conj`
+/ `FDRep.char_conj` do **NOT** mean "complex-conjugate character". Their
+content is `ρ.character (h * g * h⁻¹) = ρ.character g` - the CLASS-FUNCTION
+property (conjugation-invariance under the group action), proved from
+`char_mul_comm` (`chi(gh) = chi(hg)`, trace cyclicity). Do not cite
+`char_conj` for step (i) of Theorem 3's proof; it answers a different
+question.
+
+**The one identified gap: step (i) needs unitarity, and Mathlib does not
+appear to have it packaged.** Theorem 3's step (i) ("`Re chi = (chi + conj
+chi)/2`, and `conj chi` is the character of the conjugate representation")
+uses the pointwise COMPLEX conjugate of the character. The searches above
+(and further queries for "unitary representation finite group", "averaged
+invariant inner product", "matrix of finite order diagonalizable roots of
+unity", "isometry group action Hilbert space") turned up
+`Representation.averageMap` / `isProj_averageMap` (Maschke's averaged
+PROJECTOR for invariant complements - a different construction) and
+generic unitary-GROUP api (`Matrix.unitaryGroup`, `Unitary.*`), but no
+ready "every finite-dimensional complex representation of a finite group
+is (equivalent to) unitary" theorem, and no direct
+`conj (ρ.character g) = ρ.character g⁻¹` lemma. That identity is TRUE only
+for unitary (or, over `ℝ`/`ℂ`, orthogonal/unitary-equivalent) `ρ`; `char_dual`
+alone gives `chi(g⁻¹)`, not `conj(chi(g))`, without a unitarity bridge.
+
+Two ways to close the gap, for the PKG-YM3-A statement-file session to
+choose between (not decided here - deliberately left as a design choice,
+not attempted blind, per the section 12 note):
+
+1. **Add unitarity as an explicit hypothesis** on the representation used
+   in Theorem 3 (e.g. state it for `ρ : G →* Matrix.unitaryGroup n ℂ` or
+   carry `∀ g, star (ρ g) = (ρ g)⁻¹`/`(ρ g)ᴴ * ρ g = 1` as a side
+   hypothesis, then `conj (ρ.character g) = ρ.character g⁻¹` is a short
+   direct computation from `Matrix.trace` and the unitarity equation,
+   no new structural theorem needed). Physically free: the Wilson action
+   always uses a unitary representation of the (compact or finite) gauge
+   group by construction, so this loses no generality for the YM3 use
+   case. RECOMMENDED - smallest Lean surface area, matches how the
+   existing `GateYM`/`GateMP` modules prefer explicit hypotheses over
+   reproving general structure theorems.
+2. **Prove unitarizability in-repo**: every `g : G` (`G` finite) has
+   `ρ g` of finite order dividing `|G|`; in characteristic `0` a
+   finite-order linear map is diagonalizable (semisimple, since `x^n - 1`
+   is separable) with eigenvalues that are roots of unity, and
+   `conj(lambda) = lambda⁻¹` for `lambda` on the unit circle, giving
+   `conj(chi(g)) = chi(g⁻¹)` directly without a full averaged-inner-product
+   construction. Self-contained but real new Lean content (diagonalizability
+   + eigenvalue argument), not a one-line citation - candidate Aristotle
+   target if option 1 is rejected as too restrictive for a future
+   compact-`G` generalization.
+
+**Bottom line for the statement-file session:** everything needed for
+Theorem 3 steps (ii)-(iii) and Corollary 3a's Gram direction is already in
+Mathlib and named above; step (i) needs one upfront design decision
+(hypothesis-add vs. prove-unitarizability) before the statement is written,
+not a blind proof attempt. Corollary 3b's PSD/Gram bookkeeping reuses the
+already-proved local toolbox (`Matrix.PosSemidef`,
+`Matrix.PosSemidef.mul_mul_conjTranspose_same`,
+`Matrix.PosSemidef.conjTranspose_mul_mul_same` - see
+`GateMP/SCGGramPositivity.lean`), not new search.
