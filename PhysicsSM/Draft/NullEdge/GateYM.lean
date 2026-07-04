@@ -6,6 +6,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
+import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -42,6 +43,14 @@ Mathlib lacks under any name); `TransferPositivity` (YM3 Corollary 3b:
 the abstract transfer-matrix positivity chain - diagonal-weight
 conjugation and Gauss-projector-style compression both preserve PSD,
 plus the connecting corollary instantiating the Wilson kernel; axiom
-footprint [propext, Classical.choice, Quot.sound]). Not part of the
-default trusted build target. Adding a new YM module? Import it here.
+footprint [propext, Classical.choice, Quot.sound]); `BanksCasherShadow`
+(T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
+overlap machinery - the shifted overlap `Dov - 1` is unitary and
+`gamma5 * Dov` is Hermitian, given gamma5/eps both Hermitian involutions,
+instantiated at the certified sign `epsCFC H`; axiom footprint
+[propext, Classical.choice, Quot.sound]. QCD1-i/ii proper - the
+condensate identity and chiral-pairing lemma - are NOT claimed by this
+file; see its docstring for the honestly-scoped remaining work). Not
+part of the default trusted build target. Adding a new YM module?
+Import it here.
 -/
