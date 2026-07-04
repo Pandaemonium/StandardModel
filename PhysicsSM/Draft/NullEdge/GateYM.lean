@@ -9,6 +9,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
+import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteReflection
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
@@ -65,6 +66,10 @@ change-of-variables identities under reflection-invariant weights);
 `PlaquetteCore` (YM0/T3 abstract D5/D7 bridge: a plaquette is a typed
 closed 4-walk, class functions of plaquette holonomy are gauge invariant,
 and finite plaquette action sums/product weights inherit gauge invariance);
+`PlaquetteReflection` (YM3 finite identity: reflecting an abstract plaquette
+is definitionally the reflected/reversed boundary walk, and plaquette holonomy
+inherits the opposite-group reflection identity from `ReflectionWalk`; still no
+Wilson action reflection covariance, cut factorization, or RP inequality);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
 weighted numerator, expectation, positivity for strictly positive finite
 weights, and gauge change-of-variables for partition/numerator/expectation;
