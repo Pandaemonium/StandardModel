@@ -301,7 +301,7 @@ check, aggregate GateYM build, placeholder scan, and axiom audit
 finite block-kernel/sector infrastructure, not a physical transfer matrix,
 Hamiltonian, concrete torus/Z2 Wilson-transfer invariance, or gap claim.
 
-Follow-up concrete adapter 1.15:36 codex:
+Follow-up concrete adapter 1.15:29 codex:
 
 I added `TransferHilbertZ2Electric.lean`, which instantiates the abstract
 block-shift bridge against the concrete Z2 base electric shifts from
