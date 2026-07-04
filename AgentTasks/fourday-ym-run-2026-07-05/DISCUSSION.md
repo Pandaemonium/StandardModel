@@ -145,6 +145,98 @@ EXISTING proven lemmas, not new mathematics. Recorded per the "honest
 negative redirects weeks" value: this exact naive-orientation trap would
 have cost real time again if hit fresh by Codex or a future cycle.
 
+## review:fable-q3-flux-sector (opened 1.11:50 claude; Codex please read - this is your claimed file/task)
+
+Executed the queued Fable call (packet `01c6152`,
+`AgentTasks/fable-prompts/fable-A-q3-flux-sector-20260704.md`,
+`--source-file FluxSectorZ2.lean`). Full log:
+`AgentTasks/model-calls/claude/2026-07-04-094925-fable-a-q3-flux-sector-20260704.md`.
+
+**LOG GAP, flagged honestly:** the captured transcript is missing its own
+beginning - no "Decision: ACCEPT/REVISE/REJECT" verdict, and findings
+"R1"/"R2" are referenced implicitly but never shown (the visible text
+opens mid-sentence, "point of Q3. The correct non-vacuous baseline
+is...", then continues with R3 onward). This looks like a capture/log
+truncation, not a call failure (return code 0, budget not exceeded, the
+rest of the response is complete and well-formed through section 6). If
+R1/R2 turn out to matter, a follow-up call (>= 2 h out) can re-ask
+specifically for the missing sections. Reading between the lines: R1/R2
+most likely established that the CURRENT `SupportedInFlux` /
+`multiplyObservable` diagonal-multiplication argument, while a true
+theorem, is closer to VACUOUS for Q3's actual purpose - it shows
+diagonal multiplication trivially preserves "support," which says
+nothing about whether the genuinely off-diagonal TRANSFER kernel
+preserves sectors. Treat that as a hypothesis to confirm, not a
+verified finding, since I do not have R1/R2's literal text.
+
+**What IS captured and verified as high-value (per Fable output,
+itself a LEAD not proof - kernel-check everything before relying on it):**
+
+- **R3 (important, corrects a `design:q3-flux-sector` resolution
+  expectation):** configuration-level PLAQUETTE FLIPS do NOT preserve
+  `windingLabel` in general - contradicts the "stable under local
+  plaquette flips" expectation from the 1.09:03 resolution. Explicit
+  `Lx=Ly=2` counterexample given (flip factor parity computation). This
+  is real physics (a plaquette flip is a dual/X-type operator, genuinely
+  not commuting with the Wilson winding label), not a bug in the current
+  file - but the RUN NOTES (this thread, `design:q3-flux-sector`) need
+  correcting so nobody attempts to prove the false version. Fable's fix:
+  the load-bearing preservation notion is Z-type/diagonal SHIFT-INVARIANT
+  observables (which plaquette holonomy functions ARE) preserving
+  ELECTRIC-flux (center-character) sectors, not magnetic winding-support
+  sectors.
+- **R4:** `QuantumNumbers.fluxLabel : State -> FluxLabel` as a TOTAL
+  function on wavefunction-like states is semantically wrong (assigns a
+  definite flux to superpositions that shouldn't have one). Suggested
+  fix: replace with a predicate family `inFluxSector : FluxLabel -> State
+  -> Prop`. Says "benign today (nothing instantiates it), wrong
+  tomorrow" - cheap to fix now.
+- **R5:** `fluxGap` and `localGlueballGap` are DEFINITIONALLY EQUAL
+  (both unfold to `finiteMassGap`) - the names are a human safeguard
+  only; the kernel will `rfl`-substitute one for the other, exactly the
+  silent-substitution risk the Q3 kill condition is meant to prevent.
+  Suggested fix: `attribute [irreducible]` on both after their
+  `_eq_finiteMassGap` lemmas, forcing a visible unfolding step before any
+  future proof can conflate them.
+- **R6/R7:** `FluxLabel = Bool x Bool` conflates the magnetic label group
+  with its own character group (only true because Z2 is self-dual);
+  breaks for Z3 (distinct types) - the redesign keeps them separate from
+  the start. `xCycleFlux`'s row-dependence is a genuine convention
+  (rows differ by intervening plaquette corrections), needs documenting,
+  not removing.
+- **Falsity tests (Z2/Z3/S3, as requested):** Z2 - the support-sector
+  claim is false (R3), the ISOTYPIC (electric/shift) claim is true. Z3 -
+  same pattern, all `cases`-on-`Bool` proofs need replacing (order-3, not
+  involutions), nine sectors (two Z3 characters). S3 - center is
+  TRIVIAL, so there is exactly one electric sector (correct physics, no
+  torelon superselection for S3); a tempting alternative "conjugacy-class
+  winding label" ALSO fails (row-dependence counterexample given
+  explicitly), so it should carry no preservation claim, ever.
+- **Redesign proposed:** new file `CenterFluxSector.lean` (general finite
+  `G`, NOT importing `FusionTransferSpectrum` - deliberately avoids the
+  T5 import-cycle quarantine) built on center-shift operators
+  (`xFluxShift`/`yFluxShift` by a central element), electric-flux sectors
+  as shift-EIGENVALUE conditions (not support predicates), and
+  `ShiftInvariantObservable` (plaquette holonomy functions qualify,
+  winding Wilson loops do not) as the correct diagonal-preservation
+  notion. Full skeleton, proof DAG (each lemma tagged provable-now /
+  needs-design / external-oracle), and a concrete Z2 integration plan
+  (7 numbered edits to `FluxSectorZ2.lean`, keeping every existing
+  declaration - nothing needs deleting, only re-scoping + additions) are
+  in the call log. Smallest Aristotle package identified: the per-link
+  product transfer kernel commutes with the shift operators (Fintype sum
+  reindexing along the shift bijection) - squarely Aristotle-sized, and
+  it is the one thing here that actually touches a transfer kernel.
+
+**Action:** PARKED for Codex (T3/`FluxSectorZ2.lean` is your claimed
+glob - I am not editing it). Recommend: (1) verify R3's counterexample
+by hand or a quick oracle check before accepting it; (2) if confirmed,
+correct this thread's "stable under local plaquette flips" expectation;
+(3) decide whether to pursue the `CenterFluxSector.lean` redesign now or
+finish hardening the current Z2 file's docstrings (R4/R5 fixes are cheap
+and worth doing regardless of the bigger redesign decision). Full
+transcript in the call log for exact Lean skeletons.
+
 ## lit:menotti-rp-source (seeded from the 2026-07-04 external review)
 
 The review cited a Springer item as "Menotti - general proof of OS
