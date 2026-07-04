@@ -1,14 +1,15 @@
-# DAY_1_REPORT (drafted by claude, day 1 of the four-day YM run; codex please review)
+# DAY_1_REPORT (drafted by claude, day 1 of the four-day YM run; codex reviewed/updated)
 
 ## 1. Delta summary
 
 Landed a genuine Wilson-weight reflection-positivity baseline (T1), closed
 Q4/Q5 unconditionally, extended the finite flux/electric-sector API deeply
 (T3, gated on T2), froze and partially concretized the KP conclusion layer
-(T6), built a tree-slice lasso identity skeleton (T11, submitted), and - per
-the user's explicit request mid-day - moved from near-zero Aristotle usage to
-a binding strategy/audit mandate with active proof/audit jobs harvested as
-soon as they returned.
+(T6), froze and audited the first strong-coupling polymer-map layer (T7), built
+a tree-slice lasso identity skeleton (T11, submitted), and - per the user's
+explicit request mid-day - moved from near-zero Aristotle usage to a binding
+strategy/audit mandate with active proof/audit jobs harvested as soon as they
+returned.
 
 ## 2. Theorems landed
 
@@ -32,7 +33,14 @@ soon as they returned.
 - `PolymerKPConclusion.lean`: Q6 statement-freeze layer plus concrete direct
   finite `spanningTreeCount` and `ursellSum` definitions from Aristotle
   `34d675b8`; Penrose `treeGraphBound_ursell` remains a documented draft
-  handoff.
+  handoff.  Follow-up support lemmas now prove disconnected clusters have zero
+  spanning-tree count and zero concrete Ursell sum, while connected clusters
+  have positive spanning-tree count.
+- `StrongCouplingPolymerMap.lean`: Q7 finite plaquette-polymer map layer,
+  conservative overlap-or-touch incompatibility, Z2 `|tanh beta| ^ area` and
+  beta-nonnegative `tanh beta ^ area` weight identities, and
+  coefficient-product/weight nonnegativity wrappers.  It remains a map layer,
+  not a KP proof.
 - `MirrorHolonomyConjugation.lean`: Q1/N3 negative result integrated as a
   kernel-checked Lean counterexample from Aristotle `0a46d515`; raw mirror
   holonomy reversal is not generally conjugate to the original plaquette
@@ -47,9 +55,11 @@ independently harvested, no conflict), `72cccd22` (Q2 Hermitian bridge,
 COMPLETE+HARVESTED+INTEGRATED), `93758b7f` (T11 lasso, still submitted),
 `0a46d515` (Q1 N3 cut-plaquette conjugation, COMPLETE+HARVESTED+INTEGRATED
 as a counterexample), and `34d675b8` (Q6 tree-graph/Ursell,
-COMPLETE+HARVESTED, definitions integrated). Two near-collisions
-(grand-strategy audit, N3 job) both resolved via ledger notes with no wasted
-duplicate proof work.
+COMPLETE+HARVESTED, definitions integrated), `52f42dd5` (Q7 polymer-map audit,
+COMPLETE+HARVESTED+INTEGRATED), and `788f83b4` (Q7 support-indexed-label
+redesign, RUNNING). Two near-collisions (grand-strategy audit, N3 job) both
+resolved via ledger notes with no wasted duplicate proof work. Current running
+queue after Codex review: `788f83b4`, `6f8903cc`, `e6e46e9f`, `93758b7f`.
 
 ## 4. Board state
 
@@ -58,7 +68,9 @@ T0/T4/T5 done. T1 baseline reached; strong tier needs redesign after
 integrated; shift-covariance remains open before a full transfer-Hilbert
 statement file. T3 baseline-done-gated-by-T2. T6 statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
-remain. T7 is now unblocked to use the Q6 interface, subject to review.
+remain. T7 has map-freeze plus audit-harvest done; the next blocker is
+support-indexed labels plus decidable overlap-or-touch before any
+`KPCondition` instantiation. T7 P2 is submitted as `788f83b4`.
 T9 baseline-done. T11 submitted-codex, gated on `93758b7f`. T12/T13 done.
 T14 v0.3, 44/44 oracle green.
 
@@ -68,15 +80,22 @@ T14 v0.3, 44/44 oracle green.
 - Hermitian-bridge gap found, Aristotle job submitted and later integrated.
 `review:q6-kp-freeze` ACCEPT (claude), follow-up tree-graph job returned and
 confirmed the normalization/direct-definition path.
+`idea:q7-polymer-map` audit returned ACCEPT WITH CHANGES: the current total
+off-support label function is honest for wrappers but wrong for future KP
+sums; support-indexed labels are now the next submitted package.
 `review:fable-q3-flux-sector` findings (R3/R4/R5/R7) accepted and integrated
 by codex. `design:q1-reflection-orientation` - claude's doubled-lattice fix
 after a genuine construction failure on naive uniform-reflection lattices.
 
 ## 6. Build and hygiene
 
-Aggregate `GateYM` green through the day (8068+ jobs at last check); full
-`lake build` green (8295 jobs). Oracle `validate_lgt_core.py` 44/44 green.
-Pre-commit clean on every commit this session.
+Aggregate `GateYM` green through the day; latest post-Q6/Q7 support checks:
+`lake build PhysicsSM.Draft.NullEdge.GateYM` green (8072 jobs, known existing
+warnings only). Full `lake build` was green earlier in the day (8295 jobs)
+before the latest Q6/Q7 support slices, so rerun it at the next day-end or
+promotion checkpoint before making a fresh full-build claim. Oracle
+`validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit this
+session.
 
 ## 7. Honest negatives
 
@@ -87,6 +106,10 @@ inverse. The next RP-LINK attempt must redesign the false-side orientation or
 inverse convention, not push the rejected target. Q6's C3
 exponential-distance tail is NOT a consequence of bare KP - needs an
 explicit metric/coercivity extension (already designed into the freeze).
+Q7 cannot instantiate `KPCondition` on the current total-label
+`PlaquettePolymer`: off-support labels overcount physical polymers by a
+volume-dependent factor. The map layer is honest, but KP/Q8 must wait for the
+support-indexed-label redesign.
 Fable Q3 call's captured transcript was missing its own Decision verdict
 and R1/R2 (likely log-capture truncation) - flagged, not papered over.
 Primary sources (KP86, OS78) remain paywalled/blocked; relying on
@@ -96,12 +119,15 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 
 1. Poll/harvest `93758b7f` as it completes; keep Q11's lasso proof package
    moving without changing the frozen statement.
-2. Start the next Q6/T7 packages now unblocked by `PolymerKPConclusion.lean`:
-   easy graph support lemmas, abstract KP proof package against
-   `ClusterCoeffData`, and the strong-coupling polymer map interface.
-3. Redesign T1 strong tier around the `0a46d515` counterexample and finish the
+2. Harvest `788f83b4` and integrate the support-indexed Q7 carrier redesign if
+   it verifies; only then state KP/Q8 packages over the plaquette-polymer
+   system.
+3. Start the next Q6 package: the abstract KP proof package against
+   `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
+   focused proof package is ready.
+4. Redesign T1 strong tier around the `0a46d515` counterexample and finish the
    Q2 shift-covariance question before creating a transfer-Hilbert statement
    file.
-4. Keep Aristotle utilization at or above 4/8 slots at the next midday
+5. Keep Aristotle utilization at or above 4/8 slots at the next midday
    integration point per the binding mandate; prefer new design/review
    threads over idle capacity.

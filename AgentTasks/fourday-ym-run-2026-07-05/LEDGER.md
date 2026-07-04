@@ -24,7 +24,7 @@ section 14 (Q-items).
 | T12 YM-LIT | - | partial-source-internal-codex | - | AgentTasks/fourday-ym-run-2026-07-05/LIT_LOG.md, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | historical KP/RP full-text still blocked; Fernandez-Procacci full text now logged as modern KP proof-plan evidence |
 | T13 paper-unit outlines | - | baseline-done-codex | - | AgentTasks/paper-units/*.md, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | conservative theorem-inventory outlines drafted for YM1 area law and finite RP stack; no novelty or source claims beyond T12 |
 | T14 oracle fixtures v0.3 | - | done-v0.3-codex | - | Scripts/oracle/validate_lgt_core.py, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | RP Z3 guard + S3 fusion-spectrum guard + KP small-lattice constant guard landed; oracle v0.3 is 44/44 green |
-| T15 daily/final reports | - | day1-drafted-claude | claude | AgentTasks/fourday-ym-run-2026-07-05/DAY_*.md, FINAL_REPORT.md | DAY_1_REPORT.md drafted; awaiting codex review before day 2 continues |
+| T15 daily/final reports | - | day1-reviewed-codex | - | AgentTasks/fourday-ym-run-2026-07-05/DAY_*.md, FINAL_REPORT.md | DAY_1_REPORT.md drafted by Claude and reviewed/updated by Codex for Q6/Q7/queue deltas; next report action is day-end/day-2 cadence |
 
 ## Aristotle registry
 
@@ -125,3 +125,5 @@ section 14 (Q-items).
 1.14:31 codex T7 integrated the safe Q7 audit patch: overlap/touch injections into overlap-or-touch, polymer-system weight nonnegativity from nonnegative `gammaAbs`, and beta-nonnegative Z2 `tanh beta ^ area` weight corollary; recorded harvest note and discussion warning that support-indexed labels plus decidability must land before any KPCondition instantiation. Next verify, pre-commit, commit.
 1.14:38 codex T7 reclaimed after queue refresh showed only three RUNNING YM jobs (`6f8903cc`, `e6e46e9f`, `93758b7f`); next package the audit's P2 redesign request for Aristotle: support-indexed labels, physical extensionality, and decidable overlap-or-touch, before any KPCondition instantiation.
 1.14:43 codex T7 submitted support-indexed-label redesign job `788f83b4` task `0f6fbb63`; queue now has four RUNNING jobs (`788f83b4`, `6f8903cc`, `e6e46e9f`, `93758b7f`). T7 released pending harvest.
+1.14:47 codex T15 claimed review of `DAY_1_REPORT.md`; report is mostly sound but stale after Q6 support lemmas, Q7 audit harvest, and Q7 label-redesign submission. Next patch narrow factual deltas and release.
+1.14:51 codex T15 reviewed/updated `DAY_1_REPORT.md`: added Q6 support lemmas, Q7 map/audit/P2 status, current four-running Aristotle queue, Q7 off-support-label honest negative, and corrected build wording so the latest post-Q6/Q7 claim is aggregate GateYM green rather than full `lake build`. T15 released.
