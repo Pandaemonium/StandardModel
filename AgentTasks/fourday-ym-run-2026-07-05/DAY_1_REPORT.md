@@ -28,10 +28,17 @@ returned.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
   magnetic + electric sector support/projection API, largely axiom-light
   (`[propext]` or `[propext, Classical.choice, Quot.sound]`).
+- `TransferHilbert.lean`: Q2 finite OS/GNS range model
+  `rpHilbertSpace = range (CFC.sqrt K)`, shift covariance of the range,
+  matrix/function kernel commutation bridge, OS-form transfer
+  symmetry/positivity, and electric-sector preservation over the existing
+  `CenterFluxSector` API.  It is finite algebraic infrastructure, not a
+  physical Hamiltonian or spectral-gap claim.
 - `RectBoundaryLasso.lean`: tree-slice lasso identity and `chi` corollary
   proved from Aristotle `93758b7f`: on the comb tree slice, the full rectangle
   boundary holonomy equals the reversed row-major ordered product of plaquette
-  holonomies.  Axiom footprint after local integration: `[propext, Quot.sound]`.
+  holonomies.  Dependency footprint after local integration:
+  `[propext, Quot.sound]`.
 - `PolymerKPConclusion.lean`: Q6 statement-freeze layer plus concrete direct
   finite `spanningTreeCount` and `ursellSum` definitions from Aristotle
   `34d675b8`; Penrose `treeGraphBound_ursell` remains a documented draft
@@ -59,7 +66,8 @@ Day started near-idle. Submitted/returned this cycle: `d4a9bd1f` (Q4,
 COMPLETE+HARVESTED+INTEGRATED), `2427a253` (Q6 strategy, COMPLETE+HARVESTED),
 `63dfd691` (grand-strategy audit, COMPLETE+HARVESTED, both agents
 independently harvested, no conflict), `72cccd22` (Q2 Hermitian bridge,
-COMPLETE+HARVESTED+INTEGRATED), `93758b7f` (T11 lasso,
+COMPLETE+HARVESTED+INTEGRATED), `6f8903cc` (Q2 shift-covariant
+transfer-Hilbert audit, COMPLETE+HARVESTED+INTEGRATED), `93758b7f` (T11 lasso,
 COMPLETE+HARVESTED+INTEGRATED), `0a46d515` (Q1 N3 cut-plaquette conjugation,
 COMPLETE+HARVESTED+INTEGRATED as a counterexample), `34d675b8` (Q6
 tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
@@ -68,15 +76,17 @@ tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 `2c127e31` (Q8 exponential-clustering bridge audit, RUNNING). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after Q8 submission: `2c127e31`; `6f8903cc` and `e6e46e9f` are IDLE
-pending harvest.
+queue after Q2 harvest: `2c127e31`; `e6e46e9f` is IDLE pending Claude/T1
+harvest.
 
 ## 4. Board state
 
 T0/T4/T5 done. T1 baseline reached; strong tier needs redesign after
 `0a46d515` refuted the raw mirror-conjugation target. T2 Hermitian bridge
-integrated; shift-covariance remains open before a full transfer-Hilbert
-statement file. T3 baseline-done-gated-by-T2. T6 statement-freeze plus direct
+integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
+OS/GNS statement layer; the next Q2 blocker is concrete `cutKernel` block
+instantiation and torus/Z2 shift wiring. T3 baseline-done-gated-by-T2. T6
+statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
 remain. T7 has map-freeze plus both audit harvests done; the support-indexed
 carrier and decidable overlap-or-touch layer are integrated. The next blocker
@@ -92,6 +102,9 @@ T12/T13 done. T14 v0.3, 44/44 oracle green.
 
 `review:t11-lasso-package` ACCEPT (claude). `design:q2-transfer-polarization`
 - Hermitian-bridge gap found, Aristotle job submitted and later integrated.
+The follow-up Q2 shift-covariance audit returned and is integrated as
+`TransferHilbert.lean`; the square-root range model preserves center shifts
+when the kernel commutes with them.
 `review:q6-kp-freeze` ACCEPT (claude), follow-up tree-graph job returned and
 confirmed the normalization/direct-definition path.
 `idea:q7-polymer-map` audit returned ACCEPT WITH CHANGES: the current total
@@ -109,13 +122,14 @@ after a genuine construction failure on naive uniform-reflection lattices.
 ## 6. Build and hygiene
 
 Aggregate `GateYM` green through the day; latest post-Q6/Q7/T11 checks,
-including the support-indexed Q7 carrier redesign and Q8 bridge:
-`lake build PhysicsSM.Draft.NullEdge.GateYM` green (8073 jobs, known existing
+including the support-indexed Q7 carrier redesign, Q8 bridge, and Q2
+TransferHilbert layer:
+`lake build PhysicsSM.Draft.NullEdge.GateYM` green (8074 jobs, known existing
 warnings only). Full `lake build` was green earlier in the day (8295 jobs)
 before the latest Q6/Q7/T11 slices, so rerun it at the next day-end or
 promotion checkpoint before making a fresh full-build claim. The Q7 harvest
 and Q8 bridge also passed direct placeholder/escape-hatch scans and standard
-dependency audits.
+dependency audits; Q2 TransferHilbert passed the same local scan/audit.
 Oracle `validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit
 this session.
 
@@ -144,8 +158,8 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
    package with the finite KP sum bound as an explicit hypothesis; do not infer
    volume-uniform KP from the small-torus oracle rows.
-2. Harvest `6f8903cc` (Q2 shift covariance), `e6e46e9f` if Claude wants T1
-   handoff help, and `2c127e31` when the Q8 bridge audit returns.
+2. Harvest `e6e46e9f` if Claude wants T1 handoff help, and `2c127e31` when
+   the Q8 bridge audit returns.
 3. Start the next Q6 package: the abstract KP proof package against
    `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
    focused proof package is ready.

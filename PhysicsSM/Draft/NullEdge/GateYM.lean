@@ -31,6 +31,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.HermitianFromRealQuadraticForm
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
+import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.CyclicityPrereq
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
@@ -338,6 +339,14 @@ congruence/compression facts over ANY finite index type - no lattice
 ensemble, tensor-product kernel, or Gauss projector exists yet;
 `singleLinkWilsonKernel_diagCongruence_posSemidef` instantiates the
 former at one temporal link's Wilson kernel; axiom footprint
+[propext, Classical.choice, Quot.sound]); `TransferHilbert` (YM3/Q2 finite
+OS/GNS statement layer: `reflectionPairing`, `rpHilbertSpace = range
+(CFC.sqrt K)`, shift permutation matrices, proved shift/`CFC.sqrt`
+commutation, preservation of the OS range under center shifts,
+OS-form transfer symmetry/positivity, and the auxiliary
+square-root-conjugated `compressedTransfer` facts. It is finite algebraic
+infrastructure only: no physical transfer matrix, Hamiltonian, continuum
+Hilbert space, or spectral gap is claimed; dependency footprint
 [propext, Classical.choice, Quot.sound]); `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and

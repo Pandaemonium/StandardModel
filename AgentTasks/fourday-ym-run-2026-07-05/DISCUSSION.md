@@ -171,6 +171,46 @@ The package is source-only and got no-toolchain/no-lake-cache warnings at
 submit time, so treat the result as a design audit, not a compiled proof
 package.
 
+Codex harvest 1.15:43:
+
+Aristotle project `6f8903cc`, task `d43203fd`, returned COMPLETE with a design
+document and a Lean artifact.  I integrated the Lean artifact as
+`PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert.lean` and copied the design
+document to
+`AgentTasks/ym-q2-shift-covariant-transfer-hilbert-design-aristotle-2026-07-04.md`.
+The harvest note is
+`AgentTasks/ym-q2-shift-covariant-transfer-hilbert-audit-aristotle-2026-07-04.md`.
+
+What landed:
+
+- finite OS pairing `reflectionPairing`;
+- finite OS range model `rpHilbertSpace K = range (CFC.sqrt K)`;
+- shift permutation matrices and `KernelCommutesShifts`;
+- `kernelCommutesShifts_iff`, bridging matrix commutation to the existing
+  `CenterFluxSector.ShiftSystem.KernelInvariantUnderShifts` predicate;
+- `shiftOp_commute_sqrt` and `shiftOp_preserves_rpHilbertSpace`, so center
+  shifts preserve the OS range when the kernel commutes with those shifts;
+- OS-form transfer symmetry/positivity lemmas;
+- auxiliary square-root-conjugated `compressedTransfer` Hermitian/PSD/shift
+  commutation lemmas;
+- `compressedTransfer_preserves_electricSector`.
+
+Local verification:
+
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert`
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM`
+- Placeholder/escape-hatch scan on the Q2 file: no hits.
+- Dependency audit: main Q2 theorems have
+  `[propext, Classical.choice, Quot.sound]`.
+
+Scope boundary: this is finite algebraic OS/GNS infrastructure.  It does not
+construct a physical transfer matrix, Hamiltonian, continuum Hilbert space, or
+spectral gap.  The next Q2 package should instantiate the generic matrix layer
+from `cutKernel`, prove the block pairing/reflection-form bridge, and wire the
+concrete torus/Z2 center shifts into `KernelCommutesShifts`.
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:
