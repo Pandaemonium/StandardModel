@@ -1046,3 +1046,29 @@ Applied the requested clarity edits:
 
 T8 is cross-reviewed and ready unless a human/partner wants a denser theorem
 appendix.
+
+## review:t2-lemma2a-aristotle-integration
+
+Codex 06:10. Aristotle project `3435c7a3` completed successfully and was
+harvested. I integrated its proof into
+`PhysicsSM/Draft/NullEdge/GateYM/FusionConvolution.lean` as
+`lemma2a_fusion_convolution`, with supporting lemmas:
+
+- `IsClassFunction`
+- `sum_conj_reindex`
+- `intertwiner_comm`
+- `schur_scalar`
+- `trace_avg`
+- `trace_avg_comp`
+
+Semantic check: the integrated statement is the corrected cross-multiplied
+Lemma 2a from the 05:12 review note, not the buggy v1 statement. It preserves
+the oracle-pinned convolution order `h^-1 * A`, has no inversion-symmetry
+hypothesis on `w`, and introduces no abelian restriction.
+
+Verification so far: direct file check, targeted module build, and axiom audit
+for `lemma2a_fusion_convolution` all passed; axiom footprint is
+`[propext, Classical.choice, Quot.sound]`. Remaining claim boundary: this is
+the one-step finite-group character fusion theorem, not full finite-G Theorem
+2. The next assembly theorem still has to connect it to `iterConv_eigen` /
+`iterConv_eigen_at_one` and any tree-gauge/prefactor normalization layer.

@@ -4,7 +4,7 @@
 
 - GateYM went from scattered YM scaffolds to a coherent finite-group lattice ensemble stack, with Wilson local weights, reflection scaffolding, a D12 flux-qualified `finiteMassGap` definition slot, and full-repo `lake build` green.
 - YM3 Route B closed the Wilson kernel PSD engine; RP-LINK proper was deliberately not claimed, because the lattice cut/factorization/PSD assembly is still real work.
-- YM1 closed the Z2 rectangular-loop Theorem 2' combinatorial formula and submitted the finite-group Lemma 2a character-fusion step to Aristotle after catching and fixing a normalization bug.
+- YM1 closed the Z2 rectangular-loop Theorem 2' combinatorial formula and integrated the finite-group Lemma 2a character-fusion step from Aristotle after catching and fixing a normalization bug.
 - Literature sprint verified the standing register, found two important novelty/claim-language constraints, and unblocked the KP statement freeze.
 - No trusted promotion happened; all new Lean is draft GateYM code, with explicit remaining gaps and no hidden `s o r r y` in the project modules.
 
@@ -23,9 +23,9 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 
 - `eq_empty_or_univ_of_zero_boundary_bits`, `eq_or_compl_of_sameBoundary`, `sum_zeroBoundary_weights`, `sum_sameBoundary_weights`, `ratio_sameBoundary_zeroBoundary_weights`, `rectInside_card`, `ratio_rectInside` in `TorusEvenCover.lean` (`8bcd861` for the rectangular loop closure).
   Verification: `lake env lean PhysicsSM/Draft/NullEdge/GateYM/TorusEvenCover.lean`, aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
-- `convLeft`, `iterConv`, `iterConv_eigen`, `iterConv_eigen_at_one` in `FusionConvolution.lean`.
-  Verification: targeted file/module checks and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
-- Lemma 2a finite-group character fusion is not landed in the repo. Corrected standalone statement parses with the expected proof placeholder; Aristotle project `3435c7a3` is running. The v1 statement was refuted at the trivial representation with `w = 1`: LHS `= |G|`, buggy RHS `= |G|^2`.
+- `IsClassFunction`, `lemma2a_fusion_convolution`, `convLeft`, `iterConv`, `iterConv_eigen`, `iterConv_eigen_at_one` in `FusionConvolution.lean` (`6abcd91` for the Lemma 2a integration).
+  Verification: targeted file/module checks and aggregate GateYM build. Axioms for `lemma2a_fusion_convolution`: `[propext, Classical.choice, Quot.sound]`.
+  Aristotle project `3435c7a3` supplied the proof; the v1 statement was refuted at the trivial representation with `w = 1`: LHS `= |G|`, buggy RHS `= |G|^2`.
 
 ### YM0/T3 finite-group lattice and reflection stack
 
@@ -55,13 +55,13 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 - `ac230cc8` `ym-ladder-strategy-20260703`: COMPLETE + HARVESTED. Findings drove sequencing: harden finite results, U(1) Fourier RP before Peter-Weyl, QCD1 before KP/Peter-Weyl, and keep finite-volume/finite-G disclaimers sharp.
 - `cb437537` `ym3-semantic-redteam-20260703`: COMPLETE + HARVESTED. Findings integrated in `9c4b4d2`: TransferPositivity was renamed/re-scoped and one inert hypothesis removed.
 - `9627f7ea` `ym1-fusion-2dexact-20260704` v1: CANCELED/IDLE after a real normalization bug was found. The v1 theorem had an extra `|G|` factor; trivial representation with `w=1` refutes it.
-- `3435c7a3` `ym1-fusion-2dexact-20260704b` v2: RUNNING at last poll. Corrected statement removes the extra factor and preserves the oracle-pinned `h^-1 * A` convolution order. Statement: `AgentTasks/aristotle-standalone/ym1-fusion-2dexact-20260704/Ym1Fusion/Lemma2a.lean`; prompt: `AgentTasks/aristotle-prompts/overnight-ym1-fusion-2dexact.prompt.md`.
+- `3435c7a3` `ym1-fusion-2dexact-20260704b` v2: COMPLETE + HARVESTED + INTEGRATED. Corrected statement removes the extra factor and preserves the oracle-pinned `h^-1 * A` convolution order. Integrated as `lemma2a_fusion_convolution` in `FusionConvolution.lean`; Aristotle reported axiom footprint `[propext, Classical.choice, Quot.sound]`.
 - `203fd831` `gate-c2-flux2d-witness`: RUNNING at last poll; non-YM Gate C2 carryover, do not duplicate. See the T0 registry row in `LEDGER.md`.
 - Older visible IDLE projects remain retired/previous-run-ledgered unless the user asks to reopen them.
 
 ## 4. Integration debt
 
-- Harvest `3435c7a3`. If it succeeds, integrate Lemma 2a into `FusionConvolution.lean` or a successor file and then assemble finite-G Theorem 2; if it returns a no-go, record the missing character-theory API precisely.
+- Assemble finite-G Theorem 2 from the integrated Lemma 2a one-step fusion theorem plus `iterConv_eigen` / `iterConv_eigen_at_one`, then connect any remaining tree-gauge and normalization/prefactor layer explicitly.
 - Harvest `203fd831` when it completes; it is Gate C2, not tonight's YM ladder, but it is still owned by the carryover registry.
 - RP-LINK is not assembled. Missing pieces: reflection-stable plaquette family, Wilson local-weight symmetry across `MulOpposite`, cut factorization, positive-side observable algebra, and PSD assembly.
 - QCD1-i/ii are not proved. The banked C2/GW-circle facts need a designed `lambda_hat` spectral map and chiral-pairing theorem.
@@ -77,7 +77,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 - `review:t3-general-gauge-core`: ACCEPTED; multiplication order and reverse-step convention checked.
 - `review:reflection-core-first-pass`: ACCEPTED as finite scaffolding, with claim gate until reflection/source convention and downstream compatibility are checked.
 - Reflection walk attempted theorem was rejected: naive nonabelian same-group inverse identity has an order obstruction. Correct formulation uses `MulOpposite`.
-- `review:t2-lemma2a-aristotle-submission`: v1 rejected for normalization; corrected v2 submitted as `3435c7a3`.
+- `review:t2-lemma2a-aristotle-submission`: v1 rejected for normalization; corrected v2 `3435c7a3` succeeded and was integrated.
 - `review:t3-plaquette-reflection`: ACCEPTED; then extended with product-weight bridge.
 - No disagreements are parked for the user; the main open issues are ordinary integration debt above.
 
@@ -88,22 +88,22 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 - `pre-commit run --all-files`: passed before the final commits.
 - One stale-build near-miss was caught and fixed: `678b386` reported aggregate GateYM green while `lake env lean` on the just-edited `ReflectionWalk.lean` failed on a shadowed section variable; fixed in `1033caa`. Before promotion, rerun per-file `lake env lean` on files touched in the last review cycle.
 - Baseline checks recorded at T0: GateYM build green, oracle v0.2 `validate_lgt_core.py` 36/36, Neo4j reachable, Aristotle list reconciled.
-- Standalone Lemma 2a statement check: `lake env lean AgentTasks/aristotle-standalone/ym1-fusion-2dexact-20260704/Ym1Fusion/Lemma2a.lean` parsed with the expected proof-placeholder warning. The focused submit-package local check failed before typechecking because that ignored package lacked materialized Mathlib `.olean`s; the root-project check is the reliable local parse check.
+- Integrated Lemma 2a checks: `lake env lean PhysicsSM/Draft/NullEdge/GateYM/FusionConvolution.lean`, `lake build PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution`, axiom audit for `lemma2a_fusion_convolution`, aggregate GateYM build, `pre-commit run --all-files`, and full `lake build` passed.
 
 ## 7. Ideas raised but out of scope
 
 - U(1) Fourier RP as the next flagship route before full Peter-Weyl.
 - Finite-G RP as a separate publication unit, but only with a sharp finite-volume disclaimer.
 - Shared Schur/Hadamard PSD lemmas as future Mathlib upstream candidates.
-- Character-basis completeness for class functions over finite groups as the real Mathlib/representation-theory bottleneck for Lemma 2a.
+- The finite-G Theorem 2 assembly layer after Lemma 2a: Wilson/heat-kernel specialization, iteration interface, and any tree-gauge/prefactor normalization.
 - Site reflection is distinct from link reflection and should not be mixed into the current RP-LINK layer.
 - YM6 / continuum mass gap language must be re-audited in light of arXiv:2606.19362 before any summit-facing claims are made.
 
 ## 8. Recommended next three actions
 
-1. Poll/harvest `3435c7a3` first. A successful proof is the shortest path to full finite-G YM1 Theorem 2; a no-go will still identify the exact Mathlib character-theory gap.
+1. Assemble finite-G YM1 Theorem 2 now that Lemma 2a is in-repo: specialize the one-step theorem to the Wilson/heat-kernel weight, feed it into `iterConv_eigen_at_one`, and keep the tree-gauge/prefactor assumptions explicit.
 2. Assemble the next YM3 finite identity, not RP-LINK yet: define a reflection-stable plaquette family and prove Wilson local-weight compatibility across the `MulOpposite` bridge. That is the closest YM3 paper unit after tonight's T3 work.
-3. Keep the one-job Aristotle budget rule lifted only for focused Mathlib-only or audit jobs until `3435c7a3` and `203fd831` finish, then restore the rule. The lifted rule paid off, but the v1 Lemma 2a bug showed why cross-review and narrow packages still matter.
+3. Poll/harvest `203fd831`; then restore the one-job Aristotle budget rule. The temporary lift paid off, but the v1 Lemma 2a bug showed why cross-review and narrow packages still matter.
 
 ## 9. Literature log summary
 
