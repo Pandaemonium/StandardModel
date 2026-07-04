@@ -11,18 +11,25 @@ by the four-day run's `review:q6-kp-freeze` thread.
 
 Scope discipline:
 
-* `kp_cluster_summable` and `kp_convergence_bound` use only the bare
-  Kotecky-Preiss condition from `PolymerKPCriterion`.
-* `kp_tail_bound` adds metric data and an explicit energy/distance coercivity
-  hypothesis.  Distance is not folded into the base KP condition.
+* `kp_cluster_summable` uses only the bare Kotecky-Preiss condition from
+  `PolymerKPCriterion`, after reducing to the rooted partial-sum crux
+  `kp_partial_sum_bound`.
+* Aristotle project `071d1370` found a real blocker: the old bare C2 bound is
+  false without self-incompatibility.  The module now contains the formal
+  counterexample `kp_convergence_bound_false` and the corrected target
+  `kp_convergence_bound_of_selfIncompatible`.
+* `kp_tail_bound` adds metric data, self-incompatibility, and an explicit
+  energy/distance coercivity hypothesis.  Distance is not folded into the base
+  KP condition.
 * `spanningTreeCount` and `ursellSum` use the direct finite-graph definitions
   recommended by Aristotle project `34d675b8`.
 * The proof of the Penrose tree-graph inequality for the concrete Ursell
   coefficient is parked as its own theorem target.
 
-Draft-trust: statement freeze only.  The theorem bodies, including the parked
-`treeGraphBound_ursell`, are documented proof handoffs, not completed proofs.
-Claim label: statement freeze / lemma DAG.
+Draft-trust: statement freeze plus one kernel-checked negative result.  The
+remaining theorem bodies, including the parked `treeGraphBound_ursell`, are
+documented proof handoffs, not completed proofs.  Claim label: statement
+freeze / lemma DAG / formal counterexample.
 -/
 
 noncomputable section
@@ -245,10 +252,35 @@ theorem clusterCoeff_absWeight_exp_nonneg (S : PolymerSystem Gamma)
   exact mul_nonneg (clusterCoeff_absWeight_nonneg S hdec D X)
     (le_of_lt (X.exp_energyOf_pos S))
 
+/-- The uniform Kotecky-Preiss partial-sum bound (crux of C1).
+
+For every finite family `s` of connected clusters touching `g0`, the total
+absolute cluster weight is bounded by `|weight g0| * exp (energy g0)`.
+
+Aristotle project `071d1370` reduced C1 to this genuine KP tree-sum estimate.
+The missing proof must use the incompatibility graph's spanning-tree structure;
+naive finite counting loses the KP recursion and diverges. -/
+theorem kp_partial_sum_bound
+    (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (D : ClusterCoeffData S hdec)
+    (hKP : KPCondition S hdec) (g0 : Gamma)
+    (s : Finset {X : Cluster S // X.Connected S hdec /\ X.Touches S g0}) :
+    (s.sum (fun X => |D.coeff X.1| * X.1.absWeight S))
+      <= |S.weight g0| * Real.exp (S.energy g0) := by
+  /-
+  Proof handoff:
+  Prove the rooted KP tree-sum estimate from `hKP` and `D.treeGraphBound`.
+  This is the genuine combinatorial crux; it is the same tier of missing
+  infrastructure as the parked Penrose tree-graph inequality.
+  -/
+  sorry
+
 /-- Bare-KP absolute summability of clusters touching a fixed polymer.
 
 This is the C1 conclusion from the strategy report: no metric or distance tail
-appears here. -/
+appears here.  Aristotle project `071d1370` proved the reduction from the
+uniform finite partial-sum bound `kp_partial_sum_bound`. -/
 theorem kp_cluster_summable
     (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
@@ -256,18 +288,167 @@ theorem kp_cluster_summable
     (hKP : KPCondition S hdec) (g0 : Gamma) :
     Summable (fun X : {X : Cluster S //
         X.Connected S hdec /\ X.Touches S g0} =>
-      |D.coeff X.1| * X.1.absWeight S) := by
-  /-
-  Proof handoff:
-  Prove the standard finite-volume KP absolute convergence bound using only
-  `hKP` and `D.treeGraphBound`.  This should not use metric data.
-  -/
-  sorry
+      |D.coeff X.1| * X.1.absWeight S) :=
+  summable_of_sum_le
+    (fun X => clusterCoeff_absWeight_nonneg S hdec D X.1)
+    (kp_partial_sum_bound S hdec D hKP g0)
 
-/-- Bare-KP convergence bound with the usual `exp(energyOf)` slack. -/
-theorem kp_convergence_bound
+/-!
+## Blocker: the old bare C2 target was false
+
+Aristotle project `071d1370` found and formalized the missing hypothesis.  The
+bare `KPCondition` controls the weighted sum over polymers incompatible with a
+base polymer `g`; it does not control the single-polymer weight `|weight g|`
+unless `g` is incompatible with itself.  Therefore the old C2 statement
+without self-incompatibility was false, not merely hard.
+-/
+
+/-- One-point counterexample system: a single polymer incompatible with
+nothing, with unit weight and zero energy. -/
+def cexSystem : PolymerSystem (Fin 1) where
+  incompatible := fun _ _ => False
+  incompatible_symm := by intro g h h'; exact h'.elim
+  weight := fun _ => 1
+  energy := fun _ => 0
+  energy_nonneg := by intro g; exact le_refl 0
+
+/-- Decidability of `cexSystem` incompatibility (always false). -/
+def cexDec : forall g h, Decidable (cexSystem.incompatible g h) :=
+  fun _ _ => isFalse (fun h => h)
+
+/-- The incompatibility graph of any `cexSystem` cluster is the empty graph. -/
+theorem cexSystem_graph_bot (X : Cluster cexSystem) :
+    X.graph cexSystem cexDec = (⊥ : SimpleGraph (Fin X.n)) := by
+  ext i j
+  simp [Cluster.graph, cexSystem]
+
+/-- A `cexSystem` cluster is connected iff it has exactly one slot. -/
+theorem cexSystem_connected_iff (X : Cluster cexSystem) :
+    X.Connected cexSystem cexDec <-> X.n = 1 := by
+  unfold Cluster.Connected
+  rw [cexSystem_graph_bot, SimpleGraph.connected_bot_iff]
+  constructor
+  · rintro ⟨hss, hne⟩
+    have h1 : 0 < X.n := Fin.pos_iff_nonempty.mpr hne
+    have h2 : X.n <= 1 := by
+      by_contra h
+      push_neg at h
+      have hne2 : (⟨0, by omega⟩ : Fin X.n) ≠ (⟨1, by omega⟩ : Fin X.n) := by
+        simp [Fin.ext_iff]
+      exact hne2 (Subsingleton.elim _ _)
+    omega
+  · intro hn
+    have h1 : Nonempty (Fin X.n) := by
+      rw [hn]
+      exact inferInstance
+    have h2 : Subsingleton (Fin X.n) := by
+      rw [hn]
+      exact inferInstance
+    exact ⟨h2, h1⟩
+
+/-- Two one-slot `cexSystem` clusters are equal (the polymer map is forced). -/
+theorem cexSystem_cluster_eq (X Y : Cluster cexSystem)
+    (hX : X.n = 1) (hY : Y.n = 1) : X = Y := by
+  obtain ⟨nX, pX⟩ := X
+  obtain ⟨nY, pY⟩ := Y
+  simp only at hX hY
+  subst hX
+  subst hY
+  congr 1
+  funext i
+  exact Subsingleton.elim _ _
+
+/-- The connected clusters of `cexSystem` touching `g0` form a subsingleton. -/
+instance :
+    Subsingleton {X : Cluster cexSystem //
+      X.Connected cexSystem cexDec /\ X.Touches cexSystem 0} := by
+  constructor
+  rintro ⟨X, hX, _⟩ ⟨Y, hY, _⟩
+  exact Subtype.ext (cexSystem_cluster_eq X Y
+    ((cexSystem_connected_iff X).mp hX) ((cexSystem_connected_iff Y).mp hY))
+
+/-- Maximal coefficient data on `cexSystem`: coefficient `1` on one-slot
+clusters, `0` elsewhere.  This saturates the tree-graph bound on the
+single-vertex cluster. -/
+def cexCoeff : ClusterCoeffData cexSystem cexDec where
+  coeff := fun X => if X.n = 1 then (1 : Real) else 0
+  coeff_disconnected := by
+    intro X hX
+    have : X.n ≠ 1 := fun h => hX ((cexSystem_connected_iff X).mpr h)
+    simp [this]
+  treeGraphBound := by
+    intro X
+    by_cases h : X.n = 1
+    · have hconn : X.Connected cexSystem cexDec :=
+        (cexSystem_connected_iff X).mpr h
+      have hpos : 0 < spanningTreeCount cexSystem cexDec X :=
+        spanningTreeCount_pos_of_connected cexSystem cexDec X hconn
+      rw [if_pos h, h]
+      simp only [Nat.factorial_one, Nat.cast_one, abs_one, mul_one]
+      exact_mod_cast hpos
+    · simp only [if_neg h, abs_zero, zero_mul]
+      exact Nat.cast_nonneg _
+
+/-- `cexSystem` satisfies the bare Kotecky-Preiss condition vacuously: no
+polymer is incompatible with anything. -/
+theorem cexSystem_KP : KPCondition cexSystem cexDec := by
+  intro g
+  have hempty :
+      (Finset.univ.filter
+        (fun h => @Decidable.decide _ (cexDec g h) = true)) = (∅ : Finset (Fin 1)) := by
+    apply Finset.filter_false_of_mem
+    intro h _
+    simp [cexSystem]
+  rw [hempty]
+  simp [cexSystem]
+
+/-- The unique connected cluster touching `g0 = 0`: one slot holding `0`. -/
+def cexWitness :
+    {X : Cluster cexSystem // X.Connected cexSystem cexDec /\ X.Touches cexSystem 0} :=
+  ⟨⟨1, fun _ => 0⟩, (cexSystem_connected_iff _).mpr rfl, ⟨0, rfl⟩⟩
+
+/-- The witness cluster contributes exactly `1` to the old C2 sum. -/
+theorem cexWitness_term :
+    |cexCoeff.coeff cexWitness.1| * cexWitness.1.absWeight cexSystem
+        * Real.exp (cexWitness.1.energyOf cexSystem) = 1 := by
+  simp [cexWitness, cexCoeff, Cluster.absWeight, Cluster.energyOf, cexSystem]
+
+/-- The old bare C2 statement is false without self-incompatibility. -/
+theorem kp_convergence_bound_false :
+    ¬ (∀ (G : Type) [Fintype G] (S : PolymerSystem G)
+        (hdec : forall g h, Decidable (S.incompatible g h))
+        (D : ClusterCoeffData S hdec)
+        (_hKP : KPCondition S hdec) (g0 : G),
+        (tsum (fun X : {X : Cluster S //
+            X.Connected S hdec /\ X.Touches S g0} =>
+          |D.coeff X.1| * X.1.absWeight S * Real.exp (X.1.energyOf S)))
+            <= S.energy g0) := by
+  intro H
+  have hle := H (Fin 1) cexSystem cexDec cexCoeff cexSystem_KP 0
+  have henergy : cexSystem.energy 0 = 0 := rfl
+  rw [henergy] at hle
+  have hsummable :
+      Summable (fun X : {X : Cluster cexSystem //
+          X.Connected cexSystem cexDec /\ X.Touches cexSystem 0} =>
+        |cexCoeff.coeff X.1| * X.1.absWeight cexSystem
+          * Real.exp (X.1.energyOf cexSystem)) :=
+    Summable.of_finite
+  have hnn : ∀ X : {X : Cluster cexSystem //
+      X.Connected cexSystem cexDec /\ X.Touches cexSystem 0},
+      0 <= |cexCoeff.coeff X.1| * X.1.absWeight cexSystem
+        * Real.exp (X.1.energyOf cexSystem) :=
+    fun X => clusterCoeff_absWeight_exp_nonneg cexSystem cexDec cexCoeff X.1
+  have hterm := hsummable.le_tsum cexWitness (fun j _ => hnn j)
+  rw [cexWitness_term] at hterm
+  linarith
+
+/-- Corrected C2 target.  Adding the standard self-incompatibility hypothesis
+restores the route to the Kotecky-Preiss convergence bound: the `h = g` term
+then appears in the KP sum and controls the single-polymer weight. -/
+theorem kp_convergence_bound_of_selfIncompatible
     (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
+    (hself : forall g, S.incompatible g g)
     (D : ClusterCoeffData S hdec)
     (hKP : KPCondition S hdec) (g0 : Gamma) :
     (tsum (fun X : {X : Cluster S //
@@ -276,8 +457,9 @@ theorem kp_convergence_bound
         <= S.energy g0 := by
   /-
   Proof handoff:
-  This is the C2 inequality confirmed by strategy job `2427a253`: bare KP
-  supports the weighted cluster sum with `exp (energyOf S)` slack.
+  Prove the corrected KP tree-sum theorem using `hself`, `hKP`, and
+  `D.treeGraphBound`.  The one-point counterexample above shows why `hself`
+  is mathematically necessary.
   -/
   sorry
 
@@ -309,6 +491,7 @@ day-1 strategy audit; it is not hidden inside `KPCondition`. -/
 theorem kp_tail_bound
     (M : MetricPolymerSystem Gamma)
     (hdec : forall g h, Decidable (M.incompatible g h))
+    (hself : forall g, M.incompatible g g)
     (D : ClusterCoeffData M.toPolymerSystem hdec)
     (hKP : KPCondition M.toPolymerSystem hdec)
     (m : Real) (hm : 0 < m)
@@ -324,9 +507,9 @@ theorem kp_tail_bound
         <= M.energy g0 * Real.exp (-(m * R)) := by
   /-
   Proof handoff:
-  Combine `kp_convergence_bound` with `hcoerce` on every cluster counted by
-  `ReachesFrom`.  Keep the metric/coercivity argument here, not in the bare KP
-  theorem.
+  Combine `kp_convergence_bound_of_selfIncompatible` with `hcoerce` on every
+  cluster counted by `ReachesFrom`.  Keep the metric/coercivity argument here,
+  not in the bare KP theorem.
   -/
   sorry
 

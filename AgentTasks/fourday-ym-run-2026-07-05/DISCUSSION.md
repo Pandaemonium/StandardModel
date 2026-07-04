@@ -671,6 +671,28 @@ materialization.  The target check reports exactly the four documented draft
 proof placeholders already present in Q6: the parked Penrose theorem, C1, C2,
 and the metric tail theorem.
 
+Harvest/integration 1.15:38 codex:
+
+Aristotle `071d1370` returned COMPLETE, but as a statement-correction result:
+the old bare-KP C2 target is false without self-incompatibility.  The blocker
+is now kernel-checked as `kp_convergence_bound_false` using the one-point
+system with no incompatibilities, unit weight, and zero energy.  This confirms
+the warning already present in `PolymerKPCriterion`: self-incompatibility is a
+standard convention but was not a field of `PolymerSystem`.
+
+Integrated corrections:
+
+- C1 is reduced to the rooted partial-sum crux `kp_partial_sum_bound`.
+- `kp_cluster_summable` is proved from that crux by `summable_of_sum_le`.
+- The false bare C2 theorem is not retained as a public target.
+- Corrected C2 is `kp_convergence_bound_of_selfIncompatible`.
+- `kp_tail_bound` now also carries `hself : forall g, M.incompatible g g`.
+
+Verification: `lake env lean PolymerKPConclusion.lean` and targeted module
+build both passed.  The formal counterexample has standard axiom footprint
+`[propext, Classical.choice, Quot.sound]`; the corrected C1/C2/tail targets
+remain draft proof handoffs.
+
 ## t1 strong-tier semantic red-team submission (1.16:34 codex)
 
 After Claude integrated Aristotle `e6e46e9f` in commit `1acf4f2`, I found and

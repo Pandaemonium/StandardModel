@@ -60,7 +60,11 @@ returned.
   `34d675b8`; Penrose `treeGraphBound_ursell` remains a documented draft
   handoff.  Follow-up support lemmas now prove disconnected clusters have zero
   spanning-tree count and zero concrete Ursell sum, while connected clusters
-  have positive spanning-tree count.
+  have positive spanning-tree count.  Aristotle `071d1370` then found a real
+  blocker: the old bare-KP C2 target is false without self-incompatibility.
+  The file now contains kernel-checked `kp_convergence_bound_false`, reduces
+  C1 to `kp_partial_sum_bound`, and replaces C2 with
+  `kp_convergence_bound_of_selfIncompatible`.
 - `StrongCouplingPolymerMap.lean`: Q7 finite plaquette-polymer map layer,
   support-indexed polymer labels, physical extensionality, decidable support
   overlap/touch relations, conservative overlap-or-touch incompatibility, Z2
@@ -95,7 +99,7 @@ COMPLETE+HARVESTED+INTEGRATED), `e6e46e9f` (T1 N3 redesign/ensemble
 identification, COMPLETE+HARVESTED+INTEGRATED by Claude), `50024abf`
 (Q2 block instantiation, COMPLETE+HARVESTED+INTEGRATED), `8e1e11b0`
 (Q2/Q3 block-shift covariance, COMPLETE+HARVESTED+INTEGRATED), `071d1370`
-(Q6 abstract KP C1/C2 proof package, COMPLETE pending harvest), and
+(Q6 abstract KP C1/C2 package, COMPLETE+HARVESTED+INTEGRATED-NEGATIVE), and
 `acedaea2` (Q11 boundary expectation bridge, RUNNING). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
@@ -115,7 +119,8 @@ bridge needed by Q3.
 T3 baseline-done-gated-by-T2. T6
 statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose remains parked and abstract KP
-C1/C2 proof package `071d1370` is complete pending harvest. T7 has map-freeze plus both audit
+C1 is reduced to a partial-sum crux while old bare C2 is refuted without
+self-incompatibility. T7 has map-freeze plus both audit
 harvests done; the support-indexed
 carrier and decidable overlap-or-touch layer are integrated. The next blocker
 is an honest `KPCondition` instantiation carrying an explicit finite KP sum
@@ -136,7 +141,9 @@ when the kernel commutes with them. Follow-up Q2 block-instantiation job
 `50024abf` and block-shift bridge job `8e1e11b0` are both harvested and
 integrated.
 `review:q6-kp-freeze` ACCEPT (claude), follow-up tree-graph job returned and
-confirmed the normalization/direct-definition path.
+confirmed the normalization/direct-definition path. Follow-up abstract KP job
+`071d1370` corrected the freeze: C2 needs self-incompatibility, and the old
+bare target is formally refuted.
 `idea:q7-polymer-map` audit returned ACCEPT WITH CHANGES: the current total
 off-support label function is honest for wrappers but wrong for future KP
 sums. The follow-up support-indexed redesign returned and is integrated, so
@@ -180,6 +187,9 @@ reflection geometry with shared cut variables and a mixture/PSD kernel proof.
 Q6's C3
 exponential-distance tail is NOT a consequence of bare KP - needs an
 explicit metric/coercivity extension (already designed into the freeze).
+Q6's old C2 convergence target is also NOT a consequence of bare KP unless
+self-incompatibility is included; `kp_convergence_bound_false` is the
+kernel-checked one-point counterexample.
 Q7 still cannot instantiate `KPCondition` from the map layer alone: the
 support-indexed redesign fixed the off-support-label overcount, but an explicit
 finite KP sum bound, concrete connected-support API, and label API are still
@@ -202,8 +212,9 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 3. Instantiate the integrated `TransferHilbertBlockShift.lean` layer against
    the torus/Z2 center-shift sector language; do not claim a physical transfer
    matrix.
-4. Harvest `071d1370`; keep the concrete Penrose theorem parked unless a
-   focused proof package is ready.
+4. Rework Q6/Q8 follow-ups around the corrected self-incompatible C2 target;
+   keep the concrete Penrose theorem parked unless a focused proof package is
+   ready.
 5. Harvest or continue `acedaea2` when it returns; until then, use the
    integrated T11 lasso identity as the YM1 expectation-bridge anchor.
 6. Keep Q2 integration focused on finite block-kernel/sector infrastructure

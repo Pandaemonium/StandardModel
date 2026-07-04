@@ -382,10 +382,13 @@ layer after strategy job `2427a253` and review thread `review:q6-kp-freeze`:
 ordered finite clusters, the cluster incompatibility graph on distinct slots,
 the concrete direct finite definitions `spanningTreeCount` and `ursellSum`
 recommended by Aristotle job `34d675b8`, an abstract `ClusterCoeffData`
-interface with tree-graph-bound hypothesis, and three named theorem targets:
-bare-KP absolute summability, bare-KP convergence with `exp(energyOf)` slack,
-and a metric tail bound whose extra energy-distance coercivity hypothesis is
-explicit. The hard parked theorem is Penrose's concrete tree-graph inequality
+interface with tree-graph-bound hypothesis, bare-KP absolute summability
+reduced to a new partial-sum crux, and the Aristotle `071d1370` formal
+counterexample showing the old bare-KP convergence target is false without
+self-incompatibility. The corrected C2 target is
+`kp_convergence_bound_of_selfIncompatible`, and the metric tail bound now
+carries the same self-incompatibility plus explicit energy-distance coercivity.
+The hard parked theorem is Penrose's concrete tree-graph inequality
 `treeGraphBound_ursell`, not the count definition itself). Not part of the
 default trusted build target; `StrongCouplingPolymerMap` (YM4/T7 statement
 layer: finite plaquette polymers as nonempty connected finite supports with

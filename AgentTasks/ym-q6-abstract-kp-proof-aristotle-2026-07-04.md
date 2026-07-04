@@ -8,7 +8,7 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
   submission_project: AgentTasks/aristotle-submit/ym-q6-abstract-kp-proof-20260704-project
   output_dir: AgentTasks/aristotle-output/071d1370-9599-4832-9765-cec65cbbee72
-  status: submitted
+  status: harvested+integrated-negative
 ```
 
 ## Purpose
@@ -79,4 +79,60 @@ Result:
 Project created: 071d1370-9599-4832-9765-cec65cbbee72
 Task: 337e35f0-2561-4de1-b811-81715f64619f
 Project status after submit: RUNNING
+```
+
+## Harvest / Integration
+
+Aristotle returned COMPLETE, but the result is a statement-correction harvest,
+not a clean proof of the original C1/C2 pair.
+
+Headline finding: the old bare-KP C2 target `kp_convergence_bound` is false
+without self-incompatibility.  The bare `KPCondition` controls only polymers
+incompatible with `g`; if `g` is not incompatible with itself, the single
+polymer weight is unconstrained.  Aristotle supplied a one-point counterexample
+with no incompatibilities, unit weight, and zero energy.
+
+Integrated source changes:
+
+- added `kp_partial_sum_bound`, isolating the rooted tree-sum crux for C1;
+- proved `kp_cluster_summable` from `kp_partial_sum_bound` by
+  `summable_of_sum_le`;
+- added the counterexample scaffold `cexSystem`, `cexDec`, `cexCoeff`,
+  `cexSystem_KP`, `cexWitness`, and helpers;
+- added the kernel-checked theorem `kp_convergence_bound_false`;
+- replaced the false bare C2 target with
+  `kp_convergence_bound_of_selfIncompatible`;
+- added the same self-incompatibility hypothesis to `kp_tail_bound`.
+
+Semantic review: accepted with correction.  The original `kp_convergence_bound`
+statement was not retained as a public theorem, because it is now known false.
+The corrected C2 and metric tail statements remain draft proof handoffs.
+
+Local verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+```
+
+Both passed.  The file now has four intended draft proof placeholders:
+
+- `treeGraphBound_ursell`;
+- `kp_partial_sum_bound`;
+- `kp_convergence_bound_of_selfIncompatible`;
+- `kp_tail_bound`.
+
+Axiom audit:
+
+```text
+kp_convergence_bound_false:
+  [propext, Classical.choice, Quot.sound]
+cexSystem_KP:
+  [propext, Classical.choice, Quot.sound]
+cexWitness_term:
+  [propext, Classical.choice, Quot.sound]
+kp_cluster_summable:
+  [propext, s o r r yAx, Classical.choice, Quot.sound]
+kp_convergence_bound_of_selfIncompatible:
+  [propext, s o r r yAx, Classical.choice, Quot.sound]
 ```
