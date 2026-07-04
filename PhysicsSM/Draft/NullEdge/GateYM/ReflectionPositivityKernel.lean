@@ -1,4 +1,5 @@
 import Mathlib
+import PhysicsSM.Draft.NullEdge.GateYM.HermitianFromRealQuadraticForm
 
 /-!
 # Gate YM3: the master finite reflection-positivity kernel lemma (RP-KER)
@@ -53,6 +54,15 @@ for a positive-side observable `F(a, c, b) = f(a, c)` is exactly
   work queue).
 - `reflectionForm_nonneg_of_factorized` / `_of_mixture`: the end-to-end RP
   statements for those two weight classes.
+- `cutKernel_posSemidef_of_reflectionPositive` (**the Q2 bridge, converse
+  of `reflectionForm_nonneg`**): `IsReflectionPositive W` ALONE (no
+  separate symmetry assumption) forces every `cutKernel W c` to be
+  `Matrix.PosSemidef`. This is the missing direction needed for the
+  transfer-Hilbert-space construction (program document Q2): a reflection-
+  positive ensemble weight yields a genuine PSD kernel to build the
+  physical Hilbert space from, without having to separately verify
+  Hermitian-ness. Provenance: `HermitianFromRealQuadraticForm.lean`
+  (Aristotle project `72cccd22`, see that module's docstring).
 
 ## What is NOT claimed
 
@@ -192,6 +202,34 @@ theorem reflectionForm_nonneg_of_mixture {K : Type} [Fintype K]
     IsReflectionPositive
       (fun a c b => ∑ k : K, h k a c * (starRingEnd ℂ) (h k b c)) :=
   reflectionForm_nonneg _ (cutKernel_posSemidef_of_mixture h)
+
+/-- **Converse to `reflectionForm_nonneg` (Q2 bridge).** Reflection
+positivity of `W` alone forces every cut kernel to be positive
+semidefinite - no separate Hermitian/symmetry hypothesis is needed, since
+it is derived from realness by polarization
+(`HermitianBridge.posSemidef_of_forall_dotProduct_real_nonneg`). The
+"block-diagonal-in-`C`" matrix a transfer-Hilbert-space construction would
+build is exactly the direct sum of these `cutKernel W c`, so its
+`PosSemidef` is equivalent to this family of statements. -/
+theorem cutKernel_posSemidef_of_reflectionPositive [DecidableEq C]
+    (W : A → C → A → ℂ) (hW : IsReflectionPositive W) (c : C) :
+    (cutKernel W c).PosSemidef := by
+  classical
+  have key : ∀ g : A → ℂ,
+      star g ⬝ᵥ (cutKernel W c *ᵥ g)
+        = reflectionForm W (fun a c' => if c' = c then g a else 0) := by
+    intro g
+    rw [reflectionForm_eq_sum_dotProduct, Finset.sum_eq_single c]
+    · simp
+    · intro c' _ hc'
+      have : (fun a => (if c' = c then g a else (0 : ℂ))) = (0 : A → ℂ) := by
+        funext a; simp [hc']
+      rw [this]; simp
+    · intro h; exact absurd (Finset.mem_univ c) h
+  refine HermitianBridge.posSemidef_of_forall_dotProduct_real_nonneg
+    (cutKernel W c) (fun g => ?_) (fun g => ?_)
+  · rw [key g]; simpa using ((hW _).2).symm
+  · rw [key g]; simpa using (hW _).1
 
 end ReflectionPositivityKernel
 end GateYM
