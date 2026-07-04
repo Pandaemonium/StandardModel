@@ -4,6 +4,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 import PhysicsSM.Draft.NullEdge.GateYM.TorusEvenCover
 import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
+import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -33,6 +34,10 @@ the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
 [propext, Classical.choice, Quot.sound]; includes `hadamard_posSemidef`,
 a genuinely reusable Schur-product-theorem lemma this repo's pinned
-Mathlib lacks under any name). Not part of the default trusted build
-target. Adding a new YM module? Import it here.
+Mathlib lacks under any name); `TransferPositivity` (YM3 Corollary 3b:
+the abstract transfer-matrix positivity chain - diagonal-weight
+conjugation and Gauss-projector-style compression both preserve PSD,
+plus the connecting corollary instantiating the Wilson kernel; axiom
+footprint [propext, Classical.choice, Quot.sound]). Not part of the
+default trusted build target. Adding a new YM module? Import it here.
 -/
