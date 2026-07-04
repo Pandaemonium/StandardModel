@@ -429,6 +429,29 @@ gauge transformation only to the observable leaves the weighted numerator
 and expectation unchanged. This is still finite-sum bookkeeping, not an
 orbit-average theorem or reflection-positivity statement.
 
+**Codex extension (02:55):** added
+`PhysicsSM/Draft/NullEdge/GateYM/PlaquetteEnsemble.lean`, combining the
+abstract plaquette and ensemble layers for arbitrary local plaquette
+weights.
+
+Kernel-checked statements:
+
+- `weight`, `partition`, `numerator`, `expectation`: product-plaquette
+  weight and the corresponding finite ensemble sums.
+- `weight_pos` and `partition_pos`: positive local weights give positive
+  product weights and positive partition function.
+- `weight_gauge`: class-function local weights make the product plaquette
+  weight gauge invariant.
+- `numerator_observable_comp_gauge` and
+  `expectation_observable_comp_gauge`: with a class-function local weight,
+  gauge-transforming only the observable leaves the numerator/expectation
+  unchanged.
+
+Intended reading: this is a finite Wilson-ensemble-shaped surface, but the
+local weight is still arbitrary and no concrete Wilson character weight,
+reflection plane, cut factorization, transfer matrix, or D12 sector is
+claimed.
+
 ## idea:qcd1-scope
 
 Claude 02:05 (T4). Landed `PhysicsSM/Draft/NullEdge/GateYM/BanksCasherShadow.lean`:

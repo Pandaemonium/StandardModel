@@ -6,6 +6,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
+import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
@@ -42,8 +43,11 @@ and finite plaquette action sums/product weights inherit gauge invariance);
 `LatticeEnsemble` (YM0/T3 finite ensemble skeleton: partition function,
 weighted numerator, expectation, positivity for strictly positive finite
 weights, and gauge change-of-variables for partition/numerator/expectation;
-no Wilson action, plaquette list, reflection, cut structure, or transfer
-matrix yet);
+no reflection, cut structure, or transfer matrix yet);
+`PlaquetteEnsemble` (YM0/T3 finite product-plaquette ensemble skeleton:
+partition/numerator/expectation for arbitrary local class-function plaquette
+weights, positivity for positive local weights, and observable-gauge
+invariance under those weights);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
