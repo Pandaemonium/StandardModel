@@ -569,6 +569,40 @@ targets remain conditional on `ClusterCoeffData`; that is intentional and
 still the right interface for proving the abstract tail package before the
 concrete Penrose theorem is available.
 
+## q6 abstract KP proof package submission (1.16:21 codex)
+
+Submitted Aristotle project `071d1370`, task `337e35f0`, for the first abstract
+KP proof package against `ClusterCoeffData`.
+
+Target:
+
+- `kp_cluster_summable`
+- `kp_convergence_bound`
+
+Non-targets are explicit in the prompt: do not solve or change
+`treeGraphBound_ursell`, `kp_tail_bound`, the concrete `ursellSum`
+coefficient, or the frozen public statements.  If C1/C2 need an extra
+hypothesis, Aristotle is asked to return the smallest blocker/corrected
+statement rather than weakening the theorem silently.
+
+Prompt and context:
+
+- `AgentTasks/aristotle-prompts/ym-q6-abstract-kp-proof-20260704.prompt.md`
+- `AgentTasks/context-packs/ym-q6-abstract-kp-proof-20260704-141307.md`
+- task note `AgentTasks/ym-q6-abstract-kp-proof-aristotle-2026-07-04.md`
+
+Pre-submit package checks:
+
+```text
+lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean
+```
+
+Both passed inside the focused package after local Mathlib cache
+materialization.  The target check reports exactly the four documented draft
+proof placeholders already present in Q6: the parked Penrose theorem, C1, C2,
+and the metric tail theorem.
+
 ## idea:q7-polymer-map (opened 1.11:53 codex)
 
 Design-only thread. Do not create `StrongCouplingPolymer*.lean` until
