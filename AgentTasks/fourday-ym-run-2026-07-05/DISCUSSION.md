@@ -211,6 +211,28 @@ spectral gap.  The next Q2 package should instantiate the generic matrix layer
 from `cutKernel`, prove the block pairing/reflection-form bridge, and wire the
 concrete torus/Z2 center shifts into `KernelCommutesShifts`.
 
+Codex submission 1.16:10:
+
+Submitted Aristotle project `50024abf`, task `4961dec1`, for the next Q2
+proof package.  Target file:
+`PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertBlock.lean`.
+
+Requested deliverables:
+
+- `rpBlockMatrix` as the block-diagonal matrix over cut coordinate `C` with
+  blocks `ReflectionPositivityKernel.cutKernel W c`;
+- same-cut / different-cut simp lemmas;
+- `rpBlockMatrix_posSemidef_of_reflectionPositive` from
+  `cutKernel_posSemidef_of_reflectionPositive`;
+- `reflectionPairingVec` and
+  `reflectionPairing_rpBlockMatrix_eq_reflectionForm` connecting the new block
+  matrix to `TransferHilbert.reflectionPairing` and
+  `ReflectionPositivityKernel.reflectionForm`.
+
+The focused source package warned that it has no `.lake` folder, so treat it as
+a proof package to verify locally on harvest.  It deliberately does not touch
+the dirty T1 reflection files.
+
 ## design:q3-flux-sector (seeded; resolve before any T3 Lean)
 
 Decisions needed:

@@ -77,16 +77,17 @@ tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 `2c127e31` (Q8 exponential-clustering bridge audit, COMPLETE+HARVESTED+INTEGRATED). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after Q8 harvest: none from Codex; `e6e46e9f` is IDLE pending Claude/T1
-harvest.
+queue after Q2 block-instantiation submission: `50024abf`; `e6e46e9f` is IDLE
+pending Claude/T1 harvest.
 
 ## 4. Board state
 
 T0/T4/T5 done. T1 baseline reached; strong tier needs redesign after
 `0a46d515` refuted the raw mirror-conjugation target. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
-OS/GNS statement layer; the next Q2 blocker is concrete `cutKernel` block
-instantiation and torus/Z2 shift wiring. T3 baseline-done-gated-by-T2. T6
+OS/GNS statement layer; Q2 block-instantiation proof job `50024abf` is running
+for the concrete `cutKernel` block matrix and pairing/reflection-form bridge.
+T3 baseline-done-gated-by-T2. T6
 statement-freeze plus direct
 tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
 remain. T7 has map-freeze plus both audit harvests done; the support-indexed
@@ -105,7 +106,8 @@ T12/T13 done. T14 v0.3, 44/44 oracle green.
 - Hermitian-bridge gap found, Aristotle job submitted and later integrated.
 The follow-up Q2 shift-covariance audit returned and is integrated as
 `TransferHilbert.lean`; the square-root range model preserves center shifts
-when the kernel commutes with them.
+when the kernel commutes with them. Follow-up Q2 block-instantiation job
+`50024abf` is running.
 `review:q6-kp-freeze` ACCEPT (claude), follow-up tree-graph job returned and
 confirmed the normalization/direct-definition path.
 `idea:q7-polymer-map` audit returned ACCEPT WITH CHANGES: the current total
@@ -169,14 +171,16 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 2. Harvest `e6e46e9f` if Claude wants T1 handoff help; resolve or isolate the
    current dirty T1 reflection worktree before claiming another aggregate
    GateYM build.
-3. Start the next Q6 package: the abstract KP proof package against
+3. Harvest `50024abf` when it returns and integrate or park the
+   `TransferHilbertBlock.lean` cut-kernel block layer.
+4. Start the next Q6 package: the abstract KP proof package against
    `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
    focused proof package is ready.
-4. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition
+5. Use the integrated T11 lasso identity to attack the YM1 ensemble/partition
    bridge to the full Theorem 2 expectation statement.
-5. Redesign T1 strong tier around the `0a46d515` counterexample and finish the
-   Q2 shift-covariance question before creating a transfer-Hilbert statement
-   file.
-6. Keep Aristotle utilization at or above 4/8 slots at the next midday
+6. Redesign T1 strong tier around the `0a46d515` counterexample and keep Q2
+   integration focused on the block-kernel instantiation rather than physical
+   transfer claims.
+7. Keep Aristotle utilization at or above 4/8 slots at the next midday
    integration point per the binding mandate; prefer new design/review
    threads over idle capacity.
