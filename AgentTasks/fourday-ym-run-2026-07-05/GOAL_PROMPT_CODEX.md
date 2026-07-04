@@ -87,8 +87,13 @@ open task; the board rules.
   verifies sources; sanity-check every new statement on the trivial
   rep/group before any submission.
 - Aristotle: focused Mathlib-only packages; convention-pin `rfl` lemmas;
-  harvest-first; registry current; budget 3 concurrent YM jobs, soft cap
-  4/day.
+  harvest-first; registry current; budget 8 SIMULTANEOUSLY RUNNING YM
+  jobs (proof + audit + strategy combined) - no daily submission cap,
+  just never more than 8 running at once. Use the width for more than
+  proofs: keep ~2 slots on audit/strategy work - the day-1 and day-3
+  grand-strategy reviews, a semantic red-team of every flagship
+  integration, and statement-design jobs at branch points (RUN_PLAN
+  Aristotle section has the full list).
 - Fable calls: Sonnet owns the once-per-2-hours Claude Fable 5 budget.
   To use it, add a queue entry to `FABLE_CALLS.md` per
   `FABLE_CALL_PROTOCOL.md` (taxonomy letter + one-line ask + pointers).

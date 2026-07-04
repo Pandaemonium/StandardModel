@@ -165,22 +165,49 @@ with no verified delta means switch tasks or write the day report early.
 
 ## Aristotle protocol (inherited, with run budget)
 
-Budget FOR THIS RUN (authorized by the run itself): up to **3 concurrent
-YM proof jobs** + 1 strategy/red-team job; soft cap 4 proof submissions
-per day. Harvest-first; cancel jobs you beat locally; registry always
-current. The standing one-job rule resumes when the run ends.
+Budget FOR THIS RUN (user-authorized): up to **8 SIMULTANEOUSLY RUNNING
+YM jobs**, proof + audit + strategy combined. There is NO daily
+submission cap - submit as many jobs as the work genuinely supports, as
+long as no more than 8 are running at once (check `aristotle list`
+before submitting; a completed/IDLE job frees its slot on harvest).
+Quality control comes from the existing rules, not a quota:
+cross-review before new-statement submissions, harvest-first, cancel
+jobs you beat locally, registry always current, and the two-failure park
+rule. The standing one-job rule resumes when the run ends.
 
-All of the overnight protocol carries over: focused standalone
-Mathlib-only packages (`Scripts/prepare_aristotle_focused_submission.ps1`,
-invoked with `pwsh`); skeleton must typecheck with exactly the documented
-handoff `s o r r y`; convention-pin `rfl` lemmas in every geometric
-package (the pattern that produced the 16-minute `1d9b5b19` success -
-make the interface equation DEFINITIONAL so only the hard content
-remains); narrow `lake env lean <file>` instruction; the "no .lake
-folder" warning at submit is expected; `aristotle download --destination
-<file>` produces a GZIP TAR despite any `.zip` name - extract with
-`tar -xzf`; two failed attempts on the same statement = park with a
-failure note, do not grind.
+**Use the width for more than proofs.** Aristotle is a partner, not just
+a prover - the overnight run's strategy job (`ac230cc8`) and red-team
+(`cb437537`, which caught the TransferPositivity over-claim) were among
+its highest-value returns. Keep roughly 2 of the 8 slots working
+audit/strategy at all times:
+
+- **Grand-strategy reviews** (whole-ladder audits): submit one on day 1
+  (deliverable: sequencing critique of the Q1-Q12 board + the lemma DAG
+  to the YM4 gap + what the run is not seeing) and one at the day-3
+  replan (mid-run course correction against actual progress). Prompt
+  format per `AgentTasks/aristotle-prompts/overnight-ym-ladder-strategy.prompt.md`.
+- **Semantic red-team audits** of every flagship integration (Q1
+  RP-LINK, Q2 transfer space, Q3 sector decomposition): the kernel
+  checked the proof, the red-team checks the MEANING - over-claim
+  scoping, inert hypotheses, convention drift, statement-vs-claim
+  mismatch. One audit job per flagship within a day of its integration.
+- **Statement-design jobs** at branch points (Q6 KP shape is the seeded
+  example in TASK_DIRECTIONS T6): cheaper than burning proof attempts on
+  a wrongly-shaped statement.
+- **Triage** via `aristotle continue --mode ask` on running jobs does
+  not consume a slot.
+
+Everything else carries over: focused standalone Mathlib-only packages
+(`Scripts/prepare_aristotle_focused_submission.ps1`, invoked with
+`pwsh`); skeleton must typecheck with exactly the documented handoff
+`s o r r y`; convention-pin `rfl` lemmas in every geometric package (the
+pattern that produced the 16-minute `1d9b5b19` success - make the
+interface equation DEFINITIONAL so only the hard content remains);
+narrow `lake env lean <file>` instruction; the "no .lake folder" warning
+at submit is expected; `aristotle download --destination <file>`
+produces a GZIP TAR despite any `.zip` name - extract with `tar -xzf`;
+two failed attempts on the same statement = park with a failure note, do
+not grind.
 
 ## Fable escalation resource (new for this run)
 
