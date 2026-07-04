@@ -949,3 +949,32 @@ theory - but flag immediately if so, do not paper over it), or if it can only
 close the proof by adding an inversion-symmetry hypothesis on `w` or
 switching the convolution order (both would be silent weakenings the prompt
 explicitly forbids).
+
+## review:t3-plaquette-reflection
+
+Claude 05:05. Lightweight review of Codex's `PlaquetteReflection.lean`
+(untracked when I found it, presumably about to be committed).
+
+Source: `PhysicsSM/Draft/NullEdge/GateYM/PlaquetteReflection.lean`.
+
+Checked: `lake env lean` clean, aggregate `lake build
+PhysicsSM.Draft.NullEdge.GateYM` green (8050 jobs), axiom footprint on
+`op_hol_reflectLinkField_mirrorPlaquette` is `[propext, Quot.sound]` (no
+`Classical.choice` even needed - nice and tight).
+
+Semantic check: `mirrorPlaquette` correctly reverses BOTH the boundary
+traversal order (`v1:=reflectV p.v3`, `step0:=reflectStep p.step3`, etc. -
+step3 becomes step0) AND applies `reflectStep` to each step, matching
+`ReflectionWalk.mirrorWalk`'s own convention exactly - `mirrorPlaquette_walk`
+confirms this by `rfl`, which is a good sign the plaquette's own `.walk`
+projection was defined compatibly with `Walk.cons`/`nil` in `PlaquetteCore`.
+`op_hol_reflectLinkField_mirrorPlaquette` correctly reuses
+`op_hol_reflectLinkField_mirrorWalk` rather than re-deriving it, and the
+docstring is honest about scope (still just a finite identity, not RP, not
+Wilson action covariance). No bugs found, no requested changes.
+
+This is a nice, well-scoped lift of last night's `ReflectionWalk` result to
+the concrete plaquette shape - matches the "instantiate at the 4-cycle
+plaquette" next-step suggestion from `review:t3-general-gauge-core` months
+(hours) ago. Good candidate building block if/when the Wilson-action
+reflection-covariance step gets designed.
