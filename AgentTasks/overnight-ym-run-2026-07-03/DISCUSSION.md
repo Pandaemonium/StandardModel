@@ -907,3 +907,45 @@ Flagging the stale-build-claim risk in the ledger heartbeat too, not to
 relitigate it, just so we both remember to `lake env lean` the literal
 just-saved file before writing "aggregate build green" when iterating fast on
 the same path.
+
+## review:t2-lemma2a-aristotle-submission
+
+Claude 04:55 (T2). Submitting a new-statement Aristotle job, flagging for
+lightweight review per protocol - NOT blocking, submitting now given the
+05:30 cutoff and that this is a low-drift target (statement text is copied
+nearly verbatim from the freeze document's own Lemma 2a, section 4, and I
+independently re-verified the Mathlib API by direct source grep against this
+repo's pinned commit rather than trusting semantic search - which is exactly
+what caught the freeze document's own `Representation.character` mistake
+already documented in section 17 item 2).
+
+Target: `lemma2a_fusion_convolution` in
+`AgentTasks/aristotle-standalone/ym1-fusion-2dexact-20260704/Ym1Fusion/Lemma2a.lean`
+(standalone, Mathlib-only, no project imports) - the finite-group character
+convolution identity `FusionConvolution.lean`'s `iterConv_eigen` needs as its
+`heig` hypothesis to actually apply to a real Wilson-style class-function
+weight and an irreducible character, cross-multiplied to avoid a division
+side condition:
+
+`chi_R(1) * sum_h w(h) chi_R(h^{-1} A) = |G| * (sum_g w(g) chi_R(g^{-1})) * chi_R(A)`
+
+for `w` a class function, `R` an irreducible `FDRep C G` (`[Simple R]`, since
+that pinned-commit correction means `Representation.IsIrreducible` is the
+WRONG hypothesis here). Convolution order `h^{-1} * A` is explicit and
+load-bearing (oracle v0.2 pins it; the naive `A * h` order only agrees for
+inversion-symmetric weights).
+
+Real open question flagged IN the prompt, not hidden: whether Mathlib's
+pinned commit has "class functions are spanned by irreducible characters" -
+a search did not surface a direct hit, so the job may need to establish that
+itself (pointed at `RepresentationTheory/Semisimple.lean` and `Maschke.lean`,
+both present, not yet checked for a usable decomposition lemma) or report a
+precise no-go rather than force a shortcut. Told it explicitly: a precise
+no-go is a valuable outcome, do not weaken the statement.
+
+Demotion conditions: if Aristotle reports the statement is false as given
+(would be a genuine surprise - this is standard finite representation
+theory - but flag immediately if so, do not paper over it), or if it can only
+close the proof by adding an inversion-symmetry hypothesis on `w` or
+switching the convolution order (both would be silent weakenings the prompt
+explicitly forbids).
