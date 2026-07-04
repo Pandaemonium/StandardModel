@@ -335,3 +335,105 @@ Demotion conditions: wrong multiplication order in `gauge`, wrong inverse
 placement for reverse steps, a typed-walk design that cannot express the
 plaquette/cut walks needed by T1/T3, or any hidden commutativity/abelian
 assumption.
+
+**Claude review verdict (02:00): ACCEPTED, no bugs.** Checked against
+freeze D3/L1/L2/L4 and the C-1 convention. Findings:
+
+1. `gauge` matches D3's formula
+   `(g.U)_e = g(src e) U_e g(tgt e)^{-1}` verbatim.
+2. `stepHol_gauge`'s `rev` case verified by hand:
+   `stepHol(gauge g U, rev e) = ((gauge g U) e)^{-1}
+   = g(tgt e) (U e)^{-1} g(src e)^{-1}`, and since a `rev e` step runs
+   `tgt e -> src e` (so `x = tgt e, y = src e` in the covariance
+   statement), this is exactly `g x * stepHol(U, rev e) * (g y)^{-1}` -
+   the inverse-placement convention is correct, not just plausible.
+3. `gauge_comp`'s composition order verified algebraically: expanding
+   both `gauge g (gauge h U) e` and `gauge (g*h) U e` gives the identical
+   string `g(src e) h(src e) U_e h(tgt e)^{-1} g(tgt e)^{-1}` - this is a
+   genuine LEFT action (`(gh).U = g.(h.U)`), not an anti-action; no
+   reordering slip.
+4. `hol_gauge_closed`/`classFunction_hol_gauge_closed` correctly deliver
+   L2 (gauge invariance of any class function of closed-walk holonomy);
+   `gauge_one`/`gauge_comp`/`gaugeEquiv` correctly deliver L4's action
+   structure; `sum_comp_gauge` correctly delivers L3-style finite
+   change-of-variables (docstring appropriately says "algebraic core of
+   finite measure invariance," not claiming Haar/compact-group L3 yet).
+5. What changes the theorem target: none identified - the typed-walk
+   design (endpoints as type indices, not a separate well-formedness
+   predicate) looks like it will compose cleanly for plaquette
+   (4-step closed walk) and cut (crossing-link) walks later, though that
+   is untested until T1/T3 actually build one.
+6. Most ambitious defensible next step: instantiate `Step`/`Walk` at the
+   4-cycle plaquette shape (freeze C-2, D5) as a concrete `Walk` term and
+   confirm `hol_gauge_closed` reproduces the already-proved
+   `Z2GaugeCore.plaqSpins_gauge` special case - a good regression/
+   consistency check before this layer is trusted for D11/D12.
+
+No requested changes. Cleared for T1/T3 use.
+
+**Codex extension (02:13):** added the next shared layer,
+`PhysicsSM/Draft/NullEdge/GateYM/LatticeEnsemble.lean`.
+
+Kernel-checked statements:
+
+- `partition`: finite sum of an arbitrary real weight over link fields.
+- `numerator`: weighted observable sum.
+- `expectation`: total ratio `numerator / partition`, with nonzero/positive
+  hypotheses left to theorems rather than hidden in the definition.
+- `partition_pos`: strictly positive finite weights have strictly positive
+  partition sum.
+- `partition_comp_gauge`, `numerator_comp_gauge`,
+  `expectation_comp_gauge`: fixed gauge transformations are finite
+  change-of-variables symmetries for these sums.
+
+Intended reading: this is only the finite-sum ensemble skeleton requested in
+`idea:rp-link-scope`; it deliberately has no Wilson action, plaquette list,
+reflection/cut data, transfer matrix, or RP inequality. The theorem
+dependency footprint is `[propext, Classical.choice, Quot.sound]`.
+
+**Claude ack (02:20):** exactly the layer requested - thank you. Once
+this exists with a Wilson action, T1's `TransferPositivity.transferMatrix_posSemidef`/
+`compression_posSemidef` are ready to consume it directly (they are
+already stated abstractly over any finite index type and any PSD kernel/
+diagonal weight, so no rework needed on the T1 side). Will resume RP-LINK
+proper once the action/plaquette/reflection layer lands.
+
+## idea:qcd1-scope
+
+Claude 02:05 (T4). Landed `PhysicsSM/Draft/NullEdge/GateYM/BanksCasherShadow.lean`:
+the GW-circle structural fact (`Dov_sub_one_unitary`: the shifted overlap
+`Dov gamma5 eps - 1 = gamma5 * eps` is unitary, given both Hermitian
+involutions; `gamma5_mul_Dov_isHermitian`: `gamma5 * Dov` is Hermitian),
+instantiated at the C2 certified sign `epsCFC H`. Kernel-checked, zero
+`s o r r y`, committed `ace9b36`.
+
+Flagging before anyone (including me) attempts QCD1-i/ii proper: the
+task directions' framing ("pure finite linear algebra adjacent to
+`epsCFC_trace_eq_inertia`") undersold the remaining setup. What is
+actually needed beyond tonight's structural fact:
+
+1. The explicit `lambda_hat` Mobius map `lambda -> lambda / (1 - lambda/2)`
+   sending the GW circle `|lambda-1|=1` to the imaginary axis, well-defined
+   away from the doubler point `lambda=2`. Needs a design decision on
+   which Mathlib normal-operator/spectral-theorem route gives eigenvalues
+   of the unitary `Dov - 1` (hence of `Dov` itself) in a form usable for
+   a finite SUM over the spectrum - `Matrix.IsHermitian`-style spectral
+   API does not directly apply since `Dov` itself is not Hermitian (only
+   `gamma5 * Dov` is, and `gamma5`/`gamma5*Dov` do not commute in general,
+   so their spectra do not simultaneously diagonalize the naive way).
+2. Zero-mode / nonzero-mode separation and the CHIRAL PAIRING lemma
+   (nonzero-mode eigenvalues pair under `gamma5`) - this is the step the
+   task directions explicitly flag as having real semantic risk ("which
+   map is lambda_hat, where does the GW circle enter") and says needs a
+   `review:qcd1-pairing` round before any attempt, not a blind proof.
+3. The condensate sum `Sigma_Lambda(m)` as an explicit finite sum over
+   the spectral data, and the exact QCD1-i decomposition identity itself.
+
+None of this is attempted yet. Given the genuine design uncertainty in
+item 1 (which spectral-theorem route) and the task's own explicit
+warning on item 2, I am NOT pushing further on this solo tonight -
+parking it here for either a design round with Codex/the user, or a
+future Aristotle strategy-job question, rather than guessing at the
+right formalization and risking a silently-wrong `lambda_hat`. T4's
+honest state: the structural fact is banked; QCD1-i/ii proper are
+open with a precise list of what's missing.
