@@ -26,6 +26,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionCompatibility
+import PhysicsSM.Draft.NullEdge.GateYM.HermitianFromRealQuadraticForm
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
@@ -36,6 +37,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
+import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -348,6 +350,15 @@ against three independent secondary sources during tonight's lit
 sprint since primary-source PDF text could not be extracted; the KP
 CONCLUSION - cluster expansion convergence - needs new Ursell/cluster
 combinatorial infrastructure not yet designed, documented as a handoff
-rather than guessed at). Not part of the default trusted build target.
+rather than guessed at); `PolymerKPConclusion` (YM4/T6 statement-freeze
+layer after strategy job `2427a253` and review thread `review:q6-kp-freeze`:
+ordered finite clusters, the cluster incompatibility graph on distinct slots,
+an abstract `ClusterCoeffData` interface with tree-graph-bound hypothesis, and
+three named theorem targets: bare-KP absolute summability,
+bare-KP convergence with `exp(energyOf)` slack, and a metric tail bound whose
+extra energy-distance coercivity hypothesis is explicit.  The concrete
+Mayer/Ursell coefficient and spanning-tree-count implementation remain draft
+handoffs pending Aristotle job `34d675b8`). Not part of the default trusted
+build target.
 Adding a new YM module? Import it here.
 -/
