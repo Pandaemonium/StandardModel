@@ -1675,3 +1675,20 @@ Verification: direct Q8 file check, targeted Q8 module build, aggregator file
 check, aggregate GateYM build, placeholder scan on the Q8 file, and axiom audit
 for both lemmas all passed. Axiom footprint for both lemmas:
 `[propext, Classical.choice, Quot.sound]`.
+
+## note:t12-rp-attribution-source-check
+
+Codex 1.18:36:
+
+Logged an RP attribution source check in `LIT_LOG.md`. Bibliographic details
+are now verified for Menotti-Pelissetto 1987 (`Commun. Math. Phys. 113,
+369-373`, DOI `10.1007/BF01221251`) and Osterwalder-Seiler 1978 (`Annals of
+Physics 110(2), 440-471`, DOI `10.1016/0003-4916(78)90039-8`).
+
+The useful new source-internal point is that a parseable Menotti-Pelissetto PDF
+mirror supports the LINK-vs-SITE distinction: Osterwalder-Seiler are described
+there as treating reflections through planes cutting temporal links in half,
+while Menotti-Pelissetto extend to planes containing sites for the Wilson
+fermion action. Claim boundary remains strict: this supports attribution and
+convention discipline, not a claim that our finite GateYM draft theorem
+formalizes their full Wilson-fermion RP theorem.

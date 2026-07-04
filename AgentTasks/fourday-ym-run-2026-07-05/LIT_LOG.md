@@ -292,3 +292,60 @@ formalizations or blueprints around OS axioms/reconstruction and constructive
 free/scalar-field QFT, but did not surface a verified Wilson lattice-gauge
 reflection-positivity formalization matching our target; novelty remains an
 open provenance check."
+
+## 2026-07-04 18:36 - Codex - RP attribution source check
+
+Status: BIBLIOGRAPHIC CHECK STRENGTHENED; MENOTTI-PELISSETTO INTERNAL TEXT
+PARTLY CHECKED; OSTERWALDER-SEILER FULL TEXT STILL NOT EXTRACTED.
+
+Sources checked:
+
+- Menotti-Pelissetto Springer page:
+  https://link.springer.com/article/10.1007/BF01221251
+- Menotti-Pelissetto INSPIRE record:
+  https://inspirehep.net/literature/244772
+- Menotti-Pelissetto PDF mirror:
+  https://scispace.com/pdf/general-proof-of-osterwalder-schrader-positivity-for-the-1dpcazlzxm.pdf
+- Osterwalder-Seiler ScienceDirect preview:
+  https://www.sciencedirect.com/science/article/abs/pii/0003491678900398
+
+Bibliographic findings:
+
+- Menotti, P.; Pelissetto, A. "General proof of Osterwalder-Schrader
+  positivity for the Wilson action," Communications in Mathematical Physics
+  113, 369-373 (1987), DOI `10.1007/BF01221251`.
+- Osterwalder, K.; Seiler, E. "Gauge field theories on a lattice," Annals of
+  Physics 110(2), 440-471 (February 1978), DOI
+  `10.1016/0003-4916(78)90039-8`.
+
+Content findings:
+
+- Springer's Menotti-Pelissetto page confirms title, authors, journal, pages,
+  date, DOI, and abstract-level scope. It also states the article PDF is
+  subscription/purchase content from that endpoint.
+- The SciSpace PDF mirror is parseable and appears to contain the CMP article.
+  It supports the internal claim that Menotti-Pelissetto extend the
+  Osterwalder-Seiler reflection-positivity argument from link-cutting
+  reflection planes to site-containing reflection planes for Wilson fermions.
+- The same internal text explicitly distinguishes the two plane types: the
+  Osterwalder-Seiler part is described as the plane cutting temporal links in
+  half, while Menotti-Pelissetto address planes containing sites. This
+  reinforces the run's LINK-vs-SITE convention separation.
+- The ScienceDirect preview for Osterwalder-Seiler confirms the article,
+  bibliographic data, DOI, and abstract-level claims: Euclidean lattice
+  Yang-Mills/fermion approximations, physical positivity of Schwinger
+  functions, a positive self-adjoint transfer matrix, strong-coupling
+  infinite-volume results, Wilson confinement bound, and lattice Higgs
+  mechanism. The internal proof text remains blocked in this environment.
+
+Claim boundary update:
+
+It is now safe to cite Menotti-Pelissetto 1987 bibliographically as the CMP
+Wilson-action RP paper and Osterwalder-Seiler 1978 bibliographically as the
+Annals lattice-gauge/physical-positivity source. The source-internal
+Menotti-Pelissetto text can support the LINK-vs-SITE reflection distinction,
+but the Lean run should not claim to formalize their full theorem: their paper
+concerns Wilson fermions and gauge-invariant observables, while the current
+GateYM work is a finite, clean-room, draft lattice-gauge RP stack with its own
+explicit hypotheses and convention layer. Full Osterwalder-Seiler proof-text
+review remains open.
