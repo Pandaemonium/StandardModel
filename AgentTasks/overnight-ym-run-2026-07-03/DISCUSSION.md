@@ -556,3 +556,89 @@ Kernel-checked statements:
 Intended reading: this connects T1's `reChar` Wilson weight to T3's finite
 product-plaquette ensemble. It still does not define reflection planes, cut
 factorization, tensor-product transfer kernels, or RP-LINK.
+
+## idea:gauge-orbit-average
+
+Codex 03:35. Added a finite orbit-sum identity to
+`PhysicsSM/Draft/NullEdge/GateYM/LatticeEnsemble.lean`.
+
+Kernel-checked statements:
+
+- `gaugeOrbitSumObservable`: the unnormalized sum of an observable over all
+  finite gauge transformations of a configuration.
+- `numerator_gaugeOrbitSumObservable_of_weight_invariant`: under a weight
+  invariant under every finite gauge transformation, the numerator of that
+  gauge-orbit-summed observable is `Fintype.card (V -> G)` times the
+  original numerator.
+
+Intended reading: this is the finite orbit-average precursor needed by
+Elitzur/gauge-projection bookkeeping. It intentionally avoids normalization
+by the gauge-group cardinality for now, since the unnormalized identity is
+the kernel-checked finite-sum core and has no denominator side condition.
+
+## design:reflection-cut-layer
+
+Claude 03:35. Proposing a concrete shape for RP-LINK's remaining
+apparatus (reflection map `theta`, positive-side algebra `A_+`, cut
+structure) so it's ready whenever someone (either of us, or a future
+session) has bandwidth for it - not claiming this tonight, just
+de-risking the design per the "one idea round before ambitious targets"
+rule, since a wrong reflection convention would be exactly the kind of
+silent semantic error the red-team's finding 1 already warned about.
+
+Minimal abstract shape, staying at `GaugeCoreGeneral.OrientedLattice`'s
+level of abstraction (no concrete coordinates needed):
+
+```
+structure Reflection (Lambda : OrientedLattice) where
+  reflectV : Lambda.V -> Lambda.V
+  reflectE : Lambda.E -> Lambda.E
+  reflectV_involutive : Function.Involutive reflectV
+  reflectE_involutive : Function.Involutive reflectE
+  -- a "positive side" predicate on vertices, with the plane itself as
+  -- the fixed-point boundary
+  posSide : Lambda.V -> Prop
+  posSide_iff_not_reflect : forall v, posSide v <-> not (posSide (reflectV v)) -- v and its
+    mirror are on opposite sides (or both on the plane - needs a third case
+    for on-plane vertices, see below)
+  -- reflectE must respect src/tgt so that a link entirely on one side maps
+  -- to a link entirely on the other; a CUT link (crossing the plane) maps
+  -- to itself reversed
+  reflect_src : forall e, Lambda.src (reflectE e) = reflectV (Lambda.tgt e)  -- reversal
+  reflect_tgt : forall e, Lambda.tgt (reflectE e) = reflectV (Lambda.src e)
+```
+
+Open design questions I do NOT think should be resolved solo:
+1. On-plane vertices/cut links need a THIRD case (neither positive nor
+   negative side) - does `posSide` need to be `Lambda.V -> Bool` with a
+   third value, or a separate `onPlane : Lambda.V -> Prop` predicate,
+   or do we sidestep this by defining the cut as "edges whose src and
+   tgt are on opposite sides" (no on-plane vertices at all, matching the
+   physical picture of a plane BETWEEN two layers of sites, cutting only
+   TEMPORAL links) - I believe this last option matches freeze section 6
+   ("a plane bisecting a layer of temporal links") and avoids the
+   three-valued mess, but should be confirmed against Osterwalder-Seiler's
+   actual construction before being locked in (T6 item 1 flagged this
+   exact LINK-reflection detail as still needing primary-source
+   verification).
+2. `A_+` (freeze: "the algebra of functions of links strictly on the
+   positive side") - is this `Lambda.LinkField G -> R` functions that
+   factor through the restriction to positive-side links only, or
+   something else? I'd model it as: `F : Lambda.LinkField G -> R` such
+   that `F` only depends on `U e` for `e` with both endpoints on the
+   positive side (a `Prop`, not a subtype, to avoid restructuring
+   `LinkField`).
+3. The REFLECTED expectation `<(theta F)* F>` needs `theta` lifted from
+   vertices/edges to link FIELDS: `(theta . U) e := U (reflectE e)`
+   composed with possibly a group-element involution (complex conjugation
+   analog) if `R` is complex - for real Wilson actions this may just be
+   `(theta . U) e := U (reflectE e)` with no extra conjugation, but this
+   needs checking against the actual RP inequality's complex-conjugate
+   structure if the observable ring is ever complex.
+
+If Codex wants to take a pass at this (matches your T3 momentum) - happy
+to co-review; if not, I may attempt a first cut later tonight or leave it
+as the clearly-scoped next-session target. Either way, DO NOT let a
+statement here get submitted to Aristotle or promoted without a
+cross-review round given how much semantic risk lives in the reflection
+convention specifically.
