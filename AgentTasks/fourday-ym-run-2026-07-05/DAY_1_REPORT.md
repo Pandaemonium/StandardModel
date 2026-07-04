@@ -53,8 +53,9 @@ returned.
   remains a map layer, not a KP proof.
 - `ExponentialClustering.lean`: Q8 conditional observable bridge from an
   explicit cluster-tail bound plus observable-to-cluster comparison to
-  exponential clustering.  It is kernel-checked and does not claim the hard Q6
-  tail theorem or a concrete Q7 observable expansion.
+  exponential clustering, plus the finite-support observable bridge harvested
+  from Aristotle `2c127e31`. It is kernel-checked and does not claim the hard
+  Q6 tail theorem or a concrete Q7 observable expansion.
 - `MirrorHolonomyConjugation.lean`: Q1/N3 negative result integrated as a
   kernel-checked Lean counterexample from Aristotle `0a46d515`; raw mirror
   holonomy reversal is not generally conjugate to the original plaquette
@@ -73,10 +74,10 @@ COMPLETE+HARVESTED+INTEGRATED as a counterexample), `34d675b8` (Q6
 tree-graph/Ursell, COMPLETE+HARVESTED, definitions integrated), `52f42dd5`
 (Q7 polymer-map audit, COMPLETE+HARVESTED+INTEGRATED), and `788f83b4`
 (Q7 support-indexed-label redesign, COMPLETE+HARVESTED+INTEGRATED), and
-`2c127e31` (Q8 exponential-clustering bridge audit, RUNNING). Two near-collisions
+`2c127e31` (Q8 exponential-clustering bridge audit, COMPLETE+HARVESTED+INTEGRATED). Two near-collisions
 (grand-strategy audit, N3 job) both
 resolved via ledger notes with no wasted duplicate proof work. Current running
-queue after Q2 harvest: `2c127e31`; `e6e46e9f` is IDLE pending Claude/T1
+queue after Q8 harvest: none from Codex; `e6e46e9f` is IDLE pending Claude/T1
 harvest.
 
 ## 4. Board state
@@ -91,9 +92,9 @@ tree-count/Ursell definitions landed; Penrose and abstract KP proof packages
 remain. T7 has map-freeze plus both audit harvests done; the support-indexed
 carrier and decidable overlap-or-touch layer are integrated. The next blocker
 is an honest `KPCondition` instantiation carrying an explicit finite KP sum
-bound, plus concrete connected-support/label APIs. T8 now has a conditional
-statement bridge and a running Aristotle audit; no unconditional clustering
-claim is made.
+bound, plus concrete connected-support/label APIs. T8 now has conditional
+anchor and finite-support observable bridges; no unconditional clustering claim
+is made.
 T9 baseline-done. T11 lasso identity integrated; the remaining YM1 gap is the
 ensemble/partition bridge to the full Theorem 2 expectation statement.
 T12/T13 done. T14 v0.3, 44/44 oracle green.
@@ -113,8 +114,8 @@ sums. The follow-up support-indexed redesign returned and is integrated, so
 that carrier-level overcount is fixed before any KP sum is stated.
 `idea:q8-exponential-clustering-bridge` opened: accepted local move is a
 conditional observable bridge with the Q6 tail estimate and Q7 observable
-expansion as explicit hypotheses; Aristotle `2c127e31` is auditing whether the
-anchor API should be generalized to finite observable supports.
+expansion as explicit hypotheses; Aristotle `2c127e31` returned ACCEPT and the
+finite-support bridge is integrated.
 `review:fable-q3-flux-sector` findings (R3/R4/R5/R7) accepted and integrated
 by codex. `design:q1-reflection-orientation` - claude's doubled-lattice fix
 after a genuine construction failure on naive uniform-reflection lattices.
@@ -133,6 +134,12 @@ dependency audits; Q2 TransferHilbert passed the same local scan/audit.
 Oracle `validate_lgt_core.py` 44/44 green. Pre-commit clean on every commit
 this session.
 
+After the finite-support Q8 harvest, a fresh aggregate GateYM build was
+attempted but is currently blocked by unrelated dirty T1 reflection edits:
+`ReflectionEnsemble.lean` fails with missing `Group G` instances. The Q8 target
+and aggregator file check passed; do not claim a fresh aggregate green build
+until the T1 worktree state is resolved.
+
 ## 7. Honest negatives
 
 T1 strong/shocking tier (genuine cut-plaquette ensemble identification) is
@@ -146,8 +153,9 @@ Q7 still cannot instantiate `KPCondition` from the map layer alone: the
 support-indexed redesign fixed the off-support-label overcount, but an explicit
 finite KP sum bound, concrete connected-support API, and label API are still
 needed before KP/Q8 conclusions.
-Q8 remains conditional: the new bridge proves only that an explicit cluster
-tail estimate and observable expansion imply exponential clustering.
+Q8 remains conditional: the new anchor/support bridges prove only that an
+explicit cluster tail estimate and observable expansion imply exponential
+clustering.
 Fable Q3 call's captured transcript was missing its own Decision verdict
 and R1/R2 (likely log-capture truncation) - flagged, not papered over.
 Primary sources (KP86, OS78) remain paywalled/blocked; relying on
@@ -158,8 +166,9 @@ cross-confirmed secondary sources (Fernandez-Procacci and others).
 1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
    package with the finite KP sum bound as an explicit hypothesis; do not infer
    volume-uniform KP from the small-torus oracle rows.
-2. Harvest `e6e46e9f` if Claude wants T1 handoff help, and `2c127e31` when
-   the Q8 bridge audit returns.
+2. Harvest `e6e46e9f` if Claude wants T1 handoff help; resolve or isolate the
+   current dirty T1 reflection worktree before claiming another aggregate
+   GateYM build.
 3. Start the next Q6 package: the abstract KP proof package against
    `ClusterCoeffData`, keeping the concrete Penrose theorem parked unless a
    focused proof package is ready.

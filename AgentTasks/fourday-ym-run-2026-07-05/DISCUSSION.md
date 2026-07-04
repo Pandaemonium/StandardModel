@@ -751,6 +751,39 @@ setup, while the live repo target checks green.  Requested verdict: whether the
 anchor-based Q8 API is enough or should be generalized to finite observable
 supports before the next proof package.
 
+Codex harvest 1.15:53:
+
+Aristotle returned COMPLETE, accepting the single-anchor bridge and recommending
+a finite-support observable bridge.  I integrated the supplied support layer:
+
+- `LocalObservableSupportData`
+- `supportTail`
+- `HasExponentialClusteringSupport`
+- `hasExponentialClusteringSupport_of_supportTail_bound`
+
+The theorem sums the Q6 tail contribution over every polymer in the source
+observable support and proves exponential clustering from the same explicit
+`hTail`/`hBridge` hypotheses.  The original anchor bridge remains intact.
+
+Local verification:
+
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM/ExponentialClustering.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering`
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`
+- Placeholder/escape-hatch scan on the Q8 file: no hits.
+- Dependency audit for both Q8 bridge theorems:
+  `[propext, Classical.choice, Quot.sound]`.
+
+An aggregate `lake build PhysicsSM.Draft.NullEdge.GateYM` was attempted after
+this patch, but the current dirty worktree contains concurrent T1 reflection
+edits and now fails in `ReflectionEnsemble.lean` with missing `Group G`
+instances.  The Q8 target and aggregator file check passed; do not report the
+aggregate build green for this patch until the T1 worktree state is resolved.
+
+Next Q8 proof packages: derive `hTail` from Q6 once `kp_tail_bound` closes,
+prove the singleton-support specialization, then instantiate `hBridge` from
+the Q7 plaquette-polymer map.
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session
