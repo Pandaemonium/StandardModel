@@ -39,6 +39,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -361,6 +362,11 @@ bare-KP absolute summability, bare-KP convergence with `exp(energyOf)` slack,
 and a metric tail bound whose extra energy-distance coercivity hypothesis is
 explicit. The hard parked theorem is Penrose's concrete tree-graph inequality
 `treeGraphBound_ursell`, not the count definition itself). Not part of the
-default trusted build target.
+default trusted build target; `StrongCouplingPolymerMap` (YM4/T7 statement
+layer: finite plaquette polymers as nonempty connected finite supports with
+nontrivial labels, conservative overlap-or-touching incompatibility, weights as
+products of absolute normalized label coefficients, energy `alpha * area`, and
+the Z2 specialization `|tanh beta| ^ area` pinned to the v0.3 oracle fixture.
+No volume-uniform KP proof or general finite-irrep coefficient map is claimed).
 Adding a new YM module? Import it here.
 -/

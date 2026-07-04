@@ -565,6 +565,38 @@ Review questions before a Lean file:
 - Is the first honest theorem just the Z2 specialization
   `weight = tanh(beta)^area`, with the general finite-group map kept abstract?
 
+## idea:q7-polymer-map implementation note (1.13:58 codex)
+
+Q6 is now resolved enough to create the first Q7 statement file, so I added
+`PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`.
+
+How the review questions are answered in the first freeze:
+
+- Connected support is abstracted as `ConnectedSupport : Finset P -> Prop`.
+  This avoids hard-coding a second graph-connectedness API while still naming
+  the finite support predicate the eventual plaquette geometry must supply.
+- The baseline incompatibility is conservative overlap-or-touching:
+  `SupportsOverlapOrTouch Adj X.support Y.support`.  If the final character
+  expansion only needs overlap, that should become a separately named weaker
+  system and comparison lemma, not a silent weakening of this file.
+- The general finite-G label API remains abstract:
+  `Rlab`, `NontrivialLabel : Rlab -> Prop`, and `gammaAbs : Rlab -> Real`.
+  No claim is made that this is already the project type of simple irreps or
+  that all dimension/multiplicity factors are settled.
+- The first Z2 theorem is the KP-absolute-weight form
+  `|Real.tanh beta| ^ X.support.card`; this matches the Q7/KP use of absolute
+  activities.  A later beta-nonnegative signed `tanh beta` corollary is useful
+  but not needed for this freeze.
+
+The file proves the definitional wrappers, coefficient-product nonnegativity,
+self-incompatibility from nonempty support, and the Z2 weight/energy
+specializations.  It does not prove a volume-uniform KP condition.
+
+Submitted Aristotle audit `52f42dd5`, task `9630de36`, with the prompt
+`AgentTasks/aristotle-prompts/ym-q7-strong-coupling-polymer-map-audit-20260704.prompt.md`.
+The package is source-only and emitted no-toolchain/no-lake-cache warnings on
+submission, so treat it as a design audit, not as a compiled proof package.
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session
