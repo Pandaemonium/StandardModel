@@ -296,6 +296,16 @@ in the requested electric sector, is idempotent, and the nested Bool sum over
 the four electric sectors is the identity on wavefunctions. Still open: Q2
 transfer-kernel construction/preservation for the actual transfer matrix.
 
+Codex follow-up 1.10:57:
+
+Added the abstract transfer-preservation half for the concrete Z2 electric
+sectors. `ElectricKernelInvariant` says a finite kernel is invariant under
+simultaneous base x/y center shifts of target and source configurations;
+`inElectricFluxSector_applyElectricTransfer` proves such a kernel preserves
+every electric sector by finite reindexing, with a trivial-sector corollary.
+This is not yet Q2's transfer matrix, but it is the preservation theorem that
+Q2 should instantiate.
+
 ## lit:menotti-rp-source (seeded from the 2026-07-04 external review)
 
 The review cited a Springer item as "Menotti - general proof of OS

@@ -24,7 +24,8 @@ the file is deliberately narrow:
 * start the concrete electric/center-shift layer: x/y Z2 center shifts,
   plaquette-bit invariance, Z2 electric sectors as shift eigenconditions,
   electric-sector projections, decomposition as the sum of the four electric
-  projections, and preservation of those sectors by plaquette-bit observables.
+  projections, preservation by abstract shift-invariant finite kernels, and
+  preservation by plaquette-bit observables.
 
 It does not construct the transfer matrix, prove a spectral theorem, or claim
 that the local gap is positive. The concrete winding-cycle holonomy
@@ -432,6 +433,20 @@ theorem yShift_involutive (j0 : Fin Ly) :
   cases U
   simp [yShift, yShiftFactor, applyLinkFactor]
 
+/-- The x-center shift as a permutation of the finite configuration space. -/
+def xShiftEquiv (i0 : Fin Lx) : Equiv.Perm (TorusLinkField Lx Ly) where
+  toFun := xShift i0
+  invFun := xShift i0
+  left_inv := xShift_involutive i0
+  right_inv := xShift_involutive i0
+
+/-- The y-center shift as a permutation of the finite configuration space. -/
+def yShiftEquiv (j0 : Fin Ly) : Equiv.Perm (TorusLinkField Lx Ly) where
+  toFun := yShift j0
+  invFun := yShift j0
+  left_inv := yShift_involutive j0
+  right_inv := yShift_involutive j0
+
 /-- Concrete Z2 x- and y-center shifts commute. -/
 theorem xShift_yShift_comm (i0 : Fin Lx) (j0 : Fin Ly)
     (U : TorusLinkField Lx Ly) :
@@ -564,6 +579,93 @@ theorem sum_electricSectorProjection_eq_self
   funext U
   simp [electricSectorProjection, z2Character]
   ring
+
+/-! ## Abstract electric transfer kernels -/
+
+/-- A finite kernel is invariant under the base Z2 electric center shifts when
+it is unchanged by simultaneous x-shift or simultaneous y-shift of target and
+source configurations.
+
+This is the exact property the eventual Q2 transfer kernel must satisfy to
+preserve the concrete Z2 electric sectors. This definition is not itself a
+construction of the transfer matrix. -/
+def ElectricKernelInvariant (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex) : Prop :=
+  (forall U V,
+    K (xShift (baseX hLx) U) (xShift (baseX hLx) V) = K U V) ∧
+  (forall U V,
+    K (yShift (baseY hLy) U) (yShift (baseY hLy) V) = K U V)
+
+/-- The finite transfer action of an abstract kernel on Z2 torus
+wavefunctions. This is still only an abstract finite-kernel action, not Q2's
+transfer matrix. -/
+def applyElectricTransfer
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex)
+    (psi : TorusLinkField Lx Ly -> Complex) :
+    TorusLinkField Lx Ly -> Complex :=
+  fun U => ∑ V : TorusLinkField Lx Ly, K U V * psi V
+
+/-- Any finite kernel invariant under the base center shifts preserves every
+concrete Z2 electric-flux sector. -/
+theorem inElectricFluxSector_applyElectricTransfer
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex)
+    (ex ey : Bool) (psi : TorusLinkField Lx Ly -> Complex)
+    (hK : ElectricKernelInvariant hLx hLy K)
+    (hpsi : InElectricFluxSector hLx hLy ex ey psi) :
+    InElectricFluxSector hLx hLy ex ey (applyElectricTransfer K psi) := by
+  constructor
+  · intro U
+    unfold applyElectricTransfer
+    calc
+      (∑ V : TorusLinkField Lx Ly, K (xShift (baseX hLx) U) V * psi V)
+          = ∑ V : TorusLinkField Lx Ly,
+              K (xShift (baseX hLx) U) (xShift (baseX hLx) V) *
+                psi (xShift (baseX hLx) V) := by
+              simpa [xShiftEquiv] using
+                (Equiv.sum_comp (xShiftEquiv (baseX hLx))
+                  (fun V : TorusLinkField Lx Ly =>
+                    K (xShift (baseX hLx) U) V * psi V)).symm
+      _ = ∑ V : TorusLinkField Lx Ly, K U V * (z2Character ex * psi V) := by
+              apply Finset.sum_congr rfl
+              intro V _hV
+              rw [hK.1 U V, hpsi.1 V]
+      _ = z2Character ex * ∑ V : TorusLinkField Lx Ly, K U V * psi V := by
+              rw [Finset.mul_sum]
+              apply Finset.sum_congr rfl
+              intro V _hV
+              ring
+  · intro U
+    unfold applyElectricTransfer
+    calc
+      (∑ V : TorusLinkField Lx Ly, K (yShift (baseY hLy) U) V * psi V)
+          = ∑ V : TorusLinkField Lx Ly,
+              K (yShift (baseY hLy) U) (yShift (baseY hLy) V) *
+                psi (yShift (baseY hLy) V) := by
+              simpa [yShiftEquiv] using
+                (Equiv.sum_comp (yShiftEquiv (baseY hLy))
+                  (fun V : TorusLinkField Lx Ly =>
+                    K (yShift (baseY hLy) U) V * psi V)).symm
+      _ = ∑ V : TorusLinkField Lx Ly, K U V * (z2Character ey * psi V) := by
+              apply Finset.sum_congr rfl
+              intro V _hV
+              rw [hK.2 U V, hpsi.2 V]
+      _ = z2Character ey * ∑ V : TorusLinkField Lx Ly, K U V * psi V := by
+              rw [Finset.mul_sum]
+              apply Finset.sum_congr rfl
+              intro V _hV
+              ring
+
+/-- Shift-invariant abstract finite kernels preserve the concrete Z2 trivial
+electric sector. -/
+theorem trivialElectricFlux_applyElectricTransfer
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (K : TorusLinkField Lx Ly -> TorusLinkField Lx Ly -> Complex)
+    (psi : TorusLinkField Lx Ly -> Complex)
+    (hK : ElectricKernelInvariant hLx hLy K)
+    (hpsi : TrivialElectricFlux hLx hLy psi) :
+    TrivialElectricFlux hLx hLy (applyElectricTransfer K psi) :=
+  inElectricFluxSector_applyElectricTransfer hLx hLy K false false psi hK hpsi
 
 /-- A diagonal observable is invariant under all concrete Z2 center shifts. -/
 def CenterShiftInvariantObservable (O : TorusLinkField Lx Ly -> Complex) : Prop :=
