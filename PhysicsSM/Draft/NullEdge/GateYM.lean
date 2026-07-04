@@ -246,14 +246,16 @@ observable multiplication preserves winding-sector support. The concrete Z2
 projection API proves winding-sector projection idempotence/orthogonality,
 decomposition as the sum over all four winding labels, and that any
 winding-label-preserving finite kernel preserves sectors and commutes with
-the winding-sector projection. After Fable Q3 review this file is explicitly
-scoped as magnetic support/projection bookkeeping, not yet the final
-electric/center-shift D12 sector decomposition; arbitrary plaquette flips are
-not claimed to preserve `windingLabel`, `QuantumNumbers` uses a sector
+the winding-sector projection. After Fable Q3 review the original support
+layer is explicitly scoped as magnetic bookkeeping; arbitrary plaquette flips
+are not claimed to preserve `windingLabel`, `QuantumNumbers` uses a sector
 predicate instead of a total label on states, and the flux/local gap names are
-marked irreducible to avoid silent definitional conflation. The actual Q2
-transfer-kernel construction and center-shift sector redesign remain future
-work);
+marked irreducible to avoid silent definitional conflation. The file now also
+starts the corrected electric/center-shift Z2 layer: concrete x/y center
+shifts, plaquette-bit invariance under those shifts, electric sectors as base
+shift eigenconditions, and preservation of those sectors by plaquette-bit
+observables. The actual Q2 transfer-kernel construction and the four electric
+sector projection/decomposition theorem remain future work);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

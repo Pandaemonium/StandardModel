@@ -21,6 +21,9 @@ the file is deliberately narrow:
 * expose the diagonal sector projection and prove that any kernel with no
   matrix entries between different winding labels preserves sectors and
   commutes with the projection.
+* start the concrete electric/center-shift layer: x/y Z2 center shifts,
+  plaquette-bit invariance, Z2 electric sectors as shift eigenconditions,
+  and preservation of those sectors by plaquette-bit observables.
 
 It does not construct the transfer matrix, prove a spectral theorem, or claim
 that the local gap is positive. The concrete winding-cycle holonomy
@@ -35,6 +38,11 @@ decomposition. Configuration-level plaquette flips do not preserve the
 base-cycle `windingLabel` in general; diagonal observable multiplication
 preserves support tautologically and should not be mistaken for a
 non-vacuous transfer-preservation theorem.
+
+The electric/center-shift declarations in this file are the first concrete
+Z2 instance of that corrected target. They still do not construct the Q2
+transfer matrix or prove the four electric-sector projections resolve the
+identity.
 
 Provenance: `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`, section 14,
 Q3, and `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`,
@@ -389,6 +397,157 @@ theorem hasTrivialWinding_applyVertexGauge (hLx : 0 < Lx) (hLy : 0 < Ly)
       HasTrivialWinding hLx hLy U := by
   unfold HasTrivialWinding
   rw [windingLabel_applyVertexGauge hLx hLy gamma U]
+
+/-! ## Concrete Z2 electric center shifts -/
+
+/-- The Z2 center shift that flips every horizontal link in column `i0`. -/
+def xShiftFactor (i0 : Fin Lx) : LinkFactor Lx Ly where
+  hFactor i _ := decide (i = i0)
+  vFactor _ _ := false
+
+/-- The Z2 center shift that flips every vertical link in row `j0`. -/
+def yShiftFactor (j0 : Fin Ly) : LinkFactor Lx Ly where
+  hFactor _ _ := false
+  vFactor _ j := decide (j = j0)
+
+/-- Apply the Z2 x-center shift at column `i0`. -/
+def xShift (i0 : Fin Lx) (U : TorusLinkField Lx Ly) : TorusLinkField Lx Ly :=
+  applyLinkFactor (xShiftFactor i0) U
+
+/-- Apply the Z2 y-center shift at row `j0`. -/
+def yShift (j0 : Fin Ly) (U : TorusLinkField Lx Ly) : TorusLinkField Lx Ly :=
+  applyLinkFactor (yShiftFactor j0) U
+
+/-- Z2 x-center shifts are involutions. -/
+theorem xShift_involutive (i0 : Fin Lx) :
+    Function.Involutive (xShift (Lx := Lx) (Ly := Ly) i0) := by
+  intro U
+  cases U
+  simp [xShift, xShiftFactor, applyLinkFactor]
+
+/-- Z2 y-center shifts are involutions. -/
+theorem yShift_involutive (j0 : Fin Ly) :
+    Function.Involutive (yShift (Lx := Lx) (Ly := Ly) j0) := by
+  intro U
+  cases U
+  simp [yShift, yShiftFactor, applyLinkFactor]
+
+/-- The Z2 plaquette holonomy bit around the plaquette based at `(i,j)`.
+
+This is the Bool/XOR analogue of the finite-group plaquette holonomy in
+`CenterFluxSector.lean`; orientation inverses are invisible in Z2. -/
+def plaquetteBit (U : TorusLinkField Lx Ly) (i : Fin Lx) (j : Fin Ly) : Bool :=
+  U.hLink i j ^^ U.vLink (finRotate Lx i) j ^^
+    U.hLink i (finRotate Ly j) ^^ U.vLink i j
+
+/-- Z2 x-center shifts preserve every plaquette bit. -/
+theorem plaquetteBit_xShift (i0 : Fin Lx)
+    (U : TorusLinkField Lx Ly) (i : Fin Lx) (j : Fin Ly) :
+    plaquetteBit (xShift i0 U) i j = plaquetteBit U i j := by
+  by_cases hi : i = i0 <;>
+    simp [plaquetteBit, xShift, xShiftFactor, applyLinkFactor, hi]
+
+/-- Z2 y-center shifts preserve every plaquette bit. -/
+theorem plaquetteBit_yShift (j0 : Fin Ly)
+    (U : TorusLinkField Lx Ly) (i : Fin Lx) (j : Fin Ly) :
+    plaquetteBit (yShift j0 U) i j = plaquetteBit U i j := by
+  by_cases hj : j = j0 <;>
+    simp [plaquetteBit, yShift, yShiftFactor, applyLinkFactor, hj]
+
+/-- The two Z2 characters, encoded by a Bool sector bit. `false` is the
+trivial character and `true` is the sign character. -/
+def z2Character (b : Bool) : Complex := if b then -1 else 1
+
+/-- The x-center shift operator on wavefunctions. -/
+def xShiftOp (i0 : Fin Lx) (psi : TorusLinkField Lx Ly -> Complex) :
+    TorusLinkField Lx Ly -> Complex :=
+  fun U => psi (xShift i0 U)
+
+/-- The y-center shift operator on wavefunctions. -/
+def yShiftOp (j0 : Fin Ly) (psi : TorusLinkField Lx Ly -> Complex) :
+    TorusLinkField Lx Ly -> Complex :=
+  fun U => psi (yShift j0 U)
+
+/-- Z2 electric-flux sectors as base x/y center-shift eigenconditions.
+
+This is the electric/center-shift sector notion requested by the Fable Q3
+review, not the magnetic support predicate `SupportedInFlux` below. -/
+def InElectricFluxSector (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (psi : TorusLinkField Lx Ly -> Complex) : Prop :=
+  (forall U, psi (xShift (baseX hLx) U) = z2Character ex * psi U) ∧
+  (forall U, psi (yShift (baseY hLy) U) = z2Character ey * psi U)
+
+/-- The D12 trivial electric flux sector in the concrete Z2 torus model. -/
+def TrivialElectricFlux (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (psi : TorusLinkField Lx Ly -> Complex) : Prop :=
+  InElectricFluxSector hLx hLy false false psi
+
+/-- A diagonal observable is invariant under all concrete Z2 center shifts. -/
+def CenterShiftInvariantObservable (O : TorusLinkField Lx Ly -> Complex) : Prop :=
+  (forall i0 U, O (xShift i0 U) = O U) ∧
+  (forall j0 U, O (yShift j0 U) = O U)
+
+/-- Any observable factoring through the full plaquette-bit field is invariant
+under all concrete Z2 center shifts. -/
+theorem centerShiftInvariant_of_factorsThroughPlaquetteBits
+    (f : (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    CenterShiftInvariantObservable
+      (fun U : TorusLinkField Lx Ly => f (fun i j => plaquetteBit U i j)) := by
+  constructor
+  · intro i0 U
+    apply congrArg f
+    funext i j
+    exact plaquetteBit_xShift i0 U i j
+  · intro j0 U
+    apply congrArg f
+    funext i j
+    exact plaquetteBit_yShift j0 U i j
+
+/-- Multiplication by a center-shift-invariant diagonal observable preserves
+every concrete Z2 electric-flux sector. -/
+theorem inElectricFluxSector_multiplyCenterInvariantObservable
+    (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (O psi : TorusLinkField Lx Ly -> Complex)
+    (hO : CenterShiftInvariantObservable O)
+    (hpsi : InElectricFluxSector hLx hLy ex ey psi) :
+    InElectricFluxSector hLx hLy ex ey (fun U => O U * psi U) := by
+  constructor
+  · intro U
+    change O (xShift (baseX hLx) U) * psi (xShift (baseX hLx) U) =
+      z2Character ex * (O U * psi U)
+    rw [hO.1 (baseX hLx) U, hpsi.1 U]
+    ring
+  · intro U
+    change O (yShift (baseY hLy) U) * psi (yShift (baseY hLy) U) =
+      z2Character ey * (O U * psi U)
+    rw [hO.2 (baseY hLy) U, hpsi.2 U]
+    ring
+
+/-- Multiplication by any plaquette-bit observable preserves every concrete
+Z2 electric-flux sector. -/
+theorem inElectricFluxSector_multiplyPlaquetteObservable
+    (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (f : (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (psi : TorusLinkField Lx Ly -> Complex)
+    (hpsi : InElectricFluxSector hLx hLy ex ey psi) :
+    InElectricFluxSector hLx hLy ex ey
+      (fun U : TorusLinkField Lx Ly =>
+        f (fun i j => plaquetteBit U i j) * psi U) :=
+  inElectricFluxSector_multiplyCenterInvariantObservable hLx hLy ex ey
+    (fun U : TorusLinkField Lx Ly => f (fun i j => plaquetteBit U i j))
+    psi (centerShiftInvariant_of_factorsThroughPlaquetteBits f) hpsi
+
+/-- Multiplication by any plaquette-bit observable preserves the concrete Z2
+D12 trivial electric flux sector. -/
+theorem trivialElectricFlux_multiplyPlaquetteObservable
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (f : (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (psi : TorusLinkField Lx Ly -> Complex)
+    (hpsi : TrivialElectricFlux hLx hLy psi) :
+    TrivialElectricFlux hLx hLy
+      (fun U : TorusLinkField Lx Ly =>
+        f (fun i j => plaquetteBit U i j) * psi U) :=
+  inElectricFluxSector_multiplyPlaquetteObservable hLx hLy false false f psi hpsi
 
 /-! ## Sector projections and label-preserving transfer kernels -/
 

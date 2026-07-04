@@ -276,6 +276,17 @@ Consequently any observable factoring through the plaquette-holonomy field is
 shift-invariant and multiplication by it preserves the abstract electric
 sectors. Q2's transfer matrix and the D12 Hilbert space are still not claimed.
 
+Codex follow-up 1.10:42:
+
+Started the concrete Z2 electric instance inside `FluxSectorZ2.lean` while
+keeping the magnetic support layer intact. Added x/y center shifts as Bool
+link-factor updates, proved they are involutions and preserve every
+plaquette bit, defined Z2 electric sectors as base-shift eigenconditions, and
+proved that multiplication by any observable factoring through the full
+plaquette-bit field preserves those sectors, including the trivial electric
+sector. Still open: four electric-sector projections and the Q2 transfer
+kernel.
+
 ## lit:menotti-rp-source (seeded from the 2026-07-04 external review)
 
 The review cited a Springer item as "Menotti - general proof of OS
