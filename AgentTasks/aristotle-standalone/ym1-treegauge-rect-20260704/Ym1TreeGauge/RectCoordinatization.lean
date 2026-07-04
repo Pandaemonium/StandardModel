@@ -218,21 +218,82 @@ theorem rectPlaquette_hol_formula {Lx Ly : ℕ} {G : Type} [Group G]
           * ((U (Sum.inl (p.1, p.2.succ)))⁻¹
             * ((U (Sum.inr (p.1.castSucc, p.2)))⁻¹ * 1))) := rfl
 
+/-- The designed-in forward map: a link field maps to its tuple of plaquette
+holonomies together with its restriction to the tree links. With this choice
+the interface field `hol_coord` is definitional. -/
+def rectToCoord (Lx Ly : ℕ) (G : Type) [Group G] :
+    (rectLattice Lx Ly).LinkField (G := G) →
+      (Fin Lx × Fin Ly → G) × (RectTree Lx Ly → G) :=
+  fun U => (fun p => (rectPlaquette Lx Ly p).hol U, fun t => U (treeLink Lx Ly t))
+
+/-
+Row-independence induction core: if two link fields agree on all
+horizontal links (`h_h`), agree on the leftmost vertical column (`h_v0`),
+and have equal plaquette holonomies (`h_hol`), then they agree on every
+vertical link, proved by `Fin.induction` on the column index `i` within each
+row `j` using `rectPlaquette_hol_formula`.
+-/
+lemma rectVertical_eq {Lx Ly : ℕ} {G : Type} [Group G]
+    (U U' : (rectLattice Lx Ly).LinkField (G := G))
+    (h_h : ∀ h, U (Sum.inl h) = U' (Sum.inl h))
+    (h_v0 : ∀ j : Fin Ly, U (Sum.inr ((0 : Fin (Lx + 1)), j))
+      = U' (Sum.inr ((0 : Fin (Lx + 1)), j)))
+    (h_hol : ∀ p : Fin Lx × Fin Ly,
+      (rectPlaquette Lx Ly p).hol U = (rectPlaquette Lx Ly p).hol U') :
+    ∀ (j : Fin Ly) (i : Fin (Lx + 1)), U (Sum.inr (i, j)) = U' (Sum.inr (i, j)) := by
+  -- Fix `j`, then induct on the column index `i` with `Fin.induction`.
+  intro j i
+  induction' i using Fin.induction with i ih
+  · exact h_v0 j
+  · specialize h_hol (i, j)
+    simp_all +decide [rectPlaquette_hol_formula]
+
+/-- The forward map `rectToCoord` is injective. -/
+lemma rectToCoord_injective (Lx Ly : ℕ) (G : Type) [Group G] :
+    Function.Injective (rectToCoord Lx Ly G) := by
+  intro U U' h
+  have h1 := congrArg Prod.fst h
+  have h2 := congrArg Prod.snd h
+  have h_hol : ∀ p : Fin Lx × Fin Ly,
+      (rectPlaquette Lx Ly p).hol U = (rectPlaquette Lx Ly p).hol U' := by
+    intro p; exact congrFun h1 p
+  have h_tree : ∀ t : RectTree Lx Ly, U (treeLink Lx Ly t) = U' (treeLink Lx Ly t) := by
+    intro t; exact congrFun h2 t
+  have h_h : ∀ hh : Fin Lx × Fin (Ly + 1), U (Sum.inl hh) = U' (Sum.inl hh) := by
+    intro hh; exact h_tree (Sum.inl hh)
+  have h_v0 : ∀ j : Fin Ly, U (Sum.inr ((0 : Fin (Lx + 1)), j))
+      = U' (Sum.inr ((0 : Fin (Lx + 1)), j)) := by
+    intro j; exact h_tree (Sum.inr j)
+  have h_v := rectVertical_eq U U' h_h h_v0 h_hol
+  funext e
+  cases e with
+  | inl hh => exact h_h hh
+  | inr v =>
+    obtain ⟨i, j⟩ := v
+    exact h_v j i
+
+/-
+Cardinality bookkeeping: the domain and codomain of `rectToCoord` are
+finite types of the same cardinality `(card G) ^ (2*Lx*Ly + Lx + Ly)`.
+-/
+lemma rectToCoord_card (Lx Ly : ℕ) (G : Type) [Group G] [Fintype G] :
+    Fintype.card (RectE Lx Ly → G)
+      = Fintype.card ((Fin Lx × Fin Ly → G) × (RectTree Lx Ly → G)) := by
+  simp +decide only [RectE, Fintype.card_fun, Fintype.card_sum, Fintype.card_prod, Fintype.card_fin, RectTree];
+  rw [ ← pow_add ] ; ring
+
 /-- **TARGET.** The comb-gauge plaquette coordinatization of the 2D open
 rectangle: link fields are equivalent to (plaquette holonomies) x (tree link
-values), with plaquette holonomies as the plaquette coordinates.
-
-Design note (see module docstring): take
-`coord := Equiv.ofBijective toCoord hbij` with
-`toCoord U := (fun p => (rectPlaquette Lx Ly p).hol U, fun t => U (treeLink Lx Ly t))`,
-so `hol_coord` is `rfl`; the content is the bijectivity of `toCoord`,
-provable by injectivity (per-row `Fin.induction` using
-`rectPlaquette_hol_formula`) plus cardinality bookkeeping, or by an explicit
-per-row recursive inverse. -/
+values), with plaquette holonomies as the plaquette coordinates. -/
 noncomputable def rectCoordinatization (Lx Ly : ℕ) (G : Type) [Group G]
     [Fintype G] :
     PlaquetteCoordinatization (rectLattice Lx Ly) G
       (rectPlaquette Lx Ly) (RectTree Lx Ly) := by
-  sorry
+  haveI : Fintype (rectLattice Lx Ly).E := inferInstanceAs (Fintype (RectE Lx Ly))
+  haveI : DecidableEq (rectLattice Lx Ly).E := inferInstanceAs (DecidableEq (RectE Lx Ly))
+  refine { coord := Equiv.ofBijective (rectToCoord Lx Ly G) ?_, hol_coord := fun _ _ => rfl }
+  rw [Fintype.bijective_iff_injective_and_card]
+  refine ⟨rectToCoord_injective Lx Ly G, ?_⟩
+  convert rectToCoord_card Lx Ly G using 2
 
 end Ym1TreeGauge

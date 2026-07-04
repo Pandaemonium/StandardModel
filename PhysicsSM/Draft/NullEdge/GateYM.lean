@@ -6,6 +6,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
 import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
+import PhysicsSM.Draft.NullEdge.GateYM.RectTreeGauge
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
@@ -96,6 +97,16 @@ link-ensemble level. Remaining geometric gap, stated in the module docstring:
 constructing a coordinatization for the concrete 2D open rectangle and the
 comb-ordering lasso identification of the boundary-circuit Wilson loop with
 the ordered plaquette-holonomy product; axiom footprint
+[propext, Classical.choice, Quot.sound]);
+`RectTreeGauge` (YM1, Aristotle `1d9b5b19` integrated: the concrete
+`Lx x Ly` open-rectangle lattice with counterclockwise plaquettes
+(holonomy formula kernel-pinned by a `rfl` lemma), the comb-gauge
+`PlaquetteCoordinatization` (forward map = holonomies + tree restriction,
+bijectivity by per-row `Fin.induction` injectivity + cardinality), and
+`rect_wilson_loop_expectation_area_law`: the Wilson area law
+`chi_R(1) * gamma^m` as a link-ensemble expectation on a CONCRETE lattice.
+Remaining to the freeze Theorem 2 statement: only the boundary-circuit
+lasso identification of the observable; axiom footprint
 [propext, Classical.choice, Quot.sound]);
 `FusionTransferSpectrum` (YM1/gap lane: the fusion convolution as a linear
 endomorphism of `G -> C` with kernel-checked `Module.End` spectrum - the

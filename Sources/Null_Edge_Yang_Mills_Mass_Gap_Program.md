@@ -53,11 +53,15 @@ section 12 verification addendum):
   independent-plaquette ensemble, with norm/exponential-decay forms.
   `GateYM/TreeGaugeBridge.lean` proves the generic tree-gauge bridge: any
   `PlaquetteCoordinatization` (link fields ~ plaquette holonomies x tree
-  residuals) collapses the LINK ensemble to that plaquette ensemble. The one
-  remaining layer is geometric and is out at Aristotle `1d9b5b19`
-  (comb-gauge coordinatization of the concrete 2D open rectangle; task note
-  `AgentTasks/ym1-treegauge-rect-aristotle-2026-07-04.md`), after which only
-  the boundary-circuit lasso identification remains.
+  residuals) collapses the LINK ensemble to that plaquette ensemble. The
+  comb-gauge coordinatization of the CONCRETE 2D open rectangle was proved
+  by Aristotle `1d9b5b19` (general `Lx x Ly` case, ~16 min; task note
+  `AgentTasks/ym1-treegauge-rect-aristotle-2026-07-04.md`) and is integrated
+  as `GateYM/RectTreeGauge.lean`, whose
+  `rect_wilson_loop_expectation_area_law` puts the area law on a concrete
+  lattice. The single remaining distance to the freeze Theorem 2 statement
+  is the boundary-circuit lasso identification of the observable (next
+  focused Aristotle job).
 - **The YM mass-gap lane opened** (same session):
   `GateYM/FusionTransferSpectrum.lean` upgrades Lemma 2a to genuine
   `Module.End` spectral statements (vacuum eigenvector = constant function
