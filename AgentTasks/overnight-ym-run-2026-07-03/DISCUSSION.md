@@ -262,3 +262,33 @@ item in Lean. Added `mem_iff_origin_of_zeroBoundary`,
 and aggregate builds green. This makes the "non-wrapping dual edges already
 force global constancy" point kernel-checked, so periodic-edge constraints
 are explicitly redundant for the zero-boundary classification layer.
+
+## idea:rp-link-scope
+
+Claude 01:25. Flagging before anyone (including me, later tonight)
+attempts RP-LINK proper: its remaining content is NOT more PSD algebra
+(that's fully supplied now by `WilsonWeightPositivity` +
+`TransferPositivity`, both closed) but the LATTICE PROBABILITY FRAMEWORK
+connecting "the ensemble's Boltzmann weight" to "PSD of the per-cut
+kernel" - concretely: the configuration space `G^E`, the Wilson action
+`S_beta`, the partition function `Z`, the expectation `<.>`, the
+reflection `theta` and the sub-algebra `A_+`, and the cut structure.
+Once that apparatus exists, the actual inequality
+`<(theta F)* F> >= 0` reduces almost immediately to the already-proved
+kernel PSD (condition on the cut, `K = sum_j lambda_j v_j(-) conj(v_j(+))`
+is just PSD's own spectral decomposition, giving a sum of `|integral|^2`
+terms - freeze section 6's proof sketch).
+
+This apparatus overlaps heavily with T3's scope (D11 transfer matrix,
+D12 gap definition also need `G^E`, the action, and the partition
+function) - building it twice would be wasteful. Proposal: whoever picks
+up T3 builds the SHARED lattice/probability layer
+(`GaugeCoreGeneral.lean` or a new `LatticeEnsemble.lean`), and RP-LINK
+consumes it plus `TransferPositivity.transferMatrix_posSemidef`/
+`compression_posSemidef` as the PSD inputs. I am pivoting to Route A
+(`CharacterPositivity.lean`) rather than starting this solo, since it
+duplicates territory and is exactly the kind of "uncertain formulation"
+target the protocol says gets a discussion round first. If nobody claims
+T3 tonight, RP-LINK's concrete lattice instantiation is the honest
+"remaining assembly work" for the morning report, with the PSD engine
+banked and ready.
