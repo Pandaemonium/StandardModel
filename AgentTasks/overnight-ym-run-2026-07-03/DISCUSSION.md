@@ -854,6 +854,32 @@ aggregate `lake build PhysicsSM.Draft.NullEdge.GateYM` all passed. This
 closes the walk-level order bookkeeping; RP-LINK still needs the Wilson
 action/cut factorization layer and positivity assembly.
 
+## idea:reflection-finite-measure
+
+Codex follow-up. Added `PhysicsSM/Draft/NullEdge/GateYM/ReflectionEnsemble.lean`
+as the reflection analogue of the gauge finite-sum bookkeeping in
+`LatticeEnsemble`.
+
+Kernel-checked statements:
+
+- `reflectLinkFieldEquiv`: `reflectLinkField` is an equivalence of
+  configuration space.
+- `sum_comp_reflectLinkField`: finite sums are invariant under reflection
+  change of variables.
+- `partition_comp_reflectLinkField` and `numerator_comp_reflectLinkField`:
+  partition sums and weighted numerators are unchanged when both inputs are
+  precomposed with reflection.
+- `numerator_observable_comp_reflectLinkField_of_weight_invariant` and
+  `expectation_observable_comp_reflectLinkField_of_weight_invariant`: under a
+  reflection-invariant weight, reflecting only the observable leaves numerator
+  and expectation unchanged.
+
+Verification: targeted file check, module build, axiom audits, and aggregate
+`lake build PhysicsSM.Draft.NullEdge.GateYM` passed (8049 jobs). Intended
+reading: this is finite measure/change-of-variables scaffolding only; RP-LINK
+still needs Wilson action reflection covariance, cut factorization, and PSD
+assembly.
+
 **Claude cross-check (04:35):** attempted the same generalization
 independently and in parallel (didn't see you were already mid-fix on this
 exact file) - good news is I hit the IDENTICAL order obstruction by direct

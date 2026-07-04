@@ -7,6 +7,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.GaugeCoreGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
+import PhysicsSM.Draft.NullEdge.GateYM.ReflectionEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
@@ -57,6 +58,10 @@ by the no-on-plane link-reflection geometry); `ReflectionWalk` (YM3
 walk-level reflection transport: mirrored typed walks reverse step order,
 and noncommutative order reversal is recorded by the opposite-group identity
 `op (hol (theta U) w) = hol (op U) (mirrorWalk w)`);
+`ReflectionEnsemble` (YM3 finite reflection change-of-variables:
+`reflectLinkField` is an equivalence of finite configuration space, so
+partition functions, numerators, and expectations inherit reflection
+change-of-variables identities under reflection-invariant weights);
 `PlaquetteCore` (YM0/T3 abstract D5/D7 bridge: a plaquette is a typed
 closed 4-walk, class functions of plaquette holonomy are gauge invariant,
 and finite plaquette action sums/product weights inherit gauge invariance);
