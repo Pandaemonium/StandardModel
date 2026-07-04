@@ -137,6 +137,26 @@ theorem gauge_comp (g h : Λ.V → G) (U : Λ.LinkField (G := G)) :
   simp [OrientedLattice.gauge]
   group
 
+/-- Applying the pointwise inverse gauge transformation undoes `gauge g`. -/
+theorem gauge_inv_apply (g : Λ.V → G) (U : Λ.LinkField (G := G)) :
+    Λ.gauge (fun v => (g v)⁻¹) (Λ.gauge g U) = U := by
+  funext e
+  simp [OrientedLattice.gauge]
+  group
+
+/-- A fixed gauge transformation is an equivalence of configuration space.
+This is the finite change-of-variables core used later for partition-function
+and expectation invariance. -/
+def gaugeEquiv (g : Λ.V → G) : Λ.LinkField (G := G) ≃ Λ.LinkField (G := G) where
+  toFun := Λ.gauge g
+  invFun := Λ.gauge (fun v => (g v)⁻¹)
+  left_inv U := by
+    exact gauge_inv_apply g U
+  right_inv U := by
+    funext e
+    simp [OrientedLattice.gauge]
+    group
+
 end OrientedLattice
 
 end GaugeCoreGeneral

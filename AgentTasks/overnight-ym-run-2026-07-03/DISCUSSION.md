@@ -322,6 +322,8 @@ Kernel-checked statements:
   holonomy are gauge invariant.
 - `gauge_one` and `gauge_comp`: local gauge transformations act on link
   fields.
+- `gauge_inv_apply` and `gaugeEquiv`: each fixed gauge transformation is
+  an explicit equivalence of configuration space.
 
 Intended reading: this is the L1/L2/L4 definitional spine for arbitrary
 groups, convention C-1. It is not yet a finite probability ensemble:
