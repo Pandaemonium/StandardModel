@@ -17,7 +17,8 @@ the file is deliberately narrow:
 
 It does not construct the transfer matrix, prove a spectral theorem, or claim
 that the local gap is positive. The concrete winding-cycle holonomy
-realization and transfer-kernel preservation theorem are successor tasks.
+realization starts here at the Bool-array level; the transfer-kernel
+preservation theorem is a successor task.
 
 Provenance: `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`, section 14,
 Q3, and `AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md`,
@@ -123,6 +124,95 @@ theorem vacuum_fluxLabel_eq_trivial {psi : State}
   hpsi.2.2
 
 end QuantumNumbers
+
+/-! ## Concrete Z2 torus winding labels -/
+
+/-- XOR product of a finite list of Z2 link bits. `false` is the identity
+bit and `true` is the nontrivial Z2 bit. -/
+def xorList : List Bool -> Bool
+  | [] => false
+  | b :: bs => b ^^ xorList bs
+
+theorem xorList_nil : xorList [] = false := rfl
+
+theorem xorList_cons (b : Bool) (bs : List Bool) :
+    xorList (b :: bs) = (b ^^ xorList bs) := rfl
+
+/-- A concrete Z2 link field on an `Lx` by `Ly` periodic torus, represented
+by horizontal and vertical link bits. `hLink i j` is the link from
+`(i,j)` to `(i+1,j)` and `vLink i j` is the link from `(i,j)` to
+`(i,j+1)`, with periodic wrap understood by the torus convention. -/
+structure TorusLinkField (Lx Ly : Nat) where
+  hLink : Fin Lx -> Fin Ly -> Bool
+  vLink : Fin Lx -> Fin Ly -> Bool
+
+namespace TorusLinkField
+
+variable {Lx Ly : Nat}
+
+/-- The Z2 holonomy bit around a horizontal winding cycle at fixed `j`. -/
+def xCycleFlux (U : TorusLinkField Lx Ly) (j : Fin Ly) : Bool :=
+  xorList (List.ofFn (fun i : Fin Lx => U.hLink i j))
+
+/-- The Z2 holonomy bit around a vertical winding cycle at fixed `i`. -/
+def yCycleFlux (U : TorusLinkField Lx Ly) (i : Fin Lx) : Bool :=
+  xorList (List.ofFn (fun j : Fin Ly => U.vLink i j))
+
+/-- The base horizontal cycle uses row `0`. -/
+def baseY {Ly : Nat} (hLy : 0 < Ly) : Fin Ly :=
+  ⟨0, hLy⟩
+
+/-- The base vertical cycle uses column `0`. -/
+def baseX {Lx : Nat} (hLx : 0 < Lx) : Fin Lx :=
+  ⟨0, hLx⟩
+
+/-- The concrete Z2 winding-flux label from the two base cycles. -/
+def windingLabel (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (U : TorusLinkField Lx Ly) : FluxLabel where
+  xFlux := U.xCycleFlux (baseY hLy)
+  yFlux := U.yCycleFlux (baseX hLx)
+
+/-- The trivial-winding predicate for a concrete Z2 torus link field. -/
+def HasTrivialWinding (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (U : TorusLinkField Lx Ly) : Prop :=
+  (windingLabel hLx hLy U).IsTrivial
+
+theorem windingLabel_xFlux (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (U : TorusLinkField Lx Ly) :
+    (windingLabel hLx hLy U).xFlux = U.xCycleFlux (baseY hLy) := rfl
+
+theorem windingLabel_yFlux (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (U : TorusLinkField Lx Ly) :
+    (windingLabel hLx hLy U).yFlux = U.yCycleFlux (baseX hLx) := rfl
+
+/-- A concrete Z2 torus field has trivial winding exactly when both base
+cycle XOR holonomies vanish. -/
+theorem hasTrivialWinding_iff (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (U : TorusLinkField Lx Ly) :
+    HasTrivialWinding hLx hLy U ↔
+      U.xCycleFlux (baseY hLy) = false ∧ U.yCycleFlux (baseX hLx) = false := by
+  unfold HasTrivialWinding windingLabel
+  exact FluxLabel.isTrivial_iff _
+
+/-- If either base winding bit is nontrivial, the concrete field is outside
+the D12 local/glueball sector. -/
+theorem not_hasTrivialWinding_of_xFlux_true (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (U : TorusLinkField Lx Ly)
+    (hx : U.xCycleFlux (baseY hLy) = true) :
+    ¬ HasTrivialWinding hLx hLy U := by
+  intro htriv
+  have hxfalse := (hasTrivialWinding_iff hLx hLy U).mp htriv |>.1
+  simp [hx] at hxfalse
+
+theorem not_hasTrivialWinding_of_yFlux_true (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (U : TorusLinkField Lx Ly)
+    (hy : U.yCycleFlux (baseX hLx) = true) :
+    ¬ HasTrivialWinding hLx hLy U := by
+  intro htriv
+  have hyfalse := (hasTrivialWinding_iff hLx hLy U).mp htriv |>.2
+  simp [hy] at hyfalse
+
+end TorusLinkField
 
 /-- A state map preserves the Z2 winding-flux label. Later Q3 files will
 instantiate this for the transfer kernel/projection and for local plaquette

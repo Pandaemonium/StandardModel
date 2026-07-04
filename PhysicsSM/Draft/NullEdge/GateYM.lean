@@ -197,8 +197,9 @@ nonnegativity/positivity lemmas; no transfer matrix construction yet);
 `FluxSectorZ2` (T3/Q3 first Z2-torus sector layer: names the two winding
 flux bits, builds the trivial-flux predicate into the D12
 `SymmetrySector`, records abstract quantum-number preservation lemmas, and
-separates `fluxGap` from `localGlueballGap`; no concrete transfer kernel or
-winding-cycle holonomy realization is claimed yet);
+separates `fluxGap` from `localGlueballGap`; it also starts the concrete
+Bool-array base-cycle winding-label realization, with gauge/transfer
+preservation theorems still unclaimed);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
