@@ -1226,3 +1226,27 @@ prove Wilson opposite-compatibility, factorize across the cut, or prove RP-LINK.
 Verification: `lake env lean PlaquetteReflectionEnsemble.lean`, targeted module
 build, axiom audit `[propext, Classical.choice, Quot.sound]`, and aggregate
 GateYM build passed.
+
+## review:t3-wilson-opposite-reflection-bridge
+
+Codex 08:35. Added `WilsonReflectionCompatibility.lean`, separating the
+Wilson/opposite-group algebra from the generic plaquette reflection machinery:
+
+- `rhoOppositeInv`: the representation of `MulOpposite G` defined by
+  `h |-> rho(h.unop^-1)`.
+- `rhoOppositeInv_mul`, `rhoOppositeInv_one`, `rhoOppositeInv_unitary`: the
+  representation bookkeeping under the corresponding hypotheses on `rho`.
+- `wilsonLocalWeight_rhoOppositeInv`: under unitarity, the Wilson local weight
+  for `rhoOppositeInv rho` agrees with the generic opposite local weight
+  `h |-> wilsonLocalWeight beta rho h.unop`.
+- `productWeight_reflectLinkField_mirrorPlaquette_wilson`: specializing the
+  plaquette reflection product bridge, reflecting a Wilson product for `rho`
+  gives the mirrored plaquette-family product for `rhoOppositeInv rho`.
+
+Intended reading: this is the honest Wilson/opposite bridge at product-weight
+level. It does not prove that an arbitrary chosen family is reflection-invariant
+under the same local Wilson weight; the same-family compatibility hypothesis in
+`PlaquetteReflectionEnsemble.lean` is still a separate geometric/orientation
+problem. Verification: `lake env lean WilsonReflectionCompatibility.lean`,
+targeted module build, axiom audit `[propext, Classical.choice, Quot.sound]`,
+and aggregate GateYM build passed.

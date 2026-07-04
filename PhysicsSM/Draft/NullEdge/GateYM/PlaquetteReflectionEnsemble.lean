@@ -18,8 +18,10 @@ The hypotheses are intentionally explicit:
 * the local weight has the required opposite-group compatibility on that
   family and link field.
 
-No Wilson-specific opposite-compatibility theorem, cut factorization, positive
-side algebra, or RP-LINK inequality is proved here.
+The Wilson/opposite representation bridge lives in
+`WilsonReflectionCompatibility.lean`; this module still does not discharge the
+same-family opposite-compatibility hypothesis, cut factorization, positive-side
+algebra, or RP-LINK inequality.
 
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`.
 Claim label: **finite identity**.

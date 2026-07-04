@@ -16,6 +16,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionCompatibility
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
@@ -123,7 +124,14 @@ needing only multiplicativity of `rho`, not unitarity - so the T3
 weight, not just an abstract placeholder; also records unitarity-dependent
 inversion symmetry as a prerequisite for later orientation/opposite-group
 compatibility work; axiom footprint
-[propext, Classical.choice, Quot.sound]); `TransferPositivity` (YM3, single-link
+[propext, Classical.choice, Quot.sound]); `WilsonReflectionCompatibility`
+(YM3 connector: the inverse-pulled representation `rhoOppositeInv` on
+`MulOpposite G` is multiplicative, unital, and unitary under the corresponding
+hypotheses on `rho`; the Wilson local weight for `rhoOppositeInv` agrees with
+the generic `h |-> w(h.unop)` opposite local weight, yielding a
+Wilson-specialized reflected product-weight identity for mirrored plaquette
+families. This is still not same-family reflection invariance, cut
+factorization, or RP-LINK); `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original
 "Corollary 3b"/"transfer matrix" framing overstated what is indexed:

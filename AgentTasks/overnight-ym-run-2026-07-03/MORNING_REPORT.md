@@ -40,6 +40,9 @@ Verification shorthand: every module below was covered by targeted `lake env lea
   Verification: targeted/module/aggregate checks. Axioms: standard project footprint.
 - `PlaquetteEnsemble.lean` and `WilsonLocalWeight.lean`: finite product-plaquette partition/numerator/expectation, positive local weight -> positive partition, Wilson local weight class-function invariance, unitarity-dependent inversion symmetry, Wilson partition positivity.
   Verification: targeted checks and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
+- `WilsonReflectionCompatibility.lean`: `rhoOppositeInv`, `rhoOppositeInv_mul`, `rhoOppositeInv_one`, `rhoOppositeInv_unitary`, `wilsonLocalWeight_rhoOppositeInv`, and `productWeight_reflectLinkField_mirrorPlaquette_wilson`.
+  Verification: direct file check, targeted module build, axiom audit, and aggregate GateYM build. Axioms: `[propext, Classical.choice, Quot.sound]`.
+  This closes the Wilson/opposite inverse-representation bridge at the product-weight level: reflecting a Wilson plaquette product for `rho` becomes the mirrored product for the opposite inverse representation `rhoOppositeInv rho`. It still does not prove same-family reflection invariance, cut factorization, or RP-LINK.
 - `TransferGapDefinition.lean`: D12 shell separating Gauss invariance, zero momentum, and trivial 't Hooft flux; `finiteMassGap` real-valued spectral-ratio definition (`-Real.log (lambda1 / lambda0)`) plus elementary log nonnegativity/positivity lemmas under `0 < lambda1 <= lambda0`. No transfer matrix construction, spectral theorem, or oracle-number evaluation is claimed.
   Verification: targeted check and aggregate GateYM build.
 - `ReflectionCore.lean`, `ReflectionCutExample.lean`, `ReflectionWalk.lean`, `ReflectionEnsemble.lean`, `PlaquetteReflection.lean`, `PlaquetteReflectionEnsemble.lean`: link-reflection structure, two-layer cut sanity model, opposite-group reflected-walk theorem, reflection finite-sum change-of-variables, plaquette holonomy lift, product-weight reflection bridge, paired mirror-family constructor, mirror-stable-family product bookkeeping, and plaquette-ensemble numerator/expectation reflection lifts including paired-family specializations (`1033caa`, `4e3fcba`, `45eb172`, `eb0a90b`).
@@ -66,7 +69,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 
 - Finish finite-G Theorem 2 from `Theorem2AreaLaw.lean`: connect the normalized Wilson-weight convolution identity to lattice expectations by proving the tree-gauge independence layer and the partition/prefactor identification.
 - Harvest `203fd831` when it completes; it is Gate C2, not tonight's YM ladder, but it is still owned by the carryover registry.
-- RP-LINK is not assembled. Missing pieces: concrete reflection-stable plaquette-family instantiation, Wilson local-weight symmetry across `MulOpposite`, cut factorization, positive-side observable algebra, and PSD assembly.
+- RP-LINK is not assembled. Missing pieces: concrete reflection-stable plaquette-family instantiation, the same-family local compatibility needed by `PlaquetteReflectionEnsemble`, cut factorization, positive-side observable algebra, and PSD assembly. The Wilson/opposite inverse-representation bridge is now proved in `WilsonReflectionCompatibility.lean`.
 - QCD1-i/ii are not proved. The banked C2/GW-circle facts need a designed `lambda_hat` spectral map and chiral-pairing theorem.
 - KP conclusion is not proved. `PolymerKPCriterion.lean` freezes the condition; Ursell/cluster combinatorics and convergence statements are future infrastructure.
 - Primary-source Osterwalder-Seiler PDF text was not extracted; LINK-vs-SITE geometry is strongly corroborated by secondary sources but still wants primary-source confirmation before paper claim language.
@@ -86,7 +89,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 
 ## 6. Build and hygiene status
 
-- `lake build PhysicsSM.Draft.NullEdge.GateYM`: passed repeatedly; final aggregate was 8052 jobs with known unrelated warnings in Elitzur/Transfer/GateC2 files, pre-existing and unchanged by this run.
+- `lake build PhysicsSM.Draft.NullEdge.GateYM`: passed repeatedly; final aggregate was 8053 jobs with known unrelated warnings in Elitzur/Transfer/GateC2 files, pre-existing and unchanged by this run.
 - `lake build`: passed after live-tree changes, 8295 jobs. Existing info/linter/deprecation messages appeared outside the new YM changes; no errors.
 - `pre-commit run --all-files`: passed before the final commits.
 - One stale-build near-miss was caught and fixed: `678b386` reported aggregate GateYM green while `lake env lean` on the just-edited `ReflectionWalk.lean` failed on a shadowed section variable; fixed in `1033caa`. Before promotion, rerun per-file `lake env lean` on files touched in the last review cycle.
@@ -105,7 +108,7 @@ Verification shorthand: every module below was covered by targeted `lake env lea
 ## 8. Recommended next three actions
 
 1. Finish finite-G YM1 Theorem 2 around `Theorem2AreaLaw.lean`: prove the tree-gauge/independence bridge from `PlaquetteEnsemble` to `iterConv`, then discharge the partition-prefactor identification.
-2. Instantiate the paired mirror-family constructor in a concrete lattice shape and prove Wilson local-weight compatibility across the `MulOpposite` bridge, then feed that into the new plaquette-ensemble reflection lift. That is the closest YM3 paper unit after tonight's T3 work.
+2. Instantiate the paired mirror-family constructor in a concrete lattice shape, use `WilsonReflectionCompatibility.lean` to connect the reflected Wilson product to the opposite inverse representation, then prove or correctly restate the same-family local compatibility needed by the plaquette-ensemble reflection lift. That is the closest YM3 paper unit after tonight's T3 work.
 3. Poll/harvest `203fd831`; then restore the one-job Aristotle budget rule. The temporary lift paid off, but the v1 Lemma 2a bug showed why cross-review and narrow packages still matter.
 
 ## 9. Literature log summary
