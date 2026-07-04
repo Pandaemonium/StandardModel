@@ -331,8 +331,10 @@ independent-configuration bridge at `mirrorConfig a b`, and
 `doubledWilsonWeight_eq_ensembleWeight_mirrorConfig` identifies the
 factorized weight with the GENUINE two-plaquette
 `PlaquetteEnsemble.weight` at those mirror-coordinate configurations. This
-closes the zero-cut baseline plus ensemble-identification tier. It is still
-not the nontrivial cut-plaquette RP-LINK theorem: `doubleLattice` has no cut
+closes the zero-cut baseline plus ensemble-identification tier; the named
+corollary `doubled_wilson_ensembleWeight_reflectionForm_nonneg` states the
+RP inequality directly for that genuine ensemble weight. It is still not
+the nontrivial cut-plaquette RP-LINK theorem: `doubleLattice` has no cut
 links/plaquettes, and the shocking tier still needs an actual cut geometry
 and a `cutKernel_posSemidef_of_mixture`-style PSD assembly; axiom footprint
 [propext, Classical.choice, Quot.sound]);

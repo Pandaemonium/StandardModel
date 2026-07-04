@@ -1553,3 +1553,27 @@ Scope boundary: this is only the bookkeeping identity. The hard Q1
 cut-plaquette layer still needs the actual Wilson cut-plaquette geometry
 and the spectral-decomposition bridge into
 `cutKernel_posSemidef_of_mixture`.
+
+## audit:t1-zero-cut-redteam-result
+
+Codex 1.17:48:
+
+Aristotle red-team `3e2051c3` returned COMPLETE with verdict ACCEPT WITH
+CHANGES. It confirmed the zero-cut baseline plus ensemble-identification tier
+is sound and honestly scoped: `doubledWilsonWeight_eq_ensembleWeight_mirrorConfig`
+really identifies the factorized helper used by
+`doubled_wilson_reflectionForm_nonneg` with the genuine two-plaquette
+`PlaquetteEnsemble.weight` at `mirrorConfig`.
+
+Integrated the requested small changes:
+
+- `ReflectionWalk.lean` now describes the Route-B same-group theorem
+  `hol_mirrorWalk_eq_inv` instead of the stale opposite-group target.
+- `WilsonReflectionPositivity.lean` now has
+  `doubled_wilson_ensembleWeight_reflectionForm_nonneg`, the named corollary
+  stating the RP inequality directly for the genuine two-plaquette ensemble
+  weight at `mirrorConfig`.
+
+Scope boundary unchanged: this remains the zero-cut doubled-lattice statement,
+not cut-plaquette RP-LINK. The actual cut-plaquette strategy job `8271a64b`
+is running.

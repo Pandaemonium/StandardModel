@@ -248,6 +248,35 @@ theorem doubledWilsonWeight_eq_ensembleWeight_mirrorConfig (p0 : Plaquette L0)
   push_cast
   ring
 
+omit [Fintype G] in
+/-- **Zero-cut ensemble RP corollary.** The RP inequality can be stated
+directly for the genuine two-plaquette `PlaquetteEnsemble.weight` at
+mirror-coordinate configurations, not only for the factorized helper
+`doubledWilsonWeight`. This is still the zero-cut doubled-lattice
+statement: the cut coordinate is `PUnit`, and the ensemble weight is
+evaluated only at `mirrorConfig a b`. -/
+theorem doubled_wilson_ensembleWeight_reflectionForm_nonneg
+    [Fintype (L0.LinkField (G := G))]
+    (p0 : Plaquette L0)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (f : L0.LinkField (G := G) → PUnit → ℂ) :
+    0 ≤ ReflectionPositivityKernel.reflectionForm
+      (fun a (_ : PUnit) b =>
+        (PlaquetteEnsemble.weight (mirrorPair p0)
+          (WilsonLocalWeight.wilsonLocalWeight beta rho) (mirrorConfig a b) : ℂ)) f := by
+  have hweight :
+      (fun a (_ : PUnit) b =>
+        (PlaquetteEnsemble.weight (mirrorPair p0)
+          (WilsonLocalWeight.wilsonLocalWeight beta rho) (mirrorConfig a b) : ℂ))
+        = (fun a (_ : PUnit) b => doubledWilsonWeight beta rho p0 a b) := by
+    funext a _ b
+    exact (doubledWilsonWeight_eq_ensembleWeight_mirrorConfig
+      beta rho p0 hmul hone hunit a b).symm
+  rw [hweight]
+  exact doubled_wilson_reflectionForm_nonneg beta rho p0 f
+
 end WilsonReflectionPositivity
 end GateYM
 end NullEdge

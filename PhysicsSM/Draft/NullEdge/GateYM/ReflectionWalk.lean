@@ -6,16 +6,19 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
 
 This draft module extends `ReflectionCore` from single reflected steps to full
 typed walks. The key point is noncommutative order: a reflected walk has to
-reverse the order of steps to remain type-correct, so the naive statement
-`hol (theta U) w = (hol U (mirrorWalk w))^-1` is not correct for arbitrary
-nonabelian groups.
+reverse the order of steps to remain type-correct. After the Route-B
+reflection convention in `ReflectionCore.reflectLinkField`, the reflected
+link field also carries a group inverse on each reflected edge.
 
-The correct first target records the order reversal in the opposite group:
+The main target is now the same-group identity
 
-`op (hol (theta U) w) = hol (op U) (mirrorWalk w)`.
+`hol U (mirrorWalk w) = (hol (theta U) w)^-1`.
 
 This is the finite holonomy-transport identity needed before any later
-plaquette/reflection or RP-LINK statement. It still does not prove Wilson action
+plaquette/reflection or RP-LINK statement. The older opposite-group helper
+`opLinkField` is retained only as unused historical scaffolding from the
+pre-Route-B migration; downstream Wilson modules use the same-group theorem
+`hol_mirrorWalk_eq_inv`. This file still does not prove Wilson action
 covariance, cut factorization, or reflection positivity.
 
 Draft-trust: no `s o r r y`, no `n a t i v e _ d e c i d e`.

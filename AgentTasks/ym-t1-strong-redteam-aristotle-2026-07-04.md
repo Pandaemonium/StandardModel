@@ -8,7 +8,7 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
   submission_project: AgentTasks/aristotle-submit/ym-t1-strong-redteam-20260704-project
   output_dir: AgentTasks/aristotle-output/3e2051c3-21f5-48c9-9a4f-9282bb19dd28
-  status: submitted
+  status: harvested+integrated
 ```
 
 ## Purpose
@@ -78,3 +78,50 @@ Project created: 3e2051c3-21f5-48c9-9a4f-9282bb19dd28
 Task: e58986a6-050f-4355-aac4-86acfb18c13f
 Project status after submit: RUNNING
 ```
+
+## Harvest Record
+
+Result: COMPLETE, verdict ACCEPT WITH CHANGES.
+
+Returned report copied to:
+
+```text
+AgentTasks/context-packs/ym-t1-strong-redteam-audit-20260704.md
+```
+
+Key findings:
+
+- The zero-cut baseline plus ensemble-identification claim is sound and
+  honestly scoped.
+- Full RP-LINK / cut-plaquette RP remains open.
+- The T1 status label should not be read as full RP-LINK closure; the live
+  ledger status now uses the explicit cut-plaquette-open wording.
+- `ReflectionWalk.lean` had stale pre-Route-B opposite-group doc wording.
+- A named corollary should state the RP inequality directly for the genuine
+  two-plaquette `PlaquetteEnsemble.weight` at `mirrorConfig`.
+
+Integrated follow-up:
+
+- Updated `ReflectionWalk.lean` module docstring to name the current
+  same-group Route-B theorem and mark `opLinkField` as retained historical
+  scaffolding.
+- Added
+  `WilsonReflectionPositivity.doubled_wilson_ensembleWeight_reflectionForm_nonneg`.
+- Updated `GateYM.lean` live map.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/ReflectionWalk.lean
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionPositivity.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.ReflectionWalk
+lake build PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+rg -n "sorry|admit|axiom|opaque|unsafe|native_decide" PhysicsSM/Draft/NullEdge/GateYM/ReflectionWalk.lean PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionPositivity.lean
+stdin #print axioms PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity.doubled_wilson_ensembleWeight_reflectionForm_nonneg
+```
+
+The new corollary's axiom footprint is `[propext, Classical.choice,
+Quot.sound]`. The aggregate build still reports known pre-existing warnings
+and the intended Q6 draft proof handoffs in `PolymerKPConclusion.lean`.
