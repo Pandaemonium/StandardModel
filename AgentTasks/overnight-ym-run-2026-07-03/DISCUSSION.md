@@ -1239,6 +1239,10 @@ Wilson/opposite-group algebra from the generic plaquette reflection machinery:
 - `wilsonLocalWeight_rhoOppositeInv`: under unitarity, the Wilson local weight
   for `rhoOppositeInv rho` agrees with the generic opposite local weight
   `h |-> wilsonLocalWeight beta rho h.unop`.
+- `wilsonOppositeKernel_posSemidef`: the Route-B Wilson kernel PSD theorem
+  transfers to the opposite inverse representation after transporting
+  `Fintype G` across `MulOpposite.opEquiv`; this is still only one-link kernel
+  positivity, not cut factorization or RP-LINK.
 - `localWeight_hol_reflectLinkField_mirrorPlaquette_wilson`: the
   single-plaquette reflected-holonomy wrapper.
 - `productWeight_reflectLinkField_mirrorPlaquette_wilson`: specializing the

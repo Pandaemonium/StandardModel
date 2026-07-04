@@ -19,9 +19,11 @@ opposite representation agrees pointwise with the `h.unop` local weight used by
 the generic reflection product theorem. This gives Wilson-specialized
 single-plaquette, product-weight, and `PlaquetteEnsemble.weight` reflection
 identities. The same opposite representation also inherits the existing
-Wilson gauge-invariance and partition-positivity wrappers. The module still
-stops before any cut factorization, same-family reflection invariance,
-positive-side algebra, or RP-LINK inequality.
+Wilson kernel-PSD, gauge-invariance, and partition-positivity wrappers. The
+module still stops before any cut factorization, same-family reflection
+invariance, positive-side algebra, or RP-LINK inequality; the kernel PSD
+transfer below is only the Route B one-link input for the opposite inverse
+representation.
 
 Draft-trust: kernel-checked, no `s o r r y`, no
 `n a t i v e _ d e c i d e`.
@@ -87,6 +89,27 @@ theorem wilsonLocalWeight_rhoOppositeInv
   unfold WilsonLocalWeight.wilsonLocalWeight WilsonWeightPositivity.reChar rhoOppositeInv
   rw [WilsonWeightPositivity.rho_inv_eq_conjTranspose rho hmul hone hunit]
   simp [Matrix.trace_conjTranspose]
+
+set_option linter.unusedFintypeInType false in
+/-- The Route B Wilson kernel PSD theorem transfers to the opposite inverse
+representation.
+
+This is still only the one-link kernel positivity input, now indexed by
+`MulOpposite G`. It does not assert any lattice cut factorization or
+reflection-positivity inequality. -/
+theorem wilsonOppositeKernel_posSemidef [Fintype G]
+    (beta : ℝ) (hbeta : 0 ≤ beta)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1) :
+    (WilsonWeightPositivity.wilsonKernel beta (rhoOppositeInv rho)).PosSemidef := by
+  letI : Fintype (MulOpposite G) := Fintype.ofEquiv G MulOpposite.opEquiv
+  exact WilsonWeightPositivity.wilsonKernel_posSemidef (G := MulOpposite G)
+    beta hbeta (rhoOppositeInv rho)
+    (rhoOppositeInv_mul rho hmul)
+    (rhoOppositeInv_one rho hone)
+    (rhoOppositeInv_unitary rho hunit)
 
 /-- Single-plaquette Wilson reflection identity.
 
