@@ -364,6 +364,49 @@ theorem hasTrivialWinding_applyVertexGauge (hLx : 0 < Lx) (hLy : 0 < Ly)
   unfold HasTrivialWinding
   rw [windingLabel_applyVertexGauge hLx hLy gamma U]
 
+/-! ## Diagonal local-observable support preservation -/
+
+/-- A wavefunction on concrete Z2 torus link fields is supported in a named
+winding-flux sector when every configuration with nonzero amplitude has that
+label. -/
+def SupportedInFlux (hLx : 0 < Lx) (hLy : 0 < Ly) (label : FluxLabel)
+    (psi : TorusLinkField Lx Ly -> Complex) : Prop :=
+  forall U : TorusLinkField Lx Ly, psi U ≠ 0 -> windingLabel hLx hLy U = label
+
+/-- Support in the D12 trivial winding-flux sector. -/
+def SupportedInTrivialWinding (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (psi : TorusLinkField Lx Ly -> Complex) : Prop :=
+  SupportedInFlux hLx hLy FluxLabel.trivial psi
+
+/-- Multiplication by a diagonal observable on concrete Z2 torus link fields.
+Local plaquette-class functions are later instances of this general diagonal
+operation. -/
+def multiplyObservable (O psi : TorusLinkField Lx Ly -> Complex) :
+    TorusLinkField Lx Ly -> Complex :=
+  fun U => O U * psi U
+
+/-- Diagonal observable multiplication preserves support in every winding-flux
+sector. This is the abstract support-level reason local plaquette
+multiplication operators preserve the sector decomposition. -/
+theorem supportedInFlux_multiplyObservable (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (O psi : TorusLinkField Lx Ly -> Complex)
+    (hpsi : SupportedInFlux hLx hLy label psi) :
+    SupportedInFlux hLx hLy label (multiplyObservable O psi) := by
+  intro U hU
+  apply hpsi U
+  intro hzero
+  apply hU
+  simp [multiplyObservable, hzero]
+
+/-- Diagonal observable multiplication preserves the D12 trivial winding-flux
+sector. -/
+theorem supportedInTrivialWinding_multiplyObservable
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (O psi : TorusLinkField Lx Ly -> Complex)
+    (hpsi : SupportedInTrivialWinding hLx hLy psi) :
+    SupportedInTrivialWinding hLx hLy (multiplyObservable O psi) :=
+  supportedInFlux_multiplyObservable hLx hLy FluxLabel.trivial O psi hpsi
+
 end TorusLinkField
 
 /-- A state map preserves the Z2 winding-flux label. Later Q3 files will
