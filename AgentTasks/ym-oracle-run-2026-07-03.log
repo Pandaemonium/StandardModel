@@ -1,0 +1,51 @@
+oracle v0.1 | python 3.12.3 | numpy 2.4.4
+==============================================================================
+
+[1] Z2 2D torus: closed forms vs brute force (pins C-3, C-4, C-7)
+  [PASS] 2x2: Z = 2^E cosh^P (1+t^P)  (Z=5.476446e+02)
+  [PASS] 2x2: <W(A=1)> = (t^A+t^(P-A))/(1+t^P)  (meas=0.6388060025 th=0.6388060025)
+  [PASS] 2x3: Z = 2^E cosh^P (1+t^P)  (Z=1.164099e+04)
+  [PASS] 2x3: <W(A=1)> = (t^A+t^(P-A))/(1+t^P)  (meas=0.5680949623 th=0.5680949623)
+  [PASS] 3x3: Z = 2^E cosh^P (1+t^P)  (Z=1.216607e+06)
+  [PASS] 3x3: <W(A=1)> = (t^A+t^(P-A))/(1+t^P)  (meas=0.5419555528 th=0.5419555528)
+  [PASS] 3x3: <W(A=2)> = (t^A+t^(P-A))/(1+t^P)  (meas=0.3001920658 th=0.3001920658)
+
+[2] Z2 gauge invariance under random gauge transforms (pins YM0 lemma L2)
+  [PASS] plaquette holonomy invariant under 200 random gauge transforms
+
+[3] Elitzur bound (finite, quantitative): |<sigma_l>| <= tanh(2d*h), volume-uniform
+  [PASS] h=0.2: |<sigma_l>| <= tanh(4h)=0.6640 on all volumes  (vals=0.21068,0.21161,0.20603)
+  [PASS] h=0.1: |<sigma_l>| <= tanh(4h)=0.3799 on all volumes  (vals=0.10144,0.10151,0.10075)
+  [PASS] h=0.05: |<sigma_l>| <= tanh(4h)=0.1974 on all volumes  (vals=0.05018,0.05019,0.05009)
+  [PASS] h->0 decay visible (h=0.05 value < h=0.2 value)  (see rows above)
+
+[4] S3 (nonabelian) 2D open lattice: character-expansion exact solution (pins C-5, C-6)
+  [PASS] Bochner hypothesis: all character coefficients w_hat_R >= 0  (triv=1.15522 sign=0.15522 std=0.70392)
+  [PASS] Z_open = |G|^(V-1) (sum_h w)^P  (Z=3.735864e+05)
+  [PASS] <W_triv(A=1)> = d_R gamma_R^A  (meas=1.00000000 th=1.00000000)
+  [PASS] <W_triv(A=2)> = d_R gamma_R^A  (meas=1.00000000 th=1.00000000)
+  [PASS] <W_sign(A=1)> = d_R gamma_R^A  (meas=0.13436691 th=0.13436691)
+  [PASS] <W_sign(A=2)> = d_R gamma_R^A  (meas=0.01805447 th=0.01805447)
+  [PASS] <W_std(A=1)> = d_R gamma_R^A  (meas=0.60933390 th=0.60933390)
+  [PASS] <W_std(A=2)> = d_R gamma_R^A  (meas=0.18564390 th=0.18564390)
+
+[5] S3 gauge invariance (nonabelian; conjugation-invariance of class observables)
+  [PASS] plaquette/loop holonomy CLASS invariant under 300 random S3 gauge transforms
+
+[6] Transfer matrix = path integral (1+1D Z2), positivity, pinned constant (pins C-8)
+  [PASS] L=2: temporal kernel T symmetric PSD  (min eig=1.621e+00)
+  [PASS] L=2,nt=2: Z_bruteforce / Tr[(T P_G)^nt] = 2^c with c integer  (c=4.000000000)
+  [PASS] L=3: temporal kernel T symmetric PSD  (min eig=2.064e+00)
+  [PASS] L=3,nt=3: Z_bruteforce / Tr[(T P_G)^nt] = 2^c with c integer  (c=9.000000000)
+  [PASS] pinned constant: c = L*nt (temporal-link sum normalization)  ((L=2,nt=2): c=4.000 (L=3,nt=3): c=9.000)
+
+[7] Transfer matrix 2+1D Z2, 2x2 spatial torus: positivity + physical-sector gap
+  [PASS] beta=0.2: T PSD and physical gap > 0  (gap=3.15905, lam0=3.2551e+02)
+  [PASS] beta=0.4: T PSD and physical gap > 0  (gap=1.57221, lam0=6.7876e+02)
+  [PASS] beta=0.6: T PSD and physical gap > 0  (gap=0.61580, lam0=2.5847e+03)
+
+[8] Bochner / reflection-positivity engine: w_hat_R >= 0 across groups and beta
+  [PASS] w = exp(beta Re chi_f): all character coefficients >= 0 and K(g,h)=w(gh^-1) PSD for Z2, Z16, S3 at beta in {0.1,0.5,1,2}
+
+==============================================================================
+RESULT: 30/30 checks passed
