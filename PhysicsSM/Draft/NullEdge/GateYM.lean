@@ -12,6 +12,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
+import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -80,7 +81,14 @@ overlap machinery - the shifted overlap `Dov - 1` is unitary and
 instantiated at the certified sign `epsCFC H`; axiom footprint
 [propext, Classical.choice, Quot.sound]. QCD1-i/ii proper - the
 condensate identity and chiral-pairing lemma - are NOT claimed by this
-file; see its docstring for the honestly-scoped remaining work). Not
-part of the default trusted build target. Adding a new YM module?
-Import it here.
+file; see its docstring for the honestly-scoped remaining work);
+`PolymerKPCriterion` (YM4/T5: STATEMENT FREEZE ONLY, no proof attempted
+- the abstract finite polymer system and the Kotecky-Preiss condition
+`sum_{incompatible} |weight| exp(energy) <= energy`, cross-confirmed
+against three independent secondary sources during tonight's lit
+sprint since primary-source PDF text could not be extracted; the KP
+CONCLUSION - cluster expansion convergence - needs new Ursell/cluster
+combinatorial infrastructure not yet designed, documented as a handoff
+rather than guessed at). Not part of the default trusted build target.
+Adding a new YM module? Import it here.
 -/
