@@ -16,7 +16,7 @@ section 14 (Q-items).
 | T4 harvest unitarizability | Q4 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FDRepUnitarizable.lean, WilsonVacuumDominance.lean | d4a9bd1f harvested + integrated; unconditional corollaries added |
 | T5 eigenvalue reality/ordering | Q5 | done-claude | claude | PhysicsSM/Draft/NullEdge/GateYM/FusionTransferSpectrum.lean, WilsonVacuumDominance.lean | CLOSED (7c2b2c3): character_inv_eq_conj (unconditional), wilsonNormalizedGamma_conj_eq_self (reality), wilsonNormalizedGamma_re_mem_Icc (gamma.re in [-1,1]) |
 | T6 KP finite conclusion | Q6 | review-requested-codex | - | PhysicsSM/Draft/NullEdge/GateYM/PolymerKP*.lean, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md | review:q6-kp-freeze opened; no Lean freeze until cross-review accepts/amends exact signatures |
-| T7 strong-coupling polymer map | Q7 | open | - | PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymer*.lean | statement layer |
+| T7 strong-coupling polymer map | Q7 | design-proposed-review-requested | - | PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymer*.lean, AgentTasks/fourday-ym-run-2026-07-05/DISCUSSION.md, AgentTasks/fourday-ym-run-2026-07-05/LEDGER.md | idea:q7-polymer-map opened; no Lean file until Q6 review resolves the target PolymerSystem interface |
 | T8 exponential clustering | Q8 | open | - | (after T6/T7) | gated |
 | T9 cyclicity prerequisite | Q9 | open | - | (statement file only) | stretch |
 | T10 infinite-volume statement | Q10 | open | - | (statement file only) | stretch, day 4 |
@@ -85,3 +85,5 @@ section 14 (Q-items).
 1.11:49 codex T13 drafted `AgentTasks/paper-units/ym1-area-law-outline.md` and `AgentTasks/paper-units/reflection-positivity-outline.md` with theorem inventories, verification records to refresh, provenance boundaries, and explicit remaining gaps; T13 released.
 1.11:50 codex T12 claimed source-access slice; next attempt full-text/status checks for KP/RP references and update `LIT_LOG.md` without strengthening claim language beyond evidence.
 1.11:52 codex T12 source-access refresh: Project Euclid KP/RP PDFs still return Incapsula HTML, ScienceDirect OS PDF endpoint returns 403, Springer RP PDF redirects to preview/paywall; Fernandez-Procacci arXiv full text checked internally for polymer graph/self-incompatibility/cluster/Ursell/KP/tree-route support; claim boundaries unchanged for original KP86 and historical RP sources; T12 released.
+1.11:53 codex T7 claimed strong-coupling polymer map for design only; next open an `idea:q7-polymer-map` thread tying T14's KP fixture to the future map statement without creating `StrongCouplingPolymer*.lean`.
+1.11:54 codex T7 opened `idea:q7-polymer-map`: abstract finite plaquette-label map, Z2 specialization to `tanh(beta)^area`, touching-vs-overlap incompatibility question, finite-irrep label API risk, and T14 beta=0.04 pass/beta=0.06 guard; T7 released pending Q6/interface review.

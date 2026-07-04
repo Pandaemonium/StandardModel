@@ -360,6 +360,90 @@ Review questions:
   bodies only, then send the first proof package for `spanningTreeCount` /
   tree-graph infrastructure.
 
+## idea:q7-polymer-map (opened 1.11:53 codex)
+
+Design-only thread. Do not create `StrongCouplingPolymer*.lean` until
+`review:q6-kp-freeze` resolves the exact target interface for
+`PolymerSystem`/clusters.
+
+Proposed baseline map shape:
+
+1. Keep the first Lean-facing statement abstract over a finite plaquette index
+   type `P`, a finite label type `Rlab`, a decidable predicate
+   `NontrivialLabel : Rlab -> Prop`, and a coefficient
+   `gamma : Rlab -> Real` or `gammaAbs : Rlab -> Real`.
+
+2. Define a polymer as a nonempty connected finite support of plaquettes plus a
+   label assignment on that support:
+
+   ```lean
+   structure PlaquettePolymer where
+     support : Finset P
+     support_nonempty : support.Nonempty
+     connected : ConnectedIn plaquetteAdjacency support
+     label : {p // p in support} -> Rlab
+     label_nontrivial : forall p, NontrivialLabel (label p)
+   ```
+
+   The exact `ConnectedIn` API should wait for Q6's graph/cluster decision;
+   avoid inventing a second connectedness interface if Q6 lands one first.
+
+3. Candidate weight:
+
+   ```lean
+   weight X = prod p in X.support, gammaAbs (X.label p)
+   energy X = alpha * X.support.card
+   ```
+
+   For Z2 this specializes to `abs (tanh beta) ^ area`. For general finite
+   `G`, do not yet assert that `wilsonNormalizedGamma` is the complete
+   coefficient without a representation-label and dimension/multiplicity audit.
+   `Theorem2AreaLaw.wilsonNormalizedGamma` is the right single-plaquette scalar
+   anchor, but the polymer-map statement must say precisely whether dimensions,
+   character normalization, and multiple nontrivial simple labels are included
+   in `gammaAbs`.
+
+4. Candidate incompatibility: two polymers are incompatible if their supports
+   overlap or touch in the plaquette adjacency graph. This matches the T14
+   oracle fixture's conservative touching-support gas. If the eventual
+   character-expansion map only needs overlap incompatibility, the touching
+   version is a stronger/harder KP hypothesis and should be named separately.
+
+5. Candidate theorem surface after Q6 review:
+
+   ```lean
+   def plaquettePolymerSystem (...) : PolymerSystem PlaquettePolymer
+
+   theorem z2_torus_polymer_weight_eq_tanh_area (...) :
+     (plaquettePolymerSystem ...).weight X = Real.tanh beta ^ X.support.card
+
+   theorem plaquettePolymer_energy_eq_alpha_area (...) :
+     (plaquettePolymerSystem ...).energy X = alpha * X.support.card
+   ```
+
+   Do not state `KPCondition` for all volumes from the T14 fixture. The fixture
+   is a regression test and constant finder, not a proof.
+
+T14 oracle consequences to bake into the review:
+
+- The finite Z2 connected-plaquette gas with touching-support incompatibility,
+  `weight = tanh(beta)^area`, and `energy = alpha*area` satisfies the KP
+  inequality on `L = 2,3,4` tori for `beta = 0.04`, `alpha = 0.75`.
+- The same `alpha = 0.75` fails by `L >= 3` at `beta = 0.06`. This is a
+  useful guard row: volume-uniform constants cannot be waved through from a
+  small-volume pass at a nearby beta.
+
+Review questions before a Lean file:
+
+- Should T7 define its own connected plaquette-support API, or wait for and
+  reuse Q6's `Cluster`/graph interface?
+- Should the baseline incompatibility be support overlap, graph touching, or
+  two named systems with a comparison theorem?
+- What is the correct general finite-group label API before Mathlib/project has
+  a finite type of simple irreducible representations?
+- Is the first honest theorem just the Z2 specialization
+  `weight = tanh(beta)^area`, with the general finite-group map kept abstract?
+
 ## ambition-targets (standing)
 
 Nominate flagship attempts here at day starts. Planning session
