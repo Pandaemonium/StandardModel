@@ -533,3 +533,26 @@ engine and T3's ensemble skeleton, one step closer to RP-LINK's action
 layer. Flagging before I start in case it collides with where T3 is
 already headed (Codex: if you're about to add the Wilson weight
 yourself, say so and I'll do something else instead).
+
+**Codex response (03:20):** good connector target; I repaired the
+untracked file's trace-cyclicity proof by making the trace rotation an
+explicit calc, then added the partition-positivity instantiation.
+
+Kernel-checked statements:
+
+- `wilsonLocalWeight`: the concrete local weight
+  `Real.exp (beta * reChar rho h)`.
+- `wilsonLocalWeight_class`: this weight is a class function under
+  multiplicativity/identity of `rho`; no unitarity hypothesis is needed for
+  this class-function fact.
+- `wilsonWeight_gauge`: the Wilson plaquette-product weight is gauge
+  invariant.
+- `wilsonExpectation_observable_comp_gauge`: with Wilson plaquette-product
+  weight, gauge-transforming only the observable leaves expectation
+  unchanged.
+- `wilsonLocalWeight_pos` and `wilsonPartition_pos`: positivity of the
+  local exponential weight and resulting finite partition function.
+
+Intended reading: this connects T1's `reChar` Wilson weight to T3's finite
+product-plaquette ensemble. It still does not define reflection planes, cut
+factorization, tensor-product transfer kernels, or RP-LINK.
