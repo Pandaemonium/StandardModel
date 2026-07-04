@@ -1,0 +1,75 @@
+import Mathlib
+
+/-!
+# Gate YM4: cyclicity prerequisite for the finite local sector
+
+This draft module names the finite algebraic cyclicity condition that Q9 must
+eventually instantiate after Q2 supplies the transfer Hilbert space and Q3
+supplies the trivial-flux sector.
+
+The condition is intentionally abstract. In a finite-dimensional sector,
+"dense cyclic span" is represented by equality of submodules: applying the
+local plaquette/operator algebra to the vacuum spans exactly the chosen sector.
+This module proves no spectral gap and contains no transfer-matrix statement;
+it only prevents the cyclicity prerequisite from being hidden as an unnamed
+assumption in a later gap argument.
+-/
+
+namespace PhysicsSM
+namespace Draft
+namespace NullEdge
+namespace GateYM
+namespace CyclicityPrereq
+
+variable {H : Type*} [AddCommGroup H] [Module ℂ H]
+
+/-- The submodule generated from a vacuum vector by an operator algebra.
+
+For the eventual Q9 use, `A` should be the local plaquette/operator algebra on
+the finite transfer Hilbert space, and `vacuum` should be the transfer vacuum.
+-/
+noncomputable def cyclicSubmodule
+    (A : Subalgebra ℂ (Module.End ℂ H)) (vacuum : H) : Submodule ℂ H :=
+  Submodule.span ℂ (Set.range fun T : A => (T : Module.End ℂ H) vacuum)
+
+/-- An operator algebra preserves a candidate sector. -/
+def PreservesSubmodule
+    (A : Subalgebra ℂ (Module.End ℂ H)) (sector : Submodule ℂ H) : Prop :=
+  ∀ T : A, ∀ v : H, v ∈ sector → (T : Module.End ℂ H) v ∈ sector
+
+/-- The named Q9 prerequisite: the local algebra is cyclic on the given sector.
+
+In the finite-dimensional setting intended by Q9, this is the algebraic form of
+density of the local algebra orbit of the vacuum in the trivial-flux/local
+sector.
+-/
+def LocalAlgebraCyclicInSector
+    (A : Subalgebra ℂ (Module.End ℂ H)) (vacuum : H)
+    (sector : Submodule ℂ H) : Prop :=
+  cyclicSubmodule A vacuum = sector
+
+/-- Bundle of hypotheses that a future finite-gap assembly must expose.
+
+This structure is not a theorem. It packages the exact point where a fake gap
+argument could otherwise smuggle in cyclicity of local observables in the
+trivial sector.
+-/
+structure LocalCyclicityPrereq (H : Type*) [AddCommGroup H] [Module ℂ H] where
+  /-- Candidate local plaquette/operator algebra. -/
+  localAlgebra : Subalgebra ℂ (Module.End ℂ H)
+  /-- Vacuum vector. -/
+  vacuum : H
+  /-- Candidate trivial-flux/local sector. -/
+  sector : Submodule ℂ H
+  /-- The vacuum lies in the candidate sector. -/
+  vacuum_mem : vacuum ∈ sector
+  /-- The local algebra preserves the candidate sector. -/
+  local_preserves_sector : PreservesSubmodule localAlgebra sector
+  /-- The local algebra orbit of the vacuum spans the sector. -/
+  cyclic : LocalAlgebraCyclicInSector localAlgebra vacuum sector
+
+end CyclicityPrereq
+end GateYM
+end NullEdge
+end Draft
+end PhysicsSM

@@ -30,6 +30,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
+import PhysicsSM.Draft.NullEdge.GateYM.CyclicityPrereq
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
@@ -223,6 +224,10 @@ invariance under those weights);
 Gauss-invariant/zero-momentum/trivial-flux vacuum-sector predicate and
 finite real spectral-ratio gap `-log(lambda1/lambda0)` with elementary
 nonnegativity/positivity lemmas; no transfer matrix construction yet);
+`CyclicityPrereq` (YM4/T9 statement-only prerequisite: names the abstract
+finite algebraic condition that the local plaquette/operator algebra
+cyclically spans the chosen sector from the vacuum; no transfer matrix or
+gap theorem is claimed);
 `CenterFluxSector` (T3/Q3 Fable-redesign spine: abstract finite
 center-shift/electric-sector API over a configuration space with shift
 permutations; electric sectors as shift eigenconditions; shift-invariant
