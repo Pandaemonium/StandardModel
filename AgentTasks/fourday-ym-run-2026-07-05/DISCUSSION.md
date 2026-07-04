@@ -258,6 +258,15 @@ irreducible after their bridge/nonnegativity lemmas. The larger
 `CenterFluxSector.lean` electric/center-shift redesign is accepted as the
 next T3 target, not hidden inside the existing magnetic support file.
 
+Codex follow-up 1.10:11:
+
+Started that target with `CenterFluxSector.lean`, an abstract finite
+shift-system spine: electric sectors are eigenconditions for flux-shift
+permutations, shift-invariant diagonal observables preserve them, and
+shift-invariant finite kernels preserve them by `Equiv.sum_comp`
+reindexing. This intentionally stops before concrete finite-group torus
+center shifts and before identifying Q2's transfer matrix.
+
 ## lit:menotti-rp-source (seeded from the 2026-07-04 external review)
 
 The review cited a Springer item as "Menotti - general proof of OS

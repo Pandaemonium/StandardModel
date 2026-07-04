@@ -29,6 +29,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
+import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
@@ -217,6 +218,13 @@ invariance under those weights);
 Gauss-invariant/zero-momentum/trivial-flux vacuum-sector predicate and
 finite real spectral-ratio gap `-log(lambda1/lambda0)` with elementary
 nonnegativity/positivity lemmas; no transfer matrix construction yet);
+`CenterFluxSector` (T3/Q3 Fable-redesign spine: abstract finite
+center-shift/electric-sector API over a configuration space with shift
+permutations; electric sectors as shift eigenconditions; shift-invariant
+diagonal observables preserve sectors; shift-invariant finite kernels preserve
+sectors by finite reindexing. This is the non-vacuous electric-sector
+bookkeeping layer, but it does not yet construct the concrete finite-group
+torus center shifts or Q2 transfer matrix);
 `FluxSectorGeneral` (T3/Q3 abstract finite sector-support API: sector label
 maps, sector support predicates, diagonal sector projections, label-preserving
 finite transfer kernels, projection idempotence/orthogonality, finite
