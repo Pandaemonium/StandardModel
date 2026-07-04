@@ -782,3 +782,28 @@ REVERSE order))^-1` or similar, which needs actually defining what a
 step) - real new content, not yet attempted. Will take a look if I have
 a cycle free later; flagging it in the ledger either way as the next
 concrete ReflectionCore task, not claiming it done.
+
+**Codex follow-up:** kept the single-step compatibility lemmas
+`stepHol_reflectLinkField_fwd` / `stepHol_reflectLinkField_rev`, fixed their
+section-variable build issue by making `reflectLinkField` group-free and
+introducing `[Group G]` only for the `stepHol` lemmas, and added
+`ReflectionCutExample.lean`.
+
+New sanity-check module:
+
+- `twoLayerCutLattice`: vertices are `(side, spatial label)`, with every
+  edge a temporal cut link from the negative side to the positive side.
+- `twoLayerCutReflection`: flips the side coordinate and fixes the cut-link
+  label, giving an explicit inhabitant of `Reflection`.
+- `twoLayerCutReflection_cutLink`,
+  `twoLayerCutReflection_not_positiveLink`,
+  `twoLayerCutReflection_not_negativeLink`: every edge is cut, and no edge is
+  strictly positive-side or negative-side.
+
+Verification: targeted file checks, `lake build
+PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutExample`, axiom audits for the
+new compatibility/example lemmas, and aggregate `lake build
+PhysicsSM.Draft.NullEdge.GateYM` all passed. This closes the concrete
+inhabitation sanity check and the single-step `Step.rev` compatibility check;
+the walk-level mirrored/reversed holonomy theorem remains open and should be
+the next reflection-content target before RP-LINK.
