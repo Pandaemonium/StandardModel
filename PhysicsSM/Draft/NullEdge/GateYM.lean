@@ -23,6 +23,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionCompatibility
+import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
@@ -207,6 +208,18 @@ paired-family product/ensemble wrappers under an explicit local compatibility
 hypothesis, plus kernel-PSD, gauge-invariance, and partition-positivity wrappers
 for the opposite inverse Wilson ensemble. This still does not discharge the
 concrete same-family compatibility, cut factorization, or RP-LINK);
+`ReflectionPositivityKernel` (YM3 RP-KER, the master finite
+reflection-positivity assembly theorem: in mirror coordinates
+`(positive, cut, mirrored-negative)`, if the reflected weight kernel at each
+cut configuration is `Matrix.PosSemidef`, the Osterwalder-Seiler form is
+nonnegative on all positive-side observables (`reflectionForm_nonneg`), with
+end-to-end RP for factorized (no-cut-plaquette) and nonnegative-mixture
+weight classes. This reduces RP-LINK to a kernel-PSD check in the Route B
+engine's language; the remaining RP-LINK work is the geometric
+mirror-coordinate parametrization from the T3 reflection stack and the
+Wilson cut-plaquette kernel-PSD assembly via `wilsonKernel_posSemidef` +
+Schur products - see the program document work queue. Mathlib-only imports
+by design; axiom footprint [propext, Classical.choice, Quot.sound]);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original
