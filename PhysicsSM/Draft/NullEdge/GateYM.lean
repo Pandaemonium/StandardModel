@@ -14,6 +14,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.LatticeEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonWeightPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
+import PhysicsSM.Draft.NullEdge.GateYM.Theorem2AreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
@@ -42,7 +43,8 @@ torus even-cover argument: locally constant plaquette subsets are empty or
 universal, and equal-boundary subsets differ by nothing or by complement);
 `FusionConvolution` (YM1 T2/T2-C finite-group fusion-by-convolution:
 Aristotle-integrated Lemma 2a character fusion in the oracle-pinned
-`h^-1 * A` argument order, plus the abstract convolution iteration core;
+`h^-1 * A` argument order, division-free iteration of that fusion identity,
+and the abstract convolution iteration core;
 axiom footprint [propext, Classical.choice, Quot.sound]);
 `GaugeCoreGeneral` (YM0/T3 general oriented-link gauge core: typed walks,
 inverse convention for reverse traversal, telescoping holonomy covariance,
@@ -95,6 +97,14 @@ the Wilson local weight `exp(beta Re chi(h))` is a class function -
 needing only multiplicativity of `rho`, not unitarity - so the T3
 `PlaquetteEnsemble` skeleton is gauge invariant for the ACTUAL Wilson
 weight, not just an abstract placeholder; axiom footprint
+[propext, Classical.choice, Quot.sound]); `Theorem2AreaLaw` (YM1: freeze
+Theorem 2's fusion/iteration half specialized to the concrete Wilson weight -
+`wilson_gamma` derives the one-step eigenvalue from `lemma2a_fusion_convolution`
+by dividing through by `chi_R(1) != 0`, and `wilson_iterConv_eigen_at_one`
+assembles the exact `chi_R(1) * gamma_R^n` area-law iteration; explicitly does
+NOT claim Lemma 2b (tree-gauge independence) or connect `iterConv` to an
+actual `LatticeEnsemble`/`PlaquetteEnsemble` expectation value - that ensemble
+bridge is separate, undischarged content; axiom footprint
 [propext, Classical.choice, Quot.sound]); `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original

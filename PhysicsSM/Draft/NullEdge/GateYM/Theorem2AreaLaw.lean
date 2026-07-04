@@ -1,0 +1,133 @@
+import Mathlib
+import PhysicsSM.Draft.NullEdge.GateYM.FusionConvolution
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
+
+/-!
+# Gate YM1: Theorem 2 area-law iteration, specialized to the Wilson weight
+
+Recommended next action (morning report, `AgentTasks/overnight-ym-run-2026-07-03/
+MORNING_REPORT.md` section 8, item 1): now that `FusionConvolution.lean`'s
+`lemma2a_fusion_convolution` is Aristotle-integrated, specialize it to the
+concrete Wilson local weight (`WilsonLocalWeight.wilsonLocalWeight`) and feed
+the result into `iterConv_eigen_at_one`, keeping every remaining assumption
+explicit rather than derived.
+
+## What this file proves
+
+1. `wilsonLocalWeightC`: the Wilson local weight cast to `C`, and
+   `wilsonLocalWeightC_class`: it is a class function (a direct corollary of
+   `WilsonLocalWeight.wilsonLocalWeight_class`, real-to-complex cast).
+2. `wilson_gamma`: the one-step fusion eigenvalue
+   `gamma_R := (sum_g w(g) chi_R(g^-1)) / chi_R(1)` for the Wilson weight `w`,
+   derived from `lemma2a_fusion_convolution` by dividing through by
+   `chi_R(1) != 0` (nonzero since `R` is `Simple`, hence nontrivial).
+3. `wilson_iterConv_eigen_at_one`: the assembled area-law iteration,
+   `iterConv w chi_R n 1 = chi_R(1) * gamma_R^n`, by feeding `wilson_gamma`
+   into `FusionConvolution.iterConv_eigen_at_one`.
+
+## What this file does NOT prove (explicit, not silently assumed)
+
+This is the "iteration/fusion" half of freeze Theorem 2 only. It does NOT
+prove:
+
+- Lemma 2b (tree-gauge/independence): that an actual finite-lattice Wilson
+  loop EXPECTATION VALUE `<W_R(C_A)>` (as defined by `LatticeEnsemble`/
+  `PlaquetteEnsemble`) equals `iterConv w chi_R A 1` in the first place. That
+  identification needs the comb-tree change-of-variables argument reducing
+  the ensemble to `A` independent plaquette variables - genuinely new content
+  belonging to the `LatticeEnsemble`/`PlaquetteEnsemble` (T3) layer, not
+  attempted here.
+- The partition-function prefactor formula `Z_open = |G|^(V-1) (|G| w_hat_0)^P`.
+- Any normalization/prefactor bridging `Z_open` to the exact `<W_R(C_A)> =
+  d_R gamma_R^A` display in the freeze document.
+
+So this theorem is exactly what its name says: an iterated-convolution
+identity at the concrete Wilson weight, matching the SHAPE of Theorem 2's
+displayed area law once the (still-missing) ensemble/ tree-gauge bridge
+connects `iterConv` to a real expectation value.
+
+Draft-trust: kernel-checked, no `s o r r y`, no `n a t i v e _ d e c i d e`.
+Claim label: **finite identity**. Prerequisites: `FusionConvolution`,
+`WilsonLocalWeight`.
+-/
+
+namespace PhysicsSM
+namespace Draft
+namespace NullEdge
+namespace GateYM
+namespace Theorem2AreaLaw
+
+open FusionConvolution CategoryTheory
+
+variable {G : Type} [Group G] [Fintype G] {n : ℕ}
+
+/-- The Wilson local weight, cast from `R` to `C` so it can be fed to
+`FusionConvolution`'s complex-valued convolution machinery. -/
+noncomputable def wilsonLocalWeightC (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) (h : G) : ℂ :=
+  (WilsonLocalWeight.wilsonLocalWeight beta rho h : ℂ)
+
+omit [Fintype G] in
+/-- The complex-cast Wilson local weight is a class function - a direct
+corollary of `WilsonLocalWeight.wilsonLocalWeight_class` (which needs only
+multiplicativity of `rho`, not unitarity). -/
+theorem wilsonLocalWeightC_class (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1) :
+    IsClassFunction (wilsonLocalWeightC beta rho) := by
+  intro a h
+  unfold wilsonLocalWeightC
+  rw [WilsonLocalWeight.wilsonLocalWeight_class beta rho hmul hone]
+
+/-- The one-step Wilson fusion eigenvalue: `gamma_R := (sum_g w(g) chi_R(g^-1))
+/ chi_R(1)`, derived from `lemma2a_fusion_convolution` by dividing through by
+`chi_R(1) != 0` (nonzero since `R` is `Simple`, hence a nontrivial
+representation with positive finite dimension). -/
+theorem wilson_gamma (beta : ℝ) (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (R : FDRep ℂ G) [Simple R] (A : G) :
+    convLeft (wilsonLocalWeightC beta rho) R.character A
+      = ((∑ g : G, wilsonLocalWeightC beta rho g * R.character g⁻¹) / R.character 1)
+        * R.character A := by
+  have hchar1 : R.character 1 ≠ 0 := by
+    rw [FDRep.char_one]
+    have : Nontrivial R := by
+      have hfin : Module.finrank ℂ (Representation.linHom R.ρ R.ρ).invariants = 1 := by
+        rw [LinearEquiv.finrank_eq
+          (Representation.linHom.invariantsEquivFDRepHom R R),
+          FDRep.finrank_hom_simple_simple R R]
+        simp
+      by_contra hsub
+      rw [not_nontrivial_iff_subsingleton] at hsub
+      have : Module.finrank ℂ (Representation.linHom R.ρ R.ρ).invariants = 0 :=
+        Module.finrank_zero_of_subsingleton
+      omega
+    exact_mod_cast Module.finrank_pos.ne'
+  have hkey := lemma2a_fusion_convolution R (wilsonLocalWeightC beta rho)
+    (wilsonLocalWeightC_class beta rho hmul hone) A
+  unfold convLeft
+  field_simp
+  linear_combination hkey
+
+/-- The assembled area-law iteration at the Wilson weight: applying the
+independent-plaquette convolution `n` times to `chi_R`, evaluated at the
+identity, is exactly `chi_R(1) * gamma_R^n` - matching the shape of freeze
+Theorem 2's `d_R gamma_R^A` display, with the ensemble/tree-gauge
+identification (Lemma 2b) an explicit, undischarged prerequisite. -/
+theorem wilson_iterConv_eigen_at_one (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h) (hone : rho 1 = 1)
+    (R : FDRep ℂ G) [Simple R] (m : ℕ) :
+    iterConv (wilsonLocalWeightC beta rho) R.character m 1
+      = R.character 1
+        * ((∑ g : G, wilsonLocalWeightC beta rho g * R.character g⁻¹) / R.character 1) ^ m :=
+  iterConv_eigen_at_one (wilsonLocalWeightC beta rho) R.character
+    ((∑ g : G, wilsonLocalWeightC beta rho g * R.character g⁻¹) / R.character 1)
+    (R.character 1) rfl (wilson_gamma beta rho hmul hone R) m
+
+end Theorem2AreaLaw
+end GateYM
+end NullEdge
+end Draft
+end PhysicsSM
