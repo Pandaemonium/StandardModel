@@ -86,10 +86,15 @@ project's convention (`AGENTS.md`) treats an honest no-go as more valuable
 than a silently weakened statement.
 
 ## Target theorem (cross-multiplied to avoid a division side condition;
-logically equivalent to the freeze's ratio form since `Fintype.card G != 0`
-and `R.character 1 != 0` for a nonzero simple representation - state and prove
-THIS form, then the ratio form follows by an elementary division the
-submitting project will do afterward if needed)
+logically equivalent to the freeze's ratio form since `R.character 1 != 0`
+for a nonzero simple representation - state and prove THIS form, then the
+ratio form follows by an elementary division the submitting project will do
+afterward if needed)
+
+Normalization check: there is no extra factor of `Fintype.card G` after
+passing to the unnormalized coefficient `sum_g w(g) chi_R(g^{-1})`. For the
+trivial representation and `w = 1`, an extra factor would assert
+`|G| = |G|^2`.
 -/
 
 open scoped Classical
@@ -100,12 +105,12 @@ def IsClassFunction {G : Type} [Group G] (w : G → ℂ) : Prop :=
   ∀ a g : G, w (a * g * a⁻¹) = w g
 
 /-- Lemma 2a, cross-multiplied form. `R.character 1` is `d_R` (the dimension
-of `R`, via `FDRep.char_one`); `Fintype.card G` is `|G|`. The left side is
-`d_R` times the raw convolution `sum_h w(h) chi_R(h^{-1} A)`; the right side
-is `|G|` times `w`'s un-normalized Fourier coefficient at `R`
-(`sum_g w(g) chi_R(g^{-1})`) times `chi_R(A)`. -/
+of `R`, via `FDRep.char_one`). The left side is `d_R` times the raw
+convolution `sum_h w(h) chi_R(h^{-1} A)`; the right side is `w`'s
+unnormalized Fourier coefficient at `R` (`sum_g w(g) chi_R(g^{-1})`) times
+`chi_R(A)`. -/
 theorem lemma2a_fusion_convolution {G : Type} [Group G] [Fintype G]
     (R : FDRep ℂ G) [Simple R] (w : G → ℂ) (hw : IsClassFunction w) (A : G) :
     R.character 1 * (∑ h : G, w h * R.character (h⁻¹ * A))
-      = (Fintype.card G : ℂ) * (∑ g : G, w g * R.character g⁻¹) * R.character A := by
+      = (∑ g : G, w g * R.character g⁻¹) * R.character A := by
   sorry
