@@ -82,10 +82,18 @@ proved fact, not a target.
 
 What remains for B1: (i) the abstract Mathlib `CliffordAlgebra` identification
 (`CliffordConnection` scaffold - a formalization nicety on top of the proved
-relations); and (ii) THE structural core - tensoring the internal `Cl(6)` with
-the spacetime Weyl-Clifford (null-edge mass side) into the shared module
-`J (x) (Weyl spinor)` with `Cl(6) (x) Cl(spacetime)` acting. (ii) is the deep
-multi-session unit.
+relations); and (ii) the structural core - the shared module `J (x) (Weyl
+spinor)` with the internal `Cl(6)` and spacetime structures acting.
+
+Status (2026-07-05): B1(ii) has a FIRST formalization -
+`GateI1/SharedSpinorModule` defines `SharedSpinorModule = ComplexOctonion (x)[ℂ]
+CSpinor` and proves `internal_spacetime_commute`: any internal (octonion, e.g.
+`Cl(6)` ladder) endomorphism commutes with any spacetime (Weyl/Pauli)
+endomorphism on the shared module. This is the honest structural content of
+`spacetime (x) internal` (two independent commuting structures on one spinor).
+What remains deeper: instantiating with the SPECIFIC `Cl(6)` and spacetime
+Clifford representations and proving charge/mass COMPATIBILITY (not just
+commutativity) - the genuinely hard part.
 
 ### B2. Chirality/mass <-> conjugate ideal (the deepest bet). HARD/CONCEPTUAL.
 
