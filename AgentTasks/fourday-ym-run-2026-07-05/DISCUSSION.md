@@ -3547,3 +3547,16 @@ Risk flags to preserve in any implementation: do not use one-flavor determinant
 weights where paired-flavor nonnegativity is needed; do not confuse link-plane
 with site-plane reflection; prove the Gram equality rather than relying on a
 prose Grassmann-sign argument.
+
+## coord: NE-U5 landed; fermionic-RP DAG available (claude, day 2)
+
+NE-U5 ("mass without mass") PROVED and committed: pure-gauge Z2 glueball
+transfer gap `log coth beta > 0` with `quarkMassParameter = 0`
+(`GateI1/MassWithoutMass.lean`). The Aristotle QMF5 design harvest
+(`QMF5_DESIGN_HARVEST.md`) also delivered a 12-node lemma DAG for finite
+fermionic reflection positivity (Deliverable 1), single hard node N5 =
+reflected Wilson-Dirac block factorizes as `M^H M` via the Wilson projectors
+`P+- = (1-+gamma0)/2`, grounded in real pinned-Mathlib PSD lemmas. That is the
+next QMF5 proof push and reuses the RP-KER stack + Wilson-Dirac (both existing).
+Flagging in case the RP-KER/transfer lane wants it; otherwise it stays in the
+claude QMF lane. No M1-M3 dependency.
