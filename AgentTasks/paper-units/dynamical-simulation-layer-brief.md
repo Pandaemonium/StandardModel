@@ -166,6 +166,10 @@ Implementation status as of 2026-07-05:
   validates a previously emitted JSON summary, recomputes descriptor-backed
   scalar checks, and replays partition/flux/correlation checks from the saved
   matrix payload when present.
+- The v0.15 extension adds an explicit JSON-schema-style descriptor contract:
+  `python Scripts/oracle/z2_transfer_oracle.py --write-schema <json>` emits
+  the supported model, group, lattice-boundary, coupling, observable,
+  correlation, and sector-label conventions.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -214,8 +218,8 @@ now and what still needs a bridge.
 
 | Artifact | Role in the dynamics layer | Current status |
 | --- | --- | --- |
-| `Scripts/oracle/z2_transfer_oracle.py` | Exact Z2 1+1D finite slab transfer engine | Descriptor-driven oracle evidence: transfer traces, observables, requested two-time flux-correlation profiles, spectra, sector blocks, optional reproducibility matrices, and saved-record replay verification. |
-| `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, correlation-profile validation, optional matrix-payload validation, saved-record verifier acceptance/rejection, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
+| `Scripts/oracle/z2_transfer_oracle.py` | Exact Z2 1+1D finite slab transfer engine | Descriptor-driven oracle evidence: transfer traces, observables, requested two-time flux-correlation profiles, spectra, sector blocks, optional reproducibility matrices, descriptor schema emission, and saved-record replay verification. |
+| `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, schema-record conventions, correlation-profile validation, optional matrix-payload validation, saved-record verifier acceptance/rejection, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` | Smallest Lean spectral payload | Kernel-checked finite identities for the `2 x 2` transfer-shape eigenvectors, ordered eigenvalues, spectral ratio, and contraction factor. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferWitness.lean` | Tiny consumer of the finite-gap witness API | Kernel-checked toy `Module.End` witness for the two-state descriptor; deliberately not the full Wilson slab transfer operator. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, explicit vacuum/local eigenvectors, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |

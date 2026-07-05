@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.14"
+ORACLE_VERSION = "v0.15"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -497,6 +497,135 @@ def validate_descriptor(record: dict) -> Z2TransferDescriptor:
         correlation_taus=correlation_taus,
         sector_symmetries=sectors,
     )
+
+
+def descriptor_schema_record() -> dict:
+    """Return the JSON-schema-style contract for supported descriptors."""
+
+    return {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": f"urn:physics-sm:{DESCRIPTOR_SCHEMA}",
+        "title": "Finite Z2 1+1D Wilson slab transfer descriptor",
+        "schema_version": DESCRIPTOR_SCHEMA,
+        "claim_boundary": "descriptor contract only; not a Lean proof",
+        "type": "object",
+        "required": [
+            "schema_version",
+            "model",
+            "group",
+            "lattice",
+            "couplings",
+            "observables",
+            "correlations",
+            "sector_symmetries",
+        ],
+        "properties": {
+            "schema_version": {"const": DESCRIPTOR_SCHEMA},
+            "model": {"const": "z2_1p1d_wilson_slab_transfer"},
+            "group": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                    "name": {"const": "Z2"},
+                    "multiplication": {"const": "sign multiplication"},
+                    "encoding": {
+                        "type": "object",
+                        "properties": {
+                            "bit_0": {"const": "+1"},
+                            "bit_1": {"const": "-1"},
+                        },
+                    },
+                },
+            },
+            "lattice": {
+                "type": "object",
+                "required": ["space", "time"],
+                "properties": {
+                    "space": {
+                        "type": "object",
+                        "required": ["dimension", "shape", "boundary"],
+                        "properties": {
+                            "dimension": {"const": 1},
+                            "shape": {
+                                "type": "array",
+                                "minItems": 1,
+                                "maxItems": 1,
+                                "items": {"type": "integer", "minimum": 1},
+                            },
+                            "boundary": {"const": "periodic"},
+                        },
+                    },
+                    "time": {
+                        "type": "object",
+                        "required": ["extent", "boundary"],
+                        "properties": {
+                            "extent": {"type": "integer", "minimum": 1},
+                            "boundary": {"const": "periodic"},
+                        },
+                    },
+                },
+            },
+            "couplings": {
+                "type": "object",
+                "properties": {
+                    "beta": {"type": "number"},
+                    "beta_spatial": {"const": 0.0},
+                    "beta_temporal": {"type": "number"},
+                },
+                "anyOf": [
+                    {"required": ["beta"]},
+                    {"required": ["beta_temporal"]},
+                ],
+            },
+            "observables": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                    "type": "object",
+                    "required": ["name"],
+                    "properties": {
+                        "name": {"enum": sorted(SUPPORTED_OBSERVABLES)},
+                        "formula": {"type": "string"},
+                        "insertion": {"const": "diagonal"},
+                    },
+                },
+            },
+            "correlations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                    "type": "object",
+                    "required": ["name", "observable_a", "observable_b", "taus"],
+                    "properties": {
+                        "name": {"enum": sorted(SUPPORTED_CORRELATIONS)},
+                        "observable_a": {"enum": sorted(SUPPORTED_OBSERVABLES)},
+                        "observable_b": {"enum": sorted(SUPPORTED_OBSERVABLES)},
+                        "taus": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {"type": "integer", "minimum": 0},
+                        },
+                    },
+                },
+            },
+            "sector_symmetries": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                    "type": "object",
+                    "required": ["name"],
+                    "properties": {
+                        "name": {"enum": sorted(SUPPORTED_SECTOR_SYMMETRIES)},
+                        "action": {"type": "string"},
+                        "projectors": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                        },
+                    },
+                },
+            },
+        },
+    }
 
 
 def model_descriptor(L: int, T: int, beta: float) -> dict:
@@ -1133,6 +1262,11 @@ def main() -> int:
         help="write a JSON descriptor template for --L/--T/--beta and exit",
     )
     parser.add_argument(
+        "--write-schema",
+        type=Path,
+        help="write the JSON-schema-style descriptor contract and exit",
+    )
+    parser.add_argument(
         "--include-matrices",
         action="store_true",
         help="include transfer and sector matrices in JSON output",
@@ -1159,6 +1293,13 @@ def main() -> int:
             if report["errors"]:
                 print("errors: " + ", ".join(report["errors"]))
         return 0 if report["ok"] else 1
+
+    if args.write_schema:
+        schema = descriptor_schema_record()
+        with args.write_schema.open("w", encoding="utf-8", newline="\n") as handle:
+            json.dump(schema, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+        return 0
 
     if args.write_template:
         descriptor = model_descriptor(args.L, args.T, args.beta)

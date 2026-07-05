@@ -28,7 +28,8 @@ The repo now has enough verified infrastructure to make the next work concrete:
 - executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
   descriptor-requested two-time correlation profiles, sector blocks,
   descriptor-file input, optional reproducibility matrix emission, and JSON
-  summary output plus saved-record replay verification;
+  summary output plus descriptor-schema emission and saved-record replay
+  verification;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
   payload with vacuum/local eigenvector equations and D12 gap identities;
 - `TwoStateTransferWitness.lean`, a tiny whole-sector witness adapter that
@@ -67,7 +68,9 @@ Achievable deliverables:
   matrix output now includes spatial-state labels, the spatial-flux insertion,
   the global-center flip, and center projectors in the full state basis. The
   oracle also has a `--verify-record` path that validates saved JSON summaries
-  and replays matrix-backed partition, flux, and correlation checks.
+  and replays matrix-backed partition, flux, and correlation checks. It now
+  also emits the explicit JSON-schema-style descriptor contract through
+  `--write-schema`.
 
 Done when:
 
