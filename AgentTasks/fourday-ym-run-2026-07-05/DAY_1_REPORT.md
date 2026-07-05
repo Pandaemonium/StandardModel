@@ -53,7 +53,13 @@ harvested as soon as they returned.
   times finite Wilson cut factors. The concrete follow-up
   `factorized_mul_cutPlaquette_ensemble_reflectionPositive` instantiates that
   assembly with the genuine singleton cut-plaquette ensemble weight and an
-  arbitrary factorized side contribution.
+  arbitrary factorized side contribution. Codex then added the finite
+  repeated-copy product-family bridge:
+  `indexedCutPlaquette_weight_mirrorConfig_eq_wilsonKernel_prod`,
+  `indexedCutPlaquette_ensemble_reflectionPositive`, and
+  `factorized_mul_indexedCutPlaquette_ensemble_reflectionPositive`. This still
+  does not close full RP-LINK because the copies are not geometrically distinct
+  plaquettes in a larger cut-bearing lattice.
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -165,7 +171,8 @@ cut-bearing plaquette, proves the mirror-coordinate factor form, and closes the
 singleton one-plaquette `PlaquetteEnsemble.weight` RP statement. The remaining
 Q1 gap is the genuinely nontrivial finite cut-ensemble / shocking tier:
 instantiate the mixed-product theorem with concrete finite plaquette families
-with multiple cut plaquettes and/or the abstract reflection-family theorem. T2 Hermitian bridge
+with geometrically distinct cut plaquettes and/or the abstract
+reflection-family theorem. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
 `cutKernel` block matrix and pairing/reflection-form bridge, while

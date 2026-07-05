@@ -376,8 +376,14 @@ one-plaquette concrete RP statement as
 `cutPlaquette_ensemble_reflectionPositive`; also proves
 `factorized_mul_cutPlaquette_ensemble_reflectionPositive`, multiplying the
 genuine singleton cut weight by an arbitrary factorized positive/mirror side
-contribution. This is still not full RP-LINK: finite products over a general
-cut-bearing ensemble are not assembled here);
+contribution; and proves the repeated-copy product-family bridge
+`indexedCutPlaquette_weight_mirrorConfig_eq_wilsonKernel_prod`,
+`indexedCutPlaquette_ensemble_reflectionPositive`, and
+`factorized_mul_indexedCutPlaquette_ensemble_reflectionPositive` for finite
+indexed copies of the same minimal cut plaquette. This is still not full
+RP-LINK: the copies are not geometrically distinct plaquettes in a larger
+cut-bearing lattice, and a general finite reflection-family theorem is not
+assembled here);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original

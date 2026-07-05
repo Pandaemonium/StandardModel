@@ -169,12 +169,16 @@ Minimal concrete cut-plaquette example:
   - `cutPlaquette_weight_mirrorConfig_eq_wilsonKernel`
   - `cutPlaquette_ensemble_reflectionPositive`
   - `factorized_mul_cutPlaquette_ensemble_reflectionPositive`
+  - `indexedCutPlaquette_weight_mirrorConfig_eq_wilsonKernel_prod`
+  - `indexedCutPlaquette_ensemble_reflectionPositive`
+  - `factorized_mul_indexedCutPlaquette_ensemble_reflectionPositive`
   This is the first concrete straddling plaquette with the required read-off
   shape. It proves the holonomy factorization, identifies the singleton
   `PlaquetteEnsemble.weight`, and specializes the Wilson cut-factor RP-KER
   theorem to a concrete one-plaquette ensemble, including a factorized
-  positive/mirror side contribution. It is not yet a multi-cut finite
-  ensemble product theorem.
+  positive/mirror side contribution. It now also proves the finite product
+  theorem for indexed copies of that same minimal cut plaquette. It is not yet
+  a multi-cut finite ensemble theorem over geometrically distinct plaquettes.
 
 Baseline Wilson reflection positivity:
 

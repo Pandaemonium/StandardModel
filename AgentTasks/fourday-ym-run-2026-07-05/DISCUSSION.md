@@ -2294,3 +2294,23 @@ side contribution multiplied by the genuine singleton cut-plaquette
 
 Scope boundary: still one-cut/singleton cut ensemble only. Multiple cut
 plaquettes and general finite reflection-family instantiation remain open.
+
+Codex follow-up 1.23:11:
+
+Added the repeated finite-copy product-family layer to
+`ReflectionCutPlaquetteExample.lean`:
+
+- `indexedCutPlaquetteFamily`
+- `indexedCutPlaquette_weight_mirrorConfig_eq_wilsonKernel_prod`
+- `indexedCutPlaquette_ensemble_reflectionPositive`
+- `factorized_mul_indexedCutPlaquette_ensemble_reflectionPositive`
+
+This proves that the `PlaquetteEnsemble.weight` of a finite indexed family of
+copies of the same minimal cut plaquette is exactly the corresponding finite
+product of Wilson cut kernels, and it instantiates the mixed product RP theorem
+with an arbitrary factorized positive/mirror side contribution.
+
+Scope boundary: this is still a repeated-copy theorem on the minimal four-edge
+cut lattice. It advances the finite product assembly surface, but it is not a
+larger cut-bearing lattice with geometrically distinct cut plaquettes and does
+not close full RP-LINK.

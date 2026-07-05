@@ -21,8 +21,10 @@ That is precisely the shape consumed by
 `WilsonCutPlaquettePositivity.cutKernel_posSemidef_of_wilsonFactor`.
 
 Scope boundary: this is a finite geometry and holonomy-factorization example.
-It does not yet identify a full `PlaquetteEnsemble.weight` on a larger
-cut-bearing lattice or close RP-LINK.
+It identifies the genuine `PlaquetteEnsemble.weight` for the singleton
+minimal cut plaquette and for finite indexed copies of that same plaquette.
+It does not yet build a larger cut-bearing lattice with geometrically distinct
+cut plaquettes or close RP-LINK.
 
 Claim label: **finite identity / concrete example**. Draft-trust:
 kernel-checked; no proof placeholders.
@@ -160,6 +162,15 @@ def cutPlaquette : Plaquette cutPlaqLattice where
 def cutPlaquetteFamily : PUnit → Plaquette cutPlaqLattice :=
   fun _ => cutPlaquette
 
+/-- A finite indexed family of copies of the concrete cut plaquette.
+
+This is a product-family stress test for the cut-factor assembly theorem. The
+copies are indexed independently but geometrically all equal to the same
+minimal cut plaquette; this is not yet a larger cut-bearing lattice. -/
+def indexedCutPlaquetteFamily (K : Type) :
+    K → Plaquette cutPlaqLattice :=
+  fun _ => cutPlaquette
+
 /-- Mirror coordinates for the concrete cut plaquette.
 
 The stored `neg` coordinate is the mirrored negative-side variable. The actual
@@ -268,6 +279,45 @@ theorem cutPlaquette_ensemble_reflectionPositive
   funext a c b
   rw [cutPlaquette_weight_mirrorConfig_eq_wilsonKernel]
 
+omit [Fintype G] in
+/-- The product weight of finitely many indexed copies of the minimal cut
+plaquette is the corresponding product of Wilson cut kernels. -/
+theorem indexedCutPlaquette_weight_mirrorConfig_eq_wilsonKernel_prod
+    {K : Type} [Fintype K]
+    (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (a b : G) (c : G × G) :
+    PlaquetteEnsemble.weight (indexedCutPlaquetteFamily K)
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) (cutMirrorConfig a c b)
+      = ∏ _k : K, wilsonKernel beta rho (cutPlaqEWord c a) (cutPlaqEWord c b) := by
+  simp [PlaquetteEnsemble.weight, PlaquetteCore.productWeight,
+    indexedCutPlaquetteFamily, WilsonLocalWeight.wilsonLocalWeight, wilsonKernel,
+    cutPlaquette_hol_mirrorConfig]
+
+/-- The indexed-copy cut-plaquette ensemble weight is reflection positive in
+mirror coordinates. This is a finite product-family theorem for repeated
+copies of the minimal cut plaquette, not a general cut-lattice RP-LINK
+statement. -/
+theorem indexedCutPlaquette_ensemble_reflectionPositive
+    {K : Type} [Fintype K]
+    (beta : ℝ) (hbeta : 0 ≤ beta)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1) :
+    ReflectionPositivityKernel.IsReflectionPositive (A := G) (C := G × G)
+      (fun a c b =>
+        ((PlaquetteEnsemble.weight (indexedCutPlaquetteFamily K)
+            (WilsonLocalWeight.wilsonLocalWeight beta rho)
+            (cutMirrorConfig a c b) : ℝ) : ℂ)) := by
+  convert
+    (reflectionForm_nonneg_of_wilsonFactor_prod
+      (A := G) (C := G × G) (G := G) (n := n)
+      (s := (Finset.univ : Finset K))
+      beta hbeta rho hmul hone hunit (fun _ => cutPlaqEWord)) using 1
+  funext a c b
+  simp [indexedCutPlaquette_weight_mirrorConfig_eq_wilsonKernel_prod]
+
 /-- A factorized positive/mirror contribution times the genuine singleton
 cut-plaquette ensemble weight is reflection positive in mirror coordinates.
 
@@ -292,6 +342,35 @@ theorem factorized_mul_cutPlaquette_ensemble_reflectionPositive
       (A := G) (C := G × G) (G := G) (n := n)
       (s := (Finset.univ : Finset PUnit))
       beta hbeta rho hmul hone hunit h (fun _ => cutPlaqEWord))
+
+/-- A factorized positive/mirror contribution times finitely many indexed
+copies of the genuine minimal cut-plaquette ensemble weight is reflection
+positive in mirror coordinates.
+
+This is the repeated-copy product-family instance of the mixed product
+assembly theorem. It remains short of the full RP-LINK theorem because all
+copies use the same concrete cut plaquette. -/
+theorem factorized_mul_indexedCutPlaquette_ensemble_reflectionPositive
+    {K : Type} [Fintype K]
+    (beta : ℝ) (hbeta : 0 ≤ beta)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (h : G → G × G → ℂ) :
+    ReflectionPositivityKernel.IsReflectionPositive (A := G) (C := G × G)
+      (fun a c b =>
+        (h a c * (starRingEnd ℂ) (h b c)) *
+          ((PlaquetteEnsemble.weight (indexedCutPlaquetteFamily K)
+            (WilsonLocalWeight.wilsonLocalWeight beta rho)
+            (cutMirrorConfig a c b) : ℝ) : ℂ)) := by
+  convert
+    (reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod
+      (A := G) (C := G × G) (G := G) (n := n)
+      (s := (Finset.univ : Finset K))
+      beta hbeta rho hmul hone hunit h (fun _ => cutPlaqEWord)) using 1
+  funext a c b
+  simp [indexedCutPlaquette_weight_mirrorConfig_eq_wilsonKernel_prod]
 
 end ReflectionCutPlaquetteExample
 end GateYM
