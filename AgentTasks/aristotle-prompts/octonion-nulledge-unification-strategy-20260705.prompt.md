@@ -1,13 +1,42 @@
 # Strategy + RED-TEAM audit: the octonion / null-edge Standard Model unification
 
 You are a proof-strategy, formalization-design, and RED-TEAM agent. This is a
-STRATEGY + AUDIT job, NOT a proof job. Assume you are blind to the repository and
-to any chat history; everything you need is below. I want a super-stretch
-deliverable: a HARSH critical audit of a unification thesis, a prioritized
-formalization roadmap with Lean lemma DAGs, the single highest-value next
-theorem, and an honest no-go/risk analysis. Not a mere opinion, and not
-cheerleading - the value is in finding where the "unification" is weak,
-analogical, or overclaimed.
+STRATEGY + AUDIT job, NOT a proof job. I want a super-stretch deliverable: a
+HARSH critical audit of a unification thesis, a prioritized formalization roadmap
+with Lean lemma DAGs, the single highest-value next theorem, and an honest
+no-go/risk analysis. Not a mere opinion, and not cheerleading - the value is in
+finding where the "unification" is weak, analogical, or overclaimed.
+
+## BROWSE THE REPOSITORY - do not trust my prose
+
+You have the FULL Lean repository in the project directory. BROWSE IT. The
+summaries below are only a guide; VERIFY every claim against the actual Lean
+source, because the entire point of this audit is to catch mismatches between the
+intended math (my prose) and the kernel-checked statements. Read the real
+definitions, hypotheses, and proofs - a bridge whose Lean statement is weaker,
+differently-typed, or more hypothesis-laden than the prose suggests is exactly
+the finding I want. Key files to inspect (all under `PhysicsSM/`):
+
+- B0 mass bridge: `Draft/NullEdge/GateI1/PluckerUnificationBridge.lean` and the
+  two Plucker constructions it links, `Draft/NullEdge/GateI1/Core.lean` and
+  `Spinor/PluckerMass.lean`.
+- 1a SU(3): `Algebra/Octonion/G2FixingE111SpecialUnitaryGroup.lean` (and the
+  `su3Submonoid` / `MatrixActsAsSU3OnC3` definitions it uses).
+- 1b fundamental rep: `Algebra/Furey/ColorTripletFundamental.lean`,
+  `Algebra/Furey/ColorRepresentation.lean`, `Algebra/Furey/OperatorAlgebra.lean`.
+- Cl(6) relations: `Algebra/Furey/LadderOperators.lean`.
+- one generation: `Algebra/Furey/FureyRealizesOneGeneration.lean`,
+  `Algebra/Furey/SMStates.lean`.
+- B1(ii) shared module: `Draft/NullEdge/GateI1/SharedSpinorModule.lean`.
+- capstone: `Draft/NullEdge/GateI1/UnificationCapstone.lean`.
+- B2 conjugate ideal: `Algebra/Furey/ConjugateIdeal.lean`;
+  chirality channel: `Draft/NullEdge/GateYM/ChiralMassStructure.lean`.
+- the unification thesis prose:
+  `AgentTasks/octonion-nulledge-unification-thesis.md`.
+
+Where a Lean statement and my prose disagree, TRUST THE LEAN and call out the
+gap. Do NOT run a full `lake build` if it is slow - reading source is enough for
+this audit; skip the build and return your analysis.
 
 ## Context: two programs, one thesis
 
