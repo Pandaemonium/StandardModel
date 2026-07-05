@@ -1,5 +1,6 @@
 import Mathlib
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonDiracOperator
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonProjectors
 
 /-!
 # QMF5 Deliverable-1 scaffold: the temporal reflection for fermionic RP
@@ -62,12 +63,13 @@ analysis). Draft-trust, kernel-checked, `s o r r y`-free. Prerequisites:
 the reflection unitary and the reflected-block factorization above.
 -/
 
-open scoped Matrix
+open scoped Matrix ComplexOrder
 
 namespace PhysicsSM.Draft.NullEdge.GateYM
 namespace FermionicReflection
 
 open PhysicsSM.Draft.NullEdge.GateYM.Qmf4bWilson
+open PhysicsSM.Draft.NullEdge.GateYM.WilsonProjectors
 
 /-- The Euclidean time direction of `Site L = Fin 4 -> Fin L`. Chosen as index
 `0`; the spatial directions are `1, 2, 3`. (The Wilson-Dirac operator treats all
@@ -169,6 +171,116 @@ construction. -/
 theorem rpFReflection_unitary (L nc : ℕ) [NeZero L] :
     (rpFReflection L nc)ᴴ * rpFReflection L nc = 1 := by
   rw [rpFReflection_herm, rpFReflection_sq]
+
+/-! ## The reflected positive-half block is PSD (RP-F node N5, lattice-index form)
+
+The Wilson projectors `P+-` are lifted to the full index space `Idx L nc`
+(site- and colour-diagonal, projector on the Dirac spin factor). They inherit the
+orthogonal-projector properties, so `A^dagger (lifted P) A` is positive
+semidefinite for any `A` (`WilsonProjectors.conj_projector_posSemidef`). This is
+the RP-F node-N5 Gram conclusion at the FULL lattice index level: the
+positive-side forward-hopping block, built through the lifted forward projector
+from any boundary coupling `A`, is PSD. Assembling the specific `A` (the reflected
+Wilson boundary coupling) and the Berezin/measure wrap into
+`ReflectionPositivityKernel.reflectionForm_nonneg` remains the final RP-F step. -/
+
+/-- The Wilson forward projector `P_plus mu` lifted to `Idx L nc` (site- and
+colour-diagonal, `projPlus` on the Dirac spin factor). -/
+noncomputable def liftProjPlus (L nc : ℕ) (μ : Fin 4) : Matrix (Idx L nc) (Idx L nc) ℂ :=
+  Matrix.of fun I J => (if I.1 = J.1 ∧ I.2.2 = J.2.2 then projPlus μ I.2.1 J.2.1 else 0)
+
+/-- The Wilson backward projector `P_minus mu` lifted to `Idx L nc`. -/
+noncomputable def liftProjMinus (L nc : ℕ) (μ : Fin 4) : Matrix (Idx L nc) (Idx L nc) ℂ :=
+  Matrix.of fun I J => (if I.1 = J.1 ∧ I.2.2 = J.2.2 then projMinus μ I.2.1 J.2.1 else 0)
+
+/-- `liftProjPlus` is Hermitian (inherited from `projPlus_herm`). -/
+theorem liftProjPlus_herm (L nc : ℕ) (μ : Fin 4) :
+    (liftProjPlus L nc μ)ᴴ = liftProjPlus L nc μ := by
+  ext I J
+  simp only [liftProjPlus, Matrix.conjTranspose_apply, Matrix.of_apply]
+  by_cases h : I.1 = J.1 ∧ I.2.2 = J.2.2
+  · rw [if_pos ⟨h.1.symm, h.2.symm⟩, if_pos h]
+    have := congr_fun (congr_fun (projPlus_herm μ) I.2.1) J.2.1
+    rwa [Matrix.conjTranspose_apply] at this
+  · rw [if_neg h, if_neg (fun hc => h ⟨hc.1.symm, hc.2.symm⟩)]; simp
+
+/-- `liftProjMinus` is Hermitian (inherited from `projMinus_herm`). -/
+theorem liftProjMinus_herm (L nc : ℕ) (μ : Fin 4) :
+    (liftProjMinus L nc μ)ᴴ = liftProjMinus L nc μ := by
+  ext I J
+  simp only [liftProjMinus, Matrix.conjTranspose_apply, Matrix.of_apply]
+  by_cases h : I.1 = J.1 ∧ I.2.2 = J.2.2
+  · rw [if_pos ⟨h.1.symm, h.2.symm⟩, if_pos h]
+    have := congr_fun (congr_fun (projMinus_herm μ) I.2.1) J.2.1
+    rwa [Matrix.conjTranspose_apply] at this
+  · rw [if_neg h, if_neg (fun hc => h ⟨hc.1.symm, hc.2.symm⟩)]; simp
+
+/-- `liftProjPlus` is idempotent: the site/colour-diagonal `K`-sum collapses to the
+spin sum `projPlus mu * projPlus mu = projPlus mu`. -/
+theorem liftProjPlus_idem (L nc : ℕ) (μ : Fin 4) :
+    liftProjPlus L nc μ * liftProjPlus L nc μ = liftProjPlus L nc μ := by
+  ext I J
+  rw [Matrix.mul_apply]
+  rw [← Finset.sum_subset (Finset.subset_univ
+        (Finset.image (fun s' : Fin 4 => (I.1, s', I.2.2)) Finset.univ))]
+  · rw [Finset.sum_image (by intro a _ b _ hab; simpa using congrArg (fun z => z.2.1) hab)]
+    simp only [liftProjPlus, Matrix.of_apply, true_and, and_true, if_true, eq_self_iff_true]
+    have hidem := projPlus_idem μ
+    by_cases hJ : I.1 = J.1 ∧ I.2.2 = J.2.2
+    · obtain ⟨hJ1, hJ2⟩ := hJ
+      simp only [if_pos hJ1, if_pos hJ2, if_pos (And.intro hJ1 hJ2)]
+      rw [← Matrix.mul_apply, hidem]
+    · rw [if_neg hJ]
+      have hz : ∀ x : Fin 4, projPlus μ I.2.1 x *
+          (if I.1 = J.1 ∧ I.2.2 = J.2.2 then projPlus μ x J.2.1 else 0) = 0 := by
+        intro x; rw [if_neg hJ, mul_zero]
+      simp only [hz, Finset.sum_const_zero]
+  · intro K _ hK
+    simp only [Finset.mem_image, Finset.mem_univ, true_and, not_exists] at hK
+    simp only [liftProjPlus, Matrix.of_apply]
+    rw [if_neg, zero_mul]
+    rintro ⟨hk1, hk2⟩; exact hK K.2.1 (by ext <;> simp_all)
+
+/-- `liftProjMinus` is idempotent. -/
+theorem liftProjMinus_idem (L nc : ℕ) (μ : Fin 4) :
+    liftProjMinus L nc μ * liftProjMinus L nc μ = liftProjMinus L nc μ := by
+  ext I J
+  rw [Matrix.mul_apply]
+  rw [← Finset.sum_subset (Finset.subset_univ
+        (Finset.image (fun s' : Fin 4 => (I.1, s', I.2.2)) Finset.univ))]
+  · rw [Finset.sum_image (by intro a _ b _ hab; simpa using congrArg (fun z => z.2.1) hab)]
+    simp only [liftProjMinus, Matrix.of_apply, true_and, and_true, if_true, eq_self_iff_true]
+    have hidem := projMinus_idem μ
+    by_cases hJ : I.1 = J.1 ∧ I.2.2 = J.2.2
+    · obtain ⟨hJ1, hJ2⟩ := hJ
+      simp only [if_pos hJ1, if_pos hJ2, if_pos (And.intro hJ1 hJ2)]
+      rw [← Matrix.mul_apply, hidem]
+    · rw [if_neg hJ]
+      have hz : ∀ x : Fin 4, projMinus μ I.2.1 x *
+          (if I.1 = J.1 ∧ I.2.2 = J.2.2 then projMinus μ x J.2.1 else 0) = 0 := by
+        intro x; rw [if_neg hJ, mul_zero]
+      simp only [hz, Finset.sum_const_zero]
+  · intro K _ hK
+    simp only [Finset.mem_image, Finset.mem_univ, true_and, not_exists] at hK
+    simp only [liftProjMinus, Matrix.of_apply]
+    rw [if_neg, zero_mul]
+    rintro ⟨hk1, hk2⟩; exact hK K.2.1 (by ext <;> simp_all)
+
+/-- **RP-F node N5 (lattice-index form), forward projector**: the reflected
+positive-side block `A^dagger (liftProjPlus) A` is positive semidefinite for any
+boundary coupling `A`. This is the Wilson forward-hopping half of the reflected
+fermion block, PSD via the projector-Gram factorization. -/
+theorem conj_liftProjPlus_posSemidef {L nc : ℕ} {k : Type*} [Fintype k]
+    (μ : Fin 4) (A : Matrix (Idx L nc) k ℂ) :
+    (Aᴴ * liftProjPlus L nc μ * A).PosSemidef :=
+  conj_projector_posSemidef _ (liftProjPlus_herm L nc μ) (liftProjPlus_idem L nc μ) A
+
+/-- **RP-F node N5 (lattice-index form), backward projector**: the reflected
+positive-side block `A^dagger (liftProjMinus) A` is positive semidefinite. -/
+theorem conj_liftProjMinus_posSemidef {L nc : ℕ} {k : Type*} [Fintype k]
+    (μ : Fin 4) (A : Matrix (Idx L nc) k ℂ) :
+    (Aᴴ * liftProjMinus L nc μ * A).PosSemidef :=
+  conj_projector_posSemidef _ (liftProjMinus_herm L nc μ) (liftProjMinus_idem L nc μ) A
 
 end FermionicReflection
 end PhysicsSM.Draft.NullEdge.GateYM
