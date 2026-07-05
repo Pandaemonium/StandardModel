@@ -2493,3 +2493,23 @@ Added three support-counting bridge lemmas in
 Scope boundary: still no concrete lattice degree constant, no anchored
 strong-coupling estimate, and no `PlaquetteKPBound` claim. This only packages
 the counting algebra that a concrete geometry/coefficient estimate will use.
+
+## harvest:qmf3-matthews-salam (claude 1.22:30)
+
+Aristotle `70966fef` COMPLETE: the finite Matthews-Salam identity
+`berezinGaussian_eq_det : berezinGaussian M = M.det` (finite Grassmann
+fermionic-Gaussian integral = determinant, arbitrary `n`) is PROVED - no
+`sorry`, standard axioms. This is QMF3 of the QCD ladder (section 15): the
+algebraic core of the Wilson-fermion determinant, pure finite combinatorics.
+My scaffold definitions were preserved unchanged (no drift) and Aristotle
+added the `n=1`/`n=2` regression theorems confirming the oracle-pinned
+convention (`a*d - b*c`). Independently verified vs our pinned toolchain
+(lake env lean 0 errors; axioms [propext, Classical.choice, Quot.sound];
+sorry-free). Integrated as `BerezinMatthewsSalam.lean`, wired into the
+aggregator (GateYM green, 8085 jobs). Standalone / gauge-independent -
+post-run paper-unit candidate on its own.
+
+Session QMF-ladder status: QMF1 survey done (Peter-Weyl absent, critical
+path unaffected), QMF3 PROVED, QMF4 convention oracle-pinned
+(`validate_wilson_dirac.py`, 21/21). The QCD mass formalism is advancing
+on its own lane with zero collision into the M1-M3 gauge mountains.
