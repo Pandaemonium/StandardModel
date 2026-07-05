@@ -349,3 +349,81 @@ concerns Wilson fermions and gauge-invariant observables, while the current
 GateYM work is a finite, clean-room, draft lattice-gauge RP stack with its own
 explicit hypotheses and convention layer. Full Osterwalder-Seiler proof-text
 review remains open.
+
+## 2026-07-05 07:40 - Codex - finite transfer dynamics source sweep
+
+Status: PRECEDENT CHECKED FOR THE FIRST DYNAMICS ORACLE; CLAIM BOUNDARY
+UNCHANGED.
+
+Purpose:
+
+The user asked whether the project can begin a true dynamical simulation layer.
+The collaborator brief was sharpened toward a finite Euclidean slab transfer
+kernel.  This source sweep checks that this is the historically standard
+direction: start from Wilson's Euclidean lattice action, construct or test a
+transfer matrix, and only later discuss Hamiltonian or stochastic dynamics.
+
+Sources checked:
+
+- Wilson 1974, "Confinement of quarks," Physical Review D 10, 2445.
+  DOI `10.1103/PhysRevD.10.2445`; APS and INSPIRE records checked.
+- Kogut and Susskind 1975, "Hamiltonian formulation of Wilson's lattice gauge
+  theories," Physical Review D 11, 395. DOI `10.1103/PhysRevD.11.395`;
+  APS/INSPIRE/ADS records checked.
+- Creutz 1977, "Gauge fixing, the transfer matrix, and confinement on a
+  lattice," Physical Review D 15, 1128. DOI `10.1103/PhysRevD.15.1128`;
+  APS/OSTI/INSPIRE records checked.
+- Luescher 1977, "Construction of a selfadjoint, strictly positive transfer
+  matrix for Euclidean lattice gauge theories," Communications in Mathematical
+  Physics 54, 283-292. DOI `10.1007/BF01614090`; Springer/INSPIRE records
+  checked.
+- Osterwalder and Seiler 1978, "Gauge field theories on a lattice," Annals of
+  Physics 110, 440-471. DOI `10.1016/0003-4916(78)90039-8`; ScienceDirect and
+  INSPIRE records checked earlier and reused here.
+- Wegner 1971, "Duality in generalized Ising models and phase transitions
+  without local order parameters," Journal of Mathematical Physics 12, 2259.
+  DOI `10.1063/1.1665530`; AIP and INSPIRE records checked.
+
+Findings:
+
+- Wilson 1974 is the right source boundary for the Euclidean plaquette action
+  and strong-coupling lattice-gauge setup.
+- Kogut-Susskind and Creutz support the direction "Euclidean transfer matrix
+  first, Hamiltonian interpretation later"; they should not be cited as saying
+  this repo has already built a Hamiltonian.
+- Luescher is the most pointed source for self-adjoint/strictly positive
+  transfer-matrix construction in Euclidean lattice gauge theories.  It
+  reinforces why the project should test positivity and spectral properties of
+  the finite slab kernel before using its eigenvalues as gap data.
+- Osterwalder-Seiler and Menotti-Pelissetto remain the reflection-positivity
+  attribution sources for Wilson-action lattice gauge theory, but this run's
+  current implementation is still a finite oracle, not a formalization of
+  their full theorem.
+- Wegner is useful background for finite/discrete gauge and generalized Ising
+  models.  It supports using a Z2 finite model as the first diagnostic system,
+  not as a physical continuum endpoint.
+
+Implementation consequence:
+
+The first dynamics implementation should be a finite Z2 1+1D Wilson slab
+transfer oracle:
+
+```text
+K(u,v) = sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i)
+```
+
+and it should validate:
+
+- `Tr(K^T)` against exact periodic spacetime enumeration;
+- diagonal observable insertions against exact spacetime enumeration;
+- kernel symmetry and numerical PSD;
+- center-shift projector commutation;
+- a finite spectral-ratio/gap diagnostic on tiny examples;
+- an explicit guard that raw magnetic spatial flux is not, by itself, a
+  preserved block label for the unprojected slab kernel.
+
+Claim boundary:
+
+This source sweep supports building a finite transfer oracle now.  It does not
+support claiming a physical Hamiltonian, MCMC correctness, infinite-volume
+state, continuum limit, or mass-gap computation.

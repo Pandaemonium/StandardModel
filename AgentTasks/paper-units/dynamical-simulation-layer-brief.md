@@ -115,6 +115,17 @@ mu(U) = W(U) / Z
 This is still Euclidean and finite. Its dynamical content enters when the
 lattice is split into adjacent time slabs.
 
+Implementation status as of 2026-07-05:
+
+- `Scripts/oracle/z2_transfer_oracle.py` implements the first Z2 1+1D slab
+  transfer oracle.
+- `Scripts/oracle/validate_lgt_core.py` v0.4 contains the regression checks:
+  transfer-kernel symmetry/PSD, `Tr(K^T)` against exact spacetime enumeration,
+  time-zero spatial-flux insertion against exact enumeration, center-shift
+  projector commutation, tiny finite spectral gaps, and a guard that raw
+  magnetic spatial flux is not a preserved block label for the unprojected
+  slab kernel.
+
 ## One-step slab kernel
 
 Let `u` and `v` be spatial link configurations on adjacent time slices, and

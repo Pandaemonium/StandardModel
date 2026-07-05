@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.3 (YM ladder, 2026-07-04)
+validate_lgt_core.py -- Track C oracle v0.4 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -36,6 +36,15 @@ v0.3 (four-day YM run, T14) adds:
     energy alpha*area. A nearby beta row is intentionally expected to fail
     with the same constants, guarding against non-volume-uniform claims.
 
+v0.4 (four-day YM run, dynamics slice) adds:
+  Finite Wilson slab transfer guard: section [13], a concrete Z2 1+1D
+    gauge-summed one-step transfer kernel. It checks kernel symmetry/PSD,
+    exact equality Tr(K^T)=sum over periodic spacetime link fields, time-zero
+    spatial-flux observable insertion, global center-shift projector
+    commutation, positive finite spectral gap on tiny examples, and a guard
+    that raw magnetic flux is NOT a block label for this unprojected slab
+    kernel.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -65,6 +74,15 @@ Pinned conventions (normative for the statement-freeze document):
 """
 import sys, math, itertools, platform
 import numpy as np
+from z2_transfer_oracle import (
+    full_spacetime_expectation as z2_transfer_full_expectation,
+    full_spacetime_partition as z2_transfer_full_partition,
+    partition_from_transfer as z2_partition_from_transfer,
+    sector_projector as z2_sector_projector,
+    spatial_flux as z2_spatial_flux,
+    transfer_expectation as z2_transfer_expectation,
+    transfer_matrix as z2_transfer_matrix,
+)
 
 np.random.seed(20260703)
 PASS = []
@@ -75,7 +93,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.3 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.4 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -577,6 +595,75 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
       "; ".join(f"L={r['L']} n={r['polymer_count']} "
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
+
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.4)")
+print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
+      "with exact spacetime validation")
+for beta in [0.2, 0.4, 0.7]:
+    for L in [1, 2, 3]:
+        Kslab = z2_transfer_matrix(L, beta)
+        eig = np.linalg.eigvalsh(0.5 * (Kslab + Kslab.T))
+        check(f"L={L}, beta={beta}: slab kernel symmetric PSD",
+              np.max(np.abs(Kslab - Kslab.T)) < 1e-12
+              and eig.min() >= -1e-10,
+              f"min eig={eig.min():.3e}")
+
+for (L, nt, beta) in [(1, 1, 0.4), (2, 2, 0.4), (3, 2, 0.4), (2, 3, 0.7)]:
+    Z_transfer = z2_partition_from_transfer(L, nt, beta)
+    Z_full = z2_transfer_full_partition(L, nt, beta)
+    Z_brute, _, _ = z2_brute(L, nt, beta)
+    check(f"L={L},nt={nt},beta={beta}: Tr(K^nt) equals slab enumeration",
+          abs(Z_transfer / Z_full - 1) < 1e-12,
+          f"Tr={Z_transfer:.6e} full={Z_full:.6e}")
+    check(f"L={L},nt={nt},beta={beta}: slab enumeration matches z2_brute",
+          abs(Z_full / Z_brute - 1) < 1e-12,
+          f"full={Z_full:.6e} brute={Z_brute:.6e}")
+
+for (L, nt, beta) in [(2, 2, 0.4), (3, 2, 0.4), (3, 3, 0.7)]:
+    obs = lambda state, L=L: z2_spatial_flux(state, L)
+    E_transfer = z2_transfer_expectation(L, nt, beta, obs)
+    E_full = z2_transfer_full_expectation(L, nt, beta, obs)
+    _, _, W_brute = z2_brute(
+        L, nt, beta,
+        wilson_loops=[[2 * x for x in range(L)]],
+    )
+    check(f"L={L},nt={nt},beta={beta}: Tr(M_phi K^nt)/Tr(K^nt) matches full sum",
+          abs(E_transfer - E_full) < 1e-12,
+          f"transfer={E_transfer:.3e} full={E_full:.3e}")
+    check(f"L={L},nt={nt},beta={beta}: time-zero spatial flux matches z2_brute loop",
+          abs(E_full - W_brute[0]) < 1e-12,
+          f"full={E_full:.3e} brute={W_brute[0]:.3e}")
+
+for L in [2, 3, 4]:
+    Kslab = z2_transfer_matrix(L, beta=0.4)
+    center_plus = z2_sector_projector(L, 1)
+    center_minus = z2_sector_projector(L, -1)
+    check(f"L={L}: global center-shift projectors are complementary",
+          np.max(np.abs(center_plus + center_minus - np.eye(1 << L))) < 1e-12
+          and np.max(np.abs(center_plus @ center_minus)) < 1e-12)
+    check(f"L={L}: slab kernel commutes with global center-shift projectors",
+          np.max(np.abs(center_plus @ Kslab - Kslab @ center_plus)) < 1e-12
+          and np.max(np.abs(center_minus @ Kslab - Kslab @ center_minus)) < 1e-12)
+
+for L in [2, 3, 4]:
+    Kslab = z2_transfer_matrix(L, beta=0.4)
+    eig = np.linalg.eigvalsh(0.5 * (Kslab + Kslab.T))
+    eig = np.array(sorted((x for x in eig if x > 1e-10), reverse=True))
+    gap = -math.log(eig[1] / eig[0])
+    check(f"L={L}: tiny finite transfer spectrum has positive first gap",
+          len(eig) >= 2 and gap > 0,
+          f"gap={gap:.6f}, lam0={eig[0]:.4e}, lam1={eig[1]:.4e}")
+
+L = 3
+Kslab = z2_transfer_matrix(L, beta=0.4)
+cross_flux_nonzero = any(
+    z2_spatial_flux(u, L) != z2_spatial_flux(v, L)
+    and abs(Kslab[u, v]) > 1e-12
+    for u in range(1 << L)
+    for v in range(1 << L)
+)
+check("guard: raw magnetic spatial flux is not a preserved block label "
+      "for the unprojected slab kernel", cross_flux_nonzero)
 
 print("\n" + "=" * 78)
 n = len(PASS)
