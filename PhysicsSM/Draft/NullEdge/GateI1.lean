@@ -4,6 +4,10 @@ import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary
 import PhysicsSM.Draft.NullEdge.GateI1.CompositeApertureMass
 import PhysicsSM.Draft.NullEdge.GateI1.MassWithoutMass
 import PhysicsSM.Draft.NullEdge.GateI1.PluckerUnificationBridge
+import PhysicsSM.Draft.NullEdge.GateI1.SharedSpinorModule
+import PhysicsSM.Draft.NullEdge.GateI1.ColorBlindMass
+import PhysicsSM.Draft.NullEdge.GateI1.ColorBlindMassOrbit
+import PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -30,7 +34,15 @@ single-plaquette transfer operator `transfer2`, its explicit eigenvectors and
 strictly positive glueball gap `z2GlueballMass_pos` = `log coth beta > 0`, and
 the headline `massWithoutMass` - `quarkMassParameter = 0` yet the gap is
 strictly positive, a category-(3) closure mass with zero primitive mass input;
-design provenance Aristotle `d1e7bece`, independently re-verified).
+design provenance Aristotle `d1e7bece`, independently re-verified); plus the
+octonion / null-edge unification bridges (`SharedSpinorModule`: the
+structural spacetime (x) internal factorization with its honestly-vacuous
+commutativity; `ColorBlindMass` / `ColorBlindMassOrbit`: the red-team audit's
+decisive "colored mass" test, resolved on the co-location side - the octonion
+color factor enters a mass only through the `SU(3)`-invariant norm, so the mass
+is color-blind on the three basis states AND on every `SU(3)` orbit of the whole
+fundamental rep; `UnificationCapstone`: the bundled 1a/1b/Furey/B0 conjunction,
+labeled co-location not coupling per the audit).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 
