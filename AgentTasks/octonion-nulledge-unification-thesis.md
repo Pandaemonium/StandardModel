@@ -90,6 +90,21 @@ product. Formalizing this (the `normSq`-weighted shared mass + its `SU(3)`
 invariance) is the concrete next unit; the expected-negative outcome must be
 kernel-verified, not asserted (per the 1b-correction discipline).
 
+**KERNEL-VERIFIED (2026-07-05), in two steps:**
+1. `GateI1/ColorBlindMass` - the concrete input: `v4, v5, v6` have EQUAL octonion
+   norm (`= 1/2`), and `coloredMass_color_blind`: for any spacetime mass `m` the
+   three color basis states receive the same norm-weighted mass.
+2. `GateI1/ColorBlindMassOrbit` - the ABSTRACT whole-rep version:
+   `hermSq x := star x ⬝ᵥ x` is `SU(3)`-invariant (`hermSq_su3_invariant`, from
+   `Uᴴ U = 1`), so `coloredMassC_su3_blind` makes the colored mass constant on
+   EVERY `SU(3)` orbit of `ℂ³`, not just the basis; and
+   `coloredMassC_octonionSU3_blind` states it for membership in the OCTONION
+   `su3Submonoid` (= `specialUnitaryGroup` by 1a). So the expected co-location
+   outcome is now kernel-verified on the whole fundamental rep. What remains
+   genuinely open is the full `charge_grading_mass_compatible` on `J (x) CSpinor`
+   (a shared mass FORM, not just the color norm) and any Yukawa-type
+   charge -> mass COUPLING - which is a separate (Higgs) structure, absent here.
+
 The sections below are the ORIGINAL thesis; read them through the corrections
 above.
 
