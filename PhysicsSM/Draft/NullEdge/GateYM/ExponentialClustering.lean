@@ -239,6 +239,33 @@ theorem supportTail_union_le [DecidableEq Gamma]
             (supportTail_mono M hdec D R Finset.sdiff_subset)
             (supportTail M hdec D S R)
 
+/-- The support tail of a finite union of support pieces is bounded by the sum
+of the individual support tails.  This is the finite-cover overcount form used
+when an observable support is decomposed into local pieces. -/
+theorem supportTail_biUnion_le [DecidableEq Gamma] {ι : Type*}
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (I : Finset ι) (S : ι -> Finset Gamma) (R : Real) :
+    supportTail M hdec D (I.biUnion S) R
+      <= I.sum (fun i => supportTail M hdec D (S i) R) := by
+  classical
+  refine Finset.induction_on I ?empty ?insert
+  · simp [supportTail_empty]
+  · intro i I hi hI
+    calc
+      supportTail M hdec D ((insert i I).biUnion S) R
+          = supportTail M hdec D (S i ∪ I.biUnion S) R := by
+            rw [Finset.biUnion_insert]
+      _ <= supportTail M hdec D (S i) R +
+          supportTail M hdec D (I.biUnion S) R :=
+            supportTail_union_le M hdec D (S i) (I.biUnion S) R
+      _ <= supportTail M hdec D (S i) R +
+          I.sum (fun j => supportTail M hdec D (S j) R) := by
+            exact add_le_add_right hI (supportTail M hdec D (S i) R)
+      _ = (insert i I).sum (fun j => supportTail M hdec D (S j) R) := by
+            rw [Finset.sum_insert hi]
+
 /-- Exponential clustering for the support-indexed connected correlator. -/
 def HasExponentialClusteringSupport
     (L : LocalObservableSupportData Gamma Obs)

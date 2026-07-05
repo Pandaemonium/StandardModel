@@ -3304,3 +3304,26 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 ```
 
 The new theorem axiom footprint is `[propext, Classical.choice, Quot.sound]`.
+
+## q8:support-tail-biunion-overcount (codex 1.34:18)
+
+Added the finite-cover support-tail overcount
+`supportTail_biUnion_le` in `ExponentialClustering.lean`.
+
+Intended reading: if an observable support is covered by finitely many support
+pieces, the support tail of their union is bounded by the sum of the individual
+support tails. This is the repeated finite-union version of
+`supportTail_union_le`; overlaps are intentionally overcounted. It still does
+not use Q6's metric-tail theorem, instantiate a concrete observable expansion,
+or claim exponential clustering.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\ExponentialClustering.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The new theorem axiom footprint is `[propext, Classical.choice, Quot.sound]`.
