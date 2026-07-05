@@ -56,7 +56,14 @@ the above and added two corrections the blind audit could not see:
   HARDCODED numeric SM table, and the right-handed sector is "conventional
   rather than algebraically derived" (`J*` is a standalone `ℂ⁸` clone with
   charges set by fiat to `-qJ`). So "anomaly-free generation FROM octonions"
-  overstates it.
+  overstates it. **PARTIALLY ADDRESSED (2026-07-05):** `Furey/AnomalyFromQop`
+  (`u1Anomaly_sums_from_Qop`) now bundles the eight proved `Q_op` eigenvalue
+  equations WITH the linear (`-4`) and cubic `U(1)^3` (`-2`) sums of exactly
+  those eigenvalues, so the `U(1)` anomaly sums are provably sums of `Q_op`
+  eigenvalues rather than re-typed literals. This does NOT close the full gap
+  (the anomaly-free CLAIM, the `SU(2)^2`/gravitational anomalies, and the RH
+  sector remain conventional) - it ties only the `U(1)` linear/cubic sums to
+  `Q_op`.
 
 **Highest-value next theorem (both audits' recommendation, refined):**
 `charge_grading_mass_compatible` - simultaneously diagonalize the octonion charge
