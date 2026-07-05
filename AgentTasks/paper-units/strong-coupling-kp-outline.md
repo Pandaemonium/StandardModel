@@ -135,6 +135,10 @@ Q8 conditional clustering side:
   `hasExponentialClusteringSupport_of_uniform_anchor_tail_bound` package
   finite-support cardinality prefactors.
 - Amplitude/rate weakening wrappers are proved for constant bookkeeping.
+- `connectedCorr_eq_zero_of_support_empty` records the empty-support boundary
+  case: under the existing support-tail bridge hypothesis, an observable with
+  empty source support has vanishing connected correlator. This is
+  support-interface bookkeeping, not a concrete observable expansion theorem.
 
 ## Active Aristotle Jobs
 
@@ -142,6 +146,9 @@ Running or pending at the time this outline was added:
 
 - `b2a176b7`: Q6 focused proof job for `touchOnlySum_le_expBound`.
 - `141c0c07`: Q7 support-counting strategy job.
+- `1c5fa63b`: Q8 concrete observable bridge design/audit job, asking for the
+  minimal statement layer from Q7 plaquette-polymer tails or concrete local
+  observables to `LocalObservableSupportData`.
 
 Harvest rule: integrate completed jobs only after checking the returned Lean
 against the pinned local toolchain, preserving the current Q6/Q7 claim
