@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.26 (YM ladder, 2026-07-05)
+validate_lgt_core.py -- Track C oracle v0.27 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -146,6 +146,10 @@ v0.26 (four-day YM run, dynamics slice 23) adds:
   Saved-record and regression checks for the emitted spatial-flux/center
   anticommutation and plus/minus center-sector toggle laws.
 
+v0.27 (four-day YM run, dynamics slice 24) adds:
+  Saved-record and regression checks for the emitted spatial-flux insertion
+  matrix Hermitian and involutive laws.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -208,7 +212,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.26 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.27 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -711,7 +715,7 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
 
-print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.26)")
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.27)")
 print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
       "with exact spacetime validation")
 for beta in [0.2, 0.4, 0.7]:
@@ -767,7 +771,7 @@ descriptor_summary = z2_transfer_summarize(L=3, T=3, beta=0.7)
 descriptor_record = z2_transfer_summary_record(descriptor_summary)
 descriptor_json = json.dumps(descriptor_record, sort_keys=True)
 check("descriptor JSON record is serializable and summary-consistent",
-      descriptor_record["oracle"]["version"] == "v0.26"
+      descriptor_record["oracle"]["version"] == "v0.27"
       and descriptor_record["descriptor"]["schema_version"]
       == "z2_1p1d_wilson_slab_transfer.v1"
       and descriptor_record["descriptor"]["model"] == "z2_1p1d_wilson_slab_transfer"
@@ -896,6 +900,9 @@ check("descriptor matrix payload records observable and center projectors",
       and np.max(np.abs(center_plus_matrix - z2_sector_projector(3, 1))) < 1e-12
       and np.max(np.abs(center_minus_matrix - z2_sector_projector(3, -1))) < 1e-12
       and np.max(np.abs(center_plus_matrix + center_minus_matrix - np.eye(8))) < 1e-12)
+check("descriptor matrix payload satisfies spatial-flux insertion algebra",
+      np.max(np.abs(flux_matrix.T - flux_matrix)) < 1e-12
+      and np.max(np.abs(flux_matrix @ flux_matrix - np.eye(8))) < 1e-12)
 check("descriptor matrix payload satisfies center-projector algebra",
       np.max(np.abs(center_flip_matrix @ center_flip_matrix - np.eye(8))) < 1e-12
       and np.max(np.abs(center_plus_matrix @ center_plus_matrix
@@ -928,6 +935,8 @@ check("saved JSON record verifier accepts descriptor and matrix payload",
       and verified_record["checks"]["spectrum_full_first_gap"]["ok"]
       and verified_record["checks"]["matrix_replay_partition_transfer_trace"]["ok"]
       and verified_record["checks"]["matrix_replay_spatial_flux_transfer_trace"]["ok"]
+      and verified_record["checks"]["matrix_spatial_flux_insertion_hermitian"]["ok"]
+      and verified_record["checks"]["matrix_spatial_flux_insertion_involutive"]["ok"]
       and verified_record["checks"]["matrix_global_center_flip_involutive"]["ok"]
       and verified_record["checks"]["matrix_center_plus_projector_idempotent"]["ok"]
       and verified_record["checks"]["matrix_center_minus_projector_idempotent"]["ok"]
