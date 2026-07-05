@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.31"
+ORACLE_VERSION = "v0.32"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -1369,6 +1369,22 @@ def verify_record(record: dict) -> dict:
                 minus_block.T,
                 minus_block,
                 matrix_tol,
+            )
+            _compare_vector(
+                checks,
+                errors,
+                "matrix_center_plus_block_positive_eigenvalues",
+                positive_eigenvalues(plus_block).tolist(),
+                expected.sector_eigenvalues_plus,
+                spectrum_tol,
+            )
+            _compare_vector(
+                checks,
+                errors,
+                "matrix_center_minus_block_positive_eigenvalues",
+                positive_eigenvalues(minus_block).tolist(),
+                expected.sector_eigenvalues_minus,
+                spectrum_tol,
             )
             _compare_matrix(
                 checks,
