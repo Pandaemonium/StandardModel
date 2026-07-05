@@ -2112,3 +2112,22 @@ pointwise boundary/product identity or any trusted/continuum/mass-gap claim.
 
 No Lean code changes are requested from this job; it is a semantic audit and
 claim-boundary check.
+
+## note:q7-anchor-overcount
+
+Codex 1.21:31:
+
+Added
+`sum_supportsOverlapOrTouch_le_sum_closedTouchNeighborhood_anchors` to
+`StrongCouplingPolymerMap.lean`.
+
+Statement: for any finite family of objects carrying plaquette supports and
+nonnegative weights, the total weight of objects overlap-or-touch incompatible
+with a root support `A` is bounded by an overcount that first chooses an anchor
+plaquette in `closedTouchNeighborhood Adj A` and then sums over all objects
+whose support contains that anchor.
+
+This is the first genuine counting-inequality interface after the closed
+touch-neighborhood iff lemmas. It still does not give a geometry-specific count,
+a volume-uniform constant, a concrete `PlaquetteKPBound`, or a Q8 clustering
+claim.

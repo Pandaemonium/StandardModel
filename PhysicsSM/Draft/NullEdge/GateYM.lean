@@ -429,8 +429,10 @@ energy `alpha * area`, and the Z2 specialization `|tanh beta| ^ area` pinned to
 the v0.3 oracle fixture. The support-localization API names the closed
 touch-neighborhood of a root support and characterizes overlap-or-touch
 incompatible supports as exactly those meeting it, including intersection and
-positive-cardinality forms for finite counting filters. It also names the
-explicit finite plaquette KP sum
+positive-cardinality forms for finite counting filters, plus a generic
+anchor-overcount inequality that bounds any nonnegative incompatible-support sum
+by summing over anchors in the closed neighborhood. It also names the explicit
+finite plaquette KP sum
 `plaquetteKPSum`, the bound predicate `PlaquetteKPBound`, and the adapter
 `kpCondition_of_plaquetteKPBound` from that explicit bound to
 `PolymerKPCriterion.KPCondition`, plus the bundled handoff theorem

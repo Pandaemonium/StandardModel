@@ -291,6 +291,62 @@ theorem SupportsOverlapOrTouch.iff_card_inter_closedTouchNeighborhood_pos
   exact Iff.symm Finset.card_pos
 
 omit [Fintype Rlab] in
+/--
+Anchor overcount for future support-counting estimates.
+
+For any finite family of objects with plaquette supports and nonnegative
+weights, the total weight of objects incompatible with a root support `A` is
+bounded by summing over anchor plaquettes in the closed touch-neighborhood of
+`A`, then over all objects containing that anchor.  Objects with multiple
+anchors are intentionally overcounted; that is the useful direction for later
+finite KP bounds.
+-/
+theorem sum_supportsOverlapOrTouch_le_sum_closedTouchNeighborhood_anchors
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    {I : Type*} [Fintype I]
+    (A : Finset P) (supportOf : I -> Finset P) (f : I -> Real)
+    (hf : forall i, 0 <= f i) :
+    (Finset.univ.filter (fun i : I =>
+        decide (SupportsOverlapOrTouch Adj A (supportOf i)) = true)).sum f
+      <= (closedTouchNeighborhood Adj A).sum (fun q =>
+        (Finset.univ.filter (fun i : I =>
+          decide (q ∈ supportOf i) = true)).sum f) := by
+  classical
+  let N := closedTouchNeighborhood Adj A
+  calc
+    (Finset.univ.filter (fun i : I =>
+        decide (SupportsOverlapOrTouch Adj A (supportOf i)) = true)).sum f
+        <= (Finset.univ.filter (fun i : I =>
+            decide (SupportsOverlapOrTouch Adj A (supportOf i)) = true)).sum
+              (fun i => (N.filter (fun q => q ∈ supportOf i)).sum
+                (fun _ => f i)) := by
+          apply Finset.sum_le_sum
+          intro i hi
+          have hInc : SupportsOverlapOrTouch Adj A (supportOf i) :=
+            of_decide_eq_true (Finset.mem_filter.1 hi).2
+          rcases
+              (SupportsOverlapOrTouch.iff_inter_closedTouchNeighborhood_nonempty
+                Adj).1 hInc with
+            ⟨q, hq⟩
+          have hqN : q ∈ N := by
+            simpa [N] using (Finset.mem_inter.1 hq).2
+          have hqS : q ∈ supportOf i := (Finset.mem_inter.1 hq).1
+          exact Finset.single_le_sum (fun _ _ => hf i)
+            (Finset.mem_filter.2 ⟨hqN, hqS⟩)
+    _ <= Finset.univ.sum (fun i : I =>
+        (N.filter (fun q => q ∈ supportOf i)).sum (fun _ => f i)) := by
+          exact Finset.sum_le_sum_of_subset_of_nonneg
+            (Finset.filter_subset _ _)
+            (by
+              intro i _hi _hnot
+              exact Finset.sum_nonneg (fun _ _ => hf i))
+    _ = N.sum (fun q =>
+        (Finset.univ.filter (fun i : I =>
+          decide (q ∈ supportOf i) = true)).sum f) := by
+          simp [N, Finset.sum_comm, Finset.sum_filter,
+            Finset.filter_mem_eq_inter]
+
+omit [Fintype Rlab] in
 /-- Contrapositive support-localization form: if every plaquette of `B` lies
 outside the closed touch-neighborhood of `A`, then `A` and `B` are compatible
 for the conservative overlap-or-touch relation. -/
