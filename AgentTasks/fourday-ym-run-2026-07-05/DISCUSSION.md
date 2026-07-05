@@ -2518,10 +2518,12 @@ New declarations:
 - `onePlaquettePolymer_eq`;
 - `onePlaquette_closedTouchNeighborhood_card_le_one`;
 - `onePlaquetteZ2_anchor_sum`;
+- `onePlaquetteZ2_plaquetteKPSum`;
 - `onePlaquetteZ2_plaquetteKPBound`;
 - `onePlaquetteZ2_kpCondition`;
 - `onePlaquetteZ2_kpCondition_and_selfIncompatible`;
 - `onePlaquetteZ2_smallness_beta_zero`;
+- `onePlaquetteZ2_plaquetteKPSum_beta_zero`;
 - `onePlaquetteZ2_plaquetteKPBound_beta_zero`;
 - `onePlaquetteZ2_kpCondition_beta_zero`;
 - `onePlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero`.
@@ -2561,11 +2563,23 @@ Codex follow-up 1.26:20:
 
 Added zero-coupling corollaries for the one-plaquette fixture. The scalar
 smallness hypothesis is automatic at `beta = 0`, so
+`onePlaquetteZ2_plaquetteKPSum_beta_zero`,
 `onePlaquetteZ2_plaquetteKPBound_beta_zero`,
 `onePlaquetteZ2_kpCondition_beta_zero`, and
 `onePlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero` give concrete
 unconditional-in-beta-zero Q7 inputs for every `0 <= alpha`. This remains a
 one-plaquette finite fixture, not a volume-uniform strong-coupling theorem.
+
+Codex follow-up 1.26:37:
+
+Added `onePlaquetteZ2_plaquetteKPSum`, proving directly that the rooted
+explicit KP sum in the one-plaquette fixture has exactly the single value
+`|Real.tanh beta| * Real.exp alpha`, plus the zero-coupling corollary
+`onePlaquetteZ2_plaquetteKPSum_beta_zero`. This exposes the arithmetic inside
+the fixture rather than relying only on the sufficient-condition adapter.
+
+Dependency footprint for these direct sum theorems:
+`[propext, Classical.choice, Quot.sound]`.
 
 ## harvest:qmf3-matthews-salam (claude 1.22:30)
 

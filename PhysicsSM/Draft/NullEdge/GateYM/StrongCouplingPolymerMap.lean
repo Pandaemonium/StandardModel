@@ -1035,6 +1035,31 @@ theorem onePlaquetteZ2_anchor_sum
     apply hnot
     simp [Y0, onePlaquettePolymer]
 
+/-- In the one-plaquette Z2 fixture, the explicit rooted KP sum has exactly one
+term. -/
+theorem onePlaquetteZ2_plaquetteKPSum
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel) :
+    plaquetteKPSum onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha X =
+      |Real.tanh beta| * Real.exp alpha := by
+  let Y0 := onePlaquettePolymer
+  rw [plaquetteKPSum, Finset.sum_eq_single Y0]
+  · simp [Y0, onePlaquettePolymer, PlaquettePolymer.coeffProduct,
+      z2GammaAbs]
+  · intro Y _hY hne
+    exact False.elim (hne (onePlaquettePolymer_eq Y))
+  · intro hnot
+    exfalso
+    have hP : PUnit.unit ∈ X.support := by
+      rw [onePlaquette_support_eq_univ X]
+      simp
+    have hInc : SupportsOverlapOrTouch onePlaquetteAdj X.support Y0.support := by
+      exact Or.inl ⟨PUnit.unit, hP, by simp [Y0, onePlaquettePolymer]⟩
+    apply hnot
+    simp [Y0, plaquettePolymerSystem, hInc]
+
 /-- Concrete one-plaquette Z2 KP fixture.
 
 If the single scalar contribution `|tanh beta| * exp alpha` is at most
@@ -1109,6 +1134,16 @@ theorem onePlaquetteZ2_smallness_beta_zero
     (alpha : Real) (halpha : 0 <= alpha) :
     |Real.tanh 0| * Real.exp alpha <= alpha := by
   simpa [Real.tanh_eq_sinh_div_cosh] using halpha
+
+/-- At zero coupling, the one-plaquette Z2 rooted KP sum is zero. -/
+theorem onePlaquetteZ2_plaquetteKPSum_beta_zero
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel) :
+    plaquetteKPSum onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs 0) alpha halpha X = 0 := by
+  rw [onePlaquetteZ2_plaquetteKPSum 0 alpha halpha X]
+  simp [Real.tanh_eq_sinh_div_cosh]
 
 /-- Zero-coupling concrete one-plaquette Z2 `PlaquetteKPBound`. -/
 theorem onePlaquetteZ2_plaquetteKPBound_beta_zero
