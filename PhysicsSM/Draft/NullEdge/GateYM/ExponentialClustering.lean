@@ -60,6 +60,41 @@ def HasExponentialClustering
     ‖L.connectedCorr A B‖ <=
       amplitude A B * Real.exp (-(m * L.separation A B))
 
+omit [Fintype Gamma] in
+/-- A single-anchor clustering bound may be weakened by enlarging the
+amplitude. -/
+theorem hasExponentialClustering_of_amplitude_le
+    (L : LocalObservableData Gamma Obs)
+    {amplitude amplitude' : Obs -> Obs -> Real} {m : Real}
+    (hAmp : forall A B : Obs, amplitude A B <= amplitude' A B)
+    (hClust : HasExponentialClustering L amplitude m) :
+    HasExponentialClustering L amplitude' m := by
+  intro A B
+  exact (hClust A B).trans
+    (mul_le_mul_of_nonneg_right (hAmp A B)
+      (le_of_lt (Real.exp_pos _)))
+
+omit [Fintype Gamma] in
+/-- A single-anchor clustering bound at rate `m` also holds at any weaker
+rate `m' <= m`, provided the amplitude is nonnegative. -/
+theorem hasExponentialClustering_of_rate_le
+    (L : LocalObservableData Gamma Obs)
+    {amplitude : Obs -> Obs -> Real} {m m' : Real}
+    (hAmpNonneg : forall A B : Obs, 0 <= amplitude A B)
+    (hm : m' <= m)
+    (hClust : HasExponentialClustering L amplitude m) :
+    HasExponentialClustering L amplitude m' := by
+  intro A B
+  have hSep : 0 <= L.separation A B := L.separation_nonneg A B
+  have hMul : m' * L.separation A B <= m * L.separation A B :=
+    mul_le_mul_of_nonneg_right hm hSep
+  have hExp :
+      Real.exp (-(m * L.separation A B)) <=
+        Real.exp (-(m' * L.separation A B)) := by
+    exact Real.exp_le_exp.mpr (neg_le_neg hMul)
+  exact (hClust A B).trans
+    (mul_le_mul_of_nonneg_left hExp (hAmpNonneg A B))
+
 /-- Observable-level exponential clustering from an explicit Q6-style tail
 bound and an observable-to-cluster bridge.
 
@@ -345,6 +380,41 @@ def HasExponentialClusteringSupport
   forall A B : Obs,
     ‖L.connectedCorr A B‖ <=
       amplitude A B * Real.exp (-(m * L.separation A B))
+
+omit [Fintype Gamma] in
+/-- A finite-support clustering bound may be weakened by enlarging the
+amplitude. -/
+theorem hasExponentialClusteringSupport_of_amplitude_le
+    (L : LocalObservableSupportData Gamma Obs)
+    {amplitude amplitude' : Obs -> Obs -> Real} {m : Real}
+    (hAmp : forall A B : Obs, amplitude A B <= amplitude' A B)
+    (hClust : HasExponentialClusteringSupport L amplitude m) :
+    HasExponentialClusteringSupport L amplitude' m := by
+  intro A B
+  exact (hClust A B).trans
+    (mul_le_mul_of_nonneg_right (hAmp A B)
+      (le_of_lt (Real.exp_pos _)))
+
+omit [Fintype Gamma] in
+/-- A finite-support clustering bound at rate `m` also holds at any weaker
+rate `m' <= m`, provided the amplitude is nonnegative. -/
+theorem hasExponentialClusteringSupport_of_rate_le
+    (L : LocalObservableSupportData Gamma Obs)
+    {amplitude : Obs -> Obs -> Real} {m m' : Real}
+    (hAmpNonneg : forall A B : Obs, 0 <= amplitude A B)
+    (hm : m' <= m)
+    (hClust : HasExponentialClusteringSupport L amplitude m) :
+    HasExponentialClusteringSupport L amplitude m' := by
+  intro A B
+  have hSep : 0 <= L.separation A B := L.separation_nonneg A B
+  have hMul : m' * L.separation A B <= m * L.separation A B :=
+    mul_le_mul_of_nonneg_right hm hSep
+  have hExp :
+      Real.exp (-(m * L.separation A B)) <=
+        Real.exp (-(m' * L.separation A B)) := by
+    exact Real.exp_le_exp.mpr (neg_le_neg hMul)
+  exact (hClust A B).trans
+    (mul_le_mul_of_nonneg_left hExp (hAmpNonneg A B))
 
 /-- Support-set observable-level exponential clustering from the same explicit
 Q6-style tail bound and an observable-to-cluster bridge summed over the source
