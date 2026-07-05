@@ -155,8 +155,9 @@ Achievable deliverables:
   reflection-form nonnegativity.
 - Current status: `FermionicReflection.ReflectedBoundaryCoupling` now names
   the boundary-coupling `A` slot, defines plus/minus reflected projector
-  blocks, and proves those blocks PSD for any instantiated coupling. The
-  concrete Wilson boundary-coupling formula and reflection-hermiticity
+  blocks, specializes them to the temporal direction, and proves the
+  plus/minus blocks and their temporal sum PSD for any instantiated coupling.
+  The concrete Wilson boundary-coupling formula and reflection-hermiticity
   hypothesis remain explicitly open.
 
 Done when:

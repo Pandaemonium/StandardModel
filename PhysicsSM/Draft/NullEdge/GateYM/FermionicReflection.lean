@@ -331,6 +331,45 @@ theorem minusBlock_posSemidef [Finite k]
   simpa [minusBlock] using
     conj_liftProjMinus_posSemidef (L := L) (nc := nc) (k := k) μ C.matrix
 
+/-- The forward projector block in the temporal reflection direction. -/
+noncomputable def temporalPlusBlock (C : ReflectedBoundaryCoupling L nc k) :
+    Matrix k k ℂ :=
+  C.plusBlock timeDir
+
+/-- The backward projector block in the temporal reflection direction. -/
+noncomputable def temporalMinusBlock (C : ReflectedBoundaryCoupling L nc k) :
+    Matrix k k ℂ :=
+  C.minusBlock timeDir
+
+/-- The abstract reflected temporal block obtained by summing the forward and
+backward temporal projector blocks for the same boundary coupling. -/
+noncomputable def temporalBlock (C : ReflectedBoundaryCoupling L nc k) :
+    Matrix k k ℂ :=
+  C.temporalPlusBlock + C.temporalMinusBlock
+
+/-- The forward temporal reflected block is PSD for any instantiated coupling
+matrix. -/
+theorem temporalPlusBlock_posSemidef [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) :
+    C.temporalPlusBlock.PosSemidef := by
+  simpa [temporalPlusBlock] using C.plusBlock_posSemidef timeDir
+
+/-- The backward temporal reflected block is PSD for any instantiated coupling
+matrix. -/
+theorem temporalMinusBlock_posSemidef [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) :
+    C.temporalMinusBlock.PosSemidef := by
+  simpa [temporalMinusBlock] using C.minusBlock_posSemidef timeDir
+
+/-- The summed abstract reflected temporal block is PSD for any instantiated
+coupling matrix.  The concrete Wilson boundary-coupling matrix remains the
+successor interface. -/
+theorem temporalBlock_posSemidef [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) :
+    C.temporalBlock.PosSemidef := by
+  simpa [temporalBlock] using
+    (C.temporalPlusBlock_posSemidef.add C.temporalMinusBlock_posSemidef)
+
 end ReflectedBoundaryCoupling
 
 end FermionicReflection

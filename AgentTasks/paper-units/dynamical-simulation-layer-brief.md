@@ -194,10 +194,12 @@ Implementation status as of 2026-07-05:
   explicit hypotheses.
 - `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` now names the
   RP-F reflected-boundary-coupling slot as `ReflectedBoundaryCoupling`, defines
-  plus/minus reflected projector blocks, and proves those blocks PSD for any
-  instantiated coupling using the lifted Wilson-projector Gram lemmas. This
-  parks the exact open interface: the concrete Wilson boundary-coupling matrix
-  and the temporal reflection-hermiticity hypothesis still have to be supplied.
+  plus/minus reflected projector blocks, specializes them to the temporal
+  direction, and proves the plus/minus blocks and their temporal sum PSD for
+  any instantiated coupling using the lifted Wilson-projector Gram lemmas.
+  This parks the exact open interface: the concrete Wilson boundary-coupling
+  matrix and the temporal reflection-hermiticity hypothesis still have to be
+  supplied.
 
 ## Current artifact map
 
@@ -215,7 +217,7 @@ now and what still needs a bridge.
 | `PhysicsSM/Draft/NullEdge/GateYM/FiniteGapAssembly.lean` | Abstract finite spectral-gap witness package | Kernel-checked packaging of the spectral parameters, transfer endomorphism, eigenvectors, sector preservation, and ratio/log identities. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert*.lean` | Finite OS/GNS range and sector infrastructure | Kernel-checked finite algebraic range, block, shift, and Z2 electric-sector bookkeeping; no physical transfer matrix is constructed. |
 | `PhysicsSM/Draft/NullEdge/GateYM/ReflectionPositivityKernel.lean` and Wilson RP files | Positivity engine for reflection-positive weights | Kernel-checked PSD/reflection-form algebra and cut-plaquette Wilson factors; the connected Wilson slab remains open. |
-| `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` | RP-F finite reflection/projector scaffold | Kernel-checked reflection unitary, lifted projector PSD, and named boundary-coupling slot; concrete Wilson boundary coupling remains open. |
+| `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` | RP-F finite reflection/projector scaffold | Kernel-checked reflection unitary, lifted projector PSD, named boundary-coupling slot, and temporal abstract block PSD; concrete Wilson boundary coupling remains open. |
 | `PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean` | Q7 polymer/support-counting surface | Kernel-checked finite support/combinatorial interfaces and one-plaquette Z2 fixture; no volume-uniform KP estimate. |
 | `PhysicsSM/Draft/NullEdge/GateYM/ExponentialClustering.lean` and `ObservableSupportBridge.lean` | Q8 observable support and clustering bridge | Kernel-checked conditional bridge from explicit tail hypotheses to clustering-style bounds; no concrete decay theorem. |
 | `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` | Q6 corrected KP/convergence handoff | Draft layer with known proof handoffs; current bottleneck is the `pairSum_le_expBound` combinatorial estimate. |

@@ -542,9 +542,10 @@ projector blocks are PSD; `FermionicReflection` defines the link-plane
 temporal reflection, proves the finite reflection operator is Hermitian,
 involutive, and unitary, lifts the Wilson projectors to the full lattice index
 space, proves arbitrary reflected blocks `A^dagger P A` PSD, and now names the
-`ReflectedBoundaryCoupling` slot with plus/minus block PSD wrappers. The
-concrete Wilson boundary-coupling formula, reflection-hermiticity hypothesis,
-Berezin wrap, and physical fermionic RP theorem remain open);
+`ReflectedBoundaryCoupling` slot with plus/minus block PSD wrappers and their
+summed temporal block in direction `timeDir`. The concrete Wilson
+boundary-coupling formula, reflection-hermiticity hypothesis, Berezin wrap, and
+physical fermionic RP theorem remain open);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and
