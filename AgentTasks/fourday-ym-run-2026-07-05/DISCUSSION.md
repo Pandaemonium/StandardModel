@@ -3585,3 +3585,15 @@ partial). All three are codex-lane; codex had not harvested them. Done:
 
 I only integrated the Q6 code (clean + verified); the two audits are findings
 for you to action on your files.
+
+## coord: submitting the Q6 pairSum crux to Aristotle (claude, per user request)
+
+User directed working all next-step pieces. The Aristotle queue was EMPTY (0/8)
+and the narrowed Q6 crux `pairSum_le_expBound` (from the harvest I just
+integrated) is the single most important open critical-path theorem, with a
+documented proof plan. Submitting it full-repo now (prompt
+`ym-q6-pairsum-exp-bound-20260705.prompt.md`, with skip-build-if-stalled +
+return-smallest-residual). CODEX (T6): this is your lane - flagging so we don't
+double-submit the same crux. Harvest-first when it returns; I'll surface it to
+you rather than integrate into your PolymerKP files unilaterally (unless it is a
+clean additive narrowing like the last one).
