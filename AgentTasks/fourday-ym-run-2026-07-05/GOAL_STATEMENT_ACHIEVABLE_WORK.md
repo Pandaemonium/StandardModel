@@ -44,7 +44,9 @@ The repo now has enough verified infrastructure to make the next work concrete:
   partition and raw two-time flux-correlation numerator identities, a
   normalized `T = 2`, `tau = 1` autocorrelation ratio theorem, and a one-link
   spatial-flux insertion that is Hermitian, involutive, and swaps the
-  vacuum/local eigenvectors;
+  vacuum/local eigenvectors; it also formalizes the L=1 global-center flip and
+  plus/minus projectors, including their vacuum/local action and commutation
+  with the one-link transfer;
 - strong-coupling/KP statement infrastructure, now narrowed to the
   `pairSum_le_expBound` combinatorial crux;
 - RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.
@@ -218,8 +220,9 @@ Achievable deliverables:
   surface, including concrete transfer symmetry/Hermiticity, the one-step and
   two-step partition/flux trace identities, the normalized one-link `T = 1`
   flux expectation, and the normalized one-link `T = 2` autocorrelation
-  ratio. It also records descriptor-requested spatial-flux autocorrelation
-  profiles and full/center-sector first-gap fields as finite oracle evidence.
+  ratio, plus L=1 center flip/projector theorem surfaces. It also records
+  descriptor-requested spatial-flux autocorrelation profiles and
+  full/center-sector first-gap fields as finite oracle evidence.
 
 Done when:
 

@@ -185,6 +185,9 @@ Implementation status as of 2026-07-05:
 - The v0.21 oracle update emits explicit first-gap fields in the JSON
   spectrum record for the full positive spectrum and the center-shift sectors,
   with saved-record verifier checks that reject tampered gap values.
+- The v0.22 provenance update records the one-link center flip, plus/minus
+  center-sector projectors, their vacuum/local action, and their commutation
+  with the L=1 slab transfer.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -214,8 +217,10 @@ Implementation status as of 2026-07-05:
   with normalized one-step flux expectation zero,
   plus the corresponding `T = 2` partition trace and raw two-time
   flux-correlation numerator. The normalized one-link `T = 2`, `tau = 1`
-  autocorrelation ratio is proved as `tanh (2 * beta)`. This is a one-link
-  bridge only, not the full Wilson slab operator.
+  autocorrelation ratio is proved as `tanh (2 * beta)`. The L=1 global-center
+  flip and plus/minus projectors are also formalized, with their vacuum/local
+  action and transfer-commutation identities. This is a one-link bridge only,
+  not the full Wilson slab operator.
 - `PhysicsSM/Draft/NullEdge/GateYM/ObservableSupportBridge.lean` adds the
   conservative Q8 support-bookkeeping adapter requested by the audit verdict:
   a local observable exposes finite plaquette/polymer support, that support is
@@ -245,7 +250,7 @@ now and what still needs a bridge.
 | `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, schema-record conventions, correlation-profile validation, full/sector first-gap records, optional matrix-payload validation, saved-record verifier acceptance/rejection, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` | Smallest Lean spectral payload | Kernel-checked finite identities for the `2 x 2` transfer-shape eigenvectors, ordered eigenvalues, spectral ratio, and contraction factor. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferWitness.lean` | Tiny consumer of the finite-gap witness API | Kernel-checked toy `Module.End` witness for the two-state descriptor; deliberately not the full Wilson slab transfer operator. |
-| `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, concrete symmetry/Hermitian identities, explicit vacuum/local eigenvectors, one-step and two-step partition/flux trace identities, normalized `T = 1` flux expectation, normalized `T = 2` autocorrelation ratio, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |
+| `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, concrete symmetry/Hermitian identities, explicit vacuum/local eigenvectors, one-step and two-step partition/flux trace identities, normalized `T = 1` flux expectation, normalized `T = 2` autocorrelation ratio, center flip/projector identities, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |
 | `PhysicsSM/Draft/NullEdge/GateYM/FiniteGapAssembly.lean` | Abstract finite spectral-gap witness package | Kernel-checked packaging of the spectral parameters, transfer endomorphism, eigenvectors, sector preservation, and ratio/log identities. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert*.lean` | Finite OS/GNS range and sector infrastructure | Kernel-checked finite algebraic range, block, shift, and Z2 electric-sector bookkeeping; no physical transfer matrix is constructed. |
 | `PhysicsSM/Draft/NullEdge/GateYM/ReflectionPositivityKernel.lean` and Wilson RP files | Positivity engine for reflection-positive weights | Kernel-checked PSD/reflection-form algebra and cut-plaquette Wilson factors; the connected Wilson slab remains open. |

@@ -65,6 +65,19 @@ def slabTransfer (beta : ℝ) : Matrix (Fin 2) (Fin 2) ℂ :=
 def fluxMatrix : Matrix (Fin 2) (Fin 2) ℂ :=
   Matrix.of fun u v => if u = v then (bitSign u : ℂ) else 0
 
+/-- The `L = 1` global-center flip matrix, sending each spatial state to its
+opposite Z2 state. -/
+def centerFlipMatrix : Matrix (Fin 2) (Fin 2) ℂ :=
+  !![(0 : ℂ), 1; 1, 0]
+
+/-- The `+1` global-center-sector projector for the one-link state space. -/
+def centerPlusProjector : Matrix (Fin 2) (Fin 2) ℂ :=
+  !![(1 / 2 : ℂ), 1 / 2; 1 / 2, 1 / 2]
+
+/-- The `-1` global-center-sector projector for the one-link state space. -/
+def centerMinusProjector : Matrix (Fin 2) (Fin 2) ℂ :=
+  !![(1 / 2 : ℂ), -1 / 2; -1 / 2, 1 / 2]
+
 /-- On equal boundary states the one-link slab weight is `2 * exp beta`. -/
 theorem slabWeight_same (beta : ℝ) (u : Fin 2) :
     slabWeight beta u u = diagonalWeight beta := by
@@ -154,6 +167,98 @@ theorem fluxMatrix_mulVec_local :
   funext u
   fin_cases u <;>
     simp [fluxMatrix, Matrix.mulVec, dotProduct, vacuumVec, localVec, bitSign]
+
+/-- The center flip fixes the vacuum vector. -/
+theorem centerFlipMatrix_mulVec_vacuum :
+    centerFlipMatrix *ᵥ vacuumVec = vacuumVec := by
+  funext u
+  fin_cases u <;>
+    simp [centerFlipMatrix, Matrix.mulVec, dotProduct, vacuumVec,
+      Fin.sum_univ_two]
+
+/-- The center flip acts by `-1` on the local/flux vector. -/
+theorem centerFlipMatrix_mulVec_local :
+    centerFlipMatrix *ᵥ localVec = (-1 : ℂ) • localVec := by
+  funext u
+  fin_cases u <;>
+    simp [centerFlipMatrix, Matrix.mulVec, dotProduct, localVec,
+      Fin.sum_univ_two]
+
+/-- The center-sector projectors are complementary. -/
+theorem centerPlus_add_centerMinus :
+    centerPlusProjector + centerMinusProjector = 1 := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerPlusProjector, centerMinusProjector]
+
+/-- The center-sector projectors are orthogonal. -/
+theorem centerPlus_mul_centerMinus :
+    centerPlusProjector * centerMinusProjector = 0 := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerPlusProjector, centerMinusProjector, Matrix.mul_apply,
+      Fin.sum_univ_two]
+
+/-- The plus-sector projector fixes the vacuum vector. -/
+theorem centerPlusProjector_mulVec_vacuum :
+    centerPlusProjector *ᵥ vacuumVec = vacuumVec := by
+  funext u
+  fin_cases u <;>
+    norm_num [centerPlusProjector, Matrix.mulVec, dotProduct, vacuumVec,
+      Fin.sum_univ_two]
+
+/-- The minus-sector projector kills the vacuum vector. -/
+theorem centerMinusProjector_mulVec_vacuum :
+    centerMinusProjector *ᵥ vacuumVec = 0 := by
+  funext u
+  fin_cases u <;>
+    norm_num [centerMinusProjector, Matrix.mulVec, dotProduct, vacuumVec,
+      Fin.sum_univ_two]
+
+/-- The plus-sector projector kills the local/flux vector. -/
+theorem centerPlusProjector_mulVec_local :
+    centerPlusProjector *ᵥ localVec = 0 := by
+  funext u
+  fin_cases u <;>
+    norm_num [centerPlusProjector, Matrix.mulVec, dotProduct, localVec,
+      Fin.sum_univ_two]
+
+/-- The minus-sector projector fixes the local/flux vector. -/
+theorem centerMinusProjector_mulVec_local :
+    centerMinusProjector *ᵥ localVec = localVec := by
+  funext u
+  fin_cases u <;>
+    norm_num [centerMinusProjector, Matrix.mulVec, dotProduct, localVec,
+      Fin.sum_univ_two]
+
+/-- The concrete one-link transfer commutes with the center flip. -/
+theorem slabTransfer_mul_centerFlip_eq_centerFlip_mul_slabTransfer (beta : ℝ) :
+    slabTransfer beta * centerFlipMatrix =
+      centerFlipMatrix * slabTransfer beta := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    simp [slabTransfer, slabWeight, centerFlipMatrix, Matrix.mul_apply,
+      plaquetteSign, bitSign, Fin.sum_univ_two]
+
+/-- The concrete one-link transfer commutes with the plus-sector projector. -/
+theorem slabTransfer_mul_centerPlus_eq_centerPlus_mul_slabTransfer (beta : ℝ) :
+    slabTransfer beta * centerPlusProjector =
+      centerPlusProjector * slabTransfer beta := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    simp [slabTransfer, slabWeight, centerPlusProjector, Matrix.mul_apply,
+      plaquetteSign, bitSign, Fin.sum_univ_two] <;>
+    ring
+
+/-- The concrete one-link transfer commutes with the minus-sector projector. -/
+theorem slabTransfer_mul_centerMinus_eq_centerMinus_mul_slabTransfer (beta : ℝ) :
+    slabTransfer beta * centerMinusProjector =
+      centerMinusProjector * slabTransfer beta := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    simp [slabTransfer, slabWeight, centerMinusProjector, Matrix.mul_apply,
+      plaquetteSign, bitSign, Fin.sum_univ_two] <;>
+    ring
 
 /-- The one-step one-link transfer trace is the exact finite partition trace
 `4 * exp beta`. -/
