@@ -343,6 +343,31 @@ theorem treeTerm_nonneg (S : PolymerSystem Gamma)
     · exact_mod_cast Nat.zero_le _
   · exact X.absWeight_nonneg S
 
+set_option maxHeartbeats 1000000 in
+open Classical in
+/-- `treeTerm` rewritten as an explicit sum over the spanning trees of the
+cluster incompatibility graph.  This is the first step of the labeled
+rooted-tree exponential-formula argument: it exposes the spanning tree `T` so
+that the canonical-root deletion can be applied to `(X, T)` pairs.
+
+Each spanning tree contributes the same weight `absWeight X / n!`; there are
+`spanningTreeCount X` of them, so the sum equals `treeTerm X`. -/
+lemma treeTerm_eq_tree_sum (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (X : Cluster S) :
+    treeTerm S hdec X
+      = ∑ _T ∈ (Finset.univ.filter
+          (fun T : SimpleGraph (Fin X.n) => T ≤ X.graph S hdec ∧ T.IsTree)),
+          X.absWeight S / (Nat.factorial X.n : Real) := by
+  classical
+  convert congr_arg _ ?_;
+  rotate_left;
+  exact X;
+  · rfl;
+  · simp +decide [ mul_comm ];
+    rw [ show ( Finset.filter ( fun T => T ≤ Cluster.graph S hdec X ∧ T.IsTree ) Finset.univ ).card = spanningTreeCount S hdec X from ?_ ];
+    · unfold treeTerm; ring;
+    · convert Finset.card_bij ( fun T hT => T ) _ _ _ <;> simp +decide
+
 /-- The finite family of all connected clusters touching `g` whose size is at
 most `K + 1`, summed with the tree-sum summand.
 
@@ -529,6 +554,28 @@ sum of the exponential series in the neighbor bounded-touch-sum, truncated at
 root with at most `K + 1` children).  This
 `boundedTouchSum_succ_le_finitePartial` statement is the purely finite labeled
 rooted-tree species identity; no real-analytic input remains in it. -/
+lemma pairSum_le_expBound (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    (∑ p : (Σ m : Fin (K + 1 + 2), (Fin m.val -> Gamma)),
+        (if Cluster.Touches S ⟨p.1.val, p.2⟩ g
+          then ∑ _T ∈ (Finset.univ.filter
+              (fun T : SimpleGraph (Fin (⟨p.1.val, p.2⟩ : Cluster S).n) =>
+                T ≤ (⟨p.1.val, p.2⟩ : Cluster S).graph S hdec ∧ T.IsTree)),
+              (⟨p.1.val, p.2⟩ : Cluster S).absWeight S
+                / (Nat.factorial (⟨p.1.val, p.2⟩ : Cluster S).n : Real)
+          else 0))
+      <= |S.weight g| *
+          ∑ k ∈ Finset.range (K + 3),
+            (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
+              / (Nat.factorial k : Real) := by
+  sorry
+
+open Classical in
+/-- The labeled rooted-tree exponential inequality (crux of Q6), reduced to its
+pairs form `pairSum_le_expBound` via `treeTerm_eq_tree_sum`: expanding the
+spanning-tree count exposes the spanning tree `T`, which is the object the
+canonical-root deletion acts on.  The residual combinatorial content is
+carried entirely by `pairSum_le_expBound`. -/
 lemma touchOnlySum_le_expBound (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
     (∑ p : (Σ m : Fin (K + 1 + 2), (Fin m.val -> Gamma)),
@@ -538,7 +585,21 @@ lemma touchOnlySum_le_expBound (S : PolymerSystem Gamma)
           ∑ k ∈ Finset.range (K + 3),
             (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
               / (Nat.factorial k : Real) := by
-  sorry
+  have hrw : (∑ p : (Σ m : Fin (K + 1 + 2), (Fin m.val -> Gamma)),
+        (if Cluster.Touches S ⟨p.1.val, p.2⟩ g
+          then treeTerm S hdec ⟨p.1.val, p.2⟩ else 0))
+      = (∑ p : (Σ m : Fin (K + 1 + 2), (Fin m.val -> Gamma)),
+        (if Cluster.Touches S ⟨p.1.val, p.2⟩ g
+          then ∑ _T ∈ (Finset.univ.filter
+              (fun T : SimpleGraph (Fin (⟨p.1.val, p.2⟩ : Cluster S).n) =>
+                T ≤ (⟨p.1.val, p.2⟩ : Cluster S).graph S hdec ∧ T.IsTree)),
+              (⟨p.1.val, p.2⟩ : Cluster S).absWeight S
+                / (Nat.factorial (⟨p.1.val, p.2⟩ : Cluster S).n : Real)
+          else 0)) := by
+    refine Finset.sum_congr rfl (fun p _ => ?_)
+    rw [treeTerm_eq_tree_sum]
+  rw [hrw]
+  exact pairSum_le_expBound S hdec K g
 
 /-- The labeled rooted-tree exponential inequality.  Combines the sound
 connectedness-guard reformulation `boundedTouchSum_eq_touchOnly` with the

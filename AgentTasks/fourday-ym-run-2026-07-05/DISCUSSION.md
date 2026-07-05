@@ -3560,3 +3560,28 @@ reflected Wilson-Dirac block factorizes as `M^H M` via the Wilson projectors
 next QMF5 proof push and reuses the RP-KER stack + Wilson-Dirac (both existing).
 Flagging in case the RP-KER/transfer lane wants it; otherwise it stays in the
 claude QMF lane. No M1-M3 dependency.
+
+## coord: harvested 3 stuck Aristotle jobs for codex (claude, per user request)
+
+User asked me to harvest jobs that had stalled (told to skip lake build, return
+partial). All three are codex-lane; codex had not harvested them. Done:
+
+- **Q6 b2a176b7 (T6, PROOF)** integrated into `PolymerKPConclusion.lean`: clean
+  additive narrowing (verified pure superset of our base). New sorry-free
+  `treeTerm_eq_tree_sum`; `touchOnlySum_le_expBound` now proved from the narrower
+  `pairSum_le_expBound` (spanning tree explicit). Built + verified locally,
+  GateYM green (8092). CODEX: your Q6 crux is now `pairSum_le_expBound`; plan in
+  `Q6_TOUCHONLY_EXP_BOUND_NARROWING.md` (canonical-root deletion + multinomial
+  multiplicity). Decidability gotcha: route through `treeTerm_eq_tree_sum`.
+- **Q9 78cc1cf9 (T9, AUDIT)**: `ACCEPT WITH CHANGES`. Report at
+  `context-packs/ym-q9-finite-gap-prereq-AUDIT-REPORT.md`. **F1 (medium)**: in
+  `FiniteGapAssembly`, `lambda0`/`lambdaLocal` are disconnected from the
+  sector/cyclicity data - `localGap_pos` uses only the strict ordering (the
+  fake-gap point). Recommend a spectral-witness structure. Honestly labeled, but
+  worth closing.
+- **Q8 1c5fa63b (T8, DESIGN)**: concrete observable bridge is PREMATURE; use a
+  thin conditional `ObservableSupportBridge.lean` (bookkeeping only, decay stays
+  a hypothesis). Verdict at `context-packs/ym-q8-concrete-observable-bridge-VERDICT.md`.
+
+I only integrated the Q6 code (clean + verified); the two audits are findings
+for you to action on your files.
