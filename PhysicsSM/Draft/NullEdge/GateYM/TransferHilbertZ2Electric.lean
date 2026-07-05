@@ -25,11 +25,11 @@ map from the finite OS range onto that sectorized submodule, with an explicit
 linear inclusion/retraction pair and endomorphism-level four-sector
 decomposition on the finite OS range.  The range of each sector endomorphism is
 characterized as the matching sectorized finite OS submodule, and its kernel is
-the range of the complementary sum of the other sector endomorphisms.  Distinct
-sectorized submodules are disjoint.  The four sectorized submodules span the
-plaquette-field finite OS range, with explicit linear maps decomposing any OS
-range vector into its four sector projections and reconstructing it from those
-components.
+the range/fixed-point space of the complementary sum of the other sector
+endomorphisms.  Distinct sectorized submodules are disjoint.  The four
+sectorized submodules span the plaquette-field finite OS range, with explicit
+linear maps decomposing any OS range vector into its four sector projections
+and reconstructing it from those components.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -961,6 +961,92 @@ theorem ker_rpHilbertSpaceBlockElectricProjection_eq_range_other {Lx Ly : Nat}
       (rpHilbertSpaceBlockElectricProjection_comp_other_eq_zero
         hLx hLy F ex ey)
     simpa using h
+
+/-- Membership in the range of the complementary other-sector endomorphism is
+equivalent to being killed by the selected sector endomorphism. -/
+theorem mem_range_rpHilbertSpaceOtherBlockElectricProjection_iff {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    v ∈ LinearMap.range
+        (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey) ↔
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v = 0 := by
+  rw [← ker_rpHilbertSpaceBlockElectricProjection_eq_range_other
+    hLx hLy F ex ey]
+  rfl
+
+/-- The complementary other-sector endomorphism fixes every vector killed by
+the selected sector endomorphism. -/
+theorem rpHilbertSpaceOtherBlockElectricProjection_eq_self_of_block_eq_zero
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)))
+    (hv : rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v = 0) :
+    rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey v = v := by
+  have h := congrArg (fun T => T v)
+    (rpHilbertSpaceBlockElectricProjection_add_other_eq_id hLx hLy F ex ey)
+  simpa [hv] using h
+
+/-- If the complementary other-sector endomorphism fixes a vector, then the
+selected sector endomorphism kills it. -/
+theorem rpHilbertSpaceBlockElectricProjection_eq_zero_of_other_eq_self
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)))
+    (hv : rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey v = v) :
+    rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v = 0 := by
+  have h := congrArg (fun T => T v)
+    (rpHilbertSpaceBlockElectricProjection_comp_other_eq_zero hLx hLy F ex ey)
+  simpa [hv] using h
+
+/-- The complementary other-sector endomorphism fixes exactly the vectors
+killed by the selected sector endomorphism. -/
+theorem rpHilbertSpaceOtherBlockElectricProjection_eq_self_iff {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey v = v ↔
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v = 0 := by
+  constructor
+  · exact rpHilbertSpaceBlockElectricProjection_eq_zero_of_other_eq_self
+      hLx hLy F ex ey v
+  · exact rpHilbertSpaceOtherBlockElectricProjection_eq_self_of_block_eq_zero
+      hLx hLy F ex ey v
+
+/-- The complementary other-sector endomorphism is idempotent. -/
+theorem rpHilbertSpaceOtherBlockElectricProjection_idempotent {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey).comp
+        (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey) =
+      rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey := by
+  apply LinearMap.ext
+  intro v
+  apply rpHilbertSpaceOtherBlockElectricProjection_eq_self_of_block_eq_zero
+    hLx hLy F ex ey
+  have h := congrArg (fun T => T v)
+    (rpHilbertSpaceBlockElectricProjection_comp_other_eq_zero hLx hLy F ex ey)
+  simpa using h
 
 /-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
 theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
