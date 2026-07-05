@@ -2361,3 +2361,20 @@ plaquettes are geometrically distinct and the genuine Wilson
 `PlaquetteEnsemble.weight` is reflection positive in mirror coordinates. Scope
 boundary: the components are disconnected copies of the minimal plaquette, not
 the connected Wilson slab / full RP-LINK geometry.
+
+Codex follow-up 1.23:58:
+
+Submitted Aristotle strategy/audit job for the next connected-slab Q1 geometry:
+
+```text
+project: 7992a304-1f3f-48a1-94e3-5a1a13f98ae3
+task: cd210f98-cf24-4e9c-85ed-ac17a05f2ac4
+prompt: AgentTasks/aristotle-prompts/ym-q1-connected-cut-slab-strategy-20260704.prompt.md
+package: AgentTasks/aristotle-submit/ym-q1-connected-cut-slab-strategy-20260704-project
+```
+
+Ask: identify the smallest connected cut-bearing reflection lattice beyond the
+disconnected finite family, propose the exact `A`, `C`, mirror-coordinate
+surface, cut/no-cut factorization theorem signatures, and semantic warnings.
+The package warning about no `.lake` folder is accepted for this strategy/audit
+submission.
