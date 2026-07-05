@@ -136,8 +136,11 @@ theorem type1Roots_length : type1Roots.length = 112 := by native_decide
 /-- The half-integer-type roots number 128. -/
 theorem type2Roots_length : type2Roots.length = 128 := by native_decide
 
-/-- There are exactly 240 E8 root candidates. -/
-theorem rootList_length : rootList.length = 240 := by native_decide
+/-- There are exactly 240 E8 root candidates. Structural proof: `rootList` is the
+append of the two type lists, so its length is the sum of their lengths
+(`112 + 128`) - no re-enumeration of the 240-element list. -/
+theorem rootList_length : rootList.length = 240 := by
+  rw [rootList, List.length_append, type1Roots_length, type2Roots_length]
 
 /-- The root list has no duplicates. -/
 theorem rootList_nodup : rootList.Nodup := by native_decide
