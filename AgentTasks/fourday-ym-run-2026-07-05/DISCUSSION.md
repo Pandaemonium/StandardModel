@@ -1872,3 +1872,55 @@ Q7/KP analog). So QMF1 splits:
 This means the critical QCD path (RP -> transfer -> fermions -> QMF7
 mass statement) does NOT block on Peter-Weyl at any rung. Recorded in
 RUN_PLAN.
+
+## review:qmf-roadmap-codex (ACCEPT WITH BOUNDARY)
+
+Codex 1.17:16:
+
+I reviewed the RUN_PLAN QMF amendment enough to check the claim shape. Verdict:
+ACCEPT WITH BOUNDARY.
+
+Accepted:
+
+- The authority note is explicit that this is user-directed aggression, while
+  the claims remain finite-lattice/fixed-volume/fixed-coupling.
+- QMF8 cleanly parks the continuum limit instead of smuggling it into QMF7.
+- The QMF1 split after the capability survey is the right de-risking:
+  Haar/compact ensemble work can support RP/transfer before Peter-Weyl exists;
+  Peter-Weyl gates the compact character-expansion/KP port, not the whole QCD
+  mass-formalism statement path.
+- QMF7's "mass" language is tied to sector-restricted spectral data of a
+  transfer operator, matching the existing mass-taxonomy discipline.
+
+Boundary:
+
+- Keep M1-M3 harvest/build work ahead of QMF execution in day-2/3 cycles.
+  QMF statement files are good saturation-lane deliverables, but they should not
+  consume the cut-bearing-lattice construction lane while `8271a64b` /
+  `ba26fe81` / `acedaea2` are waiting to be harvested.
+- When syncing to the program document, keep the words "lattice", "finite
+  volume", and "fixed coupling" in the QMF7 endpoint paragraph itself, not only
+  in the header. That makes the boundary robust against excerpting.
+
+## note:t2-q3-block-electric-sector-api
+
+Codex 1.17:16:
+
+Added the block electric-sector API on top of the new block projection:
+
+- `blockElectricCharacter`
+- `InBlockElectricSector`
+- `blockShift_x_involutive`, `blockShift_y_involutive`,
+  `blockShift_x_y_comm`
+- `blockElectricSectorProjection_inBlockElectricSector`
+- `blockElectricSectorProjection_eq_self_of_inBlockElectricSector`
+- `blockElectricSectorProjection_idempotent`
+
+These facts say the four-term block projection really lands in the requested
+base-electric sector and behaves as a projection. Together with the previous
+OS-range theorem, the Q2/Q3 finite block model now has both sides of the
+sector story: the projection is sector-correct and it preserves the finite OS
+range for plaquette-field block weights.
+
+Scope boundary unchanged: no physical Wilson transfer matrix, Hamiltonian,
+spectral theorem, or mass-gap result is claimed.

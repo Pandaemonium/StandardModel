@@ -15,6 +15,10 @@ center shifts.  Therefore the block matrix `rpBlockMatrix` commutes with the
 corresponding block shifts, and those shifts preserve the finite OS range
 space from `TransferHilbert.lean`.
 
+It also defines the four-term block electric-sector projection and proves that
+the projection lands in the requested block electric sector, is idempotent, and
+preserves the finite OS range for plaquette-field block weights.
+
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
 sector-correct transfer statement can be made.
@@ -191,6 +195,147 @@ def blockElectricSectorProjection {Lx Ly : Nat}
           psi
             (S.shiftConfig BaseElectricShift.x
               (S.shiftConfig BaseElectricShift.y i)))
+
+/-- The Z2 character for the two base electric shifts on block indices. -/
+def blockElectricCharacter (ex ey : Bool) : BaseElectricShift -> Complex
+  | BaseElectricShift.x => FluxSectorZ2.TorusLinkField.z2Character ex
+  | BaseElectricShift.y => FluxSectorZ2.TorusLinkField.z2Character ey
+
+/-- A block-index wavefunction lies in a concrete Z2 electric sector when it
+is an eigenvector for the base x/y block shifts with the selected Z2
+characters. -/
+def InBlockElectricSector {Lx Ly : Nat} (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) : Prop :=
+  ShiftSystem.InElectricSector
+    (blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy))
+    (blockElectricCharacter ex ey) psi
+
+/-- The base x block shift is involutive. -/
+theorem blockShift_x_involutive {Lx Ly : Nat}
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (i :
+      FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) :
+    (blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.x
+      ((blockShiftSystem
+        (baseElectricShiftSystem hLx hLy)
+        (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.x i)
+      = i := by
+  cases i with
+  | mk c a =>
+      ext <;> exact FluxSectorZ2.TorusLinkField.xShift_involutive _ _
+
+/-- The base y block shift is involutive. -/
+theorem blockShift_y_involutive {Lx Ly : Nat}
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (i :
+      FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) :
+    (blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.y
+      ((blockShiftSystem
+        (baseElectricShiftSystem hLx hLy)
+        (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.y i)
+      = i := by
+  cases i with
+  | mk c a =>
+      ext <;> exact FluxSectorZ2.TorusLinkField.yShift_involutive _ _
+
+/-- The base x and y block shifts commute. -/
+theorem blockShift_x_y_comm {Lx Ly : Nat}
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (i :
+      FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) :
+    (blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.x
+      ((blockShiftSystem
+        (baseElectricShiftSystem hLx hLy)
+        (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.y i)
+      =
+    (blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.y
+      ((blockShiftSystem
+        (baseElectricShiftSystem hLx hLy)
+        (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.x i) := by
+  cases i with
+  | mk c a =>
+      ext <;> exact FluxSectorZ2.TorusLinkField.xShift_yShift_comm _ _ _
+
+/-- The block electric-sector projection lands in the requested block
+electric sector. -/
+theorem blockElectricSectorProjection_inBlockElectricSector {Lx Ly : Nat}
+    (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) :
+    InBlockElectricSector hLx hLy ex ey
+      (blockElectricSectorProjection hLx hLy ex ey psi) := by
+  intro s i
+  let S :=
+    blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)
+  cases s with
+  | x =>
+      unfold blockElectricSectorProjection
+      rw [blockShift_x_involutive hLx hLy i]
+      rw [blockShift_x_y_comm hLx hLy i]
+      rw [blockShift_x_y_comm hLx hLy (S.shiftConfig BaseElectricShift.x i)]
+      rw [blockShift_x_involutive hLx hLy i]
+      cases ex <;> cases ey <;>
+        simp [FluxSectorZ2.TorusLinkField.z2Character, blockElectricCharacter]
+      all_goals ring
+  | y =>
+      unfold blockElectricSectorProjection
+      rw [blockShift_y_involutive hLx hLy i]
+      cases ex <;> cases ey <;>
+        simp [FluxSectorZ2.TorusLinkField.z2Character, blockElectricCharacter]
+      all_goals ring
+
+/-- Projecting a block wavefunction that already lies in the requested block
+electric sector leaves it unchanged. -/
+theorem blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+    {Lx Ly : Nat} (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)
+    (hpsi : InBlockElectricSector hLx hLy ex ey psi) :
+    blockElectricSectorProjection hLx hLy ex ey psi = psi := by
+  funext i
+  unfold blockElectricSectorProjection
+  rw [hpsi BaseElectricShift.x i, hpsi BaseElectricShift.y i]
+  have hxy := hpsi BaseElectricShift.x
+    ((blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.y i)
+  rw [hxy, hpsi BaseElectricShift.y i]
+  cases ex <;> cases ey <;>
+    simp [FluxSectorZ2.TorusLinkField.z2Character, blockElectricCharacter]
+  all_goals ring
+
+/-- Block electric-sector projections are idempotent. -/
+theorem blockElectricSectorProjection_idempotent {Lx Ly : Nat}
+    (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) :
+    blockElectricSectorProjection hLx hLy ex ey
+        (blockElectricSectorProjection hLx hLy ex ey psi) =
+      blockElectricSectorProjection hLx hLy ex ey psi :=
+  blockElectricSectorProjection_eq_self_of_inBlockElectricSector hLx hLy ex ey
+    (blockElectricSectorProjection hLx hLy ex ey psi)
+    (blockElectricSectorProjection_inBlockElectricSector hLx hLy ex ey psi)
 
 /-- The block electric-sector projection preserves the finite OS range for
 plaquette-field Z2 block weights.

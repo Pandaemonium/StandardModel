@@ -381,9 +381,10 @@ center-shift generators from `FluxSectorZ2` form the `ShiftSystem` used by
 mirror configurations only through their full plaquette-bit fields is invariant
 under simultaneous base shifts, so its `rpBlockMatrix` commutes with the block
 shifts and the finite OS range is preserved. The file also defines the
-four-term block electric-sector projection and proves that the finite OS range
-for plaquette-field block weights is closed under it. This is still a finite
-identity, not a physical transfer matrix or gap claim);
+four-term block electric-sector projection, proves that it lands in the
+requested block electric sector, fixes vectors in that sector, is idempotent,
+and preserves the finite OS range for plaquette-field block weights. This is
+still a finite identity, not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and
