@@ -1925,6 +1925,40 @@ theorem onePlaquetteZ2_plaquetteKPBound_areaSlice
         rw [onePlaquetteZ2_anchor_area_sum beta alpha q k])
       hsmall'
 
+/-- One-plaquette Z2 KP fixture through the positive-area slice adapter.
+
+This exercises the `Finset.Icc 1 (Fintype.card P)` support-counting surface
+used by the current Q7 landing pad. -/
+theorem onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| * Real.exp alpha <= alpha) :
+    PlaquetteKPBound onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha := by
+  let B : Nat -> Real :=
+    fun k => if k = 1 then |Real.tanh beta| * Real.exp alpha else 0
+  have hBsum :
+      (Finset.Icc 1 (Fintype.card PUnit)).sum B =
+        |Real.tanh beta| * Real.exp alpha := by
+    simp [B]
+  have hBsum_nonneg :
+      0 <= (Finset.Icc 1 (Fintype.card PUnit)).sum B := by
+    rw [hBsum]
+    exact mul_nonneg (abs_nonneg _) (le_of_lt (Real.exp_pos _))
+  have hsmall' :
+      ((1 : Nat) : Real) *
+          (Finset.Icc 1 (Fintype.card PUnit)).sum B <= alpha := by
+    rw [hBsum]
+    simpa using hsmall
+  exact
+    plaquetteKPBound_of_singletonBound_positiveAreaBounds onePlaquetteAdj
+      onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+      (z2GammaAbs beta) (z2GammaAbs_nonneg beta) alpha halpha
+      1 B hBsum_nonneg
+      (fun p => onePlaquette_closedTouchNeighborhood_card_le_one p)
+      (fun q k _hk => by
+        rw [onePlaquetteZ2_anchor_area_sum beta alpha q k])
+      hsmall'
+
 /-- A more usable one-plaquette smallness threshold: bounding the Z2
 coefficient by `alpha * exp(-alpha)` implies the scalar KP smallness condition
 used by `onePlaquetteZ2_plaquetteKPBound`. -/
