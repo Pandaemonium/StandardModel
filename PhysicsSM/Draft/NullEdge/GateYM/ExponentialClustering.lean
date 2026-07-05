@@ -301,6 +301,33 @@ theorem supportTail_union_le [DecidableEq Gamma]
             (supportTail_mono M hdec D R Finset.sdiff_subset)
             (supportTail M hdec D S R)
 
+/-- The left support tail is bounded by the tail over a union. -/
+theorem supportTail_le_union_left [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D S R <= supportTail M hdec D (S ∪ T) R :=
+  supportTail_mono M hdec D R Finset.subset_union_left
+
+/-- The right support tail is bounded by the tail over a union. -/
+theorem supportTail_le_union_right [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D T R <= supportTail M hdec D (S ∪ T) R :=
+  supportTail_mono M hdec D R Finset.subset_union_right
+
+/-- Removing support points can only decrease the support tail. -/
+theorem supportTail_sdiff_le [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S \ T) R <= supportTail M hdec D S R :=
+  supportTail_mono M hdec D R Finset.sdiff_subset
+
 /-- The support tail of a finite union of support pieces is bounded by the sum
 of the individual support tails.  This is the finite-cover overcount form used
 when an observable support is decomposed into local pieces. -/
@@ -367,6 +394,40 @@ theorem supportTail_le_card_mul_bound
           exact Finset.sum_le_sum (fun g0 hg0 => hB g0 hg0)
     _ = (S.card : Real) * B := by
           simp [Finset.sum_const, nsmul_eq_mul]
+
+/-- Two-support cardinal overcount bound.
+
+If every anchor in `S ∪ T` has tail at most `B`, then the tail over the union
+is bounded by `(S.card + T.card) * B`.  This intentionally overcounts
+overlaps, matching the finite-cover bookkeeping used for observable supports. -/
+theorem supportTail_union_le_card_add_mul_bound [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R B : Real)
+    (hB : forall g0 : Gamma, g0 ∈ S ∪ T ->
+      tailContribution M hdec D g0 R <= B) :
+    supportTail M hdec D (S ∪ T) R
+      <= (((S.card + T.card : Nat) : Real) * B) := by
+  have hS :
+      supportTail M hdec D S R <= (S.card : Real) * B :=
+    supportTail_le_card_mul_bound M hdec D S R B (by
+      intro g0 hg0
+      exact hB g0 (Finset.mem_union.mpr (Or.inl hg0)))
+  have hT :
+      supportTail M hdec D T R <= (T.card : Real) * B :=
+    supportTail_le_card_mul_bound M hdec D T R B (by
+      intro g0 hg0
+      exact hB g0 (Finset.mem_union.mpr (Or.inr hg0)))
+  calc
+    supportTail M hdec D (S ∪ T) R
+        <= supportTail M hdec D S R + supportTail M hdec D T R :=
+          supportTail_union_le M hdec D S T R
+    _ <= (S.card : Real) * B + (T.card : Real) * B :=
+          add_le_add hS hT
+    _ = (((S.card + T.card : Nat) : Real) * B) := by
+          rw [Nat.cast_add]
+          ring
 
 /-- Finite-support tail bound obtained by summing the anchored Q6 metric-tail
 estimate over the observable support.
