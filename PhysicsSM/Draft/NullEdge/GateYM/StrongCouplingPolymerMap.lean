@@ -216,6 +216,55 @@ theorem mem_closedTouchNeighborhood_iff (Adj : PlaquetteAdjacency P)
   simp [closedTouchNeighborhood]
 
 omit [Fintype Rlab] in
+/-- Closed touch-neighborhoods are monotone in the support. -/
+theorem closedTouchNeighborhood_mono (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] {A B : Finset P} (hAB : A ⊆ B) :
+    closedTouchNeighborhood Adj A ⊆ closedTouchNeighborhood Adj B := by
+  intro q hq
+  rcases (mem_closedTouchNeighborhood_iff Adj).1 hq with hqA | hTouch
+  · exact (mem_closedTouchNeighborhood_iff Adj).2 (Or.inl (hAB hqA))
+  · rcases hTouch with ⟨p, hpA, hpq⟩
+    exact (mem_closedTouchNeighborhood_iff Adj).2
+      (Or.inr ⟨p, hAB hpA, hpq⟩)
+
+omit [Fintype Rlab] in
+/-- Closed touch-neighborhood of a union is contained in the union of the
+closed touch-neighborhoods. -/
+theorem closedTouchNeighborhood_union_subset (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] (A B : Finset P) :
+    closedTouchNeighborhood Adj (A ∪ B)
+      ⊆ closedTouchNeighborhood Adj A ∪ closedTouchNeighborhood Adj B := by
+  intro q hq
+  rcases (mem_closedTouchNeighborhood_iff Adj).1 hq with hqAB | hTouch
+  · rcases Finset.mem_union.1 hqAB with hqA | hqB
+    · exact Finset.mem_union.2
+        (Or.inl ((mem_closedTouchNeighborhood_iff Adj).2 (Or.inl hqA)))
+    · exact Finset.mem_union.2
+        (Or.inr ((mem_closedTouchNeighborhood_iff Adj).2 (Or.inl hqB)))
+  · rcases hTouch with ⟨p, hpAB, hpq⟩
+    rcases Finset.mem_union.1 hpAB with hpA | hpB
+    · exact Finset.mem_union.2
+        (Or.inl ((mem_closedTouchNeighborhood_iff Adj).2
+          (Or.inr ⟨p, hpA, hpq⟩)))
+    · exact Finset.mem_union.2
+        (Or.inr ((mem_closedTouchNeighborhood_iff Adj).2
+          (Or.inr ⟨p, hpB, hpq⟩)))
+
+omit [Fintype Rlab] in
+/-- Closed touch-neighborhood distributes over finite union. This exact form
+lets later counting arguments split a root support into anchor pieces. -/
+theorem closedTouchNeighborhood_union (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] (A B : Finset P) :
+    closedTouchNeighborhood Adj (A ∪ B)
+      = closedTouchNeighborhood Adj A ∪ closedTouchNeighborhood Adj B := by
+  apply Finset.Subset.antisymm
+  · exact closedTouchNeighborhood_union_subset Adj A B
+  · intro q hq
+    rcases Finset.mem_union.1 hq with hqA | hqB
+    · exact closedTouchNeighborhood_mono Adj (Finset.subset_union_left) hqA
+    · exact closedTouchNeighborhood_mono Adj (Finset.subset_union_right) hqB
+
+omit [Fintype Rlab] in
 /-- If `B` is overlap-or-touch incompatible with `A`, then `B` contains an
 anchor plaquette in the closed touch-neighborhood of `A`.  This is the support
 localization fact needed before any area-by-area counting bound. -/

@@ -2143,6 +2143,20 @@ only coefficient-product nonnegativity plus `Real.exp_pos`; it still leaves the
 geometry-specific anchored-sum estimates and any concrete `PlaquetteKPBound`
 open.
 
+Codex follow-up 1.24:15:
+
+Added support-neighborhood splitting lemmas to
+`StrongCouplingPolymerMap.lean`:
+
+- `closedTouchNeighborhood_mono`;
+- `closedTouchNeighborhood_union_subset`;
+- `closedTouchNeighborhood_union`.
+
+These are small but useful for future counting estimates: a root support can be
+enlarged monotonically or split across a finite union before applying the
+anchor-overcount theorem. No geometry-specific degree constant or concrete
+`PlaquetteKPBound` is claimed.
+
 ## note:t1-cut-factor-kernel-bridge
 
 Codex 1.22:08:
