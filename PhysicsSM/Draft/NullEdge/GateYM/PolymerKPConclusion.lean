@@ -37,9 +37,9 @@ inequality `pairSum_le_expBound` through the sound touch-only reformulation
 `exists_canonical_root`, which chooses the least `g`-slot of a touching
 cluster, `tree_root_child_mem_nbhd`, which sends a spanning-tree edge out of
 that root slot into the KP neighborhood of `g`, `treeRootChildren`, which names
-the finite set of root-adjacent children for later deletion, and
-`rhs_forest_expand`, which expands the RHS partial exponential into ordered
-child tuples.  It also includes
+the finite set of root-adjacent children for later deletion, the
+`treeRootChildren_card_add_one_le` arity bound, and `rhs_forest_expand`, which
+expands the RHS partial exponential into ordered child tuples.  It also includes
 `factorial_mul_prod_factorial_le`, the arithmetic normalization for the future
 multinomial fiber bound.  The remaining gap is the rooted-tree deletion, block
 reindexing, weight-factorization, and the geometric fiber-count bound.  In
@@ -584,6 +584,34 @@ lemma root_not_mem_treeRootChildren {n : Nat} (T : SimpleGraph (Fin n))
     (r : Fin n) :
     r ∉ treeRootChildren T r := by
   simp [treeRootChildren]
+
+/-- Root children are among the non-root slots. -/
+lemma treeRootChildren_subset_erase {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) :
+    treeRootChildren T r ⊆ Finset.univ.erase r := by
+  intro j hj
+  have hAdj : T.Adj r j := (mem_treeRootChildren T r j).mp hj
+  simp [hAdj.ne.symm]
+
+/-- A root in an `n`-slot tree has at most `n - 1` root-adjacent children.
+
+This is the finite arity bound needed by the later child-forest truncation in
+`pairSum_le_expBound`: after deleting the canonical root, every immediate
+child is one of the remaining slots. -/
+lemma treeRootChildren_card_add_one_le {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) :
+    (treeRootChildren T r).card + 1 <= n := by
+  have hcard := Finset.card_le_card (treeRootChildren_subset_erase T r)
+  have hcard' :
+      (treeRootChildren T r).card + 1 <= (Finset.univ.erase r).card + 1 := by
+    exact Nat.succ_le_succ hcard
+  have herase : (Finset.univ.erase r).card = n - 1 := by
+    simp
+  have hnpos : 0 < n := lt_of_le_of_lt (Nat.zero_le r.val) r.2
+  have hle1 : 1 <= n := Nat.succ_le_of_lt hnpos
+  have hpred : n - 1 + 1 = n := Nat.sub_add_cancel hle1
+  rw [herase, hpred] at hcard'
+  exact hcard'
 
 /-- Every root child in the tree subgraph carries a polymer in the KP
 neighborhood of the root polymer. -/

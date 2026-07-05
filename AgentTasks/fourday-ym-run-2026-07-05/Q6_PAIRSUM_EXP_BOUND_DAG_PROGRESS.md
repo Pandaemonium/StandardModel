@@ -34,6 +34,10 @@ The follow-up object `treeRootChildren` is also integrated.  It packages the
 finite set of slots adjacent to the root in a tree subgraph, with checked
 membership, loopless-root exclusion, and `treeRootChildren_poly_mem_nbhd`
 showing every such child slot carries a polymer in `nbhd S hdec g`.
+It also has `treeRootChildren_subset_erase` and
+`treeRootChildren_card_add_one_le`, proving the children are non-root slots and
+their arity is at most `n - 1`; this is the finite bound needed by the later
+child-forest truncation.
 
 ## Remaining blocker
 
@@ -41,7 +45,7 @@ The remaining core is the geometric deletion and counting construction:
 
 - define `rootDeletion` for a spanning tree rooted at the canonical `g` slot;
 - split the deleted tree into connected blocks indexed from the
-  `treeRootChildren` set;
+  `treeRootChildren` set, using the checked arity bound;
 - reindex each block as a smaller ordered cluster;
 - prove the corresponding subtree touches a neighbor of `g` beyond the
   immediate root-edge membership already supplied by `tree_root_child_mem_nbhd`;

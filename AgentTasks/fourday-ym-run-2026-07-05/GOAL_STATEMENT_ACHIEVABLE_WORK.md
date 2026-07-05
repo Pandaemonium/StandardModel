@@ -150,8 +150,10 @@ Achievable deliverables:
   edge leaving a root slot carrying `g` lands in `nbhd S hdec g`. The
   `treeRootChildren` helper now packages all such root-adjacent child slots as
   a finite set with membership, loopless-root exclusion, and neighborhood
-  lemmas. The remaining named blocker is still the geometric
-  root-deletion/block-reindex/fiber-count part of `pairSum_le_expBound`.
+  lemmas, and proves the finite arity bound
+  `treeRootChildren_card_add_one_le`. The remaining named blocker is still the
+  geometric root-deletion/block-reindex/fiber-count part of
+  `pairSum_le_expBound`.
   Project `31facfbb` continuation task `6fc4005c` returned no new target-file
   progress.
 

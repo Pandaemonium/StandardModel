@@ -316,7 +316,7 @@ now and what still needs a bridge.
 | `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` | RP-F finite reflection/projector scaffold | Kernel-checked reflection unitary, lifted projector PSD, named boundary-coupling slot, and temporal abstract block PSD/Hermitian facts; concrete Wilson boundary coupling remains open. |
 | `PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean` | Q7 polymer/support-counting surface | Kernel-checked finite support/combinatorial interfaces and one-plaquette Z2 fixture; no volume-uniform KP estimate. |
 | `PhysicsSM/Draft/NullEdge/GateYM/ExponentialClustering.lean` and `ObservableSupportBridge.lean` | Q8 observable support and clustering bridge | Kernel-checked conditional bridge from explicit tail hypotheses to clustering-style bounds, including optional anchored-support bookkeeping; no concrete decay theorem. |
-| `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` | Q6 corrected KP/convergence handoff | Draft layer with known proof handoffs; current bottleneck is the `pairSum_le_expBound` combinatorial estimate, now narrowed by checked `exists_canonical_root`, `tree_root_child_mem_nbhd`, `treeRootChildren`, `rhs_forest_expand`, and `factorial_mul_prod_factorial_le` helper lemmas. |
+| `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` | Q6 corrected KP/convergence handoff | Draft layer with known proof handoffs; current bottleneck is the `pairSum_le_expBound` combinatorial estimate, now narrowed by checked `exists_canonical_root`, `tree_root_child_mem_nbhd`, `treeRootChildren`, `treeRootChildren_card_add_one_le`, `rhs_forest_expand`, and `factorial_mul_prod_factorial_le` helper lemmas. |
 
 ## Status by claim type
 
