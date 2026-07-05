@@ -252,7 +252,8 @@ sectors. This is non-vacuous electric-sector bookkeeping; it does not yet
 construct the Q2 transfer matrix);
 `FluxSectorGeneral` (T3/Q3 abstract finite sector-support API: sector label
 maps, sector support predicates, diagonal sector projections, label-preserving
-finite transfer kernels, projection idempotence/orthogonality, finite
+finite transfer kernels, pointwise projection behavior,
+support iff projection-fixes, projection idempotence/orthogonality, finite
 decomposition as a sum over sector projections, and the theorem that
 label-preserving kernels preserve sector-supported wavefunctions and commute
 with sector projections. This is definition/support bookkeeping only: no
@@ -266,9 +267,10 @@ Bool-array base-cycle winding-label realization, proves concrete Z2
 vertex-gauge updates preserve winding labels, and proves diagonal local
 observable multiplication preserves winding-sector support. The concrete Z2
 projection API proves winding-sector projection idempotence/orthogonality,
-decomposition as the sum over all four winding labels, and that any
-winding-label-preserving finite kernel preserves sectors and commutes with
-the winding-sector projection. After Fable Q3 review the original support
+pointwise projection behavior, support iff projection-fixes, decomposition as
+the sum over all four winding labels, and that any winding-label-preserving
+finite kernel preserves sectors and commutes with the winding-sector
+projection. After Fable Q3 review the original support
 layer is explicitly scoped as magnetic bookkeeping; arbitrary plaquette flips
 are not claimed to preserve `windingLabel`, `QuantumNumbers` uses a sector
 predicate instead of a total label on states, and the flux/local gap names are

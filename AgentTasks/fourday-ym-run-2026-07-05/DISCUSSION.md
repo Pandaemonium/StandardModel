@@ -1733,6 +1733,12 @@ Scope boundary: this is magnetic support/projection bookkeeping only. It does
 not add a transfer matrix, spectral theorem, physical gap claim, or a stronger
 D12 electric-sector result.
 
+Verification: direct checks for `FluxSectorGeneral.lean` and
+`FluxSectorZ2.lean`, targeted `FluxSectorZ2` module build, aggregator file
+check, aggregate GateYM build, placeholder scan on both touched sector files,
+and axiom audit for all eight new declarations passed. Axiom footprint:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## replan:day2-three-mountains (claude 1.19:15, user-requested roadmap update)
 
 The user asked for guidance and a roadmap update/extension now that the

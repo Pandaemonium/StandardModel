@@ -57,6 +57,24 @@ def sectorProjection [DecidableEq Label] (S : SectorData Config Label) (target :
     (psi : Config -> Complex) : Config -> Complex :=
   fun x => if S.label x = target then psi x else 0
 
+/-- On configurations with the target label, the sector projection is the
+original wavefunction value. -/
+theorem sectorProjection_apply_of_label_eq [DecidableEq Label]
+    (S : SectorData Config Label) (target : Label)
+    (psi : Config -> Complex) {x : Config}
+    (hx : S.label x = target) :
+    sectorProjection S target psi x = psi x := by
+  simp [sectorProjection, hx]
+
+/-- On configurations outside the target label, the sector projection
+vanishes. -/
+theorem sectorProjection_apply_of_label_ne [DecidableEq Label]
+    (S : SectorData Config Label) (target : Label)
+    (psi : Config -> Complex) {x : Config}
+    (hx : S.label x ≠ target) :
+    sectorProjection S target psi x = 0 := by
+  simp [sectorProjection, hx]
+
 /-- The sector projection is supported in its target sector. -/
 theorem supportedInSector_sectorProjection [DecidableEq Label] (S : SectorData Config Label)
     (target : Label) (psi : Config -> Complex) :
@@ -80,6 +98,28 @@ theorem sectorProjection_eq_self_of_supported [DecidableEq Label] (S : SectorDat
       by_contra hnonzero
       exact hlabel (hpsi x hnonzero)
     simp [sectorProjection, hlabel, hzero]
+
+/-- If projection onto a sector fixes a wavefunction, then the wavefunction is
+supported in that sector. -/
+theorem supportedInSector_of_sectorProjection_eq_self [DecidableEq Label]
+    (S : SectorData Config Label) (target : Label) (psi : Config -> Complex)
+    (hproj : sectorProjection S target psi = psi) :
+    SupportedInSector S target psi := by
+  intro x hx
+  by_contra hlabel
+  have hpoint := congrFun hproj x
+  simp [sectorProjection, hlabel] at hpoint
+  exact hx hpoint.symm
+
+/-- A wavefunction is supported in a sector exactly when the corresponding
+sector projection fixes it. -/
+theorem supportedInSector_iff_sectorProjection_eq_self [DecidableEq Label]
+    (S : SectorData Config Label) (target : Label) (psi : Config -> Complex) :
+    SupportedInSector S target psi ↔
+      sectorProjection S target psi = psi := by
+  constructor
+  · exact sectorProjection_eq_self_of_supported S target psi
+  · exact supportedInSector_of_sectorProjection_eq_self S target psi
 
 /-- Sector projections are idempotent. -/
 theorem sectorProjection_idempotent [DecidableEq Label] (S : SectorData Config Label)

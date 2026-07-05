@@ -781,6 +781,28 @@ def SupportedInTrivialWinding (hLx : 0 < Lx) (hLy : 0 < Ly)
     (psi : TorusLinkField Lx Ly -> Complex) : Prop :=
   SupportedInFlux hLx hLy FluxLabel.trivial psi
 
+/-- On configurations with the target winding label, the winding-sector
+projection is the original wavefunction value. -/
+theorem windingSectorProjection_apply_of_windingLabel_eq
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex)
+    {U : TorusLinkField Lx Ly}
+    (hU : windingLabel hLx hLy U = label) :
+    windingSectorProjection hLx hLy label psi U = psi U :=
+  FluxSectorGeneral.SectorData.sectorProjection_apply_of_label_eq
+    (windingSectorData hLx hLy) label psi hU
+
+/-- On configurations outside the target winding label, the winding-sector
+projection vanishes. -/
+theorem windingSectorProjection_apply_of_windingLabel_ne
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex)
+    {U : TorusLinkField Lx Ly}
+    (hU : windingLabel hLx hLy U ≠ label) :
+    windingSectorProjection hLx hLy label psi U = 0 :=
+  FluxSectorGeneral.SectorData.sectorProjection_apply_of_label_ne
+    (windingSectorData hLx hLy) label psi hU
+
 /-- Multiplication by a diagonal observable on concrete Z2 torus link fields.
 This preserves magnetic support for the tautological reason that diagonal
 multiplication does not move configurations. Local plaquette-class functions
@@ -831,6 +853,27 @@ theorem windingSectorProjection_eq_self_of_supportedInFlux
     windingSectorProjection hLx hLy label psi = psi :=
   FluxSectorGeneral.SectorData.sectorProjection_eq_self_of_supported
     (windingSectorData hLx hLy) label psi hpsi
+
+/-- If projection onto a winding sector fixes a wavefunction, then the
+wavefunction is supported in that winding sector. -/
+theorem supportedInFlux_of_windingSectorProjection_eq_self
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex)
+    (hproj : windingSectorProjection hLx hLy label psi = psi) :
+    SupportedInFlux hLx hLy label psi :=
+  FluxSectorGeneral.SectorData.supportedInSector_of_sectorProjection_eq_self
+    (windingSectorData hLx hLy) label psi hproj
+
+/-- A wavefunction is supported in a winding sector exactly when the
+winding-sector projection fixes it. -/
+theorem supportedInFlux_iff_windingSectorProjection_eq_self
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (label : FluxLabel) (psi : TorusLinkField Lx Ly -> Complex) :
+    SupportedInFlux hLx hLy label psi ↔
+      windingSectorProjection hLx hLy label psi = psi := by
+  constructor
+  · exact windingSectorProjection_eq_self_of_supportedInFlux hLx hLy label psi
+  · exact supportedInFlux_of_windingSectorProjection_eq_self hLx hLy label psi
 
 /-- Winding-sector projections are idempotent. -/
 theorem windingSectorProjection_idempotent
