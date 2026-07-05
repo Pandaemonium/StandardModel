@@ -9,7 +9,7 @@ aristotle:
   submission_project: AgentTasks/aristotle-submit/whole-project-grand-strategy-20260705-project
   prompt: AgentTasks/aristotle-prompts/whole-project-grand-strategy-20260705.prompt.md
   output_dir: AgentTasks/aristotle-output/0bd9d3b4-5038-462b-972f-11f4a0cfac2b
-  status: submitted
+  status: integrated
 ```
 
 ## What this is
