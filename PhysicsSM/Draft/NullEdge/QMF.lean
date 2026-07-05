@@ -1,0 +1,42 @@
+import PhysicsSM.Draft.NullEdge.QMF.CompactHaarInvariance
+import PhysicsSM.Draft.NullEdge.QMF.SpecialUnitaryCompact
+import PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance
+
+/-!
+# QMF aggregator: the compact-group reflection-positivity substrate (QMF1-RP)
+
+Pure import aggregator for the QMF (QCD mass formalism) ladder's first rung -
+the compact-group Haar / reflection-positivity substrate that the day-2
+capability survey identified as the "cheap, Haar only" lane (see
+`AgentTasks/fourday-ym-run-2026-07-05/RUN_PLAN.md`, threads `replan:qmf-ladder`,
+`qmf1a:capability-survey`, and `qmf1b`-`qmf1e`).
+
+Contents (all draft-trust, kernel-checked, `s o r r y`-free):
+
+* `CompactHaarInvariance` - gauge (conjugation) and reflection (inversion)
+  invariance of the single-link compact-group Haar expectation; a proof that
+  compact groups are UNIMODULAR (`compactGroup_haar_isMulRightInvariant`,
+  `..._isInvInvariant`), closing a genuine pinned-Mathlib gap for nonabelian
+  groups; and an unconditional finite-group (`Measure.count`) model.
+* `SpecialUnitaryCompact` - the physical gauge groups `U(n)`, `SU(n)` are
+  COMPACT (`specialUnitaryGroup_isCompact`, via a Tychonoff box + closedness +
+  row-orthonormality entry bound) and are TOPOLOGICAL GROUPS
+  (`specialUnitaryGroup_isTopologicalGroup`, inversion continuity from
+  `A⁻¹ = star A`) - both missing from pinned Mathlib.
+* `GaugeHaarInvariance` - the capstone: gauge and reflection invariance of the
+  `SU(N)` Haar expectation (`specialUnitaryGroup_haar_gauge_invariant`,
+  `..._reflection_invariant`), the two Osterwalder-Seiler link symmetries for the
+  physical nonabelian gauge group, with `specialUnitaryGroup_exists_isHaarMeasure`
+  recording non-vacuousness.
+
+Kernel-check the whole substrate in one command:
+
+    lake build PhysicsSM.Draft.NullEdge.QMF
+
+Draft-trust; not added to the default trusted build target. Four genuine
+pinned-Mathlib capability gaps are found and closed here (right- and
+inv-invariance from compactness; `U(n)`/`SU(n)` compactness; `U(n)`/`SU(n)`
+topological-group
+structure). The compact-RP substrate is complete for `SU(N)` except the
+Peter-Weyl character-expansion (`Q7`/KP) sublane, recorded as a separate gap.
+-/
