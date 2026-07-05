@@ -10,6 +10,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.RectTreeGauge
 import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryLasso
 import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryExpectation
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
+import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
@@ -166,6 +167,14 @@ reality half, closed). Deliberately NOT (yet) claimed: strict positivity or
 the full spectral-gap assembly, and any identification with
 `TransferGapDefinition.finiteMassGap` - those are the next honest gap-lane
 targets; axiom footprint [propext, Classical.choice, Quot.sound]);
+`TwoStateTransferSpectrum` (GateYM finite dynamics/descriptor bridge:
+the complex `2 x 2` transfer-spectrum payload `!![a,b;b,a]`, with
+kernel-checked vacuum/local eigenvector equations for `(1,1)` and `(1,-1)`,
+positive ordered eigenvalue branches when `0 < b < a`, and the corresponding
+D12 finite spectral-ratio gap/contraction-factor facts. This mirrors the
+smallest Z2 Wilson-slab oracle shape but deliberately does not construct the
+full Wilson slab transfer operator, OS/GNS Hilbert space, Hamiltonian,
+infinite-volume state, or physical mass-gap theorem);
 `FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every
 finite-dimensional complex representation of a finite group admits a
 unitary matrix model - Weyl's unitarian trick in pure matrix algebra

@@ -135,6 +135,13 @@ Implementation status as of 2026-07-05:
   `python Scripts/oracle/z2_transfer_oracle.py --L 3 --T 3 --beta 0.7 --json`
   emits the model convention record, partition and observable checks,
   two-time correlation check, spectra, and explicit numerical error fields.
+- `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
+  first small Lean-facing spectral payload for this dynamics lane: the complex
+  `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
+  equations, positive ordered eigenvalue facts when `0 < b < a`, and the
+  corresponding D12 spectral-ratio gap/contraction-factor identities. This is
+  a descriptor bridge for the smallest transfer shape, not the full Wilson
+  slab transfer operator.
 
 ## One-step slab kernel
 
@@ -253,7 +260,10 @@ local gap. The successor `FiniteGapSpectralWitness` package now names the
 extra finite evidence needed to make those spectral parameters non-vacuous:
 an explicit sector-preserving transfer endomorphism together with vacuum and
 local excitation eigenvector equations. It still does not itself build that
-transfer object.
+transfer object. The new `TwoStateTransferSpectrum` module supplies the first
+tiny kernel-checked spectral payload that could feed such a witness after the
+missing cyclicity, sector, and Wilson-slab identification hypotheses are
+separately supplied.
 
 ## Three meanings of "simulation"
 
@@ -680,7 +690,7 @@ These are proof and design blockers, not software-only blockers.
 
 The engineering blockers are:
 
-- no canonical serialized finite-lattice descriptor yet;
+- no general canonical serialized finite-lattice descriptor yet;
 - no unified exact enumerator for link fields and observables;
 - no fixture format tying oracle output back to Lean theorem names;
 - no general descriptor-driven transfer-matrix builder;
@@ -691,9 +701,10 @@ These can be developed in parallel with the proof work, provided the
 simulation code stays explicitly labeled as oracle/evidence rather than proof.
 The transfer-specific blockers now have a narrow Z2 1+1D prototype in
 `Scripts/oracle/z2_transfer_oracle.py`, including a JSON-ready descriptor and
-summary record. The remaining engineering task is to generalize that prototype
-into a reusable descriptor-driven engine and connect it back to Lean theorem
-surfaces.
+summary record, plus a tiny Lean spectral descriptor bridge in
+`TwoStateTransferSpectrum.lean`. The remaining engineering task is to
+generalize that prototype into a reusable descriptor-driven engine and connect
+its concrete Wilson slab matrices back to Lean theorem surfaces.
 
 ## Suggested first collaborator project
 
