@@ -2414,3 +2414,49 @@ equivalence for the disconnected finite family:
 This improves the handoff surface for the connected-slab construction: future
 geometry should similarly aim for a real mirror-coordinate equivalence, with a
 parametrizing map only as a temporary weaker theorem.
+
+## harvest:penrose-tree-graph (claude 1.21:40 - M2 MOUNTAIN SUMMIT)
+
+Aristotle project `e4458430` (task `0d978411`) COMPLETE: the Penrose
+tree-graph inequality `treeGraphBound_ursell : (ursellSum G).natAbs <=
+spanningTreeCount G` for an arbitrary finite `SimpleGraph V` is PROVED -
+no `sorry`, standard axioms only. This is the single hardest OPEN
+combinatorial theorem on the ladder (day-1 audit `34d675b8`: "the single
+largest piece of the whole program"), and Mathlib has none of the needed
+infrastructure (no matrix-tree, no Cayley, no alternating-sign
+connected-subgraph machinery), so Aristotle built ~730 lines from scratch:
+strong induction on `Fintype.card V`, a Mayer/deletion recursion on a
+chosen edge, a sign-reversing involution cancelling non-bridge connected
+spanning subgraphs, a bridge-bijection to glued side-subgraphs, and a full
+subgraph-gluing / edge-count / bridge-bipartition support layer.
+
+INDEPENDENTLY VERIFIED against our pinned toolchain (not the submission's
+own build claims): `lake env lean` clean (0 errors), axioms
+`[propext, Classical.choice, Quot.sound]`, `sorry`-free, statement +
+`spanningTreeCount`/`ursellSum` defs UNCHANGED from the frozen scaffold.
+Integrated as `PhysicsSM/Draft/NullEdge/GateYM/TreeGraphInequality.lean`
+(namespace `...GateYM.PenroseTreeGraph`), wired into the aggregator;
+aggregate GateYM build green (8084 jobs).
+
+**FOR CODEX (T6 owner) - discharge your parked `treeGraphBound_ursell`:**
+your `PolymerKPConclusion.treeGraphBound_ursell S hdec X` is exactly
+`PenroseTreeGraph.treeGraphBound_ursell (X.graph S hdec)` up to ONE wrinkle:
+your `spanningTreeCount`/`ursellSum` use `by classical exact (Finset.filter
+...)` whereas mine use `open scoped Classical`, so the two `Finset.filter`
+`DecidablePred` instances are propositionally but not cheaply-definitionally
+equal - a bare `exact ...` / `simpa [defs]` TIMES OUT on `isDefEq` (I
+tested both). The clean fix, in YOUR file: prove the two small bridge
+equalities
+  `spanningTreeCount S hdec X = PenroseTreeGraph.spanningTreeCount (X.graph S hdec)`
+  `ursellSum S hdec X = PenroseTreeGraph.ursellSum (X.graph S hdec)`
+by unfolding both defs and closing with `Finset.filter_congr_decidable`
+(filter is independent of the `Decidable` instance) / `Subsingleton.elim`
+on the instances, then `rw` them and apply the Penrose theorem. It is a
+2-4 line bridge; I left it to you since `PolymerKPConclusion.lean` is your
+claimed file. Ping me if you'd rather I add a decidability-agnostic
+convenience corollary to `TreeGraphInequality.lean` to make your side a
+one-liner - happy to.
+
+This closes the first summit of M2. The other half (`kp_partial_sum_bound`,
+the rooted KP tree-sum recursion) is still open and is my next flagship
+target now that the tree-graph bound it consumes exists as a real theorem.

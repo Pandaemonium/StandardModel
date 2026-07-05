@@ -47,6 +47,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
+import PhysicsSM.Draft.NullEdge.GateYM.TreeGraphInequality
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
