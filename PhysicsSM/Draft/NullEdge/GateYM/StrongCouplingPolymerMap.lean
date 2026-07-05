@@ -715,6 +715,52 @@ def PlaquetteKPBound
     plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha
       halpha X <= alpha * (X.support.card : Real)
 
+/-- A reusable sufficient condition for the explicit finite plaquette-polymer
+KP bound.
+
+If every singleton closed touch-neighborhood has degree at most `D`, every
+anchored polymer sum is at most `B`, and `(D : Real) * B <= alpha`, then the
+localized overcount proves `PlaquetteKPBound`.  This is still conditional:
+the theorem does not choose a geometry-specific `D` or prove the anchored
+strong-coupling estimate `B`. -/
+theorem plaquetteKPBound_of_singletonBound_anchorBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (D : Nat) (B : Real) (hB_nonneg : 0 <= B)
+    (hD : forall p : P,
+      (closedTouchNeighborhood Adj ({p} : Finset P)).card <= D)
+    (hAnchor : forall q : P,
+      (Finset.univ.filter
+        (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+          decide (q ∈ Y.support) = true)).sum
+        (fun Y =>
+          Y.coeffProduct gammaAbs *
+            Real.exp (alpha * (Y.support.card : Real))) <= B)
+    (hsmall : (D : Real) * B <= alpha) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  intro X
+  have hProduct :=
+    plaquetteKPSum_le_card_mul_singletonBound_mul_anchorBound Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X
+      D B hB_nonneg hD (fun q _hq => hAnchor q)
+  have hScale :
+      ((X.support.card * D : Nat) : Real) * B
+        <= alpha * (X.support.card : Real) := by
+    calc
+      ((X.support.card * D : Nat) : Real) * B
+          = (X.support.card : Real) * ((D : Real) * B) := by
+            norm_num [Nat.cast_mul]
+            ring
+      _ <= (X.support.card : Real) * alpha := by
+            exact mul_le_mul_of_nonneg_left hsmall (Nat.cast_nonneg _)
+      _ = alpha * (X.support.card : Real) := by
+            ring
+  exact hProduct.trans hScale
+
 /-- An explicit finite plaquette-polymer KP bound implies the abstract
 `KPCondition` for the conservative Q7 polymer system.
 
