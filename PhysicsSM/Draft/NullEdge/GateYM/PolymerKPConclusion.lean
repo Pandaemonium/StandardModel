@@ -29,9 +29,12 @@ Scope discipline:
   `TreeGraphInequality`.
 
 Draft-trust: statement freeze plus one kernel-checked negative result and a
-kernel-checked Penrose tree-graph bound.  The remaining theorem bodies are
-documented proof handoffs, not completed proofs.  Claim label: statement
-freeze / lemma DAG / formal counterexample / finite identity.
+kernel-checked Penrose tree-graph bound.  Aristotle project `9eb41a7c`
+reduced the rooted KP partial-sum theorem to one named combinatorial crux,
+`kp_tree_sum_bound`; the analytic recursion lemmas below that crux are
+kernel-checked.  The remaining theorem bodies are documented proof handoffs,
+not completed proofs.  Claim label: statement freeze / lemma DAG / formal
+counterexample / finite identity.
 -/
 
 noncomputable section
@@ -229,14 +232,123 @@ theorem clusterCoeff_absWeight_exp_nonneg (S : PolymerSystem Gamma)
   exact mul_nonneg (clusterCoeff_absWeight_nonneg S hdec D X)
     (le_of_lt (X.exp_energyOf_pos S))
 
+/-- Term-wise consequence of the tree-graph inequality: each
+coefficient-weight term is dominated by the spanning-tree count divided by
+`n!`, times the absolute weight.  This is the pointwise input to
+`kp_partial_sum_bound`. -/
+theorem coeff_absWeight_le_treeTerm (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (D : ClusterCoeffData S hdec) (X : Cluster S) :
+    |D.coeff X| * X.absWeight S
+      <= (spanningTreeCount S hdec X : Real) / (Nat.factorial X.n : Real)
+          * X.absWeight S := by
+  have hfac : (0 : Real) < (Nat.factorial X.n : Real) := by
+    exact_mod_cast Nat.factorial_pos X.n
+  have hb := D.treeGraphBound X
+  have hle : |D.coeff X|
+      <= (spanningTreeCount S hdec X : Real) / (Nat.factorial X.n : Real) := by
+    rw [le_div_iff₀ hfac]
+    exact hb
+  exact mul_le_mul_of_nonneg_right hle (X.absWeight_nonneg S)
+
+/-- Incompatibility neighborhood of `g`: the finite set of polymers
+incompatible with `g`.  This is exactly the index set of the KP sum. -/
+def nbhd (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (g : Gamma) :
+    Finset Gamma :=
+  Finset.univ.filter (fun h => @Decidable.decide _ (hdec g h) = true)
+
+/-- Truncated KP exponential-recursion bound.
+
+`kpPsi K g` is the depth-`K` truncation of the self-consistent solution to
+`psi g = |w g| * exp (sum_{h ~ g} psi h)`.  It is the analytic quantity that
+the missing rooted tree-sum formula should compare with. -/
+noncomputable def kpPsi (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) :
+    Nat -> Gamma -> Real
+  | 0, g => |S.weight g|
+  | (K + 1), g =>
+      |S.weight g| * Real.exp (∑ h ∈ nbhd S hdec g, kpPsi S hdec K h)
+
+/-- `kpPsi` is nonnegative. -/
+theorem kpPsi_nonneg (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat)
+    (g : Gamma) :
+    0 <= kpPsi S hdec K g := by
+  cases K with
+  | zero => exact abs_nonneg _
+  | succ _ => exact mul_nonneg (abs_nonneg _) (le_of_lt (Real.exp_pos _))
+
+/-- The analytic half of the KP estimate: every depth-`K` truncation of the
+exponential recursion is bounded by `|w g| * exp (energy g)`, using only the
+KP condition and nonnegativity of energy. -/
+theorem kpPsi_le_exp (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (hKP : KPCondition S hdec) (K : Nat) (g : Gamma) :
+    kpPsi S hdec K g <= |S.weight g| * Real.exp (S.energy g) := by
+  induction K generalizing g with
+  | zero =>
+      have h1 : (1 : Real) <= Real.exp (S.energy g) :=
+        Real.one_le_exp (S.energy_nonneg g)
+      calc
+        kpPsi S hdec 0 g = |S.weight g| := rfl
+        _ = |S.weight g| * 1 := by rw [mul_one]
+        _ <= |S.weight g| * Real.exp (S.energy g) :=
+          mul_le_mul_of_nonneg_left h1 (abs_nonneg _)
+  | succ K ih =>
+      have hsum : (∑ h ∈ nbhd S hdec g, kpPsi S hdec K h)
+          <= ∑ h ∈ nbhd S hdec g,
+              |S.weight h| * Real.exp (S.energy h) :=
+        Finset.sum_le_sum (fun h _ => ih h)
+      have hKPg : (∑ h ∈ nbhd S hdec g,
+            |S.weight h| * Real.exp (S.energy h))
+          <= S.energy g :=
+        hKP g
+      have hstep : (∑ h ∈ nbhd S hdec g, kpPsi S hdec K h)
+          <= S.energy g :=
+        le_trans hsum hKPg
+      calc
+        kpPsi S hdec (K + 1) g
+            = |S.weight g| *
+                Real.exp (∑ h ∈ nbhd S hdec g, kpPsi S hdec K h) := rfl
+        _ <= |S.weight g| * Real.exp (S.energy g) :=
+          mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr hstep) (abs_nonneg _)
+
+/-- The genuine KP rooted tree-sum estimate, now isolated as the remaining
+combinatorial crux.
+
+For every finite family `s` of connected clusters touching `g0`, the sum of
+normalized spanning-tree weights is bounded by `|weight g0| * exp (energy g0)`.
+Aristotle project `9eb41a7c` proved `kp_partial_sum_bound` modulo exactly this
+lemma and identified the missing work as a labeled rooted-tree exponential
+formula, comparable in size to the already-integrated Penrose tree-graph
+inequality. -/
+theorem kp_tree_sum_bound
+    (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (hKP : KPCondition S hdec) (g0 : Gamma)
+    (s : Finset {X : Cluster S // X.Connected S hdec /\ X.Touches S g0}) :
+    (s.sum (fun X => (spanningTreeCount S hdec X.1 : Real)
+        / (Nat.factorial X.1.n : Real) * X.1.absWeight S))
+      <= |S.weight g0| * Real.exp (S.energy g0) := by
+  /-
+  Proof handoff:
+  Prove the labeled rooted-tree exponential formula.  The intended route is:
+  enlarge finite families by nonnegativity, root at a slot touching `g0`,
+  use `Fin n` relabeling symmetry to convert `1/n!` to rooted
+  `1/(n-1)!`, identify root-deleted tree components with the exponential
+  recursion `kpPsi`, and finish with `kpPsi_le_exp`.
+  -/
+  sorry
+
 /-- The uniform Kotecky-Preiss partial-sum bound (crux of C1).
 
 For every finite family `s` of connected clusters touching `g0`, the total
 absolute cluster weight is bounded by `|weight g0| * exp (energy g0)`.
 
-Aristotle project `071d1370` reduced C1 to this genuine KP tree-sum estimate.
-The missing proof must use the incompatibility graph's spanning-tree structure;
-naive finite counting loses the KP recursion and diverges. -/
+Aristotle project `071d1370` reduced C1 to this genuine KP estimate, and
+project `9eb41a7c` reduced this theorem to the named combinatorial crux
+`kp_tree_sum_bound` above. -/
 theorem kp_partial_sum_bound
     (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
@@ -245,13 +357,14 @@ theorem kp_partial_sum_bound
     (s : Finset {X : Cluster S // X.Connected S hdec /\ X.Touches S g0}) :
     (s.sum (fun X => |D.coeff X.1| * X.1.absWeight S))
       <= |S.weight g0| * Real.exp (S.energy g0) := by
-  /-
-  Proof handoff:
-  Prove the rooted KP tree-sum estimate from `hKP` and `D.treeGraphBound`.
-  This is the genuine combinatorial crux; it is the same tier of missing
-  infrastructure as the now-proved Penrose tree-graph inequality.
-  -/
-  sorry
+  calc
+    s.sum (fun X => |D.coeff X.1| * X.1.absWeight S)
+        <= s.sum (fun X => (spanningTreeCount S hdec X.1 : Real)
+              / (Nat.factorial X.1.n : Real) * X.1.absWeight S) :=
+          Finset.sum_le_sum
+            (fun X _ => coeff_absWeight_le_treeTerm S hdec D X.1)
+    _ <= |S.weight g0| * Real.exp (S.energy g0) :=
+          kp_tree_sum_bound S hdec hKP g0 s
 
 /-- Bare-KP absolute summability of clusters touching a fixed polymer.
 

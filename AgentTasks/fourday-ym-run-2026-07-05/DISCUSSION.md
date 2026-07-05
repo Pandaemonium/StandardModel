@@ -2721,3 +2721,46 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 
 Dependency footprint for both new lemmas:
 `[propext, Classical.choice, Quot.sound]`.
+
+## harvest:q6-kp-partial-sum-partial (codex 1.27:24)
+
+Aristotle `9eb41a7c` / task `cf453907` returned `COMPLETE_WITH_ERRORS`, not
+a closed Q6 proof. The useful result is a sharp narrowing of
+`kp_partial_sum_bound`: the public theorem is now proved from one named
+remaining handoff, `kp_tree_sum_bound`.
+
+Integrated into `PolymerKPConclusion.lean`:
+
+- `coeff_absWeight_le_treeTerm`;
+- `nbhd`;
+- `kpPsi`;
+- `kpPsi_nonneg`;
+- `kpPsi_le_exp`;
+- `kp_tree_sum_bound` as the remaining rooted tree-sum crux;
+- `kp_partial_sum_bound` now derived from `kp_tree_sum_bound`.
+
+The remaining missing theorem is the labeled rooted-tree exponential formula:
+root at a slot touching `g0`, convert the ordered-cluster `1/n!` normalization
+to rooted `1/(n-1)!`, partition root-deleted tree components, compare to the
+`kpPsi` recursion, then finish with `kpPsi_le_exp`. Aristotle reports the
+statement is true and not underspecified; it did not find the final
+combinatorial proof.
+
+Run-local status file:
+`AgentTasks/fourday-ym-run-2026-07-05/Q6_KP_PARTIAL_SUM_STATUS.md`.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\PolymerKPConclusion.lean
+```
+
+This check passes with the expected draft handoff warnings at
+`kp_tree_sum_bound`, `kp_convergence_bound_of_selfIncompatible`, and
+`kp_tail_bound`.
+
+Dependency footprint:
+`coeff_absWeight_le_treeTerm`, `kpPsi_nonneg`, and `kpPsi_le_exp` have the
+standard `[propext, Classical.choice, Quot.sound]` footprint. The remaining
+`kp_tree_sum_bound` handoff and the dependent `kp_partial_sum_bound` carry
+the proof-placeholder axiom, as expected for this partial harvest.
