@@ -20,10 +20,12 @@ finite-volume computation layer based on exact enumeration and small matrix
 models.
 
 The missing step is not "run a Monte Carlo." The missing step is to define,
-verify, and implement the actual finite dynamical object: a concrete transfer
-kernel or Markov transition kernel on a specified finite lattice, with a clear
-relationship to the existing Wilson ensemble, reflection-positive Hilbert-space
-construction, sector labels, observables, and spectral-gap bookkeeping.
+verify, and implement the actual finite dynamical object. The right first
+candidate is a concrete one-step Euclidean transfer kernel on a specified
+finite lattice, tied to the existing Wilson ensemble, reflection-positive
+Hilbert-space construction, sector labels, observables, and spectral-gap
+bookkeeping. A Markov chain is a later performance layer, not the first
+dynamical model.
 
 ## What has been demonstrated
 
@@ -73,6 +75,142 @@ computations of the following kind:
 These are best described as exact finite-volume Euclidean computations or
 oracle fixtures. They are valuable because they can be cross-checked against
 Lean statements, and because they can falsify bad conjectures quickly.
+
+## Recommended first dynamical model
+
+The first true dynamical model should be a finite Wilson slab transfer model.
+This stays inside the current project boundary: it uses finite groups, finite
+Euclidean lattices, Wilson plaquette weights, reflection/transfer structure,
+and finite spectral data. It does not require a Hamiltonian limit, real-time
+evolution, or stochastic sampling.
+
+The standard lattice-gauge route supports this choice: transfer-matrix
+formalisms relate Wilson's Euclidean lattice formulation to Hamiltonian lattice
+gauge theory, while reflection positivity is the structural input that makes
+the transfer construction positive. One useful historical reference is Creutz
+1977, "Gauge fixing, the transfer matrix, and confinement on a lattice,"
+which explicitly describes using transfer-matrix formalism to relate Wilson's
+lattice approach and the Kogut-Susskind Hamiltonian approach.
+
+For the first implementation, use the finite group Z2 with elements encoded as
+`+1` and `-1`. Later examples can move to Z3, S3, or a general finite group.
+
+Choose:
+
+- a finite spatial lattice `Lambda_s`;
+- a finite Euclidean time direction `t = 0, ..., T - 1`;
+- explicit periodic or open boundary conditions;
+- oriented link variables `U_l in G`;
+- Wilson plaquette weight `w_beta(U_p) = exp(beta * chi(U_p))`.
+
+For Z2, take `chi(+1) = +1` and `chi(-1) = -1`, so the plaquette weight is
+`exp(beta * U_p)`. The finite Euclidean measure is therefore:
+
+```text
+W(U) = prod_p exp(beta * U_p)
+Z    = sum_U W(U)
+mu(U) = W(U) / Z
+```
+
+This is still Euclidean and finite. Its dynamical content enters when the
+lattice is split into adjacent time slabs.
+
+## One-step slab kernel
+
+Let `u` and `v` be spatial link configurations on adjacent time slices, and
+let `a` be the temporal-link configuration connecting those slices. Define:
+
+```text
+K(u, v) =
+  sum_{a in G^{V_s}}
+    exp((beta_s / 2) * S_s(u)
+        + beta_t * S_t(u, a, v)
+        + (beta_s / 2) * S_s(v))
+```
+
+Here `S_s(u)` is the within-slice spatial plaquette action, and
+`S_t(u, a, v)` is the action of plaquettes crossing the time slab. The
+half-spatial weights are included so that, under the usual symmetric Wilson
+setup, `K(u, v) = K(v, u)`. That symmetry is useful for positivity and spectral
+checks.
+
+For a 1+1 dimensional Z2 model on a spatial circle with `L` spatial links,
+write:
+
+```text
+u_i, v_i, a_i in {+1, -1}
+```
+
+where `u_i` is the spatial link at time `t`, `v_i` is the corresponding link
+at time `t + 1`, and `a_i` is the temporal link at site `i`. With periodic
+spatial boundary conditions, `a_L = a_0`. The temporal plaquette is:
+
+```text
+P_i(u, a, v) = a_i * v_i * inv(a_{i+1}) * inv(u_i)
+```
+
+For Z2, inversion is trivial, so:
+
+```text
+P_i(u, a, v) = a_i * v_i * a_{i+1} * u_i
+```
+
+The first transfer kernel is therefore:
+
+```text
+K(u, v) =
+  sum_{a_0, ..., a_{L-1} in {+1, -1}}
+    exp(beta * sum_{i=0}^{L-1} a_i * v_i * a_{i+1} * u_i)
+```
+
+This is the smallest honest finite dynamical object for the simulation layer.
+Its state space is finite, its matrix entries are explicit, and its partition
+function on `T` time slices is:
+
+```text
+Z_T = Tr(K^T)
+```
+
+The crucial validation identity is:
+
+```text
+Tr(K^T) =
+  sum_{periodic spacetime fields U} prod_p exp(beta * U_p)
+```
+
+If this fails, the time-slicing convention is wrong.
+
+## Observables and transfer expectations
+
+A time-local observable `O` becomes a diagonal matrix:
+
+```text
+M_O(u, v) = O(u) if u = v, and 0 otherwise.
+```
+
+Finite-volume expectations become:
+
+```text
+<O>_T = Tr(M_O K^T) / Tr(K^T)
+```
+
+Two-time Euclidean correlations become:
+
+```text
+<A(0) B(tau)>_T =
+  Tr(M_A K^tau M_B K^(T - tau)) / Tr(K^T)
+```
+
+If the eigenvalues in a chosen sector satisfy
+`lambda_0 >= lambda_1 >= ... > 0`, then the finite-volume gap estimate is:
+
+```text
+Delta_1 = -log(lambda_1 / lambda_0)
+```
+
+This connects directly to the existing `FiniteGapAssembly` API, but only after
+the concrete transfer object, sector preservation, and relevant cyclicity
+hypotheses have been supplied.
 
 ## What is not yet available
 
@@ -234,7 +372,11 @@ The rule should be: exact small cases first, approximate large cases second.
 
 ## Minimal viable simulation layer
 
-The minimal useful package would be:
+The minimal useful package has two parts: an exact oracle and a transfer
+matrix builder. The exact oracle should be implemented first because it is the
+validation target for the transfer matrix.
+
+Exact-oracle deliverable:
 
 1. Z2 finite-lattice descriptor for a rectangular 2D torus or rectangle.
 2. Exact enumeration of all link fields.
@@ -245,9 +387,171 @@ The minimal useful package would be:
 6. A simple report generator that prints the model conventions, raw sums,
    normalized expectations, and theorem comparison.
 
-This would not be "full dynamics," but it would be the first honest
-simulation-facing artifact. It would also be a good debugging tool for the
-remaining transfer-kernel design.
+First dynamical deliverable:
+
+```text
+Z2_1p1D_transfer_oracle
+```
+
+Specification:
+
+```text
+Group:        Z2 = {+1, -1}
+Space:        L-site circle
+Time:         T slices
+State:        spatial links u in {+1, -1}^L
+Kernel:       K(u,v) = sum_a exp(beta * sum_i a_i * v_i * a_{i+1} * u_i)
+Partition:    Z_T = Tr(K^T)
+Observables:  global flux Phi(u) = prod_i u_i
+Spectra:      eigenvalues of K, optionally by Phi-sector
+Gap:          Delta = -log(lambda_1 / lambda_0)
+Validation:   compare Tr(K^T) with full spacetime enumeration
+```
+
+This would not be "full dynamics," but it would be the first honest finite
+Euclidean transfer model. It would also be a good debugging tool for the
+remaining Wilson slab-kernel and sector-decomposition design.
+
+## Serializable descriptor sketch
+
+Use a deterministic JSON-like model descriptor. For the first model:
+
+```json
+{
+  "model": "finite_group_lattice_gauge",
+  "group": "Z2",
+  "dimensions": {
+    "space": [4],
+    "time": 6
+  },
+  "boundary": {
+    "space": "periodic",
+    "time": "periodic"
+  },
+  "couplings": {
+    "beta_s": 0.0,
+    "beta_t": 0.4
+  },
+  "links": "oriented_canonical",
+  "plaquettes": "right_hand_temporal_first",
+  "kernel": "wilson_slab_half_spatial",
+  "observables": [
+    {
+      "name": "spatial_holonomy",
+      "type": "product",
+      "links": "all_spatial_links_at_time_0"
+    }
+  ],
+  "sectors": [
+    {
+      "name": "global_flux",
+      "label": "product_spatial_links"
+    }
+  ]
+}
+```
+
+The descriptor is part of the scientific object: it fixes the group,
+orientation, boundary, weight, kernel, observables, and sector labels.
+
+## Suggested implementation API
+
+```python
+class FiniteGroup:
+    elements: list
+    identity: object
+
+    def mul(self, a, b): ...
+    def inv(self, a): ...
+    def character(self, a): ...
+
+
+class LatticeDescriptor:
+    group: FiniteGroup
+    spatial_shape: tuple[int, ...]
+    time_extent: int
+    boundary_space: str
+    boundary_time: str
+    beta_s: float
+    beta_t: float
+
+
+class TransferModel:
+    descriptor: LatticeDescriptor
+
+    def spatial_states(self):
+        """Enumerate spatial link fields."""
+
+    def temporal_links(self):
+        """Enumerate temporal link fields for one slab."""
+
+    def temporal_plaquette(self, u, a, v, i):
+        """Return plaquette holonomy for one temporal plaquette."""
+
+    def slab_weight(self, u, v):
+        """Return K[u,v]."""
+
+    def transfer_matrix(self):
+        """Build finite matrix K."""
+
+    def observable_matrix(self, observable):
+        """Build diagonal insertion matrix M_O."""
+
+    def partition_from_transfer(self, T):
+        """Return Tr(K^T)."""
+
+    def expectation_from_transfer(self, observable, T):
+        """Return Tr(M_O K^T)/Tr(K^T)."""
+
+    def sector_blocks(self, projectors):
+        """Return P_s K P_s blocks after checking commutation."""
+```
+
+For the first pass, `sector_blocks` can use numerical projection matrices. For
+the Z2 spatial-circle model, a simple gauge-invariant label is global spatial
+flux:
+
+```text
+Phi(u) = prod_i u_i
+```
+
+Before using sector spectra, check:
+
+```text
+P_s K = K P_s
+```
+
+for each candidate sector projector `P_s`.
+
+## First numerical tests
+
+Use these tests before doing anything larger:
+
+```text
+Test 1: L=1, T=1
+Compare full enumeration against Tr(K).
+
+Test 2: L=2, T=2
+Compare full enumeration against Tr(K^2).
+
+Test 3: gauge invariance
+Apply random vertex gauge transformations and verify W(U) is unchanged.
+
+Test 4: kernel symmetry
+Verify K[u,v] = K[v,u].
+
+Test 5: positivity
+Verify all eigenvalues of K are nonnegative up to numerical tolerance.
+
+Test 6: sector preservation
+For each candidate projector P_s, verify ||P_s K - K P_s|| = 0.
+
+Test 7: observable insertion
+Compare transfer expectation with full enumeration expectation.
+
+Test 8: spectral correlation
+Compute C(tau) from transfer traces and compare against eigendecomposition.
+```
 
 ## Milestones toward true dynamics
 
@@ -258,7 +562,9 @@ Deliverables:
 - `Scripts/oracle/` module for finite lattice enumeration;
 - JSON or CSV output with conventions;
 - fixtures for Z2 and Z3;
-- tests comparing exact enumeration to current Lean-proved identities.
+- tests comparing exact enumeration to current Lean-proved identities;
+- tests comparing full spacetime enumeration to transfer-trace formulas once
+  the transfer builder exists.
 
 Exit criterion:
 
@@ -271,12 +577,14 @@ Deliverables:
 - one fixed time-sliced lattice shape;
 - definition of the one-step kernel;
 - numerical matrix construction;
-- statement mapping the kernel to existing `TransferHilbert*` abstractions.
+- statement mapping the kernel to existing `TransferHilbert*` abstractions;
+- trace validation against exact spacetime enumeration.
 
 Exit criterion:
 
 - the transfer kernel is positive in the expected sense, preserves the selected
-  sectors, and reproduces exact enumeration for one-step observables.
+  sectors, and reproduces exact enumeration through `Tr(K^T)` and inserted
+  trace identities.
 
 ### Milestone 3: sector-resolved spectrum
 
@@ -352,24 +660,30 @@ simulation code stays explicitly labeled as oracle/evidence rather than proof.
 
 ## Suggested first collaborator project
 
-Build the exact finite Euclidean oracle for a Z2 rectangular lattice.
+Build the Z2 finite Euclidean transfer oracle.
 
 Start with:
 
-- link fields valued in Z2;
-- plaquette product;
+- exact enumeration of spacetime link fields valued in Z2;
+- plaquette product and Wilson weights;
 - Wilson weight `exp(beta * plaquette)`, or the existing tanh-normalized
   strong-coupling convention if matching the Q7 fixtures;
-- rectangular Wilson loop;
-- exact enumeration;
-- output of partition function, raw numerator, expectation, and area.
+- a 1+1 dimensional spatial-circle slab transfer kernel;
+- `Tr(K^T)` comparison to full spacetime enumeration;
+- diagonal observable insertion comparison;
+- global-flux sector projection tests;
+- output of partition function, raw numerator, normalized expectation,
+  transfer spectrum, and convention metadata.
 
 Then compare:
 
 - trivial small volumes by hand;
 - current Python oracle conventions;
 - Lean area-law theorem surfaces in `RectBoundaryExpectation.lean` and related
-  YM1 files.
+  YM1 files where applicable;
+- Lean transfer/gap prerequisite names in `TransferHilbert*` and
+  `FiniteGapAssembly.lean`, without claiming those APIs are already
+  instantiated by the oracle.
 
 This project has high diagnostic value and low conceptual risk.
 
@@ -404,6 +718,14 @@ We have a full dynamical Yang-Mills simulator, a Hamiltonian evolution, an
 infinite-volume mass-gap computation, or continuum physics predictions.
 ```
 
-The right next step is to build the small exact simulator deliberately, then
-use it to validate the transfer-kernel and sector-decomposition design before
-any large stochastic simulation is attempted.
+The right next step is to build the exact finite enumerator and the Z2
+one-step transfer model together, with enumeration as the validation oracle for
+the transfer kernel. Only after that should sector spectra, gap packaging, or
+large stochastic simulation be attempted.
+
+## Reference note
+
+- Creutz, M. "Gauge fixing, the transfer matrix, and confinement on a
+  lattice. [Hamiltonian]." Physical Review D 15:4, 1977.
+  DOI: 10.1103/PhysRevD.15.1128. OSTI record:
+  https://www.osti.gov/biblio/7118049
