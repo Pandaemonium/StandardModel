@@ -147,10 +147,13 @@ Achievable deliverables:
   integrated: `exists_canonical_root`, `rhs_forest_expand`, and
   `factorial_mul_prod_factorial_le`. The follow-up helper
   `tree_root_child_mem_nbhd` is also integrated, showing that a spanning-tree
-  edge leaving a root slot carrying `g` lands in `nbhd S hdec g`. The remaining
-  named blocker is still the geometric root-deletion/block-reindex/fiber-count
-  part of `pairSum_le_expBound`. Project `31facfbb` continuation task `6fc4005c`
-  returned no new target-file progress.
+  edge leaving a root slot carrying `g` lands in `nbhd S hdec g`. The
+  `treeRootChildren` helper now packages all such root-adjacent child slots as
+  a finite set with membership, loopless-root exclusion, and neighborhood
+  lemmas. The remaining named blocker is still the geometric
+  root-deletion/block-reindex/fiber-count part of `pairSum_le_expBound`.
+  Project `31facfbb` continuation task `6fc4005c` returned no new target-file
+  progress.
 
 Done when:
 

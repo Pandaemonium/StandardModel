@@ -30,12 +30,18 @@ polymer `g`, then the adjacent child slot's polymer lies in `nbhd S hdec g`.
 This discharges the immediate root-neighbor membership fact needed by the
 future canonical-root deletion argument.
 
+The follow-up object `treeRootChildren` is also integrated.  It packages the
+finite set of slots adjacent to the root in a tree subgraph, with checked
+membership, loopless-root exclusion, and `treeRootChildren_poly_mem_nbhd`
+showing every such child slot carries a polymer in `nbhd S hdec g`.
+
 ## Remaining blocker
 
 The remaining core is the geometric deletion and counting construction:
 
 - define `rootDeletion` for a spanning tree rooted at the canonical `g` slot;
-- split the deleted tree into connected blocks;
+- split the deleted tree into connected blocks indexed from the
+  `treeRootChildren` set;
 - reindex each block as a smaller ordered cluster;
 - prove the corresponding subtree touches a neighbor of `g` beyond the
   immediate root-edge membership already supplied by `tree_root_child_mem_nbhd`;
