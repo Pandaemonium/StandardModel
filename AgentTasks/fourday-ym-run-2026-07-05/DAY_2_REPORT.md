@@ -34,7 +34,8 @@ intentionally untouched because Q6 has not landed.
   says the connected correlator vanishes when the source support is empty,
   under the existing support-tail bridge hypothesis. Later support-tail algebra
   adds union projection, support-difference, inclusion-exclusion, intersection,
-  and exact difference-split lemmas for finite support bookkeeping.
+  exact difference-split lemmas, and subtraction-form union/difference
+  identities for finite support bookkeeping.
 - `StrongCouplingPolymerMap.lean`: closed-neighborhood basics, area-sliced
   anchored sums, nonnegativity and impossible-area range cleanup, positive-area
   adapter variants, and one-plaquette Z2 area-slice/positive-area fixtures

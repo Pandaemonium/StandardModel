@@ -140,7 +140,10 @@ Q8 conditional clustering side:
 - `supportTail_union_add_inter`, `supportTail_inter_le_left`,
   `supportTail_inter_le_right`, `supportTail_sdiff_add_inter`, and
   `supportTail_sdiff_add_inter_le` record exact overlap and
-  support-difference decompositions for finite observable supports.
+  support-difference decompositions for finite observable supports; the
+  subtraction-form identities `supportTail_union_eq_add_sub_inter` and
+  `supportTail_sdiff_eq_sub_inter` expose the same algebra in a downstream
+  estimate-friendly shape.
 - Amplitude/rate weakening wrappers are proved for constant bookkeeping.
 - `connectedCorr_eq_zero_of_support_empty` records the empty-support boundary
   case: under the existing support-tail bridge hypothesis, an observable with
