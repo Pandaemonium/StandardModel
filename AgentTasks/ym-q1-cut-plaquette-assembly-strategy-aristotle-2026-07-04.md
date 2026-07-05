@@ -7,8 +7,8 @@ aristotle:
   target_file: PhysicsSM/Draft/NullEdge/GateYM/ReflectionPositivityKernel.lean
   expected_module: PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
   submission_project: AgentTasks/aristotle-submit/ym-q1-cut-plaquette-assembly-strategy-20260704-project
-  output_dir: AgentTasks/aristotle-output/8271a64b-c45b-4f31-8c76-5c6fdc93bcd8
-  status: submitted
+  output_dir: AgentTasks/aristotle-output/ym-q1-cut-plaquette-assembly-20260704.zip
+  status: harvested-integrated
 ```
 
 ## Purpose
@@ -28,7 +28,7 @@ non-degenerate cut-plaquette geometry.
 - `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`
 - `lake build PhysicsSM.Draft.NullEdge.GateYM`
 - Placeholder scan on `ReflectionPositivityKernel.lean`
-- Stdin axiom audits for the new connector lemmas
+- Stdin dependency audits for the new connector lemmas
 
 All above passed before this submission was prepared. The aggregate build
 still reports known pre-existing warnings and the intended Q6 draft proof
@@ -56,3 +56,48 @@ Lean/run-note files instead of relying on context-pack relevance.
   is accepted for a semantic/proof-design audit package. Project
   `8271a64b-c45b-4f31-8c76-5c6fdc93bcd8`, task
   `e152ffe8-6bb7-4fae-8781-f274a6a53bd9`, initially `QUEUED`.
+
+## Harvest record
+
+Aristotle returned COMPLETE with verdict PROCEED.
+
+Integrated deliverable:
+
+```text
+PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquettePositivity.lean
+```
+
+The integrated module proves the cut-plaquette kernel-algebra bridge:
+
+- `posSemidef_map_ofReal`
+- `cutKernel_posSemidef_of_wilsonFactor`
+- `reflectionForm_nonneg_of_wilsonFactor`
+- `reflectionForm_nonneg_of_wilsonFactor_prod`
+
+Semantic boundary: this closes the single-factor and finite-product Wilson
+cut-kernel PSD bridge by identifying each cut factor with a principal submatrix
+of the Wilson one-plaquette kernel. It does not yet build the concrete
+cut-plaquette lattice, the mirror-coordinate equivalence, or the proof that the
+genuine cut-lattice `PlaquetteEnsemble.weight` has the required cut-factor
+form. Full RP-LINK therefore remains open at the concrete geometry layer.
+
+Returned strategy report:
+
+```text
+AgentTasks/aristotle-output/ym-q1-cut-plaquette-assembly-strategy-20260704-project_aristotle/AgentTasks/aristotle-output/ym-q1-cut-plaquette-assembly-20260705/ANALYSIS_Q1_CUT_PLAQUETTE.md
+```
+
+The returned `GateYM.lean` aggregator was stale relative to the live tree and
+was not copied wholesale.
+
+## Local verification after integration
+
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquettePositivity.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity`
+- `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateYM`
+- Diff hygiene scan for new prose/code additions
+- Dependency footprint audit for `posSemidef_map_ofReal`,
+  `cutKernel_posSemidef_of_wilsonFactor`, and
+  `reflectionForm_nonneg_of_wilsonFactor_prod`:
+  `[propext, Classical.choice, Quot.sound]`

@@ -2142,3 +2142,40 @@ plaquettes in the closed touch-neighborhood of the root polymer support. It uses
 only coefficient-product nonnegativity plus `Real.exp_pos`; it still leaves the
 geometry-specific anchored-sum estimates and any concrete `PlaquetteKPBound`
 open.
+
+## note:t1-cut-factor-kernel-bridge
+
+Codex 1.22:08:
+
+Harvested and integrated Aristotle project `8271a64b` task `e152ffe8` as
+`PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquettePositivity.lean`.
+
+The integrated module proves:
+
+- `posSemidef_map_ofReal`
+- `cutKernel_posSemidef_of_wilsonFactor`
+- `reflectionForm_nonneg_of_wilsonFactor`
+- `reflectionForm_nonneg_of_wilsonFactor_prod`
+
+This closes the abstract Wilson cut-factor kernel bridge: a factorized cut
+weight of the form obtained by reading both mirror sides through the same
+`e : C -> A -> G` map has PSD cut kernels, and finite products are handled by
+the existing Schur/product closure in `ReflectionPositivityKernel.lean`.
+
+Scope boundary: this is not full RP-LINK. It does not build the concrete
+cut-bearing reflection lattice, prove the mirror-coordinate equivalence, or
+identify the genuine cut-lattice `PlaquetteEnsemble.weight` with the factorized
+form. That concrete geometry/ensemble-identification step is now the Q1
+blocker.
+
+Verification run locally after integration:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquettePositivity.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for the new headline lemmas:
+`[propext, Classical.choice, Quot.sound]`.

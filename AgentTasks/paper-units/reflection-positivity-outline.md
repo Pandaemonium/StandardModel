@@ -8,16 +8,17 @@ Status: outline only; draft Lean inventory, not a promotion request.
 
 This unit should present the finite, algebraic reflection-positivity stack for
 GateYM after the N3 mirror-holonomy redesign, the zero-cut Wilson
-ensemble-identification tier, and the first cut-kernel product/Schur connector
-lemmas. The safest current headline is:
+ensemble-identification tier, the cut-kernel product/Schur connector lemmas,
+and the abstract Wilson cut-factor PSD bridge. The safest current headline is:
 
 > A kernel-checked draft stack for reflection geometry, reflection
 > change-of-variables, positive Wilson local kernels, and a doubled Wilson
 > reflection-form theorem for which the genuine two-plaquette ensemble
 > weight IS now identified (for the zero-cut construction, at
 > mirror-coordinate configurations), plus finite cut-kernel product closure
-> lemmas - with cut-plaquette (shocking tier) reflection positivity still open
-> and the Q2 OS/GNS range model present only as finite algebraic
+> lemmas and the single-factor Wilson cut-kernel bridge - with full concrete
+> cut-plaquette (shocking tier) reflection positivity still open and the Q2
+> OS/GNS range model present only as finite algebraic
 > infrastructure.
 
 Do not claim that RP-LINK is fully closed: the zero-cut doubled-lattice
@@ -25,7 +26,8 @@ construction is a well-definedness/consistency instance of reflection
 positivity, not the case with actual cut plaquettes (Osterwalder-Seiler's
 genuinely nontrivial content). The T1 zero-cut tier (baseline AND
 ensemble-identification) is now closed; cut-plaquette strong/shocking-tier
-work remains open.
+work remains open at the concrete lattice / ensemble-weight identification
+layer.
 
 ## Theorem inventory
 
@@ -136,6 +138,20 @@ Reflection-positive kernel:
   - `cutKernel_finset_prod_posSemidef`
   - `reflectionForm_nonneg_of_finset_prod_posSemidef`
 
+Wilson cut-factor kernel bridge:
+
+- `PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquettePositivity.lean`
+  - `posSemidef_map_ofReal`
+  - `cutKernel_posSemidef_of_wilsonFactor`
+  - `reflectionForm_nonneg_of_wilsonFactor`
+  - `reflectionForm_nonneg_of_wilsonFactor_prod`
+  This is the kernel-algebra half of the cut-plaquette target: each
+  factorized Wilson cut factor is a principal submatrix of the Wilson
+  one-plaquette kernel, and finite products follow through the existing
+  Schur/product closure. It does not construct the concrete cut-bearing
+  lattice or prove that its genuine `PlaquetteEnsemble.weight` has this
+  mirror-coordinate factor form.
+
 Baseline Wilson reflection positivity:
 
 - `PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionPositivity.lean`
@@ -190,6 +206,10 @@ known records include:
   product/Schur connector lemmas and the red-team corollary
   `doubled_wilson_ensembleWeight_reflectionForm_nonneg`; use the ledger
   entries around `1.16:47`-`1.17:48` for exact commands.
+- Codex integrated Aristotle `8271a64b` as
+  `WilsonCutPlaquettePositivity.lean`; use ledger entry `1.22:08` and the
+  task note `AgentTasks/ym-q1-cut-plaquette-assembly-strategy-aristotle-2026-07-04.md`
+  for exact direct/targeted/aggregate checks and dependency footprint.
 - Q2 `TransferHilbert*` modules and `TransferHilbertZ2Electric.lean` have
   their own direct/targeted/aggregate check records in the ledger; cite those
   exact entries rather than this outline.
@@ -217,9 +237,10 @@ GateYM build, then record fresh command output here or in a task note.
   including genuine ensemble-weight identification, per `e6e46e9f`) is a
   well-definedness/consistency instance of reflection positivity, not the
   case with actual cut plaquettes - Osterwalder-Seiler's genuinely
-  nontrivial content, needing `ReflectionPositivityKernel.cutKernel_posSemidef_of_mixture`
-  and concrete Wilson cut geometry. Aristotle project `8271a64b` is running
-  for the next cut-plaquette assembly strategy/audit.
+  nontrivial content. Aristotle `8271a64b` closes the abstract factorized
+  Wilson cut-kernel bridge, but concrete Wilson cut geometry, the
+  mirror-coordinate equivalence, and genuine ensemble-weight identification
+  are still open.
 - Q2 transfer Hilbert space is finite algebraic infrastructure only. The
   concrete Wilson slab/physical transfer matrix and gap interpretation remain
   open.

@@ -31,7 +31,14 @@ harvested as soon as they returned.
   negatives). Follow-up connector lemmas in `ReflectionPositivityKernel.lean`
   prove cut-kernel product/Hadamard/Schur closure, finite-product closure, and
   the named zero-cut ensemble corollary
-  `doubled_wilson_ensembleWeight_reflectionForm_nonneg`.
+  `doubled_wilson_ensembleWeight_reflectionForm_nonneg`. Aristotle `8271a64b`
+  then returned and Codex integrated `WilsonCutPlaquettePositivity.lean`:
+  `posSemidef_map_ofReal`, `cutKernel_posSemidef_of_wilsonFactor`,
+  `reflectionForm_nonneg_of_wilsonFactor`, and
+  `reflectionForm_nonneg_of_wilsonFactor_prod`. This closes the abstract
+  single-factor and finite-product Wilson cut-kernel bridge. It still does not
+  build the concrete cut-bearing lattice or identify the genuine cut-lattice
+  `PlaquetteEnsemble.weight` with that factorized mirror-coordinate form.
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -123,18 +130,24 @@ identification, COMPLETE+HARVESTED+INTEGRATED by Claude), `50024abf`
 (Q2/Q3 block-shift covariance, COMPLETE+HARVESTED+INTEGRATED), `071d1370`
 (Q6 abstract KP C1/C2 package, COMPLETE+HARVESTED+INTEGRATED-NEGATIVE), and
 `acedaea2` (Q11 boundary expectation bridge,
-COMPLETE+HARVESTED+INTEGRATED), `ba26fe81` (Q2/Q3 Z2
-electric adapter audit, RUNNING), `3e483972` (Q7 KP-bound adapter audit,
-RUNNING), `8271a64b` (Q1 cut-plaquette assembly strategy/audit, RUNNING), and
-Claude's `e4458430` Penrose tree-graph inequality proof job (RUNNING). Two
-near-collisions (grand-strategy audit, N3 job) both resolved via ledger notes
-with no wasted duplicate proof work.
+COMPLETE+HARVESTED+INTEGRATED), `3e483972` (Q7 KP-bound adapter audit,
+COMPLETE+HARVESTED+INTEGRATED), and `8271a64b` (Q1 cut-plaquette
+assembly strategy/audit, COMPLETE+HARVESTED+INTEGRATED as the abstract
+Wilson cut-factor kernel bridge). Still running/submitted at this checkpoint:
+`ba26fe81` (Q2/Q3 Z2 electric adapter audit), `141c0c07` (Q7
+support-counting strategy), `0f3aa68d` (Q11 semantic red-team), and Claude's
+`e4458430` Penrose tree-graph inequality proof job. Two near-collisions
+(grand-strategy audit, N3 job) both resolved via ledger notes with no wasted
+duplicate proof work.
 
 ## 4. Board state
 
 T0/T4/T5 done. T1 zero-cut baseline plus ensemble-identification tier is now
-closed after `e6e46e9f`; the remaining Q1 gap is the genuinely nontrivial
-cut-plaquette/shocking tier. T2 Hermitian bridge
+closed after `e6e46e9f`; `WilsonCutPlaquettePositivity.lean` now closes the
+abstract single-factor/finite-product cut-kernel bridge from `8271a64b`.
+The remaining Q1 gap is the genuinely nontrivial concrete cut-plaquette /
+shocking tier: build the cut-bearing lattice, prove the mirror-coordinate
+factor form, and identify it with the actual ensemble weight. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
 `cutKernel` block matrix and pairing/reflection-form bridge, while
@@ -213,6 +226,11 @@ temporarily blocked by in-progress T1 reflection edits. Claude resolved that in
 commit `1acf4f2`, and Codex reran
 `lake build PhysicsSM.Draft.NullEdge.GateYM` successfully afterward
 (8075 jobs, existing warnings plus the known Q6 draft placeholders).
+After the `8271a64b` Q1 cut-factor harvest, Codex reran
+`lake env lean PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquettePositivity.lean`,
+the targeted module build, the aggregator file check, and
+`lake build PhysicsSM.Draft.NullEdge.GateYM` successfully. The new Q1 lemmas
+have dependency footprint `[propext, Classical.choice, Quot.sound]`.
 
 ## 7. Honest negatives
 
@@ -220,8 +238,11 @@ T1 actual cut-plaquette RP-LINK remains OPEN. Aristotle `0a46d515`
 formalized the S3 counterexample showing the raw mirror holonomy is not
 generally conjugate to the original holonomy or its inverse, and `e6e46e9f`
 has now integrated the Route-B inverse convention for the zero-cut
-doubled-lattice tier. What remains open is the genuinely nondegenerate
-reflection geometry with shared cut variables and a mixture/PSD kernel proof.
+doubled-lattice tier. Aristotle `8271a64b` now supplies the abstract Wilson
+cut-factor PSD bridge, so the remaining open work is the genuinely
+nondegenerate reflection geometry with shared cut variables: a concrete
+cut-bearing lattice, a mirror-coordinate factorization theorem, and the proof
+that the actual cut-lattice ensemble weight has that factorized form.
 Q6's C3
 exponential-distance tail is NOT a consequence of bare KP - needs an
 explicit metric/coercivity extension (already designed into the freeze).
@@ -247,8 +268,8 @@ GateYM is not a formalization of their full Wilson-fermion theorem.
 1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
    package with the finite KP sum bound as an explicit hypothesis; do not infer
    volume-uniform KP from the small-torus oracle rows.
-2. Harvest `8271a64b` when it returns, then move Q1 toward the actual
-   cut-plaquette kernel target.
+2. Use the integrated `8271a64b` cut-factor bridge to build the concrete
+   cut-bearing lattice and mirror-coordinate ensemble-weight identification.
 3. Push Q2/Q3 from the new `TransferHilbertZ2Electric.lean` adapter toward a
    genuine Wilson block-weight/transfer-kernel instance; do not claim a
    physical transfer matrix prematurely.

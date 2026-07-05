@@ -32,6 +32,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionCompatibility
 import PhysicsSM.Draft.NullEdge.GateYM.HermitianFromRealQuadraticForm
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
@@ -348,7 +349,18 @@ corollary `doubled_wilson_ensembleWeight_reflectionForm_nonneg` states the
 RP inequality directly for that genuine ensemble weight. It is still not
 the nontrivial cut-plaquette RP-LINK theorem: `doubleLattice` has no cut
 links/plaquettes, and the shocking tier still needs an actual cut geometry
-and a `cutKernel_posSemidef_of_mixture`-style PSD assembly; axiom footprint
+and a mirror-coordinate proof that the genuine cut-lattice weight has the
+cut-factor form supplied by `WilsonCutPlaquettePositivity`; dependency footprint
+[propext, Classical.choice, Quot.sound]);
+`WilsonCutPlaquettePositivity` (YM3/Q1 cut kernel-algebra layer from Aristotle
+`8271a64b`: proves the real-to-complex PSD bridge `posSemidef_map_ofReal`,
+single Wilson cut-factor PSD `cutKernel_posSemidef_of_wilsonFactor`, and
+reflection-positivity wrappers `reflectionForm_nonneg_of_wilsonFactor` and
+`reflectionForm_nonneg_of_wilsonFactor_prod`. This closes the abstract
+single-factor and finite-product kernel bridge by viewing each cut factor as a
+principal submatrix of the Wilson one-plaquette kernel; it does not yet provide
+the concrete cut-plaquette lattice, mirror-coordinate equivalence, or genuine
+ensemble-weight identification. Dependency footprint
 [propext, Classical.choice, Quot.sound]);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
