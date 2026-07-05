@@ -17,8 +17,9 @@ space from `TransferHilbert.lean`.
 
 It also defines the four-term block electric-sector projection and proves that
 the projection lands in the requested block electric sector, fixes exactly the
-vectors in that sector, is idempotent, and preserves the finite OS range for
-plaquette-field block weights.
+vectors in that sector, is idempotent, is mutually orthogonal on distinct
+sectors, sums to the identity over the four Z2 sectors, and preserves the
+finite OS range for plaquette-field block weights.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -366,6 +367,59 @@ theorem blockElectricSectorProjection_idempotent {Lx Ly : Nat}
   blockElectricSectorProjection_eq_self_of_inBlockElectricSector hLx hLy ex ey
     (blockElectricSectorProjection hLx hLy ex ey psi)
     (blockElectricSectorProjection_inBlockElectricSector hLx hLy ex ey psi)
+
+/-- Projecting an already-sectorized block wavefunction onto a different
+block electric sector gives zero. -/
+theorem blockElectricSectorProjection_eq_zero_of_inBlockElectricSector_ne
+    {Lx Ly : Nat} (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey ex' ey' : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)
+    (hpsi : InBlockElectricSector hLx hLy ex ey psi)
+    (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    blockElectricSectorProjection hLx hLy ex' ey' psi = fun _ => 0 := by
+  funext i
+  unfold blockElectricSectorProjection
+  rw [hpsi BaseElectricShift.x i, hpsi BaseElectricShift.y i]
+  have hxy := hpsi BaseElectricShift.x
+    ((blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)).shiftConfig BaseElectricShift.y i)
+  rw [hxy, hpsi BaseElectricShift.y i]
+  cases ex <;> cases ey <;> cases ex' <;> cases ey' <;>
+    simp [FluxSectorZ2.TorusLinkField.z2Character, blockElectricCharacter] at hne ⊢
+
+/-- Block electric-sector projections are mutually annihilating on distinct
+sectors. -/
+theorem blockElectricSectorProjection_blockElectricSectorProjection_eq_zero_of_ne
+    {Lx Ly : Nat} (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey ex' ey' : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)
+    (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    blockElectricSectorProjection hLx hLy ex' ey'
+        (blockElectricSectorProjection hLx hLy ex ey psi) = fun _ => 0 :=
+  blockElectricSectorProjection_eq_zero_of_inBlockElectricSector_ne
+    hLx hLy ex ey ex' ey'
+    (blockElectricSectorProjection hLx hLy ex ey psi)
+    (blockElectricSectorProjection_inBlockElectricSector hLx hLy ex ey psi) hne
+
+/-- Every block wavefunction is the sum of its four block electric-sector
+projections. -/
+theorem sum_blockElectricSectorProjection_eq_self
+    {Lx Ly : Nat} (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) :
+    (fun i =>
+      ∑ ex : Bool, ∑ ey : Bool,
+        blockElectricSectorProjection hLx hLy ex ey psi i) = psi := by
+  funext i
+  simp [blockElectricSectorProjection,
+    FluxSectorZ2.TorusLinkField.z2Character]
+  ring
 
 /-- The block electric-sector projection preserves the finite OS range for
 plaquette-field Z2 block weights.

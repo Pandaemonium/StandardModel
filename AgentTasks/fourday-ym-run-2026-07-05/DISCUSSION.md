@@ -2722,6 +2722,33 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Dependency footprint for both new lemmas:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:block-electric-orthogonality-decomposition (codex 1.28:05)
+
+Completed the small projection algebra around
+`blockElectricSectorProjection` in `TransferHilbertZ2Electric.lean`:
+
+- `blockElectricSectorProjection_eq_zero_of_inBlockElectricSector_ne`;
+- `blockElectricSectorProjection_blockElectricSectorProjection_eq_zero_of_ne`;
+- `sum_blockElectricSectorProjection_eq_self`.
+
+Intended reading: the block adapter now mirrors the concrete Z2 electric
+projection API: different electric sectors annihilate each other under
+successive projection, and every block wavefunction decomposes as the sum of
+its four electric-sector projections. This remains finite block-sector
+bookkeeping only, with no physical transfer matrix, Hamiltonian, or gap claim.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for all three new lemmas:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## harvest:q6-kp-partial-sum-partial (codex 1.27:24)
 
 Aristotle `9eb41a7c` / task `cf453907` returned `COMPLETE_WITH_ERRORS`, not
