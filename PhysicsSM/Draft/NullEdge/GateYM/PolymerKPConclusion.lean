@@ -41,7 +41,8 @@ the finite set of root-adjacent children for later deletion, the
 `treeRootChildren_card_add_one_le` arity bound, `treeRootDeletedGraph`, which
 names the induced graph after deleting the root slot, `treeRootChildComponent`,
 which names the deleted-graph connected component rooted at a child slot, and
-`rhs_forest_expand`, which expands the RHS partial exponential into ordered
+`treeRootChildBlock`, which turns that component support into a finite block,
+and `rhs_forest_expand`, which expands the RHS partial exponential into ordered
 child tuples.  It also includes
 `factorial_mul_prod_factorial_le`, the arithmetic normalization for the future
 multinomial fiber bound.  The remaining gap is the rooted-tree deletion, block
@@ -674,6 +675,55 @@ lemma treeRootChildComponent_reachable {n : Nat} (T : SimpleGraph (Fin n))
   exact SimpleGraph.ConnectedComponent.reachable_of_mem_supp
     (treeRootChildComponent T r j hj)
     (treeRootChild_mem_component T r j hj) hv
+
+open Classical in
+/-- The finite vertex block underlying a root child's deleted-graph component.
+
+This packages the component support as a `Finset`, which is the shape needed
+for later block reindexing and finite fiber counts. -/
+noncomputable def treeRootChildBlock {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) (j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    Finset {x : Fin n // x ≠ r} :=
+  Finset.univ.filter (fun v => v ∈ (treeRootChildComponent T r j hj).supp)
+
+/-- Membership in a child block is membership in the corresponding component
+support. -/
+lemma mem_treeRootChildBlock {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) (j : Fin n) (hj : j ∈ treeRootChildren T r)
+    (v : {x : Fin n // x ≠ r}) :
+    v ∈ treeRootChildBlock T r j hj ↔
+      v ∈ (treeRootChildComponent T r j hj).supp := by
+  simp [treeRootChildBlock]
+
+/-- The root child belongs to its finite child block. -/
+lemma treeRootChild_mem_block {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    treeRootChildAsDeleted T r j hj ∈ treeRootChildBlock T r j hj := by
+  simpa [mem_treeRootChildBlock]
+    using treeRootChild_mem_component T r j hj
+
+/-- Every finite-block vertex is reachable from the root child inside the
+root-deleted graph. -/
+lemma treeRootChildBlock_reachable {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r)
+    {v : {x : Fin n // x ≠ r}}
+    (hv : v ∈ treeRootChildBlock T r j hj) :
+    (treeRootDeletedGraph T r).Reachable
+      (treeRootChildAsDeleted T r j hj) v := by
+  exact treeRootChildComponent_reachable T r j hj
+    ((mem_treeRootChildBlock T r j hj v).mp hv)
+
+/-- A root-child block is nonempty. -/
+lemma treeRootChildBlock_nonempty {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    (treeRootChildBlock T r j hj).Nonempty :=
+  ⟨treeRootChildAsDeleted T r j hj, treeRootChild_mem_block T r j hj⟩
+
+/-- A root-child block has positive cardinality. -/
+lemma treeRootChildBlock_card_pos {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    0 < (treeRootChildBlock T r j hj).card := by
+  exact Finset.card_pos.mpr (treeRootChildBlock_nonempty T r j hj)
 
 /-- Every root child in the tree subgraph carries a polymer in the KP
 neighborhood of the root polymer. -/
