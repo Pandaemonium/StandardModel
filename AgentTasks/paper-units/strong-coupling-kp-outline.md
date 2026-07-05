@@ -134,6 +134,13 @@ Q8 conditional clustering side:
   `supportTail_le_card_mul_energyBound_mul_exp`, and
   `hasExponentialClusteringSupport_of_uniform_anchor_tail_bound` package
   finite-support cardinality prefactors.
+- `supportTail_le_union_left`, `supportTail_le_union_right`,
+  `supportTail_sdiff_le`, and `supportTail_union_le_card_add_mul_bound`
+  package finite support-enlargement and two-support overcount estimates.
+- `supportTail_union_add_inter`, `supportTail_inter_le_left`,
+  `supportTail_inter_le_right`, `supportTail_sdiff_add_inter`, and
+  `supportTail_sdiff_add_inter_le` record exact overlap and
+  support-difference decompositions for finite observable supports.
 - Amplitude/rate weakening wrappers are proved for constant bookkeeping.
 - `connectedCorr_eq_zero_of_support_empty` records the empty-support boundary
   case: under the existing support-tail bridge hypothesis, an observable with
