@@ -157,9 +157,9 @@ Achievable deliverables:
   concrete observable expansion.
 - Current status: `ObservableSupportBridge.lean` now provides the thin
   `LocalPlaquetteObservable` / `ObservableSupportBridge` identity layer, plus
-  pass-through support-tail cardinality, empty-support zero-correlator, and
-  uniform-energy conditional clustering wrappers. The bridge remains
-  bookkeeping only.
+  pass-through support-tail cardinality, empty-support and zero-tail
+  zero-correlator wrappers, and uniform anchored-tail/uniform-energy
+  conditional clustering wrappers. The bridge remains bookkeeping only.
 
 Done when:
 

@@ -233,10 +233,10 @@ Implementation status as of 2026-07-05:
   conservative Q8 support-bookkeeping adapter requested by the audit verdict:
   a local observable exposes finite plaquette/polymer support, that support is
   identified with the abstract `LocalObservableSupportData` support, and the
-  existing support-tail/cardinality/empty-support/uniform-energy lemmas are
-  restated in observable-support terms. This is only an interface layer; decay,
-  concrete observable expansion, and volume-uniform KP estimates remain
-  explicit hypotheses.
+  existing support-tail/cardinality/empty-support/zero-tail/uniform anchored
+  tail/uniform-energy lemmas are restated in observable-support terms. This is
+  only an interface layer; decay, concrete observable expansion, and
+  volume-uniform KP estimates remain explicit hypotheses.
 - `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` now names the
   RP-F reflected-boundary-coupling slot as `ReflectedBoundaryCoupling`, defines
   plus/minus reflected projector blocks, specializes them to the temporal

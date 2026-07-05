@@ -107,6 +107,105 @@ theorem connectedCorr_eq_zero_of_observable_support_empty
       intro A C
       simpa [B.support_eq A] using hBridge A C)
 
+/-- Zero observable support-tail forces zero connected correlator under the
+existing explicit support-tail bridge hypothesis.
+
+This is a naming/reindexing corollary of
+`connectedCorr_eq_zero_of_supportTail_eq_zero`; it does not supply a decay
+estimate or a concrete observable expansion. -/
+theorem connectedCorr_eq_zero_of_observable_supportTail_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (B : ObservableSupportBridge Gamma Obs)
+    {A C : Obs}
+    (hTailZero :
+      supportTail M hdec D (B.observable.support A)
+        (B.supportData.separation A C) = 0)
+    (hBridge : forall A C : Obs,
+      ‖B.supportData.connectedCorr A C‖ <=
+        B.supportData.prefactor A C *
+          supportTail M hdec D (B.observable.support A)
+            (B.supportData.separation A C)) :
+    B.supportData.connectedCorr A C = 0 := by
+  exact ExponentialClustering.connectedCorr_eq_zero_of_supportTail_eq_zero
+    M hdec D B.supportData
+    (by simpa [B.support_eq A] using hTailZero)
+    (by
+      intro A C
+      simpa [B.support_eq A] using hBridge A C)
+
+/-- Pointwise zero anchored tails over the observable support force zero
+connected correlator under the existing support-tail bridge hypothesis.
+
+This keeps the pointwise tail-vanishing input explicit and only rewrites the
+support through `ObservableSupportBridge.support_eq`. -/
+theorem connectedCorr_eq_zero_of_forall_observable_tailContribution_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (B : ObservableSupportBridge Gamma Obs)
+    {A C : Obs}
+    (hTailZero : forall g0 : Gamma, g0 ∈ B.observable.support A ->
+      tailContribution M hdec D g0 (B.supportData.separation A C) = 0)
+    (hBridge : forall A C : Obs,
+      ‖B.supportData.connectedCorr A C‖ <=
+        B.supportData.prefactor A C *
+          supportTail M hdec D (B.observable.support A)
+            (B.supportData.separation A C)) :
+    B.supportData.connectedCorr A C = 0 := by
+  exact
+    ExponentialClustering.connectedCorr_eq_zero_of_forall_tailContribution_eq_zero
+      M hdec D B.supportData
+      (by
+        intro g0 hg0
+        exact hTailZero g0 (by simpa [B.support_eq A] using hg0))
+      (by
+        intro A C
+        simpa [B.support_eq A] using hBridge A C)
+
+/-- Uniform anchored-tail finite-support clustering stated with observable
+supports.
+
+This is a pass-through wrapper around
+`hasExponentialClusteringSupport_of_uniform_anchor_tail_bound`; the anchored
+tail estimate and observable-to-tail comparison remain explicit hypotheses. -/
+theorem hasExponentialClusteringSupport_of_uniform_anchor_tail_bound
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (B : ObservableSupportBridge Gamma Obs)
+    (m K : Real)
+    (hTail : forall A C : Obs, forall g0 : Gamma,
+      g0 ∈ B.observable.support A ->
+        tailContribution M hdec D g0 (B.supportData.separation A C) <=
+          K * Real.exp (-(m * B.supportData.separation A C)))
+    (hBridge : forall A C : Obs,
+      ‖B.supportData.connectedCorr A C‖ <=
+        B.supportData.prefactor A C *
+          supportTail M hdec D (B.observable.support A)
+            (B.supportData.separation A C)) :
+    HasExponentialClusteringSupport B.supportData
+      (fun A C =>
+        B.supportData.prefactor A C *
+          ((B.observable.support A).card : Real) * K) m := by
+  have hClust :
+      HasExponentialClusteringSupport B.supportData
+        (fun A C =>
+          B.supportData.prefactor A C *
+            ((B.supportData.support A).card : Real) * K) m := by
+    exact
+      ExponentialClustering.hasExponentialClusteringSupport_of_uniform_anchor_tail_bound
+        M hdec D B.supportData m K
+        (by
+          intro A C g0 hg0
+          exact hTail A C g0 (by simpa [B.support_eq A] using hg0))
+        (by
+          intro A C
+          simpa [B.support_eq A] using hBridge A C)
+  intro A C
+  simpa [B.support_eq A] using hClust A C
+
 /-- Uniform-energy finite-support clustering stated with observable supports.
 
 This is a pass-through wrapper around
