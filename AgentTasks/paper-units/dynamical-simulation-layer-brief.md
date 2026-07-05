@@ -240,12 +240,14 @@ Implementation status as of 2026-07-05:
   not the full Wilson slab operator.
 - `PhysicsSM/Draft/NullEdge/GateYM/ObservableSupportBridge.lean` adds the
   conservative Q8 support-bookkeeping adapter requested by the audit verdict:
-  a local observable exposes finite plaquette/polymer support, that support is
-  identified with the abstract `LocalObservableSupportData` support, and the
-  existing support-tail/cardinality/empty-support/zero-tail/uniform anchored
-  tail/uniform-energy lemmas are restated in observable-support terms. This is
-  only an interface layer; decay, concrete observable expansion, and
-  volume-uniform KP estimates remain explicit hypotheses.
+  a local observable exposes finite plaquette/polymer support, optionally
+  with a chosen support anchor, that support is identified with the abstract
+  `LocalObservableSupportData` support, and the existing
+  support-tail/cardinality/empty-support/zero-tail/uniform anchored
+  tail/uniform-energy lemmas are restated in observable-support terms. The
+  anchored variant adds only anchor-membership and anchor-tail-to-support-tail
+  wrappers. This is only an interface layer; decay, concrete observable
+  expansion, and volume-uniform KP estimates remain explicit hypotheses.
 - `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` now names the
   RP-F reflected-boundary-coupling slot as `ReflectedBoundaryCoupling`, defines
   plus/minus reflected projector blocks, specializes them to the temporal
@@ -274,7 +276,7 @@ now and what still needs a bridge.
 | `PhysicsSM/Draft/NullEdge/GateYM/ReflectionPositivityKernel.lean` and Wilson RP files | Positivity engine for reflection-positive weights | Kernel-checked PSD/reflection-form algebra and cut-plaquette Wilson factors; the connected Wilson slab remains open. |
 | `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` | RP-F finite reflection/projector scaffold | Kernel-checked reflection unitary, lifted projector PSD, named boundary-coupling slot, and temporal abstract block PSD/Hermitian facts; concrete Wilson boundary coupling remains open. |
 | `PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean` | Q7 polymer/support-counting surface | Kernel-checked finite support/combinatorial interfaces and one-plaquette Z2 fixture; no volume-uniform KP estimate. |
-| `PhysicsSM/Draft/NullEdge/GateYM/ExponentialClustering.lean` and `ObservableSupportBridge.lean` | Q8 observable support and clustering bridge | Kernel-checked conditional bridge from explicit tail hypotheses to clustering-style bounds; no concrete decay theorem. |
+| `PhysicsSM/Draft/NullEdge/GateYM/ExponentialClustering.lean` and `ObservableSupportBridge.lean` | Q8 observable support and clustering bridge | Kernel-checked conditional bridge from explicit tail hypotheses to clustering-style bounds, including optional anchored-support bookkeeping; no concrete decay theorem. |
 | `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` | Q6 corrected KP/convergence handoff | Draft layer with known proof handoffs; current bottleneck is the `pairSum_le_expBound` combinatorial estimate, now narrowed by checked `exists_canonical_root`, `rhs_forest_expand`, and `factorial_mul_prod_factorial_le` helper lemmas. |
 
 ## Status by claim type

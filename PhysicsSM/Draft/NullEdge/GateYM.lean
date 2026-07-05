@@ -646,11 +646,12 @@ singleton-support adapter.
 No concrete plaquette geometry, KP proof, or transfer-Hilbert statement is
 claimed); `ObservableSupportBridge` (YM4/T8 bookkeeping-only observable support
 adapter: `LocalPlaquetteObservable` exposes finite plaquette/polymer support,
-`ObservableSupportBridge` identifies that support with the abstract
-`LocalObservableSupportData` support, and pass-through lemmas restate
-support-tail/cardinality, empty-support zero-correlator, and uniform-energy
-conditional clustering wrappers in observable-support terms. No Q6 metric-tail
-theorem, Q7 support-count theorem, concrete observable expansion, or physical
-clustering theorem is claimed).
+`AnchoredLocalPlaquetteObservable` optionally records a chosen anchor in that
+support, `ObservableSupportBridge` identifies concrete support with the
+abstract `LocalObservableSupportData` support, and pass-through lemmas restate
+support-tail/cardinality, anchor-tail, empty-support zero-correlator, and
+uniform-energy conditional clustering wrappers in observable-support terms. No
+Q6 metric-tail theorem, Q7 support-count theorem, concrete observable
+expansion, or physical clustering theorem is claimed).
 Adding a new YM module? Import it here.
 -/

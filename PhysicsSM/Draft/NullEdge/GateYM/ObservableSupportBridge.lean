@@ -8,6 +8,8 @@ concrete-observable audit.  It is deliberately only bookkeeping:
 
 * `LocalPlaquetteObservable` exposes the finite plaquette/polymer support of a
   local observable.
+* `AnchoredLocalPlaquetteObservable` optionally adds a distinguished support
+  anchor for later concrete observable expansions.
 * `ObservableSupportBridge` records that this support is the same support used
   by the abstract `LocalObservableSupportData` clustering API.
 * The lemmas below rewrite the support tail through that identity and pass
@@ -39,6 +41,27 @@ coefficients, cluster-expansion weights, or a metric separation notion. -/
 structure LocalPlaquetteObservable (Gamma Obs : Type*) where
   support : Obs -> Finset Gamma
 
+/-- A local observable with finite plaquette/polymer support and a chosen
+support anchor.
+
+This is still only data.  The anchor is useful for later concrete observable
+expansions that first prove estimates anchor-by-anchor.  No decay or expansion
+coefficient is encoded here. -/
+structure AnchoredLocalPlaquetteObservable (Gamma Obs : Type*) where
+  support : Obs -> Finset Gamma
+  anchor : Obs -> Gamma
+  anchor_mem : forall A : Obs, anchor A ∈ support A
+
+namespace AnchoredLocalPlaquetteObservable
+
+/-- Forget the optional support anchor and retain only finite support data. -/
+def toLocalPlaquetteObservable
+    (O : AnchoredLocalPlaquetteObservable Gamma Obs) :
+    LocalPlaquetteObservable Gamma Obs where
+  support := O.support
+
+end AnchoredLocalPlaquetteObservable
+
 /-- Bookkeeping bridge from concrete observable supports to the abstract
 finite-support clustering API.
 
@@ -48,6 +71,17 @@ the concrete observable layer. -/
 structure ObservableSupportBridge (Gamma Obs : Type*) where
   supportData : LocalObservableSupportData Gamma Obs
   observable : LocalPlaquetteObservable Gamma Obs
+  support_eq : forall A : Obs, supportData.support A = observable.support A
+
+/-- Bookkeeping bridge for local observables that also carry a distinguished
+support anchor.
+
+This is the anchored variant of `ObservableSupportBridge`; it remains a pure
+support-identification layer and does not assert any concrete observable
+expansion or decay estimate. -/
+structure AnchoredObservableSupportBridge (Gamma Obs : Type*) where
+  supportData : LocalObservableSupportData Gamma Obs
+  observable : AnchoredLocalPlaquetteObservable Gamma Obs
   support_eq : forall A : Obs, supportData.support A = observable.support A
 
 namespace ObservableSupportBridge
@@ -249,6 +283,99 @@ theorem hasExponentialClusteringSupport_of_uniform_energy_bound
   simpa [B.support_eq A] using hClust A C
 
 end ObservableSupportBridge
+
+namespace AnchoredObservableSupportBridge
+
+/-- Forget the optional observable anchor and retain only the support bridge. -/
+def toObservableSupportBridge
+    (B : AnchoredObservableSupportBridge Gamma Obs) :
+    ObservableSupportBridge Gamma Obs where
+  supportData := B.supportData
+  observable :=
+    AnchoredLocalPlaquetteObservable.toLocalPlaquetteObservable B.observable
+  support_eq := B.support_eq
+
+omit [Fintype Gamma] in
+/-- The chosen observable anchor lies in the concrete observable support. -/
+theorem anchor_mem_observable_support
+    (B : AnchoredObservableSupportBridge Gamma Obs) (A : Obs) :
+    B.observable.anchor A ∈ B.observable.support A :=
+  B.observable.anchor_mem A
+
+omit [Fintype Gamma] in
+/-- The chosen observable anchor lies in the abstract support after rewriting
+through the support bridge. -/
+theorem anchor_mem_supportData
+    (B : AnchoredObservableSupportBridge Gamma Obs) (A : Obs) :
+    B.observable.anchor A ∈ B.supportData.support A := by
+  rw [B.support_eq A]
+  exact B.observable.anchor_mem A
+
+/-- The anchored tail contribution is bounded by the observable support tail.
+
+This is only the monotonicity of `supportTail` applied to the singleton
+containing the chosen anchor. -/
+theorem tailContribution_anchor_le_observable_supportTail
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (B : AnchoredObservableSupportBridge Gamma Obs)
+    (A : Obs) (R : Real) :
+    tailContribution M hdec D (B.observable.anchor A) R <=
+      supportTail M hdec D (B.observable.support A) R := by
+  have hsubset :
+      ({B.observable.anchor A} : Finset Gamma) ⊆ B.observable.support A := by
+    intro g hg
+    rw [Finset.mem_singleton] at hg
+    rw [hg]
+    exact B.observable.anchor_mem A
+  have hmono := ExponentialClustering.supportTail_mono M hdec D R hsubset
+  simpa [ExponentialClustering.supportTail_singleton] using hmono
+
+/-- The anchored tail contribution is bounded by the abstract support tail.
+
+This is the same support-tail monotonicity statement after applying
+`support_eq`. -/
+theorem tailContribution_anchor_le_supportDataTail
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (B : AnchoredObservableSupportBridge Gamma Obs)
+    (A : Obs) (R : Real) :
+    tailContribution M hdec D (B.observable.anchor A) R <=
+      supportTail M hdec D (B.supportData.support A) R := by
+  simpa [B.support_eq A] using
+    tailContribution_anchor_le_observable_supportTail M hdec D B A R
+
+/-- If the observable support tail vanishes, the chosen anchor contributes
+zero.  This is a support-bookkeeping edge case, not a decay theorem. -/
+theorem tailContribution_anchor_eq_zero_of_observable_supportTail_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (B : AnchoredObservableSupportBridge Gamma Obs)
+    {A : Obs} {R : Real}
+    (hTailZero :
+      supportTail M hdec D (B.observable.support A) R = 0) :
+    tailContribution M hdec D (B.observable.anchor A) R = 0 :=
+  ExponentialClustering.tailContribution_eq_zero_of_mem_of_supportTail_eq_zero
+    M hdec D hTailZero (B.observable.anchor_mem A)
+
+/-- If the abstract support tail vanishes, the chosen observable anchor
+contributes zero. -/
+theorem tailContribution_anchor_eq_zero_of_supportDataTail_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (B : AnchoredObservableSupportBridge Gamma Obs)
+    {A : Obs} {R : Real}
+    (hTailZero :
+      supportTail M hdec D (B.supportData.support A) R = 0) :
+    tailContribution M hdec D (B.observable.anchor A) R = 0 :=
+  ExponentialClustering.tailContribution_eq_zero_of_mem_of_supportTail_eq_zero
+    M hdec D hTailZero (anchor_mem_supportData B A)
+
+end AnchoredObservableSupportBridge
 
 end ObservableSupport
 end GateYM
