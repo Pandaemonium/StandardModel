@@ -161,6 +161,12 @@ Implementation status as of 2026-07-05:
   restated in observable-support terms. This is only an interface layer; decay,
   concrete observable expansion, and volume-uniform KP estimates remain
   explicit hypotheses.
+- `PhysicsSM/Draft/NullEdge/GateYM/FermionicReflection.lean` now names the
+  RP-F reflected-boundary-coupling slot as `ReflectedBoundaryCoupling`, defines
+  plus/minus reflected projector blocks, and proves those blocks PSD for any
+  instantiated coupling using the lifted Wilson-projector Gram lemmas. This
+  parks the exact open interface: the concrete Wilson boundary-coupling matrix
+  and the temporal reflection-hermiticity hypothesis still have to be supplied.
 
 ## One-step slab kernel
 
