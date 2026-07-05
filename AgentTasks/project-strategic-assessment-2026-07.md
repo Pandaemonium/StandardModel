@@ -42,18 +42,45 @@ This is a genuinely distinctive result - a kernel-checked derivation of one
 anomaly-free SM generation and its charges from the complex octonions. Nothing
 in the lattice-YM lane is comparable in novelty.
 
-## Lane (A) frontier (the real open questions)
+## Lane (A) is even more mature than a first pass suggests (self-correction)
 
-1. **Gauge GROUP emergence.** The charges and representations are derived, but
-   the GROUP `SU(3) x SU(2) x U(1)` is NOT yet obtained as a group.
-   `Octonion.ComplexLineAction` explicitly disclaims SU(3)/gauge-group claims;
-   `Octonion.G2AutomorphismStabilizerBridge` is the in-progress route
-   (`G2 = Aut(O)`, with `SU(3)` the stabilizer of the privileged imaginary
-   unit / complex structure). This is the single highest-value open theorem in
-   the lane: close `SU(3) = stabilizer of the complex structure in Aut(O)`.
+A first read of `Octonion.ComplexLineAction` (which disclaims SU(3) claims) led
+me to write that the gauge GROUP was not derived. That was WRONG - the
+disclaimer is file-scoped. The grounded check shows:
+
+- **SU(3) color group is DERIVED as a group isomorphism**, sorry-free, no
+  `n a t i v e _ d e c i d e`: `G2FixingE111GroupEquiv.fixingE111MulLinearEquivSU3
+  : MulEquiv FixingE111MulLinear su3Submonoid`, upgraded to
+  `OctonionMulAutFixingE111 ≃* su3Submonoid` in `G2AutomorphismSU3ActionPackage`
+  with `G2AutomorphismSU3Exactness`. This IS "SU(3) = stabilizer of the complex
+  structure in Aut(O)", as a kernel-checked group iso. A genuinely elegant,
+  distinctive result.
+- **The full `G_SM` group structure exists in the `Gauge/` lane** (46 files):
+  `Gauge/BlockEmbeddings` has `G_SM = (U(1) x SU(2) x SU(3)) / Z6 ≅ S(U(2) x
+  U(3))`, and `Gauge/GUTSquare` has the `G_SM -> SU(5)` GUT embedding square.
+
+So the repo already kernel-checks: the SU(3) color group from octonion
+automorphisms, one anomaly-free generation with derived charges, the `G_SM`
+group with its `Z6` quotient, and an `SU(5)` GUT square. This is a substantial,
+mature Standard-Model-structure formalization - materially more distinctive than
+anything in the lattice-YM lane.
+
+## Lane (A) frontier (the real open questions, corrected)
+
+1. **Electroweak `SU(2)` as a GROUP from the algebra.** SU(3) emerges as a group
+   iso from octonion automorphisms; the electroweak side is currently at the
+   representation/doublet + anomaly level (`Furey/ElectroweakCompletePackage`,
+   the four SU(2)_L doublet pairings, `ElectroweakAnomalyBridge`). The parallel
+   frontier: derive `SU(2)_L` (and the `U(1)_Y` normalization) as a group from
+   the same octonion/ideal structure, matching the SU(3) success.
 2. **Three generations.** One generation is complete; Furey 2018
    (arXiv:1805.06631) is cited and `ConjugateIdeal` scaffolds the route (three
-   generations from the conjugate ideal / triality). This is the second frontier.
+   generations from the conjugate ideal / triality). Second frontier.
+3. **Connect the three sub-lanes.** The octonion `SU(3)` (`Algebra/Octonion`),
+   the `G_SM` group + GUT square (`Gauge/`), and the Furey generation
+   (`Algebra/Furey`) are not yet stitched into one theorem chain
+   "octonions -> G_SM -> one anomaly-free generation". Closing that chain is a
+   high-value consolidation with no new hard mathematics, just interface work.
 
 ## The value ranking (novelty x tractability x leverage, minus continuum ceiling)
 
@@ -88,12 +115,18 @@ null-edge obstruction on the same spinor module.
 
 ## Concrete next steps (reprioritized)
 
-- **Lane (A), step 1 (gauge group):** state and prove
-  `SU(3) = stabilizer of the complex structure in Aut(O)` on the
-  `G2AutomorphismStabilizerBridge` foundation. Delicate trusted-lane work;
-  scope carefully, oracle-pin the group iso, consider Aristotle for the hard
-  isomorphism. HIGH VALUE.
-- **Lane (A), step 2 (three generations):** develop `ConjugateIdeal` toward the
+- **Lane (A), step 1 (consolidation chain) - TOP TRACTABLE ITEM.** The SU(3)
+  group iso (`Algebra/Octonion`), the `G_SM` group + GUT square (`Gauge/`), and
+  the Furey one-generation package (`Algebra/Furey`) are all kernel-checked but
+  NOT yet stitched into one theorem chain. Build the interface theorems linking
+  `octonionMulAutFixingE111 ≃* su3Submonoid` to the `Gauge/` `G_SM` `SU(3)`
+  factor and to `fureyRealizesOneGenerationPackage`, so a single statement reads
+  "the complex octonions yield `G_SM` acting on one anomaly-free generation".
+  No new hard mathematics - interface/`MulEquiv`-composition work - but it must
+  reconcile the `su3Submonoid` vs `Gauge/` SU(3) encodings (the one real risk).
+- **Lane (A), step 2 (electroweak group):** derive `SU(2)_L` as a group from the
+  ideal structure, matching the SU(3) success (currently doublet/anomaly level).
+- **Lane (A), step 3 (three generations):** develop `ConjugateIdeal` toward the
   three-ideal / triality generation structure (Furey 2018).
 - **Lane (B-NE):** keep as the spine; push the confinement-mass connection and
   begin the Clifford bridge to (A) (a shared-spinor-module statement).

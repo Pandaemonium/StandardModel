@@ -43,7 +43,7 @@ Suggested (not binding) first claims for you: T0 (preflight), then T1
 (Q1 RP-LINK closure - the flagship; the planning session already proved
 the master theorem `ReflectionPositivityKernel`, so T1 is instantiation,
 not invention), then T4/T5 when `d4a9bd1f` completes. If Codex has
-claimed something, take the next open task; the board rules.
+claimed something, take the next open task; the board rules./goal follow GOAL_PROMPT_CLAUDE.md for four days
 
 ## Multi-day conduct
 
