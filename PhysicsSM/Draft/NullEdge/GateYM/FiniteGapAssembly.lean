@@ -178,6 +178,40 @@ theorem log_localSpectralRatio_lt_zero (P : FiniteGapPrereq H) :
   exact (Real.log_neg_iff P.localSpectralRatio_pos).2
     P.localSpectralRatio_lt_one
 
+/-- The local/glueball spectral ratio is nonzero. -/
+theorem localSpectralRatio_ne_zero (P : FiniteGapPrereq H) :
+    P.localSpectralRatio ≠ 0 :=
+  ne_of_gt P.localSpectralRatio_pos
+
+/-- The strict spectral separation hypothesis keeps the local/glueball
+spectral ratio away from one. -/
+theorem localSpectralRatio_ne_one (P : FiniteGapPrereq H) :
+    P.localSpectralRatio ≠ 1 :=
+  ne_of_lt P.localSpectralRatio_lt_one
+
+/-- The vacuum/local inverse spectral ratio is nonzero. -/
+theorem lambda0_div_lambdaLocal_ne_zero (P : FiniteGapPrereq H) :
+    P.lambda0 / P.lambdaLocal ≠ 0 :=
+  ne_of_gt P.lambda0_div_lambdaLocal_pos
+
+/-- The strict spectral separation hypothesis keeps the inverse spectral ratio
+away from one. -/
+theorem lambda0_div_lambdaLocal_ne_one (P : FiniteGapPrereq H) :
+    P.lambda0 / P.lambdaLocal ≠ 1 :=
+  ne_of_gt P.one_lt_lambda0_div_lambdaLocal
+
+/-- The local and vacuum eigenvalue slots are not equal in the local/vacuum
+order. -/
+theorem lambdaLocal_ne_lambda0 (P : FiniteGapPrereq H) :
+    P.lambdaLocal ≠ P.lambda0 :=
+  ne_of_lt P.lambdaLocal_lt_lambda0
+
+/-- The vacuum and local eigenvalue slots are not equal in the vacuum/local
+order. -/
+theorem lambda0_ne_lambdaLocal (P : FiniteGapPrereq H) :
+    P.lambda0 ≠ P.lambdaLocal :=
+  ne_of_gt P.lambdaLocal_lt_lambda0
+
 /-- The exponential rate attached to the packaged gap is positive. -/
 theorem exp_localGap_pos (P : FiniteGapPrereq H) :
     0 < Real.exp P.localGap :=
@@ -248,6 +282,11 @@ theorem localGap_pos (P : FiniteGapPrereq H) : 0 < P.localGap :=
     simpa [localGap] using
       FluxSectorZ2.localGlueballGap_pos
         P.lambda0_pos P.lambdaLocal_pos P.lambdaLocal_lt_lambda0
+
+/-- The packaged local/glueball gap is nonzero. -/
+theorem localGap_ne_zero (P : FiniteGapPrereq H) :
+    P.localGap ≠ 0 :=
+  ne_of_gt P.localGap_pos
 
 end FiniteGapPrereq
 
