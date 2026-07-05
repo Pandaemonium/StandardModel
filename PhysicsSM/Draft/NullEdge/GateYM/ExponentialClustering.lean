@@ -237,6 +237,32 @@ theorem supportTail_nonneg
   exact Finset.sum_nonneg (fun g0 _ =>
     tailContribution_nonneg M hdec D g0 R)
 
+/-- A finite support tail is zero exactly when every anchored tail in the
+support is zero. -/
+theorem supportTail_eq_zero_iff_forall_tailContribution_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S : Finset Gamma) (R : Real) :
+    supportTail M hdec D S R = 0 ↔
+      forall g0 : Gamma, g0 ∈ S ->
+        tailContribution M hdec D g0 R = 0 := by
+  unfold supportTail
+  exact Finset.sum_eq_zero_iff_of_nonneg
+    (fun g0 _hg0 => tailContribution_nonneg M hdec D g0 R)
+
+/-- If a finite support tail vanishes, every anchored tail in that support
+vanishes. -/
+theorem tailContribution_eq_zero_of_mem_of_supportTail_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    {S : Finset Gamma} {R : Real} {g0 : Gamma}
+    (hTail : supportTail M hdec D S R = 0) (hg0 : g0 ∈ S) :
+    tailContribution M hdec D g0 R = 0 :=
+  (supportTail_eq_zero_iff_forall_tailContribution_eq_zero
+    M hdec D S R).1 hTail g0 hg0
+
 /-- Adding a fresh support polymer splits off its anchored tail. -/
 theorem supportTail_insert [DecidableEq Gamma]
     (M : MetricPolymerSystem Gamma)
