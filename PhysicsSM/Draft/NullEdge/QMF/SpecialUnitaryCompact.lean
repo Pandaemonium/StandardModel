@@ -114,4 +114,41 @@ instance specialUnitaryGroup_compactSpace :
     CompactSpace (Matrix.specialUnitaryGroup (Fin n) ℂ) :=
   isCompact_iff_compactSpace.mp specialUnitaryGroup_isCompact
 
+/-! ## `U(n)`, `SU(n)` are (compact) topological groups
+
+`ContinuousMul` and `ContinuousInv` for the unitary group are already in Mathlib
+(`Topology.Algebra.Star.Unitary`); `IsTopologicalGroup` then follows. For `SU(n)`
+multiplication is inherited but inversion needs the identity `A⁻¹ = star A`
+(`Matrix.star_eq_inv`), which is continuous. With the compactness above, `SU(n)`
+is a COMPACT topological group - all that is needed for a (bi-invariant, by
+`CompactHaarInvariance`) Haar measure to exist on the physical gauge group. -/
+
+/-- `U(n)` is a topological group (from Mathlib's continuity of `*` and `star`). -/
+instance unitaryGroup_isTopologicalGroup :
+    IsTopologicalGroup (Matrix.unitaryGroup (Fin n) ℂ) := ⟨⟩
+
+/-- Inversion on `SU(n)` is continuous: `A⁻¹ = star A`, and `star` is continuous
+on matrices, so the map into the ambient matrix space is `star ∘ (coe)`. -/
+instance specialUnitaryGroup_continuousInv :
+    ContinuousInv (Matrix.specialUnitaryGroup (Fin n) ℂ) where
+  continuous_inv := by
+    apply continuous_induced_rng.2
+    have heq : (fun s : Matrix.specialUnitaryGroup (Fin n) ℂ =>
+          ((s⁻¹ : Matrix.specialUnitaryGroup (Fin n) ℂ) : Matrix (Fin n) (Fin n) ℂ))
+        = fun s : Matrix.specialUnitaryGroup (Fin n) ℂ =>
+          star ((s : Matrix (Fin n) (Fin n) ℂ)) := by
+      funext s
+      rw [← Matrix.star_eq_inv]
+      exact Matrix.specialUnitaryGroup.coe_star s
+    show Continuous fun s : Matrix.specialUnitaryGroup (Fin n) ℂ =>
+      ((s⁻¹ : Matrix.specialUnitaryGroup (Fin n) ℂ) : Matrix (Fin n) (Fin n) ℂ)
+    rw [heq]
+    exact continuous_star.comp continuous_induced_dom
+
+/-- **`SU(n)` is a (compact) topological group** - the physical Yang-Mills gauge
+group, with the compactness proved above and inversion continuity from
+`A⁻¹ = star A`. -/
+instance specialUnitaryGroup_isTopologicalGroup :
+    IsTopologicalGroup (Matrix.specialUnitaryGroup (Fin n) ℂ) := ⟨⟩
+
 end PhysicsSM.Draft.NullEdge.QMF.SpecialUnitaryCompact
