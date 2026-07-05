@@ -1430,6 +1430,14 @@ theorem onePlaquettePolymer_eq
     cases X.label ⟨PUnit.unit, hpX⟩
     rfl
 
+/-- Every polymer in the one-plaquette fixture has support-cardinality one. -/
+theorem onePlaquette_support_card_eq_one
+    (X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel) :
+    X.support.card = 1 := by
+  rw [onePlaquette_support_eq_univ X]
+  simp
+
 /-- The closed touch-neighborhood of the unique plaquette has cardinality one. -/
 theorem onePlaquette_closedTouchNeighborhood_card_le_one (p : PUnit) :
     (closedTouchNeighborhood onePlaquetteAdj ({p} : Finset PUnit)).card <= 1 := by
@@ -1464,6 +1472,35 @@ theorem onePlaquetteZ2_anchor_sum
     exfalso
     apply hnot
     simp [Y0, onePlaquettePolymer]
+
+/-- The one-plaquette Z2 area slice is supported only in area one. -/
+theorem onePlaquetteZ2_anchor_area_sum
+    (beta alpha : Real) (q : PUnit) (k : Nat) :
+    anchoredPlaquettePolymerAreaSum onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha q k =
+      if k = 1 then |Real.tanh beta| * Real.exp alpha else 0 := by
+  by_cases hk : k = 1
+  · subst k
+    let Y0 := onePlaquettePolymer
+    unfold anchoredPlaquettePolymerAreaSum
+    rw [Finset.sum_eq_single Y0]
+    · simp [Y0, onePlaquettePolymer, PlaquettePolymer.coeffProduct,
+        z2GammaAbs]
+    · intro Y _hY hne
+      exact False.elim (hne (onePlaquettePolymer_eq Y))
+    · intro hnot
+      exfalso
+      apply hnot
+      simp [Y0, onePlaquettePolymer]
+  · unfold anchoredPlaquettePolymerAreaSum
+    rw [if_neg hk]
+    apply Finset.sum_eq_zero
+    intro Y hY
+    rcases (Finset.mem_filter.1 hY).2 with ⟨_hq, hcard⟩
+    have hcard_one : Y.support.card = 1 :=
+      onePlaquette_support_card_eq_one Y
+    rw [hcard] at hcard_one
+    exact False.elim (hk hcard_one)
 
 /-- In the one-plaquette Z2 fixture, the explicit rooted KP sum has exactly one
 term. -/
@@ -1514,6 +1551,41 @@ theorem onePlaquetteZ2_plaquetteKPBound
       (fun p => onePlaquette_closedTouchNeighborhood_card_le_one p)
       (fun q => by
         rw [onePlaquetteZ2_anchor_sum beta alpha q])
+      hsmall'
+
+/-- Concrete one-plaquette Z2 KP fixture through the area-slice adapter.
+
+This is propositionally the same scalar smallness statement as
+`onePlaquetteZ2_plaquetteKPBound`, but it exercises the support-cardinality
+slice route used by later support-counting estimates. -/
+theorem onePlaquetteZ2_plaquetteKPBound_areaSlice
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| * Real.exp alpha <= alpha) :
+    PlaquetteKPBound onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha := by
+  let B : Nat -> Real :=
+    fun k => if k = 1 then |Real.tanh beta| * Real.exp alpha else 0
+  have hBsum :
+      (Finset.range (Fintype.card PUnit + 1)).sum B =
+        |Real.tanh beta| * Real.exp alpha := by
+    simp [B]
+  have hBsum_nonneg :
+      0 <= (Finset.range (Fintype.card PUnit + 1)).sum B := by
+    rw [hBsum]
+    exact mul_nonneg (abs_nonneg _) (le_of_lt (Real.exp_pos _))
+  have hsmall' :
+      ((1 : Nat) : Real) *
+          (Finset.range (Fintype.card PUnit + 1)).sum B <= alpha := by
+    rw [hBsum]
+    simpa using hsmall
+  exact
+    plaquetteKPBound_of_singletonBound_areaBounds onePlaquetteAdj
+      onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+      (z2GammaAbs beta) (z2GammaAbs_nonneg beta) alpha halpha
+      1 B hBsum_nonneg
+      (fun p => onePlaquette_closedTouchNeighborhood_card_le_one p)
+      (fun q k _hk => by
+        rw [onePlaquetteZ2_anchor_area_sum beta alpha q k])
       hsmall'
 
 /-- A more usable one-plaquette smallness threshold: bounding the Z2

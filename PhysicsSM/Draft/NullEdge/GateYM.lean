@@ -564,7 +564,8 @@ finite plaquette KP sum `plaquetteKPSum`, the bound predicate
 explicit bound to `PolymerKPCriterion.KPCondition`, plus the bundled handoff
 theorem `kpCondition_and_selfIncompatible_of_plaquetteKPBound`; the
 one-plaquette Z2 fixture has a direct rooted-sum formula
-`onePlaquetteZ2_plaquetteKPSum` and proves a concrete finite
+`onePlaquetteZ2_plaquetteKPSum`, an area-slice formula
+`onePlaquetteZ2_anchor_area_sum`, and proves a concrete finite
 `PlaquetteKPBound` under the scalar condition
 `|tanh beta| * exp alpha <= alpha`, with beta-zero sum and KP corollaries and wrappers
 `onePlaquetteZ2_kpCondition` and
