@@ -159,6 +159,22 @@ structure LocalObservableSupportData (Gamma Obs : Type*) where
   prefactor : Obs -> Obs -> Real
   prefactor_nonneg : forall A B, 0 <= prefactor A B
 
+namespace LocalObservableData
+
+omit [Fintype Gamma] in
+/-- View single-anchor observable data as finite-support observable data with
+singleton support. -/
+def toSupportData (L : LocalObservableData Gamma Obs) :
+    LocalObservableSupportData Gamma Obs where
+  support := fun A => {L.anchor A}
+  separation := L.separation
+  separation_nonneg := L.separation_nonneg
+  connectedCorr := L.connectedCorr
+  prefactor := L.prefactor
+  prefactor_nonneg := L.prefactor_nonneg
+
+end LocalObservableData
+
 /-- The support-set tail: the metric-tail contribution summed over every
 support polymer of the source observable. -/
 def supportTail
@@ -187,6 +203,17 @@ theorem supportTail_singleton
     supportTail M hdec D ({g0} : Finset Gamma) R =
       tailContribution M hdec D g0 R := by
   simp [supportTail]
+
+/-- The finite-support tail for a single-anchor observable is the original
+anchored tail contribution. -/
+theorem supportTail_toSupportData
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (L : LocalObservableData Gamma Obs) (A : Obs) (R : Real) :
+    supportTail M hdec D ((LocalObservableData.toSupportData L).support A) R =
+      tailContribution M hdec D (L.anchor A) R := by
+  simp [LocalObservableData.toSupportData, supportTail_singleton]
 
 /-- Each anchored tail contribution is nonnegative term-by-term. -/
 theorem tailContribution_nonneg
@@ -415,6 +442,17 @@ theorem hasExponentialClusteringSupport_of_rate_le
     exact Real.exp_le_exp.mpr (neg_le_neg hMul)
   exact (hClust A B).trans
     (mul_le_mul_of_nonneg_left hExp (hAmpNonneg A B))
+
+omit [Fintype Gamma] in
+/-- The finite-support clustering predicate reduces definitionally to the
+single-anchor predicate for singleton-support data. -/
+theorem hasExponentialClusteringSupport_toSupportData_iff
+    (L : LocalObservableData Gamma Obs)
+    (amplitude : Obs -> Obs -> Real) (m : Real) :
+    HasExponentialClusteringSupport (LocalObservableData.toSupportData L)
+        amplitude m ↔
+      HasExponentialClustering L amplitude m := by
+  rfl
 
 /-- Support-set observable-level exponential clustering from the same explicit
 Q6-style tail bound and an observable-to-cluster bridge summed over the source
