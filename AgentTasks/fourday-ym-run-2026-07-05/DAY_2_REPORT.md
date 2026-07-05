@@ -35,7 +35,9 @@ intentionally untouched because Q6 has not landed.
   under the existing support-tail bridge hypothesis. Later support-tail algebra
   adds union projection, support-difference, inclusion-exclusion, intersection,
   exact difference-split lemmas, and subtraction-form union/difference
-  identities for finite support bookkeeping.
+  identities for finite support bookkeeping. The zero-tail edge case is also
+  exposed by `supportTail_eq_zero_iff_forall_tailContribution_eq_zero` and
+  `tailContribution_eq_zero_of_mem_of_supportTail_eq_zero`.
 - `StrongCouplingPolymerMap.lean`: closed-neighborhood basics, area-sliced
   anchored sums, nonnegativity and impossible-area range cleanup, positive-area
   adapter variants, and one-plaquette Z2 area-slice/positive-area fixtures

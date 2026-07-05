@@ -149,6 +149,9 @@ Q8 conditional clustering side:
   case: under the existing support-tail bridge hypothesis, an observable with
   empty source support has vanishing connected correlator. This is
   support-interface bookkeeping, not a concrete observable expansion theorem.
+- `supportTail_eq_zero_iff_forall_tailContribution_eq_zero` and
+  `tailContribution_eq_zero_of_mem_of_supportTail_eq_zero` expose the finite
+  nonnegative-sum zero-tail edge case.
 
 ## Active Aristotle Jobs
 
