@@ -39,6 +39,30 @@ substantially corrected this thesis. The honest current status:
   projection (so the octonion ideal genuinely enters the mass). If it factors,
   that KERNEL-FALSIFIES the strong "one spinor, two structures" claim.
 
+### Source-grounded refinements (full-repo audit, `...-REDTEAM-audit.md`)
+
+A second audit that read the ACTUAL Lean source (not the prose) confirmed all of
+the above and added two corrections the blind audit could not see:
+
+- **1b is one lemma short of "the fundamental rep".** Only INVARIANCE + the
+  weight signature are proved; IRREDUCIBILITY (no proper nonzero invariant
+  subspace of `tripletSpan`) is NOT. So "the color triplet IS the fundamental
+  `3`" overstates it. This is TRACTABLE (the ladders connect all of `v4,v5,v6`)
+  and is the cheapest genuine strengthening - `tripletSpan_isIrreducible`.
+- **The Furey generation is only PARTIALLY octonion-derived.** The left-doublet
+  charges are derived from `Q_op`; but anomaly cancellation is a fact about a
+  HARDCODED numeric SM table, and the right-handed sector is "conventional
+  rather than algebraically derived" (`J*` is a standalone `ℂ⁸` clone with
+  charges set by fiat to `-qJ`). So "anomaly-free generation FROM octonions"
+  overstates it.
+
+**Highest-value next theorem (both audits' recommendation, refined):**
+`charge_grading_mass_compatible` - simultaneously diagonalize the octonion charge
+`Q_op` and the null-edge mass on `J (x) CSpinor`. It is the FIRST statement that
+forces both lanes onto ONE Lean object (which every current "bridge" avoids),
+directly attacking B0's missing `J` and B1(ii)'s vacuity; DEEP, and it must
+reference the SPECIFIC `Q_op` eigenvalues or it collapses back to vacuity.
+
 The sections below are the ORIGINAL thesis; read them through the corrections
 above.
 

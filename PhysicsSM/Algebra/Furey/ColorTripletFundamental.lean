@@ -37,10 +37,22 @@ here from the orbit structure.)
 * `colorTripletSpan_su3_invariant` (**headline**): `span{v4,v5,v6}` is invariant
   under ALL eight `SU(3)` generators (the two Cartan `H23, H13` and the six
   ladders `T_ij`). A three-dimensional, `SU(3)`-invariant, weight-complete
-  subrepresentation with the fundamental weights: the fundamental rep `3`.
+  subrepresentation with the fundamental weights.
 
-Via 1a the acting `SU(3)` is Mathlib's `Matrix.specialUnitaryGroup (Fin 3) ℂ`,
-so this is the standard fundamental rep realized on the complex-octonion ideal.
+Via 1a the acting `SU(3)` is Mathlib's `Matrix.specialUnitaryGroup (Fin 3) ℂ`.
+
+## Honesty note (red-team audit, 2026-07-05): irreducibility is NOT yet proved
+
+What is proved is INVARIANCE plus the traceless/distinct fundamental weight
+signature. That does NOT by itself prove the representation is IRREDUCIBLE - i.e.
+that it is THE fundamental rep `3` as opposed to some other 3-dimensional
+`SU(3)`-representation with those weights. The identification "it IS the
+fundamental `3`" is one lemma short: it needs a proof that `tripletSpan` has no
+proper nonzero `SU(3)`-invariant subspace. That lemma is TRACTABLE (the six
+ladders connect all of `v4, v5, v6`, so any invariant subspace containing one
+weight vector contains all three), but it is NOT in this module yet. Until then,
+claim only "an `SU(3)`-invariant 3-dim subspace carrying the fundamental
+weights", not "the fundamental representation".
 
 Trusted, kernel-checked, `s o r r y`-free. Prerequisites: `ColorRepresentation`,
 `OperatorAlgebra`. Source: Furey color `SU(3)` on the complex-octonion ideal.

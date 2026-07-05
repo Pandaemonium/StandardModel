@@ -20,13 +20,19 @@ The four bundled facts:
    `Octonion.G2FixingE111SpecialUnitaryGroup`): the octonion automorphisms
    fixing the complex structure form exactly `Matrix.specialUnitaryGroup
    (Fin 3) ℂ`.
-2. **The color triplet is the `SU(3)` fundamental rep** (step 1b,
+2. **The color triplet carries the `SU(3)` fundamental weights** (step 1b,
    `Furey/ColorTripletFundamental`): `span{v4,v5,v6}` is invariant under all
-   eight `SU(3)` generators.
-3. **One anomaly-free Standard Model generation** (Furey,
-   `FureyRealizesOneGeneration`): the complex-octonion minimal left ideal
-   realizes one generation with derived Gell-Mann-Nishijima charges, all
-   anomalies cancelling.
+   eight `SU(3)` generators, with the traceless distinct fundamental weights.
+   (Audit note: IRREDUCIBILITY is not yet proved, so this is "an invariant
+   3-dim subspace with the fundamental weights", one lemma short of "IS the
+   fundamental `3`".)
+3. **One SM generation, partially octonion-derived** (Furey,
+   `FureyRealizesOneGeneration`): the LEFT-doublet Gell-Mann-Nishijima charges
+   are derived from the octonion operators. (Audit note: the anomaly
+   cancellation is proved on a hardcoded numeric SM table, and the right-handed
+   sector is admitted "conventional rather than algebraically derived"; so
+   "anomaly-free generation FROM octonions" overstates it - the derivation is
+   the left-doublet charges, not the full anomaly structure.)
 4. **Null-edge mass = octonion spinor Plucker mass** (bridge B0,
    `GateI1/PluckerUnificationBridge`): the null-edge Minkowski mass of a
    two-null-edge spinor momentum equals the octonion-lane spinor Plucker mass -
