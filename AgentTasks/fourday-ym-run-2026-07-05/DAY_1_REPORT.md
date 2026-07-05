@@ -59,7 +59,13 @@ harvested as soon as they returned.
   `indexedCutPlaquette_ensemble_reflectionPositive`, and
   `factorized_mul_indexedCutPlaquette_ensemble_reflectionPositive`. This still
   does not close full RP-LINK because the copies are not geometrically distinct
-  plaquettes in a larger cut-bearing lattice.
+  plaquettes in a larger cut-bearing lattice. The abstract follow-up
+  `WilsonCutPlaquetteEnsemble.lean` then proved
+  `weight_mirrorConfig_eq_wilsonKernel_prod_of_hol_factorization`,
+  `reflectionPositive_of_hol_factorization`, and
+  `factorized_mul_reflectionPositive_of_hol_factorization`, so any future
+  concrete finite cut-plaquette family only has to supply the mirror-coordinate
+  holonomy factorization.
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -172,7 +178,8 @@ singleton one-plaquette `PlaquetteEnsemble.weight` RP statement. The remaining
 Q1 gap is the genuinely nontrivial finite cut-ensemble / shocking tier:
 instantiate the mixed-product theorem with concrete finite plaquette families
 with geometrically distinct cut plaquettes and/or the abstract
-reflection-family theorem. T2 Hermitian bridge
+reflection-family theorem; the algebraic ensemble bridge from holonomy
+factorization to RP is now packaged in `WilsonCutPlaquetteEnsemble.lean`. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
 `cutKernel` block matrix and pairing/reflection-form bridge, while

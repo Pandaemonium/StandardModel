@@ -33,6 +33,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.HermitianFromRealQuadraticForm
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteExample
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
@@ -364,6 +365,18 @@ cut factors. This closes the abstract mixed product kernel bridge by viewing
 each cut factor as a principal submatrix of the Wilson one-plaquette kernel; it
 does not by itself provide a concrete lattice ensemble. Dependency footprint
 [propext, Classical.choice, Quot.sound]);
+`WilsonCutPlaquetteEnsemble` (YM3/Q1 abstract ensemble bridge: if a finite
+plaquette family has mirror-coordinate holonomies of the symmetric read-off
+form `e k c a * (e k c b)^-1`, then its genuine Wilson
+`PlaquetteEnsemble.weight` equals the finite product of Wilson cut kernels
+(`weight_mirrorConfig_eq_wilsonKernel_prod_of_hol_factorization`) and is
+reflection positive by the cut-kernel product theorem
+(`reflectionPositive_of_hol_factorization`), optionally with arbitrary
+factorized positive/mirror side weights
+(`factorized_mul_reflectionPositive_of_hol_factorization`). This is a reusable
+conditional assembly bridge; it still leaves the concrete mirror-coordinate
+equivalence and holonomy factorization for a larger cut-bearing lattice to be
+proved);
 `ReflectionCutPlaquetteExample` (YM3/Q1 concrete cut-plaquette geometry:
 defines a four-edge lattice with one positive edge, one mirror negative edge,
 and two cut edges; proves `cutPlaquette_hol_mirrorConfig` and

@@ -156,6 +156,20 @@ Wilson cut-factor kernel bridge:
   Schur/product closure, and factorized positive/mirror contributions can be
   multiplied in. It does not construct a concrete finite cut-bearing ensemble.
 
+Wilson cut-plaquette ensemble bridge:
+
+- `PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquetteEnsemble.lean`
+  - `weight_mirrorConfig_eq_wilsonKernel_prod_of_hol_factorization`
+  - `reflectionPositive_of_hol_factorization`
+  - `factorized_mul_reflectionPositive_of_hol_factorization`
+  This is the conditional assembly bridge from geometry to RP-KER: once a
+  finite plaquette family has mirror-coordinate holonomies of the form
+  `e k c a * (e k c b)^-1`, its genuine Wilson
+  `PlaquetteEnsemble.weight` is the finite product of Wilson cut kernels and
+  is reflection positive, optionally with factorized side weights. It does not
+  construct the mirror-coordinate equivalence or prove the holonomy
+  factorization for a large cut-bearing lattice.
+
 Minimal concrete cut-plaquette example:
 
 - `PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteExample.lean`

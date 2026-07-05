@@ -2314,3 +2314,26 @@ Scope boundary: this is still a repeated-copy theorem on the minimal four-edge
 cut lattice. It advances the finite product assembly surface, but it is not a
 larger cut-bearing lattice with geometrically distinct cut plaquettes and does
 not close full RP-LINK.
+
+## note:t1-abstract-cut-plaquette-ensemble-bridge
+
+Codex 1.23:25:
+
+Added `PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquetteEnsemble.lean`.
+
+The new bridge factors Q1 into a clean conditional theorem:
+
+- geometry must prove
+  `(P k).hol (config a c b) = e k c a * (e k c b)^-1`;
+- then `weight_mirrorConfig_eq_wilsonKernel_prod_of_hol_factorization`
+  identifies the genuine Wilson `PlaquetteEnsemble.weight` with the finite
+  product of Wilson cut kernels;
+- `reflectionPositive_of_hol_factorization` packages RP for that genuine
+  ensemble weight;
+- `factorized_mul_reflectionPositive_of_hol_factorization` adds arbitrary
+  factorized positive/mirror side weights.
+
+Scope boundary: this is not yet the large cut-bearing lattice. It removes the
+remaining kernel/ensemble algebra from that future geometry task, leaving the
+mirror-coordinate equivalence and holonomy factorization as the concrete Q1
+work.
