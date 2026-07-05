@@ -7,6 +7,22 @@ finite-combinatorics development (comparable in scope to the already-integrated
 Penrose tree-graph inequality in `TreeGraphInequality.lean`), NOT a Mathlib
 lookup or a one-liner.
 
+## Included context
+
+This submission package includes:
+
+- `AgentTasks/context-packs/ym-q6-pairsum-exp-bound-20260705-20260705-080917.md`
+  (fresh context pack; the doc-index refresh immediately before generation
+  timed out, so use the included source files as the source of truth);
+- `AgentTasks/fourday-ym-run-2026-07-05/Q6_TOUCHONLY_EXP_BOUND_NARROWING.md`
+  (the verified narrowing note from the previous Aristotle harvest);
+- `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` as the target.
+
+Start with the narrow check
+`lake env lean PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean`.
+If a broader build is slow, skip it and return the best verified target-file
+progress rather than spending the session on build latency.
+
 ## The target (exact current statement)
 
 ```lean
