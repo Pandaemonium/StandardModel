@@ -520,6 +520,35 @@ theorem hasExponentialClusteringSupport_of_supportTail_bound
         Real.exp (-(m * L.separation A B)) := by
       rw [mul_assoc]
 
+/-- If the source observable has empty polymer support, the support-tail bridge
+forces its connected correlator to vanish.
+
+This is a bookkeeping edge case for the finite-support API.  It uses only the
+explicit bridge hypothesis and the definition of `supportTail`; it does not use
+or claim the Q6 metric-tail theorem. -/
+theorem connectedCorr_eq_zero_of_support_empty
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (L : LocalObservableSupportData Gamma Obs)
+    {A B : Obs}
+    (hSupport : L.support A = ∅)
+    (hBridge : forall A B : Obs,
+      ‖L.connectedCorr A B‖ <=
+        L.prefactor A B *
+          supportTail M hdec D (L.support A) (L.separation A B)) :
+    L.connectedCorr A B = 0 := by
+  have hNorm :
+      ‖L.connectedCorr A B‖ <= 0 := by
+    calc
+      ‖L.connectedCorr A B‖
+          <= L.prefactor A B *
+              supportTail M hdec D (L.support A) (L.separation A B) :=
+            hBridge A B
+      _ = 0 := by
+            rw [hSupport, supportTail_empty, mul_zero]
+  exact norm_eq_zero.mp (le_antisymm hNorm (norm_nonneg _))
+
 /-- Finite-support exponential clustering from a uniform per-anchor tail
 estimate.
 
