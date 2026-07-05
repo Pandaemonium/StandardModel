@@ -3693,3 +3693,21 @@ scope, a real churn risk - it is the right next QMF brick (local attempt with th
 correct norm instance, or a focused Mathlib-only Aristotle job) but I did not
 grind it rather than risk churn. Flagging as the identified next target so the
 next cycle picks it up cleanly.
+
+## qmf1d-route: SU(N) compactness proof route (claude, validated)
+
+Validated the churn risk: Matrix (Fin n)(Fin n) C has NO default metric/norm
+instance (only the product topology from Fin n -> Fin n -> C), so the Heine-Borel
+"closed+bounded" phrasing needs a norm setup. Cleaner route that avoids a global
+metric (use for the next cycle):
+  1. S := {M | forall i j, M i j in Metric.closedBall 0 1} is COMPACT - a pi of
+     closed balls, each compact in C (C is a ProperSpace), via isCompact_univ_pi.
+  2. unitaryGroup carrier is CLOSED - the condition M * star M = 1 is the
+     preimage of {1} under the continuous map M |-> M * star M.
+  3. unitaryGroup SUBSET S - for unitary M, row orthonormality gives
+     sum_k |M i k|^2 = 1, so |M i j| <= 1 (entry bound).
+  4. IsCompact unitaryGroup := hS.of_isClosed_subset hClosed hSub; then
+     isCompact_iff_compactSpace for CompactSpace. specialUnitaryGroup is a closed
+     subset of unitaryGroup (det = 1 closed), so compact too.
+This is a genuine ~40-60 line proof (Tychonoff + entry bound), the right next
+QMF brick - land it locally next cycle or as a focused Mathlib-only Aristotle job.
