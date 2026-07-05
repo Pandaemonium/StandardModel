@@ -118,12 +118,22 @@ null-edge obstruction on the same spinor module.
 - **Lane (A), step 1 (consolidation chain) - TOP TRACTABLE ITEM.** The SU(3)
   group iso (`Algebra/Octonion`), the `G_SM` group + GUT square (`Gauge/`), and
   the Furey one-generation package (`Algebra/Furey`) are all kernel-checked but
-  NOT yet stitched into one theorem chain. Build the interface theorems linking
-  `octonionMulAutFixingE111 ≃* su3Submonoid` to the `Gauge/` `G_SM` `SU(3)`
-  factor and to `fureyRealizesOneGenerationPackage`, so a single statement reads
-  "the complex octonions yield `G_SM` acting on one anomaly-free generation".
-  No new hard mathematics - interface/`MulEquiv`-composition work - but it must
-  reconcile the `su3Submonoid` vs `Gauge/` SU(3) encodings (the one real risk).
+  NOT yet stitched into one theorem chain. Scoping (2026-07-05) decomposes it:
+  - **1a (tractable, group theory):** the octonion SU(3) is
+    `su3Submonoid : Submonoid (Matrix (Fin 3) (Fin 3) ℂ)` (with a `Group`
+    instance, `G2FixingE111MonoidHom`); the `Gauge/` lane uses
+    `Matrix.specialUnitaryGroup (Fin 3) ℂ`. These are the SAME group in two
+    encodings. The missing link is one `MulEquiv su3Submonoid
+    (Matrix.specialUnitaryGroup (Fin 3) ℂ)` - provided `su3Submonoid`'s defining
+    predicate is provably "special unitary". This is a self-contained group-theory
+    lemma (good Aristotle candidate).
+  - **1b (conceptual, color data):** `fureyRealizesOneGenerationPackage` lives at
+    the multiplet-DATA level (`colorDim`, `weakDim`, `hypercharge` matching
+    `standardModelOneGeneration`), NOT the group-action level. Linking the SU(3)
+    GROUP's fundamental rep (`ℂ³`) to the Furey "color triplet" states is a
+    genuine conceptual bridge (the fundamental rep IS the color-triplet action),
+    not pure interface work. This is the real content of the chain.
+  So the chain is: 1a first (clean group iso), then 1b (rep-to-data bridge).
 - **Lane (A), step 2 (electroweak group):** derive `SU(2)_L` as a group from the
   ideal structure, matching the SU(3) success (currently doublet/anomaly level).
 - **Lane (A), step 3 (three generations):** develop `ConjugateIdeal` toward the
