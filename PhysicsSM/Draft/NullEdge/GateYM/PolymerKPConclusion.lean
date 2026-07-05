@@ -31,11 +31,14 @@ Scope discipline:
 Draft-trust: statement freeze plus one kernel-checked negative result and a
 kernel-checked Penrose tree-graph bound.  The rooted KP partial-sum theorem
 `kp_tree_sum_bound` (hence `kp_partial_sum_bound` and `kp_cluster_summable`)
-is now reduced, with a kernel-checked lemma DAG, to the single finite
-combinatorial inequality `touchOnlySum_le_expBound` (the labeled rooted-tree
-exponential-generating-function formula after removing a redundant
-connectedness guard and before passing from a finite partial sum to
-`Real.exp`).  In detail: the enlargement step
+is now reduced, with a kernel-checked lemma DAG, to the finite combinatorial
+inequality `pairSum_le_expBound` through the sound touch-only reformulation
+`touchOnlySum_le_expBound`.  The current checked DAG includes
+`exists_canonical_root`, which chooses the least `g`-slot of a touching
+cluster, and `rhs_forest_expand`, which expands the RHS partial exponential
+into ordered child tuples.  The remaining gap is the rooted-tree deletion,
+block reindexing, weight-factorization, and fiber-count bound.  In detail: the
+enlargement step
 `sum_le_boundedTouchSum`, the base case `boundedTouchSum_zero_le`, the depth
 induction `boundedTouchSum_le_kpPsi`, the analytic partial-sum-to-exponential
 step `boundedTouchSum_succ_le`, and the analytic bound `kpPsi_le_exp` are all
@@ -520,6 +523,44 @@ lemma boundedTouchSum_eq_touchOnly (S : PolymerSystem Gamma)
       rw [spanningTreeCount_eq_zero_of_not_connected S hdec _ hC]
       simp
   · rw [if_neg (fun h => hT h.2), if_neg hT]
+
+/-- A cluster touching `g` has a least slot carrying `g`.
+
+This is the canonical root intended for the rooted-tree deletion proof of
+`pairSum_le_expBound`. -/
+lemma exists_canonical_root (S : PolymerSystem Gamma) (X : Cluster S) (g : Gamma)
+    (h : X.Touches S g) :
+    ∃ r : Fin X.n, X.poly r = g ∧ ∀ i : Fin X.n, X.poly i = g → r ≤ i := by
+  classical
+  obtain ⟨i0, hi0⟩ := h
+  let roots : Finset (Fin X.n) := Finset.univ.filter (fun i => X.poly i = g)
+  have hroots : roots.Nonempty := ⟨i0, by simp [roots, hi0]⟩
+  refine ⟨roots.min' hroots, ?_, ?_⟩
+  · have hmem := roots.min'_mem hroots
+    simpa [roots] using hmem
+  · intro i hi
+    exact roots.min'_le i (by simp [roots, hi])
+
+open Classical in
+/-- Expand the right-hand exponential partial sum into ordered child tuples.
+
+This is the finite ordered-forest shape expected after deleting the canonical
+root in a future proof of `pairSum_le_expBound`. -/
+lemma rhs_forest_expand (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    |S.weight g| *
+        ∑ k ∈ Finset.range (K + 3),
+          (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
+            / (Nat.factorial k : Real)
+      = |S.weight g| *
+        ∑ k ∈ Finset.range (K + 3),
+          (∑ φ ∈ Fintype.piFinset (fun _ : Fin k => nbhd S hdec g),
+            ∏ i : Fin k, boundedTouchSum S hdec K (φ i))
+            / (Nat.factorial k : Real) := by
+  congr 1
+  apply Finset.sum_congr rfl
+  intro k _
+  rw [Finset.sum_pow']
 
 open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining

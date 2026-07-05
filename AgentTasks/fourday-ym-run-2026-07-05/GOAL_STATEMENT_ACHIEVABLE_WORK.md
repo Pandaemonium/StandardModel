@@ -122,6 +122,12 @@ Achievable deliverables:
   deletion / multinomial multiplicity estimate;
 - write the sublemma as a focused standalone Aristotle package rather than
   churning locally.
+- Current status: Aristotle project `7c0ed511` completed as a partial
+  narrowing, not a closure. Two locally verified helper lemmas are integrated:
+  `exists_canonical_root` and `rhs_forest_expand`. The remaining named blocker
+  is still the geometric root-deletion/block-reindex/fiber-count part of
+  `pairSum_le_expBound`. Project `31facfbb` still has continuation task
+  `6fc4005c` in progress.
 
 Done when:
 
