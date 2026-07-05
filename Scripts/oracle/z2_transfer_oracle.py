@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.23"
+ORACLE_VERSION = "v0.24"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -1230,6 +1230,62 @@ def verify_record(record: dict) -> dict:
                 minus,
                 sector_projector(descriptor.L, -1),
                 matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_global_center_flip_involutive",
+                flip @ flip,
+                np.eye(dim),
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_plus_projector_idempotent",
+                plus @ plus,
+                plus,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_minus_projector_idempotent",
+                minus @ minus,
+                minus,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_flip_left_plus_eigenprojector",
+                flip @ plus,
+                plus,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_flip_left_minus_eigenprojector",
+                flip @ minus,
+                -minus,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_flip_right_plus_eigenprojector",
+                plus @ flip,
+                plus,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_flip_right_minus_eigenprojector",
+                minus @ flip,
+                -minus,
+                sector_tol,
             )
 
             KT = np.linalg.matrix_power(K, descriptor.T)

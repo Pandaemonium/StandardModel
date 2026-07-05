@@ -191,6 +191,8 @@ Implementation status as of 2026-07-05:
 - The v0.23 provenance update records the one-link center flip involution,
   plus/minus center-projector idempotence, and left/right center-flip
   eigenprojector laws.
+- The v0.24 oracle update adds saved-record and regression checks for the same
+  finite center-projector algebra in the emitted matrix payload.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
