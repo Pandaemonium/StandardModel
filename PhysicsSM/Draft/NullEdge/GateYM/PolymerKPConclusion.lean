@@ -38,8 +38,9 @@ inequality `pairSum_le_expBound` through the sound touch-only reformulation
 cluster, `tree_root_child_mem_nbhd`, which sends a spanning-tree edge out of
 that root slot into the KP neighborhood of `g`, `treeRootChildren`, which names
 the finite set of root-adjacent children for later deletion, the
-`treeRootChildren_card_add_one_le` arity bound, and `rhs_forest_expand`, which
-expands the RHS partial exponential into ordered child tuples.  It also includes
+`treeRootChildren_card_add_one_le` arity bound, `treeRootDeletedGraph`, which
+names the induced graph after deleting the root slot, and `rhs_forest_expand`,
+which expands the RHS partial exponential into ordered child tuples.  It also includes
 `factorial_mul_prod_factorial_le`, the arithmetic normalization for the future
 multinomial fiber bound.  The remaining gap is the rooted-tree deletion, block
 reindexing, weight-factorization, and the geometric fiber-count bound.  In
@@ -612,6 +613,36 @@ lemma treeRootChildren_card_add_one_le {n : Nat} (T : SimpleGraph (Fin n))
   have hpred : n - 1 + 1 = n := Nat.sub_add_cancel hle1
   rw [herase, hpred] at hcard'
   exact hcard'
+
+/-- The tree subgraph after deleting the chosen root slot, as an induced graph
+on non-root slots.
+
+This is the ambient graph whose connected components will become the child
+blocks in a later canonical-root deletion proof. -/
+noncomputable def treeRootDeletedGraph {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) : SimpleGraph {j : Fin n // j ≠ r} :=
+  T.induce {j : Fin n | j ≠ r}
+
+/-- Adjacency in the root-deleted graph is exactly adjacency in the original
+tree subgraph between the underlying non-root slots. -/
+lemma treeRootDeletedGraph_adj {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) (i j : {v : Fin n // v ≠ r}) :
+    (treeRootDeletedGraph T r).Adj i j ↔ T.Adj i.1 j.1 := by
+  rfl
+
+/-- A root child, viewed as a vertex of the root-deleted graph. -/
+noncomputable def treeRootChildAsDeleted {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) (j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    {v : Fin n // v ≠ r} :=
+  ⟨j, by
+    have hAdj : T.Adj r j := (mem_treeRootChildren T r j).mp hj
+    exact hAdj.ne.symm⟩
+
+/-- Coercing a root child back from the root-deleted vertex type recovers the
+original slot. -/
+lemma treeRootChildAsDeleted_coe {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    (treeRootChildAsDeleted T r j hj : Fin n) = j := rfl
 
 /-- Every root child in the tree subgraph carries a polymer in the KP
 neighborhood of the root polymer. -/

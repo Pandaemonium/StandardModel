@@ -151,8 +151,10 @@ Achievable deliverables:
   `treeRootChildren` helper now packages all such root-adjacent child slots as
   a finite set with membership, loopless-root exclusion, and neighborhood
   lemmas, and proves the finite arity bound
-  `treeRootChildren_card_add_one_le`. The remaining named blocker is still the
-  geometric root-deletion/block-reindex/fiber-count part of
+  `treeRootChildren_card_add_one_le`. The `treeRootDeletedGraph` helper now
+  names the induced graph on non-root slots and coerces root children into that
+  deleted vertex type. The remaining named blocker is still the geometric
+  connected-component/block-reindex/fiber-count part of
   `pairSum_le_expBound`.
   Project `31facfbb` continuation task `6fc4005c` returned no new target-file
   progress.

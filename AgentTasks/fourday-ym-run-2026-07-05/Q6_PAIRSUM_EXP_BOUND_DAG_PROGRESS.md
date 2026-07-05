@@ -38,12 +38,17 @@ It also has `treeRootChildren_subset_erase` and
 `treeRootChildren_card_add_one_le`, proving the children are non-root slots and
 their arity is at most `n - 1`; this is the finite bound needed by the later
 child-forest truncation.
+The follow-up object `treeRootDeletedGraph` is now integrated too.  It names
+the induced graph on non-root slots, proves the adjacency equivalence back to
+the original tree subgraph, and provides `treeRootChildAsDeleted` for viewing a
+root child as a vertex of that deleted graph.
 
 ## Remaining blocker
 
 The remaining core is the geometric deletion and counting construction:
 
-- define `rootDeletion` for a spanning tree rooted at the canonical `g` slot;
+- build the connected-component/block decomposition inside
+  `treeRootDeletedGraph` for a spanning tree rooted at the canonical `g` slot;
 - split the deleted tree into connected blocks indexed from the
   `treeRootChildren` set, using the checked arity bound;
 - reindex each block as a smaller ordered cluster;
