@@ -158,8 +158,10 @@ Achievable deliverables:
   proves child membership plus same-component reachability. The
   `treeRootChildBlock` helper now packages each component support as a finite
   block with membership, child-membership, reachability, nonempty, and
-  positive-cardinality facts. The component-inequality-to-disjoint-block helper
-  is checked; the remaining named blocker is still the tree-specific
+  positive-cardinality facts, plus the block-size bound
+  `treeRootChildBlock_card_add_one_le`. The
+  component-inequality-to-disjoint-block helper is checked; the remaining
+  named blocker is still the tree-specific
   child-component inequality plus geometric
   disjoint-decomposition/reindex/fiber-count part of `pairSum_le_expBound`.
   Follow-up Aristotle project `fc5aaf10` / task

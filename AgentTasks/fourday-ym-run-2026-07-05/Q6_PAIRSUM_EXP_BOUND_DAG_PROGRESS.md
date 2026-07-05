@@ -52,7 +52,8 @@ inside `treeRootDeletedGraph`.
 The follow-up object `treeRootChildBlock` is now integrated as a finite wrapper
 around that component support.  It proves membership equivalence with the
 support, root-child membership, block-vertex reachability from the child,
-nonemptiness, and positive block cardinality.
+nonemptiness, positive block cardinality, and the size bound
+`treeRootChildBlock_card_add_one_le`.
 The helper `disjoint_treeRootChildBlock_of_component_ne` is also integrated,
 proving that unequal child components yield disjoint finite blocks.
 

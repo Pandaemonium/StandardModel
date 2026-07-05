@@ -42,7 +42,8 @@ the finite set of root-adjacent children for later deletion, the
 names the induced graph after deleting the root slot, `treeRootChildComponent`,
 which names the deleted-graph connected component rooted at a child slot, and
 `treeRootChildBlock`, which turns that component support into a finite block,
-with `disjoint_treeRootChildBlock_of_component_ne` separating the easy
+with `treeRootChildBlock_card_add_one_le` bounding its size and
+`disjoint_treeRootChildBlock_of_component_ne` separating the easy
 component-support disjointness argument from the remaining tree-specific
 component-inequality proof, and `rhs_forest_expand`, which expands the RHS
 partial exponential into ordered child tuples.  It also includes
@@ -726,6 +727,29 @@ lemma treeRootChildBlock_card_pos {n : Nat} (T : SimpleGraph (Fin n))
     (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
     0 < (treeRootChildBlock T r j hj).card := by
   exact Finset.card_pos.mpr (treeRootChildBlock_nonempty T r j hj)
+
+/-- A root-child block contains at most the non-root slots. -/
+lemma treeRootChildBlock_card_add_one_le {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    (treeRootChildBlock T r j hj).card + 1 <= n := by
+  have hle : (treeRootChildBlock T r j hj).card <=
+      Fintype.card {x : Fin n // x ≠ r} := by
+    simpa using Finset.card_le_univ (s := treeRootChildBlock T r j hj)
+  have hsub : Fintype.card {x : Fin n // x ≠ r} = n - 1 := by
+    haveI : Subsingleton {x : Fin n // x = r} :=
+      ⟨fun a b => Subtype.ext (a.property.trans b.property.symm)⟩
+    have hsingle : Fintype.card {x : Fin n // x = r} = 1 := by
+      exact Fintype.card_ofSubsingleton ⟨r, rfl⟩
+    have h := Fintype.card_subtype_compl (fun x : Fin n => x = r)
+    rw [Fintype.card_fin, hsingle] at h
+    exact h
+  have hle' : (treeRootChildBlock T r j hj).card + 1 <= n - 1 + 1 := by
+    exact Nat.succ_le_succ (by simpa [hsub] using hle)
+  have hnpos : 0 < n := lt_of_le_of_lt (Nat.zero_le r.val) r.2
+  have hle1 : 1 <= n := Nat.succ_le_of_lt hnpos
+  have hpred : n - 1 + 1 = n := Nat.sub_add_cancel hle1
+  rw [hpred] at hle'
+  exact hle'
 
 /-- If two root-child components are unequal, then their finite child blocks
 are disjoint.  The remaining tree-specific work is to prove this component
