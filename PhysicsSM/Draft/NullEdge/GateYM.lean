@@ -566,7 +566,8 @@ observable-to-cluster bridge to exponential clustering, with `supportTail`
 empty/singleton/nonnegativity lemmas plus insert and disjoint-union splitting
 for finite-support specialization, plus monotonicity under support enlargement
 and arbitrary-union/finite-cover subadditivity with a cardinality-times-bound
-wrapper, named energy-sum/uniform-energy finite-support amplitude bounds, and
+wrapper for both direct supports and finite covers, named
+energy-sum/uniform-energy finite-support amplitude bounds, and
 amplitude/rate weakening wrappers for post-bridge constant bookkeeping; the
 single-anchor observable API is connected to the finite-support API by a
 singleton-support adapter.

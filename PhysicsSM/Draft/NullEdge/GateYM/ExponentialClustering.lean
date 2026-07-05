@@ -348,6 +348,26 @@ theorem supportTail_biUnion_le_card_mul_bound [DecidableEq Gamma] {ι : Type*}
     _ = (I.card : Real) * B := by
           simp [Finset.sum_const, nsmul_eq_mul]
 
+/-- Uniform finite-support bound for support tails.
+
+If every anchor in one finite support has tail at most `B`, then the whole
+support tail is bounded by the support cardinality times `B`. -/
+theorem supportTail_le_card_mul_bound
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S : Finset Gamma) (R B : Real)
+    (hB : forall g0 : Gamma, g0 ∈ S ->
+      tailContribution M hdec D g0 R <= B) :
+    supportTail M hdec D S R <= (S.card : Real) * B := by
+  calc
+    supportTail M hdec D S R
+        <= S.sum (fun _g0 => B) := by
+          unfold supportTail
+          exact Finset.sum_le_sum (fun g0 hg0 => hB g0 hg0)
+    _ = (S.card : Real) * B := by
+          simp [Finset.sum_const, nsmul_eq_mul]
+
 /-- Finite-support tail bound obtained by summing the anchored Q6 metric-tail
 estimate over the observable support.
 
