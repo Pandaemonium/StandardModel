@@ -112,6 +112,11 @@ Achievable deliverables:
   support bookkeeping, following the Q8 audit verdict;
 - add finite-support lemmas only when they remove real friction for a later
   concrete observable expansion.
+- Current status: `ObservableSupportBridge.lean` now provides the thin
+  `LocalPlaquetteObservable` / `ObservableSupportBridge` identity layer, plus
+  pass-through support-tail cardinality, empty-support zero-correlator, and
+  uniform-energy conditional clustering wrappers. The bridge remains
+  bookkeeping only.
 
 Done when:
 

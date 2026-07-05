@@ -62,6 +62,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
 import PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
+import PhysicsSM.Draft.NullEdge.GateYM.ObservableSupportBridge
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
@@ -623,6 +624,13 @@ amplitude/rate weakening wrappers for post-bridge constant bookkeeping; the
 single-anchor observable API is connected to the finite-support API by a
 singleton-support adapter.
 No concrete plaquette geometry, KP proof, or transfer-Hilbert statement is
-claimed).
+claimed); `ObservableSupportBridge` (YM4/T8 bookkeeping-only observable support
+adapter: `LocalPlaquetteObservable` exposes finite plaquette/polymer support,
+`ObservableSupportBridge` identifies that support with the abstract
+`LocalObservableSupportData` support, and pass-through lemmas restate
+support-tail/cardinality, empty-support zero-correlator, and uniform-energy
+conditional clustering wrappers in observable-support terms. No Q6 metric-tail
+theorem, Q7 support-count theorem, concrete observable expansion, or physical
+clustering theorem is claimed).
 Adding a new YM module? Import it here.
 -/
