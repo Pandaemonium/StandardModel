@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.11 (YM ladder, 2026-07-05)
+validate_lgt_core.py -- Track C oracle v0.12 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -83,6 +83,11 @@ v0.11 (four-day YM run, dynamics slice 8) adds:
     spatial-flux insertion is Hermitian, involutive, and swaps the vacuum and
     local/flux eigenvectors in Lean.
 
+v0.12 (four-day YM run, dynamics slice 9) adds:
+  Descriptor-driven spatial-flux autocorrelation profiles: the descriptor can
+    request tau values and the JSON record emits transfer/full/spectral checks
+    for each requested tau.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -142,7 +147,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.11 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.12 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -645,7 +650,7 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
 
-print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.11)")
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.12)")
 print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
       "with exact spacetime validation")
 for beta in [0.2, 0.4, 0.7]:
@@ -701,7 +706,7 @@ descriptor_summary = z2_transfer_summarize(L=3, T=3, beta=0.7)
 descriptor_record = z2_transfer_summary_record(descriptor_summary)
 descriptor_json = json.dumps(descriptor_record, sort_keys=True)
 check("descriptor JSON record is serializable and summary-consistent",
-      descriptor_record["oracle"]["version"] == "v0.11"
+      descriptor_record["oracle"]["version"] == "v0.12"
       and descriptor_record["descriptor"]["schema_version"]
       == "z2_1p1d_wilson_slab_transfer.v1"
       and descriptor_record["descriptor"]["model"] == "z2_1p1d_wilson_slab_transfer"
@@ -709,7 +714,9 @@ check("descriptor JSON record is serializable and summary-consistent",
       and descriptor_record["descriptor"]["lattice"]["time"]["extent"] == 3
       and descriptor_record["checks"]["partition_rel_error"] < 1e-10
       and descriptor_record["checks"]["two_time_flux_abs_error"] < 1e-10
+      and descriptor_record["checks"]["two_time_flux_spectral_abs_error"] < 1e-10
       and descriptor_record["tolerances"]["partition_rel_error"] == 1e-10
+      and "spatial_flux_autocorrelation" in descriptor_json
       and "gauge_summed_wilson_slab" in descriptor_json)
 check("descriptor JSON record names Lean theorem surfaces",
       descriptor_record["lean_surfaces"]["claim_boundary"]
@@ -730,6 +737,15 @@ check("descriptor JSON record names Lean theorem surfaces",
       )
       and "FiniteGapSpectralWitness" in descriptor_json)
 
+profile = descriptor_record["results"]["spatial_flux_two_time_correlation_profile"]
+check("descriptor JSON record carries requested correlation tau profile",
+      [entry["tau"] for entry in profile] == [0, 1, 2]
+      and all(
+          abs(entry["transfer_trace"] - entry["full_spacetime_sum"]) < 1e-10
+          and abs(entry["transfer_trace"] - entry["spectral_sum"]) < 1e-10
+          for entry in profile
+      ))
+
 descriptor_input = z2_transfer_model_descriptor(L=3, T=3, beta=0.4)
 parsed_descriptor, descriptor_summary_from_input = z2_transfer_summarize_descriptor(
     descriptor_input
@@ -744,6 +760,7 @@ check("descriptor-driven summary uses L/T/beta, observable, and sector labels",
       and parsed_descriptor.T == 3
       and abs(parsed_descriptor.beta - 0.4) < 1e-15
       and parsed_descriptor.observables == ("spatial_flux",)
+      and parsed_descriptor.correlation_taus == (0, 1, 2)
       and parsed_descriptor.sector_symmetries == ("global_center_flip",)
       and descriptor_result["results"]["partition"]["transfer_trace"]
       == descriptor_summary_from_input.partition_transfer
@@ -753,6 +770,9 @@ check("descriptor-driven transfer record reproduces exact checks",
       descriptor_result["checks"]["partition_rel_error"] < 1e-10
       and descriptor_result["checks"]["spatial_flux_abs_error"] < 1e-10
       and descriptor_result["checks"]["two_time_flux_abs_error"] < 1e-10
+      and descriptor_result["checks"]["two_time_flux_spectral_abs_error"] < 1e-10
+      and [entry["tau"] for entry in descriptor_result["results"]
+           ["spatial_flux_two_time_correlation_profile"]] == [0, 1, 2]
       and len(descriptor_result["results"]["spectrum"]["positive_eigenvalues"]) > 0
       and len(descriptor_result["results"]["spectrum"]
               ["center_plus_positive_eigenvalues"]) > 0
@@ -768,6 +788,16 @@ except ValueError:
     bad_descriptor_rejected = True
 check("descriptor validation rejects unsupported observable labels",
       bad_descriptor_rejected)
+
+bad_correlation_descriptor = json.loads(json.dumps(descriptor_input))
+bad_correlation_descriptor["correlations"][0]["name"] = "unsupported_correlation"
+try:
+    z2_transfer_validate_descriptor(bad_correlation_descriptor)
+    bad_correlation_rejected = False
+except ValueError:
+    bad_correlation_rejected = True
+check("descriptor validation rejects unsupported correlation labels",
+      bad_correlation_rejected)
 
 for L in [2, 3, 4]:
     Kslab = z2_transfer_matrix(L, beta=0.4)

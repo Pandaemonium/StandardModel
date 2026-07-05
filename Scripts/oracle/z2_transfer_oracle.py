@@ -26,9 +26,10 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.11"
+ORACLE_VERSION = "v0.12"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
+SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
 SUPPORTED_SECTOR_SYMMETRIES = {"global_center_flip"}
 DEFAULT_TOLERANCES = {
     "partition_rel_error": 1e-10,
@@ -328,7 +329,18 @@ class Z2TransferDescriptor:
     space_boundary: str
     time_boundary: str
     observables: tuple[str, ...]
+    correlation_taus: tuple[int, ...]
     sector_symmetries: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class Z2FluxCorrelation:
+    """One requested spatial-flux autocorrelation check."""
+
+    tau: int
+    transfer: float
+    full: float
+    spectral: float
 
 
 @dataclass(frozen=True)
@@ -340,9 +352,7 @@ class Z2TransferSummary:
     partition_full: float
     flux_transfer: float
     flux_full: float
-    flux_correlation_tau: int
-    flux_correlation_transfer: float
-    flux_correlation_full: float
+    flux_correlation_profile: tuple[Z2FluxCorrelation, ...]
     eigenvalues: tuple[float, ...]
     sector_eigenvalues_plus: tuple[float, ...]
     sector_eigenvalues_minus: tuple[float, ...]
@@ -366,6 +376,43 @@ def _names_from_entries(entries: object, field: str) -> tuple[str, ...]:
         _require(isinstance(name, str), f"`{field}[{idx}].name` must be a string")
         names.append(name)
     return tuple(names)
+
+
+def _correlation_taus_from_entries(entries: object, T: int) -> tuple[int, ...]:
+    """Extract supported spatial-flux autocorrelation tau values."""
+
+    if entries is None:
+        return tuple(range(T))
+    _require(
+        isinstance(entries, list),
+        "descriptor field `correlations` must be a list",
+    )
+    taus: list[int] = []
+    for idx, entry in enumerate(entries):
+        _require(isinstance(entry, dict), f"`correlations[{idx}]` must be an object")
+        name = entry.get("name")
+        _require(isinstance(name, str), f"`correlations[{idx}].name` must be a string")
+        _require(
+            name in SUPPORTED_CORRELATIONS,
+            "unsupported correlation; supported correlations are "
+            + ", ".join(sorted(SUPPORTED_CORRELATIONS)),
+        )
+        _require(
+            entry.get("observable_a") == "spatial_flux"
+            and entry.get("observable_b") == "spatial_flux",
+            "only spatial_flux/spatial_flux correlations are supported",
+        )
+        raw_taus = entry.get("taus")
+        _require(
+            isinstance(raw_taus, list) and raw_taus,
+            f"`correlations[{idx}].taus` must be a nonempty list",
+        )
+        for tau in raw_taus:
+            _require(isinstance(tau, int), "correlation tau values must be integers")
+            _require(0 <= tau <= T, "correlation tau must satisfy 0 <= tau <= T")
+            taus.append(int(tau))
+    _require(taus, "descriptor must request at least one correlation tau")
+    return tuple(dict.fromkeys(taus))
 
 
 def validate_descriptor(record: dict) -> Z2TransferDescriptor:
@@ -432,6 +479,10 @@ def validate_descriptor(record: dict) -> Z2TransferDescriptor:
         "spatial_flux" in observables,
         "descriptor must request the `spatial_flux` observable",
     )
+    correlation_taus = _correlation_taus_from_entries(
+        record.get("correlations"),
+        T,
+    )
     _require(
         "global_center_flip" in sectors,
         "descriptor must request the `global_center_flip` sector symmetry",
@@ -443,6 +494,7 @@ def validate_descriptor(record: dict) -> Z2TransferDescriptor:
         space_boundary=str(space_boundary),
         time_boundary=str(time_boundary),
         observables=observables,
+        correlation_taus=correlation_taus,
         sector_symmetries=sectors,
     )
 
@@ -492,6 +544,14 @@ def model_descriptor(L: int, T: int, beta: float) -> dict:
                 "name": "spatial_flux",
                 "formula": "Phi(u) = prod_i u_i",
                 "insertion": "diagonal",
+            },
+        ],
+        "correlations": [
+            {
+                "name": "spatial_flux_autocorrelation",
+                "observable_a": "spatial_flux",
+                "observable_b": "spatial_flux",
+                "taus": list(range(T)),
             },
         ],
         "sector_symmetries": [
@@ -600,9 +660,26 @@ def summary_record(summary: Z2TransferSummary,
     partition_abs_error = abs(summary.partition_transfer - summary.partition_full)
     partition_rel_error = partition_abs_error / abs(summary.partition_full)
     flux_abs_error = abs(summary.flux_transfer - summary.flux_full)
-    corr_abs_error = abs(
-        summary.flux_correlation_transfer - summary.flux_correlation_full
+    corr_abs_error = max(
+        abs(entry.transfer - entry.full)
+        for entry in summary.flux_correlation_profile
     )
+    corr_spectral_abs_error = max(
+        abs(entry.transfer - entry.spectral)
+        for entry in summary.flux_correlation_profile
+    )
+    primary_corr = summary.flux_correlation_profile[0]
+    correlation_profile = [
+        {
+            "tau": entry.tau,
+            "transfer_trace": entry.transfer,
+            "full_spacetime_sum": entry.full,
+            "spectral_sum": entry.spectral,
+            "transfer_full_abs_error": abs(entry.transfer - entry.full),
+            "transfer_spectral_abs_error": abs(entry.transfer - entry.spectral),
+        }
+        for entry in summary.flux_correlation_profile
+    ]
     record = {
         "oracle": {
             "name": "z2_transfer_oracle",
@@ -621,10 +698,12 @@ def summary_record(summary: Z2TransferSummary,
                 "full_spacetime_sum": summary.flux_full,
             },
             "spatial_flux_two_time_correlation": {
-                "tau": summary.flux_correlation_tau,
-                "transfer_trace": summary.flux_correlation_transfer,
-                "full_spacetime_sum": summary.flux_correlation_full,
+                "tau": primary_corr.tau,
+                "transfer_trace": primary_corr.transfer,
+                "full_spacetime_sum": primary_corr.full,
+                "spectral_sum": primary_corr.spectral,
             },
+            "spatial_flux_two_time_correlation_profile": correlation_profile,
             "spectrum": {
                 "positive_eigenvalues": list(summary.eigenvalues),
                 "center_plus_positive_eigenvalues": list(
@@ -640,6 +719,7 @@ def summary_record(summary: Z2TransferSummary,
             "partition_rel_error": partition_rel_error,
             "spatial_flux_abs_error": flux_abs_error,
             "two_time_flux_abs_error": corr_abs_error,
+            "two_time_flux_spectral_abs_error": corr_spectral_abs_error,
         },
         "tolerances": DEFAULT_TOLERANCES,
         "lean_surfaces": lean_surface_record(),
@@ -649,12 +729,26 @@ def summary_record(summary: Z2TransferSummary,
     return record
 
 
-def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
+def summarize(
+    L: int,
+    T: int,
+    beta: float,
+    correlation_taus: tuple[int, ...] | None = None,
+) -> Z2TransferSummary:
     """Compute the standard exact checks for a small Z2 slab model."""
 
     K = transfer_matrix(L, beta)
     flux = lambda state: spatial_flux(state, L)
-    tau = 1 if T > 1 else 0
+    taus = correlation_taus or tuple(range(T))
+    correlation_profile = tuple(
+        Z2FluxCorrelation(
+            tau=tau,
+            transfer=transfer_correlation(L, T, beta, flux, flux, tau),
+            full=full_spacetime_correlation(L, T, beta, flux, flux, tau),
+            spectral=transfer_correlation_spectral(L, T, beta, flux, flux, tau),
+        )
+        for tau in taus
+    )
     return Z2TransferSummary(
         L=L,
         T=T,
@@ -663,9 +757,7 @@ def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
         partition_full=full_spacetime_partition(L, T, beta),
         flux_transfer=transfer_expectation(L, T, beta, flux),
         flux_full=full_spacetime_expectation(L, T, beta, flux),
-        flux_correlation_tau=tau,
-        flux_correlation_transfer=transfer_correlation(L, T, beta, flux, flux, tau),
-        flux_correlation_full=full_spacetime_correlation(L, T, beta, flux, flux, tau),
+        flux_correlation_profile=correlation_profile,
         eigenvalues=tuple(float(v) for v in positive_eigenvalues(K)),
         sector_eigenvalues_plus=tuple(float(v) for v in sector_eigenvalues(L, beta, 1)),
         sector_eigenvalues_minus=tuple(float(v) for v in sector_eigenvalues(L, beta, -1)),
@@ -676,7 +768,12 @@ def summarize_descriptor(record: dict) -> tuple[Z2TransferDescriptor, Z2Transfer
     """Validate a descriptor and compute its exact finite transfer summary."""
 
     descriptor = validate_descriptor(record)
-    return descriptor, summarize(descriptor.L, descriptor.T, descriptor.beta)
+    return descriptor, summarize(
+        descriptor.L,
+        descriptor.T,
+        descriptor.beta,
+        descriptor.correlation_taus,
+    )
 
 
 def load_descriptor(path: Path) -> dict:
@@ -744,11 +841,13 @@ def main() -> int:
     print(f"full sum     = {summary.partition_full:.12g}")
     print(f"flux transfer= {summary.flux_transfer:.12g}")
     print(f"flux full    = {summary.flux_full:.12g}")
-    print(
-        f"flux corr tau={summary.flux_correlation_tau}: "
-        f"transfer={summary.flux_correlation_transfer:.12g} "
-        f"full={summary.flux_correlation_full:.12g}"
-    )
+    for corr in summary.flux_correlation_profile:
+        print(
+            f"flux corr tau={corr.tau}: "
+            f"transfer={corr.transfer:.12g} "
+            f"full={corr.full:.12g} "
+            f"spectral={corr.spectral:.12g}"
+        )
     print("eigenvalues  = " + ", ".join(f"{v:.12g}" for v in summary.eigenvalues))
     print("sector + eig = " + ", ".join(
         f"{v:.12g}" for v in summary.sector_eigenvalues_plus

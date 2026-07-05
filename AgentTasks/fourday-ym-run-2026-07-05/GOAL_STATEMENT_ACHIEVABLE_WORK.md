@@ -26,8 +26,8 @@ The repo now has enough verified infrastructure to make the next work concrete:
 - finite spectral-ratio/gap prerequisite packages, including
   `FiniteGapSpectralWitness`;
 - executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
-  two-time correlations, sector blocks, descriptor-file input, optional matrix
-  emission, and JSON summary output;
+  descriptor-requested two-time correlation profiles, sector blocks,
+  descriptor-file input, optional matrix emission, and JSON summary output;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
   payload with vacuum/local eigenvector equations and D12 gap identities;
 - `TwoStateTransferWitness.lean`, a tiny whole-sector witness adapter that
@@ -59,6 +59,10 @@ Achievable deliverables:
   trace identities, correlation checks, and tolerances;
 - add regression rows to `validate_lgt_core.py`;
 - keep tiny exact enumeration as the reference check for every transfer trace.
+- Current status: the descriptor can request spatial-flux autocorrelation tau
+  values, and the JSON record emits transfer-trace, full-spacetime, and
+  spectral evaluations for each requested tau. The regression harness checks
+  the requested profile and rejects unsupported correlation labels.
 
 Done when:
 
@@ -197,7 +201,8 @@ Achievable deliverables:
   includes a `lean_surfaces` provenance section naming the Lean modules and
   theorem surfaces its finite evidence is meant to inform, including the
   one-link `TwoStateTransferZ2L1` bridge and its flux-insertion observable
-  surface.
+  surface. It also records descriptor-requested spatial-flux autocorrelation
+  profiles as finite oracle evidence.
 
 Done when:
 
