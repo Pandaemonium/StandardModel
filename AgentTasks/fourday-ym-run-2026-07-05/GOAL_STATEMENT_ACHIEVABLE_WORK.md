@@ -27,7 +27,8 @@ The repo now has enough verified infrastructure to make the next work concrete:
   `FiniteGapSpectralWitness`;
 - executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
   descriptor-requested two-time correlation profiles, sector blocks,
-  descriptor-file input, optional matrix emission, and JSON summary output;
+  descriptor-file input, optional reproducibility matrix emission, and JSON
+  summary output;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
   payload with vacuum/local eigenvector equations and D12 gap identities;
 - `TwoStateTransferWitness.lean`, a tiny whole-sector witness adapter that
@@ -62,7 +63,9 @@ Achievable deliverables:
 - Current status: the descriptor can request spatial-flux autocorrelation tau
   values, and the JSON record emits transfer-trace, full-spacetime, and
   spectral evaluations for each requested tau. The regression harness checks
-  the requested profile and rejects unsupported correlation labels.
+  the requested profile and rejects unsupported correlation labels. Optional
+  matrix output now includes spatial-state labels, the spatial-flux insertion,
+  the global-center flip, and center projectors in the full state basis.
 
 Done when:
 

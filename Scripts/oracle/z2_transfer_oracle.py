@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.12"
+ORACLE_VERSION = "v0.13"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -568,8 +568,14 @@ def model_descriptor(L: int, T: int, beta: float) -> dict:
 def matrix_record(summary: Z2TransferSummary) -> dict:
     """Return explicit finite matrices for tiny reproducibility records."""
 
+    flux = lambda state: spatial_flux(state, summary.L)
     return {
+        "spatial_state_labels": list(range(1 << summary.L)),
         "transfer_kernel": transfer_matrix(summary.L, summary.beta).tolist(),
+        "spatial_flux_insertion": observable_matrix(summary.L, flux).tolist(),
+        "global_center_flip": center_flip_permutation(summary.L).tolist(),
+        "center_plus_projector": sector_projector(summary.L, 1).tolist(),
+        "center_minus_projector": sector_projector(summary.L, -1).tolist(),
         "center_plus_block": sector_block(summary.L, summary.beta, 1).tolist(),
         "center_minus_block": sector_block(summary.L, summary.beta, -1).tolist(),
     }
