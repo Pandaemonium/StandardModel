@@ -2095,3 +2095,20 @@ there, and then applies the independent-plaquette area law.
 Run-record updates mark Q11/YM1 as draft-closed for the concrete rectangular
 boundary-circuit expectation theorem. Promotion/paper theorem-numbering review
 remains separate from this integration.
+
+## review:t11-boundary-expectation-redteam
+
+Codex 1.21:16:
+
+Submitted Aristotle semantic red-team audit `0f3aa68d` (task `17ac50d1`) on
+the integrated `RectBoundaryExpectation.lean` theorem and the claim-language
+updates around it.
+
+Purpose: before using Q11 as a paper-unit or promotion candidate, ask a fresh
+reviewer to check the exact theorem surface, boundary observable, area exponent,
+representation hypotheses, and the expectation-level gauge-orbit proof route.
+The prompt explicitly asks Aristotle to reject any drift toward the false
+pointwise boundary/product identity or any trusted/continuum/mass-gap claim.
+
+No Lean code changes are requested from this job; it is a semantic audit and
+claim-boundary check.
