@@ -22,9 +22,10 @@ cut-plaquette one-factor RP example. The safest current headline is:
 > factor form and whose singleton plaquette ensemble weight is reflection
 > positive even after multiplying by a factorized side contribution, plus a
 > mixed product theorem for factorized positive/mirror weights times finite
-> Wilson cut factors - with concrete finite cut-ensemble
-> instantiation still open and the Q2 OS/GNS range model present only as finite algebraic
-> infrastructure.
+> Wilson cut factors, plus finite Q2/Q3 Z2 electric-sector product
+> decomposition and finrank bookkeeping - with concrete finite cut-ensemble
+> instantiation still open and the Q2 OS/GNS range model present only as
+> finite algebraic infrastructure.
 
 Do not claim that RP-LINK is fully closed: the zero-cut doubled-lattice
 construction is a well-definedness/consistency instance of reflection
@@ -249,6 +250,18 @@ Transfer/Hilbert-space adjacent:
   - block-shift covariance for `rpBlockMatrix` and the OS range.
 - `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbertZ2Electric.lean`
   - concrete Z2 electric-shift adapter for plaquette-bit-field block weights.
+  - `iSup_rpBlockElectricSector_eq_rpHilbertSpace`
+  - `rpBlockElectricSectorProduct`
+  - `rpHilbertSpaceBlockElectricDecomposition`
+  - `rpHilbertSpaceBlockElectricReconstruction`
+  - `rpHilbertSpaceBlockElectricReconstruction_decomposition`
+  - `rpHilbertSpaceBlockElectricDecomposition_reconstruction`
+  - `rpHilbertSpaceBlockElectricLinearEquiv`
+  - `finrank_rpHilbertSpace_eq_sum_finrank_rpBlockElectricSector`
+  - `finrank_rpBlockElectricSector_le_finrank_rpHilbertSpace`
+  - `finrank_rpHilbertSpace_pos_iff_exists_finrank_rpBlockElectricSector_pos`
+  These are finite algebraic sector-decomposition facts for the Z2 electric
+  block OS range, not a physical transfer matrix or gap statement.
 - `PhysicsSM/Draft/NullEdge/GateYM/TransferPositivity.lean`
   - `transferMatrix_posSemidef`
   - `compression_posSemidef`
@@ -281,7 +294,9 @@ known records include:
   `note:t1-mixed-product-kernel-assembly`.
 - Q2 `TransferHilbert*` modules and `TransferHilbertZ2Electric.lean` have
   their own direct/targeted/aggregate check records in the ledger; cite those
-  exact entries rather than this outline.
+  exact entries rather than this outline. For the latest Z2 electric-sector
+  product/finrank facts, use ledger entries `2.02:45`, `2.10:35`,
+  `2.17:04`, and `2.17:20`.
 - T14 ran `python Scripts/oracle/validate_lgt_core.py` and reached `44/44`,
   including the RP-KER complex-character guard.
 
@@ -313,9 +328,9 @@ GateYM build, then record fresh command output here or in a task note.
   expected algebraic assembly shape. Concrete finite cut-ensemble
   instantiation and the general abstract reflection-family theorem are still
   open.
-- Q2 transfer Hilbert space is finite algebraic infrastructure only. The
-  concrete Wilson slab/physical transfer matrix and gap interpretation remain
-  open.
+- Q2/Q3 transfer Hilbert space and Z2 electric-sector decomposition are finite
+  algebraic infrastructure only. The concrete Wilson slab/physical transfer
+  matrix, Hamiltonian, and gap interpretation remain open.
 - The paper unit should not claim positivity, stability, spectrum, or physical
   Hilbert-space interpretation beyond the exact finite algebraic statements
   already kernel-checked.
