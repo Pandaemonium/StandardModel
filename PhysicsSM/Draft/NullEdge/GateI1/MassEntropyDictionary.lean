@@ -218,5 +218,30 @@ theorem vonNeumannEntropy_pos_of_timelike (p : Momentum4) (hp0 : 0 < p 0)
       (vonNeumannEntropy_eq_zero_iff_null p hp0 hcone).mp h.symm
     linarith
 
+/-- At spatial rest (`|p| = 0`, `|v| = 0`) the speed vanishes. -/
+theorem speed_eq_zero_of_rest (p : Momentum4) (hp0 : 0 < p 0)
+    (hrest : spatialNormSq p = 0) : speed p = 0 := by
+  unfold speed velocityNormSq
+  rw [hrest, zero_div, Real.sqrt_zero]
+
+/-- **The other endpoint: at rest the block is maximally mixed.** A momentum at
+spatial rest (`spatialNormSq p = 0`) has both eigenvalues `1/2`, so the visible
+von Neumann entropy is `log 2` - the maximum for a two-level block. Together
+with `vonNeumannEntropy_eq_zero_iff_null` this pins the two endpoints of the
+mass -> entropy dictionary: massless/null <-> pure (`S = 0`), fully massive/at
+rest <-> maximally mixed (`S = log 2`). Observer-conditioned (rest is a frame
+choice); reconstruction / finite identity. -/
+theorem vonNeumannEntropy_rest_eq_log_two (p : Momentum4) (hp0 : 0 < p 0)
+    (hrest : spatialNormSq p = 0) :
+    vonNeumannEntropy p = Real.log 2 := by
+  have hspeed : speed p = 0 := speed_eq_zero_of_rest p hp0 hrest
+  have hp : evPlus p = 1 / 2 := by unfold evPlus; rw [hspeed]; ring
+  have hm : evMinus p = 1 / 2 := by unfold evMinus; rw [hspeed]; ring
+  unfold vonNeumannEntropy
+  rw [hp, hm]
+  unfold Real.negMulLog
+  rw [Real.log_div (by norm_num) (by norm_num), Real.log_one]
+  ring
+
 end MassEntropyDictionary
 end PhysicsSM.Draft.NullEdge.GateI1
