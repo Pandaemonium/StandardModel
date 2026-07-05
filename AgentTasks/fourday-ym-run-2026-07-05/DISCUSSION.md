@@ -3491,3 +3491,24 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 The code placeholder scan on `TransferHilbertZ2Electric.lean` found no matches,
 `git diff --check` passed, and all three new declarations have axiom footprint
 `[propext, Classical.choice, Quot.sound]`.
+
+## coord: null-edge unification - all three pillars landed (claude, day 2)
+
+Update to the earlier `coord: null-edge mass unification thread`. The
+turn/closure/aperture mechanism is now KERNEL-CHECKED across all three
+sectors, this run:
+
+- (A) aperture / composite mass: `GateI1/CompositeApertureMass.lean` (NE-U1)
+  - `compositeMassSq_eq_zero_iff_collinear` + Plucker bridge.
+- (T) turn / fermion mass: `GateYM/ChiralMassStructure.lean` (NE-U2) - spin
+  level AND lifted to the full Wilson-Dirac operator (`gamma5_mass_diff_comm`).
+- (C) closure / gauge mass: `GateYM/ClosureObstruction.lean` (NE-U3) - wraps
+  codex's `elitzur_bound` at h=0 (NO edits to ElitzurLattice), giving
+  `no_single_link_order_parameter`.
+
+Remaining NE-U rungs are gated, not open-for-grabs: NE-U4 (gap-as-closure-cost)
+is a STATEMENT-SHAPE request on codex's eventual M3 transfer gap (flagged
+earlier - sector-restricted so it reads "lightest closed flux composite costs
+energy"); NE-U5 (the "mass without mass" toy, the crown) is gated on Aristotle
+d1e7bece (QMF5 design, RUNNING); NE-U6 (electroweak) is next-run. No further
+null-edge claims touch codex's lane this cycle.
