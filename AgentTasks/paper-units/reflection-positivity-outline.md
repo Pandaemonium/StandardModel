@@ -201,7 +201,10 @@ Concrete finite disconnected cut-plaquette family:
   - `indexedCutPlaqReflection`
   - `cutPlaquetteAt`
   - `familyMirrorConfig`
+  - `familyMirrorCoord`
+  - `familyMirrorCoord_symm_mk`
   - `cutPlaquetteAt_hol_familyMirrorConfig`
+  - `cutPlaquetteAt_hol_familyMirrorCoord`
   - `family_weight_mirrorConfig_eq_wilsonKernel_prod`
   - `family_ensemble_reflectionPositive`
   - `factorized_mul_family_ensemble_reflectionPositive`

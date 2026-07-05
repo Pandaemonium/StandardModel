@@ -116,6 +116,38 @@ def familyMirrorConfig (a : K → G) (c : K → G × G) (b : K → G) :
     (indexedCutPlaqLattice (K := K)).LinkField (G := G)
   | (k, e) => cutMirrorConfig (a k) (c k) (b k) e
 
+/-- Mirror-coordinate equivalence for the finite indexed cut-plaquette family:
+each connected component uses the singleton `cutMirrorCoord` equivalence. -/
+def familyMirrorCoord :
+    (indexedCutPlaqLattice (K := K)).LinkField (G := G)
+      ≃ (K → CutMirrorCoord G) where
+  toFun U := fun k => cutMirrorCoord (G := G) (fun e => U (k, e))
+  invFun q := fun ke => (cutMirrorCoord (G := G)).symm (q ke.1) ke.2
+  left_inv U := by
+    funext ke
+    rcases ke with ⟨k, e⟩
+    exact congrFun ((cutMirrorCoord (G := G)).left_inv (fun e => U (k, e))) e
+  right_inv q := by
+    funext k
+    exact (cutMirrorCoord (G := G)).right_inv (q k)
+
+omit [Fintype K] [DecidableEq K] in
+/-- The parametrizing map `familyMirrorConfig` is the inverse of the indexed
+mirror-coordinate equivalence on packed coordinates. -/
+theorem familyMirrorCoord_symm_mk
+    (a : K → G) (c : K → G × G) (b : K → G) :
+    (familyMirrorCoord (K := K) (G := G)).symm
+        (fun k =>
+          { pos := a k
+            cut0 := (c k).1
+            cut1 := (c k).2
+            neg := b k })
+      = familyMirrorConfig a c b := by
+  funext ke
+  rcases ke with ⟨k, e⟩
+  rcases c k with ⟨c0, c1⟩
+  cases e <;> rfl
+
 /-- Symmetric read-off word for the `k`-th indexed cut plaquette. -/
 def familyCutPlaqEWord (k : K) (c : K → G × G) (x : K → G) : G :=
   cutPlaqEWord (c k) (x k)
@@ -129,6 +161,17 @@ theorem cutPlaquetteAt_hol_familyMirrorConfig
       = familyCutPlaqEWord k c a * (familyCutPlaqEWord k c b)⁻¹ := by
   simpa [cutPlaquetteAt, familyMirrorConfig, familyCutPlaqEWord]
     using cutPlaquette_hol_mirrorConfig (a k) (b k) (c k)
+
+omit [Fintype K] [DecidableEq K] in
+/-- Holonomy factorization phrased through the finite-family mirror-coordinate
+equivalence. -/
+theorem cutPlaquetteAt_hol_familyMirrorCoord
+    (k : K) (q : K → CutMirrorCoord G) :
+    (cutPlaquetteAt k).hol ((familyMirrorCoord (K := K) (G := G)).symm q)
+      = cutPlaqEWord ((q k).cut0, (q k).cut1) (q k).pos
+        * (cutPlaqEWord ((q k).cut0, (q k).cut1) (q k).neg)⁻¹ := by
+  simpa [cutPlaquetteAt, familyMirrorCoord]
+    using cutPlaquette_hol_cutMirrorCoord (G := G) (q k)
 
 variable [Fintype G] {n : ℕ}
 

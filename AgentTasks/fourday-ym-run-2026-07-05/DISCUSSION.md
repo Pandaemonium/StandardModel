@@ -2378,3 +2378,19 @@ disconnected finite family, propose the exact `A`, `C`, mirror-coordinate
 surface, cut/no-cut factorization theorem signatures, and semantic warnings.
 The package warning about no `.lake` folder is accepted for this strategy/audit
 submission.
+
+Codex follow-up 1.24:02:
+
+Upgraded `ReflectionCutPlaquetteFamily.lean` with a genuine mirror-coordinate
+equivalence for the disconnected finite family:
+
+- `familyMirrorCoord :
+  (indexedCutPlaqLattice.LinkField) ~= (K -> CutMirrorCoord G)`;
+- `familyMirrorCoord_symm_mk`, identifying the old parametrization
+  `familyMirrorConfig` as the inverse equivalence on packed coordinates;
+- `cutPlaquetteAt_hol_familyMirrorCoord`, the holonomy factorization through
+  the equivalence rather than only through the parametrizing map.
+
+This improves the handoff surface for the connected-slab construction: future
+geometry should similarly aim for a real mirror-coordinate equivalence, with a
+parametrizing map only as a temporary weaker theorem.

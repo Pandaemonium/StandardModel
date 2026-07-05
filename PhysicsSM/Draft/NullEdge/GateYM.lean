@@ -401,9 +401,10 @@ assembled here);
 `ReflectionCutPlaquetteFamily` (YM3/Q1 concrete finite disconnected family:
 forms the disjoint `K`-indexed sum of the minimal cut-plaquette lattice,
 defines a componentwise reflection `indexedCutPlaqReflection`, plaquette family
-`cutPlaquetteAt`, and mirror coordinates `familyMirrorConfig`; proves the
-indexed holonomy factorization
-`cutPlaquetteAt_hol_familyMirrorConfig`; then instantiates
+`cutPlaquetteAt`, mirror-coordinate parametrization `familyMirrorConfig`, and
+full coordinate equivalence `familyMirrorCoord`; proves the indexed holonomy
+factorizations `cutPlaquetteAt_hol_familyMirrorConfig` and
+`cutPlaquetteAt_hol_familyMirrorCoord`; then instantiates
 `WilsonCutPlaquetteEnsemble` as
 `family_weight_mirrorConfig_eq_wilsonKernel_prod`,
 `family_ensemble_reflectionPositive`, and
