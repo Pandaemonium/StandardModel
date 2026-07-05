@@ -61,6 +61,10 @@ def offDiagonalWeight (beta : ℝ) : ℝ :=
 def slabTransfer (beta : ℝ) : Matrix (Fin 2) (Fin 2) ℂ :=
   Matrix.of fun u v => (slabWeight beta u v : ℂ)
 
+/-- The one-link spatial-flux observable as a diagonal insertion matrix. -/
+def fluxMatrix : Matrix (Fin 2) (Fin 2) ℂ :=
+  Matrix.of fun u v => if u = v then (bitSign u : ℂ) else 0
+
 /-- On equal boundary states the one-link slab weight is `2 * exp beta`. -/
 theorem slabWeight_same (beta : ℝ) (u : Fin 2) :
     slabWeight beta u u = diagonalWeight beta := by
@@ -86,6 +90,58 @@ theorem slabTransfer_eq_transfer2 (beta : ℝ) :
     simp [slabTransfer, slabWeight, diagonalWeight, offDiagonalWeight,
       plaquetteSign, bitSign, transfer2, Fin.sum_univ_two] <;>
     ring
+
+/-- The one-link slab transfer has the vacuum vector with eigenvalue
+`2 * (exp beta + exp (-beta))`. -/
+theorem slabTransfer_mulVec_vacuum (beta : ℝ) :
+    slabTransfer beta *ᵥ vacuumVec =
+      ((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) • vacuumVec := by
+  funext u
+  fin_cases u <;>
+    simp [slabTransfer, slabWeight, plaquetteSign, bitSign, Matrix.mulVec,
+      dotProduct, vacuumVec, Fin.sum_univ_two] <;>
+    ring
+
+/-- The one-link slab transfer has the local/flux vector with eigenvalue
+`2 * (exp beta - exp (-beta))`. -/
+theorem slabTransfer_mulVec_local (beta : ℝ) :
+    slabTransfer beta *ᵥ localVec =
+      ((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) • localVec := by
+  funext u
+  fin_cases u <;>
+    simp [slabTransfer, slabWeight, plaquetteSign, bitSign, Matrix.mulVec,
+      dotProduct, localVec, Fin.sum_univ_two] <;>
+    ring
+
+/-- The one-link spatial-flux insertion is Hermitian. -/
+theorem fluxMatrix_conjTranspose :
+    fluxMatrixᴴ = fluxMatrix := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    simp [fluxMatrix, Matrix.conjTranspose, bitSign]
+
+/-- The one-link spatial-flux insertion squares to the identity. -/
+theorem fluxMatrix_sq :
+    fluxMatrix * fluxMatrix = 1 := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    simp [fluxMatrix, Matrix.mul_apply, bitSign]
+
+/-- The spatial-flux insertion sends the vacuum vector to the local/flux
+eigenvector. -/
+theorem fluxMatrix_mulVec_vacuum :
+    fluxMatrix *ᵥ vacuumVec = localVec := by
+  funext u
+  fin_cases u <;>
+    simp [fluxMatrix, Matrix.mulVec, dotProduct, vacuumVec, localVec, bitSign]
+
+/-- The spatial-flux insertion sends the local/flux eigenvector back to the
+vacuum vector. -/
+theorem fluxMatrix_mulVec_local :
+    fluxMatrix *ᵥ localVec = vacuumVec := by
+  funext u
+  fin_cases u <;>
+    simp [fluxMatrix, Matrix.mulVec, dotProduct, vacuumVec, localVec, bitSign]
 
 /-- For positive coupling, the one-link Z2 slab data forms a positive
 two-state descriptor. -/

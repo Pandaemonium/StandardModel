@@ -188,10 +188,12 @@ Hamiltonian, infinite-volume state, or physical mass-gap theorem);
 `TwoStateTransferZ2L1` (GateYM finite dynamics/oracle bridge:
 formalizes the one-link Z2 Wilson slab weight used by the executable oracle
 and proves its transfer matrix is exactly the two-state payload with
-`a = 2 * exp beta` and `b = 2 * exp (-beta)`, instantiating the positive
-descriptor and finite-gap witness for `beta > 0`. This is only the `L = 1`
-finite oracle bridge, not the full Wilson slab transfer operator or physical
-gap theorem);
+`a = 2 * exp beta` and `b = 2 * exp (-beta)`, proves the corresponding
+vacuum/local eigenvector equations, and records the one-link spatial-flux
+insertion as a Hermitian involution swapping those eigenvectors. It also
+instantiates the positive descriptor and finite-gap witness for `beta > 0`.
+This is only the `L = 1` finite oracle bridge, not the full Wilson slab
+transfer operator or physical gap theorem);
 `FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every
 finite-dimensional complex representation of a finite group admits a
 unitary matrix model - Weyl's unitarian trick in pure matrix algebra

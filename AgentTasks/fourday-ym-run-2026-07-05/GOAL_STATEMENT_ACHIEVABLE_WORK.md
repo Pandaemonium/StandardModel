@@ -36,7 +36,9 @@ The repo now has enough verified infrastructure to make the next work concrete:
 - `TwoStateTransferZ2L1.lean`, a one-link Z2 slab bridge proving the oracle's
   smallest gauge-summed transfer kernel has the two-state matrix shape and
   supplies a positive descriptor/witness for `beta > 0`, with contraction
-  factor `tanh beta`;
+  factor `tanh beta`, explicit slab eigenvector equations, and a one-link
+  spatial-flux insertion that is Hermitian, involutive, and swaps the
+  vacuum/local eigenvectors;
 - strong-coupling/KP statement infrastructure, now narrowed to the
   `pairSum_le_expBound` combinatorial crux;
 - RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.
@@ -75,6 +77,9 @@ Achievable deliverables:
 - add a Lean descriptor/witness adapter around `TwoStateTransferSpectrum`;
 - for the smallest Z2 two-state model, package the transfer matrix, vacuum
   vector, local/flux vector, ordered eigenvalues, and contraction factor;
+- expose the corresponding one-link flux insertion as an observable matrix,
+  including Hermitian/involutive laws and its action on the vacuum/local
+  eigenvectors;
 - if feasible, expose a `Module.End` wrapper so the payload can feed the shape
   of `FiniteGapSpectralWitness`;
 - document exactly which hypotheses are still external: cyclicity, sector
@@ -191,7 +196,8 @@ Achievable deliverables:
   still-open physical mass-gap claims. The Z2 transfer oracle JSON also now
   includes a `lean_surfaces` provenance section naming the Lean modules and
   theorem surfaces its finite evidence is meant to inform, including the
-  one-link `TwoStateTransferZ2L1` bridge.
+  one-link `TwoStateTransferZ2L1` bridge and its flux-insertion observable
+  surface.
 
 Done when:
 
