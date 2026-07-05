@@ -108,6 +108,38 @@ theorem descriptor_matrix_eq_slabTransfer (beta : ℝ) (hbeta : 0 < beta) :
   simpa [descriptor, Descriptor.matrix, diagonalWeight, offDiagonalWeight]
     using (slabTransfer_eq_transfer2 beta).symm
 
+/-- The one-link descriptor's vacuum eigenvalue is
+`2 * (exp beta + exp (-beta))`. -/
+theorem descriptor_vacuumEigenvalue_eq
+    (beta : ℝ) (hbeta : 0 < beta) :
+    (descriptor beta hbeta).vacuumEigenvalue =
+      2 * (Real.exp beta + Real.exp (-beta)) := by
+  unfold descriptor Descriptor.vacuumEigenvalue lambda0 diagonalWeight
+    offDiagonalWeight
+  ring
+
+/-- The one-link descriptor's local/flux eigenvalue is
+`2 * (exp beta - exp (-beta))`. -/
+theorem descriptor_localEigenvalue_eq
+    (beta : ℝ) (hbeta : 0 < beta) :
+    (descriptor beta hbeta).localEigenvalue =
+      2 * (Real.exp beta - Real.exp (-beta)) := by
+  unfold descriptor Descriptor.localEigenvalue lambdaLocal diagonalWeight
+    offDiagonalWeight
+  ring
+
+/-- The one-link descriptor's local/vacuum contraction factor is exactly
+`tanh beta`. -/
+theorem descriptor_contractionFactor_eq_tanh
+    (beta : ℝ) (hbeta : 0 < beta) :
+    (descriptor beta hbeta).contractionFactor = Real.tanh beta := by
+  rw [Real.tanh_eq]
+  unfold descriptor Descriptor.contractionFactor localSpectralRatio lambdaLocal
+    lambda0 diagonalWeight offDiagonalWeight
+  have hsum : Real.exp beta + Real.exp (-beta) ≠ 0 := by
+    exact ne_of_gt (add_pos (Real.exp_pos beta) (Real.exp_pos (-beta)))
+  field_simp [hsum]
+
 /-- The one-link Z2 slab descriptor inherits the positive finite-gap witness
 from the two-state adapter. -/
 def spectralWitness (beta : ℝ) (hbeta : 0 < beta) :
@@ -126,6 +158,13 @@ theorem spectralWitness_exp_neg_gap_eq_contractionFactor
     Real.exp (-(spectralWitness beta hbeta).localGap) =
       (descriptor beta hbeta).contractionFactor := by
   exact (descriptor beta hbeta).spectralWitness_exp_neg_gap_eq_contractionFactor
+
+/-- The one-link Z2 slab witness contraction factor is `tanh beta`. -/
+theorem spectralWitness_exp_neg_gap_eq_tanh
+    (beta : ℝ) (hbeta : 0 < beta) :
+    Real.exp (-(spectralWitness beta hbeta).localGap) = Real.tanh beta := by
+  rw [spectralWitness_exp_neg_gap_eq_contractionFactor beta hbeta,
+    descriptor_contractionFactor_eq_tanh beta hbeta]
 
 end TwoStateTransferZ2L1
 end GateYM

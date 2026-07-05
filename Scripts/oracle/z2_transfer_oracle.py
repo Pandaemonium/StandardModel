@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.9"
+ORACLE_VERSION = "v0.10"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_SECTOR_SYMMETRIES = {"global_center_flip"}
@@ -554,6 +554,8 @@ def lean_surface_record() -> dict:
                 "surface": [
                     "slabTransfer_eq_transfer2",
                     "descriptor_matrix_eq_slabTransfer",
+                    "descriptor_contractionFactor_eq_tanh",
+                    "spectralWitness_exp_neg_gap_eq_tanh",
                     "spectralWitness",
                 ],
             },

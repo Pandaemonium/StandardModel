@@ -35,7 +35,8 @@ The repo now has enough verified infrastructure to make the next work concrete:
   `FiniteGapSpectralWitness`;
 - `TwoStateTransferZ2L1.lean`, a one-link Z2 slab bridge proving the oracle's
   smallest gauge-summed transfer kernel has the two-state matrix shape and
-  supplies a positive descriptor/witness for `beta > 0`;
+  supplies a positive descriptor/witness for `beta > 0`, with contraction
+  factor `tanh beta`;
 - strong-coupling/KP statement infrastructure, now narrowed to the
   `pairSum_le_expBound` combinatorial crux;
 - RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.

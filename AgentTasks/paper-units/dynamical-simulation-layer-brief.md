@@ -147,6 +147,9 @@ Implementation status as of 2026-07-05:
 - The v0.9 extension adds the one-link Lean bridge
   `TwoStateTransferZ2L1.lean` to that provenance list, pairing the executable
   `L = 1` slab kernel with the kernel-checked two-state descriptor surface.
+- The v0.10 extension records the one-link spectral-ratio theorem surfaces:
+  the descriptor and witness contraction factors are identified in Lean as
+  `tanh beta`.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -165,7 +168,8 @@ Implementation status as of 2026-07-05:
   Wilson slab transfer matrix is exactly the two-state payload with
   diagonal weight `2 * exp beta` and off-diagonal weight `2 * exp (-beta)`.
   For `beta > 0`, it instantiates the positive descriptor and finite-gap
-  witness. This is a one-link bridge only, not the full Wilson slab operator.
+  witness, with contraction factor `tanh beta`. This is a one-link bridge
+  only, not the full Wilson slab operator.
 - `PhysicsSM/Draft/NullEdge/GateYM/ObservableSupportBridge.lean` adds the
   conservative Q8 support-bookkeeping adapter requested by the audit verdict:
   a local observable exposes finite plaquette/polymer support, that support is
