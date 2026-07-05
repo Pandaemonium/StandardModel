@@ -157,10 +157,9 @@ spinors carry.*
 - B0 Plucker-mass unification: IN PROGRESS (draft
   `GateI1/PluckerUnificationBridge.lean`).
 - 1a `su3Submonoid ~ specialUnitaryGroup`: IN PROGRESS.
-- 1b fundamental-rep <-> color-triplet: PARTIAL + CORRECTED. The Cartan
-  weights of v1,v2,v3 are computed (`Furey/ColorTripletFundamental`), but
-  deeper inspection showed those three states are NOT a connected color
-  triplet (the color ladders `T_ij` mix v1..v6; the physical triplets are
-  grouped by particle and interleave the indices). So the fundamental-rep
-  identification is NOT established; full 1b needs the genuine connected
-  triplet + its ladder-closed span. Honest status recorded in the module.
+- 1b fundamental-rep <-> color-triplet: DONE. The genuine connected
+  color triplet is `{v4,v5,v6}` (identified from the ladder-orbit
+  structure; an earlier draft wrongly used `{v1,v2,v3}`).
+  `Furey/ColorTripletFundamental` proves `span{v4,v5,v6}` is invariant
+  under all eight SU(3) generators, with the traceless distinct
+  fundamental weights - the fundamental rep `3`, on Mathlib SU(3) via 1a.
