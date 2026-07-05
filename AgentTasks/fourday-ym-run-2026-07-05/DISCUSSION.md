@@ -2764,3 +2764,16 @@ Dependency footprint:
 standard `[propext, Classical.choice, Quot.sound]` footprint. The remaining
 `kp_tree_sum_bound` handoff and the dependent `kp_partial_sum_bound` carry
 the proof-placeholder axiom, as expected for this partial harvest.
+
+Follow-up 1.27:36:
+
+Submitted focused Aristotle follow-up `68f1a8c1`, task `f24433fb`, for the
+isolated `kp_tree_sum_bound` crux. This is not a broad retry of Q6; the prompt
+asks for a proof or a sharply verified lemma DAG for the labeled rooted-tree
+exponential formula only.
+
+Prompt:
+`AgentTasks/aristotle-prompts/ym-q6-kp-tree-sum-bound-20260704.prompt.md`.
+
+Context pack:
+`AgentTasks/context-packs/ym-q6-kp-tree-sum-bound-20260704-20260704-211659.md`.
