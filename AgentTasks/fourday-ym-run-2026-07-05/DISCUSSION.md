@@ -3185,3 +3185,24 @@ The Q6 checks pass with the expected draft handoff warnings at
 `[propext, Classical.choice, Quot.sound]`; `boundedTouchSum_le_kpPsi` and
 `kp_tree_sum_bound` inherit the proof-placeholder axiom from
 `boundedTouchSum_succ_le`.
+
+## submit:q6-bounded-touch-sum-succ (codex 1.31:48)
+
+Submitted focused Aristotle project `961529bb`, task `ad51386b`, for exactly
+the remaining Q6 crux:
+
+```lean
+boundedTouchSum_succ_le
+```
+
+This is not a broad Q6 retry. The prompt asks for either a proof of the
+labeled rooted-tree exponential-formula inequality, or the smallest verified
+finite-species / rooted-tree lemma DAG that strictly narrows it. The package
+includes the current `PolymerKPCriterion.lean`, `TreeGraphInequality.lean`,
+`PolymerKPConclusion.lean`, both Q6 status files, and a fresh context pack.
+
+Prompt:
+`AgentTasks/aristotle-prompts/ym-q6-bounded-touch-sum-succ-20260705.prompt.md`.
+
+Context pack:
+`AgentTasks/context-packs/ym-q6-bounded-touch-sum-succ-20260705-20260704-224441.md`.
