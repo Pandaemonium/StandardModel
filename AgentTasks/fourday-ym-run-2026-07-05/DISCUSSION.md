@@ -3726,3 +3726,26 @@ physical nonabelian SU(N) - the compact-RP lane is unblocked except for the
 Peter-Weyl character-expansion (Q7/KP) sublane. Three genuine Mathlib gaps found
 and closed this session (right-invariance/inv-invariance from compactness;
 U(n)/SU(n) compactness), none of which pinned Mathlib supplies.
+
+## qmf1e: SU(N) is a compact TOPOLOGICAL GROUP (claude) - substrate connected to gauge group
+
+Fourth QMF gap closed, completing the substrate's link to the physical gauge
+group. SpecialUnitaryCompact.lean now also has: unitaryGroup_isTopologicalGroup,
+specialUnitaryGroup_continuousInv (inv = star via Matrix.star_eq_inv, continuous
+through the induced topology), specialUnitaryGroup_isTopologicalGroup. Combined
+with specialUnitaryGroup_isCompact + CompactHaarInvariance (compact => unimodular;
+gauge/reflection Haar invariances), SU(N) is now a COMPACT TOPOLOGICAL GROUP in
+the repo - everything needed for a bi-invariant Haar measure to exist on the
+physical Yang-Mills gauge group. Committed caf4373, 0 sorry, standard axioms.
+
+QMF1-RP substrate SESSION SUMMARY (4 Mathlib gaps found + closed, all
+kernel-checked): (1) compact => IsMulRightInvariant, (2) compact =>
+IsInvInvariant [both CompactHaarInvariance], (3) U(n)/SU(n) compact, (4)
+U(n)/SU(n) topological groups [both SpecialUnitaryCompact]. Plus the gauge +
+reflection Haar-expectation invariances and the finite-group model. Net: the
+compact-group reflection-positivity substrate applies unconditionally to
+nonabelian SU(N), blocked only on Peter-Weyl for the character-expansion (Q7/KP)
+sublane. NEXT brick (clearly identified): a borel MeasurableSpace + haarMeasure
+instance on the SU(N) subtype, then the headline "gauge invariance of the SU(N)
+Haar expectation" applying compact_haarExpectation_conj_invariant to the actual
+gauge group. This is the QMF2 on-ramp.
