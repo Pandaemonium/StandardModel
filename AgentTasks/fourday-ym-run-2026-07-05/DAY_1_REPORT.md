@@ -65,7 +65,14 @@ harvested as soon as they returned.
   `reflectionPositive_of_hol_factorization`, and
   `factorized_mul_reflectionPositive_of_hol_factorization`, so any future
   concrete finite cut-plaquette family only has to supply the mirror-coordinate
-  holonomy factorization.
+  holonomy factorization. Codex then added
+  `ReflectionCutPlaquetteFamily.lean`, the disjoint finite `K`-indexed sum of
+  the minimal cut plaquette, with componentwise reflection, genuine
+  geometrically distinct plaquettes, mirror-coordinate holonomy factorization,
+  and concrete RP theorems `family_ensemble_reflectionPositive` /
+  `factorized_mul_family_ensemble_reflectionPositive`. This is still not the
+  connected Wilson slab, but it is no longer merely repeated copies of one
+  plaquette in one lattice.
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -176,10 +183,10 @@ abstract single-factor/finite-product cut-kernel bridge from `8271a64b`.
 cut-bearing plaquette, proves the mirror-coordinate factor form, and closes the
 singleton one-plaquette `PlaquetteEnsemble.weight` RP statement. The remaining
 Q1 gap is the genuinely nontrivial finite cut-ensemble / shocking tier:
-instantiate the mixed-product theorem with concrete finite plaquette families
-with geometrically distinct cut plaquettes and/or the abstract
-reflection-family theorem; the algebraic ensemble bridge from holonomy
-factorization to RP is now packaged in `WilsonCutPlaquetteEnsemble.lean`. T2 Hermitian bridge
+upgrade the disconnected indexed cut-plaquette family to the connected Wilson
+slab / abstract reflection-family theorem; the algebraic ensemble bridge from
+holonomy factorization to RP is now packaged in
+`WilsonCutPlaquetteEnsemble.lean`. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
 `cutKernel` block matrix and pairing/reflection-form bridge, while

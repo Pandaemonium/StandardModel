@@ -194,6 +194,23 @@ Minimal concrete cut-plaquette example:
   theorem for indexed copies of that same minimal cut plaquette. It is not yet
   a multi-cut finite ensemble theorem over geometrically distinct plaquettes.
 
+Concrete finite disconnected cut-plaquette family:
+
+- `PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteFamily.lean`
+  - `indexedCutPlaqLattice`
+  - `indexedCutPlaqReflection`
+  - `cutPlaquetteAt`
+  - `familyMirrorConfig`
+  - `cutPlaquetteAt_hol_familyMirrorConfig`
+  - `family_weight_mirrorConfig_eq_wilsonKernel_prod`
+  - `family_ensemble_reflectionPositive`
+  - `factorized_mul_family_ensemble_reflectionPositive`
+  This is a genuine finite cut-bearing lattice family with geometrically
+  distinct plaquettes, obtained as a disjoint `K`-indexed sum of the minimal
+  cut plaquette. It proves the Wilson `PlaquetteEnsemble.weight` is RP in
+  mirror coordinates, with optional factorized side weights. It is not yet the
+  connected Wilson slab.
+
 Baseline Wilson reflection positivity:
 
 - `PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionPositivity.lean`

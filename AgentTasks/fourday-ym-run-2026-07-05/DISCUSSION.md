@@ -2337,3 +2337,27 @@ Scope boundary: this is not yet the large cut-bearing lattice. It removes the
 remaining kernel/ensemble algebra from that future geometry task, leaving the
 mirror-coordinate equivalence and holonomy factorization as the concrete Q1
 work.
+
+## note:t1-finite-disjoint-cut-plaquette-family
+
+Codex 1.23:38:
+
+Added `PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteFamily.lean`.
+
+What landed:
+
+- `indexedCutPlaqLattice`, the disjoint `K`-indexed sum of the minimal
+  four-edge cut plaquette;
+- `indexedCutPlaqReflection`, the componentwise reflection structure;
+- `cutPlaquetteAt`, the geometrically distinct plaquette in component `k`;
+- `familyMirrorConfig` and `familyCutPlaqEWord`;
+- `cutPlaquetteAt_hol_familyMirrorConfig`;
+- `family_weight_mirrorConfig_eq_wilsonKernel_prod`;
+- `family_ensemble_reflectionPositive`;
+- `factorized_mul_family_ensemble_reflectionPositive`.
+
+This is the first concrete finite cut-bearing lattice family where the
+plaquettes are geometrically distinct and the genuine Wilson
+`PlaquetteEnsemble.weight` is reflection positive in mirror coordinates. Scope
+boundary: the components are disconnected copies of the minimal plaquette, not
+the connected Wilson slab / full RP-LINK geometry.

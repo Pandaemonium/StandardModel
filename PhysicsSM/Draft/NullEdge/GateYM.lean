@@ -35,6 +35,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteExample
+import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteFamily
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
@@ -397,6 +398,18 @@ indexed copies of the same minimal cut plaquette. This is still not full
 RP-LINK: the copies are not geometrically distinct plaquettes in a larger
 cut-bearing lattice, and a general finite reflection-family theorem is not
 assembled here);
+`ReflectionCutPlaquetteFamily` (YM3/Q1 concrete finite disconnected family:
+forms the disjoint `K`-indexed sum of the minimal cut-plaquette lattice,
+defines a componentwise reflection `indexedCutPlaqReflection`, plaquette family
+`cutPlaquetteAt`, and mirror coordinates `familyMirrorConfig`; proves the
+indexed holonomy factorization
+`cutPlaquetteAt_hol_familyMirrorConfig`; then instantiates
+`WilsonCutPlaquetteEnsemble` as
+`family_weight_mirrorConfig_eq_wilsonKernel_prod`,
+`family_ensemble_reflectionPositive`, and
+`factorized_mul_family_ensemble_reflectionPositive`. This is a genuine finite
+cut-bearing lattice with geometrically distinct but disconnected components;
+the connected Wilson slab remains open);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original
