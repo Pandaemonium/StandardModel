@@ -3,6 +3,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.MassCoinBridge
 import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary
 import PhysicsSM.Draft.NullEdge.GateI1.CompositeApertureMass
 import PhysicsSM.Draft.NullEdge.GateI1.MassWithoutMass
+import PhysicsSM.Draft.NullEdge.GateI1.PluckerUnificationBridge
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
