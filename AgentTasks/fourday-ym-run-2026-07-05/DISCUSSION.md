@@ -2254,3 +2254,31 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 
 Dependency footprint for the singleton ensemble ID/RP lemmas:
 `[propext, Classical.choice, Quot.sound]`.
+
+## note:t1-mixed-product-kernel-assembly
+
+Codex 1.22:50:
+
+Added `reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod` to
+`WilsonCutPlaquettePositivity.lean`.
+
+Statement shape: an arbitrary factorized positive/mirror contribution
+`h a c * star (h b c)` times a finite product of Wilson cut factors
+`wilsonKernel beta rho (e k c a) (e k c b)` is reflection positive. The proof
+uses the existing factorized Gram kernel, the Wilson cut-factor submatrix
+bridge, and finite Schur/product closure.
+
+Scope boundary: this is still kernel algebra. It does not itself assert that a
+particular finite reflection lattice ensemble has this mixed-product form.
+That concrete instantiation is the next Q1 move.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/WilsonCutPlaquettePositivity.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint: `[propext, Classical.choice, Quot.sound]`.

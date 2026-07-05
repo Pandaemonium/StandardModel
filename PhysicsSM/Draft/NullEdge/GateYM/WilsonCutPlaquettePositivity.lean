@@ -140,6 +140,35 @@ theorem reflectionForm_nonneg_of_wilsonFactor_prod {K : Type} (s : Finset K)
     (fun k a c b => ((wilsonKernel beta rho (e k c a) (e k c b) : ℝ) : ℂ))
     (fun k _ c => cutKernel_posSemidef_of_wilsonFactor beta hbeta rho hmul hone hunit (e k) c)
 
+set_option linter.unusedFintypeInType false in
+/-- Mixed finite-product assembly: a factorized positive/mirror contribution
+times finitely many Wilson cut-plaquette factors is reflection positive.
+
+This is the abstract kernel-algebra shape of a Wilson reflection ensemble after
+separating positive/mirror plaquette pairs from genuine cut plaquettes. It still
+does not assert that a concrete lattice ensemble has this form. -/
+theorem reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod {K : Type}
+    (s : Finset K)
+    (beta : ℝ) (hbeta : 0 ≤ beta)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (h : A → C → ℂ)
+    (e : K → C → A → G) :
+    IsReflectionPositive (A := A) (C := C)
+      (fun a c b =>
+        (h a c * (starRingEnd ℂ) (h b c)) *
+          ∏ k ∈ s, ((wilsonKernel beta rho (e k c a) (e k c b) : ℝ) : ℂ)) := by
+  exact reflectionForm_nonneg_of_mul_posSemidef
+    (fun a c b => h a c * (starRingEnd ℂ) (h b c))
+    (fun a c b => ∏ k ∈ s, ((wilsonKernel beta rho (e k c a) (e k c b) : ℝ) : ℂ))
+    (fun c => cutKernel_posSemidef_of_factorized h c)
+    (fun c => cutKernel_finset_prod_posSemidef s
+      (fun k a c b => ((wilsonKernel beta rho (e k c a) (e k c b) : ℝ) : ℂ))
+      (fun k _ c => cutKernel_posSemidef_of_wilsonFactor beta hbeta rho hmul hone hunit (e k) c)
+      c)
+
 end WilsonCutPlaquettePositivity
 end GateYM
 end NullEdge

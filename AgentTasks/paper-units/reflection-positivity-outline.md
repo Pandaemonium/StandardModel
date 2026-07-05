@@ -20,8 +20,9 @@ cut-plaquette one-factor RP example. The safest current headline is:
 > lemmas, the single-factor Wilson cut-kernel bridge, and a four-edge
 > cut-plaquette example whose holonomy has the required mirror-coordinate
 > factor form and whose singleton plaquette ensemble weight is reflection
-> positive - with finite cut-ensemble reflection positivity still open and the
-> Q2 OS/GNS range model present only as finite algebraic
+> positive, plus a mixed product theorem for factorized positive/mirror weights
+> times finite Wilson cut factors - with concrete finite cut-ensemble
+> instantiation still open and the Q2 OS/GNS range model present only as finite algebraic
 > infrastructure.
 
 Do not claim that RP-LINK is fully closed: the zero-cut doubled-lattice
@@ -147,12 +148,12 @@ Wilson cut-factor kernel bridge:
   - `cutKernel_posSemidef_of_wilsonFactor`
   - `reflectionForm_nonneg_of_wilsonFactor`
   - `reflectionForm_nonneg_of_wilsonFactor_prod`
+  - `reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod`
   This is the kernel-algebra half of the cut-plaquette target: each
   factorized Wilson cut factor is a principal submatrix of the Wilson
-  one-plaquette kernel, and finite products follow through the existing
-  Schur/product closure. It does not construct the concrete cut-bearing
-  lattice or prove that its genuine `PlaquetteEnsemble.weight` has this
-  mirror-coordinate factor form.
+  one-plaquette kernel, finite products follow through the existing
+  Schur/product closure, and factorized positive/mirror contributions can be
+  multiplied in. It does not construct a concrete finite cut-bearing ensemble.
 
 Minimal concrete cut-plaquette example:
 
@@ -234,6 +235,9 @@ known records include:
   `1.22:25` plus follow-up `1.22:38`, and discussion note
   `note:t1-minimal-cut-plaquette-example`, for exact direct/targeted/aggregate
   checks and dependency footprints.
+- Codex added the mixed product theorem in `WilsonCutPlaquettePositivity.lean`;
+  use ledger entry `1.22:50` and discussion note
+  `note:t1-mixed-product-kernel-assembly`.
 - Q2 `TransferHilbert*` modules and `TransferHilbertZ2Electric.lean` have
   their own direct/targeted/aggregate check records in the ledger; cite those
   exact entries rather than this outline.
@@ -264,8 +268,10 @@ GateYM build, then record fresh command output here or in a task note.
   nontrivial content. Aristotle `8271a64b` closes the abstract factorized
   Wilson cut-kernel bridge, and `ReflectionCutPlaquetteExample.lean` supplies
   a minimal concrete cut-plaquette holonomy factorization plus singleton
-  `PlaquetteEnsemble.weight` RP, but finite cut-ensemble product assembly and
-  the general abstract reflection-family theorem are still open.
+  `PlaquetteEnsemble.weight` RP, while the mixed product theorem supplies the
+  expected algebraic assembly shape. Concrete finite cut-ensemble
+  instantiation and the general abstract reflection-family theorem are still
+  open.
 - Q2 transfer Hilbert space is finite algebraic infrastructure only. The
   concrete Wilson slab/physical transfer matrix and gap interpretation remain
   open.

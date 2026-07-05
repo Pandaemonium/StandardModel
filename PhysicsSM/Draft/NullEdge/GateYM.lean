@@ -357,11 +357,12 @@ cut-factor form supplied by `WilsonCutPlaquettePositivity`; dependency footprint
 `8271a64b`: proves the real-to-complex PSD bridge `posSemidef_map_ofReal`,
 single Wilson cut-factor PSD `cutKernel_posSemidef_of_wilsonFactor`, and
 reflection-positivity wrappers `reflectionForm_nonneg_of_wilsonFactor` and
-`reflectionForm_nonneg_of_wilsonFactor_prod`. This closes the abstract
-single-factor and finite-product kernel bridge by viewing each cut factor as a
-principal submatrix of the Wilson one-plaquette kernel; it does not yet provide
-the concrete cut-plaquette lattice, mirror-coordinate equivalence, or genuine
-ensemble-weight identification. Dependency footprint
+`reflectionForm_nonneg_of_wilsonFactor_prod`; also proves
+`reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod`, combining an
+arbitrary factorized positive/mirror contribution with finitely many Wilson
+cut factors. This closes the abstract mixed product kernel bridge by viewing
+each cut factor as a principal submatrix of the Wilson one-plaquette kernel; it
+does not by itself provide a concrete lattice ensemble. Dependency footprint
 [propext, Classical.choice, Quot.sound]);
 `ReflectionCutPlaquetteExample` (YM3/Q1 concrete cut-plaquette geometry:
 defines a four-edge lattice with one positive edge, one mirror negative edge,

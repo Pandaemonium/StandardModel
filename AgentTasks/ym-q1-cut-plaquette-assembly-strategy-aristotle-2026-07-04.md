@@ -112,4 +112,7 @@ Wilson cut-factor RP-KER theorem. A second local follow-up added
 `cutPlaquette_weight_mirrorConfig_eq_wilsonKernel` and
 `cutPlaquette_ensemble_reflectionPositive`, identifying the genuine singleton
 `PlaquetteEnsemble.weight` and proving one-plaquette concrete RP. Full RP-LINK
-still requires finite product/general cut-ensemble assembly.
+still requires finite product/general cut-ensemble assembly. Codex also added
+`reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod` to
+`WilsonCutPlaquettePositivity.lean`, closing the mixed kernel-algebra product
+shape needed before concrete finite plaquette-family instantiation.
