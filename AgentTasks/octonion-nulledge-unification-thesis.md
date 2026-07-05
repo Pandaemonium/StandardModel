@@ -70,13 +70,22 @@ i.e. the null-edge Minkowski mass of a two-null-edge momentum EQUALS the
 octonion-lane spinor Plucker mass. Claim label: **finite identity**. This is the
 first kernel-checked stitch between the lanes.
 
-### B1. Shared spinor module (Clifford identification). MEDIUM.
+### B1. Shared spinor module (Clifford identification). PARTLY DONE.
 
-`Cl(6)`-on-`J` (charges) tensored with the spacetime Weyl-Clifford (null-edge
-mass): the unified module is `J (x) (Weyl spinor)` with `Cl(6) (x) Cl(spacetime)`
-acting. `Furey/CliffordConnection` already flags the full Mathlib
-`CliffordAlgebra` identification as its medium-term target. Formalizing the
-tensor is the structural core.
+Status update (2026-07-05): the internal `Cl(6)` structure is ALREADY
+established at the relations level - `Furey/LadderOperators` proves the FULL
+Cl(6) canonical anticommutation relations for the complex-octonion ladder
+operators (nilpotency `alpha_i^2 = 0`, `alpha_i^dag^2 = 0`; the mixed
+`{alpha_i, alpha_j^dag} = delta_ij`; and `{alpha_i, alpha_j} = 0`,
+`{alpha_i^dag, alpha_j^dag} = 0`). So the charge-side `Cl(6)`-on-`J` is a
+proved fact, not a target.
+
+What remains for B1: (i) the abstract Mathlib `CliffordAlgebra` identification
+(`CliffordConnection` scaffold - a formalization nicety on top of the proved
+relations); and (ii) THE structural core - tensoring the internal `Cl(6)` with
+the spacetime Weyl-Clifford (null-edge mass side) into the shared module
+`J (x) (Weyl spinor)` with `Cl(6) (x) Cl(spacetime)` acting. (ii) is the deep
+multi-session unit.
 
 ### B2. Chirality/mass <-> conjugate ideal (the deepest bet). HARD/CONCEPTUAL.
 
