@@ -368,6 +368,26 @@ theorem slabTransfer_trace (beta : ℝ) :
     Fin.sum_univ_two]
   ring
 
+/-- The plus-center projected one-step transfer trace is the vacuum branch
+`2 * (exp beta + exp (-beta))`. -/
+theorem centerPlusProjector_mul_slabTransfer_trace (beta : ℝ) :
+    Matrix.trace (centerPlusProjector * slabTransfer beta) =
+      ((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) := by
+  rw [slabTransfer_eq_transfer2]
+  simp [Matrix.trace, centerPlusProjector, transfer2, diagonalWeight,
+    offDiagonalWeight, Fin.sum_univ_two]
+  ring
+
+/-- The minus-center projected one-step transfer trace is the local/flux branch
+`2 * (exp beta - exp (-beta))`. -/
+theorem centerMinusProjector_mul_slabTransfer_trace (beta : ℝ) :
+    Matrix.trace (centerMinusProjector * slabTransfer beta) =
+      ((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) := by
+  rw [slabTransfer_eq_transfer2]
+  simp [Matrix.trace, centerMinusProjector, transfer2, diagonalWeight,
+    offDiagonalWeight, Fin.sum_univ_two]
+  ring
+
 /-- A single time-zero spatial-flux insertion has zero one-step trace in the
 one-link slab model. -/
 theorem fluxMatrix_mul_slabTransfer_trace (beta : ℝ) :

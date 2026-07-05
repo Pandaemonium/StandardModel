@@ -190,7 +190,9 @@ formalizes the one-link Z2 Wilson slab weight used by the executable oracle
 and proves its transfer matrix is exactly the two-state payload with
 `a = 2 * exp beta` and `b = 2 * exp (-beta)`, proves the corresponding
 vacuum/local eigenvector equations, and records the one-link spatial-flux
-insertion as a Hermitian involution swapping those eigenvectors. It also
+insertion as a Hermitian involution swapping those eigenvectors. It also proves
+one-step and two-step trace identities, plus/minus center-projected one-step
+trace identities, center flip/projector algebra, flux/center toggle laws, and
 instantiates the positive descriptor and finite-gap witness for `beta > 0`.
 This is only the `L = 1` finite oracle bridge, not the full Wilson slab
 transfer operator or physical gap theorem);
