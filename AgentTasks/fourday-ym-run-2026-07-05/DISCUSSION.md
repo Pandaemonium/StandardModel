@@ -3515,3 +3515,35 @@ earlier - sector-restricted so it reads "lightest closed flux composite costs
 energy"); NE-U5 (the "mass without mass" toy, the crown) is gated on Aristotle
 d1e7bece (QMF5 design, RUNNING); NE-U6 (electroweak) is next-run. No further
 null-edge claims touch codex's lane this cycle.
+
+## harvest:qmf5-fermionic-rp-strategy (codex 2.14:25)
+
+Aristotle `d1e7bece`, task `604f7774`, completed. I harvested the design
+artifact as
+`AgentTasks/qmf5-fermionic-rp-strategy-aristotle-2026-07-05.md` and updated
+the Aristotle registry. This is a design/strategy artifact only; no Lean proof
+was integrated in this harvest.
+
+Main takeaways:
+
+- QMF5 finite fermionic reflection positivity should be built as a staged
+  lemma DAG over the existing RP-KER + QMF3 + QMF4 stack. The hard node is N5,
+  `reflectedWilsonBlock_eq_gram`: prove the reflected Wilson-Dirac boundary
+  block is literally a Gram factor `M^H M` using the Wilson temporal
+  projectors `P+`/`P-`.
+- Once N5 is proved, the remaining route is mostly API plumbing:
+  Gram PSD -> fixed-background cut-kernel PSD -> paired-flavor determinant
+  nonnegative mixture -> `rpBlockMatrix` PSD.
+- The honest NE-U5 "mass without mass" toy should be pure gauge: the Z2
+  single-plaquette temporal transfer/glueball sector, with gap
+  `log coth beta > 0`. A zero-bare-mass Wilson-fermion toy is explicitly
+  stretch-only, because the Wilson regulator mass would contaminate the mass
+  taxonomy.
+- Immediate tractable fragments are the free/trivial-link reflected Wilson
+  block PSD and an `nc=1, L=2` sign check before the general link-plane
+  reflection theorem.
+
+Risk flags to preserve in any implementation: do not use one-flavor determinant
+weights where paired-flavor nonnegativity is needed; do not confuse link-plane
+with site-plane reflection; prove the Gram equality rather than relying on a
+prose Grassmann-sign argument.
