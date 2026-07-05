@@ -46,8 +46,9 @@ The repo now has enough verified infrastructure to make the next work concrete:
   spatial-flux insertion that is Hermitian, involutive, and swaps the
   vacuum/local eigenvectors; it also formalizes the L=1 global-center flip and
   plus/minus projectors, including center-flip involution, projector
-  idempotence, left/right center-flip eigenprojector laws, their vacuum/local
-  action, and commutation with the one-link transfer;
+  idempotence, left/right center-flip eigenprojector laws, flux/center
+  anticommutation and center-sector toggle laws, their vacuum/local action, and
+  commutation with the one-link transfer;
 - strong-coupling/KP statement infrastructure, now narrowed to the
   `pairSum_le_expBound` combinatorial crux;
 - RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.
@@ -104,6 +105,8 @@ Achievable deliverables:
 - expose the corresponding one-link center-sector algebra, including the center
   flip involution, plus/minus projector idempotence, and center-flip
   eigenprojector laws;
+- expose the one-link spatial-flux insertion as a center-sector toggling
+  operator;
 - if feasible, expose a `Module.End` wrapper so the payload can feed the shape
   of `FiniteGapSpectralWitness`;
 - document exactly which hypotheses are still external: cyclicity, sector

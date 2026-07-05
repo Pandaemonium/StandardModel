@@ -254,6 +254,51 @@ theorem centerMinus_mul_centerFlip :
     norm_num [centerFlipMatrix, centerMinusProjector, Matrix.mul_apply,
       Fin.sum_univ_two]
 
+/-- The spatial-flux insertion anticommutes with the center flip. -/
+theorem centerFlip_mul_fluxMatrix :
+    centerFlipMatrix * fluxMatrix =
+      (-1 : ℂ) • (fluxMatrix * centerFlipMatrix) := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerFlipMatrix, fluxMatrix, bitSign, Matrix.mul_apply,
+      Fin.sum_univ_two]
+
+/-- Multiplying by the spatial-flux insertion on the right sends the
+plus-sector projector to the minus sector. -/
+theorem centerPlus_mul_flux_eq_flux_mul_centerMinus :
+    centerPlusProjector * fluxMatrix = fluxMatrix * centerMinusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerPlusProjector, centerMinusProjector, fluxMatrix, bitSign,
+      Matrix.mul_apply, Fin.sum_univ_two]
+
+/-- Multiplying by the spatial-flux insertion on the right sends the
+minus-sector projector to the plus sector. -/
+theorem centerMinus_mul_flux_eq_flux_mul_centerPlus :
+    centerMinusProjector * fluxMatrix = fluxMatrix * centerPlusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerPlusProjector, centerMinusProjector, fluxMatrix, bitSign,
+      Matrix.mul_apply, Fin.sum_univ_two]
+
+/-- Multiplying by the spatial-flux insertion on the left sends the plus-sector
+projector to the minus sector. -/
+theorem flux_mul_centerPlus_eq_centerMinus_mul_flux :
+    fluxMatrix * centerPlusProjector = centerMinusProjector * fluxMatrix := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerPlusProjector, centerMinusProjector, fluxMatrix, bitSign,
+      Matrix.mul_apply, Fin.sum_univ_two]
+
+/-- Multiplying by the spatial-flux insertion on the left sends the
+minus-sector projector to the plus sector. -/
+theorem flux_mul_centerMinus_eq_centerPlus_mul_flux :
+    fluxMatrix * centerMinusProjector = centerPlusProjector * fluxMatrix := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerPlusProjector, centerMinusProjector, fluxMatrix, bitSign,
+      Matrix.mul_apply, Fin.sum_univ_two]
+
 /-- The plus-sector projector fixes the vacuum vector. -/
 theorem centerPlusProjector_mulVec_vacuum :
     centerPlusProjector *ᵥ vacuumVec = vacuumVec := by
