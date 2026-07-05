@@ -41,6 +41,7 @@ The repo now has enough verified infrastructure to make the next work concrete:
   descriptor/witness for `beta > 0`, with contraction factor `tanh beta`,
   explicit slab eigenvector equations, one-step partition and flux-insertion
   trace identities, one-step plus/minus center-projected trace identities, a
+  center-projected trace decomposition and minus/plus trace-ratio theorem, a
   normalized `T = 1` flux-expectation theorem, `T = 2` partition and raw
   two-time flux-correlation numerator identities, a
   normalized `T = 2`, `tau = 1` autocorrelation ratio theorem, and a one-link

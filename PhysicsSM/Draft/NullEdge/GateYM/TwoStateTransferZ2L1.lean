@@ -388,6 +388,32 @@ theorem centerMinusProjector_mul_slabTransfer_trace (beta : ℝ) :
     offDiagonalWeight, Fin.sum_univ_two]
   ring
 
+/-- The plus/minus center-projected one-step traces reconstruct the full
+one-link transfer trace. -/
+theorem centerProjected_traces_sum_eq_slabTransfer_trace (beta : ℝ) :
+    Matrix.trace (centerPlusProjector * slabTransfer beta) +
+        Matrix.trace (centerMinusProjector * slabTransfer beta) =
+      Matrix.trace (slabTransfer beta) := by
+  rw [centerPlusProjector_mul_slabTransfer_trace,
+    centerMinusProjector_mul_slabTransfer_trace, slabTransfer_trace]
+  norm_num
+  ring
+
+/-- The ratio of the minus-sector and plus-sector one-step transfer traces is
+the same one-link contraction factor `tanh beta`. -/
+theorem centerMinus_trace_div_centerPlus_trace_eq_tanh (beta : ℝ) :
+    Matrix.trace (centerMinusProjector * slabTransfer beta) /
+        Matrix.trace (centerPlusProjector * slabTransfer beta) =
+      ((Real.tanh beta : ℝ) : ℂ) := by
+  rw [centerMinusProjector_mul_slabTransfer_trace,
+    centerPlusProjector_mul_slabTransfer_trace]
+  rw [Real.tanh_eq]
+  norm_cast
+  have hden :
+      Real.exp beta + Real.exp (-beta) ≠ 0 := by
+    positivity
+  field_simp [hden]
+
 /-- A single time-zero spatial-flux insertion has zero one-step trace in the
 one-link slab model. -/
 theorem fluxMatrix_mul_slabTransfer_trace (beta : ℝ) :
