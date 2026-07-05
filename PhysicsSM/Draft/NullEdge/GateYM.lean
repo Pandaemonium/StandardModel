@@ -51,6 +51,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.TreeGraphInequality
 import PhysicsSM.Draft.NullEdge.GateYM.BerezinMatthewsSalam
 import PhysicsSM.Draft.NullEdge.GateYM.EuclideanGamma
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonDiracOperator
+import PhysicsSM.Draft.NullEdge.GateYM.ChiralMassStructure
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
