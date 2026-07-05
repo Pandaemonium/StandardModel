@@ -1086,6 +1086,32 @@ theorem onePlaquetteZ2_plaquetteKPBound
         rw [onePlaquetteZ2_anchor_sum beta alpha q])
       hsmall'
 
+/-- A more usable one-plaquette smallness threshold: bounding the Z2
+coefficient by `alpha * exp(-alpha)` implies the scalar KP smallness condition
+used by `onePlaquetteZ2_plaquetteKPBound`. -/
+theorem onePlaquetteZ2_smallness_of_abs_tanh_le
+    (beta alpha : Real)
+    (hsmall : |Real.tanh beta| <= alpha * Real.exp (-alpha)) :
+    |Real.tanh beta| * Real.exp alpha <= alpha := by
+  calc
+    |Real.tanh beta| * Real.exp alpha
+        <= (alpha * Real.exp (-alpha)) * Real.exp alpha := by
+          exact mul_le_mul_of_nonneg_right hsmall
+            (le_of_lt (Real.exp_pos alpha))
+    _ = alpha := by
+          rw [Real.exp_neg, mul_assoc,
+            inv_mul_cancel₀ (Real.exp_pos alpha).ne', mul_one]
+
+/-- One-plaquette Z2 KP fixture under the explicit threshold
+`|tanh beta| <= alpha * exp(-alpha)`. -/
+theorem onePlaquetteZ2_plaquetteKPBound_of_abs_tanh_le
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| <= alpha * Real.exp (-alpha)) :
+    PlaquetteKPBound onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha := by
+  exact onePlaquetteZ2_plaquetteKPBound beta alpha halpha
+    (onePlaquetteZ2_smallness_of_abs_tanh_le beta alpha hsmall)
+
 /-- The one-plaquette Z2 fixture supplies an abstract `KPCondition` under the
 same scalar smallness hypothesis.  This is the no-Q6 wrapper around
 `onePlaquetteZ2_plaquetteKPBound`. -/
@@ -1103,6 +1129,20 @@ theorem onePlaquetteZ2_kpCondition
       onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
       (z2GammaAbs beta) (z2GammaAbs_nonneg beta) alpha halpha
       (onePlaquetteZ2_plaquetteKPBound beta alpha halpha hsmall)
+
+/-- One-plaquette Z2 `KPCondition` under the explicit threshold
+`|tanh beta| <= alpha * exp(-alpha)`. -/
+theorem onePlaquetteZ2_kpCondition_of_abs_tanh_le
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| <= alpha * Real.exp (-alpha)) :
+    KPCondition
+      (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha)
+      (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+        onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+        (z2GammaAbs beta) alpha halpha) := by
+  exact onePlaquetteZ2_kpCondition beta alpha halpha
+    (onePlaquetteZ2_smallness_of_abs_tanh_le beta alpha hsmall)
 
 /-- The one-plaquette Z2 fixture supplies the corrected Q6 input pair:
 `KPCondition` plus self-incompatibility.  It still does not invoke the Q6
@@ -1127,6 +1167,25 @@ theorem onePlaquetteZ2_kpCondition_and_selfIncompatible
     exact plaquettePolymerSystem_self_incompatible onePlaquetteAdj
       onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
       (z2GammaAbs beta) alpha halpha X
+
+/-- One-plaquette Z2 corrected Q6 input pair under the explicit threshold
+`|tanh beta| <= alpha * exp(-alpha)`. -/
+theorem onePlaquetteZ2_kpCondition_and_selfIncompatible_of_abs_tanh_le
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| <= alpha * Real.exp (-alpha)) :
+    KPCondition
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha)
+        (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+          onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+          (z2GammaAbs beta) alpha halpha)
+      /\ (forall X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel,
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha).incompatible
+          X X) := by
+  exact onePlaquetteZ2_kpCondition_and_selfIncompatible beta alpha halpha
+    (onePlaquetteZ2_smallness_of_abs_tanh_le beta alpha hsmall)
 
 /-- At zero coupling, the one-plaquette Z2 scalar smallness condition is
 automatic for every nonnegative `alpha`. -/

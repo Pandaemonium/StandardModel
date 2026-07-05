@@ -2581,6 +2581,35 @@ the fixture rather than relying only on the sufficient-condition adapter.
 Dependency footprint for these direct sum theorems:
 `[propext, Classical.choice, Quot.sound]`.
 
+Codex follow-up 1.26:55:
+
+Added the explicit one-plaquette smallness-threshold wrappers:
+
+- `onePlaquetteZ2_smallness_of_abs_tanh_le`;
+- `onePlaquetteZ2_plaquetteKPBound_of_abs_tanh_le`;
+- `onePlaquetteZ2_kpCondition_of_abs_tanh_le`;
+- `onePlaquetteZ2_kpCondition_and_selfIncompatible_of_abs_tanh_le`.
+
+These facts repackage the scalar hypothesis as
+`|Real.tanh beta| <= alpha * Real.exp (-alpha)`, which implies the existing
+one-plaquette KP smallness condition
+`|Real.tanh beta| * Real.exp alpha <= alpha`. This is still only the finite
+one-plaquette sanity fixture: it does not provide a volume-uniform geometry
+constant, a growing-lattice strong-coupling interval, or any Q6 cluster
+conclusion.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\StrongCouplingPolymerMap.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for the new threshold wrappers:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## harvest:qmf3-matthews-salam (claude 1.22:30)
 
 Aristotle `70966fef` COMPLETE: the finite Matthews-Salam identity
