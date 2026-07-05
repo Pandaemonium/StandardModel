@@ -838,6 +838,40 @@ theorem mem_range_rpHilbertSpaceBlockElectricProjection_iff {Lx Ly : Nat}
       (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
         hLx hLy ex ey v hv.2) i
 
+/-- A vector in the ambient finite OS range lies in the selected block electric
+sector exactly when the corresponding block electric-sector endomorphism fixes
+it.  This is the fixed-point form of the finite sector decomposition. -/
+theorem mem_rpBlockElectricSector_iff_rpHilbertSpaceBlockElectricProjection_eq_self
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    (v :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) ∈
+        rpBlockElectricSector hLx hLy F ex ey ↔
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v = v := by
+  constructor
+  · intro hv
+    ext i
+    exact congrFun
+      (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+        hLx hLy ex ey v hv.2) i
+  · intro hfix
+    refine ⟨v.property, ?_⟩
+    apply inBlockElectricSector_of_blockElectricSectorProjection_eq_self hLx hLy ex ey
+    ext i
+    have hfun := congrArg
+      (fun w : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) =>
+        ((w :
+          (FluxSectorZ2.TorusLinkField Lx Ly ×
+            FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) i)) hfix
+    simpa [rpHilbertSpaceBlockElectricProjection,
+      rpBlockElectricSectorInclusion, rpBlockElectricSectorProjection] using hfun
+
 /-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
 theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
     [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]

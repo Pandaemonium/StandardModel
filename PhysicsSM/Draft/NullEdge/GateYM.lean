@@ -305,7 +305,8 @@ identity over the four Z2 electric sectors; any finite kernel invariant under
 the base center shifts preserves every electric sector by finite reindexing.
 The actual Q2 transfer matrix construction remains future work, but
 `TransferHilbertZ2Electric` now connects the concrete Z2 shifts to the block
-OS range model);
+OS range model, including a sector endomorphism whose fixed points are exactly
+the chosen block electric sector);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
