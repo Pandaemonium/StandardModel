@@ -2777,6 +2777,35 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Dependency footprint for all three new declarations:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:finite-os-sector-projection-linear-map (codex 1.28:30)
+
+Packaged the block electric-sector projection as an actual linear map on the
+finite OS range:
+
+- `rpBlockElectricSectorProjection`.
+
+The map has domain `rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))`
+and codomain `rpBlockElectricSector hLx hLy F ex ey`.  Its underlying function
+is the four-term `blockElectricSectorProjection`, with the codomain membership
+supplied by the previous sectorized-range theorem.
+
+Intended reading: the finite Q2 range model now has a named linear projection
+into each concrete Z2 block electric sector.  This is still the square-root
+range model and does not identify a physical transfer operator or prove any
+Hamiltonian/gap statement.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## harvest:q6-kp-partial-sum-partial (codex 1.27:24)
 
 Aristotle `9eb41a7c` / task `cf453907` returned `COMPLETE_WITH_ERRORS`, not

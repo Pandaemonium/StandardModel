@@ -20,7 +20,8 @@ the projection lands in the requested block electric sector, fixes exactly the
 vectors in that sector, is idempotent, is mutually orthogonal on distinct
 sectors, sums to the identity over the four Z2 sectors, preserves the finite
 OS range for plaquette-field block weights, and lands in the corresponding
-sectorized finite OS submodule.
+sectorized finite OS submodule.  The projection is also packaged as a linear
+map from the finite OS range into that sectorized submodule.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -556,6 +557,32 @@ theorem blockElectricSectorProjection_mem_rpBlockElectricSector_z2PlaquetteBlock
   · exact blockElectricSectorProjection_preserves_rpHilbertSpace_z2PlaquetteBlock
       hLx hLy F ex ey v hv
   · exact blockElectricSectorProjection_inBlockElectricSector hLx hLy ex ey v
+
+/-- The block electric-sector projection as a linear map from the finite OS
+range into the selected sectorized finite OS range. -/
+def rpBlockElectricSectorProjection {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) →ₗ[Complex]
+      rpBlockElectricSector hLx hLy F ex ey where
+  toFun v :=
+    ⟨blockElectricSectorProjection hLx hLy ex ey v,
+      blockElectricSectorProjection_mem_rpBlockElectricSector_z2PlaquetteBlock
+        hLx hLy F ex ey v v.property⟩
+  map_add' := by
+    intro u v
+    ext i
+    simp [blockElectricSectorProjection]
+    ring
+  map_smul' := by
+    intro c v
+    ext i
+    simp [blockElectricSectorProjection]
+    ring_nf
 
 end TransferHilbertZ2Electric
 end GateYM
