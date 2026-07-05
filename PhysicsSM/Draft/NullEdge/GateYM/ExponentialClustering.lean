@@ -752,6 +752,30 @@ theorem connectedCorr_eq_zero_of_supportTail_eq_zero
             rw [hTailZero, mul_zero]
   exact norm_eq_zero.mp (le_antisymm hNorm (norm_nonneg _))
 
+/-- If every anchored tail in the source observable support vanishes, the
+support-tail bridge forces the connected correlator to vanish.
+
+This is the pointwise form of `connectedCorr_eq_zero_of_supportTail_eq_zero`.
+It is useful when a concrete observable bridge proves vanishing anchor by
+anchor rather than first packaging the finite sum as zero. -/
+theorem connectedCorr_eq_zero_of_forall_tailContribution_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (L : LocalObservableSupportData Gamma Obs)
+    {A B : Obs}
+    (hTailZero : forall g0 : Gamma, g0 ∈ L.support A ->
+      tailContribution M hdec D g0 (L.separation A B) = 0)
+    (hBridge : forall A B : Obs,
+      ‖L.connectedCorr A B‖ <=
+        L.prefactor A B *
+          supportTail M hdec D (L.support A) (L.separation A B)) :
+    L.connectedCorr A B = 0 :=
+  connectedCorr_eq_zero_of_supportTail_eq_zero M hdec D L
+    ((supportTail_eq_zero_iff_forall_tailContribution_eq_zero M hdec D
+      (L.support A) (L.separation A B)).2 hTailZero)
+    hBridge
+
 /-- Finite-support exponential clustering from a uniform per-anchor tail
 estimate.
 

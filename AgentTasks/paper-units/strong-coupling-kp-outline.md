@@ -156,6 +156,9 @@ Q8 conditional clustering side:
   corollary: under the existing support-tail bridge hypothesis, a zero finite
   support tail forces the connected correlator to vanish. This remains
   support-interface bookkeeping, not a concrete observable expansion theorem.
+- `connectedCorr_eq_zero_of_forall_tailContribution_eq_zero` is the pointwise
+  wrapper: per-anchor tail vanishing over the source support implies the same
+  zero-correlator conclusion under the existing bridge hypothesis.
 
 ## Active Aristotle Jobs
 

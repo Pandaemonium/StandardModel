@@ -50,7 +50,9 @@ intentionally untouched because Q6 has not landed.
   `tailContribution_eq_zero_of_mem_of_supportTail_eq_zero`; the bridge-level
   corollary `connectedCorr_eq_zero_of_supportTail_eq_zero` says that a zero
   finite support tail forces the connected correlator itself to vanish under
-  the same explicit support-tail bridge hypothesis.
+  the same explicit support-tail bridge hypothesis. The pointwise wrapper
+  `connectedCorr_eq_zero_of_forall_tailContribution_eq_zero` packages the
+  same conclusion from per-anchor tail vanishing over the source support.
 - `StrongCouplingPolymerMap.lean`: closed-neighborhood basics, area-sliced
   anchored sums, nonnegativity and impossible-area range cleanup, positive-area
   adapter variants, and one-plaquette Z2 area-slice/positive-area fixtures
