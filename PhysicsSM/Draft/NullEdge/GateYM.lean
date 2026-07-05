@@ -466,8 +466,9 @@ the onto linear map `rpBlockElectricSectorProjection`, with explicit
 linear inclusion/retraction data and an idempotent endomorphism of the finite
 OS range; the sector endomorphisms annihilate across distinct Z2 sectors and
 sum to the identity on the finite OS range, and each endomorphism range is
-characterized as the matching sectorized finite OS submodule. This is still a
-finite identity, not a physical transfer matrix or gap claim);
+characterized as the matching sectorized finite OS submodule; distinct
+sectorized finite OS submodules are disjoint. This is still a finite identity,
+not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and

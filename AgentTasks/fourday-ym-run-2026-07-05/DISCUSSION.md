@@ -2777,6 +2777,33 @@ same slice.
 Dependency footprint:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:finite-os-sector-submodule-disjointness (codex 1.29:34)
+
+Added submodule-level separation facts for the sectorized finite OS ranges in
+`TransferHilbertZ2Electric.lean`:
+
+- `eq_zero_of_mem_rpBlockElectricSector_of_ne`;
+- `disjoint_rpBlockElectricSector_of_ne`.
+
+Intended reading: two different `(ex, ey)` block electric-sector submodules of
+the plaquette-field finite OS range intersect only in zero.  The proof uses
+the fixed-vector characterization for one sector and the cross-sector
+annihilation theorem for the other sector.  This is still finite Q2/Q3
+algebraic decomposition infrastructure only, with no physical transfer matrix,
+Hamiltonian, or gap claim.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+```
+
+Further aggregate/build/pre-commit checks are recorded in the ledger for the
+same slice.
+
+Dependency footprint:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## q2q3:finite-os-sector-inclusion-retraction (codex 1.28:55)
 
 Added the inclusion/retraction API for the sectorized finite OS range in

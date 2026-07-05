@@ -24,7 +24,8 @@ sectorized finite OS submodule.  The projection is also packaged as a linear
 map from the finite OS range onto that sectorized submodule, with an explicit
 linear inclusion/retraction pair and endomorphism-level four-sector
 decomposition on the finite OS range.  The range of each sector endomorphism is
-characterized as the matching sectorized finite OS submodule.
+characterized as the matching sectorized finite OS submodule, and distinct
+sectorized submodules are disjoint.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -748,6 +749,49 @@ theorem mem_range_rpHilbertSpaceBlockElectricProjection_iff {Lx Ly : Nat}
     exact congrFun
       (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
         hLx hLy ex ey v hv.2) i
+
+/-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
+theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey ex' ey' : Bool)
+    (v :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)
+    (hv : v ∈ rpBlockElectricSector hLx hLy F ex ey)
+    (hv' : v ∈ rpBlockElectricSector hLx hLy F ex' ey')
+    (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    v = 0 := by
+  have hne' : ex' ≠ ex ∨ ey' ≠ ey := by
+    cases hne with
+    | inl hx => exact Or.inl (fun h => hx h.symm)
+    | inr hy => exact Or.inr (fun h => hy h.symm)
+  have hself :=
+    blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+      hLx hLy ex ey v hv.2
+  have hzero :=
+    blockElectricSectorProjection_eq_zero_of_inBlockElectricSector_ne
+      hLx hLy ex' ey' ex ey v hv'.2 hne'
+  simpa using hself.symm.trans hzero
+
+/-- Distinct sectorized finite OS ranges are disjoint submodules. -/
+theorem disjoint_rpBlockElectricSector_of_ne {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey ex' ey' : Bool)
+    (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    Disjoint (rpBlockElectricSector hLx hLy F ex ey)
+      (rpBlockElectricSector hLx hLy F ex' ey') := by
+  rw [Submodule.disjoint_def]
+  intro v hv hv'
+  exact eq_zero_of_mem_rpBlockElectricSector_of_ne
+    hLx hLy F ex ey ex' ey' v hv hv' hne
 
 end TransferHilbertZ2Electric
 end GateYM
