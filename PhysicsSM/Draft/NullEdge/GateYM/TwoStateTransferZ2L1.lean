@@ -179,6 +179,26 @@ theorem fluxMatrix_slabTransfer_fluxMatrix_slabTransfer_trace (beta : ℝ) :
     plaquetteSign, bitSign, Fin.sum_univ_two]
   ring
 
+/-- The normalized `L = 1`, `T = 2`, `tau = 1` spatial-flux autocorrelation
+ratio is `tanh (2 * beta)`. -/
+theorem fluxCorrelation_T2_eq_tanh_two_mul (beta : ℝ) :
+    Matrix.trace (fluxMatrix * slabTransfer beta * fluxMatrix * slabTransfer beta) /
+        Matrix.trace (slabTransfer beta * slabTransfer beta) =
+      ((Real.tanh (2 * beta) : ℝ) : ℂ) := by
+  rw [fluxMatrix_slabTransfer_fluxMatrix_slabTransfer_trace,
+    slabTransfer_sq_trace]
+  rw [Real.tanh_eq]
+  norm_cast
+  rw [show 2 * beta = beta + beta by ring, Real.exp_add,
+    show -(beta + beta) = -beta + -beta by ring, Real.exp_add]
+  have hden :
+      Real.exp beta ^ 2 + Real.exp (-beta) ^ 2 ≠ 0 := by
+    positivity
+  have hden8 :
+      Real.exp beta ^ 2 * 8 + Real.exp (-beta) ^ 2 * 8 ≠ 0 := by
+    positivity
+  field_simp [hden, hden8]
+
 /-- For positive coupling, the one-link Z2 slab data forms a positive
 two-state descriptor. -/
 def descriptor (beta : ℝ) (hbeta : 0 < beta) : Descriptor where
