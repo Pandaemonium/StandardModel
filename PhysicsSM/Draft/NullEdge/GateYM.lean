@@ -507,8 +507,10 @@ carries the same self-incompatibility plus explicit energy-distance coercivity.
 The concrete `treeGraphBound_ursell` is now a kernel-checked specialization of
 `TreeGraphInequality`; `kp_tree_sum_bound` is now reduced through `treeTerm`,
 `boundedTouchSum`, `sum_le_boundedTouchSum`, and `boundedTouchSum_le_kpPsi` to
-the single rooted-tree exponential-formula handoff
-`boundedTouchSum_succ_le`). Not part of the default trusted build target;
+the single finite rooted-tree partial-exponential handoff
+`boundedTouchSum_succ_le_finitePartial`; the analytic step
+`boundedTouchSum_succ_le` is proved from that handoff). Not part of the default
+trusted build target;
 `StrongCouplingPolymerMap` (YM4/T7 statement
 layer: finite plaquette polymers as nonempty connected finite supports with
 support-indexed nontrivial labels, conservative overlap-or-touching

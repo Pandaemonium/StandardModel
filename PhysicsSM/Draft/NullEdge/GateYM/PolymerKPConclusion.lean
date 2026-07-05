@@ -31,14 +31,15 @@ Scope discipline:
 Draft-trust: statement freeze plus one kernel-checked negative result and a
 kernel-checked Penrose tree-graph bound.  The rooted KP partial-sum theorem
 `kp_tree_sum_bound` (hence `kp_partial_sum_bound` and `kp_cluster_summable`)
-is now reduced, with a kernel-checked lemma DAG, to a single remaining
-combinatorial inequality `boundedTouchSum_succ_le` (the labeled rooted-tree
-exponential-generating-function formula).  In detail: the enlargement step
+is now reduced, with a kernel-checked lemma DAG, to the single finite
+combinatorial inequality `boundedTouchSum_succ_le_finitePartial` (the labeled
+rooted-tree exponential-generating-function formula before passing from a
+finite partial sum to `Real.exp`).  In detail: the enlargement step
 `sum_le_boundedTouchSum`, the base case `boundedTouchSum_zero_le`, the depth
-induction `boundedTouchSum_le_kpPsi`, and the analytic bound `kpPsi_le_exp`
-are all proved; `boundedTouchSum_succ_le` is the sole documented handoff on
-that branch.  The two further handoffs
-`kp_convergence_bound_of_selfIncompatible` and `kp_tail_bound` are untouched.
+induction `boundedTouchSum_le_kpPsi`, the analytic partial-sum-to-exponential
+step `boundedTouchSum_succ_le`, and the analytic bound `kpPsi_le_exp` are all
+proved.  The two further handoffs `kp_convergence_bound_of_selfIncompatible`
+and `kp_tail_bound` are untouched.
 Claim label: statement freeze / lemma DAG / formal counterexample / finite
 identity.
 -/
@@ -478,13 +479,38 @@ into rooted subtree blocks, each rooted at a polymer incompatible with `g`.
 The ordered `1/n!` normalization must then reconcile with the `1/k!` from
 unordered child blocks and the subtree normalizations, giving the exponential
 recursion.  Proving this is a finite labeled rooted-tree exponential-formula
-problem, not a KP-statement ambiguity. -/
+problem, not a KP-statement ambiguity.
+
+The analytic exponential has been split off (see `boundedTouchSum_succ_le`
+below): it suffices to bound `boundedTouchSum (K + 1) g` by the finite partial
+sum of the exponential series in the neighbor bounded-touch-sum, truncated at
+`k <= K + 2` (a connected cluster touching `g` of size at most `K + 2` has a
+root with at most `K + 1` children).  This
+`boundedTouchSum_succ_le_finitePartial` statement is the purely finite labeled
+rooted-tree species identity; no real-analytic input remains in it. -/
+theorem boundedTouchSum_succ_le_finitePartial (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    boundedTouchSum S hdec (K + 1) g
+      <= |S.weight g| *
+          ∑ k ∈ Finset.range (K + 3),
+            (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
+              / (Nat.factorial k : Real) := by
+  sorry
+
+/-- The labeled rooted-tree exponential inequality.  It follows from the
+finite partial-sum bound `boundedTouchSum_succ_le_finitePartial` and the
+standard fact `Real.sum_le_exp_of_nonneg` that every partial sum of the
+exponential series of a nonnegative real is at most its exponential. -/
 theorem boundedTouchSum_succ_le (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
     boundedTouchSum S hdec (K + 1) g
       <= |S.weight g| *
           Real.exp (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) := by
-  sorry
+  have hx : (0 : Real) <= ∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h :=
+    Finset.sum_nonneg (fun h _ => boundedTouchSum_nonneg S hdec K h)
+  refine le_trans (boundedTouchSum_succ_le_finitePartial S hdec K g) ?_
+  refine mul_le_mul_of_nonneg_left ?_ (abs_nonneg _)
+  exact Real.sum_le_exp_of_nonneg hx (K + 3)
 
 /-- The exponential recursion bound: `boundedTouchSum` at depth `K` is bounded
 by the depth-`K` truncation `kpPsi`.  This is proved by induction on `K` from

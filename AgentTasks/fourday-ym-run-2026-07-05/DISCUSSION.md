@@ -3385,3 +3385,45 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 The code escape-hatch scan on `TransferHilbertZ2Electric.lean` found no matches,
 `git diff --check` passed, and the new proof theorems have axiom footprint
 `[propext, Classical.choice, Quot.sound]`.
+
+## harvest:q6-bounded-touch-sum-succ (codex 1.35:24)
+
+Harvested Aristotle `961529bb`, task `ad51386b`
+(`COMPLETE_WITH_ERRORS`), as a partial Q6 integration.
+
+What landed in `PolymerKPConclusion.lean`:
+
+- new finite combinatorial handoff
+  `boundedTouchSum_succ_le_finitePartial`;
+- proved analytic step `boundedTouchSum_succ_le`, reducing it to the
+  finite-partial theorem using `boundedTouchSum_nonneg` and
+  `Real.sum_le_exp_of_nonneg`;
+- updated Q6 module docstring and status files
+  `Q6_BOUNDED_TOUCH_SUM_SUCC_STATUS.md`,
+  `Q6_KP_TREE_SUM_BOUND_STATUS.md`, and
+  `Q6_KP_PARTIAL_SUM_STATUS.md`.
+
+Intended reading: the remaining rooted-tree recursion blocker is no longer the
+full exponential bound. All real-analytic content has been stripped off. The
+smallest known Q6 crux is now the finite labeled rooted-tree / species
+counting statement `boundedTouchSum_succ_le_finitePartial`.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\PolymerKPConclusion.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Axiom audit: `boundedTouchSum_succ_le_finitePartial`,
+`boundedTouchSum_succ_le`, `kp_tree_sum_bound`, and `kp_partial_sum_bound`
+carry `[propext, sorryAx, Classical.choice, Quot.sound]`, as expected for
+draft Q6 theorems depending on the finite-partial proof placeholder.
+
+Remaining Q6 draft proof placeholders:
+
+- `boundedTouchSum_succ_le_finitePartial`;
+- `kp_convergence_bound_of_selfIncompatible`;
+- `kp_tail_bound`.
