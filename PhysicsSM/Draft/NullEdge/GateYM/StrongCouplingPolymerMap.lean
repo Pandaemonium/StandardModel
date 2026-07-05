@@ -1103,6 +1103,50 @@ theorem onePlaquetteZ2_kpCondition_and_selfIncompatible
       onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
       (z2GammaAbs beta) alpha halpha X
 
+/-- At zero coupling, the one-plaquette Z2 scalar smallness condition is
+automatic for every nonnegative `alpha`. -/
+theorem onePlaquetteZ2_smallness_beta_zero
+    (alpha : Real) (halpha : 0 <= alpha) :
+    |Real.tanh 0| * Real.exp alpha <= alpha := by
+  simpa [Real.tanh_eq_sinh_div_cosh] using halpha
+
+/-- Zero-coupling concrete one-plaquette Z2 `PlaquetteKPBound`. -/
+theorem onePlaquetteZ2_plaquetteKPBound_beta_zero
+    (alpha : Real) (halpha : 0 <= alpha) :
+    PlaquetteKPBound onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs 0) alpha halpha := by
+  exact onePlaquetteZ2_plaquetteKPBound 0 alpha halpha
+    (onePlaquetteZ2_smallness_beta_zero alpha halpha)
+
+/-- Zero-coupling concrete one-plaquette Z2 `KPCondition`. -/
+theorem onePlaquetteZ2_kpCondition_beta_zero
+    (alpha : Real) (halpha : 0 <= alpha) :
+    KPCondition
+      (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel (z2GammaAbs 0) alpha halpha)
+      (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+        onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+        (z2GammaAbs 0) alpha halpha) := by
+  exact onePlaquetteZ2_kpCondition 0 alpha halpha
+    (onePlaquetteZ2_smallness_beta_zero alpha halpha)
+
+/-- Zero-coupling concrete one-plaquette Z2 corrected Q6 input pair. -/
+theorem onePlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero
+    (alpha : Real) (halpha : 0 <= alpha) :
+    KPCondition
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs 0) alpha halpha)
+        (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+          onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+          (z2GammaAbs 0) alpha halpha)
+      /\ (forall X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel,
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs 0) alpha halpha).incompatible
+          X X) := by
+  exact onePlaquetteZ2_kpCondition_and_selfIncompatible 0 alpha halpha
+    (onePlaquetteZ2_smallness_beta_zero alpha halpha)
+
 end StrongCouplingPolymerMap
 end GateYM
 end NullEdge
