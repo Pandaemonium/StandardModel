@@ -24,6 +24,12 @@ in `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean`:
   This supplies the factorial comparison needed after a future geometric
   fiber-count theorem supplies the block decomposition.
 
+The follow-up helper `tree_root_child_mem_nbhd` is also now integrated.  It
+proves that if a spanning-tree subgraph edge leaves a slot carrying the root
+polymer `g`, then the adjacent child slot's polymer lies in `nbhd S hdec g`.
+This discharges the immediate root-neighbor membership fact needed by the
+future canonical-root deletion argument.
+
 ## Remaining blocker
 
 The remaining core is the geometric deletion and counting construction:
@@ -31,7 +37,8 @@ The remaining core is the geometric deletion and counting construction:
 - define `rootDeletion` for a spanning tree rooted at the canonical `g` slot;
 - split the deleted tree into connected blocks;
 - reindex each block as a smaller ordered cluster;
-- prove the corresponding subtree touches a neighbor of `g`;
+- prove the corresponding subtree touches a neighbor of `g` beyond the
+  immediate root-edge membership already supplied by `tree_root_child_mem_nbhd`;
 - prove the block-level `absWeight` factorization;
 - prove the geometric fiber-count bound that uses the multinomial
   normalization.

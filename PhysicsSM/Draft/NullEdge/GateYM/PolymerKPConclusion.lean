@@ -35,8 +35,9 @@ is now reduced, with a kernel-checked lemma DAG, to the finite combinatorial
 inequality `pairSum_le_expBound` through the sound touch-only reformulation
 `touchOnlySum_le_expBound`.  The current checked DAG includes
 `exists_canonical_root`, which chooses the least `g`-slot of a touching
-cluster, and `rhs_forest_expand`, which expands the RHS partial exponential
-into ordered child tuples.  It also includes
+cluster, `tree_root_child_mem_nbhd`, which sends a spanning-tree edge out of
+that root slot into the KP neighborhood of `g`, and `rhs_forest_expand`, which
+expands the RHS partial exponential into ordered child tuples.  It also includes
 `factorial_mul_prod_factorial_le`, the arithmetic normalization for the future
 multinomial fiber bound.  The remaining gap is the rooted-tree deletion, block
 reindexing, weight-factorization, and the geometric fiber-count bound.  In
@@ -542,6 +543,24 @@ lemma exists_canonical_root (S : PolymerSystem Gamma) (X : Cluster S) (g : Gamma
     simpa [roots] using hmem
   · intro i hi
     exact roots.min'_le i (by simp [roots, hi])
+
+/-- A tree edge out of a slot carrying `g` lands in the KP neighborhood of
+`g`.
+
+This is the first local fact needed after canonical-root deletion: every
+subtree block attached to the chosen root starts at a polymer incompatible
+with the root polymer.  The later block-decomposition and fiber-count
+construction remains open. -/
+lemma tree_root_child_mem_nbhd (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) (g : Gamma) {T : SimpleGraph (Fin X.n)}
+    {r j : Fin X.n} (hTle : T ≤ X.graph S hdec)
+    (hr : X.poly r = g) (hAdj : T.Adj r j) :
+    X.poly j ∈ nbhd S hdec g := by
+  have hgraph := hTle hAdj
+  have hinc : S.incompatible g (X.poly j) := by
+    simpa [Cluster.graph, hr] using hgraph.2
+  simp [nbhd, hinc]
 
 open Classical in
 /-- Expand the right-hand exponential partial sum into ordered child tuples.
