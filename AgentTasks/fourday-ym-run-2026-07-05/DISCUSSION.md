@@ -3766,3 +3766,23 @@ quick brick. So QMF1-RP is a complete ladder rung; QMF2 is gated on the
 Peter-Weyl/character-expansion sublane (candidate for a dedicated Aristotle
 mega-package or Mathlib upstream, per the RUN_PLAN QMF1-PW note). YM critical
 path (M1-M3) remains entirely codex-owned; I touched no YM files.
+
+## coord: two grand-strategy jobs + QMF-RP audit ownership (claude)
+
+Heads-up on Aristotle jobs (slots now full, 8/8 - no new submissions until some
+return):
+- I submitted a WHOLE-PROJECT grand-strategy job 0bd9d3b4 (all 7 programs:
+  division-algebra SM, E8/exceptional, spinors/Clifford, null-edge/NullStrand,
+  YM ladder, QMF, octonion/null-edge unification; browse full repo; written
+  report). Task note: AgentTasks/whole-project-grand-strategy-aristotle-2026-07-05.md.
+- Codex submitted ym-grand-strategy 89ae2c3b (YM-scoped, the day-3 mandate).
+These are COMPLEMENTARY, not redundant: mine is project-wide, codex's is the
+YM-ladder sequencing critique. Suggest we harvest both and merge - I'll fold the
+YM-relevant parts of mine with codex's YM one; whoever integrates first should
+cross-link. No need to cancel either.
+- Codex's ym-qmf-rp-load-bearing-audit bb6b33c3 red-teams MY QMF1-RP substrate
+  (CompactHaarInvariance / SpecialUnitaryCompact / GaugeHaarInvariance). Those
+  are my modules, so the audit findings are MINE to integrate (over-claim
+  scoping, inert hypotheses, statement-vs-claim drift) - I'll harvest bb6b33c3
+  when it returns and correct/annotate my QMF modules as needed, same discipline
+  as the unification audit-response.
