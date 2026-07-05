@@ -161,6 +161,94 @@ theorem shiftOp_preserves_rpHilbertSpace_z2PlaquetteBlock {Lx Ly : Nat}
     (plaquetteTripleWeight_blockWeightInvariant hLx hLy F)
     s
 
+/-- Four-term electric-sector projection on the block-index function space
+`(cut configuration, positive/mirror configuration) -> Complex`.
+
+This is the block-OS analogue of `FluxSectorZ2.TorusLinkField`'s
+single-configuration electric projection: it averages over the simultaneous
+base x/y center shifts of both block coordinates with the selected Z2
+characters. -/
+def blockElectricSectorProjection {Lx Ly : Nat}
+    (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) :
+    (FluxSectorZ2.TorusLinkField Lx Ly ×
+      FluxSectorZ2.TorusLinkField Lx Ly) -> Complex :=
+  let S :=
+    blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)
+  fun i =>
+    (1 / 4 : Complex) *
+      (psi i +
+        FluxSectorZ2.TorusLinkField.z2Character ex *
+          psi (S.shiftConfig BaseElectricShift.x i) +
+        FluxSectorZ2.TorusLinkField.z2Character ey *
+          psi (S.shiftConfig BaseElectricShift.y i) +
+        FluxSectorZ2.TorusLinkField.z2Character ex *
+          FluxSectorZ2.TorusLinkField.z2Character ey *
+          psi
+            (S.shiftConfig BaseElectricShift.x
+              (S.shiftConfig BaseElectricShift.y i)))
+
+/-- The block electric-sector projection preserves the finite OS range for
+plaquette-field Z2 block weights.
+
+This is still finite block-kernel infrastructure: it does not construct a
+physical Wilson transfer matrix, but it says the concrete Q2 range model is
+closed under the Q3 electric-sector projections for the plaquette-field block
+weights currently available. -/
+theorem blockElectricSectorProjection_preserves_rpHilbertSpace_z2PlaquetteBlock
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    ∀ v, v ∈
+        rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) ->
+      blockElectricSectorProjection hLx hLy ex ey v ∈
+        rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) := by
+  classical
+  intro v hv
+  let S :=
+    blockShiftSystem
+      (baseElectricShiftSystem hLx hLy)
+      (baseElectricShiftSystem hLx hLy)
+  let M := rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))
+  have hx : shiftOp S BaseElectricShift.x v ∈ M :=
+    shiftOp_preserves_rpHilbertSpace_z2PlaquetteBlock
+      hLx hLy F BaseElectricShift.x v hv
+  have hy : shiftOp S BaseElectricShift.y v ∈ M :=
+    shiftOp_preserves_rpHilbertSpace_z2PlaquetteBlock
+      hLx hLy F BaseElectricShift.y v hv
+  have hxy : shiftOp S BaseElectricShift.y
+      (shiftOp S BaseElectricShift.x v) ∈ M :=
+    shiftOp_preserves_rpHilbertSpace_z2PlaquetteBlock
+      hLx hLy F BaseElectricShift.y (shiftOp S BaseElectricShift.x v) hx
+  have hproj :
+      blockElectricSectorProjection hLx hLy ex ey v =
+        (1 / 4 : Complex) •
+          (v +
+            FluxSectorZ2.TorusLinkField.z2Character ex •
+              shiftOp S BaseElectricShift.x v +
+            FluxSectorZ2.TorusLinkField.z2Character ey •
+              shiftOp S BaseElectricShift.y v +
+            (FluxSectorZ2.TorusLinkField.z2Character ex *
+              FluxSectorZ2.TorusLinkField.z2Character ey) •
+              shiftOp S BaseElectricShift.y
+                (shiftOp S BaseElectricShift.x v)) := by
+    funext i
+    simp [blockElectricSectorProjection, S, shiftOp, shiftMatrix_mulVec]
+  rw [hproj]
+  exact M.smul_mem _
+    (M.add_mem
+      (M.add_mem
+        (M.add_mem hv (M.smul_mem _ hx))
+        (M.smul_mem _ hy))
+      (M.smul_mem _ hxy))
+
 end TransferHilbertZ2Electric
 end GateYM
 end NullEdge
