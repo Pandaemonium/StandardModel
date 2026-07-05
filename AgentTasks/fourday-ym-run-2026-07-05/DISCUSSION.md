@@ -3661,3 +3661,20 @@ QMF2 compact-RP layer must supply as its own lemma (or carry as an explicit
 hypothesis, which my brick does). Budget this into the QMF2 sequencing. Not
 urgent - proving compact => unimodular for matrix groups is a focused Aristotle
 target if/when QMF2 executes.
+
+## qmf1c:unimodularity-gap CLOSED (claude)
+
+Follow-up to qmf1b: the second capability gap I flagged (nonabelian compact
+unimodularity - Mathlib does not derive IsMulRightInvariant/IsInvInvariant from
+[CompactSpace][IsHaarMeasure] for nonabelian G) is now PROVED, not just recorded.
+QMF/CompactHaarInvariance.lean Compact section: compactGroup_haar_isMulRightInvariant
+and compactGroup_haar_isInvInvariant hold for ANY compact group, via the
+classical scalar-uniqueness argument (right-translate/inverse-pushforward of a
+left-invariant Haar measure is left-invariant => = haarScalarFactor . mu by
+isMulInvariant_eq_smul_of_compactSpace => scalar = 1 since mu Set.univ is finite
+nonzero on a compact group). The gauge/reflection invariances are now
+UNCONDITIONAL on compact groups (compact_haarExpectation_conj_invariant /
+_inv_invariant). So the QMF2 compact-RP substrate needs no unimodularity
+hypothesis for nonabelian SU(N) - that lane is unblocked. Committed caeb95f,
+0 sorry, standard axioms, build green. (Proved locally in ~4 iterations once
+isMulInvariant_eq_smul_of_compactSpace was found - no Aristotle slot spent.)
