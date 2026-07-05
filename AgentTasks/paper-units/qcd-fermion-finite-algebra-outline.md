@@ -58,10 +58,11 @@ Euclidean Clifford algebra / chirality (QMF4a):
     `[propext, Classical.choice, Quot.sound]`; `s o r r y`-free. Build-cost note:
     ~1 min leaf module (256-entry concrete-matrix Clifford table).
 
-Wilson-Dirac operator (QMF4b - IN FLIGHT, verify status before citing):
+Wilson-Dirac operator (QMF4b - PROVED + INTEGRATED 2026-07-05):
 
-- `PhysicsSM/Draft/NullEdge/GateYM/WilsonDirac.lean` (pending integration;
-  Aristotle project `7a2a0f40`)
+- `PhysicsSM/Draft/NullEdge/GateYM/WilsonDiracOperator.lean` (Aristotle project
+  `7a2a0f40`; independently verified, axioms `[propext, Classical.choice,
+  Quot.sound]`, sorry-free; wired into the GateYM aggregate)
   - `wilsonDirac` (finite lattice Wilson-Dirac operator, Euclidean, `r = 1`,
     unitary links), `Γ5` (lifted chirality)
   - `gamma5_hermiticity` : `Γ5 D Γ5 = Dᴴ`
@@ -99,7 +100,7 @@ theorems.
 
 ## Remaining gaps (to close the unit / feed QMF5+)
 
-- QMF4b integration + independent verification (in flight).
+- QMF4b integration + independent verification: DONE (2026-07-05).
 - The concrete Ursell/Mayer coefficient tie-in (this unit uses the Grassmann
   Gaussian = det directly; the polymer/Ursell side lives in the separate KP
   paper unit).
