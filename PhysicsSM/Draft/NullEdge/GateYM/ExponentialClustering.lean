@@ -266,6 +266,26 @@ theorem supportTail_biUnion_le [DecidableEq Gamma] {ι : Type*}
       _ = (insert i I).sum (fun j => supportTail M hdec D (S j) R) := by
             rw [Finset.sum_insert hi]
 
+/-- Uniform finite-cover bound for support tails.
+
+If each local support piece in a finite cover has tail at most `B`, then the
+tail of the union is bounded by the number of pieces times `B`. -/
+theorem supportTail_biUnion_le_card_mul_bound [DecidableEq Gamma] {ι : Type*}
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (I : Finset ι) (S : ι -> Finset Gamma) (R B : Real)
+    (hB : forall i : ι, i ∈ I -> supportTail M hdec D (S i) R <= B) :
+    supportTail M hdec D (I.biUnion S) R <= (I.card : Real) * B := by
+  calc
+    supportTail M hdec D (I.biUnion S) R
+        <= I.sum (fun i => supportTail M hdec D (S i) R) :=
+          supportTail_biUnion_le M hdec D I S R
+    _ <= I.sum (fun _i => B) := by
+          exact Finset.sum_le_sum (fun i hi => hB i hi)
+    _ = (I.card : Real) * B := by
+          simp [Finset.sum_const, nsmul_eq_mul]
+
 /-- Exponential clustering for the support-indexed connected correlator. -/
 def HasExponentialClusteringSupport
     (L : LocalObservableSupportData Gamma Obs)

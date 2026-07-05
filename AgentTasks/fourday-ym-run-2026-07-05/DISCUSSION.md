@@ -3305,6 +3305,28 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 
 The new theorem axiom footprint is `[propext, Classical.choice, Quot.sound]`.
 
+## q8:support-tail-cardinality-cover-bound (codex 1.34:33)
+
+Added `supportTail_biUnion_le_card_mul_bound` to
+`ExponentialClustering.lean`.
+
+Intended reading: once an observable support has been covered by a finite
+family of local pieces, a uniform per-piece tail bound `B` gives the union-tail
+bound `(I.card : Real) * B`. This is the finite prefactor bookkeeping Q8 will
+need after Q6 and the concrete observable bridge land. It does not close the Q6
+metric tail estimate or claim any concrete clustering theorem.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\ExponentialClustering.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The new theorem axiom footprint is `[propext, Classical.choice, Quot.sound]`.
+
 ## q8:support-tail-biunion-overcount (codex 1.34:18)
 
 Added the finite-cover support-tail overcount
