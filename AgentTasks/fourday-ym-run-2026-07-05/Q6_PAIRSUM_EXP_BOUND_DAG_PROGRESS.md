@@ -53,6 +53,8 @@ The follow-up object `treeRootChildBlock` is now integrated as a finite wrapper
 around that component support.  It proves membership equivalence with the
 support, root-child membership, block-vertex reachability from the child,
 nonemptiness, and positive block cardinality.
+The helper `disjoint_treeRootChildBlock_of_component_ne` is also integrated,
+proving that unequal child components yield disjoint finite blocks.
 
 Follow-up Aristotle project `fc5aaf10-3119-456b-a2b5-3ea73ec1f52d`, task
 `cc5e78d7-c5b6-4827-82e5-0e871ea21908`, is submitted for the next hinge:
@@ -66,6 +68,8 @@ The remaining core is the geometric deletion and counting construction:
 - prove that the `treeRootChildBlock` objects form the required disjoint block
   decomposition inside `treeRootDeletedGraph` for a spanning tree rooted at the
   canonical `g` slot;
+- prove the tree-specific child-component inequality for distinct root
+  children; the component-inequality-to-disjoint-block step is now checked;
 - split the deleted tree into connected blocks indexed from the
   `treeRootChildren` set, using the checked arity bound;
 - reindex each block as a smaller ordered cluster;

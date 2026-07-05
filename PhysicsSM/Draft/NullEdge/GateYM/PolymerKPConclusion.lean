@@ -42,8 +42,10 @@ the finite set of root-adjacent children for later deletion, the
 names the induced graph after deleting the root slot, `treeRootChildComponent`,
 which names the deleted-graph connected component rooted at a child slot, and
 `treeRootChildBlock`, which turns that component support into a finite block,
-and `rhs_forest_expand`, which expands the RHS partial exponential into ordered
-child tuples.  It also includes
+with `disjoint_treeRootChildBlock_of_component_ne` separating the easy
+component-support disjointness argument from the remaining tree-specific
+component-inequality proof, and `rhs_forest_expand`, which expands the RHS
+partial exponential into ordered child tuples.  It also includes
 `factorial_mul_prod_factorial_le`, the arithmetic normalization for the future
 multinomial fiber bound.  The remaining gap is the rooted-tree deletion, block
 reindexing, weight-factorization, and the geometric fiber-count bound.  In
@@ -724,6 +726,23 @@ lemma treeRootChildBlock_card_pos {n : Nat} (T : SimpleGraph (Fin n))
     (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
     0 < (treeRootChildBlock T r j hj).card := by
   exact Finset.card_pos.mpr (treeRootChildBlock_nonempty T r j hj)
+
+/-- If two root-child components are unequal, then their finite child blocks
+are disjoint.  The remaining tree-specific work is to prove this component
+inequality from distinct root children in a tree. -/
+lemma disjoint_treeRootChildBlock_of_component_ne {n : Nat}
+    (T : SimpleGraph (Fin n)) (r j k : Fin n)
+    (hj : j ∈ treeRootChildren T r) (hk : k ∈ treeRootChildren T r)
+    (hne :
+      treeRootChildComponent T r j hj ≠ treeRootChildComponent T r k hk) :
+    Disjoint (treeRootChildBlock T r j hj) (treeRootChildBlock T r k hk) := by
+  rw [Finset.disjoint_left]
+  intro v hvj hvk
+  have hvj' : v ∈ (treeRootChildComponent T r j hj).supp :=
+    (mem_treeRootChildBlock T r j hj v).mp hvj
+  have hvk' : v ∈ (treeRootChildComponent T r k hk).supp :=
+    (mem_treeRootChildBlock T r k hk v).mp hvk
+  exact hne (SimpleGraph.ConnectedComponent.eq_of_common_vertex hvj' hvk')
 
 /-- Every root child in the tree subgraph carries a polymer in the KP
 neighborhood of the root polymer. -/
