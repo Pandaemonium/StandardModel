@@ -23,9 +23,10 @@ the file is deliberately narrow:
   commutes with the projection.
 * start the concrete electric/center-shift layer: x/y Z2 center shifts,
   plaquette-bit invariance, Z2 electric sectors as shift eigenconditions,
-  electric-sector projections, decomposition as the sum of the four electric
-  projections, preservation by abstract shift-invariant finite kernels, and
-  preservation by plaquette-bit observables.
+  electric-sector projections, fixed-point characterizations, decomposition
+  as the sum of the four electric projections, preservation by abstract
+  shift-invariant finite kernels, and preservation by plaquette-bit
+  observables.
 
 It does not construct the transfer matrix, prove a spectral theorem, or claim
 that the local gap is positive. The concrete winding-cycle holonomy
@@ -556,6 +557,39 @@ theorem electricSectorProjection_eq_self_of_inElectricFluxSector
   rw [hpsi.1 U, hpsi.2 U, hpsi.1 (yShift (baseY hLy) U), hpsi.2 U]
   cases ex <;> cases ey <;> simp [z2Character]
   all_goals ring
+
+/-- If an electric-sector projection fixes a wavefunction, then the
+wavefunction lies in that concrete Z2 electric sector. -/
+theorem inElectricFluxSector_of_electricSectorProjection_eq_self
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey : Bool) (psi : TorusLinkField Lx Ly -> Complex)
+    (hproj : electricSectorProjection hLx hLy ex ey psi = psi) :
+    InElectricFluxSector hLx hLy ex ey psi := by
+  have hsector :=
+    electricSectorProjection_inElectricFluxSector hLx hLy ex ey psi
+  rw [hproj] at hsector
+  exact hsector
+
+/-- A wavefunction lies in a concrete Z2 electric sector exactly when the
+matching electric-sector projection fixes it. -/
+theorem inElectricFluxSector_iff_electricSectorProjection_eq_self
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey : Bool) (psi : TorusLinkField Lx Ly -> Complex) :
+    InElectricFluxSector hLx hLy ex ey psi ↔
+      electricSectorProjection hLx hLy ex ey psi = psi := by
+  constructor
+  · exact electricSectorProjection_eq_self_of_inElectricFluxSector hLx hLy ex ey psi
+  · exact inElectricFluxSector_of_electricSectorProjection_eq_self hLx hLy ex ey psi
+
+/-- A wavefunction has trivial concrete Z2 electric flux exactly when the
+trivial electric-sector projection fixes it. -/
+theorem trivialElectricFlux_iff_electricSectorProjection_eq_self
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (psi : TorusLinkField Lx Ly -> Complex) :
+    TrivialElectricFlux hLx hLy psi ↔
+      electricSectorProjection hLx hLy false false psi = psi :=
+  inElectricFluxSector_iff_electricSectorProjection_eq_self
+    hLx hLy false false psi
 
 /-- Concrete Z2 electric-sector projections are idempotent. -/
 theorem electricSectorProjection_idempotent

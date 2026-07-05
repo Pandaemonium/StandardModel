@@ -294,11 +294,13 @@ starts the corrected electric/center-shift Z2 layer: concrete x/y center
 shifts, plaquette-bit invariance under those shifts, electric sectors as base
 shift eigenconditions, and preservation of those sectors by plaquette-bit
 observables. It also proves the four-term electric-sector projections land in
-the requested sectors, are idempotent, and sum to the identity over the four
-Z2 electric sectors; any finite kernel invariant under the base center shifts
-preserves every electric sector by finite reindexing. The actual Q2 transfer
-matrix construction remains future work, but `TransferHilbertZ2Electric` now
-connects the concrete Z2 shifts to the block OS range model);
+the requested sectors, fix exactly the wavefunctions in those sectors, are
+idempotent, are mutually orthogonal on distinct sectors, and sum to the
+identity over the four Z2 electric sectors; any finite kernel invariant under
+the base center shifts preserves every electric sector by finite reindexing.
+The actual Q2 transfer matrix construction remains future work, but
+`TransferHilbertZ2Electric` now connects the concrete Z2 shifts to the block
+OS range model);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

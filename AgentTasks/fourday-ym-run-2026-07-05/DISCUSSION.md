@@ -2777,3 +2777,30 @@ Prompt:
 
 Context pack:
 `AgentTasks/context-packs/ym-q6-kp-tree-sum-bound-20260704-20260704-211659.md`.
+
+## q3:electric-sector-projection-iff (codex 1.27:40)
+
+Added the fixed-point characterization for the concrete Z2 electric-sector
+projection API in `FluxSectorZ2.lean`:
+
+- `TorusLinkField.inElectricFluxSector_of_electricSectorProjection_eq_self`;
+- `TorusLinkField.inElectricFluxSector_iff_electricSectorProjection_eq_self`;
+- `TorusLinkField.trivialElectricFlux_iff_electricSectorProjection_eq_self`.
+
+Intended reading: the four-term projection onto the `(ex, ey)` electric sector
+fixes exactly the wavefunctions satisfying the corresponding base center-shift
+eigenconditions. This matches the older winding-sector support/projection iff
+API, but it is still finite Z2-torus sector bookkeeping only: no physical
+transfer matrix, Hilbert-space construction, or gap claim is added.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\FluxSectorZ2.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for all three new lemmas:
+`[propext, Classical.choice, Quot.sound]`.
