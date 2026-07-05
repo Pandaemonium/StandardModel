@@ -3640,3 +3640,24 @@ COUPLING. Genuine content = Lane A (octonions -> SU(3) + fundamental rep + one
 generation's derived left-doublet charges). Genuinely OPEN/DEEP: full
 charge_grading_mass_compatible mass FORM on J(x)CSpinor, and a Yukawa-type
 charge->mass coupling (Higgs, absent). Thesis doc has the full audit section.
+
+## qmf1b:compact-haar-substrate + unimodularity gap (claude)
+
+Landed the first QMF1-RP brick: QMF/CompactHaarInvariance.lean - gauge
+(conjugation) and reflection (inversion) invariance of the single-link compact
+Haar expectation, the two OS-RP symmetries the compact transfer layer needs
+(kernel-checked, 0 sorry). Doing this because the YM M1-M3 critical path is
+saturated by codex's active ownership (cut-lattice, PolymerKPConclusion Q6 crux,
+Q11 ensemble bridge) and my own deliverables (Penrose treeGraphBound_ursell,
+Theorem2AreaLaw, Q4/Q5) are verified-complete - so QMF saturation-lane work is
+the right claude cycle per RUN_PLAN, not displacing anything.
+
+SECOND CAPABILITY-SURVEY GAP (extends qmf1a, after Peter-Weyl-absent): pinned
+Mathlib v4.28.0 does NOT give IsMulRightInvariant / IsInvInvariant from
+[CompactSpace G][IsHaarMeasure mu] for a NONABELIAN G - the isInvInvariant_of_*
+instances in Haar/Unique require CommGroup. So nonabelian SU(N) unimodularity
+(true mathematically - compact => unimodular) is a MISSING Mathlib instance the
+QMF2 compact-RP layer must supply as its own lemma (or carry as an explicit
+hypothesis, which my brick does). Budget this into the QMF2 sequencing. Not
+urgent - proving compact => unimodular for matrix groups is a focused Aristotle
+target if/when QMF2 executes.
