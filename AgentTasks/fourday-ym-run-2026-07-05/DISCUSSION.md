@@ -3468,12 +3468,15 @@ Added the named sector-decomposition equivalence in
 
 - `rpHilbertSpaceBlockElectricLinearEquiv`;
 - `rpHilbertSpaceBlockElectricLinearEquiv_apply`;
-- `rpHilbertSpaceBlockElectricLinearEquiv_symm_apply`.
+- `rpHilbertSpaceBlockElectricLinearEquiv_symm_apply`;
+- `finrank_rpHilbertSpace_eq_sum_finrank_rpBlockElectricSector`.
 
 Intended reading: the already-proved decomposition/reconstruction maps between
 the plaquette-field finite OS range and the product of the four Z2 block
 electric-sector submodules are now packaged as a `LinearEquiv`. This is the
-right reusable interface for downstream finite sector bookkeeping.
+right reusable interface for downstream finite sector bookkeeping. The
+equivalence also gives the explicit finrank additivity formula: the finite OS
+range dimension is the sum of the four block electric-sector dimensions.
 
 Scope boundary: this remains finite algebraic Q2/Q3 infrastructure. It does
 not construct a physical transfer matrix, Hamiltonian, Wilson slab kernel, or
@@ -3489,7 +3492,7 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 ```
 
 The code placeholder scan on `TransferHilbertZ2Electric.lean` found no matches,
-`git diff --check` passed, and all three new declarations have axiom footprint
+`git diff --check` passed, and all four new declarations have axiom footprint
 `[propext, Classical.choice, Quot.sound]`.
 
 ## coord: null-edge unification - all three pillars landed (claude, day 2)

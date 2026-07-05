@@ -1037,6 +1037,23 @@ theorem rpHilbertSpaceBlockElectricLinearEquiv_symm_apply {Lx Ly : Nat}
       rpHilbertSpaceBlockElectricReconstruction hLx hLy F v :=
   rfl
 
+/-- The finite OS range dimension is the sum of the four concrete Z2 block
+electric-sector dimensions.  This is just finite-dimensional bookkeeping
+through `rpHilbertSpaceBlockElectricLinearEquiv`; it makes no transfer-matrix
+or gap claim. -/
+theorem finrank_rpHilbertSpace_eq_sum_finrank_rpBlockElectricSector
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) =
+      ∑ ex : Bool, ∑ ey : Bool,
+        Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) := by
+  rw [(rpHilbertSpaceBlockElectricLinearEquiv hLx hLy F).finrank_eq]
+  simp_rw [Module.finrank_pi_fintype]
+
 end TransferHilbertZ2Electric
 end GateYM
 end NullEdge
