@@ -1,5 +1,6 @@
 import Mathlib
 import PhysicsSM.Draft.NullEdge.GateYM.EuclideanGamma
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonDiracOperator
 
 /-!
 # NE-U2: the chirality structure of mass (mass = the "turn" / chirality-mixing channel)
@@ -46,10 +47,11 @@ module is the chirality-channel companion to `WilsonDiracOperator.gamma5_
 hermiticity`; that theorem is about hermiticity (`γ5 D γ5 = Dᴴ`), this one is
 about chirality (`γ5 A γ5 = ± A`) - distinct `γ5` roles, kept separate.
 
-Draft-trust: kernel-checked, `s o r r y`-free. Prerequisites:
-`EuclideanGamma`. Successor: the operator-level statement
-`chiral_iff_massless_naive` (naive Wilson-Dirac operator is chirally symmetric
-iff `m = 0`) lifts these spin identities to the full lattice operator.
+Draft-trust: kernel-checked, `s o r r y`-free. Prerequisites: `EuclideanGamma`
+and `WilsonDiracOperator`. The final section LIFTS the spin identities to the
+full finite lattice Wilson-Dirac operator: `gamma5_mass_diff_comm` proves the
+operator's entire mass content is chirality-even (`Γ5 (D_m - D_{m'}) Γ5 =
+D_m - D_{m'}`), NE-U2 at full lattice-operator grade.
 -/
 
 open scoped Matrix
@@ -164,6 +166,52 @@ theorem chiralEven_massVertex_eq_zero_iff (m : ℂ) (μ : Fin 4) :
   · intro h
     rw [h]
     rw [show (-1 : ℂ) + 1 = 0 by ring, zero_smul]
+
+/-! ## Operator-level lift: mass is the chirality-even channel of the full
+Wilson-Dirac operator
+
+The spin-level identities above lift to the full finite lattice Wilson-Dirac
+operator `Qmf4bWilson.wilsonDirac` WITHOUT the heavy entrywise chirality grind,
+by a clean observation: the operator's ONLY mass dependence is its diagonal mass
+term, so the mass DIFFERENCE `D_m - D_{m'}` is a pure scalar operator
+`(m - m') • 1`, which is manifestly chirality-even (`Γ5` conjugation acts by
+`Γ5^2 = 1`). This is NE-U2 at full lattice-operator grade: the physical mass
+content of lattice QCD's Dirac operator lives entirely in the chirality-mixing
+("turn") channel. -/
+
+open Qmf4bWilson in
+/-- The Wilson-Dirac operator's only mass dependence is the diagonal mass term,
+so the mass difference is the scalar operator `(m - m') • 1`. (The gauge hop
+terms are `m`-independent and cancel.) -/
+theorem wilsonDirac_mass_diff {L nc : ℕ} [NeZero L] (m m' : ℝ)
+    (U : Fin 4 → Site L → Matrix (Fin nc) (Fin nc) ℂ) :
+    wilsonDirac m U - wilsonDirac m' U
+      = ((m : ℂ) - m') • (1 : Matrix (Idx L nc) (Idx L nc) ℂ) := by
+  ext I J
+  simp only [Matrix.sub_apply, wilsonDirac, Matrix.of_apply, Matrix.smul_apply,
+    smul_eq_mul, Matrix.one_apply]
+  by_cases h : I = J
+  · subst h
+    obtain ⟨x, s, c⟩ := I
+    simp only [and_self, if_true]
+    ring
+  · have h' : ¬ (I.1 = J.1 ∧ I.2.1 = J.2.1 ∧ I.2.2 = J.2.2) := by
+      intro ⟨h1, h2, h3⟩
+      exact h (Prod.ext h1 (Prod.ext h2 h3))
+    simp only [h', if_false, if_neg h]
+    ring
+
+open Qmf4bWilson in
+/-- **Operator-level NE-U2**: the mass content of the finite lattice Wilson-Dirac
+operator is chirality-EVEN - `Γ5 (D_m - D_{m'}) Γ5 = D_m - D_{m'}`. The entire
+`m`-dependence commutes with chirality, i.e. it is the "turn" / mass channel at
+full lattice-operator grade (the spin-level `chiralEven_massVertex` lifted to
+the whole operator). Independent of link unitarity. -/
+theorem gamma5_mass_diff_comm {L nc : ℕ} [NeZero L] (m m' : ℝ)
+    (U : Fin 4 → Site L → Matrix (Fin nc) (Fin nc) ℂ) :
+    Γ5 L nc * (wilsonDirac m U - wilsonDirac m' U) * Γ5 L nc
+      = wilsonDirac m U - wilsonDirac m' U := by
+  rw [wilsonDirac_mass_diff, mul_smul_comm, mul_one, smul_mul_assoc, Γ5_mul_Γ5]
 
 end ChiralMassStructure
 end PhysicsSM.Draft.NullEdge.GateYM

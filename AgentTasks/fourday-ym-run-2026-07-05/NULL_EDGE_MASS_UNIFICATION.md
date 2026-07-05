@@ -74,10 +74,15 @@ two theorems the tree already holds.
 | gamma5 algebra + Wilson-Dirac gamma5-hermiticity (chirality bookkeeping at QCD level) | `GateYM/EuclideanGamma.lean`, `WilsonDiracOperator.lean` | proved |
 | Berezin = det (fermion composite weight is determinant algebra) | `GateYM/BerezinMatthewsSalam.lean` | proved |
 | Flux/center sectors (where closure composites live) | Q3 `FluxSector` machinery | proved (abstract) |
+| **NE-U1 aperture keystone**: composite of null momenta massless iff collinear; `det(minkHerm(p+q)) = 2 minkDot p q` | `GateI1/CompositeApertureMass.lean` | **proved (this run)** |
+| **NE-U2 mass = turn channel**: mass/Wilson are chirality-even, transport chirality-odd; lifted to full Wilson-Dirac (`gamma5_mass_diff_comm`) | `GateYM/ChiralMassStructure.lean` | **proved (this run)** |
 
 The (C) pillar is further along than the run plan assumed: Elitzur was the
 missing "gluon edges are bookkeeping, not particles" theorem, and it landed
-this run as a finite identity, not prose.
+this run as a finite identity, not prose. NE-U1 (the aperture keystone) and
+NE-U2 (mass = the chirality-mixing "turn" channel, at both spin and full
+Wilson-Dirac operator grade) were both PROVED directly this run - see the
+per-rung status below.
 
 ## 3. The achievable ladder (NE-U1..NE-U6)
 
