@@ -1,5 +1,6 @@
 import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
+import PhysicsSM.Draft.NullEdge.GateYM.TreeGraphInequality
 
 /-!
 # Gate YM4: abstract KP conclusion statement freeze
@@ -23,13 +24,14 @@ Scope discipline:
   KP condition.
 * `spanningTreeCount` and `ursellSum` use the direct finite-graph definitions
   recommended by Aristotle project `34d675b8`.
-* The proof of the Penrose tree-graph inequality for the concrete Ursell
-  coefficient is parked as its own theorem target.
+* The Penrose tree-graph inequality for the concrete Ursell coefficient is
+  discharged by specializing the abstract finite-graph theorem from
+  `TreeGraphInequality`.
 
-Draft-trust: statement freeze plus one kernel-checked negative result.  The
-remaining theorem bodies, including the parked `treeGraphBound_ursell`, are
+Draft-trust: statement freeze plus one kernel-checked negative result and a
+kernel-checked Penrose tree-graph bound.  The remaining theorem bodies are
 documented proof handoffs, not completed proofs.  Claim label: statement
-freeze / lemma DAG / formal counterexample.
+freeze / lemma DAG / formal counterexample / finite identity.
 -/
 
 noncomputable section
@@ -125,9 +127,7 @@ noncomputable def spanningTreeCount (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (X : Cluster S) : Nat := by
   classical
-  exact
-    (Finset.univ.filter
-      (fun T : SimpleGraph (Fin X.n) => T <= X.graph S hdec /\ T.IsTree)).card
+  exact PenroseTreeGraph.spanningTreeCount (X.graph S hdec)
 
 /-- The unnormalized Mayer/Ursell alternating sum over connected spanning
 subgraphs of the cluster incompatibility graph.
@@ -140,10 +140,7 @@ noncomputable def ursellSum (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (X : Cluster S) : Int := by
   classical
-  exact
-    (Finset.univ.filter
-      (fun T : SimpleGraph (Fin X.n) => T <= X.graph S hdec /\ T.Connected)).sum
-      (fun T => (-1 : Int) ^ T.edgeFinset.card)
+  exact PenroseTreeGraph.ursellSum (X.graph S hdec)
 
 /-- A tree subgraph of the cluster graph witnesses connectedness of the
 cluster itself. -/
@@ -168,12 +165,8 @@ theorem spanningTreeCount_eq_zero_of_not_connected (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (X : Cluster S) (hX : Not (X.Connected S hdec)) :
     spanningTreeCount S hdec X = 0 := by
-  classical
-  unfold spanningTreeCount
-  rw [Finset.card_eq_zero]
-  apply Finset.filter_false_of_mem
-  intro T _ hT
-  exact hX (connected_of_isTree_le S hdec X hT.1 hT.2)
+  exact PenroseTreeGraph.spanningTreeCount_eq_zero_of_not_connected
+    (G := X.graph S hdec) hX
 
 /-- Connected clusters admit at least one spanning-tree subgraph. -/
 theorem spanningTreeCount_pos_of_connected (S : PolymerSystem Gamma)
@@ -182,7 +175,7 @@ theorem spanningTreeCount_pos_of_connected (S : PolymerSystem Gamma)
     0 < spanningTreeCount S hdec X := by
   classical
   obtain ⟨T, hTle, hTtree⟩ := hX.exists_isTree_le
-  unfold spanningTreeCount
+  unfold spanningTreeCount PenroseTreeGraph.spanningTreeCount
   exact Finset.card_pos.mpr
     ⟨T, by
       simp [hTle, hTtree]⟩
@@ -192,34 +185,18 @@ theorem ursellSum_eq_zero_of_not_connected (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (X : Cluster S) (hX : Not (X.Connected S hdec)) :
     ursellSum S hdec X = 0 := by
-  classical
-  unfold ursellSum
-  have hfilter :
-      (Finset.univ.filter
-        (fun T : SimpleGraph (Fin X.n) =>
-          T <= X.graph S hdec /\ T.Connected)) = ∅ := by
-    apply Finset.filter_false_of_mem
-    intro T _ hT
-    exact hX (connected_of_connected_le S hdec X hT.1 hT.2)
-  simp [hfilter]
+  exact PenroseTreeGraph.ursellSum_eq_zero_of_not_connected
+    (G := X.graph S hdec) hX
 
-/-- The parked Penrose tree-graph inequality for the concrete Ursell sum.
+/-- The Penrose tree-graph inequality for the concrete Ursell sum.
 
-Aristotle project `34d675b8` confirmed this is the unavoidable hard
-combinatorial theorem: Mathlib has tree existence and graph finiteness, but no
-spanning-tree count theorem or Ursell/Penrose inequality. -/
+This specializes the abstract finite-graph theorem from Aristotle project
+`e4458430` to the incompatibility graph of a concrete ordered cluster. -/
 theorem treeGraphBound_ursell (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (X : Cluster S) :
     (ursellSum S hdec X).natAbs <= spanningTreeCount S hdec X := by
-  /-
-  Proof handoff:
-  Prove Penrose's tree-graph inequality by a direct finite combinatorial
-  partition/sign-reversing argument over connected spanning subgraphs.  Do not
-  detour through the matrix-tree theorem or Cayley formula; neither is needed
-  for the KP proof route.
-  -/
-  sorry
+  exact PenroseTreeGraph.treeGraphBound_ursell (X.graph S hdec)
 
 /-- Abstract coefficient data for the KP cluster expansion.
 
@@ -272,7 +249,7 @@ theorem kp_partial_sum_bound
   Proof handoff:
   Prove the rooted KP tree-sum estimate from `hKP` and `D.treeGraphBound`.
   This is the genuine combinatorial crux; it is the same tier of missing
-  infrastructure as the parked Penrose tree-graph inequality.
+  infrastructure as the now-proved Penrose tree-graph inequality.
   -/
   sorry
 

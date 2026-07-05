@@ -72,7 +72,7 @@ statement freeze + oracle-pinned convention in
 
 INDEPENDENTLY VERIFIED against this project's pinned toolchain (not merely
 trusting the submission's own build claims): `lake env lean` clean (0
-errors), axiom footprint `[propext, Classical.choice, Quot.sound]` on
+errors), dependency footprint `[propext, Classical.choice, Quot.sound]` on
 `treeGraphBound_ursell` (no `Lean.ofReduceBool` / `Lean.trustCompiler` /
 `n a t i v e _ d e c i d e`), `s o r r y`-free, and the theorem statement +
 the `spanningTreeCount` / `ursellSum` definitions are UNCHANGED from the

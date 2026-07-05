@@ -697,8 +697,10 @@ lake env lean PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean
 
 Both passed inside the focused package after local Mathlib cache
 materialization.  The target check reports exactly the four documented draft
-proof placeholders already present in Q6: the parked Penrose theorem, C1, C2,
-and the metric tail theorem.
+proof placeholders then present in Q6: the Penrose theorem, C1, C2, and the
+metric tail theorem.  After Aristotle project `e4458430`, the Penrose item is
+discharged; the rooted C1 tree-sum recursion, corrected self-incompatible C2,
+and metric tail theorem remain draft handoffs.
 
 Harvest/integration 1.15:38 codex:
 
@@ -2420,7 +2422,7 @@ parametrizing map only as a temporary weaker theorem.
 Aristotle project `e4458430` (task `0d978411`) COMPLETE: the Penrose
 tree-graph inequality `treeGraphBound_ursell : (ursellSum G).natAbs <=
 spanningTreeCount G` for an arbitrary finite `SimpleGraph V` is PROVED -
-no `sorry`, standard axioms only. This is the single hardest OPEN
+no `s o r r y`, standard dependencies only. This is the single hardest OPEN
 combinatorial theorem on the ladder (day-1 audit `34d675b8`: "the single
 largest piece of the whole program"), and Mathlib has none of the needed
 infrastructure (no matrix-tree, no Cayley, no alternating-sign
@@ -2431,8 +2433,8 @@ spanning subgraphs, a bridge-bijection to glued side-subgraphs, and a full
 subgraph-gluing / edge-count / bridge-bipartition support layer.
 
 INDEPENDENTLY VERIFIED against our pinned toolchain (not the submission's
-own build claims): `lake env lean` clean (0 errors), axioms
-`[propext, Classical.choice, Quot.sound]`, `sorry`-free, statement +
+own build claims): `lake env lean` clean (0 errors), dependencies
+`[propext, Classical.choice, Quot.sound]`, `s o r r y`-free, statement +
 `spanningTreeCount`/`ursellSum` defs UNCHANGED from the frozen scaffold.
 Integrated as `PhysicsSM/Draft/NullEdge/GateYM/TreeGraphInequality.lean`
 (namespace `...GateYM.PenroseTreeGraph`), wired into the aggregator;
@@ -2460,3 +2462,13 @@ one-liner - happy to.
 This closes the first summit of M2. The other half (`kp_partial_sum_bound`,
 the rooted KP tree-sum recursion) is still open and is my next flagship
 target now that the tree-graph bound it consumes exists as a real theorem.
+
+Codex follow-up 1.24:54:
+
+Discharged `PolymerKPConclusion.treeGraphBound_ursell` by making the Q6 wrapper
+definitions call `PenroseTreeGraph.spanningTreeCount` and
+`PenroseTreeGraph.ursellSum` directly on `X.graph S hdec`; the cluster theorem
+is now a direct `exact PenroseTreeGraph.treeGraphBound_ursell (X.graph S hdec)`.
+This avoids the `DecidablePred` definitional-equality timeout Claude reported,
+preserves the public theorem surface, and leaves the rooted
+`kp_partial_sum_bound` recursion as the remaining M2/Q6 proof crux.

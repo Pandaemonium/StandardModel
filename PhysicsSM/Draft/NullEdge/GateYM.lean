@@ -463,6 +463,11 @@ instantiated at the certified sign `epsCFC H`; axiom footprint
 [propext, Classical.choice, Quot.sound]. QCD1-i/ii proper - the
 condensate identity and chiral-pairing lemma - are NOT claimed by this
 file; see its docstring for the honestly-scoped remaining work);
+`TreeGraphInequality` (YM4/T6: Aristotle project `e4458430` proved the
+abstract finite `SimpleGraph` Penrose tree-graph inequality
+`(ursellSum G).natAbs <= spanningTreeCount G` by a direct finite
+Mayer/deletion recursion and gluing argument, with standard dependency
+footprint; this is draft GateYM code and not a trusted promotion);
 `PolymerKPCriterion` (YM4/T5: STATEMENT FREEZE ONLY, no proof attempted
 - the abstract finite polymer system and the Kotecky-Preiss condition
 `sum_{incompatible} |weight| exp(energy) <= energy`, cross-confirmed
@@ -481,9 +486,10 @@ counterexample showing the old bare-KP convergence target is false without
 self-incompatibility. The corrected C2 target is
 `kp_convergence_bound_of_selfIncompatible`, and the metric tail bound now
 carries the same self-incompatibility plus explicit energy-distance coercivity.
-The hard parked theorem is Penrose's concrete tree-graph inequality
-`treeGraphBound_ursell`, not the count definition itself). Not part of the
-default trusted build target; `StrongCouplingPolymerMap` (YM4/T7 statement
+The concrete `treeGraphBound_ursell` is now a kernel-checked specialization of
+`TreeGraphInequality`; the hard remaining Q6 crux is the rooted KP
+partial-sum/tree-sum recursion). Not part of the default trusted build target;
+`StrongCouplingPolymerMap` (YM4/T7 statement
 layer: finite plaquette polymers as nonempty connected finite supports with
 support-indexed nontrivial labels, conservative overlap-or-touching
 incompatibility, weights as products of absolute normalized label coefficients,
