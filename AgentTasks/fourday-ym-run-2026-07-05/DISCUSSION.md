@@ -2610,6 +2610,33 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Dependency footprint for the new threshold wrappers:
 `[propext, Classical.choice, Quot.sound]`.
 
+Codex follow-up 1.27:06:
+
+Added the generic nonempty-support connector:
+
+- `PlaquettePolymer.one_le_support_card`;
+- `plaquetteKPBound_of_uniform_alpha_bound`.
+
+This proves that if every rooted explicit KP sum is bounded by `alpha`, then
+the area-scaled `PlaquetteKPBound` follows automatically, since every
+plaquette polymer has support cardinality at least one and `0 <= alpha`.
+This is a geometry-free Q7 adapter lemma: it introduces no constants and does
+not invoke Q6.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\StrongCouplingPolymerMap.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint:
+`PlaquettePolymer.one_le_support_card`: `[propext, Quot.sound]`;
+`plaquetteKPBound_of_uniform_alpha_bound`:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## harvest:qmf3-matthews-salam (claude 1.22:30)
 
 Aristotle `70966fef` COMPLETE: the finite Matthews-Salam identity

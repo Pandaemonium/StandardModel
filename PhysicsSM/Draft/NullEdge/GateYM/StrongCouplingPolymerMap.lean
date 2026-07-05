@@ -125,6 +125,12 @@ theorem coeffProduct_nonneg (gammaAbs : Rlab -> Real)
     0 <= X.coeffProduct gammaAbs := by
   exact Finset.prod_nonneg (fun p _hp => hgamma (X.label p))
 
+/-- Every plaquette polymer has support-cardinality at least one. -/
+theorem one_le_support_card
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
+    1 <= X.support.card := by
+  exact Finset.card_pos.mpr X.support_nonempty
+
 end PlaquettePolymer
 
 /-- Supports overlap if they share a plaquette. -/
@@ -714,6 +720,31 @@ def PlaquetteKPBound
   forall X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel,
     plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha
       halpha X <= alpha * (X.support.card : Real)
+
+/-- A uniform rooted KP-sum bound by `alpha` is enough to prove the
+area-scaled finite plaquette-polymer KP bound, because every polymer support
+has cardinality at least one. -/
+theorem plaquetteKPBound_of_uniform_alpha_bound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (hBound : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha
+        halpha X <= alpha) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  intro X
+  have hCard : (1 : Real) <= (X.support.card : Real) := by
+    exact_mod_cast PlaquettePolymer.one_le_support_card X
+  have hScale : alpha <= alpha * (X.support.card : Real) := by
+    calc
+      alpha = alpha * 1 := by ring
+      _ <= alpha * (X.support.card : Real) := by
+          exact mul_le_mul_of_nonneg_left hCard halpha
+  exact (hBound X).trans hScale
 
 /-- A reusable sufficient condition for the explicit finite plaquette-polymer
 KP bound.
