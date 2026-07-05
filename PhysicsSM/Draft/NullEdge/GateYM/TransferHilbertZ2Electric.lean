@@ -1160,6 +1160,36 @@ def rpHilbertSpaceSelectedOtherDecomposition {Lx Ly : Nat}
       ext x
       simp
 
+/-- The first coordinate of the selected/other decomposition is the selected
+sector endomorphism. -/
+@[simp]
+theorem rpHilbertSpaceSelectedOtherDecomposition_fst {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    (rpHilbertSpaceSelectedOtherDecomposition hLx hLy F ex ey v).1.1 =
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v :=
+  rfl
+
+/-- The second coordinate of the selected/other decomposition is the
+complementary other-sector endomorphism. -/
+@[simp]
+theorem rpHilbertSpaceSelectedOtherDecomposition_snd {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    (rpHilbertSpaceSelectedOtherDecomposition hLx hLy F ex ey v).2.1 =
+      rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey v :=
+  rfl
+
 /-- Reconstruct a finite OS vector from a selected-sector component and a
 complementary other-sector component. -/
 def rpHilbertSpaceSelectedOtherReconstruction {Lx Ly : Nat}
@@ -1180,6 +1210,21 @@ def rpHilbertSpaceSelectedOtherReconstruction {Lx Ly : Nat}
     intro c v
     ext x
     simp [smul_add]
+
+/-- The selected/other reconstruction is the sum of the selected component and
+the complementary other-sector component. -/
+@[simp]
+theorem rpHilbertSpaceSelectedOtherReconstruction_apply {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpaceSelectedOtherProduct hLx hLy F ex ey) :
+    rpHilbertSpaceSelectedOtherReconstruction hLx hLy F ex ey v =
+      v.1.1 + v.2.1 :=
+  rfl
 
 /-- Reconstructing after the selected/other decomposition gives the original
 finite OS vector. -/
@@ -1269,6 +1314,36 @@ noncomputable def rpHilbertSpaceSelectedOtherLinearEquiv {Lx Ly : Nat}
     (rpHilbertSpaceSelectedOtherReconstruction hLx hLy F ex ey)
     (rpHilbertSpaceSelectedOtherDecomposition_reconstruction hLx hLy F ex ey)
     (rpHilbertSpaceSelectedOtherReconstruction_decomposition hLx hLy F ex ey)
+
+/-- The selected/other linear equivalence applies as the selected/other
+decomposition map. -/
+@[simp]
+theorem rpHilbertSpaceSelectedOtherLinearEquiv_apply {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    rpHilbertSpaceSelectedOtherLinearEquiv hLx hLy F ex ey v =
+      rpHilbertSpaceSelectedOtherDecomposition hLx hLy F ex ey v :=
+  rfl
+
+/-- The inverse selected/other linear equivalence applies as the
+selected/other reconstruction map. -/
+@[simp]
+theorem rpHilbertSpaceSelectedOtherLinearEquiv_symm_apply {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpaceSelectedOtherProduct hLx hLy F ex ey) :
+    (rpHilbertSpaceSelectedOtherLinearEquiv hLx hLy F ex ey).symm v =
+      rpHilbertSpaceSelectedOtherReconstruction hLx hLy F ex ey v :=
+  rfl
 
 /-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
 theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
