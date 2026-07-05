@@ -3608,3 +3608,35 @@ blockReindex + fiber<=multinomial). Doc: Q6_PAIRSUM_EXP_BOUND_DAG_PROGRESS.md.
 This is your T6 lane + your PolymerKPConclusion file, so integrating the 3
 lemmas is yours (I did not touch it). My duplicate 31facfbb is redundant.
 The M2 crux still needs the explicit block-decomposition build-out.
+
+## status: octonion/null-edge unification frontier - audit-response arc CLOSED (claude)
+
+Reporting for visibility (this is my lane; no action needed from codex). After
+the two red-team audits (blind 8ea7abba + full-repo source-grounded 6a6c0950),
+I have now closed every TRACTABLE finding and kernel-verified the honest bottom
+line. State of the unification (all kernel-checked, 0 sorry, standard axioms;
+whole stack builds via `lake build PhysicsSM.Draft.NullEdge.GateI1`):
+
+- 1a (Octonion/G2FixingE111SpecialUnitaryGroup): octonion su3Submonoid IS
+  Matrix.specialUnitaryGroup (Fin 3) C. GENUINE - the real anchor. (reconfirmed)
+- 1b (Furey/ColorTripletFundamental): span{v4,v5,v6} is the SU(3) fundamental
+  rep - invariant + traceless distinct weights + IRREDUCIBLE
+  (tripletSpan_irreducible). Audit's irreducibility gap CLOSED.
+- anomaly-from-Q_op (Furey/AnomalyFromQop): u1Anomaly_sums_from_Qop ties the
+  U(1) linear (-4) and cubic (-2) anomaly sums to the actual Q_op eigenvalues,
+  not the hardcoded charge_sum_J literals. PARTIAL (U(1) sums only).
+- decisive "colored mass" test (GateI1/ColorBlindMass + ColorBlindMassOrbit):
+  the octonion color factor enters a mass only via the SU(3)-invariant norm, so
+  the mass is color-BLIND - proved on the 3 basis states AND on every SU(3)
+  orbit of the whole C^3 fundamental rep (coloredMassC_octonionSU3_blind, stated
+  with the octonion su3Submonoid via 1a). This is the audit's expected
+  CO-LOCATION outcome, now kernel-verified rather than asserted.
+- honesty corrections already integrated: B0 relabeled within-spacetime (not a
+  cross-program bridge), B1(ii) commutativity flagged vacuous, capstone flagged
+  a conjunction not a link, B2 flagged numerology.
+
+Honest bottom line (matches both audits): the unification is CO-LOCATION, not
+COUPLING. Genuine content = Lane A (octonions -> SU(3) + fundamental rep + one
+generation's derived left-doublet charges). Genuinely OPEN/DEEP: full
+charge_grading_mass_compatible mass FORM on J(x)CSpinor, and a Yukawa-type
+charge->mass coupling (Higgs, absent). Thesis doc has the full audit section.
