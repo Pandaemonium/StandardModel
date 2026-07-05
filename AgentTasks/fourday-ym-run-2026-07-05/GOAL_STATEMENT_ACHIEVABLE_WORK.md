@@ -28,7 +28,7 @@ The repo now has enough verified infrastructure to make the next work concrete:
 - executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
   descriptor-requested two-time correlation profiles, sector blocks,
   descriptor-file input, optional reproducibility matrix emission, and JSON
-  summary output;
+  summary output plus saved-record replay verification;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
   payload with vacuum/local eigenvector equations and D12 gap identities;
 - `TwoStateTransferWitness.lean`, a tiny whole-sector witness adapter that
@@ -65,7 +65,9 @@ Achievable deliverables:
   spectral evaluations for each requested tau. The regression harness checks
   the requested profile and rejects unsupported correlation labels. Optional
   matrix output now includes spatial-state labels, the spatial-flux insertion,
-  the global-center flip, and center projectors in the full state basis.
+  the global-center flip, and center projectors in the full state basis. The
+  oracle also has a `--verify-record` path that validates saved JSON summaries
+  and replays matrix-backed partition, flux, and correlation checks.
 
 Done when:
 

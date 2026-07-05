@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.13"
+ORACLE_VERSION = "v0.14"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -735,6 +735,332 @@ def summary_record(summary: Z2TransferSummary,
     return record
 
 
+def _record_float(value: object, field: str) -> float:
+    """Read a finite floating-point value from a JSON field."""
+
+    _require(isinstance(value, (int, float)), f"`{field}` must be numeric")
+    out = float(value)
+    _require(math.isfinite(out), f"`{field}` must be finite")
+    return out
+
+
+def _compare_scalar(checks: dict,
+                    errors: list[str],
+                    name: str,
+                    observed: float,
+                    expected: float,
+                    tolerance: float) -> None:
+    """Append a scalar comparison to a saved-record verification report."""
+
+    abs_error = abs(float(observed) - float(expected))
+    ok = abs_error <= tolerance
+    checks[name] = {
+        "observed": float(observed),
+        "expected": float(expected),
+        "abs_error": abs_error,
+        "tolerance": tolerance,
+        "ok": bool(ok),
+    }
+    if not ok:
+        errors.append(name)
+
+
+def _compare_matrix(checks: dict,
+                    errors: list[str],
+                    name: str,
+                    observed: np.ndarray,
+                    expected: np.ndarray,
+                    tolerance: float) -> None:
+    """Append a matrix max-norm comparison to a verification report."""
+
+    same_shape = observed.shape == expected.shape
+    max_error = (
+        float(np.max(np.abs(observed - expected)))
+        if same_shape and observed.size
+        else (0.0 if same_shape else math.inf)
+    )
+    ok = same_shape and max_error <= tolerance
+    checks[name] = {
+        "observed_shape": list(observed.shape),
+        "expected_shape": list(expected.shape),
+        "max_abs_error": max_error,
+        "tolerance": tolerance,
+        "ok": bool(ok),
+    }
+    if not ok:
+        errors.append(name)
+
+
+def verify_record(record: dict) -> dict:
+    """Verify a saved JSON summary emitted by this finite oracle.
+
+    This is a reproducibility check for oracle artifacts, not a proof.  It
+    validates the descriptor, recomputes the exact scalar summary from the
+    descriptor, and, when a matrix payload is present, replays the partition,
+    flux insertion, and requested two-time correlations from the saved
+    matrices.
+    """
+
+    checks: dict = {}
+    errors: list[str] = []
+    try:
+        _require(isinstance(record, dict), "record must be a JSON object")
+        descriptor_record = record.get("descriptor")
+        _require(isinstance(descriptor_record, dict), "`descriptor` must be an object")
+        descriptor, expected = summarize_descriptor(descriptor_record)
+        results = record.get("results")
+        _require(isinstance(results, dict), "`results` must be an object")
+        tolerances = record.get("tolerances", DEFAULT_TOLERANCES)
+        _require(isinstance(tolerances, dict), "`tolerances` must be an object")
+
+        part_tol = _record_float(
+            tolerances.get("partition_rel_error", DEFAULT_TOLERANCES["partition_rel_error"]),
+            "tolerances.partition_rel_error",
+        ) * max(1.0, abs(expected.partition_full))
+        obs_tol = _record_float(
+            tolerances.get("observable_abs_error", DEFAULT_TOLERANCES["observable_abs_error"]),
+            "tolerances.observable_abs_error",
+        )
+        corr_tol = _record_float(
+            tolerances.get("correlation_abs_error", DEFAULT_TOLERANCES["correlation_abs_error"]),
+            "tolerances.correlation_abs_error",
+        )
+        matrix_tol = _record_float(
+            tolerances.get(
+                "matrix_symmetry_abs_error",
+                DEFAULT_TOLERANCES["matrix_symmetry_abs_error"],
+            ),
+            "tolerances.matrix_symmetry_abs_error",
+        )
+        sector_tol = _record_float(
+            tolerances.get(
+                "sector_commutator_abs_error",
+                DEFAULT_TOLERANCES["sector_commutator_abs_error"],
+            ),
+            "tolerances.sector_commutator_abs_error",
+        )
+
+        partition = results.get("partition")
+        _require(isinstance(partition, dict), "`results.partition` must be an object")
+        _compare_scalar(
+            checks,
+            errors,
+            "partition_transfer_trace",
+            _record_float(partition.get("transfer_trace"), "partition.transfer_trace"),
+            expected.partition_transfer,
+            part_tol,
+        )
+        _compare_scalar(
+            checks,
+            errors,
+            "partition_full_spacetime_sum",
+            _record_float(partition.get("full_spacetime_sum"), "partition.full_spacetime_sum"),
+            expected.partition_full,
+            part_tol,
+        )
+
+        flux_result = results.get("spatial_flux_expectation")
+        _require(
+            isinstance(flux_result, dict),
+            "`results.spatial_flux_expectation` must be an object",
+        )
+        _compare_scalar(
+            checks,
+            errors,
+            "spatial_flux_transfer_trace",
+            _record_float(
+                flux_result.get("transfer_trace"),
+                "spatial_flux_expectation.transfer_trace",
+            ),
+            expected.flux_transfer,
+            obs_tol,
+        )
+        _compare_scalar(
+            checks,
+            errors,
+            "spatial_flux_full_spacetime_sum",
+            _record_float(
+                flux_result.get("full_spacetime_sum"),
+                "spatial_flux_expectation.full_spacetime_sum",
+            ),
+            expected.flux_full,
+            obs_tol,
+        )
+
+        profile = results.get("spatial_flux_two_time_correlation_profile")
+        _require(
+            isinstance(profile, list),
+            "`results.spatial_flux_two_time_correlation_profile` must be a list",
+        )
+        by_tau = {}
+        for entry in profile:
+            _require(isinstance(entry, dict), "correlation profile entries must be objects")
+            tau = entry.get("tau")
+            _require(isinstance(tau, int), "correlation profile tau must be an integer")
+            by_tau[int(tau)] = entry
+        for expected_corr in expected.flux_correlation_profile:
+            entry = by_tau.get(expected_corr.tau)
+            _require(entry is not None, f"missing correlation tau {expected_corr.tau}")
+            prefix = f"correlation_tau_{expected_corr.tau}"
+            _compare_scalar(
+                checks,
+                errors,
+                f"{prefix}_transfer_trace",
+                _record_float(entry.get("transfer_trace"), f"{prefix}.transfer_trace"),
+                expected_corr.transfer,
+                corr_tol,
+            )
+            _compare_scalar(
+                checks,
+                errors,
+                f"{prefix}_full_spacetime_sum",
+                _record_float(entry.get("full_spacetime_sum"), f"{prefix}.full_spacetime_sum"),
+                expected_corr.full,
+                corr_tol,
+            )
+            _compare_scalar(
+                checks,
+                errors,
+                f"{prefix}_spectral_sum",
+                _record_float(entry.get("spectral_sum"), f"{prefix}.spectral_sum"),
+                expected_corr.spectral,
+                corr_tol,
+            )
+
+        matrices = record.get("matrices")
+        if matrices is not None:
+            _require(isinstance(matrices, dict), "`matrices` must be an object")
+            dim = 1 << descriptor.L
+            labels = matrices.get("spatial_state_labels")
+            labels_ok = labels == list(range(dim))
+            checks["matrix_spatial_state_labels"] = {
+                "ok": bool(labels_ok),
+                "expected": list(range(dim)),
+                "observed": labels,
+            }
+            if not labels_ok:
+                errors.append("matrix_spatial_state_labels")
+
+            K = np.array(matrices.get("transfer_kernel"), dtype=np.float64)
+            M = np.array(matrices.get("spatial_flux_insertion"), dtype=np.float64)
+            flip = np.array(matrices.get("global_center_flip"), dtype=np.float64)
+            plus = np.array(matrices.get("center_plus_projector"), dtype=np.float64)
+            minus = np.array(matrices.get("center_minus_projector"), dtype=np.float64)
+            flux = lambda state: spatial_flux(state, descriptor.L)
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_transfer_kernel",
+                K,
+                transfer_matrix(descriptor.L, descriptor.beta),
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_spatial_flux_insertion",
+                M,
+                observable_matrix(descriptor.L, flux),
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_global_center_flip",
+                flip,
+                center_flip_permutation(descriptor.L),
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_plus_projector",
+                plus,
+                sector_projector(descriptor.L, 1),
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_minus_projector",
+                minus,
+                sector_projector(descriptor.L, -1),
+                matrix_tol,
+            )
+
+            KT = np.linalg.matrix_power(K, descriptor.T)
+            trace = float(np.trace(KT))
+            _compare_scalar(
+                checks,
+                errors,
+                "matrix_replay_partition_transfer_trace",
+                trace,
+                _record_float(partition.get("transfer_trace"), "partition.transfer_trace"),
+                part_tol,
+            )
+            _compare_scalar(
+                checks,
+                errors,
+                "matrix_replay_spatial_flux_transfer_trace",
+                float(np.trace(M @ KT) / trace),
+                _record_float(
+                    flux_result.get("transfer_trace"),
+                    "spatial_flux_expectation.transfer_trace",
+                ),
+                obs_tol,
+            )
+            for expected_corr in expected.flux_correlation_profile:
+                entry = by_tau[expected_corr.tau]
+                replay = float(
+                    np.trace(
+                        M
+                        @ np.linalg.matrix_power(K, expected_corr.tau)
+                        @ M
+                        @ np.linalg.matrix_power(K, descriptor.T - expected_corr.tau)
+                    ) / trace
+                )
+                _compare_scalar(
+                    checks,
+                    errors,
+                    f"matrix_replay_correlation_tau_{expected_corr.tau}",
+                    replay,
+                    _record_float(
+                        entry.get("transfer_trace"),
+                        f"correlation_tau_{expected_corr.tau}.transfer_trace",
+                    ),
+                    corr_tol,
+                )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_projectors_sum_to_identity",
+                plus + minus,
+                np.eye(dim),
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_projectors_are_orthogonal",
+                plus @ minus,
+                np.zeros((dim, dim)),
+                sector_tol,
+            )
+        return {
+            "ok": not errors,
+            "errors": errors,
+            "checks": checks,
+            "claim_boundary": "oracle record verification only; not a Lean proof",
+        }
+    except Exception as exc:
+        return {
+            "ok": False,
+            "errors": [str(exc)],
+            "checks": checks,
+            "claim_boundary": "oracle record verification only; not a Lean proof",
+        }
+
+
 def summarize(
     L: int,
     T: int,
@@ -811,8 +1137,28 @@ def main() -> int:
         action="store_true",
         help="include transfer and sector matrices in JSON output",
     )
+    parser.add_argument(
+        "--verify-record",
+        type=Path,
+        help="verify a saved JSON summary emitted by this oracle",
+    )
     parser.add_argument("--json", action="store_true", help="emit JSON summary")
     args = parser.parse_args()
+
+    if args.verify_record:
+        record = load_descriptor(args.verify_record)
+        report = verify_record(record)
+        if args.json:
+            print(json.dumps(report, indent=2, sort_keys=True))
+        else:
+            status = "PASS" if report["ok"] else "FAIL"
+            print(f"z2_transfer_oracle verify-record: {status}")
+            for name, detail in report["checks"].items():
+                check_status = "PASS" if detail.get("ok") else "FAIL"
+                print(f"  [{check_status}] {name}")
+            if report["errors"]:
+                print("errors: " + ", ".join(report["errors"]))
+        return 0 if report["ok"] else 1
 
     if args.write_template:
         descriptor = model_descriptor(args.L, args.T, args.beta)
