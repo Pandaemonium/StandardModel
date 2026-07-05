@@ -306,6 +306,27 @@ theorem card_closedTouchNeighborhood_le_sum_singletons
   exact Finset.card_biUnion_le
 
 omit [Fintype Rlab] in
+/-- Uniform singleton-neighborhood cardinality bound.  If every singleton
+closed touch-neighborhood has at most `D` plaquettes, then the closed
+touch-neighborhood of a root support `A` has at most `A.card * D` plaquettes.
+
+This is still geometry-free: a concrete lattice must supply the value of `D`. -/
+theorem card_closedTouchNeighborhood_le_card_mul_singletonBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (A : Finset P) (D : Nat)
+    (hD : forall p : P,
+      (closedTouchNeighborhood Adj ({p} : Finset P)).card <= D) :
+    (closedTouchNeighborhood Adj A).card <= A.card * D := by
+  calc
+    (closedTouchNeighborhood Adj A).card
+        <= A.sum (fun p => (closedTouchNeighborhood Adj ({p} : Finset P)).card) :=
+          card_closedTouchNeighborhood_le_sum_singletons Adj A
+    _ <= A.sum (fun _p => D) := by
+          exact Finset.sum_le_sum (fun p _hp => hD p)
+    _ = A.card * D := by
+          simp [Finset.sum_const]
+
+omit [Fintype Rlab] in
 /-- If `B` is overlap-or-touch incompatible with `A`, then `B` contains an
 anchor plaquette in the closed touch-neighborhood of `A`.  This is the support
 localization fact needed before any area-by-area counting bound. -/
