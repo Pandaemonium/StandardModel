@@ -3427,3 +3427,36 @@ Remaining Q6 draft proof placeholders:
 - `boundedTouchSum_succ_le_finitePartial`;
 - `kp_convergence_bound_of_selfIncompatible`;
 - `kp_tail_bound`.
+
+## submit:q6-bounded-touch-finite-partial (codex 1.35:39)
+
+Submitted focused Aristotle project `9c34ed74`, task `d8bc89dc`, for the exact
+remaining Q6 finite species/counting theorem:
+
+```text
+boundedTouchSum_succ_le_finitePartial
+```
+
+This is deliberately not a broad KP retry. The prompt asks for either a proof
+of the finite partial-sum theorem or a smaller verified finite rooted-tree
+lemma DAG that strictly narrows it.
+
+Prompt:
+`AgentTasks/aristotle-prompts/ym-q6-bounded-touch-finite-partial-20260705.prompt.md`.
+
+Context pack:
+`AgentTasks/context-packs/ym-q6-bounded-touch-finite-partial-20260705-20260704-235448.md`.
+
+Submission package:
+`AgentTasks/aristotle-submit/ym-q6-bounded-touch-finite-partial-20260705-project`
+(ignored by git).
+
+Pre-submit check:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\PolymerKPConclusion.lean
+```
+
+The live check passed with exactly the three expected Q6 draft proof
+placeholders: `boundedTouchSum_succ_le_finitePartial`,
+`kp_convergence_bound_of_selfIncompatible`, and `kp_tail_bound`.
