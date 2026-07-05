@@ -37,8 +37,9 @@ Hermiticity `rpFReflection_herm` (`Theta^dagger = Theta`), its involution
 unitary for the fermionic Osterwalder-Seiler construction. The abstract
 boundary-coupling slot `ReflectedBoundaryCoupling` is also named below, with
 plus/minus reflected projector blocks proved PSD by the lifted projector Gram
-lemmas. Instantiating that slot with the concrete Wilson boundary coupling is
-still a successor task.
+lemmas; their Hermitian facts are exposed too, since PSD already includes
+Hermiticity. Instantiating that slot with the concrete Wilson boundary coupling
+is still a successor task.
 
 Remaining (next QMF5 cycle):
 
@@ -322,6 +323,13 @@ theorem plusBlock_posSemidef [Finite k]
   simpa [plusBlock] using
     conj_liftProjPlus_posSemidef (L := L) (nc := nc) (k := k) μ C.matrix
 
+/-- The named forward reflected block is Hermitian for any instantiated
+coupling matrix. -/
+theorem plusBlock_isHermitian [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) (μ : Fin 4) :
+    (C.plusBlock μ).IsHermitian :=
+  (C.plusBlock_posSemidef μ).isHermitian
+
 /-- The named backward reflected block is PSD for any instantiated coupling
 matrix. -/
 theorem minusBlock_posSemidef [Finite k]
@@ -330,6 +338,13 @@ theorem minusBlock_posSemidef [Finite k]
   letI : Fintype k := Fintype.ofFinite k
   simpa [minusBlock] using
     conj_liftProjMinus_posSemidef (L := L) (nc := nc) (k := k) μ C.matrix
+
+/-- The named backward reflected block is Hermitian for any instantiated
+coupling matrix. -/
+theorem minusBlock_isHermitian [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) (μ : Fin 4) :
+    (C.minusBlock μ).IsHermitian :=
+  (C.minusBlock_posSemidef μ).isHermitian
 
 /-- The forward projector block in the temporal reflection direction. -/
 noncomputable def temporalPlusBlock (C : ReflectedBoundaryCoupling L nc k) :
@@ -354,12 +369,26 @@ theorem temporalPlusBlock_posSemidef [Finite k]
     C.temporalPlusBlock.PosSemidef := by
   simpa [temporalPlusBlock] using C.plusBlock_posSemidef timeDir
 
+/-- The forward temporal reflected block is Hermitian for any instantiated
+coupling matrix. -/
+theorem temporalPlusBlock_isHermitian [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) :
+    C.temporalPlusBlock.IsHermitian :=
+  C.temporalPlusBlock_posSemidef.isHermitian
+
 /-- The backward temporal reflected block is PSD for any instantiated coupling
 matrix. -/
 theorem temporalMinusBlock_posSemidef [Finite k]
     (C : ReflectedBoundaryCoupling L nc k) :
     C.temporalMinusBlock.PosSemidef := by
   simpa [temporalMinusBlock] using C.minusBlock_posSemidef timeDir
+
+/-- The backward temporal reflected block is Hermitian for any instantiated
+coupling matrix. -/
+theorem temporalMinusBlock_isHermitian [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) :
+    C.temporalMinusBlock.IsHermitian :=
+  C.temporalMinusBlock_posSemidef.isHermitian
 
 /-- The summed abstract reflected temporal block is PSD for any instantiated
 coupling matrix.  The concrete Wilson boundary-coupling matrix remains the
@@ -369,6 +398,13 @@ theorem temporalBlock_posSemidef [Finite k]
     C.temporalBlock.PosSemidef := by
   simpa [temporalBlock] using
     (C.temporalPlusBlock_posSemidef.add C.temporalMinusBlock_posSemidef)
+
+/-- The summed abstract reflected temporal block is Hermitian for any
+instantiated coupling matrix. -/
+theorem temporalBlock_isHermitian [Finite k]
+    (C : ReflectedBoundaryCoupling L nc k) :
+    C.temporalBlock.IsHermitian :=
+  C.temporalBlock_posSemidef.isHermitian
 
 end ReflectedBoundaryCoupling
 
