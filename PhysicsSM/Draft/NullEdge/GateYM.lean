@@ -480,7 +480,7 @@ between that product and the finite OS range, and the resulting named
 formula over the four block electric sectors, and the sector inclusion is
 injective with each sector finrank bounded by the ambient finite OS range; the
 ambient range has positive finrank exactly when some sector has positive
-finrank.
+finrank, and zero finrank exactly when all four sector finranks are zero.
 This is still a finite identity, not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2

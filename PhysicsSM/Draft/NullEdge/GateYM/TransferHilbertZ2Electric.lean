@@ -1144,6 +1144,33 @@ theorem finrank_rpHilbertSpace_pos_iff_exists_finrank_rpBlockElectricSector_pos
       (by intro ey _hey; exact Nat.zero_le _)).2
     exact ⟨ey, by simp, hpos⟩
 
+/-- The ambient plaquette-field finite OS range has zero dimension exactly when
+all four concrete Z2 block electric sectors have zero dimension.
+
+This is the zero-dimensional complement to
+`finrank_rpHilbertSpace_pos_iff_exists_finrank_rpBlockElectricSector_pos`;
+it is finite-dimensional bookkeeping only, not a transfer-matrix or gap
+statement. -/
+theorem finrank_rpHilbertSpace_eq_zero_iff_forall_finrank_rpBlockElectricSector_eq_zero
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) = 0 ↔
+      ∀ ex : Bool, ∀ ey : Bool,
+        Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) = 0 := by
+  constructor
+  · intro hzero ex ey
+    apply Nat.eq_zero_of_le_zero
+    have hle :=
+      finrank_rpBlockElectricSector_le_finrank_rpHilbertSpace hLx hLy F ex ey
+    simpa [hzero] using hle
+  · intro hzero
+    rw [finrank_rpHilbertSpace_eq_sum_finrank_rpBlockElectricSector hLx hLy F]
+    simp [hzero]
+
 end TransferHilbertZ2Electric
 end GateYM
 end NullEdge
