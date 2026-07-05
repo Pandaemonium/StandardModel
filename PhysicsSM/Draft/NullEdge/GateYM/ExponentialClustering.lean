@@ -269,6 +269,19 @@ theorem supportTail_union [DecidableEq Gamma]
         Finset.sum S (fun g => tailContribution M hdec D g R) +
           Finset.sum T (fun g => tailContribution M hdec D g R))
 
+/-- Exact finite inclusion-exclusion identity for support tails. -/
+theorem supportTail_union_add_inter [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S ∪ T) R +
+      supportTail M hdec D (S ∩ T) R =
+        supportTail M hdec D S R + supportTail M hdec D T R := by
+  simpa [supportTail] using
+    (Finset.sum_union_inter (s₁ := S) (s₂ := T)
+      (f := fun g => tailContribution M hdec D g R))
+
 /-- Enlarging the observable support can only increase the support tail. -/
 theorem supportTail_mono
     (M : MetricPolymerSystem Gamma)
@@ -280,6 +293,24 @@ theorem supportTail_mono
   exact Finset.sum_le_sum_of_subset_of_nonneg hST (by
     intro g _hgT _hgS
     exact tailContribution_nonneg M hdec D g R)
+
+/-- The tail over an intersection is bounded by the left support tail. -/
+theorem supportTail_inter_le_left [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S ∩ T) R <= supportTail M hdec D S R :=
+  supportTail_mono M hdec D R Finset.inter_subset_left
+
+/-- The tail over an intersection is bounded by the right support tail. -/
+theorem supportTail_inter_le_right [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S ∩ T) R <= supportTail M hdec D T R :=
+  supportTail_mono M hdec D R Finset.inter_subset_right
 
 /-- The support tail is subadditive over arbitrary finite support unions.
 Overlap is harmless: common anchors are overcounted on the right. -/
