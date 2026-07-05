@@ -173,6 +173,8 @@ Implementation status as of 2026-07-05:
 - The v0.16 provenance update records the one-link Lean trace identities
   `slabTransfer_trace` and `fluxMatrix_mul_slabTransfer_trace` in the oracle
   `lean_surfaces` list.
+- The v0.17 provenance update records the one-link two-step partition trace
+  and raw two-time flux-correlation numerator theorem surfaces.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -196,8 +198,10 @@ Implementation status as of 2026-07-05:
   insertion as a Hermitian involution swapping the vacuum and local/flux
   eigenvectors. It now also proves the one-step partition trace
   `Matrix.trace (slabTransfer beta) = 4 * exp beta` and the one-time
-  flux-insertion trace `Matrix.trace (fluxMatrix * slabTransfer beta) = 0`.
-  This is a one-link bridge only, not the full Wilson slab operator.
+  flux-insertion trace `Matrix.trace (fluxMatrix * slabTransfer beta) = 0`,
+  plus the corresponding `T = 2` partition trace and raw two-time
+  flux-correlation numerator. This is a one-link bridge only, not the full
+  Wilson slab operator.
 - `PhysicsSM/Draft/NullEdge/GateYM/ObservableSupportBridge.lean` adds the
   conservative Q8 support-bookkeeping adapter requested by the audit verdict:
   a local observable exposes finite plaquette/polymer support, that support is
@@ -227,7 +231,7 @@ now and what still needs a bridge.
 | `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, schema-record conventions, correlation-profile validation, optional matrix-payload validation, saved-record verifier acceptance/rejection, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` | Smallest Lean spectral payload | Kernel-checked finite identities for the `2 x 2` transfer-shape eigenvectors, ordered eigenvalues, spectral ratio, and contraction factor. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferWitness.lean` | Tiny consumer of the finite-gap witness API | Kernel-checked toy `Module.End` witness for the two-state descriptor; deliberately not the full Wilson slab transfer operator. |
-| `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, explicit vacuum/local eigenvectors, one-step partition and flux-insertion trace identities, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |
+| `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, explicit vacuum/local eigenvectors, one-step and two-step partition/flux trace identities, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |
 | `PhysicsSM/Draft/NullEdge/GateYM/FiniteGapAssembly.lean` | Abstract finite spectral-gap witness package | Kernel-checked packaging of the spectral parameters, transfer endomorphism, eigenvectors, sector preservation, and ratio/log identities. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert*.lean` | Finite OS/GNS range and sector infrastructure | Kernel-checked finite algebraic range, block, shift, and Z2 electric-sector bookkeeping; no physical transfer matrix is constructed. |
 | `PhysicsSM/Draft/NullEdge/GateYM/ReflectionPositivityKernel.lean` and Wilson RP files | Positivity engine for reflection-positive weights | Kernel-checked PSD/reflection-form algebra and cut-plaquette Wilson factors; the connected Wilson slab remains open. |

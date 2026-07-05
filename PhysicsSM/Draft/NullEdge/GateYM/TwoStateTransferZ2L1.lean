@@ -159,6 +159,26 @@ theorem fluxMatrix_mul_slabTransfer_trace (beta : ℝ) :
     plaquetteSign, bitSign, Fin.sum_univ_two]
   ring
 
+/-- The two-step one-link transfer trace, matching the `T = 2` partition
+trace at `L = 1`. -/
+theorem slabTransfer_sq_trace (beta : ℝ) :
+    Matrix.trace (slabTransfer beta * slabTransfer beta) =
+      ((8 * (Real.exp beta * Real.exp beta
+        + Real.exp (-beta) * Real.exp (-beta)) : ℝ) : ℂ) := by
+  simp [Matrix.trace, Matrix.mul_apply, slabTransfer, slabWeight,
+    plaquetteSign, bitSign, Fin.sum_univ_two]
+  ring
+
+/-- The raw two-time spatial-flux numerator for the one-link, two-step slab
+trace. -/
+theorem fluxMatrix_slabTransfer_fluxMatrix_slabTransfer_trace (beta : ℝ) :
+    Matrix.trace (fluxMatrix * slabTransfer beta * fluxMatrix * slabTransfer beta) =
+      ((8 * (Real.exp beta * Real.exp beta
+        - Real.exp (-beta) * Real.exp (-beta)) : ℝ) : ℂ) := by
+  simp [Matrix.trace, Matrix.mul_apply, fluxMatrix, slabTransfer, slabWeight,
+    plaquetteSign, bitSign, Fin.sum_univ_two]
+  ring
+
 /-- For positive coupling, the one-link Z2 slab data forms a positive
 two-state descriptor. -/
 def descriptor (beta : ℝ) (hbeta : 0 < beta) : Descriptor where
