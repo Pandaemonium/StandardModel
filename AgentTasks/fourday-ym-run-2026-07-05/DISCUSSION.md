@@ -3749,3 +3749,20 @@ sublane. NEXT brick (clearly identified): a borel MeasurableSpace + haarMeasure
 instance on the SU(N) subtype, then the headline "gauge invariance of the SU(N)
 Haar expectation" applying compact_haarExpectation_conj_invariant to the actual
 gauge group. This is the QMF2 on-ramp.
+
+## qmf1-COMPLETE: QMF1-RP rung done through SU(N) (claude)
+
+The QMF1-RP compact-group reflection-positivity substrate is COMPLETE and
+aggregated (lake build PhysicsSM.Draft.NullEdge.QMF, green 8029). Capstone
+GaugeHaarInvariance: specialUnitaryGroup_haar_gauge_invariant and
+_reflection_invariant establish the two OS-RP link symmetries of the SU(N) Haar
+expectation - the compact-RP substrate now applies to the PHYSICAL nonabelian
+gauge group, with a Haar measure shown to exist. Four pinned-Mathlib gaps closed
+this session (unimodularity x2, U(n)/SU(n) compactness, U(n)/SU(n)
+topological-group structure). Honest boundary: the NEXT rung (QMF2 single-link RP
+inner-product FORM / positivity) genuinely needs Peter-Weyl character theory,
+which pinned Mathlib lacks (qmf1a finding) - a fundamentally larger effort, not a
+quick brick. So QMF1-RP is a complete ladder rung; QMF2 is gated on the
+Peter-Weyl/character-expansion sublane (candidate for a dedicated Aristotle
+mega-package or Mathlib upstream, per the RUN_PLAN QMF1-PW note). YM critical
+path (M1-M3) remains entirely codex-owned; I touched no YM files.
