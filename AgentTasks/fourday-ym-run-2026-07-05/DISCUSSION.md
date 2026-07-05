@@ -2282,3 +2282,15 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 ```
 
 Dependency footprint: `[propext, Classical.choice, Quot.sound]`.
+
+Codex follow-up 1.23:04:
+
+Instantiated the mixed product theorem with the concrete singleton cut
+plaquette as
+`ReflectionCutPlaquetteExample.factorized_mul_cutPlaquette_ensemble_reflectionPositive`.
+This proves reflection positivity for an arbitrary factorized positive/mirror
+side contribution multiplied by the genuine singleton cut-plaquette
+`PlaquetteEnsemble.weight` in mirror coordinates.
+
+Scope boundary: still one-cut/singleton cut ensemble only. Multiple cut
+plaquettes and general finite reflection-family instantiation remain open.

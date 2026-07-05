@@ -50,7 +50,10 @@ harvested as soon as they returned.
   General finite cut-ensemble instantiation remains open, but
   `reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod` now supplies the
   mixed kernel-algebra assembly theorem for factorized positive/mirror weights
-  times finite Wilson cut factors.
+  times finite Wilson cut factors. The concrete follow-up
+  `factorized_mul_cutPlaquette_ensemble_reflectionPositive` instantiates that
+  assembly with the genuine singleton cut-plaquette ensemble weight and an
+  arbitrary factorized side contribution.
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -162,7 +165,7 @@ cut-bearing plaquette, proves the mirror-coordinate factor form, and closes the
 singleton one-plaquette `PlaquetteEnsemble.weight` RP statement. The remaining
 Q1 gap is the genuinely nontrivial finite cut-ensemble / shocking tier:
 instantiate the mixed-product theorem with concrete finite plaquette families
-and/or the abstract reflection-family theorem. T2 Hermitian bridge
+with multiple cut plaquettes and/or the abstract reflection-family theorem. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
 `cutKernel` block matrix and pairing/reflection-form bridge, while

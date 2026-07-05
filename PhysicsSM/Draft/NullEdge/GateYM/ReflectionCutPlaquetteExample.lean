@@ -268,6 +268,31 @@ theorem cutPlaquette_ensemble_reflectionPositive
   funext a c b
   rw [cutPlaquette_weight_mirrorConfig_eq_wilsonKernel]
 
+/-- A factorized positive/mirror contribution times the genuine singleton
+cut-plaquette ensemble weight is reflection positive in mirror coordinates.
+
+This is the concrete one-cut-plaquette instance of the mixed product assembly
+theorem. It remains a one-cut example, not a general finite-lattice RP-LINK
+statement. -/
+theorem factorized_mul_cutPlaquette_ensemble_reflectionPositive
+    (beta : ℝ) (hbeta : 0 ≤ beta)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1)
+    (h : G → G × G → ℂ) :
+    ReflectionPositivityKernel.IsReflectionPositive (A := G) (C := G × G)
+      (fun a c b =>
+        (h a c * (starRingEnd ℂ) (h b c)) *
+          ((PlaquetteEnsemble.weight cutPlaquetteFamily
+            (WilsonLocalWeight.wilsonLocalWeight beta rho)
+            (cutMirrorConfig a c b) : ℝ) : ℂ)) := by
+  simpa [cutPlaquette_weight_mirrorConfig_eq_wilsonKernel] using
+    (reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod
+      (A := G) (C := G × G) (G := G) (n := n)
+      (s := (Finset.univ : Finset PUnit))
+      beta hbeta rho hmul hone hunit h (fun _ => cutPlaqEWord))
+
 end ReflectionCutPlaquetteExample
 end GateYM
 end NullEdge

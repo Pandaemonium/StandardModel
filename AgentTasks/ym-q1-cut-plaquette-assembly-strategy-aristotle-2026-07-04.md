@@ -115,4 +115,6 @@ Wilson cut-factor RP-KER theorem. A second local follow-up added
 still requires finite product/general cut-ensemble assembly. Codex also added
 `reflectionForm_nonneg_of_factorized_mul_wilsonFactor_prod` to
 `WilsonCutPlaquettePositivity.lean`, closing the mixed kernel-algebra product
-shape needed before concrete finite plaquette-family instantiation.
+shape needed before concrete finite plaquette-family instantiation. The theorem
+`factorized_mul_cutPlaquette_ensemble_reflectionPositive` instantiates that
+mixed product shape for the singleton concrete cut-plaquette ensemble.

@@ -20,8 +20,9 @@ cut-plaquette one-factor RP example. The safest current headline is:
 > lemmas, the single-factor Wilson cut-kernel bridge, and a four-edge
 > cut-plaquette example whose holonomy has the required mirror-coordinate
 > factor form and whose singleton plaquette ensemble weight is reflection
-> positive, plus a mixed product theorem for factorized positive/mirror weights
-> times finite Wilson cut factors - with concrete finite cut-ensemble
+> positive even after multiplying by a factorized side contribution, plus a
+> mixed product theorem for factorized positive/mirror weights times finite
+> Wilson cut factors - with concrete finite cut-ensemble
 > instantiation still open and the Q2 OS/GNS range model present only as finite algebraic
 > infrastructure.
 
@@ -167,11 +168,13 @@ Minimal concrete cut-plaquette example:
   - `cutPlaquette_wilsonFactor_reflectionPositive`
   - `cutPlaquette_weight_mirrorConfig_eq_wilsonKernel`
   - `cutPlaquette_ensemble_reflectionPositive`
+  - `factorized_mul_cutPlaquette_ensemble_reflectionPositive`
   This is the first concrete straddling plaquette with the required read-off
   shape. It proves the holonomy factorization, identifies the singleton
   `PlaquetteEnsemble.weight`, and specializes the Wilson cut-factor RP-KER
-  theorem to a concrete one-plaquette ensemble. It is not yet a finite
-  cut-ensemble product theorem.
+  theorem to a concrete one-plaquette ensemble, including a factorized
+  positive/mirror side contribution. It is not yet a multi-cut finite
+  ensemble product theorem.
 
 Baseline Wilson reflection positivity:
 

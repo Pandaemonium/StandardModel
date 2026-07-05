@@ -373,8 +373,11 @@ the Wilson cut-factor bridge as `cutPlaquette_wilsonFactor_reflectionPositive`;
 identifies the singleton concrete `PlaquetteEnsemble.weight` with that Wilson
 kernel as `cutPlaquette_weight_mirrorConfig_eq_wilsonKernel`; and packages the
 one-plaquette concrete RP statement as
-`cutPlaquette_ensemble_reflectionPositive`. This is still not full RP-LINK:
-finite products over a general cut-bearing ensemble are not assembled here);
+`cutPlaquette_ensemble_reflectionPositive`; also proves
+`factorized_mul_cutPlaquette_ensemble_reflectionPositive`, multiplying the
+genuine singleton cut weight by an arbitrary factorized positive/mirror side
+contribution. This is still not full RP-LINK: finite products over a general
+cut-bearing ensemble are not assembled here);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original
