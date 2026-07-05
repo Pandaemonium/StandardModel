@@ -80,10 +80,10 @@ Achievable deliverables:
   and replays matrix-backed partition, flux, correlation, transfer-kernel
   symmetry/center-commutation, spatial-flux insertion algebra,
   center-projector algebra, flux/center sector-toggle checks, and
-  full/center-sector positive-eigenvalue lists. It now also emits the explicit
-  JSON-schema-style descriptor contract through `--write-schema`, and records
-  full/center-sector first-gap fields derived from the positive eigenvalue
-  lists.
+  full/center-sector positive-eigenvalue lists, plus emitted center-sector
+  block matrices. It now also emits the explicit JSON-schema-style descriptor
+  contract through `--write-schema`, and records full/center-sector first-gap
+  fields derived from the positive eigenvalue lists.
 
 Done when:
 

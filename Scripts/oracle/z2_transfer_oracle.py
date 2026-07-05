@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.30"
+ORACLE_VERSION = "v0.31"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -1271,6 +1271,8 @@ def verify_record(record: dict) -> dict:
             flip = np.array(matrices.get("global_center_flip"), dtype=np.float64)
             plus = np.array(matrices.get("center_plus_projector"), dtype=np.float64)
             minus = np.array(matrices.get("center_minus_projector"), dtype=np.float64)
+            plus_block = np.array(matrices.get("center_plus_block"), dtype=np.float64)
+            minus_block = np.array(matrices.get("center_minus_block"), dtype=np.float64)
             flux = lambda state: spatial_flux(state, descriptor.L)
             _compare_matrix(
                 checks,
@@ -1334,6 +1336,38 @@ def verify_record(record: dict) -> dict:
                 "matrix_center_minus_projector",
                 minus,
                 sector_projector(descriptor.L, -1),
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_plus_block",
+                plus_block,
+                sector_block(descriptor.L, descriptor.beta, 1),
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_minus_block",
+                minus_block,
+                sector_block(descriptor.L, descriptor.beta, -1),
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_plus_block_symmetric",
+                plus_block.T,
+                plus_block,
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_center_minus_block_symmetric",
+                minus_block.T,
+                minus_block,
                 matrix_tol,
             )
             _compare_matrix(
