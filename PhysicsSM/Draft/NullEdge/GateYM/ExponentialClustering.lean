@@ -282,6 +282,18 @@ theorem supportTail_union_add_inter [DecidableEq Gamma]
     (Finset.sum_union_inter (s₁ := S) (s₂ := T)
       (f := fun g => tailContribution M hdec D g R))
 
+/-- Subtraction form of finite support-tail inclusion-exclusion. -/
+theorem supportTail_union_eq_add_sub_inter [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S ∪ T) R =
+      supportTail M hdec D S R + supportTail M hdec D T R -
+        supportTail M hdec D (S ∩ T) R := by
+  have h := supportTail_union_add_inter M hdec D S T R
+  linarith
+
 /-- Exact split of a support tail into the part outside `T` and the overlap
 with `T`. -/
 theorem supportTail_sdiff_add_inter [DecidableEq Gamma]
@@ -300,6 +312,18 @@ theorem supportTail_sdiff_add_inter [DecidableEq Gamma]
     Finset.sum_union (Finset.disjoint_sdiff_inter S T)
   rw [Finset.sdiff_union_inter] at hsum
   simpa [supportTail] using hsum.symm
+
+/-- Subtraction form of the exact support-difference split. -/
+theorem supportTail_sdiff_eq_sub_inter [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S \ T) R =
+      supportTail M hdec D S R -
+        supportTail M hdec D (S ∩ T) R := by
+  have h := supportTail_sdiff_add_inter M hdec D S T R
+  linarith
 
 /-- Enlarging the observable support can only increase the support tail. -/
 theorem supportTail_mono
