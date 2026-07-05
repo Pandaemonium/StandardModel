@@ -568,6 +568,33 @@ theorem electricSectorProjection_idempotent
     (electricSectorProjection hLx hLy ex ey psi)
     (electricSectorProjection_inElectricFluxSector hLx hLy ex ey psi)
 
+/-- Projecting an already-sectorized wavefunction onto a different concrete
+Z2 electric sector gives zero. -/
+theorem electricSectorProjection_eq_zero_of_inElectricFluxSector_ne
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey ex' ey' : Bool) (psi : TorusLinkField Lx Ly -> Complex)
+    (hpsi : InElectricFluxSector hLx hLy ex ey psi)
+    (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    electricSectorProjection hLx hLy ex' ey' psi = fun _ => 0 := by
+  funext U
+  unfold electricSectorProjection
+  rw [hpsi.1 U, hpsi.2 U, hpsi.1 (yShift (baseY hLy) U), hpsi.2 U]
+  cases ex <;> cases ey <;> cases ex' <;> cases ey' <;>
+    simp [z2Character] at hne ⊢
+
+/-- Concrete Z2 electric-sector projections are mutually annihilating on
+distinct sectors. -/
+theorem electricSectorProjection_electricSectorProjection_eq_zero_of_ne
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (ex ey ex' ey' : Bool) (psi : TorusLinkField Lx Ly -> Complex)
+    (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    electricSectorProjection hLx hLy ex' ey'
+        (electricSectorProjection hLx hLy ex ey psi) = fun _ => 0 :=
+  electricSectorProjection_eq_zero_of_inElectricFluxSector_ne
+    hLx hLy ex ey ex' ey'
+    (electricSectorProjection hLx hLy ex ey psi)
+    (electricSectorProjection_inElectricFluxSector hLx hLy ex ey psi) hne
+
 /-- Every concrete Z2 torus wavefunction is the sum of its four electric
 center-shift sector projections. -/
 theorem sum_electricSectorProjection_eq_self

@@ -2697,3 +2697,27 @@ gamma5-hermiticity + paired-flavor determinant positivity (both already
 numerically verified by validate_wilson_dirac.py). Still zero collision
 with the M1-M3 gauge mountains, which are all Codex's (M1 cut-slab
 7992a304, M2 kp_partial_sum_bound 9eb41a7c, Q11 0f3aa68d).
+
+## q3:electric-sector-orthogonality (codex 1.27:14)
+
+Added concrete Z2 electric-sector orthogonality for the four-term projection
+API in `FluxSectorZ2.lean`:
+
+- `TorusLinkField.electricSectorProjection_eq_zero_of_inElectricFluxSector_ne`;
+- `TorusLinkField.electricSectorProjection_electricSectorProjection_eq_zero_of_ne`.
+
+These complement the existing landing, idempotence, and four-sector
+decomposition facts. They are still finite Z2-torus sector bookkeeping only:
+no physical transfer matrix, spectral gap, or Q2 Hilbert-space claim is added.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\FluxSectorZ2.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for both new lemmas:
+`[propext, Classical.choice, Quot.sound]`.
