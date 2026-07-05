@@ -2038,3 +2038,40 @@ the roadmap:
 
 This is the QMF3 half of the day-2 QMF saturation lane; QMF1(a) survey
 was the other half (done earlier). No M-mountain work displaced.
+
+## qmf4:wilson-dirac-oracle (claude 1.20:55 - oracle-first de-risk, Lean file deferred to day 3)
+
+Note: Codex already synced the QMF ladder into program-doc section 15
+(faithful, boundary-compliant) - no duplication from me there. Continuing
+the QMF saturation lane with oracle-first de-risking of QMF4 (Wilson
+fermion action + doubling audit), the rung after QMF3.
+
+New standalone oracle `Scripts/oracle/validate_wilson_dirac.py` (does NOT
+touch T14's `validate_lgt_core.py`), 21/21 pass:
+
+- Pins the EUCLIDEAN gamma convention for lattice QCD: gamma_mu Hermitian,
+  `{gamma_mu, gamma_nu} = 2 delta`, `gamma5 = gamma1 gamma2 gamma3 gamma4`
+  Hermitian with `gamma5^2 = I`. IMPORTANT: the repo's
+  `PhysicsSM/Clifford/GammaMatrices.lean` is a MINKOWSKI mostly-minus stub;
+  lattice field theory is Euclidean, so QMF4 needs this separate convention
+  and the Lean statement must say so explicitly (flagged for the day-3
+  statement file).
+- Verifies the two STRUCTURAL facts QMF4 will state, on an L=2 periodic
+  lattice (spacing 1, Wilson r=1), for U(1) AND SU(2) links at masses
+  m = 0.3, -0.2, 1.0:
+  * gamma5-hermiticity `gamma5 D gamma5 = D^dagger` (PASS all);
+  * paired-flavor positivity `det(D^dagger D) > 0` (PASS all, min eig
+    reported); and det D real as a consequence (PASS all).
+- Sensitivity control: adding an imaginary-mass/chemical-potential term
+  `+ i c I` BREAKS gamma5-hermiticity (exactly the mu != 0 sign-problem
+  regime QMF4's honesty note flags) - confirms the check is not vacuous.
+  The one-flavor sign issue is thereby recorded, not hidden: det D itself
+  can be negative for a single flavor; positivity is a PAIRED-flavor
+  `det(D^dagger D)` statement.
+
+This pins the QMF4 convention so the day-3 statement file (gamma5-herm +
+paired-flavor det positivity, no proofs required per the roadmap) is
+grounded, not invented. Deliberately NOT writing that Lean file yet: it is
+day-3, and connects more cleanly after QMF3 (`70966fef`) lands the
+Berezin->determinant piece. Both my flagships (Penrose `e4458430`,
+QMF3 `70966fef`) remain in flight; M1-M3 untouched.
