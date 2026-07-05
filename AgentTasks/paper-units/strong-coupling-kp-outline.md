@@ -86,13 +86,22 @@ Q7 support-localization and support-counting landing pads:
 - `anchoredPlaquettePolymerSum_eq_sum_areaSlices` and
   `anchoredPlaquettePolymerSum_le_sum_areaBounds` reduce anchored estimates to
   per-area slice bounds.
+- `anchoredPlaquettePolymerSum_le_sum_positiveAreaBounds` is the same
+  reduction with hypotheses only over the positive-area range.
 - `plaquetteKPSum_le_sum_closedTouchNeighborhood_areaBounds` and
   `plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_areaBounds` lift the
   area slices back to the rooted KP overcount.
+- `plaquetteKPSum_le_sum_closedTouchNeighborhood_positiveAreaBounds` and
+  `plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_positiveAreaBounds`
+  are the positive-area rooted-overcount variants.
 - `plaquetteKPBound_of_closedTouchNeighborhood_areaBounds`,
   `plaquetteKPBound_of_realClosedNeighborhood_areaBounds`, and
   `plaquetteKPBound_of_singletonBound_areaBounds` are the current support-count
   landing pads for a later per-area estimate.
+- `plaquetteKPBound_of_closedTouchNeighborhood_positiveAreaBounds`,
+  `plaquetteKPBound_of_realClosedNeighborhood_positiveAreaBounds`, and
+  `plaquetteKPBound_of_singletonBound_positiveAreaBounds` are the corresponding
+  landing pads with no `k = 0` hypothesis.
 
 Concrete sanity fixture:
 
@@ -176,5 +185,6 @@ reviewable theorem inventory for the KP lane. The nearest upgrade path is:
 2. Harvest or replace the Q7 support-counting strategy with kernel-checked
    finite counting lemmas.
 3. Add a concrete geometry/coefficient theorem feeding
-   `plaquetteKPBound_of_singletonBound_areaBounds` or its real-growth version.
+   `plaquetteKPBound_of_singletonBound_positiveAreaBounds` or its real-growth
+   version.
 4. Only then attempt a Q8 concrete clustering statement.
