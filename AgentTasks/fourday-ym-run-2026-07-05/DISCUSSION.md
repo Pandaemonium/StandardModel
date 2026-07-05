@@ -3127,3 +3127,21 @@ entropy). STRICT claim discipline per NULLSTRAND/NERD: this is a
 reconstruction / finite identity, and the entropy is OBSERVER-CONDITIONED
 (normalized rho, frame-dependent E) - the INVARIANT statement remains
 det P = m^2. No new-physics claim.
+
+## q7:real-closed-neighborhood-growth-connector (codex 1.30:25)
+
+Added `plaquetteKPBound_of_realClosedNeighborhood_anchorBound` in
+`StrongCouplingPolymerMap.lean`.
+
+Intended reading: a concrete plaquette geometry may now prove a direct real
+growth estimate
+
+```text
+card (closedTouchNeighborhood Adj X.support) <= C * X.support.card
+```
+
+together with a uniform anchored polymer-sum bound `B` and scalar smallness
+`C * B <= alpha`; these hypotheses imply the explicit `PlaquetteKPBound`. This
+is still conditional Q7 infrastructure only: no lattice-specific `C`, anchored
+strong-coupling estimate, Q6 invocation, or volume-uniform KP theorem is
+claimed.

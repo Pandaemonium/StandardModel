@@ -782,6 +782,53 @@ theorem plaquetteKPBound_of_closedTouchNeighborhood_anchorBound
       (hB X)).trans
       (hScale X)
 
+/-- A real-valued growth-constant version of
+`plaquetteKPBound_of_closedTouchNeighborhood_anchorBound`.
+
+This is useful when a concrete plaquette geometry proves the closed
+touch-neighborhood estimate directly as
+`card N(A) <= C * card A`, rather than through a natural-number singleton
+degree.  The theorem remains conditional: it assumes the anchored polymer-sum
+bound `B` and the scalar smallness inequality `C * B <= alpha`. -/
+theorem plaquetteKPBound_of_realClosedNeighborhood_anchorBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (C B : Real) (hB_nonneg : 0 <= B)
+    (hCard : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      ((closedTouchNeighborhood Adj X.support).card : Real) <=
+        C * (X.support.card : Real))
+    (hAnchor : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+        (Finset.univ.filter
+          (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+            decide (q ∈ Y.support) = true)).sum
+          (fun Y =>
+            Y.coeffProduct gammaAbs *
+              Real.exp (alpha * (Y.support.card : Real))) <= B)
+    (hsmall : C * B <= alpha) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  refine
+    plaquetteKPBound_of_closedTouchNeighborhood_anchorBound Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha B
+      hAnchor ?_
+  intro X
+  have hSupport_nonneg : 0 <= (X.support.card : Real) := by
+    exact_mod_cast Nat.zero_le X.support.card
+  calc
+    ((closedTouchNeighborhood Adj X.support).card : Real) * B
+        <= (C * (X.support.card : Real)) * B := by
+          exact mul_le_mul_of_nonneg_right (hCard X) hB_nonneg
+    _ = (X.support.card : Real) * (C * B) := by ring
+    _ <= (X.support.card : Real) * alpha := by
+          exact mul_le_mul_of_nonneg_left hsmall hSupport_nonneg
+    _ = alpha * (X.support.card : Real) := by ring
+
 /-- A reusable sufficient condition for the explicit finite plaquette-polymer
 KP bound.
 

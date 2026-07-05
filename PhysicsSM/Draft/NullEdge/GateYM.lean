@@ -522,7 +522,9 @@ to the explicit plaquette KP sum. It also packages cardinality-times-anchor and
 support-size-times-degree-times-anchor bounds for turning local anchored
 estimates into explicit KP-sum estimates, including the conditional adapter
 `plaquetteKPBound_of_closedTouchNeighborhood_anchorBound` from any per-root
-closed-neighborhood cardinality/energy estimate and the degree-specialized
+closed-neighborhood cardinality/energy estimate, the real-valued growth
+constant connector `plaquetteKPBound_of_realClosedNeighborhood_anchorBound`,
+and the degree-specialized
 `plaquetteKPBound_of_singletonBound_anchorBound`. It also names the explicit
 finite plaquette KP sum `plaquetteKPSum`, the bound predicate
 `PlaquetteKPBound`, and the adapter `kpCondition_of_plaquetteKPBound` from that
