@@ -71,7 +71,10 @@ intentionally untouched because Q6 has not landed.
   exposes direct contraction-factor facts for `Real.exp (-localGap)`:
   positivity, strict upper bound by one, interval membership, and
   nonzero/non-one corollaries, plus `exp (-localGap) = lambdaLocal / lambda0`
-  and the multiplicative local-eigenvalue recovery form. No transfer matrix,
+  and the multiplicative local-eigenvalue recovery form. The Q9 audit repair
+  adds `FiniteGapSpectralWitness`, a successor package requiring an explicit
+  sector-preserving transfer endomorphism plus vacuum/local eigenvector
+  witnesses for the two packaged spectral parameters. No transfer matrix,
   Hamiltonian, Wilson slab-kernel, infinite-volume, or physical gap theorem is
   claimed.
 - `WilsonProjectors.lean`: the QMF5/RP-F projector down-payment now includes

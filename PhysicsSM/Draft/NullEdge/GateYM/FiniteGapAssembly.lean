@@ -10,8 +10,10 @@ gap assembly must expose:
 * the Q9 local-algebra cyclicity prerequisite on the candidate sector;
 * sector preservation and vacuum membership, already bundled in that
   prerequisite;
-* the strict ordered-eigenvalue data for the local/glueball excitation inside
-  the trivial-flux sector.
+* the strict ordered spectral parameters for the local/glueball excitation
+  inside the trivial-flux sector;
+* an optional successor witness package tying those parameters to actual
+  eigenvector equations for a sector-preserving transfer endomorphism.
 
 It deliberately proves only the elementary consequence already supported by
 `TransferGapDefinition`: strict spectral separation gives a positive value of
@@ -38,16 +40,18 @@ variable {H : Type*} [AddCommGroup H] [Module ℂ H]
 /-- The finite algebraic package needed before a Q9 gap assembly can honestly
 talk about the local/glueball gap.
 
-The `cyclicity` field is the named local-algebra cyclicity prerequisite, while
-the two real numbers are the leading vacuum-sector transfer eigenvalue and the
-first local/glueball eigenvalue after all sector restrictions have already been
-made. -/
+The `cyclicity` field is the named local-algebra cyclicity prerequisite.  The
+two real numbers are named spectral parameters that a later assembly must
+instantiate from an actual transfer spectrum; this base package alone does not
+prove they are eigenvalues of an operator on the sector. -/
 structure FiniteGapPrereq (H : Type*) [AddCommGroup H] [Module ℂ H] where
   /-- The exposed Q9 cyclicity/sector-preservation package. -/
   cyclicity : LocalCyclicityPrereq H
-  /-- Leading eigenvalue in the selected vacuum/trivial-flux sector. -/
+  /-- Named leading spectral parameter for the selected vacuum/trivial-flux
+  sector; a later witness must prove it is an actual eigenvalue. -/
   lambda0 : ℝ
-  /-- First local/glueball eigenvalue in the same sector. -/
+  /-- Named first local/glueball spectral parameter in the same sector; a
+  later witness must prove it is an actual eigenvalue. -/
   lambdaLocal : ℝ
   /-- Positivity of the leading eigenvalue. -/
   lambda0_pos : 0 < lambda0
@@ -329,6 +333,99 @@ theorem localGap_ne_zero (P : FiniteGapPrereq H) :
   ne_of_gt P.localGap_pos
 
 end FiniteGapPrereq
+
+/-- Successor package closing the semantic gap between named spectral
+parameters and an actual finite transfer operator.
+
+This is still only a finite hypothesis package: the `transfer` field is an
+input endomorphism, not a constructed Wilson slab kernel.  The point is that
+any later use of `lambda0` and `lambdaLocal` as eigenvalues can pass through
+explicit sector membership and eigenvector equations instead of relying on
+docstring intent. -/
+structure FiniteGapSpectralWitness (H : Type*) [AddCommGroup H] [Module ℂ H] where
+  /-- The underlying cyclicity and ordered-parameter prerequisite. -/
+  prereq : FiniteGapPrereq H
+  /-- Candidate finite transfer endomorphism on the ambient space. -/
+  transfer : Module.End ℂ H
+  /-- The candidate transfer endomorphism preserves the selected sector. -/
+  transfer_preserves_sector :
+    ∀ v : H, v ∈ prereq.sector → transfer v ∈ prereq.sector
+  /-- The packaged vacuum is nonzero. -/
+  vacuum_ne_zero : prereq.vacuum ≠ 0
+  /-- The vacuum satisfies the eigenvector equation for `lambda0`. -/
+  vacuum_eigen :
+    transfer prereq.vacuum = (prereq.lambda0 : ℂ) • prereq.vacuum
+  /-- A named local/glueball excitation vector. -/
+  localExcitation : H
+  /-- The local/glueball excitation lies in the selected sector. -/
+  localExcitation_mem_sector : localExcitation ∈ prereq.sector
+  /-- The local/glueball excitation is nonzero. -/
+  localExcitation_ne_zero : localExcitation ≠ 0
+  /-- The local/glueball excitation is not the packaged vacuum vector. -/
+  localExcitation_ne_vacuum : localExcitation ≠ prereq.vacuum
+  /-- The local/glueball excitation satisfies the eigenvector equation for
+  `lambdaLocal`. -/
+  localExcitation_eigen :
+    transfer localExcitation = (prereq.lambdaLocal : ℂ) • localExcitation
+
+namespace FiniteGapSpectralWitness
+
+/-- The local operator algebra from the underlying prerequisite. -/
+abbrev localAlgebra (W : FiniteGapSpectralWitness H) :
+    Subalgebra ℂ (Module.End ℂ H) :=
+  W.prereq.localAlgebra
+
+/-- The vacuum vector from the underlying prerequisite. -/
+abbrev vacuum (W : FiniteGapSpectralWitness H) : H :=
+  W.prereq.vacuum
+
+/-- The selected sector from the underlying prerequisite. -/
+abbrev sector (W : FiniteGapSpectralWitness H) : Submodule ℂ H :=
+  W.prereq.sector
+
+/-- The packaged finite local/glueball gap from the underlying prerequisite. -/
+abbrev localGap (W : FiniteGapSpectralWitness H) : ℝ :=
+  W.prereq.localGap
+
+/-- The transfer image of the vacuum remains in the selected sector. -/
+theorem transfer_vacuum_mem_sector (W : FiniteGapSpectralWitness H) :
+    W.transfer W.vacuum ∈ W.sector :=
+  W.transfer_preserves_sector W.vacuum W.prereq.vacuum_mem_sector
+
+/-- The transfer image of the local/glueball excitation remains in the
+selected sector. -/
+theorem transfer_localExcitation_mem_sector (W : FiniteGapSpectralWitness H) :
+    W.transfer W.localExcitation ∈ W.sector :=
+  W.transfer_preserves_sector
+    W.localExcitation W.localExcitation_mem_sector
+
+/-- The witness exposes the vacuum eigenvector equation for the packaged
+leading spectral parameter. -/
+theorem vacuum_eigen_eq (W : FiniteGapSpectralWitness H) :
+    W.transfer W.vacuum = (W.prereq.lambda0 : ℂ) • W.vacuum :=
+  W.vacuum_eigen
+
+/-- The witness exposes the local/glueball eigenvector equation for the
+packaged local spectral parameter. -/
+theorem localExcitation_eigen_eq (W : FiniteGapSpectralWitness H) :
+    W.transfer W.localExcitation =
+      (W.prereq.lambdaLocal : ℂ) • W.localExcitation :=
+  W.localExcitation_eigen
+
+/-- The strict ordered spectral parameters in the underlying prerequisite
+still give a positive packaged local/glueball gap. -/
+theorem localGap_pos (W : FiniteGapSpectralWitness H) :
+    0 < W.localGap :=
+  W.prereq.localGap_pos
+
+/-- The witness inherits the contraction-factor identity from the underlying
+finite spectral-ratio package. -/
+theorem exp_neg_localGap_eq_lambdaLocal_div_lambda0
+    (W : FiniteGapSpectralWitness H) :
+    Real.exp (-W.localGap) = W.prereq.lambdaLocal / W.prereq.lambda0 :=
+  W.prereq.exp_neg_localGap_eq_lambdaLocal_div_lambda0
+
+end FiniteGapSpectralWitness
 
 end FiniteGapAssembly
 end GateYM

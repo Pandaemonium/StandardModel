@@ -249,7 +249,11 @@ The project does not yet have:
 The current finite-gap API should be read as prerequisite algebra: if a future
 finite transfer object supplies ordered eigenvalue data and the required cyclic
 sector hypotheses, the package already knows how to name and manipulate the
-local gap. It does not itself build that transfer object.
+local gap. The successor `FiniteGapSpectralWitness` package now names the
+extra finite evidence needed to make those spectral parameters non-vacuous:
+an explicit sector-preserving transfer endomorphism together with vacuum and
+local excitation eigenvector equations. It still does not itself build that
+transfer object.
 
 ## Three meanings of "simulation"
 
@@ -666,7 +670,9 @@ The current blockers are:
 - Q2/Q3: concrete Wilson slab-kernel construction connecting the finite
   reflection-positive ensemble to the transfer-Hilbert and sector APIs.
 - Q9: physical transfer/cyclicity hypotheses that would make the finite gap
-  package apply to an actual transfer operator.
+  package apply to an actual transfer operator. The new spectral-witness
+  package names the required operator/eigenvector evidence but does not
+  construct the operator.
 
 These are proof and design blockers, not software-only blockers.
 
