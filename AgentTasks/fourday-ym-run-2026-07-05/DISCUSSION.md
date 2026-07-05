@@ -1739,6 +1739,25 @@ check, aggregate GateYM build, placeholder scan on both touched sector files,
 and axiom audit for all eight new declarations passed. Axiom footprint:
 `[propext, Classical.choice, Quot.sound]`.
 
+## note:t2-q3-block-electric-projection
+
+Codex 1.17:07:
+
+Added `TransferHilbertZ2Electric.blockElectricSectorProjection`, the four-term
+base-electric projection on the block-index function space
+`(cut configuration, positive/mirror configuration) -> Complex`.
+
+The new theorem
+`blockElectricSectorProjection_preserves_rpHilbertSpace_z2PlaquetteBlock`
+proves that this projection preserves
+`rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))`. The proof uses the
+already-landed preservation of the OS range by each base x/y block shift and
+closes under finite linear combinations inside the submodule.
+
+Scope boundary: this is the Q2/Q3 finite OS-range sector infrastructure for
+plaquette-field block weights. It does not construct the physical Wilson
+transfer matrix and does not assert a spectral or mass-gap result.
+
 ## replan:day2-three-mountains (claude 1.19:15, user-requested roadmap update)
 
 The user asked for guidance and a roadmap update/extension now that the
@@ -1779,3 +1798,38 @@ against it.
 Note on models: the "claude" loop has run as Sonnet 5, Opus 4.8, and
 now Fable 5 - ledger identity stays `claude`; `FABLE_CALL_PROTOCOL.md`
 governs wrapper calls only and is unaffected.
+
+## replan:qmf-ladder (claude 1.19:45, user-directed scope extension)
+
+The user has directed an EXTREMELY AGGRESSIVE roadmap extension: aim at
+full QCD mass formalism. Full ladder written into `RUN_PLAN.md` ("The
+road to full QCD mass formalism"), scope guardrail amended there with
+the user-directed authority note. Summary for Codex:
+
+- New ladder QMF1-QMF8: compact-group (Haar) substrate -> compact RP +
+  transfer -> Grassmann/Berezin finite formalism (Matthews-Salam as a
+  finite identity) -> Wilson-Dirac + doubling audit at determinant
+  level -> fermionic RP (Menotti-Pelissetto 1987, which your T12 slice
+  already source-checked, is the formalization target) -> QCD transfer +
+  quantum-number sectors (your Q3 FluxSector machinery is the direct
+  substrate) -> QMF7 hadron mass formalism (sector-spectral masses,
+  taxonomy as theorem-level named defs) -> QMF8 continuum limit
+  recorded as the permanent named frontier, NEVER claimed.
+- M1-M3 REMAIN the days 2-4 critical path (they are the pure-gauge half
+  of QCD; nothing is displaced). QMF work rides saturation time and
+  statement layers only this run: day 2 = QMF1 capability survey +
+  QMF3 Berezin statement-design Aristotle job; day 3 = grand-strategy
+  audit adjudicates QMF sequencing, QMF4 Wilson-Dirac statement file;
+  day 4 = QMF7 STATEMENT file as the crown deliverable.
+- Claim discipline unchanged and load-bearing: every QMF rung is
+  finite-lattice, fixed-coupling, fixed-volume; "mass" always means
+  transfer-operator spectral data in a named sector; F-YM-CONFLATE
+  becomes theorem-level named definitions in QMF7.
+
+**CROSS-REVIEW REQUEST (protocol: claim-language change):** I want to
+sync the QMF ladder into the program doc as a new section 15 on day 2.
+Please review the RUN_PLAN section (statement shapes, sequencing, and
+especially the QMF7 claim language) and post ACCEPT/AMEND here before I
+touch `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`. The scope
+amendment itself is user-directed and not subject to the two-agent
+scope gate, but the program-doc wording is ours to get right.

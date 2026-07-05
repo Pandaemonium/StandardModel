@@ -296,10 +296,20 @@ work - do not re-derive a variant.
   utf8NoBOM`; never PS5 redirection).
 - Build safety: broken live tree outranks everything; unfixable in ~45
   min -> `git revert` your commits and record why.
-- Scope: the mission list is closed. Track B, Peter-Weyl proper, Balaban,
-  QCD2/3, and any new physics lane are OUT - notes in `DISCUSSION.md`
-  only. QCD1 spectral work is allowed ONLY as a saturation-time side lane
-  and only its statement layer.
+- Scope: the mission list is closed. Track B, Balaban, and any new
+  physics lane are OUT - notes in `DISCUSSION.md` only. QCD1 spectral
+  work is allowed ONLY as a saturation-time side lane and only its
+  statement layer. **USER-DIRECTED AMENDMENT (end of day 1):** the user
+  has directed an aggressive extension of the roadmap toward FULL QCD
+  MASS FORMALISM (see "The road to full QCD mass formalism" below).
+  Under that amendment: Peter-Weyl / compact-group representation
+  theory enters as the QMF1 substrate survey lane; Grassmann/Wilson-
+  fermion STATEMENT-LAYER work (QMF3/QMF4/QMF7 statement files) enters
+  as the sanctioned stretch lane replacing the old QCD1-only carve-out.
+  The three mountains M1-M3 REMAIN the critical path for days 2-4 -
+  the QMF lanes are saturation-time and statement-layer work this run,
+  full execution next run. Balaban/continuum-limit claims remain OUT
+  at all times (QMF8 records why).
 - Kill conditions from section 14 are live: RP blockage (Q1 kernel fails
   PSD) renames the route rather than fudging it; a flux-line lowest
   excitation renames the gap target; non-volume-uniform KP constants get
@@ -423,3 +433,140 @@ Recorded now so the final report can grade against it:
   (`e4458430`, `8271a64b`, `3e483972`, `ba26fe81`, `acedaea2`) - all five
   harvests are day-2 work before new submissions in their lanes.
 - The saturation rule and >=4/8 slot check remain binding as written.
+
+## The road to full QCD mass formalism (user-directed aggressive extension)
+
+**Authority and honesty header.** The user directed (end of day 1):
+"Be extremely aggressive, including aiming to get to full QCD mass
+formalism." This section is the staged ladder from the current
+finite-group Yang-Mills stack to a kernel-checked LATTICE QCD mass
+formalism - SU(3) gauge fields, Wilson quarks, and hadron masses as
+spectral data of a positive transfer operator in quantum-number
+sectors. Aggression lives in the REACH and the schedule; honesty lives
+in the CLAIMS: every rung is a finite-lattice, fixed-coupling,
+fixed-volume statement. The continuum limit is NOT on this ladder
+(QMF8 records it as the named open frontier - that is the Clay-level
+mathematics this program does not pretend to solve). "QCD mass" on
+this ladder ALWAYS means: spectral gap / spectral data of the lattice
+transfer operator in a named sector, per the section 13.2 mass
+taxonomy, elevated from prose discipline to theorem-level named
+definitions. F-YM-CONFLATE remains constitution-grade.
+
+**Why this is reachable from here (the compounding asset).** Nearly
+everything built in this run is deliberately group-generic
+(`[Group G]`, mirror coordinates, RP-KER, block OS/GNS, sector
+projectors) or gauge-content-free (KP machinery, clustering bridges).
+The three mountains M1-M3 are not a detour from QCD - they ARE the
+pure-gauge half of QCD. What QCD adds is exactly four ingredients:
+compact groups (Haar in place of Fintype sums), Grassmann variables
+(Berezin integration = finite exterior-algebra identity), the Wilson
+fermion action (with its doubling/regulator discipline - which this
+repo's NullEdge program has ALREADY built native expertise in), and
+quantum-number sectors rich enough to name hadrons (generalizing Q3's
+FluxSector machinery, also already built). Existing repo seeds:
+`BanksCasherShadow.lean` (chiral/spectral bridge), the Clifford/Spinor
+trees under `PhysicsSM/`, the doubler-determinant discipline in
+`docs/NULLSTRAND.md`, and T12's already-source-checked
+Menotti-Pelissetto 1987 (Wilson-FERMION reflection positivity - the
+exact paper QMF5 formalizes against).
+
+### The QMF ladder (QCD Mass Formalism, rungs QMF1-QMF8)
+
+- **QMF1 - compact-group substrate.** Generalize the ensemble layer
+  (`LatticeEnsemble`/`PlaquetteEnsemble` and the RP mirror stack's
+  Fintype-bound parts) from finite sums to compact-group Haar
+  integrals. Deliverables: (a) a Mathlib/PhysLean capability survey
+  (Haar measure, Peter-Weyl status, compact-group character
+  orthogonality, `Matrix.SpecialUnitaryGroup`) - lean-explore is the
+  tool; (b) a `CompactEnsemble` statement layer whose finite-group
+  specialization DEFINITIONALLY recovers the current stack (the
+  convention-pin `rfl` pattern); (c) SU(2) as first target, SU(3) as
+  the named goal. Peter-Weyl is hereby IN scope for this survey.
+- **QMF2 - compact-group RP + transfer.** Port RP-KER, the mirror
+  convention, cut kernels, and the block OS/GNS stack to the Haar
+  substrate. The M1 cut-bearing lattice construction ports unchanged
+  (it is geometry, not group theory). Exit criterion: `reflectionForm
+  _nonneg`-class theorems for SU(2) Wilson weight on the cut-bearing
+  lattice.
+- **QMF3 - Grassmann/Berezin finite formalism.** Finite-dimensional
+  exterior-algebra integration (Berezin), the Matthews-Salam identity
+  (fermionic Gaussian integral = determinant) as a FINITE IDENTITY over
+  a finite lattice - fully kernel-checkable, no analysis. Mathlib's
+  `ExteriorAlgebra` is the substrate candidate; falsity-test against
+  tiny explicit cases (1-2 modes) in the oracle first. This rung is
+  INDEPENDENT of QMF1/QMF2 and can start any time as a statement
+  freeze + Aristotle package.
+- **QMF4 - Wilson fermion action + doubling audit.** The Wilson-Dirac
+  operator on the finite lattice (repo Clifford/Spinor conventions,
+  gamma-matrix signature documented per AGENTS physics-conventions
+  rules), gamma5-hermiticity, and det-positivity for paired flavors at
+  zero chemical potential. The doubling story is formalized at
+  DETERMINANT level per the standing NullEdge discipline
+  (retardedness alone is not a no-doubling proof). Stretch: a finite
+  Nielsen-Ninomiya shadow. Honest negative pre-registered: the
+  one-flavor sign problem is RECORDED, not worked around.
+- **QMF5 - fermionic reflection positivity.** Extend the RP stack to
+  Grassmann-valued positive-side algebras: Osterwalder-Seiler 1978
+  Sec. 4-5 and Menotti-Pelissetto 1987 (already bibliographically
+  verified by T12) are the formalization targets. This is the genuine
+  QCD analogue of M1 and reuses its cut geometry.
+- **QMF6 - QCD transfer + quantum-number sectors.** The fermionic
+  transfer operator on the QMF5 OS/GNS space; sector projectors for
+  flavor, parity, charge conjugation, and (for pure-gauge content)
+  center flux - the direct generalization of Q3's
+  `FluxSector`/`CenterFluxSector` machinery, which was built
+  abstractly enough to receive this.
+- **QMF7 - hadron mass formalism (the endpoint statement).** A
+  `QCDMassFormalism` module proving, at fixed coupling and volume:
+  hadron masses EXIST as sector-restricted spectral gaps of the
+  positive self-adjoint transfer operator; meson/baryon interpolating
+  operators live in the positive-side algebra; the mass taxonomy is
+  theorem-level (named defs: `quarkMassParameter` vs
+  `hadronSpectralMass` vs `regulatorMass` - provably distinct
+  quantities, F-YM-CONFLATE as mathematics instead of prose); finite
+  Ward identities; the Banks-Casher finite form grown out of
+  `BanksCasherShadow.lean`. THIS is "full QCD mass formalism" in the
+  only sense a kernel can check today.
+- **QMF8 - the named frontier (recorded, not promised).** Continuum
+  limit, renormalization, Balaban-style multiscale: OUT of
+  formalization scope, permanently on this ladder's kill list. Any
+  drift of QMF7 claim language toward continuum masses is a
+  constitution-grade violation. The final report grades the ladder
+  against lattice statements only.
+
+### Aggressive schedule overlay (current run, days 2-4)
+
+The mountains keep priority; QMF work rides saturation time and the
+statement-layer lanes:
+
+- **Day 2:** M1-M3 as scheduled. Saturation lane: QMF1(a) capability
+  survey (lean-explore over Mathlib+PhysLean: Haar, Peter-Weyl,
+  SpecialUnitaryGroup, ExteriorAlgebra inventory - one DISCUSSION post)
+  and QMF3 statement freeze submitted to Aristotle as a
+  statement-design job (Berezin/Matthews-Salam on 1-4 modes, oracle
+  fixture first).
+- **Day 3:** mandated grand-strategy audit NOW ALSO adjudicates QMF
+  sequencing (explicit prompt question: what is the cheapest sound
+  path from the M1 cut geometry to QMF5 fermionic RP?). QMF1(b)
+  `CompactEnsemble` statement layer if the survey supports it; QMF4
+  Wilson-Dirac statement file (definitions + gamma5-hermiticity
+  statement, no proofs required yet).
+- **Day 4:** QMF7 STATEMENT file - the crown deliverable of the
+  aggressive extension this run: the sector-spectral hadron-mass
+  definitions with the taxonomy as named defs, every hypothesis a
+  frozen named lemma (Q9-doorstep style). `FINAL_REPORT.md` grades
+  M1-M3 AND the QMF statement layer, and hands the next run its
+  mission.
+- **Program-doc sync:** the QMF ladder gets written into
+  `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md` as a new section
+  (15), BUT only after Codex cross-review of this plan section (it is
+  a claim-language document; protocol applies). Target: day 2.
+
+### Next-run mission (superseding the earlier post-run sketch)
+
+Whatever M-mountains remain + QMF1-QMF5 execution as the spine, QMF6/7
+proofs as the flagship, with the same two-agent + Aristotle
+architecture. The promotion review and paper units from the earlier
+post-run sketch stand unchanged; paper unit 3 (Berezin/Matthews-Salam
+finite formalism, standalone Mathlib-facing) joins the list once QMF3
+closes - it is publishable independent of all gauge content.
