@@ -875,6 +875,53 @@ theorem mem_rpBlockElectricSector_iff_rpHilbertSpaceBlockElectricProjection_eq_s
     simpa [rpHilbertSpaceBlockElectricProjection,
       rpBlockElectricSectorInclusion, rpBlockElectricSectorProjection] using hfun
 
+/-- The range of the selected finite OS sector endomorphism is exactly the
+range of the inclusion of the selected sectorized finite OS range.
+
+This packages the fact that the ambient projector really has the selected
+sector as its image, not merely an abstract fixed-point range. -/
+theorem range_rpHilbertSpaceBlockElectricProjection_eq_range_inclusion
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    LinearMap.range (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) =
+      LinearMap.range (rpBlockElectricSectorInclusion hLx hLy F ex ey) := by
+  apply le_antisymm
+  · intro v hv
+    rcases hv with ⟨u, rfl⟩
+    exact ⟨rpBlockElectricSectorProjection hLx hLy F ex ey u, rfl⟩
+  · intro v hv
+    rcases hv with ⟨u, rfl⟩
+    refine ⟨rpBlockElectricSectorInclusion hLx hLy F ex ey u, ?_⟩
+    exact
+      (mem_rpBlockElectricSector_iff_rpHilbertSpaceBlockElectricProjection_eq_self
+        hLx hLy F ex ey
+        (rpBlockElectricSectorInclusion hLx hLy F ex ey u)).1 u.property
+
+/-- The selected sector endomorphism range has the same dimension as the
+selected sectorized finite OS range.
+
+This is the finrank form of
+`range_rpHilbertSpaceBlockElectricProjection_eq_range_inclusion`, using
+injectivity of the sector inclusion. -/
+theorem finrank_range_rpHilbertSpaceBlockElectricProjection_eq_finrank_rpBlockElectricSector
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Module.finrank Complex
+        (LinearMap.range (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey)) =
+      Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) := by
+  rw [range_rpHilbertSpaceBlockElectricProjection_eq_range_inclusion
+    hLx hLy F ex ey]
+  exact LinearMap.finrank_range_of_inj
+    (rpBlockElectricSectorInclusion_injective hLx hLy F ex ey)
+
 /-- The complementary endomorphism summing all block electric sectors except
 the selected one.  This is finite sector bookkeeping, not a physical transfer
 operator. -/
@@ -1420,6 +1467,74 @@ theorem finrank_rpHilbertSpace_eq_zero_iff_finrank_selected_eq_zero_and_finrank_
           (LinearMap.range
             (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) = 0 := by
   rw [finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other
+    hLx hLy F ex ey]
+  exact Nat.add_eq_zero_iff
+
+/-- The selected/other dimension split, with the selected summand rewritten as
+the actual selected sectorized finite OS range dimension.
+
+This is finite-dimensional sector bookkeeping only; it is not a physical
+transfer-matrix, Hamiltonian, or gap statement. -/
+theorem finrank_rpHilbertSpace_eq_finrank_rpBlockElectricSector_add_finrank_other
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) =
+      Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) +
+        Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) := by
+  rw [finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other
+    hLx hLy F ex ey]
+  rw [finrank_range_rpHilbertSpaceBlockElectricProjection_eq_finrank_rpBlockElectricSector
+    hLx hLy F ex ey]
+
+/-- The ambient selected/other split is nontrivial exactly when the selected
+sectorized OS range or the complementary other-sector range is nontrivial.
+
+This restates the selected/other positive-dimension test using the actual
+sectorized finite OS range for the selected summand. -/
+theorem finrank_rpHilbertSpace_pos_iff_finrank_rpBlockElectricSector_pos_or_finrank_other_pos
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    0 < Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) ↔
+      0 < Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) ∨
+        0 < Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) := by
+  rw [finrank_rpHilbertSpace_eq_finrank_rpBlockElectricSector_add_finrank_other
+    hLx hLy F ex ey]
+  exact add_pos_iff
+
+/-- The ambient selected/other split has zero dimension exactly when the
+selected sectorized OS range and complementary other-sector range both have
+zero dimension.
+
+This is the zero-dimensional counterpart of
+`finrank_rpHilbertSpace_pos_iff_finrank_rpBlockElectricSector_pos_or_finrank_other_pos`. -/
+theorem finrank_rpHilbertSpace_eq_zero_iff_finrank_rpBlockElectricSector_eq_zero_and_finrank_other_eq_zero
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) = 0 ↔
+      Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) = 0 ∧
+        Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) = 0 := by
+  rw [finrank_rpHilbertSpace_eq_finrank_rpBlockElectricSector_add_finrank_other
     hLx hLy F ex ey]
   exact Nat.add_eq_zero_iff
 

@@ -1,7 +1,7 @@
 # DAY_2_REPORT (drafted by codex; needs peer review)
 
 Scope: checkpoint from the post-`DAY_1_REPORT.md` ledger state through
-heartbeat `6.08:10`. This is a status synthesis, not a promotion claim.
+heartbeat `6.17:40`. This is a status synthesis, not a promotion claim.
 
 ## 1. Delta summary
 
@@ -29,6 +29,11 @@ intentionally untouched because Q6 has not landed.
   `finrank_rpHilbertSpace_pos_iff_finrank_selected_pos_or_finrank_other_pos`,
   and
   `finrank_rpHilbertSpace_eq_zero_iff_finrank_selected_eq_zero_and_finrank_other_eq_zero`.
+  The selected projector range is also identified with the sector inclusion
+  range by `range_rpHilbertSpaceBlockElectricProjection_eq_range_inclusion`,
+  yielding the sector-finrank form
+  `finrank_rpHilbertSpace_eq_finrank_rpBlockElectricSector_add_finrank_other`
+  and its positive/zero-dimensional corollaries.
   Ledger records direct file checks, targeted module builds, aggregate GateYM
   builds through 8090 jobs, scoped pre-commit, and standard axiom footprints.
 - `ExponentialClustering.lean`: support-tail monotonicity/subadditivity,

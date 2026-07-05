@@ -501,7 +501,10 @@ finrank, and zero finrank exactly when all four sector finranks are zero.
 The selected-sector endomorphism and complementary other-sector endomorphism
 also have a rank-nullity API:
 `finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other`, plus
-positive/zero-dimensional selected-or-other corollaries.
+positive/zero-dimensional selected-or-other corollaries; the selected
+endomorphism range is identified with the sector inclusion range, giving the
+sector-finrank version
+`finrank_rpHilbertSpace_eq_finrank_rpBlockElectricSector_add_finrank_other`.
 This is still a finite identity, not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2

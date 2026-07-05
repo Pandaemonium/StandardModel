@@ -263,6 +263,10 @@ Transfer/Hilbert-space adjacent:
   - `finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other`
   - `finrank_rpHilbertSpace_pos_iff_finrank_selected_pos_or_finrank_other_pos`
   - `finrank_rpHilbertSpace_eq_zero_iff_finrank_selected_eq_zero_and_finrank_other_eq_zero`
+  - `range_rpHilbertSpaceBlockElectricProjection_eq_range_inclusion`
+  - `finrank_rpHilbertSpace_eq_finrank_rpBlockElectricSector_add_finrank_other`
+  - `finrank_rpHilbertSpace_pos_iff_finrank_rpBlockElectricSector_pos_or_finrank_other_pos`
+  - `finrank_rpHilbertSpace_eq_zero_iff_finrank_rpBlockElectricSector_eq_zero_and_finrank_other_eq_zero`
   These are finite algebraic sector-decomposition facts for the Z2 electric
   block OS range, not a physical transfer matrix or gap statement.
 - `PhysicsSM/Draft/NullEdge/GateYM/TransferPositivity.lean`
@@ -299,7 +303,7 @@ known records include:
   their own direct/targeted/aggregate check records in the ledger; cite those
   exact entries rather than this outline. For the latest Z2 electric-sector
   product/finrank facts, use ledger entries `2.02:45`, `2.10:35`,
-  `2.17:04`, `2.17:20`, and `6.08:10`.
+  `2.17:04`, `2.17:20`, `6.08:10`, and `6.17:40`.
 - T14 ran `python Scripts/oracle/validate_lgt_core.py` and reached `44/44`,
   including the RP-KER complex-character guard.
 
