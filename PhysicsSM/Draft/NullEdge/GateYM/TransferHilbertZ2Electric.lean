@@ -16,8 +16,9 @@ corresponding block shifts, and those shifts preserve the finite OS range
 space from `TransferHilbert.lean`.
 
 It also defines the four-term block electric-sector projection and proves that
-the projection lands in the requested block electric sector, is idempotent, and
-preserves the finite OS range for plaquette-field block weights.
+the projection lands in the requested block electric sector, fixes exactly the
+vectors in that sector, is idempotent, and preserves the finite OS range for
+plaquette-field block weights.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -323,6 +324,35 @@ theorem blockElectricSectorProjection_eq_self_of_inBlockElectricSector
   cases ex <;> cases ey <;>
     simp [FluxSectorZ2.TorusLinkField.z2Character, blockElectricCharacter]
   all_goals ring
+
+/-- If a block electric-sector projection fixes a wavefunction, then the
+wavefunction lies in that block electric sector. -/
+theorem inBlockElectricSector_of_blockElectricSectorProjection_eq_self
+    {Lx Ly : Nat} (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)
+    (hproj : blockElectricSectorProjection hLx hLy ex ey psi = psi) :
+    InBlockElectricSector hLx hLy ex ey psi := by
+  have hsector :=
+    blockElectricSectorProjection_inBlockElectricSector hLx hLy ex ey psi
+  rw [hproj] at hsector
+  exact hsector
+
+/-- A block wavefunction lies in a concrete Z2 electric sector exactly when
+the matching block electric-sector projection fixes it. -/
+theorem inBlockElectricSector_iff_blockElectricSectorProjection_eq_self
+    {Lx Ly : Nat} (hLx : 0 < Lx) (hLy : 0 < Ly) (ex ey : Bool)
+    (psi :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) :
+    InBlockElectricSector hLx hLy ex ey psi ↔
+      blockElectricSectorProjection hLx hLy ex ey psi = psi := by
+  constructor
+  · exact blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+      hLx hLy ex ey psi
+  · exact inBlockElectricSector_of_blockElectricSectorProjection_eq_self
+      hLx hLy ex ey psi
 
 /-- Block electric-sector projections are idempotent. -/
 theorem blockElectricSectorProjection_idempotent {Lx Ly : Nat}

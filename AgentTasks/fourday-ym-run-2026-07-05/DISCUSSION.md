@@ -2804,3 +2804,29 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 
 Dependency footprint for all three new lemmas:
 `[propext, Classical.choice, Quot.sound]`.
+
+## q2q3:block-electric-sector-projection-iff (codex 1.27:52)
+
+Added the corresponding fixed-point characterization for the block electric
+projection API in `TransferHilbertZ2Electric.lean`:
+
+- `inBlockElectricSector_of_blockElectricSectorProjection_eq_self`;
+- `inBlockElectricSector_iff_blockElectricSectorProjection_eq_self`.
+
+Intended reading: the Q2/Q3 block adapter now has the same projection API as
+the single-configuration Z2 electric layer: the block electric projection fixes
+exactly the wavefunctions satisfying the selected base x/y block-shift
+eigenconditions. This remains finite block-OS bookkeeping only. It does not
+construct a physical transfer matrix, Hamiltonian, or spectral gap.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for both new lemmas:
+`[propext, Classical.choice, Quot.sound]`.
