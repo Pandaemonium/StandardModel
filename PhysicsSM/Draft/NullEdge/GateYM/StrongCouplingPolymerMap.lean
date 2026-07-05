@@ -726,6 +726,41 @@ theorem anchoredPlaquettePolymerAreaSum_nonneg
     mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
       (le_of_lt (Real.exp_pos _)))
 
+/-- The zero-cardinality anchored slice vanishes, since plaquette polymers have
+nonempty support. -/
+theorem anchoredPlaquettePolymerAreaSum_zero
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (q : P) :
+    anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+      gammaAbs alpha q 0 = 0 := by
+  unfold anchoredPlaquettePolymerAreaSum
+  apply Finset.sum_eq_zero
+  intro Y hY
+  rcases Finset.mem_filter.1 hY with ⟨_hUniv, _hYq, hYcard⟩
+  have hpos : 0 < Y.support.card :=
+    Finset.card_pos.2 Y.support_nonempty
+  exact False.elim ((Nat.ne_of_gt hpos) hYcard)
+
+/-- Area slices larger than the finite plaquette universe vanish. -/
+theorem anchoredPlaquettePolymerAreaSum_eq_zero_of_card_lt
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (q : P) (k : Nat)
+    (hk : Fintype.card P < k) :
+    anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+      gammaAbs alpha q k = 0 := by
+  unfold anchoredPlaquettePolymerAreaSum
+  apply Finset.sum_eq_zero
+  intro Y hY
+  rcases Finset.mem_filter.1 hY with ⟨_hUniv, _hYq, hYcard⟩
+  have hle : Y.support.card <= Fintype.card P :=
+    Finset.card_le_univ Y.support
+  have hlt : Y.support.card < k := lt_of_le_of_lt hle hk
+  exact False.elim ((Nat.ne_of_lt hlt) hYcard)
+
 /-- The full anchored plaquette-polymer contribution at a plaquette `q`. -/
 def anchoredPlaquettePolymerSum
     (ConnectedSupport : Finset P -> Prop)
