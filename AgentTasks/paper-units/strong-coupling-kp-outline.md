@@ -117,6 +117,8 @@ Concrete sanity fixture:
 - Beta-zero and `|tanh beta| <= alpha * exp (-alpha)` wrappers are proved.
   The explicit-threshold wrapper also exists for the positive-area path as
   `onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_abs_tanh_le`.
+  The corrected Q6 input pair is also exposed through that path as
+  `onePlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice_of_abs_tanh_le`.
 - This fixture is finite and non-volume-uniform; it is a sanity check for the
   adapters, not a lattice theorem.
 

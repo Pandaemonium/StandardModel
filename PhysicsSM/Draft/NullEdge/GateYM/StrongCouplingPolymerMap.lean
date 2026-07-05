@@ -2070,6 +2070,39 @@ theorem onePlaquetteZ2_kpCondition_and_selfIncompatible_of_abs_tanh_le
   exact onePlaquetteZ2_kpCondition_and_selfIncompatible beta alpha halpha
     (onePlaquetteZ2_smallness_of_abs_tanh_le beta alpha hsmall)
 
+/-- One-plaquette Z2 corrected Q6 input pair through the positive-area-slice
+fixture under the explicit threshold `|tanh beta| <= alpha * exp(-alpha)`.
+
+This exposes the same finite sanity check as
+`onePlaquetteZ2_kpCondition_and_selfIncompatible_of_abs_tanh_le`, but routes the
+bound through the positive-area support-counting adapter surface. -/
+theorem
+    onePlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice_of_abs_tanh_le
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| <= alpha * Real.exp (-alpha)) :
+    KPCondition
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha)
+        (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+          onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+          (z2GammaAbs beta) alpha halpha)
+      /\ (forall X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel,
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha).incompatible
+          X X) := by
+  constructor
+  · exact
+      kpCondition_of_plaquetteKPBound onePlaquetteAdj
+        onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+        (z2GammaAbs beta) (z2GammaAbs_nonneg beta) alpha halpha
+        (onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_abs_tanh_le
+          beta alpha halpha hsmall)
+  · intro X
+    exact plaquettePolymerSystem_self_incompatible onePlaquetteAdj
+      onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+      (z2GammaAbs beta) alpha halpha X
+
 /-- At zero coupling, the one-plaquette Z2 scalar smallness condition is
 automatic for every nonnegative `alpha`. -/
 theorem onePlaquetteZ2_smallness_beta_zero
