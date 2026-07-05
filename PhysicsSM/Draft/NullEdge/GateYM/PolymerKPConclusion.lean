@@ -29,12 +29,18 @@ Scope discipline:
   `TreeGraphInequality`.
 
 Draft-trust: statement freeze plus one kernel-checked negative result and a
-kernel-checked Penrose tree-graph bound.  Aristotle project `9eb41a7c`
-reduced the rooted KP partial-sum theorem to one named combinatorial crux,
-`kp_tree_sum_bound`; the analytic recursion lemmas below that crux are
-kernel-checked.  The remaining theorem bodies are documented proof handoffs,
-not completed proofs.  Claim label: statement freeze / lemma DAG / formal
-counterexample / finite identity.
+kernel-checked Penrose tree-graph bound.  The rooted KP partial-sum theorem
+`kp_tree_sum_bound` (hence `kp_partial_sum_bound` and `kp_cluster_summable`)
+is now reduced, with a kernel-checked lemma DAG, to a single remaining
+combinatorial inequality `boundedTouchSum_succ_le` (the labeled rooted-tree
+exponential-generating-function formula).  In detail: the enlargement step
+`sum_le_boundedTouchSum`, the base case `boundedTouchSum_zero_le`, the depth
+induction `boundedTouchSum_le_kpPsi`, and the analytic bound `kpPsi_le_exp`
+are all proved; `boundedTouchSum_succ_le` is the sole documented handoff on
+that branch.  The two further handoffs
+`kp_convergence_bound_of_selfIncompatible` and `kp_tail_bound` are untouched.
+Claim label: statement freeze / lemma DAG / formal counterexample / finite
+identity.
 -/
 
 noncomputable section
@@ -314,6 +320,197 @@ theorem kpPsi_le_exp (S : PolymerSystem Gamma)
         _ <= |S.weight g| * Real.exp (S.energy g) :=
           mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr hstep) (abs_nonneg _)
 
+/-- The rooted tree-sum summand attached to a single ordered cluster: the
+number of spanning trees of its incompatibility graph, normalized by `n!`,
+times the absolute product weight.  This is exactly the summand of
+`kp_tree_sum_bound`. -/
+noncomputable def treeTerm (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (X : Cluster S) :
+    Real :=
+  (spanningTreeCount S hdec X : Real) / (Nat.factorial X.n : Real) *
+    X.absWeight S
+
+/-- Tree-sum summands are nonnegative. -/
+theorem treeTerm_nonneg (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (X : Cluster S) :
+    0 <= treeTerm S hdec X := by
+  unfold treeTerm
+  apply mul_nonneg
+  · apply div_nonneg
+    · exact_mod_cast Nat.zero_le _
+    · exact_mod_cast Nat.zero_le _
+  · exact X.absWeight_nonneg S
+
+/-- The finite family of all connected clusters touching `g` whose size is at
+most `K + 1`, summed with the tree-sum summand.
+
+This is the enlargement device: every finite family of connected clusters
+touching `g0` embeds, by nonnegativity, into `boundedTouchSum` at a large
+enough depth.  The depth parameter `K` is aligned with `kpPsi`: a rooted tree
+of depth at most `K` has at most `K + 1` vertices. -/
+noncomputable def boundedTouchSum (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    Real := by
+  classical
+  exact ∑ p : (Σ m : Fin (K + 2), (Fin m.val -> Gamma)),
+    if (Cluster.Connected S hdec ⟨p.1.val, p.2⟩
+        ∧ Cluster.Touches S ⟨p.1.val, p.2⟩ g)
+    then treeTerm S hdec ⟨p.1.val, p.2⟩ else 0
+
+/-- `boundedTouchSum` is nonnegative. -/
+theorem boundedTouchSum_nonneg (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    0 <= boundedTouchSum S hdec K g := by
+  classical
+  unfold boundedTouchSum
+  apply Finset.sum_nonneg
+  intro p _
+  split
+  · exact treeTerm_nonneg S hdec _
+  · exact le_refl 0
+
+/-- Enlargement step: any finite family of connected clusters touching `g0` is
+dominated by `boundedTouchSum` at depth equal to the largest cluster size in
+the family.  This uses only nonnegativity of the summand and injectivity of the
+underlying-cluster map on the subtype. -/
+theorem sum_le_boundedTouchSum (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (g0 : Gamma)
+    (s : Finset {X : Cluster S // X.Connected S hdec /\ X.Touches S g0}) :
+    s.sum (fun X => treeTerm S hdec X.1)
+      <= boundedTouchSum S hdec (s.sup (fun X => X.1.n)) g0 := by
+  classical
+  have hbound : forall X : {x // x ∈ s},
+      X.1.1.n < (s.sup (fun X => X.1.n)) + 2 := by
+    intro X
+    have h : X.1.1.n <= s.sup (fun X => X.1.n) :=
+      Finset.le_sup
+        (f := fun Y : {X : Cluster S // X.Connected S hdec /\ X.Touches S g0} =>
+          Y.1.n) X.2
+    omega
+  set i :
+      {x // x ∈ s} ->
+        (Σ m : Fin ((s.sup (fun X => X.1.n)) + 2), (Fin m.val -> Gamma)) :=
+    fun X => ⟨⟨X.1.1.n, hbound X⟩, X.1.1.poly⟩ with hi
+  set F :
+      (Σ m : Fin ((s.sup (fun X => X.1.n)) + 2), (Fin m.val -> Gamma)) ->
+        Real :=
+    fun p => if (Cluster.Connected S hdec ⟨p.1.val, p.2⟩
+        /\ Cluster.Touches S ⟨p.1.val, p.2⟩ g0)
+      then treeTerm S hdec ⟨p.1.val, p.2⟩ else 0 with hF
+  have hinj : Set.InjOn i ↑s.attach := by
+    intro X _ Y _ h
+    have h2 : X.1.1 = Y.1.1 :=
+      congrArg (fun p => (⟨p.1.val, p.2⟩ : Cluster S)) h
+    exact Subtype.ext (Subtype.ext h2)
+  have hFnonneg : forall p, 0 <= F p := by
+    intro p
+    simp only [hF]
+    split
+    · exact treeTerm_nonneg S hdec _
+    · exact le_refl 0
+  have hsummand : forall X : {x // x ∈ s},
+      treeTerm S hdec X.1.1 = F (i X) := by
+    intro X
+    simp only [hF, hi]
+    rw [if_pos X.1.2]
+  calc
+    s.sum (fun X => treeTerm S hdec X.1)
+        = ∑ X ∈ s.attach, treeTerm S hdec X.1.1 :=
+          (Finset.sum_attach s (fun X => treeTerm S hdec X.1)).symm
+    _ = ∑ X ∈ s.attach, F (i X) :=
+          Finset.sum_congr rfl (fun X _ => hsummand X)
+    _ = ∑ p ∈ s.attach.image i, F p := (Finset.sum_image hinj).symm
+    _ <= ∑ p, F p :=
+          Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _)
+            (fun p _ _ => hFnonneg p)
+    _ = boundedTouchSum S hdec (s.sup (fun X => X.1.n)) g0 := by
+          rw [hF, boundedTouchSum]
+
+/-- Base case of the exponential bound: at depth `0`, only single-slot
+clusters survive, and the tree-sum is exactly bounded by `|weight g|`. -/
+theorem boundedTouchSum_zero_le (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (g : Gamma) :
+    boundedTouchSum S hdec 0 g <= |S.weight g| := by
+  refine' le_of_eq _
+  unfold boundedTouchSum
+  rw [Finset.sum_eq_single ⟨1, fun _ => g⟩]
+  · simp +decide [Cluster.Touches, Cluster.Connected]
+    unfold treeTerm
+    simp +decide [Cluster.graph]
+    unfold spanningTreeCount
+    simp +decide [Cluster.absWeight]
+    unfold Cluster.graph
+    simp +decide [SimpleGraph.connected_iff_exists_forall_reachable]
+    convert congr_arg (fun x : Nat => (x : Real) * |S.weight g|)
+      (PenroseTreeGraph.spanningTreeCount_card_one
+        (show Fintype.card (Fin 1) = 1 from rfl)) using 1
+    norm_num
+  · rintro ⟨⟨n, hn⟩, p⟩ _ hne
+    cases n with
+    | zero =>
+        simp +decide [Cluster.Touches]
+    | succ n =>
+        cases n with
+        | zero =>
+            by_cases hp : p = fun _ : Fin 1 => g
+            · exfalso
+              apply hne
+              subst hp
+              rfl
+            · simp +decide [Cluster.Touches]
+              intro _hconn hp0
+              exfalso
+              apply hp
+              funext j
+              fin_cases j
+              exact hp0
+        | succ n =>
+            omega
+  · simp +decide
+
+/-- The labeled rooted-tree exponential inequality, now the single remaining
+combinatorial crux of Q6.
+
+This is the only unproved statement on which `kp_tree_sum_bound` and
+`kp_partial_sum_bound` depend.  Rooting a connected cluster touching `g` at a
+slot carrying `g` and deleting that root should partition the remaining slots
+into rooted subtree blocks, each rooted at a polymer incompatible with `g`.
+The ordered `1/n!` normalization must then reconcile with the `1/k!` from
+unordered child blocks and the subtree normalizations, giving the exponential
+recursion.  Proving this is a finite labeled rooted-tree exponential-formula
+problem, not a KP-statement ambiguity. -/
+theorem boundedTouchSum_succ_le (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    boundedTouchSum S hdec (K + 1) g
+      <= |S.weight g| *
+          Real.exp (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) := by
+  sorry
+
+/-- The exponential recursion bound: `boundedTouchSum` at depth `K` is bounded
+by the depth-`K` truncation `kpPsi`.  This is proved by induction on `K` from
+the base case and `boundedTouchSum_succ_le`. -/
+theorem boundedTouchSum_le_kpPsi (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    boundedTouchSum S hdec K g <= kpPsi S hdec K g := by
+  induction K generalizing g with
+  | zero =>
+      have h := boundedTouchSum_zero_le S hdec g
+      simpa [kpPsi] using h
+  | succ K ih =>
+      have hstep := boundedTouchSum_succ_le S hdec K g
+      have hmono : (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h)
+          <= ∑ h ∈ nbhd S hdec g, kpPsi S hdec K h :=
+        Finset.sum_le_sum (fun h _ => ih h)
+      calc
+        boundedTouchSum S hdec (K + 1) g
+            <= |S.weight g| *
+                Real.exp (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) :=
+              hstep
+        _ <= |S.weight g| *
+                Real.exp (∑ h ∈ nbhd S hdec g, kpPsi S hdec K h) :=
+              mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr hmono) (abs_nonneg _)
+        _ = kpPsi S hdec (K + 1) g := rfl
+
 /-- The genuine KP rooted tree-sum estimate, now isolated as the remaining
 combinatorial crux.
 
@@ -331,15 +528,18 @@ theorem kp_tree_sum_bound
     (s.sum (fun X => (spanningTreeCount S hdec X.1 : Real)
         / (Nat.factorial X.1.n : Real) * X.1.absWeight S))
       <= |S.weight g0| * Real.exp (S.energy g0) := by
-  /-
-  Proof handoff:
-  Prove the labeled rooted-tree exponential formula.  The intended route is:
-  enlarge finite families by nonnegativity, root at a slot touching `g0`,
-  use `Fin n` relabeling symmetry to convert `1/n!` to rooted
-  `1/(n-1)!`, identify root-deleted tree components with the exponential
-  recursion `kpPsi`, and finish with `kpPsi_le_exp`.
-  -/
-  sorry
+  set N := s.sup (fun X => X.1.n) with hN
+  have hA : s.sum (fun X => treeTerm S hdec X.1)
+      <= boundedTouchSum S hdec N g0 := sum_le_boundedTouchSum S hdec g0 s
+  have hB : boundedTouchSum S hdec N g0 <= kpPsi S hdec N g0 :=
+    boundedTouchSum_le_kpPsi S hdec N g0
+  have hC : kpPsi S hdec N g0 <= |S.weight g0| * Real.exp (S.energy g0) :=
+    kpPsi_le_exp S hdec hKP N g0
+  have hgoal : s.sum (fun X => (spanningTreeCount S hdec X.1 : Real)
+        / (Nat.factorial X.1.n : Real) * X.1.absWeight S)
+      = s.sum (fun X => treeTerm S hdec X.1) := rfl
+  rw [hgoal]
+  exact le_trans hA (le_trans hB hC)
 
 /-- The uniform Kotecky-Preiss partial-sum bound (crux of C1).
 

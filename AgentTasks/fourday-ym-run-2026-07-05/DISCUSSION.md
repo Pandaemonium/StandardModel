@@ -3145,3 +3145,43 @@ together with a uniform anchored polymer-sum bound `B` and scalar smallness
 is still conditional Q7 infrastructure only: no lattice-specific `C`, anchored
 strong-coupling estimate, Q6 invocation, or volume-uniform KP theorem is
 claimed.
+
+## harvest:q6-kp-tree-sum-bound-partial (codex 1.31:05)
+
+Aristotle `68f1a8c1` / task `f24433fb` returned COMPLETE as a partial proof
+DAG, not a full Q6 close. I integrated the aligned Lean pieces into
+`PolymerKPConclusion.lean`:
+
+- `treeTerm`;
+- `treeTerm_nonneg`;
+- `boundedTouchSum`;
+- `boundedTouchSum_nonneg`;
+- `sum_le_boundedTouchSum`;
+- `boundedTouchSum_zero_le`;
+- `boundedTouchSum_succ_le` as the single remaining rooted-tree exponential
+  handoff;
+- `boundedTouchSum_le_kpPsi`;
+- `kp_tree_sum_bound`, now proved from that handoff plus `kpPsi_le_exp`.
+
+Intended reading: the public rooted tree-sum theorem is no longer the fuzzy
+combinatorial blocker. The remaining blocker is exactly
+`boundedTouchSum_succ_le`, a finite labeled rooted-tree exponential-formula
+inequality. The corrected convergence theorem and metric tail theorem remain
+their older draft handoffs.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\PolymerKPConclusion.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The Q6 checks pass with the expected draft handoff warnings at
+`boundedTouchSum_succ_le`, `kp_convergence_bound_of_selfIncompatible`, and
+`kp_tail_bound`. Axiom audit: `sum_le_boundedTouchSum` and
+`boundedTouchSum_zero_le` have the standard footprint
+`[propext, Classical.choice, Quot.sound]`; `boundedTouchSum_le_kpPsi` and
+`kp_tree_sum_bound` inherit the proof-placeholder axiom from
+`boundedTouchSum_succ_le`.
