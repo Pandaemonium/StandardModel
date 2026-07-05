@@ -755,6 +755,31 @@ theorem anchoredPlaquettePolymerSum_nonneg
     mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
       (le_of_lt (Real.exp_pos _)))
 
+/-- Each fixed-cardinality anchored slice is bounded by the full anchored
+contribution when all label coefficients are nonnegative.  This is the
+one-slice version of the finite area decomposition below. -/
+theorem anchoredPlaquettePolymerAreaSum_le_anchoredPlaquettePolymerSum
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real)
+    (q : P) (k : Nat) :
+    anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+      gammaAbs alpha q k
+      <= anchoredPlaquettePolymerSum ConnectedSupport NontrivialLabel
+        gammaAbs alpha q := by
+  classical
+  unfold anchoredPlaquettePolymerAreaSum anchoredPlaquettePolymerSum
+  exact Finset.sum_le_sum_of_subset_of_nonneg
+    (by
+      intro Y hY
+      rcases Finset.mem_filter.1 hY with ⟨_hUniv, hYq, _hYcard⟩
+      exact Finset.mem_filter.2 ⟨Finset.mem_univ Y, hYq⟩)
+    (by
+      intro Y _hY _hNot
+      exact mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
+        (le_of_lt (Real.exp_pos _)))
+
 /-- The full anchored contribution is the finite sum of its support-cardinality
 slices.  The range stops at `Fintype.card P`, since every polymer support is a
 finset of plaquettes in `P`. -/
