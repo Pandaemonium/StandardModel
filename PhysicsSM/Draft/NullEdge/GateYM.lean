@@ -49,6 +49,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGraphInequality
 import PhysicsSM.Draft.NullEdge.GateYM.BerezinMatthewsSalam
+import PhysicsSM.Draft.NullEdge.GateYM.EuclideanGamma
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
@@ -516,7 +517,8 @@ one-plaquette Z2 fixture `onePlaquetteZ2_plaquetteKPBound` proves a concrete
 finite `PlaquetteKPBound` under the scalar condition
 `|tanh beta| * exp alpha <= alpha`, with wrappers
 `onePlaquetteZ2_kpCondition` and
-`onePlaquetteZ2_kpCondition_and_selfIncompatible`; the draft connector
+`onePlaquetteZ2_kpCondition_and_selfIncompatible` plus zero-coupling corollaries
+where the scalar smallness condition is automatic; the draft connector
 `plaquetteKP_convergence_bound_of_plaquetteKPBound` routes an explicit bound,
 plus Q7 self-incompatibility, into the corrected Q6 convergence statement and
 therefore has the same parked-Q6 proof dependency. No volume-uniform KP proof

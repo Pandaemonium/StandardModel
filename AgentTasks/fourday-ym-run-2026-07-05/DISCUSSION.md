@@ -2520,7 +2520,11 @@ New declarations:
 - `onePlaquetteZ2_anchor_sum`;
 - `onePlaquetteZ2_plaquetteKPBound`;
 - `onePlaquetteZ2_kpCondition`;
-- `onePlaquetteZ2_kpCondition_and_selfIncompatible`.
+- `onePlaquetteZ2_kpCondition_and_selfIncompatible`;
+- `onePlaquetteZ2_smallness_beta_zero`;
+- `onePlaquetteZ2_plaquetteKPBound_beta_zero`;
+- `onePlaquetteZ2_kpCondition_beta_zero`;
+- `onePlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero`.
 
 The headline theorem proves that the singleton finite Z2 polymer system
 satisfies `PlaquetteKPBound` whenever
@@ -2552,6 +2556,16 @@ Dependency footprint for `onePlaquetteZ2_plaquetteKPBound`:
 Dependency footprint for `onePlaquetteZ2_kpCondition` and
 `onePlaquetteZ2_kpCondition_and_selfIncompatible`:
 `[propext, Classical.choice, Quot.sound]`.
+
+Codex follow-up 1.26:20:
+
+Added zero-coupling corollaries for the one-plaquette fixture. The scalar
+smallness hypothesis is automatic at `beta = 0`, so
+`onePlaquetteZ2_plaquetteKPBound_beta_zero`,
+`onePlaquetteZ2_kpCondition_beta_zero`, and
+`onePlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero` give concrete
+unconditional-in-beta-zero Q7 inputs for every `0 <= alpha`. This remains a
+one-plaquette finite fixture, not a volume-uniform strong-coupling theorem.
 
 ## harvest:qmf3-matthews-salam (claude 1.22:30)
 
@@ -2593,3 +2607,23 @@ convention already oracle-pinned by `validate_wilson_dirac.py`: starting with
 QMF4a (concrete Euclidean gamma matrices + Clifford algebra + gamma5
 properties), then QMF4b (the Wilson-Dirac operator + gamma5-hermiticity +
 paired-flavor determinant positivity). Zero overlap with M1-M3.
+
+## harvest:qmf4a-euclidean-gamma (claude 1.23:55)
+
+Aristotle `0752425e` COMPLETE (~11 min): the six Euclidean Clifford /
+gamma5 lemmas are PROVED for the concrete oracle-matched gamma matrices -
+`{g_mu,g_nu}=2delta`, each `g_mu` Hermitian, `gamma5^2=1`, `gamma5`
+Hermitian, `{gamma5,g_mu}=0`. Independently verified vs pinned toolchain
+(0 errors; axioms [propext, Classical.choice, Quot.sound]; sorry-free;
+matrices/statements unchanged). Integrated as `EuclideanGamma.lean`
+(GateYM green, 8086 jobs). Build-cost: ~56s leaf module (256-entry
+concrete complex-matrix Clifford table); documented, cached incrementally,
+never blocks other modules.
+
+QMF ladder status: QMF1 survey done, QMF3 (Matthews-Salam) PROVED, QMF4a
+(Euclidean Clifford) PROVED, QMF4 convention oracle-pinned. Next on my
+lane: QMF4b - the Wilson-Dirac operator on a finite lattice with
+gamma5-hermiticity + paired-flavor determinant positivity (both already
+numerically verified by validate_wilson_dirac.py). Still zero collision
+with the M1-M3 gauge mountains, which are all Codex's (M1 cut-slab
+7992a304, M2 kp_partial_sum_bound 9eb41a7c, Q11 0f3aa68d).
