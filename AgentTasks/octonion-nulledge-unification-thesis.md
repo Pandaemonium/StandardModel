@@ -65,6 +65,24 @@ forces both lanes onto ONE Lean object (which every current "bridge" avoids),
 directly attacking B0's missing `J` and B1(ii)'s vacuity; DEEP, and it must
 reference the SPECIFIC `Q_op` eigenvalues or it collapses back to vacuity.
 
+**Investigation finding (2026-07-05), carefully framed as ANALYSIS not a proved
+theorem:** the octonion side DOES have the structure needed to state the test -
+`Q_op : ComplexOctonion ->_l[C] ComplexOctonion` (the charge operator) and an
+`SU(3)`-invariant norm `ComplexTriple.normSq = sum |w_k|^2` on the `C^3` color
+space where `{v4,v5,v6}` live (SU(3) is the unitary group on that `C^3`). So a
+mass form that lets the octonion factor enter would be weighted by this norm and
+hence **SU(3)-color-INVARIANT** - color-BLIND, constant on each color multiplet.
+That is the physically-correct outcome (QCD mass does not distinguish colors) and
+it CONFIRMS the audit's "co-location, not coupling" in the color direction: the
+octonion factor can supply at most an overall `SU(3)`-invariant scale, never a
+color/charge distinction in the mass. So `charge_grading_mass_compatible` is
+EXPECTED to come out as "mass constant on each `Q_op`/color block" (the co-location
+branch). A genuine charge->mass COUPLING (flavor/generation-dependent mass) is
+the Higgs/Yukawa, a SEPARATE structure absent here - NOT readable off the tensor
+product. Formalizing this (the `normSq`-weighted shared mass + its `SU(3)`
+invariance) is the concrete next unit; the expected-negative outcome must be
+kernel-verified, not asserted (per the 1b-correction discipline).
+
 The sections below are the ORIGINAL thesis; read them through the corrections
 above.
 
