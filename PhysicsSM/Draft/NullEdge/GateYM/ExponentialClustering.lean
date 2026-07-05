@@ -153,6 +153,60 @@ theorem supportTail_singleton
       tailContribution M hdec D g0 R := by
   simp [supportTail]
 
+/-- Each anchored tail contribution is nonnegative term-by-term. -/
+theorem tailContribution_nonneg
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (g0 : Gamma) (R : Real) :
+    0 <= tailContribution M hdec D g0 R := by
+  apply tsum_nonneg
+  intro X
+  exact clusterCoeff_absWeight_nonneg M.toPolymerSystem hdec D X.1
+
+/-- Finite support tails are nonnegative sums of nonnegative anchored tails. -/
+theorem supportTail_nonneg
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S : Finset Gamma) (R : Real) :
+    0 <= supportTail M hdec D S R := by
+  unfold supportTail
+  exact Finset.sum_nonneg (fun g0 _ =>
+    tailContribution_nonneg M hdec D g0 R)
+
+/-- Adding a fresh support polymer splits off its anchored tail. -/
+theorem supportTail_insert [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (g0 : Gamma) (S : Finset Gamma) (R : Real)
+    (hg0 : g0 ∉ S) :
+    supportTail M hdec D (insert g0 S) R =
+      tailContribution M hdec D g0 R + supportTail M hdec D S R := by
+  simpa [supportTail] using
+    (Finset.sum_insert hg0 :
+      Finset.sum (insert g0 S)
+          (fun g => tailContribution M hdec D g R) =
+        tailContribution M hdec D g0 R +
+          Finset.sum S (fun g => tailContribution M hdec D g R))
+
+/-- The support tail is additive over disjoint finite support unions. -/
+theorem supportTail_union [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real)
+    (hdisj : Disjoint S T) :
+    supportTail M hdec D (S ∪ T) R =
+      supportTail M hdec D S R + supportTail M hdec D T R := by
+  simpa [supportTail] using
+    (Finset.sum_union hdisj :
+      Finset.sum (S ∪ T)
+          (fun g => tailContribution M hdec D g R) =
+        Finset.sum S (fun g => tailContribution M hdec D g R) +
+          Finset.sum T (fun g => tailContribution M hdec D g R))
+
 /-- Exponential clustering for the support-indexed connected correlator. -/
 def HasExponentialClusteringSupport
     (L : LocalObservableSupportData Gamma Obs)

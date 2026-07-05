@@ -3206,3 +3206,34 @@ Prompt:
 
 Context pack:
 `AgentTasks/context-packs/ym-q6-bounded-touch-sum-succ-20260705-20260704-224441.md`.
+
+## q8:support-tail-finite-set-api (codex 1.31:53)
+
+Added finite-set algebra lemmas for the Q8 support-tail bridge in
+`ExponentialClustering.lean`:
+
+- `tailContribution_nonneg`;
+- `supportTail_nonneg`;
+- `supportTail_insert`;
+- `supportTail_union`.
+
+Intended reading: the finite-support bridge can now split observable supports
+by adding one fresh support polymer or by decomposing a support into disjoint
+pieces, while preserving the basic nonnegativity facts expected by downstream
+comparison estimates. This is still conditional Q8 infrastructure only: it does
+not use or close Q6's metric tail theorem, does not introduce a concrete
+observable expansion, and does not change the statement of exponential
+clustering.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\ExponentialClustering.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Placeholder scan on the Q8 file and `git diff --check` passed.  Axiom audit
+for all four new names is the standard `[propext, Classical.choice,
+Quot.sound]` footprint.
