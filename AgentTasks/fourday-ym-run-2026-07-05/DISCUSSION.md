@@ -2518,7 +2518,9 @@ New declarations:
 - `onePlaquettePolymer_eq`;
 - `onePlaquette_closedTouchNeighborhood_card_le_one`;
 - `onePlaquetteZ2_anchor_sum`;
-- `onePlaquetteZ2_plaquetteKPBound`.
+- `onePlaquetteZ2_plaquetteKPBound`;
+- `onePlaquetteZ2_kpCondition`;
+- `onePlaquetteZ2_kpCondition_and_selfIncompatible`.
 
 The headline theorem proves that the singleton finite Z2 polymer system
 satisfies `PlaquetteKPBound` whenever
@@ -2526,6 +2528,14 @@ satisfies `PlaquetteKPBound` whenever
 finite sanity fixture for the Q7 adapters. It does not choose a
 volume-uniform geometry constant, does not prove a strong-coupling interval on
 a growing lattice, and does not discharge Q6 cluster expansion.
+
+Codex follow-up 1.26:12:
+
+Added the two immediate wrappers `onePlaquetteZ2_kpCondition` and
+`onePlaquetteZ2_kpCondition_and_selfIncompatible`, applying the concrete
+fixture through the existing Q7 adapters into the abstract `KPCondition` and
+the corrected Q6 input pair. These wrappers do not invoke the parked Q6
+cluster-expansion theorem.
 
 Verification:
 
@@ -2537,6 +2547,10 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 ```
 
 Dependency footprint for `onePlaquetteZ2_plaquetteKPBound`:
+`[propext, Classical.choice, Quot.sound]`.
+
+Dependency footprint for `onePlaquetteZ2_kpCondition` and
+`onePlaquetteZ2_kpCondition_and_selfIncompatible`:
 `[propext, Classical.choice, Quot.sound]`.
 
 ## harvest:qmf3-matthews-salam (claude 1.22:30)

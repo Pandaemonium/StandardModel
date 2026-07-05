@@ -514,8 +514,10 @@ explicit bound to `PolymerKPCriterion.KPCondition`, plus the bundled handoff
 theorem `kpCondition_and_selfIncompatible_of_plaquetteKPBound`; the
 one-plaquette Z2 fixture `onePlaquetteZ2_plaquetteKPBound` proves a concrete
 finite `PlaquetteKPBound` under the scalar condition
-`|tanh beta| * exp alpha <= alpha`; the draft connector
-`plaquetteKP_convergence_bound_of_plaquetteKPBound` routes this explicit bound,
+`|tanh beta| * exp alpha <= alpha`, with wrappers
+`onePlaquetteZ2_kpCondition` and
+`onePlaquetteZ2_kpCondition_and_selfIncompatible`; the draft connector
+`plaquetteKP_convergence_bound_of_plaquetteKPBound` routes an explicit bound,
 plus Q7 self-incompatibility, into the corrected Q6 convergence statement and
 therefore has the same parked-Q6 proof dependency. No volume-uniform KP proof
 or general finite-irrep coefficient map is claimed); `ExponentialClustering` (YM4/T8 statement bridge:

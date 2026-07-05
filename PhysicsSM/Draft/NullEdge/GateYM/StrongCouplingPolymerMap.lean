@@ -1061,6 +1061,48 @@ theorem onePlaquetteZ2_plaquetteKPBound
         rw [onePlaquetteZ2_anchor_sum beta alpha q])
       hsmall'
 
+/-- The one-plaquette Z2 fixture supplies an abstract `KPCondition` under the
+same scalar smallness hypothesis.  This is the no-Q6 wrapper around
+`onePlaquetteZ2_plaquetteKPBound`. -/
+theorem onePlaquetteZ2_kpCondition
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| * Real.exp alpha <= alpha) :
+    KPCondition
+      (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha)
+      (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+        onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+        (z2GammaAbs beta) alpha halpha) := by
+  exact
+    kpCondition_of_plaquetteKPBound onePlaquetteAdj
+      onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+      (z2GammaAbs beta) (z2GammaAbs_nonneg beta) alpha halpha
+      (onePlaquetteZ2_plaquetteKPBound beta alpha halpha hsmall)
+
+/-- The one-plaquette Z2 fixture supplies the corrected Q6 input pair:
+`KPCondition` plus self-incompatibility.  It still does not invoke the Q6
+cluster-expansion conclusion. -/
+theorem onePlaquetteZ2_kpCondition_and_selfIncompatible
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| * Real.exp alpha <= alpha) :
+    KPCondition
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha)
+        (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+          onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+          (z2GammaAbs beta) alpha halpha)
+      /\ (forall X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel,
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha).incompatible
+          X X) := by
+  constructor
+  · exact onePlaquetteZ2_kpCondition beta alpha halpha hsmall
+  · intro X
+    exact plaquettePolymerSystem_self_incompatible onePlaquetteAdj
+      onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+      (z2GammaAbs beta) alpha halpha X
+
 end StrongCouplingPolymerMap
 end GateYM
 end NullEdge
