@@ -282,6 +282,25 @@ theorem supportTail_union_add_inter [DecidableEq Gamma]
     (Finset.sum_union_inter (s₁ := S) (s₂ := T)
       (f := fun g => tailContribution M hdec D g R))
 
+/-- Exact split of a support tail into the part outside `T` and the overlap
+with `T`. -/
+theorem supportTail_sdiff_add_inter [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S \ T) R +
+      supportTail M hdec D (S ∩ T) R =
+        supportTail M hdec D S R := by
+  have hsum :
+      Finset.sum (S \ T ∪ S ∩ T)
+          (fun g => tailContribution M hdec D g R) =
+        Finset.sum (S \ T) (fun g => tailContribution M hdec D g R) +
+          Finset.sum (S ∩ T) (fun g => tailContribution M hdec D g R) :=
+    Finset.sum_union (Finset.disjoint_sdiff_inter S T)
+  rw [Finset.sdiff_union_inter] at hsum
+  simpa [supportTail] using hsum.symm
+
 /-- Enlarging the observable support can only increase the support tail. -/
 theorem supportTail_mono
     (M : MetricPolymerSystem Gamma)
@@ -358,6 +377,17 @@ theorem supportTail_sdiff_le [DecidableEq Gamma]
     (S T : Finset Gamma) (R : Real) :
     supportTail M hdec D (S \ T) R <= supportTail M hdec D S R :=
   supportTail_mono M hdec D R Finset.sdiff_subset
+
+/-- The outside piece and overlap piece together recover, hence are bounded by,
+the original support tail. -/
+theorem supportTail_sdiff_add_inter_le [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S \ T) R +
+      supportTail M hdec D (S ∩ T) R <= supportTail M hdec D S R := by
+  rw [supportTail_sdiff_add_inter M hdec D S T R]
 
 /-- The support tail of a finite union of support pieces is bounded by the sum
 of the individual support tails.  This is the finite-cover overcount form used
