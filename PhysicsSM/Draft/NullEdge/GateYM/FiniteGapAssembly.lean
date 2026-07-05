@@ -77,6 +77,10 @@ Q9 prerequisite package. -/
 def localGap (P : FiniteGapPrereq H) : ℝ :=
   FluxSectorZ2.localGlueballGap P.lambda0 P.lambdaLocal
 
+/-- The local/glueball spectral ratio in the selected sector. -/
+def localSpectralRatio (P : FiniteGapPrereq H) : ℝ :=
+  P.lambdaLocal / P.lambda0
+
 /-- The packaged local gap is exactly the D12 finite spectral-ratio convention
 with the local/glueball eigenvalue, not the winding-flux gap. -/
 theorem localGap_eq_finiteMassGap (P : FiniteGapPrereq H) :
@@ -84,6 +88,34 @@ theorem localGap_eq_finiteMassGap (P : FiniteGapPrereq H) :
       TransferGapDefinition.finiteMassGap P.lambda0 P.lambdaLocal := by
   simpa [localGap] using
     FluxSectorZ2.localGlueballGap_eq_finiteMassGap P.lambda0 P.lambdaLocal
+
+/-- The packaged local gap is the negative logarithm of the named local
+spectral ratio. -/
+theorem localGap_eq_neg_log_localSpectralRatio (P : FiniteGapPrereq H) :
+    P.localGap = -Real.log P.localSpectralRatio := by
+  rw [localGap_eq_finiteMassGap]
+  rfl
+
+/-- The local/glueball spectral ratio is positive under the packaged
+eigenvalue hypotheses. -/
+theorem localSpectralRatio_pos (P : FiniteGapPrereq H) :
+    0 < P.localSpectralRatio := by
+  exact div_pos P.lambdaLocal_pos P.lambda0_pos
+
+/-- The local/glueball spectral ratio is strictly below one under the packaged
+strict spectral separation hypothesis. -/
+theorem localSpectralRatio_lt_one (P : FiniteGapPrereq H) :
+    P.localSpectralRatio < 1 := by
+  unfold localSpectralRatio
+  have hratio :
+      P.lambdaLocal / P.lambda0 < P.lambda0 / P.lambda0 :=
+    div_lt_div_of_pos_right P.lambdaLocal_lt_lambda0 P.lambda0_pos
+  simpa [div_self P.lambda0_pos.ne'] using hratio
+
+/-- The packaged spectral ratio lies in the open interval `(0, 1)`. -/
+theorem localSpectralRatio_mem_Ioo (P : FiniteGapPrereq H) :
+    P.localSpectralRatio ∈ Set.Ioo (0 : ℝ) 1 :=
+  ⟨P.localSpectralRatio_pos, P.localSpectralRatio_lt_one⟩
 
 /-- The bundled Q9 prerequisite still exposes vacuum membership in the chosen
 sector. -/
