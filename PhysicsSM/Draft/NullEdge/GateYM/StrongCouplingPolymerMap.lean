@@ -639,6 +639,22 @@ def plaquetteKPSum
             NontrivialLabel gammaAbs alpha halpha X Y) = true),
     Y.coeffProduct gammaAbs * Real.exp (alpha * (Y.support.card : Real))
 
+/-- The explicit rooted plaquette-polymer KP sum is nonnegative when all label
+coefficients are nonnegative. -/
+theorem plaquetteKPSum_nonneg
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
+    0 <= plaquetteKPSum Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha X := by
+  unfold plaquetteKPSum
+  exact Finset.sum_nonneg (fun Y _hY =>
+    mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
+      (le_of_lt (Real.exp_pos _)))
+
 /--
 Anchor overcount specialized to the explicit plaquette KP sum.
 
@@ -695,6 +711,21 @@ def anchoredPlaquettePolymerAreaSum
       Y.coeffProduct gammaAbs *
         Real.exp (alpha * (Y.support.card : Real)))
 
+/-- Each anchored support-cardinality slice is nonnegative when all label
+coefficients are nonnegative. -/
+theorem anchoredPlaquettePolymerAreaSum_nonneg
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real)
+    (q : P) (k : Nat) :
+    0 <= anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+      gammaAbs alpha q k := by
+  unfold anchoredPlaquettePolymerAreaSum
+  exact Finset.sum_nonneg (fun Y _hY =>
+    mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
+      (le_of_lt (Real.exp_pos _)))
+
 /-- The full anchored plaquette-polymer contribution at a plaquette `q`. -/
 def anchoredPlaquettePolymerSum
     (ConnectedSupport : Finset P -> Prop)
@@ -708,6 +739,21 @@ def anchoredPlaquettePolymerSum
     (fun Y =>
       Y.coeffProduct gammaAbs *
         Real.exp (alpha * (Y.support.card : Real)))
+
+/-- The full anchored contribution is nonnegative when all label coefficients
+are nonnegative. -/
+theorem anchoredPlaquettePolymerSum_nonneg
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real)
+    (q : P) :
+    0 <= anchoredPlaquettePolymerSum ConnectedSupport NontrivialLabel
+      gammaAbs alpha q := by
+  unfold anchoredPlaquettePolymerSum
+  exact Finset.sum_nonneg (fun Y _hY =>
+    mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
+      (le_of_lt (Real.exp_pos _)))
 
 /-- The full anchored contribution is the finite sum of its support-cardinality
 slices.  The range stops at `Fintype.card P`, since every polymer support is a
