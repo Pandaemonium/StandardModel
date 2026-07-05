@@ -2179,3 +2179,50 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 
 Dependency footprint for the new headline lemmas:
 `[propext, Classical.choice, Quot.sound]`.
+
+## note:t1-minimal-cut-plaquette-example
+
+Codex 1.22:25:
+
+Added `PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteExample.lean`.
+
+What landed:
+
+- finite vertex/edge enums for a four-edge cut plaquette;
+- `cutPlaqReflection`, with one positive spatial edge, one mirror negative
+  spatial edge, and two cut edges;
+- `cutPlaquette`, the straddling closed walk;
+- `cutMirrorCoord`, an equivalence between link fields and mirror coordinates;
+- `cutPlaquette_hol_mirrorConfig` and `cutPlaquette_hol_cutMirrorCoord`;
+- `cutPlaquette_wilsonFactor_reflectionPositive`, a direct specialization of
+  the Wilson cut-factor bridge to the concrete read-off word.
+
+The geometric factorization is:
+
+```text
+hol = cutPlaqEWord c a * (cutPlaqEWord c b)^-1
+```
+
+with `cutPlaqEWord (c0,c1) x = c0 * x * c1^-1`. This is exactly the
+principal-submatrix shape required by `WilsonCutPlaquettePositivity`.
+
+Scope boundary: this is the minimal concrete holonomy/factor bridge, not a full
+cut-ensemble RP theorem. The next Q1 target is to identify a genuine
+cut-bearing `PlaquetteEnsemble.weight` with this mirror-coordinate factorized
+weight and then assemble the full RP statement.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteExample.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteExample
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprints:
+
+- `cutPlaquette_hol_mirrorConfig`: `[propext]`
+- `cutPlaquette_hol_cutMirrorCoord`: `[propext, Quot.sound]`
+- `cutPlaquette_wilsonFactor_reflectionPositive`:
+  `[propext, Classical.choice, Quot.sound]`

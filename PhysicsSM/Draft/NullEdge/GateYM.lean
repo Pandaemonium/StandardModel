@@ -33,6 +33,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.HermitianFromRealQuadraticForm
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonReflectionPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
+import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteExample
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
@@ -362,6 +363,14 @@ principal submatrix of the Wilson one-plaquette kernel; it does not yet provide
 the concrete cut-plaquette lattice, mirror-coordinate equivalence, or genuine
 ensemble-weight identification. Dependency footprint
 [propext, Classical.choice, Quot.sound]);
+`ReflectionCutPlaquetteExample` (YM3/Q1 concrete cut-plaquette geometry:
+defines a four-edge lattice with one positive edge, one mirror negative edge,
+and two cut edges; proves `cutPlaquette_hol_mirrorConfig` and
+`cutPlaquette_hol_cutMirrorCoord`, factoring the straddling plaquette holonomy
+as `e(c,a) * e(c,b)^-1` for the symmetric read-off `cutPlaqEWord`; specializes
+the Wilson cut-factor bridge as `cutPlaquette_wilsonFactor_reflectionPositive`.
+This is still not full RP-LINK: no `PlaquetteEnsemble.weight` identification
+for a cut-bearing ensemble is claimed yet);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original

@@ -101,3 +101,12 @@ was not copied wholesale.
   `cutKernel_posSemidef_of_wilsonFactor`, and
   `reflectionForm_nonneg_of_wilsonFactor_prod`:
   `[propext, Classical.choice, Quot.sound]`
+
+## Follow-up local geometry slice
+
+After integrating the returned kernel-algebra bridge, Codex added
+`PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteExample.lean`.
+That local follow-up supplies a minimal four-edge cut-plaquette lattice,
+mirror-coordinate equivalence, holonomy factorization, and the specialized
+Wilson cut-factor RP-KER theorem. It still does not identify the genuine
+cut-bearing `PlaquetteEnsemble.weight` or close full RP-LINK.

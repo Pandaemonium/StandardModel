@@ -9,16 +9,18 @@ Status: outline only; draft Lean inventory, not a promotion request.
 This unit should present the finite, algebraic reflection-positivity stack for
 GateYM after the N3 mirror-holonomy redesign, the zero-cut Wilson
 ensemble-identification tier, the cut-kernel product/Schur connector lemmas,
-and the abstract Wilson cut-factor PSD bridge. The safest current headline is:
+the abstract Wilson cut-factor PSD bridge, and a minimal concrete
+cut-plaquette holonomy-factorization example. The safest current headline is:
 
 > A kernel-checked draft stack for reflection geometry, reflection
 > change-of-variables, positive Wilson local kernels, and a doubled Wilson
 > reflection-form theorem for which the genuine two-plaquette ensemble
 > weight IS now identified (for the zero-cut construction, at
 > mirror-coordinate configurations), plus finite cut-kernel product closure
-> lemmas and the single-factor Wilson cut-kernel bridge - with full concrete
-> cut-plaquette (shocking tier) reflection positivity still open and the Q2
-> OS/GNS range model present only as finite algebraic
+> lemmas, the single-factor Wilson cut-kernel bridge, and a four-edge
+> cut-plaquette example whose holonomy has the required mirror-coordinate
+> factor form - with full concrete cut-ensemble reflection positivity still
+> open and the Q2 OS/GNS range model present only as finite algebraic
 > infrastructure.
 
 Do not claim that RP-LINK is fully closed: the zero-cut doubled-lattice
@@ -26,8 +28,7 @@ construction is a well-definedness/consistency instance of reflection
 positivity, not the case with actual cut plaquettes (Osterwalder-Seiler's
 genuinely nontrivial content). The T1 zero-cut tier (baseline AND
 ensemble-identification) is now closed; cut-plaquette strong/shocking-tier
-work remains open at the concrete lattice / ensemble-weight identification
-layer.
+work remains open at the genuine cut-ensemble weight identification layer.
 
 ## Theorem inventory
 
@@ -152,6 +153,21 @@ Wilson cut-factor kernel bridge:
   lattice or prove that its genuine `PlaquetteEnsemble.weight` has this
   mirror-coordinate factor form.
 
+Minimal concrete cut-plaquette example:
+
+- `PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteExample.lean`
+  - `cutPlaqLattice`
+  - `cutPlaqReflection`
+  - `cutPlaquette`
+  - `cutMirrorCoord`
+  - `cutPlaquette_hol_mirrorConfig`
+  - `cutPlaquette_hol_cutMirrorCoord`
+  - `cutPlaquette_wilsonFactor_reflectionPositive`
+  This is the first concrete straddling plaquette with the required read-off
+  shape. It proves the holonomy factorization and specializes the Wilson
+  cut-factor RP-KER theorem, but it is not yet a full
+  `PlaquetteEnsemble.weight` theorem for a cut-bearing ensemble.
+
 Baseline Wilson reflection positivity:
 
 - `PhysicsSM/Draft/NullEdge/GateYM/WilsonReflectionPositivity.lean`
@@ -210,6 +226,9 @@ known records include:
   `WilsonCutPlaquettePositivity.lean`; use ledger entry `1.22:08` and the
   task note `AgentTasks/ym-q1-cut-plaquette-assembly-strategy-aristotle-2026-07-04.md`
   for exact direct/targeted/aggregate checks and dependency footprint.
+- Codex added `ReflectionCutPlaquetteExample.lean`; use ledger entry
+  `1.22:25` and discussion note `note:t1-minimal-cut-plaquette-example` for
+  exact direct/targeted/aggregate checks and dependency footprints.
 - Q2 `TransferHilbert*` modules and `TransferHilbertZ2Electric.lean` have
   their own direct/targeted/aggregate check records in the ledger; cite those
   exact entries rather than this outline.
@@ -238,9 +257,10 @@ GateYM build, then record fresh command output here or in a task note.
   well-definedness/consistency instance of reflection positivity, not the
   case with actual cut plaquettes - Osterwalder-Seiler's genuinely
   nontrivial content. Aristotle `8271a64b` closes the abstract factorized
-  Wilson cut-kernel bridge, but concrete Wilson cut geometry, the
-  mirror-coordinate equivalence, and genuine ensemble-weight identification
-  are still open.
+  Wilson cut-kernel bridge, and `ReflectionCutPlaquetteExample.lean` supplies
+  a minimal concrete cut-plaquette holonomy factorization, but genuine
+  cut-bearing `PlaquetteEnsemble.weight` identification and the assembled RP
+  theorem are still open.
 - Q2 transfer Hilbert space is finite algebraic infrastructure only. The
   concrete Wilson slab/physical transfer matrix and gap interpretation remain
   open.
