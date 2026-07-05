@@ -647,6 +647,26 @@ def rpBlockElectricSectorInclusion {Lx Ly : Nat}
     intro c v
     rfl
 
+/-- The sectorized finite OS inclusion is injective. -/
+theorem rpBlockElectricSectorInclusion_injective {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Function.Injective (rpBlockElectricSectorInclusion hLx hLy F ex ey) := by
+  intro u v h
+  apply Subtype.ext
+  change (u :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) = v
+  exact congrArg
+    (fun w : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) =>
+      (w :
+        (FluxSectorZ2.TorusLinkField Lx Ly ×
+          FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)) h
+
 /-- Projecting after including a sectorized finite OS vector is the identity
 on that sectorized finite OS range. -/
 theorem rpBlockElectricSectorProjection_comp_inclusion {Lx Ly : Nat}
@@ -1053,6 +1073,22 @@ theorem finrank_rpHilbertSpace_eq_sum_finrank_rpBlockElectricSector
         Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) := by
   rw [(rpHilbertSpaceBlockElectricLinearEquiv hLx hLy F).finrank_eq]
   simp_rw [Module.finrank_pi_fintype]
+
+/-- Each concrete Z2 block electric sector has dimension bounded by the
+ambient plaquette-field finite OS range.  This is finite-dimensional
+bookkeeping only; it is not a transfer-matrix or gap statement. -/
+theorem finrank_rpBlockElectricSector_le_finrank_rpHilbertSpace
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Module.finrank Complex (rpBlockElectricSector hLx hLy F ex ey) <=
+      Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) := by
+  exact LinearMap.finrank_le_finrank_of_injective
+    (rpBlockElectricSectorInclusion_injective hLx hLy F ex ey)
 
 end TransferHilbertZ2Electric
 end GateYM

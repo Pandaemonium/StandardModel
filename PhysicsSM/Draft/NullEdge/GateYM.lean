@@ -477,8 +477,9 @@ plaquette-field finite OS range. It also packages the four-sector product,
 the linear decomposition/reconstruction maps, the two inverse identities
 between that product and the finite OS range, and the resulting named
 `LinearEquiv`; the equivalence gives the corresponding finrank additivity
-formula over the four block electric sectors. This is still a finite identity,
-not a physical transfer matrix or gap claim);
+formula over the four block electric sectors, and the sector inclusion is
+injective with each sector finrank bounded by the ambient finite OS range.
+This is still a finite identity, not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and
