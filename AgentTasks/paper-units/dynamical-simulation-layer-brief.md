@@ -147,6 +147,12 @@ Implementation status as of 2026-07-05:
   corresponding D12 spectral-ratio gap/contraction-factor identities. This is
   a descriptor bridge for the smallest transfer shape, not the full Wilson
   slab transfer operator.
+- `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferWitness.lean` now wraps
+  that payload as a `Module.End`, proves a toy full-endomorphism cyclicity
+  prerequisite on `Fin 2 -> C`, and instantiates `FiniteGapSpectralWitness`
+  for any positive two-state descriptor. This makes the witness interface
+  non-vacuous on a tiny finite model while keeping the full Wilson slab,
+  physical sector, and cyclicity problem separate.
 
 ## One-step slab kernel
 
@@ -268,7 +274,11 @@ local excitation eigenvector equations. It still does not itself build that
 transfer object. The new `TwoStateTransferSpectrum` module supplies the first
 tiny kernel-checked spectral payload that could feed such a witness after the
 missing cyclicity, sector, and Wilson-slab identification hypotheses are
-separately supplied.
+separately supplied. The follow-on `TwoStateTransferWitness` module carries
+this one step further for a deliberately toy whole-space sector: it proves
+full-endomorphism cyclicity and fills the `FiniteGapSpectralWitness` fields
+from the two-state descriptor. It is useful as an API test, not as evidence
+that the physical Wilson slab sector has been constructed.
 
 ## Three meanings of "simulation"
 
@@ -708,9 +718,11 @@ The transfer-specific blockers now have a narrow Z2 1+1D prototype in
 `Scripts/oracle/z2_transfer_oracle.py`, including a JSON-ready descriptor and
 summary record, descriptor-file loading, supported-label validation, optional
 matrix emission, and a tiny Lean spectral descriptor bridge in
-`TwoStateTransferSpectrum.lean`. The remaining engineering task is to extend
-that descriptor-driven prototype beyond the current Z2 1+1D model and connect
-its concrete Wilson slab matrices back to Lean theorem surfaces.
+`TwoStateTransferSpectrum.lean`, with `TwoStateTransferWitness.lean` proving
+that the finite-gap witness API can be instantiated on a tiny whole-sector
+model. The remaining engineering task is to extend that descriptor-driven
+prototype beyond the current Z2 1+1D model and connect its concrete Wilson
+slab matrices back to Lean theorem surfaces.
 
 ## Suggested first collaborator project
 

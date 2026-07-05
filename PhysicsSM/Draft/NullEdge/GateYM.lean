@@ -11,6 +11,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryLasso
 import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryExpectation
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferSpectrum
+import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferWitness
 import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
@@ -175,6 +176,13 @@ D12 finite spectral-ratio gap/contraction-factor facts. This mirrors the
 smallest Z2 Wilson-slab oracle shape but deliberately does not construct the
 full Wilson slab transfer operator, OS/GNS Hilbert space, Hamiltonian,
 infinite-volume state, or physical mass-gap theorem);
+`TwoStateTransferWitness` (GateYM finite dynamics/descriptor bridge:
+wraps the two-state transfer matrix as a `Module.End`, proves a toy
+whole-space cyclicity prerequisite using the full endomorphism algebra, and
+instantiates `FiniteGapSpectralWitness` for any positive two-state descriptor.
+This makes the witness API non-vacuous on a tiny finite model but deliberately
+does not construct the full Wilson slab transfer operator, physical sector,
+Hamiltonian, infinite-volume state, or physical mass-gap theorem);
 `FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every
 finite-dimensional complex representation of a finite group admits a
 unitary matrix model - Weyl's unitarian trick in pure matrix algebra

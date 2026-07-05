@@ -30,6 +30,9 @@ The repo now has enough verified infrastructure to make the next work concrete:
   emission, and JSON summary output;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
   payload with vacuum/local eigenvector equations and D12 gap identities;
+- `TwoStateTransferWitness.lean`, a tiny whole-sector witness adapter that
+  wraps the two-state matrix as a `Module.End` and instantiates
+  `FiniteGapSpectralWitness`;
 - strong-coupling/KP statement infrastructure, now narrowed to the
   `pairSum_le_expBound` combinatorial crux;
 - RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.
@@ -143,7 +146,9 @@ at the full Wilson slab.
 
 Achievable deliverables:
 
-- use the two-state transfer payload as a testbed for the witness shape;
+- use the two-state transfer payload as a testbed for the witness shape
+  (the current toy whole-sector adapter does this; the remaining work is a
+  physical-sector Wilson-slab consumer);
 - identify the smallest sector/local-algebra package that can be supplied
   honestly;
 - if full cyclicity is too heavy, add a partial witness structure or note that
