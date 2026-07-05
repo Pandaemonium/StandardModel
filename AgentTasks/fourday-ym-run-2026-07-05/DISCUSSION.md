@@ -3786,3 +3786,16 @@ cross-link. No need to cancel either.
   scoping, inert hypotheses, statement-vs-claim drift) - I'll harvest bb6b33c3
   when it returns and correct/annotate my QMF modules as needed, same discipline
   as the unification audit-response.
+
+## policy: Aristotle budget RELAXED to unlimited (claude, per lead)
+
+Lead has relaxed the Aristotle budget: it is free with no throttle seen, so the
+"8 simultaneous slots" cap and the "no second Q6 job" rule are LIFTED. Submit
+jobs aggressively across headline/backbone targets. The ONLY real constraint is
+INTEGRATION DEBT - harvest and integrate promptly so the tree does not drift
+behind the jobs. Revisit only if Harmonic actually throttles. (Also: both
+grand-strategy audits ran on the slim submission copy, which excludes docs/ and
+CodeLatticeE8 - their "packaging drift / missing docs" findings are slim-copy
+ARTIFACTS, verified false against the real repo. Future strategy submissions
+should include docs/ + CodeLatticeE8 via -ExtraPath. See
+GRAND_STRATEGY_SYNTHESIS_20260705.md section 6.)

@@ -181,3 +181,68 @@ above assumes provisional answers (in brackets); confirm or override:
   spectral-ratio definition on a toy matrix is an over-claim.
 - Let the Lean lead the prose, not the reverse - stop extending the unification
   NARRATIVE ahead of the non-factoring theorem.
+
+---
+
+## 6. UPDATE (2026-07-05, after lead's answers + repo verification)
+
+### 6.1 Lead's locked decisions (replace the provisional brackets in section 4)
+
+1. **Trust standard:** `n a t i v e _ d e c i d e` is ACCEPTED in the repo (a
+   deliberate build-speed choice over slow `decide`). Structural proofs are the
+   IDEAL where they can replace previously-slow `decide`s, but are opportunistic,
+   not a blocker. => C1 "de-native the E8 core" DOWNGRADES from a trust-fix to an
+   opportunistic cleanliness task. The E8/Hamming artifact is NOT trust-blocked.
+2. **Aristotle budget: RELAXED to effectively unlimited** (free, no throttle seen).
+   The only real constraint is INTEGRATION DEBT - keep harvested jobs integrated
+   so the tree does not drift. Parallelize jobs aggressively; the "8-slot" and
+   "no second Q6 job" rules are lifted (revisit only if Harmonic throttles).
+3. **Headlines wanted** alongside negatives. Mention co-location/color-blind mass,
+   but PRIORITIZE genuine headline positives too (E8/Hamming paper, RP-LINK,
+   lane-A group-level SU(3)).
+4. **Continuum permanently OUT** (confirmed). F-YM-CONFLATE + no-continuum-drift
+   stay as vetoes.
+5. **Consolidation WELCOME** (Gauge-Z6 near-duplicates + one curated theorem
+   index). Greenlit.
+
+### 6.2 Repo-verification corrections to the audits (IMPORTANT)
+
+Both audits ran on the SLIM SUBMISSION COPY produced by
+`prepare_aristotle_submission.ps1`, which EXCLUDES `docs/` and the
+`CodeLatticeE8*` roots (it copies PhysicsSM + Sources + Index + AGENTS + README
+only). Verified against the real repo:
+
+- **FALSE (slim-copy artifact):** audit finding 0.1 "no `docs/` directory" and
+  "`CodeLatticeE8` / `CodeLatticeE8Standalone` package missing / lakefile
+  declares un-buildable libs." The REAL repo HAS `docs/` (ARISTOTLE, BUILD,
+  CONVENTIONS, NERD_ROADMAP, NULLSTRAND) and HAS `CodeLatticeE8`,
+  `CodeLatticeE8.lean`, `CodeLatticeE8Standalone/`, and the `lean_lib
+  CodeLatticeE8*` roots exist. => C2 "fix packaging drift" is MOSTLY A NON-ISSUE;
+  the real README/lakefile match the real tree. Drop it (except any genuinely
+  stale line found by a direct real-repo check).
+- **PARTIALLY real:** NullStrand is not wired into the default `PhysicsSM.lean`
+  root (it has its own aggregator `PhysicsSM/NullStrand.lean`). Minor: wire it
+  into a named target if we want it in the default build; otherwise intentional.
+- **STILL real (not artifacts):** native_decide under E8 (but now ACCEPTED);
+  GateYM aggregator not globally `s o r r y`-free; two-programs / co-location;
+  the Q6 crux + M1/M3 + Peter-Weyl gaps; Gauge-Z6 fragmentation.
+- **PROCESS FIX:** future whole-project strategy submissions must include `docs/`
+  and the `CodeLatticeE8*` roots (add them via `-ExtraPath` or a strategy-copy
+  variant), so Aristotle audits the complete tree, not a Lean-only slice.
+
+### 6.3 Reshaped near-term priorities (given 6.1 + 6.2)
+
+- E8/Hamming paper becomes a NEARER headline: native_decide is accepted, packaging
+  drift was a false alarm, so the artifact mainly needs a paper writeup + honest
+  "native-trust where used" labeling (NOT a de-native campaign).
+- Lane-A is further along than the audit implied (this run already landed
+  `su3Submonoid_eq_specialUnitaryGroup` as a literal EQUALITY plus
+  `octonionMulAutFixingE111MulEquivSpecialUnitary` - so "1a" is effectively done;
+  1b irreducibility landed in `ColorTripletFundamental`). Remaining lane-A is the
+  anomaly-claim restatement + wiring.
+- Use the unlimited Aristotle budget to parallelize headline targets (E8 paper
+  formal gaps, lane-A remainders, and - codex - the M1/M3 cut-slab lattice + the
+  Q6 crux).
+- Opportunistic native_decide->structural where clean (done: `rootList_length`);
+  do NOT sink into structuralizing the E8-240 enumeration (native is fine there).
+- Consolidate Gauge-Z6 + build one curated theorem index.
