@@ -547,7 +547,10 @@ overcount for degree-style estimates, including a uniform
 singleton-neighborhood bound `card <= A.card * D`, plus a generic
 anchor-overcount inequality that bounds any nonnegative incompatible-support sum
 by summing over anchors in the closed neighborhood and its direct specialization
-to the explicit plaquette KP sum. It also packages cardinality-times-anchor and
+to the explicit plaquette KP sum. It also splits anchored contributions by
+support cardinality via `anchoredPlaquettePolymerAreaSum` and
+`anchoredPlaquettePolymerSum`, with bridges from per-area slice bounds to the
+rooted KP overcount. It also packages cardinality-times-anchor and
 support-size-times-degree-times-anchor bounds for turning local anchored
 estimates into explicit KP-sum estimates, including the conditional adapter
 `plaquetteKPBound_of_closedTouchNeighborhood_anchorBound` from any per-root

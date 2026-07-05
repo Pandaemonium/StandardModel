@@ -677,6 +677,159 @@ theorem plaquetteKPSum_le_sum_closedTouchNeighborhood_anchors
           exact mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
             (le_of_lt (Real.exp_pos _)))
 
+/-- The anchored plaquette-polymer contribution at a plaquette `q`, restricted
+to polymers whose support has cardinality `k`.
+
+This is pure finite bookkeeping for later support-counting estimates.  No
+connected-support count or strong-coupling smallness bound is asserted here. -/
+def anchoredPlaquettePolymerAreaSum
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real)
+    (q : P) (k : Nat) : Real :=
+  (Finset.univ.filter
+    (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+      decide (q ∈ Y.support) = true ∧ Y.support.card = k)).sum
+    (fun Y =>
+      Y.coeffProduct gammaAbs *
+        Real.exp (alpha * (Y.support.card : Real)))
+
+/-- The full anchored plaquette-polymer contribution at a plaquette `q`. -/
+def anchoredPlaquettePolymerSum
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real)
+    (q : P) : Real :=
+  (Finset.univ.filter
+    (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+      decide (q ∈ Y.support) = true)).sum
+    (fun Y =>
+      Y.coeffProduct gammaAbs *
+        Real.exp (alpha * (Y.support.card : Real)))
+
+/-- The full anchored contribution is the finite sum of its support-cardinality
+slices.  The range stops at `Fintype.card P`, since every polymer support is a
+finset of plaquettes in `P`. -/
+theorem anchoredPlaquettePolymerSum_eq_sum_areaSlices
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (q : P) :
+    anchoredPlaquettePolymerSum ConnectedSupport NontrivialLabel gammaAbs
+      alpha q =
+      (Finset.range (Fintype.card P + 1)).sum (fun k =>
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k) := by
+  classical
+  unfold anchoredPlaquettePolymerSum anchoredPlaquettePolymerAreaSum
+  simp only [Finset.sum_filter]
+  rw [Finset.sum_comm]
+  apply Eq.symm
+  apply Finset.sum_congr rfl
+  intro Y _hY
+  by_cases hq : decide (q ∈ Y.support) = true
+  · have hcard : Y.support.card ∈ Finset.range (Fintype.card P + 1) := by
+      rw [Finset.mem_range]
+      exact Nat.lt_succ_of_le (Finset.card_le_univ Y.support)
+    rw [if_pos hq]
+    have hsingle :
+        (Finset.range (Fintype.card P + 1)).sum
+          (fun k =>
+            if decide (q ∈ Y.support) = true ∧ Y.support.card = k then
+              Y.coeffProduct gammaAbs *
+                Real.exp (alpha * (Y.support.card : Real))
+            else
+              0) =
+          Y.coeffProduct gammaAbs *
+            Real.exp (alpha * (Y.support.card : Real)) := by
+      rw [Finset.sum_eq_single Y.support.card]
+      · simp [hq]
+      · intro b _hb hne
+        have hne' : Y.support.card ≠ b := fun h => hne h.symm
+        simp [hne']
+      · intro hnot
+        exact False.elim (hnot hcard)
+    simpa using hsingle
+  · rw [if_neg hq]
+    apply Finset.sum_eq_zero
+    intro k _hk
+    simp [hq]
+
+/-- If every anchored support-cardinality slice is bounded by `B k`, then the
+full anchored contribution is bounded by the sum of those slice bounds.
+
+This is the exact insertion point for a future connected-support counting
+estimate; the theorem itself proves no such count. -/
+theorem anchoredPlaquettePolymerSum_le_sum_areaBounds
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (q : P) (B : Nat -> Real)
+    (hB : forall k : Nat, k ∈ Finset.range (Fintype.card P + 1) ->
+      anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+        gammaAbs alpha q k <= B k) :
+    anchoredPlaquettePolymerSum ConnectedSupport NontrivialLabel gammaAbs
+      alpha q <=
+      (Finset.range (Fintype.card P + 1)).sum B := by
+  rw [anchoredPlaquettePolymerSum_eq_sum_areaSlices]
+  exact Finset.sum_le_sum hB
+
+/-- Area-sliced version of the anchored overcount for the explicit plaquette KP
+sum.  Bounding each area slice of every anchor in the closed touch-neighborhood
+is enough to bound the rooted KP sum by the corresponding neighborhood sum of
+area-bound totals. -/
+theorem plaquetteKPSum_le_sum_closedTouchNeighborhood_areaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel)
+    (B : Nat -> Real)
+    (hB : forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+      forall k : Nat, k ∈ Finset.range (Fintype.card P + 1) ->
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k <= B k) :
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+      <= (closedTouchNeighborhood Adj X.support).sum
+          (fun _q => (Finset.range (Fintype.card P + 1)).sum B) := by
+  have hAnchors :=
+    plaquetteKPSum_le_sum_closedTouchNeighborhood_anchors Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X
+  refine hAnchors.trans ?_
+  apply Finset.sum_le_sum
+  intro q hq
+  exact anchoredPlaquettePolymerSum_le_sum_areaBounds
+    ConnectedSupport NontrivialLabel gammaAbs alpha q B (hB q hq)
+
+/-- Cardinality form of the area-sliced anchored overcount. -/
+theorem plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_areaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel)
+    (B : Nat -> Real)
+    (hB : forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+      forall k : Nat, k ∈ Finset.range (Fintype.card P + 1) ->
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k <= B k) :
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+      <= ((closedTouchNeighborhood Adj X.support).card : Real) *
+          (Finset.range (Fintype.card P + 1)).sum B := by
+  calc
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+        <= (closedTouchNeighborhood Adj X.support).sum
+            (fun _q => (Finset.range (Fintype.card P + 1)).sum B) :=
+          plaquetteKPSum_le_sum_closedTouchNeighborhood_areaBounds Adj
+            ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X B hB
+    _ = ((closedTouchNeighborhood Adj X.support).card : Real) *
+          (Finset.range (Fintype.card P + 1)).sum B := by
+          simp [Finset.sum_const, nsmul_eq_mul]
+
 /-- If every anchored polymer sum over supports containing a fixed plaquette is
 bounded by `B` on the closed touch-neighborhood of `X.support`, then the
 localized KP overcount is bounded by the size of that neighborhood times `B`.
