@@ -619,6 +619,61 @@ theorem centerMinus_pow_trace_div_centerPlus_pow_trace_eq_tanh_pow
   rw [mul_pow, mul_pow]
   ring
 
+/-- The arbitrary finite power of the one-link transfer splits into the
+plus/minus center-sector projectors with the corresponding eigenvalue powers. -/
+theorem slabTransfer_pow_eq_center_decomposition (beta : ℝ) (T : ℕ) :
+    (slabTransfer beta) ^ T =
+      ((((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) ^ T) •
+        centerPlusProjector) +
+      ((((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) ^ T) •
+        centerMinusProjector) := by
+  calc
+    (slabTransfer beta) ^ T
+        = (centerPlusProjector + centerMinusProjector) *
+            (slabTransfer beta) ^ T := by
+          rw [centerPlus_add_centerMinus, one_mul]
+    _ = centerPlusProjector * (slabTransfer beta) ^ T +
+          centerMinusProjector * (slabTransfer beta) ^ T := by
+          rw [add_mul]
+    _ = _ := by
+          rw [centerPlus_mul_slabTransfer_pow, centerMinus_mul_slabTransfer_pow]
+
+/-- The raw two-interval spatial-flux numerator for the one-link slab trace.
+
+The spatial-flux insertion toggles the two center sectors, so the numerator
+contains the two mixed eigenvalue-power products. -/
+theorem fluxMatrix_slabTransfer_pow_fluxMatrix_slabTransfer_pow_trace
+    (beta : ℝ) (tau sigma : ℕ) :
+    Matrix.trace (fluxMatrix * (slabTransfer beta) ^ tau * fluxMatrix *
+        (slabTransfer beta) ^ sigma) =
+      ((((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) ^ tau) *
+          (((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) ^ sigma) +
+        (((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) ^ tau) *
+          (((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) ^ sigma)) := by
+  rw [slabTransfer_pow_eq_center_decomposition beta tau,
+    slabTransfer_pow_eq_center_decomposition beta sigma]
+  simp [Matrix.trace, Matrix.mul_apply, fluxMatrix, centerPlusProjector,
+    centerMinusProjector, bitSign, Fin.sum_univ_two]
+  ring
+
+/-- The normalized two-interval spatial-flux autocorrelation ratio in the
+one-link slab, written in the two center-sector eigenvalue branches. -/
+theorem fluxCorrelation_pow_ratio_eq_eigenvalue_branches
+    (beta : ℝ) (tau sigma : ℕ) :
+    let lambdaPlus : ℂ :=
+      ((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ)
+    let lambdaMinus : ℂ :=
+      ((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ)
+    Matrix.trace (fluxMatrix * (slabTransfer beta) ^ tau * fluxMatrix *
+        (slabTransfer beta) ^ sigma) /
+        Matrix.trace ((slabTransfer beta) ^ (tau + sigma)) =
+      (lambdaMinus ^ tau * lambdaPlus ^ sigma +
+        lambdaPlus ^ tau * lambdaMinus ^ sigma) /
+        (lambdaPlus ^ (tau + sigma) + lambdaMinus ^ (tau + sigma)) := by
+  dsimp
+  rw [fluxMatrix_slabTransfer_pow_fluxMatrix_slabTransfer_pow_trace,
+    slabTransfer_pow_trace]
+
 /-- The raw two-time spatial-flux numerator for the one-link, two-step slab
 trace. -/
 theorem fluxMatrix_slabTransfer_fluxMatrix_slabTransfer_trace (beta : ℝ) :

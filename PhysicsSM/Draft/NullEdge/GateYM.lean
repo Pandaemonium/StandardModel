@@ -192,9 +192,10 @@ and proves its transfer matrix is exactly the two-state payload with
 vacuum/local eigenvector equations, and records the one-link spatial-flux
 insertion as a Hermitian involution swapping those eigenvectors. It also proves
 one-step and two-step trace identities, plus/minus center-projected one-step
-and two-step trace identities and their decomposition/ratio facts, plus
-arbitrary finite-time center-projected trace formulas, center flip/projector
-algebra, flux/center toggle laws, and instantiates the positive descriptor and
+and two-step trace identities and their decomposition/ratio facts, arbitrary
+finite-time center-projected trace formulas, arbitrary two-interval
+flux-correlation numerator/ratio facts, center flip/projector algebra,
+flux/center toggle laws, and instantiates the positive descriptor and
 finite-gap witness for `beta > 0`. This is only the `L = 1` finite oracle
 bridge, not the full Wilson slab transfer operator or physical gap theorem);
 `FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every

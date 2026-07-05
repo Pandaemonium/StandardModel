@@ -28,7 +28,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.36"
+ORACLE_VERSION = "v0.37"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -830,6 +830,9 @@ def lean_surface_record() -> dict:
                     "slabTransfer_pow_trace",
                     "centerProjected_pow_traces_sum_eq_slabTransfer_pow_trace",
                     "centerMinus_pow_trace_div_centerPlus_pow_trace_eq_tanh_pow",
+                    "slabTransfer_pow_eq_center_decomposition",
+                    "fluxMatrix_slabTransfer_pow_fluxMatrix_slabTransfer_pow_trace",
+                    "fluxCorrelation_pow_ratio_eq_eigenvalue_branches",
                     "descriptor_matrix_eq_slabTransfer",
                     "descriptor_contractionFactor_eq_tanh",
                     "spectralWitness_exp_neg_gap_eq_tanh",
