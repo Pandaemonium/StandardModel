@@ -202,6 +202,52 @@ theorem SupportsTouch.orTouch (Adj : PlaquetteAdjacency P) {A B : Finset P} :
     SupportsTouch Adj A B -> SupportsOverlapOrTouch Adj A B :=
   Or.inr
 
+/-- Closed touch-neighborhood of a finite support: the support itself plus all
+plaquettes touching it.  This is the first anchor set used by finite counting
+arguments for overlap-or-touch incompatible polymers. -/
+def closedTouchNeighborhood (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] (A : Finset P) : Finset P :=
+  Finset.univ.filter fun q => q ∈ A \/ exists p : P, p ∈ A /\ Adj.touch p q
+
+theorem mem_closedTouchNeighborhood_iff (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] {A : Finset P} {q : P} :
+    q ∈ closedTouchNeighborhood Adj A <->
+      q ∈ A \/ exists p : P, p ∈ A /\ Adj.touch p q := by
+  simp [closedTouchNeighborhood]
+
+omit [Fintype Rlab] in
+/-- If `B` is overlap-or-touch incompatible with `A`, then `B` contains an
+anchor plaquette in the closed touch-neighborhood of `A`.  This is the support
+localization fact needed before any area-by-area counting bound. -/
+theorem SupportsOverlapOrTouch.exists_right_mem_closedTouchNeighborhood
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    {A B : Finset P} :
+    SupportsOverlapOrTouch Adj A B ->
+      exists q : P, q ∈ B /\ q ∈ closedTouchNeighborhood Adj A := by
+  intro h
+  cases h with
+  | inl hOverlap =>
+      rcases hOverlap with ⟨q, hqA, hqB⟩
+      exact ⟨q, hqB, (mem_closedTouchNeighborhood_iff Adj).2 (Or.inl hqA)⟩
+  | inr hTouch =>
+      rcases hTouch with ⟨p, hpA, q, hqB, hpq⟩
+      exact ⟨q, hqB,
+        (mem_closedTouchNeighborhood_iff Adj).2 (Or.inr ⟨p, hpA, hpq⟩)⟩
+
+omit [Fintype Rlab] in
+/-- Contrapositive support-localization form: if every plaquette of `B` lies
+outside the closed touch-neighborhood of `A`, then `A` and `B` are compatible
+for the conservative overlap-or-touch relation. -/
+theorem not_supportsOverlapOrTouch_of_forall_not_mem_closedTouchNeighborhood
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    {A B : Finset P}
+    (hB : forall q : P, q ∈ B -> q ∉ closedTouchNeighborhood Adj A) :
+    ¬ SupportsOverlapOrTouch Adj A B := by
+  intro h
+  rcases SupportsOverlapOrTouch.exists_right_mem_closedTouchNeighborhood
+      Adj h with ⟨q, hqB, hqN⟩
+  exact hB q hqB hqN
+
 /-- The conservative finite plaquette-polymer system used by the Q7 statement
 freeze.  `alpha * support.card` is the KP energy, and `gammaAbs` supplies the
 absolute normalized label coefficient. -/
