@@ -25,11 +25,19 @@ reflection is `t |-> 1 - t` on the periodic time coordinate (`0 <-> 1`,
 `2 <-> L-1`, ...), NOT a site reflection `t |-> -t` (which would fix `t = 0`).
 The time direction is index `timeDir` of `Site L = Fin 4 -> Fin L`.
 
-## Remaining RP-F DAG (next QMF5 cycle; recorded here so the scaffold is legible)
+## Status and remaining RP-F DAG
 
-- `rpFReflection` : the reflection unitary `Theta = (site permutation by timeRefl)
-  tensor gamma0` on `Idx L nc`; prove `Theta^dagger Theta = 1` and `Theta` an
-  involution.
+Landed here (kernel-checked, `s o r r y`-free): `timeRefl` + its involution and
+link-reflection facts; the reflection operator `rpFReflection`
+(`Theta = timeRefl-permutation tensor gamma_timeDir tensor color-id`) and its
+Hermiticity `rpFReflection_herm` (`Theta^dagger = Theta`).
+
+Remaining (next QMF5 cycle; the two entrywise site-sum collapses, same
+difficulty as QMF4's `Gamma5_mul_Gamma5`, are Aristotle targets):
+
+- `rpFReflection` involution `Theta * Theta = 1` (uses `timeRefl` involutive +
+  `gamma_timeDir^2 = 1`); with `rpFReflection_herm` this makes `Theta` a
+  Hermitian involution, hence the reflection unitary.
 - `rpF_reflection_hermiticity` : `Theta D Theta = D^dagger` (the temporal-
   reflection analogue of QMF4's `gamma5_hermiticity`, same gamma lemmas).
 - `reflectedWilsonBlock` + `reflectedWilsonBlock_eq_gram` : the reflected
@@ -46,6 +54,8 @@ analysis). Draft-trust, kernel-checked, `s o r r y`-free. Prerequisites:
 `WilsonDiracOperator` (for `Site`, `shiftUp`/`shiftDn` conventions). Successor:
 the reflection unitary and the reflected-block factorization above.
 -/
+
+open scoped Matrix
 
 namespace PhysicsSM.Draft.NullEdge.GateYM
 namespace FermionicReflection
@@ -81,6 +91,34 @@ theorem timeRefl_zero_slice [NeZero L] (h2 : 2 ≤ L) (x : Site L) (hx : x timeD
     (timeRefl x) timeDir = 1 := by
   unfold timeRefl
   rw [Function.update_self, hx, sub_zero]
+
+/-- **The fermionic reflection operator** `Theta = (site permutation by timeRefl)
+tensor gamma_timeDir tensor (color identity)` on the full Wilson index
+`Idx L nc`. This is the RP-F analogue of QMF4's chirality operator `Gamma5`, but
+with the time-reflection site permutation in place of the site-diagonal and the
+temporal gamma in place of `gamma5`. Together with the antilinear `starRingEnd`
+it implements Osterwalder-Seiler time reflection on the fermion algebra. -/
+noncomputable def rpFReflection (L nc : ℕ) [NeZero L] : Matrix (Idx L nc) (Idx L nc) ℂ :=
+  Matrix.of fun I J =>
+    (if J.1 = timeRefl I.1 ∧ I.2.2 = J.2.2 then EuclideanGamma.γ timeDir I.2.1 J.2.1 else 0)
+
+/-- **The reflection operator is Hermitian**: `Theta^dagger = Theta`. Uses that
+`gamma_timeDir` is Hermitian and that `timeRefl` is an involution (so the
+off-diagonal site condition is symmetric). -/
+theorem rpFReflection_herm (L nc : ℕ) [NeZero L] :
+    (rpFReflection L nc)ᴴ = rpFReflection L nc := by
+  ext I J
+  simp only [rpFReflection, Matrix.conjTranspose_apply, Matrix.of_apply]
+  by_cases h : J.1 = timeRefl I.1 ∧ I.2.2 = J.2.2
+  · obtain ⟨h1, h2⟩ := h
+    have hrev : I.1 = timeRefl J.1 ∧ J.2.2 = I.2.2 :=
+      ⟨by rw [h1, timeRefl_involutive], h2.symm⟩
+    rw [if_pos hrev, if_pos (And.intro h1 h2)]
+    have hij := congr_fun (congr_fun (EuclideanGamma.γ_herm timeDir) I.2.1) J.2.1
+    rw [Matrix.conjTranspose_apply] at hij
+    exact hij
+  · rw [if_neg h, if_neg (fun hc => h ⟨by rw [hc.1, timeRefl_involutive], hc.2.symm⟩)]
+    simp
 
 end FermionicReflection
 end PhysicsSM.Draft.NullEdge.GateYM
