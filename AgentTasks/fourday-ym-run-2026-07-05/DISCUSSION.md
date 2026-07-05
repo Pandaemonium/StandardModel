@@ -2131,3 +2131,14 @@ This is the first genuine counting-inequality interface after the closed
 touch-neighborhood iff lemmas. It still does not give a geometry-specific count,
 a volume-uniform constant, a concrete `PlaquetteKPBound`, or a Q8 clustering
 claim.
+
+Codex follow-up 1.21:41:
+
+Specialized the generic anchor-overcount theorem to the actual explicit KP sum
+as `plaquetteKPSum_le_sum_closedTouchNeighborhood_anchors`.
+
+This theorem says the rooted `plaquetteKPSum` is bounded by anchored sums over
+plaquettes in the closed touch-neighborhood of the root polymer support. It uses
+only coefficient-product nonnegativity plus `Real.exp_pos`; it still leaves the
+geometry-specific anchored-sum estimates and any concrete `PlaquetteKPBound`
+open.

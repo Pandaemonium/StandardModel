@@ -467,6 +467,44 @@ def plaquetteKPSum
             NontrivialLabel gammaAbs alpha halpha X Y) = true),
     Y.coeffProduct gammaAbs * Real.exp (alpha * (Y.support.card : Real))
 
+/--
+Anchor overcount specialized to the explicit plaquette KP sum.
+
+The incompatible-polymer KP sum rooted at `X` is bounded by first choosing an
+anchor plaquette in the closed touch-neighborhood of `X.support`, then summing
+over all polymers whose support contains that anchor.  This is a localization
+step only; it does not estimate the anchored sums.
+-/
+theorem plaquetteKPSum_le_sum_closedTouchNeighborhood_anchors
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+      <= (closedTouchNeighborhood Adj X.support).sum (fun q =>
+        (Finset.univ.filter
+          (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+            decide (q ∈ Y.support) = true)).sum
+          (fun Y =>
+            Y.coeffProduct gammaAbs *
+              Real.exp (alpha * (Y.support.card : Real)))) := by
+  simpa [plaquetteKPSum, plaquettePolymerIncompatibleDecidable,
+    plaquettePolymerSystem]
+    using
+      sum_supportsOverlapOrTouch_le_sum_closedTouchNeighborhood_anchors
+        Adj X.support
+        (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+          Y.support)
+        (fun Y =>
+          Y.coeffProduct gammaAbs *
+            Real.exp (alpha * (Y.support.card : Real)))
+        (by
+          intro Y
+          exact mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
+            (le_of_lt (Real.exp_pos _)))
+
 /-- A finite plaquette-polymer KP bound: the explicit incompatible-polymer
 sum rooted at each polymer is bounded by its energy `alpha * area`. -/
 def PlaquetteKPBound
