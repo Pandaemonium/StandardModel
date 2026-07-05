@@ -181,6 +181,10 @@ Achievable deliverables:
   section suitable for collaborators;
 - avoid novelty or physical-continuum language unless separately source
   verified.
+- Current status: the brief now includes a current artifact map and a
+  claim-type table separating kernel-checked finite algebra, executable oracle
+  evidence, the finite dynamics prototype, strong-coupling blockers, and the
+  still-open physical mass-gap claims.
 
 Done when:
 
