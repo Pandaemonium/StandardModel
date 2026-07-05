@@ -44,7 +44,9 @@ The repo now has enough verified infrastructure to make the next work concrete:
   center-projected trace decomposition and minus/plus trace-ratio theorem, a
   normalized `T = 1` flux-expectation theorem, `T = 2` partition and raw
   two-time flux-correlation numerator identities, plus/minus center-projected
-  two-step trace identities with decomposition and sector-ratio facts, a
+  two-step trace identities with decomposition and sector-ratio facts,
+  arbitrary finite-time plus/minus center-projected trace formulas with full
+  trace reconstruction and minus/plus ratio `tanh beta ^ T`, a
   normalized `T = 2`, `tau = 1` autocorrelation ratio theorem, and a one-link
   spatial-flux insertion that is Hermitian, involutive, and swaps the
   vacuum/local eigenvectors; it also formalizes the L=1 global-center flip and
@@ -245,7 +247,8 @@ Achievable deliverables:
   two-step partition/flux trace identities, the normalized one-link `T = 1`
   flux expectation, and the normalized one-link `T = 2` autocorrelation
   ratio, plus L=1 center flip/projector theorem surfaces and two-step
-  plus/minus center-projected trace surfaces. It also records
+  plus/minus center-projected trace surfaces. It also records arbitrary
+  finite-time one-link center-sector trace theorem surfaces,
   descriptor-requested spatial-flux autocorrelation profiles, center-sector
   partition traces, and full/center-sector first-gap fields as finite oracle
   evidence.

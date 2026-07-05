@@ -222,6 +222,10 @@ Implementation status as of 2026-07-05:
   `Tr(K_+^T)` and `Tr(K_-^T)` in JSON records, verifies them against
   recomputation, replays them from emitted sector blocks, and rejects tampered
   sector-trace records.
+- The v0.36 provenance update records arbitrary finite-time one-link
+  center-sector trace theorem surfaces: plus/minus projected trace formulas,
+  full trace reconstruction, and the minus/plus projected trace ratio
+  `tanh(beta)^T`.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -255,7 +259,10 @@ Implementation status as of 2026-07-05:
   plus the corresponding `T = 2` partition trace and raw two-time
   flux-correlation numerator, plus/minus center-projected two-step trace
   identities, their decomposition back to the full two-step trace, and their
-  minus/plus ratio theorem. The normalized one-link `T = 2`, `tau = 1`
+  minus/plus ratio theorem. It now also proves arbitrary finite-time
+  plus/minus center-projected transfer-power trace formulas, the full
+  arbitrary-time trace split, and the minus/plus projected trace ratio
+  `tanh(beta)^T`. The normalized one-link `T = 2`, `tau = 1`
   autocorrelation ratio is proved as `tanh (2 * beta)`. The L=1 global-center
   flip and plus/minus projectors are also formalized, with their vacuum/local
   action and transfer-commutation identities. This is a one-link bridge only,
@@ -292,7 +299,7 @@ now and what still needs a bridge.
 | `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, schema-record conventions, correlation-profile validation, sector partition traces, full/sector first-gap records, optional matrix-payload validation including emitted sector blocks, saved-record verifier acceptance/rejection, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` | Smallest Lean spectral payload | Kernel-checked finite identities for the `2 x 2` transfer-shape eigenvectors, ordered eigenvalues, spectral ratio, and contraction factor. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferWitness.lean` | Tiny consumer of the finite-gap witness API | Kernel-checked toy `Module.End` witness for the two-state descriptor; deliberately not the full Wilson slab transfer operator. |
-| `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, concrete symmetry/Hermitian identities, explicit vacuum/local eigenvectors, one-step and two-step partition/flux trace identities, plus/minus center-projected one-step and two-step trace identities with trace-ratio/decomposition facts, normalized `T = 1` flux expectation, normalized `T = 2` autocorrelation ratio, center flip/projector identities, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |
+| `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, concrete symmetry/Hermitian identities, explicit vacuum/local eigenvectors, one-step and two-step partition/flux trace identities, plus/minus center-projected one-step, two-step, and arbitrary finite-time trace identities with trace-ratio/decomposition facts, normalized `T = 1` flux expectation, normalized `T = 2` autocorrelation ratio, center flip/projector identities, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |
 | `PhysicsSM/Draft/NullEdge/GateYM/FiniteGapAssembly.lean` | Abstract finite spectral-gap witness package | Kernel-checked packaging of the spectral parameters, transfer endomorphism, eigenvectors, sector preservation, and ratio/log identities. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TransferHilbert*.lean` | Finite OS/GNS range and sector infrastructure | Kernel-checked finite algebraic range, block, shift, and Z2 electric-sector bookkeeping; no physical transfer matrix is constructed. |
 | `PhysicsSM/Draft/NullEdge/GateYM/ReflectionPositivityKernel.lean` and Wilson RP files | Positivity engine for reflection-positive weights | Kernel-checked PSD/reflection-form algebra and cut-plaquette Wilson factors; the connected Wilson slab remains open. |

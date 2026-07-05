@@ -360,6 +360,62 @@ theorem slabTransfer_mul_centerMinus_eq_centerMinus_mul_slabTransfer (beta : ℝ
       plaquetteSign, bitSign, Fin.sum_univ_two] <;>
     ring
 
+/-- Right multiplication by the one-link transfer scales the plus-center
+projector by the vacuum branch eigenvalue. -/
+theorem centerPlus_mul_slabTransfer_eq (beta : ℝ) :
+    centerPlusProjector * slabTransfer beta =
+      (((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) •
+        centerPlusProjector) := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    simp [centerPlusProjector, slabTransfer, slabWeight, plaquetteSign,
+      bitSign, Matrix.mul_apply, Fin.sum_univ_two] <;>
+    ring
+
+/-- Right multiplication by the one-link transfer scales the minus-center
+projector by the local/flux branch eigenvalue. -/
+theorem centerMinus_mul_slabTransfer_eq (beta : ℝ) :
+    centerMinusProjector * slabTransfer beta =
+      (((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) •
+        centerMinusProjector) := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    simp [centerMinusProjector, slabTransfer, slabWeight, plaquetteSign,
+      bitSign, Matrix.mul_apply, Fin.sum_univ_two] <;>
+    ring
+
+/-- The plus-center projector followed by an arbitrary finite transfer power
+is the plus-sector eigenvalue power times the projector. -/
+theorem centerPlus_mul_slabTransfer_pow (beta : ℝ) (T : ℕ) :
+    centerPlusProjector * (slabTransfer beta) ^ T =
+      ((((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) ^ T) •
+        centerPlusProjector) := by
+  induction T with
+  | zero => simp
+  | succ T ih =>
+      rw [pow_succ]
+      rw [← Matrix.mul_assoc, ih]
+      rw [Matrix.smul_mul]
+      rw [centerPlus_mul_slabTransfer_eq]
+      rw [smul_smul]
+      rw [pow_succ]
+
+/-- The minus-center projector followed by an arbitrary finite transfer power
+is the minus-sector eigenvalue power times the projector. -/
+theorem centerMinus_mul_slabTransfer_pow (beta : ℝ) (T : ℕ) :
+    centerMinusProjector * (slabTransfer beta) ^ T =
+      ((((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) ^ T) •
+        centerMinusProjector) := by
+  induction T with
+  | zero => simp
+  | succ T ih =>
+      rw [pow_succ]
+      rw [← Matrix.mul_assoc, ih]
+      rw [Matrix.smul_mul]
+      rw [centerMinus_mul_slabTransfer_eq]
+      rw [smul_smul]
+      rw [pow_succ]
+
 /-- The one-step one-link transfer trace is the exact finite partition trace
 `4 * exp beta`. -/
 theorem slabTransfer_trace (beta : ℝ) :
@@ -490,6 +546,78 @@ theorem centerMinus_sq_trace_div_centerPlus_sq_trace_eq_tanh_sq (beta : ℝ) :
       Real.exp beta + Real.exp (-beta) ≠ 0 := by
     positivity
   field_simp [hden]
+
+/-- The plus-center projected arbitrary-time transfer trace is the vacuum
+branch eigenvalue raised to the time extent. -/
+theorem centerPlusProjector_mul_slabTransfer_pow_trace
+    (beta : ℝ) (T : ℕ) :
+    Matrix.trace (centerPlusProjector * (slabTransfer beta) ^ T) =
+      (((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) ^ T) := by
+  rw [centerPlus_mul_slabTransfer_pow]
+  simp [Matrix.trace, centerPlusProjector]
+  ring
+
+/-- The minus-center projected arbitrary-time transfer trace is the local/flux
+branch eigenvalue raised to the time extent. -/
+theorem centerMinusProjector_mul_slabTransfer_pow_trace
+    (beta : ℝ) (T : ℕ) :
+    Matrix.trace (centerMinusProjector * (slabTransfer beta) ^ T) =
+      (((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) ^ T) := by
+  rw [centerMinus_mul_slabTransfer_pow]
+  simp [Matrix.trace, centerMinusProjector]
+  ring
+
+/-- The full arbitrary-time one-link transfer trace splits into the plus and
+minus center-sector eigenvalue powers. -/
+theorem slabTransfer_pow_trace (beta : ℝ) (T : ℕ) :
+    Matrix.trace ((slabTransfer beta) ^ T) =
+      (((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ) ^ T) +
+        (((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ) ^ T) := by
+  calc
+    Matrix.trace ((slabTransfer beta) ^ T)
+        = Matrix.trace ((centerPlusProjector + centerMinusProjector) *
+            (slabTransfer beta) ^ T) := by
+          rw [centerPlus_add_centerMinus, one_mul]
+    _ = Matrix.trace (centerPlusProjector * (slabTransfer beta) ^ T +
+            centerMinusProjector * (slabTransfer beta) ^ T) := by
+          rw [add_mul]
+    _ = Matrix.trace (centerPlusProjector * (slabTransfer beta) ^ T) +
+          Matrix.trace (centerMinusProjector * (slabTransfer beta) ^ T) := by
+          simp [Matrix.trace, Fin.sum_univ_two]
+          ring
+    _ = _ := by
+          rw [centerPlusProjector_mul_slabTransfer_pow_trace,
+            centerMinusProjector_mul_slabTransfer_pow_trace]
+
+/-- The plus/minus center-projected arbitrary-time traces reconstruct the full
+one-link transfer trace at that time extent. -/
+theorem centerProjected_pow_traces_sum_eq_slabTransfer_pow_trace
+    (beta : ℝ) (T : ℕ) :
+    Matrix.trace (centerPlusProjector * (slabTransfer beta) ^ T) +
+        Matrix.trace (centerMinusProjector * (slabTransfer beta) ^ T) =
+      Matrix.trace ((slabTransfer beta) ^ T) := by
+  rw [slabTransfer_pow_trace,
+    centerPlusProjector_mul_slabTransfer_pow_trace,
+    centerMinusProjector_mul_slabTransfer_pow_trace]
+
+/-- The ratio of arbitrary-time minus-sector and plus-sector transfer traces
+is the corresponding power of the one-link contraction factor. -/
+theorem centerMinus_pow_trace_div_centerPlus_pow_trace_eq_tanh_pow
+    (beta : ℝ) (T : ℕ) :
+    Matrix.trace (centerMinusProjector * (slabTransfer beta) ^ T) /
+        Matrix.trace (centerPlusProjector * (slabTransfer beta) ^ T) =
+      ((Real.tanh beta : ℝ) : ℂ) ^ T := by
+  rw [centerMinusProjector_mul_slabTransfer_pow_trace,
+    centerPlusProjector_mul_slabTransfer_pow_trace]
+  rw [Real.tanh_eq]
+  norm_cast
+  have hden :
+      Real.exp beta + Real.exp (-beta) ≠ 0 := by
+    positivity
+  rw [div_pow]
+  field_simp [hden]
+  rw [mul_pow, mul_pow]
+  ring
 
 /-- The raw two-time spatial-flux numerator for the one-link, two-step slab
 trace. -/
