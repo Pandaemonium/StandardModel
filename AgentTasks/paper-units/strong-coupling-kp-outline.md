@@ -74,6 +74,15 @@ Q7 support-localization and support-counting landing pads:
   cardinality/degree form for uniform anchored bounds.
 - `anchoredPlaquettePolymerAreaSum` and `anchoredPlaquettePolymerSum` split
   anchored contributions by support cardinality.
+- `plaquetteKPSum_nonneg`, `anchoredPlaquettePolymerAreaSum_nonneg`, and
+  `anchoredPlaquettePolymerSum_nonneg` record the nonnegativity hypotheses
+  needed by later support-counting comparisons.
+- `anchoredPlaquettePolymerAreaSum_le_anchoredPlaquettePolymerSum` bounds each
+  fixed-area slice by the full anchored sum under nonnegative coefficients.
+- `anchoredPlaquettePolymerAreaSum_zero`,
+  `anchoredPlaquettePolymerAreaSum_eq_zero_of_card_lt`, and
+  `anchoredPlaquettePolymerSum_eq_sum_positiveAreaSlices` clean up the finite
+  support-cardinality range to positive areas `1..Fintype.card P`.
 - `anchoredPlaquettePolymerSum_eq_sum_areaSlices` and
   `anchoredPlaquettePolymerSum_le_sum_areaBounds` reduce anchored estimates to
   per-area slice bounds.
