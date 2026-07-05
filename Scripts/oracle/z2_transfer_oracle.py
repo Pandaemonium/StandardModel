@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.27"
+ORACLE_VERSION = "v0.28"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -1207,6 +1207,14 @@ def verify_record(record: dict) -> dict:
             _compare_matrix(
                 checks,
                 errors,
+                "matrix_transfer_kernel_symmetric",
+                K.T,
+                K,
+                matrix_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
                 "matrix_spatial_flux_insertion",
                 M,
                 observable_matrix(descriptor.L, flux),
@@ -1346,6 +1354,30 @@ def verify_record(record: dict) -> dict:
                 "matrix_spatial_flux_center_minus_toggles_to_plus",
                 M @ minus,
                 plus @ M,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_transfer_kernel_center_flip_commutes",
+                K @ flip,
+                flip @ K,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_transfer_kernel_center_plus_commutes",
+                K @ plus,
+                plus @ K,
+                sector_tol,
+            )
+            _compare_matrix(
+                checks,
+                errors,
+                "matrix_transfer_kernel_center_minus_commutes",
+                K @ minus,
+                minus @ K,
                 sector_tol,
             )
 

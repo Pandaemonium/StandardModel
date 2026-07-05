@@ -76,10 +76,10 @@ Achievable deliverables:
   matrix output now includes spatial-state labels, the spatial-flux insertion,
   the global-center flip, and center projectors in the full state basis. The
   oracle also has a `--verify-record` path that validates saved JSON summaries
-  and replays matrix-backed partition, flux, correlation, spatial-flux
-  insertion algebra, center-projector algebra, and flux/center sector-toggle
-  checks. It now also emits the explicit JSON-schema-style descriptor contract
-  through
+  and replays matrix-backed partition, flux, correlation, transfer-kernel
+  symmetry/center-commutation, spatial-flux insertion algebra,
+  center-projector algebra, and flux/center sector-toggle checks. It now also
+  emits the explicit JSON-schema-style descriptor contract through
   `--write-schema`, and records full/center-sector first-gap fields derived
   from the positive eigenvalue lists.
 
