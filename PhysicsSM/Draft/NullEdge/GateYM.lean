@@ -54,6 +54,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.EuclideanGamma
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonDiracOperator
 import PhysicsSM.Draft.NullEdge.GateYM.ChiralMassStructure
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonProjectors
+import PhysicsSM.Draft.NullEdge.GateYM.FermionicReflection
 import PhysicsSM.Draft.NullEdge.GateYM.ClosureObstruction
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
