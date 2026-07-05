@@ -160,7 +160,9 @@ Achievable deliverables:
   block with membership, child-membership, reachability, nonempty, and
   positive-cardinality facts. The remaining named blocker is still the
   geometric disjoint-decomposition/reindex/fiber-count part of
-  `pairSum_le_expBound`.
+  `pairSum_le_expBound`. Follow-up Aristotle project `fc5aaf10` / task
+  `cc5e78d7` is submitted for the distinct-child component separation and
+  disjoint finite-block lemmas.
   Project `31facfbb` continuation task `6fc4005c` returned no new target-file
   progress.
 

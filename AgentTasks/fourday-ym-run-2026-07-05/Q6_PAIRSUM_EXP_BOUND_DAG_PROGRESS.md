@@ -54,6 +54,11 @@ around that component support.  It proves membership equivalence with the
 support, root-child membership, block-vertex reachability from the child,
 nonemptiness, and positive block cardinality.
 
+Follow-up Aristotle project `fc5aaf10-3119-456b-a2b5-3ea73ec1f52d`, task
+`cc5e78d7-c5b6-4827-82e5-0e871ea21908`, is submitted for the next hinge:
+proving that distinct root children in a tree generate distinct deleted-graph
+components and therefore disjoint finite child blocks.
+
 ## Remaining blocker
 
 The remaining core is the geometric deletion and counting construction:
