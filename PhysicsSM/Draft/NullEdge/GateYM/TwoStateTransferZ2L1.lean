@@ -439,6 +439,58 @@ theorem slabTransfer_sq_trace (beta : ℝ) :
     plaquetteSign, bitSign, Fin.sum_univ_two]
   ring
 
+/-- The plus-center projected two-step transfer trace is the square of the
+vacuum branch eigenvalue. -/
+theorem centerPlusProjector_mul_slabTransfer_sq_trace (beta : ℝ) :
+    Matrix.trace
+        (centerPlusProjector * (slabTransfer beta * slabTransfer beta)) =
+      ((4 * (Real.exp beta + Real.exp (-beta)) ^ 2 : ℝ) : ℂ) := by
+  rw [slabTransfer_eq_transfer2]
+  simp [Matrix.trace, centerPlusProjector, transfer2, diagonalWeight,
+    offDiagonalWeight, Fin.sum_univ_two]
+  ring
+
+/-- The minus-center projected two-step transfer trace is the square of the
+local/flux branch eigenvalue. -/
+theorem centerMinusProjector_mul_slabTransfer_sq_trace (beta : ℝ) :
+    Matrix.trace
+        (centerMinusProjector * (slabTransfer beta * slabTransfer beta)) =
+      ((4 * (Real.exp beta - Real.exp (-beta)) ^ 2 : ℝ) : ℂ) := by
+  rw [slabTransfer_eq_transfer2]
+  simp [Matrix.trace, centerMinusProjector, transfer2, diagonalWeight,
+    offDiagonalWeight, Fin.sum_univ_two]
+  ring
+
+/-- The plus/minus center-projected two-step traces reconstruct the full
+two-step transfer trace. -/
+theorem centerProjected_sq_traces_sum_eq_slabTransfer_sq_trace (beta : ℝ) :
+    Matrix.trace
+        (centerPlusProjector * (slabTransfer beta * slabTransfer beta)) +
+        Matrix.trace
+          (centerMinusProjector * (slabTransfer beta * slabTransfer beta)) =
+      Matrix.trace (slabTransfer beta * slabTransfer beta) := by
+  rw [centerPlusProjector_mul_slabTransfer_sq_trace,
+    centerMinusProjector_mul_slabTransfer_sq_trace, slabTransfer_sq_trace]
+  norm_num
+  ring
+
+/-- The ratio of the two-step minus-sector and plus-sector transfer traces is
+the square of the one-link contraction factor. -/
+theorem centerMinus_sq_trace_div_centerPlus_sq_trace_eq_tanh_sq (beta : ℝ) :
+    Matrix.trace
+        (centerMinusProjector * (slabTransfer beta * slabTransfer beta)) /
+        Matrix.trace
+          (centerPlusProjector * (slabTransfer beta * slabTransfer beta)) =
+      ((Real.tanh beta ^ 2 : ℝ) : ℂ) := by
+  rw [centerMinusProjector_mul_slabTransfer_sq_trace,
+    centerPlusProjector_mul_slabTransfer_sq_trace]
+  rw [Real.tanh_eq]
+  norm_cast
+  have hden :
+      Real.exp beta + Real.exp (-beta) ≠ 0 := by
+    positivity
+  field_simp [hden]
+
 /-- The raw two-time spatial-flux numerator for the one-link, two-step slab
 trace. -/
 theorem fluxMatrix_slabTransfer_fluxMatrix_slabTransfer_trace (beta : ℝ) :
