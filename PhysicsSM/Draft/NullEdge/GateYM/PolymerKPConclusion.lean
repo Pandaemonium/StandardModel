@@ -36,9 +36,11 @@ inequality `pairSum_le_expBound` through the sound touch-only reformulation
 `touchOnlySum_le_expBound`.  The current checked DAG includes
 `exists_canonical_root`, which chooses the least `g`-slot of a touching
 cluster, and `rhs_forest_expand`, which expands the RHS partial exponential
-into ordered child tuples.  The remaining gap is the rooted-tree deletion,
-block reindexing, weight-factorization, and fiber-count bound.  In detail: the
-enlargement step
+into ordered child tuples.  It also includes
+`factorial_mul_prod_factorial_le`, the arithmetic normalization for the future
+multinomial fiber bound.  The remaining gap is the rooted-tree deletion, block
+reindexing, weight-factorization, and the geometric fiber-count bound.  In
+detail: the enlargement step
 `sum_le_boundedTouchSum`, the base case `boundedTouchSum_zero_le`, the depth
 induction `boundedTouchSum_le_kpPsi`, the analytic partial-sum-to-exponential
 step `boundedTouchSum_succ_le`, and the analytic bound `kpPsi_le_exp` are all
@@ -561,6 +563,94 @@ lemma rhs_forest_expand (S : PolymerSystem Gamma)
   apply Finset.sum_congr rfl
   intro k _
   rw [Finset.sum_pow']
+
+/-- A small ascending-factorial estimate used by the multinomial normalization
+helper below.  It packages the elementary comparison
+`a * t! <= (a + 1) * ... * (a + t)` for `t >= 1`. -/
+lemma ascFactorial_bound_mul_factorial (a t : Nat) (ht : 1 <= t) :
+    a * Nat.factorial t <= Nat.ascFactorial (a + 1) t := by
+  induction t with
+  | zero => omega
+  | succ t ih =>
+      cases t with
+      | zero =>
+          simp [Nat.ascFactorial_succ]
+      | succ t =>
+          have hih : a * Nat.factorial (t + 1)
+              <= Nat.ascFactorial (a + 1) (t + 1) := by
+            exact ih (by omega)
+          calc
+            a * Nat.factorial (t + 2)
+                = (t + 2) * (a * Nat.factorial (t + 1)) := by
+                    rw [Nat.factorial_succ]
+                    ring
+            _ <= (t + 2) * Nat.ascFactorial (a + 1) (t + 1) := by
+                    exact Nat.mul_le_mul_left _ hih
+            _ <= (a + 1 + (t + 1)) * Nat.ascFactorial (a + 1) (t + 1) := by
+                    exact Nat.mul_le_mul_right _ (by omega)
+            _ = Nat.ascFactorial (a + 1) (t + 2) := by
+                    symm
+                    rw [Nat.ascFactorial_succ]
+
+/-- Arithmetic DAG step for `pairSum_le_expBound`: if each child block has
+positive size, then the child-order normalization `k!` times the product of
+block factorials fits inside the factorial of the total root-plus-block size.
+
+This is only the arithmetic normalization.  The geometric fiber-count theorem
+that supplies the relevant block sizes remains open. -/
+lemma factorial_mul_prod_factorial_le (k : Nat) (m : Fin k -> Nat)
+    (hm : forall j, 1 <= m j) :
+    Nat.factorial k * (Finset.univ.prod fun j => Nat.factorial (m j))
+      <= Nat.factorial (1 + Finset.univ.sum fun j => m j) := by
+  induction k with
+  | zero =>
+      simp
+  | succ k ih =>
+      let old : Fin k -> Nat := fun j => m (Fin.castSucc j)
+      let last : Nat := m (Fin.last k)
+      have hold : forall j, 1 <= old j := by
+        intro j
+        exact hm (Fin.castSucc j)
+      have hlast : 1 <= last := hm (Fin.last k)
+      have hih :
+          Nat.factorial k * (Finset.univ.prod fun j : Fin k => Nat.factorial (old j))
+            <= Nat.factorial (1 + Finset.univ.sum fun j : Fin k => old j) :=
+        ih old hold
+      let s : Nat := Finset.univ.sum fun j : Fin k => old j
+      have hk_le_s : k <= s := by
+        have hsum : (Finset.univ.sum fun _j : Fin k => (1 : Nat))
+            <= Finset.univ.sum fun j : Fin k => old j := by
+          exact Finset.sum_le_sum (fun j _ => hold j)
+        simpa [s] using hsum
+      have hblock : (s + 1) * Nat.factorial (s + 1) * Nat.factorial last
+          <= Nat.factorial (1 + s + last) := by
+        have hasc := ascFactorial_bound_mul_factorial (s + 1) last hlast
+        have hmul := Nat.mul_le_mul_left (Nat.factorial (s + 1)) hasc
+        rw [Nat.factorial_mul_ascFactorial (s + 1) last] at hmul
+        simpa [Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm, Nat.add_assoc,
+          Nat.add_comm, Nat.add_left_comm] using hmul
+      calc
+        Nat.factorial (k + 1)
+            * (Finset.univ.prod fun j : Fin (k + 1) => Nat.factorial (m j))
+            = (k + 1)
+                * (Nat.factorial k
+                    * (Finset.univ.prod fun j : Fin k => Nat.factorial (old j)))
+                * Nat.factorial last := by
+                simp [old, last, Fin.prod_univ_castSucc, Nat.factorial_succ,
+                  Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm]
+        _ <= (k + 1) * Nat.factorial (1 + s) * Nat.factorial last := by
+                exact Nat.mul_le_mul_right _ <|
+                  Nat.mul_le_mul_left _ (by simpa [s] using hih)
+        _ <= (s + 1) * Nat.factorial (s + 1) * Nat.factorial last := by
+                have hkfac : (k + 1) * Nat.factorial (1 + s)
+                    <= (s + 1) * Nat.factorial (s + 1) := by
+                  rw [show 1 + s = s + 1 by omega]
+                  exact Nat.mul_le_mul_right _ (by omega)
+                exact Nat.mul_le_mul_right _ hkfac
+        _ <= Nat.factorial (1 + s + last) := hblock
+        _ = Nat.factorial (1 + Finset.univ.sum fun j : Fin (k + 1) => m j) := by
+                simp [s, old, last, Fin.sum_univ_castSucc, Nat.add_comm,
+                  Nat.add_left_comm]
 
 open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining

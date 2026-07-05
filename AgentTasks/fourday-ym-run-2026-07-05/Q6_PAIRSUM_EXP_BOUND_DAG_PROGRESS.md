@@ -11,7 +11,7 @@ unchanged and still carries the existing draft proof placeholder. The older
 downstream handoffs `kp_convergence_bound_of_selfIncompatible` and
 `kp_tail_bound` are untouched.
 
-Two locally verified helper lemmas from the planned proof DAG were integrated
+Three locally verified helper lemmas from the planned proof DAG were integrated
 in `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean`:
 
 - `exists_canonical_root`: a cluster touching `g` has a least slot carrying
@@ -19,11 +19,10 @@ in `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean`:
 - `rhs_forest_expand`: expands the RHS partial exponential into ordered child
   tuples using `Finset.sum_pow'`. This is the ordered-forest shape expected
   after deleting the canonical root.
-
-The returned Aristotle package also contained a proposed arithmetic helper
-`factorial_mul_prod_factorial_le`, but the extracted target file did not
-finish local checking within the review timeout. That helper was therefore not
-integrated in this slice.
+- `factorial_mul_prod_factorial_le`: proves the arithmetic normalization
+  `k! * prod_j m_j! <= (1 + sum_j m_j)!` for positive child-block sizes.
+  This supplies the factorial comparison needed after a future geometric
+  fiber-count theorem supplies the block decomposition.
 
 ## Remaining blocker
 
@@ -34,7 +33,8 @@ The remaining core is the geometric deletion and counting construction:
 - reindex each block as a smaller ordered cluster;
 - prove the corresponding subtree touches a neighbor of `g`;
 - prove the block-level `absWeight` factorization;
-- prove the fiber-count bound by the multinomial normalization.
+- prove the geometric fiber-count bound that uses the multinomial
+  normalization.
 
 This is still finite labeled rooted-tree/species infrastructure, not an
 analytic KP ambiguity and not a statement about physics.
