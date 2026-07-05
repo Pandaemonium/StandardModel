@@ -1710,3 +1710,66 @@ Refreshed the two paper-unit outlines without adding novelty language.
 
 These are status outlines only, not promotion documents and not paper-ready
 claim language.
+
+## note:t3-sector-projection-api
+
+Codex 1.16:59:
+
+Added a small projection-support API hardening layer:
+
+- `FluxSectorGeneral.lean` now has pointwise projection lemmas
+  `sectorProjection_apply_of_label_eq` /
+  `sectorProjection_apply_of_label_ne`.
+- The same file now proves the converse support theorem
+  `supportedInSector_of_sectorProjection_eq_self` and the iff
+  `supportedInSector_iff_sectorProjection_eq_self`.
+- `FluxSectorZ2.lean` wraps these for concrete winding sectors as
+  `windingSectorProjection_apply_of_windingLabel_eq`,
+  `windingSectorProjection_apply_of_windingLabel_ne`,
+  `supportedInFlux_of_windingSectorProjection_eq_self`, and
+  `supportedInFlux_iff_windingSectorProjection_eq_self`.
+
+Scope boundary: this is magnetic support/projection bookkeeping only. It does
+not add a transfer matrix, spectral theorem, physical gap claim, or a stronger
+D12 electric-sector result.
+
+## replan:day2-three-mountains (claude 1.19:15, user-requested roadmap update)
+
+The user asked for guidance and a roadmap update/extension now that the
+loop has run a while. Full update appended to `RUN_PLAN.md` ("Day-2+
+roadmap"); operational summary for both agents:
+
+**The critical path has narrowed to three mountains; everything else is
+assembly.**
+
+1. **M1 - cut-plaquette RP** (Q1 shocking tier). Gated on harvesting
+   `8271a64b`.
+2. **M2 - KP combinatorial core** (Q6): Penrose (`e4458430`, claude
+   flagship, running) + `kp_partial_sum_bound` (unclaimed, needs its own
+   focused package once Penrose returns and fixes the interface shape).
+3. **M3 - physical Wilson transfer instance** (Q2/Q3) on top of the
+   OS/GNS stack.
+
+**The single highest-leverage artifact left: M1 and M3 share their
+missing object** - the concrete cut-bearing reflection lattice with the
+Wilson slab weight in RP-KER mirror coordinates `W a c b`. One
+construction serves both mountains. Whoever picks up the `8271a64b`
+harvest should build exactly that, once, and both lanes consume it.
+
+Suggested (non-binding; board rules) day-2 split, mirroring current
+ownership: Codex continues Q1/Q2/Q3 (harvest `8271a64b`/`ba26fe81`,
+build the shared cut-bearing construction, then M3); claude takes M2
+(harvest `e4458430`, then the `kp_partial_sum_bound` package) plus the
+Q11 ensemble-bridge harvest (`acedaea2`) - nearest finished-theorem win.
+
+Unchanged and re-affirmed: kill conditions (cut kernel fails PSD =>
+rename the route and record as a win; non-volume-uniform KP constants =>
+report, never weaken), F-YM-CONFLATE, no trusted promotion mid-run,
+day-3 grand-strategy audit, harvest-first, >=4/8 slots. Post-run
+trajectory (promotion candidates, two paper units, next-run shape) is
+now written down in `RUN_PLAN.md` so `FINAL_REPORT.md` can grade
+against it.
+
+Note on models: the "claude" loop has run as Sonnet 5, Opus 4.8, and
+now Fable 5 - ledger identity stays `claude`; `FABLE_CALL_PROTOCOL.md`
+governs wrapper calls only and is unaffected.

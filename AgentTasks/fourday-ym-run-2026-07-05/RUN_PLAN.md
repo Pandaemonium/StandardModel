@@ -326,3 +326,100 @@ footprints; paper-unit assembly state; queue-item status sync back into
 program-doc section 14 (edit the section's status notes as part of the
 report commit); recommended next run shape. Report faithfully: failures,
 refutations, and reverts are results.
+
+## Day-2+ roadmap (user-requested update, end of day 1)
+
+Day 1 outperformed the original sequencing: Q4/Q5 closed, Q1's zero-cut
+tier closed INCLUDING ensemble identification (after the N3
+refutation/Route-B redesign), the Q2 finite OS/GNS stack built four
+layers deep (`TransferHilbert` -> `Block` -> `BlockShift` ->
+`Z2Electric`), Q6 statement-frozen with a kernel-checked correction
+(bare C2 refuted; self-incompatibility load-bearing), Q7's carrier
+redesigned and adapter landed, Q8's conditional bridges landed, and
+Q11's lasso identity proved. The mission list is unchanged, but the
+CRITICAL PATH has narrowed to three named mountains. Everything else is
+assembly.
+
+### The three mountains
+
+- **M1 - cut-plaquette RP (Q1 shocking tier).** The one remaining gap
+  between the current stack and genuine Osterwalder-Seiler RP-LINK: a
+  concrete lattice where the reflection plane CUTS links, the Wilson
+  slab weight written in RP-KER mirror coordinates `W a c b`, and a
+  spectral/mixture decomposition of the cross-cut coupling feeding
+  `cutKernel_posSemidef_of_mixture` plus the day-1 product/finite-product
+  closure lemmas. Strategy job `8271a64b` is running on exactly this
+  statement shape - its harvest gates the day-2 build.
+- **M2 - the KP combinatorial core (Q6).** Two independent hard
+  theorems: (a) the Penrose tree-graph inequality (abstract `SimpleGraph`
+  form, flagship job `e4458430` running; discharges Codex's parked
+  `treeGraphBound_ursell` by specialization), and (b)
+  `kp_partial_sum_bound` - the rooted KP tree-sum recursion that
+  `071d1370` identified as the true analytic crux of C1. Both are needed
+  before `ClusterCoeffData` has a genuine nonzero instance AND the
+  corrected C2 becomes usable. These are the two hardest single theorems
+  on the whole ladder; treat each as its own focused package, two-failure
+  park rule applies.
+- **M3 - the physical Wilson transfer instance (Q2/Q3).** The OS/GNS
+  stack is complete but every theorem is abstract-kernel-level. Needed: an
+  actual Wilson slab transfer kernel from a concrete lattice fed into
+  `rpBlockMatrix`, yielding the first PHYSICAL positive transfer operator
+  and unlocking `TransferGapDefinition.finiteMassGap` instantiation.
+
+**Key synergy (do not miss this):** M1 and M3 share their missing
+object - the concrete cut-bearing reflection lattice with the Wilson
+slab weight in mirror coordinates. Build that ONE construction once,
+serve both mountains. It is the single highest-leverage artifact left in
+the run and should be the day-2 build target as soon as `8271a64b`
+returns.
+
+### Revised day milestones
+
+- **Day 2:** (i) harvest `8271a64b` and build the cut-bearing lattice +
+  slab-weight construction (M1/M3 shared object); (ii) harvest
+  `e4458430` (Penrose) and drive `kp_partial_sum_bound` as a focused
+  package with `ClusterCoeffData` as interface (M2); (iii) Q7 concrete
+  connected-support/label API so the explicit `PlaquetteKPBound` can be
+  STATED for a real geometry; (iv) harvest `acedaea2` and close the YM1
+  Theorem 2 ensemble bridge (Q11) - nearest finished-theorem win.
+- **Day 3:** mandated mid-run grand-strategy audit (already in this
+  plan) recalibrated against M1-M3 progress; M3 physical transfer
+  instance on the M1 geometry; Q8 conditional-discharge as Q6/Q7 pieces
+  land; begin Q9 doorstep assembly (named-lemma gap statement) if two of
+  three mountains have moved.
+- **Day 4:** Q9 doorstep assembly with every remaining hypothesis a
+  named frozen lemma; Q10 statement file (stretch, unchanged);
+  `FINAL_REPORT.md` with promotion candidates and the section-14 status
+  sync (unchanged from Report specs).
+
+### Post-run trajectory (roadmap extension beyond day 4)
+
+Recorded now so the final report can grade against it:
+
+1. **Promotion review:** cleanest candidates so far are Q4/Q5
+   (unconditional, standard axioms), the zero-cut RP stack
+   (`ReflectionCore` -> `WilsonReflectionPositivity` chain incl. the N3
+   counterexample + resolution pair), `HermitianFromRealQuadraticForm`
+   (Mathlib-gap lemma, PR-to-Mathlib candidate), and the T11 lasso
+   identity (`[propext, Quot.sound]`).
+2. **Paper unit 1 (YM1 finite-G exact area law):** end-to-end once the
+   Q11 ensemble bridge lands; outline already maintained under
+   `AgentTasks/paper-units/`.
+3. **Paper unit 2 (finite RP stack):** publishable once M1 closes; the
+   zero-cut + counterexample + redesign story is already a coherent
+   honest-methods narrative even if M1 stays open.
+4. **Next run (if mountains remain):** mission = M1 -> M3 -> KP-driven
+   clustering, in that order, single-flagship-per-agent shape; the
+   Penrose/partial-sum pair as standing Aristotle packages if unclosed.
+
+### Operational notes (day-2+)
+
+- The loop model for the "claude" agent may change between cycles (it
+  has run as Sonnet 5, Opus 4.8, and Fable 5); the agent IDENTITY in the
+  ledger stays `claude`, and the `FABLE_CALL_PROTOCOL.md` budget governs
+  WRAPPER calls only - the loop model itself consuming a Fable-class
+  brain does not spend that budget.
+- Harvest-first remains binding; five jobs were running at this update
+  (`e4458430`, `8271a64b`, `3e483972`, `ba26fe81`, `acedaea2`) - all five
+  harvests are day-2 work before new submissions in their lanes.
+- The saturation rule and >=4/8 slot check remain binding as written.
