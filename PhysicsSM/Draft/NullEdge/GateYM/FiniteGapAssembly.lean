@@ -117,6 +117,28 @@ theorem localSpectralRatio_mem_Ioo (P : FiniteGapPrereq H) :
     P.localSpectralRatio ∈ Set.Ioo (0 : ℝ) 1 :=
   ⟨P.localSpectralRatio_pos, P.localSpectralRatio_lt_one⟩
 
+/-- Exponentiating the negative packaged gap recovers the local/glueball
+spectral ratio. -/
+theorem exp_neg_localGap_eq_localSpectralRatio (P : FiniteGapPrereq H) :
+    Real.exp (-P.localGap) = P.localSpectralRatio := by
+  rw [localGap_eq_neg_log_localSpectralRatio]
+  rw [neg_neg, Real.exp_log P.localSpectralRatio_pos]
+
+/-- Exponentiating the packaged gap gives the inverse local/glueball spectral
+ratio. -/
+theorem exp_localGap_eq_inv_localSpectralRatio (P : FiniteGapPrereq H) :
+    Real.exp P.localGap = (P.localSpectralRatio)⁻¹ := by
+  rw [localGap_eq_neg_log_localSpectralRatio]
+  rw [Real.exp_neg, Real.exp_log P.localSpectralRatio_pos]
+
+/-- The exponential of the packaged local/glueball gap is the vacuum/local
+eigenvalue ratio. -/
+theorem exp_localGap_eq_lambda0_div_lambdaLocal (P : FiniteGapPrereq H) :
+    Real.exp P.localGap = P.lambda0 / P.lambdaLocal := by
+  rw [exp_localGap_eq_inv_localSpectralRatio]
+  unfold localSpectralRatio
+  field_simp [P.lambda0_pos.ne', P.lambdaLocal_pos.ne']
+
 /-- The bundled Q9 prerequisite still exposes vacuum membership in the chosen
 sector. -/
 theorem vacuum_mem_sector (P : FiniteGapPrereq H) :

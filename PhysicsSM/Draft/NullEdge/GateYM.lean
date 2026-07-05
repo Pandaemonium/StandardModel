@@ -314,9 +314,11 @@ ranges disjoint, spanning the finite OS range, and packaged as a product
 linear equivalence);
 `FiniteGapAssembly` (YM4/T9 finite hypothesis package: bundles the local
 cyclicity prerequisite with strict ordered-eigenvalue data and proves only the
-definition-level consequence that the named local/glueball gap is positive;
-no transfer matrix, Hamiltonian, Wilson slab-kernel, infinite-volume state, or
-physical mass-gap theorem is claimed);
+definition-level consequence that the named local/glueball gap is positive.
+It also names the local spectral ratio, proves its interval facts, and records
+the exponential recovery identities `exp (-gap) = ratio` and
+`exp gap = lambda0 / lambdaLocal`; no transfer matrix, Hamiltonian, Wilson
+slab-kernel, infinite-volume state, or physical mass-gap theorem is claimed);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
