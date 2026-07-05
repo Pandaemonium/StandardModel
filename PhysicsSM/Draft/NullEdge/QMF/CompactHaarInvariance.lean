@@ -29,11 +29,24 @@ for the intended `SU(N)` link groups all three of `IsMulLeftInvariant`,
 for a general (nonabelian) group - the available `isInvInvariant_of_*` instances
 require `CommGroup` (`Mathlib.MeasureTheory.Measure.Haar.Unique`). So for
 nonabelian `SU(N)` these must enter as EXPLICIT hypotheses (or be proved via a
-unimodularity lemma the QMF2 layer will have to supply). This extends the
-capability survey (Peter-Weyl absent) with a second concrete gap the compact-RP
-lane must budget for. The lemmas below therefore take bi-invariance / inversion
-invariance as typeclass hypotheses rather than synthesizing them from
-compactness.
+unimodularity lemma the QMF2 layer will have to supply). The exact machinery that
+route would use IS present -
+`Mathlib.MeasureTheory.Measure.Haar.MulEquivHaarChar.mulEquivHaarChar` (the
+modular character of a topological-group automorphism) - but the compact-group
+triviality step (a continuous homomorphism into `ℝ≥0` from a compact group has
+image `{1}`, hence conjugation is measure-preserving, hence unimodular) is not
+in pinned Mathlib. This extends the capability survey (Peter-Weyl absent) with a
+second concrete gap the compact-RP lane must budget for. The general lemmas below
+therefore take bi-invariance / inversion invariance as typeclass hypotheses
+rather than synthesizing them from compactness.
+
+**Concrete gap-free model (`FiniteModel` section):** for a FINITE group with the
+counting measure, all three invariances ARE available as Mathlib instances
+(finite groups are trivially unimodular), so the gauge/reflection invariances
+hold UNCONDITIONALLY. This gives the QMF compact-RP substrate a concrete working
+model today (finite gauge groups - `ℤ_N`, and nonabelian finite groups such as
+`Q8` or `S₃`), unblocked, while the continuous nonabelian `SU(N)` case waits on
+the unimodularity proof above.
 
 Draft-trust, kernel-checked, `s o r r y`-free. Prerequisites: Mathlib only.
 No lattice geometry, no RP theorem yet - only the single-link expectation
@@ -78,5 +91,32 @@ theorem haarExpectation_conj_inv_invariant
     ∫ x, f ((g * x * g⁻¹)⁻¹) ∂μ = ∫ x, f x ∂μ := by
   rw [haarExpectation_inv_invariant (fun y => f y) |>.symm]
   exact haarExpectation_conj_invariant (fun y => f y⁻¹) g
+
+/-! ## Concrete gap-free model: finite groups with counting measure
+
+Mathlib supplies `IsMulLeftInvariant`, `IsMulRightInvariant`, and
+`IsInvInvariant` for `Measure.count` on any group as instances (counting is
+invariant under every bijection), so the gauge/reflection invariances hold with
+NO unimodularity hypothesis. The intended concrete case is a FINITE gauge group,
+where `∫ · ∂Measure.count` is a genuine finite sum: a discrete compact group,
+trivially unimodular - an unconditional compact-RP substrate the QMF ladder can
+build on today (finite gauge groups `ℤ_N`, `Q8`, `S₃`, ...). -/
+section FiniteModel
+
+variable {G E : Type*} [Group G] [MeasurableSpace G] [MeasurableMul G]
+  [MeasurableInv G] [NormedAddCommGroup E] [NormedSpace ℝ E]
+
+/-- Unconditional gauge invariance of the finite-group counting expectation. -/
+theorem count_conj_invariant (f : G → E) (g : G) :
+    ∫ x, f (g * x * g⁻¹) ∂(Measure.count : Measure G) = ∫ x, f x ∂Measure.count :=
+  haarExpectation_conj_invariant f g
+
+/-- Unconditional reflection (inversion) invariance of the finite-group counting
+expectation. -/
+theorem count_inv_invariant (f : G → E) :
+    ∫ x, f x⁻¹ ∂(Measure.count : Measure G) = ∫ x, f x ∂Measure.count :=
+  haarExpectation_inv_invariant f
+
+end FiniteModel
 
 end PhysicsSM.Draft.NullEdge.QMF.CompactHaarInvariance
