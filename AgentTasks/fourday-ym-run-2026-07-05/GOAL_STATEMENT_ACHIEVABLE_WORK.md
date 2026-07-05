@@ -33,6 +33,9 @@ The repo now has enough verified infrastructure to make the next work concrete:
 - `TwoStateTransferWitness.lean`, a tiny whole-sector witness adapter that
   wraps the two-state matrix as a `Module.End` and instantiates
   `FiniteGapSpectralWitness`;
+- `TwoStateTransferZ2L1.lean`, a one-link Z2 slab bridge proving the oracle's
+  smallest gauge-summed transfer kernel has the two-state matrix shape and
+  supplies a positive descriptor/witness for `beta > 0`;
 - strong-coupling/KP statement infrastructure, now narrowed to the
   `pairSum_le_expBound` combinatorial crux;
 - RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.
@@ -186,7 +189,8 @@ Achievable deliverables:
   evidence, the finite dynamics prototype, strong-coupling blockers, and the
   still-open physical mass-gap claims. The Z2 transfer oracle JSON also now
   includes a `lean_surfaces` provenance section naming the Lean modules and
-  theorem surfaces its finite evidence is meant to inform.
+  theorem surfaces its finite evidence is meant to inform, including the
+  one-link `TwoStateTransferZ2L1` bridge.
 
 Done when:
 

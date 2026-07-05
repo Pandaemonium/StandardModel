@@ -12,6 +12,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryExpectation
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferWitness
+import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2L1
 import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
@@ -184,6 +185,13 @@ instantiates `FiniteGapSpectralWitness` for any positive two-state descriptor.
 This makes the witness API non-vacuous on a tiny finite model but deliberately
 does not construct the full Wilson slab transfer operator, physical sector,
 Hamiltonian, infinite-volume state, or physical mass-gap theorem);
+`TwoStateTransferZ2L1` (GateYM finite dynamics/oracle bridge:
+formalizes the one-link Z2 Wilson slab weight used by the executable oracle
+and proves its transfer matrix is exactly the two-state payload with
+`a = 2 * exp beta` and `b = 2 * exp (-beta)`, instantiating the positive
+descriptor and finite-gap witness for `beta > 0`. This is only the `L = 1`
+finite oracle bridge, not the full Wilson slab transfer operator or physical
+gap theorem);
 `FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every
 finite-dimensional complex representation of a finite group admits a
 unitary matrix model - Weyl's unitarian trick in pure matrix algebra

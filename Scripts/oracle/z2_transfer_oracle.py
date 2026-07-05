@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.8"
+ORACLE_VERSION = "v0.9"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_SECTOR_SYMMETRIES = {"global_center_flip"}
@@ -543,6 +543,18 @@ def lean_surface_record() -> dict:
                 "surface": [
                     "topCyclicityPrereq",
                     "finiteGapSpectralWitness",
+                ],
+            },
+            {
+                "module": "PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2L1",
+                "role": (
+                    "Lean bridge proving the L=1 Z2 slab kernel equals the "
+                    "two-state transfer payload"
+                ),
+                "surface": [
+                    "slabTransfer_eq_transfer2",
+                    "descriptor_matrix_eq_slabTransfer",
+                    "spectralWitness",
                 ],
             },
             {
