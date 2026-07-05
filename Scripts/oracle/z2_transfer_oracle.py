@@ -22,8 +22,21 @@ import json
 import math
 import platform
 from dataclasses import dataclass
+from pathlib import Path
 
 import numpy as np
+
+ORACLE_VERSION = "v0.7"
+DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
+SUPPORTED_OBSERVABLES = {"spatial_flux"}
+SUPPORTED_SECTOR_SYMMETRIES = {"global_center_flip"}
+DEFAULT_TOLERANCES = {
+    "partition_rel_error": 1e-10,
+    "observable_abs_error": 1e-10,
+    "correlation_abs_error": 1e-10,
+    "matrix_symmetry_abs_error": 1e-12,
+    "sector_commutator_abs_error": 1e-12,
+}
 
 
 def bit_sign(bit: int) -> int:
@@ -306,6 +319,19 @@ def positive_eigenvalues(K: np.ndarray, tol: float = 1e-10) -> np.ndarray:
 
 
 @dataclass(frozen=True)
+class Z2TransferDescriptor:
+    """Validated descriptor parameters for the finite Z2 slab oracle."""
+
+    L: int
+    T: int
+    beta: float
+    space_boundary: str
+    time_boundary: str
+    observables: tuple[str, ...]
+    sector_symmetries: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class Z2TransferSummary:
     L: int
     T: int
@@ -322,10 +348,110 @@ class Z2TransferSummary:
     sector_eigenvalues_minus: tuple[float, ...]
 
 
+def _require(condition: bool, message: str) -> None:
+    """Raise a descriptor validation error when `condition` is false."""
+
+    if not condition:
+        raise ValueError(message)
+
+
+def _names_from_entries(entries: object, field: str) -> tuple[str, ...]:
+    """Extract named entries from a descriptor list."""
+
+    _require(isinstance(entries, list), f"descriptor field `{field}` must be a list")
+    names: list[str] = []
+    for idx, entry in enumerate(entries):
+        _require(isinstance(entry, dict), f"`{field}[{idx}]` must be an object")
+        name = entry.get("name")
+        _require(isinstance(name, str), f"`{field}[{idx}].name` must be a string")
+        names.append(name)
+    return tuple(names)
+
+
+def validate_descriptor(record: dict) -> Z2TransferDescriptor:
+    """Validate and extract the supported Z2 1+1D transfer descriptor."""
+
+    _require(isinstance(record, dict), "descriptor must be a JSON object")
+    _require(
+        record.get("model") == "z2_1p1d_wilson_slab_transfer",
+        "descriptor model must be `z2_1p1d_wilson_slab_transfer`",
+    )
+    schema = record.get("schema_version")
+    _require(
+        schema in (None, DESCRIPTOR_SCHEMA),
+        f"unsupported descriptor schema_version `{schema}`",
+    )
+    group = record.get("group")
+    _require(isinstance(group, dict), "descriptor field `group` must be an object")
+    _require(group.get("name") == "Z2", "descriptor group.name must be `Z2`")
+    lattice = record.get("lattice")
+    _require(isinstance(lattice, dict), "descriptor field `lattice` must be an object")
+    space = lattice.get("space")
+    time = lattice.get("time")
+    _require(isinstance(space, dict), "descriptor lattice.space must be an object")
+    _require(isinstance(time, dict), "descriptor lattice.time must be an object")
+    _require(space.get("dimension") == 1, "only one spatial dimension is supported")
+    shape = space.get("shape")
+    _require(
+        isinstance(shape, list) and len(shape) == 1 and isinstance(shape[0], int),
+        "lattice.space.shape must be a one-entry integer list",
+    )
+    L = int(shape[0])
+    T_raw = time.get("extent")
+    _require(isinstance(T_raw, int), "lattice.time.extent must be an integer")
+    T = int(T_raw)
+    _require(L > 0, "spatial size L must be positive")
+    _require(T > 0, "time extent T must be positive")
+    space_boundary = space.get("boundary")
+    time_boundary = time.get("boundary")
+    _require(space_boundary == "periodic", "only periodic spatial boundary is supported")
+    _require(time_boundary == "periodic", "only periodic time boundary is supported")
+    couplings = record.get("couplings")
+    _require(
+        isinstance(couplings, dict),
+        "descriptor field `couplings` must be an object",
+    )
+    beta = couplings.get("beta", couplings.get("beta_temporal"))
+    _require(isinstance(beta, (int, float)), "couplings.beta must be numeric")
+    observables = _names_from_entries(record.get("observables", []), "observables")
+    _require(
+        set(observables).issubset(SUPPORTED_OBSERVABLES),
+        "unsupported observable; supported observables are "
+        + ", ".join(sorted(SUPPORTED_OBSERVABLES)),
+    )
+    sectors = _names_from_entries(
+        record.get("sector_symmetries", []),
+        "sector_symmetries",
+    )
+    _require(
+        set(sectors).issubset(SUPPORTED_SECTOR_SYMMETRIES),
+        "unsupported sector symmetry; supported sector symmetries are "
+        + ", ".join(sorted(SUPPORTED_SECTOR_SYMMETRIES)),
+    )
+    _require(
+        "spatial_flux" in observables,
+        "descriptor must request the `spatial_flux` observable",
+    )
+    _require(
+        "global_center_flip" in sectors,
+        "descriptor must request the `global_center_flip` sector symmetry",
+    )
+    return Z2TransferDescriptor(
+        L=L,
+        T=T,
+        beta=float(beta),
+        space_boundary=str(space_boundary),
+        time_boundary=str(time_boundary),
+        observables=observables,
+        sector_symmetries=sectors,
+    )
+
+
 def model_descriptor(L: int, T: int, beta: float) -> dict:
     """Return a JSON-ready descriptor for this finite transfer model."""
 
     return {
+        "schema_version": DESCRIPTOR_SCHEMA,
         "model": "z2_1p1d_wilson_slab_transfer",
         "group": {
             "name": "Z2",
@@ -379,7 +505,19 @@ def model_descriptor(L: int, T: int, beta: float) -> dict:
     }
 
 
-def summary_record(summary: Z2TransferSummary) -> dict:
+def matrix_record(summary: Z2TransferSummary) -> dict:
+    """Return explicit finite matrices for tiny reproducibility records."""
+
+    return {
+        "transfer_kernel": transfer_matrix(summary.L, summary.beta).tolist(),
+        "center_plus_block": sector_block(summary.L, summary.beta, 1).tolist(),
+        "center_minus_block": sector_block(summary.L, summary.beta, -1).tolist(),
+    }
+
+
+def summary_record(summary: Z2TransferSummary,
+                   descriptor: dict | None = None,
+                   include_matrices: bool = False) -> dict:
     """Return a JSON-ready descriptor plus numerical summary/check payload."""
 
     partition_abs_error = abs(summary.partition_transfer - summary.partition_full)
@@ -388,14 +526,14 @@ def summary_record(summary: Z2TransferSummary) -> dict:
     corr_abs_error = abs(
         summary.flux_correlation_transfer - summary.flux_correlation_full
     )
-    return {
+    record = {
         "oracle": {
             "name": "z2_transfer_oracle",
-            "version": "v0.6",
+            "version": ORACLE_VERSION,
             "python": platform.python_version(),
             "numpy": np.__version__,
         },
-        "descriptor": model_descriptor(summary.L, summary.T, summary.beta),
+        "descriptor": descriptor or model_descriptor(summary.L, summary.T, summary.beta),
         "results": {
             "partition": {
                 "transfer_trace": summary.partition_transfer,
@@ -426,7 +564,11 @@ def summary_record(summary: Z2TransferSummary) -> dict:
             "spatial_flux_abs_error": flux_abs_error,
             "two_time_flux_abs_error": corr_abs_error,
         },
+        "tolerances": DEFAULT_TOLERANCES,
     }
+    if include_matrices:
+        record["matrices"] = matrix_record(summary)
+    return record
 
 
 def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
@@ -452,20 +594,73 @@ def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
     )
 
 
+def summarize_descriptor(record: dict) -> tuple[Z2TransferDescriptor, Z2TransferSummary]:
+    """Validate a descriptor and compute its exact finite transfer summary."""
+
+    descriptor = validate_descriptor(record)
+    return descriptor, summarize(descriptor.L, descriptor.T, descriptor.beta)
+
+
+def load_descriptor(path: Path) -> dict:
+    """Load a JSON descriptor from disk."""
+
+    with path.open("r", encoding="utf-8") as handle:
+        record = json.load(handle)
+    _require(isinstance(record, dict), "descriptor JSON root must be an object")
+    return record
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--L", type=int, default=3, help="spatial circle size")
     parser.add_argument("--T", type=int, default=2, help="Euclidean time extent")
     parser.add_argument("--beta", type=float, default=0.4, help="Wilson coupling")
+    parser.add_argument(
+        "--descriptor",
+        type=Path,
+        help="load a JSON model descriptor instead of using --L/--T/--beta",
+    )
+    parser.add_argument(
+        "--write-template",
+        type=Path,
+        help="write a JSON descriptor template for --L/--T/--beta and exit",
+    )
+    parser.add_argument(
+        "--include-matrices",
+        action="store_true",
+        help="include transfer and sector matrices in JSON output",
+    )
     parser.add_argument("--json", action="store_true", help="emit JSON summary")
     args = parser.parse_args()
 
-    summary = summarize(args.L, args.T, args.beta)
+    if args.write_template:
+        descriptor = model_descriptor(args.L, args.T, args.beta)
+        with args.write_template.open("w", encoding="utf-8", newline="\n") as handle:
+            json.dump(descriptor, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+        return 0
+
+    if args.descriptor:
+        descriptor = load_descriptor(args.descriptor)
+        _, summary = summarize_descriptor(descriptor)
+    else:
+        descriptor = model_descriptor(args.L, args.T, args.beta)
+        _, summary = summarize_descriptor(descriptor)
+
     if args.json:
-        print(json.dumps(summary_record(summary), indent=2, sort_keys=True))
+        print(json.dumps(
+            summary_record(
+                summary,
+                descriptor=descriptor,
+                include_matrices=args.include_matrices,
+            ),
+            indent=2,
+            sort_keys=True,
+        ))
         return 0
 
     print(f"z2_transfer_oracle | python {platform.python_version()} | numpy {np.__version__}")
+    print(f"schema={DESCRIPTOR_SCHEMA} oracle={ORACLE_VERSION}")
     print(f"L={summary.L} T={summary.T} beta={summary.beta}")
     print(f"Tr(K^T)      = {summary.partition_transfer:.12g}")
     print(f"full sum     = {summary.partition_full:.12g}")

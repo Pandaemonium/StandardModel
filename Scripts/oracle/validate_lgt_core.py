@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.6 (YM ladder, 2026-07-05)
+validate_lgt_core.py -- Track C oracle v0.7 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -55,6 +55,13 @@ v0.6 (four-day YM run, dynamics slice 3) adds:
     transfer oracle, including model conventions, checked numerical results,
     spectra, and explicit error fields.
 
+v0.7 (four-day YM run, dynamics slice 4) adds:
+  Descriptor-driven execution for the Z2 slab oracle: a stable schema,
+    descriptor validation, supported observable/sector-label checks, optional
+    matrix emission, and regression rows proving that descriptor input
+    reproduces the transfer-trace, two-time-correlation, and sector-spectrum
+    evidence path.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -88,6 +95,7 @@ from z2_transfer_oracle import (
     full_spacetime_correlation as z2_transfer_full_correlation,
     full_spacetime_expectation as z2_transfer_full_expectation,
     full_spacetime_partition as z2_transfer_full_partition,
+    model_descriptor as z2_transfer_model_descriptor,
     partition_from_transfer as z2_partition_from_transfer,
     sector_basis as z2_sector_basis,
     sector_block as z2_sector_block,
@@ -95,11 +103,13 @@ from z2_transfer_oracle import (
     sector_projector as z2_sector_projector,
     spatial_flux as z2_spatial_flux,
     summarize as z2_transfer_summarize,
+    summarize_descriptor as z2_transfer_summarize_descriptor,
     summary_record as z2_transfer_summary_record,
     transfer_correlation as z2_transfer_correlation,
     transfer_correlation_spectral as z2_transfer_correlation_spectral,
     transfer_expectation as z2_transfer_expectation,
     transfer_matrix as z2_transfer_matrix,
+    validate_descriptor as z2_transfer_validate_descriptor,
 )
 
 np.random.seed(20260703)
@@ -111,7 +121,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.6 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.7 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -614,7 +624,7 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
 
-print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.6)")
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.7)")
 print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
       "with exact spacetime validation")
 for beta in [0.2, 0.4, 0.7]:
@@ -670,13 +680,55 @@ descriptor_summary = z2_transfer_summarize(L=3, T=3, beta=0.7)
 descriptor_record = z2_transfer_summary_record(descriptor_summary)
 descriptor_json = json.dumps(descriptor_record, sort_keys=True)
 check("descriptor JSON record is serializable and summary-consistent",
-      descriptor_record["oracle"]["version"] == "v0.6"
+      descriptor_record["oracle"]["version"] == "v0.7"
+      and descriptor_record["descriptor"]["schema_version"]
+      == "z2_1p1d_wilson_slab_transfer.v1"
       and descriptor_record["descriptor"]["model"] == "z2_1p1d_wilson_slab_transfer"
       and descriptor_record["descriptor"]["lattice"]["space"]["shape"] == [3]
       and descriptor_record["descriptor"]["lattice"]["time"]["extent"] == 3
       and descriptor_record["checks"]["partition_rel_error"] < 1e-10
       and descriptor_record["checks"]["two_time_flux_abs_error"] < 1e-10
+      and descriptor_record["tolerances"]["partition_rel_error"] == 1e-10
       and "gauge_summed_wilson_slab" in descriptor_json)
+
+descriptor_input = z2_transfer_model_descriptor(L=3, T=3, beta=0.4)
+parsed_descriptor, descriptor_summary_from_input = z2_transfer_summarize_descriptor(
+    descriptor_input
+)
+descriptor_result = z2_transfer_summary_record(
+    descriptor_summary_from_input,
+    descriptor=descriptor_input,
+    include_matrices=True,
+)
+check("descriptor-driven summary uses L/T/beta, observable, and sector labels",
+      parsed_descriptor.L == 3
+      and parsed_descriptor.T == 3
+      and abs(parsed_descriptor.beta - 0.4) < 1e-15
+      and parsed_descriptor.observables == ("spatial_flux",)
+      and parsed_descriptor.sector_symmetries == ("global_center_flip",)
+      and descriptor_result["results"]["partition"]["transfer_trace"]
+      == descriptor_summary_from_input.partition_transfer
+      and "matrices" in descriptor_result
+      and len(descriptor_result["matrices"]["transfer_kernel"]) == 8)
+check("descriptor-driven transfer record reproduces exact checks",
+      descriptor_result["checks"]["partition_rel_error"] < 1e-10
+      and descriptor_result["checks"]["spatial_flux_abs_error"] < 1e-10
+      and descriptor_result["checks"]["two_time_flux_abs_error"] < 1e-10
+      and len(descriptor_result["results"]["spectrum"]["positive_eigenvalues"]) > 0
+      and len(descriptor_result["results"]["spectrum"]
+              ["center_plus_positive_eigenvalues"]) > 0
+      and len(descriptor_result["results"]["spectrum"]
+              ["center_minus_positive_eigenvalues"]) > 0)
+
+bad_descriptor = json.loads(json.dumps(descriptor_input))
+bad_descriptor["observables"][0]["name"] = "unsupported_flux"
+try:
+    z2_transfer_validate_descriptor(bad_descriptor)
+    bad_descriptor_rejected = False
+except ValueError:
+    bad_descriptor_rejected = True
+check("descriptor validation rejects unsupported observable labels",
+      bad_descriptor_rejected)
 
 for L in [2, 3, 4]:
     Kslab = z2_transfer_matrix(L, beta=0.4)

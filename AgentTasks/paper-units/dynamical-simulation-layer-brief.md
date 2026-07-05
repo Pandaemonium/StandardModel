@@ -130,11 +130,16 @@ Implementation status as of 2026-07-05:
   eigendecomposition formula, and extracts center-shift sector blocks whose
   positive spectra reconstruct the full positive transfer spectrum on the
   checked tiny examples.
-- The v0.6 extension adds a deterministic JSON-ready descriptor/summary
-  record for the Z2 slab oracle. The command
+- The v0.7 extension makes the Z2 slab oracle descriptor-driven: it defines
+  schema `z2_1p1d_wilson_slab_transfer.v1`, validates supported observable
+  and sector labels, accepts `--descriptor <json>`, can write a descriptor
+  template with `--write-template`, records numerical tolerances, and can emit
+  the transfer and sector matrices with `--include-matrices`. The command
   `python Scripts/oracle/z2_transfer_oracle.py --L 3 --T 3 --beta 0.7 --json`
-  emits the model convention record, partition and observable checks,
+  still emits the convention record, partition and observable checks,
   two-time correlation check, spectra, and explicit numerical error fields.
+  The descriptor-file path is checked by
+  `python Scripts/oracle/z2_transfer_oracle.py --descriptor <json> --json`.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -701,9 +706,10 @@ These can be developed in parallel with the proof work, provided the
 simulation code stays explicitly labeled as oracle/evidence rather than proof.
 The transfer-specific blockers now have a narrow Z2 1+1D prototype in
 `Scripts/oracle/z2_transfer_oracle.py`, including a JSON-ready descriptor and
-summary record, plus a tiny Lean spectral descriptor bridge in
-`TwoStateTransferSpectrum.lean`. The remaining engineering task is to
-generalize that prototype into a reusable descriptor-driven engine and connect
+summary record, descriptor-file loading, supported-label validation, optional
+matrix emission, and a tiny Lean spectral descriptor bridge in
+`TwoStateTransferSpectrum.lean`. The remaining engineering task is to extend
+that descriptor-driven prototype beyond the current Z2 1+1D model and connect
 its concrete Wilson slab matrices back to Lean theorem surfaces.
 
 ## Suggested first collaborator project

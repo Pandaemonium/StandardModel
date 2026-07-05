@@ -26,7 +26,8 @@ The repo now has enough verified infrastructure to make the next work concrete:
 - finite spectral-ratio/gap prerequisite packages, including
   `FiniteGapSpectralWitness`;
 - executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
-  two-time correlations, sector blocks, and JSON summary output;
+  two-time correlations, sector blocks, descriptor-file input, optional matrix
+  emission, and JSON summary output;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
   payload with vacuum/local eigenvector equations and D12 gap identities;
 - strong-coupling/KP statement infrastructure, now narrowed to the
