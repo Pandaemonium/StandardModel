@@ -21,7 +21,8 @@ vectors in that sector, is idempotent, is mutually orthogonal on distinct
 sectors, sums to the identity over the four Z2 sectors, preserves the finite
 OS range for plaquette-field block weights, and lands in the corresponding
 sectorized finite OS submodule.  The projection is also packaged as a linear
-map from the finite OS range onto that sectorized submodule.
+map from the finite OS range onto that sectorized submodule, with an explicit
+linear inclusion/retraction pair.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -620,6 +621,72 @@ theorem rpBlockElectricSectorProjection_surjective {Lx Ly : Nat}
   exact congrFun
     (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
       hLx hLy ex ey v v.property.2) i
+
+/-- The linear inclusion of a sectorized finite OS range into the ambient
+finite OS range. -/
+def rpBlockElectricSectorInclusion {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpBlockElectricSector hLx hLy F ex ey →ₗ[Complex]
+      rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) where
+  toFun v := ⟨v, v.property.1⟩
+  map_add' := by
+    intro u v
+    rfl
+  map_smul' := by
+    intro c v
+    rfl
+
+/-- Projecting after including a sectorized finite OS vector is the identity
+on that sectorized finite OS range. -/
+theorem rpBlockElectricSectorProjection_comp_inclusion {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    (rpBlockElectricSectorProjection hLx hLy F ex ey).comp
+      (rpBlockElectricSectorInclusion hLx hLy F ex ey) = LinearMap.id := by
+  ext v i
+  exact congrFun
+    (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+      hLx hLy ex ey v v.property.2) i
+
+/-- The selected block electric-sector projection as an endomorphism of the
+finite OS range. -/
+def rpHilbertSpaceBlockElectricProjection {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) →ₗ[Complex]
+      rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) :=
+  (rpBlockElectricSectorInclusion hLx hLy F ex ey).comp
+    (rpBlockElectricSectorProjection hLx hLy F ex ey)
+
+/-- The selected block electric-sector endomorphism of the finite OS range is
+idempotent. -/
+theorem rpHilbertSpaceBlockElectricProjection_idempotent {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey).comp
+        (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) =
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey := by
+  ext v i
+  simp [rpHilbertSpaceBlockElectricProjection,
+    rpBlockElectricSectorInclusion, rpBlockElectricSectorProjection,
+    blockElectricSectorProjection_idempotent]
 
 end TransferHilbertZ2Electric
 end GateYM

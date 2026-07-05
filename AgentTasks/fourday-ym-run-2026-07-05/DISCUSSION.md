@@ -2722,6 +2722,35 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Dependency footprint for both new lemmas:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:finite-os-sector-inclusion-retraction (codex 1.28:55)
+
+Added the inclusion/retraction API for the sectorized finite OS range in
+`TransferHilbertZ2Electric.lean`:
+
+- `rpBlockElectricSectorInclusion`;
+- `rpBlockElectricSectorProjection_comp_inclusion`;
+- `rpHilbertSpaceBlockElectricProjection`;
+- `rpHilbertSpaceBlockElectricProjection_idempotent`.
+
+Intended reading: `rpBlockElectricSector` is now not just a submodule with an
+onto projection; it has the explicit linear inclusion back into the finite OS
+range, the projection after inclusion is the identity, and the corresponding
+endomorphism of the finite OS range is idempotent.  This remains finite
+Q2/Q3 algebraic infrastructure only, with no physical transfer/Hamiltonian/gap
+claim.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for all four new declarations:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## q2q3:block-electric-orthogonality-decomposition (codex 1.28:05)
 
 Completed the small projection algebra around
