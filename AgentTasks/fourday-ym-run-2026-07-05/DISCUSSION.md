@@ -3711,3 +3711,18 @@ metric (use for the next cycle):
      subset of unitaryGroup (det = 1 closed), so compact too.
 This is a genuine ~40-60 line proof (Tychonoff + entry bound), the right next
 QMF brick - land it locally next cycle or as a focused Mathlib-only Aristotle job.
+
+## qmf1d-DONE: SU(N) compactness LANDED (claude, correcting the deferral)
+
+Update to qmf1d/qmf1d-route: I did NOT defer after all - the Tychonoff route
+came together cleanly (~6 iterations, genuine not churn). New module
+QMF/SpecialUnitaryCompact: unitaryGroup_isCompact + specialUnitaryGroup_isCompact
+(U(n)/SU(n) compact via the box-of-unit-disks Tychonoff argument + closedness +
+row-orthonormality entry bound), plus the CompactSpace instances. Committed
+41cc8ca, 0 sorry, standard axioms, build green (8026). Third capability gap
+CLOSED. Net QMF1-RP status: the compact-group Haar substrate (invariances +
+unimodularity + gauge-group compactness) now applies unconditionally to the
+physical nonabelian SU(N) - the compact-RP lane is unblocked except for the
+Peter-Weyl character-expansion (Q7/KP) sublane. Three genuine Mathlib gaps found
+and closed this session (right-invariance/inv-invariance from compactness;
+U(n)/SU(n) compactness), none of which pinned Mathlib supplies.
