@@ -84,4 +84,33 @@ theorem specialUnitaryGroup_haar_reflection_invariant {E : Type*}
     ∫ x, f x⁻¹ ∂μ = ∫ x, f x ∂μ :=
   compact_haarExpectation_inv_invariant μ f
 
+/-! ## The Standard Model gauge groups `SU(2)`, `SU(3)`
+
+Named specializations at the physical gauge groups. `SU(3)` is the color group -
+and, by step 1a (`Octonion.G2FixingE111SpecialUnitaryGroup`,
+`su3Submonoid_eq_specialUnitaryGroup`), it is exactly the octonion-derived color
+`SU(3)`, so this is the gauge symmetry of the octonion-lane color group's Haar
+average. `SU(2)` is the weak-isospin group. -/
+
+/-- Gauge invariance of the color-`SU(3)` Haar expectation (the octonion-derived
+color group of step 1a). -/
+theorem su3_haar_gauge_invariant {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [MeasurableSpace (Matrix.specialUnitaryGroup (Fin 3) ℂ)]
+    [BorelSpace (Matrix.specialUnitaryGroup (Fin 3) ℂ)]
+    (μ : Measure (Matrix.specialUnitaryGroup (Fin 3) ℂ)) [μ.IsHaarMeasure]
+    (f : Matrix.specialUnitaryGroup (Fin 3) ℂ → E)
+    (g : Matrix.specialUnitaryGroup (Fin 3) ℂ) :
+    ∫ x, f (g * x * g⁻¹) ∂μ = ∫ x, f x ∂μ :=
+  specialUnitaryGroup_haar_gauge_invariant μ f g
+
+/-- Gauge invariance of the weak-isospin `SU(2)` Haar expectation. -/
+theorem su2_haar_gauge_invariant {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [MeasurableSpace (Matrix.specialUnitaryGroup (Fin 2) ℂ)]
+    [BorelSpace (Matrix.specialUnitaryGroup (Fin 2) ℂ)]
+    (μ : Measure (Matrix.specialUnitaryGroup (Fin 2) ℂ)) [μ.IsHaarMeasure]
+    (f : Matrix.specialUnitaryGroup (Fin 2) ℂ → E)
+    (g : Matrix.specialUnitaryGroup (Fin 2) ℂ) :
+    ∫ x, f (g * x * g⁻¹) ∂μ = ∫ x, f x ∂μ :=
+  specialUnitaryGroup_haar_gauge_invariant μ f g
+
 end PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance
