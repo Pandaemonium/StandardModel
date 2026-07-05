@@ -927,6 +927,22 @@ theorem anchoredPlaquettePolymerSum_le_sum_areaBounds
   rw [anchoredPlaquettePolymerSum_eq_sum_areaSlices]
   exact Finset.sum_le_sum hB
 
+/-- Positive-area version of `anchoredPlaquettePolymerSum_le_sum_areaBounds`.
+Only support sizes `1, ..., Fintype.card P` have to be bounded. -/
+theorem anchoredPlaquettePolymerSum_le_sum_positiveAreaBounds
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (q : P) (B : Nat -> Real)
+    (hB : forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card P) ->
+      anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+        gammaAbs alpha q k <= B k) :
+    anchoredPlaquettePolymerSum ConnectedSupport NontrivialLabel gammaAbs
+      alpha q <=
+      (Finset.Icc 1 (Fintype.card P)).sum B := by
+  rw [anchoredPlaquettePolymerSum_eq_sum_positiveAreaSlices]
+  exact Finset.sum_le_sum hB
+
 /-- Area-sliced version of the anchored overcount for the explicit plaquette KP
 sum.  Bounding each area slice of every anchor in the closed touch-neighborhood
 is enough to bound the rooted KP sum by the corresponding neighborhood sum of
@@ -955,6 +971,34 @@ theorem plaquetteKPSum_le_sum_closedTouchNeighborhood_areaBounds
   exact anchoredPlaquettePolymerSum_le_sum_areaBounds
     ConnectedSupport NontrivialLabel gammaAbs alpha q B (hB q hq)
 
+/-- Positive-area version of
+`plaquetteKPSum_le_sum_closedTouchNeighborhood_areaBounds`.  The per-anchor
+slice hypotheses only range over support cardinalities
+`1, ..., Fintype.card P`. -/
+theorem plaquetteKPSum_le_sum_closedTouchNeighborhood_positiveAreaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel)
+    (B : Nat -> Real)
+    (hB : forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+      forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card P) ->
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k <= B k) :
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+      <= (closedTouchNeighborhood Adj X.support).sum
+          (fun _q => (Finset.Icc 1 (Fintype.card P)).sum B) := by
+  have hAnchors :=
+    plaquetteKPSum_le_sum_closedTouchNeighborhood_anchors Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X
+  refine hAnchors.trans ?_
+  apply Finset.sum_le_sum
+  intro q hq
+  exact anchoredPlaquettePolymerSum_le_sum_positiveAreaBounds
+    ConnectedSupport NontrivialLabel gammaAbs alpha q B (hB q hq)
+
 /-- Cardinality form of the area-sliced anchored overcount. -/
 theorem plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_areaBounds
     (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
@@ -979,6 +1023,33 @@ theorem plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_areaBounds
             ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X B hB
     _ = ((closedTouchNeighborhood Adj X.support).card : Real) *
           (Finset.range (Fintype.card P + 1)).sum B := by
+          simp [Finset.sum_const, nsmul_eq_mul]
+
+/-- Cardinality form of the positive-area anchored overcount. -/
+theorem plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_positiveAreaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel)
+    (B : Nat -> Real)
+    (hB : forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+      forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card P) ->
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k <= B k) :
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+      <= ((closedTouchNeighborhood Adj X.support).card : Real) *
+          (Finset.Icc 1 (Fintype.card P)).sum B := by
+  calc
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+        <= (closedTouchNeighborhood Adj X.support).sum
+            (fun _q => (Finset.Icc 1 (Fintype.card P)).sum B) :=
+          plaquetteKPSum_le_sum_closedTouchNeighborhood_positiveAreaBounds Adj
+            ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X B
+            hB
+    _ = ((closedTouchNeighborhood Adj X.support).card : Real) *
+          (Finset.Icc 1 (Fintype.card P)).sum B := by
           simp [Finset.sum_const, nsmul_eq_mul]
 
 /-- If every anchored polymer sum over supports containing a fixed plaquette is
@@ -1158,6 +1229,38 @@ theorem plaquetteKPBound_of_closedTouchNeighborhood_areaBounds
       (hB X)).trans
       (hScale X)
 
+/-- Positive-area version of
+`plaquetteKPBound_of_closedTouchNeighborhood_areaBounds`.
+
+The sufficient per-area hypotheses range only over support sizes
+`1, ..., Fintype.card P`. -/
+theorem plaquetteKPBound_of_closedTouchNeighborhood_positiveAreaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (B : Nat -> Real)
+    (hB : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+        forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card P) ->
+          anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+            gammaAbs alpha q k <= B k)
+    (hScale : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      ((closedTouchNeighborhood Adj X.support).card : Real) *
+          (Finset.Icc 1 (Fintype.card P)).sum B <=
+        alpha * (X.support.card : Real)) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  intro X
+  exact
+    (plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_positiveAreaBounds
+      Adj ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X B
+      (hB X)).trans
+      (hScale X)
+
 /-- A real-valued growth-constant version of
 `plaquetteKPBound_of_closedTouchNeighborhood_areaBounds`.
 
@@ -1201,6 +1304,51 @@ theorem plaquetteKPBound_of_realClosedNeighborhood_areaBounds
           exact mul_le_mul_of_nonneg_right (hCard X) hBsum_nonneg
     _ = (X.support.card : Real) *
           (C * (Finset.range (Fintype.card P + 1)).sum B) := by
+          ring
+    _ <= (X.support.card : Real) * alpha := by
+          exact mul_le_mul_of_nonneg_left hsmall hSupport_nonneg
+    _ = alpha * (X.support.card : Real) := by
+          ring
+
+/-- Positive-area version of
+`plaquetteKPBound_of_realClosedNeighborhood_areaBounds`.  The support-counting
+input only has to bound the positive support-cardinality slices. -/
+theorem plaquetteKPBound_of_realClosedNeighborhood_positiveAreaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (C : Real) (B : Nat -> Real)
+    (hBsum_nonneg : 0 <= (Finset.Icc 1 (Fintype.card P)).sum B)
+    (hCard : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      ((closedTouchNeighborhood Adj X.support).card : Real) <=
+        C * (X.support.card : Real))
+    (hArea : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+        forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card P) ->
+          anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+            gammaAbs alpha q k <= B k)
+    (hsmall : C * (Finset.Icc 1 (Fintype.card P)).sum B <= alpha) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  refine
+    plaquetteKPBound_of_closedTouchNeighborhood_positiveAreaBounds Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha B
+      hArea ?_
+  intro X
+  have hSupport_nonneg : 0 <= (X.support.card : Real) := by
+    exact_mod_cast Nat.zero_le X.support.card
+  calc
+    ((closedTouchNeighborhood Adj X.support).card : Real) *
+        (Finset.Icc 1 (Fintype.card P)).sum B
+        <= (C * (X.support.card : Real)) *
+            (Finset.Icc 1 (Fintype.card P)).sum B := by
+          exact mul_le_mul_of_nonneg_right (hCard X) hBsum_nonneg
+    _ = (X.support.card : Real) *
+          (C * (Finset.Icc 1 (Fintype.card P)).sum B) := by
           ring
     _ <= (X.support.card : Real) * alpha := by
           exact mul_le_mul_of_nonneg_left hsmall hSupport_nonneg
@@ -1325,6 +1473,44 @@ theorem plaquetteKPBound_of_singletonBound_areaBounds
       gammaAbs alpha halpha := by
   refine
     plaquetteKPBound_of_realClosedNeighborhood_areaBounds Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha
+      (D : Real) B hBsum_nonneg ?_ ?_ hsmall
+  · intro X
+    have hCard :
+        (closedTouchNeighborhood Adj X.support).card <= X.support.card * D :=
+      card_closedTouchNeighborhood_le_card_mul_singletonBound Adj
+        X.support D hD
+    calc
+      ((closedTouchNeighborhood Adj X.support).card : Real)
+          <= ((X.support.card * D : Nat) : Real) := by
+            exact_mod_cast hCard
+      _ = (D : Real) * (X.support.card : Real) := by
+            norm_num [Nat.cast_mul]
+            ring
+  · intro _X q _hq k hk
+    exact hArea q k hk
+
+/-- Singleton-degree version of the positive-area KP-bound adapter. -/
+theorem plaquetteKPBound_of_singletonBound_positiveAreaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (D : Nat) (B : Nat -> Real)
+    (hBsum_nonneg : 0 <= (Finset.Icc 1 (Fintype.card P)).sum B)
+    (hD : forall p : P,
+      (closedTouchNeighborhood Adj ({p} : Finset P)).card <= D)
+    (hArea : forall q : P,
+      forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card P) ->
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k <= B k)
+    (hsmall : (D : Real) * (Finset.Icc 1 (Fintype.card P)).sum B
+      <= alpha) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  refine
+    plaquetteKPBound_of_realClosedNeighborhood_positiveAreaBounds Adj
       ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha
       (D : Real) B hBsum_nonneg ?_ ?_ hsmall
   · intro X
