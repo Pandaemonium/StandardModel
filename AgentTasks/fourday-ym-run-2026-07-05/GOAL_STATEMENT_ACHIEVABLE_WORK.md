@@ -40,10 +40,11 @@ The repo now has enough verified infrastructure to make the next work concrete:
   concrete symmetry/Hermitian identities and supplies a positive
   descriptor/witness for `beta > 0`, with contraction factor `tanh beta`,
   explicit slab eigenvector equations, one-step partition and flux-insertion
-  trace identities, `T = 2` partition and raw two-time flux-correlation
-  numerator identities, a normalized `T = 2`, `tau = 1` autocorrelation ratio
-  theorem, and a one-link spatial-flux insertion that is Hermitian,
-  involutive, and swaps the vacuum/local eigenvectors;
+  trace identities, a normalized `T = 1` flux-expectation theorem, `T = 2`
+  partition and raw two-time flux-correlation numerator identities, a
+  normalized `T = 2`, `tau = 1` autocorrelation ratio theorem, and a one-link
+  spatial-flux insertion that is Hermitian, involutive, and swaps the
+  vacuum/local eigenvectors;
 - strong-coupling/KP statement infrastructure, now narrowed to the
   `pairSum_le_expBound` combinatorial crux;
 - RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.
@@ -214,8 +215,9 @@ Achievable deliverables:
   theorem surfaces its finite evidence is meant to inform, including the
   one-link `TwoStateTransferZ2L1` bridge and its flux-insertion observable
   surface, including concrete transfer symmetry/Hermiticity, the one-step and
-  two-step partition/flux trace identities, and the normalized one-link
-  `T = 2` autocorrelation ratio. It also records descriptor-requested
+  two-step partition/flux trace identities, the normalized one-link `T = 1`
+  flux expectation, and the normalized one-link `T = 2` autocorrelation
+  ratio. It also records descriptor-requested
   spatial-flux autocorrelation profiles as finite oracle evidence.
 
 Done when:

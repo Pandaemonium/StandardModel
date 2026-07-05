@@ -171,6 +171,13 @@ theorem fluxMatrix_mul_slabTransfer_trace (beta : ℝ) :
     plaquetteSign, bitSign, Fin.sum_univ_two]
   ring
 
+/-- The normalized `L = 1`, `T = 1` spatial-flux expectation is zero. -/
+theorem fluxExpectation_T1_eq_zero (beta : ℝ) :
+    Matrix.trace (fluxMatrix * slabTransfer beta) /
+        Matrix.trace (slabTransfer beta) = 0 := by
+  rw [fluxMatrix_mul_slabTransfer_trace]
+  simp
+
 /-- The two-step one-link transfer trace, matching the `T = 2` partition
 trace at `L = 1`. -/
 theorem slabTransfer_sq_trace (beta : ℝ) :
