@@ -64,6 +64,19 @@ noncomputable def evMinus (p : Momentum4) : ℝ := (1 - speed p) / 2
 /-- The speed is nonnegative. -/
 theorem speed_nonneg (p : Momentum4) : 0 ≤ speed p := Real.sqrt_nonneg _
 
+/-- **The velocity is fixed by the invariant mass ratio**: `|v|^2 = 1 - m^2/E^2`
+(with `m^2 = minkowskiSq p`, `E = p 0`). This ties the OBSERVER-CONDITIONED
+normalized-block spectrum - and hence its von Neumann entropy - to the
+FRAME-INVARIANT mass through the single ratio `m/E`: the two eigenvalues are
+`(1 +- sqrt(1 - m^2/E^2)) / 2`, so the whole entropy dictionary is a function of
+`m/E` alone. -/
+theorem velocityNormSq_eq_one_sub_massRatio (p : Momentum4) (hp0 : 0 < p 0) :
+    velocityNormSq p = 1 - minkowskiSq p / (p 0) ^ 2 := by
+  have hE : (p 0) ^ 2 ≠ 0 := pow_ne_zero 2 (ne_of_gt hp0)
+  unfold velocityNormSq minkowskiSq spatialNormSq
+  field_simp
+  ring
+
 /-- Inside the future cone the speed is at most one (`|p| <= E`). -/
 theorem speed_le_one (p : Momentum4) (hp0 : 0 < p 0)
     (hcone : spatialNormSq p ≤ (p 0) ^ 2) : speed p ≤ 1 := by
