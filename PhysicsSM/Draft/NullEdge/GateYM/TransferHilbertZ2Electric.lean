@@ -24,7 +24,8 @@ sectorized finite OS submodule.  The projection is also packaged as a linear
 map from the finite OS range onto that sectorized submodule, with an explicit
 linear inclusion/retraction pair and endomorphism-level four-sector
 decomposition on the finite OS range.  The range of each sector endomorphism is
-characterized as the matching sectorized finite OS submodule, and distinct
+characterized as the matching sectorized finite OS submodule, and its kernel is
+the range of the complementary sum of the other sector endomorphisms.  Distinct
 sectorized submodules are disjoint.  The four sectorized submodules span the
 plaquette-field finite OS range, with explicit linear maps decomposing any OS
 range vector into its four sector projections and reconstructing it from those
@@ -871,6 +872,95 @@ theorem mem_rpBlockElectricSector_iff_rpHilbertSpaceBlockElectricProjection_eq_s
             FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) i)) hfix
     simpa [rpHilbertSpaceBlockElectricProjection,
       rpBlockElectricSectorInclusion, rpBlockElectricSectorProjection] using hfun
+
+/-- The complementary endomorphism summing all block electric sectors except
+the selected one.  This is finite sector bookkeeping, not a physical transfer
+operator. -/
+def rpHilbertSpaceOtherBlockElectricProjection {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) →ₗ[Complex]
+      rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) :=
+  ∑ ex' : Bool, ∑ ey' : Bool,
+    if ex' = ex ∧ ey' = ey then 0 else
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex' ey'
+
+/-- The selected sector endomorphism plus its complementary other-sector sum
+is the identity on the finite OS range. -/
+theorem rpHilbertSpaceBlockElectricProjection_add_other_eq_id {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey +
+        rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey =
+      LinearMap.id := by
+  cases ex <;> cases ey <;>
+    simpa [rpHilbertSpaceOtherBlockElectricProjection,
+      add_assoc, add_comm, add_left_comm] using
+        sum_rpHilbertSpaceBlockElectricProjection_eq_id hLx hLy F
+
+/-- The selected sector endomorphism annihilates its complementary
+other-sector sum. -/
+theorem rpHilbertSpaceBlockElectricProjection_comp_other_eq_zero {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey).comp
+        (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey) = 0 := by
+  cases ex <;> cases ey <;>
+    simp [rpHilbertSpaceOtherBlockElectricProjection, LinearMap.comp_add,
+      rpHilbertSpaceBlockElectricProjection_comp_eq_zero_of_ne]
+
+/-- The complementary other-sector sum annihilates the selected sector
+endomorphism. -/
+theorem rpHilbertSpaceOtherBlockElectricProjection_comp_block_eq_zero
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey).comp
+        (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) = 0 := by
+  cases ex <;> cases ey <;>
+    simp [rpHilbertSpaceOtherBlockElectricProjection, LinearMap.add_comp,
+      rpHilbertSpaceBlockElectricProjection_comp_eq_zero_of_ne]
+
+/-- The kernel of a selected finite OS sector endomorphism is exactly the
+range of the complementary sum of the other three sector endomorphisms. -/
+theorem ker_rpHilbertSpaceBlockElectricProjection_eq_range_other {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    LinearMap.ker (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) =
+      LinearMap.range
+        (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey) := by
+  apply le_antisymm
+  · intro v hv
+    refine ⟨v, ?_⟩
+    have h := congrArg (fun T => T v)
+      (rpHilbertSpaceBlockElectricProjection_add_other_eq_id
+        hLx hLy F ex ey)
+    simpa [LinearMap.mem_ker.mp hv] using h
+  · intro v hv
+    rcases hv with ⟨u, rfl⟩
+    have h := congrArg (fun T => T u)
+      (rpHilbertSpaceBlockElectricProjection_comp_other_eq_zero
+        hLx hLy F ex ey)
+    simpa using h
 
 /-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
 theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
