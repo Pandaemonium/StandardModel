@@ -1345,6 +1345,84 @@ theorem rpHilbertSpaceSelectedOtherLinearEquiv_symm_apply {Lx Ly : Nat}
       rpHilbertSpaceSelectedOtherReconstruction hLx hLy F ex ey v :=
   rfl
 
+/-- The ambient plaquette-field finite OS range dimension is the sum of the
+selected sector range dimension and the complementary other-sector range
+dimension.
+
+This is rank-nullity for the selected sector endomorphism, using the existing
+identification of its kernel with the complementary range.  It is finite
+algebraic sector bookkeeping only, not a physical transfer-matrix or gap
+statement. -/
+theorem finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) =
+      Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey)) +
+        Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) := by
+  have h := LinearMap.finrank_range_add_finrank_ker
+    (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey)
+  rw [ker_rpHilbertSpaceBlockElectricProjection_eq_range_other
+    hLx hLy F ex ey] at h
+  exact h.symm
+
+/-- The ambient selected/other split is nontrivial exactly when the selected
+sector range or its complementary other-sector range is nontrivial.
+
+This is a finite-dimensional corollary of
+`finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other`; it makes no
+physical transfer-matrix, Hamiltonian, or gap claim. -/
+theorem finrank_rpHilbertSpace_pos_iff_finrank_selected_pos_or_finrank_other_pos
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    0 < Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) ↔
+      0 < Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey)) ∨
+        0 < Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) := by
+  rw [finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other
+    hLx hLy F ex ey]
+  exact add_pos_iff
+
+/-- The ambient selected/other split has zero dimension exactly when both the
+selected range and complementary other-sector range have zero dimension.
+
+This is finite-dimensional sector bookkeeping only, not a physical transfer or
+gap statement. -/
+theorem finrank_rpHilbertSpace_eq_zero_iff_finrank_selected_eq_zero_and_finrank_other_eq_zero
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) = 0 ↔
+      Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey)) = 0 ∧
+        Module.finrank Complex
+          (LinearMap.range
+            (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) = 0 := by
+  rw [finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other
+    hLx hLy F ex ey]
+  exact Nat.add_eq_zero_iff
+
 /-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
 theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
     [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]

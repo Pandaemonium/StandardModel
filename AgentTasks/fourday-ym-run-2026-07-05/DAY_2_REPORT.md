@@ -1,12 +1,12 @@
 # DAY_2_REPORT (drafted by codex; needs peer review)
 
 Scope: checkpoint from the post-`DAY_1_REPORT.md` ledger state through
-heartbeat `5.56:40`. This is a status synthesis, not a promotion claim.
+heartbeat `6.08:10`. This is a status synthesis, not a promotion claim.
 
 ## 1. Delta summary
 
 The finite OS sector stack grew from a four-sector product decomposition into
-selected-vs-other projection/range/complement APIs. The KP lane gained Q7
+selected-vs-other projection/range/complement and finrank APIs. The KP lane gained Q7
 area-sliced and positive-area anchored-sum adapters, finite-sum nonnegativity
 bookkeeping, one-plaquette area-slice/positive-area sanity fixtures, a
 corrected-Q6-input wrapper, and a Q8 concrete observable-bridge Aristotle
@@ -23,7 +23,12 @@ intentionally untouched because Q6 has not landed.
 
 - `TransferHilbertZ2Electric.lean`: sector product, reconstruction,
   decomposition, `LinearEquiv`, finrank additivity/bounds, selected/other
-  projection complement API, and `rpHilbertSpaceSelectedOtherLinearEquiv`.
+  projection complement API, `rpHilbertSpaceSelectedOtherLinearEquiv`, and
+  selected/other rank-nullity corollaries:
+  `finrank_rpHilbertSpace_eq_finrank_selected_add_finrank_other`,
+  `finrank_rpHilbertSpace_pos_iff_finrank_selected_pos_or_finrank_other_pos`,
+  and
+  `finrank_rpHilbertSpace_eq_zero_iff_finrank_selected_eq_zero_and_finrank_other_eq_zero`.
   Ledger records direct file checks, targeted module builds, aggregate GateYM
   builds through 8090 jobs, scoped pre-commit, and standard axiom footprints.
 - `ExponentialClustering.lean`: support-tail monotonicity/subadditivity,
@@ -78,7 +83,8 @@ list` before any integration.
 ## 4. Board state
 
 T2/T3 are finite algebraic sector infrastructure only; no physical transfer,
-Hamiltonian, Wilson slab-kernel, or gap claim. T6 is still blocked by finite
+Hamiltonian, Wilson slab-kernel, or gap claim, even after the selected/other
+finrank API. T6 is still blocked by finite
 rooted-tree/species counting plus older corrected-C2 and metric-tail handoffs.
 T7 has conditional adapters and finite fixtures, not a volume-uniform KP
 theorem. T8 has conditional support-tail bridges and now a submitted
