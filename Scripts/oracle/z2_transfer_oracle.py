@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.20"
+ORACLE_VERSION = "v0.21"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -35,6 +35,7 @@ DEFAULT_TOLERANCES = {
     "partition_rel_error": 1e-10,
     "observable_abs_error": 1e-10,
     "correlation_abs_error": 1e-10,
+    "spectrum_abs_error": 1e-10,
     "matrix_symmetry_abs_error": 1e-12,
     "sector_commutator_abs_error": 1e-12,
 }
@@ -317,6 +318,15 @@ def positive_eigenvalues(K: np.ndarray, tol: float = 1e-10) -> np.ndarray:
     herm = 0.5 * (K + K.T)
     values = np.linalg.eigvalsh(herm)
     return np.array(sorted((v for v in values if v > tol), reverse=True))
+
+
+def first_spectral_gap(eigenvalues: tuple[float, ...] | list[float]) -> float | None:
+    """Return `-log(lambda_1 / lambda_0)` when two positive eigenvalues exist."""
+
+    pos = sorted((float(v) for v in eigenvalues if v > 0.0), reverse=True)
+    if len(pos) < 2:
+        return None
+    return float(-math.log(pos[1] / pos[0]))
 
 
 @dataclass(frozen=True)
@@ -812,6 +822,9 @@ def summary_record(summary: Z2TransferSummary,
         abs(entry.transfer - entry.spectral)
         for entry in summary.flux_correlation_profile
     )
+    full_gap = first_spectral_gap(summary.eigenvalues)
+    plus_gap = first_spectral_gap(summary.sector_eigenvalues_plus)
+    minus_gap = first_spectral_gap(summary.sector_eigenvalues_minus)
     primary_corr = summary.flux_correlation_profile[0]
     correlation_profile = [
         {
@@ -856,6 +869,15 @@ def summary_record(summary: Z2TransferSummary,
                 "center_minus_positive_eigenvalues": list(
                     summary.sector_eigenvalues_minus
                 ),
+                "first_gaps": {
+                    "definition": (
+                        "-log(lambda_1 / lambda_0), positive eigenvalues "
+                        "sorted descending"
+                    ),
+                    "full": full_gap,
+                    "center_plus": plus_gap,
+                    "center_minus": minus_gap,
+                },
             },
         },
         "checks": {
@@ -901,6 +923,36 @@ def _compare_scalar(checks: dict,
     }
     if not ok:
         errors.append(name)
+
+
+def _compare_optional_scalar(checks: dict,
+                             errors: list[str],
+                             name: str,
+                             observed: object,
+                             expected: float | None,
+                             tolerance: float) -> None:
+    """Append a scalar comparison where `None` is an allowed exact value."""
+
+    if expected is None:
+        ok = observed is None
+        checks[name] = {
+            "observed": observed,
+            "expected": None,
+            "abs_error": 0.0 if ok else math.inf,
+            "tolerance": tolerance,
+            "ok": bool(ok),
+        }
+        if not ok:
+            errors.append(name)
+        return
+    _compare_scalar(
+        checks,
+        errors,
+        name,
+        _record_float(observed, name),
+        expected,
+        tolerance,
+    )
 
 
 def _compare_matrix(checks: dict,
@@ -962,6 +1014,10 @@ def verify_record(record: dict) -> dict:
         corr_tol = _record_float(
             tolerances.get("correlation_abs_error", DEFAULT_TOLERANCES["correlation_abs_error"]),
             "tolerances.correlation_abs_error",
+        )
+        spectrum_tol = _record_float(
+            tolerances.get("spectrum_abs_error", DEFAULT_TOLERANCES["spectrum_abs_error"]),
+            "tolerances.spectrum_abs_error",
         )
         matrix_tol = _record_float(
             tolerances.get(
@@ -1064,6 +1120,35 @@ def verify_record(record: dict) -> dict:
                 expected_corr.spectral,
                 corr_tol,
             )
+
+        spectrum = results.get("spectrum")
+        _require(isinstance(spectrum, dict), "`results.spectrum` must be an object")
+        gaps = spectrum.get("first_gaps")
+        _require(isinstance(gaps, dict), "`results.spectrum.first_gaps` must be an object")
+        _compare_optional_scalar(
+            checks,
+            errors,
+            "spectrum_full_first_gap",
+            gaps.get("full"),
+            first_spectral_gap(expected.eigenvalues),
+            spectrum_tol,
+        )
+        _compare_optional_scalar(
+            checks,
+            errors,
+            "spectrum_center_plus_first_gap",
+            gaps.get("center_plus"),
+            first_spectral_gap(expected.sector_eigenvalues_plus),
+            spectrum_tol,
+        )
+        _compare_optional_scalar(
+            checks,
+            errors,
+            "spectrum_center_minus_first_gap",
+            gaps.get("center_minus"),
+            first_spectral_gap(expected.sector_eigenvalues_minus),
+            spectrum_tol,
+        )
 
         matrices = record.get("matrices")
         if matrices is not None:

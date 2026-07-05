@@ -27,9 +27,9 @@ The repo now has enough verified infrastructure to make the next work concrete:
   `FiniteGapSpectralWitness`;
 - executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
   descriptor-requested two-time correlation profiles, sector blocks,
-  descriptor-file input, optional reproducibility matrix emission, and JSON
-  summary output plus descriptor-schema emission and saved-record replay
-  verification;
+  full/sector first-gap records, descriptor-file input, optional
+  reproducibility matrix emission, and JSON summary output plus
+  descriptor-schema emission and saved-record replay verification;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
   payload with vacuum/local eigenvector equations and D12 gap identities;
 - `TwoStateTransferWitness.lean`, a tiny whole-sector witness adapter that
@@ -74,7 +74,8 @@ Achievable deliverables:
   oracle also has a `--verify-record` path that validates saved JSON summaries
   and replays matrix-backed partition, flux, and correlation checks. It now
   also emits the explicit JSON-schema-style descriptor contract through
-  `--write-schema`.
+  `--write-schema`, and records full/center-sector first-gap fields derived
+  from the positive eigenvalue lists.
 
 Done when:
 
@@ -217,8 +218,8 @@ Achievable deliverables:
   surface, including concrete transfer symmetry/Hermiticity, the one-step and
   two-step partition/flux trace identities, the normalized one-link `T = 1`
   flux expectation, and the normalized one-link `T = 2` autocorrelation
-  ratio. It also records descriptor-requested
-  spatial-flux autocorrelation profiles as finite oracle evidence.
+  ratio. It also records descriptor-requested spatial-flux autocorrelation
+  profiles and full/center-sector first-gap fields as finite oracle evidence.
 
 Done when:
 
