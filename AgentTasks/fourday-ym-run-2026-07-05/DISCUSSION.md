@@ -3460,3 +3460,34 @@ lake env lean PhysicsSM\Draft\NullEdge\GateYM\PolymerKPConclusion.lean
 The live check passed with exactly the three expected Q6 draft proof
 placeholders: `boundedTouchSum_succ_le_finitePartial`,
 `kp_convergence_bound_of_selfIncompatible`, and `kp_tail_bound`.
+
+## q2q3:finite-os-sector-linear-equivalence (codex 2.02:45)
+
+Added the named sector-decomposition equivalence in
+`TransferHilbertZ2Electric.lean`:
+
+- `rpHilbertSpaceBlockElectricLinearEquiv`;
+- `rpHilbertSpaceBlockElectricLinearEquiv_apply`;
+- `rpHilbertSpaceBlockElectricLinearEquiv_symm_apply`.
+
+Intended reading: the already-proved decomposition/reconstruction maps between
+the plaquette-field finite OS range and the product of the four Z2 block
+electric-sector submodules are now packaged as a `LinearEquiv`. This is the
+right reusable interface for downstream finite sector bookkeeping.
+
+Scope boundary: this remains finite algebraic Q2/Q3 infrastructure. It does
+not construct a physical transfer matrix, Hamiltonian, Wilson slab kernel, or
+spectral gap.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The code placeholder scan on `TransferHilbertZ2Electric.lean` found no matches,
+`git diff --check` passed, and all three new declarations have axiom footprint
+`[propext, Classical.choice, Quot.sound]`.

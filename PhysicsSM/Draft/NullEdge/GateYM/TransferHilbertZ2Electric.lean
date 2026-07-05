@@ -989,6 +989,54 @@ theorem rpHilbertSpaceBlockElectricDecomposition_reconstruction
       rpHilbertSpaceBlockElectricReconstruction,
       rpBlockElectricSectorProjection_inclusion_apply]
 
+/-- The finite OS range is linearly equivalent to the product of its four
+concrete Z2 block electric sectors.
+
+This packages the preceding decomposition/reconstruction inverse identities as
+a `LinearEquiv`.  It is still a finite algebraic sector decomposition, not a
+physical transfer matrix or spectral statement. -/
+noncomputable def rpHilbertSpaceBlockElectricLinearEquiv {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) ≃ₗ[Complex]
+      rpBlockElectricSectorProduct hLx hLy F :=
+  LinearEquiv.ofLinear
+    (rpHilbertSpaceBlockElectricDecomposition hLx hLy F)
+    (rpHilbertSpaceBlockElectricReconstruction hLx hLy F)
+    (rpHilbertSpaceBlockElectricDecomposition_reconstruction hLx hLy F)
+    (rpHilbertSpaceBlockElectricReconstruction_decomposition hLx hLy F)
+
+/-- The sector-decomposition linear equivalence applies as the decomposition
+map. -/
+@[simp]
+theorem rpHilbertSpaceBlockElectricLinearEquiv_apply {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    rpHilbertSpaceBlockElectricLinearEquiv hLx hLy F v =
+      rpHilbertSpaceBlockElectricDecomposition hLx hLy F v :=
+  rfl
+
+/-- The inverse sector-decomposition linear equivalence applies as the
+reconstruction map. -/
+@[simp]
+theorem rpHilbertSpaceBlockElectricLinearEquiv_symm_apply {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (v : rpBlockElectricSectorProduct hLx hLy F) :
+    (rpHilbertSpaceBlockElectricLinearEquiv hLx hLy F).symm v =
+      rpHilbertSpaceBlockElectricReconstruction hLx hLy F v :=
+  rfl
+
 end TransferHilbertZ2Electric
 end GateYM
 end NullEdge
