@@ -863,6 +863,51 @@ theorem anchoredPlaquettePolymerSum_eq_sum_areaSlices
     intro k _hk
     simp [hq]
 
+/-- The full anchored contribution is equivalently the finite sum over
+positive support cardinalities `1, ..., Fintype.card P`.  The zero slice is
+absent because polymers have nonempty support. -/
+theorem anchoredPlaquettePolymerSum_eq_sum_positiveAreaSlices
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (alpha : Real) (q : P) :
+    anchoredPlaquettePolymerSum ConnectedSupport NontrivialLabel gammaAbs
+      alpha q =
+      (Finset.Icc 1 (Fintype.card P)).sum (fun k =>
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k) := by
+  classical
+  rw [anchoredPlaquettePolymerSum_eq_sum_areaSlices]
+  let f : Nat -> Real := fun k =>
+    anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+      gammaAbs alpha q k
+  have hErase :
+      (Finset.range (Fintype.card P + 1)).erase 0 =
+        Finset.Icc 1 (Fintype.card P) := by
+    ext k
+    simp
+    omega
+  have h0 : f 0 = 0 := by
+    exact anchoredPlaquettePolymerAreaSum_zero ConnectedSupport
+      NontrivialLabel gammaAbs alpha q
+  have h0mem : 0 ∈ Finset.range (Fintype.card P + 1) := by
+    simp
+  calc
+    (Finset.range (Fintype.card P + 1)).sum (fun k =>
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k)
+        = ((Finset.range (Fintype.card P + 1)).erase 0).sum f := by
+          have h := Finset.sum_erase_add
+            (Finset.range (Fintype.card P + 1)) f h0mem
+          rw [h0, add_zero] at h
+          exact h.symm
+    _ = (Finset.Icc 1 (Fintype.card P)).sum f := by
+          rw [hErase]
+    _ = (Finset.Icc 1 (Fintype.card P)).sum (fun k =>
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k) := by
+          rfl
+
 /-- If every anchored support-cardinality slice is bounded by `B k`, then the
 full anchored contribution is bounded by the sum of those slice bounds.
 
