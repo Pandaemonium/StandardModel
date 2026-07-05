@@ -131,5 +131,42 @@ theorem conj_projMinus_posSemidef {k : Type*} [Fintype k] (μ : Fin 4)
     (A : Matrix (Fin 4) k ℂ) : (Aᴴ * projMinus μ * A).PosSemidef :=
   conj_projector_posSemidef _ (projMinus_herm μ) (projMinus_idem μ) A
 
+/-! ### Bridge to the Wilson hopping vertex
+
+The Wilson-Dirac forward/backward hopping terms carry the spin factors
+`1 -+ gamma_mu`; these are exactly twice the projectors, so the hopping vertices
+inherit the projector PSD structure. This is the connection the RP-F reflected
+block relies on. -/
+
+/-- The Wilson forward-hop spin factor is twice the forward projector:
+`1 - gamma_mu = 2 P_plus`. -/
+theorem one_sub_γ_eq_two_projPlus (μ : Fin 4) :
+    (1 : Matrix (Fin 4) (Fin 4) ℂ) - γ μ = (2 : ℂ) • projPlus μ := by
+  unfold projPlus; module
+
+/-- The Wilson backward-hop spin factor is twice the backward projector:
+`1 + gamma_mu = 2 P_minus`. -/
+theorem one_add_γ_eq_two_projMinus (μ : Fin 4) :
+    (1 : Matrix (Fin 4) (Fin 4) ℂ) + γ μ = (2 : ℂ) • projMinus μ := by
+  unfold projMinus; module
+
+/-- **The Wilson forward-hop vertex sandwiches to a PSD block**: `A^dagger
+(1 - gamma_mu) A` is positive semidefinite, because `1 - gamma_mu = 2 P_plus`
+is a nonnegative multiple of an orthogonal projector. (Backward hop analogous
+via `one_add_γ_eq_two_projMinus`.) -/
+theorem conj_one_sub_γ_posSemidef {k : Type*} [Fintype k] (μ : Fin 4)
+    (A : Matrix (Fin 4) k ℂ) :
+    (Aᴴ * ((1 : Matrix (Fin 4) (Fin 4) ℂ) - γ μ) * A).PosSemidef := by
+  rw [one_sub_γ_eq_two_projPlus, Matrix.mul_smul, Matrix.smul_mul]
+  exact (conj_projPlus_posSemidef μ A).smul (by norm_num)
+
+/-- The Wilson backward-hop vertex sandwiches to a PSD block: `A^dagger
+(1 + gamma_mu) A` is positive semidefinite. -/
+theorem conj_one_add_γ_posSemidef {k : Type*} [Fintype k] (μ : Fin 4)
+    (A : Matrix (Fin 4) k ℂ) :
+    (Aᴴ * ((1 : Matrix (Fin 4) (Fin 4) ℂ) + γ μ) * A).PosSemidef := by
+  rw [one_add_γ_eq_two_projMinus, Matrix.mul_smul, Matrix.smul_mul]
+  exact (conj_projMinus_posSemidef μ A).smul (by norm_num)
+
 end WilsonProjectors
 end PhysicsSM.Draft.NullEdge.GateYM
