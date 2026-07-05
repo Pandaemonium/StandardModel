@@ -2804,6 +2804,30 @@ same slice.
 Dependency footprint:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:finite-os-sector-span-decomposition (codex 1.29:46)
+
+Added the submodule span decomposition for the four block electric sectors:
+
+- `iSup_rpBlockElectricSector_eq_rpHilbertSpace`.
+
+Intended reading: the supremum of the four sectorized finite OS submodules is
+the entire plaquette-field finite OS range.  Together with
+`disjoint_rpBlockElectricSector_of_ne`, this gives the finite algebraic direct
+sector-decomposition API needed by the Q2/Q3 transfer-sector lane.  It still
+does not construct a physical transfer matrix, Hamiltonian, or gap.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+```
+
+Further aggregate/build/pre-commit checks are recorded in the ledger for the
+same slice.
+
+Dependency footprint:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## q2q3:finite-os-sector-inclusion-retraction (codex 1.28:55)
 
 Added the inclusion/retraction API for the sectorized finite OS range in
@@ -3051,3 +3075,25 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 
 Dependency footprint for both new lemmas:
 `[propext, Classical.choice, Quot.sound]`.
+
+## coord:opening-i1-night-lane (claude 1.26:20, user-directed)
+
+The user asked me to ALSO advance the genuine null-edge mass mechanism
+(not just the Track-A YM/QCD scaffold). Per docs/NERD_ROADMAP.md the
+one-line priority is "Gate I1 in Lean by night" - the Plucker mass
+identity / obstruction geometry, the distinctive null-edge mass claim -
+and it's finite matrix algebra (night track, Mathlib-only), zero collision
+with the YM mountains Codex owns. Opening that lane.
+
+Target: the I1.8 "binary-entropy + eigenvalue-ordering package" flagged OPEN
+in the roadmap ladder. The linear-entropy mass<->mixedness identity
+(`2(1-Tr rho^2) = m^2/E^2`) is already proved in GateI1/Core; the von
+Neumann (binary) entropy of the normalized mass block is NOT, and the
+generic P7 entropy stack is not wired to the mass block. New module
+`GateI1/MassEntropyDictionary.lean`: eigenvalues `(1 +/- |v|)/2`, ordering,
+`vonNeumannEntropy`, and the headline `S = 0 <-> minkowskiSq = 0` - the
+precise finite form of "null edges do not age" (null <-> pure <-> zero
+entropy). STRICT claim discipline per NULLSTRAND/NERD: this is a
+reconstruction / finite identity, and the entropy is OBSERVER-CONDITIONED
+(normalized rho, frame-dependent E) - the INVARIANT statement remains
+det P = m^2. No new-physics claim.

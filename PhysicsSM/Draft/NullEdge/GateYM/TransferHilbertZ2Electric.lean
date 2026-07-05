@@ -25,7 +25,8 @@ map from the finite OS range onto that sectorized submodule, with an explicit
 linear inclusion/retraction pair and endomorphism-level four-sector
 decomposition on the finite OS range.  The range of each sector endomorphism is
 characterized as the matching sectorized finite OS submodule, and distinct
-sectorized submodules are disjoint.
+sectorized submodules are disjoint.  The four sectorized submodules span the
+plaquette-field finite OS range.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -792,6 +793,37 @@ theorem disjoint_rpBlockElectricSector_of_ne {Lx Ly : Nat}
   intro v hv hv'
   exact eq_zero_of_mem_rpBlockElectricSector_of_ne
     hLx hLy F ex ey ex' ey' v hv hv' hne
+
+/-- The four sectorized finite OS ranges span the plaquette-field finite OS
+range. -/
+theorem iSup_rpBlockElectricSector_eq_rpHilbertSpace {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    (⨆ ex : Bool, ⨆ ey : Bool, rpBlockElectricSector hLx hLy F ex ey) =
+      rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) := by
+  apply le_antisymm
+  · apply iSup_le
+    intro ex
+    apply iSup_le
+    intro ey v hv
+    exact hv.1
+  · intro v hv
+    rw [← sum_blockElectricSectorProjection_eq_self hLx hLy v]
+    have hsum :
+        (∑ ex : Bool, ∑ ey : Bool,
+          blockElectricSectorProjection hLx hLy ex ey v) ∈
+          (⨆ ex : Bool, ⨆ ey : Bool,
+            rpBlockElectricSector hLx hLy F ex ey) := by
+      exact Submodule.sum_mem _ (fun ex _ =>
+        Submodule.sum_mem _ (fun ey _ =>
+          Submodule.mem_iSup_of_mem ex
+            (Submodule.mem_iSup_of_mem ey
+              (blockElectricSectorProjection_mem_rpBlockElectricSector_z2PlaquetteBlock
+                hLx hLy F ex ey v hv))))
+    simpa [Finset.sum_apply] using hsum
 
 end TransferHilbertZ2Electric
 end GateYM
