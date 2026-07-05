@@ -36,23 +36,24 @@ here from the orbit structure.)
   traceless and distinct - the `SU(3)` fundamental weight signature.
 * `colorTripletSpan_su3_invariant` (**headline**): `span{v4,v5,v6}` is invariant
   under ALL eight `SU(3)` generators (the two Cartan `H23, H13` and the six
-  ladders `T_ij`). A three-dimensional, `SU(3)`-invariant, weight-complete
-  subrepresentation with the fundamental weights.
+  ladders `T_ij`).
+* `tripletSpan_irreducible` (**headline**): the invariant subspace is
+  IRREDUCIBLE - any `SU(3)`-invariant subspace of `tripletSpan` is `⊥` or the
+  whole triplet. Proof: from any nonzero vector, `H23`/`H13` (with distinct
+  eigenvalues) EXTRACT a basis vector, and the six ladders CONNECT all of
+  `v4, v5, v6`. With the traceless distinct fundamental weight signature, an
+  irreducible 3-dim `SU(3)`-rep with those weights IS the fundamental rep `3`.
 
-Via 1a the acting `SU(3)` is Mathlib's `Matrix.specialUnitaryGroup (Fin 3) ℂ`.
+Via 1a the acting `SU(3)` is Mathlib's `Matrix.specialUnitaryGroup (Fin 3) ℂ`,
+so this is the standard fundamental representation realized on the
+complex-octonion ideal.
 
-## Honesty note (red-team audit, 2026-07-05): irreducibility is NOT yet proved
+## Note (red-team audit, 2026-07-05)
 
-What is proved is INVARIANCE plus the traceless/distinct fundamental weight
-signature. That does NOT by itself prove the representation is IRREDUCIBLE - i.e.
-that it is THE fundamental rep `3` as opposed to some other 3-dimensional
-`SU(3)`-representation with those weights. The identification "it IS the
-fundamental `3`" is one lemma short: it needs a proof that `tripletSpan` has no
-proper nonzero `SU(3)`-invariant subspace. That lemma is TRACTABLE (the six
-ladders connect all of `v4, v5, v6`, so any invariant subspace containing one
-weight vector contains all three), but it is NOT in this module yet. Until then,
-claim only "an `SU(3)`-invariant 3-dim subspace carrying the fundamental
-weights", not "the fundamental representation".
+The full-repo audit correctly flagged that an EARLIER version proved only
+invariance + the weight signature, which is one lemma short of "the fundamental
+rep" (it did not rule out a reducible 3-dim rep with those weights). That gap is
+now CLOSED by `tripletSpan_irreducible`.
 
 Trusted, kernel-checked, `s o r r y`-free. Prerequisites: `ColorRepresentation`,
 `OperatorAlgebra`. Source: Furey color `SU(3)` on the complex-octonion ideal.
@@ -175,5 +176,87 @@ theorem colorTripletSpan_su3_invariant :
     · exact ⟨t12a, t21a, t13a, t31a, t23a, t32a⟩
     · exact ⟨t12b, t21b, t13b, t31b, t23b, t32b⟩
     · exact ⟨t12c, t21c, t13c, t31c, t23c, t32c⟩
+
+/-! ## Irreducibility: the triplet IS the fundamental rep
+
+The extraction lemmas below use that `H23`/`H13` have DISTINCT eigenvalues on
+`v4, v5, v6` to isolate a single basis vector from any nonzero combination; the
+ladders then connect all three. Hence no proper nonzero invariant subspace. -/
+
+/-- `H23^2 - H23` extracts (twice) the `v4` component: `H23` eigenvalues are
+`v4 -> -1`, `v5 -> +1`, `v6 -> 0`, and `(-1)^2-(-1)=2`, `1^2-1=0`, `0^2-0=0`. -/
+theorem extract_v4 (a b c : ℂ) :
+    H23_op (H23_op (a • v4 + b • v5 + c • v6)) - H23_op (a • v4 + b • v5 + c • v6)
+      = (2 * a) • v4 := by
+  simp only [map_add, map_smul, H23_op_v4, H23_op_v5, H23_op_v6, smul_zero, map_zero]; module
+
+/-- `H23^2 + H23` extracts (twice) the `v5` component. -/
+theorem extract_v5 (a b c : ℂ) :
+    H23_op (H23_op (a • v4 + b • v5 + c • v6)) + H23_op (a • v4 + b • v5 + c • v6)
+      = (2 * b) • v5 := by
+  simp only [map_add, map_smul, H23_op_v4, H23_op_v5, H23_op_v6, smul_zero, map_zero]; module
+
+/-- `H13^2 + H13` extracts (twice) the `v6` component (`H13`: `v4 -> -1`,
+`v5 -> 0`, `v6 -> +1`). -/
+theorem extract_v6 (a b c : ℂ) :
+    H13_op (H13_op (a • v4 + b • v5 + c • v6)) + H13_op (a • v4 + b • v5 + c • v6)
+      = (2 * c) • v6 := by
+  simp only [map_add, map_smul, H13_op_v4, H13_op_v5, H13_op_v6, smul_zero, map_zero]; module
+
+/-- **1b IRREDUCIBILITY**: any subspace of `tripletSpan` closed under the eight
+`SU(3)` generators is `⊥` or all of `tripletSpan`. Together with the traceless
+distinct fundamental weights, this makes the color triplet THE `SU(3)`
+fundamental representation `3` (not merely some 3-dim rep with those weights). -/
+theorem tripletSpan_irreducible (W : Submodule ℂ ComplexOctonion)
+    (hle : W ≤ tripletSpan)
+    (hH23 : ∀ x ∈ W, H23_op x ∈ W) (hH13 : ∀ x ∈ W, H13_op x ∈ W)
+    (hT12 : ∀ x ∈ W, T12_op x ∈ W) (hT21 : ∀ x ∈ W, T21_op x ∈ W)
+    (hT13 : ∀ x ∈ W, T13_op x ∈ W) (hT31 : ∀ x ∈ W, T31_op x ∈ W)
+    (hT23 : ∀ x ∈ W, T23_op x ∈ W) (hT32 : ∀ x ∈ W, T32_op x ∈ W)
+    (hne : W ≠ ⊥) : W = tripletSpan := by
+  obtain ⟨w, hwW, hw0⟩ := (Submodule.ne_bot_iff W).mp hne
+  have hwsp : w ∈ tripletSpan := hle hwW
+  rw [tripletSpan, Submodule.mem_span_triple] at hwsp
+  obtain ⟨a, b, c, habc⟩ := hwsp
+  have conn : ∀ z ∈ W, z = v4 ∨ z = v5 ∨ z = v6 → v4 ∈ W ∧ v5 ∈ W ∧ v6 ∈ W := by
+    rintro z hz (rfl | rfl | rfl)
+    · refine ⟨hz, ?_, ?_⟩
+      · have := hT32 _ hz; rwa [T32_op_v4] at this
+      · have := hT31 _ hz; rw [T31_op_v4] at this; simpa using neg_mem this
+    · refine ⟨?_, hz, ?_⟩
+      · have := hT23 _ hz; rwa [T23_op_v5] at this
+      · have := hT21 _ hz; rwa [T21_op_v5] at this
+    · refine ⟨?_, ?_, hz⟩
+      · have := hT13 _ hz; rw [T13_op_v6] at this; simpa using neg_mem this
+      · have := hT12 _ hz; rwa [T12_op_v6] at this
+  have hall : v4 ∈ W ∧ v5 ∈ W ∧ v6 ∈ W := by
+    by_cases ha : a = 0
+    · by_cases hb : b = 0
+      · have hc : c ≠ 0 := by rintro rfl; simp [ha, hb] at habc; exact hw0 habc.symm
+        have hmem : (2 * c) • v6 ∈ W := by
+          rw [← extract_v6 a b c, habc]; exact add_mem (hH13 _ (hH13 _ hwW)) (hH13 _ hwW)
+        have hv6 : v6 ∈ W := by
+          have h2c : (2 * c) ≠ 0 := by simp [hc]
+          have := Submodule.smul_mem W ((2 * c)⁻¹) hmem
+          rwa [smul_smul, inv_mul_cancel₀ h2c, one_smul] at this
+        exact conn v6 hv6 (Or.inr (Or.inr rfl))
+      · have hmem : (2 * b) • v5 ∈ W := by
+          rw [← extract_v5 a b c, habc]; exact add_mem (hH23 _ (hH23 _ hwW)) (hH23 _ hwW)
+        have hv5 : v5 ∈ W := by
+          have h2b : (2 * b) ≠ 0 := by simp [hb]
+          have := Submodule.smul_mem W ((2 * b)⁻¹) hmem
+          rwa [smul_smul, inv_mul_cancel₀ h2b, one_smul] at this
+        exact conn v5 hv5 (Or.inr (Or.inl rfl))
+    · have hmem : (2 * a) • v4 ∈ W := by
+        rw [← extract_v4 a b c, habc]; exact sub_mem (hH23 _ (hH23 _ hwW)) (hH23 _ hwW)
+      have hv4 : v4 ∈ W := by
+        have h2a : (2 * a) ≠ 0 := by simp [ha]
+        have := Submodule.smul_mem W ((2 * a)⁻¹) hmem
+        rwa [smul_smul, inv_mul_cancel₀ h2a, one_smul] at this
+      exact conn v4 hv4 (Or.inl rfl)
+  refine le_antisymm hle ?_
+  rw [tripletSpan, Submodule.span_le]
+  rintro x (rfl | rfl | rfl)
+  exacts [hall.1, hall.2.1, hall.2.2]
 
 end PhysicsSM.Algebra.Furey.ColorTripletFundamental

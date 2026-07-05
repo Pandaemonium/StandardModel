@@ -44,11 +44,13 @@ substantially corrected this thesis. The honest current status:
 A second audit that read the ACTUAL Lean source (not the prose) confirmed all of
 the above and added two corrections the blind audit could not see:
 
-- **1b is one lemma short of "the fundamental rep".** Only INVARIANCE + the
-  weight signature are proved; IRREDUCIBILITY (no proper nonzero invariant
-  subspace of `tripletSpan`) is NOT. So "the color triplet IS the fundamental
-  `3`" overstates it. This is TRACTABLE (the ladders connect all of `v4,v5,v6`)
-  and is the cheapest genuine strengthening - `tripletSpan_isIrreducible`.
+- **1b: irreducibility gap now CLOSED.** The audit flagged that only INVARIANCE
+  + the weight signature were proved, so "the color triplet IS the fundamental
+  `3`" was one lemma short. This is now FIXED: `tripletSpan_irreducible`
+  (`Furey/ColorTripletFundamental`) proves any `SU(3)`-invariant subspace of
+  `tripletSpan` is `⊥` or the whole triplet (extract a basis vector via distinct
+  `H23`/`H13` eigenvalues, then the ladders connect all three). So 1b now
+  genuinely gives the fundamental rep `3`.
 - **The Furey generation is only PARTIALLY octonion-derived.** The left-doublet
   charges are derived from `Q_op`; but anomaly cancellation is a fact about a
   HARDCODED numeric SM table, and the right-handed sector is "conventional

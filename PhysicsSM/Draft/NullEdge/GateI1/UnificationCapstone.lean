@@ -20,12 +20,11 @@ The four bundled facts:
    `Octonion.G2FixingE111SpecialUnitaryGroup`): the octonion automorphisms
    fixing the complex structure form exactly `Matrix.specialUnitaryGroup
    (Fin 3) ℂ`.
-2. **The color triplet carries the `SU(3)` fundamental weights** (step 1b,
+2. **The color triplet IS the `SU(3)` fundamental rep** (step 1b,
    `Furey/ColorTripletFundamental`): `span{v4,v5,v6}` is invariant under all
-   eight `SU(3)` generators, with the traceless distinct fundamental weights.
-   (Audit note: IRREDUCIBILITY is not yet proved, so this is "an invariant
-   3-dim subspace with the fundamental weights", one lemma short of "IS the
-   fundamental `3`".)
+   eight `SU(3)` generators, IRREDUCIBLE (`tripletSpan_irreducible`), and carries
+   the traceless distinct fundamental weights - hence the fundamental rep `3`.
+   (The irreducibility gap the audit flagged is now closed.)
 3. **One SM generation, partially octonion-derived** (Furey,
    `FureyRealizesOneGeneration`): the LEFT-doublet Gell-Mann-Nishijima charges
    are derived from the octonion operators. (Audit note: the anomaly
