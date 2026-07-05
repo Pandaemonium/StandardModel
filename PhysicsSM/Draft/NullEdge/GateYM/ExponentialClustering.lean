@@ -520,6 +520,50 @@ theorem hasExponentialClusteringSupport_of_supportTail_bound
         Real.exp (-(m * L.separation A B)) := by
       rw [mul_assoc]
 
+/-- Finite-support exponential clustering from a uniform per-anchor tail
+estimate.
+
+This is the cardinality-prefactor form of the Q8 bridge: if each support
+polymer of the source observable has the same exponential tail bound `B`, then
+the observable support contributes only its finite cardinality factor.  This is
+still conditional on the explicit anchored tail estimate; no Q6 tail theorem or
+concrete observable expansion is claimed here. -/
+theorem hasExponentialClusteringSupport_of_uniform_anchor_tail_bound
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (L : LocalObservableSupportData Gamma Obs)
+    (m B : Real)
+    (hTail : forall A Bobs : Obs, forall g0 : Gamma, g0 ∈ L.support A ->
+      tailContribution M hdec D g0 (L.separation A Bobs) <=
+        B * Real.exp (-(m * L.separation A Bobs)))
+    (hBridge : forall A Bobs : Obs,
+      ‖L.connectedCorr A Bobs‖ <=
+        L.prefactor A Bobs *
+          supportTail M hdec D (L.support A) (L.separation A Bobs)) :
+    HasExponentialClusteringSupport L
+      (fun A Bobs => L.prefactor A Bobs * ((L.support A).card : Real) * B) m := by
+  intro A Bobs
+  have hstep :
+      supportTail M hdec D (L.support A) (L.separation A Bobs)
+        <= ((L.support A).card : Real) *
+            (B * Real.exp (-(m * L.separation A Bobs))) := by
+    exact supportTail_le_card_mul_bound M hdec D (L.support A)
+      (L.separation A Bobs) (B * Real.exp (-(m * L.separation A Bobs)))
+      (hTail A Bobs)
+  calc
+    ‖L.connectedCorr A Bobs‖
+        <= L.prefactor A Bobs *
+          supportTail M hdec D (L.support A) (L.separation A Bobs) :=
+      hBridge A Bobs
+    _ <= L.prefactor A Bobs *
+        (((L.support A).card : Real) *
+          (B * Real.exp (-(m * L.separation A Bobs)))) := by
+      exact mul_le_mul_of_nonneg_left hstep (L.prefactor_nonneg A Bobs)
+    _ = (L.prefactor A Bobs * ((L.support A).card : Real) * B) *
+        Real.exp (-(m * L.separation A Bobs)) := by
+      ring
+
 /-- Finite-support exponential clustering with a uniform energy ceiling on the
 source observable support.
 
