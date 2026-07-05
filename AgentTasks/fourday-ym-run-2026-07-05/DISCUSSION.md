@@ -3349,3 +3349,39 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 ```
 
 The new theorem axiom footprint is `[propext, Classical.choice, Quot.sound]`.
+
+## q2q3:finite-os-product-decomposition (codex 1.34:59)
+
+Added product-level packaging for the concrete Z2 block electric-sector
+decomposition in `TransferHilbertZ2Electric.lean`:
+
+- `rpBlockElectricSectorProduct`;
+- `rpBlockElectricSectorProjection_comp_inclusion_eq_zero_of_ne`;
+- `rpBlockElectricSectorProjection_inclusion_apply`;
+- `rpHilbertSpaceBlockElectricDecomposition`;
+- `rpHilbertSpaceBlockElectricReconstruction`;
+- `rpHilbertSpaceBlockElectricReconstruction_decomposition`;
+- `rpHilbertSpaceBlockElectricDecomposition_reconstruction`.
+
+Intended reading: the finite OS range for a plaquette-field block weight is now
+packaged with explicit linear maps to and from the product of the four
+sectorized finite OS submodules, and the two composition identities are
+kernel-checked. This strengthens the Q2/Q3 finite sector-decomposition API
+from span/disjointness/projections to an actual product-coordinate package.
+
+Scope boundary: this is still finite algebraic Q2/Q3 infrastructure. It does
+not construct the physical transfer matrix, Wilson slab kernel, Hamiltonian, or
+gap.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The code escape-hatch scan on `TransferHilbertZ2Electric.lean` found no matches,
+`git diff --check` passed, and the new proof theorems have axiom footprint
+`[propext, Classical.choice, Quot.sound]`.

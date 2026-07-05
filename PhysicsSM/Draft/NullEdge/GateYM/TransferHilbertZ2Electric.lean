@@ -26,7 +26,9 @@ linear inclusion/retraction pair and endomorphism-level four-sector
 decomposition on the finite OS range.  The range of each sector endomorphism is
 characterized as the matching sectorized finite OS submodule, and distinct
 sectorized submodules are disjoint.  The four sectorized submodules span the
-plaquette-field finite OS range.
+plaquette-field finite OS range, with explicit linear maps decomposing any OS
+range vector into its four sector projections and reconstructing it from those
+components.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -661,6 +663,71 @@ theorem rpBlockElectricSectorProjection_comp_inclusion {Lx Ly : Nat}
     (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
       hLx hLy ex ey v v.property.2) i
 
+/-- Projecting an included vector from a distinct sector gives zero. -/
+theorem rpBlockElectricSectorProjection_comp_inclusion_eq_zero_of_ne
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey ex' ey' : Bool) (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    (rpBlockElectricSectorProjection hLx hLy F ex' ey').comp
+        (rpBlockElectricSectorInclusion hLx hLy F ex ey) = 0 := by
+  ext v i
+  exact congrFun
+    (blockElectricSectorProjection_eq_zero_of_inBlockElectricSector_ne
+      hLx hLy ex ey ex' ey' v v.property.2 hne) i
+
+/-- Pointwise form of projecting an included sector component: it is the
+component itself in the matching sector and zero in the other three sectors. -/
+theorem rpBlockElectricSectorProjection_inclusion_apply
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey ex' ey' : Bool)
+    (v : rpBlockElectricSector hLx hLy F ex ey)
+    (i :
+      FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) :
+    ((rpBlockElectricSectorProjection hLx hLy F ex' ey')
+        (rpBlockElectricSectorInclusion hLx hLy F ex ey v) :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) i =
+      if ex = ex' ∧ ey = ey' then
+        (v :
+          (FluxSectorZ2.TorusLinkField Lx Ly ×
+            FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) i
+      else 0 := by
+  by_cases h : ex = ex' ∧ ey = ey'
+  · rcases h with ⟨rfl, rfl⟩
+    have hs :=
+      congrArg (fun T => T v)
+        (rpBlockElectricSectorProjection_comp_inclusion hLx hLy F ex ey)
+    simpa using
+      congrArg
+        (fun w : rpBlockElectricSector hLx hLy F ex ey =>
+          ((w :
+            (FluxSectorZ2.TorusLinkField Lx Ly ×
+              FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) i)) hs
+  · have hne : ex ≠ ex' ∨ ey ≠ ey' := by
+      by_cases hx : ex = ex'
+      · right
+        intro hy
+        exact h ⟨hx, hy⟩
+      · exact Or.inl hx
+    have hz :=
+      congrArg (fun T => T v)
+        (rpBlockElectricSectorProjection_comp_inclusion_eq_zero_of_ne
+          hLx hLy F ex ey ex' ey' hne)
+    simpa [h] using
+      congrArg
+        (fun w : rpBlockElectricSector hLx hLy F ex' ey' =>
+          ((w :
+            (FluxSectorZ2.TorusLinkField Lx Ly ×
+              FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) i)) hz
+
 /-- The selected block electric-sector projection as an endomorphism of the
 finite OS range. -/
 def rpHilbertSpaceBlockElectricProjection {Lx Ly : Nat}
@@ -824,6 +891,103 @@ theorem iSup_rpBlockElectricSector_eq_rpHilbertSpace {Lx Ly : Nat}
               (blockElectricSectorProjection_mem_rpBlockElectricSector_z2PlaquetteBlock
                 hLx hLy F ex ey v hv))))
     simpa [Finset.sum_apply] using hsum
+
+/-- The product of the four sectorized finite OS ranges.  This is the
+finite-algebraic carrier for the concrete Z2 electric-sector decomposition,
+not a physical transfer Hilbert-space direct sum. -/
+abbrev rpBlockElectricSectorProduct {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) : Type :=
+  (ex : Bool) -> (ey : Bool) -> rpBlockElectricSector hLx hLy F ex ey
+
+/-- Decompose a finite OS vector into its four concrete Z2 block
+electric-sector projections. -/
+def rpHilbertSpaceBlockElectricDecomposition {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) →ₗ[Complex]
+      rpBlockElectricSectorProduct hLx hLy F where
+  toFun v := fun ex ey => rpBlockElectricSectorProjection hLx hLy F ex ey v
+  map_add' := by
+    intro u v
+    ext ex ey i
+    simp
+  map_smul' := by
+    intro c v
+    ext ex ey i
+    simp
+
+/-- Reconstruct a finite OS vector from its four concrete Z2 block
+electric-sector components by summing their inclusions. -/
+def rpHilbertSpaceBlockElectricReconstruction {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    rpBlockElectricSectorProduct hLx hLy F →ₗ[Complex]
+      rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) where
+  toFun v :=
+    ∑ ex : Bool, ∑ ey : Bool,
+      rpBlockElectricSectorInclusion hLx hLy F ex ey (v ex ey)
+  map_add' := by
+    intro u v
+    simp [Finset.sum_add_distrib]
+  map_smul' := by
+    intro c v
+    simp
+
+/-- Decomposing a finite OS vector into its four block electric sectors and
+then reconstructing it gives the original vector. -/
+theorem rpHilbertSpaceBlockElectricReconstruction_decomposition
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    (rpHilbertSpaceBlockElectricReconstruction hLx hLy F).comp
+        (rpHilbertSpaceBlockElectricDecomposition hLx hLy F) =
+      LinearMap.id := by
+  ext v i
+  have h :=
+    congrArg (fun T =>
+      T v) (sum_rpHilbertSpaceBlockElectricProjection_eq_id hLx hLy F)
+  simpa [rpHilbertSpaceBlockElectricReconstruction,
+    rpHilbertSpaceBlockElectricDecomposition,
+    rpHilbertSpaceBlockElectricProjection] using
+      congrArg
+        (fun w : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) =>
+          ((w :
+            (FluxSectorZ2.TorusLinkField Lx Ly ×
+              FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) i)) h
+
+/-- Reconstructing from sector components and then decomposing recovers the
+same four components. -/
+theorem rpHilbertSpaceBlockElectricDecomposition_reconstruction
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    (rpHilbertSpaceBlockElectricDecomposition hLx hLy F).comp
+        (rpHilbertSpaceBlockElectricReconstruction hLx hLy F) =
+      LinearMap.id := by
+  apply LinearMap.ext
+  intro v
+  funext ex
+  funext ey
+  apply Subtype.ext
+  funext i
+  cases ex <;> cases ey <;>
+    simp [rpHilbertSpaceBlockElectricDecomposition,
+      rpHilbertSpaceBlockElectricReconstruction,
+      rpBlockElectricSectorProjection_inclusion_apply]
 
 end TransferHilbertZ2Electric
 end GateYM
