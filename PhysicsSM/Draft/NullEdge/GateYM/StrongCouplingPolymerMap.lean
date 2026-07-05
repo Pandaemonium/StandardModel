@@ -973,6 +973,89 @@ theorem plaquetteKPBound_of_closedTouchNeighborhood_anchorBound
       (hB X)).trans
       (hScale X)
 
+/-- A reusable sufficient condition for the explicit finite plaquette-polymer
+KP bound using area-sliced anchored estimates.
+
+This is the landing pad for support-counting: if each anchored
+support-cardinality slice is bounded by `B k`, and each root has enough energy
+to pay for its closed-neighborhood count times the sum of those slice bounds,
+then the explicit `PlaquetteKPBound` follows. -/
+theorem plaquetteKPBound_of_closedTouchNeighborhood_areaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (B : Nat -> Real)
+    (hB : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+        forall k : Nat, k ∈ Finset.range (Fintype.card P + 1) ->
+          anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+            gammaAbs alpha q k <= B k)
+    (hScale : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      ((closedTouchNeighborhood Adj X.support).card : Real) *
+          (Finset.range (Fintype.card P + 1)).sum B <=
+        alpha * (X.support.card : Real)) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  intro X
+  exact
+    (plaquetteKPSum_le_card_closedTouchNeighborhood_mul_sum_areaBounds Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X B
+      (hB X)).trans
+      (hScale X)
+
+/-- A real-valued growth-constant version of
+`plaquetteKPBound_of_closedTouchNeighborhood_areaBounds`.
+
+This is useful once a concrete plaquette geometry proves
+`card N(A) <= C * card A`, while support counting supplies the per-area slice
+bound `B`.  The theorem is still conditional and proves no small-coupling
+estimate by itself. -/
+theorem plaquetteKPBound_of_realClosedNeighborhood_areaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (C : Real) (B : Nat -> Real)
+    (hBsum_nonneg : 0 <= (Finset.range (Fintype.card P + 1)).sum B)
+    (hCard : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      ((closedTouchNeighborhood Adj X.support).card : Real) <=
+        C * (X.support.card : Real))
+    (hArea : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+        forall k : Nat, k ∈ Finset.range (Fintype.card P + 1) ->
+          anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+            gammaAbs alpha q k <= B k)
+    (hsmall : C * (Finset.range (Fintype.card P + 1)).sum B <= alpha) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  refine
+    plaquetteKPBound_of_closedTouchNeighborhood_areaBounds Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha B
+      hArea ?_
+  intro X
+  have hSupport_nonneg : 0 <= (X.support.card : Real) := by
+    exact_mod_cast Nat.zero_le X.support.card
+  calc
+    ((closedTouchNeighborhood Adj X.support).card : Real) *
+        (Finset.range (Fintype.card P + 1)).sum B
+        <= (C * (X.support.card : Real)) *
+            (Finset.range (Fintype.card P + 1)).sum B := by
+          exact mul_le_mul_of_nonneg_right (hCard X) hBsum_nonneg
+    _ = (X.support.card : Real) *
+          (C * (Finset.range (Fintype.card P + 1)).sum B) := by
+          ring
+    _ <= (X.support.card : Real) * alpha := by
+          exact mul_le_mul_of_nonneg_left hsmall hSupport_nonneg
+    _ = alpha * (X.support.card : Real) := by
+          ring
+
 /-- A real-valued growth-constant version of
 `plaquetteKPBound_of_closedTouchNeighborhood_anchorBound`.
 
@@ -1065,6 +1148,48 @@ theorem plaquetteKPBound_of_singletonBound_anchorBound
       _ = alpha * (X.support.card : Real) := by
             ring
   exact hProduct.trans hScale
+
+/-- A singleton-degree version of the area-sliced KP-bound adapter.
+
+If every singleton closed touch-neighborhood has degree at most `D`, and the
+uniform per-area anchored-slice bounds have total smallness
+`D * sum_k B k <= alpha`, then `PlaquetteKPBound` follows. -/
+theorem plaquetteKPBound_of_singletonBound_areaBounds
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (D : Nat) (B : Nat -> Real)
+    (hBsum_nonneg : 0 <= (Finset.range (Fintype.card P + 1)).sum B)
+    (hD : forall p : P,
+      (closedTouchNeighborhood Adj ({p} : Finset P)).card <= D)
+    (hArea : forall q : P,
+      forall k : Nat, k ∈ Finset.range (Fintype.card P + 1) ->
+        anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+          gammaAbs alpha q k <= B k)
+    (hsmall : (D : Real) * (Finset.range (Fintype.card P + 1)).sum B
+      <= alpha) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  refine
+    plaquetteKPBound_of_realClosedNeighborhood_areaBounds Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha
+      (D : Real) B hBsum_nonneg ?_ ?_ hsmall
+  · intro X
+    have hCard :
+        (closedTouchNeighborhood Adj X.support).card <= X.support.card * D :=
+      card_closedTouchNeighborhood_le_card_mul_singletonBound Adj
+        X.support D hD
+    calc
+      ((closedTouchNeighborhood Adj X.support).card : Real)
+          <= ((X.support.card * D : Nat) : Real) := by
+            exact_mod_cast hCard
+      _ = (D : Real) * (X.support.card : Real) := by
+            norm_num [Nat.cast_mul]
+            ring
+  · intro _X q _hq k hk
+    exact hArea q k hk
 
 /-- An explicit finite plaquette-polymer KP bound implies the abstract
 `KPCondition` for the conservative Q7 polymer system.
