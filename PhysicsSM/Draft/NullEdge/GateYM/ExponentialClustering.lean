@@ -207,6 +207,38 @@ theorem supportTail_union [DecidableEq Gamma]
         Finset.sum S (fun g => tailContribution M hdec D g R) +
           Finset.sum T (fun g => tailContribution M hdec D g R))
 
+/-- Enlarging the observable support can only increase the support tail. -/
+theorem supportTail_mono
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    {S T : Finset Gamma} (R : Real) (hST : S ⊆ T) :
+    supportTail M hdec D S R <= supportTail M hdec D T R := by
+  unfold supportTail
+  exact Finset.sum_le_sum_of_subset_of_nonneg hST (by
+    intro g _hgT _hgS
+    exact tailContribution_nonneg M hdec D g R)
+
+/-- The support tail is subadditive over arbitrary finite support unions.
+Overlap is harmless: common anchors are overcounted on the right. -/
+theorem supportTail_union_le [DecidableEq Gamma]
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S T : Finset Gamma) (R : Real) :
+    supportTail M hdec D (S ∪ T) R
+      <= supportTail M hdec D S R + supportTail M hdec D T R := by
+  calc
+    supportTail M hdec D (S ∪ T) R
+        = supportTail M hdec D (S ∪ T \ S) R := by
+          rw [Finset.union_sdiff_self_eq_union]
+    _ = supportTail M hdec D S R + supportTail M hdec D (T \ S) R :=
+          supportTail_union M hdec D S (T \ S) R Finset.disjoint_sdiff
+    _ <= supportTail M hdec D S R + supportTail M hdec D T R := by
+          exact add_le_add_right
+            (supportTail_mono M hdec D R Finset.sdiff_subset)
+            (supportTail M hdec D S R)
+
 /-- Exponential clustering for the support-indexed connected correlator. -/
 def HasExponentialClusteringSupport
     (L : LocalObservableSupportData Gamma Obs)

@@ -549,7 +549,8 @@ abstract connected-correlator data, named cluster-tail contribution, and the
 kernel-checked implication from an explicit Q6-style tail bound plus an
 observable-to-cluster bridge to exponential clustering, with `supportTail`
 empty/singleton/nonnegativity lemmas plus insert and disjoint-union splitting
-for finite-support specialization. No concrete plaquette geometry, KP proof,
-or transfer-Hilbert statement is claimed).
+for finite-support specialization, plus monotonicity under support enlargement
+and arbitrary-union subadditivity. No concrete plaquette geometry, KP proof, or
+transfer-Hilbert statement is claimed).
 Adding a new YM module? Import it here.
 -/

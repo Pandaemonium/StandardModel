@@ -3279,3 +3279,28 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 ```
 
 The new theorem axiom footprint is `[propext, Quot.sound]`.
+
+## q8:support-tail-monotone-subadditive (codex 1.34:03)
+
+Added two finite-support bookkeeping lemmas in
+`ExponentialClustering.lean`:
+
+- `supportTail_mono`;
+- `supportTail_union_le`.
+
+Intended reading: a support tail only grows when the observable support is
+enlarged, and the tail of an arbitrary union is bounded by the sum of the two
+tails, overcounting common anchors on purpose. This is conditional Q8
+infrastructure only: no Q6 metric-tail theorem, concrete observable expansion,
+or clustering conclusion is claimed.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\ExponentialClustering.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The new theorem axiom footprint is `[propext, Classical.choice, Quot.sound]`.
