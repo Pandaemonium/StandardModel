@@ -506,11 +506,15 @@ anchor-overcount inequality that bounds any nonnegative incompatible-support sum
 by summing over anchors in the closed neighborhood and its direct specialization
 to the explicit plaquette KP sum. It also packages cardinality-times-anchor and
 support-size-times-degree-times-anchor bounds for turning local anchored
-estimates into explicit KP-sum estimates. It also names the explicit finite plaquette KP sum
-`plaquetteKPSum`, the bound predicate `PlaquetteKPBound`, and the adapter
-`kpCondition_of_plaquetteKPBound` from that explicit bound to
-`PolymerKPCriterion.KPCondition`, plus the bundled handoff theorem
-`kpCondition_and_selfIncompatible_of_plaquetteKPBound`; the draft connector
+estimates into explicit KP-sum estimates, including the conditional adapter
+`plaquetteKPBound_of_singletonBound_anchorBound`. It also names the explicit
+finite plaquette KP sum `plaquetteKPSum`, the bound predicate
+`PlaquetteKPBound`, and the adapter `kpCondition_of_plaquetteKPBound` from that
+explicit bound to `PolymerKPCriterion.KPCondition`, plus the bundled handoff
+theorem `kpCondition_and_selfIncompatible_of_plaquetteKPBound`; the
+one-plaquette Z2 fixture `onePlaquetteZ2_plaquetteKPBound` proves a concrete
+finite `PlaquetteKPBound` under the scalar condition
+`|tanh beta| * exp alpha <= alpha`; the draft connector
 `plaquetteKP_convergence_bound_of_plaquetteKPBound` routes this explicit bound,
 plus Q7 self-incompatibility, into the corrected Q6 convergence statement and
 therefore has the same parked-Q6 proof dependency. No volume-uniform KP proof

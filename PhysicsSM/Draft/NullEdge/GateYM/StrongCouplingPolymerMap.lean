@@ -941,6 +941,126 @@ theorem z2_plaquettePolymer_energy_eq_alpha_area
       alpha * (X.support.card : Real) :=
   rfl
 
+/-- The one-plaquette Z2 fixture has no distinct touching neighbors.  This is a
+finite sanity model for the Q7 KP adapters, not a volume-uniform lattice
+estimate. -/
+def onePlaquetteAdj : PlaquetteAdjacency PUnit where
+  touch := fun _ _ => False
+  touch_symm := by
+    intro p q h
+    exact False.elim h
+
+omit [Fintype P] [DecidableEq P] [Fintype Rlab] in
+/-- Decidability for the no-touch one-plaquette adjacency. -/
+instance onePlaquetteAdj_decidableRel : DecidableRel onePlaquetteAdj.touch := by
+  intro p q
+  exact isFalse (fun h => h)
+
+/-- All nonempty supports in the one-plaquette fixture are connected. -/
+def onePlaquetteConnectedSupport (_ : Finset PUnit) : Prop := True
+
+/-- The unique Z2 nontrivial label in the one-plaquette fixture. -/
+def onePlaquetteNontrivialLabel (_ : PUnit) : Prop := True
+
+/-- The unique plaquette polymer in the one-plaquette Z2 fixture. -/
+def onePlaquettePolymer :
+    PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel where
+  support := Finset.univ
+  support_nonempty := by
+    exact ⟨PUnit.unit, by simp⟩
+  support_connected := trivial
+  label := fun _ => PUnit.unit
+  label_nontrivial := fun _ => trivial
+
+/-- Every polymer in the one-plaquette fixture uses the whole one-point support. -/
+theorem onePlaquette_support_eq_univ
+    (X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel) :
+    X.support = Finset.univ := by
+  ext p
+  constructor
+  · intro _hp
+    simp
+  · intro _hp
+    rcases X.support_nonempty with ⟨q, hq⟩
+    cases p
+    cases q
+    exact hq
+
+/-- The one-plaquette fixture has exactly one polymer. -/
+theorem onePlaquettePolymer_eq
+    (X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel) :
+    X = onePlaquettePolymer := by
+  apply PlaquettePolymer.ext_of_support_label
+  · exact onePlaquette_support_eq_univ X
+  · intro p hpX _hpY
+    cases p
+    cases X.label ⟨PUnit.unit, hpX⟩
+    rfl
+
+/-- The closed touch-neighborhood of the unique plaquette has cardinality one. -/
+theorem onePlaquette_closedTouchNeighborhood_card_le_one (p : PUnit) :
+    (closedTouchNeighborhood onePlaquetteAdj ({p} : Finset PUnit)).card <= 1 := by
+  have hset :
+      closedTouchNeighborhood onePlaquetteAdj ({p} : Finset PUnit) = {p} := by
+    ext q
+    cases p
+    cases q
+    simp [closedTouchNeighborhood, onePlaquetteAdj]
+  rw [hset]
+  simp
+
+/-- The anchored Z2 polymer sum in the one-plaquette fixture is the single
+weight `|tanh beta| * exp alpha`. -/
+theorem onePlaquetteZ2_anchor_sum
+    (beta alpha : Real) (q : PUnit) :
+    (Finset.univ.filter
+      (fun Y : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel =>
+        decide (q ∈ Y.support) = true)).sum
+      (fun Y =>
+        Y.coeffProduct (z2GammaAbs beta) *
+          Real.exp (alpha * (Y.support.card : Real))) =
+      |Real.tanh beta| * Real.exp alpha := by
+  let Y0 := onePlaquettePolymer
+  rw [Finset.sum_eq_single Y0]
+  · simp [Y0, onePlaquettePolymer, PlaquettePolymer.coeffProduct,
+      z2GammaAbs]
+  · intro Y _hY hne
+    exact False.elim (hne (onePlaquettePolymer_eq Y))
+  · intro hnot
+    exfalso
+    apply hnot
+    simp [Y0, onePlaquettePolymer]
+
+/-- Concrete one-plaquette Z2 KP fixture.
+
+If the single scalar contribution `|tanh beta| * exp alpha` is at most
+`alpha`, then the explicit Q7 `PlaquetteKPBound` holds for the one-plaquette
+system.  This is a finite sanity check for the adapter theorem, not a
+volume-uniform strong-coupling estimate. -/
+theorem onePlaquetteZ2_plaquetteKPBound
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| * Real.exp alpha <= alpha) :
+    PlaquetteKPBound onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha := by
+  have hB_nonneg : 0 <= |Real.tanh beta| * Real.exp alpha :=
+    mul_nonneg (abs_nonneg _) (le_of_lt (Real.exp_pos _))
+  have hsmall' :
+      ((1 : Nat) : Real) * (|Real.tanh beta| * Real.exp alpha) <= alpha := by
+    simpa using hsmall
+  exact
+    plaquetteKPBound_of_singletonBound_anchorBound onePlaquetteAdj
+      onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+      (z2GammaAbs beta) (z2GammaAbs_nonneg beta) alpha halpha
+      1 (|Real.tanh beta| * Real.exp alpha) hB_nonneg
+      (fun p => onePlaquette_closedTouchNeighborhood_card_le_one p)
+      (fun q => by
+        rw [onePlaquetteZ2_anchor_sum beta alpha q])
+      hsmall'
+
 end StrongCouplingPolymerMap
 end GateYM
 end NullEdge

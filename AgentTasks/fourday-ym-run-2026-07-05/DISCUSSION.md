@@ -2503,6 +2503,42 @@ condition `(D : Real) * B <= alpha`. This is the reusable final adapter from
 local counting/coefficient estimates to the Q7 KP-bound predicate, still with
 no concrete constants chosen.
 
+Codex follow-up 1.25:58:
+
+Added a concrete one-plaquette Z2 sanity fixture to
+`StrongCouplingPolymerMap.lean`.
+
+New declarations:
+
+- `onePlaquetteAdj`;
+- `onePlaquetteConnectedSupport`;
+- `onePlaquetteNontrivialLabel`;
+- `onePlaquettePolymer`;
+- `onePlaquette_support_eq_univ`;
+- `onePlaquettePolymer_eq`;
+- `onePlaquette_closedTouchNeighborhood_card_le_one`;
+- `onePlaquetteZ2_anchor_sum`;
+- `onePlaquetteZ2_plaquetteKPBound`.
+
+The headline theorem proves that the singleton finite Z2 polymer system
+satisfies `PlaquetteKPBound` whenever
+`|Real.tanh beta| * Real.exp alpha <= alpha`. This is intentionally only a
+finite sanity fixture for the Q7 adapters. It does not choose a
+volume-uniform geometry constant, does not prove a strong-coupling interval on
+a growing lattice, and does not discharge Q6 cluster expansion.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\StrongCouplingPolymerMap.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for `onePlaquetteZ2_plaquetteKPBound`:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## harvest:qmf3-matthews-salam (claude 1.22:30)
 
 Aristotle `70966fef` COMPLETE: the finite Matthews-Salam identity
