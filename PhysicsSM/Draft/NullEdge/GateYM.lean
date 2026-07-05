@@ -459,8 +459,10 @@ four-term block electric-sector projection, proves that it lands in the
 requested block electric sector, fixes exactly the vectors in that sector, is
 idempotent, is mutually orthogonal on distinct sectors, sums to the identity
 over the four Z2 block electric sectors, and preserves the finite OS range for
-plaquette-field block weights. This is still a finite identity, not a physical
-transfer matrix or gap claim);
+plaquette-field block weights. It also names the sectorized finite OS range
+submodule `rpBlockElectricSector` and proves that the block electric projection
+lands in it for vectors already in the plaquette-field OS range. This is still
+a finite identity, not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
 overlap machinery - the shifted overlap `Dov - 1` is unitary and

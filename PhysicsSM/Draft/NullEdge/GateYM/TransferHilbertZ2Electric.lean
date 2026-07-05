@@ -18,8 +18,9 @@ space from `TransferHilbert.lean`.
 It also defines the four-term block electric-sector projection and proves that
 the projection lands in the requested block electric sector, fixes exactly the
 vectors in that sector, is idempotent, is mutually orthogonal on distinct
-sectors, sums to the identity over the four Z2 sectors, and preserves the
-finite OS range for plaquette-field block weights.
+sectors, sums to the identity over the four Z2 sectors, preserves the finite
+OS range for plaquette-field block weights, and lands in the corresponding
+sectorized finite OS submodule.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -477,6 +478,84 @@ theorem blockElectricSectorProjection_preserves_rpHilbertSpace_z2PlaquetteBlock
         (M.add_mem hv (M.smul_mem _ hx))
         (M.smul_mem _ hy))
       (M.smul_mem _ hxy))
+
+/-- The finite OS range restricted to a chosen concrete Z2 block electric
+sector.
+
+This is still a concrete submodule of the ambient finite function space, not
+a quotient Hilbert space or a physical transfer sector. -/
+def rpBlockElectricSector {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Submodule Complex
+      ((FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) where
+  carrier := {v |
+    v ∈ rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) ∧
+      InBlockElectricSector hLx hLy ex ey v}
+  zero_mem' := by
+    constructor
+    · exact Submodule.zero_mem _
+    · intro s i
+      simp
+  add_mem' := by
+    intro u v hu hv
+    constructor
+    · exact Submodule.add_mem _ hu.1 hv.1
+    · intro s i
+      rw [Pi.add_apply, hu.2 s i, hv.2 s i, Pi.add_apply]
+      ring
+  smul_mem' := by
+    intro c v hv
+    constructor
+    · exact Submodule.smul_mem _ c hv.1
+    · intro s i
+      rw [Pi.smul_apply, hv.2 s i, Pi.smul_apply]
+      change c * (blockElectricCharacter ex ey s * v i) =
+        blockElectricCharacter ex ey s * (c * v i)
+      ring
+
+/-- Membership in the sectorized finite OS range is exactly membership in the
+OS range plus the chosen block electric-sector eigenconditions. -/
+theorem mem_rpBlockElectricSector_iff {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) :
+    v ∈ rpBlockElectricSector hLx hLy F ex ey ↔
+      v ∈ rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) ∧
+        InBlockElectricSector hLx hLy ex ey v := by
+  rfl
+
+/-- Projecting any vector in the finite OS range of a plaquette-field block
+weight lands in the sectorized finite OS range for the requested Z2 block
+electric sector. -/
+theorem blockElectricSectorProjection_mem_rpBlockElectricSector_z2PlaquetteBlock
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)
+    (hv : v ∈ rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    blockElectricSectorProjection hLx hLy ex ey v ∈
+      rpBlockElectricSector hLx hLy F ex ey := by
+  constructor
+  · exact blockElectricSectorProjection_preserves_rpHilbertSpace_z2PlaquetteBlock
+      hLx hLy F ex ey v hv
+  · exact blockElectricSectorProjection_inBlockElectricSector hLx hLy ex ey v
 
 end TransferHilbertZ2Electric
 end GateYM

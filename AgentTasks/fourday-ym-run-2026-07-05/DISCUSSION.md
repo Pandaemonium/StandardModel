@@ -2749,6 +2749,34 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Dependency footprint for all three new lemmas:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:sectorized-finite-os-range (codex 1.28:18)
+
+Added the concrete sectorized finite OS range object in
+`TransferHilbertZ2Electric.lean`:
+
+- `rpBlockElectricSector`;
+- `mem_rpBlockElectricSector_iff`;
+- `blockElectricSectorProjection_mem_rpBlockElectricSector_z2PlaquetteBlock`.
+
+Intended reading: for plaquette-field block weights, the finite OS/GNS range
+can now be intersected with a selected Z2 block electric sector as an actual
+`Submodule`, and projecting a vector already in the OS range lands in that
+sectorized submodule. This packages the Q2/Q3 bridge more concretely, but it
+is still a finite algebraic range model, not a physical transfer matrix,
+Hamiltonian, quotient Hilbert space, or spectral-gap theorem.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for all three new declarations:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## harvest:q6-kp-partial-sum-partial (codex 1.27:24)
 
 Aristotle `9eb41a7c` / task `cf453907` returned `COMPLETE_WITH_ERRORS`, not
