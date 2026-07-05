@@ -184,7 +184,9 @@ Achievable deliverables:
 - Current status: the brief now includes a current artifact map and a
   claim-type table separating kernel-checked finite algebra, executable oracle
   evidence, the finite dynamics prototype, strong-coupling blockers, and the
-  still-open physical mass-gap claims.
+  still-open physical mass-gap claims. The Z2 transfer oracle JSON also now
+  includes a `lean_surfaces` provenance section naming the Lean modules and
+  theorem surfaces its finite evidence is meant to inform.
 
 Done when:
 

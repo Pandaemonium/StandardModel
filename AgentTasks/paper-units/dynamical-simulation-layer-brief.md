@@ -140,6 +140,10 @@ Implementation status as of 2026-07-05:
   two-time correlation check, spectra, and explicit numerical error fields.
   The descriptor-file path is checked by
   `python Scripts/oracle/z2_transfer_oracle.py --descriptor <json> --json`.
+- The v0.8 extension adds a `lean_surfaces` provenance section to the JSON
+  record. It names the Lean modules and theorem surfaces the oracle evidence
+  is meant to inform, while explicitly recording that the JSON output is not
+  itself a Lean proof.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -177,7 +181,7 @@ now and what still needs a bridge.
 | Artifact | Role in the dynamics layer | Current status |
 | --- | --- | --- |
 | `Scripts/oracle/z2_transfer_oracle.py` | Exact Z2 1+1D finite slab transfer engine | Descriptor-driven oracle evidence: transfer traces, observables, two-time correlations, spectra, sector blocks, and optional matrix output. |
-| `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration and matrix identities; this is executable evidence, not a Lean proof. |
+| `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` | Smallest Lean spectral payload | Kernel-checked finite identities for the `2 x 2` transfer-shape eigenvectors, ordered eigenvalues, spectral ratio, and contraction factor. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferWitness.lean` | Tiny consumer of the finite-gap witness API | Kernel-checked toy `Module.End` witness for the two-state descriptor; deliberately not the full Wilson slab transfer operator. |
 | `PhysicsSM/Draft/NullEdge/GateYM/FiniteGapAssembly.lean` | Abstract finite spectral-gap witness package | Kernel-checked packaging of the spectral parameters, transfer endomorphism, eigenvectors, sector preservation, and ratio/log identities. |

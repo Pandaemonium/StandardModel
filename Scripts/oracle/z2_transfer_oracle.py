@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.7"
+ORACLE_VERSION = "v0.8"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_SECTOR_SYMMETRIES = {"global_center_flip"}
@@ -515,6 +515,63 @@ def matrix_record(summary: Z2TransferSummary) -> dict:
     }
 
 
+def lean_surface_record() -> dict:
+    """Return the Lean theorem surfaces this oracle record is meant to inform.
+
+    The entries are provenance links for reviewers.  They do not certify that
+    the executable oracle output has been imported as a Lean theorem.
+    """
+
+    return {
+        "claim_boundary": "oracle evidence only; not a Lean proof",
+        "modules": [
+            {
+                "module": "PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferSpectrum",
+                "role": (
+                    "small Lean spectral payload matching the 2 x 2 "
+                    "transfer-shape witness"
+                ),
+                "surface": [
+                    "PositiveDescriptor.lambda0",
+                    "PositiveDescriptor.lambdaLocal",
+                    "positiveDescriptor_finiteGapPrereq",
+                ],
+            },
+            {
+                "module": "PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferWitness",
+                "role": "toy Module.End witness for the two-state spectral payload",
+                "surface": [
+                    "topCyclicityPrereq",
+                    "finiteGapSpectralWitness",
+                ],
+            },
+            {
+                "module": "PhysicsSM.Draft.NullEdge.GateYM.FiniteGapAssembly",
+                "role": "abstract finite spectral witness and gap-ratio bookkeeping",
+                "surface": [
+                    "FiniteGapSpectralWitness",
+                    "exp_neg_localGap_eq_localSpectralRatio",
+                    "localSpectralRatio_mul_exp_localGap_eq_one",
+                ],
+            },
+            {
+                "module": "PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric",
+                "role": (
+                    "finite OS/GNS Z2 electric-sector bookkeeping target for "
+                    "future slab bridges"
+                ),
+                "surface": [
+                    "rpBlockElectricSector",
+                    (
+                        "finrank_rpHilbertSpace_eq_finrank_"
+                        "rpBlockElectricSector_add_finrank_other"
+                    ),
+                ],
+            },
+        ],
+    }
+
+
 def summary_record(summary: Z2TransferSummary,
                    descriptor: dict | None = None,
                    include_matrices: bool = False) -> dict:
@@ -565,6 +622,7 @@ def summary_record(summary: Z2TransferSummary,
             "two_time_flux_abs_error": corr_abs_error,
         },
         "tolerances": DEFAULT_TOLERANCES,
+        "lean_surfaces": lean_surface_record(),
     }
     if include_matrices:
         record["matrices"] = matrix_record(summary)
