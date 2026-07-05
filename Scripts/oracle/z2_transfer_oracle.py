@@ -8,6 +8,8 @@ Euclidean transfer model described in
 * states are spatial Z2 link fields on an L-site circle;
 * a one-step slab kernel sums over temporal links between adjacent slices;
 * full spacetime enumeration is used as the reference check.
+* two-time Euclidean correlations and center-shift sector blocks are exposed
+  as finite matrix diagnostics.
 
 Z2 is represented by bits: bit 0 means +1 and bit 1 means -1.
 """
@@ -140,6 +142,56 @@ def transfer_expectation(L: int, T: int, beta: float, observable) -> float:
     return float(np.trace(M @ KT) / np.trace(KT))
 
 
+def transfer_correlation(L: int,
+                         T: int,
+                         beta: float,
+                         observable_a,
+                         observable_b,
+                         tau: int) -> float:
+    """Return `Tr(M_A K^tau M_B K^(T-tau)) / Tr(K^T)`."""
+
+    if T <= 0:
+        raise ValueError("T must be positive")
+    if tau < 0 or tau > T:
+        raise ValueError("tau must satisfy 0 <= tau <= T")
+    K = transfer_matrix(L, beta)
+    numerator = np.trace(
+        observable_matrix(L, observable_a)
+        @ np.linalg.matrix_power(K, tau)
+        @ observable_matrix(L, observable_b)
+        @ np.linalg.matrix_power(K, T - tau)
+    )
+    denominator = np.trace(np.linalg.matrix_power(K, T))
+    return float(numerator / denominator)
+
+
+def transfer_correlation_spectral(L: int,
+                                  T: int,
+                                  beta: float,
+                                  observable_a,
+                                  observable_b,
+                                  tau: int) -> float:
+    """Evaluate the two-time trace by diagonalizing the symmetric kernel."""
+
+    if T <= 0:
+        raise ValueError("T must be positive")
+    if tau < 0 or tau > T:
+        raise ValueError("tau must satisfy 0 <= tau <= T")
+    K = transfer_matrix(L, beta)
+    herm = 0.5 * (K + K.T)
+    values, vectors = np.linalg.eigh(herm)
+    A = vectors.T @ observable_matrix(L, observable_a) @ vectors
+    B = vectors.T @ observable_matrix(L, observable_b) @ vectors
+    dim = 1 << L
+    numerator = math.fsum(
+        float(A[i, j] * B[j, i] * values[j] ** tau * values[i] ** (T - tau))
+        for i in range(dim)
+        for j in range(dim)
+    )
+    denominator = math.fsum(float(v ** T) for v in values)
+    return numerator / denominator
+
+
 def full_spacetime_expectation(L: int, T: int, beta: float, observable) -> float:
     """Exact full-spacetime expectation of a time-zero spatial observable."""
 
@@ -148,6 +200,31 @@ def full_spacetime_expectation(L: int, T: int, beta: float, observable) -> float
     denominator = 0.0
     for spatial in itertools.product(states, repeat=T):
         obs = observable(spatial[0])
+        for temporal in itertools.product(states, repeat=T):
+            weight = full_spacetime_weight(spatial, temporal, L, beta)
+            numerator += obs * weight
+            denominator += weight
+    return numerator / denominator
+
+
+def full_spacetime_correlation(L: int,
+                               T: int,
+                               beta: float,
+                               observable_a,
+                               observable_b,
+                               tau: int) -> float:
+    """Exact full-spacetime two-time correlation of spatial observables."""
+
+    if T <= 0:
+        raise ValueError("T must be positive")
+    if tau < 0 or tau > T:
+        raise ValueError("tau must satisfy 0 <= tau <= T")
+    states = range(1 << L)
+    numerator = 0.0
+    denominator = 0.0
+    tau_mod = tau % T
+    for spatial in itertools.product(states, repeat=T):
+        obs = observable_a(spatial[0]) * observable_b(spatial[tau_mod])
         for temporal in itertools.product(states, repeat=T):
             weight = full_spacetime_weight(spatial, temporal, L, beta)
             numerator += obs * weight
@@ -177,6 +254,48 @@ def sector_projector(L: int, parity: int) -> np.ndarray:
     return 0.5 * (identity + parity * flip)
 
 
+def sector_basis(L: int, parity: int) -> np.ndarray:
+    """Orthonormal basis for the global center-shift +/- eigenspace."""
+
+    if L <= 0:
+        raise ValueError("L must be positive")
+    if parity not in (-1, 1):
+        raise ValueError("parity must be +1 or -1")
+    dim = 1 << L
+    mask = dim - 1
+    seen: set[int] = set()
+    columns = []
+    inv_sqrt2 = 1.0 / math.sqrt(2.0)
+    for state in range(dim):
+        if state in seen:
+            continue
+        partner = state ^ mask
+        seen.add(state)
+        seen.add(partner)
+        column = np.zeros(dim, dtype=np.float64)
+        column[state] = inv_sqrt2
+        column[partner] = parity * inv_sqrt2
+        columns.append(column)
+    return np.column_stack(columns)
+
+
+def sector_block(L: int, beta: float, parity: int) -> np.ndarray:
+    """Return the transfer matrix compressed to a center-shift sector."""
+
+    basis = sector_basis(L, parity)
+    K = transfer_matrix(L, beta)
+    return basis.T @ K @ basis
+
+
+def sector_eigenvalues(L: int,
+                       beta: float,
+                       parity: int,
+                       tol: float = 1e-10) -> np.ndarray:
+    """Return sorted positive eigenvalues in one center-shift sector."""
+
+    return positive_eigenvalues(sector_block(L, beta, parity), tol=tol)
+
+
 def positive_eigenvalues(K: np.ndarray, tol: float = 1e-10) -> np.ndarray:
     """Return sorted eigenvalues after checking numerical symmetry."""
 
@@ -194,7 +313,12 @@ class Z2TransferSummary:
     partition_full: float
     flux_transfer: float
     flux_full: float
+    flux_correlation_tau: int
+    flux_correlation_transfer: float
+    flux_correlation_full: float
     eigenvalues: tuple[float, ...]
+    sector_eigenvalues_plus: tuple[float, ...]
+    sector_eigenvalues_minus: tuple[float, ...]
 
 
 def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
@@ -202,6 +326,7 @@ def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
 
     K = transfer_matrix(L, beta)
     flux = lambda state: spatial_flux(state, L)
+    tau = 1 if T > 1 else 0
     return Z2TransferSummary(
         L=L,
         T=T,
@@ -210,7 +335,12 @@ def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
         partition_full=full_spacetime_partition(L, T, beta),
         flux_transfer=transfer_expectation(L, T, beta, flux),
         flux_full=full_spacetime_expectation(L, T, beta, flux),
+        flux_correlation_tau=tau,
+        flux_correlation_transfer=transfer_correlation(L, T, beta, flux, flux, tau),
+        flux_correlation_full=full_spacetime_correlation(L, T, beta, flux, flux, tau),
         eigenvalues=tuple(float(v) for v in positive_eigenvalues(K)),
+        sector_eigenvalues_plus=tuple(float(v) for v in sector_eigenvalues(L, beta, 1)),
+        sector_eigenvalues_minus=tuple(float(v) for v in sector_eigenvalues(L, beta, -1)),
     )
 
 
@@ -228,7 +358,18 @@ def main() -> int:
     print(f"full sum     = {summary.partition_full:.12g}")
     print(f"flux transfer= {summary.flux_transfer:.12g}")
     print(f"flux full    = {summary.flux_full:.12g}")
+    print(
+        f"flux corr tau={summary.flux_correlation_tau}: "
+        f"transfer={summary.flux_correlation_transfer:.12g} "
+        f"full={summary.flux_correlation_full:.12g}"
+    )
     print("eigenvalues  = " + ", ".join(f"{v:.12g}" for v in summary.eigenvalues))
+    print("sector + eig = " + ", ".join(
+        f"{v:.12g}" for v in summary.sector_eigenvalues_plus
+    ))
+    print("sector - eig = " + ", ".join(
+        f"{v:.12g}" for v in summary.sector_eigenvalues_minus
+    ))
     return 0
 
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.4 (YM ladder, 2026-07-05)
+validate_lgt_core.py -- Track C oracle v0.5 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -45,6 +45,11 @@ v0.4 (four-day YM run, dynamics slice) adds:
     that raw magnetic flux is NOT a block label for this unprojected slab
     kernel.
 
+v0.5 (four-day YM run, dynamics slice 2) adds:
+  Two-time Euclidean correlation checks against exact spacetime enumeration,
+    an eigendecomposition formula for the same transfer trace, and
+    center-shift sector-block spectral reconstruction.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -75,11 +80,17 @@ Pinned conventions (normative for the statement-freeze document):
 import sys, math, itertools, platform
 import numpy as np
 from z2_transfer_oracle import (
+    full_spacetime_correlation as z2_transfer_full_correlation,
     full_spacetime_expectation as z2_transfer_full_expectation,
     full_spacetime_partition as z2_transfer_full_partition,
     partition_from_transfer as z2_partition_from_transfer,
+    sector_basis as z2_sector_basis,
+    sector_block as z2_sector_block,
+    sector_eigenvalues as z2_sector_eigenvalues,
     sector_projector as z2_sector_projector,
     spatial_flux as z2_spatial_flux,
+    transfer_correlation as z2_transfer_correlation,
+    transfer_correlation_spectral as z2_transfer_correlation_spectral,
     transfer_expectation as z2_transfer_expectation,
     transfer_matrix as z2_transfer_matrix,
 )
@@ -93,7 +104,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.4 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.5 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -596,7 +607,7 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
 
-print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.4)")
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.5)")
 print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
       "with exact spacetime validation")
 for beta in [0.2, 0.4, 0.7]:
@@ -634,6 +645,20 @@ for (L, nt, beta) in [(2, 2, 0.4), (3, 2, 0.4), (3, 3, 0.7)]:
           abs(E_full - W_brute[0]) < 1e-12,
           f"full={E_full:.3e} brute={W_brute[0]:.3e}")
 
+for (L, nt, beta, tau) in [(2, 3, 0.4, 1), (3, 3, 0.7, 1), (3, 3, 0.7, 2)]:
+    obs = lambda state, L=L: z2_spatial_flux(state, L)
+    C_transfer = z2_transfer_correlation(L, nt, beta, obs, obs, tau)
+    C_full = z2_transfer_full_correlation(L, nt, beta, obs, obs, tau)
+    C_spectral = z2_transfer_correlation_spectral(L, nt, beta, obs, obs, tau)
+    check(f"L={L},nt={nt},beta={beta},tau={tau}: two-time flux correlation "
+          "matches full spacetime sum",
+          abs(C_transfer - C_full) < 1e-10,
+          f"transfer={C_transfer:.10f} full={C_full:.10f}")
+    check(f"L={L},nt={nt},beta={beta},tau={tau}: two-time trace matches "
+          "spectral formula",
+          abs(C_transfer - C_spectral) < 1e-10,
+          f"trace={C_transfer:.10f} spectral={C_spectral:.10f}")
+
 for L in [2, 3, 4]:
     Kslab = z2_transfer_matrix(L, beta=0.4)
     center_plus = z2_sector_projector(L, 1)
@@ -644,6 +669,28 @@ for L in [2, 3, 4]:
     check(f"L={L}: slab kernel commutes with global center-shift projectors",
           np.max(np.abs(center_plus @ Kslab - Kslab @ center_plus)) < 1e-12
           and np.max(np.abs(center_minus @ Kslab - Kslab @ center_minus)) < 1e-12)
+    for parity, projector in [(1, center_plus), (-1, center_minus)]:
+        basis = z2_sector_basis(L, parity)
+        block = z2_sector_block(L, beta=0.4, parity=parity)
+        check(f"L={L},parity={parity}: sector basis realizes projector",
+              np.max(np.abs(basis.T @ basis - np.eye(basis.shape[1]))) < 1e-12
+              and np.max(np.abs(basis @ basis.T - projector)) < 1e-12)
+        check(f"L={L},parity={parity}: sector block is symmetric",
+              np.max(np.abs(block - block.T)) < 1e-12)
+    full_pos = np.array(sorted(
+        (x for x in np.linalg.eigvalsh(0.5 * (Kslab + Kslab.T)) if x > 1e-10),
+        reverse=True,
+    ))
+    sector_pos = np.array(sorted(
+        list(z2_sector_eigenvalues(L, 0.4, 1))
+        + list(z2_sector_eigenvalues(L, 0.4, -1)),
+        reverse=True,
+    ))
+    check(f"L={L}: center-shift sector spectra reconstruct full positive spectrum",
+          len(full_pos) == len(sector_pos)
+          and np.allclose(full_pos, sector_pos, rtol=1e-10, atol=1e-10),
+          "full=" + ",".join(f"{x:.4e}" for x in full_pos)
+          + " sector=" + ",".join(f"{x:.4e}" for x in sector_pos))
 
 for L in [2, 3, 4]:
     Kslab = z2_transfer_matrix(L, beta=0.4)

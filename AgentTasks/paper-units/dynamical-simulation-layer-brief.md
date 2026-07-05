@@ -119,12 +119,17 @@ Implementation status as of 2026-07-05:
 
 - `Scripts/oracle/z2_transfer_oracle.py` implements the first Z2 1+1D slab
   transfer oracle.
-- `Scripts/oracle/validate_lgt_core.py` v0.4 contains the regression checks:
+- `Scripts/oracle/validate_lgt_core.py` v0.5 contains the regression checks:
   transfer-kernel symmetry/PSD, `Tr(K^T)` against exact spacetime enumeration,
   time-zero spatial-flux insertion against exact enumeration, center-shift
   projector commutation, tiny finite spectral gaps, and a guard that raw
   magnetic spatial flux is not a preserved block label for the unprojected
   slab kernel.
+- The v0.5 extension adds two-time Euclidean flux correlations, validates
+  them against both full spacetime enumeration and the transfer-kernel
+  eigendecomposition formula, and extracts center-shift sector blocks whose
+  positive spectra reconstruct the full positive transfer spectrum on the
+  checked tiny examples.
 
 ## One-step slab kernel
 
@@ -562,6 +567,11 @@ Compare transfer expectation with full enumeration expectation.
 
 Test 8: spectral correlation
 Compute C(tau) from transfer traces and compare against eigendecomposition.
+
+Test 9: sector-block spectrum
+Build orthonormal bases for the center-shift +/- projectors, compress K to
+each block, and check that the combined positive block spectra reconstruct
+the positive spectrum of K.
 ```
 
 ## Milestones toward true dynamics
@@ -662,12 +672,16 @@ The engineering blockers are:
 - no canonical serialized finite-lattice descriptor yet;
 - no unified exact enumerator for link fields and observables;
 - no fixture format tying oracle output back to Lean theorem names;
-- no transfer-matrix builder;
-- no sector-block matrix extraction;
+- no general descriptor-driven transfer-matrix builder;
+- no general descriptor-driven sector-block matrix extraction;
 - no sampling code or detailed-balance test harness.
 
 These can be developed in parallel with the proof work, provided the
 simulation code stays explicitly labeled as oracle/evidence rather than proof.
+The first two transfer-specific blockers now have a narrow Z2 1+1D prototype
+in `Scripts/oracle/z2_transfer_oracle.py`; the remaining engineering task is
+to generalize that prototype into a reusable descriptor-driven engine and
+connect it back to Lean theorem surfaces.
 
 ## Suggested first collaborator project
 
