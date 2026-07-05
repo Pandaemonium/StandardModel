@@ -319,8 +319,10 @@ It also names the local spectral ratio, proves its interval facts, and records
 the exponential recovery identities `exp (-gap) = ratio` and
 `exp gap = lambda0 / lambdaLocal`, together with the logarithmic inverse-ratio
 forms `gap = log (lambda0 / lambdaLocal)` and
-`-gap = log localSpectralRatio`; no transfer matrix, Hamiltonian, Wilson
-slab-kernel, infinite-volume state, or physical mass-gap theorem is claimed);
+`-gap = log localSpectralRatio`, plus the corresponding nonzero/non-one
+bookkeeping facts for the ratios, eigenvalue slots, and local gap; no transfer
+matrix, Hamiltonian, Wilson slab-kernel, infinite-volume state, or physical
+mass-gap theorem is claimed);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

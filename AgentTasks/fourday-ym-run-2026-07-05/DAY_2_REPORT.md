@@ -1,7 +1,7 @@
 # DAY_2_REPORT (drafted by codex; needs peer review)
 
 Scope: checkpoint from the post-`DAY_1_REPORT.md` ledger state through
-heartbeat `5.09:05`. This is a status synthesis, not a promotion claim.
+heartbeat `5.26:25`. This is a status synthesis, not a promotion claim.
 
 ## 1. Delta summary
 
@@ -13,10 +13,11 @@ corrected-Q6-input wrapper, and a Q8 concrete observable-bridge Aristotle
 audit. Q8 gained an empty-support connected-correlator bridge plus finite-set
 support-tail projection, overlap, and difference-split algebra. Q9 now has a
 finite-gap prerequisite package with a named local spectral-ratio API under
-semantic audit. The QMF5 side lane also landed the Wilson-projector Gram PSD
-linear-algebra conclusion and temporal-reflection scaffold for the future
-fermionic RP block. Q6 remains open at the finite species/counting crux, and
-Q10 remains intentionally untouched because Q6 has not landed.
+semantic audit, including log/inverse-ratio and nondegeneracy bookkeeping.
+The QMF5 side lane also landed the Wilson-projector Gram PSD linear-algebra
+conclusion and temporal-reflection scaffold for the future fermionic RP block.
+Q6 remains open at the finite species/counting crux, and Q10 remains
+intentionally untouched because Q6 has not landed.
 
 ## 2. Theorems landed
 
@@ -48,7 +49,9 @@ Q10 remains intentionally untouched because Q6 has not landed.
   `localSpectralRatio_lt_one`, `localSpectralRatio_mem_Ioo`,
   exponential/multiplicative recovery identities, and the log inverse-ratio
   facts `localGap_eq_log_lambda0_div_lambdaLocal` and
-  `log_lambda0_div_lambdaLocal_eq_localGap`.
+  `log_lambda0_div_lambdaLocal_eq_localGap`, plus nonzero/non-one facts for
+  the local spectral ratio, inverse vacuum/local ratio, eigenvalue slots, and
+  local gap.
 - `WilsonProjectors.lean`: the QMF5/RP-F projector down-payment now includes
   `conj_projector_posSemidef`, `conj_projPlus_posSemidef`, and
   `conj_projMinus_posSemidef`, packaging the linear-algebra conclusion that
