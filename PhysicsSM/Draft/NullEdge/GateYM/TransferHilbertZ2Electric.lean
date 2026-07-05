@@ -21,7 +21,7 @@ vectors in that sector, is idempotent, is mutually orthogonal on distinct
 sectors, sums to the identity over the four Z2 sectors, preserves the finite
 OS range for plaquette-field block weights, and lands in the corresponding
 sectorized finite OS submodule.  The projection is also packaged as a linear
-map from the finite OS range into that sectorized submodule.
+map from the finite OS range onto that sectorized submodule.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -583,6 +583,43 @@ def rpBlockElectricSectorProjection {Lx Ly : Nat}
     ext i
     simp [blockElectricSectorProjection]
     ring_nf
+
+/-- The finite OS sector projection fixes vectors already in the selected
+sectorized finite OS range. -/
+theorem rpBlockElectricSectorProjection_eq_self_of_mem {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v :
+      (FluxSectorZ2.TorusLinkField Lx Ly ×
+        FluxSectorZ2.TorusLinkField Lx Ly) -> Complex)
+    (hv : v ∈ rpBlockElectricSector hLx hLy F ex ey) :
+    rpBlockElectricSectorProjection hLx hLy F ex ey ⟨v, hv.1⟩ =
+      ⟨v, hv⟩ := by
+  ext i
+  exact congrFun
+    (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+      hLx hLy ex ey v hv.2) i
+
+/-- The finite OS sector projection is onto the selected sectorized finite OS
+range. -/
+theorem rpBlockElectricSectorProjection_surjective {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Function.Surjective (rpBlockElectricSectorProjection hLx hLy F ex ey) := by
+  intro v
+  refine ⟨⟨v, v.property.1⟩, ?_⟩
+  ext i
+  exact congrFun
+    (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+      hLx hLy ex ey v v.property.2) i
 
 end TransferHilbertZ2Electric
 end GateYM

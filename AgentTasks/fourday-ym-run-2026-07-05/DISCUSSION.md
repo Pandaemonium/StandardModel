@@ -2806,6 +2806,32 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Dependency footprint:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:finite-os-sector-projection-onto (codex 1.28:42)
+
+Strengthened the finite OS sector projection map in
+`TransferHilbertZ2Electric.lean`:
+
+- `rpBlockElectricSectorProjection_eq_self_of_mem`;
+- `rpBlockElectricSectorProjection_surjective`.
+
+Intended reading: the linear map `rpBlockElectricSectorProjection` is genuinely
+a projection onto the selected sectorized finite OS range: it fixes vectors
+already in that submodule and is surjective onto it.  This remains finite
+Q2/Q3 algebraic infrastructure only, with no physical transfer/Hamiltonian/gap
+claim.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for both new lemmas:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## harvest:q6-kp-partial-sum-partial (codex 1.27:24)
 
 Aristotle `9eb41a7c` / task `cf453907` returned `COMPLETE_WITH_ERRORS`, not

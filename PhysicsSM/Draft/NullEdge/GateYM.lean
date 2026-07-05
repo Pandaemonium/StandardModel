@@ -462,7 +462,7 @@ over the four Z2 block electric sectors, and preserves the finite OS range for
 plaquette-field block weights. It also names the sectorized finite OS range
 submodule `rpBlockElectricSector` and proves that the block electric projection
 lands in it for vectors already in the plaquette-field OS range, packaged as
-the linear map `rpBlockElectricSectorProjection`. This is still a finite
+the onto linear map `rpBlockElectricSectorProjection`. This is still a finite
 identity, not a physical transfer matrix or gap claim);
 `BanksCasherShadow`
 (T4/QCD1: the GW-circle structural fact on this repo's existing C1/C2
