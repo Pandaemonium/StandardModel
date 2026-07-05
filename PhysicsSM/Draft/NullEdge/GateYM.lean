@@ -559,7 +559,8 @@ observable-to-cluster bridge to exponential clustering, with `supportTail`
 empty/singleton/nonnegativity lemmas plus insert and disjoint-union splitting
 for finite-support specialization, plus monotonicity under support enlargement
 and arbitrary-union/finite-cover subadditivity with a cardinality-times-bound
-wrapper. No concrete plaquette geometry, KP proof, or transfer-Hilbert statement
-is claimed).
+wrapper, and named energy-sum/uniform-energy finite-support amplitude bounds.
+No concrete plaquette geometry, KP proof, or transfer-Hilbert statement is
+claimed).
 Adding a new YM module? Import it here.
 -/

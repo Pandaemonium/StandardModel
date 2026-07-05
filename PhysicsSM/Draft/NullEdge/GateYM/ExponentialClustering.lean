@@ -286,6 +286,58 @@ theorem supportTail_biUnion_le_card_mul_bound [DecidableEq Gamma] {ι : Type*}
     _ = (I.card : Real) * B := by
           simp [Finset.sum_const, nsmul_eq_mul]
 
+/-- Finite-support tail bound obtained by summing the anchored Q6 metric-tail
+estimate over the observable support.
+
+This names the support-level estimate used by the finite-support clustering
+bridge below.  It is still conditional on the explicit anchored tail bound
+`hTail`; no Q6 tail theorem is claimed here. -/
+theorem supportTail_le_energy_sum_mul_exp
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S : Finset Gamma) (R m : Real)
+    (hR : 0 <= R)
+    (hTail : forall (g0 : Gamma) (R : Real), 0 <= R ->
+      tailContribution M hdec D g0 R <=
+        M.energy g0 * Real.exp (-(m * R))) :
+    supportTail M hdec D S R
+      <= Finset.sum S (fun g0 => M.energy g0) *
+        Real.exp (-(m * R)) := by
+  unfold supportTail
+  rw [Finset.sum_mul]
+  exact Finset.sum_le_sum (fun g0 _hg0 => hTail g0 R hR)
+
+/-- A uniform per-support energy bound converts the support-tail estimate into
+a cardinality-times-energy prefactor.
+
+This is useful when the later observable bridge only knows a uniform energy
+ceiling on the finite support of the source observable. -/
+theorem supportTail_le_card_mul_energyBound_mul_exp
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (S : Finset Gamma) (R m E : Real)
+    (hEnergy : forall g0 : Gamma, g0 ∈ S -> M.energy g0 <= E)
+    (hR : 0 <= R)
+    (hTail : forall (g0 : Gamma) (R : Real), 0 <= R ->
+      tailContribution M hdec D g0 R <=
+        M.energy g0 * Real.exp (-(m * R))) :
+    supportTail M hdec D S R
+      <= ((S.card : Real) * E) * Real.exp (-(m * R)) := by
+  have hSupport :=
+    supportTail_le_energy_sum_mul_exp M hdec D S R m hR hTail
+  have hEnergySum :
+      Finset.sum S (fun g0 => M.energy g0) <= (S.card : Real) * E := by
+    calc
+      Finset.sum S (fun g0 => M.energy g0)
+          <= Finset.sum S (fun _g0 => E) := by
+            exact Finset.sum_le_sum (fun g0 hg0 => hEnergy g0 hg0)
+      _ = (S.card : Real) * E := by
+            simp [Finset.sum_const, nsmul_eq_mul]
+  exact hSupport.trans
+    (mul_le_mul_of_nonneg_right hEnergySum (le_of_lt (Real.exp_pos _)))
+
 /-- Exponential clustering for the support-indexed connected correlator. -/
 def HasExponentialClusteringSupport
     (L : LocalObservableSupportData Gamma Obs)
@@ -324,11 +376,8 @@ theorem hasExponentialClusteringSupport_of_supportTail_bound
       supportTail M hdec D (L.support A) (L.separation A B)
         <= Finset.sum (L.support A) (fun g0 => M.energy g0) *
             Real.exp (-(m * L.separation A B)) := by
-    unfold supportTail
-    rw [Finset.sum_mul]
-    apply Finset.sum_le_sum
-    intro g0 _
-    exact hTail g0 (L.separation A B) (L.separation_nonneg A B)
+    exact supportTail_le_energy_sum_mul_exp M hdec D (L.support A)
+      (L.separation A B) m (L.separation_nonneg A B) hTail
   calc
     ‖L.connectedCorr A B‖
         <= L.prefactor A B *
@@ -342,6 +391,50 @@ theorem hasExponentialClusteringSupport_of_supportTail_bound
           Finset.sum (L.support A) (fun g0 => M.energy g0)) *
         Real.exp (-(m * L.separation A B)) := by
       rw [mul_assoc]
+
+/-- Finite-support exponential clustering with a uniform energy ceiling on the
+source observable support.
+
+This packages the common case where all support polymers contributing to
+observable `A` have energy at most `E`; the amplitude then carries the finite
+support cardinality factor explicitly. -/
+theorem hasExponentialClusteringSupport_of_uniform_energy_bound
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (L : LocalObservableSupportData Gamma Obs)
+    (m E : Real)
+    (hEnergy : forall (A : Obs) (g0 : Gamma),
+      g0 ∈ L.support A -> M.energy g0 <= E)
+    (hTail : forall (g0 : Gamma) (R : Real), 0 <= R ->
+      tailContribution M hdec D g0 R <=
+        M.energy g0 * Real.exp (-(m * R)))
+    (hBridge : forall A B : Obs,
+      ‖L.connectedCorr A B‖ <=
+        L.prefactor A B *
+          supportTail M hdec D (L.support A) (L.separation A B)) :
+    HasExponentialClusteringSupport L
+      (fun A B => L.prefactor A B * ((L.support A).card : Real) * E) m := by
+  intro A B
+  have hstep :
+      supportTail M hdec D (L.support A) (L.separation A B)
+        <= (((L.support A).card : Real) * E) *
+            Real.exp (-(m * L.separation A B)) := by
+    exact supportTail_le_card_mul_energyBound_mul_exp M hdec D
+      (L.support A) (L.separation A B) m E (hEnergy A)
+      (L.separation_nonneg A B) hTail
+  calc
+    ‖L.connectedCorr A B‖
+        <= L.prefactor A B *
+          supportTail M hdec D (L.support A) (L.separation A B) :=
+      hBridge A B
+    _ <= L.prefactor A B *
+        ((((L.support A).card : Real) * E) *
+          Real.exp (-(m * L.separation A B))) := by
+      exact mul_le_mul_of_nonneg_left hstep (L.prefactor_nonneg A B)
+    _ = (L.prefactor A B * ((L.support A).card : Real) * E) *
+        Real.exp (-(m * L.separation A B)) := by
+      ring
 
 end ExponentialClustering
 end GateYM
