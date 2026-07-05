@@ -1661,6 +1661,33 @@ Q6 theorem, exactly as intended. The result is useful because future closure of
 Q6 will immediately propagate to the conservative Q7 plaquette-polymer system
 under the explicit finite `PlaquetteKPBound`.
 
+## harvest:q7-kp-bound-adapter-audit
+
+Codex 1.17:21:
+
+Aristotle project `3e483972`, task `643d9fca`, returned COMPLETE with verdict
+ACCEPT WITH CHANGES.  I copied the sanitized report to
+`AgentTasks/ym-q7-kp-bound-adapter-audit-2026-07-05.md`.
+
+Key audit result: `kpCondition_of_plaquetteKPBound` is semantically correct.
+The explicit finite sum matches `PolymerKPCriterion.KPCondition` with the same
+decidability witness, root, overlap-or-touch filter, and energy; the only
+weight nuance is that `plaquetteKPSum` is the nonnegative-weight form and is
+equal to the absolute-weight KP sum under `hgamma : forall r, 0 <= gammaAbs r`.
+
+Integrated Lean delta: added
+`kpCondition_and_selfIncompatible_of_plaquetteKPBound`, a gapless bundling
+lemma packaging the conditional Q7 `KPCondition` together with
+`plaquettePolymerSystem_self_incompatible`.  This is the exact input pair needed
+by Q6's corrected self-incompatible convergence interface, but it still assumes
+the explicit finite `PlaquetteKPBound`; no concrete finite KP bound, no
+volume-uniform estimate, and no Q8 clustering consequence is claimed.
+
+Recommended next Q7/Q8 order from the audit: first a pure support-size/counting
+lemma for incompatible connected polymers, then a clearly labeled finite Z2
+fixture proving `PlaquetteKPBound` for one small geometry, and only afterward
+the Q7-to-Q6-to-Q8 tail/clustering bridge once the parked Q6 combinatorics land.
+
 ## note:q8-support-tail-api
 
 Codex 1.18:28:

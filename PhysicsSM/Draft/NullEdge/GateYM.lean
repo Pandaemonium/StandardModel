@@ -421,7 +421,8 @@ energy `alpha * area`, and the Z2 specialization `|tanh beta| ^ area` pinned to
 the v0.3 oracle fixture. It also names the explicit finite plaquette KP sum
 `plaquetteKPSum`, the bound predicate `PlaquetteKPBound`, and the adapter
 `kpCondition_of_plaquetteKPBound` from that explicit bound to
-`PolymerKPCriterion.KPCondition`; the draft connector
+`PolymerKPCriterion.KPCondition`, plus the bundled handoff theorem
+`kpCondition_and_selfIncompatible_of_plaquetteKPBound`; the draft connector
 `plaquetteKP_convergence_bound_of_plaquetteKPBound` routes this explicit bound,
 plus Q7 self-incompatibility, into the corrected Q6 convergence statement and
 therefore has the same parked-Q6 proof dependency. No volume-uniform KP proof

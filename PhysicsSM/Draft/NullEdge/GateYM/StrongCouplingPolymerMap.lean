@@ -362,6 +362,33 @@ theorem kpCondition_of_plaquetteKPBound
           gammaAbs alpha halpha).energy X := by
         rw [plaquettePolymerSystem_energy]
 
+/-- The Q7 polymer system supplies the exact input pair expected by the
+corrected Q6 convergence interface: a conditional `KPCondition` and the
+self-incompatibility convention for the conservative overlap-or-touch system.
+
+This remains conditional on the explicit finite bound `hBound`; it does not
+prove a concrete finite or volume-uniform KP estimate. -/
+theorem kpCondition_and_selfIncompatible_of_plaquetteKPBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (hBound : PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha) :
+    KPCondition
+        (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+          gammaAbs alpha halpha)
+        (plaquettePolymerIncompatibleDecidable Adj ConnectedSupport
+          NontrivialLabel gammaAbs alpha halpha)
+      /\ (forall X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel,
+        (plaquettePolymerSystem Adj ConnectedSupport NontrivialLabel
+          gammaAbs alpha halpha).incompatible X X) :=
+  ⟨kpCondition_of_plaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs hgamma alpha halpha hBound,
+    fun X => plaquettePolymerSystem_self_incompatible Adj ConnectedSupport
+      NontrivialLabel gammaAbs alpha halpha X⟩
+
 /-- Conditional Q7-to-Q6 convergence connector.
 
 An explicit finite plaquette-polymer KP bound gives the abstract
