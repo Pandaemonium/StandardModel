@@ -2722,6 +2722,36 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Dependency footprint for both new lemmas:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:finite-os-sector-endomorphism-decomposition (codex 1.29:10)
+
+Lifted the block electric-sector decomposition from ambient wavefunctions to
+endomorphisms of the finite OS range in `TransferHilbertZ2Electric.lean`:
+
+- `rpHilbertSpaceBlockElectricProjection_comp_eq_zero_of_ne`;
+- `sum_rpHilbertSpaceBlockElectricProjection_eq_id`.
+
+Intended reading: the four sector endomorphisms on
+`rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))` are mutually
+annihilating for distinct `(ex, ey)` labels and sum to the identity map.  This
+is the finite OS-range version of the already-proved ambient
+`blockElectricSectorProjection` orthogonality/decomposition theorem.  It still
+does not construct a physical transfer matrix, Hamiltonian, or gap.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertZ2Electric
+lake build PhysicsSM.Draft.NullEdge.GateYM
+git diff --check -- PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean PhysicsSM\Draft\NullEdge\GateYM.lean AgentTasks\fourday-ym-run-2026-07-05\LEDGER.md AgentTasks\fourday-ym-run-2026-07-05\DISCUSSION.md
+```
+
+Code placeholder scan on the touched Lean file produced no matches.
+
+Dependency footprint for both new theorems:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## q2q3:finite-os-sector-inclusion-retraction (codex 1.28:55)
 
 Added the inclusion/retraction API for the sectorized finite OS range in

@@ -22,7 +22,8 @@ sectors, sums to the identity over the four Z2 sectors, preserves the finite
 OS range for plaquette-field block weights, and lands in the corresponding
 sectorized finite OS submodule.  The projection is also packaged as a linear
 map from the finite OS range onto that sectorized submodule, with an explicit
-linear inclusion/retraction pair.
+linear inclusion/retraction pair and endomorphism-level four-sector
+decomposition on the finite OS range.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -687,6 +688,37 @@ theorem rpHilbertSpaceBlockElectricProjection_idempotent {Lx Ly : Nat}
   simp [rpHilbertSpaceBlockElectricProjection,
     rpBlockElectricSectorInclusion, rpBlockElectricSectorProjection,
     blockElectricSectorProjection_idempotent]
+
+/-- Distinct block electric-sector endomorphisms of the finite OS range
+annihilate each other. -/
+theorem rpHilbertSpaceBlockElectricProjection_comp_eq_zero_of_ne {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey ex' ey' : Bool)
+    (hne : ex ≠ ex' ∨ ey ≠ ey') :
+    (rpHilbertSpaceBlockElectricProjection hLx hLy F ex' ey').comp
+        (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) = 0 := by
+  ext v i
+  exact congrFun
+    (blockElectricSectorProjection_blockElectricSectorProjection_eq_zero_of_ne
+      hLx hLy ex ey ex' ey' v hne) i
+
+/-- The four block electric-sector endomorphisms decompose the finite OS range
+identity map. -/
+theorem sum_rpHilbertSpaceBlockElectricProjection_eq_id {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    (∑ ex : Bool, ∑ ey : Bool,
+        rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) =
+      LinearMap.id := by
+  ext v i
+  exact congrFun (sum_blockElectricSectorProjection_eq_self hLx hLy v) i
 
 end TransferHilbertZ2Electric
 end GateYM
