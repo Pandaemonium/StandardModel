@@ -32,14 +32,23 @@ The four bundled facts:
    two-null-edge spinor momentum equals the octonion-lane spinor Plucker mass -
    the two programs share the mass on the same spinors.
 
-## Claim discipline
+## Claim discipline (with red-team audit correction, 2026-07-05)
 
 Claim label: **program synthesis** (a bundling of proved facts; no new
-mathematics). Draft-trust (it imports the draft null-edge bridge B0);
-`s o r r y`-free, standard axioms. The deeper bridges B1 (shared Clifford
-module tensor), B2 (chirality <-> conjugate ideal), and B3 (confinement <->
-color) are NOT part of this capstone - they remain open research, per the
-thesis document.
+mathematics). CRUCIAL honesty note from the audit: this theorem is a
+CONJUNCTION `A ∧ B ∧ C ∧ D`, NOT a proven LINK between the parts. The genuine
+cross-program content is items 1-3 (the octonion structure: SU(3), fundamental
+rep, one anomaly-free generation with DERIVED charges). Item 4 (B0) is a
+WITHIN-SPACETIME mass identity that does not involve the octonion ideal - so the
+capstone establishes CO-LOCATION (both structures exist), NOT COUPLING (that the
+octonion charges and the null-edge mass act on genuinely one coupled object). A
+theorem exhibiting a mass form on `ComplexOctonion (x) CSpinor` that does not
+factor through the spacetime projection (the "colored mass" test) is what would
+upgrade this from a conjunction to a real link; it is OPEN.
+
+Draft-trust (imports the draft B0); `s o r r y`-free, standard axioms. The
+deeper bridges B1 (physical Clifford compatibility), B2 (chirality <-> conjugate
+ideal), and B3 (confinement <-> color) are NOT part of this capstone.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone

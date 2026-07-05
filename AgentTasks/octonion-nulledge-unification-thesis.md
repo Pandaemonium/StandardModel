@@ -9,6 +9,39 @@ Claim label for the THESIS: **program synthesis / interpretation**. The
 individual pillars cited are kernel-checked; the unifying reading and the
 proposed bridges are the research thesis. Bridges carry their own claim labels.
 
+## RED-TEAM AUDIT FINDINGS (2026-07-05) - READ FIRST
+
+A harsh Aristotle red-team audit (`octonion-nulledge-unification-AUDIT-blind.md`)
+substantially corrected this thesis. The honest current status:
+
+- **The genuine content is Lane A alone**: `SU(3)` from `Aut(ℂ⊗𝕆)` (1a), the
+  color triplet as its fundamental rep (1b), and one anomaly-free generation
+  with charges DERIVED not assigned (Furey). These stand.
+- **B0 is NOT a cross-program bridge (confirmed overclaim).** Both sides of B0
+  (`minkHerm`, `twoEdgeMomentum`, `spinorWedge`) are pure `SL(2,ℂ)` SPACETIME
+  Weyl constructions (`Fin 2 → ℂ`); none contains `ℂ⊗𝕆`, `J`, or `Cl(6)`. B0 is
+  a correct WITHIN-SPACETIME determinant identity, mis-labeled "octonion-lane".
+- **B1(ii) `internal_spacetime_commute` is VACUOUS.** It is tensor
+  bifunctoriality, true for any two modules; it certifies INDEPENDENCE
+  (co-location), not coupling.
+- **The capstone is a CONJUNCTION, not a link.** Co-location of two structures,
+  not a proof they act on one coupled object.
+- **B2 "generations from `omega <-> omega*`" is refuted as numerology**: a `ℤ₂`
+  involution has multiplicity 2, but families need 3, and `2 ≠ 3`. B2's
+  "chirality = `omega*`" is a category error (`gamma5` and `omega*` live on
+  different tensor factors); at best B2 survives as a COVARIANCE-under-a-reality-
+  condition statement, not an equality.
+- **Overall judgment**: as it stands the thesis largely reduces to the standard
+  `spacetime (x) internal` factorization with COMMUTING (independent) factors -
+  **co-location, not coupling**. The one decisive open test that would upgrade it
+  is the "colored mass" theorem: a mass form on the shared module
+  `ComplexOctonion (x) CSpinor` that does NOT factor through the spacetime
+  projection (so the octonion ideal genuinely enters the mass). If it factors,
+  that KERNEL-FALSIFIES the strong "one spinor, two structures" claim.
+
+The sections below are the ORIGINAL thesis; read them through the corrections
+above.
+
 ## 1. The thesis: one spinor, two structures
 
 The whole picture rests on a single object - the **spinor**, realized as a

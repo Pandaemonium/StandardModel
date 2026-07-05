@@ -26,21 +26,32 @@ Here:
   factor;
 - `internal_spacetime_commute` - ANY internal endomorphism (lifted to the
   octonion factor) commutes with ANY spacetime endomorphism (lifted to the Weyl
-  factor). Instantiating `internal` with a `Cl(6)` ladder operator and
-  `spacetime` with a Pauli/soldering operator gives the physical statement:
-  the charge structure and the mass structure act independently on the one
-  spinor.
+  factor).
+
+## IMPORTANT correction (red-team audit, 2026-07-05): this commutativity is VACUOUS
+
+An earlier version of this docstring presented `internal_spacetime_commute` as
+"the honest content of the `spacetime (x) internal` factorization". The audit is
+correct that this OVERSTATES it: the theorem is nothing but tensor
+bifunctoriality `(f (x) 1)(1 (x) g) = (1 (x) g)(f (x) 1)`, which holds for ANY
+two modules and any two endomorphisms. It carries ZERO Standard-Model content,
+and if anything it certifies the INDEPENDENCE (co-location) of the two factors,
+mildly AGAINST the "coupled on one spinor" reading rather than for it. It is not
+false, but it is not evidence of a unification.
+
+The genuinely non-trivial B1(ii) content - and the only thing that would upgrade
+"co-location" to "coupling" - is a mass/interaction form on the shared module
+that does NOT factor through the two projections, i.e. that genuinely couples
+the octonion factor to the spacetime factor (the "colored mass" test in the
+thesis document / the B0 module). That remains OPEN and is the deep part.
 
 ## Claim discipline
 
-Claim label: **finite identity / program synthesis**. This formalizes the
-STRUCTURAL factorization (two commuting tensor-factor actions); it is NOT the
-full physical identification of the specific `Cl(6)` and spacetime Clifford
-representations, nor the compatibility of the charges with the null-edge mass
-dynamics - those remain the deeper open part of B1. The commutativity is the
-honest content of "spacetime (x) internal", not more. Draft-trust,
-kernel-checked, `s o r r y`-free. Prerequisites: `GateI1.Core` (`CSpinor`),
-`Octonion.ComplexOctonion`.
+Claim label: **finite identity** (tensor bifunctoriality; vacuous re SM
+content). This is NOT the physical `Cl(6)`/spacetime-Clifford identification, and
+crucially NOT a coupling of charges to mass - the commutativity is the OPPOSITE
+(independence). Draft-trust, kernel-checked, `s o r r y`-free. Prerequisites:
+`GateI1.Core` (`CSpinor`), `Octonion.ComplexOctonion`.
 -/
 
 open scoped TensorProduct

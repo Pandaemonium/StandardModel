@@ -3,37 +3,44 @@ import PhysicsSM.Draft.NullEdge.GateI1.Core
 import PhysicsSM.Spinor.PluckerMass
 
 /-!
-# Bridge B0: null-edge Minkowski mass = octonion-lane spinor Plucker mass
+# B0: a within-spacetime Plucker-mass identity (NOT a cross-program bridge)
 
-The first kernel-checked stitch between the two programs of this repository (see
-`AgentTasks/octonion-nulledge-unification-thesis.md`):
+A determinant identity relating two Weyl-spinor Plucker-mass constructions:
 
-- the **null-edge** side (`GateI1/Core`): `minkHerm p : Herm2` with
-  `det (minkHerm p) = minkowskiSq p` (I1.1 soldering); the mass is the
-  Minkowski square of a real four-momentum;
-- the **octonion/spinor** side (`Spinor.PluckerMass`, trusted): a two-null-edge
-  momentum `twoEdgeMomentum psi phi = psi psi^dag + phi phi^dag` with
-  `det (twoEdgeMomentum psi phi) = complexAbsSq (spinorWedge psi phi)`; the mass
-  is the Plucker (wedge) obstruction of two complex Weyl spinors.
+- `GateI1/Core`: `minkHerm p : Herm2` with `det (minkHerm p) = minkowskiSq p`;
+- `Spinor.PluckerMass`: `twoEdgeMomentum psi phi = psi psi^dag + phi phi^dag`
+  with `det (twoEdgeMomentum psi phi) = complexAbsSq (spinorWedge psi phi)`.
 
-Both are Hermitian `2 x 2` blocks whose determinant IS the mass squared. This
-module shows they are the SAME mass: every Hermitian `2 x 2` block is
-`minkHerm p` for the real momentum `p = momentumOfHerm2 H` extracted from its
-entries, so a two-null-edge SPINOR momentum has a well-defined null-edge
-Minkowski mass, and that mass EQUALS the spinor Plucker mass.
+Both are Hermitian `2 x 2` blocks whose determinant is the mass squared; this
+module shows they are the SAME mass (every Hermitian `2 x 2` block is
+`minkHerm p` for `p = momentumOfHerm2 H`).
 
-`GateI1/Core` already names `Spinor.PluckerMass` as its source spinor-helicity
-algebra; this module makes the identification an equation, and shows the two
-programs' "massless iff collinear" characterizations coincide.
+## IMPORTANT correction (red-team audit, 2026-07-05)
+
+An earlier version of this docstring framed this as "the first kernel-checked
+stitch between the two programs" (calling `Spinor.PluckerMass` the
+"octonion/spinor side"). That was an OVERCLAIM. Both `minkHerm`,
+`twoEdgeMomentum`, `spinorWedge`, `minkowskiSq` are pure `SL(2, ℂ)` SPACETIME
+Weyl-spinor constructions (`CSpinor = Fin 2 → ℂ`): NONE of them contains the
+complex octonions `ℂ⊗𝕆`, the minimal left ideal `J`, or `Cl(6)`. So this is a
+correct WITHIN-SPACETIME determinant identity between two spacetime mass
+constructions - internal consistency of Lane B's own spinor bookkeeping - NOT a
+bridge to Lane A (the octonion/charge program). "Octonion-lane" was a label, not
+math.
+
+The genuine cross-program test (the "colored mass" theorem, per the audit and
+the thesis document) is OPEN: wedge two elements of the SHARED module
+`ComplexOctonion (x) CSpinor` so the octonion ideal `J` actually enters the
+determinant, and decide whether the mass depends on the internal/color content
+(a real bridge) or factors through the spacetime factor only (co-location -
+which would kernel-falsify the strong "one spinor, two structures" claim).
 
 ## Claim discipline
 
-Claim label: **finite identity** (a determinant identity between two Hermitian
-`2 x 2` parametrizations; no analysis, no continuum). Draft-trust,
-kernel-checked, `s o r r y`-free. Prerequisites: `GateI1.Core` (null-edge) and
-the trusted `Spinor.PluckerMass` (octonion/spinor side). This is bridge B0 of
-the octonion/null-edge unification; B1 (shared Clifford module), B2
-(chirality <-> conjugate ideal), B3 (confinement <-> color) remain.
+Claim label: **finite identity** (a determinant identity between two spacetime
+Hermitian `2 x 2` parametrizations; no octonion content). Draft-trust,
+kernel-checked, `s o r r y`-free. Prerequisites: `GateI1.Core` and
+`Spinor.PluckerMass` (both spacetime Weyl-spinor lanes).
 -/
 
 open scoped Matrix
