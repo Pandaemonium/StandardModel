@@ -731,3 +731,91 @@ its D12 sector design and KP/infinite-volume scoping were adopted; its
 citation of Menotti-Osterwalder-style RP-for-Wilson-action sources is
 UNVERIFIED and goes to the section 11 debt register discipline before any
 paper cites it).
+
+## 15. User-directed QCD mass-formalism extension (finite lattice only)
+
+This section records the aggressive extension requested during the
+four-day YM run: aim beyond the pure-gauge ladder toward a kernel-checked
+lattice QCD mass formalism. It does not weaken the pure Yang-Mills queue
+above. The Q1-Q12 items remain the critical path; in particular, the
+cut-bearing reflection geometry, finite OS/GNS transfer layer, and sector
+decomposition are still the shared foundation.
+
+**Honesty header.** Every statement in this QMF ladder is finite-lattice,
+fixed-volume, and fixed-coupling unless a later theorem explicitly proves
+the relevant limiting construction. The continuum limit, renormalization,
+and Balaban-style multiscale analysis are recorded as a named frontier,
+not as deliverables of this ladder. Here "QCD mass" means spectral data
+of a lattice transfer operator in named quantum-number sectors, governed
+by the mass taxonomy in section 13.2.
+
+**Why the extension is adjacent to the current work.** The formal assets
+being built for pure Yang-Mills are mostly group-generic or
+content-independent: mirror-coordinate RP kernels, finite OS/GNS range
+models, sector projectors, KP/convergence scaffolding, and clustering
+bridges. QCD adds four new finite ingredients on top of that stack:
+compact gauge groups with Haar integration, Grassmann/Berezin finite
+algebra, the Wilson fermion action with determinant-level doubling
+discipline, and richer quantum-number sectors for hadron interpolating
+operators.
+
+### QMF ladder
+
+- **QMF1 - compact-group substrate.** Generalize the ensemble and
+  reflection-positive finite-sum layers to compact groups with Haar
+  integration. The run survey found Haar integration and
+  `Matrix.specialUnitaryGroup` present in pinned Mathlib, while
+  Peter-Weyl/compact character orthogonality is absent. Consequence:
+  split QMF1 into QMF1-RP (Haar-only compact RP/transfer substrate,
+  critical path) and QMF1-PW (Peter-Weyl character-expansion substrate,
+  deferred and likely Mathlib-facing).
+- **QMF2 - compact-group RP and transfer.** Port RP-KER, mirror
+  coordinates, cut kernels, and the OS/GNS transfer layer to the Haar
+  substrate. The cut-bearing lattice construction from Q1 is geometry,
+  not finite-group-specific, and should be reused rather than duplicated.
+- **QMF3 - finite Grassmann/Berezin formalism.** Formalize finite
+  exterior-algebra Berezin integration and the Matthews-Salam identity:
+  the finite fermionic Gaussian integral equals a determinant. This rung
+  is independent of QMF1/QMF2 and should stay finite and algebraic.
+- **QMF4 - Wilson fermion action and doubling audit.** Define the finite
+  Wilson-Dirac operator with documented gamma-matrix and chirality
+  conventions, state gamma5-hermiticity and paired-flavor determinant
+  positivity at zero chemical potential, and audit doubling at the
+  determinant level. The one-flavor sign problem is recorded, not worked
+  around.
+- **QMF5 - fermionic reflection positivity.** Extend the RP stack to the
+  Grassmann-valued positive-side algebra. Osterwalder-Seiler-style and
+  Menotti-Pelissetto-style Wilson-fermion reflection positivity are
+  source targets, subject to the provenance checks in section 11 and the
+  LINK-vs-SITE reflection-plane distinction already logged by T12.
+- **QMF6 - QCD transfer and quantum-number sectors.** Build the fermionic
+  transfer operator on the QMF5 OS/GNS space and define sector projectors
+  for flavor, parity, charge conjugation, baryon/meson content, and pure
+  gauge center-flux data. This generalizes the Q3 sector machinery.
+- **QMF7 - finite-volume hadron mass formalism.** At fixed lattice,
+  finite volume, and fixed coupling, define hadron spectral masses as
+  sector-restricted spectral gaps/data of the positive self-adjoint
+  transfer operator. Meson and baryon interpolating operators live in the
+  positive-side algebra. The taxonomy becomes theorem-level structure:
+  `quarkMassParameter`, `hadronSpectralMass`, `regulatorMass`, and the
+  pure-gauge Yang-Mills local-sector mass gap are distinct named objects,
+  and any conversion theorem must state its hypotheses explicitly.
+- **QMF8 - named frontier, not a claim.** Continuum limit,
+  renormalization, and volume-uniform QCD mass-gap statements remain
+  outside this ladder until separately formalized. Any prose that treats
+  QMF7's finite-volume spectral data as a continuum Clay-level mass gap
+  violates the section 13 taxonomy and F-YM-CONFLATE.
+
+**Run protocol.** QMF work is a saturation lane during the four-day YM
+run. It must not displace harvest/build work on the three pure-gauge
+mountains: cut-plaquette RP, KP combinatorics, and the concrete Wilson
+transfer instance. Statement files and Aristotle jobs are encouraged when
+the mountain queue is waiting, but final claims must keep the finite
+lattice, fixed-volume, fixed-coupling boundary visible in the theorem
+name, docstring, or surrounding task note.
+
+**Provenance.** Section 15 was added on 2026-07-04 from the user-directed
+QMF ladder in `AgentTasks/fourday-ym-run-2026-07-05/RUN_PLAN.md`, after
+Codex cross-review `review:qmf-roadmap-codex` accepted the finite-lattice
+claim boundary and requested that QMF7 spell out "lattice", "finite
+volume", and "fixed coupling" in its endpoint paragraph.

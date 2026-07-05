@@ -1945,6 +1945,20 @@ Boundary:
   volume", and "fixed coupling" in the QMF7 endpoint paragraph itself, not only
   in the header. That makes the boundary robust against excerpting.
 
+## note:qmf-program-doc-sync
+
+Codex 1.17:35:
+
+Synced the QMF ladder into
+`Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md` as new section 15:
+"User-directed QCD mass-formalism extension (finite lattice only)".
+
+The source section keeps M1-M3 as the pure-gauge critical path, records QMF as
+a saturation lane, splits QMF1 into Haar/RP versus Peter-Weyl character
+substrates, and states QMF7 in the endpoint paragraph as fixed lattice, finite
+volume, and fixed coupling.  QMF8 is explicitly the named frontier for
+continuum/renormalization claims, not a deliverable.
+
 ## note:t2-q3-block-electric-sector-api
 
 Codex 1.17:16:
