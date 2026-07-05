@@ -747,6 +747,42 @@ theorem plaquetteKPBound_of_uniform_alpha_bound
   exact (hBound X).trans hScale
 
 /-- A reusable sufficient condition for the explicit finite plaquette-polymer
+KP bound using a root-dependent closed-neighborhood cardinality estimate.
+
+This is the geometry-independent connector just before choosing a lattice
+degree constant: if all anchored polymer sums are bounded by `B`, and each
+root support has enough KP energy to pay for its closed touch-neighborhood
+overcount, then `PlaquetteKPBound` follows. -/
+theorem plaquetteKPBound_of_closedTouchNeighborhood_anchorBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (B : Real)
+    (hB : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+        (Finset.univ.filter
+          (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+            decide (q ∈ Y.support) = true)).sum
+          (fun Y =>
+            Y.coeffProduct gammaAbs *
+              Real.exp (alpha * (Y.support.card : Real))) <= B)
+    (hScale : forall X : PlaquettePolymer P Rlab ConnectedSupport
+        NontrivialLabel,
+      ((closedTouchNeighborhood Adj X.support).card : Real) * B <=
+        alpha * (X.support.card : Real)) :
+    PlaquetteKPBound Adj ConnectedSupport NontrivialLabel
+      gammaAbs alpha halpha := by
+  intro X
+  exact
+    (plaquetteKPSum_le_card_closedTouchNeighborhood_mul_anchorBound Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X B
+      (hB X)).trans
+      (hScale X)
+
+/-- A reusable sufficient condition for the explicit finite plaquette-polymer
 KP bound.
 
 If every singleton closed touch-neighborhood has degree at most `D`, every
