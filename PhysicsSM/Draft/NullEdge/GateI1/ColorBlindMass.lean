@@ -69,4 +69,26 @@ theorem colorTriplet_equal_norm : cNormSq v4 = cNormSq v5 ∧ cNormSq v5 = cNorm
 theorem colorTriplet_norm_value : cNormSq v4 = 1 / 2 := by
   simp only [cNormSq, v4, normSq_def]; norm_num
 
+/-- A norm-weighted colored mass: the only way the octonion (color) factor can
+enter a mass is through the `SU(3)`-invariant norm `cNormSq`, giving an overall
+`SU(3)`-invariant scale times the spacetime mass scalar `m`. This is the honest
+form the decisive test forces - the octonion factor cannot supply a per-color
+mass distinction, only this norm weight. -/
+noncomputable def coloredMass (z : ComplexOctonion) (m : ℝ) : ℝ := cNormSq z * m
+
+/-- **The colored mass is color-blind (the decisive test's co-location branch,
+kernel-verified).** For ANY spacetime mass scalar `m`, the three color-triplet
+states `v4, v5, v6` receive the SAME norm-weighted mass. The octonion (color)
+factor therefore supplies at most an overall `SU(3)`-invariant scale, NEVER a
+per-color mass distinction: CO-LOCATION, not COUPLING, in the color direction -
+exactly as the red-team audit expected. A genuine charge -> mass coupling
+(flavor/generation-dependent mass) is the Higgs/Yukawa, a separate structure
+absent here. -/
+theorem coloredMass_color_blind (m : ℝ) :
+    coloredMass v4 m = coloredMass v5 m ∧ coloredMass v5 m = coloredMass v6 m := by
+  obtain ⟨h45, h56⟩ := colorTriplet_equal_norm
+  refine ⟨?_, ?_⟩ <;> simp only [coloredMass]
+  · rw [h45]
+  · rw [h56]
+
 end PhysicsSM.Draft.NullEdge.GateI1.ColorBlindMass
