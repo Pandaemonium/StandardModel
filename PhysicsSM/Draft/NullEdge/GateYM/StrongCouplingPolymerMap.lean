@@ -327,6 +327,23 @@ theorem card_closedTouchNeighborhood_le_card_mul_singletonBound
           simp [Finset.sum_const]
 
 omit [Fintype Rlab] in
+/-- A uniform pointwise bound over the closed touch-neighborhood bounds the
+whole neighborhood sum by cardinality times the same bound.  No nonnegativity
+assumption is needed for this upper-bound direction. -/
+theorem sum_closedTouchNeighborhood_le_card_mul_bound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (A : Finset P) (F : P -> Real) (B : Real)
+    (hB : forall q : P, q ∈ closedTouchNeighborhood Adj A -> F q <= B) :
+    (closedTouchNeighborhood Adj A).sum F
+      <= ((closedTouchNeighborhood Adj A).card : Real) * B := by
+  calc
+    (closedTouchNeighborhood Adj A).sum F
+        <= (closedTouchNeighborhood Adj A).sum (fun _q => B) := by
+          exact Finset.sum_le_sum (fun q hq => hB q hq)
+    _ = ((closedTouchNeighborhood Adj A).card : Real) * B := by
+          simp [Finset.sum_const, nsmul_eq_mul]
+
+omit [Fintype Rlab] in
 /-- If `B` is overlap-or-touch incompatible with `A`, then `B` contains an
 anchor plaquette in the closed touch-neighborhood of `A`.  This is the support
 localization fact needed before any area-by-area counting bound. -/
@@ -615,6 +632,76 @@ theorem plaquetteKPSum_le_sum_closedTouchNeighborhood_anchors
           intro Y
           exact mul_nonneg (Y.coeffProduct_nonneg gammaAbs hgamma)
             (le_of_lt (Real.exp_pos _)))
+
+/-- If every anchored polymer sum over supports containing a fixed plaquette is
+bounded by `B` on the closed touch-neighborhood of `X.support`, then the
+localized KP overcount is bounded by the size of that neighborhood times `B`.
+
+This is still geometry-free: the theorem does not choose a singleton-degree
+constant or estimate the anchored sums. -/
+theorem plaquetteKPSum_le_card_closedTouchNeighborhood_mul_anchorBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel)
+    (B : Real)
+    (hB : forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+      (Finset.univ.filter
+        (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+          decide (q ∈ Y.support) = true)).sum
+        (fun Y =>
+          Y.coeffProduct gammaAbs *
+            Real.exp (alpha * (Y.support.card : Real))) <= B) :
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+      <= ((closedTouchNeighborhood Adj X.support).card : Real) * B := by
+  exact
+    (plaquetteKPSum_le_sum_closedTouchNeighborhood_anchors Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X).trans
+      (sum_closedTouchNeighborhood_le_card_mul_bound Adj X.support
+        (fun q =>
+          (Finset.univ.filter
+            (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+              decide (q ∈ Y.support) = true)).sum
+            (fun Y =>
+              Y.coeffProduct gammaAbs *
+                Real.exp (alpha * (Y.support.card : Real))))
+        B hB)
+
+/-- Combining a uniform singleton-neighborhood degree bound with a uniform
+anchored polymer-sum bound gives the standard product-form Q7 overcount:
+root-support size times degree times anchored bound.
+
+Concrete lattice geometry still has to prove the singleton-degree hypothesis,
+and strong-coupling estimates still have to prove the anchored bound. -/
+theorem plaquetteKPSum_le_card_mul_singletonBound_mul_anchorBound
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real) (hgamma : forall r, 0 <= gammaAbs r)
+    (alpha : Real) (halpha : 0 <= alpha)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel)
+    (D : Nat) (B : Real) (hB_nonneg : 0 <= B)
+    (hD : forall p : P,
+      (closedTouchNeighborhood Adj ({p} : Finset P)).card <= D)
+    (hB : forall q : P, q ∈ closedTouchNeighborhood Adj X.support ->
+      (Finset.univ.filter
+        (fun Y : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel =>
+          decide (q ∈ Y.support) = true)).sum
+        (fun Y =>
+          Y.coeffProduct gammaAbs *
+            Real.exp (alpha * (Y.support.card : Real))) <= B) :
+    plaquetteKPSum Adj ConnectedSupport NontrivialLabel gammaAbs alpha halpha X
+      <= ((X.support.card * D : Nat) : Real) * B := by
+  have hKP :=
+    plaquetteKPSum_le_card_closedTouchNeighborhood_mul_anchorBound Adj
+      ConnectedSupport NontrivialLabel gammaAbs hgamma alpha halpha X B hB
+  have hCard :
+      (closedTouchNeighborhood Adj X.support).card <= X.support.card * D :=
+    card_closedTouchNeighborhood_le_card_mul_singletonBound Adj X.support D hD
+  exact hKP.trans
+    (mul_le_mul_of_nonneg_right (Nat.cast_le.mpr hCard) hB_nonneg)
 
 /-- A finite plaquette-polymer KP bound: the explicit incompatible-polymer
 sum rooted at each polymer is bounded by its energy `alpha * area`. -/

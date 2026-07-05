@@ -503,7 +503,9 @@ cardinality overcount for degree-style estimates, including a uniform
 singleton-neighborhood bound `card <= A.card * D`, plus a generic
 anchor-overcount inequality that bounds any nonnegative incompatible-support sum
 by summing over anchors in the closed neighborhood and its direct specialization
-to the explicit plaquette KP sum. It also names the explicit finite plaquette KP sum
+to the explicit plaquette KP sum. It also packages cardinality-times-anchor and
+support-size-times-degree-times-anchor bounds for turning local anchored
+estimates into explicit KP-sum estimates. It also names the explicit finite plaquette KP sum
 `plaquetteKPSum`, the bound predicate `PlaquetteKPBound`, and the adapter
 `kpCondition_of_plaquetteKPBound` from that explicit bound to
 `PolymerKPCriterion.KPCondition`, plus the bundled handoff theorem

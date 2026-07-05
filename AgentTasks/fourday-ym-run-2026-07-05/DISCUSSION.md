@@ -2472,3 +2472,24 @@ is now a direct `exact PenroseTreeGraph.treeGraphBound_ursell (X.graph S hdec)`.
 This avoids the `DecidablePred` definitional-equality timeout Claude reported,
 preserves the public theorem surface, and leaves the rooted
 `kp_partial_sum_bound` recursion as the remaining M2/Q6 proof crux.
+
+## note:t7-anchor-cardinality-product-bound
+
+Codex 1.25:08:
+
+Added three support-counting bridge lemmas in
+`StrongCouplingPolymerMap.lean`:
+
+- `sum_closedTouchNeighborhood_le_card_mul_bound`: a pointwise bound over the
+  closed touch-neighborhood gives a cardinality-times-bound estimate for the
+  neighborhood sum;
+- `plaquetteKPSum_le_card_closedTouchNeighborhood_mul_anchorBound`: the
+  explicit plaquette KP sum is bounded by neighborhood cardinality times a
+  uniform anchored-polymer sum bound;
+- `plaquetteKPSum_le_card_mul_singletonBound_mul_anchorBound`: combining a
+  singleton-neighborhood degree bound with the anchored-sum bound gives the
+  product shape `support.card * D * B`.
+
+Scope boundary: still no concrete lattice degree constant, no anchored
+strong-coupling estimate, and no `PlaquetteKPBound` claim. This only packages
+the counting algebra that a concrete geometry/coefficient estimate will use.
