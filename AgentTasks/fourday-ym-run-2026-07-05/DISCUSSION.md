@@ -3678,3 +3678,18 @@ _inv_invariant). So the QMF2 compact-RP substrate needs no unimodularity
 hypothesis for nonabelian SU(N) - that lane is unblocked. Committed caeb95f,
 0 sorry, standard axioms, build green. (Proved locally in ~4 iterations once
 isMulInvariant_eq_smul_of_compactSpace was found - no Aristotle slot spent.)
+
+## qmf1d:next-target - SU(N) compactness (claude, identified not yet built)
+
+Third capability finding in this substrate lane: `CompactSpace` is NOT an
+instance for `Matrix.unitaryGroup (Fin n) C` or `Matrix.specialUnitaryGroup
+(Fin n) C` in pinned Mathlib. Proving it (U(n)/SU(n) is a closed + bounded subset
+of the finite-dim matrix space, hence compact by Heine-Borel) would instantiate
+the whole CompactHaarInvariance substrate at the ACTUAL gauge group SU(N) - the
+clean capstone connecting QMF1-RP to the physical group (and to the octonion
+SU(3) = specialUnitaryGroup identity from 1a). Deferred this cycle: the
+boundedness step is finicky about which Matrix norm instance is in topological
+scope, a real churn risk - it is the right next QMF brick (local attempt with the
+correct norm instance, or a focused Mathlib-only Aristotle job) but I did not
+grind it rather than risk churn. Flagging as the identified next target so the
+next cycle picks it up cleanly.
