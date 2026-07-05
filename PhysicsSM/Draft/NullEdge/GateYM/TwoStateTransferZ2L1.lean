@@ -91,6 +91,18 @@ theorem slabTransfer_eq_transfer2 (beta : ℝ) :
       plaquetteSign, bitSign, transfer2, Fin.sum_univ_two] <;>
     ring
 
+/-- The concrete one-link Z2 slab transfer matrix is symmetric. -/
+theorem slabTransfer_transpose (beta : ℝ) :
+    (slabTransfer beta)ᵀ = slabTransfer beta := by
+  rw [slabTransfer_eq_transfer2]
+  exact transfer2_transpose (diagonalWeight beta) (offDiagonalWeight beta)
+
+/-- The concrete one-link Z2 slab transfer matrix is Hermitian. -/
+theorem slabTransfer_conjTranspose (beta : ℝ) :
+    (slabTransfer beta)ᴴ = slabTransfer beta := by
+  rw [slabTransfer_eq_transfer2]
+  exact transfer2_conjTranspose (diagonalWeight beta) (offDiagonalWeight beta)
+
 /-- The one-link slab transfer has the vacuum vector with eigenvalue
 `2 * (exp beta + exp (-beta))`. -/
 theorem slabTransfer_mulVec_vacuum (beta : ℝ) :

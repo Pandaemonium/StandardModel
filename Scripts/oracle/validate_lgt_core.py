@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.18 (YM ladder, 2026-07-05)
+validate_lgt_core.py -- Track C oracle v0.19 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -113,6 +113,10 @@ v0.18 (four-day YM run, dynamics slice 15) adds:
   Lean-surface provenance for the normalized one-link `T = 2`, `tau = 1`
   spatial-flux autocorrelation ratio theorem.
 
+v0.19 (four-day YM run, dynamics slice 16) adds:
+  Lean-surface provenance for the concrete one-link slab transfer symmetry and
+  Hermitian identities.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -174,7 +178,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.18 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.19 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -677,7 +681,7 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
 
-print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.18)")
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.19)")
 print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
       "with exact spacetime validation")
 for beta in [0.2, 0.4, 0.7]:
@@ -733,7 +737,7 @@ descriptor_summary = z2_transfer_summarize(L=3, T=3, beta=0.7)
 descriptor_record = z2_transfer_summary_record(descriptor_summary)
 descriptor_json = json.dumps(descriptor_record, sort_keys=True)
 check("descriptor JSON record is serializable and summary-consistent",
-      descriptor_record["oracle"]["version"] == "v0.18"
+      descriptor_record["oracle"]["version"] == "v0.19"
       and descriptor_record["descriptor"]["schema_version"]
       == "z2_1p1d_wilson_slab_transfer.v1"
       and descriptor_record["descriptor"]["model"] == "z2_1p1d_wilson_slab_transfer"
@@ -770,6 +774,8 @@ check("descriptor JSON record names Lean theorem surfaces",
           entry["module"]
           == "PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2L1"
           and "slabTransfer_eq_transfer2" in entry["surface"]
+          and "slabTransfer_transpose" in entry["surface"]
+          and "slabTransfer_conjTranspose" in entry["surface"]
           and "slabTransfer_mulVec_vacuum" in entry["surface"]
           and "slabTransfer_mulVec_local" in entry["surface"]
           and "slabTransfer_trace" in entry["surface"]
