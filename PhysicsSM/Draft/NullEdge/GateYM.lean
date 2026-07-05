@@ -46,6 +46,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.CyclicityPrereq
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.BanksCasherShadow
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGraphInequality
 import PhysicsSM.Draft.NullEdge.GateYM.BerezinMatthewsSalam
@@ -310,6 +311,11 @@ exactly the chosen block electric sectors and whose kernels are the ranges of
 the complementary idempotent other-sector sums, with selected/complementary
 ranges disjoint, spanning the finite OS range, and packaged as a product
 linear equivalence);
+`FiniteGapAssembly` (YM4/T9 finite hypothesis package: bundles the local
+cyclicity prerequisite with strict ordered-eigenvalue data and proves only the
+definition-level consequence that the named local/glueball gap is positive;
+no transfer matrix, Hamiltonian, Wilson slab-kernel, infinite-volume state, or
+physical mass-gap theorem is claimed);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint
