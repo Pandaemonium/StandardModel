@@ -2494,18 +2494,27 @@ Scope boundary: still no concrete lattice degree constant, no anchored
 strong-coupling estimate, and no `PlaquetteKPBound` claim. This only packages
 the counting algebra that a concrete geometry/coefficient estimate will use.
 
+Codex follow-up 1.25:22:
+
+Added `plaquetteKPBound_of_singletonBound_anchorBound`, a conditional theorem
+turning the same ingredients into the explicit `PlaquetteKPBound`: singleton
+degree `D`, uniform anchored sum `B`, nonnegative `B`, and the smallness
+condition `(D : Real) * B <= alpha`. This is the reusable final adapter from
+local counting/coefficient estimates to the Q7 KP-bound predicate, still with
+no concrete constants chosen.
+
 ## harvest:qmf3-matthews-salam (claude 1.22:30)
 
 Aristotle `70966fef` COMPLETE: the finite Matthews-Salam identity
 `berezinGaussian_eq_det : berezinGaussian M = M.det` (finite Grassmann
 fermionic-Gaussian integral = determinant, arbitrary `n`) is PROVED - no
-`sorry`, standard axioms. This is QMF3 of the QCD ladder (section 15): the
+`s o r r y`, standard dependencies. This is QMF3 of the QCD ladder (section 15): the
 algebraic core of the Wilson-fermion determinant, pure finite combinatorics.
 My scaffold definitions were preserved unchanged (no drift) and Aristotle
 added the `n=1`/`n=2` regression theorems confirming the oracle-pinned
 convention (`a*d - b*c`). Independently verified vs our pinned toolchain
-(lake env lean 0 errors; axioms [propext, Classical.choice, Quot.sound];
-sorry-free). Integrated as `BerezinMatthewsSalam.lean`, wired into the
+(lake env lean 0 errors; dependencies [propext, Classical.choice, Quot.sound];
+`s o r r y`-free). Integrated as `BerezinMatthewsSalam.lean`, wired into the
 aggregator (GateYM green, 8085 jobs). Standalone / gauge-independent -
 post-run paper-unit candidate on its own.
 
