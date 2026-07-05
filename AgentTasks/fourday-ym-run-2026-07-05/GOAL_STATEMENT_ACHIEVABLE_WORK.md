@@ -49,7 +49,8 @@ The repo now has enough verified infrastructure to make the next work concrete:
   trace reconstruction and minus/plus ratio `tanh beta ^ T`, a
   normalized `T = 2`, `tau = 1` autocorrelation ratio theorem, arbitrary
   two-interval flux-correlation numerator and normalized eigenvalue-branch
-  ratio theorems, and a one-link
+  ratio theorems, a cross-multiplied `tanh beta` contraction-factor identity
+  for that arbitrary two-interval autocorrelation, and a one-link
   spatial-flux insertion that is Hermitian, involutive, and swaps the
   vacuum/local eigenvectors; it also formalizes the L=1 global-center flip and
   plus/minus projectors, including center-flip involution, projector
@@ -251,7 +252,8 @@ Achievable deliverables:
   ratio, plus L=1 center flip/projector theorem surfaces and two-step
   plus/minus center-projected trace surfaces. It also records arbitrary
   finite-time one-link center-sector trace theorem surfaces and arbitrary
-  two-interval one-link flux-correlation theorem surfaces, descriptor-requested
+  two-interval one-link flux-correlation theorem surfaces, including the
+  cross-multiplied `tanh beta` contraction-factor form, descriptor-requested
   spatial-flux autocorrelation profiles, center-sector partition traces, and
   full/center-sector first-gap fields as finite oracle evidence.
 

@@ -674,6 +674,36 @@ theorem fluxCorrelation_pow_ratio_eq_eigenvalue_branches
   rw [fluxMatrix_slabTransfer_pow_fluxMatrix_slabTransfer_pow_trace,
     slabTransfer_pow_trace]
 
+/-- Cross-multiplied contraction-factor form of the arbitrary two-interval
+one-link spatial-flux autocorrelation.
+
+The equation is intentionally cross-multiplied: it records the `tanh beta`
+contraction factor without adding a separate denominator nonvanishing
+hypothesis to this finite observable identity. -/
+theorem fluxCorrelation_pow_tanh_cross (beta : ℝ) (tau sigma : ℕ) :
+    let r : ℂ := ((Real.tanh beta : ℝ) : ℂ)
+    (1 + r ^ (tau + sigma)) *
+        Matrix.trace (fluxMatrix * (slabTransfer beta) ^ tau * fluxMatrix *
+          (slabTransfer beta) ^ sigma) =
+      (r ^ tau + r ^ sigma) *
+        Matrix.trace ((slabTransfer beta) ^ (tau + sigma)) := by
+  dsimp
+  rw [fluxMatrix_slabTransfer_pow_fluxMatrix_slabTransfer_pow_trace,
+    slabTransfer_pow_trace]
+  have hden : Real.exp beta + Real.exp (-beta) ≠ 0 := by
+    positivity
+  have hminus :
+      (((2 * (Real.exp beta - Real.exp (-beta)) : ℝ) : ℂ)) =
+        ((Real.tanh beta : ℝ) : ℂ) *
+          (((2 * (Real.exp beta + Real.exp (-beta)) : ℝ) : ℂ)) := by
+    rw [Real.tanh_eq]
+    norm_cast
+    field_simp [hden]
+  rw [hminus]
+  simp only [mul_pow]
+  simp only [pow_add]
+  ring
+
 /-- The raw two-time spatial-flux numerator for the one-link, two-step slab
 trace. -/
 theorem fluxMatrix_slabTransfer_fluxMatrix_slabTransfer_trace (beta : ℝ) :
