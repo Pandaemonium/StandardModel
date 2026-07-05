@@ -37,7 +37,7 @@ block factorization (`reflectedWilsonBlock_eq_gram`, still to formalize) uses
 these projectors.
 -/
 
-open scoped Matrix
+open scoped Matrix ComplexOrder
 
 namespace PhysicsSM.Draft.NullEdge.GateYM
 namespace WilsonProjectors
@@ -93,9 +93,43 @@ theorem projPlus_herm (μ : Fin 4) : (projPlus μ)ᴴ = projPlus μ := by
 
 /-- `P_minus` is Hermitian: `P_minus^dagger = P_minus`. -/
 theorem projMinus_herm (μ : Fin 4) : (projMinus μ)ᴴ = projMinus μ := by
-  simp only [projMinus, Matrix.conjTranspose_smul, Matrix.conjTranspose_add,
+  simp only [projMinus, Matrix.conjTranspose_add, Matrix.conjTranspose_smul,
     Matrix.conjTranspose_one, γ_herm]
   norm_num
+
+/-! ### The projector-Gram PSD lemma (the linear-algebra conclusion of RP-F node N5)
+
+A Hermitian idempotent `P` sandwiched as `A^dagger P A` is positive semidefinite,
+because `A^dagger P A = (P A)^dagger (P A)`. Specialized to the Wilson projectors
+`P+-`, this is exactly the statement that the reflected cross-mirror Wilson block
+is PSD - the Gram (`M^dagger M`) form that the QMF5 design (`d1e7bece`) isolated
+as the single hard node N5 of finite fermionic reflection positivity. Here it is
+proved in the ABSTRACT projector form and specialized; wiring it to the concrete
+reflected lattice block (with the actual link field `U` and the reflection
+geometry) is the remaining lattice-scaffolding step. -/
+
+/-- **Projector-Gram positive semidefiniteness.** For a Hermitian idempotent
+`P` (orthogonal projector) and any `A`, the sandwiched block `A^dagger P A` is
+positive semidefinite. Proof: `A^dagger P A = (P A)^dagger (P A)` using
+`P = P^dagger P`. -/
+theorem conj_projector_posSemidef {n k : Type*} [Fintype n] [Fintype k] [DecidableEq n]
+    (P : Matrix n n ℂ) (hherm : Pᴴ = P) (hidem : P * P = P) (A : Matrix n k ℂ) :
+    (Aᴴ * P * A).PosSemidef := by
+  have hgram : (P * A)ᴴ * (P * A) = Aᴴ * P * A := by
+    rw [Matrix.conjTranspose_mul, hherm, Matrix.mul_assoc, ← Matrix.mul_assoc P P A,
+      hidem, ← Matrix.mul_assoc]
+  rw [← hgram]
+  exact Matrix.posSemidef_conjTranspose_mul_self _
+
+/-- The forward-projector reflected block `A^dagger P_plus A` is PSD. -/
+theorem conj_projPlus_posSemidef {k : Type*} [Fintype k] (μ : Fin 4)
+    (A : Matrix (Fin 4) k ℂ) : (Aᴴ * projPlus μ * A).PosSemidef :=
+  conj_projector_posSemidef _ (projPlus_herm μ) (projPlus_idem μ) A
+
+/-- The backward-projector reflected block `A^dagger P_minus A` is PSD. -/
+theorem conj_projMinus_posSemidef {k : Type*} [Fintype k] (μ : Fin 4)
+    (A : Matrix (Fin 4) k ℂ) : (Aᴴ * projMinus μ * A).PosSemidef :=
+  conj_projector_posSemidef _ (projMinus_herm μ) (projMinus_idem μ) A
 
 end WilsonProjectors
 end PhysicsSM.Draft.NullEdge.GateYM

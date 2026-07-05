@@ -1985,6 +1985,16 @@ theorem onePlaquetteZ2_plaquetteKPBound_of_abs_tanh_le
   exact onePlaquetteZ2_plaquetteKPBound beta alpha halpha
     (onePlaquetteZ2_smallness_of_abs_tanh_le beta alpha hsmall)
 
+/-- One-plaquette Z2 positive-area-slice fixture under the explicit threshold
+`|tanh beta| <= alpha * exp(-alpha)`. -/
+theorem onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_abs_tanh_le
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : |Real.tanh beta| <= alpha * Real.exp (-alpha)) :
+    PlaquetteKPBound onePlaquetteAdj onePlaquetteConnectedSupport
+      onePlaquetteNontrivialLabel (z2GammaAbs beta) alpha halpha := by
+  exact onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice beta alpha halpha
+    (onePlaquetteZ2_smallness_of_abs_tanh_le beta alpha hsmall)
+
 /-- The one-plaquette Z2 fixture supplies an abstract `KPCondition` under the
 same scalar smallness hypothesis.  This is the no-Q6 wrapper around
 `onePlaquetteZ2_plaquetteKPBound`. -/

@@ -111,8 +111,12 @@ Concrete sanity fixture:
   condition `|tanh beta| * exp alpha <= alpha`.
 - The same fixture now computes the area-one anchored slice as
   `onePlaquetteZ2_anchor_area_sum` and routes the scalar smallness hypothesis
-  through the area-slice adapter as `onePlaquetteZ2_plaquetteKPBound_areaSlice`.
+  through the area-slice adapter as `onePlaquetteZ2_plaquetteKPBound_areaSlice`
+  and through the positive-area adapter as
+  `onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice`.
 - Beta-zero and `|tanh beta| <= alpha * exp (-alpha)` wrappers are proved.
+  The explicit-threshold wrapper also exists for the positive-area path as
+  `onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_abs_tanh_le`.
 - This fixture is finite and non-volume-uniform; it is a sanity check for the
   adapters, not a lattice theorem.
 
