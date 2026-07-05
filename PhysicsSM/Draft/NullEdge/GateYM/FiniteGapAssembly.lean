@@ -139,6 +139,33 @@ theorem exp_localGap_eq_lambda0_div_lambdaLocal (P : FiniteGapPrereq H) :
   unfold localSpectralRatio
   field_simp [P.lambda0_pos.ne', P.lambdaLocal_pos.ne']
 
+/-- The exponential rate attached to the packaged gap is positive. -/
+theorem exp_localGap_pos (P : FiniteGapPrereq H) :
+    0 < Real.exp P.localGap :=
+  Real.exp_pos _
+
+/-- A positive packaged gap exponentiates to a rate strictly greater than one. -/
+theorem one_lt_exp_localGap (P : FiniteGapPrereq H) :
+    1 < Real.exp P.localGap := by
+  have hgap : 0 < P.localGap := by
+    simpa [localGap] using
+      FluxSectorZ2.localGlueballGap_pos
+        P.lambda0_pos P.lambdaLocal_pos P.lambdaLocal_lt_lambda0
+  exact Real.one_lt_exp_iff.mpr hgap
+
+/-- Multiplicative, division-free form of the inverse-ratio identity. -/
+theorem localSpectralRatio_mul_exp_localGap_eq_one (P : FiniteGapPrereq H) :
+    P.localSpectralRatio * Real.exp P.localGap = 1 := by
+  rw [exp_localGap_eq_inv_localSpectralRatio]
+  field_simp [P.localSpectralRatio_pos.ne']
+
+/-- Multiplicative recovery of the vacuum eigenvalue from the local eigenvalue
+and the packaged gap rate. -/
+theorem lambdaLocal_mul_exp_localGap_eq_lambda0 (P : FiniteGapPrereq H) :
+    P.lambdaLocal * Real.exp P.localGap = P.lambda0 := by
+  rw [exp_localGap_eq_lambda0_div_lambdaLocal]
+  field_simp [P.lambdaLocal_pos.ne']
+
 /-- The bundled Q9 prerequisite still exposes vacuum membership in the chosen
 sector. -/
 theorem vacuum_mem_sector (P : FiniteGapPrereq H) :
