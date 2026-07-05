@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.28 (YM ladder, 2026-07-05)
+validate_lgt_core.py -- Track C oracle v0.29 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -154,6 +154,10 @@ v0.28 (four-day YM run, dynamics slice 25) adds:
   Saved-record and regression checks for the emitted transfer-kernel symmetry
   and center flip/plus/minus projector commutation laws.
 
+v0.29 (four-day YM run, dynamics slice 26) adds:
+  Saved-record verification for the emitted full and center-sector positive
+  eigenvalue lists, plus a tamper-rejection regression row.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -216,7 +220,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.28 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.29 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -719,7 +723,7 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
 
-print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.28)")
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.29)")
 print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
       "with exact spacetime validation")
 for beta in [0.2, 0.4, 0.7]:
@@ -775,7 +779,7 @@ descriptor_summary = z2_transfer_summarize(L=3, T=3, beta=0.7)
 descriptor_record = z2_transfer_summary_record(descriptor_summary)
 descriptor_json = json.dumps(descriptor_record, sort_keys=True)
 check("descriptor JSON record is serializable and summary-consistent",
-      descriptor_record["oracle"]["version"] == "v0.28"
+      descriptor_record["oracle"]["version"] == "v0.29"
       and descriptor_record["descriptor"]["schema_version"]
       == "z2_1p1d_wilson_slab_transfer.v1"
       and descriptor_record["descriptor"]["model"] == "z2_1p1d_wilson_slab_transfer"
@@ -993,12 +997,23 @@ check("descriptor spectrum record carries full and sector first gaps",
           gaps["center_minus"],
           spectrum["center_minus_positive_eigenvalues"],
       ))
+check("saved JSON record verifier accepts full and sector spectrum lists",
+      verified_record["checks"]["spectrum_full_positive_eigenvalues"]["ok"]
+      and verified_record["checks"]["spectrum_center_plus_positive_eigenvalues"]["ok"]
+      and verified_record["checks"]["spectrum_center_minus_positive_eigenvalues"]["ok"])
 tampered_gap_record = json.loads(json.dumps(descriptor_result))
 tampered_gap_record["results"]["spectrum"]["first_gaps"]["full"] += 0.25
 tampered_gap_verification = z2_transfer_verify_record(tampered_gap_record)
 check("saved JSON record verifier rejects tampered first-gap field",
       not tampered_gap_verification["ok"]
       and "spectrum_full_first_gap" in tampered_gap_verification["errors"])
+tampered_spectrum_record = json.loads(json.dumps(descriptor_result))
+tampered_spectrum_record["results"]["spectrum"]["positive_eigenvalues"][0] *= 1.01
+tampered_spectrum_verification = z2_transfer_verify_record(tampered_spectrum_record)
+check("saved JSON record verifier rejects tampered spectrum eigenvalue list",
+      not tampered_spectrum_verification["ok"]
+      and "spectrum_full_positive_eigenvalues"
+      in tampered_spectrum_verification["errors"])
 
 check("descriptor-driven transfer record reproduces exact checks",
       descriptor_result["checks"]["partition_rel_error"] < 1e-10

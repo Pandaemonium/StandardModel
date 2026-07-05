@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.28"
+ORACLE_VERSION = "v0.29"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -981,6 +981,56 @@ def _compare_optional_scalar(checks: dict,
     )
 
 
+def _compare_vector(checks: dict,
+                    errors: list[str],
+                    name: str,
+                    observed: object,
+                    expected: np.ndarray | tuple[float, ...] | list[float],
+                    tolerance: float) -> None:
+    """Append a one-dimensional numeric array comparison to a verification report."""
+
+    if not isinstance(observed, list):
+        checks[name] = {
+            "observed_len": None,
+            "expected_len": int(len(expected)),
+            "max_abs_error": math.inf,
+            "tolerance": tolerance,
+            "ok": False,
+        }
+        errors.append(name)
+        return
+    try:
+        observed_array = np.array(observed, dtype=np.float64)
+    except (TypeError, ValueError):
+        checks[name] = {
+            "observed_len": len(observed),
+            "expected_len": int(len(expected)),
+            "max_abs_error": math.inf,
+            "tolerance": tolerance,
+            "ok": False,
+        }
+        errors.append(name)
+        return
+    expected_array = np.array(expected, dtype=np.float64)
+    same_shape = observed_array.shape == expected_array.shape
+    finite = bool(np.all(np.isfinite(observed_array))) if same_shape else False
+    max_error = (
+        float(np.max(np.abs(observed_array - expected_array)))
+        if same_shape and observed_array.size and finite
+        else (0.0 if same_shape and finite else math.inf)
+    )
+    ok = same_shape and finite and max_error <= tolerance
+    checks[name] = {
+        "observed_len": int(observed_array.size),
+        "expected_len": int(expected_array.size),
+        "max_abs_error": max_error,
+        "tolerance": tolerance,
+        "ok": bool(ok),
+    }
+    if not ok:
+        errors.append(name)
+
+
 def _compare_matrix(checks: dict,
                     errors: list[str],
                     name: str,
@@ -1149,6 +1199,30 @@ def verify_record(record: dict) -> dict:
 
         spectrum = results.get("spectrum")
         _require(isinstance(spectrum, dict), "`results.spectrum` must be an object")
+        _compare_vector(
+            checks,
+            errors,
+            "spectrum_full_positive_eigenvalues",
+            spectrum.get("positive_eigenvalues"),
+            expected.eigenvalues,
+            spectrum_tol,
+        )
+        _compare_vector(
+            checks,
+            errors,
+            "spectrum_center_plus_positive_eigenvalues",
+            spectrum.get("center_plus_positive_eigenvalues"),
+            expected.sector_eigenvalues_plus,
+            spectrum_tol,
+        )
+        _compare_vector(
+            checks,
+            errors,
+            "spectrum_center_minus_positive_eigenvalues",
+            spectrum.get("center_minus_positive_eigenvalues"),
+            expected.sector_eigenvalues_minus,
+            spectrum_tol,
+        )
         gaps = spectrum.get("first_gaps")
         _require(isinstance(gaps, dict), "`results.spectrum.first_gaps` must be an object")
         _compare_optional_scalar(
