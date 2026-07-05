@@ -578,3 +578,59 @@ architecture. The promotion review and paper units from the earlier
 post-run sketch stand unchanged; paper unit 3 (Berezin/Matthews-Salam
 finite formalism, standalone Mathlib-facing) joins the list once QMF3
 closes - it is publishable independent of all gauge content.
+
+## The null-edge mass unification overlay (T-NE, user-directed)
+
+**Authority.** The user directed (day 3): find out whether a CONSISTENT
+story describes ALL mass in terms of null edges - including QCD
+confinement mass - and outline what is achievable. The full outline,
+thesis, pillars table, and kill list live in
+`NULL_EDGE_MASS_UNIFICATION.md` (this directory); this section is the
+scheduling overlay only.
+
+**Thesis (mechanism grade, one line).** "No primitive mass": every
+taxonomy-row mass is a relational obstruction to primitively-null
+transport - turn (T: fermion/Higgs), closure (C: gauge/Elitzur/gap), or
+aperture (A: composite/hadron), with the keystone kinematic identity
+`M^2 = sum of pairwise null angles` unifying them and Gate I1's
+`det P = m^2` as its two-body germ. F-YM-CONFLATE unaffected: shared
+mechanism SHAPE, separate theorems per row.
+
+**The NE-U ladder** (details + kill conditions in the outline doc):
+
+- **NE-U1 - aperture keystone** (`compositeMassSq_eq_zero_iff_
+  collinear` + Plucker bridge): Mathlib-only, IMMEDIATE, the spine.
+- **NE-U2 - mass = chirality-mixing at Wilson-Dirac grade**
+  (`chiral_iff_massless_naive`; physical-vs-regulator mass as
+  mathematics): rides the completed QMF4 stack, IMMEDIATE.
+- **NE-U3 - closure pillar consolidation** (Elitzur landed by codex;
+  named corollary + mechanism docstrings): CHEAP.
+- **NE-U4 - gap as closure cost** (sector-restricted statement shape
+  for the M3 transfer gap): rides M1-M3, statement discipline only.
+- **NE-U5 - "mass without mass" toy** (zero quark mass parameter,
+  positive sector gap, one small explicit model): THE CROWN of the
+  unification; Aristotle design job first; needs QMF5/QMF6 statement
+  shapes, not the mountains.
+- **NE-U6 - electroweak/gauge-Higgs rung** (Fradkin-Shenker anchor,
+  gauge-invariant composite W): NEXT-RUN; bibliographic verification
+  required first.
+
+**Overnight/day-3+ schedule adjustment (mountains keep priority;
+NE-U rides the claude lane and saturation time):**
+
+- **Tonight (day 3 night):** (i) NE-U1 statement freeze + oracle pin +
+  focused Aristotle package (Mathlib-only; the reverse-Cauchy-Schwarz
+  null lemma is the one hard step); (ii) NE-U2 statement freeze on the
+  QMF4 stack - attempt direct proof first (the gamma5-parity split is
+  near the already-proved gamma5-hermiticity), Aristotle on stall;
+  (iii) the pending QMF5 fermionic-RP strategy job gains one explicit
+  question: what sector definitions does NE-U5's toy need from
+  QMF5/QMF6, and what is the smallest kernel-tractable
+  "mass without mass" model?
+- **Day 3 audit:** the mandated grand-strategy audit now adjudicates
+  THREE threads (M-mountains, QMF, NE-U) and must rank NE-U5 model
+  candidates.
+- **Day 4:** NE-U1/U2 harvests integrated + independently verified;
+  NE-U5 design harvested into a statement file if returned;
+  `FINAL_REPORT.md` gains a null-edge-unification section grading
+  against the outline doc's CAN/CANNOT lists.

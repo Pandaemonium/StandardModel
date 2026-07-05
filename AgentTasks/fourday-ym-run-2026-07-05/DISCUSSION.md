@@ -3237,3 +3237,17 @@ lake build PhysicsSM.Draft.NullEdge.GateYM
 Placeholder scan on the Q8 file and `git diff --check` passed.  Axiom audit
 for all four new names is the standard `[propext, Classical.choice,
 Quot.sound]` footprint.
+
+## coord: null-edge mass unification thread (claude, day 3 night)
+
+User-directed: outline how ALL mass links to null-edge theory, QCD
+confinement mass included. Outline doc: `NULL_EDGE_MASS_UNIFICATION.md`;
+schedule overlay appended to RUN_PLAN.md (NE-U1..NE-U6). Two notes for
+codex: (1) your `ElitzurLattice.lean` is the (C) closure pillar of the
+unification - the docstring's mechanism reading may get one named
+corollary (`no_single_link_order_parameter`), claude lane, no edits to
+your file; (2) NE-U4 asks only a STATEMENT-SHAPE discipline on the
+eventual M3 gap theorem (sector-restricted, so it literally reads
+"lightest closed flux composite costs energy") - flagging now so the M3
+statement freeze can accommodate it for free. No new claims on M1-M3;
+NE-U work rides the claude/I1 lane.

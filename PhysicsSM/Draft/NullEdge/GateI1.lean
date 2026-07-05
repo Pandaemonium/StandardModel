@@ -1,6 +1,7 @@
 import PhysicsSM.Draft.NullEdge.GateI1.Core
 import PhysicsSM.Draft.NullEdge.GateI1.MassCoinBridge
 import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary
+import PhysicsSM.Draft.NullEdge.GateI1.CompositeApertureMass
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -16,7 +17,12 @@ bridge and null-step walk coherence suite (`MassCoinBridge`); plus the I1.8
 mass -> von Neumann entropy dictionary (`MassEntropyDictionary`: eigenvalue
 ordering of the normalized block, its binary entropy, and the "null edges do
 not age" theorem `vonNeumannEntropy = 0 <-> minkowskiSq = 0`, with the
-observer-conditioned frame caveat).
+observer-conditioned frame caveat); plus the NE-U1 composite aperture mass
+keystone (`CompositeApertureMass`: `minkDot` polarization/double-sum layer,
+reverse Cauchy-Schwarz on the future light cone with its equality case, and
+the headline `compositeMassSq_eq_zero_iff_collinear` - a composite of null
+constituents is massless iff it points along one null direction - with the
+two-body Plucker bridge `det (minkHerm (p + q)) = 2 * minkDot p q`).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 
