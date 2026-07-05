@@ -308,7 +308,8 @@ The actual Q2 transfer matrix construction remains future work, but
 OS range model, including sector endomorphisms whose fixed points/ranges are
 exactly the chosen block electric sectors and whose kernels are the ranges of
 the complementary idempotent other-sector sums, with selected/complementary
-ranges disjoint and spanning the finite OS range);
+ranges disjoint, spanning the finite OS range, and packaged as a product
+linear equivalence);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
 in-repo, zero `s o r r y`, axiom footprint

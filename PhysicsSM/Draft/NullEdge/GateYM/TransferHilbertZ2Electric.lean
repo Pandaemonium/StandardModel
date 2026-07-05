@@ -27,10 +27,11 @@ decomposition on the finite OS range.  The range of each sector endomorphism is
 characterized as the matching sectorized finite OS submodule, and its kernel is
 the range/fixed-point space of the complementary sum of the other sector
 endomorphisms.  The selected and complementary ranges are disjoint and span the
-finite OS range.  Distinct sectorized submodules are disjoint.  The four
-sectorized submodules span the plaquette-field finite OS range, with explicit
-linear maps decomposing any OS range vector into its four sector projections
-and reconstructing it from those components.
+finite OS range; this binary split is also packaged as an explicit linear
+equivalence.  Distinct sectorized submodules are disjoint.  The four sectorized
+submodules span the plaquette-field finite OS range, with explicit linear maps
+decomposing any OS range vector into its four sector projections and
+reconstructing it from those components.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -1110,6 +1111,164 @@ theorem sup_range_rpHilbertSpaceBlockElectricProjection_other_eq_top
           hLx hLy F ex ey)
     rw [← h]
     exact hsum
+
+/-- The product of the selected block electric-sector endomorphism range and
+the complementary other-sector endomorphism range.  This is a finite algebraic
+binary split of the OS range, not a physical transfer-Hilbert direct sum. -/
+abbrev rpHilbertSpaceSelectedOtherProduct {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) : Type :=
+  LinearMap.range (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) ×
+    LinearMap.range
+      (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)
+
+/-- Decompose a finite OS vector into its selected-sector component and its
+complementary other-sector component. -/
+def rpHilbertSpaceSelectedOtherDecomposition {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) →ₗ[Complex]
+      rpHilbertSpaceSelectedOtherProduct hLx hLy F ex ey where
+  toFun v :=
+    (⟨rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v, ⟨v, rfl⟩⟩,
+      ⟨rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey v,
+        ⟨v, rfl⟩⟩)
+  map_add' := by
+    intro u v
+    apply Prod.ext
+    · apply Subtype.ext
+      ext x
+      simp
+    · apply Subtype.ext
+      ext x
+      simp
+  map_smul' := by
+    intro c v
+    apply Prod.ext
+    · apply Subtype.ext
+      ext x
+      simp
+    · apply Subtype.ext
+      ext x
+      simp
+
+/-- Reconstruct a finite OS vector from a selected-sector component and a
+complementary other-sector component. -/
+def rpHilbertSpaceSelectedOtherReconstruction {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpHilbertSpaceSelectedOtherProduct hLx hLy F ex ey →ₗ[Complex]
+      rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) where
+  toFun v := v.1.1 + v.2.1
+  map_add' := by
+    intro u v
+    ext x
+    simp [add_comm, add_left_comm]
+  map_smul' := by
+    intro c v
+    ext x
+    simp [smul_add]
+
+/-- Reconstructing after the selected/other decomposition gives the original
+finite OS vector. -/
+theorem rpHilbertSpaceSelectedOtherReconstruction_decomposition
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    (rpHilbertSpaceSelectedOtherReconstruction hLx hLy F ex ey).comp
+        (rpHilbertSpaceSelectedOtherDecomposition hLx hLy F ex ey) =
+      LinearMap.id := by
+  ext v x
+  have h := congrArg (fun T => T v)
+    (rpHilbertSpaceBlockElectricProjection_add_other_eq_id
+      hLx hLy F ex ey)
+  exact congrFun (congrArg Subtype.val h) x
+
+/-- Decomposing after reconstruction recovers both selected/other product
+components. -/
+theorem rpHilbertSpaceSelectedOtherDecomposition_reconstruction
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    (rpHilbertSpaceSelectedOtherDecomposition hLx hLy F ex ey).comp
+        (rpHilbertSpaceSelectedOtherReconstruction hLx hLy F ex ey) =
+      LinearMap.id := by
+  apply LinearMap.ext
+  intro v
+  apply Prod.ext
+  · apply Subtype.ext
+    have hsel :
+        rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v.1.1 =
+          v.1.1 := by
+      rcases v.1.2 with ⟨u, hu⟩
+      rw [← hu]
+      have h := congrArg (fun T => T u)
+        (rpHilbertSpaceBlockElectricProjection_idempotent hLx hLy F ex ey)
+      simpa using h
+    have hoth :
+        rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v.2.1 =
+          0 := by
+      exact (mem_range_rpHilbertSpaceOtherBlockElectricProjection_iff
+        hLx hLy F ex ey v.2.1).1 v.2.2
+    ext x
+    simp [rpHilbertSpaceSelectedOtherDecomposition,
+      rpHilbertSpaceSelectedOtherReconstruction, hsel, hoth]
+  · apply Subtype.ext
+    have hsel :
+        rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey v.1.1 =
+          0 := by
+      rcases v.1.2 with ⟨u, hu⟩
+      rw [← hu]
+      have h := congrArg (fun T => T u)
+        (rpHilbertSpaceOtherBlockElectricProjection_comp_block_eq_zero
+          hLx hLy F ex ey)
+      simpa using h
+    have hoth :
+        rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey v.2.1 =
+          v.2.1 := by
+      exact (rpHilbertSpaceOtherBlockElectricProjection_eq_self_iff
+        hLx hLy F ex ey v.2.1).2
+        ((mem_range_rpHilbertSpaceOtherBlockElectricProjection_iff
+          hLx hLy F ex ey v.2.1).1 v.2.2)
+    ext x
+    simp [rpHilbertSpaceSelectedOtherDecomposition,
+      rpHilbertSpaceSelectedOtherReconstruction, hsel, hoth]
+
+/-- The finite OS range is linearly equivalent to the product of the selected
+block electric-sector endomorphism range and its complementary other-sector
+range. -/
+noncomputable def rpHilbertSpaceSelectedOtherLinearEquiv {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F)) ≃ₗ[Complex]
+      rpHilbertSpaceSelectedOtherProduct hLx hLy F ex ey :=
+  LinearEquiv.ofLinear
+    (rpHilbertSpaceSelectedOtherDecomposition hLx hLy F ex ey)
+    (rpHilbertSpaceSelectedOtherReconstruction hLx hLy F ex ey)
+    (rpHilbertSpaceSelectedOtherDecomposition_reconstruction hLx hLy F ex ey)
+    (rpHilbertSpaceSelectedOtherReconstruction_decomposition hLx hLy F ex ey)
 
 /-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
 theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
