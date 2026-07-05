@@ -222,6 +222,44 @@ theorem mem_closedTouchNeighborhood_iff (Adj : PlaquetteAdjacency P)
   simp [closedTouchNeighborhood]
 
 omit [Fintype Rlab] in
+/-- The closed touch-neighborhood of the empty support is empty. -/
+theorem closedTouchNeighborhood_empty (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] :
+    closedTouchNeighborhood Adj (∅ : Finset P) = ∅ := by
+  ext q
+  simp [closedTouchNeighborhood]
+
+omit [Fintype Rlab] in
+/-- A support is contained in its closed touch-neighborhood. -/
+theorem subset_closedTouchNeighborhood (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] (A : Finset P) :
+    A ⊆ closedTouchNeighborhood Adj A := by
+  intro q hq
+  exact (mem_closedTouchNeighborhood_iff Adj).2 (Or.inl hq)
+
+omit [Fintype Rlab] in
+/-- Every member of a support lies in that support's closed touch-neighborhood. -/
+theorem mem_closedTouchNeighborhood_self (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] {A : Finset P} {q : P} (hq : q ∈ A) :
+    q ∈ closedTouchNeighborhood Adj A :=
+  subset_closedTouchNeighborhood Adj A hq
+
+omit [Fintype Rlab] in
+/-- A nonempty support has a nonempty closed touch-neighborhood. -/
+theorem closedTouchNeighborhood_nonempty (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] {A : Finset P} (hA : A.Nonempty) :
+    (closedTouchNeighborhood Adj A).Nonempty := by
+  rcases hA with ⟨q, hq⟩
+  exact ⟨q, mem_closedTouchNeighborhood_self Adj hq⟩
+
+omit [Fintype Rlab] in
+/-- The closed touch-neighborhood is at least as large as the support. -/
+theorem card_le_card_closedTouchNeighborhood (Adj : PlaquetteAdjacency P)
+    [DecidableRel Adj.touch] (A : Finset P) :
+    A.card <= (closedTouchNeighborhood Adj A).card :=
+  Finset.card_le_card (subset_closedTouchNeighborhood Adj A)
+
+omit [Fintype Rlab] in
 /-- Closed touch-neighborhoods are monotone in the support. -/
 theorem closedTouchNeighborhood_mono (Adj : PlaquetteAdjacency P)
     [DecidableRel Adj.touch] {A B : Finset P} (hAB : A ⊆ B) :

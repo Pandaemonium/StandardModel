@@ -515,9 +515,10 @@ energy `alpha * area`, and the Z2 specialization `|tanh beta| ^ area` pinned to
 the v0.3 oracle fixture. The support-localization API names the closed
 touch-neighborhood of a root support and characterizes overlap-or-touch
 incompatible supports as exactly those meeting it, including intersection and
-positive-cardinality forms for finite counting filters, monotonicity and union
-lemmas for splitting root supports, singleton-neighborhood decomposition and
-cardinality overcount for degree-style estimates, including a uniform
+positive-cardinality forms for finite counting filters, empty/support-containment/
+nonempty/cardinality-lower-bound basics, monotonicity and union lemmas for
+splitting root supports, singleton-neighborhood decomposition and cardinality
+overcount for degree-style estimates, including a uniform
 singleton-neighborhood bound `card <= A.card * D`, plus a generic
 anchor-overcount inequality that bounds any nonnegative incompatible-support sum
 by summing over anchors in the closed neighborhood and its direct specialization

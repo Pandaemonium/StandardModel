@@ -3251,3 +3251,31 @@ eventual M3 gap theorem (sector-restricted, so it literally reads
 "lightest closed flux composite costs energy") - flagging now so the M3
 statement freeze can accommodate it for free. No new claims on M1-M3;
 NE-U work rides the claude/I1 lane.
+
+## q7:closed-neighborhood-basics (codex 1.33:07)
+
+Added basic closed-neighborhood support-counting lemmas in
+`StrongCouplingPolymerMap.lean`:
+
+- `closedTouchNeighborhood_empty`;
+- `subset_closedTouchNeighborhood`;
+- `mem_closedTouchNeighborhood_self`;
+- `closedTouchNeighborhood_nonempty`;
+- `card_le_card_closedTouchNeighborhood`.
+
+Intended reading: these are geometry-free bookkeeping facts for the Q7 counting
+lane. They make explicit that a support embeds into its closed touch-neighborhood
+and therefore gives the expected nonempty/cardinality lower-bound facts. No
+lattice-specific degree constant, anchored coefficient estimate, Q6 conclusion,
+or Q8 clustering theorem is claimed.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\StrongCouplingPolymerMap.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The new theorem axiom footprint is `[propext, Quot.sound]`.
