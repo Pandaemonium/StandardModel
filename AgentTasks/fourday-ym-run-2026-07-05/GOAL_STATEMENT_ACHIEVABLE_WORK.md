@@ -1,0 +1,240 @@
+# Goal statement: achievable work from the current YM/dynamics state
+
+Status date: 2026-07-05
+
+Audience: Codex, Claude, Aristotle packet authors, and human collaborators who
+want a clear target list for the next autonomous cycles.
+
+## North-star goal
+
+Turn the current finite Yang-Mills scaffold into an honest, reproducible
+finite-volume dynamics layer while continuing to close the proof bottlenecks
+that make a mass-gap-style statement non-vacuous.
+
+The immediate target is not a continuum theorem, not a Hamiltonian simulator,
+and not a Monte Carlo package. The target is a verified finite Euclidean
+transfer model with exact enumeration as its oracle, sector-resolved spectral
+data, and Lean theorem surfaces that say exactly what has been checked.
+
+## What is already available
+
+The repo now has enough verified infrastructure to make the next work concrete:
+
+- finite link-field, plaquette, Wilson-weight, and expectation scaffolding;
+- finite reflection-positivity kernel algebra and several concrete RP tiers;
+- finite OS/GNS range and Z2 electric-sector bookkeeping;
+- finite spectral-ratio/gap prerequisite packages, including
+  `FiniteGapSpectralWitness`;
+- executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
+  two-time correlations, sector blocks, and JSON summary output;
+- `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
+  payload with vacuum/local eigenvector equations and D12 gap identities;
+- strong-coupling/KP statement infrastructure, now narrowed to the
+  `pairSum_le_expBound` combinatorial crux;
+- RP-F finite spin/projector/reflection-unitary/lattice-index PSD foundations.
+
+## Highest-value lanes
+
+### Lane 1: descriptor-driven finite transfer oracle
+
+Goal: evolve `Scripts/oracle/z2_transfer_oracle.py` from a narrow prototype
+into a small descriptor-driven exact finite dynamics engine.
+
+Achievable deliverables:
+
+- define a stable JSON descriptor schema for finite Z2 transfer models;
+- support `L`, `T`, boundary convention, coupling, observables, and sector
+  labels from the descriptor;
+- emit a complete reproducibility record: conventions, matrices, spectra,
+  trace identities, correlation checks, and tolerances;
+- add regression rows to `validate_lgt_core.py`;
+- keep tiny exact enumeration as the reference check for every transfer trace.
+
+Done when:
+
+- `python Scripts\oracle\validate_lgt_core.py` passes with the new descriptor
+  checks;
+- at least one checked descriptor reproduces `Tr(K^T)`, inserted observables,
+  two-time correlations, and sector-block spectra.
+
+### Lane 2: Lean/oracle bridge for the first transfer payload
+
+Goal: connect the executable transfer evidence to small Lean theorem surfaces
+without pretending the full Wilson slab has been formalized.
+
+Achievable deliverables:
+
+- add a Lean descriptor/witness adapter around `TwoStateTransferSpectrum`;
+- for the smallest Z2 two-state model, package the transfer matrix, vacuum
+  vector, local/flux vector, ordered eigenvalues, and contraction factor;
+- if feasible, expose a `Module.End` wrapper so the payload can feed the shape
+  of `FiniteGapSpectralWitness`;
+- document exactly which hypotheses are still external: cyclicity, sector
+  identification, and Wilson-slab identification.
+
+Done when:
+
+- the new Lean file checks directly and via the GateYM aggregator;
+- no theorem claims a physical transfer matrix, Hamiltonian, infinite-volume
+  state, or physical mass gap.
+
+### Lane 3: Q6 strong-coupling combinatorial closure
+
+Goal: close or further narrow the `pairSum_le_expBound` bottleneck.
+
+Achievable deliverables:
+
+- harvest Aristotle projects `7c0ed511` and `31facfbb` as soon as they finish;
+- if a proof returns, integrate only after semantic review and targeted build;
+- if both stall, isolate the next smallest sublemma around the canonical-root
+  deletion / multinomial multiplicity estimate;
+- write the sublemma as a focused standalone Aristotle package rather than
+  churning locally.
+
+Done when:
+
+- either `pairSum_le_expBound` is kernel-checked, or the remaining blocker is
+  a smaller named theorem with a clear proof plan and no claim promotion.
+
+### Lane 4: conservative Q7/Q8 observable bridge
+
+Goal: prepare the observable-to-clustering interface without depending on an
+unproved Q6 metric-tail theorem.
+
+Achievable deliverables:
+
+- keep any new Q8 bridge conditional: decay remains a hypothesis;
+- if implemented, add a thin `ObservableSupportBridge.lean` interface only for
+  support bookkeeping, following the Q8 audit verdict;
+- add finite-support lemmas only when they remove real friction for a later
+  concrete observable expansion.
+
+Done when:
+
+- support bookkeeping is easier to use, but no file claims concrete clustering,
+  volume-uniform KP, or observable expansion closure.
+
+### Lane 5: RP-F reflected-block assembly
+
+Goal: move from lattice-index projector PSD to the concrete reflected Wilson
+boundary block, but only after the interface is pinned.
+
+Achievable deliverables:
+
+- define the boundary-coupling matrix `A` for the reflected Wilson block;
+- state the exact link-field reflection-symmetry hypothesis needed for
+  `Theta D Theta = D^dagger`;
+- prove PSD for the concrete block by routing through the existing lifted
+  projector lemmas;
+- if the Berezin/measure interface is clear, formulate the next wrapper toward
+  reflection-form nonnegativity.
+
+Done when:
+
+- the actual `A` slot is instantiated for a concrete reflected Wilson boundary
+  coupling, or the remaining hypothesis is explicitly parked as a named design
+  blocker.
+
+### Lane 6: finite gap witness instantiation
+
+Goal: make `FiniteGapSpectralWitness` non-vacuous on a tiny model before aiming
+at the full Wilson slab.
+
+Achievable deliverables:
+
+- use the two-state transfer payload as a testbed for the witness shape;
+- identify the smallest sector/local-algebra package that can be supplied
+  honestly;
+- if full cyclicity is too heavy, add a partial witness structure or note that
+  cyclicity is the blocker, not the spectral data.
+
+Done when:
+
+- the gap witness API has one tiny concrete consumer, or a precise handoff note
+  explains which field blocks instantiation.
+
+### Lane 7: paper-unit and collaborator-facing synthesis
+
+Goal: keep the scientific story legible while the proof/software layers move.
+
+Achievable deliverables:
+
+- keep `dynamical-simulation-layer-brief.md` synced with actual code state;
+- add a theorem/file table for the finite dynamics lane;
+- write a short "what is proved / what is oracle evidence / what is open"
+  section suitable for collaborators;
+- avoid novelty or physical-continuum language unless separately source
+  verified.
+
+Done when:
+
+- a collaborator can see the next implementation target and the claim boundary
+  in under five minutes.
+
+## Suggested execution order
+
+1. Poll and harvest Q6 Aristotle jobs before submitting new Q6 work.
+2. If Q6 is still running, work Lane 1 or Lane 2 because both are independent
+   and directly advance the dynamics goal.
+3. Touch RP-F only after the concrete boundary-coupling interface is clear.
+4. Keep Q8 conditional unless Q6/Q7 supply the missing metric-tail and
+   observable-expansion hypotheses.
+5. End each cycle by updating the ledger and syncing the collaborator brief if
+   the public state changed.
+
+## Verification gates
+
+For Lean work:
+
+- direct `lake env lean <file>`;
+- targeted `lake build PhysicsSM.Draft.NullEdge.GateYM.<Module>`;
+- aggregator `lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean`;
+- aggregate `lake build PhysicsSM.Draft.NullEdge.GateYM`;
+- escape-hatch scan on touched Lean files;
+- dependency audit for new public theorems.
+
+For oracle work:
+
+- run the specific oracle command;
+- run `python Scripts\oracle\validate_lgt_core.py`;
+- run `python -m py_compile` on touched scripts;
+- record descriptor, command, tolerance, and expected identity.
+
+For docs-only work:
+
+- `git diff --check`;
+- diff-added raw-token scan;
+- scoped `pre-commit run --files <paths>`.
+
+## Hard claim boundaries
+
+Do not claim:
+
+- a physical Yang-Mills mass gap;
+- an infinite-volume or continuum theorem;
+- a Hamiltonian or real-time dynamics layer;
+- a production Monte Carlo simulator;
+- a full Wilson slab transfer construction until the Lean object exists;
+- Q6/KP convergence, Q8 clustering, or RP-F measure positivity before the
+  named blockers are closed.
+
+Safe claim:
+
+```text
+We have a kernel-checked finite lattice-gauge scaffold, a growing exact
+finite-transfer oracle, and the first small Lean spectral bridge needed to
+turn finite transfer experiments into theorem-shaped evidence.
+```
+
+## Stop conditions
+
+Stop and report rather than forcing progress if:
+
+- a theorem needs a new assumption that is really a hidden physical premise;
+- the transfer sector label is not preserved by the candidate kernel;
+- a proposed Q8 bridge smuggles decay in as a conclusion rather than a
+  hypothesis;
+- RP-F requires an unpinned reflection convention for the link field;
+- oracle evidence contradicts a Lean statement shape.
+
+Failures of this kind are useful results and should be recorded in the ledger.
