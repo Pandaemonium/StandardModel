@@ -1697,15 +1697,18 @@ Added the first support-counting prerequisite in
 support, plus
 `SupportsOverlapOrTouch.exists_right_mem_closedTouchNeighborhood`, its converse,
 the exact iff
-`SupportsOverlapOrTouch.iff_exists_right_mem_closedTouchNeighborhood`, and the
+`SupportsOverlapOrTouch.iff_exists_right_mem_closedTouchNeighborhood`, the
+finite-filter forms
+`SupportsOverlapOrTouch.iff_inter_closedTouchNeighborhood_nonempty` and
+`SupportsOverlapOrTouch.iff_card_inter_closedTouchNeighborhood_pos`, and the
 contrapositive
 `not_supportsOverlapOrTouch_of_forall_not_mem_closedTouchNeighborhood`.
 
 Claim boundary: these lemmas only say an incompatible support has an anchor
 inside the root's closed touch-neighborhood, equivalently that the support
-meets that neighborhood.  They do not bound the number of connected supports of
-a given area, do not introduce a local degree constant, and do not prove any
-`PlaquetteKPBound`.
+meets that neighborhood or has a positive-cardinality intersection with it.
+They do not bound the number of connected supports of a given area, do not
+introduce a local degree constant, and do not prove any `PlaquetteKPBound`.
 
 Codex 1.17:45:
 

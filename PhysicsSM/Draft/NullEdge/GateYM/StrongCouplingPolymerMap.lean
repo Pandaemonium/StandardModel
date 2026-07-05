@@ -263,6 +263,34 @@ theorem SupportsOverlapOrTouch.iff_exists_right_mem_closedTouchNeighborhood
   · exact SupportsOverlapOrTouch.of_exists_right_mem_closedTouchNeighborhood Adj
 
 omit [Fintype Rlab] in
+/-- Finset-filter form of support localization: incompatible right supports are
+exactly those whose intersection with the root closed neighborhood is nonempty.
+This is often the most convenient shape for counting arguments. -/
+theorem SupportsOverlapOrTouch.iff_inter_closedTouchNeighborhood_nonempty
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    {A B : Finset P} :
+    SupportsOverlapOrTouch Adj A B <->
+      (B ∩ closedTouchNeighborhood Adj A).Nonempty := by
+  rw [SupportsOverlapOrTouch.iff_exists_right_mem_closedTouchNeighborhood Adj]
+  constructor
+  · rintro ⟨q, hqB, hqN⟩
+    exact ⟨q, (Finset.mem_inter.2 ⟨hqB, hqN⟩)⟩
+  · rintro ⟨q, hq⟩
+    exact ⟨q, (Finset.mem_inter.1 hq).1, (Finset.mem_inter.1 hq).2⟩
+
+omit [Fintype Rlab] in
+/-- Cardinality form of support localization: incompatibility is equivalent to
+the intersection with the closed touch-neighborhood having positive cardinality.
+This avoids unpacking existential witnesses in later finite counting sums. -/
+theorem SupportsOverlapOrTouch.iff_card_inter_closedTouchNeighborhood_pos
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    {A B : Finset P} :
+    SupportsOverlapOrTouch Adj A B <->
+      0 < (B ∩ closedTouchNeighborhood Adj A).card := by
+  rw [SupportsOverlapOrTouch.iff_inter_closedTouchNeighborhood_nonempty Adj]
+  exact Iff.symm Finset.card_pos
+
+omit [Fintype Rlab] in
 /-- Contrapositive support-localization form: if every plaquette of `B` lies
 outside the closed touch-neighborhood of `A`, then `A` and `B` are compatible
 for the conservative overlap-or-touch relation. -/
