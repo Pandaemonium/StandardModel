@@ -2828,6 +2828,36 @@ same slice.
 Dependency footprint:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q7:closed-neighborhood-kp-connector (codex 1.30:02)
+
+Added a geometry-independent sufficient condition for the explicit finite
+plaquette-polymer KP bound in `StrongCouplingPolymerMap.lean`:
+
+- `plaquetteKPBound_of_closedTouchNeighborhood_anchorBound`.
+
+Intended reading: if every anchored polymer sum is bounded by a common `B`, and
+for each root polymer the closed-neighborhood overcount
+`card (closedTouchNeighborhood Adj X.support) * B` is bounded by the KP energy
+`alpha * X.support.card`, then the explicit `PlaquetteKPBound` follows. This
+is the direct connector for future geometry-specific cardinality estimates; it
+chooses no lattice degree constant, proves no anchored strong-coupling
+estimate, invokes no Q6 cluster conclusion, and makes no volume-uniform KP
+claim.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\StrongCouplingPolymerMap.lean
+lake env lean PhysicsSM\Draft\NullEdge\GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Code placeholder scan on the touched Lean file produced no matches.
+
+Dependency footprint:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## q2q3:finite-os-sector-inclusion-retraction (codex 1.28:55)
 
 Added the inclusion/retraction API for the sectorized finite OS range in
