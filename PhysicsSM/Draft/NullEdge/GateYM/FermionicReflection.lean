@@ -29,17 +29,24 @@ The time direction is index `timeDir` of `Site L = Fin 4 -> Fin L`.
 
 Landed here (kernel-checked, `s o r r y`-free): `timeRefl` + its involution and
 link-reflection facts; the reflection operator `rpFReflection`
-(`Theta = timeRefl-permutation tensor gamma_timeDir tensor color-id`) and its
-Hermiticity `rpFReflection_herm` (`Theta^dagger = Theta`).
+(`Theta = timeRefl-permutation tensor gamma_timeDir tensor color-id`), its
+Hermiticity `rpFReflection_herm` (`Theta^dagger = Theta`), its involution
+`rpFReflection_sq` (`Theta * Theta = 1`), and hence its unitarity
+`rpFReflection_unitary` (`Theta^dagger Theta = 1`). `Theta` is the reflection
+unitary for the fermionic Osterwalder-Seiler construction.
 
-Remaining (next QMF5 cycle; the two entrywise site-sum collapses, same
-difficulty as QMF4's `Gamma5_mul_Gamma5`, are Aristotle targets):
+Remaining (next QMF5 cycle):
 
-- `rpFReflection` involution `Theta * Theta = 1` (uses `timeRefl` involutive +
-  `gamma_timeDir^2 = 1`); with `rpFReflection_herm` this makes `Theta` a
-  Hermitian involution, hence the reflection unitary.
-- `rpF_reflection_hermiticity` : `Theta D Theta = D^dagger` (the temporal-
-  reflection analogue of QMF4's `gamma5_hermiticity`, same gamma lemmas).
+- `rpF_reflection_hermiticity` : `Theta D Theta = D^dagger` under a
+  time-reflection-symmetry hypothesis on the link field `U` (the temporal-
+  reflection analogue of QMF4's `gamma5_hermiticity`, same gamma lemmas). Its
+  hypothesis needs pinning down (which `U`-symmetry makes the reflected operator
+  the adjoint), so it is left for a focused next step rather than stated
+  under-specified here.
+- the reflected positive-half block factorization `reflectedWilsonBlock_eq_gram`
+  (node N5), whose abstract PSD core is the already-proved
+  `WilsonProjectors.conj_projector_posSemidef`, and the Berezin/measure wrap into
+  `ReflectionPositivityKernel.reflectionForm_nonneg`.
 - `reflectedWilsonBlock` + `reflectedWilsonBlock_eq_gram` : the reflected
   positive-half block is `M^dagger M` (node N5; its abstract PSD core is the
   already-proved `WilsonProjectors.conj_projector_posSemidef`).
@@ -119,6 +126,49 @@ theorem rpFReflection_herm (L nc : ℕ) [NeZero L] :
     exact hij
   · rw [if_neg h, if_neg (fun hc => h ⟨by rw [hc.1, timeRefl_involutive], hc.2.symm⟩)]
     simp
+
+/-- **The reflection operator is an involution**: `Theta * Theta = 1`. The `K`-sum
+collapses because `Theta I K` pins the intermediate site to `timeRefl I.1` and the
+colour to `I.2.2`, leaving a spin sum `sum_s' gamma_td I.2.1 s' * gamma_td s' J.2.1
+= (gamma_td^2) I.2.1 J.2.1 = 1`, using `timeRefl` involutive and
+`gamma_timeDir^2 = 1`. -/
+theorem rpFReflection_sq (L nc : ℕ) [NeZero L] :
+    rpFReflection L nc * rpFReflection L nc = 1 := by
+  ext I J
+  rw [Matrix.mul_apply]
+  rw [← Finset.sum_subset (Finset.subset_univ
+        (Finset.image (fun s' : Fin 4 => (timeRefl I.1, s', I.2.2)) Finset.univ))]
+  · rw [Finset.sum_image (by intro a _ b _ hab; simpa using congrArg (fun z => z.2.1) hab)]
+    simp only [rpFReflection, Matrix.of_apply, timeRefl_involutive I.1, true_and, and_true,
+      if_true, eq_self_iff_true]
+    have hsq := EuclideanGamma.γ_sq timeDir
+    by_cases hJ : J.1 = I.1 ∧ I.2.2 = J.2.2
+    · obtain ⟨hJ1, hJ2⟩ := hJ
+      simp only [if_pos (And.intro hJ1 hJ2)]
+      rw [← Matrix.mul_apply, hsq, Matrix.one_apply, Matrix.one_apply]
+      obtain ⟨x, s, c⟩ := I; obtain ⟨y, t, d⟩ := J
+      simp only at hJ1 hJ2
+      subst hJ1; subst hJ2
+      by_cases hst : s = t
+      · subst hst; simp
+      · rw [if_neg hst, if_neg (by simp [Prod.ext_iff, hst])]
+    · simp only [if_neg hJ, mul_zero, Finset.sum_const_zero]
+      rw [Matrix.one_apply, if_neg]
+      rintro rfl
+      exact hJ ⟨rfl, rfl⟩
+  · intro K _ hK
+    simp only [Finset.mem_image, Finset.mem_univ, true_and, not_exists] at hK
+    simp only [rpFReflection, Matrix.of_apply]
+    rw [if_neg, zero_mul]
+    rintro ⟨hk1, hk2⟩
+    exact hK K.2.1 (by ext <;> simp_all)
+
+/-- **The reflection operator is unitary**: `Theta^dagger Theta = 1` (a Hermitian
+involution). This is the reflection unitary for the fermionic Osterwalder-Seiler
+construction. -/
+theorem rpFReflection_unitary (L nc : ℕ) [NeZero L] :
+    (rpFReflection L nc)ᴴ * rpFReflection L nc = 1 := by
+  rw [rpFReflection_herm, rpFReflection_sq]
 
 end FermionicReflection
 end PhysicsSM.Draft.NullEdge.GateYM
