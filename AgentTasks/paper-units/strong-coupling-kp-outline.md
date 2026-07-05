@@ -91,6 +91,9 @@ Concrete sanity fixture:
   `onePlaquetteZ2_plaquetteKPBound`, `onePlaquetteZ2_kpCondition`, and
   `onePlaquetteZ2_kpCondition_and_selfIncompatible` under the explicit scalar
   condition `|tanh beta| * exp alpha <= alpha`.
+- The same fixture now computes the area-one anchored slice as
+  `onePlaquetteZ2_anchor_area_sum` and routes the scalar smallness hypothesis
+  through the area-slice adapter as `onePlaquetteZ2_plaquetteKPBound_areaSlice`.
 - Beta-zero and `|tanh beta| <= alpha * exp (-alpha)` wrappers are proved.
 - This fixture is finite and non-volume-uniform; it is a sanity check for the
   adapters, not a lattice theorem.
