@@ -23,7 +23,8 @@ OS range for plaquette-field block weights, and lands in the corresponding
 sectorized finite OS submodule.  The projection is also packaged as a linear
 map from the finite OS range onto that sectorized submodule, with an explicit
 linear inclusion/retraction pair and endomorphism-level four-sector
-decomposition on the finite OS range.
+decomposition on the finite OS range.  The range of each sector endomorphism is
+characterized as the matching sectorized finite OS submodule.
 
 This still does not construct a physical transfer matrix, Hamiltonian, or
 spectral gap.  It is the concrete Z2 adapter needed before a genuine
@@ -719,6 +720,34 @@ theorem sum_rpHilbertSpaceBlockElectricProjection_eq_id {Lx Ly : Nat}
       LinearMap.id := by
   ext v i
   exact congrFun (sum_blockElectricSectorProjection_eq_self hLx hLy v) i
+
+/-- The range of a block electric-sector endomorphism is exactly the selected
+sectorized finite OS range. -/
+theorem mem_range_rpHilbertSpaceBlockElectricProjection_iff {Lx Ly : Nat}
+    [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool)
+    (v : rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) :
+    v ∈ LinearMap.range
+        (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) ↔
+      (v :
+        (FluxSectorZ2.TorusLinkField Lx Ly ×
+          FluxSectorZ2.TorusLinkField Lx Ly) -> Complex) ∈
+        rpBlockElectricSector hLx hLy F ex ey := by
+  constructor
+  · intro hv
+    rcases hv with ⟨u, rfl⟩
+    exact blockElectricSectorProjection_mem_rpBlockElectricSector_z2PlaquetteBlock
+      hLx hLy F ex ey u u.property
+  · intro hv
+    refine ⟨v, ?_⟩
+    ext i
+    exact congrFun
+      (blockElectricSectorProjection_eq_self_of_inBlockElectricSector
+        hLx hLy ex ey v hv.2) i
 
 end TransferHilbertZ2Electric
 end GateYM

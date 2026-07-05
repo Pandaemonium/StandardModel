@@ -2752,6 +2752,31 @@ Code placeholder scan on the touched Lean file produced no matches.
 Dependency footprint for both new theorems:
 `[propext, Classical.choice, Quot.sound]`.
 
+## q2q3:finite-os-sector-endomorphism-range (codex 1.29:22)
+
+Added the range characterization for the finite OS sector endomorphism:
+
+- `mem_range_rpHilbertSpaceBlockElectricProjection_iff`.
+
+Intended reading: a vector in the plaquette-field finite OS range lies in the
+range of `rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey` exactly when
+its ambient wavefunction belongs to the sectorized submodule
+`rpBlockElectricSector hLx hLy F ex ey`.  This packages the endomorphism as an
+actual projection onto the selected finite OS sector, while remaining finite
+Q2/Q3 algebra only: no transfer matrix, Hamiltonian, or gap is constructed.
+
+Verification:
+
+```text
+lake env lean PhysicsSM\Draft\NullEdge\GateYM\TransferHilbertZ2Electric.lean
+```
+
+Further aggregate/build/pre-commit checks are recorded in the ledger for the
+same slice.
+
+Dependency footprint:
+`[propext, Classical.choice, Quot.sound]`.
+
 ## q2q3:finite-os-sector-inclusion-retraction (codex 1.28:55)
 
 Added the inclusion/retraction API for the sectorized finite OS range in
