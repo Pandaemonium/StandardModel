@@ -40,6 +40,32 @@ theorem vacuum_mem_cyclicSubmodule
   refine Submodule.subset_span ?_
   exact ⟨1, by simp⟩
 
+/-- Enlarging the local operator algebra can only enlarge the cyclic
+submodule generated from the same vacuum. -/
+theorem cyclicSubmodule_mono
+    {A B : Subalgebra ℂ (Module.End ℂ H)} (vacuum : H)
+    (hAB : A ≤ B) :
+    cyclicSubmodule A vacuum ≤ cyclicSubmodule B vacuum := by
+  refine Submodule.span_le.mpr ?_
+  rintro _ ⟨T, rfl⟩
+  refine Submodule.subset_span ?_
+  exact ⟨⟨T.1, hAB T.2⟩, rfl⟩
+
+/-- To prove the cyclic submodule lies in a sector, it suffices to check the
+orbit of the vacuum under each operator of the algebra. -/
+theorem cyclicSubmodule_le_iff
+    (A : Subalgebra ℂ (Module.End ℂ H)) (vacuum : H)
+    (sector : Submodule ℂ H) :
+    cyclicSubmodule A vacuum ≤ sector ↔
+      ∀ T : A, (T : Module.End ℂ H) vacuum ∈ sector := by
+  constructor
+  · intro h T
+    exact h (Submodule.subset_span ⟨T, rfl⟩)
+  · intro h
+    refine Submodule.span_le.mpr ?_
+    rintro _ ⟨T, rfl⟩
+    exact h T
+
 /-- An operator algebra preserves a candidate sector. -/
 def PreservesSubmodule
     (A : Subalgebra ℂ (Module.End ℂ H)) (sector : Submodule ℂ H) : Prop :=
@@ -79,6 +105,22 @@ theorem vacuum_mem_of_cyclic
   rw [← hcyc]
   exact vacuum_mem_cyclicSubmodule A vacuum
 
+/-- Cyclicity is equivalent to the two inclusions that later finite-gap
+assembly proofs will usually prove separately. -/
+theorem localAlgebraCyclicInSector_iff_le_and_ge
+    (A : Subalgebra ℂ (Module.End ℂ H)) (vacuum : H)
+    (sector : Submodule ℂ H) :
+    LocalAlgebraCyclicInSector A vacuum sector ↔
+      cyclicSubmodule A vacuum ≤ sector ∧
+        sector ≤ cyclicSubmodule A vacuum := by
+  constructor
+  · intro hcyc
+    constructor
+    · rw [hcyc]
+    · rw [hcyc]
+  · intro h
+    exact le_antisymm h.1 h.2
+
 /-- Bundle of hypotheses that a future finite-gap assembly must expose.
 
 This structure is not a theorem. It packages the exact point where a fake gap
@@ -98,6 +140,20 @@ structure LocalCyclicityPrereq (H : Type*) [AddCommGroup H] [Module ℂ H] where
   local_preserves_sector : PreservesSubmodule localAlgebra sector
   /-- The local algebra orbit of the vacuum spans the sector. -/
   cyclic : LocalAlgebraCyclicInSector localAlgebra vacuum sector
+
+/-- The easy inclusion from the generated cyclic submodule to the sector,
+extracted from a bundled Q9 prerequisite. -/
+theorem cyclicSubmodule_le_sector_of_prereq
+    (P : LocalCyclicityPrereq H) :
+    cyclicSubmodule P.localAlgebra P.vacuum ≤ P.sector := by
+  rw [P.cyclic]
+
+/-- The hard cyclicity inclusion from the sector back into the generated
+cyclic submodule, extracted from a bundled Q9 prerequisite. -/
+theorem sector_le_cyclicSubmodule_of_prereq
+    (P : LocalCyclicityPrereq H) :
+    P.sector ≤ cyclicSubmodule P.localAlgebra P.vacuum := by
+  rw [P.cyclic]
 
 end CyclicityPrereq
 end GateYM

@@ -257,8 +257,9 @@ nonnegativity/positivity lemmas; no transfer matrix construction yet);
 finite algebraic condition that the local plaquette/operator algebra
 cyclically spans the chosen sector from the vacuum; includes elementary
 support lemmas that the vacuum lies in the generated cyclic submodule and
-that a sector preserved by the algebra contains that generated submodule;
-no transfer matrix or gap theorem is claimed);
+that a sector preserved by the algebra contains that generated submodule,
+plus monotonicity and two-inclusion API for the cyclic submodule and bundled
+prerequisite. No transfer matrix or gap theorem is claimed);
 `CenterFluxSector` (T3/Q3 Fable-redesign spine: abstract finite
 center-shift/electric-sector API over a configuration space with shift
 permutations; electric sectors as shift eigenconditions; shift-invariant
