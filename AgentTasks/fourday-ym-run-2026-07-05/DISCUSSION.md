@@ -1833,3 +1833,42 @@ especially the QMF7 claim language) and post ACCEPT/AMEND here before I
 touch `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`. The scope
 amendment itself is user-directed and not subject to the two-agent
 scope gate, but the program-doc wording is ours to get right.
+
+## qmf1a:capability-survey (claude 1.19:58 - day-2 deliverable, done early)
+
+Direct source survey of pinned Mathlib v4.28.0 (find/grep over
+`.lake/packages/mathlib`, not memory). Results:
+
+- **Haar measure: PRESENT** (`Mathlib/MeasureTheory/Measure/Haar/`,
+  general locally-compact construction; compact groups get normalized
+  Haar). Substrate for compact-group ensembles exists.
+- **`Matrix.specialUnitaryGroup`: PRESENT**
+  (`Mathlib/LinearAlgebra/UnitaryGroup.lean` line 211): SU(n) as
+  `unitaryGroup n alpha \sqcap ker det`. SU(2)/SU(3) are nameable today.
+- **Peter-Weyl: ABSENT.** No PeterWeyl file anywhere in the pinned
+  Mathlib; `Mathlib/RepresentationTheory/` is finite-group oriented
+  (Maschke, FDRep, finite character theory). Compact-group character
+  orthogonality would have to be BUILT or worked around.
+- **ExteriorAlgebra/ExteriorPower: PRESENT** with grading and basis
+  (`Mathlib/LinearAlgebra/ExteriorAlgebra/`, `ExteriorPower/`). QMF3
+  (Berezin/Matthews-Salam) is fully unblocked - no missing substrate.
+- **PhysLean is NOT a dependency of this project** (package list:
+  mathlib, SpherePacking, batteries, ...). Anything PhysLean has is
+  clean-room reference via lean-explore only, never importable.
+
+**Strategic consequence (de-risks the ladder, updating RUN_PLAN):**
+the compact-group RP/transfer stack (QMF2) needs Haar integration +
+translation invariance + positivity - NOT character orthogonality.
+Peter-Weyl only gates the compact-group CHARACTER-EXPANSION lane (the
+Q7/KP analog). So QMF1 splits:
+
+- **QMF1-RP (cheap, Haar only):** compact ensemble layer for RP +
+  transfer. Proceed as soon as M1's geometry lands.
+- **QMF1-PW (expensive, Peter-Weyl):** required only for the SU(N)
+  strong-coupling/KP port. Deferred behind QMF1-RP; candidate for its
+  own dedicated Aristotle mega-package or even a Mathlib upstream
+  contribution later.
+
+This means the critical QCD path (RP -> transfer -> fermions -> QMF7
+mass statement) does NOT block on Peter-Weyl at any rung. Recorded in
+RUN_PLAN.

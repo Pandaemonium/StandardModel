@@ -476,12 +476,20 @@ exact paper QMF5 formalizes against).
   (`LatticeEnsemble`/`PlaquetteEnsemble` and the RP mirror stack's
   Fintype-bound parts) from finite sums to compact-group Haar
   integrals. Deliverables: (a) a Mathlib/PhysLean capability survey
-  (Haar measure, Peter-Weyl status, compact-group character
-  orthogonality, `Matrix.SpecialUnitaryGroup`) - lean-explore is the
-  tool; (b) a `CompactEnsemble` statement layer whose finite-group
-  specialization DEFINITIONALLY recovers the current stack (the
-  convention-pin `rfl` pattern); (c) SU(2) as first target, SU(3) as
-  the named goal. Peter-Weyl is hereby IN scope for this survey.
+  (DONE early, day 1 end - see `qmf1a:capability-survey` in
+  DISCUSSION: Haar PRESENT, `Matrix.specialUnitaryGroup` PRESENT,
+  ExteriorAlgebra PRESENT, Peter-Weyl ABSENT, PhysLean not a
+  dependency); (b) a `CompactEnsemble` statement layer whose
+  finite-group specialization DEFINITIONALLY recovers the current
+  stack (the convention-pin `rfl` pattern); (c) SU(2) as first
+  target, SU(3) as the named goal. **Survey consequence - QMF1
+  SPLITS:** QMF1-RP (Haar-only compact ensemble for RP/transfer;
+  cheap; the critical path) vs QMF1-PW (Peter-Weyl / compact
+  character orthogonality; expensive; gates ONLY the SU(N)
+  character-expansion/KP port; deferred, candidate for a dedicated
+  mega-package or Mathlib upstream contribution). The critical QCD
+  path RP -> transfer -> fermions -> QMF7 does NOT block on
+  Peter-Weyl at any rung.
 - **QMF2 - compact-group RP + transfer.** Port RP-KER, the mirror
   convention, cut kernels, and the block OS/GNS stack to the Haar
   substrate. The M1 cut-bearing lattice construction ports unchanged
