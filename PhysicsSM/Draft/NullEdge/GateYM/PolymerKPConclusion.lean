@@ -32,9 +32,10 @@ Draft-trust: statement freeze plus one kernel-checked negative result and a
 kernel-checked Penrose tree-graph bound.  The rooted KP partial-sum theorem
 `kp_tree_sum_bound` (hence `kp_partial_sum_bound` and `kp_cluster_summable`)
 is now reduced, with a kernel-checked lemma DAG, to the single finite
-combinatorial inequality `boundedTouchSum_succ_le_finitePartial` (the labeled
-rooted-tree exponential-generating-function formula before passing from a
-finite partial sum to `Real.exp`).  In detail: the enlargement step
+combinatorial inequality `touchOnlySum_le_expBound` (the labeled rooted-tree
+exponential-generating-function formula after removing a redundant
+connectedness guard and before passing from a finite partial sum to
+`Real.exp`).  In detail: the enlargement step
 `sum_le_boundedTouchSum`, the base case `boundedTouchSum_zero_le`, the depth
 induction `boundedTouchSum_le_kpPsi`, the analytic partial-sum-to-exponential
 step `boundedTouchSum_succ_le`, and the analytic bound `kpPsi_le_exp` are all
@@ -178,7 +179,7 @@ theorem spanningTreeCount_eq_zero_of_not_connected (S : PolymerSystem Gamma)
   exact PenroseTreeGraph.spanningTreeCount_eq_zero_of_not_connected
     (G := X.graph S hdec) hX
 
-/-- Connected clusters admit at least one spanning-tree subgraph. -/
+/-- Connected clusters have at least one spanning-tree subgraph. -/
 theorem spanningTreeCount_pos_of_connected (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (X : Cluster S) (hX : X.Connected S hdec) :
@@ -469,8 +470,36 @@ theorem boundedTouchSum_zero_le (S : PolymerSystem Gamma)
             omega
   · simp +decide
 
+open Classical in
+/-- The connectedness guard in `boundedTouchSum` is redundant.
+
+An ordered cluster whose incompatibility graph is disconnected has
+`spanningTreeCount = 0`, hence `treeTerm = 0`, so it contributes nothing
+whether or not the guard is present.  Thus `boundedTouchSum (K + 1) g` equals
+the same sum carrying only the `Touches g` guard.  This is a sound
+reformulation, not an overcount. -/
+lemma boundedTouchSum_eq_touchOnly (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    boundedTouchSum S hdec (K + 1) g
+      = ∑ p : (Σ m : Fin (K + 1 + 2), (Fin m.val -> Gamma)),
+          (if Cluster.Touches S ⟨p.1.val, p.2⟩ g
+            then treeTerm S hdec ⟨p.1.val, p.2⟩ else 0) := by
+  unfold boundedTouchSum
+  apply Finset.sum_congr rfl
+  intro p _
+  by_cases hT : Cluster.Touches S ⟨p.1.val, p.2⟩ g
+  · by_cases hC : Cluster.Connected S hdec ⟨p.1.val, p.2⟩
+    · rw [if_pos ⟨hC, hT⟩, if_pos hT]
+    · rw [if_neg (fun h => hC h.1), if_pos hT]
+      unfold treeTerm
+      rw [spanningTreeCount_eq_zero_of_not_connected S hdec _ hC]
+      simp
+  · rw [if_neg (fun h => hT h.2), if_neg hT]
+
+open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining
-combinatorial crux of Q6.
+combinatorial crux of Q6 (stated with only the `Touches g` guard, via
+`boundedTouchSum_eq_touchOnly`).
 
 This is the only unproved statement on which `kp_tree_sum_bound` and
 `kp_partial_sum_bound` depend.  Rooting a connected cluster touching `g` at a
@@ -481,6 +510,18 @@ unordered child blocks and the subtree normalizations, giving the exponential
 recursion.  Proving this is a finite labeled rooted-tree exponential-formula
 problem, not a KP-statement ambiguity.
 
+CAUTION (verified 2026-07-05, numerically and by hand): the naive reduction
+that first bounds `boundedTouchSum (K + 1) g` by the root-overcounted sum
+`sum p, (#{r : poly r = g}) * treeTerm p` and then bounds that by the
+right-hand side is unsound.  Overcounting by the number of `g`-slots turns the
+unrooted Cayley `m^(m-2)` tree count into the rooted `m^(m-1)` count, which
+for a single self-incompatible polymer of small weight `x` already exceeds the
+right-hand side at order `x^3` once `K >= 1` (rooted
+`~ x + x^2 + 1.5 * x^3` versus right-hand side `~ x + x^2 + x^3`).  A correct
+proof must root at a single canonical `g`-slot, with multiplicity one; the
+required slack over the exponential comes from the unrooted children
+`boundedTouchSum K h` versus rooted children.
+
 The analytic exponential has been split off (see `boundedTouchSum_succ_le`
 below): it suffices to bound `boundedTouchSum (K + 1) g` by the finite partial
 sum of the exponential series in the neighbor bounded-touch-sum, truncated at
@@ -488,6 +529,20 @@ sum of the exponential series in the neighbor bounded-touch-sum, truncated at
 root with at most `K + 1` children).  This
 `boundedTouchSum_succ_le_finitePartial` statement is the purely finite labeled
 rooted-tree species identity; no real-analytic input remains in it. -/
+lemma touchOnlySum_le_expBound (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    (∑ p : (Σ m : Fin (K + 1 + 2), (Fin m.val -> Gamma)),
+        (if Cluster.Touches S ⟨p.1.val, p.2⟩ g
+          then treeTerm S hdec ⟨p.1.val, p.2⟩ else 0))
+      <= |S.weight g| *
+          ∑ k ∈ Finset.range (K + 3),
+            (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
+              / (Nat.factorial k : Real) := by
+  sorry
+
+/-- The labeled rooted-tree exponential inequality.  Combines the sound
+connectedness-guard reformulation `boundedTouchSum_eq_touchOnly` with the
+finite exponential-formula core `touchOnlySum_le_expBound`. -/
 theorem boundedTouchSum_succ_le_finitePartial (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
     boundedTouchSum S hdec (K + 1) g
@@ -495,7 +550,8 @@ theorem boundedTouchSum_succ_le_finitePartial (S : PolymerSystem Gamma)
           ∑ k ∈ Finset.range (K + 3),
             (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
               / (Nat.factorial k : Real) := by
-  sorry
+  rw [boundedTouchSum_eq_touchOnly]
+  exact touchOnlySum_le_expBound S hdec K g
 
 /-- The labeled rooted-tree exponential inequality.  It follows from the
 finite partial-sum bound `boundedTouchSum_succ_le_finitePartial` and the
