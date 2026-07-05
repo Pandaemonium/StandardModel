@@ -144,6 +144,21 @@ theorem localAlgebraCyclicInSector_of_preserves_of_sector_le
   exact (localAlgebraCyclicInSector_iff_le_and_ge A vacuum sector).2
     ⟨cyclicSubmodule_le_of_preserves A vacuum sector hpres hv, hsector⟩
 
+/-- Once sector preservation and vacuum membership are known, cyclicity is
+exactly the remaining hard inclusion from the sector into the cyclic span. -/
+theorem localAlgebraCyclicInSector_iff_sector_le_of_preserves
+    (A : Subalgebra ℂ (Module.End ℂ H)) (vacuum : H)
+    (sector : Submodule ℂ H)
+    (hpres : PreservesSubmodule A sector) (hv : vacuum ∈ sector) :
+    LocalAlgebraCyclicInSector A vacuum sector ↔
+      sector ≤ cyclicSubmodule A vacuum := by
+  constructor
+  · intro hcyc
+    rw [← hcyc]
+  · intro hsector
+    exact localAlgebraCyclicInSector_of_preserves_of_sector_le
+      A vacuum sector hpres hv hsector
+
 /-- Bundle of hypotheses that a future finite-gap assembly must expose.
 
 This structure is not a theorem. It packages the exact point where a fake gap
