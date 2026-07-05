@@ -1,17 +1,19 @@
 # DAY_2_REPORT (drafted by codex; needs peer review)
 
 Scope: checkpoint from the post-`DAY_1_REPORT.md` ledger state through
-heartbeat `4.04:45`. This is a status synthesis, not a promotion claim.
+heartbeat `4.18:05`. This is a status synthesis, not a promotion claim.
 
 ## 1. Delta summary
 
 The finite OS sector stack grew from a four-sector product decomposition into
 selected-vs-other projection/range/complement APIs. The KP lane gained Q7
-area-sliced anchored-sum adapters, a one-plaquette area-slice sanity fixture,
-and a Q8 concrete observable-bridge Aristotle audit. Q9 now has a finite-gap
-prerequisite package under semantic audit. Q6 remains open at the finite
-species/counting crux, and Q10 remains intentionally untouched because Q6 has
-not landed.
+area-sliced and positive-area anchored-sum adapters, finite-sum nonnegativity
+bookkeeping, one-plaquette area-slice/positive-area sanity fixtures, and a Q8
+concrete observable-bridge Aristotle audit. Q9 now has a finite-gap
+prerequisite package under semantic audit. The QMF5 side lane also landed the
+Wilson-projector Gram PSD linear-algebra conclusion for the future fermionic RP
+block. Q6 remains open at the finite species/counting crux, and Q10 remains
+intentionally untouched because Q6 has not landed.
 
 ## 2. Theorems landed
 
@@ -25,10 +27,16 @@ not landed.
   and rate weakening wrappers, singleton-support conversion, and
   `hasExponentialClusteringSupport_of_uniform_anchor_tail_bound`.
 - `StrongCouplingPolymerMap.lean`: closed-neighborhood basics, area-sliced
-  anchored sums, area-bound `PlaquetteKPBound` adapters, and
-  `onePlaquetteZ2_plaquetteKPBound_areaSlice`.
+  anchored sums, nonnegativity and impossible-area range cleanup, positive-area
+  adapter variants, and one-plaquette Z2 area-slice/positive-area fixtures
+  including
+  `onePlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_abs_tanh_le`.
 - `CyclicityPrereq.lean` and `FiniteGapAssembly.lean`: cyclic-submodule
   inclusion/proof-shape lemmas and `FiniteGapPrereq.localGap_*` packaging.
+- `WilsonProjectors.lean`: the QMF5/RP-F projector down-payment now includes
+  `conj_projector_posSemidef`, `conj_projPlus_posSemidef`, and
+  `conj_projMinus_posSemidef`, packaging the linear-algebra conclusion that
+  `A^H P A` is PSD for a Hermitian idempotent projector `P`.
 
 ## 3. Aristotle registry delta
 
@@ -43,9 +51,11 @@ support-counting strategy, and `ba26fe81` Q2/Z2 electric adapter audit.
 T2/T3 are finite algebraic sector infrastructure only; no physical transfer,
 Hamiltonian, Wilson slab-kernel, or gap claim. T6 is still blocked by finite
 rooted-tree/species counting plus older corrected-C2 and metric-tail handoffs.
-T7 has conditional adapters and fixtures, not a volume-uniform KP theorem. T8
-has conditional support-tail bridges and now a submitted bridge-design audit,
-not concrete clustering. T9 is a prerequisite package only. T10 stays open.
+T7 has conditional adapters and finite fixtures, not a volume-uniform KP
+theorem. T8 has conditional support-tail bridges and now a submitted
+bridge-design audit, not concrete clustering. T9 is a prerequisite package
+only. The QMF5 projector result is a finite identity and not yet a concrete
+fermionic reflection-positive lattice block. T10 stays open.
 
 ## 5. Decisions and reviews
 
@@ -56,16 +66,19 @@ concrete clustering.
 
 ## 6. Build and hygiene
 
-No Lean files changed in this report slice. Recent Lean verification is recorded
-per heartbeat in `LEDGER.md`; the freshest full-build claim in this run remains
-the previously recorded full `lake build`, not rerun for this docs-only report.
+No Lean files changed in this report slice. Recent Lean verification is
+recorded per heartbeat in `LEDGER.md`; the latest aggregate GateYM builds around
+the Q7 and QMF5 slices passed at 8091 jobs with known existing warnings. The
+freshest full-build claim in this run remains the previously recorded full
+`lake build`, not rerun for this docs-only report.
 
 ## 7. Honest negatives
 
 Q6 is not closed; Q8 cannot discharge without Q6 metric-tail and Q7 observable
-bridge input. Q10 is not attempted. The generated Q8 context pack had weak
-semantic hits, so the prompt treats it as context-selection evidence only and
-lists authoritative source files explicitly.
+bridge input. Q7 still lacks a concrete volume-uniform support-counting and
+coefficient-smallness theorem. Q10 is not attempted. The generated Q8 context
+pack had weak semantic hits, so the prompt treats it as context-selection
+evidence only and lists authoritative source files explicitly.
 
 ## 8. Next plan
 
