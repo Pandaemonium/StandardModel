@@ -70,8 +70,10 @@ intentionally untouched because Q6 has not landed.
   `log_lambda0_div_lambdaLocal_eq_localGap`. The latest Q9 bookkeeping also
   exposes direct contraction-factor facts for `Real.exp (-localGap)`:
   positivity, strict upper bound by one, interval membership, and
-  nonzero/non-one corollaries. No transfer matrix, Hamiltonian, Wilson
-  slab-kernel, infinite-volume, or physical gap theorem is claimed.
+  nonzero/non-one corollaries, plus `exp (-localGap) = lambdaLocal / lambda0`
+  and the multiplicative local-eigenvalue recovery form. No transfer matrix,
+  Hamiltonian, Wilson slab-kernel, infinite-volume, or physical gap theorem is
+  claimed.
 - `WilsonProjectors.lean`: the QMF5/RP-F projector down-payment now includes
   `conj_projector_posSemidef`, `conj_projPlus_posSemidef`, and
   `conj_projMinus_posSemidef`, packaging the linear-algebra conclusion that

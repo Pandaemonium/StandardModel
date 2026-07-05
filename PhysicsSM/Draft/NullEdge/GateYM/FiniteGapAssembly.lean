@@ -151,6 +151,19 @@ theorem exp_neg_localGap_ne_one (P : FiniteGapPrereq H) :
     Real.exp (-P.localGap) ≠ 1 :=
   ne_of_lt P.exp_neg_localGap_lt_one
 
+/-- Direct eigenvalue-ratio form of the contraction-factor identity. -/
+theorem exp_neg_localGap_eq_lambdaLocal_div_lambda0 (P : FiniteGapPrereq H) :
+    Real.exp (-P.localGap) = P.lambdaLocal / P.lambda0 := by
+  rw [exp_neg_localGap_eq_localSpectralRatio]
+  rfl
+
+/-- Multiplicative recovery of the local eigenvalue from the vacuum eigenvalue
+and the contraction factor. -/
+theorem lambda0_mul_exp_neg_localGap_eq_lambdaLocal (P : FiniteGapPrereq H) :
+    P.lambda0 * Real.exp (-P.localGap) = P.lambdaLocal := by
+  rw [exp_neg_localGap_eq_lambdaLocal_div_lambda0]
+  field_simp [P.lambda0_pos.ne']
+
 /-- Exponentiating the packaged gap gives the inverse local/glueball spectral
 ratio. -/
 theorem exp_localGap_eq_inv_localSpectralRatio (P : FiniteGapPrereq H) :
