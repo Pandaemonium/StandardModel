@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import itertools
+import json
 import math
 import platform
 from dataclasses import dataclass
@@ -321,6 +322,113 @@ class Z2TransferSummary:
     sector_eigenvalues_minus: tuple[float, ...]
 
 
+def model_descriptor(L: int, T: int, beta: float) -> dict:
+    """Return a JSON-ready descriptor for this finite transfer model."""
+
+    return {
+        "model": "z2_1p1d_wilson_slab_transfer",
+        "group": {
+            "name": "Z2",
+            "multiplication": "sign multiplication",
+            "encoding": {
+                "bit_0": "+1",
+                "bit_1": "-1",
+            },
+        },
+        "lattice": {
+            "space": {
+                "dimension": 1,
+                "shape": [L],
+                "boundary": "periodic",
+            },
+            "time": {
+                "extent": T,
+                "boundary": "periodic",
+            },
+        },
+        "state_encoding": {
+            "spatial_state": "L low bits encode spatial links on one time slice",
+            "temporal_state": "L low bits encode temporal links in one slab",
+        },
+        "couplings": {
+            "beta": beta,
+            "beta_spatial": 0.0,
+            "beta_temporal": beta,
+        },
+        "plaquette_convention": "P_i(u,a,v) = a_i * v_i * a_{i+1} * u_i",
+        "kernel": {
+            "name": "gauge_summed_wilson_slab",
+            "formula": "K(u,v) = sum_a exp(beta * sum_i P_i(u,a,v))",
+        },
+        "partition": "Z_T = Tr(K^T)",
+        "observables": [
+            {
+                "name": "spatial_flux",
+                "formula": "Phi(u) = prod_i u_i",
+                "insertion": "diagonal",
+            },
+        ],
+        "sector_symmetries": [
+            {
+                "name": "global_center_flip",
+                "action": "u -> -u on every spatial link",
+                "projectors": ["(I + F) / 2", "(I - F) / 2"],
+            },
+        ],
+        "claim_boundary": "finite oracle/evidence record, not a Lean proof",
+    }
+
+
+def summary_record(summary: Z2TransferSummary) -> dict:
+    """Return a JSON-ready descriptor plus numerical summary/check payload."""
+
+    partition_abs_error = abs(summary.partition_transfer - summary.partition_full)
+    partition_rel_error = partition_abs_error / abs(summary.partition_full)
+    flux_abs_error = abs(summary.flux_transfer - summary.flux_full)
+    corr_abs_error = abs(
+        summary.flux_correlation_transfer - summary.flux_correlation_full
+    )
+    return {
+        "oracle": {
+            "name": "z2_transfer_oracle",
+            "version": "v0.6",
+            "python": platform.python_version(),
+            "numpy": np.__version__,
+        },
+        "descriptor": model_descriptor(summary.L, summary.T, summary.beta),
+        "results": {
+            "partition": {
+                "transfer_trace": summary.partition_transfer,
+                "full_spacetime_sum": summary.partition_full,
+            },
+            "spatial_flux_expectation": {
+                "transfer_trace": summary.flux_transfer,
+                "full_spacetime_sum": summary.flux_full,
+            },
+            "spatial_flux_two_time_correlation": {
+                "tau": summary.flux_correlation_tau,
+                "transfer_trace": summary.flux_correlation_transfer,
+                "full_spacetime_sum": summary.flux_correlation_full,
+            },
+            "spectrum": {
+                "positive_eigenvalues": list(summary.eigenvalues),
+                "center_plus_positive_eigenvalues": list(
+                    summary.sector_eigenvalues_plus
+                ),
+                "center_minus_positive_eigenvalues": list(
+                    summary.sector_eigenvalues_minus
+                ),
+            },
+        },
+        "checks": {
+            "partition_abs_error": partition_abs_error,
+            "partition_rel_error": partition_rel_error,
+            "spatial_flux_abs_error": flux_abs_error,
+            "two_time_flux_abs_error": corr_abs_error,
+        },
+    }
+
+
 def summarize(L: int, T: int, beta: float) -> Z2TransferSummary:
     """Compute the standard exact checks for a small Z2 slab model."""
 
@@ -349,9 +457,14 @@ def main() -> int:
     parser.add_argument("--L", type=int, default=3, help="spatial circle size")
     parser.add_argument("--T", type=int, default=2, help="Euclidean time extent")
     parser.add_argument("--beta", type=float, default=0.4, help="Wilson coupling")
+    parser.add_argument("--json", action="store_true", help="emit JSON summary")
     args = parser.parse_args()
 
     summary = summarize(args.L, args.T, args.beta)
+    if args.json:
+        print(json.dumps(summary_record(summary), indent=2, sort_keys=True))
+        return 0
+
     print(f"z2_transfer_oracle | python {platform.python_version()} | numpy {np.__version__}")
     print(f"L={summary.L} T={summary.T} beta={summary.beta}")
     print(f"Tr(K^T)      = {summary.partition_transfer:.12g}")

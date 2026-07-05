@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-validate_lgt_core.py -- Track C oracle v0.5 (YM ladder, 2026-07-05)
+validate_lgt_core.py -- Track C oracle v0.6 (YM ladder, 2026-07-05)
 
 v0.2 (planning session for the 2026-07-03 overnight YM run) closes:
   ORACLE-TODO-1: section [9], complex-character fixture (Z3). Pins the
@@ -50,6 +50,11 @@ v0.5 (four-day YM run, dynamics slice 2) adds:
     an eigendecomposition formula for the same transfer trace, and
     center-shift sector-block spectral reconstruction.
 
+v0.6 (four-day YM run, dynamics slice 3) adds:
+  A deterministic JSON-ready descriptor/summary record for the Z2 slab
+    transfer oracle, including model conventions, checked numerical results,
+    spectra, and explicit error fields.
+
 Convention-pinning fixtures for the YM0/YM1/YM2/YM3 statement freezes.
 Oracle discipline per Scripts/oracle/validate_flux2d_wilson_dirac.py:
 tool versions recorded; oracle output is NEVER cited as proof; every PASS
@@ -77,7 +82,7 @@ Pinned conventions (normative for the statement-freeze document):
        over local spatial gauge flips; Z_torus = 2^c * Tr[(T P_G)^{n_t}]
        with c pinned below.
 """
-import sys, math, itertools, platform
+import sys, math, itertools, platform, json
 import numpy as np
 from z2_transfer_oracle import (
     full_spacetime_correlation as z2_transfer_full_correlation,
@@ -89,6 +94,8 @@ from z2_transfer_oracle import (
     sector_eigenvalues as z2_sector_eigenvalues,
     sector_projector as z2_sector_projector,
     spatial_flux as z2_spatial_flux,
+    summarize as z2_transfer_summarize,
+    summary_record as z2_transfer_summary_record,
     transfer_correlation as z2_transfer_correlation,
     transfer_correlation_spectral as z2_transfer_correlation_spectral,
     transfer_expectation as z2_transfer_expectation,
@@ -104,7 +111,7 @@ def check(name, cond, detail=""):
     if not cond:
         print("        ^^^ ORACLE FAILURE: convention or formula wrong; freeze doc must not cite this row.")
 
-print(f"oracle v0.5 | python {platform.python_version()} | numpy {np.__version__}")
+print(f"oracle v0.6 | python {platform.python_version()} | numpy {np.__version__}")
 print("=" * 78)
 
 # ---------------------------------------------------------------- Z2 torus
@@ -607,7 +614,7 @@ check("Z2 polymer gas: same alpha fails by L>=3 at beta=0.06 (guard row)",
                 f"max={r['worst_ratio']:.3f}@area{r['worst_area']}"
                 for r in kp_bad))
 
-print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.5)")
+print("\n[13] Z2 1+1D finite Wilson slab transfer oracle (dynamics v0.6)")
 print("     K(u,v)=sum_a exp(beta * sum_i a_i v_i a_{i+1} u_i), "
       "with exact spacetime validation")
 for beta in [0.2, 0.4, 0.7]:
@@ -658,6 +665,18 @@ for (L, nt, beta, tau) in [(2, 3, 0.4, 1), (3, 3, 0.7, 1), (3, 3, 0.7, 2)]:
           "spectral formula",
           abs(C_transfer - C_spectral) < 1e-10,
           f"trace={C_transfer:.10f} spectral={C_spectral:.10f}")
+
+descriptor_summary = z2_transfer_summarize(L=3, T=3, beta=0.7)
+descriptor_record = z2_transfer_summary_record(descriptor_summary)
+descriptor_json = json.dumps(descriptor_record, sort_keys=True)
+check("descriptor JSON record is serializable and summary-consistent",
+      descriptor_record["oracle"]["version"] == "v0.6"
+      and descriptor_record["descriptor"]["model"] == "z2_1p1d_wilson_slab_transfer"
+      and descriptor_record["descriptor"]["lattice"]["space"]["shape"] == [3]
+      and descriptor_record["descriptor"]["lattice"]["time"]["extent"] == 3
+      and descriptor_record["checks"]["partition_rel_error"] < 1e-10
+      and descriptor_record["checks"]["two_time_flux_abs_error"] < 1e-10
+      and "gauge_summed_wilson_slab" in descriptor_json)
 
 for L in [2, 3, 4]:
     Kslab = z2_transfer_matrix(L, beta=0.4)

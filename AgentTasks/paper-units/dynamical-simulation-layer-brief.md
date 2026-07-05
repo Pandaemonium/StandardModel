@@ -119,7 +119,7 @@ Implementation status as of 2026-07-05:
 
 - `Scripts/oracle/z2_transfer_oracle.py` implements the first Z2 1+1D slab
   transfer oracle.
-- `Scripts/oracle/validate_lgt_core.py` v0.5 contains the regression checks:
+- `Scripts/oracle/validate_lgt_core.py` v0.6 contains the regression checks:
   transfer-kernel symmetry/PSD, `Tr(K^T)` against exact spacetime enumeration,
   time-zero spatial-flux insertion against exact enumeration, center-shift
   projector commutation, tiny finite spectral gaps, and a guard that raw
@@ -130,6 +130,11 @@ Implementation status as of 2026-07-05:
   eigendecomposition formula, and extracts center-shift sector blocks whose
   positive spectra reconstruct the full positive transfer spectrum on the
   checked tiny examples.
+- The v0.6 extension adds a deterministic JSON-ready descriptor/summary
+  record for the Z2 slab oracle. The command
+  `python Scripts/oracle/z2_transfer_oracle.py --L 3 --T 3 --beta 0.7 --json`
+  emits the model convention record, partition and observable checks,
+  two-time correlation check, spectra, and explicit numerical error fields.
 
 ## One-step slab kernel
 
@@ -678,10 +683,11 @@ The engineering blockers are:
 
 These can be developed in parallel with the proof work, provided the
 simulation code stays explicitly labeled as oracle/evidence rather than proof.
-The first two transfer-specific blockers now have a narrow Z2 1+1D prototype
-in `Scripts/oracle/z2_transfer_oracle.py`; the remaining engineering task is
-to generalize that prototype into a reusable descriptor-driven engine and
-connect it back to Lean theorem surfaces.
+The transfer-specific blockers now have a narrow Z2 1+1D prototype in
+`Scripts/oracle/z2_transfer_oracle.py`, including a JSON-ready descriptor and
+summary record. The remaining engineering task is to generalize that prototype
+into a reusable descriptor-driven engine and connect it back to Lean theorem
+surfaces.
 
 ## Suggested first collaborator project
 
