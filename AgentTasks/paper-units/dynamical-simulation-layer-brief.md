@@ -218,6 +218,10 @@ Implementation status as of 2026-07-05:
 - The v0.34 provenance update records the one-link plus/minus
   center-projected two-step trace identities, their reconstruction of the
   full two-step trace, and their minus/plus projected trace-ratio theorem.
+- The v0.35 oracle update emits center-sector partition traces
+  `Tr(K_+^T)` and `Tr(K_-^T)` in JSON records, verifies them against
+  recomputation, replays them from emitted sector blocks, and rejects tampered
+  sector-trace records.
 - `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` adds the
   first small Lean-facing spectral payload for this dynamics lane: the complex
   `2 x 2` matrix `!![a,b;b,a]`, its vacuum and local/flux eigenvector
@@ -284,8 +288,8 @@ now and what still needs a bridge.
 
 | Artifact | Role in the dynamics layer | Current status |
 | --- | --- | --- |
-| `Scripts/oracle/z2_transfer_oracle.py` | Exact Z2 1+1D finite slab transfer engine | Descriptor-driven oracle evidence: transfer traces, observables, requested two-time flux-correlation profiles, spectra, full/sector first gaps, sector blocks, optional reproducibility matrices, descriptor schema emission, and saved-record replay verification including spectrum lists, sector-block matrices and replayed block spectra, transfer-kernel, spatial-flux insertion, center-projector, and flux/center matrix algebra. |
-| `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, schema-record conventions, correlation-profile validation, full/sector first-gap records, optional matrix-payload validation including emitted sector blocks, saved-record verifier acceptance/rejection, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
+| `Scripts/oracle/z2_transfer_oracle.py` | Exact Z2 1+1D finite slab transfer engine | Descriptor-driven oracle evidence: transfer traces, sector partition traces, observables, requested two-time flux-correlation profiles, spectra, full/sector first gaps, sector blocks, optional reproducibility matrices, descriptor schema emission, and saved-record replay verification including spectrum lists, sector-block matrices and replayed block spectra/partition traces, transfer-kernel, spatial-flux insertion, center-projector, and flux/center matrix algebra. |
+| `Scripts/oracle/validate_lgt_core.py` | Regression harness for finite LGT/oracle identities | Checks the Z2 transfer oracle against exact enumeration, matrix identities, descriptor validation, schema-record conventions, correlation-profile validation, sector partition traces, full/sector first-gap records, optional matrix-payload validation including emitted sector blocks, saved-record verifier acceptance/rejection, and the JSON `lean_surfaces` provenance record; this is executable evidence, not a Lean proof. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferSpectrum.lean` | Smallest Lean spectral payload | Kernel-checked finite identities for the `2 x 2` transfer-shape eigenvectors, ordered eigenvalues, spectral ratio, and contraction factor. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferWitness.lean` | Tiny consumer of the finite-gap witness API | Kernel-checked toy `Module.End` witness for the two-state descriptor; deliberately not the full Wilson slab transfer operator. |
 | `PhysicsSM/Draft/NullEdge/GateYM/TwoStateTransferZ2L1.lean` | One-link Z2 slab bridge | Kernel-checked proof that the executable oracle's `L = 1` slab formula has the two-state transfer shape, concrete symmetry/Hermitian identities, explicit vacuum/local eigenvectors, one-step and two-step partition/flux trace identities, plus/minus center-projected one-step and two-step trace identities with trace-ratio/decomposition facts, normalized `T = 1` flux expectation, normalized `T = 2` autocorrelation ratio, center flip/projector identities, a flux insertion swapping them, and a positive finite-gap witness for `beta > 0`. |
@@ -302,7 +306,7 @@ now and what still needs a bridge.
 | Claim type | What we can say now | What remains open |
 | --- | --- | --- |
 | Kernel-checked finite algebra | Finite gauge, reflection-positivity, OS/GNS range, sector, spectral-ratio, two-state witness, and support-bookkeeping identities are represented in Lean and build through the GateYM aggregate. | Some files are draft-trust and Q6 still has documented proof handoffs. |
-| Executable finite evidence | The Z2 1+1D oracle exactly cross-checks transfer traces, observable insertions, requested two-time correlation profiles, and sector block spectra against enumeration/matrix identities. | The oracle is not a proof, and it is currently specialized to the small Z2 1+1D descriptor family. |
+| Executable finite evidence | The Z2 1+1D oracle exactly cross-checks transfer traces, sector partition traces, observable insertions, requested two-time correlation profiles, and sector block spectra against enumeration/matrix identities. | The oracle is not a proof, and it is currently specialized to the small Z2 1+1D descriptor family. |
 | Dynamical simulation layer | A first finite transfer object exists as executable exact oracle evidence, with a tiny Lean spectral shape that demonstrates the intended theorem interface. | The concrete Wilson slab transfer operator has not yet been constructed in Lean or connected to the OS/GNS sector APIs. |
 | Strong-coupling clustering | The KP and observable-clustering theorem surfaces are precise and claim-honest: decay remains an explicit hypothesis. | Q6 metric-tail closure, Q7 volume-uniform support counting, and Q8 concrete observable expansion are still open. |
 | Physical mass gap | The project has finite, theorem-shaped prerequisites and exact finite evidence. | There is no infinite-volume, continuum, Hamiltonian, or physical Yang-Mills mass-gap theorem. |

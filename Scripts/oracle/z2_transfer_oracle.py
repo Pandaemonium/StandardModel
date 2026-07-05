@@ -10,6 +10,8 @@ Euclidean transfer model described in
 * full spacetime enumeration is used as the reference check.
 * two-time Euclidean correlations and center-shift sector blocks are exposed
   as finite matrix diagnostics.
+* center-shift sector partition traces are emitted and verified against the
+  sector blocks.
 
 Z2 is represented by bits: bit 0 means +1 and bit 1 means -1.
 """
@@ -26,7 +28,7 @@ from pathlib import Path
 
 import numpy as np
 
-ORACLE_VERSION = "v0.34"
+ORACLE_VERSION = "v0.35"
 DESCRIPTOR_SCHEMA = "z2_1p1d_wilson_slab_transfer.v1"
 SUPPORTED_OBSERVABLES = {"spatial_flux"}
 SUPPORTED_CORRELATIONS = {"spatial_flux_autocorrelation"}
@@ -312,6 +314,16 @@ def sector_eigenvalues(L: int,
     return positive_eigenvalues(sector_block(L, beta, parity), tol=tol)
 
 
+def sector_partition_from_transfer(L: int,
+                                   T: int,
+                                   beta: float,
+                                   parity: int) -> float:
+    """Return `Tr(K_parity^T)` for one center-shift sector block."""
+
+    block = sector_block(L, beta, parity)
+    return float(np.trace(np.linalg.matrix_power(block, T)))
+
+
 def positive_eigenvalues(K: np.ndarray, tol: float = 1e-10) -> np.ndarray:
     """Return sorted eigenvalues after checking numerical symmetry."""
 
@@ -366,6 +378,8 @@ class Z2TransferSummary:
     eigenvalues: tuple[float, ...]
     sector_eigenvalues_plus: tuple[float, ...]
     sector_eigenvalues_minus: tuple[float, ...]
+    sector_partition_plus: float
+    sector_partition_minus: float
 
 
 def _require(condition: bool, message: str) -> None:
@@ -847,6 +861,13 @@ def summary_record(summary: Z2TransferSummary,
 
     partition_abs_error = abs(summary.partition_transfer - summary.partition_full)
     partition_rel_error = partition_abs_error / abs(summary.partition_full)
+    sector_partition_sum = summary.sector_partition_plus + summary.sector_partition_minus
+    sector_partition_sum_abs_error = abs(sector_partition_sum - summary.partition_transfer)
+    sector_partition_ratio = (
+        None
+        if summary.sector_partition_plus == 0.0
+        else summary.sector_partition_minus / summary.sector_partition_plus
+    )
     flux_abs_error = abs(summary.flux_transfer - summary.flux_full)
     corr_abs_error = max(
         abs(entry.transfer - entry.full)
@@ -884,6 +905,15 @@ def summary_record(summary: Z2TransferSummary,
                 "transfer_trace": summary.partition_transfer,
                 "full_spacetime_sum": summary.partition_full,
             },
+            "center_sector_partition": {
+                "definition": "Tr(K_parity^T) from center-shift sector blocks",
+                "center_plus_transfer_trace": summary.sector_partition_plus,
+                "center_minus_transfer_trace": summary.sector_partition_minus,
+                "sum_transfer_trace": sector_partition_sum,
+                "full_transfer_trace": summary.partition_transfer,
+                "sum_abs_error": sector_partition_sum_abs_error,
+                "center_minus_over_plus": sector_partition_ratio,
+            },
             "spatial_flux_expectation": {
                 "transfer_trace": summary.flux_transfer,
                 "full_spacetime_sum": summary.flux_full,
@@ -917,6 +947,7 @@ def summary_record(summary: Z2TransferSummary,
         "checks": {
             "partition_abs_error": partition_abs_error,
             "partition_rel_error": partition_rel_error,
+            "sector_partition_sum_abs_error": sector_partition_sum_abs_error,
             "spatial_flux_abs_error": flux_abs_error,
             "two_time_flux_abs_error": corr_abs_error,
             "two_time_flux_spectral_abs_error": corr_spectral_abs_error,
@@ -1134,6 +1165,80 @@ def verify_record(record: dict) -> dict:
             "partition_full_spacetime_sum",
             _record_float(partition.get("full_spacetime_sum"), "partition.full_spacetime_sum"),
             expected.partition_full,
+            part_tol,
+        )
+        sector_partition = results.get("center_sector_partition")
+        _require(
+            isinstance(sector_partition, dict),
+            "`results.center_sector_partition` must be an object",
+        )
+        _compare_scalar(
+            checks,
+            errors,
+            "sector_partition_center_plus_transfer_trace",
+            _record_float(
+                sector_partition.get("center_plus_transfer_trace"),
+                "center_sector_partition.center_plus_transfer_trace",
+            ),
+            expected.sector_partition_plus,
+            part_tol,
+        )
+        _compare_scalar(
+            checks,
+            errors,
+            "sector_partition_center_minus_transfer_trace",
+            _record_float(
+                sector_partition.get("center_minus_transfer_trace"),
+                "center_sector_partition.center_minus_transfer_trace",
+            ),
+            expected.sector_partition_minus,
+            part_tol,
+        )
+        expected_sector_sum = expected.sector_partition_plus + expected.sector_partition_minus
+        _compare_scalar(
+            checks,
+            errors,
+            "sector_partition_sum_transfer_trace",
+            _record_float(
+                sector_partition.get("sum_transfer_trace"),
+                "center_sector_partition.sum_transfer_trace",
+            ),
+            expected_sector_sum,
+            part_tol,
+        )
+        _compare_scalar(
+            checks,
+            errors,
+            "sector_partition_full_transfer_trace",
+            _record_float(
+                sector_partition.get("full_transfer_trace"),
+                "center_sector_partition.full_transfer_trace",
+            ),
+            expected.partition_transfer,
+            part_tol,
+        )
+        expected_sector_ratio = (
+            None
+            if expected.sector_partition_plus == 0.0
+            else expected.sector_partition_minus / expected.sector_partition_plus
+        )
+        _compare_optional_scalar(
+            checks,
+            errors,
+            "sector_partition_center_minus_over_plus",
+            sector_partition.get("center_minus_over_plus"),
+            expected_sector_ratio,
+            part_tol,
+        )
+        _compare_scalar(
+            checks,
+            errors,
+            "sector_partition_sum_abs_error",
+            _record_float(
+                sector_partition.get("sum_abs_error"),
+                "center_sector_partition.sum_abs_error",
+            ),
+            abs(expected_sector_sum - expected.partition_transfer),
             part_tol,
         )
 
@@ -1523,6 +1628,45 @@ def verify_record(record: dict) -> dict:
                 _record_float(partition.get("transfer_trace"), "partition.transfer_trace"),
                 part_tol,
             )
+            plus_sector_trace = float(
+                np.trace(np.linalg.matrix_power(plus_block, descriptor.T))
+            )
+            minus_sector_trace = float(
+                np.trace(np.linalg.matrix_power(minus_block, descriptor.T))
+            )
+            _compare_scalar(
+                checks,
+                errors,
+                "matrix_replay_center_plus_partition_trace",
+                plus_sector_trace,
+                _record_float(
+                    sector_partition.get("center_plus_transfer_trace"),
+                    "center_sector_partition.center_plus_transfer_trace",
+                ),
+                part_tol,
+            )
+            _compare_scalar(
+                checks,
+                errors,
+                "matrix_replay_center_minus_partition_trace",
+                minus_sector_trace,
+                _record_float(
+                    sector_partition.get("center_minus_transfer_trace"),
+                    "center_sector_partition.center_minus_transfer_trace",
+                ),
+                part_tol,
+            )
+            _compare_scalar(
+                checks,
+                errors,
+                "matrix_replay_center_partition_sum_trace",
+                plus_sector_trace + minus_sector_trace,
+                _record_float(
+                    sector_partition.get("full_transfer_trace"),
+                    "center_sector_partition.full_transfer_trace",
+                ),
+                part_tol,
+            )
             _compare_scalar(
                 checks,
                 errors,
@@ -1618,6 +1762,8 @@ def summarize(
         eigenvalues=tuple(float(v) for v in positive_eigenvalues(K)),
         sector_eigenvalues_plus=tuple(float(v) for v in sector_eigenvalues(L, beta, 1)),
         sector_eigenvalues_minus=tuple(float(v) for v in sector_eigenvalues(L, beta, -1)),
+        sector_partition_plus=sector_partition_from_transfer(L, T, beta, 1),
+        sector_partition_minus=sector_partition_from_transfer(L, T, beta, -1),
     )
 
 
@@ -1728,6 +1874,8 @@ def main() -> int:
     print(f"L={summary.L} T={summary.T} beta={summary.beta}")
     print(f"Tr(K^T)      = {summary.partition_transfer:.12g}")
     print(f"full sum     = {summary.partition_full:.12g}")
+    print(f"sector + Tr  = {summary.sector_partition_plus:.12g}")
+    print(f"sector - Tr  = {summary.sector_partition_minus:.12g}")
     print(f"flux transfer= {summary.flux_transfer:.12g}")
     print(f"flux full    = {summary.flux_full:.12g}")
     for corr in summary.flux_correlation_profile:

@@ -27,7 +27,7 @@ The repo now has enough verified infrastructure to make the next work concrete:
   `FiniteGapSpectralWitness`;
 - executable Z2 1+1D transfer oracle infrastructure with exact enumeration,
   descriptor-requested two-time correlation profiles, sector blocks,
-  full/sector first-gap records, descriptor-file input, optional
+  sector partition traces, full/sector first-gap records, descriptor-file input, optional
   reproducibility matrix emission, and JSON summary output plus
   descriptor-schema emission and saved-record replay verification;
 - `TwoStateTransferSpectrum.lean`, a tiny Lean-facing transfer-spectrum
@@ -82,11 +82,12 @@ Achievable deliverables:
   and replays matrix-backed partition, flux, correlation, transfer-kernel
   symmetry/center-commutation, spatial-flux insertion algebra,
   center-projector algebra, flux/center sector-toggle checks, and
-  full/center-sector positive-eigenvalue lists, plus emitted center-sector
-  block matrices and their replayed positive spectra. It now also emits the
-  explicit JSON-schema-style descriptor contract through `--write-schema`, and
-  records full/center-sector first-gap fields derived from the positive
-  eigenvalue lists.
+  full/center-sector positive-eigenvalue lists, center-sector partition
+  traces, plus emitted center-sector block matrices and their replayed
+  positive spectra and partition traces. It now also emits the explicit
+  JSON-schema-style descriptor contract through `--write-schema`, and records
+  full/center-sector first-gap fields derived from the positive eigenvalue
+  lists.
 
 Done when:
 
@@ -245,8 +246,9 @@ Achievable deliverables:
   flux expectation, and the normalized one-link `T = 2` autocorrelation
   ratio, plus L=1 center flip/projector theorem surfaces and two-step
   plus/minus center-projected trace surfaces. It also records
-  descriptor-requested spatial-flux autocorrelation profiles and
-  full/center-sector first-gap fields as finite oracle evidence.
+  descriptor-requested spatial-flux autocorrelation profiles, center-sector
+  partition traces, and full/center-sector first-gap fields as finite oracle
+  evidence.
 
 Done when:
 
