@@ -26,7 +26,8 @@ linear inclusion/retraction pair and endomorphism-level four-sector
 decomposition on the finite OS range.  The range of each sector endomorphism is
 characterized as the matching sectorized finite OS submodule, and its kernel is
 the range/fixed-point space of the complementary sum of the other sector
-endomorphisms.  Distinct sectorized submodules are disjoint.  The four
+endomorphisms.  The selected and complementary ranges are disjoint and span the
+finite OS range.  Distinct sectorized submodules are disjoint.  The four
 sectorized submodules span the plaquette-field finite OS range, with explicit
 linear maps decomposing any OS range vector into its four sector projections
 and reconstructing it from those components.
@@ -1047,6 +1048,68 @@ theorem rpHilbertSpaceOtherBlockElectricProjection_idempotent {Lx Ly : Nat}
   have h := congrArg (fun T => T v)
     (rpHilbertSpaceBlockElectricProjection_comp_other_eq_zero hLx hLy F ex ey)
   simpa using h
+
+/-- The selected sector endomorphism range is disjoint from the complementary
+other-sector endomorphism range. -/
+theorem disjoint_range_rpHilbertSpaceBlockElectricProjection_other
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    Disjoint
+      (LinearMap.range (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey))
+      (LinearMap.range
+        (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey)) := by
+  rw [Submodule.disjoint_def]
+  intro v hvsel hvoth
+  have hfix :
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v = v := by
+    rcases hvsel with ⟨u, rfl⟩
+    have h := congrArg (fun T => T u)
+      (rpHilbertSpaceBlockElectricProjection_idempotent hLx hLy F ex ey)
+    simpa using h
+  have hzero :
+      rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey v = 0 :=
+    (mem_range_rpHilbertSpaceOtherBlockElectricProjection_iff
+      hLx hLy F ex ey v).1 hvoth
+  exact hfix.symm.trans hzero
+
+/-- The selected sector endomorphism range together with its complementary
+other-sector range spans the finite OS range. -/
+theorem sup_range_rpHilbertSpaceBlockElectricProjection_other_eq_top
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex)
+    (ex ey : Bool) :
+    LinearMap.range (rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey) ⊔
+        LinearMap.range
+          (rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey) =
+      ⊤ := by
+  apply le_antisymm
+  · exact le_top
+  · intro v _hv
+    let P := rpHilbertSpaceBlockElectricProjection hLx hLy F ex ey
+    let Q := rpHilbertSpaceOtherBlockElectricProjection hLx hLy F ex ey
+    have hp : P v ∈ LinearMap.range P := ⟨v, rfl⟩
+    have hq : Q v ∈ LinearMap.range Q := ⟨v, rfl⟩
+    have hp' : P v ∈ LinearMap.range P ⊔ LinearMap.range Q :=
+      (show LinearMap.range P ≤ LinearMap.range P ⊔ LinearMap.range Q from
+        le_sup_left) hp
+    have hq' : Q v ∈ LinearMap.range P ⊔ LinearMap.range Q :=
+      (show LinearMap.range Q ≤ LinearMap.range P ⊔ LinearMap.range Q from
+        le_sup_right) hq
+    have hsum : P v + Q v ∈ LinearMap.range P ⊔ LinearMap.range Q :=
+      Submodule.add_mem _ hp' hq'
+    have h : P v + Q v = v := by
+      simpa [P, Q, LinearMap.add_apply] using congrArg (fun T => T v)
+        (rpHilbertSpaceBlockElectricProjection_add_other_eq_id
+          hLx hLy F ex ey)
+    rw [← h]
+    exact hsum
 
 /-- A vector lying in two distinct sectorized finite OS ranges is zero. -/
 theorem eq_zero_of_mem_rpBlockElectricSector_of_ne {Lx Ly : Nat}
