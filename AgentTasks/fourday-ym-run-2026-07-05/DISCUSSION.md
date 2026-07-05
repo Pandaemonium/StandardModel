@@ -2150,12 +2150,15 @@ Added support-neighborhood splitting lemmas to
 
 - `closedTouchNeighborhood_mono`;
 - `closedTouchNeighborhood_union_subset`;
-- `closedTouchNeighborhood_union`.
+- `closedTouchNeighborhood_union`;
+- `closedTouchNeighborhood_eq_biUnion_singleton`;
+- `card_closedTouchNeighborhood_le_sum_singletons`.
 
 These are small but useful for future counting estimates: a root support can be
 enlarged monotonically or split across a finite union before applying the
-anchor-overcount theorem. No geometry-specific degree constant or concrete
-`PlaquetteKPBound` is claimed.
+anchor-overcount theorem, and the neighborhood cardinality is reduced to a
+sum of singleton-neighborhood sizes. No geometry-specific degree constant or
+concrete `PlaquetteKPBound` is claimed.
 
 ## note:t1-cut-factor-kernel-bridge
 

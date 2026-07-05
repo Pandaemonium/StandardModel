@@ -265,6 +265,47 @@ theorem closedTouchNeighborhood_union (Adj : PlaquetteAdjacency P)
     · exact closedTouchNeighborhood_mono Adj (Finset.subset_union_right) hqB
 
 omit [Fintype Rlab] in
+/-- A support's closed touch-neighborhood is the union of the closed
+touch-neighborhoods of its singleton plaquettes. This is the exact support API
+underlying later degree-style cardinality estimates. -/
+theorem closedTouchNeighborhood_eq_biUnion_singleton
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch] (A : Finset P) :
+    closedTouchNeighborhood Adj A =
+      A.biUnion (fun p => closedTouchNeighborhood Adj ({p} : Finset P)) := by
+  ext q
+  constructor
+  · intro hq
+    rcases (mem_closedTouchNeighborhood_iff Adj).1 hq with hqA | hTouch
+    · exact Finset.mem_biUnion.2
+        ⟨q, hqA, (mem_closedTouchNeighborhood_iff Adj).2
+          (Or.inl (by simp))⟩
+    · rcases hTouch with ⟨p, hpA, hpq⟩
+      exact Finset.mem_biUnion.2
+        ⟨p, hpA, (mem_closedTouchNeighborhood_iff Adj).2
+          (Or.inr ⟨p, by simp, hpq⟩)⟩
+  · intro hq
+    rcases Finset.mem_biUnion.1 hq with ⟨p, hpA, hqN⟩
+    rcases (mem_closedTouchNeighborhood_iff Adj).1 hqN with hqSing | hTouch
+    · have hqp : q = p := by simpa using hqSing
+      subst q
+      exact (mem_closedTouchNeighborhood_iff Adj).2 (Or.inl hpA)
+    · rcases hTouch with ⟨r, hrSing, hrq⟩
+      have hrp : r = p := by simpa using hrSing
+      subst r
+      exact (mem_closedTouchNeighborhood_iff Adj).2
+        (Or.inr ⟨p, hpA, hrq⟩)
+
+omit [Fintype Rlab] in
+/-- Cardinality overcount by singleton closed touch-neighborhoods. This is the
+geometry-free part of later degree-bound estimates. -/
+theorem card_closedTouchNeighborhood_le_sum_singletons
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch] (A : Finset P) :
+    (closedTouchNeighborhood Adj A).card
+      <= A.sum (fun p => (closedTouchNeighborhood Adj ({p} : Finset P)).card) := by
+  rw [closedTouchNeighborhood_eq_biUnion_singleton]
+  exact Finset.card_biUnion_le
+
+omit [Fintype Rlab] in
 /-- If `B` is overlap-or-touch incompatible with `A`, then `B` contains an
 anchor plaquette in the closed touch-neighborhood of `A`.  This is the support
 localization fact needed before any area-by-area counting bound. -/

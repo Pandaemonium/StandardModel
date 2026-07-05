@@ -491,8 +491,9 @@ the v0.3 oracle fixture. The support-localization API names the closed
 touch-neighborhood of a root support and characterizes overlap-or-touch
 incompatible supports as exactly those meeting it, including intersection and
 positive-cardinality forms for finite counting filters, monotonicity and union
-lemmas for splitting root supports, plus a generic anchor-overcount inequality
-that bounds any nonnegative incompatible-support sum
+lemmas for splitting root supports, singleton-neighborhood decomposition and
+cardinality overcount for degree-style estimates, plus a generic
+anchor-overcount inequality that bounds any nonnegative incompatible-support sum
 by summing over anchors in the closed neighborhood and its direct specialization
 to the explicit plaquette KP sum. It also names the explicit finite plaquette KP sum
 `plaquetteKPSum`, the bound predicate `PlaquetteKPBound`, and the adapter
