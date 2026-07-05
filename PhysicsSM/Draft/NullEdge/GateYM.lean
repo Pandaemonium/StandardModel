@@ -586,7 +586,8 @@ abstract connected-correlator data, named cluster-tail contribution, and the
 kernel-checked implication from an explicit Q6-style tail bound plus an
 observable-to-cluster bridge to exponential clustering, with `supportTail`
 empty/singleton/nonnegativity lemmas plus insert and disjoint-union splitting
-for finite-support specialization, zero-tail iff/pointwise edge-case lemmas,
+for finite-support specialization, zero-tail iff/pointwise edge-case lemmas
+and the zero-tail-to-zero-correlator bridge,
 plus monotonicity under support enlargement and arbitrary-union/finite-cover
 subadditivity with a cardinality-times-bound wrapper for both direct supports
 and finite covers, named energy-sum/uniform-energy finite-support amplitude

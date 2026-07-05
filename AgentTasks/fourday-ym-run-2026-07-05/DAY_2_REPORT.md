@@ -1,7 +1,7 @@
 # DAY_2_REPORT (drafted by codex; needs peer review)
 
 Scope: checkpoint from the post-`DAY_1_REPORT.md` ledger state through
-heartbeat `5.26:25`. This is a status synthesis, not a promotion claim.
+heartbeat `5.56:40`. This is a status synthesis, not a promotion claim.
 
 ## 1. Delta summary
 
@@ -10,8 +10,8 @@ selected-vs-other projection/range/complement APIs. The KP lane gained Q7
 area-sliced and positive-area anchored-sum adapters, finite-sum nonnegativity
 bookkeeping, one-plaquette area-slice/positive-area sanity fixtures, a
 corrected-Q6-input wrapper, and a Q8 concrete observable-bridge Aristotle
-audit. Q8 gained an empty-support connected-correlator bridge plus finite-set
-support-tail projection, overlap, and difference-split algebra. Q9 now has a
+audit. Q8 gained empty-support and zero-tail connected-correlator bridges plus
+finite-set support-tail projection, overlap, and difference-split algebra. Q9 now has a
 finite-gap prerequisite package with a named local spectral-ratio API under
 semantic audit, including log/inverse-ratio and nondegeneracy bookkeeping.
 The QMF5 side lane also landed the Wilson-projector Gram PSD linear-algebra
@@ -37,7 +37,10 @@ intentionally untouched because Q6 has not landed.
   exact difference-split lemmas, and subtraction-form union/difference
   identities for finite support bookkeeping. The zero-tail edge case is also
   exposed by `supportTail_eq_zero_iff_forall_tailContribution_eq_zero` and
-  `tailContribution_eq_zero_of_mem_of_supportTail_eq_zero`.
+  `tailContribution_eq_zero_of_mem_of_supportTail_eq_zero`; the bridge-level
+  corollary `connectedCorr_eq_zero_of_supportTail_eq_zero` says that a zero
+  finite support tail forces the connected correlator itself to vanish under
+  the same explicit support-tail bridge hypothesis.
 - `StrongCouplingPolymerMap.lean`: closed-neighborhood basics, area-sliced
   anchored sums, nonnegativity and impossible-area range cleanup, positive-area
   adapter variants, and one-plaquette Z2 area-slice/positive-area fixtures
@@ -79,8 +82,8 @@ Hamiltonian, Wilson slab-kernel, or gap claim. T6 is still blocked by finite
 rooted-tree/species counting plus older corrected-C2 and metric-tail handoffs.
 T7 has conditional adapters and finite fixtures, not a volume-uniform KP
 theorem. T8 has conditional support-tail bridges and now a submitted
-bridge-design audit plus empty-support and finite-support algebra
-bookkeeping, not concrete clustering.
+bridge-design audit plus empty-support/zero-tail vanishing and finite-support
+algebra bookkeeping, not concrete clustering.
 T9 is a prerequisite package only, even with the new spectral-ratio API. The
 QMF5 projector/reflection results are finite identities and not yet a concrete
 fermionic reflection-positive lattice block. T10 stays open.

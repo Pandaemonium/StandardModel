@@ -721,6 +721,37 @@ theorem connectedCorr_eq_zero_of_support_empty
             rw [hSupport, supportTail_empty, mul_zero]
   exact norm_eq_zero.mp (le_antisymm hNorm (norm_nonneg _))
 
+/-- If the support-tail itself vanishes, the bridge hypothesis forces the
+connected correlator to vanish.
+
+This generalizes `connectedCorr_eq_zero_of_support_empty`: the support may be
+nonempty, but every anchored tail in it has already been shown to contribute
+zero in aggregate.  It is still only support-interface bookkeeping, not a Q6
+metric-tail theorem or a concrete observable expansion. -/
+theorem connectedCorr_eq_zero_of_supportTail_eq_zero
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (L : LocalObservableSupportData Gamma Obs)
+    {A B : Obs}
+    (hTailZero :
+      supportTail M hdec D (L.support A) (L.separation A B) = 0)
+    (hBridge : forall A B : Obs,
+      ‖L.connectedCorr A B‖ <=
+        L.prefactor A B *
+          supportTail M hdec D (L.support A) (L.separation A B)) :
+    L.connectedCorr A B = 0 := by
+  have hNorm :
+      ‖L.connectedCorr A B‖ <= 0 := by
+    calc
+      ‖L.connectedCorr A B‖
+          <= L.prefactor A B *
+              supportTail M hdec D (L.support A) (L.separation A B) :=
+            hBridge A B
+      _ = 0 := by
+            rw [hTailZero, mul_zero]
+  exact norm_eq_zero.mp (le_antisymm hNorm (norm_nonneg _))
+
 /-- Finite-support exponential clustering from a uniform per-anchor tail
 estimate.
 
