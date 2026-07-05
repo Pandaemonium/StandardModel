@@ -235,6 +235,34 @@ theorem SupportsOverlapOrTouch.exists_right_mem_closedTouchNeighborhood
         (mem_closedTouchNeighborhood_iff Adj).2 (Or.inr ⟨p, hpA, hpq⟩)⟩
 
 omit [Fintype Rlab] in
+/-- Converse support-localization: a plaquette of `B` in the closed
+touch-neighborhood of `A` exactly witnesses overlap-or-touch incompatibility. -/
+theorem SupportsOverlapOrTouch.of_exists_right_mem_closedTouchNeighborhood
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    {A B : Finset P} :
+    (exists q : P, q ∈ B /\ q ∈ closedTouchNeighborhood Adj A) ->
+      SupportsOverlapOrTouch Adj A B := by
+  intro h
+  rcases h with ⟨q, hqB, hqN⟩
+  rcases (mem_closedTouchNeighborhood_iff Adj).1 hqN with hqA | hTouch
+  · exact Or.inl ⟨q, hqA, hqB⟩
+  · rcases hTouch with ⟨p, hpA, hpq⟩
+    exact Or.inr ⟨p, hpA, q, hqB, hpq⟩
+
+omit [Fintype Rlab] in
+/-- Exact support-localization form of conservative incompatibility.  Future
+counting bounds can filter candidate polymers by whether their support meets
+this finite closed neighborhood of the root support. -/
+theorem SupportsOverlapOrTouch.iff_exists_right_mem_closedTouchNeighborhood
+    (Adj : PlaquetteAdjacency P) [DecidableRel Adj.touch]
+    {A B : Finset P} :
+    SupportsOverlapOrTouch Adj A B <->
+      exists q : P, q ∈ B /\ q ∈ closedTouchNeighborhood Adj A := by
+  constructor
+  · exact SupportsOverlapOrTouch.exists_right_mem_closedTouchNeighborhood Adj
+  · exact SupportsOverlapOrTouch.of_exists_right_mem_closedTouchNeighborhood Adj
+
+omit [Fintype Rlab] in
 /-- Contrapositive support-localization form: if every plaquette of `B` lies
 outside the closed touch-neighborhood of `A`, then `A` and `B` are compatible
 for the conservative overlap-or-touch relation. -/
