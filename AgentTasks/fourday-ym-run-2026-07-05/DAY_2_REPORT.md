@@ -45,7 +45,10 @@ Q10 remains intentionally untouched because Q6 has not landed.
   inclusion/proof-shape lemmas, `FiniteGapPrereq.localGap_*` packaging, and
   the local spectral-ratio API `localSpectralRatio`,
   `localGap_eq_neg_log_localSpectralRatio`, `localSpectralRatio_pos`,
-  `localSpectralRatio_lt_one`, and `localSpectralRatio_mem_Ioo`.
+  `localSpectralRatio_lt_one`, `localSpectralRatio_mem_Ioo`,
+  exponential/multiplicative recovery identities, and the log inverse-ratio
+  facts `localGap_eq_log_lambda0_div_lambdaLocal` and
+  `log_lambda0_div_lambdaLocal_eq_localGap`.
 - `WilsonProjectors.lean`: the QMF5/RP-F projector down-payment now includes
   `conj_projector_posSemidef`, `conj_projPlus_posSemidef`, and
   `conj_projMinus_posSemidef`, packaging the linear-algebra conclusion that

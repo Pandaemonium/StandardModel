@@ -317,7 +317,9 @@ cyclicity prerequisite with strict ordered-eigenvalue data and proves only the
 definition-level consequence that the named local/glueball gap is positive.
 It also names the local spectral ratio, proves its interval facts, and records
 the exponential recovery identities `exp (-gap) = ratio` and
-`exp gap = lambda0 / lambdaLocal`; no transfer matrix, Hamiltonian, Wilson
+`exp gap = lambda0 / lambdaLocal`, together with the logarithmic inverse-ratio
+forms `gap = log (lambda0 / lambdaLocal)` and
+`-gap = log localSpectralRatio`; no transfer matrix, Hamiltonian, Wilson
 slab-kernel, infinite-volume state, or physical mass-gap theorem is claimed);
 `WilsonWeightPositivity` (YM3: Route B, the character-theory-free path to
 the reflection-positivity kernel-PSD engine - all three handoffs closed
