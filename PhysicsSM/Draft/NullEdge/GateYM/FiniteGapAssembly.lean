@@ -139,6 +139,45 @@ theorem exp_localGap_eq_lambda0_div_lambdaLocal (P : FiniteGapPrereq H) :
   unfold localSpectralRatio
   field_simp [P.lambda0_pos.ne', P.lambdaLocal_pos.ne']
 
+/-- The vacuum/local inverse spectral ratio is positive. -/
+theorem lambda0_div_lambdaLocal_pos (P : FiniteGapPrereq H) :
+    0 < P.lambda0 / P.lambdaLocal := by
+  exact div_pos P.lambda0_pos P.lambdaLocal_pos
+
+/-- The strict ordered-eigenvalue hypothesis makes the vacuum/local inverse
+spectral ratio strictly greater than one. -/
+theorem one_lt_lambda0_div_lambdaLocal (P : FiniteGapPrereq H) :
+    1 < P.lambda0 / P.lambdaLocal := by
+  have hratio :
+      P.lambdaLocal / P.lambdaLocal < P.lambda0 / P.lambdaLocal :=
+    div_lt_div_of_pos_right P.lambdaLocal_lt_lambda0 P.lambdaLocal_pos
+  simpa [div_self P.lambdaLocal_pos.ne'] using hratio
+
+/-- The packaged local/glueball gap is the logarithm of the inverse
+vacuum/local spectral ratio. -/
+theorem localGap_eq_log_lambda0_div_lambdaLocal (P : FiniteGapPrereq H) :
+    P.localGap = Real.log (P.lambda0 / P.lambdaLocal) := by
+  have hlog := congrArg Real.log (exp_localGap_eq_lambda0_div_lambdaLocal P)
+  simpa [Real.log_exp] using hlog
+
+/-- Equivalently, the logarithm of the inverse eigenvalue ratio is the packaged
+local/glueball gap. -/
+theorem log_lambda0_div_lambdaLocal_eq_localGap (P : FiniteGapPrereq H) :
+    Real.log (P.lambda0 / P.lambdaLocal) = P.localGap :=
+  (localGap_eq_log_lambda0_div_lambdaLocal P).symm
+
+/-- The negative packaged gap is the logarithm of the local spectral ratio. -/
+theorem neg_localGap_eq_log_localSpectralRatio (P : FiniteGapPrereq H) :
+    -P.localGap = Real.log P.localSpectralRatio := by
+  rw [localGap_eq_neg_log_localSpectralRatio]
+  ring
+
+/-- The local spectral-ratio logarithm is strictly negative. -/
+theorem log_localSpectralRatio_lt_zero (P : FiniteGapPrereq H) :
+    Real.log P.localSpectralRatio < 0 := by
+  exact (Real.log_neg_iff P.localSpectralRatio_pos).2
+    P.localSpectralRatio_lt_one
+
 /-- The exponential rate attached to the packaged gap is positive. -/
 theorem exp_localGap_pos (P : FiniteGapPrereq H) :
     0 < Real.exp P.localGap :=
