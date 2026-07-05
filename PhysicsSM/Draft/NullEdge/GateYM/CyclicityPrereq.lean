@@ -121,6 +121,29 @@ theorem localAlgebraCyclicInSector_iff_le_and_ge
   · intro h
     exact le_antisymm h.1 h.2
 
+/-- Cyclicity is equivalently the hard inclusion from the sector back into the
+cyclic span, together with the check that every local-algebra orbit vector
+stays in the sector. -/
+theorem localAlgebraCyclicInSector_iff_orbit_subset_and_sector_le
+    (A : Subalgebra ℂ (Module.End ℂ H)) (vacuum : H)
+    (sector : Submodule ℂ H) :
+    LocalAlgebraCyclicInSector A vacuum sector ↔
+      (∀ T : A, (T : Module.End ℂ H) vacuum ∈ sector) ∧
+        sector ≤ cyclicSubmodule A vacuum := by
+  rw [localAlgebraCyclicInSector_iff_le_and_ge, cyclicSubmodule_le_iff]
+
+/-- If the local algebra preserves the sector and the vacuum lies in the
+sector, then proving the sector is contained in the cyclic span is enough to
+prove the named cyclicity prerequisite. -/
+theorem localAlgebraCyclicInSector_of_preserves_of_sector_le
+    (A : Subalgebra ℂ (Module.End ℂ H)) (vacuum : H)
+    (sector : Submodule ℂ H)
+    (hpres : PreservesSubmodule A sector) (hv : vacuum ∈ sector)
+    (hsector : sector ≤ cyclicSubmodule A vacuum) :
+    LocalAlgebraCyclicInSector A vacuum sector := by
+  exact (localAlgebraCyclicInSector_iff_le_and_ge A vacuum sector).2
+    ⟨cyclicSubmodule_le_of_preserves A vacuum sector hpres hv, hsector⟩
+
 /-- Bundle of hypotheses that a future finite-gap assembly must expose.
 
 This structure is not a theorem. It packages the exact point where a fake gap
@@ -154,6 +177,14 @@ theorem sector_le_cyclicSubmodule_of_prereq
     (P : LocalCyclicityPrereq H) :
     P.sector ≤ cyclicSubmodule P.localAlgebra P.vacuum := by
   rw [P.cyclic]
+
+/-- Every local-algebra translate of the vacuum lies in the sector under a
+bundled Q9 prerequisite. This is the orbit-level easy inclusion that future
+assembly code can use without unfolding the bundle. -/
+theorem orbit_mem_sector_of_prereq
+    (P : LocalCyclicityPrereq H) (T : P.localAlgebra) :
+    (T : Module.End ℂ H) P.vacuum ∈ P.sector :=
+  P.local_preserves_sector T P.vacuum P.vacuum_mem
 
 end CyclicityPrereq
 end GateYM
