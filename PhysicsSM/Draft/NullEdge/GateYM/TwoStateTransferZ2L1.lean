@@ -184,6 +184,13 @@ theorem centerFlipMatrix_mulVec_local :
     simp [centerFlipMatrix, Matrix.mulVec, dotProduct, localVec,
       Fin.sum_univ_two]
 
+/-- The center flip is involutive on the one-link two-state sector. -/
+theorem centerFlipMatrix_sq :
+    centerFlipMatrix * centerFlipMatrix = 1 := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerFlipMatrix, Matrix.mul_apply, Fin.sum_univ_two]
+
 /-- The center-sector projectors are complementary. -/
 theorem centerPlus_add_centerMinus :
     centerPlusProjector + centerMinusProjector = 1 := by
@@ -197,6 +204,54 @@ theorem centerPlus_mul_centerMinus :
   ext u v
   fin_cases u <;> fin_cases v <;>
     norm_num [centerPlusProjector, centerMinusProjector, Matrix.mul_apply,
+      Fin.sum_univ_two]
+
+/-- The plus-sector center projector is idempotent. -/
+theorem centerPlusProjector_mul_self :
+    centerPlusProjector * centerPlusProjector = centerPlusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerPlusProjector, Matrix.mul_apply, Fin.sum_univ_two]
+
+/-- The minus-sector center projector is idempotent. -/
+theorem centerMinusProjector_mul_self :
+    centerMinusProjector * centerMinusProjector = centerMinusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerMinusProjector, Matrix.mul_apply, Fin.sum_univ_two]
+
+/-- The center flip fixes the plus-sector projector on the left. -/
+theorem centerFlip_mul_centerPlus :
+    centerFlipMatrix * centerPlusProjector = centerPlusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerFlipMatrix, centerPlusProjector, Matrix.mul_apply,
+      Fin.sum_univ_two]
+
+/-- The center flip acts by `-1` on the minus-sector projector on the left. -/
+theorem centerFlip_mul_centerMinus :
+    centerFlipMatrix * centerMinusProjector =
+      (-1 : ℂ) • centerMinusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerFlipMatrix, centerMinusProjector, Matrix.mul_apply,
+      Fin.sum_univ_two]
+
+/-- The center flip fixes the plus-sector projector on the right. -/
+theorem centerPlus_mul_centerFlip :
+    centerPlusProjector * centerFlipMatrix = centerPlusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerFlipMatrix, centerPlusProjector, Matrix.mul_apply,
+      Fin.sum_univ_two]
+
+/-- The center flip acts by `-1` on the minus-sector projector on the right. -/
+theorem centerMinus_mul_centerFlip :
+    centerMinusProjector * centerFlipMatrix =
+      (-1 : ℂ) • centerMinusProjector := by
+  ext u v
+  fin_cases u <;> fin_cases v <;>
+    norm_num [centerFlipMatrix, centerMinusProjector, Matrix.mul_apply,
       Fin.sum_univ_two]
 
 /-- The plus-sector projector fixes the vacuum vector. -/
