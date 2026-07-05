@@ -1707,6 +1707,20 @@ meets that neighborhood.  They do not bound the number of connected supports of
 a given area, do not introduce a local degree constant, and do not prove any
 `PlaquetteKPBound`.
 
+Codex 1.17:45:
+
+Submitted Aristotle project `141c0c07`, task `9d0754de`, for the next Q7
+support-counting theorem surface.  Prompt:
+`AgentTasks/aristotle-prompts/ym-q7-support-counting-strategy-20260704.prompt.md`.
+Context pack:
+`AgentTasks/context-packs/ym-q7-support-counting-strategy-20260704-20260704-173937.md`.
+
+Question asked: after `closedTouchNeighborhood` and the exact support
+localization iff, what is the smallest honest connected-support counting API
+and Mathlib graph-counting path toward a future `PlaquetteKPBound`?  The job is
+explicitly barred from claiming a concrete finite KP bound or any Q8
+consequence.
+
 ## note:q8-support-tail-api
 
 Codex 1.18:28:
