@@ -43,8 +43,11 @@ harvested as soon as they returned.
   cut-plaquette geometry: `cutPlaquette_hol_mirrorConfig` /
   `cutPlaquette_hol_cutMirrorCoord` prove the required symmetric read-off
   holonomy factorization, and `cutPlaquette_wilsonFactor_reflectionPositive`
-  specializes the Wilson cut-factor bridge. The genuine cut-ensemble
-  `PlaquetteEnsemble.weight` identification remains open.
+  specializes the Wilson cut-factor bridge. Follow-up lemmas
+  `cutPlaquette_weight_mirrorConfig_eq_wilsonKernel` and
+  `cutPlaquette_ensemble_reflectionPositive` identify the genuine singleton
+  `PlaquetteEnsemble.weight` and prove the concrete one-plaquette RP statement.
+  General finite cut-ensemble assembly remains open.
 - `CyclicityPrereq.lean`: statement-only abstract cyclic-submodule
   prerequisite, no gap/transfer consequence claimed.
 - `FluxSectorZ2.lean`/`FluxSectorGeneral.lean`/`CenterFluxSector.lean`:
@@ -152,10 +155,10 @@ T0/T4/T5 done. T1 zero-cut baseline plus ensemble-identification tier is now
 closed after `e6e46e9f`; `WilsonCutPlaquettePositivity.lean` now closes the
 abstract single-factor/finite-product cut-kernel bridge from `8271a64b`.
 `ReflectionCutPlaquetteExample.lean` now supplies a minimal concrete
-cut-bearing plaquette and proves the mirror-coordinate factor form. The
-remaining Q1 gap is the genuinely nontrivial cut-ensemble / shocking tier:
-identify the actual `PlaquetteEnsemble.weight` with that factorized form and
-assemble the full RP statement. T2 Hermitian bridge
+cut-bearing plaquette, proves the mirror-coordinate factor form, and closes the
+singleton one-plaquette `PlaquetteEnsemble.weight` RP statement. The remaining
+Q1 gap is the genuinely nontrivial finite cut-ensemble / shocking tier:
+assemble finite products and/or the abstract reflection-family theorem. T2 Hermitian bridge
 integrated, and `TransferHilbert.lean` now gives the finite shift-covariant
 OS/GNS statement layer; `TransferHilbertBlock.lean` now gives the concrete
 `cutKernel` block matrix and pairing/reflection-form bridge, while
@@ -252,9 +255,9 @@ generally conjugate to the original holonomy or its inverse, and `e6e46e9f`
 has now integrated the Route-B inverse convention for the zero-cut
 doubled-lattice tier. Aristotle `8271a64b` now supplies the abstract Wilson
 cut-factor PSD bridge, and `ReflectionCutPlaquetteExample.lean` supplies a
-minimal concrete cut-plaquette holonomy factorization. The remaining open work
-is the proof that the actual cut-lattice ensemble weight has that factorized
-form, followed by the assembled full RP statement.
+minimal concrete cut-plaquette holonomy factorization plus singleton
+one-plaquette ensemble RP. The remaining open work is finite cut-ensemble
+product assembly/generalization.
 Q6's C3
 exponential-distance tail is NOT a consequence of bare KP - needs an
 explicit metric/coercivity extension (already designed into the freeze).
@@ -280,9 +283,9 @@ GateYM is not a formalization of their full Wilson-fermion theorem.
 1. Use the integrated support-indexed Q7 carrier to state the next KP/Q8
    package with the finite KP sum bound as an explicit hypothesis; do not infer
    volume-uniform KP from the small-torus oracle rows.
-2. Use `ReflectionCutPlaquetteExample.lean` to identify the genuine
-   cut-bearing `PlaquetteEnsemble.weight` in mirror coordinates, then assemble
-   the full cut-ensemble RP statement.
+2. Generalize from `ReflectionCutPlaquetteExample.lean`'s singleton
+   one-plaquette RP theorem to finite cut-ensemble products or an abstract
+   reflection-family theorem.
 3. Push Q2/Q3 from the new `TransferHilbertZ2Electric.lean` adapter toward a
    genuine Wilson block-weight/transfer-kernel instance; do not claim a
    physical transfer matrix prematurely.

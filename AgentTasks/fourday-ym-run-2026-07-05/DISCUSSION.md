@@ -2226,3 +2226,31 @@ Dependency footprints:
 - `cutPlaquette_hol_cutMirrorCoord`: `[propext, Quot.sound]`
 - `cutPlaquette_wilsonFactor_reflectionPositive`:
   `[propext, Classical.choice, Quot.sound]`
+
+Codex follow-up 1.22:38:
+
+Closed the singleton cut-plaquette ensemble identification in the same module:
+
+- `cutPlaquette_weight_mirrorConfig_eq_wilsonKernel` proves that the genuine
+  one-plaquette `PlaquetteEnsemble.weight` at `cutMirrorConfig a c b` is
+  exactly `wilsonKernel beta rho (cutPlaqEWord c a) (cutPlaqEWord c b)`;
+- `cutPlaquette_ensemble_reflectionPositive` packages the resulting
+  reflection positivity statement for the concrete one-plaquette ensemble
+  weight.
+
+This is the first concrete cut-plaquette RP example with genuine
+`PlaquetteEnsemble.weight` identification. It is still not the full RP-LINK
+target: finite products over arbitrary cut-bearing Wilson ensembles, and the
+general abstract reflection-family theorem, remain open.
+
+Additional verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteExample.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteExample
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+Dependency footprint for the singleton ensemble ID/RP lemmas:
+`[propext, Classical.choice, Quot.sound]`.

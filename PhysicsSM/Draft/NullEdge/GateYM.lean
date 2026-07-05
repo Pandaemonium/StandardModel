@@ -368,9 +368,12 @@ defines a four-edge lattice with one positive edge, one mirror negative edge,
 and two cut edges; proves `cutPlaquette_hol_mirrorConfig` and
 `cutPlaquette_hol_cutMirrorCoord`, factoring the straddling plaquette holonomy
 as `e(c,a) * e(c,b)^-1` for the symmetric read-off `cutPlaqEWord`; specializes
-the Wilson cut-factor bridge as `cutPlaquette_wilsonFactor_reflectionPositive`.
-This is still not full RP-LINK: no `PlaquetteEnsemble.weight` identification
-for a cut-bearing ensemble is claimed yet);
+the Wilson cut-factor bridge as `cutPlaquette_wilsonFactor_reflectionPositive`;
+identifies the singleton concrete `PlaquetteEnsemble.weight` with that Wilson
+kernel as `cutPlaquette_weight_mirrorConfig_eq_wilsonKernel`; and packages the
+one-plaquette concrete RP statement as
+`cutPlaquette_ensemble_reflectionPositive`. This is still not full RP-LINK:
+finite products over a general cut-bearing ensemble are not assembled here);
 `TransferPositivity` (YM3, single-link
 PSD congruence/compression engine, RENAMED and re-scoped 2026-07-04
 after Aristotle red-team `cb437537`'s finding that the original

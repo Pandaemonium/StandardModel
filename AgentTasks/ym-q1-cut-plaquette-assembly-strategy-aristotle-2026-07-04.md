@@ -108,5 +108,8 @@ After integrating the returned kernel-algebra bridge, Codex added
 `PhysicsSM/Draft/NullEdge/GateYM/ReflectionCutPlaquetteExample.lean`.
 That local follow-up supplies a minimal four-edge cut-plaquette lattice,
 mirror-coordinate equivalence, holonomy factorization, and the specialized
-Wilson cut-factor RP-KER theorem. It still does not identify the genuine
-cut-bearing `PlaquetteEnsemble.weight` or close full RP-LINK.
+Wilson cut-factor RP-KER theorem. A second local follow-up added
+`cutPlaquette_weight_mirrorConfig_eq_wilsonKernel` and
+`cutPlaquette_ensemble_reflectionPositive`, identifying the genuine singleton
+`PlaquetteEnsemble.weight` and proving one-plaquette concrete RP. Full RP-LINK
+still requires finite product/general cut-ensemble assembly.

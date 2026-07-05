@@ -1,6 +1,7 @@
 import Mathlib
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteCore
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCore
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonLocalWeight
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
 
 /-!
@@ -155,6 +156,10 @@ def cutPlaquette : Plaquette cutPlaqLattice where
   step2 := OrientedLattice.Step.rev (Λ := cutPlaqLattice) CutPlaqEdge.cut1
   step3 := OrientedLattice.Step.rev (Λ := cutPlaqLattice) CutPlaqEdge.neg
 
+/-- The singleton plaquette family containing the concrete cut plaquette. -/
+def cutPlaquetteFamily : PUnit → Plaquette cutPlaqLattice :=
+  fun _ => cutPlaquette
+
 /-- Mirror coordinates for the concrete cut plaquette.
 
 The stored `neg` coordinate is the mirrored negative-side variable. The actual
@@ -230,6 +235,38 @@ theorem cutPlaquette_wilsonFactor_reflectionPositive
       (fun a c b =>
         ((wilsonKernel beta rho (cutPlaqEWord c a) (cutPlaqEWord c b) : ℝ) : ℂ)) :=
   reflectionForm_nonneg_of_wilsonFactor beta hbeta rho hmul hone hunit cutPlaqEWord
+
+omit [Fintype G] in
+/-- The genuine singleton `PlaquetteEnsemble.weight` of the concrete
+cut plaquette is exactly the Wilson kernel expression at mirror coordinates. -/
+theorem cutPlaquette_weight_mirrorConfig_eq_wilsonKernel
+    (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (a b : G) (c : G × G) :
+    PlaquetteEnsemble.weight cutPlaquetteFamily
+        (WilsonLocalWeight.wilsonLocalWeight beta rho) (cutMirrorConfig a c b)
+      = wilsonKernel beta rho (cutPlaqEWord c a) (cutPlaqEWord c b) := by
+  simp [PlaquetteEnsemble.weight, PlaquetteCore.productWeight,
+    cutPlaquetteFamily, WilsonLocalWeight.wilsonLocalWeight, wilsonKernel,
+    cutPlaquette_hol_mirrorConfig]
+
+/-- The singleton cut-plaquette ensemble weight is reflection positive in
+mirror coordinates. This closes the one-plaquette concrete example only; it is
+not yet the full finite cut-bearing lattice product theorem. -/
+theorem cutPlaquette_ensemble_reflectionPositive
+    (beta : ℝ) (hbeta : 0 ≤ beta)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ)
+    (hmul : ∀ g h : G, rho (g * h) = rho g * rho h)
+    (hone : rho 1 = 1)
+    (hunit : ∀ g : G, (rho g)ᴴ * rho g = 1) :
+    ReflectionPositivityKernel.IsReflectionPositive (A := G) (C := G × G)
+      (fun a c b =>
+        ((PlaquetteEnsemble.weight cutPlaquetteFamily
+            (WilsonLocalWeight.wilsonLocalWeight beta rho)
+            (cutMirrorConfig a c b) : ℝ) : ℂ)) := by
+  convert cutPlaquette_wilsonFactor_reflectionPositive beta hbeta rho hmul hone hunit using 1
+  funext a c b
+  rw [cutPlaquette_weight_mirrorConfig_eq_wilsonKernel]
 
 end ReflectionCutPlaquetteExample
 end GateYM
