@@ -143,6 +143,22 @@ theorem fluxMatrix_mulVec_local :
   fin_cases u <;>
     simp [fluxMatrix, Matrix.mulVec, dotProduct, vacuumVec, localVec, bitSign]
 
+/-- The one-step one-link transfer trace is the exact finite partition trace
+`4 * exp beta`. -/
+theorem slabTransfer_trace (beta : ℝ) :
+    Matrix.trace (slabTransfer beta) = ((4 * Real.exp beta : ℝ) : ℂ) := by
+  simp [Matrix.trace, slabTransfer, slabWeight, plaquetteSign, bitSign,
+    Fin.sum_univ_two]
+  ring
+
+/-- A single time-zero spatial-flux insertion has zero one-step trace in the
+one-link slab model. -/
+theorem fluxMatrix_mul_slabTransfer_trace (beta : ℝ) :
+    Matrix.trace (fluxMatrix * slabTransfer beta) = 0 := by
+  simp [Matrix.trace, Matrix.mul_apply, fluxMatrix, slabTransfer, slabWeight,
+    plaquetteSign, bitSign, Fin.sum_univ_two]
+  ring
+
 /-- For positive coupling, the one-link Z2 slab data forms a positive
 two-state descriptor. -/
 def descriptor (beta : ℝ) (hbeta : 0 < beta) : Descriptor where
