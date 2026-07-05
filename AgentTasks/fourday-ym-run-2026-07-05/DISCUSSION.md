@@ -2075,3 +2075,23 @@ grounded, not invented. Deliberately NOT writing that Lean file yet: it is
 day-3, and connects more cleanly after QMF3 (`70966fef`) lands the
 Berezin->determinant piece. Both my flagships (Penrose `e4458430`,
 QMF3 `70966fef`) remain in flight; M1-M3 untouched.
+
+## note:t11-boundary-expectation-harvest
+
+Codex 1.20:58:
+
+Harvested and integrated Aristotle project `acedaea2` task `e8617a3e`.
+The new module
+`PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryExpectation.lean` proves
+`rect_boundary_wilson_loop_expectation_area_law`, the rectangular
+boundary-circuit Wilson expectation area law with area exponent `Lx * Ly`.
+
+Semantic guardrail: the proof is deliberately expectation-level. It does not
+assert the false pointwise identity between a general link field's boundary
+holonomy and the reversed-row-major plaquette product. Instead it gauges each
+tree-coordinate slice to the comb tree slice, uses the integrated lasso theorem
+there, and then applies the independent-plaquette area law.
+
+Run-record updates mark Q11/YM1 as draft-closed for the concrete rectangular
+boundary-circuit expectation theorem. Promotion/paper theorem-numbering review
+remains separate from this integration.

@@ -12,8 +12,8 @@ is:
 
 > A kernel-checked draft formalization of finite-group lattice gauge identities
 > leading to an exact independent-plaquette area law and a concrete rectangular
-> tree-gauge bridge, with the tree-slice boundary-lasso identity proved and the
-> final ensemble/partition bridge still open.
+> tree-gauge bridge, with the tree-slice boundary-lasso identity and the
+> rectangular boundary-circuit expectation theorem proved.
 
 Do not use novelty language yet. T12 has not cleared source-internal historical
 or novelty review.
@@ -87,6 +87,14 @@ Tree-gauge bridge:
   - `rectBoundary_hol_formula`
   - `rectBoundary_hol_eq_reversedRowMajorPlaquetteProd_of_treeSlice`
   - `rectBoundary_chi_eq_chi_reversedRowMajorPlaquetteProd_of_treeSlice`
+- `PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryExpectation.lean`
+  - `combGaugeField`
+  - `bSummand_gauge_inv`
+  - `treeSlice_sum_indep_t`
+  - `treeSlice_summand_eq`
+  - `linkNumerator_boundary_eq`
+  - `linkExpectation_boundary_eq`
+  - `rect_boundary_wilson_loop_expectation_area_law`
 
 Spectrum/gap-adjacent support:
 
@@ -104,6 +112,8 @@ known records include:
 - `lake build PhysicsSM.Draft.NullEdge.GateYM` passed during T11 after
   `RectBoundaryLasso.lean` was wired into the aggregator and again after the
   lasso proof was harvested/integrated.
+- `RectBoundaryExpectation.lean` was harvested from Aristotle project
+  `acedaea2`; cite the integration ledger entry for exact local command output.
 - `python Scripts/oracle/validate_lgt_core.py` passed at `44/44` after the T14
   v0.3 fixtures.
 
@@ -121,12 +131,6 @@ GateYM build, then record the new command output in the paper-unit note.
 
 ## Remaining gaps
 
-- Ensemble/partition bridge: Aristotle project `acedaea2` is running for the
-  remaining bridge from the boundary-circuit observable to the full Theorem 2
-  rectangular expectation.
-- Full freeze Theorem 2 needs the harvested lasso identity composed with
-  `rect_wilson_loop_expectation_area_law` through the ensemble/tree-gauge
-  reduction.
 - The exact relationship between finite draft theorem names and any final paper
   theorem numbering needs a fresh cross-review.
 - This outline deliberately avoids infinite-volume and physical mass-gap claims.

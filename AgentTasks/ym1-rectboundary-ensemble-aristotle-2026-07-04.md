@@ -7,8 +7,8 @@ aristotle:
   target_file: PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryExpectation.lean
   expected_module: PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryExpectation
   submission_project: AgentTasks/aristotle-submit/ym1-rectboundary-ensemble-20260704-project
-  output_dir: AgentTasks/aristotle-output/acedaea2-dd0a-4672-baba-fdd3a5ba65ef
-  status: submitted
+  output_dir: AgentTasks/aristotle-output/ym1-rectboundary-ensemble-20260704
+  status: harvested-integrated
 ```
 
 ## Purpose
@@ -91,3 +91,48 @@ Project status after submit: RUNNING
 Task status after submit: QUEUED
 Submit warning: clean focused package had no .lake folder
 ```
+
+## Harvest Record
+
+Aristotle returned a complete proof of
+`rect_boundary_wilson_loop_expectation_area_law` in
+`PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryExpectation.lean`.
+
+The result preserves the submitted theorem statement and proves the
+boundary-circuit Wilson expectation area law for arbitrary finite groups. The
+proof is explicitly expectation-level: it avoids the false pointwise identity
+between the boundary holonomy and the reversed row-major plaquette product at a
+general link field, and instead uses gauge-orbit reduction to the comb tree
+slice before applying the lasso identity.
+
+Integrated file:
+
+```text
+PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryExpectation.lean
+```
+
+Aggregator import/map update:
+
+```text
+PhysicsSM/Draft/NullEdge/GateYM.lean
+```
+
+## Local Verification
+
+Integrated-harvest checks:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/GateYM/RectBoundaryExpectation.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryExpectation
+lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean
+lake build PhysicsSM.Draft.NullEdge.GateYM
+```
+
+The main theorem dependency audit reports:
+
+```text
+[propext, Classical.choice, Quot.sound]
+```
+
+The scoped placeholder/punctuation scan on the new source and harvest notes
+has no hits.

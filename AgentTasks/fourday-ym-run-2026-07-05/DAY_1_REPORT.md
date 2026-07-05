@@ -6,8 +6,8 @@ Landed a genuine Wilson-weight reflection-positivity baseline (T1), closed
 Q4/Q5 unconditionally, extended the finite flux/electric-sector API deeply
 (T3, gated on T2), froze and partially concretized the KP conclusion layer
 (T6), froze and audited the first strong-coupling polymer-map layer (T7),
-harvested the tree-slice lasso identity and submitted the remaining YM1
-ensemble bridge (T11), refreshed the literature/paper-unit guardrails
+harvested the tree-slice lasso identity and integrated the YM1 boundary
+expectation ensemble bridge (T11), refreshed the literature/paper-unit guardrails
 (T12/T13), and - per the user's explicit request mid-day - moved from near-zero
 Aristotle usage to a binding strategy/audit mandate with active proof/audit jobs
 harvested as soon as they returned.
@@ -64,6 +64,14 @@ harvested as soon as they returned.
   boundary holonomy equals the reversed row-major ordered product of plaquette
   holonomies.  Dependency footprint after local integration:
   `[propext, Quot.sound]`.
+- `RectBoundaryExpectation.lean`: boundary-circuit Wilson expectation area law
+  from Aristotle `acedaea2`.  The theorem
+  `rect_boundary_wilson_loop_expectation_area_law` proves the full rectangular
+  boundary observable expectation equals
+  `R.character 1 * wilsonNormalizedGamma beta rho R ^ (Lx * Ly)` for arbitrary
+  finite groups.  The proof is an expectation-level gauge-orbit reduction to
+  the comb tree slice, not a pointwise boundary/product identity at arbitrary
+  link fields.
 - `PolymerKPConclusion.lean`: Q6 statement-freeze layer plus concrete direct
   finite `spanningTreeCount` and `ursellSum` definitions from Aristotle
   `34d675b8`; Penrose `treeGraphBound_ursell` remains a documented draft
@@ -114,7 +122,8 @@ identification, COMPLETE+HARVESTED+INTEGRATED by Claude), `50024abf`
 (Q2 block instantiation, COMPLETE+HARVESTED+INTEGRATED), `8e1e11b0`
 (Q2/Q3 block-shift covariance, COMPLETE+HARVESTED+INTEGRATED), `071d1370`
 (Q6 abstract KP C1/C2 package, COMPLETE+HARVESTED+INTEGRATED-NEGATIVE), and
-`acedaea2` (Q11 boundary expectation bridge, RUNNING), `ba26fe81` (Q2/Q3 Z2
+`acedaea2` (Q11 boundary expectation bridge,
+COMPLETE+HARVESTED+INTEGRATED), `ba26fe81` (Q2/Q3 Z2
 electric adapter audit, RUNNING), `3e483972` (Q7 KP-bound adapter audit,
 RUNNING), `8271a64b` (Q1 cut-plaquette assembly strategy/audit, RUNNING), and
 Claude's `e4458430` Penrose tree-graph inequality proof job (RUNNING). Two
@@ -147,8 +156,10 @@ proving an honest explicit finite KP sum bound, plus concrete
 connected-support/label APIs. T8 now has conditional anchor and finite-support
 observable bridges plus empty/singleton support-tail lemmas; no unconditional
 clustering claim is made.
-T9 baseline-done. T11 lasso identity integrated; the remaining YM1 gap is the
-ensemble/partition bridge to the full Theorem 2 expectation statement.
+T9 baseline-done. T11 lasso identity and boundary-expectation ensemble bridge
+are integrated; YM1 Theorem 2 is now closed end-to-end in draft GateYM for the
+concrete rectangular boundary-circuit expectation. Paper numbering/promotion
+review still remains separate.
 T12 has bibliographic RP/KP/novelty guardrails, including Menotti-Pelissetto
 source-internal support for the LINK-vs-SITE distinction but no novelty proof.
 T13 outlines refreshed. T14 v0.3, 44/44 oracle green.
@@ -244,8 +255,9 @@ GateYM is not a formalization of their full Wilson-fermion theorem.
 4. Rework Q6/Q8 follow-ups around the corrected self-incompatible C2 target;
    keep the concrete Penrose theorem parked unless a focused proof package is
    ready.
-5. Harvest or continue `acedaea2` when it returns; until then, use the
-   integrated T11 lasso identity as the YM1 expectation-bridge anchor.
+5. Use the integrated `acedaea2` boundary-expectation theorem to refresh the
+   YM1 paper-unit inventory and start promotion-readiness review when the
+   current M1-M3 harvest queue permits.
 6. Keep Q2 integration focused on finite block-kernel/sector infrastructure
    rather than physical transfer claims.
 7. Keep Aristotle utilization at or above 4/8 slots at the next midday

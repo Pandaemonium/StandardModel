@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.IndependentPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.TreeGaugeBridge
 import PhysicsSM.Draft.NullEdge.GateYM.RectTreeGauge
 import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryLasso
+import PhysicsSM.Draft.NullEdge.GateYM.RectBoundaryExpectation
 import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
@@ -124,13 +125,20 @@ the ordered plaquette-holonomy product; axiom footprint
 bijectivity by per-row `Fin.induction` injectivity + cardinality), and
 `rect_wilson_loop_expectation_area_law`: the Wilson area law
 `chi_R(1) * gamma^m` as a link-ensemble expectation on a CONCRETE lattice.
-Remaining to the freeze Theorem 2 statement: only the boundary-circuit
-lasso identification of the observable; axiom footprint
+The remaining boundary-circuit observable bridge is closed by
+`RectBoundaryExpectation`; dependency footprint
 [propext, Classical.choice, Quot.sound]);
-`RectBoundaryLasso` (YM1/T11 start: typed full-rectangle boundary walk on
+`RectBoundaryLasso` (YM1/T11: typed full-rectangle boundary walk on
 `RectTreeGauge.rectLattice`, with the boundary holonomy order pinned as bottom,
-right, inverse top, inverse left. It deliberately does not yet prove the hard
-tree-slice lasso identity; that is the next Aristotle package);
+right, inverse top, inverse left, plus the tree-slice lasso identity identifying
+the boundary holonomy with the reversed-row-major plaquette product on the comb
+tree slice);
+`RectBoundaryExpectation` (YM1/T11, Aristotle `acedaea2` integrated: expectation-
+level gauge-orbit bridge from the full rectangular boundary-circuit Wilson
+observable to the independent-plaquette area law, proving
+`rect_boundary_wilson_loop_expectation_area_law` with area exponent `Lx * Ly`
+for arbitrary finite groups. It deliberately avoids the false pointwise
+boundary-vs-plaquette-product identity at general link fields);
 `FusionTransferSpectrum` (YM1/gap lane: the fusion convolution as a linear
 endomorphism of `G -> C` with kernel-checked `Module.End` spectrum - the
 constant function is the vacuum eigenvector with eigenvalue the one-plaquette
