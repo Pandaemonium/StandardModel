@@ -1090,6 +1090,60 @@ theorem finrank_rpBlockElectricSector_le_finrank_rpHilbertSpace
   exact LinearMap.finrank_le_finrank_of_injective
     (rpBlockElectricSectorInclusion_injective hLx hLy F ex ey)
 
+/-- The ambient plaquette-field finite OS range has positive dimension exactly
+when at least one concrete Z2 block electric sector has positive dimension.
+
+This is a finite-dimensional consequence of the four-sector decomposition, not
+a physical transfer-matrix or spectral-gap statement. -/
+theorem finrank_rpHilbertSpace_pos_iff_exists_finrank_rpBlockElectricSector_pos
+    {Lx Ly : Nat} [DecidableEq (FluxSectorZ2.TorusLinkField Lx Ly)]
+    (hLx : 0 < Lx) (hLy : 0 < Ly)
+    (F : (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) ->
+      (Fin Lx -> Fin Ly -> Bool) -> Complex) :
+    0 < Module.finrank Complex
+        (rpHilbertSpace (rpBlockMatrix (plaquetteTripleWeight F))) ↔
+      ∃ ex : Bool, ∃ ey : Bool,
+        0 < Module.finrank Complex
+          (rpBlockElectricSector hLx hLy F ex ey) := by
+  rw [finrank_rpHilbertSpace_eq_sum_finrank_rpBlockElectricSector hLx hLy F]
+  constructor
+  · intro hsum
+    have houter :=
+      (Finset.sum_pos_iff_of_nonneg
+        (s := (Finset.univ : Finset Bool))
+        (f := fun ex : Bool =>
+          ∑ ey : Bool,
+            Module.finrank Complex
+              (rpBlockElectricSector hLx hLy F ex ey))
+        (by intro ex _hex; exact Nat.zero_le _)).1 hsum
+    rcases houter with ⟨ex, _hex, hexpos⟩
+    have hinner :=
+      (Finset.sum_pos_iff_of_nonneg
+        (s := (Finset.univ : Finset Bool))
+        (f := fun ey : Bool =>
+          Module.finrank Complex
+            (rpBlockElectricSector hLx hLy F ex ey))
+        (by intro ey _hey; exact Nat.zero_le _)).1 hexpos
+    rcases hinner with ⟨ey, _hey, heypos⟩
+    exact ⟨ex, ey, heypos⟩
+  · rintro ⟨ex, ey, hpos⟩
+    apply (Finset.sum_pos_iff_of_nonneg
+      (s := (Finset.univ : Finset Bool))
+      (f := fun ex : Bool =>
+        ∑ ey : Bool,
+          Module.finrank Complex
+            (rpBlockElectricSector hLx hLy F ex ey))
+      (by intro ex _hex; exact Nat.zero_le _)).2
+    refine ⟨ex, by simp, ?_⟩
+    apply (Finset.sum_pos_iff_of_nonneg
+      (s := (Finset.univ : Finset Bool))
+      (f := fun ey : Bool =>
+        Module.finrank Complex
+          (rpBlockElectricSector hLx hLy F ex ey))
+      (by intro ey _hey; exact Nat.zero_le _)).2
+    exact ⟨ey, by simp, hpos⟩
+
 end TransferHilbertZ2Electric
 end GateYM
 end NullEdge
