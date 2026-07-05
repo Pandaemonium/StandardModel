@@ -2,6 +2,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.Core
 import PhysicsSM.Draft.NullEdge.GateI1.MassCoinBridge
 import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary
 import PhysicsSM.Draft.NullEdge.GateI1.CompositeApertureMass
+import PhysicsSM.Draft.NullEdge.GateI1.MassWithoutMass
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -22,7 +23,13 @@ keystone (`CompositeApertureMass`: `minkDot` polarization/double-sum layer,
 reverse Cauchy-Schwarz on the future light cone with its equality case, and
 the headline `compositeMassSq_eq_zero_iff_collinear` - a composite of null
 constituents is massless iff it points along one null direction - with the
-two-body Plucker bridge `det (minkHerm (p + q)) = 2 * minkDot p q`).
+two-body Plucker bridge `det (minkHerm (p + q)) = 2 * minkDot p q`); plus the
+NE-U5 "mass without mass" crown (`MassWithoutMass`: the pure-gauge Z2
+single-plaquette transfer operator `transfer2`, its explicit eigenvectors and
+strictly positive glueball gap `z2GlueballMass_pos` = `log coth beta > 0`, and
+the headline `massWithoutMass` - `quarkMassParameter = 0` yet the gap is
+strictly positive, a category-(3) closure mass with zero primitive mass input;
+design provenance Aristotle `d1e7bece`, independently re-verified).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 

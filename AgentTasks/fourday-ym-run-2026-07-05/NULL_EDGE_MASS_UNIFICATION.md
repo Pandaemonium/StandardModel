@@ -76,6 +76,8 @@ two theorems the tree already holds.
 | Flux/center sectors (where closure composites live) | Q3 `FluxSector` machinery | proved (abstract) |
 | **NE-U1 aperture keystone**: composite of null momenta massless iff collinear; `det(minkHerm(p+q)) = 2 minkDot p q` | `GateI1/CompositeApertureMass.lean` | **proved (this run)** |
 | **NE-U2 mass = turn channel**: mass/Wilson are chirality-even, transport chirality-odd; lifted to full Wilson-Dirac (`gamma5_mass_diff_comm`) | `GateYM/ChiralMassStructure.lean` | **proved (this run)** |
+| **NE-U3 closure**: no gauge-invariant single-link expectation (Elitzur at zero source, exact) | `GateYM/ClosureObstruction.lean` | **proved (this run)** |
+| **NE-U5 "mass without mass"**: `quarkMassParameter = 0` yet Z2 glueball transfer gap `log coth beta > 0` (category-3 only) | `GateI1/MassWithoutMass.lean` | **proved (this run)** |
 
 The (C) pillar is further along than the run plan assumed: Elitzur was the
 missing "gluon edges are bookkeeping, not particles" theorem, and it landed
@@ -155,29 +157,34 @@ mountain: this is a statement-shape and bridging-lemma discipline imposed on
 work already scheduled. Claim label: finite identity (conditional on
 M1-M3). Kill condition: inherits the mountains'.
 
-### NE-U5 - "mass without mass": the confinement-mass toy. THE CROWN.
+### NE-U5 - "mass without mass": the confinement-mass toy. THE CROWN. **PROVED (this run).**
 
-A small explicit gauge+fermion model (single plaquette or 2-site chain,
-finite or compact group, Wilson fermions via the QMF3/QMF4 algebra) with
-`quarkMassParameter = 0` whose sector-restricted transfer gap is computably
-POSITIVE:
+PROVED in `GateI1/MassWithoutMass.lean`. The kill condition below FIRED in the
+intended way and was followed exactly: the Aristotle design job (`d1e7bece`,
+harvest in `QMF5_DESIGN_HARVEST.md`) established that any small enough Wilson-
+FERMION model with `quarkMassParameter = 0` has a gap dominated by the
+category-(2) Wilson REGULATOR mass (`~ log(1 + 4r)`), so reporting it as
+"mass without mass" would be an F-YM-CONFLATE error. So we shipped the
+pure-gauge glueball-sector toy instead - which is actually the CLEANER result,
+because with no fermions there is no regulator and no bare mass, so the gap can
+ONLY be the category-(3) closure channel:
 
 ```text
-theorem massWithoutMass_toy :
-  quarkMassParameter M = 0  and  0 < hadronSpectralMass M
+theorem massWithoutMass {beta : R} (hbeta : 0 < beta) :
+  quarkMassParameter = 0  and  0 < z2GlueballMass beta
 ```
 
-This is the kernel-checked heart of the user's question: composite
-(confinement) mass with ZERO primitive mass input, in one self-contained
-finite model. It does not need the M1-M3 mountains (a toy small enough to
-diagonalize explicitly), but it DOES need the QMF5/QMF6 statement shapes
-(fermionic RP + sector definitions) to name `hadronSpectralMass` honestly.
-Route: Aristotle design job first (model choice is the hard part: smallest
-model whose gap is provable without numerics), then a proof package.
-Claim label: finite identity (toy); consistency check (for the mechanism).
-Kill condition: if every model small enough to be kernel-tractable has a
-degenerate (zero-gap or empty) hadron sector, record the obstruction
-honestly and downgrade to a pure-gauge glueball-sector toy.
+The model is the Z2 single-plaquette temporal transfer operator
+`T = !![e^b, e^-b; e^-b, e^b]` (kernel-checked eigenvectors `(1,1)`, `(1,-1)`
+with eigenvalues `e^b +- e^-b`, symmetric so real spectrum), and
+`z2GlueballMass beta = log((e^b + e^-b)/(e^b - e^-b)) = log coth beta > 0` for
+every finite `beta > 0`. Strictly positive physical mass, exactly zero
+primitive mass, one self-contained explicit finite model - the closed flux loop
+is the (C)/(A) obstruction and no (T)/turn mass is inserted anywhere. Claim
+label: finite identity (a TOY category-(3) gap; NOT the physical YM mass gap,
+NOT lattice QCD). Fermionic Ward-subtracted `confinementGap` version recorded as
+a labeled STRETCH in the design harvest, gated on NE-U5's Deliverable-1
+fermionic RP (whose 12-node lemma DAG is in the harvest for the next push).
 
 ### NE-U6 - the electroweak rung (Higgs mass is also relational). NEXT-RUN.
 
