@@ -124,6 +124,33 @@ theorem exp_neg_localGap_eq_localSpectralRatio (P : FiniteGapPrereq H) :
   rw [localGap_eq_neg_log_localSpectralRatio]
   rw [neg_neg, Real.exp_log P.localSpectralRatio_pos]
 
+/-- The contraction factor `exp (-gap)` is positive. -/
+theorem exp_neg_localGap_pos (P : FiniteGapPrereq H) :
+    0 < Real.exp (-P.localGap) := by
+  rw [exp_neg_localGap_eq_localSpectralRatio]
+  exact P.localSpectralRatio_pos
+
+/-- The contraction factor `exp (-gap)` is strictly below one. -/
+theorem exp_neg_localGap_lt_one (P : FiniteGapPrereq H) :
+    Real.exp (-P.localGap) < 1 := by
+  rw [exp_neg_localGap_eq_localSpectralRatio]
+  exact P.localSpectralRatio_lt_one
+
+/-- The contraction factor `exp (-gap)` lies in the open interval `(0, 1)`. -/
+theorem exp_neg_localGap_mem_Ioo (P : FiniteGapPrereq H) :
+    Real.exp (-P.localGap) ∈ Set.Ioo (0 : ℝ) 1 :=
+  ⟨P.exp_neg_localGap_pos, P.exp_neg_localGap_lt_one⟩
+
+/-- The contraction factor `exp (-gap)` is nonzero. -/
+theorem exp_neg_localGap_ne_zero (P : FiniteGapPrereq H) :
+    Real.exp (-P.localGap) ≠ 0 :=
+  ne_of_gt P.exp_neg_localGap_pos
+
+/-- The contraction factor `exp (-gap)` is not one. -/
+theorem exp_neg_localGap_ne_one (P : FiniteGapPrereq H) :
+    Real.exp (-P.localGap) ≠ 1 :=
+  ne_of_lt P.exp_neg_localGap_lt_one
+
 /-- Exponentiating the packaged gap gives the inverse local/glueball spectral
 ratio. -/
 theorem exp_localGap_eq_inv_localSpectralRatio (P : FiniteGapPrereq H) :
