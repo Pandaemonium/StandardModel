@@ -139,6 +139,11 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **TIME RECALIBRATION (real clock 02:54):** the HB "~HH:MM" labels above were
+  NARRATIVE estimates, not the wall clock. Real time is ~02:54 (early morning);
+  ~6 h remain to the 9am goal deadline. The run CONTINUES - substance of HB1-HB14
+  is correct, only the o'clock labels were fictional. Going forward: realistic
+  cycles, keep fleet productive, harvest crux + refills until real 9am.
 - **HB14 (~08:57):** THIRD-MODE STRUCTURE LANDED. sm-closure-binding (9e796bf2)
   -> GateI1/ObstructionScalar.lean (dd461d6): closure AND aperture both provably
   instantiate one abstract ObstructionScalar (with one 'massless iff degenerate'

@@ -1,6 +1,6 @@
 # Overnight all-mass run - MORNING REPORT (2026-07-06)
 
-STATUS: substantially complete (~07:00; 28 commits, consolidation build green).
+STATUS: LIVE (run continues to 9am; ~34 commits, consolidation green; crux attempt in flight).
 
 ## Mission
 
@@ -73,8 +73,8 @@ direction recorded. Source: mission strategy `97a015dd`
 Floor already banked (capstone + A9 + the aperture=turn bridge are independent of
 the hard-YM Q6/slab jobs). The hard YM proofs buy little for the MASS thesis
 (only the NE-U4 (C)-upgrade toy->physical). "Unification" = shared SHAPE not
-shared quantity (no shared model where (C)=(A); Z2 has no Momentum4). The one
-binding advance in flight: `sm-aperture-turn-bridge` (T+A on one on-shell object).
+shared quantity (no shared model where (C)=(A); Z2 has no Momentum4). The T+A binding (`apertureEqualsTurn`) LANDED and is now unconditional; the
+third-mode shared STRUCTURE (`ObstructionScalar`) also landed - see Headline.
 
 ## Verification
 
