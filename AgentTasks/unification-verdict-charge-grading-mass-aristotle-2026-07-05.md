@@ -8,7 +8,7 @@ aristotle:
   prompt: AgentTasks/aristotle-prompts/unification-verdict-charge-grading-mass-20260705.prompt.md
   submission_project: AgentTasks/aristotle-submit/whole-project-grand-strategy-20260705-project (reused slim full-repo copy)
   output_dir: AgentTasks/aristotle-output/ca9d76fc-3845-4d5d-a1f6-db97214ba355
-  status: submitted
+  status: integrated
 ```
 
 Design+proof job: settle the octonion/null-edge unification as a KERNEL verdict.
@@ -51,3 +51,22 @@ VERIFY ON RETURN (semantic-alignment, load-bearing):
    eigenvalues and be FALSE if mass coupled to charge.
 3. Kernel-checked: lake env lean + #print axioms (no sorry, no native_decide,
    standard axioms) before integrating.
+
+## INTEGRATED 2026-07-05 (commit 163744e)
+
+Harvested via in-progress snapshot download (job was stuck in the slow full-repo
+build; file was already written). Verified LOCALLY (project pre-built):
+- Semantic check PASSED: it compiles, so Q_v1/Q_v4/Q_v5/Q_v6 are REAL kernel-
+  checked eigenvalue theorems (v1 = -2/3, v4/v5/v6 = -1/3 - genuinely different
+  charges), and the co-location argument is sound + non-vacuous
+  (coupling_would_distinguish certifies it). No contradiction with earlier
+  ColorBlindMass (which proved equal-norm, charge-agnostic) or AnomalyBridge
+  (which is about the DISTINCT barred vbar states).
+- One tactic fix by claude: coupling_would_distinguish's simp already cancelled
+  spacetimeMass via mul_left_injective₀.eq_iff, so the trailing mul_right_cancel₀
+  was redundant/mistyped -> replaced with norm_num.
+- lake env lean clean; 0 sorry; #print axioms = [propext, Classical.choice,
+  Quot.sound] on all three theorems; GateI1 aggregator green (8120). Wired into
+  GateI1.lean.
+Result: the decisive test (both audits' "highest-value next theorem") is settled
+as a KERNEL verdict at the CO-LOCATION branch.
