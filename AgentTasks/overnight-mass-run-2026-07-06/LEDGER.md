@@ -20,8 +20,26 @@ All submitted against the reused slim project
 | 8684c341 | A7 | fermionic RP-F crux N5 + assembly | SUBMITTED | ~23:55 | pending |
 | 2d096e24 | A8 | NE-U6 electroweak rung statement freeze + smallest identity | SUBMITTED | ~23:55 | pending |
 | 812c4c06 | A9 | mass-taxonomy separation theorem | SUBMITTED | ~23:55 | pending |
-| 5a7d6910 | A10a | AllMassFromNullEdges capstone claim-discipline audit | SUBMITTED | ~00:10 | pending |
+| 5a7d6910 | A10a | AllMassFromNullEdges capstone claim-discipline audit | COMPLETE | - | HARVESTED + integrated (fd0541d); report saved |
+| 70c4b556 | A10b | **sm-allmass-strategy** (mission strategy) | SUBMITTED | ~03:15 | pending |
 | ~~938f8068~~ | - | grand-strategy-review = NUMBER-THEORY project (Eisenstein-Goldbach) | COMPLETE | - | IGNORE (not this run) |
+
+### NAMING CONVENTION (user request, 2026-07-06 ~01:15)
+
+All FUTURE Aristotle jobs use distinctive `sm-<topic>-20260706-project` dir
+names (the job name = project-dir basename). First example: `70c4b556` =
+`sm-allmass-strategy-20260706-project`. The 10 wave-1 jobs above were already
+submitted under the shared `overnight-mass-20260706-project` name and CANNOT be
+renamed (no Aristotle rename API; cancel+resubmit would waste ~40 min of
+in-flight proof search on the crux/slab). They are distinguished by id here:
+7f990a2c=A1 crux-deletion, 1b255ef8=A2 crux-independent, b6f17681=A3 KP-downstream,
+cd433660=A4 wilson-slab, a8e61bfc=A5 transfer-gap, fa7fba4a=A6 product-haar,
+8684c341=A7 fermionic-rpf, 2d096e24=A8 neu6-electroweak, 812c4c06=A9 taxonomy-sep.
+As each cycles (completes or hits the 2h rule + resubmit), it gets an sm- name.
+
+Number-theory project jobs (IGNORE): eg-* (eg-flagship-grand-strategy,
+eg-d61-mr-reverify, eg-pieceB-wellspaced, eg-d4-iteration, eg-d1-rowclasses-audit),
+parity-*, frontier-*, minor-arc, door2-*, structural-deliverables.
 
 2-hour rule per RUN_PLAN section 4: any THIS-project job RUNNING >2h ->
 `aristotle cancel <id>` then `aristotle continue --mode instruct --wait <id>`
@@ -63,6 +81,18 @@ here before proceeding.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB4 (~01:20):** HARVESTED A10a (5a7d6910) capstone audit - excellent,
+  actionable. Applied all fixes to `AllMassFromNullEdges.lean` (fd0541d):
+  strengthened (T) to the genuine spin-vertex channel separation (was
+  near-trivial operator-difference), removed the dangling MassTaxonomySeparation
+  citation, flagged the definitional (C) zero, re-scoped the "all mass" prose.
+  Rebuilt clean, guard still standard axioms. Report saved. Per user request,
+  switched to sm- distinctive job naming: submitted sm-allmass-strategy
+  (70c4b556) on the freed slot (mission-focused strategy, not a whole-project
+  audit repeat). Documented the current-10 id->purpose map. NOTE: 5 new eg-*
+  jobs appeared = number-theory project, ignoring. Fleet: 9 wave-1 RUNNING + 1
+  sm- strategy = 10 this-project. Next cycle by ~02:00, and the 2h rule starts
+  biting the earliest wave-1 jobs ~02:55.
 - **HB3 (~00:40):** Fleet all RUNNING (~20 min old); nothing to harvest yet.
   Filled the lull with a genuine non-colliding task both audits recommended:
   GateYM/AxiomGuard on 8 stable sorry-free flagships (area law bulk+boundary,
