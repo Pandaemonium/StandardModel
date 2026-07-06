@@ -178,6 +178,22 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB32 (real ~13:20) - BIG batch harvest (5 integrated, 1 rejected) + re-saturate.**
+  Harvested the 10-job saturation batch's first wave: INTEGRATED (0a1fd2d) nbody
+  re-indexing (NBodyAperture now FULLY sorry-free); (99718c5) OSHamiltonianGap
+  (H=-log T two-state gap), FiniteNN2D (honest 2D skeleton), MassCommonCarrier (the
+  honest NEGATIVE - no common carrier, turn/bare obstruction); (dcbd191)
+  OctonionMassCoupling (lane B: split mass doesn't commute with su(3) ladders =
+  genuine coupling beyond co-location). REJECTED sm-nn-fix as HOLLOW (its
+  signedCountOfD is a trivial telescoping, chiral symmetry vestigial - 4th
+  over-claim-type catch, self-caught this time). All standard axioms, guarded.
+  RE-SATURATED to 10 with 6 refills: sm-nn-zeros (da483fb1, the GENUINE crossing-sign
+  N-N no-go), sm-eweak-w (16d6b7c0, NE-U6 W mass), sm-plucker (55cc46da, det P=m^2
+  <-> spinor wedge), sm-octo-faithful (665d23fc, close octo's faithfulness gap),
+  sm-capstone-v2 (d3012537, honest super-capstone), sm-clustering-general (1a79f9e8,
+  abstract two-level OS gap). LIT rounds 6-8: ingested mass/trace-anomaly
+  decomposition (NE-U5), KP convergence (Q6), Ginsparg-Wilson/chiral-lattice (T-leg).
+  ~35 commits; 4 over-claims/hollow results caught+corrected (red-team x3 + self x1).
 - **HB31 (real ~12:45) - FLEET SATURATED to 10 (user: Aristotle underloaded).**
   Submitted a WIDE batch of 9 independent jobs to fill all 10 slots: sm-nbody-reindex
   (d0fe7ddc, close the A re-indexing sorry), sm-strongcoupling-arealaw (218ec703, C:
