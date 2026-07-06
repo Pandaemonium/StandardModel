@@ -176,3 +176,13 @@ long queries; inspirehep needs short queries).
   (the KP/Fernandez-Procacci tree-graph bound, codex's lane). Newer than the
   Fernandez-Procacci math-ph/0605041 (already in-graph). Worth mining for the exact
   convergence criterion shape if the Q6 crux is revisited.
+
+## Round 8 (2026-07-06, saturation cadence) - Ginsparg-Wilson / lattice chiral
+- hep-lat/9802011 (Luscher, INGESTED) - "Exact chiral symmetry on the lattice and
+  the Ginsparg-Wilson relation" - THE definitive account of how lattice fermions
+  keep an exact (modified) chiral symmetry, circumventing Nielsen-Ninomiya. Direct
+  T-leg mine: the GW relation is precisely the "price" - chiral symmetry is
+  deformed, not broken, at the cost of a specific {D,gamma5} = a D gamma5 D
+  structure. Feeds the genuine N-N no-go + its evasion (the honest T-leg necessity).
+- hep-lat/0405024 (INGESTED) - review of chiral symmetry on the lattice.
+- Also: hep-lat/0105032 (domain-wall + chiral gauge theories).
