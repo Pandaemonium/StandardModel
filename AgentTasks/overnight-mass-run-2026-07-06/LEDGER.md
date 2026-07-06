@@ -178,6 +178,15 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB20 (real ~07:10):** TOOK OWNERSHIP of CODEX's Aristotle jobs (user
+  request). Codex submitted 6 sm- jobs (Track-A/YM, all motivated by the
+  Faizal-Shabir 2606.19362 paper this run added to Neo4j). Harvested the 3 IDLE:
+  SummableDefectGap + AreaLawTransport + LocalCyclicitySector (500fcb8, all new
+  sorry-free modules, wired into GateYM). Also harvested MY os-reconstruction
+  (95ce44b - OS/GNS reconstruction on the slab, the 2606.19362 Euclidean->Minkowski
+  step). Codex's 3 RUNNING jobs (clustering-to-gap cee37f54, cm-projector-audit
+  09e1f4bd, frd-weak-audit fbca3b9d) + my character-expansion (f142be9e) still
+  running - harvest when done. All builds green.
 - **HB19 (real ~06:50):** MCP: wired + verified all 6 servers (zotero_write fix +
   scholarly/neo4j_graph/local-qwen restored). Backfilled the 19 lit papers to
   canonical Zotero keys. Harvested sm-slab-signrep -> SlabSignRepGap.lean
