@@ -152,6 +152,14 @@ direction recorded.
   and - the night's structural advance - the FLAGSHIP now binds TWO of the three
   modes (aperture = turn) on ONE on-shell object, so the T/A pair is no longer a
   mere conjunction but a shared-object identity.
+- **UPDATE (third-mode structure, dd461d6):** `ObstructionScalar.lean` now
+  FORMALIZES the shared shape - closure and aperture both provably instantiate one
+  abstract `ObstructionScalar` (a strictly-antitone functional of a return ratio,
+  with one shared 'massless iff degenerate' law and a non-vacuity witness). So
+  "shared SHAPE" is no longer prose: all three modes now share a kernel-checked
+  STRUCTURE. This is still NOT a shared QUANTITY (different functionals/carriers;
+  no Momentum4<->Z2 map), so the honest ceiling is "one shared obstruction
+  structure, three instances; T and A additionally bound as one scalar."
 - **The remaining gap:** the CLOSURE mode (C) still shares no model with aperture
   (A) - `z2GlueballMass` has no `Momentum4`; the honest verdict stays "shared
   SHAPE, not shared quantity" for the C-vs-(T/A) relation. Full unification would
