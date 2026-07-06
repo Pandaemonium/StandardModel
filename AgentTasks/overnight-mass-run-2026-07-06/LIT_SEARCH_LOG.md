@@ -149,3 +149,15 @@ long queries; inspirehep needs short queries).
   doubling is CONDITIONAL on {local, hermitian, translation-invariant}; the "price
   of the turn" is precisely giving one of those up. Feeds the sm-doubling-audit
   red-team's necessity-direction question (85814661).
+
+## Round 5 (2026-07-06, cycle HB29) - the single C-gate (SU(N) construction)
+
+- **2506.00284** (INGESTED, Zotero Q942D77M) - "A Constructive Proof of Existence
+  and Mass Gap for Pure SU(3) Yang-Mills in 4D". MINE for the single C-gate: the
+  rigorous SU(3) RP-measure -> mass-gap construction target. Read for the
+  Haar-measure / RP / transfer-matrix route that would discharge the TwistSystem's
+  modeled hypotheses (hW, Z_le) in the genuinely nonabelian case. Complements the
+  in-graph Faizal-Shabir blueprint 2606.19362.
+- Also seen (no arxiv, not ingested): "Constructive Existence of Quantum
+  Yang-Mills on R^4"; Seiler LNP 159 (Osterwalder-Seiler, the classic RP
+  construction). The C-gate literature is now well-mapped.

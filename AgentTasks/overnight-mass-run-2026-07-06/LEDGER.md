@@ -178,6 +178,21 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB29 (real ~11:55) - GENUINE N-N no-go LANDED + T-leg upgraded.**
+  GateI1 checkpoint build GREEN (8128 jobs). HARVESTED sm-nn-nogo (2aaec751,
+  9efecdd): FiniteNielsenNinomiya.lean - the honest 1D finite Nielsen-Ninomiya
+  no-go: chiralSym_iff_offDiag, concrete N=4 signedNodeCount4_eq_zero (+1 origin
+  node, -1 doubler at p=2, sum 0 by kernel decide), signed_sum_telescope, and the
+  NECESSITY corollary odd_signedCount_impossible (lifting a lone Weyl zero needs a
+  Wilson term). 0 sorry, standard axioms (verified), guarded. This UPGRADES the
+  T-leg from the downgraded local channel algebra to a genuine topological no-go +
+  necessity - the red-team->honest-target->harvest loop worked end to end.
+  SCORECARD: A, T, X, V now ALL LANDED; C = Z2 chain + nonabelian dominance +
+  SU(N) scaffold (single gate = SU(N) measure). HOURLY red-team: sm-nn-audit
+  (f0053ca9) probing whether the N-N no-go itself over-claims. REFILL: sm-ty-concrete
+  (998d2d96) - concretize TwistSystem at N=2, DERIVE Z_le from the Z2 partition
+  sums (close a modeled hypothesis). HOURLY lit: ingested 2506.00284 (constructive
+  SU(3) mass gap - the single-gate target). Updated HONEST_SCORECARD (T upgraded).
 - **HB28 (real ~11:30) - consolidation: HONEST_SCORECARD + checkpoint build.**
   Wrote HONEST_SCORECARD.md (8dfcbb1) - the precise distance-to-goal artifact:
   per-lane PROVED/MODELED/OPEN vs the grand-strategy minimal conjunction. Verified
