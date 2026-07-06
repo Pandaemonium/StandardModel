@@ -141,8 +141,10 @@ NOT the topological Nielsen-Ninomiya no-go - see DoublingTurnPrice scope note) -
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.naive_limit_doubler_survives
 
-/-! ## Lane T: the GENUINE finite Nielsen-Ninomiya no-go (1D discrete Brillouin
-torus) - the honest necessity target the DoublingTurnPrice audit called for. -/
+/-! ## Lane T: the 1D Nielsen-Ninomiya TOPOLOGICAL SKELETON (discrete Brillouin
+torus). Sound pieces guarded; per red-team 7805c7f8 this is NOT a proof of
+"chiral symmetry => zero signed count" (the necessity is not yet tied to a
+chirally-symmetric Dirac symbol - see FiniteNielsenNinomiya scope note). -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.signedNodeCount4_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

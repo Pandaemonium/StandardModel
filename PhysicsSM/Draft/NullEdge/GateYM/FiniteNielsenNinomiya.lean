@@ -1,14 +1,38 @@
 import Mathlib
 
 /-!
-# The genuine finite Nielsen–Ninomiya no-go on a discrete Brillouin torus (1D)
+# The finite (1D) Nielsen–Ninomiya TOPOLOGICAL SKELETON on a discrete Brillouin torus
 
 This file develops an **honest, kernel-checked, finite** version of the
-topological content behind the Nielsen–Ninomiya theorem, on the *one-dimensional*
-discrete Brillouin torus `ZMod N`.  It deliberately does **not** claim the full
-4D continuum Nielsen–Ninomiya theorem; everything here is the 1D finite lattice
-version, with clearly separated "fully proved" and "informal generalization"
-parts.
+topological *ingredients* behind the Nielsen–Ninomiya theorem, on the
+*one-dimensional* discrete Brillouin torus `ZMod N`.  It deliberately does **not**
+claim the full 4D continuum Nielsen–Ninomiya theorem.
+
+**SCOPE / AUDIT CAVEAT (semantic audit 2026-07-06, job `7805c7f8`).** This is a
+genuine improvement over the withdrawn `DoublingTurnPrice` framing, but its own
+"no-go + necessity" headline is BROADER than the formal content, so read it as a
+topological SKELETON, not a proof of "chiral symmetry ⟹ zero signed count":
+- `signed_sum_telescope` is a GENERIC telescoping identity for a FREE parameter
+  `h : ZMod N → ℤ`; it is never tied to `ChiralSym`/`γ5`/`fCanon`, so the
+  "chirality" reading is by naming, not proof.
+- `signedNodeCount4_eq_zero` runs on the HAND-WRITTEN vector
+  `naiveSin4 = ![0,1,0,-1]`; the chirality/node/count-`0` are honestly computed
+  FROM that vector (not a bare tautology), but the "genuine naive dispersion ⟹
+  doubler at p=2" link is STIPULATED, not derived. (Indeed `fCanon_eq_zero_iff`
+  shows the forward-difference symbol `exp(2πip/N)-1` has a SINGLE zero.)
+- `odd_signedCount_impossible` is VACUOUS: its hypothesis `Odd (∑ (h(p+1)-h p))`
+  is unsatisfiable for every `h` (the sum is identically `0` by
+  `signed_sum_telescope`), it carries NO `ChiralSym` hypothesis, and its "requires
+  a Wilson term / necessity" reading lives only in prose.
+The SOUND, citable pieces are `winding_exists`/`winding`/`winding_eq` (genuine
+integer winding, not forced to 0), `chiralSym_iff_offDiag`/`chiralSym_offDiag_form`/
+`gamma5_sq`/`trace_gamma5`, and the kernel-`decide` computation
+`signedNodeCount4_eq_zero` (read as a computed EXAMPLE). The genuine necessity
+theorem (signed count DEFINED from a chirally-symmetric `D`, with an explicit
+`ChiralSym (D p)` hypothesis) is an OPEN follow-up; see `JOB_BACKLOG.md`.
+
+Everything here is the 1D finite lattice version, with clearly separated "fully
+proved" and "informal generalization" parts.
 
 ## Physical setup
 
@@ -206,21 +230,25 @@ theorem chirality4_zero : chirality4 0 = 1 := by decide
 /-- The doubler node `p = 2` has chirality `-1` (left-handed / downward crossing). -/
 theorem chirality4_two : chirality4 2 = -1 := by decide
 
-/-- **The concrete finite Nielsen–Ninomiya no-go (`N = 4`).**  The naive lattice
-Dirac symbol has a Weyl node at `p = 0` of chirality `+1` and a doubler at
-`p = 2` of chirality `-1`; the chirality-weighted count of its nodes over the
-Brillouin torus is exactly `0`.  You cannot have exact chiral symmetry and a
-single un-doubled Weyl mode. -/
+/-- **Computed `N = 4` example (kernel `decide`).**  For the hand-written vector
+`naiveSin4 = ![0,1,0,-1]` (the intended stand-in for the naive `sin(2πp/4)`
+dispersion), the chirality-weighted node count is exactly `0`: a `+1` node at
+`p = 0` and a `-1` doubler at `p = 2`. CAVEAT (audit `7805c7f8`): `naiveSin4` is
+STIPULATED, not derived from a dispersion (the forward-difference symbol
+`fCanon` actually has a SINGLE zero, `fCanon_eq_zero_iff`), so read this as a
+computed EXAMPLE of the `+1`/`-1` doubler cancellation, not a proof that a
+chirally symmetric symbol must have signed count `0`. -/
 theorem signedNodeCount4_eq_zero : signedNodeCount4 = 0 := by decide
 
 /-! ## 4. The general boundaryless statement and the necessity corollary -/
 
-/-- **Boundaryless ⇒ signed count zero.**  For *any* discrete chirality / phase
-branch `h : ZMod N → ℤ`, the signed sum of its increments
-`∑_p (h(p+1) - h p)` around the closed loop `ZMod N` vanishes: the discrete
-circle has no boundary, so a total-difference telescopes to `0`.  Assigning to
-each edge the local winding contribution `h(p+1) - h p`, the total chirality of
-the symbol over the whole torus is therefore `0`. -/
+/-- **Boundaryless telescoping (generic).**  For *any* `ℤ`-valued function
+`h : ZMod N → ℤ`, `∑_p (h(p+1) - h p) = 0` (a total difference telescopes on the
+boundaryless cyclic group).  CAVEAT (audit `7805c7f8`): `h` is a FREE parameter -
+this lemma is NOT tied to `ChiralSym`/`γ5`; the "chirality/winding branch" reading
+is the intended interpretation, not part of the proof. It is the honest 1D
+topological SKELETON of "sum of chiralities = 0", not a proof of it for an actual
+chirally-symmetric Dirac symbol (that would define `h` FROM such a `D`). -/
 theorem signed_sum_telescope {N : ℕ} [NeZero N] (h : ZMod N → ℤ) :
     ∑ p : ZMod N, (h (p + 1) - h p) = 0 := by
   rw [Finset.sum_sub_distrib]
@@ -228,10 +256,14 @@ theorem signed_sum_telescope {N : ℕ} [NeZero N] (h : ZMod N → ℤ) :
     Fintype.sum_equiv (Equiv.addRight (1 : ZMod N)) _ _ (fun p => rfl)
   rw [hshift, sub_self]
 
-/-- **Necessity corollary.**  Under chiral symmetry the signed chirality count is
-`0`, hence never odd.  So a lattice Dirac operator with an *odd* signed zero
-count is impossible while `{γ5, D} = 0` holds: lifting a lone Weyl zero
-*requires* breaking chiral symmetry (adding a chirality-even Wilson term). -/
+/-- **Odd telescoping sum is impossible (VACUOUS necessity skeleton).**  Since
+`∑_p (h(p+1)-h p) = 0` for every `h`, the hypothesis `Odd (∑ …)` is
+UNSATISFIABLE, so this theorem is vacuously true. CAVEAT (audit `7805c7f8`): it
+carries NO `ChiralSym` hypothesis and is the contrapositive of the generic
+telescoping fact - the "requires a Wilson term / necessity" reading is prose only,
+NOT formalized. The genuine necessity statement (an explicit `ChiralSym (D p)`
+hypothesis with the signed count DEFINED from `D`'s off-diagonal branch) is an
+open follow-up. -/
 theorem odd_signedCount_impossible {N : ℕ} [NeZero N] (h : ZMod N → ℤ)
     (hodd : Odd (∑ p : ZMod N, (h (p + 1) - h p))) : False := by
   rw [signed_sum_telescope] at hodd

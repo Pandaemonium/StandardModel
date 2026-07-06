@@ -27,23 +27,27 @@ open items below.
 - Sorry-free headline, guarded. (One documented draft `sorry` on an alternative
   upper-triangular presentation only.)
 
-### (T) Turn / matter mass - 1D NO-GO + NECESSITY LANDED; general dim OPEN
-- PROVED (genuine, `FiniteNielsenNinomiya`): the 1D finite Nielsen-Ninomiya no-go
-  on the discrete Brillouin torus `ZMod N`. `chiralSym_iff_offDiag`; the concrete
-  N=4 instance `signedNodeCount4_eq_zero` (naive dispersion: chirality +1 at the
-  origin node, -1 at the p=2 doubler, signed sum = 0, kernel `decide`);
-  `signed_sum_telescope` (boundaryless discrete circle => total signed count 0);
-  and the NECESSITY corollary `odd_signedCount_impossible` (an odd signed count is
-  impossible under chiral symmetry, so lifting a lone Weyl zero REQUIRES a
-  chirality-even Wilson term). Standard axioms, guarded. This is the honest T-leg
-  necessity the DoublingTurnPrice audit called for.
+### (T) Turn / matter mass - 1D TOPOLOGICAL SKELETON; genuine no-go still OPEN
+- PROVED (sound pieces, `FiniteNielsenNinomiya`): the 1D topological SKELETON -
+  `chiralSym_iff_offDiag` (chiral symmetry <=> off-diagonal); `winding_exists`/
+  `winding`/`winding_eq` (genuine integer discrete winding, honestly NOT forced to
+  0 - SSH); the boundaryless telescoping `signed_sum_telescope`
+  (`sum (h(p+1)-h p) = 0`); and the kernel-`decide` COMPUTED EXAMPLE
+  `signedNodeCount4_eq_zero` (a stipulated `naiveSin4` vector with a +1 node and a
+  -1 doubler summing to 0). Standard axioms, guarded.
+- NOT proved (red-team `7805c7f8` caveat, docstrings corrected): the "chiral
+  symmetry => zero signed count" NECESSITY. `signed_sum_telescope` uses a FREE `h`
+  never tied to `ChiralSym`; `signedNodeCount4` runs on a stipulated vector;
+  `odd_signedCount_impossible` is VACUOUS (its `Odd(sum)` hypothesis is
+  unsatisfiable). So the no-go is a genuine topological skeleton, but the necessity
+  is not yet formally tied to a chirally-symmetric Dirac symbol.
 - ALSO PROVED (supporting, honestly local): `DoublingTurnPrice` - the finite
-  per-vertex Wilson-vertex channel decomposition (chirality-even Wilson term,
-  `chiralEven_massVertexW_eq_zero_iff`), plus the landed gamma5 mass-vertex split.
-  (Its docstrings were downgraded per red-team `521d1c86`: it is NOT itself the
-  no-go.)
-- OPEN: the general d-dimensional / 4D continuum Nielsen-Ninomiya (a genuine
-  degree/Poincare-Hopf argument beyond the 1D discrete circle).
+  per-vertex Wilson-vertex channel decomposition + the landed gamma5 mass-vertex
+  split (docstrings downgraded per red-team `521d1c86`).
+- OPEN (the genuine T-leg no-go): define the signed count FROM a chirally-symmetric
+  `D` (its off-diagonal branch), prove it equals the telescoping sum, and restate
+  the necessity with an explicit `ChiralSym (D p)` hypothesis (job in flight); then
+  the general d-dim / 4D continuum degree argument.
 
 ### (C) Closure / gauge mass - Z2 CHAIN COMPLETE; nonabelian gate OPEN
 - PROVED (Z2 slab, KP-crux-FREE): `SlabGapAssembly.slabGapAssembly` bundles RP

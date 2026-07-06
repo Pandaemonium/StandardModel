@@ -35,18 +35,19 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
       DOWNGRADED per red-team sm-doubling-audit (521d1c86): this is NOT the
       topological Nielsen-Ninomiya no-go and does NOT establish necessity (no
       momentum/torus/chirality-sum). Docstrings corrected.
-- [~] **GENUINE N-N no-go (T-leg necessity) - 1D VERSION LANDED** (sm-nn-nogo
-      2aaec751): `FiniteNielsenNinomiya.lean`. gamma5 setup + `chiralSym_iff_offDiag`
-      (chiral symmetry <=> off-diagonal); `winding_exists` (integer discrete winding,
-      honestly NOT asserted zero - SSH); CONCRETE N=4 no-go `signedNodeCount4_eq_zero`
-      (naive sin dispersion: node +1 at origin, -1 at the p=2 doubler, sum=0, by
-      kernel `decide`); `signed_sum_telescope` (boundaryless discrete circle =>
-      total signed count 0); NECESSITY corollary `odd_signedCount_impossible` (odd
-      signed count impossible under chiral symmetry => lifting a lone Weyl zero needs
-      a chirality-even Wilson term). 0 sorry, standard axioms (kernel decide),
-      guarded. HONEST: 1D finite-lattice version, NOT the 4D continuum theorem; the
-      higher-d degree argument is discussed but not claimed. REMAINING: the general
-      d-dim / continuum N-N.
+- [~] N-N TOPOLOGICAL SKELETON (1D) (sm-nn-nogo 2aaec751):
+      `FiniteNielsenNinomiya.lean` - the SOUND pieces: `chiralSym_iff_offDiag`,
+      `winding_exists`/`winding`/`winding_eq` (integer winding, NOT forced 0 - SSH),
+      `signed_sum_telescope` (boundaryless telescoping), and the kernel-`decide`
+      COMPUTED EXAMPLE `signedNodeCount4_eq_zero` (stipulated naiveSin4: +1 node,
+      -1 doubler, sum 0). 0 sorry, standard axioms, guarded. DOWNGRADED per red-team
+      7805c7f8: NOT a proof of "chiral symmetry => zero signed count" -
+      signed_sum_telescope uses a FREE h; odd_signedCount_impossible is VACUOUS
+      (unsatisfiable Odd hypothesis). Docstrings corrected.
+- [ ] **N-N no-go, tie to chiral symmetry (red-team 7805c7f8 fix, OPEN):** DEFINE
+      the signed count FROM a chirally-symmetric D's off-diagonal branch, prove it =
+      the telescoping sum, restate necessity with an explicit ChiralSym(D p)
+      hypothesis + a count-of-D conclusion. THEN the general d-dim / 4D continuum.
 - [ ] NE-U6 electroweak: extend `ElectroweakRung` - W mass as a gauge-invariant
       composite transfer-spectrum feature (build on the proved 2-point clustering)
 - [ ] Yukawa turn amplitude: the mass = coin-turn amplitude at operator grade for
