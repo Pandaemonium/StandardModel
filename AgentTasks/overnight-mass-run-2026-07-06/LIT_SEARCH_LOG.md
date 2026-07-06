@@ -137,3 +137,15 @@ long queries; inspirehep needs short queries).
 - Also seen (not new/not ingested): Kanwar-Wagman 2103.02602 (real-time LGT,
   character expansion convergence via contour deformation); old pre-arXiv
   strong-coupling mass-gap series (Nucl.Phys.B 1986/1987, SU(2) cluster expansion).
+
+## Round 4 (2026-07-06, cycle HB26) - Nielsen-Ninomiya / T-leg necessity
+
+- **hep-lat/0209060** (INGESTED r3 tail, Zotero IB8F3BSP) - Forcrand-Jahn, SU(2)/SO(3)
+  vortex free energy (the electric-twist order parameter Z^-/Z for the SU(2) TY port).
+- **2105.10977** (INGESTED, Zotero X2P68FKS) - "Naive Lattice Fermion without
+  Doublers". MINE for the T-leg: it EVADES doubling, so it must break an N-N
+  assumption (locality / hermiticity / translation-invariance). This pins the
+  honest necessity statement for `DoublingTurnPrice`: chiral symmetry ⟹ forced
+  doubling is CONDITIONAL on {local, hermitian, translation-invariant}; the "price
+  of the turn" is precisely giving one of those up. Feeds the sm-doubling-audit
+  red-team's necessity-direction question (85814661).

@@ -178,6 +178,24 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB26 (real ~10:25) - lane T + lane A LANDED + E8 committed.** (1) 025920d
+  committed the E8-240 de-nativization (all 3 headlines VERIFIED to standard
+  axioms). (2) 8207906 HARVESTED both 2h-rule finalize-partials, built in-repo:
+  lane T DoublingTurnPrice.lean (sm-doubling-turn 5d05e8de, 0 sorry) - the finite
+  Nielsen-Ninomiya 'price of the turn' (no_chiral_and_doubler_removal,
+  naive_limit_doubler_survives, regulator_turn_tie); lane A NBodyAperture.lean
+  (sm-nbody-aperture c896e302) - THE HEADLINE nbody_aperture_massless_iff_collinear
+  (any N, sorry-free) + 1 documented draft sorry (upper-triangular re-indexing).
+  Both guarded (3 headlines added to SlabAxiomGuard, all standard axioms), wired
+  into aggregators. CONVERGENCE: grand-strategy Q3 minimal conjunction now has
+  A(iff)+T(no-go)+V(guards) LANDED, C scaffolded (TYAreaLawSUN), X in flight. (3)
+  HOURLY red-team: sm-doubling-audit (85814661) probing whether
+  no_chiral_and_doubler_removal genuinely captures the TOPOLOGICAL N-N / necessity
+  direction or is a local algebraic shadow. (4) HOURLY lit-mine: ingested
+  Forcrand-Jahn hep-lat/0209060 + 2105.10977 (naive fermion w/o doublers - pins
+  the N-N necessity as conditional on locality/hermiticity). Fleet: taxonomy-nondegen
+  + doubling-audit + codex frd-weak/clustering-to-gap. NEXT: capstone consolidation
+  (fold A-iff + T-no-go into AllMassFromNullEdges) + harvest.
 - **HB25 (real ~09:40) - SU(N) gate scaffold + red-team FIX + 2h rule.**
   (1) 712c5fa HARVESTED sm-ty-sun (93e022dd): TYAreaLawSUN.lean - the SU(N) TY
   twist-system scaffold (abstract TwistSystem N, tyBaseSUN in [0,1),
