@@ -16,6 +16,11 @@ import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya
 import PhysicsSM.Draft.NullEdge.GateYM.OSHamiltonianGap
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNN2D
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteNonabelianChar
+import PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude
+import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV2
+import PhysicsSM.Draft.NullEdge.GateI1.PluckerSpinorBridge
 import PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
@@ -193,5 +198,39 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier.no_common_carrier_via_turn' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier.no_common_carrier_via_turn
+
+/-! ## Saturation-batch harvest: genuine N-N zero-count, Q8 dim-2 dominance, super-capstone, Plucker-wedge, Yukawa turn -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount.signedZeroCount_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount.signedZeroCount_eq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount.single_crossing_impossible' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount.single_crossing_impossible
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount.signedZeroCount_naiveSin4' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount.signedZeroCount_naiveSin4
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNonabelianChar.q8_charCoeff_abs_le_dim_mul_trivCoeff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNonabelianChar.q8_charCoeff_abs_le_dim_mul_trivCoeff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNonabelianChar.char_norm_gt_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNonabelianChar.char_norm_gt_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV2.allMassFromNullEdges_v2' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV2.allMassFromNullEdges_v2
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.PluckerSpinorBridge.det_twoEdgeMomentum_eq_wedge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.PluckerSpinorBridge.det_twoEdgeMomentum_eq_wedge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_eq_zero_iff
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

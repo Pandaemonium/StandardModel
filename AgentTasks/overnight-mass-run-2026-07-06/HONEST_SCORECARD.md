@@ -27,7 +27,24 @@ open items below.
 - Sorry-free headline, guarded. (One documented draft `sorry` on an alternative
   upper-triangular presentation only.)
 
-### (T) Turn / matter mass - 1D TOPOLOGICAL SKELETON; genuine no-go still OPEN
+### (T) Turn / matter mass - GENUINE 1D no-go LANDED (crossing count) + supporting
+- PROVED (GENUINE, `FiniteNNZeroCount`): the honest 1D Nielsen-Ninomiya no-go via
+  ZERO-crossings. `signedZeroCount f = sum (sgn f(p+1) - sgn f p) = 0` for every
+  real periodic dispersion (up-crossings balance down-crossings on the boundaryless
+  torus - genuinely about the ZEROS/sign-changes, not a nowhere-zero branch);
+  `single_crossing_impossible` (a lone crossing / odd count is impossible - the
+  real necessity); concrete `signedZeroCount_naiveSin4 = 0` (kernel decide, +1 and
+  -1 crossings cancel). Standard axioms, guarded. THIS is the honest T-leg no-go
+  the earlier telescoping skeleton + the (rejected, hollow) nn-fix lacked.
+- PROVED (supporting, `YukawaTurnAmplitude`): n-flavor "mass = turn amplitude"
+  `turnAmplitude_eq_zero_iff` (the chirality-flipping flavor vertex vanishes iff the
+  mass matrix is 0 - no turn <=> no mass), generalizing the single-flavor gamma5 split.
+- ALSO (skeleton/local, honestly labeled): `FiniteNielsenNinomiya` (1D winding +
+  gamma5 structure + computed example), `FiniteNN2D` (2D telescoping skeleton),
+  `DoublingTurnPrice` (Wilson-vertex channel decomposition). None claim the no-go.
+- OPEN: the general d-dim / 4D continuum degree argument.
+
+### (T-OLD) [superseded rows kept for history]
 - PROVED (sound pieces, `FiniteNielsenNinomiya`): the 1D topological SKELETON -
   `chiralSym_iff_offDiag` (chiral symmetry <=> off-diagonal); `winding_exists`/
   `winding`/`winding_eq` (genuine integer discrete winding, honestly NOT forced to
