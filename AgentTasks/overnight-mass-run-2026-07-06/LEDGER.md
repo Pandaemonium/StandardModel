@@ -91,9 +91,37 @@ here before proceeding.
 All proved headlines verified sorry-free at [propext, Classical.choice,
 Quot.sound]. A9+A4 headline axioms independently re-checked.
 
+### HARVEST WAVE 2 (~02:15-02:45)
+
+- **A7 fermionic RP-F (8684c341) -> SCAFFOLD, deferred+resubmitted.** Built the
+  full QMF5 Deliverable-1 DAG: N5 crux `reflectedWilsonBlock_eq_gram` (with the
+  faithful `hrefl : Theta D Theta = D^H` hypothesis) + N6-N12 assembly +
+  `finite_fermionic_RP` end-to-end. BUT the N5 Gram factorization carries the one
+  `s o r r y`; the whole chain is conditional on it. Rather than dirty the
+  currently-sorry-free FermionicReflection.lean with conditional scaffold, I
+  REVERTED and resubmitted the ISOLATED crux (322b9f72, seeded with A7's full
+  scaffold). If N5 closes, integrate the whole sorry-free chain.
+- **sm-allmass-strategy (70c4b556) -> HARVESTED, guidance actioned.** Excellent
+  mission strategy (saved: sm-allmass-strategy-FINDINGS_70c4b556.md). Key:
+  (1) #1 next theorem = `apertureEqualsTurn_onShell` (bind T+A on one on-shell
+  object; independent of all hard-YM jobs) -> SUBMITTED (3e0eb3f5).
+  (2) Deepened the A10a (C) finding: the "zero mass" is DETACHED (free constant,
+  different model), and the (T) conjunct LUMPS mass+regulator in `(m+1).1` ->
+  applied both caveats to the capstone docstring.
+  (3) Floor already banked; hard YM buys little for the MASS thesis (only the
+  NE-U4 (C)-upgrade). Cheapest kill-test: no shared model where (C)=(A) (Z2 has
+  no Momentum4) -> "unification" = shared shape, not shared quantity.
+
 ### WAVE-2 refill (sm- named)
 - **fdab1ce4 = sm-slab-transfer-gap** (SUBMITTED ~02:05): physical transfer
   operator + sector-restricted NE-U4 gap on the connected slab (rides A4).
+  [strategy queue #3]
+- **4510f446 = sm-producthaar-z2** (SUBMITTED ~02:05): close A6's frozen RP
+  positivity for the finite-abelian Z2 case (Peter-Weyl-free).
+- **322b9f72 = sm-fermionic-gram-crux** (SUBMITTED ~02:35): the isolated N5 Gram
+  factorization, seeded with A7's scaffold. [strategy queue #5 enabler]
+- **3e0eb3f5 = sm-aperture-turn-bridge** (SUBMITTED ~02:40): the FLAGSHIP -
+  bind aperture+turn on one on-shell momentum in 3+1D. [strategy queue #1]
 
 - **LANDED (local L1), commit 71a24c0:**
   `PhysicsSM/Draft/NullEdge/GateI1/AllMassFromNullEdges.lean` -

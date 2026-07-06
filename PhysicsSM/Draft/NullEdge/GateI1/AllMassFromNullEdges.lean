@@ -31,11 +31,14 @@ exactly the over-claim to avoid.
    The pure-gauge `Z2` single-plaquette glueball transfer gap is strictly
    positive (`0 < z2GlueballMass beta` for `beta > 0`) while the primitive
    quark-mass input is exactly zero. Positive composite mass, zero primitive
-   mass. NOTE: the "zero primitive mass" half is DEFINITIONAL
-   (`quarkMassParameter := 0`, since the pure-gauge model has no fermions) - it
-   is honest (no regulator is smuggled in, there being no fermions) but it is a
-   definitional zero, not a derived cancellation; the CONTENT is the strictly
-   positive gap `0 < log coth beta` with no mass input.
+   mass. NOTE (per the mission strategy review, `70c4b556`): the "zero primitive
+   mass" half is DEFINITIONAL *and DETACHED* - `quarkMassParameter := 0` is a
+   free-floating constant, NOT the mass parameter of the `Z2` transfer operator
+   (which has no fermions and no such parameter), so it lives in a different
+   model from the gap. It is honest (no regulator is smuggled in) but the "mass
+   without mass" framing is prose: the load-bearing CONTENT is the single
+   inequality `0 < log coth beta` (a positive gap with no mass input), not a
+   cancellation within one system.
 2. **(charge co-location)**
    (`ChargeGradingMassCompatible.charge_grading_mass_compatible`). On the shared
    module `ComplexOctonion (x) CSpinor` the null-edge mass form assigns the same
@@ -61,7 +64,12 @@ exactly the over-claim to avoid.
    that the Wilson-Dirac mass DIFFERENCE `D_m - D_{m'}` is chirality-even
    (a corollary of its being the scalar `(m-m') • 1`); the load-bearing "mass =
    turn channel" content is the spin-vertex separation, NOT the near-trivial
-   operator-difference identity.
+   operator-difference identity. CAVEAT (per `70c4b556`): the chirality-even
+   channel is `(m+1) • 1` - it LUMPS the physical mass `m` and the Wilson
+   regulator `+1` into ONE channel, so this conjunct separates TURN from
+   TRANSPORT, but does NOT by itself separate physical mass (row 1) from
+   regulator (row 2); that row separation is the job of the taxonomy theorem
+   (`allMassFromNullEdges_guarded`), not of this (T) conjunct.
 
 ## Claim discipline
 
