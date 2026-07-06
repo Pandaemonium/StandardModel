@@ -1,6 +1,7 @@
 import PhysicsSM.Draft.NullEdge.QMF.CompactHaarInvariance
 import PhysicsSM.Draft.NullEdge.QMF.SpecialUnitaryCompact
 import PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance
+import PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig
 import PhysicsSM.Draft.NullEdge.QMF.AxiomGuard
 
 /-!
@@ -12,13 +13,23 @@ capability survey identified as the "cheap, Haar only" lane (see
 `AgentTasks/fourday-ym-run-2026-07-05/RUN_PLAN.md`, threads `replan:qmf-ladder`,
 `qmf1a:capability-survey`, and `qmf1b`-`qmf1e`).
 
-Contents (all draft-trust, kernel-checked, `s o r r y`-free):
+Contents (draft-trust, kernel-checked; the single-link substrate is
+`s o r r y`-free, and the multi-link rung `ProductHaarConfig` carries exactly one
+clearly-labelled FROZEN handoff `s o r r y` - the RP-positivity bilinear-form
+target `reflForm_self_nonneg`, whose proof needs the out-of-scope
+Wilson-slab / Peter-Weyl input; its measure-theoretic symmetries are proved):
 
 * `CompactHaarInvariance` - gauge (conjugation) and reflection (inversion)
   invariance of the single-link compact-group Haar expectation; a proof that
   compact groups are UNIMODULAR (`compactGroup_haar_isMulRightInvariant`,
   `..._isInvInvariant`), closing a genuine pinned-Mathlib gap for nonabelian
   groups; and an unconditional finite-group (`Measure.count`) model.
+* `ProductHaarConfig` - the multi-link rung: the product Haar measure
+  `Measure.pi` over a finite edge set `∏_e SU(N)` is again Haar
+  (`productHaar_isHaarMeasure`), with per-link/endpoint gauge invariance and the
+  measure-preserving link-reflection involution PROVED (`s o r r y`-free); the RP
+  bilinear form is DEFINED and its positivity is the single FROZEN handoff
+  (needs Peter-Weyl / the Wilson slab).
 * `SpecialUnitaryCompact` - the physical gauge groups `U(n)`, `SU(n)` are
   COMPACT (`specialUnitaryGroup_isCompact`, via a Tychonoff box + closedness +
   row-orthonormality entry bound) and are TOPOLOGICAL GROUPS
