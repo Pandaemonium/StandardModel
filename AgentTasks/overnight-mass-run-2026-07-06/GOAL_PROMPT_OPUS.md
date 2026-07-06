@@ -36,12 +36,12 @@ real bottleneck. Your job each cycle:
    clustering as ONE finite theorem.
 5. **Literature-mine EVERY HOUR (YOU, on the `scholarly` MCP - NO Aristotle
    slot):** search the frontier, add new papers to Neo4j via `lit_ingest`
-   (zotero_write wired), and MINE one hit into a concrete job/strategy (the mine
+   (zotero_write wired), and MINE at least one hit into a concrete job/strategy (the mine
    is mandatory; the Faizal-Shabir 2606.19362 paper already motivated 6+ jobs).
 6. **Red-team EVERY HOUR (one Aristotle audit job):** adversarial audit of the
    latest UN-audited headline (3 verified negatives this run came from exactly
    this); skip only if nothing new landed.
-7. **Grand-strategy EVERY ~3h (one Aristotle job):** list program goals + status
+7. **Grand-strategy EVERY ~2h (one Aristotle job):** list program goals + status
    per lane, have Aristotle advise highest-EV next steps + biggest risk; TEST
    asking it to also survey/recommend literature. Harvest into the backlog.
 8. **Reports every ~4-6h** + a final report; honest distance-to-"full origin of
@@ -105,7 +105,7 @@ CODEX's jobs (shared tree; `git status` clean-check first). Never sleep-poll.
 - **Honest distance-to-goal check:** one paragraph - where are we on the FULL
   origin of mass, what is the sharpest remaining gap.
 
-**EVERY ~3 HOURS (an Aristotle GRAND-STRATEGY job):** submit a grand-strategy
+**EVERY ~2 HOURS (an Aristotle GRAND-STRATEGY job):** submit a grand-strategy
 job that (a) lists the overall program goals + current status per lane
 (A/T/C/X/B/V), (b) asks Aristotle to advise the single highest-EV next steps and
 the biggest risk/over-claim, and (c) TEST asking it to also survey/recommend
