@@ -139,6 +139,31 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB6 (~03:30):** Third harvest cycle - the big one.
+  * NE-U4 LANDED: sm-slab-transfer (fdab1ce4) -> `GateYM/SlabTransferGap.lean`
+    (8fec85d): first non-toy PSD transfer block from the connected slab (arb G),
+    + `neU4_closure_gap_pos` (mass = cost of closure, on the Z2 center sector,
+    honest fluxGap) + gap = -log tanh beta. 0 sorry, standard axioms.
+  * A1 crux (7f990a2c): did NOT close `pairSum_le_expBound`, but proved new
+    sorry-free DAG primitives (block partition `exists_treeRootChildBlock_of_ne`,
+    `childBlockOf`+cover+disjoint+`sum_childBlockOf_card`, reindexing
+    `restrictCluster`, weight factorization `absWeight_eq_root_mul_blocks`);
+    narrowed to ONE residual (multiplicity fiber-count + regrouping).
+  * A3 KP-downstream (b6f17681): **RED-FLAG DISCOVERY** - the two downstream Q6
+    conclusions (`kp_convergence_bound_of_selfIncompatible`, `kp_tail_bound`) are
+    FALSE as stated (even with hself). A3 gave kernel-checked counterexamples
+    (`SelfIncompatCex.selfIncompat_convergence_bound_false`, `TailCex.tail_bound_false`,
+    both standard axioms) + the corrected provable `..._plain` version. See
+    `Q6_DOWNSTREAM_FALSE_FINDING.md`. FOLLOW-UP NEEDED: StrongCouplingPolymerMap
+    consumes the false lemma; must be revised to use `_plain` (tandem, coordinate
+    with codex). False originals kept as documented handoffs (draft/sorry layer,
+    no trusted theorem depends on them).
+  * A1+A3 both modified PolymerKPConclusion.lean -> clean disjoint-region 3-way
+    merge (git merge-file, 0 conflicts), builds clean, 3 sorries (crux + 2
+    documented-false), refutations verified sorry-free.
+  * 2-HOUR RULE applied: A2 (crux-2) + A5 (design) both hit 2h RUNNING ->
+    cancelled + sent finalize-without-build instruct (harvest their partials next
+    cycle).
 - **HB5 (~02:50):** Second harvest cycle done. Integrated A9+A4 (683f10d),
   A6+A8 (c925bfb), added guarded capstone companion (33868be). Harvested
   sm-allmass-strategy + applied its caveats + submitted its #1 flagship

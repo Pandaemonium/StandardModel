@@ -816,6 +816,155 @@ lemma disjoint_treeRootChildBlock_of_ne {n : Nat} (T : SimpleGraph (Fin n))
   exact disjoint_treeRootChildBlock_of_component_ne T r j k hj hk
     (treeRootChildComponent_ne_of_ne T r j k hT hj hk hjk)
 
+/-- Covering half of the partition: every non-root slot of a spanning tree
+rooted at `r` lies in the child block of some root child.
+
+Together with `disjoint_treeRootChildBlock_of_ne` this shows the child blocks
+partition the non-root slots (`Fin n` minus `{r}`). -/
+lemma exists_treeRootChildBlock_of_ne {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) (hT : T.IsTree) (v : {x : Fin n // x ≠ r}) :
+    ∃ (j : Fin n) (hj : j ∈ treeRootChildren T r),
+      v ∈ treeRootChildBlock T r j hj := by
+  classical
+  obtain ⟨w, hwne⟩ := v
+  have hconn : T.Connected := hT.isConnected
+  have hR : T.Reachable r w := hconn r w
+  obtain ⟨p, hp⟩ := hR.exists_isPath
+  cases p with
+  | nil => exact (hwne rfl).elim
+  | cons hadj q =>
+    rename_i c
+    have hc : c ∈ treeRootChildren T r := (mem_treeRootChildren T r c).mpr hadj
+    rw [SimpleGraph.Walk.cons_isPath_iff] at hp
+    obtain ⟨hqpath, hrnotin⟩ := hp
+    have hw : ∀ x ∈ q.support, x ∈ {j : Fin n | j ≠ r} := by
+      intro x hx
+      simp only [Set.mem_setOf_eq]
+      intro hxr
+      exact hrnotin (hxr ▸ hx)
+    refine ⟨c, hc, ?_⟩
+    rw [mem_treeRootChildBlock]
+    have hwalk : (treeRootDeletedGraph T r).Walk
+        (treeRootChildAsDeleted T r c hc) ⟨w, hwne⟩ := by
+      have hq := q.induce {j : Fin n | j ≠ r} hw
+      exact hq.copy (by apply Subtype.ext; rfl) (by apply Subtype.ext; rfl)
+    have hreach : (treeRootDeletedGraph T r).Reachable
+        (treeRootChildAsDeleted T r c hc) ⟨w, hwne⟩ := ⟨hwalk⟩
+    have : (treeRootChildComponent T r c hc)
+        = (treeRootDeletedGraph T r).connectedComponentMk ⟨w, hwne⟩ := by
+      rw [treeRootChildComponent]
+      exact (SimpleGraph.ConnectedComponent.eq).mpr hreach
+    rw [treeRootChildComponent] at this ⊢
+    rw [SimpleGraph.ConnectedComponent.mem_supp_iff]
+    exact this.symm
+
+open Classical in
+/-- Non-dependent child-block wrapper: the block of `j` if `j` is a root child,
+otherwise empty.  This is the shape needed to sum block cardinalities. -/
+noncomputable def childBlockOf {n : Nat} (T : SimpleGraph (Fin n)) (r : Fin n)
+    (j : Fin n) : Finset {x : Fin n // x ≠ r} :=
+  if hj : j ∈ treeRootChildren T r then treeRootChildBlock T r j hj else ∅
+
+/-- The child blocks cover all non-root slots. -/
+lemma biUnion_childBlockOf {n : Nat} (T : SimpleGraph (Fin n)) (r : Fin n)
+    (hT : T.IsTree) :
+    (treeRootChildren T r).biUnion (childBlockOf T r) = Finset.univ := by
+  classical
+  refine Finset.eq_univ_of_forall (fun v => ?_)
+  obtain ⟨j, hj, hv⟩ := exists_treeRootChildBlock_of_ne T r hT v
+  refine Finset.mem_biUnion.mpr ⟨j, hj, ?_⟩
+  rw [childBlockOf, dif_pos hj]
+  exact hv
+
+/-- Distinct root children give disjoint non-dependent child blocks. -/
+lemma disjoint_childBlockOf_of_ne {n : Nat} (T : SimpleGraph (Fin n))
+    (r j k : Fin n) (hT : T.IsTree) (hjk : j ≠ k) :
+    Disjoint (childBlockOf T r j) (childBlockOf T r k) := by
+  classical
+  by_cases hj : j ∈ treeRootChildren T r
+  · by_cases hk : k ∈ treeRootChildren T r
+    · simp only [childBlockOf, dif_pos hj, dif_pos hk]
+      exact disjoint_treeRootChildBlock_of_ne T r j k hT hj hk hjk
+    · simp only [childBlockOf, dif_neg hk]; exact Finset.disjoint_empty_right _
+  · simp only [childBlockOf, dif_neg hj]; exact Finset.disjoint_empty_left _
+
+/-- The child blocks partition the non-root slots: the sum of their
+cardinalities is `n - 1`. -/
+lemma sum_childBlockOf_card {n : Nat} (T : SimpleGraph (Fin n)) (r : Fin n)
+    (hT : T.IsTree) :
+    ∑ j ∈ treeRootChildren T r, (childBlockOf T r j).card = n - 1 := by
+  classical
+  have hcard : ((treeRootChildren T r).biUnion (childBlockOf T r)).card
+      = ∑ j ∈ treeRootChildren T r, (childBlockOf T r j).card := by
+    refine Finset.card_biUnion ?_
+    intro j _ k _ hjk
+    exact disjoint_childBlockOf_of_ne T r j k hT hjk
+  rw [biUnion_childBlockOf T r hT] at hcard
+  rw [← hcard]
+  have hsub : Fintype.card {x : Fin n // x ≠ r} = n - 1 := by
+    haveI : Subsingleton {x : Fin n // x = r} :=
+      ⟨fun a b => Subtype.ext (a.property.trans b.property.symm)⟩
+    have hsingle : Fintype.card {x : Fin n // x = r} = 1 :=
+      Fintype.card_ofSubsingleton ⟨r, rfl⟩
+    have h := Fintype.card_subtype_compl (fun x : Fin n => x = r)
+    rw [Fintype.card_fin, hsingle] at h
+    exact h
+  simp [hsub]
+
+/-- The ordered subcluster obtained by restricting a cluster to a finite set of
+slots `B`, reindexed monotonically to `Fin B.card`.  This is the block
+reindexing device for the canonical-root deletion argument. -/
+noncomputable def restrictCluster (S : PolymerSystem Gamma) (X : Cluster S)
+    (B : Finset (Fin X.n)) : Cluster S :=
+  ⟨B.card, fun i => X.poly ((B.orderIsoOfFin rfl i : Fin X.n))⟩
+
+/-- The absolute weight of a restricted subcluster is the product of the slot
+weights over the block. -/
+lemma absWeight_restrictCluster (S : PolymerSystem Gamma) (X : Cluster S)
+    (B : Finset (Fin X.n)) :
+    (restrictCluster S X B).absWeight S
+      = ∏ v ∈ B, |S.weight (X.poly v)| := by
+  unfold restrictCluster Cluster.absWeight
+  rw [← Finset.prod_attach B (fun v => |S.weight (X.poly v)|)]
+  exact Fintype.prod_equiv (B.orderIsoOfFin rfl).toEquiv _ _ (fun i => rfl)
+
+/-- Weight factorization across the canonical-root deletion: the absolute
+weight of a cluster `X` with root slot `r` factors as the root weight times
+the product of restricted-subcluster weights over the child blocks. -/
+lemma absWeight_eq_root_mul_blocks (S : PolymerSystem Gamma)
+    (X : Cluster S) (T : SimpleGraph (Fin X.n)) (r : Fin X.n) (hT : T.IsTree) :
+    X.absWeight S
+      = |S.weight (X.poly r)| *
+          ∏ j ∈ treeRootChildren T r,
+            (restrictCluster S X
+              ((childBlockOf T r j).image (fun v => v.1))).absWeight S := by
+  classical
+  -- rewrite each restricted block weight as a product over the subtype block
+  have hblock : ∀ j ∈ treeRootChildren T r,
+      (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).absWeight S
+        = ∏ v ∈ childBlockOf T r j, |S.weight (X.poly v.1)| := by
+    intro j _
+    rw [absWeight_restrictCluster]
+    rw [Finset.prod_image (fun a _ b _ h => Subtype.ext h)]
+  rw [Finset.prod_congr rfl hblock]
+  -- product over children of product over blocks = product over biUnion (disjoint)
+  rw [← Finset.prod_biUnion]
+  · -- biUnion of blocks = univ of subtype, so product over subtype = product over erase r
+    rw [biUnion_childBlockOf T r hT]
+    -- ∏_{v : {x // x ≠ r}} |w (X.poly v.1)| = ∏_{v ∈ univ.erase r} |w (X.poly v)|
+    have hsub : (∏ v : {x : Fin X.n // x ≠ r}, |S.weight (X.poly v.1)|)
+        = ∏ v ∈ (Finset.univ.erase r), |S.weight (X.poly v)| := by
+      rw [← Finset.prod_subtype (Finset.univ.erase r)
+        (fun x => by simp [Finset.mem_erase, and_comm])
+        (fun v => |S.weight (X.poly v)|)]
+    rw [hsub]
+    -- root times product over erase = full product
+    rw [Cluster.absWeight,
+      ← Finset.mul_prod_erase Finset.univ (fun v => |S.weight (X.poly v)|)
+        (Finset.mem_univ r)]
+  · intro j _ k _ hjk
+    exact disjoint_childBlockOf_of_ne T r j k hT hjk
+
 /-- Every root child in the tree subgraph carries a polymer in the KP
 neighborhood of the root polymer. -/
 lemma treeRootChildren_poly_mem_nbhd (S : PolymerSystem Gamma)
@@ -983,6 +1132,26 @@ lemma pairSum_le_expBound (S : PolymerSystem Gamma)
           ∑ k ∈ Finset.range (K + 3),
             (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
               / (Nat.factorial k : Real) := by
+  -- HANDOFF RESIDUAL.  The canonical-root deletion DAG is now scaffolded and
+  -- the following structural pieces are fully proved above and available:
+  --   * partition of the non-root slots into child blocks:
+  --       `biUnion_childBlockOf`, `disjoint_childBlockOf_of_ne`,
+  --       `sum_childBlockOf_card` (sum of block sizes = n - 1),
+  --       `exists_treeRootChildBlock_of_ne` (covering);
+  --   * block reindexing and weight factorization:
+  --       `restrictCluster`, `absWeight_restrictCluster`,
+  --       `absWeight_eq_root_mul_blocks`
+  --       (absWeight p = |w (p r)| * ∏_j absWeight q_j);
+  --   * canonical root `exists_canonical_root`, child polymers in `nbhd g`
+  --       (`treeRootChildren_poly_mem_nbhd`), arity/size bounds, and the
+  --       multinomial normalization `factorial_mul_prod_factorial_le`
+  --       (k! ∏ m_j! ≤ n!), plus the RHS expansion `rhs_forest_expand`.
+  -- REMAINING CRUX (steps (d)+(e) of the intended proof): the multiplicity
+  -- fiber-count `#{(p,T) mapping to a fixed forest target} ≤ n!/(k! ∏ m_j!)`
+  -- (an injection of the fiber into the ordered-partition arrangements of the
+  -- n-1 non-root labels, the canonical-least-root and increasing-children
+  -- constraints only removing options), together with the regrouping of the
+  -- LHS pair sum by this classification map and the final `Finset.sum_le_sum`.
   sorry
 
 open Classical in
@@ -1290,9 +1459,28 @@ theorem kp_convergence_bound_false :
   rw [cexWitness_term] at hterm
   linarith
 
-/-- Corrected C2 target.  Adding the standard self-incompatibility hypothesis
-restores the route to the Kotecky-Preiss convergence bound: the `h = g` term
-then appears in the KP sum and controls the single-polymer weight. -/
+/-- **This statement is FALSE**, even with self-incompatibility.
+
+The `exp(energyOf)`-weighted ("amplified") cluster sum is NOT controlled by
+`S.energy g0` under the bare `KPCondition`, and adding `hself` does not rescue
+it.  Self-incompatibility does make the `h = g` diagonal term enter the KP sum
+(so the single-polymer weight `|w g0| exp(energy g0) ≤ energy g0` is controlled),
+but it simultaneously makes *every repeated-slot cluster* `Kₙ` connected, and
+those higher clusters add positive amplified mass that exceeds the budget.
+
+A fully verified refutation is given below by
+`SelfIncompatCex.selfIncompat_convergence_bound_false`: a single-polymer system
+with `incompatible = True`, `weight = 3 e^{-3}`, `energy = 3` (so KP holds with
+equality) and coefficient data `1/2` on the two-slot cluster already yields an
+amplified contribution `|1/2| · (3e^{-3})² · e^{6} = 9/2 > 3 = energy`.
+
+The *provable* Kotecky-Preiss convergence bound is the un-amplified
+(plain-weight) sum; see `kp_convergence_bound_of_selfIncompatible_plain` below.
+
+The original amplified statement is preserved verbatim (its `s o r r y` cannot be
+honestly discharged because the statement is false), because it is consumed by
+`StrongCouplingPolymerMap.plaquetteKP_convergence_bound_of_plaquetteKPBound`,
+which must be revised in tandem. -/
 theorem kp_convergence_bound_of_selfIncompatible
     (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
@@ -1303,13 +1491,37 @@ theorem kp_convergence_bound_of_selfIncompatible
         X.Connected S hdec /\ X.Touches S g0} =>
       |D.coeff X.1| * X.1.absWeight S * Real.exp (X.1.energyOf S)))
         <= S.energy g0 := by
-  /-
-  Proof handoff:
-  Prove the corrected KP tree-sum theorem using `hself`, `hKP`, and
-  `D.treeGraphBound`.  The one-point counterexample above shows why `hself`
-  is mathematically necessary.
-  -/
+  -- FALSE as stated: refuted by `SelfIncompatCex.selfIncompat_convergence_bound_false`.
   sorry
+
+/-
+The genuine Kotecky-Preiss convergence bound recovered from
+self-incompatibility: the **plain** (un-amplified) absolute cluster sum over
+clusters touching `g0` is bounded by `S.energy g0`.
+
+This is the correct replacement for the false amplified statement
+`kp_convergence_bound_of_selfIncompatible`: the `exp(energyOf)` weight is
+dropped.  With `hself`, the diagonal `h = g0` term of `KPCondition` gives
+`|weight g0| · exp(energy g0) ≤ energy g0`, and the partial-sum machinery
+(`kp_partial_sum_bound`) bounds every finite subsum by
+`|weight g0| · exp(energy g0)`; `tsum_le_of_sum_le'` then closes the tsum.
+-/
+theorem kp_convergence_bound_of_selfIncompatible_plain
+    (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (hself : forall g, S.incompatible g g)
+    (D : ClusterCoeffData S hdec)
+    (hKP : KPCondition S hdec) (g0 : Gamma) :
+    (tsum (fun X : {X : Cluster S //
+        X.Connected S hdec /\ X.Touches S g0} =>
+      |D.coeff X.1| * X.1.absWeight S))
+        <= S.energy g0 := by
+  apply_rules [ tsum_le_of_sum_le' ];
+  · exact S.energy_nonneg g0;
+  · intro s
+    apply le_trans (kp_partial_sum_bound S hdec D hKP g0 s) (by
+    have := hKP g0;
+    exact le_trans ( Finset.single_le_sum ( fun x _ => mul_nonneg ( abs_nonneg ( S.weight x ) ) ( Real.exp_nonneg ( S.energy x ) ) ) ( Finset.mem_filter.mpr ⟨ Finset.mem_univ _, by simpa using hself g0 ⟩ ) ) this)
 
 /-- Metric enhancement of a finite polymer system, used only for distance
 tail statements. -/
@@ -1330,8 +1542,27 @@ def ReachesFrom (M : MetricPolymerSystem Gamma)
 
 end Cluster
 
-/-- Metric tail bound separated from bare KP by an explicit coercivity
-hypothesis.
+/-- **This statement is FALSE**, even with self-incompatibility and the exact
+coercivity hypothesis `hcoerce`.
+
+The intended proof extracts the decay factor `exp(-(m R))` by dominating each
+plain summand by its `exp(energyOf)`-amplified version and then invoking the
+amplified convergence bound `kp_convergence_bound_of_selfIncompatible`.  But
+that amplified bound is itself false (see the docstring there and
+`SelfIncompatCex.selfIncompat_convergence_bound_false`), so the decay cannot be
+obtained under the bare `KPCondition`.
+
+A fully verified refutation is given below by `TailCex.tail_bound_false`: a
+metric single-polymer system with `incompatible = True`, `weight = e^{-1}`,
+`energy = 1`, unit distance, `m = R = 1`, and coefficient data `1` / `1/2` on
+the one- and two-slot clusters.  All hypotheses (KP with equality, `hself`,
+`hcoerce`) hold, yet the plain reaching-cluster sum is
+`e^{-1} + (1/2) e^{-2} > e^{-1} = energy · exp(-(m R))`.
+
+A true metric tail bound requires a strictly stronger hypothesis (extra
+exponential room in `KPCondition`, e.g. bounding `∑ |w| e^{energy + m·dist}`),
+not merely the coercivity bridge `hcoerce`.  The statement is preserved verbatim
+(its `s o r r y` cannot be honestly discharged because it is false).
 
 The hypothesis `hcoerce` is the named bridge from cluster energy to spatial
 diameter/distance.  It is exactly the extra Q6/Q8 geometry layer flagged by the
@@ -1353,13 +1584,328 @@ theorem kp_tail_bound
         X.Connected M.toPolymerSystem hdec /\ X.ReachesFrom M g0 R} =>
       |D.coeff X.1| * X.1.absWeight M.toPolymerSystem))
         <= M.energy g0 * Real.exp (-(m * R)) := by
-  /-
-  Proof handoff:
-  Combine `kp_convergence_bound_of_selfIncompatible` with `hcoerce` on every
-  cluster counted by `ReachesFrom`.  Keep the metric/coercivity argument here,
-  not in the bare KP theorem.
-  -/
+  -- FALSE as stated: refuted by `TailCex.tail_bound_false`.
   sorry
+
+/-! ## Verified refutations of the two amplified Q6 conclusions
+
+The two theorems above (`kp_convergence_bound_of_selfIncompatible` and
+`kp_tail_bound`) are FALSE as stated, even with self-incompatibility.  The
+namespaces below give fully verified (`s o r r y`-free) counterexamples. -/
+
+namespace SelfIncompatCex
+
+/-- Single-polymer system with self-incompatibility. -/
+noncomputable def sys : PolymerSystem (Fin 1) where
+  incompatible := fun _ _ => True
+  incompatible_symm := by intro g h _; trivial
+  weight := fun _ => 3 * Real.exp (-3)
+  energy := fun _ => 3
+  energy_nonneg := by intro g; positivity
+
+def dec : forall g h, Decidable (sys.incompatible g h) :=
+  fun _ _ => isTrue trivial
+
+theorem sys_self : forall g, sys.incompatible g g := fun _ => trivial
+
+/-- The incompatibility graph of any `sys` cluster is the complete graph:
+distinct slots are always adjacent. -/
+theorem sys_graph_adj (X : Cluster sys) (i j : Fin X.n) :
+    (X.graph sys dec).Adj i j <-> i ≠ j := by
+  simp [Cluster.graph, sys]
+
+/-- Every `sys` cluster with at least one slot is connected (complete graph). -/
+theorem sys_connected (X : Cluster sys) (h : 0 < X.n) :
+    X.Connected sys dec := by
+  obtain ⟨ i, hi ⟩ := X
+  convert (SimpleGraph.connected_top)
+  rotate_left
+  exact Fin i
+  · exact ⟨ ⟨ 0, h ⟩ ⟩
+  · unfold Cluster.Connected
+    congr! 2
+    ext; simp [Cluster.graph, sys]
+
+/-- Two `sys` clusters with the same slot count are equal (polymer map forced
+into `Fin 1`). -/
+theorem sys_cluster_eq (X Y : Cluster sys) (h : X.n = Y.n) : X = Y := by
+  obtain ⟨nX, pX⟩ := X
+  obtain ⟨nY, pY⟩ := Y
+  simp only at h
+  subst h
+  congr 1
+  funext i
+  exact Subsingleton.elim _ _
+
+/-- Coefficient data concentrated on two-slot clusters (saturating the
+tree-graph bound there). -/
+noncomputable def coeffData : ClusterCoeffData sys dec where
+  coeff := fun X => if X.n = 2 then (1 / 2 : Real) else 0
+  coeff_disconnected := by
+    intro X hX
+    have hn : X.n ≠ 2 := by
+      intro h
+      exact hX (sys_connected X (by omega))
+    simp [hn]
+  treeGraphBound := by
+    intro X
+    by_cases h : X.n = 2
+    · have hconn : X.Connected sys dec := sys_connected X (by omega)
+      have hpos : 0 < spanningTreeCount sys dec X :=
+        spanningTreeCount_pos_of_connected sys dec X hconn
+      rw [if_pos h, h]
+      simp only [Nat.factorial_two, Nat.cast_ofNat]
+      have : (1 : Real) <= (spanningTreeCount sys dec X : Real) := by
+        exact_mod_cast hpos
+      rw [abs_of_nonneg (by norm_num)]
+      linarith
+    · simp only [if_neg h, abs_zero, zero_mul]
+      exact Nat.cast_nonneg _
+
+theorem sys_KP : KPCondition sys dec := by
+  intro g
+  have hfilter :
+      (Finset.univ.filter
+        (fun h => @Decidable.decide _ (dec g h) = true)) = (Finset.univ : Finset (Fin 1)) := by
+    apply Finset.filter_true_of_mem
+    intro h _
+    simp [sys]
+  rw [hfilter]
+  simp only [Finset.univ_unique, Finset.sum_singleton]
+  show |sys.weight g| * Real.exp (sys.energy g) <= sys.energy g
+  simp only [sys]
+  rw [abs_of_nonneg (by positivity), mul_assoc, ← Real.exp_add]
+  norm_num
+
+/-- The two-slot witness cluster touching `0`. -/
+def witness :
+    {X : Cluster sys // X.Connected sys dec /\ X.Touches sys 0} :=
+  ⟨⟨2, fun _ => 0⟩, sys_connected _ (by norm_num), ⟨0, rfl⟩⟩
+
+/-- The witness contributes exactly `9/2` to the amplified sum. -/
+theorem witness_term :
+    |coeffData.coeff witness.1| * witness.1.absWeight sys
+        * Real.exp (witness.1.energyOf sys) = 9 / 2 := by
+  unfold witness coeffData Cluster.absWeight Cluster.energyOf sys
+  norm_num [Fin.prod_univ_succ, Fin.sum_univ_succ]; ring; norm_num [Real.exp_neg, Real.exp_ne_zero]
+  rw [← Real.exp_nat_mul, ← Real.exp_neg, ← Real.exp_add]; norm_num
+
+/-- The amplified family has support in the single witness. -/
+theorem summand_zero_of_ne (X : {X : Cluster sys // X.Connected sys dec /\ X.Touches sys 0})
+    (hX : X ≠ witness) :
+    |coeffData.coeff X.1| * X.1.absWeight sys * Real.exp (X.1.energyOf sys) = 0 := by
+  have h_coeff_zero : coeffData.coeff X.1 = 0 := by
+    by_cases h : X.val.n = 2 <;> simp_all +decide [coeffData]
+    exact hX <| Subtype.ext <| sys_cluster_eq _ _ <| by aesop
+  aesop
+
+/-- The `_of_selfIncompatible` amplified KP convergence bound is FALSE: adding
+`hself` does not rescue it.  This refutes the general principle over all
+systems, and in particular the specific instance
+`kp_convergence_bound_of_selfIncompatible`. -/
+theorem selfIncompat_convergence_bound_false :
+    ¬ (∀ (G : Type) [Fintype G] (S : PolymerSystem G)
+        (hdec : forall g h, Decidable (S.incompatible g h))
+        (_hself : forall g, S.incompatible g g)
+        (D : ClusterCoeffData S hdec)
+        (_hKP : KPCondition S hdec) (g0 : G),
+        (tsum (fun X : {X : Cluster S //
+            X.Connected S hdec /\ X.Touches S g0} =>
+          |D.coeff X.1| * X.1.absWeight S * Real.exp (X.1.energyOf S)))
+            <= S.energy g0) := by
+  intro H
+  have hle := H (Fin 1) sys dec sys_self coeffData sys_KP 0
+  have hnn : ∀ X : {X : Cluster sys // X.Connected sys dec /\ X.Touches sys 0},
+      0 <= |coeffData.coeff X.1| * X.1.absWeight sys * Real.exp (X.1.energyOf sys) :=
+    fun X => clusterCoeff_absWeight_exp_nonneg sys dec coeffData X.1
+  have hsummable :
+      Summable (fun X : {X : Cluster sys // X.Connected sys dec /\ X.Touches sys 0} =>
+        |coeffData.coeff X.1| * X.1.absWeight sys * Real.exp (X.1.energyOf sys)) := by
+    apply summable_of_ne_finset_zero (s := {witness})
+    intro X hX
+    exact summand_zero_of_ne X (by simpa using hX)
+  have hterm := hsummable.le_tsum witness (fun j _ => hnn j)
+  rw [witness_term] at hterm
+  have hE : sys.energy 0 = 3 := rfl
+  rw [hE] at hle
+  linarith
+
+end SelfIncompatCex
+
+namespace TailCex
+
+/-- Metric single-polymer system with self-incompatibility, `energy = 1`,
+`weight = e^{-1}` (so KP holds with equality), unit distance. -/
+noncomputable def msys : MetricPolymerSystem (Fin 1) where
+  incompatible := fun _ _ => True
+  incompatible_symm := by intro g h _; trivial
+  weight := fun _ => Real.exp (-1)
+  energy := fun _ => 1
+  energy_nonneg := by intro g; norm_num
+  dist := fun _ _ => 1
+  dist_nonneg := by intro g h; norm_num
+  dist_comm := by intro g h; rfl
+  dist_triangle := by intro g h k; norm_num
+
+def dec : forall g h, Decidable (msys.toPolymerSystem.incompatible g h) :=
+  fun _ _ => isTrue trivial
+
+theorem msys_self : forall g, msys.toPolymerSystem.incompatible g g := fun _ => trivial
+
+theorem msys_graph_adj (X : Cluster msys.toPolymerSystem) (i j : Fin X.n) :
+    (X.graph msys.toPolymerSystem dec).Adj i j <-> i ≠ j := by
+  simp [Cluster.graph, msys]
+
+theorem msys_connected (X : Cluster msys.toPolymerSystem) (h : 0 < X.n) :
+    X.Connected msys.toPolymerSystem dec := by
+  obtain ⟨ i, hi ⟩ := X
+  convert (SimpleGraph.connected_top)
+  rotate_left
+  exact Fin i
+  · exact ⟨ ⟨ 0, h ⟩ ⟩
+  · unfold Cluster.Connected
+    congr! 2
+    ext; simp [Cluster.graph, msys]
+
+theorem msys_cluster_eq (X Y : Cluster msys.toPolymerSystem) (h : X.n = Y.n) : X = Y := by
+  obtain ⟨nX, pX⟩ := X
+  obtain ⟨nY, pY⟩ := Y
+  simp only at h
+  subst h
+  congr 1
+  funext i
+  exact Subsingleton.elim _ _
+
+/-- Coefficient data concentrated on one- and two-slot clusters. -/
+noncomputable def coeffData2 : ClusterCoeffData msys.toPolymerSystem dec where
+  coeff := fun X => if X.n = 1 then (1 : Real) else if X.n = 2 then (1 / 2 : Real) else 0
+  coeff_disconnected := by
+    intro X hX
+    have hn1 : X.n ≠ 1 := fun h => hX (msys_connected X (by omega))
+    have hn2 : X.n ≠ 2 := fun h => hX (msys_connected X (by omega))
+    simp [hn1, hn2]
+  treeGraphBound := by
+    intro X
+    by_cases h1 : X.n = 1
+    · have hconn : X.Connected msys.toPolymerSystem dec := msys_connected X (by omega)
+      have hpos : 0 < spanningTreeCount msys.toPolymerSystem dec X :=
+        spanningTreeCount_pos_of_connected msys.toPolymerSystem dec X hconn
+      rw [if_pos h1, h1]
+      simp only [Nat.factorial_one, Nat.cast_one, abs_one, mul_one]
+      exact_mod_cast hpos
+    · by_cases h2 : X.n = 2
+      · have hconn : X.Connected msys.toPolymerSystem dec := msys_connected X (by omega)
+        have hpos : 0 < spanningTreeCount msys.toPolymerSystem dec X :=
+          spanningTreeCount_pos_of_connected msys.toPolymerSystem dec X hconn
+        rw [if_neg h1, if_pos h2, h2]
+        simp only [Nat.factorial_two, Nat.cast_ofNat]
+        rw [abs_of_nonneg (by norm_num)]
+        have : (1 : Real) <= (spanningTreeCount msys.toPolymerSystem dec X : Real) := by
+          exact_mod_cast hpos
+        linarith
+      · simp only [if_neg h1, if_neg h2, abs_zero, zero_mul]
+        exact Nat.cast_nonneg _
+
+theorem msys_KP : KPCondition msys.toPolymerSystem dec := by
+  intro g
+  have hfilter :
+      (Finset.univ.filter
+        (fun h => @Decidable.decide _ (dec g h) = true)) = (Finset.univ : Finset (Fin 1)) := by
+    apply Finset.filter_true_of_mem
+    intro h _
+    simp [msys]
+  rw [hfilter]
+  simp only [Finset.univ_unique, Finset.sum_singleton]
+  show |msys.toPolymerSystem.weight g| * Real.exp (msys.toPolymerSystem.energy g)
+      <= msys.toPolymerSystem.energy g
+  simp only [msys]
+  rw [abs_of_nonneg (by positivity), ← Real.exp_add]
+  norm_num
+
+theorem msys_coerce (X : Cluster msys.toPolymerSystem)
+    (_hX : X.Connected msys.toPolymerSystem dec)
+    (g0 : Fin 1) (_hT : X.Touches msys.toPolymerSystem g0) (i : Fin X.n) :
+    (1 : Real) * msys.dist g0 (X.poly i) <= X.energyOf msys.toPolymerSystem := by
+  simp [Cluster.energyOf, msys]
+  exact Fin.pos i
+
+/-- One-slot witness (reaches distance 1). -/
+def w1 :
+    {X : Cluster msys.toPolymerSystem // X.Connected msys.toPolymerSystem dec /\ X.ReachesFrom msys 0 1} :=
+  ⟨⟨1, fun _ => 0⟩, msys_connected _ (by norm_num), ⟨0, rfl⟩, ⟨0, by norm_num [msys]⟩⟩
+
+/-- Two-slot witness (reaches distance 1). -/
+def w2 :
+    {X : Cluster msys.toPolymerSystem // X.Connected msys.toPolymerSystem dec /\ X.ReachesFrom msys 0 1} :=
+  ⟨⟨2, fun _ => 0⟩, msys_connected _ (by norm_num), ⟨0, rfl⟩, ⟨0, by norm_num [msys]⟩⟩
+
+theorem w1_ne_w2 : w1 ≠ w2 := by
+  intro h
+  have : (w1.1).n = (w2.1).n := by rw [h]
+  simp [w1, w2] at this
+
+theorem w1_term :
+    |coeffData2.coeff w1.1| * w1.1.absWeight msys.toPolymerSystem = Real.exp (-1) := by
+  unfold w1; norm_num [coeffData2, Cluster.absWeight, msys]
+
+theorem w2_term :
+    |coeffData2.coeff w2.1| * w2.1.absWeight msys.toPolymerSystem = (1 / 2) * Real.exp (-2) := by
+  unfold w2; norm_num [coeffData2, Cluster.absWeight, msys]; ring
+  norm_num [← Real.exp_nat_mul]
+
+/-- The plain family (no amplification) has support in `{w1, w2}`. -/
+theorem tail_summand_zero_of_ne
+    (X : {X : Cluster msys.toPolymerSystem // X.Connected msys.toPolymerSystem dec /\ X.ReachesFrom msys 0 1})
+    (h1 : X ≠ w1) (h2 : X ≠ w2) :
+    |coeffData2.coeff X.1| * X.1.absWeight msys.toPolymerSystem = 0 := by
+  by_cases h : X.val.n = 1 <;> by_cases h' : X.val.n = 2 <;> simp_all +decide [Cluster.absWeight, msys]
+  · exact False.elim <| h1 <| Subtype.ext <| msys_cluster_eq _ _ <| by aesop
+  · exact False.elim <| h2 <| Subtype.ext <| msys_cluster_eq _ _ <| by aesop
+  · unfold coeffData2; aesop
+
+/-- The metric tail bound `kp_tail_bound` is FALSE: with self-incompatibility
+and the exact coercivity hypothesis, the plain reaching-cluster sum still
+exceeds `energy · exp(-(m R))`.  The decay factor cannot be extracted because
+the amplified convergence bound it relies on is itself false (see
+`SelfIncompatCex.selfIncompat_convergence_bound_false`). -/
+theorem tail_bound_false :
+    ¬ (∀ (G : Type) [Fintype G] (M : MetricPolymerSystem G)
+        (hdec : forall g h, Decidable (M.incompatible g h))
+        (_hself : forall g, M.incompatible g g)
+        (D : ClusterCoeffData M.toPolymerSystem hdec)
+        (_hKP : KPCondition M.toPolymerSystem hdec)
+        (m : Real) (_hm : 0 < m)
+        (_hcoerce : forall (X : Cluster M.toPolymerSystem),
+            X.Connected M.toPolymerSystem hdec ->
+            forall g0 : G, X.Touches M.toPolymerSystem g0 ->
+            forall i : Fin X.n, m * M.dist g0 (X.poly i)
+              <= X.energyOf M.toPolymerSystem)
+        (g0 : G) (R : Real) (_hR : 0 <= R),
+        (tsum (fun X : {X : Cluster M.toPolymerSystem //
+            X.Connected M.toPolymerSystem hdec /\ X.ReachesFrom M g0 R} =>
+          |D.coeff X.1| * X.1.absWeight M.toPolymerSystem))
+            <= M.energy g0 * Real.exp (-(m * R))) := by
+  classical
+  intro H
+  have hle := H (Fin 1) msys dec msys_self coeffData2 msys_KP 1 (by norm_num)
+    msys_coerce 0 1 (by norm_num)
+  have hsupport : ∀ X : {X : Cluster msys.toPolymerSystem //
+        X.Connected msys.toPolymerSystem dec /\ X.ReachesFrom msys 0 1},
+      X ∉ ({w1, w2} : Finset {X : Cluster msys.toPolymerSystem //
+        X.Connected msys.toPolymerSystem dec /\ X.ReachesFrom msys 0 1}) ->
+      |coeffData2.coeff X.1| * X.1.absWeight msys.toPolymerSystem = 0 := by
+    intro X hX
+    rw [Finset.mem_insert, Finset.mem_singleton] at hX
+    push_neg at hX
+    exact tail_summand_zero_of_ne X hX.1 hX.2
+  rw [tsum_eq_sum hsupport, Finset.sum_pair w1_ne_w2, w1_term, w2_term] at hle
+  have hE : msys.energy 0 * Real.exp (-(1 * 1)) = Real.exp (-1) := by
+    norm_num [msys]
+  rw [hE] at hle
+  have hpos := Real.exp_pos (-2)
+  linarith
+
+end TailCex
 
 end PolymerKPConclusion
 end GateYM
