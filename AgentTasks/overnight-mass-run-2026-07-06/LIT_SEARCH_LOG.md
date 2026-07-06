@@ -63,3 +63,52 @@ All 7 are now top hits for their topic queries (e.g. the KP query returns
 math-ph/0605041 at 0.87, 2001.00652/0707.0016 next; the RP+mass-gap query returns
 2606.19362 at 0.86). Tags: cluster-expansion, reflection-positivity, fermionic-rp,
 yang-mills-mass-gap (all also `null-edge`).
+
+---
+
+# Round 2 (comprehensive): 12 more papers across all challenge lanes
+
+Total this session: 19 papers. Coverage probes first (to target real gaps):
+checkerboard, octonion/exceptional-Jordan SM (incl. 2026 `2606.15235`),
+Wilson-Dirac/doubling (Ginsparg-Wilson, Nielsen-Ninomiya) were ALREADY
+well-covered - so those were NOT re-added. The gaps below were empty.
+
+## Probabilistic / rigorous lattice gauge theory (the Chatterjee school) - YM lane
+
+The graph had none of the modern rigorous lattice-gauge literature (the
+verification-debt register cited Chatterjee "from memory"):
+- **1803.01950** - Chatterjee, "Yang-Mills for probabilists" (foundational
+  overview of rigorous lattice YM as probability).
+- **1502.07719** - Chatterjee, "Rigorous solution of strongly coupled SO(N)
+  lattice gauge theory in the large N limit" (strong-coupling Wilson loops =
+  convergent sum over lattice-string trajectories; gauge-string duality).
+- **2304.08286** - "Free energy and quark potential in Ising lattice gauge
+  theory via CLUSTER EXPANSION" - DIRECT hit: Z2 gauge + cluster expansion + the
+  quark potential, exactly the project's Z2/Q6 setup.
+- **2505.16585** - "Expanded regimes of area law for lattice Yang-Mills" (area
+  law beyond strong coupling - the YM1 area-law lane).
+- **1811.09770** - "Wilson loops in Ising lattice gauge theory" (the Z2 lane).
+
+## Higgs-confinement / Fradkin-Shenker - NE-U6 electroweak (the kill-condition)
+
+- **1704.06201** - "Fradkin-Shenker Continuity and 'Instead-of-Confinement'
+  Phase" - the modern reference for the NE-U6 kill-condition (FS continuity is
+  phase-diagram connectivity, NOT mechanism identity).
+- **1506.00862** - "On the Higgs-Confinement Complementarity".
+
+## Reflection positivity (extra)
+
+- **1201.3415** - RP + Kallen-Lehmann representation of 2-point functions.
+
+## Origin of mass / "mass without mass" - NE-U5 (the mass thesis's core provenance)
+
+The normative mass doc cites Wilczek "mass without mass" as prose; now in-graph:
+- **1206.7114** - Wilczek, "Origins of Mass" - THE anchor: ~all visible mass is
+  the back-reaction of QCD gluon fields, not the Higgs. Direct NE-U5 provenance.
+- **hep-ph/9410274** - Ji, "A QCD Analysis of the Mass Structure of the Nucleon"
+  (the EMT trace-anomaly mass decomposition - mass from quantum loop effects).
+- **2603.06770** - "Mass Without Mass from a Berry-Shifted SU(3) Holonomy Rotor"
+  (2026) - striking parallel to the null-edge (C)losure obstruction: mass with no
+  primitive mass input, from an SU(3) holonomy. Worth a close read for the
+  unification thesis.
+- **1811.02803** - "The origin of the nucleon mass" (modern lattice).

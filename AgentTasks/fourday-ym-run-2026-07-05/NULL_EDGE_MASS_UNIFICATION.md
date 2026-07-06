@@ -149,8 +149,15 @@ taxonomy row-1 vs row-2 distinction (physical mass vs regulator mass) into
 MATHEMATICS: both are gamma5-even, but only one survives the `r = 0` naive
 limit, and the doubling story (determinant-level, per NULLSTRAND discipline)
 is exactly the price of removing the regulator turn. Claim label: finite
-identity. Provenance anchor: Wilczek "mass without mass" (prose);
-standard chiral-symmetry lattice lore (Montvay-Munster grade).
+identity. Provenance anchor: Wilczek "mass without mass" - now IN the Neo4j
+graph (arXiv `1206.7114`, "Origins of Mass": ~all visible mass is the QCD
+gluon-field back-reaction, not the Higgs), with the EMT trace-anomaly mass
+decomposition (Ji, `hep-ph/9410274`; lattice `1811.02803`) and a striking 2026
+parallel `2603.06770` "Mass Without Mass from a Berry-Shifted SU(3) Holonomy
+Rotor" (mass from an SU(3) holonomy with no primitive mass input - close to the
+(C)losure obstruction reading). Standard chiral-symmetry lattice lore
+(Montvay-Munster grade). See
+`AgentTasks/overnight-mass-run-2026-07-06/LIT_SEARCH_LOG.md`.
 
 ### NE-U3 - the closure pillar, consolidated. CHEAP (mostly done).
 
