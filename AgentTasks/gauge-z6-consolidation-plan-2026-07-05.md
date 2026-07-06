@@ -100,3 +100,35 @@ Consequences for the consolidation:
 So the consolidation is genuinely non-trivial (real conflicting duplicates, not
 just verbose naming) and its highest-value first action is resolving this
 duplicate - likely pruning a dead alternate track - not a mechanical file merge.
+
+## UPDATE 2 (2026-07-05): full Gauge-tree dead-module + duplicate scan
+
+Read-only scan of all 46 `PhysicsSM/Gauge/*.lean`. Comprehensive consolidation
+targets (all deletions are the MAINTAINER's call - surfaced, not executed):
+
+DEAD / zero-importer modules (nothing in the repo imports them):
+- `SU2.lean`, `SU3.lean`, `U1.lean` - EMPTY STUBS ("Status: stub", empty
+  namespace). Aspirational placeholders; the real SU(3)/SU(2)/U(1) content lives
+  elsewhere (the covering/Z6 files, `BlockEmbeddings`, etc.). Naming irony:
+  `Gauge/SU3.lean` is empty while the color group work is in verbosely-named
+  files.
+- `StandardModel.lean` - stub that claims to "assemble SU3/SU2/U1" which are
+  themselves empty stubs. Dead.
+- `StandardModelProductCoveringQuotientSMBlock.lean` (353 lines) - orphaned,
+  carries the conflicting `SMProductCoveringTriple` abbrev (UPDATE 1). Dead.
+
+DUPLICATE declaration base-names across different Gauge files: ONLY
+`SMProductCoveringTriple` (isolated - not a pervasive collision problem).
+
+Revised consolidation priority (highest value first, all low-risk since the
+dead modules have 0 importers):
+1. Prune the 4 empty stubs (`SU2`/`SU3`/`U1`/`StandardModel`) IF they are not
+   reserved placeholders - trivial win, removes the misleading "empty SU3"
+   naming. (Maintainer: are these reserved for future real content?)
+2. Prune / reconcile `ProductCoveringQuotientSMBlock` (dead + conflicting def).
+3. THEN the thematic Z6 merge (UPDATE 1 recipe), now unblocked (no live
+   co-import collision remains once the dead conflicting module is gone).
+
+Net: the consolidation is mostly SAFE DELETION of dead/stub modules (5 files,
+~430 lines) plus one thematic merge - not a risky live-code refactor. The one
+judgment call is whether the 4 stubs are reserved placeholders.
