@@ -139,6 +139,16 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB5 (~02:50):** Second harvest cycle done. Integrated A9+A4 (683f10d),
+  A6+A8 (c925bfb), added guarded capstone companion (33868be). Harvested
+  sm-allmass-strategy + applied its caveats + submitted its #1 flagship
+  (aperture-turn bridge, 3e0eb3f5). A7 fermionic returned scaffold-with-open-crux
+  -> reverted, resubmitted isolated crux (322b9f72). Also live: sm-slab-transfer
+  (fdab1ce4), sm-producthaar-z2 (4510f446). Fleet: 8 running (A1 17%, A2 5%,
+  A3 21%, A5 8% + the 4 sm- jobs), all <2h (2h rule not yet triggered; earliest
+  ~03:20 for A1/A2/A3/A5). 2 slots held for the crux/A3 returns (trigger the
+  high-value Q6-downstream-unconditional follow-on). 12 commits so far tonight.
+  Pacing ~35 min to next cycle.
 - **HB4 (~01:20):** HARVESTED A10a (5a7d6910) capstone audit - excellent,
   actionable. Applied all fixes to `AllMassFromNullEdges.lean` (fd0541d):
   strengthened (T) to the genuine spin-vertex channel separation (was

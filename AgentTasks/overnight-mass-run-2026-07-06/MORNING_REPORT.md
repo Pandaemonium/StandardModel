@@ -13,13 +13,35 @@ agent + up to 10 concurrent Aristotle jobs. See
 
 - (one paragraph: what the night achieved and the honest distance remaining)
 
-## Theorems landed (with axiom footprints)
+## Theorems landed (all footprint [propext, Classical.choice, Quot.sound], 0 sorry unless noted)
 
-- **`allMassFromNullEdges`** (commit 71a24c0) - the T/C/A + co-location bundling
-  capstone. `PhysicsSM/Draft/NullEdge/GateI1/AllMassFromNullEdges.lean`.
-  Footprint `[propext, Classical.choice, Quot.sound]` (build-enforced guard),
-  0 `s o r r y`. Program-synthesis label (conjunction, not single mechanism).
-- (append as harvests land)
+- **`allMassFromNullEdges`** + **`allMassFromNullEdges_guarded`** (71a24c0,
+  fd0541d, 33868be, d2063d7) - the T/C/A + co-location bundling capstone, plus
+  the guarded companion bundling it WITH the proved mass-functional distinctness.
+  Build-enforced axiom guards. Hardened twice per the capstone audit (5a7d6910)
+  and mission strategy (70c4b556): (T) strengthened to genuine channel
+  separation; (C) flagged detached; taxonomy guard discharged.
+- **`massTaxonomy_functionals_pairwise_separated`** (A9, 683f10d) - the four
+  mass functionals (bare, Wilson regulator, closure glueball, composite aperture)
+  proved PAIRWISE DISTINCT. F-YM-CONFLATE at theorem grade.
+- **`wilsonSlabConnected_reflectionPositive`** (A4, 683f10d) - RP for the first
+  CONNECTED cut-bearing Wilson slab, arbitrary finite group G. The audits'
+  "empty center of gravity" missing object, built. OS-ingredient (not-gap) label.
+- **`ProductHaarConfig`** (A6, c925bfb) - multi-link product-Haar gauge/reflection
+  symmetries PROVED (SU(N)); RP positivity one frozen handoff sorry.
+- **`ElectroweakRung`** (A8, c925bfb) - gauge-invariant composite W,
+  `wLikeMass_pos`, AND exact two-point exponential clustering. One unused
+  Fradkin-Shenker handoff sorry.
+- **GateYM axiom guard** (977b101) - 8 sorry-free spine flagships pinned
+  (area law, Elitzur, RP kernel, Q5, center-flux gap, verified-negative KP).
+
+## Distance-to-all-mass note (from strategy 70c4b556)
+
+Floor already banked (capstone + A9 + the aperture=turn bridge are independent of
+the hard-YM Q6/slab jobs). The hard YM proofs buy little for the MASS thesis
+(only the NE-U4 (C)-upgrade toy->physical). "Unification" = shared SHAPE not
+shared quantity (no shared model where (C)=(A); Z2 has no Momentum4). The one
+binding advance in flight: `sm-aperture-turn-bridge` (T+A on one on-shell object).
 
 ## Aristotle harvests
 
