@@ -178,6 +178,16 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB40 (real ~18:05) - 9th wave: exact crossing<->index tie + E8->SM budget.**
+  Harvested (0dacd9d): (T) NNIndexExact (signedZeroCount_eq_two_indexTr_diff - the EXACT
+  crossing-count <-> overlap-index identity, strengthening the tie) and (V/unification)
+  E8DimensionBudget (dimE8=248=8+240, branching_E6_SU3 = 78+8+81+81=248, kernel Nat;
+  branching_E6_SU3 depends on NO axioms). +2 guards. SATURATION PUSH: 37 modules integrated
+  + 1 rejected across ALL lanes. ~46 commits. SlabAxiomGuard green at 8130 jobs (imports +
+  audits ~44 new modules, all standard axioms or fewer). The wide run delivered a broad,
+  honest, kernel-checked corpus culminating in the UNCONDITIONAL grand capstone; discipline
+  held throughout (4 over-claims caught+corrected). 2 jobs running (gap-asymptotics,
+  e8-240-complete) to harvest next.
 - **HB39 (real ~17:20) - 8th wave CULMINATION: the UNCONDITIONAL grand capstone.**
   Harvested (989fff3): (X) GrandMassCapstoneUnconditional - grandMassCapstoneUnconditional
   discharges the grand capstone's ONE hypothesis (octSplitMassNotCentral_holds, from the
