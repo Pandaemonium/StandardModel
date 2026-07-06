@@ -10,6 +10,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.LocalCyclicitySector
 import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
+import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 
 /-!
@@ -115,5 +116,15 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap
+
+/-! ## SU(N)/SU(2) TY twist system (the nonabelian gate scaffold) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN.TwistSystem.tyAreaLawSUN_exp_strict' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN.TwistSystem.tyAreaLawSUN_exp_strict
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN.tyBaseSUN_two_landed' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN.tyBaseSUN_two_landed
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

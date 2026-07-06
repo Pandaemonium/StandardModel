@@ -53,9 +53,16 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
       rate->inf. Tied to the assembly via `partitionRatio_eq_exp_neg_osSpectralGap`.
       0 sorry, standard axioms, guarded. HONEST GAP (remaining to genuine SU(2)):
       the RP/Cauchy-Schwarz raw bound `|W| <= 2*q^r` is an explicit HYPOTHESIS (hW),
-      NOT derived; and Z/Z^(-) are MODELED as one-plaquette Boltzmann sums. NEXT:
-      (a) derive hW on the Z2 slab from the landed RP by iterated reflection,
-      (b) port the abstract layer to SU(2) with the (1/N)Sum Z^[k]/Z ratio.
+      NOT derived; and Z/Z^(-) are MODELED as one-plaquette Boltzmann sums.
+- [~] **SU(N) TY SCAFFOLD LANDED** (sm-ty-sun 93e022dd): `TYAreaLawSUN.lean` -
+      abstract `TwistSystem N` (Z : Fin N -> R, RP-monotonicity Z_le hypothesized),
+      center-average `pN = (1/N)Sum ratio`, `tyBaseSUN = 1-pN in [0,1)`,
+      `tySunTension > 0` (strict twist), area law `tyAreaLawSUN_exp_strict`. SU(2)
+      RECONCILIATION `tyBaseSUN_two_landed`: (TwistSystem 2).tyBaseSUN =
+      TYAreaLaw.tyBaseOf (Z1/Z0) - the landed Z2 base is literally the N=2 shadow.
+      0 sorry, standard axioms, guarded. REMAINING GAP to genuine SU(N): (a) build
+      the SU(N) lattice Haar measure + twisted partition functions Z^[k], (b) derive
+      hW + Z_le from RP, (c) continuum limit. THIS is the honest single-gate frontier.
 - [ ] (C) Q6 crux `pairSum_le_expBound` - the KP tree-graph bound (Codex active;
       inductive Fernandez-Procacci route via `2001.00652`)
 - [ ] character expansion of the Wilson weight (finite group) [~ sm-character-expansion]
