@@ -161,3 +161,11 @@ long queries; inspirehep needs short queries).
 - Also seen (no arxiv, not ingested): "Constructive Existence of Quantum
   Yang-Mills on R^4"; Seiler LNP 159 (Osterwalder-Seiler, the classic RP
   construction). The C-gate literature is now well-mapped.
+
+## Round 6 (2026-07-06, HB31 saturation batch) - mass decomposition + div-algebra
+- hep-th/9506115 (DW2RXBBI), 2006.16274 (845WNTMG) - NCG anomaly cancellation +
+  octonion/trace-dynamics unification (lane B provenance).
+- 2601.13070, 2506.23902 (INGESTED) - lattice-QCD validation of the hadron
+  mass / TRACE-ANOMALY decomposition + nucleon-mass sigma-terms. Direct NE-U5
+  provenance (mass = QCD gluon-field back-reaction, not the Higgs), complementing
+  Wilczek 1206.7114 and Ji hep-ph/9410274 already in-graph.
