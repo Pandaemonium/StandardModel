@@ -51,6 +51,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.LocalCyclicitySector
 import PhysicsSM.Draft.NullEdge.GateYM.OSReconstruction
 import PhysicsSM.Draft.NullEdge.GateYM.CMProjectorOS
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
+import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert

@@ -35,9 +35,13 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 - [x] OS/GNS reconstruction (`OSReconstruction`): self-adjoint transfer + gap
 - [x] (C) summable-defect gap transport, area-law transport, local cyclicity,
       CM slice-projector (Faizal-Shabir pieces)
-- [ ] **THE ASSEMBLY (north star):** bundle RP -> self-adjoint transfer -> sector
-      gap -> area law -> exponential clustering into ONE finite theorem on the
-      connected Z2 slab (the `AllMassFromNullEdges`-style capstone for lane C)
+- [~] **THE ASSEMBLY (north star):** `SlabGapAssembly.slabGapAssembly` LANDED
+      (Z2 sign-rep slab): RP-block PSD + Hermitian/self-adjoint transfer +
+      strictly-positive OS spectral gap + explicit `-log(tanh beta)` value +
+      vacuum separation, as ONE finite theorem (axiom-guarded, standard axioms,
+      KP-crux-FREE via OS reconstruction). STILL OPEN: (a) fold in area-law /
+      exponential clustering INSTANTIATED on this slab (currently abstract
+      sequence lemmas), (b) the NONABELIAN SU(2)/SU(3) generalization.
 - [ ] exponential clustering from the gap: connected 2-point decay = exp(-gap * n)
       on the slab transfer operator (feeds the assembly)
 - [ ] (C) Q6 crux `pairSum_le_expBound` - the KP tree-graph bound (Codex active;
