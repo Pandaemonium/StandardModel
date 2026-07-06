@@ -217,3 +217,28 @@ Biggest over-claim to guard (strategy 3): the name "all mass" over-reads - it is
 a guarded conjunction with ONE two-mode binding, NOT a unified mechanism; C is
 not bound to A/T; the (C) zero is definitional; the KP chain is open and was
 partly false. The report says exactly that.
+
+## Literature added to Neo4j (see `LIT_SEARCH_LOG.md`)
+
+7 papers ingested into the null-edge graph (collection `9W59V3K9`, embedded +
+searchable) targeting our open challenges:
+- **Q6 crux:** the graph had NO cluster-expansion papers; added the KP /
+  Fernandez-Procacci tree-graph-bound canon (`math-ph/0605041`, the inductive
+  `2001.00652` which may sidestep the injection, Scott-Sokal `cond-mat/0309352`,
+  Procacci `0707.0016`). Now the top hits for the KP query.
+- **Whole program:** `2606.19362` (2026) - "Reflection-Positive Construction of
+  4D SU(N) YM with Mass Gap and Confinement" - the closest published blueprint
+  for Track A (RP -> transfer gap + character/polymer expansion -> clustering ->
+  OS reconstruction). Woven into `Sources/Null_Edge_Yang_Mills_Mass_Gap_Program.md`
+  (YM4 section + verification-debt register).
+- **Fermionic RP:** Jaffe-Janssens `1506.04197` (Majorana RP), `1802.09037`.
+CAVEAT: added direct-to-Neo4j (`zotero_write` MCP not wired this session);
+`paper_key = arxiv_id`, `source='arxiv-direct'` - backfill Zotero keys later.
+
+## Concurrency note
+
+Codex is ACTIVELY working the Q6 crux residual (the subtree->spanning-tree
+reindexing bridge, per `CRUX_PARKED_STATUS.md`) in `PolymerKPConclusion.lean` -
+do not collide with its edits. My crux attempts this run were harvested into
+proved helper lemmas (perPair_absWeight_bound, fiber_value_bound,
+fiber_card_mul_le_factorial); Codex is building the remaining reindexing layer.

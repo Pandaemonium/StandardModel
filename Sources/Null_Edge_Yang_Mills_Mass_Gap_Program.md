@@ -278,7 +278,18 @@ from Mathlib, and REUSABLE for the Measure Problem's quantum-growth
 estimates) and with it, for `beta < beta_0` (strong coupling), UNIFORMLY in
 volume: the Wilson-loop area law, exponential clustering, and a transfer-
 matrix mass gap - the Osterwalder-Seiler regime, kernel-checked, in 3D and
-4D. Deliverable: **formalized confinement and mass gap at strong coupling**
+4D. **KEY REFERENCES (in the Neo4j graph as of 2026-07-06):** the modern
+treatment of the KP criterion is Fernandez-Procacci `math-ph/0605041`
+(tree-graph bound via the Penrose identity - this IS the shape of the Q6 crux
+`pairSum_le_expBound`); the INDUCTIVE proof `2001.00652` may sidestep the
+labeled-tree injection the Q6 crux is currently stuck on (see
+`AgentTasks/overnight-mass-run-2026-07-06/CRUX_PARKED_STATUS.md`); Scott-Sokal
+`cond-mat/0309352` for the tree-bound / independent-set-polynomial view. For
+the END-TO-END target, `2606.19362` (2026) is a full reflection-positive
+construction of 4D SU(N) YM with mass gap and confinement via exactly this
+RP -> transfer-gap + convergent character/polymer expansion -> exponential
+clustering -> OS-reconstruction chain - the closest published blueprint for
+this entire rung. Deliverable: **formalized confinement and mass gap at strong coupling**
 - the strongest statement anyone could certify today about 4D lattice YM,
 and the ladder's central medium-horizon prize-adjacent milestone. Honest
 scope guard: strong coupling is the WRONG side of the continuum limit
@@ -448,6 +459,20 @@ it is not a deliverable anyone can schedule; it is what the ladder points
 at.
 
 ## 11. Verification-debt register (ALL cited from memory; verify before use)
+
+> **Neo4j update (2026-07-06):** several of these are now IN the null-edge paper
+> graph with arXiv IDs and full-text-searchable abstracts (collection
+> `9W59V3K9`; search via `Scripts/lit/neo4j_paper_search.py`), which resolves
+> part of the verification debt: Kotecky-Preiss modern treatment
+> (Fernandez-Procacci `math-ph/0605041`, inductive `2001.00652`, Scott-Sokal
+> `cond-mat/0309352`, Procacci `0707.0016`); reflection positivity
+> (Jaffe-Janssens `1506.04197` for Majorana/fermionic RP, `1802.09037` general
+> RP); and - directly on this program's summit - a 2026 reflection-positive
+> construction of 4D SU(N) YM with mass gap + confinement, `2606.19362`. The
+> classical Osterwalder-Seiler (1978) and Kotecky-Preiss (1986) originals remain
+> pre-arXiv (still verify against the primary sources). See
+> `AgentTasks/overnight-mass-run-2026-07-06/LIT_SEARCH_LOG.md`.
+
 
 Wilson (1974) strong-coupling confinement argument; Wegner (1971) Z2 gauge
 dualities; Elitzur (1975); Osterwalder-Schrader I/II (1973/1975) and
