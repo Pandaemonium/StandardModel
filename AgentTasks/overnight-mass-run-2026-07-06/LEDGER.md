@@ -178,6 +178,13 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB19 (real ~06:50):** MCP: wired + verified all 6 servers (zotero_write fix +
+  scholarly/neo4j_graph/local-qwen restored). Backfilled the 19 lit papers to
+  canonical Zotero keys. Harvested sm-slab-signrep -> SlabSignRepGap.lean
+  (dd463ce): the CORRECTED full-block NE-U4 gap via the SIGN rep (genuine
+  0<lamFlux<lam0), closing the loop the trivial-rep refutation (negative #3)
+  opened. 0 sorry, standard axioms, builds (8054). Fleet: character-expansion
+  (f142be9e) + os-reconstruction (7d16da48) still running. ~2.2h to 9am.
 - **HB18 (real ~06:10):** Literature done (7 papers -> Neo4j + woven into program
   doc / crux status / report; LIT_SEARCH_LOG.md). Noted CODEX is co-working the Q6
   crux (subtree-reindexing bridge) - staying off PolymerKPConclusion. Submitted 2
