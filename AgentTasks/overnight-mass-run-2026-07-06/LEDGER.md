@@ -178,6 +178,17 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB21 (real ~07:30) - WIDE 24h RUN LAUNCHED.** Goal re-centered:
+  "full origin of mass from null edges", 24h, GO WIDE (saturate Aristotle's 10
+  slots with independent non-gating jobs). Wrote JOB_BACKLOG.md (lanes A/T/C/X/B/V/L)
+  + updated GOAL_PROMPT_OPUS charter (2c3878c, goal commit). Harvested codex's 4th
+  job CMProjectorOS (2c3878c). Launched a WIDE batch of 5 independent jobs across
+  lanes: sm-clustering-slab (42830944, C: exp clustering from gap), sm-nbody-aperture
+  (a4366c05, A: N-body aperture), sm-doubling-turn (3703ef99, T: NN doubling=turn
+  price), sm-e8-denative (24a3e234, V: kernel E8-240), sm-spin10-audit (b4deb30c,
+  B: Spin10 sorries). Fleet: 8 mine/codex running (+ char-exp, codex
+  clustering-to-gap/frd-weak). LANE SPLIT: codex owns Q6 crux + YM analytic; I own
+  assembly + mass thesis + lit + trust. Harvest each other's jobs (git-clean check).
 - **HB20 (real ~07:10):** TOOK OWNERSHIP of CODEX's Aristotle jobs (user
   request). Codex submitted 6 sm- jobs (Track-A/YM, all motivated by the
   Faizal-Shabir 2606.19362 paper this run added to Neo4j). Harvested the 3 IDLE:
