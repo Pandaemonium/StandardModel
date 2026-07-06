@@ -60,6 +60,19 @@ center-sector slab.  It is NOT:
   `SlabClustering`, not the abstract sequence lemmas in `AreaLawTransport` /
   `SummableDefectGap` (those remain abstract and are not used here).
 
+**Three-objects honesty note (semantic audit 2026-07-06, job `029b8cd3`).**  The
+six fields are all pinned to the same number `tanh β` and are mutually consistent,
+but they are statements about THREE related-but-distinct objects: fields 1-2
+(RP-PSD, Hermitian) are about the transfer *matrix* `slabTransferBlock signRho`;
+fields 3-4 (`gap_pos`, `gap_value`) are about the OS *Hamiltonian* gap
+`osSpectralGap`; field 5 about the eigenvalue pair `lambdaFlux/lambda0`; field 6
+about the normalised transfer `slabNormTransfer`.  This module does NOT in itself
+prove that `osSpectralGap` is the spectral gap OF the RP-PSD block - that
+identification lives in the underlying `OSReconstruction`/`SlabTransferGap`
+modules.  So "one gap chain" is a bundling of consistent facts, not a single-object
+theorem; read it as "these finite Z2-slab quantities all cohere at `tanh β`",
+NOT as "area law = transfer gap = Hamiltonian gap" in general.
+
 No new `axiom`, no `native_decide`, no `sorry`; every field is discharged by an
 existing kernel-checked lemma.  Axiom-guarded in `SlabAxiomGuard`.
 
@@ -100,13 +113,16 @@ structure SlabGapChain (beta : ℝ) (hbeta : 0 < beta) : Prop where
   vacuum_separated :
     TwoStateTransferZ2Sector.lambdaFlux beta
       < TwoStateTransferZ2Sector.lambda0 beta
-  /-- Exponential clustering: for every step count `n` and states `v, w`, the
-  connected two-point function decays as `exp(-(n · gap))` up to a constant `C`.
-  (The explicit `C` is the flux-sector overlap; see
-  `SlabClustering.slab_exponential_clustering`.) -/
+  /-- Exponential clustering: for all states `v, w` the connected two-point
+  function decays as `exp(-(m · gap))` with a constant that is the flux-sector
+  overlap and is **independent of the step count `m`** (genuine uniform-in-`m`
+  decay - the `m`-free constant is essential; an `m`-dependent constant would be
+  vacuous).  This is exactly `SlabClustering.slab_exponential_clustering`. -/
   clustering : ∀ (m : ℕ) (v w : Fin 2 → ℂ),
-    ∃ C : ℝ, ‖SlabClustering.slabConnectedCorrelation beta m v w‖
-      ≤ C * Real.exp (-(m * OSReconstruction.osSpectralGap beta hbeta))
+    ‖SlabClustering.slabConnectedCorrelation beta m v w‖
+      ≤ ‖(star v ⬝ᵥ TwoStateTransferSpectrum.localVec) *
+          (star TwoStateTransferSpectrum.localVec ⬝ᵥ w) / 2‖
+        * Real.exp (-(m * OSReconstruction.osSpectralGap beta hbeta))
 
 /-- **Assembly theorem.**  The connected `Z2` Wilson slab satisfies the full
 finite lane-C gap chain for every `beta > 0`.  Every field is discharged by the
@@ -123,8 +139,7 @@ theorem slabGapAssembly (beta : ℝ) (hbeta : 0 < beta) :
   gap_pos := OSReconstruction.osSpectralGap_pos beta hbeta
   gap_value := OSReconstruction.osSpectralGap_eq_neg_log_tanh beta hbeta
   vacuum_separated := OSReconstruction.osVacuum_separated beta
-  clustering := fun m v w =>
-    ⟨_, SlabClustering.slab_exponential_clustering beta hbeta m v w⟩
+  clustering := SlabClustering.slab_exponential_clustering beta hbeta
 
 /-- Corollary read-off: on the connected `Z2` slab the finite OS gap is both
 strictly positive and equal to `-log(tanh beta)` — a positive, explicitly-valued

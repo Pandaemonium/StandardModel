@@ -322,7 +322,15 @@ theorem slabSpectralGap_eq_osSpectralGap {beta : ℝ} (hbeta : 0 < beta) :
 
 /-- **The TY vortex free energy equals the exponential of the assembled OS gap.**
 `partitionRatio β = Z⁻/Z = exp(-osSpectralGap β)`.  The Tomboulis–Yaffe area-law
-base is thus driven by exactly the `SlabGapAssembly` spectral gap. -/
+base is thus driven by exactly the `SlabGapAssembly` spectral gap.
+
+CAVEAT (semantic audit 2026-07-06, job `029b8cd3`): this identity is TRUE but
+*coincidental / essentially definitional on this exactly-solvable abelian
+one-plaquette slab* - both sides reduce to `tanh β` because `partitionRatio` is
+built from the same Boltzmann weights `e^{±β}` that fix the transfer spectrum.
+It must NOT be read as "the Wilson-loop area law / vortex free energy EQUALS the
+transfer-Hamiltonian spectral gap" in general (they are physically distinct
+objects); it is a finite `Z2`-slab coincidence, not a general theorem. -/
 theorem partitionRatio_eq_exp_neg_osSpectralGap {beta : ℝ} (hbeta : 0 < beta) :
     partitionRatio beta = Real.exp (-OSReconstruction.osSpectralGap beta hbeta) := by
   rw [partitionRatio_eq_exp_neg_slabGap hbeta, slabSpectralGap_eq_osSpectralGap hbeta]
