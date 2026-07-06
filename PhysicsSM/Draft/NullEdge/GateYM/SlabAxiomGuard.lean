@@ -34,6 +34,9 @@ import PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap
 import PhysicsSM.Draft.NullEdge.GateYM.OverlapIndex
 import PhysicsSM.Draft.NullEdge.GateI1.MassFromMasslessNEU5
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState
+import PhysicsSM.Draft.NullEdge.GateI1.EWWMassSU2
+import PhysicsSM.Draft.E8Root240NoNative
+import PhysicsSM.Draft.NullEdge.GrandMassCapstone
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
 import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
 import PhysicsSM.Draft.E8CartanNoNative
@@ -337,5 +340,19 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState.massive_entropy_strictlyBetween' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState.massive_entropy_strictlyBetween
+
+/-! ## Batch wave 7 (FINALE): the GRAND all-lane capstone, E8-240 de-nativization, SU(2) W-mass -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GrandMassCapstone.grandMassCapstone' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GrandMassCapstone.grandMassCapstone
+
+/-- info: 'PhysicsSM.Draft.E8Root240NoNative.E8RootSet_card' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.E8Root240NoNative.E8RootSet_card
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.EWWMassSU2.TransferBlock.wMass_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.EWWMassSU2.TransferBlock.wMass_pos
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

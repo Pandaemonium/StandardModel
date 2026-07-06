@@ -19,6 +19,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
 import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
 import PhysicsSM.Draft.NullEdge.GateI1.MassFromMasslessNEU5
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState
+import PhysicsSM.Draft.NullEdge.GateI1.EWWMassSU2
 import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakRung
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureEqualsTurn
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture

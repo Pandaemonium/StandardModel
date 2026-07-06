@@ -178,6 +178,17 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB37 (real ~16:10) - 6th wave (3 more; 29 integrated this push).** Harvested
+  (32472bd): (NE-U5) MassFromMasslessNEU5 (compositeMass_pos - massless constituents,
+  positive composite mass = mass-from-relation, Wilczek avatar), (T) OverlapIndex
+  (trace_int_of_involution, index_eq_half_sum - the overlap/GW index integer), (A)
+  ApertureObserverState (max-entropy = rest frame; massive_entropy_strictlyBetween;
+  honestly documents massless_with_positive_entropy = converse fails). Fixed one
+  missing helper (futureNull_energy_sq). All 0 sorry, standard axioms, +3 guards.
+  SATURATION PUSH TOTAL: 29 modules integrated + 1 rejected across A/T/C/X/B/V/NE-U5.
+  ~42 commits. Fleet: sm-grand-capstone, sm-e8-240-denative, sm-ew-wmass-su2 running
+  (harvest next). The wide strategy delivered a broad, honest, kernel-checked corpus;
+  every over-claim caught (4 total) was corrected; the genuine T-leg no-go landed.
 - **HB36 (real ~15:35) - 5th wave (3 more; 26 integrated this push) + refill.**
   Harvested wave 5 (8d51064): (C) SU2TwoLevelGap (concrete SU(2)-flavored 3-level
   strong-coupling transfer diag(1,t,t^2), su2_hamiltonianGap_pos), (T) NNIndexTie
