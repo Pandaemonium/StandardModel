@@ -189,6 +189,29 @@ Known leftovers:
   broken `.exe` files; Codex needs the same repoint-to-python to use scholarly /
   zotero.
 
+## zotero_write wiring + `ZOTERO_USER_ID` typo fix (2026-07-06)
+
+Two issues found while wiring `zotero_write` for the lit-ingest pipeline:
+1. The repo `.mcp.json` had been reduced to only `lean-lsp` + `lean-explore`
+   (both pointing at `C:/Projects/EisensteinGoldbach/...`) - the `zotero_write`,
+   `scholarly`, `neo4j_graph`, and `local-qwen` entries were MISSING. Re-added
+   `zotero_write` (`python C:/Tools/mcp/zotero-writer/src/server.py`); the other
+   three are still absent and should be restored from this table if needed.
+2. **Root cause of the "URL can't contain control characters '/users/19894138 '"
+   error:** the Windows User-scope env var `ZOTERO_USER_ID` is set to
+   `'19894138 '` (TRAILING SPACE) and the server does not `.strip()` it. Worked
+   around by overriding `ZOTERO_USER_ID: "19894138"` in the `zotero_write` env
+   block of `.mcp.json`. PERMANENT FIX (recommended, also unblocks Codex/other
+   sessions): `setx ZOTERO_USER_ID 19894138` (removes the trailing space); or add
+   `.strip()` at `zotero-writer/src/server.py:43`.
+
+Verified working: `mcp_call.py zotero_write zotero_add_item_by_arxiv` returns a
+Zotero item key. The 19 papers ingested this run direct-to-Neo4j were backfilled
+to canonical Zotero keys (re-keyed nodes, `source='zotero'`). NOTE: `zotero_add`
+is NOT fully idempotent - a test add + backfill add of `math-ph/0605041` created
+a duplicate Zotero item (`GG2ICEZA` orphan; the graph uses `SI5BD9GT`). The
+server exposes no delete tool - remove `GG2ICEZA` manually in Zotero.
+
 ## Using the servers without a session reconnect
 
 A running Claude Code (or Codex) session loads its MCP tools at **startup**, so
