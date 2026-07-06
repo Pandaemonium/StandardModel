@@ -21,6 +21,10 @@ import PhysicsSM.Draft.NullEdge.GateYM.FiniteNonabelianChar
 import PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude
 import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV2
 import PhysicsSM.Draft.NullEdge.GateI1.PluckerSpinorBridge
+import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakWMass
+import PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy
+import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw
+import PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful
 import PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
@@ -232,5 +236,27 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_eq_zero_iff
+
+/-! ## Batch wave 3: W-mass gap, aperture entropy iff, strong-coupling area law, faithful octonion coupling -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ElectroweakWMass.wMass_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.ElectroweakWMass.wMass_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy.apertureEntropy_eq_zero_iff_concentrated' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy.apertureEntropy_eq_zero_iff_concentrated
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy.apertureEntropy_pos_of_massive' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy.apertureEntropy_pos_of_massive
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw.wilson_area_law' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw.wilson_area_law
+
+/-- info: 'PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful.octonionic_mass_not_central' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful.octonionic_mass_not_central
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
