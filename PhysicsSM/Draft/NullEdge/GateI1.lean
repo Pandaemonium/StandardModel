@@ -15,6 +15,8 @@ import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV2
 import PhysicsSM.Draft.NullEdge.GateI1.PluckerSpinorBridge
 import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakWMass
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy
+import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
+import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
 import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakRung
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureEqualsTurn
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture

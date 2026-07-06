@@ -24,6 +24,13 @@ import PhysicsSM.Draft.NullEdge.GateI1.PluckerSpinorBridge
 import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakWMass
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw
+import PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount2D
+import PhysicsSM.Draft.NullEdge.GateYM.Q8StringTension
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteAbelianOSGap
+import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
+import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
+import PhysicsSM.Draft.E8CartanNoNative
 import PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful
 import PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
@@ -258,5 +265,39 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful.octonionic_mass_not_central' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful.octonionic_mass_not_central
+
+/-! ## Batch wave 4: E8 Cartan de-nativization, super-capstone v3, 2D N-N, Q8 tension, k-level OS gap, Ginsparg-Wilson/overlap, n-body turn -/
+
+/-- info: 'PhysicsSM.Draft.E8CartanNoNative.det_Lmat' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.E8CartanNoNative.det_Lmat
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3.allMassFromNullEdges_v3' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3.allMassFromNullEdges_v3
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount2D.signedNodeCount_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount2D.signedNodeCount_eq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.Q8StringTension.sigma2_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.Q8StringTension.sigma2_nonneg
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteAbelianOSGap.OSTransfer.gap_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteAbelianOSGap.OSTransfer.gap_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson.gamma5Hat_sq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson.gamma5Hat_sq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson.overlap_ginspargWilson' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson.overlap_ginspargWilson
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn.minkowskiSq_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn.minkowskiSq_sum
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

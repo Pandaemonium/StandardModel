@@ -64,6 +64,11 @@ import PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNonabelianChar
 import PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw
+import PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson
+import PhysicsSM.Draft.NullEdge.GateYM.OverlapDirac
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount2D
+import PhysicsSM.Draft.NullEdge.GateYM.Q8StringTension
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteAbelianOSGap
 import PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
