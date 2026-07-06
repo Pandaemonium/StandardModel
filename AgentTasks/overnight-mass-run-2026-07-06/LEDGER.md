@@ -178,6 +178,25 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB27 (real ~11:05) - red-team DOWNGRADE + lane-X non-degeneracy + N-N refill.**
+  (1) f88925f HARVESTED sm-doubling-audit (521d1c86) - it caught a REAL OVER-CLAIM
+  I committed: DoublingTurnPrice was framed as the topological Nielsen-Ninomiya
+  no-go / necessity, but is only LOCAL per-vertex spin algebra
+  (no_chiral_and_doubler_removal reduces to gamma!=0; regulator_turn_tie is a
+  shared-threshold coincidence). DOWNGRADED all docstrings + guard label + backlog
+  to honest scope; listed the GENUINE finite N-N no-go as OPEN. (2) aedd6e8
+  HARVESTED sm-taxonomy-nondegen (64fa14af): MassTaxonomyNonDegeneracy.lean -
+  independent-realizability of all 4 masses (regulator/aperture two-sided; closure
+  only limit-zero; turn OFF-only), bundled massTaxonomy_nondegenerate, self-guarded,
+  standard axioms. Dropped its shims (real upstream exists); fixed the shim-vs-real
+  z2GlueballMass=gap2 mismatch via a coth-form bridge. (3) HOURLY red-team =
+  doubling-audit above. HOURLY lit = 2105.10977 (N-N necessity mine, HB26).
+  (4) REFILL: submitted sm-nn-nogo (bb50e5ba) - the GENUINE finite N-N no-go on a
+  discrete Brillouin torus (chirality-sum = 0), the honest T-leg necessity target.
+  SCORECARD (grand-strategy Q3 minimal conjunction): A(iff) LANDED, X(distinct +
+  non-degenerate) LANDED, V(guards) LANDED, C scaffolded (TYAreaLawSUN), T
+  honestly DOWNGRADED to channel-decomp with the genuine no-go now IN PROGRESS
+  (nn-nogo). ~20 commits this session; 2 real over-claims caught+fixed by red-team.
 - **HB26 (real ~10:25) - lane T + lane A LANDED + E8 committed.** (1) 025920d
   committed the E8-240 de-nativization (all 3 headlines VERIFIED to standard
   axioms). (2) 8207906 HARVESTED both 2h-rule finalize-partials, built in-repo:
