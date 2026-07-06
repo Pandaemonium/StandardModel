@@ -23,6 +23,12 @@ All submitted against the reused slim project
 | 5a7d6910 | A10a | AllMassFromNullEdges capstone claim-discipline audit | COMPLETE | - | HARVESTED + integrated (fd0541d); report saved |
 | 70c4b556 | A10b | **sm-allmass-strategy** (mission strategy) | SUBMITTED | ~03:15 | pending |
 | 28c6c395 | C1 | **sm-crux-subtree-reindex** child-block indexing alignment | SUBMITTED | ~13:45 | pending |
+| 09e1f4bd | C2 | **sm-cm-projector-audit** completely-monotone projector OS subtlety | SUBMITTED | ~08:25 | task 495ebedc IN_PROGRESS |
+| cee37f54 | C3 | **sm-clustering-to-gap** finite temporal clustering -> transfer spectral gap | SUBMITTED | ~08:25 | task 8bfeb197 IN_PROGRESS |
+| 567d98d0 | C4 | **sm-summable-defect-gap** abstract summable-defect gap transport | SUBMITTED | ~08:25 | task f67b9eae IN_PROGRESS |
+| fbca3b9d | C5 | **sm-frd-weak-audit** red-team continuum FRD / weak-coupling bridge | SUBMITTED | ~08:25 | task 3e48b3aa IN_PROGRESS |
+| 99b88d4d | C6 | **sm-local-cyclicity-sector** finite local cyclicity / sector-spanning prerequisite | SUBMITTED | ~08:25 | task 50192964 IN_PROGRESS |
+| f0973966 | C7 | **sm-area-law-transport** scalar Wilson area-law transport bookkeeping | SUBMITTED | ~08:25 | task 671d797b RUNNING |
 | ~~938f8068~~ | - | grand-strategy-review = NUMBER-THEORY project (Eisenstein-Goldbach) | COMPLETE | - | IGNORE (not this run) |
 
 ### NAMING CONVENTION (user request, 2026-07-06 ~01:15)
@@ -182,6 +188,16 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   (7d16da48) - OS/GNS reconstruction -> self-adjoint transfer operator + spectral
   gap on the connected slab (the Euclidean->Minkowski step). Fleet: slab-signrep,
   character-expansion, os-reconstruction running.
+- **HB19 (real ~06:25):** Per user request, submitted the remaining six
+  Faizal-Shabir-inspired jobs after source-mining:
+  sm-cm-projector-audit (09e1f4bd), sm-clustering-to-gap (cee37f54),
+  sm-summable-defect-gap (567d98d0), sm-frd-weak-audit (fbca3b9d),
+  sm-local-cyclicity-sector (99b88d4d), and sm-area-law-transport (f0973966).
+  Context packs generated under `AgentTasks/context-packs/`; prompts carry
+  project/task metadata. Package prep used `NoRemoteSpherePacking` because this
+  checkout has no active SpherePacking dependency block. Aristotle warned that
+  copied packages lack `.lake`; all six projects were still created. Initial task
+  status: five IN_PROGRESS, area-law transport QUEUED.
 - **HB17 (real ~04:40):** VERIFIED NEGATIVE #3 - slab-centerwitness (cc7f17d0)
   REFUTED slabFullBlock_centerWitness (trivial rep -> flux-blind -> no gap;
   confirms my e7f8f12 caveat). Corrected: TRIMMED SlabFullSpectrumGap to its true
