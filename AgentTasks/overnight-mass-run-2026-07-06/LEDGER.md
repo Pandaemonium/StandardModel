@@ -178,6 +178,26 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB22 (real ~07:50) - CYCLE after WIDE-run re-entry.** Committed
+  `CharacterExpansion.lean` (73fc2d7: finite-group char orthogonality via Mathlib
+  `FDRep.char_orthonormal` + Wilson-weight char expansion + Z2 explicit; 0 sorry,
+  standard axioms) + goal-prompt grand-strategy cadence -> ~2h. Fleet check:
+  7 RUNNING (mine: doubling-turn 3703ef99, spin10-audit b4deb30c, e8-denative
+  24a3e234, nbody-aperture a4366c05, clustering-slab 42830944; codex: frd-weak-audit
+  fbca3b9d, clustering-to-gap cee37f54), all <2h (oldest ~17min - 2h rule not
+  triggered). 3 IDLE (area-law-transport f0973966, local-cyclicity 99b88d4d,
+  summable-defect 567d98d0) = the codex jobs ALREADY harvested at HB20 (500fcb8) ->
+  RETIRED, no re-integrate. HOURLY red-team: submitted sm-charexp-audit (ff56ba39,
+  standalone pkg: CharacterExpansion + 3 deps) adversarially probing whether
+  `charCoeff_abs_le_trivCoeff`'s `‖chi‖<=1` hypothesis silently restricts the
+  "strong-coupling input" to ABELIAN groups (chi_R(1)=dim>1 fails it for every
+  nontrivial nonabelian irrep) + asking for the correct nonabelian dominance thm.
+  HOURLY lit-mine: scholarly meta-search surfaced + ingested Kanazawa 0808.3442
+  (Tomboulis-Yaffe RP mass-gap inequality, SU(N), Zotero K9FIBTZC, embedded) +
+  recorded 2 DOI-only Faizal-Shabir Int.J.Geom journal papers (Part 1/2). MINE:
+  wrote TOMBOULIS_YAFFE_ROUTE_MINE.md - TY is a KP-FREE alternative route to the
+  nonabelian gap whose RP->Cauchy-Schwarz->gap core matches what OSReconstruction
+  already has; candidate lane-C job independent of the parked Q6 crux.
 - **HB21 (real ~07:30) - WIDE 24h RUN LAUNCHED.** Goal re-centered:
   "full origin of mass from null edges", 24h, GO WIDE (saturate Aristotle's 10
   slots with independent non-gating jobs). Wrote JOB_BACKLOG.md (lanes A/T/C/X/B/V/L)

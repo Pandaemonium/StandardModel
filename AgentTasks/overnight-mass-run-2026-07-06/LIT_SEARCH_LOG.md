@@ -112,3 +112,28 @@ The normative mass doc cites Wilczek "mass without mass" as prose; now in-graph:
   primitive mass input, from an SU(3) holonomy. Worth a close read for the
   unification thesis.
 - **1811.02803** - "The origin of the nucleon mass" (modern lattice).
+
+## Round 3 (2026-07-06, WIDE-run cycle HB22) - nonabelian strong-coupling gap
+
+Frontier query: rigorous convergent character/cluster expansion, RP, nonabelian
+strong-coupling mass gap. `scholarly` meta-search (search-papers) is the working
+backend this cycle (arxiv/semantic-scholar single-backend returned empty for the
+long queries; inspirehep needs short queries).
+
+- **0808.3442** (INGESTED, Zotero `K9FIBTZC`) - Kanazawa, "Generalizing the
+  Tomboulis-Yaffe Inequality to SU(N) LGT and General Classical Spin Systems"
+  (Ann. Phys. 2009). RP -> a box insensitive to boundary conditions has a nonzero
+  mass gap; extended SU(2)->SU(N); strong-coupling expansion verifies the
+  insensitivity. MINED in `TOMBOULIS_YAFFE_ROUTE_MINE.md`: a KP-free route to the
+  nonabelian gap, algebraically close to our landed RP + OS machinery.
+- **DOI 10.1142/s0219887826501148** (recorded, DOI-only no arXiv) - Faizal-Shabir
+  "Reflection Positivity and a Finite-a Strong-Coupling Gap in Lattice SU(N)
+  Yang-Mills: Part(1)". Int.J.Geom.Methods journal companion to the blueprint
+  arXiv:2606.19362 (in graph as DOI 10.1002/prop.70097).
+- **DOI 10.1142/s0219887826501136** (recorded, DOI-only) - Faizal-Shabir Part(2),
+  "Reflection-Positive Renormalization and the Persistence of the Mass Gap":
+  step-scaling / gap-persistence-under-renormalization - the continuum-limit angle
+  our finite theorem deliberately does not claim.
+- Also seen (not new/not ingested): Kanwar-Wagman 2103.02602 (real-time LGT,
+  character expansion convergence via contour deformation); old pre-arXiv
+  strong-coupling mass-gap series (Nucl.Phys.B 1986/1987, SU(2) cluster expansion).
