@@ -32,6 +32,19 @@ agent + up to 10 concurrent Aristotle jobs. See
 - **`ElectroweakRung`** (A8, c925bfb) - gauge-invariant composite W,
   `wLikeMass_pos`, AND exact two-point exponential clustering. One unused
   Fradkin-Shenker handoff sorry.
+- **`neU4_closure_gap_pos`** + `slabRPBlock_posSemidef` (sm-slab-transfer,
+  8fec85d) - the NE-U4 "mass is the cost of closure" rung: the FIRST non-toy PSD
+  transfer block from the connected slab (arbitrary G), and the sector-restricted
+  center-flux closure gap is positive (honest fluxGap, disjoint sectors),
+  gap = -log(tanh beta). Full two-plaquette Gram spectrum = documented handoff.
+- **`SelfIncompatCex.selfIncompat_convergence_bound_false`** +
+  **`TailCex.tail_bound_false`** (A3, 841796a) - VERIFIED NEGATIVES: the
+  four-day-run's two downstream Q6 conclusions are FALSE as stated; kernel-checked
+  counterexamples + the corrected `..._plain` version. See
+  `Q6_DOWNSTREAM_FALSE_FINDING.md`. (Follow-up: revise StrongCouplingPolymerMap.)
+- **A1 crux DAG primitives** (841796a) - block partition / reindexing / weight
+  factorization for `pairSum_le_expBound`; crux narrowed to one residual (now
+  attacked by sm-crux-fibercount).
 - **GateYM axiom guard** (977b101) - 8 sorry-free spine flagships pinned
   (area law, Elitzur, RP kernel, Q5, center-flux gap, verified-negative KP).
 
