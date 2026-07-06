@@ -185,11 +185,20 @@ theorem charCoeff_real (beta : ℝ)
   exact Finset.sum_congr rfl fun _ _ => by rw [ wilsonWeightFun_inv beta rho hmul hone hunit ] ;
 
 /-
-**Strong-coupling domination (character bounded by one).** If a character
-`χ` has `|χ(g)| ≤ 1` for all `g` (as for every irreducible of an ABELIAN group,
-whose irreducibles are one-dimensional unitary), then the trivial coefficient
+**Strong-coupling domination, `|χ| ≤ 1` case (dimension-one / abelian).** If a
+character `χ` has `|χ(g)| ≤ 1` for all `g`, then the trivial coefficient
 dominates: `|c_R(β)| ≤ c_triv(β)`.  Since `w ≥ 0`, this is the triangle
-inequality.  This is the input the strong-coupling character expansion needs.
+inequality.
+
+SCOPE CAVEAT (semantic audit 2026-07-06, job `907dbd61`): the hypothesis
+`hbound` is satisfiable **iff `dim R = 1`** (evaluate at `g = 1`:
+`χ_R(1) = dim R` by `FDRep.char_one`, so `‖χ_R(1)‖ ≤ 1 ⟹ dim R = 1`; conversely a
+1-dimensional rep sends each `g` to a root of unity).  This covers every
+irreducible of an ABELIAN group (all 1-dimensional), but for a NONABELIAN group
+it EXCLUDES the genuinely nonabelian `dim ≥ 2` irreducibles - in particular the
+SU(2) (dim 2) and SU(3) (dim 3) fundamentals.  So this lemma is NOT by itself the
+strong-coupling input for nonabelian Yang-Mills; the honest nonabelian bound
+carries the dimension factor and is `charCoeff_abs_le_dim_mul_trivCoeff` below.
 -/
 theorem charCoeff_abs_le_trivCoeff (beta : ℝ)
     (rho : G → Matrix (Fin n) (Fin n) ℂ) (R : FDRep ℂ G)
@@ -200,6 +209,76 @@ theorem charCoeff_abs_le_trivCoeff (beta : ℝ)
   gcongr;
   refine' le_trans ( norm_sum_le _ _ ) _;
   exact Finset.sum_le_sum fun x _ => by simpa [ abs_of_nonneg ( show 0 ≤ wilsonWeightFun beta rho x from Real.exp_nonneg _ ) ] using mul_le_mul_of_nonneg_left ( hbound x ) ( show 0 ≤ wilsonWeightFun beta rho x from Real.exp_nonneg _ ) ;
+
+/-- **`|tr U| ≤ n` for a unitary `n x n` complex matrix.**  Each diagonal entry
+has modulus `≤ 1` (a column of a unitary matrix is a unit vector), so the trace -
+a sum of `n` such entries - has modulus `≤ n`.  This is the one genuinely new
+ingredient behind the correct nonabelian character bound (semantic audit
+2026-07-06). -/
+theorem trace_unitary_norm_le (m : ℕ) (U : Matrix (Fin m) (Fin m) ℂ)
+    (hU : Uᴴ * U = 1) : ‖Matrix.trace U‖ ≤ m := by
+  have hcol : ∀ i, ‖U i i‖ ≤ 1 := by
+    intro i
+    have hdiag : (Uᴴ * U) i i = 1 := by rw [hU]; simp
+    rw [Matrix.mul_apply] at hdiag
+    have hsum : ∑ k, ‖U k i‖ ^ 2 = 1 := by
+      have hcast : (∑ k, (‖U k i‖ : ℂ) ^ 2) = 1 := by
+        rw [← hdiag]
+        refine Finset.sum_congr rfl fun k _ => ?_
+        rw [Matrix.conjTranspose_apply, ← starRingEnd_apply, Complex.conj_mul']
+      have hre := congrArg Complex.re hcast
+      rw [Complex.re_sum, Complex.one_re] at hre
+      rw [← hre]
+      refine Finset.sum_congr rfl fun k _ => ?_
+      rw [← Complex.ofReal_pow, Complex.ofReal_re]
+    have hterm : ‖U i i‖ ^ 2 ≤ ∑ k, ‖U k i‖ ^ 2 :=
+      Finset.single_le_sum (f := fun k => ‖U k i‖ ^ 2)
+        (fun k _ => sq_nonneg _) (Finset.mem_univ i)
+    rw [hsum] at hterm
+    nlinarith [norm_nonneg (U i i)]
+  calc ‖Matrix.trace U‖ = ‖∑ i, U i i‖ := by rw [Matrix.trace]; rfl
+    _ ≤ ∑ i, ‖U i i‖ := norm_sum_le _ _
+    _ ≤ ∑ _i : Fin m, (1 : ℝ) := Finset.sum_le_sum (fun i _ => hcol i)
+    _ = m := by simp
+
+/-- **`‖χ_R(g)‖ ≤ χ_R(1) = dim R`.**  The character-norm bound for any
+finite-dimensional complex rep of a finite group, via the project's own unitary
+matrix model (the same one `character_inv_eq_conj` destructs).  This is the
+missing ingredient flagged in `FusionTransferSpectrum.wilsonStringTension`. -/
+theorem char_norm_le_char_one (R : FDRep ℂ G) (g : G) :
+    ‖R.character g‖ ≤ (R.character 1).re := by
+  obtain ⟨m, rho', _hmul', hone', hunit', hmodel⟩ :=
+    FDRepUnitarizable.fdRep_exists_unitary_matrix_model R
+  have h1 : (R.character 1).re = (m : ℝ) := by
+    rw [hmodel 1, hone', Matrix.trace_one]; simp
+  rw [hmodel g, h1]
+  exact trace_unitary_norm_le m (rho' g) (hunit' g)
+
+/-- **Correct nonabelian strong-coupling dominance.**  No `‖χ‖ ≤ 1` hypothesis:
+the honest bound carries the dimension factor `dim R = (χ_R 1).re ≥ 0`,
+`‖c_R(β)‖ ≤ dim(R) · c_triv(β)`.  This applies to EVERY finite-dimensional `R`,
+including the SU(2)/SU(3) fundamentals excluded by `charCoeff_abs_le_trivCoeff`,
+and is what drives the normalized fusion eigenvalue bound `‖γ_R‖ ≤ 1` and hence
+`wilsonStringTension ≥ 0`.  Proved by the same triangle inequality as the `|χ|≤1`
+case, but with `char_norm_le_char_one` in place of the `hbound` hypothesis. -/
+theorem charCoeff_abs_le_dim_mul_trivCoeff (beta : ℝ)
+    (rho : G → Matrix (Fin n) (Fin n) ℂ) (R : FDRep ℂ G) :
+    ‖charCoeff beta rho R‖ ≤ (R.character 1).re * trivCoeff beta rho := by
+  calc ‖charCoeff beta rho R‖
+      = (Fintype.card G : ℝ)⁻¹ *
+          ‖∑ g : G, (wilsonWeightFun beta rho g : ℂ) * conj (R.character g)‖ := by
+        rw [charCoeff, norm_mul, norm_inv, Complex.norm_natCast]
+    _ ≤ (Fintype.card G : ℝ)⁻¹ *
+          ∑ g : G, wilsonWeightFun beta rho g * (R.character 1).re := by
+        gcongr
+        refine le_trans (norm_sum_le _ _) ?_
+        refine Finset.sum_le_sum fun g _ => ?_
+        rw [norm_mul, Complex.norm_conj,
+          Complex.norm_of_nonneg (wilsonWeightFun_nonneg beta rho g)]
+        exact mul_le_mul_of_nonneg_left (char_norm_le_char_one R g)
+          (wilsonWeightFun_nonneg beta rho g)
+    _ = (R.character 1).re * trivCoeff beta rho := by
+        rw [trivCoeff, ← Finset.sum_mul]; ring
 
 end Expansion
 

@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.AreaLawTransport
 import PhysicsSM.Draft.NullEdge.GateYM.CMProjectorOS
 import PhysicsSM.Draft.NullEdge.GateYM.LocalCyclicitySector
 import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
+import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -90,5 +91,11 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly.slabGapAssembly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly.slabGapAssembly
+
+/-! ## Correct NONABELIAN strong-coupling character dominance (audit-fixed headline) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion.charCoeff_abs_le_dim_mul_trivCoeff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion.charCoeff_abs_le_dim_mul_trivCoeff
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
