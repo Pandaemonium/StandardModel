@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.SharedSpinorModule
 import PhysicsSM.Draft.NullEdge.GateI1.ColorBlindMass
 import PhysicsSM.Draft.NullEdge.GateI1.ColorBlindMassOrbit
 import PhysicsSM.Draft.NullEdge.GateI1.ChargeGradingMassCompatible
+import PhysicsSM.Draft.NullEdge.GateI1.MassTaxonomySeparation
 import PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone
 
 /-!

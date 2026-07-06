@@ -68,12 +68,13 @@ Claim label: **program synthesis** (a bundling of proved finite identities; no
 new mathematics). This is a CONJUNCTION, NOT a proven single mechanism: the four
 obstructions share a MECHANISM SHAPE (relational obstruction to null transport),
 and F-YM-CONFLATE stays constitution-grade - the taxonomy rows must be kept
-distinct as theorems. That distinctness guard (the four mass functionals proved
-provably DISTINCT) is a SEPARATE target of this run (the `MassTaxonomySeparation`
-theorem is NOT yet in the tree); until it lands, the honesty of the bundling
-rests on the four conjuncts using four INDEPENDENT functionals with no cross-row
-inference in the proof (a plain `⟨_,_,_,_⟩`), which is verified here but is
-weaker than a proved-distinctness guard. What this capstone is NOT: it is NOT the
+distinct as theorems. That distinctness guard is now DISCHARGED by the companion
+theorem `MassTaxonomySeparation.massTaxonomy_functionals_pairwise_separated`
+(the four mass functionals - bare `quarkMassParameter`, Wilson regulator,
+closure `z2GlueballMass`, composite aperture - proved PAIRWISE DISTINCT with
+concrete witnesses, standard axioms), so the bundling here does not conflate
+rows: the conjuncts use independent functionals AND those functionals are proved
+non-proportional. What this capstone is NOT: it is NOT the
 physical Yang-Mills mass gap (conjunct 1 is a finite toy; the real gap is
 off-ladder), NOT a continuum statement, and NOT a numerical mass value. The
 octonion conjunct (2) is the honest NEGATIVE co-location verdict, not a

@@ -40,6 +40,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquettePositivity
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonCutPlaquetteEnsemble
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteExample
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteFamily
+import PhysicsSM.Draft.NullEdge.GateYM.WilsonSlabConnected
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
