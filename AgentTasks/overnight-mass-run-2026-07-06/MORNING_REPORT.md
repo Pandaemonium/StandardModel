@@ -132,8 +132,13 @@ third-mode shared STRUCTURE (`ObstructionScalar`) also landed - see Headline.
 - Q6 downstream KP conclusions FALSE as stated (`Q6_DOWNSTREAM_FALSE_FINDING.md`).
 - Fermionic RP-F N5 Gram crux FALSE on periodic time circle
   (`FERMIONIC_RPF_CRUX_FALSE_FINDING.md`).
-Both from Aristotle jobs correctly refusing to fabricate; both with the corrected
-direction recorded.
+- Full-slab center-witness FALSE for the TRIVIAL rep (flux-blind; single positive
+  eigenvalue) - `SlabCenterWitness.slabFullBlock_no_centerWitness`; the corrected
+  SlabFullSpectrumGap was trimmed to its true PSD/Hermitian core, and the corrected
+  direction (SIGN rep) is in flight.
+THREE verified negatives, all from Aristotle jobs correctly refusing to fabricate;
+each with its corrected direction recorded. The self-red-teaming worked: two of
+these (fermionic, slab center-witness) confirmed caveats I had flagged.
 
 ## Claim-discipline audits
 

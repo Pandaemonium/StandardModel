@@ -139,6 +139,14 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB17 (real ~04:40):** VERIFIED NEGATIVE #3 - slab-centerwitness (cc7f17d0)
+  REFUTED slabFullBlock_centerWitness (trivial rep -> flux-blind -> no gap;
+  confirms my e7f8f12 caveat). Corrected: TRIMMED SlabFullSpectrumGap to its true
+  PSD/Hermitian core (removed the false theorems + 2 sorries), added
+  SlabCenterWitness.lean (explicit matrix + dichotomy + refutation, 0 sorry);
+  committed 06c930e. Refill: sm-slab-signrep (87dedce9) - the CORRECTED full-block
+  gap via the SIGN rep (which separates Z2 classes -> genuine flux dependence).
+  Fleet: crux-3 (6f06b234) + slab-signrep running. 3 verified negatives now.
 - **HB16 (real ~04:00):** Harvested crux-2 (fiber_value_bound - crux residual now
   ONE integer inequality) + fermionic-singlecut (2d60b78f -> FermionicSingleCutRP,
   0 sorry: RP-F on CORRECTED single-cut geometry with the decisive P+ vs -gamma0
