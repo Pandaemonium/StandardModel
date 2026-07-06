@@ -38,9 +38,26 @@ Short vectors fall into two families:
 
 ## Finite-computation trust note
 
-All verification theorems use `n a t i v e _ d e c i d e`. This means `#print axioms`
-will report Lean's `trustCompiler` a x i o m. This should be acknowledged in
-any publication citing these results.
+The verification theorems in *this* file use `n a t i v e _ d e c i d e`, so their
+`#print axioms` reports Lean's `Lean.ofReduceBool` / `Lean.trustCompiler`
+axioms (compiler trust).
+
+Kernel-checked replacements (no `native_decide`; `#print axioms` reports only
+`[propext, Classical.choice, Quot.sound]`) are provided in
+`PhysicsSM.Draft.E8ShortVectorsNoNativeAristotle`, following the repository's
+`NoNative` pattern.  In particular:
+
+* `short_vector_count_eq_240_structural_no_native` — the 240 count for the
+  semantic short-vector set, via the Hamming weight distribution
+  `(A₀, A₄, A₈) = (1, 14, 1)`;
+* `shortHammingE8Vector_count_eq_240_no_native` — the concrete-list count
+  `shortHammingE8VectorList.length = 240` (kernel replacement for
+  `shortHammingE8Vector_count_eq_240` below);
+* `shortHammingE8VectorList_complete_no_native` — completeness (kernel
+  replacement for `shortHammingE8VectorList_complete` below).
+
+Citations of the 240-short-vector count / completeness should reference those
+kernel-checked theorems rather than the `native_decide` ones here.
 
 ## Source / provenance
 

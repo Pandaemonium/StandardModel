@@ -92,8 +92,14 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 - [ ] anomaly-from-Qop: extend beyond the U(1) linear/cubic sums
 
 ## Lane V - TRUST CONSOLIDATION (hardens the whole)
-- [ ] de-nativize E8-240: kernel-checked (no native_decide) enumeration of the
-      240 short vectors + completeness (NoNative pattern)
+- [x] de-nativize E8-240 (sm-e8-denative d2e2dbb8): kernel-checked (no
+      native_decide) 240 short-vector count + completeness in
+      E8ShortVectorsNoNativeAristotle.lean - `short_vector_count_eq_240_structural_no_native`,
+      `shortHammingE8Vector_count_eq_240_no_native`,
+      `shortHammingE8VectorList_complete_no_native` all audit to
+      [propext, Classical.choice, Quot.sound] (verified). Type-2 nodup via
+      structural eightfold flatMap (no 3^8 enum). E8ShortVectors.lean trust note
+      points citations at the kernel replacements. Genuine trust narrowing.
 - [ ] reroute `StrongCouplingPolymerMap` off the FALSE
       `kp_convergence_bound_of_selfIncompatible` to the `_plain` version, then
       DELETE the 2 known-false downstream theorems (coordinate with Codex)

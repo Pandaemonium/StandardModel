@@ -102,13 +102,13 @@ lemma svCodeW0_exactly_one_nonzero (f : Fin 8 → Fin 5) (hf : f ∈ svCodeW 0) 
     refine' Finset.sum_congr rfl fun i _ => _;
     convert shortValList_sq_even ( f i ) ( svCodeW0_coords_even f hf i ) using 1 ;
   simp_all +decide [ Finset.sum_ite ];
-  exact?
+  exact (Fintype.existsUnique_iff_card_one fun a ↦ ¬f a = 2).mpr h_sqNorm
 
 lemma w0Encode_surj (f : Fin 8 → Fin 5) (hf : f ∈ svCodeW 0) :
     ∃ p : Fin 8 × Fin 2, w0Encode p = f := by
   -- By definition of $w0Encode$, there exists a unique $i$ such that $f i \neq 2$.
-  obtain ⟨i, hi⟩ : ∃! i : Fin 8, f i ≠ 2 := by
-    exact?;
+  obtain ⟨i, hi⟩ : ∃! i : Fin 8, f i ≠ 2 :=
+    svCodeW0_exactly_one_nonzero f hf
   -- Since $f i \neq 2$ and $f i$ is even, we have $f i = 0$ or $f i = 4$.
   have h_f_i : f i = 0 ∨ f i = 4 := by
     have := svCodeW0_coords_even f hf i; aesop;
@@ -249,8 +249,7 @@ lemma paddedSet_card (c : BinaryVector 8) (hw : hammingWeight c = 4) :
     (paddedSet c).card = 16 := by
   revert hw; revert c; decide
 
-lemma w4Lift_image_card (c : BinaryVector 8)
-    (hc : c ∈ extendedHamming8) (hw : hammingWeight c = 4) :
+lemma w4Lift_image_card (c : BinaryVector 8) (hw : hammingWeight c = 4) :
     (Finset.univ.image (w4Lift c)).card = 16 := by
   rw [w4Lift_image_eq_padded, Finset.card_image_of_injOn (w4Lift_injOn_padded c), paddedSet_card c hw]
 
@@ -301,8 +300,36 @@ lemma svCodeW4_card_no_native :
   conv_rhs => rw [extendedHamming8WeightDist]
   rw [Finset.sum_congr hfilt (fun c hc => by
     have hm := (Finset.mem_filter.mp hc).2
-    exact w4Lift_image_card c hm.1 hm.2)]
+    exact w4Lift_image_card c hm.2)]
   simp [Finset.sum_const]
+
+/-! ## No-native partition of the short-vector code by residue weight
+
+The structural draft's `svCode_partition` routes through
+`extendedHamming8_weight_support`, whose proof is `n a t i v e _ d e c i d e`.
+We re-derive the trichotomy and the partition here through the kernel-checked
+`extendedHamming8_weight_support_no_native`, so that the assembled 240-count
+carries no compiler-trust axioms. -/
+
+/-- No-native replacement for `svCode_weight_trichotomy`: every short-vector
+code has residue weight 0, 4, or 8 (via the kernel-checked weight support). -/
+lemma svCode_weight_trichotomy_no_native (f : Fin 8 → Fin 5) (hf : f ∈ svCode) :
+    hammingWeight (reduceModTwo (decode5 f)) = 0 ∨
+    hammingWeight (reduceModTwo (decode5 f)) = 4 ∨
+    hammingWeight (reduceModTwo (decode5 f)) = 8 :=
+  extendedHamming8_weight_support_no_native _ (Finset.mem_filter.mp hf).2.1
+
+/-- No-native replacement for `svCode_partition`. -/
+lemma svCode_partition_no_native : svCode = svCodeW 0 ∪ svCodeW 4 ∪ svCodeW 8 := by
+  ext f
+  simp only [svCodeW, Finset.mem_union, Finset.mem_filter]
+  constructor
+  · intro hf
+    rcases svCode_weight_trichotomy_no_native f hf with h | h | h
+    · exact Or.inl (Or.inl ⟨hf, h⟩)
+    · exact Or.inl (Or.inr ⟨hf, h⟩)
+    · exact Or.inr ⟨hf, h⟩
+  · rintro ((⟨hf, -⟩ | ⟨hf, -⟩) | ⟨hf, -⟩) <;> exact hf
 
 /-! ## Assembly -/
 
@@ -312,7 +339,7 @@ lemma svCode_card_eq_formula_no_native :
   have hd04 := svCodeW_disjoint 0 4 (by omega)
   have hd08 := svCodeW_disjoint 0 8 (by omega)
   have hd48 := svCodeW_disjoint 4 8 (by omega)
-  rw [svCode_partition]
+  rw [svCode_partition_no_native]
   rw [Finset.card_union_of_disjoint (Finset.disjoint_union_left.mpr ⟨hd08, hd48⟩)]
   rw [Finset.card_union_of_disjoint hd04]
   rw [svCodeW0_card_no_native, svCodeW4_card_no_native, svCodeW8_card_no_native]
@@ -326,5 +353,203 @@ theorem short_vector_count_eq_240_structural_no_native :
     extendedHamming8_weight_zero_count_no_native,
     extendedHamming8_weight_four_count_no_native,
     extendedHamming8_weight_eight_count_no_native]
+
+/-! ## Bridge to the concrete `shortHammingE8VectorList`
+
+The flagship file `PhysicsSM.Coding.E8ShortVectors` proves both
+`shortHammingE8VectorList.length = 240` and completeness of the concrete list
+by `n a t i v e _ d e c i d e`.  Here we re-derive kernel-checked versions of
+both statements, bridging the concrete enumeration `shortHammingE8VectorList`
+to the structural `svCode`/`hammingE8ShortVectorSet` count above. -/
+
+/-
+Membership characterisation of the type-1 short-vector list `shortVecType1`
+(the `±2eᵢ`).
+-/
+lemma mem_shortVecType1_iff (z : Fin 8 → ℤ) :
+    z ∈ shortVecType1 ↔
+      ∃ (i : Fin 8) (s : ℤ), (s = 2 ∨ s = -2) ∧ z = fun k => if k = i then s else 0 := by
+  unfold shortVecType1; simp +decide [ List.mem_flatMap, List.mem_map ] ;
+
+/-
+Membership characterisation of the type-2 short-vector list `shortVecType2`
+(the `±1`-on-support codeword lifts): a vector is listed iff all its coordinates
+lie in `{-1, 0, 1}` and it is a genuine short vector.
+-/
+lemma mem_shortVecType2_iff (z : Fin 8 → ℤ) :
+    z ∈ shortVecType2 ↔
+      (∀ i, z i = -1 ∨ z i = 0 ∨ z i = 1) ∧ isShortHammingE8Vector z := by
+  constructor
+  · intro h
+    unfold shortVecType2 at h
+    simp only [bind, List.mem_flatMap, List.mem_cons, List.mem_singleton, List.not_mem_nil,
+      or_false, pure, guard] at h
+    obtain ⟨c0,hc0,c1,hc1,c2,hc2,c3,hc3,c4,hc4,c5,hc5,c6,hc6,c7,hc7,u,hmem,rfl⟩ := h
+    have hshort : isShortHammingE8Vector ![c0,c1,c2,c3,c4,c5,c6,c7] := by
+      by_contra hns; rw [if_neg hns] at hmem; cases hmem
+    exact ⟨fun i => by fin_cases i <;> assumption, hshort⟩
+  · rintro ⟨hcoord, hshort⟩
+    have hz : z = ![z 0, z 1, z 2, z 3, z 4, z 5, z 6, z 7] := by
+      funext i; fin_cases i <;> rfl
+    have hshort' : isShortHammingE8Vector ![z 0, z 1, z 2, z 3, z 4, z 5, z 6, z 7] :=
+      hz ▸ hshort
+    unfold shortVecType2
+    simp only [bind, List.mem_flatMap, List.mem_cons, List.mem_singleton, List.not_mem_nil,
+      or_false, pure, guard]
+    exact ⟨z 0, hcoord 0, z 1, hcoord 1, z 2, hcoord 2, z 3, hcoord 3, z 4, hcoord 4,
+      z 5, hcoord 5, z 6, hcoord 6, z 7, hcoord 7, (),
+      by rw [if_pos hshort']; exact List.mem_singleton.mpr rfl, hz⟩
+
+/-- Every `±2eᵢ` is a genuine short vector. -/
+lemma shortVecType1_isShort (i : Fin 8) (s : ℤ) (hs : s = 2 ∨ s = -2) :
+    isShortHammingE8Vector (fun k => if k = i then s else 0) := by
+  constructor
+  · rw [mem_e8IntLattice_iff]
+    have hz0 : reduceModTwo (fun k => if k = i then s else 0) = 0 := by
+      ext k
+      simp only [reduceModTwo_apply, Pi.zero_apply]
+      by_cases hk : k = i <;> simp [hk] <;> rcases hs with rfl | rfl <;> decide
+    rw [hz0]; exact Submodule.zero_mem _
+  · unfold sqNorm
+    rw [Finset.sum_eq_single i]
+    · simp; rcases hs with rfl | rfl <;> decide
+    · intro b _ hb; simp [hb]
+    · intro h; exact absurd (Finset.mem_univ i) h
+
+/-- No-native replacement for `shortHammingE8VectorList_all_isShort`: every
+vector in the concrete list is a short vector. -/
+lemma shortHammingE8VectorList_all_isShort_no_native (z : Fin 8 → ℤ)
+    (hz : z ∈ shortHammingE8VectorList) : isShortHammingE8Vector z := by
+  rcases List.mem_append.mp hz with h | h
+  · obtain ⟨i, s, hs, rfl⟩ := (mem_shortVecType1_iff z).mp h
+    exact shortVecType1_isShort i s hs
+  · exact ((mem_shortVecType2_iff z).mp h).2
+
+/-- No-native replacement for `shortHammingE8VectorList_complete`: every short
+vector of the Hamming Construction A lattice appears in the concrete list. -/
+lemma shortHammingE8VectorList_complete_no_native (z : Fin 8 → ℤ)
+    (hz : isShortHammingE8Vector z) : z ∈ shortHammingE8VectorList := by
+  have hde : decode5 (encode5 z) = z := decode5_encode5 z hz.2
+  have hf : encode5 z ∈ svCode := by
+    rw [svCode, Finset.mem_filter]
+    exact ⟨Finset.mem_univ _, by rw [hde]; exact hz⟩
+  rw [shortHammingE8VectorList, List.mem_append]
+  rcases svCode_weight_trichotomy_no_native (encode5 z) hf with hw | hw | hw
+  · -- residue weight 0: `z = ±2eᵢ` is a type-1 vector
+    left
+    have hf0 : encode5 z ∈ svCodeW 0 := Finset.mem_filter.mpr ⟨hf, hw⟩
+    rw [svCodeW0_eq_image] at hf0
+    obtain ⟨⟨j, t⟩, -, hp⟩ := Finset.mem_image.mp hf0
+    rw [mem_shortVecType1_iff]
+    refine ⟨j, if t = 0 then -2 else 2, by split <;> simp, ?_⟩
+    rw [← hde, ← hp]
+    funext k
+    simp only [decode5, w0Encode]
+    by_cases hk : k = j <;> simp [hk] <;> fin_cases t <;> simp [shortValList]
+  · -- residue weight 4: `z` has `±1` on a codeword support, a type-2 vector
+    right
+    have hf4 : encode5 z ∈ svCodeW 4 := Finset.mem_filter.mpr ⟨hf, hw⟩
+    obtain ⟨s, hs⟩ := svCodeW4_is_w4Lift (encode5 z) hf4
+    set c := reduceModTwo (decode5 (encode5 z)) with hc
+    rw [mem_shortVecType2_iff]
+    have hzeq : z = decode5 (w4Lift c s) := by rw [← hde, hs]
+    refine ⟨fun i => ?_, hz⟩
+    rw [hzeq]
+    simp only [decode5, w4Lift]
+    by_cases h0 : c i = 0
+    · simp [h0, shortValList]
+    · by_cases h1 : s i = 0 <;> simp [h0, h1, shortValList]
+  · -- residue weight 8: impossible, `sqNorm ≥ 8 > 4`
+    exfalso
+    have hf8 : encode5 z ∈ svCodeW 8 := Finset.mem_filter.mpr ⟨hf, hw⟩
+    rw [svCodeW8_empty] at hf8
+    exact absurd hf8 (Finset.notMem_empty _)
+
+/-- The type-1 short-vector list has no duplicates (16 distinct `±2eᵢ`). -/
+lemma shortVecType1_nodup : shortVecType1.Nodup := by decide
+
+/-- Coordinate-discriminator helper for nodup of a `flatMap`: if every vector
+produced in the branch for `c` has its `k`-th coordinate equal to `c`, then the
+branches are pairwise disjoint, so the flattened list is nodup whenever the
+index list is nodup and each branch is nodup. -/
+theorem nodup_flatMap_coord (L : List ℤ) (hL : L.Nodup) (k : Fin 8)
+    (g : ℤ → List (Fin 8 → ℤ))
+    (h1 : ∀ c ∈ L, (g c).Nodup)
+    (h2 : ∀ c, ∀ v ∈ g c, v k = c) :
+    (L.flatMap g).Nodup := by
+  rw [List.nodup_flatMap]
+  refine ⟨h1, hL.imp ?_⟩
+  intro a b hab v hva hvb
+  exact hab ((h2 a v hva).symm.trans (h2 b v hvb))
+
+/-- The type-2 short-vector list has no duplicates.
+
+Proof: the guard-carrying `do`-comprehension is an eightfold `flatMap` over
+`[-1,0,1]`, followed by a `guard` and a `pure`.  Each vector produced in the
+branch for a fixed leading coordinate `c` has that coordinate equal to `c`, so
+distinct branches are disjoint (`nodup_flatMap_coord`); the innermost list has
+length `≤ 1`.  No enumeration of the `3^8` cases is needed. -/
+lemma shortVecType2_nodup : shortVecType2.Nodup := by
+  unfold shortVecType2
+  refine nodup_flatMap_coord _ (by decide) 0 _ (fun c0 _ => ?_) (fun c0 v hv => ?_)
+  · refine nodup_flatMap_coord _ (by decide) 1 _ (fun c1 _ => ?_) (fun c1 v hv => ?_)
+    · refine nodup_flatMap_coord _ (by decide) 2 _ (fun c2 _ => ?_) (fun c2 v hv => ?_)
+      · refine nodup_flatMap_coord _ (by decide) 3 _ (fun c3 _ => ?_) (fun c3 v hv => ?_)
+        · refine nodup_flatMap_coord _ (by decide) 4 _ (fun c4 _ => ?_) (fun c4 v hv => ?_)
+          · refine nodup_flatMap_coord _ (by decide) 5 _ (fun c5 _ => ?_) (fun c5 v hv => ?_)
+            · refine nodup_flatMap_coord _ (by decide) 6 _ (fun c6 _ => ?_) (fun c6 v hv => ?_)
+              · refine nodup_flatMap_coord _ (by decide) 7 _ (fun c7 _ => ?_) (fun c7 v hv => ?_)
+                · by_cases hp : isShortHammingE8Vector ![c0,c1,c2,c3,c4,c5,c6,c7] <;>
+                    simp [guard, hp, bind, pure, List.flatMap, show (failure : List Unit) = [] from rfl]
+                · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+                    List.mem_singleton, List.not_mem_nil, or_false] at hv
+                  obtain ⟨-, -, rfl⟩ := hv; rfl
+              · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+                  List.mem_singleton, List.not_mem_nil, or_false] at hv
+                obtain ⟨c7, -, -, -, rfl⟩ := hv; rfl
+            · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+                List.mem_singleton, List.not_mem_nil, or_false] at hv
+              obtain ⟨c6, -, c7, -, -, -, rfl⟩ := hv; rfl
+          · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+              List.mem_singleton, List.not_mem_nil, or_false] at hv
+            obtain ⟨c5, -, c6, -, c7, -, -, -, rfl⟩ := hv; rfl
+        · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+            List.mem_singleton, List.not_mem_nil, or_false] at hv
+          obtain ⟨c4, -, c5, -, c6, -, c7, -, -, -, rfl⟩ := hv; rfl
+      · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+          List.mem_singleton, List.not_mem_nil, or_false] at hv
+        obtain ⟨c3, -, c4, -, c5, -, c6, -, c7, -, -, -, rfl⟩ := hv; rfl
+    · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+        List.mem_singleton, List.not_mem_nil, or_false] at hv
+      obtain ⟨c2, -, c3, -, c4, -, c5, -, c6, -, c7, -, -, -, rfl⟩ := hv; rfl
+  · simp only [bind, pure, guard, List.mem_flatMap, List.mem_cons,
+      List.mem_singleton, List.not_mem_nil, or_false] at hv
+    obtain ⟨c1, -, c2, -, c3, -, c4, -, c5, -, c6, -, c7, -, -, -, rfl⟩ := hv; rfl
+
+/-- No-native replacement for `shortHammingE8VectorList_nodup`. -/
+lemma shortHammingE8VectorList_nodup_no_native :
+    shortHammingE8VectorList.Nodup := by
+  rw [shortHammingE8VectorList]
+  refine List.Nodup.append shortVecType1_nodup shortVecType2_nodup ?_
+  intro x hx1 hx2
+  obtain ⟨i, s, hs, rfl⟩ := (mem_shortVecType1_iff x).mp hx1
+  have hcoord := ((mem_shortVecType2_iff _).mp hx2).1 i
+  simp only [if_pos rfl] at hcoord
+  rcases hs with rfl | rfl <;> rcases hcoord with h | h | h <;> norm_num at h
+
+/-- No-native replacement for the 240 short-vector count in concrete-list form
+(`shortHammingE8Vector_count_eq_240`). -/
+theorem shortHammingE8Vector_count_eq_240_no_native :
+    shortHammingE8VectorList.length = 240 := by
+  have hset : hammingE8ShortVectorSet =
+      (↑shortHammingE8VectorList.toFinset : Set (Fin 8 → ℤ)) := by
+    ext z
+    simp only [hammingE8ShortVectorSet, Set.mem_setOf_eq, Finset.mem_coe, List.mem_toFinset]
+    exact ⟨fun h => shortHammingE8VectorList_complete_no_native z h,
+           fun h => shortHammingE8VectorList_all_isShort_no_native z h⟩
+  rw [← List.toFinset_card_of_nodup shortHammingE8VectorList_nodup_no_native]
+  have hcount := short_vector_count_eq_240_structural_no_native
+  rw [hset, Set.ncard_coe_finset] at hcount
+  exact hcount
 
 end PhysicsSM.Coding
