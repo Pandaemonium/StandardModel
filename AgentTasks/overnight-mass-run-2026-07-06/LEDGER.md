@@ -139,6 +139,10 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB15 (real ~02:55):** Fleet refilled (3 running): sm-crux-fibercount2
+  (9f4db6eb, crux), sm-fermionic-singlecut (2d60b78f, corrected RP-F geometry),
+  sm-slab-centerwitness (cc7f17d0, verify/prove the full-slab spectral claim's
+  TRUTH). ~6h to 9am; pacing realistic 15-min cycles, harvesting + refilling.
 - **TIME RECALIBRATION (real clock 02:54):** the HB "~HH:MM" labels above were
   NARRATIVE estimates, not the wall clock. Real time is ~02:54 (early morning);
   ~6 h remain to the 9am goal deadline. The run CONTINUES - substance of HB1-HB14
