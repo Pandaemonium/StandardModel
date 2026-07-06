@@ -6,6 +6,19 @@ minimal conjunction that would earn the headline. Every row states what is PROVE
 (kernel-checked, standard axioms `[propext, Classical.choice, Quot.sound]`, unless
 noted), what is MODELED (an explicit hypothesis, not derived), and what is OPEN.
 
+## GRAND CAPSTONE (2026-07-06, saturation push)
+
+`GrandMassCapstone.grandMassCapstone` now conjoins ONE kernel-checked representative
+per lane into a single honest theorem (standard axioms, guarded): (A) any-N
+massless-iff-collinear + aperture entropy iff; (T) the genuine crossing-count
+Nielsen-Ninomiya no-go + Ginsparg-Wilson; (C) the Z2 gap chain + Q8 string tension +
+TY scaffold; (X) taxonomy distinct + non-degenerate + no common carrier; (B) su(3)
+co-location + the octonion mass/color coupling; (V) all standard-axiom. It is a
+BUNDLE of distinct finite obstructions, each honestly graded - NOT the SU(N) YM gap,
+NOT continuum, NOT a physical-mass derivation. ~32 modules integrated this push
+across all lanes; 4 over-claims/hollow results caught and corrected. The full E8-240
+root system is now kernel-checked (no native_decide) via structural counting.
+
 ## The honest headline we can support TODAY
 
 > Three taxonomically-distinct, kernel-checked FINITE obstructions to null

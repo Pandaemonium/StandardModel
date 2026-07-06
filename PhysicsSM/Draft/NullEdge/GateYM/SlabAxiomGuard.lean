@@ -35,6 +35,9 @@ import PhysicsSM.Draft.NullEdge.GateYM.OverlapIndex
 import PhysicsSM.Draft.NullEdge.GateI1.MassFromMasslessNEU5
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState
 import PhysicsSM.Draft.NullEdge.GateI1.EWWMassSU2
+import PhysicsSM.Draft.NullEdge.GateI1.BindingMassQuantitative
+import PhysicsSM.Draft.NullEdge.GateI1.FradkinShenkerFinite
+import PhysicsSM.Draft.NullEdge.GrandMassCapstoneUnconditional
 import PhysicsSM.Draft.E8Root240NoNative
 import PhysicsSM.Draft.NullEdge.GrandMassCapstone
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
@@ -354,5 +357,19 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.EWWMassSU2.TransferBlock.wMass_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateI1.EWWMassSU2.TransferBlock.wMass_pos
+
+/-! ## Batch wave 8 (CULMINATION): the UNCONDITIONAL grand capstone, finite Fradkin-Shenker, quantitative binding mass -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GrandMassCapstoneUncond.grandMassCapstoneUnconditional' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GrandMassCapstoneUncond.grandMassCapstoneUnconditional
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.FradkinShenkerFinite.partitionFunction_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.FradkinShenkerFinite.partitionFunction_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.BindingMassQuantitative.compositeMassSq_eq_sin_half' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.BindingMassQuantitative.compositeMassSq_eq_sin_half
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
