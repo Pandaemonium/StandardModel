@@ -66,6 +66,19 @@ here before proceeding.
 
 ## Landed / rejected artifacts
 
+### SOURCE MINING (~06:30): Faizal-Shabir 2606.19362
+
+- Mined the arXiv source for `2606.19362`, "Reflection-Positive Construction of
+  a Four-Dimensional SU(N) Yang-Mills Theory with Mass Gap and Confinement."
+- Added detailed extraction note:
+  `AgentTasks/paper-units/faizal-shabir-2606-19362-mining.md`.
+- Updated the YM program roadmap, Q6 crux status, literature log, and
+  dynamical-simulation brief. Main import: use the paper as a
+  theorem-dependency map/audit checklist for RP transfer, KP/tree-graph
+  convergence, finite exponential-clustering-to-gap, and abstract
+  summable-defect transport. Main caution: do not import continuum FRD,
+  universality, or weak-coupling claims as settled facts.
+
 ### CODEX CRUX CONTINUATION (~11:45): subtree-reindexing layer advanced
 
 - Harvested Aristotle project `0feb82f9` (`sm-crux-fibercount4`): no code diff,

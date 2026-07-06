@@ -285,11 +285,17 @@ treatment of the KP criterion is Fernandez-Procacci `math-ph/0605041`
 labeled-tree injection the Q6 crux is currently stuck on (see
 `AgentTasks/overnight-mass-run-2026-07-06/CRUX_PARKED_STATUS.md`); Scott-Sokal
 `cond-mat/0309352` for the tree-bound / independent-set-polynomial view. For
-the END-TO-END target, `2606.19362` (2026) is a full reflection-positive
-construction of 4D SU(N) YM with mass gap and confinement via exactly this
-RP -> transfer-gap + convergent character/polymer expansion -> exponential
-clustering -> OS-reconstruction chain - the closest published blueprint for
-this entire rung. Deliverable: **formalized confinement and mass gap at strong coupling**
+the end-to-end audit roadmap, `2606.19362` (2026; mined in
+`AgentTasks/paper-units/faizal-shabir-2606-19362-mining.md`) is the closest
+recent reflection-positive blueprint: Wilson lattice RP -> positive transfer
+operator -> strong-coupling character/polymer expansion -> temporal clustering
+and finite-a gap -> gauge-covariant FRD/locality -> interlacing with summable
+defects -> OS reconstruction/universality, with a claimed weak-coupling
+identification. Use it as a theorem-dependency map and audit checklist, not as
+settled prior art. Immediate imports for YM4 are the finite strong-coupling
+base, exponential-clustering-to-gap, and abstract summable-defect transport;
+the gauge-covariant FRD and weak-coupling entry claims belong to YM5/YM6 audit
+territory. Deliverable: **formalized confinement and mass gap at strong coupling**
 - the strongest statement anyone could certify today about 4D lattice YM,
 and the ladder's central medium-horizon prize-adjacent milestone. Honest
 scope guard: strong coupling is the WRONG side of the continuum limit
@@ -467,11 +473,14 @@ at.
 > (Fernandez-Procacci `math-ph/0605041`, inductive `2001.00652`, Scott-Sokal
 > `cond-mat/0309352`, Procacci `0707.0016`); reflection positivity
 > (Jaffe-Janssens `1506.04197` for Majorana/fermionic RP, `1802.09037` general
-> RP); and - directly on this program's summit - a 2026 reflection-positive
-> construction of 4D SU(N) YM with mass gap + confinement, `2606.19362`. The
-> classical Osterwalder-Seiler (1978) and Kotecky-Preiss (1986) originals remain
-> pre-arXiv (still verify against the primary sources). See
-> `AgentTasks/overnight-mass-run-2026-07-06/LIT_SEARCH_LOG.md`.
+> RP); and - directly on this program's summit - the 2026 Faizal-Shabir
+> reflection-positive construction claim, `2606.19362`. This source has now
+> been mined as a blueprint/audit map, with explicit caution that the continuum
+> and weak-coupling claims are not imported as settled facts. See
+> `AgentTasks/paper-units/faizal-shabir-2606-19362-mining.md` and
+> `AgentTasks/overnight-mass-run-2026-07-06/LIT_SEARCH_LOG.md`. The classical
+> Osterwalder-Seiler (1978) and Kotecky-Preiss (1986) originals remain
+> pre-arXiv (still verify against the primary sources).
 
 
 Wilson (1974) strong-coupling confinement argument; Wegner (1971) Z2 gauge
@@ -704,7 +713,10 @@ RP-KER (DONE)
   `sum over clusters touching X, distance >= R  <= C_X exp(-m R)`.
   Statement freeze on top of `PolymerKPCriterion.lean` (which froze the
   CONDITION only). This is the single most reusable analysis asset in the
-  program (Measure Problem shares it).
+  program (Measure Problem shares it). The mined `2606.19362` source confirms
+  this exact role: its strong-coupling base passes through small activities ->
+  KP -> tree-graph/Ursell expansion -> distance-bridging clusters ->
+  exponential clustering.
 - **Q7 (strong-coupling polymer map; medium-hard; after Q6 freeze).** Map
   the finite-group character/plaquette expansion into the abstract polymer
   model and verify the KP condition for `beta < beta_0`, with
@@ -720,7 +732,10 @@ RP-KER (DONE)
   finite-volume (target: volume-uniform) spectral gap in the
   trivial-flux/local sector. The cyclicity/density of the local algebra in
   the vacuum sector is a NAMED prerequisite lemma, not a footnote -
-  another place a fake gap could slip in.
+  another place a fake gap could slip in. Extract from `2606.19362` only the
+  finite/abstract mechanism: temporal exponential clustering plus the transfer
+  spectral representation bounds the non-vacuum spectral radius. Do not import
+  any continuum or weak-coupling conclusion here.
 - **Q10 (infinite-volume local state via cluster series; after Q6-Q8).**
   Adopted route: define infinite-volume expectations of local observables
   DIRECTLY by the absolutely convergent cluster series and prove

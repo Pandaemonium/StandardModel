@@ -33,17 +33,23 @@ labeled-rooted-tree / tree-graph bound; these are the canonical machinery:
 ## For the RP-LINK / transfer-gap / sign-rep character-expansion lane
 
 - **2606.19362** - "Reflection-Positive Construction of a Four-Dimensional SU(N)
-  Yang-Mills Theory with Mass Gap and Confinement" (2026). *** THE most relevant
-  paper to the whole program. *** It builds exactly the project's Track A: a
-  reflection-positive lattice SU(N) formulation -> transfer operator with a
-  UNIFORM GAP; convergent CHARACTER (POLYMER) EXPANSIONS -> Wilson-loop AREA LAW;
-  a finite-range gauge-covariant MULTISCALE analysis with summable defects ->
-  EXPONENTIAL CLUSTERING + positive string tension; OSTERWALDER-SCHRADER
-  reconstruction -> Minkowski self-adjoint Hamiltonian with the spectral gap and
-  linear confinement. Directly informs: the Q6/Q7 polymer-convergence chain (its
-  character-expansion convergence is the crux's context), the RP-LINK ->
-  finiteMassGap lane, and the sign-rep character expansion for the full-slab gap.
-  The day team should mine it for the exact convergence + clustering arguments.
+  Yang-Mills Theory with Mass Gap and Confinement" (2026). Source-mined on
+  2026-07-06; detailed notes:
+  `AgentTasks/paper-units/faizal-shabir-2606-19362-mining.md`. This is the
+  closest recent blueprint for the project's Track A, but should be cited as a
+  recent claim/audit roadmap, NOT as settled resolution of the continuum mass
+  gap. Extracted spine: reflection-positive Wilson lattice -> positive transfer
+  operator -> strong-coupling character/polymer expansion -> area law + temporal
+  clustering -> finite-a transfer gap -> gauge-covariant FRD/locality ->
+  reflection-positive multiscale blocking -> interlacing with summable defects
+  -> OS limits/reconstruction -> universality by Lipschitz/telescoping ->
+  claimed weak-coupling identification. Best immediate imports: Q6/Q7
+  tree-graph/KP convergence, finite exponential-clustering-to-transfer-gap,
+  abstract summable-defect gap transport, and finite Wilson-loop area-law
+  transport. Audit cautions: the completely-monotone slice-projector proof needs
+  a precise half-operator statement; gauge fixing/FMR/ghost/horizon-projector
+  layers are avoidable in our finite first targets; gauge-covariant FRD and
+  weak-coupling entry are the load-bearing continuum audit points.
 - **1506.04197** - Jaffe & Janssens, "Characterization of Reflection Positivity:
   Majoranas and Spins" (2015). Necessary+sufficient RP conditions on a Clifford
   (Majorana) algebra with a reflection automorphism - the framework for the

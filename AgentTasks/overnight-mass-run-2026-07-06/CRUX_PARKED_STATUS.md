@@ -98,5 +98,9 @@ bound. These are now in the null-edge graph (collection `9W59V3K9`; search via
 - **`cond-mat/0309352`** (Scott-Sokal) - the tree bound via the independent-set
   polynomial; the Penrose/Shearer/Dobrushin lineage for the multiplicity count.
 - **`2606.19362`** (2026, RP construction of 4D SU(N) YM with mass gap) - the
-  convergent character/polymer expansion in exactly the Q6/Q7 context; mine for
-  the clustering assembly downstream of this crux.
+  source-mined blueprint confirms why this crux matters downstream: its
+  strong-coupling base uses small activities -> KP -> tree-graph/Ursell
+  expansion -> distance-bridging connected clusters -> exponential clustering
+  -> finite-a transfer gap. See
+  `AgentTasks/paper-units/faizal-shabir-2606-19362-mining.md`. Treat the paper
+  as an audit roadmap, not as a replacement for the formal Q6 proof.

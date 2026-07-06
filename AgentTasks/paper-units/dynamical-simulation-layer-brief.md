@@ -92,6 +92,18 @@ the transfer construction positive. One useful historical reference is Creutz
 which explicitly describes using transfer-matrix formalism to relate Wilson's
 lattice approach and the Kogut-Susskind Hamiltonian approach.
 
+A 2026 reference mined after the first version of this brief reinforces the
+same transfer-first architecture: Faizal-Shabir `2606.19362` organizes its
+claimed construction around reflection-positive Wilson lattice data, a positive
+transfer operator, strong-coupling character/polymer estimates, two-time
+clustering, and spectral-gap extraction from the transfer spectrum. For this
+project the safe import is practical and finite: the simulation layer should
+make the one-step transfer kernel, OS positivity checks, two-time correlators,
+sector blocks, and non-vacuum spectral radii explicit. The paper's continuum
+FRD, universality, and weak-coupling claims are audit targets, not assumptions
+for the first dynamical model. Detailed mining note:
+`AgentTasks/paper-units/faizal-shabir-2606-19362-mining.md`.
+
 For the first implementation, use the finite group Z2 with elements encoded as
 `+1` and `-1`. Later examples can move to Z3, S3, or a general finite group.
 
