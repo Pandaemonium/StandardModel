@@ -42,6 +42,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteExample
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionCutPlaquetteFamily
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonSlabConnected
 import PhysicsSM.Draft.NullEdge.GateYM.SlabTransferGap
+import PhysicsSM.Draft.NullEdge.GateYM.SlabFullSpectrumGap
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
