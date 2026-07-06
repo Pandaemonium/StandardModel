@@ -194,9 +194,23 @@ Known leftovers:
 Two issues found while wiring `zotero_write` for the lit-ingest pipeline:
 1. The repo `.mcp.json` had been reduced to only `lean-lsp` + `lean-explore`
    (both pointing at `C:/Projects/EisensteinGoldbach/...`) - the `zotero_write`,
-   `scholarly`, `neo4j_graph`, and `local-qwen` entries were MISSING. Re-added
-   `zotero_write` (`python C:/Tools/mcp/zotero-writer/src/server.py`); the other
-   three are still absent and should be restored from this table if needed.
+   `scholarly`, `neo4j_graph`, and `local-qwen` entries were MISSING. ALL FOUR
+   are now RESTORED in `.mcp.json` (defs taken from `.codex/config.toml`,
+   translated to the Claude-Code `env`/`${VAR}` format) and VERIFIED via
+   `mcp_call.py --list` + a functional call each (2026-07-06):
+   - `zotero_write` - adds an item, returns a Zotero key;
+   - `scholarly` - 9 search backends (arxiv/inspirehep/openalex/semantic-scholar/
+     crossref/europepmc/google-scholar/...); `search-arxiv` returns results;
+   - `neo4j_graph` - `get-schema` / `read-cypher` / `write-cypher`; `read-cypher`
+     counted 261 papers in collection `9W59V3K9` (this is the EXACT-Cypher mode;
+     complements the meaning-based vector scripts);
+   - `local-qwen` - `query_qwen` against the running Ollama model
+     `hf.co/unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL`.
+   NOTE: `lean-lsp`/`lean-explore` still point at `C:/Projects/EisensteinGoldbach`
+   (harmless for search - lean-explore indexes Mathlib+PhysLean regardless - but
+   `lean-lsp`'s live goals run against that project's `lake serve`, not this one;
+   repoint `LEAN_PROJECT_PATH` + the lean_explore script path to StandardModel if
+   live LSP on THIS repo is needed).
 2. **Root cause of the "URL can't contain control characters '/users/19894138 '"
    error:** the Windows User-scope env var `ZOTERO_USER_ID` is set to
    `'19894138 '` (TRAILING SPACE) and the server does not `.strip()` it. Worked
