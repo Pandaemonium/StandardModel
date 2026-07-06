@@ -169,3 +169,10 @@ long queries; inspirehep needs short queries).
   mass / TRACE-ANOMALY decomposition + nucleon-mass sigma-terms. Direct NE-U5
   provenance (mass = QCD gluon-field back-reaction, not the Higgs), complementing
   Wilczek 1206.7114 and Ji hep-ph/9410274 already in-graph.
+
+## Round 7 (2026-07-06, saturation cadence) - the parked Q6 crux (KP convergence)
+- 2112.13134 (INGESTED) - "Cluster Expansions: Necessary and Sufficient Convergence
+  Conditions" - a fresh rigorous angle on the parked Q6 crux pairSum_le_expBound
+  (the KP/Fernandez-Procacci tree-graph bound, codex's lane). Newer than the
+  Fernandez-Procacci math-ph/0605041 (already in-graph). Worth mining for the exact
+  convergence criterion shape if the Q6 crux is revisited.
