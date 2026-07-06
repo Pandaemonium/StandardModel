@@ -26,9 +26,14 @@ whose existence is recorded in `specialUnitaryGroup_exists_isHaarMeasure`.
 
 The Borel `MeasurableSpace` is taken as an instance argument (it is not a
 canonical global instance on the matrix subtype), so the theorems hold for ANY
-Borel Haar measure on `SU(N)`. Together with the earlier capability findings
-(Peter-Weyl absent; the compact character-expansion / KP sublane still blocked),
-the compact-RP substrate is complete for `SU(N)` up to that one sublane.
+Borel Haar measure on `SU(N)`. Scope (per the QMF-RP load-bearing audit,
+`bb6b33c3`): these are the SINGLE-LINK gauge/reflection-invariance INGREDIENTS
+for OS reflection positivity - link inversion invariance is necessary for OS-RP,
+but this is NOT RP itself (no lattice, no reflection operator on configurations,
+no positivity statement, no transfer operator). The RP bilinear form and the
+finite lattice / product-Haar (`Measure.pi` over `∏_e SU(N)`) construction are
+the pending next rung; the Peter-Weyl / character-expansion sublane is separate
+and nowhere assumed here.
 
 Draft-trust, kernel-checked, `s o r r y`-free. Prerequisites:
 `QMF/SpecialUnitaryCompact`, `QMF/CompactHaarInvariance`.

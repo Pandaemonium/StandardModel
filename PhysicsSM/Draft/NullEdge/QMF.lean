@@ -38,6 +38,12 @@ Draft-trust; not added to the default trusted build target. Four genuine
 pinned-Mathlib capability gaps are found and closed here (right- and
 inv-invariance from compactness; `U(n)`/`SU(n)` compactness; `U(n)`/`SU(n)`
 topological-group
-structure). The compact-RP substrate is complete for `SU(N)` except the
-Peter-Weyl character-expansion (`Q7`/KP) sublane, recorded as a separate gap.
+structure). Scope (per the QMF-RP load-bearing audit, `bb6b33c3`): this is the
+`SU(N)` single-link LINK-SYMMETRY substrate - the gauge/reflection-invariance
+ingredients an OS reflection positivity needs at each link. It is NOT itself RP:
+there is no lattice, no reflection operator on configurations, no positivity
+statement, and no transfer operator here. The RP bilinear form and the finite
+lattice / product-Haar construction (`Measure.pi` over `∏_e SU(N)`) are the
+pending next rung; the Peter-Weyl character-expansion (`Q7`/KP) sublane is a
+separate gap, correctly parked and nowhere assumed.
 -/
