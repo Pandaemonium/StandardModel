@@ -1,6 +1,7 @@
 import PhysicsSM.Draft.NullEdge.QMF.CompactHaarInvariance
 import PhysicsSM.Draft.NullEdge.QMF.SpecialUnitaryCompact
 import PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance
+import PhysicsSM.Draft.NullEdge.QMF.AxiomGuard
 
 /-!
 # QMF aggregator: the compact-group reflection-positivity substrate (QMF1-RP)
