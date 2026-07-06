@@ -12,6 +12,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 
@@ -139,6 +140,21 @@ NOT the topological Nielsen-Ninomiya no-go - see DoublingTurnPrice scope note) -
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.naive_limit_doubler_survives' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.naive_limit_doubler_survives
+
+/-! ## Lane T: the GENUINE finite Nielsen-Ninomiya no-go (1D discrete Brillouin
+torus) - the honest necessity target the DoublingTurnPrice audit called for. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.signedNodeCount4_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.signedNodeCount4_eq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.signed_sum_telescope' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.signed_sum_telescope
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.odd_signedCount_impossible' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.odd_signedCount_impossible
 
 /-! ## Lane A: N-body aperture massless-iff-collinear (2h-rule finalized harvest).
 The `sorry`-free headline; the sibling `nbody_massSq_eq_sum_pairwise` re-indexing

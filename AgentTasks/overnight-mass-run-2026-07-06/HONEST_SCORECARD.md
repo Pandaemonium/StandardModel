@@ -27,18 +27,23 @@ open items below.
 - Sorry-free headline, guarded. (One documented draft `sorry` on an alternative
   upper-triangular presentation only.)
 
-### (T) Turn / matter mass - PARTIAL (channel decomposition only; no-go OPEN)
-- PROVED: `DoublingTurnPrice` - the finite, LOCAL, per-vertex spin-algebra
-  channel decomposition of the Wilson vertex (Wilson term is chirality-even;
-  `chiralEven_massVertexW = (m+r)*1`; `chiralEven_massVertexW_eq_zero_iff`). Plus
-  the landed gamma5 mass-vertex split.
-- NOT proved (red-team `521d1c86` downgrade): the TOPOLOGICAL Nielsen-Ninomiya
-  no-go and the NECESSITY direction ("chiral symmetry => forced doubling").
-  DoublingTurnPrice is NOT that; its `no_chiral_and_doubler_removal` reduces to
-  `gamma_mu != 0`.
-- OPEN (in progress, job `sm-nn-nogo`): the genuine finite N-N no-go = a
-  discrete-Brillouin-torus signed-chirality-sum theorem (= 0), giving the honest
-  necessity corollary.
+### (T) Turn / matter mass - 1D NO-GO + NECESSITY LANDED; general dim OPEN
+- PROVED (genuine, `FiniteNielsenNinomiya`): the 1D finite Nielsen-Ninomiya no-go
+  on the discrete Brillouin torus `ZMod N`. `chiralSym_iff_offDiag`; the concrete
+  N=4 instance `signedNodeCount4_eq_zero` (naive dispersion: chirality +1 at the
+  origin node, -1 at the p=2 doubler, signed sum = 0, kernel `decide`);
+  `signed_sum_telescope` (boundaryless discrete circle => total signed count 0);
+  and the NECESSITY corollary `odd_signedCount_impossible` (an odd signed count is
+  impossible under chiral symmetry, so lifting a lone Weyl zero REQUIRES a
+  chirality-even Wilson term). Standard axioms, guarded. This is the honest T-leg
+  necessity the DoublingTurnPrice audit called for.
+- ALSO PROVED (supporting, honestly local): `DoublingTurnPrice` - the finite
+  per-vertex Wilson-vertex channel decomposition (chirality-even Wilson term,
+  `chiralEven_massVertexW_eq_zero_iff`), plus the landed gamma5 mass-vertex split.
+  (Its docstrings were downgraded per red-team `521d1c86`: it is NOT itself the
+  no-go.)
+- OPEN: the general d-dimensional / 4D continuum Nielsen-Ninomiya (a genuine
+  degree/Poincare-Hopf argument beyond the 1D discrete circle).
 
 ### (C) Closure / gauge mass - Z2 CHAIN COMPLETE; nonabelian gate OPEN
 - PROVED (Z2 slab, KP-crux-FREE): `SlabGapAssembly.slabGapAssembly` bundles RP

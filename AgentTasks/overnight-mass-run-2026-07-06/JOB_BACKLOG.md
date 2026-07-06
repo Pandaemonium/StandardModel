@@ -35,13 +35,18 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
       DOWNGRADED per red-team sm-doubling-audit (521d1c86): this is NOT the
       topological Nielsen-Ninomiya no-go and does NOT establish necessity (no
       momentum/torus/chirality-sum). Docstrings corrected.
-- [ ] **GENUINE N-N no-go (T-leg necessity, OPEN):** a discrete-Brillouin-torus
-      signed-chirality-sum theorem - for a chirally-symmetric symbol
-      D : (ZMod N)^d -> Mat with {gamma5,D}=0 and isolated simple zeros, the signed
-      zero count = 0 (doublers in +/- pairs), giving the necessity corollary that a
-      chirality-even (Wilson) term is required for a doubler-free operator. Needs a
-      discrete Poincare-Hopf/winding argument. THIS is the real T-leg obstruction;
-      lit: 2105.10977 (naive fermion w/o doublers = which N-N assumption is dropped).
+- [~] **GENUINE N-N no-go (T-leg necessity) - 1D VERSION LANDED** (sm-nn-nogo
+      2aaec751): `FiniteNielsenNinomiya.lean`. gamma5 setup + `chiralSym_iff_offDiag`
+      (chiral symmetry <=> off-diagonal); `winding_exists` (integer discrete winding,
+      honestly NOT asserted zero - SSH); CONCRETE N=4 no-go `signedNodeCount4_eq_zero`
+      (naive sin dispersion: node +1 at origin, -1 at the p=2 doubler, sum=0, by
+      kernel `decide`); `signed_sum_telescope` (boundaryless discrete circle =>
+      total signed count 0); NECESSITY corollary `odd_signedCount_impossible` (odd
+      signed count impossible under chiral symmetry => lifting a lone Weyl zero needs
+      a chirality-even Wilson term). 0 sorry, standard axioms (kernel decide),
+      guarded. HONEST: 1D finite-lattice version, NOT the 4D continuum theorem; the
+      higher-d degree argument is discussed but not claimed. REMAINING: the general
+      d-dim / continuum N-N.
 - [ ] NE-U6 electroweak: extend `ElectroweakRung` - W mass as a gauge-invariant
       composite transfer-spectrum feature (build on the proved 2-point clustering)
 - [ ] Yukawa turn amplitude: the mass = coin-turn amplitude at operator grade for
