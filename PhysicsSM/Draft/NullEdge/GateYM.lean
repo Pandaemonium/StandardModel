@@ -13,6 +13,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FusionTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferSpectrum
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferWitness
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2L1
+import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2Sector
 import PhysicsSM.Draft.NullEdge.GateYM.FDRepUnitarizable
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.EnsembleComplexBridge
@@ -198,6 +199,21 @@ flux-correlation numerator/ratio/contraction-factor facts, center flip/projector
 flux/center toggle laws, and instantiates the positive descriptor and
 finite-gap witness for `beta > 0`. This is only the `L = 1` finite oracle
 bridge, not the full Wilson slab transfer operator or physical gap theorem);
+`TwoStateTransferZ2Sector` (GateYM finite dynamics/honest sector bridge:
+sharpens the one-link Z2 finite-gap pathway by replacing the whole-space toy
+sector of `TwoStateTransferZ2L1.spectralWitness` with the two genuine
+one-dimensional center sectors. Defines an honest `FiniteFluxGapWitness`
+structure in which sector preservation, sector membership, and sector
+disjointness are explicit hypothesis fields, and instantiates it from the exact
+one-link Z2 slab: vacuum `(1,1)` in the `+1` center sector, flux `(1,-1)` in the
+`-1` center sector, transfer preserving each, gap named `FluxSectorZ2.fluxGap`
+(center-flux, NOT `localGlueballGap`), with contraction factor `tanh beta`. Also
+proves the obstruction lemmas `transfer_scalar_on_vacuumSector`,
+`transfer_scalar_on_fluxSector`, and `no_local_gap_in_vacuumSector`: on each
+one-dimensional center sector the transfer is a single scalar, so no genuine
+single-sector `FiniteGapSpectralWitness` local/glueball eigenvalue pair exists in
+this model. Not a Wilson slab transfer, Gauss projection, cyclicity of a real
+local plaquette algebra, infinite-volume state, or physical mass-gap theorem);
 `FDRepUnitarizable` (YM1/gap lane, Aristotle `d4a9bd1f` integrated: every
 finite-dimensional complex representation of a finite group admits a
 unitary matrix model - Weyl's unitarian trick in pure matrix algebra

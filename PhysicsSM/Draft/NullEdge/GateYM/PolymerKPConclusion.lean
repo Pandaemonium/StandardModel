@@ -768,6 +768,54 @@ lemma disjoint_treeRootChildBlock_of_component_ne {n : Nat}
     (mem_treeRootChildBlock T r k hk v).mp hvk
   exact hne (SimpleGraph.ConnectedComponent.eq_of_common_vertex hvj' hvk')
 
+/-- Distinct root children of a tree lie in distinct components after deleting
+the root. -/
+lemma treeRootChildComponent_ne_of_ne {n : Nat} (T : SimpleGraph (Fin n))
+    (r j k : Fin n) (hT : T.IsTree)
+    (hj : j ∈ treeRootChildren T r) (hk : k ∈ treeRootChildren T r)
+    (hjk : j ≠ k) :
+    treeRootChildComponent T r j hj ≠ treeRootChildComponent T r k hk := by
+  contrapose! hjk
+  have hUnique := hT.existsUnique_path j k
+  simp_all +decide
+  obtain ⟨p, hp⟩ : ∃ p : T.Walk j k, p.IsPath ∧ ∀ v ∈ p.support, v ≠ r := by
+    have hReachable :
+        (treeRootDeletedGraph T r).Reachable
+          (treeRootChildAsDeleted T r j hj)
+          (treeRootChildAsDeleted T r k hk) := by
+      exact SimpleGraph.ConnectedComponent.reachable_of_mem_supp _
+        (treeRootChild_mem_component _ _ _ _)
+        (hjk.symm ▸ treeRootChild_mem_component _ _ _ _)
+    obtain ⟨p, hp⟩ := hReachable.exists_isPath
+    refine ⟨p.map (SimpleGraph.Hom.comap _ _), ?_, ?_⟩ <;>
+      simp_all +decide
+    simp_all +decide [SimpleGraph.Walk.isPath_def]
+    exact List.Nodup.map (fun _ _ => by aesop) hp
+  have hAdjJ : T.Adj r j := (mem_treeRootChildren T r j).mp hj
+  have hAdjK : T.Adj r k := (mem_treeRootChildren T r k).mp hk
+  have hUniquePath : ∀ p q : T.Walk j k, p.IsPath → q.IsPath → p = q := by
+    exact fun p q hp hq => by
+      have := hUnique.unique hp hq
+      aesop
+  specialize hUniquePath p
+    (SimpleGraph.Walk.cons hAdjJ.symm
+      (SimpleGraph.Walk.cons hAdjK SimpleGraph.Walk.nil)) hp.1
+  simp_all +decide [SimpleGraph.Walk.cons_isPath_iff]
+  by_cases hrk : r = k <;> by_cases hjk' : j = k <;>
+    simp_all +decide [SimpleGraph.Walk.cons_isPath_iff]
+  exact absurd hrk (by
+    rintro rfl
+    exact hAdjK.ne rfl)
+
+/-- Distinct root children of a tree give disjoint finite child blocks. -/
+lemma disjoint_treeRootChildBlock_of_ne {n : Nat} (T : SimpleGraph (Fin n))
+    (r j k : Fin n) (hT : T.IsTree)
+    (hj : j ∈ treeRootChildren T r) (hk : k ∈ treeRootChildren T r)
+    (hjk : j ≠ k) :
+    Disjoint (treeRootChildBlock T r j hj) (treeRootChildBlock T r k hk) := by
+  exact disjoint_treeRootChildBlock_of_component_ne T r j k hj hk
+    (treeRootChildComponent_ne_of_ne T r j k hT hj hk hjk)
+
 /-- Every root child in the tree subgraph carries a polymer in the KP
 neighborhood of the root polymer. -/
 lemma treeRootChildren_poly_mem_nbhd (S : PolymerSystem Gamma)
