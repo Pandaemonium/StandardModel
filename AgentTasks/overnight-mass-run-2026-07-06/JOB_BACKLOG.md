@@ -78,6 +78,13 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
       0 sorry, standard axioms, guarded. HONEST GAP (remaining to genuine SU(2)):
       the RP/Cauchy-Schwarz raw bound `|W| <= 2*q^r` is an explicit HYPOTHESIS (hW),
       NOT derived; and Z/Z^(-) are MODELED as one-plaquette Boltzmann sums.
+- [x] CONCRETE Z2 TWIST SYSTEM, Z_le DERIVED (sm-ty-concrete 0758865d):
+      `TYTwistSystemZ2.lean` - `z2TwistSystem : TYAreaLawSUN.TwistSystem 2` (a REAL
+      instance of the landed scaffold, rewired) with `Z2Twist_le` (Zminus<=Zplus)
+      PROVED from e^{-beta}>=0, closing the `Z_le` modeled hypothesis (+ nonneg/pos)
+      for the Z2 case; `z2_tyBaseSUN_eq_tyBase` reproduces TYAreaLaw.tyBase; `z2AreaLaw`
+      keeps ONLY hW modeled. 0 sorry, standard axioms, guarded. So for concrete Z2,
+      the ONLY remaining modeled input is the RP raw bound hW.
 - [~] **SU(N) TY SCAFFOLD LANDED** (sm-ty-sun 93e022dd): `TYAreaLawSUN.lean` -
       abstract `TwistSystem N` (Z : Fin N -> R, RP-monotonicity Z_le hypothesized),
       center-average `pN = (1/N)Sum ratio`, `tyBaseSUN = 1-pN in [0,1)`,

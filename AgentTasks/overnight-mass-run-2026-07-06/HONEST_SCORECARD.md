@@ -61,9 +61,14 @@ open items below.
 - PROVED (scaffold): `TYAreaLaw` (Z2 Tomboulis-Yaffe area law, positive rate,
   tied to `osSpectralGap`) and `TYAreaLawSUN` (abstract SU(N) twist system,
   `tyBaseSUN_two_landed` proving Z2 is the N=2 shadow).
+- PROVED (concrete Z2, `TYTwistSystemZ2`): `z2TwistSystem : TwistSystem 2` a REAL
+  instance of the landed scaffold with `Z_le` (twist-monotonicity) and
+  nonnegativity/positivity DERIVED - so for the concrete Z2 one-plaquette model the
+  ONLY remaining modeled input is `hW`.
 - MODELED (explicit hypotheses, NOT derived): the RP/Cauchy-Schwarz raw bound
-  `hW : |W| <= 2*q^r`; the SU(N) twist-monotonicity `Z_le`; the identification of
-  `Z, Z^[k]` with lattice partition functions.
+  `hW : |W| <= 2*q^r` (both Z2 and general); the NONABELIAN SU(N)
+  twist-monotonicity `Z_le` (derived only for Z2 so far); the identification of
+  `Z, Z^[k]` with actual SU(N) lattice partition functions.
 - OPEN (THE SINGLE GATE): construct the actual SU(N) lattice Haar measure +
   twisted partition functions, DERIVE `hW`/`Z_le` from reflection positivity, and
   a proven positive rate for a genuinely NONABELIAN group. Continuum limit is a

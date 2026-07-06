@@ -11,6 +11,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
+import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
@@ -119,6 +120,16 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap
+
+/-! ## Concrete Z2 twist system: Z_le DERIVED (closes a modeled hypothesis) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2.Z2Twist_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2.Z2Twist_le
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2.z2AreaLaw' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2.z2AreaLaw
 
 /-! ## SU(N)/SU(2) TY twist system (the nonabelian gate scaffold) -/
 
