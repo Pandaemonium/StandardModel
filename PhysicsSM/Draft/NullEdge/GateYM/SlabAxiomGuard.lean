@@ -28,6 +28,9 @@ import PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount2D
 import PhysicsSM.Draft.NullEdge.GateYM.Q8StringTension
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteAbelianOSGap
+import PhysicsSM.Draft.NullEdge.GateYM.SU2TwoLevelGap
+import PhysicsSM.Draft.NullEdge.GateYM.NNIndexTie
+import PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
 import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
 import PhysicsSM.Draft.E8CartanNoNative
@@ -299,5 +302,23 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn.minkowskiSq_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn.minkowskiSq_sum
+
+/-! ## Batch wave 5: SU(2) 3-level gap, crossing<->overlap-index tie, abstract 2-level OS gap+clustering -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.SU2TwoLevelGap.su2_hamiltonianGap_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.SU2TwoLevelGap.su2_hamiltonianGap_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.NNIndexTie.signedZeroCount_eq_overlapIndex_diff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.NNIndexTie.signedZeroCount_eq_overlapIndex_diff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap.TwoLevelBlock.gap_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap.TwoLevelBlock.gap_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap.TwoLevelBlock.exponential_clustering' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap.TwoLevelBlock.exponential_clustering
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
