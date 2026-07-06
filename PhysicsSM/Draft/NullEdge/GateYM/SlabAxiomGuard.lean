@@ -14,6 +14,9 @@ import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya
+import PhysicsSM.Draft.NullEdge.GateYM.OSHamiltonianGap
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteNN2D
+import PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 
@@ -176,5 +179,19 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture.nbody_aperture_massless_iff_collinear' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture.nbody_aperture_massless_iff_collinear
+
+/-! ## OS transfer Hamiltonian gap (H = -log T), 2D N-N skeleton, common-carrier NEGATIVE -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.OSHamiltonianGap.osSpectralGap_eq_Eflux_sub_E0' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.OSHamiltonianGap.osSpectralGap_eq_Eflux_sub_E0
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteNN2D.signedNodeCount2D_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNN2D.signedNodeCount2D_eq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier.no_common_carrier_via_turn' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier.no_common_carrier_via_turn
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

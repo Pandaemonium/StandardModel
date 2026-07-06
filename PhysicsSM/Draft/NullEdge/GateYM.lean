@@ -58,6 +58,8 @@ import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya
+import PhysicsSM.Draft.NullEdge.GateYM.OSHamiltonianGap
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteNN2D
 import PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert

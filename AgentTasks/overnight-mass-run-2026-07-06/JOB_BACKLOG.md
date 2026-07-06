@@ -25,6 +25,11 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
       aperture to the "mass = aging" observer-conditioned reading)
 
 ## Lane T - TURN / matter mass (Higgs-Yukawa, chirality)
+- [x] 2D N-N TOPOLOGICAL SKELETON (sm-nn-2d 2a86663b): `FiniteNN2D.lean` -
+      boundaryless 2D telescoping (sum_dx/dy/div/curl_telescope = 0) + concrete
+      signedNodeCount2D_eq_zero (kernel decide). HONESTLY labeled a SKELETON (its
+      necessity corollary is explicitly 'VACUOUS skeleton'); NOT the genuine 2D no-go
+      (same limitation as 1D - see the chiral-symmetry-tie OPEN item). 0 sorry, guarded.
 - [x] `gamma5_mass_diff_comm`, `chiralEven/Odd_massVertex` (channel separation)
 - [~] Wilson-vertex channel decomposition (sm-doubling-turn 5d05e8de):
       `DoublingTurnPrice.lean` - the FINITE, LOCAL, per-vertex spin-algebra channel
@@ -62,6 +67,10 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
       a concrete finite flavor model
 
 ## Lane C - CLOSURE / gauge mass (Yang-Mills) - the biggest lane
+- [x] OS transfer HAMILTONIAN gap (sm-os-hamiltonian f301bcdc):
+      `OSHamiltonianGap.lean` - H = -log T two-state spectral structure: E0 = -log lambda0,
+      Eflux = -log lambdaFlux, E0 < Eflux (vacuum = ground state), osSpectralGap =
+      Eflux - E0 > 0, vacuum unique ground state. 0 sorry, standard axioms, guarded.
 - [x] connected slab RP (`WilsonSlabConnected`), NE-U4 sector gap
       (`SlabTransferGap`), sign-rep full-block gap (`SlabSignRepGap`)
 - [x] OS/GNS reconstruction (`OSReconstruction`): self-adjoint transfer + gap
@@ -110,6 +119,11 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 - [ ] strong-coupling area law from the character expansion (leading-rep dominance)
 
 ## Lane X - TAXONOMY & UNIFICATION (convergence / consolidation)
+- [x] COMMON-CARRIER NEGATIVE (sm-common-carrier ac6d26b1): `MassCommonCarrier.lean`
+      - the honest NEGATIVE `no_common_carrier_via_turn` (NO non-artificial
+      carrier for all 4 masses; the turn/bare `quarkMassParameter` pinned to 0 is
+      the sole obstruction) + `three_masses_common_carrier` (3 of 4 CAN be
+      simultaneous) + `independent_realizable_not_common_carrier`. 0 sorry, guarded.
 - [x] `massTaxonomy_functionals_pairwise_separated` (4 masses distinct)
 - [x] NON-DEGENERACY (sm-taxonomy-nondegen 64fa14af): `MassTaxonomyNonDegeneracy.lean`
       - independent-realizability companion. `regulator_on_others_off`,
