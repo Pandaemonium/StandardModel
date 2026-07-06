@@ -2,6 +2,7 @@ import Mathlib
 import PhysicsSM.Draft.NullEdge.GateI1.CompositeApertureMass
 import PhysicsSM.Draft.NullEdge.GateI1.MassWithoutMass
 import PhysicsSM.Draft.NullEdge.GateI1.ChargeGradingMassCompatible
+import PhysicsSM.Draft.NullEdge.GateI1.MassTaxonomySeparation
 import PhysicsSM.Draft.NullEdge.GateYM.ChiralMassStructure
 
 /-!
@@ -148,6 +149,49 @@ theorem allMassFromNullEdges (beta : ℝ) (hbeta : 0 < beta) (psi : Fin 2 → �
   · intro L nc _ m m' U
     exact gamma5_mass_diff_comm m m' U
 
+/-- **The all-mass capstone WITH its F-YM-CONFLATE guard, bundled.** Ships the
+four-obstruction bundling `allMassFromNullEdges` TOGETHER with the proof that the
+mass functionals it draws on are pairwise DISTINCT
+(`MassTaxonomySeparation.massTaxonomy_functionals_pairwise_separated`). This is
+the honest headline: mass is a relational obstruction to null transport in four
+representative finite facts, AND those facts are about genuinely different
+functionals (no row is another relabeled) - so the bundling is not an
+F-YM-CONFLATE error. The distinctness guard is now DISCHARGED, not merely
+asserted in prose. -/
+theorem allMassFromNullEdges_guarded (beta : ℝ) (hbeta : 0 < beta) (r : ℝ)
+    (hr : 0 < r) (psi : Fin 2 → ℂ) :
+    -- the four-obstruction bundling
+    (quarkMassParameter = 0 ∧ 0 < z2GlueballMass beta) ∧
+    (Q_op v1 = (-2 / 3 : ℂ) • v1 ∧ Q_op v4 = (-1 / 3 : ℂ) • v4 ∧
+      massForm v1 psi = massForm v4 psi) ∧
+    (∀ {ι : Type} (s : Finset ι) (p : ι → Momentum4),
+        (∀ i ∈ s, IsFutureNull (p i)) →
+        (minkowskiSq (∑ i ∈ s, p i) = 0 ↔
+          ∀ i ∈ s, ∀ j ∈ s, p i ≠ 0 → ∃ c : ℝ, 0 ≤ c ∧ p j = c • p i)) ∧
+    ((∀ (m : ℂ) (μ : Fin 4), chiralOdd (massVertex m μ) = - γ μ) ∧
+     (∀ (m : ℂ) (μ : Fin 4),
+        chiralEven (massVertex m μ) = (m + 1) • (1 : Matrix (Fin 4) (Fin 4) ℂ)) ∧
+     (∀ {L nc : ℕ} [NeZero L] (m m' : ℝ)
+        (U : Fin 4 → Site L → Matrix (Fin nc) (Fin nc) ℂ),
+        Γ5 L nc * (wilsonDirac m U - wilsonDirac m' U) * Γ5 L nc
+          = wilsonDirac m U - wilsonDirac m' U)) ∧
+    -- AND the F-YM-CONFLATE distinctness guard: the mass functionals are
+    -- pairwise separated (each can vanish while another is positive)
+    ((quarkMassParameter = 0 ∧ 0 < z2GlueballMass beta) ∧
+      (quarkMassParameter = 0 ∧ 0 < MassTaxonomySeparation.wilsonRegulatorMass r) ∧
+      ((0 < z2GlueballMass beta ∧
+          MassTaxonomySeparation.wilsonRegulatorMass 0 = 0) ∧
+        (0 < MassTaxonomySeparation.wilsonRegulatorMass r ∧ quarkMassParameter = 0)) ∧
+      ((MassTaxonomySeparation.compositeApertureMassSq MassTaxonomySeparation.nullX
+            MassTaxonomySeparation.nullX = 0 ∧
+          0 < z2GlueballMass beta) ∧
+        (0 < MassTaxonomySeparation.compositeApertureMassSq
+            MassTaxonomySeparation.nullX MassTaxonomySeparation.nullY ∧
+          quarkMassParameter = 0))) := by
+  obtain ⟨hC, hcoloc, hA, hT⟩ := allMassFromNullEdges beta hbeta psi
+  exact ⟨hC, hcoloc, hA, hT,
+    MassTaxonomySeparation.massTaxonomy_functionals_pairwise_separated hbeta hr⟩
+
 /-! ## Build-enforced axiom-footprint guard
 
 The `NullStrand.Audit.CapstoneAxioms` pattern: this block FAILS TO BUILD if the
@@ -160,5 +204,9 @@ does not relax the axiom list. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdges.allMassFromNullEdges' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms allMassFromNullEdges
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdges.allMassFromNullEdges_guarded' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms allMassFromNullEdges_guarded
 
 end PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdges
