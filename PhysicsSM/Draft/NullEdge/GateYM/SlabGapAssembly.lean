@@ -1,6 +1,7 @@
 import PhysicsSM.Draft.NullEdge.GateYM.SlabTransferGap
 import PhysicsSM.Draft.NullEdge.GateYM.SlabSignRepGap
 import PhysicsSM.Draft.NullEdge.GateYM.OSReconstruction
+import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 
 /-!
 # SlabGapAssembly: the lane-C (closure/Yang-Mills) finite gap chain as ONE theorem
@@ -36,6 +37,12 @@ SIMULTANEOUSLY and are each already kernel-checked elsewhere:
    one-link flux cost / string-tension-per-plaquette (`osSpectralGap_eq_neg_log_tanh`).
 5. **Vacuum separation.** The lightest center-flux transfer eigenvalue lies
    strictly below the vacuum eigenvalue (`OSReconstruction.osVacuum_separated`).
+6. **Exponential clustering.** The connected two-point function of the
+   OS-reconstructed transfer operator decays exponentially at exactly the gap
+   rate, `‖connected(n)‖ ≤ C · exp(-(n · gap))`
+   (`SlabClustering.slab_exponential_clustering`).  This is the area-law /
+   clustering endpoint of the chain, now landed on the same slab (harvested
+   2026-07-06).
 
 ## Honest scope (claim label: finite identity / OS-regime gap, draft)
 
@@ -46,12 +53,12 @@ center-sector slab.  It is NOT:
   Tomboulis-Yaffe routes target),
 - a continuum or physical mass gap (no continuum limit is claimed; `beta` is
   fixed),
-- the cluster-expansion route: this chain reaches the gap via OS/GNS
-  reconstruction of the finite transfer operator, which does NOT depend on the
-  parked Kotecky-Preiss convergence crux (`pairSum_le_expBound`).  The area-law /
-  exponential-clustering transport lemmas (`AreaLawTransport`, `SummableDefectGap`)
-  remain ABSTRACT sequence inequalities not yet instantiated on this slab; they
-  are deliberately NOT folded in here.
+- the cluster-expansion route: this chain reaches the gap AND the exponential
+  clustering via OS/GNS reconstruction of the finite transfer operator, which does
+  NOT depend on the parked Kotecky-Preiss convergence crux (`pairSum_le_expBound`).
+  The clustering conjunct (field 6) is the EXACT two-state Z2 result from
+  `SlabClustering`, not the abstract sequence lemmas in `AreaLawTransport` /
+  `SummableDefectGap` (those remain abstract and are not used here).
 
 No new `axiom`, no `native_decide`, no `sorry`; every field is discharged by an
 existing kernel-checked lemma.  Axiom-guarded in `SlabAxiomGuard`.
@@ -93,6 +100,13 @@ structure SlabGapChain (beta : ℝ) (hbeta : 0 < beta) : Prop where
   vacuum_separated :
     TwoStateTransferZ2Sector.lambdaFlux beta
       < TwoStateTransferZ2Sector.lambda0 beta
+  /-- Exponential clustering: for every step count `n` and states `v, w`, the
+  connected two-point function decays as `exp(-(n · gap))` up to a constant `C`.
+  (The explicit `C` is the flux-sector overlap; see
+  `SlabClustering.slab_exponential_clustering`.) -/
+  clustering : ∀ (m : ℕ) (v w : Fin 2 → ℂ),
+    ∃ C : ℝ, ‖SlabClustering.slabConnectedCorrelation beta m v w‖
+      ≤ C * Real.exp (-(m * OSReconstruction.osSpectralGap beta hbeta))
 
 /-- **Assembly theorem.**  The connected `Z2` Wilson slab satisfies the full
 finite lane-C gap chain for every `beta > 0`.  Every field is discharged by the
@@ -109,6 +123,8 @@ theorem slabGapAssembly (beta : ℝ) (hbeta : 0 < beta) :
   gap_pos := OSReconstruction.osSpectralGap_pos beta hbeta
   gap_value := OSReconstruction.osSpectralGap_eq_neg_log_tanh beta hbeta
   vacuum_separated := OSReconstruction.osVacuum_separated beta
+  clustering := fun m v w =>
+    ⟨_, SlabClustering.slab_exponential_clustering beta hbeta m v w⟩
 
 /-- Corollary read-off: on the connected `Z2` slab the finite OS gap is both
 strictly positive and equal to `-log(tanh beta)` — a positive, explicitly-valued

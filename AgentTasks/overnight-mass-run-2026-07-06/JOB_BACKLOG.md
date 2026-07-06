@@ -36,14 +36,22 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 - [x] (C) summable-defect gap transport, area-law transport, local cyclicity,
       CM slice-projector (Faizal-Shabir pieces)
 - [~] **THE ASSEMBLY (north star):** `SlabGapAssembly.slabGapAssembly` LANDED
-      (Z2 sign-rep slab): RP-block PSD + Hermitian/self-adjoint transfer +
-      strictly-positive OS spectral gap + explicit `-log(tanh beta)` value +
-      vacuum separation, as ONE finite theorem (axiom-guarded, standard axioms,
-      KP-crux-FREE via OS reconstruction). STILL OPEN: (a) fold in area-law /
-      exponential clustering INSTANTIATED on this slab (currently abstract
-      sequence lemmas), (b) the NONABELIAN SU(2)/SU(3) generalization.
-- [ ] exponential clustering from the gap: connected 2-point decay = exp(-gap * n)
-      on the slab transfer operator (feeds the assembly)
+      (Z2 sign-rep slab), NOW 6 conjuncts: RP-block PSD + Hermitian/self-adjoint
+      transfer + strictly-positive OS spectral gap + explicit `-log(tanh beta)`
+      value + vacuum separation + EXPONENTIAL CLUSTERING `exp(-(n*gap))` (folded in
+      from SlabClustering), as ONE finite theorem (axiom-guarded, standard axioms,
+      KP-crux-FREE via OS reconstruction). STILL OPEN: the NONABELIAN SU(2)/SU(3)
+      generalization = the single gate (per grand-strategy), via the TY route.
+- [x] exponential clustering from the gap: `SlabClustering.slab_exponential_clustering`
+      LANDED - connected 2-point decay = C*exp(-(n*gap)) on the Z2 slab transfer
+      operator; EXACT identity `slab_connected_correlation_eq`. Folded into assembly.
+- [ ] **TY ROUTE (grand-strategy pivot 6fecc7f5):** formalize Tomboulis-Yaffe Thm 1
+      (SU(2)/Z2 first) `<W(C)> <= 2*{(1/2)(1-Z^(-)/Z)}^{A_C/(L_mu L_nu)}` from the
+      landed Z2 RP by iterated reflection; rate `-log(base) > 0` when BC-insensitive
+      (no hard-coded constant - the base is the finite Z^(k)/Z vortex ratio). This
+      is THE SINGLE GATE for a nonabelian positive-rate area law. Demote KP to one
+      low-priority research job. Exact SU(N) form (Kanazawa 0808.3442 Thm 2) in
+      TOMBOULIS_YAFFE_ROUTE_MINE.md / sm-grand-strategy-ADVICE_6fecc7f5.md.
 - [ ] (C) Q6 crux `pairSum_le_expBound` - the KP tree-graph bound (Codex active;
       inductive Fernandez-Procacci route via `2001.00652`)
 - [ ] character expansion of the Wilson weight (finite group) [~ sm-character-expansion]

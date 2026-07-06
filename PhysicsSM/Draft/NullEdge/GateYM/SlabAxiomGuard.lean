@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.AreaLawTransport
 import PhysicsSM.Draft.NullEdge.GateYM.CMProjectorOS
 import PhysicsSM.Draft.NullEdge.GateYM.LocalCyclicitySector
 import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
+import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 
 /-!
@@ -97,5 +98,11 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion.charCoeff_abs_le_dim_mul_trivCoeff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion.charCoeff_abs_le_dim_mul_trivCoeff
+
+/-! ## Exponential clustering from the OS gap (Z2 slab) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.SlabClustering.slab_exponential_clustering' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.SlabClustering.slab_exponential_clustering
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
