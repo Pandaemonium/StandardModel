@@ -1168,6 +1168,45 @@ lemma fiber_value_bound (wg A : Real) (n k C fm : Nat)
     _ <= (wg * A) * (Nat.factorial n : Real) :=
           mul_le_mul_of_nonneg_left hCle hwgA
 
+/-- Counting core of the fiber-count step of `pairSum_le_expBound` (step D of
+the canonical-root deletion argument).
+
+This packages the integer fiber-count inequality
+`(#Φ⁻¹ e) * (k! * ∏_j m_j!) ≤ n!` in a `Φ`-free, reusable form: whenever the
+fiber `Fib` (the preimage of a fixed forest target `e` under the
+canonical-root classification map), paired with an ordering `Perm (Fin k)` of
+its `k` child blocks and orderings `Perm (Fin (m j))` within each block,
+injects into the orderings `Perm (Fin n)` of all `n` slots, the fiber
+cardinality obeys `#Fib * (k! * ∏_j m_j!) ≤ n!`.
+
+The cardinality bookkeeping is
+`Fintype.card (Fib × Perm (Fin k) × ∏_j Perm (Fin (m j)))
+  = #Fib * (k! * ∏_j m_j!) ≤ #(Perm (Fin n)) = n!`
+via `Fintype.card_le_of_injective`, `Fintype.card_perm`, `Fintype.card_fin`,
+and `Fintype.card_pi`.  This is exactly the hypothesis `hC` consumed by
+`fiber_value_bound`; supplying the injection `F` for each forest target is the
+remaining geometric content of the deletion argument. -/
+lemma fiber_card_mul_le_factorial {n k : Nat} (m : Fin k -> Nat)
+    (Fib : Type*) [Fintype Fib]
+    (F : Fib × Equiv.Perm (Fin k) × (∀ j, Equiv.Perm (Fin (m j)))
+          -> Equiv.Perm (Fin n))
+    (hF : Function.Injective F) :
+    Fintype.card Fib * (Nat.factorial k * ∏ j, Nat.factorial (m j))
+      <= Nat.factorial n := by
+  have hcard :
+      Fintype.card (Fib × Equiv.Perm (Fin k) × (∀ j, Equiv.Perm (Fin (m j))))
+        = Fintype.card Fib * (Nat.factorial k * ∏ j, Nat.factorial (m j)) := by
+    rw [Fintype.card_prod, Fintype.card_prod, Fintype.card_perm, Fintype.card_fin,
+        Fintype.card_pi]
+    congr 1
+    congr 1
+    apply Finset.prod_congr rfl
+    intro j _
+    rw [Fintype.card_perm, Fintype.card_fin]
+  have hle := Fintype.card_le_of_injective F hF
+  rw [hcard] at hle
+  rwa [Fintype.card_perm, Fintype.card_fin] at hle
+
 open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining
 combinatorial crux of Q6 (stated with only the `Touches g` guard, via
