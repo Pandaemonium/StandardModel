@@ -139,6 +139,13 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB16 (real ~04:00):** Harvested crux-2 (fiber_value_bound - crux residual now
+  ONE integer inequality) + fermionic-singlecut (2d60b78f -> FermionicSingleCutRP,
+  0 sorry: RP-F on CORRECTED single-cut geometry with the decisive P+ vs -gamma0
+  contrast - resolves the fermionic false-finding). Both committed dd6a0b4.
+  Refilled: sm-crux-fibercount3 (6f06b234) on the crisp integer fiber-count
+  inequality + assembly (shock target, very narrow now). Fleet: crux-3 +
+  slab-centerwitness (cc7f17d0) running. ~5h to 9am.
 - **HB15 (real ~02:55):** Fleet refilled (3 running): sm-crux-fibercount2
   (9f4db6eb, crux), sm-fermionic-singlecut (2d60b78f, corrected RP-F geometry),
   sm-slab-centerwitness (cc7f17d0, verify/prove the full-slab spectral claim's
