@@ -178,6 +178,21 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB24 (real ~08:55) - TY scaffold harvest + hourly cadence.** HARVESTED the
+  single-gate job sm-ty-arealaw (03a37fa8): TYAreaLaw.lean (df43768) - the
+  Tomboulis-Yaffe/Kanazawa RP area-law bound on the Z2 slab, abstract layer
+  parameterized by ANY ratio p in [0,1) (SU(N) drop-in), concrete Z2
+  partitionRatio=tanh, tyStringTension>0, area law + BC-insensitivity, 0 sorry,
+  guarded. ADDED the real bridge partitionRatio_eq_exp_neg_osSpectralGap tying the
+  TY vortex free energy to the ASSEMBLED osSpectralGap. HONEST GAP: the
+  RP/Cauchy-Schwarz raw bound is an explicit hypothesis (modeled), Z/Z^- are
+  Boltzmann models. HOURLY lit-mine: ingested Forcrand-Jahn hep-lat/0209060 (SU(2)
+  vortex free energy, Zotero IB8F3BSP). HOURLY red-team: submitted sm-assembly-audit
+  (eef2e41e) probing the 3-gaps equivocation + hW vacuity + the assembly's `exists C`
+  clustering field. REFILL: submitted sm-ty-sun (1826ec4c) - lift TY to an abstract
+  SU(N) twist system + SU(2) reconciliation (the nonabelian gate). Fleet: 7 active
+  (doubling-turn, e8-denative, nbody-aperture + codex frd-weak/clustering-to-gap +
+  ty-sun + assembly-audit), all <2h. Harvest queue EMPTY.
 - **HB23 (real ~08:25) - BIG harvest + consolidation cycle.** Five commits:
   (1) ebae2e1 lane-C ASSEMBLY capstone `SlabGapAssembly.slabGapAssembly` - bundled
   the scattered Z2-slab pieces (RP-PSD + Hermitian transfer + positive OS gap +
