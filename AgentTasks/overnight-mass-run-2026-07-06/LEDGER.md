@@ -178,6 +178,22 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB25 (real ~09:40) - SU(N) gate scaffold + red-team FIX + 2h rule.**
+  (1) 712c5fa HARVESTED sm-ty-sun (93e022dd): TYAreaLawSUN.lean - the SU(N) TY
+  twist-system scaffold (abstract TwistSystem N, tyBaseSUN in [0,1),
+  tySunTension>0, area law), + tyBaseSUN_two_landed proving the landed Z2 base is
+  literally the N=2 shadow. 0 sorry, guarded. (2) c356875 HARVESTED
+  sm-assembly-audit (029b8cd3) - it CAUGHT A REAL DEFECT I introduced: the
+  assembly's `clustering` field was `forall m, exists C` (C could depend on m ->
+  VACUOUS); FIXED to the m-uniform form = slab_exponential_clustering verbatim.
+  Added its two honesty notes (three-objects seam; TY tie-back is a coincidental
+  Z2 identity not 'area law=spectral gap'). (3) 2h RULE enforced: cancelled +
+  finalize-without-build sm-doubling-turn (3703ef99, Nielsen-Ninomiya/T) &
+  sm-nbody-aperture (a4366c05...e4ebba2ffc04, n-body iff/A) - harvest partials
+  next cycle. (4) HARVESTED sm-e8-denative (d2e2dbb8): kernel-checked (no
+  native_decide) E8-240 count + completeness, standard axioms - INTEGRATING
+  (E8 NoNative build in progress, bjfq7j88h). Fleet now thin: codex frd-weak +
+  clustering-to-gap running; T/A finalizing; refill after harvesting those.
 - **HB24 (real ~08:55) - TY scaffold harvest + hourly cadence.** HARVESTED the
   single-gate job sm-ty-arealaw (03a37fa8): TYAreaLaw.lean (df43768) - the
   Tomboulis-Yaffe/Kanazawa RP area-law bound on the Z2 slab, abstract layer
