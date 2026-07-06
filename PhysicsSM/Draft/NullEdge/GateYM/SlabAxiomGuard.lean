@@ -31,6 +31,9 @@ import PhysicsSM.Draft.NullEdge.GateYM.FiniteAbelianOSGap
 import PhysicsSM.Draft.NullEdge.GateYM.SU2TwoLevelGap
 import PhysicsSM.Draft.NullEdge.GateYM.NNIndexTie
 import PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap
+import PhysicsSM.Draft.NullEdge.GateYM.OverlapIndex
+import PhysicsSM.Draft.NullEdge.GateI1.MassFromMasslessNEU5
+import PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
 import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
 import PhysicsSM.Draft.E8CartanNoNative
@@ -320,5 +323,19 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap.TwoLevelBlock.exponential_clustering' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap.TwoLevelBlock.exponential_clustering
+
+/-! ## Batch wave 6: NE-U5 mass-from-massless, overlap index, aperture observer max-entropy -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.MassFromMasslessNEU5.compositeMass_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.MassFromMasslessNEU5.compositeMass_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.OverlapIndex.index_eq_half_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.OverlapIndex.index_eq_half_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState.massive_entropy_strictlyBetween' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.ApertureObserverState.massive_entropy_strictlyBetween
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

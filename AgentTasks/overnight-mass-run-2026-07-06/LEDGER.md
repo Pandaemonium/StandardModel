@@ -178,6 +178,16 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB36 (real ~15:35) - 5th wave (3 more; 26 integrated this push) + refill.**
+  Harvested wave 5 (8d51064): (C) SU2TwoLevelGap (concrete SU(2)-flavored 3-level
+  strong-coupling transfer diag(1,t,t^2), su2_hamiltonianGap_pos), (T) NNIndexTie
+  (TIES the T-leg strands: signedZeroCount = 2*(overlap index diff) = Tr of the
+  overlap operator's deformed chirality - the crossing no-go IS the overlap index),
+  (C) TwoLevelOSGap (abstract 2x2 PSD block gap+clustering). All 0 sorry, standard
+  axioms, +4 guards. SATURATION PUSH TOTAL: 26 modules integrated + 1 rejected across
+  A/T/C/X/B/V. RE-SATURATED with 3 more: sm-grand-capstone (20e31850, all-lane honest
+  bundle), sm-e8-240-denative (ec601dc1, kernel E8-240 count), sm-ew-wmass-su2
+  (3d00f90d). ~42 commits. Still running: massnomass, overlap-index, aperture-observer.
 - **HB35 (real ~15:00) - 4th batch wave: 8 more integrated (23 total this push).**
   Harvested wave 4 (2c8a6e2): (T) GinspargWilson + OverlapDirac (the exact-chiral GW
   'price' / Neuberger overlap - overlap_ginspargWilson, gamma5Hat_sq involution),
