@@ -211,6 +211,7 @@ import PhysicsSM.Algebra.Furey.WeakIsospinLadderDerived
 import PhysicsSM.Algebra.Furey.ElectroweakCompletePackage
 import PhysicsSM.Algebra.Furey.ElectroweakAnomalyBridge
 import PhysicsSM.Algebra.Furey.FureyRealizesOneGeneration
+import PhysicsSM.Algebra.Furey.AxiomGuard
 import PhysicsSM.Algebra.Furey.FureyAnomalyDecomposition
 import PhysicsSM.Algebra.Furey.T3OpJbar
 import PhysicsSM.Coding.ConstructionA
