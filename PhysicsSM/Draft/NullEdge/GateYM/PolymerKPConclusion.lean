@@ -1134,6 +1134,40 @@ lemma perPair_absWeight_bound (S : PolymerSystem Gamma)
       simp [childBlockOf, treeRootChildBlock_card_pos];
       split_ifs ; exact ⟨ _, treeRootChild_mem_block _ _ _ _ ⟩
 
+/-- Fiber-value arithmetic step for `pairSum_le_expBound`.  A fiber of the
+canonical-root classification map has constant summand `wg * A / n!`, size `C`,
+and the multinomial *integer* inequality `C * (k! * fm) <= n!` (where
+`fm = ∏_j m_j!`) reduces the fiber sum to the right-hand atom value
+`wg / k! * (A / fm)`.  This isolates the pure real arithmetic so the
+remaining content is the integer fiber-count bound. -/
+lemma fiber_value_bound (wg A : Real) (n k C fm : Nat)
+    (hwg : 0 <= wg) (hA : 0 <= A) (hfm : 0 < fm)
+    (hC : C * (Nat.factorial k * fm) <= Nat.factorial n) :
+    (C : Real) * (wg * A / (Nat.factorial n : Real))
+      <= wg / (Nat.factorial k : Real) * (A / (fm : Real)) := by
+  have hnpos : (0 : Real) < (Nat.factorial n : Real) := by
+    exact_mod_cast Nat.factorial_pos n
+  have hkpos : (0 : Real) < (Nat.factorial k : Real) := by
+    exact_mod_cast Nat.factorial_pos k
+  have hfmpos : (0 : Real) < (fm : Real) := by exact_mod_cast hfm
+  have hkfm : (0 : Real) < (Nat.factorial k : Real) * (fm : Real) :=
+    mul_pos hkpos hfmpos
+  have hCle : (C : Real) * ((Nat.factorial k : Real) * (fm : Real))
+      <= (Nat.factorial n : Real) := by exact_mod_cast hC
+  have hwgA : 0 <= wg * A := mul_nonneg hwg hA
+  rw [show wg / (Nat.factorial k : Real) * (A / (fm : Real))
+        = (wg * A) / ((Nat.factorial k : Real) * (fm : Real)) from by
+          rw [div_mul_div_comm],
+      show (C : Real) * (wg * A / (Nat.factorial n : Real))
+        = ((C : Real) * (wg * A)) / (Nat.factorial n : Real) from by
+          rw [mul_div_assoc']]
+  rw [div_le_iff₀ hnpos, div_mul_eq_mul_div, le_div_iff₀ hkfm]
+  calc ((C : Real) * (wg * A)) * ((Nat.factorial k : Real) * (fm : Real))
+        = (wg * A) * ((C : Real) * ((Nat.factorial k : Real) * (fm : Real))) := by
+            ring
+    _ <= (wg * A) * (Nat.factorial n : Real) :=
+          mul_le_mul_of_nonneg_left hCle hwgA
+
 open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining
 combinatorial crux of Q6 (stated with only the `Touches g` guard, via
@@ -1219,6 +1253,22 @@ lemma pairSum_le_expBound (S : PolymerSystem Gamma)
   -- each fiber, then `Finset.sum_le_sum_of_subset_of_nonneg` against the full
   -- RHS atom index set (image ⊆ all atoms, every atom term ≥ 0), this closes
   -- the inequality.
+  --
+  -- TIGHTENED RESIDUAL (real arithmetic now discharged).  With the fiber-value
+  -- lemma `fiber_value_bound` proved above, the per-fiber step reduces to the
+  -- single *integer* fiber-count inequality
+  --     (#Φ⁻¹ e) * (k! * ∏_j m_j!) ≤ n!,
+  -- where the fiber summand is the constant `|w g| * (∏_j aw q_j) / n!` (by
+  -- `absWeight_eq_root_mul_blocks`), and `fiber_value_bound` then yields the
+  -- right-hand atom value `|w g|/k! * ∏_j (aw q_j / m_j!)`.  The integer
+  -- inequality is provable by the injection
+  --     ((p,T), σ : Perm (Fin k), (ρ_j : Perm (Fin m_j))) ↦ (ordering of Fin n)
+  -- root-first then blocks in σ-order internally reordered by ρ_j, giving
+  --     (#fiber) * k! * ∏_j m_j! ≤ #(Perm (Fin n)) = n!.
+  -- The remaining formal content is: (i) the classification map Φ and its
+  -- codomain Finset, (ii) `Set.MapsTo`, (iii) constancy on fibers, and
+  -- (iv) the injection above; then `Finset.sum_fiberwise_of_maps_to` +
+  -- `fiber_value_bound` + `Finset.sum_le_sum_of_subset_of_nonneg` assemble it.
   sorry
 
 open Classical in
