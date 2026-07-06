@@ -178,6 +178,20 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB31 (real ~12:45) - FLEET SATURATED to 10 (user: Aristotle underloaded).**
+  Submitted a WIDE batch of 9 independent jobs to fill all 10 slots: sm-nbody-reindex
+  (d0fe7ddc, close the A re-indexing sorry), sm-strongcoupling-arealaw (218ec703, C:
+  char-dominance -> area law), sm-nn-2d (2a86663b, T: 2D N-N skeleton), sm-common-carrier
+  (ac6d26b1, X: common carrier or negative), sm-aperture-entropy (548ea4fc, A: entropy
+  reading), sm-yukawa-turn (2ce015aa, T: n-flavor turn amplitude), sm-os-hamiltonian
+  (f301bcdc, C: H=-log T gap), sm-su2-peterweyl (955692a0, C: dim-2 nonabelian char
+  test), sm-octonion-coupling (b0e30386, B: coupling beyond co-location) + the running
+  sm-nn-fix (e5d2ecaa). NOTE: os-hamiltonian + su2-peterweyl first submitted with EMPTY
+  prompts (shell var non-persistence across Bash calls) - fixed via continue-instruct.
+  LIT: ramped to every 15-25min per user; ingested Kanazawa/Forcrand-Jahn/2105.10977/
+  2506.00284/hep-th/9506115/2006.16274 across recent rounds. Anomaly-from-Qop found
+  already DONE (AnomalyBridge/ConjugateIdeal). NEXT: harvest the batch as it lands,
+  keep 10 saturated, frequent lit.
 - **HB30 (real ~12:25) - 3rd red-team catch + Z2 Z_le derived.** (1) b657c64
   HARVESTED sm-nn-audit (7805c7f8) - it caught that FiniteNielsenNinomiya, while a
   real topological skeleton, OVER-CLAIMS its "necessity": signed_sum_telescope uses
