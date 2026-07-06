@@ -86,6 +86,19 @@ NE-U2 (mass = the chirality-mixing "turn" channel, at both spin and full
 Wilson-Dirac operator grade) were both PROVED directly this run - see the
 per-rung status below.
 
+**Bundling capstone (overnight run 2026-07-06).** The three obstructions plus
+the octonion co-location verdict are now bundled into one kernel-checked theorem
+`allMassFromNullEdges` in
+`PhysicsSM/Draft/NullEdge/GateI1/AllMassFromNullEdges.lean` (one representative
+proved theorem per pillar: C = `massWithoutMass`, A =
+`compositeMassSq_eq_zero_iff_collinear`, T = `gamma5_mass_diff_comm`, plus
+co-location = `charge_grading_mass_compatible`). Claim label: program synthesis
+(a CONJUNCTION, not a proven single mechanism); build-enforced axiom guard;
+0 `s o r r y`; standard axioms. It crystallizes the T/C/A thesis as one named
+result WITHOUT weakening F-YM-CONFLATE: the companion taxonomy-separation
+theorem (the four mass functionals provably DISTINCT) is the guard that keeps
+the bundling honest, and is a live target this run.
+
 ## 3. The achievable ladder (NE-U1..NE-U6)
 
 Ordered by cost. Each rung names its claim label, its dependency, and its

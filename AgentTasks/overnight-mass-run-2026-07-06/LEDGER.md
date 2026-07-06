@@ -20,7 +20,8 @@ All submitted against the reused slim project
 | 8684c341 | A7 | fermionic RP-F crux N5 + assembly | SUBMITTED | ~23:55 | pending |
 | 2d096e24 | A8 | NE-U6 electroweak rung statement freeze + smallest identity | SUBMITTED | ~23:55 | pending |
 | 812c4c06 | A9 | mass-taxonomy separation theorem | SUBMITTED | ~23:55 | pending |
-| 938f8068 | A10 | grand-strategy-review-project (pre-run) | RUNNING @plan | harvest first | pending |
+| 5a7d6910 | A10a | AllMassFromNullEdges capstone claim-discipline audit | SUBMITTED | ~00:10 | pending |
+| ~~938f8068~~ | - | grand-strategy-review = NUMBER-THEORY project (Eisenstein-Goldbach) | COMPLETE | - | IGNORE (not this run) |
 
 2-hour rule per RUN_PLAN section 4: any THIS-project job RUNNING >2h ->
 `aristotle cancel <id>` then `aristotle continue --mode instruct --wait <id>`
@@ -46,7 +47,13 @@ here before proceeding.
 
 ## Landed / rejected artifacts
 
-(none yet)
+- **LANDED (local L1), commit 71a24c0:**
+  `PhysicsSM/Draft/NullEdge/GateI1/AllMassFromNullEdges.lean` -
+  `allMassFromNullEdges` bundles the three obstructions (C massWithoutMass, A
+  compositeMassSq_eq_zero_iff_collinear, T gamma5_mass_diff_comm) + co-location
+  (charge_grading_mass_compatible). Builds standalone (`lake env lean`, exit 0);
+  build-enforced axiom guard confirms footprint = [propext, Classical.choice,
+  Quot.sound]; 0 sorry. Un-aggregated (crosses GateI1 x GateYM). FLOOR secured.
 
 ## Heartbeats
 
@@ -56,3 +63,10 @@ here before proceeding.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB2 (~00:10):** L1 capstone LANDED + committed (71a24c0), floor secured.
+  Harvested 938f8068 - it is the NUMBER-THEORY project's grand strategy
+  (Eisenstein-Goldbach), NOT this run; reclassified to IGNORE. Used the freed
+  10th slot for A10a (5a7d6910): adversarial claim-discipline audit of the
+  capstone (synced the new capstone file into the project copy first). All 9
+  wave-1 proof/construction jobs still RUNNING (6-13 min old). Fleet full at 10.
+  Next: local L5 (mass-doc status update) while jobs churn; no polling.
