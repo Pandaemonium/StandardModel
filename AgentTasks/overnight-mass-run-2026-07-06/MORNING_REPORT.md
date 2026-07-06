@@ -86,9 +86,19 @@ binding advance in flight: `sm-aperture-turn-bridge` (T+A on one on-shell object
   the pinned `leanprover/lean4:v4.28.0`. Draft-trust; the only `s o r r y`s are
   the documented handoffs (crux + 2 known-false-downstream + product-Haar RP +
   Fradkin-Shenker).
+- **Final consolidation build (~07:00):** same three aggregators, now including
+  the fully-proved flagship `ApertureEqualsTurn` and `ProductHaarZ2RP` ->
+  **Build completed successfully (8205 jobs)**. The whole night's integrated
+  tree is green.
 - Per-headline axiom footprints spot-checked at `[propext, Classical.choice,
-  Quot.sound]` throughout; build-enforced guards on the capstone, QMF, GateYM,
-  Furey, and E8 flagships.
+  Quot.sound]` throughout (including `apertureEqualsTurn_exists`, now
+  UNCONDITIONAL - no `sorryAx`); build-enforced guards on the capstone, QMF,
+  GateYM, Furey, and E8 flagships.
+- Remaining `s o r r y`s in the integrated tree are all documented handoffs:
+  the Q6 crux `pairSum_le_expBound` + its 2 dependents, the 2 KNOWN-FALSE Q6
+  downstream statements (kept with refutations, revise-in-tandem), the general
+  product-Haar RP positivity (Z2 case now closed), and the Fradkin-Shenker
+  electroweak reconstruction. No trusted (sorry-free) theorem depends on any.
 
 ## Aristotle harvests (integrated)
 
