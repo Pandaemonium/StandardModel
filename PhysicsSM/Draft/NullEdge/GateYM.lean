@@ -65,6 +65,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
 import PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
 import PhysicsSM.Draft.NullEdge.GateYM.ObservableSupportBridge
+import PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 
 /-!
 # Gate YM aggregator: the Yang-Mills / confinement ladder
