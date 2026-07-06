@@ -44,6 +44,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonSlabConnected
 import PhysicsSM.Draft.NullEdge.GateYM.SlabTransferGap
 import PhysicsSM.Draft.NullEdge.GateYM.SlabFullSpectrumGap
 import PhysicsSM.Draft.NullEdge.GateYM.SlabCenterWitness
+import PhysicsSM.Draft.NullEdge.GateYM.SlabSignRepGap
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbertBlock
