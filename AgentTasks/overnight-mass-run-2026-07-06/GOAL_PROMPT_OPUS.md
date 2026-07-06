@@ -7,14 +7,46 @@ audit jobs. Codex is not running; you have custody of the whole tree.
 
 ## Goal
 
-Get as close as possible to **explaining all of mass using null-edge
-theory**, at kernel-checked theorem grade, honest claim labels throughout.
-Be extremely ambitious: the shock outcome is the Q6 KP crux closing AND a
-first PHYSICAL transfer operator with a sector-restricted gap on a connected
-Wilson slab - which would make "mass is the cost of closure" a theorem. The
-floor is a night of integrated harvests plus the `AllMassFromNullEdges`
-capstone, the mass-taxonomy separation theorem, and the NE-U6 statement
-freeze. Aim at the shock tier; bank the floor early.
+Get to the **FULL ORIGIN OF MASS FROM NULL-EDGE THEORY**, at kernel-checked
+finite-theorem grade with honest claim labels. Run AUTONOMOUSLY (24h horizon,
+extendable). Be extremely ambitious.
+
+## 24h WIDE-RUN CHARTER (2026-07-06 update)
+
+Strategy: GO WIDE. Aristotle's fleet is free and parallel, so keep all 10 slots
+SATURATED with INDEPENDENT (non-gating, non-colliding) jobs across every mass
+lane - throughput is the lever, and the integration/harvest loop is the only
+real bottleneck. Your job each cycle:
+
+1. **Keep 10 slots full** from `JOB_BACKLOG.md` (lanes A aperture / T turn /
+   C closure-YM / X taxonomy+unification / B division-algebra->SM / V trust /
+   L literature). Prefer jobs that do NOT depend on another job's output.
+2. **Harvest continuously** - download, SEMANTIC-REVIEW (statement alignment,
+   convention drift, hidden hyps, widened imports; the kernel checks the proof
+   not its meaning), targeted build, integrate + commit; a documented rejection
+   or a kernel-checked NEGATIVE is a first-class result.
+3. **Harvest CODEX's jobs too** (shared tree; `git status` clean-check before
+   touching shared files). Codex owns the Q6 crux + YM analytic; you own
+   assembly + mass thesis + literature + trust consolidation. Coordinate in
+   LEDGER/DISCUSSION.
+4. **Consolidate periodically** so wide output CONVERGES: re-bundle landed pieces
+   into `AllMassFromNullEdges` (and a lane-C YM-gap capstone) rather than leaving
+   scattered lemmas. The north star for lane C is the end-to-end assembly
+   RP -> self-adjoint transfer -> sector gap -> area law -> exponential
+   clustering as ONE finite theorem.
+5. **Literature cycle every ~3-4h**: search the active frontier (the wired
+   `scholarly` server + arXiv), add new papers to Neo4j via `lit_ingest`, and
+   MINE the top hit into a concrete job/strategy (not just catalog it). The
+   Faizal-Shabir 2606.19362 paper already motivated 6+ jobs.
+6. **Red-team every ~4-6h**: an adversarial audit of the latest headline (3
+   verified negatives this run came from exactly this).
+7. **Reports**: a checkpoint report every ~8h + a final report; honest
+   distance-to-"full origin of mass" each time.
+
+Bank the floor early; aim at the shock tier (the Q6 crux closing; the lane-C
+end-to-end gap assembly; a genuine coupling beyond co-location on the octonion
+side). ORIGINAL near-term floor (already largely banked): integrated harvests +
+`AllMassFromNullEdges` capstone + mass-taxonomy separation + NE-U6 rung.
 
 ## Bootstrap (read in order, then submit wave 1)
 
@@ -42,7 +74,7 @@ freeze. Aim at the shock tier; bank the floor early.
    best results.
 3. Start L1 (`AllMassFromNullEdges` capstone v1) locally.
 
-## The cycle (repeat every 30-45 min until morning)
+## The cycle (repeat every 15 min until morning)
 
 `aristotle list` -> enforce the 2-HOUR RULE (any this-project job RUNNING
 >2h: `aristotle cancel <id>`, then `aristotle continue --mode instruct
