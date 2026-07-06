@@ -139,6 +139,12 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB9 (~05:00):** 2-HOUR RULE applied to 3 jobs at/near 2h - sm-fermionic-gram-crux
+  (322b9f72), sm-producthaar-z2 (4510f446), and sm-aperture-turn (3e0eb3f5, the
+  flagship, stuck at 6% after ~2h). All cancelled + finalize-instruct sent; will
+  harvest partials next cycle then decide resubmits. Still genuinely running (2):
+  sm-crux-fibercount (the crux), sm-slab-fullspectrum. Pacing ~12 min for the
+  finalize returns.
 - **HB8 (~04:15):** A5 finalize returned `TransferGapFromRP.lean` (design/
   statement-freeze with frozen sorries for the NE-U4 bridge) - REJECTED
   (documented): SUPERSEDED by the concrete sorry-free `SlabTransferGap.lean`
