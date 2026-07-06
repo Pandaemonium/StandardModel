@@ -159,6 +159,16 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB18 (real ~06:10):** Literature done (7 papers -> Neo4j + woven into program
+  doc / crux status / report; LIT_SEARCH_LOG.md). Noted CODEX is co-working the Q6
+  crux (subtree-reindexing bridge) - staying off PolymerKPConclusion. Submitted 2
+  literature-MOTIVATED jobs (both Track-A, non-colliding, grounded in existing
+  machinery, blueprinted by 2606.19362): sm-character-expansion (f142be9e) -
+  finite-group character orthogonality + Wilson-weight character expansion (the
+  strong-coupling building block; feeds the sign-rep gap); sm-os-reconstruction
+  (7d16da48) - OS/GNS reconstruction -> self-adjoint transfer operator + spectral
+  gap on the connected slab (the Euclidean->Minkowski step). Fleet: slab-signrep,
+  character-expansion, os-reconstruction running.
 - **HB17 (real ~04:40):** VERIFIED NEGATIVE #3 - slab-centerwitness (cc7f17d0)
   REFUTED slabFullBlock_centerWitness (trivial rep -> flux-blind -> no gap;
   confirms my e7f8f12 caveat). Corrected: TRIMMED SlabFullSpectrumGap to its true
