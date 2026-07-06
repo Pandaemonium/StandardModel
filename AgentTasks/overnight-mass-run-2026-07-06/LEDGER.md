@@ -22,6 +22,7 @@ All submitted against the reused slim project
 | 812c4c06 | A9 | mass-taxonomy separation theorem | SUBMITTED | ~23:55 | pending |
 | 5a7d6910 | A10a | AllMassFromNullEdges capstone claim-discipline audit | COMPLETE | - | HARVESTED + integrated (fd0541d); report saved |
 | 70c4b556 | A10b | **sm-allmass-strategy** (mission strategy) | SUBMITTED | ~03:15 | pending |
+| 28c6c395 | C1 | **sm-crux-subtree-reindex** child-block indexing alignment | SUBMITTED | ~13:45 | pending |
 | ~~938f8068~~ | - | grand-strategy-review = NUMBER-THEORY project (Eisenstein-Goldbach) | COMPLETE | - | IGNORE (not this run) |
 
 ### NAMING CONVENTION (user request, 2026-07-06 ~01:15)
@@ -64,6 +65,25 @@ Codex is not running tonight; custody of the whole tree (including
 here before proceeding.
 
 ## Landed / rejected artifacts
+
+### CODEX CRUX CONTINUATION (~11:45): subtree-reindexing layer advanced
+
+- Harvested Aristotle project `0feb82f9` (`sm-crux-fibercount4`): no code diff,
+  but useful diagnosis. It confirmed that the next missing prerequisite is not
+  the full injection yet, but the subtree-to-spanning-tree reindexing layer.
+- Added and kernel-checked the first subtree bridge in
+  `GateYM/PolymerKPConclusion.lean`: `treeRootChildBlock_mem_iff_reachable`,
+  `comap_isAcyclic_of_injective`, `treeRootDeletedGraph_acyclic`,
+  `comap_orderIso_connected_of_component`,
+  `treeRootChildBlock_deletedGraph_connected`,
+  `treeRootChildBlock_deletedGraph_isTree`,
+  `restrictCluster_comap_le_graph`, and
+  `childBlock_comap_le_restrictCluster_graph`.
+- Updated `CRUX_PARKED_STATUS.md` with the new residual: align the `Fin card`
+  index of `treeRootChildBlock` with the image block used by `restrictCluster`.
+- Submitted follow-up Aristotle job `28c6c395` / task `5698fca7`:
+  `sm-crux-subtree-reindex-20260706`, focused only on that indexing-alignment
+  lemma.
 
 ### HARVEST WAVE 1 (~01:20-02:00): 5 jobs integrated, all standard axioms
 

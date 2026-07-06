@@ -716,6 +716,24 @@ lemma treeRootChildBlock_reachable {n : Nat} (T : SimpleGraph (Fin n))
   exact treeRootChildComponent_reachable T r j hj
     ((mem_treeRootChildBlock T r j hj v).mp hv)
 
+/-- Membership in a root-child block is exactly reachability from that child
+inside the root-deleted tree.  This packages the connected-component support
+definition in the form needed to reindex child subtrees. -/
+lemma treeRootChildBlock_mem_iff_reachable {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r)
+    (v : {x : Fin n // x ≠ r}) :
+    v ∈ treeRootChildBlock T r j hj ↔
+      (treeRootDeletedGraph T r).Reachable
+        (treeRootChildAsDeleted T r j hj) v := by
+  constructor
+  · exact treeRootChildBlock_reachable T r j hj
+  · intro h
+    rw [mem_treeRootChildBlock]
+    rw [treeRootChildComponent]
+    rw [SimpleGraph.ConnectedComponent.mem_supp_iff]
+    rw [SimpleGraph.ConnectedComponent.eq]
+    exact h.symm
+
 /-- A root-child block is nonempty. -/
 lemma treeRootChildBlock_nonempty {n : Nat} (T : SimpleGraph (Fin n))
     (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
@@ -750,6 +768,82 @@ lemma treeRootChildBlock_card_add_one_le {n : Nat} (T : SimpleGraph (Fin n))
   have hpred : n - 1 + 1 = n := Nat.sub_add_cancel hle1
   rw [hpred] at hle'
   exact hle'
+
+/-- Injective `comap`s of acyclic graphs are acyclic.
+
+This is a small graph-transport helper for subtree reindexing: when vertices
+are merely relabelled by an injective map, a cycle in the pulled-back graph
+would map to a cycle upstairs. -/
+lemma comap_isAcyclic_of_injective {V W : Type*} {G : SimpleGraph W}
+    (f : V -> W) (hf : Function.Injective f) (hG : G.IsAcyclic) :
+    (SimpleGraph.comap f G).IsAcyclic := by
+  intro v c hc
+  exact hG (c.map (SimpleGraph.Hom.comap f G)) (hc.map hf)
+
+/-- Deleting the root from a tree leaves an acyclic graph. -/
+lemma treeRootDeletedGraph_acyclic {n : Nat} (T : SimpleGraph (Fin n))
+    (r : Fin n) (hT : T.IsTree) :
+    (treeRootDeletedGraph T r).IsAcyclic := by
+  change (SimpleGraph.comap (fun v : {x : Fin n // x ≠ r} => (v : Fin n)) T).IsAcyclic
+  exact comap_isAcyclic_of_injective
+    (fun v : {x : Fin n // x ≠ r} => (v : Fin n))
+    (fun _ _ h => Subtype.ext h) hT.2
+
+/-- Connectedness of a component transported through the canonical
+`Fin A.card` reindexing of a finite component support. -/
+lemma comap_orderIso_connected_of_component {V : Type*} [LinearOrder V]
+    (A : Finset V) {H : SimpleGraph V} {c : V}
+    (hc : c ∈ A) (hA : ∀ v, v ∈ A ↔ H.Reachable c v) :
+    (SimpleGraph.comap (fun i : Fin A.card => (A.orderIsoOfFin rfl i : V)) H).Connected := by
+  classical
+  have hconn :
+      (SimpleGraph.comap (Function.Embedding.subtype (· ∈ (↑A : Set V))) H).Connected :=
+    PenroseTreeGraph.comap_connected_of_component hc (by
+      intro v
+      simpa using hA v)
+  let e : {x : V // x ∈ (↑A : Set V)} ≃ Fin A.card :=
+    (A.orderIsoOfFin rfl).toEquiv.symm
+  let hom :
+      SimpleGraph.comap (Function.Embedding.subtype (· ∈ (↑A : Set V))) H →g
+        SimpleGraph.comap (fun i : Fin A.card => (A.orderIsoOfFin rfl i : V)) H :=
+    { toFun := e
+      map_rel' := by
+        intro x y hxy
+        change H.Adj ((A.orderIsoOfFin rfl (e x) : V))
+          ((A.orderIsoOfFin rfl (e y) : V))
+        simpa [e] using hxy }
+  exact hconn.map hom (by simpa [hom] using e.surjective)
+
+/-- The root-deleted graph restricted to one child block is connected after
+the canonical `Fin card` reindexing. -/
+lemma treeRootChildBlock_deletedGraph_connected {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hj : j ∈ treeRootChildren T r) :
+    (SimpleGraph.comap
+      (fun i : Fin (treeRootChildBlock T r j hj).card =>
+        ((treeRootChildBlock T r j hj).orderIsoOfFin rfl i : {x : Fin n // x ≠ r}))
+      (treeRootDeletedGraph T r)).Connected := by
+  exact comap_orderIso_connected_of_component (treeRootChildBlock T r j hj)
+    (treeRootChild_mem_block T r j hj)
+    (fun v => treeRootChildBlock_mem_iff_reachable T r j hj v)
+
+/-- The root-deleted graph restricted to one child block is itself a tree.
+
+This is the first subtree-reindexing bridge needed by the final
+canonical-root classification map: each component below the root is not merely
+a finite block, but a canonically reindexed tree. -/
+lemma treeRootChildBlock_deletedGraph_isTree {n : Nat} (T : SimpleGraph (Fin n))
+    (r j : Fin n) (hT : T.IsTree) (hj : j ∈ treeRootChildren T r) :
+    (SimpleGraph.comap
+      (fun i : Fin (treeRootChildBlock T r j hj).card =>
+        ((treeRootChildBlock T r j hj).orderIsoOfFin rfl i : {x : Fin n // x ≠ r}))
+      (treeRootDeletedGraph T r)).IsTree := by
+  refine ⟨treeRootChildBlock_deletedGraph_connected T r j hj, ?_⟩
+  exact comap_isAcyclic_of_injective
+    (fun i : Fin (treeRootChildBlock T r j hj).card =>
+      ((treeRootChildBlock T r j hj).orderIsoOfFin rfl i : {x : Fin n // x ≠ r}))
+    (fun _ _ h => (treeRootChildBlock T r j hj).orderIsoOfFin rfl |>.injective
+      (Subtype.ext h))
+    (treeRootDeletedGraph_acyclic T r hT)
 
 /-- If two root-child components are unequal, then their finite child blocks
 are disjoint.  The remaining tree-specific work is to prove this component
@@ -927,6 +1021,39 @@ lemma absWeight_restrictCluster (S : PolymerSystem Gamma) (X : Cluster S)
   unfold restrictCluster Cluster.absWeight
   rw [← Finset.prod_attach B (fun v => |S.weight (X.poly v)|)]
   exact Fintype.prod_equiv (B.orderIsoOfFin rfl).toEquiv _ _ (fun i => rfl)
+
+/-- Restricting a tree/subgraph to a finite slot block preserves the
+`≤ cluster.graph` relation after the canonical `Fin B.card` reindexing.
+
+This is the graph-theoretic companion to `absWeight_restrictCluster`: once a
+child subtree has been represented as a `comap` along the block order, this
+lemma supplies the `T_j ≤ q_j.graph` half of the subtree-to-spanning-tree
+handoff. -/
+lemma restrictCluster_comap_le_graph (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) (T : SimpleGraph (Fin X.n))
+    (hTle : T <= X.graph S hdec) (B : Finset (Fin X.n)) :
+    SimpleGraph.comap (fun i : Fin B.card => (B.orderIsoOfFin rfl i : Fin X.n)) T
+      <= (restrictCluster S X B).graph S hdec := by
+  intro i j hij
+  simpa [Cluster.graph, restrictCluster] using hTle hij
+
+/-- The child-block specialization of `restrictCluster_comap_le_graph`.
+
+This isolates the exact subgraph relation needed by the future forest-atom
+classification map: the original tree restricted to a root-child block lands
+inside the incompatibility graph of the corresponding restricted subcluster. -/
+lemma childBlock_comap_le_restrictCluster_graph (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h))
+    (X : Cluster S) (T : SimpleGraph (Fin X.n)) (r j : Fin X.n)
+    (hTle : T <= X.graph S hdec) :
+    SimpleGraph.comap
+        (fun i : Fin (((childBlockOf T r j).image (fun v => v.1)).card) =>
+          (((childBlockOf T r j).image (fun v => v.1)).orderIsoOfFin rfl i : Fin X.n))
+        T
+      <= (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).graph S hdec := by
+  exact restrictCluster_comap_le_graph S hdec X T hTle
+    ((childBlockOf T r j).image (fun v => v.1))
 
 /-- Weight factorization across the canonical-root deletion: the absolute
 weight of a cluster `X` with root slot `r` factors as the root weight times
