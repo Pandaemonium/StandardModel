@@ -45,13 +45,17 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 - [x] exponential clustering from the gap: `SlabClustering.slab_exponential_clustering`
       LANDED - connected 2-point decay = C*exp(-(n*gap)) on the Z2 slab transfer
       operator; EXACT identity `slab_connected_correlation_eq`. Folded into assembly.
-- [ ] **TY ROUTE (grand-strategy pivot 6fecc7f5):** formalize Tomboulis-Yaffe Thm 1
-      (SU(2)/Z2 first) `<W(C)> <= 2*{(1/2)(1-Z^(-)/Z)}^{A_C/(L_mu L_nu)}` from the
-      landed Z2 RP by iterated reflection; rate `-log(base) > 0` when BC-insensitive
-      (no hard-coded constant - the base is the finite Z^(k)/Z vortex ratio). This
-      is THE SINGLE GATE for a nonabelian positive-rate area law. Demote KP to one
-      low-priority research job. Exact SU(N) form (Kanazawa 0808.3442 Thm 2) in
-      TOMBOULIS_YAFFE_ROUTE_MINE.md / sm-grand-strategy-ADVICE_6fecc7f5.md.
+- [~] **TY ROUTE (grand-strategy pivot 6fecc7f5) - Z2 SCAFFOLD LANDED:**
+      `TYAreaLaw.lean` (sm-ty-arealaw 03a37fa8): abstract layer `tyBaseOf p`,
+      `tyStringTensionOf p` (parameterized by ANY ratio p in [0,1) - SU(N) drop-in);
+      concrete Z2 `partitionRatio = tanh beta`, `tyStringTension > 0`, area law
+      `tyAreaLaw_slab_exp` `|W| <= 2*exp(-r*tyStringTension)`, BC-insensitivity
+      rate->inf. Tied to the assembly via `partitionRatio_eq_exp_neg_osSpectralGap`.
+      0 sorry, standard axioms, guarded. HONEST GAP (remaining to genuine SU(2)):
+      the RP/Cauchy-Schwarz raw bound `|W| <= 2*q^r` is an explicit HYPOTHESIS (hW),
+      NOT derived; and Z/Z^(-) are MODELED as one-plaquette Boltzmann sums. NEXT:
+      (a) derive hW on the Z2 slab from the landed RP by iterated reflection,
+      (b) port the abstract layer to SU(2) with the (1/N)Sum Z^[k]/Z ratio.
 - [ ] (C) Q6 crux `pairSum_le_expBound` - the KP tree-graph bound (Codex active;
       inductive Fernandez-Procacci route via `2001.00652`)
 - [ ] character expansion of the Wilson weight (finite group) [~ sm-character-expansion]

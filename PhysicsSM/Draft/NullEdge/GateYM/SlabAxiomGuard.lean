@@ -9,6 +9,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.CMProjectorOS
 import PhysicsSM.Draft.NullEdge.GateYM.LocalCyclicitySector
 import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
+import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 
 /-!
@@ -104,5 +105,15 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.SlabClustering.slab_exponential_clustering' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.SlabClustering.slab_exponential_clustering
+
+/-! ## Tomboulis-Yaffe area-law bound (TY-pivot single-gate scaffold, Z2 slab) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.tyAreaLaw_slab_exp' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.tyAreaLaw_slab_exp
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
