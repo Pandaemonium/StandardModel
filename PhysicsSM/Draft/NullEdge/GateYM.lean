@@ -55,6 +55,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
+import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
 import PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert

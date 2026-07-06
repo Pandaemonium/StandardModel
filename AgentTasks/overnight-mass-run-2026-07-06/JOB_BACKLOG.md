@@ -12,8 +12,13 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 ## Lane A - APERTURE / composite mass (matter kinematics)
 - [x] aperture=turn on one on-shell momentum (`ApertureEqualsTurn`, unconditional)
 - [x] ObstructionScalar (C and A share a structure, non-vacuous)
-- [ ] n-body aperture: `compositeMassSq` for k>2 null momenta = sum of pairwise
-      angles; massless iff single null direction (generalize the 2-body germ)
+- [x] n-body aperture (sm-nbody-aperture c896e302, 2h-rule finalized):
+      `NBodyAperture.lean` - `nbody_massSq_eq_double_sum`, `nbody_massSq_nonneg`,
+      and THE HEADLINE `nbody_aperture_massless_iff_collinear` (any N: composite
+      Minkowski square = 0 iff a single null direction). Headline sorry-free,
+      standard axioms, guarded. ONE documented draft `s o r r y`:
+      `nbody_massSq_eq_sum_pairwise` (strict upper-triangular presentation, pure
+      re-indexing - the double-sum form is fully proved). Grand-strategy lane-A pick.
 - [ ] Plucker/spinor bridge at 3+1D: tie `det P = m^2` to the spinor wedge for
       the full on-shell resolution (extend `PluckerUnificationBridge`)
 - [ ] aperture entropy: the rest-frame maximally-mixed direction state (link
@@ -21,9 +26,13 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 
 ## Lane T - TURN / matter mass (Higgs-Yukawa, chirality)
 - [x] `gamma5_mass_diff_comm`, `chiralEven/Odd_massVertex` (channel separation)
-- [ ] Nielsen-Ninomiya doubling as the PRICE of the turn: the Wilson term is the
-      chirality-even regulator that removes the doubler (determinant-level, per
-      NULLSTRAND); tie to the taxonomy row-2 regulator mass
+- [x] Nielsen-Ninomiya doubling as the PRICE of the turn (sm-doubling-turn
+      5d05e8de, 2h-rule finalized): `DoublingTurnPrice.lean` - Wilson term is
+      chirality-EVEN (`chiralEven_wilsonProjector = r*1`), full-vertex channels,
+      `no_chiral_and_doubler_removal` (even+odd can't both vanish),
+      `naive_limit_doubler_survives` (r=0,m=0: even=0 but transport survives),
+      `regulator_turn_tie` to wilsonRegulatorMass. 0 sorry, standard axioms,
+      guarded. Composes with the landed gamma5 split.
 - [ ] NE-U6 electroweak: extend `ElectroweakRung` - W mass as a gauge-invariant
       composite transfer-spectrum feature (build on the proved 2-point clustering)
 - [ ] Yukawa turn amplitude: the mass = coin-turn amplitude at operator grade for

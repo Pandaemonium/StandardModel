@@ -11,6 +11,8 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
+import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
+import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 
 /-!
@@ -126,5 +128,23 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN.tyBaseSUN_two_landed' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN.tyBaseSUN_two_landed
+
+/-! ## Lane T: Nielsen-Ninomiya "price of the turn" (2h-rule finalized harvest) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.no_chiral_and_doubler_removal' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.no_chiral_and_doubler_removal
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.naive_limit_doubler_survives' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.naive_limit_doubler_survives
+
+/-! ## Lane A: N-body aperture massless-iff-collinear (2h-rule finalized harvest).
+The `sorry`-free headline; the sibling `nbody_massSq_eq_sum_pairwise` re-indexing
+is a documented draft `s o r r y` and is NOT guarded. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture.nbody_aperture_massless_iff_collinear' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture.nbody_aperture_massless_iff_collinear
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
