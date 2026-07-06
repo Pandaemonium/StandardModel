@@ -178,6 +178,22 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB33 (real ~13:55) - 2nd batch wave: 5 more integrated incl. GENUINE T-leg no-go.**
+  Harvested the saturation batch's 2nd wave (c4efa77): (T) sm-nn-zeros
+  FiniteNNZeroCount - THE GENUINE 1D N-N no-go via ZERO-crossings (signedZeroCount =
+  sum(sgn f(p+1)-sgn f p)=0, up/down crossings balance; single_crossing_impossible;
+  naiveSin4 decide) - carefully VERIFIED genuine (vs the rejected hollow nn-fix: here
+  the count is sgn-of-f increments = real sign-crossings, not a nowhere-zero branch);
+  (C) sm-su2-peterweyl FiniteNonabelianChar - Q8 dim-2 nonabelian dominance NON-VACUOUS
+  (char_norm_gt_one, q8_charCoeff_abs_le_dim_mul_trivCoeff); (X) sm-capstone-v2
+  AllMassFromNullEdgesV2 super-capstone; (A) sm-plucker PluckerSpinorBridge (det P=m^2
+  <-> spinor wedge); (T) sm-yukawa YukawaTurnAmplitude (no turn <=> no mass). All 0
+  sorry, standard axioms, wired + 8 new guards green. Fixed short-import paths (capstone,
+  yukawa). SCORECARD: T-leg GENUINE no-go now LANDED. RE-SATURATED with 4 refills:
+  sm-gw-relation (77ffe473, Ginsparg-Wilson = the exact-chiral 'price'), sm-nn-zeros-2d
+  (268e4f18, genuine 2D crossing no-go), sm-q8-arealaw (517a817b, first nonabelian Q8
+  string tension), sm-nbody-apeqturn (d73b208b). ~40 commits; still ~5-6 jobs running
+  (clustering-general, octo-faithful, eweak-w, aperture-entropy, strongcoupling) to harvest.
 - **HB32 (real ~13:20) - BIG batch harvest (5 integrated, 1 rejected) + re-saturate.**
   Harvested the 10-job saturation batch's first wave: INTEGRATED (0a1fd2d) nbody
   re-indexing (NBodyAperture now FULLY sorry-free); (99718c5) OSHamiltonianGap
