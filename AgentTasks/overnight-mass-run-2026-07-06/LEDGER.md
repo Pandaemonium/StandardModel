@@ -65,6 +65,36 @@ here before proceeding.
 
 ## Landed / rejected artifacts
 
+### HARVEST WAVE 1 (~01:20-02:00): 5 jobs integrated, all standard axioms
+
+- **A9 taxonomy separation (812c4c06) -> 683f10d.**
+  `GateI1/MassTaxonomySeparation.lean`: four mass functionals proved PAIRWISE
+  DISTINCT (`massTaxonomy_functionals_pairwise_separated`). Resolves the capstone
+  audit's top defect. Standard axioms, 0 sorry. Wired into GateI1.
+- **A4 connected Wilson slab (cd433660) -> 683f10d.**
+  `GateYM/WilsonSlabConnected.lean`: the audits' "empty center of gravity" -
+  smallest CONNECTED cut slab (2 plaquettes share cut1), mirror holonomy
+  factorization, `wilsonSlabConnected_reflectionPositive` for arbitrary finite G.
+  Standard axioms, 0 sorry. Wired into GateYM. SHOCK-tier missing object BUILT.
+- **A6 product-Haar (fa7fba4a) -> c925bfb.** `QMF/ProductHaarConfig.lean`:
+  product Haar over finite edge set + gauge/reflection symmetries PROVED
+  sorry-free (SU(N)); RP positivity the ONE frozen handoff. Wired into QMF
+  (docstring updated for the frozen sorry).
+- **A8 electroweak (2d096e24) -> c925bfb.** `GateI1/ElectroweakRung.lean`:
+  gauge-invariant composite W, wLikeMass_pos, AND exact two-point exponential
+  clustering (beyond floor). Only Fradkin-Shenker reconstruction is a labeled
+  unused handoff sorry. Wired into GateI1.
+- **A10a capstone audit (5a7d6910) -> fd0541d.** Excellent red-team; all fixes
+  applied (strengthened T to genuine channel separation, removed dangling
+  citation, flagged definitional C, re-scoped prose). Report saved.
+
+All proved headlines verified sorry-free at [propext, Classical.choice,
+Quot.sound]. A9+A4 headline axioms independently re-checked.
+
+### WAVE-2 refill (sm- named)
+- **fdab1ce4 = sm-slab-transfer-gap** (SUBMITTED ~02:05): physical transfer
+  operator + sector-restricted NE-U4 gap on the connected slab (rides A4).
+
 - **LANDED (local L1), commit 71a24c0:**
   `PhysicsSM/Draft/NullEdge/GateI1/AllMassFromNullEdges.lean` -
   `allMassFromNullEdges` bundles the three obstructions (C massWithoutMass, A
