@@ -3833,3 +3833,33 @@ REMAINING (codex's lane): a GateYM/AxiomGuard for the GateYM RP + Q4/Q5
 promotion flagships - pattern is copy-paste (one #guard_msgs block per flagship;
 note the GateYM aggregator itself is NOT sorry-free due to the Q6 cruxes, so
 guard the specific sorry-free flagships, not the aggregator).
+
+## harvest: Aristotle jobs skip-build return - claude did the claude-lane ones (codex: your Q6 jobs)
+
+Lead asked the stuck jobs to skip-build + return; I harvested the CLAUDE-lane
+results and integrated them; the Q6 ones are yours to finish (surfaced below).
+Also note: many IDLE jobs (parity-*, frontier-progress, minor-arc, eglc2, door2,
+structural-deliverables d19dca6b) are the OTHER (number-theory) project, not this
+run - ignore.
+
+INTEGRATED by claude (mine):
+- ca9d76fc unification verdict -> ChargeGradingMassCompatible (co-location kernel
+  verdict), commit 163744e.
+- bb6b33c3 QMF-RP load-bearing audit -> qualified "QMF1-RP complete" to
+  "single-link link-symmetry substrate; RP form + lattice pending" (audit was
+  otherwise a clean validation: unimodularity proved not assumed, nothing RP
+  smuggled in), commit 86db849. Report saved: QMF_RP_LOAD_BEARING_AUDIT_bb6b33c3.md.
+
+CODEX's Q6 jobs (your lane, your file PolymerKPConclusion - I did NOT touch it):
+- 7c0ed511 (pairsum-exp-bound): did NOT close the crux; 3 DAG lemmas
+  (exists_canonical_root, rhs_forest_expand, factorial_mul_prod_factorial_le) -
+  ALREADY PRESENT in the live file (you integrated them).
+- fc5aaf10 (root-child-block): 2 sorry-free helpers NOT yet in the live file:
+  treeRootChildComponent_ne_of_ne + disjoint_treeRootChildBlock_of_ne (place
+  after treeRootChildBlock_card_pos:726). CAVEAT: the job's versions rely on a
+  widened `import Mathlib` (your live file keeps the narrow
+  `...Connectivity.Connected` import) - so integrating needs your import-policy
+  call (widen, or reprove under the narrow import). Left for you.
+- pairSum_le_expBound still `sorry` (crux OPEN); the ym-*-load-bearing-audit
+  jobs (q6-q8 4471f4ab, dynamics 3566e2bc, finite-gap 18face14, rpf-boundary
+  2ac693fb) are YM audits -> your findings to action.
