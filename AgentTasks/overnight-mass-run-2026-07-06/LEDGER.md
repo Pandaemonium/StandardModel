@@ -139,6 +139,15 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB8 (~04:15):** A5 finalize returned `TransferGapFromRP.lean` (design/
+  statement-freeze with frozen sorries for the NE-U4 bridge) - REJECTED
+  (documented): SUPERSEDED by the concrete sorry-free `SlabTransferGap.lean`
+  already integrated (8fec85d), which proves the same NE-U4 bridge on the actual
+  slab. Integrating a redundant sorry-bearing design would be debt. Refilled with
+  sm-slab-fullspectrum (c419f308): close the NE-U4 documented handoff (extend the
+  closure gap from the Z2 one-link sector to the FULL connected two-plaquette
+  block). Running (5): crux-fibercount, aperture-turn (flagship), fermionic-crux,
+  producthaar-z2, slab-fullspectrum.
 - **HB7 (~04:00):** A2 finalize returned NOTHING integrable (crux still open, no
   new edits - it was 5% when stopped; A1's primitives already cover it).
   sm-crux-fibercount (e751a5c8) now attacks the isolated crux residual. Running
