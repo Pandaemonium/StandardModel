@@ -35,21 +35,21 @@ draft-trust.  This binds the T (turn) and A (aperture) obstruction modes on a
 shared object.  It does NOT bind the closure mode C, which lives in a different
 model with no `Momentum4`.
 
-## Proof status
+## Proof status: FULLY PROVED, no `s o r r y` (standard axioms)
 
 * `twoNull_aperture_massSq`, `twoNull_aperture_onShell`,
-  `apertureEqualsTurn_onShell` : FULLY PROVED, no `s o r r y`.  These take the
-  two-null resolution as hypotheses and are the CORE deliverable (the 3+1D
-  generalization of `onshell_wedge_normSq_eq_coin_sq`), together with the turn
-  identification, as a single kernel-checked statement.
-* `twoNull_resolution_exists` : DOCUMENTED HANDOFF (`s o r r y`).  This is the pure
-  existence of the canonical two-null split of an on-shell timelike momentum
-  (the 3+1D analogue of `MassCoinBridge.twoNull_resolution`), which requires the
-  explicit `sqrt`/direction construction.  Its statement is stated verbatim as
-  the target; the proof is left as a handoff.
-* `apertureEqualsTurn_exists` : the fully-quantified headline, obtained by
-  feeding `twoNull_resolution_exists` into `apertureEqualsTurn_onShell`; it
-  transitively depends on the single existence `s o r r y` above.
+  `apertureEqualsTurn_onShell` : the CORE deliverable (the 3+1D generalization of
+  `onshell_wedge_normSq_eq_coin_sq`), together with the turn identification, as a
+  single kernel-checked statement (they take the two-null resolution as
+  hypotheses).
+* `twoNull_resolution_exists` : NOW PROVED - the canonical two-null split of an
+  on-shell timelike momentum (the 3+1D analogue of
+  `MassCoinBridge.twoNull_resolution`), via the explicit `sqrt`/direction
+  construction (`r = 0` fixed null direction; `r > 0` split
+  `((p0+r)/2)(1,n) + ((p0-r)/2)(1,-n)`, future-pointing from `p0 >= r`).
+* `apertureEqualsTurn_exists` : the fully-quantified headline (now
+  UNCONDITIONAL), obtained by feeding `twoNull_resolution_exists` into
+  `apertureEqualsTurn_onShell`.
 
 Prerequisites: `GateI1.Core`, `GateI1.CompositeApertureMass`,
 `GateI1.MassCoinBridge`, `GateYM.ChiralMassStructure`.
@@ -137,7 +137,7 @@ theorem apertureEqualsTurn_onShell (p kPlus kMinus : Momentum4) (m : ℝ)
   have h1 := twoNull_aperture_massSq kPlus kMinus hkp.1 hkm.1
   rw [← h1, ← hres, hp]
 
-/-! ## 3. Existence of the canonical two-null resolution (documented handoff) -/
+/-! ## 3. Existence of the canonical two-null resolution (PROVED) -/
 
 /-- **The canonical two-null resolution of an on-shell 3+1D momentum**
 (3+1D analogue of `MassCoinBridge.twoNull_resolution`).  A future-pointing
@@ -147,14 +147,63 @@ Explicitly `kPlus = ((p0 + |p_vec|)/2) (1, n)`,
 `kMinus = ((p0 - |p_vec|)/2) (1, -n)` with `n = p_vec / |p_vec|` (and any fixed
 fallback direction when `p_vec = 0`).
 
-DOCUMENTED HANDOFF (`s o r r y`): only the explicit `sqrt`/direction construction is
-left open; the core aperture=turn identities above are fully proved and consume
-this existence only through `apertureEqualsTurn_exists`. -/
+PROVED via the explicit `sqrt`/direction construction; this makes the
+fully-quantified `apertureEqualsTurn_exists` UNCONDITIONAL. -/
 theorem twoNull_resolution_exists (p : Momentum4) (hfut : 0 ≤ p 0)
     (hm : 0 ≤ minkowskiSq p) :
     ∃ kPlus kMinus : Momentum4, IsFutureNull kPlus ∧ IsFutureNull kMinus
       ∧ p = kPlus + kMinus := by
-  sorry
+  set r := Real.sqrt (spatialNormSq p) with hr_def
+  have hr_nonneg : 0 ≤ r := Real.sqrt_nonneg _
+  have hspat_nonneg : 0 ≤ spatialNormSq p := spatialNormSq_nonneg p
+  have hr_sq : r ^ 2 = spatialNormSq p := Real.sq_sqrt hspat_nonneg
+  have hr2 : r ^ 2 = (p 1) ^ 2 + (p 2) ^ 2 + (p 3) ^ 2 := by
+    rw [hr_sq]; unfold spatialNormSq; ring
+  by_cases hr : r = 0
+  · -- purely temporal: spatial components vanish
+    have hspat0 : (p 1) ^ 2 + (p 2) ^ 2 + (p 3) ^ 2 = 0 := by
+      rw [← hr2, hr]; ring
+    have hp1 : p 1 = 0 := by nlinarith [sq_nonneg (p 1), sq_nonneg (p 2), sq_nonneg (p 3)]
+    have hp2 : p 2 = 0 := by nlinarith [sq_nonneg (p 1), sq_nonneg (p 2), sq_nonneg (p 3)]
+    have hp3 : p 3 = 0 := by nlinarith [sq_nonneg (p 1), sq_nonneg (p 2), sq_nonneg (p 3)]
+    refine ⟨![p 0 / 2, p 0 / 2, 0, 0], ![p 0 / 2, -(p 0 / 2), 0, 0], ?_, ?_, ?_⟩
+    · refine ⟨?_, ?_⟩
+      · unfold IsNull minkowskiSq; simp
+      · simp; linarith
+    · refine ⟨?_, ?_⟩
+      · unfold IsNull minkowskiSq; simp
+      · simp; linarith
+    · funext i
+      fin_cases i <;> simp [Pi.add_apply, hp1, hp2, hp3]
+  · -- r > 0
+    have hr_pos : 0 < r := lt_of_le_of_ne hr_nonneg (Ne.symm hr)
+    have hp0_ge_r : r ≤ p 0 := by
+      have hle : spatialNormSq p ≤ (p 0) ^ 2 := by
+        unfold minkowskiSq at hm
+        unfold spatialNormSq
+        nlinarith [hm]
+      calc r = Real.sqrt (spatialNormSq p) := hr_def
+        _ ≤ Real.sqrt ((p 0) ^ 2) := Real.sqrt_le_sqrt hle
+        _ = p 0 := Real.sqrt_sq hfut
+    refine ⟨![(p 0 + r) / 2, (p 0 + r) / 2 * (p 1 / r), (p 0 + r) / 2 * (p 2 / r),
+              (p 0 + r) / 2 * (p 3 / r)],
+            ![(p 0 - r) / 2, -((p 0 - r) / 2 * (p 1 / r)), -((p 0 - r) / 2 * (p 2 / r)),
+              -((p 0 - r) / 2 * (p 3 / r))], ?_, ?_, ?_⟩
+    · refine ⟨?_, ?_⟩
+      · unfold IsNull minkowskiSq; simp only [Matrix.cons_val_zero, Matrix.cons_val_one,
+          Matrix.head_cons, Matrix.cons_val_two, Matrix.cons_val_three, Matrix.tail_cons]
+        field_simp
+        nlinarith [hr2]
+      · simp only [Matrix.cons_val_zero]; positivity
+    · refine ⟨?_, ?_⟩
+      · unfold IsNull minkowskiSq; simp only [Matrix.cons_val_zero, Matrix.cons_val_one,
+          Matrix.head_cons, Matrix.cons_val_two, Matrix.cons_val_three, Matrix.tail_cons]
+        field_simp
+        nlinarith [hr2]
+      · simp only [Matrix.cons_val_zero]; linarith
+    · have hrne : r ≠ 0 := hr
+      funext i
+      fin_cases i <;> simp [Pi.add_apply] <;> field_simp <;> ring
 
 /-- **The fully-quantified aperture = turn headline.**  Every on-shell timelike
 momentum `p` (`0 <= p 0`, `minkowskiSq p = m^2`, `m >= 0`) admits a future-null

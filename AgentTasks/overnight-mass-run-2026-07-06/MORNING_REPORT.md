@@ -1,6 +1,6 @@
 # Overnight all-mass run - MORNING REPORT (2026-07-06)
 
-STATUS: IN PROGRESS (scaffold; filled through the night, finalized ~09:00).
+STATUS: substantially complete (~07:00; 28 commits, consolidation build green).
 
 ## Mission
 
@@ -9,9 +9,29 @@ kernel-checked theorem grade, with honest claim labels. Opus 4.8 sole local
 agent + up to 10 concurrent Aristotle jobs. See
 `AgentTasks/overnight-mass-run-2026-07-06/RUN_PLAN.md`.
 
-## Headline (fill at finalize)
+## Headline
 
-- (one paragraph: what the night achieved and the honest distance remaining)
+The night turned the null-edge mass thesis from a **list of separately-true
+finite facts** into a **guarded conjunction with two genuine cross-mode
+bindings**. Two structural advances stand out: (1) the flagship
+`apertureEqualsTurn_onShell` (now FULLY proved, existence and all) puts the
+**turn (T)** and **aperture (A)** obstruction modes on ONE on-shell 3+1D momentum
+(`2*minkDot k+ k- = m^2 =` the chirality-even turn coefficient) - the former #1
+structural weakness (a conjunction across disjoint universes) is now a
+shared-object identity for the T/A pair; and (2) the taxonomy theorem proves the
+four mass functionals **pairwise DISTINCT**, so the capstone
+`allMassFromNullEdges_guarded` is no longer vulnerable to the
+one-quantity-relabeled (F-YM-CONFLATE) over-claim. The honest, defensible claim
+is: **mass is a relational null-transport obstruction, demonstrated on four
+representative facts, with T and A now bound on one object and the taxonomy
+proved non-degenerate** - strictly stronger than a conjunction, strictly weaker
+than a unified mechanism. What we do NOT have: a single model carrying more than
+two modes - **closure (C)** lives in a Z2 transfer model with no `Momentum4`, so
+it shares only a mechanism SHAPE with A and T, not a shared quantity. Two
+kernel-checked NEGATIVES were also banked (the Q6 downstream KP conclusions and
+the periodic-circle fermionic Gram crux are FALSE), each with its corrected
+direction recorded. Source: mission strategy `97a015dd`
+(`sm-morning-strategy-FINDINGS_97a015dd.md`).
 
 ## Theorems landed (all footprint [propext, Classical.choice, Quot.sound], 0 sorry unless noted)
 
@@ -133,11 +153,30 @@ direction recorded.
   RP-F; the physical/continuum YM gap (permanently off-ladder). Per the strategy,
   these buy little for the MASS thesis specifically (its floor is already banked).
 
-## Recommended next day
+## Recommended next day (from mission strategy 97a015dd, ranked EV/effort)
 
-- (fold in the morning grand-strategy job 97a015dd when it returns)
-- Standing follow-ups: (1) revise `StrongCouplingPolymerMap` off the false
-  `kp_convergence_bound_of_selfIncompatible` to the `_plain` version, then DELETE
-  the false theorems (coordinate with codex); (2) re-state fermionic RP-F over
-  single-cut geometry; (3) close the crux fiber-count residual; (4) close the
-  flagship existence handoff; (5) full-slab NE-U4 spectrum.
+1. ~~Complete the flagship existence `twoNull_resolution_exists`~~ **DONE this
+   run** (sm-aperture-existence, 2caa0789): `apertureEqualsTurn_exists` is now
+   UNCONDITIONAL, 0 sorry.
+2. **Retire the false lemma from the Q7->Q6 wiring** (CHEAP, HIGH):
+   `StrongCouplingPolymerMap.plaquetteKP_convergence_bound_of_plaquetteKPBound`
+   consumes the FALSE `kp_convergence_bound_of_selfIncompatible`; reroute through
+   the corrected `_plain`/`hself` target, then DELETE the false theorems. Codex's
+   file - coordinate. Do before any external report ships.
+3. **Close the Q6 crux residual** `pairSum_le_expBound` (arithmetic core +
+   partition primitives proved; residual = the fiber-count injection + regrouping,
+   reduced to `boundedTouchSum_succ_le_finitePartial`). Unblocks the whole KP
+   chain (3 dependent sorries fall).
+4. **The strategic swing: extend aperture=turn toward CLOSURE** - a
+   `apertureEqualsTurnEqualsClosure` binding relating the on-shell scalar to a
+   closure gap on a SHARED carrier (an abstract "obstruction scalar" both
+   instantiate). The only move attacking the sharpest gap (no shared C-A model);
+   speculative, guard hard against a vacuous identification.
+5. **Deepen two pillars:** (a) full-slab NE-U4 spectrum (extend beyond the Z2
+   sector); (b) re-state fermionic RP-F on SINGLE-CUT geometry (periodic-circle
+   is FALSE).
+
+Biggest over-claim to guard (strategy 3): the name "all mass" over-reads - it is
+a guarded conjunction with ONE two-mode binding, NOT a unified mechanism; C is
+not bound to A/T; the (C) zero is definitional; the KP chain is open and was
+partly false. The report says exactly that.
