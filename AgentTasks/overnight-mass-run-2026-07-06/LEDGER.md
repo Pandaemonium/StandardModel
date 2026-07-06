@@ -178,6 +178,21 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB30 (real ~12:25) - 3rd red-team catch + Z2 Z_le derived.** (1) b657c64
+  HARVESTED sm-nn-audit (7805c7f8) - it caught that FiniteNielsenNinomiya, while a
+  real topological skeleton, OVER-CLAIMS its "necessity": signed_sum_telescope uses
+  a FREE h (not tied to ChiralSym), signedNodeCount4 runs on a stipulated vector,
+  odd_signedCount_impossible is VACUOUS. DOWNGRADED docstrings/guard/scorecard/
+  backlog to the honest "topological skeleton"; the SOUND pieces (winding,
+  chiralSym_iff_offDiag, the computed example) stand. (3rd red-team-caught
+  over-claim this run - the cadence is genuinely working.) (2) ac78da1 HARVESTED
+  sm-ty-concrete (0758865d): TYTwistSystemZ2.lean, REWIRED onto the landed scaffold
+  - z2TwistSystem : TYAreaLawSUN.TwistSystem 2 with Z2Twist_le DERIVING the Z_le
+  modeled hypothesis for Z2 (only hW remains modeled for the Z2 case). Guarded,
+  standard axioms. (3) REFILL: submitted sm-nn-fix (e5d2ecaa) - the red-team's exact
+  recipe: DEFINE the signed count FROM a chirally-symmetric D, restate necessity
+  with an explicit ChiralSym hypothesis (the genuine T-leg no-go). Fleet: sm-nn-fix
+  running. ~26 commits; 3 over-claims caught+fixed by red-team.
 - **HB29 (real ~11:55) - GENUINE N-N no-go LANDED + T-leg upgraded.**
   GateI1 checkpoint build GREEN (8128 jobs). HARVESTED sm-nn-nogo (2aaec751,
   9efecdd): FiniteNielsenNinomiya.lean - the honest 1D finite Nielsen-Ninomiya
