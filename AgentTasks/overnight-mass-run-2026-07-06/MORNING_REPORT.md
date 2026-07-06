@@ -56,6 +56,20 @@ the hard-YM Q6/slab jobs). The hard YM proofs buy little for the MASS thesis
 shared quantity (no shared model where (C)=(A); Z2 has no Momentum4). The one
 binding advance in flight: `sm-aperture-turn-bridge` (T+A on one on-shell object).
 
+## Verification
+
+- **Consolidation build (~05:15):** `lake build PhysicsSM.Draft.NullEdge.GateI1
+  PhysicsSM.Draft.NullEdge.QMF PhysicsSM.Draft.NullEdge.GateYM` -> **Build
+  completed successfully (8203 jobs)**. Every one of tonight's integrated modules
+  (capstone+guarded, taxonomy separation, connected slab, NE-U4 slab gap,
+  product-Haar, electroweak rung, merged crux/downstream) compiles together under
+  the pinned `leanprover/lean4:v4.28.0`. Draft-trust; the only `s o r r y`s are
+  the documented handoffs (crux + 2 known-false-downstream + product-Haar RP +
+  Fradkin-Shenker).
+- Per-headline axiom footprints spot-checked at `[propext, Classical.choice,
+  Quot.sound]` throughout; build-enforced guards on the capstone, QMF, GateYM,
+  Furey, and E8 flagships.
+
 ## Aristotle harvests
 
 | job | target | verdict | integrated? |
