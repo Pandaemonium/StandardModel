@@ -44,10 +44,18 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
       7805c7f8: NOT a proof of "chiral symmetry => zero signed count" -
       signed_sum_telescope uses a FREE h; odd_signedCount_impossible is VACUOUS
       (unsatisfiable Odd hypothesis). Docstrings corrected.
-- [ ] **N-N no-go, tie to chiral symmetry (red-team 7805c7f8 fix, OPEN):** DEFINE
-      the signed count FROM a chirally-symmetric D's off-diagonal branch, prove it =
-      the telescoping sum, restate necessity with an explicit ChiralSym(D p)
-      hypothesis + a count-of-D conclusion. THEN the general d-dim / 4D continuum.
+- [ ] **N-N no-go, tie to chiral symmetry (STILL OPEN; sm-nn-fix e5d2ecaa was
+      HOLLOW):** the fix job DEFINED signedCountOfD from D's off-diagonal branch,
+      but its `chiralSym_signedCount_eq_zero` proof is literally
+      `signed_sum_telescope (chiralBranch D)` with BOTH hypotheses UNUSED - the
+      count is a telescoping of a single-valued integer branch, hence 0 for ANY D
+      (chiral symmetry vestigial), and `hnz : offDiag != 0` EXCLUDES the very zeros
+      a real no-go counts. NOT INTEGRATED (would be a misleading-looking headline;
+      artifact saved as sm-nn-fix-ARTIFACT-hollow). THE REAL TARGET: count signed
+      ZEROS of D (allow zeros; chirality = crossing sign / local winding around each
+      zero), prove the sum of crossing signs = 0 for a periodic symbol - exactly
+      what the concrete `naiveSin4` example (+1 up-crossing, -1 down-crossing) shows;
+      generalize THAT, using chiral symmetry, not a nowhere-zero branch telescoping.
 - [ ] NE-U6 electroweak: extend `ElectroweakRung` - W mass as a gauge-invariant
       composite transfer-spectrum feature (build on the proved 2-point clustering)
 - [ ] Yukawa turn amplitude: the mass = coin-turn amplitude at operator grade for

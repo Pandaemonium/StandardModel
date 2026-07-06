@@ -26,8 +26,7 @@ two-body germ from `ApertureEqualsTurn`); nothing new is postulated.
    The requested strict upper-triangular `∑_{i<j} 2 · minkDot` presentation
    is provided as `nbody_massSq_eq_sum_pairwise` — see the PROOF STATUS note
    below: it is a purely cosmetic re-indexing of the (proved) double sum, and
-   its combinatorial re-indexing proof is the only item left `sorry` in this
-   file.
+   is now fully proved (no `sorry`).
 
 2. **THE HEADLINE (any N).**  `nbody_aperture_massless_iff_collinear`:
    `minkowskiSq (∑ i ∈ s, p i) = 0 ↔` the whole bundle points along a single
@@ -49,11 +48,10 @@ axiom, no `native_decide`, no weakening of the statements.
 * `nbody_massSq_eq_zero_iff_pairwise` — PROVED (reuse).
 * `nbody_aperture_massless_iff_collinear` (THE HEADLINE) — PROVED (reuse of
   `compositeMassSq_eq_zero_iff_collinear`).
-* `nbody_massSq_eq_sum_pairwise` — OPEN (`sorry`): the strict-upper-triangular
+* `nbody_massSq_eq_sum_pairwise` — PROVED: the strict-upper-triangular
   `∑_{i<j} 2·minkDot` re-indexing of the already-proved double sum, using the
   diagonal vanishing `minkDot (p i) (p i) = 0` for null `p i` and the symmetry
-  `minkDot_comm`.  Left `sorry` because per the finalize instruction no proof
-  search / `lake build` was run to certify the combinatorial re-indexing.
+  `minkDot_comm` (trichotomy split + `Finset.sum_comm'`).
 -/
 
 open scoped BigOperators
@@ -96,16 +94,60 @@ Minkowski square is exactly twice the sum of the strictly-ordered pairwise
 Minkowski products (the diagonal terms `minkDot (p i) (p i) = minkowskiSq (p i)`
 vanish by nullness, and off-diagonal terms pair up by `minkDot_comm`).
 
-PROOF STATUS: OPEN (`sorry`).  Mathematically this is just a re-indexing of the
-already-proved `nbody_massSq_eq_double_sum`; it is left unproved here only
-because the finalize instruction forbade running any further proof search /
-`lake build` to certify the combinatorial re-indexing. -/
+PROOF STATUS: PROVED.  A pure combinatorial re-indexing of the already-proved
+`nbody_massSq_eq_double_sum`: the full double sum is split by trichotomy into
+the strict upper triangle (`i < j`), the strict lower triangle (`j < i`) and
+the diagonal (`i = j`).  The diagonal terms vanish because
+`minkDot (p i) (p i) = minkowskiSq (p i) = 0` for future-null `p i`, and the
+lower triangle is turned into the upper triangle via `Finset.sum_comm'` and
+`minkDot_comm`, yielding the factor `2`. -/
 theorem nbody_massSq_eq_sum_pairwise {ι : Type*} [LinearOrder ι]
     (s : Finset ι) (p : ι → Momentum4)
     (hnull : ∀ i ∈ s, IsFutureNull (p i)) :
     minkowskiSq (∑ i ∈ s, p i)
       = ∑ i ∈ s, ∑ j ∈ s.filter (i < ·), 2 * minkDot (p i) (p j) := by
-  sorry
+  rw [nbody_massSq_eq_double_sum]
+  have key :
+      ∑ i ∈ s, ∑ j ∈ s.filter (· < i), minkDot (p i) (p j)
+        = ∑ i ∈ s, ∑ j ∈ s.filter (i < ·), minkDot (p i) (p j) := by
+    rw [Finset.sum_comm' (t' := s) (s' := fun j => s.filter (j < ·))
+        (by intro x y; simp only [Finset.mem_filter]; tauto)]
+    exact Finset.sum_congr rfl fun i _ =>
+      Finset.sum_congr rfl fun j _ => minkDot_comm (p j) (p i)
+  have split : ∀ i ∈ s, ∑ j ∈ s, minkDot (p i) (p j)
+      = ∑ j ∈ s.filter (i < ·), minkDot (p i) (p j)
+        + ∑ j ∈ s.filter (· < i), minkDot (p i) (p j) := by
+    intro i hi
+    rw [← Finset.sum_filter_add_sum_filter_not s (i < ·) (minkDot (p i) <| p ·)]
+    congr 1
+    have hset : s.filter (fun j => ¬ i < j) = insert i (s.filter (· < i)) := by
+      ext j
+      simp only [Finset.mem_filter, Finset.mem_insert]
+      constructor
+      · rintro ⟨hjs, hij⟩
+        rcases lt_trichotomy j i with h | h | h
+        · exact Or.inr ⟨hjs, h⟩
+        · exact Or.inl h
+        · exact absurd h hij
+      · rintro (rfl | ⟨hjs, hji⟩)
+        · exact ⟨hi, lt_irrefl _⟩
+        · exact ⟨hjs, not_lt.mpr (le_of_lt hji)⟩
+    rw [hset, Finset.sum_insert (by simp),
+      (minkDot_self (p i)).trans (hnull i hi).1, zero_add]
+  calc ∑ i ∈ s, ∑ j ∈ s, minkDot (p i) (p j)
+      = ∑ i ∈ s, (∑ j ∈ s.filter (i < ·), minkDot (p i) (p j)
+          + ∑ j ∈ s.filter (· < i), minkDot (p i) (p j)) :=
+        Finset.sum_congr rfl split
+    _ = ∑ i ∈ s, ∑ j ∈ s.filter (i < ·), minkDot (p i) (p j)
+        + ∑ i ∈ s, ∑ j ∈ s.filter (· < i), minkDot (p i) (p j) := by
+          rw [Finset.sum_add_distrib]
+    _ = ∑ i ∈ s, ∑ j ∈ s.filter (i < ·), minkDot (p i) (p j)
+        + ∑ i ∈ s, ∑ j ∈ s.filter (i < ·), minkDot (p i) (p j) := by rw [key]
+    _ = ∑ i ∈ s, ∑ j ∈ s.filter (i < ·), 2 * minkDot (p i) (p j) := by
+        rw [← Finset.sum_add_distrib]
+        exact Finset.sum_congr rfl fun i _ => by
+          rw [← Finset.sum_add_distrib]
+          exact Finset.sum_congr rfl fun j _ => by ring
 
 /-! ## 2. The N-body headline: massless iff one null direction -/
 
