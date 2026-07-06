@@ -139,6 +139,14 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB7 (~04:00):** A2 finalize returned NOTHING integrable (crux still open, no
+  new edits - it was 5% when stopped; A1's primitives already cover it).
+  sm-crux-fibercount (e751a5c8) now attacks the isolated crux residual. Running
+  (5): sm-crux-fibercount, sm-aperture-turn (flagship, 1h+), sm-fermionic-gram-crux,
+  sm-producthaar-z2, A5-finalize. Holding free slots for these high-value returns
+  rather than churning subtle/incremental jobs at 4am (common-model taxonomy is
+  in tension with the strategy's own kill-test; StrongCoupling refactor is codex's
+  file + risky). Will plan refills from the returns + the ~06:30 morning strategy.
 - **HB6 (~03:30):** Third harvest cycle - the big one.
   * NE-U4 LANDED: sm-slab-transfer (fdab1ce4) -> `GateYM/SlabTransferGap.lean`
     (8fec85d): first non-toy PSD transfer block from the connected slab (arb G),
