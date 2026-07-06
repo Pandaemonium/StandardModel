@@ -90,6 +90,15 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 
 ## Lane X - TAXONOMY & UNIFICATION (convergence / consolidation)
 - [x] `massTaxonomy_functionals_pairwise_separated` (4 masses distinct)
+- [x] NON-DEGENERACY (sm-taxonomy-nondegen 64fa14af): `MassTaxonomyNonDegeneracy.lean`
+      - independent-realizability companion. `regulator_on_others_off`,
+      `closure_on_others_off`, `aperture_on_others_off`, `turn_off_others_on`,
+      bundled `massTaxonomy_nondegenerate`; 0 sorry, standard axioms, self-guarded.
+      HONEST per-leg report: regulator+aperture cleanly two-sided; closure has no
+      finite in-range zero (vanishes only as beta->inf, `z2GlueballMass_off_limit`);
+      turn/bare has clean OFF but NO ON witness (quarkMassParameter pinned to 0).
+      Scope: non-degeneracy/basis-like (independent domains), NOT a common-carrier
+      claim. [integration: fixed the shim-vs-real z2GlueballMass=gap2 mismatch.]
 - [x] `AllMassFromNullEdges` (+ guarded companion)
 - [ ] extend the capstone: fold in NE-U4 closure gap + OS Hamiltonian gap +
       aperture=turn + ObstructionScalar as they harden (re-bundle each cycle)
