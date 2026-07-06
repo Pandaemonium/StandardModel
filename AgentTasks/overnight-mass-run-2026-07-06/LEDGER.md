@@ -178,6 +178,22 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB35 (real ~15:00) - 4th batch wave: 8 more integrated (23 total this push).**
+  Harvested wave 4 (2c8a6e2): (T) GinspargWilson + OverlapDirac (the exact-chiral GW
+  'price' / Neuberger overlap - overlap_ginspargWilson, gamma5Hat_sq involution),
+  FiniteNNZeroCount2D (genuine 2D crossing/winding no-go, Weyl nodes in +/- pairs);
+  (C) Q8StringTension (FIRST nonabelian Q8 dim-2 concrete string tension via the
+  dim-weighted dominance - gamma2_norm_le_one, sigma2_nonneg, area law),
+  FiniteAbelianOSGap (general k-level OS Hamiltonian gap - the group-agnostic core);
+  (A) NBodyApertureTurn (n-body aperture = sum of pairwise turns); (X)
+  AllMassFromNullEdgesV3 (v3 super-capstone: T no-go + A entropy + any-N iff +
+  taxonomy + carrier-negative); (V) E8CartanNoNative (kernel-checked E8 Cartan det=1
+  + roots, NO native_decide - det_Lmat VERIFIED [propext,Classical.choice,Quot.sound]).
+  All 0 sorry, standard axioms, wired + 8 guards green (fixed OSTransfer.gap_eq name;
+  pre-commit CRLF->LF). SATURATION PUSH TOTAL: 23 modules integrated + 1 rejected
+  across ALL lanes A/T/C/X/B/V. RE-SATURATED with 4 more: sm-overlap-index (3b968d41),
+  sm-nn-index-tie (e54958d0, tie crossing-count <-> overlap index), sm-massnomass
+  (969dbe45, NE-U5 mass-from-massless), sm-su2-twolevel (4054f6cf). ~40 commits.
 - **HB34 (real ~14:25) - 3rd batch wave: 4 more integrated; saturation-batch DONE.**
   Harvested the saturation batch's 3rd wave (8a75d02): (T/EW) ElectroweakWMass
   (wMass_pos - a strictly-positive charged-sector transfer gap), (A) ApertureEntropy
