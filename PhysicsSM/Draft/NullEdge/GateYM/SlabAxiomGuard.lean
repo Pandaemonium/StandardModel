@@ -39,6 +39,8 @@ import PhysicsSM.Draft.NullEdge.GateI1.BindingMassQuantitative
 import PhysicsSM.Draft.NullEdge.GateI1.FradkinShenkerFinite
 import PhysicsSM.Draft.NullEdge.GrandMassCapstoneUnconditional
 import PhysicsSM.Draft.E8Root240NoNative
+import PhysicsSM.Draft.E8DimensionBudget
+import PhysicsSM.Draft.NullEdge.GateYM.NNIndexExact
 import PhysicsSM.Draft.NullEdge.GrandMassCapstone
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
 import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
@@ -371,5 +373,15 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.BindingMassQuantitative.compositeMassSq_eq_sin_half' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateI1.BindingMassQuantitative.compositeMassSq_eq_sin_half
+
+/-! ## Batch wave 9: exact crossing<->overlap-index identity, E8->SM dimension budget -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.NNIndexExact.signedZeroCount_eq_two_indexTr_diff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.NNIndexExact.signedZeroCount_eq_two_indexTr_diff
+
+/-- info: 'PhysicsSM.Draft.E8DimensionBudget.branching_E6_SU3' does not depend on any axioms -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.E8DimensionBudget.branching_E6_SU3
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
