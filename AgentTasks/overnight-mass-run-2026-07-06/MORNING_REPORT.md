@@ -67,6 +67,20 @@ direction recorded. Source: mission strategy `97a015dd`
   attacked by sm-crux-fibercount).
 - **GateYM axiom guard** (977b101) - 8 sorry-free spine flagships pinned
   (area law, Elitzur, RP kernel, Q5, center-flux gap, verified-negative KP).
+- **`apertureEqualsTurn_onShell` / `_exists`** (470d17d, 084146d) - THE FLAGSHIP,
+  now fully UNCONDITIONAL: binds APERTURE + TURN on one on-shell 3+1D momentum.
+- **`ObstructionScalar`** (dd461d6) - the THIRD-mode shared STRUCTURE: closure AND
+  aperture both provably instantiate one abstract obstruction scalar (one
+  "massless iff degenerate" law + non-vacuity witness). "Shared shape" formalized
+  (still not shared quantity - honest).
+- **`FermionicSingleCutRP`** (dd6a0b4) - fermionic RP on the CORRECTED single-cut
+  geometry (sorry-free), with the decisive P+ (PSD) vs -gamma0 (indefinite)
+  contrast resolving the periodic-circle false-finding.
+- **crux progress** (4642e4c, dd6a0b4, f8321ec): perPair_absWeight_bound,
+  fiber_value_bound, fiber_card_mul_le_factorial - ALL arithmetic + counting
+  proved. Crux PARKED after 4 attempts (`CRUX_PARKED_STATUS.md`): residual =
+  subtree->spanning-tree reindexing API + the labeled injection (a real
+  sub-development, not churn). Statement confirmed true.
 
 ## Distance-to-all-mass note (from strategy 70c4b556)
 
