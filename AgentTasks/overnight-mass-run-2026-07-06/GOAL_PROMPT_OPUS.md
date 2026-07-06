@@ -34,14 +34,18 @@ real bottleneck. Your job each cycle:
    scattered lemmas. The north star for lane C is the end-to-end assembly
    RP -> self-adjoint transfer -> sector gap -> area law -> exponential
    clustering as ONE finite theorem.
-5. **Literature cycle every ~3-4h**: search the active frontier (the wired
-   `scholarly` server + arXiv), add new papers to Neo4j via `lit_ingest`, and
-   MINE the top hit into a concrete job/strategy (not just catalog it). The
-   Faizal-Shabir 2606.19362 paper already motivated 6+ jobs.
-6. **Red-team every ~4-6h**: an adversarial audit of the latest headline (3
-   verified negatives this run came from exactly this).
-7. **Reports**: a checkpoint report every ~8h + a final report; honest
-   distance-to-"full origin of mass" each time.
+5. **Literature-mine EVERY HOUR (YOU, on the `scholarly` MCP - NO Aristotle
+   slot):** search the frontier, add new papers to Neo4j via `lit_ingest`
+   (zotero_write wired), and MINE one hit into a concrete job/strategy (the mine
+   is mandatory; the Faizal-Shabir 2606.19362 paper already motivated 6+ jobs).
+6. **Red-team EVERY HOUR (one Aristotle audit job):** adversarial audit of the
+   latest UN-audited headline (3 verified negatives this run came from exactly
+   this); skip only if nothing new landed.
+7. **Grand-strategy EVERY ~3h (one Aristotle job):** list program goals + status
+   per lane, have Aristotle advise highest-EV next steps + biggest risk; TEST
+   asking it to also survey/recommend literature. Harvest into the backlog.
+8. **Reports every ~4-6h** + a final report; honest distance-to-"full origin of
+   mass" each time. See "The cycle" below for the full timed cadence.
 
 Bank the floor early; aim at the shock tier (the Q6 crux closing; the lane-C
 end-to-end gap assembly; a genuine coupling beyond co-location on the octonion
@@ -74,15 +78,43 @@ side). ORIGINAL near-term floor (already largely banked): integrated harvests +
    best results.
 3. Start L1 (`AllMassFromNullEdges` capstone v1) locally.
 
-## The cycle (repeat every 15 min until morning)
+## The cycle (WIDE 24h run - timed cadences)
 
-`aristotle list` -> enforce the 2-HOUR RULE (any this-project job RUNNING
->2h: `aristotle cancel <id>`, then `aristotle continue --mode instruct
---wait <id>` telling it to finalize WITHOUT any lake build and return) ->
-harvest + semantically review + integrate finished jobs (targeted build
-before commit; a documented rejection is a result) -> refill free slots
-from wave 2 -> local queue between harvests -> ledger heartbeat. Never
-sleep-poll; end the cycle if genuinely blocked.
+**EVERY CYCLE (~15 min) - the throughput loop:**
+`aristotle list` -> enforce the 2-HOUR RULE (any this-project job RUNNING >2h:
+`aristotle cancel <id>` then `aristotle continue --mode instruct --wait <id>`
+"finalize WITHOUT any lake build and return") -> harvest + SEMANTIC-REVIEW +
+integrate finished jobs (targeted build before commit; a documented rejection or
+a kernel-checked NEGATIVE is a first-class result) -> **REFILL free slots from
+`JOB_BACKLOG.md` to keep all 10 slots full** -> ledger heartbeat. Also harvest
+CODEX's jobs (shared tree; `git status` clean-check first). Never sleep-poll.
+
+**EVERY HOUR (cheap, high-signal):**
+- **Literature-mine (YOU, via the `scholarly` MCP server - NO Aristotle slot):**
+  search the active-challenge frontier on `scholarly` (`mcp_call.py scholarly
+  search-arxiv/search-openalex/...`), add genuinely-new papers to Neo4j via
+  `Scripts/lit/lit_ingest.py` (zotero_write is now wired), and MINE one hit into
+  a concrete job or strategy note (mandatory - the mine, not just the catalog).
+- **Red-team (ONE Aristotle audit job):** adversarially audit the latest
+  UN-audited headline (statement alignment, hidden hyps, vacuity, convention
+  drift). Skip only if nothing new landed since the last audit.
+
+**EVERY ~2 HOURS (convergence guard):**
+- **Consolidate:** re-bundle landed pieces into `AllMassFromNullEdges` (and the
+  lane-C YM-gap capstone) so wide output CONVERGES; axiom-guard new flagships.
+- **Honest distance-to-goal check:** one paragraph - where are we on the FULL
+  origin of mass, what is the sharpest remaining gap.
+
+**EVERY ~3 HOURS (an Aristotle GRAND-STRATEGY job):** submit a grand-strategy
+job that (a) lists the overall program goals + current status per lane
+(A/T/C/X/B/V), (b) asks Aristotle to advise the single highest-EV next steps and
+the biggest risk/over-claim, and (c) TEST asking it to also survey/recommend
+relevant LITERATURE for the open challenges (see if Aristotle's tools can search;
+if not, note it). Harvest its findings into the backlog + the next-day plan.
+
+**EVERY ~4-6 HOURS:** a checkpoint report (honest distance-to-goal, harvests,
+rejections, negatives, jobs running); a whole-tree consolidation `lake build` to
+confirm green. A final report at the horizon.
 
 ## Non-negotiables
 
