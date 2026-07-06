@@ -139,6 +139,24 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB10 (~05:45):** FOURTH harvest cycle - the finalize partials were GOLD.
+  * FLAGSHIP LANDED: sm-aperture-turn finalize -> `GateI1/ApertureEqualsTurn.lean`:
+    `apertureEqualsTurn_onShell` PROVED (binds APERTURE + TURN on one on-shell
+    momentum - the mission strategy's #1). 1 documented handoff sorry (the
+    sqrt-construction existence `twoNull_resolution_exists`). Fixed the job's
+    unbuilt proof (minkowskiSq_add ambiguity: minkowskiInner vs minkDot).
+  * sm-producthaar-z2 finalize -> `QMF/ProductHaarZ2RP.lean`: CLOSES A6's frozen
+    RP-positivity handoff for the finite-abelian Z2 case (Fin 1 + Fin 2 genuine
+    cut), sorry-free. Fixed the job's unbuilt proof (missing [DecidableEq iota]).
+  * sm-crux-fibercount -> 2 more crux primitives (arithmetic core), committed 4642e4c.
+  * VERIFIED NEGATIVE #2: sm-fermionic-gram-crux finalize proved the RP-F N5 Gram
+    crux is FALSE on the PERIODIC time circle (two cross-mirror hoppings ->
+    indefinite block; disproof reflectedWilsonBlock_not_gram_L2). Vindicates NOT
+    integrating A7's conditional scaffold. Recorded in
+    FERMIONIC_RPF_CRUX_FALSE_FINDING.md; corrected direction = single-cut geometry.
+    NOT integrated (kept FermionicReflection sorry-free).
+  * A5 rejected earlier (superseded). Both aperture + producthaar-z2 wired into
+    aggregators (GateI1, QMF).
 - **HB9 (~05:00):** 2-HOUR RULE applied to 3 jobs at/near 2h - sm-fermionic-gram-crux
   (322b9f72), sm-producthaar-z2 (4510f446), and sm-aperture-turn (3e0eb3f5, the
   flagship, stuck at 6% after ~2h). All cancelled + finalize-instruct sent; will

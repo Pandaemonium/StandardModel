@@ -2,6 +2,7 @@ import PhysicsSM.Draft.NullEdge.QMF.CompactHaarInvariance
 import PhysicsSM.Draft.NullEdge.QMF.SpecialUnitaryCompact
 import PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance
 import PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig
+import PhysicsSM.Draft.NullEdge.QMF.ProductHaarZ2RP
 import PhysicsSM.Draft.NullEdge.QMF.AxiomGuard
 
 /-!
@@ -28,8 +29,12 @@ Wilson-slab / Peter-Weyl input; its measure-theoretic symmetries are proved):
   `Measure.pi` over a finite edge set `∏_e SU(N)` is again Haar
   (`productHaar_isHaarMeasure`), with per-link/endpoint gauge invariance and the
   measure-preserving link-reflection involution PROVED (`s o r r y`-free); the RP
-  bilinear form is DEFINED and its positivity is the single FROZEN handoff
-  (needs Peter-Weyl / the Wilson slab).
+  bilinear form is DEFINED and its positivity is the single FROZEN handoff for
+  general `SU(N)` (needs Peter-Weyl / the Wilson slab).
+* `ProductHaarZ2RP` - CLOSES that frozen positivity handoff for the finite
+  ABELIAN case `G = Z2` (Peter-Weyl-free): `productHaarZ2_reflForm_self_nonneg_oneLink`
+  and `..._twoLink` prove `0 <= reflForm F F` on the `Fin 1` and `Fin 2` (genuine
+  cut) lattices, as sums of squares via finite character folding - `s o r r y`-free.
 * `SpecialUnitaryCompact` - the physical gauge groups `U(n)`, `SU(n)` are
   COMPACT (`specialUnitaryGroup_isCompact`, via a Tychonoff box + closedness +
   row-orthonormality entry bound) and are TOPOLOGICAL GROUPS
