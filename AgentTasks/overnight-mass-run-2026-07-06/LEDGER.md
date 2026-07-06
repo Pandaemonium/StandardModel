@@ -178,6 +178,16 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB28 (real ~11:30) - consolidation: HONEST_SCORECARD + checkpoint build.**
+  Wrote HONEST_SCORECARD.md (8dfcbb1) - the precise distance-to-goal artifact:
+  per-lane PROVED/MODELED/OPEN vs the grand-strategy minimal conjunction. Verified
+  AllMassFromNullEdges prose has NO T-leg N-N over-claim (consistent with the
+  downgrade; the capstone only uses the honest channel identities + the A iff).
+  Kicked off the ~4-6h checkpoint build of the GateI1 aggregator (bxk7uh96m,
+  confirms the new lane-A NBodyAperture + lane-X MassTaxonomyNonDegeneracy compose).
+  Fleet: sm-nn-nogo (bb50e5ba) RUNNING - the genuine finite N-N no-go (T-leg
+  necessity). Everything else harvested. NEXT: harvest nn-nogo; consider the SU(N)
+  lattice-measure construction (the single C gate) and a lane-B coupling job.
 - **HB27 (real ~11:05) - red-team DOWNGRADE + lane-X non-degeneracy + N-N refill.**
   (1) f88925f HARVESTED sm-doubling-audit (521d1c86) - it caught a REAL OVER-CLAIM
   I committed: DoublingTurnPrice was framed as the topological Nielsen-Ninomiya
