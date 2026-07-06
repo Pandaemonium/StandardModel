@@ -186,3 +186,10 @@ long queries; inspirehep needs short queries).
   structure. Feeds the genuine N-N no-go + its evasion (the honest T-leg necessity).
 - hep-lat/0405024 (INGESTED) - review of chiral symmetry on the lattice.
 - Also: hep-lat/0105032 (domain-wall + chiral gauge theories).
+
+## Round 9-10 (2026-07-06, saturation) - overlap / index theorem (T-leg)
+- hep-lat/9808026 (INGESTED) - exact-chiral-symmetry axial current on the lattice
+  (the overlap/GW conserved current); feeds sm-overlap-dirac.
+- 1905.03963 (INGESTED) - topology + index theorem on the lattice (the index =
+  signed zero/chirality count - the continuum content behind the crossing no-go).
+- Also seen: 2501.02873 (eta invariant of the massive Wilson-Dirac operator).
