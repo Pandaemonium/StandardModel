@@ -139,6 +139,18 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB12 (~07:50) - RUN COMPLETE.** Final harvest: sm-slab-fullspectrum (c419f308)
+  finalize -> `GateYM/SlabFullSpectrumGap.lean` integrated as honest SCAFFOLD
+  (e7f8f12): full connected two-plaquette block PROVED PSD/Hermitian
+  (slabFullBlock_posSemidef, real advance); gap positivity CONDITIONAL on the
+  center-witness handoff (sorryAx) + a TRUTH caveat (unverified existence claim -
+  could be false like the run's 2 other spectral sorries). ALL 10+ jobs now
+  resolved. FINAL TALLY: ~31 commits. Landed positives: capstone+guarded,
+  taxonomy separation, connected-slab RP, NE-U4 closure gap (+full-block PSD),
+  product-Haar symmetries + Z2 RP, electroweak rung + 2pt clustering, the FLAGSHIP
+  aperture=turn (UNCONDITIONAL), GateYM axiom guard, 2 batches of crux primitives.
+  2 verified NEGATIVES (Q6 downstream, periodic fermionic). Consolidation build
+  green (8205 jobs). Morning report finalized. Day-team follow-ups documented.
 - **HB11 (~07:00):** FIFTH cycle + wind-down. FLAGSHIP now UNCONDITIONAL:
   sm-aperture-existence (2caa0789) closed twoNull_resolution_exists ->
   apertureEqualsTurn_exists verified [propext, Classical.choice, Quot.sound], NO
