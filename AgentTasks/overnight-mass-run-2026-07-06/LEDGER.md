@@ -139,6 +139,18 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB13 (~08:00) - RUN CONTINUES to 9am (HB12 'complete' was premature).**
+  Goal = follow GOAL_PROMPT_OPUS until 9am; the cycle repeats until morning, so
+  with the fleet empty and the crux still open (shock-tier target), refilled:
+  * sm-crux-fibercount2 (9f4db6eb): fresh crux attempt on the NOW-NARROWED
+    residual (block decomposition AND arithmetic core perPair_absWeight_bound both
+    proved; only the geometric fiber-count injection + assembly remain), seeded
+    with the current tree.
+  * sm-closure-binding (9e796bf2): the STRATEGIC frontier (strategy #4) - an
+    abstract ObstructionScalar that both the closure gap AND aperture mass
+    instantiate non-vacuously (with a mandatory kill-condition against vacuous/
+    definitional identification; a documented negative is an acceptable result).
+  Will harvest before 9am. Everything from HB1-HB12 remains banked + green.
 - **HB12 (~07:50) - RUN COMPLETE.** Final harvest: sm-slab-fullspectrum (c419f308)
   finalize -> `GateYM/SlabFullSpectrumGap.lean` integrated as honest SCAFFOLD
   (e7f8f12): full connected two-plaquette block PROVED PSD/Hermitian
