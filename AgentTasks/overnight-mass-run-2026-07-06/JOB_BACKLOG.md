@@ -71,8 +71,13 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 - [x] su3Submonoid = SU(3); color triplet = fundamental; one-generation package;
       charge co-location verdict
 - [ ] deepen the octonion->mass connection beyond co-location (the coupling test)
-- [ ] Spin(10) stabilizer draft: close/548 one of the 3 open sorries
-      (Iso/Selector/Transitivity) - Aristotle audit first
+- [~] Spin(10) stabilizer draft (sm-spin10-audit 5bace153): TRANSITIVITY sorry
+      AUDITED = FALSE as stated (OrthogonalPureSpinors admits the d=5 diagonal
+      stratum, Chevalley), CLOSED with kernel-checked negative
+      `not_evenCliffordGroup_transitive_on_krasnov_pairs` (4th verified negative
+      of the run). ISO sorry = FALSE (complex-vs-compact real-form mismatch, dim
+      24 vs 12). SELECTOR = underspecified (backward dir tractable next). Fixes in
+      sm-spin10-audit-FINDINGS_5bace153.md. Original 3 draft sorries preserved.
 - [ ] anomaly-from-Qop: extend beyond the U(1) linear/cubic sums
 
 ## Lane V - TRUST CONSOLIDATION (hardens the whole)
