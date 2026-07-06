@@ -69,3 +69,34 @@ imports need only path updates, not renames):
 group). Cheap in proof effort (zero new proofs), moderate in mechanical care.
 Highest value: navigability of the ~1000-file repo and a smaller public surface,
 per the audit's "few general results + curated index" recommendation.
+
+## UPDATE (2026-07-05): the subtree has CONFLICTING duplicate definitions
+
+Attempting a naive "import all 21" aggregator FAILED with a hard environment
+collision, revealing a real problem the plan must account for:
+`PhysicsSM.Gauge.StandardModelSubgroup.SMProductCoveringTriple` is defined
+INCOMPATIBLY in three files:
+- `StandardModelProductCoveringTriple.lean:136` - `structure SMProductCoveringTriple`
+  (the canonical one; this module IS imported by the default `PhysicsSM` root).
+- `StandardModelProductCoveringQuotientSMBlock.lean:50` -
+  `abbrev SMProductCoveringTriple := SMCoveringTriple` (a DIFFERENT thing, same
+  fully-qualified name; NOT imported by the default root).
+- `StandardModelProductCoveringTrueQuotientSMBlock.lean` - adds more
+  `SMProductCoveringTriple.*` defs on top.
+
+Consequences for the consolidation:
+1. These modules CANNOT be co-imported - so the naive aggregator is impossible,
+   and the merge cannot simply concatenate; the duplicate must be resolved first.
+2. The `QuotientSMBlock` / `TrueQuotientSMBlock` track appears to be an ALTERNATE
+   (possibly superseded / dead) formulation NOT in the default build. Before
+   merging, DECIDE: is it live, superseded, or dead? If dead, delete it (biggest
+   single consolidation win); if an alternate track, rename its `abbrev` to a
+   distinct name so both can coexist / be co-imported.
+3. This is a JUDGMENT call about which formulation is canonical - best made with
+   the maintainer, not mechanically. It elevates step 0 of the execution recipe
+   from "record footprints" to "reconcile the SMProductCoveringTriple duplicate
+   and prune/rename the alternate track."
+
+So the consolidation is genuinely non-trivial (real conflicting duplicates, not
+just verbose naming) and its highest-value first action is resolving this
+duplicate - likely pruning a dead alternate track - not a mechanical file merge.
