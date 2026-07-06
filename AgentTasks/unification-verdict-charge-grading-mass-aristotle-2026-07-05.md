@@ -25,3 +25,29 @@ STATEMENT for non-vacuity before integrating.
 Harvest when IDLE; download, read Aristotle's ChargeGradingMassCompatible.lean +
 report; verify the statement is non-vacuous (references Q_op eigenvalues) and
 kernel-checked (lake env lean + #print axioms) before integrating into the tree.
+
+## Triage 2026-07-05 (aristotle continue --mode ask)
+
+Job HEALTHY, progressing to expected result; bottleneck is compile time (reused
+the full-repo slim copy, so it must build PhysicsSM deps before proof search).
+Aristotle's report:
+- Created ChargeGradingMassCompatible.lean; theorems DRAFTED (unverified pending
+  build): charge_grading_mass_compatible (co-location headline),
+  mass_colorBlind_on_chargeBlock (color-blindness within a Q_op charge block),
+  coupling_would_distinguish (NON-VACUITY counterfactual - satisfies the
+  guardrail), + supporting cNormSq_v1/v4, spacetimeMass_pos_example.
+- Design (correct, non-vacuous): two states with DIFFERENT Q_op eigenvalues but
+  EQUAL octonion norm (1/2) => a norm-weighted mass cannot separate them =>
+  co-location; references the actual Q_op eigenvalues so it is not a generic
+  bilinear-form triviality.
+- No math blocker; recommend keep waiting.
+
+VERIFY ON RETURN (semantic-alignment, load-bearing):
+1. State/charge labels: Aristotle said "v1 (charge -2/3), v4 (charge -1/3)", but
+   AnomalyBridge has vbar1/2/3 = -1/3 and vbar4/5/6 = -2/3. CHECK the labels/
+   charges are correct and the two states chosen genuinely have DIFFERENT Q_op
+   eigenvalues (else the non-vacuity argument breaks).
+2. Non-vacuity: coupling_would_distinguish must actually reference Q_op
+   eigenvalues and be FALSE if mass coupled to charge.
+3. Kernel-checked: lake env lean + #print axioms (no sorry, no native_decide,
+   standard axioms) before integrating.
