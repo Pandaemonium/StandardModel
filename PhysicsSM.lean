@@ -240,6 +240,7 @@ import PhysicsSM.Coding.ConstructionAThetaWeightBridge
 import PhysicsSM.Coding.ConstructionAThetaConvolution
 import PhysicsSM.Coding.E8RootBridge
 import PhysicsSM.Coding.E8ShortVectors
+import PhysicsSM.Coding.E8AxiomGuard
 import PhysicsSM.Coding.HammingConstructionAE8
 import PhysicsSM.Algebra.Octonion.E8WeylBasic
 import PhysicsSM.Algebra.Octonion.E8WeylOrbit
