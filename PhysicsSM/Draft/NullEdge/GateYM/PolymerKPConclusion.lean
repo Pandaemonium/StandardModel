@@ -1085,6 +1085,55 @@ lemma factorial_mul_prod_factorial_le (k : Nat) (m : Fin k -> Nat)
                 simp [s, old, last, Fin.sum_univ_castSucc, Nat.add_comm,
                   Nat.add_left_comm]
 
+/-
+Finset form of the multinomial normalization `factorial_mul_prod_factorial_le`:
+for any finite index set `s` whose block sizes `m j` are all positive, the
+child-order normalization `s.card !` times the product of block factorials fits
+inside the factorial of `1 + (total block size)`.  This is the shape needed for
+the canonical-root deletion, where the children form the `Finset`
+`treeRootChildren T r`.
+-/
+lemma factorial_mul_prod_factorial_le_finset {ι : Type _} (s : Finset ι)
+    (m : ι -> Nat) (hm : ∀ j ∈ s, 1 <= m j) :
+    Nat.factorial s.card * (∏ j ∈ s, Nat.factorial (m j))
+      <= Nat.factorial (1 + ∑ j ∈ s, m j) := by
+  obtain ⟨e, he⟩ : ∃ e : Fin s.card ≃ { x : ι // x ∈ s }, True := by
+    exact ⟨ Fintype.equivOfCardEq ( by simp +decide ), trivial ⟩;
+  convert factorial_mul_prod_factorial_le s.card ( fun i => m ( e i ) ) ( fun i => hm _ ( e i |>.2 ) ) using 1;
+  · conv_lhs => rw [ ← Finset.prod_coe_sort ] ;
+    conv_lhs => rw [ ← Equiv.prod_comp e ] ;
+  · rw [ ← Finset.sum_coe_sort ];
+    conv_lhs => rw [ ← Equiv.sum_comp e ] ;
+
+/-
+Per-pair weight bound (arithmetic core of `pairSum_le_expBound`).  For a
+cluster `X` with a spanning tree `T` rooted at a canonical slot `r` carrying
+`g`, the ordered `1/n!` normalized weight is bounded by the child-ordered
+`1/k!` normalization times the product of the block-normalized subcluster
+weights.  This packages `absWeight_eq_root_mul_blocks`,
+`factorial_mul_prod_factorial_le_finset`, and `sum_childBlockOf_card`.
+-/
+lemma perPair_absWeight_bound (S : PolymerSystem Gamma)
+    (X : Cluster S) (g : Gamma) (T : SimpleGraph (Fin X.n))
+    (hT : T.IsTree) (r : Fin X.n) (hr : X.poly r = g) :
+    X.absWeight S / (Nat.factorial X.n : Real)
+      <= |S.weight g| / (Nat.factorial (treeRootChildren T r).card : Real)
+          * ∏ j ∈ treeRootChildren T r,
+              ((restrictCluster S X
+                  ((childBlockOf T r j).image (fun v => v.1))).absWeight S
+                / (Nat.factorial (childBlockOf T r j).card : Real)) := by
+  rw [ absWeight_eq_root_mul_blocks S X T r hT, div_mul_eq_mul_div, Finset.prod_div_distrib ];
+  rw [ ← mul_div_assoc, div_div, hr ];
+  gcongr;
+  · exact mul_nonneg ( abs_nonneg _ ) ( Finset.prod_nonneg fun _ _ => Cluster.absWeight_nonneg _ _ );
+  · rw_mod_cast [ mul_comm ];
+    convert factorial_mul_prod_factorial_le_finset ( treeRootChildren T r ) ( fun j => ( childBlockOf T r j ).card ) _ using 1;
+    · rw [ add_comm, sum_childBlockOf_card T r hT ];
+      rw [ Nat.sub_add_cancel ( Fin.pos r ) ];
+    · intro j hj
+      simp [childBlockOf, treeRootChildBlock_card_pos];
+      split_ifs ; exact ⟨ _, treeRootChild_mem_block _ _ _ _ ⟩
+
 open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining
 combinatorial crux of Q6 (stated with only the `Touches g` guard, via
@@ -1144,14 +1193,32 @@ lemma pairSum_le_expBound (S : PolymerSystem Gamma)
   --       (absWeight p = |w (p r)| * ∏_j absWeight q_j);
   --   * canonical root `exists_canonical_root`, child polymers in `nbhd g`
   --       (`treeRootChildren_poly_mem_nbhd`), arity/size bounds, and the
-  --       multinomial normalization `factorial_mul_prod_factorial_le`
+  --       multinomial normalization `factorial_mul_prod_factorial_le` and its
+  --       `Finset` form `factorial_mul_prod_factorial_le_finset`
   --       (k! ∏ m_j! ≤ n!), plus the RHS expansion `rhs_forest_expand`.
-  -- REMAINING CRUX (steps (d)+(e) of the intended proof): the multiplicity
-  -- fiber-count `#{(p,T) mapping to a fixed forest target} ≤ n!/(k! ∏ m_j!)`
-  -- (an injection of the fiber into the ordered-partition arrangements of the
-  -- n-1 non-root labels, the canonical-least-root and increasing-children
-  -- constraints only removing options), together with the regrouping of the
-  -- LHS pair sum by this classification map and the final `Finset.sum_le_sum`.
+  --   * ARITHMETIC CORE now proved: `perPair_absWeight_bound` packages
+  --       `absWeight_eq_root_mul_blocks` + `factorial_mul_prod_factorial_le_finset`
+  --       + `sum_childBlockOf_card` into the single weight inequality
+  --         absWeight p / n! ≤ |w g|/k! * ∏_j (absWeight q_j / m_j!).
+  --       (Used NOT per pair, but inside the fiber-grouped regrouping below,
+  --       where each fiber has a constant summand equal to absWeight p / n!.)
+  -- REMAINING CRUX (the single combinatorial residual): regroup the LHS pair
+  -- sum by the classification map
+  --   Φ(p,T) = (k, φ = (X.poly j_i)_i, (q_i, T_i)_i)  [UNROOTED induced
+  --   subtrees T_i; children j_i taken in increasing slot order],
+  -- via `Finset.sum_fiberwise_of_maps_to`, then bound each fiber:
+  --   `#Φ⁻¹(e) ≤ n! / (k! ∏_j m_j!)`.
+  -- This fiber bound is the entire remaining content.  It has been checked to
+  -- hold WITH SLACK on small cases (e.g. n=3: the k=1 fiber has size 2 ≤ 3,
+  -- the slack absorbing the freedom in the root-connection vertex inside each
+  -- unrooted block -- this IS the "unrooted vs rooted children" slack).  The
+  -- proof needs an injection of the fiber into the ordered set-partition
+  -- arrangements of the n-1 non-root labels; the canonical-least-root and
+  -- increasing-children constraints only REMOVE possibilities.  Combined with
+  -- `perPair_absWeight_bound`-style arithmetic and constancy of the summand on
+  -- each fiber, then `Finset.sum_le_sum_of_subset_of_nonneg` against the full
+  -- RHS atom index set (image ⊆ all atoms, every atom term ≥ 0), this closes
+  -- the inequality.
   sorry
 
 open Classical in
