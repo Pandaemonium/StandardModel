@@ -26,13 +26,22 @@ do NOT depend on another job's output. Refill from here whenever a slot frees.
 
 ## Lane T - TURN / matter mass (Higgs-Yukawa, chirality)
 - [x] `gamma5_mass_diff_comm`, `chiralEven/Odd_massVertex` (channel separation)
-- [x] Nielsen-Ninomiya doubling as the PRICE of the turn (sm-doubling-turn
-      5d05e8de, 2h-rule finalized): `DoublingTurnPrice.lean` - Wilson term is
-      chirality-EVEN (`chiralEven_wilsonProjector = r*1`), full-vertex channels,
-      `no_chiral_and_doubler_removal` (even+odd can't both vanish),
-      `naive_limit_doubler_survives` (r=0,m=0: even=0 but transport survives),
-      `regulator_turn_tie` to wilsonRegulatorMass. 0 sorry, standard axioms,
-      guarded. Composes with the landed gamma5 split.
+- [~] Wilson-vertex channel decomposition (sm-doubling-turn 5d05e8de):
+      `DoublingTurnPrice.lean` - the FINITE, LOCAL, per-vertex spin-algebra channel
+      split: Wilson term is chirality-EVEN (`chiralEven_wilsonProjector = r*1`),
+      `chiralEven/chiralOdd_massVertexW`, `chiralEven_massVertexW_eq_zero_iff`
+      (clean iff), plus the near-vacuous `no_chiral_and_doubler_removal` and the
+      shared-threshold `regulator_turn_tie`. 0 sorry, standard axioms, guarded.
+      DOWNGRADED per red-team sm-doubling-audit (521d1c86): this is NOT the
+      topological Nielsen-Ninomiya no-go and does NOT establish necessity (no
+      momentum/torus/chirality-sum). Docstrings corrected.
+- [ ] **GENUINE N-N no-go (T-leg necessity, OPEN):** a discrete-Brillouin-torus
+      signed-chirality-sum theorem - for a chirally-symmetric symbol
+      D : (ZMod N)^d -> Mat with {gamma5,D}=0 and isolated simple zeros, the signed
+      zero count = 0 (doublers in +/- pairs), giving the necessity corollary that a
+      chirality-even (Wilson) term is required for a doubler-free operator. Needs a
+      discrete Poincare-Hopf/winding argument. THIS is the real T-leg obstruction;
+      lit: 2105.10977 (naive fermion w/o doublers = which N-N assumption is dropped).
 - [ ] NE-U6 electroweak: extend `ElectroweakRung` - W mass as a gauge-invariant
       composite transfer-spectrum feature (build on the proved 2-point clustering)
 - [ ] Yukawa turn amplitude: the mass = coin-turn amplitude at operator grade for

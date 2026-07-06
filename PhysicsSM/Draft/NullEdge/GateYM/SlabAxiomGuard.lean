@@ -129,7 +129,8 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN.tyBaseSUN_two_landed
 
-/-! ## Lane T: Nielsen-Ninomiya "price of the turn" (2h-rule finalized harvest) -/
+/-! ## Lane T: Wilson-vertex channel decomposition (local finite identities;
+NOT the topological Nielsen-Ninomiya no-go - see DoublingTurnPrice scope note) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice.no_chiral_and_doubler_removal' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
