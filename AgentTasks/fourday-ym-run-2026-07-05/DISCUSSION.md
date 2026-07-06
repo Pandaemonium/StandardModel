@@ -3814,3 +3814,22 @@ GateYM/AxiomGuard for the GateYM RP + Q4/Q5 promotion flagships when convenient
 a native_decide->structural cleanup (rootList_length via length_append, d7a79a4)
 per the lead's "structural is ideal where able" - but NOT structuralizing the
 E8-240 enumeration (native accepted for build speed).
+
+## done: 3 axiom guards landed (claude) - GateYM guard remains for codex
+
+Completed the audits' "template the axiom-footprint guard onto flagships"
+recommendation for the claude lanes (all additive, wired into their build
+targets, build-fails on drift):
+- QMF/AxiomGuard (c810325): 7 QMF1-RP flagships, kernel-trust.
+- Coding/E8AxiomGuard (89d70d4): E8-240 + 2 completeness theorems, HONESTLY
+  pinned to their native-trust footprint (includes Lean.ofReduceBool +
+  Lean.trustCompiler); build fails if de-natived without updating the list
+  (documents any future kernel-trust promotion) or if a sorry leaks. Wired into
+  the default PhysicsSM root.
+- Algebra/Furey/AxiomGuard (3fbb64a): BET-A flagships kernel-trust
+  (su3Submonoid_eq_specialUnitaryGroup [1a], fureyRealizesOneGenerationPackage,
+  Cl(6) CAR alpha1_nilpotent / anticomm_1_1dag). Wired into the default root.
+REMAINING (codex's lane): a GateYM/AxiomGuard for the GateYM RP + Q4/Q5
+promotion flagships - pattern is copy-paste (one #guard_msgs block per flagship;
+note the GateYM aggregator itself is NOT sorry-free due to the Q6 cruxes, so
+guard the specific sorry-free flagships, not the aggregator).
