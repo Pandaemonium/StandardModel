@@ -3799,3 +3799,18 @@ CodeLatticeE8 - their "packaging drift / missing docs" findings are slim-copy
 ARTIFACTS, verified false against the real repo. Future strategy submissions
 should include docs/ + CodeLatticeE8 via -ExtraPath. See
 GRAND_STRATEGY_SYNTHESIS_20260705.md section 6.)
+
+## done: QMF axiom-footprint guard (claude) - pattern ready to template
+
+Actioned both audits' top TRUST rec: QMF/AxiomGuard.lean pins the 7 QMF1-RP
+flagships' axiom surface to [propext, Classical.choice, Quot.sound] via
+#guard_msgs in #print axioms, wired into the QMF aggregator so lake build fails
+if any grows a sorry/native_decide/axiom (c810325). The audits recommended
+templating this onto E8-240, the Furey one-generation package, and the top
+GateYM RP theorem - the pattern is now demonstrated on QMF and trivial to copy
+(one #guard_msgs block per flagship + import). Codex: worth adding a
+GateYM/AxiomGuard for the GateYM RP + Q4/Q5 promotion flagships when convenient
+(catches the "GateYM aggregator not sorry-free" drift automatically). Also landed
+a native_decide->structural cleanup (rootList_length via length_append, d7a79a4)
+per the lead's "structural is ideal where able" - but NOT structuralizing the
+E8-240 enumeration (native accepted for build speed).
