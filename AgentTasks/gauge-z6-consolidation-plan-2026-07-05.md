@@ -1,0 +1,71 @@
+# Gauge Z6 consolidation plan (2026-07-05)
+
+Actions grand-strategy audit finding 2.8 / D1 (lead greenlit consolidation): the
+`PhysicsSM/Gauge` tree has 21 of 46 files named `StandardModel*Z6*` /
+`*Quotient*` / `*Kernel*` (~4000 lines), the clearest instance of the
+"many narrow near-duplicates" anti-pattern. This is TRUSTED code with a chain of
+23 cross-imports, so the merge must be dependency-aware and build-verified - a
+focused task, not a rushed one. This file scopes it; execution is a separate
+commit series.
+
+## Ground truth
+
+21 files, layered by import (sampled): `Z6KernelMap` <- `Z6KernelEquiv`;
+`Z6FiniteKernel` <- `Z6Kernel`; package/equiv files sit above the core. Each file
+holds a handful of narrow lemmas (phase, kernel-elt maps, surjectivity,
+bijectivity, quotient laws). All are `s o r r y`-free; footprints should be
+kernel-trust (verify with `#print axioms` before/after - the merge must NOT
+change any footprint).
+
+## Target structure (21 files -> ~5 + 1 aggregator)
+
+Group by dependency layer / theme, preserving ALL theorem names (so downstream
+imports need only path updates, not renames):
+
+1. `StandardModelZ6Kernel.lean` (merge: `Z6Kernel`, `Z6FiniteKernel`,
+   `Z6KernelMap`, `Z6KernelEquiv`, `Z6KernelPackage`, `UnitZ6Kernel`,
+   `UnitZ6ExactKernelPackage`, `ProductCoveringTrueZ6Kernel`) - the Z6 kernel of
+   the covering map and its finiteness/exactness.
+2. `StandardModelZ6QuotientMonoid.lean` (merge: `Z6QuotientMonoid`,
+   `Z6QuotientMonoidEquiv`, `Z6QuotientMonoidLaws`, `Z6QuotientScaffold`).
+3. `StandardModelZ6QuotientImage.lean` (merge: `Z6ImageQuotient`,
+   `Z6QuotientImageFiber`, `Z6QuotientImageEquiv`, `Z6IdentityFiber`).
+4. `StandardModelZ6SMBlock.lean` (merge: `ProductCoveringQuotientSMBlock`,
+   `ProductCoveringTrueQuotientSMBlock`, `UnitZ6SMBlockEquiv`,
+   `UnitZ6QuotientGroup`) - the (SU(3)xSU(2)xU(1))/Z6 block equivalences.
+5. `QunitQubitQutritQuotientRepresentation.lean` - keep standalone (distinct
+   topic) OR fold into SMBlock if it only depends on it.
+6. `StandardModelZ6.lean` - NEW pure-import aggregator over the merged 5, with a
+   docstring theorem-map, wired into the default root in place of the 21
+   individual imports.
+
+## Execution recipe (per merged module, safe + reversible)
+
+1. `#print axioms` every public theorem in the group; record the footprints.
+2. Concatenate the group's files into the target, preserving namespaces and
+   theorem names; drop now-internal imports; keep docstrings.
+3. `grep -rl "import PhysicsSM.Gauge.<oldfile>"` across the repo; repoint every
+   importer to the merged module (or the aggregator).
+4. `lake build` the merged module, then the aggregator, then a full `lake build`.
+5. Re-run `#print axioms` on the same theorems; CONFIRM identical footprints (the
+   merge must be behavior-preserving).
+6. Delete the old files only after the full build is green and footprints match.
+7. Add the merged flagships to `Gauge/AxiomGuard` (new, mirroring
+   QMF/E8/Furey/AxiomGuard) so the consolidated results get the build-enforced
+   footprint guard too.
+
+## Risk / stop conditions
+
+- TRUSTED tree: a broken import breaks the default `PhysicsSM` build. Do it one
+  group at a time, full-build between groups, never batch all five blind.
+- If any theorem's `#print axioms` changes after merge, STOP - the concatenation
+  reordered a definition or dropped a hypothesis; investigate before proceeding.
+- Do not rename any public theorem in this pass (rename is a separate,
+  reviewable change); path-only moves keep the diff mechanical.
+
+## Estimated effort
+
+~1 focused session (5 merge commits + import repointing + a full build per
+group). Cheap in proof effort (zero new proofs), moderate in mechanical care.
+Highest value: navigability of the ~1000-file repo and a smaller public surface,
+per the audit's "few general results + curated index" recommendation.
