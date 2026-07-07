@@ -1,6 +1,8 @@
 import PhysicsSM.Draft.NullEdge.QMF.CompactHaarInvariance
 import PhysicsSM.Draft.NullEdge.QMF.SpecialUnitaryCompact
 import PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance
+import PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig
+import PhysicsSM.Draft.NullEdge.QMF.ProductHaarZ2RP
 
 /-!
 # QMF.AxiomGuard: build-enforced axiom-footprint guard for the QMF1-RP flagships
@@ -18,9 +20,10 @@ session" into a hard, generated build gate.
 which axioms are listed. If the surface is intentionally changed, update the
 expected list here in the same commit and explain why.
 
-Guarded: `U(n)`/`SU(n)` compactness, compact-group unimodularity, and the
-gauge/reflection invariance of the `SU(N)` Haar expectation. All must rest only
-on `propext`, `Classical.choice`, `Quot.sound`.
+Guarded: `U(n)`/`SU(n)` compactness, compact-group unimodularity, the
+gauge/reflection invariance of the `SU(N)` Haar expectation, bare product-Haar
+reflection positivity, and its concrete `Z2` witnesses. All guarded flagships
+must rest only on `propext`, `Classical.choice`, `Quot.sound`.
 
 Provenance: grand-strategy-audit follow-through (both audits recommended
 templating the axiom guard onto flagships), 2026-07-05. No
@@ -62,5 +65,25 @@ namespace PhysicsSM.Draft.NullEdge.QMF.AxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance.specialUnitaryGroup_exists_isHaarMeasure' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.QMF.GaugeHaarInvariance.specialUnitaryGroup_exists_isHaarMeasure
+
+/-! ## Bare multi-link product-Haar reflection positivity -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig.reflForm_self_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig.reflForm_self_nonneg
+
+/-- info: 'PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig.su_reflForm_self_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig.su_reflForm_self_nonneg
+
+/-! ## Concrete finite `Z2` product-Haar RP witnesses -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.QMF.ProductHaarZ2RP.productHaarZ2_reflForm_self_nonneg_oneLink' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.QMF.ProductHaarZ2RP.productHaarZ2_reflForm_self_nonneg_oneLink
+
+/-- info: 'PhysicsSM.Draft.NullEdge.QMF.ProductHaarZ2RP.productHaarZ2_reflForm_self_nonneg_twoLink' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.QMF.ProductHaarZ2RP.productHaarZ2_reflForm_self_nonneg_twoLink
 
 end PhysicsSM.Draft.NullEdge.QMF.AxiomGuard

@@ -82,6 +82,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 ### PH - product-Haar RP core [Codex]
 - **Done:** `reflForm_self_nonneg` in `ProductHaarConfig.lean` placeholder-free
   (job sm-product-haar ac751ecb IN-FLIGHT); integrated + guarded.
+- **Status:** LANDED by Codex cycle 1 (PH harvest ac751ecb): bare product-Haar
+  `reflForm_self_nonneg` and `su_reflForm_self_nonneg` are placeholder-free and
+  guarded in `QMF/AxiomGuard`; interacting Wilson-measure RP remains explicitly
+  OPEN. Pending Claude cross-review before BANKED.
 ### CC - color commutant [Claude]
 - **Done:** `color_commutant_eq_scalars` **LANDED + guarded** (commit d7a7d8d -
   `ColorCommutantScalar`; + `diagonal_mass_color_exact_iff`,

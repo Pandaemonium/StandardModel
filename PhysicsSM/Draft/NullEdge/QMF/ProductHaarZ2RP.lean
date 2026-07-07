@@ -5,11 +5,14 @@ import PhysicsSM.Draft.NullEdge.QMF.ProductHaarConfig
 # QMF1-RP: reflection positivity of the product-Haar form for the finite abelian
 gauge group `Z2` (Peter-Weyl-free)
 
-This module discharges the *finite abelian* special case of the FROZEN reflection
-positivity handoff of `QMF/ProductHaarConfig` (`reflForm_self_nonneg`, whose
-general proof needs the Wilson-slab / character-expansion / Peter-Weyl input and
-is left as a documented `s o r r y` there). Here the gauge group is
-`Z2 = Multiplicative (ZMod 2)`, for which:
+This module gives an explicit, computational *finite abelian* instance of the
+bare product-Haar reflection positivity proved generally in `QMF/ProductHaarConfig`
+(`reflForm_self_nonneg` - for the bare product measure, established there by the
+disjoint-block factorization `prod_diag_refl_nonneg`, with NO Peter-Weyl input;
+reflection positivity of the *interacting* Wilson measure remains the pending
+rung). Here the general product-Haar expectation collapses to a finite sum, and
+the reflection form is exhibited concretely as an honest sum of squares. The
+gauge group is `Z2 = Multiplicative (ZMod 2)`, for which:
 
 * the (bi-invariant, inversion-invariant) Haar measure is the **normalized
   counting measure** `MeasureTheory.Measure.count` (a Haar measure on any finite
@@ -40,9 +43,11 @@ is left as a documented `s o r r y` there). Here the gauge group is
 ## Scope / honest claim label
 
 **Reflection positivity of the product-Haar form for the finite abelian gauge
-group `Z2` (Peter-Weyl-free).** This is the ABELIAN toy that de-risks the general
-(Peter-Weyl) positivity; it is NOT the general theorem, and it does NOT modify the
-frozen `ProductHaarConfig.reflForm_self_nonneg`. All definitions (`reflForm`,
+group `Z2` (Peter-Weyl-free).** This is a concrete, computational ABELIAN instance
+of the general bare product-Haar positivity `ProductHaarConfig.reflForm_self_nonneg`
+(here the expectation is a finite sum and the form is an explicit `(∑ f)²`); it is
+NOT reflection positivity of the interacting theory, which remains pending. All
+definitions (`reflForm`,
 `productHaar`, `theta`, `SupportedOn`, `Config`) are reused from
 `QMF/ProductHaarConfig`. Draft-trust; no new `a x i o m`, no `n a t i v e _
 d e c i d e`, no statement weakening.
@@ -115,11 +120,11 @@ lemma reflForm_count_eq_sum {ι : Type*} [Fintype ι] [DecidableEq ι] (refl : �
 /-! ## Reflection positivity: the single-link (`Fin 1`) lattice -/
 
 /-- **Reflection positivity of the product-Haar `Z2` form on the single-link
-lattice `ι = Fin 1`.** This mirrors the FROZEN
-`ProductHaarConfig.reflForm_self_nonneg` at `G = Z2`, `ι = Fin 1`. On `Fin 1` the
-edge reflection is the identity, so the cut condition `hcut` forces the positive
-side `posEdges` to be empty; hence `F` is constant and the form is a nonnegative
-sum of squares. Peter-Weyl-free. -/
+lattice `ι = Fin 1`.** This is the concrete `G = Z2`, `ι = Fin 1` shadow of the
+general bare product-Haar theorem `ProductHaarConfig.reflForm_self_nonneg`. On
+`Fin 1` the edge reflection is the identity, so the cut condition `hcut` forces
+the positive side `posEdges` to be empty; hence `F` is constant and the form is a
+nonnegative sum of squares. Peter-Weyl-free. -/
 theorem productHaarZ2_reflForm_self_nonneg_oneLink (refl : Fin 1 ≃ Fin 1)
     (_hrefl : Function.Involutive refl) (posEdges : Set (Fin 1))
     (hcut : ∀ e ∈ posEdges, refl e ∉ posEdges)
@@ -160,12 +165,13 @@ lemma fin2_sum_sq (f : Z2 → ℝ) :
   rw [← Equiv.sum_comp (piFinTwoEquiv (fun _ => Z2)).symm (fun x => f (x 1) * f (x 0))]
   simp only [piFinTwoEquiv_symm_apply]
   rw [Fintype.sum_prod_type, Finset.sum_mul_sum, Finset.sum_comm]
-  simp [Matrix.cons_val_zero, Matrix.cons_val_one]
+  simp
 
 /-- **Reflection positivity of the product-Haar `Z2` form on the two-link lattice
 `ι = Fin 2`** with the genuine cut `posEdges = {0}` and edge reflection the swap
-`(0 1)`. This mirrors the FROZEN `ProductHaarConfig.reflForm_self_nonneg` at
-`G = Z2`, `ι = Fin 2`. Since every `Z2` element is self-inverse, `theta` is the
+`(0 1)`. This is the concrete `G = Z2`, `ι = Fin 2` shadow of the general bare
+product-Haar theorem `ProductHaarConfig.reflForm_self_nonneg`. Since every `Z2`
+element is self-inverse, `theta` is the
 edge swap, so `F ∘ theta` depends only on link `1` while `F` depends only on link
 `0`; the two independent factors are identical counting measures, so the form
 equals `(∑_{a : Z2} f a)² ≥ 0`. Peter-Weyl-free. -/
