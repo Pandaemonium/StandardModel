@@ -238,3 +238,25 @@ Relevance to live C/QC threads:
 - `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` now cites **AXAWAGGB** for Fable's
   suggested reframing of `H²(K,Z(G))` center-twist data as a 1-form
   center-symmetry background. No trusted Lean theorem was changed.
+
+## Round 7 (Claude, cycle 8) - grounding the two Fable top-pick threads
+
+Search (`--chunks`): teleparallel gravity + Pontryagin/Krein positivity (the G-TELE and
+KREIN-POS threads seeded from Fable's extension guidance).
+
+- **arXiv:1204.4339 - "Teleparallel Gravity as a Higher Gauge Theory"** [in-graph].
+  chunk 19 [Torsion and the coframe field] + chunk 16 [teleparallel geometry / Poincare
+  2-group]. Grounds G-TELE (torsion = coframe/tetrad gradient = the E-slot brick target
+  `T_ef = nabla_e alpha_f - nabla_f alpha_e`) AND is a CONFLUENCE: it ties Fable's
+  teleparallel-E reading to the higher-gauge-theory extension (doc sec 4.3/7.6) - the
+  Poincare 2-group is the natural home of both. Cite in G-TELE.
+- **arXiv:1505.01939 - "Krein spectral triples and the fermionic action"** [in-graph].
+  chunk 4 [Krein spectral triples]. New reference for the Krein square + the fermionic
+  (mass) action; complements 1210.6575 / math-ph/0110001 (Krein # structure). Cite in
+  CarrierKreinSquare + KREIN-POS.
+- **GAP (honest):** the Pontryagin-space invariant-subspace theorem (Pontryagin 1944;
+  Krein-Langer) - the KREIN-POS top pick's FOUNDATIONAL result (J-self-adjoint operator on
+  Pi_kappa has an invariant maximal non-negative subspace) - is NOT in the full-text graph.
+  ACTION: ingest a Pontryagin/Krein-Langer reference (Bognar "Indefinite Inner Product
+  Spaces", or Azizov-Iokhvidov) before the KREIN-POS brick; likely [NO-FULLTEXT], cite by
+  reference. This is the finite-dim linear-algebra fact that upgrades the positivity crux.
