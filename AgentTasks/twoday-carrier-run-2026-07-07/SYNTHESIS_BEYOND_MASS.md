@@ -139,9 +139,11 @@ constraint-kernel selector in ONE finite framework:
   if even the shadow survives, positivity, entropy (sec on horizons), and
   causality become one statement.
 
-**STATUS UPDATE (2026-07-07, Q01 memo integrated - supersedes the rung list
-above).** The crux is SOLVED to its exact boundary at working-mathematician
-rigor; kernel transcription is now the task. The corrections and results:
+**STATUS UPDATE (2026-07-07, Q01 memo integrated; finite witness/no-go now
+kernelized).** The crux is solved to its exact boundary at working-mathematician
+rigor, and Aristotle/Codex have now kernelized the finite witness/no-go
+separation in `KreinPositiveSectorWitness.lean`.  The full carrier-level
+physical-sector theorem is still a target. The corrections and results:
 
 1. **Two theorems, not one (F1).** The ladder conflated STATE positivity
    (`[psi,psi] > 0` on `V'/N`) with MASS-FORM positivity (`[psi, D^2 psi]`).
@@ -159,11 +161,12 @@ rigor; kernel transcription is now the task. The corrections and results:
    (O2: a 2x2 J-nonnegative Krein-sa operator with no nonvacuous physical
    sector - the degenerate obstruction is real and spectral hypotheses cannot
    remove it).
-3. **Finding A (the headline).** With `J = Gamma` and the Gauss span maximal
+3. **Finding A (the headline target).** With `J = Gamma` and the Gauss span maximal
    isotropic: `dim(V'/N) = dim M_+ - dim M_- = ind(D)`. The chiral index does
    not merely protect massless modes - it COUNTS the physical states that
-   survive gauge. The month's two kernel pillars (index protection, Krein
-   witness) meet in one equation. Kernel target L5; the next freeze headline.
+   survive gauge. The finite witness/no-go separation is now kernelized, but
+   the actual carrier/Gauss wiring, Ward invariance, and completeness
+   hypotheses remain the L5 theorem target.
 4. **Finding B (honesty flag on our own witness).** The kappa = 2 witness has
    p = q, hence `dim(V'/N) = 0` for ANY first-class quotient: right witness
    for the mass form, structurally incapable of hosting a nonvacuous state
@@ -392,13 +395,14 @@ now has a ranked mechanism taxonomy with two kills and one winner
    and it adds a fourth integer (the flux class) to the index-trinity picture.
 
 **LADDER REV 2 (2026-07-07, post Q01-Q03): the merged kernel-target queue.**
-Tier 1 (this week, in order): Q01-L1 perp-signature; Q01-L2 finite
-Gupta-Bleuler; Q01-L4 descent; **Q01-L5 `dim(V'/N) = ind(D)` - the headline**;
-the 2+1 spatial-torus physical-sector witness (first nonvacuous kernel-checked
-physical sector); Q03-L1 dispersion polynomial (`det sigma` bilinear extension
-of Layer K - one line from the kernel asset); Q02-(I2) pair-mass drift
-identity (nearly free from Layer K). Tier 2: Q01-L3 interlacing necessity;
-Q01-L6 slot descent + the S-C factorization CHECK
+Tier 1 (this week, in order): Q01-L1 finite Kugo-Ojima; Q01 finite
+witness/no-go separation (landed); Q01-L4 model-specific descent; **Q01-L5
+`dim(V'/N) = ind(D)` - the carrier/Gauss headline target**; the 2+1
+spatial-torus physical-sector witness after those hypotheses are wired; Q03-L1
+dispersion polynomial (`det sigma` bilinear extension of Layer K - one line
+from the kernel asset); Q02-(I2) pair-mass drift identity (nearly free from
+Layer K). Tier 2: Q01-L3 interlacing necessity; Q01-L6 slot descent + the
+S-C factorization CHECK
 (`Q_C =? sum_p (1 - U_p)^#(1 - U_p)` in our normalization - if it holds,
 exact closure positivity in the unitary regime supersedes "beyond-leading";
 if it fails, the cross-term IS the sharp open problem; Codex QC-lane

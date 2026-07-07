@@ -192,14 +192,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   identity shadow in `NullEdgeSuperDiracKreinCore`:
   `kreinSharp_kreinSharp`, `kreinSharp_mul`,
   `isKreinSelfAdjoint_iff_kreinSharp_eq_self`, and
-  `kreinSharp_mul_self_isKreinSelfAdjoint`. Latest Fable guidance keeps this as
-  the top near-term positivity route, but the degenerate-sector rail remains
-  binding. Next: Fable ratifies the exact positive-sector hypothesis before any
-  headline theorem proof spend. Q13 red-team `7f273e71` reinforces this
-  boundary: flat-sector mass-form positivity is Hilbert positivity on the
-  positive-chirality half, not an indefinite/Pontryagin positivity theorem, and
-  the balanced `(2,2)` witness cannot certify a nonzero physical sector. The
-  unbalanced `(2,1)` index-protection witness remains the load-bearing target.
+  `kreinSharp_mul_self_isKreinSelfAdjoint`. Q13 red-team `7f273e71`
+  reinforces this boundary: flat-sector mass-form positivity is Hilbert
+  positivity on the positive-chirality half, not an indefinite/Pontryagin
+  positivity theorem, and the balanced `(2,2)` witness cannot certify a nonzero
+  physical sector. Aristotle Q01 job `ec1ad7d5` has now landed the finite
+  unbalanced seed in
+  `PhysicsSM/Draft/NullEdge/Carrier/KreinPositiveSectorWitness.lean`: the same
+  nilpotent Kugo-Ojima charge gives a nonvacuous positive quotient for inertia
+  `(2,1)` and a same-charge negative no-go for inertia `(1,2)`. Still OPEN:
+  wiring the model's closure/Gauss operators and Ward invariance to a carrier
+  theorem `dim(physical sector) = ind(D)`.
 
 ### M4-WIT - Pauli/Pontryagin concrete carrier witness [Codex handoff, Claude-owned integration]
 - **Done:** a corrected M4(C) Pauli witness under the physical Krein sharp
@@ -358,14 +361,21 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Fable call promotes it.
 
 ### GB-QUOTIENT - the finite Gupta-Bleuler layer [Claude; TOP PRIORITY post-Q01]
-- **Done:** Q01 ladder L1 (perp-signature), L2 (finite GB: isotropic Gamma' of
-  dim kappa -> nonneg on perp, radical = Gamma', positive-definite quotient),
-  L4 (descent under D-invariance), and the HEADLINE L5:
-  `dim(V'/N) = dim M_+ - dim M_- = ind(D)` wired to CarrierIndexProtection.
-  Then the 2+1 spatial-torus witness: first kernel-checked nonvacuous physical
-  sector (one polarization per mode). Statements at working rigor in
-  `AgentTasks/fable_parallel/Q01_answer.md` secs 1-2, 5; executor-verified.
-- **Guards:** O2/O3 land as counterexample certificates alongside.
+- **Done:** L-Q8-1 finite Kugo-Ojima nondegeneracy remains guard-pinned in
+  `PhysicsSM/Draft/NullEdge/Carrier/KugoOjima.lean`. Aristotle Q01 job
+  `ec1ad7d5` is now harvested into
+  `PhysicsSM/Draft/NullEdge/Carrier/KreinPositiveSectorWitness.lean` and
+  guard-pinned in `CarrierAxiomGuard`: `nonvacuous_positive_sector` proves an
+  explicit `(2,1)` finite positive quotient witness, while
+  `nondegenerate_but_indefinite_no_go` proves a same-charge `(1,2)` model where
+  Kugo-Ojima nondegeneracy holds but positivity fails.
+- **Claim boundary:** this closes the finite witness/no-go separation, not the
+  full physical-sector theorem.  The Q01 ladder's carrier-level headline
+  `dim(V'/N) = dim M_+ - dim M_- = ind(D)` still needs the actual
+  closure/Gauss constraint span, `D`-invariance/Ward condition, and
+  constraint-completeness hypotheses wired to a decorated carrier model. The
+  balanced `(2,2)` M4/Pontryagin witness remains a flat mass-form witness and
+  is vacuous as a physical state-sector certificate.
 ### DISPERSION - the dispersion polynomial and doubling ledger [Claude]
 - **Done:** Q03-L1 `det sigma(k) = sum_{e<f} z_e z_f |psi_e wedge psi_f|^2`
   (one-line bilinear extension of Layer K); Q03-L3 two-edge doubler exhibit
@@ -557,16 +567,18 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `CarrierAxiomGuard`.
 - **Next:** the literal graded `rad(Lambda h) = ideal(N)` statement still needs
   the kernel-span theorem for decomposables with an `N` factor plus assembly
-  across all particle numbers.  Positivity of the physical quotient stays
-  Q1/OPEN.
+  across all particle numbers.  Q01 has now landed a finite positive
+  Kugo-Ojima witness/no-go, but positivity for the actual exterior physical
+  quotient remains open until the model-specific constraint and Ward hypotheses
+  are supplied.
   T-P3 is now re-scoped: a true nonvacuous LGV theorem needs a corrected
   scattering-vertex / brick-wall DAG where crossing is represented as shared
   vertex data plus a swap involution, or a certified LGV-compatible
   source/sink hypothesis.  It is not a corollary of T-P2 on the unmodified site
   lattice.  Registered conjecture C-Q8-SS: positivity selects Lambda over Sym
   (finite Pauli); kill = a Sym-quantized checkerboard with positive invariant
-  quotient. A global two-body exterior operator and positivity of the
-  Kugo-Ojima quotient itself remain OPEN. Aristotle audit `e4f1cedb` found no
+  quotient. A global two-body exterior operator and model-level positivity of
+  the Kugo-Ojima quotient remain OPEN. Aristotle audit `e4f1cedb` found no
   high/medium semantic issue in the globalization landing; its only code-facing
   fix was the doc clarification that `dGammaTwo` encodes the `Lambda^2 D` pair
   kernel, not an abstract one-slot `D`.

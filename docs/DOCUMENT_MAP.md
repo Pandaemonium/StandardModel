@@ -54,7 +54,10 @@ as current state.
 - `Sources/Null_Edge_Publication_Outlines_2026-07-07.md` - five Letter-caliber outlines (P13, P2-R, P14, P4-R, P15 + future slots). [LIVE]
 - `Sources/Ontology_extensions.md` - graded steer memo (teleparallel E-slot, positivity routes, index/spectral-action framing); integrated 2026-07-07. [STABLE]
 - `Sources/Null_Edge_Program_Charter_2026-07-07.md` - the post-audit program charter (U0-U5 claim ladder, amendments, declared losses, kills). [LIVE]
-- `AgentTasks/fable_parallel/Q01_answer.md` - positivity crux SOLVED to its boundary (Theorem A, finite Gupta-Bleuler, dim(V'/N) = ind(D)); executor-verified. [STABLE]
+- `AgentTasks/fable_parallel/Q01_answer.md` - positivity crux solved to its
+  boundary at memo level; the finite Kugo-Ojima witness/no-go is now
+  kernelized in `KreinPositiveSectorWitness`, while the carrier-level
+  `dim(V'/N) = ind(D)` wiring remains an open theorem target. [STABLE]
 - `AgentTasks/fable_parallel/Q02_answer.md` - gravity slot: Lemma-0 invariance, corrected telescoping + P-probe kill, TEGR coefficient derivation, certificates. [STABLE]
 - `AgentTasks/fable_parallel/Q03_answer.md` - the four-theorem no-go audit; verdict table; charter source. [STABLE]
 - `AgentTasks/fable_parallel/Q04_answer.md` - SM selection: B-L no-go for the naked triple; internal null-strand principle; pentad selection up to (4,1); anomaly = supertrace identity; octonion/Connes dictionary. [STABLE]

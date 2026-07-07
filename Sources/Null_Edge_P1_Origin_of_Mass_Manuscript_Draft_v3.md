@@ -325,9 +325,10 @@ that charts the road ahead. Briefly, with grades:
   fixed by the complex, invariant under EVERY choice of potential and
   transport. Mass explains what leaves the light cone; the index explains
   what must stay. The checked finite results include the index-protection
-  algebra and a balanced positive-chirality witness; the indefinite
-  positive-sector certificate and the load-bearing unbalanced witness remain
-  OPEN.
+  algebra, a balanced positive-chirality witness, and a new finite unbalanced
+  `(2,1)` Kugo-Ojima positive-sector witness paired with a same-charge `(1,2)`
+  no-go. The carrier-level identification of this witness with the model's
+  Gauss/closure constraints remains OPEN.
 - **The road map (`MEMO` grade).** A 2026-07-07 consultation round produced,
   at working rigor with kernel transcription in progress: the exact finite
   state-space construction that would make spectral mass language legal
@@ -620,8 +621,11 @@ minimal level.*
   carrier - automatic for Hilbert- AND Krein-self-adjoint ones - with
   explicit two-pole witnesses (a balanced complex, fully gappable, with
   strictly positive flat mass form; an unbalanced complex with a forced
-  massless mode for every dynamics). Masslessness of a chiral surplus is
-  a property of the complex, not of the dynamics.
+  massless mode for every dynamics). A separate Q01 finite Kugo-Ojima witness
+  now proves that the unbalanced `(2,1)` case can carry a nonvacuous positive
+  quotient, while the same charge in inertia `(1,2)` is a no-go for positivity.
+  Masslessness of a chiral surplus is a property of the complex, not of the
+  dynamics.
 
 ## 12. Relation to prior work
 
@@ -715,9 +719,10 @@ The aperture block currently has an abstract total-square identity
 Minkowski `det P` is still OPEN, so the four-slot mass identity remains an
 open target. A balanced `kappa = 2` witness has a positive mass form on a
 positive-chirality Hilbert half; this is not an indefinite/Pontryagin
-positive-sector certificate. The load-bearing unbalanced positive-sector
-witness remains OPEN. Everything here is form-level; no spectral claim (see
-layer 4).
+positive-sector certificate. A load-bearing finite unbalanced positive-sector
+witness is now guard-pinned as Q01 linear algebra, but its carrier/Gauss
+constraint interpretation remains OPEN. Everything here is form-level; no
+spectral claim (see layer 4).
 
 ### Layer 3 - Substrate: exact chirality available to be coupled. CLOSED at the free/regulator level.
 
@@ -725,9 +730,10 @@ Gate C1 (free GW release), Gate C2 (chiral index calculus + the vanishing
 theorem: gap forces index zero; nonzero index forces a zero mode), and -
 new - the carrier index-protection family: the protected massless chiral
 count equals the graded dimension under the stated finite hypotheses. The
-physical Krein `#` restatement and the unbalanced positive-sector witness are
-still open. Masslessness of the surplus is topology; mass generation gaps
-modes only in pairs.
+physical Krein `#` restatement is still open; the unbalanced positive-sector
+witness is proved only as finite Kugo-Ojima linear algebra, pending
+carrier/Gauss wiring. Masslessness of the surplus is topology; mass generation
+gaps modes only in pairs.
 
 ### Layer 4 - Legality: what supplies and licenses the coupling. POSED; the state-space half now has a MEMO-grade solution.
 

@@ -3130,3 +3130,35 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   so Aristotle had twelve active StandardModel-relevant lanes including the
   three older running jobs.  Submission packages live under
   `AgentTasks/aristotle-submit/` and are ignored operational state.
+
+## [ARISTOTLE-HARVEST Codex solo] Q01 finite positive-sector witness/no-go landed
+
+- Harvested Aristotle project `ec1ad7d5`
+  (`ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`).  The result
+  returned a report plus a standalone Lean witness; Codex integrated it as
+  `PhysicsSM/Draft/NullEdge/Carrier/KreinPositiveSectorWitness.lean` and
+  guard-pinned the two headline theorems in `CarrierAxiomGuard`.
+- PROVED finite linear algebra: `KugoOjima.nonvacuous_positive_sector` gives a
+  nonvacuous positive Kugo-Ojima quotient for the explicit unbalanced `(2,1)`
+  model; `KugoOjima.nondegenerate_but_indefinite_no_go` uses the same nilpotent
+  charge with inertia `(1,2)` to show quotient nondegeneracy does not imply
+  positivity.
+- Claim boundary: this fixes the finite Q01 witness/no-go separation.  It does
+  not yet prove the carrier-level theorem `dim(physical sector) = ind(D)`;
+  that still needs the actual closure/Gauss constraint span, Ward invariance,
+  and constraint-completeness hypotheses wired to a decorated carrier model.
+  The balanced `(2,2)` M4/Pontryagin witness remains a flat mass-form witness,
+  not a nonzero physical state-sector certificate.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`,
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`,
+  `SYNTHESIS_BEYOND_MASS.md`, `docs/DOCUMENT_MAP.md`, and P1 v3 to keep the
+  Q01 boundary aligned.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/KreinPositiveSectorWitness.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.KreinPositiveSectorWitness`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+- Queue poll after this harvest: six lanes still RUNNING (`aa4e48f6`,
+  `2c7ddcf1`, `381cc4cf`, `1b3c2203`, `bd50e825`, `9af1d5fb`); five newer
+  lanes are harvest-first (`7b99f3b8`, `b6b128d4`, `a1534a69`, `7de21ba8`,
+  `bcf263f0`).

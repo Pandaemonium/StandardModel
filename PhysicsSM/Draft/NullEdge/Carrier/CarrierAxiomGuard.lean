@@ -12,6 +12,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierFlatSectorPositivity
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierPontryaginWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
 import PhysicsSM.Draft.NullEdge.Carrier.KugoOjima
+import PhysicsSM.Draft.NullEdge.Carrier.KreinPositiveSectorWitness
 import PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization
 import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
 import PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing
@@ -47,6 +48,9 @@ guards are edited independently to avoid collision.
 * Fock-Gupta-Bleuler finite shadow (`KugoOjima`): a nilpotent Krein-self-adjoint
   charge has radical exactly `range Q` on `ker Q`, and the quotient form is
   nondegenerate. Positivity is not claimed.
+* Q01 positive-sector separation (`KreinPositiveSectorWitness`): an explicit
+  unbalanced `(2,1)` finite positive quotient witness and a same-charge `(1,2)`
+  no-go showing that Kugo-Ojima nondegeneracy does not imply positivity.
 * Fock second-quantization finite shadow (`FockSecondQuantization`): a two-mode
   diagonal occupation-basis witness for
   `dGamma(D)^2 = dGamma(D^2) + 2 dGamma_2(Lambda^2 D)`.
@@ -260,6 +264,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.descent_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.descent_unitary
+
+/-! ## Q01 positive-sector witness and sharp no-go -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.nonvacuous_positive_sector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.nonvacuous_positive_sector
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.nondegenerate_but_indefinite_no_go' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.nondegenerate_but_indefinite_no_go
 
 /-! ## Finite Fock interaction identity: two-mode diagonal dGamma square witness -/
 

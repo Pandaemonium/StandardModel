@@ -387,3 +387,33 @@ and audits.
 Queue check immediately after submission: all nine new projects were `RUNNING`;
 with `bcf263f0`, `9af1d5fb`, and `ec1ad7d5`, Aristotle had twelve active
 StandardModel lanes.
+
+## Harvest from Q01 positive-sector witness / no-go
+
+- `ec1ad7d5`
+  (`ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`) returned both
+  a report and a finite Lean witness/no-go.  Codex integrated the Lean payload
+  as `PhysicsSM/Draft/NullEdge/Carrier/KreinPositiveSectorWitness.lean` and
+  guard-pinned `KugoOjima.nonvacuous_positive_sector` and
+  `KugoOjima.nondegenerate_but_indefinite_no_go` in `CarrierAxiomGuard`.
+- Claim boundary: this proves the finite Q01 separation.  A single nilpotent
+  Kugo-Ojima charge gives a nonvacuous positive quotient in inertia `(2,1)`;
+  changing only the ambient sign gives inertia `(1,2)`, where quotient
+  nondegeneracy still holds but positivity fails.  It does not yet prove the
+  model-level carrier statement `dim(physical sector) = ind(D)`; that still
+  needs the actual closure/Gauss constraint span, Ward invariance, and
+  constraint completeness hypotheses.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/KreinPositiveSectorWitness.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.KreinPositiveSectorWitness`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+Queue poll after this harvest showed six StandardModel lanes still `RUNNING`:
+`aa4e48f6` Q11 Jacobi/Cauchy-Binet RC0 cleanup, `2c7ddcf1` Q08 scattering-DAG
+LGV strategy, `381cc4cf` Q12 triality wording audit, `1b3c2203` Q12 C8 bridge
+gates, `bd50e825` manuscript postfix audit, and `9af1d5fb` RG-Schur.  Five
+newer lanes were `IDLE` and should be harvested before any further refill:
+`7b99f3b8` Q04 sign-gauge, `b6b128d4` Q04 ConventionBridge,
+`a1534a69` Q06 symbol-to-carrier audit, `7de21ba8` Q09 finite
+Reeh-Schlieder/screen-area completion, and `bcf263f0` Q10 inertia-index bridge.
