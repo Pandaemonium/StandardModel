@@ -33,3 +33,26 @@ stating the E-slot; (3) discovery meta-search still owes the reading-list ingest
 (Osterwalder-Seiler, Witten PET, Loring) - retry with direct arxiv ids next round.
 
 ## Live rounds (append below)
+
+## Round 2 (Claude, cycle 1) - NEW brick-2 scaffold: gauge networks
+
+Search (`--chunks --query`): "discrete Weitzenbock Bochner formula lattice Dirac
+operator Clifford covariant difference holonomy plaquette". Confirms Round-1 refs and
+adds ONE genuinely new, high-value scaffold:
+
+- **arXiv:1301.3480 - "Gauge networks in noncommutative geometry"** (Marcolli-van
+  Suijlekom) [NEW; key TBD, resolve before docstring cite]. chunk 27 gives a FINITE
+  GRAPH Dirac operator with edge holonomies `U_e` and continuum limit
+  `holonomy = e^{...}(1 + l·nabla_e + O(l^2))` - essentially the carrier's discrete
+  home `D = sum_e c(alpha_e) nabla_e` with `nabla_e` the covariant edge difference.
+  **The cleanest existing scaffold for W1 brick 2 (minimal 2-complex + covariant
+  nabla).** Cross-check Fable's call-01 structure against it.
+- **hep-th/9503153 [BQJAG9TR]** re-confirmed (chunk 2): `D = c(nabla)` for a
+  Clifford-module connection is the essential input to the generalized Lichnerowicz
+  formula - the continuum backing where the curvature endomorphism = our `Q_C`.
+- Lower priority (lattice Clifford/Dirac): Dirac-Kahler geometric discretization
+  (arXiv:0706.4385), minimally doubled fermions (arXiv:1706.07104).
+
+ACTION: cite 1301.3480 + [BQJAG9TR] in the brick-2 docstring; feed both into the
+call-01 digest as ground truth to check Fable's proposed covariant-nabla structure.
+Resolve the 1301.3480 Zotero key (ingest if not already keyed) before the cite.
