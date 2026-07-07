@@ -133,7 +133,8 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.Q_A_zero_iff_totalSq_zero
 
-/-! ## CRACK 2: flat-sector Krein positivity (first genuine positivity theorem) -/
+/-! ## CRACK 2: flat-sector form identity (>=0 value) + Hermitian Krein form
+    (conditional; certified Krein positivity pending the M4 kappa=2 witness) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.flat_sector_positivity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
