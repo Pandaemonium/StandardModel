@@ -503,9 +503,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   trace(P) I - P`, `screenArea P N = trace(screenAdj P * N)`, determinant
   polarization `screenArea P N = det(P + N) - det P - det N`, finite additivity
   over pierced momentum blocks, null-screen wedge formula, and nonnegative real
-  part for `screenArea (finBundleMomentum psi) (rankOne chi)`.
+  part for `screenArea (finBundleMomentum psi) (rankOne chi)`. Aristotle audit
+  `2ed38421` also landed the finite modular no-go in
+  `PhysicsSM/Draft/NullEdge/GateI1/ModularNoGo.lean`:
+  `borchers_positive_generator_vanishes` proves a positive semidefinite finite
+  generator satisfying the differentiated Borchers commutation relation must
+  vanish.
 - **Status:** PROVED finite kinematic identity only. This supports Q09's
-  "area is relational like mass" statement. Entropy, BW-cut, Jacobson, ANEC,
+  "area is relational like mass" statement, and the modular no-go kills a finite
+  half-sided modular-generator promotion. Entropy, BW-cut, Jacobson, ANEC,
   universal coefficient, and continuum/horizon interpretations remain MEMO or
   OPEN until their finite hypotheses are stated and checked.
 

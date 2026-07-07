@@ -2572,3 +2572,21 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/MassAmplitudeCensus.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.MassAmplitudeCensus`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q09 finite modular no-go landed
+- Harvested Aristotle project `2ed38421`
+  (`ne-q09-entropy-horizon-audit-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/ModularNoGo.lean` and imported it from the
+  GateI1 aggregator.
+- Proved `posSemidef_eq_zero_of_commutator_smul`: a positive semidefinite
+  finite matrix satisfying `H * P - P * H = c • P` with `c != 0` must vanish,
+  by trace of commutator plus trace-zero positive semidefinite. The
+  specialization `borchers_positive_generator_vanishes` is the finite
+  differentiated Borchers no-go.
+- Claim boundary: PROVED finite no-go only. This blocks a finite half-sided
+  modular-generator promotion; it does not promote any entropy, BW-cut,
+  Jacobson, ANEC, continuum horizon, or universal coefficient claim.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ModularNoGo.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.ModularNoGo`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

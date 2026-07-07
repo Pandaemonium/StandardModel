@@ -31,6 +31,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone
 import PhysicsSM.Draft.NullEdge.GateI1.G2Parity
 import PhysicsSM.Draft.NullEdge.GateI1.SplitSignatureMass
 import PhysicsSM.Draft.NullEdge.GateI1.MassAmplitudeCensus
+import PhysicsSM.Draft.NullEdge.GateI1.ModularNoGo
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -71,7 +72,8 @@ module (`SignatureSelection`); plus the Q12 G2-parity algebra core
 (`G2Parity`: diagonal XOR/Fano characters are automorphisms for arbitrary sign
 conventions, and strand parity has balanced 4+4 eigenspaces); plus the Q10-L5
 split-signature determinant identity (`SplitSignatureMass`); plus the Q10-L6
-finite same-chirality mass-amplitude census (`MassAmplitudeCensus`).
+finite same-chirality mass-amplitude census (`MassAmplitudeCensus`); plus the
+Q09 finite modular no-go (`ModularNoGo`).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 
