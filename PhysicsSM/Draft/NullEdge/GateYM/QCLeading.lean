@@ -22,7 +22,10 @@ not an expectation theorem for the carrier operator `Q_C`, not a nonabelian
 The later bridge to the concrete torus curvature operator belongs after the
 Carrier-side `Q_C` realization has been ratified.
 
-Provenance: this is a bookkeeping bridge over the landed `Z2` slab chain:
+Provenance: this is a bookkeeping bridge over the landed `Z2` slab chain, whose
+Osterwalder-Seiler background is [SMH5768W] Osterwalder-Seiler 1978 and
+[UARD9T5Q] Seiler LNP 159.  The TY partition-ratio side follows the audited
+Tomboulis-Yaffe lineage, especially [N7SIEMAC] Tomboulis-Yaffe 1985, through
 `SlabTransferGap.neU4_exp_neg_closure_gap_eq_tanh`,
 `TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap`, and
 `SlabGapAssembly.slabGapAssembly`.  It follows the two-day run Fable queue item

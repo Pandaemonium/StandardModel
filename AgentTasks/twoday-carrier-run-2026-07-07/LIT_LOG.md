@@ -187,3 +187,22 @@ Audit verdict:
   center-twist algebra. Kanazawa [K9FIBTZC] is used for SU(N) generalization and
   notation. No current TY theorem depends on disputed decimation-based
   all-coupling confinement claims. Docstrings updated accordingly.
+
+## Round 8 (Codex, cycle 5) - OS1 priority citation audit
+
+Exact graph / literature check:
+
+- Neo4j exact title/DOI check confirms **SMH5768W** is already present:
+  Osterwalder-Seiler 1978, "Gauge field theories on a lattice", DOI
+  `10.1016/0003-4916(78)90039-8`.
+- Neo4j exact title/DOI check confirms **UARD9T5Q** is already present:
+  Seiler LNP 159 (1982), "Gauge Theories as a Problem of Constructive Quantum
+  Field Theory and Statistical Mechanics", DOI `10.1007/3-540-11559-5`.
+- INSPIRE confirms the same OS 1978 metadata and Seiler 1982 title; Semantic
+  Scholar-backed search returned HTTP 429, so no new metadata was trusted from
+  that endpoint this round.
+
+Graph delta: none.  The priority OS/Seiler ingests requested by the Codex goal
+prompt are already complete; future OS1/QC docstrings should cite **SMH5768W** and
+**UARD9T5Q** rather than re-ingesting.  `QCLeading.lean` now cites those keys plus
+the TY lineage key **N7SIEMAC**.
