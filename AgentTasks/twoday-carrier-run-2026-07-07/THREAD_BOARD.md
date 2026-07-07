@@ -178,6 +178,25 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   the top near-term positivity route, but the degenerate-sector rail remains
   binding. Next: Fable ratifies the exact positive-sector hypothesis before any
   headline theorem proof spend.
+
+### M4-WIT - Pauli/Pontryagin concrete carrier witness [Codex handoff, Claude-owned integration]
+- **Done:** a corrected M4(C) Pauli witness under the physical Krein sharp
+  `J = Gamma`, with inertia `(2,2)` / `kappa = 2`, corrected gamma/metric signs,
+  and simultaneous nonzero `Q_A`, `Q_C`, and `Q_T`; no Carrier-owned source
+  touched by Codex.
+- **Status:** HANDOFF BANKED. Aristotle project
+  `578f32e6-efb8-4cab-abd8-325b02034685` / task
+  `873b2c8c-4c49-4c77-a50d-ab2e2074e848` produced a standalone Mathlib-only
+  skeleton plus report. Tracked handoff:
+  `M4_PAULI_PONTRYAGIN_WITNESS_HANDOFF_2026-07-07.md`. Corrected model:
+  `gamma = i * Pauli`, `g e e = -2`, real scalar `phi = c * I`,
+  `J = diag(1,1,-1,-1)`, `Q_A = -8 * I`,
+  `Q_C = +8 * (sigma_z tensor sigma_z)`, `Q_T = c^2 * I`.
+  Carrier-owned next move: a `kreinSharp J` restatement of
+  `carrier_krein_square`, or a `M4Krein` star synonym, then instantiate this
+  witness. The old `WITNESS_SATISFIABILITY.md` ordinary-star model is now
+  explicitly marked superseded for the physical Krein reading.
+
 ### G-TP - teleparallel gravity slot [shared, Fable-gated]
 - **Done:** exact Lean statement for discrete torsion
   `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and an `E`-slot Clifford

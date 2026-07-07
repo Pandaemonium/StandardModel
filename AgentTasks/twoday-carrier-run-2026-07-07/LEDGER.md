@@ -1412,3 +1412,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Requested audit: vacuity, unused load-bearing hypotheses, docstring/run-note
   overclaim, too-trivial gate-distance claims, missing guard coverage, and
   hidden assumptions. No code edits requested.
+
+## [ARISTOTLE HARVEST Codex M4 Pauli/Pontryagin witness 02:42]
+- Harvested Aristotle project `578f32e6-efb8-4cab-abd8-325b02034685`, task
+  `873b2c8c-4c49-4c77-a50d-ab2e2074e848`.
+- Output extracted under ignored artifact dir:
+  `AgentTasks/aristotle-output/578f32e6-efb8-4cab-abd8-325b02034685/tc-m4-pauli-pontryagin-witness-20260707-0202_aristotle/`.
+- Report verdict: the old Pauli witness used the ordinary conjugate-transpose
+  star and is therefore the vacuous `kappa = 0` reading for the physical
+  positivity story. Corrected witness uses `J = Gamma`,
+  `kreinSharp J X = J * X^H * J`, `gamma = i * Pauli`,
+  `g e e = -2`, real `phi = c * I`, and inertia `(2,2)` / `kappa = 2`.
+- Simultaneous slot values in the corrected witness:
+  `Q_A = -8 * I`, `Q_C = +8 * (sigma_z tensor sigma_z)`,
+  and `Q_T = c^2 * I` for real `c != 0`.
+- Added tracked handoff
+  `M4_PAULI_PONTRYAGIN_WITNESS_HANDOFF_2026-07-07.md`, marked
+  `WITNESS_SATISFIABILITY.md` superseded for the physical Krein reading, and
+  updated the Aristotle task note plus `THREAD_BOARD.md`.
+- Ownership rail: no `PhysicsSM/Draft/NullEdge/Carrier/**` edits. Carrier-owned
+  next move is a `kreinSharp J` restatement of `carrier_krein_square`, or a
+  `M4Krein` star synonym, before integrating the witness.

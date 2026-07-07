@@ -1,5 +1,33 @@
 # Assembly witness: satisfiability argument (the "true but unwitnessed" concern)
 
+## 2026-07-07 correction: superseded for the physical Krein reading
+
+This note's original Pauli model is **superseded for the physical
+Krein/Pontryagin reading** by the M4 witness harvest:
+
+- Aristotle project `578f32e6-efb8-4cab-abd8-325b02034685`, task
+  `873b2c8c-4c49-4c77-a50d-ab2e2074e848`.
+- Tracked handoff:
+  `AgentTasks/twoday-carrier-run-2026-07-07/M4_PAULI_PONTRYAGIN_WITNESS_HANDOFF_2026-07-07.md`.
+
+The old model is internally consistent as an ordinary conjugate-transpose matrix
+exercise, but that is the vacuous `kappa = 0` Hilbert-star reading. Fable call
+03 requires the non-vacuous Pontryagin model with `J = Gamma`,
+`kreinSharp J X = J * X^H * J`, inertia `(2,2)`, and `kappa = 2`.
+
+Corrected data:
+
+- `gamma0 = i * (sigma_x tensor I)`, `gamma1 = i * (sigma_y tensor I)`;
+- `g e e = -2`, off-diagonal `0`;
+- `phi = c * I` with `c : R` and `c != 0`;
+- `Q_A = -8 * I`, `Q_C = +8 * (sigma_z tensor sigma_z)`,
+  `Q_T = c^2 * I`.
+
+The simultaneous nonzeroness claim survives, but the sign/star convention in the
+original note must not be used for the Krein/Pontryagin carrier claim.
+
+---
+
 Both reviewers (Fable call-02 audit item 3; the grand-strategy review) flagged that the
 Move-1 hypotheses (`hcl`, `hcomm`, the `Γ`/`φ` relations) are stated across bricks that
 live in different algebras, so `carrier_square_assembly` is "true but unwitnessed" until a
