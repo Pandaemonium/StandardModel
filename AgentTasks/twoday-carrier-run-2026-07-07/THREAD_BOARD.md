@@ -614,19 +614,27 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `Btop_eq_Bstd` proves the internal top-form-duality form is the standard
   positive Hermitian metric; `JR_num_particle_hole` and `JR_charge_master` prove
   the finite Cartan arithmetic `J_R Q J_R = trace(Q) 1 - Q`; and
-  `even_dim_breaks_JR_sq` gives the dimension-four contrast witness.
-- **Status:** PROVED finite fiber sign table and Cartan/unimodularity arithmetic
-  core only. The result refutes any "Krein closure implies unimodularity" slogan:
-  the sesquilinear form is determinant-blind, while the determinant condition
-  lives in the antilinear `J_R` layer.
+  `even_dim_breaks_JR_sq` gives the dimension-four contrast witness. Aristotle
+  follow-up `e2df3555` was harvested into
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11BLDictionary.lean`, proving the finite
+  B-L dictionary `B-L = 1 + (4 / 5)Y - (2 / 5)F`, the six-entry SM table,
+  Cartan `RC0_iff_traceless`, hypercharge/number/B-L trace facts, and
+  `freed_direction`: `Y + c F` is RC0-admissible iff `c = 0`.
+- **Status:** PROVED finite fiber sign table, Cartan/unimodularity arithmetic,
+  and B-L/total-number dictionary only. The result refutes any "Krein closure
+  implies unimodularity" slogan: the sesquilinear form is determinant-blind,
+  while determinant/traceless information lives in the antilinear `J_R` layer.
 - **Next:** group-level RC0/determinant cocycle for the exterior functor,
-  the B-L dictionary/counterexample, the C3 Majorana identity, and the
-  order-condition scalar identities. The chirality-solder flag remains a
-  standing obligation for later architecture checks.
+  the C3 Majorana identity, and the order-condition scalar identities. The
+  chirality-solder flag remains a standing obligation for later architecture
+  checks.
 - **Aristotle:** harvested named audit/strategy lane `65a9d42d`
-  (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`).
+  (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`) and follow-up
+  finite-check lane `e2df3555`
+  (`ne-q11-bl-dictionary-finite-check-20260707`).
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
-  closure. RC0 is an axiom unless/until separately derived.
+  closure. This is a Cartan-level RC0/dictionary theorem; the group-level
+  determinant cocycle remains open.
 
 ## Standing meta-threads
 

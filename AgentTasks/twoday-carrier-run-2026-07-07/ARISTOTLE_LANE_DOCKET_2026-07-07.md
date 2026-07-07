@@ -68,6 +68,7 @@ The first named wave has now been mostly harvested into the live repo:
   no-compiler-trust counterexample subsequently landed, so follow-up `7a12dbbd`
   was canceled.
 - `c2e23b53` Q12 charge resolution: landed `ChargeResolution.lean`.
+- `e2df3555` Q11 B-L dictionary: landed `Q11BLDictionary.lean`.
 
 ## Follow-up wave submitted after harvest
 
@@ -91,7 +92,10 @@ Queue check after submission: all eight follow-up projects were `RUNNING`.
 After the local Q06 counterexample landing, `7a12dbbd` was canceled.  Follow-up
 `c2e23b53` completed and was harvested into `ChargeResolution.lean`, proving the
 finite charge-sector additivity/cannot-hide/direct-sum bookkeeping package.
-This should still be treated as finite accounting only; any analytic or
-operator-level equivariant McKean-Singer theorem and anomaly-gate promotion
-remain open.  The other follow-up projects remain active unless later status
-checks say otherwise.
+`e2df3555` completed and was harvested into `Q11BLDictionary.lean`, proving the
+finite B-L/RC0 dictionary without the compiler-eval trust footprint of the
+standalone Aristotle version.  These should still be treated as finite
+accounting/Cartan arithmetic only; analytic or operator-level equivariant
+McKean-Singer, anomaly-gate promotion, and the group-level RC0 determinant
+cocycle remain open.  The other follow-up projects remain active unless later
+status checks say otherwise.

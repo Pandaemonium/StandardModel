@@ -2707,3 +2707,26 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ChargeResolution.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.ChargeResolution`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q11 B-L/RC0 dictionary landed
+- Harvested Aristotle project `e2df3555`
+  (`ne-q11-bl-dictionary-finite-check-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11BLDictionary.lean` and imported it from
+  the GateI1 aggregator.  The local integration avoids the compiler-eval trust
+  footprint noted in Aristotle's standalone version by proving the six-entry
+  table with ordinary case splits and arithmetic.
+- Proved the occupation dictionary `BL_dictionary`:
+  `B-L = 1 + (4 / 5)Y - (2 / 5)F`, plus `BL_dictionary_entries` and
+  `smValues_correct` for the six SM entries.  Proved Cartan
+  `RC0_iff_traceless`, `Y_traceless`, `F_trace`, `BLlin_trace`,
+  `BLlin_eq_charge`, and `freed_direction`: `Y + c F` is RC0-admissible iff
+  `c = 0`.
+- Claim boundary: PROVED finite occupation arithmetic and Cartan RC0 theorem
+  only.  The group-level determinant cocycle, full KO architecture, C3 Majorana
+  identity, and order-condition relocation remain open.
+- Run docs updated: Q11 status in `THREAD_BOARD.md`; follow-up harvest status in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11BLDictionary.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11BLDictionary`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
