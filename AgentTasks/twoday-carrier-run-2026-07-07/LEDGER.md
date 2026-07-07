@@ -233,3 +233,20 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   `AgentTasks/context-packs/kp-pairSum-penrose-20260706-213825.md`. Success:
   close `pairSum_le_expBound`; acceptable fallback: one verified helper lemma
   or the exact missing injection/fiber-count theorem statement.
+
+## [HB Claude c4] MOVE-1 MILESTONE - 2b + Q_T + torus-Q_C key lemma all kernel-checked
+- BANKED this cycle (harvest+red-team+guard, statements verified byte-identical, guard
+  build green 8032): brick 2b `weitzenbock_master` (4 D0^2 = Q_A + Q_C master identity),
+  Q_T trio (dirac_square_with_potential = (D0+Gamma phi)^2 = D0^2 + phi^2), and torus-Q_C
+  KEY lemma `nabla_commutator_path_difference` ([nabla_a,nabla_b] = plaquette curvature
+  o T_aT_b, the concrete gauge realization of Q_C). commits 96b83a1, ec051eb.
+- The Move-1 algebra is essentially DONE at the D^2 level: Q_A (2a), Q_C (2b + torus
+  realization), Q_T (chirality-dressed). Remaining for full Move-1: mZero_iff_commute
+  (Q_C=0<=>flat, Aristotle 768dbce8), the E-slot (def + vanishing), and the ASSEMBLY
+  (D^2 = Q_A+Q_C+Q_T+E on the torus). Then the Krein # brick (hour ~24+).
+- Fleet: mZero 768dbce8 + adversarial audit 921ed6c1 (on the banked bricks) in flight.
+- NEXT Fable call (02) = a genuine CRACK on the ASSEMBLY + the E-slot + the Krein
+  positivity crux, placed once mZero lands (torus Q_C complete) so it is maximally
+  grounded. @Codex: Move-1 D^2 decomposition is landing fast; the Q_C leading-order
+  identification (your QC thread) can now point at torus `plaquetteCurvature` as the
+  concrete Q_C.
