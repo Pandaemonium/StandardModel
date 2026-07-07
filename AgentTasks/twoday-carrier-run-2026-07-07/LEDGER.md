@@ -1684,3 +1684,51 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   exact finite enumeration should be sound and non-vacuous; the alpha-one
   theorem should read only as a finite two-plaquette `Z2` small-coupling rung,
   not volume-uniform KP and not an `SU(2)` gap theorem.
+
+## [HB Claude c20] LANDED: kappa=2 Pontryagin witness - CERTIFIED Krein positivity (convergence point closed)
+- `CarrierPontryaginWitness.lean` hand-built and kernel-checked (Aristotle had stalled twice
+  on witness constructions; hand-proof took ~3 iterations). Contents, all guarded green:
+  Gamma = sigma_z(x)I certified fundamental symmetry (Gamma_selfAdjoint via
+  toEuclideanLin_conjTranspose_eq_adjoint; Gamma_involutive via mulVec bridge;
+  finrank_eigenspace_plus/minus = 2, i.e. inertia (2,2), kappa=2 - proved by
+  2 <= each side + disjointness + dim formula + omega). Headlines:
+  witness_mass_form_strictly_positive (Krein mass form on flat chiral-positive psi0
+  EQUALS |c|^2, STRICTLY positive - first strictly-positive kernel-checked mass-form
+  value in the program, fundamental symmetry certified not hypothesized) and
+  witness_two_dim_nonneg_sector (the FULL 2-dim flat chirality-positive plane has
+  nonneg mass form = the finite exists_nonneg_mass_subspace realization, kappa=2-dim).
+- IMPORTANT vacuity catch during construction: the M4 GLUE data (nabla = I(x)sigma_x,
+  I(x)sigma_y) has INVERTIBLE transports, so its flat sector is {0} - instantiating
+  flat_sector_positivity on it verbatim would be VACUOUS. The positivity witness
+  therefore uses nabla = diag(0,0,1,1) (flat sector = EXACTLY the Gamma=+1 plane;
+  same Gamma, same gammas, same phi as the M4 handoff). File docstring states this
+  explicitly and does NOT claim the 8-hypothesis glue witness, which remains OPEN
+  (Codex lane / WITNESS_SATISFIABILITY.md unchanged).
+- @Codex REVIEW-REQUEST: CarrierPontryaginWitness.lean (esp: is "M4-class" framing
+  honest given the nabla substitution? and the certificate-bundle theorem - real
+  content per conjunct, or bundling theater?).
+
+## [HB Claude c20b] LANDED: finite McKean-Singer index protection (the mass thesis's converse)
+- `CarrierIndexProtection.lean`: NEW DIRECTION, kernel-checked, guarded green. The
+  chiral index ind(D) := dim ker D_+ - dim ker D_- (massless chiral surplus) equals
+  dim M_+ - dim M_- whenever the blocks are rank-symmetric
+  (chiralIndex_eq_graded_dimension, pure rank-nullity), hence is IDENTICAL for any two
+  carriers (chiralIndex_protected): no potential phi, no transport nabla can change it.
+  Rank symmetry is PROVED automatic for Hilbert-self-adjoint carriers
+  (finrank_range_adjoint via new ker_adjoint_eq_orthogonal_range) and for
+  KREIN-self-adjoint carriers (chiralIndex_krein_pair via finrank_range_conj_equiv) -
+  the null-edge case. Physics readout (finite identity, honestly scoped in docstring):
+  mass explains what leaves the light cone; the index explains what must stay -
+  masslessness of the chiral surplus is TOPOLOGICAL, mass generation gaps modes only in
+  +/- pairs. Heat-kernel/supertrace version deliberately not formalized (needs matrix
+  exp; the combinatorial core IS the finite content).
+- Verification: `lake env lean` clean on both files (zero warnings); guard build green
+  with 13 new #guard_msgs blocks (all [propext, Classical.choice, Quot.sound]); FULL
+  `lake build` green (8298 jobs).
+- @Codex REVIEW-REQUEST: CarrierIndexProtection.lean (esp: the four over-claim modes on
+  the physics docstring; is "index protection" fair for a rank-nullity identity, or
+  does it need "finite shadow of" qualifiers everywhere?).
+- Next from me: SYNTHESIS_BEYOND_MASS.md (beyond-mass program doc), then a CRACK 3
+  strategy decomposition (Gupta-Bleuler/quotient route: build the null subspace of the
+  Krein form on ker-constraints, prove positivity on the quotient - reframes CRACK 3 as
+  finite BRST, new attack surface).

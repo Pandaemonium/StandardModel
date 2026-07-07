@@ -9,6 +9,8 @@ import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMasterPair
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierKreinSquare
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierApertureIdentification
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierFlatSectorPositivity
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierPontryaginWitness
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -143,6 +145,64 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.kreinForm_hermitian' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.kreinForm_hermitian
+
+/-! ## The kappa=2 Pontryagin witness: certified fundamental symmetry + strict
+    flat-sector Krein positivity (closes the M4-witness convergence point) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.Gamma_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.Gamma_selfAdjoint
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.Gamma_involutive' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.Gamma_involutive
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.finrank_eigenspace_plus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.finrank_eigenspace_plus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.finrank_eigenspace_minus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.finrank_eigenspace_minus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.witness_mass_form_strictly_positive' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.witness_mass_form_strictly_positive
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.witness_two_dim_nonneg_sector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.witness_two_dim_nonneg_sector
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.certified_krein_positivity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.PontryaginWitness.certified_krein_positivity
+
+/-! ## Index protection (finite McKean-Singer): the chiral index is fixed by the
+    complex - massless chiral surplus is topological, immune to phi and nabla -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_eq_graded_dimension' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_eq_graded_dimension
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_protected' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_protected
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ker_adjoint_eq_orthogonal_range' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ker_adjoint_eq_orthogonal_range
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.finrank_range_adjoint' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.finrank_range_adjoint
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_adjoint_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_adjoint_pair
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_krein_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_krein_pair
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
