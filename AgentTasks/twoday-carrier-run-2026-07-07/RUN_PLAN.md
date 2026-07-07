@@ -40,9 +40,11 @@ independently-proved lane functional, all axiom-guarded.
 - **Codex 5.5** - executor. Lanes: **C (closure) + gauge/YM + polymer/analysis**
   (Move 3 / Osterwalder-Seiler, Q_C-in-expectation identification, KP/Penrose crux,
   product-haar RP core). Owns `SlabAxiomGuard.lean`. Runs the even-hour lit rounds.
-- **Aristotle** - the engine. Target mix AT ALL TIMES (see `ARISTOTLE_PLAYBOOK.md`):
-  4-7 proof/construction jobs + 1-2 adversarial AUDIT jobs + 1 STRATEGY job every ~6h.
-  Harvest-first; stale-check before every submit; 2-hour rule.
+- **Aristotle** - the engine, run HOT. Target mix AT ALL TIMES (see
+  `ARISTOTLE_PLAYBOOK.md`): **up to 12 simultaneous jobs** - ~8-10 proof/construction
+  + 2-3 adversarial AUDIT jobs (fired after every 2-4 integrated proofs) + 1 STRATEGY
+  job refreshed HOURLY. Harvest-first; stale-check before every submit; 2-hour rule.
+  12 is a CEILING, not a quota - the saturation discipline (sec 5) still binds.
 - **Fable-5** - conceptual driver, called every 3h by Claude with a decision-forcing
   packet (`FABLE_CALL_PROTOCOL.md`); also receives escalations via `FABLE_QUEUE.md`.
 - **Shared lanes** B (octonion/spectral-triple) and V (E8): opportunistic, claim first.
@@ -88,13 +90,13 @@ else flexes around harvests.
 
 | Cadence | Period | Owner | Content |
 |---|---|---|---|
-| Throughput cycle | ~30-40 min | both | harvest -> integrate -> cross-review -> refill -> commit |
-| Literature round | ~60-90 min | alternating (Claude odd hours, Codex even) | per `LIT_NEO4J_PROTOCOL.md`: chunks-search before formalizing; ingest new papers; cite keys in docstrings |
-| Red-team audit | hourly | the OTHER agent | hunt the 4 over-claim modes in the last hour's integrations (see sec 4) |
-| Aristotle AUDIT job | ~2-3h | either | adversarial semantic audit of a recently landed flagship (playbook sec 3) |
-| Aristotle STRATEGY job | ~6h | alternating | strategic review of the stalled/riskiest thread (playbook sec 4) |
+| Throughput cycle | ~20-30 min | both | harvest -> integrate -> cross-review -> refill -> commit |
+| Literature round | **every 30 min** | **both, independently (scoped to own lanes)** | per `LIT_NEO4J_PROTOCOL.md`: chunks-search before formalizing; ingest new papers; cite keys in docstrings |
+| Red-team cross-review | per integration (hourly floor) | the OTHER agent | hunt the 4 over-claim modes in each integration (see sec 4) |
+| Aristotle AUDIT job | **after every 2-4 integrated proofs** (event-driven) | either | adversarial semantic audit of the most recent/riskiest landings (playbook sec 3) |
+| Aristotle STRATEGY job | **hourly** | alternating each hour | strategic review of the stalled/riskiest thread (playbook sec 4) |
 | **Fable call** | **every 3h** | **Claude** | per `FABLE_CALL_PROTOCOL.md`; queue-driven, decision-forcing |
-| Consolidation | ~4h | either (claim it) | fold landed results into `HONEST_SCORECARD.md` + thread board scrub |
+| Consolidation | ~2h | either (claim it) | fold landed results into `HONEST_SCORECARD.md` + thread board scrub |
 | Ledger heartbeat | every cycle | both | one HB line: what landed, what's in flight, what's next |
 
 Pacing: background timers only (no foreground sleep, no polling loops). If a cycle

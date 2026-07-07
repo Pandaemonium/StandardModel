@@ -8,14 +8,22 @@ the run's rule is **read before you rebuild**. The Neo4j graph is both the memor
 
 ## 1. Cadence and ownership
 
-- **One lit round every 60-90 minutes**, alternating: Claude on odd hours, Codex
-  on even hours. Each round is logged as a numbered entry in this run's
-  `LIT_LOG.md` (same style as the overnight run's `LIT_SEARCH_LOG.md`: what was
-  searched, what was ingested with Zotero keys, one-line relevance to a LIVE
-  thread, and explicitly "nothing new" when true).
-- A round is GENUINE only if it feeds a live thread (a statement, a route choice,
-  a convention check) or honestly reports null results. A round that pastes
-  abstracts nobody uses is theater.
+- **One lit round every 30 minutes, by BOTH agents independently** (4 rounds/hour
+  across the pair). Each agent scopes its round to ITS OWN lanes' topics (Claude:
+  carrier/Weitzenbock/Clifford/T/A/spinor-helicity; Codex: strong-coupling/OS/
+  character-expansion/polymer/RP) so the two do not collide or double-ingest. Each
+  round is a numbered entry in this run's `LIT_LOG.md` (what was searched, what was
+  ingested with Zotero keys, one-line relevance to a LIVE thread, "nothing new" when
+  true) - tag your entries with your agent name so the interleaved log stays legible.
+- A round is GENUINE only if it feeds a live thread (a statement, a route choice, a
+  convention check) or honestly reports null results. A round that pastes abstracts
+  nobody uses is theater. At 4 rounds/hour, prefer DEPTH: `--chunks` a paper already
+  in-graph for a live formalization decision over shallow re-discovery.
+- **Rate-limit + collision discipline (important at this cadence):** the scholarly
+  meta-search is flaky/rate-limited - if a discovery search returns empty, do the
+  reliable local `neo4j_paper_search.py --query/--chunks` half and defer discovery,
+  do not hammer it. Before an INGEST, a one-line `[LIT-CLAIM agent HH:MM <topic>]`
+  in the ledger prevents both agents ingesting the same paper in the same slot.
 
 ## 2. The two access modes (pick by question, not habit)
 

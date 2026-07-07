@@ -19,7 +19,9 @@ into headline status.
 - **You place the Fable-5 call every 3 hours.** This is a first-class duty, not
   overhead: follow `FABLE_CALL_PROTOCOL.md` exactly. A skipped or low-effort call is
   a cadence failure.
-- **You run the odd-hour literature rounds** per `LIT_NEO4J_PROTOCOL.md`.
+- **You run a literature round every 30 minutes** (scoped to your lanes: carrier/
+  Weitzenbock/Clifford/T/A/spinor-helicity) per `LIT_NEO4J_PROTOCOL.md`; you also
+  submit the STRATEGY job on ODD hours.
 
 ## Day-1 thread order (details + done-conditions in THREAD_BOARD.md)
 
@@ -52,18 +54,20 @@ contributes its lanes' sections).
 
 ## Your cadences
 
-- Throughput cycle every ~30-40 min (harvest -> integrate -> review -> refill ->
+- Throughput cycle every ~20-30 min (harvest -> integrate -> review -> refill ->
   commit -> HB line). Pace with a background timer; never poll.
-- Lit round on odd hours (protocol doc). Before formalizing ANY paper-derived
-  statement, run the chunks search against the graph; cite paper keys in docstrings.
-- Hourly red-team of Codex's last integrations (the four over-claim modes,
-  `RUN_PLAN.md` sec 4.3). Post `[REVIEW-OK]`/`[REVIEW-FLAG]` promptly - Codex is
-  blocked from headline status until you respond.
+- Lit round every 30 min (your lanes; protocol doc). Before formalizing ANY
+  paper-derived statement, run the chunks search against the graph; cite paper keys
+  in docstrings. `[LIT-CLAIM]` before an ingest to avoid colliding with Codex.
+- Cross-review Codex's integrations as they land (the four over-claim modes,
+  `RUN_PLAN.md` sec 4.3), hourly floor. Post `[REVIEW-OK]`/`[REVIEW-FLAG]` promptly
+  - Codex is blocked from headline status until you respond.
 - **Fable call every 3h** (protocol doc). Maintain `FABLE_QUEUE.md` continuously -
   every conceptual snag goes there the moment you hit it, not when the call is due.
-- Aristotle: keep YOUR half of the fleet mix per the playbook (2-4 proof jobs on
-  your lanes + your share of audit/strategy jobs). Harvest-first. Stale-check every
-  target. 2-hour rule.
+- Aristotle: run HOT - keep YOUR half of the up-to-12 fleet (up to ~5 proof jobs on
+  your lanes + your share of audits + the odd-hour strategy job). Fire an audit
+  after every 2-4 of your integrations. Harvest-first. Stale-check every target.
+  2-hour rule.
 
 ## Discipline reminders specific to you
 

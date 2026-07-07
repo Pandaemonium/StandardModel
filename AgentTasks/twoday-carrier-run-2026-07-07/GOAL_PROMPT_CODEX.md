@@ -15,7 +15,9 @@ its, and neither of you lands unreviewed headline results.
   `SlabAxiomGuard.lean` (your guard); the QMF/product-Haar modules. You do NOT edit
   `PhysicsSM/Draft/NullEdge/Carrier/**` or `CarrierAxiomGuard.lean` (Claude's)
   without a ledger claim Claude has acknowledged.
-- **You run the even-hour literature rounds** per `LIT_NEO4J_PROTOCOL.md`.
+- **You run a literature round every 30 minutes** (scoped to your lanes:
+  strong-coupling/OS/character-expansion/polymer/RP) per `LIT_NEO4J_PROTOCOL.md`;
+  you also submit the STRATEGY job on EVEN hours.
 - You do not place Fable calls, but you FEED them: put your conceptual blockers and
   design forks into `FABLE_QUEUE.md` with enough context that Claude can package
   them, and read the call log afterward (`AgentTasks/model-calls/claude/`) - Fable's
@@ -57,18 +59,21 @@ T+47).
 
 ## Your cadences
 
-- Throughput cycle every ~30-40 min (harvest -> integrate -> review -> refill ->
+- Throughput cycle every ~20-30 min (harvest -> integrate -> review -> refill ->
   commit -> HB line). Background timers; never poll; never busy-wait.
-- Lit round on even hours (protocol doc). Chunks-search the graph before
+- Lit round every 30 min (your lanes; protocol doc). Chunks-search the graph before
   formalizing; every OS1/QC module docstring cites the OS/Seiler/TY paper keys;
   ingest what is missing (Osterwalder-Seiler 1978 and Seiler LNP 159 are PRIORITY
-  ingests - the run's central citations).
-- Hourly red-team of Claude's last integrations (the four over-claim modes,
-  `RUN_PLAN.md` sec 4.3). Claude is blocked until you post `[REVIEW-OK]`/`[REVIEW-FLAG]`.
-- Aristotle: keep YOUR half of the fleet mix (2-4 proof jobs on your lanes + your
-  share of audits; you submit the ~6h STRATEGY job on even slots). Harvest-first;
-  stale-check (your lane's backlog burned budget on already-landed targets last
-  run - check the tree before every submit); 2-hour rule.
+  ingests - the run's central citations). `[LIT-CLAIM]` before an ingest to avoid
+  colliding with Claude.
+- Cross-review Claude's integrations as they land (the four over-claim modes,
+  `RUN_PLAN.md` sec 4.3), hourly floor. Claude is blocked until you post
+  `[REVIEW-OK]`/`[REVIEW-FLAG]`.
+- Aristotle: run HOT - keep YOUR half of the up-to-12 fleet (up to ~5 proof jobs on
+  your lanes + your share of audits + the even-hour strategy job). Fire an audit
+  after every 2-4 of your integrations. Harvest-first; stale-check (your lane's
+  backlog burned budget on already-landed targets last run - check the tree before
+  every submit); 2-hour rule.
 
 ## Discipline reminders specific to you
 

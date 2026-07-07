@@ -20,8 +20,14 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   gravity INTERFACE, not a gravity theorem.
 - **Status:** brick 1 **LANDED + guarded** (commit d7a7d8d - `NullNilpotentSquare`:
   `null_clifford_sq_zero`, `nullSoldered_square_offDiagonal`, `lone_edge_massless`;
-  red-teamed clean). NEXT: brick 2 (the 2-complex + gauge-covariant `nabla_e` +
-  plaquette holonomy defect - design fork queued for Fable call 01).
+  red-teamed clean). Brick **2a IN-FLIGHT** (`tc-w1-gram`
+  c3ae9b98-dc9a-4f75-afca-1459edb253e8, `SolderedSquareGram`: scalar-weight soldered
+  square = the Q_A Gram form exactly; Q_C bivector absent under commuting weights,
+  which motivates gauge `nabla` for brick 2). NEXT after 2a: brick 2 (the 2-complex +
+  gauge-covariant `nabla_e` + plaquette holonomy defect - design fork queued for
+  Fable call 01). **Cite in W1 docstrings:** [BQJAG9TR] hep-th/9503153 (generalized
+  Lichnerowicz formula) + [2DEG7MT2] 0708.3707 (discrete/metric-graph index); confirmed
+  in-graph, LIT_LOG round 1.
 
 ### W2a - Q_A and Q_T identification lemmas [Claude, day 2 gate]
 - **Done:** kernel-checked `Q_A`-symbol-kernel = collinear locus tied to

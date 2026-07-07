@@ -4,24 +4,28 @@ Aristotle is the run's engine and is to be used VERY heavily - but heavily on th
 three axes it is actually good at, not on slot-filling. Full mechanics:
 `docs/ARISTOTLE.md`. This playbook is the run-specific doctrine.
 
-## 1. The fleet mix (the standing target)
+## 1. The fleet mix (up to 12 concurrent - run HOT)
 
-At any time, aim for:
+Run the fleet at **up to 12 simultaneous jobs**. At any time, aim for:
 
-- **4-7 PROOF/CONSTRUCTION jobs** - isolated, statement-first, non-colliding,
+- **8-10 PROOF/CONSTRUCTION jobs** - isolated, statement-first, non-colliding,
   split across both agents' lanes (Claude: carrier/T/A bricks; Codex: OS1/QC/KP
-  bricks).
-- **1-2 AUDIT jobs** - adversarial semantic audits of recently landed flagships
-  (sec 3). These are the run's independent third reviewer, and last run they
-  caught what self-review missed. Keep one in flight almost always.
-- **1 STRATEGY job every ~6h** - a written strategic review of the currently
-  riskiest thread (sec 4), alternating agents.
+  bricks). Each agent runs up to ~5 of its own.
+- **2-3 AUDIT jobs** - adversarial semantic audits, fired EVENT-DRIVEN after every
+  2-4 integrated proofs (sec 3). The run's independent third reviewer; last run
+  they caught what self-review missed. Keep 2-3 in flight whenever integrations
+  are flowing.
+- **1 STRATEGY job, refreshed HOURLY** - a written strategic review of the
+  currently riskiest thread (sec 4), agents alternating each hour.
 
-If you cannot fill the proof slots with GENUINELY OPEN targets, do not fill them.
-An empty slot is signal (saturation -> escalate per `RUN_PLAN.md` sec 5); a slot
-burning budget on a re-derivation is a bug. Last run produced byte-identical
-re-derivations because prompts outlived their targets - hence the stale-check
-rule below is absolute.
+**12 is a CEILING, not a quota.** The saturation discipline still binds absolutely:
+if you cannot fill the proof slots with GENUINELY OPEN, non-stale targets, do NOT
+fill them with re-derivations. An unfilled slot is signal (saturation -> escalate
+per `RUN_PLAN.md` sec 5); a slot burning budget on an already-landed target is a
+bug. Last run produced byte-identical re-derivations because prompts outlived their
+targets - hence the stale-check rule below is absolute. When proof targets run dry,
+convert spare capacity to MORE audit + strategy jobs (which never go stale), not to
+duplicate proofs.
 
 ## 2. PROOF jobs - the discipline
 
@@ -63,15 +67,17 @@ Submit with a prompt of this shape (see the overnight run's
 > line, the honest downgrade or fix. Deliver findings as a Markdown report; do
 > NOT "fix" the code.
 
-Rotation: every flagship lands -> enters the audit pool -> gets an Aristotle audit
-within ~6h of landing. Prioritize: capstone-adjacent > guard-file changes > new
-lane headliners. File findings to the ledger as `[AUDIT-FINDING]`; a confirmed
-finding is a WIN (log the catch), and the downgrade commits the same cycle.
+Trigger: **EVENT-DRIVEN - after every 2-4 integrated proofs, fire an audit job** on
+the most recent / riskiest landings (keep 2-3 audit jobs in flight while
+integrations flow). Prioritize: capstone-adjacent > guard-file changes > new lane
+headliners. Maintain an audit counter in the ledger (`[AUDIT-DUE]` when 2-4
+integrations have accumulated unaudited). File findings as `[AUDIT-FINDING]`; a
+confirmed finding is a WIN (log the catch), and the downgrade commits the same cycle.
 
 ## 4. STRATEGY jobs - Aristotle as strategist
 
-Every ~6h, the on-duty agent (alternating: Claude at T+6, T+18, T+30, T+42;
-Codex at T+0/T+12/T+24/T+36) submits a strategy job on the riskiest live thread:
+**HOURLY**, the on-duty agent (alternating each hour: Claude on odd hours, Codex on
+even hours) submits a strategy job on the riskiest live thread:
 
 > Given [the thread's goal, the exact current statements, what landed, what
 > failed and how - all verbatim], produce: (a) an assessment of whether the
