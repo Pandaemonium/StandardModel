@@ -2475,3 +2475,21 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Verification passed:
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection`.
+
+## [HB Codex solo] Q08-L3 two-mode dGamma square witness landed
+- Added `PhysicsSM/Draft/NullEdge/Carrier/FockSecondQuantization.lean`, a
+  finite two-mode diagonal occupation-basis sanity check for the Q08 interaction
+  identity. The theorem `dGammaDiag_square_two_mode` proves
+  `dGamma(D)^2 = dGamma(D^2) + 2 * dGammaPairDiag(D)` for all two-mode
+  occupation states over any commutative semiring; `dGammaPairDiag_both_occupied`
+  identifies the doubly occupied cross term as `d 0 * d 1`.
+- Added both theorems to `CarrierAxiomGuard.lean` with footprint `[propext]`.
+- Claim boundary: PROVED concrete two-mode diagonal witness only. The
+  basis-free exterior-algebra theorem
+  `dGamma(D)^2 = dGamma(D^2) + 2 dGamma_2(Lambda^2 D)` remains with the active
+  Aristotle Q08-L3 job.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/FockSecondQuantization.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.

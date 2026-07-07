@@ -471,8 +471,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   form is nondegenerate; L-Q8-2 `(ker A)^perp_J = range A#` is the workhorse
   theorem `orthoB_ker_eq_range`; `descent_unitary` covers the representative
   T-U1 preservation chain. CarrierAxiomGuard now pins `finite_kugo_ojima` and
-  `descent_unitary`.
-- **Next:** L-Q8-3 the interaction identity dGamma(D)^2 = dGamma(D^2) +
+  `descent_unitary`. L-Q8-3 has a first concrete kernel witness in
+  `PhysicsSM/Draft/NullEdge/Carrier/FockSecondQuantization.lean`:
+  `dGammaDiag_square_two_mode` proves the two-mode diagonal occupation-basis
+  identity `dGamma(D)^2 = dGamma(D^2) + 2 d0 d1` on the doubly occupied state
+  (guard footprint `[propext]`).
+- **Next:** Generalize L-Q8-3 from the two-mode diagonal witness to the
+  exterior-algebra identity dGamma(D)^2 = dGamma(D^2) +
   2 dGamma_2(Lambda^2 D) (pair kernel = the WEDGE of the carrier -
   Layer-K resonance; NJL = turn^2, Thirring = transport^2, no new constants);
   L-Q8-4 the L=4 two-particle checkerboard determinant identity in Q[m];
