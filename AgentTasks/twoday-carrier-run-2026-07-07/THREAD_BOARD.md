@@ -208,6 +208,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Done:** `pairSum_le_expBound` proved via the partition-scheme telescoping
   identity, OR the honest reduction to one named combinatorial lemma + handoff.
   Rails: do not re-prove `kp_convergence_bound_false`; thread `hself` everywhere.
+- **Status:** OPEN; Aristotle task `e1f4172d` exceeded the 2-hour rule and was
+  canceled. A concise handoff-only continuation was requested in project
+  `c8468d57`; no result has been harvested yet.
 ### NN-D - higher-d Nielsen-Ninomiya [either, stretch]
 - **Done:** the discrete-Stokes degree theorem on `(ZMod N)^d` (facet-pairing
   telescoping), any d >= 2 beyond the landed 2D version; tie to overlap index if
