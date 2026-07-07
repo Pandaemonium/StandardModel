@@ -115,6 +115,63 @@ with explicit kill conditions.
     thread board, ledger, lit log, and claim grades aligned with what is
     actually kernel-checked or explicitly MEMO/OPEN.
 
+## Aristotle lane loading board
+
+Keep Aristotle busy with independent, high-quality jobs, not duplicate packets.
+Before every submission wave, check `aristotle list`, `aristotle tasks`, and
+`ARISTOTLE_LANE_DOCKET_2026-07-07.md`; count still-running jobs first, harvest
+completed jobs before refilling, and do not resubmit an active target under a
+new name.  Project directories and Aristotle project names should match the job
+name exactly.  If the calendar date changes, update the suffix from `20260707`
+to the current date.
+
+Currently active follow-up jobs to poll before opening replacements:
+
+- `ne-q08-fock-quotient-pairingdual-proof-20260707`
+- `ne-q08-dgamma-exterior-globalization-proof-20260707`
+- `ne-q10-multitime-embedding-uniqueness-audit-20260707`
+- `ne-q11-rc0-det-cocycle-strategy-20260707`
+- `ne-q11-bl-dictionary-finite-check-20260707`
+- `ne-q12-equivariant-ms-charge-resolution-proof-20260707`
+- `ne-q12-triality-convention-bridge-audit-20260707`
+
+Ready next-wave Aristotle jobs, each with a unique descriptive name:
+
+| Lane | Next Aristotle job name | Type | Intended deliverable |
+|---|---|---|---|
+| W1 carrier E-slot | `ne-w1-carrier-eslot-torsion-symmetric-split-proof-20260707` | proof/strategy | Small API and theorem for the split of the carrier `E` slot into antisymmetric torsion and symmetric soldering-difference pieces. |
+| W2a turn slot | `ne-w2a-turn-slot-phi-gamma-identification-proof-20260707` | proof | Corrected `Phi = Gamma * phi` turn-slot identification, with the gamma-even cancellation mistake kept dead. |
+| W2b irreducibility | `ne-w2b-bigraded-carrier-irreducibility-strategy-20260707` | strategy/audit | Bigraded slot-normal-form statement for the upgraded no-common-carrier theorem. |
+| W2c exhaustiveness | `ne-w2c-pbw-normalform-relative-exhaustiveness-audit-20260707` | audit/strategy | PBW/rewriting route for relative exhaustiveness and named extra terms when hypotheses are dropped. |
+| Capstone | `ne-capstone-four-slot-identity-semantic-audit-20260707` | audit | Adversarial check that the eventual capstone is an identity of graded summands, not a spectral mass claim. |
+| OS1 gauge gap | `ne-os1-z2-multiplaquette-smallbeta-kp-proof-20260707` | proof | Genuine finite small-beta multi-plaquette KP rung beyond the saturated beta-zero fixtures. |
+| QC exact finite cycle | `ne-qc-two-torus-exact-transfer-correction-proof-20260707` | proof | Exact finite Z2 two-torus readout/correction theorem or a precise obstruction to the next normalization. |
+| QC carrier bridge | `ne-qc-carrier-curvature-to-readout-contract-audit-20260707` | audit | Determine whether any concrete carrier-side curvature-to-scalar statement is available without smuggling in a measure theorem. |
+| Product-Haar/RP | `ne-rp-wilson-measure-product-haar-bridge-audit-20260707` | audit/strategy | Gap analysis from banked product-Haar positivity to interacting Wilson-measure reflection positivity. |
+| KP/Penrose | `ne-kp-fixed-forest-injection-followup-proof-20260707` | proof/strategy | Follow-up on the fixed-forest fiber-injection route, with exact support lemmas or a no-go certificate. |
+| Q01 Gupta-Bleuler | `ne-q01-gupta-bleuler-positive-quotient-witness-proof-20260707` | proof/audit | Nonvacuous finite positive-sector witness, separating quotient nondegeneracy from physical positivity. |
+| Q02 gravity/E-slot | `ne-q02-etelescope-pprobe-torsion-flux-audit-20260707` | audit | Corrected telescoping plus P-probe review for gravity-interface wording and finite kill conditions. |
+| Q03 dispersion | `ne-q03-dispersion-determinant-doubling-ledger-proof-20260707` | proof | Determinant/wedge dispersion identity and explicit doubler ledger targets. |
+| Q04 strand-fock | `ne-q04-strandfock-supertrace-anomaly-proof-20260707` | proof | Exterior supertrace/anomaly identity and finite-difference corollary on the pentad fiber. |
+| Q04 octonion bridge | `ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707` | audit/strategy | Convention bridge between `Lambda(C^3)` and the XOR-Fano octonion color seed. |
+| Q05 triality | `ne-q05-triality-monodromy-equivariant-index-strategy-20260707` | strategy | Equivariant index, cover multiplicativity, triangle holonomy toy model, and no-four-orbit route. |
+| Q06 retarded transfer | `ne-q06-retarded-wilson-dispersion-identity-proof-20260707` | proof | Exact "retardedness is the Wilson term" dispersion identity after the palindromic/nonabelian boundary landing. |
+| Q07 Koide/T-solder | `ne-q07-tsolder-kappa-tetrahedral-probe-audit-20260707` | audit/strategy | Decide whether the tetrahedral corner probe supports, refines, or kills the kappa mechanism. |
+| Q08 checkerboard Fock | `ne-q08-l4-twoparticle-checkerboard-determinant-proof-20260707` | proof | L=4 two-particle checkerboard determinant identity over rational polynomials. |
+| Q09 horizon/screen | `ne-q09-nullscreen-additivity-entropy-kill-audit-20260707` | audit | Decide which entropy/horizon upgrades are finite theorem targets and which remain MEMO/OPEN. |
+| Q10 scalar amplitude | `ne-q10-spin-weyl-scalar-amplitude-classification-strategy-20260707` | strategy | Route from finite census substitutes to the real Spin/Weyl scalar-amplitude classification. |
+| Q11 Majorana/order | `ne-q11-majorana-ordercondition-finite-identities-proof-20260707` | proof/strategy | C3 Majorana identity and order-condition scalar identities after the RC0/B-L jobs return. |
+| Q12 C8 seam | `ne-q12-c8-realstructure-g2-compatibility-audit-20260707` | audit | Compatibility of `J_R`, G2 parity, top-form pairing, and chirality-solder conventions. |
+| RG-Schur | `ne-rg-schur-krein-gamma-stability-proof-20260707` | proof | Schur-complement determinant identity plus stability of Krein-self-adjoint Gamma-odd structure. |
+| C-1FORM/charge | `ne-c1form-twist-sector-rp-background-audit-20260707` | audit | Whether the finite twist-sector API can honestly support an RP/background-cohomology bridge. |
+| SPIN10-U5 | `ne-spin10-u5-pure-spinor-stabilizer-strategy-20260707` | strategy | Mathlib/PhysLean route to the pure-spinor-line stabilizer rung or the honest finite shadow. |
+| Manuscript/claims | `ne-manuscript-p1-claimgrade-consistency-audit-20260707` | audit | P1 v3, scorecard, thread board, and Lean landings checked for claim-grade drift. |
+
+Use this table as a queue, not a quota.  Maintain roughly twelve active
+StandardModel-relevant Aristotle lanes during autonomous periods by mixing:
+proof jobs that have isolated statements, strategy jobs for design forks, and
+adversarial audits for recently landed or high-risk claims.
+
 ## Research goals aligned to the new repo material
 
 1. **Q09 horizon/screen area.** Turn the area-as-relational-aperture memo into
