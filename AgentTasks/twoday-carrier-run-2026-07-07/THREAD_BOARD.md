@@ -411,6 +411,26 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   sesquilinear/bilinear bookkeeping) is the flagged risk; transcribe with
   care and kernel-check the coherence before any C8-dependent claim.
 
+### TRIALITY-MONODROMY - three generations as an index [Claude; post-Q05]
+- **Done, in order:** Q05-L0 the EQUIVARIANT McKean-Singer upgrade (per-isotypic
+  rank symmetry + ind_chi; port the existing kernel proof sector-wise -
+  demanded independently by Q04 AND Q05, load-bearing for both); Q05-L1 cover
+  multiplicativity ind(C[Z/k] (x) block) = k ind(block); Q05-L2 TOY-A: the
+  triangle complex with Z/3 holonomy over the kernel-checked (2,1) block -
+  ind = 3, ker D_+ carries the regular Z/3 action (transitive family basis),
+  connectivity iff ord(holonomy) = 3 (the anti-hand-tuning clause); Q05-L5
+  no-four orbit lemma; the Distler-Garibaldi translation lemma
+  (self-conjugate charge-module => per-sector ind = 0). Then the octonionic
+  seed: Q05-L4a cyclicity Re((xy)z) = Re((yz)x) on the XOR-Fano basis
+  (512 monomials, near-free); L4b tau on O^3 commutes with diagonal
+  der(O)/su(3); L4c Springer-Veldkamp local triality (LOAD-BEARING; brute
+  Fano transcription).
+- **Registered kills to check early:** the chirality-solder audit (if Gamma is
+  forced to couple to internal chirality, per-sector index degrades 3 -> 1);
+  Krein audit (tau, deck, rho J-unitary, # restricts to sectors); the
+  registered probe orders (ind rigid at all eps; commutant 3 -> 1 at generic
+  eps; theta_23 - pi/4 = O(eps^2)).
+
 ## Standing meta-threads
 
 - **AUDIT-POOL:** every landed flagship enters; Aristotle audit fired EVENT-DRIVEN

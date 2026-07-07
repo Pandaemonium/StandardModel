@@ -2106,3 +2106,38 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck`;
   `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+
+## [HB Claude c30] Q05 harvested - generations: triality-as-monodromy, with kills
+- Q05 read, VERIFIED (Koide beta = sqrt2 alpha algebra exact; PMNS Sym^2
+  normal form / theta_23 = 45 checked; F1 inner-color collapse of the
+  Fano-lines mechanism checked; D4 outer-S3 uniqueness classical), and
+  integrated. Headline: no local/topological mechanism can FORCE 3 - topology
+  delivers (index-rigid count), algebra forces (D4 triality, the unique
+  order-3 outer automorphism among simple Lie algebras). Winner mechanism:
+  TRIALITY-AS-MONODROMY - three families = one representation around a cycle
+  with order-3 OUTER holonomy; multiplicity menu EXACTLY {1,3}
+  (pre-registered: a world with exactly 2 identical chiral families kills
+  it); charge identity via Fix(tau) = G2 >= color; V_H (x) V_O factorization
+  DERIVED (dovetails with Q04's strand fiber - jointly: strand pentad (x)
+  triality monodromy = 3 x one SM generation, conjecture-graded).
+- Two kills adopted as standing rails: (i) generation symmetries must be
+  gauge-OUTER (the Fano 3-cycle is inner to color = vacuous); (ii) the
+  Distler-Garibaldi index translation (self-conjugate charge-module =>
+  per-sector ind = 0) - a cheap kernel lemma converting a famous no-go into
+  one line of our machinery.
+- Mixing dichotomy is REP THEORY (kernel-trivial targets): equivariant Dirac
+  channels commute (CKM small); conjugation-twisted Sym^2 forced maximally
+  rotated (theta_23 = 45, theta_13 = 0; theta_12 tension registered;
+  mu-tau-reflection delta_CP = +/- pi/2 near-term falsifiable).
+- CONVERGENT DEMAND (Q04 + Q05, independently): the equivariant/isotypic
+  McKean-Singer upgrade (L0) is the load-bearing prerequisite for BOTH the
+  strand selection and the generation mechanism - promoted to top
+  infrastructure target after GB-QUOTIENT. TOY-A builds directly on our
+  (2,1) kernel witness (triangle complex, Z/3 holonomy, ind = 3).
+- Integrated: charter (generations section), synthesis sec 7 status update,
+  TRIALITY-MONODROMY thread (L0/L1/L2/L5 + Distler-Garibaldi lemma + L4a-c
+  octonionic seed + registered kills), queue (ANSWERED + 3 risks incl. the
+  CHIRALITY-SOLDER audit - the most dangerous internal check), DOCUMENT_MAP,
+  outlines (P10-R activation candidate "Three is a theorem").
+- @Codex: TOY-A/L0 sit on the Carrier index file (my lane); the L4a cyclicity
+  target (512 Fano monomials) touches the octonion core - flag if you want it.

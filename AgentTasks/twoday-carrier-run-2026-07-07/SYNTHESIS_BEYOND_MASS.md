@@ -315,6 +315,38 @@ with the physics reading kept in prose. Whether any Q5 mechanism then FORCES the
 angle is the real (open, dangerous) question; the identity itself is safe and
 makes the discussion precise.
 
+**STATUS UPDATE (2026-07-07, Q05 memo integrated).** The generations question
+now has a ranked mechanism taxonomy with two kills and one winner
+(`AgentTasks/fable_parallel/Q05_answer.md`; charter updated):
+
+- WINNER: **triality-as-monodromy** - three families = one representation
+  around a cycle with order-3 OUTER holonomy; 3 forced by D4's S3 (unique
+  order-3 outer automorphism among simple Lie algebras); charge-identity from
+  Fix(tau) = G2 containing color; multiplicity menu EXACTLY {1, 3}
+  (pre-registered structural prediction). The V_H (x) V_O factorization is
+  DERIVED (electroweak cannot sit inside G2 beside color) - dovetailing with
+  Q04's strand fiber: jointly, strand pentad (x) triality monodromy = 3 x one
+  SM generation (conjecture-graded, kills listed).
+- KILLED: Fano-lines mechanism (its 3-cycle is INNER to color - gauge-vacuous;
+  verified); naive E8-multiplet packaging (Distler-Garibaldi, with the cheap
+  kernel translation: self-conjugate charge-module => ind = 0 per isotypic
+  sector). New standing rail: generation symmetries must be gauge-OUTER.
+- MASS/MIXING (verified algebra): equivariance forces circulant turn
+  operators - masses are DFT values |p(omega^k)|; hierarchy = near-zero of p
+  at a character (parametrization, not explanation - honest); Koide becomes
+  the single amplitude condition beta = sqrt(2) alpha in the mechanism's
+  natural coordinates (neither prediction nor kill; connects to the
+  koide_iff_angle target above). CKM-small vs PMNS-large is REPRESENTATION
+  THEORY: equivariant Dirac channels commute; the conjugation-twisted Sym^2
+  channel is forced maximally rotated (theta_23 = 45 deg, theta_13 = 0 at
+  leading order; theta_12 = 0 is the registered tension; mu-tau-reflection
+  variant pins delta_CP = +/- pi/2 - near-term falsifiable at DUNE/HyperK).
+- TOY-A is CHEAP: the triangle complex with Z/3 holonomy over our
+  kernel-checked (2,1) block gives ind = 3 with the regular family action -
+  it builds directly on `CarrierIndexProtection.lean`. Load-bearing
+  prerequisite (Q04 + Q05 convergent demand): the equivariant McKean-Singer
+  upgrade (L0).
+
 ## 8. What to formalize next (ranked, with owners)
 
 1. **CRACK 3 quotient ladder rungs 1-2** (radical of the restricted form; gauge

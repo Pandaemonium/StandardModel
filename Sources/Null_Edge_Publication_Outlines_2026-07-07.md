@@ -346,6 +346,14 @@ crisp moral.
   first/second-order NCG identities the vacuum-Majorana turn satisfies on
   Lambda(C^3+C^2); a finite Lean file adjudicating a live NCG dispute
   (Chamseddine-Connes-van Suijlekom vs Boyle-Farnsworth) from outside.
+- P10-R ACTIVATION CANDIDATE (post-Q05, conjecture-gated): "Three is a
+  theorem" - triality-as-monodromy with the {1,3} multiplicity menu, the
+  gauge-outer rail (Fano/E8 kills as adversarial sections), the TOY-A
+  certificate over the kernel-checked (2,1) block, and the CKM/PMNS
+  representation-theory dichotomy (theta_23 = 45 deg; mu-tau-reflection
+  delta_CP = +/- pi/2 as the near-term observational hook). Gates: the
+  equivariant McKean-Singer upgrade (L0) + TOY-A (L2) + the cyclicity seed
+  (L4a) kernel-checked, and the chirality-solder audit passed.
 - P6-R: the Koide-as-angle finite identity (sqrt-mass = native aperture
   variables) + whatever generation mechanism Q5 ranks first - only if a
   mechanism FORCES structure; no numerology paper.

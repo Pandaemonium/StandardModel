@@ -57,6 +57,7 @@ as current state.
 - `AgentTasks/fable_parallel/Q02_answer.md` - gravity slot: Lemma-0 invariance, corrected telescoping + P-probe kill, TEGR coefficient derivation, certificates. [STABLE]
 - `AgentTasks/fable_parallel/Q03_answer.md` - the four-theorem no-go audit; verdict table; charter source. [STABLE]
 - `AgentTasks/fable_parallel/Q04_answer.md` - SM selection: B-L no-go for the naked triple; internal null-strand principle; pentad selection up to (4,1); anomaly = supertrace identity; octonion/Connes dictionary. [STABLE]
+- `AgentTasks/fable_parallel/Q05_answer.md` - generations: triality-as-monodromy (3 forced by D4; menu {1,3}); gauge-outer rail; Fano/E8 kills; CKM/PMNS dichotomy from Z/3 rep theory. [STABLE]
 - `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` - the unified-mass-model working plan (detail behind the results map). [LIVE]
 - `Sources/Luminal_Motion_Checkerboard_Research_Program.md` - the checkerboard program (bridges to the carrier via the turn/corner dictionary). [LIVE]
 - `docs/NERD_ROADMAP.md` - see operational guides; also the program's gate structure. [LIVE]

@@ -221,3 +221,22 @@ Format:
   (finite check). (iii) Look for an already-kernel-checked constraint that
   deletes the (4,1) competitor outright - would upgrade the selection theorem
   by removing the one IR bit.
+- [ANSWERED Q05] Three generations -> mechanism taxonomy ranked; WINNER =
+  triality-as-monodromy (3 forced by D4's order-3 OUTER automorphism -
+  unique among simple Lie algebras; charge identity via Fix(tau) = G2;
+  multiplicity menu exactly {1,3}); Fano-lines mechanism KILLED (inner to
+  color = gauge-vacuous) with the adopted rail "generation symmetries must be
+  gauge-outer"; naive E8 packaging killed via the Distler-Garibaldi index
+  translation (cheap kernel lemma). V_H (x) V_O factorization DERIVED -
+  dovetails with Q04's strand fiber. CKM-small/PMNS-large = Z/3 rep theory
+  (End commutes vs Sym^2 maximally rotated; theta_23 = 45 deg; registered
+  tension theta_12; mu-tau-reflection delta_CP = +/- pi/2 falsifiable soon).
+  Koide = (beta = sqrt2 alpha) in mechanism coordinates - neither prediction
+  nor kill.
+- [QUEUE 2026-07-07 Claude, Q05 risks] (i) CHIRALITY-SOLDER audit - the most
+  dangerous internal check: does any admissible carrier force [Gamma, tau]
+  != 0 (per-sector index would degrade 3 -> 1)? Run on TOY-A (x) TOY-B before
+  any generation-mechanism prose hardens. (ii) L4c Springer-Veldkamp local
+  triality is the load-bearing transcription risk. (iii) Ibanez-Ross discrete
+  anomaly check for the gauged deck symmetry (linear condition passes:
+  0+1+2 = 0 mod 3; full check queued).

@@ -100,6 +100,45 @@ soldering with internal decorations breaks, gauges, or trivializes on
 asymptotic states. A derivation target: achieved, it would EXPLAIN the
 factorization CM otherwise forces us to assume.
 
+## Generations (added post-Q05, same date)
+
+Three generations remain an input to U0-U5, but now with a named candidate
+mechanism and a standing rail:
+
+- **Candidate (C, pre-registered): triality-as-monodromy.** The three families
+  are ONE representation transported around a homologically nontrivial cycle
+  whose holonomy is the order-3 OUTER element of Spin(8)'s S3 (D4 triality -
+  the unique order-3 outer automorphism among simple Lie algebras; equivalent
+  caps: rank 3 of the Albert algebra, terminality of O in the Hurwitz chain).
+  Topology makes the count an index (rigid); the algebra makes it 3; outerness
+  makes the families charge-identical (Fix(triality) = G2 contains color).
+  Structural consequences: the internal decoration is FORCED to factor as
+  V_H (x) V_O (electroweak on the H factor - this DERIVES the Dixon/Furey
+  division-algebra layout, and dovetails with the Q04 strand fiber
+  Lambda(C^3) (x) Lambda(C^2)); the protected-family multiplicity menu is
+  EXACTLY {1, 3} - a world with exactly 2 identical chiral families kills the
+  mechanism. Mixing dichotomy is representation theory: equivariant Dirac
+  channels commute (CKM small), the conjugation-twisted Sym^2 channel is
+  forced maximally rotated (theta_23 = 45 deg at leading order; the
+  mu-tau-reflection variant pins delta_CP = +/- pi/2 - near-term falsifiable).
+- **Standing rail (adopted): a generation symmetry must lie in the commutant
+  of the charge algebra and be OUTER relative to the gauge group** - inner
+  candidates are gauge-vacuous (this kills the Fano-lines-through-a-point
+  mechanism: its 3-cycle sits inside color SU(3)). Corollary rail (the
+  Distler-Garibaldi translation, cheap kernel target): a carrier whose total
+  internal content is self-conjugate as a charge-module has ind = 0 in every
+  isotypic sector - internal-multiplet generation counting is dead by index.
+- **Registered dangers:** the chirality-solder check (if any admissible
+  carrier forces the physical grading to couple to internal chirality, the
+  per-sector index degrades 3 -> 1 - the single most dangerous internal
+  check); the Springer-Veldkamp local-triality identity (L4c) is the
+  load-bearing algebraic transcription.
+- **Load-bearing prerequisite (demanded independently by Q04 AND Q05):** the
+  equivariant/isotypic upgrade of the kernel McKean-Singer family theorem
+  (ind per character, invariant under equivariant deformations). Without it,
+  "three families with identical charges" is not yet a statement in our
+  calculus - only "index three" is.
+
 ## Explicitly lost (say it in every outward-facing document)
 
 - Coupling unification (NCG-style relations `g_3^2 = g_2^2 = (5/3) g_1^2`):
