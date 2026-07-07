@@ -2590,3 +2590,22 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ModularNoGo.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.ModularNoGo`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q10-L3 Lorentzian transitivity landed
+- Harvested Aristotle project `dbe113e5`
+  (`ne-q10-l3-lorentzian-transitivity-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/LorentzianTransitivity.lean` and imported it
+  from the GateI1 aggregator.
+- Proved the coordinate Lorentzian model `LVec m = R x EuclideanSpace R (Fin m)`
+  with form `lform u v = u.1 * v.1 - <u.2,v.2>`, nullity `IsNull`, and the
+  headline theorem `lorentzian_pos_pairing_trans`: for null `u, v, w`,
+  positive pairings `lform u v` and `lform v w` imply `0 <= lform u w`.
+  Also proved `lorentzian_pos_pairing_rigidity`: the zero boundary is exactly
+  projective collinearity `exists k, w = k • u`.
+- Claim boundary: PROVED Lorentzian `(1,m)` positive-pairing theorem only. This
+  pairs with the split `(2,2)` obstructions already landed, but it is not by
+  itself a full Lorentzian uniqueness theorem, multi-time embedding theorem, or
+  dimension-selection result.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/LorentzianTransitivity.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.LorentzianTransitivity`.

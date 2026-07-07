@@ -532,14 +532,21 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   rank-two corner, `weyl_not_symmetric_d6/10` give the weight-parity
   obstructions, and `charpoly_negSymmetric_of_invariant_form` is the bridge
   from invariant bilinear form to negation-symmetric characteristic polynomial.
-  The headline theorems are guard pinned with footprint
+  Q10-L3 has now landed in
+  `PhysicsSM/Draft/NullEdge/GateI1/LorentzianTransitivity.lean`:
+  `lorentzian_pos_pairing_trans` proves positive null-pairing transitivity in
+  signature `(1,m)`, and `lorentzian_pos_pairing_rigidity` proves the zero
+  boundary is exactly projective collinearity. The headline theorems are guard
+  pinned with footprint
   `[propext, Classical.choice, Quot.sound]`.
-- **Status:** PROVED finite obstruction only. It supports Q10's stable-order
-  signature rail, not the full Lorentzian uniqueness theorem yet. The next
-  exact rung is L3 Lorentzian positive-pairing transitivity. L6 still needs the
-  full Spin/Weyl representation stack before it can be stated as a
-  representation-theoretic `Hom_Spin(S tensor S, 1)` classification.
-- **Aristotle:** active named lanes opened for Q10-L3 (`dbe113e5`), Q10-L5
+- **Status:** PROVED finite Lorentzian half plus finite split-signature
+  obstruction stack. This strongly supports Q10's stable-order signature rail,
+  but the full uniqueness theorem still needs the multi-time embedding ladder
+  and any dimension-selection claim still needs separate chirality and scalar
+  amplitude reconstruction. L6 still needs the full Spin/Weyl representation
+  stack before it can be stated as a representation-theoretic
+  `Hom_Spin(S tensor S, 1)` classification.
+- **Aristotle:** harvested named lanes Q10-L3 (`dbe113e5`), Q10-L5
   (`3a66e413`), and Q10-L6 (`7fd8a9bf`); see
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
 - **Claim boundary:** never phrase this as "retardation on one finite complex
