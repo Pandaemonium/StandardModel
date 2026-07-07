@@ -69,3 +69,13 @@ stated with full finite precision (even if its proof is a program); the
 retardedness-equals-signature equivalence statement; and the steelmanned
 deflationary verdict if selection fails. No romance: if 4 is not special in this
 framework, we need to know before we write another paper.
+
+## Addendum: the Malament split (use it to structure question 3)
+
+Internal framing to adopt: causal order alone determines the CONFORMAL class
+(Malament; Hawking-King-McCarthy), so on a finite complex the order data may be
+credited with conformal structure for free, and the decorations (soldering Gram
+data) owe exactly the SCALE (Sorkin: order + number = geometry). So split every
+selection claim into the free half (order -> conformal, including signature and
+orientation questions) and the owed half (decorations -> scale), and state which
+half your candidate theorem lives in.

@@ -54,7 +54,10 @@ question.
    Krein/indefinite-metric QFT axiomatics (Strocchi; Morchio-Strocchi;
    Yngvason), lattice-to-continuum constructive results closest in spirit
    (Gross-Osterwalder-Seiler era results; recent constructive lattice fermion
-   limits). Exact citations.
+   limits). Include the Destri-de Vega light-cone lattice (massive
+   Thirring/sine-Gordon regularized on a lattice of null lines) as the
+   exactly-solvable INTERACTING 1+1 control case one rung above the free
+   checkerboard benchmark. Exact citations.
 
 ## Success criterion
 

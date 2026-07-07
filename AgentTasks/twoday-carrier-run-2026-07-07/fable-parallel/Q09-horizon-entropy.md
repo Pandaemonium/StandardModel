@@ -60,3 +60,15 @@ The exact finite definitions (area functional, cut entropy), one theorem-shaped
 statement each for questions 2 and 4 with hypotheses displayed, and the verdict
 on the Jacobson upgrade. Label speculative steps loudly; this question has the
 highest hype-risk of the ten and therefore the highest honesty bar.
+
+## Addendum: the modular route
+
+Sharpen question 2 with the modular reading: continuum ANEC/QNEC positivity is
+provably an entanglement statement (modular theory + relative-entropy
+positivity), and Borchers-Wiesbrock half-sided modular inclusions generate null
+translations from modular flow of null cuts. The discrete conjecture on our
+table: null transport on the carrier = modular flow for (Krein structure +
+cut), and physical positivity = a discrete ANEC. If you engage it, give the
+finite-dimensional statement of the first nontrivial rung (the modular operator
+of a cut subalgebra vs the Krein form) - in finite dimensions Tomita-Takesaki
+is explicit, so this is decidable-shaped, not just poetic.

@@ -58,3 +58,14 @@ One minimal model with one computable dimensionless ratio and its
 theorem-statement; the hierarchy-mechanism verdict; the computable/free boundary
 stated crisply. A proof-shaped argument that NO ratio is computable without
 additional principles - identifying them - is equally valuable.
+
+## Addendum: the sqrt-mass observation (use it in question 3)
+
+Massive spinor-helicity pairs scale as sqrt(M): the sqrt-mass variables in which
+Koide is simplest are the NATIVE variables of our aperture slot, and Foot's
+observation makes Koide exactly an angle statement - Q = 2/3 iff the
+(sqrt(m_e), sqrt(m_mu), sqrt(m_tau)) vector makes a 45-degree angle with
+(1,1,1), i.e. a Gram/aperture-form condition on three composite states. When
+answering question 3, treat the angle form as the framework-native phrasing and
+say specifically which mechanisms could FORCE that angle (democracy-breaking
+chains? triality?) versus merely permit it.

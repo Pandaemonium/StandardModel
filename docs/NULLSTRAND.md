@@ -247,6 +247,16 @@ Gamma_s, chi_E, Phi_x
 plus compatibility laws. Do not claim that a bare graph canonically supplies a
 tetrad or finite null frame unless a separate theorem derives it.
 
+Sharper form of the same guardrail (recorded 2026-07-07 from the
+ontology-extensions memo, `Sources/Ontology_extensions.md` sec 6): in the
+continuum, causal order alone already determines the conformal class
+(Malament; Hawking-King-McCarthy), so the honest division of labor is -
+order data may be credited with the CONFORMAL structure, while decorations
+(the soldering Gram data) owe exactly the SCALE/volume factor, no more and no
+less (Sorkin: "order + number = geometry"). Emergence claims should say which
+half they address; "the tetrad emerges" conflates a free half with an owed
+half.
+
 ## Scaling and continuum tests
 
 Use this order:

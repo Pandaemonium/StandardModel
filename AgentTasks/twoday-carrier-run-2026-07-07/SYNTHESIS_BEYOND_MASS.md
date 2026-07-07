@@ -105,6 +105,36 @@ and Codex's "definitizable vs eigenbasis hypothesis" question - the quotient rou
 REPLACES the search for the right positivity hypothesis with a construction.
 Aristotle strategy job firing this cycle to ratify the exact rung statements.
 
+Two further selectors for V' (integrated 2026-07-07 from
+`Sources/Ontology_extensions.md` sec 2, routes b/c), to be compared against the
+constraint-kernel selector in ONE finite framework:
+
+- **The OS/reflection selector (STRATEGY, pre-registered).** Null edges give a
+  canonical causal reflection `theta` across a cut (reverse causal arrows).
+  Conjecture: the reflection form `<theta x, x>` built from the Krein structure
+  is positive semidefinite on the reflection-symmetric sector, and `D^#D`
+  descends positively to the OS quotient. Payoff if true: the reflection
+  positivity used for confinement (OS1 lane) and the Krein positivity needed
+  for mass are THE SAME THEOREM used twice - a lane unification. Sharp
+  witness-checkable sub-claim (new, this note): the fundamental symmetry is
+  the causal reflection - `J = Gamma` IS a reflection of null direction
+  (chirality = direction of motion in the checkerboard reading), so on the
+  kappa=2 witness "OS form = Krein form on the symmetric sector" is a finite
+  computation. Both quotient constructions (Gupta-Bleuler radical, OS null
+  vectors) are instances of one pattern - quotient a semidefinite sector by
+  its radical - differing only in how the sector is selected; that is the
+  right shared formal core to build once in Lean.
+- **The modular/entropic selector (SPECULATIVE, the deep version).** Continuum
+  counterpart: ANEC/QNEC positivity of null-directed energy is provably an
+  entanglement statement (modular theory + relative-entropy positivity), and
+  Borchers-Wiesbrock half-sided modular inclusions make null translations the
+  modular flow of null cuts. Discrete shadow worth chipping at: null transport
+  on the carrier = modular flow for (Krein structure + cut), and
+  physical-sector positivity = a discrete ANEC ("positivity of the mass form =
+  relative entropy positivity across a null cut"). Every ingredient is finite;
+  if even the shadow survives, positivity, entropy (sec on horizons), and
+  causality become one statement.
+
 ## 4. The action level: one trace, three couplings (+ gravity boundary term)
 
 Move 1 proved "unification is decomposition" at the equation-of-motion level. The
@@ -126,7 +156,12 @@ Einstein-Hilbert = torsion-scalar + boundary-term split should discretize as: on
 CLOSED complex (no boundary), `Tr E` is expressible purely in quadratic torsion
 contractions (the `2E = C(T) + C(S)` decomposition of the G-TELE thread); on a
 complex with boundary, the difference telescopes to the boundary - a discrete
-Gibbons-Hawking term. Checkable on the Z2 two-torus witness once the torsion
+Gibbons-Hawking term. Continuum anchors for the E-slot-sources-mass claim
+(per `Sources/Ontology_extensions.md` sec 1, to lit-verify on ingest): the TEGR
+boundary term is the one in Witten's positive-energy proof; Nester's
+quadratic-spinor positive-energy method; Maluf's teleparallel ADM energy as a
+surface integral of torsion - i.e. the continuum already computes MASS as a
+boundary torsion integral, which is exactly the E-slot's job description. Checkable on the Z2 two-torus witness once the torsion
 contraction identity lands. If true, the E-slot gives BOTH bulk gravity and its
 boundary term from one soldering-gradient - and the boundary term is where
 holography/entropy would enter the program.
@@ -177,6 +212,19 @@ generations"), and ask which graph data the ratio computes. Destri-de Vega
 generalized checkerboards are the higher-dimensional version. No claims; first toy
 first.
 
+The sqrt-mass observation (from `Sources/Ontology_extensions.md` sec 5; genuinely
+native to this framework): massive spinor-helicity pairs scale as sqrt(M), so the
+variables in which the empirical Koide relation is simplest (sqrt(m_e), sqrt(m_mu),
+sqrt(m_tau)) are the NATIVE variables of the aperture slot; and Foot's observation
+makes Koide literally an ANGLE statement - Q = 2/3 iff the sqrt-mass vector makes
+a 45-degree angle with the democratic vector (1,1,1). In our language that is a
+Gram/aperture-form statement about three composite states. FINITE IDENTITY target
+(cheap, zero physics risk): formalize `koide_iff_angle` - the equivalence between
+the Koide combination and the angle condition - as pure finite linear algebra,
+with the physics reading kept in prose. Whether any Q5 mechanism then FORCES the
+angle is the real (open, dangerous) question; the identity itself is safe and
+makes the discussion precise.
+
 ## 8. What to formalize next (ranked, with owners)
 
 1. **CRACK 3 quotient ladder rungs 1-2** (radical of the restricted form; gauge
@@ -196,6 +244,13 @@ first.
 6. **Checkerboard corner/turn identification** (sec 5) - Claude A/T lane.
 7. **Refinement/heat asymptotics frame** for the spectral action - literature
    round + strategy job before any Lean.
+8. **`koide_iff_angle` finite identity** (sec 7) - cheap, self-contained,
+   makes the sqrt-mass discussion exact with no physics claim.
+9. **Dirac charge quantization on the complex** (from
+   `Sources/Ontology_extensions.md` sec 6): integrality of the plaquette flux
+   cocycle (DeGrand-Toussaint decomposition), i.e. an `H^2(K, Z) -> H^2(K, U(1))`
+   integrality statement - eminently formalizable on the existing torus complex,
+   and it adds a fourth integer (the flux class) to the index-trinity picture.
 
 ## 9. One-paragraph status for outside readers
 

@@ -139,3 +139,32 @@ Format:
 - [ANSWERED call-01] 2-complex design fork -> purpose-built Z2xZ2 gauge torus (commuting
   shifts = add_comm, no boundary partiality); prose bridge to WilsonSlabConnected, not a
   bridge theorem. Beats causal-diamond reuse and the raw slab.
+- [QUEUE 2026-07-07 Claude, from Sources/Ontology_extensions.md sec 2b] OS/theta-
+  reflection selector for the positivity crux [pre-registered conjecture]: null
+  edges give a canonical causal reflection theta across a cut; the form
+  <theta x, x> from the Krein structure is positive semidefinite on the
+  reflection-symmetric sector and D^#D descends positively to the OS quotient.
+  Payoff: OS1-lane reflection positivity and carrier-lane Krein positivity become
+  ONE theorem used twice. Witness-checkable sub-claim: J = Gamma IS the causal
+  reflection (chirality = direction of motion), so "OS form = Krein form on the
+  symmetric sector" is a finite computation on the kappa=2 witness. Unblock =
+  ratify the theta definition on our complexes + whether this selector, the
+  Gupta-Bleuler constraint kernel, and retardedness pick the SAME quotient
+  (compare in one finite framework; Aristotle job 4338f235 asked the
+  constraint-kernel half - reconcile on harvest).
+- [QUEUE 2026-07-07 Claude, from Sources/Ontology_extensions.md sec 2c] Discrete
+  ANEC/modular reading of positivity [standing deep target, SPECULATIVE]: null
+  transport = modular flow for (Krein structure + null cut) (Borchers-Wiesbrock
+  shape); physical positivity = discrete ANEC = relative-entropy positivity
+  across a null cut. All ingredients finite. Not blocking anything; chip at it
+  across calls. Unblock = decomposition into finite lemmas (first candidate: the
+  finite-dim modular operator of a cut subalgebra vs the Krein form).
+- [QUEUE 2026-07-07 Claude, from Sources/Ontology_extensions.md secs 5-6] Two
+  cheap near targets proposed: (i) koide_iff_angle - the Koide combination
+  Q = 2/3 iff the sqrt-mass vector makes a 45-degree angle with (1,1,1) (Foot),
+  as a pure finite identity (sqrt-m are the aperture slot's native variables;
+  no physics claim in the Lean); (ii) Dirac charge quantization on the finite
+  complex = integrality of the plaquette flux cocycle (DeGrand-Toussaint;
+  H^2(K,Z) -> H^2(K,U(1))) on the existing torus complex - adds the flux class
+  as a fourth integer to the index-trinity frame. Unblock = ownership + ratify
+  statements (both are candidates for idle-cycle work, not critical path).

@@ -59,3 +59,16 @@ sketch at working-mathematician rigor + formalization ladder of 3-6 exact finite
 lemmas) OR a decisive counterexample showing our quotient route needs a stated
 repair hypothesis, plus the repaired route. Partial credit: the exact boundary
 between the two.
+
+## Addendum: a third selector to weigh
+
+Also on our table (pre-registered internally): the OS/reflection selector. Null
+edges give a canonical causal reflection theta across a cut; conjecture: the
+form <theta x, x> built from the Krein structure is positive semidefinite on the
+reflection-symmetric sector and D^#D descends positively to the OS quotient -
+which would make reflection positivity (which we already use for confinement)
+and Krein mass positivity one theorem used twice. Sub-claim: J = Gamma is itself
+the causal reflection (chirality = direction of motion). In your answer to
+question 2, please compare THREE selectors - constraint kernel, retardedness,
+theta-reflection - and state whether they yield the same quotient in finite
+dimensions, with a counterexample if not.
