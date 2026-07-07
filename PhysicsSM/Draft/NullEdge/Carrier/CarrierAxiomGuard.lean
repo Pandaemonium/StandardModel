@@ -204,6 +204,10 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralIndex_krein_pair
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.exists_protected_massless_mode' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.exists_protected_massless_mode
+
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.color_commutant_eq_scalars' depends on axioms: [propext, Classical.choice, Quot.sound] -/

@@ -158,4 +158,36 @@ theorem chiralIndex_krein_pair (Dp : E →ₗ[𝕜] F) (JE : E ≃ₗ[𝕜] E) (
 
 end InnerProduct
 
+section ProtectedMode
+
+variable {𝕜 : Type*} [RCLike 𝕜] {E F : Type*}
+  [NormedAddCommGroup E] [InnerProductSpace 𝕜 E]
+  [NormedAddCommGroup F] [InnerProductSpace 𝕜 F]
+  [FiniteDimensional 𝕜 E] [FiniteDimensional 𝕜 F]
+
+/-- **A protected massless chiral mode, exhibited.**  On a graded complex with
+unbalanced chirality (`dim M₋ < dim M₊`), EVERY carrier block `D₊ : M₊ → M₋` — any
+transport, any potential — annihilates some nonzero positive-chirality state: a
+massless mode no mass generation can remove (only changing the complex can).
+
+Honesty note: this exhibit-form is elementary rank-nullity and does not need the index
+machinery; the index content proper (`chiralIndex_adjoint_pair`,
+`chiralIndex_krein_pair`) is that the surplus count is EXACT and deformation-invariant,
+not merely nonzero. -/
+theorem exists_protected_massless_mode
+    (hdim : Module.finrank 𝕜 F < Module.finrank 𝕜 E) (Dp : E →ₗ[𝕜] F) :
+    ∃ ψ : E, ψ ≠ 0 ∧ Dp ψ = 0 := by
+  have h1 := LinearMap.finrank_range_add_finrank_ker Dp
+  have h2 : Module.finrank 𝕜 (LinearMap.range Dp) ≤ Module.finrank 𝕜 F :=
+    Submodule.finrank_le _
+  have hker : 0 < Module.finrank 𝕜 (LinearMap.ker Dp) := by omega
+  have hne : LinearMap.ker Dp ≠ ⊥ := by
+    intro hbot
+    rw [hbot, finrank_bot] at hker
+    exact lt_irrefl 0 hker
+  obtain ⟨ψ, hmem, hpsine⟩ := (Submodule.ne_bot_iff _).mp hne
+  exact ⟨ψ, hpsine, hmem⟩
+
+end ProtectedMode
+
 end PhysicsSM.Draft.NullEdge.Carrier
