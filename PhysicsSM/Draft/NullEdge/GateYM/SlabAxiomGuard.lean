@@ -39,6 +39,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.BindingMassQuantitative
 import PhysicsSM.Draft.NullEdge.GateI1.FradkinShenkerFinite
 import PhysicsSM.Draft.NullEdge.GrandMassCapstoneUnconditional
 import PhysicsSM.Draft.E8Root240NoNative
+import PhysicsSM.Draft.E8Root240Complete
 import PhysicsSM.Draft.E8DimensionBudget
 import PhysicsSM.Draft.NullEdge.GateYM.NNIndexExact
 import PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics
@@ -394,5 +395,11 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atTop_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atTop_zero
+
+/-! ## Batch wave 11 (final): E8-240 COMPLETENESS - E8RootSet = exactly the norm-2 E8-lattice vectors -/
+
+/-- info: 'PhysicsSM.Draft.E8Root240Complete.E8RootSet_eq_lattice_norm2' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.E8Root240Complete.E8RootSet_eq_lattice_norm2
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
