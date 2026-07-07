@@ -29,6 +29,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.ScreenArea
 import PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection
 import PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone
 import PhysicsSM.Draft.NullEdge.GateI1.G2Parity
+import PhysicsSM.Draft.NullEdge.GateI1.Q12Triality
 import PhysicsSM.Draft.NullEdge.GateI1.SplitSignatureMass
 import PhysicsSM.Draft.NullEdge.GateI1.MassAmplitudeCensus
 import PhysicsSM.Draft.NullEdge.GateI1.MultiTimeEmbedding
@@ -76,7 +77,8 @@ labeled co-location not coupling per the audit); plus the Q09 screen-area
 polarization module (`ScreenArea`) and the Q10 split-signature finite obstruction
 module (`SignatureSelection`); plus the Q12 G2-parity algebra core
 (`G2Parity`: diagonal XOR/Fano characters are automorphisms for arbitrary sign
-conventions, and strand parity has balanced 4+4 eigenspaces); plus the Q10-L5
+conventions, and strand parity has balanced 4+4 eigenspaces) and the Q12
+triality/convention-bridge finite gates (`Q12Triality`); plus the Q10-L5
 split-signature determinant identity (`SplitSignatureMass`); plus the Q10-L6
 finite same-chirality mass-amplitude census (`MassAmplitudeCensus`); plus the
 Q10 multi-time embedding obstruction (`MultiTimeEmbedding`); plus the Q09

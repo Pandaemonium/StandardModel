@@ -2751,3 +2751,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/MultiTimeEmbedding.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.MultiTimeEmbedding`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q12 triality/convention bridge finite gates landed
+- Harvested Aristotle project `85a73a6d`
+  (`ne-q12-triality-convention-bridge-audit-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean` and imported it from the
+  GateI1 aggregator.
+- Proved the finite T5-T8 package: certified octonion-sign checks including
+  `octSgn_alternative` and `octSgn_nonassoc`; diagonal triality/parity gates
+  `parity_triple`, `trialityTriple_conj`, and `parity_commutes_tau`; and the
+  abstract convention-bridge gates `bridge_via_perm`,
+  `bridge_trace_necessary`, and `bridge_kill_of_unbalanced`.
+- Claim boundary: PROVED finite algebra/operator gate only.  The specific repo
+  ladder/Furey bridge matrix `B`, physical quotient equivariance
+  `tau Gamma' = Gamma'`, per-sector index preservation, anomaly cancellation,
+  and physical chirality remain open.
+- Run docs updated: Q12 status in `THREAD_BOARD.md`; follow-up harvest status in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12Triality`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

@@ -70,6 +70,7 @@ The first named wave has now been mostly harvested into the live repo:
 - `825853b9` Q10 multi-time embedding: landed `MultiTimeEmbedding.lean`.
 - `c2e23b53` Q12 charge resolution: landed `ChargeResolution.lean`.
 - `e2df3555` Q11 B-L dictionary: landed `Q11BLDictionary.lean`.
+- `85a73a6d` Q12 triality bridge: landed `Q12Triality.lean`.
 
 ## Follow-up wave submitted after harvest
 
@@ -97,9 +98,12 @@ completed and was harvested into `ChargeResolution.lean`, proving the finite
 charge-sector additivity/cannot-hide/direct-sum bookkeeping package.
 `e2df3555` completed and was harvested into `Q11BLDictionary.lean`, proving the
 finite B-L/RC0 dictionary without the compiler-eval trust footprint of the
-standalone Aristotle version.  These should still be treated as finite
-diagonal-signature/accounting/Cartan arithmetic only; the general
+standalone Aristotle version.  `85a73a6d` completed and was harvested into
+`Q12Triality.lean`, proving the finite T5-T8 triality/intertwiner/abstract
+bridge and bridge-kill criteria.  These should still be treated as finite
+diagonal-signature/accounting/Cartan/triality arithmetic only; the general
 Sylvester-inertia bridge, analytic or operator-level equivariant
-McKean-Singer, anomaly-gate promotion, and the group-level RC0 determinant
-cocycle remain open.  The other follow-up projects remain active unless later
-status checks say otherwise.
+McKean-Singer, anomaly-gate promotion, specific repo ladder bridge matrix,
+physical quotient equivariance, and the group-level RC0 determinant cocycle
+remain open.  The other follow-up projects remain active unless later status
+checks say otherwise.

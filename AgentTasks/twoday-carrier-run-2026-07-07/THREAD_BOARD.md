@@ -595,21 +595,29 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   stronger finite charge-resolution package: `superTrace_eq_sum_sector`,
   `superTrace_eq_zero_of_sectors`, `sector_failure_not_hidden`,
   `sdim_eq_sum_chargeIndex`, `chargeIndex_failure_not_hidden`, and
-  `superTrace_blockDiagonal'`.
-- **Status:** PROVED algebraic T1-T4 plus finite PSA-1 and sector-additivity
-  accounting identities only.
+  `superTrace_blockDiagonal'`. Aristotle follow-up `85a73a6d` was harvested
+  into `PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean`, proving the finite
+  T5-T8 operator gates: `octSgn_alternative`, `octSgn_nonassoc`,
+  `parity_triple`, `trialityTriple_conj`, `parity_commutes_tau`,
+  `bridge_via_perm`, `bridge_trace_necessary`, and
+  `bridge_kill_of_unbalanced`.
+- **Status:** PROVED algebraic T1-T8 finite core plus finite PSA-1 and
+  sector-additivity accounting identities only.
   This confirms the G2-parity defusal at the XOR/Fano algebra level and removes
   sign-convention risk from the automorphism claim; PSA-1 gives the per-sector
-  determinant/supertrace check, and ChargeResolution gives only finite
-  partition-by-label and direct-sum bookkeeping. These results do not prove an
-  analytic/equivariant index theorem behind a physical anomaly statement.
-- **Next:** T5/T6/T7 require explicit triality intertwiners and their
-  G2-equivariance; T8 requires the convention bridge
-  `(-1)^F_c = B phi B^{-1}` between the ladder/Furey basis and XOR/Fano basis;
-  T9/E4 requires constraint equivariance `tau Gamma' = Gamma'` before any
-  per-sector physical quotient count. The remaining PSA gap is now the analytic
-  or operator-level equivariant McKean-Singer theorem, not finite additivity.
-  Failure of T8 is a C8-seam escalation, not a patch.
+  determinant/supertrace check; ChargeResolution gives finite
+  partition-by-label and direct-sum bookkeeping; Q12Triality gives finite
+  triality/parity commutation and abstract bridge/kill criteria. These results
+  do not prove an analytic/equivariant index theorem behind a physical anomaly
+  statement.
+- **Next:** T8 still needs the *specific repo* ladder/Furey bridge matrix `B`
+  checked entry-wise against the actual ladder ordering/signs; the landed
+  theorem only proves the benign permutation case and trace/signature kill
+  condition. T9/E4 requires constraint equivariance `tau Gamma' = Gamma'`
+  before any per-sector physical quotient count. The remaining PSA gap is now
+  the analytic or operator-level equivariant McKean-Singer theorem, not finite
+  additivity. Failure of the specific-`B` bridge is a C8-seam escalation, not a
+  patch.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.
