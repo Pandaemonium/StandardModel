@@ -76,7 +76,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one`:
   the corrected KP/self-incompatibility input pair at `alpha = 1` under the
   explicit coefficient threshold `|tanh beta| <= exp(-1)`. This is a finite
-  rung only; volume-uniform KP convergence and SU(2) remain OPEN.
+  rung only; volume-uniform KP convergence and SU(2) remain OPEN. Aristotle
+  OS1 task `7a3c2d21` exceeded the 2-hour rule and was canceled; a concise
+  handoff-only continuation was requested in project `5e39556a`.
 
 ### QC - the Q_C identification at leading order [Codex; THE Move-2 crux]
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in
@@ -152,6 +154,44 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   pins the line-charge lemmas plus the center-shift action laws. Still OPEN:
   non-vacuous electric-sector witness and the deferred configuration-to-
   `TwistSystem` partition bridge.
+### PBW-EXH - exhaustiveness as a PBW/rewriting theorem [Claude-led, Fable-gated]
+- **Done:** W2c/graded-exhaustiveness restated as a finite normal-form theorem:
+  the free carrier algebra on `{gamma_e, nabla_e, phi}`, modulo the stated
+  Clifford, transport, and chirality relations, has `D^#D` components only in
+  the ranked slot bidegrees `(2,0)`, `(0,2)`, `(0,0)`, and `(1,1)`; every
+  relaxed relation adds exactly the named extra normal-form family.
+- **Status:** PARKED as the post-Move-1 framing for W2c. Do not spend proof
+  effort before the concrete carrier glue/identification layer lands; use this
+  as the statement-shape rail when W2c is drafted.
+### MS-INDEX - McKean-Singer / spectral-action carrier frame [shared, parked]
+- **Done:** a finite-dimensional McKean-Singer shadow for the carrier is stated
+  honestly (`Str exp(-t D^#D)` constant in `t` and equal to an index under
+  explicit grading hypotheses), with no continuum spectral-action conclusion
+  claimed; used only as an ambient dictionary for later coefficient work.
+- **Status:** PARKED behind the carrier capstone. Fable ranks it as high-level
+  synthesis, not a day-1/day-2 proof lane unless a later call promotes it.
+### SPIN-AP - spin as the next aperture invariant [shared, stretch]
+- **Done:** a ratified finite linear-algebra statement for the two-null-edge
+  aperture sector: single edge gives a helicity-style invariant, two-edge
+  aperture carries the massive little-group `SU(2)`/Pauli-Lubanski shadow; the
+  spin-statistics theorem remains explicitly out of scope.
+- **Status:** PARKED stretch. This is the preferred next non-mass invariant after
+  the carrier mass capstone, because it builds on the proved aperture mass
+  theorem; no current proof spend until critical-path threads are banked.
+### CHARGE-Q - finite charge quantization and center background [Codex, stretch]
+- **Done:** finite charge quantization is isolated as a cohomology/integrality
+  target on a finite 2-complex, connected to the one-form center-symmetry lane
+  without claiming a continuum Ward identity, anomaly, spontaneous breaking, or
+  derived gauge group.
+- **Status:** PARKED behind C-1FORM's non-vacuous electric-sector witness. The
+  near target is a precise `H^2(K, Z) -> H^2(K, U(1))`/plaquette-flux integrality
+  statement, not a physical charge-spectrum theorem.
+### DDV-CONT - interacting light-cone lattice control case [research, parked]
+- **Done:** Destri-de Vega light-cone lattice is recorded as the interacting
+  1+1d continuum-control case for null-line dynamics, to be used for literature
+  grounding and future statement design.
+- **Status:** PARKED research. Do not route Lean proof time here during the
+  carrier run unless a Fable call explicitly promotes it.
 ### TY-LINEAGE - audit the 0808.3442 dependency [Codex, small]
 - **Done:** a written verdict in the ledger + affected docstrings: does our TY
   route depend on disputed decimation results, or only on the rigorous 1985 RP

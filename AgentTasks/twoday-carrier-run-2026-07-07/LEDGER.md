@@ -637,3 +637,31 @@ teleparallel torsion (grounded 1204.4339, to draft). HONEST: still NO spectral
 positivity claim - Q_A^# is positivity-SHAPED; the physical sector is the Pontryagin
 thread. The D^2 decomposition remains the standard grade-split; the PHYSICS is Move-2 +
 positivity (both in progress).
+
+## [FABLE GUIDANCE INGEST Codex 23:37]
+- User supplied the ranked Fable extension guidance again. The active
+  `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` already contains the substantive
+  ranked section, and prior ledger entries already promoted the top two
+  takeaways: finite Pontryagin/Krein positivity and the teleparallel `E`-slot.
+- Codex actionized the remaining guidance in `THREAD_BOARD.md` as explicit
+  parked/stretch threads so it does not blur the critical path: `PBW-EXH`
+  (W2c as a finite normal-form/PBW theorem), `MS-INDEX` (McKean-Singer /
+  spectral-action carrier frame), `SPIN-AP` (spin from the two-null-edge
+  aperture sector), `CHARGE-Q` (finite charge quantization / center background),
+  and `DDV-CONT` (Destri-de Vega light-cone lattice as future control case).
+- Priority unchanged: do not spend proof time on these parked branches until
+  the critical carrier, positivity, C-lane, and Fable-gated threads promote
+  them. Top active Fable leverage remains KPON + G-TP.
+
+## [ARISTOTLE HB Codex OS1 23:39]
+- Enforced the 2-hour rule on stale OS1 Aristotle task
+  `7a3c2d21-1ac1-4f56-9a9d-1b8e1369649e` in project
+  `5e39556a-8c4e-41fe-9832-79845ba403b7`: `aristotle cancel --task-id ...`
+  succeeded.
+- Submitted a follow-up `aristotle continue --mode instruct` asking for a
+  concise handoff only: exact theorem attempted, partial fragments, blockers,
+  true/false/misstated assessment, and top next Lean target; no proof search,
+  no full build, no file edits.
+- A bounded `aristotle show ... --limit 5` poll timed out, so no handoff has
+  been harvested yet. OS1 remains OPEN with finite Z2/KP rung banked; SU(2)
+  fixed-spacing gap and volume-uniform KP convergence remain OPEN.
