@@ -55,15 +55,12 @@ the frustrated triple exists for every symmetric bilinear form / quadratic form
 whose inertia contains a `(2,2)` block, in a basis-independent way, and this
 reduces to the diagonal witness.
 
-The residual **obstruction / honest gap** is *not* algebraic: turning the
-intrinsic inertia hypothesis "signature has `p ≥ 2` and `q ≥ 2`" into the
-`(2,2)` orthogonal system used here relies on Sylvester's law (available) plus,
-for a fully intrinsic *count* hypothesis, the invariance of the inertia indices
-(the classical "law of inertia" numerical invariant).  We therefore phrase the
-top-level hypotheses as the existence of the `(2,2)` orthogonal system / the
-Sylvester equivalence with two positive and two negative weights — both are
-faithful, basis-free renderings of "inertia contains `(2,2)`" and require no
-unproved invariance lemma.  The *physical* reading (multi-time signatures fail
+The intrinsic numerical theorem below phrases the usual "positive index
+`p ≥ 2` and negative index `q ≥ 2`" condition by its basis-free witness form:
+there are two-dimensional positive- and negative-definite subspaces.  Mathlib
+does not currently expose a named inertia-index API, so the proof uses
+Sylvester existence plus elementary one-sided dimension bounds for diagonal
+weighted sums of squares.  The *physical* reading (multi-time signatures fail
 stable retardation) remains a MEMO-grade interpretation, unchanged from Q10.
 
 Provenance: bridges `MultiTimeEmbedding.lean`, `SignatureSelection.lean`,
@@ -343,6 +340,140 @@ theorem sylvester_frustrated_triple
   exact quadraticForm_frustrated_of_equivalent Q w f i0 i1 j0 j1
     h01 h02 h03 h12 h13 h23 hi0 hi1 hj0 hj1
 
+/-! ## 2b. Intrinsic numerical inertia-index bridge (`p ≥ 2`, `q ≥ 2`)
+
+The statements above take the `(2,2)` block, or the Sylvester equivalence with
+two positive and two negative weights, as a hypothesis.  The genuinely
+intrinsic numerical form is: the positive index is at least `2` and the
+negative index is at least `2`.  We render this in the witness form Mathlib can
+state directly: subspaces `P` and `N` of dimension at least `2` on which `Q` is
+positive- respectively negative-definite.
+
+This needs no external numerical invariance theorem for inertia indices.  The
+proof uses Mathlib's Sylvester existence theorem and the elementary one-sided
+dimension bounds below for diagonal weighted sums of squares. -/
+
+/-- **Positive-inertia one-sided bound (diagonal model).**  A subspace of the
+coordinate space on which a weighted sum of squares is positive definite has
+dimension at most the number of strictly positive weights. -/
+theorem weightedSumSquares_finrank_le_card_pos {ι : Type*} [Fintype ι]
+    (w : ι → ℝ) (P : Submodule ℝ (ι → ℝ))
+    (hP : ∀ x ∈ P, x ≠ 0 → 0 < weightedSumSquares ℝ w x) :
+    Module.finrank ℝ P ≤ (Finset.univ.filter (fun i => 0 < w i)).card := by
+  set S := Finset.filter (fun i => 0 < w i) Finset.univ with hS_def
+  set L : (ι → ℝ) →ₗ[ℝ] (S → ℝ) :=
+    LinearMap.pi (fun i => LinearMap.proj i.val) with hL_def
+  have h_inj : LinearMap.ker (L.comp (Submodule.subtype P)) = ⊥ := by
+    rw [LinearMap.ker_eq_bot']
+    intro m hm
+    specialize hP m m.2
+    contrapose! hP
+    simp_all +decide [funext_iff, LinearMap.ext_iff]
+    exact Finset.sum_nonpos fun i _ =>
+      if hi : 0 < w i then by
+        simp +decide [hm i hi]
+      else by
+        nlinarith [mul_self_nonneg (m.val i)]
+  have := LinearMap.finrank_range_of_inj (LinearMap.ker_eq_bot.mp h_inj)
+  exact this ▸ le_trans (Submodule.finrank_le _) (by simp +decide)
+
+/-- **Negative-inertia one-sided bound (diagonal model).**  A subspace of the
+coordinate space on which a weighted sum of squares is negative definite has
+dimension at most the number of strictly negative weights. -/
+theorem weightedSumSquares_finrank_le_card_neg {ι : Type*} [Fintype ι]
+    (w : ι → ℝ) (N : Submodule ℝ (ι → ℝ))
+    (hN : ∀ x ∈ N, x ≠ 0 → weightedSumSquares ℝ w x < 0) :
+    Module.finrank ℝ N ≤ (Finset.univ.filter (fun i => w i < 0)).card := by
+  contrapose! hN
+  obtain ⟨x, hxN, hx0⟩ :
+      ∃ x ∈ N, x ≠ 0 ∧
+        ∀ i ∈ Finset.univ.filter (fun i => w i < 0), x i = 0 := by
+    have h_kernel : Module.finrank ℝ (LinearMap.ker
+        (LinearMap.pi (fun i : {i : ι | w i < 0} => LinearMap.proj i.val) |>
+          LinearMap.comp <| Submodule.subtype N)) > 0 := by
+      have := LinearMap.finrank_range_add_finrank_ker
+        (LinearMap.pi (fun i : {i : ι | w i < 0} => LinearMap.proj i.val) |>
+          LinearMap.comp <| Submodule.subtype N)
+      linarith [show Module.finrank ℝ (LinearMap.range
+          (LinearMap.pi (fun i : {i : ι | w i < 0} => LinearMap.proj i.val) |>
+            LinearMap.comp <| Submodule.subtype N)) ≤
+          Finset.card (Finset.filter (fun i => w i < 0) Finset.univ) from
+        le_trans (Submodule.finrank_le _) (by simp +decide [Fintype.card_subtype])]
+    obtain ⟨x, hx⟩ :
+        ∃ x : ↥N, x ∈ LinearMap.ker
+          (LinearMap.pi (fun i : {i : ι | w i < 0} => LinearMap.proj i.val) |>
+            LinearMap.comp <| Submodule.subtype N) ∧ x ≠ 0 := by
+      simpa [Submodule.ne_bot_iff] using h_kernel.ne'
+    exact ⟨x, x.2, by simpa using hx.2,
+      fun i hi => by simpa using congr_fun hx.1 ⟨i, by simpa using hi⟩⟩
+  refine ⟨x, hxN, hx0.1, ?_⟩
+  simp +decide [QuadraticMap.weightedSumSquares_apply]
+  exact Finset.sum_nonneg fun i _ =>
+    if hi : w i < 0 then by
+      simp +decide [hx0.2 i (by simpa using hi)]
+    else by
+      nlinarith [sq_nonneg (x i)]
+
+/-- **Intrinsic Sylvester-inertia bridge (`p ≥ 2`, `q ≥ 2`).**  Let `Q` be a
+real quadratic form on a finite-dimensional space.  If there is a subspace `P`
+of dimension at least `2` on which `Q` is positive definite and a subspace `N`
+of dimension at least `2` on which `Q` is negative definite, then `Q` carries a
+frustrated null triple.
+
+This is the fully intrinsic, basis-free, numerical-index form of the bridge:
+the hypotheses are exactly `p ≥ 2` and `q ≥ 2` phrased through witnessing
+definite subspaces. -/
+theorem sylvester_frustrated_triple_of_indices [FiniteDimensional ℝ V]
+    (Q : QuadraticForm ℝ V)
+    (P N : Submodule ℝ V)
+    (hP2 : 2 ≤ Module.finrank ℝ P)
+    (hN2 : 2 ≤ Module.finrank ℝ N)
+    (hPpos : ∀ x ∈ P, x ≠ 0 → 0 < Q x)
+    (hNneg : ∀ x ∈ N, x ≠ 0 → Q x < 0) :
+    FrustratedTriple Q := by
+  obtain ⟨w, _hw, ⟨f⟩⟩ := Q.equivalent_one_zero_neg_one_weighted_sum_squared
+  have h_card_pos : 2 ≤ (Finset.univ.filter (fun i => 0 < w i)).card := by
+    have h_card_pos :
+        Module.finrank ℝ (Submodule.map f.toLinearEquiv.toLinearMap P) ≤
+          (Finset.univ.filter (fun i => 0 < w i)).card := by
+      apply weightedSumSquares_finrank_le_card_pos w
+        (Submodule.map f.toLinearEquiv.toLinearMap P)
+      simp +zetaDelta at *
+      intro x hx hx'
+      specialize hPpos (f.symm x) hx
+      simp_all +decide [QuadraticMap.IsometryEquiv.map_app]
+    exact le_trans hP2 (by
+      rw [LinearEquiv.finrank_map_eq] at h_card_pos
+      exact h_card_pos)
+  have h_card_neg : 2 ≤ (Finset.univ.filter (fun i => w i < 0)).card := by
+    have h_card_neg :
+        Module.finrank ℝ (Submodule.map f.toLinearEquiv.toLinearMap N) ≤
+          (Finset.univ.filter (fun i => w i < 0)).card := by
+      apply weightedSumSquares_finrank_le_card_neg
+      simp +decide
+      intro x hx hx'
+      specialize hNneg (f.symm x) hx
+      simp_all +decide [QuadraticMap.IsometryEquiv.map_app]
+    refine le_trans ?_ h_card_neg
+    rw [LinearEquiv.finrank_map_eq]
+    aesop
+  obtain ⟨i0, i1, hi0, hi1, _h_distinct⟩ :
+      ∃ i0 i1 : Fin (Module.finrank ℝ V), i0 ≠ i1 ∧ 0 < w i0 ∧ 0 < w i1 := by
+    obtain ⟨i0, hi0, i1, hi1, _hne⟩ := Finset.one_lt_card.mp h_card_pos
+    use i0, i1
+    aesop
+  obtain ⟨j0, j1, hj0, hj1, _h_distinct'⟩ :
+      ∃ j0 j1 : Fin (Module.finrank ℝ V), j0 ≠ j1 ∧ w j0 < 0 ∧ w j1 < 0 := by
+    obtain ⟨j0, hj0, j1, hj1, _h⟩ := Finset.one_lt_card.mp h_card_neg
+    use j0, j1
+    aesop
+  apply quadraticForm_frustrated_of_equivalent Q w f i0 i1 j0 j1
+  all_goals try assumption
+  · grind
+  · grind
+  · grind
+  · grind
+
 /-! ## 3. Recovery of the diagonal `sigDot` obstruction -/
 
 /-- The diagonal coordinate bilinear form attached to a sign vector,
@@ -424,6 +555,10 @@ theorem sigDot_frustrated_triple {n : ℕ} (s : Fin n → ℝ)
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SylvesterInertiaBridge.quadraticForm_frustrated_of_equivalent' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms quadraticForm_frustrated_of_equivalent
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SylvesterInertiaBridge.sylvester_frustrated_triple_of_indices' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms sylvester_frustrated_triple_of_indices
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SylvesterInertiaBridge.sigDot_frustrated_triple' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

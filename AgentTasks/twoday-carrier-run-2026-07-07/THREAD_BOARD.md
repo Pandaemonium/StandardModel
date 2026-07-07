@@ -677,13 +677,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   from an orthogonal `(+,+,-,-)` block,
   `quadraticForm_frustrated_of_equivalent` transports the obstruction across a
   Sylvester equivalence, and `sigDot_frustrated_triple` recovers the diagonal
-  witness.
+  witness.  Follow-up `bcf263f0` is now harvested into the same file:
+  `weightedSumSquares_finrank_le_card_pos/neg` prove the one-sided diagonal
+  inertia bounds, and `sylvester_frustrated_triple_of_indices` proves the
+  intrinsic witness form of `p >= 2`, `q >= 2` using positive- and
+  negative-definite subspaces.
 - **Status:** PROVED finite Lorentzian half plus finite general multi-time
   obstruction stack. This now closes the finite stable-order signature rail at
-  the diagonal-signature and Sylvester-equivalent levels: Lorentzian `(1,m)` has
-  positive-pairing transitivity, while a form carrying a `(+,+,-,-)` orthogonal
-  block has a frustrated triple. The remaining algebraic cleanup is the fully
-  intrinsic numerical-index theorem phrased directly as `p >= 2` and `q >= 2`.
+  the diagonal-signature, Sylvester-equivalent, and intrinsic witness-subspace
+  levels: Lorentzian `(1,m)` has positive-pairing transitivity, while any
+  finite real quadratic form with two-dimensional positive and negative
+  definite subspaces has a frustrated triple.
   Any dimension-selection claim still needs separate chirality and
   scalar-amplitude reconstruction. L6 still
   needs the full Spin/Weyl representation stack before it can be stated as a
@@ -691,13 +695,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `Hom_Spin(S tensor S, 1)` classification.
 - **Aristotle:** harvested named lanes Q10-L3 (`dbe113e5`), Q10-L5
   (`3a66e413`), Q10-L6 (`7fd8a9bf`), Q10 multi-time embedding
-  (`825853b9`), and Q10 Sylvester-inertia bridge (`9d61e305`); see
+  (`825853b9`), Q10 Sylvester-inertia bridge (`9d61e305`), and Q10
+  inertia-index bridge (`bcf263f0`); see
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
 - **Claim boundary:** never phrase this as "retardation on one finite complex
-  implies Lorentzian" or "3+1 follows from consistency alone." The new theorem
-  assumes either a diagonalized sign-vector model or the explicit Sylvester
-  equivalence/orthogonal-block hypotheses. Q10's boundary is signature from
-  stable order; dimension from chirality plus scalar-amplitude reconstruction.
+  implies Lorentzian" or "3+1 follows from consistency alone." The strongest
+  new theorem assumes explicit positive- and negative-definite subspace
+  witnesses; it does not prove the physical stable-order premise or any
+  dimension-selection claim. Q10's boundary is signature from stable order;
+  dimension from chirality plus scalar-amplitude reconstruction.
 
 ### G2-PARITY-CHIRALITY-SOLDER - Q12 algebra core and operator gates [Codex solo; new Q12 lane]
 - **Done:** Aristotle audit `0a6239d5` completed. Codex integrated the
@@ -848,10 +854,14 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   (`9af1d5fb`), Q04 octonion/Fock bridge audit (`dbe3850c`), and P1
   claim-grade audit (`2170a1f9`). The returned `5bdce729`, `e3f3ae61`,
   `d32e8150`, `ed700b2a`, `2170a1f9`, `dbe3850c`, `cdba6caa`, and `f962cbe7`
-  harvests are now integrated, recorded, or acted on.  Current poll shows
-  `bcf263f0`, `9af1d5fb`, and `ec1ad7d5` still running; `26fa682c` has now
-  been harvested into the Q08 LGV obstruction.  Refill wave submitted after
-  that harvest: `aa4e48f6` Q11 Jacobi/Cauchy-Binet, `7b99f3b8` Q04 sign-gauge,
+  harvests are now integrated, recorded, or acted on.  Subsequent harvests
+  integrated Q01 positive-sector witness/no-go (`ec1ad7d5`), Q06
+  transfer-power bridge (`a1534a69`), Q09 A9.1 degeneracy/invariance
+  (`7de21ba8`), and Q10 intrinsic inertia-index bridge (`bcf263f0`).  The
+  current unharvested set is Q04 sign-gauge, Q04 ConventionBridge, Q08
+  scattering-DAG, the manuscript postfix audit (completed with errors), and the
+  still-running Q11/Q12/RG-Schur lanes.  Refill wave submitted after that
+  harvest: `aa4e48f6` Q11 Jacobi/Cauchy-Binet, `7b99f3b8` Q04 sign-gauge,
   `b6b128d4` Q04 ConventionBridge, `2c7ddcf1` Q08 scattering-DAG,
   `7de21ba8` Q09 Reeh/ScreenArea, `a1534a69` Q06 symbol-to-carrier,
   `381cc4cf` Q12 genuine-triality audit, `1b3c2203` Q12 C8 bridge gates, and

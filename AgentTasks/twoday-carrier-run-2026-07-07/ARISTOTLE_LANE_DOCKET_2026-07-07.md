@@ -453,7 +453,32 @@ Reeh-Schlieder/screen-area completion, and `bcf263f0` Q10 inertia-index bridge.
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
 
-The remaining harvest-first jobs after this integration are `7b99f3b8` Q04
+The remaining harvest-first jobs after this integration were `7b99f3b8` Q04
 sign-gauge, `b6b128d4` Q04 ConventionBridge, `2c7ddcf1` Q08 scattering-DAG
 LGV, and `bcf263f0` Q10 inertia-index bridge.  Running lanes at last poll:
 `aa4e48f6`, `381cc4cf`, `1b3c2203`, `bd50e825`, and `9af1d5fb`.
+
+## Harvest from Q10 intrinsic inertia-index bridge
+
+- `bcf263f0`
+  (`ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`) returned
+  the missing intrinsic witness-subspace form of the Sylvester-inertia theorem.
+  Codex integrated it into
+  `PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean`.
+- New proved declarations:
+  `weightedSumSquares_finrank_le_card_pos`,
+  `weightedSumSquares_finrank_le_card_neg`, and
+  `sylvester_frustrated_triple_of_indices`.
+- Claim boundary: the theorem now proves finite real algebra from explicit
+  positive- and negative-definite subspace witnesses (`p >= 2`, `q >= 2` in
+  basis-free form).  It still does not prove the physical stable-order premise,
+  Lorentzian uniqueness from dynamics, or any dimension-selection claim.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SylvesterInertiaBridge`.
+
+Remaining harvest-first jobs after this integration: `7b99f3b8` Q04 sign-gauge,
+`b6b128d4` Q04 ConventionBridge, `2c7ddcf1` Q08 scattering-DAG LGV, and
+`bd50e825` manuscript postfix audit (completed with errors; inspect as
+audit-only).  Still running at the latest poll: `aa4e48f6`, `381cc4cf`,
+`1b3c2203`, and `9af1d5fb`.

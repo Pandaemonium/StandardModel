@@ -161,7 +161,7 @@ record why the row is parked.
 | Q07 | Koide / T-solder | tetrahedral corner probe, kappa and Hessian gates | audit/strategy |
 | Q08 / FOCK-GB | Exterior Fock / checkerboard | graded radical assembly and corrected LGV-compatible DAG | active strategy, then proof follow-ups |
 | Q09 | Horizon / screen area | finite Reeh gate and BW-cut witness after the A9.1 degeneracy/invariance landing | strategy/audit, then proof only after hypotheses are exact |
-| Q10 | Signature / dimension | intrinsic inertia-index wording and scalar-amplitude reconstruction | active proof, then classification strategy |
+| Q10 | Signature / dimension | scalar-amplitude reconstruction and stable-order boundary audit after the intrinsic inertia-index landing | classification strategy/audit |
 | Q11 | `J_R` / KO / RC0 | Jacobi/Cauchy-Binet cleanup, order-condition uniqueness | active proof, then integration audit |
 | Q12 | Chirality-solder / C8 / anomaly | non-permutation Furey bridge, triality wording, PSA-2/3 | active proof/audit, then sector gates |
 | RG-SCHUR | Coarse-graining | Schur determinant and structure stability, then nilpotency failure audit | active proof |
@@ -188,18 +188,19 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
   `ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`,
   `ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`,
   `ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`,
-  `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`,
   `ne-rg-schur-krein-gamma-stability-proof-20260707`.
 - **Harvest-first before more refill:** the latest poll shows these newer jobs
   `IDLE` and ready to inspect: `ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707`,
   `ne-q04-conventionbridge-baez-xor-product-law-proof-20260707`,
   `ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707`, and
-  `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`.  Harvest
-  these before opening additional lanes.
+  `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`
+  (completed with errors; treat as audit-only until inspected).  Harvest these
+  before opening additional lanes.
 - **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
   Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
   kill, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
   transfer-power bridge, Q09 screen-area degeneracy/invariance completion,
+  Q10 intrinsic inertia-index bridge,
   Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
   Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q04 octonion/Fock
   convention audit, Q12 C8 compatibility audit, Q11 RC0 determinant-cocycle
@@ -298,11 +299,13 @@ adversarial audits for recently landed or high-risk claims.
    ladder first: definite-no-null, the `Z^(2,2)` frustrated-triple obstruction,
    Lorentzian positive-pairing transitivity, null-orthogonality rigidity,
    split-signature tachyonic witnesses, and the same-chirality scalar-amplitude
-   census.  The Sylvester-equivalent bridge is now landed; next close the
-   intrinsic numerical-index wording (`p >= 2`, `q >= 2`) if needed.  Never
-   claim "3+1 from consistency alone"; use the Q10 boundary: signature is a
-   theorem about stable order, dimension is conditional on the named chirality
-   and scalar-amplitude axioms.
+   census.  The Sylvester-equivalent bridge and intrinsic numerical-index
+   witness form (`p >= 2`, `q >= 2` via positive/negative definite subspaces)
+   are now landed; next targets are stable-order semantic audits and the
+   scalar-amplitude reconstruction/classification ladder.  Never claim "3+1
+   from consistency alone"; use the Q10 boundary: signature is a theorem about
+   stable order, dimension is conditional on the named chirality and
+   scalar-amplitude axioms.
 3. **Q11 real-structure / KO / unimodularity seam.** Develop the explicit
    `J_R` construction on `Lambda(C^5)`, the sign tables, positive internal
    form, KO placement, RC0/unimodularity equivalence, B-L counterexample,

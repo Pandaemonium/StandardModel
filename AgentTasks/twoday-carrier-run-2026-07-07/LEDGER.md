@@ -3194,3 +3194,30 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Remaining harvest-first jobs: Q04 sign-gauge `7b99f3b8`, Q04
   ConventionBridge `b6b128d4`, Q08 scattering-DAG `2c7ddcf1`, and Q10
   inertia-index bridge `bcf263f0`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q10 intrinsic inertia-index bridge landed
+
+- Harvested Aristotle project `bcf263f0`
+  (`ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`).
+- Integrated the returned intrinsic theorem into
+  `PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean`.
+  New proved declarations:
+  `weightedSumSquares_finrank_le_card_pos`,
+  `weightedSumSquares_finrank_le_card_neg`, and
+  `sylvester_frustrated_triple_of_indices`.
+- Q10 claim boundary: the finite real-algebra bridge is now proved from
+  explicit positive- and negative-definite subspace witnesses, the basis-free
+  witness form of `p >= 2` and `q >= 2`.  This closes the intrinsic algebraic
+  wording gap, but it does not prove a physical stable-order premise,
+  Lorentzian uniqueness from dynamics, "3+1 from consistency alone", or a
+  Spin/Weyl scalar-amplitude classification.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`, and
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md` to remove Q10 from harvest-first and
+  move the next work to scalar-amplitude reconstruction and boundary audits.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SylvesterInertiaBridge`.
+- Remaining harvest-first jobs: Q04 sign-gauge `7b99f3b8`, Q04
+  ConventionBridge `b6b128d4`, Q08 scattering-DAG `2c7ddcf1`, and the
+  manuscript postfix audit `bd50e825` (completed with errors; inspect as
+  audit-only).
