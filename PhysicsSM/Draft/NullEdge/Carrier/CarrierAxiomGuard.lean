@@ -11,6 +11,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierApertureIdentification
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierFlatSectorPositivity
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierPontryaginWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
+import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -215,6 +216,30 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_forced_massless_mode' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_forced_massless_mode
+
+/-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
+    (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard
+    verification with the edge-reversal grading (Q06 harvest, job 4043f341) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.gw_of_involution_inverts' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.gw_of_involution_inverts
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.deformed_symmetry' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.deformed_symmetry
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.gamma5_hermiticity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.gamma5_hermiticity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.checkerboard_verification' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.checkerboard_verification
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.transfer_mul_inv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.transfer_mul_inv
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 

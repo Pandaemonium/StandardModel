@@ -2286,3 +2286,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Pre-submission debts carried forward explicitly: celestial artifact
   promotion-or-appendix; SL(2,C) convention review; the two flagged
   citation verifications (Wilczek essay, Koide original).
+
+## [HB Claude c35] GW-RETARDED-TRANSFER HARVESTED AND LANDED (frontier piece: the checkerboard-GW paper core)
+- Job 4043f341 returned complete; semantic review passed (inverse certified
+  independently via transfer_mul_inv under c^2+s^2=1; grading an explicit
+  signed permutation; nothing rigged). Landed as
+  `PhysicsSM/Draft/NullEdge/Carrier/GWRetardedTransfer.lean`; 5 new guards;
+  guard build green (8041 jobs). Contents: GW-1 in ANY ring
+  (G*D + D*G = D*G*D from G^2=1 and GVG = V^{-1}; footprint
+  [propext, Quot.sound] - no choice!); Luscher's deformed one-step symmetry
+  EXACT with no correction terms (D*Ghat = -G*D); gamma5-hermiticity proved
+  from unitarity ALONE (the star G = G hypothesis was discovered unnecessary
+  - I removed it, stating the stronger theorem with the physical case as an
+  instance); and the 8x8 checkerboard verification with a genuine CONVENTION
+  THEOREM: one-sided ordering T = Cm*S can NEVER satisfy exact GW conjugation
+  (conjugation preserves order, inversion reverses it), the palindromic
+  T = S*Cm*S does exactly. The corner-convention layer now has its pin.
+- This completes the kernel core of the "checkerboard carries an exact GW
+  structure" paper candidate (outlines future slot): the grading is
+  chirality compose spatial reflection = edge-orientation reversal,
+  kernel-checked. Remaining for the paper: the R1 dispersion identity
+  ("retardedness IS the Wilson term") and prose.
