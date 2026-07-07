@@ -1022,3 +1022,17 @@ positivity (both in progress).
   "character" as a function with `character true != 1`, not a proved group
   homomorphism character. Future docs should not lean on it as a genuine
   `Z(G)`-character theorem without adding that structure.
+
+## [ARISTOTLE SUBMIT Codex QC attachment strategy 00:51]
+- Submitted focused strategy job `tc-qc-attach-strategy-20260707-0051`:
+  project `f4e21d1c-0c93-4d9f-8754-3c4759603c80`, task
+  `8068bd6e-e126-4ca8-a7f3-82b94d8657fd`.
+- Task note:
+  `AgentTasks/twoday-carrier-run-2026-07-07/ARISTOTLE_QC_ATTACH_STRATEGY_2026-07-07.md`.
+- Context pack:
+  `AgentTasks/context-packs/qc-carrier-attachment-strategy-20260707-004959.md`.
+- Packet asks whether the landed `QCCarrierBridge.LeadingQCCarrierContract`
+  should receive a concrete Carrier torus-curvature attachment next, and if so
+  what the smallest honest Lean API should be. Non-claim rails: no measure,
+  expectation theorem, nonabelian result, beyond-leading positivity, or
+  canonical physical observable unless supplied as extra data.
