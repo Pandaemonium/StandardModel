@@ -220,6 +220,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `(2,1)` positive-sector model satisfying the finite `descent_unitary`
   hypotheses. This removes the vacuity concern for the finite descent lemma, but
   not the carrier/Gauss completeness or physical-positivity obligations.
+  Aristotle follow-up `b1980b93` is now harvested into the same file:
+  `UopQuot` and `UopQuotEquiv` make the symmetry literal on
+  `PhysQuot := ker Qop / range Qop`; `UopQuot_e2` fixes the surviving class;
+  `kreinQuotForm_UopQuot` preserves the descended Krein form; and
+  `quotient_ward_action` packages the quotient action.  This closes the
+  representative-vs-quotient gap for the finite witness, not the
+  model-to-carrier Gauss/Ward/index-completeness bridge.
 
 ### M4-WIT - Pauli/Pontryagin concrete carrier witness [Codex handoff, Claude-owned integration]
 - **Done:** a corrected M4(C) Pauli witness under the physical Krein sharp

@@ -57,7 +57,9 @@ guards are edited independently to avoid collision.
   no-go showing that Kugo-Ojima nondegeneracy does not imply positivity.
 * Ward/descent witness (`CarrierWardDescentWitness`): a concrete non-identity
   phase symmetry on the `(2,1)` positive-sector model satisfying the finite
-  `descent_unitary` hypotheses. Physical Ward identities are not claimed.
+  `descent_unitary` hypotheses, plus the induced action on
+  `ker Qop / range Qop` preserving the descended Krein form. Physical Ward
+  identities are not claimed.
 * Fock second-quantization finite shadow (`FockSecondQuantization`): a two-mode
   diagonal occupation-basis witness for
   `dGamma(D)^2 = dGamma(D^2) + 2 dGamma_2(Lambda^2 D)`.
@@ -306,6 +308,18 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.ward_descent_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.ward_descent_nonvacuous
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.quotient_ward_action' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.quotient_ward_action
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.UopQuot_e2' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.UopQuot_e2
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.kreinQuotForm_UopQuot' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.kreinQuotForm_UopQuot
 
 /-! ## Finite Fock interaction identity: two-mode diagonal dGamma square witness -/
 

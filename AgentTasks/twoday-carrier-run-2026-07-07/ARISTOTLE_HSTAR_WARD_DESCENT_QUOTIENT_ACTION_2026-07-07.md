@@ -15,7 +15,7 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.Carrier.CarrierWardDescentWitness
   submission_project: AgentTasks/aristotle-submit/ne-next-hstar-ward-descent-quotient-action-proof-20260707-project
   output_dir: AgentTasks/aristotle-output/b1980b93-dc5c-4adc-803d-c229a7d2220e
-  status: submitted
+  status: integrated
 ```
 
 ## Context
@@ -66,3 +66,20 @@ carrier/Gauss completeness, BRST cohomology, or physical positivity.
   statement that should be submitted next.
 - A short completion report listing solved targets, unchanged/changed theorem
   statements, remaining holes, and any footprint concerns.
+
+## Harvest / integration
+
+Codex harvested and integrated this return on 2026-07-07.
+
+- Added the induced quotient action package to
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean`.
+- New headline declarations:
+  `PhysQuot`, `UopQuot`, `UopQuotEquiv`, `e2Class`,
+  `kreinQuotForm`, `UopQuot_e2`, `kreinQuotForm_UopQuot`, and
+  `quotient_ward_action`.
+- Added carrier guard pins for `quotient_ward_action`, `UopQuot_e2`, and
+  `kreinQuotForm_UopQuot`.
+- Claim boundary: finite model algebra only.  The result makes the
+  representative-level Ward/descent symmetry literal on `ker Qop / range Qop`;
+  it still does not prove a physical Ward identity, BRST cohomology,
+  carrier/Gauss completeness, or physical positivity.

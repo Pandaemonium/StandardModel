@@ -3826,3 +3826,26 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] HSTAR quotient Ward/descent action landed
+
+- Harvested Aristotle project `b1980b93-dc5c-4adc-803d-c229a7d2220e`
+  (`ne-next-hstar-ward-descent-quotient-action-proof-20260707`).
+- Integrated the returned Lean payload into
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean`.
+- New quotient-action package:
+  `PhysQuot`, `UopQuot`, `UopQuotEquiv`, `e2Class`, `kreinQuotForm`,
+  `UopQuot_e2`, `kreinQuotForm_UopQuot`, and `quotient_ward_action`.
+- Added carrier guard pins for `quotient_ward_action`, `UopQuot_e2`, and
+  `kreinQuotForm_UopQuot`.
+- Claim boundary: this closes the representative-vs-quotient gap for the
+  finite `(2,1)` Ward/descent witness.  It does not prove a physical Ward
+  identity, BRST cohomology, carrier/Gauss completeness, or physical positivity.
+- Updated the HSTAR task note, lane docket, thread board, and Codex goal prompt
+  to mark the job harvested and to point the next HSTAR/Q01 blocker at the
+  carrier Gauss/closure/index-completeness interface.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierWardDescentWitness`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.

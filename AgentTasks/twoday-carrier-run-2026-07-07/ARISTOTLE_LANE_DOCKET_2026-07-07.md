@@ -774,6 +774,27 @@ Submitted 2026-07-07 after integrating HSTAR `16d04733`.
 Task id: `95086d97-2155-4d92-b46c-d49787d1e712`.  Queue poll immediately after
 submission showed twelve running StandardModel-relevant lanes.
 
+## Harvest from HSTAR Ward/descent quotient action
+
+- `b1980b93`
+  (`ne-next-hstar-ward-descent-quotient-action-proof-20260707`) returned a
+  Lean payload now integrated into
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean`.
+- The integration makes the descent literal on
+  `PhysQuot := ker Qop / range Qop`: `UopQuot` is the induced quotient map,
+  `UopQuotEquiv` is the phase-unitary quotient equivalence, `UopQuot_e2`
+  proves the surviving class is fixed, and `kreinQuotForm_UopQuot` proves
+  preservation of the descended Krein form.  The packaged headline theorem is
+  `quotient_ward_action`.
+- `CarrierAxiomGuard.lean` now pins `quotient_ward_action`, `UopQuot_e2`, and
+  `kreinQuotForm_UopQuot`.
+- Claim boundary: finite `(2,1)` model algebra only.  This is not a physical
+  Ward identity, BRST cohomology theorem, carrier/Gauss completeness theorem,
+  or positivity theorem for the full carrier physical sector.
+- Next HSTAR/Q01 blocker: connect the quotient-action model to actual carrier
+  Gauss/closure constraints, Ward invariance, and index/completeness
+  hypotheses, or isolate a no-go.
+
 ## Harvest from Q11 Jacobi / Cauchy-Binet RC0 proof
 
 - `aa4e48f6`

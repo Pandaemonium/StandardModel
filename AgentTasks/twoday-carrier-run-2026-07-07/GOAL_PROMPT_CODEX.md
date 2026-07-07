@@ -44,6 +44,11 @@ You may work across the former Codex and Claude lanes when doing solo work:
 - New Fable-driven threads: horizon area/entropy, signature/dimension
   selection, real-structure/KO/unimodularity seam, chirality-solder audit,
   equivariant McKean-Singer, RG-Schur, and anomaly gates.
+- Supporting and stretch rails from `THREAD_BOARD.md`: color commutant,
+  `A=T`, KPON, discrete torsion/teleparallel `E`, PBW exhaustiveness,
+  McKean-Singer index framing, spin aperture, finite charge quantization,
+  TY-lineage provenance, DDV continuum control, and higher-dimensional
+  Nielsen-Ninomiya/Stokes degree.
 
 Preserve file-local conventions and ownership history.  If fresh peer activity
 appears in `PhysicsSM/Draft/NullEdge/Carrier/**`,
@@ -61,13 +66,12 @@ target is resubmitted.  Project directories and Aristotle project names should
 match the descriptive job name exactly.  If the work moves past 2026-07-07,
 date-bump the suffix.
 
-Latest local poll for StandardModel-relevant lanes, 2026-07-07: Aristotle is
-fully loaded at twelve running jobs.  These are active and must not be
-duplicated:
+Latest local poll for StandardModel-relevant lanes, 2026-07-07: after
+harvesting HSTAR `b1980b93`, eleven StandardModel-relevant jobs are still
+running.  These are active and must not be duplicated:
 
 | Project | Active Aristotle job | Lane |
 |---|---|---|
-| `b1980b93` | `ne-next-hstar-ward-descent-quotient-action-proof-20260707` | HSTAR finite Ward/descent quotient action |
 | `fbdbe43f` | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` | Q10 finite `d = 4` positive corner |
 | `f8aa05c8` | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 exterior-power ideal/span follow-up |
 | `5ff9424e` | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` | Q12 GammaPrime E4 semantic audit |
@@ -80,7 +84,8 @@ duplicated:
 | `96058502` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 / sector MS |
 | `6b8dcebd` | `tc-kp-fixed-forest-injection...` | KP fixed-forest injection |
 
-Harvest or already-acted-on returns not to duplicate: Q11 Jacobi/Cauchy-Binet
+Harvest or already-acted-on returns not to duplicate: HSTAR Ward/descent
+quotient action (`b1980b93`, `quotient_ward_action` landed); Q11 Jacobi/Cauchy-Binet
 RC0 (`aa4e48f6`, structural nucleus landed; next blocker is
 finite Cauchy-Binet/functoriality before `gl_fiber`), Q13 global overclaim (`07f40fff`), literature/provenance
 (`5713746e`), Q10 Spin/Weyl scalar-amplitude classification (`05fdd744`), Q08
@@ -92,7 +97,10 @@ When a slot opens, choose from this lane map.  Prefer harvest-first follow-ups
 for recently returned lanes, then keep a balanced mix of proof/construction,
 strategy, and adversarial audit jobs.  Every name below is unique and
 future-facing; if a lane has advanced, mint a still more specific non-colliding
-`ne-next-*` name and record it in the docket.
+`ne-next-*` name and record it in the docket.  A new Aristotle name must encode
+the lane, target artifact, job type, and date; it must not match any active,
+canceled, harvested, or baseline name already visible in
+`ARISTOTLE_LANE_DOCKET_2026-07-07.md` or this file.
 
 | Lane | Pursuit | Highest-value next artifact | Job type | Next unique Aristotle job name |
 |---|---|---|---|---|
@@ -130,11 +138,29 @@ future-facing; if a lane has advanced, mint a still more specific non-colliding
 | C-1FORM | Finite center/twist backgrounds | Twist-sector API and RP/background-cohomology boundary | audit | `ne-next-c1form-twistsector-background-rp-api-audit-20260707` |
 | SPIN10-U5 | Pure-spinor internal selection | U(5) / pure-spinor-line stabilizer shadow or honest finite substitute | strategy | `ne-next-spin10-u5-purespinor-stabilizer-shadow-strategy-20260707` |
 | M4-WIT | Concrete Pauli/Pontryagin witness | Krein-sharp carrier instantiation and positive-sector probe | proof/audit | `ne-next-m4-pauli-pontryagin-krein-positive-probe-proof-20260707` |
-| HSTAR | Model-by-model constraint audits | Harvest `b1980b93`; then integrate/audit the quotient action or open the Gauss-covector rank interface | proof/audit | `ne-next-hstar-ward-descent-quotient-action-integration-audit-20260707` |
+| HSTAR | Model-by-model constraint audits | Quotient action now landed; next open the carrier Gauss/closure constraint and index-completeness interface | proof/audit | `ne-next-hstar-gauss-closure-index-completeness-interface-audit-20260707` |
 | PLUMBING | Cross-lane real structures | Compatibility table for `J_R`, edge reversal, monodromy inversion, `#`, linearity, and antilinearity | audit | `ne-next-plumbing-jr-edge-reversal-sharp-compatibility-audit-20260707` |
 | Q13 | Red-team / no-go | Re-audit Q12 E4, W2a bridge, RG-Schur, and latest manuscript wording for the four over-claim modes | audit | `ne-next-q13-currentfleet-overclaim-regression-audit-20260707` |
 | Manuscript | P1 v3 / scorecard / thread board | Synchronize claim grades after the next integration wave | audit | `ne-next-manuscript-p1-round2-scorecard-threadboard-sync-audit-20260707` |
 | LIT-PROV | Literature and provenance | Close source-key and convention-citation gaps from the harvested provenance audit | audit | `ne-next-lit-nullstrand-source-provenance-closeout-audit-20260707` |
+
+Parked, banked, or stretch rails should still have unique names ready so they
+can be loaded quickly if they become the highest-EV work.  Do not submit these
+unless the current board or a fresh local finding promotes them:
+
+| Lane | Pursuit | Promotion condition | Job type | Next unique Aristotle job name |
+|---|---|---|---|---|
+| CC-MULT | Color commutant | Reducible internal-space commutant / multiplicity-space Yukawa shape becomes the next SM-fiber blocker | strategy | `ne-next-cc-reducible-color-commutant-multiplicity-yukawa-strategy-20260707` |
+| AT-BRIDGE | Aperture equals turn bridge | Need a semantic audit tying the two-edge aperture theorem to the carrier `Q_A`/`Q_T` naming | audit | `ne-next-at-twoedge-aperture-turn-spinorhelicity-integration-audit-20260707` |
+| KPON | Pontryagin/Krein positivity | Carrier/Gauss/Ward completeness hypotheses are ready to wire to the finite positive quotient | strategy/audit | `ne-next-kpon-carrier-gauss-ward-index-positivity-interface-strategy-20260707` |
+| G-TP | Discrete torsion / teleparallel `E` | Carrier-owned `E`-slot API is ready for the torsion plus symmetric solder split | proof/strategy | `ne-next-gtp-discrete-torsion-eslot-split-api-proof-20260707` |
+| PBW-EXH | Exhaustiveness as normal form | W2c needs a finite rewriting/PBW statement before capstone assembly | strategy/audit | `ne-next-pbwexh-carrier-normalform-relaxed-relations-strategy-20260707` |
+| MS-INDEX | Finite McKean-Singer frame | A carrier grading and finite supertrace statement becomes load-bearing for Q04/Q05/Q12 | audit | `ne-next-msindex-finite-carrier-supertrace-index-boundary-audit-20260707` |
+| SPIN-AP | Spin as aperture invariant | A two-edge aperture/spin shadow is needed after the mass capstone | strategy | `ne-next-spinap-twoedge-aperture-littlegroup-shadow-strategy-20260707` |
+| CHARGE-Q | Finite charge quantization | C-1FORM/twist-sector API needs an integrality or plaquette-flux cohomology gate | strategy | `ne-next-chargeq-finite-plaquette-flux-integrality-api-strategy-20260707` |
+| DDV-CONT | Interacting light-cone control | Literature grounding is needed for continuum-control statement design | audit | `ne-next-ddvcont-lightcone-lattice-literature-control-audit-20260707` |
+| TY-LINEAGE | Tomboulis-Yaffe provenance | Any TY/RP docstring or source claim changes after the current lineage audit | audit | `ne-next-tylineage-rp-inequality-docstring-regression-audit-20260707` |
+| NN-D | Higher-dimensional no-doubling | The 2D Stokes/degree theorem is ready to generalize to `(ZMod N)^d` | proof | `ne-next-nnd-higherdim-discrete-stokes-degree-proof-20260707` |
 
 Balanced refill rule: when capacity opens, load a mixed pack rather than a proof
 monoculture.  A good twelve-lane load is six proof/construction jobs, three or
@@ -162,6 +188,17 @@ specific non-colliding name and record it in the docket.
 | QC / QC-GRAM | Closure readout and normalization | Exact finite readout, Gram/Laplacian normalization, and carrier-side contract boundaries | `ne-solo-lane-qc-exact-readout-normalization-proof-20260707` |
 | PH / RP | Product-Haar to Wilson-measure RP | Gap audit from banked product-Haar positivity to interacting Wilson measure | `ne-solo-lane-rp-producthaar-wilson-measure-gap-audit-20260707` |
 | KP / Penrose | Fixed-forest injection | Support lemmas or no-go certificate for the Penrose partition route | `ne-solo-lane-kp-fixedforest-fiber-injection-support-strategy-20260707` |
+| CC-MULT | Color commutant multiplicities | Reducible internal-space commutant and multiplicity-space Yukawa-shape strategy | `ne-solo-lane-cc-color-commutant-multiplicity-yukawa-strategy-20260707` |
+| AT-BRIDGE | Aperture/turn bridge | Semantic audit of the two-edge spinor-helicity bridge against carrier `Q_A`/`Q_T` wording | `ne-solo-lane-at-twoedge-aperture-turn-spinorhelicity-audit-20260707` |
+| KPON | Krein/Pontryagin positivity | Interface from finite positive quotient/no-go to carrier Gauss/Ward/index hypotheses | `ne-solo-lane-kpon-carrier-gauss-ward-index-positivity-strategy-20260707` |
+| G-TP | Discrete torsion / teleparallel `E` | Carrier-owned torsion plus symmetric soldering-difference split API | `ne-solo-lane-gtp-discrete-torsion-eslot-split-proof-20260707` |
+| PBW-EXH | Exhaustiveness as rewriting | Finite carrier normal form and exact obstruction families for relaxed relations | `ne-solo-lane-pbwexh-carrier-normalform-relaxedrelations-strategy-20260707` |
+| MS-INDEX | Finite McKean-Singer frame | Carrier supertrace/index boundary and no continuum spectral-action overclaim | `ne-solo-lane-msindex-carrier-supertrace-index-boundary-audit-20260707` |
+| SPIN-AP | Spin aperture invariant | Two-null-edge aperture little-group / Pauli-Lubanski finite shadow | `ne-solo-lane-spinap-twoedge-aperture-littlegroup-strategy-20260707` |
+| CHARGE-Q | Finite charge quantization | Plaquette-flux integrality and center-background cohomology API | `ne-solo-lane-chargeq-plaquette-flux-integrality-strategy-20260707` |
+| DDV-CONT | Light-cone lattice control | Destri-de Vega continuum-control literature audit for null-line dynamics | `ne-solo-lane-ddvcont-lightcone-lattice-control-literature-audit-20260707` |
+| TY-LINEAGE | RP/TY provenance | Tomboulis-Yaffe RP inequality docstring/source regression audit | `ne-solo-lane-tylineage-rp-inequality-docstring-regression-audit-20260707` |
+| NN-D | Higher-dimensional Nielsen-Ninomiya | Discrete Stokes/degree theorem on `(ZMod N)^d` | `ne-solo-lane-nnd-higherdim-discrete-stokes-degree-proof-20260707` |
 | Q01 | Gupta-Bleuler physical positivity | Wire the unbalanced finite witness to actual carrier/Gauss constraints, Ward invariance, and completeness | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` |
 | Q02 | Gravity / invariant `E`-slot | Invariant trace functional, P-probe boundary, and teleparallel wording guard | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` |
 | Q03 | Dispersion and doublers | Determinant/wedge dispersion identity plus explicit doubler and mass-shell ledger | `ne-solo-lane-q03-dispersion-doubler-determinant-ledger-proof-20260707` |
@@ -272,6 +309,11 @@ with explicit kill conditions.
 18. **Manuscript / scorecard / provenance.** Keep P1 v3, the honest scorecard,
     thread board, ledger, lit log, and claim grades aligned with what is
     actually kernel-checked or explicitly MEMO/OPEN.
+19. **Parked and lineage rails.** Keep CC multiplicities, `A=T`, KPON,
+    PBW-EXH, MS-INDEX, SPIN-AP, CHARGE-Q, DDV-CONT, TY-LINEAGE, and NN-D
+    visible.  They are not all immediate proof spend, but each has a named
+    promotion condition and a unique Aristotle name above so they can be loaded
+    without improvising when they become load-bearing.
 
 ### Solo pursuit matrix
 
@@ -291,6 +333,17 @@ record why the row is parked.
 | QC / QC-GRAM | Closure / `Q_C` | raw closure vs Gram/Laplacian normalization split | proof/audit for exact finite readout contracts |
 | PH / RP | Product-Haar reflection positivity | gap from product-Haar bank to Wilson measure | audit/strategy |
 | KP / Penrose | Fixed-forest injection | support lemmas or no-go for Penrose partition route | proof/strategy follow-up |
+| CC-MULT | Color commutant | reducible commutant / multiplicity-space Yukawa-shape strategy | strategy only when SM-fiber selection needs it |
+| AT-BRIDGE | Aperture/turn bridge | two-edge spinor-helicity bridge wording against `Q_A`/`Q_T` | audit when carrier naming is edited |
+| KPON | Krein/Pontryagin positivity | carrier Gauss/Ward/index interface to positive quotient witnesses | strategy/audit after constraints are isolated |
+| G-TP | Discrete torsion / teleparallel `E` | torsion plus symmetric soldering-difference split | proof/strategy once Carrier API is stable |
+| PBW-EXH | Exhaustiveness normal form | finite rewriting statement for W2c | strategy/audit before capstone |
+| MS-INDEX | McKean-Singer frame | finite carrier supertrace/index boundary | audit; no continuum spectral-action claim |
+| SPIN-AP | Spin aperture | two-edge little-group shadow | stretch strategy after mass capstone |
+| CHARGE-Q | Charge quantization | finite plaquette-flux integrality API | stretch strategy behind C-1FORM |
+| DDV-CONT | DDV control case | light-cone lattice literature grounding | parked research audit |
+| TY-LINEAGE | TY/RP provenance | docstring/source regression audit | small audit after source edits |
+| NN-D | Higher-dimensional no-doubling | discrete Stokes/degree theorem in dimension `d` | proof stretch |
 | Q01 / GB-QUOTIENT | Gupta-Bleuler positivity | integrate finite witness/no-go into carrier/Gauss constraint hypotheses | proof/audit after the model-level statement is isolated |
 | Q02 / G-TP | Gravity / E-telescope | corrected telescoping, P-probe, finite gravity boundary wording | audit with kill conditions |
 | Q03 / DISPERSION | Dispersion and doublers | determinant/wedge identity plus doubler ledger | proof job |
@@ -324,24 +377,25 @@ to the current date.
 Live queue snapshot from `aristotle list --limit 100` on 2026-07-07 (verify
 again before acting):
 
-- **Still running / poll first:** twelve StandardModel-relevant lanes are
-  active: `b1980b93`, `fbdbe43f`, `f8aa05c8`, `5ff9424e`, `ecbf61d8`,
-  `ef87c91f`, `6e37da00`, `373f0283`, `4b462390`, `82cc3c8e`, `96058502`,
-  and old KP fixed-forest lane `6b8dcebd`.
+- **Still running / poll first:** after harvesting HSTAR `b1980b93`, eleven
+  StandardModel-relevant lanes remain active: `fbdbe43f`, `f8aa05c8`,
+  `5ff9424e`, `ecbf61d8`, `ef87c91f`, `6e37da00`, `373f0283`, `4b462390`,
+  `82cc3c8e`, `96058502`, and old KP fixed-forest lane `6b8dcebd`.
 - **Harvest-first before more refill:** if any listed running job turns `IDLE`,
   harvest and integrate/audit it before submitting a duplicate target.  Q11
   `aa4e48f6` is already returned; its structural group-action nucleus and
   identity action are landed, and the next proof job is the Cauchy-Binet
   functoriality package
   named in the dispatch table above.
-- **Recently harvested; do not resubmit under new names:** Q13 global overclaim
-  (`07f40fff`), literature/provenance (`5713746e`), Q10 scalar-amplitude
-  classification (`05fdd744`), Q08 graded radical assembly (`b4206467`), HSTAR
-  Ward/descent model audit (`16d04733`), Q04 sign-gauge and ConventionBridge,
-  Q08 corrected scattering-vertex DAG, Q12 finite triality and non-permutation
-  bridge, manuscript postfix audit, Q01 positive-sector witness/no-go, Q06
-  transfer/GW, Q09 screen-area and BW scaffolds, Q10 inertia/Sylvester stack,
-  Q11 B-L/C3/RC0 strategy, and Q12 G2/PSA/charge/GammaPrime/triality returns.
+- **Recently harvested; do not resubmit under new names:** HSTAR quotient
+  action (`b1980b93`), Q13 global overclaim (`07f40fff`),
+  literature/provenance (`5713746e`), Q10 scalar-amplitude classification
+  (`05fdd744`), Q08 graded radical assembly (`b4206467`), HSTAR Ward/descent
+  model audit (`16d04733`), Q04 sign-gauge and ConventionBridge, Q08 corrected
+  scattering-vertex DAG, Q12 finite triality and non-permutation bridge,
+  manuscript postfix audit, Q01 positive-sector witness/no-go, Q06 transfer/GW,
+  Q09 screen-area and BW scaffolds, Q10 inertia/Sylvester stack, Q11
+  B-L/C3/RC0 strategy, and Q12 G2/PSA/charge/GammaPrime/triality returns.
 - **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707` is
   superseded by the local compiler-trust-free landing; Q12 E4 radical-healing
   job `297ae18c` is superseded by the local `E4_nontrivial_healing` landing.
@@ -351,7 +405,6 @@ running/harvest-first until the docket records their result:
 
 | Project | Status | Aristotle job name | Lane | Type |
 |---|---|---|---|---|
-| `b1980b93` | running | `ne-next-hstar-ward-descent-quotient-action-proof-20260707` | HSTAR quotient action | proof/strategy |
 | `fbdbe43f` | running | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` | Q10 scalar amplitude | proof/strategy |
 | `f8aa05c8` | running | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 exterior quotient | proof/strategy |
 | `5ff9424e` | running | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` | Q12 GammaPrime | audit |
