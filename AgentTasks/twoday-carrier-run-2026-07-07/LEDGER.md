@@ -2918,3 +2918,40 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`;
   `pre-commit run --all-files`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q08 checkerboard and Q10 Sylvester bridge landed
+
+- Harvested Aristotle refill-wave projects `6b63230e`
+  (`ne-q08-l4-two-particle-checkerboard-rational-determinant-proof-20260707`)
+  and `9d61e305`
+  (`ne-q10-sylvester-inertia-frustrated-triple-bridge-proof-20260707`).
+- Integrated Q08 L-Q8-4 as
+  `PhysicsSM/Draft/NullEdge/Carrier/CheckerboardTwoParticle.lean` and guard
+  pinned the two headline checkerboard theorems in `CarrierAxiomGuard`.  The
+  module proves the exterior-power determinant formula for k-particle
+  amplitudes, the L=4 word expansion, the concrete two-particle determinant
+  identity, disjoint-support/no-crossing lemmas, and the Q[m] headline instance.
+- Claim boundary for Q08: PROVED finite algebra only.  The minimal crossing
+  cancellation is vacuous by disjoint output supports; general LGV cancellation,
+  the exterior quotient flagship, quotient positivity, and continuum Fock claims
+  remain OPEN.
+- Integrated Q10 as
+  `PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean` and imported it
+  from the Gate I1 aggregator.  It proves the basis-free symmetric-bilinear-form
+  frustrated triple from a `(+,+,-,-)` orthogonal block, the quadratic-form and
+  Sylvester-equivalent variants, and the diagonal recovery theorem.
+- Claim boundary for Q10: PROVED finite real algebra at the orthogonal-block /
+  Sylvester-equivalent level.  A fully intrinsic numerical inertia-index theorem
+  and any physical stable-order interpretation remain follow-up targets.
+- Run docs updated: Q08 and Q10 status in `THREAD_BOARD.md`; harvest status and
+  queue poll in `ARISTOTLE_LANE_DOCKET_2026-07-07.md`; solo lane board in
+  `GOAL_PROMPT_CODEX.md` no longer reserves the harvested job names as new
+  submissions.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SylvesterInertiaBridge`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CheckerboardTwoParticle.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.

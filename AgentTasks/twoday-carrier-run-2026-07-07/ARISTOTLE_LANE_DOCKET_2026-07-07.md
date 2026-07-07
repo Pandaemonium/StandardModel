@@ -183,3 +183,37 @@ StandardModel-relevant lanes.
   theorem.  The report also marks Q02 E-slot, `(2,1)` index protection, and Q04
   color-commutant as outside the pack's inspectable source set and requiring
   direct audit before sign-off.
+- `6b63230e`
+  (`ne-q08-l4-two-particle-checkerboard-rational-determinant-proof-20260707`)
+  returned a standalone finite checkerboard file now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/CheckerboardTwoParticle.lean`.  It proves
+  the exterior-power determinant formula for k-particle amplitudes, the L=4
+  word expansion, the concrete two-particle checkerboard determinant identity,
+  a disjoint-support/no-crossing fact, and the Q[m] headline instance.  The
+  cancellation content is vacuous in this minimal example because the two
+  supports are disjoint; general LGV cancellation, quotient positivity, and
+  L-Q8-5 remain open.
+- `9d61e305`
+  (`ne-q10-sylvester-inertia-frustrated-triple-bridge-proof-20260707`) returned
+  a standalone Sylvester-inertia bridge now integrated as
+  `PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean`.  It proves the
+  basis-free symmetric-bilinear-form frustrated triple from a `(+,+,-,-)`
+  orthogonal block, the quadratic-form and Sylvester-equivalent variants, and
+  the diagonal recovery theorem.  The remaining finite algebra target is the
+  fully intrinsic numerical-index statement `p >= 2`, `q >= 2`; physical
+  stable-order interpretation stays MEMO-grade.
+
+## Queue poll after Q08/Q10 harvest
+
+`aristotle list` on 2026-07-07 after the Q08 checkerboard and Q10 Sylvester
+integrations showed the StandardModel active count down to about five running
+lanes:
+
+- `5bdce729` - `ne-q08-fock-quotient-pairingdual-proof-20260707`
+- `f962cbe7` - `ne-q11-rc0-det-cocycle-strategy-20260707`
+- `ec1ad7d5` - `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`
+- `ed700b2a` - `ne-q06-retarded-wilson-symbol-determinant-proof-20260707`
+- `e3f3ae61` - `ne-q11-c3-majorana-turn-census-proof-20260707`
+
+Next refill should use fresh names from `GOAL_PROMPT_CODEX.md`, not any of the
+harvested project names above.

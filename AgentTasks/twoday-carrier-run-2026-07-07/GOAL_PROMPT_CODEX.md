@@ -143,25 +143,27 @@ new name.  Project directories and Aristotle project names should match the job
 name exactly.  If the calendar date changes, update the suffix from `20260707`
 to the current date.
 
-Live queue snapshot after the first solo harvest wave (verify with
+Live queue snapshot after the latest Q08/Q10 harvest (verify with
 `aristotle list` before acting):
 
 - **Still running / poll first:** `ne-q08-fock-quotient-pairingdual-proof-20260707`;
-  `ne-q11-rc0-det-cocycle-strategy-20260707`.
-- **Harvest-first candidate:** `ne-q08-dgamma-exterior-globalization-proof-20260707`
-  is no longer a live capacity slot once Aristotle marks it IDLE/COMPLETE; inspect
-  and integrate or explicitly park it before refilling.
-- **Recently harvested; do not resubmit under new names:** Q10 multi-time
-  embedding, Q11 B-L dictionary, Q12 charge resolution, Q12 triality bridge,
-  Q12 PSA-1, Q12 G2 parity, Q10 Lorentzian transitivity, Q10 split witness,
-  Q10 scalar-amplitude census, Q09 modular no-go, Q08 decomposable `dGamma`
-  square, and Q06 carrier-GW positive/negative cases.
+  `ne-q11-rc0-det-cocycle-strategy-20260707`;
+  `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`;
+  `ne-q06-retarded-wilson-symbol-determinant-proof-20260707`;
+  `ne-q11-c3-majorana-turn-census-proof-20260707`.
+- **Recently harvested; do not resubmit under new names:** Q08 `dGamma`
+  globalization and integration audit, Q08 L4 checkerboard determinant, Q09
+  BW-cut locality scaffold, Q10 Sylvester-inertia bridge, Q10 multi-time
+  embedding, Q11 B-L dictionary, Q12 GammaPrime quotient, Q12 Furey bridge
+  audit, Q12 charge resolution, Q12 triality bridge, Q12 PSA-1, Q12 G2 parity,
+  Q13 red-team audit, Q10 Lorentzian transitivity, Q10 split witness, Q10
+  scalar-amplitude census, Q09 modular no-go, Q08 decomposable `dGamma` square,
+  and Q06 carrier-GW positive/negative cases.
 - **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707`
   is superseded by the local compiler-trust-free landing.
 
-Hot refill pack for restoring roughly twelve active Aristotle lanes.  These
-names are reserved for new submissions unless the docket later records them as
-submitted:
+Last refill pack, now partly harvested.  Treat these names as already submitted,
+not as open capacity, unless the docket explicitly records a renewed follow-up:
 
 | Priority | Aristotle job name | Lane | Type | Intended deliverable |
 |---|---|---|---|---|
@@ -178,7 +180,8 @@ submitted:
 | 11 | `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707` | Q01 positivity | audit | Nonvacuous positive-sector witness, or a sharp no-go separating quotient nondegeneracy from positivity. |
 | 12 | `ne-q13-round1-verdict-redteam-audit-20260707` | Q13 red team | audit | Adversarial audit of the round-1 verdicts and recent landings for the four over-claim modes. |
 
-Ready next-wave Aristotle jobs, each with a unique descriptive name:
+Ready next-wave Aristotle jobs, each with a unique descriptive name.  Use these
+to refill after harvesting returned jobs and committing the local integration:
 
 | Lane | Next Aristotle job name | Type | Intended deliverable |
 |---|---|---|---|
@@ -200,9 +203,10 @@ Ready next-wave Aristotle jobs, each with a unique descriptive name:
 | Q05 triality | `ne-q05-triality-monodromy-equivariant-index-strategy-20260707` | strategy | Equivariant index, cover multiplicativity, triangle holonomy toy model, and no-four-orbit route. |
 | Q06 retarded transfer | `ne-q06-retarded-wilson-dispersion-identity-proof-20260707` | proof | Exact "retardedness is the Wilson term" dispersion identity after the palindromic/nonabelian boundary landing. |
 | Q07 Koide/T-solder | `ne-q07-tsolder-kappa-tetrahedral-probe-audit-20260707` | audit/strategy | Decide whether the tetrahedral corner probe supports, refines, or kills the kappa mechanism. |
-| Q08 checkerboard Fock | `ne-q08-l4-twoparticle-checkerboard-determinant-proof-20260707` | proof | L=4 two-particle checkerboard determinant identity over rational polynomials. |
+| Q08 checkerboard Fock | `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707` | strategy/audit | Generalize beyond the landed L=4 disjoint-support case toward a nonvacuous LGV crossing-cancellation theorem or isolate exact blockers. |
 | Q09 horizon/screen | `ne-q09-nullscreen-additivity-entropy-kill-audit-20260707` | audit | Decide which entropy/horizon upgrades are finite theorem targets and which remain MEMO/OPEN. |
 | Q10 scalar amplitude | `ne-q10-spin-weyl-scalar-amplitude-classification-strategy-20260707` | strategy | Route from finite census substitutes to the real Spin/Weyl scalar-amplitude classification. |
+| Q10 inertia indices | `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707` | proof/strategy | Close the gap from the landed Sylvester equivalence hypotheses to an intrinsic `p >= 2`, `q >= 2` inertia-index statement. |
 | Q11 Majorana/order | `ne-q11-majorana-ordercondition-finite-identities-proof-20260707` | proof/strategy | C3 Majorana identity and order-condition scalar identities after the RC0/B-L jobs return. |
 | Q12 C8 seam | `ne-q12-c8-realstructure-g2-compatibility-audit-20260707` | audit | Compatibility of `J_R`, G2 parity, top-form pairing, and chirality-solder conventions. |
 | RG-Schur | `ne-rg-schur-krein-gamma-stability-proof-20260707` | proof | Schur-complement determinant identity plus stability of Krein-self-adjoint Gamma-odd structure. |
@@ -227,9 +231,11 @@ adversarial audits for recently landed or high-risk claims.
    ladder first: definite-no-null, the `Z^(2,2)` frustrated-triple obstruction,
    Lorentzian positive-pairing transitivity, null-orthogonality rigidity,
    split-signature tachyonic witnesses, and the same-chirality scalar-amplitude
-   census.  Never claim "3+1 from consistency alone"; use the Q10 boundary:
-   signature is a theorem about stable order, dimension is conditional on the
-   named chirality and scalar-amplitude axioms.
+   census.  The Sylvester-equivalent bridge is now landed; next close the
+   intrinsic numerical-index wording (`p >= 2`, `q >= 2`) if needed.  Never
+   claim "3+1 from consistency alone"; use the Q10 boundary: signature is a
+   theorem about stable order, dimension is conditional on the named chirality
+   and scalar-amplitude axioms.
 3. **Q11 real-structure / KO / unimodularity seam.** Develop the explicit
    `J_R` construction on `Lambda(C^5)`, the sign tables, positive internal
    form, KO placement, RC0/unimodularity equivalence, B-L counterexample,
@@ -241,9 +247,11 @@ adversarial audits for recently landed or high-risk claims.
    gates.  Treat "factor separation" as superseded by the stronger G2-parity
    mechanism; do not claim safety without the bridge/convention check.
 5. **Q06-Q08 synthesis.** Use the new exact-GW/edge-reversal, equipartition
-   Koide, Fock-Gupta-Bleuler, and RG-Schur material as active research rails.
-   Convert near-free finite identities into Lean, and keep speculative physics
-   claims explicitly MEMO or OPEN.
+   Koide, Fock-Gupta-Bleuler, checkerboard determinant, and RG-Schur material as
+   active research rails.  Q08 L4 is landed in a minimal disjoint-support form;
+   the next targets are the exterior quotient theorem and a nonvacuous LGV
+   crossing-cancellation generalization.  Convert near-free finite identities
+   into Lean, and keep speculative physics claims explicitly MEMO or OPEN.
 6. **QC-GRAM and Q_C.** Continue the closure/Q_C line: distinguish raw linear
    closure defects from Gram/Laplacian normalization, pursue concrete Carrier
    factorization only with the correct normalization, and keep beyond-leading

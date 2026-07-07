@@ -14,6 +14,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
 import PhysicsSM.Draft.NullEdge.Carrier.KugoOjima
 import PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization
 import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
+import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
@@ -53,6 +54,9 @@ guards are edited independently to avoid collision.
   its square on decomposable states reproduces the tuple identity. The identity
   one-body operator acts by the finite particle number on decomposable states,
   and the identity two-body term counts strict pair slots.
+* Checkerboard two-particle determinant (`CheckerboardTwoParticle`): the finite
+  L=4, N=2 exterior-amplitude determinant identity and straight-through
+  rational-polynomial witness.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -275,6 +279,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaTwo_id_pair_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaTwo_id_pair_count
+
+/-! ## Finite checkerboard two-particle determinant identity -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.checkerboard_twoParticle_amplitude_eq_det' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.checkerboard_twoParticle_amplitude_eq_det
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.checkerboard_amplitude_ratQ' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.checkerboard_amplitude_ratQ
 
 /-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
     (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard

@@ -41,6 +41,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.PSA
 import PhysicsSM.Draft.NullEdge.GateI1.ChargeResolution
 import PhysicsSM.Draft.NullEdge.GateI1.TorusBWCutLocality
 import PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient
+import PhysicsSM.Draft.NullEdge.GateI1.SylvesterInertiaBridge
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -91,7 +92,8 @@ dictionary (`Q11BLDictionary`); plus the Q12 PSA-1 finite supertrace identity
 (`PSA`); plus the Q12 finite charge-sector supertrace bookkeeping bridge
 (`ChargeResolution`); plus the Q09 finite BW-cut torus locality scoring
 algebra (`TorusBWCutLocality`); plus the Q12 finite physical-quotient descent
-gate (`Q12GammaPrimeQuotient`).
+gate (`Q12GammaPrimeQuotient`); plus the Q10 Sylvester-inertia frustrated
+triple bridge (`SylvesterInertiaBridge`).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 

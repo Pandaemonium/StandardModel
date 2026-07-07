@@ -507,8 +507,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   combinatorial term is the scalar count of strict pair slots. These Q08
   theorems are guard-pinned in
   `CarrierAxiomGuard`.
-- **Next:** L-Q8-4 the L=4 two-particle checkerboard determinant identity in
-  Q[m]; L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),
+- **Done:** L-Q8-4 has now landed in
+  `PhysicsSM/Draft/NullEdge/Carrier/CheckerboardTwoParticle.lean` from
+  Aristotle project `6b63230e`.  `kParticle_amplitude_eq_det` proves the
+  general determinant formula for exterior-power amplitudes,
+  `T_sq_word_expansion` gives the four length-2 checkerboard words,
+  `checkerboard_twoParticle_amplitude_eq_det` specializes the determinant to the
+  concrete L=4 transfer matrix, and `checkerboard_amplitude_ratQ` reads the
+  headline instance in Q[m].  The crossing cancellation in this minimal example
+  is honestly vacuous: the two output supports are disjoint
+  (`col_supports_disjoint`, `checkerboard_no_crossing`).
+- **Next:** L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),
   Fock(V')/rad = Fock(V'/N) using the Aristotle `4929366f` strategy:
   first build `pairingDual` as a perfect pairing / linear equivalence, then the
   quotient factorization. Positivity of the physical quotient stays Q1/OPEN.
@@ -588,24 +597,34 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   with four distinct `+,+,-,-` coordinates, `multitime_frustrated_triple`
   produces a null triple with pairings `(+,+,-)`, and
   `multitime_no_retarded_coloring` proves no retarded/advanced two-coloring can
-  satisfy those three constraints.
+  satisfy those three constraints.  Aristotle follow-up `9d61e305` is now
+  harvested into
+  `PhysicsSM/Draft/NullEdge/GateI1/SylvesterInertiaBridge.lean`:
+  `bilin_frustrated_triple` gives a basis-free symmetric-bilinear-form version
+  from an orthogonal `(+,+,-,-)` block,
+  `quadraticForm_frustrated_of_equivalent` transports the obstruction across a
+  Sylvester equivalence, and `sigDot_frustrated_triple` recovers the diagonal
+  witness.
 - **Status:** PROVED finite Lorentzian half plus finite general multi-time
   obstruction stack. This now closes the finite stable-order signature rail at
-  the diagonal-signature level: Lorentzian `(1,m)` has positive-pairing
-  transitivity, while any multi-time signature with at least two positive and
-  two negative directions has a frustrated triple. Any dimension-selection claim
-  still needs separate chirality and scalar-amplitude reconstruction. L6 still
+  the diagonal-signature and Sylvester-equivalent levels: Lorentzian `(1,m)` has
+  positive-pairing transitivity, while a form carrying a `(+,+,-,-)` orthogonal
+  block has a frustrated triple. The remaining algebraic cleanup is the fully
+  intrinsic numerical-index theorem phrased directly as `p >= 2` and `q >= 2`.
+  Any dimension-selection claim still needs separate chirality and
+  scalar-amplitude reconstruction. L6 still
   needs the full Spin/Weyl representation stack before it can be stated as a
   representation-theoretic
   `Hom_Spin(S tensor S, 1)` classification.
 - **Aristotle:** harvested named lanes Q10-L3 (`dbe113e5`), Q10-L5
-  (`3a66e413`), Q10-L6 (`7fd8a9bf`), and Q10 multi-time embedding
-  (`825853b9`); see `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+  (`3a66e413`), Q10-L6 (`7fd8a9bf`), Q10 multi-time embedding
+  (`825853b9`), and Q10 Sylvester-inertia bridge (`9d61e305`); see
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
 - **Claim boundary:** never phrase this as "retardation on one finite complex
   implies Lorentzian" or "3+1 follows from consistency alone." The new theorem
-  assumes a diagonalized sign-vector model; a general Sylvester-inertia bridge
-  remains a separate theorem. Q10's boundary is signature from stable order;
-  dimension from chirality plus scalar-amplitude reconstruction.
+  assumes either a diagonalized sign-vector model or the explicit Sylvester
+  equivalence/orthogonal-block hypotheses. Q10's boundary is signature from
+  stable order; dimension from chirality plus scalar-amplitude reconstruction.
 
 ### G2-PARITY-CHIRALITY-SOLDER - Q12 algebra core and operator gates [Codex solo; new Q12 lane]
 - **Done:** Aristotle audit `0a6239d5` completed. Codex integrated the
