@@ -401,21 +401,29 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   publishable obstruction.
 
 ### STRAND-FOCK - the pentad fiber and the anomaly identity [Claude; post-Q04]
-- **Done:** Q04-L1 the supertrace/anomaly identity
-  `sum_k (-1)^k tr(Lambda^k g) = det(1 - g)` + the finite-difference corollary
-  (anomaly rows of a generation are identities of rank >= 4 strand fibers) -
-  elementary-symmetric-function machinery, likely the cheapest spectacular
-  target in the queue; Q04-L2 pentad commutant C^6 + turn census (1 bare
-  Majorana + 4 Yukawa channels) as finite linear algebra on 16 dimensions;
-  Q04-L3 hypercharge rigidity + Z_6 congruence. Then Q04-L4: the convention
-  isomorphism Lambda(C^3) = (C (x) O, fixed unit) through the XOR-Fano basis -
-  our octonion kernel asset IS the color Fock space up to this bridge.
-  Stretch: Q04-L0 R(G)-valued McKean-Singer upgrade; the order-condition
-  check on the vacuum-Majorana turn (arbitrates Chamseddine-Connes-van
-  Suijlekom vs Boyle-Farnsworth from outside NCG - standalone publishable).
+- **Done / scoped:** Q04-L1 has the finite exterior-supertrace backbone
+  (`PSA.superTrace_eq_det_one_sub`) and the later charge-resolution
+  bookkeeping; Q04/Q11 now also has the C3 Majorana turn census.  The
+  Spin(10) / `Lambda(C^5)` bridge in the repo is genuine finite algebra, but it
+  is not the `Lambda(C^3)` color-octonion bridge.
+- **Audit boundary:** Aristotle audit `dbe3850c` found a HIGH false-shape risk:
+  the proved octonion/Fock bridge is `Lambda(C^5)` / Spin(10), not the
+  8-dimensional `Lambda(C^3) ~ (C (x) O, fixed unit)` color bridge.  Q04-L4 is
+  OPEN, not landed.  `ConventionBridge` correctness is comment-only; Furey
+  ladder signs remain oracle/M-grade until a kernel theorem replaces the
+  comment.  `Q12Triality.octSgn` and `Basic.lookupSign` disagree on 18/64
+  ordered pairs and need a diagonal sign-gauge lemma before transfer.
+- **Next:** L4a sign-gauge reconciliation between `octSgn` and
+  `Basic.lookupSign`; L4b `ConventionBridge` line/product preservation over the
+  project XOR-Fano table; L4c the actual operator-valued
+  `Lambda(C^3) ~ (C (x) O, fixed unit)` color bridge using left-multiplication
+  operators, not raw octonion products.  Stretch: Q04-L0 `R(G)`-valued
+  McKean-Singer upgrade and the order-condition check on the vacuum-Majorana
+  turn.
 - **Guard rails:** the C8 seam (internal top-form pairing vs the # slot;
-  sesquilinear/bilinear bookkeeping) is the flagged risk; transcribe with
-  care and kernel-check the coherence before any C8-dependent claim.
+  sesquilinear/bilinear bookkeeping), fixed-imaginary-unit choice, and
+  nonassociativity are the flagged risks; transcribe with care and
+  kernel-check coherence before any C8- or Furey-dependent claim.
 
 ### TRIALITY-MONODROMY - three generations as an index [Claude; post-Q05]
 - **Done, in order:** Q05-L0 the EQUIVARIANT McKean-Singer upgrade (per-isotypic
@@ -696,7 +704,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `parity_triple` is the all-equal diagonal `(Z/2)^3` character case, generic
   in `sigma`, not a genuine order-3 Spin(8)/octonion triality theorem. These
   results do not prove an analytic/equivariant index theorem behind a physical
-  anomaly statement.
+  anomaly statement. Aristotle C8 audit `cdba6caa` confirmed the finite algebra
+  is kernel-clean, but raised the same load-bearing gates: the Q11 fiber
+  grading and Q12 strand parity live on different spaces with no proved
+  non-permutation bridge; `eps'` for KO placement is not formalized; PSA and
+  ChargeResolution are accounting identities, not equivariant
+  McKean-Singer.
 - **Next:** T8 still needs the *specific repo* ladder/Furey bridge matrix `B`
   checked entry-wise against the actual ladder ordering/signs; the landed
   theorem only proves the benign permutation case and trace/signature kill
@@ -713,7 +726,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   The remaining PSA gap is now the analytic or operator-level equivariant
   McKean-Singer theorem plus model-specific verification of the descent
   hypotheses, not finite additivity. Failure of the specific-`B` bridge is a
-  C8-seam escalation, not a patch.
+  C8-seam escalation, not a patch.  The C8 audit's explicit gates are:
+  involution descent for `Gamma`, equivariant McKean-Singer, `J_R`-induced
+  sector conjugation `omega <-> omega_bar`, the concrete non-permutation Furey
+  bridge plus 64 repo-`sigma` identities, PSA-2/PSA-3 determinant-line phases,
+  and the missing `eps'` operator relation.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.
@@ -737,8 +754,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   and B-L/total-number dictionary only. The result refutes any "Krein closure
   implies unimodularity" slogan: the sesquilinear form is determinant-blind,
   while determinant/traceless information lives in the antilinear `J_R` layer.
-- **Next:** group-level RC0/determinant cocycle for the exterior functor,
-  the C3 Majorana identity, and the order-condition scalar identities. The
+- **Next:** group-level RC0 should now focus on the Jacobi complementary-minor
+  lemma, Cauchy-Binet/functoriality cleanup, and removing the draft
+  compiler-eval step from the returned `Q11GroupAction` scaffold.  The
+  order-condition scalar identities have a finite sector-level landing; the
   chirality-solder flag remains a standing obligation for later architecture
   checks.
 - **Aristotle:** harvested named audit/strategy lane `65a9d42d`
@@ -748,8 +767,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   (`ne-q11-c3-majorana-turn-census-proof-20260707`) has now landed
   `PhysicsSM/Draft/NullEdge/GateI1/Q11C3Majorana.lean`: `JR_turn_invariant`,
   `turn_pairing`, `deltaBL_turn`, `invariant_sector_iff`, `census_card_two`,
-  and the RC0 first/second-order scalar identities.  `f962cbe7` RC0 determinant
-  cocycle remains running.
+  and the RC0 first/second-order scalar identities.  Project `f962cbe7`
+  (`ne-q11-rc0-det-cocycle-strategy-20260707`) returned a useful draft
+  `Q11GroupAction.lean` and strategy: define the exterior functor
+  `lambdaAction`, top-duality `Cmap`, conjugation `Kmap`, and prove the master
+  identity `J_R Lambda(g) J_R = conj(det g) Lambda(g)` for unitary `g`, yielding
+  `RC0 iff det g = 1`.  The returned Lean is not a trusted landing: it contains
+  documented proof holes for Jacobi complementary minors and Cauchy-Binet plus a
+  draft compiler-eval step, so the next proof job should isolate those matrix
+  lemmas before importing any headline theorem.
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
   closure. This is a Cartan-level RC0/dictionary theorem; the group-level
   determinant cocycle remains open.
@@ -783,10 +809,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   (`d32e8150`), Q12 C8/G2 real-structure audit (`cdba6caa`), RG-Schur stability
   (`9af1d5fb`), Q04 octonion/Fock bridge audit (`dbe3850c`), and P1
   claim-grade audit (`2170a1f9`). The returned `5bdce729`, `e3f3ae61`,
-  `d32e8150`, and `ed700b2a` harvests are now integrated or recorded. Current
-  poll shows `26fa682c`, `bcf263f0`, `9af1d5fb`, and `ec1ad7d5` still running;
-  harvest-first inventory is now `2170a1f9`, `dbe3850c`, `cdba6caa`, and
-  `f962cbe7`.
+  `d32e8150`, `ed700b2a`, `2170a1f9`, `dbe3850c`, `cdba6caa`, and `f962cbe7`
+  harvests are now integrated, recorded, or acted on.  Current poll shows
+  `26fa682c`, `bcf263f0`, `9af1d5fb`, and `ec1ad7d5` still running; refill
+  after this commit should prioritize fresh follow-ups, not duplicate the
+  harvested report names.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

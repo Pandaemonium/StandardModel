@@ -3054,3 +3054,36 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateI1.TorusBWCutLocality`;
   `git diff --check`;
   `pre-commit run --all-files`.
+
+## [ARISTOTLE-HARVEST Codex solo] P1/Q04/Q12/Q11 audit batch recorded and manuscript downgraded
+
+- Harvested Aristotle projects `2170a1f9`, `dbe3850c`, `cdba6caa`, and
+  `f962cbe7`.
+- Acted on the P1 claim-grade audit by editing
+  `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`: the manuscript
+  now states that only the three-slot `D^2` carrier decomposition is
+  guard-pinned, while the Krein/E four-slot mass form, the concrete carrier
+  `det P` identification, and the indefinite positive-sector witness are OPEN.
+  The composed answer and changelog now carry the same boundary.  Updated
+  `AGENTS.md` to point claim-calculus readers at the v3 manuscript.
+- Recorded the Q04 audit boundary in `THREAD_BOARD.md`,
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and `GOAL_PROMPT_CODEX.md`: the proved
+  octonion/Fock bridge is `Lambda(C^5)` / Spin(10), not the `Lambda(C^3)` color
+  bridge; `ConventionBridge` correctness is comment-only; `Q12Triality.octSgn`
+  and the project octonion `lookupSign` table need a diagonal sign-gauge lemma
+  before transfer.
+- Recorded the Q12 C8 audit boundary: finite algebra is clean, but C8/per-sector
+  anomaly/safety claims require a concrete non-permutation Furey bridge,
+  repo-`sigma` identities, involution descent, equivariant McKean-Singer, sector
+  conjugation, PSA-2/3 determinant-line phases, and the missing `eps'` operator
+  relation.
+- Recorded the Q11 RC0 strategy: the returned `Q11GroupAction.lean` is a useful
+  draft scaffold for `J_R Lambda(g) J_R = conj(det g) Lambda(g)` and
+  `RC0 iff det g = 1`, but it is not a trusted landing because it contains
+  documented proof holes for Jacobi complementary minors and Cauchy-Binet plus a
+  draft compiler-eval step.  Next proof job should isolate those matrix lemmas.
+- Queue poll after this batch still had four running lanes: `26fa682c`,
+  `bcf263f0`, `9af1d5fb`, and `ec1ad7d5`.  Goal prompt refreshed with unique
+  follow-up Aristotle job names for Q04 sign-gauge / ConventionBridge, Q11
+  Jacobi-minor cleanup, Q12 C8/genuine-triality gates, and manuscript regression
+  audit.

@@ -9,12 +9,12 @@ Part I is written so that a college student with one course of linear algebra
 and a little special relativity can follow every step; Part II keeps every
 kernel-checked statement of v2 but opens each section with a plain-language
 sentence. The layered status map (Part II, section 15) is updated through
-2026-07-07, including the new machine-checked operator layer (the
-"carrier": one operator whose square separates four mass channels, with the
-kinematic theorem of this paper as its first channel) and the
-index-protection theorems (masslessness of a chiral surplus is topological).
-The paper's own claims are unchanged: this is still a paper about ONE
-theorem.
+2026-07-07, including the new draft carrier layer: a guard-pinned `D^2`
+decomposition into aperture, closure, and turn slots, with the Krein/E
+four-slot mass form and the concrete `det P` carrier identification still
+open.  It also records the index-protection theorems and their current
+positivity boundary. The paper's own claims are unchanged: this is still a
+paper about ONE theorem.
 
 **How to read the grades.** Every claim in this paper carries a grade, so
 that the reader always knows what kind of confidence backs a sentence:
@@ -310,23 +310,24 @@ The program that produced this theorem has since taken two further
 machine-checked steps that reframe it, and one round of expert analysis
 that charts the road ahead. Briefly, with grades:
 
-- **One operator, four mass channels (`M`, draft namespace, 2026-07).** There
-  is now a finite "carrier" operator `D` - built from null directions,
-  transports, a chirality grading, and a turn amplitude - whose square
-  decomposes EXACTLY into four blocks: an aperture block, a gauge-curvature
-  block, a turn block, and a soldering-gradient block. The aperture block
-  is literally this paper's `det P`: the kinematic theorem becomes the
-  first channel of one operator identity. Unification, in this program,
-  means DECOMPOSITION - one operator, separated channels - not a bigger
-  symmetry group.
+- **One carrier, three checked slots and one open mass slot (`M/OPEN`, draft
+  namespace, 2026-07).** There is now a finite "carrier" operator `D` -
+  built from null directions, transports, a chirality grading, and a turn
+  amplitude - whose `D^2` square has a guard-pinned decomposition into three
+  checked slots: aperture, gauge-curvature, and turn. The Krein `D^#D`
+  upgrade with the soldering-gradient `E` slot is still OPEN. The aperture
+  slot has an abstract total-square identity; the concrete identification
+  with this paper's `det P` is the next registered target, not yet a claim.
+  Unification, in this program, means DECOMPOSITION - one operator, separated
+  channels - not a bigger symmetry group.
 - **Masslessness is topological (`M`, draft namespace, 2026-07).** For such
   operators, the number of protected massless chiral modes is an index -
   fixed by the complex, invariant under EVERY choice of potential and
   transport. Mass explains what leaves the light cone; the index explains
-  what must stay. The two poles are both machine-checked: a balanced
-  model where everything can be gapped (and the mass form is strictly
-  positive), and an unbalanced one where a massless mode survives all
-  dynamics.
+  what must stay. The checked finite results include the index-protection
+  algebra and a balanced positive-chirality witness; the indefinite
+  positive-sector certificate and the load-bearing unbalanced witness remain
+  OPEN.
 - **The road map (`MEMO` grade).** A 2026-07-07 consultation round produced,
   at working rigor with kernel transcription in progress: the exact finite
   state-space construction that would make spectral mass language legal
@@ -693,7 +694,7 @@ as an exact dispersion identity - tightening the claim that the 1+1D
 story survives discretization with exact chiral bookkeeping. 3+1D
 packaging remains open.
 
-### Layer 2.5 - Operator: one carrier, four channels. NEW; kernel-checked (draft grade), 2026-07.
+### Layer 2.5 - Operator: one carrier, checked D^2 slots plus open Krein/E slot. NEW; draft grade, 2026-07.
 
 The finite carrier `D = sum_e c(alpha_e) nabla_e + Gamma phi` on a
 decorated 2-complex satisfies, kernel-checked and guard-pinned
@@ -701,25 +702,32 @@ decorated 2-complex satisfies, kernel-checked and guard-pinned
 
 ```text
 4 D^2 = Q_A + Q_C + 4 Q_T            (covariantly constant soldering)
-4 D^#D = Q_A^# + Q_C^# + 4 Q_T + 4 E (varying soldering; # = Krein slot)
 ```
 
-with the aperture block IDENTIFIED: `Q_A = Q(sum_e alpha_e)` - this
-paper's `det P` as the first channel of one operator identity
-("unification is decomposition"). A certified Pontryagin witness
-(`kappa = 2`: a self-adjoint involution with inertia `(2,2)`) carries a
-STRICTLY positive Krein mass form on its flat chiral sector - the
-indefinite-geometry reading is non-vacuous. Everything here is form-level;
-no spectral claim (see layer 4).
+The intended Krein mass form is still a registered target:
+
+```text
+4 D^#D = Q_A^# + Q_C^# + 4 Q_T + 4 E (OPEN; varying soldering; # = Krein slot)
+```
+
+The aperture block currently has an abstract total-square identity
+`Q_A = Q(sum_e alpha_e)`. Its concrete identification with this paper's
+Minkowski `det P` is still OPEN, so the four-slot mass identity remains an
+open target. A balanced `kappa = 2` witness has a positive mass form on a
+positive-chirality Hilbert half; this is not an indefinite/Pontryagin
+positive-sector certificate. The load-bearing unbalanced positive-sector
+witness remains OPEN. Everything here is form-level; no spectral claim (see
+layer 4).
 
 ### Layer 3 - Substrate: exact chirality available to be coupled. CLOSED at the free/regulator level.
 
 Gate C1 (free GW release), Gate C2 (chiral index calculus + the vanishing
 theorem: gap forces index zero; nonzero index forces a zero mode), and -
 new - the carrier index-protection family: the protected massless chiral
-count equals the graded dimension for every Hilbert- or
-Krein-self-adjoint carrier, with both poles exhibited. Masslessness of the
-surplus is topology; mass generation gaps modes only in pairs.
+count equals the graded dimension under the stated finite hypotheses. The
+physical Krein `#` restatement and the unbalanced positive-sector witness are
+still open. Masslessness of the surplus is topology; mass generation gaps
+modes only in pairs.
 
 ### Layer 4 - Legality: what supplies and licenses the coupling. POSED; the state-space half now has a MEMO-grade solution.
 
@@ -729,9 +737,9 @@ bridge, whose minimal 1+1D instance is proved (layer 2). The other half of
 legality - WHICH state space makes mass a legitimate spectral quantity -
 was this program's hardest open problem ("physical-sector positivity").
 Status 2026-07-07 (`MEMO` grade; kernel ladder in flight, Aristotle):
-solved to its exact boundary at working rigor. State positivity is Witt
-geometry of the constraint span (isotropy + count + a finite Ward
-identity), definitizability is vacuous in finite dimensions, and the
+reduced to an explicit finite boundary at working rigor. State positivity is
+Witt geometry of the constraint span (isotropy + count + a finite Ward
+identity), definitizability is vacuous in finite dimensions, and the proposed
 physical sector's dimension equals the chiral index:
 `dim(V'/N) = ind(D)` - the index does not merely protect massless modes,
 it counts the states that survive gauge. Until the kernel transcription
@@ -768,10 +776,13 @@ theorem is that story's exact kinematic skeleton, no more.
 
 > Given lightlike constituents, what mass is - and exactly when it
 > vanishes - is a closed, machine-checked theorem (layer 1). That theorem
-> is now the first channel of a machine-checked four-channel operator
-> identity (layer 2.5). That the substrate can host exactly-chiral
+> is now the target first channel of a guard-pinned carrier decomposition:
+> three `D^2` slots are checked, while the Krein/E slot and concrete
+> carrier-to-`det P` identification remain open (layer 2.5). That the
+> substrate can host exactly-chiral
 > fermions, and that a chiral surplus is topologically protected against
-> every mass mechanism, is machine-checked (layer 3). That mass is the
+> the modeled carrier deformations, is machine-checked under stated finite
+> hypotheses (layer 3). That mass is the
 > rate of legal chirality exchange is machine-checked in the minimal
 > model, now with an exact lattice chiral symmetry protecting it (layer
 > 2). Which state space makes mass a spectrum has a solution at working
@@ -783,11 +794,13 @@ theorem is that story's exact kinematic skeleton, no more.
 > 6).
 
 In one sentence: **the program can now state, at machine-checked grade,
-what mass is, where it lives inside one operator, and why some things must
-stay massless; it can state at working rigor how mass becomes a spectrum
-and how large the physical world of such a model is; and it cannot yet
-state, at any grade, why the electron weighs what it weighs - and it says
-so.**
+what mass is and why some things must stay massless; it has a guard-pinned
+carrier decomposition that points to where the same invariant should live
+inside one operator, but its Krein/E mass form and concrete `det P`
+identification are still open; it can state at working rigor how mass becomes
+a spectrum and how large the physical world of such a model is; and it
+cannot yet state, at any grade, why the electron weighs what it weighs - and
+it says so.**
 
 ---
 
@@ -797,13 +810,14 @@ so.**
   rewritten to college-student accessibility with the claim calculus
   explained inline; Part II statements unchanged, each section given a
   plain-language opener; theorem-to-Lean map extended with carrier
-  anchors; status map updated: new layer 2.5 (carrier/Weitzenbock,
-  kernel-checked draft grade), layer 3 extended by the index-protection
-  family, layer 4 updated with the MEMO-grade positivity solution and the
-  `dim = ind` bookkeeping, layer 5 updated with the killed F2.0 gate and
-  the newly pre-registered equipartition gate M-KOIDE. All 2026-07-07
-  program results cited at `MEMO` or draft grade only; the paper's own
-  claims unchanged from v2.
+  anchors; status map updated: new layer 2.5 (carrier/Weitzenbock `D^2`
+  decomposition at draft grade, with the Krein/E and concrete `det P`
+  identifications open), layer 3 extended by the index-protection family,
+  layer 4 updated with the MEMO-grade positivity boundary and the `dim = ind`
+  bookkeeping, layer 5 updated with the killed F2.0 gate and the newly
+  pre-registered equipartition gate M-KOIDE. All 2026-07-07 program results
+  cited at `MEMO` or draft grade only; the paper's own claims unchanged from
+  v2.
 - **v2 (2026-07-03).** Interpretation-free core statement; orbit-invariant
   correction; claim calculus; Omega-firewall; layered status map.
   (Superseded; retained at

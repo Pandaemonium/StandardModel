@@ -301,3 +301,42 @@ Queue poll after this harvest showed four StandardModel lanes still `RUNNING`:
 items are `2170a1f9` manuscript claim-grade audit, `dbe3850c` Q04
 octonion/Fock bridge audit, `cdba6caa` Q12 C8 compatibility audit, and
 `f962cbe7` Q11 RC0 determinant cocycle strategy.
+
+## Harvest from manuscript / Q04 / Q12 / Q11 audits
+
+- `2170a1f9`
+  (`ne-manuscript-p1-claimgrade-consistency-audit-20260707`) returned a
+  documents-only audit of P1 v3.  Highest-severity findings were acted on in
+  `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`: the manuscript
+  no longer presents the Krein four-slot `D^#D`/`E` identity, the concrete
+  carrier `det P` identification, or the indefinite positive-sector witness as
+  machine-checked.  It now states the guard-pinned `D^2` three-slot result and
+  marks the Krein/E, concrete aperture, and unbalanced positivity targets OPEN.
+- `dbe3850c`
+  (`ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707`) returned a
+  Q04 convention audit.  It found that the proved octonion/Fock bridge is the
+  `Lambda(C^5)` / Spin(10) bridge, not the `Lambda(C^3)` color bridge; Q04-L4
+  is OPEN.  `ConventionBridge` correctness is still comment-only, and
+  `Q12Triality.octSgn` disagrees with the project `Basic.lookupSign` table on
+  18/64 ordered pairs until a diagonal sign-gauge lemma is proved.
+- `cdba6caa`
+  (`ne-q12-c8-realstructure-g2-compatibility-audit-20260707`) returned a C8
+  compatibility audit.  It confirmed the finite algebra is kernel-clean but
+  blocks any C8/per-sector/anomaly/safety claim on: a concrete non-permutation
+  Furey bridge, repo-`sigma` identities, involution descent, equivariant
+  McKean-Singer, sector conjugation, PSA-2/3 determinant-line phases, and the
+  missing `eps'` operator relation.
+- `f962cbe7`
+  (`ne-q11-rc0-det-cocycle-strategy-20260707`) returned a useful draft
+  `Q11GroupAction.lean` plus strategy for the exterior-functor determinant
+  cocycle.  It should be treated as a scaffold, not a trusted landing: the
+  RC0 headline depends on documented proof holes for Jacobi complementary
+  minors and Cauchy-Binet, plus a draft compiler-eval step.  The next proof job
+  should isolate the Jacobi minor / Cauchy-Binet cleanup before importing the
+  scaffold.
+
+Queue status after this harvest remains four StandardModel lanes `RUNNING`:
+`26fa682c`, `bcf263f0`, `9af1d5fb`, and `ec1ad7d5`.  Refill should use fresh
+follow-up names, especially Q11 Jacobi-minor cleanup, Q04 sign-gauge /
+ConventionBridge, Q12 genuine-triality or C8 bridge gates, and manuscript
+post-fix verification, rather than resubmitting the harvested report jobs.

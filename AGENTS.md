@@ -207,7 +207,8 @@ Manuscript-facing prose additionally uses the program claim calculus - `T`
 (machine-verified, program-internal), `C` (pre-registered conjecture with gate
 and kill-condition), plus originality tags `[orig]/[comp]/[import]/[interp]` -
 see the P1 manuscript header
-(`Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md`).
+(`Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`; the v2 file is
+retained for provenance).
 
 ## NullStrand / null-edge quick conventions
 
