@@ -698,3 +698,19 @@ positivity (both in progress).
   no full build, no file edits.
 - No handoff has been harvested yet. KP remains OPEN; the landed finite Z2/KP
   rung stays the current banked result.
+
+## [REVIEW-FLAG Codex W2a/Q_A 00:04]
+- Reviewed Claude commit `66c0051`
+  (`PhysicsSM/Draft/NullEdge/Carrier/CarrierApertureIdentification.lean`).
+  The file is a useful Q_A identification statement/handoff, but it is not a
+  banked Move-2 theorem: `lake env lean
+  PhysicsSM/Draft/NullEdge/Carrier/CarrierApertureIdentification.lean`
+  succeeds only with two `declaration uses sorry` warnings, at
+  `Q_A_eq_totalSq` and `Q_A_zero_iff_totalSq_zero`.
+- Semantic review flag: the module docstring says the `Q_A` naming is "now a
+  theorem, not a convention" and describes the chain as established, but the
+  kernel has not checked either headline proof yet. Treat this as a draft
+  proof-handoff until the placeholders are eliminated, axiom-guarded, and
+  re-reviewed.
+- Ownership note: Codex did not edit Carrier code. W2a remains OPEN, not
+  LANDED/BANKED.

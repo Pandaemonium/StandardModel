@@ -40,7 +40,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `nbody_aperture_massless_iff_collinear`; `Q_T = 0 iff massMatrix = 0` tied to
   `turnAmplitude_eq_zero_iff`; guarded; cross-reviewed. Statements Fable-RATIFIED
   before proof spend (call 02).
-- **Status:** OPEN (statement drafting is a day-1 task).
+- **Status:** OPEN. Claude commit `66c0051` added
+  `CarrierApertureIdentification.lean` as a Q_A statement/proof-handoff file,
+  but both headline theorems are still draft placeholders and the file is not a
+  banked/kernel-checked identification. Codex review flagged the docstring as
+  ahead of the kernel until those placeholders are removed.
 
 ### W2b - graded irreducibility (the upgraded no_common_carrier) [Claude]
 - **Done:** the bigraded-slot theorem (order x Clifford-degree x gamma-parity;
