@@ -208,6 +208,14 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.exists_protected_massless_mode
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_index_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_index_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_forced_massless_mode' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_forced_massless_mode
+
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.color_commutant_eq_scalars' depends on axioms: [propext, Classical.choice, Quot.sound] -/

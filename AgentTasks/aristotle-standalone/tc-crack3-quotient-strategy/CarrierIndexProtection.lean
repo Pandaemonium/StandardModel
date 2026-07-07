@@ -190,33 +190,4 @@ theorem exists_protected_massless_mode
 
 end ProtectedMode
 
-section ChiralWitness
-
-/-! ## The chiral pole: a concrete unbalanced complex
-
-The kappa=2 Pontryagin witness (`CarrierPontryaginWitness.lean`) has BALANCED grading
-(2,2), index 0 — nothing protected, everything gappable, and indeed its mass form is
-strictly positive. Here is the opposite pole: chirality grading `(2,1)` on `ℂ² ⊕ ℂ¹`,
-where the index is `1` for EVERY Hilbert-self-adjoint carrier and a massless
-positive-chirality mode is forced — the "massless neutrino" of the toy family. The two
-witnesses bracket the program: grading balance decides whether mass generation can be
-complete. -/
-
-/-- On the `(2,1)`-graded complex the chiral index of every adjoint carrier pair is
-`1` — one protected massless chiral mode, whatever the dynamics. -/
-theorem chiralWitness_index_one
-    (Dp : EuclideanSpace ℂ (Fin 2) →ₗ[ℂ] EuclideanSpace ℂ (Fin 1)) :
-    chiralIndex Dp (LinearMap.adjoint Dp) = 1 := by
-  rw [chiralIndex_adjoint_pair]
-  simp
-
-/-- On the `(2,1)`-graded complex EVERY carrier block annihilates a nonzero
-positive-chirality state: the forced massless mode, exhibited concretely. -/
-theorem chiralWitness_forced_massless_mode
-    (Dp : EuclideanSpace ℂ (Fin 2) →ₗ[ℂ] EuclideanSpace ℂ (Fin 1)) :
-    ∃ ψ : EuclideanSpace ℂ (Fin 2), ψ ≠ 0 ∧ Dp ψ = 0 :=
-  exists_protected_massless_mode (by simp) Dp
-
-end ChiralWitness
-
 end PhysicsSM.Draft.NullEdge.Carrier
