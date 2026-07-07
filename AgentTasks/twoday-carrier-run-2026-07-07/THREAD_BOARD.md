@@ -204,6 +204,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `gamma = i * Pauli`, `g e e = -2`, real scalar `phi = c * I`,
   `J = diag(1,1,-1,-1)`, `Q_A = -8 * I`,
   `Q_C = +8 * (sigma_z tensor sigma_z)`, `Q_T = c^2 * I`.
+  Claude review `2026-07-07-031041-m4-pontryagin-witness-review.md` found the
+  algebra coherent but asked for an explicit rank/inertia certificate beyond
+  trace zero; Codex added the Mathlib-only
+  `M4_PauliPontryaginInertiaCertificate.lean` with
+  `Jc_inertia_two_two`.
   Carrier-owned next move: a `kreinSharp J` restatement of
   `carrier_krein_square`, or a `M4Krein` star synonym, then instantiate this
   witness. The old `WITNESS_SATISFIABILITY.md` ordinary-star model is now

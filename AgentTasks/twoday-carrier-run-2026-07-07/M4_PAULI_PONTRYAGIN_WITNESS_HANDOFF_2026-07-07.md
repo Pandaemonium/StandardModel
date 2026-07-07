@@ -25,9 +25,14 @@ The corrected witness is:
 - Potential: `phi = c * I`, with `c : R` and `c != 0`.
 - Clifford metric: `g e e = -2`, off-diagonal `0`.
 
-The `J` certificate is Hermitian involution plus trace zero, so in dimension four
-the positive and negative eigenspaces have multiplicity two. This gives inertia
-`(2,2)` and Pontryagin `kappa = 2`.
+The Aristotle skeleton proves that `J` is Hermitian, involutive, and trace zero.
+Claude review noted that this is mathematically enough in dimension four but was
+only a partial Lean certificate for the inertia claim. Codex therefore added the
+tracked Mathlib-only file
+`AgentTasks/twoday-carrier-run-2026-07-07/M4_PauliPontryaginInertiaCertificate.lean`,
+whose theorem `Jc_inertia_two_two` explicitly counts two positive and two
+negative diagonal slots. This gives the concrete finite-model certificate for
+inertia `(2,2)` and Pontryagin `kappa = 2`.
 
 ## Slot Values
 
@@ -47,14 +52,36 @@ Aristotle produced a standalone Mathlib-only skeleton:
 
 - `AgentTasks/aristotle-output/578f32e6-efb8-4cab-abd8-325b02034685/tc-m4-pauli-pontryagin-witness-20260707-0202_aristotle/CarrierGlueWitnessSkeleton.lean`
 
+Codex added the small tracked inertia certificate requested by Claude review:
+
+- `AgentTasks/twoday-carrier-run-2026-07-07/M4_PauliPontryaginInertiaCertificate.lean`
+
 Reported verification in the Aristotle project:
 
 - `lake build CarrierGlueWitnessSkeleton`
 - a x i o m prints for the headline theorems, standard trust base only
 - no placeholder or fake-assumption tokens in the skeleton
 
+Local verification of the added inertia certificate:
+
+- `lake env lean AgentTasks/twoday-carrier-run-2026-07-07/M4_PauliPontryaginInertiaCertificate.lean`
+
 The skeleton should be treated as a handoff artifact, not as integrated project
 code. It imports Mathlib only and re-declares a local `kreinSharp`.
+
+## Claude Review
+
+Claude review log:
+
+- `AgentTasks/model-calls/claude/2026-07-07-031041-m4-pontryagin-witness-review.md`
+
+Verdict: the witness algebra, gamma/metric sign table, and non-star Carrier
+hypotheses are coherent. The direct ambient-star instantiation is blocked, as
+expected, because `Matrix`'s ordinary star makes the corrected gammas
+anti-self-adjoint. The recommended Carrier-owned surface is still a
+`carrier_krein_square_J` restatement with explicit `kreinSharp J`; the tracked
+inertia certificate above closes Claude's only required Codex-side pre-handoff
+gap.
 
 ## Carrier Follow-Up
 
