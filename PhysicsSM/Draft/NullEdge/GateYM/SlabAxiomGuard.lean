@@ -521,6 +521,10 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.matrix_selfAdjointInvolution_defectGram_eq_two_mul_linearDefect
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.matrix_defectGram_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.matrix_defectGram_posSemidef
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.z2_half_defectGram_eq_linearDefect' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.z2_half_defectGram_eq_linearDefect

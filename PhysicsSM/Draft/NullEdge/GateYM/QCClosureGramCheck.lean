@@ -22,7 +22,7 @@ positivity theorem.
 
 noncomputable section
 
-open scoped Matrix
+open scoped Matrix ComplexOrder
 
 namespace PhysicsSM
 namespace Draft
@@ -91,6 +91,15 @@ theorem matrix_selfAdjointInvolution_defectGram_eq_two_mul_linearDefect
     ring
   · simp [hij]
     ring
+
+/-- Any finite matrix defect Gram square is positive semidefinite.
+
+This is the reusable positivity half of a future `Q_C = sum M_p^* M_p`
+factorization.  It deliberately does not identify the concrete Carrier
+`Q_C` with such a Gram square. -/
+theorem matrix_defectGram_posSemidef {n : Type*} [Fintype n] [DecidableEq n]
+    (U : Matrix n n ℂ) : ((1 - U)ᴴ * (1 - U)).PosSemidef :=
+  Matrix.posSemidef_conjTranspose_mul_self _
 
 /-- The unnormalized `Z2` defect Gram square is twice the linear defect.
 
