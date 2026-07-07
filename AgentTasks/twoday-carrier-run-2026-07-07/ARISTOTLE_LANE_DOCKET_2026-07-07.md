@@ -164,3 +164,22 @@ StandardModel-relevant lanes.
   calibration, while BW-cut itself, doubler removal, Reeh-Schlieder
   well-posedness, Ward/Krein compatibility, entropy, ANEC, Jacobson, and
   continuum horizon claims remain MEMO/OPEN.
+- `11184eac`
+  (`ne-q12-gammaprime-quotient-equivariance-audit-20260707`) returned a
+  standalone finite subquotient core now integrated as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`.  It proves the
+  physical-quotient descent interface, functoriality, `tau_bar^3 = 1`, the
+  commutator-in-radical criterion, the invariance-plus-injectivity equality
+  upgrade, and fail/heal witnesses.  Analytic equivariant McKean-Singer,
+  antilinear `J_R` descent, the specific Furey bridge, and anomaly promotion
+  remain open.
+- `7f273e71`
+  (`ne-q13-round1-verdict-redteam-audit-20260707`) returned a round-2 red-team
+  report.  No kernel soundness issue was found in the pack, but several claim
+  shapes were downgraded: Q12 "triality" language currently covers only
+  diagonal `(Z/2)^3` character automorphisms, Q01 flat-sector positivity is not
+  indefinite positive-sector certification, and Q06 exact GW is a
+  palindromic/midpoint convention theorem rather than a one-sided-retardation
+  theorem.  The report also marks Q02 E-slot, `(2,1)` index protection, and Q04
+  color-commutant as outside the pack's inspectable source set and requiring
+  direct audit before sign-off.

@@ -2891,3 +2891,30 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
   `pre-commit run --all-files`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q12 GammaPrime quotient and Q13 red-team harvested
+
+- Harvested Aristotle refill-wave projects `11184eac`
+  (`ne-q12-gammaprime-quotient-equivariance-audit-20260707`) and `7f273e71`
+  (`ne-q13-round1-verdict-redteam-audit-20260707`).
+- Integrated the Q12 finite physical-quotient descent core as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean` and imported it
+  from the Gate I1 aggregator.  Proved `physDescend`, `physDescend_comp`,
+  `physDescend_cube_eq_id`, `physDescend_commutes_iff`,
+  `map_eq_of_invariant_of_injective`, `E4_commutator_can_fail`, and
+  `E4_healing`.
+- Claim boundary: PROVED finite subquotient linear algebra only.  Model-specific
+  satisfaction of the descent hypotheses, antilinear `J_R` descent,
+  equivariant McKean-Singer, anomaly promotion, and physical chirality remain
+  OPEN.
+- Recorded the Q13 red-team downgrades in `THREAD_BOARD.md`: Q12 "triality"
+  wording is currently diagonal-character/parity bookkeeping, Q01 flat-sector
+  positivity is not indefinite positive-sector certification, and Q06 exact GW
+  is palindromic/midpoint rather than one-sided retarded.  Q02 E-slot,
+  `(2,1)` index-protection, and Q04 color-commutant still need direct source
+  audit before sign-off.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`;
+  `pre-commit run --all-files`.

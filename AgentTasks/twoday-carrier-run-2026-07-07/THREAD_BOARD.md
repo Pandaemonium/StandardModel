@@ -195,7 +195,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `kreinSharp_mul_self_isKreinSelfAdjoint`. Latest Fable guidance keeps this as
   the top near-term positivity route, but the degenerate-sector rail remains
   binding. Next: Fable ratifies the exact positive-sector hypothesis before any
-  headline theorem proof spend.
+  headline theorem proof spend. Q13 red-team `7f273e71` reinforces this
+  boundary: flat-sector mass-form positivity is Hilbert positivity on the
+  positive-chirality half, not an indefinite/Pontryagin positivity theorem, and
+  the balanced `(2,2)` witness cannot certify a nonzero physical sector. The
+  unbalanced `(2,1)` index-protection witness remains the load-bearing target.
 
 ### M4-WIT - Pauli/Pontryagin concrete carrier witness [Codex handoff, Claude-owned integration]
 - **Done:** a corrected M4(C) Pauli witness under the physical Krein sharp
@@ -451,11 +455,14 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Status:** RESOLVED boundary. The literal carrier conjecture "any retarded
   transfer is inverted" is false in the nonabelian one-sided case. The live Lean
   theorem now proves both the palindromic/abelian positive cases and the
-  explicit one-sided nonabelian kill witness. The redundant follow-up job
-  `7a12dbbd` was canceled after the local landing.
-- **Next:** R1 (the exact "retardedness IS the Wilson term" dispersion identity),
-  R4 telescoping, R0 path-sum = transfer power, and the decoration-level
-  derivation of the generator conjugation axiom from `U_reverse = U^{-1}`.
+  explicit one-sided nonabelian kill witness. Q13 red-team `7f273e71` sharpened
+  the wording: exact GW is a symmetric/midpoint-palindromic convention theorem,
+  not a theorem that one-sided retardation by itself supplies `G T G = T^{-1}`.
+  The redundant follow-up job `7a12dbbd` was canceled after the local landing.
+- **Next:** R1 (retarded/Wilson dispersion identity in the corrected
+  palindromic/midpoint boundary), R4 telescoping, R0 path-sum = transfer power,
+  and the decoration-level derivation of the generator conjugation axiom from
+  `U_reverse = U^{-1}`.
 ### EQUIPARTITION-GATE - the first physical number [Claude; post-Q07; GATE M-KOIDE]
 - **Done:** F2 equipartition sum rule (tr M^2 = (2/V)(tr M)^2 under turn-power
   = hop-power; Q = 2/V; pointwise companion with Cauchy-Schwarz bound) +
@@ -625,16 +632,25 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   T5-T8 operator gates: `octSgn_alternative`, `octSgn_nonassoc`,
   `parity_triple`, `trialityTriple_conj`, `parity_commutes_tau`,
   `bridge_via_perm`, `bridge_trace_necessary`, and
-  `bridge_kill_of_unbalanced`.
+  `bridge_kill_of_unbalanced`. Aristotle follow-up `11184eac` was harvested
+  into `PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`, proving
+  the finite physical-quotient descent interface: `physDescend`,
+  `physDescend_comp`, `physDescend_cube_eq_id`,
+  `physDescend_commutes_iff`, `map_eq_of_invariant_of_injective`,
+  `E4_commutator_can_fail`, and `E4_healing`.
 - **Status:** PROVED algebraic T1-T8 finite core plus finite PSA-1 and
   sector-additivity accounting identities only.
   This confirms the G2-parity defusal at the XOR/Fano algebra level and removes
   sign-convention risk from the automorphism claim; PSA-1 gives the per-sector
   determinant/supertrace check; ChargeResolution gives finite
   partition-by-label and direct-sum bookkeeping; Q12Triality gives finite
-  triality/parity commutation and abstract bridge/kill criteria. These results
-  do not prove an analytic/equivariant index theorem behind a physical anomaly
-  statement.
+  diagonal-character/parity commutation and abstract bridge/kill criteria;
+  Q12GammaPrimeQuotient gives the finite quotient-descent gate. Q13 red-team
+  `7f273e71` downgraded the word "triality" here: the landed
+  `parity_triple` is the all-equal diagonal `(Z/2)^3` character case, generic
+  in `sigma`, not a genuine order-3 Spin(8)/octonion triality theorem. These
+  results do not prove an analytic/equivariant index theorem behind a physical
+  anomaly statement.
 - **Next:** T8 still needs the *specific repo* ladder/Furey bridge matrix `B`
   checked entry-wise against the actual ladder ordering/signs; the landed
   theorem only proves the benign permutation case and trace/signature kill
@@ -644,11 +660,14 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   not a permutation. The next certificate must pin the ordering/cochain, prove
   convention equivalence, define the concrete `Bfur`, check unitary/non-
   permutation status, discharge the 64 entrywise intertwining equations, and
-  promote the result to a G2/XOR-character statement. T9/E4 requires constraint
-  equivariance `tau Gamma' = Gamma'` before any per-sector physical quotient
-  count. The remaining PSA gap is now the analytic or operator-level
-  equivariant McKean-Singer theorem, not finite additivity. Failure of the
-  specific-`B` bridge is a C8-seam escalation, not a patch.
+  promote the result to a G2/XOR-character statement. T9/E4 now has a proved
+  finite interface: an operator descends only when it preserves both `V'` and
+  `N`, and descended `tau` commutes with descended `Gamma` iff
+  `[tau, Gamma] V' <= N`; upstairs noncommutation can heal on the quotient.
+  The remaining PSA gap is now the analytic or operator-level equivariant
+  McKean-Singer theorem plus model-specific verification of the descent
+  hypotheses, not finite additivity. Failure of the specific-`B` bridge is a
+  C8-seam escalation, not a patch.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.
@@ -700,7 +719,14 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Koide/perp/KP jobs. Q11 then added
   `ne-q11-jr-real-structure-ko-unimodularity-audit-20260707` as a thirteenth
   active StandardModel lane. Mapping and deliverables live in
-  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`. Q13 red-team follow-up `7f273e71`
+  was harvested: strongest corrective actions are to demote Q12
+  order-3/triality wording unless a genuine non-diagonal order-3 triple over
+  `octSgn` is proved, keep Q01 flat-sector positivity separate from indefinite
+  positive-sector certification, treat exact GW as palindromic/midpoint rather
+  than one-sided retarded, and re-audit the absent Q02 E-slot, `(2,1)`
+  index-protection, and Q04 color-commutant sources before signing those
+  headlines.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;
