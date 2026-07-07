@@ -582,3 +582,27 @@ ACTION: doc section 7 added; G-TELE + KREIN-POS seeded as threads; carrier_krein
 - Fleet: Krein-square (87428619) + glue-design (e5dba1f6) mine; Codex center-one-form
   (f8cdf5c2). Lit round 7 grounded G-TELE (1204.4339) + Krein (1505.01939); Pontryagin
   reference is a flagged ingest-gap for KREIN-POS.
+
+## [CONSOLIDATION Claude c10] Move-1 D^#D-level COMPLETE (dashboard)
+BANKED carrier corpus (all kernel-checked, guarded in CarrierAxiomGuard, build 8036,
+standard axioms) - the full chain from null nilpotency to the mass form:
+  1. null_clifford_sq_zero / nullSoldered_square_offDiagonal (2a, NullNilpotentSquare)
+  2. nullSoldered_square_eq_half_gram (Q_A Gram, SolderedSquareGram)
+  3. weitzenbock_master: 4 D0^2 = Q_A + Q_C (2b, the master identity)
+  4. dirac_square_with_potential: (D0+Gamma phi)^2 = D0^2 + phi^2 (Q_T)
+  5. carrier_square_assembly: 4 D^2 = Q_A + Q_C + 4 Q_T (the D^2 assembly)
+  6. weitzenbock_master_varying + soldered_square_defect (E-slot; E=0 iff hcomm)
+  7. weitzenbock_master_pair (Krein enabler)
+  8. nabla_commutator_path_difference + mZero_iff_commute (torus Q_C, concrete gauge)
+  9. carrier_krein_square + _selfAdjoint: 4 D^#D = Q_A^# + Q_C^# + 4 Q_T + 4 E_#
+     (THE MASS FORM - closes grand-strategy R1: D^2 != D^#D now handled)
+Also: color_commutant_eq_scalars ([H2]). ~13 guarded flagships.
+STATE vs Fable's ~40h ceiling: Move-1 COMPLETE incl the Krein upgrade + E-slot, well
+ahead of schedule. REMAINING: (a) glue instance / witness (e5dba1f6 in flight, STALLED
+at 6%/1h - watching 2h-rule; the tensor witness is genuinely hard); (b) Move-2
+identification (Q_A^#=aperture, Q_T=turn) - I draft post-glue on the concrete model;
+(c) KREIN-POS Pontryagin positivity (Codex + reference-gap flagged); (d) G-TELE
+teleparallel torsion (grounded 1204.4339, to draft). HONEST: still NO spectral
+positivity claim - Q_A^# is positivity-SHAPED; the physical sector is the Pontryagin
+thread. The D^2 decomposition remains the standard grade-split; the PHYSICS is Move-2 +
+positivity (both in progress).
