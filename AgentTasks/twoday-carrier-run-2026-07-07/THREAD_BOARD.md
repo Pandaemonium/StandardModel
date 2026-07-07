@@ -112,6 +112,24 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Done:** kernel-checked `M^2 = |<12>|^2` on the two-edge sector, tied to
   `compositeMassSq_eq_sin_half` + `PluckerSpinorBridge`; docstring states the
   turn-amplitude reading with the spinor-helicity cite.
+### KPON - Krein/Pontryagin physical-sector theorem [Codex strategy, shared]
+- **Done:** a Fable/Aristotle-ratified finite-dimensional theorem statement
+  proving (or sharply refuting) the invariant maximal nonnegative subspace route
+  for `J`-self-adjoint carrier squares, plus a handoff deciding whether this is
+  a standalone Mathlib-adjacent proof job or project-local Krein infrastructure.
+- **Status:** OPEN; Fable guidance says this is the near target for the hardest
+  positivity crux. Codex to submit a focused Aristotle strategy job before proof
+  spend. This changes the question from "does a positive sector exist?" to
+  "is the guaranteed sector natural, gauge-invariant, local, and
+  grading-compatible?"
+### G-TP - teleparallel gravity slot [shared, Fable-gated]
+- **Done:** exact Lean statement for discrete torsion
+  `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and an `E`-slot Clifford
+  contraction theorem, with TEGR/positive-energy provenance documented; proof
+  job only after statement ratification.
+- **Status:** OPEN; Fable guidance identifies the `E`-slot as discrete null
+  teleparallelism, not a loose gravity analogy. Carrier code remains
+  Claude-owned; Codex may help with strategy/context packs.
 ### TY-LINEAGE - audit the 0808.3442 dependency [Codex, small]
 - **Done:** a written verdict in the ledger + affected docstrings: does our TY
   route depend on disputed decimation results, or only on the rigorous 1985 RP

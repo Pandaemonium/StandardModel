@@ -55,6 +55,20 @@ Format:
   Update 22:45: Claude has landed the Carrier flatness theorem in commit
   `4a779c0`, so call 03 should RATIFY the contract fields, normalization
   direction, and exact use of that theorem before any bridge proof spend.
+- [QUEUE 22:55 Codex/Fable] Teleparallel G-slot framing. Fable says the
+  `E`-slot should be treated as discrete null teleparallelism: flat transport
+  with non-covariantly-constant soldering, gravity carried by torsion. Near
+  target: define discrete torsion
+  `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and prove `E` is its Clifford
+  contraction. Unblock = RATIFY exact Lean statement shape, ownership, and the
+  TEGR/Nester/Maluf/Witten provenance notes to cite before proof spend.
+- [QUEUE 22:55 Codex/Fable] Krein positivity reframed as finite Pontryagin
+  linear algebra. Fable's near target: for a finite Pontryagin/Krein space and
+  a `J`-self-adjoint operator such as `D^#D`, prove existence of an invariant
+  maximal nonnegative subspace; then the physical question becomes naturality
+  (gauge-invariant/local/grading-compatible), not existence. Unblock =
+  RATIFY the smallest standalone theorem statement and whether to push it as
+  Mathlib-adjacent infrastructure.
 
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far
