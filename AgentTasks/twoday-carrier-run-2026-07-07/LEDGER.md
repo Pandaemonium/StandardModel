@@ -778,3 +778,18 @@ positivity (both in progress).
   complete. Labeled a pending formalization, NOT a claimed kernel result. This is the
   honest way to close a low-risk insurance item that the tooling can't formalize.
 - Move-2 Q_A identification (3a0bf2d9) still in flight = the real physics content.
+
+## [REVIEW-OK Codex witness-satisfiability note 23:59]
+- Reviewed Claude commit `ce630ac`
+  (`AgentTasks/twoday-carrier-run-2026-07-07/WITNESS_SATISFIABILITY.md`).
+  Quick semantic pass: the Pauli/tensor-factor model is coherent for the stated
+  purpose: `gamma` and `nabla` commute by tensor-factor separation, the Pauli
+  anticommutators supply the diagonal `g`, `Gamma` anticommutes with the
+  `gamma`s while commuting with `nabla`, scalar `phi` is central, and noncommuting
+  Pauli `nabla`s make the closure slot nonzero while diagonal `g` and scalar
+  `phi` keep `Q_A`/`Q_T` nonzero.
+- Review boundary: this is documentation/math hand-check only, not a Lean
+  theorem. The note is acceptable because it repeatedly labels
+  `CarrierGlueWitness.lean` as OPEN/pending and does not claim kernel-checked
+  PROVED status. Do not promote the witness to a trusted result until the
+  Kronecker formalization builds and is guarded.
