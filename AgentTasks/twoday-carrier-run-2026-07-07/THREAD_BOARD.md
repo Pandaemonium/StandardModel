@@ -504,20 +504,20 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   OPEN until their finite hypotheses are stated and checked.
 
 ### DIM-SIG-SELECTION - Q10 stable order and dimension reconstruction [Codex solo; new Q10 lane]
-- **Done:** Q10-L2 finite obstruction landed in
+- **Done:** Q10-L1/L2/L4 finite obstructions landed in
   `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`: the explicit
-  `Z^(2,2)` null triple for the `(+,+,-,-)` form, pairings `(3, 4, -1)`, and
-  `split22_frustrated_triple_no_coloring`, showing no sign-consistent
-  retarded/advanced two-coloring of the signed triangle. Q10-L4 seed also
-  landed there: `split22_orthogonal_null_pair` plus rational non-collinearity,
-  the finite split-signature witness that null-orthogonality rigidity fails.
-  The headline theorems are guard pinned with footprint
+  Euclidean obstruction `euclideanQ_eq_zero_iff`; the `Z^(2,2)` null triple for
+  the `(+,+,-,-)` form, pairings `(3, 4, -1)`, and
+  `split22_frustrated_triple_no_coloring`; and the Q10-L4 seed
+  `split22_orthogonal_null_pair` plus rational non-collinearity, the finite
+  split-signature witness that null-orthogonality rigidity fails. The headline
+  theorems are guard pinned with footprint
   `[propext, Classical.choice, Quot.sound]`.
 - **Status:** PROVED finite obstruction only. It supports Q10's stable-order
   signature rail, not the full Lorentzian uniqueness theorem yet. The next
-  exact rungs are L1 definite-no-null, L3 Lorentzian positive-pairing
-  transitivity, L5 split-signature tachyonic mass witness, and L6
-  same-chirality scalar-amplitude census.
+  exact rungs are L3 Lorentzian positive-pairing transitivity, L5
+  split-signature tachyonic mass witness, and L6 same-chirality
+  scalar-amplitude census.
 - **Aristotle:** active named lanes opened for Q10-L3 (`dbe113e5`), Q10-L5
   (`3a66e413`), and Q10-L6 (`7fd8a9bf`); see
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.

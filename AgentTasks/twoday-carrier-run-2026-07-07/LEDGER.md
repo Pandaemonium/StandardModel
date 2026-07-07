@@ -2446,3 +2446,17 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   opened the `JR-REAL-STRUCTURE` board lane. Claim boundary: RC0/unimodularity
   is an antilinear-covariance axiom/finite-equivalence target, not a consequence
   of Krein closure.
+
+## [HB Codex solo] Q10-L1 Euclidean no-null obstruction landed
+- Extended `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean` with
+  `euclideanQ : (Fin n -> R) -> R` and `euclideanQ_eq_zero_iff`, proving the
+  positive-definite coordinate quadratic form vanishes iff the vector is zero.
+  This is the kernel form of Q10-L1: Euclidean signature has no nonzero null
+  covectors.
+- Claim boundary: PROVED finite positive-definite obstruction only. This does
+  not by itself prove Lorentzian uniqueness, stable retardation, or dimension
+  selection.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

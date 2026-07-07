@@ -19,6 +19,33 @@ formalization ladder L2.
 
 namespace PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection
 
+/-! ## Definite forms have no nonzero null vectors -/
+
+/-- Real vectors in a Euclidean coordinate space. -/
+abbrev EuclideanVec (n : Nat) := Fin n -> ℝ
+
+/-- The positive-definite coordinate quadratic form. -/
+def euclideanQ {n : Nat} (x : EuclideanVec n) : ℝ :=
+  ∑ i : Fin n, x i ^ 2
+
+/-- The Euclidean coordinate quadratic form vanishes only on the zero vector.
+
+This is the finite Q10-L1 obstruction: a positive-definite signature cannot
+support a nonzero null covector. -/
+theorem euclideanQ_eq_zero_iff {n : Nat} (x : EuclideanVec n) :
+    euclideanQ x = 0 ↔ x = 0 := by
+  constructor
+  · intro hx
+    funext i
+    have hterm : x i ^ 2 = 0 := by
+      have h_nonneg : ∀ j ∈ (Finset.univ : Finset (Fin n)), 0 <= x j ^ 2 := by
+        intro j _
+        exact sq_nonneg (x j)
+      exact (Finset.sum_eq_zero_iff_of_nonneg h_nonneg).mp hx i (Finset.mem_univ i)
+    exact sq_eq_zero_iff.mp hterm
+  · intro hx
+    simp [euclideanQ, hx]
+
 /-! ## Split `(2,2)` integer form -/
 
 /-- Integer vectors in four coordinates. -/
@@ -154,5 +181,9 @@ theorem split22_frustrated_triple_no_coloring (color : Fin 3 -> Bool) :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection.split22_orthogonal_null_pair_not_rat_collinear' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms split22_orthogonal_null_pair_not_rat_collinear
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection.euclideanQ_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms euclideanQ_eq_zero_iff
 
 end PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection
