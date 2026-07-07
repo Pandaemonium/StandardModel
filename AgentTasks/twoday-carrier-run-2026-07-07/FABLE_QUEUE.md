@@ -69,6 +69,12 @@ Format:
   parameterized contract has landed in `QCCarrierBridge.lean`, with theorem
   guards in `SlabAxiomGuard.lean`. The optional concrete Carrier attachment is
   still Fable-gated and should not be treated as part of the landed contract.
+  Update 01:08 Codex/Aristotle: focused strategy job
+  `f4e21d1c`/`8068bd6e` says to code the concrete attachment now, but only as
+  pure bookkeeping: instantiate `Obs` with the Carrier torus configuration type,
+  pin `qC0` to a chosen `U`, and re-export `mZero_iff_commute` without any
+  curvature-to-scalar lemma. Codex landed this as `QCCarrierTorusAttachment.lean`.
+  Anything deriving the scalar from curvature remains Fable-gated.
 - [QUEUE 22:55 Codex/Fable] Teleparallel G-slot framing. Fable says the
   `E`-slot should be treated as discrete null teleparallelism: flat transport
   with non-covariantly-constant soldering, gravity carried by torsion. Near

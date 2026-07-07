@@ -1036,3 +1036,38 @@ positivity (both in progress).
   what the smallest honest Lean API should be. Non-claim rails: no measure,
   expectation theorem, nonabelian result, beyond-leading positivity, or
   canonical physical observable unless supplied as extra data.
+
+## [LEAN Codex QC torus attachment 01:08]
+- Harvested Aristotle QC attachment strategy project
+  `f4e21d1c-0c93-4d9f-8754-3c4759603c80`, task
+  `8068bd6e-e126-4ca8-a7f3-82b94d8657fd`. Decision: code the concrete
+  attachment now, but only as pure bookkeeping; do not derive the scalar readout
+  from curvature.
+- Landed `PhysicsSM/Draft/NullEdge/GateYM/QCCarrierTorusAttachment.lean`, a
+  GateYM-owned module importing the Carrier torus API without editing
+  `PhysicsSM/Draft/NullEdge/Carrier/**`.
+- New API:
+  `QCCarrierBridge.TorusGaugeConfig`,
+  `QCCarrierBridge.TorusLeadingAttachment`,
+  `TorusLeadingAttachment.ofReadout`,
+  `TorusLeadingAttachment.readout_at_config_eq_leadingClosureFluxCoeff`,
+  `TorusLeadingAttachment.readout_at_config_eq_tanh`,
+  `TorusLeadingAttachment.readout_at_config_eq_exp_neg_osSpectralGap`,
+  `TorusLeadingAttachment.readout_at_config_mem_Ioo`, and
+  `TorusLeadingAttachment.flat_iff_commute`.
+- Scope rails: the scalar readout equality remains an external
+  `LeadingQCCarrierContract` field; `flat_iff_commute` is only the scalar-free
+  Carrier `mZero_iff_commute` fact. No measure, expectation value, nonabelian
+  result, beyond-leading positivity, or curvature-to-scalar derivation is
+  claimed.
+- Guarded `readout_at_config_mem_Ioo` and `flat_iff_commute` in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`; imported the module from
+  `PhysicsSM/Draft/NullEdge/GateYM.lean`.
+- Mechanical checks passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/QCCarrierTorusAttachment.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.QCCarrierTorusAttachment`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`, and
+  `git diff --check`. Targeted builds replayed older imports and emitted only
+  pre-existing warnings outside this new module.

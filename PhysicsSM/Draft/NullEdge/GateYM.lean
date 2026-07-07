@@ -56,6 +56,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
+import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierTorusAttachment
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
@@ -734,5 +735,9 @@ carrier `Q_C` expectation theorem and not a beyond-leading positivity claim).
 `QCCarrierBridge` (parameterized leading-readout contract tying an externally
 supplied observable/readout to the `QCLeading` scalar consequences; still no
 measure, expectation, nonabelian, or beyond-leading positivity claim).
+`QCCarrierTorusAttachment` (bookkeeping-only instantiation of that contract over
+the concrete Carrier `Z2 x Z2` torus gauge-configuration type, with a
+scalar-free re-export of `mZero_iff_commute`; still no curvature-to-scalar
+derivation).
 Adding a new YM module? Import it here.
 -/

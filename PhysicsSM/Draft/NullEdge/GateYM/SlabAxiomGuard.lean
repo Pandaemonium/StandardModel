@@ -12,6 +12,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
+import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierTorusAttachment
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
@@ -191,6 +192,16 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.scalarNormalizationContract_readout_eq_tanh' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.scalarNormalizationContract_readout_eq_tanh
+
+/-! ## QC-leading concrete torus attachment (bookkeeping; no curvature-to-scalar claim) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.readout_at_config_mem_Ioo' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.readout_at_config_mem_Ioo
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.flat_iff_commute' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.flat_iff_commute
 
 /-! ## OS1 finite polymer-map rungs (not volume-uniform KP) -/
 

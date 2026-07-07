@@ -10,7 +10,7 @@ aristotle:
   expected_module: null
   submission_project: AgentTasks/aristotle-submit/tc-qc-attach-strategy-20260707-0051
   output_dir: AgentTasks/aristotle-output/f4e21d1c-0c93-4d9f-8754-3c4759603c80
-  status: queued
+  status: harvested
 ```
 
 ## Purpose
@@ -47,3 +47,23 @@ Decision-forcing report:
   `tanh beta` normalization, and nonabelian/beyond-leading claims;
 - recommendation among bookkeeping structure, theorem using
   `mZero_iff_commute`, audit job, or Fable escalation.
+
+## Result
+
+Aristotle returned a decision-forcing strategy report in the ignored output
+directory:
+
+```text
+AgentTasks/aristotle-output/f4e21d1c-0c93-4d9f-8754-3c4759603c80/
+  tc-qc-attach-strategy-20260707-0051_aristotle/
+    qc-carrier-attachment-DECISION-20260707.md
+```
+
+Decision: code the concrete attachment now, but only as pure bookkeeping. The
+recommended API is a `TorusLeadingAttachment` structure in the
+`QCCarrierBridge` namespace that instantiates `Obs` with the Carrier torus
+configuration type, pins `qC0` to a chosen configuration `U`, and re-exports
+`mZero_iff_commute` as the scalar-free curvature axis.
+
+Non-claim rail: no theorem should derive the scalar leading readout from
+`plaquetteCurvature`; the readout equality remains an external field/hypothesis.

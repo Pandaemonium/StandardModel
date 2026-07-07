@@ -114,9 +114,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `QCLeading.leadingClosureFluxCoeff beta`, plus imported consequences
   `= tanh beta`, `= exp(-gap)`, and membership in `(0,1)`. This remains a
   leading scalar/readout contract, not a carrier expectation theorem, not
-  beyond-leading positivity, and not a nonabelian result. Next optional layer:
-  after Fable ratification, attach the distinguished observable to the concrete
-  Carrier torus curvature API without changing the measure/expectation rails.
+  beyond-leading positivity, and not a nonabelian result. Aristotle QC
+  attachment strategy job `f4e21d1c`/`8068bd6e` ratified the next step as pure
+  bookkeeping only; Codex landed `QCCarrierTorusAttachment.lean`, instantiating
+  the bridge over the concrete Carrier torus gauge-configuration type and
+  re-exporting `mZero_iff_commute` as the scalar-free curvature axis. Still
+  OPEN: any curvature-to-scalar derivation, gauge measure, `Q_C` expectation,
+  nonabelian result, or beyond-leading positivity theorem.
 
 ## Supporting threads
 
