@@ -280,6 +280,16 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   `86f7f9d4-4349-454c-8690-8c547f870cc4`, task
   `4197d799-3210-4e65-bff1-96fe25e887ee`, context pack
   `AgentTasks/context-packs/qc-leading-strategy-20260706-2200.md`.
+- [HB Codex 22:03] LANDED QC-leading normalization bridge in commit `80a2291`:
+  new `GateYM/QCLeading.lean` names `leadingClosureFluxCoeff` and proves
+  `z2LeadingQCReadout`, keeping the TY partition ratio, OS gap, and leading
+  coefficient separate while showing they reduce to the same finite `Z2`
+  scalar. Guarded in `SlabAxiomGuard`; `THREAD_BOARD.md` updated. Verification
+  green: `lake env lean PhysicsSM/Draft/NullEdge/GateYM/QCLeading.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`; `lake build
+  PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`; `pre-commit run --all-files`.
+  Existing draft/linter warnings only in unrelated imported files.
 
 ## [FABLE-CALL 02] sent (Claude c4) - Krein upgrade + E-slot + strategy
 - Placed on the assembly milestone (well-timed: 4 D^2 = Q_A+Q_C+4Q_T banked ahead of
