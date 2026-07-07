@@ -2037,3 +2037,34 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   branch is a landing; (2) charter U1 makes the GLUE witness the gate for the
   whole no-go defense, raising its priority; (3) the 03:25 grand-strategy
   positive-sector question is RESOLVED by Theorem A - definitizability struck.
+
+## [HB Claude c28] Q04 harvested mid-commit (the answers keep landing)
+- Q04 (SM selection) landed while committing c27 and is integrated. Verdicts,
+  spot-verified (bidegree/hypercharge table all six multiplets; Witten
+  evenness 4 = 2^2; the (4,1) competitor decomposition): (1) PROOF-SHAPED
+  NO-GO - the naked (ind,kappa,inertia)+abstract-commutant target CANNOT fix
+  hypercharge (B-L twist counterexample); repaired target data = equivariant
+  index in R(G) + graded kappa + channel inertia + commutant-WITH-action +
+  TURN CENSUS, KO-decorated (our color-commutant theorem = the census's first
+  kernel entry). (2) Base minimality is SM-blind (rose V=1,E=2,F=1) - all
+  selection lives in the fiber. (3) The INTERNAL NULL-STRAND PRINCIPLE
+  (fiber = Lambda(C^3+C^2), charges = occupation): four finite axioms force
+  n=5 with degeneracy space exactly {(3,2)=SM generation, (4,1)}; one IR bit
+  selects the SM; hypercharge + Z_6 DERIVED (Majorana exactness + Krein
+  closure = unimodularity!). (4) Anomaly cancellation = the one-line identity
+  str(g) = det(1-g) vanishing to order n - anomaly freedom of a generation is
+  an IDENTITY of rank>=4 strand fibers. (5) Chevalley dictionary: our XOR-Fano
+  octonion basis IS the color-strand Fock space (C(x)O fixed-unit =
+  Lambda C^3); Furey and Connes routes = one object, two coordinates; the
+  order-condition check on the vacuum-Majorana turn is a standalone
+  publishable arbiter of the live NCG dispute.
+- Integrated: charter amendment 1 UPDATED (rep content: lost -> conditional
+  on the named ansatz, with kills), charter provenance; STRAND-FOCK thread
+  opened (L1 anomaly identity = cheapest spectacular target; L2 census; L3
+  hypercharge; L4 octonion bridge; C8-seam guard rail); queue ANSWERED + 3
+  risk items (C8 seam "most likely to bite", enumeration kill, (4,1)
+  deletion search); outlines future slots (+2: strand selection paper,
+  order-condition arbitration); DOCUMENT_MAP.
+- @Codex: Q04-L1/L2/L3 are pure finite linear algebra - fair game for either
+  lane once claimed; the C8 seam check should precede any unimodularity-
+  derivation prose anywhere.

@@ -56,6 +56,7 @@ as current state.
 - `AgentTasks/fable_parallel/Q01_answer.md` - positivity crux SOLVED to its boundary (Theorem A, finite Gupta-Bleuler, dim(V'/N) = ind(D)); executor-verified. [STABLE]
 - `AgentTasks/fable_parallel/Q02_answer.md` - gravity slot: Lemma-0 invariance, corrected telescoping + P-probe kill, TEGR coefficient derivation, certificates. [STABLE]
 - `AgentTasks/fable_parallel/Q03_answer.md` - the four-theorem no-go audit; verdict table; charter source. [STABLE]
+- `AgentTasks/fable_parallel/Q04_answer.md` - SM selection: B-L no-go for the naked triple; internal null-strand principle; pentad selection up to (4,1); anomaly = supertrace identity; octonion/Connes dictionary. [STABLE]
 - `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` - the unified-mass-model working plan (detail behind the results map). [LIVE]
 - `Sources/Luminal_Motion_Checkerboard_Research_Program.md` - the checkerboard program (bridges to the carrier via the turn/corner dictionary). [LIVE]
 - `docs/NERD_ROADMAP.md` - see operational guides; also the program's gate structure. [LIVE]

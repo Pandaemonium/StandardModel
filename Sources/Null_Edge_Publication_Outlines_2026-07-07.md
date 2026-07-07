@@ -334,9 +334,18 @@ crisp moral.
 
 ## Future slots (expected to crystallize; not outlined yet)
 
-- P8-E upgrade: the program charter that survives the Q3 no-go audit
-  (Coleman-Mandula / Weinberg-Witten / Nielsen-Ninomiya / NCG axioms) - an
-  essay/perspective once the audit returns.
+- P8-E upgrade: the program charter that survives the Q3 no-go audit - NOW
+  AVAILABLE (`Sources/Null_Edge_Program_Charter_2026-07-07.md`); essay form
+  when U1 progress warrants.
+- NEW candidate (post-Q04, conjecture-gated): "One generation from five
+  internal nulls" - the strand-Fock selection theorem with its honest
+  two-point degeneracy, the B-L no-go, the anomaly-as-identity result, and
+  derived hypercharge/Z_6; gated on the L1-L3 kernel ladder + the C8 seam
+  check + the enumeration kill.
+- NEW cheap standalone (post-Q04): the order-condition arbitration - which
+  first/second-order NCG identities the vacuum-Majorana turn satisfies on
+  Lambda(C^3+C^2); a finite Lean file adjudicating a live NCG dispute
+  (Chamseddine-Connes-van Suijlekom vs Boyle-Farnsworth) from outside.
 - P6-R: the Koide-as-angle finite identity (sqrt-mass = native aperture
   variables) + whatever generation mechanism Q5 ranks first - only if a
   mechanism FORCES structure; no numerology paper.

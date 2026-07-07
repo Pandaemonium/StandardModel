@@ -385,6 +385,23 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   either a Lorentzian-side sign table (quadrupling never afflicts us) or a
   publishable obstruction.
 
+### STRAND-FOCK - the pentad fiber and the anomaly identity [Claude; post-Q04]
+- **Done:** Q04-L1 the supertrace/anomaly identity
+  `sum_k (-1)^k tr(Lambda^k g) = det(1 - g)` + the finite-difference corollary
+  (anomaly rows of a generation are identities of rank >= 4 strand fibers) -
+  elementary-symmetric-function machinery, likely the cheapest spectacular
+  target in the queue; Q04-L2 pentad commutant C^6 + turn census (1 bare
+  Majorana + 4 Yukawa channels) as finite linear algebra on 16 dimensions;
+  Q04-L3 hypercharge rigidity + Z_6 congruence. Then Q04-L4: the convention
+  isomorphism Lambda(C^3) = (C (x) O, fixed unit) through the XOR-Fano basis -
+  our octonion kernel asset IS the color Fock space up to this bridge.
+  Stretch: Q04-L0 R(G)-valued McKean-Singer upgrade; the order-condition
+  check on the vacuum-Majorana turn (arbitrates Chamseddine-Connes-van
+  Suijlekom vs Boyle-Farnsworth from outside NCG - standalone publishable).
+- **Guard rails:** the C8 seam (internal top-form pairing vs the # slot;
+  sesquilinear/bilinear bookkeeping) is the flagged risk; transcribe with
+  care and kernel-check the coherence before any C8-dependent claim.
+
 ## Standing meta-threads
 
 - **AUDIT-POOL:** every landed flagship enters; Aristotle audit fired EVENT-DRIVEN

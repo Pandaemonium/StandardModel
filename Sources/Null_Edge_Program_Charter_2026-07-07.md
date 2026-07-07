@@ -18,12 +18,27 @@ nothing already-open is optional.
 
 ## Three amendments adopted (relative to the pre-audit maximal claim)
 
-1. **No coupling-unification and no representation-content claims.** Those are
-   consequences of NCG axioms (first-order condition + spectral action) that
-   the carrier demonstrably does not satisfy; our gauge fields arise from
-   holonomy, not inner fluctuations. Replacement axiom to be sought; its seed
-   is the KERNEL color-commutant theorem. Never claim NCG-style coupling
-   relations.
+1. **No coupling-unification claims, ever** (consequences of NCG axioms -
+   first-order condition + spectral action - that the carrier demonstrably
+   does not satisfy; our gauge fields arise from holonomy, not inner
+   fluctuations). **Representation-content claims are conditional, not lost**
+   (updated post-Q04): the replacement axiom sought by the audit now has a
+   named candidate - the INTERNAL NULL-STRAND PRINCIPLE (fiber = exterior
+   algebra on internal strands, charges = occupation functionals; the KERNEL
+   color-commutant theorem is the first entry of its "turn census"). Under it,
+   four finite axioms force five strands with degeneracy space exactly
+   {(3,2) = one SM generation, (4,1) competitor}; one infrared bit
+   ("electromagnetism exists") selects (3,2), with hypercharge and the Z_6
+   lattice DERIVED (linearity = gauge-exact bare Majorana; tracelessness =
+   Krein closure/unimodularity). Pre-registered kills: a missed fifth n = 5
+   configuration; incoherence of the internal top-form pairing with the
+   Layer-D # slot (the flagged C8 seam); a kernel constraint eliminating
+   (4,1) outright (which would STRENGTHEN the theorem). Also adopted: the
+   naked triple (ind, kappa, inertia) is PROVABLY insufficient (B-L twist
+   counterexample) - the honest target data is (equivariant index in R(G),
+   graded kappa, channel inertia, commutant WITH action, turn census), with
+   the index KO-DECORATED (complex: Z-protection; pseudoreal: mod-2 - Witten
+   anomaly; real: none).
 2. **Gravity is claimed only as follows:** a gapless spin-2 excitation of a
    constrained quotient possessing NO Lorentz-covariant conserved stress
    tensor, with emergent redundancy as a theorem OBLIGATION (WW/Marolf), not a
@@ -105,6 +120,16 @@ composed with antilinear conjugation; its sign table on the kappa = 2 witness
 is an open cheap target (Q03 ladder L8).
 
 ## Provenance
+
+Q04 memo integrated same date (`Q04_answer.md`): amendment 1 updated as above;
+the anomaly rows of one generation are the one-line supertrace identity
+`str_{Lambda C^n}(g) = det(1 - g|_{C^n})` (vanishing to order n at g = 1 -
+anomaly freedom is an IDENTITY of rank >= 4 strand fibers, not a miracle);
+the Furey-octonion and Connes routes are one object in two coordinate systems
+(Chevalley: `C (x) O` with a fixed unit = `Lambda(C^3)`; the XOR-Fano basis IS
+the strand-monomial labeling), with the order-condition check on the
+vacuum-Majorana turn as the finite, publishable arbiter of the live NCG
+dispute (first-order vs second-order condition).
 
 Q01/Q02/Q03 memos: `AgentTasks/fable_parallel/Q0{1,2,3}_answer.md`
 (Fable-5 parallel deep-work session, 2026-07-07; briefing:

@@ -206,3 +206,18 @@ Format:
   under refinement) and the stencil dilemma (telescoping vs doublers) both
   point at the GW layer - candidate future Fable/strategy question when the
   E-TELESCOPE thread lands its first rungs.
+- [ANSWERED Q04] SM selection: the naked (ind, kappa, inertia)+abstract-
+  commutant target is PROVABLY insufficient (B-L twist counterexample);
+  repaired data = equivariant index + graded kappa + channel inertia +
+  commutant-with-action + TURN CENSUS (KO-decorated). Candidate selection
+  theorem under the internal null-strand principle: n = 5 forced, degeneracy
+  exactly {(3,2) = SM generation, (4,1)}; bit (F) = "electromagnetism exists"
+  selects (3,2); hypercharge + Z_6 DERIVED (Majorana-exactness + Krein
+  closure). Base minimality is SM-blind (rose V=1,E=2,F=1 suffices).
+- [QUEUE 2026-07-07 Claude, Q04 risks] (i) C8 seam: coherence of the internal
+  Hodge/top-form pairing with the Layer-D # antiautomorphism - "the seam most
+  likely to bite"; kernel-check before any unimodularity-derivation claim.
+  (ii) Enumeration kill: verify no fifth n=5 configuration survives (A)-(D)
+  (finite check). (iii) Look for an already-kernel-checked constraint that
+  deletes the (4,1) competitor outright - would upgrade the selection theorem
+  by removing the one IR bit.
