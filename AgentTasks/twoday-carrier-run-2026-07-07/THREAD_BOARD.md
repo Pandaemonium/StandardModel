@@ -337,7 +337,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `root_child_forest_wf` plus three local helper lemmas in
   `PolymerKPConclusion.lean`; the next exact blocker is the concrete
   fixed-forest fiber injection feeding `fiber_card_mul_le_factorial`. After
-  that, `pairSum_le_expBound` reduces to fiberwise-sum bookkeeping.
+  that, `pairSum_le_expBound` reduces to fiberwise-sum bookkeeping. Codex
+  submitted Aristotle project `6b8dcebd` / task `3a9be2e2` on that exact
+  fixed-forest injection and locally banked the small cardinal/weight
+  bookkeeping lemmas `restrictCluster_childBlock_n_eq`,
+  `sum_restrictCluster_childBlock_n`, and
+  `restrictCluster_childBlock_absWeight_eq`, reducing future assembly casts.
   Leave the documented intentionally false/refuted KP statements alone.
 ### NN-D - higher-d Nielsen-Ninomiya [either, stretch]
 - **Done:** the discrete-Stokes degree theorem on `(ZMod N)^d` (facet-pairing

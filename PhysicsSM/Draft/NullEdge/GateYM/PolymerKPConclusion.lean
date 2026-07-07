@@ -1057,6 +1057,41 @@ lemma childBlock_comap_le_restrictCluster_graph (S : PolymerSystem Gamma)
   exact restrictCluster_comap_le_graph S hdec X T hTle
     ((childBlockOf T r j).image (fun v => v.1))
 
+/-- The restricted child-cluster size is exactly the child-block cardinality.
+
+This is the cardinal bookkeeping bridge between the future forest atom
+`restrictCluster` and the block sizes used by the fixed-fiber factorial
+normalization. -/
+lemma restrictCluster_childBlock_n_eq (S : PolymerSystem Gamma)
+    (X : Cluster S) (T : SimpleGraph (Fin X.n)) (r j : Fin X.n) :
+    (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).n =
+      (childBlockOf T r j).card := by
+  unfold restrictCluster
+  exact Finset.card_image_of_injOn (by
+    intro a _ha b _hb h
+    exact Subtype.ext h)
+
+/-- Child-cluster sizes sum to the non-root slot count. -/
+lemma sum_restrictCluster_childBlock_n
+    (S : PolymerSystem Gamma) (X : Cluster S) (T : SimpleGraph (Fin X.n))
+    (r : Fin X.n) (hT : T.IsTree) :
+    ∑ j ∈ treeRootChildren T r,
+        (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).n =
+      X.n - 1 := by
+  rw [← sum_childBlockOf_card T r hT]
+  apply Finset.sum_congr rfl
+  intro j _hj
+  exact restrictCluster_childBlock_n_eq S X T r j
+
+/-- The restricted child-cluster weight is exactly the product over the
+corresponding deleted-root child block. -/
+lemma restrictCluster_childBlock_absWeight_eq (S : PolymerSystem Gamma)
+    (X : Cluster S) (T : SimpleGraph (Fin X.n)) (r j : Fin X.n) :
+    (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).absWeight S
+      = ∏ v ∈ childBlockOf T r j, |S.weight (X.poly v.1)| := by
+  rw [absWeight_restrictCluster]
+  rw [Finset.prod_image (fun a _ha b _hb h => Subtype.ext h)]
+
 /-- Weight factorization across the canonical-root deletion: the absolute
 weight of a cluster `X` with root slot `r` factors as the root weight times
 the product of restricted-subcluster weights over the child blocks. -/
@@ -1072,9 +1107,8 @@ lemma absWeight_eq_root_mul_blocks (S : PolymerSystem Gamma)
   have hblock : ∀ j ∈ treeRootChildren T r,
       (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).absWeight S
         = ∏ v ∈ childBlockOf T r j, |S.weight (X.poly v.1)| := by
-    intro j _
-    rw [absWeight_restrictCluster]
-    rw [Finset.prod_image (fun a _ b _ h => Subtype.ext h)]
+    intro j _hj
+    exact restrictCluster_childBlock_absWeight_eq S X T r j
   rw [Finset.prod_congr rfl hblock]
   -- product over children of product over blocks = product over biUnion (disjoint)
   rw [← Finset.prod_biUnion]
@@ -1350,7 +1384,7 @@ lemma perPair_absWeight_bound (S : PolymerSystem Gamma)
     · rw [ add_comm, sum_childBlockOf_card T r hT ];
       rw [ Nat.sub_add_cancel ( Fin.pos r ) ];
     · intro j hj
-      simp [childBlockOf, treeRootChildBlock_card_pos];
+      simp [childBlockOf];
       split_ifs ; exact ⟨ _, treeRootChild_mem_block _ _ _ _ ⟩
 
 /-- Fiber-value arithmetic step for `pairSum_le_expBound`.  A fiber of the
