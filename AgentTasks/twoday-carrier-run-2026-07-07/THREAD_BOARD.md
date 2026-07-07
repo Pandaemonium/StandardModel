@@ -534,6 +534,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   headline instance in Q[m].  The crossing cancellation in this minimal example
   is honestly vacuous: the two output supports are disjoint
   (`col_supports_disjoint`, `checkerboard_no_crossing`).
+- **Done:** L-Q8-4+ nonvacuous same-parity crossing has now landed in
+  `PhysicsSM/Draft/NullEdge/Carrier/CheckerboardCrossingNonvacuous.lean` from
+  Aristotle project `26fa682c`.  It proves `twoParticle_amplitude_eq_det_general`
+  for arbitrary inputs, the same-parity support-overlap witness
+  `output_a1_in_both_supports`, both direct and crossing families nonzero
+  (`crossing_family_nonzero`), the explicit amplitude
+  `twoAmpGen_nonvacuous : X^3 - X`, and the negative result
+  `naive_LGV_reduction_false`.  This kills the naive T-P3 claim on the
+  pre-registered checkerboard transfer model: the crossing term survives
+  because the crossing happens at a mid-edge light-cone point, not a shared
+  lattice vertex for the standard LGV involution.
 - **Done:** L-Q8-5 degree-by-degree quotient bridge has now landed in
   `PhysicsSM/Draft/NullEdge/Carrier/FockQuotientPairing.lean` from Aristotle
   project `5bdce729`.  `pairingDual_bijective` proves the finite
@@ -548,8 +559,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   the kernel-span theorem for decomposables with an `N` factor plus assembly
   across all particle numbers.  Positivity of the physical quotient stays
   Q1/OPEN.
-  Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
-  Pauli); kill = a Sym-quantized checkerboard with positive invariant
+  T-P3 is now re-scoped: a true nonvacuous LGV theorem needs a corrected
+  scattering-vertex / brick-wall DAG where crossing is represented as shared
+  vertex data plus a swap involution, or a certified LGV-compatible
+  source/sink hypothesis.  It is not a corollary of T-P2 on the unmodified site
+  lattice.  Registered conjecture C-Q8-SS: positivity selects Lambda over Sym
+  (finite Pauli); kill = a Sym-quantized checkerboard with positive invariant
   quotient. A global two-body exterior operator and positivity of the
   Kugo-Ojima quotient itself remain OPEN. Aristotle audit `e4f1cedb` found no
   high/medium semantic issue in the globalization landing; its only code-facing

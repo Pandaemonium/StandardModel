@@ -340,3 +340,25 @@ Queue status after this harvest remains four StandardModel lanes `RUNNING`:
 follow-up names, especially Q11 Jacobi-minor cleanup, Q04 sign-gauge /
 ConventionBridge, Q12 genuine-triality or C8 bridge gates, and manuscript
 post-fix verification, rather than resubmitting the harvested report jobs.
+
+## Harvest from Q08 LGV generalization
+
+- `26fa682c`
+  (`ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707`)
+  returned `CheckerboardCrossingNonvacuous.lean`, now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/CheckerboardCrossingNonvacuous.lean` and
+  guard-pinned in `CarrierAxiomGuard`.  It proves the general-input
+  two-particle determinant identity, a same-parity support-overlap witness, both
+  direct and crossing families nonzero, the explicit amplitude `X^3 - X`, and
+  `naive_LGV_reduction_false`.
+- Claim boundary: this is a PROVED finite obstruction to the naive T-P3 / LGV
+  story on the pre-registered checkerboard transfer model.  The crossing term
+  survives; a true nonvacuous LGV theorem now requires a corrected
+  scattering-vertex/brick-wall DAG or an explicit LGV-compatible source/sink
+  hypothesis.
+
+Queue status after this harvest: `bcf263f0` Q10 inertia-index bridge,
+`9af1d5fb` RG-Schur, and `ec1ad7d5` Q01 positivity are still `RUNNING`.  The
+queue should be refilled with fresh follow-up names; Q08 follow-up should target
+the scattering-vertex DAG or source/sink compatibility route, not the killed
+naive LGV statement.

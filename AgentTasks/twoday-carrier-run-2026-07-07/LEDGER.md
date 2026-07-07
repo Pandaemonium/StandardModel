@@ -3087,3 +3087,26 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   follow-up Aristotle job names for Q04 sign-gauge / ConventionBridge, Q11
   Jacobi-minor cleanup, Q12 C8/genuine-triality gates, and manuscript regression
   audit.
+
+## [ARISTOTLE-HARVEST Codex solo] Q08 nonvacuous checkerboard LGV obstruction landed
+
+- Harvested Aristotle project `26fa682c`
+  (`ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707`).
+  Integrated
+  `PhysicsSM/Draft/NullEdge/Carrier/CheckerboardCrossingNonvacuous.lean` and
+  guard-pinned `twoParticle_amplitude_eq_det_general`,
+  `twoAmpGen_nonvacuous`, and `naive_LGV_reduction_false` in
+  `CarrierAxiomGuard`.
+- Proved the same-parity L=4, N=2 nonvacuous checkerboard witness: both direct
+  and crossing families are nonzero, the two-particle amplitude is `X^3 - X`,
+  and the naive LGV reduction to the direct/unsigned non-crossing family is
+  false on the pre-registered checkerboard transfer model.
+- Claim boundary: PROVED finite obstruction only.  T-P3 / nonvacuous LGV is now
+  re-scoped to a corrected scattering-vertex / brick-wall DAG or an explicit
+  LGV-compatible source/sink hypothesis.  It is not a corollary of T-P2 on the
+  unmodified site lattice.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CheckerboardCrossingNonvacuous.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CheckerboardCrossingNonvacuous`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.

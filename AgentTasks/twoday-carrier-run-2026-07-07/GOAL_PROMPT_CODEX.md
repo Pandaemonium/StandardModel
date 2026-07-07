@@ -147,24 +147,24 @@ Live queue snapshot after the post-Q08/Q10 refill (verify with
 `aristotle list` before acting):
 
 - **Still running / poll first:** the current running jobs
-  `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707`,
   `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`,
   `ne-rg-schur-krein-gamma-stability-proof-20260707`, and
   `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`.
 - **Harvest-first before more refill:** none in the last poll; rerun
   `aristotle list` before submitting.
 - **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
-  Fock quotient bridge, Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol
-  determinant/Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q04
-  octonion/Fock convention audit, Q12 C8 compatibility audit, Q11 RC0
-  determinant-cocycle strategy, P1 manuscript claim audit, Q08 `dGamma`
-  globalization and integration audit, Q08 L4 checkerboard determinant, Q09
-  BW-cut locality scaffold, Q10 Sylvester-inertia bridge, Q10 multi-time
-  embedding, Q11 B-L dictionary, Q12 GammaPrime quotient, Q12 Furey bridge
-  audit, Q12 charge resolution, Q12 triality bridge, Q12 PSA-1, Q12 G2 parity,
-  Q13 red-team audit, Q10 Lorentzian transitivity, Q10 split witness, Q10
-  scalar-amplitude census, Q09 modular no-go, Q08 decomposable `dGamma` square,
-  and Q06 carrier-GW positive/negative cases.
+  Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
+  kill, Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
+  Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q04 octonion/Fock
+  convention audit, Q12 C8 compatibility audit, Q11 RC0 determinant-cocycle
+  strategy, P1 manuscript claim audit, Q08 `dGamma` globalization and
+  integration audit, Q08 L4 checkerboard determinant, Q09 BW-cut locality
+  scaffold, Q10 Sylvester-inertia bridge, Q10 multi-time embedding, Q11 B-L
+  dictionary, Q12 GammaPrime quotient, Q12 Furey bridge audit, Q12 charge
+  resolution, Q12 triality bridge, Q12 PSA-1, Q12 G2 parity, Q13 red-team
+  audit, Q10 Lorentzian transitivity, Q10 split witness, Q10 scalar-amplitude
+  census, Q09 modular no-go, Q08 decomposable `dGamma` square, and Q06
+  carrier-GW positive/negative cases.
 - **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707`
   is superseded by the local compiler-trust-free landing.
 
@@ -211,7 +211,7 @@ to refill after harvesting returned jobs and committing the local integration:
 | Q05 triality | `ne-q05-triality-monodromy-equivariant-index-strategy-20260707` | strategy | Equivariant index, cover multiplicativity, triangle holonomy toy model, and no-four-orbit route. |
 | Q06 carrier derivation | `ne-q06-symbol-to-carrier-generator-conjugation-audit-20260707` | audit/strategy | Bridge the landed `2 x 2` symbol identity toward the decoration-level generator conjugation axiom and path-sum/transfer-power layer, or isolate the missing hypotheses. |
 | Q07 Koide/T-solder | `ne-q07-tsolder-kappa-tetrahedral-probe-audit-20260707` | audit/strategy | Decide whether the tetrahedral corner probe supports, refines, or kills the kappa mechanism. |
-| Q08 checkerboard Fock | `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707` | strategy/audit | Generalize beyond the landed L=4 disjoint-support case toward a nonvacuous LGV crossing-cancellation theorem or isolate exact blockers. |
+| Q08 checkerboard Fock | `ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707` | strategy/audit | Build or refute the corrected scattering-vertex/brick-wall DAG route after the naive LGV reduction was killed. |
 | Q09 horizon/screen | `ne-q09-finite-reehschlieder-screenarea-completion-proof-20260707` | proof/strategy | Finish A9.1 degeneracy/invariance and the finite Reeh-Schlieder well-posedness gate before any entropy upgrade. |
 | Q10 scalar amplitude | `ne-q10-spin-weyl-scalar-amplitude-classification-strategy-20260707` | strategy | Route from finite census substitutes to the real Spin/Weyl scalar-amplitude classification. |
 | Q10 inertia indices | `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707` | proof/strategy | Close the gap from the landed Sylvester equivalence hypotheses to an intrinsic `p >= 2`, `q >= 2` inertia-index statement. |

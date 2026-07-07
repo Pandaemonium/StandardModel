@@ -16,6 +16,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization
 import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
 import PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing
 import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle
+import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardCrossingNonvacuous
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
@@ -62,6 +63,10 @@ guards are edited independently to avoid collision.
 * Checkerboard two-particle determinant (`CheckerboardTwoParticle`): the finite
   L=4, N=2 exterior-amplitude determinant identity and straight-through
   rational-polynomial witness.
+* Checkerboard nonvacuous crossing (`CheckerboardCrossingNonvacuous`): the
+  same-parity L=4, N=2 witness with both direct and crossing families nonzero,
+  and the finite counterexample to the naive LGV reduction on the pre-registered
+  transfer model.
 * Wilson-symbol identity (`GWWilsonSymbol`): the exact `2 x 2` momentum-symbol
   determinant/unitarity, Hermitian Wilson scalar, and edge-reversal GW
   conjugation identities for the retarded/palindromic checkerboard symbol.
@@ -307,6 +312,20 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.checkerboard_amplitude_ratQ' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.checkerboard_amplitude_ratQ
+
+/-! ## Finite checkerboard same-parity crossing: nonvacuous LGV obstruction -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.twoParticle_amplitude_eq_det_general' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.twoParticle_amplitude_eq_det_general
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.twoAmpGen_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.twoAmpGen_nonvacuous
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.naive_LGV_reduction_false' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.naive_LGV_reduction_false
 
 /-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
     (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard
