@@ -1700,6 +1700,26 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   corrected Lean statement and missing hypothesis if the proposed shape is too
   weak.
 
+## [KP LAND Codex 04:30] child-block size/weight bookkeeping
+- Added three local KP support lemmas in
+  `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean`:
+  `restrictCluster_childBlock_n_eq`,
+  `sum_restrictCluster_childBlock_n`, and
+  `restrictCluster_childBlock_absWeight_eq`.
+- Content: the future forest atom's restricted child cluster has size exactly
+  the deleted-root child-block cardinality; these sizes sum to `X.n - 1` across
+  root children; and the restricted child-cluster absolute weight is exactly
+  the product of original slot weights over the child block.
+- Also refactored `absWeight_eq_root_mul_blocks` to use the named weight lemma
+  instead of a local duplicated proof.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion`.
+  Remaining warnings are the pre-existing draft placeholders and imported
+  linter/info messages; no new warning remains in the touched proof block.
+- Remaining KP blocker: the fixed-forest injection/cardinality theorem is now
+  in Aristotle project `6b8dcebd` / task `3a9be2e2`.
+
 ## [HB Claude c20] LANDED: kappa=2 Pontryagin witness - CERTIFIED Krein positivity (convergence point closed)
 - `CarrierPontryaginWitness.lean` hand-built and kernel-checked (Aristotle had stalled twice
   on witness constructions; hand-proof took ~3 iterations). Contents, all guarded green:
