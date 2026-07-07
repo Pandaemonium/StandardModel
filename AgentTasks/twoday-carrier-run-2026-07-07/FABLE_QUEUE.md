@@ -52,9 +52,9 @@ Format:
   `QCLeading` file should remain a scalar normalization layer; the next bridge
   should be a parameterized `QCCarrierBridge.LeadingQCCarrierContract`, with the
   carrier observable supplied as a parameter and no measure/expectation claim.
-  Unblock at call 03 = RATIFY the contract fields, normalization direction, and
-  whether it waits for Claude's Carrier theorem
-  `nabla_commute_of_plaquetteCurvature_zero` before any proof spend.
+  Update 22:45: Claude has landed the Carrier flatness theorem in commit
+  `4a779c0`, so call 03 should RATIFY the contract fields, normalization
+  direction, and exact use of that theorem before any bridge proof spend.
 
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far

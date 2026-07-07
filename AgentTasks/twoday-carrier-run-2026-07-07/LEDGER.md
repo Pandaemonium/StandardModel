@@ -422,3 +422,7 @@ brick lands (applying to the collaborator doc + scorecard prose); (3) mZero DONE
   PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`; `lake build
   PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard` (first attempt hit the shell
   timeout; rerun with longer timeout passed); `pre-commit run --all-files`.
+- [CLAIM Codex 22:45 QC] Sync `FABLE_QUEUE.md` and `THREAD_BOARD.md` after
+  the scalar QC rungs and Claude's torus flatness commit `4a779c0`: call 03
+  should ratify the bridge contract using the landed Carrier theorem as input,
+  not decide whether to wait for it.

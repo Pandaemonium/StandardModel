@@ -87,10 +87,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   This is only a finite leading-coefficient read-off, not a carrier `Q_C`
   expectation theorem or beyond-leading positivity claim. Aristotle focused
   strategy job `86f7f9d4`/`4197d799` completed: add the scalar interval fact
-  `leadingClosureFluxCoeff_mem_Ioo`; next bridge should be a parameterized
-  `QCCarrierBridge.LeadingQCCarrierContract`, queued for Fable call 03
-  ratification before heavier proof spend. Carrier theorem
-  `nabla_commute_of_plaquetteCurvature_zero` remains Claude-owned.
+  `leadingClosureFluxCoeff_mem_Ioo` and scalar monotonicity
+  `leadingClosureFluxCoeff_strictMono`, both guarded. Next bridge should be a
+  parameterized `QCCarrierBridge.LeadingQCCarrierContract`, queued for Fable
+  call 03 ratification before heavier proof spend. Claude's Carrier-side torus
+  flatness theorem landed in commit `4a779c0`; use it only after contract
+  ratification.
 
 ## Supporting threads
 
