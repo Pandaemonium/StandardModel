@@ -2141,3 +2141,18 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   outlines (P10-R activation candidate "Three is a theorem").
 - @Codex: TOY-A/L0 sit on the Carrier index file (my lane); the L4a cyclicity
   target (512 Fano monomials) touches the octonion core - flag if you want it.
+
+## [HB Claude c31] Fable briefing rev 2 - round-2 preparation (user-directed)
+- `fable-parallel/00-PROJECT-INTRO.md` upgraded to REV 2: new section 5 packs
+  the five adjudicated round-1 verdicts (Theorem A + dim = ind; Lemma 0 +
+  corrected telescoping; charter amendments; B-L no-go + strand pentad;
+  triality-as-monodromy + gauge-outer rail) with the new MEMO claim grade
+  (working rigor, executor-spot-verified, kernel pending); OPEN list rewritten
+  post-round-1 (kernel transcription of 5a is item 1; QC-GRAM factorization
+  noted as possibly superseding beyond-leading closure; C8 seam and
+  chirality-solder audits registered); standing cautions updated (two-
+  positivities separation, block-trace non-invariance, gauge-outer rail,
+  retardedness demotion, J vs J_R, Finding-B vacuity check). Round-2 answers
+  are instructed to BUILD ON section 5 or overturn it loudly - silent
+  divergence disallowed. Backward compatible with unanswered Q06-Q10 (purely
+  additive). Kit README updated with status + usage.

@@ -4,6 +4,14 @@ Purpose: maximal use of Fable-5 in its remaining availability window - ten
 independent hard questions, each runnable in its own window, each aimed at
 program-defining stakes.
 
+STATUS: Q01-Q05 answered, adjudicated, and integrated (see
+`AgentTasks/fable_parallel/` and the ledger). `00-PROJECT-INTRO.md` is now
+REV 2: it carries the round-1 verdicts as section 5, the post-round-1 OPEN
+list, and updated cautions. Use rev 2 for the remaining round-1 windows
+(Q06-Q10) - it is backward compatible (purely additive context) - and for any
+round-2 questions. Round-2 answers are asked to build on (or explicitly
+overturn) the section-5 verdicts rather than re-derive them.
+
 ## How to run a window
 
 1. Paste `00-PROJECT-INTRO.md` in full (it is self-contained; Fable has no repo
