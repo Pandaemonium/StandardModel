@@ -7,6 +7,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierSquareAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierESlot
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMasterPair
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierKreinSquare
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierApertureIdentification
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -120,6 +121,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_krein_square_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_krein_square_selfAdjoint
+
+/-! ## Move-2 identification: Q_A = Q(∑ α) (the aperture invariant mass) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Q_A_eq_totalSq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.Q_A_eq_totalSq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Q_A_zero_iff_totalSq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.Q_A_zero_iff_totalSq_zero
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 

@@ -56,7 +56,17 @@ theorem Q_A_eq_totalSq {E : Type*} [Fintype E] (Q : QuadraticForm R V) (alpha : 
     (h2 : (2 : R) ≠ 0) :
     nullSoldered Q alpha (fun _ => 1) ^ 2
       = algebraMap R (CliffordAlgebra Q) (Q (∑ e, alpha e)) := by
-  sorry
+  rw [nullSoldered_square_eq_algebraMap Q alpha (fun _ => 1) h2]
+  congr 1
+  -- The double sum of the polar form is the polar of the total soldering.
+  have hbil : (∑ e, ∑ f, QuadraticMap.polar (⇑Q) (alpha e) (alpha f))
+      = QuadraticMap.polar (⇑Q) (∑ e, alpha e) (∑ f, alpha f) := by
+    conv_rhs => rw [← QuadraticMap.polarBilin_apply_apply]
+    simp only [map_sum, LinearMap.sum_apply, QuadraticMap.polarBilin_apply_apply]
+    rw [Finset.sum_comm]
+  simp only [one_mul, mul_one]
+  rw [hbil, QuadraticMap.polar_self, nsmul_eq_mul, Nat.cast_ofNat, ← mul_assoc,
+    inv_mul_cancel₀ h2, one_mul]
 
 /-- **The aperture block vanishes iff the total soldering is null.**  `Q_A = 0 ↔
 Q(∑ₑ αₑ) = 0` — the carrier form of "the composite is massless iff the total momentum is
@@ -65,6 +75,15 @@ in the Minkowski specialization. -/
 theorem Q_A_zero_iff_totalSq_zero {E : Type*} [Fintype E] (Q : QuadraticForm R V)
     (alpha : E → V) (h2 : (2 : R) ≠ 0) :
     nullSoldered Q alpha (fun _ => 1) ^ 2 = 0 ↔ Q (∑ e, alpha e) = 0 := by
-  sorry
+  rw [Q_A_eq_totalSq Q alpha h2]
+  haveI : Invertible (2 : R) := invertibleOfNonzero h2
+  constructor
+  · intro h
+    by_contra hne
+    have hu : IsUnit (algebraMap R (CliffordAlgebra Q) (Q (∑ e, alpha e))) :=
+      (Ne.isUnit hne).map (algebraMap R (CliffordAlgebra Q))
+    rw [h] at hu
+    exact not_isUnit_zero hu
+  · intro h; rw [h, map_zero]
 
 end PhysicsSM.Draft.NullEdge.Carrier
