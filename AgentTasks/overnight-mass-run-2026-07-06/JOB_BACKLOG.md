@@ -9,6 +9,59 @@ the `AllMassFromNullEdges` capstone so the wide output converges.
 Legend: [ ] open · [~] in flight · [x] landed · (C=Codex lane). Prefer jobs that
 do NOT depend on another job's output. Refill from here whenever a slot frees.
 
+## PRIORITY 0 - the Weitzenbock-carrier unification (Fable-5 steer; see FABLE_STEER.md)
+
+The program is re-organized around ONE object: the Krein square `D^#D` of the
+null-soldered transport operator `D = sum_e c(alpha_e) nabla_e + Phi` on a finite
+2-complex, whose discrete Weitzenbock decomposition `D^#D = Q_A + Q_C + Q_T + E`
+makes T/C/A/(gravity) the four canonically-graded SUMMANDS of one form. Unification
+= decomposition, not identification. These jobs are the critical path (they need
+crisp Lean statements first - many are conceptual scaffolding for the Lean team, not
+Aristotle-ready yet). Do NOT keep farming stale finite-shadow jobs; the backlog
+below is largely LANDED (see the many [x] - the fleet has been re-deriving them).
+
+- [ ] **MOVE 1 - discrete Weitzenbock theorem** on a finite 2-complex: define the
+      carrier `D`, the Krein module (reuse NSBB's causal diamonds as 2-cells + its
+      J-structure as `#`), and prove `D^#D = Q_A + Q_C + Q_T + E` with `E`'s
+      vanishing hypotheses explicit. Keystone: `c(alpha)^2 = 0` (null nilpotency)
+      kills the edge-diagonal. Fiddly part = Wilson-line dressing of plaquette terms
+      to a common basepoint. FINITE LINEAR ALGEBRA.
+- [ ] **MOVE 2a - component-identification lemmas**: `Q_A = aperture functional`
+      (tie to `nbody_aperture_massless_iff_collinear`, `compositeMassSq_eq_sin_half`);
+      `Q_T = turn functional` (tie to `turnAmplitude_eq_zero_iff`); `Q_C <-> Z2 gap`
+      at strong-coupling LEADING ORDER only (honest scope - `<Q_C>` in the character
+      expansion recovers `-log tanh beta`). Q_C-identification is the [CRUX].
+- [ ] **MOVE 2b - graded irreducibility**: reprove `no_common_carrier` as the
+      bigraded-slot argument (operator order x Clifford degree x gamma-parity); the
+      slots (A: 2,0,even; C: <=1,2,even; T: 0,0,even) are non-interconvertible.
+- [ ] **MOVE 2c - relative exhaustiveness**: flat soldering + closed complex +
+      vacuum Phi => exactly three modes; each dropped hypothesis = one known extra
+      term (gravity/ADM/Higgs). State at OPERATOR-TERM level, never particle level.
+- [ ] **A=T bridge (free win)**: formalize `M^2 = 4E^2 sin^2(theta/2) = |<12>|^2`
+      and `det(P) = Phi^# Phi` as two halves of one on-shell identity (spinor-helicity
+      `p = lambda lambda-tilde`; `<12>` = chirality/turn pairing).
+- [ ] **B-lane color commutant** (replaces "octonion coupling"): compute the
+      commutant of the color action on `End(minimal left ideal)` = allowed Yukawa
+      shape (Schur: `(+) End(mult spaces)`). Feeds Phi into the T-slot. See [H2].
+- [ ] **Spin(10) repair**: SM group = Stab(pure spinor + 2(+)3 flag); the Selector IS
+      the flag; conjecture flag from `H subset O`. Prove the U(5)/SU(5) chain first.
+- [ ] **higher-d N-N as discrete Stokes for degree**: `sum_c w(c) = 0` because every
+      facet is shared by two cells with opposite orientation (the 1D crossing-balance
+      argument, one dimension up). Mine Loring finite-matrix K-theory for the index half.
+- [ ] **KP crux via Penrose partition scheme** (NOT the tree-graph inequality):
+      explicit connected-graph -> spanning-tree map, Boolean-interval fibers, exact
+      telescoping (Scott-Sokal 2005). Or port Chelsea Edmonds' Isabelle LLL (AFP 2023).
+
+### De-scoped / re-scoped (Fable-5)
+- Lane C nonabelian gate: **RE-SCOPE to strong-coupling SU(2) with explicit `beta_0`**
+  = formalize Osterwalder-Seiler 1978. **DEMOTE all-`beta` fixed-spacing gap to OPEN /
+  out of scope** - stop gating the program on it. Evaluate Shen-Zhu-Zhu (2204.12737)
+  vs the polymer route. AUDIT whether the 0808.3442 route descends from the disputed
+  decimation-based confinement proofs; prefer the 1985 Tomboulis-Yaffe RP inequalities.
+- Stale gate jobs (targets already LANDED in-tree, jobs re-derive them): slab-construct
+  (WilsonSlabConnected byte-identical), slab-fullspectrum (SlabFullSpectrumGap 0 sorry,
+  CANCELLED). product-haar is NOT stale (closes `reflForm_self_nonneg`, the RP core).
+
 ## Lane A - APERTURE / composite mass (matter kinematics)
 - [x] aperture=turn on one on-shell momentum (`ApertureEqualsTurn`, unconditional)
 - [x] ObstructionScalar (C and A share a structure, non-vacuous)

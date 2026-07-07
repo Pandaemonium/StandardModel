@@ -68,6 +68,22 @@ operator.
   marks precisely what "beyond co-location" adds: non-degeneracy of the mass
   grading across the triplet is what produces the coupling.
 
+## Physical reading: this is a CONSTRAINT, not a mass mechanism (Fable-5 audit)
+
+Physically, a genuine mass/Yukawa operator MUST commute with the color action —
+color is an exact symmetry. Read that way, the headline `mass_grading_not_central`
+is a **constraint (a small no-go)**, not a positive coupling: a color-non-singlet
+diagonal grading `diag(m0, m1, m2)` with non-degenerate entries CANNOT be a
+physical (color-exact) mass operator on the triplet. The physically-allowed mass
+operators are exactly those in the **commutant of the color action** on
+`End(ideal)`; by Schur that commutant is `⨁ End(multiplicity spaces)`, and the
+multiplicity spaces are precisely where flavor / generation / Yukawa structure is
+permitted to live. So the productive successor to this module is not "more
+coupling" but the **color-commutant computation** — the allowed *shape* of the
+turn-slot potential `Φ` — which is finite and formalizable. See
+`AgentTasks/overnight-mass-run-2026-07-06/FABLE_STEER.md` §5.4 / [H2]. The kernel
+theorems below are unchanged and correct; only this interpretation note is added.
+
 ## What is NOT established
 
 This is a *finite structural identity* about the induced color-triplet operators.

@@ -699,3 +699,21 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   clean (genuine iff, no vacuity, docstring within kernel). Staging note: submit
   needs a MINIMAL project-dir (Lean project only) - full-tree git archive hits the
   Windows MAX_PATH limit in AgentTasks/aristotle-standalone.
+- **HB (Fable-5 steer):** Fable-5 returned a decisive synthesis (FABLE_HELP.md). VERDICT:
+  the common-carrier dichotomy is false - both horns right. Unification = DECOMPOSITION
+  not identification: T/C/A are canonically-graded summands of `D^#D` (Krein square of
+  the null-soldered transport operator on a 2-complex) via a discrete Weitzenbock
+  identity; `no_common_carrier` = the irreducibility half. Steered the project:
+  (1) wrote FABLE_STEER.md (operational: the carrier, 3 moves, relative exhaustiveness,
+  the surviving cruxes, re-scoped gates, reading list); (2) re-scoped JOB_BACKLOG.md
+  with a PRIORITY-0 Weitzenbock-carrier section + de-scope of the all-beta SU(N) gate
+  (-> strong-coupling SU(2)/Osterwalder-Seiler); (3) applied honesty correction [H2] to
+  OctonionMassCoupling docstring (constraint theorem, not coupling; color commutant is
+  the physical object) - rebuilt OK (8026 jobs); (4) updated HONEST_SCORECARD with the
+  verdict + [H1]/[H2]/[H3] corrections + the fourth (gravity) mode; (5) lit round 12
+  (Shen-Zhu-Zhu 2204.12737 INGESTED for the re-scoped C-gate). Fleet: cancelled stale
+  slab-fullspectrum (target already 0-sorry in-tree); slab-construct harvested = BYTE-
+  IDENTICAL to landed WilsonSlabConnected (backlog was stale); product-haar left RUNNING
+  (genuinely closes reflForm_self_nonneg, the RP core). KEY FINDING: the finite-shadow
+  backlog is largely LANDED - the fleet was re-deriving in-tree results; the real
+  frontier is now the conceptual Move-1/2 scaffolding (needs crisp Lean statements first).

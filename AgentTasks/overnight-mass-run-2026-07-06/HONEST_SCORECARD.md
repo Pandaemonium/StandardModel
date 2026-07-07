@@ -6,6 +6,35 @@ minimal conjunction that would earn the headline. Every row states what is PROVE
 (kernel-checked, standard axioms `[propext, Classical.choice, Quot.sound]`, unless
 noted), what is MODELED (an explicit hypothesis, not derived), and what is OPEN.
 
+## THE COMMON-CARRIER VERDICT (Fable-5 synthesis, 2026-07-06)
+
+The central tension of this scorecard - three PROVED distinct mass modes (T/C/A)
+AND a PROVED `no_common_carrier` - is **resolved**, not by finding a common
+identification but by recognizing that **unification is decomposition, not
+identification**. T, C, A are three canonically-graded SUMMANDS of one quadratic
+form: the Krein square `D^#D` of the null-soldered transport operator
+`D = sum_e c(alpha_e) nabla_e + Phi` on a finite 2-complex, via a discrete
+Weitzenbock identity `D^#D = Q_A + Q_C + Q_T + E`. `no_common_carrier` is the
+IRREDUCIBILITY half of the unification theorem (the analogue of "Chern character
+!= A-hat genus", both components of one index density) - NOT an obstacle.
+
+Consequences for this scorecard (full detail in `FABLE_STEER.md`):
+- The goal is now precisely defined: carrier + discrete Weitzenbock decomposition +
+  four component-identification lemmas + graded irreducibility + RELATIVE
+  exhaustiveness + one solved instance per slot. The GrandMassCapstone's AND becomes
+  a + (identity, not conjunction) once Move 1-2 land.
+- Two surviving [CRUX]es (honestly localized, NOT dissolved): statistical positivity
+  of the closure slot `<Q_C>`, and the Krein positivity domain.
+- Exhaustiveness is RELATIVE (flat soldering + closed + vacuum Phi => 3 modes); each
+  dropped hypothesis yields one known extra term (gravity/ADM/Higgs). There is a
+  FOURTH mode `E` = gravity (Witten positive-energy = its continuum avatar).
+- Honesty corrections applied: [H1] taxonomy classifies TERMS not PARTICLES (Higgs
+  mechanism / Schwinger mass are cross-slot); [H2] `OctonionMassCoupling` reframed as
+  a CONSTRAINT theorem (color commutant is the physical object) - docstring corrected;
+  [H3] most baryonic mass = trace anomaly, a continuum C-phenomenon out of scope.
+- Lane C re-scoped: strong-coupling SU(2) (Osterwalder-Seiler 1978) is the honest
+  gate; all-`beta` fixed-spacing is DEMOTED to OPEN/out-of-scope.
+
 ## GRAND CAPSTONE (2026-07-06, saturation push)
 
 `GrandMassCapstone.grandMassCapstone` now conjoins ONE kernel-checked representative

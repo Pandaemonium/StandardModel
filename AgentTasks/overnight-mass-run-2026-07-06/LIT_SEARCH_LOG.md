@@ -226,3 +226,20 @@ origin of mass - the candidate "common carrier" the brief asks Fable to adjudica
   obstruction to lightlike/null transport / relational origin of inertia" returned
   NO close hits - the specific null-edge-obstruction framing appears distinctive.
   The nearest neighbors are all spectral/NCG or division-algebra, not null-edge.
+
+## Round 12 (2026-07-06) - Fable-5 steer reading list (carrier / Weitzenbock)
+Ingested per FABLE_STEER.md; feeds the re-organized program (decomposition-not-
+identification carrier + re-scoped lane C + KP/higher-d routes).
+- 2204.12737 (Shen-Zhu-Zhu, INGESTED, key 5NACST85) - "A stochastic analysis approach
+  to lattice Yang-Mills at strong coupling": Langevin dynamics, log-Sobolev/Poincare,
+  STRICTLY POSITIVE mass gap with EXPLICIT coupling bound |beta| < 1/(16(d-1)) for
+  SU(N). Candidate route for the re-scoped strong-coupling C-gate (vs the polymer
+  route); functional-inequality machinery, not combinatorics.
+- 1709.04891 (AHH massive spinor-helicity) + cond-mat/0309352 (Scott-Sokal repulsive
+  lattice gas / LLL / cluster expansion) - already in-graph (dedup skip); both now
+  TAGGED to the carrier program (A=T bridge and the KP Penrose-scheme crux resp.).
+- To ingest next (no clean arxiv or not yet fetched): Osterwalder-Seiler 1978
+  (Ann.Phys.110), Tomboulis-Yaffe 1985 (CMP 100,313), Witten 1981 (CMP 80, positive
+  energy = gravity slot), Friedan 1982 (CMP 85, N-N), Loring finite-matrix K-theory,
+  Chelsea Edmonds LLL AFP (Isabelle 2023), Jacobson-Schulman 1984 (checkerboard),
+  Chatterjee "YM for probabilists", Cao-Park-Sheffield random surfaces.
