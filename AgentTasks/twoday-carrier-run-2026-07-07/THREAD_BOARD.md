@@ -599,9 +599,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `ker(exteriorForm n h) = ker(Λ^n mkQ_N)` for a symmetric form and its radical
   quotient.  These Q08 quotient theorems are guard-pinned in
   `CarrierAxiomGuard`.
-- **Next:** the literal graded `rad(Lambda h) = ideal(N)` statement still needs
-  the kernel-span theorem for decomposables with an `N` factor plus assembly
-  across all particle numbers.  Q01 has now landed a finite positive
+- **Done:** Q08 graded radical assembly has now landed in
+  `PhysicsSM/Draft/NullEdge/Carrier/FockGradedRadical.lean` from Aristotle
+  project `b4206467`.  `bilinDS_ker_iff` proves that the radical of an
+  orthogonal direct-sum form is detected component by component, and
+  `fockGraded_radical_componentwise` upgrades the fixed-degree
+  `exteriorForm_radical_eq` bridge to the all-particle-number direct-sum Fock
+  form.  The reusable direct-sum symmetry and nondegeneracy lemmas are also
+  guard-pinned in `CarrierAxiomGuard`.
+- **Next:** the stronger literal graded `rad(Lambda h) = ideal(N)` theorem still
+  needs the kernel-span theorem for decomposables with an `N` factor.  Q01 has
+  now landed a finite positive
   Kugo-Ojima witness/no-go, but positivity for the actual exterior physical
   quotient remains open until the model-specific constraint and Ward hypotheses
   are supplied.

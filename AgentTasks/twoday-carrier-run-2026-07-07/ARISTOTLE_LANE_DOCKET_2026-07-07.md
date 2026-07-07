@@ -710,3 +710,39 @@ after submission showed the project `RUNNING`.
   classification and does not by itself prove physical dimension selection.
 - Fresh harvest-first item still open after this integration:
   `b4206467` Q08 Fock graded radical / LGV lift.
+
+## Harvest from Q08 Fock graded radical assembly
+
+- `b4206467`
+  (`ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707`)
+  returned a Lean payload now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/FockGradedRadical.lean`.
+- New proved declarations include `bilinDS`, `bilinDS_apply_lof_left`,
+  `bilinDS_apply_lof_right`, `bilinDS_ker_iff`, `bilinDS_isSymm`,
+  `bilinDS_nondegenerate_iff`, `fockGradedForm`, and
+  `fockGraded_radical_componentwise`.
+- The carrier guard now pins the direct-sum radical, symmetry,
+  nondegeneracy, and graded Fock radical componentwise theorems.
+- Claim boundary: this is finite/graded multilinear algebra.  It upgrades the
+  fixed-degree quotient/radical bridge to the all-degree finite-support direct
+  sum.  It does not prove positivity, Hilbert completion, physical-sector
+  completeness, or the stronger decomposable-factor ideal/span theorem.
+- Fresh harvest-first item after this integration: none known until the next
+  `aristotle list` poll.
+
+## Refill after Q08 graded-radical and Q10 scalar-amplitude harvests
+
+Submitted 2026-07-07 after integrating Q08 `b4206467` and Q10 `05fdd744`.
+Both submissions use unique `ne-next-*` names and were prepared from clean
+helper packages under `AgentTasks/aristotle-submit/` with the SpherePacking
+remote patch disabled because the current Lake files contain no active
+SpherePacking dependency block.
+
+| Project ID | Aristotle job name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `f8aa05c8-26a4-42f3-810b-a09f8be41686` | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 exterior quotient | proof/strategy | Push beyond the landed componentwise direct-sum theorem toward the exterior-power kernel ideal/span theorem, or return the exact Mathlib blocker. |
+| `fbdbe43f-b8c4-4edc-9f28-d09bbdbf824c` | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` | Q10 scalar amplitude | proof/strategy | Prove the finite `d = 4` paired-spectrum positive self-dual/intertwiner corner, or return the honest blocker and theorem reformulation. |
+
+Task IDs: Q08 `680a8046-1903-41f7-bdaf-20c20efa6bfc`; Q10
+`c3b0786e-f990-4110-8b00-f7f0770b4acc`.  Queue poll immediately after
+submission showed twelve running StandardModel-relevant lanes.

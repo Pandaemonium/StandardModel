@@ -3657,3 +3657,55 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `pre-commit run --all-files`.
 - Fresh harvest-first item still open: Aristotle project `b4206467` Q08
   Fock/LGV graded radical.
+
+## [ARISTOTLE-HARVEST Codex solo] Q08 graded Fock radical assembly landed
+
+- Harvested Aristotle project `b4206467-fe79-4cd7-8c1b-86291bcb02b6`
+  (`ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707`).
+- Integrated the Lean payload as
+  `PhysicsSM/Draft/NullEdge/Carrier/FockGradedRadical.lean` and imported it
+  from `CarrierAxiomGuard.lean`.
+- New proved declarations include `bilinDS`, `bilinDS_ker_iff`,
+  `bilinDS_isSymm`, `bilinDS_nondegenerate_iff`, `fockGradedForm`, and
+  `fockGraded_radical_componentwise`.
+- Claim boundary: this is finite/graded multilinear algebra.  It upgrades the
+  prior fixed-degree radical quotient bridge to the all-particle-number
+  finite-support direct-sum Fock form.  It does not prove positivity,
+  Hilbert completion, physical-sector completeness, or the stronger
+  decomposable-factor ideal/span theorem.
+- Added harvest note
+  `ARISTOTLE_Q08_FOCK_GRADED_RADICAL_HARVEST_2026-07-07.md`; updated
+  `THREAD_BOARD.md`, `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and
+  `GOAL_PROMPT_CODEX.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/FockGradedRadical.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`
+  (with pre-existing neighboring warnings);
+  added-line Markdown placeholder-token scan;
+  new-file Lean placeholder-token scan;
+  duplicate future-name scan for the refreshed launch table;
+  `git diff --check`;
+  `pre-commit run --all-files`.
+
+## [ARISTOTLE-REFILL Codex solo] Q08 ideal/span and Q10 positive-corner jobs submitted
+
+- Queue poll after harvesting Q08/Q10 showed ten running StandardModel-relevant
+  Aristotle lanes, so Codex submitted two fresh unique follow-ups.
+- Submitted `f8aa05c8-26a4-42f3-810b-a09f8be41686`:
+  `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707`.
+  Task id: `680a8046-1903-41f7-bdaf-20c20efa6bfc`.
+  Target: push the landed componentwise direct-sum radical theorem toward the
+  exterior-power kernel ideal/span theorem, or return the exact blocker.
+- Submitted `fbdbe43f-b8c4-4edc-9f28-d09bbdbf824c`:
+  `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707`.
+  Task id: `c3b0786e-f990-4110-8b00-f7f0770b4acc`.
+  Target: prove the finite `d = 4` paired-spectrum self-dual/intertwiner
+  positive corner, or return the honest blocker.
+- Added task briefs:
+  `ARISTOTLE_Q08_GRADED_RADICAL_IDEAL_FOLLOWUP_2026-07-07.md` and
+  `ARISTOTLE_Q10_D4_SELFDUAL_POSITIVE_CORNER_2026-07-07.md`.
+- Queue poll immediately after submission showed both new projects `RUNNING`;
+  with the ten older running projects, Aristotle is back to twelve active
+  StandardModel-relevant lanes.

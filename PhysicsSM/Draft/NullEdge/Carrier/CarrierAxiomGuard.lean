@@ -16,6 +16,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.KreinPositiveSectorWitness
 import PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization
 import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
 import PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing
+import PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical
 import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle
 import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardCrossingNonvacuous
 import PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG
@@ -66,6 +67,10 @@ guards are edited independently to avoid collision.
 * Fock-Gupta-Bleuler quotient bridge (`FockQuotientPairing`): the degree-by-
   degree finite exterior-power radical quotient identity and perfect-pairing
   bridge. Positivity and Hilbert completion are not claimed.
+* Graded Fock radical assembly (`FockGradedRadical`): the all-particle-number
+  finite-support direct-sum upgrade. The radical of the orthogonal direct-sum
+  Fock form is componentwise, hence it is the graded family of exterior-power
+  projection kernels. Positivity and Hilbert completion are not claimed.
 * Checkerboard two-particle determinant (`CheckerboardTwoParticle`): the finite
   L=4, N=2 exterior-amplitude determinant identity and straight-through
   rational-polynomial witness.
@@ -329,6 +334,24 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing.exteriorForm_radical_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing.exteriorForm_radical_eq
+
+/-! ## Graded Fock radical assembly (all particle numbers) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.bilinDS_ker_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.bilinDS_ker_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.bilinDS_isSymm' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.bilinDS_isSymm
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.bilinDS_nondegenerate_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.bilinDS_nondegenerate_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.fockGraded_radical_componentwise' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FockGradedRadical.fockGraded_radical_componentwise
 
 /-! ## Finite checkerboard two-particle determinant identity -/
 

@@ -62,13 +62,16 @@ future-facing names in this table, or the same pattern with a date bump if the
 work moves past 2026-07-07.  If a listed target has advanced, mint an even more
 specific non-colliding `ne-next-*` name and record it in the docket.
 
-Current poll context: Q10 Spin/Weyl scalar amplitude (`05fdd744`) has returned
-and is being harvested locally; Q08 Fock/LGV (`b4206467`) has also returned and
-is the next harvest-first item.  The still-running StandardModel-relevant lanes
-below should not be duplicated:
+Current poll context: Q10 Spin/Weyl scalar amplitude (`05fdd744`) and Q08 Fock
+graded radical / LGV lift (`b4206467`) have both been harvested locally.  There
+is no known harvest-first item until the next `aristotle list` poll.  After the
+Q08/Q10 refill, Aristotle is back to twelve running StandardModel-relevant
+lanes.  The still-running lanes below should not be duplicated:
 
 | Project | Active Aristotle job | Lane |
 |---|---|---|
+| `fbdbe43f` | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` | Q10 finite `d = 4` positive corner |
+| `f8aa05c8` | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 graded radical ideal/span follow-up |
 | `ecbf61d8` | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a `Q_A` / Minkowski aperture |
 | `5ff9424e` | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` | Q12 GammaPrime E4 semantic audit |
 | `96058502` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 / sector MS |
@@ -82,9 +85,9 @@ below should not be duplicated:
 
 Recently harvested and not to duplicate: Q13 global overclaim audit
 (`07f40fff`), literature/provenance source-gap audit (`5713746e`), and Q10
-Spin/Weyl scalar-amplitude classification (`05fdd744`).  The duplicate Q12
-radical-healing proof project (`297ae18c`) was canceled after the local proof of
-`E4_nontrivial_healing`.
+Spin/Weyl scalar-amplitude classification (`05fdd744`), and Q08 Fock graded
+radical assembly (`b4206467`).  The duplicate Q12 radical-healing proof project
+(`297ae18c`) was canceled after the local proof of `E4_nontrivial_healing`.
 
 | Lane | Pursuit | Highest-value next artifact | Next unique Aristotle job name |
 |---|---|---|---|
@@ -106,11 +109,11 @@ radical-healing proof project (`297ae18c`) was canceled after the local proof of
 | Q05 | Triality as monodromy | Equivariant index, cover multiplicativity, no-four-orbit route | `ne-next-q05-monodromy-triality-cover-index-strategy-20260707` |
 | Q06 | Continuum / GW / refinement | Heterogeneous path-sum and edge-word lift beyond homogeneous transfer powers | `ne-next-q06-heterogeneous-pathsum-gw-edgeword-lift-strategy-20260707` |
 | Q07 | Koide / T-solder | Kappa gate, tetrahedral probe, and Hessian/oracle kill tests | `ne-next-q07-tsolder-koide-kappa-hessian-killgate-audit-20260707` |
-| Q08-RAD | Exterior Fock radical | Harvest `b4206467`; then assemble graded radical/ideal quotient beyond fixed degrees | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` |
+| Q08-RAD | Exterior Fock radical | Harvest `f8aa05c8`; then audit/integrate the ideal/span follow-up or open the next exact blocker | `ne-next-q08-graded-radical-ideal-integration-audit-20260707` |
 | Q08-LGV | Checkerboard / LGV | Multi-layer brick-wall lift of the corrected scattering-vertex DAG | `ne-next-q08-multilayer-brickwall-sharedvertex-lgv-proof-20260707` |
 | Q09-REEH | Horizon / screen well-posedness | Harvest `4b462390`; then isolate finite Reeh-screen hypotheses or no-go | `ne-next-q09-finite-reeh-screenarea-wellposedness-followup-audit-20260707` |
 | Q09-BW | BW-cut locality | Concrete finite BW-cut locality witness or proof that no current witness exists | `ne-next-q09-bwcut-locality-witness-construction-proof-20260707` |
-| Q10-SCALAR | Signature / scalar amplitude | After the `05fdd744` finite obstruction landing, prove the positive `d = 4` invariant self-dual form or audit the real Spin/Weyl replacement | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` |
+| Q10-SCALAR | Signature / scalar amplitude | Harvest `fbdbe43f`; then audit the finite `d = 4` positive corner or open the real Spin/Weyl replacement | `ne-next-q10-spinweyl-positive-corner-integration-audit-20260707` |
 | Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction assumption, and physical interpretation separated | `ne-next-q10-stableorder-dimension-reconstruction-boundary-audit-20260707` |
 | Q11-RC0 | `J_R` / RC0 determinant cocycle | Harvest `aa4e48f6`; then integration audit for Jacobi/Cauchy-Binet semantics | `ne-next-q11-rc0-det-cocycle-groupaction-followup-proof-20260707` |
 | Q11-ORDER | Majorana / order condition | Upgrade C3 sector identities toward operator-level invariant uniqueness | `ne-next-q11-ordercondition-invariant-operator-uniqueness-strategy-20260707` |
