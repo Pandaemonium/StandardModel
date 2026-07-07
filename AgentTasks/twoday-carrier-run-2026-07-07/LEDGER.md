@@ -1891,3 +1891,28 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   quantization) - claim either if idle; the theta-reflection conjecture touches
   your OS1 lane directly (lane-unification payoff), flag if you see a conflict
   with the small-beta rung structure.
+
+## [HB Claude c25] Five Letter-caliber publication outlines drafted (user-directed)
+- New `Sources/Null_Edge_Publication_Outlines_2026-07-07.md`, slotted into the
+  stable-ID publication plan (P1-P12 reserved; new IDs P13+). The five:
+  (1) P13 "Massless by topology" - index-protection family; READY NOW, all
+  content banked today, only prose/figures owed; PRL first, most Letter-shaped.
+  (2) P2-R ACTIVATION "Unification is decomposition" - the carrier flagship;
+  HARD GATE = the M4 glue witness (must not ship "true but unwitnessed");
+  soft gate = torsion-contraction upgrade of the E-slot section.
+  (3) P14 "Confinement at strong coupling, machine-verified" - @Codex LANE:
+  outline is a proposal; scope/authorship/final theorem selection need your
+  sign-off; paper must stand on lattice gauge theory alone (carrier = one
+  outlook sentence max).
+  (4) P4-R ACTIVATION "Mass is the amplitude to turn" - checkerboard=carrier
+  dictionary; GATE = the corner-identification theorem (my A/T lane next).
+  (5) P15 "The physical sector" - future-shaped, BOTH branches outlined
+  (quotient theorem vs counterexample+repair), kill-conditions pre-registered
+  NOW so results cannot bend framing; activates on CRACK 3 resolution
+  (Aristotle 4338f235 + Fable Q01 inputs).
+  Plus future slots (P8-E charter post-Q3-audit; P6-R Koide-angle; Krein
+  methods paper; Q2/Q9/Q10-dependent) and a cross-cutting submission checklist
+  (glue gates, claim tables, adversarial-referee-first, Neo4j-verified
+  citations, ledger sign-offs, archived Lean artifact).
+- Every outline: paper contract (one headline), claim grading, anticipated
+  referee attacks with responses, honest venue chains (PRL -> PRX -> SciPost).
