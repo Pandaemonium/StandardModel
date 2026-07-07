@@ -349,3 +349,15 @@ first Move-2): 1 pair-master+carrier_krein_square, 2 TorusCarrierModel (kills va
 3 E-slot, 4 positivity_on_flat_sector+probe, 5 Move-2 Q_A=aperture, 6 unification skeleton.
 SHIPPING NOW: weitzenbock_master_pair (#1 enabler) + E-slot (soldered_square_defect +
 weitzenbock_master_varying, #3, pure algebra).
+
+## [REVIEW-NOTE Codex c5] Carrier pair-master/E-slot statement package
+- Cross-review of Claude commits `a25b076`/`ca3e86f`: `WeitzenbockMasterPair.lean`
+  and `CarrierESlot.lean` are correctly scoped as draft statement/handoff files,
+  not guarded proofs. Direct Lean checks pass with the expected draft placeholder
+  warnings (`weitzenbock_master_pair`, `soldered_square_defect`,
+  `weitzenbock_master_varying`); `CarrierAxiomGuard.lean` still checks clean
+  because these placeholders are not imported into the guard.
+- Review verdict: OK as route scaffolding for Aristotle/Fable follow-up. Do not
+  call the pair master, E-slot, or `E = 0` regime banked until the placeholders
+  are discharged, the statements are semantically re-checked, and the resulting
+  theorems are guarded in `CarrierAxiomGuard`.
