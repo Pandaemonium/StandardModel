@@ -826,9 +826,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   claim-grade audit (`2170a1f9`). The returned `5bdce729`, `e3f3ae61`,
   `d32e8150`, `ed700b2a`, `2170a1f9`, `dbe3850c`, `cdba6caa`, and `f962cbe7`
   harvests are now integrated, recorded, or acted on.  Current poll shows
-  `26fa682c`, `bcf263f0`, `9af1d5fb`, and `ec1ad7d5` still running; refill
-  after this commit should prioritize fresh follow-ups, not duplicate the
-  harvested report names.
+  `bcf263f0`, `9af1d5fb`, and `ec1ad7d5` still running; `26fa682c` has now
+  been harvested into the Q08 LGV obstruction.  Refill wave submitted after
+  that harvest: `aa4e48f6` Q11 Jacobi/Cauchy-Binet, `7b99f3b8` Q04 sign-gauge,
+  `b6b128d4` Q04 ConventionBridge, `2c7ddcf1` Q08 scattering-DAG,
+  `7de21ba8` Q09 Reeh/ScreenArea, `a1534a69` Q06 symbol-to-carrier,
+  `381cc4cf` Q12 genuine-triality audit, `1b3c2203` Q12 C8 bridge gates, and
+  `bd50e825` manuscript post-fix regression audit.  With the three older
+  running projects, Aristotle is back to roughly twelve active
+  StandardModel-relevant lanes.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

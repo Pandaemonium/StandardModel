@@ -362,3 +362,28 @@ Queue status after this harvest: `bcf263f0` Q10 inertia-index bridge,
 queue should be refilled with fresh follow-up names; Q08 follow-up should target
 the scattering-vertex DAG or source/sink compatibility route, not the killed
 naive LGV statement.
+
+## Refill wave after Q08 LGV obstruction harvest
+
+Submitted 2026-07-07 after committing the Q08 nonvacuous checkerboard / naive
+LGV obstruction and recording the P1/Q04/Q12/Q11 audit batch.  These projects
+use unique descriptive names.  Most are focused packages with the minimum Lean
+files copied into `AgentTasks/aristotle-submit/`; Aristotle warns that they have
+Lean files but no `.lake` folder, which is acceptable for these small packages
+and audits.
+
+| Project ID | Descriptive name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `aa4e48f6-2581-4276-a5ae-db77c7660cd6` | `ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707` | Q11 RC0 group action | proof | Close Jacobi complementary-minor and Cauchy-Binet gaps in `Q11GroupAction`, removing draft compiler-eval if feasible. |
+| `7b99f3b8-bc66-4314-bbb3-96a94800b6f4` | `ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707` | Q04 octonion convention | proof | Diagonal sign-gauge reconciliation between `Q12Triality.octSgn` and project `Basic.lookupSign`. |
+| `b6b128d4-435d-423a-ba58-a467c66cac08` | `ne-q04-conventionbridge-baez-xor-product-law-proof-20260707` | Q04 ConventionBridge | proof | Kernel theorem replacing comment-only Baez/Furey-to-XOR product-line preservation. |
+| `2c7ddcf1-000d-4e84-9b36-f7d1d19d4374` | `ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707` | Q08 checkerboard Fock | strategy/proof | Corrected scattering-vertex / brick-wall DAG or source/sink compatibility route after naive LGV was killed. |
+| `7de21ba8-4642-47c0-9323-0e5b06c253cd` | `ne-q09-finite-reehschlieder-screenarea-completion-proof-20260707` | Q09 screen area | proof/strategy | A9.1 degeneracy/invariance or finite Reeh-Schlieder well-posedness gate. |
+| `a1534a69-4621-40f9-878a-f1b1b4c028bd` | `ne-q06-symbol-to-carrier-generator-conjugation-audit-20260707` | Q06 transfer/GW | audit/strategy | Bridge landed symbol/word-order results toward carrier generator-conjugation or isolate missing hypotheses. |
+| `381cc4cf-9b90-41c0-adf0-5f80d64d72b3` | `ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707` | Q12 triality wording | audit/proof | Decide non-diagonal order-3 triality witness vs permanent diagonal-character wording demotion. |
+| `1b3c2203-26f4-4c7c-aebe-4f337b6bebe7` | `ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707` | Q12 C8 seam | proof/strategy | Non-permutation Furey bridge gates, repo-`sigma` identities, or exact blockers. |
+| `bd50e825-4973-4190-9b16-af209583397e` | `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707` | Manuscript / claims | audit | Re-audit P1 v3 after the carrier/Krein/Q_A downgrades for residual grade drift. |
+
+Queue check immediately after submission: all nine new projects were `RUNNING`;
+with `bcf263f0`, `9af1d5fb`, and `ec1ad7d5`, Aristotle had twelve active
+StandardModel lanes.

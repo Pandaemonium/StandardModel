@@ -147,6 +147,15 @@ Live queue snapshot after the post-Q08/Q10 refill (verify with
 `aristotle list` before acting):
 
 - **Still running / poll first:** the current running jobs
+  `ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`,
+  `ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707`,
+  `ne-q04-conventionbridge-baez-xor-product-law-proof-20260707`,
+  `ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707`,
+  `ne-q09-finite-reehschlieder-screenarea-completion-proof-20260707`,
+  `ne-q06-symbol-to-carrier-generator-conjugation-audit-20260707`,
+  `ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`,
+  `ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`,
+  `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`,
   `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`,
   `ne-rg-schur-krein-gamma-stability-proof-20260707`, and
   `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`.
