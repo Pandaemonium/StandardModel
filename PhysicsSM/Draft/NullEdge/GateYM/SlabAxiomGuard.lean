@@ -41,6 +41,7 @@ import PhysicsSM.Draft.NullEdge.GrandMassCapstoneUnconditional
 import PhysicsSM.Draft.E8Root240NoNative
 import PhysicsSM.Draft.E8DimensionBudget
 import PhysicsSM.Draft.NullEdge.GateYM.NNIndexExact
+import PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics
 import PhysicsSM.Draft.NullEdge.GrandMassCapstone
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyApertureTurn
 import PhysicsSM.Draft.NullEdge.GateI1.AllMassFromNullEdgesV3
@@ -383,5 +384,15 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.E8DimensionBudget.branching_E6_SU3' does not depend on any axioms -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.E8DimensionBudget.branching_E6_SU3
+
+/-! ## Batch wave 10: Z2 slab gap asymptotics (confinement / weak-coupling limits) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atZero_top' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atZero_top
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atTop_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atTop_zero
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

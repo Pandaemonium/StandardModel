@@ -74,6 +74,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.NNIndexTie
 import PhysicsSM.Draft.NullEdge.GateYM.TwoLevelOSGap
 import PhysicsSM.Draft.NullEdge.GateYM.OverlapIndex
 import PhysicsSM.Draft.NullEdge.GateYM.NNIndexExact
+import PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics
 import PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 import PhysicsSM.Draft.NullEdge.GateYM.TransferPositivity
 import PhysicsSM.Draft.NullEdge.GateYM.TransferHilbert
