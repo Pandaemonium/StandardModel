@@ -51,6 +51,56 @@ appears in `PhysicsSM/Draft/NullEdge/Carrier/**`,
 `SlabAxiomGuard.lean`, coordinate via `LEDGER.md` and git rather than
 overwriting it.
 
+## Complete solo lane roster
+
+Use this roster as the top-level map when choosing work or refilling
+Aristotle.  It is deliberately broader than the immediate harvest queue: every
+row is a live research lane unless `THREAD_BOARD.md` or a later ledger entry
+parks it.  The Aristotle job names here are fresh launch names for the next
+solo refill wave; do not submit one if a returned job has already solved the
+same target, and rename with the current date if this prompt is reused after
+2026-07-07.
+
+| Lane | Pursuit | Next local artifact | Fresh Aristotle job name |
+|---|---|---|---|
+| W1 | Carrier / Weitzenbock `E` slot | Discrete torsion versus symmetric soldering-difference split; guard footprint review | `ne-solo-lane-w1-weitz-eslot-split-proof-20260707` |
+| W2a | Aperture and turn identification | Concrete `Q_A` aperture contract plus corrected `Phi = Gamma * phi` turn identity | `ne-solo-lane-w2a-aperture-turn-identification-proof-20260707` |
+| W2b | Graded irreducibility | Bigraded slot-normal-form route to no-common-carrier | `ne-solo-lane-w2b-bigraded-irreducibility-strategy-20260707` |
+| W2c | Relative exhaustiveness / PBW | Normal-form statement and named obstruction terms for dropped hypotheses | `ne-solo-lane-w2c-pbw-exhaustiveness-obstruction-audit-20260707` |
+| CAPSTONE | Four-slot carrier identity | Assembly of already guarded finite summands only; no spectral mass wording | `ne-solo-lane-capstone-four-slot-identity-redteam-audit-20260707` |
+| OS1 | Strong-coupling gap scaffold | Genuine small-`beta` multiplaquette character/polymer rung beyond zero-coupling fixtures | `ne-solo-lane-os1-smallbeta-multiplaquette-rung-proof-20260707` |
+| QC / QC-GRAM | Closure readout and normalization | Exact finite readout, Gram/Laplacian normalization, and carrier-side contract boundaries | `ne-solo-lane-qc-exact-readout-normalization-proof-20260707` |
+| PH / RP | Product-Haar to Wilson-measure RP | Gap audit from banked product-Haar positivity to interacting Wilson measure | `ne-solo-lane-rp-producthaar-wilson-measure-gap-audit-20260707` |
+| KP / Penrose | Fixed-forest injection | Support lemmas or no-go certificate for the Penrose partition route | `ne-solo-lane-kp-fixedforest-fiber-injection-support-strategy-20260707` |
+| Q01 | Gupta-Bleuler physical positivity | Wire the unbalanced finite witness to actual carrier/Gauss constraints, Ward invariance, and completeness | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` |
+| Q02 | Gravity / invariant `E`-slot | Invariant trace functional, P-probe boundary, and teleparallel wording guard | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` |
+| Q03 | Dispersion and doublers | Determinant/wedge dispersion identity plus explicit doubler and mass-shell ledger | `ne-solo-lane-q03-dispersion-doubler-determinant-ledger-proof-20260707` |
+| Q04 strand-Fock | SM fiber selection | Pentad fiber, hypercharge/Z6 rigidity, supertrace/anomaly finite identities | `ne-solo-lane-q04-strand-pentad-hypercharge-z6-proof-20260707` |
+| Q04 octonion bridge | XOR-Fano to `Lambda(C^3)` | Operator-valued left-action bridge after sign-gauge and ConventionBridge landings | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` |
+| Q05 | Triality as monodromy | Equivariant index, cover multiplicativity, no-four-orbit lemma, and monodromy kill conditions | `ne-solo-lane-q05-triality-monodromy-equivariant-index-strategy-20260707` |
+| Q06 | Continuum / GW / refinement | Edge-reversal, hidden Wilson term, quotient-then-limit, HSSC/UM, and heterogeneous path-sum gates | `ne-solo-lane-q06-refinement-gw-hssc-um-audit-20260707` |
+| Q07 | Mass values / T-solder | Koide equipartition, kappa gate, tetrahedral probe, and Hessian/oracle tests | `ne-solo-lane-q07-tsolder-koide-kappa-killgate-audit-20260707` |
+| Q08 | Fock / checkerboard / LGV | Graded radical assembly and multi-layer brick-wall LGV lift after the corrected scattering DAG | `ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707` |
+| Q09 | Horizon / screen area / modular | Finite Reeh well-posedness, concrete BW-cut locality witness, entropy boundary | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` |
+| Q10 | Signature and dimension | Stable-order boundary plus Spin/Weyl same-chirality scalar-amplitude classification | `ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707` |
+| Q11 | `J_R` / KO / RC0 | Jacobi/Cauchy-Binet cleanup, determinant cocycle, order-condition uniqueness | `ne-solo-lane-q11-jr-rc0-ordercondition-integration-proof-20260707` |
+| Q12 | Chirality-solder / C8 / anomaly | Non-permutation Furey bridge, PSA-2/3 determinant-line phases, sector McKean-Singer gates | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` |
+| RG-SCHUR | Coarse-graining | Concrete Schur-step witness that null microstructure can generate non-null mass terms | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` |
+| C-1FORM | Finite center/twist backgrounds | Twist-sector API and honest RP/background-cohomology boundary | `ne-solo-lane-c1form-twistsector-rp-background-audit-20260707` |
+| SPIN10-U5 | Pure-spinor internal selection | `Lambda(C^5)` / U(5) pure-spinor-line stabilizer shadow | `ne-solo-lane-spin10-u5-purespinor-stabilizer-strategy-20260707` |
+| M4-WIT | Concrete Pauli/Pontryagin witness | Carrier-owned Krein-sharp instantiation and positivity probe | `ne-solo-lane-m4-pauli-pontryagin-carrier-instantiation-proof-20260707` |
+| HSTAR | Model-by-model constraint audits | Nullity/rank of Gauss covectors, Ward identity, p > q nonvacuity, real-split kill scan | `ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707` |
+| PLUMBING | Cross-lane real structures | `J_R`, edge reversal, monodromy inversion, `#`, and linear/antilinear compatibility table | `ne-solo-lane-plumbing-jr-edge-reversal-sharp-audit-20260707` |
+| Q13 | Red-team / no-go | Four over-claim modes across the next batch of integrations | `ne-solo-lane-q13-global-overclaim-regression-audit-20260707` |
+| Manuscript | P1 v3 / scorecard / thread board | Claim grades, ledger, thread board, and manuscript consistency after new landings | `ne-solo-lane-manuscript-scorecard-threadboard-sync-audit-20260707` |
+| LIT-PROV | Literature and provenance | Source-key gaps, convention citations, and paper-dependent claim boundaries | `ne-solo-lane-lit-provenance-source-gap-audit-20260707` |
+
+If Aristotle capacity is available after harvests, load a balanced pack from
+this roster: five to seven proof/construction jobs with isolated statements,
+three to four strategy jobs for design forks, and two or three adversarial
+audits for recent or claim-risky integrations.  Prefer a parked, well-named
+audit over a duplicate proof packet.
+
 ## Lane catalog
 
 Keep all of these lanes alive, with priority set by current blockers,
