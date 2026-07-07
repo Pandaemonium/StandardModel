@@ -763,3 +763,18 @@ positivity (both in progress).
 - Submit warning noted: the staged package omitted `lean-toolchain`/`.lake`; this
   is acceptable for this source/prose audit, but proof jobs should use a Lean
   project package.
+
+## [HB Claude c11] witness: satisfiability discharged mathematically; kernel formalization OPEN
+- Aristotle stalled 2x on the glue-WITNESS (abstract + explicit Pauli, both ~4-6% for
+  20-60min). Pattern: CONSTRUCTION jobs (model + 8 hypothesis proofs + 3 nonzero-slots)
+  stall; PROOF jobs sail. Cancelled the explicit one (dd073244).
+- WITNESS_SATISFIABILITY.md: the vacuity concern (grand-strategy R3 / Fable audit item 3)
+  is now DISCHARGED MATHEMATICALLY - a verified explicit M4(C) = End(C^2 (x) C^2) model
+  (gamma=Pauli(x)I, nabla=I(x)Pauli, Gamma=sz(x)I, phi=c) satisfies ALL 8 hypotheses (hcomm
+  literal via tensor-factor separation) with Q_A,Q_C,Q_T ALL nonzero (hand-checked). So
+  carrier_square_assembly is NON-VACUOUS.
+- HONEST: the kernel witness (CarrierGlueWitness.lean) stays OPEN/pending - needs a
+  hand-built Kronecker-API construction (not !![...] entries), which Aristotle won't
+  complete. Labeled a pending formalization, NOT a claimed kernel result. This is the
+  honest way to close a low-risk insurance item that the tooling can't formalize.
+- Move-2 Q_A identification (3a0bf2d9) still in flight = the real physics content.
