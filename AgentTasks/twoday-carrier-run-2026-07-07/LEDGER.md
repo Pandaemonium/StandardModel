@@ -3378,3 +3378,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdgeP9DiamondSourceVisibilityCore.lean`.
 - Remaining harvest-first jobs: none known after the latest harvest.  Q11
   Jacobi `aa4e48f6` was still running at the latest poll.
+
+## [ARISTOTLE-REFILL Codex solo] Solo-lane wave loaded after manuscript harvest
+
+- Submitted eleven fresh, uniquely named `ne-solo-lane-*` Aristotle projects
+  from the solo roster after the Q12 bridge/triality harvests and manuscript
+  postfix audit fixes were recorded.
+- New running projects:
+  `96058502` Q12 C8/PSA bridge audit, `82cc3c8e` RG-Schur
+  null-nilpotency-instability proof/strategy, `b4206467` Q08 Fock graded
+  radical/LGV lift, `4b462390` Q09 screen-area BW/Reeh witness audit,
+  `373f0283` Q01 Gauss positive-quotient proof/audit, `07f40fff` Q13 global
+  overclaim audit, `05fdd744` Q10 Spin/Weyl scalar-amplitude classification
+  strategy, `6e37da00` Q04 octonion `Lambda(C^3)` left-action strategy,
+  `ef87c91f` Q02 invariant trace / teleparallel E-slot audit, `16d04733`
+  HSTAR Gauss/Ward/real-split model audit, and `5713746e` lit/provenance
+  source-gap audit.
+- Queue poll with `aristotle list --limit 20` showed all eleven fresh projects
+  `RUNNING`; with the older Q11 Jacobi/Cauchy-Binet lane `aa4e48f6`, Aristotle
+  is back to twelve active StandardModel-relevant lanes.
+- Updated `GOAL_PROMPT_CODEX.md` and `ARISTOTLE_LANE_DOCKET_2026-07-07.md` so
+  these projects are harvest-first and not available for duplicate refill names.

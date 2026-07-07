@@ -234,11 +234,13 @@ to the current date.
 Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
 `aristotle list` before acting):
 
-- **Still running / poll first:** the current running jobs
-  `ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`.
+- **Still running / poll first:** the current running set has twelve
+  StandardModel-relevant lanes: the existing Q11 Jacobi/Cauchy-Binet lane
+  `aa4e48f6`, plus the eleven solo-lane refill projects listed below.
 - **Harvest-first before more refill:** no unharvested completed Aristotle
-  returns are known after the manuscript postfix audit harvest; verify again
-  with `aristotle list` before submitting a refill.
+  returns were known at the moment of the solo refill; after any of the active
+  solo-lane jobs turns `IDLE`, harvest and integrate/audit it before submitting
+  a duplicate target under a new name.
 - **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
   Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
   kill, Q08 corrected scattering-vertex LGV DAG, Q12 genuine non-diagonal
@@ -261,6 +263,23 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
   carrier-GW positive/negative cases.
 - **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707`
   is superseded by the local compiler-trust-free landing.
+
+Active solo refill wave.  These names are already submitted and should be
+treated as running/harvest-first until the docket records their result:
+
+| Project | Aristotle job name | Lane | Type |
+|---|---|---|---|
+| `96058502` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 bridge | audit/strategy |
+| `82cc3c8e` | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur | proof/strategy |
+| `b4206467` | `ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707` | Q08 Fock / LGV | proof/strategy |
+| `4b462390` | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW | audit/strategy |
+| `373f0283` | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positivity | proof/audit |
+| `07f40fff` | `ne-solo-lane-q13-global-overclaim-regression-audit-20260707` | Q13 red-team | audit |
+| `05fdd744` | `ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707` | Q10 scalar amplitude | strategy/proof |
+| `6e37da00` | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion bridge | strategy/audit |
+| `ef87c91f` | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` | Q02 E-slot / trace | audit |
+| `16d04733` | `ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707` | HSTAR model audit | audit/strategy |
+| `5713746e` | `ne-solo-lane-lit-provenance-source-gap-audit-20260707` | Literature / provenance | audit |
 
 Last refill pack, now partly harvested.  Treat these names as already submitted,
 not as open capacity, unless the docket explicitly records a renewed follow-up:

@@ -634,3 +634,29 @@ the latest poll: `aa4e48f6` Q11 Jacobi.
 
 Remaining harvest-first jobs after this integration: none known.  Still
 running at the latest poll: `aa4e48f6` Q11 Jacobi.
+
+## Solo refill wave after manuscript postfix harvest
+
+Submitted 2026-07-07 after the Q12 non-permutation bridge, Q12 finite triality,
+and manuscript postfix audit harvests were integrated/acted on.  Queue state at
+the next poll: all eleven projects below were `RUNNING`, alongside the older
+Q11 Jacobi/Cauchy-Binet project `aa4e48f6`, for twelve active
+StandardModel-relevant lanes.
+
+| Project ID | Aristotle job name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `96058502-bcfd-4336-8008-5cb1ffa91ebe` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 bridge | audit/strategy | Connect the explicit Hadamard/Fourier bridge to sector projections, PSA predicates, gamma-prime quotient data, or supertrace bookkeeping without claiming anomaly cancellation. |
+| `82cc3c8e-8df1-4f91-86b6-a3af1606430e` | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur | proof/strategy | Produce a finite witness or blocker for Schur complements generating nonzero scalar/mass-like effective blocks from null/nilpotent microstructure. |
+| `b4206467-fe79-4cd7-8c1b-86291bcb02b6` | `ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707` | Q08 Fock / LGV | proof/strategy | Lift the Fock quotient, radical, checkerboard, or scattering-DAG results toward a graded radical or path/determinant theorem. |
+| `4b462390-ee99-4a5c-9fb4-dc434e63316c` | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW | audit/strategy | Decide whether the screen-area/BW-cut files support a nonvacuous finite locality witness or only a Reeh-style well-posedness/no-go gate. |
+| `373f0283-593f-4394-a62a-90d83ae2f4ff` | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positivity | proof/audit | Test whether the current finite carrier APIs can wire the positive-sector witness to carrier/Gauss constraint quotient hypotheses. |
+| `07f40fff-8627-4acc-86f4-be06f5926933` | `ne-solo-lane-q13-global-overclaim-regression-audit-20260707` | Q13 red-team | audit | Audit recent Q12/Q10/RG-Schur/P1 wording for vacuity, hollow telescoping, docstring-outruns-kernel, and false shape. |
+| `05fdd744-2daa-447f-b865-2e81e615069a` | `ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707` | Q10 scalar amplitude | strategy/proof | Route the finite inertia and mass-amplitude files toward same-chirality scalar-amplitude classification while preserving the physical-claim boundary. |
+| `6e37da00-9a2b-44d1-8298-58b1b25e79c3` | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion bridge | strategy/audit | Design an operator-valued `Lambda(C^3)` left-action bridge from XOR/Fano data, using the landed convention/sign/Hadamard bridges and avoiding hidden associativity. |
+| `ef87c91f-80a7-40ca-8597-f8f48e95bb7b` | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` | Q02 E-slot / trace | audit | Audit the carrier E-slot and trace interface, with safe teleparallel/P-probe wording and possible finite trace-invariance targets. |
+| `16d04733-8cd0-4aaa-9867-cd43c8ba834c` | `ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707` | HSTAR model audit | audit/strategy | Audit model-level Gauss covector nullity/rank, Ward invariance, `p > q` nonvacuity, and real-split kill conditions. |
+| `5713746e-34b2-4406-a70d-2766b7649a2f` | `ne-solo-lane-lit-provenance-source-gap-audit-20260707` | Literature / provenance | audit | Find source-key, convention-citation, and paper-dependent claim gaps in the newest manuscript and NullStrand materials. |
+
+Harvest policy: poll these before any further refill.  Returned proof payloads
+must still be reviewed for semantic alignment, convention drift, hidden
+assumptions, and over-claim boundaries before landing.
