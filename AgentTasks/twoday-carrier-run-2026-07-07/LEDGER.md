@@ -366,3 +366,11 @@ weitzenbock_master_varying, #3, pure algebra).
   call the pair master, E-slot, or `E = 0` regime banked until the placeholders
   are discharged, the statements are semantically re-checked, and the resulting
   theorems are guarded in `CarrierAxiomGuard`.
+
+## Cycle 6 (Codex Aristotle strategy harvest)
+- [CLAIM Codex 22:18 QC] Harvest completed Aristotle focused strategy job
+  `86f7f9d4`/`4197d799`: keep current `QCLeading` scalar-only, land the pure
+  GateYM interval theorem `leadingClosureFluxCoeff_mem_Ioo`, queue the
+  parameterized `QCCarrierBridge.LeadingQCCarrierContract` for Fable call 03,
+  and leave the Carrier `nabla_commute_of_plaquetteCurvature_zero` rung in
+  Claude's lane.

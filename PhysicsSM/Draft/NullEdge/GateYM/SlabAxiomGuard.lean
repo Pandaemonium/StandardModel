@@ -165,6 +165,10 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCLeading.z2LeadingQCReadout
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCLeading.leadingClosureFluxCoeff_mem_Ioo' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCLeading.leadingClosureFluxCoeff_mem_Ioo
+
 /-! ## Concrete Z2 twist system: Z_le DERIVED (closes a modeled hypothesis) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2.Z2Twist_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/

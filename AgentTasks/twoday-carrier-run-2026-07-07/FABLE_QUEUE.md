@@ -48,6 +48,13 @@ Format:
   two-state transfer). Unblock = ratify exact object/normalization and whether
   the first Lean theorem should live in `GateYM/QCLeading.lean`,
   `TYAreaLaw.lean`, or a Carrier/GateYM bridge after Claude lands torus `Q_C`.
+- [QUEUE 22:18 Codex QC/Aristotle] Focused Aristotle strategy says the landed
+  `QCLeading` file should remain a scalar normalization layer; the next bridge
+  should be a parameterized `QCCarrierBridge.LeadingQCCarrierContract`, with the
+  carrier observable supplied as a parameter and no measure/expectation claim.
+  Unblock at call 03 = RATIFY the contract fields, normalization direction, and
+  whether it waits for Claude's Carrier theorem
+  `nabla_commute_of_plaquetteCurvature_zero` before any proof spend.
 
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far

@@ -86,9 +86,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   as the TY partition ratio and OS contraction factor `exp(-gap) = tanh beta`.
   This is only a finite leading-coefficient read-off, not a carrier `Q_C`
   expectation theorem or beyond-leading positivity claim. Aristotle focused
-  strategy job `86f7f9d4`/`4197d799` is in flight for the next honest bridge to
-  the carrier torus curvature slot; RATIFY call 03 still needed before heavier
-  proof spend.
+  strategy job `86f7f9d4`/`4197d799` completed: add the scalar interval fact
+  `leadingClosureFluxCoeff_mem_Ioo`; next bridge should be a parameterized
+  `QCCarrierBridge.LeadingQCCarrierContract`, queued for Fable call 03
+  ratification before heavier proof spend. Carrier theorem
+  `nabla_commute_of_plaquetteCurvature_zero` remains Claude-owned.
 
 ## Supporting threads
 

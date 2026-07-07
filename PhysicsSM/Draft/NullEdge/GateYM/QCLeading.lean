@@ -4,7 +4,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 noncomputable section
 
 /-!
-# QCLeading: the finite `Z2` leading closure-flux normalization bridge
+# QCLeading: the finite `Z2` leading closure-flux normalization scalar
 
 This module is the first kernel-shaped statement for the Codex-owned
 `Q_C`-identification thread of the two-day carrier run.  It deliberately proves
@@ -21,6 +21,11 @@ not an expectation theorem for the carrier operator `Q_C`, not a nonabelian
 `SU(2)` statement, and not a beyond-leading positivity result for `<Q_C>`.
 The later bridge to the concrete torus curvature operator belongs after the
 Carrier-side `Q_C` realization has been ratified.
+
+Aristotle strategy audit (2026-07-06): keep this module at the scalar
+normalization layer.  The next honest carrier bridge should introduce an
+observable parameter/contract first; this file should only prove scalar facts
+about the leading coefficient and the already-landed slab gap.
 
 Provenance: this is a bookkeeping bridge over the landed `Z2` slab chain, whose
 Osterwalder-Seiler background is [SMH5768W] Osterwalder-Seiler 1978 and
@@ -57,6 +62,19 @@ factor `tanh beta`. -/
 theorem leadingClosureFluxCoeff_eq_tanh (beta : ℝ) :
     leadingClosureFluxCoeff beta = Real.tanh beta := by
   rw [leadingClosureFluxCoeff, TYAreaLaw.partitionRatio_eq_tanh]
+
+/-- For positive coupling, the leading closure-flux coefficient lies strictly
+between zero and one.
+
+This is still a scalar normalization fact, not a positivity theorem for a
+carrier `Q_C` expectation. -/
+theorem leadingClosureFluxCoeff_mem_Ioo {beta : ℝ} (hbeta : 0 < beta) :
+    leadingClosureFluxCoeff beta ∈ Set.Ioo (0 : ℝ) 1 := by
+  rw [leadingClosureFluxCoeff_eq_tanh beta]
+  constructor
+  · rw [Real.tanh_eq_sinh_div_cosh]
+    positivity
+  · exact Real.tanh_lt_one beta
 
 /-- The leading closure-flux coefficient is the contraction factor attached to
 the assembled OS slab gap: `coeff = exp(-gap)`.
