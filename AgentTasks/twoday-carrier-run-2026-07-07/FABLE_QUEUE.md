@@ -123,6 +123,14 @@ Format:
   RATIFY whether the KP fiber-injection route remains the right OS1 fallback
   after the Pontryagin witness, and whether the concrete torus witness must
   precede every capstone/prose upgrade.
+- [QUEUE 03:25 Codex/Aristotle grand-strategy] 03:00 strategy review flags
+  the live Krein-risk rail: current Carrier square theorems are algebraic
+  involution-square identities until `kreinSharp (J = rho Gamma)` and the M4
+  `kappa = 2` witness are instantiated. It also asks Fable to ratify the exact
+  definitizability/positive-sector hypothesis before any headline positivity
+  theorem beyond the flat-sector identity, and to re-confirm KP fiber injection
+  as the OS1 fallback now that Aristotle returned the first support lemma
+  target. Unblock = decision on positive-sector hypothesis and OS1/KP priority.
 
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far

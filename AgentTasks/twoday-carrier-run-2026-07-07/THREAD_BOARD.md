@@ -29,8 +29,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   anticommutator); `E` def + vanishing-at-constant-soldering; then the assembly
   `D^2 = Q_A+Q_C+Q_T+E`. Krein-square upgrade **BANKED + guarded + Codex-reviewed**
   in commit `5e0c5c8`: `carrier_krein_square` and
-  `carrier_krein_square_selfAdjoint` prove the `D^#D` mass-form decomposition,
-  with positivity still explicitly OPEN. Backfill: brick **2a'** (char-free,
+  `carrier_krein_square_selfAdjoint` prove the algebraic involution-square
+  mass-form identity. The physical Krein reading remains pending a pinned
+  `kreinSharp (J = rho Gamma)` restatement plus the M4 `kappa = 2` witness, and
+  no single four-slot `D^#D = Q_A + Q_C + Q_T + E` theorem has landed yet.
+  Positivity remains explicitly OPEN. Backfill: brick **2a'** (char-free,
   drop Field/h2 - call-01 audit). **Cite in W1 docstrings:**
   [BQJAG9TR] hep-th/9503153 (generalized Lichnerowicz) + arXiv:1301.3480 (gauge
   networks, brick-2 scaffold) + [2DEG7MT2] 0708.3707; in-graph, LIT_LOG rounds 1-2.
@@ -311,13 +314,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   lemmas `perPair_absWeight_bound`, `fiber_value_bound`,
   `fiber_card_mul_le_factorial`, `absWeight_eq_root_mul_blocks`,
   `exists_canonical_root`, `treeRootChildren_poly_mem_nbhd`, and
-  `rhs_forest_expand`. Smallest next Lean target: build the concrete fiber
-  injection for a fixed forest target feeding `fiber_card_mul_le_factorial`;
-  after that, `pairSum_le_expBound` reduces to fiberwise-sum bookkeeping.
+  `rhs_forest_expand`. Focused Aristotle strategy job `53109f20`/`a363505b`
+  sharpened the route: the next Lean target is the canonical-root
+  child-forest well-formedness/`MapsTo` lemma, tentatively
+  `classify_child_forest_wf`, proving child count/size bounds, neighborhood
+  membership, touch witnesses, and the restricted-subgraph relation from the
+  existing block lemmas. Codex landed the stronger reusable version
+  `root_child_forest_wf` plus three local helper lemmas in
+  `PolymerKPConclusion.lean`; the next exact blocker is the concrete
+  fixed-forest fiber injection feeding `fiber_card_mul_le_factorial`. After
+  that, `pairSum_le_expBound` reduces to fiberwise-sum bookkeeping.
   Leave the documented intentionally false/refuted KP statements alone.
-  Focused Aristotle strategy job `53109f20`/`a363505b` is IN-FLIGHT to isolate
-  the smallest exact fiber-injection/regrouping lemma before Codex spends Lean
-  proof time.
 ### NN-D - higher-d Nielsen-Ninomiya [either, stretch]
 - **Done:** the discrete-Stokes degree theorem on `(ZMod N)^d` (facet-pairing
   telescoping), any d >= 2 beyond the landed 2D version; tie to overlap index if

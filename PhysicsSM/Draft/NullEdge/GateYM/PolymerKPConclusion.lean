@@ -45,8 +45,10 @@ which names the deleted-graph connected component rooted at a child slot, and
 with `treeRootChildBlock_card_add_one_le` bounding its size and
 `disjoint_treeRootChildBlock_of_component_ne` separating the easy
 component-support disjointness argument from the remaining tree-specific
-component-inequality proof, and `rhs_forest_expand`, which expands the RHS
-partial exponential into ordered child tuples.  It also includes
+component-inequality proof, `root_child_forest_wf`, which packages the
+child-forest well-formedness/`MapsTo` data needed by the next classification
+map, and `rhs_forest_expand`, which expands the RHS partial exponential into
+ordered child tuples.  It also includes
 `factorial_mul_prod_factorial_le`, the arithmetic normalization for the future
 multinomial fiber bound.  The remaining gap is the rooted-tree deletion, block
 reindexing, weight-factorization, and the geometric fiber-count bound.  In
@@ -1102,6 +1104,96 @@ lemma treeRootChildren_poly_mem_nbhd (S : PolymerSystem Gamma)
     X.poly j ∈ nbhd S hdec g := by
   exact tree_root_child_mem_nbhd S hdec X g hTle hr
     ((mem_treeRootChildren T r j).mp hj)
+
+/-- Root-child arity is compatible with the `K + 3` forest truncation.
+
+This is the first size component of the future child-forest classification map:
+if the parent cluster is indexed by `Fin (K + 1 + 2)`, then the immediate
+root-child set is a legal `Fin (K + 3)` arity. -/
+lemma treeRootChildren_card_lt_of_cluster_bound (S : PolymerSystem Gamma) (K : Nat)
+    (X : Cluster S) (T : SimpleGraph (Fin X.n)) (r : Fin X.n)
+    (hn : X.n < K + 1 + 2) :
+    (treeRootChildren T r).card < K + 3 := by
+  have hcard := treeRootChildren_card_add_one_le T r
+  omega
+
+/-- A root-child block restricts to a cluster small enough for
+`boundedTouchSum K`.
+
+This records the child-size half of the child-forest `MapsTo` proof.  The
+argument uses only the already-proved child-block cardinality estimate and the
+fact that the image from deleted-root vertices back to parent slots cannot
+increase cardinality. -/
+lemma restrictCluster_childBlock_n_lt_of_cluster_bound (S : PolymerSystem Gamma)
+    (K : Nat) (X : Cluster S) (T : SimpleGraph (Fin X.n))
+    (r j : Fin X.n) (hn : X.n < K + 1 + 2)
+    (hj : j ∈ treeRootChildren T r) :
+    (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).n < K + 2 := by
+  unfold restrictCluster
+  have himage :
+      ((childBlockOf T r j).image (fun v => v.1)).card
+        <= (childBlockOf T r j).card := by
+    exact Finset.card_image_le
+  have hblock : (childBlockOf T r j).card + 1 <= X.n := by
+    simp [childBlockOf, hj, treeRootChildBlock_card_add_one_le T r j hj]
+  change ((childBlockOf T r j).image (fun v => v.1)).card < K + 2
+  omega
+
+/-- A child block, reindexed as a restricted cluster, still touches the
+polymer carried by its root child.
+
+This is the touch-witness component of the future child-forest classification
+map. -/
+lemma restrictCluster_childBlock_touches_root_child (S : PolymerSystem Gamma)
+    (X : Cluster S) (T : SimpleGraph (Fin X.n)) (r j : Fin X.n)
+    (hj : j ∈ treeRootChildren T r) :
+    (restrictCluster S X ((childBlockOf T r j).image (fun v => v.1))).Touches
+      S (X.poly j) := by
+  classical
+  let B : Finset (Fin X.n) := (childBlockOf T r j).image (fun v => v.1)
+  have hblock : treeRootChildAsDeleted T r j hj ∈ childBlockOf T r j := by
+    simpa [childBlockOf, hj] using treeRootChild_mem_block T r j hj
+  have hjB : j ∈ B := by
+    exact Finset.mem_image.mpr ⟨treeRootChildAsDeleted T r j hj, hblock, rfl⟩
+  unfold Cluster.Touches restrictCluster
+  refine ⟨(B.orderIsoOfFin rfl).symm ⟨j, hjB⟩, ?_⟩
+  have hidx :
+      B.orderIsoOfFin rfl ((B.orderIsoOfFin rfl).symm ⟨j, hjB⟩) = ⟨j, hjB⟩ := by
+    exact (B.orderIsoOfFin rfl).apply_symm_apply ⟨j, hjB⟩
+  exact congrArg (fun x : B => X.poly (x : Fin X.n)) hidx
+
+open Classical in
+/-- Well-formedness of the child forest obtained by deleting a root slot.
+
+This is the `MapsTo` precursor for the future proof of
+`pairSum_le_expBound`: each root child determines a bounded child cluster,
+anchored in the KP neighborhood of the root polymer, touching its own root
+child, with the original tree restricted to the child block landing inside the
+child cluster's incompatibility graph.  The lemma is deliberately stronger than
+the canonical-root use case: it works for any chosen root slot carrying `g`;
+the least-root condition will only be needed when defining the classification
+map and grouping fibers. -/
+lemma root_child_forest_wf (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat)
+    (X : Cluster S) (g : Gamma) (T : SimpleGraph (Fin X.n))
+    (hTle : T ≤ X.graph S hdec) (r : Fin X.n)
+    (hn : X.n < K + 1 + 2) (hr : X.poly r = g) :
+    (treeRootChildren T r).card < K + 3 ∧
+      ∀ j ∈ treeRootChildren T r,
+        let B := (childBlockOf T r j).image (fun v => v.1)
+        (restrictCluster S X B).n < K + 2 ∧
+          X.poly j ∈ nbhd S hdec g ∧
+          (restrictCluster S X B).Touches S (X.poly j) ∧
+          SimpleGraph.comap
+            (fun i : Fin B.card => (B.orderIsoOfFin rfl i : Fin X.n)) T
+              ≤ (restrictCluster S X B).graph S hdec := by
+  refine ⟨treeRootChildren_card_lt_of_cluster_bound S K X T r hn, ?_⟩
+  intro j hj
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · exact restrictCluster_childBlock_n_lt_of_cluster_bound S K X T r j hn hj
+  · exact treeRootChildren_poly_mem_nbhd S hdec X g hTle hr hj
+  · exact restrictCluster_childBlock_touches_root_child S X T r j hj
+  · exact childBlock_comap_le_restrictCluster_graph S hdec X T r j hTle
 
 open Classical in
 /-- Expand the right-hand exponential partial sum into ordered child tuples.
