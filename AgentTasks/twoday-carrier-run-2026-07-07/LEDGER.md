@@ -223,3 +223,13 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   [K9FIBTZC] for SU(N) notation/generalization; no landed TY theorem relies on
   decimation-based all-coupling confinement claims. `LIT_LOG.md` round 7 records
   the graph delta and verdict.
+
+## Cycle 4 (Codex KP/Penrose refill)
+
+- [ARISTOTLE Codex 21:40 KP] Submitted focused proof/strategy job on
+  `PolymerKPConclusion.pairSum_le_expBound`, explicitly preserving the verified
+  false amplified KP statements. Project `c8468d57-cd14-4b81-be1d-34cdd87cfc4d`,
+  task `e1f4172d-93a8-472e-ae75-f645f8930491`, context pack
+  `AgentTasks/context-packs/kp-pairSum-penrose-20260706-213825.md`. Success:
+  close `pairSum_le_expBound`; acceptable fallback: one verified helper lemma
+  or the exact missing injection/fiber-count theorem statement.

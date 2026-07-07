@@ -76,7 +76,27 @@ variable {R B E : Type*} [CommRing R] [Ring B] [Algebra R B] [Fintype E]
 Clifford generators `gamma` and covariant differences `nabla` in one algebra `B`. -/
 def solderedNC (gamma nabla : E → B) : B := ∑ e, gamma e * nabla e
 
-/-- **The discrete Weitzenbock master identity (brick 2b).**  With the Clifford
+/-
+A double sum of `(symmetric F) * (antisymmetrized G)` vanishes, characteristic-free
+(no factor of `2` is inverted): the two halves become equal after relabelling `e ↔ f`.
+-/
+lemma sum_sym_antisym_zero (F G : E → E → B) (hF : ∀ e f, F e f = F f e) :
+    (∑ e, ∑ f, F e f * (G e f - G f e)) = 0 := by
+  simp +decide [ mul_sub, Finset.sum_sub_distrib ];
+  rw [ ← Finset.sum_comm ] ; exact sub_eq_zero_of_eq ( Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by rw [ hF ] ) ;
+
+/-
+A double sum of `(antisymmetric F) * (symmetrized G)` vanishes, characteristic-free.
+-/
+lemma sum_antisym_sym_zero (F G : E → E → B) (hF : ∀ e f, F e f = - F f e) :
+    (∑ e, ∑ f, F e f * (G e f + G f e)) = 0 := by
+  simp +decide [ mul_add, Finset.sum_add_distrib ];
+  rw [ add_eq_zero_iff_eq_neg ];
+  rw [ ← Finset.sum_neg_distrib, ← Finset.sum_comm ];
+  exact Finset.sum_congr rfl fun i hi => by rw [ ← Finset.sum_neg_distrib ] ; exact Finset.sum_congr rfl fun j hj => by rw [ hF ] ; simp +decide ;
+
+/-
+**The discrete Weitzenbock master identity (brick 2b).**  With the Clifford
 anticommutator relation `hcl` (the anticommutator of two soldered generators is the
 central scalar image of the Gram/polar datum `g e f`) and the soldering-transport
 commutation `hcomm` (`gamma e` commutes with every `nabla f`), the square of the
@@ -88,7 +108,8 @@ Clifford commutators with the transport commutators):
           + sum_e sum_f (gamma e * gamma f - gamma f * gamma e)
                         * (nabla e * nabla f - nabla f * nabla e).`
 
-Characteristic-free (the `4 •` avoids all division). -/
+Characteristic-free (the `4 •` avoids all division).
+-/
 theorem weitzenbock_master (gamma nabla : E → B) (g : E → E → R)
     (hcl : ∀ e f, gamma e * gamma f + gamma f * gamma e = algebraMap R B (g e f))
     (hcomm : ∀ e f, gamma e * nabla f = nabla f * gamma e) :
@@ -96,6 +117,23 @@ theorem weitzenbock_master (gamma nabla : E → B) (g : E → E → R)
       = (∑ e, ∑ f, g e f • (nabla e * nabla f + nabla f * nabla e))
         + (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e)
             * (nabla e * nabla f - nabla f * nabla e)) := by
-  sorry
+  -- Apply the noncommutative ring identity to each term in the sum.
+  have hsum : ∑ e, ∑ f, (4 : R) • ((gamma e * gamma f) * (nabla e * nabla f)) =
+    (∑ e, ∑ f, (gamma e * gamma f + gamma f * gamma e) * (nabla e * nabla f + nabla f * nabla e)) +
+    (∑ e, ∑ f, (gamma e * gamma f + gamma f * gamma e) * (nabla e * nabla f - nabla f * nabla e)) +
+    (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e) * (nabla e * nabla f + nabla f * nabla e)) +
+    (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e) * (nabla e * nabla f - nabla f * nabla e)) := by
+      simp +decide only [← Finset.sum_add_distrib] ; congr ; ext e ; congr ; ext f ; ring;
+      simp +decide only [mul_add, add_mul, mul_sub, sub_mul] ; abel_nf;
+      norm_cast;
+  convert hsum using 1;
+  · simp +decide only [solderedNC, pow_two];
+    simp +decide only [Finset.sum_mul _ _ _, Finset.mul_sum];
+    simp +decide only [Finset.smul_sum];
+    refine' Finset.sum_congr rfl fun e _ => Finset.sum_congr rfl fun f _ => _;
+    grind;
+  · simp +decide only [Algebra.smul_def, hcl];
+    simp +decide [ add_assoc, sum_antisym_sym_zero ];
+    exact sum_sym_antisym_zero _ _ fun e f => by simp +decide [ ← hcl ] ; abel;
 
 end PhysicsSM.Draft.NullEdge.Carrier

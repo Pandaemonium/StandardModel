@@ -70,14 +70,33 @@ theorem crossTerm_eq_covariant_gradient (gamma nabla : E → B) (Gamma phi : B)
     (hPhiGamma : ∀ e, phi * gamma e = gamma e * phi) :
     solderedNC gamma nabla * (Gamma * phi) + (Gamma * phi) * solderedNC gamma nabla
       = ∑ e, gamma e * Gamma * (nabla e * phi - phi * nabla e) := by
-  sorry
+  unfold solderedNC
+  rw [Finset.sum_mul, Finset.mul_sum, ← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro e _
+  have e1 : gamma e * nabla e * (Gamma * phi) = gamma e * Gamma * (nabla e * phi) := by
+    have h : gamma e * nabla e * (Gamma * phi) = gamma e * (nabla e * Gamma) * phi := by
+      noncomm_ring
+    rw [h, ← hGammaNabla e]; noncomm_ring
+  have e2 : Gamma * phi * (gamma e * nabla e) = - (gamma e * Gamma * (phi * nabla e)) := by
+    have h : Gamma * phi * (gamma e * nabla e) = Gamma * (phi * gamma e) * nabla e := by
+      noncomm_ring
+    rw [h, hPhiGamma e]
+    have h2 : Gamma * (gamma e * phi) * nabla e = (Gamma * gamma e) * (phi * nabla e) := by
+      noncomm_ring
+    rw [h2, hGammaAnti e]; noncomm_ring
+  rw [e1, e2]; noncomm_ring
 
 /-- **The dressed potential squares to `phi^2`.**  `(Gamma*phi)^2 = phi^2` when
 `Gamma^2 = 1` and `phi` commutes with `Gamma`. -/
 theorem potential_sq (Gamma phi : B) (hGammaSq : Gamma * Gamma = 1)
     (hPhiComm : Gamma * phi = phi * Gamma) :
     (Gamma * phi) ^ 2 = phi ^ 2 := by
-  sorry
+  rw [pow_two, pow_two]
+  have h : Gamma * phi * (Gamma * phi) = Gamma * (phi * Gamma) * phi := by noncomm_ring
+  rw [h, ← hPhiComm]
+  have h2 : Gamma * (Gamma * phi) * phi = (Gamma * Gamma) * (phi * phi) := by noncomm_ring
+  rw [h2, hGammaSq, one_mul]
 
 /-- **The Dirac square with a covariantly-constant chirality-dressed potential.**
 `(D0 + Gamma*phi)^2 = D0^2 + phi^2`: the cross term vanishes because `phi` is
@@ -92,6 +111,22 @@ theorem dirac_square_with_potential (gamma nabla : E → B) (Gamma phi : B)
     (hCov : ∀ e, nabla e * phi = phi * nabla e) :
     (solderedNC gamma nabla + Gamma * phi) ^ 2
       = (solderedNC gamma nabla) ^ 2 + phi ^ 2 := by
-  sorry
+  have hcross := crossTerm_eq_covariant_gradient gamma nabla Gamma phi
+    hGammaAnti hGammaNabla hPhiGamma
+  have hcross0 : solderedNC gamma nabla * (Gamma * phi)
+      + (Gamma * phi) * solderedNC gamma nabla = 0 := by
+    rw [hcross]
+    apply Finset.sum_eq_zero
+    intro e _
+    rw [hCov e, sub_self, mul_zero]
+  have hpot := potential_sq Gamma phi hGammaSq hPhiComm
+  rw [pow_two]
+  have expand : (solderedNC gamma nabla + Gamma * phi) * (solderedNC gamma nabla + Gamma * phi)
+      = solderedNC gamma nabla * solderedNC gamma nabla
+        + (solderedNC gamma nabla * (Gamma * phi) + (Gamma * phi) * solderedNC gamma nabla)
+        + (Gamma * phi) * (Gamma * phi) := by noncomm_ring
+  rw [expand, hcross0, add_zero,
+    show (Gamma * phi) * (Gamma * phi) = (Gamma * phi) ^ 2 from (pow_two _).symm,
+    hpot, ← pow_two]
 
 end PhysicsSM.Draft.NullEdge.Carrier

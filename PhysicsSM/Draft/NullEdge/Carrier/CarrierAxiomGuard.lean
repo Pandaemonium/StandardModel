@@ -1,5 +1,7 @@
 import PhysicsSM.Draft.NullEdge.Carrier.NullNilpotentSquare
 import PhysicsSM.Draft.NullEdge.Carrier.SolderedSquareGram
+import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMaster
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierPotentialTurn
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -51,6 +53,22 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.nullSoldered_square_isScalar' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.nullSoldered_square_isScalar
+
+/-! ## Move-1 brick 2b: the discrete Weitzenbock master identity (Q_A + Q_C) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master
+
+/-! ## Move-1 brick Q_T: the chirality-dressed turn (potential) slot -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.crossTerm_eq_covariant_gradient' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.crossTerm_eq_covariant_gradient
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.dirac_square_with_potential' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.dirac_square_with_potential
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
