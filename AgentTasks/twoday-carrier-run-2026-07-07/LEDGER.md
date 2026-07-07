@@ -2977,3 +2977,43 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Run docs updated: `GOAL_PROMPT_CODEX.md`, `THREAD_BOARD.md`, and
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md` now record the new IDs and the
   harvest-first inventory.
+
+## [ARISTOTLE-HARVEST Codex solo] Q08 fixed-degree quotient and Q11 C3 census landed
+
+- Harvested Aristotle projects `5bdce729`
+  (`ne-q08-fock-quotient-pairingdual-proof-20260707`) and `e3f3ae61`
+  (`ne-q11-c3-majorana-turn-census-proof-20260707`).
+- Integrated Q08 as
+  `PhysicsSM/Draft/NullEdge/Carrier/FockQuotientPairing.lean` and guard-pinned
+  `pairingDual_bijective` plus `exteriorForm_radical_eq` in
+  `CarrierAxiomGuard`.  The module proves the finite exterior-power
+  perfect-pairing bridge, nondegeneracy propagation, fixed-particle-number
+  quotient/isometry, and the radical specialization
+  `ker(exteriorForm n h) = ker(Λ^n mkQ_N)`.
+- Claim boundary for Q08: PROVED fixed-degree finite quotient algebra only.  The
+  literal graded `rad(Lambda h)=ideal(N)` assembly, the decomposable
+  `N`-factor kernel-span theorem, positivity, and Hilbert completion remain
+  OPEN.  Codex tightened Aristotle's returned module docstring to avoid
+  conflating kernel-of-projection with the open `ideal(N)` statement.
+- Integrated Q11/Q04 as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11C3Majorana.lean` and imported it from the
+  Gate I1 aggregator.  It proves `J_R` invariance of the bare Majorana turn,
+  top-pairing matrix elements, `Delta(B-L)=-2`, the sector-level invariant
+  census, and first/second-order RC0 scalar identities.
+- Claim boundary for Q11: PROVED finite sector-level algebra only.  Full
+  operator-level invariant-operator uniqueness and the physical
+  Chamseddine-Connes / Boyle-Farnsworth order-condition verdict remain MEMO/OPEN.
+- Queue poll after these integrations: eight StandardModel lanes remained
+  RUNNING (`26fa682c`, `bcf263f0`, `cdba6caa`, `9af1d5fb`, `dbe3850c`,
+  `2170a1f9`, `ec1ad7d5`, `f962cbe7`).  `d32e8150` Q09 nullscreen entropy
+  audit and `ed700b2a` Q06 retarded/Wilson symbol determinant are now
+  harvest-first.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/FockQuotientPairing.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11C3Majorana.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11C3Majorana`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

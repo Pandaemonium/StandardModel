@@ -462,7 +462,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Next:** R1 (retarded/Wilson dispersion identity in the corrected
   palindromic/midpoint boundary), R4 telescoping, R0 path-sum = transfer power,
   and the decoration-level derivation of the generator conjugation axiom from
-  `U_reverse = U^{-1}`.
+  `U_reverse = U^{-1}`.  Aristotle project `ed700b2a`
+  (`ne-q06-retarded-wilson-symbol-determinant-proof-20260707`) is now IDLE and
+  should be harvested before opening another Q06 symbol job.
 ### EQUIPARTITION-GATE - the first physical number [Claude; post-Q07; GATE M-KOIDE]
 - **Done:** F2 equipartition sum rule (tr M^2 = (2/V)(tr M)^2 under turn-power
   = hop-power; Q = 2/V; pointwise companion with Cauchy-Schwarz bound) +
@@ -517,12 +519,20 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   headline instance in Q[m].  The crossing cancellation in this minimal example
   is honestly vacuous: the two output supports are disjoint
   (`col_supports_disjoint`, `checkerboard_no_crossing`).
-- **Next:** L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),
-  Fock(V')/rad = Fock(V'/N) using the Aristotle `4929366f` strategy:
-  first build `pairingDual` as a perfect pairing / linear equivalence, then the
-  quotient factorization. Follow-up Aristotle project `5bdce729` is now IDLE
-  and should be harvested before any duplicate quotient job is opened.
-  Positivity of the physical quotient stays Q1/OPEN.
+- **Done:** L-Q8-5 degree-by-degree quotient bridge has now landed in
+  `PhysicsSM/Draft/NullEdge/Carrier/FockQuotientPairing.lean` from Aristotle
+  project `5bdce729`.  `pairingDual_bijective` proves the finite
+  exterior-power perfect-pairing bridge, `exteriorForm_nondegenerate` propagates
+  nondegeneracy to exterior powers, `fockQuotientEquiv` and
+  `fockQuotient_isometry` give the fixed-particle-number quotient/isometry, and
+  `exteriorForm_radical_eq` proves
+  `ker(exteriorForm n h) = ker(Λ^n mkQ_N)` for a symmetric form and its radical
+  quotient.  These Q08 quotient theorems are guard-pinned in
+  `CarrierAxiomGuard`.
+- **Next:** the literal graded `rad(Lambda h) = ideal(N)` statement still needs
+  the kernel-span theorem for decomposables with an `N` factor plus assembly
+  across all particle numbers.  Positivity of the physical quotient stays
+  Q1/OPEN.
   Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
   Pauli); kill = a Sym-quantized checkerboard with positive invariant
   quotient. A global two-body exterior operator and positivity of the
@@ -565,7 +575,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   because the cut boost generator is indefinite, while A9.4 kills positive
   semidefinite null-translation generators. Entropy, Jacobson, ANEC, universal
   coefficient, and continuum/horizon interpretations remain MEMO or OPEN until
-  their finite hypotheses are stated and checked. Next Q09 gates: run the
+  their finite hypotheses are stated and checked. Aristotle project `d32e8150`
+  (`ne-q09-nullscreen-additivity-entropy-kill-audit-20260707`) is now IDLE and
+  should be harvested next. Next Q09 gates: run the
   doubler volume-law scan before locality, then the nonlocal `logDelta` leakage
   scan, with Reeh-Schlieder well-posedness and Krein/Ward compatibility as
   pre-checks.
@@ -720,8 +732,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`) and follow-up
   finite-check lane `e2df3555`
   (`ne-q11-bl-dictionary-finite-check-20260707`).  Project `e3f3ae61`
-  (`ne-q11-c3-majorana-turn-census-proof-20260707`) is now IDLE and should be
-  harvested next; `f962cbe7` RC0 determinant cocycle remains running.
+  (`ne-q11-c3-majorana-turn-census-proof-20260707`) has now landed
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11C3Majorana.lean`: `JR_turn_invariant`,
+  `turn_pairing`, `deltaBL_turn`, `invariant_sector_iff`, `census_card_two`,
+  and the RC0 first/second-order scalar identities.  `f962cbe7` RC0 determinant
+  cocycle remains running.
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
   closure. This is a Cartan-level RC0/dictionary theorem; the group-level
   determinant cocycle remains open.
@@ -754,8 +769,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   inertia-index bridge (`bcf263f0`), Q09 entropy/horizon kill audit
   (`d32e8150`), Q12 C8/G2 real-structure audit (`cdba6caa`), RG-Schur stability
   (`9af1d5fb`), Q04 octonion/Fock bridge audit (`dbe3850c`), and P1
-  claim-grade audit (`2170a1f9`). Current harvest-first inventory: `5bdce729`
-  and `e3f3ae61`.
+  claim-grade audit (`2170a1f9`). The returned `5bdce729` and `e3f3ae61`
+  harvests are now integrated. Current harvest-first inventory: `d32e8150`
+  and `ed700b2a`.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

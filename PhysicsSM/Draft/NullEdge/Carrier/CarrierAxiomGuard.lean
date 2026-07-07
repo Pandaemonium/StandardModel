@@ -14,6 +14,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
 import PhysicsSM.Draft.NullEdge.Carrier.KugoOjima
 import PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization
 import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
+import PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing
 import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
@@ -54,6 +55,9 @@ guards are edited independently to avoid collision.
   its square on decomposable states reproduces the tuple identity. The identity
   one-body operator acts by the finite particle number on decomposable states,
   and the identity two-body term counts strict pair slots.
+* Fock-Gupta-Bleuler quotient bridge (`FockQuotientPairing`): the degree-by-
+  degree finite exterior-power radical quotient identity and perfect-pairing
+  bridge. Positivity and Hilbert completion are not claimed.
 * Checkerboard two-particle determinant (`CheckerboardTwoParticle`): the finite
   L=4, N=2 exterior-amplitude determinant identity and straight-through
   rational-polynomial witness.
@@ -279,6 +283,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaTwo_id_pair_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaTwo_id_pair_count
+
+/-! ## Finite Fock-Gupta-Bleuler exterior quotient bridge -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing.pairingDual_bijective' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing.pairingDual_bijective
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing.exteriorForm_radical_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing.exteriorForm_radical_eq
 
 /-! ## Finite checkerboard two-particle determinant identity -/
 

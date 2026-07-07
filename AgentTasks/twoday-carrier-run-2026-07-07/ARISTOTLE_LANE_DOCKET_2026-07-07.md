@@ -241,3 +241,31 @@ Queue check immediately after submission: all seven new projects were
 `RUNNING`, for about ten active StandardModel lanes.  `5bdce729` (Q08 quotient
 pairing-dual) and `e3f3ae61` (Q11/Q04 C3 Majorana turn census) had become
 `IDLE` and should be harvested before any further refill.
+
+## Harvest from Q08 quotient / Q11 C3 jobs
+
+- `5bdce729`
+  (`ne-q08-fock-quotient-pairingdual-proof-20260707`) returned
+  `FockQuotientPairing.lean`, now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/FockQuotientPairing.lean` and guard-pinned
+  in `CarrierAxiomGuard`.  It proves the finite exterior-power perfect-pairing
+  bridge, nondegeneracy propagation to exterior powers, quotient functoriality,
+  degree-`n` Fock quotient isometry, and the radical specialization
+  `ker(exteriorForm n h) = ker(Λ^n mkQ_N)`.  The literal graded
+  `rad(Lambda h)=ideal(N)` assembly, the decomposable-with-an-`N`-factor
+  kernel-span theorem, positivity, and Hilbert completion remain open.
+- `e3f3ae61`
+  (`ne-q11-c3-majorana-turn-census-proof-20260707`) returned
+  `Q11C3Majorana.lean`, now integrated as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11C3Majorana.lean` and imported from the
+  Gate I1 aggregator.  It proves the finite C3 Majorana turn identities,
+  `J_R` turn invariance, top-pairing matrix elements, `Delta(B-L)=-2`, the
+  sector-level invariant census, and first/second-order scalar identities with
+  RC0 flags explicit.  Operator-level invariant-operator uniqueness and the
+  physical order-condition verdict remain MEMO/OPEN.
+
+Queue poll after these integrations: eight StandardModel lanes were still
+`RUNNING` (`26fa682c`, `bcf263f0`, `cdba6caa`, `9af1d5fb`, `dbe3850c`,
+`2170a1f9`, `ec1ad7d5`, `f962cbe7`).  `d32e8150` Q09 nullscreen entropy audit
+and `ed700b2a` Q06 retarded/Wilson symbol determinant job were `IDLE` and are
+the next harvest-first items before any further refill.

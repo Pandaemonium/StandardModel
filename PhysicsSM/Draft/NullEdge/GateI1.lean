@@ -37,6 +37,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.ModularNoGo
 import PhysicsSM.Draft.NullEdge.GateI1.LorentzianTransitivity
 import PhysicsSM.Draft.NullEdge.GateI1.Q11RealStructure
 import PhysicsSM.Draft.NullEdge.GateI1.Q11BLDictionary
+import PhysicsSM.Draft.NullEdge.GateI1.Q11C3Majorana
 import PhysicsSM.Draft.NullEdge.GateI1.PSA
 import PhysicsSM.Draft.NullEdge.GateI1.ChargeResolution
 import PhysicsSM.Draft.NullEdge.GateI1.TorusBWCutLocality
@@ -85,11 +86,12 @@ triality/convention-bridge finite gates (`Q12Triality`); plus the Q10-L5
 split-signature determinant identity (`SplitSignatureMass`); plus the Q10-L6
 finite same-chirality mass-amplitude census (`MassAmplitudeCensus`); plus the
 Q10 multi-time embedding obstruction (`MultiTimeEmbedding`); plus the Q09
-finite modular no-go (`ModularNoGo`); plus the Q10-L3 Lorentzian positive
-null-pairing transitivity theorem (`LorentzianTransitivity`); plus the Q11
-finite top-form-duality real-structure core (`Q11RealStructure`) and B-L/RC0
-dictionary (`Q11BLDictionary`); plus the Q12 PSA-1 finite supertrace identity
-(`PSA`); plus the Q12 finite charge-sector supertrace bookkeeping bridge
+  finite modular no-go (`ModularNoGo`); plus the Q10-L3 Lorentzian positive
+  null-pairing transitivity theorem (`LorentzianTransitivity`); plus the Q11
+  finite top-form-duality real-structure core (`Q11RealStructure`) and B-L/RC0
+  dictionary (`Q11BLDictionary`) plus the Q11/Q04 finite C3 Majorana turn census
+  (`Q11C3Majorana`); plus the Q12 PSA-1 finite supertrace identity (`PSA`);
+  plus the Q12 finite charge-sector supertrace bookkeeping bridge
 (`ChargeResolution`); plus the Q09 finite BW-cut torus locality scoring
 algebra (`TorusBWCutLocality`); plus the Q12 finite physical-quotient descent
 gate (`Q12GammaPrimeQuotient`); plus the Q10 Sylvester-inertia frustrated
