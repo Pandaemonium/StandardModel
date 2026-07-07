@@ -128,6 +128,58 @@ theorem split22_orthogonal_null_pair_not_rat_collinear :
     have hcoord := congr_fun hk (0 : Fin 4)
     norm_num [split22A, split22D] at hcoord
 
+/-! ## Split-signature tachyonic rank-one sum witness -/
+
+/-- Real two-component spinors for the split-signature rank-one model. -/
+abbrev RSpinor2 := Fin 2 -> ℝ
+
+/-- Real `2 x 2` matrices. -/
+abbrev Mat2R := Matrix (Fin 2) (Fin 2) ℝ
+
+/-- The `2 x 2` determinant over the reals. -/
+def mat2Det (M : Mat2R) : ℝ :=
+  M 0 0 * M 1 1 - M 0 1 * M 1 0
+
+/-- Split-signature soldering as an unconjugated rank-one matrix `psi chi^T`. -/
+def splitRankOne (psi chi : RSpinor2) : Mat2R :=
+  fun i j => psi i * chi j
+
+/-- First left spinor in the tachyonic witness. -/
+def splitPsi1 : RSpinor2
+  | ⟨0, _⟩ => 1
+  | ⟨1, _⟩ => 0
+
+/-- First right spinor in the tachyonic witness. -/
+def splitChi1 : RSpinor2
+  | ⟨0, _⟩ => 0
+  | ⟨1, _⟩ => 1
+
+/-- Second left spinor in the tachyonic witness. -/
+def splitPsi2 : RSpinor2
+  | ⟨0, _⟩ => 0
+  | ⟨1, _⟩ => 1
+
+/-- Second right spinor in the tachyonic witness. -/
+def splitChi2 : RSpinor2
+  | ⟨0, _⟩ => 1
+  | ⟨1, _⟩ => 0
+
+/-- Each rank-one constituent in the split-signature witness is null. -/
+theorem split_tachyonic_witness_constituents_null :
+    mat2Det (splitRankOne splitPsi1 splitChi1) = 0 ∧
+      mat2Det (splitRankOne splitPsi2 splitChi2) = 0 := by
+  norm_num [mat2Det, splitRankOne, splitPsi1, splitChi1, splitPsi2, splitChi2]
+
+/-- The sum of the two null split-signature constituents has negative determinant.
+
+This is the Q10-L5 finite tachyonic witness: in the real-split soldering model,
+mass positivity fails because the left and right wedges are independent. -/
+theorem split_tachyonic_witness_det_negative :
+    mat2Det
+      (splitRankOne splitPsi1 splitChi1 + splitRankOne splitPsi2 splitChi2) = -1 := by
+  norm_num [mat2Det, splitRankOne, splitPsi1, splitChi1, splitPsi2, splitChi2,
+    Matrix.add_apply]
+
 /-! ## Retarded/advanced coloring obstruction -/
 
 /-- A pair is sign-consistent with a two-coloring when same-color pairings are
@@ -185,5 +237,13 @@ theorem split22_frustrated_triple_no_coloring (color : Fin 3 -> Bool) :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection.euclideanQ_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms euclideanQ_eq_zero_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection.split_tachyonic_witness_constituents_null' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms split_tachyonic_witness_constituents_null
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection.split_tachyonic_witness_det_negative' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms split_tachyonic_witness_det_negative
 
 end PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection

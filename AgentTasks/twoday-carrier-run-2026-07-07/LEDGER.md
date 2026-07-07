@@ -2460,3 +2460,18 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [HB Codex solo] Q10-L5 explicit split tachyonic witness landed
+- Added the concrete real-split rank-one witness in
+  `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`: two real
+  rank-one `2 x 2` matrices `splitRankOne splitPsi1 splitChi1` and
+  `splitRankOne splitPsi2 splitChi2` each have determinant zero, but their sum
+  has determinant `-1` (`split_tachyonic_witness_det_negative`). This is the
+  finite version of Q10's "two massless constituents, tachyonic bundle" warning
+  for split signature.
+- Claim boundary: PROVED explicit witness only. The general identity
+  `det(sum psi_i chi_i^T) = sum_{i<j} wedge(psi_i,psi_j) wedge(chi_i,chi_j)`
+  remains for the active Aristotle L5 job.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection`.
