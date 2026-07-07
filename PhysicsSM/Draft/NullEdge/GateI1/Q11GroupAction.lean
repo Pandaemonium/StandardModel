@@ -13,14 +13,15 @@ conjugation) and `Cmap` (top-form duality).
 The landed theorems are the factorization `JR = Cmap o Kmap`, the involution
 and commutation laws for `Kmap` and `Cmap`, conjugation compatibility for
 minors, and conjugation compatibility for `lambdaAction`.
+It also proves the identity-minor Kronecker theorem and the identity action
+`lambdaAction 1 = id`.
 
 Claim boundary: this file does not land the finite Cauchy-Binet functor law,
-the identity-action theorem, Jacobi complementary minors, determinant cocycle,
-or group-level RC0 equivalence. The returned Aristotle proof of that larger
-chain is useful but still needs a kernel-clean Cauchy-Binet/identity-minor
-integration pass, and the later Jacobi tail still depends on the separate
-`gl_fiber` interleaving-sign factorization. In particular, this file does not
-claim unimodularity.
+Jacobi complementary minors, determinant cocycle, or group-level RC0
+equivalence. The returned Aristotle proof of that larger chain is useful but
+still needs a kernel-clean Cauchy-Binet/functoriality pass, and the later
+Jacobi tail still depends on the separate `gl_fiber` interleaving-sign
+factorization. In particular, this file does not claim unimodularity.
 
 Provenance: Aristotle project `aa4e48f6-2581-4276-a5ae-db77c7660cd6`
 (`ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`), harvested as the
@@ -112,6 +113,57 @@ theorem lambdaAction_conj (g : Matrix (Fin 5) (Fin 5) ℂ) (f : Form) :
 theorem minorDet_empty (g : Matrix (Fin 5) (Fin 5) ℂ) : minorDet g ∅ ∅ = 1 := by
   simp [minorDet]
 
+/-! ## Identity matrix minors -/
+
+/-- The identity matrix has Kronecker minors on ordered finite subsets. -/
+theorem minorDet_one (T S : Finset (Fin 5)) :
+    minorDet (1 : Matrix (Fin 5) (Fin 5) ℂ) T S = if S = T then 1 else 0 := by
+  unfold minorDet
+  by_cases hcard : S.card = T.card
+  · by_cases hST : S = T
+    · subst S
+      have hcols :
+          (fun i : Fin T.card => T.orderEmbOfFin hcard i) =
+            fun i : Fin T.card => T.orderEmbOfFin rfl i := by
+        funext i
+        congr
+      rw [hcols]
+      have hmat :
+          (1 : Matrix (Fin 5) (Fin 5) ℂ).submatrix
+              (fun i : Fin T.card => T.orderEmbOfFin rfl i)
+              (fun i : Fin T.card => T.orderEmbOfFin rfl i) =
+            (1 : Matrix (Fin T.card) (Fin T.card) ℂ) :=
+        Matrix.submatrix_one _ (T.orderEmbOfFin rfl).injective
+      simp [hmat]
+    · simp only [hcard, dif_pos, hST, ↓reduceIte]
+      obtain ⟨x, hxS, hxT⟩ : ∃ x, x ∈ S ∧ x ∉ T := by
+        by_contra hnone
+        have hsub : S ⊆ T := by
+          intro x hx
+          by_contra hxT
+          exact hnone ⟨x, hx, hxT⟩
+        exact hST (Finset.eq_of_subset_of_card_le hsub hcard.ge)
+      have hxrange : x ∈ Set.range (S.orderEmbOfFin hcard) := by
+        rw [Finset.range_orderEmbOfFin]
+        exact hxS
+      obtain ⟨k, hk⟩ := hxrange
+      apply Matrix.det_eq_zero_of_column_eq_zero k
+      intro i
+      have hne : T.orderEmbOfFin rfl i ≠ S.orderEmbOfFin hcard k := by
+        intro heq
+        exact hxT (heq.trans hk |>.symm ▸ Finset.orderEmbOfFin_mem T rfl i)
+      simp [Matrix.one_apply_ne hne]
+  · have hST : S ≠ T := by
+      intro hST
+      exact hcard (by simp [hST])
+    simp [hcard, hST]
+
+/-- `lambdaAction` sends the identity matrix to the identity operator on forms. -/
+theorem lambdaAction_one (f : Form) :
+    lambdaAction (1 : Matrix (Fin 5) (Fin 5) ℂ) f = f := by
+  funext T
+  simp [lambdaAction, minorDet_one]
+
 /-! ## Footprint guard for the harvested nucleus -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.JR_eq_Cmap_Kmap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -137,5 +189,13 @@ theorem minorDet_empty (g : Matrix (Fin 5) (Fin 5) ℂ) : minorDet g ∅ ∅ = 1
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.minorDet_empty' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms minorDet_empty
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.minorDet_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms minorDet_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.lambdaAction_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms lambdaAction_one
 
 end PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction

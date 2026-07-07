@@ -25,18 +25,20 @@ New declarations:
 - `minorDet_conj`
 - `lambdaAction_conj`
 - `minorDet_empty`
+- `minorDet_one`
+- `lambdaAction_one`
 
 The file is imported from the Gate I1 aggregator and footprint-guards the
 checked structural theorems.
 
 ## Claim Boundary
 
-This is structural exterior-functor data only.  It proves the coefficient
-formulae and conjugation/factorization identities needed by the Q11 route.
+This is structural exterior-functor data plus the identity action.  It proves
+the coefficient formulae, conjugation/factorization identities, identity
+minors, and `lambdaAction 1 = id` needed by the Q11 route.
 
 It does not prove:
 
-- identity action for `lambdaAction`;
 - finite Cauchy-Binet / functoriality for `lambdaAction`;
 - minor orthogonality for `g * g^-1`;
 - Jacobi complementary-minor identity;
@@ -52,18 +54,38 @@ the `gl_fiber` interleaving-sign factorization.
 
 Best next name:
 
-- `ne-next-q11-identityminor-cauchybinet-lambdaaction-proof-20260707`
+- `ne-next-q11-cauchybinet-lambdaaction-functoriality-proof-20260707`
 
 Target:
 
-1. Prove the identity-minor Kronecker theorem for `minorDet`.
-2. Prove the finite Cauchy-Binet theorem needed for `minorDet_mul`.
-3. Prove `lambdaAction (g * h) = fun f => lambdaAction g (lambdaAction h f)`.
+1. Prove the finite Cauchy-Binet theorem needed for `minorDet_mul`.
+2. Prove `lambdaAction (g * h) = fun f => lambdaAction g (lambdaAction h f)`.
+3. Prepare the later `gl_fiber` Jacobi complementary-minor package.
 
 Only after that lands should a separate `gl_fiber` job attack Jacobi
 complementary minors and the determinant-cocycle/RC0 theorem.
 
 ## Verification So Far
+
+- `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`
+- `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`
+- `lake build PhysicsSM.Draft.NullEdge.GateI1`
+
+## Local Follow-Up
+
+After the initial harvest, Codex locally proved the identity-matrix minor and
+action theorems:
+
+- `minorDet_one`
+- `lambdaAction_one`
+
+This closes the identity-action part of the Q11 blocker.  The remaining
+algebraic blocker is finite Cauchy-Binet/functoriality for `lambdaAction`;
+`gl_fiber`, Jacobi complementary minors, determinant cocycle, and group-level
+RC0 remain separate.
+
+Verification:
 
 - `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`
 - `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`

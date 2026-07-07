@@ -82,7 +82,7 @@ duplicated:
 
 Harvest or already-acted-on returns not to duplicate: Q11 Jacobi/Cauchy-Binet
 RC0 (`aa4e48f6`, structural nucleus landed; next blocker is
-identity-minor/Cauchy-Binet before `gl_fiber`), Q13 global overclaim (`07f40fff`), literature/provenance
+finite Cauchy-Binet/functoriality before `gl_fiber`), Q13 global overclaim (`07f40fff`), literature/provenance
 (`5713746e`), Q10 Spin/Weyl scalar-amplitude classification (`05fdd744`), Q08
 graded radical assembly (`b4206467`), HSTAR model audit (`16d04733`), Q12 E4
 radical-healing proof (`297ae18c`, canceled after local proof), and the older
@@ -120,7 +120,7 @@ future-facing; if a lane has advanced, mint a still more specific non-colliding
 | Q09-BW | BW-cut locality | Concrete finite BW-cut locality witness or proof that no current witness exists | proof/audit | `ne-next-q09-bwcut-locality-witness-construction-proof-20260707` |
 | Q10-SCALAR | Signature / scalar amplitude | Harvest `fbdbe43f`; then audit the finite `d = 4` positive corner against the obstruction stack | proof/audit | `ne-next-q10-spinweyl-d4-positive-corner-integration-audit-20260707` |
 | Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction assumption, and physical interpretation separated | audit | `ne-next-q10-stableorder-dimension-claim-boundary-audit-20260707` |
-| Q11-RC0 | `J_R` / RC0 determinant cocycle | Finish identity-minor plus Cauchy-Binet functoriality for `lambdaAction`; only then attack `gl_fiber` | proof | `ne-next-q11-identityminor-cauchybinet-lambdaaction-proof-20260707` |
+| Q11-RC0 | `J_R` / RC0 determinant cocycle | Finish finite Cauchy-Binet functoriality for `lambdaAction`; only then attack `gl_fiber` | proof | `ne-next-q11-cauchybinet-lambdaaction-functoriality-proof-20260707` |
 | Q11-ORDER | Majorana / order condition | Upgrade C3 sector identities toward operator-level invariant uniqueness | strategy | `ne-next-q11-ordercondition-operator-uniqueness-strategy-20260707` |
 | Q12-GAMMA | GammaPrime quotient | Harvest `5ff9424e`; then generalize nonzero-quotient descended commutation only if audit is clean | audit/strategy | `ne-next-q12-gammaprime-e4-descended-commutation-generalization-audit-20260707` |
 | Q12-C8 | C8 / `J_R` descent | Harvest `96058502`; then prove sector conjugation and C8 compatibility gates | proof/strategy | `ne-next-q12-c8-jr-sector-conjugation-descent-proof-20260707` |
@@ -330,8 +330,9 @@ again before acting):
   and old KP fixed-forest lane `6b8dcebd`.
 - **Harvest-first before more refill:** if any listed running job turns `IDLE`,
   harvest and integrate/audit it before submitting a duplicate target.  Q11
-  `aa4e48f6` is already returned; its structural group-action nucleus is
-  landed, and the next proof job is the identity-minor/Cauchy-Binet package
+  `aa4e48f6` is already returned; its structural group-action nucleus and
+  identity action are landed, and the next proof job is the Cauchy-Binet
+  functoriality package
   named in the dispatch table above.
 - **Recently harvested; do not resubmit under new names:** Q13 global overclaim
   (`07f40fff`), literature/provenance (`5713746e`), Q10 scalar-amplitude

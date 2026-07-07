@@ -3764,14 +3764,30 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `Kmap_Cmap_comm`, `minorDet_conj`, `lambdaAction_conj`, and
   `minorDet_empty`.
 - Claim boundary: this is structural exterior-functor data only.  It does not
-  prove identity action, Cauchy-Binet/functoriality, minor orthogonality,
-  Jacobi complementary minors, determinant cocycle, or group-level
-  RC0/unimodularity.
+  prove Cauchy-Binet/functoriality, minor orthogonality, Jacobi complementary
+  minors, determinant cocycle, or group-level RC0/unimodularity.
 - Added harvest note
   `ARISTOTLE_Q11_GROUP_ACTION_HARVEST_2026-07-07.md`; updated
   `THREAD_BOARD.md`, `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and
   `GOAL_PROMPT_CODEX.md`.
 - Verification passed so far:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [LEAN Codex solo] Q11 identity action for the exterior coefficient formula
+
+- Added `minorDet_one`: the identity matrix has Kronecker minors on ordered
+  finite subsets of `Fin 5`.
+- Added `lambdaAction_one`: `lambdaAction 1` is the identity on the finite
+  coefficient model `Form`.
+- Updated Q11 lane notes so the next Aristotle proof target is now finite
+  Cauchy-Binet/functoriality for `lambdaAction`, not identity action.
+- Claim boundary: this closes only the identity-action rung.  Cauchy-Binet,
+  Jacobi complementary minors, determinant cocycle, `gl_fiber`, and group-level
+  RC0/unimodularity remain open.
+- Verification passed:
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;

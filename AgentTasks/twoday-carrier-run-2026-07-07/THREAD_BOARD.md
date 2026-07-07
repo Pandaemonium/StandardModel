@@ -878,15 +878,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `JR_eq_Cmap_Kmap`, `Kmap_involutive`, `Cmap_involutive`,
   `Kmap_Cmap_comm`, `minorDet_conj`, `lambdaAction_conj`, and
   `minorDet_empty`, all footprint-guarded with the standard draft footprint.
+  Codex then locally added the identity-matrix package `minorDet_one` and
+  `lambdaAction_one`.
 - **Status:** PROVED finite fiber sign table, Cartan/unimodularity arithmetic,
   B-L/total-number dictionary, C3 sector identities, and structural
   group-action data only. The result refutes any "Krein closure implies
   unimodularity" slogan: the sesquilinear form is determinant-blind, while
   determinant/traceless information lives in the antilinear `J_R` layer.
-- **Next:** group-level RC0 should now focus on a kernel-clean identity-minor
-  lemma and finite Cauchy-Binet/functoriality proof for `lambdaAction`, then the
-  Jacobi complementary-minor tail.  The later Jacobi route still needs the
-  `gl_fiber` interleaving-sign factorization.  The order-condition scalar
+- **Next:** group-level RC0 should now focus on a kernel-clean finite
+  Cauchy-Binet/functoriality proof for `lambdaAction`, then the Jacobi
+  complementary-minor tail.  The later Jacobi route still needs the `gl_fiber`
+  interleaving-sign factorization.  The order-condition scalar
   identities have a finite sector-level landing; the chirality-solder flag
   remains a standing obligation for later architecture checks.
 - **Aristotle:** harvested named audit/strategy lane `65a9d42d`
@@ -904,8 +906,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `RC0 iff det g = 1`.  Project `aa4e48f6`
   (`ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`) returned a stronger
   proof payload; Codex integrated only the structural kernel-clean subset.  The
-  Cauchy-Binet functor law, identity action, Jacobi complementary-minor
-  identity, determinant cocycle, and group-level RC0 theorem remain open.
+  Cauchy-Binet functor law, Jacobi complementary-minor identity, determinant
+  cocycle, and group-level RC0 theorem remain open.
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
   closure. This is a Cartan-level RC0/dictionary theorem; the group-level
   determinant cocycle remains open.
