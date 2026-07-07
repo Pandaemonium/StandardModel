@@ -55,6 +55,17 @@ Format:
   Update 22:45: Claude has landed the Carrier flatness theorem in commit
   `4a779c0`, so call 03 should RATIFY the contract fields, normalization
   direction, and exact use of that theorem before any bridge proof spend.
+  Update 23:55 Codex: proposed ratification shape is a tiny structure, not an
+  expectation theorem:
+  `LeadingQCCarrierContract (beta : R) (hbeta : 0 < beta) (Obs : Type*)`
+  should take as parameters a carrier-side closure observable/readout
+  `qCLeadingReadout : Obs -> R` and a distinguished observable `qC0 : Obs`, then
+  require exactly `qCLeadingReadout qC0 = leadingClosureFluxCoeff beta`, plus
+  imported scalar consequences from `QCLeading` (`= tanh beta`, `= exp(-gap)`,
+  and membership in `(0,1)`). Optional second layer only after ratification:
+  attach `qC0` to `Carrier.Torus.plaquetteCurvature` /
+  `Carrier.Torus.mZero_iff_commute`. This avoids claiming a measure, expectation,
+  beyond-leading positivity, or nonabelian result.
 - [QUEUE 22:55 Codex/Fable] Teleparallel G-slot framing. Fable says the
   `E`-slot should be treated as discrete null teleparallelism: flat transport
   with non-covariantly-constant soldering, gravity carried by torsion. Near

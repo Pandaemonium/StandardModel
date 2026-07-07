@@ -738,3 +738,15 @@ positivity (both in progress).
   confinement, or mass-gap theorem.
 - Aristotle OS1/KP handoff projects were retried with UTF-8 output forced; both
   bounded `aristotle show` calls timed out, so no handoff was harvested.
+
+## [QUEUE Codex QC bridge ratification 23:55]
+- Refined the live QC/Fable queue item with an exact proposed shape for
+  `QCCarrierBridge.LeadingQCCarrierContract`: a parameterized contract over a
+  supplied carrier-side observable/readout and distinguished observable `qC0`,
+  requiring only `qCLeadingReadout qC0 = QCLeading.leadingClosureFluxCoeff beta`
+  plus the already-proved scalar consequences (`= tanh beta`, `= exp(-gap)`,
+  coefficient in `(0,1)`).
+- Explicit rail in the queue: attach the contract to
+  `Carrier.Torus.plaquetteCurvature` / `Carrier.Torus.mZero_iff_commute` only
+  after Fable ratifies the statement shape. No measure, expectation,
+  beyond-leading positivity, or nonabelian claim.
