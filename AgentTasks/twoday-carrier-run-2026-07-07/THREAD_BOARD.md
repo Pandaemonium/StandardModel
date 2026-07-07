@@ -99,7 +99,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `beta = 0` rungs unless explicitly requested for QA. Next OS1 proof spend
   should be either the volume-uniform KP fiber-injection route or a genuine
   small-`beta` interval rung, and the existing `beta_zero` fixture still needs
-  Claude red-team review before stacking more OS1 integrations.
+  Claude red-team review before stacking more OS1 integrations. Aristotle audit
+  `2ed6afbb`/`424e815f` found no blocking issue; Codex removed the redundant
+  `hBsum_nonneg` hypothesis from the two-plaquette positive-area wrapper by
+  deriving it internally from `hArea`.
 
 ### QC - the Q_C identification at leading order [Codex; THE Move-2 crux]
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in
@@ -137,11 +140,14 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   03's upgraded exact Z2 two-torus theorem/error-term route is the next real
   QC direction, not another bridge wrapper. Codex landed the first exact
   finite-cycle version in `QCTwoStateCycleReadout.lean`: the two-step periodic
-  Z2 transfer readout is exactly `tanh (2 * beta)`, equivalently the leading
-  coefficient plus an explicit finite-cycle correction, and equals the OS
-  contraction factor at doubled coupling. Scope remains finite transfer
+  Z2 transfer readout is exactly `tanh (2 * beta)`, equivalently the
+  QC-leading coefficient at doubled coupling, and equals the OS contraction
+  factor at doubled coupling. The leading-plus-correction split is now
+  explicitly only definitional bookkeeping. Scope remains finite transfer
   calculation only; no carrier expectation, measure theorem, nonabelian result,
-  or infinite-volume limit is claimed.
+  or infinite-volume limit is claimed. Aristotle audit `2ed6afbb`/`424e815f`
+  found no blocking issue and Codex added a direct guard for the doubled-coupling
+  identity.
 
 ## Supporting threads
 
@@ -242,7 +248,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `twistedPartition_le_of_sector_subset` and
   `FiniteCenterTwistBridge.ofSectorSubset`, deriving `Z_le` only under the
   explicit finite-sector inclusion hypothesis `twistSector k x -> twistSector 0 x`.
-  The honest RP/measure derivation remains OPEN.
+  Aristotle audit `2ed6afbb`/`424e815f` found no blocking issue but flagged that
+  this inclusion is low-distance for genuine disjoint partition sectors: for
+  nonzero labels it forces the twisted sector empty. Codex downgraded the
+  docstrings accordingly. The honest RP/measure derivation remains OPEN.
 ### PBW-EXH - exhaustiveness as a PBW/rewriting theorem [Claude-led, Fable-gated]
 - **Done:** W2c/graded-exhaustiveness restated as a finite normal-form theorem:
   the free carrier algebra on `{gamma_e, nabla_e, phi}`, modulo the stated
@@ -306,6 +315,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   injection for a fixed forest target feeding `fiber_card_mul_le_factorial`;
   after that, `pairSum_le_expBound` reduces to fiberwise-sum bookkeeping.
   Leave the documented intentionally false/refuted KP statements alone.
+  Focused Aristotle strategy job `53109f20`/`a363505b` is IN-FLIGHT to isolate
+  the smallest exact fiber-injection/regrouping lemma before Codex spends Lean
+  proof time.
 ### NN-D - higher-d Nielsen-Ninomiya [either, stretch]
 - **Done:** the discrete-Stokes degree theorem on `(ZMod N)^d` (facet-pairing
   telescoping), any d >= 2 beyond the landed 2D version; tie to overlap index if

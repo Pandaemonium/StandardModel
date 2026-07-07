@@ -18,11 +18,14 @@ and the plaquette insertion numerator is
 
 `sum_{u,v} sign(u) sign(v) T(u,v) T(v,u)`.
 
-The normalized readout is exactly `tanh (2 * beta)`, hence it is the
-one-plaquette leading scalar `tanh beta` plus an explicit finite-cycle
-correction.  This is a finite transfer-matrix identity only.  It is not a
-carrier `Q_C` expectation theorem, not a gauge-measure theorem, not a
-nonabelian result, and not an infinite-volume/beyond-leading positivity theorem.
+The normalized readout is exactly `tanh (2 * beta)`, equivalently the
+QC-leading scalar evaluated at doubled coupling.  We also name a finite-cycle
+correction relative to the one-plaquette scalar, but the corresponding
+"leading plus correction" theorem is only definitional bookkeeping because the
+correction is defined as the difference.  This is a finite transfer-matrix
+identity only.  It is not a carrier `Q_C` expectation theorem, not a
+gauge-measure theorem, not a nonabelian result, and not an infinite-volume /
+beyond-leading positivity theorem.
 
 Provenance: clean-room finite calculation from the existing `Z2` slab transfer
 weights in `TwoStateTransferZ2L1`, themselves part of the Osterwalder-Seiler /
@@ -105,8 +108,10 @@ asymptotic expansion theorem. -/
 def twoStepFiniteCycleCorrection (beta : ℝ) : ℝ :=
   Real.tanh (2 * beta) - QCLeading.leadingClosureFluxCoeff beta
 
-/-- The exact two-step readout is the leading scalar plus the explicit
-finite-cycle correction. -/
+/-- Definitional bookkeeping split: the exact two-step readout is the
+one-plaquette leading scalar plus the finite-cycle correction, where the
+correction was defined as the difference.  The substantive doubled-coupling
+identity is `twoStepPlaquetteReadout_eq_leadingClosureFluxCoeff_double`. -/
 theorem twoStepPlaquetteReadout_eq_leading_plus_correction (beta : ℝ) :
     twoStepPlaquetteReadout beta =
       QCLeading.leadingClosureFluxCoeff beta + twoStepFiniteCycleCorrection beta := by

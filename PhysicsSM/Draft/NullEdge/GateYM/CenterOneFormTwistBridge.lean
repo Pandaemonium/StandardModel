@@ -76,12 +76,17 @@ theorem twistedPartition_shiftConfig_reindex [Fintype Config]
   exact Equiv.sum_comp (S.shift s)
     (fun x : Config => if twistSector k x then weight x else 0)
 
-/-- A purely finite sufficient condition for twist monotonicity: if every
+/-- A purely finite sufficient condition for `Z_k <= Z_0`: if every
 configuration in the `k`-twisted sector also lies in the periodic sector, then
-nonnegative pointwise weights give `Z_k <= Z_0`.
+nonnegative pointwise weights give the partition-sum inequality.
 
 This is not reflection positivity. It is a bookkeeping lemma for concrete
-finite models whose twist sectors are explicitly nested. -/
+finite models whose twist sectors are explicitly nested.
+
+Caveat: for a genuine partition of configurations by a center-twist label, this
+inclusion is trivial for `k = 0` and, for `k != 0`, can hold only when the
+`k`-sector is empty. This lemma therefore applies to nested/overlapping toy
+predicates, not to the physical partitioned-sector twist-monotonicity problem. -/
 theorem twistedPartition_le_of_sector_subset [Fintype Config]
     (weight : Config -> Real)
     (twistSector : Fin N -> Config -> Prop)
@@ -125,12 +130,17 @@ namespace FiniteCenterTwistBridge
 variable [Fintype Config] {S : ShiftSystem Config Shift}
 
 /-- Build a finite center-twist bridge from pointwise nonnegative weights,
-strict positivity of the periodic partition sum, and explicit inclusion of
-each twisted sector in the periodic sector.
+strict positivity of the periodic partition sum, and explicit inclusion of each
+twisted sector in the periodic sector.
 
 This narrows the contract for simple finite models. It does not replace the
 reflection-positivity / twist-monotonicity proof needed for an honest lattice
-gauge measure. -/
+gauge measure.
+
+Caveat: if `twistSector` is later instantiated as a disjoint center-label
+partition, then for nonzero twist labels this inclusion forces the twisted
+sector to be empty. This constructor is a finite nested-sector sufficient
+condition, not a physical partitioned-sector monotonicity theorem. -/
 def ofSectorSubset (S : ShiftSystem Config Shift)
     (weight : Config -> Real)
     (twistSector : Fin N -> Config -> Prop)

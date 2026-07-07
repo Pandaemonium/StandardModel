@@ -148,6 +148,10 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 
 /-! ## Finite center-twist partition bridge -/
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_nonneg
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_shiftConfig_reindex' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_shiftConfig_reindex

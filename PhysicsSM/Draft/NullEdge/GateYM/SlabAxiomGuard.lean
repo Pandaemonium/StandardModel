@@ -190,6 +190,10 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_exp_neg_osSpectralGap_double
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_leadingClosureFluxCoeff_double' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_leadingClosureFluxCoeff_double
+
 /-! ## QC-leading carrier-readout contract (parameterized; no expectation claim) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.LeadingQCCarrierContract.readout_eq_tanh' depends on axioms: [propext, Classical.choice, Quot.sound] -/

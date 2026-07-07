@@ -2231,7 +2231,6 @@ an explicit hypothesis; removing or volume-uniformizing it is precisely the
 missing rooted-cluster/area-decay lemma. -/
 theorem twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice
     (beta alpha : Real) (halpha : 0 <= alpha) (B : Nat -> Real)
-    (hBsum_nonneg : 0 <= (Finset.Icc 1 (Fintype.card Bool)).sum B)
     (hArea : forall q : Bool,
       forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card Bool) ->
         anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
@@ -2239,6 +2238,14 @@ theorem twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice
     (hsmall : (2 : Real) * (Finset.Icc 1 (Fintype.card Bool)).sum B <= alpha) :
     PlaquetteKPBound twoPlaquetteAdj twoPlaquetteConnectedSupport
       twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha halpha := by
+  have hBsum_nonneg : 0 <= (Finset.Icc 1 (Fintype.card Bool)).sum B := by
+    apply Finset.sum_nonneg
+    intro k hk
+    exact le_trans
+      (anchoredPlaquettePolymerAreaSum_nonneg twoPlaquetteConnectedSupport
+        twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta)
+        (twoPlaquetteZ2GammaAbs_nonneg beta) alpha false k)
+      (hArea false k hk)
   exact
     plaquetteKPBound_of_singletonBound_positiveAreaBounds
       (P := Bool) (Rlab := Bool) twoPlaquetteAdj
@@ -2255,7 +2262,6 @@ and smallness hypothesis are intentionally explicit so this theorem cannot be
 misread as a volume-uniform KP convergence or `SU(2)` mass-gap theorem. -/
 theorem twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice
     (beta alpha : Real) (halpha : 0 <= alpha) (B : Nat -> Real)
-    (hBsum_nonneg : 0 <= (Finset.Icc 1 (Fintype.card Bool)).sum B)
     (hArea : forall q : Bool,
       forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card Bool) ->
         anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
@@ -2278,7 +2284,7 @@ theorem twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice
         twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
         (twoPlaquetteZ2GammaAbs beta) (twoPlaquetteZ2GammaAbs_nonneg beta) alpha halpha
         (twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice beta alpha halpha B
-          hBsum_nonneg hArea hsmall)
+          hArea hsmall)
   · intro X
     exact plaquettePolymerSystem_self_incompatible twoPlaquetteAdj
       twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
@@ -2367,8 +2373,7 @@ theorem twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero
       twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs 0) alpha halpha := by
   refine
     twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice
-      0 alpha halpha (fun _ => 0) ?_ ?_ ?_
-  · simp
+      0 alpha halpha (fun _ => 0) ?_ ?_
   · intro q k _hk
     rw [twoPlaquetteZ2_anchoredPlaquettePolymerAreaSum_beta_zero alpha q k]
   · simpa using halpha
