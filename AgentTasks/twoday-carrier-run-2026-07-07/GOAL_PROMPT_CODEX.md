@@ -17,7 +17,8 @@ its, and neither of you lands unreviewed headline results.
   without a ledger claim Claude has acknowledged.
 - **You run a literature round every 30 minutes** (scoped to your lanes:
   strong-coupling/OS/character-expansion/polymer/RP) per `LIT_NEO4J_PROTOCOL.md`;
-  you also submit the STRATEGY job on EVEN hours.
+  you fire FOCUSED strategy jobs on your threads as needed (well above hourly), and
+  submit the hourly GRAND-STRATEGY whole-project review on EVEN hours (playbook sec 4).
 - You do not place Fable calls, but you FEED them: put your conceptual blockers and
   design forks into `FABLE_QUEUE.md` with enough context that Claude can package
   them, and read the call log afterward (`AgentTasks/model-calls/claude/`) - Fable's
@@ -70,10 +71,10 @@ T+47).
   `RUN_PLAN.md` sec 4.3), hourly floor. Claude is blocked until you post
   `[REVIEW-OK]`/`[REVIEW-FLAG]`.
 - Aristotle: run HOT - keep YOUR half of the up-to-12 fleet (up to ~5 proof jobs on
-  your lanes + your share of audits + the even-hour strategy job). Fire an audit
-  after every 2-4 of your integrations. Harvest-first; stale-check (your lane's
-  backlog burned budget on already-landed targets last run - check the tree before
-  every submit); 2-hour rule.
+  your lanes + your share of audits + frequent focused strategy jobs + the even-hour
+  GRAND-STRATEGY review). Fire an audit after every 2-4 of your integrations.
+  Harvest-first; stale-check (your lane's backlog burned budget on already-landed
+  targets last run - check the tree before every submit); 2-hour rule.
 
 ## Discipline reminders specific to you
 

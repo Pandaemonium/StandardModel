@@ -15,8 +15,11 @@ Run the fleet at **up to 12 simultaneous jobs**. At any time, aim for:
   2-4 integrated proofs (sec 3). The run's independent third reviewer; last run
   they caught what self-review missed. Keep 2-3 in flight whenever integrations
   are flowing.
-- **1 STRATEGY job, refreshed HOURLY** - a written strategic review of the
-  currently riskiest thread (sec 4), agents alternating each hour.
+- **STRATEGY jobs, two tiers, run OFTEN** (sec 4): FREQUENT focused jobs on
+  specific threads (well above hourly, whenever a thread has a live question) PLUS a
+  GRAND-STRATEGY whole-project review at least HOURLY (a floor, not a target), agents
+  alternating. Strategy jobs never go stale, so they are the first thing spare
+  capacity converts to.
 
 **12 is a CEILING, not a quota.** The saturation discipline still binds absolutely:
 if you cannot fill the proof slots with GENUINELY OPEN, non-stale targets, do NOT
@@ -74,21 +77,50 @@ headliners. Maintain an audit counter in the ledger (`[AUDIT-DUE]` when 2-4
 integrations have accumulated unaudited). File findings as `[AUDIT-FINDING]`; a
 confirmed finding is a WIN (log the catch), and the downgrade commits the same cycle.
 
-## 4. STRATEGY jobs - Aristotle as strategist
+## 4. STRATEGY jobs - Aristotle as strategist (two tiers, run OFTEN)
 
-**HOURLY**, the on-duty agent (alternating each hour: Claude on odd hours, Codex on
-even hours) submits a strategy job on the riskiest live thread:
+Strategy jobs are cheap insurance and the budget is unconstrained - run them
+FREQUENTLY, in two tiers.
 
-> Given [the thread's goal, the exact current statements, what landed, what
-> failed and how - all verbatim], produce: (a) an assessment of whether the
-> current decomposition can succeed as stated, (b) the sharpest alternative
-> decomposition, (c) any counterexample risk to the stated lemmas, (d) the three
-> highest-value next lemmas with exact Lean statements. Cite Mathlib API by name
-> where relevant.
+### 4a. FOCUSED strategy jobs (as often as useful - well above hourly)
 
-Strategy outputs feed `THREAD_BOARD.md` route updates and the Fable queue (a
-strategy job that says "the statement is probably false" is an immediate
-`FABLE_QUEUE.md` item with the evidence attached).
+On a SPECIFIC thread / decomposition / stuck lemma. Whenever a thread has a live
+design question, a stalled proof, or a route choice, fire one - do not wait for a
+clock. These should be many per hour when work is flowing.
+
+> Given [the thread's goal, the exact current statements, what landed, what failed
+> and how - all verbatim], produce: (a) can the current decomposition succeed as
+> stated? (b) the sharpest alternative decomposition; (c) any counterexample risk to
+> the stated lemmas; (d) the three highest-value next lemmas with exact Lean
+> statements. Cite Mathlib API by name where relevant.
+
+### 4b. GRAND STRATEGY jobs (at least once per hour - a FLOOR, not a target)
+
+A HOLISTIC review of the WHOLE project against its goals - never a single thread.
+At least hourly, more whenever the picture shifts; agents alternate (Claude odd
+hours, Codex even). Give Aristotle the full picture: the goal (the origin-of-mass
+thesis + the `FABLE_STEER` carrier program), the current `HONEST_SCORECARD`, the
+`THREAD_BOARD` (all threads + status), the axiom-guard state, and the recent
+`LEDGER`. Ask it to be a skeptical program director, not a cheerleader:
+
+> Reviewing the ENTIRE project against its stated goal (the full origin of mass from
+> null edges, via the Weitzenbock-carrier unification): (a) are we on the right track
+> - is the carrier decomposition still the right organizing principle, or is there a
+> better one? (b) across ALL lanes/threads, what is the single highest-value next
+> move, and what is being over- or under-invested? (c) what are the top risks,
+> dead-ends, or statements likely to be false or mis-scoped? (d) what should be
+> re-scoped, escalated to Fable, or abandoned? (e) does the scorecard's
+> PROVED/MODELED/OPEN grading match the actual kernel state, or is anything
+> over-claimed? Give a ranked, decision-forcing set of recommendations.
+
+Grand-strategy outputs are consolidated into the ledger (`[GRAND-STRATEGY]`) and feed
+BOTH the thread board (route updates) and the Fable queue - a grand-strategy job that
+flags a wrong organizing principle, a likely-false headline, or a scorecard
+over-claim is an immediate HIGH-PRIORITY `FABLE_QUEUE.md` item. Where focused and
+grand strategy disagree, the disagreement itself goes to Fable.
+
+Any strategy job (either tier) that says "the statement is probably false" is an
+immediate `FABLE_QUEUE.md` item with the evidence attached.
 
 ## 5. Budget posture - UNCONSTRAINED (user-set)
 

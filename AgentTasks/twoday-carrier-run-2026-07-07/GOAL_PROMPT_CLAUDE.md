@@ -20,8 +20,9 @@ into headline status.
   overhead: follow `FABLE_CALL_PROTOCOL.md` exactly. A skipped or low-effort call is
   a cadence failure.
 - **You run a literature round every 30 minutes** (scoped to your lanes: carrier/
-  Weitzenbock/Clifford/T/A/spinor-helicity) per `LIT_NEO4J_PROTOCOL.md`; you also
-  submit the STRATEGY job on ODD hours.
+  Weitzenbock/Clifford/T/A/spinor-helicity) per `LIT_NEO4J_PROTOCOL.md`; you fire
+  FOCUSED strategy jobs on your threads as needed (well above hourly), and submit the
+  hourly GRAND-STRATEGY whole-project review on ODD hours (playbook sec 4).
 
 ## Day-1 thread order (details + done-conditions in THREAD_BOARD.md)
 
@@ -65,9 +66,9 @@ contributes its lanes' sections).
 - **Fable call every 2h** (protocol doc). Maintain `FABLE_QUEUE.md` continuously -
   every conceptual snag goes there the moment you hit it, not when the call is due.
 - Aristotle: run HOT - keep YOUR half of the up-to-12 fleet (up to ~5 proof jobs on
-  your lanes + your share of audits + the odd-hour strategy job). Fire an audit
-  after every 2-4 of your integrations. Harvest-first. Stale-check every target.
-  2-hour rule.
+  your lanes + your share of audits + frequent focused strategy jobs + the odd-hour
+  GRAND-STRATEGY review). Fire an audit after every 2-4 of your integrations.
+  Harvest-first. Stale-check every target. 2-hour rule.
 
 ## Discipline reminders specific to you
 

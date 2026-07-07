@@ -44,8 +44,9 @@ independently-proved lane functional, all axiom-guarded.
   (own lanes) + the even-hour strategy job.
 - **Aristotle** - the engine, run HOT. Target mix AT ALL TIMES (see
   `ARISTOTLE_PLAYBOOK.md`): **up to 12 simultaneous jobs** - ~8-10 proof/construction
-  + 2-3 adversarial AUDIT jobs (fired after every 2-4 integrated proofs) + 1 STRATEGY
-  job refreshed HOURLY. Harvest-first; stale-check before every submit; 2-hour rule.
+  + 2-3 adversarial AUDIT jobs (fired after every 2-4 integrated proofs) + FREQUENT
+  focused STRATEGY jobs + a GRAND-STRATEGY whole-project review at least HOURLY.
+  Harvest-first; stale-check before every submit; 2-hour rule.
   12 is a CEILING, not a quota - the saturation discipline (sec 5) still binds.
   **Budget: UNCONSTRAINED** (user-set) - run as hot as there is genuine open work;
   the only limit is job quality (open target + ratified statement), never spend.
@@ -100,7 +101,8 @@ else flexes around harvests.
 | Literature round | **every 30 min** | **both, independently (scoped to own lanes)** | per `LIT_NEO4J_PROTOCOL.md`: chunks-search before formalizing; ingest new papers; cite keys in docstrings |
 | Red-team cross-review | per integration (hourly floor) | the OTHER agent | hunt the 4 over-claim modes in each integration (see sec 4) |
 | Aristotle AUDIT job | **after every 2-4 integrated proofs** (event-driven) | either | adversarial semantic audit of the most recent/riskiest landings (playbook sec 3) |
-| Aristotle STRATEGY job | **hourly** | alternating each hour | strategic review of the stalled/riskiest thread (playbook sec 4) |
+| Aristotle FOCUSED strategy | frequent (well above hourly, as needed) | either | review of a specific stalled/riskiest thread (playbook sec 4a) |
+| Aristotle GRAND strategy | **>= hourly (floor)** | alternating | HOLISTIC whole-project review against the goal (playbook sec 4b) |
 | **Fable call** | **every 2h** | **Claude** | per `FABLE_CALL_PROTOCOL.md`; queue-driven, decision-forcing |
 | Consolidation | ~2h | either (claim it) | fold landed results into `HONEST_SCORECARD.md` + thread board scrub |
 | Ledger heartbeat | every cycle | both | one HB line: what landed, what's in flight, what's next |
