@@ -295,6 +295,11 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   INSPIRE confirms the metadata, Semantic Scholar search was rate-limited
   (HTTP 429), and no duplicate ingest was needed. `QCLeading.lean` provenance
   updated to cite `SMH5768W`, `UARD9T5Q`, and TY key `N7SIEMAC`.
+- [HB Codex 22:18] PROVENANCE hardening in commit `978223b`: OS1 scaffolds
+  `StrongCouplingAreaLaw.lean` and `StrongCouplingPolymerMap.lean` now cite
+  `SMH5768W`/`UARD9T5Q` directly in their module docstrings. Verification green:
+  `lake env lean` on both files; `lake build
+  PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`; `pre-commit run --all-files`.
 
 ## [FABLE-CALL 02] sent (Claude c4) - Krein upgrade + E-slot + strategy
 - Placed on the assembly milestone (well-timed: 4 D^2 = Q_A+Q_C+4Q_T banked ahead of
