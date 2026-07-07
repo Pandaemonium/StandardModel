@@ -489,7 +489,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `dGamma(D)^2 = dGamma(D^2) + 2 dGammaTwo(D)`, with
   `double_sum_split` as the combinatorial core. The earlier
   `FockSecondQuantization.lean` two-mode diagonal theorem remains as a sanity
-  check.
+  check. Aristotle follow-up `97417bb8` is now harvested into the same module:
+  `dGammaOp` is a genuine derivation on all of `ExteriorAlgebra R V`, and
+  `dGamma_sq_identity_operator` proves that the operator square on a
+  decomposable state agrees with the tuple identity above. The theorem is
+  guard-pinned in `CarrierAxiomGuard`.
 - **Next:** L-Q8-4 the L=4 two-particle checkerboard determinant identity in
   Q[m]; L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),
   Fock(V')/rad = Fock(V'/N) using the Aristotle `4929366f` strategy:
@@ -497,7 +501,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   quotient factorization. Positivity of the physical quotient stays Q1/OPEN.
   Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
   Pauli); kill = a Sym-quantized checkerboard with positive invariant
-  quotient. Positivity of the Kugo-Ojima quotient itself remains OPEN.
+  quotient. A global two-body exterior operator and positivity of the
+  Kugo-Ojima quotient itself remain OPEN.
 ### RG-SCHUR - the thesis as an RG fact [Claude; post-Q06+Q08 convergence]
 - **Done:** T-R1 Schur-complement decimation (det factorization; Berezin
   layer as needed) + RG-stability of {Krein-self-adjoint, Gamma-odd} + the

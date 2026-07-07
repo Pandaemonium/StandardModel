@@ -62,6 +62,8 @@ The first named wave has now been mostly harvested into the live repo:
 - `0a6239d5` Q12 G2 parity: landed `G2Parity.lean`.
 - `bbcf12c6` Q12 PSA-1: landed `PSA.lean`.
 - `7067efa0` Q08 dGamma square: landed `DGammaSquare.lean`.
+- `97417bb8` Q08 dGamma globalization: landed the `dGammaOp` derivation and
+  `dGamma_sq_identity_operator` in `DGammaSquare.lean`.
 - `2ed38421` Q09 modular no-go: landed `ModularNoGo.lean`.
 - `4929366f` Q08 exterior quotient: strategy harvested; next proof jobs opened.
 - `5f3b8963` Q06 carrier-GW: strategy/counterexample harvested; local
@@ -107,3 +109,9 @@ McKean-Singer, anomaly-gate promotion, specific repo ladder bridge matrix,
 physical quotient equivariance, and the group-level RC0 determinant cocycle
 remain open.  The other follow-up projects remain active unless later status
 checks say otherwise.
+Follow-up `97417bb8` completed and was harvested into `DGammaSquare.lean`,
+proving that the one-body `dGammaOp` is a genuine exterior-algebra derivation
+and that its square on decomposable states matches the tuple-level
+`dGamma_sq_identity`.  This is still finite one-body globalization only; a
+global two-body exterior operator and the exterior quotient theorem remain
+open.

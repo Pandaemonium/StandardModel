@@ -48,6 +48,9 @@ guards are edited independently to avoid collision.
   `dGamma(D)^2 = dGamma(D^2) + 2 dGamma_2(Lambda^2 D)`.
 * Fock second-quantization general decomposable identity (`DGammaSquare`): the
   finite Leibniz-combinatorics identity on decomposable exterior-algebra states.
+* Fock second-quantization global derivation (`DGammaSquare`): the one-body
+  operator `dGammaOp` is a genuine derivation on all of `ExteriorAlgebra`, and
+  its square on decomposable states reproduces the tuple identity.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -258,6 +261,10 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGamma_sq_identity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGamma_sq_identity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGamma_sq_identity_operator' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGamma_sq_identity_operator
 
 /-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
     (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard

@@ -2534,6 +2534,10 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+- Note: attempted broader target `lake build PhysicsSM.Draft.NullEdge.Carrier`
+  is not a valid module target because there is no
+  `PhysicsSM/Draft/NullEdge/Carrier.lean` aggregator; the guard file remains
+  the carrier-lane aggregate verification surface.
 
 ## [ARISTOTLE-HARVEST Codex solo] Q10-L5 split determinant identity landed
 - Harvested Aristotle project `3a66e413`
@@ -2784,3 +2788,26 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Verification passed:
   `git diff --check -- AgentTasks/twoday-carrier-run-2026-07-07/GOAL_PROMPT_CODEX.md`;
   `pre-commit run --all-files`.
+
+## [ARISTOTLE-HARVEST Codex solo 09:49] Q08 dGamma globalization landed
+
+- Harvested Aristotle project `97417bb8`
+  (`ne-q08-dgamma-exterior-globalization-proof-20260707`). Integrated the
+  returned one-body exterior-algebra derivation into
+  `PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`.
+- Proved `dGammaOp` is a genuine derivation on all of `ExteriorAlgebra R V`,
+  `dGammaOp_wedge` agrees with the tuple-level `dGamma` on decomposable
+  states, `dGammaOp_sq_wedge` agrees with `dGammaSq`, and
+  `dGamma_sq_identity_operator` globalizes the square identity on decomposable
+  states. Added the new theorem to `CarrierAxiomGuard`.
+- Claim boundary: PROVED finite one-body globalization only. The two-body term
+  is still the combinatorial `dGammaTwo`; a global two-body exterior operator,
+  the exterior quotient theorem, positivity, and continuum Fock claims remain
+  OPEN.
+- Run docs updated: Q08 status in `THREAD_BOARD.md`; harvest status in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
