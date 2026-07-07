@@ -495,7 +495,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   decomposable state agrees with the tuple identity above. Codex then added
   the particle-number sanity check `dGammaOp_id_wedge`: the second
   quantization of the identity acts by scalar `k` on a decomposable
-  `k`-particle wedge. These Q08 theorems are guard-pinned in
+  `k`-particle wedge, plus `dGammaTwo_id_pair_count`: the identity two-body
+  combinatorial term is the scalar count of strict pair slots. These Q08
+  theorems are guard-pinned in
   `CarrierAxiomGuard`.
 - **Next:** L-Q8-4 the L=4 two-particle checkerboard determinant identity in
   Q[m]; L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),

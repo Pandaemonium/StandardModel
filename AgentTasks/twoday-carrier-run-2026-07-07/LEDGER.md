@@ -2569,6 +2569,22 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [HB Codex solo 10:05] Q08 dGamma two-body identity pair-count landed
+
+- Extended `PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean` with
+  `dGammaTwo_id_pair_count`: for the identity one-body operator, the
+  tuple-level two-body term is the scalar count of strict pair slots
+  `(i,j)` with `i < j`.
+- Added `dGammaTwo_id_pair_count` to `CarrierAxiomGuard`.
+- Claim boundary: PROVED finite pair-count sanity check only. The closed
+  simplification of that pair count to `k.choose 2`, a global two-body
+  exterior operator, the exterior quotient theorem, and positivity remain OPEN.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
 - Note: attempted broader target `lake build PhysicsSM.Draft.NullEdge.Carrier`
   is not a valid module target because there is no
   `PhysicsSM/Draft/NullEdge/Carrier.lean` aggregator; the guard file remains

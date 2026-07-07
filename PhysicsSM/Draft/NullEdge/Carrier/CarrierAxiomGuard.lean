@@ -51,7 +51,8 @@ guards are edited independently to avoid collision.
 * Fock second-quantization global derivation (`DGammaSquare`): the one-body
   operator `dGammaOp` is a genuine derivation on all of `ExteriorAlgebra`, and
   its square on decomposable states reproduces the tuple identity. The identity
-  one-body operator acts by the finite particle number on decomposable states.
+  one-body operator acts by the finite particle number on decomposable states,
+  and the identity two-body term counts strict pair slots.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -270,6 +271,10 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaOp_id_wedge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaOp_id_wedge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaTwo_id_pair_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaTwo_id_pair_count
 
 /-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
     (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard

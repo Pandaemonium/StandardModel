@@ -285,6 +285,14 @@ theorem dGammaOp_id_wedge (v : Fin k -> V) :
   rw [dGammaOp_wedge]
   simp [applyAt_id, Algebra.smul_def]
 
+/-- For the identity one-body operator, the tuple-level two-body term counts
+strictly ordered pair slots `i < j`. -/
+theorem dGammaTwo_id_pair_count (v : Fin k -> V) :
+    dGammaTwo (LinearMap.id : V →ₗ[R] V) v =
+      ((Finset.univ.filter (fun p : Fin k × Fin k => p.1 < p.2)).card : R) • wedge v := by
+  unfold dGammaTwo
+  simp [applyAt_id, Algebra.smul_def]
+
 /-- Applying the genuine derivation twice to a decomposable state reproduces
 the tuple double sum. -/
 theorem dGammaOp_sq_wedge (D : V →ₗ[R] V) (v : Fin k -> V) :
@@ -321,5 +329,9 @@ end Globalization
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaOp_id_wedge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms dGammaOp_id_wedge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaTwo_id_pair_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms dGammaTwo_id_pair_count
 
 end PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
