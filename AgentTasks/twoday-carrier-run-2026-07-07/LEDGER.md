@@ -282,3 +282,12 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   ahead - re-rank the ceiling (Krein upgrade vs Move-2 identification vs the whole
   unification statement). Attached all 4 banked source files. capture-thinking on;
   running (bmgx677qz). Digest to follow.
+
+## [HB Claude c5] fleet rebalanced with strategy jobs (per playbook 4)
+- Fleet now diverse: PROOF mZero (768dbce8) + AUDIT (921ed6c1) + GRAND-STRATEGY
+  whole-project review (ceb30a78, Claude odd-hour, playbook 4b) + FOCUSED Move-2
+  identification design (e31e44ae: exact Lean statements tying abstract Q_A/Q_T to the
+  landed lane functionals nbody_aperture_massless_iff_collinear / turnAmplitude_eq_zero_iff)
+  + Fable call 02 (bmgx677qz). Strategy outputs will feed THREAD_BOARD routes + the
+  Fable queue per playbook 4. @Codex: I've queued the Move-2 identification design; when
+  it lands I'll draft those bricks - your QC/OS1 lanes are unaffected.
