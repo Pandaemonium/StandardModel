@@ -1,6 +1,7 @@
 # Null-edge program: key results
 
-**High-level summary, 2026-06-27.**
+**High-level summary, 2026-06-27; carrier-layer update appended 2026-07-07
+(section 10).**
 
 This document records the most important things the null-edge mass program has
 actually shown, separated by trust level. It is a map, not a full theorem list.
@@ -325,3 +326,48 @@ own.
 - **Neutrino as sharp stress test:**
   Keep neutrinos as the most immediate map-choice stress test, not a solved mechanism.
   Treat Dirac/Majorana/seesaw as branchable options constrained by canonical obstruction and projection architecture.
+
+## 10. Carrier-layer results (2026-07-07 update)
+
+The two-day carrier run (`AgentTasks/twoday-carrier-run-2026-07-07/`, joint
+Claude/Codex/Aristotle execution) added an operator layer above the P1
+kinematics. Everything below is DRAFT-layer but kernel-clean with
+build-enforced axiom pins (`[propext, Classical.choice, Quot.sound]`) in
+`PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean` - none of it is in
+the trusted namespace yet.
+
+- **Discrete Weitzenbock decomposition (finite identity).** For the carrier
+  `D = sum_e c(alpha_e) nabla_e + Gamma phi` with null soldering
+  (`c(alpha_e)^2 = 0`, kernel-checked), the square decomposes exactly:
+  `4 D^2 = Q_A + Q_C + 4 Q_T` in the covariantly-constant regime, and
+  `4 D^#D = Q_A^# + Q_C^# + 4 Q_T + 4 E_#` with varying soldering - aperture,
+  closure, turn, and soldering-gradient (gravity-shaped) channels separated in
+  one operator identity. "Unification is decomposition, not identification."
+- **First Move-2 identification (finite identity).** `Q_A = Q(sum_e alpha_e)`:
+  the aperture block IS the invariant mass of the total null momentum, tying
+  the carrier layer to the trusted P1 Plucker mass exactly.
+- **Certified Krein layer (finite identity).** The form `<x, Gamma y>` is
+  Hermitian for self-adjoint `Gamma`; an explicit `C^4` witness certifies
+  `Gamma = sigma_z (x) I` as a fundamental symmetry (self-adjoint involution,
+  inertia `(2,2)`, Pontryagin `kappa = 2`) with the flat-sector mass form
+  STRICTLY positive (`= |c|^2`) and nonnegative on the full 2-dimensional flat
+  chiral plane. This is the program's first certified, non-vacuous
+  indefinite-geometry positivity - flat sector only.
+- **Index protection (finite identity family).** Finite McKean-Singer: the
+  chiral index equals the graded dimension for rank-symmetric blocks - proved
+  automatic for Hilbert- AND Krein-self-adjoint carriers - so the massless
+  chiral surplus is topological, immune to every potential and transport. Two
+  kernel-checked poles: balanced `(2,2)` complex (index 0, fully gappable,
+  strictly positive mass form) and unbalanced `(2,1)` complex (index 1, a
+  forced massless mode for every dynamics). Masslessness of the surplus is
+  the mass thesis's converse, now a theorem family.
+- **Still OPEN (unchanged honesty):** off-flat/physical-sector positivity (now
+  rerouted through a finite Gupta-Bleuler quotient, with OS/theta-reflection
+  and modular/ANEC readings queued as alternate selectors); the
+  all-slots-active glue witness (mathematics hand-verified, Lean transcription
+  pending); beyond-leading closure positivity; every continuum statement.
+- **Forward documents:** the synthesis
+  (`AgentTasks/twoday-carrier-run-2026-07-07/SYNTHESIS_BEYOND_MASS.md` - the
+  index-trinity frame), the graded steer memo
+  (`Sources/Ontology_extensions.md`, integrated), and five Letter-caliber
+  publication outlines (`Sources/Null_Edge_Publication_Outlines_2026-07-07.md`).

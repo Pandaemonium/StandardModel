@@ -1,5 +1,11 @@
 # Open Questions in Formalization
 
+> **Status (2026-07-07): HISTORICAL.** April-2026 survey-era question list;
+> kept for provenance and as a target reservoir. Live open problems are
+> tracked in [`NULL_EDGE_RESULTS.md`](NULL_EDGE_RESULTS.md) (open-cruxes
+> sections) and the active run's queue/board; see
+> [`docs/DOCUMENT_MAP.md`](docs/DOCUMENT_MAP.md).
+
 **Document purpose.** A curated list of mathematical questions that would be
 interesting, novel, and tractable to prove formally in the PhysicsSM Lean
 library. Questions are drawn from a literature survey (April 2026) covering

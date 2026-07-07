@@ -1916,3 +1916,30 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   citations, ledger sign-offs, archived Lean artifact).
 - Every outline: paper contract (one headline), claim grading, anticipated
   referee attacks with responses, honest venue chains (PRL -> PRX -> SciPost).
+
+## [HB Claude c26] Documentation pass: README rewrite + master document map + AGENTS.md upgrades (user-directed)
+- NEW `docs/DOCUMENT_MAP.md`: the hand-curated master list of all important
+  documents - five-doc shortlist, categories (entry/ops/state/program/run/
+  publications/references/Lean anchors), status tags
+  [LIVE]/[STABLE]/[DRAFT-MS]/[HISTORICAL], and maintenance rules (add-in-same-
+  commit; supersede-means-retag+banner; runs collapse on completion).
+- `README.md` REWRITTEN (was 2026-05-21, pre-carrier, E8-framed): now the front
+  door - flagship null-edge program by layer (trusted kinematic / draft carrier
+  / open cruxes), supporting assets (E8 artifact, octonion core, YM area law,
+  GW chirality), the 3-level trust model, build quickstart, five-doc reading
+  list, agent pointer, publications.
+- `AGENTS.md` surgical upgrades (4): document-map pointer in the linked-docs
+  list; the build-enforced AXIOM-GUARD convention ("a flagship without a guard
+  block is not landed"); the FOUR OVER-CLAIM MODES as an always-on review rail
+  (vacuity / hollow telescoping / docstring-outruns-kernel / false shape); the
+  claim calculus (T/T|H/M/C + originality tags) referenced from physics
+  conventions; the Malament conformal-vs-scale bullet in NullStrand quick
+  conventions. These promote the run's proven discipline to repo law.
+- Live state docs refreshed: `NULL_EDGE_RESULTS.md` + new section 10
+  (carrier-layer results 2026-07-07: Weitzenbock, Move-2 Q_A, certified
+  kappa=2 Krein layer, index protection, open cruxes, forward docs);
+  `PROGRESS.md` + section 7 (null-edge program) + date bump.
+- Historical banners added (provenance-preserving, per map rule 2):
+  `NORTH_STAR.md` (mission stands; flagship named), `EXECUTION_PLAN.md`,
+  `OPEN_QUESTIONS.md`, `FUTURE_DIRECTIONS.md` - each pointing to the live docs
+  and the map. `pre-commit run --all-files` green repo-wide.

@@ -1,5 +1,10 @@
 # North Star: PhysicsSM
 
+> **Status (2026-07-07).** The mission below stands. The flagship program now
+> executing it is the null-edge origin-of-mass program - see
+> [`NULL_EDGE_RESULTS.md`](NULL_EDGE_RESULTS.md) for live results and
+> [`docs/DOCUMENT_MAP.md`](docs/DOCUMENT_MAP.md) for the document map.
+
 ## What this project is
 
 PhysicsSM is a Lean 4 library whose goal is to produce **machine-verified proofs

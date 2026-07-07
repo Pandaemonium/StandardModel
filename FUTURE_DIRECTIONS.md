@@ -1,5 +1,11 @@
 # Future Directions: PhysicsSM
 
+> **Status (2026-07-07): HISTORICAL.** May-2026 strategy map; kept for
+> provenance. Current forward thinking lives in
+> `AgentTasks/twoday-carrier-run-2026-07-07/SYNTHESIS_BEYOND_MASS.md`, the
+> publication outlines (`Sources/Null_Edge_Publication_Outlines_2026-07-07.md`),
+> and [`docs/DOCUMENT_MAP.md`](docs/DOCUMENT_MAP.md).
+
 **Document purpose.** A strategic research map identifying eight underexplored
 directions adjacent to the project's current work. For each direction the
 document records the key mathematical content, the connection to what is already

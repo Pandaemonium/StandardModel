@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-04-30
+Last updated: 2026-07-07
 
 This file records the project's highest-value achievements. It is intentionally
 small: detailed task history belongs in `EXECUTION_PLAN.md`, `OPEN_QUESTIONS.md`,
@@ -74,3 +74,19 @@ validation used as guardrails rather than trusted proofs.
 
 The repository is set up to prefer small, provenance-rich, kernel-checked
 formalizations over broad speculative code.
+
+## 7. The Null-Edge Origin-of-Mass Program (2026-06/07)
+
+The program's flagship strand landed its kinematic and operator layers. The
+trusted finite Plucker-mass theorem (`PhysicsSM.Spinor.PluckerMass`) proves
+`det(sum psi_i psi_i^dagger) = sum_{i<j} |psi_i wedge psi_j|^2` with the exact
+massless criterion - invariant mass is pairwise null-direction disagreement -
+and anchors the P1 manuscript. The draft carrier layer (guard-pinned axioms)
+adds the discrete Weitzenbock decomposition separating aperture, closure,
+turn, and soldering-gradient mass channels of one null-edge Dirac operator;
+the aperture-slot identification tying it to the trusted mass; a certified
+Pontryagin (kappa = 2) fundamental symmetry with strictly positive flat-sector
+Krein mass form; and the finite McKean-Singer index-protection family
+(topologically protected massless chiral modes, Hilbert and Krein versions).
+Adjacent kernel-checked assets: a strong-coupling Wilson-loop area law and
+Ginsparg-Wilson chirality layers. Results map: `NULL_EDGE_RESULTS.md`.

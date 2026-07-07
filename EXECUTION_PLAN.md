@@ -1,5 +1,10 @@
 # Execution Plan: PhysicsSM
 
+> **Status (2026-07-07): HISTORICAL.** Milestone plan of the octonion/Furey/E8
+> era; kept for provenance. Live program state:
+> [`NULL_EDGE_RESULTS.md`](NULL_EDGE_RESULTS.md), [`PROGRESS.md`](PROGRESS.md),
+> and the document map [`docs/DOCUMENT_MAP.md`](docs/DOCUMENT_MAP.md).
+
 ## Current state (baseline through 2026-05-07; publication update 2026-05-31)
 
 **Milestone 1, the Milestone 2 Cayley-Dickson foundation, Core Furey

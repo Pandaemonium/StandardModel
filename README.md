@@ -1,55 +1,110 @@
-# PhysicsSM and CodeLatticeE8
+# StandardModel: machine-verified mathematics for the origin of mass
 
-This repository contains Lean 4 formalizations around Standard Model
-mathematics, octonions, exceptional Lie theory, and the Hamming-code
-Construction A route to the E8 lattice.
+A Lean 4 formalization project (pinned toolchain `leanprover/lean4:v4.28.0`,
+Mathlib-based) with one flagship research program and a family of supporting
+formalization assets. The rule that organizes everything: **the Lean kernel is
+the source of truth** - a result counts only when the intended statement is
+correctly represented, kernel-checked, axiom-audited, and its conventions are
+documented.
 
-The polished publication artifact is the `CodeLatticeE8` package.  It proves,
-from an explicit extended binary Hamming `[8,4,4]` code, the Construction A
-integer lattice, the E8 normalization, the short-vector count `240`, the
-doubled-coordinate E8 root list, the root bridge, Cartan data, Weyl reflection
-closure, and finite theta-series coefficient checks.  The optional
-`CodeLatticeE8SPL` root connects the package to Sphere-Packing-Lean and carries
-the SPL-facing `Theta_E8 = E4` theorem chain.
+## The flagship: the null-edge origin-of-mass program
 
-## Recommended Checks
+The physical thesis under formalization: matter is trapped, mutually
+disagreeing light - invariant mass is the obstruction to coherent null
+transport, and whatever the topology of a finite complex protects stays
+massless. The program is built in honest layers:
 
-The monorepo root includes the optional Sphere-Packing-Lean dependency because
-the `CodeLatticeE8SPL` target imports it:
+- **Kinematic layer (trusted).** The finite Plucker-mass theorem: for null
+  spinors `psi_1..psi_n` and `P = sum psi_i psi_i^dagger`,
+  `det P = sum_{i<j} |psi_i wedge psi_j|^2` - mass squared is total pairwise
+  null-direction disagreement, zero iff all directions collinear
+  (`PhysicsSM.Spinor.PluckerMass`, trusted namespace). Manuscript: P1 draft in
+  `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md`.
+- **Carrier layer (draft, guard-pinned).** A finite null-edge Dirac operator
+  `D = sum_e c(alpha_e) nabla_e + Gamma phi` with kernel-checked discrete
+  Weitzenboeck decomposition `4 D^#D = Q_A + Q_C + 4 Q_T + 4 E` separating the
+  aperture (kinematic), closure (gauge), turn (Higgs-shaped), and
+  soldering-gradient (gravity-shaped) mass channels; the identification
+  `Q_A = Q(sum alpha)` tying the carrier to the trusted kinematic mass; a
+  certified Pontryagin `kappa = 2` fundamental symmetry with strictly positive
+  flat-sector Krein mass form; and the finite McKean-Singer index-protection
+  family (masslessness of the chiral surplus is topological - immune to every
+  potential and transport). All under `PhysicsSM/Draft/NullEdge/Carrier/` with
+  build-enforced axiom pins in `CarrierAxiomGuard.lean`.
+- **Open cruxes (tracked, not claimed).** Physical-sector (off-flat) Krein
+  positivity; the all-slots-active glue witness; beyond-leading closure
+  positivity; every continuum statement.
+
+## Supporting formalization assets
+
+- **CodeLatticeE8** (publication artifact): from the extended binary Hamming
+  `[8,4,4]` code through Construction A to E8 - the 240 short vectors, root
+  bridge, Cartan data, Weyl closure, theta-series checks, and the SPL-facing
+  `Theta_E8 = E4` chain (`CodeLatticeE8.lean`; standalone wrapper in
+  `CodeLatticeE8Standalone/`).
+- **Octonion core**: kernel-checked XOR-basis octonion model (Moufang,
+  alternativity, norm multiplicativity), triality-conjugation criterion, and
+  the Furey program layer (Cl(6) ladder operators, minimal left ideal, charge
+  arithmetic).
+- **Lattice gauge theory**: strong-coupling Wilson-loop area law
+  (kernel-checked at concrete-lattice level) and transfer-gap machinery under
+  the GateYM lane, guard-pinned in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`.
+- **Chirality substrate**: Ginsparg-Wilson / overlap chirality and a chiral
+  index calculus (GateC1/GateC2 lanes).
+
+## Trust model
+
+Three levels, never blurred:
+
+1. **Trusted** (`PhysicsSM` outside `Draft/`): compiles with no `s o r r y`,
+   no new axioms, no native evaluation; axiom footprint
+   `[propext, Classical.choice, Quot.sound]`.
+2. **Draft** (`PhysicsSM/Draft/`): kernel-clean results staged for promotion;
+   flagship draft theorems carry build-enforced `#print axioms` guard blocks -
+   a flagship without a guard block is not "landed".
+3. **Prose**: manuscripts and analyses use an explicit claim calculus
+   (`T`/`T|H`/`M`/`C` with originality tags); interpretation never rides in a
+   theorem statement.
+
+## Build quickstart
 
 ```powershell
-lake build CodeLatticeE8
-lake build CodeLatticeE8SPL
+lake build                 # full project (pinned toolchain v4.28.0)
+lake build CodeLatticeE8   # the E8 publication artifact
+lake env lean PhysicsSM/Path/To/File.lean   # fast single-file check
 ```
 
-Reviewers who want the standalone, mathlib-only `CodeLatticeE8` core without
-resolving Sphere-Packing-Lean should use the wrapper package:
+Windows note: after a cache wipe, build ProofWidgets JS once
+(`cd .lake/packages/proofwidgets && lake build widgetJsAll`). The standalone
+reviewer build for E8 lives in `CodeLatticeE8Standalone/`. Full build,
+verification, and hygiene commands: `docs/BUILD.md`.
 
-```powershell
-cd CodeLatticeE8Standalone
-lake build CodeLatticeE8
-```
+## Where to start reading
 
-Both package roots are pinned to Lean 4.28.0.  The build passes `-s65536` to
-Lean because several finite root-list and matrix proofs need a larger stack
-than Lean's default.
+The master document map is **`docs/DOCUMENT_MAP.md`** - every important
+document, categorized, with one-line descriptions and status tags. The
+five-document shortlist:
 
-On Windows, after a cache wipe, Mathlib's ProofWidgets package may need its
-JavaScript assets built once from inside the dependency package:
+1. This README.
+2. `AGENTS.md` - the working contract (humans and AI agents alike).
+3. `NULL_EDGE_RESULTS.md` - the results map of the flagship program, by trust
+   level.
+4. `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - the first
+   paper.
+5. `AgentTasks/twoday-carrier-run-2026-07-07/SYNTHESIS_BEYOND_MASS.md` - where
+   the program is going next.
 
-```powershell
-cd .lake/packages/proofwidgets
-lake build widgetJsAll
-```
+## For AI agents
 
-After that one-time step, return to the repository root and run the Lean build
-commands above.
+`AGENTS.md` (mirrored by `CLAUDE.md`) is the always-on contract: trusted-vs-
+draft rules, forbidden tokens, octonion and physics conventions, Aristotle
+policy, MCP tooling, provenance and text-hygiene rules. Read it before
+touching Lean.
 
-## Main Files
+## Publications
 
-- `CodeLatticeE8.lean`: standalone reviewer-facing root.
-- `CodeLatticeE8/Publication/TheoremIndex.lean`: compile-checked theorem index.
-- `CodeLatticeE8SPL.lean`: optional Sphere-Packing-Lean-facing root.
-- `Sources/Hamming_ConstructionA_E8_Manuscript_Revision.md`: manuscript draft.
-- `Sources/CodeLatticeE8_Publication_Theorem_Map.md`: theorem map.
-- `Sources/CodeLatticeE8_Trust_Report.md`: trust and verification report.
+`Sources/Null_Edge_Causal_Graph_Publication_Plan.md` (stable topic IDs
+P1-P12), `Sources/Null_Edge_Publication_Outlines_2026-07-07.md` (five
+Letter-caliber outlines, P13+), the P1 manuscript draft, and the
+Hamming/E8 manuscript (`Sources/Hamming_ConstructionA_E8_Manuscript_*.md`).

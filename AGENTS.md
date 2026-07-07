@@ -9,6 +9,8 @@ These instructions are for AI coding agents (Codex, Claude Code, Gemini Code
 Assist, Aristotle, and similar). They are the always-on rules; infrequent
 operational detail lives in linked docs:
 
+- Master document map (what to read, per topic, with status tags):
+  [`docs/DOCUMENT_MAP.md`](docs/DOCUMENT_MAP.md)
 - Build, toolchain pin, Windows fix, verification commands:
   [`docs/BUILD.md`](docs/BUILD.md)
 - Aristotle submission/integration mechanics: [`docs/ARISTOTLE.md`](docs/ARISTOTLE.md)
@@ -66,6 +68,16 @@ Sources/  Scripts/  AgentTasks/  Index/
   (no `Lean.ofReduceBool` / `Lean.trustCompiler` in the axiom audit; the project's
   `NoNative` modules are the pattern), and the statement has been reviewed for
   semantic alignment.
+- Flagship draft results carry a build-enforced axiom pin: a
+  `#guard_msgs ... in #print axioms ...` block in the lane's guard file
+  (patterns: `PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`,
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`). A flagship without a
+  guard block is not "landed"; run the guard build before claiming one is.
+- Before any headline claim, review the landing (yours or a peer's) against the
+  four over-claim modes: vacuity (hypotheses no explicit model witnesses),
+  hollow telescoping (a triviality dressed as depth), docstring-outruns-kernel
+  (prose claiming more than the statement proves), and false shape (a
+  kernel-checked statement that is not the intended mathematics).
 
 Good handoff comment:
 
@@ -190,6 +202,13 @@ charge convention, representation duals/conjugates, and particle/antiparticle
 naming. If sources differ, do not silently merge - use separate namespaces or
 explicit conversion lemmas.
 
+Manuscript-facing prose additionally uses the program claim calculus - `T`
+(source-verified theorem), `T|H` (conditional on displayed hypotheses), `M`
+(machine-verified, program-internal), `C` (pre-registered conjecture with gate
+and kill-condition), plus originality tags `[orig]/[comp]/[import]/[interp]` -
+see the P1 manuscript header
+(`Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md`).
+
 ## NullStrand / null-edge quick conventions
 
 Detailed and evolving guidance for the NullStrand/null-edge program lives in
@@ -219,6 +238,9 @@ agents will frequently encounter:
 - When discussing physics implications, prefer explicit claim labels such as
   finite identity, asymptotic theorem, reconstruction, consistency check, or
   prediction.
+- Emergence claims obey the Malament split: causal order supplies the conformal
+  class for free; decorations owe exactly the scale. Say which half a claim
+  addresses (details in [`docs/NULLSTRAND.md`](docs/NULLSTRAND.md)).
 
 ## Provenance
 
