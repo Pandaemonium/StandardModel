@@ -12,7 +12,8 @@ conjugation) and `Cmap` (top-form duality).
 
 The landed theorems are the factorization `JR = Cmap o Kmap`, the involution
 and commutation laws for `Kmap` and `Cmap`, conjugation compatibility for
-minors, and conjugation compatibility for `lambdaAction`.
+minors, conjugation compatibility for `lambdaAction`, and cardinality-support
+control for the coefficient formula.
 It also proves the identity-minor Kronecker theorem and the identity action
 `lambdaAction 1 = id`.
 
@@ -113,6 +114,43 @@ theorem lambdaAction_conj (g : Matrix (Fin 5) (Fin 5) ℂ) (f : Form) :
 theorem minorDet_empty (g : Matrix (Fin 5) (Fin 5) ℂ) : minorDet g ∅ ∅ = 1 := by
   simp [minorDet]
 
+/-! ## Cardinality support -/
+
+/-- Minors with different row/column cardinalities vanish by definition. -/
+theorem minorDet_card_ne (g : Matrix (Fin 5) (Fin 5) ℂ) {T S : Finset (Fin 5)}
+    (h : S.card ≠ T.card) :
+    minorDet g T S = 0 := by
+  simp [minorDet, h]
+
+/-- The exterior coefficient sum only sees subsets with the same cardinality as
+the output subset. -/
+theorem lambdaAction_eq_sum_filter_card (g : Matrix (Fin 5) (Fin 5) ℂ) (f : Form)
+    (T : Finset (Fin 5)) :
+    lambdaAction g f T =
+      ∑ S ∈ Finset.univ.filter (fun S : Finset (Fin 5) => S.card = T.card),
+        minorDet g T S * f S := by
+  rw [lambdaAction, Finset.sum_filter]
+  refine Finset.sum_congr rfl (fun S _ => ?_)
+  by_cases hcard : S.card = T.card
+  · simp [hcard]
+  · simp [minorDet_card_ne g hcard, hcard]
+
+/-- `lambdaAction` preserves cardinality-degree support: if a form vanishes
+away from degree `k`, then its image also vanishes away from degree `k`. -/
+theorem lambdaAction_preserves_card_support
+    (g : Matrix (Fin 5) (Fin 5) ℂ) (f : Form) (k : ℕ)
+    (hf : ∀ S : Finset (Fin 5), S.card ≠ k → f S = 0)
+    {T : Finset (Fin 5)} (hT : T.card ≠ k) :
+    lambdaAction g f T = 0 := by
+  rw [lambdaAction_eq_sum_filter_card]
+  refine Finset.sum_eq_zero (fun S hS => ?_)
+  have hcard : S.card = T.card := by
+    simpa using hS
+  have hSk : S.card ≠ k := by
+    intro hSk
+    exact hT (hcard ▸ hSk)
+  simp [hf S hSk]
+
 /-! ## Identity matrix minors -/
 
 /-- The identity matrix has Kronecker minors on ordered finite subsets. -/
@@ -189,6 +227,18 @@ theorem lambdaAction_one (f : Form) :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.minorDet_empty' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms minorDet_empty
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.minorDet_card_ne' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms minorDet_card_ne
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.lambdaAction_eq_sum_filter_card' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms lambdaAction_eq_sum_filter_card
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.lambdaAction_preserves_card_support' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms lambdaAction_preserves_card_support
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.minorDet_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

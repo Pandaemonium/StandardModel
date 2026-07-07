@@ -27,6 +27,9 @@ New declarations:
 - `minorDet_empty`
 - `minorDet_one`
 - `lambdaAction_one`
+- `minorDet_card_ne`
+- `lambdaAction_eq_sum_filter_card`
+- `lambdaAction_preserves_card_support`
 
 The file is imported from the Gate I1 aggregator and footprint-guards the
 checked structural theorems.
@@ -75,10 +78,14 @@ complementary minors and the determinant-cocycle/RC0 theorem.
 ## Local Follow-Up
 
 After the initial harvest, Codex locally proved the identity-matrix minor and
-action theorems:
+action theorems, plus the cardinality-support lemmas that shrink the next
+Cauchy-Binet target:
 
 - `minorDet_one`
 - `lambdaAction_one`
+- `minorDet_card_ne`
+- `lambdaAction_eq_sum_filter_card`
+- `lambdaAction_preserves_card_support`
 
 This closes the identity-action part of the Q11 blocker.  The remaining
 algebraic blocker is finite Cauchy-Binet/functoriality for `lambdaAction`;

@@ -3792,3 +3792,20 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [LEAN Codex solo] Q11 cardinality-support scaffold for Cauchy-Binet
+
+- Added `minorDet_card_ne`: mismatched-cardinality minors vanish by definition.
+- Added `lambdaAction_eq_sum_filter_card`: the coefficient formula can be
+  rewritten as a same-cardinality filtered sum.
+- Added `lambdaAction_preserves_card_support`: `lambdaAction` preserves
+  finite cardinality-degree support.
+- Guard-pinned the new support lemmas in `Q11GroupAction.lean`.
+- Claim boundary: this is scaffolding for the next Cauchy-Binet/functoriality
+  proof, not the Cauchy-Binet theorem itself.  `gl_fiber`, Jacobi
+  complementary minors, determinant cocycle, and group-level RC0 remain open.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
