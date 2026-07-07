@@ -1,338 +1,374 @@
-# HELP NEEDED — brief for Fable 5 (self-contained)
+# HELP NEEDED — conceptual brief for Fable 5 (self-contained)
 
-You are **Fable 5**, Anthropic's most capable model. You are being handed the
-**hardest open problems** of a large, mature Lean 4 formalization program and asked
-to push them as far as you can. This brief is fully self-contained: it assumes you
-know nothing about the repository. Read it end to end, then attack whichever
-challenges you can move — ideally producing **kernel-checkable Lean 4 proofs**, and
-where a full proof is out of reach, a **rigorous, formalization-ready proof
-strategy** or a **kernel-checked no-go / counterexample**.
+You are **Fable 5**, Anthropic's most capable model. You are being handed a large,
+mature formalization program and asked to do the thing we cannot outsource to a
+proof engine: **think**. This brief is fully self-contained — it assumes you know
+nothing about the repository.
 
-Do not optimize for volume. One genuinely hard theorem, honestly proved and
-correctly stated, is worth more than a hundred restatements. **Over-claiming is the
-cardinal sin here** (see §2). If a target is false or underspecified, say so and
-prove the obstruction.
+**We do not need you to write Lean.** We have a capable Lean team (human + coding
+agents + an external proof fleet) that turns precise statements into kernel-checked
+proofs. What we are short on is the layer *above* the kernel: the conceptual moves,
+the synthesis across lanes, the new connections, the right literature, and — above
+all — a clear-eyed strategy that actually **drives us to the goal**.
+
+**Your job, in order of value:**
+1. **Drive us to the goal.** The goal is *a single model that explains all mass as
+   an obstruction to null-edge transport* (§2). Tell us what that model must contain,
+   which of our pieces belong in it, which are distractions, and what the shortest
+   honest path to it is. Be the north star.
+2. **Solve hard conceptual problems.** Where we are stuck, the block is usually
+   conceptual, not tactical (§6). Crack the *idea*; we'll formalize it.
+3. **Synthesize.** We have ~40 finite results across five lanes (§5) that we suspect
+   are facets of one structure. Find the structure. Tell us what unifies them — or
+   prove to us that they don't unify and why.
+4. **Make new connections.** Between our lanes, and between our program and the rest
+   of physics/mathematics. The best contribution might be a bridge we can't see.
+5. **Alert us to the literature.** Point us at the papers, theorems, and communities
+   whose results we should be standing on and probably aren't.
+
+Do not optimize for volume or for producing proofs. One decisive conceptual insight —
+"here is why your taxonomy is really one object," or "the gate you think is central is
+a corollary of X," or "this 1987 paper already contains the mechanism you're
+rebuilding" — is worth more than a hundred restatements. **And hold yourself to our
+honesty bar (§3): don't hand us a synthesis that quietly assumes the hard part.**
 
 ---
 
 ## 1. The project in one screen
 
-**PhysicsSM** is a Lean 4 (Mathlib, toolchain pinned at `leanprover/lean4:v4.28.0`)
-formalization of mathematical structures behind the Standard Model: octonions and
-division algebras, exceptional Lie theory (E8), Clifford/spinor algebra, lattice
-gauge theory, and a research program called **null-edge theory** whose thesis is:
+**PhysicsSM** is a Lean 4 formalization of the mathematical structures behind the
+Standard Model: octonions and division algebras, exceptional Lie theory (E8),
+Clifford/spinor algebra, lattice gauge theory, and a research program we call
+**null-edge theory**. The Lean kernel is our source of truth: a claim counts only
+when a machine-checked proof of a faithful statement exists. That discipline is a
+strength, but it also means we spend our formal effort on things we already
+understand. **The frontier is understanding, and that is where you come in.**
 
-> **Mass is a relational obstruction to null (lightlike) transport**, appearing in
-> three taxonomically-distinct modes, each formalized as a finite, kernel-checked
-> theorem:
-> - **T (Turn)** — matter/chirality mass (Higgs–Yukawa; the chirality-flipping vertex),
-> - **C (Closure)** — gauge mass (Yang–Mills mass gap / confinement scale),
-> - **A (Aperture)** — composite/kinematic mass (invariant mass of several null momenta).
-
-A running program has, over the last ~day, built a broad corpus of ~40 finite
-kernel-checked modules across all these lanes (see §4). The program has now hit its
-**genuinely hard frontier**, which is what this brief is about (§5).
-
-**The Lean kernel is the source of truth.** A result counts only when: (1) the Lean
-statement faithfully represents the intended mathematics, (2) the proof is accepted
-by the kernel, (3) it builds under the pinned toolchain, (4) provenance is recorded,
-(5) convention choices are documented.
+You should treat the kernel-checked results below (§5) as *hard, trustworthy data
+points* — finite facts we are certain of — and reason about what they *mean* and
+what they're *missing*.
 
 ---
 
-## 2. The bar: honest claim discipline (read this twice)
+## 2. THE GOAL — a model that explains all mass from null edges
 
-This program has a hard-won discipline. Every headline theorem is **axiom-guarded**:
-a build-time `#guard_msgs (whitespace := lax) in #print axioms <thm>` block fails the
-build if the theorem's transitive axiom footprint ever drifts from
-`[propext, Classical.choice, Quot.sound]` (a leaked `sorry`, an introduced
-`native_decide` = `Lean.ofReduceBool`/`Lean.trustCompiler`, or a new `axiom`).
+This is the thing to keep your eyes on. Everything else is scaffolding.
 
-**Forbidden in trusted code:** `axiom`, `opaque`, `unsafe`, `admit`, `sorry`,
-`native_decide`. (`native_decide` is fine in draft/experimental code but expands the
-trusted base, so it is never in a trusted result.) A documented `sorry` in a clearly
-draft/handoff context is acceptable *only* as an honest failure marker.
+**The thesis:** *mass is a relational obstruction to null (lightlike) transport.* A
+lone lightlike excitation carries no mass; mass appears when something obstructs the
+free null propagation — when the excitation is forced to **turn**, to **close a
+loop**, or to combine with others into a bound **aperture**. Concretely we have
+argued mass shows up in three taxonomically-distinct modes:
 
-During this very run, **four over-claims were caught and corrected** — this is the
-standard you must meet:
-- A `clustering` field written `∀ m, ∃ C, …` was **vacuous** (the constant may depend
-  on `m`, so it asserts no decay); the real lemma has `C` uniform in `m`. Fixed.
-- A "finite Nielsen–Ninomiya no-go" module (`DoublingTurnPrice`) actually proved only
-  local per-vertex spin algebra (`no_chiral_and_doubler_removal` reduced to
-  `γ_μ ≠ 0`); it did **not** establish the topological no-go or necessity. Downgraded.
-- A follow-up "fix" (`FiniteNielsenNinomiya`) telescoped a branch of a *nowhere-zero*
-  symbol — trivially 0, chiral symmetry unused — so it too was **not** the no-go.
-  Downgraded to "topological skeleton."
-- A second "fix" (`signedCountOfD`) had the *same* hollowness (telescoping a
-  single-valued branch, hypotheses unused) — **rejected outright** (not integrated),
-  and the genuine target was re-derived from scratch (see the win below).
+- **T (Turn)** — matter/chirality mass. The Higgs–Yukawa chirality-flipping vertex:
+  a massless Weyl mode acquires mass by being made to reverse handedness (to "turn").
+- **C (Closure)** — gauge mass. The Yang–Mills mass gap / confinement scale: the cost
+  of closing a null loop against a nonabelian gauge connection.
+- **A (Aperture)** — composite/kinematic mass. The invariant mass of several null
+  momenta: individually massless constituents bound into a massive whole.
 
-The genuine version (`FiniteNNZeroCount`) then **landed**: the signed count of *sign
-crossings* of a real periodic dispersion is 0 (up-crossings balance down-crossings on
-the boundaryless torus), tied *exactly* to the overlap-operator index. That is the
-bar: separate "the topological skeleton" from "the genuine theorem," and prove the
-genuine one — or prove precisely why it is hard/false.
+**What "delivering the model" would mean** (this is the target you should be sharpening
+and steering us toward — help us make it precise and reachable):
 
-**When you deliver: state, for every theorem, exactly what is PROVED vs what is
-MODELED (an explicit hypothesis, not derived) vs what remains OPEN. Report the axiom
-footprint. Never smuggle the hard part in as a hypothesis and call the theorem
-"done."**
+> A *single* mathematical object — a null-edge structure (a graph/complex of lightlike
+> edges with the soldering and transport data on it) — from which **all three mass
+> modes arise as different obstructions of the same transport operator**, such that the
+> Standard Model's mass content (a chiral fermion getting a Yukawa mass, a gauge sector
+> getting a confinement/mass gap, a composite getting a binding mass) is *derived*, not
+> assembled by hand from three separate constructions.
 
----
+Right now we have the three modes as **separate, distinct** finite theorems, and we
+have even proved (honestly) that our current models have **no common carrier**
+(`MassCommonCarrier.no_common_carrier_via_turn`) — i.e., no single one of our existing
+constructions carries all four masses non-artificially. **That negative is the central
+tension of the whole program**, and resolving it is the heart of the goal:
 
-## 3. Environment and how work is checked
+- Either the three modes are genuinely irreducible and "the origin of mass" is
+  *inherently* a taxonomy of three obstructions on a null-edge structure (in which case
+  we need the crisp theorem that says *these three and no others*, with the taxonomy
+  proven exhaustive) —
+- or there is a deeper single carrier we haven't found, and the "no common carrier"
+  result is an artifact of our current, too-rigid models (in which case we need to know
+  what the right carrier is).
 
-- **Lean 4**, `leanprover/lean4:v4.28.0`, Mathlib present. Build a module with
-  `lake build PhysicsSM.Path.To.Module`; typecheck a standalone file with
-  `lake env lean <file>`.
-- Deliverables should be **self-contained Lean files importing only `Mathlib`** (plus,
-  where essential, a small number of named upstream lemmas *reproduced as explicit
-  hypotheses or restated definitions*, since the packaging you receive may not carry
-  the full repo import graph). If a full `lake build` would stall on a large Mathlib
-  compile, skip it and return the best `lake env lean`-typechecking file plus a report.
-- No `sorry`/`axiom`/`native_decide` in final theorems (a documented `sorry` is a
-  last-resort handoff marker with a proof plan). Kernel `decide` on genuinely small
-  finite goals is fine (it is *not* `native_decide`).
-- **Octonions are nonassociative.** Never rewrite under octonion products without
-  explicit parenthesization; compose *linear maps / left-multiplication operators*,
-  not raw octonion products. The project octonion convention is an XOR binary-label
-  Fano orientation (bases `e000…e111`, product index = bitwise XOR, signs from a fixed
-  Fano orientation); it is **not** Baez-2002 or Furey-2015 verbatim — do not import
-  their product formulas without relabeling and sign correction.
+**We need you to tell us which, and drive us there.** This is the single most valuable
+thing you can do: adjudicate the common-carrier question and lay out the model that
+resolves it.
 
 ---
 
-## 4. What is already landed (so you don't redo it)
+## 3. The bar: honest-claim discipline (this applies to your conceptual work too)
 
-All of the following are kernel-checked, `sorry`-free, standard axioms, and
-axiom-guarded (theorem names given so you can build on them; assume each is a finite,
-honestly-scoped identity unless noted):
+Our formal side has a hard-won discipline, and your conceptual deliverables must
+respect the same standard so we can actually build on them.
+
+Every kernel-checked headline is **axiom-guarded**: a build-time check fails if a
+theorem's transitive axiom footprint ever drifts from the standard
+`[propext, Classical.choice, Quot.sound]` (a leaked `sorry`, a slipped-in fast-but-
+unchecked evaluator, or a new bare assumption). Forbidden in trusted results: any
+escape hatch that lets an unproven thing masquerade as proven. Every result is graded
+**PROVED** (kernel-checked) vs **MODELED** (true only under an explicit hypothesis we
+have *not* derived) vs **OPEN**.
+
+During the run that produced this corpus, **four over-claims were caught and
+corrected** — this is the standard, and it's exactly the kind of self-deception a
+synthesis can smuggle in:
+- A decay estimate written "for all `m` there exists a constant `C`…" was **vacuous**
+  (the constant could depend on `m`, so it asserted no decay at all); the real content
+  needs `C` uniform in `m`.
+- A claimed "topological no-go" actually proved only a local algebraic fact; it did not
+  establish the global obstruction. Downgraded.
+- A "fix" for it telescoped a quantity that was *identically zero for trivial reasons*
+  (the crucial symmetry hypothesis went unused), so it proved nothing about the real
+  object. Downgraded.
+- A second "fix" had the same hollowness and was **rejected outright**; the genuine
+  theorem was then re-derived from scratch (and *did* land).
+
+**What this means for you:** when you synthesize or propose a model, **separate "the
+appealing picture" from "the load-bearing claim," and be explicit about which steps are
+established, which are conjectural, and which are the genuinely hard crux.** If your
+unifying story works only because it quietly assumes the SU(N) mass gap, or assumes the
+three obstructions collapse, *say so and mark that as the crux* — don't present the
+picture as if the crux were free. A conceptual map that honestly flags its own hard
+step is exactly what we want; a seamless-looking synthesis that hides one is the thing
+we most need to avoid.
+
+---
+
+## 4. Environment (context only — you are not asked to run it)
+
+The formalization is Lean 4 + Mathlib, toolchain pinned. When we quote a result as
+kernel-checked, it typechecks under that pin with the standard axiom footprint. One
+convention you should know because it affects the physics reasoning: **octonions are
+nonassociative**, so anything octonionic is done by composing *linear maps / left-
+multiplication operators*, never by manipulating raw octonion products; and our
+octonion basis is an XOR binary-label Fano convention (`e000…e111`), *not* the
+Baez-2002 or Furey-2015 labeling — so if you cite their formulas, flag that a
+relabeling/sign-correction stands between their equations and ours.
+
+You do not need to produce or run any code. Reason in mathematics and physics; we
+handle Lean.
+
+---
+
+## 5. What is already landed (the material to synthesize)
+
+These are kernel-checked, honestly-scoped finite facts. Treat them as the pieces on
+the table. Theorem names are given so you can refer to them precisely; you do not need
+to read their proofs.
 
 **A — aperture/kinematic (essentially complete):**
 - `NBodyAperture.nbody_aperture_massless_iff_collinear` — for any `N` future-null
-  momenta, `minkowskiSq (∑ pᵢ) = 0 ↔` a single null direction (the iff, both
-  directions).
-- `ApertureEntropy` / `ApertureObserverState` — the null-direction "spread" entropy;
-  `H = 0 ↔` single direction; max-entropy = rest frame; massive ⟹ `0 < H < log N`.
+  momenta, the sum is again null **iff** all point in a single null direction (both
+  directions of the iff).
+- `ApertureEntropy` / `ApertureObserverState` — a null-direction "spread" entropy;
+  zero iff a single direction; massive ⟹ strictly positive spread.
 - `BindingMassQuantitative.compositeMassSq_eq_sin_half` — `M² = 4E² sin²(θ/2)` exactly
-  for two equal-energy null momenta.
+  for two equal-energy null momenta (mass is literally the *angle* between null edges).
 - `MassFromMasslessNEU5.compositeMass_pos` — a composite of individually *massless*
-  constituents has strictly positive mass (mass-from-relation).
-- `PluckerSpinorBridge` — `det P = m²` tied to the Weyl-spinor wedge.
+  constituents has strictly positive mass. Mass from relation, in one line.
 
 **T — turn/matter (genuine 1D no-go landed; higher-d open):**
-- `FiniteNNZeroCount.signedZeroCount_eq_zero` — **the genuine 1D Nielsen–Ninomiya
-  no-go**: `∑_p (sgn f(p+1) − sgn f p) = 0` for every real periodic dispersion
-  `f : ZMod N → ℚ/ℝ` (signed zero-crossing count vanishes; up/down crossings balance).
-  `single_crossing_impossible` (odd crossing count is impossible).
-- `FiniteNNZeroCount2D` — the honest 2D version (Weyl nodes in ± pairs).
-- `GinspargWilson` / `OverlapDirac` — the finite matrix-grade Ginsparg–Wilson relation
-  `γ₅D + Dγ₅ = Dγ₅D` and the Neuberger overlap operator satisfying it; `γ̂₅ = γ₅(1−D)`
-  is an involution (exact deformed chiral symmetry — the "price of the turn").
-- `OverlapIndex` (index `= ½Tr(γ₅D)`, integer) and `NNIndexExact.signedZeroCount_eq_two_indexTr_diff`
-  — **the crossing count equals the overlap index** (the two T-leg strands tied).
-- `YukawaTurnAmplitude.turnAmplitude_eq_zero_iff` — n-flavor "no turn ⟺ no mass."
+- `FiniteNNZeroCount.signedZeroCount_eq_zero` — the genuine 1D Nielsen–Ninomiya no-go:
+  the signed count of sign-crossings of a real periodic dispersion vanishes (up- and
+  down-crossings balance on the boundaryless torus). This is the honest "you cannot
+  have a single chiral mode on a lattice" — a lone crossing is impossible.
+- `GinspargWilson` / `OverlapDirac` — the finite Ginsparg–Wilson relation and the
+  Neuberger overlap operator satisfying it; the deformed chiral symmetry is an exact
+  involution — the *price of the turn* made precise.
+- `NNIndexExact.signedZeroCount_eq_two_indexTr_diff` — **the crossing count equals the
+  overlap index.** The two T-leg strands (zeros of the dispersion ↔ topological index)
+  are tied together.
+- `YukawaTurnAmplitude.turnAmplitude_eq_zero_iff` — n-flavor "no turn ⟺ no mass": the
+  chirality-flipping vertex vanishes iff the mass matrix is zero.
 
-**C — closure/gauge (Z2 complete; nonabelian is the crown-jewel open problem, §5.1):**
-- `WilsonSlabConnected.wilsonSlabConnected_reflectionPositive` — a connected
-  cut-bearing Z2 Wilson slab is reflection-positive (arbitrary finite gauge group).
-- `SlabGapAssembly.slabGapAssembly` — the assembled **Z2** chain as one theorem:
-  RP-block PSD → Hermitian/self-adjoint OS transfer → strictly-positive spectral gap
-  `= −log(tanh β)` → vacuum separation → **exponential clustering** `‖conn(m)‖ ≤ C·exp(−m·gap)`
-  (uniform in `m`), reached via OS/GNS reconstruction — **KP-crux-free**.
-- `OSHamiltonianGap`, `FiniteAbelianOSGap`, `TwoLevelOSGap` — the OS Hamiltonian gap
-  `H = −log T`, generalized to any k-level Hermitian-PSD transfer block.
+**C — closure/gauge (Z2 complete; nonabelian is the crown-jewel gap, §6.1):**
+- `SlabGapAssembly.slabGapAssembly` — the complete **Z2** gauge chain as one theorem:
+  reflection positivity → self-adjoint transfer operator → strictly-positive spectral
+  gap `= −log(tanh β)` → **exponential clustering**, uniform in separation. A full
+  finite confinement-gap story, for the abelian Z2 group, cluster-expansion-free.
 - `CharacterExpansion.charCoeff_abs_le_dim_mul_trivCoeff` — the correct **nonabelian**
-  strong-coupling character dominance `‖c_R(β)‖ ≤ dim(R)·c_triv(β)` (SU(2)/SU(3)-applicable).
-- `TYAreaLaw` (Z2 Tomboulis–Yaffe area law), `TYAreaLawSUN.TwistSystem` (an abstract
-  SU(N) center-twist system with `tyBaseSUN ∈ [0,1)`, positive string tension, area
-  law; `tyBaseSUN_two_landed` reconciles it with the Z2 base), `TYTwistSystemZ2`
-  (a concrete `TwistSystem 2` with the twist-monotonicity `Z_le` *derived*),
-  `Q8StringTension` (a first genuinely **nonabelian** (quaternion group Q8, dim-2
-  irrep) concrete string tension `σ₂ ≥ 0`, area law), `SU2TwoLevelGap`,
-  `StrongCouplingAreaLaw.wilson_area_law` (`‖⟨W_R⟩‖ ≤ exp(−σ_R·A)` from the dominance).
-- `GapAsymptotics` — the Z2 gap `g(β) = −log(tanh β)`: `→ +∞` as `β→0⁺`
-  (confinement), `→ 0` as `β→∞` (weak coupling).
-- **Modeled, not derived** (the honest gap in lane C): the reflection-positivity
-  "raw bound" `hW : |W| ≤ 2·q^r` is an *explicit hypothesis* in the TY theorems, and
-  the SU(N) partition functions `Z, Z^{[k]}` are *modeled* (one-plaquette Boltzmann
-  weights / abstract twist systems), **not** built from an actual SU(N) Haar measure.
+  strong-coupling character dominance (applicable to SU(2)/SU(3)).
+- `TYAreaLawSUN.TwistSystem` — an abstract SU(N) center-twist system (Tomboulis–Yaffe
+  route) with positive string tension and an area law; `Q8StringTension` — a first
+  genuinely **nonabelian** (quaternion group Q8) concrete string tension.
+- `GapAsymptotics` — the Z2 gap `→ +∞` at strong coupling (confinement), `→ 0` at weak
+  coupling. The right qualitative shape.
+- **MODELED, not derived** (the honest gap): the reflection-positivity "raw bound" is
+  an *explicit hypothesis* in the nonabelian theorems, and the SU(N) partition functions
+  are *modeled* (abstract twist weights), **not** built from an actual SU(N) Haar
+  measure. Closing this is §6.1.
 
-**X — taxonomy / unification:**
-- `MassTaxonomySeparation.massTaxonomy_functionals_pairwise_separated` (the 4 masses
-  are pairwise distinct), `MassTaxonomyNonDegeneracy.massTaxonomy_nondegenerate`
-  (each independently realizable), `MassCommonCarrier.no_common_carrier_via_turn`
-  (the honest negative: no single non-artificial model carries all four).
-- `GrandMassCapstoneUnconditional.grandMassCapstoneUnconditional` — the fully
-  **unconditional** all-lane capstone conjoining one graded representative per lane
-  (A/T/C/X/B/V). Scrupulously labeled: a *bundle of distinct finite obstructions*,
-  **NOT** the SU(N) YM gap, NOT continuum, NOT a physical-mass derivation.
+**X — taxonomy / unification (the crux lives here):**
+- `MassTaxonomySeparation` — the four mass functionals are pairwise **distinct**.
+- `MassTaxonomyNonDegeneracy.massTaxonomy_nondegenerate` — each is independently
+  realizable.
+- `MassCommonCarrier.no_common_carrier_via_turn` — **the honest negative: no single
+  one of our current models carries all four masses non-artificially.** (This is the
+  tension you must adjudicate — §2.)
+- `GrandMassCapstoneUnconditional.grandMassCapstoneUnconditional` — the unconditional
+  all-lane capstone, scrupulously labeled a *bundle of distinct finite obstructions*,
+  **not** a single unified model. We know it's a bundle, not the goal.
 
 **B — division algebra → SM:**
-- `su3Submonoid = SU(3)`, color triplet = fundamental, charge co-location verdict;
-  anomaly cancellation (`grav/cubic/su2u1/su3u1_anomaly_cancels`, Witten even).
-- `OctonionMassCoupling` / `OctonionMassCouplingFaithful` — a coupling *beyond* charge
-  co-location: a split mass matrix does **not** commute with the su(3) *ladder*
-  generators (`[T_root, M] = (mᵢ−mⱼ)·T_root`), proved *faithful* to the octonionic
-  color action on the triplet.
-- **Open, with documented `sorry`s:** the Spin(10) pure-spinor stabilizer program
-  (`Spin10Stabilizer*`): the Transitivity claim was proved **false** (a verified
-  negative); the Isomorphism claim is **false as stated** (complex GSpin(10,ℂ),
-  real-dim 24, cannot be `MulEquiv` to the compact `S(U(2)×U(3))`, real-dim 12); the
-  Selector claim is underspecified.
+- `su3Submonoid = SU(3)`, color triplet = fundamental, charge co-location; SM anomaly
+  cancellation formalized.
+- `OctonionMassCoupling` — a coupling *beyond* co-location: a split mass matrix does
+  not commute with the su(3) ladder generators, proven faithful to the octonionic color
+  action on the triplet.
+- **Open, with honest negatives:** the Spin(10) pure-spinor stabilizer program — the
+  Transitivity claim was proven **false**; the Isomorphism claim is **false as stated**
+  (a complex form, real-dim 24, cannot be isomorphic to the compact `S(U(2)×U(3))`,
+  real-dim 12); the Selector is underspecified.
 
-**V — trust:** the entire **E8-240 root system is de-nativized** (kernel-checked, no
-`native_decide`): `E8Root240NoNative.E8RootSet_card = 240` (structural count
-`112 = 4·C(8,2)` integer roots `±eᵢ±eⱼ` + `128 = 2⁷` half-integer even-parity roots)
-and `E8Root240Complete.E8RootSet_eq_lattice_norm2` (`E8RootSet` is *exactly* the norm-2
-E8-lattice vectors). Four kernel-checked **verified negatives** exist across the run.
+**V — trust:** the entire **E8-240 root system is kernel-checked** by structural
+counting (`112` integer roots `±eᵢ±eⱼ` + `128` half-integer even-parity roots), and
+proven to be *exactly* the norm-2 E8-lattice vectors.
 
 ---
 
-## 5. The hard problems — throw yourself at these
+## 6. The conceptual frontier — where we most need you
 
-Ranked by importance. For each: the precise target, what is proved/modeled/open, and
-what a solution looks like. **Pick the ones you can move.**
+For each item: what we have, and the **conceptual/strategic question we need you to
+attack** (not a request for code). Ranked by value to the goal.
 
-### 5.1 THE CROWN JEWEL — a nonabelian lattice Yang–Mills mass gap at fixed spacing
+### 6.1 THE COMMON-CARRIER VERDICT (the goal itself — do this first)
 
-This is the "single gate" of the whole program and is adjacent to the Clay problem
-(at *fixed lattice spacing*, no continuum limit required).
+We have three distinct mass obstructions (T, C, A) and a proof that **no single current
+model carries all of them** (`MassCommonCarrier`). Section 2 lays out the dichotomy:
+irreducible taxonomy vs undiscovered common carrier. **We need your verdict and your
+construction or your no-go.**
 
-**What exists:** the complete Z2 chain (`SlabGapAssembly`), the abstract SU(N)
-twist-system scaffold (`TYAreaLawSUN`), a concrete Q8 string tension
-(`Q8StringTension`), and the nonabelian character dominance
-(`CharacterExpansion.charCoeff_abs_le_dim_mul_trivCoeff`).
+Concretely, help us answer:
+- Is there a single null-edge transport operator `D` (schematically `D = Σ_a c(α^a) ∇_{ℓ_a}`
+  — a soldering `c` of a covector `α^a` composed with a null-direction difference operator
+  `∇_{ℓ_a}`) whose **different failure modes** reproduce T, C, and A? I.e., does "chirality
+  obstruction of `D`" give the Yukawa turn, "holonomy/closure obstruction of `D`" give the
+  gauge gap, and "multi-edge kinematic obstruction of `D`" give the aperture mass — all
+  from *one* operator? If yes, sketch it precisely enough that we can formalize the claim
+  "these three are the three obstruction classes of one operator."
+- If no, what is the sharpest **exhaustiveness theorem** we should be proving — "mass on a
+  finite null-edge structure is *necessarily* one of exactly these three obstruction
+  types" — and what is the classification argument (an index/cohomology decomposition of
+  the transport operator into turn/closure/aperture sectors)?
+- Is our `no_common_carrier` result *deep* (a real theorem about null-edge structures) or
+  *shallow* (an artifact of over-rigid modeling that a better carrier dissolves)? This is
+  the single highest-value judgment call in the brief.
 
-**What is MODELED (the gap):** the reflection-positivity raw bound `hW : |W| ≤ 2·q^r`
-is an explicit hypothesis; the SU(N) partition functions `Z^{[k]}` are modeled, not
-built from an actual Haar measure over `SU(N)^{edges}`.
+This is not a Lean task. It is a physics/mathematics *design and adjudication* task, and
+it is the goal. Everything below is in service of it.
 
-**Target (choose the most tractable rung you can genuinely close):**
-1. Construct a **genuine finite SU(2) lattice gauge measure** — Haar measure on
-   `SU(2)^{E}` for a small explicit finite lattice / connected Wilson slab, with the
-   Wilson plaquette action — in Lean, and **prove reflection positivity** of the
-   associated transfer operator (generalize `WilsonSlabConnected` from finite abstract
-   `G` with modeled weights to genuine SU(2) Haar). Mathlib has Haar measure on compact
-   groups; SU(2) ≅ unit quaternions / `Sp(1)`.
-2. From that measure, **derive the Tomboulis–Yaffe raw bound** `hW` (the RP + iterated
-   Cauchy–Schwarz reflection inequality) — the input currently assumed — so that
-   `TYAreaLawSUN`'s area law becomes *unconditional* for genuine SU(2), and prove a
-   **strictly positive string tension / mass gap at strong coupling** for the
-   nonabelian group. The relevant physics: Kanazawa (arXiv:0808.3442) generalizes the
-   Tomboulis–Yaffe inequality to SU(N); the bound's "constant" is the finite 't Hooft
-   vortex free energy `Z^{[k]}/Z`, so nothing needs a memorized numeric constant.
-3. Failing a full construction, **prove the abstract SU(N) twist-monotonicity `Z_le`
-   (`Z^{[k]} ≤ Z^{[0]}`) from reflection positivity** (a Griffiths-type / RP
-   inequality) rather than assuming it — this discharges one of the two modeled
-   hypotheses for the general nonabelian case (currently derived only for Z2, in
-   `TYTwistSystemZ2.Z2Twist_le`).
+### 6.2 THE NONABELIAN GAUGE GAP — is it a gate, or a distraction?
 
-A kernel-checked, honestly-labeled **finite-spacing nonabelian positive mass gap**
-(even SU(2), even small lattice) with the RP bound *derived from a real measure* would
-be the headline result of the entire program.
+We treat a nonabelian (SU(2)/SU(N)) lattice Yang–Mills mass gap at *fixed spacing* as
+"the single gate" of lane C. We have the full Z2 story and an abstract SU(N) scaffold
+whose one missing input is a reflection-positivity bound currently taken as a hypothesis
+(and partition functions that are modeled, not built from Haar measure).
 
-### 5.2 THE PARKED ANALYTIC CRUX — the Kotecký–Preiss / Fernández–Procacci bound
+**Conceptual questions for you:**
+- **Strategically: is this the right hill?** Does the *goal* (§2) actually require a
+  finite-spacing nonabelian gap, or is the C-mode's essential content already captured by
+  the Z2 chain + the nonabelian character dominance we have, with the full SU(N) gap being
+  a Clay-adjacent side-quest that doesn't move the *unification*? Tell us if we are
+  over-investing here.
+- **Route selection:** two attacks are open — (i) Tomboulis–Yaffe / Kanazawa vortex free
+  energy (`Z^{[k]}/Z`, arXiv:0808.3442), and (ii) a convergent Kotecký–Preiss / Fernández–
+  Procacci cluster expansion (see §6.3). Which is more likely to yield an *honest,
+  finite* result, and is there a third route (e.g. a direct reflection-positivity /
+  Griffiths inequality argument for twist-monotonicity `Z^{[k]} ≤ Z^{[0]}`) we're missing?
+- **The conceptual crux:** the physics claim that a nonabelian center-twist raises the
+  free energy (giving positive string tension) — what is the cleanest *finite* argument
+  for it, and does it have a null-edge interpretation that ties it back to §2's closure
+  mode? A gauge gap that we can *interpret* as a closure obstruction is worth far more to
+  us than one we merely prove.
 
-An alternative route to §5.1 goes through a convergent **cluster/polymer expansion**,
-which is gated by one hard inequality that has been attempted 4+ times and parked:
+### 6.3 THE POLYMER/CLUSTER-EXPANSION CRUX (analytic; conceptual reframing wanted)
 
-- File: `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` (3 remaining `sorry`s).
-- Crux lemma name: **`pairSum_le_expBound`** — the labeled-tree exponential bound
-  underlying Kotecký–Preiss / Fernández–Procacci cluster-expansion convergence:
-  roughly, for an abstract polymer system with a pair-incompatibility structure and a
-  Kotecký–Preiss weight condition, the sum over connected clusters (equivalently the
-  sum over labeled trees on the polymer set, via the tree-graph inequality) is bounded
-  by an exponential of the single-polymer weight. Supporting scaffold already built:
-  `treeRootChildBlock`, `treeRootChildBlock_card_pos`, `exists_canonical_root`,
-  `rhs_forest_expand`, `factorial_mul_prod_factorial_le`, and a subtree-reindexing
-  layer.
-- **Known trap:** a naive "root-overcounted reduction" is FALSE at order `x³` (recorded).
-- **The false shape:** `kp_convergence_bound_false` is a *disproof* of the bare
-  (mis-stated) bound; the correct statement threads a self-incompatibility hypothesis
-  (`hself`) everywhere. Do **not** re-prove the false shape.
+Our alternative route to §6.2 is gated by one hard combinatorial inequality — the
+labeled-tree exponential bound underlying Kotecký–Preiss / Fernández–Procacci cluster-
+expansion convergence (the sum over connected clusters is bounded by an exponential of
+the single-polymer weight). We have attempted it 4+ times; a naive root-overcounting
+reduction is provably false at third order.
 
-**Target:** prove `pairSum_le_expBound` (the Fernández–Procacci inductive route on
-polymer count via the species/exponential-formula decomposition, or a direct injective
-encoding of clusters into forests, is the recommended attack). This unlocks
-`kp_convergence_bound_of_selfIncompatible` → `kp_tail_bound` → a convergent
-strong-coupling expansion → exponential clustering → the gap. This is a genuinely hard
-combinatorial-analytic inequality; a complete Lean proof, or a fully explicit
-formalization-ready reduction to named Mathlib lemmas, is what we need.
+**What we want from you (conceptual, not a Lean proof):** the *right* form of the
+argument — the Fernández–Procacci "new bounds from an old approach" (math-ph/0605041)
+inductive scheme, stated as a clean sequence of lemmas with the one genuinely hard step
+isolated; or a different, more formalizable convergence criterion (e.g. Dobrushin-type)
+that reaches the same clustering conclusion with a combinatorics we can actually
+mechanize. Alert us if there's a modern treatment (a survey, a cleaner reformulation)
+that sidesteps the tree-graph inequality entirely.
 
-Reference: Fernández & Procacci, "Cluster expansion for abstract polymer models. New
-bounds from an old approach" (math-ph/0605041); Kotecký–Preiss (1986).
+### 6.4 HIGHER-DIMENSIONAL TURN NO-GO (conceptual generalization)
 
-### 5.3 THE GENUINE HIGHER-DIMENSIONAL NIELSEN–NINOMIYA (topological)
+We have the genuine **1D** Nielsen–Ninomiya no-go (crossing count = overlap index). The
+honest **general-d / 4D** statement — signed sum of the chiralities (local degrees) of the
+Dirac symbol's zeros over the discrete Brillouin torus vanishes, a discrete Poincaré–Hopf
+/ index theorem — is open.
 
-We have the genuine **1D** no-go (`FiniteNNZeroCount`) and its exact tie to the overlap
-index (`NNIndexExact`), plus an honest 2D *skeleton* (`FiniteNN2D`) and a genuine 2D
-crossing/winding version (`FiniteNNZeroCount2D`). The honest **general d / 4D** result
-is open.
+**Conceptual questions:** what is the cleanest *finite, combinatorial* formulation of
+discrete Poincaré–Hopf on `(ZMod N)^d` that makes the degree-sum-is-zero statement true by
+a boundaryless-manifold argument we can mechanize? And — the connection we care about — how
+does this d-dimensional index tie back to the **turn mode** of §2: is the statement "you
+cannot have a single chiral fermion" *literally the same obstruction* as "a null edge
+cannot turn without a partner," in the sense of §6.1's classification?
 
-**Target:** a kernel-checked finite theorem that for a chirally-symmetric lattice Dirac
-symbol on the discrete Brillouin torus `(ZMod N)^d` (`{γ₅, D(k)} = 0`, isolated simple
-zeros), the **signed sum of the chiralities (local degrees) of the zeros vanishes** —
-a discrete Poincaré–Hopf / index-theorem statement (sum of local degrees over a closed
-boundaryless manifold = 0). The chirality of a zero is the local degree of the map
-`k ↦ D(k)` near it. The genuine content (as the 1D win shows) must count *actual zeros*
-and use *chiral symmetry*, not telescope a nowhere-zero branch. Tie it, if possible, to
-the overlap index à la `NNIndexExact` (index = signed zero count) in `d` dimensions.
+### 6.5 OCTONION → STANDARD MODEL: the dynamical step (synthesis + literature)
 
-### 5.4 OCTONION → STANDARD MODEL: a genuine dynamical step
+Lane B has charge co-location and a structural coupling, but no genuine piece of SM
+*dynamics* derived from the complex octonions `ℂ⊗𝕆`. Two open threads: (i) getting the
+one-generation fermion mass/mixing structure as an eigenvalue/intertwiner problem for the
+associative left-action algebra of complex-octonion left-multiplications (the safe object
+is a *module / minimal left ideal for the left-action algebra*, never "the minimal left
+ideal of the octonions"); (ii) repairing the Spin(10) stabilizer program (the Isomorphism
+is false as stated — complex vs compact real form).
 
-Lane B currently has charge **co-location** plus a structural **coupling**
-(`OctonionMassCoupling`). The deep open problem: derive a genuine piece of SM *dynamics*
-(not just where charges sit) from the complex octonions `ℂ⊗𝕆`.
+**What we want:** the conceptual bridge from `ℂ⊗𝕆` structure to a **mass** in the null-
+edge sense of §2 — does the octonionic color/charge structure supply the *turn* data (the
+Yukawa vertex) for lane T, connecting B and T into one story? And a literature sweep: whose
+division-algebra Standard Model work (Furey, Dubois-Violette, Todorov, Gording–Schmidt-May,
+Boyle, …) already contains a mass mechanism we should be adopting rather than reinventing —
+and where does the honest Spin(10) real-form obstruction actually leave the program?
 
-**Targets (any one is valuable):**
-- The one-generation fermion mass/mixing structure as an intertwiner/eigenvalue problem
-  for the associative left-action algebra generated by complex-octonion left
-  multiplications (compose linear maps; do **not** use raw octonion products — the safe
-  object is a *module / minimal left ideal for the left-action algebra*, never "the
-  minimal left ideal of the complex octonions").
-- Repair the Spin(10) stabilizer program: the Isomorphism target is false as stated
-  (complex vs compact real form) — either prove the correct compact-form statement
-  (impose a Hermitian structure, take the stabilizer inside compact Spin(10), build the
-  explicit block iso to `S(U(2)×U(3))`), or prove the compact-vs-complex
-  dimension/torsion obstruction as a clean kernel-checked negative. The Selector's
-  backward direction (conjugate ⇒ stabilizer of a pair) needs two equivariance lemmas.
+### 6.6 SYNTHESIS & LITERATURE (standing asks — always in scope)
 
-### 5.5 SHARPER, SELF-CONTAINED CHALLENGES (good warm-ups; still real)
-
-- **Discharge `hW` on the Z2 slab by iterated reflection.** Currently `TYAreaLaw`'s
-  `|W| ≤ 2·q^r` is a hypothesis even for Z2. Derive it from the *landed* connected-slab
-  reflection positivity (`WilsonSlabConnected.wilsonSlabConnected_reflectionPositive`)
-  by the explicit iterated reflection / Cauchy–Schwarz doubling on the Z2 slab. This
-  removes the last modeled input for Z2 and builds the reusable machinery for §5.1.
-- **Uniqueness/nondegeneracy of the OS spectral gap** beyond the two-state sector:
-  extend `OSHamiltonianGap`/`FiniteAbelianOSGap` to prove the *vacuum is the unique
-  ground state and the gap is the true spectral gap* of the full (not 2×2-reduced)
-  connected-slab OS transfer operator.
-- **E8 → SM branching beyond dimension-counting.** `E8DimensionBudget` has the integer
-  dimension identities (e.g. `248 = 78 + 8 + 81 + 81` for E6×SU(3)). Formalize an
-  actual **branching rule** (a rep-theoretic decomposition, e.g. `E8 ↓ E6×SU(3)`) at
-  the level of weights/root-system combinatorics, kernel-checked.
+Independent of the specific problems above:
+- **The unifying principle.** If you had to state, in one theorem-shaped sentence, "what
+  null-edge theory says mass *is*," what is it — and does our corpus support it or fall
+  short of it? Give us the sentence and the gap.
+- **New connections.** Where does this program touch established mathematics we're not
+  citing — spectral/index theory (is the whole thing an index theorem in disguise?),
+  Connes-style noncommutative geometry and the spectral action (our `D = Σ c(α)∇` smells
+  like a Dirac operator — is the mass literally `Tr f(D)` content?), topological/K-theory
+  invariants, causal set theory, twistor theory (null edges ↔ twistors?), the
+  amplituhedron/positive geometry (aperture mass as a positive-geometry volume?), or
+  categorical/operadic structure on the edge complex?
+- **Literature we're missing.** Point us at specific papers/theorems/people. We have a
+  literature-mining pipeline; what should we feed it? Flag both "prior art that already did
+  this" (so we don't reinvent) and "adjacent tools we should import."
+- **The reframes that would change our strategy.** Tell us if we're carving the problem
+  wrong — wrong invariant, wrong lane boundaries, a fourth mode we've missed, or a mode
+  that isn't real.
 
 ---
 
-## 6. What to deliver
+## 7. What to deliver
 
-For each challenge you engage:
-1. A **self-contained Lean 4 file** (`import Mathlib` + minimal restated context) that
-   `lake env lean`-typechecks with **no `sorry`/`axiom`/`native_decide`** in the final
-   theorems (a documented `sorry` only as an explicit, planned handoff), OR
-2. a **rigorous, formalization-ready proof strategy**: the exact statement to prove,
-   the decomposition into named lemmas, the specific Mathlib API to use, and the one or
-   two genuinely hard steps isolated, OR
-3. a **kernel-checked no-go / counterexample** if the stated target is false or
-   underspecified (these are first-class results here).
+Prose and mathematics, not code. For whatever you engage, give us:
 
-Always report: what is **proved** vs **modeled (hypotheses)** vs **open**; the exact
-theorem names; and the **axiom footprint** (aim for `[propext, Classical.choice,
-Quot.sound]` or fewer). Match the honest-labels discipline of §2 — do not let a
-docstring claim more than the kernel checks.
+1. **A verdict or a construction**, stated sharply enough that we can turn it into a Lean
+   statement ourselves — the exact claim, its hypotheses, and (crucially) **which step is
+   the load-bearing crux**. The most valuable single deliverable is §6.1: your adjudication
+   of the common-carrier question and the model (or no-go) that resolves it.
+2. **The synthesis** — what unifies the corpus, or the honest argument that it doesn't, at
+   the §3 standard (separate the picture from the load-bearing claim; flag every
+   conjectural step).
+3. **New connections and literature** — specific bridges to established math/physics and
+   specific papers/people, with enough detail that we can act on them.
+4. **Strategic direction** — where to invest, what to abandon, what the shortest honest
+   path to the goal (§2) is, and what the *next three moves* should be.
 
-**Highest expected value:** §5.1 rung 2 or 3 (derive the RP bound / twist-monotonicity
-for genuine SU(2)/SU(N)), or §5.2 (`pairSum_le_expBound`). Either would move the single
-gate the whole program hinges on. Go as far as you can.
+For every claim, grade it **established / conjectural / the-hard-crux**, the same way we
+grade PROVED / MODELED / OPEN. Don't let a compelling narrative outrun what's actually
+supported — and where the crux is genuinely hard, isolating it cleanly *is* the
+contribution. Aim everything at the goal: **a single model that explains all mass as an
+obstruction to null-edge transport.** Drive us there.
