@@ -86,6 +86,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.TransferGapDefinition
 import PhysicsSM.Draft.NullEdge.GateYM.CyclicityPrereq
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
 import PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormLine
+import PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormTwistBridge
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorGeneral
 import PhysicsSM.Draft.NullEdge.GateYM.FluxSectorZ2
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteGapAssembly
@@ -360,6 +361,15 @@ plaquette holonomies, hence all observables factoring through the plaquette
 field, are invariant under those shifts and preserve the abstract electric
 sectors. This is non-vacuous electric-sector bookkeeping; it does not yet
 construct the Q2 transfer matrix);
+`CenterOneFormLine` (finite one-form center-shadow line layer: ordered
+noncontractible x/y line holonomies using `List.prod`, charge/neutrality under
+center shifts, and opposite-shift pair triviality);
+`CenterOneFormTwistBridge` (finite configuration-to-`TwistSystem` bridge
+contract: twisted partition sums over a finite configuration space and the
+constructor to `TYAreaLawSUN.TwistSystem` once nonnegativity, positivity, and
+twist monotonicity are supplied. It does not derive Haar-measure
+reflection-positivity, a continuum one-form symmetry, or an `H^2(K,Z(G))`
+background);
 `FluxSectorGeneral` (T3/Q3 abstract finite sector-support API: sector label
 maps, sector support predicates, diagonal sector projections, label-preserving
 finite transfer kernels, pointwise projection behavior,

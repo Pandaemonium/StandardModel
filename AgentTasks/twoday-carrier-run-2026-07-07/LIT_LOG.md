@@ -260,3 +260,34 @@ KREIN-POS threads seeded from Fable's extension guidance).
   ACTION: ingest a Pontryagin/Krein-Langer reference (Bognar "Indefinite Inner Product
   Spaces", or Azizov-Iokhvidov) before the KREIN-POS brick; likely [NO-FULLTEXT], cite by
   reference. This is the finite-dim linear-algebra fact that upgrades the positivity crux.
+
+## Round 10 (Codex, cycle 10) - C-1FORM partition-bridge grounding
+
+Searches:
+
+- `neo4j_paper_search.py --query "one-form center symmetry background H^2 Z(G)
+  lattice gauge center twist Wilson loop" --k 6`
+- `neo4j_paper_search.py --chunks --query "center twist partition function
+  Z^[k] one-form symmetry background 't Hooft flux lattice gauge" --k 6`
+- `neo4j_doc_search.py --query "CenterFluxSector TwistSystem configuration
+  partition bridge one-form center symmetry" --k 8`
+- `neo4j_paper_search.py --query "Generalized Global Symmetries one-form center
+  symmetry Wilson loop confinement" --k 6`
+
+Graph delta: none.
+
+Findings:
+
+- Paper-level search confirms **AXAWAGGB** (GKSW, arXiv:1412.5148) remains the
+  relevant modern framing reference for one-form center symmetry, but chunk
+  search was noisy for the exact finite partition-bridge lemma. This supports
+  using GKSW only as terminology/framing in the current Lean layer.
+- The exact TY/Kanazawa notation remains the already-cited `TYAreaLawSUN`
+  lineage: **N7SIEMAC** for the rigorous Tomboulis-Yaffe RP-inequality lineage
+  and **K9FIBTZC** for the SU(N) center-twist partition-ratio notation.
+- Repo doc search pointed back to the corrected Aristotle C-1FORM strategy:
+  the honest missing object is the configuration-to-partition bridge, not a new
+  value-level `TwistSystem` constructor. This round therefore feeds the new
+  `CenterOneFormTwistBridge.lean` contract: finite sums over configurations
+  produce a `TwistSystem` once nonnegativity, periodic positivity, and `Z_le`
+  are supplied; deriving `Z_le` from a real measure remains OPEN.

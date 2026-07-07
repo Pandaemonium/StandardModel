@@ -910,3 +910,24 @@ positivity (both in progress).
 - Rails: leave the intentionally false/refuted KP statements and their
   documented draft handoff markers alone; the correct replacements already live
   elsewhere in the file.
+
+## [LEAN Codex C-1FORM partition bridge 00:58]
+- Landed the first finite configuration-to-`TwistSystem` bridge contract in
+  `PhysicsSM/Draft/NullEdge/GateYM/CenterOneFormTwistBridge.lean`.
+- New API:
+  `twistedPartition`, `twistedPartition_nonneg`,
+  `twistedPartition_shiftConfig_reindex`,
+  `FiniteCenterTwistBridge`, `FiniteCenterTwistBridge.Z`,
+  `FiniteCenterTwistBridge.toTwistSystem`, and read-off lemmas
+  `toTwistSystem_Z`, `toTwistSystem_Z_zero`, `toTwistSystem_ratio`,
+  `toTwistSystem_tyBaseSUN_eq`.
+- Claim scope: finite bridge contract only. `Z_le` / twist monotonicity remains
+  an explicit field of `FiniteCenterTwistBridge`; this does not derive an
+  `SU(N)` Haar measure, reflection-positivity monotonicity, continuum one-form
+  symmetry, Ward identity, anomaly, spontaneous breaking, confinement theorem,
+  or an `H^2(K,Z(G))` background object.
+- Guarded the bridge in `PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean` and
+  imported it from `PhysicsSM/Draft/NullEdge/GateYM.lean`.
+- Literature round 10 recorded: GKSW **AXAWAGGB** is framing provenance only;
+  TY/Kanazawa keys **N7SIEMAC** and **K9FIBTZC** remain the twist-ratio notation
+  provenance. No new graph ingest.

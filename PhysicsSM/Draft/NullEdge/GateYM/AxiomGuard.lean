@@ -6,6 +6,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2Sector
 import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
 import PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormLine
+import PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormTwistBridge
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 
 /-!
@@ -144,6 +145,16 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_yFluxShift_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_yFluxShift_pair
+
+/-! ## Finite center-twist partition bridge -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_shiftConfig_reindex' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_shiftConfig_reindex
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.FiniteCenterTwistBridge.toTwistSystem_tyBaseSUN_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.FiniteCenterTwistBridge.toTwistSystem_tyBaseSUN_eq
 
 /-! ## Verified NEGATIVE: the naive bare-KP bound is false -/
 

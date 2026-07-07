@@ -175,8 +175,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   on a two-point flip system, guarded. Aristotle audit found no blocking issue
   and one guard gap; Codex added guards for
   `xLineHol_xFluxShift_pair` and `yLineHol_yFluxShift_pair`. Still OPEN: the
-  deferred configuration-to-`TwistSystem` partition bridge and any honest
-  `H^2(K,Z(G))` background object.
+  full derived configuration-to-`TwistSystem` partition bridge and any honest
+  `H^2(K,Z(G))` background object. First bridge contract landed:
+  `CenterOneFormTwistBridge.lean` defines finite twisted partition sums and a
+  `FiniteCenterTwistBridge.toTwistSystem` constructor with `Z_le` still an
+  explicit hypothesis, not a derived RP theorem.
 ### PBW-EXH - exhaustiveness as a PBW/rewriting theorem [Claude-led, Fable-gated]
 - **Done:** W2c/graded-exhaustiveness restated as a finite normal-form theorem:
   the free carrier algebra on `{gamma_e, nabla_e, phi}`, modulo the stated
