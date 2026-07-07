@@ -146,26 +146,25 @@ to the current date.
 Live queue snapshot after the post-Q08/Q10 refill (verify with
 `aristotle list` before acting):
 
-- **Still running / poll first:** the seven fresh refill jobs
+- **Still running / poll first:** the current running jobs
   `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707`,
   `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`,
-  `ne-q12-c8-realstructure-g2-compatibility-audit-20260707`,
-  `ne-rg-schur-krein-gamma-stability-proof-20260707`,
-  `ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707`, and
-  `ne-manuscript-p1-claimgrade-consistency-audit-20260707`; plus
-  `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`;
+  `ne-rg-schur-krein-gamma-stability-proof-20260707`, and
+  `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`.
+- **Harvest-first before more refill:** `ne-manuscript-p1-claimgrade-consistency-audit-20260707`;
+  `ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707`;
+  `ne-q12-c8-realstructure-g2-compatibility-audit-20260707`;
   `ne-q11-rc0-det-cocycle-strategy-20260707`.
-- **Harvest-first before more refill:** `ne-q09-nullscreen-additivity-entropy-kill-audit-20260707`;
-  `ne-q06-retarded-wilson-symbol-determinant-proof-20260707`.
 - **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
-  Fock quotient bridge, Q11/Q04 C3 Majorana turn census, Q08 `dGamma`
-  globalization and integration audit, Q08 L4 checkerboard determinant, Q09
-  BW-cut locality scaffold, Q10 Sylvester-inertia bridge, Q10 multi-time
-  embedding, Q11 B-L dictionary, Q12 GammaPrime quotient, Q12 Furey bridge
-  audit, Q12 charge resolution, Q12 triality bridge, Q12 PSA-1, Q12 G2 parity,
-  Q13 red-team audit, Q10 Lorentzian transitivity, Q10 split witness, Q10
-  scalar-amplitude census, Q09 modular no-go, Q08 decomposable `dGamma` square,
-  and Q06 carrier-GW positive/negative cases.
+  Fock quotient bridge, Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol
+  determinant/Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q08
+  `dGamma` globalization and integration audit, Q08 L4 checkerboard
+  determinant, Q09 BW-cut locality scaffold, Q10 Sylvester-inertia bridge, Q10
+  multi-time embedding, Q11 B-L dictionary, Q12 GammaPrime quotient, Q12 Furey
+  bridge audit, Q12 charge resolution, Q12 triality bridge, Q12 PSA-1, Q12 G2
+  parity, Q13 red-team audit, Q10 Lorentzian transitivity, Q10 split witness,
+  Q10 scalar-amplitude census, Q09 modular no-go, Q08 decomposable `dGamma`
+  square, and Q06 carrier-GW positive/negative cases.
 - **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707`
   is superseded by the local compiler-trust-free landing.
 
@@ -208,10 +207,10 @@ to refill after harvesting returned jobs and committing the local integration:
 | Q04 strand-fock | `ne-q04-strandfock-supertrace-anomaly-proof-20260707` | proof | Exterior supertrace/anomaly identity and finite-difference corollary on the pentad fiber. |
 | Q04 octonion bridge | `ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707` | audit/strategy | Convention bridge between `Lambda(C^3)` and the XOR-Fano octonion color seed. |
 | Q05 triality | `ne-q05-triality-monodromy-equivariant-index-strategy-20260707` | strategy | Equivariant index, cover multiplicativity, triangle holonomy toy model, and no-four-orbit route. |
-| Q06 retarded transfer | `ne-q06-retarded-wilson-dispersion-identity-proof-20260707` | proof | Exact "retardedness is the Wilson term" dispersion identity after the palindromic/nonabelian boundary landing. |
+| Q06 carrier derivation | `ne-q06-symbol-to-carrier-generator-conjugation-audit-20260707` | audit/strategy | Bridge the landed `2 x 2` symbol identity toward the decoration-level generator conjugation axiom and path-sum/transfer-power layer, or isolate the missing hypotheses. |
 | Q07 Koide/T-solder | `ne-q07-tsolder-kappa-tetrahedral-probe-audit-20260707` | audit/strategy | Decide whether the tetrahedral corner probe supports, refines, or kills the kappa mechanism. |
 | Q08 checkerboard Fock | `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707` | strategy/audit | Generalize beyond the landed L=4 disjoint-support case toward a nonvacuous LGV crossing-cancellation theorem or isolate exact blockers. |
-| Q09 horizon/screen | `ne-q09-nullscreen-additivity-entropy-kill-audit-20260707` | audit | Decide which entropy/horizon upgrades are finite theorem targets and which remain MEMO/OPEN. |
+| Q09 horizon/screen | `ne-q09-finite-reehschlieder-screenarea-completion-proof-20260707` | proof/strategy | Finish A9.1 degeneracy/invariance and the finite Reeh-Schlieder well-posedness gate before any entropy upgrade. |
 | Q10 scalar amplitude | `ne-q10-spin-weyl-scalar-amplitude-classification-strategy-20260707` | strategy | Route from finite census substitutes to the real Spin/Weyl scalar-amplitude classification. |
 | Q10 inertia indices | `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707` | proof/strategy | Close the gap from the landed Sylvester equivalence hypotheses to an intrinsic `p >= 2`, `q >= 2` inertia-index statement. |
 | Q11 Majorana/order | `ne-q11-majorana-ordercondition-finite-identities-proof-20260707` | proof/strategy | C3 Majorana identity and order-condition scalar identities after the RC0/B-L jobs return. |
@@ -230,9 +229,12 @@ adversarial audits for recently landed or high-risk claims.
 
 1. **Q09 horizon/screen area.** Turn the area-as-relational-aperture memo into
    finite algebra: screen polarization of the `2 x 2` determinant, null-screen
-   wedge-count formulas, positivity, and honest boundaries.  Park entropy,
-   Jacobson, BW-cut, and ANEC claims as MEMO/strategy until their finite
-   hypotheses are stated and checked.
+   wedge-count formulas, positivity, and honest boundaries.  The Q09 audit says
+   the L7 BW-cut rubric is proved but not yet fed a witness, A9.1 still lacks
+   degeneracy iff and simultaneous `SL(2,C)` invariance, and a cross-complex
+   universal entropy coefficient is false-shape.  Park entropy, Jacobson,
+   BW-cut, and ANEC claims as MEMO/strategy until their finite hypotheses are
+   stated and checked.
 2. **Q10 signature/dimension selection.** Treat signature as the order-side
    theorem rail and dimension as a reconstruction rail.  Kernelize the finite
    ladder first: definite-no-null, the `Z^(2,2)` frustrated-triple obstruction,

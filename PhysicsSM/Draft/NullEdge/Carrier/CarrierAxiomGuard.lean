@@ -17,6 +17,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
 import PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing
 import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
+import PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
@@ -61,6 +62,9 @@ guards are edited independently to avoid collision.
 * Checkerboard two-particle determinant (`CheckerboardTwoParticle`): the finite
   L=4, N=2 exterior-amplitude determinant identity and straight-through
   rational-polynomial witness.
+* Wilson-symbol identity (`GWWilsonSymbol`): the exact `2 x 2` momentum-symbol
+  determinant/unitarity, Hermitian Wilson scalar, and edge-reversal GW
+  conjugation identities for the retarded/palindromic checkerboard symbol.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -327,6 +331,20 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.transfer_mul_inv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.transfer_mul_inv
+
+/-! ## Wilson symbol identity: hidden Wilson scalar for the 2 x 2 transfer symbol -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol.transferSymbol_det' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol.transferSymbol_det
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol.wilson_term' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol.wilson_term
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol.gw_symbol' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol.gw_symbol
 
 /-! ## Carrier-level GW conjecture: positive word-order theorems -/
 

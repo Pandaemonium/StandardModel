@@ -452,19 +452,26 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   abelian escape for arbitrary ordering. Codex then added the explicit
   compiler-trust-free witness `nonabelian_oneSided_counterexample`, a `2 x 2`
   rational matrix counterexample to the one-sided nonabelian ordering.
+  Aristotle project `ed700b2a` has now landed
+  `PhysicsSM/Draft/NullEdge/Carrier/GWWilsonSymbol.lean`: the exact `2 x 2`
+  transfer-symbol determinant, unitarity, trace/Hermitian-part identity,
+  Wilson scalar identity, scalar nonnegativity/zone-edge value, and
+  edge-reversal GW-symbol conjugation.  `CarrierAxiomGuard` pins
+  `transferSymbol_det`, `wilson_term`, and `gw_symbol`.
 - **Status:** RESOLVED boundary. The literal carrier conjecture "any retarded
   transfer is inverted" is false in the nonabelian one-sided case. The live Lean
   theorem now proves both the palindromic/abelian positive cases and the
   explicit one-sided nonabelian kill witness. Q13 red-team `7f273e71` sharpened
   the wording: exact GW is a symmetric/midpoint-palindromic convention theorem,
   not a theorem that one-sided retardation by itself supplies `G T G = T^{-1}`.
-  The redundant follow-up job `7a12dbbd` was canceled after the local landing.
-- **Next:** R1 (retarded/Wilson dispersion identity in the corrected
-  palindromic/midpoint boundary), R4 telescoping, R0 path-sum = transfer power,
-  and the decoration-level derivation of the generator conjugation axiom from
-  `U_reverse = U^{-1}`.  Aristotle project `ed700b2a`
-  (`ne-q06-retarded-wilson-symbol-determinant-proof-20260707`) is now IDLE and
-  should be harvested before opening another Q06 symbol job.
+  The Wilson-symbol landing is exact finite momentum algebra for the displayed
+  retarded/palindromic symbol, not a general carrier-dynamics derivation.  The
+  redundant follow-up job `7a12dbbd` was canceled after the local landing.
+- **Next:** R4 telescoping, R0 path-sum = transfer power, and the
+  decoration-level derivation of the generator conjugation axiom from
+  `U_reverse = U^{-1}`.  Any follow-up Q06 Aristotle job should target the
+  symbol-to-carrier derivation or path-sum layer, not resubmit the landed R1
+  symbol identity.
 ### EQUIPARTITION-GATE - the first physical number [Claude; post-Q07; GATE M-KOIDE]
 - **Done:** F2 equipartition sum rule (tr M^2 = (2/V)(tr M)^2 under turn-power
   = hop-power; Q = 2/V; pointwise companion with Cauchy-Schwarz bound) +
@@ -567,20 +574,26 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `BWCutExact`, `locDefect` / `MatrixLocal`, `locDefect_smul`,
   `matrixLocal_smul_iff`, `bwCut_localTransfer`, and
   `bwCutLocalityPass_iff` give finite pass/kill scoring algebra for the torus
-  BW-cut locality test.
-- **Status:** PROVED finite kinematic identity only. This supports Q09's
-  "area is relational like mass" statement, and the modular no-go kills a finite
-  half-sided modular-generator promotion. The BW-cut scoring algebra is PROVED,
-  but BW-cut itself remains MEMO/OPEN. A9.4 does not forbid the BW-cut test
-  because the cut boost generator is indefinite, while A9.4 kills positive
-  semidefinite null-translation generators. Entropy, Jacobson, ANEC, universal
-  coefficient, and continuum/horizon interpretations remain MEMO or OPEN until
-  their finite hypotheses are stated and checked. Aristotle project `d32e8150`
-  (`ne-q09-nullscreen-additivity-entropy-kill-audit-20260707`) is now IDLE and
-  should be harvested next. Next Q09 gates: run the
-  doubler volume-law scan before locality, then the nonlocal `logDelta` leakage
-  scan, with Reeh-Schlieder well-posedness and Krein/Ward compatibility as
-  pre-checks.
+  BW-cut locality test. Aristotle audit `d32e8150` has now been harvested as a
+  report-only claim-grade audit: `ModularNoGo` and `TorusBWCutLocality` were
+  reproduced in the lightweight pack; `ScreenArea` was not reproducible in that
+  pack because `Core` was omitted, so its grade rests on the local full-repo
+  build, which Codex reran successfully during integration.
+- **Status:** PROVED finite kinematic identity only, with audit boundaries now
+  explicit.  A9.1 has (i)-(iii) and the positivity half of (iv); the
+  degeneracy-iff clause and simultaneous `SL(2,C)` invariance remain OPEN.  The
+  BW-cut scoring algebra is PROVED, but no concrete L7 torus witness has been
+  fed into the rubric, so the test has not run.  A9.4 does not forbid the
+  BW-cut test because the cut boost generator is indefinite, while A9.4 kills
+  positive semidefinite null-translation generators. Entropy, Jacobson, ANEC,
+  universal coefficient, and continuum/horizon interpretations remain MEMO or
+  OPEN until their finite hypotheses are stated and checked; a cross-complex
+  universal `1/4` coefficient is already false-shape by the species problem.
+- **Next:** finish A9.1 degeneracy and invariance, land the finite
+  Reeh-Schlieder well-posedness gate, then run the doubler volume-law scan and a
+  concrete L7 BW-cut locality witness before any entropy headline.  L4
+  Klein/Schmidt bookkeeping is a good finite theorem target, but only becomes
+  physically load-bearing after L7 has a witness.
 
 ### DIM-SIG-SELECTION - Q10 stable order and dimension reconstruction [Codex solo; new Q10 lane]
 - **Done:** Q10-L1/L2/L4/L5 finite obstructions landed in
@@ -769,9 +782,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   inertia-index bridge (`bcf263f0`), Q09 entropy/horizon kill audit
   (`d32e8150`), Q12 C8/G2 real-structure audit (`cdba6caa`), RG-Schur stability
   (`9af1d5fb`), Q04 octonion/Fock bridge audit (`dbe3850c`), and P1
-  claim-grade audit (`2170a1f9`). The returned `5bdce729` and `e3f3ae61`
-  harvests are now integrated. Current harvest-first inventory: `d32e8150`
-  and `ed700b2a`.
+  claim-grade audit (`2170a1f9`). The returned `5bdce729`, `e3f3ae61`,
+  `d32e8150`, and `ed700b2a` harvests are now integrated or recorded. Current
+  poll shows `26fa682c`, `bcf263f0`, `9af1d5fb`, and `ec1ad7d5` still running;
+  harvest-first inventory is now `2170a1f9`, `dbe3850c`, `cdba6caa`, and
+  `f962cbe7`.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

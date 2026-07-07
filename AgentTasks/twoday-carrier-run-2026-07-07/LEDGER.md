@@ -3017,3 +3017,40 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q06 Wilson-symbol proof landed and Q09 nullscreen audit recorded
+
+- Harvested Aristotle project `ed700b2a`
+  (`ne-q06-retarded-wilson-symbol-determinant-proof-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/Carrier/GWWilsonSymbol.lean` and guard-pinned
+  `transferSymbol_det`, `wilson_term`, and `gw_symbol` in
+  `CarrierAxiomGuard`.
+- Proved exact finite `2 x 2` momentum-symbol algebra: determinant/unitarity
+  under `c^2 + s^2 = 1`, trace and Hermitian-part identities, Wilson scalar
+  identity, scalar nonnegativity and zone-edge value, and edge-reversal
+  GW-symbol conjugation.
+- Claim boundary for Q06: PROVED finite symbol algebra for the displayed
+  retarded/palindromic checkerboard symbol only.  This is not a general
+  carrier-dynamics derivation, not a proof that arbitrary one-sided retardation
+  gives `G T G = T^{-1}`, and not a path-sum or continuum statement.
+- Harvested Aristotle project `d32e8150`
+  (`ne-q09-nullscreen-additivity-entropy-kill-audit-20260707`) as a report-only
+  Q09 audit.  Recorded the audit boundaries in `THREAD_BOARD.md`,
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and `GOAL_PROMPT_CODEX.md`: A9.1 has
+  (i)-(iii) plus positivity only; degeneracy iff and simultaneous `SL(2,C)`
+  invariance remain open; the L7 BW-cut rubric is proved but no witness has
+  been tested; entropy/Jacobson/ANEC/continuum horizon claims remain MEMO/OPEN;
+  a cross-complex universal entropy coefficient is false-shape.
+- Queue poll after this harvest: still running `26fa682c`, `bcf263f0`,
+  `9af1d5fb`, and `ec1ad7d5`; next harvest-first items are `2170a1f9`,
+  `dbe3850c`, `cdba6caa`, and `f962cbe7`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/GWWilsonSymbol.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.ScreenArea`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.ModularNoGo`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.TorusBWCutLocality`;
+  `git diff --check`;
+  `pre-commit run --all-files`.

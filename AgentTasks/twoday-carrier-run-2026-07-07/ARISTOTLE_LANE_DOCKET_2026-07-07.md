@@ -269,3 +269,35 @@ Queue poll after these integrations: eight StandardModel lanes were still
 `2170a1f9`, `ec1ad7d5`, `f962cbe7`).  `d32e8150` Q09 nullscreen entropy audit
 and `ed700b2a` Q06 retarded/Wilson symbol determinant job were `IDLE` and are
 the next harvest-first items before any further refill.
+
+## Harvest from Q06 Wilson symbol / Q09 nullscreen audit
+
+- `ed700b2a`
+  (`ne-q06-retarded-wilson-symbol-determinant-proof-20260707`) returned
+  `GWWilsonSymbol.lean`, now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/GWWilsonSymbol.lean` and guard-pinned in
+  `CarrierAxiomGuard`.  It proves the exact `2 x 2` momentum-symbol
+  determinant/unitarity, trace and Hermitian-part identity, Wilson scalar
+  identity, scalar nonnegativity and zone-edge value, and edge-reversal
+  GW-symbol conjugation.  The landing is exact finite symbol algebra for the
+  displayed retarded/palindromic checkerboard symbol; it is not a general
+  carrier-dynamics derivation.
+- `d32e8150`
+  (`ne-q09-nullscreen-additivity-entropy-kill-audit-20260707`) returned a
+  report-only claim-grade audit.  It confirms the finite modular no-go and
+  BW-cut scoring rubric as reproduced in the lightweight pack, while marking
+  `ScreenArea` reproduction in that pack as blocked by the missing `Core`
+  import.  Codex reran the full-repo `ScreenArea` build successfully during
+  integration.  The honest Q09 boundary is: A9.1 (i)-(iii) plus positivity are
+  the finite screen-area nucleus; degeneracy iff and simultaneous `SL(2,C)`
+  invariance remain open; the L7 rubric is proved but no concrete locality
+  witness has been tested; BW-cut, SJ area law, ANEC, Jacobson, continuum
+  horizon thermodynamics, and a universal cross-complex entropy coefficient
+  remain MEMO/OPEN.
+
+Queue poll after this harvest showed four StandardModel lanes still `RUNNING`:
+`26fa682c` Q08 LGV generalization, `bcf263f0` Q10 inertia-index bridge,
+`9af1d5fb` RG-Schur, and `ec1ad7d5` Q01 positivity.  The next harvest-first
+items are `2170a1f9` manuscript claim-grade audit, `dbe3850c` Q04
+octonion/Fock bridge audit, `cdba6caa` Q12 C8 compatibility audit, and
+`f962cbe7` Q11 RC0 determinant cocycle strategy.
