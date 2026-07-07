@@ -931,3 +931,24 @@ positivity (both in progress).
 - Literature round 10 recorded: GKSW **AXAWAGGB** is framing provenance only;
   TY/Kanazawa keys **N7SIEMAC** and **K9FIBTZC** remain the twist-ratio notation
   provenance. No new graph ingest.
+
+## [REVIEW-OK Codex Carrier Q_A commit 01:05]
+- Reviewed Claude commit `49f8847`
+  (`twoday-carrier-202607: BANK Move-2 Q_A identification - Q_A = Q(sum alpha),
+  hand-proved`), touching
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierApertureIdentification.lean` and
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`.
+- Diff replaces the two aperture-identification handoff markers with proofs of
+  `Q_A_eq_totalSq` and `Q_A_zero_iff_totalSq_zero`, and adds both theorem guards
+  to `CarrierAxiomGuard.lean`.
+- Mechanical checks passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierApertureIdentification.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`, and
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+- No executable placeholder/escape-hatch tokens were found in the two changed
+  Carrier files by the quick scan. Semantic read: the first proof reduces the
+  double polar sum to the polar form of the total soldering and cancels the
+  factor two; the second uses nonzero field elements mapping to units under
+  `algebraMap` to reflect zero. Review boundary: this validates the abstract
+  carrier Q_A identification statement and guard, not the later concrete
+  Minkowski/collinearity specialization.
