@@ -13,6 +13,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierPontryaginWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
 import PhysicsSM.Draft.NullEdge.Carrier.KugoOjima
 import PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization
+import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
@@ -44,6 +45,8 @@ guards are edited independently to avoid collision.
 * Fock second-quantization finite shadow (`FockSecondQuantization`): a two-mode
   diagonal occupation-basis witness for
   `dGamma(D)^2 = dGamma(D^2) + 2 dGamma_2(Lambda^2 D)`.
+* Fock second-quantization general decomposable identity (`DGammaSquare`): the
+  finite Leibniz-combinatorics identity on decomposable exterior-algebra states.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -244,6 +247,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization.dGammaPairDiag_both_occupied' depends on axioms: [propext] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization.dGammaPairDiag_both_occupied
+
+/-! ## Finite Fock interaction identity: general decomposable dGamma square -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.double_sum_split' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.double_sum_split
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGamma_sq_identity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGamma_sq_identity
 
 /-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
     (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard

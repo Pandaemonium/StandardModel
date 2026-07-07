@@ -2513,3 +2513,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/G2Parity.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.G2Parity`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q08-L3 general dGamma square identity landed
+- Harvested Aristotle project `7067efa0`
+  (`ne-q08-dgamma-square-identity-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`.
+- Proved the finite decomposable exterior-algebra identity
+  `dGamma_sq_identity`: on a tuple `v : Fin k -> V`, the Leibniz action of
+  `dGamma(D)^2` equals `dGamma(D^2)` plus `2` times the two-body slot update
+  `dGammaTwo(D)`. The theorem is driven by the general combinatorial core
+  `double_sum_split`. This supersedes the earlier two-mode diagonal witness,
+  which remains useful as a sanity check.
+- Added both `double_sum_split` and `dGamma_sq_identity` to
+  `CarrierAxiomGuard.lean` with the standard footprint.
+- Claim boundary: PROVED decomposable-state finite identity only. The global
+  derivation on all of `ExteriorAlgebra` and the flagship exterior quotient
+  theorem `Fock(V')/rad = Fock(V'/N)` remain open.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.

@@ -471,17 +471,18 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   form is nondegenerate; L-Q8-2 `(ker A)^perp_J = range A#` is the workhorse
   theorem `orthoB_ker_eq_range`; `descent_unitary` covers the representative
   T-U1 preservation chain. CarrierAxiomGuard now pins `finite_kugo_ojima` and
-  `descent_unitary`. L-Q8-3 has a first concrete kernel witness in
-  `PhysicsSM/Draft/NullEdge/Carrier/FockSecondQuantization.lean`:
-  `dGammaDiag_square_two_mode` proves the two-mode diagonal occupation-basis
-  identity `dGamma(D)^2 = dGamma(D^2) + 2 d0 d1` on the doubly occupied state
-  (guard footprint `[propext]`).
-- **Next:** Generalize L-Q8-3 from the two-mode diagonal witness to the
-  exterior-algebra identity dGamma(D)^2 = dGamma(D^2) +
-  2 dGamma_2(Lambda^2 D) (pair kernel = the WEDGE of the carrier -
-  Layer-K resonance; NJL = turn^2, Thirring = transport^2, no new constants);
-  L-Q8-4 the L=4 two-particle checkerboard determinant identity in Q[m];
-  L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N), Fock(V')/rad = Fock(V'/N).
+  `descent_unitary`. L-Q8-3 is now landed in
+  `PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`:
+  `dGamma_sq_identity` proves the finite decomposable exterior-algebra identity
+  `dGamma(D)^2 = dGamma(D^2) + 2 dGammaTwo(D)`, with
+  `double_sum_split` as the combinatorial core. The earlier
+  `FockSecondQuantization.lean` two-mode diagonal theorem remains as a sanity
+  check.
+- **Next:** L-Q8-4 the L=4 two-particle checkerboard determinant identity in
+  Q[m]; L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),
+  Fock(V')/rad = Fock(V'/N) using the Aristotle `4929366f` strategy:
+  first build `pairingDual` as a perfect pairing / linear equivalence, then the
+  quotient factorization. Positivity of the physical quotient stays Q1/OPEN.
   Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
   Pauli); kill = a Sym-quantized checkerboard with positive invariant
   quotient. Positivity of the Kugo-Ojima quotient itself remains OPEN.
