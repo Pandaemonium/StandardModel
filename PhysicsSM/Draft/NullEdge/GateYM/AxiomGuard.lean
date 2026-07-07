@@ -87,7 +87,7 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2Sector.fluxGapWitness_gap_pos
 
-/-! ## Generic electric-sector non-vacuity witness -/
+/-! ## Electric-sector non-vacuity witnesses -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.ShiftSystem.one_inElectricSector_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
@@ -136,6 +136,14 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_xFluxShift' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_xFluxShift
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xLineHol_xFluxShift_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xLineHol_xFluxShift_pair
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_yFluxShift_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_yFluxShift_pair
 
 /-! ## Verified NEGATIVE: the naive bare-KP bound is false -/
 

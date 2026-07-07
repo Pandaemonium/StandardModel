@@ -2145,6 +2145,116 @@ theorem
     onePlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice_of_abs_tanh_le
       beta 1 onePlaquetteZ2_alphaOne_nonneg hsmall'
 
+/-! ## A two-plaquette finite fixture -/
+
+/-- The two-plaquette line adjacency: the two Boolean plaquettes touch each
+other and no plaquette touches itself. -/
+def twoPlaquetteAdj : PlaquetteAdjacency Bool where
+  touch p q := p ≠ q
+  touch_symm := by
+    intro p q hpq
+    cases p <;> cases q <;> simp at hpq ⊢
+
+/-- Decidability for the two-plaquette adjacency. -/
+instance twoPlaquetteAdj_decidableRel : DecidableRel twoPlaquetteAdj.touch := by
+  intro p q
+  change Decidable (p ≠ q)
+  infer_instance
+
+/-- For this finite fixture every nonempty support is accepted as connected.
+
+This keeps the current rung focused on the KP adapter and the two-site degree
+bound; a later volume-uniform line fixture should replace this with an honest
+graph-connectedness predicate. -/
+def twoPlaquetteConnectedSupport (_ : Finset Bool) : Prop := True
+
+/-- The unique Z2 nontrivial label in the two-plaquette fixture, represented
+by `true`. -/
+def twoPlaquetteNontrivialLabel (r : Bool) : Prop := r = true
+
+/-- Absolute value of the unique nontrivial Z2 coefficient, written on the
+concrete Boolean label type for the two-plaquette fixture. -/
+def twoPlaquetteZ2GammaAbs (beta : Real) (_ : Bool) : Real :=
+  |Real.tanh beta|
+
+/-- Nonnegativity of the two-plaquette Z2 coefficient. -/
+theorem twoPlaquetteZ2GammaAbs_nonneg (beta : Real) (r : Bool) :
+    0 <= twoPlaquetteZ2GammaAbs beta r := by
+  simp [twoPlaquetteZ2GammaAbs]
+
+/-- Every singleton closed touch-neighborhood in the two-plaquette line has
+cardinality at most two. This is the finite degree input for the adapter
+theorem below. -/
+theorem twoPlaquette_closedTouchNeighborhood_card_le_two (p : Bool) :
+    (closedTouchNeighborhood twoPlaquetteAdj ({p} : Finset Bool)).card <= 2 := by
+  calc
+    (closedTouchNeighborhood twoPlaquetteAdj ({p} : Finset Bool)).card
+        <= (Finset.univ : Finset Bool).card := by
+          exact Finset.card_le_card (by intro q _hq; simp)
+    _ = 2 := by simp
+
+/-- Conditional two-plaquette Z2 KP fixture through the positive-area slice
+adapter.
+
+The new content compared with the one-plaquette rung is the concrete two-site
+adjacency and degree bound `D = 2`. The positive-area rooted sum bound is still
+an explicit hypothesis; removing or volume-uniformizing it is precisely the
+missing rooted-cluster/area-decay lemma. -/
+theorem twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice
+    (beta alpha : Real) (halpha : 0 <= alpha) (B : Nat -> Real)
+    (hBsum_nonneg : 0 <= (Finset.Icc 1 (Fintype.card Bool)).sum B)
+    (hArea : forall q : Bool,
+      forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card Bool) ->
+        anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha q k <= B k)
+    (hsmall : (2 : Real) * (Finset.Icc 1 (Fintype.card Bool)).sum B <= alpha) :
+    PlaquetteKPBound twoPlaquetteAdj twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha halpha := by
+  exact
+    plaquetteKPBound_of_singletonBound_positiveAreaBounds
+      (P := Bool) (Rlab := Bool) twoPlaquetteAdj
+      twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+      (twoPlaquetteZ2GammaAbs beta) (twoPlaquetteZ2GammaAbs_nonneg beta) alpha halpha
+      2 B hBsum_nonneg
+      (fun p => twoPlaquette_closedTouchNeighborhood_card_le_two p)
+      (fun q k hk => hArea q k hk) hsmall
+
+/-- Conditional two-plaquette Z2 corrected Q6 input pair.
+
+This is still a finite, volume-dependent fixture. The area-slice bound `hArea`
+and smallness hypothesis are intentionally explicit so this theorem cannot be
+misread as a volume-uniform KP convergence or `SU(2)` mass-gap theorem. -/
+theorem twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice
+    (beta alpha : Real) (halpha : 0 <= alpha) (B : Nat -> Real)
+    (hBsum_nonneg : 0 <= (Finset.Icc 1 (Fintype.card Bool)).sum B)
+    (hArea : forall q : Bool,
+      forall k : Nat, k ∈ Finset.Icc 1 (Fintype.card Bool) ->
+        anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha q k <= B k)
+    (hsmall : (2 : Real) * (Finset.Icc 1 (Fintype.card Bool)).sum B <= alpha) :
+    KPCondition
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha halpha)
+        (plaquettePolymerIncompatibleDecidable twoPlaquetteAdj
+          twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+          (twoPlaquetteZ2GammaAbs beta) alpha halpha)
+      /\ (forall X : PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+        twoPlaquetteNontrivialLabel,
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha halpha).incompatible
+          X X) := by
+  constructor
+  · exact
+      kpCondition_of_plaquetteKPBound twoPlaquetteAdj
+        twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+        (twoPlaquetteZ2GammaAbs beta) (twoPlaquetteZ2GammaAbs_nonneg beta) alpha halpha
+        (twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice beta alpha halpha B
+          hBsum_nonneg hArea hsmall)
+  · intro X
+    exact plaquettePolymerSystem_self_incompatible twoPlaquetteAdj
+      twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+      (twoPlaquetteZ2GammaAbs beta) alpha halpha X
+
 /-- At zero coupling, the one-plaquette Z2 scalar smallness condition is
 automatic for every nonnegative `alpha`. -/
 theorem onePlaquetteZ2_smallness_beta_zero

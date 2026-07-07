@@ -173,6 +173,12 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCLeading.leadingClosureFluxCoeff_strictMono
 
+/-! ## OS1 finite polymer-map rungs (not volume-uniform KP) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice
+
 /-! ## Concrete Z2 twist system: Z_le DERIVED (closes a modeled hypothesis) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2.Z2Twist_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/

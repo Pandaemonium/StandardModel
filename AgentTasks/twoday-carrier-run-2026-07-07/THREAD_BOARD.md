@@ -82,7 +82,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   explicit coefficient threshold `|tanh beta| <= exp(-1)`. This is a finite
   rung only; volume-uniform KP convergence and SU(2) remain OPEN. Aristotle
   OS1 task `7a3c2d21` exceeded the 2-hour rule and was canceled; a concise
-  handoff-only continuation was requested in project `5e39556a`.
+  handoff-only continuation in project `5e39556a` completed. Verdict: the
+  one-plaquette theorem is non-vacuous and honestly scoped. Next useful rung is
+  a multi-plaquette finite fixture using
+  `plaquetteKPBound_of_singletonBound_positiveAreaBounds`; volume-uniform KP
+  still needs an area-decay/rooted-cluster bound and remains OPEN. Codex landed
+  the first conditional two-plaquette rung
+  `twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice`: concrete
+  two-site adjacency and degree bound `D = 2`, with the positive-area rooted
+  sum bound and smallness hypothesis explicit.
 
 ### QC - the Q_C identification at leading order [Codex; THE Move-2 crux]
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in
@@ -133,8 +141,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   identity shadow in `NullEdgeSuperDiracKreinCore`:
   `kreinSharp_kreinSharp`, `kreinSharp_mul`,
   `isKreinSelfAdjoint_iff_kreinSharp_eq_self`, and
-  `kreinSharp_mul_self_isKreinSelfAdjoint`. Next: Fable ratifies the exact
-  positive-sector hypothesis before any headline theorem proof spend.
+  `kreinSharp_mul_self_isKreinSelfAdjoint`. Latest Fable guidance keeps this as
+  the top near-term positivity route, but the degenerate-sector rail remains
+  binding. Next: Fable ratifies the exact positive-sector hypothesis before any
+  headline theorem proof spend.
 ### G-TP - teleparallel gravity slot [shared, Fable-gated]
 - **Done:** exact Lean statement for discrete torsion
   `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and an `E`-slot Clifford
@@ -142,7 +152,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   job only after statement ratification.
 - **Status:** OPEN; Fable guidance identifies the `E`-slot as discrete null
   teleparallelism, not a loose gravity analogy. Carrier code remains
-  Claude-owned; Codex may help with strategy/context packs.
+  Claude-owned; Codex may help with strategy/context packs. Latest Fable
+  guidance promotes the near target: define discrete torsion and prove the
+  `E`-slot is its Clifford contraction, with TEGR/positive-energy provenance.
 ### C-1FORM - finite one-form center-symmetry framing [Codex strategy]
 - **Done:** an Aristotle/Fable-ratified Lean statement layer connecting the
   existing `CenterFluxSector` finite center-shift/electric-sector API and the
@@ -160,9 +172,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `ShiftSystem.one_inElectricSector_nonzero` and the x/y shift commutation law
   `xFluxShift_yFluxShift_comm`, both guarded. Codex then landed the minimal
   nontrivial-character witness `ShiftSystem.boolSign_nontrivialElectricSector`
-  on a two-point flip system, guarded. Still OPEN: the deferred configuration-
-  to-`TwistSystem` partition bridge and any honest `H^2(K,Z(G))` background
-  object.
+  on a two-point flip system, guarded. Aristotle audit found no blocking issue
+  and one guard gap; Codex added guards for
+  `xLineHol_xFluxShift_pair` and `yLineHol_yFluxShift_pair`. Still OPEN: the
+  deferred configuration-to-`TwistSystem` partition bridge and any honest
+  `H^2(K,Z(G))` background object.
 ### PBW-EXH - exhaustiveness as a PBW/rewriting theorem [Claude-led, Fable-gated]
 - **Done:** W2c/graded-exhaustiveness restated as a finite normal-form theorem:
   the free carrier algebra on `{gamma_e, nabla_e, phi}`, modulo the stated
