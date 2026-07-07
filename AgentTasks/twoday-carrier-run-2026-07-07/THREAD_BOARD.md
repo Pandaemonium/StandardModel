@@ -492,8 +492,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   check. Aristotle follow-up `97417bb8` is now harvested into the same module:
   `dGammaOp` is a genuine derivation on all of `ExteriorAlgebra R V`, and
   `dGamma_sq_identity_operator` proves that the operator square on a
-  decomposable state agrees with the tuple identity above. The theorem is
-  guard-pinned in `CarrierAxiomGuard`.
+  decomposable state agrees with the tuple identity above. Codex then added
+  the particle-number sanity check `dGammaOp_id_wedge`: the second
+  quantization of the identity acts by scalar `k` on a decomposable
+  `k`-particle wedge. These Q08 theorems are guard-pinned in
+  `CarrierAxiomGuard`.
 - **Next:** L-Q8-4 the L=4 two-particle checkerboard determinant identity in
   Q[m]; L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),
   Fock(V')/rad = Fock(V'/N) using the Aristotle `4929366f` strategy:

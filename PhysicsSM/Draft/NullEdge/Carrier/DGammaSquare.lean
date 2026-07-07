@@ -268,6 +268,23 @@ theorem dGammaOp_wedge_eq_dGamma (K : V →ₗ[R] V) (v : Fin k -> V) :
     dGammaOp K (wedge v) = dGamma K v :=
   dGammaOp_wedge K v
 
+/-- Applying the identity operator in one tuple slot leaves the tuple unchanged. -/
+theorem applyAt_id (i : Fin k) (v : Fin k -> V) :
+    applyAt (LinearMap.id : V →ₗ[R] V) i v = v := by
+  ext j
+  unfold applyAt
+  by_cases h : j = i
+  · subst h
+    simp
+  · simp [Function.update_of_ne h]
+
+/-- The second quantization of the identity acts on a decomposable `k`-particle
+state by multiplication by the particle number `k`. -/
+theorem dGammaOp_id_wedge (v : Fin k -> V) :
+    dGammaOp (LinearMap.id : V →ₗ[R] V) (wedge v) = (k : R) • wedge v := by
+  rw [dGammaOp_wedge]
+  simp [applyAt_id, Algebra.smul_def]
+
 /-- Applying the genuine derivation twice to a decomposable state reproduces
 the tuple double sum. -/
 theorem dGammaOp_sq_wedge (D : V →ₗ[R] V) (v : Fin k -> V) :
@@ -300,5 +317,9 @@ end Globalization
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGamma_sq_identity_operator' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms dGamma_sq_identity_operator
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare.dGammaOp_id_wedge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms dGammaOp_id_wedge
 
 end PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare

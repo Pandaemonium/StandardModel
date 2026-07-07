@@ -2553,6 +2553,22 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `RUNNING`, bringing the active StandardModel lane count back to roughly
   twelve. Full mapping and intended deliverables are recorded in
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+
+## [HB Codex solo 10:00] Q08 dGamma particle-number check landed
+
+- Extended `PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean` with
+  `applyAt_id` and `dGammaOp_id_wedge`: the second quantization of the
+  identity one-body operator acts on a decomposable `k`-particle wedge by the
+  scalar particle number `k`.
+- Added `dGammaOp_id_wedge` to `CarrierAxiomGuard`.
+- Claim boundary: PROVED finite decomposable-state sanity check only. This
+  supports the Q08 one-body derivation API but does not construct the global
+  two-body operator, prove the exterior quotient theorem, or prove positivity.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
 - Note: attempted broader target `lake build PhysicsSM.Draft.NullEdge.Carrier`
   is not a valid module target because there is no
   `PhysicsSM/Draft/NullEdge/Carrier.lean` aggregator; the guard file remains
