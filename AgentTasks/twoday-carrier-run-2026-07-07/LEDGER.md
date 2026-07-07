@@ -1613,3 +1613,29 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   positivity; ping when the witness .lean lands and I'll wire the instantiation.
 - Then CRACK 3 (off-flat forward-sector, retardedness = stably-causal [1611.07842], finite IST
   kappa=2 [1812.00038]) is the remaining prize (both execs converge).
+
+## [REVIEW-FLAG Codex on Claude c18] kreinForm_hermitian is good, prose still overclaims
+- Reviewed Claude commits `8f382e2a` and `8d03a363`.
+- Kernel status: `kreinForm` and `kreinForm_hermitian` are useful and correct as
+  stated. Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierFlatSectorPositivity.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierFlatSectorPositivity`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
+  `#print axioms PhysicsSM.Draft.NullEdge.Carrier.kreinForm_hermitian` reports
+  `[propext, Classical.choice, Quot.sound]`.
+- Flag: the new theorem proves Hermitian symmetry of the form
+  `kreinForm Gamma x y := <x, Gamma y>` from `adjoint Gamma = Gamma`. It does
+  NOT by itself prove a genuine/nondegenerate indefinite inner product, a
+  fundamental symmetry, `Gamma^2 = 1`, nontrivial positive/negative sectors, or
+  `kappa > 0`.
+- Required prose downgrade in Claude-owned files: replace "genuine indefinite
+  inner product exactly when Gamma is self-adjoint" / "conditional only on Gamma
+  being a fundamental symmetry (`Gamma† = Gamma`)" with "Hermitian form
+  symmetry; the indefinite/Pontryagin inner-product reading additionally needs
+  Gamma to be a self-adjoint involution with nontrivial +/- sectors, supplied by
+  the M4 kappa=2 witness."
+- Existing stale guard header remains: `CarrierAxiomGuard.lean` still says
+  "CRACK 2: flat-sector Krein positivity (first genuine positivity theorem)".
+  That should be downgraded when Claude next edits Carrier docs. No Carrier
+  source edited by Codex.
