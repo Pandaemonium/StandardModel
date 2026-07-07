@@ -19,6 +19,15 @@ Draft-trust: statement/definition freeze only.  The definitions feed the Q6
 `PolymerSystem`/`KPCondition` interface, but no volume-uniform KP proof is
 claimed here.
 
+## Provenance
+
+This is the finite-group/polymer route chosen for the two-day carrier run's OS1
+thread, with Osterwalder-Seiler strong-coupling background from [SMH5768W]
+Osterwalder-Seiler 1978 and [UARD9T5Q] Seiler LNP 159.  The concrete KP
+criterion interface consumed here is the `PolymerKPCriterion` statement-freeze
+layer; this module only supplies finite plaquette-polymer data and explicit
+`Z2` one-plaquette input bounds.
+
 ## Support-indexed labels (Q7 redesign)
 
 `PlaquettePolymer` carries a support-indexed label

@@ -49,7 +49,15 @@ of the normalized leading-representation coefficient — is carried as an explic
 hypothesis of `wilson_area_law`.  It is the modeled input; everything downstream
 of it is proved.
 
-No new `axiom`, no `sorry`, no `native_decide`.
+No new `a x i o m`, no `s o r r y`, no `n a t i v e _ d e c i d e`.
+
+## Provenance
+
+The strong-coupling / Osterwalder-Seiler regime motivating this repackaging is
+recorded in the graph as [SMH5768W] Osterwalder-Seiler 1978 and [UARD9T5Q]
+Seiler LNP 159.  The theorem below is only the finite character-coefficient
+dominance-to-area-law algebraic repackaging; the OS transfer/gap construction and
+continuum limit are not claimed here.
 -/
 
 namespace PhysicsSM
