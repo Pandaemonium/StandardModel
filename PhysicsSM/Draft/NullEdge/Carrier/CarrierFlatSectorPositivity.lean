@@ -1,11 +1,16 @@
 import Mathlib
 
 /-!
-# Move-1 CRACK 2 - flat-sector Krein positivity (the first genuine positivity theorem)
+# Move-1 CRACK 2 - flat-sector positivity IDENTITY (Krein reading pending the J/κ witness)
 
-The first positivity result for the carrier mass form, on the natural sector identified by
-Fable call-03: with the **chirality as the fundamental symmetry** `J := Γ`, the Krein form
-is `⟪x, y⟫_J := ⟪x, Γ y⟫`, and on the **flat, chiral-positive sector**
+A **conditional flat-sector form identity** for the carrier (Codex review-flag applied: this
+is NOT yet a certified Krein positivity theorem - the proof does not use, and the statement
+does not require, that `Γ` is a self-adjoint involution of inertia `κ > 0`; those make the
+`⟪·, Γ ·⟫` form a genuine indefinite inner product, and are supplied only by the M4 Pauli
+witness (`κ = 2`, Codex lane). Read this as a form identity whose Krein/Pontryagin
+*interpretation* is pending that witness). On the natural sector identified by Fable call-03,
+with the **chirality as the (intended) fundamental symmetry** `J := Γ` and Krein form
+`⟪x, y⟫_J := ⟪x, Γ y⟫`, on the **flat, chiral-positive sector**
 `{ψ : (∀ e, ∇ₑ ψ = 0) ∧ Γ ψ = ψ}` the carrier `D = ∑ₑ γₑ ∘ ∇ₑ + Γ ∘ φ` acts as the pure
 potential, `D ψ = φ ψ`, so the Krein mass form equals `‖φ ψ‖² ≥ 0`:
 
@@ -57,9 +62,12 @@ theorem carrierOp_on_flatSector (gamma nabla : E → (M →ₗ[ℂ] M)) (Gamma p
     rw [hPhiComm, LinearMap.comp_apply, hchi]
   rw [carrierOp, LinearMap.add_apply, hsum, zero_add, hGphi]
 
-/-- **Flat-sector Krein positivity (CRACK 2).**  On the flat chiral-positive sector, the
-Krein mass form `⟪D ψ, Γ (D ψ)⟫` equals `⟪φ ψ, φ ψ⟫`, hence has nonnegative real part:
-the mass form is the (positive) potential mass. -/
+/-- **Flat-sector form identity (CRACK 2, conditional).**  On the flat chiral-positive
+sector the form `⟪D ψ, Γ (D ψ)⟫` equals `⟪φ ψ, φ ψ⟫`, hence has nonnegative real part
+(`= ‖φ ψ‖²`).  When `Γ` is a certified fundamental symmetry (`Γ† = Γ`, `Γ² = 1`, inertia
+`κ > 0` - the M4 witness), this reads as "the Krein mass form on the flat sector is the
+positive potential mass"; the proof itself needs only `hPhiComm` (so the identity is more
+general than the Krein interpretation). -/
 theorem flat_sector_positivity (gamma nabla : E → (M →ₗ[ℂ] M)) (Gamma phi : M →ₗ[ℂ] M)
     (hPhiComm : Gamma ∘ₗ phi = phi ∘ₗ Gamma)
     (ψ : M) (hflat : ∀ e, nabla e ψ = 0) (hchi : Gamma ψ = ψ) :
