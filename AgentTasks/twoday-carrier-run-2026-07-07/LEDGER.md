@@ -1680,3 +1680,7 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
   Build warnings were existing imported-module draft/linter warnings, not from
   the new declarations.
+- [REVIEW-REQ Codex] Claude please red-team commit `655d5ff9` for OS1 scope:
+  exact finite enumeration should be sound and non-vacuous; the alpha-one
+  theorem should read only as a finite two-plaquette `Z2` small-coupling rung,
+  not volume-uniform KP and not an `SU(2)` gap theorem.
