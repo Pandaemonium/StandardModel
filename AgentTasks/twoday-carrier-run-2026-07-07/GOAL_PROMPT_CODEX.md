@@ -10,7 +10,7 @@ steering context.
 
 Mission: develop the new Claude/Fable ideas already present in the repository to
 their highest practical potential, while preserving the run's core discipline:
-kernel-checked Lean where possible, honest claim grading, axiom guards for
+kernel-checked Lean where possible, honest claim grading, guard blocks for
 flagships, provenance, frequent Aristotle proof/strategy/audit jobs, and small
 verified commits.
 
@@ -58,20 +58,35 @@ This section is the current launch map for solo work.  It supersedes the older
 poll `aristotle list`, harvest any `IDLE` result, and check
 `ARISTOTLE_LANE_DOCKET_2026-07-07.md` so no active or already-harvested target
 is resubmitted.  New project directories should use exactly the descriptive
-names in this table, or the same pattern with a date bump if the work moves
-past 2026-07-07.
+future-facing names in this table, or the same pattern with a date bump if the
+work moves past 2026-07-07.  If a listed target has advanced, mint an even more
+specific non-colliding `ne-next-*` name and record it in the docket.
 
-Current poll context: Aristotle is already carrying eleven running
-StandardModel-relevant lanes: W2a `Q_A`/Minkowski (`ecbf61d8`), Q12 PSA/C8
-(`96058502`), RG-Schur (`82cc3c8e`), Q08 Fock/LGV (`b4206467`), Q09
-screen/BW (`4b462390`), Q01 Gauss positivity (`373f0283`), Q10 Spin/Weyl
-classification (`05fdd744`), Q04 octonion bridge (`6e37da00`), Q02 E-slot
-audit (`ef87c91f`), HSTAR (`16d04733`), and Q11 Jacobi/Cauchy-Binet RC0
-(`aa4e48f6`).  The Q13 and literature/provenance audits have been harvested;
-the Q12 E4 radical-healing job was canceled after local proof of
-`E4_nontrivial_healing`.
+Current poll context: Aristotle is already carrying twelve running
+StandardModel-relevant lanes.  Harvest these before any further refill, and do
+not submit another project with the same name or target:
 
-| Lane | Pursuit | Highest-value next artifact | New Aristotle job name |
+| Project | Active Aristotle job | Lane |
+|---|---|---|
+| `ecbf61d8` | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a `Q_A` / Minkowski aperture |
+| `5ff9424e` | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` | Q12 GammaPrime E4 semantic audit |
+| `96058502` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 / sector MS |
+| `82cc3c8e` | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur null-nilpotency instability |
+| `b4206467` | `ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707` | Q08 Fock radical / LGV lift |
+| `4b462390` | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW / Reeh gate |
+| `373f0283` | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positive quotient |
+| `05fdd744` | `ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707` | Q10 Spin/Weyl scalar amplitude |
+| `6e37da00` | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion left-action bridge |
+| `ef87c91f` | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` | Q02 invariant trace / E-slot |
+| `16d04733` | `ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707` | HSTAR model audit |
+| `aa4e48f6` | `ne-next-q11-jacobi-cauchybinet-rc0-integration-audit-20260707` | Q11 Jacobi / Cauchy-Binet RC0 |
+
+Recently harvested and not to duplicate: Q13 global overclaim audit
+(`07f40fff`) and literature/provenance source-gap audit (`5713746e`).  The
+duplicate Q12 radical-healing proof project (`297ae18c`) was canceled after the
+local proof of `E4_nontrivial_healing`.
+
+| Lane | Pursuit | Highest-value next artifact | Next unique Aristotle job name |
 |---|---|---|---|
 | W1-E | Carrier / Weitzenbock `E` slot | Torsion vs symmetric soldering-difference split, with exact vanishing hypotheses | `ne-next-w1-eslot-torsion-soldering-split-proof-20260707` |
 | W2a-QA | Aperture identification | Harvest `ecbf61d8`; then follow up on the literal `Q_A` to Minkowski aperture bridge if blocked | `ne-next-w2a-qa-minkowski-aperture-contract-followup-proof-20260707` |
@@ -96,10 +111,10 @@ the Q12 E4 radical-healing job was canceled after local proof of
 | Q09-REEH | Horizon / screen well-posedness | Harvest `4b462390`; then isolate finite Reeh-screen hypotheses or no-go | `ne-next-q09-finite-reeh-screenarea-wellposedness-followup-audit-20260707` |
 | Q09-BW | BW-cut locality | Concrete finite BW-cut locality witness or proof that no current witness exists | `ne-next-q09-bwcut-locality-witness-construction-proof-20260707` |
 | Q10-SCALAR | Signature / scalar amplitude | Harvest `05fdd744`; then route finite census toward real Spin/Weyl classification | `ne-next-q10-spinweyl-scalar-amplitude-classification-followup-strategy-20260707` |
-| Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction axiom, and physical interpretation separated | `ne-next-q10-stableorder-dimension-reconstruction-boundary-audit-20260707` |
-| Q11-RC0 | `J_R` / RC0 determinant cocycle | Harvest `aa4e48f6`; then integration audit for Jacobi/Cauchy-Binet semantics | `ne-next-q11-jacobi-cauchybinet-rc0-integration-audit-20260707` |
+| Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction assumption, and physical interpretation separated | `ne-next-q10-stableorder-dimension-reconstruction-boundary-audit-20260707` |
+| Q11-RC0 | `J_R` / RC0 determinant cocycle | Harvest `aa4e48f6`; then integration audit for Jacobi/Cauchy-Binet semantics | `ne-next-q11-rc0-det-cocycle-groupaction-followup-proof-20260707` |
 | Q11-ORDER | Majorana / order condition | Upgrade C3 sector identities toward operator-level invariant uniqueness | `ne-next-q11-ordercondition-invariant-operator-uniqueness-strategy-20260707` |
-| Q12-GAMMA | GammaPrime quotient | Audit local `E4_nontrivial_healing` for nonvacuity and correct claim boundary | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` |
+| Q12-GAMMA | GammaPrime quotient | Harvest `5ff9424e`; if clean, prove descended commutation over the proper radical rather than relying only on the upstairs commutator-in-radical witness | `ne-next-q12-gammaprime-e4-descended-commutation-proof-20260707` |
 | Q12-C8 | C8 / `J_R` descent | Harvest `96058502`; then sector conjugation and C8 compatibility gates | `ne-next-q12-c8-jr-sector-descent-compatibility-proof-20260707` |
 | Q12-PSA | PSA anomaly gates | PSA-2/3 determinant-line phase gates and promotion conditions | `ne-next-q12-psa23-determinantline-sectorphase-strategy-20260707` |
 | Q12-MS | Equivariant McKean-Singer | Exact finite-to-analytic boundary for charge-resolved sector index claims | `ne-next-q12-equivariant-ms-sector-index-boundary-audit-20260707` |
