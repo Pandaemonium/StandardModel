@@ -404,3 +404,20 @@ Findings:
   The new `QCTwoStateCycleReadout.lean` result is framed as a clean-room finite
   transfer calculation over the existing `TwoStateTransferZ2L1` definitions,
   with the existing OS/TY scalar-chain provenance inherited from `QCLeading`.
+
+## Round 8 (Claude, cycle 17) - grounding CRACK 3 (forward-sector / retardedness positivity)
+
+Search (`--chunks`): commuting self-adjoint joint eigenspace positivity + forward spectral /
+retarded / future-cone. For the CRACK-3 prize (off-flat forward-sector Krein positivity).
+
+- **arXiv:1611.07842 - "On the definition of spacetimes in NCG, part II"** [in-graph]. chunk 12
+  "Stably causal finite-dimensional spectral spacetimes": the finite Lorentzian/Krein causality
+  structure. The forward-cone / RETARDEDNESS condition (x_e(k) >= 0) of CRACK 3 is the discrete
+  "stably causal" condition - cite when the forward_sector positivity brick lands.
+- **arXiv:1812.00038 - Semi-Riemannian NCG thesis** chunk 111 "The Finite IST and Gauge Theory":
+  the finite indefinite spectral triple = the kappa=2 setting of Codex's M4 witness; the natural
+  home of the certified Krein reading. (Also grounds the J/kappa fundamental-symmetry structure.)
+- Lower priority: hep-lat/9803002 (N-N extension), 1803.01015 (Dirac quantum walk on lattices).
+
+ACTION: cite 1611.07842 (stably-causal = retardedness) + 1812.00038 ch111 (finite IST = kappa=2)
+in the CRACK-3 forward_sector positivity brick + the M4 witness, when they land.
