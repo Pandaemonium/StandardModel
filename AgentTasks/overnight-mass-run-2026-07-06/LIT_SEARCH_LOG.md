@@ -243,3 +243,12 @@ identification carrier + re-scoped lane C + KP/higher-d routes).
   energy = gravity slot), Friedan 1982 (CMP 85, N-N), Loring finite-matrix K-theory,
   Chelsea Edmonds LLL AFP (Isabelle 2023), Jacobson-Schulman 1984 (checkerboard),
   Chatterjee "YM for probabilists", Cao-Park-Sheffield random surfaces.
+
+## Round 13 (2026-07-06) - reading-list ingest deferred + Mathlib API de-risk
+- Meta-search rate-limited this round (rounds 11-12 already covered the Fable list).
+  Reading-list ingest (Osterwalder-Seiler, Witten PET, Loring, Chatterjee, Cao-Park-
+  Sheffield, Chelsea Edmonds LLL AFP) remains PENDING - retry next cycle with direct
+  arxiv ids rather than meta-search.
+- De-risk instead: confirmed via lean-explore that `CliffordAlgebra.ι_sq_scalar` exists
+  in Mathlib (the keystone for the sm-weitzenbock-brick carrier job - `c(alpha)^2 = Q(alpha)`,
+  = 0 for null alpha). The Move-1 algebraic brick is well-posed against the Mathlib API.

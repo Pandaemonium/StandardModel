@@ -717,3 +717,15 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   (genuinely closes reflForm_self_nonneg, the RP core). KEY FINDING: the finite-shadow
   backlog is largely LANDED - the fleet was re-deriving in-tree results; the real
   frontier is now the conceptual Move-1/2 scaffolding (needs crisp Lean statements first).
+- **HB (carrier Move-1 jobs):** Turned Fable's steer into the first Aristotle-ready
+  carrier targets (genuinely NEW work, not stale-shadow farming). Submitted 2 standalone
+  jobs: sm-weitzenbock-brick (c6af1315) = the algebraic keystone `c(alpha)^2 = 0` (null
+  Clifford nilpotency, Mathlib `CliffordAlgebra.ι_sq_scalar` - VERIFIED to exist via
+  lean-explore) + the "mass is relational = zero edge-diagonal" identity
+  `(sum_e x_e c(alpha_e))^2 = sum_{e!=f} ...`; sm-color-commutant (1e9ac867) = the [H2]
+  constraint `color_commutant_eq_scalars` (Schur: only a color-blind scalar mass is
+  color-exact on the triplet). Prompts committed for provenance. product-haar still
+  RUNNING (RP core). Red-team: both prompts mathematically sound (no false/over-claim);
+  steer docs grade Fable's results [CONJECTURAL]/[CRUX] faithfully (nothing kernel-claimed).
+  Fleet now 3 quality carrier jobs. Consolidation this cycle = the scorecard verdict
+  reframe (Move-1/2 = the path; capstone AND->+ folds in after Move-1/2 land).
