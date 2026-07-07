@@ -746,3 +746,30 @@ SpherePacking dependency block.
 Task IDs: Q08 `680a8046-1903-41f7-bdaf-20c20efa6bfc`; Q10
 `c3b0786e-f990-4110-8b00-f7f0770b4acc`.  Queue poll immediately after
 submission showed twelve running StandardModel-relevant lanes.
+
+## Harvest from HSTAR Gauss/Ward/real-split model audit
+
+- `16d04733`
+  (`ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707`)
+  returned a Lean payload now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean`, plus the
+  local audit note `AgentTasks/HSTAR_MODEL_AUDIT_2026-07-07.md`.
+- New proved declarations include `Umat`, `Uop`, `Uop_comm_Qop`,
+  `Uop_kreinUnitary`, `Uop_e2`, `Uop_e0`,
+  `ward_descent_preservation`, and `ward_descent_nonvacuous`.
+- The carrier guard now pins the two Ward/descent headline theorems.
+- Claim boundary: finite positive-sector model only.  This witnesses
+  `descent_unitary` nonvacuously, but it does not prove a physical Ward
+  identity, BRST cohomology statement, carrier/Gauss completeness, or physical
+  positivity.
+
+## Refill after HSTAR Ward/descent witness harvest
+
+Submitted 2026-07-07 after integrating HSTAR `16d04733`.
+
+| Project ID | Aristotle job name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `b1980b93-dc5c-4adc-803d-c229a7d2220e` | `ne-next-hstar-ward-descent-quotient-action-proof-20260707` | HSTAR finite Ward/descent | proof/strategy | Prove the induced `Uop a` action on `ker Qop / range Qop`, with quotient-form preservation if supported by current APIs, or return the exact blocker. |
+
+Task id: `95086d97-2155-4d92-b46c-d49787d1e712`.  Queue poll immediately after
+submission showed twelve running StandardModel-relevant lanes.

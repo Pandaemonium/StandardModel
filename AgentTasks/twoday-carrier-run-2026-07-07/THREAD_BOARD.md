@@ -213,7 +213,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   nilpotent Kugo-Ojima charge gives a nonvacuous positive quotient for inertia
   `(2,1)` and a same-charge negative no-go for inertia `(1,2)`. Still OPEN:
   wiring the model's closure/Gauss operators and Ward invariance to a carrier
-  theorem `dim(physical sector) = ind(D)`.
+  theorem `dim(physical sector) = ind(D)`. HSTAR audit `16d04733` has now landed
+  the first Ward/descent witness in
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean`:
+  `ward_descent_nonvacuous` exhibits a non-identity phase symmetry on the
+  `(2,1)` positive-sector model satisfying the finite `descent_unitary`
+  hypotheses. This removes the vacuity concern for the finite descent lemma, but
+  not the carrier/Gauss completeness or physical-positivity obligations.
 
 ### M4-WIT - Pauli/Pontryagin concrete carrier witness [Codex handoff, Claude-owned integration]
 - **Done:** a corrected M4(C) Pauli witness under the physical Krein sharp

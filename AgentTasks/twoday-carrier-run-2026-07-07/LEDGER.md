@@ -3709,3 +3709,45 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Queue poll immediately after submission showed both new projects `RUNNING`;
   with the ten older running projects, Aristotle is back to twelve active
   StandardModel-relevant lanes.
+
+## [ARISTOTLE-HARVEST Codex solo] HSTAR Ward/descent witness landed
+
+- Harvested Aristotle project `16d04733-8cd0-4aaa-9867-cd43c8ba834c`
+  (`ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707`).
+- Integrated the Lean payload as
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean` and
+  imported it from `CarrierAxiomGuard.lean`.
+- New proved declarations include `Uop_comm_Qop`, `Uop_kreinUnitary`,
+  `ward_descent_preservation`, and `ward_descent_nonvacuous`.
+- Claim boundary: this is a finite positive-sector model witness.  It shows
+  `descent_unitary` is nonvacuous on the `(2,1)` model, but it does not prove a
+  physical Ward identity, BRST cohomology statement, carrier/Gauss
+  completeness, or physical positivity.
+- Added `AgentTasks/HSTAR_MODEL_AUDIT_2026-07-07.md`; updated
+  `THREAD_BOARD.md`, `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and
+  `GOAL_PROMPT_CODEX.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierWardDescentWitness.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierWardDescentWitness`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`
+  (with pre-existing neighboring warnings);
+  added-line Markdown placeholder-token scan;
+  new-file Lean placeholder-token scan;
+  duplicate future-name scan for the refreshed launch table;
+  `git diff --check`;
+  `pre-commit run --all-files`.
+
+## [ARISTOTLE-REFILL Codex solo] HSTAR quotient-action follow-up submitted
+
+- Submitted `b1980b93-dc5c-4adc-803d-c229a7d2220e`:
+  `ne-next-hstar-ward-descent-quotient-action-proof-20260707`.
+- Task id: `95086d97-2155-4d92-b46c-d49787d1e712`.
+- Target: prove the induced `Uop a` action on `ker Qop / range Qop`, with
+  quotient-form preservation if supported by the existing Kugo-Ojima APIs, or
+  return the exact finite quotient blocker.
+- Added task brief
+  `ARISTOTLE_HSTAR_WARD_DESCENT_QUOTIENT_ACTION_2026-07-07.md`.
+- Queue poll immediately after submission showed the project `RUNNING`; with
+  the eleven older running projects, Aristotle is back to twelve active
+  StandardModel-relevant lanes.

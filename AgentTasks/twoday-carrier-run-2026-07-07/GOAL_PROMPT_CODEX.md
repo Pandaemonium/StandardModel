@@ -62,14 +62,17 @@ future-facing names in this table, or the same pattern with a date bump if the
 work moves past 2026-07-07.  If a listed target has advanced, mint an even more
 specific non-colliding `ne-next-*` name and record it in the docket.
 
-Current poll context: Q10 Spin/Weyl scalar amplitude (`05fdd744`) and Q08 Fock
-graded radical / LGV lift (`b4206467`) have both been harvested locally.  There
-is no known harvest-first item until the next `aristotle list` poll.  After the
-Q08/Q10 refill, Aristotle is back to twelve running StandardModel-relevant
-lanes.  The still-running lanes below should not be duplicated:
+Current poll context: Q10 Spin/Weyl scalar amplitude (`05fdd744`), Q08 Fock
+graded radical / LGV lift (`b4206467`), and HSTAR model audit (`16d04733`) have
+been harvested locally.  The HSTAR harvest opened one Aristotle slot; refill it
+with a Ward/descent quotient-action follow-up after the local HSTAR commit.
+That refill is now running as `b1980b93`, bringing Aristotle back to twelve
+running StandardModel-relevant lanes.  The still-running lanes below should not
+be duplicated:
 
 | Project | Active Aristotle job | Lane |
 |---|---|---|
+| `b1980b93` | `ne-next-hstar-ward-descent-quotient-action-proof-20260707` | HSTAR finite Ward/descent quotient action |
 | `fbdbe43f` | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` | Q10 finite `d = 4` positive corner |
 | `f8aa05c8` | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 graded radical ideal/span follow-up |
 | `ecbf61d8` | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a `Q_A` / Minkowski aperture |
@@ -80,14 +83,14 @@ lanes.  The still-running lanes below should not be duplicated:
 | `373f0283` | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positive quotient |
 | `6e37da00` | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion left-action bridge |
 | `ef87c91f` | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` | Q02 invariant trace / E-slot |
-| `16d04733` | `ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707` | HSTAR model audit |
 | `aa4e48f6` | `ne-next-q11-jacobi-cauchybinet-rc0-integration-audit-20260707` | Q11 Jacobi / Cauchy-Binet RC0 |
 
 Recently harvested and not to duplicate: Q13 global overclaim audit
 (`07f40fff`), literature/provenance source-gap audit (`5713746e`), and Q10
-Spin/Weyl scalar-amplitude classification (`05fdd744`), and Q08 Fock graded
-radical assembly (`b4206467`).  The duplicate Q12 radical-healing proof project
-(`297ae18c`) was canceled after the local proof of `E4_nontrivial_healing`.
+Spin/Weyl scalar-amplitude classification (`05fdd744`), Q08 Fock graded
+radical assembly (`b4206467`), and HSTAR Ward/descent model audit (`16d04733`).
+The duplicate Q12 radical-healing proof project (`297ae18c`) was canceled after
+the local proof of `E4_nontrivial_healing`.
 
 | Lane | Pursuit | Highest-value next artifact | Next unique Aristotle job name |
 |---|---|---|---|
@@ -125,7 +128,7 @@ radical assembly (`b4206467`).  The duplicate Q12 radical-healing proof project
 | C-1FORM | Finite center/twist backgrounds | Twist-sector API and RP/background-cohomology boundary | `ne-next-c1form-twistsector-background-rp-api-audit-20260707` |
 | SPIN10-U5 | Pure-spinor internal selection | U(5) / pure-spinor-line stabilizer shadow or finite substitute | `ne-next-spin10-u5-purespinor-stabilizer-shadow-strategy-20260707` |
 | M4-WIT | Concrete Pauli/Pontryagin witness | Krein-sharp carrier instantiation and positive-sector probe | `ne-next-m4-pauli-pontryagin-krein-positive-probe-proof-20260707` |
-| HSTAR | Model-by-model constraint audits | Harvest `16d04733`; then Gauss/Ward/real-split follow-up on concrete models | `ne-next-hstar-gauss-ward-realsplit-model-followup-audit-20260707` |
+| HSTAR | Model-by-model constraint audits | Harvest `b1980b93`; then integrate/audit the quotient action or open the Gauss-covector rank interface | `ne-next-hstar-ward-descent-quotient-action-integration-audit-20260707` |
 | PLUMBING | Cross-lane real structures | Compatibility table for `J_R`, edge reversal, monodromy inversion, `#`, linearity, and antilinearity | `ne-next-plumbing-jr-edge-reversal-sharp-compatibility-audit-20260707` |
 | Q13 | Red-team / no-go | Re-audit Q12 E4, W2a bridge, RG-Schur, and latest manuscript wording for the four over-claim modes | `ne-next-q13-e4-w2a-rg-overclaim-regression-audit-20260707` |
 | Manuscript | P1 v3 / scorecard / thread board | Synchronize claim grades after the next integration wave | `ne-next-manuscript-p1-round2-scorecard-threadboard-sync-audit-20260707` |
