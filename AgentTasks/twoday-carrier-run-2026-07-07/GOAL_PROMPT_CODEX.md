@@ -164,7 +164,7 @@ record why the row is parked.
 | Q10 | Signature / dimension | scalar-amplitude reconstruction and stable-order boundary audit after the intrinsic inertia-index landing | classification strategy/audit |
 | Q11 | `J_R` / KO / RC0 | Jacobi/Cauchy-Binet cleanup, order-condition uniqueness | active proof, then integration audit |
 | Q12 | Chirality-solder / C8 / anomaly | non-permutation Furey bridge, triality wording, PSA-2/3 | active proof/audit, then sector gates |
-| RG-SCHUR | Coarse-graining | Schur determinant and structure stability, then nilpotency failure audit | active proof |
+| RG-SCHUR | Coarse-graining | nilpotency failure witness, Berezin layer, and complex-star sharp after Schur determinant/Krein-Gamma stability landing | audit/proof follow-ups |
 | C-1FORM | Twist backgrounds | finite line-holonomy/twist-sector API boundary | audit |
 | SPIN10-U5 | Pure-spinor internal selection | U(5) / pure-spinor-line stabilizer shadow | strategy |
 | M4-WIT | Concrete witnesses | Pauli/Pontryagin and positivity probes | proof/audit as a reality test |
@@ -186,11 +186,10 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
 
 - **Still running / poll first:** the current running jobs
   `ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`,
-  `ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`,
-  `ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`,
-  `ne-rg-schur-krein-gamma-stability-proof-20260707`.
+  `ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`.
 - **Harvest-first before more refill:** the latest poll shows these newer jobs
   `IDLE` and ready to inspect:
+  `ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`,
   `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`
   (completed with errors; treat as audit-only until inspected).  Harvest these
   before opening additional lanes.
@@ -199,7 +198,8 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
   kill, Q08 corrected scattering-vertex LGV DAG, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
   transfer-power bridge, Q09 screen-area degeneracy/invariance completion,
   Q10 intrinsic inertia-index bridge, Q04 sign-gauge reconciliation, Q04
-  Baez-to-XOR ConventionBridge line products,
+  Baez-to-XOR ConventionBridge line products, RG-Schur determinant/Krein-Gamma
+  stability,
   Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
   Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q04 octonion/Fock
   convention audit, Q12 C8 compatibility audit, Q11 RC0 determinant-cocycle

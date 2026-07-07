@@ -3277,3 +3277,30 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   (completed with errors; inspect as audit-only), Q12 C8 bridge gates
   `1b3c2203`, and RG-Schur `9af1d5fb`.  Q11 Jacobi `aa4e48f6` and Q12
   triality `381cc4cf` were still running at the latest poll.
+
+## [ARISTOTLE-HARVEST Codex solo] RG-Schur determinant and stability theorem landed
+
+- Harvested Aristotle project `9af1d5fb`
+  (`ne-rg-schur-krein-gamma-stability-proof-20260707`).
+- Integrated the returned Part 3 into
+  `PhysicsSM/NullStrand/DualSolder/SpectralSchur.lean`.
+- New proved declarations:
+  `det_fromBlocks_eq_det_hidden_mul_det_schurComplement`,
+  `schurComplement_isKreinSelfAdjoint_of_blocks`,
+  `schurComplement_isGammaOdd_of_blocks`,
+  `isKreinSelfAdjoint_fromBlocks_iff`, and `isGammaOdd_fromBlocks_iff`.
+- RG-Schur claim boundary: PROVED finite determinant factorization plus
+  one-step Schur stability for the algebraic transpose-sharp class
+  `{Krein-self-adjoint, Gamma-odd}`.  Still OPEN/MEMO: concrete
+  null-nilpotency instability witness, Berezin-integral formulation,
+  complex-star/RCLike sharp, positivity, spectrum, dynamics, and physical RG
+  interpretation.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`, and
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/NullStrand/DualSolder/SpectralSchur.lean`;
+  `lake build PhysicsSM.NullStrand.DualSolder.SpectralSchur`.
+- Remaining harvest-first jobs: Q12 C8 bridge gates `1b3c2203` and the
+  manuscript postfix audit `bd50e825` (completed with errors; inspect as
+  audit-only).  Q11 Jacobi `aa4e48f6` and Q12 triality `381cc4cf` were still
+  running at the latest poll.

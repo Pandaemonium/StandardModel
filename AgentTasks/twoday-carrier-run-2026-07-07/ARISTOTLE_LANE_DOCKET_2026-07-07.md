@@ -534,3 +534,29 @@ Remaining harvest-first jobs after this integration: `bd50e825` manuscript
 postfix audit (completed with errors; inspect as audit-only), plus newly idle
 returns `1b3c2203` Q12 C8 bridge gates and `9af1d5fb` RG-Schur.  Still running
 at the latest poll: `aa4e48f6` and `381cc4cf`.
+
+## Harvest from RG-Schur Krein/Gamma stability proof
+
+- `9af1d5fb`
+  (`ne-rg-schur-krein-gamma-stability-proof-20260707`) returned the finite
+  Schur-complement determinant and structure-stability theorem.  Codex
+  integrated it as Part 3 of
+  `PhysicsSM/NullStrand/DualSolder/SpectralSchur.lean`.
+- New proved declarations:
+  `det_fromBlocks_eq_det_hidden_mul_det_schurComplement`,
+  `schurComplement_isKreinSelfAdjoint_of_blocks`,
+  `schurComplement_isGammaOdd_of_blocks`,
+  `isKreinSelfAdjoint_fromBlocks_iff`, and `isGammaOdd_fromBlocks_iff`.
+- Claim boundary: this proves finite determinant factorization and closure of
+  the algebraic transpose-sharp class `{Krein-self-adjoint, Gamma-odd}` under a
+  Schur step.  It does not prove per-edge null-nilpotency instability, a
+  Berezin-integral layer, positivity, spectrum, dynamics, or a physical RG
+  fixed-point claim.
+- Verification passed:
+  `lake env lean PhysicsSM/NullStrand/DualSolder/SpectralSchur.lean`;
+  `lake build PhysicsSM.NullStrand.DualSolder.SpectralSchur`.
+
+Remaining harvest-first jobs after this integration: `1b3c2203` Q12 C8 bridge
+gates and `bd50e825` manuscript postfix audit (completed with errors; inspect
+as audit-only).  Still running at the latest poll: `aa4e48f6` Q11 Jacobi and
+`381cc4cf` Q12 triality wording.

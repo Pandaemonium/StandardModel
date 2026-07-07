@@ -213,4 +213,191 @@ theorem localDilation_effectiveOperator_eq_schurComplement
 
 end Schur
 
+/-! ## Part 3 — RG-Schur stability of Krein-self-adjoint, Gamma-odd operators
+
+This part formalizes the finite algebra behind the RG-SCHUR thread goal / Q08
+`T-R1`: one renormalization (decimation) step on a quasi-free carrier is the
+Schur complement of the fine block, and the operator class
+`{Krein-self-adjoint, Gamma-odd}` is stable under that step.
+
+Conventions: the Krein sharp used here is the algebraic transpose sharp over a
+general field.  A complex-conjugate/star Krein sharp is a separate MEMO
+extension and is not claimed here.
+
+What is PROVED here is finite linear algebra: the determinant factorization and
+the closure of `{Krein-self-adjoint, Gamma-odd}` under the Schur complement.
+The physical reading — "mass terms are what null microstructure
+Schur-complements to", instability of per-edge null nilpotency, and
+positivity/spectrum — remains MEMO/OPEN and is deliberately not encoded.
+-/
+
+section SchurStability
+
+open scoped Matrix
+
+variable {𝕜 : Type*} [Field 𝕜]
+variable {n m : Type*} [Fintype n] [Fintype m] [DecidableEq n] [DecidableEq m]
+
+/-- **Krein-self-adjoint** (algebraic, transpose sharp): `Aᵀ G = G A`, i.e. the
+Krein sharp `A^# = G⁻¹ Aᵀ G` fixes `A`. -/
+def IsKreinSelfAdjoint {ν : Type*} [Fintype ν] (G A : Matrix ν ν 𝕜) : Prop :=
+  Aᵀ * G = G * A
+
+/-- **Gamma-odd** with respect to an involution `Γ`: `Γ A Γ = -A`. -/
+def IsGammaOdd {ν : Type*} [Fintype ν] (Γ A : Matrix ν ν 𝕜) : Prop :=
+  Γ * A * Γ = -A
+
+/-! ### Determinant factorization (Berezin/Schur decimation) -/
+
+/-- **T-R1 determinant factorization.** With the fine block invertible, the
+determinant of the full block operator factors as the fine determinant times
+the determinant of the Schur complement, `det D = det(D_ff) * det(D_eff)`. -/
+theorem det_fromBlocks_eq_det_hidden_mul_det_schurComplement
+    (Dvis : Matrix n n 𝕜) (B : Matrix n m 𝕜) (C : Matrix m n 𝕜)
+    (Dhid : Matrix m m 𝕜) [Invertible Dhid] :
+    (Matrix.fromBlocks Dvis B C Dhid).det
+      = Dhid.det * (schurComplement Dvis B C Dhid).det := by
+  convert Matrix.det_fromBlocks₂₂ Dvis B C Dhid using 1
+
+/-! ### Krein-self-adjointness is Schur-stable -/
+
+omit [DecidableEq n] in
+/-- **Krein stability (block form).** If the four blocks satisfy the blockwise
+Krein-self-adjointness relations coming from a block-diagonal metric
+`G = diag(Gvis, Ghid)`, with `Ghid` invertible, then the Schur complement is
+Krein-self-adjoint with respect to the coarse metric `Gvis`. -/
+theorem schurComplement_isKreinSelfAdjoint_of_blocks
+    (Dvis : Matrix n n 𝕜) (B : Matrix n m 𝕜) (C : Matrix m n 𝕜)
+    (Dhid : Matrix m m 𝕜) [Invertible Dhid]
+    (Gvis : Matrix n n 𝕜) (Ghid : Matrix m m 𝕜) [Invertible Ghid]
+    (hcc : Dvisᵀ * Gvis = Gvis * Dvis)
+    (hhh : Dhidᵀ * Ghid = Ghid * Dhid)
+    (hcross1 : Cᵀ * Ghid = Gvis * B)
+    (hcross2 : Bᵀ * Gvis = Ghid * C) :
+    IsKreinSelfAdjoint Gvis (schurComplement Dvis B C Dhid) := by
+  have hinv : (⅟Dhid)ᵀ * Ghid = Ghid * ⅟Dhid := by
+    rw [Matrix.transpose_invOf Dhid]
+    calc ⅟(Dhidᵀ) * Ghid
+        = ⅟(Dhidᵀ) * (Ghid * Dhid) * ⅟Dhid := by
+          rw [Matrix.mul_assoc, Matrix.mul_assoc, mul_invOf_self, Matrix.mul_one]
+      _ = ⅟(Dhidᵀ) * (Dhidᵀ * Ghid) * ⅟Dhid := by rw [hhh]
+      _ = Ghid * ⅟Dhid := by rw [← Matrix.mul_assoc, invOf_mul_self, Matrix.one_mul]
+  unfold IsKreinSelfAdjoint schurComplement
+  rw [Matrix.transpose_sub, Matrix.transpose_mul, Matrix.transpose_mul,
+      Matrix.sub_mul, Matrix.mul_sub, hcc]
+  have key : Cᵀ * ((⅟Dhid)ᵀ * Bᵀ) * Gvis = Gvis * (B * ⅟Dhid * C) := by
+    have h1 : (⅟Dhid)ᵀ * Bᵀ * Gvis = Ghid * ⅟Dhid * C := by
+      rw [Matrix.mul_assoc, hcross2, ← Matrix.mul_assoc, hinv]
+    calc Cᵀ * ((⅟Dhid)ᵀ * Bᵀ) * Gvis
+        = Cᵀ * ((⅟Dhid)ᵀ * Bᵀ * Gvis) := by rw [Matrix.mul_assoc]
+      _ = Cᵀ * (Ghid * ⅟Dhid * C) := by rw [h1]
+      _ = Cᵀ * Ghid * (⅟Dhid * C) := by
+          rw [Matrix.mul_assoc Ghid (⅟Dhid) C, ← Matrix.mul_assoc Cᵀ Ghid (⅟Dhid * C)]
+      _ = Gvis * B * (⅟Dhid * C) := by rw [hcross1]
+      _ = Gvis * (B * ⅟Dhid * C) := by rw [Matrix.mul_assoc, Matrix.mul_assoc]
+  rw [key]
+
+/-! ### Gamma-oddness is Schur-stable -/
+
+omit [DecidableEq n] in
+/-- **Gamma-odd stability (block form).** If the four blocks satisfy the
+blockwise Gamma-odd relations for a block-diagonal grading
+`Γ = diag(Γvis, Γhid)`, with `Γhid` an involution, then the Schur complement is
+Gamma-odd with respect to `Γvis`. -/
+theorem schurComplement_isGammaOdd_of_blocks
+    (Dvis : Matrix n n 𝕜) (B : Matrix n m 𝕜) (C : Matrix m n 𝕜)
+    (Dhid : Matrix m m 𝕜) [Invertible Dhid]
+    (Γvis : Matrix n n 𝕜) (Γhid : Matrix m m 𝕜)
+    (hΓhid : Γhid * Γhid = 1)
+    (hcc : Γvis * Dvis * Γvis = -Dvis)
+    (hhh : Γhid * Dhid * Γhid = -Dhid)
+    (hcross1 : Γvis * B * Γhid = -B)
+    (hcross2 : Γhid * C * Γvis = -C) :
+    IsGammaOdd Γvis (schurComplement Dvis B C Dhid) := by
+  have hI : Γhid * ⅟Dhid * Γhid = -⅟Dhid := by
+    have hcomm : Γhid * Dhid = -(Dhid * Γhid) := by
+      have h := congrArg (· * Γhid) hhh
+      simpa [Matrix.mul_assoc, hΓhid, neg_mul] using h
+    have h2 : ⅟Dhid * Γhid * Dhid = -Γhid := by
+      rw [Matrix.mul_assoc, hcomm, mul_neg, ← Matrix.mul_assoc, invOf_mul_self, Matrix.one_mul]
+    have h3 : ⅟Dhid * Γhid = -(Γhid * ⅟Dhid) := by
+      have h := congrArg (· * ⅟Dhid) h2
+      simpa [Matrix.mul_assoc, mul_invOf_self, neg_mul] using h
+    calc Γhid * ⅟Dhid * Γhid = -(⅟Dhid * Γhid) * Γhid := by
+            rw [show Γhid * ⅟Dhid = -(⅟Dhid * Γhid) by rw [h3, neg_neg]]
+      _ = -⅟Dhid := by rw [neg_mul, Matrix.mul_assoc, hΓhid, Matrix.mul_one]
+  have hB : Γvis * B = -(B * Γhid) := by
+    have h := congrArg (· * Γhid) hcross1
+    simpa [Matrix.mul_assoc, hΓhid, Matrix.neg_mul] using h
+  have hC : C * Γvis = -(Γhid * C) := by
+    have h := congrArg (Γhid * ·) hcross2
+    simpa [← Matrix.mul_assoc, hΓhid, Matrix.mul_neg] using h
+  have key : Γvis * (B * ⅟Dhid * C) * Γvis = -(B * ⅟Dhid * C) := by
+    have e : Γvis * (B * ⅟Dhid * C) * Γvis = (Γvis * B) * ⅟Dhid * (C * Γvis) := by
+      simp only [Matrix.mul_assoc]
+    rw [e, hB, hC]
+    calc (-(B * Γhid)) * ⅟Dhid * (-(Γhid * C))
+        = (B * Γhid) * ⅟Dhid * (Γhid * C) := by
+          simp only [Matrix.neg_mul, Matrix.mul_neg, neg_neg]
+      _ = B * (Γhid * ⅟Dhid * Γhid) * C := by simp only [Matrix.mul_assoc]
+      _ = B * (-⅟Dhid) * C := by rw [hI]
+      _ = -(B * ⅟Dhid * C) := by simp [Matrix.mul_assoc, Matrix.mul_neg, Matrix.neg_mul]
+  unfold IsGammaOdd schurComplement
+  rw [Matrix.mul_sub, Matrix.sub_mul, hcc, key]
+  abel
+
+/-! ### Full-matrix bridges: block-diagonal metric / grading -/
+
+omit [DecidableEq n] [DecidableEq m] in
+/-- The full block operator is Krein-self-adjoint for the block-diagonal metric
+`diag(Gvis, Ghid)` iff the four blockwise Krein relations hold. -/
+theorem isKreinSelfAdjoint_fromBlocks_iff
+    (Dvis : Matrix n n 𝕜) (B : Matrix n m 𝕜) (C : Matrix m n 𝕜)
+    (Dhid : Matrix m m 𝕜) (Gvis : Matrix n n 𝕜) (Ghid : Matrix m m 𝕜) :
+    IsKreinSelfAdjoint (Matrix.fromBlocks Gvis 0 0 Ghid)
+        (Matrix.fromBlocks Dvis B C Dhid)
+      ↔ (Dvisᵀ * Gvis = Gvis * Dvis) ∧ (Dhidᵀ * Ghid = Ghid * Dhid)
+          ∧ (Cᵀ * Ghid = Gvis * B) ∧ (Bᵀ * Gvis = Ghid * C) := by
+  unfold IsKreinSelfAdjoint
+  simp +decide [← Matrix.ext_iff, Matrix.mul_apply, Matrix.fromBlocks_multiply]
+  grind
+
+omit [DecidableEq n] [DecidableEq m] in
+/-- The full block operator is Gamma-odd for the block-diagonal grading
+`diag(Γvis, Γhid)` iff the four blockwise Gamma-odd relations hold. -/
+theorem isGammaOdd_fromBlocks_iff
+    (Dvis : Matrix n n 𝕜) (B : Matrix n m 𝕜) (C : Matrix m n 𝕜)
+    (Dhid : Matrix m m 𝕜) (Γvis : Matrix n n 𝕜) (Γhid : Matrix m m 𝕜) :
+    IsGammaOdd (Matrix.fromBlocks Γvis 0 0 Γhid)
+        (Matrix.fromBlocks Dvis B C Dhid)
+      ↔ (Γvis * Dvis * Γvis = -Dvis) ∧ (Γhid * Dhid * Γhid = -Dhid)
+          ∧ (Γvis * B * Γhid = -B) ∧ (Γhid * C * Γvis = -C) := by
+  unfold IsGammaOdd
+  simp +decide [← Matrix.ext_iff, Matrix.mul_apply, Matrix.fromBlocks_multiply]
+  grind
+
+/-! ### Axiom audit -/
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.det_fromBlocks_eq_det_hidden_mul_det_schurComplement' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms det_fromBlocks_eq_det_hidden_mul_det_schurComplement
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.schurComplement_isKreinSelfAdjoint_of_blocks' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms schurComplement_isKreinSelfAdjoint_of_blocks
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.schurComplement_isGammaOdd_of_blocks' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms schurComplement_isGammaOdd_of_blocks
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.isKreinSelfAdjoint_fromBlocks_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms isKreinSelfAdjoint_fromBlocks_iff
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.isGammaOdd_fromBlocks_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms isGammaOdd_fromBlocks_iff
+
+end SchurStability
+
 end PhysicsSM.NullStrand.DualSolder

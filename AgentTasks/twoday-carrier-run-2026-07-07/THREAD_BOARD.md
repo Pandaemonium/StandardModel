@@ -604,15 +604,25 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   fix was the doc clarification that `dGammaTwo` encodes the `Lambda^2 D` pair
   kernel, not an abstract one-slot `D`.
 ### RG-SCHUR - the thesis as an RG fact [Claude; post-Q06+Q08 convergence]
-- **Done:** T-R1 Schur-complement decimation (det factorization; Berezin
-  layer as needed) + RG-stability of {Krein-self-adjoint, Gamma-odd} + the
-  INSTABILITY of per-edge null nilpotency ("mass terms are what null
-  microstructure Schur-complements to") - converging with Q06-V4
-  (coarse-graining generates Q_A by Layer K: sums of nulls are timelike
-  unless collinear). Numeric-first probes (pre-registered): O1 uniform-
-  majorant 3-level drift test; O2 tetrahedral point-group invariant-operator
-  count at dim <= 4 (kill = excess over O(3) forces fine-tuning). New named
-  gate UM (uniform majorant, the finite HSSC shadow) adopted.
+- **Done:** Aristotle follow-up `9af1d5fb` is now harvested into
+  `PhysicsSM/NullStrand/DualSolder/SpectralSchur.lean`.  It proves the finite
+  T-R1 Schur-complement determinant factorization
+  `det_fromBlocks_eq_det_hidden_mul_det_schurComplement`, plus stability of the
+  algebraic class `{Krein-self-adjoint, Gamma-odd}` under one Schur step:
+  `schurComplement_isKreinSelfAdjoint_of_blocks`,
+  `schurComplement_isGammaOdd_of_blocks`, and the full-matrix block bridges
+  `isKreinSelfAdjoint_fromBlocks_iff` / `isGammaOdd_fromBlocks_iff`.
+- **Status:** PROVED finite linear algebra only.  The Krein sharp here is the
+  transpose/bilinear sharp over a field, not the complex star/Krein sharp.  The
+  Berezin-integral reading, positivity/spectrum, dynamics, and the physical RG
+  interpretation remain MEMO/OPEN.
+- **Next:** the INSTABILITY of per-edge null nilpotency ("mass terms are what
+  null microstructure Schur-complements to") is not yet proved; it needs a
+  concrete finite witness with block-compatible `G` and `Gamma`.  Numeric-first
+  probes remain: O1 uniform-majorant 3-level drift test; O2 tetrahedral
+  point-group invariant-operator count at dim <= 4 (kill = excess over O(3)
+  forces fine-tuning). Named gate UM (uniform majorant, the finite HSSC shadow)
+  stays active.
 
 ### HORIZON-SCREEN-AREA - Q09 relational area theorem [Codex solo; new Q09 lane]
 - **Done:** Q09-L1 kernel-ready area nucleus landed in
@@ -873,7 +883,7 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   transfer-power bridge (`a1534a69`), Q09 A9.1 degeneracy/invariance
   (`7de21ba8`), and Q10 intrinsic inertia-index bridge (`bcf263f0`).  The
   current unharvested set is the manuscript postfix audit (completed with
-  errors) plus the newer idle Q12 C8 / RG-Schur returns, with Q11/Q12 triality
+  errors) plus the newer idle Q12 C8 return, with Q11/Q12 triality
   still-running as of the last poll.  Refill wave submitted after that harvest:
   `aa4e48f6` Q11 Jacobi/Cauchy-Binet, `7b99f3b8` Q04 sign-gauge,
   `b6b128d4` Q04 ConventionBridge, `2c7ddcf1` Q08 scattering-DAG,
