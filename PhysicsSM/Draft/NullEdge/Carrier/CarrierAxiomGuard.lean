@@ -8,6 +8,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierESlot
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMasterPair
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierKreinSquare
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierApertureIdentification
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierFlatSectorPositivity
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -131,6 +132,12 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Q_A_zero_iff_totalSq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.Q_A_zero_iff_totalSq_zero
+
+/-! ## CRACK 2: flat-sector Krein positivity (first genuine positivity theorem) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.flat_sector_positivity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.flat_sector_positivity
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
