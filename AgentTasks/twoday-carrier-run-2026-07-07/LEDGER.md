@@ -498,3 +498,15 @@ ACTION: doc section 7 added; G-TELE + KREIN-POS seeded as threads; carrier_krein
   and must not be called banked until Aristotle/Claude discharge those proofs,
   guard them, and rerun semantic review. `tc-krein` Aristotle project
   `87428619` / task `8a391a03` is currently IN_PROGRESS.
+
+- [LIT-CLAIM Codex 22:56 C-lane generalized symmetry] Ingest/arxiv-check
+  GKSW generalized global symmetries (`1412.5148`) for Fable's suggested
+  1-form center-symmetry reframing of the closure/YM lane. This is provenance
+  for future framing/docstrings, not a new theorem dependency.
+- [LIT Codex 23:00 C-lane generalized symmetry] Round 9 complete:
+  ingested **AXAWAGGB** (Gaiotto-Kapustin-Seiberg-Willett, "Generalized Global
+  Symmetries", arXiv:1412.5148) into collection `9W59V3K9` with
+  `twoday-carrier` / one-form-symmetry tags. Paper-level search now finds it
+  as the top modern generalized-symmetry reference; chunk search was noisy, so
+  the doc cites it only as framing provenance for the C-lane
+  `H²(K,Z(G))` / 1-form center-symmetry reading, not as a theorem source.

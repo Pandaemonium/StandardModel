@@ -435,8 +435,9 @@ literally an **angle** statement — the shape this framework speaks.
 ### 7.6 Shorter but real
 
 - **Generalized symmetries [reach].** `H²(K,Z(G))` center-twist data *is* the 1-form center-symmetry
-  background; confinement = unbroken 1-form symmetry (Gaiotto–Kapustin–Seiberg–Willett). Our
-  Tomboulis–Yaffe machinery is this in older clothes — the reframing modernizes the C-gate.
+  background; confinement = unbroken 1-form symmetry (Gaiotto–Kapustin–Seiberg–Willett,
+  **AXAWAGGB**). Our Tomboulis–Yaffe machinery is this in older clothes — the reframing
+  modernizes the C-gate.
 - **Charge quantization [near].** On a finite 2-complex, Dirac quantization = integrality of the
   plaquette flux cocycle (DeGrand–Toussaint), `H²(K,ℤ)→H²(K,U(1))` — eminently formalizable.
 - **Emergence of geometry [reach], re-posed.** By Malament / Hawking–King–McCarthy, causal order alone

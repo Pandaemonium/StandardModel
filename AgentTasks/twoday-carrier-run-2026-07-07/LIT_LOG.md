@@ -206,3 +206,35 @@ Graph delta: none.  The priority OS/Seiler ingests requested by the Codex goal
 prompt are already complete; future OS1/QC docstrings should cite **SMH5768W** and
 **UARD9T5Q** rather than re-ingesting.  `QCLeading.lean` now cites those keys plus
 the TY lineage key **N7SIEMAC**.
+
+## Round 9 (Codex, cycle 8) - lane-C generalized-symmetry reframing
+
+Searches:
+
+- `neo4j_paper_search.py --query "1-form center symmetry confinement lattice gauge
+  theory center vortices Tomboulis Yaffe Wilson loops" --k 6`
+- `neo4j_paper_search.py --query "DeGrand Toussaint lattice monopoles plaquette
+  flux quantization H2 U(1) finite lattice gauge theory" --k 6`
+- `neo4j_paper_search.py --chunks --query "Tomboulis Yaffe center twist reflection
+  positivity 1-form center symmetry Wilson loop order parameter" --k 6`
+- after ingest: `neo4j_paper_search.py --query "Generalized Global Symmetries
+  one-form center symmetry Wilson loops confinement Gaiotto Kapustin Seiberg
+  Willett" --k 6`
+
+Graph delta:
+
+- **AXAWAGGB** - Gaiotto, Kapustin, Seiberg, Willett, "Generalized Global
+  Symmetries", arXiv:1412.5148, ingested into collection `9W59V3K9` with tags
+  `twoday-carrier`, `generalized-symmetry`, `one-form-center-symmetry`.
+
+Relevance to live C/QC threads:
+
+- The pre-ingest scoped search surfaced the older center-vortex / TY-adjacent
+  papers already in graph (`IB8F3BSP`, `T2Z3STSB`, `K9FIBTZC`) but not GKSW.
+  After ingest, `AXAWAGGB` is the top paper-level hit for the modern one-form
+  center-symmetry framing. The chunk search was noisy and did not give a clean
+  formal lemma location, so this is **framing provenance only**, not a theorem
+  source for the current Lean area-law/QC modules.
+- `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` now cites **AXAWAGGB** for Fable's
+  suggested reframing of `H²(K,Z(G))` center-twist data as a 1-form
+  center-symmetry background. No trusted Lean theorem was changed.
