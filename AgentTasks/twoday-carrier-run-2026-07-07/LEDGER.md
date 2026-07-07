@@ -2368,3 +2368,25 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [HB Codex solo] Aristotle 38eeb1a6 finite Kugo-Ojima harvested and guarded
+- Harvested Aristotle project `38eeb1a6-e465-46b5-bb9a-21e5c490a104`, task
+  `5d6b94e8-1b32-4795-aa1a-cbc90fc61de3`. Landed the clean-room finite
+  Kugo-Ojima module as
+  `PhysicsSM/Draft/NullEdge/Carrier/KugoOjima.lean`.
+- Kernel content: on `V = EuclideanSpace C (Fin n)`, for a fundamental symmetry
+  `J`, the Krein adjoint is `A# = J adjoint(A) J`; `orthoB_ker_eq_range` proves
+  `(ker A)^perp_J = range A#`; `finite_kugo_ojima` proves that a nilpotent
+  Krein-self-adjoint charge has `range Q <= ker Q`, radical
+  `ker Q inf orthoB(ker Q) = range Q`, and nondegenerate quotient pairing.
+  `descent_unitary` records the representative-level preservation statement for
+  `J`-unitaries commuting with `Q`.
+- Added `KugoOjima` to `CarrierAxiomGuard.lean` and guard-pinned
+  `finite_kugo_ojima` plus `descent_unitary`. Claim boundary: PROVED finite
+  nondegenerate quotient / quartet-completeness identity only; positivity of the
+  physical quotient remains OPEN.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/KugoOjima.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.KugoOjima`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.

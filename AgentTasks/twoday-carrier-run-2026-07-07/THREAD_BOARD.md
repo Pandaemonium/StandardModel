@@ -464,18 +464,22 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   pinned by the palindromic theorem in GWRetardedTransfer.lean. Next
   concrete action on this thread; kills pre-registered in the note.
 ### FOCK-GB - second quantization commutes with the quotient [Claude; post-Q08]
-- **Done, in order:** L-Q8-1 finite Kugo-Ojima (rad(h|ker Q) = im Q;
-  nondegenerate cohomology - quartet completeness free in finite dim) +
-  L-Q8-2 (ker A)^perpJ = im A#. ARISTOTLE IN FLIGHT: 38eeb1a6. Then L-Q8-3
-  the interaction identity dGamma(D)^2 = dGamma(D^2) + 2 dGamma_2(Lambda^2 D)
-  (pair kernel = the WEDGE of the carrier - Layer-K resonance; NJL = turn^2,
-  Thirring = transport^2, no new constants); L-Q8-4 the L=4 two-particle
-  checkerboard determinant identity in Q[m]; L-Q8-5 the FLAGSHIP
-  rad(Lambda h) = ideal(N), Fock(V')/rad = Fock(V'/N); L-Q8-6 T-U1 unitarity
-  chain (hypotheses exactly: J-unitarity + constraint preservation + Q1).
+- **Done, in order:** L-Q8-1 finite Kugo-Ojima landed in
+  `PhysicsSM/Draft/NullEdge/Carrier/KugoOjima.lean` from Aristotle
+  38eeb1a6: for nilpotent Krein-self-adjoint `Q`,
+  `range Q <= ker Q`, `ker Q inf orthoB(ker Q) = range Q`, and the quotient
+  form is nondegenerate; L-Q8-2 `(ker A)^perp_J = range A#` is the workhorse
+  theorem `orthoB_ker_eq_range`; `descent_unitary` covers the representative
+  T-U1 preservation chain. CarrierAxiomGuard now pins `finite_kugo_ojima` and
+  `descent_unitary`.
+- **Next:** L-Q8-3 the interaction identity dGamma(D)^2 = dGamma(D^2) +
+  2 dGamma_2(Lambda^2 D) (pair kernel = the WEDGE of the carrier -
+  Layer-K resonance; NJL = turn^2, Thirring = transport^2, no new constants);
+  L-Q8-4 the L=4 two-particle checkerboard determinant identity in Q[m];
+  L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N), Fock(V')/rad = Fock(V'/N).
   Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
   Pauli); kill = a Sym-quantized checkerboard with positive invariant
-  quotient.
+  quotient. Positivity of the Kugo-Ojima quotient itself remains OPEN.
 ### RG-SCHUR - the thesis as an RG fact [Claude; post-Q06+Q08 convergence]
 - **Done:** T-R1 Schur-complement decimation (det factorization; Berezin
   layer as needed) + RG-stability of {Krein-self-adjoint, Gamma-odd} + the

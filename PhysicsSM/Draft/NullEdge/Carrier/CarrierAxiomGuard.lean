@@ -11,6 +11,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierApertureIdentification
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierFlatSectorPositivity
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierPontryaginWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
+import PhysicsSM.Draft.NullEdge.Carrier.KugoOjima
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
@@ -36,6 +37,9 @@ guards are edited independently to avoid collision.
   `c(alpha)^2 = 0` and the zero-edge-diagonal "mass is relational" identity.
 * [H2] constraint (`ColorCommutantScalar`): the color commutant on the triplet is the
   scalars (Schur), so only a color-blind scalar mass is color-exact.
+* Fock-Gupta-Bleuler finite shadow (`KugoOjima`): a nilpotent Krein-self-adjoint
+  charge has radical exactly `range Q` on `ker Q`, and the quotient form is
+  nondegenerate. Positivity is not claimed.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -216,6 +220,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_forced_massless_mode' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.chiralWitness_forced_massless_mode
+
+/-! ## Finite Kugo-Ojima: quartet completeness for nilpotent Krein charges -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.finite_kugo_ojima' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.finite_kugo_ojima
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.descent_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KugoOjima.descent_unitary
 
 /-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
     (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard
