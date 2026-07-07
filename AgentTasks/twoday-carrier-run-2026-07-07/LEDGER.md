@@ -64,3 +64,29 @@ costs nothing. Read the other agent's open claims at the top of every cycle.
   W1 brick 2, both prep the Fable call-01 packet (Move-1 brick-2 statement RATIFY +
   2-complex design fork + OS1 route fork). CarrierAxiomGuard is Claude's; do NOT
   let Codex edit it.
+
+## Cycle 1 (Claude, run launch)
+
+- [CLAIM Claude c1] Carrier/** + CarrierAxiomGuard + Fable calls (standing).
+- [HB Claude c1] Harvested tc-w1-gram (c3ae9b98) + adversarial audit (160b70a2),
+  both COMPLETE. LANDED brick 2a `SolderedSquareGram` (nullSoldered_square_eq_half_gram:
+  D0^2 = the Q_A Gram scalar EXACTLY; nullSoldered_square_isScalar: Q_C bivector slot
+  vanishes under commuting weights - the proof pinpoints Q_C = obstruction to
+  weight-commutativity, motivating covariant-nabla brick 2). Guarded in
+  CarrierAxiomGuard (both footprints standard); `lake build` green (8029 jobs).
+- [AUDIT-FINDING Claude c1] Aristotle adversarial audit of brick 1 + ColorCommutant:
+  brick 1 (`NullNilpotentSquare`) = SOUND (all four modes clean, hypotheses load-
+  bearing, docstring within kernel - and "mass is relational" is if anything
+  UNDER-stated). ColorCommutant = linear algebra SOUND; flagged the [H2] *physics*
+  framing outruns kernel in disclosed ways + one disclosed decorative-generator
+  hollowness. ACTION: the [H2] docstring already carries the constraint reframe;
+  keep prose at "linear-algebra constraint on one triplet", not "[H2] proven". No
+  code change needed; re-verify at next docstring pass.
+- [FABLE-CALL 01 Claude c1] Model id resolution: `claude-fable-5` WORKS (a `2+2`
+  probe returned `4`); an earlier probe failed on Fable's overactive cyber filter
+  (false-positive on `token: FABLE_OK` phrasing) - NOT a real block. Wired
+  `--capture-thinking` into send_claude_review.py (stream-json; logs a Thinking
+  section + parsed text + raw stream) so every Fable call logs prompt + thinking +
+  response. Call 01 (CRACK the covariant-nabla Weitzenbock assembly (a)-(d) + Krein
+  positivity crux + STRATEGIZE the run) sent with capture; source = brick1 + brick2a
+  verbatim; running (boe65fooy). Digest + decisions to follow on completion.

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
 import re
 import shlex
 import subprocess
@@ -113,6 +114,38 @@ def read_prompt(args: argparse.Namespace) -> str:
     return prompt
 
 
+def parse_stream_json(stream: str) -> tuple[str, str]:
+    """Extract concatenated thinking and final text from a Claude CLI stream-json stdout.
+
+    Returns (thinking, text). Robust to non-JSON lines: if nothing parses, returns
+    empty strings and the caller still has the raw stream logged verbatim, so no
+    content is ever lost. `text` falls back to the terminal `result` event.
+    """
+    thinking_parts: list[str] = []
+    text_parts: list[str] = []
+    final_result = ""
+    for raw_line in stream.splitlines():
+        line = raw_line.strip()
+        if not line.startswith("{"):
+            continue
+        try:
+            obj = json.loads(line)
+        except (ValueError, TypeError):
+            continue
+        kind = obj.get("type")
+        if kind == "assistant":
+            for block in obj.get("message", {}).get("content", []) or []:
+                if block.get("type") == "thinking":
+                    thinking_parts.append(block.get("thinking", ""))
+                elif block.get("type") == "text":
+                    text_parts.append(block.get("text", ""))
+        elif kind == "result":
+            final_result = obj.get("result", "") or final_result
+    thinking = "\n\n".join(p for p in thinking_parts if p).strip()
+    text = "\n".join(p for p in text_parts if p).strip() or final_result
+    return thinking, text
+
+
 def make_log_path(slug: str) -> Path:
     stamp = dt.datetime.now().strftime("%Y-%m-%d-%H%M%S")
     return LOG_DIR / f"{stamp}-{slugify(slug)}.md"
@@ -134,9 +167,27 @@ def write_log(
     dry_run: bool,
     timeout_seconds: int,
     max_budget_usd: str,
+    thinking: str = "",
+    parsed_text: str = "",
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     command_text = " ".join(shlex.quote(part) for part in command)
+    thinking_section = ""
+    if thinking or parsed_text:
+        thinking_body = thinking if thinking else "(none returned by the model)"
+        thinking_section = f"""## Thinking (model reasoning)
+
+```text
+{thinking_body}
+```
+
+## Response text (parsed from stream)
+
+```text
+{parsed_text}
+```
+
+"""
     body = f"""# Claude model call log
 
 ## Metadata
@@ -163,7 +214,7 @@ def write_log(
 {prompt}
 ```
 
-## Response stdout
+{thinking_section}## Response stdout
 
 ```text
 {stdout}
@@ -251,6 +302,13 @@ def main() -> None:
         help="Legacy mode: no tools, no MCP (reproduces the old prose-only call).",
     )
     parser.add_argument("--timeout-seconds", type=int, default=600)
+    parser.add_argument(
+        "--capture-thinking",
+        action="store_true",
+        help="Capture the model's thinking/reasoning: switch to stream-json output "
+        "and log the extracted thinking blocks and final text (plus the raw stream). "
+        "Use for Fable calls so the reasoning is preserved, not just the answer.",
+    )
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--no-log", action="store_true")
     parser.add_argument("--claude-bin", default="claude")
@@ -265,8 +323,11 @@ def main() -> None:
         args.model,
         "--max-budget-usd",
         args.max_budget_usd,
-        "--output-format",
-        "text",
+        *(
+            ["--output-format", "stream-json", "--verbose"]
+            if args.capture_thinking
+            else ["--output-format", "text"]
+        ),
         "--add-dir",
         str(ROOT),
     ]
@@ -317,6 +378,10 @@ def main() -> None:
             status = "timeout"
 
     finished = dt.datetime.now().isoformat(timespec="seconds")
+    thinking = ""
+    parsed_text = ""
+    if args.capture_thinking and stdout:
+        thinking, parsed_text = parse_stream_json(stdout)
     if not args.no_log:
         log_path = make_log_path(args.slug)
         write_log(
@@ -334,6 +399,8 @@ def main() -> None:
             dry_run=args.dry_run,
             timeout_seconds=args.timeout_seconds,
             max_budget_usd=args.max_budget_usd,
+            thinking=thinking,
+            parsed_text=parsed_text,
         )
         print(log_path)
     else:
