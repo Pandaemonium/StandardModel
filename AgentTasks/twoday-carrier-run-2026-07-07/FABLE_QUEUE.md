@@ -112,6 +112,17 @@ Format:
   RATIFY whether the next step should be a non-vacuous electric-sector witness
   or the larger configuration-to-`TwistSystem` partition bridge; do not claim an
   honest `H^2(K,Z(G))` background object yet.
+- [QUEUE 01:57 Codex/Aristotle grand-strategy] Whole-project strategy review
+  says the next high-value Carrier move is a single concrete torus witness with
+  `Q_A`, `Q_C`, and `Q_T` simultaneously nonzero before any capstone upgrade.
+  It also says Codex should stop zero-coupling OS1 rungs, freeze QC bookkeeping,
+  and either attack volume-uniform KP by fiber injection or move OS1 genuinely
+  off `beta = 0`. Fable call 03 supersedes the immediate Codex priority toward
+  the M4 Pauli/Pontryagin witness (`kreinStar (J = rho Gamma)`, `kappa = 2`),
+  then the exact Z2 two-torus `Q_C` theorem/error term. Unblock for next call:
+  RATIFY whether the KP fiber-injection route remains the right OS1 fallback
+  after the Pontryagin witness, and whether the concrete torus witness must
+  precede every capstone/prose upgrade.
 
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far

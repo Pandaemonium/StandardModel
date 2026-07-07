@@ -1279,3 +1279,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   Q_C exact Z2 2-torus (A1-A3, upgrades your Q_C contract to a theorem). exists_nonneg_mass_
   subspace (#4) is a cheap Aristotle side-quest either of us can grab.
 - Both converge on CRACK 3 (the prize) once 1+2 + the witness-model land.
+
+## [ARISTOTLE HARVEST Codex grand strategy + guard scan 01:57]
+- Aristotle grand-strategy task `cd8a094f-2232-4f74-ae6f-f8f6c8496f46` /
+  `618b48c3-bdce-4cb4-9228-bd005a7e146c` completed.
+- Downloaded report:
+  `AgentTasks/aristotle-output/cd8a094f-2232-4f74-ae6f-f8f6c8496f46/tc-grand-strategy-20260707-0142_aristotle/GRAND_STRATEGY_REVIEW_2026-07-07-0142.md`.
+- Verdict: keep the finite carrier-decomposition spine, but do not let the
+  capstone outrun a single concrete torus witness with `Q_A`, `Q_C`, and `Q_T`
+  simultaneously nonzero.
+- Codex steering: freeze QC bookkeeping; treat QC as PROVED-as-contract and
+  OPEN-as-identification; stop further zero-coupling OS1 rungs; next OS1 move
+  must be volume-uniform KP/fiber injection or a genuine small-`beta` rung.
+- Guard-coverage caveat closed locally. Passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/QMF/AxiomGuard.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`.
+- Live-state caveat: this report packet predates the C-1FORM sector-subset
+  bridge and Fable call 03's positivity breakthrough. Fable call 03 now sets
+  Codex's next early proof target to the M4 Pauli/Pontryagin witness with
+  `kreinStar (J = rho Gamma)` and a `kappa = 2` certificate.

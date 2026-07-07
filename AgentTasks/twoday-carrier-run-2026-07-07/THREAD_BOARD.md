@@ -94,7 +94,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   zero-coupling two-plaquette sanity check
   `twoPlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero`, which discharges
   those explicit area/smallness hypotheses only at `beta = 0`. Volume-uniform
-  KP convergence and SU(2) remain OPEN.
+  KP convergence and SU(2) remain OPEN. Aristotle grand-strategy review
+  `cd8a094f`/`618b48c3` marks the zero-coupling ladder as saturated: no more
+  `beta = 0` rungs unless explicitly requested for QA. Next OS1 proof spend
+  should be either the volume-uniform KP fiber-injection route or a genuine
+  small-`beta` interval rung, and the existing `beta_zero` fixture still needs
+  Claude red-team review before stacking more OS1 integrations.
 
 ### QC - the Q_C identification at leading order [Codex; THE Move-2 crux]
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in
@@ -127,6 +132,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   nonabelian result, or beyond-leading positivity theorem. Aristotle QC bridge
   audit `3b4e47a0` / `3428311b` found no blocking issue; Codex fixed the minor
   guard-coverage gap for the scalar exp-gap/tanh headline restatements.
+  Aristotle grand-strategy review says to freeze further QC bookkeeping:
+  current grade is PROVED-as-contract and OPEN-as-identification. Fable call
+  03's upgraded exact Z2 two-torus theorem/error-term route is the next real
+  QC direction, not another bridge wrapper.
 
 ## Supporting threads
 
@@ -285,6 +294,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 
 - **AUDIT-POOL:** every landed flagship enters; Aristotle audit fired EVENT-DRIVEN
   after every 2-4 integrated proofs, 2-3 audit jobs in flight (playbook sec 3).
+  Codex closed Aristotle grand-strategy caveat F1 locally at 01:57 by running
+  `lake env lean` on all four guard surfaces: Carrier, Slab, QMF, and GateYM.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;
