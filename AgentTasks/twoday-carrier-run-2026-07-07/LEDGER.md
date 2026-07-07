@@ -90,3 +90,43 @@ costs nothing. Read the other agent's open claims at the top of every cycle.
   response. Call 01 (CRACK the covariant-nabla Weitzenbock assembly (a)-(d) + Krein
   positivity crux + STRATEGIZE the run) sent with capture; source = brick1 + brick2a
   verbatim; running (boe65fooy). Digest + decisions to follow on completion.
+
+## Cycle 1 (Codex, run launch)
+
+- [CLAIM Codex 20:52] PH harvest (`sm-product-haar` ac751ecb) in
+  `PhysicsSM/Draft/NullEdge/QMF/ProductHaarConfig.lean`,
+  `ProductHaarZ2RP.lean`, QMF guard/doc updates; no Carrier/** edits.
+
+## [FABLE-CALL 01] digest (Claude, cycle 1) - covariant-nabla assembly CRACKED
+
+Log: AgentTasks/model-calls/claude/2026-07-06-205114-fable-call-01.md (status completed;
+thinking = none returned by the model via stream-json; full prompt+answer logged). This
+was a high-value CRACK+STRATEGIZE call - Fable advanced the program AND caught 2 errors.
+ADVANCES (all [ESTABLISHED] at statement level pending kernel check unless noted):
+- **Master identity in ONE abstract algebra B** (avoid the tensor product): with
+  `hcl : γe γf + γf γe = algebraMap(g e f)` and `hcomm : Commute (γe) (∇f)`,
+  `D0 = ∑ γe ∇e` satisfies `D0^2 = Q_A(sym⊗sym) + Q_C(antisym⊗antisym)`. Brick 2a is
+  now a COROLLARY (`[∇e,∇f]=0 ⟹ Q_C=0`). Char-free ordered form removes Field/h2.
+- **Minimal 2-complex = the Z2xZ2 gauge torus** (commuting shifts via add_comm; no
+  boundary partiality). Beats both the causal-diamond reuse and the raw slab.
+- **Q_C path-difference lemma** (basepoint-free, no inverses): `[∇a,∇b] = M(U_a·(U_b∘τ_a)
+  − U_b·(U_a∘τ_b))∘T_aT_b`; `(Hol−1)` dressed form is the corollary. NOTE Q_C carries the
+  DOUBLE SHIFT T_aT_b (a transport operator, not a pointwise curvature) - my packet (b)
+  would have stated a false identity without it.
+- **Krein positivity (2ndary):** target `krein_square_form` (<ψ,D^#Dψ>_η = <Dψ,Dψ>_η) +
+  `positivity_transfer` (>=0 on any sector S with D(S) in an η-positive P). Existence of a
+  natural positive sector = [CRUX], make it a COMPUTATIONAL PROBE this run, not a theorem.
+- **OS1 fork answer:** character/polymer on a FINITE gauge group is far more Mathlib-
+  formalizable than Shen-Zhu-Zhu (no log-Sobolev in Mathlib); Codex: prototype finite
+  group first, before SU(2) Haar. [revisit call 03 w/ Codex gate status]
+CAUGHT ERRORS / corrections (red-team of MY packet, by Fable):
+- (c) gamma-even Phi does NOT cancel - covariant constancy kills the COMMUTATOR not the
+  ANTIcommutator. Corrected: Phi = Gamma·phi (chirality-dressed), {D0,Phi}=∑ γe Γ [∇e,phi].
+- "Q_C precisely the obstruction" is ONE-directional; converse needs flatness_iff_commute.
+- brick 2a `Field`+`h2` stronger than needed; char-free backfill (brick 2a').
+MY red-team of FABLE (discipline on the way out): verified the master-identity algebra by
+hand. Fable's displayed CHAR-FREE ordered form has a diagonal factor slip ((g e e)•∇e^2
+should be γe^2•∇e^2 = ½ g ee). The ×4 SYMMETRIZED form is exactly right & fully char-free:
+`4•D0^2 = ∑e∑f (g e f)•(∇e∇f+∇f∇e) + ∑e∑f [γe,γf][∇e,∇f]`. SHIPPING THIS (not Fable's
+verbatim char-free line) as brick 2b.
+SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> Krein brick.
