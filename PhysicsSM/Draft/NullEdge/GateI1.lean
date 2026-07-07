@@ -26,6 +26,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakRung
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureEqualsTurn
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateI1.ScreenArea
+import PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection
 import PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone
 
 /-!
@@ -61,7 +62,9 @@ decisive "colored mass" test, resolved on the co-location side - the octonion
 color factor enters a mass only through the `SU(3)`-invariant norm, so the mass
 is color-blind on the three basis states AND on every `SU(3)` orbit of the whole
 fundamental rep; `UnificationCapstone`: the bundled 1a/1b/Furey/B0 conjunction,
-labeled co-location not coupling per the audit).
+labeled co-location not coupling per the audit); plus the Q09 screen-area
+polarization module (`ScreenArea`) and the Q10 split-signature finite obstruction
+module (`SignatureSelection`).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 

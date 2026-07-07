@@ -41,8 +41,9 @@ You may work across the former Codex and Claude lanes when doing solo work:
 
 - Carrier / Weitzenbock / Q_A / Q_T / index / Gupta-Bleuler lanes.
 - Closure / Q_C / GateYM / Osterwalder-Seiler / KP / product-Haar lanes.
-- New Fable-driven threads: horizon area/entropy, chirality-solder audit,
-  real-structure seam, equivariant McKean-Singer, RG-Schur, and anomaly gates.
+- New Fable-driven threads: horizon area/entropy, signature/dimension
+  selection, chirality-solder audit, real-structure seam, equivariant
+  McKean-Singer, RG-Schur, and anomaly gates.
 
 Preserve file-local conventions and ownership history.  If fresh peer activity
 appears in `PhysicsSM/Draft/NullEdge/Carrier/**`,
@@ -57,24 +58,32 @@ overwriting it.
    wedge-count formulas, positivity, and honest boundaries.  Park entropy,
    Jacobson, BW-cut, and ANEC claims as MEMO/strategy until their finite
    hypotheses are stated and checked.
-2. **Q12 chirality-solder audit.** Develop the G2-parity thread, the new
+2. **Q10 signature/dimension selection.** Treat signature as the order-side
+   theorem rail and dimension as a reconstruction rail.  Kernelize the finite
+   ladder first: definite-no-null, the `Z^(2,2)` frustrated-triple obstruction,
+   Lorentzian positive-pairing transitivity, null-orthogonality rigidity,
+   split-signature tachyonic witnesses, and the same-chirality scalar-amplitude
+   census.  Never claim "3+1 from consistency alone"; use the Q10 boundary:
+   signature is a theorem about stable order, dimension is conditional on the
+   named chirality and scalar-amplitude axioms.
+3. **Q12 chirality-solder audit.** Develop the G2-parity thread, the new
    constraint-equivariance hypothesis `tau Gamma' = Gamma'`, the
    charge-resolved equivariant McKean-Singer prerequisite, and the PSA anomaly
    gates.  Treat "factor separation" as superseded by the stronger G2-parity
    mechanism; do not claim safety without the bridge/convention check.
-3. **Q06-Q08 synthesis.** Use the new exact-GW/edge-reversal, equipartition
+4. **Q06-Q08 synthesis.** Use the new exact-GW/edge-reversal, equipartition
    Koide, Fock-Gupta-Bleuler, and RG-Schur material as active research rails.
    Convert near-free finite identities into Lean, and keep speculative physics
    claims explicitly MEMO or OPEN.
-4. **QC-GRAM and Q_C.** Continue the closure/Q_C line: distinguish raw linear
+5. **QC-GRAM and Q_C.** Continue the closure/Q_C line: distinguish raw linear
    closure defects from Gram/Laplacian normalization, pursue concrete Carrier
    factorization only with the correct normalization, and keep beyond-leading
    positivity claims open unless proved.
-5. **OS1/KP/RP infrastructure.** Continue the Osterwalder-Seiler,
+6. **OS1/KP/RP infrastructure.** Continue the Osterwalder-Seiler,
    product-Haar/RP, character/polymer, and Penrose/KP routes when they are the
    highest-EV finite targets.  Prefer exact support lemmas and honest no-go
    statements over broad gap claims.
-6. **Manuscript/status alignment.** Keep the P1 v3 manuscript, thread board,
+7. **Manuscript/status alignment.** Keep the P1 v3 manuscript, thread board,
    scorecard, and ledger aligned with what is actually kernel-checked.  New
    MEMO-grade material should improve the roadmap without being promoted to
    PROVED.
@@ -83,8 +92,10 @@ overwriting it.
 
 1. **Harvest fresh in-repo context.** Read and act on new files such as
    `AgentTasks/fable_parallel/Q09_answer.md`,
+   `AgentTasks/fable_parallel/Q10_answer.md`,
    `AgentTasks/fable_parallel/Q12_answer.md`, the round-2 packet intro, recent
-   `LEDGER.md` entries, and `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`.
+   `LEDGER.md` entries, and
+   `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`.
 2. **Land kernel-ready finite algebra first.** Prefer small exact statements:
    screen-area/aperture polarization (Q09 L1), finite no-go trace arguments,
    G2 parity checks, equivariant index bookkeeping, quotient descent lemmas,

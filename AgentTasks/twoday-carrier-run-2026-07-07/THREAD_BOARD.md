@@ -499,6 +499,23 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   universal coefficient, and continuum/horizon interpretations remain MEMO or
   OPEN until their finite hypotheses are stated and checked.
 
+### DIM-SIG-SELECTION - Q10 stable order and dimension reconstruction [Codex solo; new Q10 lane]
+- **Done:** Q10-L2 finite obstruction landed in
+  `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`: the explicit
+  `Z^(2,2)` null triple for the `(+,+,-,-)` form, pairings `(3, 4, -1)`, and
+  `split22_frustrated_triple_no_coloring`, showing no sign-consistent
+  retarded/advanced two-coloring of the signed triangle. The theorem is guard
+  pinned with footprint `[propext, Classical.choice, Quot.sound]`.
+- **Status:** PROVED finite obstruction only. It supports Q10's stable-order
+  signature rail, not the full Lorentzian uniqueness theorem yet. The next
+  exact rungs are L1 definite-no-null, L3 Lorentzian positive-pairing
+  transitivity, L4 null-orthogonality rigidity, L5 split-signature tachyonic
+  mass witness, and L6 same-chirality scalar-amplitude census.
+- **Claim boundary:** never phrase this as "retardation on one finite complex
+  implies Lorentzian" or "3+1 follows from consistency alone." Q10's boundary is
+  signature from stable order; dimension from chirality plus scalar-amplitude
+  reconstruction.
+
 ## Standing meta-threads
 
 - **AUDIT-POOL:** every landed flagship enters; Aristotle audit fired EVENT-DRIVEN

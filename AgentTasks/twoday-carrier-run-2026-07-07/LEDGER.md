@@ -2347,3 +2347,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ScreenArea.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.ScreenArea`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [HB Codex solo] Q10 signature-selection finite obstruction landed
+- Harvested `AgentTasks/fable_parallel/Q10_answer.md` into the solo research
+  goals. `GOAL_PROMPT_CODEX.md` now treats Q10 as a first-class rail:
+  signature is an order/stability theorem, while dimension is a reconstruction
+  conditional on chirality plus scalar amplitude. New Fable/model calls remain
+  skipped per user instruction.
+- Landed Q10-L2 in
+  `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`: for the
+  `(+,+,-,-)` integer form, the vectors `(1,0,1,0)`, `(3,4,0,5)`, and
+  `(0,1,1,0)` are null, have pairings `(3, 4, -1)`, and admit no
+  sign-consistent retarded/advanced two-coloring. Added the module to the GateI1
+  aggregator and a `DIM-SIG-SELECTION` board thread.
+- Claim boundary: PROVED finite obstruction only. This is the seed for Q10's
+  stable-retardation signature theorem, not a proof that one finite retarded
+  complex certifies Lorentzian signature and not a derivation of 3+1 from
+  consistency alone.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
