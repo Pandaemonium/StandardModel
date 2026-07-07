@@ -82,4 +82,35 @@ theorem flat_sector_positivity (gamma nabla : E → (M →ₗ[ℂ] M)) (Gamma ph
   rw [hD, hGphi]
   exact ⟨rfl, by simpa using inner_self_nonneg (𝕜 := ℂ) (x := phi ψ)⟩
 
+/-! ## The Krein form is a genuine indefinite inner product when `Γ` is self-adjoint
+
+This is the abstract half of the certified Krein reading (addressing the review-flag): the
+form `⟪x, Γ y⟫` is Hermitian (hence a genuine indefinite inner product) exactly when the
+fundamental symmetry `Γ` is self-adjoint. Combined with `flat_sector_positivity` (the value
+`= ‖φψ‖² ≥ 0`), this gives certified nonnegativity of a *bona fide* indefinite form on the
+flat sector - conditional only on `Γ` being a fundamental symmetry (`Γ† = Γ`), which the M4
+`κ = 2` Pauli witness supplies concretely. -/
+
+section Krein
+
+variable [FiniteDimensional ℂ M]
+
+open scoped ComplexConjugate
+
+/-- The Krein/indefinite form induced by a (candidate) fundamental symmetry `Γ`:
+`⟪x, y⟫_Γ := ⟪x, Γ y⟫`. -/
+noncomputable def kreinForm (Gamma : M →ₗ[ℂ] M) (x y : M) : ℂ := inner ℂ x (Gamma y)
+
+/-- **The Krein form is Hermitian when `Γ` is self-adjoint** - i.e. `⟪·, Γ ·⟫` is a genuine
+indefinite inner product exactly on a self-adjoint fundamental symmetry. This is the formal
+content behind the "Krein" reading (it genuinely uses `Γ† = Γ`, unlike the flat-sector value
+identity, which needs only `hPhiComm`). -/
+theorem kreinForm_hermitian (Gamma : M →ₗ[ℂ] M)
+    (hGammaSA : LinearMap.adjoint Gamma = Gamma) (x y : M) :
+    kreinForm Gamma x y = conj (kreinForm Gamma y x) := by
+  unfold kreinForm
+  rw [inner_conj_symm, ← LinearMap.adjoint_inner_left, hGammaSA]
+
+end Krein
+
 end PhysicsSM.Draft.NullEdge.Carrier

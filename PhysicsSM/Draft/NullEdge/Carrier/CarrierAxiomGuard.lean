@@ -139,6 +139,10 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.flat_sector_positivity
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.kreinForm_hermitian' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.kreinForm_hermitian
+
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.color_commutant_eq_scalars' depends on axioms: [propext, Classical.choice, Quot.sound] -/
