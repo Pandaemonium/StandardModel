@@ -2088,3 +2088,21 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   (QCClosureGramCheck.lean in progress + SlabAxiomGuard edit) - the S-C
   factorization check is live on the QC lane within the hour. No collision;
   Carrier-side ladder work stays mine.
+
+## [HB Codex] QC-GRAM normalization check landed
+- Added `PhysicsSM/Draft/NullEdge/GateYM/QCClosureGramCheck.lean` and guarded
+  the two headline normalization facts in `SlabAxiomGuard`.
+- Verdict for the first QC-GRAM question: a unitary defect Gram square is the
+  Hermitian Laplacian normalization, not the raw linear defect:
+  `(1 - u)^* (1 - u) = 2 - u - u^*` for complex unitary scalar `u`.
+  In the finite `Z2` specialization, `(1 - s)^2 = 2 * (1 - s)`, so the
+  half-normalized Gram square equals the linear closure defect.
+- Claim boundary: this decides the scalar/`Z2` normalization layer only. It is
+  not yet a Carrier-side nonabelian/operator factorization of the concrete
+  Weitzenbock `Q_C`, not a gauge-measure theorem, and not beyond-leading
+  closure positivity.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/QCClosureGramCheck.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.

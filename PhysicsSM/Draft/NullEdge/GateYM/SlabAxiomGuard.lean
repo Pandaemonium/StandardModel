@@ -12,6 +12,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
 import PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout
+import PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierTorusAttachment
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
@@ -505,6 +506,16 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atTop_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.GapAsymptotics.g_atTop_zero
+
+/-! ## QC-GRAM normalization check: closure defect versus unitary Gram square -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.complex_unitaryDefectGram_eq_laplacian' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.complex_unitaryDefectGram_eq_laplacian
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.z2_half_defectGram_eq_linearDefect' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.z2_half_defectGram_eq_linearDefect
 
 /-! ## Batch wave 11 (final): E8-240 COMPLETENESS - E8RootSet = exactly the norm-2 E8-lattice vectors -/
 

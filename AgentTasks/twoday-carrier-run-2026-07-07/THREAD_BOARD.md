@@ -373,6 +373,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   normalization (Q01 S-C). If TRUE: exact unitary-regime closure positivity,
   superseding beyond-leading in that regime. If FALSE: the cross-term is the
   sharp statement of open problem #3. Either branch is a landing.
+- **Status:** FIRST NORMALIZATION VERDICT LANDED (Codex). `QCClosureGramCheck.lean`
+  proves the exact scalar unitary normalization:
+  `(1 - u)^* (1 - u) = 2 - u - u^*`. Thus a raw linear closure defect
+  `1 - U` is not itself the Gram square unless the `Q_C` slot uses the
+  Hermitian Laplacian normalization. In the finite `Z2` specialization,
+  `(1 - s)^2 = 2 * (1 - s)`, so the half-normalized Gram square equals the
+  linear defect. Guarded in `SlabAxiomGuard`. Still OPEN: the Carrier-side
+  nonabelian/operator `Q_C` factorization in the concrete Weitzenbock
+  normalization.
 ### E-TELESCOPE - corrected telescoping + P-probe [Claude; replaces the killed Tr E conjecture]
 - **Done:** numeric P-probe script FIRST (ten lines); then Q02-L1 pointwise
   splitting (tr_0 E = Phi + divergence), Q02-L2 closed telescoping + kill
