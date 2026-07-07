@@ -2730,3 +2730,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11BLDictionary.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11BLDictionary`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q10 multi-time embedding obstruction landed
+- Harvested Aristotle project `825853b9`
+  (`ne-q10-multitime-embedding-uniqueness-audit-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/MultiTimeEmbedding.lean` and imported it
+  from the GateI1 aggregator.
+- Proved `sigDot_coord4`: a four-coordinate `+,+,-,-` diagonal-signature
+  embedding reproduces the split `(2,2)` bilinear form.  Proved
+  `multitime_frustrated_triple`: any such signature has null vectors with
+  pairings `(+,+,-)`.  Proved `multitime_no_retarded_coloring`: those three
+  constraints admit no retarded/advanced two-coloring.
+- Claim boundary: PROVED finite diagonal-signature multi-time obstruction only.
+  This closes the finite stable-order signature rail together with
+  `LorentzianTransitivity`, but it does not prove a general Sylvester-inertia
+  bridge and does not select dimension.
+- Run docs updated: Q10 status in `THREAD_BOARD.md`; follow-up harvest status in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/MultiTimeEmbedding.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.MultiTimeEmbedding`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

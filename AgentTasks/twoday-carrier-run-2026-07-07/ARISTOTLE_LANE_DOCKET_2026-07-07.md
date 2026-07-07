@@ -67,6 +67,7 @@ The first named wave has now been mostly harvested into the live repo:
 - `5f3b8963` Q06 carrier-GW: strategy/counterexample harvested; local
   no-compiler-trust counterexample subsequently landed, so follow-up `7a12dbbd`
   was canceled.
+- `825853b9` Q10 multi-time embedding: landed `MultiTimeEmbedding.lean`.
 - `c2e23b53` Q12 charge resolution: landed `ChargeResolution.lean`.
 - `e2df3555` Q11 B-L dictionary: landed `Q11BLDictionary.lean`.
 
@@ -90,12 +91,15 @@ focused Mathlib Lake package.
 
 Queue check after submission: all eight follow-up projects were `RUNNING`.
 After the local Q06 counterexample landing, `7a12dbbd` was canceled.  Follow-up
-`c2e23b53` completed and was harvested into `ChargeResolution.lean`, proving the
-finite charge-sector additivity/cannot-hide/direct-sum bookkeeping package.
+`825853b9` completed and was harvested into `MultiTimeEmbedding.lean`, proving
+the finite diagonal-signature multi-time obstruction.  Follow-up `c2e23b53`
+completed and was harvested into `ChargeResolution.lean`, proving the finite
+charge-sector additivity/cannot-hide/direct-sum bookkeeping package.
 `e2df3555` completed and was harvested into `Q11BLDictionary.lean`, proving the
 finite B-L/RC0 dictionary without the compiler-eval trust footprint of the
 standalone Aristotle version.  These should still be treated as finite
-accounting/Cartan arithmetic only; analytic or operator-level equivariant
+diagonal-signature/accounting/Cartan arithmetic only; the general
+Sylvester-inertia bridge, analytic or operator-level equivariant
 McKean-Singer, anomaly-gate promotion, and the group-level RC0 determinant
 cocycle remain open.  The other follow-up projects remain active unless later
 status checks say otherwise.

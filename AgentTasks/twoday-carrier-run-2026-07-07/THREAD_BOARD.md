@@ -549,22 +549,31 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `lorentzian_pos_pairing_trans` proves positive null-pairing transitivity in
   signature `(1,m)`, and `lorentzian_pos_pairing_rigidity` proves the zero
   boundary is exactly projective collinearity. The headline theorems are guard
-  pinned with footprint
-  `[propext, Classical.choice, Quot.sound]`.
-- **Status:** PROVED finite Lorentzian half plus finite split-signature
-  obstruction stack. This strongly supports Q10's stable-order signature rail,
-  but the full uniqueness theorem still needs the multi-time embedding ladder
-  and any dimension-selection claim still needs separate chirality and scalar
-  amplitude reconstruction. L6 still needs the full Spin/Weyl representation
-  stack before it can be stated as a representation-theoretic
+  pinned with footprint `[propext, Classical.choice, Quot.sound]`. Aristotle
+  follow-up `825853b9` was harvested into
+  `PhysicsSM/Draft/NullEdge/GateI1/MultiTimeEmbedding.lean`:
+  `sigDot_coord4` embeds the split `(2,2)` witness into any diagonal signature
+  with four distinct `+,+,-,-` coordinates, `multitime_frustrated_triple`
+  produces a null triple with pairings `(+,+,-)`, and
+  `multitime_no_retarded_coloring` proves no retarded/advanced two-coloring can
+  satisfy those three constraints.
+- **Status:** PROVED finite Lorentzian half plus finite general multi-time
+  obstruction stack. This now closes the finite stable-order signature rail at
+  the diagonal-signature level: Lorentzian `(1,m)` has positive-pairing
+  transitivity, while any multi-time signature with at least two positive and
+  two negative directions has a frustrated triple. Any dimension-selection claim
+  still needs separate chirality and scalar-amplitude reconstruction. L6 still
+  needs the full Spin/Weyl representation stack before it can be stated as a
+  representation-theoretic
   `Hom_Spin(S tensor S, 1)` classification.
 - **Aristotle:** harvested named lanes Q10-L3 (`dbe113e5`), Q10-L5
-  (`3a66e413`), and Q10-L6 (`7fd8a9bf`); see
-  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+  (`3a66e413`), Q10-L6 (`7fd8a9bf`), and Q10 multi-time embedding
+  (`825853b9`); see `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
 - **Claim boundary:** never phrase this as "retardation on one finite complex
-  implies Lorentzian" or "3+1 follows from consistency alone." Q10's boundary is
-  signature from stable order; dimension from chirality plus scalar-amplitude
-  reconstruction.
+  implies Lorentzian" or "3+1 follows from consistency alone." The new theorem
+  assumes a diagonalized sign-vector model; a general Sylvester-inertia bridge
+  remains a separate theorem. Q10's boundary is signature from stable order;
+  dimension from chirality plus scalar-amplitude reconstruction.
 
 ### G2-PARITY-CHIRALITY-SOLDER - Q12 algebra core and operator gates [Codex solo; new Q12 lane]
 - **Done:** Aristotle audit `0a6239d5` completed. Codex integrated the
