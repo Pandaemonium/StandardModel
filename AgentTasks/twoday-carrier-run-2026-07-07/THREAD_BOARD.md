@@ -26,8 +26,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   sub-bricks (post-2b): torus Q_C (Z2xZ2 gauge torus, path-difference form,
   double-shift T_aT_b); **corrected Q_T** (`Phi = Gamma·phi`, NOT gamma-even -
   call-01 caught the gamma-even cancellation is FALSE, kills commutator not
-  anticommutator); `E` def + vanishing-at-constant-soldering; then the assembly
-  `D^2 = Q_A+Q_C+Q_T+E`. Krein-square upgrade **BANKED + guarded + Codex-reviewed**
+  anticommutator); `E` backfill now names `solderingGradientDefect` and guard-pins
+  `solderingGradientDefect_eq_zero_of_comm` (`hcomm -> E=0`, no converse claimed
+  for the total defect sum); then the assembly `D^2 = Q_A+Q_C+Q_T+E`.
+  Krein-square upgrade **BANKED + guarded + Codex-reviewed**
   in commit `5e0c5c8`: `carrier_krein_square` and
   `carrier_krein_square_selfAdjoint` prove the algebraic involution-square
   mass-form identity. The physical Krein reading remains pending a pinned
@@ -243,7 +245,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   soldering-difference `[nabla_e, gamma_f]`; antisymmetric torsion supplies only
   one half, with proposed split `2 * E = Contract(T) + Contract(S)`. Next
   Carrier-owned move: `DiscreteTorsion` bookkeeping module plus a small split
-  proof job, while the geometric teleparallel naming stays Fable-gated.
+  proof job, while the geometric teleparallel naming stays Fable-gated.  Local
+  W1 backfill now gives the algebraic defect a stable name and proves the
+  constant-soldering vanishing direction, but it does not yet prove the torsion
+  contraction split.
 ### C-1FORM - finite one-form center-symmetry framing [Codex strategy]
 - **Done:** an Aristotle/Fable-ratified Lean statement layer connecting the
   existing `CenterFluxSector` finite center-shift/electric-sector API and the

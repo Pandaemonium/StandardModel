@@ -12,7 +12,7 @@ the soldered square carries an extra **soldering-gradient defect** term `E`:
 >   `E = sum_e sum_f gamma_e (nabla_e gamma_f - gamma_f nabla_e) nabla_f`.
 
 `E` is the discrete spin-connection / tetrad-gradient (gravity) slot of the generalized
-Lichnerowicz formula (arXiv:hep-th/9503153); it vanishes termwise exactly when `hcomm`
+Lichnerowicz formula (arXiv:hep-th/9503153); it vanishes termwise when `hcomm`
 holds (constant soldering), recovering `weitzenbock_master`. On a torus with
 position-dependent soldering `gamma_f = M(gamma-field)`, `nabla_e gamma_f - gamma_f nabla_e`
 is the covariant lattice gradient of the frame (the discrete tetrad postulate).
@@ -43,19 +43,41 @@ namespace PhysicsSM.Draft.NullEdge.Carrier
 
 variable {R B E : Type*} [CommRing R] [Ring B] [Algebra R B] [Fintype E]
 
+/-- The named `E`-slot: the soldering-gradient defect measuring failure of the
+soldering generators to commute with transport.  In the discrete-teleparallel
+reading this is the algebraic frame-gradient remainder; no positivity or
+continuum field equation is asserted here. -/
+def solderingGradientDefect (gamma nabla : E → B) : B :=
+  ∑ e, ∑ f, gamma e * (nabla e * gamma f - gamma f * nabla e) * nabla f
+
 /-- **The soldering-gradient defect identity** (hypothesis-free).  The soldered square
 splits into the `gamma`-ordered block plus the frame-gradient defect
 `gamma_e (nabla_e gamma_f - gamma_f nabla_e) nabla_f`. -/
 theorem soldered_square_defect (gamma nabla : E → B) :
     (solderedNC gamma nabla) ^ 2
       = (∑ e, ∑ f, gamma e * gamma f * (nabla e * nabla f))
-        + (∑ e, ∑ f, gamma e * (nabla e * gamma f - gamma f * nabla e) * nabla f) := by
-  simp only [solderedNC, pow_two, Finset.sum_mul_sum]
+        + solderingGradientDefect gamma nabla := by
+  simp only [solderedNC, solderingGradientDefect, pow_two, Finset.sum_mul_sum]
   rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl; intro e _
   rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl; intro f _
   noncomm_ring
+
+/-- The `E`-slot vanishes under constant soldering.  This is the exact finite
+version of the "discrete tetrad postulate" used by the carrier assembly: if each
+`gamma f` commutes with each transport `nabla e`, the soldering-gradient defect
+has no contribution. -/
+theorem solderingGradientDefect_eq_zero_of_comm (gamma nabla : E → B)
+    (hcomm : ∀ e f, gamma e * nabla f = nabla f * gamma e) :
+    solderingGradientDefect gamma nabla = 0 := by
+  unfold solderingGradientDefect
+  apply Finset.sum_eq_zero
+  intro e _
+  apply Finset.sum_eq_zero
+  intro f _
+  have h : nabla e * gamma f = gamma f * nabla e := (hcomm f e).symm
+  simp [h]
 
 /-- **The E-carrying (varying-soldering) master identity.**  Dropping `hcomm`, the
 soldered square is `Q_A + Q_C` plus the soldering-gradient gravity slot `4 • E`.  With
@@ -66,7 +88,7 @@ theorem weitzenbock_master_varying (gamma nabla : E → B) (g : E → E → R)
       = (∑ e, ∑ f, g e f • (nabla e * nabla f + nabla f * nabla e))
         + (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e)
             * (nabla e * nabla f - nabla f * nabla e))
-        + (4 : R) • (∑ e, ∑ f, gamma e * (nabla e * gamma f - gamma f * nabla e) * nabla f) := by
+        + (4 : R) • solderingGradientDefect gamma nabla := by
   rw [soldered_square_defect, smul_add]
   congr 1
   -- Remaining goal: `4 • (∑ e ∑ f gamma e * gamma f * (nabla e * nabla f)) = Q_A + Q_C`.

@@ -147,11 +147,15 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_square_assembly
 
-/-! ## Move-1 E-slot: soldering-gradient (gravity) remainder; E=0 iff hcomm -/
+/-! ## Move-1 E-slot: soldering-gradient (gravity) remainder; hcomm implies E=0 -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.soldered_square_defect' depends on axioms: [propext, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.soldered_square_defect
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.solderingGradientDefect_eq_zero_of_comm' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.solderingGradientDefect_eq_zero_of_comm
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_varying' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

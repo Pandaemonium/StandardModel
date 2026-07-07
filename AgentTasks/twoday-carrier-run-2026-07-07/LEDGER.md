@@ -3399,3 +3399,28 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   is back to twelve active StandardModel-relevant lanes.
 - Updated `GOAL_PROMPT_CODEX.md` and `ARISTOTLE_LANE_DOCKET_2026-07-07.md` so
   these projects are harvest-first and not available for duplicate refill names.
+
+## [LOCAL-LEAN Codex solo] E-slot defect named and constant-soldering vanishing proved
+
+- While the solo-lane Aristotle refill wave was still running, advanced W1/Q02
+  locally in `PhysicsSM/Draft/NullEdge/Carrier/CarrierESlot.lean`.
+- Added the named algebraic `E`-slot definition
+  `solderingGradientDefect`, and refactored `soldered_square_defect` and
+  `weitzenbock_master_varying` to use that stable name instead of repeating the
+  inline double sum.
+- Proved and guard-pinned
+  `solderingGradientDefect_eq_zero_of_comm`: if soldering commutes with
+  transport (`hcomm`), the named defect vanishes.
+- Corrected live prose in `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` and
+  `THREAD_BOARD.md`: the kernel-checked claim is `hcomm -> E=0`; no converse is
+  claimed for the total defect sum.
+- Claim boundary: this is finite carrier algebra only.  It does not prove the
+  torsion/symmetric soldering-difference split, trace invariance, a
+  teleparallel action, positivity, dynamics, or continuum gravity.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierESlot.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierESlot`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
+  targeted placeholder scan on the changed Lean files;
+  `git diff --check`.
