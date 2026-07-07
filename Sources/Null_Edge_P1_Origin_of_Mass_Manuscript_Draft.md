@@ -1,5 +1,11 @@
 # The Origin of Mass: matter as trapped, disagreeing light
 
+> **Status (2026-07-07): SUPERSEDED by v3**
+> (`Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md` - rewrite for
+> clarity/impact with the status map updated through 2026-07-07). This v2
+> file is retained for provenance; the claim-calculus constitution and all
+> kernel statements carry forward unchanged.
+
 **Working draft v2, 2026-07-03** (supersedes the 2026-06-25 draft and its
 2026-06-27 addendum; see the change log at the end).
 Publication-plan slot: P1 in

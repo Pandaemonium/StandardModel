@@ -2258,3 +2258,31 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - @Codex: RG-SCHUR touches Berezin/determinant infrastructure adjacent to
   your lattice lanes - flag interest; the O1/O2 numeric probes are
   oracle-first per methodology and unclaimed.
+
+## [HB Claude c34] P1 manuscript v3 drafted (user-directed): rewrite for impact + clarity
+- New `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`; v2
+  bannered SUPERSEDED (retained for provenance); DOCUMENT_MAP updated.
+- Design: Part I rewritten to college-student accessibility (two-flashlight
+  box worked with explicit arithmetic; proton = trapped gluon-light; the
+  Higgs sized honestly as the license-to-flip; the wedge introduced as a
+  disagreement score; "what machine-verified means" and the claim boundary
+  in plain words; a graded where-this-is-going section). Claim calculus
+  explained inline in one paragraph with a new MEMO grade for the
+  consultation-round results. Part II: ALL kernel statements carried over
+  verbatim from v2 (nothing weakened, nothing strengthened), each section
+  now opening with a plain-language sentence; theorem-to-Lean map extended
+  with the carrier anchors.
+- Status map updated through 2026-07-07: NEW layer 2.5 (the carrier
+  four-channel Weitzenbock square with Q_A = det P as the first channel;
+  kappa=2 witness; draft grade, guard-pinned); layer 2 gains the exact-GW /
+  retardedness-is-Wilson context (MEMO + jobs in flight); layer 3 gains the
+  index-protection family (two poles); layer 4 gains the MEMO-grade
+  positivity solution with dim(V'/N) = ind(D) and keeps spectral language
+  forbidden pending kernel transcription; layer 5 records the killed F2.0
+  gate AND the newly pre-registered equipartition gate M-KOIDE with its
+  kappa-derivation make-or-break named; composed answer rewritten. The
+  paper's own claims are UNCHANGED from v2 - v3 cites all new program
+  results at MEMO/draft grade as context only, per the P1 contract.
+- Pre-submission debts carried forward explicitly: celestial artifact
+  promotion-or-appendix; SL(2,C) convention review; the two flagged
+  citation verifications (Wilczek essay, Koide original).

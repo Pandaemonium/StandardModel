@@ -48,7 +48,8 @@ as current state.
 
 ## The null-edge program: core documents
 
-- `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - P1 manuscript (v2, claim calculus, layered status map). [DRAFT-MS]
+- `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md` - P1 manuscript v3 (2026-07-07 rewrite for clarity/impact; college-accessible Part I; status map incl. carrier layer). [DRAFT-MS]
+- `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - P1 manuscript v2 (superseded by v3; retained for provenance). [HISTORICAL]
 - `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` - stable publication topic IDs P1-P12. [LIVE]
 - `Sources/Null_Edge_Publication_Outlines_2026-07-07.md` - five Letter-caliber outlines (P13, P2-R, P14, P4-R, P15 + future slots). [LIVE]
 - `Sources/Ontology_extensions.md` - graded steer memo (teleparallel E-slot, positivity routes, index/spectral-action framing); integrated 2026-07-07. [STABLE]
