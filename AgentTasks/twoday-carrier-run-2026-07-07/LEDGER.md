@@ -3304,3 +3304,26 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   manuscript postfix audit `bd50e825` (completed with errors; inspect as
   audit-only).  Q11 Jacobi `aa4e48f6` and Q12 triality `381cc4cf` were still
   running at the latest poll.
+
+## [ARISTOTLE-HARVEST Codex solo] Q12 non-permutation C8 bridge landed
+
+- Harvested Aristotle project `1b3c2203`
+  (`ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`).
+- Integrated `PhysicsSM/Draft/NullEdge/GateI1/Q12NonPermBridge.lean`.
+- New proved declarations include `Had_mul_Had`, `Had_mul_Tmat`,
+  `furey_bridge`, `no_perm_bridge`, `perm_bridge_insufficient`,
+  `bridge_trace_eq`, and `bridge_involution_descent`.
+- Q12 claim boundary: PROVED finite XOR/Hadamard non-permutation bridge and
+  PROVED that permutation bridges are insufficient for the translation-parity
+  model.  Still OPEN/MEMO: per-sector bridge equivariance, `J_R` sector
+  conjugation, equivariant McKean-Singer, PSA-2/3 determinant-line phases,
+  missing `eps'`, physical chirality/anomaly claims, and any general balanced
+  involution conjugacy theorem beyond the explicit Hadamard witness.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`, and
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12NonPermBridge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12NonPermBridge`.
+- Remaining harvest-first jobs: Q12 triality wording audit `381cc4cf` and
+  manuscript postfix audit `bd50e825` (completed with errors; inspect as
+  audit-only).  Q11 Jacobi `aa4e48f6` was still running at the latest poll.

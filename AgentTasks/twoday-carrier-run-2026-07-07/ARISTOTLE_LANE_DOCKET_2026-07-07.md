@@ -556,7 +556,29 @@ at the latest poll: `aa4e48f6` and `381cc4cf`.
   `lake env lean PhysicsSM/NullStrand/DualSolder/SpectralSchur.lean`;
   `lake build PhysicsSM.NullStrand.DualSolder.SpectralSchur`.
 
-Remaining harvest-first jobs after this integration: `1b3c2203` Q12 C8 bridge
-gates and `bd50e825` manuscript postfix audit (completed with errors; inspect
-as audit-only).  Still running at the latest poll: `aa4e48f6` Q11 Jacobi and
-`381cc4cf` Q12 triality wording.
+## Harvest from Q12 C8 non-permutation bridge gates
+
+- `1b3c2203`
+  (`ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`) returned
+  `Q12NonPermBridge.lean`, now integrated as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12NonPermBridge.lean`.
+- New proved declarations include `conj_perm_apply`,
+  `permBridge_forces_diagonal`, `bridge_trace_eq`,
+  `bridge_involution_descent`, `chi_sum_orthogonality`, `Had_mul_Had`,
+  `Had_mul_Tmat`, `furey_bridge`, `no_perm_bridge`, and
+  `perm_bridge_insufficient`.
+- Claim boundary: this proves a finite Walsh-Hadamard non-permutation bridge
+  between the XOR strand-parity diagonal grading and the translation-parity
+  permutation, and it proves the permutation bridge reduction is strictly
+  insufficient.  It does not prove per-sector anomaly cancellation,
+  equivariant McKean-Singer, `J_R` sector conjugation, PSA-2/3 determinant-line
+  phases, or a general balanced-involution conjugacy theorem beyond the
+  explicit Hadamard witness.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12NonPermBridge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12NonPermBridge`.
+
+Remaining harvest-first jobs after this integration: `381cc4cf` Q12 triality
+wording audit and `bd50e825` manuscript postfix audit (completed with errors;
+inspect as audit-only).  Still running at the latest poll: `aa4e48f6` Q11
+Jacobi.

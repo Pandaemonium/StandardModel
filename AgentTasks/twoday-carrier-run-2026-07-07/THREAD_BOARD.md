@@ -759,46 +759,46 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   the finite physical-quotient descent interface: `physDescend`,
   `physDescend_comp`, `physDescend_cube_eq_id`,
   `physDescend_commutes_iff`, `map_eq_of_invariant_of_injective`,
-  `E4_commutator_can_fail`, and `E4_healing`.
+  `E4_commutator_can_fail`, and `E4_healing`. Aristotle follow-up
+  `1b3c2203` is now harvested into
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12NonPermBridge.lean`, proving the
+  concrete Walsh-Hadamard non-permutation bridge and separation from
+  permutation bridges: `Had_mul_Had`, `Had_mul_Tmat`, `furey_bridge`,
+  `bridge_trace_eq`, `bridge_involution_descent`, `no_perm_bridge`, and
+  `perm_bridge_insufficient`.
 - **Status:** PROVED algebraic T1-T8 finite core plus finite PSA-1 and
-  sector-additivity accounting identities only.
+  sector-additivity accounting identities only, now including the finite
+  non-permutation XOR/Hadamard bridge gate.
   This confirms the G2-parity defusal at the XOR/Fano algebra level and removes
   sign-convention risk from the automorphism claim; PSA-1 gives the per-sector
   determinant/supertrace check; ChargeResolution gives finite
   partition-by-label and direct-sum bookkeeping; Q12Triality gives finite
   diagonal-character/parity commutation and abstract bridge/kill criteria;
-  Q12GammaPrimeQuotient gives the finite quotient-descent gate. Q13 red-team
-  `7f273e71` downgraded the word "triality" here: the landed
+  Q12GammaPrimeQuotient gives the finite quotient-descent gate; and
+  Q12NonPermBridge proves that the bridge cannot be reduced to a permutation
+  conjugation in the translation-parity model. Q13 red-team `7f273e71`
+  downgraded the word "triality" here: the landed
   `parity_triple` is the all-equal diagonal `(Z/2)^3` character case, generic
   in `sigma`, not a genuine order-3 Spin(8)/octonion triality theorem. These
   results do not prove an analytic/equivariant index theorem behind a physical
   anomaly statement. Aristotle C8 audit `cdba6caa` confirmed the finite algebra
-  is kernel-clean, but raised the same load-bearing gates: the Q11 fiber
-  grading and Q12 strand parity live on different spaces with no proved
-  non-permutation bridge; `eps'` for KO placement is not formalized; PSA and
-  ChargeResolution are accounting identities, not equivariant
+  is kernel-clean. Its non-permutation-bridge blocker is now discharged by the
+  explicit Hadamard witness, while `eps'` for KO placement is not formalized;
+  PSA and ChargeResolution remain accounting identities, not equivariant
   McKean-Singer.
-- **Next:** T8 still needs the *specific repo* ladder/Furey bridge matrix `B`
-  checked entry-wise against the actual ladder ordering/signs; the landed
-  theorem only proves the benign permutation case and trace/signature kill
-  condition. Aristotle audit `1bd78359` sharpened the boundary: an existential
-  bridge is vacuous because the relevant gradings have the same `4+4`
-  spectrum; the real Furey ladder bridge is a concrete complex change of basis,
-  not a permutation. The next certificate must pin the ordering/cochain, prove
-  convention equivalence, define the concrete `Bfur`, check unitary/non-
-  permutation status, discharge the 64 entrywise intertwining equations, and
-  promote the result to a G2/XOR-character statement. T9/E4 now has a proved
-  finite interface: an operator descends only when it preserves both `V'` and
-  `N`, and descended `tau` commutes with descended `Gamma` iff
+- **Next:** T8 now has a concrete XOR/Hadamard non-permutation bridge and a
+  proof that the permutation reduction is insufficient. The remaining C8 gates
+  are sharper: sector-projection equivariance of the bridge, `J_R`-induced
+  sector conjugation `omega <-> omega_bar`, PSA-2/PSA-3 determinant-line
+  phases, the missing `eps'` operator relation, and any general balanced
+  involution conjugacy theorem beyond the explicit Hadamard witness. T9/E4 has
+  a proved finite interface: an operator descends only when it preserves both
+  `V'` and `N`, and descended `tau` commutes with descended `Gamma` iff
   `[tau, Gamma] V' <= N`; upstairs noncommutation can heal on the quotient.
-  The remaining PSA gap is now the analytic or operator-level equivariant
-  McKean-Singer theorem plus model-specific verification of the descent
-  hypotheses, not finite additivity. Failure of the specific-`B` bridge is a
-  C8-seam escalation, not a patch.  The C8 audit's explicit gates are:
-  involution descent for `Gamma`, equivariant McKean-Singer, `J_R`-induced
-  sector conjugation `omega <-> omega_bar`, the concrete non-permutation Furey
-  bridge plus 64 repo-`sigma` identities, PSA-2/PSA-3 determinant-line phases,
-  and the missing `eps'` operator relation.
+  The remaining PSA gap is the analytic or operator-level equivariant
+  McKean-Singer theorem plus model-specific verification of the descent and
+  sector-projection hypotheses, not finite additivity. Failure of any
+  model-specific bridge equivariance check is a C8-seam escalation, not a patch.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.
