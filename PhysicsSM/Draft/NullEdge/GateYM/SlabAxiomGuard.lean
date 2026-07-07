@@ -369,6 +369,10 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_square_zero_counterexample
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_diagonal_sq_zero_iff_entries_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_diagonal_sq_zero_iff_entries_zero
+
 /-! ## Batch wave 3: W-mass gap, aperture entropy iff, strong-coupling area law, faithful octonion coupling -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ElectroweakWMass.wMass_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/

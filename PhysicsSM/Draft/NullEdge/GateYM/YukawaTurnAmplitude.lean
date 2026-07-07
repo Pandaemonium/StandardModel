@@ -331,6 +331,33 @@ theorem turnAmplitude_diagonal (d : Fin n → ℂ) (μ : Fin 4) :
     · simp [hst, hij]
   · simp [hij]
 
+/-- In a diagonal mass basis, the square-zero turn-amplitude test is faithful.
+
+This is the positive counterpart to `turnAmplitude_square_zero_counterexample`:
+arbitrary Yukawa matrices may contain nilpotent traps, but diagonal mass data has
+no such trap, so `Q_T = phi^2` can be read as a zero test on the diagonal
+entries. -/
+theorem turnAmplitude_diagonal_sq_zero_iff_entries_zero (d : Fin n → ℂ) (μ : Fin 4) :
+    turnAmplitude (Matrix.diagonal d) μ * turnAmplitude (Matrix.diagonal d) μ = 0 ↔
+      ∀ i, d i = 0 := by
+  constructor
+  · intro h i
+    have hdiag :
+        Matrix.diagonal (fun p : Fin n × Fin 4 => d p.1) *
+            Matrix.diagonal (fun p : Fin n × Fin 4 => d p.1) = 0 := by
+      simpa [turnAmplitude_diagonal] using h
+    have hentry := congrFun (congrFun hdiag (i, 0)) (i, 0)
+    have hsquare : d i * d i = 0 := by
+      simpa [Matrix.diagonal_mul_diagonal] using hentry
+    exact (mul_eq_zero.mp hsquare).elim id id
+  · intro hd
+    rw [turnAmplitude_diagonal, Matrix.diagonal_mul_diagonal]
+    ext p q
+    by_cases hpq : p = q
+    · subst q
+      simp [hd p.1]
+    · simp [Matrix.diagonal, hpq]
+
 /-- The diagonal turn amplitude is a normal operator (it is diagonal, hence
 commutes with its conjugate transpose). Its eigenvalues are the diagonal entries
 `d i` (each of multiplicity 4), so its eigenvalue-moduli / singular values are

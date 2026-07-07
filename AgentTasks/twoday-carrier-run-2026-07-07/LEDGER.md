@@ -3448,3 +3448,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude`;
   `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
   targeted placeholder scan on the changed Lean files.
+
+## [LOCAL-LEAN Codex solo] Q_T diagonal square-zero rescue
+
+- Added `turnAmplitude_diagonal_sq_zero_iff_entries_zero` in
+  `PhysicsSM/Draft/NullEdge/GateYM/YukawaTurnAmplitude.lean`.
+- Claim boundary: arbitrary Yukawa matrices still have nilpotent square-zero
+  traps, but diagonal mass-basis data does not; square-zero of the turn amplitude
+  is equivalent to every diagonal mass entry vanishing.
+- Guard-pinned the theorem in `SlabAxiomGuard.lean`.
+- Updated `THREAD_BOARD.md` and `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` to record
+  both sides of the W2a turn-slot boundary: the nilpotent caveat and the
+  diagonal rescue.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/YukawaTurnAmplitude.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude`;
+  axiom probe for
+  `turnAmplitude_diagonal_sq_zero_iff_entries_zero`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
+  targeted placeholder scan on the changed Lean files;
+  `git diff --check`.

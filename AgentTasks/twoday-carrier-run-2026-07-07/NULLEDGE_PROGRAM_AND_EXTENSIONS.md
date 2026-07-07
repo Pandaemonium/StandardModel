@@ -157,8 +157,9 @@ are the "component functionals" the decomposition's terms are meant to reproduce
   an exact involution — the "price of the turn." `turnAmplitude_eq_zero_iff`: the
   chirality-flipping vertex vanishes iff the mass matrix does. The stronger `Q_T = phi²`
   zero-iff needs a nilpotent-free or normality hypothesis: an explicit nonzero nilpotent
-  two-flavor turn amplitude squares to zero. The general `d`-dimensional / 4D degree
-  argument is **OPEN**.
+  two-flavor turn amplitude squares to zero. In the diagonal mass basis, however, the
+  square-zero condition is faithful: the turn amplitude squares to zero iff all diagonal
+  mass entries vanish. The general `d`-dimensional / 4D degree argument is **OPEN**.
 - **C (closure) — Z2 complete; nonabelian gap OPEN.** A full finite abelian (`ℤ₂`) confinement
   chain: reflection positivity → self-adjoint transfer operator → strictly-positive spectral gap
   `= −log(tanh β)` → exponential clustering. The correct *nonabelian* strong-coupling character

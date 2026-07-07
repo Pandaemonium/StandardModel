@@ -55,7 +55,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `turnAmplitude_square_zero_counterexample` proves a nonzero two-flavor turn
   amplitude can square to zero, so the honest kernel-checked equivalence remains
   `turnAmplitude Y μ = 0 ↔ Y = 0`, not `(turnAmplitude Y μ)^2 = 0 ↔ Y = 0`
-  without extra structure.
+  without extra structure.  Codex follow-up
+  `turnAmplitude_diagonal_sq_zero_iff_entries_zero` proves the rescued diagonal
+  mass-basis version: square-zero of the turn amplitude is equivalent to all
+  diagonal mass entries vanishing.
 
 ### W2b - graded irreducibility (the upgraded no_common_carrier) [Claude]
 - **Done:** the bigraded-slot theorem (order x Clifford-degree x gamma-parity;
