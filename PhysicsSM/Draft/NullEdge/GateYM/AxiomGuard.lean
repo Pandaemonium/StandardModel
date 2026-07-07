@@ -4,6 +4,8 @@ import PhysicsSM.Draft.NullEdge.GateYM.ElitzurLattice
 import PhysicsSM.Draft.NullEdge.GateYM.ReflectionPositivityKernel
 import PhysicsSM.Draft.NullEdge.GateYM.WilsonVacuumDominance
 import PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2Sector
+import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
+import PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormLine
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
 
 /-!
@@ -84,6 +86,42 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2Sector.fluxGapWitness_gap_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2Sector.fluxGapWitness_gap_pos
+
+/-! ## Finite torus center-shift action laws -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xFluxShift_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xFluxShift_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xFluxShift_mul' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xFluxShift_mul
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yFluxShift_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yFluxShift_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yFluxShift_mul' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yFluxShift_mul
+
+/-! ## Finite one-form center-shadow line charge identities -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xLineHol_xFluxShift' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xLineHol_xFluxShift
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xLineHol_yFluxShift' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xLineHol_yFluxShift
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_yFluxShift' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_yFluxShift
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_xFluxShift' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yLineHol_xFluxShift
 
 /-! ## Verified NEGATIVE: the naive bare-KP bound is false -/
 

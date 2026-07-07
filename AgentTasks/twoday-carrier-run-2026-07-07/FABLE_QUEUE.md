@@ -79,9 +79,12 @@ Format:
   object. Initial Aristotle strategy job `f8cdf5c2`/`987a9882` returned useful
   charged-line guidance but had one false stale-check caused by an incomplete
   staged package (`TYAreaLaw.lean` was omitted); local TY checks and full
-  `lake build` pass. Correction task `87f5a0e1` is in flight. Unblock = RATIFY
-  whether this should become a small finite API now, remain doc/provenance
-  language, or wait until an honest `H^2(K,Z(G))` background object exists.
+  `lake build` pass. Correction task `87f5a0e1` retracts the build-blocker and
+  says the first proof target should be ordered `List.prod` charged-line
+  operators. Codex banked that finite API in `CenterOneFormLine.lean`. Unblock =
+  RATIFY whether the next step should be a non-vacuous electric-sector witness
+  or the larger configuration-to-`TwistSystem` partition bridge; do not claim an
+  honest `H^2(K,Z(G))` background object yet.
 
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far

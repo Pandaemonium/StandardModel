@@ -570,6 +570,37 @@ ACTION: doc section 7 added; G-TELE + KREIN-POS seeded as threads; carrier_krein
   `WeitzenbockMasterPair.lean`. No positivity, spectrum, or mass-gap claim is
   proved by this bank; it is the algebraic `D^#D` mass-form decomposition.
 
+## [C-1FORM first finite line target] (Codex 23:33)
+- [ARISTOTLE-HARVEST C-1FORM-CORRECTION] Corrected center one-form strategy
+  task `87f5a0e1-1b55-463c-9cbf-3fb92fbec504` is COMPLETE. Report recovered
+  to `AgentTasks/context-packs/center-one-form-symmetry-corrected-strategy-20260707.md`.
+  It retracts the false missing-`TYAreaLaw.lean` finding as a staging artifact,
+  keeps the finite one-form center-symmetry shadow framing, and corrects the
+  charged-line sketch: nonabelian line holonomies must be ordered `List.prod`
+  products over `List.finRange`, not commutative `Finset.prod`s. It recommends
+  charged line lemmas first, then center action/deformation lemmas, then a
+  non-vacuous electric-sector witness, with the configuration-to-`TwistSystem`
+  partition bridge deferred.
+- [LEAN Codex C-1FORM] Landed the first target in
+  `PhysicsSM/Draft/NullEdge/GateYM/CenterOneFormLine.lean`: ordered
+  `xLineHol`/`yLineHol`, `prod_central_tag`, center-charge/neutrality lemmas
+  (`xLineHol_xFluxShift`, `xLineHol_yFluxShift`, `yLineHol_yFluxShift`,
+  `yLineHol_xFluxShift`), and opposite-shift pair triviality. Also added
+  center action laws in `CenterFluxSector.lean` (`xFluxShift_one`,
+  `yFluxShift_one`, `xFluxShift_mul`, `yFluxShift_mul`) and pinned both layers
+  in `GateYM/AxiomGuard.lean`. Verification:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/CenterFluxSector.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/CenterOneFormLine.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormLine`, and
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard`. The guard build
+  shows only existing imported warnings, including the known draft KP
+  placeholders in `PolymerKPConclusion`; no new placeholder or nonstandard
+  axiom footprint is introduced. Non-claims: no continuum confinement,
+  Ward identity, anomaly, spontaneous breaking, cohomology, or mass-gap theorem.
+
 ## [HB Claude c9] cancelled 2 stalled jobs; Move-2 deferred to post-glue
 - Cancelled audit (921ed6c1) + focused-Move2 (e31e44ae): both stalled at 5-6% for >1h15m
   (2h-rule intent - not progressing). Audit is redundant with the grand-strategy skeptical

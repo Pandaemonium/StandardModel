@@ -195,6 +195,30 @@ def yFluxShift (z : Subgroup.center G) (j0 : Fin Ly)
   hLink := U.hLink
   vLink i j := if j = j0 then (z : G) * U.vLink i j else U.vLink i j
 
+/-- The identity central element acts trivially as an x-flux shift. -/
+@[simp]
+theorem xFluxShift_one (i0 : Fin Lx) (U : TorusLinkFieldG G Lx Ly) :
+    xFluxShift 1 i0 U = U := by
+  ext i j <;> by_cases hi : i = i0 <;> simp [xFluxShift, hi]
+
+/-- The identity central element acts trivially as a y-flux shift. -/
+@[simp]
+theorem yFluxShift_one (j0 : Fin Ly) (U : TorusLinkFieldG G Lx Ly) :
+    yFluxShift 1 j0 U = U := by
+  ext i j <;> by_cases hj : j = j0 <;> simp [yFluxShift, hj]
+
+/-- X-flux shifts compose by multiplying their central labels. -/
+theorem xFluxShift_mul (z w : Subgroup.center G) (i0 : Fin Lx)
+    (U : TorusLinkFieldG G Lx Ly) :
+    xFluxShift (z * w) i0 U = xFluxShift z i0 (xFluxShift w i0 U) := by
+  ext i j <;> by_cases hi : i = i0 <;> simp [xFluxShift, hi, mul_assoc]
+
+/-- Y-flux shifts compose by multiplying their central labels. -/
+theorem yFluxShift_mul (z w : Subgroup.center G) (j0 : Fin Ly)
+    (U : TorusLinkFieldG G Lx Ly) :
+    yFluxShift (z * w) j0 U = yFluxShift z j0 (yFluxShift w j0 U) := by
+  ext i j <;> by_cases hj : j = j0 <;> simp [yFluxShift, hj, mul_assoc]
+
 /-- Moving a central factor across two group elements and cancelling it with
 its inverse.  This is the x-shift cancellation pattern in a plaquette. -/
 theorem center_mul_two_mul_inv_cancel (z : Subgroup.center G) (a b c : G) :

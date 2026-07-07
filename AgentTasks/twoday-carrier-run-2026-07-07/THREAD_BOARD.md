@@ -143,12 +143,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `TYAreaLawSUN` twist system to honest finite one-form center-symmetry
   language, with explicit non-claims about confinement, continuum Ward
   identities, anomalies, spontaneous breaking, and cohomology.
-- **Status:** CORRECTION IN-FLIGHT. Initial Aristotle report
-  `f8cdf5c2`/`987a9882` usefully recommended a charged-line API, but its
-  "missing `TYAreaLaw.lean`" build-blocker finding was a Codex staging omission;
-  local `lake env lean` on `TYAreaLawSUN.lean`/`TYTwistSystemZ2.lean` and full
-  `lake build` pass. Correction task `87f5a0e1` uploaded the missing dependency.
-  Wait for the corrected statement-shape guidance before adding a new API.
+- **Status:** FIRST PROOF TARGET BANKED. Corrected Aristotle report
+  `f8cdf5c2`/`87f5a0e1` retracts the false missing-`TYAreaLaw.lean` staging
+  artifact, confirms the charged-line API as the first target, and requires
+  ordered `List.prod` (not `Finset.prod`) for nonabelian Wilson lines. Codex
+  landed `CenterOneFormLine.lean` with `xLineHol`/`yLineHol`,
+  charge/neutrality lemmas, and opposite-shift pair triviality; `AxiomGuard`
+  pins the line-charge lemmas plus the center-shift action laws. Still OPEN:
+  non-vacuous electric-sector witness and the deferred configuration-to-
+  `TwistSystem` partition bridge.
 ### TY-LINEAGE - audit the 0808.3442 dependency [Codex, small]
 - **Done:** a written verdict in the ledger + affected docstrings: does our TY
   route depend on disputed decimation results, or only on the rigorous 1985 RP
