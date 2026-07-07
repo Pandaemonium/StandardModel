@@ -105,7 +105,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Claude red-team review before stacking more OS1 integrations. Aristotle audit
   `2ed6afbb`/`424e815f` found no blocking issue; Codex removed the redundant
   `hBsum_nonneg` hypothesis from the two-plaquette positive-area wrapper by
-  deriving it internally from `hArea`.
+  deriving it internally from `hArea`. Codex then landed the genuine
+  small-coupling two-plaquette rung: exact finite enumeration computes
+  `twoPlaquetteZ2_anchor_area_sum`, discharges the area-slice hypotheses with
+  `twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_smallness`, and proves
+  the corrected KP/self-incompatibility pair at `alpha = 1` under
+  `|tanh beta| <= (1 / 4) * exp (-1)`. This is still finite and
+  volume-dependent; volume-uniform KP convergence and `SU(2)` remain OPEN.
 
 ### QC - the Q_C identification at leading order [Codex; THE Move-2 crux]
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in

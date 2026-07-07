@@ -2211,6 +2211,206 @@ theorem twoPlaquetteZ2GammaAbs_nonneg (beta : Real) (r : Bool) :
     0 <= twoPlaquetteZ2GammaAbs beta r := by
   simp [twoPlaquetteZ2GammaAbs]
 
+/-- The singleton polymer supported at one of the two plaquettes. -/
+def twoPlaquetteSingletonPolymer (q : Bool) :
+    PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel where
+  support := {q}
+  support_nonempty := by exact ⟨q, by simp⟩
+  support_connected := trivial
+  label := fun _ => true
+  label_nontrivial := fun _ => rfl
+
+/-- The full two-plaquette polymer. -/
+def twoPlaquetteFullPolymer :
+    PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel where
+  support := ({false, true} : Finset Bool)
+  support_nonempty := by exact ⟨false, by simp⟩
+  support_connected := trivial
+  label := fun _ => true
+  label_nontrivial := fun _ => rfl
+
+/-- Every two-plaquette polymer has singleton or full support. -/
+theorem twoPlaquette_support_eq_singleton_or_pair
+    (X : PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel) :
+    X.support = ({false} : Finset Bool) ∨
+      X.support = ({true} : Finset Bool) ∨
+      X.support = ({false, true} : Finset Bool) := by
+  by_cases hf : false ∈ X.support
+  · by_cases ht : true ∈ X.support
+    · right; right
+      ext p
+      cases p <;> simp [hf, ht]
+    · left
+      ext p
+      cases p <;> simp [hf, ht]
+  · by_cases ht : true ∈ X.support
+    · right; left
+      ext p
+      cases p <;> simp [hf, ht]
+    · exfalso
+      rcases X.support_nonempty with ⟨p, hp⟩
+      cases p <;> contradiction
+
+/-- The complete polymer enumeration for the two-plaquette fixture. -/
+theorem twoPlaquettePolymer_eq_singleton_or_full
+    (X : PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel) :
+    X = twoPlaquetteSingletonPolymer false ∨
+      X = twoPlaquetteSingletonPolymer true ∨ X = twoPlaquetteFullPolymer := by
+  rcases twoPlaquette_support_eq_singleton_or_pair X with hs | hs | hs
+  · left
+    apply PlaquettePolymer.ext_of_support_label hs
+    intro p hpX hpY
+    exact X.label_nontrivial ⟨p, hpX⟩
+  · right; left
+    apply PlaquettePolymer.ext_of_support_label hs
+    intro p hpX hpY
+    exact X.label_nontrivial ⟨p, hpX⟩
+  · right; right
+    apply PlaquettePolymer.ext_of_support_label hs
+    intro p hpX hpY
+    exact X.label_nontrivial ⟨p, hpX⟩
+
+/-- Exact support-cardinality slice bound for the two-plaquette Z2 fixture. -/
+def twoPlaquetteZ2AreaBound (beta alpha : Real) (k : Nat) : Real :=
+  if k = 1 then |Real.tanh beta| * Real.exp alpha
+  else if k = 2 then
+    |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * alpha)
+  else 0
+
+/-- Contribution of a singleton two-plaquette polymer. -/
+theorem twoPlaquetteSingletonPolymer_contribution
+    (beta alpha : Real) (q : Bool) :
+    (twoPlaquetteSingletonPolymer q).coeffProduct
+        (twoPlaquetteZ2GammaAbs beta) *
+      Real.exp
+        (alpha * ((twoPlaquetteSingletonPolymer q).support.card : Real)) =
+      |Real.tanh beta| * Real.exp alpha := by
+  cases q <;> simp [twoPlaquetteSingletonPolymer,
+    PlaquettePolymer.coeffProduct, twoPlaquetteZ2GammaAbs]
+
+/-- Contribution of the full two-plaquette polymer. -/
+theorem twoPlaquetteFullPolymer_contribution (beta alpha : Real) :
+    twoPlaquetteFullPolymer.coeffProduct (twoPlaquetteZ2GammaAbs beta) *
+      Real.exp (alpha * (twoPlaquetteFullPolymer.support.card : Real)) =
+      |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * alpha) := by
+  change (∏ p ∈ ({false, true} : Finset Bool).attach,
+      (fun _ : Bool => |Real.tanh beta|) (p : Bool)) *
+      Real.exp (alpha * ((({false, true} : Finset Bool).card : Nat) : Real)) =
+      |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * alpha)
+  have hprod := Finset.prod_attach ({false, true} : Finset Bool)
+      (fun _ : Bool => |Real.tanh beta|)
+  rw [hprod]
+  norm_num
+  ring_nf
+
+/-- The anchored two-plaquette area slice at support size one. -/
+theorem twoPlaquetteZ2_anchor_area_sum_k_one
+    (beta alpha : Real) (q : Bool) :
+    anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha q 1 =
+      |Real.tanh beta| * Real.exp alpha := by
+  let Y0 := twoPlaquetteSingletonPolymer q
+  unfold anchoredPlaquettePolymerAreaSum
+  rw [Finset.sum_eq_single Y0]
+  · exact twoPlaquetteSingletonPolymer_contribution beta alpha q
+  · intro Y hY hne
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and,
+      decide_eq_true_eq] at hY
+    rcases twoPlaquettePolymer_eq_singleton_or_full Y with hYeq | hYeq | hYeq
+    · subst hYeq
+      cases q
+      · exact False.elim (hne rfl)
+      · simp [twoPlaquetteSingletonPolymer] at hY
+    · subst hYeq
+      cases q
+      · simp [twoPlaquetteSingletonPolymer] at hY
+      · exact False.elim (hne rfl)
+    · subst hYeq
+      simp [twoPlaquetteFullPolymer] at hY
+  · intro hY0
+    simp [Y0, twoPlaquetteSingletonPolymer] at hY0
+
+/-- The anchored two-plaquette area slice at support size two. -/
+theorem twoPlaquetteZ2_anchor_area_sum_k_two
+    (beta alpha : Real) (q : Bool) :
+    anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha q 2 =
+      |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * alpha) := by
+  let Y0 := twoPlaquetteFullPolymer
+  unfold anchoredPlaquettePolymerAreaSum
+  rw [Finset.sum_eq_single Y0]
+  · exact twoPlaquetteFullPolymer_contribution beta alpha
+  · intro Y hY hne
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and,
+      decide_eq_true_eq] at hY
+    rcases twoPlaquettePolymer_eq_singleton_or_full Y with hYeq | hYeq | hYeq
+    · subst hYeq
+      simp [twoPlaquetteSingletonPolymer] at hY
+    · subst hYeq
+      simp [twoPlaquetteSingletonPolymer] at hY
+    · subst hYeq
+      exact False.elim (hne rfl)
+  · intro hY0
+    exfalso
+    apply hY0
+    cases q <;> simp [Y0, twoPlaquetteFullPolymer]
+
+/-- All other anchored two-plaquette area slices are empty. -/
+theorem twoPlaquetteZ2_anchor_area_sum_eq_zero_of_ne_one_ne_two
+    (beta alpha : Real) (q : Bool) (k : Nat)
+    (hk1 : k ≠ 1) (hk2 : k ≠ 2) :
+    anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha q k = 0 := by
+  unfold anchoredPlaquettePolymerAreaSum
+  rw [Finset.sum_eq_zero]
+  intro Y hY
+  simp only [Finset.mem_filter, Finset.mem_univ, true_and,
+    decide_eq_true_eq] at hY
+  rcases twoPlaquettePolymer_eq_singleton_or_full Y with hYeq | hYeq | hYeq
+  · subst hYeq
+    simp [twoPlaquetteSingletonPolymer] at hY
+    exact False.elim (hk1 hY.2.symm)
+  · subst hYeq
+    simp [twoPlaquetteSingletonPolymer] at hY
+    exact False.elim (hk1 hY.2.symm)
+  · subst hYeq
+    simp [twoPlaquetteFullPolymer] at hY
+    exact False.elim (hk2 hY.symm)
+
+/-- Exact anchored area-slice sum for the finite two-plaquette Z2 fixture. -/
+theorem twoPlaquetteZ2_anchor_area_sum
+    (beta alpha : Real) (q : Bool) (k : Nat) :
+    anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha q k =
+      twoPlaquetteZ2AreaBound beta alpha k := by
+  by_cases hk1 : k = 1
+  · subst k
+    simp [twoPlaquetteZ2AreaBound, twoPlaquetteZ2_anchor_area_sum_k_one]
+  · by_cases hk2 : k = 2
+    · subst k
+      simp [twoPlaquetteZ2AreaBound, twoPlaquetteZ2_anchor_area_sum_k_two]
+    · rw [twoPlaquetteZ2_anchor_area_sum_eq_zero_of_ne_one_ne_two
+        beta alpha q k hk1 hk2]
+      simp [twoPlaquetteZ2AreaBound, hk1, hk2]
+
+/-- Sum of the exact two-plaquette area bounds over the positive cardinals. -/
+theorem twoPlaquetteZ2AreaBound_sum_Icc (beta alpha : Real) :
+    (Finset.Icc 1 (Fintype.card Bool)).sum
+        (twoPlaquetteZ2AreaBound beta alpha) =
+      |Real.tanh beta| * Real.exp alpha +
+        |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * alpha) := by
+  have hIcc : Finset.Icc 1 (Fintype.card Bool) =
+      ({1, 2} : Finset Nat) := by
+    ext k
+    simp
+    omega
+  rw [hIcc]
+  simp [twoPlaquetteZ2AreaBound]
+
 /-- Every singleton closed touch-neighborhood in the two-plaquette line has
 cardinality at most two. This is the finite degree input for the adapter
 theorem below. -/
@@ -2289,6 +2489,118 @@ theorem twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice
     exact plaquettePolymerSystem_self_incompatible twoPlaquetteAdj
       twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
       (twoPlaquetteZ2GammaAbs beta) alpha halpha X
+
+/-- Two-plaquette Z2 `PlaquetteKPBound` with the rooted area-slice hypotheses
+discharged by the exact finite enumeration.
+
+This is still a finite fixture, not a volume-uniform KP theorem and not an
+`SU(2)` mass-gap theorem.  The remaining hypothesis is the scalar smallness
+inequality for the exact one-site plus two-site rooted area sum. -/
+theorem twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_smallness
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : (2 : Real) * (|Real.tanh beta| * Real.exp alpha +
+      |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * alpha)) <= alpha) :
+    PlaquetteKPBound twoPlaquetteAdj twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha halpha := by
+  refine twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice beta alpha halpha
+    (twoPlaquetteZ2AreaBound beta alpha) ?_ ?_
+  · intro q k _hk
+    rw [twoPlaquetteZ2_anchor_area_sum]
+  · rw [twoPlaquetteZ2AreaBound_sum_Icc]
+    exact hsmall
+
+/-- Two-plaquette Z2 corrected Q6 input pair with the rooted area-slice
+hypotheses discharged by exact enumeration. -/
+theorem twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice_of_smallness
+    (beta alpha : Real) (halpha : 0 <= alpha)
+    (hsmall : (2 : Real) * (|Real.tanh beta| * Real.exp alpha +
+      |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * alpha)) <= alpha) :
+    KPCondition
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha halpha)
+        (plaquettePolymerIncompatibleDecidable twoPlaquetteAdj
+          twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+          (twoPlaquetteZ2GammaAbs beta) alpha halpha)
+      /\ (forall X : PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+        twoPlaquetteNontrivialLabel,
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) alpha halpha).incompatible
+          X X) := by
+  constructor
+  · exact
+      kpCondition_of_plaquetteKPBound twoPlaquetteAdj
+        twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+        (twoPlaquetteZ2GammaAbs beta) (twoPlaquetteZ2GammaAbs_nonneg beta) alpha halpha
+        (twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_smallness
+          beta alpha halpha hsmall)
+  · intro X
+    exact plaquettePolymerSystem_self_incompatible twoPlaquetteAdj
+      twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+      (twoPlaquetteZ2GammaAbs beta) alpha halpha X
+
+/-- Nonnegativity witness for the explicit `alpha = 1` two-plaquette threshold. -/
+def twoPlaquetteZ2_alphaOne_nonneg : (0 : Real) <= 1 := by
+  norm_num
+
+/-- The threshold `|tanh beta| <= (1 / 4) * exp (-1)` implies the exact
+two-plaquette scalar smallness condition at `alpha = 1`. -/
+theorem twoPlaquetteZ2_smallness_alpha_one_of_abs_tanh_le_quarter_exp_neg_one
+    (beta : Real)
+    (hsmall : |Real.tanh beta| <= (1 / 4 : Real) * Real.exp (-1)) :
+    (2 : Real) * (|Real.tanh beta| * Real.exp 1 +
+      |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * (1 : Real))) <= 1 := by
+  set x : Real := |Real.tanh beta| * Real.exp 1
+  have hx_nonneg : 0 <= x := by
+    dsimp [x]
+    exact mul_nonneg (abs_nonneg _) (le_of_lt (Real.exp_pos 1))
+  have hx_le : x <= (1 / 4 : Real) := by
+    dsimp [x]
+    calc
+      |Real.tanh beta| * Real.exp 1
+          <= ((1 / 4 : Real) * Real.exp (-1)) * Real.exp 1 :=
+            mul_le_mul_of_nonneg_right hsmall (le_of_lt (Real.exp_pos 1))
+      _ = (1 / 4 : Real) := by
+            rw [mul_assoc, ← Real.exp_add]
+            norm_num
+  have hquad_le : x * x <= (1 / 4 : Real) * (1 / 4 : Real) := by
+    nlinarith
+  have hsecond :
+      |Real.tanh beta| * |Real.tanh beta| * Real.exp (2 * (1 : Real)) =
+        x * x := by
+    dsimp [x]
+    rw [show (2 : Real) * (1 : Real) = 1 + 1 by norm_num, Real.exp_add]
+    ring
+  rw [hsecond]
+  nlinarith
+
+/-- Concrete finite two-plaquette Z2 strong-coupling rung: at `alpha = 1`,
+the exact two-plaquette polymer gas satisfies the corrected Q6 input pair under
+the explicit small-coupling threshold
+`|tanh beta| <= (1 / 4) * exp (-1)`.
+
+This is a genuine nonzero-coupling finite fixture, but it is still not a
+volume-uniform KP theorem and not an `SU(2)` mass-gap theorem. -/
+theorem
+    twoPlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_quarter_exp_neg_one
+    (beta : Real)
+    (hsmall : |Real.tanh beta| <= (1 / 4 : Real) * Real.exp (-1)) :
+    KPCondition
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) 1
+          twoPlaquetteZ2_alphaOne_nonneg)
+        (plaquettePolymerIncompatibleDecidable twoPlaquetteAdj
+          twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+          (twoPlaquetteZ2GammaAbs beta) 1 twoPlaquetteZ2_alphaOne_nonneg)
+      /\ (forall X : PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+        twoPlaquetteNontrivialLabel,
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs beta) 1
+          twoPlaquetteZ2_alphaOne_nonneg).incompatible X X) := by
+  exact
+    twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice_of_smallness
+      beta 1 twoPlaquetteZ2_alphaOne_nonneg
+      (twoPlaquetteZ2_smallness_alpha_one_of_abs_tanh_le_quarter_exp_neg_one
+        beta hsmall)
 
 /-- At zero coupling, the one-plaquette Z2 scalar smallness condition is
 automatic for every nonnegative `alpha`. -/

@@ -244,6 +244,14 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_anchor_area_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_anchor_area_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_quarter_exp_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_quarter_exp_neg_one
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero

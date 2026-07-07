@@ -1654,3 +1654,29 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   on the M4 kappa=2 witness. M4 witness is at HANDOFF stage (578f32e6 done, Codex reviewed the
   handoff a3cebc48) - not yet a landed .lean. Next real step: land the M4 witness .lean (Codex
   or me), then wire the instantiation.
+
+## [OS1 LAND Codex 04:10] genuine two-plaquette small-coupling rung
+- Landed the nonzero-coupling successor to the `beta = 0` two-plaquette sanity
+  fixture in `StrongCouplingPolymerMap.lean`.
+- New finite enumeration layer:
+  `twoPlaquetteSingletonPolymer`, `twoPlaquetteFullPolymer`,
+  `twoPlaquettePolymer_eq_singleton_or_full`,
+  `twoPlaquetteZ2_anchor_area_sum`, and `twoPlaquetteZ2AreaBound_sum_Icc`.
+- New KP wrappers:
+  `twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_of_smallness` discharges
+  the explicit area-slice hypotheses using the exact rooted-area sum, and
+  `twoPlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_quarter_exp_neg_one`
+  proves the corrected KP/self-incompatibility input pair at `alpha = 1` under
+  `|tanh beta| <= (1 / 4) * exp (-1)`.
+- Direct guards added in `SlabAxiomGuard.lean` for
+  `twoPlaquetteZ2_anchor_area_sum` and the alpha-one corrected input pair.
+- Scope rail: this is a finite two-plaquette `Z2` rung with a genuine
+  small-coupling threshold. It is not volume-uniform KP convergence and not an
+  `SU(2)` mass-gap theorem; both remain OPEN.
+- Verification passed so far:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+  Build warnings were existing imported-module draft/linter warnings, not from
+  the new declarations.
