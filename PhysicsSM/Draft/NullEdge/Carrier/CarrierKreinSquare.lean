@@ -29,6 +29,16 @@ of the full carrier `D = D0 + Gamma phi` decomposes as:
 
 ## Honesty / scope (draft)
 
+**"Krein" is aspirational until `J`/`κ` are pinned (Fable call-03 audit).** The `star`
+here is an ARBITRARY `StarRing` involution; this identity is involution-agnostic - it is
+equally the *Hilbert* (`κ = 0`) square under a plain C*-star. The genuine indefinite/Krein
+reading requires a fundamental symmetry `J` of specified inertia `κ > 0`. The natural such
+`J` is the CHIRALITY itself: `J := ρ(Γ)`, `X^# := J X† J`, under which the banked all-plus
+adjoint table is satisfiable with anti-Hermitian `γ`, Hermitian `Γ`/`φ`, giving inertia
+`(2,2)` = `κ = 2` on the `M₄` model (a genuine Pontryagin `Π₂`). Until that model is
+instantiated (CRACK-1 thread), read this theorem as "the involution square decomposes as
+`Q_A^# + Q_C^# + 4Q_T + 4E_#`", not yet as a certified indefinite-metric mass form.
+
 Uses Mathlib `StarRing`/`StarModule` for `#`. The all-plus adjoint table (`star gamma = gamma`,
 `star Gamma = Gamma`, `star phi = phi`) is the correct one (the naive `star nabla = -nabla`
 is anti-self-adjoint AND unsatisfiable for the torus forward difference - the `Z2` shift is
