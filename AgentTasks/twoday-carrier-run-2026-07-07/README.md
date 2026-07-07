@@ -2,7 +2,7 @@
 
 A 48-hour co-equal **Claude Opus 4.8 + Codex 5.5** autonomous run executing the
 Weitzenbock-carrier program (Fable-5's synthesis) with heavy Aristotle use and
-3-hourly Fable-5 calls. Designed by Fable-5.
+2-hourly Fable-5 calls. Designed by Fable-5.
 
 ## Start here (per agent)
 
@@ -17,11 +17,11 @@ Weitzenbock-carrier program (Fable-5's synthesis) with heavy Aristotle use and
 | Doc | What it is | Mutability |
 |---|---|---|
 | `RUN_PLAN.md` | master plan: mission, 48h arc, cadence table, discipline, escalation ladder, success criteria | frozen (Fable call can amend) |
-| `GOAL_PROMPT_CLAUDE.md` | Claude's standing orders (lanes T/A/carrier; Fable calls; odd-hour lit) | frozen |
-| `GOAL_PROMPT_CODEX.md` | Codex's standing orders (lanes C/gauge/polymer; even-hour lit) | frozen |
+| `GOAL_PROMPT_CLAUDE.md` | Claude's standing orders (lanes T/A/carrier; 2-hourly Fable calls; 30-min lit; odd-hour strategy) | frozen |
+| `GOAL_PROMPT_CODEX.md` | Codex's standing orders (lanes C/gauge/polymer; 30-min lit; even-hour strategy) | frozen |
 | `THREAD_BOARD.md` | work queue with per-thread done-conditions and live status | edit-in-place (claim first) |
 | `LEDGER.md` | THE coordination channel: claims, heartbeats, reviews, call digests | append-only |
-| `FABLE_CALL_PROTOCOL.md` | the 3-hourly call: mechanics, packet contract, call types, schedule | frozen |
+| `FABLE_CALL_PROTOCOL.md` | the 2-hourly call: mechanics, packet contract, call types, schedule | frozen |
 | `FABLE_QUEUE.md` | standing escalation queue feeding the calls | append + mark-answered |
 | `ARISTOTLE_PLAYBOOK.md` | heavy-use doctrine: fleet mix (proof/audit/strategy), stale-check, mechanics crib | frozen |
 | `LIT_NEO4J_PROTOCOL.md` | literature cadence, graph read/write pipeline, priority reading list | frozen |

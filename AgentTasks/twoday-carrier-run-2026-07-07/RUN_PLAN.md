@@ -4,7 +4,7 @@ Designed by Fable-5. Two co-equal executors - **Claude Opus 4.8** and **Codex 5.
 run autonomously for 48 hours, leveraging **Aristotle very heavily** (proof search,
 adversarial audits, strategy jobs), doing **frequent literature work** against the
 Neo4j graph (read AND write), with Claude placing a **high-value Fable-5 call every
-3 hours** (see `FABLE_CALL_PROTOCOL.md`).
+2 hours** (see `FABLE_CALL_PROTOCOL.md`).
 
 This plan is the single source of truth for the run. The agents' standing orders are
 `GOAL_PROMPT_CLAUDE.md` and `GOAL_PROMPT_CODEX.md`. The work queue with per-thread
@@ -36,16 +36,22 @@ independently-proved lane functional, all axiom-guarded.
 - **Claude Opus 4.8** - executor. Lanes: **T (turn) + A (aperture) + the carrier
   algebra** (Clifford/Krein, Move 1, Move 2 identification for Q_A/Q_T, A=T bridge,
   B-lane commutant follow-through). Owns `CarrierAxiomGuard.lean` (new). Places the
-  3-hourly Fable calls. Runs the odd-hour lit rounds.
+  2-hourly Fable calls. Runs a lit round every 30 min (own lanes) + the odd-hour
+  strategy job.
 - **Codex 5.5** - executor. Lanes: **C (closure) + gauge/YM + polymer/analysis**
   (Move 3 / Osterwalder-Seiler, Q_C-in-expectation identification, KP/Penrose crux,
-  product-haar RP core). Owns `SlabAxiomGuard.lean`. Runs the even-hour lit rounds.
+  product-haar RP core). Owns `SlabAxiomGuard.lean`. Runs a lit round every 30 min
+  (own lanes) + the even-hour strategy job.
 - **Aristotle** - the engine, run HOT. Target mix AT ALL TIMES (see
   `ARISTOTLE_PLAYBOOK.md`): **up to 12 simultaneous jobs** - ~8-10 proof/construction
   + 2-3 adversarial AUDIT jobs (fired after every 2-4 integrated proofs) + 1 STRATEGY
   job refreshed HOURLY. Harvest-first; stale-check before every submit; 2-hour rule.
   12 is a CEILING, not a quota - the saturation discipline (sec 5) still binds.
-- **Fable-5** - conceptual driver, called every 3h by Claude with a decision-forcing
+  **Budget: UNCONSTRAINED** (user-set) - run as hot as there is genuine open work;
+  the only limit is job quality (open target + ratified statement), never spend.
+  When open proof targets run dry, spare capacity goes to MORE audit + strategy
+  jobs (never stale), never to duplicate/speculative proofs.
+- **Fable-5** - conceptual driver, called every 2h by Claude with a decision-forcing
   packet (`FABLE_CALL_PROTOCOL.md`); also receives escalations via `FABLE_QUEUE.md`.
 - **Shared lanes** B (octonion/spectral-triple) and V (E8): opportunistic, claim first.
 
@@ -95,7 +101,7 @@ else flexes around harvests.
 | Red-team cross-review | per integration (hourly floor) | the OTHER agent | hunt the 4 over-claim modes in each integration (see sec 4) |
 | Aristotle AUDIT job | **after every 2-4 integrated proofs** (event-driven) | either | adversarial semantic audit of the most recent/riskiest landings (playbook sec 3) |
 | Aristotle STRATEGY job | **hourly** | alternating each hour | strategic review of the stalled/riskiest thread (playbook sec 4) |
-| **Fable call** | **every 3h** | **Claude** | per `FABLE_CALL_PROTOCOL.md`; queue-driven, decision-forcing |
+| **Fable call** | **every 2h** | **Claude** | per `FABLE_CALL_PROTOCOL.md`; queue-driven, decision-forcing |
 | Consolidation | ~2h | either (claim it) | fold landed results into `HONEST_SCORECARD.md` + thread board scrub |
 | Ledger heartbeat | every cycle | both | one HB line: what landed, what's in flight, what's next |
 
@@ -137,7 +143,7 @@ busy-work commits.
    (is the statement right? is there a counterexample?) AND add an entry to
    `FABLE_QUEUE.md`.
 3. **Conceptual blocker / design fork / suspected-false statement** -> `FABLE_QUEUE.md`
-   immediately; Claude folds it into the next 3-hourly call - or places an EARLY call
+   immediately; Claude folds it into the next 2-hourly call - or places an EARLY call
    if the critical path (Move 1/2) is blocked. Do not wait out a blocked critical path.
 4. **Saturation signal** (a submitted job reproduces in-tree work; a lane has no
    genuinely-open finite target) -> STOP widening that lane; log the signal; move to

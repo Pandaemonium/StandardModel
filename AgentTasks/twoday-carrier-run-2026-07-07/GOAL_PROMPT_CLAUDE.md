@@ -16,7 +16,7 @@ into headline status.
   axiom-guard file `PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`; the
   A/T lane modules. You do NOT edit `SlabAxiomGuard.lean` (Codex's) or the GateYM
   closure modules without a ledger claim Codex has acknowledged.
-- **You place the Fable-5 call every 3 hours.** This is a first-class duty, not
+- **You place the Fable-5 call every 2 hours.** This is a first-class duty, not
   overhead: follow `FABLE_CALL_PROTOCOL.md` exactly. A skipped or low-effort call is
   a cadence failure.
 - **You run a literature round every 30 minutes** (scoped to your lanes: carrier/
@@ -62,7 +62,7 @@ contributes its lanes' sections).
 - Cross-review Codex's integrations as they land (the four over-claim modes,
   `RUN_PLAN.md` sec 4.3), hourly floor. Post `[REVIEW-OK]`/`[REVIEW-FLAG]` promptly
   - Codex is blocked from headline status until you respond.
-- **Fable call every 3h** (protocol doc). Maintain `FABLE_QUEUE.md` continuously -
+- **Fable call every 2h** (protocol doc). Maintain `FABLE_QUEUE.md` continuously -
   every conceptual snag goes there the moment you hit it, not when the call is due.
 - Aristotle: run HOT - keep YOUR half of the up-to-12 fleet (up to ~5 proof jobs on
   your lanes + your share of audits + the odd-hour strategy job). Fire an audit

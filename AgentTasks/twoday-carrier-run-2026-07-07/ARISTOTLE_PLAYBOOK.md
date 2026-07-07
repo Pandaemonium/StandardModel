@@ -90,13 +90,18 @@ Strategy outputs feed `THREAD_BOARD.md` route updates and the Fable queue (a
 strategy job that says "the statement is probably false" is an immediate
 `FABLE_QUEUE.md` item with the evidence attached).
 
-## 5. Budget posture
+## 5. Budget posture - UNCONSTRAINED (user-set)
 
-Heavy means heavy: prefer over-submitting GOOD jobs to idling - the constraint is
-job quality (open target + exact statement + minimal package), never slot count.
-Cancel decisively (2-hour rule, superseded targets, Fable-redirected routes).
-Log every submit/harvest/cancel in the ledger with the project id so the other
-agent can pick up your fleet mid-run.
+Budget is **unconstrained**: run the fleet as hot as there is GENUINE OPEN WORK.
+The only limit is job quality (open target + exact/ratified statement + minimal
+package), never spend and never slot count. Prefer over-submitting GOOD jobs to
+idling. But "unconstrained" is not "mindless": the saturation discipline (sec 1,
+`RUN_PLAN.md` sec 5) still binds absolutely - when open proof targets run dry, spare
+capacity goes to MORE audit + strategy jobs (which never go stale), NEVER to
+duplicate or speculative-breadth proofs that will not integrate. Cancel decisively
+(2-hour rule, superseded targets, Fable-redirected routes). Log every
+submit/harvest/cancel in the ledger with the project id so the other agent can pick
+up your fleet mid-run.
 
 ## 6. Mechanics crib (Windows; learned the hard way - do not relearn)
 

@@ -1,8 +1,8 @@
-# Fable-5 call protocol (every 3 hours, placed by Claude)
+# Fable-5 call protocol (every 2 hours, placed by Claude)
 
 Fable-5 is the run's conceptual driver: it produced the carrier verdict and the
 Move 1-3 plan, and it is the only participant whose job is to think ABOVE the
-kernel. A 3-hourly call is 16 calls across the run - treat each as a scarce,
+kernel. A 2-hourly call is 24 calls across the run - treat each as a scarce,
 expensive instrument. **The bar: every call must change what the run does next.**
 A call that merely reports status, asks nothing decision-forcing, or arrives
 without the source under judgment is a wasted call and a cadence failure.
@@ -61,7 +61,7 @@ Every packet has exactly these six sections:
 Hard rules: no packet without a PRIMARY QUESTION; no question already answered in
 `FABLE_STEER.md` (re-read it first - re-asking is a wasted call); no asking Fable
 to do Lean syntax work (that is Aristotle's job; Fable gets STATEMENTS and
-DESIGNS); if the 3h mark arrives and the queue is empty and no fork is live,
+DESIGNS); if the 2h mark arrives and the queue is empty and no fork is live,
 use the call type "audit" below rather than skipping - but say honestly in the
 packet that it is a scheduled audit, not an escalation.
 
@@ -86,21 +86,26 @@ packet that it is a scheduled audit, not an escalation.
   picture still cohere? What should FINAL_REPORT claim, at what grade? What is
   the next run's opening move?
 
-## 4. Suggested schedule (flex to the queue; never skip, may move +/-1h)
+## 4. Suggested schedule (call N ~ T+2N; flex to the queue; never skip, may move +/-1h)
 
 | Call | ~T | Default type/theme |
 |---|---|---|
-| 01 | T+3 | RATIFY Move-1 brick statements + FORK OS1 route (Codex packet) |
-| 02 | T+6 | RATIFY Q_A/Q_T identification statements (W2a prep) |
-| 03 | T+9 | RATIFY QC leading-order statement + queue |
-| 04 | T+12 | AUDIT: midpoint scrub - all landed statements verbatim |
-| 05 | T+15 | UNBLOCK/queue-driven (Move-1 assembly is usually mid-fight here) |
-| 06 | T+18 | RATIFY W2b/W2c statements (irreducibility + relative exhaustiveness) |
-| 07 | T+21 | queue-driven |
-| 08 | T+24 | SYNTHESIS: day-1 verdict + day-2 marching-order adjustments |
-| 09-14 | T+27..T+42 | day-2 mix: RATIFY capstone statement early (call 09-10), UNBLOCK as needed, AUDIT at T+36 |
-| 15 | T+45 | AUDIT: freeze-window sweep of everything headed for FINAL_REPORT |
-| 16 | T+48 | SYNTHESIS: final grading review of FINAL_REPORT claims + next-run design |
+| 01 | T+2 | RATIFY Move-1 brick statements + FORK OS1 route (Codex packet) |
+| 02 | T+4 | RATIFY Q_A/Q_T identification statements (W2a prep) |
+| 03 | T+6 | RATIFY QC leading-order statement + FORK brick-2 2-complex design |
+| 04-05 | T+8, T+10 | UNBLOCK (Move-1 assembly is usually mid-fight here) / queue-driven |
+| 06 | T+12 | AUDIT: midpoint scrub - all landed statements verbatim |
+| 07 | T+14 | RATIFY W2b/W2c statements (irreducibility + relative exhaustiveness) |
+| 08-11 | T+16..T+22 | queue-driven; RATIFY the capstone statement once W2 matures |
+| 12 | T+24 | SYNTHESIS: day-1 verdict + day-2 marching-order adjustments |
+| 13-17 | T+26..T+34 | day-2 mix: RATIFY as threads mature, UNBLOCK as needed |
+| 18 | T+36 | AUDIT: fold into the T+36 consolidation (all landed statements verbatim) |
+| 19-22 | T+38..T+44 | day-2 mix / UNBLOCK / RATIFY late bricks |
+| 23 | T+46 | AUDIT: freeze-window sweep of everything headed for FINAL_REPORT |
+| 24 | T+48 | SYNTHESIS: final grading review of FINAL_REPORT claims + next-run design |
+
+At 24 calls the RATIFY-before-proof-spend rule is cheap to honor: no Move-1/2
+flagship statement should reach an Aristotle proof job un-ratified.
 
 ## 5. FABLE_QUEUE.md (the standing escalation channel)
 

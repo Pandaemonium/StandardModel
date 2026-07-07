@@ -2,7 +2,7 @@
 
 Both agents append conceptual blockers, design forks, suspected-false statements,
 and red flags the moment they occur. Claude triages this queue into every
-3-hourly call (`FABLE_CALL_PROTOCOL.md` sec 5). Mark answered items
+2-hourly call (`FABLE_CALL_PROTOCOL.md` sec 5). Mark answered items
 `[ANSWERED call-NN] <one-line decision>` - do not delete them.
 
 Format:

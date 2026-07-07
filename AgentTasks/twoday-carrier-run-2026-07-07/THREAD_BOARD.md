@@ -106,8 +106,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 
 ## Standing meta-threads
 
-- **AUDIT-POOL:** every landed flagship enters; Aristotle audit within ~6h
-  (playbook sec 3).
+- **AUDIT-POOL:** every landed flagship enters; Aristotle audit fired EVENT-DRIVEN
+  after every 2-4 integrated proofs, 2-3 audit jobs in flight (playbook sec 3).
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;
