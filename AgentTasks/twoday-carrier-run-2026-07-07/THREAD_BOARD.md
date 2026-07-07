@@ -930,7 +930,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   overclaim audit (`07f40fff`) and lit/provenance source-gap audit (`5713746e`)
   have now returned and are harvested into live reports; Q13's safe README
   carrier-map wording correction was applied locally without importing
-  Aristotle boilerplate.
+  Aristotle boilerplate.  Two audit-driven refill jobs are now running:
+  `ecbf61d8` W2a concrete `Q_A`/Minkowski bridge and `297ae18c` Q12 nontrivial
+  `E4_healing` witness.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

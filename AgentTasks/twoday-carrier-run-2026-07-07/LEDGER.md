@@ -3489,5 +3489,25 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Key provenance follow-up gate: create/verify a null-edge references file with
   source keys, section/theorem anchors, and convention notes before upgrading
   author-name-only citations.
-- Verification in progress: imported reports and README passed targeted ASCII
-  and placeholder-token hygiene scans.
+- Verification passed before commit: imported reports and README passed targeted
+  ASCII and placeholder-token hygiene scans, `git diff --check`, and
+  `pre-commit run --all-files`.
+
+## [ARISTOTLE-REFILL Codex solo] Audit-driven W2a and Q12 proof jobs submitted
+
+- Submitted `ecbf61d8-c350-4f2e-975f-83ba0bfa6fc0`:
+  `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707`.
+  Target: prove or isolate the exact missing API for the literal bridge from
+  abstract carrier `Q_A = Q(sum alpha)` to the trusted Minkowski/N-body
+  aperture zero-locus theorem.
+- Submitted `297ae18c-b8a9-49b8-b0ea-55c2cf26e85d`:
+  `ne-solo-lane-q12-e4-nontrivial-radical-healing-witness-proof-20260707`.
+  Target: replace/supplement the degenerate `N = top` `E4_healing` with a
+  proper nonzero radical witness or exact missing lemmas.
+- Added task briefs:
+  `ARISTOTLE_W2A_QA_MINKOWSKI_BRIDGE_2026-07-07.md` and
+  `ARISTOTLE_Q12_E4_NONTRIVIAL_HEALING_2026-07-07.md`.
+- Updated `ARISTOTLE_LANE_DOCKET_2026-07-07.md` and `THREAD_BOARD.md`.
+- Queue poll after submission showed both new jobs `RUNNING`; together with the
+  ten older running projects, Aristotle is back to twelve active
+  StandardModel-relevant lanes.

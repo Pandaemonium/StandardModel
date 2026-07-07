@@ -660,3 +660,18 @@ StandardModel-relevant lanes.
 Harvest policy: poll these before any further refill.  Returned proof payloads
 must still be reviewed for semantic alignment, convention drift, hidden
 assumptions, and over-claim boundaries before landing.
+
+## Refill after Q13 / lit-provenance audit harvest
+
+Submitted 2026-07-07 after harvesting `07f40fff` and `5713746e`.  These two
+jobs target the highest-value proof gates surfaced by the returned audits and
+use unique descriptive project directories under `AgentTasks/aristotle-submit/`.
+
+| Project ID | Aristotle job name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `ecbf61d8-c350-4f2e-975f-83ba0bfa6fc0` | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a / carrier aperture | proof/strategy | Literal bridge, or exact blocker, from abstract carrier `Q_A = Q(sum alpha)` to the trusted Minkowski/NBody aperture zero-locus theorem. |
+| `297ae18c-b8a9-49b8-b0ea-55c2cf26e85d` | `ne-solo-lane-q12-e4-nontrivial-radical-healing-witness-proof-20260707` | Q12 GammaPrime quotient | proof | Replace/supplement the degenerate `N = top` `E4_healing` with a proper nonzero radical witness, or return exact missing lemmas. |
+
+Queue check immediately after submission: both projects were `RUNNING`; together
+with the ten older running projects, Aristotle is back to twelve active
+StandardModel-relevant lanes.
