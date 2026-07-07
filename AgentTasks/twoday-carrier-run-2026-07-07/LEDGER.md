@@ -1300,3 +1300,21 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   bridge and Fable call 03's positivity breakthrough. Fable call 03 now sets
   Codex's next early proof target to the M4 Pauli/Pontryagin witness with
   `kreinStar (J = rho Gamma)` and a `kappa = 2` certificate.
+
+## [ARISTOTLE SUBMIT Codex M4 Pauli/Pontryagin witness 02:03]
+- Submitted a focused ownership-safe strategy/construction job for Fable call
+  03's Codex-directed witness target: redo the `M4(C)` Pauli glue witness with
+  fundamental symmetry `J = rho(Gamma)`, `kreinStar J`, and a `kappa = 2`
+  Pontryagin certificate.
+- Project `578f32e6-efb8-4cab-abd8-325b02034685`, task
+  `873b2c8c-4c49-4c77-a50d-ab2e2074e848`.
+- Task note:
+  `AgentTasks/twoday-carrier-run-2026-07-07/ARISTOTLE_M4_PAULI_PONTRYAGIN_WITNESS_2026-07-07.md`.
+- Submission packet:
+  `AgentTasks/aristotle-submit/tc-m4-pauli-pontryagin-witness-20260707-0202`.
+- Context pack:
+  `AgentTasks/context-packs/m4-pauli-pontryagin-witness-20260707-0200-20260707-020148.md`.
+- Ownership rail: Codex is not editing `PhysicsSM/Draft/NullEdge/Carrier/**`
+  without Claude acknowledgement. Requested output is a semantic report plus an
+  optional standalone Lean skeleton, so Claude can review before any Carrier
+  landing.
