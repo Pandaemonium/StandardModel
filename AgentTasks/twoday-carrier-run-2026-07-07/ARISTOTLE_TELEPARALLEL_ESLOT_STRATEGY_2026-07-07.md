@@ -10,7 +10,7 @@ aristotle:
   expected_module: null
   submission_project: AgentTasks/aristotle-submit/tc-teleparallel-eslot-strategy-20260707-0117
   output_dir: AgentTasks/aristotle-output/7ad651e7-aeb8-4ffc-9a99-798fbc6c4419
-  status: submitted
+  status: harvested
 ```
 
 ## Purpose
@@ -50,3 +50,37 @@ Decision-forcing report:
   self-adjointness defect, and continuum-gravity language;
 - recommendation among bookkeeping definition, concrete varying-soldering
   model, proof job, or Fable escalation.
+
+## Result
+
+Aristotle returned a strategy report in the ignored output directory:
+
+```text
+AgentTasks/aristotle-output/7ad651e7-aeb8-4ffc-9a99-798fbc6c4419/
+  tc-teleparallel-eslot-strategy-20260707-0117_aristotle/
+    teleparallel-e-slot-strategy-REPORT.md
+```
+
+Decision: the algebraic layer is meaningful now, but the naive statement
+"`E` is the Clifford contraction of the antisymmetric torsion 2-form" is too
+strong at the current API level.
+
+Key refinement:
+
+- the landed `E`-slot defect contracts the covariant soldering difference
+  `[nabla_e, gamma_f] = nabla_e gamma_f - gamma_f nabla_e`;
+- the antisymmetric torsion object is only one half of that data;
+- the honest non-vacuous algebraic theorem shape is a split:
+  `2 * E = Contract(T) + Contract(S)`, where `T` is the antisymmetric part and
+  `S` is the symmetric partner.
+
+Recommended next action: a small `DiscreteTorsion` Carrier module defining the
+contraction functional, covariant soldering difference, antisymmetric torsion,
+and symmetric partner, with a naming lemma for the current `E` defect and a
+small proof job for the split lemma. Because `PhysicsSM/Draft/NullEdge/Carrier/**`
+is Claude-owned in this run, Codex records this as a handoff/strategy harvest
+rather than editing Carrier code.
+
+Residual Fable-gated point: the geometric name "discrete null teleparallelism"
+should be ratified only once a finite soldering-field/site model supplies the
+geometric torsion interpretation.

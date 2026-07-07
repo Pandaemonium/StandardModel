@@ -81,7 +81,14 @@ Format:
   target: define discrete torsion
   `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and prove `E` is its Clifford
   contraction. Unblock = RATIFY exact Lean statement shape, ownership, and the
-  TEGR/Nester/Maluf/Witten provenance notes to cite before proof spend.
+  TEGR/Nester/Maluf/Witten provenance notes to cite before proof spend. Update
+  01:31 Codex/Aristotle: strategy job `7ad651e7` / `5aa6d83b` sharpens this.
+  In current `CarrierESlot.lean`, `E` contracts the covariant soldering
+  difference `[nabla_e, gamma_f]`, not hypothesis-free antisymmetric torsion.
+  The honest algebraic target is `2 * E = Contract(T) + Contract(S)`, with `T`
+  antisymmetric and `S` symmetric. Fable should ratify when this algebraic API
+  may be called geometric/discrete-null-teleparallel torsion; Carrier code is
+  Claude-owned, so Codex leaves this as handoff.
 - [QUEUE 22:55 Codex/Fable] Krein positivity reframed as finite Pontryagin
   linear algebra. Fable's near target: for a finite Pontryagin/Krein space and
   a `J`-self-adjoint operator such as `D^#D`, prove existence of an invariant

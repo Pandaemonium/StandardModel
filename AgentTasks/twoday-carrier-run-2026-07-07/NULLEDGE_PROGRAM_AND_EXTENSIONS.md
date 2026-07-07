@@ -249,11 +249,13 @@ obstruction, and to what?
   (covariantly constant soldering), with Witten's positive-energy theorem as the continuum avatar.
   Fable's strongest suggestion is to name the extension **discrete null teleparallelism**:
   transport is flat in the gravity sector while the soldering varies, so gravitational content is
-  torsion rather than curvature. A near Lean target is to define a discrete torsion 2-form
-  `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and prove that the `E`-slot is its Clifford
-  contraction, the G-slot analogue of the torus realization of `Q_C`. The reach target is a
-  genuine discrete TEGR/ADM story on null-edge complexes, with the usual positive-energy boundary
-  term as the continuum comparison.
+  torsion rather than curvature. Aristotle's 2026-07-07 strategy pass sharpened the near Lean
+  target: at the current algebraic API, `E` is the Clifford contraction of the covariant
+  soldering-difference `[nabla_e, gamma_f]`, while the antisymmetric torsion 2-form is only one
+  half of that data. The honest next theorem is therefore a split
+  `2 * E = Contract(T) + Contract(S)`, with `T` antisymmetric and `S` the symmetric partner; the
+  geometric claim that `T` is the teleparallel torsion of a finite soldering-field model remains
+  the reach target, along with a genuine discrete TEGR/ADM story on null-edge complexes.
 
 ### 4.2 More physics from the same carrier
 
@@ -350,8 +352,9 @@ In one line each:
 
 - **The biggest bet:** is "gravity is the fourth slot of the mass operator" a real discrete-gravity
   program, or an analogy that breaks? Current best answer from Fable: yes, the precise name is
-  discrete null teleparallelism; the near theorem is `E` as the Clifford contraction of discrete
-  torsion.
+  discrete null teleparallelism; the immediate algebraic theorem is `E` as the Clifford contraction
+  of covariant soldering-difference, plus the split
+  `2 * E = Contract(T) + Contract(S)` before promoting `T` to geometric torsion.
 - **The unifying theorem:** what is the sharpest single statement of "mass = failure of null
   transport to preserve a polarization," and is it provable?
 - **The right ambient mathematics:** index theory, Lorentzian NCG, twistor/celestial, positive
@@ -382,9 +385,12 @@ slot" is not a category error — torsion is to the G-slot what curvature is to 
 positive-energy proof we cite as the continuum avatar of `E` (Nester's quadratic-spinor / teleparallel
 positive-energy proofs, Maluf's teleparallel ADM energy = a surface integral of torsion, are the
 continuum targets). (ii) `weitzenbock_master` being the master theorem's name is not a coincidence.
-(iii) **[near] Lean target:** define the discrete torsion 2-form `T_{ef} = ∇ₑα_f − ∇_fαₑ` and prove
-`E` is its Clifford contraction — the G-slot analogue of our torus realization of `Q_C`. **Verdict:
-a real discrete-gravity program — "discrete null teleparallelism."**
+(iii) **[near] Lean target, sharpened by Aristotle:** define the covariant soldering-difference
+`D_{ef} = [∇ₑ, γ_f]`, its antisymmetric part `T` and symmetric part `S`, then prove
+`2 * E = Contract(T) + Contract(S)`. The direct equality "`E` is the contraction of antisymmetric
+torsion" is not hypothesis-free at the current algebra level. **Verdict: a real discrete-gravity
+program — "discrete null teleparallelism" — with the geometric torsion name gated on a finite
+soldering-field/site model.**
 
 ### 7.2 Krein positivity — three graded routes (the hardest crux, decomposed)
 

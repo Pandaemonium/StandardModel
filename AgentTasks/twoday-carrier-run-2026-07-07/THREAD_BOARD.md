@@ -170,7 +170,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   guidance promotes the near target: define discrete torsion and prove the
   `E`-slot is its Clifford contraction, with TEGR/positive-energy provenance.
   Codex submitted Aristotle strategy project `7ad651e7` / task `5aa6d83b` to
-  ratify the smallest honest Lean API before any proof spend.
+  ratify the smallest honest Lean API before any proof spend. Aristotle
+  sharpened the target: current `E` is the contraction of covariant
+  soldering-difference `[nabla_e, gamma_f]`; antisymmetric torsion supplies only
+  one half, with proposed split `2 * E = Contract(T) + Contract(S)`. Next
+  Carrier-owned move: `DiscreteTorsion` bookkeeping module plus a small split
+  proof job, while the geometric teleparallel naming stays Fable-gated.
 ### C-1FORM - finite one-form center-symmetry framing [Codex strategy]
 - **Done:** an Aristotle/Fable-ratified Lean statement layer connecting the
   existing `CenterFluxSector` finite center-shift/electric-sector API and the

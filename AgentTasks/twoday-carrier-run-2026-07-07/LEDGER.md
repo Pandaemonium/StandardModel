@@ -1139,3 +1139,23 @@ positivity (both in progress).
 - Residual rail: `TorusLeadingAttachment` bundles an external scalar readout
   axis and a torus-curvature axis sharing `U`; keep the "no
   curvature-to-scalar theorem without new input" discipline prominent.
+
+## [ARISTOTLE HARVEST Codex teleparallel E-slot strategy 01:31]
+- Harvested Aristotle teleparallel E-slot strategy project
+  `7ad651e7-aeb8-4ffc-9a99-798fbc6c4419`, task
+  `5aa6d83b-85c6-484c-9465-2394d91738db`.
+- Full report saved under ignored output:
+  `AgentTasks/aristotle-output/7ad651e7-aeb8-4ffc-9a99-798fbc6c4419/tc-teleparallel-eslot-strategy-20260707-0117_aristotle/teleparallel-e-slot-strategy-REPORT.md`.
+- Key correction to the Fable phrasing: current `CarrierESlot.lean` has the
+  algebraic defect contracting `[nabla_e, gamma_f]`, the covariant soldering
+  difference. It is not hypothesis-free equal to the contraction of the
+  antisymmetric torsion `T(e,f) = D(e,f) - D(f,e)`.
+- Honest next theorem shape: define `Contract`, `D`, antisymmetric `T`, and
+  symmetric `S`, then prove the split `2 * E = Contract(T) + Contract(S)`. This
+  keeps the torsion contraction as the antisymmetric half of the E-slot rather
+  than all of it.
+- Action: recorded in `FABLE_QUEUE.md`, `THREAD_BOARD.md`, and
+  `ARISTOTLE_TELEPARALLEL_ESLOT_STRATEGY_2026-07-07.md`. No Carrier code edited:
+  `PhysicsSM/Draft/NullEdge/Carrier/**` is Claude-owned in this run. The
+  geometric "discrete null teleparallelism" name remains Fable-gated until a
+  finite soldering-field/site model is explicit.
