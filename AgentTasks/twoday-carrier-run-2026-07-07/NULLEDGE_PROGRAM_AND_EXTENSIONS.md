@@ -122,11 +122,20 @@ transport):
   `[∇_a,∇_b]` equals the plaquette holonomy path-difference, and `Q_C = 0 ⟺ the connection
   is flat`. So the abstract `Q_C` has a concrete gauge-theoretic meaning.
 
-**Honest boundary.** This is proved at the level of `D²` (and the algebra), not yet the
-Krein square `D^#D`; no spectral positivity is claimed; and the three bricks currently live
-in different algebras, so a single object witnessing all hypotheses at once
-(a "`TorusCarrierModel`") is still being constructed. The Krein upgrade (`carrier_krein_square`)
-and that witness are the immediate open targets.
+**Honest boundary (important — do not over-read this).** The decomposition
+`weitzenbock_master` is, as pure algebra, the *standard Clifford grade-split* (sym +
+antisym) — it is a general algebraic identity, not by itself a physics theorem. Its
+scientific content lives entirely in three things that are **still open**: (i) the
+**identification lemmas** tying `Q_A/Q_C/Q_T` to the independently-defined mass functionals
+of §2.2 (without these, "`Q_A` = aperture / `Q_C` = closure / `Q_T` = turn" is a naming
+convention, not a proof); (ii) the **Krein upgrade** `D²→D^#D` (mass is `inf spec D^#D`, and
+`D²≠D^#D` on an indefinite space, so the `D²` assembly is a *scaffold*, not yet a mass
+statement); and (iii) a **single witnessing model** — the three bricks currently live in
+different algebras, so an object instantiating all hypotheses at once (a "`TorusCarrierModel`"
+on the `ℤ₂×ℤ₂` torus, with `Q_A/Q_C/Q_T` simultaneously nonzero) is still being built. These
+three — flagged independently by both our conceptual reviewer (Fable) and an adversarial
+strategy audit — are the honest frontier; the kernel-checked decomposition is the trustworthy
+scaffold they hang on.
 
 ### 2.2 The individual mass modes (from an earlier, broader push) — mixed PROVED/MODELED
 

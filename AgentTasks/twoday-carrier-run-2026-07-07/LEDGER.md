@@ -385,3 +385,26 @@ weitzenbock_master_varying, #3, pure algebra).
   PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`; `pre-commit run
   --all-files`. Note: the first Lean MCP `lean_local_search` cold call timed
   out, so this slice used source search plus kernel/build checks.
+
+## [GRAND-STRATEGY] digest (Claude c6) - CONVERGES with Fable call-02: build the witness
+Deliverable: GRAND_STRATEGY_REVIEW_2026-07-07.md (harvested). Aristotle independently
+verified the kernel (guard green 8033, 13 flagships std axioms) and returned a sharp,
+skeptical review. KEY: it converges with Fable call-02 audit item 3 on the #1 move.
+- **(a)** the carrier taxonomy is the right idea, but `weitzenbock_master` alone is the
+  STANDARD CLIFFORD GRADE-SPLIT - tautological as algebra. The PHYSICS is entirely in the
+  (open) IDENTIFICATION lemmas (Q_A=aperture, Q_T=turn, Q_C=closure). Q_A/Q_C/Q_T is
+  canonical ONLY modulo those - currently an artifact of the sym/antisym split.
+- **(b) #1 next move (DOUBLY-CONFIRMED, = Fable's TorusCarrierModel): the GLUE INSTANCE**
+  - instantiate the assembly on the Z2xZ2 torus so Q_A/Q_C/Q_T are simultaneously nonzero
+  in ONE model + discharge probes P-i..iv. Over-invested: lane C SU(N). Under-invested:
+  Move-2 identifications, the glue/probes, the Krein upgrade.
+- **(c) risks:** R1 D^2 assembly is physically premature (mass = inf spec D^#D, D^2 != D^#D
+  on Krein); R2 the decomposition is the grade-split (canonical only modulo identification);
+  R3 no concrete witness = hollowness risk; R4 mZero sorry [**NOW RESOLVED** - I banked
+  mZero_iff_commute this session, commit 4a779c0; review was mid-flight]; R5 keep
+  exhaustiveness relativized.
+- **(e)** over-claims are all in RUN-LEVEL PROSE, not the kernel/docstrings (found honest).
+  No fabricated PROVED grades.
+DECISIONS (acting): (1) BUILD THE GLUE INSTANCE next (TorusCarrierModel) - top priority,
+converged; (2) FREEZE "origin of mass" prose -> "Weitzenbock scaffold" until the Krein
+brick lands (applying to the collaborator doc + scorecard prose); (3) mZero DONE.
