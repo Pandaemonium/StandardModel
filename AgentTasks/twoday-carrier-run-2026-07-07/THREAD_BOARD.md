@@ -120,7 +120,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   the bridge over the concrete Carrier torus gauge-configuration type and
   re-exporting `mZero_iff_commute` as the scalar-free curvature axis. Still
   OPEN: any curvature-to-scalar derivation, gauge measure, `Q_C` expectation,
-  nonabelian result, or beyond-leading positivity theorem.
+  nonabelian result, or beyond-leading positivity theorem. Aristotle QC bridge
+  audit `3b4e47a0` / `3428311b` found no blocking issue; Codex fixed the minor
+  guard-coverage gap for the scalar exp-gap/tanh headline restatements.
 
 ## Supporting threads
 

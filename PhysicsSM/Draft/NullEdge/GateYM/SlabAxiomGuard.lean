@@ -193,7 +193,19 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.scalarNormalizationContract_readout_eq_tanh
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.scalarNormalizationContract_readout_eq_exp_neg_osSpectralGap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.scalarNormalizationContract_readout_eq_exp_neg_osSpectralGap
+
 /-! ## QC-leading concrete torus attachment (bookkeeping; no curvature-to-scalar claim) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.readout_at_config_eq_tanh' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.readout_at_config_eq_tanh
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.readout_at_config_eq_exp_neg_osSpectralGap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.readout_at_config_eq_exp_neg_osSpectralGap
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.TorusLeadingAttachment.readout_at_config_mem_Ioo' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

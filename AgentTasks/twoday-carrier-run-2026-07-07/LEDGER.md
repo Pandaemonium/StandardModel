@@ -1118,3 +1118,24 @@ positivity (both in progress).
   formula, no positive-energy theorem, no physical gravitational field equation,
   no positivity or spectral claim, and no canonical geometric torsion object
   without explicit finite soldering-field data.
+
+## [ARISTOTLE HARVEST Codex QC bridge audit 01:24]
+- Harvested Aristotle QC bridge audit project
+  `3b4e47a0-9cf8-4ff9-8802-ea54d6409ae4`, task
+  `3428311b-7af9-4a8f-abd0-5239844a4fde`.
+- Full report saved under ignored output:
+  `AgentTasks/aristotle-output/3b4e47a0-9cf8-4ff9-8802-ea54d6409ae4/tc-qc-bridge-audit-20260707-0112_aristotle/AUDIT_QC_BRIDGE_20260707.md`.
+- Verdict: no blocking issues. No vacuity, semantic drift, hidden
+  curvature-to-scalar conflation, expectation/measure overclaim, nonabelian
+  result, continuum confinement claim, or GateYM/Carrier ownership violation.
+- Minor should-fix accepted: guard coverage was asymmetric. Added three
+  `SlabAxiomGuard.lean` guards for
+  `scalarNormalizationContract_readout_eq_exp_neg_osSpectralGap`,
+  `TorusLeadingAttachment.readout_at_config_eq_tanh`, and
+  `TorusLeadingAttachment.readout_at_config_eq_exp_neg_osSpectralGap`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+- Residual rail: `TorusLeadingAttachment` bundles an external scalar readout
+  axis and a torus-curvature axis sharing `U`; keep the "no
+  curvature-to-scalar theorem without new input" discipline prominent.
