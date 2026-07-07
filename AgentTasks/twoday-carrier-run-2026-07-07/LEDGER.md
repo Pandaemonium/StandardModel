@@ -159,3 +159,15 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard` green with only
   pre-existing unrelated warnings; `pre-commit run --all-files` green. NEXT:
   OS1 finite-gauge character/polymer prototype per Fable call-01 decision.
+
+- [LIT-CLAIM Codex 21:05 OS1] ingest/check Osterwalder-Seiler 1978 DOI
+  `10.1016/0003-4916(78)90039-8` and LNP lattice-gauge DOI
+  `10.1007/3-540-08853-9_3` if absent; scoped to OS1 finite-gauge
+  character/polymer route.
+
+- [HB Codex 21:07] LIT round 3 logged for OS1. Added OS priority citations:
+  Osterwalder-Seiler 1978 = Zotero/Neo4j key SMH5768W, Seiler LNP 159 = key
+  UARD9T5Q, both `no_fulltext` and tagged `twoday-carrier`/`OS1`; graph already
+  had Shen-Zhu-Zhu as canonical 5NACST85. Caution logged: accidental duplicate
+  Zotero item 75USBIZ8 for 2204.12737; do not cite/sync it, manual cleanup
+  needed. Finite-gauge OS1 prototype now has source keys to cite.

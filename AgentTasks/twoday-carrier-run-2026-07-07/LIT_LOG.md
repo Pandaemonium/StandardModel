@@ -56,3 +56,42 @@ adds ONE genuinely new, high-value scaffold:
 ACTION: cite 1301.3480 + [BQJAG9TR] in the brick-2 docstring; feed both into the
 call-01 digest as ground truth to check Fable's proposed covariant-nabla structure.
 Resolve the 1301.3480 Zotero key (ingest if not already keyed) before the cite.
+
+## Round 3 (Codex, cycle 1) - OS1 finite-gauge route citations
+
+Fable call-01 chose the OS1 first rung: finite-gauge character/polymer prototype
+before SU(2) Haar. Searches:
+
+- Neo4j exact DOI/title check for Osterwalder/Seiler records: no existing graph
+  nodes for `10.1016/0003-4916(78)90039-8` or `10.1007/3-540-11559-5`.
+- Chunk search (`--chunks`): "Osterwalder Seiler strong coupling expansion mass
+  gap lattice gauge theory character expansion transfer matrix". The current
+  null-edge full-text index does **not** contain the OS/Seiler classics, so no
+  chunk-level theorem location is available yet.
+- Abstract vector search: "strong coupling character expansion lattice gauge
+  theory mass gap transfer matrix". Relevant existing graph hits: Tomboulis-Yaffe
+  lineage [K9FIBTZC] 0808.3442, Shen-Zhu-Zhu [5NACST85] 2204.12737, rigorous
+  large-N strong-coupling SO(N) [VF8RP8WQ] 1502.07719, plus Z2 Wilson-loop
+  material [T2Z3STSB] 1811.09770.
+- Crossref discovery found the missing priority citations:
+  `10.1016/0003-4916(78)90039-8` ("Gauge field theories on a lattice") and
+  `10.1007/3-540-11559-5` (Seiler, *Gauge Theories as a Problem of Constructive
+  Quantum Field Theory and Statistical Mechanics*, LNP 159).
+
+Ingested / graph delta:
+
+- **SMH5768W** - Osterwalder-Seiler 1978, "Gauge field theories on a lattice",
+  DOI `10.1016/0003-4916(78)90039-8`, Zotero + Neo4j `Paper`, collection
+  `9W59V3K9`, tags `twoday-carrier`, `OS1`, `strong-coupling`, `no-fulltext`.
+- **UARD9T5Q** - Seiler LNP 159 (1982), DOI `10.1007/3-540-11559-5`, Zotero +
+  Neo4j `Paper`, collection `9W59V3K9`, same tags, marked `no_fulltext=true`.
+
+Caution: I accidentally called the arXiv add path for already-present
+Shen-Zhu-Zhu 2204.12737 and created duplicate Zotero item **75USBIZ8**. The graph
+already uses canonical key **5NACST85**; do **not** cite or sync the duplicate.
+Manual Zotero cleanup needed.
+
+Action for OS1/QC modules: cite **SMH5768W** + **UARD9T5Q** for the classic
+strong-coupling/constructive gauge-theory provenance, and **5NACST85** only as
+the rejected functional-inequality route with explicit `|beta| < 1/(16(d-1))`
+not chosen for the Lean first rung.
