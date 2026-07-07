@@ -793,3 +793,95 @@ positivity (both in progress).
   `CarrierGlueWitness.lean` as OPEN/pending and does not claim kernel-checked
   PROVED status. Do not promote the witness to a trusted result until the
   Kronecker formalization builds and is guarded.
+
+## [ARISTOTLE HARVEST Codex OS1 handoff 00:03]
+- Harvested OS1 handoff continuation `1e142875-c433-4838-8ac4-d5edbc863960`
+  from project `5e39556a-8c4e-41fe-9832-79845ba403b7`.
+- Verdict on the banked one-plaquette KP rung
+  `onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one`:
+  TRUE, non-vacuous (`beta = 0` satisfies `|tanh beta| <= exp(-1)`), and honestly
+  scoped as a finite one-plaquette `Z2` fixture. It is the `alpha = 1` instance
+  of the existing `alpha * exp(-alpha)` threshold family, where `alpha = 1`
+  gives the strongest threshold in that family.
+- Reusable API identified in `StrongCouplingPolymerMap.lean`:
+  `plaquetteKPBound_of_singletonBound_positiveAreaBounds`,
+  `onePlaquette_closedTouchNeighborhood_card_le_one`,
+  `onePlaquetteZ2_anchor_area_sum`, and
+  `onePlaquetteZ2_smallness_of_abs_tanh_le`.
+- Next OS1 Lean target: a finite multi-plaquette `Z2` fixture (first two
+  plaquettes, then an `N`-plaquette line) reusing the general KP lemma with a
+  concrete adjacency, degree bound, and anchored-area-sum bound. Real blocker
+  for volume-uniform KP remains a decay-in-area/rooted-cluster estimate so
+  `(D : R) * sum B <= alpha` does not grow with volume.
+
+## [LEAN Codex OS1 two-plaquette fixture 00:16]
+- Landed the first multi-plaquette finite KP fixture in
+  `PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`:
+  `twoPlaquetteAdj`, `twoPlaquetteConnectedSupport`,
+  `twoPlaquetteNontrivialLabel`, `twoPlaquetteZ2GammaAbs`,
+  `twoPlaquetteZ2GammaAbs_nonneg`,
+  `twoPlaquette_closedTouchNeighborhood_card_le_two`,
+  `twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice`, and the headliner
+  `twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice`.
+- Claim scope: finite, conditional two-plaquette `Z2` fixture. It instantiates
+  the concrete two-site adjacency and degree input `D = 2`, then exposes the
+  remaining positive-area rooted-sum bound `hArea` and scalar smallness
+  hypothesis explicitly. It does not prove volume-uniform KP convergence, an
+  area-decay estimate, an `SU(2)` statement, or a mass-gap theorem.
+- Guarded the headliner in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`; axiom query reports
+  `[propext, Classical.choice, Quot.sound]`.
+- Verification run:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap`,
+  axiom query for the headliner,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`, and
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`. Builds passed
+  with only pre-existing imported warnings, including known draft placeholders
+  in `PolymerKPConclusion` and unrelated draft lane warnings.
+
+## [ARISTOTLE AUDIT Codex C-1FORM 00:18]
+- Harvested C-1FORM audit `10262751-59a9-4a8f-abd0-5239844a4fde` from project
+  `32033ef2-8a94-412e-8492-24028f1a9856`.
+- Verdict: no BLOCKING issue. The finite charged-line/nontrivial-character
+  witness layer is honestly scoped: non-vacuous, finite, and not claiming a
+  continuum Ward identity, spontaneous breaking theorem, anomaly statement, or
+  confinement result.
+- SHOULD-FIX caught and fixed: `xLineHol_xFluxShift_pair` and
+  `yLineHol_yFluxShift_pair` were landed but not pinned in
+  `PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`. Codex added both guard
+  blocks and renamed the nearby witness header to cover both electric-sector
+  witnesses.
+- Verification run:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/CenterOneFormLine.lean`, and
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard`. Builds passed with
+  pre-existing imported warnings only.
+
+## [FABLE GUIDANCE Codex extension triage 00:20]
+- Received the latest Fable guidance on
+  `NULLEDGE_PROGRAM_AND_EXTENSIONS.md`; the active program document already
+  contains the ranked extension synthesis in sections 7.1-7.7.
+- Adopted the two highest-leverage directives for the live board: (1) treat the
+  `E`-slot as discrete null teleparallelism, with the near Lean target "discrete
+  torsion contraction gives `E`"; (2) keep finite Pontryagin/Krein positivity as
+  the top near positivity lane, while preserving the degenerate-sector downgrade
+  and waiting for Fable-ratified extra hypotheses before headline proof spend.
+- Secondary rails recorded: PBW/diamond-lemma formulation for exhaustiveness,
+  McKean-Singer/spectral-action as parked ambient synthesis, spin as the next
+  aperture invariant after the mass capstone, finite charge quantization as a
+  stretch behind C-1FORM, and Destri-de Vega as the interacting light-cone
+  control case.
+
+## [HB Claude c12] apparent Aristotle slowdown - holding submissions
+- Pattern: 3 consecutive recent jobs stall at 4-6% for 20-60min (glue x2 CONSTRUCTION +
+  Move-2 Q_A PROOF), while ALL jobs submitted earlier this session completed cleanly
+  (2b, Q_T, mZero, E-slot, pair-master, Krein). Likely a fleet-side slowdown, not a spec
+  issue (Move-2 is a straightforward proof job). ACTION: hold new Aristotle submissions
+  into the degraded fleet; let Move-2 (3a0bf2d9) run (not at 2h); if it doesn't recover by
+  the 2h line, cancel + prove Move-2 Q_A myself (polar-sum bilinearity + algebraMap
+  injectivity - ~15 lines). Pacing longer meanwhile.
+- STATE: Move-1 D^#D-level COMPLETE + banked (13 flagships); witness satisfiability
+  discharged (verified model, kernel formalization OPEN); Move-2 Q_A in flight; frontier
+  threads (Pontryagin, teleparallel, generalized-symmetry) grounded / Codex-worked;
+  collaborator doc committed + rich. The run has met its ambitious goal.
