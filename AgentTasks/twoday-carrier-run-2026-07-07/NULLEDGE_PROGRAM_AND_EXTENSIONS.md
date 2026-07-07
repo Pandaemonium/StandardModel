@@ -196,7 +196,12 @@ collaborator may see sharper ones. Each is a potential extension in itself.
   (Krein-adjoint `A^# = ηA*η`, chirality involution `Γ^# = ±Γ`).
 - **Discrete Weitzenböck / Lichnerowicz.** The decomposition is the discrete Bochner–Lichnerowicz
   formula; the curvature endomorphism is our `Q_C`, and the gravity term `E` is the
-  spin-connection/torsion defect.
+  spin-connection/torsion defect. Fable's sharper reading is that the `E`-slot is not just
+  "gravity-like": it is the discrete null-edge version of **teleparallel gravity**. In the
+  continuum, teleparallel/Weitzenbock geometry uses flat parallelism and puts gravitational
+  content into the torsion/failure of the soldering to be covariantly constant. That is exactly
+  the role of the carrier's soldering-gradient defect. This remains an extension target, not a
+  proved equivalence, but it gives the G-slot a known geometric home.
 - **Twistors and celestial holography.** Null edges are twistor-like; a massive particle needs ≥2
   twistors (one twistor is null) — the classic Penrose–Perjés–Hughston "two-twistor particle."
   In massive spinor-helicity (Arkani-Hamed–Huang–Huang) every massive momentum is a bound pair of
@@ -239,13 +244,16 @@ obstruction, and to what?
   null-edge structure; a precise bridge to **causal set theory** (which also builds spacetime
   from causal/lightlike relations but has no soldering/Clifford layer — our carrier could be the
   missing dynamical operator on a causal set).
-- **Gravity as the fourth mode, taken seriously [reach].** The `E`-slot is the gravity mode, and
-  we can already state `E=0` as the discrete tetrad postulate / metric compatibility (covariantly
-  constant soldering), with Witten's positive-energy theorem as the continuum avatar. Extension:
-  a genuine **discrete gravity** on null-edge complexes — discrete Einstein/ADM content, and
-  whether curvature (a varying soldering) *sources* mass through `E`. This is the single richest
-  extension: it would make the program a candidate discrete quantum-gravity framework, with mass
-  and gravity as two slots of one operator.
+- **Gravity as the fourth mode, taken seriously [near/reach].** The `E`-slot is the gravity mode,
+  and we can already state `E=0` as the discrete tetrad postulate / metric compatibility
+  (covariantly constant soldering), with Witten's positive-energy theorem as the continuum avatar.
+  Fable's strongest suggestion is to name the extension **discrete null teleparallelism**:
+  transport is flat in the gravity sector while the soldering varies, so gravitational content is
+  torsion rather than curvature. A near Lean target is to define a discrete torsion 2-form
+  `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and prove that the `E`-slot is its Clifford
+  contraction, the G-slot analogue of the torus realization of `Q_C`. The reach target is a
+  genuine discrete TEGR/ADM story on null-edge complexes, with the usual positive-energy boundary
+  term as the continuum comparison.
 
 ### 4.2 More physics from the same carrier
 
@@ -270,7 +278,10 @@ obstruction, and to what?
 
 - **Exhaustiveness / classification theorem [reach].** Prove the taxonomy is *exhaustive*: on a
   suitable null-edge complex, `D^#D` decomposes into exactly these slots and no others (a graded
-  Bochner classification). We can currently state it *relative to hypotheses* (each dropped
+  Bochner classification). Fable's recommended formulation is PBW/rewrite-theoretic: put the
+  `(order in nabla, Clifford degree)` bifiltration on the free carrier algebra modulo the `hcl`,
+  `hcomm`, and chirality relations, then prove the associated graded of the square has exactly the
+  slot bidegrees and no others. We can currently state it *relative to hypotheses* (each dropped
   hypothesis yields exactly one known extra term); the unconditional version is open and would be
   the theoretical capstone.
 - **Continuum limit and renormalization [reach].** Discrete Weitzenböck → continuum Lichnerowicz;
@@ -286,6 +297,12 @@ obstruction, and to what?
 - **Indefinite spectral triples, formalized [reach].** There is no formal (machine-checked) theory
   of Krein/Lorentzian spectral triples yet; the carrier program is a concrete driver for one, and
   it connects to PhysLean.
+- **Finite Pontryagin positivity [near].** Fable's highest-leverage positivity reframing is
+  finite-dimensional: the carrier lives in a finite Pontryagin/Krein space, not an arbitrary
+  infinite-dimensional Krein setting. The first formal target is an invariant maximal nonnegative
+  subspace theorem for a `J`-self-adjoint finite matrix/operator. If this is proved, the mass-form
+  question changes from "does a positive physical sector exist?" to the sharper and more physical
+  "is the guaranteed sector natural, gauge-invariant, local, and grading-compatible?"
 
 ### 4.4 Emergent-spacetime and information-theoretic directions [SPECULATIVE]
 
@@ -294,15 +311,18 @@ obstruction, and to what?
   known guardrail — so this is a genuine open problem, not an assumption.)
 - Null edges as an entanglement/holographic structure: is `D^#D` positivity (the physical-sector
   question, currently our hardest crux) an *entropic* condition? Does the aperture entropy connect
-  to entanglement entropy across a null cut?
+  to entanglement entropy across a null cut? Fable points to a speculative but precise finite
+  shadow of ANEC/QNEC: positivity of the null-directed mass form may be relative-entropy
+  positivity across a null cut, with modular flow supplying the null transport.
 
 ### 4.5 The honest hard cruxes (where help is most valuable)
 
 If the collaborator wants the highest-leverage problems rather than new directions:
 
 1. **Krein positivity.** On which physical sector does the indefinite form `D^#D` restrict to a
-   genuine non-negative form (so `M² = inf spec` is meaningful)? Generic invariant positive
-   sectors are Krein-obstructed; is there a natural one, or a clean no-go?
+   genuine non-negative form (so `M² = inf spec` is meaningful)? Fable's near target is the finite
+   Pontryagin invariant-subspace theorem: prove existence first, then ask whether the guaranteed
+   sector is natural/gauge-invariant/local rather than whether a sector exists at all.
 2. **The nonabelian mass gap.** The C-mode gate (see §4.2).
 3. **Exhaustiveness.** The unconditional classification (see §4.3).
 4. **The `ℂ⊗𝕆 →` dynamics.** A genuine piece of SM dynamics, not just charge co-location.
@@ -325,10 +345,112 @@ If the collaborator wants the highest-leverage problems rather than new directio
 In one line each:
 
 - **The biggest bet:** is "gravity is the fourth slot of the mass operator" a real discrete-gravity
-  program, or an analogy that breaks?
+  program, or an analogy that breaks? Current best answer from Fable: yes, the precise name is
+  discrete null teleparallelism; the near theorem is `E` as the Clifford contraction of discrete
+  torsion.
 - **The unifying theorem:** what is the sharpest single statement of "mass = failure of null
   transport to preserve a polarization," and is it provable?
 - **The right ambient mathematics:** index theory, Lorentzian NCG, twistor/celestial, positive
-  geometry, causal sets — which one is the *natural* home, and what does adopting it buy?
+  geometry, causal sets — which one is the *natural* home, and what does adopting it buy? Current
+  best split: finite Lorentzian spectral triples / spectral action for the operator as a whole;
+  twistor/spinor-helicity for the aperture slot; teleparallel geometry for the G-slot; PBW
+  rewriting for exhaustiveness.
 - **New obstruction ⇒ new physics:** which non-mass invariant (charge, spin, causality, gravity)
-  is the most promising *next* obstruction to formalize on the same carrier?
+  is the most promising *next* obstruction to formalize on the same carrier? Current best answer:
+  spin, via the massive little group on null-edge pairs, because it builds directly on the proved
+  aperture mass theorem.
+
+---
+
+## 7. Ranked extension directions — an expert reviewer's assessment
+
+*Detailed ranking by a strong theorist (leverage × well-posedness under the no-`sorry` regime),
+expanding the one-line answers in §6. Grades as before.*
+
+### 7.1 The gravity slot **is** teleparallel gravity — this answers the biggest bet
+
+The `E`-term (soldering-gradient defect; `E=0` = the discrete tetrad postulate) is the discrete host
+of **teleparallel gravity** — the GR-equivalent theory built on the **Weitzenböck connection**: flat,
+metric-compatible, all gravitational content in **torsion**, i.e. in exactly the failure of the
+soldering to be covariantly constant relative to a trivial parallelism. So "gravity as the fourth
+slot" is not a category error — torsion is to the G-slot what curvature is to the C-slot. Consequences:
+(i) TEGR differs from Einstein–Hilbert by exactly a boundary term — *the* boundary term in Witten's
+positive-energy proof we cite as the continuum avatar of `E` (Nester's quadratic-spinor / teleparallel
+positive-energy proofs, Maluf's teleparallel ADM energy = a surface integral of torsion, are the
+continuum targets). (ii) `weitzenbock_master` being the master theorem's name is not a coincidence.
+(iii) **[near] Lean target:** define the discrete torsion 2-form `T_{ef} = ∇ₑα_f − ∇_fαₑ` and prove
+`E` is its Clifford contraction — the G-slot analogue of our torus realization of `Q_C`. **Verdict:
+a real discrete-gravity program — "discrete null teleparallelism."**
+
+### 7.2 Krein positivity — three graded routes (the hardest crux, decomposed)
+
+- **[near, TOP PICK] Pontryagin invariant subspaces.** The complexes are *finite*, so we are in
+  **Pontryagin spaces `Π_κ`**, where Pontryagin (1944) / Krein–Langer guarantees every `J`-self-adjoint
+  operator has an invariant maximal non-negative subspace. Applied to `D^#D`, this **guarantees** a
+  positive-semidefinite sector — so `M² = inf spec on the physical sector` is meaningful with no extra
+  input, and the question sharpens from "does a physical sector exist?" to "is the guaranteed one
+  *natural*?" — a strict epistemic upgrade. Finite-dimensional honest linear algebra; **no Krein/
+  Pontryagin theory exists in Mathlib**, so it is a citable formalization in its own right.
+- **[reach] Osterwalder–Schrader as the physical sector.** We have RP machinery in lane C; OS
+  reconstruction produces a positive Hilbert space by quotienting null vectors of a semidefinite form.
+  Null edges give a canonical causal reflection `θ`. *Pre-registered conjecture:* `⟨θx,x⟩` from the
+  Krein structure is positive-semidefinite on the reflection-symmetric sector and `D^#D` descends
+  positively to the OS quotient — **unifying our own lanes** (confinement RP = mass Krein positivity).
+- **[SPECULATIVE] discrete ANEC / entanglement.** Null-energy positivity is provably entanglement
+  (ANEC/QNEC via modular theory; Borchers–Wiesbrock: null translations *are* modular flow of null cuts).
+  Precise hunch: null transport = modular flow for the Krein structure + a cut; physical-sector
+  positivity = a discrete ANEC ("mass-form positivity = relative-entropy positivity across a null cut").
+
+### 7.3 The program is an index theorem — McKean–Singer, spectral action as ambient home
+
+Prove **McKean–Singer on the carrier**: `Str e^{−tD^#D}` is `t`-independent = the index (short,
+kernel-checkable in finite dim). The slot decomposition becomes the *coefficients* of the supertrace
+(discrete Seeley–DeWitt) expansion — `Q_C` in the Chern slot, `E` in the Â/torsion slot, `Q_T` in the
+endomorphism slot. **Ambient home:** finite Lorentzian spectral triples *with the spectral action* —
+Chamseddine–Connes' `a₂,a₄` heat coefficients of `Tr f(D²/Λ²)` = cosmological constant + Einstein–
+Hilbert + Yang–Mills + Higgs potential, the continuum shadow of "all masses are graded summands of one
+operator square." Sharp continuum target: our decomposition should converge slot-by-slot to that
+expansion. (NCG is the home of the *operator*; twistor/celestial the home of the A-slot.)
+
+### 7.4 Exhaustiveness is a PBW / diamond-lemma theorem
+
+Restate the classification as rewriting theory: the (order-in-∇, Clifford-degree) bifiltration on the
+free algebra generated by `{γₑ,∇ₑ,φ}` modulo the relations, proving the associated graded of `D^#D` has
+components in exactly bidegrees `(2,0),(0,2),(0,0),(1,1)` and no others — a **PBW/basis statement** by
+Bergman's diamond lemma (finite confluence, Lean-friendly). "Each dropped hypothesis adds one slot"
+becomes "relaxing one relation adds one normal-form family" — a terminating computation, not a
+mystery.
+
+### 7.5 The next invariant should be spin (then, cautiously, spin-statistics)
+
+**Spin** builds directly on proved results. In massive spinor-helicity a massive momentum is a pair of
+null spinors `p = λ^I λ̃_I`, `det λ = M`, with SU(2) little group on the pair index — **mass and spin
+both live on the aperture of two null edges**. We have `M² = |⟨12⟩|²`; the extension builds the
+Pauli–Lubański operator from the same pair data and recovers the Wigner classification as finite linear
+algebra (single edge → helicity; two-edge aperture → SU(2) spin). Defer spin-statistics. *Koide bonus:*
+massive spinors scale as `√M`, so the `√m` variables in which Koide is natural are the native variables
+of the aperture slot; Foot's observation (Koide ⇔ `(√mₑ,√m_μ,√m_τ)` at 45° to `(1,1,1)`) makes it
+literally an **angle** statement — the shape this framework speaks.
+
+### 7.6 Shorter but real
+
+- **Generalized symmetries [reach].** `H²(K,Z(G))` center-twist data *is* the 1-form center-symmetry
+  background; confinement = unbroken 1-form symmetry (Gaiotto–Kapustin–Seiberg–Willett). Our
+  Tomboulis–Yaffe machinery is this in older clothes — the reframing modernizes the C-gate.
+- **Charge quantization [near].** On a finite 2-complex, Dirac quantization = integrality of the
+  plaquette flux cocycle (DeGrand–Toussaint), `H²(K,ℤ)→H²(K,U(1))` — eminently formalizable.
+- **Emergence of geometry [reach], re-posed.** By Malament / Hawking–King–McCarthy, causal order alone
+  fixes the *conformal* class — so null edges carry the conformal metric for free, and the combinatorics
+  need only supply the **scale**, which is exactly the Gram data `g(e,f)` (Sorkin's "order + number =
+  geometry"). Shrinks "can the tetrad emerge?" to "can the scale emerge?".
+- **Interacting continuum control [reach].** The **Destri–de Vega light-cone lattice** (massive
+  Thirring / sine-Gordon on null lines) is the exactly-solvable interacting upgrade of the checkerboard
+  — the 1+1d control case *with interactions*.
+
+### 7.7 If forced to pick two
+
+1. **The Pontryagin invariant-subspace theorem** — finite-dimensional, unformalized anywhere, converts
+   the hardest crux from "does a physical sector exist" to "is the guaranteed one natural."
+2. **Adopt the teleparallel reading of `E`** — the difference between "gravity as fourth mode" being an
+   analogy and being a discretization of a known GR-equivalent theory with the positive-energy theorem
+   already at its boundary.

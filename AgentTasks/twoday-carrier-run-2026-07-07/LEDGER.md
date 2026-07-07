@@ -426,3 +426,51 @@ brick lands (applying to the collaborator doc + scorecard prose); (3) mZero DONE
   the scalar QC rungs and Claude's torus flatness commit `4a779c0`: call 03
   should ratify the bridge contract using the landed Carrier theorem as input,
   not decide whether to wait for it.
+- [ARISTOTLE Codex 22:49 QC/STRATEGY] Generated semantic context pack
+  `AgentTasks/context-packs/qc-carrier-contract-post-flatness-20260706-223831.md`
+  for the post-flatness QC-carrier bridge contract. The pack was noisy, so it is
+  context evidence rather than a prompt by itself. No duplicate Aristotle
+  submission was made because `aristotle list` shows Claude's `tc-glue`
+  strategy/construction job `e5dba1f6` already RUNNING on the witness/glue
+  problem. Status asks to the older OS1/KP jobs timed out at the shell level;
+  normal task polling still shows both IN_PROGRESS.
+
+## [FABLE-GUIDANCE] digest (user-provided, Codex c7)
+- Fable's top two recommendations are now steering inputs: (1) adopt the
+  `E`-slot as **discrete null teleparallelism** (flat transport plus varying
+  soldering; near theorem: discrete torsion 2-form whose Clifford contraction
+  is `E`), and (2) start the finite Pontryagin positivity route (near theorem:
+  invariant maximal nonnegative subspace for a finite `J`-self-adjoint carrier
+  square; then naturality is the real question).
+- Secondary route upgrades recorded in `NULLEDGE_PROGRAM_AND_EXTENSIONS.md`:
+  McKean-Singer/spectral-action ambient frame, PBW/rewrite-theoretic
+  exhaustiveness, spin via massive little group on null-edge pairs, generalized
+  symmetry phrasing for lane C, and charge quantization via finite `H^2`.
+- Actions taken: collaborator overview updated, `FABLE_QUEUE.md` now has
+  teleparallel and Pontryagin call-03 items, and `THREAD_BOARD.md` now has
+  `KPON` and `G-TP` supporting threads. Next action: focused Aristotle strategy
+  job for the Pontryagin theorem statement before proof spend.
+
+## [FABLE extension guidance] (Claude c7) - on the collaborator doc
+Fable reviewed NULLEDGE_PROGRAM_AND_EXTENSIONS.md and returned a ranked extension set
+(now folded in as doc section 7). Program-shaping highlights + TWO TOP PICKS to seed:
+- **The gravity slot IS teleparallel gravity** (Weitzenbock connection = flat + torsion;
+  E = discrete torsion; TEGR - EH = the Witten boundary term). [near] Lean target: define
+  discrete torsion 2-form T_ef = nabla_e alpha_f - nabla_f alpha_e, prove E = its Clifford
+  contraction. -> NEW THREAD "G-TELE" (extends the just-banked E-slot). Answers the biggest
+  bet: yes, "discrete null teleparallelism".
+- **[TOP PICK 1] Pontryagin invariant subspaces** for Krein positivity: finite complexes =
+  Pontryagin spaces Pi_kappa; Pontryagin/Krein-Langer GUARANTEES a J-self-adjoint operator
+  has an invariant maximal non-negative subspace -> D^#D positive sector EXISTS; crux
+  sharpens to "is it natural?". Finite-dim linear algebra, no Mathlib Krein theory =
+  citable. -> NEW THREAD "KREIN-POS" (acts on carrier_krein_square, in flight).
+- Index theorem = McKean-Singer (Str e^{-tD^#D} = index); ambient home = finite Lorentzian
+  spectral triples + spectral action (a2/a4 = cc + EH + YM + Higgs). Exhaustiveness = a
+  PBW/Bergman-diamond-lemma theorem. Next invariant = SPIN via the massive little group on
+  null-edge pairs (builds on M^2=|<12>|^2); Koide = a 45-deg angle statement (Foot). Lane C
+  reframe = 1-form center symmetry (GKSW); charge quantization = plaquette-flux integrality
+  (DeGrand-Toussaint); emergence = causal order fixes conformal class (Malament), only the
+  SCALE = g(e,f) must emerge (Sorkin); interacting continuum control = Destri-de Vega.
+- [TOP PICK 2] adopt the teleparallel reading of E as the G-slot organizing frame.
+ACTION: doc section 7 added; G-TELE + KREIN-POS seeded as threads; carrier_krein_square
+(the D^#D upgrade, the operator Pontryagin acts on) shipped to Aristotle this cycle.
