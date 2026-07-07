@@ -21,7 +21,7 @@ Weitzenbock-carrier program (Fable-5's synthesis) with heavy Aristotle use and
 | `GOAL_PROMPT_CODEX.md` | Codex's standing orders (lanes C/gauge/polymer; 30-min lit; even-hour strategy) | frozen |
 | `THREAD_BOARD.md` | work queue with per-thread done-conditions and live status | edit-in-place (claim first) |
 | `LEDGER.md` | THE coordination channel: claims, heartbeats, reviews, call digests | append-only |
-| `FABLE_CALL_PROTOCOL.md` | the 2-hourly call: mechanics, packet contract, call types, schedule | frozen |
+| `FABLE_CALL_PROTOCOL.md` | the 2-hourly call, used OFFENSIVELY (CRACK hard cruxes / SYNTHESIZE / STRATEGIZE, ride-along RATIFY): mechanics, ambitious packet contract, call types, schedule | frozen |
 | `FABLE_QUEUE.md` | standing escalation queue feeding the calls | append + mark-answered |
 | `ARISTOTLE_PLAYBOOK.md` | heavy-use doctrine: fleet mix (proof/audit/strategy), stale-check, mechanics crib | frozen |
 | `LIT_NEO4J_PROTOCOL.md` | literature cadence, graph read/write pipeline, priority reading list | frozen |

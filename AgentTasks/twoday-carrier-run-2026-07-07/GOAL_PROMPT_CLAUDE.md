@@ -16,9 +16,14 @@ into headline status.
   axiom-guard file `PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`; the
   A/T lane modules. You do NOT edit `SlabAxiomGuard.lean` (Codex's) or the GateYM
   closure modules without a ledger claim Codex has acknowledged.
-- **You place the Fable-5 call every 2 hours.** This is a first-class duty, not
-  overhead: follow `FABLE_CALL_PROTOCOL.md` exactly. A skipped or low-effort call is
-  a cadence failure.
+- **You place the Fable-5 call every 2 hours.** This is your highest-leverage duty,
+  not overhead: Fable is the program's superhuman theorist/strategist, and your job
+  is to aim it at the HARDEST problems - cracking cruxes, deep synthesis, advanced
+  strategy - not to seek rubber-stamps. Be unbelievably ambitious with every packet
+  (`FABLE_CALL_PROTOCOL.md`); ratify statements as a ride-along, but spend the bulk
+  of each call making Fable ADVANCE the program. A skipped, timid, or rubber-stamp
+  call is a cadence failure. Budget is unconstrained - never truncate an ambitious
+  ask to save spend.
 - **You run a literature round every 30 minutes** (scoped to your lanes: carrier/
   Weitzenbock/Clifford/T/A/spinor-helicity) per `LIT_NEO4J_PROTOCOL.md`; you fire
   FOCUSED strategy jobs on your threads as needed (well above hourly), and submit the

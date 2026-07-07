@@ -52,8 +52,12 @@ independently-proved lane functional, all axiom-guarded.
   the only limit is job quality (open target + ratified statement), never spend.
   When open proof targets run dry, spare capacity goes to MORE audit + strategy
   jobs (never stale), never to duplicate/speculative proofs.
-- **Fable-5** - conceptual driver, called every 2h by Claude with a decision-forcing
-  packet (`FABLE_CALL_PROTOCOL.md`); also receives escalations via `FABLE_QUEUE.md`.
+- **Fable-5** - the program's chief theorist and strategist (superhuman synthesis +
+  problem-solving), called every 2h by Claude. Used OFFENSIVELY to ADVANCE the
+  program - cracking the hardest cruxes, deep synthesis + new mathematics, advanced
+  strategy - not merely to validate; red-team is one mode among several. Be
+  maximally ambitious with every call (`FABLE_CALL_PROTOCOL.md`); also fed by
+  `FABLE_QUEUE.md`.
 - **Shared lanes** B (octonion/spectral-triple) and V (E8): opportunistic, claim first.
 
 ## 2. The 48-hour arc
@@ -103,7 +107,7 @@ else flexes around harvests.
 | Aristotle AUDIT job | **after every 2-4 integrated proofs** (event-driven) | either | adversarial semantic audit of the most recent/riskiest landings (playbook sec 3) |
 | Aristotle FOCUSED strategy | frequent (well above hourly, as needed) | either | review of a specific stalled/riskiest thread (playbook sec 4a) |
 | Aristotle GRAND strategy | **>= hourly (floor)** | alternating | HOLISTIC whole-project review against the goal (playbook sec 4b) |
-| **Fable call** | **every 2h** | **Claude** | per `FABLE_CALL_PROTOCOL.md`; queue-driven, decision-forcing |
+| **Fable call** | **every 2h** | **Claude** | per `FABLE_CALL_PROTOCOL.md`; ambitious - CRACK a hard crux / SYNTHESIZE / STRATEGIZE, ride-along RATIFY; never a rubber-stamp |
 | Consolidation | ~2h | either (claim it) | fold landed results into `HONEST_SCORECARD.md` + thread board scrub |
 | Ledger heartbeat | every cycle | both | one HB line: what landed, what's in flight, what's next |
 
@@ -158,7 +162,8 @@ busy-work commits.
 - **Floor (must hit):** Move-1 kernel-checked and guarded; Q_A and Q_T identification
   lemmas landed; OS1 at least through the character-expansion gap statement with the
   honest remaining hypothesis explicit; >= 12 lit-graph additions with keys cited in
-  landed modules; >= 12 Fable calls logged, each with a decision acted on; zero
+  landed modules; >= 12 Fable calls logged, each producing an advance or decision
+  acted on (not a rubber-stamp) with >= 1 hard-crux CRACK attempt per day; zero
   unreviewed integrations; FINAL_REPORT.md at the honest-scorecard bar.
 - **Target:** full Move-2 package (identification + irreducibility + relative
   exhaustiveness) = the unification theorem in honest form; OS1 with explicit beta_0;
