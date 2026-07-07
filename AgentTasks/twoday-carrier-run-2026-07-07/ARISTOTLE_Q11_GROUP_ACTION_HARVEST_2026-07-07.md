@@ -30,6 +30,11 @@ New declarations:
 - `minorDet_card_ne`
 - `lambdaAction_eq_sum_filter_card`
 - `lambdaAction_preserves_card_support`
+- `lambdaAction_add`
+- `lambdaAction_smul`
+- `lambdaLinearMap`
+- `lambdaLinearMap_apply`
+- `lambdaLinearMap_one`
 
 The file is imported from the Gate I1 aggregator and footprint-guards the
 checked structural theorems.
@@ -91,6 +96,12 @@ This closes the identity-action part of the Q11 blocker.  The remaining
 algebraic blocker is finite Cauchy-Binet/functoriality for `lambdaAction`;
 `gl_fiber`, Jacobi complementary minors, determinant cocycle, and group-level
 RC0 remain separate.
+
+Codex also packaged the coefficient formula as the linear endomorphism
+`lambdaLinearMap` and proved `lambdaLinearMap_one`.  The intended
+functoriality statement should now be phrased as
+`lambdaLinearMap (g * h) = (lambdaLinearMap g).comp (lambdaLinearMap h)`, with
+Cauchy-Binet supplying the coefficient proof.
 
 Verification:
 

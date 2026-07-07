@@ -13,7 +13,8 @@ conjugation) and `Cmap` (top-form duality).
 The landed theorems are the factorization `JR = Cmap o Kmap`, the involution
 and commutation laws for `Kmap` and `Cmap`, conjugation compatibility for
 minors, conjugation compatibility for `lambdaAction`, and cardinality-support
-control for the coefficient formula.
+control for the coefficient formula. It also packages the coefficient formula
+as a linear endomorphism `lambdaLinearMap`.
 It also proves the identity-minor Kronecker theorem and the identity action
 `lambdaAction 1 = id`.
 
@@ -151,6 +152,31 @@ theorem lambdaAction_preserves_card_support
     exact hT (hcard ▸ hSk)
   simp [hf S hSk]
 
+/-! ## Linearity in the form argument -/
+
+/-- `lambdaAction g` is additive in the form argument. -/
+theorem lambdaAction_add (g : Matrix (Fin 5) (Fin 5) ℂ) (f h : Form) :
+    lambdaAction g (f + h) = lambdaAction g f + lambdaAction g h := by
+  funext T
+  simp [lambdaAction, mul_add, Finset.sum_add_distrib]
+
+/-- `lambdaAction g` is homogeneous in the form argument. -/
+theorem lambdaAction_smul (g : Matrix (Fin 5) (Fin 5) ℂ) (c : ℂ) (f : Form) :
+    lambdaAction g (c • f) = c • lambdaAction g f := by
+  funext T
+  simp [lambdaAction, Finset.mul_sum, mul_assoc, mul_comm]
+
+/-- The exterior coefficient formula as a linear endomorphism of `Form`.
+Functoriality of this linear map is the remaining Cauchy-Binet target. -/
+noncomputable def lambdaLinearMap (g : Matrix (Fin 5) (Fin 5) ℂ) : Form →ₗ[ℂ] Form where
+  toFun := lambdaAction g
+  map_add' := lambdaAction_add g
+  map_smul' := lambdaAction_smul g
+
+@[simp]
+theorem lambdaLinearMap_apply (g : Matrix (Fin 5) (Fin 5) ℂ) (f : Form) :
+    lambdaLinearMap g f = lambdaAction g f := rfl
+
 /-! ## Identity matrix minors -/
 
 /-- The identity matrix has Kronecker minors on ordered finite subsets. -/
@@ -202,6 +228,12 @@ theorem lambdaAction_one (f : Form) :
   funext T
   simp [lambdaAction, minorDet_one]
 
+/-- The linear operator attached to the identity matrix is the identity. -/
+theorem lambdaLinearMap_one :
+    lambdaLinearMap (1 : Matrix (Fin 5) (Fin 5) ℂ) = LinearMap.id := by
+  ext f T
+  simp [lambdaAction_one]
+
 /-! ## Footprint guard for the harvested nucleus -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.JR_eq_Cmap_Kmap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -239,6 +271,18 @@ theorem lambdaAction_one (f : Form) :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.lambdaAction_preserves_card_support' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms lambdaAction_preserves_card_support
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.lambdaAction_add' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms lambdaAction_add
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.lambdaAction_smul' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms lambdaAction_smul
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.lambdaLinearMap_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms lambdaLinearMap_one
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction.minorDet_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

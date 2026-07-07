@@ -3793,6 +3793,23 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
 
+## [LEAN Codex solo] Q11 linear endomorphism interface for `lambdaAction`
+
+- Added `lambdaAction_add` and `lambdaAction_smul`.
+- Packaged the coefficient formula as
+  the linear endomorphism `lambdaLinearMap` of `Form`.
+- Proved `lambdaLinearMap_one`, so the identity matrix now lands as the
+  identity linear endomorphism, not only as pointwise `lambdaAction_one`.
+- Claim boundary: this is the linear-operator interface needed for the
+  Cauchy-Binet functor law.  It does not prove
+  `lambdaLinearMap (g * h) = (lambdaLinearMap g).comp (lambdaLinearMap h)`;
+  that remains the next determinant/minor theorem.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
 ## [LEAN Codex solo] Q11 cardinality-support scaffold for Cauchy-Binet
 
 - Added `minorDet_card_ne`: mismatched-cardinality minors vanish by definition.

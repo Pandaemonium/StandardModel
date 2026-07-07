@@ -881,7 +881,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Codex then locally added the identity-matrix package `minorDet_one` and
   `lambdaAction_one`, plus cardinality-support helpers `minorDet_card_ne`,
   `lambdaAction_eq_sum_filter_card`, and
-  `lambdaAction_preserves_card_support`.
+  `lambdaAction_preserves_card_support`.  The coefficient formula is now
+  packaged as a linear endomorphism `lambdaLinearMap`, with additivity,
+  homogeneity, and `lambdaLinearMap_one` proved.
 - **Status:** PROVED finite fiber sign table, Cartan/unimodularity arithmetic,
   B-L/total-number dictionary, C3 sector identities, and structural
   group-action data only. The result refutes any "Krein closure implies
@@ -889,9 +891,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   determinant/traceless information lives in the antilinear `J_R` layer.
 - **Next:** group-level RC0 should now focus on a kernel-clean finite
   Cauchy-Binet/functoriality proof for `lambdaAction`, using the new
-  cardinality-support scaffolding to keep the finite sums degree-filtered, then
-  the Jacobi complementary-minor tail.  The later Jacobi route still needs the
-  `gl_fiber` interleaving-sign factorization.  The order-condition scalar
+  cardinality-support scaffolding and `lambdaLinearMap` interface to keep the
+  finite sums degree-filtered, then the Jacobi complementary-minor tail.  The
+  later Jacobi route still needs the `gl_fiber` interleaving-sign
+  factorization.  The order-condition scalar
   identities have a finite sector-level landing; the chirality-solder flag
   remains a standing obligation for later architecture checks.
 - **Aristotle:** harvested named audit/strategy lane `65a9d42d`

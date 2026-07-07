@@ -787,14 +787,16 @@ submission showed twelve running StandardModel-relevant lanes.
   `minorDet_empty`.  A local follow-up added `minorDet_one` and
   `lambdaAction_one`; a second local follow-up added the cardinality-support
   helpers `minorDet_card_ne`, `lambdaAction_eq_sum_filter_card`, and
-  `lambdaAction_preserves_card_support`.
+  `lambdaAction_preserves_card_support`.  A third local follow-up added the
+  linear endomorphism interface `lambdaLinearMap`, with additivity,
+  homogeneity, and `lambdaLinearMap_one`.
 - Claim boundary: this is structural exterior-functor data plus the identity
   action.  It does not prove finite Cauchy-Binet/functoriality, minor
   orthogonality, Jacobi complementary minors, determinant cocycle, or
   group-level RC0/unimodularity equivalence.
 - Next exact blocker: close the Cauchy-Binet functor-law package, now with the
-  support/filter scaffolding available; after that, attack `gl_fiber` for the
-  Jacobi tail.
+  support/filter scaffolding and `lambdaLinearMap` interface available; after
+  that, attack `gl_fiber` for the Jacobi tail.
   Suggested next job name:
   `ne-next-q11-cauchybinet-lambdaaction-functoriality-proof-20260707`.
 - Verification passed:
