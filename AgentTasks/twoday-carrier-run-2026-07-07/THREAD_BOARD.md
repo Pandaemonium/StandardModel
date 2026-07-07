@@ -146,11 +146,14 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Z2 transfer readout is exactly `tanh (2 * beta)`, equivalently the
   QC-leading coefficient at doubled coupling, and equals the OS contraction
   factor at doubled coupling. The leading-plus-correction split is now
-  explicitly only definitional bookkeeping. Scope remains finite transfer
-  calculation only; no carrier expectation, measure theorem, nonabelian result,
-  or infinite-volume limit is claimed. Aristotle audit `2ed6afbb`/`424e815f`
-  found no blocking issue and Codex added a direct guard for the doubled-coupling
-  identity.
+  explicitly only definitional bookkeeping, while
+  `twoStepPlaquetteReadout_eq_leading_plus_explicitCorrection` gives the
+  non-bookkeeping closed-form finite-cycle correction
+  `tanh beta * (1 - tanh beta ^ 2) / (1 + tanh beta ^ 2)`, directly guarded in
+  `SlabAxiomGuard`. Scope remains finite transfer calculation only; no carrier
+  expectation, measure theorem, nonabelian result, or infinite-volume limit is
+  claimed. Aristotle audit `2ed6afbb`/`424e815f` found no blocking issue and
+  Codex added a direct guard for the doubled-coupling identity.
 
 ## Supporting threads
 

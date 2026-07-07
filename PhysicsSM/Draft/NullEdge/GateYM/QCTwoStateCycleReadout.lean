@@ -22,10 +22,12 @@ The normalized readout is exactly `tanh (2 * beta)`, equivalently the
 QC-leading scalar evaluated at doubled coupling.  We also name a finite-cycle
 correction relative to the one-plaquette scalar, but the corresponding
 "leading plus correction" theorem is only definitional bookkeeping because the
-correction is defined as the difference.  This is a finite transfer-matrix
-identity only.  It is not a carrier `Q_C` expectation theorem, not a
-gauge-measure theorem, not a nonabelian result, and not an infinite-volume /
-beyond-leading positivity theorem.
+correction is defined as the difference.  The non-bookkeeping correction theorem
+is `twoStepFiniteCycleCorrection_eq_explicit`, which identifies that difference
+with a closed form in the one-step contraction scalar.  This is a finite
+transfer-matrix identity only.  It is not a carrier `Q_C` expectation theorem,
+not a gauge-measure theorem, not a nonabelian result, and not an infinite-volume
+/ beyond-leading positivity theorem.
 
 Provenance: clean-room finite calculation from the existing `Z2` slab transfer
 weights in `TwoStateTransferZ2L1`, themselves part of the Osterwalder-Seiler /
@@ -108,6 +110,34 @@ asymptotic expansion theorem. -/
 def twoStepFiniteCycleCorrection (beta : ℝ) : ℝ :=
   Real.tanh (2 * beta) - QCLeading.leadingClosureFluxCoeff beta
 
+/-- Closed-form finite-cycle correction in terms of the one-step contraction
+scalar.  This is the explicit error term comparing the exact two-step readout
+with the one-plaquette leading coefficient. -/
+def twoStepExplicitFiniteCycleCorrection (beta : ℝ) : ℝ :=
+  Real.tanh beta * (1 - Real.tanh beta ^ 2) / (1 + Real.tanh beta ^ 2)
+
+/-- The finite-cycle correction has the explicit closed form
+`tanh beta * (1 - tanh beta ^ 2) / (1 + tanh beta ^ 2)`.
+
+This is the substantive correction theorem; unlike
+`twoStepPlaquetteReadout_eq_leading_plus_correction`, it is not just unfolding a
+difference definition. -/
+theorem twoStepFiniteCycleCorrection_eq_explicit (beta : ℝ) :
+    twoStepFiniteCycleCorrection beta =
+      twoStepExplicitFiniteCycleCorrection beta := by
+  rw [twoStepFiniteCycleCorrection, twoStepExplicitFiniteCycleCorrection,
+    QCLeading.leadingClosureFluxCoeff_eq_tanh]
+  rw [Real.tanh_eq]
+  rw [show 2 * beta = beta + beta by ring, Real.exp_add,
+    show -(beta + beta) = -beta + -beta by ring, Real.exp_add]
+  rw [Real.tanh_eq]
+  have hsum : Real.exp beta + Real.exp (-beta) ≠ 0 := by
+    positivity
+  have hsqsum : Real.exp beta * Real.exp beta + Real.exp (-beta) * Real.exp (-beta) ≠ 0 := by
+    positivity
+  field_simp [hsum, hsqsum]
+  ring_nf
+
 /-- Definitional bookkeeping split: the exact two-step readout is the
 one-plaquette leading scalar plus the finite-cycle correction, where the
 correction was defined as the difference.  The substantive doubled-coupling
@@ -117,6 +147,15 @@ theorem twoStepPlaquetteReadout_eq_leading_plus_correction (beta : ℝ) :
       QCLeading.leadingClosureFluxCoeff beta + twoStepFiniteCycleCorrection beta := by
   rw [twoStepPlaquetteReadout_eq_tanh_two_beta, twoStepFiniteCycleCorrection]
   ring
+
+/-- The exact two-step readout is the one-plaquette leading scalar plus the
+explicit finite-cycle correction term. -/
+theorem twoStepPlaquetteReadout_eq_leading_plus_explicitCorrection (beta : ℝ) :
+    twoStepPlaquetteReadout beta =
+      QCLeading.leadingClosureFluxCoeff beta +
+        twoStepExplicitFiniteCycleCorrection beta := by
+  rw [twoStepPlaquetteReadout_eq_leading_plus_correction,
+    twoStepFiniteCycleCorrection_eq_explicit]
 
 /-- The same readout is the QC-leading scalar evaluated at doubled coupling. -/
 theorem twoStepPlaquetteReadout_eq_leadingClosureFluxCoeff_double (beta : ℝ) :

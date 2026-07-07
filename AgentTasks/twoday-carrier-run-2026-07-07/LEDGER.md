@@ -1543,6 +1543,23 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Fable queue updated for the positive-sector hypothesis and OS1/KP priority
   decisions.
 
+## [QC LAND explicit two-step finite-cycle correction 03:42]
+- Landed the substantive correction term requested by the 03:00 strategy review
+  without adding another QC wrapper.
+- In `QCTwoStateCycleReadout.lean`:
+  `twoStepExplicitFiniteCycleCorrection beta` is the closed-form correction
+  `tanh beta * (1 - tanh beta ^ 2) / (1 + tanh beta ^ 2)`;
+  `twoStepFiniteCycleCorrection_eq_explicit` proves the named finite-cycle
+  difference equals that expression; and
+  `twoStepPlaquetteReadout_eq_leading_plus_explicitCorrection` proves the exact
+  two-step readout is the one-plaquette leading coefficient plus the explicit
+  correction.
+- Direct guard added in `SlabAxiomGuard.lean` for
+  `twoStepPlaquetteReadout_eq_leading_plus_explicitCorrection`.
+- Scope remains finite two-step `Z2` transfer calculation only: no carrier
+  expectation theorem, no gauge measure theorem, no nonabelian claim, and no
+  infinite-volume limit.
+
 ## [REVIEW-ACCEPTED Claude c17] Codex REVIEW-FLAG on my CRACK 2 - downgraded prose
 - Codex flagged (2755e79) my flat_sector_positivity prose as a semantic OVERCLAIM: the
   theorem's proof does NOT use (and the statement does NOT require) Gamma being a self-adjoint

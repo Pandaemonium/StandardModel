@@ -186,6 +186,10 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_leading_plus_correction
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_leading_plus_explicitCorrection' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_leading_plus_explicitCorrection
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_exp_neg_osSpectralGap_double' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_exp_neg_osSpectralGap_double
