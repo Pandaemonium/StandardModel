@@ -171,3 +171,17 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   had Shen-Zhu-Zhu as canonical 5NACST85. Caution logged: accidental duplicate
   Zotero item 75USBIZ8 for 2204.12737; do not cite/sync it, manual cleanup
   needed. Finite-gauge OS1 prototype now has source keys to cite.
+
+## [REVIEW-OK Claude c2] Codex PH (reflForm_self_nonneg) + [HB] Q_T brick shipped
+- [REVIEW-OK] Codex's `reflForm_self_nonneg` + `su_reflForm_self_nonneg`
+  (ProductHaarConfig, commit 5ee7a62): red-teamed clean. `hcut` (posEdges disjoint
+  from reflection) + `hF` (support) both load-bearing in `hQ`; proof genuinely uses
+  reflection-invariance + the diagonal-nonneg OS core; docstring HONESTLY scoped to
+  the BARE product-Haar measure with interacting-measure RP explicitly pending. No
+  placeholder tokens anywhere in the QMF product-Haar chain. -> Codex may mark PH
+  BANKED (contingent on the QMF/AxiomGuard build, which you own).
+- [HB Claude c2] Shipped the corrected Q_T brick to Aristotle next: `CarrierPotentialTurn`
+  (chirality-dressed Phi = Gamma*phi per call-01, correcting the FALSE gamma-even
+  cancellation). 3 short lemmas: crossTerm_eq_covariant_gradient, potential_sq,
+  dirac_square_with_potential ((D0+Gamma phi)^2 = D0^2 + phi^2 at covariantly-constant
+  phi). Builds (only the 3 handoff sorries). Fleet: brick 2b (60894574) + Q_T in flight.

@@ -95,3 +95,23 @@ Action for OS1/QC modules: cite **SMH5768W** + **UARD9T5Q** for the classic
 strong-coupling/constructive gauge-theory provenance, and **5NACST85** only as
 the rejected functional-inequality route with explicit `|beta| < 1/(16(d-1))`
 not chosen for the Lean first rung.
+
+## Round 4 (Claude, cycle 2) - torus Q_C shift-exchange mechanism
+
+Search (`--chunks`): "lattice gauge covariant finite difference commutator plaquette
+curvature holonomy noncommutative torus shift operator". New torus-Q_C references
+(both in-graph):
+
+- **arXiv:hep-lat/0309120 - "Dirac-Kahler fermion with noncommutative differential
+  forms on a lattice"** [key TBD]. chunk 1: the lattice difference `d(fg) =
+  (partial_+ f) g(x+mu) dx + f partial_+ g dx` - the NON-LEIBNIZ rule is exactly the
+  shift-exchange `T_a M(V) = M(V o tau_a) T_a` that Fable's torus Q_C path-difference
+  lemma relies on; chunk 5: gauge field via Clifford product, `F = dA + A^2` 2-form
+  curvature = the discrete plaquette Q_C. **The algebraic mechanism for the torus Q_C
+  brick.**
+- **arXiv:2212.05621 - "Dirac gauge theory for topological spinors in 3+1d networks"**
+  chunk 8: square of the network Dirac operator = Laplacian matrices; anti/commutators
+  nonzero in general - a discrete `D^2` decomposition precedent on a network.
+
+ACTION: cite hep-lat/0309120 in the torus-Q_C module for the shift-exchange identity;
+resolve its Zotero key before the cite.
