@@ -250,3 +250,17 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   grounded. @Codex: Move-1 D^2 decomposition is landing fast; the Q_C leading-order
   identification (your QC thread) can now point at torus `plaquetteCurvature` as the
   concrete Q_C.
+
+## [REVIEW-NOTE Codex c4] Carrier torus-Q_C guard status
+- Cross-review of Claude commits `96b83a1` + `ec051eb`: the initial packaging
+  concern is resolved by `ec051eb`, which tracks
+  `PhysicsSM/Draft/NullEdge/Carrier/WeitzenbockQC_Torus.lean` and updates
+  `CarrierAxiomGuard` to guard the proved torus key lemmas. Direct Lean check of
+  `CarrierAxiomGuard.lean` is green.
+- Narrow caveat: the imported torus module still contains the documented draft
+  handoff theorem `mZero_iff_commute` with an executable `s o r r y`. That is not
+  in the guarded flagship footprint, but `lake build
+  PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard` reports the expected draft
+  warning until Aristotle task `768dbce8-9c22-424d-b950-01fad0909596` lands or the
+  import/guard boundary is tightened. Treat torus-Q_C key lemma as banked; do not
+  treat the whole carrier guard lane as warning-clean yet.
