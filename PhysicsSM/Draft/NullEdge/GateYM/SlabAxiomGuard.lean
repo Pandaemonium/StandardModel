@@ -51,6 +51,7 @@ import PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful
 import PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
+import PhysicsSM.Draft.NullEdge.CouplingUnificationFinite
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -401,5 +402,20 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.E8Root240Complete.E8RootSet_eq_lattice_norm2' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.E8Root240Complete.E8RootSet_eq_lattice_norm2
+
+/-! ## Batch wave 12: finite coupling-unification core (exact rational concurrency)
+
+The finite affine/linear-algebra core of one-loop coupling "unification": the exact
+rational concurrency condition (vanishing 3x3 consistency determinant) for three
+running couplings, plus the honest negative that generic intercepts do NOT unify.
+Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CouplingUnificationFinite.three_concurrent_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CouplingUnificationFinite.three_concurrent_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CouplingUnificationFinite.generic_not_concurrent' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CouplingUnificationFinite.generic_not_concurrent
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
