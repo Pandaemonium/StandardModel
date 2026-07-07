@@ -2,6 +2,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.NullNilpotentSquare
 import PhysicsSM.Draft.NullEdge.Carrier.SolderedSquareGram
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMaster
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierPotentialTurn
+import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockQC_Torus
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -69,6 +70,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.dirac_square_with_potential' depends on axioms: [propext, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.dirac_square_with_potential
+
+/-! ## Move-1 brick torus-Q_C: transport commutator = plaquette curvature (proved part) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Torus.nabla_commutator_path_difference' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.Torus.nabla_commutator_path_difference
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Torus.shift_mul_pointwise' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.Torus.shift_mul_pointwise
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
