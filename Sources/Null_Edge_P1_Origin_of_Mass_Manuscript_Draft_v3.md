@@ -12,9 +12,10 @@ sentence. The layered status map (Part II, section 15) is updated through
 2026-07-07, including the new draft carrier layer: a guard-pinned `D^2`
 decomposition into aperture, closure, and turn slots, with the Krein/E
 four-slot mass form and the concrete `det P` carrier identification still
-open.  It also records the index-protection theorems and their current
-positivity boundary. The paper's own claims are unchanged: this is still a
-paper about ONE theorem.
+open, and with the indefinite positive-sector witness still not wired to a
+carrier/Gauss model.  It also records the index-protection theorems and their
+current positivity boundary. The paper's own claims are unchanged: this is
+still a paper about ONE theorem.
 
 **How to read the grades.** Every claim in this paper carries a grade, so
 that the reader always knows what kind of confidence backs a sentence:
@@ -38,7 +39,9 @@ trusted namespace `PhysicsSM.Spinor.PluckerMass` and
 toolchain `leanprover/lean4:v4.28.0`; provenance note of v2, 2026-07-03).
 Kernel-clean draft anchors: `PhysicsSM.Draft.NullEdgeSpinorGeometryTargets`
 (SL(2,C) covariance), `PhysicsSM.Draft.NullEdgeBundleDiracPluckerCore`
-(static Dirac square root), the celestial-moment standalone artifact, the
+(static Dirac square root),
+`PhysicsSM.Draft.NullEdgeCelestialMomentWrapper` (celestial moment draft
+wrapper), the P9 visible-fan draft modules, the
 Gate C1/C2 chirality-substrate layer, and - new in this revision - the
 carrier layer `PhysicsSM/Draft/NullEdge/Carrier/` with its build-enforced
 axiom guard (`CarrierAxiomGuard.lean`; guard build green 2026-07-07, axiom
@@ -510,22 +513,27 @@ and only then.
 fail to add up to the brightness.*
 
 With unit celestial directions `n_i`, weights `w_i`, total energy
-`E = sum w_i`, closure vector `C = sum w_i n_i`, the standalone artifact
-`NullEdgeSpinorNetworkClosure.Finite` proves
+`E = sum w_i`, and closure vector `C = sum w_i n_i`, the current repository has
+a kernel-clean draft wrapper
+`PhysicsSM.Draft.NullEdgeCelestialMomentWrapper` proving
 
 ```text
-theorem pluckerMass_eq_energy_sq_sub_closureDefect_sq :
-    pairwiseAngularMass w u = momentMassSq w u
--- pairwiseAngularMass = sum_{i<j} w_i w_j (1 - n_i . n_j) / 2
--- momentMassSq       = (E^2 - |C|^2) / 4
+theorem angularVarianceMass_eq_chordalPairMass :
+    angularVarianceMass w dir = chordalPairMass w dir
+-- angularVarianceMass = (E^2 - |C|^2) / 4
+-- chordalPairMass     = weighted chordal pair variance
 ```
 
 so `m^2 = (E^2 - |C|^2)/4`. Guardrail (kernel-checked, load-bearing for the
-program's P9 branch): closure `C = 0` is the REST FRAME, not "no source" -
-a closed fan has maximal rest energy `E^2/4`
-(`closed_spinorFan_is_restFrame`). *Status:* kernel-clean standalone
-artifact; promote to the trusted namespace or cite as an appendix before
-submission (tracked in the publication plan).
+program's P9 branch): closure `C = 0` is the REST FRAME, not "no source". The
+actual in-repo draft anchor is
+`PhysicsSM.Draft.NullEdgeP9DiamondSourceVisibilityCore.closed_visibleFan_mass_eq_restEnergy`,
+with the positive-source variant
+`closed_visibleFan_mass_pos_of_nonzero_energy`. *Status:* kernel-clean draft
+anchors with naming/convention alignment still pending. The old standalone
+artifact names `pluckerMass_eq_energy_sq_sub_closureDefect_sq` and
+`closed_spinorFan_is_restFrame` are not present in this repository and must not
+be cited as machine-verified anchors until added or renamed.
 
 ## 8. Lorentz covariance
 
@@ -647,8 +655,9 @@ submission.
 
 The claims of this paper are exactly: sections 2-5 (`M [comp]`, trusted),
 section 6's discipline (with the little-group transitivity registered as a
-target, `[import]` for the classical fact), section 7 (`M`, artifact),
-section 8 (`M`, draft), section 9 (`M`, trusted), section 10's static
+target, `[import]` for the classical fact), section 7 (kernel-clean draft
+wrapper/target, not a trusted or standalone artifact claim), section 8 (`M`,
+draft), section 9 (`M`, trusted), section 10's static
 identity (`M`, draft). Everything in sections 11 and 15 is context at its
 own grade. No mass value, no dynamics beyond the cited 1+1D bridge, no
 spectral statement anywhere (the program's positivity crux gates all
@@ -664,15 +673,15 @@ spectral language; see layer 4).
 | Keystone bundle identity | `fin_bundle_plucker_mass_identity` | trusted |
 | Reality, nonnegativity | `fin_bundle_det_*` | trusted |
 | Exact massless criterion | `fin_bundle_mass_zero_iff_common_direction` | trusted |
-| Celestial moment form | `pluckerMass_eq_energy_sq_sub_closureDefect_sq` | artifact |
-| Rest-frame guardrail | `closed_spinorFan_is_restFrame` | artifact |
+| Celestial moment form | `NullEdgeCelestialMomentWrapper.angularVarianceMass_eq_chordalPairMass` | draft, kernel-clean; naming/convention alignment pending |
+| Rest-frame guardrail | `NullEdgeP9DiamondSourceVisibilityCore.closed_visibleFan_mass_eq_restEnergy` | draft, kernel-clean |
 | SL(2,C) invariance | `finBundleMomentum_det_sl2_invariant` | draft |
 | Twistor chart | `two_twistor_mass_invariant_eq_plucker`, ... | trusted |
 | Static Dirac square root | `chiralDiracSlash_bundleMomentum_sq_eq_pluckerMass` | draft |
 | GW substrate + index + vanishing | Gate C1 / C2 modules | draft |
 | 1+1D flip = wedge | `onshell_wedge_normSq_eq_coin_sq` | draft |
 | Carrier index protection (context) | `Carrier/CarrierIndexProtection.lean` | draft, guard-pinned |
-| Carrier Weitzenbock + witness (context) | `Carrier/` + `CarrierAxiomGuard.lean` | draft, guard-pinned |
+| Carrier `D^2` three-slot assembly + balanced flat-sector witness (context) | `Carrier/` + `CarrierAxiomGuard.lean` | draft, guard-pinned; Krein/E four-slot mass form and carrier/Gauss positive-sector witness OPEN |
 
 ## 15. How close is this to a full origin of mass? The layered status map
 
@@ -784,7 +793,8 @@ theorem is that story's exact kinematic skeleton, no more.
 > vanishes - is a closed, machine-checked theorem (layer 1). That theorem
 > is now the target first channel of a guard-pinned carrier decomposition:
 > three `D^2` slots are checked, while the Krein/E slot and concrete
-> carrier-to-`det P` identification remain open (layer 2.5). That the
+> carrier-to-`det P` identification, plus the indefinite positive-sector
+> witness, remain open (layer 2.5). That the
 > substrate can host exactly-chiral
 > fermions, and that a chiral surplus is topologically protected against
 > the modeled carrier deformations, is machine-checked under stated finite
@@ -802,9 +812,10 @@ theorem is that story's exact kinematic skeleton, no more.
 In one sentence: **the program can now state, at machine-checked grade,
 what mass is and why some things must stay massless; it has a guard-pinned
 carrier decomposition that points to where the same invariant should live
-inside one operator, but its Krein/E mass form and concrete `det P`
-identification are still open; it can state at working rigor how mass becomes
-a spectrum and how large the physical world of such a model is; and it
+inside one operator, but its Krein/E mass form, concrete `det P`
+identification, and indefinite positive-sector witness are still open; it can
+state at working rigor how mass becomes a spectrum and how large the physical
+world of such a model is; and it
 cannot yet state, at any grade, why the electron weighs what it weighs - and
 it says so.**
 
@@ -818,9 +829,10 @@ it says so.**
   plain-language opener; theorem-to-Lean map extended with carrier
   anchors; status map updated: new layer 2.5 (carrier/Weitzenbock `D^2`
   decomposition at draft grade, with the Krein/E and concrete `det P`
-  identifications open), layer 3 extended by the index-protection family,
-  layer 4 updated with the MEMO-grade positivity boundary and the `dim = ind`
-  bookkeeping, layer 5 updated with the killed F2.0 gate and the newly
+  identifications and the indefinite positive-sector witness open), layer 3
+  extended by the index-protection family, layer 4 updated with the MEMO-grade
+  positivity boundary and the `dim = ind` bookkeeping, layer 5 updated with the
+  killed F2.0 gate and the newly
   pre-registered equipartition gate M-KOIDE. All 2026-07-07 program results
   cited at `MEMO` or draft grade only; the paper's own claims unchanged from
   v2.

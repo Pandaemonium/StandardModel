@@ -898,7 +898,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `381cc4cf` Q12 genuine-triality audit, `1b3c2203` Q12 C8 bridge gates, and
   `bd50e825` manuscript post-fix regression audit.  With the three older
   running projects, Aristotle is back to roughly twelve active
-  StandardModel-relevant lanes.
+  StandardModel-relevant lanes.  Q12 C8 bridge (`1b3c2203`) and genuine
+  finite triality (`381cc4cf`) are now harvested and integrated.  Manuscript
+  postfix audit `bd50e825` was also harvested and acted on by downgrading the
+  absent celestial-moment artifact anchors, clarifying the carrier table row,
+  and adding the positive-sector-witness OPEN caveat to the high-visibility P1
+  summaries.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

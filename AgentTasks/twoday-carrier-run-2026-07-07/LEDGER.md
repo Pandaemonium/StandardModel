@@ -3354,3 +3354,27 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Remaining harvest-first job: manuscript postfix audit `bd50e825`
   (completed with errors; inspect as audit-only).  Q11 Jacobi `aa4e48f6` was
   still running at the latest poll.
+
+## [ARISTOTLE-HARVEST Codex solo] Manuscript postfix audit fixes applied
+
+- Harvested Aristotle project `bd50e825`
+  (`ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`), which
+  completed with errors but returned a usable audit report.
+- Fixed the high-severity P1 v3 false-anchor issue: section 7 and the theorem
+  map no longer cite the absent standalone names
+  `pluckerMass_eq_energy_sq_sub_closureDefect_sq` or
+  `closed_spinorFan_is_restFrame` as machine-verified artifacts.  They now
+  point to actual draft anchors
+  `NullEdgeCelestialMomentWrapper.angularVarianceMass_eq_chordalPairMass` and
+  `NullEdgeP9DiamondSourceVisibilityCore.closed_visibleFan_mass_eq_restEnergy`,
+  with naming/convention alignment still pending.
+- Fixed the carrier table row so it names the guard-pinned `D^2` three-slot
+  assembly plus balanced flat-sector witness, while keeping the Krein/E
+  four-slot mass form and carrier/Gauss positive-sector witness OPEN.
+- Added the missing indefinite positive-sector witness OPEN caveat to the v3
+  header, composed answer, one-sentence summary, and change log.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdgeCelestialMomentWrapper.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdgeP9DiamondSourceVisibilityCore.lean`.
+- Remaining harvest-first jobs: none known after the latest harvest.  Q11
+  Jacobi `aa4e48f6` was still running at the latest poll.

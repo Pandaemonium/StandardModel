@@ -609,3 +609,28 @@ Jacobi.
 Remaining harvest-first job after this integration: `bd50e825` manuscript
 postfix audit (completed with errors; inspect as audit-only).  Still running at
 the latest poll: `aa4e48f6` Q11 Jacobi.
+
+## Harvest from manuscript postfix claim-grade regression audit
+
+- `bd50e825`
+  (`ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`) returned an
+  audit-only report with findings against
+  `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`.
+- Acted-on fixes in P1 v3:
+  - Downgraded the absent celestial-moment standalone artifact anchors
+    `pluckerMass_eq_energy_sq_sub_closureDefect_sq` and
+    `closed_spinorFan_is_restFrame`; repointed section 7 and the theorem map to
+    actual draft anchors
+    `NullEdgeCelestialMomentWrapper.angularVarianceMass_eq_chordalPairMass` and
+    `NullEdgeP9DiamondSourceVisibilityCore.closed_visibleFan_mass_eq_restEnergy`.
+  - Reworded the carrier theorem-map row to name the guard-pinned `D^2`
+    three-slot assembly and balanced flat-sector witness, while keeping
+    Krein/E four-slot mass form and carrier/Gauss positive-sector witness OPEN.
+  - Added the missing positive-sector witness OPEN caveat to the v3 header, the
+    composed answer, the one-sentence summary, and the change log.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdgeCelestialMomentWrapper.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdgeP9DiamondSourceVisibilityCore.lean`.
+
+Remaining harvest-first jobs after this integration: none known.  Still
+running at the latest poll: `aa4e48f6` Q11 Jacobi.
