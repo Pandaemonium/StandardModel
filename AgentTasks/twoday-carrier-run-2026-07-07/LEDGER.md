@@ -414,3 +414,11 @@ brick lands (applying to the collaborator doc + scorecard prose); (3) mZero DONE
   the focused Aristotle QC strategy: `QCLeading.leadingClosureFluxCoeff_strictMono`.
   This stays below the carrier bridge layer and does not touch the Claude-owned
   `TorusCarrierModel` / glue-instance lane.
+- [HB Codex 22:41] LANDED scalar monotonicity in commit `f57138c`:
+  `QCLeading.leadingClosureFluxCoeff_strictMono` is kernel-checked and guarded
+  to `[propext, Classical.choice, Quot.sound]`. Verification green: `lake env
+  lean PhysicsSM/Draft/NullEdge/GateYM/QCLeading.lean`; `lake build
+  PhysicsSM.Draft.NullEdge.GateYM.QCLeading`; `lake env lean
+  PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`; `lake build
+  PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard` (first attempt hit the shell
+  timeout; rerun with longer timeout passed); `pre-commit run --all-files`.
