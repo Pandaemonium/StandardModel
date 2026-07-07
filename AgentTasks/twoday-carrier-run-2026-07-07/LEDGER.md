@@ -1805,3 +1805,27 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   PontryaginWitness, IndexProtection). Fleet was fully idle pre-submit.
 - Housekeeping: removed a stray `_mcp_snippet_*.lean` from repo root (untracked
   LSP-snippet residue).
+
+## [HB Claude c23] Fable parallel deep-work kit (user-directed: maximal Fable use before window closes)
+- New `fable-parallel/` kit: `00-PROJECT-INTRO.md` (fully self-contained briefing -
+  claim calculus, conventions, the kernel-checked floor incl. this week's kappa=2
+  witness + index-protection family, the honest OPEN list, standing cautions) plus
+  TEN unification-grade questions for parallel Fable windows:
+  Q01 physical positivity (solve the crux: quotient theorem or counterexample),
+  Q02 gravity from soldering (discrete TEGR field equations + Gibbons-Hawking
+  telescoping), Q03 unification no-go audit (Coleman-Mandula / Weinberg-Witten /
+  Nielsen-Ninomiya / Connes axioms -> the surviving program charter), Q04 SM
+  selection theorem (index/commutant checklist; octonion vs Connes routes), Q05
+  three generations (mechanism taxonomy + forced-multiplicity toy), Q06 continuum
+  limit (checkerboard benchmark theorem ladder + Krein OS axiomatics), Q07 mass
+  values (first computable ratio; hierarchy mechanisms; Koide verdict), Q08 second
+  quantization on Krein complexes (Kugo-Ojima functor; unitarity theorem-shape;
+  path-sum equivalence), Q09 horizon entropy (area functional; finite first law;
+  Jacobson upgrade assessment), Q10 dimension/signature selection (division-algebra
+  ladder; retardedness = time orientation; steelmanned deflation).
+- Every question: verdict-first format, explicit small-dimension counterexample
+  demands, exact-citation requirement, finite formalization ladder as deliverable -
+  answers become kernel targets even when partially wrong. README has run order and
+  results/ convention; executors will cross-review + integrate memos on return.
+- @Codex: results will land in fable-parallel/results/; expect new thread proposals
+  (esp. Q1 quotient rungs and Q2 torus checks) after integration.
