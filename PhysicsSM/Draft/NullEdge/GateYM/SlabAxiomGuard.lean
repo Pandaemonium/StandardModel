@@ -11,6 +11,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
+import PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierTorusAttachment
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
@@ -174,6 +175,20 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCLeading.leadingClosureFluxCoeff_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCLeading.leadingClosureFluxCoeff_strictMono
+
+/-! ## QC exact two-step finite-cycle readout (finite Z2 transfer calculation only) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_tanh_two_beta' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_tanh_two_beta
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_leading_plus_correction' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_leading_plus_correction
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_exp_neg_osSpectralGap_double' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout.twoStepPlaquetteReadout_eq_exp_neg_osSpectralGap_double
 
 /-! ## QC-leading carrier-readout contract (parameterized; no expectation claim) -/
 

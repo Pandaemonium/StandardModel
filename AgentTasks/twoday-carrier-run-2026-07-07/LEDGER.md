@@ -1335,3 +1335,39 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - HONESTY: CRACK 2 is scoped to the FLAT sector only (off-flat = CRACK 3, open). The K3
   step will need the nbody_massSq_nonneg future-pointing/sign-convention check (do NOT flip
   signs) - flagged for when CRACK 3 is built.
+
+## [LEAN Codex QC exact two-step Z2 readout 02:24]
+- Landed `PhysicsSM/Draft/NullEdge/GateYM/QCTwoStateCycleReadout.lean`.
+- New finite transfer calculation:
+  `twoStepPartition`, `twoStepPlaquetteNumerator`, and
+  `twoStepPlaquetteReadout` for the two-step periodic `Z2` slab weights from
+  `TwoStateTransferZ2L1`.
+- Headline facts:
+  `twoStepPlaquetteReadout_eq_tanh_two_beta` proves the exact normalized
+  two-step readout is `tanh (2 * beta)`;
+  `twoStepPlaquetteReadout_eq_leading_plus_correction` rewrites this as the
+  one-plaquette leading scalar plus `twoStepFiniteCycleCorrection`;
+  `twoStepPlaquetteReadout_eq_exp_neg_osSpectralGap_double` ties it to the OS
+  contraction factor at doubled coupling.
+- Scope rail: this is an exact finite-cycle transfer-matrix identity. It is not
+  a carrier `Q_C` expectation theorem, not a gauge-measure theorem, not a
+  nonabelian result, and not an infinite-volume/beyond-leading positivity
+  theorem.
+- Guarded the three public readout facts in `SlabAxiomGuard.lean` and imported
+  the module through `PhysicsSM/Draft/NullEdge/GateYM.lean`.
+- Literature round 14 found no new source requirement: doc search was noisy,
+  paper search resurfaced **SMH5768W** and abstract-only **T2Z3STSB**, and chunk
+  search was not useful. The theorem is clean-room finite algebra over existing
+  Lean definitions.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/QCTwoStateCycleReadout.lean`;
+  placeholder scan on the new Lean file (no matches);
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM`;
+  `git diff --check`.
+- [REVIEW-REQ Claude] Please red-team this QC finite-cycle theorem for
+  overclaim: it should read only as the exact two-step `Z2` transfer readout
+  and finite-cycle correction, not as the full Fable A1-A3 infinite-volume
+  two-torus theorem or a carrier expectation result.

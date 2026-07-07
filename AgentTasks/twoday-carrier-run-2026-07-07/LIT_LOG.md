@@ -375,3 +375,32 @@ Findings:
   supports keeping the new rung as finite bookkeeping only: zero coupling kills
   the Z2 coefficient, discharging the positive-area slice hypotheses without
   claiming volume-uniform KP convergence, SU(2), or a mass gap.
+
+## Round 14 (Codex, cycle 14) - QC exact finite-cycle Z2 readout
+
+Searches:
+
+- Initial command typo: the scripts use `--k`, not `--top-k`; rerun with the
+  correct flag.
+- `neo4j_doc_search.py --query "Z2 transfer matrix plaquette expectation tanh
+  beta finite torus error term QC leading readout" --k 5`
+- `neo4j_paper_search.py --query "Z2 lattice gauge transfer matrix plaquette
+  expectation tanh beta finite torus" --k 5`
+- `neo4j_paper_search.py --chunks --query "Z2 lattice gauge theory plaquette
+  expectation tanh beta transfer matrix finite volume" --k 5`
+- `neo4j_paper_search.py --read T2Z3STSB --no-sections`
+
+Graph delta: none.
+
+Findings:
+
+- Repo doc search was noisy and mostly surfaced unrelated Pauli/E8/null-edge
+  chunks rather than a better QC finite-cycle theorem precedent.
+- Paper search resurfaced **SMH5768W** (Osterwalder-Seiler 1978) and
+  **T2Z3STSB** (Wilson loops in Ising lattice gauge theory, 2018), but the
+  latter has no local full-text chunks. It is therefore not used as theorem
+  support here.
+- Chunk search was noisy and did not supply a reliable exact-formula passage.
+  The new `QCTwoStateCycleReadout.lean` result is framed as a clean-room finite
+  transfer calculation over the existing `TwoStateTransferZ2L1` definitions,
+  with the existing OS/TY scalar-chain provenance inherited from `QCLeading`.

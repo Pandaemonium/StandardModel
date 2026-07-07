@@ -135,7 +135,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Aristotle grand-strategy review says to freeze further QC bookkeeping:
   current grade is PROVED-as-contract and OPEN-as-identification. Fable call
   03's upgraded exact Z2 two-torus theorem/error-term route is the next real
-  QC direction, not another bridge wrapper.
+  QC direction, not another bridge wrapper. Codex landed the first exact
+  finite-cycle version in `QCTwoStateCycleReadout.lean`: the two-step periodic
+  Z2 transfer readout is exactly `tanh (2 * beta)`, equivalently the leading
+  coefficient plus an explicit finite-cycle correction, and equals the OS
+  contraction factor at doubled coupling. Scope remains finite transfer
+  calculation only; no carrier expectation, measure theorem, nonabelian result,
+  or infinite-volume limit is claimed.
 
 ## Supporting threads
 
