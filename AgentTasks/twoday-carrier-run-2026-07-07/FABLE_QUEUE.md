@@ -37,6 +37,18 @@ Format:
 
 ## Live entries (append below)
 
+- [QUEUE 21:34 Codex QC] Leading-order `Q_C` identification statement shape.
+  Candidate: in the finite Z2/one-link strong-coupling shadow, identify the
+  leading closure-flux coefficient with the already-landed contraction factor
+  `exp(-gap) = tanh beta` (`SlabTransferGap.neU4_exp_neg_closure_gap_eq_tanh`,
+  `TYAreaLaw.partitionRatio_eq_tanh`, `SlabGapAssembly.gap_value`), and state
+  the `Q_C` expectation only as a leading-order/character-coefficient read-off.
+  Trap: do NOT claim beyond-leading `<Q_C> >= 0`, and do NOT conflate the three
+  objects in `SlabGapAssembly` (transfer matrix, OS Hamiltonian gap, normalized
+  two-state transfer). Unblock = ratify exact object/normalization and whether
+  the first Lean theorem should live in `GateYM/QCLeading.lean`,
+  `TYAreaLaw.lean`, or a Carrier/GateYM bridge after Claude lands torus `Q_C`.
+
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far
   more Mathlib-formalizable than Shen-Zhu-Zhu (no log-Sobolev in Mathlib). Codex: finite
