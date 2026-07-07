@@ -518,13 +518,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `split22_orthogonal_null_pair` plus rational non-collinearity, the finite
   split-signature witness that null-orthogonality rigidity fails. Q10-L5 has
   the explicit real-split rank-one witness: two determinant-zero constituents
-  whose sum has determinant `-1`. The headline theorems are guard pinned with footprint
+  whose sum has determinant `-1`, now strengthened by
+  `PhysicsSM/Draft/NullEdge/GateI1/SplitSignatureMass.lean`:
+  `det_outerSum` proves the full split determinant/wedge identity for arbitrary
+  finite rank-one sums. The headline theorems are guard pinned with footprint
   `[propext, Classical.choice, Quot.sound]`.
 - **Status:** PROVED finite obstruction only. It supports Q10's stable-order
   signature rail, not the full Lorentzian uniqueness theorem yet. The next
-  exact rungs are L3 Lorentzian positive-pairing transitivity, the general L5
-  split determinant/wedge identity, and L6 same-chirality scalar-amplitude
-  census.
+  exact rungs are L3 Lorentzian positive-pairing transitivity and L6
+  same-chirality scalar-amplitude census.
 - **Aristotle:** active named lanes opened for Q10-L3 (`dbe113e5`), Q10-L5
   (`3a66e413`), and Q10-L6 (`7fd8a9bf`); see
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.

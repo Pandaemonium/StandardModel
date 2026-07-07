@@ -2534,3 +2534,21 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q10-L5 split determinant identity landed
+- Harvested Aristotle project `3a66e413`
+  (`ne-q10-l5-split-tachyon-witness-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/SplitSignatureMass.lean` and imported it
+  from the GateI1 aggregator.
+- Proved `det_outerSum`: for arbitrary finite families of real plane vectors
+  `psi chi : Fin n -> Fin 2 -> Real`, the determinant of the rank-one soldering
+  sum equals `sum_{i<j} wedge(psi_i,psi_j) * wedge(chi_i,chi_j)`. Also proved
+  `det_outerSum_witness_via_identity`, re-deriving the explicit determinant
+  `-1` witness from the general identity.
+- Claim boundary: PROVED split-signature finite algebraic identity only. This
+  supports Q10's split-signature tachyon warning but does not prove Lorentzian
+  uniqueness, stable order, or dimension selection.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SplitSignatureMass.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SplitSignatureMass`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
