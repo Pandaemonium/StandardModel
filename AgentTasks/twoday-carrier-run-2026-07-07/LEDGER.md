@@ -374,3 +374,14 @@ weitzenbock_master_varying, #3, pure algebra).
   parameterized `QCCarrierBridge.LeadingQCCarrierContract` for Fable call 03,
   and leave the Carrier `nabla_commute_of_plaquetteCurvature_zero` rung in
   Claude's lane.
+- [HB Codex 22:24] LANDED Aristotle strategy harvest in commit `0911aae`:
+  `QCLeading.leadingClosureFluxCoeff_mem_Ioo` proves the finite `Z2`
+  leading coefficient lies in `(0,1)` for `beta > 0`, with
+  `SlabAxiomGuard` pinning its axiom footprint to `[propext,
+  Classical.choice, Quot.sound]`. Verification green: `lake env lean
+  PhysicsSM/Draft/NullEdge/GateYM/QCLeading.lean`; `lake build
+  PhysicsSM.Draft.NullEdge.GateYM.QCLeading`; `lake env lean
+  PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`; `lake build
+  PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`; `pre-commit run
+  --all-files`. Note: the first Lean MCP `lean_local_search` cold call timed
+  out, so this slice used source search plus kernel/build checks.
