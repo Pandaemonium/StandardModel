@@ -577,17 +577,25 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   theorem alone.
 
 ### JR-REAL-STRUCTURE - Q11 fiber real structure, KO, and unimodularity seam [new Q11 lane]
-- **Status:** Q11 answer harvested into the goal prompt and Aristotle queue. It
-  says the explicit top-form-duality `J_R` on `Lambda(C^5)` is the seam object:
-  `J_R^2 = +1`, internal `B` is positive, fiber KO signs are `(+, +, -)`,
-  total Lorentzian architecture lands in KO dimension 4, and unimodularity is
-  forced by the named antilinear covariance axiom RC0, not by Krein closure.
-- **Next:** kernelize the finite ladder: sign tables, parity anticommutation,
-  `B(e_S,e_T)=delta_ST`, charge-conjugation master identity
-  `J_R Q J_R^{-1} = trace(Q) 1 - Q`, RC0 iff determinant one, B-L counterexample,
-  C3 Majorana identity, and the order-condition scalar identities.
-- **Aristotle:** named audit/strategy lane `65a9d42d`
-  (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`) is running.
+- **Done:** Q11 L1/L2-core landed in
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11RealStructure.lean`: the top-form-duality
+  sign `sigmaSign` is defined from the genuine wedge/interleaving parity and
+  proved equal to the closed formula; `JR_involutive` proves `J_R^2 = +1`;
+  `JR_parity_anticomm` proves the odd-fiber parity anticommutation;
+  `Btop_eq_Bstd` proves the internal top-form-duality form is the standard
+  positive Hermitian metric; `JR_num_particle_hole` and `JR_charge_master` prove
+  the finite Cartan arithmetic `J_R Q J_R = trace(Q) 1 - Q`; and
+  `even_dim_breaks_JR_sq` gives the dimension-four contrast witness.
+- **Status:** PROVED finite fiber sign table and Cartan/unimodularity arithmetic
+  core only. The result refutes any "Krein closure implies unimodularity" slogan:
+  the sesquilinear form is determinant-blind, while the determinant condition
+  lives in the antilinear `J_R` layer.
+- **Next:** group-level RC0/determinant cocycle for the exterior functor,
+  the B-L dictionary/counterexample, the C3 Majorana identity, and the
+  order-condition scalar identities. The chirality-solder flag remains a
+  standing obligation for later architecture checks.
+- **Aristotle:** harvested named audit/strategy lane `65a9d42d`
+  (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`).
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
   closure. RC0 is an axiom unless/until separately derived.
 

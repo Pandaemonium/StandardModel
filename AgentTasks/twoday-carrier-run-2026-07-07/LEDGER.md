@@ -2609,3 +2609,22 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Verification passed:
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/LorentzianTransitivity.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.LorentzianTransitivity`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q11 finite real-structure core landed
+- Harvested Aristotle project `65a9d42d`
+  (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11RealStructure.lean` and imported it from
+  the GateI1 aggregator.
+- Proved the finite `Lambda(C^5)` basis model over `Finset (Fin 5)`:
+  `sigmaSign_eq_formula`, `JR_involutive`, `JR_parity_anticomm`,
+  `Btop_eq_Bstd`, `Bstd_self_re_nonneg`, `JR_num_particle_hole`,
+  `JR_charge_master`, and the adversarial contrast `even_dim_breaks_JR_sq`.
+  The key semantic split is now kernel-backed: the internal top-form-duality
+  form is the standard positive Hermitian metric, while determinant/traceless
+  information lives in the antilinear charge master identity.
+- Claim boundary: PROVED finite sign-table and Cartan arithmetic core only.
+  Group-level RC0/determinant cocycle, B-L dictionary, C3 Majorana identity,
+  order-condition relocation, and full KO architecture remain open.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11RealStructure.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11RealStructure`.
