@@ -3,6 +3,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.SolderedSquareGram
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMaster
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierPotentialTurn
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockQC_Torus
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierSquareAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -80,6 +81,12 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Torus.shift_mul_pointwise' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.Torus.shift_mul_pointwise
+
+/-! ## Move-1 ASSEMBLY: 4 D^2 = Q_A + Q_C + 4 Q_T (E=0 regime) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_square_assembly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_square_assembly
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
