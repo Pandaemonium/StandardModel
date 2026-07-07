@@ -714,3 +714,27 @@ positivity (both in progress).
   re-reviewed.
 - Ownership note: Codex did not edit Carrier code. W2a remains OPEN, not
   LANDED/BANKED.
+
+## [LEAN Codex C-1FORM nontrivial character 00:17]
+- Landed the minimal nontrivial-character electric-sector witness in
+  `PhysicsSM/Draft/NullEdge/GateYM/CenterFluxSector.lean`: a two-point Boolean
+  flip shift system, sign character, sign wavefunction, and combined theorem
+  `ShiftSystem.boolSign_nontrivialElectricSector`. This proves there is a
+  nonzero wavefunction in an electric sector whose character is genuinely
+  nontrivial (`character true != 1`) in a finite bookkeeping model.
+- Guarded `ShiftSystem.boolSign_nontrivialElectricSector` in
+  `PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`; axiom query reports the
+  standard surface `[propext, Classical.choice, Quot.sound]`.
+- Verification run:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/CenterFluxSector.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector`,
+  axiom query for `ShiftSystem.boolSign_nontrivialElectricSector`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`, and
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard`. The guard build
+  passed with only pre-existing imported warnings, including known draft KP
+  placeholders in `PolymerKPConclusion`. Non-claims: no torus cohomology,
+  continuum one-form symmetry, Ward identity, anomaly, spontaneous breaking,
+  confinement, or mass-gap theorem.
+- Aristotle OS1/KP handoff projects were retried with UTF-8 output forced; both
+  bounded `aristotle show` calls timed out, so no handoff was harvested.

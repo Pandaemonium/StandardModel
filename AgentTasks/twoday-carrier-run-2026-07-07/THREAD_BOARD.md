@@ -158,9 +158,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   pins the line-charge lemmas plus the center-shift action laws. Codex then
   landed the generic nonzero trivial-sector witness
   `ShiftSystem.one_inElectricSector_nonzero` and the x/y shift commutation law
-  `xFluxShift_yFluxShift_comm`, both guarded. Still OPEN: nontrivial-character
-  electric-sector witness and the deferred configuration-to-`TwistSystem`
-  partition bridge.
+  `xFluxShift_yFluxShift_comm`, both guarded. Codex then landed the minimal
+  nontrivial-character witness `ShiftSystem.boolSign_nontrivialElectricSector`
+  on a two-point flip system, guarded. Still OPEN: the deferred configuration-
+  to-`TwistSystem` partition bridge and any honest `H^2(K,Z(G))` background
+  object.
 ### PBW-EXH - exhaustiveness as a PBW/rewriting theorem [Claude-led, Fable-gated]
 - **Done:** W2c/graded-exhaustiveness restated as a finite normal-form theorem:
   the free carrier algebra on `{gamma_e, nabla_e, phi}`, modulo the stated

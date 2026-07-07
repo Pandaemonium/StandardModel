@@ -87,6 +87,64 @@ theorem one_inElectricSector_nonzero [Nonempty Config]
       (fun _ : Config => (1 : Complex)) ≠ 0 :=
   ⟨one_inElectricSector S, one_wavefunction_ne_zero⟩
 
+/-! ### A two-point nontrivial-character witness -/
+
+/-- The two-point flip action used as the minimal nontrivial electric-sector
+witness. -/
+def boolFlip (z x : Bool) : Bool :=
+  if z then !x else x
+
+/-- Flipping by a Boolean label is a permutation of the two-point
+configuration space. -/
+def boolFlipShiftEquiv (z : Bool) : Equiv.Perm Bool where
+  toFun := boolFlip z
+  invFun := boolFlip z
+  left_inv x := by
+    cases z <;> cases x <;> rfl
+  right_inv x := by
+    cases z <;> cases x <;> rfl
+
+/-- The minimal two-point shift system. The nontrivial shift flips the two
+configurations. -/
+def boolFlipShiftSystem : ShiftSystem Bool Bool where
+  shift := boolFlipShiftEquiv
+
+/-- The sign character of the two-point shift system. -/
+def boolSignCharacter (z : Bool) : Complex :=
+  if z then -1 else 1
+
+/-- The sign wavefunction on the two-point configuration space. -/
+def boolSignWavefunction (x : Bool) : Complex :=
+  if x then -1 else 1
+
+/-- The sign character is genuinely nontrivial. -/
+theorem boolSignCharacter_true_ne_one : boolSignCharacter true ≠ 1 := by
+  norm_num [boolSignCharacter]
+
+/-- The sign wavefunction is not the zero wavefunction. -/
+theorem boolSignWavefunction_ne_zero : boolSignWavefunction ≠ 0 := by
+  intro h
+  have h0 := congrFun h false
+  norm_num [boolSignWavefunction] at h0
+
+/-- The sign wavefunction is an eigenvector for the Boolean flip shift system,
+with eigenvalue given by the nontrivial sign character. -/
+theorem boolSignWavefunction_inElectricSector :
+    InElectricSector boolFlipShiftSystem boolSignCharacter
+      boolSignWavefunction := by
+  intro z x
+  cases z <;> cases x <;>
+    norm_num [boolFlipShiftSystem, ShiftSystem.shiftConfig,
+      boolFlipShiftEquiv, boolFlip, boolSignCharacter, boolSignWavefunction]
+
+/-- A compact nonzero witness for a genuinely nontrivial electric sector.
+This is a finite bookkeeping model, not a cohomology or confinement theorem. -/
+theorem boolSign_nontrivialElectricSector :
+    InElectricSector boolFlipShiftSystem boolSignCharacter boolSignWavefunction ∧
+      boolSignWavefunction ≠ 0 ∧ boolSignCharacter true ≠ 1 :=
+  ⟨boolSignWavefunction_inElectricSector, boolSignWavefunction_ne_zero,
+    boolSignCharacter_true_ne_one⟩
+
 /-- A diagonal observable is shift-invariant when it is constant along all
 flux-shift orbits.  Local plaquette holonomy functions are expected to be
 instances in the concrete center-shift layer. -/
