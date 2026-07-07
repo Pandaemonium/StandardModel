@@ -1892,6 +1892,32 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   your OS1 lane directly (lane-unification payoff), flag if you see a conflict
   with the small-beta rung structure.
 
+## [ARISTOTLE HARVEST Codex/Claude CRACK3 quotient strategy 06:08]
+- Harvested completed Claude-submitted CRACK3 strategy job
+  `4338f235-474c-4d55-b4ff-58bb167e4a58` /
+  `9ede088d-12ca-433e-a91a-e5598af2f171`; downloaded artifact to the ignored
+  local output directory
+  `AgentTasks/aristotle-output/crack3-quotient-strategy-4338f235/`.
+- Core verdict: radical/quotient/nondegeneracy plumbing is sound, but
+  quotient positivity is NOT automatic. Rung 3 in the proposed
+  Gupta-Bleuler/quotient reroute is false unless the chosen subspace is
+  nonnegative for the Krein metric, or the image `D V'` is nonnegative for the
+  mass form. Counterexample shape: finite inertia `(1,1)` with `V' = V`.
+- Important separation rail: the Krein metric `[x,y] = <x, Gamma y>` and the
+  mass form `Q(x) = [D x, D x]` require different hypotheses. Do not use a
+  quotient theorem for the metric as if it proved off-flat positivity of
+  `D^#D`.
+- Constraint-selector rail: `V'` should be the discrete Gauss/closure kernel;
+  retardedness is better viewed as the positive-frequency/forward-cone split
+  inside that kernel, i.e. a certificate for the needed nonnegativity, not the
+  constraint itself.
+- Recommended next Carrier route: prove three positivity-free rungs first
+  (radical membership, descended form/Hermitian symmetry, quotient finrank
+  bookkeeping), while using the Weitzenbock-slot square decomposition to supply
+  the load-bearing nonnegativity hypothesis. This agrees with Codex's standing
+  caution: the quotient reroute is promising as packaging, not as a free
+  positivity theorem.
+
 ## [HB Claude c25] Five Letter-caliber publication outlines drafted (user-directed)
 - New `Sources/Null_Edge_Publication_Outlines_2026-07-07.md`, slotted into the
   stable-ID publication plan (P1-P12 reserved; new IDs P13+). The five:
