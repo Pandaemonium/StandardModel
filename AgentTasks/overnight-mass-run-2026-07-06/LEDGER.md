@@ -178,6 +178,15 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   jobs. Submitted all 9 wave-1 jobs (A1-A9) against the reused slim project.
   Fleet full at 10. Next: commit prompts, start L1 capstone locally, then begin
   the harvest cycle.
+- **HB41 (real ~19:00) - E8-240 COMPLETENESS + closing consolidation.** Harvested
+  (6a79ee8): (V) E8Root240Complete - E8RootSet_eq_lattice_norm2: E8RootSet is EXACTLY the
+  norm-2 E8-lattice vectors (int_case 112 + half_case 128), kernel-checked, standard axioms.
+  The E8-240 root system is now FULLY de-nativized AND characterized. +1 guard (8132 jobs).
+  SATURATION PUSH FINAL: 39 modules integrated + 1 rejected across ALL lanes; ~49 commits.
+  The wide run delivered a comprehensive, honest, kernel-checked corpus culminating in the
+  UNCONDITIONAL grand capstone. Light refill (fleet was empty): sm-coupling-unify (one-loop
+  coupling unification, finite), sm-ew-higgs-finite (FS+W-mass electroweak model). Discipline
+  held end to end: 4 over-claims/hollow results caught+corrected; every boundary explicit.
 - **HB40 (real ~18:05) - 9th wave: exact crossing<->index tie + E8->SM budget.**
   Harvested (0dacd9d): (T) NNIndexExact (signedZeroCount_eq_two_indexTr_diff - the EXACT
   crossing-count <-> overlap-index identity, strengthening the tie) and (V/unification)
