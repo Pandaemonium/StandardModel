@@ -421,3 +421,35 @@ retarded / future-cone. For the CRACK-3 prize (off-flat forward-sector Krein pos
 
 ACTION: cite 1611.07842 (stably-causal = retardedness) + 1812.00038 ch111 (finite IST = kappa=2)
 in the CRACK-3 forward_sector positivity brick + the M4 witness, when they land.
+
+## Round 15 (Codex, cycle 15) - QC-GRAM normalization + KP fixed-forest check
+
+Searches:
+
+- `neo4j_doc_search.py --query "QC-GRAM closure defect Gram square 1 - U
+  plaquetteCurvature leading readout Hermitian Laplacian normalization" --k 8`
+  (rerun with `PYTHONIOENCODING=utf-8` after Windows console encoding failed on
+  non-ASCII chunks).
+- `neo4j_paper_search.py --query "unitary plaquette holonomy closure defect Gram
+  square lattice gauge curvature Wilson action" --k 6`
+- `neo4j_paper_search.py --chunks --query "Penrose partition scheme cluster
+  expansion polymer fixed forest injection factorial Kotecky Preiss Scott
+  Sokal" --k 8`
+
+Graph delta: none.
+
+Findings:
+
+- Paper search for QC-GRAM returned already-known sources: **SMH5768W**
+  (Osterwalder-Seiler 1978), **T2Z3STSB** (Ising lattice gauge Wilson loops),
+  gauge-network / Villain-index context, and no new theorem-supporting source.
+- Repo doc search reinforced the normalization issue rather than contradicting
+  it: older closure-defect notes use squared/Gram defects only after an explicit
+  normalization or orthogonality hypothesis. This supports the new
+  `QCClosureGramCheck` boundary: raw `1 - U` is not a Gram square; the scalar
+  unitary Gram object is `2 - U - U^*`, and in `Z2` the half-normalized square
+  recovers the linear defect.
+- KP chunk search was noise for the fixed-forest injection target. No stronger
+  literature-derived lemma was found; keep waiting on Aristotle `6b8dcebd` and
+  continue to treat the blocker as local finite combinatorics rather than a
+  paper-transcription task.
