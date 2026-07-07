@@ -238,14 +238,14 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
   `ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`.
 - **Harvest-first before more refill:** the latest poll shows these newer jobs
   `IDLE` and ready to inspect:
-  `ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`,
   `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`
-  (completed with errors; treat as audit-only until inspected).  Harvest these
+  (completed with errors; treat as audit-only until inspected).  Harvest this
   before opening additional lanes.
 - **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
   Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
-  kill, Q08 corrected scattering-vertex LGV DAG, Q12 C8 non-permutation
-  Hadamard bridge, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
+  kill, Q08 corrected scattering-vertex LGV DAG, Q12 genuine non-diagonal
+  triality witness, Q12 C8 non-permutation Hadamard bridge, Q01 finite
+  positive-sector witness/no-go, Q06 edge-reversal
   transfer-power bridge, Q09 screen-area degeneracy/invariance completion,
   Q10 intrinsic inertia-index bridge, Q04 sign-gauge reconciliation, Q04
   Baez-to-XOR ConventionBridge line products, RG-Schur determinant/Krein-Gamma

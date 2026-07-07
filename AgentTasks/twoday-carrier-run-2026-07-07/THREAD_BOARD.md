@@ -765,27 +765,34 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   concrete Walsh-Hadamard non-permutation bridge and separation from
   permutation bridges: `Had_mul_Had`, `Had_mul_Tmat`, `furey_bridge`,
   `bridge_trace_eq`, `bridge_involution_descent`, `no_perm_bridge`, and
-  `perm_bridge_insufficient`.
+  `perm_bridge_insufficient`. Aristotle follow-up `381cc4cf` is now harvested
+  into `PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean`, proving a genuine
+  finite non-diagonal order-3 signed-permutation triality-style triple for the
+  `octSgn` product: `genuine_triality_triple`, `tri_perm_nondiag`,
+  `tri_perm_cube`, `gmap_tri1_cube`, `gmap_tri2_cube`, `gmap_tri3_cube`,
+  `gmap_tri1_sq_ne_id`, and `gmap_tri1_ne_phi`.
 - **Status:** PROVED algebraic T1-T8 finite core plus finite PSA-1 and
   sector-additivity accounting identities only, now including the finite
-  non-permutation XOR/Hadamard bridge gate.
+  non-permutation XOR/Hadamard bridge gate and a genuine finite order-3
+  signed-permutation triality-style witness.
   This confirms the G2-parity defusal at the XOR/Fano algebra level and removes
   sign-convention risk from the automorphism claim; PSA-1 gives the per-sector
   determinant/supertrace check; ChargeResolution gives finite
   partition-by-label and direct-sum bookkeeping; Q12Triality gives finite
-  diagonal-character/parity commutation and abstract bridge/kill criteria;
+  diagonal-character/parity commutation, a distinct non-diagonal order-3
+  `octSgn` triality-style triple, and abstract bridge/kill criteria;
   Q12GammaPrimeQuotient gives the finite quotient-descent gate; and
   Q12NonPermBridge proves that the bridge cannot be reduced to a permutation
   conjugation in the translation-parity model. Q13 red-team `7f273e71`
-  downgraded the word "triality" here: the landed
-  `parity_triple` is the all-equal diagonal `(Z/2)^3` character case, generic
-  in `sigma`, not a genuine order-3 Spin(8)/octonion triality theorem. These
-  results do not prove an analytic/equivariant index theorem behind a physical
-  anomaly statement. Aristotle C8 audit `cdba6caa` confirmed the finite algebra
-  is kernel-clean. Its non-permutation-bridge blocker is now discharged by the
-  explicit Hadamard witness, while `eps'` for KO placement is not formalized;
-  PSA and ChargeResolution remain accounting identities, not equivariant
-  McKean-Singer.
+  correctly downgraded the older `parity_triple` wording: that theorem is the
+  all-equal diagonal `(Z/2)^3` character case, generic in `sigma`. The new
+  `genuine_triality_triple` is the finite order-3 `octSgn` witness that fixes
+  that wording gap, but it is still finite signed-permutation algebra, not an
+  analytic Spin(8) or physical anomaly theorem. Aristotle C8 audit `cdba6caa`
+  confirmed the finite algebra is kernel-clean. Its non-permutation-bridge
+  blocker is now discharged by the explicit Hadamard witness, while `eps'` for
+  KO placement is not formalized; PSA and ChargeResolution remain accounting
+  identities, not equivariant McKean-Singer.
 - **Next:** T8 now has a concrete XOR/Hadamard non-permutation bridge and a
   proof that the permutation reduction is insufficient. The remaining C8 gates
   are sharper: sector-projection equivariance of the bridge, `J_R`-induced

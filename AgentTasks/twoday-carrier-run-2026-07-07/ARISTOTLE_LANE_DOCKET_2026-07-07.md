@@ -582,3 +582,30 @@ Remaining harvest-first jobs after this integration: `381cc4cf` Q12 triality
 wording audit and `bd50e825` manuscript postfix audit (completed with errors;
 inspect as audit-only).  Still running at the latest poll: `aa4e48f6` Q11
 Jacobi.
+
+## Harvest from Q12 genuine triality / diagonal-character audit
+
+- `381cc4cf`
+  (`ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`) returned
+  a proof payload now integrated into
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean`.
+- New proved declarations include `octSgnR`, `gmap`, `monomial_triality`,
+  `tri1`, `tri2`, `tri3`, `tri_hidx`, `tri_hsgn_int`, `tri_hsgn`,
+  `genuine_triality_triple`, `tri_perm_nondiag`, `tri_perm_cube`,
+  `gmap_tri1_cube`, `gmap_tri2_cube`, `gmap_tri3_cube`,
+  `gmap_tri1_sq_ne_id`, and `gmap_tri1_ne_phi`.
+- Claim boundary: this corrects the earlier Q13 wording demotion by proving a
+  genuine finite non-diagonal order-3 signed-permutation triality-style triple
+  for the `octSgn` product, plus an anti-relabelling certificate showing the
+  first component is not any diagonal character.  It remains finite XOR/Fano
+  signed-permutation algebra; it does not prove analytic Spin(8) triality,
+  chirality on a physical quotient, anomaly cancellation, or equivariant
+  McKean-Singer.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12Triality`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12NonPermBridge`.
+
+Remaining harvest-first job after this integration: `bd50e825` manuscript
+postfix audit (completed with errors; inspect as audit-only).  Still running at
+the latest poll: `aa4e48f6` Q11 Jacobi.

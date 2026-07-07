@@ -13,13 +13,16 @@ The results are deliberately finite:
   triality monodromy on `O^3`;
 * diagonal grading bridges are reduced to explicit conjugation by a permutation
   matrix, with trace/signature as a necessary kill condition.
+* a genuine non-diagonal order-3 signed-permutation triality-style triple is
+  proved for the `octSgn` product, together with an anti-relabelling certificate
+  showing its first component is not any diagonal character.
 
 Claim boundary: this proves finite algebra and operator gates only. It does not
 prove chirality on a physical quotient, anomaly cancellation, or any physical
 chirality theorem.
 
 Provenance: `AgentTasks/fable_parallel/Q12_answer.md`; Aristotle project
-`85a73a6d`, task `c416d2b3`.
+`85a73a6d`, task `c416d2b3`; Aristotle project `381cc4cf`, task `b4a8948e`.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.GateI1.Q12Triality
@@ -305,6 +308,206 @@ theorem bridge_kill_of_unbalanced :
   rw [hcard] at h
   norm_num at h
 
+/-! ## A genuine non-diagonal order-3 triality triple over the octSgn product
+
+The diagonal parity results above (`parity_triple`, `phi_comp`, ...) only
+produce triples `(phi c, phi c, phi c)` whose three components are equal and
+are involutions (`phi_involutive`). They are the `(ZMod 2)^3` diagonal
+characters, not genuine triality: genuine octonion/Spin(8) triality cyclically
+relates three distinct order-3 operators.
+
+Here we exhibit and prove such a genuine triple for the `octSgn` product itself.
+The three components `gmap tri1 tc1`, `gmap tri2 tc2`, `gmap tri3 tc3` are
+signed permutations whose permutation parts are pairwise distinct,
+non-identity, and of order 3, and the triple satisfies the triality
+intertwining `g3 (x * y) = (g1 x) * (g2 y)` for the real octonion structure
+constants `octSgnR = (octSgn : Z -> R)`. Because every diagonal character
+`phi c` is an involution while each `gmap tri_i tc_i` has order 3, this triple
+is provably not a relabelling of a diagonal character (`gmap_tri1_ne_phi`).
+
+The witness data was found by an exhaustive finite search over affine-monomial
+triples; the two closing finite conditions (`tri_hidx`, `tri_hsgn_int`) are
+certified by `decide`.
+-/
+
+/-- Real-valued octonion structure constant, `octSgnR a b = (octSgn a b : R)`. -/
+def octSgnR (a b : Idx) : ℝ := (octSgn a b : ℝ)
+
+/-- A monomial signed-permutation operator: `gmap e c x a = c a * x (e a)`. -/
+def gmap (e : Idx ≃ Idx) (c : Idx -> ℝ) (x : Idx -> ℝ) : Idx -> ℝ :=
+  fun a => c a * x (e a)
+
+/-
+General criterion for a triple of monomial operators to be a triality triple.
+
+If the permutation parts `e1`, `e2`, `e3` are grading-compatible
+(`e1 a + e2 b = e3 (a + b)`) and the signs satisfy the cocycle condition
+`c3 (a + b) * sigma (e1 a) (e2 b) = sigma a b * c1 a * c2 b`, then
+`(gmap e1 c1, gmap e2 c2, gmap e3 c3)` is a triality triple for `sigma`.
+-/
+theorem monomial_triality (sigma : Idx -> Idx -> ℝ) (e1 e2 e3 : Idx ≃ Idx)
+    (c1 c2 c3 : Idx -> ℝ)
+    (hidx : ∀ a b, e1 a + e2 b = e3 (a + b))
+    (hsgn : ∀ a b, c3 (a + b) * sigma (e1 a) (e2 b) = sigma a b * c1 a * c2 b) :
+    TrialityTriple sigma (gmap e1 c1) (gmap e2 c2) (gmap e3 c3) := by
+  intro x y
+  ext k
+  simp only [gmap, omul]
+  rw [Finset.mul_sum _ _ _, ← Equiv.sum_comp e1]
+  refine Finset.sum_congr rfl (fun a _ => ?_)
+  rw [Finset.mul_sum _ _ _, ← Equiv.sum_comp e2]
+  refine Finset.sum_congr rfl (fun b _ => ?_)
+  by_cases hk : a + b = k
+  · subst hk
+    rw [hidx a b, if_pos rfl, if_pos rfl]
+    linear_combination (x (e1 a) * y (e2 b)) * hsgn a b
+  · rw [if_neg hk, hidx a b, if_neg (fun hc => hk (e3.injective hc)), mul_zero]
+
+/-! ### The concrete witness data -/
+
+/-- Encode `n : Nat` bits as an element of `Idx = Fin 3 -> ZMod 2`. -/
+def mkIdx (n : ℕ) : Idx := fun i => if (n >>> i.val) % 2 == 1 then 1 else 0
+
+/-- Decode an element of `Idx` to a number in `0..7`. -/
+def idxNo (a : Idx) : ℕ :=
+  (if a 0 = 1 then 1 else 0) + (if a 1 = 1 then 2 else 0) + (if a 2 = 1 then 4 else 0)
+
+/-- Build a map `Idx -> Idx` from a length-8 permutation table. -/
+def fromArr (arr : Array ℕ) (a : Idx) : Idx := mkIdx (arr[idxNo a]!)
+
+/-- The first permutation part, an order-3 affine map of `Idx`. -/
+def tri1 : Idx ≃ Idx :=
+  ⟨fromArr #[6, 7, 0, 1, 4, 5, 2, 3], fromArr #[2, 3, 6, 7, 4, 5, 0, 1],
+    by decide, by decide⟩
+
+/-- The second permutation part. -/
+def tri2 : Idx ≃ Idx :=
+  ⟨fromArr #[2, 3, 4, 5, 0, 1, 6, 7], fromArr #[4, 5, 0, 1, 2, 3, 6, 7],
+    by decide, by decide⟩
+
+/-- The third permutation part. -/
+def tri3 : Idx ≃ Idx :=
+  ⟨fromArr #[4, 5, 2, 3, 6, 7, 0, 1], fromArr #[6, 7, 2, 3, 0, 1, 4, 5],
+    by decide, by decide⟩
+
+/-- Integer sign of the first component. -/
+def cc1 : Idx -> ℤ := fun a => (#[1, -1, 1, 1, 1, 1, 1, -1] : Array ℤ)[idxNo a]!
+
+/-- Integer sign of the second component. -/
+def cc2 : Idx -> ℤ := fun a => (#[1, -1, -1, 1, -1, -1, 1, 1] : Array ℤ)[idxNo a]!
+
+/-- Integer sign of the third component. -/
+def cc3 : Idx -> ℤ := fun a => (#[1, 1, 1, 1, -1, 1, -1, 1] : Array ℤ)[idxNo a]!
+
+/-- Real sign of the first component. -/
+def tc1 : Idx -> ℝ := fun a => (cc1 a : ℝ)
+
+/-- Real sign of the second component. -/
+def tc2 : Idx -> ℝ := fun a => (cc2 a : ℝ)
+
+/-- Real sign of the third component. -/
+def tc3 : Idx -> ℝ := fun a => (cc3 a : ℝ)
+
+/-! ### The finite closing conditions -/
+
+/-- Grading compatibility of the permutation parts, checked by finite enumeration. -/
+theorem tri_hidx : ∀ a b : Idx, tri1 a + tri2 b = tri3 (a + b) := by
+  decide
+
+/-- The sign cocycle condition, integer form, checked by finite enumeration. -/
+theorem tri_hsgn_int :
+    ∀ a b : Idx,
+      cc3 (a + b) * octSgn (tri1 a) (tri2 b) = octSgn a b * cc1 a * cc2 b := by
+  decide
+
+/-- The sign cocycle condition over `R`. -/
+theorem tri_hsgn :
+    ∀ a b : Idx,
+      tc3 (a + b) * octSgnR (tri1 a) (tri2 b) = octSgnR a b * tc1 a * tc2 b := by
+  intro a b
+  have h := tri_hsgn_int a b
+  simp only [octSgnR, tc1, tc2, tc3]
+  exact_mod_cast h
+
+/-! ### The genuine triality triple -/
+
+/-- Genuine non-diagonal order-3 triality triple for the `octSgn` product. -/
+theorem genuine_triality_triple :
+    TrialityTriple octSgnR (gmap tri1 tc1) (gmap tri2 tc2) (gmap tri3 tc3) :=
+  monomial_triality octSgnR tri1 tri2 tri3 tc1 tc2 tc3 tri_hidx tri_hsgn
+
+/-! ### Genuineness: non-diagonal, pairwise distinct, order 3 -/
+
+/-- The three permutation parts are non-identity and pairwise distinct. -/
+theorem tri_perm_nondiag :
+    (⇑tri1 ≠ id) ∧ (⇑tri2 ≠ id) ∧ (⇑tri3 ≠ id) ∧
+      (⇑tri1 ≠ ⇑tri2) ∧ (⇑tri2 ≠ ⇑tri3) ∧ (⇑tri1 ≠ ⇑tri3) := by
+  decide
+
+/-- Each permutation part has order 3: its cube is the identity. -/
+theorem tri_perm_cube :
+    (∀ a, tri1 (tri1 (tri1 a)) = a) ∧
+      (∀ a, tri2 (tri2 (tri2 a)) = a) ∧
+      (∀ a, tri3 (tri3 (tri3 a)) = a) := by
+  decide
+
+/-- The signs multiply to `1` around each order-3 orbit, integer form. -/
+theorem tri_sign_orbit_int :
+    (∀ a, cc1 a * cc1 (tri1 a) * cc1 (tri1 (tri1 a)) = 1) ∧
+      (∀ a, cc2 a * cc2 (tri2 a) * cc2 (tri2 (tri2 a)) = 1) ∧
+      (∀ a, cc3 a * cc3 (tri3 a) * cc3 (tri3 (tri3 a)) = 1) := by
+  decide
+
+/-- The first operator has order dividing 3: its cube is the identity map. -/
+theorem gmap_tri1_cube (x : Idx -> ℝ) :
+    gmap tri1 tc1 (gmap tri1 tc1 (gmap tri1 tc1 x)) = x := by
+  funext a
+  simp only [gmap]
+  rw [tri_perm_cube.1 a]
+  have h : tc1 a * tc1 (tri1 a) * tc1 (tri1 (tri1 a)) = 1 := by
+    simp only [tc1]
+    exact_mod_cast tri_sign_orbit_int.1 a
+  linear_combination (x a) * h
+
+/-- The second operator cubes to the identity. -/
+theorem gmap_tri2_cube (x : Idx -> ℝ) :
+    gmap tri2 tc2 (gmap tri2 tc2 (gmap tri2 tc2 x)) = x := by
+  funext a
+  simp only [gmap]
+  rw [tri_perm_cube.2.1 a]
+  have h : tc2 a * tc2 (tri2 a) * tc2 (tri2 (tri2 a)) = 1 := by
+    simp only [tc2]
+    exact_mod_cast tri_sign_orbit_int.2.1 a
+  linear_combination (x a) * h
+
+/-- The third operator cubes to the identity. -/
+theorem gmap_tri3_cube (x : Idx -> ℝ) :
+    gmap tri3 tc3 (gmap tri3 tc3 (gmap tri3 tc3 x)) = x := by
+  funext a
+  simp only [gmap]
+  rw [tri_perm_cube.2.2 a]
+  have h : tc3 a * tc3 (tri3 a) * tc3 (tri3 (tri3 a)) = 1 := by
+    simp only [tc3]
+    exact_mod_cast tri_sign_orbit_int.2.2 a
+  linear_combination (x a) * h
+
+/-- The square of the first operator is not the identity, witnessed by the
+indicator of `mkIdx 0`. -/
+theorem gmap_tri1_sq_ne_id :
+    gmap tri1 tc1 (gmap tri1 tc1 (fun a => if a = mkIdx 0 then (1 : ℝ) else 0))
+      ≠ (fun a => if a = mkIdx 0 then (1 : ℝ) else 0) := by
+  intro h
+  have hcontra := congr_fun h (mkIdx 0)
+  simp +decide [gmap, tc1] at hcontra
+
+/-- Genuineness / anti-relabelling: the first triality component is not any
+diagonal character `phi c`. -/
+theorem gmap_tri1_ne_phi (c : Idx) : gmap tri1 tc1 ≠ phi c := by
+  intro h
+  apply gmap_tri1_sq_ne_id
+  rw [h]
+  exact phi_involutive c _
+
 /-! ## Axiom audit -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12Triality.octSgn_alternative' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -330,5 +533,13 @@ theorem bridge_kill_of_unbalanced :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12Triality.bridge_kill_of_unbalanced' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms bridge_kill_of_unbalanced
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12Triality.genuine_triality_triple' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms genuine_triality_triple
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12Triality.gmap_tri1_ne_phi' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms gmap_tri1_ne_phi
 
 end PhysicsSM.Draft.NullEdge.GateI1.Q12Triality

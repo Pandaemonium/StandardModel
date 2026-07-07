@@ -3327,3 +3327,30 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Remaining harvest-first jobs: Q12 triality wording audit `381cc4cf` and
   manuscript postfix audit `bd50e825` (completed with errors; inspect as
   audit-only).  Q11 Jacobi `aa4e48f6` was still running at the latest poll.
+
+## [ARISTOTLE-HARVEST Codex solo] Q12 genuine finite triality witness landed
+
+- Harvested Aristotle project `381cc4cf`
+  (`ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`).
+- Integrated the returned `Q12Triality.lean` section proving a genuine finite
+  non-diagonal order-3 signed-permutation triality-style triple for the
+  `octSgn` product.
+- New proved declarations include `monomial_triality`,
+  `genuine_triality_triple`, `tri_perm_nondiag`, `tri_perm_cube`,
+  `gmap_tri1_cube`, `gmap_tri2_cube`, `gmap_tri3_cube`,
+  `gmap_tri1_sq_ne_id`, and `gmap_tri1_ne_phi`.
+- Q12 claim boundary: this repairs the previous wording gap for the word
+  "triality" at the finite XOR/Fano signed-permutation level, and proves the
+  witness is not merely a diagonal character relabelling.  It does not prove
+  analytic Spin(8) triality, chirality on the physical quotient, anomaly
+  cancellation, or equivariant McKean-Singer.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`,
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and the `Q12Triality.lean` module
+  docstring/provenance.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12Triality`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12NonPermBridge`.
+- Remaining harvest-first job: manuscript postfix audit `bd50e825`
+  (completed with errors; inspect as audit-only).  Q11 Jacobi `aa4e48f6` was
+  still running at the latest poll.
