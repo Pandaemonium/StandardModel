@@ -521,12 +521,18 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   whose sum has determinant `-1`, now strengthened by
   `PhysicsSM/Draft/NullEdge/GateI1/SplitSignatureMass.lean`:
   `det_outerSum` proves the full split determinant/wedge identity for arbitrary
-  finite rank-one sums. The headline theorems are guard pinned with footprint
+  finite rank-one sums. Q10-L6 has a finite substitute in
+  `MassAmplitudeCensus.lean`: `eps2_SL2_invariant` gives the positive
+  rank-two corner, `weyl_not_symmetric_d6/10` give the weight-parity
+  obstructions, and `charpoly_negSymmetric_of_invariant_form` is the bridge
+  from invariant bilinear form to negation-symmetric characteristic polynomial.
+  The headline theorems are guard pinned with footprint
   `[propext, Classical.choice, Quot.sound]`.
 - **Status:** PROVED finite obstruction only. It supports Q10's stable-order
   signature rail, not the full Lorentzian uniqueness theorem yet. The next
-  exact rungs are L3 Lorentzian positive-pairing transitivity and L6
-  same-chirality scalar-amplitude census.
+  exact rung is L3 Lorentzian positive-pairing transitivity. L6 still needs the
+  full Spin/Weyl representation stack before it can be stated as a
+  representation-theoretic `Hom_Spin(S tensor S, 1)` classification.
 - **Aristotle:** active named lanes opened for Q10-L3 (`dbe113e5`), Q10-L5
   (`3a66e413`), and Q10-L6 (`7fd8a9bf`); see
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.

@@ -2552,3 +2552,23 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SplitSignatureMass.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.SplitSignatureMass`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q10-L6 finite mass-amplitude census landed
+- Harvested Aristotle project `7fd8a9bf`
+  (`ne-q10-l6-scalar-amplitude-census-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/MassAmplitudeCensus.lean` and imported it
+  from the GateI1 aggregator.
+- Proved the positive rank-two corner `eps2_SL2_invariant`, the finite
+  even-chirality weight-parity facts `weyl_symmetric_d4`,
+  `weyl_not_symmetric_d6`, and `weyl_not_symmetric_d10`, and the bridge lemma
+  `charpoly_negSymmetric_of_invariant_form` showing that an invertible
+  bilinear self-duality intertwiner forces negation symmetry of the
+  characteristic polynomial.
+- Claim boundary: PROVED finite substitute and linear-algebra bridge only. This
+  is not yet a full Spin/Weyl `Hom_Spin(S tensor S, 1)` classification and must
+  not be used to deny Dirac/vector pairings outside the intended same-chirality
+  scalar-amplitude statement.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/MassAmplitudeCensus.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.MassAmplitudeCensus`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
