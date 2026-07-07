@@ -22,6 +22,8 @@ positivity theorem.
 
 noncomputable section
 
+open scoped Matrix
+
 namespace PhysicsSM
 namespace Draft
 namespace NullEdge
@@ -48,6 +50,47 @@ theorem complex_unitaryDefectGram_eq_laplacian (u : ℂ)
           1 - u - star u + star u * u by ring]
       rw [hu]
       ring
+
+/-- Matrix/operator version of `complex_unitaryDefectGram_eq_laplacian`.
+
+For a finite-dimensional unitary matrix `U`, the defect Gram square is the
+Hermitian Laplacian `2 - U - U^*`, not the raw linear defect `1 - U`.
+This is the operator-level normalization that any concrete Carrier-side
+`Q_C = sum_p M_p^* M_p` factorization would have to match. -/
+theorem matrix_unitaryDefectGram_eq_laplacian {n : Type*} [Fintype n]
+    [DecidableEq n] (U : Matrix n n ℂ)
+    (hU : Uᴴ * U = (1 : Matrix n n ℂ)) :
+    (1 - U)ᴴ * (1 - U) =
+      (2 : ℂ) • (1 : Matrix n n ℂ) - U - Uᴴ := by
+  calc
+    (1 - U)ᴴ * (1 - U) = (1 - Uᴴ) * (1 - U) := by
+      simp
+    _ = (2 : ℂ) • (1 : Matrix n n ℂ) - U - Uᴴ := by
+      rw [show (1 - Uᴴ) * (1 - U) = 1 - U - Uᴴ + Uᴴ * U by
+        noncomm_ring]
+      rw [hU]
+      ext i j
+      by_cases hij : i = j
+      · subst hij
+        simp
+        ring
+      · simp [hij]
+
+/-- In the self-adjoint involutive (`Z2`-type) operator case, the unnormalized
+defect Gram square is twice the linear defect. -/
+theorem matrix_selfAdjointInvolution_defectGram_eq_two_mul_linearDefect
+    {n : Type*} [Fintype n] [DecidableEq n] (U : Matrix n n ℂ)
+    (hself : Uᴴ = U) (hinv : U * U = (1 : Matrix n n ℂ)) :
+    (1 - U)ᴴ * (1 - U) = (2 : ℂ) • (1 - U) := by
+  rw [matrix_unitaryDefectGram_eq_laplacian U (by simpa [hself] using hinv),
+    hself]
+  ext i j
+  by_cases hij : i = j
+  · subst hij
+    simp
+    ring
+  · simp [hij]
+    ring
 
 /-- The unnormalized `Z2` defect Gram square is twice the linear defect.
 
