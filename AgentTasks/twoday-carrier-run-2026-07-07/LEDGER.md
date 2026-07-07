@@ -2307,3 +2307,22 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   chirality compose spatial reflection = edge-orientation reversal,
   kernel-checked. Remaining for the paper: the R1 dispersion identity
   ("retardedness IS the Wilson term") and prose.
+
+## [HB Claude c36] FRONTIER WORK: kappa derivation reduced to one computation; tetrahedral finding
+- `TSOLDER_KAPPA_ANALYSIS.md` (pencil work + numeric oracle): the T-SOLDER
+  coefficient kappa reduces to corner angle + bookkeeping; under B2,
+  kappa = 1 <=> cos theta = -1/3 = THE TETRAHEDRAL ANGLE = the program's
+  chirality-regulator frame (Gate C1 rank-4 kernel; NERD regulator; Q06-O2
+  probe set). Oracle confirms the full dictionary: 1+1 antipodal -> Q = 1/3
+  (degenerate); 2+1 trine -> 5/9; 3+1 tetrahedral -> 2/3 (the observed
+  Koide value); orthogonal -> 1 (positivity boundary). If P1 (the explicit
+  Z_3 tetrahedral reduction, pre-registered with kills) confirms the B2
+  bookkeeping, ONE decoration choice - the tetrahedral frame, already made
+  for doubling reasons - forces both exact chirality AND Q = 2/3, and the
+  Koide value becomes a measurement of corner geometry (and of dimension).
+  If P1 refutes, the coincidence dies cheaply. Honest gaps enumerated
+  (bookkeeping factor 2 = the load-bearing one; subdivision route
+  redirects, does not decide; route-C 2/3 flagged as numerology).
+- Fleet: 38eeb1a6 (Kugo-Ojima), 43a7f979 (equipartition), 0dc48ac7
+  (perp-signature) still RUNNING; GW landed this cycle (c35). Codex running
+  two eg-* jobs in parallel.

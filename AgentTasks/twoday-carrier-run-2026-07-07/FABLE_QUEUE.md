@@ -309,3 +309,17 @@ Format:
   instructed to document or refute). (iv) Q06 flags "d'Antoni light-front"
   as unverifiable - our Q06 packet's citation; correct the packet's
   attribution on next revision (executor error, logged).
+- [ANALYSIS 2026-07-07 Claude, frontier work] T-SOLDER kappa derivation
+  attacked (`TSOLDER_KAPPA_ANALYSIS.md`): the coefficient reduces to ONE
+  corner angle + ONE bookkeeping convention; under the natural bookkeeping,
+  kappa = 1 <=> adjacent solderings at the TETRAHEDRAL angle (cos = -1/3) -
+  the program's own chirality-regulator frame. Dimension-sensitive
+  dictionary (numeric oracle green): antipodal/1+1 -> Q = 1/3; trine/2+1 ->
+  5/9; tetrahedral/3+1 -> 2/3 = the observed value; orthogonal -> 1. The
+  SAME frame that regulates doubling would force Koide - or the coincidence
+  dies at P1. Load-bearing gap: the bookkeeping (B1 vs B2 factor 2) must be
+  DERIVED via the explicit carrier-to-leg-carrier reduction on the Z_3
+  tetrahedral cycle (P1, pre-registered with kills incl. the M-KOIDE K3
+  void clause). Subdivision naturality does NOT fix kappa (pass-through
+  vertices violate T-SOLDER maximally - modes are corners; useful, not
+  decisive). Route-C turn-fraction-2/3 flagged as likely numerology.
