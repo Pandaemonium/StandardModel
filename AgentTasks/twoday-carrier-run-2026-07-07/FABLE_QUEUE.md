@@ -240,3 +240,26 @@ Format:
   triality is the load-bearing transcription risk. (iii) Ibanez-Ross discrete
   anomaly check for the gauged deck symmetry (linear condition passes:
   0+1+2 = 0 mod 3; full check queued).
+- [ANALYSIS 2026-07-07 Claude] C8 seam SHARPENED: Q04's unimodularity row
+  needs an ANTILINEAR identification conj(Lambda^k) = Lambda^{5-k} (x)
+  det^{-1}; the top-form pairing alone is bilinear, so the sesquilinear Krein
+  form requires exactly the J_R candidate of Q03-L8 (edge-reversal compose
+  conjugation). THE TWO FLAGGED GAPS ARE ONE OBJECT. Coherence checks, all
+  finite on 32 dims: (i) B(x,y) := top-coefficient of (J_R x) wedge y is
+  Hermitian up to a per-degree sign table; (ii) its graded inertia (feeds the
+  kappa row C9); (iii) the B-adjoint on decoration operators coincides with
+  the Layer-D # slot. Building J_R closes C8, the NCG contact gap, AND the
+  quadrupling question in one file. -> folded into round-2 packet Q11.
+- [ANALYSIS 2026-07-07 Claude] CHIRALITY-SOLDER audit partially DEFUSED by
+  architecture analysis: in the composed model (strand pentad (x) family
+  factor C[Z/3], tau = shift), (-1)^F lives on the strand factor and tau on
+  the family factor - [Gamma_total, 1 (x) tau] = 0 BY CONSTRUCTION (and
+  equivariant phi/transports commute with tau, so the GW-descended grading
+  Gamma' = Gamma(1 - aD) also commutes at eps = 0; breaking makes sectors
+  approximate exactly like real-world flavor while total ind stays rigid).
+  The danger is LIVE only for the pure Spin(8)-internal variant (families =
+  8v/8s/8c inside ONE module, tau cycling internal half-spinor parities) -
+  which the gauge-outer rail and the Distler-Garibaldi self-conjugacy lemma
+  already disfavor. Kernel target: the trivial-but-certifying commutation
+  lemma on TOY-A (x) strand fiber. -> folded into round-2 packet Q12 for
+  adversarial confirmation.

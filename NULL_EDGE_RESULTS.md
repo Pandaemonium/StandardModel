@@ -366,8 +366,25 @@ the trusted namespace yet.
   and modular/ANEC readings queued as alternate selectors); the
   all-slots-active glue witness (mathematics hand-verified, Lean transcription
   pending); beyond-leading closure positivity; every continuum statement.
+- **Round-1 consultation harvest (same date, MEMO grade - working rigor,
+  executor-spot-verified, kernel transcription pending):** the positivity
+  crux is SOLVED to its exact boundary (Theorem A: state positivity = Witt
+  geometry of the constraint span; the physical-sector dimension equals the
+  chiral index, `dim(V'/N) = ind(D)`); the closed-complex "Tr E = pure
+  torsion" conjecture is KILLED and replaced by a corrected telescoping with
+  a discrete Gibbons-Hawking boundary flux; a four-theorem no-go audit
+  produced the program charter
+  (`Sources/Null_Edge_Program_Charter_2026-07-07.md`: no coupling-unification
+  claims; gravity only as a constrained quotient without a covariant
+  conserved stress tensor; chirality via Ginsparg-Wilson descent); SM
+  representation content acquired a conditional derivation (the internal
+  null-strand principle: five strands, degeneracy {(3,2), (4,1)}, hypercharge
+  and the Z_6 lattice derived); and three generations acquired a candidate
+  mechanism (triality-as-monodromy, multiplicity menu exactly {1, 3}). Memos:
+  `AgentTasks/fable_parallel/Q0{1..5}_answer.md`.
 - **Forward documents:** the synthesis
   (`AgentTasks/twoday-carrier-run-2026-07-07/SYNTHESIS_BEYOND_MASS.md` - the
-  index-trinity frame), the graded steer memo
-  (`Sources/Ontology_extensions.md`, integrated), and five Letter-caliber
-  publication outlines (`Sources/Null_Edge_Publication_Outlines_2026-07-07.md`).
+  index-trinity frame, rev 2), the program charter (above), the graded steer
+  memo (`Sources/Ontology_extensions.md`, integrated), and five
+  Letter-caliber publication outlines
+  (`Sources/Null_Edge_Publication_Outlines_2026-07-07.md`).

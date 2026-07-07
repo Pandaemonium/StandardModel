@@ -22,7 +22,25 @@ overturn) the section-5 verdicts rather than re-derive them.
 Keep prompts as-is (plain math/physics language; the intro carries the honesty
 rails so answers come back claim-graded).
 
-## Priority order (if not all ten can run)
+## Round 2 (added 2026-07-07, post-harvest)
+
+Three packets targeting the seams the round-1 harvest exposed; run with the
+REV 2 intro:
+
+- `Q11-real-structure-seam.md` - build J_R; close the C8 seam (our analysis:
+  the two flagged gaps are ONE object); KO sign tables; honest unimodularity;
+  the order-condition arbitration made fully concrete.
+- `Q12-chirality-solder-audit.md` - adversarially confirm or break our
+  defusal of the most-dangerous generations check; the anomaly route made
+  precise; a decision procedure for future architectures.
+- `Q13-red-team-round1.md` - a dedicated adversary for section 5 itself, with
+  our doubt-ranked target list and the executor-verification gaps to
+  prioritize.
+
+Round-2 priority if constrained: Q13 (red-team) first - the spine deserves its
+adversary before further kernel spend; then Q11; then Q12.
+
+## Priority order (round 1; if not all ten can run)
 
 1. Q01 physical positivity (the program's #1 blocker)
 2. Q03 unification no-go audit (produces the program charter)
