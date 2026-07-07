@@ -115,3 +115,28 @@ curvature holonomy noncommutative torus shift operator". New torus-Q_C reference
 
 ACTION: cite hep-lat/0309120 in the torus-Q_C module for the shift-exchange identity;
 resolve its Zotero key before the cite.
+
+## Round 5 (Claude, cycle 3) - Krein # structure + chirality grounding
+
+Search (`--chunks`): "Krein space indefinite metric Dirac operator positive sector
+physical subspace J-self-adjoint reflection positivity Osterwalder-Schrader". The
+canonical framework for the Krein brick (`krein_square_form` + `positivity_transfer`)
+AND for the Q_T brick's chirality Gamma - both in-graph:
+
+- **arXiv:1210.6575 - "Temporal Lorentzian Spectral Triples"** [key TBD]. chunk 4:
+  the Krein-adjoint `A^+` via the Krein product, Krein-self-adjointness `A=A^+`, and
+  `A^+ = eta A* eta` (fundamental symmetry eta). **The exact `#`-adjoint structure**
+  for `D^#D`; cite in the Krein brick.
+- **arXiv:1812.00038 - "Semi-Riemannian NCG, Gauge Theory, and the SM" (thesis)**
+  [key TBD]. chunks 75/79: the DEFINITION of an indefinite spectral triple
+  `(A, K, D, Gamma, J)` on a Z2-graded spinor Krein space; **the chirality `Gamma`
+  is a bounded involution `Gamma^2 = 1` with `Gamma^+ = (-1)^q Gamma`** - exactly the
+  `hGammaSq`/`hGammaAnti` structure of my Q_T brick `CarrierPotentialTurn`. Grounds
+  BOTH bricks; cite in Q_T (Gamma provenance) and the Krein brick.
+- **arXiv:math-ph/0110001** (semi-Riemannian NCG) chunk 13: the fundamental-symmetry
+  construction from the metric splitting; secondary Krein reference.
+
+ACTION: cite 1210.6575 + 1812.00038 in the Krein brick and Q_T docstrings; these are
+the honest home of the "no spectral positivity until kernel-checked" rail (the
+positive physical sector is exactly the indefinite-spectral-triple positive-cone
+question). Resolve both Zotero keys before the cites.
