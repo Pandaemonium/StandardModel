@@ -2390,3 +2390,59 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.KugoOjima`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [HB Codex solo] Aristotle queue loaded to ~12 StandardModel lanes
+- Current queue did not have enough active StandardModel work to keep Aristotle
+  saturated: only the existing Koide (`43a7f979`), perp-signature (`0dc48ac7`),
+  and KP fixed-forest (`6b8dcebd`) lanes were still running, while several
+  other projects had gone idle.
+- Built a lightweight context pack at
+  `AgentTasks/aristotle-submit/null-edge-lane-pack-20260707/` from the recent
+  Q06-Q10/Q12 material plus landed Lean files. Initial same-name submissions
+  were canceled, then resubmitted from unique descriptive project directories:
+  Q10-L3 (`dbe113e5`, `ne-q10-l3-lorentzian-transitivity-20260707`),
+  Q10-L5 (`3a66e413`, `ne-q10-l5-split-tachyon-witness-20260707`),
+  Q10-L6 (`7fd8a9bf`, `ne-q10-l6-scalar-amplitude-census-20260707`),
+  Q12 G2 parity (`0a6239d5`, `ne-q12-g2-parity-chirality-solder-audit-20260707`),
+  Q12 PSA/equivariant-MS gates (`bbcf12c6`, `ne-q12-psa-equivariant-ms-audit-20260707`),
+  Q08 exterior quotient (`4929366f`, `ne-q08-fock-exterior-quotient-strategy-20260707`),
+  Q08 dGamma square (`7067efa0`, `ne-q08-dgamma-square-identity-20260707`),
+  Q09 entropy/horizon audit (`2ed38421`, `ne-q09-entropy-horizon-audit-20260707`),
+  and Q06 carrier-GW generalization/counterexample search (`5f3b8963`,
+  `ne-q06-carrier-gw-generalization-audit-20260707`). Full mapping:
+  `AgentTasks/twoday-carrier-run-2026-07-07/ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Submission caveat: the lane pack is intentionally not a full Lake project.
+  Strategy/audit jobs should be fine. If a proof job stalls on environment setup,
+  resubmit it as a focused Mathlib Lake package using
+  `Scripts/prepare_aristotle_focused_submission.ps1`.
+
+## [HB Codex solo] Q10-L4 split null-orthogonality witness added
+- Extended `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean` with the
+  Q10-L4 seed: `split22D = (0,1,0,1)`, the theorem
+  `split22_orthogonal_null_pair` proving `A` and `D` are both null and
+  orthogonal in `(+,+,-,-)`, and
+  `split22_orthogonal_null_pair_not_rat_collinear` proving non-collinearity
+  over rationals in both directions. This is the finite split-signature
+  counterexample to null-orthogonality rigidity, not the Lorentzian rigidity
+  theorem itself.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection`.
+
+## [HB Codex solo] Goal prompt lane catalog + named Aristotle jobs
+- Updated `GOAL_PROMPT_CODEX.md` with a full lane catalog for solo work:
+  Carrier/Weitzenbock, GB/Krein, GateYM/Q_C/OS/KP/RP, checkerboard-GW,
+  equipartition/Koide, Fock second quantization, horizon/screen area,
+  signature/dimension, Q11 real-structure/KO/unimodularity, Q12 G2/PSA anomaly
+  gates, strand-fock/SM selection, RG-Schur, cross-lane real-structure plumbing,
+  and manuscript/provenance. Also added the rule that every Aristotle submission
+  must use a unique descriptive project directory/name.
+- Canceled the first nine same-name lane-pack submissions and resubmitted them
+  from unique project directories. The named running jobs are recorded in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`. After Q11 arrived, submitted the
+  additional named audit job `65a9d42d`
+  (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`).
+- Harvested `AgentTasks/fable_parallel/Q11_answer.md` into the run context and
+  opened the `JR-REAL-STRUCTURE` board lane. Claim boundary: RC0/unimodularity
+  is an antilinear-covariance axiom/finite-equivalence target, not a consequence
+  of Krein closure.

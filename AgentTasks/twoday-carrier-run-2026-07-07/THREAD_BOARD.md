@@ -508,17 +508,38 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`: the explicit
   `Z^(2,2)` null triple for the `(+,+,-,-)` form, pairings `(3, 4, -1)`, and
   `split22_frustrated_triple_no_coloring`, showing no sign-consistent
-  retarded/advanced two-coloring of the signed triangle. The theorem is guard
-  pinned with footprint `[propext, Classical.choice, Quot.sound]`.
+  retarded/advanced two-coloring of the signed triangle. Q10-L4 seed also
+  landed there: `split22_orthogonal_null_pair` plus rational non-collinearity,
+  the finite split-signature witness that null-orthogonality rigidity fails.
+  The headline theorems are guard pinned with footprint
+  `[propext, Classical.choice, Quot.sound]`.
 - **Status:** PROVED finite obstruction only. It supports Q10's stable-order
   signature rail, not the full Lorentzian uniqueness theorem yet. The next
   exact rungs are L1 definite-no-null, L3 Lorentzian positive-pairing
-  transitivity, L4 null-orthogonality rigidity, L5 split-signature tachyonic
-  mass witness, and L6 same-chirality scalar-amplitude census.
+  transitivity, L5 split-signature tachyonic mass witness, and L6
+  same-chirality scalar-amplitude census.
+- **Aristotle:** active named lanes opened for Q10-L3 (`dbe113e5`), Q10-L5
+  (`3a66e413`), and Q10-L6 (`7fd8a9bf`); see
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
 - **Claim boundary:** never phrase this as "retardation on one finite complex
   implies Lorentzian" or "3+1 follows from consistency alone." Q10's boundary is
   signature from stable order; dimension from chirality plus scalar-amplitude
   reconstruction.
+
+### JR-REAL-STRUCTURE - Q11 fiber real structure, KO, and unimodularity seam [new Q11 lane]
+- **Status:** Q11 answer harvested into the goal prompt and Aristotle queue. It
+  says the explicit top-form-duality `J_R` on `Lambda(C^5)` is the seam object:
+  `J_R^2 = +1`, internal `B` is positive, fiber KO signs are `(+, +, -)`,
+  total Lorentzian architecture lands in KO dimension 4, and unimodularity is
+  forced by the named antilinear covariance axiom RC0, not by Krein closure.
+- **Next:** kernelize the finite ladder: sign tables, parity anticommutation,
+  `B(e_S,e_T)=delta_ST`, charge-conjugation master identity
+  `J_R Q J_R^{-1} = trace(Q) 1 - Q`, RC0 iff determinant one, B-L counterexample,
+  C3 Majorana identity, and the order-condition scalar identities.
+- **Aristotle:** named audit/strategy lane `65a9d42d`
+  (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`) is running.
+- **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
+  closure. RC0 is an axiom unless/until separately derived.
 
 ## Standing meta-threads
 
@@ -526,6 +547,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   after every 2-4 integrated proofs, 2-3 audit jobs in flight (playbook sec 3).
   Codex closed Aristotle grand-strategy caveat F1 locally at 01:57 by running
   `lake env lean` on all four guard surfaces: Carrier, Slab, QMF, and GateYM.
+  2026-07-07 Codex loaded nine new named StandardModel projects
+  (`ne-q10-l3-lorentzian-transitivity-20260707`, `ne-q10-l5-split-tachyon-witness-20260707`,
+  `ne-q10-l6-scalar-amplitude-census-20260707`, `ne-q12-g2-parity-chirality-solder-audit-20260707`,
+  `ne-q12-psa-equivariant-ms-audit-20260707`, `ne-q08-fock-exterior-quotient-strategy-20260707`,
+  `ne-q08-dgamma-square-identity-20260707`, `ne-q09-entropy-horizon-audit-20260707`,
+  `ne-q06-carrier-gw-generalization-audit-20260707`) so Aristotle has about
+  twelve active StandardModel-relevant lanes including the existing
+  Koide/perp/KP jobs. Q11 then added
+  `ne-q11-jr-real-structure-ko-unimodularity-audit-20260707` as a thirteenth
+  active StandardModel lane. Mapping and deliverables live in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

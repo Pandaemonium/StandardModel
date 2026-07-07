@@ -53,6 +53,13 @@ def split22C : Split22
   | ⟨2, _⟩ => 1
   | ⟨3, _⟩ => 0
 
+/-- A fourth split-null vector used for the null-orthogonality rigidity failure. -/
+def split22D : Split22
+  | ⟨0, _⟩ => 0
+  | ⟨1, _⟩ => 1
+  | ⟨2, _⟩ => 0
+  | ⟨3, _⟩ => 1
+
 /-- The three displayed vectors are null for the `(+,+,-,-)` form. -/
 theorem split22_frustrated_triple_null :
     split22Q split22A = 0 ∧ split22Q split22B = 0 ∧ split22Q split22C = 0 := by
@@ -64,6 +71,35 @@ theorem split22_frustrated_triple_pairings :
       split22Dot split22B split22C = 4 ∧
       split22Dot split22A split22C = -1 := by
   norm_num [split22Dot, split22A, split22B, split22C]
+
+/-! ## Split-signature null-orthogonality rigidity failure -/
+
+/-- In split signature there are nonzero orthogonal null vectors that are not
+forced onto the same ray.  This is the finite counterexample seed for Q10-L4. -/
+theorem split22_orthogonal_null_pair :
+    split22Q split22A = 0 ∧
+      split22Q split22D = 0 ∧
+      split22Dot split22A split22D = 0 := by
+  norm_num [split22Q, split22Dot, split22A, split22D]
+
+/-- The orthogonal split-null pair is not collinear, even after scalar extension
+from integers to rationals. -/
+theorem split22_orthogonal_null_pair_not_rat_collinear :
+    (¬ ∃ k : ℚ,
+      (fun i : Fin 4 => (split22D i : ℚ)) =
+        fun i : Fin 4 => k * (split22A i : ℚ)) ∧
+    (¬ ∃ k : ℚ,
+      (fun i : Fin 4 => (split22A i : ℚ)) =
+        fun i : Fin 4 => k * (split22D i : ℚ)) := by
+  constructor
+  · intro h
+    rcases h with ⟨k, hk⟩
+    have hcoord := congr_fun hk (1 : Fin 4)
+    norm_num [split22A, split22D] at hcoord
+  · intro h
+    rcases h with ⟨k, hk⟩
+    have hcoord := congr_fun hk (0 : Fin 4)
+    norm_num [split22A, split22D] at hcoord
 
 /-! ## Retarded/advanced coloring obstruction -/
 
@@ -114,5 +150,9 @@ theorem split22_frustrated_triple_no_coloring (color : Fin 3 -> Bool) :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection.split22_frustrated_triple_no_coloring' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms split22_frustrated_triple_no_coloring
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection.split22_orthogonal_null_pair_not_rat_collinear' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms split22_orthogonal_null_pair_not_rat_collinear
 
 end PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection
