@@ -532,6 +532,28 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   signature from stable order; dimension from chirality plus scalar-amplitude
   reconstruction.
 
+### G2-PARITY-CHIRALITY-SOLDER - Q12 algebra core and operator gates [Codex solo; new Q12 lane]
+- **Done:** Aristotle audit `0a6239d5` completed. Codex integrated the
+  kernel-checkable algebra core as
+  `PhysicsSM/Draft/NullEdge/GateI1/G2Parity.lean`: for
+  `Idx = Fin 3 -> ZMod 2`, every diagonal XOR/Fano character `phi c` is
+  multiplicative for arbitrary structure constants `sigma`, the linear maps
+  form the diagonal `(Z/2)^3` character group (`phiL_zero`,
+  `phiL_selfInverse`, `phiL_comp`), and strand parity `c = ![1,1,1]` has
+  balanced `4+4` eigenspaces (`parity_fixed_card`, `parity_odd_card`).
+- **Status:** PROVED algebraic T1-T4 only. This confirms the G2-parity defusal
+  at the XOR/Fano algebra level and removes sign-convention risk from the
+  automorphism claim.
+- **Next:** T5/T6/T7 require explicit triality intertwiners and their
+  G2-equivariance; T8 requires the convention bridge
+  `(-1)^F_c = B phi B^{-1}` between the ladder/Furey basis and XOR/Fano basis;
+  T9/E4 requires constraint equivariance `tau Gamma' = Gamma'` before any
+  per-sector physical quotient count. Failure of T8 is a C8-seam escalation, not
+  a patch.
+- **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
+  preservation, anomaly cancellation, or a physical chirality result from this
+  theorem alone.
+
 ### JR-REAL-STRUCTURE - Q11 fiber real structure, KO, and unimodularity seam [new Q11 lane]
 - **Status:** Q11 answer harvested into the goal prompt and Aristotle queue. It
   says the explicit top-form-duality `J_R` on `Lambda(C^5)` is the seam object:

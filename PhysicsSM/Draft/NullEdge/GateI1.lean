@@ -28,6 +28,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateI1.ScreenArea
 import PhysicsSM.Draft.NullEdge.GateI1.SignatureSelection
 import PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone
+import PhysicsSM.Draft.NullEdge.GateI1.G2Parity
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -64,7 +65,9 @@ is color-blind on the three basis states AND on every `SU(3)` orbit of the whole
 fundamental rep; `UnificationCapstone`: the bundled 1a/1b/Furey/B0 conjunction,
 labeled co-location not coupling per the audit); plus the Q09 screen-area
 polarization module (`ScreenArea`) and the Q10 split-signature finite obstruction
-module (`SignatureSelection`).
+module (`SignatureSelection`); plus the Q12 G2-parity algebra core
+(`G2Parity`: diagonal XOR/Fano characters are automorphisms for arbitrary sign
+conventions, and strand parity has balanced 4+4 eigenspaces).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 

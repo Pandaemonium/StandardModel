@@ -2493,3 +2493,23 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q12 G2-parity algebra core landed
+- Harvested Aristotle project `0a6239d5`
+  (`ne-q12-g2-parity-chirality-solder-audit-20260707`). Integrated its
+  kernel-checkable algebra core as
+  `PhysicsSM/Draft/NullEdge/GateI1/G2Parity.lean` and imported it from the
+  GateI1 aggregator.
+- Proved: `chi_add_pt` / `chi_add_par` character identities; `phi_omul` and
+  `phiL_omul`, showing diagonal XOR/Fano characters are multiplicative for
+  arbitrary structure constants `sigma`; `phiL_zero`, `phiL_selfInverse`, and
+  `phiL_comp`, giving the diagonal `(Z/2)^3` group; and
+  `parity_fixed_card` / `parity_odd_card`, the `4+4` strand-parity balance.
+- Claim boundary: PROVED algebraic T1-T4 only. The operator-level chirality
+  solder still needs explicit triality intertwiners (T5-T7), the ladder/XOR
+  convention bridge (T8), and constraint equivariance E4/T9 before any
+  per-sector quotient or anomaly claim.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/G2Parity.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.G2Parity`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
