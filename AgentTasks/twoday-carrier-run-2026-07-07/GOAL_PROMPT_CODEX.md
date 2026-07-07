@@ -111,7 +111,25 @@ with explicit kill conditions.
     conjugation, base/fiber real structures, and `#` compatibility as plumbing
     that connects Q03, Q04 C8, Q06 edge reversal, Q11, and Q12.  Every use
     must say whether it is linear, antilinear, bilinear, or sesquilinear.
-14. **Manuscript / scorecard / provenance.** Keep P1 v3, the honest scorecard,
+14. **Finite one-form center symmetry / twist backgrounds.** Continue the
+    finite line-holonomy, electric-sector, twist-sector, and RP-background
+    API.  Keep the hard boundary: finite sector bookkeeping is not a continuum
+    center-symmetry Ward identity, confinement theorem, anomaly theorem, or
+    cohomology classification.
+15. **Spin(10) / U(5) / pure-spinor internal selection.** Pursue the strand-Fock
+    bridge to the `Lambda(C^5)`/SU(5) presentation, pure-spinor-line stabilizer
+    shadows, hypercharge/Z_6 rigidity, and the honest finite substitute for the
+    Spin(10) selection story.  Do not revive any already-falsified Spin(10)
+    transitivity claim.
+16. **Concrete witnesses and positivity probes.** Keep the M4 Pauli/Pontryagin
+    witness, Krein-positive-sector probes, tetrahedral T-solder probes, and
+    small finite Hessian/oracle checks as reality tests for speculative lanes.
+    A witness may promote, kill, or re-scope a theorem; record which happened.
+17. **Round-2 red-team / no-go audit.** Treat Q13 and the four over-claim modes
+    as an active lane, not a cleanup chore.  Hunt for vacuity, hollow
+    telescoping, docstring-outruns-kernel, false shape, and convention drift
+    across the round-1 and round-2 synthesis.
+18. **Manuscript / scorecard / provenance.** Keep P1 v3, the honest scorecard,
     thread board, ledger, lit log, and claim grades aligned with what is
     actually kernel-checked or explicitly MEMO/OPEN.
 
@@ -125,15 +143,40 @@ new name.  Project directories and Aristotle project names should match the job
 name exactly.  If the calendar date changes, update the suffix from `20260707`
 to the current date.
 
-Currently active follow-up jobs to poll before opening replacements:
+Live queue snapshot after the first solo harvest wave (verify with
+`aristotle list` before acting):
 
-- `ne-q08-fock-quotient-pairingdual-proof-20260707`
-- `ne-q08-dgamma-exterior-globalization-proof-20260707`
-- `ne-q10-multitime-embedding-uniqueness-audit-20260707`
-- `ne-q11-rc0-det-cocycle-strategy-20260707`
-- `ne-q11-bl-dictionary-finite-check-20260707`
-- `ne-q12-equivariant-ms-charge-resolution-proof-20260707`
-- `ne-q12-triality-convention-bridge-audit-20260707`
+- **Still running / poll first:** `ne-q08-fock-quotient-pairingdual-proof-20260707`;
+  `ne-q11-rc0-det-cocycle-strategy-20260707`.
+- **Harvest-first candidate:** `ne-q08-dgamma-exterior-globalization-proof-20260707`
+  is no longer a live capacity slot once Aristotle marks it IDLE/COMPLETE; inspect
+  and integrate or explicitly park it before refilling.
+- **Recently harvested; do not resubmit under new names:** Q10 multi-time
+  embedding, Q11 B-L dictionary, Q12 charge resolution, Q12 triality bridge,
+  Q12 PSA-1, Q12 G2 parity, Q10 Lorentzian transitivity, Q10 split witness,
+  Q10 scalar-amplitude census, Q09 modular no-go, Q08 decomposable `dGamma`
+  square, and Q06 carrier-GW positive/negative cases.
+- **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707`
+  is superseded by the local compiler-trust-free landing.
+
+Hot refill pack for restoring roughly twelve active Aristotle lanes.  These
+names are reserved for new submissions unless the docket later records them as
+submitted:
+
+| Priority | Aristotle job name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| 1 | `ne-q08-dgamma-exterior-globalization-integration-audit-20260707` | Q08 `dGamma` | audit | Semantic audit of the globalization landing: decomposable identity vs full exterior-algebra operator, no overclaim. |
+| 2 | `ne-q08-radical-exterior-ideal-pairing-proof-20260707` | Q08 Fock quotient | proof | Exact perfect-pairing/ideal statement needed for `Fock(V')/rad = Fock(V'/N)`, after the running pairing-dual job returns. |
+| 3 | `ne-q08-l4-two-particle-checkerboard-rational-determinant-proof-20260707` | Q08 checkerboard Fock | proof | L=4 two-particle checkerboard determinant identity over rational polynomials. |
+| 4 | `ne-q11-exterior-det-cocycle-rc0-group-proof-20260707` | Q11 group RC0 | proof/strategy | Upgrade Cartan RC0 to the exterior-functor determinant cocycle or return the exact missing hypothesis. |
+| 5 | `ne-q11-c3-majorana-turn-census-proof-20260707` | Q11/Q04 Majorana | proof | Finite C3 Majorana identity and bare-turn invariant census with order-condition flags explicit. |
+| 6 | `ne-q12-furey-ladder-bridge-matrix-entry-audit-20260707` | Q12 convention bridge | audit | Entrywise audit of the specific repo ladder/Furey bridge matrix against XOR-Fano signs and ordering. |
+| 7 | `ne-q12-gammaprime-quotient-equivariance-audit-20260707` | Q12 quotient chirality | audit/strategy | Decide exact finite hypotheses for `tau Gamma' = Gamma'` downstairs before any per-sector index claim. |
+| 8 | `ne-q06-retarded-wilson-symbol-determinant-proof-20260707` | Q06 transfer/GW | proof | Determinant-level "retardedness is the Wilson term" dispersion identity, respecting the palindromic/nonabelian boundary. |
+| 9 | `ne-q09-bwcut-torus-modular-locality-audit-20260707` | Q09 horizon/modular | audit | Finite torus BW-cut matrix-locality test and kill conditions after the positive-generator no-go. |
+| 10 | `ne-q10-sylvester-inertia-frustrated-triple-bridge-proof-20260707` | Q10 signature | proof/strategy | Bridge the diagonal-signature frustrated triple to a general Sylvester-inertia statement, or isolate the obstruction. |
+| 11 | `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707` | Q01 positivity | audit | Nonvacuous positive-sector witness, or a sharp no-go separating quotient nondegeneracy from positivity. |
+| 12 | `ne-q13-round1-verdict-redteam-audit-20260707` | Q13 red team | audit | Adversarial audit of the round-1 verdicts and recent landings for the four over-claim modes. |
 
 Ready next-wave Aristotle jobs, each with a unique descriptive name:
 

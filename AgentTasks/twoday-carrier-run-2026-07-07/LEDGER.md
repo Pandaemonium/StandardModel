@@ -2772,3 +2772,15 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12Triality.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12Triality`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [HB Codex solo 09:44] Solo goal prompt lane board refreshed
+
+- Updated `GOAL_PROMPT_CODEX.md` for the continued solo run: added explicit
+  lanes for finite one-form/twist backgrounds, Spin(10)/U(5) internal
+  selection, concrete witnesses/positivity probes, and Q13 red-team audits.
+- Refreshed the Aristotle board to distinguish still-running jobs, the Q08
+  harvest-first candidate, recently harvested jobs that must not be resubmitted,
+  and a 12-job hot refill pack with unique descriptive project names.
+- Verification passed:
+  `git diff --check -- AgentTasks/twoday-carrier-run-2026-07-07/GOAL_PROMPT_CODEX.md`;
+  `pre-commit run --all-files`.
