@@ -141,6 +141,13 @@ LOW = naming / notation friction, already disclosed nearby.
   (Reported, not edited: this needs a new proof, which is out of scope for an
   audit pass and would be a good next Aristotle job - see J1.)
 
+Local follow-up after this audit: Codex landed
+`E4_nontrivial_healing` in
+`PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`.  It uses the
+proper nonzero first-coordinate radical `e0Line`, proves `e0Line != bottom` and
+`e0Line != top`, proves a nonzero commutator witness, and proves all commutator
+values land in `e0Line`.
+
 ---
 
 ## 3. LOW-severity / naming friction (report only)

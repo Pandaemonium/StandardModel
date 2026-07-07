@@ -3511,3 +3511,47 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Queue poll after submission showed both new jobs `RUNNING`; together with the
   ten older running projects, Aristotle is back to twelve active
   StandardModel-relevant lanes.
+
+## [LOCAL-LEAN Codex solo] Q12 nontrivial E4 healing witness landed
+
+- Advanced the Q12 GammaPrime quotient lane in
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`.
+- Added `e0Line`, the proper first-coordinate radical in `W = Fin 2 -> Q`, and
+  proved `e0Line_ne_bot` and `e0Line_ne_top`.
+- Proved `E4_commutator_nonzero_witness`: the existing finite witness pair has
+  a genuinely nonzero commutator on `![1, 1]`.
+- Proved and guard-pinned `E4_nontrivial_healing`: every commutator value lands
+  in the proper nonzero radical `e0Line`, while at least one commutator value is
+  nonzero. This replaces the old `N = top` theorem as the non-vacuous healing
+  witness.
+- Canceled Aristotle project `297ae18c-b8a9-49b8-b0ea-55c2cf26e85d` as a stale
+  duplicate proof job after the local kernel proof landed.
+- Updated `THREAD_BOARD.md`, `ARISTOTLE_LANE_DOCKET_2026-07-07.md`,
+  `ARISTOTLE_Q12_E4_NONTRIVIAL_HEALING_2026-07-07.md`, and the Q13 audit report
+  addendum.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1` (with pre-existing warnings in
+  neighboring files);
+  targeted placeholder-token scan on the changed Lean/doc files;
+  `git diff --check`;
+  `pre-commit run --all-files`.
+
+## [DOC Codex solo] Goal prompt lane roster refreshed
+
+- Updated `GOAL_PROMPT_CODEX.md` for solo execution after the latest
+  Claude/Fable/Aristotle material.
+- Added a current `2026-07-07 lane refresh and next Aristotle names` table
+  covering W1/W2/CAPSTONE, OS1/QC/KP/RP, Q01-Q13, RG-Schur, C-1FORM,
+  SPIN10-U5, M4, HSTAR, plumbing, manuscript, and provenance lanes.
+- Each future-facing Aristotle launch name now uses a unique descriptive
+  `ne-next-*` pattern so new jobs do not collide with active or harvested
+  projects.
+- Updated the Aristotle loading-board text to reflect the live queue:
+  eleven running StandardModel lanes, Q13/provenance already harvested, and the
+  Q12 E4 duplicate canceled after local proof.
+- Verification passed:
+  targeted placeholder-token scan including `GOAL_PROMPT_CODEX.md`;
+  `git diff --check`;
+  `pre-commit run --all-files`.

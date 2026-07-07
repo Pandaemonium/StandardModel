@@ -773,7 +773,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   the finite physical-quotient descent interface: `physDescend`,
   `physDescend_comp`, `physDescend_cube_eq_id`,
   `physDescend_commutes_iff`, `map_eq_of_invariant_of_injective`,
-  `E4_commutator_can_fail`, and `E4_healing`. Aristotle follow-up
+  `E4_commutator_can_fail`, and `E4_healing`. Codex then locally landed
+  `E4_nontrivial_healing`, replacing the old `N = top` sanity check as the
+  non-vacuity witness: a proper nonzero first-coordinate radical contains all
+  commutator values while one commutator value is nonzero. Aristotle follow-up
   `1b3c2203` is now harvested into
   `PhysicsSM/Draft/NullEdge/GateI1/Q12NonPermBridge.lean`, proving the
   concrete Walsh-Hadamard non-permutation bridge and separation from
@@ -815,7 +818,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   involution conjugacy theorem beyond the explicit Hadamard witness. T9/E4 has
   a proved finite interface: an operator descends only when it preserves both
   `V'` and `N`, and descended `tau` commutes with descended `Gamma` iff
-  `[tau, Gamma] V' <= N`; upstairs noncommutation can heal on the quotient.
+  `[tau, Gamma] V' <= N`; upstairs noncommutation can heal on a nontrivial
+  quotient, witnessed by `E4_nontrivial_healing`.
   The remaining PSA gap is the analytic or operator-level equivariant
   McKean-Singer theorem plus model-specific verification of the descent and
   sector-projection hypotheses, not finite additivity. Failure of any
@@ -932,7 +936,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   carrier-map wording correction was applied locally without importing
   Aristotle boilerplate.  Two audit-driven refill jobs are now running:
   `ecbf61d8` W2a concrete `Q_A`/Minkowski bridge and `297ae18c` Q12 nontrivial
-  `E4_healing` witness.
+  `E4_healing` witness; `297ae18c` was later canceled after Codex landed the
+  nontrivial witness locally.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

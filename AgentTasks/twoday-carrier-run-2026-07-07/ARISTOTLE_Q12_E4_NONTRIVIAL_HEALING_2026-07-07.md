@@ -5,7 +5,8 @@ Job name: `ne-solo-lane-q12-e4-nontrivial-radical-healing-witness-proof-20260707
 Aristotle project id: `297ae18c-b8a9-49b8-b0ea-55c2cf26e85d`
 Submission project:
 `AgentTasks/aristotle-submit/ne-solo-lane-q12-e4-nontrivial-radical-healing-witness-proof-20260707-project`
-Status: `RUNNING` as of the submission poll on 2026-07-07.
+Status: `CANCELED` after Codex locally proved
+`E4_nontrivial_healing` before Aristotle returned.
 
 ## Goal
 

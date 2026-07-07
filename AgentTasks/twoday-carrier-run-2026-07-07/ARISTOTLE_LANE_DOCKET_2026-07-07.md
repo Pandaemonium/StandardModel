@@ -670,8 +670,9 @@ use unique descriptive project directories under `AgentTasks/aristotle-submit/`.
 | Project ID | Aristotle job name | Lane | Type | Intended deliverable |
 |---|---|---|---|---|
 | `ecbf61d8-c350-4f2e-975f-83ba0bfa6fc0` | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a / carrier aperture | proof/strategy | Literal bridge, or exact blocker, from abstract carrier `Q_A = Q(sum alpha)` to the trusted Minkowski/NBody aperture zero-locus theorem. |
-| `297ae18c-b8a9-49b8-b0ea-55c2cf26e85d` | `ne-solo-lane-q12-e4-nontrivial-radical-healing-witness-proof-20260707` | Q12 GammaPrime quotient | proof | Replace/supplement the degenerate `N = top` `E4_healing` with a proper nonzero radical witness, or return exact missing lemmas. |
+| `297ae18c-b8a9-49b8-b0ea-55c2cf26e85d` | `ne-solo-lane-q12-e4-nontrivial-radical-healing-witness-proof-20260707` | Q12 GammaPrime quotient | canceled | Canceled after Codex locally proved `E4_nontrivial_healing` before Aristotle returned. |
 
 Queue check immediately after submission: both projects were `RUNNING`; together
 with the ten older running projects, Aristotle is back to twelve active
-StandardModel-relevant lanes.
+StandardModel-relevant lanes.  After the local Q12 landing, `297ae18c` was
+canceled as a stale duplicate proof job.

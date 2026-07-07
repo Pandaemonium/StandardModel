@@ -22,8 +22,9 @@ The proved finite interface is:
 * `map_eq_of_invariant_of_injective`: the literal equality `tau GammaPrime =
   GammaPrime` follows from invariance plus injectivity on a finite-dimensional
   constraint space.
-* `E4_commutator_can_fail` and `E4_healing`: rational witnesses showing the gate
-  is non-vacuous in both directions.
+* `E4_commutator_can_fail` and `E4_nontrivial_healing`: rational witnesses
+  showing the gate is non-vacuous in both directions, including a proper
+  nonzero radical where upstairs non-commutation heals downstairs.
 
 Claim boundary: this is finite subquotient linear algebra only.  It does not
 prove upstairs commutation for a specific null-edge model, equivariant
@@ -201,11 +202,79 @@ theorem E4_commutator_can_fail :
 
 /-- Healing: for the same non-commuting pair, taking the radical `N = top`
 makes the descended operators commute because every commutator value lies in
-`N`. -/
+`N`.  This is intentionally kept as the degenerate sanity check; the proper
+radical witness is `E4_nontrivial_healing` below. -/
 theorem E4_healing :
     ∀ x : (⊤ : Submodule ℚ W),
         (fW (gW x) - gW (fW x) : W) ∈ (⊤ : Submodule ℚ W) :=
   fun _ => Submodule.mem_top
+
+/-! ### Proper-radical healing witness -/
+
+/-- The first-coordinate line in `W = Fin 2 -> ℚ`, represented as vectors whose
+second coordinate vanishes. -/
+noncomputable def e0Line : Submodule ℚ W where
+  carrier := {x | x 1 = 0}
+  zero_mem' := by simp
+  add_mem' := by
+    intro x y hx hy
+    change (x + y) 1 = 0
+    change x 1 = 0 at hx
+    change y 1 = 0 at hy
+    rw [Pi.add_apply, hx, hy, add_zero]
+  smul_mem' := by
+    intro a x hx
+    change (a • x) 1 = 0
+    change x 1 = 0 at hx
+    rw [Pi.smul_apply, hx]
+    simp
+
+/-- The first-coordinate line is not the zero submodule. -/
+theorem e0Line_ne_bot : e0Line ≠ ⊥ := by
+  intro h
+  have hmem : (![1, 0] : W) ∈ e0Line := by
+    simp [e0Line]
+  rw [h] at hmem
+  rw [Submodule.mem_bot] at hmem
+  have h0 := congrFun hmem 0
+  norm_num at h0
+
+/-- The first-coordinate line is a proper submodule. -/
+theorem e0Line_ne_top : e0Line ≠ ⊤ := by
+  intro h
+  have htop : (![0, 1] : W) ∈ e0Line := by
+    rw [h]
+    exact Submodule.mem_top
+  norm_num [e0Line] at htop
+
+/-- The commutator of the witness pair is nonzero on a concrete vector. -/
+theorem E4_commutator_nonzero_witness :
+    (fW (gW (![1, 1] : W)) - gW (fW (![1, 1] : W)) : W) ≠ 0 := by
+  intro h
+  have h0 := congrFun h 0
+  norm_num [fW, gW, dotProduct, Fin.sum_univ_two] at h0
+
+/-- For the witness pair, every upstairs commutator lands in the proper
+first-coordinate radical. -/
+theorem E4_commutator_mem_e0Line :
+    ∀ x : (⊤ : Submodule ℚ W),
+        (fW (gW x) - gW (fW x) : W) ∈ e0Line := by
+  intro x
+  simp [e0Line, fW, gW, dotProduct, Fin.sum_univ_two]
+
+/-- Nontrivial healing: the same finite non-commuting pair has a proper nonzero
+radical `e0Line` which contains every commutator value, while at least one
+commutator value is nonzero.  Thus upstairs non-commutation can heal on a
+nontrivial quotient without taking the whole space as radical. -/
+theorem E4_nontrivial_healing :
+    e0Line ≠ ⊥ ∧ e0Line ≠ ⊤ ∧
+      (∃ x : (⊤ : Submodule ℚ W),
+        (fW (gW x) - gW (fW x) : W) ≠ 0) ∧
+      ∀ x : (⊤ : Submodule ℚ W),
+        (fW (gW x) - gW (fW x) : W) ∈ e0Line := by
+  refine ⟨e0Line_ne_bot, e0Line_ne_top, ?_, E4_commutator_mem_e0Line⟩
+  refine ⟨⟨![1, 1], Submodule.mem_top⟩, ?_⟩
+  simpa using E4_commutator_nonzero_witness
 
 /-! ## Footprint audit -/
 
@@ -228,5 +297,9 @@ theorem E4_healing :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient.E4_commutator_can_fail' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms E4_commutator_can_fail
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient.E4_nontrivial_healing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms E4_nontrivial_healing
 
 end PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient
