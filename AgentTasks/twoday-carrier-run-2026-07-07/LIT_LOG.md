@@ -140,3 +140,25 @@ ACTION: cite 1210.6575 + 1812.00038 in the Krein brick and Q_T docstrings; these
 the honest home of the "no spectral positivity until kernel-checked" rail (the
 positive physical sector is exactly the indefinite-spectral-triple positive-cone
 question). Resolve both Zotero keys before the cites.
+
+## Round 6 (Claude, cycle 3) - E-slot gap (Witten PET) + AT zig-zag refs
+
+Search (`--chunks`): "Witten positive energy theorem spinor Dirac Weitzenbock boundary
+term ADM mass Lichnerowicz curvature nonnegative".
+
+- **GAP (honest null):** Witten's positive-energy theorem (CMP 80, 1981) - the E/gravity
+  slot's continuum avatar (ADM mass = boundary term of a Dirac Weitzenbock identity) - is
+  **NOT in the full-text graph**. No arXiv (predates arXiv). ACTION: when the E-slot brick
+  is drafted, add Witten 1981 via Zotero by DOI, mark `[NO-FULLTEXT]`, and cite by
+  reference in the docstring (the honest continuum backing for `E` = the gravity slot).
+  The generalized Lichnerowicz formula [BQJAG9TR] hep-th/9503153 remains the in-graph
+  backing for the curvature/`E` term.
+- **NEW (AT/T-lane):** **arXiv:1107.4909 "The zig-zag road to reality"** chunk 9 - the
+  massive Dirac equation in the Weyl rep as two coupled Weyl equations ("a massive Dirac
+  electron = two Weyl spinors", Penrose zig-zag). The exact prior art for the AT bridge /
+  T-mode (mass = flip rate between two null modes); cite in the AT thread + Q_T.
+- **arXiv:1610.01142 "Spin on a 4D Feynman Checkerboard"** [BEG.../TN...] - the 4D null-
+  face checkerboard; the canonical carrier toy model (already noted round 1).
+
+ACTION: cite 1107.4909 in the AT-bridge module; ingest Witten 1981 (DOI, NO-FULLTEXT)
+when the E-slot brick lands.
