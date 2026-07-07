@@ -520,7 +520,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Next:** L-Q8-5 the FLAGSHIP rad(Lambda h) = ideal(N),
   Fock(V')/rad = Fock(V'/N) using the Aristotle `4929366f` strategy:
   first build `pairingDual` as a perfect pairing / linear equivalence, then the
-  quotient factorization. Positivity of the physical quotient stays Q1/OPEN.
+  quotient factorization. Follow-up Aristotle project `5bdce729` is now IDLE
+  and should be harvested before any duplicate quotient job is opened.
+  Positivity of the physical quotient stays Q1/OPEN.
   Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
   Pauli); kill = a Sym-quantized checkerboard with positive invariant
   quotient. A global two-body exterior operator and positivity of the
@@ -717,7 +719,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Aristotle:** harvested named audit/strategy lane `65a9d42d`
   (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`) and follow-up
   finite-check lane `e2df3555`
-  (`ne-q11-bl-dictionary-finite-check-20260707`).
+  (`ne-q11-bl-dictionary-finite-check-20260707`).  Project `e3f3ae61`
+  (`ne-q11-c3-majorana-turn-census-proof-20260707`) is now IDLE and should be
+  harvested next; `f962cbe7` RC0 determinant cocycle remains running.
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
   closure. This is a Cartan-level RC0/dictionary theorem; the group-level
   determinant cocycle remains open.
@@ -745,7 +749,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   positive-sector certification, treat exact GW as palindromic/midpoint rather
   than one-sided retarded, and re-audit the absent Q02 E-slot, `(2,1)`
   index-protection, and Q04 color-commutant sources before signing those
-  headlines.
+  headlines.  After the Q08 checkerboard/Q10 Sylvester harvest, Codex submitted
+  seven fresh unique-name jobs: Q08 LGV generalization (`26fa682c`), Q10
+  inertia-index bridge (`bcf263f0`), Q09 entropy/horizon kill audit
+  (`d32e8150`), Q12 C8/G2 real-structure audit (`cdba6caa`), RG-Schur stability
+  (`9af1d5fb`), Q04 octonion/Fock bridge audit (`dbe3850c`), and P1
+  claim-grade audit (`2170a1f9`). Current harvest-first inventory: `5bdce729`
+  and `e3f3ae61`.
 - **SCORECARD:** consolidations at ~T+12/T+24/T+36/T+45 fold BANKED threads into
   `HONEST_SCORECARD.md` (the overnight-run copy remains the program dashboard).
 - **FINAL_REPORT:** Claude drafts at T+48, Codex contributes C-lane sections;

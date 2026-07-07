@@ -217,3 +217,27 @@ lanes:
 
 Next refill should use fresh names from `GOAL_PROMPT_CODEX.md`, not any of the
 harvested project names above.
+
+## Refill wave after Q08 checkerboard / Q10 Sylvester harvest
+
+Submitted 2026-07-07 after committing the Q08 checkerboard and Q10
+Sylvester-inertia integrations.  These are lightweight context-pack projects
+with unique descriptive project directories; the proof-style jobs should return
+standalone Mathlib-compatible Lean where feasible, or exact blockers and theorem
+statements.
+
+| Project ID | Descriptive name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `26fa682c-6106-4248-9cc6-00ba7863b753` | `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707` | Q08 checkerboard Fock | strategy/audit | Generalize beyond the landed L=4 disjoint-support case toward a nonvacuous LGV crossing-cancellation theorem, or isolate blockers. |
+| `bcf263f0-893e-4302-882b-458d6602c6ca` | `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707` | Q10 inertia indices | proof/strategy | Close the gap from explicit Sylvester equivalence / orthogonal block hypotheses to intrinsic `p >= 2`, `q >= 2` wording, or return missing API. |
+| `d32e8150-a475-464b-bab0-210cf7b02107` | `ne-q09-nullscreen-additivity-entropy-kill-audit-20260707` | Q09 horizon/screen | audit/strategy | Separate finite screen/BW theorem targets from MEMO-only entropy, ANEC, Jacobson, and continuum horizon claims. |
+| `cdba6caa-7302-4241-8722-b165bf00225f` | `ne-q12-c8-realstructure-g2-compatibility-audit-20260707` | Q12 C8 seam | audit/strategy | Audit compatibility of `J_R`, G2 parity, GammaPrime descent, PSA charge sectors, and chirality-solder wording. |
+| `9af1d5fb-af52-4bbd-885b-08e5e4847483` | `ne-rg-schur-krein-gamma-stability-proof-20260707` | RG-Schur | proof/strategy | Schur-complement determinant / stability theorem route for Krein-self-adjoint Gamma-odd structures. |
+| `dbe3850c-fa81-4e85-93f8-fa0e2eef9cdb` | `ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707` | Q04 octonion/Fock bridge | audit/strategy | Convention audit for `Lambda(C^3)` / strand-Fock SM selection against the XOR-Fano octonion convention. |
+| `2170a1f9-0705-43f9-9579-82c8994ad5b9` | `ne-manuscript-p1-claimgrade-consistency-audit-20260707` | Manuscript / claims | audit | P1 v3, scorecard-style docs, thread board, and recent Lean landings checked for claim-grade drift. |
+
+Queue check immediately after submission: all seven new projects were
+`RUNNING`.  Older `ec1ad7d5`, `ed700b2a`, and `f962cbe7` were also still
+`RUNNING`, for about ten active StandardModel lanes.  `5bdce729` (Q08 quotient
+pairing-dual) and `e3f3ae61` (Q11/Q04 C3 Majorana turn census) had become
+`IDLE` and should be harvested before any further refill.

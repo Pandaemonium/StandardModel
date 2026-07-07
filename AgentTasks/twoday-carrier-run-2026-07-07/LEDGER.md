@@ -2955,3 +2955,25 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateI1`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [ARISTOTLE Codex solo] Refilled seven fresh lanes after Q08/Q10 harvest
+
+- After committing the Q08 checkerboard / Q10 Sylvester integration, `aristotle
+  list` showed the active count had fallen and two older jobs had returned IDLE:
+  `5bdce729` Q08 quotient pairing-dual and `e3f3ae61` Q11/Q04 C3 Majorana turn
+  census. These are now harvest-first before any duplicate refill.
+- Submitted seven fresh unique-name Aristotle jobs from lightweight context
+  packs:
+  `26fa682c` `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707`;
+  `bcf263f0` `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`;
+  `d32e8150` `ne-q09-nullscreen-additivity-entropy-kill-audit-20260707`;
+  `cdba6caa` `ne-q12-c8-realstructure-g2-compatibility-audit-20260707`;
+  `9af1d5fb` `ne-rg-schur-krein-gamma-stability-proof-20260707`;
+  `dbe3850c` `ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707`;
+  `2170a1f9` `ne-manuscript-p1-claimgrade-consistency-audit-20260707`.
+- Queue check immediately after submission: all seven new jobs were RUNNING.
+  Older `ec1ad7d5`, `ed700b2a`, and `f962cbe7` remained RUNNING, for about ten
+  active StandardModel lanes while the two IDLE jobs await harvest.
+- Run docs updated: `GOAL_PROMPT_CODEX.md`, `THREAD_BOARD.md`, and
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md` now record the new IDs and the
+  harvest-first inventory.

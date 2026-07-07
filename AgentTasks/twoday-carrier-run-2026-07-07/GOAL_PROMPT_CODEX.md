@@ -143,13 +143,21 @@ new name.  Project directories and Aristotle project names should match the job
 name exactly.  If the calendar date changes, update the suffix from `20260707`
 to the current date.
 
-Live queue snapshot after the latest Q08/Q10 harvest (verify with
+Live queue snapshot after the post-Q08/Q10 refill (verify with
 `aristotle list` before acting):
 
-- **Still running / poll first:** `ne-q08-fock-quotient-pairingdual-proof-20260707`;
-  `ne-q11-rc0-det-cocycle-strategy-20260707`;
+- **Still running / poll first:** the seven fresh refill jobs
+  `ne-q08-checkerboard-lgv-crossing-cancellation-generalization-strategy-20260707`,
+  `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`,
+  `ne-q09-nullscreen-additivity-entropy-kill-audit-20260707`,
+  `ne-q12-c8-realstructure-g2-compatibility-audit-20260707`,
+  `ne-rg-schur-krein-gamma-stability-proof-20260707`,
+  `ne-q04-octonion-fock-xorfano-lambda-c3-bridge-audit-20260707`, and
+  `ne-manuscript-p1-claimgrade-consistency-audit-20260707`; plus
   `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707`;
   `ne-q06-retarded-wilson-symbol-determinant-proof-20260707`;
+  `ne-q11-rc0-det-cocycle-strategy-20260707`.
+- **Harvest-first before more refill:** `ne-q08-fock-quotient-pairingdual-proof-20260707`;
   `ne-q11-c3-majorana-turn-census-proof-20260707`.
 - **Recently harvested; do not resubmit under new names:** Q08 `dGamma`
   globalization and integration audit, Q08 L4 checkerboard determinant, Q09
