@@ -2628,3 +2628,19 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Verification passed:
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11RealStructure.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11RealStructure`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q12 PSA-1 finite identity landed
+- Harvested Aristotle project `bbcf12c6`
+  (`ne-q12-psa-equivariant-ms-audit-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/PSA.lean` and imported it from the GateI1
+  aggregator.
+- Proved `superTrace_eq_det_one_sub`: for `g : Matrix (Fin n) (Fin n) R` over a
+  commutative ring, the signed sum of principal minors `superTrace g` equals
+  `det(1 - g)`. Also proved `det_one_sub_permMatrix_eq_zero`: a permutation
+  matrix over a field has `det(1 - g) = 0` because it fixes the all-ones vector.
+- Claim boundary: PROVED finite representation/accounting identity only. This
+  is not yet equivariant McKean-Singer, charge-resolution additivity, anomaly
+  cancellation, or a physical chirality theorem.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/PSA.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.PSA`.

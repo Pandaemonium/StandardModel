@@ -562,16 +562,23 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   multiplicative for arbitrary structure constants `sigma`, the linear maps
   form the diagonal `(Z/2)^3` character group (`phiL_zero`,
   `phiL_selfInverse`, `phiL_comp`), and strand parity `c = ![1,1,1]` has
-  balanced `4+4` eigenspaces (`parity_fixed_card`, `parity_odd_card`).
-- **Status:** PROVED algebraic T1-T4 only. This confirms the G2-parity defusal
-  at the XOR/Fano algebra level and removes sign-convention risk from the
-  automorphism claim.
+  balanced `4+4` eigenspaces (`parity_fixed_card`, `parity_odd_card`). PSA-1
+  also landed in `PhysicsSM/Draft/NullEdge/GateI1/PSA.lean`:
+  `superTrace_eq_det_one_sub` proves the finite exterior-supertrace identity
+  `superTrace g = det(1 - g)`, and `det_one_sub_permMatrix_eq_zero` proves the
+  permutation-matrix order-`m` vanishing.
+- **Status:** PROVED algebraic T1-T4 plus finite PSA-1 accounting identity only.
+  This confirms the G2-parity defusal at the XOR/Fano algebra level and removes
+  sign-convention risk from the automorphism claim; PSA-1 gives the per-sector
+  determinant/supertrace check but not the equivariant index theorem behind a
+  physical anomaly statement.
 - **Next:** T5/T6/T7 require explicit triality intertwiners and their
   G2-equivariance; T8 requires the convention bridge
   `(-1)^F_c = B phi B^{-1}` between the ladder/Furey basis and XOR/Fano basis;
   T9/E4 requires constraint equivariance `tau Gamma' = Gamma'` before any
-  per-sector physical quotient count. Failure of T8 is a C8-seam escalation, not
-  a patch.
+  per-sector physical quotient count. PSA still needs the equivariant
+  McKean-Singer/charge-resolution bridge before sector failures can be promoted
+  to anomaly gates. Failure of T8 is a C8-seam escalation, not a patch.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.
