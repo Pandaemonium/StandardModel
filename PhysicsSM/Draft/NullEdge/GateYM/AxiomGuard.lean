@@ -152,6 +152,14 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_shiftConfig_reindex
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_le_of_sector_subset' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.twistedPartition_le_of_sector_subset
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.FiniteCenterTwistBridge.ofSectorSubset' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.FiniteCenterTwistBridge.ofSectorSubset
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.FiniteCenterTwistBridge.toTwistSystem_tyBaseSUN_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.FiniteCenterTwistBridge.toTwistSystem_tyBaseSUN_eq

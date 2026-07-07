@@ -204,7 +204,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `H^2(K,Z(G))` background object. First bridge contract landed:
   `CenterOneFormTwistBridge.lean` defines finite twisted partition sums and a
   `FiniteCenterTwistBridge.toTwistSystem` constructor with `Z_le` still an
-  explicit hypothesis, not a derived RP theorem.
+  explicit hypothesis, not a derived RP theorem. Codex then added
+  `twistedPartition_le_of_sector_subset` and
+  `FiniteCenterTwistBridge.ofSectorSubset`, deriving `Z_le` only under the
+  explicit finite-sector inclusion hypothesis `twistSector k x -> twistSector 0 x`.
+  The honest RP/measure derivation remains OPEN.
 ### PBW-EXH - exhaustiveness as a PBW/rewriting theorem [Claude-led, Fable-gated]
 - **Done:** W2c/graded-exhaustiveness restated as a finite normal-form theorem:
   the free carrier algebra on `{gamma_e, nabla_e, phi}`, modulo the stated

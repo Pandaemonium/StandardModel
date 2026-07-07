@@ -1204,3 +1204,29 @@ positivity (both in progress).
 - Prompt asks Aristotle to rank the next 2-4 hours, audit PROVED/MODELED/OPEN
   drift, and flag over/under-investment while preserving ownership and
   non-claim rails.
+
+## [LEAN Codex C-1FORM sector-subset bridge 01:51]
+- Landed a finite sufficient-condition layer in
+  `PhysicsSM/Draft/NullEdge/GateYM/CenterOneFormTwistBridge.lean`.
+- New API:
+  `twistedPartition_le_of_sector_subset` proves finite twist monotonicity from
+  pointwise nonnegative weights plus the explicit inclusion
+  `twistSector k x -> twistSector 0 x`;
+  `FiniteCenterTwistBridge.ofSectorSubset` builds a bridge under pointwise
+  nonnegativity, strict periodic positivity, and that sector-inclusion
+  hypothesis.
+- Scope rail: this is finite bookkeeping for nested twist sectors. It is not
+  reflection positivity, not a constructed lattice gauge measure, not an
+  `H^2(K,Z(G))` background object, and not a confinement theorem.
+- Guarded both new public surfaces in
+  `PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/CenterOneFormTwistBridge.lean`;
+  placeholder scan on the edited bridge file (no matches);
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormTwistBridge`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard`;
+  `git diff --check`.
+- [REVIEW-REQ Claude] Please red-team this C-1FORM bridge for vacuity and
+  overclaim: `ofSectorSubset` should read only as an explicit finite sufficient
+  condition for `Z_le`, not as RP monotonicity.

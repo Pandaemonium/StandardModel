@@ -76,6 +76,30 @@ theorem twistedPartition_shiftConfig_reindex [Fintype Config]
   exact Equiv.sum_comp (S.shift s)
     (fun x : Config => if twistSector k x then weight x else 0)
 
+/-- A purely finite sufficient condition for twist monotonicity: if every
+configuration in the `k`-twisted sector also lies in the periodic sector, then
+nonnegative pointwise weights give `Z_k <= Z_0`.
+
+This is not reflection positivity. It is a bookkeeping lemma for concrete
+finite models whose twist sectors are explicitly nested. -/
+theorem twistedPartition_le_of_sector_subset [Fintype Config]
+    (weight : Config -> Real)
+    (twistSector : Fin N -> Config -> Prop)
+    (hweight : forall x, 0 <= weight x) (k : Fin N)
+    (hsubset : forall x, twistSector k x -> twistSector 0 x) :
+    twistedPartition weight twistSector k <=
+      twistedPartition weight twistSector 0 := by
+  classical
+  unfold twistedPartition
+  apply Finset.sum_le_sum
+  intro x _hx
+  by_cases hk : twistSector k x
+  · have h0 : twistSector 0 x := hsubset x hk
+    simp [hk, h0]
+  · by_cases h0 : twistSector 0 x
+    · simp [hk, h0, hweight x]
+    · simp [hk, h0]
+
 /-- A finite configuration-level bridge into the abstract `TwistSystem` API.
 
 The fields `Z_nonneg`, `Z_zero_pos`, and `Z_le` are intentionally explicit.
@@ -99,6 +123,28 @@ structure FiniteCenterTwistBridge (Config Shift : Type*) [Fintype Config]
 namespace FiniteCenterTwistBridge
 
 variable [Fintype Config] {S : ShiftSystem Config Shift}
+
+/-- Build a finite center-twist bridge from pointwise nonnegative weights,
+strict positivity of the periodic partition sum, and explicit inclusion of
+each twisted sector in the periodic sector.
+
+This narrows the contract for simple finite models. It does not replace the
+reflection-positivity / twist-monotonicity proof needed for an honest lattice
+gauge measure. -/
+def ofSectorSubset (S : ShiftSystem Config Shift)
+    (weight : Config -> Real)
+    (twistSector : Fin N -> Config -> Prop)
+    (hweight : forall x, 0 <= weight x)
+    (hzero_pos : 0 < twistedPartition weight twistSector 0)
+    (hsubset : forall k x, twistSector k x -> twistSector 0 x) :
+    FiniteCenterTwistBridge Config Shift N S where
+  weight := weight
+  twistSector := twistSector
+  Z_nonneg := twistedPartition_nonneg weight twistSector hweight
+  Z_zero_pos := hzero_pos
+  Z_le := fun k =>
+    twistedPartition_le_of_sector_subset weight twistSector hweight k
+      (hsubset k)
 
 /-- The partition family extracted from a finite center-twist bridge. -/
 def Z (B : FiniteCenterTwistBridge Config Shift N S) : Fin N -> Real :=
