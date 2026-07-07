@@ -2103,6 +2103,39 @@ theorem
       onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
       (z2GammaAbs beta) alpha halpha X
 
+/-- Nonnegativity witness for the explicit `alpha = 1` one-plaquette threshold. -/
+def onePlaquetteZ2_alphaOne_nonneg : (0 : Real) <= 1 := by
+  norm_num
+
+/-- Concrete finite-Z2 strong-coupling prototype: if the unique nontrivial
+character coefficient satisfies `|tanh beta| <= exp(-1)`, then the
+one-plaquette polymer gas satisfies the corrected Q6 input pair at `alpha = 1`.
+
+This is deliberately a finite one-plaquette rung.  It records the explicit
+character/polymer smallness threshold selected by the OS1 finite-gauge route,
+without claiming volume-uniform KP convergence or any SU(2) gap theorem. -/
+theorem
+    onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one
+    (beta : Real)
+    (hsmall : |Real.tanh beta| <= Real.exp (-1)) :
+    KPCondition
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) 1
+          onePlaquetteZ2_alphaOne_nonneg)
+        (plaquettePolymerIncompatibleDecidable onePlaquetteAdj
+          onePlaquetteConnectedSupport onePlaquetteNontrivialLabel
+          (z2GammaAbs beta) 1 onePlaquetteZ2_alphaOne_nonneg)
+      /\ (forall X : PlaquettePolymer PUnit PUnit onePlaquetteConnectedSupport
+        onePlaquetteNontrivialLabel,
+        (plaquettePolymerSystem onePlaquetteAdj onePlaquetteConnectedSupport
+          onePlaquetteNontrivialLabel (z2GammaAbs beta) 1
+          onePlaquetteZ2_alphaOne_nonneg).incompatible X X) := by
+  have hsmall' : |Real.tanh beta| <= (1 : Real) * Real.exp (-(1 : Real)) := by
+    simpa using hsmall
+  exact
+    onePlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice_of_abs_tanh_le
+      beta 1 onePlaquetteZ2_alphaOne_nonneg hsmall'
+
 /-- At zero coupling, the one-plaquette Z2 scalar smallness condition is
 automatic for every nonnegative `alpha`. -/
 theorem onePlaquetteZ2_smallness_beta_zero

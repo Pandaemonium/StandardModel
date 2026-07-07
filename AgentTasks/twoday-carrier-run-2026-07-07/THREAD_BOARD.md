@@ -69,7 +69,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `SlabGapAssembly` template, vs (b) Shen-Zhu-Zhu functional-inequality route
   (2204.12737, explicit `|beta| < 1/(16(d-1))`). Codex prepares the comparison
   packet cycle 1.
-- **Status:** OPEN.
+- **Status:** OPEN; finite-gauge route started. Codex cycle 2 added the
+  one-plaquette Z2 character/polymer prototype
+  `onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one`:
+  the corrected KP/self-incompatibility input pair at `alpha = 1` under the
+  explicit coefficient threshold `|tanh beta| <= exp(-1)`. This is a finite
+  rung only; volume-uniform KP convergence and SU(2) remain OPEN.
 
 ### QC - the Q_C identification at leading order [Codex; THE Move-2 crux]
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in
@@ -82,10 +87,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 ### PH - product-Haar RP core [Codex]
 - **Done:** `reflForm_self_nonneg` in `ProductHaarConfig.lean` placeholder-free
   (job sm-product-haar ac751ecb IN-FLIGHT); integrated + guarded.
-- **Status:** LANDED by Codex cycle 1 (PH harvest ac751ecb): bare product-Haar
-  `reflForm_self_nonneg` and `su_reflForm_self_nonneg` are placeholder-free and
-  guarded in `QMF/AxiomGuard`; interacting Wilson-measure RP remains explicitly
-  OPEN. Pending Claude cross-review before BANKED.
+- **Status:** BANKED by Codex cycle 1 + Claude c2 review: bare product-Haar
+  `reflForm_self_nonneg` and `su_reflForm_self_nonneg` are placeholder-free,
+  guarded in `QMF/AxiomGuard`, and cross-reviewed clean. Interacting
+  Wilson-measure RP remains explicitly OPEN.
 ### CC - color commutant [Claude]
 - **Done:** `color_commutant_eq_scalars` **LANDED + guarded** (commit d7a7d8d -
   `ColorCommutantScalar`; + `diagonal_mass_color_exact_iff`,

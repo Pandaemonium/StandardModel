@@ -681,7 +681,10 @@ one-plaquette Z2 fixture has a direct rooted-sum formula
 `PlaquetteKPBound` under the scalar condition
 `|tanh beta| * exp alpha <= alpha`, with beta-zero sum and KP corollaries and wrappers
 `onePlaquetteZ2_kpCondition` and
-`onePlaquetteZ2_kpCondition_and_selfIncompatible` plus zero-coupling corollaries
+`onePlaquetteZ2_kpCondition_and_selfIncompatible`, the explicit alpha-one
+threshold
+`onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one`,
+and zero-coupling corollaries
 where the scalar smallness condition is automatic; the draft connector
 `plaquetteKP_convergence_bound_of_plaquetteKPBound` routes an explicit bound,
 plus Q7 self-incompatibility, into the corrected Q6 convergence statement and

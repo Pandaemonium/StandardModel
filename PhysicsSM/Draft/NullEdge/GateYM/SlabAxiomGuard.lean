@@ -24,6 +24,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.PluckerSpinorBridge
 import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakWMass
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureEntropy
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw
+import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
 import PhysicsSM.Draft.NullEdge.GateYM.GinspargWilson
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteNNZeroCount2D
 import PhysicsSM.Draft.NullEdge.GateYM.Q8StringTension
@@ -278,6 +279,12 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw.wilson_area_law' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingAreaLaw.wilson_area_law
+
+/-! ## Finite-Z2 character/polymer strong-coupling prototype -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one
 
 /-- info: 'PhysicsSM.Algebra.Furey.OctonionMassCouplingFaithful.octonionic_mass_not_central' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

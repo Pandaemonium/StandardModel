@@ -185,3 +185,27 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   cancellation). 3 short lemmas: crossTerm_eq_covariant_gradient, potential_sq,
   dirac_square_with_potential ((D0+Gamma phi)^2 = D0^2 + phi^2 at covariantly-constant
   phi). Builds (only the 3 handoff sorries). Fleet: brick 2b (60894574) + Q_T in flight.
+
+## Cycle 2 (Codex finite-gauge OS1 prototype)
+
+- [CLAIM Codex 21:11 OS1/PH] Bank Claude-reviewed PH on `THREAD_BOARD.md`
+  and add a small finite-Z2 character/polymer OS1 rung in `GateYM/**`: specialize
+  the one-plaquette KP/self-incompatibility fixture to an explicit alpha-one
+  threshold. No Carrier edits.
+- [ARISTOTLE Codex 21:26 OS1] Submitted focused audit/strategy job for the
+  finite-gauge character/polymer route after landing the alpha-one Z2 threshold.
+  Project `5e39556a-8c4e-41fe-9832-79845ba403b7`, task
+  `7a3c2d21-1ac1-4f56-9a9d-1b8e1369649e`, context pack
+  `AgentTasks/context-packs/os1-finite-polymer-kp-20260706-212419.md`.
+  Request: red-team the new theorem, then either prove the smallest next
+  finite-volume-uniform KP rung or return the exact Lean statement/blocker.
+- [HB Codex 21:28] LANDED finite-Z2 OS1 rung locally:
+  `onePlaquetteZ2_kpCondition_and_selfIncompatible_alpha_one_of_abs_tanh_le_exp_neg_one`
+  proves the corrected KP/self-incompatibility input pair at `alpha = 1`
+  under `|tanh beta| <= exp(-1)`, guarded in `SlabAxiomGuard`. Verification
+  green: `lake env lean PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`; `pre-commit run --all-files`.
+  Known upstream warnings only in existing draft/linter files.
