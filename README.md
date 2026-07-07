@@ -22,17 +22,22 @@ massless. The program is built in honest layers:
   `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md`.
 - **Carrier layer (draft, guard-pinned).** A finite null-edge Dirac operator
   `D = sum_e c(alpha_e) nabla_e + Gamma phi` with kernel-checked discrete
-  Weitzenboeck decomposition `4 D^#D = Q_A + Q_C + 4 Q_T + 4 E` separating the
-  aperture (kinematic), closure (gauge), turn (Higgs-shaped), and
-  soldering-gradient (gravity-shaped) mass channels; the identification
-  `Q_A = Q(sum alpha)` tying the carrier to the trusted kinematic mass; a
+  Weitzenboeck decomposition `4 D^#D = Q_A^# + Q_C^# + 4 Q_T + 4 E_#` (an
+  algebraic identity for an arbitrary `StarRing` involution `#`; the genuine
+  indefinite/Krein reading is pinned separately, see the `kappa = 2` witness
+  below) separating the aperture (kinematic), closure (gauge), turn
+  (Higgs-shaped), and soldering-gradient (gravity-shaped) mass channels; the
+  abstract total-square identity `Q_A = Q(sum alpha)` (its concrete
+  identification with the trusted `det P` kinematic mass is still an open crux,
+  see below); a
   certified Pontryagin `kappa = 2` fundamental symmetry with strictly positive
   flat-sector Krein mass form; and the finite McKean-Singer index-protection
   family (masslessness of the chiral surplus is topological - immune to every
   potential and transport). All under `PhysicsSM/Draft/NullEdge/Carrier/` with
   build-enforced axiom pins in `CarrierAxiomGuard.lean`.
 - **Open cruxes (tracked, not claimed).** Physical-sector (off-flat) Krein
-  positivity; the all-slots-active glue witness; beyond-leading closure
+  positivity; the concrete `Q_A`-to-`det P` (trusted kinematic mass)
+  identification; the all-slots-active glue witness; beyond-leading closure
   positivity; every continuum statement.
 
 ## Supporting formalization assets

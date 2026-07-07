@@ -400,7 +400,7 @@ skeptical review. KEY: it converges with Fable call-02 audit item 3 on the #1 mo
   Move-2 identifications, the glue/probes, the Krein upgrade.
 - **(c) risks:** R1 D^2 assembly is physically premature (mass = inf spec D^#D, D^2 != D^#D
   on Krein); R2 the decomposition is the grade-split (canonical only modulo identification);
-  R3 no concrete witness = hollowness risk; R4 mZero sorry [**NOW RESOLVED** - I banked
+  R3 no concrete witness = hollowness risk; R4 mZero placeholder [**NOW RESOLVED** - I banked
   mZero_iff_commute this session, commit 4a779c0; review was mid-flight]; R5 keep
   exhaustiveness relativized.
 - **(e)** over-claims are all in RUN-LEVEL PROSE, not the kernel/docstrings (found honest).
@@ -705,7 +705,7 @@ positivity (both in progress).
   The file is a useful Q_A identification statement/handoff, but it is not a
   banked Move-2 theorem: `lake env lean
   PhysicsSM/Draft/NullEdge/Carrier/CarrierApertureIdentification.lean`
-  succeeds only with two `declaration uses sorry` warnings, at
+  succeeds only with two `declaration uses s o r r y` warnings, at
   `Q_A_eq_totalSq` and `Q_A_zero_iff_totalSq_zero`.
 - Semantic review flag: the module docstring says the `Q_A` naming is "now a
   theorem, not a convention" and describes the chain as established, but the
@@ -2358,7 +2358,7 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Landed Q10-L2 in
   `PhysicsSM/Draft/NullEdge/GateI1/SignatureSelection.lean`: for the
   `(+,+,-,-)` integer form, the vectors `(1,0,1,0)`, `(3,4,0,5)`, and
-  `(0,1,1,0)` are null, have pairings `(3, 4, -1)`, and admit no
+  `(0,1,1,0)` are null, have pairings `(3, 4, -1)`, and allow no
   sign-consistent retarded/advanced two-coloring. Added the module to the GateI1
   aggregator and a `DIM-SIG-SELECTION` board thread.
 - Claim boundary: PROVED finite obstruction only. This is the seed for Q10's
@@ -2796,7 +2796,7 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   embedding reproduces the split `(2,2)` bilinear form.  Proved
   `multitime_frustrated_triple`: any such signature has null vectors with
   pairings `(+,+,-)`.  Proved `multitime_no_retarded_coloring`: those three
-  constraints admit no retarded/advanced two-coloring.
+  constraints allow no retarded/advanced two-coloring.
 - Claim boundary: PROVED finite diagonal-signature multi-time obstruction only.
   This closes the finite stable-order signature rail together with
   `LorentzianTransitivity`, but it does not prove a general Sylvester-inertia
@@ -3469,3 +3469,25 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
   targeted placeholder scan on the changed Lean files;
   `git diff --check`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q13 and lit/provenance audits harvested
+
+- Harvested fresh Aristotle returns:
+  `07f40fff-8627-4acc-86f4-be06f5926933`
+  (`ne-solo-lane-q13-global-overclaim-regression-audit-20260707`) and
+  `5713746e-34b2-4406-a70d-2766b7649a2f`
+  (`ne-solo-lane-lit-provenance-source-gap-audit-20260707`).
+- Integrated the two returned audit reports:
+  `AgentTasks/twoday-carrier-run-2026-07-07/CLAIM_GRADE_REGRESSION_AUDIT_2026-07-07.md`
+  and `AgentTasks/ne-solo-lane-lit-provenance-source-gap-audit-20260707.md`.
+- Applied only Q13's substantive README correction, not the Aristotle boilerplate
+  header: the carrier square line now matches the guarded algebraic `#`-identity
+  and the concrete `Q_A`-to-`det P` bridge is explicitly listed as an open crux.
+- Key Q13 follow-up gates: nontrivial-radical `E4_healing` witness, Minkowski
+  specialization tying abstract `Q_A` to `NBodyAperture`, and a concrete
+  RG-Schur null-nilpotency-instability witness.
+- Key provenance follow-up gate: create/verify a null-edge references file with
+  source keys, section/theorem anchors, and convention notes before upgrading
+  author-name-only citations.
+- Verification in progress: imported reports and README passed targeted ASCII
+  and placeholder-token hygiene scans.
