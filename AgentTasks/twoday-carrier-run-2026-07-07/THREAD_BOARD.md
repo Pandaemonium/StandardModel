@@ -104,6 +104,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Done:** a written verdict in the ledger + affected docstrings: does our TY
   route depend on disputed decimation results, or only on the rigorous 1985 RP
   inequalities? Fix docstrings accordingly.
+- **Status:** BANKED by Codex cycle 3: Tomboulis-Yaffe 1985 ingested as
+  [N7SIEMAC]; TY docstrings now state the route uses rigorous
+  reflection-positivity / Cauchy-Schwarz inequality lineage plus Kanazawa
+  [K9FIBTZC] for SU(N) notation/generalization, with no dependence on
+  decimation-based all-coupling confinement claims.
 ### KP - the Penrose-scheme crux [Codex, backstop]
 - **Done:** `pairSum_le_expBound` proved via the partition-scheme telescoping
   identity, OR the honest reduction to one named combinatorial lemma + handoff.

@@ -162,3 +162,28 @@ term ADM mass Lichnerowicz curvature nonnegative".
 
 ACTION: cite 1107.4909 in the AT-bridge module; ingest Witten 1981 (DOI, NO-FULLTEXT)
 when the E-slot brick lands.
+
+## Round 7 (Codex, cycle 3) - TY-lineage audit
+
+Search / exact check:
+
+- Web/Springer/Crossref-style discovery for Tomboulis-Yaffe 1985 identified
+  **"Finite Temperature SU(2) Lattice Gauge Theory"**, Communications in
+  Mathematical Physics 100, 313-341 (1985), DOI `10.1007/BF01206134`.
+- Neo4j exact DOI/title check returned no existing node before ingest.
+- Existing graph already had Kanazawa 0808.3442 as **K9FIBTZC**, the SU(N)
+  generalization/notation layer used by the current TY modules.
+
+Ingested / graph delta:
+
+- **N7SIEMAC** - Tomboulis-Yaffe 1985, DOI `10.1007/BF01206134`, Zotero + Neo4j
+  `Paper`, collection `9W59V3K9`, tags `twoday-carrier`, `TY-LINEAGE`,
+  `reflection-positivity`, `no-fulltext`.
+
+Audit verdict:
+
+- Current `TYAreaLaw`, `TYAreaLawSUN`, and `TYTwistSystemZ2` use only the
+  rigorous reflection-positivity / Cauchy-Schwarz inequality shape and finite
+  center-twist algebra. Kanazawa [K9FIBTZC] is used for SU(N) generalization and
+  notation. No current TY theorem depends on disputed decimation-based
+  all-coupling confinement claims. Docstrings updated accordingly.

@@ -209,3 +209,17 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
   `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`; `pre-commit run --all-files`.
   Known upstream warnings only in existing draft/linter files.
+
+## Cycle 3 (Codex TY-lineage audit)
+
+- [LIT-CLAIM Codex 21:31 TY-LINEAGE] Exact-check and ingest Tomboulis-Yaffe
+  1985 CMP DOI `10.1007/BF01206134` if absent; audit whether the current TY
+  route depends on disputed decimation claims or only on the rigorous
+  reflection-positivity inequality lineage.
+- [HB Codex 21:37] TY-LINEAGE BANKED. Added Tomboulis-Yaffe 1985 to Zotero/Neo4j
+  as key `N7SIEMAC` and updated `TYAreaLaw`, `TYAreaLawSUN`, and
+  `TYTwistSystemZ2` docstrings: current formal route uses the rigorous
+  reflection-positivity / Cauchy-Schwarz inequality shape plus Kanazawa
+  [K9FIBTZC] for SU(N) notation/generalization; no landed TY theorem relies on
+  decimation-based all-coupling confinement claims. `LIT_LOG.md` round 7 records
+  the graph delta and verdict.

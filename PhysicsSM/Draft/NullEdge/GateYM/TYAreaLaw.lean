@@ -5,8 +5,9 @@ import PhysicsSM.Draft.NullEdge.GateYM.OSReconstruction
 # Gate YM: the Tomboulis–Yaffe area-law bound on the one-link `Z2` Wilson slab
 
 This module formalises, on the exactly-solvable one-link `Z2` Wilson slab, the
-reflection-positivity **area-law bound** of Tomboulis–Yaffe (1985), in the
-`SU(2)`/`Z2`-center form used by Kanazawa (arXiv:0808.3442, their eq. 4):
+reflection-positivity **area-law bound** of Tomboulis–Yaffe (1985)
+[N7SIEMAC], in the `SU(2)`/`Z2`-center form used by Kanazawa
+[K9FIBTZC] (arXiv:0808.3442, their eq. 4):
 
     |⟨W(C)⟩|  ≤  2 · { (1/2)·(1 − Z⁻/Z) } ^ ( A_C / (L_μ L_ν) )
 
@@ -39,6 +40,11 @@ ratio (Kanazawa Thm 2 replaces `Z⁻/Z` by `(1/N)·Σ_k Z^{[k]}/Z`):
 ## Provenance and honest claim label
 
 This is a **finite `Z2`-slab identity**, not a continuum or nonabelian result.
+The provenance used here is the rigorous Tomboulis-Yaffe reflection-positivity
+inequality lineage (CMP 100, 313-341, DOI `10.1007/BF01206134`) plus Kanazawa's
+SU(N) center-twist notation/generalization.  It does **not** rely on any
+decimation-based all-coupling confinement claim.
+
 The `Z`/`Z⁻` model is the one-plaquette Boltzmann model quoted above; its ratio
 `tanh β` coincides with the landed flux/vacuum spectral ratio
 `lambdaFlux β / lambda0 β = exp(-osSpectralGap β) = exp(-neU4ClosureGap β)`

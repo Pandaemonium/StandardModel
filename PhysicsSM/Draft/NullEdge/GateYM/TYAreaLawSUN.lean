@@ -6,8 +6,10 @@ import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 
 This module lifts the abstract Tomboulis–Yaffe / Kanazawa reflection-positivity
 **area-law bound** — proved on the one-link `Z2` slab in `TYAreaLaw.lean` — to a
-genuine `SU(N)` **center-twist system**, following Kanazawa (arXiv:0808.3442),
-their Theorem 2:
+genuine `SU(N)` **center-twist system**.  Provenance is split deliberately:
+Tomboulis-Yaffe 1985 [N7SIEMAC] is the rigorous reflection-positivity inequality
+lineage, while Kanazawa [K9FIBTZC] (arXiv:0808.3442), Theorem 2, supplies the
+SU(N) center-average formulation:
 
     |⟨W_R(C)⟩|  ≤  2 · { 1 − (1/N)·Σ_{k=0}^{N-1} Z^{[k]}/Z } ^ ( A_C / (L_μ L_ν) )
 
@@ -34,6 +36,12 @@ with the *same* `tyBaseOf p = (1/2)(1 − p)` used in the `Z2` file: for `N = 2`
 literally the `N = 2` shadow of this `SU(N)` bound with `p = Z¹/Z⁰`.
 
 ## What is PROVED vs MODELED / HYPOTHESIZED
+
+Lineage audit (Codex cycle 3, 2026-07-06): this file uses only the
+reflection-positivity / Cauchy-Schwarz inequality shape and the finite
+center-twist algebra below.  It does **not** depend on decimation-based
+all-coupling confinement claims; any such physics claim remains outside this
+formal scaffold.
 
 **Proved (finite, algebraic, kernel-checked):**
 * the abstract twist-system algebra: `pN ∈ (0,1]`, `tyBaseSUN ∈ [0,1)`, and

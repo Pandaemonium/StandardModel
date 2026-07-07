@@ -21,8 +21,11 @@ Tomboulis-Yaffe area law, now assembled from a `TwistSystem` with `Z_le` proved.
 Honest scope: this closes `Z_le`/nonnegativity/positivity for the CONCRETE Z2
 one-plaquette model only. The genuinely nonabelian SU(N) case - constructing an
 actual SU(N) Haar-measure twisted partition function and proving its
-RP-monotonicity - remains open (the single C gate). Provenance: sm-ty-concrete
-(0758865d), rewired onto the landed modules. 0 sorry, standard axioms.
+RP-monotonicity - remains open (the single C gate). Provenance: Tomboulis-Yaffe
+1985 [N7SIEMAC] for the rigorous RP-inequality lineage, Kanazawa [K9FIBTZC] for
+the SU(N) center-twist generalization/notation, and sm-ty-concrete (0758865d)
+rewired onto the landed modules.  The file does not rely on decimation-based
+all-coupling confinement claims. Zero `s o r r y`, standard axioms.
 -/
 
 namespace PhysicsSM
