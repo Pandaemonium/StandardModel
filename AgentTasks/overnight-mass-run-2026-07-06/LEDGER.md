@@ -680,3 +680,22 @@ Quot.sound]. A9+A4 headline axioms independently re-checked.
   capstone (synced the new capstone file into the project copy first). All 9
   wave-1 proof/construction jobs still RUNNING (6-13 min old). Fleet full at 10.
   Next: local L5 (mass-doc status update) while jobs churn; no polling.
+- **HB (post-reframe cycle):** User reframed the Fable-5 brief: Fable drives the
+  *conceptual* frontier (common-carrier verdict, synthesis, connections, literature,
+  goal-steering), NOT Lean coding (we handle Lean). Rewrote + committed
+  HELP_NEEDED_FABLE5 around the goal and the common-carrier question (35c2774).
+  Harvest: 3 jobs COMPLETE. Landed CouplingUnificationFinite (3f26137) - exact
+  rational concurrency iff + honest generic-non-unification, guarded wave 12,
+  standard axioms. Skipped sm-e8-sm-branch (BYTE-IDENTICAL to the already-landed
+  E8DimensionBudget) and held sm-ew-higgs-finite (bundles two existing modules;
+  marginal). Refill (quality-biased, not shadow-farming): 3 independent GATE jobs
+  now RUNNING - sm-slab-construct (46790cfb, the single highest-leverage missing
+  YM object), sm-product-haar (ac751ecb, multi-link product-Haar RP substrate),
+  sm-slab-fullspectrum (78f6c4ce, full connected-slab Gram gap). Lit round 11:
+  conceptual-synthesis mine for Fable - Chamseddine-Connes spectral action
+  (1004.0464 INGESTED), E8+spectral fermion-mass, emergent-YM-from-operator-algebra,
+  QICT relational C+H+M3 derivation; NEGATIVE signal: no direct prior art on the
+  null-edge-obstruction framing (distinctive). Red-team: CouplingUnificationFinite
+  clean (genuine iff, no vacuity, docstring within kernel). Staging note: submit
+  needs a MINIMAL project-dir (Lean project only) - full-tree git archive hits the
+  Windows MAX_PATH limit in AgentTasks/aristotle-standalone.

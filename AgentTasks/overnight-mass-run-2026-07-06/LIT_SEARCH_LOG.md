@@ -193,3 +193,36 @@ long queries; inspirehep needs short queries).
 - 1905.03963 (INGESTED) - topology + index theorem on the lattice (the index =
   signed zero/chirality count - the continuum content behind the crossing no-go).
 - Also seen: 2501.02873 (eta invariant of the massive Wilson-Dirac operator).
+
+## Round 11 (2026-07-06) - CONCEPTUAL SYNTHESIS mine (support for the Fable-5 brief)
+Reframed goal: Fable-5 drives the *conceptual* synthesis (common-carrier verdict,
+unifying principle), so this round targets prior art on a SINGLE relational/spectral
+origin of mass - the candidate "common carrier" the brief asks Fable to adjudicate.
+- 1004.0464 (Chamseddine-Connes, INGESTED, key 8HGA475I) - "NCG as a Framework for
+  Unification of all Fundamental Interactions including Gravity, Part I". THE canonical
+  spectral-action reference: gauge + Higgs + gravity from one Dirac operator D and
+  Tr f(D/Lambda). Directly relevant to the brief's conjecture that our null-edge
+  operator D = sum_a c(alpha^a) nabla_{ell_a} is a Dirac operator and mass is
+  Tr f(D) content - i.e. the common carrier might be spectral. Feed to Fable.
+- "E8 Symmetry and Spectral Geometry in Quantized Spacetime: A Geometric Origin of
+  Fermion Mass Hierarchies and Koide's Relation" (2025, DOI 10.20944/preprints
+  202511.0938.v1; no arxiv) - ties our V-lane (E8-240) to a *spectral-geometric*
+  origin of the fermion MASS hierarchy + Koide. Cross-lane bridge candidate (V<->mass).
+- "Spectral Noncommutative Gauge Geometry from Interaction Operator Algebras: Emergent
+  Yang-Mills Structure, Flavor Geometry..." (2026, DOI 10.2139/ssrn.6767918; no arxiv)
+  - emergent YM (C-lane) + flavor/mass geometry from an operator algebra - a single
+  carrier producing both closure (YM) and turn (flavor) structure. High-value for the
+  common-carrier question; treat as unvetted preprint.
+- "QICT: Receiver Distinguishability and the Spectral Derivation of Standard-Model
+  Structure" (2026, DOI 10.20944/preprints202604.0323.v5; no arxiv) - a *relational*
+  finite-quotient derivation selecting the Connes algebra C+H+M3(C) and deriving mass
+  sums / PMNS from finite endpoint transport. Startlingly close in spirit to the
+  null-edge relational-obstruction thesis; unvetted preprint, flag to Fable as
+  possible parallel/prior-art (NOT endorsed).
+- Furey PhD thesis "Standard model physics from an algebra?" (R(x)C(x)H(x)O acting on
+  itself) - the canonical division-algebra->SM reference for Lane B / brief 6.5.
+  (Already the intellectual source of the Furey lane; ensure in-graph.)
+- NEGATIVE SIGNAL (worth telling Fable): a direct search for prior art on "mass as
+  obstruction to lightlike/null transport / relational origin of inertia" returned
+  NO close hits - the specific null-edge-obstruction framing appears distinctive.
+  The nearest neighbors are all spectral/NCG or division-algebra, not null-edge.
