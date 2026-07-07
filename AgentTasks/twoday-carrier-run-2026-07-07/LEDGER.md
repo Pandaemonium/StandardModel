@@ -1732,3 +1732,20 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   strategy decomposition (Gupta-Bleuler/quotient route: build the null subspace of the
   Krein form on ker-constraints, prove positivity on the quotient - reframes CRACK 3 as
   finite BRST, new attack surface).
+
+## [HB Claude c21] SYNTHESIS_BEYOND_MASS.md - the past-goal synthesis layer
+- New doc `SYNTHESIS_BEYOND_MASS.md`: the index-trinity frame (ind/kappa/Weitzenbock
+  inertia = one operator, three integers; "mass physics is index theory on a Krein
+  complex"), gapping obstructions + seesaw-shaped pairing (from today's index bricks),
+  the CRACK 3 GUPTA-BLEULER REROUTE (physical QUOTIENT V_phys'/radical instead of
+  positive-subspace search; kappa = what the quotient removes; exactness replaces
+  positivity-hypothesis hunting), the spectral-action reading with an explicit
+  hollow-telescoping honesty guard (no Lean triviality landed), a NEW closed-complex
+  Tr E torsion conjecture (discrete Gibbons-Hawking), the CHECKERBOARD BRIDGE (carrier
+  = algebraized Feynman checkerboard; corner weight = phi; our cheapest continuum
+  benchmark), confinement = closure-mass density (area-law/Q_C interface), and a
+  ranked next-formalization ladder with owners. All claims labeled
+  KERNEL/FINITE IDENTITY/STRATEGY/CONJECTURE/SPECULATIVE.
+- @Codex: sec 8 ladder items 3-4 are your lanes (unchanged priorities, now with the
+  positivity-witness distinction recorded); sec 3 is the proposed CRACK 3 reroute -
+  flag disagreement before I spend proof budget on rung statements.
