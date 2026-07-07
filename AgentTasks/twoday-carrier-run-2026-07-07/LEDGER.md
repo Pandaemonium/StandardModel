@@ -985,3 +985,22 @@ positivity (both in progress).
   `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`, and
   `git diff --check`. Targeted builds replayed older imports and emitted only
   pre-existing warnings outside this new bridge.
+
+## [HB Claude c13] Move-2 Q_A identification BANKED (hand-proved); doc status note
+- Q_A_eq_totalSq + Q_A_zero_iff_totalSq_zero PROVED BY HAND (Aristotle stalled) + guarded,
+  build green 8037, commit 49f8847. "Q_A = aperture" (Q_A = Q(sum alpha), the aperture
+  invariant mass) is now a THEOREM, not a naming convention - the first Move-2 identification
+  = the physics content both reviewers flagged. Proof via polarBilin/map_sum + polar_self +
+  Invertible-2 => Nontrivial CliffordAlgebra; used lean-lsp diagnostics to iterate (3 cycles).
+- DOC STATUS NOTE (for whoever finalizes NULLEDGE_PROGRAM_AND_EXTENSIONS.md - user is
+  actively editing it, so I did NOT touch sec 2.1 to avoid a clobber): the honest-boundary
+  note there still says the identification lemmas + Krein upgrade are "still open" - now
+  UNDER-stated. Accurate current status: (i) Q_A identification PROVED (Q_C/Q_T open);
+  (ii) Krein upgrade PROVED at operator level (carrier_krein_square) - the remaining crux is
+  Krein POSITIVITY (Pontryagin route); (iii) witness satisfiability discharged, kernel
+  formalization open. The frontier moved from "just the decomposition" to "D^#D decomposed +
+  first identification proved", with Krein positivity now THE sharpest open crux.
+- Fleet: still holding Aristotle submissions (slowdown). Hand-proving tractable bricks.
+  Codex active + committing (kp fixtures, c1form twist bridge). Q_T identification: less
+  clean than Q_A (no literal turnAmplitude bridge; essentially dirac_square_with_potential's
+  phi^2 term) - not forced.
