@@ -134,6 +134,18 @@ theorem coeffProduct_nonneg (gammaAbs : Rlab -> Real)
     0 <= X.coeffProduct gammaAbs := by
   exact Finset.prod_nonneg (fun p _hp => hgamma (X.label p))
 
+/-- If every allowed label has zero coefficient, every nonempty plaquette
+polymer has zero coefficient product. -/
+theorem coeffProduct_eq_zero_of_gammaAbs_eq_zero (gammaAbs : Rlab -> Real)
+    (hgamma : forall r, gammaAbs r = 0)
+    (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
+    X.coeffProduct gammaAbs = 0 := by
+  rcases X.support_nonempty with ⟨p, hp⟩
+  unfold coeffProduct
+  exact Finset.prod_eq_zero
+    (show (⟨p, hp⟩ : {p : P // p ∈ X.support}) ∈ X.support.attach by simp)
+    (by simp [hgamma])
+
 /-- Every plaquette polymer has support-cardinality at least one. -/
 theorem one_le_support_card
     (X : PlaquettePolymer P Rlab ConnectedSupport NontrivialLabel) :
@@ -751,6 +763,23 @@ theorem anchoredPlaquettePolymerAreaSum_zero
   have hpos : 0 < Y.support.card :=
     Finset.card_pos.2 Y.support_nonempty
   exact False.elim ((Nat.ne_of_gt hpos) hYcard)
+
+/-- If all label coefficients vanish, every anchored support-cardinality slice
+vanishes. -/
+theorem anchoredPlaquettePolymerAreaSum_eq_zero_of_gammaAbs_eq_zero
+    (ConnectedSupport : Finset P -> Prop)
+    (NontrivialLabel : Rlab -> Prop)
+    (gammaAbs : Rlab -> Real)
+    (hgamma : forall r, gammaAbs r = 0)
+    (alpha : Real) (q : P) (k : Nat) :
+    anchoredPlaquettePolymerAreaSum ConnectedSupport NontrivialLabel
+      gammaAbs alpha q k = 0 := by
+  unfold anchoredPlaquettePolymerAreaSum
+  apply Finset.sum_eq_zero
+  intro Y _hY
+  rw [PlaquettePolymer.coeffProduct_eq_zero_of_gammaAbs_eq_zero
+    gammaAbs hgamma Y]
+  simp
 
 /-- Area slices larger than the finite plaquette universe vanish. -/
 theorem anchoredPlaquettePolymerAreaSum_eq_zero_of_card_lt
@@ -2308,6 +2337,71 @@ theorem onePlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero
           X X) := by
   exact onePlaquetteZ2_kpCondition_and_selfIncompatible 0 alpha halpha
     (onePlaquetteZ2_smallness_beta_zero alpha halpha)
+
+/-- At zero coupling, the two-plaquette Z2 coefficient is zero. -/
+theorem twoPlaquetteZ2GammaAbs_beta_zero (r : Bool) :
+    twoPlaquetteZ2GammaAbs 0 r = 0 := by
+  simp [twoPlaquetteZ2GammaAbs, Real.tanh_eq_sinh_div_cosh]
+
+/-- At zero coupling, every two-plaquette anchored support-cardinality slice
+vanishes. -/
+theorem twoPlaquetteZ2_anchoredPlaquettePolymerAreaSum_beta_zero
+    (alpha : Real) (q : Bool) (k : Nat) :
+    anchoredPlaquettePolymerAreaSum twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs 0) alpha q k = 0 := by
+  exact
+    anchoredPlaquettePolymerAreaSum_eq_zero_of_gammaAbs_eq_zero
+      twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+      (twoPlaquetteZ2GammaAbs 0) twoPlaquetteZ2GammaAbs_beta_zero
+      alpha q k
+
+/-- Zero-coupling concrete two-plaquette Z2 `PlaquetteKPBound` through the
+positive-area-slice adapter.
+
+This discharges the previously explicit area-slice and smallness hypotheses in
+the finite two-plaquette fixture only. It is not a volume-uniform KP theorem and
+does not assert an `SU(2)` strong-coupling gap. -/
+theorem twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero
+    (alpha : Real) (halpha : 0 <= alpha) :
+    PlaquetteKPBound twoPlaquetteAdj twoPlaquetteConnectedSupport
+      twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs 0) alpha halpha := by
+  refine
+    twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice
+      0 alpha halpha (fun _ => 0) ?_ ?_ ?_
+  · simp
+  · intro q k _hk
+    rw [twoPlaquetteZ2_anchoredPlaquettePolymerAreaSum_beta_zero alpha q k]
+  · simpa using halpha
+
+/-- Zero-coupling concrete two-plaquette Z2 corrected Q6 input pair.
+
+This is the finite two-plaquette sanity check for the OS1 polymer route: the
+zero-coupling coefficient kills every positive-area slice, so the corrected KP
+input pair follows without an extra rooted-area hypothesis. -/
+theorem twoPlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero
+    (alpha : Real) (halpha : 0 <= alpha) :
+    KPCondition
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs 0) alpha halpha)
+        (plaquettePolymerIncompatibleDecidable twoPlaquetteAdj
+          twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+          (twoPlaquetteZ2GammaAbs 0) alpha halpha)
+      /\ (forall X : PlaquettePolymer Bool Bool twoPlaquetteConnectedSupport
+        twoPlaquetteNontrivialLabel,
+        (plaquettePolymerSystem twoPlaquetteAdj twoPlaquetteConnectedSupport
+          twoPlaquetteNontrivialLabel (twoPlaquetteZ2GammaAbs 0) alpha halpha).incompatible
+          X X) := by
+  constructor
+  · exact
+      kpCondition_of_plaquetteKPBound twoPlaquetteAdj
+        twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+        (twoPlaquetteZ2GammaAbs 0) (twoPlaquetteZ2GammaAbs_nonneg 0)
+        alpha halpha
+        (twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero alpha halpha)
+  · intro X
+    exact plaquettePolymerSystem_self_incompatible twoPlaquetteAdj
+      twoPlaquetteConnectedSupport twoPlaquetteNontrivialLabel
+      (twoPlaquetteZ2GammaAbs 0) alpha halpha X
 
 end StrongCouplingPolymerMap
 end GateYM

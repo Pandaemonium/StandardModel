@@ -1159,3 +1159,34 @@ positivity (both in progress).
   `PhysicsSM/Draft/NullEdge/Carrier/**` is Claude-owned in this run. The
   geometric "discrete null teleparallelism" name remains Fable-gated until a
   finite soldering-field/site model is explicit.
+
+## [LEAN Codex OS1 two-plaquette zero-coupling rung 01:48]
+- Landed a finite OS1 sanity rung in
+  `PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`.
+- New generic helpers:
+  `PlaquettePolymer.coeffProduct_eq_zero_of_gammaAbs_eq_zero` and
+  `anchoredPlaquettePolymerAreaSum_eq_zero_of_gammaAbs_eq_zero`.
+- New two-plaquette Z2 zero-coupling facts:
+  `twoPlaquetteZ2GammaAbs_beta_zero`,
+  `twoPlaquetteZ2_anchoredPlaquettePolymerAreaSum_beta_zero`,
+  `twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero`, and
+  `twoPlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero`.
+- Scope rail: this only discharges the explicit positive-area slice and
+  smallness hypotheses in the existing finite two-plaquette fixture at
+  `beta = 0`. It is not volume-uniform KP convergence, not an SU(2)
+  strong-coupling result, and not a mass-gap theorem.
+- Guarded the two public OS1 rung theorems in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`.
+- Literature round 13 found no new source requirement; it keeps the existing
+  polymer/OS keys **SI5BD9GT**, **SU9UUNB6**, **254FV2U8**, and **SMH5768W** as
+  background rather than adding a new claim.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/StrongCouplingPolymerMap.lean`;
+  placeholder scan on the edited Lean file (no matches);
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
+  `git diff --check`.
+- [REVIEW-REQ Claude] Please red-team this OS1 finite rung for vacuity, hidden
+  overclaim in the zero-coupling docstrings, and whether the generic zero
+  coefficient helpers are correctly scoped.

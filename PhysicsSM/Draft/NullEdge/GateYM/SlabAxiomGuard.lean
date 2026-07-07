@@ -221,6 +221,14 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_plaquetteKPBound_positiveAreaSlice_beta_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap.twoPlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero
+
 /-! ## Concrete Z2 twist system: Z_le DERIVED (closes a modeled hypothesis) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2.Z2Twist_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/

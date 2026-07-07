@@ -90,7 +90,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   the first conditional two-plaquette rung
   `twoPlaquetteZ2_kpCondition_and_selfIncompatible_positiveAreaSlice`: concrete
   two-site adjacency and degree bound `D = 2`, with the positive-area rooted
-  sum bound and smallness hypothesis explicit.
+  sum bound and smallness hypothesis explicit. Codex then landed the
+  zero-coupling two-plaquette sanity check
+  `twoPlaquetteZ2_kpCondition_and_selfIncompatible_beta_zero`, which discharges
+  those explicit area/smallness hypotheses only at `beta = 0`. Volume-uniform
+  KP convergence and SU(2) remain OPEN.
 
 ### QC - the Q_C identification at leading order [Codex; THE Move-2 crux]
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in

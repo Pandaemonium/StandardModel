@@ -345,3 +345,33 @@ Findings:
   theorem deriving the scalar `leadingClosureFluxCoeff` from
   `plaquetteCurvature`. The new module therefore introduces no literature claim
   beyond the already-cited Carrier torus and `QCLeading` provenance.
+
+## Round 13 (Codex, cycle 13) - OS1 two-plaquette finite fixture
+
+Searches:
+
+- `neo4j_doc_search.py --query "OS1 two plaquette KP condition positive area
+  slice StrongCouplingPolymerMap plaquetteKPBound singletonBound zero coupling
+  finite fixture" --k 8`
+- `neo4j_paper_search.py --query "cluster expansion Kotecky Preiss polymer gas
+  strong coupling lattice gauge finite plaquette expansion" --k 6`
+- `neo4j_paper_search.py --chunks --query "Kotecky Preiss condition sum
+  incompatible polymers exponential size bound singleton polymer activity
+  cluster expansion" --k 8`
+- `neo4j_paper_search.py --chunks --query "Penrose tree graph identity polymer
+  model partition scheme Kotecky Preiss fiber factorial bound" --k 8`
+
+Graph delta: none.
+
+Findings:
+
+- Repo doc search was noisy and did not surface a stronger OS1 precedent than
+  the live `StrongCouplingPolymerMap` API itself.
+- Paper search again identified the existing abstract polymer/cluster expansion
+  spine: **SI5BD9GT** (Procacci 2006), **SU9UUNB6** (Procacci 2007),
+  **254FV2U8** (Fernandez-Procacci proof), and **SMH5768W** (Osterwalder-Seiler
+  1978). No new source is needed for the finite zero-coupling sanity check.
+- Chunk searches were not useful for the exact two-plaquette Lean fixture. That
+  supports keeping the new rung as finite bookkeeping only: zero coupling kills
+  the Z2 coefficient, discharging the positive-area slice hypotheses without
+  claiming volume-uniform KP convergence, SU(2), or a mass gap.
