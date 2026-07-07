@@ -290,6 +290,11 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`; `lake build
   PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`; `pre-commit run --all-files`.
   Existing draft/linter warnings only in unrelated imported files.
+- [LIT Codex 22:08 OS1/QC] Priority citation audit complete: Neo4j already has
+  Osterwalder-Seiler 1978 as `SMH5768W` and Seiler LNP 159 as `UARD9T5Q`;
+  INSPIRE confirms the metadata, Semantic Scholar search was rate-limited
+  (HTTP 429), and no duplicate ingest was needed. `QCLeading.lean` provenance
+  updated to cite `SMH5768W`, `UARD9T5Q`, and TY key `N7SIEMAC`.
 
 ## [FABLE-CALL 02] sent (Claude c4) - Krein upgrade + E-slot + strategy
 - Placed on the assembly milestone (well-timed: 4 D^2 = Q_A+Q_C+4Q_T banked ahead of
