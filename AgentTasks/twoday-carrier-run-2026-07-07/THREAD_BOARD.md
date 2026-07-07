@@ -872,17 +872,23 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `PhysicsSM/Draft/NullEdge/GateI1/Q11BLDictionary.lean`, proving the finite
   B-L dictionary `B-L = 1 + (4 / 5)Y - (2 / 5)F`, the six-entry SM table,
   Cartan `RC0_iff_traceless`, hypercharge/number/B-L trace facts, and
-  `freed_direction`: `Y + c F` is RC0-admissible iff `c = 0`.
+  `freed_direction`: `Y + c F` is RC0-admissible iff `c = 0`.  Project
+  `aa4e48f6` has now yielded a kernel-checked structural
+  `Q11GroupAction.lean` nucleus: `minorDet`, `lambdaAction`, `Kmap`, `Cmap`,
+  `JR_eq_Cmap_Kmap`, `Kmap_involutive`, `Cmap_involutive`,
+  `Kmap_Cmap_comm`, `minorDet_conj`, `lambdaAction_conj`, and
+  `minorDet_empty`, all footprint-guarded with the standard draft footprint.
 - **Status:** PROVED finite fiber sign table, Cartan/unimodularity arithmetic,
-  and B-L/total-number dictionary only. The result refutes any "Krein closure
-  implies unimodularity" slogan: the sesquilinear form is determinant-blind,
-  while determinant/traceless information lives in the antilinear `J_R` layer.
-- **Next:** group-level RC0 should now focus on the Jacobi complementary-minor
-  lemma, Cauchy-Binet/functoriality cleanup, and removing the draft
-  compiler-eval step from the returned `Q11GroupAction` scaffold.  The
-  order-condition scalar identities have a finite sector-level landing; the
-  chirality-solder flag remains a standing obligation for later architecture
-  checks.
+  B-L/total-number dictionary, C3 sector identities, and structural
+  group-action data only. The result refutes any "Krein closure implies
+  unimodularity" slogan: the sesquilinear form is determinant-blind, while
+  determinant/traceless information lives in the antilinear `J_R` layer.
+- **Next:** group-level RC0 should now focus on a kernel-clean identity-minor
+  lemma and finite Cauchy-Binet/functoriality proof for `lambdaAction`, then the
+  Jacobi complementary-minor tail.  The later Jacobi route still needs the
+  `gl_fiber` interleaving-sign factorization.  The order-condition scalar
+  identities have a finite sector-level landing; the chirality-solder flag
+  remains a standing obligation for later architecture checks.
 - **Aristotle:** harvested named audit/strategy lane `65a9d42d`
   (`ne-q11-jr-real-structure-ko-unimodularity-audit-20260707`) and follow-up
   finite-check lane `e2df3555`
@@ -895,10 +901,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `Q11GroupAction.lean` and strategy: define the exterior functor
   `lambdaAction`, top-duality `Cmap`, conjugation `Kmap`, and prove the master
   identity `J_R Lambda(g) J_R = conj(det g) Lambda(g)` for unitary `g`, yielding
-  `RC0 iff det g = 1`.  The returned Lean is not a trusted landing: it contains
-  documented proof holes for Jacobi complementary minors and Cauchy-Binet plus a
-  draft compiler-eval step, so the next proof job should isolate those matrix
-  lemmas before importing any headline theorem.
+  `RC0 iff det g = 1`.  Project `aa4e48f6`
+  (`ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`) returned a stronger
+  proof payload; Codex integrated only the structural kernel-clean subset.  The
+  Cauchy-Binet functor law, identity action, Jacobi complementary-minor
+  identity, determinant cocycle, and group-level RC0 theorem remain open.
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
   closure. This is a Cartan-level RC0/dictionary theorem; the group-level
   determinant cocycle remains open.

@@ -773,3 +773,28 @@ Submitted 2026-07-07 after integrating HSTAR `16d04733`.
 
 Task id: `95086d97-2155-4d92-b46c-d49787d1e712`.  Queue poll immediately after
 submission showed twelve running StandardModel-relevant lanes.
+
+## Harvest from Q11 Jacobi / Cauchy-Binet RC0 proof
+
+- `aa4e48f6`
+  (`ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`) returned a useful
+  group-action proof payload.
+- Codex integrated only the kernel-clean structural subset as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`.
+- New declarations include `minorDet`, `lambdaAction`, `Kmap`, `Cmap`,
+  `JR_eq_Cmap_Kmap`, `Kmap_involutive`, `Cmap_involutive`,
+  `Kmap_Cmap_comm`, `minorDet_conj`, `lambdaAction_conj`, and
+  `minorDet_empty`.
+- Claim boundary: this is structural exterior-functor data only.  It does not
+  prove identity action, finite Cauchy-Binet/functoriality, minor
+  orthogonality, Jacobi complementary minors, determinant cocycle, or
+  group-level RC0/unimodularity equivalence.
+- Next exact blocker: first close the identity-minor plus Cauchy-Binet
+  functor-law package; after that, attack `gl_fiber` for the Jacobi tail.
+  Suggested next job name:
+  `ne-next-q11-identityminor-cauchybinet-lambdaaction-proof-20260707`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

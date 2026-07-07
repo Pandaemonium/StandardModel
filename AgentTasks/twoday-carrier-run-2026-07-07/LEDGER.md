@@ -3751,3 +3751,28 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Queue poll immediately after submission showed the project `RUNNING`; with
   the eleven older running projects, Aristotle is back to twelve active
   StandardModel-relevant lanes.
+
+## [ARISTOTLE-HARVEST Codex solo] Q11 group-action structural nucleus landed
+
+- Harvested Aristotle project `aa4e48f6-2581-4276-a5ae-db77c7660cd6`
+  (`ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`).
+- Integrated only the kernel-clean structural subset as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean` and imported it from
+  the Gate I1 aggregator.
+- New declarations include `minorDet`, `lambdaAction`, `Kmap`, `Cmap`,
+  `JR_eq_Cmap_Kmap`, `Kmap_involutive`, `Cmap_involutive`,
+  `Kmap_Cmap_comm`, `minorDet_conj`, `lambdaAction_conj`, and
+  `minorDet_empty`.
+- Claim boundary: this is structural exterior-functor data only.  It does not
+  prove identity action, Cauchy-Binet/functoriality, minor orthogonality,
+  Jacobi complementary minors, determinant cocycle, or group-level
+  RC0/unimodularity.
+- Added harvest note
+  `ARISTOTLE_Q11_GROUP_ACTION_HARVEST_2026-07-07.md`; updated
+  `THREAD_BOARD.md`, `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and
+  `GOAL_PROMPT_CODEX.md`.
+- Verification passed so far:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q11GroupAction.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

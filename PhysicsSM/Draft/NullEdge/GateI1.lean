@@ -39,6 +39,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.LorentzianTransitivity
 import PhysicsSM.Draft.NullEdge.GateI1.Q11RealStructure
 import PhysicsSM.Draft.NullEdge.GateI1.Q11BLDictionary
 import PhysicsSM.Draft.NullEdge.GateI1.Q11C3Majorana
+import PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction
 import PhysicsSM.Draft.NullEdge.GateI1.PSA
 import PhysicsSM.Draft.NullEdge.GateI1.ChargeResolution
 import PhysicsSM.Draft.NullEdge.GateI1.TorusBWCutLocality
@@ -90,8 +91,9 @@ spectrum-to-invariant-form obstruction (`SameChiralityScalarAmplitude`); plus th
 Q10 multi-time embedding obstruction (`MultiTimeEmbedding`); plus the Q09
   finite modular no-go (`ModularNoGo`); plus the Q10-L3 Lorentzian positive
   null-pairing transitivity theorem (`LorentzianTransitivity`); plus the Q11
-  finite top-form-duality real-structure core (`Q11RealStructure`) and B-L/RC0
-  dictionary (`Q11BLDictionary`) plus the Q11/Q04 finite C3 Majorana turn census
+  finite top-form-duality real-structure core (`Q11RealStructure`), B-L/RC0
+  dictionary (`Q11BLDictionary`), the group-action structural nucleus
+  (`Q11GroupAction`), plus the Q11/Q04 finite C3 Majorana turn census
   (`Q11C3Majorana`); plus the Q12 PSA-1 finite supertrace identity (`PSA`);
   plus the Q12 finite charge-sector supertrace bookkeeping bridge
 (`ChargeResolution`); plus the Q09 finite BW-cut torus locality scoring

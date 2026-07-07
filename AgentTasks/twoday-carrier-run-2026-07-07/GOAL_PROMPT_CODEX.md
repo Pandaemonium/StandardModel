@@ -51,88 +51,90 @@ appears in `PhysicsSM/Draft/NullEdge/Carrier/**`,
 `SlabAxiomGuard.lean`, coordinate via `LEDGER.md` and git rather than
 overwriting it.
 
-## 2026-07-07 lane refresh and next Aristotle names
+## 2026-07-07 current lane dispatch and Aristotle names
 
-This section is the current launch map for solo work.  It supersedes the older
-"fresh" names below when opening a new Aristotle project.  Before submitting,
-poll `aristotle list`, harvest any `IDLE` result, and check
-`ARISTOTLE_LANE_DOCKET_2026-07-07.md` so no active or already-harvested target
-is resubmitted.  New project directories should use exactly the descriptive
-future-facing names in this table, or the same pattern with a date bump if the
-work moves past 2026-07-07.  If a listed target has advanced, mint an even more
-specific non-colliding `ne-next-*` name and record it in the docket.
+This section is the dispatch surface for solo work.  It supersedes older
+refill names below when opening a new Aristotle project.  Before any submit,
+poll `aristotle list --limit 100`, harvest every useful `IDLE` return, and
+check `ARISTOTLE_LANE_DOCKET_2026-07-07.md` so no active or already-harvested
+target is resubmitted.  Project directories and Aristotle project names should
+match the descriptive job name exactly.  If the work moves past 2026-07-07,
+date-bump the suffix.
 
-Current poll context: Q10 Spin/Weyl scalar amplitude (`05fdd744`), Q08 Fock
-graded radical / LGV lift (`b4206467`), and HSTAR model audit (`16d04733`) have
-been harvested locally.  The HSTAR harvest opened one Aristotle slot; refill it
-with a Ward/descent quotient-action follow-up after the local HSTAR commit.
-That refill is now running as `b1980b93`, bringing Aristotle back to twelve
-running StandardModel-relevant lanes.  The still-running lanes below should not
-be duplicated:
+Latest local poll for StandardModel-relevant lanes, 2026-07-07: Aristotle is
+fully loaded at twelve running jobs.  These are active and must not be
+duplicated:
 
 | Project | Active Aristotle job | Lane |
 |---|---|---|
 | `b1980b93` | `ne-next-hstar-ward-descent-quotient-action-proof-20260707` | HSTAR finite Ward/descent quotient action |
 | `fbdbe43f` | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` | Q10 finite `d = 4` positive corner |
-| `f8aa05c8` | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 graded radical ideal/span follow-up |
-| `ecbf61d8` | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a `Q_A` / Minkowski aperture |
+| `f8aa05c8` | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 exterior-power ideal/span follow-up |
 | `5ff9424e` | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` | Q12 GammaPrime E4 semantic audit |
-| `96058502` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 / sector MS |
-| `82cc3c8e` | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur null-nilpotency instability |
-| `4b462390` | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW / Reeh gate |
-| `373f0283` | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positive quotient |
-| `6e37da00` | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion left-action bridge |
+| `ecbf61d8` | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a `Q_A` / Minkowski aperture bridge |
 | `ef87c91f` | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` | Q02 invariant trace / E-slot |
-| `aa4e48f6` | `ne-next-q11-jacobi-cauchybinet-rc0-integration-audit-20260707` | Q11 Jacobi / Cauchy-Binet RC0 |
+| `6e37da00` | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion `Lambda(C^3)` bridge |
+| `373f0283` | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positive quotient |
+| `4b462390` | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW / Reeh gate |
+| `82cc3c8e` | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur null-nilpotency instability |
+| `96058502` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 / sector MS |
+| `6b8dcebd` | `tc-kp-fixed-forest-injection...` | KP fixed-forest injection |
 
-Recently harvested and not to duplicate: Q13 global overclaim audit
-(`07f40fff`), literature/provenance source-gap audit (`5713746e`), and Q10
-Spin/Weyl scalar-amplitude classification (`05fdd744`), Q08 Fock graded
-radical assembly (`b4206467`), and HSTAR Ward/descent model audit (`16d04733`).
-The duplicate Q12 radical-healing proof project (`297ae18c`) was canceled after
-the local proof of `E4_nontrivial_healing`.
+Harvest or already-acted-on returns not to duplicate: Q11 Jacobi/Cauchy-Binet
+RC0 (`aa4e48f6`, structural nucleus landed; next blocker is
+identity-minor/Cauchy-Binet before `gl_fiber`), Q13 global overclaim (`07f40fff`), literature/provenance
+(`5713746e`), Q10 Spin/Weyl scalar-amplitude classification (`05fdd744`), Q08
+graded radical assembly (`b4206467`), HSTAR model audit (`16d04733`), Q12 E4
+radical-healing proof (`297ae18c`, canceled after local proof), and the older
+Q04/Q06/Q08/Q09/Q10/Q11/Q12 harvests recorded in the docket.
 
-| Lane | Pursuit | Highest-value next artifact | Next unique Aristotle job name |
-|---|---|---|---|
-| W1-E | Carrier / Weitzenbock `E` slot | Torsion vs symmetric soldering-difference split, with exact vanishing hypotheses | `ne-next-w1-eslot-torsion-soldering-split-proof-20260707` |
-| W2a-QA | Aperture identification | Harvest `ecbf61d8`; then follow up on the literal `Q_A` to Minkowski aperture bridge if blocked | `ne-next-w2a-qa-minkowski-aperture-contract-followup-proof-20260707` |
-| W2a-QT | Turn-slot identification | Diagonal/nilpotent-free hypotheses for `Phi = Gamma * phi` and square-zero traps | `ne-next-w2a-qt-diagonal-turnslot-normality-proof-20260707` |
-| W2b | Graded irreducibility | Bigraded normal form for no-common-carrier | `ne-next-w2b-bigraded-no-common-carrier-normalform-strategy-20260707` |
-| W2c | Relative exhaustiveness | PBW/rewriting normal form plus named dropped-hypothesis obstruction terms | `ne-next-w2c-relative-exhaustiveness-pbw-dropterm-audit-20260707` |
-| CAPSTONE | Four-slot carrier identity | Guarded assembly only, with no spectral mass-form wording | `ne-next-capstone-four-slot-guarded-identity-redteam-audit-20260707` |
-| OS1 | Strong-coupling gap scaffold | Genuine small-`beta` multi-plaquette KP/character-polymer rung | `ne-next-os1-smallbeta-two-to-nplaquette-kp-rung-proof-20260707` |
-| QC-GRAM | Closure readout / `Q_C` | Exact two-torus readout and carrier-contract normalization boundary | `ne-next-qcgram-two-torus-exact-readout-carrier-contract-proof-20260707` |
-| PH/RP | Product-Haar to Wilson RP | Gap audit from banked product-Haar positivity to interacting Wilson measure | `ne-next-rp-producthaar-to-wilson-rp-gap-strategy-20260707` |
-| KP/Penrose | Fixed-forest injection | Support lemma or no-go certificate for the Penrose partition route | `ne-next-kp-fixedforest-fiber-injection-or-nogo-proof-20260707` |
-| Q01 | Gupta-Bleuler physical positivity | Harvest `373f0283`; then wire finite positive-sector witness to actual carrier/Gauss/Ward hypotheses | `ne-next-q01-carrier-gauss-ward-positive-quotient-followup-audit-20260707` |
-| Q02 | Gravity / invariant `E` slot | Harvest `ef87c91f`; then audit trace/P-probe/teleparallel wording against new `E`-slot facts | `ne-next-q02-eslot-trace-pprobe-teleparallel-followup-audit-20260707` |
-| Q03 | Dispersion and doublers | Determinant/wedge dispersion identity plus doubler and mass-shell ledger | `ne-next-q03-wedge-dispersion-doubler-massshell-proof-20260707` |
-| Q04-Fock | Strand-Fock SM fiber selection | Pentad, hypercharge/Z6 rigidity, supertrace/anomaly finite identities | `ne-next-q04-pentad-hypercharge-z6-supertrace-proof-20260707` |
-| Q04-Oct | XOR-Fano to `Lambda(C^3)` | Harvest `6e37da00`; then operator-valued left-action bridge with no raw-octonion associativity | `ne-next-q04-xorfano-lambdac3-leftaction-operator-bridge-followup-strategy-20260707` |
-| Q05 | Triality as monodromy | Equivariant index, cover multiplicativity, no-four-orbit route | `ne-next-q05-monodromy-triality-cover-index-strategy-20260707` |
-| Q06 | Continuum / GW / refinement | Heterogeneous path-sum and edge-word lift beyond homogeneous transfer powers | `ne-next-q06-heterogeneous-pathsum-gw-edgeword-lift-strategy-20260707` |
-| Q07 | Koide / T-solder | Kappa gate, tetrahedral probe, and Hessian/oracle kill tests | `ne-next-q07-tsolder-koide-kappa-hessian-killgate-audit-20260707` |
-| Q08-RAD | Exterior Fock radical | Harvest `f8aa05c8`; then audit/integrate the ideal/span follow-up or open the next exact blocker | `ne-next-q08-graded-radical-ideal-integration-audit-20260707` |
-| Q08-LGV | Checkerboard / LGV | Multi-layer brick-wall lift of the corrected scattering-vertex DAG | `ne-next-q08-multilayer-brickwall-sharedvertex-lgv-proof-20260707` |
-| Q09-REEH | Horizon / screen well-posedness | Harvest `4b462390`; then isolate finite Reeh-screen hypotheses or no-go | `ne-next-q09-finite-reeh-screenarea-wellposedness-followup-audit-20260707` |
-| Q09-BW | BW-cut locality | Concrete finite BW-cut locality witness or proof that no current witness exists | `ne-next-q09-bwcut-locality-witness-construction-proof-20260707` |
-| Q10-SCALAR | Signature / scalar amplitude | Harvest `fbdbe43f`; then audit the finite `d = 4` positive corner or open the real Spin/Weyl replacement | `ne-next-q10-spinweyl-positive-corner-integration-audit-20260707` |
-| Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction assumption, and physical interpretation separated | `ne-next-q10-stableorder-dimension-reconstruction-boundary-audit-20260707` |
-| Q11-RC0 | `J_R` / RC0 determinant cocycle | Harvest `aa4e48f6`; then integration audit for Jacobi/Cauchy-Binet semantics | `ne-next-q11-rc0-det-cocycle-groupaction-followup-proof-20260707` |
-| Q11-ORDER | Majorana / order condition | Upgrade C3 sector identities toward operator-level invariant uniqueness | `ne-next-q11-ordercondition-invariant-operator-uniqueness-strategy-20260707` |
-| Q12-GAMMA | GammaPrime quotient | Harvest `5ff9424e`; then audit the nonzero-quotient/proper-radical descended-commutation theorem and generalize only if the audit is clean | `ne-next-q12-gammaprime-e4-nonzeroquotient-descended-commutation-audit-20260707` |
-| Q12-C8 | C8 / `J_R` descent | Harvest `96058502`; then sector conjugation and C8 compatibility gates | `ne-next-q12-c8-jr-sector-descent-compatibility-proof-20260707` |
-| Q12-PSA | PSA anomaly gates | PSA-2/3 determinant-line phase gates and promotion conditions | `ne-next-q12-psa23-determinantline-sectorphase-strategy-20260707` |
-| Q12-MS | Equivariant McKean-Singer | Exact finite-to-analytic boundary for charge-resolved sector index claims | `ne-next-q12-equivariant-ms-sector-index-boundary-audit-20260707` |
-| RG-SCHUR | Coarse-graining | Harvest `82cc3c8e`; then null-nilpotency-instability witness or blocker | `ne-next-rg-schur-nullnilpotency-instability-followup-proof-20260707` |
-| C-1FORM | Finite center/twist backgrounds | Twist-sector API and RP/background-cohomology boundary | `ne-next-c1form-twistsector-background-rp-api-audit-20260707` |
-| SPIN10-U5 | Pure-spinor internal selection | U(5) / pure-spinor-line stabilizer shadow or finite substitute | `ne-next-spin10-u5-purespinor-stabilizer-shadow-strategy-20260707` |
-| M4-WIT | Concrete Pauli/Pontryagin witness | Krein-sharp carrier instantiation and positive-sector probe | `ne-next-m4-pauli-pontryagin-krein-positive-probe-proof-20260707` |
-| HSTAR | Model-by-model constraint audits | Harvest `b1980b93`; then integrate/audit the quotient action or open the Gauss-covector rank interface | `ne-next-hstar-ward-descent-quotient-action-integration-audit-20260707` |
-| PLUMBING | Cross-lane real structures | Compatibility table for `J_R`, edge reversal, monodromy inversion, `#`, linearity, and antilinearity | `ne-next-plumbing-jr-edge-reversal-sharp-compatibility-audit-20260707` |
-| Q13 | Red-team / no-go | Re-audit Q12 E4, W2a bridge, RG-Schur, and latest manuscript wording for the four over-claim modes | `ne-next-q13-e4-w2a-rg-overclaim-regression-audit-20260707` |
-| Manuscript | P1 v3 / scorecard / thread board | Synchronize claim grades after the next integration wave | `ne-next-manuscript-p1-round2-scorecard-threadboard-sync-audit-20260707` |
-| LIT-PROV | Literature and provenance | Close source-key and convention-citation gaps from the harvested provenance audit | `ne-next-lit-nullstrand-source-provenance-closeout-audit-20260707` |
+When a slot opens, choose from this lane map.  Prefer harvest-first follow-ups
+for recently returned lanes, then keep a balanced mix of proof/construction,
+strategy, and adversarial audit jobs.  Every name below is unique and
+future-facing; if a lane has advanced, mint a still more specific non-colliding
+`ne-next-*` name and record it in the docket.
+
+| Lane | Pursuit | Highest-value next artifact | Job type | Next unique Aristotle job name |
+|---|---|---|---|---|
+| W1-E | Carrier / Weitzenbock `E` slot | Torsion versus symmetric soldering-difference split, with exact vanishing hypotheses | proof/strategy | `ne-next-w1-eslot-torsion-symmetric-solder-split-proof-20260707` |
+| W2a-QA | Aperture identification | Harvest `ecbf61d8`; then bridge literal carrier `Q_A` to the trusted Minkowski aperture contract | proof/strategy | `ne-next-w2a-qa-minkowski-aperture-contract-followup-proof-20260707` |
+| W2a-QT | Turn-slot identification | Corrected `Phi = Gamma * phi` turn identity under diagonal/nilpotent-free hypotheses | proof | `ne-next-w2a-qt-turnamplitude-diagonal-normality-proof-20260707` |
+| W2b | Graded irreducibility | Bigraded slot normal form for no-common-carrier | strategy/audit | `ne-next-w2b-bigraded-slot-normalform-no-common-carrier-strategy-20260707` |
+| W2c | Relative exhaustiveness | PBW/rewriting normal form plus named dropped-hypothesis obstruction terms | audit/strategy | `ne-next-w2c-pbw-relative-exhaustiveness-obstruction-audit-20260707` |
+| CAPSTONE | Four-slot carrier identity | Guarded assembly only, with no spectral mass-form wording | audit | `ne-next-capstone-guarded-four-slot-identity-redteam-audit-20260707` |
+| OS1 | Strong-coupling gap scaffold | Genuine small-`beta` multiplaquette KP/character-polymer rung | proof | `ne-next-os1-smallbeta-multiplaquette-kp-rung-proof-20260707` |
+| QC-GRAM | Closure readout / `Q_C` | Exact two-torus readout and Gram/Laplacian normalization boundary | proof/audit | `ne-next-qcgram-twotorus-exact-readout-normalization-proof-20260707` |
+| PH/RP | Product-Haar to Wilson RP | Gap audit from banked product-Haar positivity to interacting Wilson measure | audit/strategy | `ne-next-rp-producthaar-wilson-measure-gap-audit-20260707` |
+| KP/Penrose | Fixed-forest injection | Harvest `6b8dcebd`; then support lemma or no-go certificate for the Penrose route | proof/strategy | `ne-next-kp-fixedforest-fiber-injection-followup-or-nogo-proof-20260707` |
+| Q01 | Gupta-Bleuler physical positivity | Harvest `373f0283`; then wire finite positive-sector witness to carrier/Gauss/Ward hypotheses | proof/audit | `ne-next-q01-gauss-ward-positive-quotient-followup-audit-20260707` |
+| Q02 | Gravity / invariant `E` slot | Harvest `ef87c91f`; then audit trace/P-probe/teleparallel wording against current `E`-slot facts | audit | `ne-next-q02-eslot-trace-pprobe-teleparallel-integration-audit-20260707` |
+| Q03 | Dispersion and doublers | Determinant/wedge dispersion identity plus doubler and mass-shell ledger | proof | `ne-next-q03-wedge-dispersion-doubler-massshell-ledger-proof-20260707` |
+| Q04-Fock | Strand-Fock SM fiber selection | Pentad, hypercharge/Z/6 rigidity, supertrace/anomaly finite identities | proof | `ne-next-q04-pentad-hypercharge-z6-supertrace-proof-20260707` |
+| Q04-Oct | XOR-Fano to `Lambda(C^3)` | Harvest `6e37da00`; then operator-valued left-action bridge with no raw-octonion associativity | strategy/audit | `ne-next-q04-xorfano-lambdac3-leftaction-operator-bridge-followup-strategy-20260707` |
+| Q05 | Triality as monodromy | Equivariant index, cover multiplicativity, and no-four-orbit route | strategy | `ne-next-q05-triality-monodromy-cover-index-nofour-orbit-strategy-20260707` |
+| Q06 | Continuum / GW / refinement | Heterogeneous edge-word path-sum lift beyond homogeneous transfer powers | strategy/audit | `ne-next-q06-heterogeneous-edgeword-pathsum-gw-lift-strategy-20260707` |
+| Q07 | Koide / T-solder | Kappa gate, tetrahedral probe, and Hessian/oracle kill tests | audit/strategy | `ne-next-q07-tsolder-koide-kappa-hessian-killgate-audit-20260707` |
+| Q08-RAD | Exterior Fock radical | Harvest `f8aa05c8`; then integrate/audit the ideal/span theorem or isolate the exact blocker | proof/audit | `ne-next-q08-graded-radical-idealspan-integration-audit-20260707` |
+| Q08-LGV | Checkerboard / LGV | Multi-layer brick-wall lift of the corrected scattering-vertex DAG | proof/strategy | `ne-next-q08-brickwall-sharedvertex-lgv-multilayer-proof-20260707` |
+| Q09-REEH | Horizon / screen well-posedness | Harvest `4b462390`; then isolate finite Reeh-screen hypotheses or no-go | audit/strategy | `ne-next-q09-finite-reeh-screenarea-wellposedness-followup-audit-20260707` |
+| Q09-BW | BW-cut locality | Concrete finite BW-cut locality witness or proof that no current witness exists | proof/audit | `ne-next-q09-bwcut-locality-witness-construction-proof-20260707` |
+| Q10-SCALAR | Signature / scalar amplitude | Harvest `fbdbe43f`; then audit the finite `d = 4` positive corner against the obstruction stack | proof/audit | `ne-next-q10-spinweyl-d4-positive-corner-integration-audit-20260707` |
+| Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction assumption, and physical interpretation separated | audit | `ne-next-q10-stableorder-dimension-claim-boundary-audit-20260707` |
+| Q11-RC0 | `J_R` / RC0 determinant cocycle | Finish identity-minor plus Cauchy-Binet functoriality for `lambdaAction`; only then attack `gl_fiber` | proof | `ne-next-q11-identityminor-cauchybinet-lambdaaction-proof-20260707` |
+| Q11-ORDER | Majorana / order condition | Upgrade C3 sector identities toward operator-level invariant uniqueness | strategy | `ne-next-q11-ordercondition-operator-uniqueness-strategy-20260707` |
+| Q12-GAMMA | GammaPrime quotient | Harvest `5ff9424e`; then generalize nonzero-quotient descended commutation only if audit is clean | audit/strategy | `ne-next-q12-gammaprime-e4-descended-commutation-generalization-audit-20260707` |
+| Q12-C8 | C8 / `J_R` descent | Harvest `96058502`; then prove sector conjugation and C8 compatibility gates | proof/strategy | `ne-next-q12-c8-jr-sector-conjugation-descent-proof-20260707` |
+| Q12-PSA | PSA anomaly gates | PSA-2/3 determinant-line phase gates and promotion conditions | strategy/audit | `ne-next-q12-psa23-determinantline-sectorphase-strategy-20260707` |
+| Q12-MS | Equivariant McKean-Singer | Exact finite-to-analytic boundary for charge-resolved sector index claims | audit | `ne-next-q12-equivariant-ms-charge-sector-index-boundary-audit-20260707` |
+| RG-SCHUR | Coarse-graining | Harvest `82cc3c8e`; then integrate or sharpen the null-nilpotency-instability witness | proof/audit | `ne-next-rg-schur-nullnilpotency-instability-integration-proof-20260707` |
+| C-1FORM | Finite center/twist backgrounds | Twist-sector API and RP/background-cohomology boundary | audit | `ne-next-c1form-twistsector-background-rp-api-audit-20260707` |
+| SPIN10-U5 | Pure-spinor internal selection | U(5) / pure-spinor-line stabilizer shadow or honest finite substitute | strategy | `ne-next-spin10-u5-purespinor-stabilizer-shadow-strategy-20260707` |
+| M4-WIT | Concrete Pauli/Pontryagin witness | Krein-sharp carrier instantiation and positive-sector probe | proof/audit | `ne-next-m4-pauli-pontryagin-krein-positive-probe-proof-20260707` |
+| HSTAR | Model-by-model constraint audits | Harvest `b1980b93`; then integrate/audit the quotient action or open the Gauss-covector rank interface | proof/audit | `ne-next-hstar-ward-descent-quotient-action-integration-audit-20260707` |
+| PLUMBING | Cross-lane real structures | Compatibility table for `J_R`, edge reversal, monodromy inversion, `#`, linearity, and antilinearity | audit | `ne-next-plumbing-jr-edge-reversal-sharp-compatibility-audit-20260707` |
+| Q13 | Red-team / no-go | Re-audit Q12 E4, W2a bridge, RG-Schur, and latest manuscript wording for the four over-claim modes | audit | `ne-next-q13-currentfleet-overclaim-regression-audit-20260707` |
+| Manuscript | P1 v3 / scorecard / thread board | Synchronize claim grades after the next integration wave | audit | `ne-next-manuscript-p1-round2-scorecard-threadboard-sync-audit-20260707` |
+| LIT-PROV | Literature and provenance | Close source-key and convention-citation gaps from the harvested provenance audit | audit | `ne-next-lit-nullstrand-source-provenance-closeout-audit-20260707` |
 
 Balanced refill rule: when capacity opens, load a mixed pack rather than a proof
 monoculture.  A good twelve-lane load is six proof/construction jobs, three or
@@ -142,13 +144,12 @@ kernel checks the statement, not whether the statement deserves the prose claim.
 
 ## Complete solo lane roster
 
-Use this roster as the top-level map when choosing work or refilling
-Aristotle.  It is deliberately broader than the immediate harvest queue: every
-row is a live research lane unless `THREAD_BOARD.md` or a later ledger entry
-parks it.  Treat the names here as baseline lane patterns, not necessarily as
-unused launch names; use the refreshed `ne-next-*` names above for new
-submissions unless you deliberately mint an even more specific non-colliding
-name.
+Use this roster as the stable lane catalog when choosing work.  It is
+deliberately broader than the immediate harvest queue: every row is a live
+research lane unless `THREAD_BOARD.md` or a later ledger entry parks it.  Treat
+the names here as historical baseline patterns, not launch names.  For new
+submissions, use the refreshed `ne-next-*` names above, or mint an even more
+specific non-colliding name and record it in the docket.
 
 | Lane | Pursuit | Next local artifact | Baseline Aristotle job-name pattern |
 |---|---|---|---|
@@ -320,60 +321,47 @@ new name.  Project directories and Aristotle project names should match the job
 name exactly.  If the calendar date changes, update the suffix from `20260707`
 to the current date.
 
-Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
-`aristotle list` before acting):
+Live queue snapshot from `aristotle list --limit 100` on 2026-07-07 (verify
+again before acting):
 
-- **Still running / poll first:** the current running set has eleven
-  StandardModel-relevant lanes: the older Q11 Jacobi/Cauchy-Binet lane
-  `aa4e48f6`, the W2a `Q_A`/Minkowski bridge `ecbf61d8`, and the nine
-  still-running solo-lane refill projects listed below.
-- **Harvest-first before more refill:** Q13 global overclaim (`07f40fff`) and
-  literature/provenance (`5713746e`) have already been harvested.  The Q12 E4
-  radical-healing proof job (`297ae18c`) was canceled after Codex locally
-  proved `E4_nontrivial_healing`.  If any listed running job turns `IDLE`,
-  harvest and integrate/audit it before submitting a duplicate target under a
-  new name.
-- **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
-  Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
-  kill, Q08 corrected scattering-vertex LGV DAG, Q12 genuine non-diagonal
-  triality witness, Q12 C8 non-permutation Hadamard bridge, manuscript postfix
-  claim-grade audit, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
-  transfer-power bridge, Q09 screen-area degeneracy/invariance completion,
-  Q10 intrinsic inertia-index bridge, Q04 sign-gauge reconciliation, Q04
-  Baez-to-XOR ConventionBridge line products, RG-Schur determinant/Krein-Gamma
-  stability,
-  Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
-  Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q04 octonion/Fock
-  convention audit, Q12 C8 compatibility audit, Q11 RC0 determinant-cocycle
-  strategy, P1 manuscript claim audit, Q08 `dGamma` globalization and
-  integration audit, Q08 L4 checkerboard determinant, Q09 BW-cut locality
-  scaffold, Q10 Sylvester-inertia bridge, Q10 multi-time embedding, Q11 B-L
-  dictionary, Q12 GammaPrime quotient, Q12 Furey bridge audit, Q12 charge
-  resolution, Q12 triality bridge, Q12 PSA-1, Q12 G2 parity, Q13 red-team
-  audit, Q10 Lorentzian transitivity, Q10 split witness, Q10 scalar-amplitude
-  census, Q09 modular no-go, Q08 decomposable `dGamma` square, and Q06
-  carrier-GW positive/negative cases.
-- **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707`
-  is superseded by the local compiler-trust-free landing; the Q12 E4
-  radical-healing proof job `297ae18c` is superseded by the local
-  `E4_nontrivial_healing` landing.
+- **Still running / poll first:** twelve StandardModel-relevant lanes are
+  active: `b1980b93`, `fbdbe43f`, `f8aa05c8`, `5ff9424e`, `ecbf61d8`,
+  `ef87c91f`, `6e37da00`, `373f0283`, `4b462390`, `82cc3c8e`, `96058502`,
+  and old KP fixed-forest lane `6b8dcebd`.
+- **Harvest-first before more refill:** if any listed running job turns `IDLE`,
+  harvest and integrate/audit it before submitting a duplicate target.  Q11
+  `aa4e48f6` is already returned; its structural group-action nucleus is
+  landed, and the next proof job is the identity-minor/Cauchy-Binet package
+  named in the dispatch table above.
+- **Recently harvested; do not resubmit under new names:** Q13 global overclaim
+  (`07f40fff`), literature/provenance (`5713746e`), Q10 scalar-amplitude
+  classification (`05fdd744`), Q08 graded radical assembly (`b4206467`), HSTAR
+  Ward/descent model audit (`16d04733`), Q04 sign-gauge and ConventionBridge,
+  Q08 corrected scattering-vertex DAG, Q12 finite triality and non-permutation
+  bridge, manuscript postfix audit, Q01 positive-sector witness/no-go, Q06
+  transfer/GW, Q09 screen-area and BW scaffolds, Q10 inertia/Sylvester stack,
+  Q11 B-L/C3/RC0 strategy, and Q12 G2/PSA/charge/GammaPrime/triality returns.
+- **Canceled/redundant:** `ne-q06-palindrome-gw-no-native-proof-20260707` is
+  superseded by the local compiler-trust-free landing; Q12 E4 radical-healing
+  job `297ae18c` is superseded by the local `E4_nontrivial_healing` landing.
 
-Active solo refill wave.  These names are already submitted and should be
-treated as running/harvest-first until the docket records their result:
+Active jobs.  These names are already submitted and should be treated as
+running/harvest-first until the docket records their result:
 
 | Project | Status | Aristotle job name | Lane | Type |
 |---|---|---|---|---|
-| `aa4e48f6` | running | `ne-q11-jacobi-minor-cauchybinet-rc0-cleanup-proof-20260707` | Q11 RC0 | proof/strategy |
+| `b1980b93` | running | `ne-next-hstar-ward-descent-quotient-action-proof-20260707` | HSTAR quotient action | proof/strategy |
+| `fbdbe43f` | running | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` | Q10 scalar amplitude | proof/strategy |
+| `f8aa05c8` | running | `ne-next-q08-graded-radical-exterior-quotient-followup-proof-20260707` | Q08 exterior quotient | proof/strategy |
+| `5ff9424e` | running | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` | Q12 GammaPrime | audit |
 | `ecbf61d8` | running | `ne-solo-lane-w2a-qa-minkowski-detp-bridge-proof-20260707` | W2a aperture | proof/strategy |
-| `96058502` | running | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 bridge | audit/strategy |
-| `82cc3c8e` | running | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur | proof/strategy |
-| `b4206467` | running | `ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707` | Q08 Fock / LGV | proof/strategy |
-| `4b462390` | running | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW | audit/strategy |
-| `373f0283` | running | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positivity | proof/audit |
-| `05fdd744` | running | `ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707` | Q10 scalar amplitude | strategy/proof |
-| `6e37da00` | running | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion bridge | strategy/audit |
 | `ef87c91f` | running | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` | Q02 E-slot / trace | audit |
-| `16d04733` | running | `ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707` | HSTAR model audit | audit/strategy |
+| `6e37da00` | running | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion bridge | strategy/audit |
+| `373f0283` | running | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positivity | proof/audit |
+| `4b462390` | running | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW | audit/strategy |
+| `82cc3c8e` | running | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur | proof/strategy |
+| `96058502` | running | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 bridge | audit/strategy |
+| `6b8dcebd` | running | `tc-kp-fixed-forest-injection...` | KP fixed-forest | proof/strategy |
 
 Last refill pack, now partly harvested.  Treat these names as already submitted,
 not as open capacity, unless the docket explicitly records a renewed follow-up:
