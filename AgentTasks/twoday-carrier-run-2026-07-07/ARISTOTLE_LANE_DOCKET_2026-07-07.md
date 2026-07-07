@@ -115,3 +115,28 @@ and that its square on decomposable states matches the tuple-level
 `dGamma_sq_identity`.  This is still finite one-body globalization only; a
 global two-body exterior operator and the exterior quotient theorem remain
 open.
+
+## Refill wave after Q08 globalization harvest
+
+Submitted 2026-07-07 after the queue dropped to two running jobs
+(`5bdce729` and `f962cbe7`).  These are lightweight context-pack projects, so
+Aristotle may warn that the project has Lean files but no full Lake cache; that
+is acceptable for the audit/strategy-heavy mix below.  Proof-style jobs should
+return standalone Lean when feasible, or exact theorem statements and blockers.
+
+| Project ID | Descriptive name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `e4f1cedb-8cb1-434e-a1f7-f137b913f067` | `ne-q08-dgamma-exterior-globalization-integration-audit-20260707` | Q08 `dGamma` | audit | Semantic audit of the `dGammaOp`/`dGamma_sq_identity_operator` landing. |
+| `6b63230e-d795-4d7f-b14b-289320922fb6` | `ne-q08-l4-two-particle-checkerboard-rational-determinant-proof-20260707` | Q08 checkerboard Fock | proof/strategy | L=4 two-particle checkerboard determinant identity over rational polynomials, or exact blockers. |
+| `e3f3ae61-8d3b-4bb8-8f86-6efaf07e8ea1` | `ne-q11-c3-majorana-turn-census-proof-20260707` | Q11/Q04 Majorana | proof/strategy | Finite C3 Majorana identity and bare-turn invariant census statements/proof route. |
+| `1bd78359-0b9d-4663-9f74-e4bede95b551` | `ne-q12-furey-ladder-bridge-matrix-entry-audit-20260707` | Q12 convention bridge | audit | Entrywise check plan for the specific repo ladder/Furey bridge matrix. |
+| `11184eac-22e1-42de-9802-37e564712a8c` | `ne-q12-gammaprime-quotient-equivariance-audit-20260707` | Q12 quotient chirality | audit/strategy | Exact finite hypotheses for `tau GammaPrime = GammaPrime` downstairs. |
+| `ed700b2a-d78e-48b4-940f-a24ed420b24d` | `ne-q06-retarded-wilson-symbol-determinant-proof-20260707` | Q06 transfer/GW | proof/strategy | Determinant-level retarded/Wilson symbol identity respecting the palindromic boundary. |
+| `f1fecdb9-ea66-4ced-b675-4b4e1a640722` | `ne-q09-bwcut-torus-modular-locality-audit-20260707` | Q09 horizon/modular | audit | Finite torus BW-cut locality test and entropy/horizon kill conditions. |
+| `9d61e305-48bb-4153-a673-4aecedec1575` | `ne-q10-sylvester-inertia-frustrated-triple-bridge-proof-20260707` | Q10 signature | proof/strategy | Bridge diagonal multi-time obstruction to a general Sylvester-inertia statement, or isolate obstruction. |
+| `ec1ad7d5-ac6a-42bf-b059-4005391e7006` | `ne-q01-krein-positive-sector-witness-or-no-go-audit-20260707` | Q01 positivity | audit | Nonvacuous positive-sector witness, or no-go separating nondegeneracy from positivity. |
+| `7f273e71-94c1-43ca-879c-05229615a61c` | `ne-q13-round1-verdict-redteam-audit-20260707` | Q13 red team | audit | Adversarial audit of round-1 verdicts and recent landings for the four over-claim modes. |
+
+Queue check immediately after submission: these ten projects were `RUNNING`;
+with `5bdce729` and `f962cbe7`, Aristotle had approximately twelve active
+StandardModel-relevant lanes.
