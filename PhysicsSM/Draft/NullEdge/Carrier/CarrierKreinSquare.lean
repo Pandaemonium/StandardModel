@@ -57,6 +57,7 @@ namespace PhysicsSM.Draft.NullEdge.Carrier
 variable {R B E : Type*} [CommRing R] [StarRing R] [Ring B] [Algebra R B]
   [StarRing B] [StarModule R B] [Fintype E]
 
+omit [StarRing R] [StarModule R B] in
 /-- **The Krein square of the full carrier.**  `4 • (star D * D) = Q_A^# + Q_C^# + 4 Q_T
 + 4 E_#`, the self-adjointness-defect-carrying decomposition of the mass form. -/
 theorem carrier_krein_square (gamma nabla : E → B) (Gamma phi : B) (g : E → E → R)
@@ -77,8 +78,86 @@ theorem carrier_krein_square (gamma nabla : E → B) (Gamma phi : B) (g : E → 
             * (star (nabla e) * nabla f - star (nabla f) * nabla e))
         + (4 : R) • phi ^ 2
         + (4 : R) • (∑ e, gamma e * Gamma * (phi * (star (nabla e) - nabla e))) := by
-  sorry
+  -- Derived commutation facts on the star-transports.
+  have hcommMStar : ∀ e f, gamma e * star (nabla f) = star (nabla f) * gamma e := by
+    intro e f
+    have h := congrArg star (hcomm e f)
+    simp only [star_mul, hgammaStar] at h
+    exact h.symm
+  have hCovStar : ∀ e, star (nabla e) * phi = phi * star (nabla e) := by
+    intro e
+    have h := congrArg star (hCov e)
+    simp only [star_mul, hphiStar] at h
+    exact h.symm
+  have hGammaNablaStar : ∀ e, Gamma * star (nabla e) = star (nabla e) * Gamma := by
+    intro e
+    have h := congrArg star (hGammaNabla e)
+    simp only [star_mul, hGammaStar] at h
+    exact h.symm
+  -- `star D0 = ∑ e, star (nabla e) * gamma e`.
+  have hstarD0 : star (solderedNC gamma nabla) = ∑ e, star (nabla e) * gamma e := by
+    unfold solderedNC
+    rw [star_sum]
+    apply Finset.sum_congr rfl
+    intro e _
+    rw [star_mul, hgammaStar]
+  -- `Γφ` is Krein self-adjoint.
+  have hstarPhi : star (Gamma * phi) = Gamma * phi := by
+    rw [star_mul, hphiStar, hGammaStar, hPhiComm]
+  -- The aperture + closure blocks from the pair master identity.
+  have hkrein : (4 : R) • (star (solderedNC gamma nabla) * solderedNC gamma nabla)
+      = (∑ e, ∑ f, g e f • (star (nabla e) * nabla f + star (nabla f) * nabla e))
+        + (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e)
+            * (star (nabla e) * nabla f - star (nabla f) * nabla e)) := by
+    have hpair := weitzenbock_master_pair gamma (fun e => star (nabla e)) nabla g
+      hcl hcommMStar hcomm
+    simp only [] at hpair
+    rw [hstarD0]
+    rw [show solderedNC gamma nabla = ∑ f, gamma f * nabla f from rfl]
+    exact hpair
+  -- The Krein cross term is the self-adjointness defect `E_#`.
+  have hcross : star (solderedNC gamma nabla) * (Gamma * phi)
+        + (Gamma * phi) * solderedNC gamma nabla
+      = ∑ e, gamma e * Gamma * (phi * (star (nabla e) - nabla e)) := by
+    rw [hstarD0]
+    unfold solderedNC
+    rw [Finset.sum_mul, Finset.mul_sum, ← Finset.sum_add_distrib]
+    apply Finset.sum_congr rfl
+    intro e _
+    have e1 : star (nabla e) * gamma e * (Gamma * phi)
+        = gamma e * Gamma * (phi * star (nabla e)) := by
+      have h1 : star (nabla e) * gamma e = gamma e * star (nabla e) := (hcommMStar e e).symm
+      rw [h1]
+      have h2 : gamma e * star (nabla e) * (Gamma * phi)
+          = gamma e * (star (nabla e) * Gamma) * phi := by noncomm_ring
+      rw [h2, ← hGammaNablaStar e]
+      have h3 : gamma e * (Gamma * star (nabla e)) * phi
+          = gamma e * Gamma * (star (nabla e) * phi) := by noncomm_ring
+      rw [h3, hCovStar e]
+    have e2 : Gamma * phi * (gamma e * nabla e)
+        = - (gamma e * Gamma * (phi * nabla e)) := by
+      have h : Gamma * phi * (gamma e * nabla e) = Gamma * (phi * gamma e) * nabla e := by
+        noncomm_ring
+      rw [h, hPhiGamma e]
+      have h2 : Gamma * (gamma e * phi) * nabla e = (Gamma * gamma e) * (phi * nabla e) := by
+        noncomm_ring
+      rw [h2, hGammaAnti e]; noncomm_ring
+    rw [e1, e2]; noncomm_ring
+  -- The potential squares to `phi ^ 2`.
+  have hpotsq : (Gamma * phi) * (Gamma * phi) = phi ^ 2 := by
+    rw [← pow_two]; exact potential_sq Gamma phi hGammaSq hPhiComm
+  -- Assemble the Krein square.
+  rw [star_add, hstarPhi]
+  have expand : (star (solderedNC gamma nabla) + Gamma * phi)
+        * (solderedNC gamma nabla + Gamma * phi)
+      = star (solderedNC gamma nabla) * solderedNC gamma nabla
+        + (star (solderedNC gamma nabla) * (Gamma * phi)
+            + (Gamma * phi) * solderedNC gamma nabla)
+        + (Gamma * phi) * (Gamma * phi) := by noncomm_ring
+  rw [expand, smul_add, smul_add, hkrein, hcross, hpotsq]
+  abel
 
+omit [StarRing R] [StarModule R B] in
 /-- **Self-adjoint corollary: the assembly transports to `D^#D`.**  When every transport
 is Krein-self-adjoint (`star nabla_e = nabla_e`, the edge-reflection gauge class), the
 defect `E_#` vanishes and the Krein square equals the banked `D^2` assembly:
@@ -101,6 +180,9 @@ theorem carrier_krein_square_selfAdjoint (gamma nabla : E → B) (Gamma phi : B)
         + (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e)
             * (nabla e * nabla f - nabla f * nabla e))
         + (4 : R) • phi ^ 2 := by
-  sorry
+  have h := carrier_krein_square gamma nabla Gamma phi g hcl hcomm hGammaSq hGammaAnti
+    hGammaNabla hPhiGamma hPhiComm hCov hgammaStar hGammaStar hphiStar
+  rw [h]
+  simp only [hnablaStar, sub_self, mul_zero, Finset.sum_const_zero, smul_zero, add_zero]
 
 end PhysicsSM.Draft.NullEdge.Carrier

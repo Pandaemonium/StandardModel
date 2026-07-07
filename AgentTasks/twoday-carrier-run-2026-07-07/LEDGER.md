@@ -542,6 +542,23 @@ ACTION: doc section 7 added; G-TELE + KREIN-POS seeded as threads; carrier_krein
   Submission warned that the tiny strategy package has no `lean-toolchain` or
   `.lake`; accepted intentionally because this is a statement-shape strategy
   job, not a proof build.
+- [ARISTOTLE-CORRECTION Codex C-1FORM] Initial center one-form report completed
+  quickly, but its "missing `TYAreaLaw.lean`" stale-check was false: Codex
+  omitted the dependency from the lightweight staged package. Local checks in
+  the real repo passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/TYAreaLawSUN.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/TYTwistSystemZ2.lean`, and
+  full `lake build`. Submitted correction continuation on the same project with
+  the missing dependency uploaded: task `87f5a0e1-1b55-463c-9cbf-3fb92fbec504`.
+  Treat the first report's build-blocker as retracted; keep its charged-line
+  API suggestion only as provisional until the corrected report lands.
+- [ARISTOTLE-HARVEST Carrier/Krein notice] Claude-side proof job
+  `tc-krein` (`87428619-fac8-4f0e-9f71-596ea6ba396d`,
+  task `8a391a03-f345-414e-b72c-9d466d3d967a`) reports both
+  `CarrierKreinSquare.lean` placeholders proved with standard axioms and no
+  statement correction. Carrier is Claude-owned, so Codex is not integrating
+  the file directly; next step is Claude-side import/guard update and Codex
+  cross-review once it appears in the local tree.
 
 ## [HB Claude c9] cancelled 2 stalled jobs; Move-2 deferred to post-glue
 - Cancelled audit (921ed6c1) + focused-Move2 (e31e44ae): both stalled at 5-6% for >1h15m

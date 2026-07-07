@@ -300,9 +300,11 @@ obstruction, and to what?
 - **Finite Pontryagin positivity [near].** Fable's highest-leverage positivity reframing is
   finite-dimensional: the carrier lives in a finite Pontryagin/Krein space, not an arbitrary
   infinite-dimensional Krein setting. The first formal target is an invariant maximal nonnegative
-  subspace theorem for a `J`-self-adjoint finite matrix/operator. If this is proved, the mass-form
-  question changes from "does a positive physical sector exist?" to the sharper and more physical
-  "is the guaranteed sector natural, gauge-invariant, local, and grading-compatible?"
+  subspace theorem for a `J`-self-adjoint finite matrix/operator. Aristotle's 2026-07-07 audit
+  sharpened the grading: the guaranteed subspace may be degenerate, so it is not by itself a
+  positive-definite Hilbert sector. The mass-form question therefore becomes two-stage: first lock
+  the finite nonnegative invariant-subspace shadow, then identify the extra definitizability /
+  naturality hypotheses that make a genuine positive physical sector.
 
 ### 4.4 Emergent-spacetime and information-theoretic directions [SPECULATIVE]
 
@@ -320,9 +322,11 @@ obstruction, and to what?
 If the collaborator wants the highest-leverage problems rather than new directions:
 
 1. **Krein positivity.** On which physical sector does the indefinite form `D^#D` restrict to a
-   genuine non-negative form (so `M² = inf spec` is meaningful)? Fable's near target is the finite
-   Pontryagin invariant-subspace theorem: prove existence first, then ask whether the guaranteed
-   sector is natural/gauge-invariant/local rather than whether a sector exists at all.
+   genuine positive-definite form (so `M² = inf spec` is meaningful)? Fable's near target is the
+   finite Pontryagin invariant-subspace theorem, but the 2026-07-07 Aristotle audit warns that the
+   unconditional theorem gives only a maximal nonnegative sector, possibly with null vectors. The
+   sharpened target is: prove the cheap `D^#D` finite identities, then ask Fable which
+   definitizability/naturality hypothesis licenses a positive physical sector.
 2. **The nonabelian mass gap.** The C-mode gate (see §4.2).
 3. **Exhaustiveness.** The unconditional classification (see §4.3).
 4. **The `ℂ⊗𝕆 →` dynamics.** A genuine piece of SM dynamics, not just charge co-location.
@@ -386,11 +390,14 @@ a real discrete-gravity program — "discrete null teleparallelism."**
 
 - **[near, TOP PICK] Pontryagin invariant subspaces.** The complexes are *finite*, so we are in
   **Pontryagin spaces `Π_κ`**, where Pontryagin (1944) / Krein–Langer guarantees every `J`-self-adjoint
-  operator has an invariant maximal non-negative subspace. Applied to `D^#D`, this **guarantees** a
-  positive-semidefinite sector — so `M² = inf spec on the physical sector` is meaningful with no extra
-  input, and the question sharpens from "does a physical sector exist?" to "is the guaranteed one
-  *natural*?" — a strict epistemic upgrade. Finite-dimensional honest linear algebra; **no Krein/
-  Pontryagin theory exists in Mathlib**, so it is a citable formalization in its own right.
+  operator has an invariant maximal non-negative subspace. Aristotle's 2026-07-07 audit keeps this
+  useful but downgrades the physical reading: that sector can be degenerate, so it does **not**
+  automatically give a positive-definite Hilbert sector or make `M² = inf spec on the physical
+  sector` meaningful with no extra input. The honest upgrade is conditional: `D^#D` supplies a
+  finite `J`-self-adjoint mass-form identity, while a physical sector needs an explicit
+  definitizability/naturality/gauge-compatibility hypothesis. Finite-dimensional honest linear
+  algebra; **no Krein/Pontryagin theory exists in Mathlib**, so the conditional infrastructure is
+  still a citable formalization in its own right.
 - **[reach] Osterwalder–Schrader as the physical sector.** We have RP machinery in lane C; OS
   reconstruction produces a positive Hilbert space by quotienting null vectors of a semidefinite form.
   Null edges give a canonical causal reflection `θ`. *Pre-registered conjecture:* `⟨θx,x⟩` from the
@@ -450,8 +457,10 @@ literally an **angle** statement — the shape this framework speaks.
 
 ### 7.7 If forced to pick two
 
-1. **The Pontryagin invariant-subspace theorem** — finite-dimensional, unformalized anywhere, converts
-   the hardest crux from "does a physical sector exist" to "is the guaranteed one natural."
+1. **The Pontryagin/Krein positive-sector audit** — finite-dimensional, unformalized anywhere, but
+   now graded carefully: the unconditional theorem gives a possibly degenerate maximal nonnegative
+   sector, while a physical positive-definite sector requires explicit definitizability/naturality
+   input.
 2. **Adopt the teleparallel reading of `E`** — the difference between "gravity as fourth mode" being an
    analogy and being a discretization of a known GR-equivalent theory with the positive-energy theorem
    already at its boundary.

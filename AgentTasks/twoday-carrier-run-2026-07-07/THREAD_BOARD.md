@@ -117,11 +117,16 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   proving (or sharply refuting) the invariant maximal nonnegative subspace route
   for `J`-self-adjoint carrier squares, plus a handoff deciding whether this is
   a standalone Mathlib-adjacent proof job or project-local Krein infrastructure.
-- **Status:** OPEN; Fable guidance says this is the near target for the hardest
-  positivity crux. Codex to submit a focused Aristotle strategy job before proof
-  spend. This changes the question from "does a positive sector exist?" to
-  "is the guaranteed sector natural, gauge-invariant, local, and
-  grading-compatible?"
+- **Status:** STRATEGY COMPLETE / SHADOW LANDED. Aristotle job
+  `ce99501a`/`3078e24d` returned the decisive audit: the weak invariant maximal
+  nonnegative theorem is true in finite Pontryagin space, but the sector can be
+  degenerate, so it is not a positive-definite physical Hilbert sector without
+  extra definitizability/naturality hypotheses. Codex landed the cheap finite
+  identity shadow in `NullEdgeSuperDiracKreinCore`:
+  `kreinSharp_kreinSharp`, `kreinSharp_mul`,
+  `isKreinSelfAdjoint_iff_kreinSharp_eq_self`, and
+  `kreinSharp_mul_self_isKreinSelfAdjoint`. Next: Fable ratifies the exact
+  positive-sector hypothesis before any headline theorem proof spend.
 ### G-TP - teleparallel gravity slot [shared, Fable-gated]
 - **Done:** exact Lean statement for discrete torsion
   `T(e,f) = nabla_e alpha_f - nabla_f alpha_e` and an `E`-slot Clifford
@@ -130,6 +135,18 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Status:** OPEN; Fable guidance identifies the `E`-slot as discrete null
   teleparallelism, not a loose gravity analogy. Carrier code remains
   Claude-owned; Codex may help with strategy/context packs.
+### C-1FORM - finite one-form center-symmetry framing [Codex strategy]
+- **Done:** an Aristotle/Fable-ratified Lean statement layer connecting the
+  existing `CenterFluxSector` finite center-shift/electric-sector API and the
+  `TYAreaLawSUN` twist system to honest finite one-form center-symmetry
+  language, with explicit non-claims about confinement, continuum Ward
+  identities, anomalies, spontaneous breaking, and cohomology.
+- **Status:** CORRECTION IN-FLIGHT. Initial Aristotle report
+  `f8cdf5c2`/`987a9882` usefully recommended a charged-line API, but its
+  "missing `TYAreaLaw.lean`" build-blocker finding was a Codex staging omission;
+  local `lake env lean` on `TYAreaLawSUN.lean`/`TYTwistSystemZ2.lean` and full
+  `lake build` pass. Correction task `87f5a0e1` uploaded the missing dependency.
+  Wait for the corrected statement-shape guidance before adding a new API.
 ### TY-LINEAGE - audit the 0808.3442 dependency [Codex, small]
 - **Done:** a written verdict in the ledger + affected docstrings: does our TY
   route depend on disputed decimation results, or only on the rigorous 1985 RP

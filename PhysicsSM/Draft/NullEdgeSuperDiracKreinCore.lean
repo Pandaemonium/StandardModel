@@ -35,6 +35,66 @@ target than ordinary positive-definite Hilbert self-adjointness.
 def IsKreinSelfAdjoint (J D : Matrix Idx Idx Complex) : Prop :=
   J * D = D.conjTranspose * J
 
+/-- Krein adjoint for the finite form with fundamental symmetry `J`.
+
+When `J` is Hermitian and involutive, this is the usual sharp operation
+`A^# = J A^dagger J`. -/
+noncomputable def kreinSharp (J A : Matrix Idx Idx Complex) :
+    Matrix Idx Idx Complex :=
+  J * A.conjTranspose * J
+
+/-- The Krein sharp operation is involutive for a Hermitian involutive
+fundamental symmetry. -/
+theorem kreinSharp_kreinSharp
+    (J A : Matrix Idx Idx Complex)
+    (hHerm : J.conjTranspose = J) (hInv : J * J = 1) :
+    kreinSharp J (kreinSharp J A) = A := by
+  unfold kreinSharp
+  simp +decide [← Matrix.mul_assoc, hHerm, hInv]
+  rw [Matrix.mul_assoc, hInv, Matrix.mul_one]
+
+/-- Krein sharp reverses products. -/
+theorem kreinSharp_mul
+    (J A B : Matrix Idx Idx Complex) (hInv : J * J = 1) :
+    kreinSharp J (A * B) = kreinSharp J B * kreinSharp J A := by
+  simp [kreinSharp, Matrix.mul_assoc, Matrix.conjTranspose_mul]
+  simp +decide [← Matrix.mul_assoc, hInv]
+
+/-- The matrix predicate `IsKreinSelfAdjoint` is equivalent to fixedness under
+the Krein sharp operation when `J` is involutive. -/
+theorem isKreinSelfAdjoint_iff_kreinSharp_eq_self
+    (J D : Matrix Idx Idx Complex) (hInv : J * J = 1) :
+    IsKreinSelfAdjoint J D ↔ kreinSharp J D = D := by
+  constructor
+  · intro h
+    unfold IsKreinSelfAdjoint at h
+    unfold kreinSharp
+    calc
+      J * D.conjTranspose * J = J * (D.conjTranspose * J) := by
+        rw [Matrix.mul_assoc]
+      _ = J * (J * D) := by rw [← h]
+      _ = D := by rw [← Matrix.mul_assoc, hInv, Matrix.one_mul]
+  · intro h
+    unfold IsKreinSelfAdjoint
+    unfold kreinSharp at h
+    calc
+      J * D = J * (J * D.conjTranspose * J) := by rw [h]
+      _ = (J * J) * D.conjTranspose * J := by
+        rw [← Matrix.mul_assoc J (J * D.conjTranspose) J,
+          ← Matrix.mul_assoc J J D.conjTranspose]
+      _ = D.conjTranspose * J := by rw [hInv, Matrix.one_mul]
+
+/-- The algebraic Krein square `D^# D` is always `J`-self-adjoint when `J` is a
+Hermitian involution. This is only an adjointness identity, not a positivity or
+spectral claim. -/
+theorem kreinSharp_mul_self_isKreinSelfAdjoint
+    (J D : Matrix Idx Idx Complex)
+    (hHerm : J.conjTranspose = J) (hInv : J * J = 1) :
+    IsKreinSelfAdjoint J (kreinSharp J D * D) := by
+  rw [isKreinSelfAdjoint_iff_kreinSharp_eq_self _ _ hInv]
+  rw [kreinSharp_mul J (kreinSharp J D) D hInv]
+  rw [kreinSharp_kreinSharp J D hHerm hInv]
+
 /-- The mass-shell fundamental symmetry `J = m^{-1} D`, written with ASCII
 division notation as `(1 / m) D`. -/
 def massShellJ (D : Matrix Idx Idx Complex) (m : Complex) :

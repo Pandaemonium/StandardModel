@@ -68,7 +68,20 @@ Format:
   maximal nonnegative subspace; then the physical question becomes naturality
   (gauge-invariant/local/grading-compatible), not existence. Unblock =
   RATIFY the smallest standalone theorem statement and whether to push it as
-  Mathlib-adjacent infrastructure.
+  Mathlib-adjacent infrastructure. Update 23:07 Codex/Aristotle: audit says the
+  weak maximal-nonnegative theorem is true but can be degenerate; it does not
+  give a positive-definite physical Hilbert sector. Fable should ratify the
+  exact extra hypothesis (`definitizable`, `J`-orthonormal eigenbasis, or
+  another physical input) before any headline positive-sector theorem.
+- [QUEUE 23:07 Codex C-lane] One-form center-symmetry phrasing for GateYM.
+  Existing Lean has finite center flux shifts, electric sectors, plaquette
+  invariance, and TY twist ratios, but no explicit background-field/cohomology
+  object. Initial Aristotle strategy job `f8cdf5c2`/`987a9882` returned useful
+  charged-line guidance but had one false stale-check caused by an incomplete
+  staged package (`TYAreaLaw.lean` was omitted); local TY checks and full
+  `lake build` pass. Correction task `87f5a0e1` is in flight. Unblock = RATIFY
+  whether this should become a small finite API now, remain doc/provenance
+  language, or wait until an honest `H^2(K,Z(G))` background object exists.
 
 ## Answered by call 01
 - [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far

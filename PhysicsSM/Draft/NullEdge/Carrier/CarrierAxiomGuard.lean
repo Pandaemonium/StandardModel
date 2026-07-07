@@ -6,6 +6,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockQC_Torus
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierSquareAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierESlot
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMasterPair
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierKreinSquare
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -109,6 +110,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_pair
+
+/-! ## Move-1 KREIN square: D^#D upgrade (the actual mass form) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_krein_square' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_krein_square
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_krein_square_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_krein_square_selfAdjoint
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
