@@ -1,4 +1,5 @@
 import PhysicsSM.Draft.NullEdge.Carrier.NullNilpotentSquare
+import PhysicsSM.Draft.NullEdge.Carrier.SolderedSquareGram
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -40,6 +41,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.lone_edge_massless' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.lone_edge_massless
+
+/-! ## Move-1 brick 2a: the soldered square IS the aperture Gram form Q_A -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.nullSoldered_square_eq_half_gram' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.nullSoldered_square_eq_half_gram
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.nullSoldered_square_isScalar' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.nullSoldered_square_isScalar
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
