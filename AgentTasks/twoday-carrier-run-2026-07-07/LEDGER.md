@@ -2326,3 +2326,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Fleet: 38eeb1a6 (Kugo-Ojima), 43a7f979 (equipartition), 0dc48ac7
   (perp-signature) still RUNNING; GW landed this cycle (c35). Codex running
   two eg-* jobs in parallel.
+
+## [HB Codex solo] Q09 screen-area theorem + solo prompt realignment
+- Updated `GOAL_PROMPT_CODEX.md` for solo work: no new Fable/model calls unless
+  user-requested, latest in-repo Claude/Fable material becomes steering context,
+  and research goals now track Q09, Q12, Q06-Q08, QC-GRAM/Q_C, OS1/KP/RP, and
+  manuscript/status alignment.
+- Landed the Q09-L1 finite area nucleus in
+  `PhysicsSM/Draft/NullEdge/GateI1/ScreenArea.lean`. New guarded facts include
+  determinant polarization
+  `screenArea P N = det(P + N) - det P - det N`, the null-screen formula
+  `screenArea (finBundleMomentum psi) (rankOne chi) =
+  sum_i |psi_i wedge chi|^2`, and nonnegative real part for that null-screen
+  area. Added the module to the GateI1 aggregator and a `HORIZON-SCREEN-AREA`
+  thread-board entry.
+- Claim boundary: PROVED finite kinematic identity only. This supports the Q09
+  "area is relational like mass" statement, not horizon entropy, BW-cut,
+  Jacobson, ANEC, universal coefficient, or continuum claims.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ScreenArea.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.ScreenArea`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

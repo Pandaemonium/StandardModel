@@ -25,6 +25,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.FradkinShenkerFinite
 import PhysicsSM.Draft.NullEdge.GateI1.ElectroweakRung
 import PhysicsSM.Draft.NullEdge.GateI1.ApertureEqualsTurn
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
+import PhysicsSM.Draft.NullEdge.GateI1.ScreenArea
 import PhysicsSM.Draft.NullEdge.GateI1.UnificationCapstone
 
 /-!

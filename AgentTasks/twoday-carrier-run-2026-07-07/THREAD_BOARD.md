@@ -487,6 +487,18 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   count at dim <= 4 (kill = excess over O(3) forces fine-tuning). New named
   gate UM (uniform majorant, the finite HSSC shadow) adopted.
 
+### HORIZON-SCREEN-AREA - Q09 relational area theorem [Codex solo; new Q09 lane]
+- **Done:** Q09-L1 kernel-ready area nucleus landed in
+  `PhysicsSM/Draft/NullEdge/GateI1/ScreenArea.lean`: `screenAdj P =
+  trace(P) I - P`, `screenArea P N = trace(screenAdj P * N)`, determinant
+  polarization `screenArea P N = det(P + N) - det P - det N`, finite additivity
+  over pierced momentum blocks, null-screen wedge formula, and nonnegative real
+  part for `screenArea (finBundleMomentum psi) (rankOne chi)`.
+- **Status:** PROVED finite kinematic identity only. This supports Q09's
+  "area is relational like mass" statement. Entropy, BW-cut, Jacobson, ANEC,
+  universal coefficient, and continuum/horizon interpretations remain MEMO or
+  OPEN until their finite hypotheses are stated and checked.
+
 ## Standing meta-threads
 
 - **AUDIT-POOL:** every landed flagship enters; Aristotle audit fired EVENT-DRIVEN
