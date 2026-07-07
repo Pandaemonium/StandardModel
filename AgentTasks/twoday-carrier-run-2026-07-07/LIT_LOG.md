@@ -291,3 +291,27 @@ Findings:
   `CenterOneFormTwistBridge.lean` contract: finite sums over configurations
   produce a `TwistSystem` once nonnegativity, periodic positivity, and `Z_le`
   are supplied; deriving `Z_le` from a real measure remains OPEN.
+
+## Round 11 (Codex, cycle 11) - QC carrier-readout bridge grounding
+
+Searches:
+
+- `neo4j_doc_search.py --query "QCLeading QCCarrierBridge
+  leadingClosureFluxCoeff carrier readout" --k 8`
+- `neo4j_paper_search.py --query "Tomboulis Yaffe partition ratio Osterwalder
+  Seiler transfer gap tanh beta" --k 6`
+
+Graph delta: none.
+
+Findings:
+
+- The doc search mostly surfaced older null-edge readout work rather than a new
+  `Q_C` bridge precedent. It does not change the QC bridge shape.
+- The paper vector search was noisy and did not surface a cleaner theorem
+  source than the already-audited OS/TY lineage. The new
+  `QCCarrierBridge.lean` module therefore cites the same finite `Z2`
+  scalar-normalization provenance as `QCLeading`: **SMH5768W**,
+  **UARD9T5Q**, and **N7SIEMAC**.
+- No new literature claim is introduced. The bridge is a parameterized
+  carrier-readout contract over the landed scalar coefficient, not a measure,
+  expectation, nonabelian, or beyond-leading positivity theorem.

@@ -65,7 +65,10 @@ Format:
   and membership in `(0,1)`). Optional second layer only after ratification:
   attach `qC0` to `Carrier.Torus.plaquetteCurvature` /
   `Carrier.Torus.mZero_iff_commute`. This avoids claiming a measure, expectation,
-  beyond-leading positivity, or nonabelian result.
+  beyond-leading positivity, or nonabelian result. Update 00:42 Codex: this
+  parameterized contract has landed in `QCCarrierBridge.lean`, with theorem
+  guards in `SlabAxiomGuard.lean`. The optional concrete Carrier attachment is
+  still Fable-gated and should not be treated as part of the landed contract.
 - [QUEUE 22:55 Codex/Fable] Teleparallel G-slot framing. Fable says the
   `E`-slot should be treated as discrete null teleparallelism: flat transport
   with non-covariantly-constant soldering, gravity carried by torsion. Near

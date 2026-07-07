@@ -11,6 +11,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
+import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
@@ -172,6 +173,24 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCLeading.leadingClosureFluxCoeff_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCLeading.leadingClosureFluxCoeff_strictMono
+
+/-! ## QC-leading carrier-readout contract (parameterized; no expectation claim) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.LeadingQCCarrierContract.readout_eq_tanh' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.LeadingQCCarrierContract.readout_eq_tanh
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.LeadingQCCarrierContract.readout_eq_exp_neg_osSpectralGap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.LeadingQCCarrierContract.readout_eq_exp_neg_osSpectralGap
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.LeadingQCCarrierContract.readout_mem_Ioo' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.LeadingQCCarrierContract.readout_mem_Ioo
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.scalarNormalizationContract_readout_eq_tanh' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge.scalarNormalizationContract_readout_eq_tanh
 
 /-! ## OS1 finite polymer-map rungs (not volume-uniform KP) -/
 

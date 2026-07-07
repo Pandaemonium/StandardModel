@@ -55,6 +55,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
+import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
@@ -730,5 +731,8 @@ expansion, or physical clustering theorem is claimed).
 closure-flux coefficient and proves it is the same scalar as the TY partition
 ratio and OS contraction factor `exp(-gap) = tanh beta`; explicitly not a
 carrier `Q_C` expectation theorem and not a beyond-leading positivity claim).
+`QCCarrierBridge` (parameterized leading-readout contract tying an externally
+supplied observable/readout to the `QCLeading` scalar consequences; still no
+measure, expectation, nonabelian, or beyond-leading positivity claim).
 Adding a new YM module? Import it here.
 -/

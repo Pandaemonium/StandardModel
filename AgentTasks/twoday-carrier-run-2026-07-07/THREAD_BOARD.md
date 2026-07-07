@@ -40,11 +40,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `nbody_aperture_massless_iff_collinear`; `Q_T = 0 iff massMatrix = 0` tied to
   `turnAmplitude_eq_zero_iff`; guarded; cross-reviewed. Statements Fable-RATIFIED
   before proof spend (call 02).
-- **Status:** OPEN. Claude commit `66c0051` added
-  `CarrierApertureIdentification.lean` as a Q_A statement/proof-handoff file,
-  but both headline theorems are still draft placeholders and the file is not a
-  banked/kernel-checked identification. Codex review flagged the docstring as
-  ahead of the kernel until those placeholders are removed.
+- **Status:** PARTIAL BANKED. Claude commit `49f8847` proved and guarded the
+  abstract `Q_A` identification lemmas `Q_A_eq_totalSq` and
+  `Q_A_zero_iff_totalSq_zero`; Codex reviewed the diff in commit `220451b`.
+  Still OPEN for the W2a done-condition: the concrete Minkowski/collinearity
+  tie and the `Q_T` identification layer.
 
 ### W2b - graded irreducibility (the upgraded no_common_carrier) [Claude]
 - **Done:** the bigraded-slot theorem (order x Clifford-degree x gamma-parity;
@@ -108,7 +108,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   parameterized `QCCarrierBridge.LeadingQCCarrierContract`, queued for Fable
   call 03 ratification before heavier proof spend. Claude's Carrier-side torus
   flatness theorem landed in commit `4a779c0`; use it only after contract
-  ratification.
+  ratification. Codex landed the parameterized bridge contract in
+  `QCCarrierBridge.lean`: an externally supplied observable/readout with a
+  distinguished observable whose readout is exactly
+  `QCLeading.leadingClosureFluxCoeff beta`, plus imported consequences
+  `= tanh beta`, `= exp(-gap)`, and membership in `(0,1)`. This remains a
+  leading scalar/readout contract, not a carrier expectation theorem, not
+  beyond-leading positivity, and not a nonabelian result. Next optional layer:
+  after Fable ratification, attach the distinguished observable to the concrete
+  Carrier torus curvature API without changing the measure/expectation rails.
 
 ## Supporting threads
 

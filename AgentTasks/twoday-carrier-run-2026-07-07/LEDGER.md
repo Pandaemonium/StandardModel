@@ -952,3 +952,36 @@ positivity (both in progress).
   `algebraMap` to reflect zero. Review boundary: this validates the abstract
   carrier Q_A identification statement and guard, not the later concrete
   Minkowski/collinearity specialization.
+
+## [LEAN Codex QC carrier-readout bridge 00:42]
+- Landed `PhysicsSM/Draft/NullEdge/GateYM/QCCarrierBridge.lean`, the
+  parameterized bridge contract requested by the QC/Fable queue.
+- New API:
+  `QCCarrierBridge.LeadingQCCarrierContract`,
+  `LeadingQCCarrierContract.readout_eq_leadingClosureFluxCoeff`,
+  `LeadingQCCarrierContract.readout_eq_tanh`,
+  `LeadingQCCarrierContract.readout_eq_exp_neg_osSpectralGap`,
+  `LeadingQCCarrierContract.readout_mem_Ioo`,
+  `LeadingQCCarrierContract.readout_pos`,
+  `LeadingQCCarrierContract.readout_lt_one`,
+  `scalarNormalizationContract`,
+  `scalarNormalizationContract_readout_eq_tanh`, and
+  `scalarNormalizationContract_readout_eq_exp_neg_osSpectralGap`.
+- Scope rails: the observable type and readout are parameters. The bridge only
+  says the distinguished readout equals `QCLeading.leadingClosureFluxCoeff beta`
+  and inherits scalar consequences from `QCLeading`; it does not construct a
+  measure, expectation value, nonabelian model, beyond-leading positivity result,
+  or concrete Carrier torus attachment.
+- Guarded the new readout consequences in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean` and imported the module
+  from `PhysicsSM/Draft/NullEdge/GateYM.lean`.
+- Literature round 11 recorded: no new graph delta; the bridge reuses the
+  `QCLeading` OS/TY lineage keys **SMH5768W**, **UARD9T5Q**, and **N7SIEMAC**.
+- Mechanical checks passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/QCCarrierBridge.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`, and
+  `git diff --check`. Targeted builds replayed older imports and emitted only
+  pre-existing warnings outside this new bridge.
