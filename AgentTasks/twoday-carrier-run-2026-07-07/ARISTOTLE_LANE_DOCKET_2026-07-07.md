@@ -89,3 +89,9 @@ focused Mathlib Lake package.
 Queue check after submission: all eight follow-up projects were `RUNNING`.
 After the local Q06 counterexample landing, `7a12dbbd` was canceled; the other
 seven follow-up projects remain active unless later status checks say otherwise.
+
+Local parallel progress while `c2e23b53` is in flight: Codex landed the finite
+sector-additivity bookkeeping theorem `sum_sectorContribution_eq_total` in
+`PSA.lean`.  This should be treated as the additive accounting rung only; the
+broader Aristotle job is still needed for any equivariant McKean-Singer
+charge-sector index theorem or anomaly-gate promotion.

@@ -578,19 +578,23 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   also landed in `PhysicsSM/Draft/NullEdge/GateI1/PSA.lean`:
   `superTrace_eq_det_one_sub` proves the finite exterior-supertrace identity
   `superTrace g = det(1 - g)`, and `det_one_sub_permMatrix_eq_zero` proves the
-  permutation-matrix order-`m` vanishing.
-- **Status:** PROVED algebraic T1-T4 plus finite PSA-1 accounting identity only.
+  permutation-matrix order-`m` vanishing. Codex then added the finite
+  charge/sector bookkeeping theorem `sum_sectorContribution_eq_total`: summing
+  label-resolved sector contributions recovers the total finite contribution.
+- **Status:** PROVED algebraic T1-T4 plus finite PSA-1 and sector-additivity
+  accounting identities only.
   This confirms the G2-parity defusal at the XOR/Fano algebra level and removes
   sign-convention risk from the automorphism claim; PSA-1 gives the per-sector
-  determinant/supertrace check but not the equivariant index theorem behind a
-  physical anomaly statement.
+  determinant/supertrace check, and the new sector theorem gives only the
+  finite partition-by-label bookkeeping. Neither result proves the equivariant
+  index theorem behind a physical anomaly statement.
 - **Next:** T5/T6/T7 require explicit triality intertwiners and their
   G2-equivariance; T8 requires the convention bridge
   `(-1)^F_c = B phi B^{-1}` between the ladder/Furey basis and XOR/Fano basis;
   T9/E4 requires constraint equivariance `tau Gamma' = Gamma'` before any
   per-sector physical quotient count. PSA still needs the equivariant
-  McKean-Singer/charge-resolution bridge before sector failures can be promoted
-  to anomaly gates. Failure of T8 is a C8-seam escalation, not a patch.
+  McKean-Singer charge-sector index theorem before sector failures can be
+  promoted to anomaly gates. Failure of T8 is a C8-seam escalation, not a patch.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.

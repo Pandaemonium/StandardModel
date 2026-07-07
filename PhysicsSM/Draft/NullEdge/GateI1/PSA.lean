@@ -14,10 +14,10 @@ The finite identity is `superTrace g = det(1 - g)`.  A second theorem proves
 that a permutation matrix has `det(1 - g) = 0` because it fixes the all-ones
 vector.
 
-Claim boundary: this is a finite representation/accounting identity for one
-sector.  It does not by itself prove anomaly cancellation, an equivariant
-McKean-Singer theorem, charge-resolution additivity, or any physical chirality
-claim.
+Claim boundary: this is finite representation/accounting only.  The final
+section proves the elementary finite sector-additivity bookkeeping needed for
+charge resolution, but this still does not prove anomaly cancellation, an
+equivariant McKean-Singer theorem, or any physical chirality claim.
 
 Provenance: `AgentTasks/fable_parallel/Q12_answer.md`; Aristotle project
 `bbcf12c6`, task `33f620c0`.
@@ -133,6 +133,34 @@ theorem det_one_sub_permMatrix_eq_zero {K : Type*} [Field K] {m : ℕ}
   · exact ⟨⟨0, hm⟩⟩
   · simp +decide [Matrix.one_apply]
 
+/-! ## Finite charge/sector resolution bookkeeping -/
+
+section SectorResolution
+
+variable {ι Ω S : Type*} [Fintype ι] [Fintype Ω] [DecidableEq Ω] [AddCommMonoid S]
+
+/--
+Contribution of one sector label `ω` to a finite indexed sum.  This is the
+minimal accounting object behind charge-resolved PSA checks.
+-/
+noncomputable def sectorContribution (sector : ι → Ω) (f : ι → S) (ω : Ω) : S :=
+  ∑ i : ι, if sector i = ω then f i else 0
+
+/--
+Finite charge/sector resolution: summing the sector contributions over all
+sector labels recovers the total contribution.
+
+This is only bookkeeping over a finite partition-by-label.  It is not an
+equivariant McKean-Singer theorem and does not assert that a physical anomaly
+vanishes.
+-/
+theorem sum_sectorContribution_eq_total (sector : ι → Ω) (f : ι → S) :
+    (∑ ω : Ω, sectorContribution sector f ω) = ∑ i : ι, f i := by
+  classical
+  simp [sectorContribution, Finset.sum_comm]
+
+end SectorResolution
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.PSA.superTrace_eq_det_one_sub' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms superTrace_eq_det_one_sub
@@ -140,5 +168,9 @@ theorem det_one_sub_permMatrix_eq_zero {K : Type*} [Field K] {m : ℕ}
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.PSA.det_one_sub_permMatrix_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms det_one_sub_permMatrix_eq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.PSA.sum_sectorContribution_eq_total' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms sum_sectorContribution_eq_total
 
 end PhysicsSM.Draft.NullEdge.GateI1.PSA

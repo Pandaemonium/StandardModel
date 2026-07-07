@@ -2670,3 +2670,19 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.GWConjecture`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [CODEX solo] Q12 finite sector-resolution bookkeeping landed
+- Extended `PhysicsSM/Draft/NullEdge/GateI1/PSA.lean` with
+  `sectorContribution` and `sum_sectorContribution_eq_total`: summing finite
+  label-resolved sector contributions over all sector labels recovers the total
+  finite contribution.
+- Claim boundary: PROVED finite additive bookkeeping only.  This is useful for
+  Q12 charge-resolution accounting, but it is not an equivariant
+  McKean-Singer theorem, not anomaly cancellation, and not a physical chirality
+  result.
+- Run docs updated: Q12 status in `THREAD_BOARD.md`; `c2e23b53` note in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/PSA.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.PSA`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.
