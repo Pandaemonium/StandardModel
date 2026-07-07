@@ -39,6 +39,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.Q11RealStructure
 import PhysicsSM.Draft.NullEdge.GateI1.Q11BLDictionary
 import PhysicsSM.Draft.NullEdge.GateI1.PSA
 import PhysicsSM.Draft.NullEdge.GateI1.ChargeResolution
+import PhysicsSM.Draft.NullEdge.GateI1.TorusBWCutLocality
 
 /-!
 # Gate I1 aggregator: finite kinematic dictionary
@@ -87,7 +88,8 @@ null-pairing transitivity theorem (`LorentzianTransitivity`); plus the Q11
 finite top-form-duality real-structure core (`Q11RealStructure`) and B-L/RC0
 dictionary (`Q11BLDictionary`); plus the Q12 PSA-1 finite supertrace identity
 (`PSA`); plus the Q12 finite charge-sector supertrace bookkeeping bridge
-(`ChargeResolution`).
+(`ChargeResolution`); plus the Q09 finite BW-cut torus locality scoring
+algebra (`TorusBWCutLocality`).
 
 It lets the current I1 draft stack be kernel-checked in one command:
 

@@ -99,7 +99,8 @@ noncomputable def dGammaSq (D : V →ₗ[R] V) (v : Fin k -> V) :
     ExteriorAlgebra R V :=
   ∑ i, ∑ j, wedge (applyAt D i (applyAt D j v))
 
-/-- Two-body second quantization of the pair kernel on a decomposable state. -/
+/-- Two-body second quantization of the pair kernel `Lambda^2 D`, i.e. apply
+`D` in both selected pair slots of a decomposable state. -/
 noncomputable def dGammaTwo (D : V →ₗ[R] V) (v : Fin k -> V) :
     ExteriorAlgebra R V :=
   ∑ p ∈ Finset.univ.filter (fun p : Fin k × Fin k => p.1 < p.2),

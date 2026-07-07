@@ -1385,6 +1385,7 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   placeholder scan on that file (no matches);
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
 - Flag: semantic overclaim / missing formal hypotheses in prose. The theorem
   does **not** assume or prove that `Gamma` is a self-adjoint involution, a
   fundamental symmetry, finite-dimensional, or has nontrivial inertia
@@ -2862,3 +2863,31 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q09 BW-cut locality scaffold and Q08/Q12 audits harvested
+
+- Harvested Aristotle refill-wave projects `e4f1cedb`, `1bd78359`, and
+  `f1fecdb9`.
+- Integrated the Q09 returned finite scoring algebra as
+  `PhysicsSM/Draft/NullEdge/GateI1/TorusBWCutLocality.lean` and imported it
+  from the Gate I1 aggregator.  Proved `bwCutExact_iff`, `locDefect_nonneg`,
+  `matrixLocal_iff`, `locDefect_smul`, `matrixLocal_smul_iff`,
+  `bwCut_localTransfer`, and `bwCutLocalityPass_iff`.
+- Claim boundary: PROVED finite matrix bookkeeping only.  BW-cut itself,
+  doubler removal, Reeh-Schlieder well-posedness, Ward/Krein compatibility,
+  entropy, ANEC, Jacobson, and continuum horizon claims remain MEMO/OPEN.
+- Applied the Q08 audit's doc-level correction: `dGammaTwo` is now described as
+  the `Lambda^2 D` pair kernel applying `D` in both selected slots.
+- Recorded the Q12 audit boundary: the existing triality bridge covers only the
+  benign permutation/trace-kill gates; the specific Furey ladder bridge needs a
+  pinned concrete `Bfur` and entrywise G2/XOR-character certificate.  The bare
+  existential bridge is vacuous and is not a certificate.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/TorusBWCutLocality.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.TorusBWCutLocality`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
+  `pre-commit run --all-files`.

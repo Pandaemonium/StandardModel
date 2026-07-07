@@ -140,3 +140,27 @@ return standalone Lean when feasible, or exact theorem statements and blockers.
 Queue check immediately after submission: these ten projects were `RUNNING`;
 with `5bdce729` and `f962cbe7`, Aristotle had approximately twelve active
 StandardModel-relevant lanes.
+
+## Harvest from refill wave
+
+- `e4f1cedb`
+  (`ne-q08-dgamma-exterior-globalization-integration-audit-20260707`) returned
+  a clean semantic audit of the Q08 globalization landing: no high/medium
+  findings, standard footprint, and no hidden overclaim.  Follow-up action
+  taken locally: clarified that `dGammaTwo` is the `Lambda^2 D` pair kernel.
+- `1bd78359`
+  (`ne-q12-furey-ladder-bridge-matrix-entry-audit-20260707`) returned the Q12
+  warning that the landed T8 theorem certifies only the benign permutation
+  bridge and necessary trace/unbalanced kills.  The specific Furey ladder bridge
+  still needs pinned ordering, cochain equivalence, concrete `Bfur`,
+  unitary/non-permutation checks, 64 entrywise intertwining equations, and a
+  G2/XOR-character promotion.  The bare existential bridge is vacuous and must
+  not be used as the certificate.
+- `f1fecdb9`
+  (`ne-q09-bwcut-torus-modular-locality-audit-20260707`) returned a standalone
+  finite scoring algebra now integrated as
+  `PhysicsSM/Draft/NullEdge/GateI1/TorusBWCutLocality.lean`.  It proves BW-cut
+  calibration/locality bookkeeping and locality transfer under exact
+  calibration, while BW-cut itself, doubler removal, Reeh-Schlieder
+  well-posedness, Ward/Krein compatibility, entropy, ANEC, Jacobson, and
+  continuum horizon claims remain MEMO/OPEN.

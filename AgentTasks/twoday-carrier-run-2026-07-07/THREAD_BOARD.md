@@ -486,7 +486,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `descent_unitary`. L-Q8-3 is now landed in
   `PhysicsSM/Draft/NullEdge/Carrier/DGammaSquare.lean`:
   `dGamma_sq_identity` proves the finite decomposable exterior-algebra identity
-  `dGamma(D)^2 = dGamma(D^2) + 2 dGammaTwo(D)`, with
+  `dGamma(D)^2 = dGamma(D^2) + 2 dGammaTwo(Lambda^2 D)`, where
+  `dGammaTwo` means the pair kernel applying `D` in both selected slots, with
   `double_sum_split` as the combinatorial core. The earlier
   `FockSecondQuantization.lean` two-mode diagonal theorem remains as a sanity
   check. Aristotle follow-up `97417bb8` is now harvested into the same module:
@@ -507,7 +508,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
   Pauli); kill = a Sym-quantized checkerboard with positive invariant
   quotient. A global two-body exterior operator and positivity of the
-  Kugo-Ojima quotient itself remain OPEN.
+  Kugo-Ojima quotient itself remain OPEN. Aristotle audit `e4f1cedb` found no
+  high/medium semantic issue in the globalization landing; its only code-facing
+  fix was the doc clarification that `dGammaTwo` encodes the `Lambda^2 D` pair
+  kernel, not an abstract one-slot `D`.
 ### RG-SCHUR - the thesis as an RG fact [Claude; post-Q06+Q08 convergence]
 - **Done:** T-R1 Schur-complement decimation (det factorization; Berezin
   layer as needed) + RG-stability of {Krein-self-adjoint, Gamma-odd} + the
@@ -530,12 +534,23 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `PhysicsSM/Draft/NullEdge/GateI1/ModularNoGo.lean`:
   `borchers_positive_generator_vanishes` proves a positive semidefinite finite
   generator satisfying the differentiated Borchers commutation relation must
-  vanish.
+  vanish. Aristotle follow-up `f1fecdb9` landed
+  `PhysicsSM/Draft/NullEdge/GateI1/TorusBWCutLocality.lean`: `bwResidual` /
+  `BWCutExact`, `locDefect` / `MatrixLocal`, `locDefect_smul`,
+  `matrixLocal_smul_iff`, `bwCut_localTransfer`, and
+  `bwCutLocalityPass_iff` give finite pass/kill scoring algebra for the torus
+  BW-cut locality test.
 - **Status:** PROVED finite kinematic identity only. This supports Q09's
   "area is relational like mass" statement, and the modular no-go kills a finite
-  half-sided modular-generator promotion. Entropy, BW-cut, Jacobson, ANEC,
-  universal coefficient, and continuum/horizon interpretations remain MEMO or
-  OPEN until their finite hypotheses are stated and checked.
+  half-sided modular-generator promotion. The BW-cut scoring algebra is PROVED,
+  but BW-cut itself remains MEMO/OPEN. A9.4 does not forbid the BW-cut test
+  because the cut boost generator is indefinite, while A9.4 kills positive
+  semidefinite null-translation generators. Entropy, Jacobson, ANEC, universal
+  coefficient, and continuum/horizon interpretations remain MEMO or OPEN until
+  their finite hypotheses are stated and checked. Next Q09 gates: run the
+  doubler volume-law scan before locality, then the nonlocal `logDelta` leakage
+  scan, with Reeh-Schlieder well-posedness and Krein/Ward compatibility as
+  pre-checks.
 
 ### DIM-SIG-SELECTION - Q10 stable order and dimension reconstruction [Codex solo; new Q10 lane]
 - **Done:** Q10-L1/L2/L4/L5 finite obstructions landed in
@@ -623,11 +638,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Next:** T8 still needs the *specific repo* ladder/Furey bridge matrix `B`
   checked entry-wise against the actual ladder ordering/signs; the landed
   theorem only proves the benign permutation case and trace/signature kill
-  condition. T9/E4 requires constraint equivariance `tau Gamma' = Gamma'`
-  before any per-sector physical quotient count. The remaining PSA gap is now
-  the analytic or operator-level equivariant McKean-Singer theorem, not finite
-  additivity. Failure of the specific-`B` bridge is a C8-seam escalation, not a
-  patch.
+  condition. Aristotle audit `1bd78359` sharpened the boundary: an existential
+  bridge is vacuous because the relevant gradings have the same `4+4`
+  spectrum; the real Furey ladder bridge is a concrete complex change of basis,
+  not a permutation. The next certificate must pin the ordering/cochain, prove
+  convention equivalence, define the concrete `Bfur`, check unitary/non-
+  permutation status, discharge the 64 entrywise intertwining equations, and
+  promote the result to a G2/XOR-character statement. T9/E4 requires constraint
+  equivariance `tau Gamma' = Gamma'` before any per-sector physical quotient
+  count. The remaining PSA gap is now the analytic or operator-level
+  equivariant McKean-Singer theorem, not finite additivity. Failure of the
+  specific-`B` bridge is a C8-seam escalation, not a patch.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.
