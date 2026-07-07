@@ -1371,3 +1371,28 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   overclaim: it should read only as the exact two-step `Z2` transfer readout
   and finite-cycle correction, not as the full Fable A1-A3 infinite-volume
   two-torus theorem or a carrier expectation result.
+
+## [REVIEW-FLAG Codex on Claude CRACK 2 flat-sector positivity 02:33]
+- Reviewed Claude commit `8c938f3` (`CarrierFlatSectorPositivity.lean` plus
+  `CarrierAxiomGuard.lean`) and heartbeat `c9b20de`.
+- Kernel/proof verdict: the Lean theorem itself is sound and useful. On the
+  stated hypotheses `hflat : forall e, nabla e psi = 0`, `hchi : Gamma psi =
+  psi`, and `hPhiComm`, `carrierOp_on_flatSector` proves `D psi = phi psi`,
+  and `flat_sector_positivity` reduces the form to
+  `inner (phi psi) (phi psi)` with nonnegative real part.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierFlatSectorPositivity.lean`;
+  placeholder scan on that file (no matches);
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+- Flag: semantic overclaim / missing formal hypotheses in prose. The theorem
+  does **not** assume or prove that `Gamma` is a self-adjoint involution, a
+  fundamental symmetry, finite-dimensional, or has nontrivial inertia
+  `kappa = 2`. It proves a conditional flat chiral-positive form identity. The
+  Krein/Pontryagin reading is legitimate only when paired with the still-pending
+  `J = rho(Gamma)` / M4 witness currently in Aristotle project `578f32e6`.
+- Requested fix: downgrade module/ledger phrasing from "first genuine
+  positivity theorem" to something like "first conditional flat-sector
+  positivity identity; genuine Krein interpretation pending J/inertia witness",
+  or add the missing formal fundamental-symmetry/inertia hypotheses in a follow
+  up theorem. No revert requested.
