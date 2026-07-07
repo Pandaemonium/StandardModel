@@ -159,7 +159,7 @@ record why the row is parked.
 | Q05 | Triality / monodromy | cover multiplicativity, equivariant index, no-four orbit | strategy job |
 | Q06 | Checkerboard-GW / transfer | heterogeneous edge-word/path-sum lift beyond the landed homogeneous transfer-power bridge | follow-up lift strategy; do not resubmit the landed bridge |
 | Q07 | Koide / T-solder | tetrahedral corner probe, kappa and Hessian gates | audit/strategy |
-| Q08 / FOCK-GB | Exterior Fock / checkerboard | graded radical assembly and corrected LGV-compatible DAG | active strategy, then proof follow-ups |
+| Q08 / FOCK-GB | Exterior Fock / checkerboard | graded radical assembly plus multi-layer/generic LGV lift after the corrected scattering-DAG landing | proof/strategy follow-ups |
 | Q09 | Horizon / screen area | finite Reeh gate and BW-cut witness after the A9.1 degeneracy/invariance landing | strategy/audit, then proof only after hypotheses are exact |
 | Q10 | Signature / dimension | scalar-amplitude reconstruction and stable-order boundary audit after the intrinsic inertia-index landing | classification strategy/audit |
 | Q11 | `J_R` / KO / RC0 | Jacobi/Cauchy-Binet cleanup, order-condition uniqueness | active proof, then integration audit |
@@ -192,13 +192,12 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
 - **Harvest-first before more refill:** the latest poll shows these newer jobs
   `IDLE` and ready to inspect: `ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707`,
   `ne-q04-conventionbridge-baez-xor-product-law-proof-20260707`,
-  `ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707`, and
   `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`
   (completed with errors; treat as audit-only until inspected).  Harvest these
   before opening additional lanes.
 - **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
   Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
-  kill, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
+  kill, Q08 corrected scattering-vertex LGV DAG, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
   transfer-power bridge, Q09 screen-area degeneracy/invariance completion,
   Q10 intrinsic inertia-index bridge,
   Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
@@ -260,7 +259,7 @@ only after harvesting returned jobs and committing any local integration:
 | Q06 carrier derivation | `ne-q06-heterogeneous-pathsum-edgeword-gw-lift-strategy-20260707` | strategy/audit | Lift the landed homogeneous transfer-power bridge toward heterogeneous decoration-level generator conjugation and path-sum layers. |
 | Q07 Koide/T-solder | `ne-q07-koide-tsolder-kappa-hessian-witness-audit-20260707` | audit/strategy | Decide whether the tetrahedral corner probe supports, refines, or kills the kappa mechanism. |
 | Q08 exterior quotient | `ne-q08-exterior-quotient-graded-radical-assembly-proof-20260707` | proof/strategy | Assemble the literal graded radical/ideal quotient statement beyond fixed-degree exterior powers. |
-| Q08 checkerboard Fock | `ne-q08-brickwall-lgv-sourcesink-compatibility-proof-20260707` | proof/strategy | Corrected brick-wall/scattering DAG or source/sink compatibility theorem after the naive LGV kill. |
+| Q08 checkerboard Fock | `ne-q08-multilayer-brickwall-firstsharedvertex-lgv-lift-strategy-20260707` | proof/strategy | Lift the landed one-vertex scattering DAG to a multi-layer brick wall with a generic first-shared-vertex swap. |
 | Q09 horizon/screen | `ne-q09-finite-reehschlieder-wellposedness-gate-strategy-20260707` | strategy/audit | After the A9.1 landing, isolate exact finite Reeh-screen hypotheses or return a no-go/well-posedness obstruction. |
 | Q09 BW witness | `ne-q09-bwcut-locality-witness-construction-audit-20260707` | audit/strategy | Feed the BW-cut locality rubric a concrete witness or record why none is available. |
 | Q10 scalar amplitude | `ne-q10-spin-weyl-scalar-amplitude-real-classification-strategy-20260707` | strategy | Route from finite census substitutes to real Spin/Weyl scalar-amplitude classification. |
@@ -319,9 +318,11 @@ adversarial audits for recently landed or high-risk claims.
 5. **Q06-Q08 synthesis.** Use the new exact-GW/edge-reversal, equipartition
    Koide, Fock-Gupta-Bleuler, checkerboard determinant, and RG-Schur material as
    active research rails.  Q08 L4 is landed in a minimal disjoint-support form;
-   the next targets are the exterior quotient theorem and a nonvacuous LGV
-   crossing-cancellation generalization.  Convert near-free finite identities
-   into Lean, and keep speculative physics claims explicitly MEMO or OPEN.
+   the next targets are the exterior quotient theorem, a multi-layer
+   brick-wall lift of the landed scattering-vertex DAG, and a generic
+   first-shared-vertex swap/full signed-LGV lemma.  Convert near-free finite
+   identities into Lean, and keep speculative physics claims explicitly MEMO or
+   OPEN.
 6. **QC-GRAM and Q_C.** Continue the closure/Q_C line: distinguish raw linear
    closure defects from Gram/Laplacian normalization, pursue concrete Carrier
    factorization only with the correct normalization, and keep beyond-leading

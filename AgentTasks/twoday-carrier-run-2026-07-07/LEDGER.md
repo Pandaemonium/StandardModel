@@ -3221,3 +3221,31 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   ConventionBridge `b6b128d4`, Q08 scattering-DAG `2c7ddcf1`, and the
   manuscript postfix audit `bd50e825` (completed with errors; inspect as
   audit-only).
+
+## [ARISTOTLE-HARVEST Codex solo] Q08 corrected scattering-vertex LGV DAG landed
+
+- Harvested Aristotle project `2c7ddcf1`
+  (`ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707`).
+- Integrated the returned Lean artifact as
+  `PhysicsSM/Draft/NullEdge/Carrier/ScatteringVertexDAG.lean` and imported it
+  into `CarrierAxiomGuard`.
+- New proved declarations include `lgv_crossing_cancels`,
+  `scatter_LGV_reduction_true`, `scatter_crossing_nonvacuous`,
+  `scatter_amplitude_ratQ`, and `naive_no_crossing_swap`.
+- Q08 claim boundary: this is the positive counterpart to the killed naive
+  checkerboard route.  It proves a one-scattering-vertex brick-wall DAG where
+  crossing means shared vertex and the LGV swap cancellation is genuine and
+  nonvacuous.  It does not make the unmodified site-lattice checkerboard
+  satisfy LGV; `naive_LGV_reduction_false` remains the kill for that claim.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`, and
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.  Next Q08 targets are the graded
+  exterior quotient, multi-layer brick-wall lift, generic first-shared-vertex
+  swap, and full signed `n`-particle LGV theorem.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/ScatteringVertexDAG.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+- Remaining harvest-first jobs: Q04 sign-gauge `7b99f3b8`, Q04
+  ConventionBridge `b6b128d4`, and the manuscript postfix audit `bd50e825`
+  (completed with errors; inspect as audit-only).

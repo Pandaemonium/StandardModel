@@ -18,6 +18,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
 import PhysicsSM.Draft.NullEdge.Carrier.FockQuotientPairing
 import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle
 import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardCrossingNonvacuous
+import PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
@@ -72,6 +73,9 @@ guards are edited independently to avoid collision.
   same-parity L=4, N=2 witness with both direct and crossing families nonzero,
   and the finite counterexample to the naive LGV reduction on the pre-registered
   transfer model.
+* Corrected scattering-vertex DAG (`ScatteringVertexDAG`): a finite
+  brick-wall DAG where crossing means shared vertex, the LGV swap cancellation
+  is true and nonvacuous, and the naive no-shared-vertex route is killed.
 * Wilson-symbol identity (`GWWilsonSymbol`): the exact `2 x 2` momentum-symbol
   determinant/unitarity, Hermitian Wilson scalar, and edge-reversal GW
   conjugation identities for the retarded/palindromic checkerboard symbol.
@@ -345,6 +349,24 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.naive_LGV_reduction_false' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.CheckerboardTwoParticle.naive_LGV_reduction_false
+
+/-! ## Corrected scattering-vertex DAG: nonvacuous LGV-compatible model -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.lgv_crossing_cancels' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.lgv_crossing_cancels
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.scatter_LGV_reduction_true' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.scatter_LGV_reduction_true
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.scatter_crossing_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.scatter_crossing_nonvacuous
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.naive_no_crossing_swap' depends on axioms: [Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG.naive_no_crossing_swap
 
 /-! ## GW structure of retarded transfer: the exact Ginsparg-Wilson relation
     (R = 1/2) for involution-inverted transfer maps + the 8x8 checkerboard

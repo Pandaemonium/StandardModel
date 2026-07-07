@@ -482,3 +482,29 @@ Remaining harvest-first jobs after this integration: `7b99f3b8` Q04 sign-gauge,
 `bd50e825` manuscript postfix audit (completed with errors; inspect as
 audit-only).  Still running at the latest poll: `aa4e48f6`, `381cc4cf`,
 `1b3c2203`, and `9af1d5fb`.
+
+## Harvest from Q08 corrected scattering-vertex LGV DAG
+
+- `2c7ddcf1`
+  (`ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707`)
+  returned a positive corrected LGV model.  Codex integrated it as
+  `PhysicsSM/Draft/NullEdge/Carrier/ScatteringVertexDAG.lean` and
+  guard-pinned the headline theorems in `CarrierAxiomGuard`.
+- New proved declarations include `lgv_crossing_cancels`,
+  `scatter_LGV_reduction_true`, `scatter_crossing_nonvacuous`,
+  `scatter_amplitude_ratQ`, and `naive_no_crossing_swap`.
+- Claim boundary: this does not reverse `naive_LGV_reduction_false` on the
+  pre-registered checkerboard.  It proves that a corrected scattering-vertex
+  brick-wall DAG with shared vertex `m` has genuine nonvacuous LGV cancellation,
+  and it isolates the no-swap cardinality obstruction for models with crossing
+  systems but no intersecting direct partners.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/ScatteringVertexDAG.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.ScatteringVertexDAG`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+Remaining harvest-first jobs after this integration: `7b99f3b8` Q04 sign-gauge,
+`b6b128d4` Q04 ConventionBridge, and `bd50e825` manuscript postfix audit
+(completed with errors; inspect as audit-only).  Still running at the latest
+poll: `aa4e48f6`, `381cc4cf`, `1b3c2203`, and `9af1d5fb`.

@@ -562,6 +562,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   pre-registered checkerboard transfer model: the crossing term survives
   because the crossing happens at a mid-edge light-cone point, not a shared
   lattice vertex for the standard LGV involution.
+- **Done:** L-Q8-8 corrected scattering-vertex DAG has now landed in
+  `PhysicsSM/Draft/NullEdge/Carrier/ScatteringVertexDAG.lean` from Aristotle
+  project `2c7ddcf1`.  `lgv_crossing_cancels` proves the abstract finite LGV
+  cancellation from a weight-preserving bijection between crossing systems and
+  intersecting direct systems.  The concrete brick-wall DAG has a shared
+  scattering vertex `m`; `scatter_LGV_reduction_true` proves the determinant is
+  the sum over vertex-disjoint direct families, `scatter_crossing_nonvacuous`
+  proves the crossing and intersecting-direct families are both `X^4` over
+  `Q[X]`, and `naive_no_crossing_swap` records the cardinality obstruction to
+  applying this route when crossing systems are nonempty but no intersecting
+  direct partners exist.
 - **Done:** L-Q8-5 degree-by-degree quotient bridge has now landed in
   `PhysicsSM/Draft/NullEdge/Carrier/FockQuotientPairing.lean` from Aristotle
   project `5bdce729`.  `pairingDual_bijective` proves the finite
@@ -578,11 +589,12 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Kugo-Ojima witness/no-go, but positivity for the actual exterior physical
   quotient remains open until the model-specific constraint and Ward hypotheses
   are supplied.
-  T-P3 is now re-scoped: a true nonvacuous LGV theorem needs a corrected
-  scattering-vertex / brick-wall DAG where crossing is represented as shared
-  vertex data plus a swap involution, or a certified LGV-compatible
-  source/sink hypothesis.  It is not a corollary of T-P2 on the unmodified site
-  lattice.  Registered conjecture C-Q8-SS: positivity selects Lambda over Sym
+  T-P3 is now re-scoped and partially positive: the one-vertex corrected
+  scattering DAG proves a genuine nonvacuous LGV cancellation, but the
+  unmodified site-lattice checkerboard still fails the naive claim.  Next T-P3
+  work is a multi-layer brick-wall lift, a generic first-shared-vertex swap on
+  list paths, and eventually the full signed `n`-particle LGV lemma. Registered
+  conjecture C-Q8-SS: positivity selects Lambda over Sym
   (finite Pauli); kill = a Sym-quantized checkerboard with positive invariant
   quotient. A global two-body exterior operator and model-level positivity of
   the Kugo-Ojima quotient remain OPEN. Aristotle audit `e4f1cedb` found no
