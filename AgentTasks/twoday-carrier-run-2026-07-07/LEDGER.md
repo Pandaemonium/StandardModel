@@ -3625,3 +3625,35 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   duplicate future Aristotle-name scan for `GOAL_PROMPT_CODEX.md`;
   `git diff --check`;
   `pre-commit run --all-files`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q10 scalar-amplitude obstruction harvested
+
+- Harvested Aristotle project `05fdd744-2daa-447f-b865-2e81e615069a`
+  (`ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707`).
+- Integrated its Lean payload as
+  `PhysicsSM/Draft/NullEdge/GateI1/SameChiralityScalarAmplitude.lean` and
+  imported it from the Gate I1 aggregator.
+- New proved declarations include `diag_spec_negSymmetric_of_invariant_form`,
+  `no_invariant_selfdual_form_of_spec_not_negSymmetric`,
+  `census_no_invariant_selfdual_form`,
+  `weyl_no_invariant_selfdual_form_d6`, and
+  `weyl_no_invariant_selfdual_form_d10`.
+- Claim boundary: this is a finite diagonal-Cartan obstruction from
+  non-negation-symmetric spectrum to absence of an invertible self-duality
+  intertwiner.  It is not the full real `Spin(1,d-1)` Weyl-module
+  classification and does not prove physical dimension selection.
+- Added harvest note
+  `ARISTOTLE_Q10_SPINWEYL_SCALAR_AMPLITUDE_HARVEST_2026-07-07.md`, updated
+  `THREAD_BOARD.md`, `ARISTOTLE_LANE_DOCKET_2026-07-07.md`, and
+  `GOAL_PROMPT_CODEX.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/SameChiralityScalarAmplitude.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.SameChiralityScalarAmplitude`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1` (with pre-existing neighboring
+  warnings);
+  changed-file placeholder-token scan;
+  duplicate future Aristotle-name scan for `GOAL_PROMPT_CODEX.md`;
+  `git diff --check`;
+  `pre-commit run --all-files`.
+- Fresh harvest-first item still open: Aristotle project `b4206467` Q08
+  Fock/LGV graded radical.

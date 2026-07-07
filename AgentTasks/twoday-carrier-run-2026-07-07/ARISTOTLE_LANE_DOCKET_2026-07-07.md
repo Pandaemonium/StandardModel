@@ -690,3 +690,23 @@ canceled.
 
 Task id: `c0283f93-2a4d-4ad9-8058-914c40ccfb42`.  Queue poll immediately
 after submission showed the project `RUNNING`.
+
+## Harvest from Q10 Spin/Weyl scalar-amplitude classification
+
+- `05fdd744`
+  (`ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707`)
+  returned a Lean payload now integrated as
+  `PhysicsSM/Draft/NullEdge/GateI1/SameChiralityScalarAmplitude.lean`.
+- New proved declarations include `diagonal_charpoly_roots`,
+  `diagonal_charpoly_comp_neg_roots`,
+  `diag_spec_negSymmetric_of_invariant_form`,
+  `no_invariant_selfdual_form_of_spec_not_negSymmetric`,
+  `census_no_invariant_selfdual_form`,
+  `weyl_no_invariant_selfdual_form_d6`, and
+  `weyl_no_invariant_selfdual_form_d10`.
+- Claim boundary: this is the finite diagonal-Cartan obstruction from
+  non-negation-symmetric spectrum to absence of an invertible self-duality
+  intertwiner.  It is not yet the actual `Spin(1,d-1)` Weyl-module
+  classification and does not by itself prove physical dimension selection.
+- Fresh harvest-first item still open after this integration:
+  `b4206467` Q08 Fock graded radical / LGV lift.

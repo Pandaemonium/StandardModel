@@ -62,9 +62,10 @@ future-facing names in this table, or the same pattern with a date bump if the
 work moves past 2026-07-07.  If a listed target has advanced, mint an even more
 specific non-colliding `ne-next-*` name and record it in the docket.
 
-Current poll context: Aristotle is already carrying twelve running
-StandardModel-relevant lanes.  Harvest these before any further refill, and do
-not submit another project with the same name or target:
+Current poll context: Q10 Spin/Weyl scalar amplitude (`05fdd744`) has returned
+and is being harvested locally; Q08 Fock/LGV (`b4206467`) has also returned and
+is the next harvest-first item.  The still-running StandardModel-relevant lanes
+below should not be duplicated:
 
 | Project | Active Aristotle job | Lane |
 |---|---|---|
@@ -72,19 +73,18 @@ not submit another project with the same name or target:
 | `5ff9424e` | `ne-next-q12-gammaprime-e4-healing-semantic-audit-20260707` | Q12 GammaPrime E4 semantic audit |
 | `96058502` | `ne-solo-lane-q12-c8-psa-sector-ms-bridge-audit-20260707` | Q12 PSA / C8 / sector MS |
 | `82cc3c8e` | `ne-solo-lane-rg-schur-nullnilpotency-instability-proof-20260707` | RG-Schur null-nilpotency instability |
-| `b4206467` | `ne-solo-lane-q08-fock-graded-radical-lgv-lift-proof-20260707` | Q08 Fock radical / LGV lift |
 | `4b462390` | `ne-solo-lane-q09-screenarea-bwcut-reeh-witness-audit-20260707` | Q09 screen / BW / Reeh gate |
 | `373f0283` | `ne-solo-lane-q01-gauss-constraint-positive-quotient-proof-20260707` | Q01 Gauss positive quotient |
-| `05fdd744` | `ne-solo-lane-q10-spinweyl-scalar-amplitude-classification-strategy-20260707` | Q10 Spin/Weyl scalar amplitude |
 | `6e37da00` | `ne-solo-lane-q04-octonion-lambdac3-leftaction-bridge-strategy-20260707` | Q04 octonion left-action bridge |
 | `ef87c91f` | `ne-solo-lane-q02-invariant-trace-teleparallel-eslot-audit-20260707` | Q02 invariant trace / E-slot |
 | `16d04733` | `ne-solo-lane-hstar-gauss-ward-realsplit-model-audit-20260707` | HSTAR model audit |
 | `aa4e48f6` | `ne-next-q11-jacobi-cauchybinet-rc0-integration-audit-20260707` | Q11 Jacobi / Cauchy-Binet RC0 |
 
 Recently harvested and not to duplicate: Q13 global overclaim audit
-(`07f40fff`) and literature/provenance source-gap audit (`5713746e`).  The
-duplicate Q12 radical-healing proof project (`297ae18c`) was canceled after the
-local proof of `E4_nontrivial_healing`.
+(`07f40fff`), literature/provenance source-gap audit (`5713746e`), and Q10
+Spin/Weyl scalar-amplitude classification (`05fdd744`).  The duplicate Q12
+radical-healing proof project (`297ae18c`) was canceled after the local proof of
+`E4_nontrivial_healing`.
 
 | Lane | Pursuit | Highest-value next artifact | Next unique Aristotle job name |
 |---|---|---|---|
@@ -110,7 +110,7 @@ local proof of `E4_nontrivial_healing`.
 | Q08-LGV | Checkerboard / LGV | Multi-layer brick-wall lift of the corrected scattering-vertex DAG | `ne-next-q08-multilayer-brickwall-sharedvertex-lgv-proof-20260707` |
 | Q09-REEH | Horizon / screen well-posedness | Harvest `4b462390`; then isolate finite Reeh-screen hypotheses or no-go | `ne-next-q09-finite-reeh-screenarea-wellposedness-followup-audit-20260707` |
 | Q09-BW | BW-cut locality | Concrete finite BW-cut locality witness or proof that no current witness exists | `ne-next-q09-bwcut-locality-witness-construction-proof-20260707` |
-| Q10-SCALAR | Signature / scalar amplitude | Harvest `05fdd744`; then route finite census toward real Spin/Weyl classification | `ne-next-q10-spinweyl-scalar-amplitude-classification-followup-strategy-20260707` |
+| Q10-SCALAR | Signature / scalar amplitude | After the `05fdd744` finite obstruction landing, prove the positive `d = 4` invariant self-dual form or audit the real Spin/Weyl replacement | `ne-next-q10-spinweyl-d4-selfdual-positive-corner-proof-20260707` |
 | Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction assumption, and physical interpretation separated | `ne-next-q10-stableorder-dimension-reconstruction-boundary-audit-20260707` |
 | Q11-RC0 | `J_R` / RC0 determinant cocycle | Harvest `aa4e48f6`; then integration audit for Jacobi/Cauchy-Binet semantics | `ne-next-q11-rc0-det-cocycle-groupaction-followup-proof-20260707` |
 | Q11-ORDER | Majorana / order condition | Upgrade C3 sector identities toward operator-level invariant uniqueness | `ne-next-q11-ordercondition-invariant-operator-uniqueness-strategy-20260707` |

@@ -32,6 +32,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.G2Parity
 import PhysicsSM.Draft.NullEdge.GateI1.Q12Triality
 import PhysicsSM.Draft.NullEdge.GateI1.SplitSignatureMass
 import PhysicsSM.Draft.NullEdge.GateI1.MassAmplitudeCensus
+import PhysicsSM.Draft.NullEdge.GateI1.SameChiralityScalarAmplitude
 import PhysicsSM.Draft.NullEdge.GateI1.MultiTimeEmbedding
 import PhysicsSM.Draft.NullEdge.GateI1.ModularNoGo
 import PhysicsSM.Draft.NullEdge.GateI1.LorentzianTransitivity
@@ -84,7 +85,8 @@ module (`SignatureSelection`); plus the Q12 G2-parity algebra core
 conventions, and strand parity has balanced 4+4 eigenspaces) and the Q12
 triality/convention-bridge finite gates (`Q12Triality`); plus the Q10-L5
 split-signature determinant identity (`SplitSignatureMass`); plus the Q10-L6
-finite same-chirality mass-amplitude census (`MassAmplitudeCensus`); plus the
+finite same-chirality mass-amplitude census (`MassAmplitudeCensus`) and
+spectrum-to-invariant-form obstruction (`SameChiralityScalarAmplitude`); plus the
 Q10 multi-time embedding obstruction (`MultiTimeEmbedding`); plus the Q09
   finite modular no-go (`ModularNoGo`); plus the Q10-L3 Lorentzian positive
   null-pairing transitivity theorem (`LorentzianTransitivity`); plus the Q11

@@ -696,6 +696,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   rank-two corner, `weyl_not_symmetric_d6/10` give the weight-parity
   obstructions, and `charpoly_negSymmetric_of_invariant_form` is the bridge
   from invariant bilinear form to negation-symmetric characteristic polynomial.
+  Aristotle follow-up `05fdd744` is now harvested into
+  `PhysicsSM/Draft/NullEdge/GateI1/SameChiralityScalarAmplitude.lean`:
+  `diag_spec_negSymmetric_of_invariant_form` specializes the bridge to diagonal
+  spectra, `no_invariant_selfdual_form_of_spec_not_negSymmetric` gives the
+  contrapositive obstruction, `census_no_invariant_selfdual_form` ties it to
+  `weylWeights`, and `weyl_no_invariant_selfdual_form_d6/d10` prove the finite
+  `d = 6` and `d = 10` same-chirality self-duality obstructions.
   Q10-L3 has now landed in
   `PhysicsSM/Draft/NullEdge/GateI1/LorentzianTransitivity.lean`:
   `lorentzian_pos_pairing_trans` proves positive null-pairing transitivity in
@@ -727,14 +734,16 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   finite real quadratic form with two-dimensional positive and negative
   definite subspaces has a frustrated triple.
   Any dimension-selection claim still needs separate chirality and
-  scalar-amplitude reconstruction. L6 still
-  needs the full Spin/Weyl representation stack before it can be stated as a
-  representation-theoretic
+  scalar-amplitude reconstruction.  L6 now has the finite diagonal-Cartan
+  obstruction for `d = 6, 10`, but still needs the positive `d = 4` existence
+  statement in the same shape and the full Spin/Weyl representation stack
+  before it can be stated as a representation-theoretic
   `Hom_Spin(S tensor S, 1)` classification.
 - **Aristotle:** harvested named lanes Q10-L3 (`dbe113e5`), Q10-L5
   (`3a66e413`), Q10-L6 (`7fd8a9bf`), Q10 multi-time embedding
   (`825853b9`), Q10 Sylvester-inertia bridge (`9d61e305`), and Q10
-  inertia-index bridge (`bcf263f0`); see
+  inertia-index bridge (`bcf263f0`), and Q10 same-chirality scalar-amplitude
+  obstruction (`05fdd744`); see
   `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
 - **Claim boundary:** never phrase this as "retardation on one finite complex
   implies Lorentzian" or "3+1 follows from consistency alone." The strongest
