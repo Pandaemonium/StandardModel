@@ -4,6 +4,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMaster
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierPotentialTurn
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockQC_Torus
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierSquareAssembly
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierESlot
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -91,6 +92,16 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_square_assembly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_square_assembly
+
+/-! ## Move-1 E-slot: soldering-gradient (gravity) remainder; E=0 iff hcomm -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.soldered_square_defect' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.soldered_square_defect
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_varying' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_varying
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 

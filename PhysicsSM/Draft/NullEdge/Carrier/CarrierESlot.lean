@@ -50,7 +50,12 @@ theorem soldered_square_defect (gamma nabla : E → B) :
     (solderedNC gamma nabla) ^ 2
       = (∑ e, ∑ f, gamma e * gamma f * (nabla e * nabla f))
         + (∑ e, ∑ f, gamma e * (nabla e * gamma f - gamma f * nabla e) * nabla f) := by
-  sorry
+  simp only [solderedNC, pow_two, Finset.sum_mul_sum]
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl; intro e _
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl; intro f _
+  noncomm_ring
 
 /-- **The E-carrying (varying-soldering) master identity.**  Dropping `hcomm`, the
 soldered square is `Q_A + Q_C` plus the soldering-gradient gravity slot `4 • E`.  With
@@ -62,6 +67,24 @@ theorem weitzenbock_master_varying (gamma nabla : E → B) (g : E → E → R)
         + (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e)
             * (nabla e * nabla f - nabla f * nabla e))
         + (4 : R) • (∑ e, ∑ f, gamma e * (nabla e * gamma f - gamma f * nabla e) * nabla f) := by
-  sorry
+  rw [soldered_square_defect, smul_add]
+  congr 1
+  -- Remaining goal: `4 • (∑ e ∑ f gamma e * gamma f * (nabla e * nabla f)) = Q_A + Q_C`.
+  -- This is exactly the `hcl`-only half of `weitzenbock_master` (no `hcomm`).
+  have hsum : ∑ e, ∑ f, (4 : R) • ((gamma e * gamma f) * (nabla e * nabla f)) =
+    (∑ e, ∑ f, (gamma e * gamma f + gamma f * gamma e) * (nabla e * nabla f + nabla f * nabla e)) +
+    (∑ e, ∑ f, (gamma e * gamma f + gamma f * gamma e) * (nabla e * nabla f - nabla f * nabla e)) +
+    (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e) * (nabla e * nabla f + nabla f * nabla e)) +
+    (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e) * (nabla e * nabla f - nabla f * nabla e)) := by
+      simp +decide only [← Finset.sum_add_distrib] ; congr ; ext e ; congr ; ext f ; ring;
+      simp +decide only [mul_add, add_mul, mul_sub, sub_mul] ; abel_nf;
+      norm_cast;
+  have hstep : (4 : R) • (∑ e, ∑ f, gamma e * gamma f * (nabla e * nabla f))
+      = ∑ e, ∑ f, (4 : R) • ((gamma e * gamma f) * (nabla e * nabla f)) := by
+    rw [Finset.smul_sum]; apply Finset.sum_congr rfl; intro e _; rw [Finset.smul_sum]
+  rw [hstep, hsum]
+  simp +decide only [Algebra.smul_def, hcl];
+  simp +decide [ add_assoc, sum_antisym_sym_zero ];
+  exact sum_sym_antisym_zero _ _ fun e f => by simp +decide [ ← hcl ] ; abel
 
 end PhysicsSM.Draft.NullEdge.Carrier
