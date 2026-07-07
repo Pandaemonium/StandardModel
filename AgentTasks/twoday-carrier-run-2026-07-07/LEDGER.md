@@ -2644,3 +2644,23 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Verification passed:
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/PSA.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.PSA`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q06 carrier-GW positive theorem landed
+- Harvested the compiler-trust-free positive portion of Aristotle project
+  `5f3b8963` (`ne-q06-carrier-gw-generalization-audit-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/Carrier/GWConjecture.lean` and imported it into
+  `CarrierAxiomGuard.lean`.
+- Proved `conj_prod_forward`: an involution conjugating each generator to its
+  inverse sends an ordered product to the same-order product of inverses. Proved
+  `palindrome_conj_inv`: a palindromic/midpoint word is inverted by `G` without
+  commutativity. Proved `abelian_conj_inv`: in a commutative group, any ordering
+  is inverted.
+- Claim boundary: PROVED positive word-order theorems only. The audit reports a
+  nonabelian one-sided counterexample to the literal "any retarded transfer"
+  conjecture, but the first artifact used compiler evaluation for that witness,
+  so live Lean landing waits for the no-native follow-up `7a12dbbd`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/GWConjecture.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.GWConjecture`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.

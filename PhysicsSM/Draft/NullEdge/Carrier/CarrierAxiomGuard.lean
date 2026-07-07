@@ -15,6 +15,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.KugoOjima
 import PhysicsSM.Draft.NullEdge.Carrier.FockSecondQuantization
 import PhysicsSM.Draft.NullEdge.Carrier.DGammaSquare
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
+import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -281,6 +282,20 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.transfer_mul_inv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.GWTransfer.transfer_mul_inv
+
+/-! ## Carrier-level GW conjecture: positive word-order theorems -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.conj_prod_forward' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.conj_prod_forward
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.palindrome_conj_inv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.palindrome_conj_inv
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.abelian_conj_inv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.abelian_conj_inv
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 

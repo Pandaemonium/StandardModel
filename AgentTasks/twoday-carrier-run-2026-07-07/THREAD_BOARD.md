@@ -439,11 +439,20 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   gamma5-Hermiticity analog) and the 8x8 GW-2 kill-check with the grading =
   chirality compose spatial reflection (= EDGE-ORIENTATION REVERSAL - the
   same operation as the OS theta-selector and the J_R ingredient: three
-  threads, one operation). ARISTOTLE IN FLIGHT: 4043f341. Then R1 (the exact
-  "retardedness IS the Wilson term" dispersion identity), R4 telescoping, R0
-  path-sum = transfer power. Carrier-level conjecture (registered): G =
-  Gamma compose edge-reversal inverts any retarded transfer on
-  reversal-closed complexes; kill = nonabelian counterexample <= dim 8.
+  threads, one operation). Q06 carrier-level audit `5f3b8963` has now landed
+  the compiler-trust-free positive group theorems in
+  `PhysicsSM/Draft/NullEdge/Carrier/GWConjecture.lean`:
+  `conj_prod_forward` says conjugation preserves word order,
+  `palindrome_conj_inv` proves the midpoint/palindromic convention gives
+  `G T G = T^{-1}` without commutativity, and `abelian_conj_inv` proves the
+  abelian escape for arbitrary ordering.
+- **Status:** RESOLVED boundary. The literal carrier conjecture "any retarded
+  transfer is inverted" is false in the nonabelian one-sided case according to
+  the audit; the live Lean landing only claims the palindromic and abelian
+  positive cases. The no-native counterexample follow-up is `7a12dbbd`.
+- **Next:** R1 (the exact "retardedness IS the Wilson term" dispersion identity),
+  R4 telescoping, R0 path-sum = transfer power, and a no-compiler-trust Lean
+  counterexample or oracle artifact for the nonabelian one-sided failure.
 ### EQUIPARTITION-GATE - the first physical number [Claude; post-Q07; GATE M-KOIDE]
 - **Done:** F2 equipartition sum rule (tr M^2 = (2/V)(tr M)^2 under turn-power
   = hop-power; Q = 2/V; pointwise companion with Cauchy-Schwarz bound) +
