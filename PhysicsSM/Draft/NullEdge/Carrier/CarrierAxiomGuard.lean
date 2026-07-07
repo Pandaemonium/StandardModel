@@ -82,6 +82,10 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.Torus.shift_mul_pointwise
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Torus.mZero_iff_commute' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.Torus.mZero_iff_commute
+
 /-! ## Move-1 ASSEMBLY: 4 D^2 = Q_A + Q_C + 4 Q_T (E=0 regime) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_square_assembly' depends on axioms: [propext, Classical.choice, Quot.sound] -/

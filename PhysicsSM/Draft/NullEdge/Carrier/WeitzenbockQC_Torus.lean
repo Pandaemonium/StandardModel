@@ -114,6 +114,33 @@ the shift equivalence (`shiftLM` is the coercion of a `LinearEquiv` via
 theorem mZero_iff_commute (U : Fin 2 → Site → (W →ₗ[R] W)) (a b : Fin 2) :
     gaugeLM (plaquetteCurvature U a b) = 0
       ↔ (nabla U a).comp (nabla U b) = (nabla U b).comp (nabla U a) := by
-  sorry
+  have key := nabla_commutator_path_difference U a b
+  set M := gaugeLM (plaquetteCurvature U a b) with hM
+  -- the shifts are coercions of linear equivalences (translation is bijective)
+  let shiftLE : Fin 2 → ((Site → W) ≃ₗ[R] (Site → W)) :=
+    fun c => LinearEquiv.funCongrLeft R W (Equiv.addRight (unitVec c))
+  have hshift : ∀ c,
+      (shiftLM (R := R) (W := W) c) = (shiftLE c : (Site → W) →ₗ[R] (Site → W)) := by
+    intro c
+    apply LinearMap.ext; intro ψ; funext x
+    simp [shiftLM, shiftLE, LinearEquiv.funCongrLeft, LinearMap.funLeft, Equiv.addRight]
+  let e : (Site → W) ≃ₗ[R] (Site → W) := (shiftLE b).trans (shiftLE a)
+  have he : (shiftLM (R := R) a).comp (shiftLM b)
+      = (e : (Site → W) →ₗ[R] (Site → W)) := by
+    rw [hshift a, hshift b]; rfl
+  rw [he] at key
+  rw [← sub_eq_zero (a := (nabla U a).comp (nabla U b))
+        (b := (nabla U b).comp (nabla U a)), key]
+  constructor
+  · intro h; rw [h]; exact LinearMap.zero_comp _
+  · intro h
+    have hcancel : M = (M.comp (e : (Site → W) →ₗ[R] (Site → W))).comp
+        (e.symm : (Site → W) →ₗ[R] (Site → W)) := by
+      rw [LinearMap.comp_assoc,
+        show (e : (Site → W) →ₗ[R] (Site → W)).comp
+            (e.symm : (Site → W) →ₗ[R] (Site → W)) = LinearMap.id from by
+          ext x; simp,
+        LinearMap.comp_id]
+    rw [hcancel, h, LinearMap.zero_comp]
 
 end PhysicsSM.Draft.NullEdge.Carrier.Torus
