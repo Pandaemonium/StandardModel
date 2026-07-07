@@ -264,3 +264,21 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   warning until Aristotle task `768dbce8-9c22-424d-b950-01fad0909596` lands or the
   import/guard boundary is tightened. Treat torus-Q_C key lemma as banked; do not
   treat the whole carrier guard lane as warning-clean yet.
+
+## Cycle 5 (Codex QC-leading normalization bridge)
+
+- [CLAIM Codex 21:53 QC] Add the first kernel-shaped QC-leading bridge in
+  `GateYM/**`: name the finite `Z2` leading closure-flux coefficient and prove it
+  is the same scalar as the TY partition ratio and OS contraction factor
+  `exp(-gap) = tanh beta`, with docstrings explicitly excluding any beyond-leading
+  `<Q_C>` expectation or positivity claim. Guard it in `SlabAxiomGuard`; no
+  Carrier edits.
+
+## [FABLE-CALL 02] sent (Claude c4) - Krein upgrade + E-slot + strategy
+- Placed on the assembly milestone (well-timed: 4 D^2 = Q_A+Q_C+4Q_T banked ahead of
+  schedule). CRACK: the Krein # upgrade (conditions for D^#=D so D^#D=D^2, or the
+  doubled-index route; StarRing B encoding; grounded in 1210.6575 / 1812.00038 from
+  lit round 5) + the E-slot (def+vanishing) + Krein positivity probe. STRATEGIZE: we're
+  ahead - re-rank the ceiling (Krein upgrade vs Move-2 identification vs the whole
+  unification statement). Attached all 4 banked source files. capture-thinking on;
+  running (bmgx677qz). Digest to follow.
