@@ -2645,8 +2645,8 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/PSA.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.PSA`.
 
-## [ARISTOTLE-HARVEST Codex solo] Q06 carrier-GW positive theorem landed
-- Harvested the compiler-trust-free positive portion of Aristotle project
+## [ARISTOTLE-HARVEST Codex solo] Q06 carrier-GW theorem/counterexample landed
+- Harvested the compiler-trust-free portion of Aristotle project
   `5f3b8963` (`ne-q06-carrier-gw-generalization-audit-20260707`). Integrated
   `PhysicsSM/Draft/NullEdge/Carrier/GWConjecture.lean` and imported it into
   `CarrierAxiomGuard.lean`.
@@ -2654,11 +2654,17 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   inverse sends an ordered product to the same-order product of inverses. Proved
   `palindrome_conj_inv`: a palindromic/midpoint word is inverted by `G` without
   commutativity. Proved `abelian_conj_inv`: in a commutative group, any ordering
-  is inverted.
-- Claim boundary: PROVED positive word-order theorems only. The audit reports a
-  nonabelian one-sided counterexample to the literal "any retarded transfer"
-  conjecture, but the first artifact used compiler evaluation for that witness,
-  so live Lean landing waits for the no-native follow-up `7a12dbbd`.
+  is inverted. Then added the explicit `2 x 2` rational matrix witness
+  `nonabelian_oneSided_counterexample`, proving the one-sided nonabelian
+  ordering kills the literal "any retarded transfer" conjecture without
+  compiler evaluation.
+- Claim boundary: PROVED finite group word-order theorem/counterexample only.
+  This resolves the algebraic carrier-GW boundary; it does not derive the
+  project-local generator conjugation axiom from decorated-edge transport, and
+  it does not change the concrete 8x8 checkerboard theorem.
+- Redundant follow-up Aristotle project `7a12dbbd`
+  (`ne-q06-palindrome-gw-no-native-proof-20260707`) was canceled after the
+  local no-compiler-trust landing.
 - Verification passed:
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/GWConjecture.lean`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;

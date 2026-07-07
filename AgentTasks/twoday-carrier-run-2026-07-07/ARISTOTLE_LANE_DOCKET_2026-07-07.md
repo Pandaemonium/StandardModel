@@ -64,8 +64,9 @@ The first named wave has now been mostly harvested into the live repo:
 - `7067efa0` Q08 dGamma square: landed `DGammaSquare.lean`.
 - `2ed38421` Q09 modular no-go: landed `ModularNoGo.lean`.
 - `4929366f` Q08 exterior quotient: strategy harvested; next proof jobs opened.
-- `5f3b8963` Q06 carrier-GW: strategy/counterexample harvested; no-native
-  follow-up opened.
+- `5f3b8963` Q06 carrier-GW: strategy/counterexample harvested; local
+  no-compiler-trust counterexample subsequently landed, so follow-up `7a12dbbd`
+  was canceled.
 
 ## Follow-up wave submitted after harvest
 
@@ -83,6 +84,8 @@ focused Mathlib Lake package.
 | `e2df3555-4bc9-4a1b-95e7-ec1c4ccfcd9f` | `ne-q11-bl-dictionary-finite-check-20260707` | Q11 B-L dictionary | finite check | decidable SM-entry check for the B-L/total-number claim |
 | `c2e23b53-347c-4c38-9791-cf51e9816fa8` | `ne-q12-equivariant-ms-charge-resolution-proof-20260707` | Q12 equivariant MS | proof/strategy | finite sector-additivity bridge after PSA-1 |
 | `85a73a6d-0e10-4955-8c76-27b9914db6c9` | `ne-q12-triality-convention-bridge-audit-20260707` | Q12 triality bridge | audit | T5-T8 intertwiners, G2 equivariance, and basis bridge kill tests |
-| `7a12dbbd-3dbe-4b7e-a65b-64e48fc063b8` | `ne-q06-palindrome-gw-no-native-proof-20260707` | Q06 carrier-GW | proof/audit | palindromic/abelian positive cases plus no-native nonabelian counterexample plan |
+| `7a12dbbd-3dbe-4b7e-a65b-64e48fc063b8` | `ne-q06-palindrome-gw-no-native-proof-20260707` | Q06 carrier-GW | canceled | redundant after local no-compiler-trust `nonabelian_oneSided_counterexample` landing |
 
 Queue check after submission: all eight follow-up projects were `RUNNING`.
+After the local Q06 counterexample landing, `7a12dbbd` was canceled; the other
+seven follow-up projects remain active unless later status checks say otherwise.

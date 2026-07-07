@@ -445,14 +445,17 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `conj_prod_forward` says conjugation preserves word order,
   `palindrome_conj_inv` proves the midpoint/palindromic convention gives
   `G T G = T^{-1}` without commutativity, and `abelian_conj_inv` proves the
-  abelian escape for arbitrary ordering.
+  abelian escape for arbitrary ordering. Codex then added the explicit
+  compiler-trust-free witness `nonabelian_oneSided_counterexample`, a `2 x 2`
+  rational matrix counterexample to the one-sided nonabelian ordering.
 - **Status:** RESOLVED boundary. The literal carrier conjecture "any retarded
-  transfer is inverted" is false in the nonabelian one-sided case according to
-  the audit; the live Lean landing only claims the palindromic and abelian
-  positive cases. The no-native counterexample follow-up is `7a12dbbd`.
+  transfer is inverted" is false in the nonabelian one-sided case. The live Lean
+  theorem now proves both the palindromic/abelian positive cases and the
+  explicit one-sided nonabelian kill witness. The redundant follow-up job
+  `7a12dbbd` was canceled after the local landing.
 - **Next:** R1 (the exact "retardedness IS the Wilson term" dispersion identity),
-  R4 telescoping, R0 path-sum = transfer power, and a no-compiler-trust Lean
-  counterexample or oracle artifact for the nonabelian one-sided failure.
+  R4 telescoping, R0 path-sum = transfer power, and the decoration-level
+  derivation of the generator conjugation axiom from `U_reverse = U^{-1}`.
 ### EQUIPARTITION-GATE - the first physical number [Claude; post-Q07; GATE M-KOIDE]
 - **Done:** F2 equipartition sum rule (tr M^2 = (2/V)(tr M)^2 under turn-power
   = hop-power; Q = 2/V; pointwise companion with Cauchy-Schwarz bound) +
