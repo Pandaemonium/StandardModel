@@ -228,9 +228,18 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Done:** `pairSum_le_expBound` proved via the partition-scheme telescoping
   identity, OR the honest reduction to one named combinatorial lemma + handoff.
   Rails: do not re-prove `kp_convergence_bound_false`; thread `hself` everywhere.
-- **Status:** OPEN; Aristotle task `e1f4172d` exceeded the 2-hour rule and was
-  canceled. A concise handoff-only continuation was requested in project
-  `c8468d57`; no result has been harvested yet.
+- **Status:** OPEN / HANDOFF HARVESTED. Aristotle task `e1f4172d` exceeded the
+  2-hour rule and was canceled. Handoff-only continuation
+  `c8468d57`/`8cf60b9c` completed: `pairSum_le_expBound` appears true and not
+  misstated, but the remaining blocker is the canonical-root
+  classification/regrouping map for fibers. Reuse the already-proved in-file
+  lemmas `perPair_absWeight_bound`, `fiber_value_bound`,
+  `fiber_card_mul_le_factorial`, `absWeight_eq_root_mul_blocks`,
+  `exists_canonical_root`, `treeRootChildren_poly_mem_nbhd`, and
+  `rhs_forest_expand`. Smallest next Lean target: build the concrete fiber
+  injection for a fixed forest target feeding `fiber_card_mul_le_factorial`;
+  after that, `pairSum_le_expBound` reduces to fiberwise-sum bookkeeping.
+  Leave the documented intentionally false/refuted KP statements alone.
 ### NN-D - higher-d Nielsen-Ninomiya [either, stretch]
 - **Done:** the discrete-Stokes degree theorem on `(ZMod N)^d` (facet-pairing
   telescoping), any d >= 2 beyond the landed 2D version; tie to overlap index if

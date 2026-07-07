@@ -885,3 +885,28 @@ positivity (both in progress).
   discharged (verified model, kernel formalization OPEN); Move-2 Q_A in flight; frontier
   threads (Pontryagin, teleparallel, generalized-symmetry) grounded / Codex-worked;
   collaborator doc committed + rich. The run has met its ambitious goal.
+
+## [ARISTOTLE HARVEST Codex KP handoff 00:35]
+- Harvested KP/Penrose handoff-only continuation
+  `8cf60b9c-70b2-4654-92ce-9b1e7902fc79` from project
+  `c8468d57-cd14-4b81-be1d-34cdd87cfc4d`.
+- Target remains OPEN: `PolymerKPConclusion.pairSum_le_expBound` in
+  `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean`. Aristotle judges
+  the statement likely true and not misstated; the earlier task was canceled by
+  the 2-hour rule, so this is a handoff, not a proof result.
+- Reuse the already-proved in-file scaffolding:
+  `perPair_absWeight_bound`, `fiber_value_bound`,
+  `fiber_card_mul_le_factorial`, `absWeight_eq_root_mul_blocks`,
+  `exists_canonical_root`, `treeRootChildren_poly_mem_nbhd`, and
+  `rhs_forest_expand`.
+- Single remaining combinatorial residual: formalize the canonical-root
+  classification/regrouping map from `(p,T)` to a forest target, prove the
+  summand is constant on each fiber, and provide the concrete root-first
+  injection feeding `fiber_card_mul_le_factorial`.
+- Smallest next Lean target: for a fixed forest target, build the injection
+  from the fiber times child-order/internal-order permutations into
+  `Perm (Fin n)` and prove it injective. After this, the head theorem should
+  reduce to finite fiberwise-sum bookkeeping.
+- Rails: leave the intentionally false/refuted KP statements and their
+  documented draft handoff markers alone; the correct replacements already live
+  elsewhere in the file.
