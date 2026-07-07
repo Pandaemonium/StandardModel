@@ -18,7 +18,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   lemma); (3) the Krein `#` and the gamma-parity split of cross terms; (4) assembly.
 - **Honesty rails:** no spectral claims (Krein positivity is OPEN); `E` is the
   gravity INTERFACE, not a gravity theorem.
-- **Status:** OPEN; brick 1 in flight.
+- **Status:** brick 1 **LANDED + guarded** (commit d7a7d8d - `NullNilpotentSquare`:
+  `null_clifford_sq_zero`, `nullSoldered_square_offDiagonal`, `lone_edge_massless`;
+  red-teamed clean). NEXT: brick 2 (the 2-complex + gauge-covariant `nabla_e` +
+  plaquette holonomy defect - design fork queued for Fable call 01).
 
 ### W2a - Q_A and Q_T identification lemmas [Claude, day 2 gate]
 - **Done:** kernel-checked `Q_A`-symbol-kernel = collinear locus tied to
@@ -70,9 +73,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Done:** `reflForm_self_nonneg` in `ProductHaarConfig.lean` placeholder-free
   (job sm-product-haar ac751ecb IN-FLIGHT); integrated + guarded.
 ### CC - color commutant [Claude]
-- **Done:** `color_commutant_eq_scalars` landed (job sm-color-commutant 1e9ac867
-  IN-FLIGHT); stretch: the reducible internal-space commutant (multiplicity
-  spaces = allowed Yukawa shape).
+- **Done:** `color_commutant_eq_scalars` **LANDED + guarded** (commit d7a7d8d -
+  `ColorCommutantScalar`; + `diagonal_mass_color_exact_iff`,
+  `nonscalar_mass_not_color_exact`; red-teamed clean). STRETCH remains OPEN: the
+  reducible internal-space commutant (multiplicity spaces = allowed Yukawa shape).
 ### AT - the A=T bridge [Claude]
 - **Done:** kernel-checked `M^2 = |<12>|^2` on the two-edge sector, tied to
   `compositeMassSq_eq_sin_half` + `PluckerSpinorBridge`; docstring states the
