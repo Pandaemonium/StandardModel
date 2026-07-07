@@ -354,6 +354,20 @@ crisp moral.
   delta_CP = +/- pi/2 as the near-term observational hook). Gates: the
   equivariant McKean-Singer upgrade (L0) + TOY-A (L2) + the cyclicity seed
   (L4a) kernel-checked, and the chirality-solder audit passed.
+- P6-R ACTIVATION CANDIDATE (post-Q07): "Koide as equipartition" - the
+  sum rule Q = 2/V as a two-line kernel-checked trace theorem (Aristotle
+  43a7f979 in flight), T-SOLDER as the named hypothesis with the kappa = 1
+  derivation as the make-or-break (GATE M-KOIDE pre-registered: permille
+  window, kills K1-K4, pole-mass fifth decimal disclaimed), electron
+  lightness as phase proximity, and the rigidity no-go (no ratio without a
+  named rigidity) as the honesty frame. This is exactly the publication
+  plan's P6-R ("flavor as an internal Gram-overlap problem"), now with a
+  concrete theorem at its center.
+- NEW candidate (post-Q06): "The checkerboard carries an exact
+  Ginsparg-Wilson structure" - GW-1/GW-2 with the edge-reversal grading, the
+  retardedness-is-the-Wilson-term identity, and the strong-topology
+  benchmark theorem; the first continuum-facing paper, gated on the
+  4043f341 harvest and the R5 rung.
 - P6-R: the Koide-as-angle finite identity (sqrt-mass = native aperture
   variables) + whatever generation mechanism Q5 ranks first - only if a
   mechanism FORCES structure; no numerology paper.

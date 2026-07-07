@@ -280,6 +280,23 @@ programs and becomes one shared theorem family - and the checkerboard's KNOWN
 continuum limit (1+1 Dirac propagator) becomes the carrier program's first
 continuum benchmark. This is the cheapest continuum story we own.
 
+**STATUS UPDATE (2026-07-07, Q06/Q08 memos integrated).** The bridge is now a
+LADDER (R0-R6, memo-verified): word expansion = zigzag sum (R0); the exact
+"retardedness IS the Wilson term" dispersion identity (R1); an EXACT
+Ginsparg-Wilson relation for the transfer with R = 1/2 and grading =
+chirality compose spatial reflection = edge-orientation reversal (GW-1
+one-line lemma, proof verified; GW-2 8x8 kill-check in flight, Aristotle
+4043f341); telescoping (R4); strong-topology fiberwise convergence with the
+norm version REFUTED (R5); retarded-kernel convergence anchored classically
+(Skopenkov-Ustinov; Arrighi-Nesme-Forets) (R6). Second-quantized upgrade
+(Q08): k-particle amplitudes = determinants of zigzag sums (Cauchy-Binet),
+crossing signs = Lindstrom-Gessel-Viennot = the planar shadow of the exterior
+functor; the interaction is canonical (pair kernel = the carrier's wedge).
+New continuum gates adopted into the charter: UM (uniform majorant),
+COVARIANCE (Jones warning), HS-implementability; rule quotient-then-limit.
+And the RG convergence: blocking generates Q_A (Layer K) = Schur breaks
+nilpotency (Berezin) - the thesis as an RG fact, from two directions.
+
 ## 6. Confinement as closure-mass density (bridge to the YM lane)
 
 The kernel-checked YM area law (Theorem 2, lattice) and the closure slot `Q_C`

@@ -263,3 +263,49 @@ Format:
   already disfavor. Kernel target: the trivial-but-certifying commutation
   lemma on TOY-A (x) strand fiber. -> folded into round-2 packet Q12 for
   adversarial confirmation.
+- [ANSWERED Q06] Continuum limit -> benchmark ladder R0-R6 (strong topology;
+  norm version FALSE, k = pi witness verified); Krein-does-not-kill-doubling
+  CORRECTED: retardedness alone kills it and IS the hidden Wilson term
+  (exact identity Herm(D-hat) = (1 - cos theta cos k)/eps); the GW relation
+  holds EXACTLY with R = 1/2 and grading = chirality compose spatial
+  reflection = edge-orientation reversal (GW-1 one-line lemma, proof
+  verified); axiomatics = Krein-Wightman with HSSC + subsidiary condition;
+  NEW NAMED GATE UM (uniform majorant = finite HSSC shadow) + covariance
+  gate (Jones/Thompson-group warning) + quotient-then-limit rule; the
+  refinement category CANNOT be null-only (Layer K: coarse edges go
+  timelike - "coarse-graining generates Q_A" is our one honest RG theorem
+  available now); celestial population enters at vertices via turns.
+- [ANSWERED Q07] Mass values -> symmetry chains CANNOT fix ratios (Schur
+  demolition); first computable number = circulant cross-ratio (2 on the
+  4-cycle; golden ratio + 1 on the pentagon); THE CENTERPIECE: equipartition
+  sum rule Q = 2/V under T-SOLDER (turn power = hop power) - Koide = 45
+  degrees x V = 3, exact, phase-free; data select the LEG-LEVEL sqrt-mass
+  identification (composite level gives 0.894, fails); electron lightness =
+  phase proximity to the massless boundary (NOT hierarchy - lepton hierarchy
+  in sqrt-m is 59:14:1); hierarchy machinery is for QUARKS (path-overlap
+  with per-edge cos(theta/2), the cosine leg of the Lagrange identity whose
+  sine leg is our kernel mass); GATE M-KOIDE pre-registered (2/3 at permille
+  window; the 1e-5 pole coincidence disclaimed as IR noise).
+- [ANSWERED Q08] Second quantization -> adds NO new crux: Fock = exterior
+  algebra (finite!); Fock commutes with the Gupta-Bleuler quotient
+  (rad(Lambda h) = ideal(N) - no positivity needed); finite Kugo-Ojima is a
+  4-line theorem (quartet completeness FREE; only positivity = Q1 remains);
+  physical unitarity = J-unitarity + constraint preservation + Q1, nothing
+  else; interactions are CANONICAL (dGamma(D)^2 - dGamma(D^2) =
+  2 dGamma_2(Lambda^2 D): pair kernel = wedge of the carrier; NJL from
+  turn^2); crossing signs = planar shadow of Lambda, NOT spin-statistics
+  (C-Q8-SS registered: positivity selects Lambda over Sym); RG step = Schur
+  complement, null nilpotency NOT RG-stable = the thesis as an RG fact;
+  infinity enters ONLY at dynamical bosons + the refinement HS bound (a
+  finite anomaly diagnostic).
+- [QUEUE 2026-07-07 Claude, post-Q06/Q07/Q08 open items] (i) T-SOLDER kappa
+  derivation (Q07 K2) - THE load-bearing non-Lean item for mass values:
+  edge-subdivision naturality either forces kappa = 1 (mechanism -> theorem)
+  or kills the gate. Candidate future Fable window or focused deep-work.
+  (ii) UM gate probes: O1 3-level quotient-norm drift (numeric first), O2
+  tetrahedral invariant-count (uses our character assets; NERD tetrahedral
+  regulator connection). (iii) The half-shift/midpoint convention for GW-2
+  must be pinned by the checkerboard corner-convention layer (job 4043f341
+  instructed to document or refute). (iv) Q06 flags "d'Antoni light-front"
+  as unverifiable - our Q06 packet's citation; correct the packet's
+  attribution on next revision (executor error, logged).

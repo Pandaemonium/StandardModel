@@ -379,9 +379,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `1 - U` is not itself the Gram square unless the `Q_C` slot uses the
   Hermitian Laplacian normalization. In the finite `Z2` specialization,
   `(1 - s)^2 = 2 * (1 - s)`, so the half-normalized Gram square equals the
-  linear defect. Guarded in `SlabAxiomGuard`. Still OPEN: the Carrier-side
-  nonabelian/operator `Q_C` factorization in the concrete Weitzenbock
-  normalization.
+  linear defect. Codex then added the operator/matrix version:
+  `(1 - U)^* (1 - U) = 2I - U - U^*` for finite unitary matrices, plus the
+  self-adjoint-involution corollary `(1 - U)^* (1 - U) = 2(1 - U)`.
+  Guarded in `SlabAxiomGuard`. Still OPEN: the Carrier-side nonabelian/operator
+  `Q_C` factorization in the concrete Weitzenbock normalization.
 ### E-TELESCOPE - corrected telescoping + P-probe [Claude; replaces the killed Tr E conjecture]
 - **Done:** numeric P-probe script FIRST (ten lines); then Q02-L1 pointwise
   splitting (tr_0 E = Phi + divergence), Q02-L2 closed telescoping + kill
@@ -430,6 +432,53 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Krein audit (tau, deck, rho J-unitary, # restricts to sectors); the
   registered probe orders (ind rigid at all eps; commutant 3 -> 1 at generic
   eps; theta_23 - pi/4 = O(eps^2)).
+
+### CHECKERBOARD-GW - the exact GW structure of retarded transfer [Claude; post-Q06]
+- **Done:** GW-1 (involution conjugating transfer to inverse => GW with R=1/2,
+  + Luscher deformed involution Ghat = G V with D Ghat = -G D exactly, +
+  gamma5-Hermiticity analog) and the 8x8 GW-2 kill-check with the grading =
+  chirality compose spatial reflection (= EDGE-ORIENTATION REVERSAL - the
+  same operation as the OS theta-selector and the J_R ingredient: three
+  threads, one operation). ARISTOTLE IN FLIGHT: 4043f341. Then R1 (the exact
+  "retardedness IS the Wilson term" dispersion identity), R4 telescoping, R0
+  path-sum = transfer power. Carrier-level conjecture (registered): G =
+  Gamma compose edge-reversal inverts any retarded transfer on
+  reversal-closed complexes; kill = nonabelian counterexample <= dim 8.
+### EQUIPARTITION-GATE - the first physical number [Claude; post-Q07; GATE M-KOIDE]
+- **Done:** F2 equipartition sum rule (tr M^2 = (2/V)(tr M)^2 under turn-power
+  = hop-power; Q = 2/V; pointwise companion with Cauchy-Schwarz bound) +
+  triangle instance. ARISTOTLE IN FLIGHT: 43a7f979. Then F5 T-SOLDER
+  definition + degree formula (K_4 witness Q = 1/2), F4 Brannen form +
+  massless-boundary lemma ("electron lightness = phase proximity"), F0/F1
+  (Lagrange 2x2 + path-telescope: the hierarchy mechanism as one identity),
+  F3 circulant cross-ratio (first number = 2 on the 4-cycle; golden ratio at
+  N=5), F6 rigidity no-go. LOAD-BEARING NON-LEAN ITEM (K2): derive or refute
+  kappa = 1 in T-SOLDER from carrier axioms (edge-subdivision naturality) -
+  the mechanism becomes theorem or dies there. GATE M-KOIDE pre-registered
+  per the memo (P1 retrodiction, K1-K4 kills, P2 oracle drift check).
+### FOCK-GB - second quantization commutes with the quotient [Claude; post-Q08]
+- **Done, in order:** L-Q8-1 finite Kugo-Ojima (rad(h|ker Q) = im Q;
+  nondegenerate cohomology - quartet completeness free in finite dim) +
+  L-Q8-2 (ker A)^perpJ = im A#. ARISTOTLE IN FLIGHT: 38eeb1a6. Then L-Q8-3
+  the interaction identity dGamma(D)^2 = dGamma(D^2) + 2 dGamma_2(Lambda^2 D)
+  (pair kernel = the WEDGE of the carrier - Layer-K resonance; NJL = turn^2,
+  Thirring = transport^2, no new constants); L-Q8-4 the L=4 two-particle
+  checkerboard determinant identity in Q[m]; L-Q8-5 the FLAGSHIP
+  rad(Lambda h) = ideal(N), Fock(V')/rad = Fock(V'/N); L-Q8-6 T-U1 unitarity
+  chain (hypotheses exactly: J-unitarity + constraint preservation + Q1).
+  Registered conjecture C-Q8-SS: positivity selects Lambda over Sym (finite
+  Pauli); kill = a Sym-quantized checkerboard with positive invariant
+  quotient.
+### RG-SCHUR - the thesis as an RG fact [Claude; post-Q06+Q08 convergence]
+- **Done:** T-R1 Schur-complement decimation (det factorization; Berezin
+  layer as needed) + RG-stability of {Krein-self-adjoint, Gamma-odd} + the
+  INSTABILITY of per-edge null nilpotency ("mass terms are what null
+  microstructure Schur-complements to") - converging with Q06-V4
+  (coarse-graining generates Q_A by Layer K: sums of nulls are timelike
+  unless collinear). Numeric-first probes (pre-registered): O1 uniform-
+  majorant 3-level drift test; O2 tetrahedral point-group invariant-operator
+  count at dim <= 4 (kill = excess over O(3) forces fine-tuning). New named
+  gate UM (uniform majorant, the finite HSSC shadow) adopted.
 
 ## Standing meta-threads
 

@@ -236,14 +236,80 @@ near-term falsifiable). Registered danger: the chirality-solder check - if the
 physical grading is ever forced to couple to internal chirality, the per-sector
 index degrades 3 -> 1.
 
+**5f. Continuum limit (batch 2).** The benchmark is the 1+1 checkerboard;
+convergence topology = strong operator on powers (norm version FALSE, k = pi
+witness); the free case needs no Chernoff (Fourier fibers + telescoping);
+Chernoff-on-Krein requires uniform power-boundedness = the positivity crux
+re-imported. Corrections adopted: the Krein structure does NOT kill doubling -
+retardedness alone does, and retardedness IS the hidden Wilson term (exact
+identity: the Hermitian part of the one-step difference operator is
+(1 - cos theta cos k)/eps); the transfer satisfies an EXACT Ginsparg-Wilson
+relation with R = 1/2 whose grading is chirality composed with spatial
+reflection = EDGE-ORIENTATION REVERSAL (the same operation underlying the
+OS-reflection selector and the J_R candidate - one operation, three roles).
+Axiomatics: Krein-Wightman with the Hilbert-Space-Structure Condition +
+subsidiary-condition quotient; new named finite gates: UM (uniform majorant =
+the HSSC shadow; refinement embeddings intertwine J, preserve (V', N), keep
+two-sided quotient-norm bounds), COVARIANCE (Jones/Thompson-group warning),
+HS-implementability (a finite anomaly diagnostic); rule: quotient-then-limit.
+The refinement category is NOT null-only (Layer K forces coarse edges
+timelike: "coarse-graining generates Q_A" is an available finite RG theorem);
+new null directions enter only at vertices via turns.
+
+**5g. Mass values (batch 2).** Symmetry-breaking chains can NEVER fix
+eigenvalue ratios (Schur); ratios require rigidity (equivariance /
+soldering / holonomy quantization / index - the R1-R4 catalogue, with a
+no-ratio-without-rigidity theorem-shape). First computable number: the
+dihedral circulant cross-ratio (= 2 on the 4-cycle, golden-ratio + 1 on the
+pentagon). The centerpiece: the EQUIPARTITION SUM RULE - for a uniform turn
+d plus zero-diagonal hops H with turn power = hop power (the T-SOLDER
+hypothesis, "the turn is made of its incident edges"), tr M^2 = (2/V)(tr M)^2
+exactly, so with the LEG-LEVEL identification m = lambda^2 (which the data
+select decisively over the composite-level one), Q = 2/V: Koide's 2/3 =
+(45-degree equipartition) x (V = 3). Electron lightness = phase proximity to
+the massless boundary (the lepton "hierarchy" in sqrt-m is 59:14:1 - not
+exponential); exponential hierarchy machinery is for QUARKS (path-overlap
+with per-edge cos(theta/2) - the cosine leg of the Lagrange identity
+|<u,v>|^2 + |u wedge v|^2 = |u|^2|v|^2 whose sine leg is the kernel-checked
+mass). The load-bearing open item: derive or refute the T-SOLDER coefficient
+kappa = 1 from carrier axioms (kappa != 1 kills the gate). Pole-mass 1e-5
+precision is disclaimed (IR noise; a UV framework owes permille).
+
+**5h. Second quantization (batch 2).** Adds NO new crux. Fock = exterior
+algebra (finite); the Fock functor lifts J and COMMUTES with the
+Gupta-Bleuler quotient (the radical of the lifted form is the ideal of the
+one-particle radical - no positivity needed); finite Kugo-Ojima is a four-line
+theorem (quartet completeness is FREE: the radical of the form on ker Q is
+exactly im Q); physical unitarity holds with exactly three hypotheses
+(J-unitarity, constraint preservation, quotient positivity = 5a). There is no
+finite S-matrix with t -> infinity: the honest object is boundary-to-boundary
+evolution. Crossing signs are the planar shadow of the exterior functor, NOT
+the origin of statistics (registered conjecture: positivity selects Lambda
+over Sym - the finite Pauli skeleton). Interactions are CANONICAL:
+dGamma(D)^2 - dGamma(D^2) = 2 dGamma_2(Lambda^2 D) - the pair kernel is the
+WEDGE of the carrier (NJL from turn^2, Thirring from transport^2, ratios
+fixed by Gram data, no new constants); gauge self-coupling is NOT generated
+(add the plaquette or induce by the fermion determinant). One RG step = the
+Schur complement; {Krein-self-adjoint, chirality-odd} is RG-stable but
+per-edge null NILPOTENCY IS NOT: mass terms are what null microstructure
+Schur-complements to - the program's thesis as an RG fact, converging with
+5f's Layer-K blocking statement. Infinity enters at exactly two doors:
+dynamical bosons, and the refinement-uniform Hilbert-Schmidt bound.
+
 **Cross-memo convergences:** (i) 5d and 5e independently demand the same
 prerequisite - the EQUIVARIANT (isotypic, R(G)-valued) upgrade of the kernel
 McKean-Singer theorem; without it "three families with identical charges" is
 not yet a statement in our calculus. (ii) 5a's quotient theorem, 5c's no-go
-defenses, and the unitarity payment of the doubling escape all land on the SAME
+defenses, the unitarity payment of the doubling escape, 5f's Chernoff
+power-boundedness, and 5h's unitarity hypothesis (H3) ALL land on the SAME
 object: V'/N and its constraint algebra. (iii) 5d + 5e compose to the full
 matter-sector shape: strand pentad tensor triality monodromy = 3 x one SM
-generation (CONJECTURE, kills listed).
+generation (CONJECTURE, kills listed). (iv) 5f and 5h derive the SAME RG
+fact from opposite directions (blocking generates Q_A; Schur breaks
+nilpotency): mass is what trapped light looks like from far away, as a
+finite theorem target. (v) Edge-orientation reversal now plays three roles
+(GW grading, OS reflection, J_R ingredient) - treat it as a first-class
+structure in any answer that touches gradings or reflections.
 
 ## 6. What is OPEN now (post round 1 - do not assume any of these)
 

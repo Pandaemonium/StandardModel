@@ -380,8 +380,15 @@ the trusted namespace yet.
   representation content acquired a conditional derivation (the internal
   null-strand principle: five strands, degeneracy {(3,2), (4,1)}, hypercharge
   and the Z_6 lattice derived); and three generations acquired a candidate
-  mechanism (triality-as-monodromy, multiplicity menu exactly {1, 3}). Memos:
-  `AgentTasks/fable_parallel/Q0{1..5}_answer.md`.
+  mechanism (triality-as-monodromy, multiplicity menu exactly {1, 3}). The
+  second batch (Q06-Q08) added: the continuum benchmark ladder with
+  "retardedness IS the Wilson term" and an exact Ginsparg-Wilson structure
+  whose grading is edge-orientation reversal; the equipartition sum rule
+  (Koide's 2/3 = 45-degree equipartition x 3 modes, exact under a named
+  soldering hypothesis); and the second-quantization chain (Fock commutes
+  with the physical quotient; unitarity needs exactly the one open
+  positivity; interactions are canonical with pair kernel = the carrier's
+  wedge). Memos: `AgentTasks/fable_parallel/Q0{1..8}_answer.md`.
 - **Forward documents:** the synthesis
   (`AgentTasks/twoday-carrier-run-2026-07-07/SYNTHESIS_BEYOND_MASS.md` - the
   index-trinity frame, rev 2), the program charter (above), the graded steer

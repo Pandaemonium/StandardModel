@@ -100,6 +100,37 @@ soldering with internal decorations breaks, gauges, or trivializes on
 asymptotic states. A derivation target: achieved, it would EXPLAIN the
 factorization CM otherwise forces us to assume.
 
+## Continuum gates (added post-Q06/Q08, same date)
+
+The limit program acquires three named finite gates and one rule:
+
+- **UM (uniform majorant)** - the finite shadow of the Hilbert-Space-Structure
+  Condition: refinement embeddings must intertwine J, preserve (V', N), and
+  keep two-sided uniform bounds on physical quotient norms of coarse
+  observables. Growing kappa_n is harmless iff UM holds. Probe: 3-level
+  quotient-norm drift (numeric first). This gate was missing from every prior
+  open list.
+- **COVARIANCE gate** - existence of the limit does not give Poincare
+  covariance of the limit (Jones's Thompson-group obstruction for naive
+  block refinements); covariance is tracked separately, natively via boost
+  orbits (boosts act on light-cone lattices by anisotropic rescaling).
+- **HS/implementability gate** - refinement-uniform Hilbert-Schmidt bounds on
+  Bogoliubov mixing blocks (Shale-Stinespring); HS-norm growth along
+  refinements is a FINITE anomaly diagnostic, with the chiral-index calculus
+  as its kernel shadow.
+- **Rule: quotient-then-limit, never limit-then-quotient** (the radical can
+  become dense in the wrong order).
+
+Also adopted (Q06): the amendment-3 doubling story is now QUANTITATIVE -
+retardedness IS the hidden Wilson term (exact dispersion identity), and the
+exact GW relation holds with R = 1/2 for the grading = chirality composed
+with edge-orientation reversal; the refinement category is causal-soldered
+complexes with null complexes as UV boundary (coarse-graining generates Q_A
+by Layer K - the thesis as an RG fact, confirmed independently by the Schur
+route of Q08); second quantization adds NO new crux (Fock commutes with the
+Gupta-Bleuler quotient; physical unitarity = J-unitarity + constraint
+preservation + U1's positivity, nothing else).
+
 ## Generations (added post-Q05, same date)
 
 Three generations remain an input to U0-U5, but now with a named candidate
