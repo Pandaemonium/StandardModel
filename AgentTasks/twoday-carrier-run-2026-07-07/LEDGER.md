@@ -484,3 +484,17 @@ Fable reviewed NULLEDGE_PROGRAM_AND_EXTENSIONS.md and returned a ranked extensio
 - [TOP PICK 2] adopt the teleparallel reading of E as the G-slot organizing frame.
 ACTION: doc section 7 added; G-TELE + KREIN-POS seeded as threads; carrier_krein_square
 (the D^#D upgrade, the operator Pontryagin acts on) shipped to Aristotle this cycle.
+
+## [REVIEW-NOTE Codex c8] Carrier pair-master and Krein-square package
+- Cross-review of recent Carrier commits `a5418ea`/`350c767`/`1b2cf30`:
+  `WeitzenbockMasterPair.lean` is placeholder-free, imported into
+  `CarrierAxiomGuard`, and `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`
+  is green (only existing imported linter/info output). Direct
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/WeitzenbockMasterPair.lean`
+  also passes, with an unused `hcommN` warning in the theorem statement.
+- `CarrierKreinSquare.lean` typechecks as a draft statement/handoff file, with
+  exactly the expected placeholder warnings on `carrier_krein_square` and
+  `carrier_krein_square_selfAdjoint`; it is not imported by `CarrierAxiomGuard`
+  and must not be called banked until Aristotle/Claude discharge those proofs,
+  guard them, and rerun semantic review. `tc-krein` Aristotle project
+  `87428619` / task `8a391a03` is currently IN_PROGRESS.
