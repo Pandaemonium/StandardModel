@@ -59,6 +59,28 @@ theorem weitzenbock_master_pair (gamma m n : E → B) (g : E → E → R)
       = (∑ e, ∑ f, g e f • (m e * n f + m f * n e))
         + (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e)
             * (m e * n f - m f * n e)) := by
-  sorry
+  have hsum : ∑ e, ∑ f, (4 : R) • ((gamma e * gamma f) * (m e * n f)) =
+    (∑ e, ∑ f, (gamma e * gamma f + gamma f * gamma e) * (m e * n f + m f * n e)) +
+    (∑ e, ∑ f, (gamma e * gamma f + gamma f * gamma e) * (m e * n f - m f * n e)) +
+    (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e) * (m e * n f + m f * n e)) +
+    (∑ e, ∑ f, (gamma e * gamma f - gamma f * gamma e) * (m e * n f - m f * n e)) := by
+      simp +decide only [← Finset.sum_add_distrib] ; congr ; ext e ; congr ; ext f ; ring;
+      simp +decide only [mul_add, add_mul, mul_sub, sub_mul] ; abel_nf;
+      norm_cast;
+  convert hsum using 1;
+  · simp +decide only [Finset.sum_mul _ _ _, Finset.mul_sum];
+    simp +decide only [Finset.smul_sum];
+    refine' Finset.sum_congr rfl fun e _ => Finset.sum_congr rfl fun f _ => _;
+    have h1 : m e * gamma e = gamma e * m e := (hcommM e e).symm
+    have h2 : m e * gamma f = gamma f * m e := (hcommM f e).symm
+    have key : (m e * gamma e) * (gamma f * n f) = (gamma e * gamma f) * (m e * n f) := by
+      calc (m e * gamma e) * (gamma f * n f)
+          = gamma e * (m e * gamma f) * n f := by rw [h1]; noncomm_ring
+        _ = gamma e * (gamma f * m e) * n f := by rw [h2]
+        _ = (gamma e * gamma f) * (m e * n f) := by noncomm_ring
+    rw [key]
+  · simp +decide only [Algebra.smul_def, hcl];
+    simp +decide [ add_assoc, sum_antisym_sym_zero ];
+    exact sum_sym_antisym_zero _ _ fun e f => by simp +decide [ ← hcl ] ; abel;
 
 end PhysicsSM.Draft.NullEdge.Carrier

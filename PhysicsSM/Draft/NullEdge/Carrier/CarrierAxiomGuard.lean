@@ -5,6 +5,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierPotentialTurn
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockQC_Torus
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierSquareAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierESlot
+import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMasterPair
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -102,6 +103,12 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_varying' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_varying
+
+/-! ## Move-1 pair-master: bilinear generalization (Krein-enabling) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_pair
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
