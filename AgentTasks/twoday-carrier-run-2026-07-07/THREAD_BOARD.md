@@ -456,6 +456,13 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   kappa = 1 in T-SOLDER from carrier axioms (edge-subdivision naturality) -
   the mechanism becomes theorem or dies there. GATE M-KOIDE pre-registered
   per the memo (P1 retrodiction, K1-K4 kills, P2 oracle drift check).
+- **K2 ATTACKED (2026-07-07, `TSOLDER_KAPPA_ANALYSIS.md`):** kappa = 1 <=>
+  tetrahedral corner angle (cos = -1/3) under bookkeeping B2; numeric oracle
+  green; dimension-discriminating dictionary registered (1+1 -> 1/3, 2+1 ->
+  5/9, 3+1 tetrahedral -> 2/3 = observed). DECIDER = probe P1: the explicit
+  carrier-to-leg reduction on the Z_3 tetrahedral cycle, corner convention
+  pinned by the palindromic theorem in GWRetardedTransfer.lean. Next
+  concrete action on this thread; kills pre-registered in the note.
 ### FOCK-GB - second quantization commutes with the quotient [Claude; post-Q08]
 - **Done, in order:** L-Q8-1 finite Kugo-Ojima (rad(h|ker Q) = im Q;
   nondegenerate cohomology - quartet completeness free in finite dim) +
