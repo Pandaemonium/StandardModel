@@ -2686,3 +2686,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1/PSA.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1.PSA`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## [ARISTOTLE-HARVEST Codex solo] Q12 ChargeResolution finite bridge landed
+- Harvested Aristotle project `c2e23b53`
+  (`ne-q12-equivariant-ms-charge-resolution-proof-20260707`). Integrated
+  `PhysicsSM/Draft/NullEdge/GateI1/ChargeResolution.lean` and imported it from
+  the GateI1 aggregator.
+- Proved the finite charge-resolution accounting package:
+  `superTrace_eq_sum_sector`, `superTrace_eq_zero_of_sectors`,
+  `sector_failure_not_hidden`, `sdim_eq_sum_chargeIndex`,
+  `chargeIndex_failure_not_hidden`, and `superTrace_blockDiagonal'`.
+- Claim boundary: PROVED finite labelled-basis and direct-sum bookkeeping only.
+  Sector failures cannot be hidden by total cancellation without a compensating
+  nonzero sector, but this is not an analytic/equivariant McKean-Singer theorem,
+  not anomaly cancellation, not constraint equivariance on a physical quotient,
+  and not a physical chirality theorem.
+- Run docs updated: Q12 status in `THREAD_BOARD.md`; follow-up harvest status in
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ChargeResolution.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.ChargeResolution`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1`.

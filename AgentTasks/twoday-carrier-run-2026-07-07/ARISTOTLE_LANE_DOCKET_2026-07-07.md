@@ -67,6 +67,7 @@ The first named wave has now been mostly harvested into the live repo:
 - `5f3b8963` Q06 carrier-GW: strategy/counterexample harvested; local
   no-compiler-trust counterexample subsequently landed, so follow-up `7a12dbbd`
   was canceled.
+- `c2e23b53` Q12 charge resolution: landed `ChargeResolution.lean`.
 
 ## Follow-up wave submitted after harvest
 
@@ -87,11 +88,10 @@ focused Mathlib Lake package.
 | `7a12dbbd-3dbe-4b7e-a65b-64e48fc063b8` | `ne-q06-palindrome-gw-no-native-proof-20260707` | Q06 carrier-GW | canceled | redundant after local no-compiler-trust `nonabelian_oneSided_counterexample` landing |
 
 Queue check after submission: all eight follow-up projects were `RUNNING`.
-After the local Q06 counterexample landing, `7a12dbbd` was canceled; the other
-seven follow-up projects remain active unless later status checks say otherwise.
-
-Local parallel progress while `c2e23b53` is in flight: Codex landed the finite
-sector-additivity bookkeeping theorem `sum_sectorContribution_eq_total` in
-`PSA.lean`.  This should be treated as the additive accounting rung only; the
-broader Aristotle job is still needed for any equivariant McKean-Singer
-charge-sector index theorem or anomaly-gate promotion.
+After the local Q06 counterexample landing, `7a12dbbd` was canceled.  Follow-up
+`c2e23b53` completed and was harvested into `ChargeResolution.lean`, proving the
+finite charge-sector additivity/cannot-hide/direct-sum bookkeeping package.
+This should still be treated as finite accounting only; any analytic or
+operator-level equivariant McKean-Singer theorem and anomaly-gate promotion
+remain open.  The other follow-up projects remain active unless later status
+checks say otherwise.

@@ -581,20 +581,26 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   permutation-matrix order-`m` vanishing. Codex then added the finite
   charge/sector bookkeeping theorem `sum_sectorContribution_eq_total`: summing
   label-resolved sector contributions recovers the total finite contribution.
+  Aristotle follow-up `c2e23b53` was harvested into
+  `PhysicsSM/Draft/NullEdge/GateI1/ChargeResolution.lean`, which proves the
+  stronger finite charge-resolution package: `superTrace_eq_sum_sector`,
+  `superTrace_eq_zero_of_sectors`, `sector_failure_not_hidden`,
+  `sdim_eq_sum_chargeIndex`, `chargeIndex_failure_not_hidden`, and
+  `superTrace_blockDiagonal'`.
 - **Status:** PROVED algebraic T1-T4 plus finite PSA-1 and sector-additivity
   accounting identities only.
   This confirms the G2-parity defusal at the XOR/Fano algebra level and removes
   sign-convention risk from the automorphism claim; PSA-1 gives the per-sector
-  determinant/supertrace check, and the new sector theorem gives only the
-  finite partition-by-label bookkeeping. Neither result proves the equivariant
-  index theorem behind a physical anomaly statement.
+  determinant/supertrace check, and ChargeResolution gives only finite
+  partition-by-label and direct-sum bookkeeping. These results do not prove an
+  analytic/equivariant index theorem behind a physical anomaly statement.
 - **Next:** T5/T6/T7 require explicit triality intertwiners and their
   G2-equivariance; T8 requires the convention bridge
   `(-1)^F_c = B phi B^{-1}` between the ladder/Furey basis and XOR/Fano basis;
   T9/E4 requires constraint equivariance `tau Gamma' = Gamma'` before any
-  per-sector physical quotient count. PSA still needs the equivariant
-  McKean-Singer charge-sector index theorem before sector failures can be
-  promoted to anomaly gates. Failure of T8 is a C8-seam escalation, not a patch.
+  per-sector physical quotient count. The remaining PSA gap is now the analytic
+  or operator-level equivariant McKean-Singer theorem, not finite additivity.
+  Failure of T8 is a C8-seam escalation, not a patch.
 - **Claim boundary:** do not claim `[P,tau]=0` downstairs, per-sector index
   preservation, anomaly cancellation, or a physical chirality result from this
   theorem alone.
