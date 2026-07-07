@@ -3571,3 +3571,15 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `ARISTOTLE_Q12_E4_HEALING_SEMANTIC_AUDIT_2026-07-07.md`.
 - Queue poll immediately after submission showed the project `RUNNING`, with
   the task queued.
+
+## [DOC Codex solo] Null-edge reference map seeded
+
+- Acted on the harvested literature/provenance audit's highest-leverage
+  follow-up by creating `Sources/Null_Edge_References.md`.
+- The file is deliberately conservative: it records local keys and identifiers
+  from `LIT_LOG.md` / existing source files, labels each row as `KEYED-LOCAL`,
+  `ID-ONLY`, `NEEDS-VERIFY`, or `NO-FULLTEXT`, and refuses to treat a row as a
+  theorem-supporting citation until statement and convention checks are done.
+- Registered the new file in `docs/DOCUMENT_MAP.md` under research references.
+- Claim boundary: this is a provenance control surface, not a final
+  bibliography and not an upgrade of any manuscript claim.

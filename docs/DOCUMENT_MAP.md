@@ -93,6 +93,8 @@ as current state.
 ## Research references and surveys (Sources/, selected)
 
 - `Sources/Furey_Baez_Octonions_Standard_Model_Survey.md` - the division-algebra SM survey. [STABLE]
+- `Sources/Null_Edge_References.md` - live null-edge/NullStrand source-key and
+  verification-status map; conservative, not a final bibliography. [LIVE]
 - `Sources/Baez_Standard_Model_Octonions_Lean_Proof_Plan.md` - proof plan for the Baez route. [STABLE]
 - `Sources/Exceptional_Jordan_Projective_Geometry_Lit_Search.md` - J3(O) literature. [STABLE]
 - `Sources/NERD_1.md` ... `NERD_4.md` - NERD program foundational analyses. [STABLE]
