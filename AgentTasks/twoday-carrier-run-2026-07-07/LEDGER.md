@@ -1685,6 +1685,21 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   theorem should read only as a finite two-plaquette `Z2` small-coupling rung,
   not volume-uniform KP and not an `SU(2)` gap theorem.
 
+## [ARISTOTLE SUBMIT Codex KP fixed-forest injection 04:15]
+- Submitted focused KP proof/strategy job for the exact blocker after
+  `root_child_forest_wf`: the fixed-forest fiber-count injection feeding
+  `fiber_card_mul_le_factorial`.
+- Project `6b8dcebd-7efc-4485-b02e-b6fe6f0176de`, task
+  `3a9be2e2-df8f-4558-8b15-127578c6681f`.
+- Task note:
+  `AgentTasks/twoday-carrier-run-2026-07-07/ARISTOTLE_KP_FIXED_FOREST_INJECTION_2026-07-07.md`.
+- Submission packet:
+  `AgentTasks/aristotle-submit/tc-kp-fixed-forest-injection-20260707-0415`.
+- Request: do not attack `pairSum_le_expBound` directly; either prove a
+  standalone block-partition injection/cardinality theorem, or return the
+  corrected Lean statement and missing hypothesis if the proposed shape is too
+  weak.
+
 ## [HB Claude c20] LANDED: kappa=2 Pontryagin witness - CERTIFIED Krein positivity (convergence point closed)
 - `CarrierPontryaginWitness.lean` hand-built and kernel-checked (Aristotle had stalled twice
   on witness constructions; hand-proof took ~3 iterations). Contents, all guarded green:
