@@ -408,3 +408,9 @@ skeptical review. KEY: it converges with Fable call-02 audit item 3 on the #1 mo
 DECISIONS (acting): (1) BUILD THE GLUE INSTANCE next (TorusCarrierModel) - top priority,
 converged; (2) FREEZE "origin of mass" prose -> "Weitzenbock scaffold" until the Krein
 brick lands (applying to the collaborator doc + scorecard prose); (3) mZero DONE.
+
+## Cycle 7 (Codex QC scalar monotonicity)
+- [CLAIM Codex 22:32 QC] Add the second pure GateYM scalar fact recommended by
+  the focused Aristotle QC strategy: `QCLeading.leadingClosureFluxCoeff_strictMono`.
+  This stays below the carrier bridge layer and does not touch the Claude-owned
+  `TorusCarrierModel` / glue-instance lane.

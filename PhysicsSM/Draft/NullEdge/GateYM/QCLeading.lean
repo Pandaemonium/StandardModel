@@ -63,6 +63,36 @@ theorem leadingClosureFluxCoeff_eq_tanh (beta : ℝ) :
     leadingClosureFluxCoeff beta = Real.tanh beta := by
   rw [leadingClosureFluxCoeff, TYAreaLaw.partitionRatio_eq_tanh]
 
+private lemma real_tanh_strictMono : StrictMono Real.tanh := by
+  intro a b hab
+  have htanh_eq : ∀ x : ℝ, Real.tanh x = 1 - 2 / (Real.exp (2 * x) + 1) := by
+    intro x
+    rw [Real.tanh_eq_sinh_div_cosh, Real.sinh_eq, Real.cosh_eq]
+    have h2 : Real.exp (2 * x) = Real.exp x * Real.exp x := by
+      rw [← Real.exp_add]
+      ring_nf
+    rw [h2]
+    have hp : Real.exp x * Real.exp (-x) = 1 := by
+      rw [← Real.exp_add]
+      simp
+    have hx : Real.exp x > 0 := Real.exp_pos x
+    have hnx : Real.exp (-x) > 0 := Real.exp_pos (-x)
+    field_simp
+    ring_nf
+    nlinarith [hp]
+  rw [htanh_eq a, htanh_eq b]
+  have hexp : Real.exp (2 * a) < Real.exp (2 * b) :=
+    Real.exp_lt_exp.mpr (by linarith)
+  gcongr
+
+/-- The scalar leading closure-flux coefficient is strictly increasing in the
+coupling parameter. -/
+theorem leadingClosureFluxCoeff_strictMono :
+    StrictMono leadingClosureFluxCoeff := by
+  intro a b hab
+  rw [leadingClosureFluxCoeff_eq_tanh a, leadingClosureFluxCoeff_eq_tanh b]
+  exact real_tanh_strictMono hab
+
 /-- For positive coupling, the leading closure-flux coefficient lies strictly
 between zero and one.
 
