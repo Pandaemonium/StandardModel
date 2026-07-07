@@ -27,9 +27,11 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   double-shift T_aT_b); **corrected Q_T** (`Phi = Gamma·phi`, NOT gamma-even -
   call-01 caught the gamma-even cancellation is FALSE, kills commutator not
   anticommutator); `E` def + vanishing-at-constant-soldering; then the assembly
-  `D^2 = Q_A+Q_C+Q_T+E`. Backfill: brick **2a'** (char-free, drop Field/h2 - call-01
-  audit). Krein brick (`krein_square_form` + `positivity_transfer`, positive-sector
-  existence = computational PROBE not theorem) at hour ~24+. **Cite in W1 docstrings:**
+  `D^2 = Q_A+Q_C+Q_T+E`. Krein-square upgrade **BANKED + guarded + Codex-reviewed**
+  in commit `5e0c5c8`: `carrier_krein_square` and
+  `carrier_krein_square_selfAdjoint` prove the `D^#D` mass-form decomposition,
+  with positivity still explicitly OPEN. Backfill: brick **2a'** (char-free,
+  drop Field/h2 - call-01 audit). **Cite in W1 docstrings:**
   [BQJAG9TR] hep-th/9503153 (generalized Lichnerowicz) + arXiv:1301.3480 (gauge
   networks, brick-2 scaffold) + [2DEG7MT2] 0708.3707; in-graph, LIT_LOG rounds 1-2.
 

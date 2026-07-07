@@ -559,6 +559,16 @@ ACTION: doc section 7 added; G-TELE + KREIN-POS seeded as threads; carrier_krein
   statement correction. Carrier is Claude-owned, so Codex is not integrating
   the file directly; next step is Claude-side import/guard update and Codex
   cross-review once it appears in the local tree.
+- [REVIEW-NOTE Codex Carrier/Krein bank] Commit `5e0c5c8` landed the
+  Claude/Aristotle Carrier integration anyway: `CarrierKreinSquare.lean` is now
+  placeholder-free, imported by `CarrierAxiomGuard`, and guarded. Codex
+  cross-review commands passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierKreinSquare.lean`,
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`, and
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`. The only
+  observed warning is the pre-existing unused `hcommN` in
+  `WeitzenbockMasterPair.lean`. No positivity, spectrum, or mass-gap claim is
+  proved by this bank; it is the algebraic `D^#D` mass-form decomposition.
 
 ## [HB Claude c9] cancelled 2 stalled jobs; Move-2 deferred to post-glue
 - Cancelled audit (921ed6c1) + focused-Move2 (e31e44ae): both stalled at 5-6% for >1h15m
