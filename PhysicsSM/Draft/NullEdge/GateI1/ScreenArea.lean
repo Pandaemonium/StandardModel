@@ -133,6 +133,47 @@ theorem screenArea_finBundleMomentum_rankOne_re_nonneg {n : Nat}
   simpa using
     (Finset.sum_nonneg fun i _ => Complex.normSq_nonneg (spinorWedge (psi i) chi))
 
+/-- Degeneracy (kernel) criterion for the null-screen area of a finite bundle:
+the area vanishes if and only if every pierced spinor is wedge-aligned with the
+screen direction.  This is the missing degeneracy iff clause of A9.1. -/
+theorem screenArea_finBundleMomentum_rankOne_eq_zero_iff {n : Nat}
+    (psi : Fin n -> CSpinor) (chi : CSpinor) :
+    screenArea (finBundleMomentum psi) (rankOne chi) = 0 ↔
+      ∀ i : Fin n, spinorWedge (psi i) chi = 0 := by
+  rw [screenArea_finBundleMomentum_rankOne_eq_ofReal_sum_normSq,
+    ← Complex.ofReal_sum, Complex.ofReal_eq_zero,
+    Finset.sum_eq_zero_iff_of_nonneg (fun i _ => Complex.normSq_nonneg _)]
+  simp
+
+/-- Action of a `2 x 2` matrix on the spinor wedge: the wedge transforms by the
+determinant of the matrix.  This is the finite Pluecker/SL(2,C) covariance seed. -/
+theorem spinorWedge_mulVec (M : Herm2) (psi chi : CSpinor) :
+    spinorWedge (M.mulVec psi) (M.mulVec chi) = M.det * spinorWedge psi chi := by
+  simp [spinorWedge, Matrix.mulVec, Matrix.det_fin_two, dotProduct,
+    Fin.sum_univ_two]
+  ring
+
+/-- Simultaneous SL(2,C) invariance of the null-screen area: acting by a
+determinant-one matrix on all pierced spinors and the screen spinor leaves the
+finite screen area unchanged.  This is the missing invariance clause of A9.1. -/
+theorem screenArea_finBundleMomentum_rankOne_sl2c_invariant {n : Nat}
+    (M : Herm2) (hM : M.det = 1) (psi : Fin n -> CSpinor) (chi : CSpinor) :
+    screenArea (finBundleMomentum (fun i => M.mulVec (psi i)))
+        (rankOne (M.mulVec chi)) =
+      screenArea (finBundleMomentum psi) (rankOne chi) := by
+  rw [screenArea_finBundleMomentum_rankOne_eq_sum_wedge,
+    screenArea_finBundleMomentum_rankOne_eq_sum_wedge]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [spinorWedge_mulVec, hM, one_mul]
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ScreenArea.screenArea_finBundleMomentum_rankOne_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms screenArea_finBundleMomentum_rankOne_eq_zero_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ScreenArea.screenArea_finBundleMomentum_rankOne_sl2c_invariant' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms screenArea_finBundleMomentum_rankOne_sl2c_invariant
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.ScreenArea.screenArea_eq_det_add_sub' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms screenArea_eq_det_add_sub

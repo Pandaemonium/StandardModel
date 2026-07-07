@@ -476,20 +476,27 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Wilson scalar identity, scalar nonnegativity/zone-edge value, and
   edge-reversal GW-symbol conjugation.  `CarrierAxiomGuard` pins
   `transferSymbol_det`, `wilson_term`, and `gw_symbol`.
+  Aristotle follow-up `a1534a69` has now landed
+  `PhysicsSM/Draft/NullEdge/Carrier/GWEdgeReversalBridge.lean`: B1
+  `holonomy_reverseEdges` proves decorated-edge reversal gives the genuine
+  holonomy inverse; B3 `conj_inv_iff` isolates the exact word-order gap; B4
+  `conj_pow_inv` proves the nonabelian homogeneous transfer-power case; and B5
+  `gw_relation_transfer_power` feeds that bridge into the one-step GW theorem.
+  `CarrierAxiomGuard` pins all four bridge theorems.
 - **Status:** RESOLVED boundary. The literal carrier conjecture "any retarded
   transfer is inverted" is false in the nonabelian one-sided case. The live Lean
   theorem now proves both the palindromic/abelian positive cases and the
-  explicit one-sided nonabelian kill witness. Q13 red-team `7f273e71` sharpened
-  the wording: exact GW is a symmetric/midpoint-palindromic convention theorem,
-  not a theorem that one-sided retardation by itself supplies `G T G = T^{-1}`.
+  explicit one-sided nonabelian kill witness, plus the homogeneous
+  transfer-power bridge. Q13 red-team `7f273e71` sharpened the wording: exact
+  GW is a symmetric/midpoint-palindromic or transfer-power convention theorem,
+  not a theorem that arbitrary one-sided retardation by itself supplies
+  `G T G = T^{-1}`.
   The Wilson-symbol landing is exact finite momentum algebra for the displayed
   retarded/palindromic symbol, not a general carrier-dynamics derivation.  The
   redundant follow-up job `7a12dbbd` was canceled after the local landing.
-- **Next:** R4 telescoping, R0 path-sum = transfer power, and the
-  decoration-level derivation of the generator conjugation axiom from
-  `U_reverse = U^{-1}`.  Any follow-up Q06 Aristotle job should target the
-  symbol-to-carrier derivation or path-sum layer, not resubmit the landed R1
-  symbol identity.
+- **Next:** R4 telescoping and the full path-sum-to-transfer-power layer.  Any
+  follow-up Q06 Aristotle job should target multi-edge path-sum assembly, not
+  resubmit the landed symbol identity or homogeneous transfer-power bridge.
 ### EQUIPARTITION-GATE - the first physical number [Claude; post-Q07; GATE M-KOIDE]
 - **Done:** F2 equipartition sum rule (tr M^2 = (2/V)(tr M)^2 under turn-power
   = hop-power; Q = 2/V; pointwise companion with Cauchy-Schwarz bound) +
@@ -615,17 +622,21 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   pack because `Core` was omitted, so its grade rests on the local full-repo
   build, which Codex reran successfully during integration.
 - **Status:** PROVED finite kinematic identity only, with audit boundaries now
-  explicit.  A9.1 has (i)-(iii) and the positivity half of (iv); the
-  degeneracy-iff clause and simultaneous `SL(2,C)` invariance remain OPEN.  The
-  BW-cut scoring algebra is PROVED, but no concrete L7 torus witness has been
-  fed into the rubric, so the test has not run.  A9.4 does not forbid the
-  BW-cut test because the cut boost generator is indefinite, while A9.4 kills
-  positive semidefinite null-translation generators. Entropy, Jacobson, ANEC,
-  universal coefficient, and continuum/horizon interpretations remain MEMO or
-  OPEN until their finite hypotheses are stated and checked; a cross-complex
-  universal `1/4` coefficient is already false-shape by the species problem.
-- **Next:** finish A9.1 degeneracy and invariance, land the finite
-  Reeh-Schlieder well-posedness gate, then run the doubler volume-law scan and a
+  explicit.  Aristotle follow-up `7de21ba8` completed the finite A9.1 nucleus:
+  `screenArea_finBundleMomentum_rankOne_eq_zero_iff` proves the degeneracy iff,
+  `spinorWedge_mulVec` proves wedge covariance, and
+  `screenArea_finBundleMomentum_rankOne_sl2c_invariant` proves simultaneous
+  determinant-one invariance.  The finite Reeh-Schlieder well-posedness gate
+  remains OPEN.  The BW-cut scoring algebra is PROVED, but no concrete L7 torus
+  witness has been fed into the rubric, so the test has not run.  A9.4 does not
+  forbid the BW-cut test because the cut boost generator is indefinite, while
+  A9.4 kills positive semidefinite null-translation generators. Entropy,
+  Jacobson, ANEC, universal coefficient, and continuum/horizon interpretations
+  remain MEMO or OPEN until their finite hypotheses are stated and checked; a
+  cross-complex universal `1/4` coefficient is already false-shape by the
+  species problem.
+- **Next:** land the finite Reeh-Schlieder well-posedness gate, then run the
+  doubler volume-law scan and a
   concrete L7 BW-cut locality witness before any entropy headline.  L4
   Klein/Schmidt bookkeeping is a good finite theorem target, but only becomes
   physically load-bearing after L7 has a witness.

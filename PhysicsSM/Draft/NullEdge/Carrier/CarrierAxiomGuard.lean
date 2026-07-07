@@ -21,6 +21,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CheckerboardCrossingNonvacuous
 import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
+import PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 
 /-!
@@ -74,6 +75,10 @@ guards are edited independently to avoid collision.
 * Wilson-symbol identity (`GWWilsonSymbol`): the exact `2 x 2` momentum-symbol
   determinant/unitarity, Hermitian Wilson scalar, and edge-reversal GW
   conjugation identities for the retarded/palindromic checkerboard symbol.
+* Edge-reversal bridge (`GWEdgeReversalBridge`): decorated-edge reversal gives
+  holonomy inverse, and the carrier generator-conjugation hypothesis is derived
+  for homogeneous transfer powers, while arbitrary heterogeneous words remain
+  blocked by the existing nonabelian counterexample.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -396,6 +401,24 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.nonabelian_oneSided_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.GWConjecture.nonabelian_oneSided_counterexample
+
+/-! ## Edge-reversal bridge: transfer-power derivation of the GW hypothesis -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.holonomy_reverseEdges' depends on axioms: [propext] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.holonomy_reverseEdges
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.conj_inv_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.conj_inv_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.conj_pow_inv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.conj_pow_inv
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.gw_relation_transfer_power' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.gw_relation_transfer_power
 
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 

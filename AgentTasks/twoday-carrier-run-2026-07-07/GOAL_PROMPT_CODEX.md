@@ -157,10 +157,10 @@ record why the row is parked.
 | Q04 / STRAND-FOCK | Pentad fiber / anomaly | supertrace and finite-difference anomaly statements | proof job |
 | Q04 / octonion bridge | XOR-Fano / Furey bridge | sign-gauge, convention bridge, `Lambda(C^3)` left-action plan | active proof jobs, then follow-up strategy |
 | Q05 | Triality / monodromy | cover multiplicativity, equivariant index, no-four orbit | strategy job |
-| Q06 | Checkerboard-GW / transfer | carrier-level lift from symbol identities to generator/path-sum layer | active audit, then lift strategy |
+| Q06 | Checkerboard-GW / transfer | heterogeneous edge-word/path-sum lift beyond the landed homogeneous transfer-power bridge | follow-up lift strategy; do not resubmit the landed bridge |
 | Q07 | Koide / T-solder | tetrahedral corner probe, kappa and Hessian gates | audit/strategy |
 | Q08 / FOCK-GB | Exterior Fock / checkerboard | graded radical assembly and corrected LGV-compatible DAG | active strategy, then proof follow-ups |
-| Q09 | Horizon / screen area | A9.1 degeneracy/invariance, BW-cut witness, finite Reeh gate | active proof/strategy |
+| Q09 | Horizon / screen area | finite Reeh gate and BW-cut witness after the A9.1 degeneracy/invariance landing | strategy/audit, then proof only after hypotheses are exact |
 | Q10 | Signature / dimension | intrinsic inertia-index wording and scalar-amplitude reconstruction | active proof, then classification strategy |
 | Q11 | `J_R` / KO / RC0 | Jacobi/Cauchy-Binet cleanup, order-condition uniqueness | active proof, then integration audit |
 | Q12 | Chirality-solder / C8 / anomaly | non-permutation Furey bridge, triality wording, PSA-2/3 | active proof/audit, then sector gates |
@@ -186,7 +186,6 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
 
 - **Still running / poll first:** the current running jobs
   `ne-q11-jacobi-minor-cauchybinet-rc0-proof-20260707`,
-  `ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707`,
   `ne-q12-genuine-triality-or-diagonal-character-kill-audit-20260707`,
   `ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`,
   `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`,
@@ -194,13 +193,14 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
 - **Harvest-first before more refill:** the latest poll shows these newer jobs
   `IDLE` and ready to inspect: `ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707`,
   `ne-q04-conventionbridge-baez-xor-product-law-proof-20260707`,
-  `ne-q06-symbol-to-carrier-generator-conjugation-audit-20260707`,
-  `ne-q09-finite-reehschlieder-screenarea-completion-proof-20260707`, and
+  `ne-q08-scattering-vertex-dag-lgv-compatible-model-strategy-20260707`, and
   `ne-q10-inertia-index-numerical-invariant-bridge-proof-20260707`.  Harvest
   these before opening additional lanes.
 - **Recently harvested; do not resubmit under new names:** Q08 fixed-degree
   Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
-  kill, Q01 finite positive-sector witness/no-go, Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
+  kill, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
+  transfer-power bridge, Q09 screen-area degeneracy/invariance completion,
+  Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
   Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q04 octonion/Fock
   convention audit, Q12 C8 compatibility audit, Q11 RC0 determinant-cocycle
   strategy, P1 manuscript claim audit, Q08 `dGamma` globalization and
@@ -256,11 +256,11 @@ only after harvesting returned jobs and committing any local integration:
 | Q04 color bridge | `ne-q04-octonion-leftaction-lambdac3-operator-bridge-strategy-20260707` | strategy | Operator-valued `Lambda(C^3)` bridge using left-multiplication operators and pinned ladder signs. |
 | Q04 sign regression | `ne-q04-baez-furey-xorfano-sign-table-regression-audit-20260707` | audit | Post-proof regression audit for the sign-gauge and ConventionBridge corrections. |
 | Q05 triality | `ne-q05-triality-monodromy-cover-index-strategy-20260707` | strategy | Equivariant index, cover multiplicativity, triangle holonomy toy model, and no-four-orbit route. |
-| Q06 carrier derivation | `ne-q06-carrier-pathsum-transferpower-gw-lift-strategy-20260707` | strategy/audit | Lift landed symbol/word-order identities toward decoration-level generator conjugation and path-sum/transfer-power layers. |
+| Q06 carrier derivation | `ne-q06-heterogeneous-pathsum-edgeword-gw-lift-strategy-20260707` | strategy/audit | Lift the landed homogeneous transfer-power bridge toward heterogeneous decoration-level generator conjugation and path-sum layers. |
 | Q07 Koide/T-solder | `ne-q07-koide-tsolder-kappa-hessian-witness-audit-20260707` | audit/strategy | Decide whether the tetrahedral corner probe supports, refines, or kills the kappa mechanism. |
 | Q08 exterior quotient | `ne-q08-exterior-quotient-graded-radical-assembly-proof-20260707` | proof/strategy | Assemble the literal graded radical/ideal quotient statement beyond fixed-degree exterior powers. |
 | Q08 checkerboard Fock | `ne-q08-brickwall-lgv-sourcesink-compatibility-proof-20260707` | proof/strategy | Corrected brick-wall/scattering DAG or source/sink compatibility theorem after the naive LGV kill. |
-| Q09 horizon/screen | `ne-q09-screenarea-sl2c-degeneracy-invariance-proof-20260707` | proof/strategy | A9.1 degeneracy iff and simultaneous `SL(2,C)` invariance, or exact obstruction. |
+| Q09 horizon/screen | `ne-q09-finite-reehschlieder-wellposedness-gate-strategy-20260707` | strategy/audit | After the A9.1 landing, isolate exact finite Reeh-screen hypotheses or return a no-go/well-posedness obstruction. |
 | Q09 BW witness | `ne-q09-bwcut-locality-witness-construction-audit-20260707` | audit/strategy | Feed the BW-cut locality rubric a concrete witness or record why none is available. |
 | Q10 scalar amplitude | `ne-q10-spin-weyl-scalar-amplitude-real-classification-strategy-20260707` | strategy | Route from finite census substitutes to real Spin/Weyl scalar-amplitude classification. |
 | Q10 stable-order boundary | `ne-q10-stable-order-dimension-reconstruction-boundary-audit-20260707` | audit | Keep signature theorem, dimension reconstruction, and physical interpretation separated. |
@@ -286,10 +286,11 @@ adversarial audits for recently landed or high-risk claims.
 
 1. **Q09 horizon/screen area.** Turn the area-as-relational-aperture memo into
    finite algebra: screen polarization of the `2 x 2` determinant, null-screen
-   wedge-count formulas, positivity, and honest boundaries.  The Q09 audit says
-   the L7 BW-cut rubric is proved but not yet fed a witness, A9.1 still lacks
-   degeneracy iff and simultaneous `SL(2,C)` invariance, and a cross-complex
-   universal entropy coefficient is false-shape.  Park entropy, Jacobson,
+   wedge-count formulas, positivity, and honest boundaries.  A9.1 now has the
+   degeneracy iff and simultaneous determinant-one invariance landing; the next
+   gates are a finite Reeh-screen theorem or no-go, a concrete BW-cut locality
+   witness, and the entropy/Jacobson/ANEC boundary.  The universal entropy
+   coefficient remains false-shape across complexes.  Park entropy, Jacobson,
    BW-cut, and ANEC claims as MEMO/strategy until their finite hypotheses are
    stated and checked.
 2. **Q10 signature/dimension selection.** Treat signature as the order-side

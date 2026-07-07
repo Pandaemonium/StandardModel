@@ -417,3 +417,43 @@ newer lanes were `IDLE` and should be harvested before any further refill:
 `7b99f3b8` Q04 sign-gauge, `b6b128d4` Q04 ConventionBridge,
 `a1534a69` Q06 symbol-to-carrier audit, `7de21ba8` Q09 finite
 Reeh-Schlieder/screen-area completion, and `bcf263f0` Q10 inertia-index bridge.
+
+## Harvest from Q06 bridge and Q09 screen-area completion
+
+- `a1534a69`
+  (`ne-q06-symbol-to-carrier-generator-conjugation-audit-20260707`) returned
+  `GWEdgeReversalBridge.lean`, now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/GWEdgeReversalBridge.lean` and
+  guard-pinned in `CarrierAxiomGuard`.  It proves edge reversal equals
+  holonomy inverse (`holonomy_reverseEdges`), isolates the exact word-order gap
+  (`conj_inv_iff`), proves the homogeneous transfer-power bridge
+  (`conj_pow_inv`), and feeds that into the one-step GW relation
+  (`gw_relation_transfer_power`).
+- Q06 claim boundary: the carrier generator-conjugation hypothesis is derived
+  for homogeneous transfer powers, not arbitrary heterogeneous one-sided
+  retarded words.  The existing nonabelian counterexample remains the kill for
+  the overbroad statement.  The next Q06 target is full path-sum /
+  transfer-power assembly.
+- `7de21ba8`
+  (`ne-q09-finite-reehschlieder-screenarea-completion-proof-20260707`) returned
+  a direct `ScreenArea.lean` extension, now integrated in
+  `PhysicsSM/Draft/NullEdge/GateI1/ScreenArea.lean`.  It proves the A9.1
+  degeneracy iff (`screenArea_finBundleMomentum_rankOne_eq_zero_iff`), wedge
+  covariance (`spinorWedge_mulVec`), and simultaneous determinant-one
+  invariance (`screenArea_finBundleMomentum_rankOne_sl2c_invariant`).
+- Q09 claim boundary: the finite screen-area nucleus is now complete at the
+  degeneracy/invariance level, but finite Reeh-Schlieder well-posedness,
+  concrete BW-cut witnesses, entropy, ANEC, Jacobson, and continuum horizon
+  interpretations remain MEMO/OPEN.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/GWEdgeReversalBridge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ScreenArea.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.ScreenArea`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+The remaining harvest-first jobs after this integration are `7b99f3b8` Q04
+sign-gauge, `b6b128d4` Q04 ConventionBridge, `2c7ddcf1` Q08 scattering-DAG
+LGV, and `bcf263f0` Q10 inertia-index bridge.  Running lanes at last poll:
+`aa4e48f6`, `381cc4cf`, `1b3c2203`, `bd50e825`, and `9af1d5fb`.

@@ -3162,3 +3162,35 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `2c7ddcf1`, `381cc4cf`, `1b3c2203`, `bd50e825`, `9af1d5fb`); five newer
   lanes are harvest-first (`7b99f3b8`, `b6b128d4`, `a1534a69`, `7de21ba8`,
   `bcf263f0`).
+
+## [ARISTOTLE-HARVEST Codex solo] Q06 transfer-power bridge and Q09 A9.1 completion landed
+
+- Harvested Aristotle projects `a1534a69`
+  (`ne-q06-symbol-to-carrier-generator-conjugation-audit-20260707`) and
+  `7de21ba8`
+  (`ne-q09-finite-reehschlieder-screenarea-completion-proof-20260707`).
+- Integrated
+  `PhysicsSM/Draft/NullEdge/Carrier/GWEdgeReversalBridge.lean` and guard-pinned
+  `holonomy_reverseEdges`, `conj_inv_iff`, `conj_pow_inv`, and
+  `gw_relation_transfer_power` in `CarrierAxiomGuard`.
+- Q06 claim boundary: edge reversal now gives holonomy inverse, and
+  generator-conjugation is derived for homogeneous transfer powers.  The result
+  does not revive the false arbitrary one-sided heterogeneous retarded-word
+  theorem; the existing nonabelian counterexample remains the kill.
+- Integrated the Q09 `ScreenArea.lean` extension proving the finite A9.1
+  degeneracy iff, wedge covariance, and simultaneous determinant-one invariance:
+  `screenArea_finBundleMomentum_rankOne_eq_zero_iff`, `spinorWedge_mulVec`,
+  and `screenArea_finBundleMomentum_rankOne_sl2c_invariant`.
+- Q09 claim boundary: the finite screen-area nucleus is stronger, but finite
+  Reeh-Schlieder, concrete BW-cut witnesses, entropy, ANEC, Jacobson, and
+  continuum horizon interpretations remain MEMO/OPEN.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/GWEdgeReversalBridge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/ScreenArea.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.ScreenArea`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+- Remaining harvest-first jobs: Q04 sign-gauge `7b99f3b8`, Q04
+  ConventionBridge `b6b128d4`, Q08 scattering-DAG `2c7ddcf1`, and Q10
+  inertia-index bridge `bcf263f0`.
