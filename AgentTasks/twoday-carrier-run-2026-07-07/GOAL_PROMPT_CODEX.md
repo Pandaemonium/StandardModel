@@ -155,7 +155,7 @@ record why the row is parked.
 | Q02 / G-TP | Gravity / E-telescope | corrected telescoping, P-probe, finite gravity boundary wording | audit with kill conditions |
 | Q03 / DISPERSION | Dispersion and doublers | determinant/wedge identity plus doubler ledger | proof job |
 | Q04 / STRAND-FOCK | Pentad fiber / anomaly | supertrace and finite-difference anomaly statements | proof job |
-| Q04 / octonion bridge | XOR-Fano / Furey bridge | sign-gauge, convention bridge, `Lambda(C^3)` left-action plan | active proof jobs, then follow-up strategy |
+| Q04 / octonion bridge | XOR-Fano / Furey bridge | `Lambda(C^3)` left-action/operator bridge after sign-gauge and Baez-line products landed | follow-up strategy/audit |
 | Q05 | Triality / monodromy | cover multiplicativity, equivariant index, no-four orbit | strategy job |
 | Q06 | Checkerboard-GW / transfer | heterogeneous edge-word/path-sum lift beyond the landed homogeneous transfer-power bridge | follow-up lift strategy; do not resubmit the landed bridge |
 | Q07 | Koide / T-solder | tetrahedral corner probe, kappa and Hessian gates | audit/strategy |
@@ -190,8 +190,7 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
   `ne-q12-c8-nonpermutation-furey-bridge-gates-proof-20260707`,
   `ne-rg-schur-krein-gamma-stability-proof-20260707`.
 - **Harvest-first before more refill:** the latest poll shows these newer jobs
-  `IDLE` and ready to inspect: `ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707`,
-  `ne-q04-conventionbridge-baez-xor-product-law-proof-20260707`,
+  `IDLE` and ready to inspect:
   `ne-manuscript-p1-postfix-claimgrade-regression-audit-20260707`
   (completed with errors; treat as audit-only until inspected).  Harvest these
   before opening additional lanes.
@@ -199,7 +198,8 @@ Live queue snapshot from the latest local poll on 2026-07-07 (verify again with
   Fock quotient bridge, Q08 same-parity nonvacuous checkerboard / naive LGV
   kill, Q08 corrected scattering-vertex LGV DAG, Q01 finite positive-sector witness/no-go, Q06 edge-reversal
   transfer-power bridge, Q09 screen-area degeneracy/invariance completion,
-  Q10 intrinsic inertia-index bridge,
+  Q10 intrinsic inertia-index bridge, Q04 sign-gauge reconciliation, Q04
+  Baez-to-XOR ConventionBridge line products,
   Q11/Q04 C3 Majorana turn census, Q06 Wilson-symbol determinant /
   Wilson-scalar identity, Q09 nullscreen entropy kill audit, Q04 octonion/Fock
   convention audit, Q12 C8 compatibility audit, Q11 RC0 determinant-cocycle
@@ -253,7 +253,7 @@ only after harvesting returned jobs and committing any local integration:
 | Q02 gravity/E-slot | `ne-q02-eslot-teleparallel-pprobe-gravity-boundary-audit-20260707` | audit | Corrected E-telescope plus P-probe review for gravity-interface wording and finite kill conditions. |
 | Q03 dispersion | `ne-q03-wedge-dispersion-doubler-ledger-proof-20260707` | proof | Determinant/wedge dispersion identity and explicit doubler ledger targets. |
 | Q04 strand-fock | `ne-q04-pentad-supertrace-anomaly-difference-proof-20260707` | proof | Exterior supertrace/anomaly identity and finite-difference corollary on the pentad fiber. |
-| Q04 color bridge | `ne-q04-octonion-leftaction-lambdac3-operator-bridge-strategy-20260707` | strategy | Operator-valued `Lambda(C^3)` bridge using left-multiplication operators and pinned ladder signs. |
+| Q04 color bridge | `ne-q04-octonion-leftaction-lambdac3-operator-bridge-strategy-20260707` | strategy | Operator-valued `Lambda(C^3)` bridge using left-multiplication operators and the landed sign/convention bridges, without raw-octonion associativity assumptions. |
 | Q04 sign regression | `ne-q04-baez-furey-xorfano-sign-table-regression-audit-20260707` | audit | Post-proof regression audit for the sign-gauge and ConventionBridge corrections. |
 | Q05 triality | `ne-q05-triality-monodromy-cover-index-strategy-20260707` | strategy | Equivariant index, cover multiplicativity, triangle holonomy toy model, and no-four-orbit route. |
 | Q06 carrier derivation | `ne-q06-heterogeneous-pathsum-edgeword-gw-lift-strategy-20260707` | strategy/audit | Lift the landed homogeneous transfer-power bridge toward heterogeneous decoration-level generator conjugation and path-sum layers. |

@@ -3249,3 +3249,31 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Remaining harvest-first jobs: Q04 sign-gauge `7b99f3b8`, Q04
   ConventionBridge `b6b128d4`, and the manuscript postfix audit `bd50e825`
   (completed with errors; inspect as audit-only).
+
+## [ARISTOTLE-HARVEST Codex solo] Q04 sign-gauge and ConventionBridge proofs landed
+
+- Harvested Aristotle projects `7b99f3b8`
+  (`ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707`) and `b6b128d4`
+  (`ne-q04-conventionbridge-baez-xor-product-law-proof-20260707`).
+- Added `PhysicsSM/Draft/NullEdge/GateI1/Q04OctSgnGauge.lean`.
+  `gauge_reconciliation` proves that `Q12Triality.octSgn` and
+  `Basic.lookupSign` agree up to the explicit diagonal sign gauge
+  `eps = ![1, 1, -1, -1, -1, 1, 1, 1]`.
+- Updated `PhysicsSM/Algebra/Octonion/ConventionBridge.lean`.
+  `baezTriples` lists the seven oriented Baez Fano lines, and
+  `baez_line_products` proves that the Baez-to-XOR signed basis translation
+  preserves those line products under the project octonion multiplication.
+- Q04 claim boundary: the convention gates are kernel-checked.  The actual
+  `Lambda(C^3)` color/Fock bridge and any operator-valued left-action theorem
+  remain open, and raw octonion associativity assumptions remain forbidden.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`, and
+  `ARISTOTLE_LANE_DOCKET_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Algebra/Octonion/ConventionBridge.lean`;
+  `lake build PhysicsSM.Algebra.Octonion.ConventionBridge`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q04OctSgnGauge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q04OctSgnGauge`.
+- Remaining harvest-first jobs: the manuscript postfix audit `bd50e825`
+  (completed with errors; inspect as audit-only), Q12 C8 bridge gates
+  `1b3c2203`, and RG-Schur `9af1d5fb`.  Q11 Jacobi `aa4e48f6` and Q12
+  triality `381cc4cf` were still running at the latest poll.

@@ -103,20 +103,48 @@ def baezBasisInXOR (i : Fin 8) : Octonion :=
   let si := baezToXORSign i
   if si = 1 then basisElem xi else -(basisElem xi)
 
-/-! ## Correctness statement
+/-! ## Baez oriented Fano lines -/
 
-The following theorem will be stated and proved once `Octonion` has
-`Add`, `Zero`, and ℝ-scalar multiplication (needed for `ℤ`-scalar action `•`).
-Those instances are added in `PhysicsSM.Algebra.Octonion.Basic` Milestone 1b.
+/-- The seven positive oriented Fano lines of Baez (2002), in Baez indices.
+Each entry `(a, b, c)` records the Baez product `e_a * e_b = e_c`, using the
+cyclic convention `e_i * e_{i+1} = e_{i+3}` with indices taken mod `7` in
+`1..7`. -/
+def baezTriples : List (Fin 8 × Fin 8 × Fin 8) :=
+  [ (⟨1, by omega⟩, ⟨2, by omega⟩, ⟨4, by omega⟩)
+  , (⟨2, by omega⟩, ⟨3, by omega⟩, ⟨5, by omega⟩)
+  , (⟨3, by omega⟩, ⟨4, by omega⟩, ⟨6, by omega⟩)
+  , (⟨4, by omega⟩, ⟨5, by omega⟩, ⟨7, by omega⟩)
+  , (⟨5, by omega⟩, ⟨6, by omega⟩, ⟨1, by omega⟩)
+  , (⟨6, by omega⟩, ⟨7, by omega⟩, ⟨2, by omega⟩)
+  , (⟨7, by omega⟩, ⟨1, by omega⟩, ⟨3, by omega⟩) ]
 
-Planned statement: for every imaginary Baez indices a, b (a ≠ b), the product
-  baezBasisInXOR a * baezBasisInXOR b
-equals the correctly-signed XOR basis element at index (π(a) XOR π(b)).
+/-! ## Correctness statement -/
 
-Proof strategy: `fin_cases a <;> fin_cases b` exhaustion + `simp` + `decide`.
-This is a finite computation; strong Aristotle target once prerequisites exist.
+/--
+`baezBasisInXOR` intertwines the Baez oriented Fano line products with the
+project XOR multiplication.
 
-Prerequisite task: `AgentTasks/octonion-ring-structure.md`
+For every positive Baez Fano line `e_a * e_b = e_c`, the translated signed XOR
+basis elements satisfy the same product under the project's `Octonion`
+multiplication:
+
+  `baezBasisInXOR a * baezBasisInXOR b = baezBasisInXOR c`.
+
+This is exactly the correctness property the module docstring describes: the
+permutation `baezToXORIndex` together with the single sign flip
+`baezToXORSign` makes the translation product-preserving on all seven oriented
+Fano lines.
 -/
+theorem baez_line_products :
+    ∀ t ∈ baezTriples,
+      baezBasisInXOR t.1 * baezBasisInXOR t.2.1 = baezBasisInXOR t.2.2 := by
+  intro t ht
+  fin_cases ht <;>
+    (ext <;>
+      simp [baezBasisInXOR, baezToXORIndex, baezToXORSign, basisElem])
+
+/-- info: 'PhysicsSM.Algebra.Octonion.ConventionBridge.baez_line_products' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms baez_line_products
 
 end PhysicsSM.Algebra.Octonion.ConventionBridge

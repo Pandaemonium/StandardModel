@@ -508,3 +508,29 @@ Remaining harvest-first jobs after this integration: `7b99f3b8` Q04 sign-gauge,
 `b6b128d4` Q04 ConventionBridge, and `bd50e825` manuscript postfix audit
 (completed with errors; inspect as audit-only).  Still running at the latest
 poll: `aa4e48f6`, `381cc4cf`, `1b3c2203`, and `9af1d5fb`.
+
+## Harvest from Q04 sign-gauge and ConventionBridge proofs
+
+- `7b99f3b8`
+  (`ne-q04-octsgn-lookupsign-diagonal-gauge-proof-20260707`) returned the
+  diagonal sign-gauge reconciliation between `Q12Triality.octSgn` and the
+  project `Basic.lookupSign` table.  Codex integrated it as
+  `PhysicsSM/Draft/NullEdge/GateI1/Q04OctSgnGauge.lean`.
+- `b6b128d4`
+  (`ne-q04-conventionbridge-baez-xor-product-law-proof-20260707`) returned the
+  Baez-to-XOR product-line theorem.  Codex integrated `baezTriples` and
+  `baez_line_products` into
+  `PhysicsSM/Algebra/Octonion/ConventionBridge.lean`.
+- Claim boundary: these close two convention gates.  They do not yet construct
+  the actual operator-valued `Lambda(C^3)`/left-action color bridge, and they
+  do not license raw octonion associativity assumptions.
+- Verification passed:
+  `lake env lean PhysicsSM/Algebra/Octonion/ConventionBridge.lean`;
+  `lake build PhysicsSM.Algebra.Octonion.ConventionBridge`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q04OctSgnGauge.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q04OctSgnGauge`.
+
+Remaining harvest-first jobs after this integration: `bd50e825` manuscript
+postfix audit (completed with errors; inspect as audit-only), plus newly idle
+returns `1b3c2203` Q12 C8 bridge gates and `9af1d5fb` RG-Schur.  Still running
+at the latest poll: `aa4e48f6` and `381cc4cf`.

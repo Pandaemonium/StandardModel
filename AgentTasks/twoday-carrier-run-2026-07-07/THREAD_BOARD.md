@@ -419,13 +419,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Audit boundary:** Aristotle audit `dbe3850c` found a HIGH false-shape risk:
   the proved octonion/Fock bridge is `Lambda(C^5)` / Spin(10), not the
   8-dimensional `Lambda(C^3) ~ (C (x) O, fixed unit)` color bridge.  Q04-L4 is
-  OPEN, not landed.  `ConventionBridge` correctness is comment-only; Furey
-  ladder signs remain oracle/M-grade until a kernel theorem replaces the
-  comment.  `Q12Triality.octSgn` and `Basic.lookupSign` disagree on 18/64
-  ordered pairs and need a diagonal sign-gauge lemma before transfer.
-- **Next:** L4a sign-gauge reconciliation between `octSgn` and
-  `Basic.lookupSign`; L4b `ConventionBridge` line/product preservation over the
-  project XOR-Fano table; L4c the actual operator-valued
+  OPEN, not landed.  Aristotle follow-ups `7b99f3b8` and `b6b128d4` have now
+  closed two convention gates: `Q04OctSgnGauge.gauge_reconciliation` proves
+  `Q12Triality.octSgn` agrees with `Basic.lookupSign` up to an explicit
+  diagonal sign gauge, and `ConventionBridge.baez_line_products` proves the
+  Baez-to-XOR translation preserves all seven oriented Baez Fano line products
+  under the project octonion multiplication.  Furey ladder signs are now backed
+  by a kernel-checked Baez line/product bridge, but the `Lambda(C^3)` operator
+  bridge itself is still open.
+- **Next:** L4c the actual operator-valued
   `Lambda(C^3) ~ (C (x) O, fixed unit)` color bridge using left-multiplication
   operators, not raw octonion products.  Stretch: Q04-L0 `R(G)`-valued
   McKean-Singer upgrade and the order-condition check on the vacuum-Majorana
@@ -870,10 +872,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   integrated Q01 positive-sector witness/no-go (`ec1ad7d5`), Q06
   transfer-power bridge (`a1534a69`), Q09 A9.1 degeneracy/invariance
   (`7de21ba8`), and Q10 intrinsic inertia-index bridge (`bcf263f0`).  The
-  current unharvested set is Q04 sign-gauge, Q04 ConventionBridge, Q08
-  scattering-DAG, the manuscript postfix audit (completed with errors), and the
-  still-running Q11/Q12/RG-Schur lanes.  Refill wave submitted after that
-  harvest: `aa4e48f6` Q11 Jacobi/Cauchy-Binet, `7b99f3b8` Q04 sign-gauge,
+  current unharvested set is the manuscript postfix audit (completed with
+  errors) plus the newer idle Q12 C8 / RG-Schur returns, with Q11/Q12 triality
+  still-running as of the last poll.  Refill wave submitted after that harvest:
+  `aa4e48f6` Q11 Jacobi/Cauchy-Binet, `7b99f3b8` Q04 sign-gauge,
   `b6b128d4` Q04 ConventionBridge, `2c7ddcf1` Q08 scattering-DAG,
   `7de21ba8` Q09 Reeh/ScreenArea, `a1534a69` Q06 symbol-to-carrier,
   `381cc4cf` Q12 genuine-triality audit, `1b3c2203` Q12 C8 bridge gates, and
