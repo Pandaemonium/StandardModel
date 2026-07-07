@@ -167,6 +167,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   Claude-owned; Codex may help with strategy/context packs. Latest Fable
   guidance promotes the near target: define discrete torsion and prove the
   `E`-slot is its Clifford contraction, with TEGR/positive-energy provenance.
+  Codex submitted Aristotle strategy project `7ad651e7` / task `5aa6d83b` to
+  ratify the smallest honest Lean API before any proof spend.
 ### C-1FORM - finite one-form center-symmetry framing [Codex strategy]
 - **Done:** an Aristotle/Fable-ratified Lean statement layer connecting the
   existing `CenterFluxSector` finite center-shift/electric-sector API and the

@@ -109,7 +109,7 @@ transport):
   `Q_A = Σₑ_f g(e,f)·{∇ₑ,∇_f}` (symmetric Gram block) and
   `Q_C = Σₑ_f [γₑ,γ_f]·[∇ₑ,∇_f]` (antisymmetric closure block). The `E=0` shadow of
   `weitzenbock_master_varying` (below), which drops `hcomm` and exhibits the gravity slot
-  `E` as the soldering-gradient defect (`E=0 ⟺ hcomm`). **OPEN→landing** as of writing.
+  `E` as the soldering-gradient defect (`E=0 ⟺ hcomm`). **PROVED and guarded.**
 - **`dirac_square_with_potential`** — with a chirality `Γ` (`Γ²=1`, `Γγₑ=−γₑΓ`) and a
   covariantly-constant Higgs `φ`, `(D0 + Γφ)² = D0² + φ²`. (The naive γ-even potential does
   *not* cancel — covariant constancy kills the commutator, not the anticommutator — so the

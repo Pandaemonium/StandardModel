@@ -1097,3 +1097,24 @@ positivity (both in progress).
 - NOTE: Codex's Aristotle jobs ARE completing (qc-attach-strategy landed) - the earlier
   slowdown may have been specific to my recent job submissions, not fleet-wide. Can resume
   Aristotle submissions if a good target arises.
+
+## [ARISTOTLE SUBMIT Codex teleparallel E-slot strategy 01:17]
+- Ingested the new Fable guidance from the pasted packet. The main actionable
+  delta is the `G-TP` near target: treat the carrier `E`-slot as discrete null
+  teleparallelism and ask for the smallest honest Lean API for a discrete
+  torsion 2-form whose Clifford contraction is the landed E-slot defect.
+- Corrected the stale `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` status for
+  `weitzenbock_master_varying`: it is now PROVED and guarded, not
+  "OPEN->landing".
+- Generated context pack:
+  `AgentTasks/context-packs/teleparallel-e-slot-strategy-20260707-011547.md`.
+- Submitted focused Aristotle strategy job
+  `tc-teleparallel-eslot-strategy-20260707-0117`: project
+  `7ad651e7-aeb8-4ffc-9a99-798fbc6c4419`, task
+  `5aa6d83b-85c6-484c-9465-2394d91738db`.
+- Task note:
+  `AgentTasks/twoday-carrier-run-2026-07-07/ARISTOTLE_TELEPARALLEL_ESLOT_STRATEGY_2026-07-07.md`.
+- Non-claim rails in the prompt: no continuum TEGR/EH equivalence, no ADM mass
+  formula, no positive-energy theorem, no physical gravitational field equation,
+  no positivity or spectral claim, and no canonical geometric torsion object
+  without explicit finite soldering-field data.
