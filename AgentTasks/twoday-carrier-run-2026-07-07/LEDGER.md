@@ -3606,3 +3606,22 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   changed-lines placeholder-token scan on the edited Markdown files;
   `git diff --check`;
   `pre-commit run --all-files`.
+
+## [LOCAL-LEAN Codex solo] Q12 descended quotient nontriviality landed
+
+- Strengthened the Q12 GammaPrime proper-radical witness in
+  `PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`.
+- Proved and guard-pinned `E4_descended_quotient_nontrivial`: the quotient by
+  `e0Line` contains a nonzero class, represented by the second basis vector.
+- Updated `THREAD_BOARD.md` and `GOAL_PROMPT_CODEX.md` so the next Q12
+  Aristotle audit target covers the full finite package: proper radical,
+  nonzero quotient, and descended commutation.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1` (with pre-existing neighboring
+  warnings);
+  changed-lines placeholder-token scan on the edited Markdown files;
+  duplicate future Aristotle-name scan for `GOAL_PROMPT_CODEX.md`;
+  `git diff --check`;
+  `pre-commit run --all-files`.

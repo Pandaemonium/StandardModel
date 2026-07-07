@@ -22,10 +22,12 @@ The proved finite interface is:
 * `map_eq_of_invariant_of_injective`: the literal equality `tau GammaPrime =
   GammaPrime` follows from invariance plus injectivity on a finite-dimensional
   constraint space.
-* `E4_commutator_can_fail`, `E4_nontrivial_healing`, and
+* `E4_commutator_can_fail`, `E4_nontrivial_healing`,
+  `E4_descended_quotient_nontrivial`, and
   `E4_nontrivial_descended_commutes`: rational witnesses showing the gate is
   non-vacuous in both directions, including a proper nonzero radical where
-  upstairs non-commutation heals as literal downstairs commutation.
+  upstairs non-commutation heals as literal downstairs commutation on a
+  nonzero quotient.
 
 Claim boundary: this is finite subquotient linear algebra only.  It does not
 prove upstairs commutation for a specific null-edge model, equivariant
@@ -287,6 +289,17 @@ theorem E4_nontrivial_healing :
   refine ⟨⟨![1, 1], Submodule.mem_top⟩, ?_⟩
   simpa using E4_commutator_nonzero_witness
 
+/-- The quotient by the proper radical is not collapsed: the second basis vector
+survives as a nonzero class. -/
+theorem E4_descended_quotient_nontrivial :
+    ∃ q : (⊤ : Submodule ℚ W) ⧸ e0Line.comap (⊤ : Submodule ℚ W).subtype,
+      q ≠ 0 := by
+  refine ⟨Submodule.Quotient.mk ⟨![0, 1], Submodule.mem_top⟩, ?_⟩
+  intro h
+  rw [Submodule.Quotient.mk_eq_zero] at h
+  simp only [Submodule.mem_comap, Submodule.coe_subtype] at h
+  norm_num [e0Line] at h
+
 /-- The nontrivial healing witness really produces commuting descended
 operators on the proper quotient by `e0Line`.  This is the direct finite form of
 the E4 gate: nonzero upstairs commutator, but zero commutator on the physical
@@ -332,6 +345,10 @@ theorem E4_nontrivial_descended_commutes :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient.E4_nontrivial_healing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms E4_nontrivial_healing
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient.E4_descended_quotient_nontrivial' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms E4_descended_quotient_nontrivial
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient.E4_nontrivial_descended_commutes' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
