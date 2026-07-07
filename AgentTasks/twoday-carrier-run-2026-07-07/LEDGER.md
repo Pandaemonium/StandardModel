@@ -665,3 +665,24 @@ positivity (both in progress).
 - A bounded `aristotle show ... --limit 5` poll timed out, so no handoff has
   been harvested yet. OS1 remains OPEN with finite Z2/KP rung banked; SU(2)
   fixed-spacing gap and volume-uniform KP convergence remain OPEN.
+
+## [LEAN Codex C-1FORM nonvacuity/commutation 23:50]
+- Landed two small finite C-1FORM API rungs in
+  `PhysicsSM/Draft/NullEdge/GateYM/CenterFluxSector.lean`:
+  `ShiftSystem.one_inElectricSector`, `ShiftSystem.one_wavefunction_ne_zero`,
+  and `ShiftSystem.one_inElectricSector_nonzero` witness that the trivial
+  electric sector is nonempty on any nonempty configuration space; and
+  `xFluxShift_yFluxShift_comm` proves the concrete torus x/y center shifts
+  commute as link-field operations.
+- Guarded the nonzero sector witness and x/y commutation law in
+  `PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`; both have the standard
+  axiom surface `[propext, Classical.choice, Quot.sound]`.
+- Verification run:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/CenterFluxSector.lean`,
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector`,
+  axiom queries for the two guarded lemmas,
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`, and
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard`. The guard build
+  passed with only pre-existing imported warnings, including the known draft KP
+  placeholders in `PolymerKPConclusion`. Nontrivial-character sector witnesses
+  and the configuration-to-`TwistSystem` partition bridge remain OPEN.

@@ -65,6 +65,28 @@ def InElectricSector (S : ShiftSystem Config Shift)
     (character : Shift -> Complex) (psi : Config -> Complex) : Prop :=
   forall z x, psi (S.shiftConfig z x) = character z * psi x
 
+/-- The constant-one wavefunction lies in the trivial electric sector. -/
+theorem one_inElectricSector (S : ShiftSystem Config Shift) :
+    InElectricSector S (fun _ => (1 : Complex)) (fun _ => (1 : Complex)) := by
+  intro z x
+  simp
+
+/-- On a nonempty configuration space, the constant-one wavefunction is not
+the zero wavefunction. -/
+theorem one_wavefunction_ne_zero [Nonempty Config] :
+    (fun _ : Config => (1 : Complex)) ≠ 0 := by
+  intro h
+  have h0 := congrFun h (Classical.choice (inferInstance : Nonempty Config))
+  norm_num at h0
+
+/-- A nonzero witness for the trivial electric sector on any nonempty
+configuration space. This is only a non-vacuity check for the sector API. -/
+theorem one_inElectricSector_nonzero [Nonempty Config]
+    (S : ShiftSystem Config Shift) :
+    InElectricSector S (fun _ => (1 : Complex)) (fun _ => (1 : Complex)) ∧
+      (fun _ : Config => (1 : Complex)) ≠ 0 :=
+  ⟨one_inElectricSector S, one_wavefunction_ne_zero⟩
+
 /-- A diagonal observable is shift-invariant when it is constant along all
 flux-shift orbits.  Local plaquette holonomy functions are expected to be
 instances in the concrete center-shift layer. -/
@@ -218,6 +240,15 @@ theorem yFluxShift_mul (z w : Subgroup.center G) (j0 : Fin Ly)
     (U : TorusLinkFieldG G Lx Ly) :
     yFluxShift (z * w) j0 U = yFluxShift z j0 (yFluxShift w j0 U) := by
   ext i j <;> by_cases hj : j = j0 <;> simp [yFluxShift, hj, mul_assoc]
+
+/-- X- and y-flux shifts commute as operations on the concrete torus link
+fields, since they touch horizontal and vertical link families respectively. -/
+theorem xFluxShift_yFluxShift_comm (z w : Subgroup.center G)
+    (i0 : Fin Lx) (j0 : Fin Ly) (U : TorusLinkFieldG G Lx Ly) :
+    xFluxShift z i0 (yFluxShift w j0 U) =
+      yFluxShift w j0 (xFluxShift z i0 U) := by
+  ext i j <;> by_cases hi : i = i0 <;> by_cases hj : j = j0 <;>
+    simp [xFluxShift, yFluxShift, hi, hj]
 
 /-- Moving a central factor across two group elements and cancelling it with
 its inverse.  This is the x-shift cancellation pattern in a plaquette. -/

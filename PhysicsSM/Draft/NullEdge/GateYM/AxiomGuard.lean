@@ -87,6 +87,12 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TwoStateTransferZ2Sector.fluxGapWitness_gap_pos
 
+/-! ## Generic electric-sector non-vacuity witness -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.ShiftSystem.one_inElectricSector_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.ShiftSystem.one_inElectricSector_nonzero
+
 /-! ## Finite torus center-shift action laws -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xFluxShift_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -104,6 +110,10 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yFluxShift_mul' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.yFluxShift_mul
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xFluxShift_yFluxShift_comm' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector.xFluxShift_yFluxShift_comm
 
 /-! ## Finite one-form center-shadow line charge identities -/
 
