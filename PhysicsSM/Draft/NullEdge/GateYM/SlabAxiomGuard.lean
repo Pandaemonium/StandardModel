@@ -10,6 +10,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.LocalCyclicitySector
 import PhysicsSM.Draft.NullEdge.GateYM.SlabGapAssembly
 import PhysicsSM.Draft.NullEdge.GateYM.SlabClustering
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
+import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
@@ -157,6 +158,12 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw.partitionRatio_eq_exp_neg_osSpectralGap
+
+/-! ## QC-leading normalization bridge (finite Z2 leading coefficient only) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCLeading.z2LeadingQCReadout' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCLeading.z2LeadingQCReadout
 
 /-! ## Concrete Z2 twist system: Z_le DERIVED (closes a modeled hypothesis) -/
 

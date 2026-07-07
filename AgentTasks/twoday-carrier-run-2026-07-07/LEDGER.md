@@ -273,6 +273,13 @@ SHORTEST PATH (Fable): 2b (Aristotle now) -> torus Q_C ∥ Q_T+E -> assembly -> 
   `exp(-gap) = tanh beta`, with docstrings explicitly excluding any beyond-leading
   `<Q_C>` expectation or positivity claim. Guard it in `SlabAxiomGuard`; no
   Carrier edits.
+- [ARISTOTLE Codex 22:00 QC-STRATEGY] Submitted focused strategy job on the
+  post-normalization QC bridge: how to connect the finite `Z2`
+  `leadingClosureFluxCoeff` read-off to the carrier torus curvature slot without
+  overclaiming an expectation theorem or beyond-leading positivity. Project
+  `86f7f9d4-4349-454c-8690-8c547f870cc4`, task
+  `4197d799-3210-4e65-bff1-96fe25e887ee`, context pack
+  `AgentTasks/context-packs/qc-leading-strategy-20260706-2200.md`.
 
 ## [FABLE-CALL 02] sent (Claude c4) - Krein upgrade + E-slot + strategy
 - Placed on the assembly milestone (well-timed: 4 D^2 = Q_A+Q_C+4Q_T banked ahead of

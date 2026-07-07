@@ -80,7 +80,15 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Done:** kernel-checked - the strong-coupling leading behavior of `<Q_C>` in
   the character expansion recovers the Z2 transfer gap `-log(tanh beta)`; scope
   EXPLICITLY leading-order-only; beyond-leading positivity flagged OPEN; guarded.
-- **Status:** OPEN (statement design day 1, RATIFY call 03, prove day 2).
+- **Status:** OPEN; finite-leading normalization bridge added by Codex cycle 5:
+  `QCLeading.leadingClosureFluxCoeff` names the one-plaquette `Z2` leading
+  closure-flux coefficient and `z2LeadingQCReadout` proves it is the same scalar
+  as the TY partition ratio and OS contraction factor `exp(-gap) = tanh beta`.
+  This is only a finite leading-coefficient read-off, not a carrier `Q_C`
+  expectation theorem or beyond-leading positivity claim. Aristotle focused
+  strategy job `86f7f9d4`/`4197d799` is in flight for the next honest bridge to
+  the carrier torus curvature slot; RATIFY call 03 still needed before heavier
+  proof spend.
 
 ## Supporting threads
 
