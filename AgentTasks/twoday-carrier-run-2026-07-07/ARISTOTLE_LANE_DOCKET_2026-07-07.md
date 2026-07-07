@@ -50,3 +50,39 @@ plus these three existing projects were `RUNNING`, giving approximately twelve
 active StandardModel-relevant Aristotle lanes.  Q11 then arrived and was added
 as a tenth named lane (`65a9d42d`), bringing the active StandardModel lane count
 to approximately thirteen while it runs.
+
+## Harvest status, Codex solo pass
+
+The first named wave has now been mostly harvested into the live repo:
+
+- `dbe113e5` Q10-L3: landed `LorentzianTransitivity.lean`.
+- `3a66e413` Q10-L5: landed `SplitSignatureMass.lean`.
+- `7fd8a9bf` Q10-L6: landed `MassAmplitudeCensus.lean`.
+- `65a9d42d` Q11 L1/L2-core: landed `Q11RealStructure.lean`.
+- `0a6239d5` Q12 G2 parity: landed `G2Parity.lean`.
+- `bbcf12c6` Q12 PSA-1: landed `PSA.lean`.
+- `7067efa0` Q08 dGamma square: landed `DGammaSquare.lean`.
+- `2ed38421` Q09 modular no-go: landed `ModularNoGo.lean`.
+- `4929366f` Q08 exterior quotient: strategy harvested; next proof jobs opened.
+- `5f3b8963` Q06 carrier-GW: strategy/counterexample harvested; no-native
+  follow-up opened.
+
+## Follow-up wave submitted after harvest
+
+These jobs were submitted from lightweight updated lane packs.  Aristotle warned
+that the packs are not full Lake projects; that is acceptable for strategy/audit
+jobs.  If a proof-heavy job stalls on environment setup, resubmit it as a
+focused Mathlib Lake package.
+
+| Project ID | Descriptive name | Lane | Type | Intended deliverable |
+|---|---|---|---|---|
+| `5bdce729-5240-4c0d-b0b0-e5dc3f224334` | `ne-q08-fock-quotient-pairingdual-proof-20260707` | Q08 exterior quotient | proof/strategy | perfect-pairing bridge for `rad(Lambda h)=ideal(N)` and quotient theorem route |
+| `97417bb8-8d9b-443a-8588-b895d0ce005c` | `ne-q08-dgamma-exterior-globalization-proof-20260707` | Q08 dGamma globalization | proof/strategy | lift decomposable tuple identity toward exterior-algebra statement |
+| `825853b9-3bbe-4ec5-8c4a-46557fcbcabc` | `ne-q10-multitime-embedding-uniqueness-audit-20260707` | Q10 multi-time embedding | audit | next theorem after Lorentzian transitivity plus split witnesses |
+| `f962cbe7-cb15-4db6-8a90-1982e75e6f8f` | `ne-q11-rc0-det-cocycle-strategy-20260707` | Q11 group-level RC0 | strategy | exterior functor determinant cocycle theorem ladder |
+| `e2df3555-4bc9-4a1b-95e7-ec1c4ccfcd9f` | `ne-q11-bl-dictionary-finite-check-20260707` | Q11 B-L dictionary | finite check | decidable SM-entry check for the B-L/total-number claim |
+| `c2e23b53-347c-4c38-9791-cf51e9816fa8` | `ne-q12-equivariant-ms-charge-resolution-proof-20260707` | Q12 equivariant MS | proof/strategy | finite sector-additivity bridge after PSA-1 |
+| `85a73a6d-0e10-4955-8c76-27b9914db6c9` | `ne-q12-triality-convention-bridge-audit-20260707` | Q12 triality bridge | audit | T5-T8 intertwiners, G2 equivariance, and basis bridge kill tests |
+| `7a12dbbd-3dbe-4b7e-a65b-64e48fc063b8` | `ne-q06-palindrome-gw-no-native-proof-20260707` | Q06 carrier-GW | proof/audit | palindromic/abelian positive cases plus no-native nonabelian counterexample plan |
+
+Queue check after submission: all eight follow-up projects were `RUNNING`.
