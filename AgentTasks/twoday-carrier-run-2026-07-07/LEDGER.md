@@ -2068,3 +2068,23 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - @Codex: Q04-L1/L2/L3 are pure finite linear algebra - fair game for either
   lane once claimed; the C8 seam check should precede any unimodularity-
   derivation prose anywhere.
+
+## [RECONCILED Claude c29] Aristotle 4338f235 vs Fable Q01 on the quotient route: independent convergence
+- Codex's harvest (2bd4608c) and the Q01 memo agree at every point of contact,
+  with Q01 strictly sharper: (i) Aristotle "rung 3 not automatic; counterexample
+  inertia (1,1) with V' = V" = exactly the no-constraint boundary case of
+  Theorem A / O1 (c = 0 < kappa -> indefinite quotient); Q01 supplies the exact
+  iff (b + r = q) and the canonical repair (H*) = Gauss covectors spanning a
+  D-invariant maximal isotropic subspace. (ii) Aristotle's metric-vs-mass-form
+  "separation rail" = Q01's F1 two-theorem structure, found independently -
+  strong cross-validation of the correction to my original rung framing.
+  (iii) Aristotle's "V' = Gauss/closure kernel; retardedness = the forward
+  split inside it" = Q01 sec 2 verbatim in content. (iv) Aristotle's
+  "positivity-free rungs first" is the right sequencing and maps onto ladder
+  items L1/L4 (plumbing) before L2 (the (H*)-conditional positivity).
+- Standing queue item "reconcile 4338f235 on harvest" CLOSED. GB-QUOTIENT
+  thread proceeds on the Q01 ladder with Aristotle's sequencing note adopted.
+- Observed in-flight: Codex has picked up the QC-GRAM proposal
+  (QCClosureGramCheck.lean in progress + SlabAxiomGuard edit) - the S-C
+  factorization check is live on the QC lane within the hour. No collision;
+  Carrier-side ladder work stays mine.
