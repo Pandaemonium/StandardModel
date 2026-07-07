@@ -257,6 +257,23 @@ less (Sorkin: "order + number = geometry"). Emergence claims should say which
 half they address; "the tetrad emerges" conflates a free half with an owed
 half.
 
+Retardedness guardrail, sharpened (2026-07-07, Q03 no-go audit): retarded
+transports delete lattice HERMITICITY, not chirality - a third doubling-escape
+mechanism distinct from Wilson terms and overlap kernels, principled only
+because Krein `J`-self-adjointness replaces Hilbert Hermiticity. It provably
+CANNOT delete doubling partners (the retarded symbol determinant's zero set is
+null-homologous on the Brillouin torus), only relocate them off the unitary
+shell; in `d >= 2` a two-edge model has entire LINES of gapless modes. The
+load-bearing chirality evasion is Ginsparg-Wilson DESCENT to the physical
+sector; retardedness is the physical constraint selecting forward data. Any
+physical-sector quotient must re-check that off-shell doublers are not dragged
+back on-shell.
+
+Terminology guard (standing): the Krein fundamental symmetry `J` (linear,
+metric operator) and an NCG-style real structure `J_R` (antilinear, charge
+conjugation) are different objects; never let the notation collide in any
+document.
+
 ## Scaling and continuum tests
 
 Use this order:

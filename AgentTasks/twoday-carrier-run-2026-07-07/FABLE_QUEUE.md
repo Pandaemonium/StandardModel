@@ -168,3 +168,41 @@ Format:
   H^2(K,Z) -> H^2(K,U(1))) on the existing torus complex - adds the flux class
   as a fourth integer to the index-trinity frame. Unblock = ownership + ratify
   statements (both are candidates for idle-cycle work, not critical path).
+
+## Answered by the Q01-Q03 parallel memos (2026-07-07, AgentTasks/fable_parallel/)
+- [ANSWERED Q01] The Krein positivity domain [was CRUX, standing since T+0] ->
+  SOLVED to its exact boundary: Theorem A (state positivity = Witt geometry of
+  the constraint span: isotropy + count kappa + finite Ward identity
+  D Gamma' <= Gamma'); counterexample ladder O1-O5; the single repair
+  hypothesis (H*) = constraint completeness. Definitizability STRUCK (vacuous
+  in finite dim; the invariant is the sign characteristic). Two-theorem
+  structure: state positivity (Theorem A) vs mass-form positivity (Weitzenboeck
+  channel decomposition AFTER descent). Headline kernel target:
+  dim(V'/N) = ind(D). Positive-sector hypothesis question (03:25 grand-strategy
+  item) thereby RESOLVED.
+- [ANSWERED Q01] Retardedness role -> orientation of the invariant-null-ray
+  selection per constraint plane (decidable 2x2 trichotomy); NOT the source of
+  positivity. KILL registered: real-split constraint planes = genuine ghosts,
+  no first-class positive sector.
+- [ANSWERED Q02] Teleparallel G-slot framing [22:55 item] -> Tr E "pure
+  torsion" conjecture KILLED (P-probe: T = 0, drift > 0; plus convention
+  vacuity); survivor = corrected telescoping (Phi = torsion + pair-mass drift
+  + Leibniz remainders; boundary flux = discrete GHY); Lemma 0: only the TOTAL
+  trace is redecoration-invariant - block-trace language ill-posed; TEGR
+  coefficients become a finite derivation (M-ladder).
+- [ANSWERED Q03] No-go audit -> charter U0-U5 adopted
+  (`Sources/Null_Edge_Program_Charter_2026-07-07.md`): losses declared (no
+  coupling unification, no rep-content claim pending a replacement axiom),
+  WW/Marolf redundancy obligation, GW descent load-bearing, CM as output.
+
+## Live entries (post-memo, append below)
+- [QUEUE 2026-07-07 Claude] OS/theta-reflection selector NOT adjudicated by
+  Q01 (it settles Gauss-covector V' and retardedness; theta untested). Keep
+  queued; reconcile with Aristotle 4338f235 on harvest and with Q08 if run.
+- [QUEUE 2026-07-07 Claude] Q03 cover lemma L4 as stated needs its hypothesis
+  pinned (per-cell balanced grading / full-spinor fiber) - executor
+  verification flag; formalize with the hypothesis displayed.
+- [QUEUE 2026-07-07 Claude] Q02 S-sector trichotomy (decouple/gap/propagate
+  under refinement) and the stencil dilemma (telescoping vs doublers) both
+  point at the GW layer - candidate future Fable/strategy question when the
+  E-TELESCOPE thread lands its first rungs.

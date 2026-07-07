@@ -132,7 +132,13 @@ nonzero (mathematics verified by hand; Lean transcription open; both reviewers
 flagged "true but unwitnessed" and the paper must not ship without it). Soft
 gates: the torsion-contraction identity for E (2E = C(T) + C(S)) would upgrade
 the E-slot section from "gravity-shaped" to "discrete-teleparallel"; Codex
-review sign-offs current.
+review sign-offs current. NEW GATE (Q02 memo, 2026-07-07): the E-slot section
+must carry the Lemma-0 correction - individual block traces are not
+redecoration-invariant, so no "gravity action = E-slot trace" language; the
+teleparallel paragraph cites Pereira-Vargas/Zubkov (discrete teleparallelism
+EXISTS; the claimed gap is only the Dirac-square/null-co-frame route) and the
+witness state-sector caveat (balanced inertia hosts no nonvacuous physical
+sector) appears in the honesty map.
 
 **Paper contract.** The decomposition + slot identifications + the two
 witnesses (glue witness for non-vacuity; kappa=2 witness for the Krein
@@ -294,14 +300,21 @@ the whole program; the counterexample branch would be a sharp cautionary
 result for indefinite-metric constructions generally (and those are rarer and
 often more cited).
 
-**Status.** OPEN - this outline exists so the paper shapes itself as results
-land. Inputs converging now: Aristotle strategy job 4338f235 (quotient-ladder
-ratification); Fable parallel Q01 (three-selector comparison: constraint
-kernel vs retardedness vs OS/theta-reflection, the latter carrying the
-lane-unification payoff "reflection positivity for confinement = Krein
-positivity for mass"); the discrete-ANEC/modular reading as the deep-version
-outlook. Gate to activate this outline: the quotient theorem (or its decisive
-counterexample) at hand-proof rigor, before any Lean spend.
+**Status.** BRANCH A ACTIVE as of 2026-07-07: the Q01 memo
+(`AgentTasks/fable_parallel/Q01_answer.md`, executor-verified) delivers the
+theorem at working-mathematician rigor - Theorem A (state positivity = Witt
+geometry of the constraint span; isotropy + count + finite Ward identity),
+the O1-O5 counterexample ladder (O2: the 2-dimensional degenerate obstruction
+immune to every spectral hypothesis), the 2x2 trichotomy with the real-split
+kill-condition, and the upgraded HEADLINE: `dim(V'/N) = ind(D)` - the chiral
+index counts the physical states that survive gauge. Letter sentence updates
+accordingly. Gate to submission: the L1-L5 kernel ladder + the 2+1
+spatial-torus witness (first nonvacuous physical sector) kernel-checked;
+definitizability language struck everywhere (vacuous in finite dimensions);
+the counterexample branch survives as the paper's own adversarial section
+rather than a separate paper. Remaining open input: the OS/theta-reflection
+selector comparison (not adjudicated by Q01) and reconciliation with
+Aristotle job 4338f235 on harvest.
 
 **Paper contract.** One construction, one positivity statement (or one
 obstruction), the kappa bookkeeping, and the witness instantiation. The

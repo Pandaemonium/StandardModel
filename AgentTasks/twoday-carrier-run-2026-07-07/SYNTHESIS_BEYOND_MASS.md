@@ -1,6 +1,10 @@
 # Beyond mass: the null-edge program as index theory on a Krein complex
 
-Synthesis note, 2026-07-07 (Fable-5 session, Claude lane). Companion to
+Synthesis note, 2026-07-07 (Fable-5 session, Claude lane). **Rev 2, same date:**
+sections 3, 4, and 8 carry status updates integrating the Q01-Q03 parallel
+memos (`AgentTasks/fable_parallel/`) - including one killed conjecture (sec 4)
+and one reframed strategy (sec 3); the program charter distilled from Q03 is
+`Sources/Null_Edge_Program_Charter_2026-07-07.md`. Companion to
 `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` (the collaborator overview); this note is the
 NEXT layer of thinking - new connections found while landing the day's bricks, with
 explicit claim labels. Kernel anchors cited by theorem name are in
@@ -135,6 +139,52 @@ constraint-kernel selector in ONE finite framework:
   if even the shadow survives, positivity, entropy (sec on horizons), and
   causality become one statement.
 
+**STATUS UPDATE (2026-07-07, Q01 memo integrated - supersedes the rung list
+above).** The crux is SOLVED to its exact boundary at working-mathematician
+rigor; kernel transcription is now the task. The corrections and results:
+
+1. **Two theorems, not one (F1).** The ladder conflated STATE positivity
+   (`[psi,psi] > 0` on `V'/N`) with MASS-FORM positivity (`[psi, D^2 psi]`).
+   Slot-wise Weitzenboeck can never prove the former; it delivers the channel
+   decomposition of the latter AFTER the quotient exists.
+2. **Theorem A (state positivity = Witt geometry; verified by hand).** The
+   induced form on `V'/N` is positive definite iff the constraint span has
+   `b + r = q`; it is a canonical GAUGE quotient iff the Gauss covectors span
+   a maximal isotropic subspace (isotropy + count = kappa); descent needs
+   exactly the finite Ward identity `D Gamma' <= Gamma'`. No operator
+   hypothesis on D enters positivity at all. Definitizability is VACUOUS in
+   finite dimensions (minimal-polynomial argument) - struck from every
+   hypothesis list; the deciding invariant is the sign characteristic
+   (Gohberg-Lancaster-Rodman). Counterexample ladder O1-O5 marks every wall
+   (O2: a 2x2 J-nonnegative Krein-sa operator with no nonvacuous physical
+   sector - the degenerate obstruction is real and spectral hypotheses cannot
+   remove it).
+3. **Finding A (the headline).** With `J = Gamma` and the Gauss span maximal
+   isotropic: `dim(V'/N) = dim M_+ - dim M_- = ind(D)`. The chiral index does
+   not merely protect massless modes - it COUNTS the physical states that
+   survive gauge. The month's two kernel pillars (index protection, Krein
+   witness) meet in one equation. Kernel target L5; the next freeze headline.
+4. **Finding B (honesty flag on our own witness).** The kappa = 2 witness has
+   p = q, hence `dim(V'/N) = 0` for ANY first-class quotient: right witness
+   for the mass form, structurally incapable of hosting a nonvacuous state
+   sector. State-sector work runs on the unbalanced `(2,1)`/ind = 1 seed.
+5. **The right V' and retardedness's true role.** V' = kernel of the explicit
+   Gauss/closure operators; the "annihilation part" is the invariant-null-ray
+   selection per constraint hyperbolic plane (a decidable 2x2 trichotomy);
+   retardedness = the consistent ORIENTATION of that selection - necessary for
+   D-invariance in the oscillatory case, irrelevant to positivity. KILL
+   registered: real-split constraint planes (a genuine propagating ghost) have
+   no first-class positive sector, full stop.
+6. **The first nonvacuous testbed.** The literal 2-torus quotient is vacuous
+   (correct physics: 2D Maxwell has no photon; the physical content is the
+   holonomy zero-mode, exactly the Wilson-loop sector). The minimal nonvacuous
+   model is the 2-torus as SPATIAL slice of 2+1: one positive polarization per
+   mode, every step a finite matrix identity. This is the shortest path to the
+   first kernel-checked physical sector.
+7. Residual open selector question: the OS/theta-reflection route (above) was
+   NOT adjudicated by the memo; keep queued (Q08-adjacent) and reconcile with
+   Aristotle job 4338f235 on harvest.
+
 ## 4. The action level: one trace, three couplings (+ gravity boundary term)
 
 Move 1 proved "unification is decomposition" at the equation-of-motion level. The
@@ -161,7 +211,47 @@ Gibbons-Hawking term. Continuum anchors for the E-slot-sources-mass claim
 boundary term is the one in Witten's positive-energy proof; Nester's
 quadratic-spinor positive-energy method; Maluf's teleparallel ADM energy as a
 surface integral of torsion - i.e. the continuum already computes MASS as a
-boundary torsion integral, which is exactly the E-slot's job description. Checkable on the Z2 two-torus witness once the torsion
+boundary torsion integral, which is exactly the E-slot's job description.
+
+**STATUS UPDATE (2026-07-07, Q02 memo integrated): the conjecture above is
+KILLED as stated, and retracted.** Two independent failures (both verified):
+(a) vacuity risk - in one-sided-difference conventions the plain trace of `E`
+is identically zero (every summand carries a net shift), so "Tr E = torsion
+contractions" degenerates to 0 = 0; (b) explicit counterexample - the P-probe
+(a closed-torus decoration with `alpha_y` constant and `alpha_x` varying only
+along x) has torsion IDENTICALLY ZERO yet strictly positive drift content:
+the symmetric block `S` in `2E = C(T) + C(S)` carries real, non-torsion
+content (hand-checked: `T = 0`, drift `= 1 - cos(delta theta) > 0`, Gram
+`= 1 + cos theta`). What survives, and is better:
+
+- **Lemma 0 (KERNEL-ready one-liner):** `Tr f(D^#D)` is exactly invariant
+  under vertex-local Krein-unitary redecorations - but the individual BLOCK
+  traces are not separately invariant. "The gravity action = the E-slot trace"
+  is therefore NOT WELL-POSED; the well-posed object is the dependence of the
+  invariant total trace on gradients of the (invariant) Gram field. Sections
+  of this note and of the collaborator doc phrased as "Tr E = gravity" should
+  be read under this correction.
+- **Corrected telescoping (the survivor):** for the net-zero-shift component
+  `tr_0`, the density splits as `Phi + (discrete divergence)`, with `Phi`
+  quadratic in {torsion contractions, PAIR-MASS DRIFTS
+  `(1/2)|psi_d(v) wedge psi_d(v+d)|^2`, Leibniz remainders}; closed complexes
+  sum the divergence to zero; bounded complexes telescope to an oriented
+  boundary flux - the honest discrete Gibbons-Hawking candidate, with
+  polyhedral Gauss-Bonnet as the independent classical cross-check. The
+  correction terms are not garbage: the drift/S-sector is the discrete residue
+  of would-be diffeomorphisms, with a pre-registered trichotomy (decouple /
+  gap / propagate) under refinement.
+- **The TEGR coefficients become a DERIVATION:** invariance (Lemma 0) + finite
+  gradient counting forces Einstein-Hilbert-with-Lambda as the two-gradient
+  content; the (1/4 : 1/2 : -1) ratios drop out of an exact telescoping
+  computation (the M-ladder), with a pre-registered "discrete Lorentz anomaly"
+  branch whose escape is Ginsparg-Wilson-shaped.
+- **Program-native bonus:** the emergent metric is the pairwise-mass Gram
+  matrix - for null solderings `g(alpha_e, alpha_f) = (1/2)|psi_e wedge
+  psi_f|^2` exactly (Layer K), a generalized DOUBLE-NULL lattice whose closest
+  prior art is null-strut Regge calculus; discrete teleparallelism exists
+  (Pereira-Vargas 2002; Zubkov 2004 - do NOT claim a total gap); the genuine
+  gap is the Dirac-square route with null co-frames. Checkable on the Z2 two-torus witness once the torsion
 contraction identity lands. If true, the E-slot gives BOTH bulk gravity and its
 boundary term from one soldering-gradient - and the boundary term is where
 holography/entropy would enter the program.
@@ -251,6 +341,26 @@ makes the discussion precise.
    cocycle (DeGrand-Toussaint decomposition), i.e. an `H^2(K, Z) -> H^2(K, U(1))`
    integrality statement - eminently formalizable on the existing torus complex,
    and it adds a fourth integer (the flux class) to the index-trinity picture.
+
+**LADDER REV 2 (2026-07-07, post Q01-Q03): the merged kernel-target queue.**
+Tier 1 (this week, in order): Q01-L1 perp-signature; Q01-L2 finite
+Gupta-Bleuler; Q01-L4 descent; **Q01-L5 `dim(V'/N) = ind(D)` - the headline**;
+the 2+1 spatial-torus physical-sector witness (first nonvacuous kernel-checked
+physical sector); Q03-L1 dispersion polynomial (`det sigma` bilinear extension
+of Layer K - one line from the kernel asset); Q02-(I2) pair-mass drift
+identity (nearly free from Layer K). Tier 2: Q01-L3 interlacing necessity;
+Q01-L6 slot descent + the S-C factorization CHECK
+(`Q_C =? sum_p (1 - U_p)^#(1 - U_p)` in our normalization - if it holds,
+exact closure positivity in the unitary regime supersedes "beyond-leading";
+if it fails, the cross-term IS the sharp open problem; Codex QC-lane
+adjacency); O2/O3 as kernel counterexample certificates; Q03-L3 two-edge
+doubler exhibit; Q03-L4 cover lemma (pin the per-cell-balanced-grading
+hypothesis - executor flag). Tier 3: Q02-L1..L3 corrected telescoping (script
+the P-probe numerically FIRST) + polyhedral Gauss-Bonnet standalone; the
+M-ladder coefficient derivation; Q03-L8 real-structure `J_R` sign table on the
+witness (cheap); Q03-L9 first-order-failure certificate; Q03-L2 emergent
+metric bound; Q03-L6 null-homology of retarded zeros; Q03-L7 GW-descent
+conjecture; Q03-L10 Marolf/cohomological-support target (P9 wiring).
 
 ## 9. One-paragraph status for outside readers
 

@@ -353,6 +353,38 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   finite-dimensional shadow); the full flag conjecture stays PARKED unless a
   Fable call promotes it.
 
+### GB-QUOTIENT - the finite Gupta-Bleuler layer [Claude; TOP PRIORITY post-Q01]
+- **Done:** Q01 ladder L1 (perp-signature), L2 (finite GB: isotropic Gamma' of
+  dim kappa -> nonneg on perp, radical = Gamma', positive-definite quotient),
+  L4 (descent under D-invariance), and the HEADLINE L5:
+  `dim(V'/N) = dim M_+ - dim M_- = ind(D)` wired to CarrierIndexProtection.
+  Then the 2+1 spatial-torus witness: first kernel-checked nonvacuous physical
+  sector (one polarization per mode). Statements at working rigor in
+  `AgentTasks/fable_parallel/Q01_answer.md` secs 1-2, 5; executor-verified.
+- **Guards:** O2/O3 land as counterexample certificates alongside.
+### DISPERSION - the dispersion polynomial and doubling ledger [Claude]
+- **Done:** Q03-L1 `det sigma(k) = sum_{e<f} z_e z_f |psi_e wedge psi_f|^2`
+  (one-line bilinear extension of Layer K); Q03-L3 two-edge doubler exhibit
+  (lines of zeros, certifies F2); Q03-L4 cover lemma WITH the per-cell
+  balanced-grading hypothesis pinned (executor flag); optional Q03-L2 emergent
+  metric bound. Feeds charter U3/U4.
+### QC-GRAM - the closure factorization check [proposal to Codex; QC lane]
+- **Done:** decide `Q_C =? sum_p (1 - U_p)^# (1 - U_p)` in the repo
+  normalization (Q01 S-C). If TRUE: exact unitary-regime closure positivity,
+  superseding beyond-leading in that regime. If FALSE: the cross-term is the
+  sharp statement of open problem #3. Either branch is a landing.
+### E-TELESCOPE - corrected telescoping + P-probe [Claude; replaces the killed Tr E conjecture]
+- **Done:** numeric P-probe script FIRST (ten lines); then Q02-L1 pointwise
+  splitting (tr_0 E = Phi + divergence), Q02-L2 closed telescoping + kill
+  certificate (torsion = 0, sum Phi > 0 on the probe), Q02-L3 disc/GHY flux
+  form; polyhedral Gauss-Bonnet as the standalone classical cross-check.
+  Lemma 0 (redecoration invariance of Tr f(D^#D)) as the one-liner opener.
+### JR-SIGNS - real-structure candidate on the witness [Claude, cheap]
+- **Done:** Q03-L8: J_R = edge-reversal compose antilinear conjugation; sign
+  table (J_R^2, J_R c(alpha) J_R^{-1}, J_R Gamma) on the kappa=2 witness;
+  either a Lorentzian-side sign table (quadrupling never afflicts us) or a
+  publishable obstruction.
+
 ## Standing meta-threads
 
 - **AUDIT-POOL:** every landed flagship enters; Aristotle audit fired EVENT-DRIVEN

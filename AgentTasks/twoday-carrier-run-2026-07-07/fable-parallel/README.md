@@ -29,8 +29,10 @@ rails so answers come back claim-graded).
 
 ## Where answers go
 
-Save each answer verbatim as `results/QXX-answer.md` in this directory (create
-`results/` on first save). The executor agents will then: cross-review each memo
+Canonical results location (as actually used): `AgentTasks/fable_parallel/`
+at the repository root - Q01-Q03 landed there 2026-07-07 and are integrated
+(charter, synthesis rev 2, thread board, queue). Save further answers in the
+same place as `QXX_answer.md`. The executor agents will then: cross-review each memo
 against the four over-claim modes, extract the formalization ladders into
 `THREAD_BOARD.md` threads, queue kernel targets to Aristotle, and reconcile
 disagreements between memos (especially Q1 vs Q8 on the quotient, and Q2 vs Q9 on

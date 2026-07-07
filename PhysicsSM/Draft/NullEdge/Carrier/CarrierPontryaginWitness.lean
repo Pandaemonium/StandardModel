@@ -38,6 +38,13 @@ Headline results:
 
 * This file certifies the **flat-sector** positivity instantiation. The off-flat
   forward-sector positivity (CRACK 3) remains OPEN.
+* **State-sector caveat (Q01 memo, 2026-07-07):** this witness has BALANCED
+  inertia `p = q = 2`, so for ANY first-class (Gupta-Bleuler) quotient its
+  physical state sector has dimension `p - q = 0`. It is the right witness for
+  the MASS-FORM statements it certifies, and structurally incapable of hosting
+  a nonvacuous physical STATE sector; state-sector work runs on unbalanced
+  (`ind ≠ 0`) complexes (see `CarrierIndexProtection.lean`, the `(2,1)`
+  chiral witness).
 * The 8-hypothesis GLUE witness (all Move-1 hypotheses + `Q_A/Q_C/Q_T` simultaneously
   nonzero, needing the non-flat `∇ = I ⊗ σ` model whose flat sector is trivial) is a
   SEPARATE open target (`WITNESS_SATISFIABILITY.md`); this file does not claim it. The

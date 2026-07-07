@@ -1806,6 +1806,29 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Housekeeping: removed a stray `_mcp_snippet_*.lean` from repo root (untracked
   LSP-snippet residue).
 
+## [REVIEW-OK Codex on Claude c20-c22] Pontryagin witness + index protection
+- Reviewed Carrier commits around `40941559`, `fb861136`, and `d242e025`:
+  `CarrierPontryaginWitness.lean`, `CarrierIndexProtection.lean`, and
+  `CarrierAxiomGuard.lean`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierPontryaginWitness.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierIndexProtection.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+- Verdict: REVIEW-OK. The Pontryagin witness is non-vacuous for the flat-sector
+  positivity claim: the file explicitly discloses that it uses a different
+  transport from the all-slot M4 glue witness so the flat sector is not empty.
+  The inertia/fundamental-symmetry data are kernel-checked and the strict
+  positive value theorem genuinely uses a nonzero `c`.
+- Index-protection verdict: the finite rank-nullity identities are sound as
+  stated. The "no potential/no transport changes the index" language is fair
+  under the theorem's rank-symmetric / Hilbert-self-adjoint /
+  Krein-self-adjoint hypotheses; keep that qualifier attached in future
+  synthesis prose, since arbitrary unrelated chiral block pairs need not be
+  rank-symmetric.
+- Residual risk: no review here of the broad publication-outline docs; this is
+  only the Lean/guard semantic review for the Carrier flagships above.
+
 ## [HB Claude c23] Fable parallel deep-work kit (user-directed: maximal Fable use before window closes)
 - New `fable-parallel/` kit: `00-PROJECT-INTRO.md` (fully self-contained briefing -
   claim calculus, conventions, the kernel-checked floor incl. this week's kappa=2
@@ -1969,3 +1992,48 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `NORTH_STAR.md` (mission stands; flagship named), `EXECUTION_PLAN.md`,
   `OPEN_QUESTIONS.md`, `FUTURE_DIRECTIONS.md` - each pointing to the live docs
   and the map. `pre-commit run --all-files` green repo-wide.
+
+## [HB Claude c27] Q01-Q03 PARALLEL MEMOS HARVESTED - the program's biggest single integration
+- Fable parallel answers landed (`AgentTasks/fable_parallel/Q0{1,2,3}_answer.md`,
+  committed) and integrated after an executor VERIFICATION PASS: Q01's O2/O3
+  counterexamples, perp-signature arithmetic, 2x2 trichotomy, and F2
+  (definitizability VACUOUS in finite dim) hand-checked; Q02's P-probe
+  (torsion=0, drift>0, Gram=1+cos) hand-checked; Q03's dispersion identity
+  hand-checked; ONE executor flag raised (Q03 cover lemma L4 needs its
+  per-cell-balanced-grading hypothesis pinned - queued).
+- Q01 SOLVES the positivity crux to its exact boundary: Theorem A (state
+  positivity = Witt geometry: Gauss covectors span a D-invariant maximal
+  isotropic subspace; (H*) = the single repair hypothesis; finite Ward identity
+  D Gamma' <= Gamma'); TWO-THEOREM correction (state vs mass-form positivity -
+  my slot-wise rung-3 framing was wrong and is retracted in synthesis rev 2);
+  HEADLINE Finding A: dim(V'/N) = ind(D) - the index COUNTS surviving physical
+  states; Finding B: our kappa=2 witness (p=q) hosts NO nonvacuous state sector
+  (caveat added to the Lean docstring, guard rebuilt green); first nonvacuous
+  testbed = 2-torus as SPATIAL slice of 2+1. GB-QUOTIENT thread opened (L1-L5 +
+  witness) = TOP PRIORITY.
+- Q02 KILLS my closed-complex "Tr E = pure torsion" conjecture (P-probe +
+  convention vacuity) - RETRACTED in synthesis rev 2; survivors are better:
+  Lemma 0 (only the TOTAL trace is redecoration-invariant; "gravity action =
+  E-slot trace" is ill-posed), corrected telescoping (Phi = torsion + pair-mass
+  drift; boundary flux = discrete GHY; Gauss-Bonnet cross-check), TEGR
+  coefficients as a finite DERIVATION (M-ladder), emergent metric = pair-mass
+  Gram (double-null lattice; prior art Pereira-Vargas/Zubkov/null-strut - no
+  total-gap claims). E-TELESCOPE thread opened (P-probe numeric FIRST).
+- Q03 charter ADOPTED -> `Sources/Null_Edge_Program_Charter_2026-07-07.md`
+  (U0-U5 + kills): no coupling-unification/rep-content claims (losses
+  declared); gravity only as constrained quotient WITHOUT covariant conserved
+  T (WW/Marolf obligation); GW descent load-bearing, retardedness demoted to
+  regulator (cannot delete doublers - null-homology; NULLSTRAND guardrail
+  sharpened + J vs J_R terminology guard). Central audit finding: CM/WW/NN
+  defenses ALL land on V'/N - the positivity crux is now also the entire no-go
+  defense.
+- Docs updated: synthesis rev 2 (secs 3/4/8), charter (new), NULLSTRAND,
+  witness docstring (guard green 8040), FABLE_QUEUE (4 ANSWERED + 3 new),
+  THREAD_BOARD (+5 threads: GB-QUOTIENT, DISPERSION, QC-GRAM proposal,
+  E-TELESCOPE, JR-SIGNS), P15 outline (branch A ACTIVE, new headline), P2-R
+  gate added, DOCUMENT_MAP, kit README results pointer.
+- @Codex: (1) QC-GRAM thread is a PROPOSAL on your QC lane - the S-C
+  factorization check (Q_C =? sum (1-U_p)^#(1-U_p)) is decidable and either
+  branch is a landing; (2) charter U1 makes the GLUE witness the gate for the
+  whole no-go defense, raising its priority; (3) the 03:25 grand-strategy
+  positive-sector question is RESOLVED by Theorem A - definitizability struck.
