@@ -22,9 +22,10 @@ The proved finite interface is:
 * `map_eq_of_invariant_of_injective`: the literal equality `tau GammaPrime =
   GammaPrime` follows from invariance plus injectivity on a finite-dimensional
   constraint space.
-* `E4_commutator_can_fail` and `E4_nontrivial_healing`: rational witnesses
-  showing the gate is non-vacuous in both directions, including a proper
-  nonzero radical where upstairs non-commutation heals downstairs.
+* `E4_commutator_can_fail`, `E4_nontrivial_healing`, and
+  `E4_nontrivial_descended_commutes`: rational witnesses showing the gate is
+  non-vacuous in both directions, including a proper nonzero radical where
+  upstairs non-commutation heals as literal downstairs commutation.
 
 Claim boundary: this is finite subquotient linear algebra only.  It does not
 prove upstairs commutation for a specific null-edge model, equivariant
@@ -262,6 +263,16 @@ theorem E4_commutator_mem_e0Line :
   intro x
   simp [e0Line, fW, gW, dotProduct, Fin.sum_univ_two]
 
+/-- The nilpotent shift preserves the proper first-coordinate radical. -/
+theorem fW_mem_e0Line : ∀ x ∈ e0Line, fW x ∈ e0Line := by
+  intro x hx
+  simp [e0Line, fW, dotProduct, Fin.sum_univ_two]
+
+/-- The rank-one projection preserves the proper first-coordinate radical. -/
+theorem gW_mem_e0Line : ∀ x ∈ e0Line, gW x ∈ e0Line := by
+  intro x hx
+  simp [e0Line, gW, dotProduct, Fin.sum_univ_two]
+
 /-- Nontrivial healing: the same finite non-commuting pair has a proper nonzero
 radical `e0Line` which contains every commutator value, while at least one
 commutator value is nonzero.  Thus upstairs non-commutation can heal on a
@@ -275,6 +286,26 @@ theorem E4_nontrivial_healing :
   refine ⟨e0Line_ne_bot, e0Line_ne_top, ?_, E4_commutator_mem_e0Line⟩
   refine ⟨⟨![1, 1], Submodule.mem_top⟩, ?_⟩
   simpa using E4_commutator_nonzero_witness
+
+/-- The nontrivial healing witness really produces commuting descended
+operators on the proper quotient by `e0Line`.  This is the direct finite form of
+the E4 gate: nonzero upstairs commutator, but zero commutator on the physical
+subquotient because every commutator value lies in the radical. -/
+theorem E4_nontrivial_descended_commutes :
+    (physDescend (⊤ : Submodule ℚ W) e0Line fW
+        (fun _ _ => Submodule.mem_top) fW_mem_e0Line).comp
+      (physDescend (⊤ : Submodule ℚ W) e0Line gW
+        (fun _ _ => Submodule.mem_top) gW_mem_e0Line)
+    =
+    (physDescend (⊤ : Submodule ℚ W) e0Line gW
+        (fun _ _ => Submodule.mem_top) gW_mem_e0Line).comp
+      (physDescend (⊤ : Submodule ℚ W) e0Line fW
+        (fun _ _ => Submodule.mem_top) fW_mem_e0Line) := by
+  exact physDescend_commutes_of_commutator_mem
+    (⊤ : Submodule ℚ W) e0Line fW gW
+    (fun _ _ => Submodule.mem_top) fW_mem_e0Line
+    (fun _ _ => Submodule.mem_top) gW_mem_e0Line
+    E4_commutator_mem_e0Line
 
 /-! ## Footprint audit -/
 
@@ -301,5 +332,9 @@ theorem E4_nontrivial_healing :
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient.E4_nontrivial_healing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms E4_nontrivial_healing
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient.E4_nontrivial_descended_commutes' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms E4_nontrivial_descended_commutes
 
 end PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient

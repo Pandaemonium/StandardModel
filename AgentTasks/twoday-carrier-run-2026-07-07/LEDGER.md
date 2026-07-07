@@ -3583,3 +3583,26 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Registered the new file in `docs/DOCUMENT_MAP.md` under research references.
 - Claim boundary: this is a provenance control surface, not a final
   bibliography and not an upgrade of any manuscript claim.
+
+## [LOCAL-LEAN Codex solo] Q12 proper-radical descended commutation landed
+
+- Advanced `PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean` from a
+  commutator-in-radical witness to the literal quotient statement.
+- Added `fW_mem_e0Line` and `gW_mem_e0Line`, proving the two witness operators
+  preserve the proper first-coordinate radical.
+- Proved and guard-pinned `E4_nontrivial_descended_commutes`: the descended
+  operators on `(top : Submodule Q W) / e0Line` commute, even though the same
+  upstairs pair has a concrete nonzero commutator value.  This is still finite
+  subquotient linear algebra only, not a model-specific chirality or anomaly
+  theorem.
+- Updated `THREAD_BOARD.md` and `GOAL_PROMPT_CODEX.md` so Q12 GammaPrime's next
+  Aristotle lane is an audit/generalization step rather than the theorem just
+  landed locally.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateI1/Q12GammaPrimeQuotient.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1.Q12GammaPrimeQuotient`;
+  `lake build PhysicsSM.Draft.NullEdge.GateI1` (with pre-existing neighboring
+  warnings);
+  changed-lines placeholder-token scan on the edited Markdown files;
+  `git diff --check`;
+  `pre-commit run --all-files`.

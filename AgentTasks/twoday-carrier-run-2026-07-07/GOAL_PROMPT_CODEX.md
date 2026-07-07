@@ -114,7 +114,7 @@ local proof of `E4_nontrivial_healing`.
 | Q10-BOUNDARY | Stable-order / dimension boundary | Keep signature theorem, reconstruction assumption, and physical interpretation separated | `ne-next-q10-stableorder-dimension-reconstruction-boundary-audit-20260707` |
 | Q11-RC0 | `J_R` / RC0 determinant cocycle | Harvest `aa4e48f6`; then integration audit for Jacobi/Cauchy-Binet semantics | `ne-next-q11-rc0-det-cocycle-groupaction-followup-proof-20260707` |
 | Q11-ORDER | Majorana / order condition | Upgrade C3 sector identities toward operator-level invariant uniqueness | `ne-next-q11-ordercondition-invariant-operator-uniqueness-strategy-20260707` |
-| Q12-GAMMA | GammaPrime quotient | Harvest `5ff9424e`; if clean, prove descended commutation over the proper radical rather than relying only on the upstairs commutator-in-radical witness | `ne-next-q12-gammaprime-e4-descended-commutation-proof-20260707` |
+| Q12-GAMMA | GammaPrime quotient | Harvest `5ff9424e`; then audit the proper-radical descended-commutation theorem and generalize only if the audit is clean | `ne-next-q12-gammaprime-e4-descended-commutation-semantic-audit-20260707` |
 | Q12-C8 | C8 / `J_R` descent | Harvest `96058502`; then sector conjugation and C8 compatibility gates | `ne-next-q12-c8-jr-sector-descent-compatibility-proof-20260707` |
 | Q12-PSA | PSA anomaly gates | PSA-2/3 determinant-line phase gates and promotion conditions | `ne-next-q12-psa23-determinantline-sectorphase-strategy-20260707` |
 | Q12-MS | Equivariant McKean-Singer | Exact finite-to-analytic boundary for charge-resolved sector index claims | `ne-next-q12-equivariant-ms-sector-index-boundary-audit-20260707` |

@@ -776,7 +776,9 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   `E4_commutator_can_fail`, and `E4_healing`. Codex then locally landed
   `E4_nontrivial_healing`, replacing the old `N = top` sanity check as the
   non-vacuity witness: a proper nonzero first-coordinate radical contains all
-  commutator values while one commutator value is nonzero. Aristotle follow-up
+  commutator values while one commutator value is nonzero.  Codex follow-up
+  `E4_nontrivial_descended_commutes` proves the literal descended operators
+  commute on the quotient by that proper radical. Aristotle follow-up
   `1b3c2203` is now harvested into
   `PhysicsSM/Draft/NullEdge/GateI1/Q12NonPermBridge.lean`, proving the
   concrete Walsh-Hadamard non-permutation bridge and separation from
@@ -798,8 +800,10 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   partition-by-label and direct-sum bookkeeping; Q12Triality gives finite
   diagonal-character/parity commutation, a distinct non-diagonal order-3
   `octSgn` triality-style triple, and abstract bridge/kill criteria;
-  Q12GammaPrimeQuotient gives the finite quotient-descent gate; and
-  Q12NonPermBridge proves that the bridge cannot be reduced to a permutation
+  Q12GammaPrimeQuotient gives the finite quotient-descent gate, including a
+  proper-radical witness where nonzero upstairs commutation failure becomes
+  downstairs commutation; and Q12NonPermBridge proves that the bridge cannot be
+  reduced to a permutation
   conjugation in the translation-parity model. Q13 red-team `7f273e71`
   correctly downgraded the older `parity_triple` wording: that theorem is the
   all-equal diagonal `(Z/2)^3` character case, generic in `sigma`. The new
@@ -819,7 +823,8 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   a proved finite interface: an operator descends only when it preserves both
   `V'` and `N`, and descended `tau` commutes with descended `Gamma` iff
   `[tau, Gamma] V' <= N`; upstairs noncommutation can heal on a nontrivial
-  quotient, witnessed by `E4_nontrivial_healing`.
+  quotient, witnessed by `E4_nontrivial_healing` and made explicit as
+  descended commutation by `E4_nontrivial_descended_commutes`.
   The remaining PSA gap is the analytic or operator-level equivariant
   McKean-Singer theorem plus model-specific verification of the descent and
   sector-projection hypotheses, not finite additivity. Failure of any
