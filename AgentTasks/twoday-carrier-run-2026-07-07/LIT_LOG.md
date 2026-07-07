@@ -315,3 +315,33 @@ Findings:
 - No new literature claim is introduced. The bridge is a parameterized
   carrier-readout contract over the landed scalar coefficient, not a measure,
   expectation, nonabelian, or beyond-leading positivity theorem.
+
+## Round 12 (Codex, cycle 12) - QC torus attachment provenance / non-conflation rail
+
+Searches:
+
+- `neo4j_doc_search.py --query "QCCarrierTorusAttachment mZero_iff_commute
+  plaquetteCurvature leading readout curvature scalar separation" --k 8`
+- `neo4j_paper_search.py --query "gauge networks lattice Dirac operator
+  plaquette holonomy curvature covariant difference" --k 6`
+- `neo4j_paper_search.py --chunks --query "lattice covariant difference
+  plaquette holonomy commutator path difference gauge networks" --k 6`
+
+Graph delta: none.
+
+Findings:
+
+- Paper search pointed back to already-in-graph sources: **DCIW87IM**
+  (Gauge networks in noncommutative geometry, arXiv:1301.3480),
+  **GU9K5KKW** (Dirac-Kahler fermion with noncommutative differential forms on a
+  lattice, arXiv:hep-lat/0309120), and **SMH5768W** (Osterwalder-Seiler 1978).
+  No new ingest was needed.
+- Chunk search for the torus-curvature side again surfaced gauge-network /
+  quiver / lattice-covariant-difference context, not a scalar leading-readout
+  theorem. This supports keeping `QCCarrierTorusAttachment.lean` as a
+  bookkeeping instantiation plus scalar-free `mZero_iff_commute` re-export.
+- Repo doc search reinforced the non-conflation rail: curvature depends on the
+  chosen hidden/gauge transport, and older readout lemmas do not license a
+  theorem deriving the scalar `leadingClosureFluxCoeff` from
+  `plaquetteCurvature`. The new module therefore introduces no literature claim
+  beyond the already-cited Carrier torus and `QCLeading` provenance.
