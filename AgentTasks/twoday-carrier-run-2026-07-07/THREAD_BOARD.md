@@ -42,14 +42,20 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 
 ### W2a - Q_A and Q_T identification lemmas [Claude, day 2 gate]
 - **Done:** kernel-checked `Q_A`-symbol-kernel = collinear locus tied to
-  `nbody_aperture_massless_iff_collinear`; `Q_T = 0 iff massMatrix = 0` tied to
-  `turnAmplitude_eq_zero_iff`; guarded; cross-reviewed. Statements Fable-RATIFIED
+  `nbody_aperture_massless_iff_collinear`; `Q_T`/turn slot tied to
+  `turnAmplitude_eq_zero_iff` with the nilpotent square-zero caveat guarded;
+  cross-reviewed. Statements Fable-RATIFIED
   before proof spend (call 02).
 - **Status:** PARTIAL BANKED. Claude commit `49f8847` proved and guarded the
   abstract `Q_A` identification lemmas `Q_A_eq_totalSq` and
   `Q_A_zero_iff_totalSq_zero`; Codex reviewed the diff in commit `220451b`.
   Still OPEN for the W2a done-condition: the concrete Minkowski/collinearity
-  tie and the `Q_T` identification layer.
+  tie and the positive/nilpotent-free hypothesis needed to turn `Q_T = phi^2`
+  into a zero-iff statement.  Codex local landing
+  `turnAmplitude_square_zero_counterexample` proves a nonzero two-flavor turn
+  amplitude can square to zero, so the honest kernel-checked equivalence remains
+  `turnAmplitude Y μ = 0 ↔ Y = 0`, not `(turnAmplitude Y μ)^2 = 0 ↔ Y = 0`
+  without extra structure.
 
 ### W2b - graded irreducibility (the upgraded no_common_carrier) [Claude]
 - **Done:** the bigraded-slot theorem (order x Clifford-degree x gamma-parity;

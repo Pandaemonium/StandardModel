@@ -58,7 +58,7 @@ We package two vertices:
 Claim label: **finite operator identity** (pure `flavor ⊗ spin` matrix algebra).
 This is NOT a dynamical derivation of the Yukawa couplings: `Y` is an arbitrary
 input matrix, and the theorems only expose where its content lands in the
-chirality grading. `sorry`/`axiom`/`native_decide`-free.
+chirality grading. Placeholder-free and compiler-eval-free.
 -/
 
 open scoped Matrix Kronecker
@@ -229,6 +229,39 @@ mass matrix is zero — the `n`-flavor generalization of
 theorem turnAmplitude_eq_zero_iff (Y : Matrix (Fin n) (Fin n) ℂ) (μ : Fin 4) :
     turnAmplitude Y μ = 0 ↔ Y = 0 := by
   rw [turnAmplitude_eq, flavorMassTerm_eq_zero_iff]
+
+/-! ### Square-zero caution for the carrier `Q_T = phi^2` reading -/
+
+/-- A concrete nonzero nilpotent two-flavor Yukawa matrix. -/
+noncomputable def nilpotentYukawa2 : Matrix (Fin 2) (Fin 2) ℂ := !![0, 1; 0, 0]
+
+/-- The nilpotent witness is nonzero. -/
+theorem nilpotentYukawa2_ne_zero : nilpotentYukawa2 ≠ 0 := by
+  intro h
+  have h01 := congrFun (congrFun h (0 : Fin 2)) (1 : Fin 2)
+  norm_num [nilpotentYukawa2] at h01
+
+/-- The nilpotent witness squares to zero. -/
+theorem nilpotentYukawa2_sq_zero : nilpotentYukawa2 * nilpotentYukawa2 = 0 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [nilpotentYukawa2, Matrix.mul_apply, Fin.sum_univ_two]
+
+/-- A nonzero turn amplitude can have square zero.
+
+This is a finite warning for the carrier `Q_T = phi^2` bridge: the proven
+turn-amplitude identity says `turnAmplitude Y μ = 0 ↔ Y = 0`, but the stronger
+claim `(turnAmplitude Y μ)^2 = 0 ↔ Y = 0` is false without an additional
+nilpotent-free/normality hypothesis on the Yukawa block. -/
+theorem turnAmplitude_square_zero_counterexample (μ : Fin 4) :
+    turnAmplitude nilpotentYukawa2 μ ≠ 0 ∧
+      turnAmplitude nilpotentYukawa2 μ * turnAmplitude nilpotentYukawa2 μ = 0 := by
+  constructor
+  · intro h
+    exact nilpotentYukawa2_ne_zero ((turnAmplitude_eq_zero_iff nilpotentYukawa2 μ).mp h)
+  · rw [turnAmplitude_eq]
+    unfold flavorMassTerm
+    rw [← Matrix.mul_kronecker_mul, nilpotentYukawa2_sq_zero, Matrix.zero_kronecker]
 
 /-! ### Wilson variant: the faithful generalization of the single-flavor
 `chiralEven_massVertex_eq_zero_iff` (`m = -1`) -/

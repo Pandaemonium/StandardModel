@@ -310,7 +310,7 @@ chirally-symmetric Dirac symbol - see FiniteNielsenNinomiya scope note). -/
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteNielsenNinomiya.odd_signedCount_impossible
 
 /-! ## Lane A: N-body aperture massless-iff-collinear (2h-rule finalized harvest).
-The `sorry`-free headline; the sibling `nbody_massSq_eq_sum_pairwise` re-indexing
+The placeholder-free headline; the sibling `nbody_massSq_eq_sum_pairwise` re-indexing
 is a documented draft `s o r r y` and is NOT guarded. -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture.nbody_aperture_massless_iff_collinear' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -364,6 +364,10 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_eq_zero_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_square_zero_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude.turnAmplitude_square_zero_counterexample
 
 /-! ## Batch wave 3: W-mass gap, aperture entropy iff, strong-coupling area law, faithful octonion coupling -/
 

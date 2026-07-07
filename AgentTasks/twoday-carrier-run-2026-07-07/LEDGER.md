@@ -3424,3 +3424,27 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`;
   targeted placeholder scan on the changed Lean files;
   `git diff --check`.
+
+## [LOCAL-LEAN Codex solo] Q_T square-zero trap kernelized
+
+- Advanced the W2a turn-slot identification boundary in
+  `PhysicsSM/Draft/NullEdge/GateYM/YukawaTurnAmplitude.lean`.
+- Added the explicit nonzero nilpotent two-flavor Yukawa witness
+  `nilpotentYukawa2`, proved `nilpotentYukawa2_ne_zero` and
+  `nilpotentYukawa2_sq_zero`.
+- Proved and guard-pinned `turnAmplitude_square_zero_counterexample`: for any
+  `μ`, the turn amplitude of `nilpotentYukawa2` is nonzero while its square is
+  zero.
+- Claim boundary: the existing theorem `turnAmplitude_eq_zero_iff` remains the
+  correct no-turn/no-mass equivalence.  A statement using `Q_T = phi^2` as
+  `(turnAmplitude)^2 = 0 ↔ Y = 0` is false for arbitrary Yukawa matrices and
+  needs an additional nilpotent-free/normality hypothesis.
+- Updated `THREAD_BOARD.md` and `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` so W2a
+  records the counterexample instead of advertising the stronger square-zero
+  equivalence.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/YukawaTurnAmplitude.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.YukawaTurnAmplitude`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
+  targeted placeholder scan on the changed Lean files.

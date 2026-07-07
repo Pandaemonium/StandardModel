@@ -155,8 +155,10 @@ are the "component functionals" the decomposition's terms are meant to reproduce
   index: `signedZeroCount = overlap index difference`. The Ginsparg–Wilson relation and the
   Neuberger overlap operator are formalized; the deformed chiral symmetry (`γ̂₅ = γ₅(1−D)`) is
   an exact involution — the "price of the turn." `turnAmplitude_eq_zero_iff`: the
-  chirality-flipping vertex vanishes iff the mass matrix does. The general `d`-dimensional /
-  4D degree argument is **OPEN**.
+  chirality-flipping vertex vanishes iff the mass matrix does. The stronger `Q_T = phi²`
+  zero-iff needs a nilpotent-free or normality hypothesis: an explicit nonzero nilpotent
+  two-flavor turn amplitude squares to zero. The general `d`-dimensional / 4D degree
+  argument is **OPEN**.
 - **C (closure) — Z2 complete; nonabelian gap OPEN.** A full finite abelian (`ℤ₂`) confinement
   chain: reflection positivity → self-adjoint transfer operator → strictly-positive spectral gap
   `= −log(tanh β)` → exponential clustering. The correct *nonabelian* strong-coupling character
