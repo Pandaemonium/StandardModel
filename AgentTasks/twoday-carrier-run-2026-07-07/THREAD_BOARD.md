@@ -18,16 +18,20 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   lemma); (3) the Krein `#` and the gamma-parity split of cross terms; (4) assembly.
 - **Honesty rails:** no spectral claims (Krein positivity is OPEN); `E` is the
   gravity INTERFACE, not a gravity theorem.
-- **Status:** brick 1 **LANDED + guarded** (commit d7a7d8d - `NullNilpotentSquare`:
-  `null_clifford_sq_zero`, `nullSoldered_square_offDiagonal`, `lone_edge_massless`;
-  red-teamed clean). Brick **2a IN-FLIGHT** (`tc-w1-gram`
-  c3ae9b98-dc9a-4f75-afca-1459edb253e8, `SolderedSquareGram`: scalar-weight soldered
-  square = the Q_A Gram form exactly; Q_C bivector absent under commuting weights,
-  which motivates gauge `nabla` for brick 2). NEXT after 2a: brick 2 (the 2-complex +
-  gauge-covariant `nabla_e` + plaquette holonomy defect - design fork queued for
-  Fable call 01). **Cite in W1 docstrings:** [BQJAG9TR] hep-th/9503153 (generalized
-  Lichnerowicz formula) + [2DEG7MT2] 0708.3707 (discrete/metric-graph index); confirmed
-  in-graph, LIT_LOG round 1.
+- **Status:** bricks 1 + **2a LANDED + guarded** (`NullNilpotentSquare`,
+  `SolderedSquareGram`: Q_A pinned exactly; Q_C=0 under commuting weights). Brick
+  **2b IN-FLIGHT** (`weitzenbock_master`, the abstract Move-1 master identity
+  `4•D0^2 = Q_A + Q_C` in one algebra B with hcl+hcomm; Aristotle 60894574; statement
+  committed 425c9ad + verified route). Design **CRACKED by Fable call-01**. NEXT
+  sub-bricks (post-2b): torus Q_C (Z2xZ2 gauge torus, path-difference form,
+  double-shift T_aT_b); **corrected Q_T** (`Phi = Gamma·phi`, NOT gamma-even -
+  call-01 caught the gamma-even cancellation is FALSE, kills commutator not
+  anticommutator); `E` def + vanishing-at-constant-soldering; then the assembly
+  `D^2 = Q_A+Q_C+Q_T+E`. Backfill: brick **2a'** (char-free, drop Field/h2 - call-01
+  audit). Krein brick (`krein_square_form` + `positivity_transfer`, positive-sector
+  existence = computational PROBE not theorem) at hour ~24+. **Cite in W1 docstrings:**
+  [BQJAG9TR] hep-th/9503153 (generalized Lichnerowicz) + arXiv:1301.3480 (gauge
+  networks, brick-2 scaffold) + [2DEG7MT2] 0708.3707; in-graph, LIT_LOG rounds 1-2.
 
 ### W2a - Q_A and Q_T identification lemmas [Claude, day 2 gate]
 - **Done:** kernel-checked `Q_A`-symbol-kernel = collinear locus tied to

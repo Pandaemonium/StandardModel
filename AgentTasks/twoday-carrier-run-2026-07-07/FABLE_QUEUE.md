@@ -36,3 +36,11 @@ Format:
   decomposition.
 
 ## Live entries (append below)
+
+## Answered by call 01
+- [ANSWERED call-01] OS1 route fork -> character/polymer on a FINITE gauge group is far
+  more Mathlib-formalizable than Shen-Zhu-Zhu (no log-Sobolev in Mathlib). Codex: finite
+  group first, before SU(2) Haar. Revisit at call 03 with Codex gate status.
+- [ANSWERED call-01] 2-complex design fork -> purpose-built Z2xZ2 gauge torus (commuting
+  shifts = add_comm, no boundary partiality); prose bridge to WilsonSlabConnected, not a
+  bridge theorem. Beats causal-diamond reuse and the raw slab.
