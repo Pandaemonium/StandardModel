@@ -1318,9 +1318,48 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   `Aristotle-ready` lines. Re-run
   `pre-commit run --files ...` over the touched audit/report/manuscript/roadmap
   set: PASS.
+- G5 status remains PARTIAL, not upgraded. I attempted chunk-level graph
+  checks for chromomagnetic/Dirac-square, Banks-Casher, and Ginsparg-Wilson
+  anchors with `Scripts/lit/neo4j_paper_search.py --chunks`, but Neo4j refused
+  `127.0.0.1:7687` for all three. Zotero search also refused connection.
+  INSPIRE fallback found title/abstract records for Ackermann-Tolksdorf
+  `hep-th/9503153`, Verbaarschot `hep-th/9401059`, Banks-Casher-adjacent QCD
+  Dirac-spectrum work, and Ginsparg-Wilson exact-chirality records. Logged in
+  `LIT_SEARCH_LOG.md` as triage evidence only; no keys ingested.
+- User restarted Neo4j; reran the G5 chunk checks successfully. Results:
+  `hep-th/9503153` / `BQJAG9TR` chunks support generalized
+  Lichnerowicz/Dirac-square/gauge-curvature wording; `hep-lat/9802011` /
+  `N68MN4ET` chunks support exact lattice chiral symmetry from the
+  Ginsparg-Wilson relation. Updated `Sources/Null_Edge_References.md` to
+  replace the Ginsparg-Wilson TBD placeholder with `N68MN4ET` and
+  full-text-chunk status. Banks-Casher search still found adjacent
+  lattice-spectrum/chiral-condensate chunks rather than a clean original
+  full-text anchor, so G5 remains PARTIAL but strengthened.
 - Remaining audit item: harvest Aristotle project
   `0826f284-cf1b-407a-9976-0aaf2b76c50e` when it completes; at 06:01 PDT it
   was IN_PROGRESS.
+
+## [HARVEST Codex] Post-06 S1-CC manuscript-boundary audit applied
+
+- Harvested Aristotle post-06 S1-CC manuscript-boundary audit:
+  project `0826f284-cf1b-407a-9976-0aaf2b76c50e`, task
+  `28ef35db-fc25-47d0-9190-454abd33c37a`, status COMPLETE. Archive:
+  `AgentTasks/aristotle-output/0826f284-cf1b-407a-9976-0aaf2b76c50e.tar.gz`;
+  extracted output:
+  `AgentTasks/aristotle-output/0826f284-cf1b-407a-9976-0aaf2b76c50e-extracted/28ef35db-fc25-47d0-9190-454abd33c37a_aristotle/`.
+- Verdict: ship-with-edits, no P0 blockers. Caveat: Aristotle's request
+  workspace did not include the live repo artifacts, so it reviewed the quoted
+  text rather than the kernel/source files. Local Codex anchor and guard sweeps
+  in this repo cover the source side.
+- Applied edits from the audit:
+  `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` now states S1-CC as
+  "conditionally resolved (M engine + MEMO physical instantiation)" and makes
+  the physical-sector balance an if-MEMO-then claim. The `(2,2,0)` nullity and
+  inertia are credited to the `6x6` probe, not to the finite count theorem.
+- Also changed `leading_closure_energy_nonneg` wording from "positive" to
+  "nonnegative" in the manuscript anchor table, `HONEST_SCORECARD.md`, and
+  `MORNING_REPORT.md`.
+- Claim boundary: documentation/audit downgrades only; no new Lean changes.
 
 ## [LAND Claude] Strengthening roadmap + T2 multi-edge positive-sector ESCAPE
 
@@ -1341,3 +1380,18 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   scorecard from "obstructed, sharpest open problem" to "escape validated
   numerically; Lean witness pending". You may want to reflect that in the final
   dawn scorecard. Manuscript S6 + S10 already updated.
+
+## [SUBMIT Claude] Aristotle strengthening batch 1 (T1 + T2 + T5)
+
+- User: submit the roadmap jobs to Aristotle + work on what I can myself.
+- Aristotle project 8b3efa7c-1d11-4ff9-890e-a8d2d6c5bc12. Focused Mathlib-only
+  package (ships sector_ground_mass proved + the validated T2 probe as context).
+  Targets: T1 sector-compression lemma, T2 the two-edge Cl(4) positive-sector
+  witness -> keystone (the linchpin, numerically validated), T5 gauge covariance.
+- Myself: flag #3 (sign convention -Tr(A^2)=||A||^2) is ALREADY handled - the
+  theorem hypothesis Aᴴ=-A (LinearizedClosureEnergy.lean) enforces skew at the
+  kernel level, so it cannot drift. T3 (det-P bridge) is under-defined (needs
+  the momentum-bundle map defined first, per Aristotle "may be false") - held
+  for a focused design pass, not rushed. T4 (g=2 Pauli test) documented in the
+  roadmap as the next channel-name probe.
+- Task note: AgentTasks/allmass-strengthen-batch1-aristotle-2026-07-08.md.
