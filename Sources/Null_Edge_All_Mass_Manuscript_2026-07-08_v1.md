@@ -961,9 +961,18 @@ self-guarded): on the fermionic occupation Fock space, the free many-body
 Hamiltonian `dΓ(B)` has ground energy `0` and first excited energy exactly the
 one-particle gap `λ − κ`, with the free two-body energy exactly the *sum of
 constituents* (`fockEnergy_twoParticle`) and the binding defect `Δ = −κ` as the
-seed (`twoBody_bound_below_threshold`). What stays open is the *interacting*
-hadron mass — a genuine bound state below the constituent threshold — which
-needs an interaction term on `Λ²` not derived here.) This is deliberate and it
+seed (`twoBody_bound_below_threshold`). The *interacting* two-body bound state is
+now itself a **theorem**: `InteractingTwoBody.interacting_boundState_below_threshold`
+(**M**, self-guarded) exhibits, for an attractive interaction `V` of strength `κ`
+on the two lowest pairs, a genuine `IsLeast` eigenvalue `boundEnergy < ` the free
+constituent threshold `min_{i≠j}(d_i+d_j)` whenever `κ > 0` — via an explicit
+`2×2`-block eigenvalue computation, with **no hand-inserted defect**. What stays
+grade **C** is the *physical hadron* identification: `V`'s *scale* is the carrier
+closure strength (`κ = −Δ`), but its rank-one attractive *form* is modelled, not
+derived from closure geometry. So "an attractive interaction of the closure scale
+binds a state below the constituent sum" is **M**; "this is *the* hadron mass from
+null-transport geometry" is **C**, still needing `V` derived from the carrier.)
+This is deliberate and it
 is also a real limitation:
 
 - Several physical notions the words invite — a *chiral condensate*
@@ -1094,8 +1103,9 @@ is the simulation's spec and validation oracle):
   state, binding energy `< 0` iff `κ > 0`). Validated against
   `FockMassGap.secondQuantized_massGap` / `fockEnergy_twoParticle`,
   `BindingDefect` (`Δ = −κ`), and `B_spectrum`. The interacting probe is the
-  numeric shadow of the *open* interacting-hadron theorem (`V` inserted, grade
-  **C**; the kernel target is the running proof `allmass-proof-hadron`).
+  numeric shadow of the now-landed interacting bound-state theorem
+  (`InteractingTwoBody.interacting_boundState_below_threshold`, **M**; the physical
+  hadron identification stays **C** — `V`'s form is modelled, not derived).
 
 ---
 
@@ -1306,7 +1316,8 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3) |
 | 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M (first two guard-pinned) | **the D2 instantiation, closed**: the carrier-block Hermitian flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` (generator-as-Hamiltonian is a **C** posit; carrier tie kernel at `(2,1)`) |
 | 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved`, `carrier6_orbit_norm_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the flow **orbit** of the carrier block `B(λ,κ)` — and of the full `6×6` physical sector form `M6` (`carrier6_…`) — conserves sector norm & (commuting-observable) energy: `FiniteUnitaryEvolution` fired on the concrete carrier |
-| 9 | `secondQuantized_massGap` | `Carrier/FockMassGap.lean` | M, self-guarded (in-file pin) | **free second-quantized mass gap**: on the fermionic occupation Fock space, `dΓ(B)`'s gap = one-particle gap `λ−κ`; free 2-body = sum of constituents; `Δ=−κ` seeds a below-threshold bound state (interacting hadron mass open) |
+| 9 | `secondQuantized_massGap` | `Carrier/FockMassGap.lean` | M, self-guarded (in-file pin) | **free second-quantized mass gap**: on the fermionic occupation Fock space, `dΓ(B)`'s gap = one-particle gap `λ−κ`; free 2-body = sum of constituents; `Δ=−κ` seeds a below-threshold bound state |
+| 9 | `interacting_boundState_below_threshold` | `Carrier/InteractingTwoBody.lean` | M, self-guarded (in-file pin) | **interacting below-threshold bound state**: an attractive `V` of the closure scale `κ` gives a least eigenvalue strictly below the constituent sum (`IsLeast`, no inserted defect). Physical hadron identification stays **C** (`V`'s form modelled, not derived) |
 | 9 | `dirac_mass_shell`, `Ustep_hasDerivAt_generator` | `Carrier/ContinuumLimit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **continuum-limit finite symbol facts**: mass shell `(kσ_z+mσ_x)²=(k²+m²)·1`; discrete transfer generator matches the Dirac Hamiltonian symbol to leading order. Continuum *theorem* is `[import]` (1+1D) / open (Cl(4)) |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
