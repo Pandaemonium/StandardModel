@@ -15,8 +15,9 @@ edge-orientation-reversal grading of the GW structure - are all ODD
 elements of ONE symmetry group acting on the decorated complex; gauge
 transformations and the reflection `R` (C4) are EVEN elements. The master
 invariant is the equivariant supertrace `tr(Gamma g | sector)`, and its
-three uses are `g = 1` (McKean-Singer index protection,
-`chiralIndex_eq_graded_dimension`), `g = R` (the C4 sectored pinning), and
+three uses are `g = 1` (McKean-Singer index protection, via the odd-power
+cancellation `graded_trace_odd_power_vanishes`), `g = R` (the C4 sectored
+pinning, `graded_trace_sector_split`), and
 "an odd element exists" (S1-CC: the closure form has an exact supersymmetry,
 so its Witten index vanishes sector-by-sector, forcing balanced inertia).
 In the code `b` and the C4 witness grading are LITERALLY the same matrix

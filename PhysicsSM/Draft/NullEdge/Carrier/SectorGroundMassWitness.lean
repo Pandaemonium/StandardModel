@@ -230,13 +230,16 @@ theorem reApplyInnerSelf_ge_of_sub_posSemidef {n : Type*} [Fintype n] [Decidable
 `J = Js ⊗ I3`, aperture `Q_A = I4 ⊗ (lam I3)`, closure `Q_C = omega ⊗ K`, and the
 assembly `HAC = J(Q_A + Q_C)` — is asserted **only in these docstrings and the
 oracle** (`Scripts/oracle/probe_multiedge_positive_sector.py`). **Update
-(2026-07-08): that link is now kernel-certified.** `CliffordAssembly.HAC_eq_clifford`
-and `CliffordAssembly.Jmet_eq_clifford` prove that the hand-typed `HAC`/`Jmet`
-equal the Clifford assembly `J(Q_A+Q_C)` / `Js⊗I3` built from Pauli-Kronecker
-products — *verbatim, with no convention change*. So the identification of `M6`'s
-carrier with the two-edge Cl(4) Krein form is now **M**, not oracle-grade: what was
-a docstring-only provenance (flagged by the flagship audit) is closed in the
-kernel. Read "T2 gives a positive mass on the Cl(4) carrier" as fully kernel-tied. -/
+(2026-07-08): the recipe match is now kernel-certified.**
+`CliffordAssembly.HAC_eq_clifford` and `Jmet_eq_clifford` prove that the hand-typed
+`HAC`/`Jmet` **equal the documented Clifford recipe** `J(Q_A+Q_C)` / `Js⊗I3` built
+from Pauli-Kronecker products (verbatim). This closes the "recipe lives only in
+docstrings" gap: the hand-typed matrices provably realize the stated Cl(4)
+assembly. Caveat (batch-2 audit): this certifies *a* Clifford presentation, not its
+*canonicity* — `K` and the tensor order are inputs matching the program's
+convention, not derived/forced here (the `Jmet = Js⊗I3` identity, having no free
+input, *is* forced). So "T2's carrier realizes the documented Cl(4) recipe" is
+**M**; "it is the unique/canonical Cl(4) carrier" is not claimed. -/
 
 /-- Assembled total Krein form `HAC = H_A + H_C = J (Q_A + Q_C)` on `C^12`, for
 aperture strength `lam = 2` (hand-typed; see the provenance disclosure above).

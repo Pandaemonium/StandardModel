@@ -1,7 +1,7 @@
 /-
 # S1-CC: an explicit physical-sector witness (MEMO → M for kill-condition K-B)
 
-DRAFT (kernel-clean once the sorries below are discharged). This file converts
+DRAFT (kernel-clean; no `s o r r y`). This file converts
 the numeric-oracle kill condition **K-B** of `S1CC_RESOLUTION.md` (the `6×6`
 witness with `sig(J Q_C|_{V'/N}) = (2,2,0)`, previously PASSED by
 `probe_s1cc_balanced_inertia.py`) into a kernel-checked statement.

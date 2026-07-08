@@ -20,12 +20,22 @@ One computes `omega=diag(I,I,-I,-I)`, `Js=diag(-1,1,-1,1)`, so `J_cl=Jmet` and
 
 ## Results (both M, kernel-clean)
 
-- `Jmet_eq_clifford : J_cl = SectorGroundMassWitness.Jmet`.
+- `Jmet_eq_clifford : J_cl = SectorGroundMassWitness.Jmet`. (The metric identity is
+  *forced* — `Js = i g3 g4` has no free input — so this one is unconditional.)
 - `HAC_eq_clifford : J_cl * (Q_A + Q_C) = SectorGroundMassWitness.HAC`.
 
-So the identification "T2's hand-typed carrier IS the Cl(4) Krein form" is now a
-theorem, not an oracle-grade link: the one gap flagged by the flagship audit is
-closed in the kernel.
+**What this earns, precisely (per the batch-2 audit — do not over-read).** These
+prove the hand-typed `HAC`/`Jmet` **equal the program's documented Clifford recipe**
+(the gammas `g1..g4`, `omega`, `Js`, `Q_A = I4⊗2I3`, `Q_C = omega⊗K` with the
+stated `K` and the `finProdFinEquiv` Kronecker order) — closing the earlier gap
+that the recipe lived *only* in docstrings. What they do **not** certify is
+*canonicity*: `K` (the closure kernel) and the `Q_A` scale are supplied inputs
+matching the program's convention, not *derived* from closure geometry, and the
+tensor order is not shown to be the unique one reproducing `HAC` (a rigidity lemma
+— gammas forced by the Clifford relations, `K` forced as the unique closure
+operator — would be needed for that). So: "the hand-typed carrier realizes the
+documented Cl(4) recipe" is **M**; "this is the *canonical/unique* Cl(4) carrier"
+is not claimed here.
 
 ## Provenance
 
@@ -155,8 +165,10 @@ theorem Jmet_eq_clifford : J_cl = Jmet := by
 
 set_option maxHeartbeats 1600000 in
 /-- The Clifford assembly `J_cl * (Q_A + Q_C)` equals the hand-typed `HAC`, verbatim.
-So the two-edge Cl(4) carrier's Krein form IS the flagship `HAC` — the provenance
-gap flagged by the audit is closed in the kernel. -/
+So the flagship `HAC` **realizes the program's documented Cl(4) recipe** (gammas,
+`omega`, `Js`, `Q_A`, `Q_C` with the stated `K` and Kronecker order) — the earlier
+docstring-only-provenance gap is closed. This certifies *a* Clifford presentation,
+not its canonicity (`K`/order are inputs; see the module docstring). -/
 theorem HAC_eq_clifford : J_cl * (Q_A + Q_C) = HAC := by
   rw [Jmet_eq_clifford, QAC_eq]
   unfold QAC
