@@ -1515,6 +1515,17 @@ novelty-gap analysis is in
   Phys. Rev. D 25 (1982) 2649 (the GW relation, §8).
 - J. K. Asbóth, H. Obuse, *Bulk-boundary correspondence for chiral symmetric
   quantum walks*, Phys. Rev. B 88 (2013) 121406.
+- T. Kugo, I. Ojima, *Local Covariant Operator Formalism of Nonabelian Gauge
+  Theories and Quark Confinement Problem*, Prog. Theor. Phys. Suppl. 66 (1979) 1,
+  doi:10.1143/PTPS.66.1 (the BRS-charge quartet / physical-subspace criterion and
+  the general theory of indefinite-metric quantum fields — the nonabelian
+  Gauss-sector precedent for the §6 physical sector `V'/N`; `[import]`).
+- S. N. Gupta, *Theory of longitudinal photons in quantum electrodynamics*, Proc.
+  Phys. Soc. A63 (1950) 681, doi:10.1088/0370-1298/63/7/301; K. Bleuler, *Eine
+  neue Methode zur Behandlung der longitudinalen und skalaren Photonen*, Helv.
+  Phys. Acta 23 (1950) 567 (the abelian indefinite-metric physical-state
+  construction with a modified supplementary condition — the classic precedent for
+  the §6 quotient/half-constraint analogy; `[import]`).
 
 **Hadron mass, proton mass decomposition (§4, §4a, §5).**
 
