@@ -108,9 +108,26 @@ themselves are the intended math (B = λI+iκK, entrywise = M6's upper block at
 4. **Named the mirror block** B(λ,-κ): sector form = B(λ,κ) (+) B(λ,-κ).
 Also refined the §9a spectrum-sim bullet + §11 rows to the same honest split.
 
+## Cycle A.6 (~11:0x) — D2-on-T2 LANDED (the open §9a link, closed)
+
+The Aristotle D2-on-T2 job COMPLETED. It used exactly the workaround my intel
+predicted (Matrix.unitaryGroup / U*Uᴴ=1 via exp_conjTranspose + exp_add_of_commute,
+dodging the `unitary` monoid diamond) AND delivered the LinearIsometryEquiv
+packaging. Reviewed for semantic alignment (statements are the intended physics:
+carrier flow exp(-i t H) is unitary + a genuine sector isometry), integrated into
+`CarrierUnitaryFlow.lean` using the existing `MassGapWitness.B`:
+- `hermitian_flow_mem_unitaryGroup` (core), `hermitian_flow_isometry` (the
+  LinearIsometryEquiv), `B_flow_unitary` (specialization) — all M, kernel-clean
+  [propext, Classical.choice, Quot.sound], GUARD-PINNED in CarrierAxiomGuard.
+  Build green (8087 jobs).
+- Manuscript §9a D2/D3 bullet updated: the instantiation is now CLOSED (was the
+  "top next dynamics target"); §11 row added. So FiniteUnitaryEvolution now fires
+  on the actual carrier, not just a generic isometry.
+
 ## In flight (external, not harness-tracked)
 
-- **Aristotle D2-on-T2 job** — project `9af87ff3-da85-456e-acda-acbc4809ee93`
+- (none — D2-on-T2 landed, cycle A.6)
+- ~~Aristotle D2-on-T2 job~~ — project `9af87ff3-da85-456e-acda-acbc4809ee93`
   (`allmass-d2-on-t2-20260708`). Target: `hermitian_flow_mem_unitaryGroup` —
   for Hermitian H, `exp(-i t H)` is unitary (a genuine norm-preserving sector
   isometry), instantiating `FiniteUnitaryEvolution` on the concrete carrier and

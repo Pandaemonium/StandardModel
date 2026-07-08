@@ -978,13 +978,21 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   *derived* from an action, not posited. (Scaffold: the abstract Dirichlet /
   multiplier variation; a specific carrier Lagrangian is the physics.)
 - **D2/D3 — evolution and conservation.** `norm_conserved_orbit`,
-  `energy_conserved_orbit` (`FiniteUnitaryEvolution`, **M**). **Stated honestly:
-  these prove that *any sector isometry* conserves norm and energy along its
-  orbit** — generic finite functional analysis (`LinearIsometryEquiv`). We do
-  **not** claim "the carrier evolution is unitary"; that the T2 carrier's
-  transfer step is an isometry *of the sector inner product* (Krein-unitary is
-  not norm-unitary) is the **open instantiation** — Fable-flagged, and the top
-  next dynamics target (fire D2 on the T2 witness).
+  `energy_conserved_orbit` (`FiniteUnitaryEvolution`, **M**) prove that *any
+  sector isometry* conserves norm and energy along its orbit — generic finite
+  functional analysis (`LinearIsometryEquiv`). This was previously flagged with
+  the honest caveat that the *instantiation* (the T2 carrier's step actually
+  being such an isometry) was open. **That instantiation is now closed** and
+  kernel-checked (`CarrierUnitaryFlow`, **M**, guard-pinned): the carrier sector
+  Hamiltonian is Hermitian (the mass-gap block `B`), so the flow it generates
+  `exp(−i t H)` is **unitary** (`hermitian_flow_mem_unitaryGroup` /
+  `B_flow_unitary`) and induces a genuine `LinearIsometryEquiv` on the sector
+  (`hermitian_flow_isometry`). So `FiniteUnitaryEvolution` fires on the *actual*
+  carrier — norm and energy are conserved along the real carrier orbit, not
+  merely a generic isometry's. (This is a first-quantized statement; Krein-unitary
+  ≠ norm-unitary was the earlier worry, and the resolution is that the physical
+  *sector* form — where `B` lives — carries a genuine positive inner product, per
+  §4/§6, on which the flow is honestly norm-unitary.)
 - **D4 — renormalization flow.** `invariant_orbit`,
   `observable_antitone_orbit` (`FiniteRGFlow`, **M**, axiom-free): orbit
   invariants and monotones under an iterated step. The intended step is the §9
@@ -1188,7 +1196,8 @@ separately by the targeted Lean and guard builds.)*
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
-| 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3; carrier-step instantiation open) |
+| 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3) |
+| 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the D2 instantiation, closed**: the carrier's Hermitian-generated flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` — `FiniteUnitaryEvolution` fires on the real carrier |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |

@@ -48,6 +48,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.FiniteRGFlow
 import PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble
 import PhysicsSM.Draft.NullEdge.Carrier.FreeMassBridge
 import PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -780,5 +781,20 @@ whole coupling plane: the `3x3` Hermitian block `B(lam,kappa)` is positive defin
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.M6_botBlock_eq_B' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.M6_botBlock_eq_B
+
+/-! ## D2 on the T2 witness: the carrier flow is a genuine sector isometry
+
+`CarrierUnitaryFlow` closes the one open §9a dynamics link: the carrier's
+Hermitian-generated flow `exp(-i t H)` is unitary (a norm-preserving sector
+isometry), so `FiniteUnitaryEvolution` fires on the actual carrier, not just a
+generic isometry. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.hermitian_flow_mem_unitaryGroup' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.hermitian_flow_mem_unitaryGroup
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.B_flow_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.B_flow_unitary
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
