@@ -1062,7 +1062,14 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   (`FiniteCarrierAction`, **M**): a finite action's variational stationarity is
   equivalent to the equation of motion `D psi = 0`. The carrier's dynamics is
   *derived* from an action, not posited. (Scaffold: the abstract Dirichlet /
-  multiplier variation; a specific carrier Lagrangian is the physics.)
+  multiplier variation; a specific carrier Lagrangian is the physics.) A finite
+  Noether-flavored companion is also kernel-checked (`FiniteQuadraticAction`,
+  **M**, self-guarded): a unitary symmetry that commutes with the carrier operator
+  `A` preserves both the quadratic and the constrained mass-shell action
+  (`quadraticAction_invariant_of_commutes`, `massShellAction_invariant_of_commutes`)
+  and transports mass-shell solutions to mass-shell solutions of the *same* mass
+  (`massShell_equation_symmetry`) — the finite statement that a symmetry of the
+  dynamics is a symmetry of the mass spectrum.
 - **D2/D3 — evolution and conservation.** `norm_conserved_orbit`,
   `energy_conserved_orbit` (`FiniteUnitaryEvolution`, **M**) prove that *any
   sector isometry* conserves norm and energy along its orbit — generic finite
@@ -1385,6 +1392,7 @@ separately by the targeted Lean and guard builds.)*
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
+| 9 | `massShellAction_invariant_of_commutes`, `massShell_equation_symmetry` | `Carrier/FiniteQuadraticAction.lean` | M, self-guarded (in-file pin) | finite Noether: a unitary symmetry commuting with `A` preserves the (mass-shell) action and transports mass-shell solutions to solutions of the same mass (dynamics D1) |
 | 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3) |
 | 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M (first two guard-pinned) | **the D2 instantiation, closed**: the carrier-block Hermitian flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` (generator-as-Hamiltonian is a **C** posit; carrier tie kernel at `(2,1)`) |
 | 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved`, `carrier6_orbit_norm_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the flow **orbit** of the carrier block `B(λ,κ)` — and of the full `6×6` physical sector form `M6` (`carrier6_…`) — conserves sector norm & (commuting-observable) energy: `FiniteUnitaryEvolution` fired on the concrete carrier |
