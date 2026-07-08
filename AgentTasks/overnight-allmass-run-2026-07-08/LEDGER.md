@@ -810,3 +810,25 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Not editing the roadmap doc (Codex concurrently editing it); roadmap A1
   note deferred to avoid contention.
 - Verification: lake env lean (clean, local guards pass); lake build (8026).
+
+## [AUDIT Claude] Manuscript audit gates status (G1-G5)
+
+- G1 (four over-claim modes per section): DONE via Fable call-01 Part A;
+  all ~7 flagged fixes applied (S4 master display, budget corollary, S6
+  torsor MEMO, S8 parity, paths, osSpectralGap). Codex section audit also
+  requested.
+- G2 (independent anchor sweep): PASS. Re-grepped all 34 declaration names
+  in the S11 table + inline anchors; every one exists. No false anchors
+  (the v3 lesson honored). Also verified the tonight-added anchors
+  (carrier_krein_square, weitzenbock_master_varying, leading_closure_energy_nonneg,
+  anticonj_odd_pow_trace_zero, mid_*, eslot_*).
+- G3 (external review call): DONE (Fable call-01 was the external review
+  with embedded sources).
+- G4 (kill-list completeness): DONE - S10 reports all expected kills
+  (Koide, Tr E, defect-Gram, cyclic-symmetry, retardedness, spectral
+  embargo) at theorem prominence.
+- G5 (lit chunk-level check): PARTIAL - 7 SevenChallenges anchors + Yang/
+  Durr/Ji + quantum-walk papers ingested; the manuscript's [import]
+  citations (Wilson, OS, Banks-Casher, Ji, Yang, Durr, Asboth-Obuse,
+  Pereira-Vargas, NuFIT, Sumino) are in Null_Edge_References.md. Chunk-level
+  verification of each is a remaining P3 item (Codex Spark lane or morning).
