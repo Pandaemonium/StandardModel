@@ -27,9 +27,11 @@ import PhysicsSM.Draft.NullEdge.Carrier.GWRetardedTransfer
 import PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
 import PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge
+import PhysicsSM.Draft.NullEdge.Carrier.KoideSubNatProbe
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantMultiplicity
 import PhysicsSM.Draft.NullEdge.Carrier.RGSchurMassWitness
+import PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -101,6 +103,9 @@ guards are edited independently to avoid collision.
   holonomy inverse, and the carrier generator-conjugation hypothesis is derived
   for homogeneous transfer powers, while arbitrary heterogeneous words remain
   blocked by the existing nonabelian counterexample.
+* Koide / T-solder SUB-NAT probe (`KoideSubNatProbe`): exact rational gate
+  facts for the tetrahedral corner bookkeeping and subdivision naturality.
+  These are convention gates, not mass-value predictions.
 * E-slot torsion/soldering split (`CarrierESlotTorsionSplit`): the doubled
   E-slot is the sum of torsion-like and symmetric soldering-difference
   contractions, and a concrete matrix witness shows the pure-torsion reading is
@@ -539,6 +544,24 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge.gw_relation_transfer_power
 
+/-! ## Koide / T-SOLDER exact rational gate: kappa and SUB-NAT bookkeeping -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.kappaB2_tet' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.kappaB2_tet
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.subNat_strict_fails' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.subNat_strict_fails
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.subNat_projective' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.subNat_projective
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.subNat_outcome_table' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.KoideSubNat.subNat_outcome_table
+
 /-! ## [H2] constraint: color commutant on the triplet = scalars -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.color_commutant_eq_scalars' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -580,5 +603,15 @@ product-square lemma, the non-nilpotent effective edge on the decimated
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.collinear_schurComplement_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.collinear_schurComplement_eq_zero
+
+/-! ## T1: chiral-symmetry determinant dichotomy (K6, overnight 2026-07-08) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity.chiral_det_conj' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity.chiral_det_conj
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity.chiral_det_eq_pm_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity.chiral_det_eq_pm_one
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

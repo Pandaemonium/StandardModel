@@ -242,10 +242,14 @@ an exact zero quasi-energy mode? Findings, exact to float precision:
 
 **Theorem targets handed to the HOLONOMY-ZERO-MODE thread (in order):**
 
-- T1 (symmetry protection, finite): a Z_V-symmetric spinor decoration
-  forces 1 in spec(W). Mechanism to formalize: the commuting decoration
-  symmetry (leg shift composed with the SU(2) cone rotation) and a
-  fixed-sector argument. Small, concrete, Aristotle-ready.
+- T1 (REDIRECTED 2026-07-08 by the K6 probe): the forcing symmetry is
+  NOT the cyclic shift (abstract winding-1 data is unpinned) but a CHIRAL
+  involution Gamma with Gamma W Gamma = W^dagger (= orientation-swap =
+  edge-reversal grading), present for the even-V half-winding case, which
+  pins BOTH +-1 for all |t|. Kernel core LANDED in
+  `PhysicsSM/Draft/NullEdge/Carrier/ChiralZeroModeParity.lean`
+  (det W = +-1 dichotomy); the |t|-independent double pinning needs the
+  chiral winding invariant (Asboth-Obuse, 1303.1199), oracle-grade.
 - T2 (tetrahedral rationality): the V = 3 tetrahedral transfer has
   spectrum pi/6 * {-6, -2, -1, 0, 4, 5} exactly (entries live in a
   cyclotomic field; exact linear algebra is feasible).
