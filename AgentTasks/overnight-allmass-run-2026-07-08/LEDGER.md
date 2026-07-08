@@ -977,3 +977,24 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Claim boundary: prose + docstring; S6 budget is oracle-verified (Fable
   fraction arithmetic) => C with the kill "exact Lean disagrees with
   (135/446,-32/223,375/446)".
+
+## [PROBE Claude] S6 singlet budget VALIDATED - exact match to Fable call-03
+
+- `Scripts/oracle/probe_s6_singlet_budget.py` (exact fractions): recomputes
+  the 18-dim quark-antiquark singlet budget with the natural 3-4-5
+  R_z/R_x/R_y transports. Reproduces BOTH of Fable's fraction sets EXACTLY:
+  (135/446, -32/223, 375/446) [M^2=1784/125] and its spin-flip
+  (135/574, +32/287, 375/574) [M^2=2296/125], hyperfine split 512/125.
+  Only difference = which sigma_z eigenstate is 'spin-up' (convention).
+- CONFIRMED structure: b_C != 0; the closure (chromomagnetic) share sign
+  FLIPS between the two spin states = a finite hyperfine (pi/rho-analog)
+  splitting of 512/125; budget sums to 1; flat holonomy ([u,v]=0 or u=v)
+  gives ev(Q_C)=0 exactly (the "closure share is a Wilson-loop difference"
+  no-go, oracle-confirmed).
+- The S6 witness design is now oracle-validated; the Lean 18x18
+  transcription (Kronecker lemmas, 3x3 trace norm_num - NOT fin_cases) is a
+  decide-style M-target backed by these exact fractions. Handoff (Aristotle
+  or a focused session).
+- Claim boundary: numeric oracle (exact rationals); Lean transcription
+  pending. This backs the manuscript S4 rail (b_C != 0, hyperfine) at
+  oracle grade.
