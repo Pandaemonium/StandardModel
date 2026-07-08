@@ -210,10 +210,12 @@ exactly zero (one edge, no closure) and budget `(1/2, 0, 1/2)`
 (`witness_budget_sum_one`, **M**). Two honesty rails, both load-bearing:
 
 1. **The shares are signed.** We do *not* call them positive fractions.
-   Positivity of a channel share is exactly the open crux of §6/§8, and
-   until it closes, `b_C` may be negative on some states. This is not a
-   defect: §8 explains why the physics of chiral symmetry breaking
-   *requires* the closure channel to have negative directions.
+   Whether a channel share is positive is the closure-positivity question
+   of §6 — now *resolved*: `b_C` is genuinely signed (the closure form is
+   balanced on the physical sector), so `b_C` can be negative on some
+   states. This is not a defect: §8 explains why the physics of chiral
+   symmetry breaking *requires* the closure channel to have negative
+   directions.
 2. **`b_C` is the chromomagnetic share, not "gluon energy."** The closure
    *channel* `Q_C` is linear in field strength (a `sigma·F` /
    chromomagnetic object); the `|F|^2` gluon *energy* density is a
@@ -499,13 +501,20 @@ is dead, so no one re-derives them:
   program-wide; finite eigenvalue-*count* identities are the sanctioned
   form (§6's Banks–Casher count, `banks_casher_count`, **M**).
 
-**The open cruxes, ranked.** (1) The physical-sector positivity inertia
-(S1-CC, §6) — one finite computation once `V'` is transcribed. (2) The
-strong-coupling gap's forest injection (§6) — now a well-posed
-combinatorics problem. (3) The multi-direction closure square (a
-stabilization, largely dissolved). (4) The chiral winding invariant for
-the double-pinning (§8). Each is finite, each has a kill condition, none
-requires new axioms.
+**The open cruxes, ranked** (after this run's progress). The former #1 —
+physical-sector closure positivity (S1-CC) — is now *resolved* as a
+structured no-go (§6): closure is balanced, its algebraic engine is
+kernel-checked, and the pre-registered numeric kill probe passed. What
+remains: (1) the surviving positivity question it exposed — total-operator
+positivity on the doublet-free complement, i.e. an aperture/turn-dominance
+inequality over the `J`-definite directions (§6). (2) The strong-coupling
+gap's forest injection (§6) — now a well-posed combinatorics problem, the
+malposed-statement diagnosis in hand. (3) The multi-direction closure
+square (a stabilization, largely dissolved). (4) The chiral winding
+invariant for the double-pinning (§8). (5) Completing the S1-CC ladder in
+Lean (Theorems 1–3: descent, restricted inertia, the grading no-go —
+oracle-confirmed, transcription pending). Each is finite, each has a kill
+condition, none requires new axioms.
 
 ---
 
