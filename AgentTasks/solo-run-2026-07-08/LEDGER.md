@@ -305,10 +305,32 @@ ticks: integrate these, harvest batch 3, keep queue ~2-3 (sustainable vs backlog
   NON-VACUOUS statement (P presents V'/N: orthonormal b-eigenbasis of a complement
   of range Q_G in ker Q_G, dim = card iota - 2*rank Q_G). Was actively on the
   Mathlib spectral theorem (eigenvectorBasis) at snapshot.
-- AUDIT `763a34b8` (batch-5) — adversarial over-claim audit of the general
-  reduction; sharpest question = ker Q_G vs V'/N (Fable already ruled OVER-CLAIM,
-  fixed; audit is independent triangulation).
 - Fable call-09 (13:32 -> 16:05, ~2.5h cadence) DONE, actioned.
-NEXT: harvest f6644f9b (the non-vacuous existence proof, if it lands) + batch-5;
-if existence lands, add the fully-general physical_sector_balanced as M and
-promote the crux. Keep queue full.
+NEXT: harvest f6644f9b (the non-vacuous existence proof, if it lands); if existence
+lands, add the fully-general physical_sector_balanced as M and promote the crux.
+Keep queue full.
+
+## Cycle A.14 (~16:15) — harvested batch-5 audit + Krein/BRST provenance
+
+- **AUDIT batch-5 `763a34b8`: HARVESTED, actioned (independent confirm of Fable
+  call-09).** Ruled compression_balanced / _eigbasis / has_neg_eigenvalue / engine
+  / witness_balanced_via_general all CLEAN (genuine, non-vacuous, real
+  strengthening, no sign slip). Both physical_sector_* LOAD-BEARING vacuous
+  (kappa:=Empty), same as Fable. KEY reassurance (audit lines 106-113): the balance
+  genuinely survives the quotient V'/N (not just ker Q_G) because range Q_G is
+  b-invariant => +/- pairs cancel; the MATH is true, only the Lean/prose is
+  under-specified. Added that MEMO note to the S6 crux box (gap = formalization,
+  not mathematical risk). My earlier Fable-fix wording already matched the audit's
+  stronger remedy (dimension-pinned range-Q_G-complement + descent).
+- **Krein/indefinite-metric provenance (lit pass).** Grounded the S6
+  balanced-signature mechanism in van den Dungen 1505.01939 + Bizi 1812.00038
+  ([import] setting / [orig] argument); verified + cited Gupta 1950, Bleuler 1950,
+  Kugo-Ojima 1979 for the physical-subspace/quotient analogy. All VERIFIED in
+  Null_Edge_References.md.
+- Full build green (8298 jobs). ~7 commits this cycle-set.
+
+## In flight (~16:16)
+
+- PROOF `f6644f9b` (s1ccpres) still RUNNING on the CORRECTED non-vacuous existence
+  target (dimension pin + range-Q_G-complement + descent). This is the live
+  frontier; harvest when IDLE.

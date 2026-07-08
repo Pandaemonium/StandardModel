@@ -756,7 +756,12 @@ square has no positive-definite diagonal. Therefore:
 > quotient `V'/N`. (Simultaneous diagonalization of the color-leg Gauss operator
 > `G` and the grading `b = σz ⊗ 1` via `[G,K]=0` supplies the eigenbasis; the
 > dimension/complementarity/descent are the remaining un-transcribed pieces — this
-> is more than a one-line existence step.)
+> is more than a one-line existence step.) The remaining gap is *formalization,
+> not mathematical risk*: the balance genuinely survives the quotient (not merely
+> `ker Q_G`), because `range Q_G` is `b`-invariant, so its directions come in `±`
+> pairs that cancel in the inertia — a **MEMO** argument, independently confirmed
+> by two adversarial reviews (Fable call-09 and the batch-5 Aristotle audit); what
+> is owed is its kernel transcription.
 > The mechanism is a grading anticonjugation: the closure bivector
 > `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
 > every gauge-defined constraint sector (gauge acts on the color factor
