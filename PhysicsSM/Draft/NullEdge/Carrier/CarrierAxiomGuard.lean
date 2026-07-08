@@ -36,6 +36,8 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierMassBudget
 import PhysicsSM.Draft.NullEdge.Carrier.ApertureDominancePositivity
 import PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex
 import PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMass
+import PhysicsSM.Draft.NullEdge.Carrier.MassMonogamy
+import PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -649,5 +651,24 @@ product-square lemma, the non-nilpotent effective edge on the decimated
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMass.sector_ground_mass' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMass.sector_ground_mass
+
+/-! ## Kinematic strengthening (Aristotle round-2, overnight 2026-07-08):
+F3 mass monogamy + the rank/area-spectral bridge -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassMonogamy.pairwiseMass_append' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassMonogamy.pairwiseMass_append
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassMonogamy.pairwiseMass_append_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassMonogamy.pairwiseMass_append_eq_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass.posDef_iff_det_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass.posDef_iff_det_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass.det_eq_zero_iff_not_posDef' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass.det_eq_zero_iff_not_posDef
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
