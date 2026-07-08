@@ -51,6 +51,24 @@ Per the Stop-hook ("run until 6pm"), kept advancing after the manuscript finish:
   null-direction disagreement / null-transport obstruction; substantiates §2a.
 - Verified all four simulators run with zero failures.
 
+## Cycle A.3 (~10:xx) — landed 3/4 mass-gap lemmas myself (Lean)
+
+Rather than idle on the external Aristotle job, prepared
+`PhysicsSM/Draft/NullEdge/Carrier/MassGapWitness.lean` and proved the elementary
+targets myself, staging the hard one:
+- **B_isHermitian, B_det, B_massless_iff** — all M, KERNEL-CLEAN (axiom audit
+  `[propext, Classical.choice, Quot.sound]`, no native_decide). det = lam(lam^2-
+  kappa^2); massless line kappa=+-lam for lam>0. Generalizes T2 across the plane.
+- **B_posDef_iff** — documented `s o r r y` handoff to Aristotle; the elementary
+  quadratic-form route (Re x^H B x = lam||x||^2 - 2 kappa Im(conj x0 x1) >=
+  (lam-|kappa|)||x||^2) is written in the docstring as the semantic-alignment
+  reference for reviewing Aristotle's proof.
+Manuscript §4 grade split honestly: massless line = M (theorem); massive-side gap
+= M-sim pending PosDef. Two §11 rows added. Draft handoff (1 sorry), not pinned.
+Debugging notes: det needed det_fin_three + of_apply/cons_val extraction then
+linear_combination on Complex.I_sq (coeff lam*kappa^2); PosDef statement needs
+`open scoped ComplexOrder` for PartialOrder C.
+
 ## In flight (external, not harness-tracked)
 
 - **Aristotle mass-gap proof job** — project `121f6472-...`, task `c9cfeed1-...`,
