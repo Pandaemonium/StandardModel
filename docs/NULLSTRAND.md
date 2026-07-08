@@ -41,6 +41,39 @@ anomaly control, a finite spectral-action or variational principle with genuine
 codimension, and at least one non-inserted prediction if the goal is stronger
 than reconstruction.
 
+### All-mass program: strategic guidance (2026-07-08)
+
+The all-mass manuscript
+(`Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md`) and its strengthening
+plan are the current headline all-mass work. Before opening new all-mass tasks,
+read
+[`AgentTasks/overnight-allmass-run-2026-07-08/STRENGTHENING_ROADMAP.md`](../AgentTasks/overnight-allmass-run-2026-07-08/STRENGTHENING_ROADMAP.md)
+- it consolidates three independent strengthening reviews (Fable, Aristotle,
+Gemini Pro) into a dependency-ordered roadmap (T1-T7 core theorems + F2-F11
+frontier contact points). The durable strategic facts:
+
+- **The decisive question is the `S3<->S4` bridge** (`min spec(D^#D|P) = det P`).
+  It does not land-or-fail: it **splits** into a free-case equality (an M-target,
+  near-automatic from `(slash)^2 = det P`) plus `Delta := min spec - det P`, a
+  finite, negative, off-diagonal, closure-controlled **binding energy** (the
+  program's first new invariant;
+  `AgentTasks/overnight-allmass-run-2026-07-08/DELTA_BINDING_ENERGY_FINDING.md`).
+- **The keystone `sector_ground_mass` is proved (M)**
+  (`PhysicsSM/Draft/NullEdge/Carrier/SectorGroundMass.lean`), *conditional* on a
+  definite positive sector. The single-doublet witness has none (the closure
+  grading balances the aperture too), but a two-edge `Cl(4)` carrier escapes the
+  obstruction and supplies one under aperture dominance (validated numerically;
+  Lean transcription is the top construction).
+- **The honest contribution is methodology-first** and survives every channel-name
+  kill: verified constructive-QFT fragments (RP->OS->gap->clustering; a
+  polymer/cluster-expansion Lean library), new finite theorems (mass monogamy,
+  finite Witten positive-mass, rigidity-as-classification), sharpened finite
+  diagnoses of continuum obstructions (Nielsen-Ninomiya, the 3+1D checkerboard,
+  Kugo-Ojima positivity), and the grading discipline itself. Absolute masses stay
+  behind the (unbuilt) renormalization dictionary - which is why the checkerboard
+  bridge (the one place a proven continuum reduction exists) is worth
+  disproportionate effort.
+
 ## Core operator convention
 
 Do not identify the null finite-difference direction with the Clifford soldering

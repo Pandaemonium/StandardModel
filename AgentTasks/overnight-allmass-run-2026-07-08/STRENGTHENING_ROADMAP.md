@@ -191,3 +191,129 @@ Pauli term (T4), import a continuum limit through the checkerboard (T6), and the
 paper stops being "kernel-checked algebra shaped like physics" and becomes "a
 finite, rigorous, and in one case continuum-anchored theory of mass as null
 disagreement."
+
+---
+
+## Frontier contact points (register the conjecture now; do the work later)
+
+These are theorem-shaped or diagnosis-shaped extensions (Fable round-2 items;
+Pro's assessment). Each is grade **C** with a crisp kill; they queue behind the
+T2 transcription. Ordered by value x tractability.
+
+- **F2 - Balanced closure = a finite Kugo-Ojima criterion.** Read the S1-CC
+  balance not as "closure isn't positive" but as a *derivation*: colored
+  directions carry exactly zero net Krein signature = the quartet/confinement
+  signature, obtained not assumed. **Sharp test:** the J-positive sector should
+  coincide with the gauge-invariant (color-singlet) subspace. **Kill:** a colored
+  vector with positive Krein norm in `V'/N`, or a singlet in the null/negative
+  part. Run it on the 18-dim S6 witness (the Cl(4) toy has no singlet). *Fable
+  ranked this #2; it also stress-tests the escape before transcription.*
+- **F3 - Mass monogamy (the most Lean-ripe new theorem).** `det P` is
+  *exhaustively pairwise* - no genuine 3-body kinematic mass. This imports
+  entanglement-monogamy (CKW) as **Plucker inequalities** on how `mass^2`
+  distributes over sub-bundles: finite, algebraic, Lean-formalizable, and (to
+  Fable's knowledge) not in the amplitudes literature in this packaging.
+  **Corollary now connected to the `Delta` finding:** any *irreducible
+  multipartite* mass must route through the closure channel - which is exactly
+  what the off-diagonal binding energy `Delta` (T3b) is. *Best next Aristotle
+  theorem after T2.*
+- **F4 - A finite Witten positive-mass theorem for the E channel.** Witten's
+  positive-energy proof *is* Lichnerowicz-Weitzenbock: under a finite
+  dominant-energy-shaped condition on the soldering gradient, a boundary
+  invariant of the complex is nonnegative, zero iff soldering is covariantly
+  constant. Gives S7 its first genuine GR-shaped theorem; finite-dimensional.
+  **Kill:** a DEC-satisfying finite carrier with negative boundary invariant.
+- **F6 - Rigidity as a Krein-Krajewski classification (the publishable-math T7).**
+  Pose carrier rigidity as classifying Dirac-type operators on finite *Krein*
+  complexes with null soldering + chiral grading + constant turn. The
+  indefinite-metric extension of the finite-spectral-triple (Krajewski-diagram)
+  classification is genuinely open pure math, independent of any physics reading.
+- **F7 - Doublers as Krein-null ghosts (a sharp NN evasion).** Nielsen-Ninomiya
+  assumes Hilbert-space hermiticity; our `D` is `J`-hermitian on an indefinite
+  space, outside the premises. **Conjecture:** doubler modes are Krein-null (in
+  the radical), quotiented away in `V'/N`, so the physical theory is exactly
+  chiral and doubler-free at finite volume, doubling paid in ghost norm. **Kill:**
+  a doubler with nonzero Krein norm on the physical sector. Names *which* NN
+  hypothesis we trade (indefiniteness, which S8 argues we need anyway) - a real
+  data point for the chiral-lattice frontier.
+- **F8 - The 3+1D checkerboard obstruction may BE Krein indefiniteness.** The
+  historical failure of naive 3+1D checkerboard weights (noncommutative Clifford
+  weights, no positive summation) is *suspiciously exactly* our structure: Cl(4)
+  coefficients, Krein not probabilistic norm, reflection sectors. **Conjecture:**
+  the multi-edge chain *is* the correct 3+1D checkerboard, obstruction absorbed
+  into the Krein metric; flat-case transfer scaling reproduces the 3+1D Dirac
+  dispersion. **Kill:** flat scaling fails the dispersion. *This is the highest-
+  value continuum target - it extends the ONLY T-grade bridge (see T6) rather
+  than opening a new front, and is the cheapest attack on the S4a wall.*
+- **F11 - Generations as equivariant-index sectors.** Replace the S8 Z2
+  reflection by the triality monodromy (Q5/Q12 thread): three sectors, three
+  pinned mode families = generations, hierarchy as sector spectral data. Unifies
+  live threads under the equivariant-index organizing theorem (S10 crux). The
+  honest home for mass *ratios* post-Koide-kill (index-protected dimensionless
+  targets). **Kill:** the triality cover fails to give three independent sectored
+  indices, or the pattern is incompatible with any hierarchy ordering.
+- **Diagnoses (register, defer):** F9 celestial/Carrollian (the finite carrier as
+  a discrete celestial model - "mass = obstruction to null transport" is nearly
+  the celestial statement that massive states cannot live at null infinity); F10
+  lattice positivity violation (our balanced `J Q_C` is the finite shadow of
+  measured gluon/ghost propagator positivity violation - a rare data-adjacent
+  comparison, weak-claim only); Pro's metric-affine reading (the E-channel wants
+  torsion + non-metricity, not pure teleparallel - a finite discrete-geometry
+  diagnostic); "proper time as turn density" (a formalizable finite clock theorem
+  linking turn count to proper time; connects to the checkerboard/zitterbewegung).
+
+---
+
+## The honest contribution (methodology-first, and it survives every S4a kill)
+
+Three independent assessments (Fable, Aristotle, Gemini Pro) converge: the most
+defensible near-term contribution is **structural and methodological before it is
+phenomenological**, and it stands *even if every channel name dies by its S4a
+kill condition*. In descending order of certainty:
+
+1. **Verified constructive-QFT infrastructure.** The guard-pinned chain
+   reflection-positivity -> OS reconstruction -> spectral gap -> clustering is
+   plausibly among the first kernel-checked fragments of constructive QFT. A Lean
+   polymer/cluster-expansion library (entry point: the forest-injection bounty;
+   target abstraction: the Kotecky-Preiss condition) would be used by people who
+   care nothing for null edges. Constructive QFT's hardest results (Balaban RG)
+   are effectively unauditable by humans; machine verification may be the only
+   credible path to community trust for any future continuum result.
+2. **New finite theorems that are good mathematics** regardless of physics
+   reading: mass monogamy (F3), finite Witten positive-mass (F4),
+   rigidity-as-classification (F6), the geometric-trinity boundary identity.
+3. **Sharpened finite diagnoses of known continuum obstructions:**
+   Nielsen-Ninomiya (F7), the 3+1D checkerboard (F8), quartet/KO positivity
+   (F2), lattice positivity violation (F10).
+4. **The grading discipline itself** (T/M/MEMO/C with pre-registered kills,
+   oracle probes quarantined from the verified core) is a working methodology for
+   AI-assisted formal physics - a paper in its own right.
+
+**The permanent boundary (say it every time):** "advancing frontier physics" here
+means (1)-(4), *not* "this is where the proton's mass comes from." The direct
+route to absolute masses runs through the renormalization dictionary and stays
+closed until a continuum reduction exists for at least one channel - which is
+exactly why the checkerboard (F8/T6), the one place a proven bridge exists, is
+worth disproportionate effort.
+
+---
+
+## Status update (2026-07-08, post Pro + Fable round 2)
+
+- **The decisive question is the S3<->S4 bridge, and it has been probed (T3
+  update / `DELTA_BINDING_ENERGY_FINDING.md`).** It does not "land or fail" - it
+  *splits*: free equality holds; the interacting discrepancy `Delta` is a finite,
+  negative, off-diagonal, closure-controlled **binding energy** (the program's
+  first). This is a better outcome than either horn Pro anticipated, and it
+  unifies the bridge (Pro S3) with Schur-complement mass generation (Pro S8):
+  both are *mass from off-diagonal null structure*.
+- **`sector_ground_mass` is proved (M)**; the T2 escape is validated
+  numerically; Aristotle is transcribing T1 (compression) + T2 (the PosDef
+  positive-sector witness -> keystone) + T5 (gauge covariance) [project
+  8b3efa7c].
+- **Consensus next moves** (all three assessors): (1) formalize the T2
+  positive-sector witness [in progress]; (2) the bridge as a split - T3a free
+  equality (Lean M-target) + T3b the `Delta` invariant; (3) the checkerboard
+  (F8/T6) as the one continuum bridge to push hardest.
+- **Expository upgrade folded into S3:** Pro's "mass is the *area* null
+  directions open in spinor space" (rank-one = massless, higher rank = massive).
