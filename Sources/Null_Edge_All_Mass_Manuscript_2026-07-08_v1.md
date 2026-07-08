@@ -463,10 +463,11 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
 
 1. **The shares are signed.** We do *not* call them positive fractions.
    Whether a channel share is positive is the closure-positivity question
-   of §6 — now conditionally resolved at the M-engine + MEMO-instantiation
-   boundary: `b_C` is genuinely signed, and the checked `6x6` witness has
-   balanced closure inertia on its `V'/N` realization. So `b_C` can be
-   negative on some states. This is not a defect: §8 explains why the physics
+   of §6 — now **kernel-resolved on the explicit witness**: `b_C` is genuinely
+   signed, and the `6×6` Clifford⊗color witness is *proved* to have balanced
+   closure inertia `(2,2,0)` on its `V'/N` realization
+   (`S1CCPhysicalSectorWitness.balanced_on_physical_sector`, **M**). So `b_C` can
+   be negative on some states. This is not a defect: §8 explains why the physics
    of chiral symmetry breaking *requires* the closure channel to have negative
    directions.
 2. **`b_C` is the chromomagnetic share, not "gluon energy."** The closure
@@ -1113,13 +1114,20 @@ is dead, so no one re-derives them:
   refutation of the balanced-closure no-go itself (§6).
 
 **The open cruxes, ranked** (after this run's progress). The former #1 —
-physical-sector closure positivity (S1-CC) — is now *conditionally resolved at
-MEMO grade with a kernel-checked engine* (§6): the finite anticonjugation and
-Hermitian count algebra is kernel-checked (**M**), and the pre-registered
-numeric kill probe passed, but the physical `J Q_C|V'/N` instantiation still
-rests on the MEMO-grade Gauss-sector `V'` construction and descent data. So it
-is a structured no-go established at the program's highest non-kernel grade,
-not a fully kernel-closed theorem. What remains, ranked: **(0) The Rayleigh–Ritz
+physical-sector closure positivity (S1-CC) — is now **kernel-resolved on the
+explicit witness** (§6). Not only is the finite anticonjugation + Hermitian-count
+*engine* kernel-checked (**M**); the physical `J Q_C|V'/N` **instantiation is now
+also kernel-checked** on the explicit `6×6` Clifford⊗color carrier
+(`S1CCPhysicalSectorWitness`, **M**, self-guarded): with the Gauss projector
+`Q_G = c₁⊗G`, the coset representatives of `V'/N` are coordinate axes (so the
+compression is a literal `submatrix`), and the induced closure form `B = J Q_C|V'/N`
+is proved to have inertia exactly **`(2,2,0)`** (`balanced_on_physical_sector`) and
+to be genuinely indefinite (`JQc_not_positive_on_sector`) — the balanced closure
+no-go, with the descent data (`[G,K]=0`, `Q_G²=0`, `N ⊆ radical`,
+`b(JQc)b = −JQc`) all kernel-checked. So on the explicit witness the no-go is a
+**theorem**, not MEMO. What remains oracle/MEMO is only the claim that *every*
+physical Gauss sector of the scalar-metric class reduces to this witness shape
+(the general representative), not the witness itself. What remains, ranked: **(0) The Rayleigh–Ritz
 keystone `sector_ground_mass` is *proved* (M, guard-pinned; §4 rail 3), and its
 positive-sector hypothesis is now *instantiated in the kernel*.** The two links
 this was conditional on have both moved this run:
@@ -1238,6 +1246,7 @@ separately by the targeted Lean and guard builds.)*
 | 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin in `LinearizedClosureEnergy.lean`; enforced transitively because `SlabAxiomGuard` imports that module | leading closure defect = nonnegative `|F|²` energy |
 | 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure square structure (abstract) |
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | abstract skew-pairing square (concrete `Q_C=L^#L` is MEMO) |
+| 6/10 | `balanced_on_physical_sector`, `JQc_not_positive_on_sector` | `GateYM/S1CCPhysicalSectorWitness.lean` | M, self-guarded (in-file pin) | **S1-CC physical-sector instantiation, now kernel**: on the explicit `6×6` Clifford⊗color witness the induced closure form `J Q_C\|V'/N` has inertia `(2,2,0)` (balanced, indefinite) — the central-crux no-go on the witness is a theorem, not MEMO (§6, §10 #1) |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | M, guard-pinned (`SlabAxiomGuard`) | strong-coupling area law |
 | 6 | `wilsonSlabConnected_reflectionPositive` | `GateYM/WilsonSlabConnected.lean` | M, guard-pinned (`SlabAxiomGuard`) | slab reflection positivity |
 | 6 | `OSReconstruction.osSpectralGap_pos` | `GateYM/OSReconstruction.lean` | M, guard-pinned (`SlabAxiomGuard`) | OS spectral gap |
