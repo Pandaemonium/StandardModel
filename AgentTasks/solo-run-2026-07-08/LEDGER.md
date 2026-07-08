@@ -349,3 +349,19 @@ Keep queue full.
   b-eigenbasis of a complement of range Q_G in ker Q_G (compression_balanced_eigbasis
   needs no orthonormality). Now RUNNING on the corrected target.
 - **In flight:** f6644f9b (corrected existence), `99797bf9` batch-6 dynamics audit.
+
+## Cycle A.16 (~16:45) — batch-6 dynamics audit harvested + actioned
+
+- **AUDIT batch-6 `99797bf9`: HARVESTED, actioned.** 1 LOAD-BEARING + 2 MINOR (all
+  math/statements sound; docstring/prose only). LOAD-BEARING:
+  `sector_krein_form_eq_one` docstring claimed it "resolves Krein-unitary !=
+  norm-unitary, kernel-certified" — but it proves only the STATIC identity
+  J|sector=Euclidean; the DYNAMICAL claim (Krein flow preserves the J-positive
+  sector) is open (CarrierUnitaryFlow caveat 0). Fixed docstring + manuscript S9a
+  echo (static kernel / dynamical C). MINOR: energy-conservation = commuting-
+  observable invariance (naming decorative); carrier6 "actual sector evolution" ->
+  Euclidean-unitary model. Audit positively verified all spectral facts, the (2,1)
+  tie non-canonicity, T2 Gram-cert non-circular, MassSpacing honest scope.
+- Both S1CC-audit (batch-5) and dynamics-audit (batch-6) now confirm the landed
+  kernel statements are sound; every over-claim was docstring/prose, all fixed.
+- **In flight:** f6644f9b (corrected non-degenerate existence) still RUNNING.
