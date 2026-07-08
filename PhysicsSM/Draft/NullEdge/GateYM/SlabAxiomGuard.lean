@@ -645,6 +645,18 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_assemble_eval
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_total' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_total
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_total_square' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_total_square
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_total_eq_zero_of_forall' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_total_eq_zero_of_forall
+
 /-! ## K5 / S4a: finite Banks-Casher count identity (overnight 2026-07-08) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.banks_casher_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -672,5 +684,9 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.half_constraint_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.half_constraint_rigidity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_charpoly_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_charpoly_eq
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

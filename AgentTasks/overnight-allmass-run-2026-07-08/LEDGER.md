@@ -547,6 +547,37 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   statement would require inventing placeholder APIs, record a handoff instead
   of forcing a fake theorem.
 
+## [LAND Codex] K1 root-pinned encoder anti-regression toy
+
+- Landed `PhysicsSM/Draft/NullEdge/GateYM/KPAntiRegressionToy.lean`, imported
+  by `PhysicsSM/Draft/NullEdge/GateYM.lean`.
+- Declarations:
+  `KPAntiRegressionToy.ToyPinnedWord`,
+  `KPAntiRegressionToy.ToyStructuredWord`,
+  `KPAntiRegressionToy.toyTotalBlockPerms`,
+  `KPAntiRegressionToy.toyPinnedWordEncoder`,
+  `KPAntiRegressionToy.toyStructuredBlockEncoder`,
+  `KPAntiRegressionToy.toyTotalBlockPerms_card`,
+  `KPAntiRegressionToy.pinnedWord_collapses_toy`,
+  `KPAntiRegressionToy.pinnedWord_not_injective_toy`, and
+  `KPAntiRegressionToy.structuredWord_separates_toy`.
+- Guard-pinned in `PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`:
+  `pinnedWord_collapses_toy` and `structuredWord_separates_toy`; each prints
+  `[propext, Classical.choice, Quot.sound]`.
+- Updated `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md` and
+  `NULL_EDGE_RESULTS.md` to record the exact boundary.
+- Verification commands run and observed passing:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/KPAntiRegressionToy.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.KPAntiRegressionToy`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/AxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM`.
+- Note: one parallel duplicate build of the new module failed to open the new
+  `.olean` while another build was producing it; the serial rerun above passed.
+- Claim boundary: this is the `n = 3` anti-regression fixture Aristotle
+  recommended. It refutes the bad pinned-flat-word full-`m_j!` route and shows
+  the structured two-slot toy separates the two orderings. It is not the general
+  fixed-forest injection, not K1 closure, and not a strong-coupling gap theorem.
+
 ## [LAND Claude] Fable call-01 harvested: manuscript audit applied + S1-CC crux RESOLVED
 
 - Fable-5 call-01 (log:
@@ -605,3 +636,18 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   doc updated.
 - Claim boundary: numeric oracle validation; the Theorems 1-3 Lean
   transcription and the odd-moment->inertia bridge remain M-targets.
+
+## [LAND Claude] S1-CC charpoly rung: spectrum symmetric under negation
+
+- Added `anticonj_charpoly_eq` to `S1CCBalancedInertia.lean`: anticonjugation
+  `⅟S B S = -B` gives `(-B).charpoly = B.charpoly` (via Mathlib
+  `charpoly_units_conj'`), so B's eigenvalue multiset is invariant under
+  lambda -> -lambda - the polynomial-level balanced-spectrum statement,
+  from which n+ = n- follows for Hermitian B by counting. Guard-pinned
+  (8148). S1-CC ladder now has THREE kernel rungs (odd-trace, charpoly,
+  half-constraint) + numeric K-B validation.
+- Remaining M-target: the final count step (charpoly-symmetric =>
+  n+ = n- via IsHermitian.eigenvalues) needs the spectral-count API;
+  good Aristotle target, handed off for the fleet/morning. Theorems 1-2
+  (descent, restricted-inertia-on-V') also remain, oracle-confirmed.
+- Verification: lake env lean (clean); lake build (8026); guard (8148).

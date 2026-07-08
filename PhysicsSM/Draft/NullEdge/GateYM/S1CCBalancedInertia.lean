@@ -98,6 +98,18 @@ theorem anticonj_trace_zero (B S : Matrix n n ℂ) [Invertible S]
   have := anticonj_odd_pow_trace_zero B S h 0
   simpa using this
 
+/-- **Spectrum symmetric under negation (the balanced-inertia essence).**
+Anticonjugation `⅟S * B * S = -B` makes `B` similar to `-B`, so their
+characteristic polynomials agree: `(-B).charpoly = B.charpoly`. Hence the
+eigenvalue multiset of `B` is invariant under `lambda -> -lambda` - the
+polynomial-level statement that the spectrum is symmetric about zero, from
+which `n_+ = n_-` (balanced Krein inertia) follows for Hermitian `B` by
+counting. This is the charpoly rung of the balanced-inertia theorem. -/
+theorem anticonj_charpoly_eq (B S : Matrix n n ℂ) [Invertible S]
+    (h : ⅟S * B * S = -B) : (-B).charpoly = B.charpoly := by
+  rw [← h]
+  exact Matrix.charpoly_units_conj' (unitOfInvertible S) B
+
 /-! ## Lemma 1: the half-constraint rigidity (Gupta-Bleuler is forced) -/
 
 /-- **Half-constraint rigidity (Fable call-01, Part B, Lemma 1).** For the
