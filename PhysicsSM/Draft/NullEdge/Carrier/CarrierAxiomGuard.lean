@@ -5,9 +5,11 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierPotentialTurn
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockQC_Torus
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierSquareAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierESlot
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierESlotTorsionSplit
 import PhysicsSM.Draft.NullEdge.Carrier.WeitzenbockMasterPair
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierKreinSquare
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierApertureIdentification
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierMinkowskiBridge
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierFlatSectorPositivity
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierPontryaginWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierIndexProtection
@@ -26,6 +28,8 @@ import PhysicsSM.Draft.NullEdge.Carrier.GWWilsonSymbol
 import PhysicsSM.Draft.NullEdge.Carrier.GWConjecture
 import PhysicsSM.Draft.NullEdge.Carrier.GWEdgeReversalBridge
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
+import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantMultiplicity
+import PhysicsSM.Draft.NullEdge.Carrier.RGSchurMassWitness
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -49,6 +53,9 @@ guards are edited independently to avoid collision.
   `c(alpha)^2 = 0` and the zero-edge-diagonal "mass is relational" identity.
 * [H2] constraint (`ColorCommutantScalar`): the color commutant on the triplet is the
   scalars (Schur), so only a color-blind scalar mass is color-exact.
+* CC-MULT (`ColorCommutantMultiplicity`): on a finite color triplet tensored
+  with a multiplicity space, the color commutant is exactly the color-blind
+  multiplicity algebra `I_color x End(K)`.
 * Fock-Gupta-Bleuler finite shadow (`KugoOjima`): a nilpotent Krein-self-adjoint
   charge has radical exactly `range Q` on `ker Q`, and the quotient form is
   nondegenerate. Positivity is not claimed.
@@ -94,6 +101,13 @@ guards are edited independently to avoid collision.
   holonomy inverse, and the carrier generator-conjugation hypothesis is derived
   for homogeneous transfer powers, while arbitrary heterogeneous words remain
   blocked by the existing nonabelian counterexample.
+* E-slot torsion/soldering split (`CarrierESlotTorsionSplit`): the doubled
+  E-slot is the sum of torsion-like and symmetric soldering-difference
+  contractions, and a concrete matrix witness shows the pure-torsion reading is
+  not automatic without the symmetric-channel vanishing hypothesis.
+* Minkowski carrier aperture bridge (`CarrierMinkowskiBridge`): the abstract
+  carrier aperture quadratic form specializes to the trusted Minkowski
+  `minkowskiSq` API and its finite future-null collinearity theorem.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
@@ -172,6 +186,20 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_varying
 
+/-! ## Move-1 E-slot audit: torsion/soldering split and pure-torsion obstruction -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.eslot_torsion_solder_split' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.eslot_torsion_solder_split
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.eslot_torsion_contract_eq_two_smul_defect_iff' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.eslot_torsion_contract_eq_two_smul_defect_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.eslot_not_pure_torsion_witness' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.eslot_not_pure_torsion_witness
+
 /-! ## Move-1 pair-master: bilinear generalization (Krein-enabling) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.weitzenbock_master_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -197,6 +225,20 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.Q_A_zero_iff_totalSq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.Q_A_zero_iff_totalSq_zero
+
+/-! ## Move-2 W2a seam: carrier aperture block in the concrete Minkowski API -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.minkQF_apply' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.minkQF_apply
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_QA_zero_iff_minkowskiSq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_QA_zero_iff_minkowskiSq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.carrier_QA_zero_iff_collinear' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.carrier_QA_zero_iff_collinear
 
 /-! ## CRACK 2: flat-sector form identity (>=0 value) + Hermitian Krein form
     (conditional; certified Krein positivity pending the M4 kappa=2 witness) -/
@@ -506,5 +548,37 @@ namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.nonscalar_mass_not_color_exact' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.nonscalar_mass_not_color_exact
+
+/-! ## CC-MULT: color commutant on triplet times multiplicity space -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.color_commutant_multiplicity_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.color_commutant_multiplicity_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.multiplicity_operator_is_color_exact' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.multiplicity_operator_is_color_exact
+
+/-! ## RG-SCHUR: blocking a null chain generates non-null effective terms
+
+The dynamics witness (`RGSchurMassWitness.lean`): the abstract null-pair
+product-square lemma, the non-nilpotent effective edge on the decimated
+3-site chain, and the collinear negative control. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.null_pair_prod_sq_eq_pairing_smul' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.null_pair_prod_sq_eq_pairing_smul
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.chain_schurComplement_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.chain_schurComplement_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.effective_edge_not_nilpotent' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.effective_edge_not_nilpotent
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.collinear_schurComplement_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.collinear_schurComplement_eq_zero
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

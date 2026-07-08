@@ -3949,6 +3949,62 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   the kill is of one operationalization, not of every carrier mass-value
   mechanism.
 
+## [LOCAL Codex waiting-lane] CC-MULT finite multiplicity commutant landed
+
+- Added `PhysicsSM/Draft/NullEdge/Carrier/ColorCommutantMultiplicity.lean`.
+- Proved `color_commutant_multiplicity_eq`: for any finite multiplicity type
+  `K`, a matrix on `Fin 3 x K` commutes with all lifted color generators iff it
+  is color-blind and comes from an arbitrary multiplicity-space matrix
+  `Matrix K K Complex`.
+- Proved `multiplicity_operator_is_color_exact`: every multiplicity-space
+  operator is color-exact after color-blind lifting.
+- Updated `CarrierAxiomGuard.lean` to import the module and guard-pin both
+  theorem footprints.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`, and the Aristotle lane
+  docket: CC-MULT is no longer merely parked strategy.  The finite algebraic
+  commutant shape is kernel-checked; the remaining open work is physical
+  attachment to the actual SM/Furey internal fiber and intersection with weak,
+  hypercharge, chirality, and real-structure constraints.
+- Verification passed:
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/ColorCommutantMultiplicity.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantMultiplicity`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [LOCAL Codex waiting-lane] LIT-PROV SourceTrace metadata vocabulary landed
+
+- Expanded `PhysicsSM/Meta/SourceTrace.lean` from a stub into a lightweight
+  provenance vocabulary: `SourceKind`, `SourceRole`, `VerificationStatus`,
+  `ClaimGrade`, `SourceRef`, `ConventionCheck`, and `TraceRecord`.
+- Added helper constructors for pending papers, identifier-only papers,
+  clean-room markers, convention checks, and comparison records.
+- Updated `Sources/Null_Edge_References.md` to name `SourceTrace.lean` as the
+  typed Lean-side companion to the live human source-key map.
+- Claim boundary: this promotes no source.  It is plumbing for future exact
+  provenance records and makes theorem-support, convention-only, comparison,
+  inspiration, and computational-evidence roles explicit.
+- Task note:
+  `LIT_PROV_SOURCE_TRACE_CLOSEOUT_2026-07-07.md`.
+- Verification passed:
+  `lake env lean PhysicsSM/Meta/SourceTrace.lean`;
+  `lake build PhysicsSM.Meta.SourceTrace`.
+
+## [LOCAL Codex waiting-lane] PLUMBING real-structure compatibility audit landed
+
+- Added `PLUMBING_JR_EDGE_REVERSAL_COMPATIBILITY_AUDIT_2026-07-07.md`.
+- Separated the operations that were at risk of being merged rhetorically:
+  linear Krein `J_K/#`, antilinear `J_R`, edge reversal, generator conjugation,
+  and monodromy/triality.
+- Recorded kernel anchors from `Q11RealStructure`, `GWEdgeReversalBridge`, and
+  `CarrierKreinSquare`.
+- Main conclusion: edge reversal and generator conjugation are not the same
+  operation in nonabelian word order; Q11's positive top-form pairing is not a
+  carrier Krein metric; and triality/monodromy is not a real structure until an
+  explicit antilinear compatibility theorem is proved.
+- Updated `THREAD_BOARD.md`, `GOAL_PROMPT_CODEX.md`, and the Aristotle lane
+  docket.  No Lean code was changed for this audit.
+
 ## [FABLE follow-up] P1 kill propagated; lit ingested; zero-mode locus scan CORRECTS the discovery
 
 - Lit search + ingest: quantum-walk 0/pi-quasienergy topology (Kitagawa
@@ -3978,3 +4034,34 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   char-poly relation) - sec 4b of the analysis doc.
 - Claim boundary: all numeric-oracle grade; T1-T3 are targets, not
   results; "masslessness" = zero quasi-energy of the finite leg transfer.
+
+## [FABLE dynamics] RG-Schur mass-generation witness LANDED (handoff piece 11)
+
+- Lit: external arXiv rate-limited; provenance from classical sources
+  (Loewdin partitioning 1951 / Feshbach projection 1958 / Kron reduction,
+  [import]) + local graph Laplacian-RG items; the coefficient prediction
+  and null-instability expectation are internal (handoff piece 11 + Q08
+  memo, [orig]).
+- New file `PhysicsSM/Draft/NullEdge/Carrier/RGSchurMassWitness.lean`
+  (kernel-clean, zero warnings): `null_pair_prod_sq_eq_pairing_smul`
+  (abstract, ANY associative algebra, axioms [propext, Quot.sound] -
+  choice-free); light-cone pair `nullL`/`nullN` with unit pairing;
+  `nullL_mul_nullN_not_nilpotent` (effective edge = nonzero idempotent);
+  `chain_schurComplement_eq` wiring through the landed
+  `SpectralSchur.schurComplement` (decimation induces a v1-v2 edge where
+  none existed); `collinear_schurComplement_eq_zero` (negative control:
+  proportional null couplings give ZERO effective coupling, any scalar t);
+  `effective_total_sq_eq_zero` (honesty: the TOTAL effective operator is
+  still square-zero - nullity failure is strictly per-edge).
+- Guard: four pins appended to `CarrierAxiomGuard.lean`; guard build green
+  (8067 jobs).
+- Reading: the dynamical twin of the kinematic thesis - one decimation
+  step converts pairwise null disagreement (the Clifford pairing) into a
+  non-null effective edge coefficient; collinear = massless survives.
+- Claim boundary: one finite Schur step on one chain; no RG flow, no
+  fixed point, no continuum claim; the det P tie is prose-level only.
+- Verification: `lake env lean .../RGSchurMassWitness.lean` (clean);
+  `lake build ...RGSchurMassWitness` (8027 jobs);
+  `lake build ...CarrierAxiomGuard` (8067 jobs, all pins green).
+- Next dynamics items queued: M-dependent hidden block; nonabelian Q_C
+  two-face oracle (handoff piece 3).

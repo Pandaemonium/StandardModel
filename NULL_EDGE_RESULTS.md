@@ -361,6 +361,15 @@ the trusted namespace yet.
   strictly positive mass form) and unbalanced `(2,1)` complex (index 1, a
   forced massless mode for every dynamics). Masslessness of the surplus is
   the mass thesis's converse, now a theorem family.
+- **RG-Schur mass generation (finite identity, 2026-07-07 late).** Blocking
+  a null chain generates non-null effective terms: on the decimated 3-site
+  chain the induced edge block is a nonzero idempotent (NOT nilpotent),
+  with the abstract coefficient law `(ab)^2 = k (ab)` for square-zero `a, b`
+  with pairing `k` - so decimation converts pairwise null disagreement into
+  effective mass terms, with the collinear negative control kernel-checked
+  (collinear couplings produce NO effective coupling). One Schur step, no
+  flow claim. Guard-pinned in `CarrierAxiomGuard.lean`
+  (`RGSchurMassWitness.lean`; the abstract lemma is choice-free).
 - **Still OPEN (unchanged honesty):** off-flat/physical-sector positivity (now
   rerouted through a finite Gupta-Bleuler quotient, with OS/theta-reflection
   and modular/ANEC readings queued as alternate selectors); the

@@ -184,8 +184,16 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 ### CC - color commutant [Claude]
 - **Done:** `color_commutant_eq_scalars` **LANDED + guarded** (commit d7a7d8d -
   `ColorCommutantScalar`; + `diagonal_mass_color_exact_iff`,
-  `nonscalar_mass_not_color_exact`; red-teamed clean). STRETCH remains OPEN: the
-  reducible internal-space commutant (multiplicity spaces = allowed Yukawa shape).
+  `nonscalar_mass_not_color_exact`; red-teamed clean).
+- **Update:** CC-MULT finite multiplicity-space stretch **LANDED + guarded** by
+  Codex in `ColorCommutantMultiplicity`: `color_commutant_multiplicity_eq` proves
+  that the commutant on `Fin 3 x K` is exactly the color-blind multiplicity
+  algebra `I_color x End(K)`, and `multiplicity_operator_is_color_exact` proves
+  every multiplicity operator is color-exact after lifting.
+- **Still OPEN:** attach the multiplicity space to the actual finite Standard
+  Model/Furey internal fiber and intersect with weak, hypercharge, chirality, and
+  real-structure constraints.  No Yukawa values, generation count, or flavor
+  texture are derived.
 ### AT - the A=T bridge [Claude]
 - **Done:** kernel-checked `M^2 = |<12>|^2` on the two-edge sector, tied to
   `compositeMassSq_eq_sin_half` + `PluckerSpinorBridge`; docstring states the
@@ -562,6 +570,21 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   0/pi-mode topology (arXiv:1112.1882, 1401.2673, in graph). SUB-NAT
   packet (7f7c1ea6) gets the numbers as input; any revived reduction
   must be re-registered before running.
+### RG-SCHUR-WITNESS - decimation generates mass from disagreement [Claude; LANDED 2026-07-07 late]
+- **Done:** `PhysicsSM/Draft/NullEdge/Carrier/RGSchurMassWitness.lean` -
+  abstract null-pair product-square law `(ab)^2 = k(ab)` (choice-free);
+  light-cone pair witness (effective edge = nonzero idempotent, NOT
+  nilpotent); Schur wiring through `SpectralSchur.schurComplement` on the
+  3-site chain (induced v1-v2 edge where none existed); collinear negative
+  control (proportional couplings -> zero effective coupling); bonus
+  total-operator square-zero lemma showing per-edge is the right level.
+  Four guard pins green. Handoff piece 11 executed as predicted
+  (`T^2 = 2<a,b> T`).
+- **Claim boundary:** one finite Schur step; no RG flow, no fixed points,
+  no continuum statement; "mass" only in prose.
+- **Next:** M-dependent hidden block (commutator corrections), and the
+  det-factorization corollary via `det_fromBlocks_eq_det_hidden_mul_det_schurComplement`.
+
 ### FOCK-GB - second quantization commutes with the quotient [Claude; post-Q08]
 - **Done, in order:** L-Q8-1 finite Kugo-Ojima landed in
   `PhysicsSM/Draft/NullEdge/Carrier/KugoOjima.lean` from Aristotle
@@ -941,6 +964,22 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
 - **Claim boundary:** do not say unimodularity follows from Krein/sesquilinear
   closure. This is a Cartan-level RC0/dictionary theorem; the group-level
   determinant cocycle remains open.
+
+### PLUMBING - real structures, reversal, and sharp compatibility [Codex audit]
+- **Done:** Codex landed
+  `PLUMBING_JR_EDGE_REVERSAL_COMPATIBILITY_AUDIT_2026-07-07.md`, a cross-lane
+  compatibility table separating the linear Krein `J_K/#`, antilinear `J_R`,
+  edge reversal, generator conjugation, monodromy/triality, and carrier star.
+- **Kernel anchors:** `Q11RealStructure.JR_involutive` / `Btop_eq_Bstd` /
+  `JR_charge_master`; `GWEdgeReversalBridge.holonomy_reverseEdges` /
+  `conj_inv_iff` / `gw_relation_transfer_power`; and
+  `CarrierKreinSquare.carrier_krein_square`.
+- **Guardrails:** no single `J` notation; no general one-sided nonabelian
+  inversion from edge reversal; no Krein positivity from Q11 `Btop = Bstd`; no
+  triality-as-real-structure claim without an explicit antilinear involution.
+- **Still OPEN:** attach a concrete carrier `J_K` to the `#` slot, prove/refute
+  a fiber-product bridge between Q11 `J_R` and edge reversal plus conjugation,
+  and state the exact semilinear sector-projection gates for C8/G2/triality.
 
 ## Standing meta-threads
 
