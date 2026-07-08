@@ -981,7 +981,7 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   a finite canonical ensemble over any spectrum; applied to the carrier sector
   spectrum it gives the thermodynamics (and the §9 condensate's finite handle).
 
-**Lean-informed simulations (oracle grade, quarantined from the M core).** Three
+**Lean-informed simulations (oracle grade, quarantined from the M core).** Four
 Python simulators, each output *validated against a landed M-identity* (the Lean
 is the simulation's spec and validation oracle):
 
@@ -1001,6 +1001,17 @@ is the simulation's spec and validation oracle):
   dominance), and a **condensate** near-zero-mode fraction rising to the
   critical line — the finite Banks–Casher shadow (validated against
   `FiniteRGFlow`, `FiniteCanonicalEnsemble`, `RGSchurMassWitness`).
+- `carrier_scattering_sim.py` — a finite **S-matrix**: a 1+1D Dirac quantum walk
+  (the checkerboard asset) with a localized **mass barrier**, giving transmission
+  and reflection `T(m₀), R(m₀)`. Outputs: the S-matrix is **unitary**
+  (`|T| + |R| = 1` after the packet clears, from the exact norm conservation),
+  transmission **falls monotonically with the barrier mass** and `→ 1` as
+  `m₀ → 0` (a *massless* region is transparent — the critical line κ=λ as a
+  scattering statement), and it is **reciprocal** (`T_left = T_right` to `<10⁻³`).
+  The faithful regime is small coin angle `θ = m₀·dt < π/2` (the Mlodinow–Brun
+  continuum conditions, §2a); the mass a packet scatters off *is* the
+  aperture−closure gap. Validated against `FiniteUnitaryEvolution` and the T2
+  spectrum.
 
 ---
 
@@ -1351,13 +1362,15 @@ each name is grep-checkable against the source.
 docstring, exactly which kernel-checked identity it mirrors or which kill it
 tests; run `python Scripts/oracle/<probe>.py`. Key ones: the S1-CC balanced
 -inertia probe, the aperture-grading kill, the multi-edge positive-sector escape,
-the Δ binding-energy probe, the T3a free-bridge probe, and the three dynamics
+the Δ binding-energy probe, the T3a free-bridge probe, and the four dynamics
 simulators — `carrier_spectrum_sim.py` (mass phase diagram; validates
 `T2_positive_mass` + `signed_budget_sum_one`), `carrier_evolution_sim.py`
 (unitary flow, quantum-walk transfer, Slater amplitudes; validates
-`FiniteUnitaryEvolution` + `T2`), and `carrier_rgflow_sim.py` (RG flow, canonical
+`FiniteUnitaryEvolution` + `T2`), `carrier_rgflow_sim.py` (RG flow, canonical
 ensemble, condensate shadow; validates `FiniteRGFlow` +
-`FiniteCanonicalEnsemble` + `RGSchurMassWitness`). A probe is evidence for adding a fixture or
+`FiniteCanonicalEnsemble` + `RGSchurMassWitness`), and `carrier_scattering_sim.py`
+(a finite S-matrix: mass-barrier transmission/reflection, unitary and reciprocal;
+validates `FiniteUnitaryEvolution` + `T2`). A probe is evidence for adding a fixture or
 pre-registering a prediction — never a substitute for a kernel proof.
 
 **Provenance.** Source keys and convention checks are in
