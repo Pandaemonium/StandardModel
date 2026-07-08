@@ -464,8 +464,17 @@ overlap — and it recovers the scalar case as `Minv = mu⁻¹ . 1`.
 
 Claim boundary: one finite decimation step — no renormalization-group
 flow, no fixed point, no continuum. The bridge from this step to
-constituent-mass generation (blocking increases the finite near-zero count
-of §6/S4a) is grade **C**, gated.
+constituent-mass generation was conjectured (Amendment A4) as "blocking a
+closure-disordered background increases the finite near-zero count `N_m`
+of §6". A pre-registered probe this run **refutes that at the finite
+random-disorder level**: both generic and chiral-preserving random
+closure disorder *decrease* `N_m` (they spread the spectrum away from
+zero). So the Banks–Casher accumulation that would signal a condensate is
+*not* produced by finite random curvature; it needs a specific coherent /
+topological low-mode structure or a thermodynamic limit. The §9→§6 bridge
+is therefore a documented kill at this level, and the honest open question
+is sharper: *which* structured (not random) closure backgrounds accumulate
+low modes. Grade **C**, with the naive version now closed.
 
 ---
 
@@ -504,6 +513,11 @@ is dead, so no one re-derives them:
 - **Spectral-measure language before positivity** — embargoed
   program-wide; finite eigenvalue-*count* identities are the sanctioned
   form (§6's Banks–Casher count, `banks_casher_count`, **M**).
+- **"Random closure disorder increases the near-zero count `N_m`"** (the
+  naive §9→§6 constituent-mass bridge, Amendment A4) — killed by a
+  pre-registered probe: finite random curvature, chiral or generic,
+  *decreases* `N_m` by spreading the spectrum. Condensate accumulation
+  needs structured, not random, low-mode content (§9).
 
 **The open cruxes, ranked** (after this run's progress). The former #1 —
 physical-sector closure positivity (S1-CC) — is now *resolved* as a

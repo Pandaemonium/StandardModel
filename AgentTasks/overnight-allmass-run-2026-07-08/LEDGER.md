@@ -832,3 +832,26 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   citations (Wilson, OS, Banks-Casher, Ji, Yang, Durr, Asboth-Obuse,
   Pereira-Vargas, NuFIT, Sumino) are in Null_Edge_References.md. Chunk-level
   verification of each is a remaining P3 item (Codex Spark lane or morning).
+
+## [PROBE Claude] §9->§6 constituent-mass bridge REFUTED at random-disorder level
+
+- `Scripts/oracle/probe_closure_disorder_nearzero_count.py`: pre-registered
+  the expectation that closure disorder INCREASES the Banks-Casher near-zero
+  count N_m (Amendment A4 follow-up conjecture / manuscript §9->§6 bridge).
+  RESULT: the opposite. Both generic AND chiral-preserving random closure
+  disorder DECREASE N_m at all masses (N=40 ring, 200 draws): generic
+  4.13 -> 0.74, chiral-preserving 4.13 -> 0.97 (m=0.1). Random curvature
+  SPREADS the spectrum away from zero.
+- KILL: the naive "blocking/disorder increases N_m -> constituent mass"
+  bridge is refuted at finite random-disorder level. Banks-Casher
+  condensate accumulation needs a SPECIFIC coherent/topological low-mode
+  structure or a thermodynamic limit, not finite random disorder.
+- Propagated: manuscript §9 (bridge claim rewritten as a documented kill),
+  §10 kill list (+1 entry). ROADMAP A4 HANDOFF: the follow-up conjecture
+  "controlled blocking of closure-disordered backgrounds increases N_m"
+  should be marked refuted-at-random-disorder-level; not editing the
+  roadmap now (Codex concurrently editing it).
+- Claim boundary: numeric oracle; the kernel bridge was and stays grade C,
+  now with a sharper open question (WHICH structured backgrounds accumulate
+  low modes). Honest pre-registered kill - improves the program's
+  self-understanding.
