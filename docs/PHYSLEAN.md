@@ -128,6 +128,16 @@ conventions against the clone - and cite PhysLean's Weyl/spinor formalization in
    and `ClassicalFieldTheory/Local/Variation` (any action / variational-principle
    work; the mass functional is a Rayleigh quotient), `Mathematics/KroneckerDelta`
    (the S6 Kronecker-product witness). Consult opportunistically.
+7. **Dynamics stack (the biggest structural borrow) - see
+   `AgentTasks/overnight-allmass-run-2026-07-08/DYNAMICS_GROUNDWORK.md`.** For
+   developing the program's dynamics + simulations, clean-room-borrow PhysLean's
+   `Mathematics/VariationalCalculus` (`HasVarGradient`, Euler-Lagrange
+   fundamental theorem), `ClassicalMechanics` (`lagrangian`, `hamiltonian`,
+   `EulerLagrange`, `HamiltonsEquations`, conservation theorems), and
+   `StatisticalMechanics/CanonicalEnsemble` (`partitionFunction`,
+   `helmholtzFreeEnergy` - the thermodynamic-limit route to the §9 condensate
+   question). This gives the carrier the *action + equation-of-motion +
+   conservation + ensemble* structure it currently lacks.
 
 **Confirmed ABSENT (reassuring for novelty - PhysLean does not pre-empt these):**
 Wilson loops / lattice gauge theory (its QFT is continuum perturbation theory);
