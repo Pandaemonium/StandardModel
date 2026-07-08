@@ -312,25 +312,32 @@ mass gap is the Clay problem and is **not claimed** (§10).
 ## 7. Soldering mass: the gravity-shaped channel (**M** + **C**)
 
 The soldering-gradient block `E` is the gravity-shaped channel: it
-measures how the null soldering fails to be covariantly constant. What is
-kernel-checked is narrow and honest: for constant soldering `E` vanishes
-(the flat case). What is conjectured (**C**, Amendment/finding 11) is a
-finite "geometric trinity" split,
+measures how the null soldering fails to be covariantly constant, via the
+frame commutator `D(e,f) = nabla_e gamma_f - gamma_f nabla_e`. The finite
+"geometric trinity" split is now kernel-checked:
 
 ```text
-2 E = Contract(T) + Contract(S) ,
+2 E = Contract(T) + Contract(S)
 ```
 
-with `T` the antisymmetrized soldering difference (torsion-shaped) and `S`
-a symmetric remainder (non-metricity-shaped) — provided the `E`-contraction
-commutes with the index swap; otherwise a mixed term is unavoidable. The
-program's earlier conjecture that `E` is *pure* torsion was killed by a
-probe (§10); the trinity split is the corrected target, with the discrete
-teleparallel / symmetric-teleparallel literature `[import]` (Pereira–Vargas
-and Regge-adjacent work) as the anchor. This is the least-developed
-channel; the honest content is mostly the boundary, per the Malament split:
-causal order supplies the light-cone structure for free, and the
-decorations owe exactly the scale.
+(`eslot_torsion_solder_split`, **M**, choice-free), with `T` the
+antisymmetrized soldering difference (torsion-shaped) and `S` a symmetric
+remainder (non-metricity-shaped). And the split is *non-trivial*: the
+program's earlier conjecture that `E` is *pure* torsion is refuted by an
+explicit `2x2` witness where the symmetric contraction does not vanish
+(`eslot_not_pure_torsion_witness`, **M**; §10). So at finite algebraic
+level the gravity channel is a torsion-plus-non-metricity mix, not pure
+teleparallel — the corrected statement after the pure-torsion kill.
+
+What remains conjectural (**C**) is the *geometric* reading: identifying
+`T` and `S` with a discrete contorsion and non-metricity carrying the
+right transformation law, with the discrete teleparallel /
+symmetric-teleparallel literature `[import]` (Pereira–Vargas and
+Regge-adjacent work) as the anchor. This is still the least-developed
+channel physically, and the honest content is mostly the boundary, per the
+Malament split: causal order supplies the light-cone structure for free,
+and the decorations owe exactly the scale. But the finite *algebra* of the
+split is a theorem, not a hope.
 
 ---
 
@@ -395,11 +402,22 @@ precisely on the massless configurations.
 So the program's thesis is two-sided, and both sides are kernel-checked:
 *kinematically* mass is pairwise null disagreement (§3); *dynamically*,
 coarse-graining converts that same disagreement into an effective mass
-term, and converts nothing when there is no disagreement. Claim boundary:
-one finite decimation step — no renormalization-group flow, no fixed
-point, no continuum. The bridge from this step to constituent-mass
-generation (blocking increases the finite near-zero count of §6/S4a) is
-grade **C**, gated.
+term, and converts nothing when there is no disagreement.
+
+**The coupling is a propagator element (M).** For a general (non-scalar)
+invertible hidden block, the effective edge term is
+`c(l) Minv c(n) = (Minv)_{11} . (c(l) c(n))`
+(`nullL_mul_mid_mul_nullN`, **M**): the generated coupling is exactly the
+matrix element of the hidden-block resolvent between the two null
+light-cone directions, and it is non-nilpotent iff that element is nonzero
+(`mid_effective_not_nilpotent`, **M**). This is the expected physics — the
+effective coupling between two null directions is their propagator
+overlap — and it recovers the scalar case as `Minv = mu⁻¹ . 1`.
+
+Claim boundary: one finite decimation step — no renormalization-group
+flow, no fixed point, no continuum. The bridge from this step to
+constituent-mass generation (blocking increases the finite near-zero count
+of §6/S4a) is grade **C**, gated.
 
 ---
 
@@ -479,12 +497,16 @@ anchor rule.)*
 | 6 | `skew_prod` | `GateYM/FiniteBanksCasherCount.lean` | count denominator `= m²+AᴴA` |
 | 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | positive physical sector `(2,1)` |
 | 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | indefinite no-go `(1,2)` |
+| 7 | `eslot_torsion_solder_split` | `Carrier/CarrierESlotTorsionSplit.lean` | `2E = Contract(T)+Contract(S)` |
+| 7 | `eslot_not_pure_torsion_witness` | `Carrier/CarrierESlotTorsionSplit.lean` | not pure torsion (witness) |
 | 8 | `chiralIndex_eq_graded_dimension` | `Carrier/CarrierIndexProtection.lean` | index = graded dimension |
 | 8 | `exists_protected_massless_mode` | `Carrier/CarrierIndexProtection.lean` | forced massless mode |
 | 8 | `chiral_det_eq_pm_one` | `Carrier/ChiralZeroModeParity.lean` | chiral determinant dichotomy |
 | 9 | `null_pair_prod_sq_eq_pairing_smul` | `Carrier/RGSchurMassWitness.lean` | decimation coefficient law |
 | 9 | `effective_edge_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | blocking generates non-null term |
 | 9 | `collinear_schurComplement_eq_zero` | `Carrier/RGSchurMassWitness.lean` | collinear negative control |
+| 9 | `nullL_mul_mid_mul_nullN` | `Carrier/RGSchurMassWitness.lean` | coupling = propagator element |
+| 9 | `mid_effective_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | non-null iff propagator-coupled |
 
 ---
 

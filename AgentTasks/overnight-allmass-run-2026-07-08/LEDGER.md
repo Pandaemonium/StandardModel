@@ -327,3 +327,89 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Claim boundary: draft; verified core (§3,4,6-pillars,8,9) is M, physical
   readings (§5,7, hadron budget) MEMO/C and labeled. Audit gates G1-G5 not
   yet all run (G3 external + G5 lit pending).
+
+## [LAND Codex] K2 abstract finite-product form plumbing + non-vacuity witness
+
+- Harvested K2 post-landing audit
+  `b9c000c4-b80e-434c-8315-4ef3243a8cc2` /
+  `c606722d-45f8-4951-90f5-8c407011b33e`. Verdict: the scalar
+  `closure_current_square` is the real algebraic content; the prior
+  `closure_current_square_pi` is pointwise-product plumbing and surrounding
+  prose must not call it a finite pair-indexed cross-term theorem.
+- Harvested K1 replacement-shape audit
+  `bb1d8672-7d45-44a5-8c29-b27da9977fa4` /
+  `81d4e75e-3f74-44af-a5ba-3261a35de440`. Verdict: next K1 route is
+  free-slot `(m_j - 1)!` first, structured ordered-block full-factor route only
+  if downstream bounds require it; keep the generic reducer unchanged.
+- Landed in `S1ClosureCurrentAlgebra.lean`:
+  `componentInclusion`, `finiteProductForm`,
+  `finiteProductForm_component_same`, `finiteProductForm_component_ne`, and
+  `finiteProductForm_assemble_eval`.
+- Also landed a concrete Gaussian-integer 2x2 non-vacuity witness:
+  `witnessC1_square`, `witnessC2_square`,
+  `witnessC1_transpose`, `witnessC2_transpose`, and
+  `witnessC1_mul_C2_ne_C2_mul_C1`.
+- Guard-pinned in `SlabAxiomGuard.lean`:
+  `finiteProductForm_component_same`,
+  `finiteProductForm_component_ne`,
+  `finiteProductForm_assemble_eval`,
+  `witnessC1_square`, `witnessC2_square`, and
+  `witnessC1_mul_C2_ne_C2_mul_C1`; each prints
+  `[propext, Classical.choice, Quot.sound]`.
+- Updated `NULL_EDGE_RESULTS.md` and
+  `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md` to downgrade
+  `closure_current_square_pi` to arbitrary indexed pointwise-product plumbing
+  and reserve finite form-orthogonality for `finiteProductForm_*`.
+- Literature action: Spark worker
+  `019f404e-b8c0-7311-8fb2-d181255a3b04` failed with context-window
+  exhaustion, so I logged a `[fallback-no-spark]` cycle. Direct
+  `neo4j_doc_search.py --k 8` found only adjacent repo context; web search
+  found general Krein orthogonal-sum references, not a null-edge pair-closure
+  source.
+- Verification commands run and observed passing:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/S1ClosureCurrentAlgebra.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`;
+  `pre-commit run --all-files`.
+- Submitted new audit jobs to keep the Aristotle fleet warm:
+  K2 form-plumbing audit `d8c051bf-0edb-4d73-ab46-4faa442ddfc4`
+  (`ARISTOTLE_AUDIT_K2_FORM_PLUMBING_2026-07-07_2312.md`) and K1
+  anti-regression next-target audit
+  `c9bce7a2-8f25-4d56-85ec-744206e3e4ea`
+  (`ARISTOTLE_AUDIT_K1_ANTIREGRESSION_NEXT_2026-07-07_2312.md`);
+  `aristotle list --limit 8` showed both RUNNING.
+- Claim boundary: this is K2 abstract form plumbing and a non-vacuity witness,
+  not full K2/L4, not a concrete carrier `Q_C` theorem, not positivity, and not
+  a site-diagonal defect-Gram result.
+
+## [CLAIM Codex] All-mass manuscript audit pass G1/G2/G4 + anchor sweep
+
+- Local time: 2026-07-07 23:16 PDT, before the 06:00 hard audit cutoff.
+- Claiming Claude's explicit request: audit
+  `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` against
+  `MANUSCRIPT_SPEC.md` gates G1/G2/G4, independently grep every section-11
+  anchor, scan for the four over-claim modes, and check kill-list completeness.
+- I will not edit the manuscript silently. Findings will be recorded as an audit
+  artifact and ledgered with P0/P1 severity and suggested downgrade/fix.
+- Claim boundary planned: audit only; no manuscript co-signature until findings
+  are resolved or explicitly downgraded.
+
+## [LAND Claude] K8 (partial): RG-Schur M-dependent hidden block + manuscript corrections
+
+- Extended `RGSchurMassWitness.lean` (kernel-clean): for a general
+  invertible hidden block, nullL_mul_mid_mul_nullN
+  (c(l) Minv c(n) = (Minv 1 1) . c(l)c(n) - the coupling is the propagator
+  matrix element between null directions), mid_effective_sq
+  (T^2 = (Minv 1 1).T), mid_effective_not_nilpotent (non-null iff that
+  propagator element != 0). Recovers the scalar case; deepens the §9
+  dynamics. Two new CarrierAxiomGuard pins, green (8070).
+- Manuscript corrections (honest grading, both directions): §7 E-slot
+  trinity split UPGRADED C->M (eslot_torsion_solder_split +
+  eslot_not_pure_torsion_witness already landed, choice-free,
+  guard-pinned - my draft under-graded them); §9 propagator-coupling
+  generalization added at M. Anchor table +4 rows (26->... verified).
+- Verification: lake env lean RGSchurMassWitness (clean);
+  lake build (8027); lake build CarrierAxiomGuard (8070).
+- Claim boundary: still one finite Schur step; the constituent-mass
+  bridge stays C.

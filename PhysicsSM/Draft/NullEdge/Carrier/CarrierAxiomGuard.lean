@@ -605,6 +605,14 @@ product-square lemma, the non-nilpotent effective edge on the decimated
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.collinear_schurComplement_eq_zero
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.nullL_mul_mid_mul_nullN' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.nullL_mul_mid_mul_nullN
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.mid_effective_not_nilpotent' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass.mid_effective_not_nilpotent
+
 /-! ## T1: chiral-symmetry determinant dichotomy (K6, overnight 2026-07-08) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity.chiral_det_conj' depends on axioms: [propext, Classical.choice, Quot.sound] -/

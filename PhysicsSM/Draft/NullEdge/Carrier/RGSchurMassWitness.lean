@@ -211,4 +211,53 @@ theorem collinear_schurComplement_eq_zero (t : ℂ) :
   rw [invOf_one, Matrix.mul_one, fromRows_mul_fromCols]
   simp [nullL_sq]
 
+/-! ## The M-dependent hidden block: the coupling is a propagator element -/
+
+/-- **The effective term for a general hidden block is a propagator matrix
+element.** With a non-scalar invertible hidden block whose inverse is
+`Minv`, the effective edge term `c(l) Minv c(n)` is `(Minv 1 1) . (c(l)c(n))`:
+the coupling is the `(1,1)` entry of the hidden-block propagator - the
+matrix element of the resolvent between the two null light-cone directions.
+Generalizes the scalar case (`Minv = mu⁻¹ . 1` gives coupling `mu⁻¹`). -/
+theorem nullL_mul_mid_mul_nullN (Minv : Matrix (Fin 2) (Fin 2) ℂ) :
+    nullL * Minv * nullN = (Minv 1 1) • (nullL * nullN) := by
+  have hLM : nullL * Minv = !![Minv 1 0, Minv 1 1; 0, 0] := by
+    ext i j
+    fin_cases i <;> fin_cases j <;>
+      simp [Matrix.mul_apply, Fin.sum_univ_two, nullL]
+  rw [nullL_mul_nullN_eq, hLM, nullN, Matrix.mul_fin_two]
+  ext i j
+  fin_cases i <;> fin_cases j <;> simp [Matrix.smul_apply]
+
+/-- The general effective edge term satisfies `T^2 = (Minv 1 1) . T`: it is
+non-nilpotent exactly when the propagator element between the null
+directions is nonzero. -/
+theorem mid_effective_sq (Minv : Matrix (Fin 2) (Fin 2) ℂ) :
+    (nullL * Minv * nullN) * (nullL * Minv * nullN)
+      = (Minv 1 1) • (nullL * Minv * nullN) := by
+  rw [nullL_mul_mid_mul_nullN, smul_mul_smul_comm, nullL_mul_nullN_idem,
+    smul_smul]
+
+/-- **The general effective edge is non-nilpotent iff the propagator element
+is nonzero.** So decimation through a general hidden block generates a
+non-null (mass-like) effective term exactly when the null directions are
+propagator-coupled - and preserves nullity exactly when that element
+vanishes (the general collinear/decoupled control). -/
+theorem mid_effective_not_nilpotent (Minv : Matrix (Fin 2) (Fin 2) ℂ)
+    (h : Minv 1 1 ≠ 0) : ¬ IsNilpotent (nullL * Minv * nullN) := by
+  rw [nullL_mul_mid_mul_nullN]
+  rintro ⟨k, hk⟩
+  have hpow : ∀ j : ℕ, ((Minv 1 1) • (nullL * nullN)) ^ (j + 1)
+      = (Minv 1 1) ^ (j + 1) • (nullL * nullN) := by
+    intro j
+    induction j with
+    | zero => simp
+    | succ j ih =>
+      rw [pow_succ, ih, smul_mul_smul_comm, nullL_mul_nullN_idem, ← pow_succ]
+  match k with
+  | 0 => rw [pow_zero] at hk; exact one_ne_zero hk
+  | k + 1 =>
+    rw [hpow k] at hk
+    exact (smul_ne_zero (pow_ne_zero _ h) nullL_mul_nullN_ne_zero) hk
+
 end PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass
