@@ -911,3 +911,25 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   (charpoly_neg + assembly) as a Mathlib-only Aristotle package.
 - Claim boundary: prose corrections applied; C4 mechanism is MEMO/M-target
   (Fable-verified numerics, transcription pending); strategy is advisory.
+
+## [LAND Claude] Aperture-dominance positivity opener (Fable Part C #1)
+
+- New self-contained module
+  `Carrier/ApertureDominancePositivity.lean` (kernel-clean, local guard
+  pin): `aperture_dominance_pos` - if the aperture form A is bounded below
+  by c>0 on a subspace P and the balanced closure form C is bounded in
+  magnitude by kappa<c there, then A+C is positive-definite on P\{0}. The
+  opener for the program's #1 next target (Fable call-02 Part C): total
+  -operator positivity on the doublet-free complement, the S1-CC survivor,
+  the program-wide spectral-embargo bottleneck.
+- The gap c-kappa is the positivity budget; in the physical instantiation
+  c is the aperture (pairwise-disagreement) gap = the trusted det P
+  invariant - the circle closes. Follow-up rungs (handoff): rung 2
+  kappa <= ||bivector||*||K||; rung 3 compute c, kappa on the 6x6 S1-CC
+  witness (rational) for the first kernel-checked total-op positivity
+  witness on a physical sector.
+- Claim boundary: pure inequality (bounded-below + bounded-signed =>
+  positive when gap wins); A, C, c, kappa, P abstract; no physics claimed,
+  no closure positivity claimed (only the SUM). Instantiation is the
+  handed-off content.
+- Verification: lake env lean (clean, local guard passes); lake build (green).
