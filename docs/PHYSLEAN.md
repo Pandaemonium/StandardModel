@@ -68,6 +68,43 @@ Options if a genuine `import Physlib.*` dependency is ever needed:
   (translate math, don't copy). Only escalate to (a) for a specific,
   load-bearing import that cannot be clean-room reproduced.
 
+## What's genuinely useful for us (2026-07-08 survey)
+
+We have **not** been using PhysLean in any `PhysicsSM/**` Lean - it appears only
+as a cited prior-art / tooling mention in docs and the manuscript. A survey of
+the clone found three areas worth *consulting and convention-cross-checking*
+(not importing - version-pinned - and, per clean-room policy, port ideas not
+text):
+
+1. **Weyl-spinor / SL(2,C) metric calculus - highest value (our §3 layer).**
+   `Physlib/Relativity/Tensors/ComplexTensor/Weyl/` (`leftMetric`, `rightMetric`,
+   `dualLeftMetric`, `metricRaw`, contraction, modules) and `Physlib/Relativity/SL2C`
+   are a mature, convention-fixed formalization of exactly the objects behind our
+   trusted `Spinor/PluckerMass` (`wedge` = the SL(2) invariant, `det P = sum
+   |psi_i ^ psi_j|^2`). Use it to (a) **cross-check our spinor conventions**
+   against a peer formalization, (b) strengthen §3's "this is classical
+   spinor-helicity" claim by pointing at an independent Lean formalization, and
+   (c) borrow ideas for a cleaner general-`n` Plücker statement (see the landed
+   `MassMonogamy`).
+2. **Pauli matrices + Dirac/Clifford algebra - high value (the carrier).**
+   `Physlib/Relativity/PauliMatrices/` (`Relations`, `CliffordAlgebra`,
+   `SelfAdjoint`) and `Physlib/Relativity/CliffordAlgebra.lean` (`diracAlgebra`,
+   `diracForm`, `ofCliffordAlgebra`, Pauli contraction/trace relations). Our
+   carrier's Clifford soldering and the Cl(4) escape construction use Pauli/gamma
+   matrices directly - cross-check our metric-signature / Hermiticity conventions
+   and clean-room-adapt reusable Pauli identities.
+3. **SM/BSM anomaly cancellation + hypercharge, and Spin(10) - if we make
+   charge claims.** `Physlib/Particles/StandardModel/AnomalyCancellation`,
+   `.../BeyondTheStandardModel/RHN/AnomalyCancellation/.../HyperCharge.lean`, and
+   `.../BeyondTheStandardModel/Spin10` (PhysLean's flagship results). Relevant to
+   any hypercharge/anomaly statement (the §2 Part-I strand/charge picture) and to
+   the octonion / Spin(10) stabilizer thread. Cite + cross-check.
+
+**Recommended immediate use:** whenever we touch spinors, Clifford/Pauli, or SM
+charges, run a `lean-explore packages=["Physlib"]` query first and cross-check
+conventions against the clone - and cite PhysLean's Weyl/spinor formalization in
+§3 to reinforce the "classical kinematics, ours is the packaging" honesty.
+
 ## Optional: full-text meaning search alongside our own docs
 
 To search PhysLean *by meaning at the chunk level* alongside this repo's docs
