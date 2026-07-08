@@ -135,6 +135,77 @@ duality could relate them, and it is unproved.
   turn-soldered cycles satisfy Q = 2/V" with the identification proved, and
   upgrade GATE M-KOIDE's grade per its own K2 clause.
 
+## 4a. P1 RUN RESULTS (2026-07-07, numeric oracle; verdict per sec 4)
+
+Probe implemented and run: `Scripts/oracle/p1_tsolder_koide_probe.py`
+(numpy; NOT a Lean result). Construction: three tetrahedral unit spinors;
+corner amplitudes computed from actual spinor overlaps/wedges; synchronous
+corner-scattering transfer W on the 6 directed legs with SU(2) corner
+blocks; both tetrahedral triples checked (results identical).
+
+**Construction correction discovered en route (methodological finding).**
+The registered construction was underspecified: raw spinor phases leak
+into the naive transfer spectrum (probe's own gauge check, run 1). The
+physical data of a decorated cycle are ONLY `|t|`, `|f|`, the continue
+cycle holonomy `h = arg(t_1 t_2 t_3)` (= the Berry phase, half the solid
+angle; measured EXACTLY +/-90 deg for the tetrahedral triple, sign =
+triple orientation), and the flip-phase DIFFERENCES (measured: exact
++/-120 deg winding for the tetrahedral triple). The probe gauge-fixes to
+the Z_3-symmetric parallel-transport gauge; after the fix the spectrum is
+exactly rephasing-invariant (defect 4e-16).
+
+**Measured results (tetrahedral, gauge-fixed, exact to float precision):**
+
+- Raw eigenphases: `pi/6 * {-6, -2, -1, 0, 4, 5}` - rational multiples of
+  pi/6, with an EXACT zero mode, pairing into exactly 3 doubly-degenerate
+  mod-pi classes (an even/odd sublattice symmetry; not present in the
+  orthogonal or near-collinear controls - it is special to the tetrahedral
+  decoration).
+- Mass classes: `{0, pi/6, pi/3}` - one exactly massless generation and
+  two masses in ratio 1:2.
+- R1 shape readout: hops exactly `|t|/2`, uniform; diagonal (turn slot)
+  NON-uniform and exactly traceless (values `|f| cos` of 120-deg-spaced
+  phases). The `d I + H` ansatz with UNIFORM d is NOT what the dynamical
+  reduction produces.
+- R2' measurement: `kappa_measured = 1.500000` (exact), predicting
+  `Q = (1 + 1/kappa)/3 = 5/9 = 0.5556`. Direct Q on the class spectrum:
+  5/9 under sqrt(m) = E; 0.5147 under m = E. Observed lepton value:
+  0.66666. Both dictionaries fail.
+
+**VERDICT (per the pre-registered kill table, no reinterpretation):**
+
+- The registered TEST `d^2 = 2|c|^2` (B2, kappa = 1): FAILS.
+  `d^2 = |c|^2`-family (B1, kappa = 2): FAILS.
+  "Neither" branch fires: the measured kappa = 3/2 predicts Q = 5/9,
+  contradicted by data with no further freedom. **Route A (the
+  corner-amplitude identification) with tetrahedral decoration does NOT
+  yield Koide.** The sec-2 elegance (tetrahedral <=> kappa = 1) does not
+  survive the dynamical reduction; it was a transcription-level identity
+  (R0 confirms kappa_B2 = 1 exactly), not a carrier theorem.
+- Kill (a) also fires in its shape half: the reduction does not have the
+  uniform-d `d I + H` form (traceless 120-deg diagonal instead). Per K3,
+  gate M-KOIDE's Route-A operationalization is VOID; the gate survives
+  only if the running SUB-NAT strategy packet (Aristotle 7f7c1ea6)
+  produces a principled DIFFERENT reduction, which must then be
+  re-registered before running. The equipartition sum-rule identity
+  (kernel job, separate) is pure algebra and unaffected.
+- Curious exact fact, recorded without interpretation: the tetrahedral
+  dynamical kappa (3/2) equals the TRINE row's transcription kappa, and
+  the predicted Q (5/9) is the trine-row prediction - the dynamics
+  demotes the corner angle by one dictionary row.
+
+**Unexpected findings worth their own thread (grade C, gated):**
+
+1. The tetrahedral decoration is spectrally distinguished: exact rational
+   spectrum, exact zero mode, and the mod-pi double degeneracy - none of
+   which the controls show. The zero mode at holonomy +/-90 deg looks like
+   holonomy-induced index protection (a massless generation FORCED by the
+   Berry phase of the decoration cycle) - potential bridge to the
+   `CarrierIndexProtection` family; formalizable as a finite statement.
+2. The spectrum {0, 1, 2} x pi/6 with one massless member reads as a
+   neutrino-sector-shaped toy, not a charged-lepton one. If the mechanism
+   ever returns to mass values, the natural target has MOVED.
+
 ## 5. Relation to standing threads
 
 - EQUIPARTITION-GATE (thread): P1 is now that thread's decisive experiment;

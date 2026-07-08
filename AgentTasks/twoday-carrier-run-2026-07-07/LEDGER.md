@@ -3871,3 +3871,80 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   kappa bookkeeping with a three-outcome pre-registration.
 - Claim boundary: strategy document only - no Lean, no new claims; all
   plans graded C with gates; landed anchors cited by exact file/theorem.
+
+## [ARISTOTLE-SUBMIT Codex solo] Hardest-pieces wave from Fable + Pro feedback
+
+- Submitted four fresh Aristotle jobs:
+  `72b75f0d-99fb-4801-aa8f-86627690298c`
+  (`ne-hard-p01-stagea-adaptedbasis-positivequot-proof-20260707`),
+  `4b4d1f1b-389d-4e90-ade3-36a9d1183869`
+  (`ne-hard-p02-q11-exteriorpower-cauchybinet-rc0-proof-20260707`),
+  `8d95b408-7e9e-43b6-8478-6bb9540545f8`
+  (`ne-hard-p03-qc-nonabelian-twoface-gram-obstruction-strategy-20260707`),
+  and `7f7c1ea6-a75d-429c-9ab9-3c447b5250c9`
+  (`ne-hard-p12-koide-tsolder-p1-subnat-gate-strategy-20260707`).
+- Sent correction prompts to the already-running lanes for Q01/Gauss,
+  E-slot, octonion bridge, Q12 sector gates, KP fixed-forest injection, Q09
+  finite Reeh-screen, Q10 positive `d = 4`, Q08 graded radical, and RG-Schur.
+- Critical Pro corrections now queued: Q09 cyclic/separating depends on the two
+  tensor-factor dimensions separately; RG-Schur uses
+  `{c(a), c(b)} = lambda I`; Stage A positivity needs the explicit inertia and
+  isotropic-subspace hypotheses; Q12 real structures must be treated as
+  semilinear when appropriate.
+- Bookkeeping added:
+  `ARISTOTLE_HARDEST_PIECES_PRO_PATCHES_2026-07-07.md`,
+  `ARISTOTLE_HARDEST_PIECES_WAVE_2026-07-07.md`, and the four per-job task
+  notes `ARISTOTLE_P01_*`, `ARISTOTLE_P02_*`, `ARISTOTLE_P03_*`, and
+  `ARISTOTLE_P12_*`.
+
+## [ARISTOTLE-RESCUE Codex solo] Stuck older jobs partially harvested
+
+- Downloaded and inspected partial/current archives for the older Aristotle
+  jobs under `AgentTasks/aristotle-output/partial-audit-20260707-old/`.
+- Finished and canceled four close jobs:
+  Q02/E-slot torsion-solder split (`ef87c91f`, task `38ee02c2`),
+  W2A Minkowski aperture bridge (`ecbf61d8`, task `68ff4a56`),
+  RG-Schur null-visible witness (`82cc3c8e`, task `bf49aca8`), and
+  KP fixed-forest counting (`6b8dcebd`, task `3a9be2e2`).
+- New landed Lean files:
+  `CarrierESlotTorsionSplit.lean`, `CarrierMinkowskiBridge.lean`, and
+  `FixedForestCounting.lean`; `SpectralSchur.lean` gained the concrete
+  nilpotent Schur-complement witness section.
+- Guard updates: `CarrierAxiomGuard.lean` pins the E-slot and Minkowski bridge
+  theorem footprints; `GateYM/AxiomGuard.lean` pins the fixed-forest counting
+  theorem footprint; `SpectralSchur.lean` includes local guard blocks for the
+  new Schur witnesses.
+- Left running rather than canceling Q01, Q04, Q09, Q12 C8/PSA, Q12
+  GammaPrime, Q10, and Q08 because their partial archives were not close enough
+  to finish locally.  The four newest hard-piece jobs were also left running.
+- Detailed audit note:
+  `ARISTOTLE_STUCK_JOB_PARTIAL_AUDIT_2026-07-07.md`.
+
+## [FABLE probe] P1 kappa decider RUN - Route A killed per pre-registration; zero-mode discovery
+
+- Ran the pre-registered probe P1 (TSOLDER_KAPPA_ANALYSIS.md sec 4) as a
+  numeric oracle: `Scripts/oracle/p1_tsolder_koide_probe.py`. Full results
+  and verdict appended as sec 4a of the analysis doc.
+- VERDICT: kappa_measured = 3/2 (exact), not 1 (B2) and not 2 (B1);
+  predicted Q = 5/9, contradicted by the observed 2/3. The uniform-d
+  `d I + H` shape also fails (traceless 120-deg diagonal). Per the
+  pre-registered kill clauses, Route A (corner-amplitude identification)
+  with tetrahedral decoration is DEAD and gate M-KOIDE's Route-A
+  operationalization is VOID (K3). No reinterpretation applied.
+- Methodological finding: the registered construction was underspecified -
+  spinor-phase leakage exposed by the probe's own gauge check; physical
+  data of a decorated cycle = |t|, |f|, cycle holonomy (measured exactly
+  +/-90 deg = Berry phase), flip-phase differences (exact +/-120 deg
+  winding). Gauge-fixed construction is rephasing-invariant to 4e-16.
+- DISCOVERY (grade C, gated): tetrahedral decoration is spectrally
+  distinguished - exact rational spectrum pi/6*{0,+-1,+-2,...}, an EXACT
+  zero mode at holonomy +/-90 deg, mod-pi double degeneracy absent in all
+  controls. Reads as holonomy-induced index protection (a massless
+  generation forced by the decoration Berry phase); candidate bridge to
+  CarrierIndexProtection; masses {0,1,2}*pi/6 - neutrino-sector-shaped.
+- Handoffs: numeric result is INPUT to the running SUB-NAT strategy job
+  (7f7c1ea6, ne-hard-p12); any revived reduction must be re-registered
+  before running. Equipartition kernel identity unaffected.
+- Claim boundary: numeric oracle only; nothing here is kernel-checked;
+  the kill is of one operationalization, not of every carrier mass-value
+  mechanism.
