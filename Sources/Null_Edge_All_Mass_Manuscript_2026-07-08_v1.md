@@ -522,6 +522,23 @@ physical sector exists (the 6-dim one above); and §4's keystone fires there to
 give a genuine positive squared mass of `1`. The reader who wants a single
 picture to hold should hold this carrier.
 
+**The mass phase diagram (aperture − closure).** The worked point `(λ,κ)=(2,1)`
+is one point of a plane. Restoring the couplings, the compressed sector form is
+`B(λ,κ)` with the `3×3` Hermitian block `!![λ, κi, 0; -κi, λ, 0; 0, 0, λ]`
+(aperture strength `λ`, closure strength `κ`, both real), whose spectrum is
+`{λ − κ, λ, λ + κ}`. Three statements follow and organize the whole coupling
+plane: the **squared mass gap is the least eigenvalue `λ − κ` = aperture minus
+closure**; the sector form is **positive-definite (massive) iff `|κ| < λ`**; and
+it is **singular (massless) exactly on the critical line `κ = λ`** (for `κ ≥ 0`),
+where `det B = λ(λ² − κ²) = 0`. So closure *subtracts* from mass and, tuned to
+equal aperture, cancels it: a finite, exactly-solvable analogue of a massless
+critical line. This is the mass phase diagram the spectrum simulator draws
+(`carrier_spectrum_sim.py`, §9a), and `T2_positive_mass` is its `(2,1)` corner.
+The parametrized `{λ − κ, λ, λ + κ}` statement — `B` Hermitian, `PosDef ↔
+|κ| < λ`, massless `↔ κ = λ` — is grade **M** (validated at oracle grade;
+kernel formalization `MassGapWitness` in progress, to be pinned in the guard on
+landing). Grade this paragraph **M**‑sim pending that pin.
+
 The physical target this shape is aimed at — a finite analogue of the Ji
 decomposition of the proton mass — is grade **C**, and the two claims it
 supports are *not* on the same footing, for a reason internal to QCD:
