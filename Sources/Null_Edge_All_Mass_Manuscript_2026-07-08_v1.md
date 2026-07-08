@@ -991,9 +991,11 @@ is the simulation's spec and validation oracle):
   `signed_budget_sum_one`, `posDef_iff_det_pos`).
 - `carrier_evolution_sim.py` — unitary Hamiltonian flow with a positive mass
   gap, survival-amplitude **mass-spectrum resolution**, a unitary
-  **quantum-walk transfer operator** (continuum limit → a Dirac-type flow, cf.
-  the quantum-walk literature), and antisymmetrized **2-fermion Slater
-  scattering amplitudes** (validated against `FiniteUnitaryEvolution`, `T2`).
+  **quantum-walk transfer operator** (whose continuum limit yields a Dirac-type
+  flow under the standard QW→Dirac conditions — a 4-dimensional coin carrying
+  the gamma matrices, with parity and discrete-rotation symmetry; Mlodinow–Brun,
+  §2a), and antisymmetrized **2-fermion Slater scattering amplitudes** (validated
+  against `FiniteUnitaryEvolution`, `T2`).
 - `carrier_rgflow_sim.py` — Schur **RG flow** (`k_eff = t^2/mu`, invariant
   `mu·k_eff`), the **canonical ensemble** (`Z`, `F = <E> − T S`, ground
   dominance), and a **condensate** near-zero-mode fraction rising to the

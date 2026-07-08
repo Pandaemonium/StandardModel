@@ -73,3 +73,16 @@ a genuine novelty check:
 
 TODO (still open): full-text Manighalam-Kon coin-classification (which carriers
 admit a continuum limit) - complements Mlodinow-Brun's 4D-coin-forcing result.
+
+## Lit pass 2026-07-08 (continuum-limit classification) - TODO closed
+
+Chunk search for "which QWs admit a continuum limit / coin classification".
+Manighalam-Kon is NOT in the ingested null-edge graph; the graph's actual
+continuum-limit anchors are (a) Mlodinow-Brun 1802.03910 - the necessary
+conditions (4D coin carrying the gammas + parity + noncorrelation/discrete-
+rotation) for a QW to yield the Dirac equation in the continuum - and (b) the
+checkerboard continuum theorem (Gersch; Jacobson-Schulman), PROVEN for the 1+1D
+chain (already cited). So the "which carriers admit a continuum limit" TODO is
+effectively ANSWERED by Mlodinow-Brun; ACTED by making §9a's QW continuum-limit
+remark concrete (naming those conditions, cross-ref §2a) instead of a bare "cf."
+No need to chase Manighalam-Kon via external scholarly search.
