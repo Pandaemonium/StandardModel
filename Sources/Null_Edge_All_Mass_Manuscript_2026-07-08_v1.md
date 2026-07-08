@@ -991,7 +991,10 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   `carrier_orbit_norm_conserved` and `carrier_orbit_energy_conserved` (both **M**,
   guard-pinned): the discrete time-evolution *orbit* of the carrier block flow
   conserves the sector norm and (for commuting observables) energy. So
-  `FiniteUnitaryEvolution` fires on the block flow, not merely a generic isometry's.
+  `FiniteUnitaryEvolution` fires on the block flow. Stated exactly (per the
+  flagship audit): this is Euclidean-unitarity of `exp(−i t H)` for Hermitian `H`,
+  instantiated at the mass block — a generic fact with `H := B`, *not* yet the
+  carrier's Krein evolution.
   **Two grade caveats, stated plainly.** *(i) The generator is a posit (**C**).*
   `B = Q_A + Q_C` is the compressed squared-mass / energy *form*, not a Hamiltonian
   *derived* from the D1 action (D1 gives the constraint `Dψ = 0`, not a Schrödinger
@@ -1203,7 +1206,7 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `sector_ground_mass` | `Carrier/SectorGroundMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | Rayleigh–Ritz keystone: definite-sector ground value is a positive squared mass (§4 rail 3, §10 crux 0) |
 | 4 | `T2_positive_mass` | `Carrier/SectorGroundMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the positivity linchpin**: explicit two-edge Cl(4) carrier, sector form `1+B^HB` PosDef, keystone fires ⇒ genuine positive mass (§6, §10 crux 0a) |
 | 4 | `B_posDef_iff`, `B_massless_iff_of_pos` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | spectral theory of the block `B(λ,κ)`: massive `↔ \|κ\|<λ`, massless line `κ=±λ` for `λ>0` (§4) |
-| 4 | `B_least_eigenvalue` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue of `B` `= λ−κ` = aperture − closure (`IsLeast`, for `0≤κ≤λ`) |
+| 4 | `B_least_eigenvalue`, `B_spectrum` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue of `B` `= λ−κ` = aperture − closure (`IsLeast`); full spectrum `= {λ−κ, λ, λ+κ}` (`B_spectrum`) — the three sector mass levels |
 | 4 | `M6_topBlock_eq_B`, `M6_botBlock_eq_B` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the carrier tie at `(2,1)`**: `M6 = B(2,1) ⊕ B(2,-1)` — so the phase diagram is the carrier's actual sector form there (general `(λ,κ)` reduction is oracle-grade) |
 | 3 | `free_mass_operator_eq_plucker` | `Carrier/FreeMassBridge.lean` | M, local guard pin | **free §3↔§4 bridge**: free mass operator `P·adj P = det P • 1` = Plücker mass (§10 crux 0b-a) |
 | 3 | `pairwiseMass_append` (+`_le`, `_append_eq_iff`) | `Carrier/MassMonogamy.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass monogamy: Plücker mass superadditive, excess = cross-disagreement (F3) |

@@ -221,10 +221,26 @@ theorem reApplyInnerSelf_ge_of_sub_posSemidef {n : Type*} [Fintype n] [Decidable
   · rw [ Real.sq_sqrt ( Finset.sum_nonneg fun _ _ => add_nonneg ( mul_self_nonneg _ ) ( mul_self_nonneg _ ) ), ← Finset.mul_sum _ _ _ ];
   · simp +decide [ mul_add, mul_sub, Finset.mul_sum _ _ _, Finset.sum_add_distrib, mul_left_comm, Finset.sum_sub_distrib ] ; ring
 
-/-! ## T2 - The explicit two-edge Cl(4) carrier -/
+/-! ## T2 - The explicit two-edge Cl(4) carrier
+
+**Provenance disclosure (kernel vs docstring).** `HAC`, `Jmet`, `Piso`, `M6`, and
+`Bwit` below are entered as **hand-typed literal matrices**. The Clifford
+*derivation* that names them "the two-edge Cl(4) carrier" — the Hermitian gammas
+`g1..g4` as Pauli-Kronecker products, `omega = g1 g2`, `Js = i g3 g4`,
+`J = Js ⊗ I3`, aperture `Q_A = I4 ⊗ (lam I3)`, closure `Q_C = omega ⊗ K`, and the
+assembly `HAC = J(Q_A + Q_C)` — is asserted **only in these docstrings and the
+oracle** (`Scripts/oracle/probe_multiedge_positive_sector.py`); *no kernel
+declaration certifies that `HAC`/`Jmet` equal that Kronecker assembly.* So what is
+kernel-checked (`compression_eq`, `M6_posDef`, `T2_positive_mass`) is a genuine
+positive squared mass of the **hand-typed** Hermitian form `M6`; the identification
+of that form with the Cl(4) carrier's Krein form is oracle-grade, not **M**. The
+kernel derivation `HAC = kron(...)` is a pending proof job (audit finding,
+2026-07-08). Read "T2 gives a positive mass on the Cl(4) carrier" with that one
+oracle-grade link in the chain. -/
 
 /-- Assembled total Krein form `HAC = H_A + H_C = J (Q_A + Q_C)` on `C^12`, for
-aperture strength `lam = 2`. Block-diagonal over the four Clifford blocks:
+aperture strength `lam = 2` (hand-typed; see the provenance disclosure above).
+Block-diagonal over the four Clifford blocks:
 `B0 = -2I - iK`, `B1 = 2I + iK`, `B2 = -2I + iK`, `B3 = 2I - iK`. -/
 def HAC : Matrix (Fin 12) (Fin 12) ℂ :=
   !![ (-2 : ℂ), -Complex.I, 0,  0, 0, 0,   0, 0, 0,   0, 0, 0;

@@ -208,6 +208,44 @@ theorem B_least_eigenvalue (lam kappa : ℝ) (h0 : 0 ≤ kappa) (hlk : kappa ≤
       grind +splitIndPred;
     linarith [ h_eigenvalues_nonneg _ h_spectrum ]
 
+/-- Characteristic determinant `det(r - B) = (r - λ)((r - λ)² - κ²)`. -/
+theorem B_det_sub (lam kappa r : ℝ) :
+    (algebraMap ℝ (Matrix (Fin 3) (Fin 3) ℂ) r - B lam kappa).det
+      = ((r : ℂ) - lam) * (((r : ℂ) - lam) ^ 2 - (kappa : ℂ) ^ 2) := by
+  rw [Matrix.det_fin_three]
+  simp only [algebraMap, Algebra.algebraMap, Matrix.sub_apply, B,
+    Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
+    Matrix.cons_val_fin_one, Matrix.empty_val']
+  simp [Matrix.diagonal]
+  ring_nf
+  rw [Complex.I_sq]
+  ring
+
+/-- **Full spectrum of the carrier mass block.** The `ℝ`-spectrum (set of
+eigenvalues) of the `3×3` Hermitian block `B lam kappa` is exactly
+`{lam - kappa, lam, lam + kappa}`: aperture-minus-closure, aperture, and
+aperture-plus-closure — the three physical-sector mass levels. Strengthens
+`B_least_eigenvalue` (which gives only the least, `lam - kappa`). -/
+theorem B_spectrum (lam kappa : ℝ) :
+    spectrum ℝ (B lam kappa) = {lam - kappa, lam, lam + kappa} := by
+  ext r
+  rw [spectrum.mem_iff, Matrix.isUnit_iff_isUnit_det, isUnit_iff_ne_zero, not_ne_iff,
+    B_det_sub]
+  rw [Set.mem_insert_iff, Set.mem_insert_iff, Set.mem_singleton_iff]
+  have hfac : ((r : ℂ) - lam) * (((r : ℂ) - lam) ^ 2 - (kappa : ℂ) ^ 2)
+      = ((((r - (lam - kappa)) * (r - lam) * (r - (lam + kappa))) : ℝ) : ℂ) := by
+    push_cast; ring
+  rw [hfac, Complex.ofReal_eq_zero, mul_eq_zero, mul_eq_zero]
+  constructor
+  · rintro ((h | h) | h)
+    · left; linarith [sub_eq_zero.mp h]
+    · right; left; linarith [sub_eq_zero.mp h]
+    · right; right; linarith [sub_eq_zero.mp h]
+  · rintro (h | h | h) <;> subst h
+    · left; left; ring
+    · left; right; ring
+    · right; ring
+
 /-- **The carrier bridge at the fixed point `(λ,κ) = (2,1)`, top block.** The
 top-left `3x3` block of the `6x6` compressed sector form `M6` of the two-edge
 `Cl(4)` carrier (`SectorGroundMassWitness.M6 = Pisoᴴ HAC Piso`) is *exactly*

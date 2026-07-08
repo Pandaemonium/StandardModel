@@ -778,6 +778,10 @@ whole coupling plane: the `3x3` Hermitian block `B(lam,kappa)` is positive defin
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_least_eigenvalue
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_spectrum
+
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.M6_topBlock_eq_B' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.M6_topBlock_eq_B
