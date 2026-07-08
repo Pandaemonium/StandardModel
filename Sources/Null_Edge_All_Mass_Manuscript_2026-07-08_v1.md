@@ -90,7 +90,7 @@ optional extra; it is the entry the corner *requires* in order to exist
 is a short list — which of a few elementary "strands" it carries. Charge
 is the bookkeeping of that list: quarks and leptons differ by how many
 color strands they hold, which is why quark charges come in thirds; lepton
-number and baryon number are just *counts* of strands (§ and the Q04
+number and baryon number are just *counts* of strands (the Q04
 analysis). An antiparticle is the same list read backwards. The whole
 particle zoo of one generation is the catalogue of ways to occupy a
 handful of strands.
@@ -133,11 +133,15 @@ pairwise *disagreement* of the null directions — the sum of squared
 wedges, which vanishes exactly when two directions are parallel. So:
 
 - A single null edge is massless: `det (psi psi^dagger) = 0`
-  (`det_rankOneHermitian_eq_zero`, **M**, trusted namespace).
+  (`det_rankOneHermitian_eq_zero`, **M**, trusted namespace
+  `PhysicsSM.Spinor.PluckerMass`); and the two-edge mass identity and its
+  collinearity criterion are trusted there too (`two_edge_plucker_mass_identity`,
+  `two_edge_mass_zero_iff_wedge_zero`).
 - Mass equals total pairwise disagreement for any finite bundle
-  (`fin_bundle_plucker_mass_identity`, **M**).
+  (`fin_bundle_plucker_mass_identity`, **M**; the general `n`-bundle
+  version is kernel-checked in the Draft namespace).
 - Mass is exactly zero iff all directions are projectively collinear —
-  one common beam (`fin_bundle_mass_zero_iff_common_direction`, **M**).
+  one common beam (`fin_bundle_mass_zero_iff_common_direction`, **M**, Draft).
 
 This is the precise form of "mass is trapped disagreeing light," and it is
 the strongest thing the program owns: kernel-checked, axiom-audited, in the
@@ -159,28 +163,42 @@ D = sum_e c(alpha_e) nabla_e + Gamma phi ,
 
 with a null covector soldering `c(alpha_e)` on each edge (a Clifford
 coefficient, `c(alpha)^2 = 0`), a covariant transport `nabla_e`, and a
-vertex "turn" term `Gamma phi`. Its square decomposes, as a kernel-checked
-algebraic identity, into four channels:
+vertex "turn" term `Gamma phi`. The master identity of the whole program is
+that its Krein-adjoint square decomposes into channels:
 
 ```text
-4 . D^2 = Q_A + Q_C + 4 Q_T
+4 . D^#D  =  Q_A  +  Q_C  +  4 Q_T  +  E_#            (carrier_krein_square, M)
 ```
 
-(`carrier_square_assembly`, **M**), where `Q_A` is the aperture (kinetic)
-block tied to the Plücker mass of §3, `Q_C` the closure block built from
-commutators of transports (the gauge / QCD channel, §6), and `Q_T = phi^2`
-the turn block (the Higgs / Yukawa channel, §5). The soldering-gradient
-block `E` (gravity, §7) appears in the Krein-adjoint version `4 D^#D`,
-which is the four-slot form.
+and every other channel statement is a specialization of this one equation.
+Each summand is one physical channel, and the reader can carry this table
+through §§5–9:
+
+| channel | operator shape | force | how the invariant enters | positivity |
+|---|---|---|---|---|
+| `Q_A` | aperture / `{nabla, nabla}` | kinetic | Plücker mass of §3 (`det P`) | positive (§3) |
+| `Q_C` | closure / `[gamma,gamma][nabla,nabla]` | gauge / QCD | chromomagnetic `sigma·F`, §6 | signed (§6/§8) |
+| `4 Q_T` | turn / `phi^2` | Higgs / Yukawa | corner amplitude, §5 | turn-sign |
+| `E_#` | Krein self-adjointness defect | — | cross term, §7 | vanishes in the self-adjoint gauge class |
+
+**Two specializations, both kernel-checked.** In the self-adjoint gauge
+class the cross term `E_#` vanishes, and the master identity reduces to the
+three-slot square `4 D^2 = Q_A + Q_C + 4 Q_T` (`carrier_square_assembly`,
+**M**) — this is the form §§5–6 use. Separately, for *varying* soldering the
+gravity channel is a genuinely distinct object, the soldering-gradient
+defect `E` of `weitzenbock_master_varying` (**M**, §7) — note this `E` (a
+`D^2`-defect measuring non-constancy of the soldering) and the Krein
+cross-term `E_#` above are two different blocks; identifying them is a
+conjecture (**C**), not a theorem.
 
 **Unification is decomposition.** These are not four theories glued
 together; they are four summands of one square. The claim the program
 stakes is that *the* invariant — pairwise null disagreement — reappears in
 each channel through a different canonical map.
 
-**The budget theorem (M).** Given the decomposition and any linear
-expectation `ev` (the state functional `<psi, . psi>`) with `ev(D^2) != 0`,
-the channel shares of `M^2 = 4 ev(D^2)`,
+**The budget corollary (M).** A one-line consequence of the assembly
+(apply any linear expectation `ev` — the state functional `<psi, . psi>` —
+and divide by `M^2 = 4 ev(D^2) != 0`): the channel shares
 
 ```text
 b_A + b_C + b_T = 1 ,
@@ -270,7 +288,8 @@ spectral gap (`osSpectralGap_pos`), and exponential clustering
 (`slab_exponential_clustering`) — the two hard pillars of confinement and
 mass gap, in their strong-coupling forms. The one remaining hole in the
 gap chain is a finite forest-counting injection, now diagnosed (this
-month) as a *malposed statement* rather than a hard proof: the total-block
+month, audit memo, **MEMO**) as a *malposed statement* rather than a hard
+proof: the total-block
 permutation count collapses under the root-pinning constraint, so the
 structured-partition route is the only viable one
 (`PolymerKPConclusion.lean`; K1-STEP0 audit).
@@ -283,10 +302,11 @@ Q_C = L^# L ,   L = c(alpha_1) (x) 1 + c(alpha_2) (x) (-K/2),
       K = [nabla_1, nabla_2] ,
 ```
 
-for any compact gauge group, with the full family of representations a
-GL-torsor (`null_soldered_square`, `closure_current_square`, **M** for the
-abstract algebra; the concrete two-transport identification is **MEMO**,
-oracle-verified across SU(2) and SU(3)). But a Krein square carries no
+with the abstract square identity kernel-checked (`null_soldered_square`,
+`closure_current_square`, **M** — a group-free ring identity with explicit
+hypotheses, which is *stronger* in that direction); the group-independence
+(any compact group) and the GL-torsor classification of representatives are
+**MEMO**, oracle-verified across SU(2) and SU(3)). But a Krein square carries no
 positivity by itself — null Clifford coefficients are isotropic, so the
 square has no positive-definite diagonal. Therefore:
 
@@ -359,13 +379,15 @@ but by a **chiral** symmetry — an involution `Gamma` with
 `Gamma W Gamma = W^dagger`, which is exactly the edge-orientation-reversal
 grading that also gives the program's Ginsparg–Wilson structure. Its
 kernel-checked core: a unitary carrying such an involution has determinant
-`+-1` (`chiral_det_eq_pm_one`, **M**), which pins the parity of the
-protected-mode count. The full amplitude-independent double pinning
+`+-1` (`chiral_det_eq_pm_one`, **M**); by the standard conjugate-pairing of
+unitary spectra (**T**, transcription pending) that sign pins the parity of
+the `-1`-eigenvalue multiplicity (the Lean file states the determinant fact;
+the multiplicity reading is prose, per its own docstring). The full amplitude-independent double pinning
 (observed for every hop strength) is grade **C**, awaiting the chiral
 winding invariant `[import]` (Asbóth–Obuse, chiral quantum walks). The
 resulting spectrum on the small cycle is neutrino-shaped (one exactly
-massless mode) — which is where the mass-value question, having failed for
-charged leptons (§5), honestly relocates.
+massless mode; oracle observation, **C**) — which is where the mass-value
+question, having failed for charged leptons (§5), honestly relocates.
 
 **Why indefiniteness is a feature, not a bug.** The closure channel's
 global indefiniteness (§6) is *required* here: chiral symmetry breaking
@@ -479,10 +501,12 @@ anchor rule.)*
 
 | § | Declaration | File | Role |
 |---|---|---|---|
-| 3 | `det_rankOneHermitian_eq_zero` | `Draft/NullEdgeCoreAristotle.lean` | single edge massless |
-| 3 | `fin_bundle_plucker_mass_identity` | `Draft/NullEdgePluckerGeneralAristotle.lean` | mass = pairwise disagreement (trusted) |
-| 3 | `fin_bundle_mass_zero_iff_common_direction` | `Draft/NullEdgePluckerGeneralAristotle.lean` | massless iff collinear |
-| 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | Weitzenböck 4-slot split |
+| 3 | `det_rankOneHermitian_eq_zero` | `Spinor/PluckerMass.lean` (trusted) | single edge massless |
+| 3 | `two_edge_plucker_mass_identity` | `Spinor/PluckerMass.lean` (trusted) | two-edge mass = disagreement |
+| 3 | `fin_bundle_plucker_mass_identity` | `Draft/NullEdgePluckerGeneralAristotle.lean` (Draft) | mass = pairwise disagreement, general `n` |
+| 3 | `fin_bundle_mass_zero_iff_common_direction` | `Draft/NullEdgePluckerGeneralAristotle.lean` (Draft) | massless iff collinear |
+| 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | master identity `4 D^#D = Q_A+Q_C+4Q_T+E_#` |
+| 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | 3-slot specialization (`E_#=0`) |
 | 4 | `signed_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | shares sum to one (abstract) |
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | non-vacuous `(1/2,0,1/2)` witness |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | closure-defect trace identity |
@@ -491,12 +515,13 @@ anchor rule.)*
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | `Q_C = L^#L` (skew-pairing) |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | strong-coupling area law |
 | 6 | `wilsonSlabConnected_reflectionPositive` | `GateYM/WilsonSlabConnected.lean` | slab reflection positivity |
-| 6 | `osSpectralGap_pos` | `GateYM/OSHamiltonianGap.lean` | OS spectral gap |
+| 6 | `OSReconstruction.osSpectralGap_pos` | `GateYM/OSReconstruction.lean` (guard-pinned) | OS spectral gap |
 | 6 | `slab_exponential_clustering` | `GateYM/SlabClustering.lean` | exponential clustering |
 | 6 | `banks_casher_count` | `GateYM/FiniteBanksCasherCount.lean` | finite Banks–Casher count |
 | 6 | `skew_prod` | `GateYM/FiniteBanksCasherCount.lean` | count denominator `= m²+AᴴA` |
 | 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | positive physical sector `(2,1)` |
 | 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | indefinite no-go `(1,2)` |
+| 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | soldering-gradient `E` (varying soldering) |
 | 7 | `eslot_torsion_solder_split` | `Carrier/CarrierESlotTorsionSplit.lean` | `2E = Contract(T)+Contract(S)` |
 | 7 | `eslot_not_pure_torsion_witness` | `Carrier/CarrierESlotTorsionSplit.lean` | not pure torsion (witness) |
 | 8 | `chiralIndex_eq_graded_dimension` | `Carrier/CarrierIndexProtection.lean` | index = graded dimension |
