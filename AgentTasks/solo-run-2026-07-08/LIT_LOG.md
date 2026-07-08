@@ -124,3 +124,16 @@ Chunk search for "Klein tunneling Dirac mass barrier transmission QW". Top hit:
   docstring (specific paper+section), manuscript References, and source map. The
   established prior-art anchor for our finite S-matrix; the barrier-mass ->
   aperture-closure-gap anchoring remains ours.
+
+## Lit pass 2026-07-08 (~14:2x): finite 2nd-quantization / bound-state prior art
+
+During a gated wait, chunk-searched for prior art on the newly-expanded §9
+second-quantization + interacting-bound-state layer (FockMassGap,
+InteractingTwoBody). NO must-cite prior art in the null-edge collection - the §9
+discussion is honestly scoped as a finite shadow, not a novelty claim, so no
+de-risking needed. Nearest (adjacent, not must-cite): the Bell-model finite-lattice
+second quantization (quant-ph/0301119; fermion-number eigenstates, continuum
+limit) and a symmetric-mass-generation lattice chiral gauge paper (2505.20436;
+edge-A/edge-B fields in a bilinear Hamiltonian - thematically close to the
+two-edge carrier + bilinear dGamma(B), but a distinct program). Reassuring
+negative; no citation forced.
