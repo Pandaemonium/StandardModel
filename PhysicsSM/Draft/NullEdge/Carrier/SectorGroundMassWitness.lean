@@ -334,11 +334,17 @@ theorem Piso_isometry : Pisoᴴ * Piso = (1 : Matrix (Fin 6) (Fin 6) ℂ) := by
 /-- **The physical sector carries the standard (positive) inner product.** The
 Krein metric `J` compressed to the `J`-positive sector by the isometry `Piso` is
 the identity: `Pisoᴴ J Piso = 1`. So on the physical sector the *indefinite* Krein
-form restricts to the ordinary Euclidean inner product — which is exactly why
-norm-unitary (Euclidean) evolution on the sector is honest and not a
-Krein-indefinite artifact (the resolution of "Krein-unitary ≠ norm-unitary" for
-`CarrierUnitaryFlow`, kernel-certified). Two-line composite of `Jmet_mul_Piso`
-and `Piso_isometry`. -/
+form restricts to the ordinary Euclidean inner product.
+
+**Scope (batch-6 audit).** This is a *static* metric identity `J|_sector =
+Euclidean`. It does **not** by itself show that the Krein flow preserves the
+`J`-positive sector — that is a *dynamical* claim (`CarrierUnitaryFlow` caveat 0,
+still open) — and therefore does **not** on its own identify the Euclidean
+norm-unitary evolution with the physical Krein evolution. It removes the *static*
+half of "Krein-unitary ≠ norm-unitary" (the metrics agree on the sector); the
+*dynamical* half (the flow keeps you on the sector) would need `Jmet`-unitarity of
+`exp(-i t HAC)` **plus** invariance of `range Piso` under it, which is not proved
+here. Two-line composite of `Jmet_mul_Piso` and `Piso_isometry`. -/
 theorem sector_krein_form_eq_one :
     Pisoᴴ * Jmet * Piso = (1 : Matrix (Fin 6) (Fin 6) ℂ) := by
   rw [Matrix.mul_assoc, Jmet_mul_Piso, Piso_isometry]

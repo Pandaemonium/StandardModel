@@ -1091,12 +1091,15 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   carrier's physical time evolution is grade **C**. *(ii) Carrier tie at `(2,1)`.*
   the flow is of the *block* `B(λ,κ)` for all `(λ,κ)`, but `B` is the carrier's
   sector form kernel-checked only at `(2,1)` (§4), oracle-grade off it. (First
-  -quantized throughout; Krein-unitary ≠ norm-unitary was the earlier worry, and
-  the resolution is now **kernel-certified**: `sector_krein_form_eq_one` (**M**,
+  -quantized throughout; Krein-unitary ≠ norm-unitary was the earlier worry. Its
+  *static* half is now **kernel-certified**: `sector_krein_form_eq_one` (**M**,
   guard-pinned) proves `Pisoᴴ J Piso = 1`, i.e. the indefinite Krein metric `J`
   compressed to the physical sector *is* the identity — the sector carries the
-  ordinary positive inner product, so norm-unitary evolution there is honest, not
-  a Krein-indefinite artifact.)
+  ordinary positive inner product, so the two metrics *agree* on the sector. The
+  *dynamical* half — that the Krein flow keeps you *on* that sector (`range Piso`
+  invariant under `exp(−i t HAC)`) — is **not** proved (grade **C**, per the
+  batch-6 audit; `CarrierUnitaryFlow` caveat 0); so this identity does not by
+  itself equate the Euclidean norm-unitary flow with the physical Krein evolution.)
 - **D4 — renormalization flow.** `invariant_orbit`,
   `observable_antitone_orbit` (`FiniteRGFlow`, **M**, axiom-free): orbit
   invariants and monotones under an iterated step. The intended step is the §9
