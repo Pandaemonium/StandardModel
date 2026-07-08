@@ -813,8 +813,8 @@ teleparallel — the corrected statement after the pure-torsion kill.
 What remains conjectural (**C**) is the *geometric* reading: identifying
 `T` and `S` with a discrete contorsion and non-metricity carrying the
 right transformation law, with the discrete teleparallel /
-symmetric-teleparallel literature `[import]` (Pereira–Vargas and
-Regge-adjacent work) as the anchor. This is still the least-developed
+symmetric-teleparallel literature `[import]` (Aldrovandi–Pereira,
+*Teleparallel Gravity*, and Regge-adjacent work) as the anchor. This is still the least-developed
 channel physically, and the honest content is mostly the boundary, per the
 Malament split: causal order supplies the light-cone structure for free,
 and the decorations owe exactly the scale. But the finite *algebra* of the
@@ -1193,7 +1193,7 @@ verified core (§3, §4, §6 pillars, §8, §9) is machine-checked; its physical
 readings (§5, §7, the budget's hadron interpretation) are MEMO or
 conjectural and labeled as such. The external anchors — Wilson,
 Osterwalder–Seiler, Banks–Casher, Ji, Yang et al., Dürr et al.,
-Asbóth–Obuse, Pereira–Vargas, NuFIT-6.0, Sumino — are `[import]` and are
+Asbóth–Obuse, Aldrovandi–Pereira, NuFIT-6.0, Sumino — are `[import]` and are
 recorded in `Sources/Null_Edge_References.md`. It supersedes nothing; it
 sits beside the P1 origin-of-mass draft as the wider-scope companion.
 
