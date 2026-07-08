@@ -55,6 +55,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap
 import PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction
 import PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierGradedBudget
+import PhysicsSM.Draft.NullEdge.Carrier.DerivedInteraction
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -905,5 +906,21 @@ pieces of the carrier's Dirac square" is a theorem about the carrier. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.carrier_graded_budget' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.carrier_graded_budget
+
+/-! ## Hadron interaction DERIVED from closure geometry (C → M)
+
+`DerivedInteraction`: `Vderived = dΓ(i·κ·K)` is the second-quantized closure
+operator (not modelled), unitarily equal to the modelled `V`; it binds a state
+below the constituent threshold (`derived_boundState_below_threshold`), and binding
+requires the closure to act among the *excited* modes — a ground-mode-plane closure
+gives no binding (`derived_wrongPlane_no_binding`, the sharp geometric condition). -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DerivedInteraction.derived_boundState_below_threshold' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.DerivedInteraction.derived_boundState_below_threshold
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.DerivedInteraction.derived_wrongPlane_no_binding' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.DerivedInteraction.derived_wrongPlane_no_binding
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
