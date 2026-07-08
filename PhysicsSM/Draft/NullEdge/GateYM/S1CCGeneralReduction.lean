@@ -14,11 +14,16 @@ physical sector `V'/N`.  The key observation of this file is that this mechanism
 is **structural and coordinate-free**:
 
 * The closure grading `b = σz ⊗ 1` is a **diagonal `±1` grading** of the carrier.
-* Passing to the physical sector `V'/N = ker Q_G / range Q_G` is realized (after
-  diagonalizing the Hermitian Gauss operator `G` on the color leg — always
-  possible since `[G,K]=0` makes `K` block-diagonal in the `G`-eigenbasis and
-  leaves `b = σz ⊗ 1` untouched) as a **submatrix compression** `J ↦ J.submatrix r r`
-  onto the coset representatives `r`.
+* Passing to the physical sector `V'/N = ker Q_G / range Q_G` is *conjecturally*
+  (grade **MEMO** — this is the remaining un-transcribed piece, see below) realized,
+  after diagonalizing the Hermitian Gauss operator `G` on the color leg (`[G,K]=0`
+  makes `K` block-diagonal in the `G`-eigenbasis and leaves `b = σz ⊗ 1`
+  untouched), as a **compression** `J ↦ Pᴴ J P` onto a `b`-adapted presentation of
+  the sector. The coordinate special case is a `submatrix r r` onto representatives
+  `r`; the presentation-independent statement (`compression_balanced_eigbasis`)
+  takes any `b`-eigenvector family `P`. What is *not* discharged in Lean is that
+  such a `P` genuinely presents `V'/N` (right dimension, complementary to
+  `range Q_G`, form descending to the quotient) — see the scope note below.
 * A diagonal grading anticonjugation is inherited by *any* submatrix compression
   (`compression_inherits_anticonj`), for *any* choice of representatives `r`.
 
@@ -115,12 +120,18 @@ compressed index (`diagonal d * P = P * diagonal e` — the columns of `P` are
 `b`-eigenvectors), then the compression `Pᴴ * M * P` is **balanced**: it has as
 many strictly positive as strictly negative eigenvalues.
 
-This is the presentation-independent statement the physical program actually
-needs: the coset representatives of `V'/N` need not be coordinate axes; *any*
-`b`-eigenbasis of the sector gives a balanced compression, and the only remaining
-gap (grade **C/MEMO**) is the *existence* of such a `b`-eigenbasis — supplied by
-simultaneous diagonalization once `[b, Q_G] = 0` (the scalar-metric case). The
-coordinate witness `submatrix r r` is the special case `P = (1 : Matrix ι ι ℂ).submatrix id r`. -/
+This is the presentation-independent form of the balance *mechanism*: the reps of
+`V'/N` need not be coordinate axes; *any* `b`-eigenvector family gives a balanced
+compression, and the mechanism is `Q_G`-blind (no `Q_G` appears). What it does
+**not** establish (grade **MEMO**, per Fable call-09) is that a given `P`
+genuinely *presents* the physical sector `V'/N`: the remaining gap is the
+existence of a `b`-eigenvector family in `ker Q_G` that is **complementary to
+`range Q_G`** with dimension `dim ker Q_G − rank Q_G`, together with the descent
+of the closure form to the quotient — not merely "a `b`-eigenbasis exists" (that
+alone is satisfiable by the empty family). Simultaneous diagonalization via
+`[b, Q_G] = 0` supplies the eigenbasis; the dimension/complementarity/descent are
+un-transcribed. The coordinate witness `submatrix r r` is the special case
+`P = (1 : Matrix ι ι ℂ).submatrix id r`. -/
 theorem compression_balanced_eigbasis
     (M : Matrix ι ι ℂ) (d : ι → ℂ) (hd : ∀ i, d i = 1 ∨ d i = -1)
     (hanti : diagonal d * M * diagonal d = -M)
