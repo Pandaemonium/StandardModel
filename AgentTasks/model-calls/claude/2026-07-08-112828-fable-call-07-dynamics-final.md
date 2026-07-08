@@ -1,3 +1,247 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `claude-fable-5`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-07-08T11:24:37`
+- Finished: `2026-07-08T11:28:28`
+- Timeout seconds: `600`
+- Max budget USD: `2.00`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model claude-fable-5 --max-budget-usd 2.00 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Fable-5 call 07 (solo run): the dynamics-instantiation flagship + final completeness
+
+You are the most capable mathematical-physics referee + Lean semantic-alignment
+auditor on this program (finite, machine-verified: *mass is the obstruction to
+coherent null transport*). Since your last review (call-06) I acted on all your
+items (landed the carrier bridge `M6 = B(2,1) ⊕ B(2,-1)` in the kernel; regraded
+the §4 reduction claim) and then closed the **one remaining open dynamics link**
+you and I had both flagged. I need a semantic-alignment audit of that new Lean
+flagship and a final completeness verdict.
+
+## What changed since call-06 (the new kernel content)
+
+Previously, the dynamics section §9a honestly flagged that `FiniteUnitaryEvolution`
+proves *any sector isometry* conserves norm/energy, but that the concrete carrier's
+time step actually *being* such an isometry was **open** (the "fire D2 on the T2
+witness" target). That is now closed and kernel-checked (`CarrierUnitaryFlow`,
+embedded verbatim via --source-file). The chain:
+
+1. `hermitian_flow_mem_unitaryGroup` — for Hermitian `H` and real `t`, the flow
+   `exp(-i t H)` is a unitary matrix (`∈ Matrix.unitaryGroup`).
+2. `hermitian_flow_isometry` — that flow induces a `LinearIsometryEquiv` on
+   `EuclideanSpace ℂ n` (a genuine norm-preserving sector isometry).
+3. `carrierFlowStep` / `carrier_orbit_norm_conserved` — specializing `H` to the
+   mass-gap block `MassGapWitness.B lam kappa`, the discrete evolution **orbit** of
+   the real carrier conserves the sector norm (and `..._energy_conserved` for
+   commuting observables). All **M**, guard-pinned to `[propext, Classical.choice,
+   Quot.sound]`.
+
+## Your semantic-alignment task — be adversarial
+
+1. Is `carrier_orbit_norm_conserved` genuinely "the *carrier's* evolution conserves
+   norm", or is it a vacuous/generic wrapper? Specifically: is `carrierFlowStep`
+   actually the physical flow `exp(-i t B)` of the carrier block, or could it be a
+   trivial isometry that would prove the same thing? Where does the real content
+   live — in `hermitian_flow_isometry` deriving a genuine isometry from `B`, or is
+   there a gap?
+2. Is `EuclideanSpace ℂ (Fin 3)` the honest sector Hilbert space here? The flow is
+   on the full `3×3` block `B(lam,kappa)`. Is there an over-claim in calling this
+   "the carrier's evolution" when the physical positive sector / the `6×6`
+   `B(λ,κ)⊕B(λ,-κ)` form (per the carrier bridge) is the real object — i.e. does
+   the docstring/§9a claim more than "the flow of the `3×3` block `B` conserves
+   norm"?
+3. Any grade slip: is calling this "FiniteUnitaryEvolution fires on the actual
+   carrier" earned by these theorems, or does it outrun what the kernel proves?
+4. The honest caveat already in §9a: this is first-quantized, and the resolution of
+   "Krein-unitary ≠ norm-unitary" is that the *physical sector* carries a genuine
+   positive inner product on which the flow is norm-unitary. Is that resolution
+   correct and non-circular?
+
+Report any mismatch between the intended physics and the kernel statements, most
+severe first. I am NOT asking you to check the (kernel-verified) proofs — only
+whether the STATEMENTS are the intended mathematics.
+
+## Final completeness verdict
+
+The complete manuscript is embedded (via --source-file). With the mass-gap
+flagship (call-06) and now this dynamics instantiation both landed and pinned, and
+all your call-05/call-06 items actioned: **is the manuscript now finished as a
+self-contained Markdown draft?** If not, give a short, concrete, ordered
+"remaining to finish" list (each item closeable in one editing pass). Flag any
+stale grade, internal inconsistency, or over-claim, most severe first — if none,
+say so and say what you checked.
+
+## Required output
+
+- **Semantic-alignment verdict on `CarrierUnitaryFlow`** (3–6 sentences).
+- **Manuscript completeness verdict** (3–5 sentences): finished or not; shortest path.
+- **Ordered "remaining to finish" list** (if any), concrete + small.
+- **Bottom line:** the 1–3 things (if any) between here and "done".
+
+Be specific and technical; one sharp correct load-bearing criticism beats ten
+generic ones. Report even if the news is that it is done.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### PhysicsSM/Draft/NullEdge/Carrier/CarrierUnitaryFlow.lean (135 lines)
+
+```lean
+/-
+# D2 on the T2 witness: the carrier flow is a genuine sector isometry
+
+DRAFT (kernel-clean; no `s o r r y`). Closes the one honestly-flagged open link of
+the all-mass dynamics layer (manuscript §9a): `FiniteUnitaryEvolution` proves that
+*any* sector isometry (`LinearIsometryEquiv`) conserves norm and energy, but leaves
+open that the concrete carrier's time step actually *is* such an isometry.
+
+It is. The carrier sector Hamiltonian is a Hermitian matrix `H` (e.g. the mass-gap
+block `MassGapWitness.B lam kappa`), and the flow `exp(-i t H)` it generates is
+**unitary** — hence a genuine norm-preserving sector isometry. So
+`FiniteUnitaryEvolution` fires on the *actual* carrier, not merely a generic
+isometry: the conservation of norm and energy along the real carrier orbit is
+kernel-checked.
+
+## Landed theorems (all M, kernel-clean)
+
+- `skewHermitian_neg_I_smul` - the generator `A = -i t H` is skew-Hermitian.
+- `hermitian_flow_mem_unitaryGroup` - **core**: `exp(-i t H)` is unitary
+  (`∈ Matrix.unitaryGroup`), via `star(exp A) = exp(Aᴴ) = exp(-A)` and
+  `exp(-A) * exp(A) = exp 0 = 1`.
+- `hermitian_flow_isometry` - the induced map on `EuclideanSpace ℂ n` is a
+  `LinearIsometryEquiv` (the sector isometry that plugs into
+  `FiniteUnitaryEvolution.norm_conserved_orbit` / `energy_conserved_orbit`).
+- `B_flow_unitary` - the specialization to the carrier block
+  `MassGapWitness.B lam kappa`.
+
+## Provenance
+
+All-mass solo run 2026-07-08 [orig]. Statements by the reviewing agent (Claude);
+the complete proofs are from Aristotle (standalone package
+`AgentTasks/aristotle-standalone/allmass-d2-on-t2-20260708`), reviewed for
+semantic alignment and adopted here. The core route (`Matrix.unitaryGroup` /
+`U * Uᴴ = 1` via `Matrix.exp_conjTranspose` + `exp_add_of_commute`) dodges the
+`unitary` monoid-instance diamond that times out on the direct `∈ unitary`
+formulation. Instantiates `FiniteUnitaryEvolution` on the `MassGapWitness`
+carrier block. Mathlib-only + `MassGapWitness`.
+-/
+
+import Mathlib
+import PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
+import PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution
+
+namespace PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
+
+open Matrix Complex
+
+/-- **Helper.** For a Hermitian `H` and real `t`, the generator
+`A := (-(t : ℂ)) • (Complex.I • H)` of the flow `exp(-i t H)` is skew-Hermitian:
+`Aᴴ = -A`. -/
+theorem skewHermitian_neg_I_smul {n : Type*} [Fintype n] [DecidableEq n]
+    {H : Matrix n n ℂ} (hH : H.IsHermitian) (t : ℝ) :
+    ((-(t : ℂ)) • (Complex.I • H))ᴴ = -((-(t : ℂ)) • (Complex.I • H)) := by
+  rw [conjTranspose_smul, conjTranspose_smul, hH.eq]
+  simp [Complex.conj_I]
+
+/-- **Core.** For a Hermitian `H` and real `t`, the Hermitian-generated flow
+`exp(-i t H)` is a unitary matrix. This is the load-bearing fact: the carrier's
+time step is norm-preserving. -/
+theorem hermitian_flow_mem_unitaryGroup {n : Type*} [Fintype n] [DecidableEq n]
+    {H : Matrix n n ℂ} (hH : H.IsHermitian) (t : ℝ) :
+    NormedSpace.exp ((-(t : ℂ)) • (Complex.I • H)) ∈ Matrix.unitaryGroup n ℂ := by
+  set A : Matrix n n ℂ := (-(t : ℂ)) • (Complex.I • H) with hA
+  have hskew : Aᴴ = -A := skewHermitian_neg_I_smul hH t
+  rw [Matrix.mem_unitaryGroup_iff]
+  have hstar : star (NormedSpace.exp A) = NormedSpace.exp (-A) := by
+    rw [show star (NormedSpace.exp A) = (NormedSpace.exp A)ᴴ from rfl,
+        ← Matrix.exp_conjTranspose, hskew]
+  rw [hstar, ← Matrix.exp_add_of_commute A (-A) ((Commute.refl A).neg_right),
+      add_neg_cancel, NormedSpace.exp_zero]
+
+/-- **Isometry packaging.** The linear map on `EuclideanSpace ℂ n` induced by the
+unitary flow `exp(-i t H)` is a `LinearIsometryEquiv`, i.e. a genuine
+norm-preserving sector isometry — the object `FiniteUnitaryEvolution` takes as its
+step. -/
+noncomputable def hermitian_flow_isometry {n : Type*} [Fintype n] [DecidableEq n]
+    {H : Matrix n n ℂ} (hH : H.IsHermitian) (t : ℝ) :
+    EuclideanSpace ℂ n ≃ₗᵢ[ℂ] EuclideanSpace ℂ n := by
+  set U : Matrix n n ℂ := NormedSpace.exp ((-(t : ℂ)) • (Complex.I • H)) with hU
+  have hmem : U ∈ Matrix.unitaryGroup n ℂ := hermitian_flow_mem_unitaryGroup hH t
+  have h1 : U * Uᴴ = 1 := Matrix.mem_unitaryGroup_iff.mp hmem
+  have h2 : Uᴴ * U = 1 := Matrix.mem_unitaryGroup_iff'.mp hmem
+  have hmul : ∀ P Q : Matrix n n ℂ,
+      (P * Q).toEuclideanLin = P.toEuclideanLin ∘ₗ Q.toEuclideanLin := by
+    intro P Q; ext x i; simp [Matrix.mulVec_mulVec]
+  have hone : (1 : Matrix n n ℂ).toEuclideanLin = LinearMap.id := by
+    ext x i; simp
+  refine LinearEquiv.isometryOfInner
+    (LinearEquiv.ofLinear U.toEuclideanLin Uᴴ.toEuclideanLin ?_ ?_) ?_
+  · rw [← hmul, h1, hone]
+  · rw [← hmul, h2, hone]
+  · intro x y
+    show inner ℂ (U.toEuclideanLin x) (U.toEuclideanLin y) = inner ℂ x y
+    rw [← LinearMap.adjoint_inner_right, ← Matrix.toEuclideanLin_conjTranspose_eq_adjoint,
+        ← LinearMap.comp_apply, ← hmul, h2, hone]
+    rfl
+
+/-- **Specialization.** The carrier block `MassGapWitness.B lam kappa` generates a
+unitary flow: the T2 carrier's time step is a genuine sector isometry, so
+`FiniteUnitaryEvolution` fires on the actual carrier. -/
+theorem B_flow_unitary (lam kappa t : ℝ) :
+    NormedSpace.exp ((-(t : ℂ)) • (Complex.I • MassGapWitness.B lam kappa))
+      ∈ Matrix.unitaryGroup (Fin 3) ℂ :=
+  hermitian_flow_mem_unitaryGroup (MassGapWitness.B_isHermitian lam kappa) t
+
+/-- The carrier flow step generated by the mass-gap block `B lam kappa`, as a
+`LinearIsometryEquiv` on the sector Hilbert space `EuclideanSpace ℂ (Fin 3)` —
+the concrete transfer step `FiniteUnitaryEvolution` takes. -/
+noncomputable def carrierFlowStep (lam kappa t : ℝ) :
+    EuclideanSpace ℂ (Fin 3) ≃ₗᵢ[ℂ] EuclideanSpace ℂ (Fin 3) :=
+  hermitian_flow_isometry (MassGapWitness.B_isHermitian lam kappa) t
+
+/-- **D2/D3 fired on the actual carrier — norm.** The discrete time-evolution
+orbit of the concrete T2 carrier (generated by the mass-gap block flow) conserves
+the sector norm. This is `FiniteUnitaryEvolution.norm_conserved_orbit` instantiated
+on the real carrier step, not a generic isometry: the open §9a link, now a
+single kernel theorem. -/
+theorem carrier_orbit_norm_conserved (lam kappa t : ℝ)
+    (psi : EuclideanSpace ℂ (Fin 3)) (n : ℕ) :
+    ‖FiniteUnitaryEvolution.orbit (carrierFlowStep lam kappa t) psi n‖ = ‖psi‖ :=
+  FiniteUnitaryEvolution.norm_conserved_orbit _ psi n
+
+/-- **D2/D3 fired on the actual carrier — energy.** Any observable that commutes
+with the carrier flow step has conserved real expectation along the carrier orbit
+(finite energy conservation on the real carrier). -/
+theorem carrier_orbit_energy_conserved (lam kappa t : ℝ)
+    (E : EuclideanSpace ℂ (Fin 3) →L[ℂ] EuclideanSpace ℂ (Fin 3))
+    (hUE : FiniteUnitaryEvolution.CommutesWithStep (carrierFlowStep lam kappa t) E)
+    (psi : EuclideanSpace ℂ (Fin 3)) (n : ℕ) :
+    FiniteUnitaryEvolution.observableEnergy E (FiniteUnitaryEvolution.orbit
+      (carrierFlowStep lam kappa t) psi n) = FiniteUnitaryEvolution.observableEnergy E psi :=
+  FiniteUnitaryEvolution.energy_conserved_orbit _ E hUE psi n
+
+end PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
+
+```
+
+### Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md (1416 lines)
+
+```markdown
 # Mass as null disagreement: a machine-verified finite framework
 
 **A finite, kernel-checked framework in which the invariant mass of a
@@ -983,29 +1227,19 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   functional analysis (`LinearIsometryEquiv`). This was previously flagged with
   the honest caveat that the *instantiation* (the T2 carrier's step actually
   being such an isometry) was open. **That instantiation is now closed** and
-  kernel-checked (`CarrierUnitaryFlow`, **M**, guard-pinned): the sector form is
-  Hermitian (the mass-gap block `B`), so the flow it generates `exp(−i t H)` is
-  **unitary** (`hermitian_flow_mem_unitaryGroup` / `B_flow_unitary`) and induces a
-  genuine `LinearIsometryEquiv` on the sector (`hermitian_flow_isometry`). Wired
-  through the generic scaffold, this gives single concrete theorems —
-  `carrier_orbit_norm_conserved` and `carrier_orbit_energy_conserved` (both **M**,
-  guard-pinned): the discrete time-evolution *orbit* of the carrier block flow
-  conserves the sector norm and (for commuting observables) energy. So
-  `FiniteUnitaryEvolution` fires on the block flow, not merely a generic isometry's.
-  **Two grade caveats, stated plainly.** *(i) The generator is a posit (**C**).*
-  `B = Q_A + Q_C` is the compressed squared-mass / energy *form*, not a Hamiltonian
-  *derived* from the D1 action (D1 gives the constraint `Dψ = 0`, not a Schrödinger
-  equation). Taking the sector mass form as the generator of a one-parameter flow
-  is a canonical modeling choice (Stueckelberg-style proper-time evolution),
-  defensible but chosen; what is **M** is the unitarity/isometry and orbit
-  conservation of `exp(−i t H)` for Hermitian `H`; that this flow *is* the
-  carrier's physical time evolution is grade **C**. *(ii) Carrier tie at `(2,1)`.*
-  the flow is of the *block* `B(λ,κ)` for all `(λ,κ)`, but `B` is the carrier's
-  sector form kernel-checked only at `(2,1)` (§4), oracle-grade off it. (First
-  -quantized throughout; Krein-unitary ≠ norm-unitary was the earlier worry, and
-  the resolution is that the physical *sector* form — where `B` lives — carries a
-  genuine positive inner product, per §4/§6, on which the flow is honestly
-  norm-unitary.)
+  kernel-checked (`CarrierUnitaryFlow`, **M**, guard-pinned): the carrier sector
+  Hamiltonian is Hermitian (the mass-gap block `B`), so the flow it generates
+  `exp(−i t H)` is **unitary** (`hermitian_flow_mem_unitaryGroup` /
+  `B_flow_unitary`) and induces a genuine `LinearIsometryEquiv` on the sector
+  (`hermitian_flow_isometry`). Wired through the generic scaffold, this gives a
+  single concrete theorem — `carrier_orbit_norm_conserved` (**M**, guard-pinned):
+  the discrete time-evolution *orbit* of the real T2 carrier conserves the sector
+  norm (and `carrier_orbit_energy_conserved` for commuting observables). So
+  `FiniteUnitaryEvolution` fires on the *actual* carrier, not merely a generic
+  isometry's. (This is a first-quantized statement; Krein-unitary
+  ≠ norm-unitary was the earlier worry, and the resolution is that the physical
+  *sector* form — where `B` lives — carries a genuine positive inner product, per
+  §4/§6, on which the flow is honestly norm-unitary.)
 - **D4 — renormalization flow.** `invariant_orbit`,
   `observable_antitone_orbit` (`FiniteRGFlow`, **M**, axiom-free): orbit
   invariants and monotones under an iterated step. The intended step is the §9
@@ -1210,8 +1444,7 @@ separately by the targeted Lean and guard builds.)*
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
 | 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3) |
-| 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M (first two guard-pinned) | **the D2 instantiation, closed**: the carrier-block Hermitian flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` (generator-as-Hamiltonian is a **C** posit; carrier tie kernel at `(2,1)`) |
-| 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the carrier-block flow **orbit** conserves sector norm & (commuting-observable) energy — `FiniteUnitaryEvolution` fired as a single theorem |
+| 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the D2 instantiation, closed**: the carrier's Hermitian-generated flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` — `FiniteUnitaryEvolution` fires on the real carrier |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
@@ -1424,3 +1657,46 @@ pre-registering a prediction — never a substitute for a kernel proof.
 `Sources/Null_Edge_References.md`; the PhysLean convention cross-checks and the
 prior-art / novelty-gap analysis are in `docs/PHYSLEAN.md` and
 `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`.
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+All load-bearing checks done. Here is the review.
+
+---
+
+## Semantic-alignment verdict on `CarrierUnitaryFlow`
+
+**Aligned, with one wording-level grade slip and one unpinned claim; no false shape.** `carrier_orbit_norm_conserved` is not vacuous: I verified `FiniteUnitaryEvolution.orbit` is genuine iteration (`orbit U psi (n+1) = U (orbit U psi n)`), and `carrierFlowStep`'s forward map is by construction `U.toEuclideanLin` with `U = exp(-(t:ℂ)•(I•B))` — literally `exp(-itB)` acting by `mulVec` — so the theorem really says the exp-flow orbit of the mass-gap block conserves norm. The generic conservation step is trivial (any `LinearIsometryEquiv` conserves norm); the non-generic content lives exactly where the file says it does, in `hermitian_flow_mem_unitaryGroup` + `B_isHermitian`, which is honest instantiation, not hollow telescoping. On the Hilbert-space question: `EuclideanSpace ℂ (Fin 3)` **is** the honest sector space, and the Krein resolution (question 4) is **correct and non-circular** — I checked that `Piso`'s columns are the standard basis vectors of the `J = +1` coordinates with `Piso_isometry` (`PᴴP = 1`) and `Jmet_mul_Piso` (`JP = P`) both kernel-checked, so the restricted Krein form in these coordinates *is* the standard Euclidean inner product (`PᴴJP = PᴴP = 1`, a two-line composite not yet stated as a named lemma), and the sector's positivity was established independently of the flow (`T2_positive_mass`). The `3×3` vs `6×6` worry is benign: `M6` is proved block-diagonal (`M6_offBlock_eq_zero`) and `hermitian_flow_isometry` is general in `n`, so the `6×6` flow is a one-line corollary — but note it is not actually stated.
+
+**The one real slip (most severe finding):** the docstrings and §9a call `B` "the carrier sector Hamiltonian" and `exp(-itB)` "the T2 carrier's time step." The kernel earns neither identification: `B` is the compressed *Krein form* `Q_A + Q_C` (a squared-mass/energy form), and nothing — including D1, which yields the constraint `Dψ = 0`, not a Schrödinger equation — derives that the carrier's time evolution is generated by it. Choosing the sector mass form as generator is a canonical, defensible modeling posit (Stueckelberg-style), but it is a posit, and it is currently ungraded. Additionally, `carrierFlowStep lam kappa t` is stated at general `(λ,κ)`, where the manuscript's own honest split says the `B`↔carrier tie is oracle-grade; "the actual carrier" is kernel-earned only at `(2,1)`/`(2,−1)`. Finally, `carrier_orbit_energy_conserved` is **not** in the guard file (I checked; only `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `carrier_orbit_norm_conserved` are pinned), and §9a's parenthetical invites the reader to attach "guard-pinned" to it.
+
+## Manuscript completeness verdict
+
+**Effectively finished as a self-contained draft; one editing pass remains.** The grade discipline is now applied consistently through §9a, the two former open dynamics/positivity links are genuinely closed in the kernel, and the kills are reported with theorem-level prominence. The remaining defects are all local wording/bookkeeping items, none structural: the "Hamiltonian" grade slip above, an anchor-table completeness violation (the table promises every declaration cited in §§3–9, but the §9a flagship `carrier_orbit_norm_conserved` — which §9a itself calls "a single kernel theorem" — is missing from the table row, which lists only its three ingredients), and the energy-pin ambiguity. Shortest path: one pass over §9a + the §11 table + the `CarrierUnitaryFlow` docstrings.
+
+## Remaining to finish (ordered)
+
+1. **Grade the Hamiltonian identification.** Add one sentence in §9a and the `CarrierUnitaryFlow` module docstring: the generator is the compressed sector mass form `B`; "this flow is *the* carrier dynamics" is a canonical modeling choice (grade-C reading), not derived from the D1 action; kernel content = "the flow generated by the carrier's kernel-tied sector form is a genuine sector isometry with conserved orbit norm."
+2. **Fix the §11 anchor table:** add `carrier_orbit_norm_conserved` (guard-pinned) and `carrier_orbit_energy_conserved` (kernel-checked, *not pinned* — or pin it, one guard block) to the CarrierUnitaryFlow row; disambiguate the §9a parenthetical accordingly.
+3. **Carry the `(λ,κ)` caveat into the file:** note in `carrierFlowStep`/`B_flow_unitary` docstrings that the carrier tie is kernel-checked at `(2,1)` and oracle-grade off it (the manuscript says this in §4; the Lean docstrings don't).
+4. *(Optional hardening, ~30 min total):* a `@[simp] carrierFlowStep_apply : ... = (exp _).toEuclideanLin ψ := rfl` lemma so the exp-flow identification is auditable at statement level without unfolding a tactic-built def; a named lemma `Pisoᴴ * Jmet * Piso = 1` making "Euclidean norm = restricted Krein norm" kernel-visible (it is currently a two-line consequence of existing lemmas); and the trivial `6×6` corollary `hermitian_flow_isometry M6_isHermitian t`.
+
+## Bottom line
+
+Items 1–3 are the only things between here and "done": one grade sentence for the Hamiltonian posit, one anchor-table repair, one caveat propagated into docstrings. The mathematics is aligned — the flow is genuinely `exp(-itB)`, the sector Hilbert space is honest (and provably so from lemmas already landed), and the Krein resolution is non-circular. No stale grades or internal inconsistencies were found beyond the three listed; I checked the guard pins, the `orbit` definition, the `Piso`/`Jmet` sector geometry, and the table-vs-§9a citation match directly against the repository source.
+
+```
+
+## Response stderr
+
+```text
+
+```

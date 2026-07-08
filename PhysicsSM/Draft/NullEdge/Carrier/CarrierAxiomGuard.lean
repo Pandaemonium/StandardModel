@@ -801,4 +801,8 @@ generic isometry. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.carrier_orbit_norm_conserved
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.carrier_orbit_energy_conserved' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.carrier_orbit_energy_conserved
+
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
