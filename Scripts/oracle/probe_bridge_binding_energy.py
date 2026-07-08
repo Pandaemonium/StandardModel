@@ -11,7 +11,7 @@ NOT naively additive; the discrepancy is BINDING. Split it:
       Delta is a finite binding-energy invariant the program did not yet name.
 
 This runs on the two-edge Cl(4) carrier of probe_multiedge_positive_sector.py
-(which has a validated J-positive sector and a ground vector). We compute, as the
+(which has an oracle-validated J-positive sector and a ground vector). We compute, as the
 closure strength t is turned up:
   free_mass2 = min spec on the sector at t=0        (the kinematic baseline)
   Delta(t)   = min spec at t  -  free_mass2
@@ -106,16 +106,16 @@ print("     sign of a binding energy, not an additive constituent mass.")
 print(f"  3. The binding is SECOND-ORDER / reorganizational, not first-order:")
 print(f"     <Q_C> in the FREE ground state = {qc0_small:+.3f} (~0), yet the true")
 print("     ground state at t>0 reorganizes onto the negative-closure direction.")
-print("     So Delta is genuine binding, invisible to the naive <Q_C> estimate -")
+print("     So Delta is a binding-defect candidate, invisible to the naive <Q_C> estimate -")
 print("     exactly why constituent-additivity (0b naive) fails: binding is")
 print("     off-diagonal in the free basis.")
 print(f"  4. PHASE STRUCTURE: min spec hits 0 at t = {crit:.3f} (= aperture")
 print(f"     strength lam = {lam}). Aperture-dominates => positive bound mass;")
-print("     closure = aperture => a MASSLESS bound state; closure-dominates =>")
+print("     closure = aperture => a zero-mode point in this toy; closure-dominates =>")
 print("     positivity lost. A clean finite critical-coupling picture.")
 print("  READING (Fable item 1): split crux 0b into (a) free equality [M-target,")
 print("  near-automatic from the Clifford relation] and (b) Delta := min spec -")
-print("  det P = a finite, closure-controlled BINDING-ENERGY invariant that is")
+print("  det P = a finite, closure-controlled BINDING-DEFECT candidate that is")
 print("  NEGATIVE and off-diagonal. Delta deserves a name; it is the program's")
-print("  first finite binding energy. HONEST SCOPE: item-1(a)'s comparison to an")
+print("  first finite binding-energy candidate. HONEST SCOPE: item-1(a)'s comparison to an")
 print("  INDEPENDENT det P needs an enriched carrier with explicit null momenta.")

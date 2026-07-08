@@ -25,12 +25,11 @@ exactly what chiral symmetry breaking needs (§8 of the manuscript).
 
 `anticonj_odd_pow_trace_zero`: if an invertible `S` anticonjugates `B`
 (`S^{-1} B S = -B`), then every ODD power of `B` is traceless. This is the
-spectral-symmetry engine behind the balanced inertia: all odd moments of
-the Hermitian form vanish, so its eigenvalues are symmetric about zero. A
-pure finite trace identity in the same register as `banks_casher_count` -
-no inertia API, no spectral theorem. The inertia reading itself (via
-`charpoly` congruence and Sylvester) and the concrete `V'` construction
-are the next rungs (see the roadmap); this is the load-bearing algebra.
+odd-power trace identity behind the balanced-inertia route. By itself it is
+not an eigenvalue-pairing theorem and uses no Hermitian hypothesis. The
+polynomial symmetry is recorded by `anticonj_charpoly_eq`; the inertia
+reading itself and the concrete `V'` construction are next rungs (see the
+roadmap).
 
 ## Claim boundary
 
@@ -75,10 +74,11 @@ theorem conj_pow (S B : Matrix n n ℂ) [Invertible S] (m : ℕ) :
 
 /-- **Anticonjugation kills odd-power traces (S1-CC flagship).** If an
 invertible `S` anticonjugates `B` (`S⁻¹ * B * S = -B`), then every odd
-power of `B` is traceless: `Tr(B^(2k+1)) = 0`. The odd moments of the
-associated Hermitian form all vanish, forcing a spectrum symmetric about
-zero - the engine behind the BALANCED Krein inertia of the closure channel
-on the physical sector (closure is signed, not positive). -/
+power of `B` is traceless: `Tr(B^(2k+1)) = 0`.
+
+This is a finite trace identity only. It is compatible with the later
+balanced-inertia route, but it does not by itself prove eigenvalue pairing,
+Hermitian inertia, or positivity/negativity of the closure channel. -/
 theorem anticonj_odd_pow_trace_zero (B S : Matrix n n ℂ) [Invertible S]
     (h : ⅟S * B * S = -B) (k : ℕ) :
     (B ^ (2 * k + 1)).trace = 0 := by
@@ -89,10 +89,8 @@ theorem anticonj_odd_pow_trace_zero (B S : Matrix n n ℂ) [Invertible S]
   have key : -(B ^ (2 * k + 1)).trace = (B ^ (2 * k + 1)).trace := h2 ▸ h1
   linear_combination (-(1 : ℂ) / 2) * key
 
-/-- **Even-power form of the same fact:** for a self-adjoint `B` (`Bᴴ = B`)
-that is anticonjugate to itself, the anticonjugation gives a spectrum
-symmetric under negation. Recorded as the companion identity: `Tr B = 0`
-(the `k = 0` case), the vanishing of the first moment. -/
+/-- Trace-zero corollary of `anticonj_odd_pow_trace_zero` (the `k = 0`
+case). No Hermitian or spectral conclusion is included in this statement. -/
 theorem anticonj_trace_zero (B S : Matrix n n ℂ) [Invertible S]
     (h : ⅟S * B * S = -B) : B.trace = 0 := by
   have := anticonj_odd_pow_trace_zero B S h 0
@@ -109,6 +107,113 @@ theorem anticonj_charpoly_eq (B S : Matrix n n ℂ) [Invertible S]
     (h : ⅟S * B * S = -B) : (-B).charpoly = B.charpoly := by
   rw [← h]
   exact Matrix.charpoly_units_conj' (unitOfInvertible S) B
+
+/-! ## Count helper for the balanced-inertia capstone -/
+
+/-- A real multiset invariant under negation has as many positive entries as
+negative entries, counted with multiplicity.
+
+This is the finite combinatorial half of the balanced-inertia capstone. The
+remaining spectral bridge is to prove that the Hermitian eigenvalue multiset is
+negation-invariant from the characteristic-polynomial symmetry. -/
+theorem countP_pos_eq_countP_neg_of_map_neg_eq (s : Multiset ℝ)
+    (h : s.map Neg.neg = s) :
+    s.countP (fun x => 0 < x) = s.countP (fun x => x < 0) := by
+  calc
+    s.countP (fun x => 0 < x) = (s.map Neg.neg).countP (fun x => 0 < x) := by
+      rw [h]
+    _ = s.countP (fun x => 0 < -x) := by
+      rw [Multiset.countP_map]
+      simp [Multiset.countP_eq_card_filter]
+    _ = s.countP (fun x => x < 0) := by
+      apply Multiset.countP_congr rfl
+      intro x _
+      simp
+
+/-- Index-count form of `countP_pos_eq_countP_neg_of_map_neg_eq`.
+
+If the multiset of real values indexed by a finite type is invariant under
+negation, the number of positive indexed values equals the number of negative
+indexed values. This matches the count shape needed for Hermitian eigenvalues. -/
+theorem card_pos_eq_card_neg_of_multiset_map_neg_eq {m : Type*} [Fintype m]
+    (f : m → ℝ)
+    (h : (Finset.univ.val.map f).map Neg.neg = Finset.univ.val.map f) :
+    (Finset.univ.filter (fun i => 0 < f i)).card =
+      (Finset.univ.filter (fun i => f i < 0)).card := by
+  have hm := countP_pos_eq_countP_neg_of_map_neg_eq (Finset.univ.val.map f) h
+  have hpos : (Finset.univ.filter (fun i => 0 < f i)).card =
+      (Finset.univ.val.map f).countP (fun x => 0 < x) := by
+    rw [Multiset.countP_eq_card_filter, Multiset.filter_map]
+    change (Finset.univ.filter (fun i => 0 < f i)).val.card = _
+    rw [Finset.filter_val]
+    simp
+  have hneg : (Finset.univ.filter (fun i => f i < 0)).card =
+      (Finset.univ.val.map f).countP (fun x => x < 0) := by
+    rw [Multiset.countP_eq_card_filter, Multiset.filter_map]
+    change (Finset.univ.filter (fun i => f i < 0)).val.card = _
+    rw [Finset.filter_val]
+    simp
+  rw [hpos, hneg]
+  exact hm
+
+/-- Roots of the characteristic polynomial of `-B`, expressed using the
+negated Hermitian eigenvalues of `B`.
+
+This is a Mathlib-functional-calculus bridge: `-B` is `cfc (fun x => -x) B`,
+so its characteristic polynomial factors with roots `- eigenvalues(B)`. -/
+theorem neg_charpoly_roots_eq_map_neg_eigenvalues
+    (B : Matrix n n ℂ) (hB : B.IsHermitian) :
+    (-B).charpoly.roots =
+      Multiset.map (fun x : ℝ => ((-x : ℝ) : ℂ))
+        (Finset.univ.val.map hB.eigenvalues) := by
+  have hchar :
+      (-B).charpoly =
+        ∏ i, (Polynomial.X - Polynomial.C ((-hB.eigenvalues i : ℝ) : ℂ)) := by
+    have h := Matrix.IsHermitian.charpoly_cfc_eq (A := B) hB (fun x : ℝ => -x)
+    have hcfc : cfc (fun x : ℝ => -x) B = -B := cfc_neg_id (R := ℝ) B hB
+    rw [hcfc] at h
+    simpa using h
+  rw [hchar, Polynomial.roots_prod]
+  · simp
+  · apply Finset.prod_ne_zero_iff.mpr
+    intro i _
+    exact Polynomial.X_sub_C_ne_zero ((-hB.eigenvalues i : ℝ) : ℂ)
+
+/-- If a Hermitian matrix has the same characteristic polynomial as its
+negative, then its real eigenvalue multiset is invariant under negation.
+
+This is the spectral bridge from the polynomial rung
+`anticonj_charpoly_eq` to the finite count helper above. -/
+theorem hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly
+    (B : Matrix n n ℂ) (hB : B.IsHermitian)
+    (hsym : (-B).charpoly = B.charpoly) :
+    (Finset.univ.val.map hB.eigenvalues).map Neg.neg =
+      Finset.univ.val.map hB.eigenvalues := by
+  apply Multiset.map_injective (Complex.ofReal_injective)
+  simpa [Function.comp_def, Multiset.map_map] using
+    calc
+      Multiset.map (fun x : ℝ => ((-x : ℝ) : ℂ))
+          (Finset.univ.val.map hB.eigenvalues)
+          = (-B).charpoly.roots := by
+            rw [neg_charpoly_roots_eq_map_neg_eigenvalues]
+      _ = B.charpoly.roots := by rw [hsym]
+      _ = Multiset.map (RCLike.ofReal ∘ hB.eigenvalues) Finset.univ.val := by
+            rw [hB.roots_charpoly_eq_eigenvalues]
+
+/-- Hermitian balanced-count capstone.
+
+If a Hermitian complex matrix has characteristic polynomial invariant under
+negation, then the number of positive Hermitian eigenvalues equals the number
+of negative Hermitian eigenvalues. This is a finite matrix/eigenvalue count
+statement only; it does not identify `B` with a closure operator or prove that a
+physical quotient descends. -/
+theorem hermitian_balanced_count_of_neg_charpoly
+    (B : Matrix n n ℂ) (hB : B.IsHermitian)
+    (hsym : (-B).charpoly = B.charpoly) :
+    (Finset.univ.filter (fun i => 0 < hB.eigenvalues i)).card =
+      (Finset.univ.filter (fun i => hB.eigenvalues i < 0)).card :=
+  card_pos_eq_card_neg_of_multiset_map_neg_eq hB.eigenvalues
+    (hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly B hB hsym)
 
 /-! ## Lemma 1: the half-constraint rigidity (Gupta-Bleuler is forced) -/
 

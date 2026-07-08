@@ -400,4 +400,106 @@ theorem isGammaOdd_fromBlocks_iff
 
 end SchurStability
 
+/-!
+## Part 4 - RG-Schur destabilization witness
+
+Parts 2 and 3 established the stability side of the RG-Schur lane: one Schur
+complement step preserves Krein-self-adjointness and Gamma-oddness under the
+displayed block hypotheses.  This section supplies the complementary finite
+destabilization witness: a null visible block and nilpotent off-diagonal solder
+can Schur-complement to a nonzero scalar visible block.
+
+Claim boundary: this is exact finite matrix algebra over `Rat`.  It is not a
+continuum RG flow, a physical mass-gap theorem, a Standard Model prediction, or
+a positivity theorem.
+-/
+
+section SchurWitness
+
+open scoped Matrix
+
+attribute [local instance] invertibleOne
+
+/-- The strictly upper off-diagonal solder block is nilpotent. -/
+theorem solder_offDiagonal_sq_eq_zero :
+    (Matrix.fromBlocks (0 : Matrix (Fin 2) (Fin 2) ℚ) (1 : Matrix (Fin 2) (Fin 2) ℚ)
+        (0 : Matrix (Fin 2) (Fin 2) ℚ) (0 : Matrix (Fin 2) (Fin 2) ℚ)) ^ 2 = 0 := by
+  rw [pow_two, Matrix.fromBlocks_multiply]
+  simp
+
+/-- The nilpotent solder block is nonzero, so the nilpotency witness is not
+vacuous. -/
+theorem solder_offDiagonal_ne_zero :
+    (Matrix.fromBlocks (0 : Matrix (Fin 2) (Fin 2) ℚ) (1 : Matrix (Fin 2) (Fin 2) ℚ)
+        (0 : Matrix (Fin 2) (Fin 2) ℚ) (0 : Matrix (Fin 2) (Fin 2) ℚ)) ≠ 0 := by
+  intro h
+  have := congrFun (congrFun h (Sum.inl 0)) (Sum.inr 0)
+  simp [Matrix.fromBlocks] at this
+
+/-- With null visible block and identity hidden/solder blocks, the Schur
+complement is the nonzero scalar block `-1`. -/
+theorem schurComplement_null_visible_eq_neg_scalar :
+    schurComplement (0 : Matrix (Fin 2) (Fin 2) ℚ) 1 1 (1 : Matrix (Fin 2) (Fin 2) ℚ)
+      = Matrix.scalar (Fin 2) (-1 : ℚ) := by
+  rw [show schurComplement (0 : Matrix (Fin 2) (Fin 2) ℚ) 1 1
+      (1 : Matrix (Fin 2) (Fin 2) ℚ)
+      = -(1 : Matrix (Fin 2) (Fin 2) ℚ) by
+        simp [schurComplement]]
+  ext i j
+  simp only [Matrix.scalar_apply, Matrix.neg_apply, Matrix.one_apply, Matrix.diagonal_apply]
+  by_cases h : i = j <;> simp [h]
+
+/-- The generated effective scalar block is nonzero. -/
+theorem schurComplement_null_visible_ne_zero :
+    schurComplement (0 : Matrix (Fin 2) (Fin 2) ℚ) 1 1 (1 : Matrix (Fin 2) (Fin 2) ℚ)
+      ≠ 0 := by
+  rw [schurComplement_null_visible_eq_neg_scalar]
+  intro h
+  have := congrFun (congrFun h 0) 0
+  simp [Matrix.scalar_apply] at this
+
+/-- A packaged RG-Schur destabilization witness: Schur complementation can
+generate a nonzero scalar amplitude from null visible data. -/
+theorem schurComplement_generates_nonzero_scalar_amplitude :
+    ∃ m : ℚ, m ≠ 0 ∧
+      schurComplement (0 : Matrix (Fin 2) (Fin 2) ℚ) 1 1 (1 : Matrix (Fin 2) (Fin 2) ℚ)
+        = Matrix.scalar (Fin 2) m :=
+  ⟨-1, by norm_num, schurComplement_null_visible_eq_neg_scalar⟩
+
+/-- The full `1 x 1` block operator has determinant `-1`. -/
+theorem fullOperator_det_eq_neg_one :
+    (Matrix.fromBlocks (0 : Matrix (Fin 1) (Fin 1) ℚ) 1 1
+        (1 : Matrix (Fin 1) (Fin 1) ℚ)).det = -1 := by
+  rw [Matrix.det_fromBlocks₂₂]
+  simp
+
+/-- Entrywise `1 x 1` witness: the visible block is zero while the effective
+Schur block entry is strictly negative. -/
+theorem schurComplement_null_visible_entry_neg :
+    schurComplement (0 : Matrix (Fin 1) (Fin 1) ℚ) 1 1
+        (1 : Matrix (Fin 1) (Fin 1) ℚ) 0 0 = -1
+      ∧ (0 : Matrix (Fin 1) (Fin 1) ℚ) 0 0 = 0 := by
+  refine ⟨?_, rfl⟩
+  simp [schurComplement]
+
+/-! ### Guarded axiom footprint -/
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.solder_offDiagonal_sq_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms solder_offDiagonal_sq_eq_zero
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.schurComplement_null_visible_eq_neg_scalar' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms schurComplement_null_visible_eq_neg_scalar
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.schurComplement_generates_nonzero_scalar_amplitude' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms schurComplement_generates_nonzero_scalar_amplitude
+
+/-- info: 'PhysicsSM.NullStrand.DualSolder.fullOperator_det_eq_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms fullOperator_det_eq_neg_one
+
+end SchurWitness
+
 end PhysicsSM.NullStrand.DualSolder

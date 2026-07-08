@@ -1,7 +1,13 @@
 /-
 # Mass monogamy: the Plucker mass is superadditive, and the excess is binding
 
-DRAFT (kernel-clean; no `s o r r y`). Roadmap item **F3**
+DRAFT (kernel-clean; no `s o r r y`). In this module, "mass" denotes a finite
+spinor-kinematic invariant of the matrix model. It is not a physical or numeric
+hadron mass, carries no continuum or mass-gap content, and implies nothing by
+itself about the `Delta` binding-defect theorem, the carrier identity
+`D^#D|P = det P`, or the S3/S4 interacting bridge.
+
+Roadmap item **F3**
 (`AgentTasks/overnight-allmass-run-2026-07-08/STRENGTHENING_ROADMAP.md`): a new
 finite theorem about the kinematic mass of a bundle of null Weyl spinors,
 `det P = sum_{i<j} |psi_i ^ psi_j|^2` (the trusted §3 invariant; here in a

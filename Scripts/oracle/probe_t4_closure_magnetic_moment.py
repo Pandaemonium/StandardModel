@@ -74,7 +74,7 @@ energy1 = np.trace(curvature(1.0).conj().T @ curvature(1.0)).real
 energy2 = np.trace(curvature(2.0).conj().T @ curvature(2.0)).real
 print("\n2. Linear in F (chromomagnetic), distinct from |F|^2 energy")
 print(f"   Q_C(2F) = 2 Q_C(F)  (LINEAR in F) : {linear}")
-print(f"   Tr(FᴴF): F->{energy1}, 2F->{energy2}  (QUADRATIC, ratio "
+print(f"   Tr(F^*F): F->{energy1}, 2F->{energy2}  (QUADRATIC, ratio "
       f"{energy2/energy1:.0f}) : {np.isclose(energy2/energy1, 4.0)}")
 print("   => Q_C (linear) and the Wilson |F|^2 energy (quadratic) are different"
       " objects, as S6 claims.")
@@ -91,10 +91,10 @@ if ok:
     print("  Q_C has the magnetic-moment structure: a Clifford bivector (sigma)")
     print("  tensor the color field strength (F), LINEAR in F, sign-flipping under")
     print("  the spin grading. This is the structural content of the")
-    print("  'chromomagnetic / QCD' channel name, now confirmed on a genuine")
-    print("  two-edge carrier (not just asserted). HONEST LIMIT: the universal")
+    print("  'chromomagnetic / QCD' channel name, now checked on a genuine")
+    print("  two-edge carrier. HONEST LIMIT: the universal")
     print("  g = 2 COEFFICIENT is not claimed here - it needs a carrier with the")
     print("  physical transport<->gauge-potential normalization fixed (the")
-    print("  remaining T4 sub-target). Structure earned; coefficient pending.")
+    print("  remaining T4 sub-target). Structural check passed; coefficient pending.")
 else:
     print("  Structure check failed - re-analyze.")

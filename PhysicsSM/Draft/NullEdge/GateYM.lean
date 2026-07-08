@@ -58,6 +58,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
 import PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierTorusAttachment
+import PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
 import PhysicsSM.Draft.NullEdge.GateYM.TYTwistSystemZ2
 import PhysicsSM.Draft.NullEdge.GateYM.DoublingTurnPrice
@@ -105,6 +106,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FermionicSingleCutRP
 import PhysicsSM.Draft.NullEdge.GateYM.ClosureObstruction
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+import PhysicsSM.Draft.NullEdge.GateYM.KPAntiRegressionToy
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
 import PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
 import PhysicsSM.Draft.NullEdge.GateYM.ObservableSupportBridge

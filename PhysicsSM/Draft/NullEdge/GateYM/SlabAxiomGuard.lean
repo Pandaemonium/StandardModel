@@ -60,6 +60,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 import PhysicsSM.Draft.NullEdge.CouplingUnificationFinite
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction
+import PhysicsSM.Draft.NullEdge.GateYM.LinearizedClosureEnergy
 import PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount
 import PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia
@@ -671,11 +672,23 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.resolvent_sum_trace
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.count_trace_real' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.count_trace_real
+
 /-! ## S1-CC: closure balanced on the physical sector (Fable call-01, 2026-07-08) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.trace_invOf_conj' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.trace_invOf_conj
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_odd_pow_trace_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_odd_pow_trace_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_trace_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_trace_zero
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.conj_pow' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
@@ -688,5 +701,25 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_charpoly_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_charpoly_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.countP_pos_eq_countP_neg_of_map_neg_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.countP_pos_eq_countP_neg_of_map_neg_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.card_pos_eq_card_neg_of_multiset_map_neg_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.card_pos_eq_card_neg_of_multiset_map_neg_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.neg_charpoly_roots_eq_map_neg_eigenvalues' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.neg_charpoly_roots_eq_map_neg_eigenvalues
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.hermitian_balanced_count_of_neg_charpoly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.hermitian_balanced_count_of_neg_charpoly
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

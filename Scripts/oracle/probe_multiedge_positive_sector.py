@@ -138,12 +138,12 @@ for lam in (0.5, 1.0, 2.0, 4.0, 8.0):
 
 print("\n=== VERDICT ===")
 if escaped:
-    print("  ESCAPE CONFIRMED. On the Cl(4) carrier there IS a J-positive sector on")
+    print("  MEMO ESCAPE ROUTE FOUND. On the Cl(4) carrier there IS a J-positive sector on")
     print("  which the total Krein form J(Q_A+Q_C) becomes positive-definite once the")
-    print("  aperture dominates. The aperture-balancing obstruction is specific to the")
-    print("  2-dim single-doublet factor; a genuine two-edge carrier escapes it and")
-    print("  supplies exactly the definite positive sector `sector_ground_mass` needs.")
-    print("  => T2 mechanism validated; the Lean witness (Matrix.PosDef on the sector")
+    print("  aperture dominates. This shows the aperture-balancing obstruction is not")
+    print("  forced by the 2-dim single-doublet algebra alone; the two-edge carrier")
+    print("  supplies the definite-positive-sector pattern `sector_ground_mass` needs.")
+    print("  => T2 mechanism validated numerically; the Lean witness (Matrix.PosDef on the sector")
     print("     feeding sector_ground_mass) is the next M-target.")
 else:
     print("  NO ESCAPE at these settings: the obstruction persists even in Cl(4).")

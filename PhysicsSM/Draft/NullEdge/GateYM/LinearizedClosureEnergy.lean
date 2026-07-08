@@ -1,10 +1,10 @@
 /-
-# Leading closure defect is positive energy (roadmap S1a core)
+# Leading closure defect is nonnegative energy (roadmap S1a core)
 
 DRAFT (kernel-clean; no `s o r r y`). Overnight all-mass run 2026-07-08.
 The algebraic core of QCD-roadmap stage S1a (Amendment A1): at the flat
 connection, the leading (quadratic-in-connection) closure defect is the
-positive Hilbert-Schmidt energy `||A||^2` - i.e. the `|F|^2` gauge-field
+nonnegative Hilbert-Schmidt energy `||A||^2` - i.e. the `|F|^2` gauge-field
 energy density at leading order.
 
 ## The statements
@@ -20,7 +20,7 @@ For a linearized connection `A` in the Lie algebra (skew-Hermitian,
 Combined with `PlaquetteClosureAction.wilson_plaquette_eq_half_closure_defect`
 (the Wilson weight is half the squared closure defect `|1 - U|^2`), and the
 expansion `1 - U ~ -A` at `U = exp(A) ~ 1 + A`, this is the leading-order
-statement that **closure disagreement is positive gauge-field energy**:
+statement that **closure disagreement is nonnegative gauge-field energy**:
 `N - Re Tr U ~ (1/2)||A||^2 = (1/2)|F|^2 a^4 + O(a^5)`.
 
 ## Claim boundary
@@ -58,7 +58,7 @@ theorem skew_leading_closure_energy (A : Matrix n n ℂ) (hskew : Aᴴ = -A) :
   rw [hskew, neg_mul, trace_neg, neg_neg]
 
 /-- **The leading closure energy is non-negative:** `0 <= -Tr(A A)`. It
-equals `Tr(Aᴴ A) = ||A||_HS^2 >= 0`, the positive `|F|^2`-shaped gauge-field
+equals `Tr(Aᴴ A) = ||A||_HS^2 >= 0`, the nonnegative `|F|^2`-shaped gauge-field
 energy at leading order. -/
 theorem leading_closure_energy_nonneg (A : Matrix n n ℂ) (hskew : Aᴴ = -A) :
     0 ≤ -(A * A).trace := by

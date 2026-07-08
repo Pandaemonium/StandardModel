@@ -1,10 +1,16 @@
 /-
 # Mass as rank/area: the spectral face of `det P`
 
-DRAFT (kernel-clean; no `s o r r y`). This is a finite kinematic support result
-for the §3/§4 mass-functional bridge, not the carrier bridge itself. It
-formalizes the "mass is the *area* the null directions open in spinor space"
-reading (Gemini Pro, `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`):
+DRAFT (kernel-clean; no `s o r r y`). In this module, "mass" denotes a finite
+matrix/spinor-kinematic invariant of the model. It is not a physical or numeric
+hadron mass, carries no continuum or mass-gap content, and implies nothing by
+itself about the `Delta` binding-defect theorem, the carrier identity
+`D^#D|P = det P`, or the S3/S4 interacting bridge.
+
+This is a finite kinematic support result for the §3/§4 mass-functional bridge,
+not the carrier bridge itself. It formalizes the "mass is the *area* the null
+directions open in spinor space" reading (Gemini Pro,
+`Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`):
 for the bundle momentum `M = P = sum_i psi_i psi_i^dagger` (a positive-
 semidefinite Hermitian matrix, the §3 object whose determinant is the mass
 squared),

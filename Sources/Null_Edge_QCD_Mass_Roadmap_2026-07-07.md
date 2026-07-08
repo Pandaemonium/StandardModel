@@ -104,23 +104,33 @@ strongest honest claim available at that stage).
   [CORRECTED by Amendment B: the `|1 - hol|^2 ~ |F|^2` reading belongs to
   the DEFECT GRAM (the Wilson action, Amendment A0), NOT to `Q_C`, which
   is commutator-born and chromomagnetic (`sigma.F`-shaped, linear in F).]
-- STATE: abelian/unitary Gram = Laplacian landed; nonabelian OPEN.
+- STATE before Amendment B: abelian/unitary Gram = Laplacian landed;
+  nonabelian positivity OPEN. Current state is the structured no-go below.
 - NEEDED: two-face SU(2) numeric oracle first; then Lean; the three
   outcomes are pre-registered in the hardest-pieces handoff. If `R` is
   indefinite, positivity relocates to the physical-sector quotient
   (Q01/HSTAR interface) - a reroute, not a defeat.
 - CEILING: `M` finite identity. This stage decides whether "QCD mass =
   closure disagreement" is an operator theorem or only a channel label.
-- **RESOLVED as a structured no-go (2026-07-08 overnight, Fable call-01;
-  engine LANDED).** Closure is NOT positive on the physical sector - it is
-  exactly BALANCED (signature zero) via a grading anticonjugation. The gate
-  asked the wrong question (only the square must descend, not the current).
-  Kernel engine `anticonj_odd_pow_trace_zero` landed + guard-pinned
-  (`GateYM/S1CCBalancedInertia.lean`). Full ladder (Lemma 1, Theorems 1-3,
-  6x6 witness, kill conditions K-A/B/C) in
+- **CONDITIONAL STRUCTURED NO-GO (2026-07-08 overnight,
+  Fable call-01; M engine LANDED + MEMO physical instantiation).** The finite
+  balance engine is kernel-checked, while the physical-sector `J Q_C|V'/N`
+  bridge still needs Lean instantiation. The gate asked the wrong question
+  (only the square must descend, not the current). Kernel rungs
+  `anticonj_odd_pow_trace_zero` and `anticonj_charpoly_eq` landed +
+  guard-pinned (`GateYM/S1CCBalancedInertia.lean`). A pure finite count helper
+  also landed: a negation-invariant real multiset has equal positive and
+  negative counts. The finite Hermitian count capstone now also landed:
+  `hermitian_balanced_count_of_neg_charpoly` proves Hermitian
+  charpoly-negation symmetry gives equal positive/negative eigenvalue counts.
+  Remaining Lean bridge: instantiate the physical-sector `J Q_C` representative
+  and `V'/N` descent hypotheses. Full ladder (Lemma 1, Theorems 1-3, 6x6
+  witness, kill conditions K-A/B/C) in
   `AgentTasks/overnight-allmass-run-2026-07-08/S1CC_RESOLUTION.md`. Survivor:
-  physical positivity relocates to the `p-q` inertia surplus on the
-  doublet-free complement (grade C, Weyl-type dominance bound).
+  physical positivity needs a genuinely `J`-positive sector not balanced by the
+  same closure grading. The single-doublet aperture-rescue route is killed by
+  `probe_s1cc_aperture_grading.py`; a rescue needs a larger/multi-edge carrier
+  or another explicit mechanism.
 
 ### S2. Strong-coupling gap, completed (piece 7)
 
@@ -131,6 +141,12 @@ strongest honest claim available at that stage).
 - STATE: everything else in the chain is pinned (reflection positivity,
   slab gap, OS gap, clustering, area law); ONE documented hole with its
   own proof sketch in comments.
+- ANTI-REGRESSION (2026-07-08): the `n = 3` root-pinned encoder toy is now
+  kernel-checked and guard-pinned in
+  `GateYM/KPAntiRegressionToy.lean`. It proves the pinned flat encoder
+  collapses the two internal orderings while the structured two-slot word
+  separates them. This refutes the bad full-`m_j!` pinned-word route; it does
+  not close the general fixed-forest injection.
 - NEEDED: ship the file section standalone to Aristotle (left-inverse
   parsing argument; tie-break lemma explicit).
 - CEILING: `M` - a kernel-checked strong-coupling mass gap on the
@@ -329,7 +345,12 @@ Adopted:
   `finiteProductForm_component_same`, `finiteProductForm_component_ne`, and
   `finiteProductForm_assemble_eval` prove that component inclusions are
   orthogonal in the finite-product bilinear form and that an assembled family
-  evaluates as the sum of component forms. The Gaussian-integer witness
+  evaluates as the sum of component forms. The next abstract total-assembly
+  rung also landed: `finiteProductForm_total`,
+  `finiteProductForm_total_square`, and
+  `finiteProductForm_total_eq_zero_of_forall` show that sums of component
+  inclusions reconstruct the block-diagonal component sum, with a
+  per-component-vanishing corollary. The Gaussian-integer witness
   `witnessC1_mul_C2_ne_C2_mul_C1` records that the square-zero bivector slot is
   non-vacuous. Remaining work: instantiate the pair index, signs, component
   closure-current forms, and 4-slot normalization on the concrete carrier. Do
@@ -337,12 +358,15 @@ Adopted:
 - **The (a)/(b)/(c) trichotomy is RETIRED - it conflated representation
   with positivity.** Krein squares of null-soldered currents carry no PSD
   diagonal (the program's own nilpotency mechanism), and `sig(J Q_C)` is
-  maximally indefinite on the full space. NEW GATE **S1-CC**: does the
-  GL-torsor meet the constraint-compatible operators (`L_A Gamma' <=
-  Gamma'`, `L_A V' <= V'`)? If yes, slot descent gives closure positivity
-  on `V'/N`; if the restricted form `sig(J Q_C |_{V'})` is indefinite for
-  the correct `V'`, closure positivity genuinely fails on the physical
-  sector. One-day numeric probe once V' is transcribed (Q01 interface).
+  maximally indefinite on the full space. The 2026-07-08 S1-CC result retires
+  the old "descent implies positivity" branch: descent can give a well-defined
+  restricted form, but the closure grading can still force exact balance.
+  The single-doublet probe gives `sig(J Q_C |_{V'/N}) = (2,2,0)` and the
+  aperture/turn escape is killed on that witness. A post-06 two-edge Cl(4)
+  oracle found the first MEMO/numeric rescue route: a genuinely new
+  `J`-positive sector under aperture dominance. Remaining status: transcribe
+  the finite `Matrix.PosDef` witness and wire it to the physical-sector bridge;
+  do not read the oracle as a Lean or continuum positivity theorem.
 - **The registered site-diagonal defect-Gram candidate is structurally
   dead** (grading theorem: `Q_C` is purely off-site-diagonal, hops
   +-(1,1)/+-(1,-1); any site-local Gram is Frobenius-orthogonal to it -
@@ -381,7 +405,7 @@ Adopted:
 S2 (KP injection)  -- days; unblocks the clean gap theorem [Aristotle now]
 S1 (nonabelian Q_C) -- the crux; oracle-first [numeric this week]
 S3 (string tension assembly) -- after S1 wording, pieces are pinned
-S4a (finite Banks-Casher count identity) -- clean novel Lean target
+S4a (finite Banks-Casher-type count identity) -- clean novel Lean target
 S6 (mass-budget theorem) -- cheap Lean; needs S5 witness for content
 S5 (first-meson witness) -- small complex + oracle fixture
 S4bc, S7 -- long-running; gated

@@ -8,6 +8,8 @@ import PhysicsSM.Draft.NullEdge.GateYM.CenterFluxSector
 import PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormLine
 import PhysicsSM.Draft.NullEdge.GateYM.CenterOneFormTwistBridge
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+import PhysicsSM.Draft.NullEdge.GateYM.FixedForestCounting
+import PhysicsSM.Draft.NullEdge.GateYM.KPAntiRegressionToy
 
 /-!
 # GateYM.AxiomGuard: build-enforced axiom-footprint guard for the GateYM spine
@@ -42,7 +44,8 @@ Guarded (all rest only on `[propext, Classical.choice, Quot.sound]`):
 YM1 exact finite-group area law (bulk + boundary), Elitzur volume-uniform bound,
 the reflection-positivity kernel nonnegativity, Q5 Wilson vacuum dominance
 (normalized-gamma bound + nonneg string tension), the honest center-flux gap
-witness, and the verified-negative bare-KP disproof.
+witness, the verified-negative bare-KP disproof, and the fixed-forest labelled
+block counting lemma.
 
 Provenance: grand-strategy-audit follow-through, overnight all-mass run
 2026-07-06. No `s o r r y`/`a x i o m`; `#print axioms` + `#guard_msgs` only.
@@ -173,5 +176,21 @@ namespace PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.kp_convergence_bound_false' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.kp_convergence_bound_false
+
+/-! ## Fixed-forest labelled-block counting support -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.fixed_forest_fiber_card_mul_le_factorial' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.fixed_forest_fiber_card_mul_le_factorial
+
+/-! ## K1 anti-regression toy: root-pinned encoder collapse -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.KPAntiRegressionToy.pinnedWord_collapses_toy' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.KPAntiRegressionToy.pinnedWord_collapses_toy
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.KPAntiRegressionToy.structuredWord_separates_toy' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion.KPAntiRegressionToy.structuredWord_separates_toy
 
 end PhysicsSM.Draft.NullEdge.GateYM.AxiomGuard

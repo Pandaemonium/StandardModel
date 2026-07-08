@@ -5,15 +5,19 @@ Groundwork for rigorous dynamics simulations (see
 principle: EVERY numerical output is checked against a landed, kernel-checked
 identity, so the simulation is anchored to proofs rather than free-floating.
 
-Four validated blocks:
+Five validated blocks:
   1. KINEMATICS  - Plucker mass: det(sum psi psi^dag) = sum_{i<j}|wedge|^2
      (validates PluckerMass.two_edge_plucker_mass_identity + MassMonogamy).
   2. BUDGET      - the carrier square splits into channels summing to one share
      (validates CarrierMassBudget.signed_budget_sum_one).
   3. EVOLUTION   - discrete time evolution U=exp(-i H t) on a positive sector:
      norm AND energy conserved (the dynamics seed; D2/D3 of the roadmap).
-  4. RG STEP     - Schur decimation of a null chain: (ab)^2 = k(ab), effective
-     coupling != 0 iff non-collinear (validates RGSchurMassWitness).
+  4. RG FLOW     - Schur decimation of a null chain and a finite trajectory:
+     (ab)^2 = k(ab), effective coupling != 0 iff non-collinear, and an
+     idempotent effective edge stays controlled under repeated blocking
+     (validates RGSchurMassWitness + FiniteRGFlow).
+  5. ENSEMBLE    - finite canonical probabilities over the sector spectrum:
+     Z > 0, p_i > 0, sum_i p_i = 1 (validates FiniteCanonicalEnsemble).
 
 Numeric oracle only; the VALIDATIONS mirror kernel theorems.
 Usage: python Scripts/oracle/carrier_dynamics_harness.py
@@ -145,10 +149,10 @@ def validate_evolution():
 
 
 # ----------------------------------------------------------------------------
-# 4. RG STEP: Schur decimation of a null chain (mass generation)
+# 4. RG FLOW: Schur decimation of a null chain (mass generation)
 # ----------------------------------------------------------------------------
 def validate_rg_step():
-    print("4. RG STEP (Schur decimation: mass from blocking non-collinear nulls)")
+    print("4. RG FLOW (Schur decimation: mass from blocking non-collinear nulls)")
     # Null (nilpotent) coefficients a, b with a^2=b^2=0, {a,b}=k.1.
     a = np.array([[0, 1], [0, 0]], dtype=complex)   # sigma_+
     b = np.array([[0, 0], [1, 0]], dtype=complex)   # sigma_-  ; {a,b}=I => k=1
@@ -159,10 +163,49 @@ def validate_rg_step():
     # effective edge non-nilpotent (mass generated) iff k != 0 (non-collinear)
     gen = check("effective term non-nilpotent (mass generated), k!=0",
                 not np.allclose(ab @ ab, 0))
+    # Multi-step D4 seed: once the effective edge is an idempotent nonzero
+    # projector, repeated blocking by X |-> X^2 preserves that invariant. This
+    # is the concrete simulation analogue of FiniteRGFlow.invariant_orbit.
+    X = ab.copy()
+    traj = []
+    for _ in range(5):
+        traj.append(X)
+        X = X @ X
+    flow_ok = all(np.allclose(Y @ Y, Y) and not np.allclose(Y, 0) for Y in traj)
+    trace_ok = all(np.isclose(np.trace(Y), 1.0) for Y in traj)
+    ok_flow = check("finite RG orbit preserves idempotent nonzero effective edge",
+                    flow_ok)
+    ok_trace = check("finite RG orbit preserves trace observable",
+                     trace_ok)
     # collinear control: b' = a (same direction) => {a,a}=0 => no mass
     ctrl = check("collinear control: {a,a}=0 => effective term nilpotent (no mass)",
                  np.allclose((a @ a) @ (a @ a), 0))
-    return law and gen and ctrl
+    return law and gen and ok_flow and ok_trace and ctrl
+
+
+# ----------------------------------------------------------------------------
+# 5. ENSEMBLE: canonical ensemble over a finite carrier spectrum
+# ----------------------------------------------------------------------------
+def validate_canonical_ensemble():
+    print("5. ENSEMBLE (finite canonical ensemble over the carrier spectrum)")
+    c = build_carrier(lam=2.0, kappa=1.0)
+    evJ, UJ = np.linalg.eigh(c["J"])
+    Pcols = UJ[:, evJ > 1e-9]
+    H = Pcols.conj().T @ (c["QA"] + c["QC"]) @ Pcols
+    H = (H + H.conj().T) / 2.0
+    energies = np.linalg.eigvalsh(H)
+    beta = 0.9
+    weights = np.exp(-beta * energies)
+    Z = weights.sum()
+    probs = weights / Z
+    free_energy = -(1.0 / beta) * np.log(Z)
+    entropy = -np.sum(probs * np.log(probs))
+    ok_z = check("partition function positive (partitionFunction_pos)", Z > 0)
+    ok_p = check("all probabilities positive (probability_pos)", np.all(probs > 0))
+    ok_sum = check("sum_i p_i = 1 (sum_probability_eq_one)",
+                   np.isclose(probs.sum(), 1.0))
+    print(f"      beta={beta:.2f} Z={Z:.6f} F={free_energy:.6f} S={entropy:.6f}")
+    return ok_z and ok_p and ok_sum
 
 
 def main():
@@ -172,15 +215,16 @@ def main():
         "budget": validate_budget(),
         "evolution": validate_evolution(),
         "rg_step": validate_rg_step(),
+        "ensemble": validate_canonical_ensemble(),
     }
     print("\n=== SUMMARY ===")
     for name, ok in results.items():
         print(f"  {name:12s}: {'all checks PASS' if ok else 'FAILURE'}")
     allok = all(results.values())
     print(f"\n  Harness {'VALIDATED (every block matches its kernel theorem)' if allok else 'has FAILURES - investigate'}.")
-    print("  This is the D3/D4 numeric seed; D1 (finite carrier action + EOM,")
-    print("  clean-room from PhysLean VariationalCalculus/EulerLagrange) and D5")
-    print("  (canonical ensemble) are the next groundwork - see DYNAMICS_GROUNDWORK.md.")
+    print("  Finite D1-D5 kernel seeds now exist; the next work is specialization")
+    print("  to the interacting carrier action, transfer operator, Schur flow,")
+    print("  and thermodynamic limit - see DYNAMICS_GROUNDWORK.md.")
 
 
 if __name__ == "__main__":

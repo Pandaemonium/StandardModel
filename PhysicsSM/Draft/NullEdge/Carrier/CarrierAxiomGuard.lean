@@ -41,6 +41,12 @@ import PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass
 import PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness
 import PhysicsSM.Draft.NullEdge.Carrier.WittenPositiveMass
 import PhysicsSM.Draft.NullEdge.Carrier.MassMonogamyPartition
+import PhysicsSM.Draft.NullEdge.Carrier.FiniteCarrierAction
+import PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction
+import PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution
+import PhysicsSM.Draft.NullEdge.Carrier.FiniteRGFlow
+import PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble
+import PhysicsSM.Draft.NullEdge.Carrier.FreeMassBridge
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -688,5 +694,55 @@ finite Witten positive-mass (F4), general-partition monogamy (F3 rd2) -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassMonogamyPartition.massOn_add_massOn_compl_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.MassMonogamyPartition.massOn_add_massOn_compl_le
+
+/-! ## D1 dynamics seed: finite carrier action and Euler equations -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteCarrierAction.multiplierStationary_iff_eom' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteCarrierAction.multiplierStationary_iff_eom
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteCarrierAction.stationaryPair_iff_eom_pair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteCarrierAction.stationaryPair_iff_eom_pair
+
+/-! ## D1 dynamics seed: finite quadratic action and mass-shell stationarity -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.quadraticStationary_iff_eom' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.quadraticStationary_iff_eom
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.massShellStationary_iff_eigen' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.massShellStationary_iff_eigen
+
+/-! ## D2/D3 dynamics seed: finite unitary transfer conservation -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution.norm_conserved_orbit' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution.norm_conserved_orbit
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution.energy_conserved_orbit' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution.energy_conserved_orbit
+
+/-! ## D4 dynamics seed: finite RG-flow invariant propagation -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteRGFlow.invariant_orbit' does not depend on any axioms -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteRGFlow.invariant_orbit
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteRGFlow.observable_antitone_orbit' depends on axioms: [propext] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteRGFlow.observable_antitone_orbit
+
+/-! ## D5 dynamics seed: finite canonical ensemble normalization -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble.sum_probability_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble.sum_probability_eq_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble.energyVariance_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble.energyVariance_nonneg
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
