@@ -78,6 +78,8 @@ as current state.
 - `GOAL_PROMPT_CLAUDE.md`, `GOAL_PROMPT_CODEX.md` - executor standing orders (Codex: Spark subagents for external lit). [STABLE]
 - `LEDGER.md`, `LIT_SEARCH_LOG.md` - append-only coordination + literature logs. [LIVE]
 - `S1CC_RESOLUTION.md` - the central positivity crux resolved as a structured no-go (closure balanced); theorem ladder + kill conditions. [LIVE]
+- `C4_SECTORED_INDEX_AND_STRATEGY.md` - Fable call-02: the reflection-sectored chiral index (double-pinning is Lefschetz, not winding) + the ranked next-target strategy. [LIVE]
+- `HONEST_SCORECARD.md` - the run's honest accounting (landings, oracles, kills, remainder); finalized near dawn. [LIVE]
 - `Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` (Sources/) - see manuscripts. [DRAFT-MS]
 - `COLLABORATOR_BRIEF_2026-07-08.md` - standalone external brief: status snapshot + the seven hardest challenges (C1-C7) + closed-routes list; safe to send outside. [STABLE]
 
