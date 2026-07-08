@@ -951,3 +951,29 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   in the standard guard-build check.
 - Note: both modules DO build individually (verified); this is a
   durability/convention fix, not a correctness issue.
+
+## [LAND Claude] Fable call-03 harvested: mass-functional caveat + S6 design + unifier captured
+
+- Fable call-03 (log 2026-07-08-004503): Part A unifier (equivariant graded
+  index, 3-of-4), Part B S6 singlet witness (concrete rational, b_C=-32/223,
+  hyperfine splitting), Part C weakest link = the mass FUNCTIONAL. Full
+  capture: CALL03_UNIFIER_S6WITNESS_MASSGAP.md.
+- HONESTY (Part C, the deepest finding): "mass" has TWO non-identified
+  meanings - S3 det P (trusted) vs S4+ M^2 = 4 ev(D^2) (expectation of an
+  operator square in a chosen state/functional). The budget decomposes a
+  QUADRATIC FUNCTIONAL, a mass only at a ground state on a positive sector.
+  Added manuscript S4 RAIL 3 acknowledging this + pointing to
+  sector_ground_mass (the Rayleigh-Ritz keystone, now ripe via
+  aperture_dominance_pos); added as S10 open-crux #0 (the deepest link).
+- Fixed flag #2 (S4 witness (1/2,0,1/2) is arithmetic consequence, not a
+  separate theorem - softened; witness_QC_zero is the pinned closure=0).
+- Fixed flag #3 (aperture_dominance_pos docstring: feed the KREIN form
+  J.(Q_A+Q_C), c>0 implied).
+- HANDOFFS: S6 18-dim singlet witness (exact operators + predicted budget
+  in the doc) - a decide/norm_num landing via Kronecker lemmas (do NOT
+  fin_cases 18x18); singlet_one_leg_closure_zero no-go; the EquivariantGraded
+  Index unifier (L3 graded_supertrace_localizes_to_kernel re-derives the
+  index family); anticonj_trace_zero docstring nit (Codex file).
+- Claim boundary: prose + docstring; S6 budget is oracle-verified (Fable
+  fraction arithmetic) => C with the kill "exact Lean disagrees with
+  (135/446,-32/223,375/446)".

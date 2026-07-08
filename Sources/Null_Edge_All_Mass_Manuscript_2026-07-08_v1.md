@@ -205,9 +205,15 @@ b_A + b_C + b_T = 1 ,
 ```
 
 is kernel-checked (`signed_budget_sum_one`, **M**), with a concrete
-non-vacuous witness: a single-edge `2x2` carrier gives closure share
-exactly zero (one edge, no closure) and budget `(1/2, 0, 1/2)`
-(`witness_budget_sum_one`, **M**). Two honesty rails, both load-bearing:
+non-vacuous witness: a single-edge `2x2` carrier has closure share exactly
+zero (`witness_QC_zero`, **M** — one edge, no closure) and, as an arithmetic
+consequence of the kernel-pinned `sum = 1` and `D^2` value, shares
+`(1/2, 0, 1/2)` (`witness_budget_sum_one`, **M**). *(The closure share of a
+non-trivial state is generally nonzero: a color-singlet stretched over a
+non-flat holonomy loop has `b_C` equal to a difference of Wilson loops — a
+concrete rational `18`-dim quark–antiquark witness with `b_C = −32/223 ≠ 0`
+and a hyperfine spin-flip splitting is designed and awaiting transcription;
+Fable analysis this run.)* Three honesty rails, all load-bearing:
 
 1. **The shares are signed.** We do *not* call them positive fractions.
    Whether a channel share is positive is the closure-positivity question
@@ -221,6 +227,22 @@ exactly zero (one edge, no closure) and budget `(1/2, 0, 1/2)`
    chromomagnetic object); the `|F|^2` gluon *energy* density is a
    different object (the Wilson action, §6). Conflating them is a
    pre-registered error (§10).
+3. **What the budget decomposes is a quadratic functional, not yet a
+   mass.** This is the paper's most important caveat, and it is the deepest
+   open link. In §3 "mass" is `det P`, an invariant of a state's momentum
+   (trusted, spectral). From §4 on, `M^2 := 4 ev(D^2)` is the expectation
+   of an operator square in a *chosen* state against a *chosen* functional.
+   The expectation of `D^2` is a genuine mass only at an eigenstate — on a
+   Krein space, only at the ground state of a *positive* physical sector.
+   So the four-channel budget honestly decomposes a quadratic functional,
+   and it becomes a decomposition of a *mass* exactly when that functional
+   is minimized on a positive sector. The theorem that closes this — a
+   finite Rayleigh–Ritz keystone, `sector_ground_mass` — is now *ripe*: it
+   composes the just-landed aperture-dominance positivity
+   (`aperture_dominance_pos`, §6) with Krein self-adjointness to make
+   `min spec(D^#D)` on the sector a genuine mass whose budget shares are
+   the §4 fractions at the minimizer. It is grade **C** / **M**-target and
+   is the single most valuable next theorem (§10).
 
 The physical target this shape is aimed at — a finite analogue of the Ji
 decomposition of the proton mass — is grade **C**: the weak claim
@@ -531,15 +553,20 @@ is dead, so no one re-derives them:
 physical-sector closure positivity (S1-CC) — is now *resolved* as a
 structured no-go (§6): closure is balanced, its algebraic engine is
 kernel-checked, and the pre-registered numeric kill probe passed. What
-remains: (1) the surviving positivity question it exposed — total-operator
-positivity on the doublet-free complement, i.e. an aperture/turn-dominance
-inequality over the `J`-definite directions (§6). (2) The strong-coupling
-gap's forest injection (§6) — now a well-posed combinatorics problem, the
-malposed-statement diagnosis in hand. (3) The multi-direction closure
-square (a stabilization, largely dissolved). (4) The chiral winding
-invariant for the double-pinning (§8). (5) Completing the S1-CC ladder in
-Lean (Theorems 1–3: descent, restricted inertia, the grading no-go —
-oracle-confirmed, transcription pending). Each is finite, each has a kill
+remains, ranked: **(0) `sector_ground_mass`** — the Rayleigh–Ritz keystone
+(§4 rail 3) that turns the budget's quadratic functional into a genuine
+mass at the ground state of a positive sector; it is the deepest link and
+is now *ripe*, composing the just-landed aperture-dominance positivity with
+Krein self-adjointness. (1) The surviving positivity question S1-CC exposed
+— total-operator positivity on the doublet-free complement, i.e. an
+aperture/turn-dominance inequality over the `J`-definite directions (§6);
+its opener (`aperture_dominance_pos`) is landed. (2) The strong-coupling
+gap's forest injection (§6) — now a well-posed combinatorics problem
+(demoted to a standing bounty). (3) The color-singlet mass-budget witness
+(§4) — designed, `b_C ≠ 0`, awaiting transcription. (4) The reflection
+-sectored double-pinning theorem and its rational fixture (§8). (5) The S1
+-CC Lean capstone and the equivariant-index unification of §§4/6/8 (the
+program's candidate organizing theorem). Each is finite, each has a kill
 condition, none requires new axioms.
 
 ---

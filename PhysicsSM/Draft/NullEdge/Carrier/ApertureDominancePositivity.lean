@@ -39,6 +39,15 @@ and the physical sector is the (handed-off) content. No positivity of the
 closure channel itself is claimed - the point is precisely that closure is
 signed and only the SUM is positive.
 
+Two instantiation traps (Fable call-02/03 review): (a) the conclusion is
+positivity of `Re<v, (A+C) v>`; for a NON-Hermitian sum this is weaker than
+operator positivity, so the physical instantiation must feed the KREIN form
+`J . (Q_A + Q_C)` (Krein-self-adjoint), not the bare blocks; (b) `c > 0` is
+not a separate hypothesis - it is implied (`hC` forces `kappa >= 0` on a
+nonzero `v in P`, and `kappa < c`). This rung is the input to
+`sector_ground_mass` (the Rayleigh-Ritz keystone that turns `min spec` into
+a genuine mass - the manuscript's central open link, now ripe).
+
 ## Provenance
 
 Fable call-02 (2026-07-08), Part C #1 - the recommended house-style opener
