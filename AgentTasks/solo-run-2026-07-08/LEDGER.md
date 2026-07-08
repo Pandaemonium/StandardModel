@@ -131,7 +131,36 @@ jobs and strategy jobs, as well as working on any proofs." => every tick, TOP UP
 the Aristotle queue: keep several jobs running (audit + strategy + proof mix),
 harvest completed ones, resubmit. Do not let the queue go empty.
 
-## In flight (external, not harness-tracked) — Aristotle batch 1 (~11:50)
+## Cycle A.7 (~12:10) — harvested Aristotle batch 1 (3 of 5)
+
+- **PROOF `209d380f` (spectrum): LANDED + integrated.** `B_spectrum : spectrum ℝ
+  (B λ κ) = {λ-κ, λ, λ+κ}` + `B_det_sub` into MassGapWitness, guard-pinned.
+- **AUDIT `90783cf8`: actioned.** All kernel statements TRUE/non-vacuous; 2
+  LOAD-BEARING framing over-claims fixed: (#1) CarrierUnitaryFlow "actual carrier"
+  -> tightened to "Euclidean-unitarity of exp(-itH) instantiated at B, NOT the
+  Krein evolution" (module intro + §9a); (#2) T2/HAC/M6 are HAND-TYPED, Cl(4)
+  provenance was docstring-only -> added disclosure + submitted the closing proof
+  job (`e39d6043`, allmass-proof-clifford: prove HAC = Kronecker assembly).
+- **STRATEGY `a5f58604` (binding): OVER-DELIVERED - landed a kernel result.**
+  `blockBindingDefect_eq_neg_kappa : Δ_block(λ,κ) = −κ` (0≤κ≤λ) + corollaries
+  (nonpos, strict-neg, closure-controlled unit-slope, off-diagonal-binding,
+  massless line, kill). Self-contained file in the result archive
+  (`allmass-strategy-binding-.../DeltaBindingEnergy.lean`). **INTEGRATION TARGET
+  (next tick):** adapt to MassGapWitness.B (drop the duplicated B/spectral lemmas),
+  create a draft module, guard-pin, and UPGRADE the manuscript §4/§10 Δ treatment
+  from C -> M-at-block-level (Δ = −κ, negative + closure-controlled, kernel).
+  Strategy doc's honest risk: the sign is airtight; the "Δ is THE binding energy"
+  reading rests on the (λ,κ) carrier reduction (kernel only at (2,1)).
+
+## In flight — Aristotle queue (3 running as of ~12:12)
+
+- STRATEGY `e2115aad` (allmass-strategy-s1cc) — kernelize the §6 S1-CC crux.
+- STRATEGY `9bc63388` (allmass-strategy-unifier) — the equivariant-index unifier.
+- PROOF `e39d6043` (allmass-proof-clifford) — HAC = Cl(4) Kronecker assembly
+  (closes audit #2).
+Next tick: harvest these + integrate the Δ-binding result + top up the queue.
+
+## (harvested) Aristotle batch 1 (~11:50)
 
 - **AUDIT** `90783cf8-29ba-4d4f-b819-19a9c709c3e8` (allmass-audit-flagships) —
   adversarial over-claim audit of the 5 landed flagships (4 modes: vacuity,
