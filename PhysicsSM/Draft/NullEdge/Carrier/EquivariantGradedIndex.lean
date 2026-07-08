@@ -84,10 +84,33 @@ theorem chiralProduct_involution (Gamma W : Matrix n n ℂ)
     (Gamma * W) * (Gamma * W) = 1 := by
   rw [← mul_assoc (Gamma * W) Gamma W, hchiral, hU]
 
+/-- **The sector mode-production heart (clause (iii), spectral-theorem-free).**
+If a vector `v` is a common `s`-eigenvector of the grading `Gamma` and the
+chiral product `C = Gamma W` for a sign `s` (`s^2 = 1`, so `s = +-1`), then
+`v` is a fixed vector of `W`: `W v = v`. This is why BOTH the `(+1,+1)` and
+`(-1,-1)` sectors of `(Gamma, C)` land in `ker(W - 1)` - the finite
+mode-production fact behind the sectored pinning inequality (the finrank
+counting `dim >= |nu|` is the remaining L4 step). No eigenvalues, no
+spectral theorem - pure `mulVec` algebra. -/
+theorem sector_pins_W_fixed (Gamma W : Matrix n n ℂ) (v : n → ℂ) (s : ℂ)
+    (hGamma : Gamma * Gamma = 1) (hs : s * s = 1)
+    (hGv : Gamma.mulVec v = s • v)
+    (hCv : (Gamma * W).mulVec v = s • v) :
+    W.mulVec v = v := by
+  have h2 : Gamma.mulVec ((Gamma * W).mulVec v) = Gamma.mulVec (s • v) := by
+    rw [hCv]
+  rw [Matrix.mulVec_mulVec, ← mul_assoc, hGamma, one_mul, Matrix.mulVec_smul,
+    hGv, smul_smul, hs, one_smul] at h2
+  exact h2
+
 /-! ## Local axiom guard (self-contained) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.chiralProduct_involution' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms chiralProduct_involution
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.sector_pins_W_fixed' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms sector_pins_W_fixed
 
 end PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex
