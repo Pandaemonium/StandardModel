@@ -329,6 +329,18 @@ together; they are four summands of one square. The claim the program
 stakes is that *the* invariant — pairwise null disagreement — reappears in
 each channel through a different canonical map.
 
+*It is not a telescoping tautology.* A referee will ask whether `E_#` is
+merely *defined* as the residual `4 D^#D − Q_A − Q_C − 4 Q_T`, which would
+make the identity vacuous (an audit this run raised exactly this). It is
+not: each of the four blocks has an **independent, canonical definition**,
+visible in the display above — `Q_A^#` from the *anticommutator* (the metric
+`g`), `Q_C^#` from the *commutator* (the Clifford bivector), `Q_T` from
+`phi^2`, and `E_#` from the *specific* cross-term sum
+`Σ_e γ_e Γ (φ(∇_e^# − ∇_e))`. The content of `carrier_krein_square` is that
+these four independently-built operators *sum to* `4 D^#D` — a genuine
+decomposition, not a renaming of a leftover. What remains open is not
+non-vacuity but *forcing*:
+
 *The honest weakness in this thesis, named as a conjecture.* Every
 Dirac-type operator squares into a Lichnerowicz/Weitzenböck identity;
 decomposition-of-the-square is a property of the *category*, not of our
@@ -386,20 +398,37 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
    Krein space, only at the ground state of a *positive* physical sector.
    So the four-channel budget honestly decomposes a quadratic functional,
    and it becomes a decomposition of a *mass* exactly when that functional
-   is minimized on a *positive* sector. The theorem that would close this —
-   a finite Rayleigh–Ritz keystone, `sector_ground_mass` — depends on such a
-   positive sector *existing*, and a pre-registered probe this run (§6, §10)
-   found that **on the current single-doublet witness no positive sector
-   exists**: the closure grading balances the aperture's Krein form as well,
-   so the whole operator is balanced there. The aperture-dominance rung
-   (`aperture_dominance_pos`, §6) controls the *Hermitian* form `Re<v,(A+C)v>`,
-   which is weaker than the *Krein* form `J(A+C)` that actually sets the mass —
-   and it is the Krein form that is obstructed. So `sector_ground_mass` is
-   **not ripe on the existing model**; it presupposes a genuine multi-edge
-   carrier that evades the obstruction (larger Clifford algebra, closure
-   bivector distinct from chirality). Building that carrier is the single most
-   valuable next construction, and `sector_ground_mass` on it the single most
-   valuable next theorem (grade **C** / **M**-target; §10).
+   is minimized on a *positive* sector. The keystone that performs this
+   upgrade — a finite Rayleigh–Ritz theorem, `sector_ground_mass` — is now
+   **kernel-checked (M, guard-pinned; proved this run by an Aristotle
+   strengthening job)**: on a finite-dimensional sector with a *definite*
+   inner product, an ordinary-self-adjoint `T = D^#D|_P` whose real form is
+   bounded below by `c > 0` has its Rayleigh-quotient infimum attained *as a
+   genuine eigenvalue that is `> 0`*. That is the exact statement that turns
+   "a quadratic functional" into "a positive squared mass." But the theorem
+   is honest about being **conditional**, and two independent expert reviews
+   this run pinned exactly what it is conditional *on* — these are now the
+   program's two deepest open links, not hand-waves:
+
+   - *The positive sector must exist.* The hypothesis is a *definite*
+     (`J`-positive) sector. A pre-registered probe this run (§6, §10) found
+     that **on the current single-doublet witness no such sector exists**: the
+     closure grading balances the aperture's *Krein* form `J Q_A` as well, so
+     the whole operator is balanced there. (The aperture-dominance rung
+     `aperture_dominance_pos` controls the weaker *Hermitian* form
+     `Re<v,(A+C)v>`, not the Krein form that sets the mass.) So the keystone's
+     hypothesis is **not vacuously available**; instantiating it needs a
+     genuine multi-edge carrier (larger Clifford algebra, closure bivector
+     distinct from chirality) — the program's single most valuable next
+     *construction*.
+   - *The eigenvalue is not yet `det P`.* The keystone yields the least
+     eigenvalue of `D^#D` — an operator-spectral number. The §3 mass is
+     `det P`, a Gram invariant of a state's momentum. Identifying them,
+     `min spec(D^#D|P) = det P` of the ground bundle, is a **separate bridge
+     theorem** (grade **C**), is not proved, and may be false as stated; it is
+     pre-registered with a kill condition in §10. Until it is proved, the
+     keystone upgrades the budget to "*an* eigenvalue," not yet to "*the* mass
+     of §3."
 
 The physical target this shape is aimed at — a finite analogue of the Ji
 decomposition of the proton mass — is grade **C**, and the two claims it
@@ -844,25 +873,30 @@ program's highest non-kernel grade, not a fully kernel-closed theorem — and
 its *surviving positivity half* is now known to be **obstructed on the
 witness** (see the new kill below and §6): the same grading that balances
 closure also balances the aperture and turn, so the escape route has no
-witness yet. What remains, ranked: **(0) `sector_ground_mass`** — the
-Rayleigh–Ritz keystone (§4 rail 3) that would turn the budget's quadratic
-functional into a genuine mass at the ground state of a positive sector; it
-is the deepest link, but it is **no longer "ripe on the existing witness"** —
-it now presupposes a carrier that *evades* the aperture-balancing obstruction
-(a larger-Clifford, multi-edge model where the closure bivector and the
-chirality are distinct gradings). (1) The surviving positivity question is
-therefore sharpened, not merely open: total-operator Krein-positivity on the
-doublet-free complement **cannot** hold for a scalar-metric single-doublet
-carrier (the aperture's Krein form `J Q_A` is balanced by the closure
-grading); the live route is a genuine multi-edge carrier, and building one is
-the program's single most valuable next construction (§6). (2) The strong-coupling
-gap's forest injection (§6) — now a well-posed combinatorics problem
-(demoted to a standing bounty). (3) The color-singlet mass-budget witness
-(§4) — designed, `b_C ≠ 0`, awaiting transcription. (4) The reflection
--sectored double-pinning theorem and its rational fixture (§8). (5) The S1
--CC Lean capstone and the equivariant-index unification of §§4/6/8 (the
-program's candidate organizing theorem). Each is finite, each has a kill
-condition, none requires new axioms.
+witness yet. What remains, ranked: **(0) The Rayleigh–Ritz keystone
+`sector_ground_mass` is now *proved* (M, guard-pinned; §4 rail 3)** — the
+conditional "definite positive sector `⇒` genuine positive squared-mass
+eigenvalue" is kernel-checked. What it is conditional *on* splits into the
+two deepest open links: **(0a)** a positive sector must *exist* — obstructed
+on the current single-doublet witness (the aperture's Krein form `J Q_A` is
+balanced by the closure grading; total-operator Krein-positivity **cannot**
+hold for a scalar-metric single-doublet carrier), so the live route is a
+genuine multi-edge carrier, and building one is the program's single most
+valuable next *construction* (§6); and **(0b)** the **§3↔§4 bridge**
+`min spec(D^#D|P) = det P` of the ground bundle — the theorem that the
+keystone's eigenvalue is *the* kinematic mass of §3 and not merely *an*
+eigenvalue. It is grade **C**, is **not** proved, and (per the Aristotle
+strengthening audit) may be false as stated; **kill condition:** exhibit a
+carrier and a ground vector whose least `D^#D`-eigenvalue differs from the
+`det P` of its momentum bundle. This is the honest deepest link — the place
+where "an elegant operator algebra" and "the §3 mass" are not yet the same
+subject. (1) The strong-coupling gap's forest injection (§6) — now a
+well-posed combinatorics problem (demoted to a standing bounty). (2) The
+color-singlet mass-budget witness (§4) — designed, `b_C ≠ 0`, awaiting
+transcription. (3) The reflection-sectored double-pinning theorem and its
+rational fixture (§8). (4) The S1-CC Lean capstone and the equivariant-index
+unification of §§4/6/8 (the program's candidate organizing theorem). Each is
+finite, each has a kill condition, none requires new axioms.
 
 **Pre-registered predictions (falsifiable, dimensionless, dated).** The
 program is permitted exactly one kind of numeric prediction: a
@@ -907,10 +941,11 @@ anchor-swept — every name and guard status grep-verified against the repo on
 | 3 | `two_edge_plucker_mass_identity` | `Spinor/PluckerMass.lean` | M, trusted namespace | two-edge mass = disagreement |
 | 3 | `fin_bundle_plucker_mass_identity` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | mass = pairwise disagreement, general `n` |
 | 3 | `fin_bundle_mass_zero_iff_common_direction` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | massless iff collinear |
-| 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master identity `4 D^#D = Q_A+Q_C+4Q_T+E_#` |
-| 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | 3-slot specialization (`E_#=0`) |
+| 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master Krein identity: starred blocks `Q_{A,C}^#` + `4 Q_T` + `4 E_#` (§4) |
+| 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | self-adjoint 3-slot specialization `4 D^#D = Q_A+Q_C+4Q_T` (`E_#=0`, bare blocks) |
 | 4 | `signed_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | shares sum to one (abstract) |
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-vacuous `(1/2,0,1/2)` witness |
+| 4 | `sector_ground_mass` | `Carrier/SectorGroundMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | Rayleigh–Ritz keystone: definite-sector ground value is a positive squared mass (conditional; §4 rail 3, §10 crux 0) |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure-defect trace identity |
 | 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | Wilson action = squared defect |

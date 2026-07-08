@@ -35,6 +35,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierMassBudget
 import PhysicsSM.Draft.NullEdge.Carrier.ApertureDominancePositivity
 import PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex
+import PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMass
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -642,5 +643,11 @@ product-square lemma, the non-nilpotent effective edge on the decimated
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassBudget.witness_assembly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.MassBudget.witness_assembly
+
+/-! ## Keystone: the Rayleigh-Ritz ground-mass theorem (Aristotle 4bf9899f, overnight 2026-07-08) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMass.sector_ground_mass' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMass.sector_ground_mass
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

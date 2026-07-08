@@ -7,9 +7,21 @@ aristotle:
   target_file: AllMassStrengthen/Strengthen.lean
   expected_module: AllMassStrengthen
   submission_project: AgentTasks/aristotle-submit/allmass-manuscript-strengthen-20260708-project
-  output_dir: AgentTasks/aristotle-output/4bf9899f-3e31-42f8-82ab-a6cbfa2b5780
-  status: submitted
+  output_dir: AgentTasks/aristotle-output/4bf9899f-manuscript-strengthen.tar.gz
+  status: complete
 ```
+
+**RESULT (complete).** Aristotle delivered a full formal-methods referee
+report (`ARISTOTLE_STRENGTHEN_REPORT_2026-07-08.md`, copied into this run
+folder) AND proved the recommended #1 theorem `sector_ground_mass` in Lean.
+The proof was integrated into the project as
+`PhysicsSM/Draft/NullEdge/Carrier/SectorGroundMass.lean` (kernel-checked M,
+guard-pinned in `CarrierAxiomGuard`, `lake build` green, footprint
+`[propext, Classical.choice, Quot.sound]`). Aristotle independently reached
+the same aperture-positivity finding as Fable call-04 + the probe (correctness
+flag #1), and injected the deep §3↔§4 bridge crux (`min spec = det P`?, may be
+false). All threaded into the manuscript (§4 rail 3, §10 crux 0a/0b, §11 row,
+telescoping rebuttal).
 
 ## What this is
 
