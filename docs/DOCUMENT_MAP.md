@@ -54,6 +54,7 @@ as current state.
 - `Sources/Null_Edge_Publication_Outlines_2026-07-07.md` - five Letter-caliber outlines (P13, P2-R, P14, P4-R, P15 + future slots). [LIVE]
 - `Sources/Ontology_extensions.md` - graded steer memo (teleparallel E-slot, positivity routes, index/spectral-action framing); integrated 2026-07-07. [STABLE]
 - `Sources/Null_Edge_Program_Charter_2026-07-07.md` - the post-audit program charter (U0-U5 claim ladder, amendments, declared losses, kills). [LIVE]
+- `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md` - the closure-channel endgame: staged path (S1-S7) from the pinned strong-coupling stack to mass from QCD, with claim ceilings and the Clay boundary named. [LIVE]
 - `AgentTasks/fable_parallel/Q01_answer.md` - positivity crux solved to its
   boundary at memo level; the finite Kugo-Ojima witness/no-go is now
   kernelized in `KreinPositiveSectorWitness`, while the carrier-level

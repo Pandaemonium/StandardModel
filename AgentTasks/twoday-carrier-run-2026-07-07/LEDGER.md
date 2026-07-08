@@ -4065,3 +4065,21 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build ...CarrierAxiomGuard` (8067 jobs, all pins green).
 - Next dynamics items queued: M-dependent hidden block; nonabelian Q_C
   two-face oracle (handoff piece 3).
+
+## [FABLE roadmap] QCD-mass roadmap landed (closure-channel endgame)
+
+- New doc `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md` (indexed in
+  DOCUMENT_MAP): defines "mass from QCD" as five pillars + the Clay
+  boundary; inventories the pinned GateYM stack (area law, slab/OS gap,
+  clustering, GW-circle, color commutant, QC carrier bridge); stages the
+  gap S1-S7 with claim ceilings, kill conditions, and lit anchors.
+- Headline structure: S2 (KP fixed-forest injection) = days, first
+  end-to-end owned gap theorem; S1 (nonabelian Q_C identification) = the
+  crux; S6 (finite Ji-style hadron mass-budget theorem over the pinned
+  Weitzenboeck identity) = the program's distinctive novel deliverable;
+  S4a (finite Banks-Casher) must be stated as an eigenvalue-count
+  identity per the spectral-language rail; S7 = ratios yes, scale
+  [import], continuum never (yet).
+- Claim boundary: planning document; no new claims; every cited pin
+  verified against SlabAxiomGuard/CarrierAxiomGuard contents this
+  session.
