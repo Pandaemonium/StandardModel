@@ -135,6 +135,9 @@ conservative until local chunks are quoted.
 | `TBD-BakirciogluArnaultArrighi2025` | `2505.07900` | Bakircioglu-Arnault-Arrighi, "Fermion Doubling in Quantum Cellular Automata" | QCA-era fermion-doubling prior art; manuscript novelty must not imply this analysis is absent. | ID-ONLY; arXiv verified 2026-07-08, no local key/chunk yet |
 | `TBD-NielsenNinomiya1981` | INSPIRE 155854 | Nielsen-Ninomiya, "Absence of neutrinos on a lattice" | The no-go traded by the Krein `J`-hermiticity route (F7, §8). | ID-ONLY |
 | `TBD-Zwanziger1991` | DOI `10.1016/0550-3213(91)90581-H` | Zwanziger, "Vanishing of zero-momentum lattice gluon propagator and color confinement" | Positivity-violation / confinement prior-art comparison; background only, not theorem support for null-edge balanced closure. | ID-ONLY; DOI/title verified 2026-07-08, no local key/chunk yet |
+| `TBD-Ji1995` | `hep-ph/9410274` | Ji, "QCD analysis of the mass structure of the nucleon", PRL 74 (1995) 1071 | The named Ji decomposition (§4/§4a target); previously listed in Provenance but absent - added 2026-07-08. | ID-ONLY |
+| `TBD-Wilson1974` | DOI `10.1103/PhysRevD.10.2445` | K. G. Wilson, "Confinement of quarks", PRD 10 (1974) 2445 | The Wilson action (§6 M-theorem subject). | ID-ONLY |
+| `TBD-GinspargWilson1982` | DOI `10.1103/PhysRevD.25.2649` | Ginsparg-Wilson, "A remnant of chiral symmetry on the lattice", PRD 25 (1982) 2649 | The GW relation (§8 load-bearing). | ID-ONLY |
 | `TBD-YangEtAl2018` | `1808.08677` | Yang et al., "Proton Mass Decomposition from the QCD EMT" | The proton mass budget (§4, §5); scheme-dependence. | ID-ONLY |
 | `TBD-Liu2021` | `2103.15768` | Liu, "Proton mass decomposition and hadron cosmological constant" | RG-invariant vs scheme-dependent decomposition; the §4a/§5 caveat's exact ref. | ID-ONLY |
 | `TBD-NuFIT60-2024` | `2410.05380` | Esteban et al., NuFIT-6.0 | Neutrino oscillation global fit; the P-ν comparison target. | ID-ONLY |

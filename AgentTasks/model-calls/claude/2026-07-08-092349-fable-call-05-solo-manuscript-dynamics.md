@@ -1,3 +1,105 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `claude-fable-5`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-07-08T09:20:28`
+- Finished: `2026-07-08T09:23:49`
+- Timeout seconds: `2400`
+- Max budget USD: `9.00`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model claude-fable-5 --max-budget-usd 9.00 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Fable-5 call 05 (solo run): manuscript completeness + dynamics-layer review
+
+You are the most capable mathematical-physics referee on this program. This is a
+**solo autonomous run** whose two goals are (1) completely finish the manuscript
+(as a self-contained Markdown draft, including complete/verified references) and
+(2) flesh out the dynamics layer so the Lean code informs Python simulations.
+The complete manuscript is provided verbatim below. Assess it against those two
+goals and tell me what remains.
+
+## Program state (standalone; assume no prior knowledge)
+
+Finite, machine-verified mathematical-physics program: **mass is the obstruction
+to coherent null transport**. Kernel-checked (Lean 4, axiom-audited,
+guard-pinned) results now include: §3 the Plücker mass `det P = Σ|ψ_i∧ψ_j|²`
+(classical spinor-helicity, formalized); §4 the four-channel Krein budget
+`4 D^#D = Q_A+Q_C+4Q_T+4E_#`; the Rayleigh-Ritz keystone `sector_ground_mass`;
+**`T2_positive_mass`** — an explicit two-edge Cl(4) carrier with a positive-
+definite physical sector, so the keystone *fires* to give a genuine positive
+squared mass (the former positivity crux, now resolved in the kernel); the
+**free §3↔§4 bridge** `free_mass_operator_eq_plucker` (`P·adjugate P = det P·1`,
+so the free operator mass IS the kinematic mass); mass monogamy (Plücker
+superadditivity) + general-partition form; finite Witten/Lichnerowicz positivity
+(F4); and the **entire dynamics stack D1-D5**: `FiniteCarrierAction` (action +
+Euler-Lagrange EOM), `FiniteUnitaryEvolution` (norm+energy conserved under
+`exp(-iHt)`), `FiniteRGFlow`, `FiniteCanonicalEnsemble`.
+
+Grades: **T** source-verified, **M** kernel-checked, **MEMO** expert/LLM-oracle
+prose, **C** pre-registered conjecture with a kill condition.
+
+Dynamics simulations (numeric oracle, each validated against a landed M-identity):
+a carrier **spectrum/phase** sim (result: physical-sector mass gap = aperture −
+closure, massless critical line at closure = aperture) and a **time-evolution/
+scattering** sim (unitary flow, mass-spectrum resolution, quantum-walk transfer
+operator, 2-fermion Slater amplitudes).
+
+Open, honestly: T3b (name the Δ binding-defect a finite invariant), a continuum
+reduction for one channel (checkerboard), carrier rigidity, second quantization →
+a genuine hadron mass, the neutrino ratio (needs a mass-value map we lack).
+
+## Your exact task — two questions
+
+1. **Is the manuscript complete and publication-ready as a Markdown draft, and
+   if not, what is the shortest path to "done"?** Check: internal consistency
+   (grades vs claims; no stale "next-target" wording now that T2/free-bridge
+   landed); completeness (does anything essential — a definition, a caveat, a
+   result — go unstated?); the references section (complete? correctly scoped?);
+   the abstract/intro/§10/§11/appendix reflecting the *current* state; exposition
+   (is the §4 worked example and Appendix A reproducibility enough?). Give a
+   concrete, ordered "remaining to finish" list. Be a demanding referee.
+2. **Is the dynamics layer sound, and what is the single highest-value next
+   dynamics theorem or simulation** to make the Lean→Python simulation program
+   strongest? (Candidates: the Δ binding-energy dynamics; a spectral/mass-gap
+   theorem generalizing T2; a transfer-operator continuum-limit theorem tying to
+   the checkerboard/QW literature; a scattering/S-matrix finite object; the
+   thermodynamic-limit/condensate via the canonical ensemble.) Rank them.
+
+## Required output
+
+- **Verdict (3-5 sentences):** manuscript completeness + dynamics soundness.
+- **Manuscript "remaining to finish" — ordered list**, each item concrete and
+  small enough to close in one editing pass.
+- **Correctness/consistency flags**, most severe first (any stale claim, grade
+  slip, or gap). If none, say so and say what you checked.
+- **Dynamics: the ranked next moves** (theorem or simulation), with the concrete
+  first step for the top one.
+- **Bottom line:** the 2-3 things that most stand between here and "manuscript
+  finished + dynamics as strong as it can be this run."
+
+Be specific and technical; one sharp correct load-bearing criticism beats ten
+generic ones. Report even if the news is bad.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md (1250 lines)
+
+```markdown
 # Mass as null disagreement: a machine-verified finite framework
 
 **A finite, kernel-checked framework in which the invariant mass of a
@@ -255,24 +357,6 @@ verification, and the four-channel budget as one object. Situating the work:
   `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`. Full source-key:
   `Sources/Null_Edge_References.md`.
 
-**Where this sits, at a glance.** The table crystallizes the positioning: no
-column is uniquely ours, but the *conjunction* of the last three rows is.
-
-| Program | finite | indefinite / Krein | fermion doubling handled | mass = `det P` (null-disagreement) invariant | one four-channel budget | kernel-verified + kill-discipline |
-|---|---|---|---|---|---|---|
-| **This paper** | ✓ | ✓ | ✓ (Krein-null) | ✓ | ✓ | ✓ |
-| Bizi–Brouder–Besnard (Krein triple) | — | ✓ | ✓ | — | — | — |
-| Barrett (Lorentzian NCG-SM) | fin. internal | ✓ | ✓ (KO-6) | — | — | — |
-| Connes–Chamseddine (NCG-SM) | fin. internal | Euclidean | ✓ (KO-6) | — | — | — |
-| Foster–Jacobson (4D checkerboard) | ✓ | — | ✓ | — | — | — |
-| QCA / quantum-walk Dirac | ✓ | — | ✓ | — | — | — |
-| Finster (causal fermion systems) | ✓ | Lorentzian | — | variational | — | — |
-| HepLean / PhysLean | ✓ | — | — | — | — | ✓ (formalized) |
-
-The novelty is the bottom-right block read together — a finite *Krein* carrier
-whose square is a four-channel budget *answering to the kernel-checked Plücker
-mass*, under a pre-registered kill-discipline — not any single ✓.
-
 ---
 
 ## 3. The kinematic layer: one trusted theorem (**T**/**M**)
@@ -462,10 +546,9 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
    chromomagnetic object); the `|F|^2` gluon *energy* density is a
    different object (the Wilson action, §6). Conflating them is a
    pre-registered error (§10).
-3. **What the budget decomposes is a quadratic functional — and this run it
-   was made a genuine mass on a concrete carrier.** This was the paper's most
-   important caveat; the honest status is now much sharper (see below). In §3
-   "mass" is `det P`, an invariant of a state's momentum
+3. **What the budget decomposes is a quadratic functional, not yet a
+   mass.** This is the paper's most important caveat, and it is the deepest
+   open link. In §3 "mass" is `det P`, an invariant of a state's momentum
    (trusted, spectral). From §4 on, `M^2 := 4 ev(D^2)` is the expectation
    of an operator square in a *chosen* state against a *chosen* functional.
    The expectation of `D^2` is a genuine mass only at an eigenstate — on a
@@ -479,10 +562,10 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
    inner product, an ordinary-self-adjoint `T = D^#D|_P` whose real form is
    bounded below by `c > 0` has its Rayleigh-quotient infimum attained *as a
    genuine eigenvalue that is `> 0`*. That is the exact statement that turns
-   "a quadratic functional" into "a positive squared mass." The theorem is
-   **conditional**, and this run *both* of its conditions were met on a
-   concrete carrier — what were the program's two deepest open links are now
-   substantially closed:
+   "a quadratic functional" into "a positive squared mass." But the theorem
+   is honest about being **conditional**, and two independent expert reviews
+   this run pinned exactly what it is conditional *on* — these are now the
+   program's two deepest open links, not hand-waves:
 
    - *The positive sector must exist — now instantiated (M).* The hypothesis
      is a *definite* (`J`-positive) sector. On the single-doublet witness none
@@ -921,56 +1004,6 @@ is deliberate and it is also a real limitation:
   kernel-checked) `[import]`; that is the concrete peer framework a future
   many-body extension of this carrier would build on, not reinvent.
 
-### 9a. A finite dynamics layer: action, evolution, RG, ensemble (**M** scaffolds)
-
-The §3 identity and the §4 budget are *static*. This run added a finite
-**dynamics** layer — kernel-checked as abstract scaffolds, plus validated
-numerical simulations built on them. The honest reading is uniform: **each
-theorem is a general finite fact (M); the physics is its instantiation on the
-carrier, which is the pending link** — the same "the machine is built, the model
-that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
-
-- **D1 — action and equation of motion.** `multiplierStationary_iff_eom`
-  (`FiniteCarrierAction`, **M**): a finite action's variational stationarity is
-  equivalent to the equation of motion `D psi = 0`. The carrier's dynamics is
-  *derived* from an action, not posited. (Scaffold: the abstract Dirichlet /
-  multiplier variation; a specific carrier Lagrangian is the physics.)
-- **D2/D3 — evolution and conservation.** `norm_conserved_orbit`,
-  `energy_conserved_orbit` (`FiniteUnitaryEvolution`, **M**). **Stated honestly:
-  these prove that *any sector isometry* conserves norm and energy along its
-  orbit** — generic finite functional analysis (`LinearIsometryEquiv`). We do
-  **not** claim "the carrier evolution is unitary"; that the T2 carrier's
-  transfer step is an isometry *of the sector inner product* (Krein-unitary is
-  not norm-unitary) is the **open instantiation** — Fable-flagged, and the top
-  next dynamics target (fire D2 on the T2 witness).
-- **D4 — renormalization flow.** `invariant_orbit`,
-  `observable_antitone_orbit` (`FiniteRGFlow`, **M**, axiom-free): orbit
-  invariants and monotones under an iterated step. The intended step is the §9
-  Schur decimation (`RGSchurMassWitness`); its instantiation is the physics.
-- **D5 — canonical ensemble.** `partitionFunction_pos`,
-  `sum_probability_eq_one`, `probability_pos` (`FiniteCanonicalEnsemble`, **M**):
-  a finite canonical ensemble over any spectrum; applied to the carrier sector
-  spectrum it gives the thermodynamics (and the §9 condensate's finite handle).
-
-**Lean-informed simulations (oracle grade, quarantined from the M core).** Three
-Python simulators, each output *validated against a landed M-identity* (the Lean
-is the simulation's spec and validation oracle):
-
-- `carrier_spectrum_sim.py` — the physical-sector **mass phase diagram**: the
-  squared mass gap is **aperture − closure**, with a **massless critical line at
-  closure = aperture** (validated against `T2_positive_mass`,
-  `signed_budget_sum_one`, `posDef_iff_det_pos`).
-- `carrier_evolution_sim.py` — unitary Hamiltonian flow with a positive mass
-  gap, survival-amplitude **mass-spectrum resolution**, a unitary
-  **quantum-walk transfer operator** (continuum limit → a Dirac-type flow, cf.
-  the quantum-walk literature), and antisymmetrized **2-fermion Slater
-  scattering amplitudes** (validated against `FiniteUnitaryEvolution`, `T2`).
-- `carrier_rgflow_sim.py` — Schur **RG flow** (`k_eff = t^2/mu`, invariant
-  `mu·k_eff`), the **canonical ensemble** (`Z`, `F = <E> − T S`, ground
-  dominance), and a **condensate** near-zero-mode fraction rising to the
-  critical line — the finite Banks–Casher shadow (validated against
-  `FiniteRGFlow`, `FiniteCanonicalEnsemble`, `RGSchurMassWitness`).
-
 ---
 
 ## 10. Boundaries, and the things we have disproved
@@ -1110,7 +1143,6 @@ separately by the targeted Lean and guard builds.)*
 |---|---|---|---|---|
 | 3 | `det_rankOneHermitian_eq_zero` | `Spinor/PluckerMass.lean` | M, trusted namespace | single edge massless |
 | 3 | `two_edge_plucker_mass_identity` | `Spinor/PluckerMass.lean` | M, trusted namespace | two-edge mass = disagreement |
-| 3 | `two_edge_mass_zero_iff_wedge_zero` | `Spinor/PluckerMass.lean` | M, trusted namespace | two-edge massless ⇔ wedge vanishes (collinear) |
 | 3 | `fin_bundle_plucker_mass_identity` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | mass = pairwise disagreement, general `n` |
 | 3 | `fin_bundle_mass_zero_iff_common_direction` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | massless iff collinear |
 | 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master Krein identity: starred blocks `Q_{A,C}^#` + `4 Q_T` + `4 E_#` (§4) |
@@ -1125,9 +1157,7 @@ separately by the targeted Lean and guard builds.)*
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
-| 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3; carrier-step instantiation open) |
-| 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
-| 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
+| 9 | `FiniteCanonicalEnsemble` (Z>0, probabilities) | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure-defect trace identity |
 | 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | Wilson action = squared defect |
@@ -1236,19 +1266,13 @@ novelty-gap analysis is in
   confinement*, Nucl. Phys. B364 (1991) 127.
 - K. Osterwalder, E. Seiler, *Gauge field theories on a lattice*, Ann. Phys. 110
   (1978) 440.
-- K. G. Wilson, *Confinement of quarks*, Phys. Rev. D 10 (1974) 2445 (the Wilson
-  action, §6).
 - T. Banks, A. Casher, *Chiral symmetry breaking in confining theories*, Nucl.
   Phys. B169 (1980) 103.
-- P. H. Ginsparg, K. G. Wilson, *A remnant of chiral symmetry on the lattice*,
-  Phys. Rev. D 25 (1982) 2649 (the GW relation, §8).
 - J. K. Asbóth, H. Obuse, *Bulk-boundary correspondence for chiral symmetric
   quantum walks*, Phys. Rev. B 88 (2013) 121406.
 
 **Hadron mass, proton mass decomposition (§4, §4a, §5).**
 
-- X. Ji, *QCD analysis of the mass structure of the nucleon*, Phys. Rev. Lett.
-  74 (1995) 1071, arXiv:hep-ph/9410274 (the Ji decomposition, §4/§4a).
 - Y.-B. Yang et al., *Proton Mass Decomposition from the QCD Energy Momentum
   Tensor*, Phys. Rev. Lett. 121 (2018) 212001, arXiv:1808.08677.
 - S. Dürr et al., *Ab initio determination of light hadron masses*, Science 322
@@ -1317,16 +1341,64 @@ each name is grep-checkable against the source.
 docstring, exactly which kernel-checked identity it mirrors or which kill it
 tests; run `python Scripts/oracle/<probe>.py`. Key ones: the S1-CC balanced
 -inertia probe, the aperture-grading kill, the multi-edge positive-sector escape,
-the Δ binding-energy probe, the T3a free-bridge probe, and the three dynamics
-simulators — `carrier_spectrum_sim.py` (mass phase diagram; validates
-`T2_positive_mass` + `signed_budget_sum_one`), `carrier_evolution_sim.py`
-(unitary flow, quantum-walk transfer, Slater amplitudes; validates
-`FiniteUnitaryEvolution` + `T2`), and `carrier_rgflow_sim.py` (RG flow, canonical
-ensemble, condensate shadow; validates `FiniteRGFlow` +
-`FiniteCanonicalEnsemble` + `RGSchurMassWitness`). A probe is evidence for adding a fixture or
+the Δ binding-energy probe, the T3a free-bridge probe, and the carrier
+spectrum/dynamics simulators. A probe is evidence for adding a fixture or
 pre-registering a prediction — never a substitute for a kernel proof.
 
 **Provenance.** Source keys and convention checks are in
 `Sources/Null_Edge_References.md`; the PhysLean convention cross-checks and the
 prior-art / novelty-gap analysis are in `docs/PHYSLEAN.md` and
 `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`.
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+**Verdict (4 sentences).** The manuscript is ~90% publication-ready as a Markdown draft: the grade discipline is genuinely enforced, T2/free-bridge are correctly reflected as resolved (no stale "next-target" wording found for cruxes 0a/0b-a), and the spot-checked references (Foster–Jacobson 1610.01142, Bakircioglu–Arnault–Arrighi 2505.07900, Banks–Casher, Barrett, Sumino, NuFIT-6.0) resolve correctly. It is **not** done, for one load-bearing reason: the dynamics stack this run landed (D1–D5, all guard-pinned in `CarrierAxiomGuard.lean` — I verified the D2/D4 pins exist) and both validated simulations are almost entirely absent from the prose, and the §11 anchor table both omits pinned declarations and contains rows never cited in §§3–9, contradicting its own preamble. The dynamics layer itself is sound — kernel-clean, honestly docstringed, correctly scoped as scaffolds — but its physics content currently lives entirely in uninstantiated hypotheses (a generic `LinearIsometryEquiv`, a generic `step : State → State`), so the highest-value next move is to make the T2 witness *fire* the dynamics the way it fired `sector_ground_mass`. The references section has three concrete omissions (Ji, K. Wilson, Ginsparg–Wilson) that the text's own Provenance paragraph implicitly promises.
+
+## Manuscript "remaining to finish" — ordered
+
+1. **Write the missing dynamics subsection** (a new §9a, ~1 page): present D1 (`multiplierStationary_iff_eom`: stationarity ⇔ EOM), D2/D3 (`norm_conserved_orbit`, `energy_conserved_orbit`), D4 (`invariant_orbit`, `observable_antitone_orbit`), D5 (ensemble: `Z > 0`, probabilities sum to 1, variance ≥ 0), each graded **M**, each with its honest docstring caveat ("abstract scaffold; the carrier transfer map is not yet derived"). Then report the two simulations at oracle grade: `carrier_spectrum_sim.py` (physical-sector mass gap = aperture − closure; massless critical line at closure = aperture) and `carrier_evolution_sim.py` (unitary flow, quantum-walk transfer, 2-fermion Slater amplitudes), each naming the M-identity it validates against. Right now the run's second goal is invisible in the artifact.
+2. **Repair the §11 anchor table both ways.** Add rows for D2 (`norm_conserved_orbit`, `energy_conserved_orbit`, `FiniteUnitaryEvolution.lean`, guard-pinned — verified present at guard lines 728–734) and D4 (`invariant_orbit`, guard line 740; note it is axiom-free, a nice detail); add `two_edge_mass_zero_iff_wedge_zero` (cited in §3 prose, exists at `PluckerMass.lean:107`, absent from the table). Either cite the D1/D5 rows in prose (item 1 does this) or the preamble sentence "Every declaration cited in §§3–9" stays false.
+3. **Fix the anchor-sweep count.** The table has **46** numbered rows (several multi-name), but the sweep note claims "every one of the 38 declaration names." Recount, re-run the grep sweep, and update the number and date.
+4. **References: add three load-bearing entries.** (a) X. Ji, *QCD analysis of the mass structure of the nucleon*, PRL 74 (1995) 1071, hep-ph/9410274 — "the Ji decomposition" is the named grade-C target of §4/§4a and the Provenance paragraph lists "Ji" as a recorded `[import]`, but there is **no Ji entry** in the manuscript References *nor in `Sources/Null_Edge_References.md`* (I grepped; absent). (b) K. G. Wilson, PRD 10 (1974) 2445 (the Wilson action is a §6 **M**-theorem's subject; "Wilson" is likewise promised in Provenance). (c) P. Ginsparg, K. Wilson, PRD 25 (1982) 2649 (the GW structure is load-bearing in §8; the repo reference file has Lüscher hep-lat/9802011 flagged "not yet manuscript-citation-quoted" — cite one or both).
+5. **Name harmonization:** §7 and Provenance say "Pereira–Vargas"; the References list Aldrovandi–Pereira. Use one name or add the Vargas item.
+6. **Purge the stale hedge in §2a:** "HepLean `2405.08863`, exact-ID verified but not yet source-quoted" — the full Tooby-Smith entry now sits in References; drop the hedge or move it to the reference status file.
+7. **Appendix A:** name the two simulator scripts explicitly and add the one-line "validated against `norm_conserved_orbit` / `T2_positive_mass` sector spectrum" mapping (currently "the carrier spectrum/dynamics simulators" is the only mention in the whole paper).
+8. **Optional but cheap:** the §6 narrative reads as live-crisis-then-rescue; add one forward-pointing sentence at the top of the aperture-grading paragraph ("resolved below by `T2_positive_mass`") so a linear reader doesn't misfile the program as stuck.
+
+## Correctness/consistency flags (most severe first)
+
+1. **§11 preamble is false as written** (both directions: uncited rows D1/D5, missing cited name `two_edge_mass_zero_iff_wedge_zero`) and the "38 names" sweep claim contradicts the 46-row table. For a paper whose thesis is grade discipline, an inaccurate self-audit sentence is the worst kind of error. Fixed by items 1–3.
+2. **Provenance overclaim:** "Ji … recorded in `Sources/Null_Edge_References.md`" — Ji is not in that file. Item 4.
+3. **Semantic-alignment warning for the coming D2 prose (pre-emptive):** `FiniteUnitaryEvolution` is *Hilbert* unitarity (`≃ₗᵢ[ℂ]`), and `norm_conserved_step` is literally `simp` — the theorem is generic functional analysis; all physics lives in the unproved hypothesis that the carrier transfer step is an isometry *of the sector inner product* (Krein-unitary ≠ norm-unitary). When you write §9a, do **not** write "the carrier evolution is unitary (M)" — that would be docstring-outruns-kernel. The honest sentence: "any transfer step that is a sector isometry conserves norm/energy (M); that the T2 carrier's step is one is the open instantiation." Same caution for D4 (`step` is a bare function) and D1 (stationarity ⇔ EOM is essentially inner-product nondegeneracy — fine as a seed, not a Noether layer; its own docstring says so).
+4. **No stale T2/free-bridge wording found.** I checked §4 rail 3, §6's escape paragraph, §10 cruxes 0a/0b, and the title note: all correctly say the positive sector is now **M** and the free bridge is proved, with the interacting Δ correctly left at **C**. The `carrier_krein_square` display's starred-blocks/factor-4 honesty notes are consistent with the two-specialization story. Reference identifiers spot-checked resolved (see Verdict).
+5. Minor: verify "applications" vs "application" in the Bizi–Brouder–Besnard title; the `leading_closure_energy_nonneg` "transitively enforced" guard note is a fragile claim — consider moving the pin into `SlabAxiomGuard` proper.
+
+## Dynamics: ranked next moves
+
+1. **Parametrized spectral/mass-gap theorem generalizing T2 (top pick).** Kernelize the spectrum sim's headline: extend `SectorGroundMassWitness` to a closure-coupling parameter `k` (curvature `K → k·K`), prove the sector form is `M6(k) = 1 + B(k)^H B(k)` with *explicit rational eigenvalues*, and derive **gap = aperture − closure with the massless critical line at closure = aperture** as an M-theorem. This converts the sim's phase diagram from oracle to kernel, gives `carrier_spectrum_sim.py` an exact validation target at every `k` (not just `k=1`), and is the natural generalization the run's own T2 machinery makes cheap. **Concrete first step:** in `SectorGroundMassWitness.lean`, replace the fixed `B` by `k • B`, prove `M6(k)` eigenvalues as explicit functions of `k` on each 2×2 block (the `{1,3,2}` structure already suggests the closed form), and add the critical-`k` degeneracy lemma; guard-pin both.
+2. **Fire D2 on T2:** prove the T2 carrier's sector Hamiltonian step is a `LinearIsometryEquiv` of the `M6` inner product, so `norm_conserved_orbit`/`energy_conserved_orbit` apply to a *concrete* carrier — closing flag 3 above and validating `carrier_evolution_sim.py` end-to-end. (Cheap; arguably bundle with #1.)
+3. **Δ binding-defect (T3b):** define `Δ := det P − λ_min` on the interacting family from #1, prove `Δ ≥ 0` and monotone in `k` on the witness family (kill condition already registered). Highest *physics* value, but it needs #1's parametrized family first — which is another reason #1 is first.
+4. **Transfer-operator/checkerboard continuum tie:** prove the finite transfer operator matches the Feynman-checkerboard step and import Gersch/Jacobson–Schulman for the limit. Biggest literature payoff, largest cost; a full run of its own.
+5. **Thermodynamic limit/condensate via D5:** premature — the §9 disorder kill says accumulation needs *structured* backgrounds, which you don't yet have a candidate for.
+
+## Bottom line
+
+1. **Write §9a and fix the anchor table/count** — the run's dynamics goal is currently invisible in the manuscript, and the table's self-audit sentence is false; this is one editing pass.
+2. **Add Ji, Wilson, Ginsparg–Wilson to References** (and to `Null_Edge_References.md`) — the text already leans on all three by name.
+3. **Land the parametrized T2 mass-gap theorem** (gap = aperture − closure, critical line as an M-statement) — it simultaneously upgrades the spectrum sim's headline to kernel grade, instantiates the D2 hypotheses, and sets up Δ; it is the single move that makes the Lean→Python program strongest this run.
+
+```
+
+## Response stderr
+
+```text
+
+```
