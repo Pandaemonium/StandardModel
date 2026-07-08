@@ -987,9 +987,12 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   Hamiltonian is Hermitian (the mass-gap block `B`), so the flow it generates
   `exp(−i t H)` is **unitary** (`hermitian_flow_mem_unitaryGroup` /
   `B_flow_unitary`) and induces a genuine `LinearIsometryEquiv` on the sector
-  (`hermitian_flow_isometry`). So `FiniteUnitaryEvolution` fires on the *actual*
-  carrier — norm and energy are conserved along the real carrier orbit, not
-  merely a generic isometry's. (This is a first-quantized statement; Krein-unitary
+  (`hermitian_flow_isometry`). Wired through the generic scaffold, this gives a
+  single concrete theorem — `carrier_orbit_norm_conserved` (**M**, guard-pinned):
+  the discrete time-evolution *orbit* of the real T2 carrier conserves the sector
+  norm (and `carrier_orbit_energy_conserved` for commuting observables). So
+  `FiniteUnitaryEvolution` fires on the *actual* carrier, not merely a generic
+  isometry's. (This is a first-quantized statement; Krein-unitary
   ≠ norm-unitary was the earlier worry, and the resolution is that the physical
   *sector* form — where `B` lives — carries a genuine positive inner product, per
   §4/§6, on which the flow is honestly norm-unitary.)
