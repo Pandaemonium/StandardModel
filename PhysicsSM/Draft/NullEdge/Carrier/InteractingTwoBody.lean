@@ -23,8 +23,8 @@ the three pairs
 
 The **free** two-body Hamiltonian `dΓ(B)|_{Λ²}` is the diagonal matrix of these
 pair energies (`freeH2`).  The **interaction** `V` (`interaction`) is an
-attractive rank-one/local coupling of strength `κ` between the two lowest pairs
-(the two pairs sharing the lowest mode `0`); it is real symmetric, hence
+attractive single off-diagonal coupling of strength `κ` between the two lowest
+pairs (the two pairs sharing the lowest mode `0`); it is real symmetric, hence
 Hermitian, and its scale is exactly the closure strength `κ`.  The interacting
 Hamiltonian is `H₂ = freeH2 + V` (`H2`).
 
@@ -48,8 +48,9 @@ a kernel-checked eigenvalue computation, no hand-inserted defect.
 
 Grade **C** (the physical *hadron* identification is a claim, not earned here):
 the interaction `V` is *modelled* on the carrier's closure strength `κ` (its
-scale is `κ`, matching the block-level binding defect `Δ = -κ`), but its rank-one
-attractive *form* is inserted, not derived from the carrier's closure geometry.
+scale is `κ`, matching the block-level binding defect `Δ = -κ`), but its
+attractive *form* (a single off-diagonal coupling) is inserted, not derived from
+the carrier's closure geometry.
 So this is an honest finite witness that "an attractive interaction of the
 closure scale produces a bound state below threshold", and NOT yet a first-
 principles derivation of a hadron mass from the null-transport geometry.
@@ -70,8 +71,8 @@ def pairEnergy (d : Fin 3 → ℝ) : Fin 3 → ℝ :=
 def freeH2 (d : Fin 3 → ℝ) : Matrix (Fin 3) (Fin 3) ℝ :=
   Matrix.diagonal (pairEnergy d)
 
-/-- The attractive interaction `V`: a real-symmetric rank-one coupling of
-strength `κ` between the two lowest pairs `{0,1}` (index `0`) and `{0,2}`
+/-- The attractive interaction `V`: a real-symmetric single off-diagonal coupling
+of strength `κ` between the two lowest pairs `{0,1}` (index `0`) and `{0,2}`
 (index `1`), which share the lowest mode `0`. -/
 def interaction (kappa : ℝ) : Matrix (Fin 3) (Fin 3) ℝ :=
   !![0, -kappa, 0; -kappa, 0, 0; 0, 0, 0]

@@ -970,25 +970,26 @@ now itself a **theorem**: `InteractingTwoBody.interacting_boundState_below_thres
 (**M**, self-guarded) exhibits, for an attractive interaction `V` of strength `κ`
 on the two lowest pairs, a genuine `IsLeast` eigenvalue `boundEnergy < ` the free
 constituent threshold `min_{i≠j}(d_i+d_j)` whenever `κ > 0` — via an explicit
-`2×2`-block eigenvalue computation, with **no hand-inserted defect**. And the
-interaction `V` is now itself **derived from the carrier's closure geometry**, not
-modelled: `Vderived = dΓ(i·κ·K)` is the *second-quantized closure operator* (the
-closure part `i·κ·K` of the carrier block `B(λ,κ)`, projected to the two-particle
-sector), and it equals the modelled `V` up to a diagonal phase gauge
-(`DerivedInteraction.Vderived_conj`), so it produces the *same* below-threshold
-bound state (`derived_boundState_below_threshold`, **M**, guard-pinned) — the modelled
-attractive `V` was not smuggling in physics; it *is* the closure operator. This
-lifts the hadron seed **C → M** for the *derivation of the interaction*. What is now
-sharply characterized — and honestly bounded — is *when* the closure binds:
-`derived_wrongPlane_no_binding` (**M**) shows a closure curvature acting in a plane
-containing the ground mode leaves the ground pair decoupled and gives **no** binding
-(least eigenvalue = the free threshold), with the exact bind/no-bind boundary
-`κ² = (d₂−d₀)(d₂−d₁)`. So binding below the constituent threshold **requires the
-closure to act among the excited modes** — a genuine, kernel-checked geometric
-condition, not an assumption. What still stays grade **C** is only the final
-identification of this finite bound state with a *specific physical hadron mass*
-(a mass-value map the program lacks, per the neutrino no-go, §10).) This is
-deliberate and it is also a real limitation:
+`2×2`-block eigenvalue computation, with **no hand-inserted defect**. Moreover the
+interaction is not an arbitrary rank-one form: `Vderived = dΓ(i·κ·K)` is the
+*second-quantized closure operator* — the `dΓ` of a closure curvature `i·κ·K`
+projected to the two-particle sector — and it equals the modelled `V` up to a
+diagonal phase gauge (`DerivedInteraction.Vderived_conj`), so it produces the same
+below-threshold bound state (`derived_boundState_below_threshold`, **M**,
+guard-pinned). *Honest scope (per the batch-4 audit — this is a conditional, not an
+unconditional first-principles derivation):* the kernel does **not** tie the chosen
+curvature to the carrier's *actual* closure `K` (the carrier module is not imported
+into this finite computation), and — crucially — `derived_wrongPlane_no_binding`
+(**M**) proves the *choice of plane is exactly what decides binding*: a closure
+curvature acting in a plane containing the ground mode leaves the ground pair
+decoupled and gives **no** binding (least eigenvalue = the free threshold), with the
+exact boundary `κ² = (d₂−d₀)(d₂−d₁)`. So the honest content is the **conditional**
+theorem: *if* the closure acts among the excited modes (not the ground plane), *then*
+a second-quantized closure interaction binds a state below the constituent sum — a
+kernel-checked structural fact, but grade **C** for the unconditional "the carrier's
+own closure binds" until the carrier's `K` is shown to occupy the binding plane. The
+mass-value identification (a *specific* hadron mass) is a further **C** step the
+program lacks (§10).) This is deliberate and it is also a real limitation:
 
 - Several physical notions the words invite — a *chiral condensate*
   `⟨ψ̄ψ⟩`, the *number* of light hadrons, spontaneous symmetry breaking as a
@@ -1338,7 +1339,7 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved`, `carrier6_orbit_norm_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the flow **orbit** of the carrier block `B(λ,κ)` — and of the full `6×6` physical sector form `M6` (`carrier6_…`) — conserves sector norm & (commuting-observable) energy: `FiniteUnitaryEvolution` fired on the concrete carrier |
 | 9 | `secondQuantized_massGap` | `Carrier/FockMassGap.lean` | M, self-guarded (in-file pin) | **free second-quantized mass gap**: on the fermionic occupation Fock space, `dΓ(B)`'s gap = one-particle gap `λ−κ`; free 2-body = sum of constituents; `Δ=−κ` seeds a below-threshold bound state |
 | 9 | `interacting_boundState_below_threshold` | `Carrier/InteractingTwoBody.lean` | M, self-guarded (in-file pin) | **interacting below-threshold bound state**: an attractive `V` of the closure scale `κ` gives a least eigenvalue strictly below the constituent sum (`IsLeast`, no inserted defect) |
-| 9 | `derived_boundState_below_threshold`, `derived_wrongPlane_no_binding` | `Carrier/DerivedInteraction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **`V` DERIVED from closure geometry (C→M)**: `Vderived = dΓ(iκK)` = the 2nd-quantized closure operator (= modelled `V` up to phase gauge), binds below threshold; binding needs the closure among *excited* modes (ground-mode-plane closure → no binding; boundary `κ²=(d₂−d₀)(d₂−d₁)`). Only the physical mass-value map stays **C** |
+| 9 | `derived_boundState_below_threshold`, `derived_wrongPlane_no_binding` | `Carrier/DerivedInteraction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **`V` is a 2nd-quantized closure operator, conditionally binding**: `Vderived = dΓ(iκK)` (= modelled `V` up to phase gauge) binds below threshold *iff* the closure acts among *excited* modes (ground-plane closure → no binding; boundary `κ²=(d₂−d₀)(d₂−d₁)`). The conditional is **M**; tying the carrier's actual `K` to the binding plane, and the mass-value, stay **C** |
 | 9 | `dirac_mass_shell`, `Ustep_hasDerivAt_generator` | `Carrier/ContinuumLimit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **continuum-limit finite symbol facts**: mass shell `(kσ_z+mσ_x)²=(k²+m²)·1`; discrete transfer generator matches the Dirac Hamiltonian symbol to leading order. Continuum *theorem* is `[import]` (1+1D) / open (Cl(4)) |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |

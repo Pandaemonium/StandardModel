@@ -11,12 +11,16 @@ grade-**C** step was that the *scale* of `V` is the closure strength `κ`
 (`= -Δ`, the block binding defect of `BindingDefect.lean`) but the rank-one
 attractive *form* of `V` was inserted by hand, not derived from the carrier.
 
-This module closes that **C → M** step.  The one-particle carrier sector is the
-mass block `B(λ,κ) = λ·I + i·κ·K` with `K` the (real, antisymmetric) **closure
-curvature**.  We build the genuine two-body interaction as the *second
-quantization* (the `dΓ`, antisymmetric-two-particle projection) of the carrier's
-one-body operator onto `Λ²(sector)` — a purely mechanical construction from the
-carrier data, with no hand-drawn `V`.
+This module **conditionally** sharpens that step (per the batch-4 over-claim
+audit it is a conditional, NOT an unconditional C → M).  The one-particle carrier
+sector is the mass block `B(λ,κ) = λ·I + i·κ·K` with `K` a (real, antisymmetric)
+**closure curvature**.  We build a two-body interaction as the *second
+quantization* (the `dΓ`, antisymmetric-two-particle projection) of a chosen
+one-body closure operator onto `Λ²(sector)` — a mechanical construction from
+closure data, with no hand-drawn `V`.  **Scope caveat:** this file does not import
+the actual carrier and does not prove that the carrier's *own* `K` occupies the
+binding plane; that identification stays grade **C** (see the honest obstruction
+below, which shows the plane choice is exactly what decides binding).
 
 ## What is derived
 
@@ -42,8 +46,11 @@ below-threshold bound state:
   `IsLeast (spectrumC (H2der d κ)) (boundEnergy d κ)` and
   `boundEnergy d κ < pairThreshold d`  for `κ > 0`, `d 0 ≤ d 1 ≤ d 2`.
 
-So the modelled attractive `V` was **not** smuggling in extra physics: it is
-exactly the second-quantized closure operator of the carrier.
+So the modelled attractive `V` was **not** an arbitrary rank-one form: it is the
+second-quantized closure operator of *a* closure curvature (in the binding plane),
+up to a phase gauge.  It is **not** established here that this curvature is the
+carrier's own `K` — that is the grade-**C** gap, and `derived_wrongPlane_no_binding`
+shows the plane occupied by `K` is precisely what decides whether binding occurs.
 
 ## The honest obstruction (`derived_wrongPlane_no_binding`)
 
@@ -259,15 +266,20 @@ theorem spectrumC_H2der (d : Fin 3 → ℝ) (kappa : ℝ) :
 
 /-! ## The main positive result: the derived interaction binds below threshold -/
 
-/-- **The finite hadron bound state, now first-principles.**
+/-- **The finite hadron bound state from a second-quantized closure operator
+(conditional).**
 
 For a sorted one-particle spectrum `d 0 ≤ d 1 ≤ d 2` and closure strength
-`κ > 0`, the *derived* two-body Hamiltonian `H2der = dΓ(diag d + i·κ·K)` — the
-second quantization of the carrier's one-body operator, with **no** hand-drawn
-interaction — has least eigenvalue `boundEnergy d κ` lying strictly below the free
-two-body threshold.  The below-threshold bound state of `InteractingTwoBody` is
-thus obtained from the carrier's closure geometry itself, upgrading the hadron
-seed from grade C to grade M. -/
+`κ > 0`, the two-body Hamiltonian `H2der = dΓ(diag d + i·κ·K)` — the second
+quantization of a one-body closure operator (in the binding plane), with **no**
+hand-drawn interaction — has least eigenvalue `boundEnergy d κ` lying strictly
+below the free two-body threshold.  So the below-threshold bound state of
+`InteractingTwoBody` arises from a closure-geometric interaction rather than an
+arbitrary form.  This is a **conditional** upgrade: the interaction is a genuine
+`dΓ` of a closure curvature, but the curvature is not shown to be the carrier's
+own `K` (this file does not import the carrier), so the unconditional
+"the carrier's closure binds" stays grade **C** — see
+`derived_wrongPlane_no_binding` for why the plane choice is decisive. -/
 theorem derived_boundState_below_threshold
     (d : Fin 3 → ℝ) (kappa : ℝ) (hk : 0 < kappa)
     (h01 : d 0 ≤ d 1) (h12 : d 1 ≤ d 2) :
