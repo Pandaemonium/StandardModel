@@ -4112,3 +4112,61 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Claim boundary: A0 is single-matrix trace algebra (no ensemble/measure
   claim); amendment identities verified at pencil level, formalization
   staged per A5; no continuum claims anywhere.
+
+## [ARISTOTLE-FREEZE-RESCUE Codex] Frozen jobs harvested/canceled; 3-job refill
+
+- Live poll found 11 frozen `RUNNING` Aristotle projects.  Codex downloaded
+  current snapshots to `AgentTasks/aofr/` (short path for Windows extraction)
+  and canceled all 11 with `aristotle cancel --project-id`.
+- Landed the one complete payload from P12:
+  `PhysicsSM/Draft/NullEdge/Carrier/KoideSubNatProbe.lean`.
+  Guard pins added to `CarrierAxiomGuard.lean` for
+  `kappaB2_tet`, `subNat_strict_fails`, `subNat_projective`, and
+  `subNat_outcome_table`.
+- Claim boundary: exact rational bookkeeping only.  B1 gives `kappa = 2`,
+  B2 gives `kappa = 1`; strict subdivision naturality fails by the inserted
+  zero mode; projective/genuine-corner and corner-count-renormalized
+  naturality survive.  No physical mass-value prediction.
+- Partial but unlanded harvests: P03 two-face/Krein has three proof holes;
+  Q11 Cauchy-Binet has a useful theorem-shape sketch with a proof hole; P01
+  Stage A and the remaining frozen jobs were not close enough or carried stale
+  deletes.
+- New small replacement batch:
+  P03 proof finish `ef6a366f`/`c701fc30`, Q11 Cauchy-Binet minipack
+  `91260b54`/`a07bc66f`, and P12 semantic audit
+  `4f0e6c21`/`e31c239a`.
+- Verification passed:
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/KoideSubNatProbe.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.KoideSubNatProbe`;
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`.
+- Detailed note:
+  `ARISTOTLE_FREEZE_RESCUE_2026-07-07.md`.
+
+## [FABLE review] S1 closure contribution VERIFIED and integrated (Amendment B)
+
+- Reviewed the external S1 memo + oracle (user-supplied; archived to
+  `AgentTasks/twoday-carrier-run-2026-07-07/s1-closure/`, oracle copied to
+  `Scripts/oracle/probe_s1_closure_oracle_v01.py`). Verdict: CORRECT and
+  HIGH-VALUE. All analytic identities re-derived by hand (F1 split, F2
+  null-soldered square, F3 displacement grading, F4 representation
+  theorem X = -K/2); shipped oracle reproduced 24/24 locally; executor
+  crosscheck EXTENDED coverage: N in {3,4,5} x random null pairs x
+  {SU(2), SU(3)} links - base identity <= 5e-15, torsor <= 5e-11
+  (solve conditioning), site-diagonal exactly 0. The memo's claimed
+  robustness sweep was not shipped; now independently supplied, and V6's
+  group-independence is numerically backed for SU(3).
+- Adopted into the QCD roadmap as sec 3b Amendment B: S1 representation
+  half SOLVED (exact Krein square, GL-torsor); trichotomy RETIRED; new
+  gate S1-CC at the Q01 interface (one-day kill probe once V' lands);
+  site-diagonal defect-Gram candidate structurally DEAD (grading);
+  chromomagnetic wording rail for S3/S6 (Q_C = hyperfine share, DRGG
+  calibration row; defect Gram = |F|^2 energy, a DIFFERENT object);
+  S4 linkage (global indefiniteness = Banks-Casher prerequisite).
+- Corrections this forces on OUR OWN docs: the roadmap S1 sentence
+  "closure disagreement IS gauge-field energy" was a conflation of the
+  two objects - fixed inline; handoff piece 3's outcome ladder is
+  superseded by S1-CC.
+- Claim boundary: memo grades T (finite algebra) + O (oracle); grade M
+  only after Lean transcription against the guard-pinned 4-slot
+  normalization (L1-L5 ladder; multi-direction compensated-form risk
+  pre-registered).

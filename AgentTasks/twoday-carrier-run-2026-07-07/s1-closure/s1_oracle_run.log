@@ -1,0 +1,27 @@
+[PASS] R0.1 Clifford algebra {c(a),c(b)} = 2 g(a,b)  g12=1.416147, c(null)^2=0
+[PASS] R0.2 bivector square b^2 = g12^2 * I  (boost generator, eigs +/- g12)
+[PASS] R0.3 Krein: c^# = c, b^# = -b
+[PASS] R1.1 SU(2) centrality: (1-U)(1-U)^dag = (2 - tr U) * I  [50 Haar draws]
+[PASS] R1.2 exact per-face split: 1-U = (1/2)(1-U)(1-U)^dag + (1/2)(U^dag - U)
+[PASS] R1.3 SU(3) centrality FAILS (per-face Gram non-central)  dist from scalar = 2.0790
+[PASS] R1.4 split scaling: Gram piece ~ eps^2 (=> a^4 |F|^2), field-strength piece ~ eps (=> a^2 F)  slopes: gram=1.999, fs=0.998
+[PASS] R2.1 unitarity of covariant shifts
+[PASS] R2.2 D^# = -D  (carrier is #-skew in this convention)
+[PASS] R2.3 Weitzenboeck bookkeeping on this class: D^#D = Q_A + Q_C exactly (Phi=0, const soldering; diagonal killed by c(null)^2=0)
+[PASS] R2.4 Q_C is #-self-adjoint
+[PASS] R2.5 [S1,S2] = (W(x) - 1) . (transport dressing)  per (1,1)-hop block
+[PASS] R3.1 flat (pure gauge) => Q_C = 0  |Q_C|=1.53e-15
+[PASS] R3.2 random field => Q_C != 0  |Q_C|=9.156
+[PASS] R3.3 flat-but-topological (commuting constant cycles): Q_C = 0 (closure slot blind to 't Hooft-flux / Wilson-line sectors)
+[PASS] R4.1 Q_C has NO site-diagonal component (support: hops +/-(1,1), +/-(1,-1) only)
+[PASS] R4.2 registered S-C candidate is Frobenius-ORTHOGONAL to Q_C (site-diagonal Gram cannot see the commutator slot)  <Q_C, G>_F = 0.00e+00; |R| = |Q_C - G| = 18.189 >= |Q_C| = 9.156
+[PASS] R5.1 OUTCOME (a): Q_C = L^# L exactly, L = c(a1) (x) 1 + c(a2) (x) (-[n1,n2]/2)  |L#L - Q_C| = 2.06e-15
+[PASS] R5.2 family: L_A = c(a1)(x)A + c(a2)(x)(A^dag)^{-1}(-K/2), any invertible A => L_A^# L_A = Q_C  [GL-torsor of representations]
+[PASS] R5.3 invariant content: A^dag B = -K/2 forced (sym part auto-vanishes since K is skew)
+[PASS] R6.1 Krein form of Q_C on FULL space is INDEFINITE (positivity was never a full-space fact; sector restriction is load-bearing)  sig(J Q_C) = (+18, -18, 0:0)
+[PASS] R6.2 Krein form of D^#D on FULL space also indefinite (doubler/tachyon branches)  sig(J D#D) = (+18, -18, 0:0)
+[PASS] R7.1 flat carrier spectrum = Minkowski norm^2 of soldered sine-momentum (matches P-iv aperture shape 2 s1 s2 g(a1,a2); negative doubler branches present)  min=-2.124, max=2.124
+[PASS] R8.1 weak-field scaling: |Q_C| ~ eps^1 (spin-curvature / sigma.F reading), closure-defect Gram ~ eps^2 (|F|^2 energy reading) -- DIFFERENT objects  slopes: Q_C=0.975, Gram=1.948
+
+=== S1 closure oracle v0.1: 24/24 PASS ===
+numpy 2.4.4  seed 20260707  N = 3  tol 1e-10

@@ -100,9 +100,10 @@ strongest honest claim available at that stage).
 - TARGET: on a nonabelian finite model, identify the Weitzenboeck `Q_C`
   with a manifestly positive closure object: either `Q_C = L^# L` for a
   rectangular closure current `L`, or `Q_C = sum_f J_f^# J_f + R` with
-  the remainder `R` classified (zero / PSD / indefinite). Then the
-  small-plaquette expansion note: `|1 - hol(f)|^2 ~ |F|^2` - closure
-  disagreement IS gauge-field energy density at leading order.
+  the remainder `R` classified (zero / PSD / indefinite).
+  [CORRECTED by Amendment B: the `|1 - hol|^2 ~ |F|^2` reading belongs to
+  the DEFECT GRAM (the Wilson action, Amendment A0), NOT to `Q_C`, which
+  is commutator-born and chromomagnetic (`sigma.F`-shaped, linear in F).]
 - STATE: abelian/unitary Gram = Laplacian landed; nonabelian OPEN.
 - NEEDED: two-face SU(2) numeric oracle first; then Lean; the three
   outcomes are pre-registered in the hardest-pieces handoff. If `R` is
@@ -278,6 +279,63 @@ integration; they are adopted as follows.
 - Additional lit anchors adopted: Yang et al. (2018) proton mass
   decomposition from the QCD EMT (arXiv:1808.08677); Ji (1994/95)
   hep-ph/9410274; Durr et al. arXiv:0906.3599 - ingest with dedup check.
+
+## 3b. AMENDMENT B (2026-07-07 late): S1 representation half SOLVED; crux relocated
+
+External S1 contribution (memo + oracle, archived at
+`AgentTasks/twoday-carrier-run-2026-07-07/s1-closure/`; oracle at
+`Scripts/oracle/probe_s1_closure_oracle_v01.py`). Executor verification:
+every analytic identity re-derived by hand; the shipped oracle reproduced
+locally (24/24 PASS); an independent crosscheck extended coverage to
+N in {3,4,5}, random null covector pairs, and SU(2) AND SU(3) links
+(base identity residual <= 5e-15; site-diagonal component exactly 0;
+group-independence of the representation now numerically backed).
+Adopted:
+
+- **S1's representation half is SOLVED on the two-transport class.**
+  `Q_C = L^# L` EXACTLY with the explicit gauge-covariant two-hop current
+  `L = c(alpha_1) (x) 1 + c(alpha_2) (x) (-K/2)`, `K = [nabla_1, nabla_2]`;
+  full solution set = the GL-torsor `A^dag B = -K/2`. Four-line proof from
+  Clifford nilpotency + K skewness; group-independent. Grade T (finite
+  algebra) / O; grade M after Lean transcription (rungs L1-L5 of the
+  memo's ladder; transcription risk: the memo's normalization is
+  `D^#D = Q_A + Q_C`, not the guard-pinned 4-slot form - carry the 4's).
+- **The (a)/(b)/(c) trichotomy is RETIRED - it conflated representation
+  with positivity.** Krein squares of null-soldered currents carry no PSD
+  diagonal (the program's own nilpotency mechanism), and `sig(J Q_C)` is
+  maximally indefinite on the full space. NEW GATE **S1-CC**: does the
+  GL-torsor meet the constraint-compatible operators (`L_A Gamma' <=
+  Gamma'`, `L_A V' <= V'`)? If yes, slot descent gives closure positivity
+  on `V'/N`; if the restricted form `sig(J Q_C |_{V'})` is indefinite for
+  the correct `V'`, closure positivity genuinely fails on the physical
+  sector. One-day numeric probe once V' is transcribed (Q01 interface).
+- **The registered site-diagonal defect-Gram candidate is structurally
+  dead** (grading theorem: `Q_C` is purely off-site-diagonal, hops
+  +-(1,1)/+-(1,-1); any site-local Gram is Frobenius-orthogonal to it -
+  exact zero). The landed `QCClosureGramCheck` theorems remain true OF THE
+  DEFECT GRAM; only the identification with the Weitzenboeck slot dies.
+  The Z_2 lane's clean closure was the coincidence (1-u)^2 = 2(1-u).
+- **WORDING RAIL (propagates to S3/S6 and the S1 target above):** `Q_C`
+  is the CHROMOMAGNETIC channel - linear in the defect, continuum shadow
+  `sigma.F` (Lichnerowicz `[import]`) - while the `|F|^2` energy object is
+  the defect Gram (Wilson action, Amendment A0's identity; the S1a
+  Hessian target concerns the ACTION, unchanged). In the S6 budget,
+  `<Q_C>` is the HYPERFINE share; its calibration row is the Delta-N and
+  rho-pi splittings (De Rujula-Georgi-Glashow `[import]`), and the bulk
+  gluon-energy share enters via the gauge sector (S5) or the anomaly
+  channel, not the fermion-bilinear identity. No outward-facing sentence
+  may equate `<Q_C>` with "gluon field energy".
+- **S4 linkage promoted:** the closure slot's global indefiniteness is a
+  PREREQUISITE for Banks-Casher (only the curvature term can pull
+  eigenvalues down against the PSD covariant-Laplacian part), so
+  outcome-(c)-shaped global structure is required physics, not a failure
+  branch. S1 and S4 are coupled in the right direction.
+- Pre-registered residual risk: with >= 3 transport directions the
+  per-pair ansatz may need the compensated form `Q_C + (aperture-shaped
+  correction) = L^#L` (outcome a'); next rung after L1-L5, not assumed.
+- New lit anchors (pre-arXiv; cite classically, no auto-ingest):
+  Lichnerowicz 1963; De Rujula-Georgi-Glashow PRD 12, 147 (1975);
+  Aharonov-Casher 1979.
 
 ## 4. Critical path
 
