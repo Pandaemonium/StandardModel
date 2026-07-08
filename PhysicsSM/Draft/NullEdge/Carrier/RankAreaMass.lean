@@ -1,8 +1,9 @@
 /-
 # Mass as rank/area: the spectral face of `det P`
 
-DRAFT (kernel-clean; no `s o r r y`). The §3<->§4 hinge at the kinematic level,
-formalizing the "mass is the *area* the null directions open in spinor space"
+DRAFT (kernel-clean; no `s o r r y`). This is a finite kinematic support result
+for the §3/§4 mass-functional bridge, not the carrier bridge itself. It
+formalizes the "mass is the *area* the null directions open in spinor space"
 reading (Gemini Pro, `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`):
 for the bundle momentum `M = P = sum_i psi_i psi_i^dagger` (a positive-
 semidefinite Hermitian matrix, the §3 object whose determinant is the mass
@@ -23,12 +24,13 @@ and `det M` equals the product of `M`'s eigenvalues (the light-cone energies).
 
 ## Why it matters
 
-This is the kinematic shadow of the keystone's hypothesis: `sector_ground_mass`
-needs a *positive-definite* sector, and here "positive-definite momentum" and
-"massive" are literally the same statement about the two-spinor span - the
-kinematic reason mass and positivity are the same phenomenon. Aristotle proved
-`det_nonneg`, `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` for a general
-`RCLike` field and any finite size (stronger than the `Fin 2` request).
+This supports the keystone's hypothesis at the finite kinematic level:
+`sector_ground_mass` needs a *positive-definite* sector, and here
+"positive-definite momentum" and "massive" are the same statement about the
+two-spinor span. It does not close the `D^#D|P = det P` carrier bridge or the
+S3/S4 interacting bridge. Aristotle proved `det_nonneg`, `posDef_iff_det_pos`,
+`det_eq_zero_iff_not_posDef` for a general `RCLike` field and any finite size
+(stronger than the `Fin 2` request).
 
 ## Provenance
 

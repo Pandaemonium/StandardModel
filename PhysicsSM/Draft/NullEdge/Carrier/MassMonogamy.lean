@@ -18,13 +18,15 @@ superadditivity** structure of that distribution:
 
 ## Why it matters
 
-This is the *kinematic root* of the `Delta` binding-energy finding
+This is a finite kinematic analogue behind the `Delta` binding-defect candidate
 (`DELTA_BINDING_ENERGY_FINDING.md`): mass is created *off-diagonally* on bundle
-union, exactly as binding is off-diagonal in the dynamical carrier. To this
-program's literature search (`Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`)
-the *Plucker-mass* packaging of monogamy (vs. the mature entanglement-monogamy
-literature: Coffman-Kundu-Wootters; Osborne-Verstraete; Nandi's G-concurrence)
-is unoccupied - a genuinely new, if modest, finite theorem.
+union. It does not establish the dynamical binding defect; it only supplies the
+finite off-diagonal Plucker accounting that such a bridge would have to use. In
+this program's literature search
+(`Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`) we did not find
+this Plucker-mass packaging of monogamy (as distinct from the mature
+entanglement-monogamy literature: Coffman-Kundu-Wootters; Osborne-Verstraete;
+Nandi's G-concurrence), but we make no priority claim.
 
 ## Provenance
 

@@ -1708,3 +1708,132 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Codex FYI: ~15 refs flagged for Zotero/Neo4j ingest (existence-check first;
   Neo4j MCP was down this session - use Scripts/lit/lit_ingest.py when back).
   The references map (Sources/Null_Edge_References.md) should gain these keys.
+
+## 2026-07-08 07:05 PDT - Codex
+
+- User reported Neo4j should be running; verified local graph/vector path with
+  `Scripts/lit/neo4j_paper_search.py` and `Scripts/lit/neo4j_doc_search.py`.
+  Paper search returned Lichnerowicz/Ginsparg-Wilson-adjacent records and chunk
+  search returned GW/overlap/index-theorem chunks; doc search reinforced the
+  finite-kinematic overclaim guard for Plucker/rank-area language.
+- Harvested round-2 scope audit Aristotle job:
+  project `d2995afd-191b-4489-8329-c3e7737161c8`, task
+  `16a4c19c-bf8e-4f23-95bc-88514a15e800`, COMPLETE.
+- Verdict: no P0 blocker; P1 wording guard only. Applied follow-up scope guard
+  to `AgentTasks/allmass-strengthen-round2-aristotle-2026-07-08.md`.
+
+## 2026-07-08 07:07 PDT - Codex
+
+- Submitted audit-only Aristotle sidecar for post-Neo4j literature/novelty scope
+  after the Claude literature review and local graph restart.
+- Project: `43311bde-bed3-4f00-a50b-d4add76f6c0a`; task:
+  `784c5bcb-c9f9-4f8f-934b-321144154902`.
+- Scope: P0/P1 novelty/source-scope risks, safe/forbidden wording, and
+  must-cite/source-status checklist only; no proof front.
+
+## 2026-07-08 07:15 PDT - Codex
+
+- Harvested post-Neo4j literature/novelty Aristotle audit:
+  project `43311bde-bed3-4f00-a50b-d4add76f6c0a`, task
+  `784c5bcb-c9f9-4f8f-934b-321144154902`, COMPLETE.
+- Important correction: Aristotle's checklist mapped `5VWPZ8BP` to
+  Bizi-Brouder-Besnard, but local Neo4j showed `5VWPZ8BP` is instead
+  "On the definition of spacetimes in Noncommutative Geometry, Part I".
+  Bizi-Brouder-Besnard `1611.07062` remains ID-only in
+  `Sources/Null_Edge_References.md`.
+- Applied source/novelty fixes: consolidated `Sources/Null_Edge_References.md`
+  into KEYED-LOCAL vs ID-ONLY prior-art rows; softened the manuscript's
+  Zwanziger comparison to background/caution; softened confinement/mass-gap
+  wording to finite strong-coupling analogues; updated `HONEST_SCORECARD.md`
+  and `MORNING_REPORT.md` with the source-debt boundary.
+- Verification: `pre-commit run --files` over the touched manuscript,
+  references, scorecard/report, lit log, and audit note PASS. Stale primacy
+  scan has only negated hits ("not a new 3+1D checkerboard", not "first
+  verified physics").
+
+## 2026-07-08 07:15 PDT - Codex
+
+- Submitted audit-only Aristotle sidecar for final live wording/source-debt
+  snippets with the exact updated report/scorecard/manuscript paragraphs
+  embedded in the prompt.
+- Project: `ce5cdb6a-387f-4a9c-84ae-108727b02877`; task:
+  `27c3be49-0da4-4a01-b721-1c57e79ec9c7`.
+- Scope: P0/P1 overclaim, novelty, source-status, and exact wording fixes only;
+  no proof front.
+
+## 2026-07-08 07:18 PDT - Codex
+
+- Harvested Claude's round-2 monogamy Aristotle proof job:
+  project `3ebcaf1f-5562-4149-b9fd-73d25582bfae`, task
+  `106b80b7-42f9-4cce-a319-fa9618dec704`, COMPLETE.
+- Archive:
+  `AgentTasks/aristotle-output/3ebcaf1f-5562-4149-b9fd-73d25582bfae.tar.gz`;
+  extracted output:
+  `AgentTasks/aristotle-output/3ebcaf1f-5562-4149-b9fd-73d25582bfae-extracted/allmass-monogamy-20260708-project_aristotle/`.
+- Aristotle reports `AllMassMonogamy/Core.lean` proved the finite
+  spinor-kinematics identities `pairwiseMass_append`,
+  `pairwiseMass_le_append`, and `pairwiseMass_append_eq_iff`, with no
+  placeholders and standard Mathlib axioms only.
+- Local verification: standalone rebuild failed before Lean because Lake tried
+  to clone Mathlib and `git` returned 128; compiling the extracted Lean file
+  through the main repo Lake environment passed:
+  `lake env lean AgentTasks/aristotle-output/3ebcaf1f-5562-4149-b9fd-73d25582bfae-extracted/allmass-monogamy-20260708-project_aristotle/AllMassMonogamy/Core.lean`.
+  Placeholder scan of the extracted Lean file found no raw escape-hatch hits.
+- Boundary: optional post-06 standalone artifact; finite spinor-kinematics only,
+  not a Delta binding-defect theorem and not integrated into `PhysicsSM`.
+
+## 2026-07-08 07:22 PDT - Codex
+
+- Harvested final live-wording Aristotle audit:
+  project `ce5cdb6a-387f-4a9c-84ae-108727b02877`, task
+  `27c3be49-0da4-4a01-b721-1c57e79ec9c7`, COMPLETE_WITH_ERRORS.
+- Accepted findings: HepLean content was too specific for an ID-only source,
+  and two residual primacy/search-negative phrases ("to our search,
+  unoccupied"; "plausibly among the first machine-checked fragments") were too
+  strong.
+- Applied fixes in `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md`:
+  HepLean is now ID/status-only; the `det P` / indefinite-budget tie says "we
+  did not find ... and we make no primacy claim"; the constructive-QFT chain is
+  now "a machine-checked instance ... on finite lattices" with no priority
+  claim relative to HepLean.
+- Clarification: `[import]` is a claim-calculus tag in the manuscript, not an
+  unresolved placeholder by itself.
+
+## 2026-07-08 07:23 PDT - Codex
+
+- Submitted audit-only Aristotle sidecar for final 8am handoff consistency.
+- Project: `6ba909ca-6236-4c26-acc8-828292cfe9c8`; task:
+  `720f08c4-f57e-4405-bbb3-657af07249ea`.
+- Scope: P0/P1 contradictions among final report/scorecard/manuscript
+  boundaries, forbidden final-summary wording, and batch-in-flight caveat only;
+  no proof front.
+
+## 2026-07-08 07:26 PDT - Codex
+
+- Current-state correction: the post-06 monogamy and rank/area artifacts are no
+  longer merely standalone harvested archives in this worktree. They are present
+  as draft modules:
+  `PhysicsSM/Draft/NullEdge/Carrier/MassMonogamy.lean` and
+  `PhysicsSM/Draft/NullEdge/Carrier/RankAreaMass.lean`, imported and pinned by
+  `PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`.
+- Verification run before this entry: `lake env lean` on both modules and
+  `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean` PASS.
+- Applied doc/report corrections: softened module docstrings to finite
+  kinematic support only; updated `MORNING_REPORT.md`, `HONEST_SCORECARD.md`,
+  `AgentTasks/allmass-strengthen-round2-aristotle-2026-07-08.md`, and
+  `NULL_EDGE_RESULTS.md` to remove stale "not integrated" / "not locally
+  verified" wording.
+
+## [HARVEST+SUBMIT Claude] Round-2 landed (F3+rank/area); round-3 submitted (F4+F3-nway)
+
+- HARVESTED round 2 (both COMPLETE, proved clean, LANDED M, guard-pinned, lake
+  build green 8075 jobs): MassMonogamy.lean (F3 superadditivity + monogamy
+  characterization, job 3ebcaf1f) and RankAreaMass.lean (massive<=>PosDef<=>det>0,
+  mass-shell; job 979a3401, generalized to RCLike/any size).
+- SUBMITTED round 3: F4 finite Witten/Lichnerowicz positivity (project
+  70ab0730 - S PSD + vanishing iff covariantly-constant & curvature-null; gives
+  S7 its first GR-shaped theorem); F3 monogamy round 2 (project b6764db8 -
+  general partition superadditivity massOn S + massOn Sᶜ <= whole, ships the
+  proven pairwiseMass_append). Task note: allmass-strengthen-round3-*.md.
+- batch-1 (8b3efa7c: T1/T2/T5) STILL running T2's PosDef (~1h; may time out -
+  check aristotle list before assuming failure).
