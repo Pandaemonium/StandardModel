@@ -54,6 +54,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap
 import PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction
 import PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierGradedBudget
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -893,5 +894,16 @@ is [import] (1+1D) / open (Cl(4)); only these finite facts are M. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit.Ustep_hasDerivAt_generator' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit.Ustep_hasDerivAt_generator
+
+/-! ## The organizing identity, discharged on the actual carrier
+
+`CarrierGradedBudget.carrier_graded_budget`: the graded supertrace of the carrier's
+*own* `4 D^#D` decomposes over the four channels, budget supplied by the real
+`carrier_krein_square` (no assumed hypothesis) — so "the channels ARE the graded
+pieces of the carrier's Dirac square" is a theorem about the carrier. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.carrier_graded_budget' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.carrier_graded_budget
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

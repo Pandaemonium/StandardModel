@@ -1228,13 +1228,17 @@ that *any* four-channel budget identity — including the kernel-checked
 supertrace by linearity, giving *one equivariant graded-supertrace identity* on
 the four channels (McKean–Singer odd-power cancellation `graded_trace_odd_vanishes`;
 "unification is decomposition" `graded_trace_sum`; the C4 isotypic split
-`graded_trace_sector_split`). Precise boundary (per the call-08 audit): the budget
-enters as a *hypothesis* — the theorem is honest supertrace linearity, and the
-in-file instantiation on the actual carrier blocks is not yet done. And this is
-finite graded linear algebra, **not** a topological index theorem
+`graded_trace_sector_split`). The budget hypothesis is **now discharged on the
+real carrier**: `CarrierGradedBudget.carrier_graded_budget` (**M**, guard-pinned)
+supplies it from the kernel-checked `carrier_krein_square` (specialized to the
+matrix algebra), so the graded supertrace of the carrier's *own* `4 D^#D`
+decomposes over the four channels with *no assumed hypothesis* — "the channels ARE
+the graded pieces of the carrier's Dirac square" is a theorem about the carrier.
+(This still is finite graded linear algebra — McKean–Singer + supertrace linearity
+— **not** a topological index theorem
 à la Atiyah–Singer — that is a category error at this generality (no base space, no
 K-theory receptacle, no family of operators; the count is direct), not a research
-gap. What stays open is the `finrank`/projection-trace dimension-counting layer
+gap.) What stays open is the `finrank`/projection-trace dimension-counting layer
 that would turn the algebraic supertrace facts into inertia/dimension theorems.
 Each of (1)–(4) is finite, each has a kill condition, none requires new axioms.
 
@@ -1300,7 +1304,8 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master Krein identity: starred blocks `Q_{A,C}^#` + `4 Q_T` + `4 E_#` (§4) |
 | 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | self-adjoint 3-slot specialization `4 D^#D = Q_A+Q_C+4Q_T` (`E_#=0`, bare blocks) |
 | 4 | `signed_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | shares sum to one (abstract) |
-| 4/10 | `graded_budget_decomposition`, `graded_trace_odd_vanishes` | `Carrier/EquivariantGradedIndex.lean` | M, self-guarded (in-file pin) | **organizing theorem, provable half**: *any* 4-channel budget pushes through the graded supertrace by linearity ("unification is decomposition"); McKean–Singer odd-power cancellation. Budget enters as a hypothesis (carrier instantiation not yet in-file); not a topological index |
+| 4/10 | `graded_budget_decomposition`, `graded_trace_odd_vanishes` | `Carrier/EquivariantGradedIndex.lean` | M, self-guarded (in-file pin) | **organizing theorem, provable half**: *any* 4-channel budget pushes through the graded supertrace by linearity ("unification is decomposition"); McKean–Singer odd-power cancellation. Not a topological index |
+| 4/10 | `carrier_graded_budget` | `Carrier/CarrierGradedBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the budget hypothesis discharged on the real carrier**: the graded supertrace of the carrier's *own* `4 D^#D` decomposes over the four channels (budget from `carrier_krein_square`, no assumed hypothesis) — the channels ARE the graded pieces of the carrier's Dirac square |
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-vacuous `(1/2,0,1/2)` witness |
 | 4 | `sector_ground_mass` | `Carrier/SectorGroundMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | Rayleigh–Ritz keystone: definite-sector ground value is a positive squared mass (§4 rail 3, §10 crux 0) |
 | 4 | `T2_positive_mass` | `Carrier/SectorGroundMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the positivity linchpin**: explicit two-edge Cl(4) carrier, sector form `1+B^HB` PosDef, keystone fires ⇒ genuine positive mass (§6, §10 crux 0a) |
