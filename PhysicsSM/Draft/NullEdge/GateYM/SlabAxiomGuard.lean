@@ -62,6 +62,7 @@ import PhysicsSM.Draft.NullEdge.CouplingUnificationFinite
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction
 import PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount
+import PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -620,6 +621,30 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square_pi
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.witnessC1_square' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.witnessC1_square
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.witnessC2_square' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.witnessC2_square
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.witnessC1_mul_C2_ne_C2_mul_C1' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.witnessC1_mul_C2_ne_C2_mul_C1
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_component_same' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_component_same
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_component_ne' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_component_ne
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_assemble_eval' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.finiteProductForm_assemble_eval
+
 /-! ## K5 / S4a: finite Banks-Casher count identity (overnight 2026-07-08) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.banks_casher_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -633,5 +658,15 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.resolvent_sum_trace' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.resolvent_sum_trace
+
+/-! ## S1-CC: closure balanced on the physical sector (Fable call-01, 2026-07-08) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_odd_pow_trace_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.anticonj_odd_pow_trace_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.conj_pow' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.conj_pow
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

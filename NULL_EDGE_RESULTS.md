@@ -350,12 +350,18 @@ the trusted namespace yet.
   has square `2 * b * A^#B`: a signed chromomagnetic channel, with no PSD
   diagonal claim. The new guarded rung
   `S1ClosureCurrentAlgebra.closure_current_square_pi` lifts this componentwise
-  to any pair-indexed finite product target, which models the no-cross-term
-  algebra of the pair-stabilized multi-direction route. Claim boundary: this is
-  abstract finite algebra over a pointwise product ring, not yet the
-  form-orthogonal direct-sum injection theorem, not yet the concrete carrier
-  normalization theorem, and not a positivity theorem. Guard-pinned in
-  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`.
+  to an arbitrary indexed pointwise-product target; by itself this is plumbing,
+  not a carrier cross-term theorem. The same module now
+  includes `finiteProductForm_component_same`,
+  `finiteProductForm_component_ne`, and `finiteProductForm_assemble_eval`,
+  proving the abstract finite-product form identities for component inclusions
+  (same block evaluates to its component form; different blocks are
+  orthogonal; assembled families evaluate as a finite sum). A concrete
+  Gaussian-integer 2x2 witness also proves the square-zero generators can be
+  noncommuting, so the bivector slot is not vacuous. Claim boundary: this is
+  abstract finite algebra/form plumbing, not yet the concrete carrier
+  pair-index/sign/4-slot normalization theorem, and not a positivity theorem.
+  Guard-pinned in `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`.
 - **First Move-2 identification (finite identity).** `Q_A = Q(sum_e alpha_e)`:
   the aperture block IS the invariant mass of the total null momentum, tying
   the carrier layer to the trusted P1 Plucker mass exactly.
@@ -374,6 +380,7 @@ the trusted namespace yet.
   strictly positive mass form) and unbalanced `(2,1)` complex (index 1, a
   forced massless mode for every dynamics). Masslessness of the surplus is
   the mass thesis's converse, now a theorem family.
+- **S1-CC positivity crux resolved: closure is balanced (finite identity + MEMO, 2026-07-08).** The nonabelian closure channel `Q_C` is NOT positive on the physical sector - it is exactly BALANCED (Krein signature zero) via a grading anticonjugation. Kernel engine: `anticonj_odd_pow_trace_zero` (`S^-1 B S = -B => Tr(B^odd)=0`, guard-pinned in `S1CCBalancedInertia.lean`). Physical positivity relocates to the doublet-free complement's inertia surplus. Resolves the program's central open crux as a structured no-go with content.
 - **Signed mass-budget theorem + witness (finite identity, 2026-07-08).**
   The S6 flagship in signed form: from the guard-pinned Weitzenboeck
   identity `4 D² = Q_A + Q_C + 4 Q_T` and any linear expectation `ev`,

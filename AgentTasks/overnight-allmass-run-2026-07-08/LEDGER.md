@@ -413,3 +413,165 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   lake build (8027); lake build CarrierAxiomGuard (8070).
 - Claim boundary: still one finite Schur step; the constituent-mass
   bridge stays C.
+
+## [AUDIT Claude] Cross-review of Codex K2 closure_current_square_pi - CONCUR
+
+- Read the theorem source. Verdict: honest, correctly scoped, non-hollow,
+  semantically aligned. It lifts my single-pair closure_current_square to a
+  family via the Pi-type (componentwise) ring, so the direct-sum current's
+  square is the block-diagonal sum of per-pair squares with NO cross-terms
+  by construction - exactly the pair-stabilization model (SevenChallenges
+  finding 4). Four over-claim modes: clear. The boundary correctly excludes
+  form-orthogonal injection, concrete carrier identification, positivity,
+  inertia. Guard footprint [propext, Quot.sound] (choice-free) confirmed
+  present. No findings.
+- Note for whoever lands the concrete multi-direction step: the honest gap
+  from closure_current_square_pi to "actual Q_C = direct sum" is the
+  concrete carrier identification (the block-diagonal Krein form must be
+  the real one) - correctly still open.
+
+## [AUDIT Codex] All-mass manuscript G1/G2/G4 audit - BLOCKING FINDINGS
+
+- Audit artifact:
+  `AgentTasks/overnight-allmass-run-2026-07-08/MANUSCRIPT_AUDIT_CODEX_2026-07-07_2325.md`.
+- Scope: G1/G2/G4 audit of
+  `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` against
+  `MANUSCRIPT_SPEC.md`; I did not edit the manuscript.
+- G2 anchor existence sweep: current section-11 table has 28 rows and all 28
+  declarations are found in their stated files.
+- P0: `onshell_wedge_normSq_eq_coin_sq` is cited as M-grade in section 5 and
+  exists in `GateI1/MassCoinBridge.lean`, but is missing from section 11 and I
+  found no guard pin for it in the Carrier/GateYM guard files. This violates
+  the anchor-rule requirement for claimed-pinned M declarations until repaired
+  or downgraded.
+- P1: section 11 lacks the spec-required row-level grade, guard-pin status,
+  and axiom-footprint columns; the table currently has only section,
+  declaration, file, and role.
+- P1: section 3 is presented as trusted, but the table cites the draft
+  Aristotle files rather than the non-draft `PhysicsSM/Spinor/PluckerMass.lean`
+  anchors that also contain the three kinematic declarations.
+- P1: section 6/table wording for `closure_current_square` still reads too
+  much like a kernel-checked concrete `Q_C = L^#L` carrier identification.
+  The Lean theorem is the abstract skew-pairing square; the concrete
+  two-transport identification remains MEMO/oracle/queued.
+- P1: section 4/table calls `carrier_square_assembly` a four-slot split, but
+  the landed theorem and budget are the three-block `D^2` identity
+  `Q_A + Q_C + 4 Q_T` and `b_A + b_C + b_T = 1`. The four-slot E-budget should
+  be C-grade unless a `D^#D` theorem has actually landed.
+- G4 kill-list check: passes on content. The manuscript explicitly reports
+  Koide, `Tr E`, defect-Gram-as-`Q_C`, positive-gluon-energy conflation,
+  cyclic zero-mode forcing, retardedness-only no-doubling / one-sided GW, and
+  premature spectral-measure language.
+- Commands run: `aristotle list --limit 8`; exact row extraction and
+  declaration/file sweep; backtick-candidate sweep over sections 3-9;
+  `rg -n "\bonshell_wedge_normSq_eq_coin_sq\b" ...`; guard scan over all 28
+  section-11 rows against `CarrierAxiomGuard.lean` and `SlabAxiomGuard.lean`;
+  source inspections of `S1ClosureCurrentAlgebra.lean`, `CarrierMassBudget.lean`,
+  `CarrierSquareAssembly.lean`, and `MassCoinBridge.lean`.
+- Verdict: G1 and G2 do not pass yet. Do not declare the manuscript delivered
+  in MORNING_REPORT until these findings are fixed or explicitly downgraded
+  with rationale. G3/G5 remain outside this audit and were already marked
+  pending.
+
+## [HARVEST Codex] Aristotle K1 anti-regression audit
+
+- Harvested project `c9bce7a2-8f25-4d56-85ec-744206e3e4ea`, task
+  `d1738c9f-03d3-4369-a54a-d6327a54d579`; local note updated at
+  `ARISTOTLE_AUDIT_K1_ANTIREGRESSION_NEXT_2026-07-07_2312.md`.
+- Downloaded output to
+  `AgentTasks/aristotle-output/c9bce7a2-8f25-4d56-85ec-744206e3e4ea-extracted/d1738c9f-03d3-4369-a54a-d6327a54d579_aristotle/`.
+- Verdict: land the concrete `Fin 3` anti-regression fixture locally first.
+  Make the Lean decidable theorem authoritative; treat the Python n=3 oracle as
+  scratch cross-check only.
+- Suggested fixture declarations:
+  `toyTotalBlockPerms_card`, `pinnedWord_collapses_toy`, optional
+  `pinnedWord_not_injective_toy`, and `structuredWord_separates_toy`.
+- Free-slot route: put `perPair_absWeight_bound_freeSlot` for `(m_j - 1)!` in a
+  new draft file importing the generic reducer read-only, then add an
+  old-shaped `m_j!` corollary only as graceful degradation. Do not touch
+  `fiber_card_mul_le_factorial`.
+- Overclaim guard: fixture means regression prevented, not K1 closed; structured
+  `m_j!` is not proved for all `n`; K1 closes only if the downstream KP bound
+  survives with `(m_j - 1)!`.
+- `aristotle list --limit 8` after the manuscript audit showed the K2
+  form-plumbing audit still RUNNING, so at least one Aristotle audit remains
+  live.
+
+## [HARVEST Codex] Aristotle K2 finite-product form-plumbing audit
+
+- Harvested project `d8c051bf-0edb-4d73-ab46-4faa442ddfc4`, task
+  `51dbc881-39f4-4076-ae99-51752cf74d59`; local note updated at
+  `ARISTOTLE_AUDIT_K2_FORM_PLUMBING_2026-07-07_2312.md`.
+- Downloaded output to
+  `AgentTasks/aristotle-output/d8c051bf-0edb-4d73-ab46-4faa442ddfc4-extracted/51dbc881-39f4-4076-ae99-51752cf74d59_aristotle/`.
+- Verdict: honest K2-adjacent plumbing / carrier-abstract infrastructure, not
+  a K2 result. It is reusable and semantically aligned, but it does not yet
+  touch the physical carrier, Krein form, positivity, pair index, signs, or
+  actual closure-current square.
+- Statement audit: `finiteProductForm_component_ne` is the real off-diagonal
+  orthogonality content; `finiteProductForm_assemble_eval` is only an unfolding
+  convenience.
+- Witness audit: the Gaussian-integer witness is a relevant bounded
+  non-vacuity example for noncommuting square-zero elements, not evidence that
+  the physical carrier/current has been realized.
+- Recommended next theorem: `finiteProductForm_total`, then total-square and
+  per-component-vanishing corollaries. Do not yet jump to concrete pair index,
+  carrier normalization, or positivity.
+- Forbidden prose: no "carrier Krein form", "metric", "positive", "K2 closed",
+  "physical current", or "gauge closure realized" language around these lemmas.
+
+## [SUBMIT Codex] Fresh Aristotle audit pair
+
+- Submitted manuscript repair-plan audit:
+  project `ff8e265c-ffa8-49f3-9a16-5194467c5506`, note
+  `ARISTOTLE_AUDIT_MANUSCRIPT_REPAIR_2026-07-07_2335.md`.
+  Prompt asks Aristotle to confirm/downgrade/upgrade the Codex P0/P1 findings
+  and give the minimal G1/G2 repair plan before MORNING_REPORT delivery.
+- Submitted K2 total-assembly next-theorem audit:
+  project `a692d71f-f536-4b44-afd7-f33660f69f9a`, note
+  `ARISTOTLE_AUDIT_K2_TOTAL_ASSEMBLY_NEXT_2026-07-07_2335.md`.
+  Prompt asks for the exact `finiteProductForm_total` statement shape,
+  declaration names, proof strategy, semantic traps, and docs claim boundary.
+- `aristotle list --limit 6` showed both projects RUNNING, restoring the
+  requested 1-2 live Aristotle audit jobs.
+
+## [CLAIM Codex] K1 local anti-regression fixture scout
+
+- Local time: 2026-07-07 23:28 PDT.
+- Claiming the Aristotle-recommended first K1 local step: inspect
+  `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` and nearby KP
+  scaffold to see whether the concrete `Fin 3` pinned-word collapse /
+  structured-word separation fixture can be landed cleanly now.
+- Claim boundary: scout and, if straightforward, land the decidable
+  anti-regression fixture. If the live definitions are too entangled or the
+  statement would require inventing placeholder APIs, record a handoff instead
+  of forcing a fake theorem.
+
+## [LAND Claude] Fable call-01 harvested: manuscript audit applied + S1-CC crux RESOLVED
+
+- Fable-5 call-01 (log:
+  `AgentTasks/model-calls/claude/2026-07-07-231939-fable-call-01.md`)
+  returned: Part A manuscript audit (mostly certified honest, ~7 precise
+  fixes + the master-display elegance win), Part B a full resolution of the
+  central positivity crux S1-CC.
+- Part A APPLIED to the manuscript (committed 2729a8e1): S4 master identity
+  display fixing the E_# vs soldering-E conflation; budget theorem->corollary;
+  S6 torsor/group M->MEMO; S8 parity clause split; trusted-vs-Draft Plucker
+  paths; osSpectralGap guard name; +4 anchor rows.
+- Part B LANDED (this commit): `anticonj_odd_pow_trace_zero`
+  (`GateYM/S1CCBalancedInertia.lean`, kernel-clean, guard-pinned) - the
+  spectral-symmetry engine: `S^-1 B S = -B => Tr(B^(2k+1)) = 0`. This is
+  the kernel core of the resolution: closure is BALANCED (not positive) on
+  the physical sector, structurally, via the grading anticonjugation
+  `b^-1 (JQ_C) b = -(JQ_C)`. The gate asked the wrong question (only the
+  square descends, not the current). Full ladder + kill conditions in
+  `S1CC_RESOLUTION.md` (Lemma 1, Theorems 1-3, 6x6 witness).
+- Manuscript S6 crux box rewritten: central crux is now a resolved
+  structured no-go (M engine + MEMO), not an open question. Roadmap S1,
+  results map, doc map updated.
+- Verification: lake env lean S1CCBalancedInertia (clean); lake build (8026);
+  lake build SlabAxiomGuard (8148, pins green).
+- Claim boundary: the trace engine is M; the V' construction and the
+  odd-moment->inertia step are MEMO (next rungs). Physical total-operator
+  positivity stays C (doublet-free dominance bound).
+- Fable call logged; budget/discipline per protocol.

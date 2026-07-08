@@ -310,22 +310,38 @@ hypotheses, which is *stronger* in that direction); the group-independence
 positivity by itself — null Clifford coefficients are isotropic, so the
 square has no positive-definite diagonal. Therefore:
 
-> **The central open crux (C).** Positivity of the closure channel is not
-> a full-space fact and never could be. It can hold only on the physical
-> (Gauss-law) sector, and — because every torsor representative squares to
-> the *same* `Q_C` — the decision is a single finite computation: the
-> inertia of `Q_C` restricted to the physical sector `V'/N`. If that
-> restricted form is positive, closure positivity holds; if indefinite,
-> `Q_C` is honestly a signed chromomagnetic channel and positivity is
-> demanded only of the total operator on the quotient. This is gate
-> **S1-CC**, blocked only on transcribing `V'`.
+> **The central crux, resolved as a structured no-go (M engine + MEMO).**
+> Positivity of the closure channel is not a full-space fact and never
+> could be; it can hold only on the physical (Gauss-law) sector `V'/N`.
+> The resolution (Fable analysis, this run): closure is **not** positive
+> there — it is exactly *balanced* (Krein signature zero), structurally.
+> The mechanism is a grading anticonjugation: the closure bivector
+> `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
+> every gauge-defined constraint sector (gauge acts on the color factor
+> alone, commuting with `b`), and a Hermitian form congruent to its own
+> negative has equal positive and negative inertia. The kernel engine is
+> proved: anticonjugation forces every odd power traceless
+> (`anticonj_odd_pow_trace_zero`, **M**), so the form's spectrum is
+> symmetric about zero. So `Q_C` is honestly a *signed* chromomagnetic
+> channel; physical positivity must come from the `J`-definite complement
+> of the closure doublet (the matter/transverse directions), exactly as in
+> Gupta–Bleuler the longitudinal pair contributes zero norm. Two clauses
+> stay MEMO pending their own rungs: the concrete `V'` construction from
+> the carrier Gauss covectors, and the step from odd-moment-vanishing to
+> the inertia count.
 
-The existing finite Kugo–Ojima witnesses bracket the two poles: a
-nonvacuous positive physical sector on the unbalanced `(2,1)` model
-(`nonvacuous_positive_sector`, **M**) and the matching indefinite no-go
-(`nondegenerate_but_indefinite_no_go`, **M**). Scope, stated plainly:
-everything here is finite and strong-coupling; the continuum Yang–Mills
-mass gap is the Clay problem and is **not claimed** (§10).
+A second correction the resolution forces: the gate as originally posed
+asked whether a torsor *representative* `L_A` descends to `V'`; it does
+not (**MEMO**), but that was the wrong question — only the *square* `Q_C`
+needs to descend, and it does iff the finite Ward condition
+`K(ker G) subseteq ker G` holds. The existing finite Kugo–Ojima witnesses
+frame the surviving question: the nonvacuous positive sector on `(2,1)`
+(`nonvacuous_positive_sector`, **M**) and the indefinite no-go on `(1,2)`
+(`nondegenerate_but_indefinite_no_go`, **M**) show the decision quantity is
+the inertia surplus `p - q` on the doublet-free complement — now with a
+mechanism. Scope, stated plainly: everything here is finite and
+strong-coupling; the continuum Yang–Mills mass gap is the Clay problem and
+is **not claimed** (§10).
 
 ---
 
@@ -519,6 +535,7 @@ anchor rule.)*
 | 6 | `slab_exponential_clustering` | `GateYM/SlabClustering.lean` | exponential clustering |
 | 6 | `banks_casher_count` | `GateYM/FiniteBanksCasherCount.lean` | finite Banks–Casher count |
 | 6 | `skew_prod` | `GateYM/FiniteBanksCasherCount.lean` | count denominator `= m²+AᴴA` |
+| 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | closure balanced on physical sector (engine) |
 | 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | positive physical sector `(2,1)` |
 | 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | indefinite no-go `(1,2)` |
 | 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | soldering-gradient `E` (varying soldering) |

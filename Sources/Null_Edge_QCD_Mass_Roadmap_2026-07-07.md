@@ -111,6 +111,16 @@ strongest honest claim available at that stage).
   (Q01/HSTAR interface) - a reroute, not a defeat.
 - CEILING: `M` finite identity. This stage decides whether "QCD mass =
   closure disagreement" is an operator theorem or only a channel label.
+- **RESOLVED as a structured no-go (2026-07-08 overnight, Fable call-01;
+  engine LANDED).** Closure is NOT positive on the physical sector - it is
+  exactly BALANCED (signature zero) via a grading anticonjugation. The gate
+  asked the wrong question (only the square must descend, not the current).
+  Kernel engine `anticonj_odd_pow_trace_zero` landed + guard-pinned
+  (`GateYM/S1CCBalancedInertia.lean`). Full ladder (Lemma 1, Theorems 1-3,
+  6x6 witness, kill conditions K-A/B/C) in
+  `AgentTasks/overnight-allmass-run-2026-07-08/S1CC_RESOLUTION.md`. Survivor:
+  physical positivity relocates to the `p-q` inertia surplus on the
+  doublet-free complement (grade C, Weyl-type dominance bound).
 
 ### S2. Strong-coupling gap, completed (piece 7)
 
@@ -311,14 +321,19 @@ Adopted:
   memo's ladder; transcription risk: the memo's normalization is
   `D^#D = Q_A + Q_C`, not the guard-pinned 4-slot form - carry the 4's).
 - **K2/L4 abstract stabilized algebra rung landed (2026-07-08 early).**
-  Lean now has the guard-pinned componentwise pair-indexed theorem
+  Lean now has the guard-pinned componentwise indexed theorem
   `S1ClosureCurrentAlgebra.closure_current_square_pi`: a family of
-  two-direction closure currents squares in a finite product target with no
-  cross-pair terms. This is the algebraic finite-product rung behind the
-  stabilized direct-sum route. Remaining work: prove the form-orthogonal
-  direct-sum/injection theorem, then instantiate the pair index, signs, and
-  4-slot normalization on the concrete carrier. Do not read this as full K2,
-  positivity, or a site-diagonal defect-Gram theorem.
+  two-direction closure currents squares in an arbitrary pointwise-product
+  target. This is plumbing for the algebraic finite-product rung behind the
+  stabilized direct-sum route. The follow-up abstract form plumbing also landed:
+  `finiteProductForm_component_same`, `finiteProductForm_component_ne`, and
+  `finiteProductForm_assemble_eval` prove that component inclusions are
+  orthogonal in the finite-product bilinear form and that an assembled family
+  evaluates as the sum of component forms. The Gaussian-integer witness
+  `witnessC1_mul_C2_ne_C2_mul_C1` records that the square-zero bivector slot is
+  non-vacuous. Remaining work: instantiate the pair index, signs, component
+  closure-current forms, and 4-slot normalization on the concrete carrier. Do
+  not read this as full K2, positivity, or a site-diagonal defect-Gram theorem.
 - **The (a)/(b)/(c) trichotomy is RETIRED - it conflated representation
   with positivity.** Krein squares of null-soldered currents carry no PSD
   diagonal (the program's own nilpotency mechanism), and `sig(J Q_C)` is
