@@ -773,6 +773,98 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Verification: lake env lean RGSchurMassWitness (clean); lake build (8027);
   CarrierAxiomGuard (8070).
 
+## [AUDIT/LAND Codex] K2 + S1-CC Aristotle audits harvested; S1 count helper landed
+
+- Harvested K2 total-assembly source audit:
+  project `fdf500a4-9a3b-4537-ad30-48d5c362fae8`, task
+  `99f8c0fb-4b1d-4eba-8ff2-f57e48f9705f`
+  (`COMPLETE_WITH_ERRORS`, substantive positive audit).
+  Verdict: `finiteProductForm_total` and corollaries are honest
+  carrier-abstract block-diagonal reconstruction; no K2/positivity/Krein
+  overclaim. Next bridge: pullback/congruence theorem from concrete pair
+  carrier form to `finiteProductForm`.
+- Harvested S1-CC balanced-inertia source audit:
+  project `283e0e8d-16d0-4e51-a385-517f2e4a01eb`, task
+  `82ac655a-985f-4a6a-9451-2fc0a522fc9a` (`COMPLETE`).
+  Verdict: finite algebra rungs are sound; trace-theorem docstrings needed
+  softer spectral wording. Codex applied docstring hygiene.
+- Landed in `S1CCBalancedInertia.lean`:
+  `countP_pos_eq_countP_neg_of_map_neg_eq` and
+  `card_pos_eq_card_neg_of_multiset_map_neg_eq`, the pure finite count half of
+  the balanced-inertia capstone. If a real multiset / finite indexed family is
+  invariant under negation, positive and negative counts agree.
+- Guard updates: added pins for `trace_invOf_conj`, `anticonj_trace_zero`, and
+  the two count helpers in `SlabAxiomGuard.lean`.
+- Verification:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/S1CCBalancedInertia.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+- Remaining S1-CC proof target: show that Hermitian `B` plus
+  `(-B).charpoly = B.charpoly` makes the `Matrix.IsHermitian.eigenvalues`
+  multiset negation-invariant; then the new count helper gives `n_+ = n_-`.
+
+## [SUBMITTED Codex] Aristotle grand strategy + S1-CC audit lane refilled
+
+- Submitted grand-strategy job
+  `63083569-27ea-47c0-970f-83b7716e5f01` at 03:40 PDT, covering K1/K2/S1-CC,
+  manuscript risks, and the 06:00 audit switch.
+- Submitted focused audit job
+  `c45cba26-f069-4653-a7aa-416940b6666b` for the newly landed S1-CC count
+  helpers.
+- Submitted focused theorem-shape audit job
+  `53266dc6-04f2-4729-b8b2-e555334d5e23` for the Hermitian charpoly-symmetry to
+  eigenvalue-multiset-negation bridge.
+- Queue intent: keep Aristotle doing one broad strategy pass plus at least one
+  active audit while Codex verifies local files and prepares the next proof
+  target.
+
+## [LAND Codex] S1-CC Hermitian balanced-count capstone landed
+
+- Landed in `PhysicsSM/Draft/NullEdge/GateYM/S1CCBalancedInertia.lean`:
+  `neg_charpoly_roots_eq_map_neg_eigenvalues`,
+  `hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly`, and
+  `hermitian_balanced_count_of_neg_charpoly`.
+- Meaning: finite matrix/eigenvalue theorem only. If `B` is Hermitian and
+  `(-B).charpoly = B.charpoly`, then the number of positive Hermitian
+  eigenvalues equals the number of negative Hermitian eigenvalues.
+- This completes the spectral/count API step that had been marked as the
+  S1-CC inertia-count capstone. Remaining work is now the physical-sector
+  bridge: identify the descended `J Q_C` representative, prove Hermitian and
+  charpoly-negation symmetry there, and keep `V'/N` descent separate.
+- Guard updates: new capstone/support rungs are guard-pinned in
+  `SlabAxiomGuard.lean`.
+- Verification:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/S1CCBalancedInertia.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+
+## [AUDIT Codex] Grand strategy + S1 count-helper audit harvested
+
+- Harvested grand-strategy project
+  `63083569-27ea-47c0-970f-83b7716e5f01`, task
+  `ff79299c-1121-4b69-96e1-631798df8d5b`
+  (`COMPLETE_WITH_ERRORS`, substantive strategy report).
+  Recommendation: prioritize S1-CC spectral/count capstone first (now landed),
+  then K2 concrete pullback/congruence, then K1 general free-slot theorem; keep
+  manuscript grading and signed-vs-positive hygiene as deadline work before
+  06:00.
+- Harvested count-helper audit project
+  `c45cba26-f069-4653-a7aa-416940b6666b`, task
+  `1ecab266-5f4c-48c6-980a-8d4398e15ca2`
+  (`COMPLETE_WITH_ERRORS`, substantive positive audit).
+  Verdict: count helpers are correct and scoped. Important nuance: strict
+  positive/negative counts exclude zero eigenvalues; full inertia triples need
+  nullity handled separately.
+
+## [FIX Codex] Wire LinearizedClosureEnergy into SlabAxiomGuard
+
+- Responded to Claude handoff: `LinearizedClosureEnergy.lean` had local guard
+  pins but was orphaned from the standard guard-build graph.
+- Added `import PhysicsSM.Draft.NullEdge.GateYM.LinearizedClosureEnergy` to
+  `SlabAxiomGuard.lean`. The module keeps its self-contained local pins; the
+  shared guard now pulls it into the standard lane-C build.
+- Verification:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/LinearizedClosureEnergy.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+
 ## [LAND Claude] Banks-Casher count reality + CONVERGENCE NOTE with Codex
 
 - `count_trace_real` (FiniteBanksCasherCount.lean, kernel-clean): the
@@ -1021,3 +1113,56 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   L2-L4 land; RG-Schur is explicitly NOT an instance (Fable, structural).
 - Verification: lake env lean (clean, local pin); lake build CarrierAxiomGuard
   (8072, green).
+
+## [LAND Claude] Manuscript revision - acted on 2 external reviews (5.5-6/10)
+
+- Commit 5034d66c. Manuscript retitled to "Mass as null disagreement: a
+  machine-verified finite framework" (old title claimed grade-C content;
+  title-honesty note added). Acted on all high-consensus items across both
+  reviews:
+  - grade table: MEMO row now discloses the LLM-oracle verification method.
+  - new S2a related-work (Penrose, Feynman-checkerboard + its continuum
+    limit as a T-grade bridge asset, spinor-helicity Elvang-Huang/Dixon,
+    Finster CFS, Connes NCG, Wilczek); novelty positioned by contrast.
+  - S3 novelty reframed: content is classical spinor-helicity kinematics;
+    OUR contribution is the kernel formalization + use as organizing invariant.
+  - new S4a: channel names (aperture/closure/turn/soldering ->
+    kinetic/QCD/Higgs/gravity) are grade-C structural analogies, NO continuum
+    reduction claimed, with an explicit kill condition for the naming scheme.
+  - carrier-rigidity named as a C-conjecture w/ kill (the "unification is
+    decomposition" thesis needs a forcing theorem, now pre-registered).
+  - Ji: demoted the scheme-DEPENDENT strong claim (term dominance); kept the
+    scheme-ROBUST weak claim (|b_T| small = most mass not Higgs).
+  - second-quantization status para (first-quantized boundary; Fock/
+    condensate/hadron-as-many-body-eigenvalue explicitly out of scope).
+  - pre-registered PREDICTION box: P-nu (neutrino ratio target, honest that
+    only the massless COUNT is owned, ratio not yet computed) + P-hf
+    (512/125 hyperfine self-consistency of the S6 witness); both grade C.
+  - glossary of recurring terms + internal labels; de-codenamed body refs
+    (TSOLDER_KAPPA_ANALYSIS, K1-STEP0, Q04 -> plain-language).
+- No Lean touched. No shared guard/Lean files touched (stayed off Codex's
+  contended S1CCBalancedInertia/SlabAxiomGuard). Docs-only; pre-commit clean.
+- Verification: pre-commit run --files (Passed/Skipped appropriately).
+
+## [SUBMIT Claude] Whole manuscript -> Fable-5 AND Aristotle (strengthening reviews, user-requested)
+
+- User asked to submit the whole manuscript to BOTH Fable and Aristotle and
+  ask how it could be strengthened. Both launched.
+- FABLE-5: `send_claude_review.py --model claude-fable-5 --packet
+  fable-calls/call-04-packet.md --source-file <manuscript>
+  --max-budget-usd 9.00 --timeout-seconds 2400`. Angle: theorist/referee
+  strengthening (highest-leverage next result; weakest load-bearing claim
+  adversarial; channel-name correspondence defensibility; missing physics;
+  exposition; novelty/positioning). Running in background.
+- ARISTOTLE: focused Mathlib-only package
+  `AgentTasks/aristotle-submit/allmass-manuscript-strengthen-20260708-project`
+  (manuscript shipped as ExtraPath, minimal `AllMassStrengthen/Strengthen.lean`).
+  project_id `4bf9899f-3e31-42f8-82ab-a6cbfa2b5780`, status submitted. Angle:
+  formal-methods strengthening (highest-value next theorem, invited to STATE
+  + prove `sector_ground_mass` / carrier rigidity in Lean; adversarial
+  semantic-alignment audit of the M/MEMO claims; correctness flags on the
+  4-block identity / balanced Krein square / det-parity / Schur law;
+  formalization roadmap). Task note:
+  `AgentTasks/allmass-manuscript-strengthen-aristotle-2026-07-08.md`.
+- Harvest plan: integrate both reports; land any confirmed correctness flag
+  immediately; open the top-ranked next theorem as the next handoff.
