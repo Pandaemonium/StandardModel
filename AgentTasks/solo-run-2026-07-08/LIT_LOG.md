@@ -40,3 +40,15 @@ critical point. This is the dynamics/spectra simulator's first physics output an
 a candidate manuscript result (finite mass gap = aperture - closure on a concrete
 carrier). NOTE: exact values are specific to this block-diagonal witness; the
 STRUCTURE (gap = aperture-dominance margin, critical at parity) is the claim.
+
+## Dynamics-simulation layer COMPLETE (3 directions, all Lean-anchored)
+
+- (A) carrier_spectrum_sim.py - mass phase diagram (gap = aperture-closure).
+- (B) carrier_evolution_sim.py - unitary evolution, spectrum resolution,
+  quantum-walk transfer operator, 2-fermion Slater scattering amplitudes.
+- (C) carrier_rgflow_sim.py - Schur RG flow (k_eff = t^2/mu, invariant mu*k_eff),
+  canonical ensemble (Z, F=<E>-TS, ground dominance), condensate near-zero-mode
+  fraction rising to the critical line (finite Banks-Casher shadow).
+Each block validated against a landed M-identity (T2, budget, FiniteUnitary
+Evolution, FiniteRGFlow, FiniteCanonicalEnsemble, RGSchurMassWitness). The Lean
+IS the simulation spec + validation oracle - Focus-2 goal met at the demo level.
