@@ -950,8 +950,17 @@ operator on a finite-dimensional space, "mass" is a spectral/kinematic
 invariant of *states*, and the budget decomposes an expectation in a chosen
 one-particle state. There is no Fock space, no creation/annihilation
 algebra, no path integral, and therefore no particle number, no vacuum
-condensate as an operator statement, and no second-quantized mass gap. This
-is deliberate and it is also a real limitation:
+condensate as an operator statement, and no second-quantized mass gap *of the
+interacting many-body system*. (This run did land the finite **free**
+second-quantized gap — `FockMassGap.secondQuantized_massGap` (**M**,
+self-guarded): on the fermionic occupation Fock space, the free many-body
+Hamiltonian `dΓ(B)` has ground energy `0` and first excited energy exactly the
+one-particle gap `λ − κ`, with the free two-body energy exactly the *sum of
+constituents* (`fockEnergy_twoParticle`) and the binding defect `Δ = −κ` as the
+seed (`twoBody_bound_below_threshold`). What stays open is the *interacting*
+hadron mass — a genuine bound state below the constituent threshold — which
+needs an interaction term on `Λ²` not derived here.) This is deliberate and it
+is also a real limitation:
 
 - Several physical notions the words invite — a *chiral condensate*
   `⟨ψ̄ψ⟩`, the *number* of light hadrons, spontaneous symmetry breaking as a
@@ -1257,6 +1266,7 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3) |
 | 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M (first two guard-pinned) | **the D2 instantiation, closed**: the carrier-block Hermitian flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` (generator-as-Hamiltonian is a **C** posit; carrier tie kernel at `(2,1)`) |
 | 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved`, `carrier6_orbit_norm_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the flow **orbit** of the carrier block `B(λ,κ)` — and of the full `6×6` physical sector form `M6` (`carrier6_…`) — conserves sector norm & (commuting-observable) energy: `FiniteUnitaryEvolution` fired on the concrete carrier |
+| 9 | `secondQuantized_massGap` | `Carrier/FockMassGap.lean` | M, self-guarded (in-file pin) | **free second-quantized mass gap**: on the fermionic occupation Fock space, `dΓ(B)`'s gap = one-particle gap `λ−κ`; free 2-body = sum of constituents; `Δ=−κ` seeds a below-threshold bound state (interacting hadron mass open) |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
