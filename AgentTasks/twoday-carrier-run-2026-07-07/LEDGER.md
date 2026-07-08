@@ -3849,3 +3849,25 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierWardDescentWitness`;
   `lake env lean PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`;
   `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`.
+
+## [FABLE handoff] Attack plans for the twelve hardest open pieces landed
+
+- New doc: `AgentTasks/twoday-carrier-run-2026-07-07/FABLE_HANDOFF_HARDEST_PIECES.md`
+  (indexed in `docs/DOCUMENT_MAP.md`). Audience: Codex lanes + Opus review seat.
+- Covers Codex's twelve-piece hardest-open list with, per piece: sharpened
+  target, recommended route, pitfalls, pre-registered outcomes, packaging
+  (standalone Aristotle vs context-pack vs oracle-first vs prose-first).
+- Headline strategic calls: (a) RG-Schur mass witness elevated to first
+  position - the doc contains the worked prediction T^2 = 2<a,b> T for the
+  blocked null chain plus the collinear negative control, hours of work,
+  thesis-level payoff; (b) piece 1 re-staged as A/B/C with adapted-basis
+  interface hypotheses instead of Mathlib Witt theory, Stage C = the
+  Gauss/closure interface the docket already names; (c) Q11 RC0 re-based on
+  Mathlib `exteriorPower.map`/`map_comp` (verified present) instead of
+  hand-rolled Cauchy-Binet; (d) Q08 literal radical via adapted monomial
+  basis, deliberately avoiding the super-tensor iso Mathlib lacks; (e) E-slot
+  reframed as finite geometric-trinity split 2E = C(T) + C(S) with the
+  P-probe as mandatory regression fixture; (f) SUB-NAT program for the
+  kappa bookkeeping with a three-outcome pre-registration.
+- Claim boundary: strategy document only - no Lean, no new claims; all
+  plans graded C with gates; landed anchors cited by exact file/theorem.

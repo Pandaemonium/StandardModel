@@ -76,6 +76,7 @@ as current state.
 - `THREAD_BOARD.md` - work queue with done-conditions. [LIVE]
 - `FABLE_QUEUE.md` - standing escalation channel for conceptual blockers. [LIVE]
 - `SYNTHESIS_BEYOND_MASS.md` - the index-trinity frame, positivity reroutes, checkerboard bridge, ranked ladder. [LIVE]
+- `FABLE_HANDOFF_HARDEST_PIECES.md` - Fable's attack plans for the twelve hardest open pieces (sharpened targets, routes, pre-registered outcomes, packaging). [STABLE]
 - `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` - collaborator-facing overview + ranked extensions. [STABLE]
 - `WITNESS_SATISFIABILITY.md` - the glue-witness mathematics (kernel transcription OPEN). [LIVE]
 - `ARISTOTLE_PLAYBOOK.md`, `FABLE_CALL_PROTOCOL.md`, `LIT_NEO4J_PROTOCOL.md` - run protocols. [STABLE]
