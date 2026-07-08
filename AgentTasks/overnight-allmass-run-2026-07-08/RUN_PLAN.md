@@ -39,6 +39,44 @@ the win condition. One that says more is a loss, whatever it proves.
   72b75f0d / 4b4d1f1b / 8d95b408 (ne-hard p01/p02/p03), fbdbe43f,
   f8aa05c8, 5ff9424e, ecbf61d8 - run `aristotle list --limit 30`.
 
+## 1b. Documents of record (KEEP UP-TO-DATE during the run)
+
+Run-local (continuous):
+
+- `LEDGER.md` - every claim, landing, audit; append-only.
+- `LIT_SEARCH_LOG.md` - every search, one line.
+- At dawn: `HONEST_SCORECARD.md` + `MORNING_REPORT.md` (created in P3).
+
+Repo-level - update IN THE SAME COMMIT as the work that changes them:
+
+- `NULL_EDGE_RESULTS.md` - every kernel landing or kill moves the
+  results map; a landing without a results-map line is not finished.
+- `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md` - S-stage statuses
+  (K-target landings change S1-S7 states; follow the Amendment pattern,
+  do not rewrite history). SPECIAL CASE: if the K3/S1-CC probe comes
+  back PSD, the spectral-language rail changes program-wide - that is a
+  CHARTER-level event: record it in
+  `Sources/Null_Edge_Program_Charter_2026-07-07.md` as an amendment
+  before using any spectral sentence anywhere.
+- Guard files (`CarrierAxiomGuard.lean`, `SlabAxiomGuard.lean`) - every
+  flagship landing gets pins in the same commit (build-enforced record).
+- `docs/DOCUMENT_MAP.md` - one line per new program-defining doc (the
+  manuscript gets its line when created), per its maintenance rules.
+- `Sources/Null_Edge_References.md` - verification status for every
+  source the manuscript cites (feeds gate G5).
+- `AgentTasks/twoday-carrier-run-2026-07-07/THREAD_BOARD.md` - ONLY
+  when tonight's work closes or kills a thread registered there
+  (EQUIPARTITION-GATE, SYMMETRY-ZERO-MODE, RG-SCHUR-WITNESS, etc.);
+  otherwise tonight's ledger suffices.
+- `AgentTasks/twoday-carrier-run-2026-07-07/TSOLDER_KAPPA_ANALYSIS.md`
+  sec 4b - T1/T2/T3 status lines if K6 lands.
+- `PROGRESS.md` - ONLY for run-defining events (a crux closed, the
+  manuscript delivered); it stays small by design.
+- One Aristotle task note per job (metadata block), as always.
+
+Everything else is read-only context; when in doubt, ledger first and
+let the morning session propagate.
+
 ## 2. Tier-K kernel targets (ranked; claim in ledger before working)
 
 - **K1 (the crux of cruxes): the KP fixed-forest injection**,
