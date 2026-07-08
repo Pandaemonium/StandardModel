@@ -13,9 +13,12 @@ rather than replacing it.
 *On the title (the paper's discipline applied to itself).* An earlier
 working title, "All mass from null edges," claimed more than the grades
 license: the kernel-checked content is (a) a classical kinematic identity,
-formalized, and (b) finite operator algebra about a functional *conjectured*
-(not yet proved) to be a mass — see §4 rail 3. Per this paper's own rule, a
-title graded **C** is an error; the present title is what the grades support.
+formalized, and (b) finite operator algebra whose central functional is now
+proved a genuine *positive squared mass* on a concrete carrier
+(`T2_positive_mass`, **M**; §4 rail 3), while its identification with *the*
+physical mass of a Standard-Model particle remains conjectural (**C**). Per
+this paper's own rule, a title graded **C** is an error; the present title is
+what the grades support.
 "All mass" survives only as the *program's* aim, not this paper's result.
 
 Every technical claim below carries a grade, and the grades are as much the
