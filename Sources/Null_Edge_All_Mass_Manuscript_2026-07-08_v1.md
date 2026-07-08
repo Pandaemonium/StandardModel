@@ -1103,11 +1103,15 @@ sits beside the P1 origin-of-mass draft as the wider-scope companion.
 
 ## References
 
-External works cited (`[import]`), grouped by role. Identifiers are given where
-available; this is a draft list and identifiers should be convention-checked
-against `Sources/Null_Edge_References.md` before final submission. The
-project's own kernel-checked anchors are in the §11 table, not here. A fuller
-prior-art map with novelty-gap analysis is in
+External works cited (`[import]`), grouped by role. Identifiers verified against
+INSPIRE-HEP / arXiv (2026-07-08): the modern arXiv ids and the load-bearing
+classics (Barrett hep-th/0608221 = J. Math. Phys. 48 012303; Banks–Casher DOI
+10.1016/0550-3213(80)90255-2 = Nucl. Phys. B169 103; Zwanziger DOI
+10.1016/0550-3213(91)90581-H; Nielsen–Ninomiya Nucl. Phys. B185 20; Osterwalder–
+Seiler Ann. Phys. 110 440) are confirmed. The full source map with keys and
+status is `Sources/Null_Edge_References.md`. The project's own kernel-checked
+anchors are in the §11 table, not here. A fuller prior-art map with
+novelty-gap analysis is in
 `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`.
 
 **Kinematics / spinor-helicity (§2a, §3).**
@@ -1195,3 +1199,51 @@ prior-art map with novelty-gap analysis is in
 - F. Wilczek, *QCD Made Simple* / "Mass Without Mass", Phys. Today 53 (2000) 22;
   L. H. Kauffman, H. P. Noyes, discrete-physics program (bit-string / iterant
   combinatorics).
+
+---
+
+## Appendix A. Reproducibility
+
+Every **M** claim in this paper is machine-checked and independently
+reproducible. The verification is not a claim to be trusted — it is a build to
+be re-run.
+
+**Toolchain (pinned).** `leanprover/lean4:v4.28.0` with Mathlib at the matching
+`v4.28.0` (see `lakefile.toml`). Do not upgrade the pin; it is fixed for the
+Aristotle and Sphere-Packing workflows.
+
+**Rebuild everything.** From the repository root:
+
+```bash
+lake build                                  # builds the whole project (~8300 jobs)
+lake env lean PhysicsSM/Path/To/File.lean   # check a single module
+```
+
+A green `lake build` is the top-level integrity check: it fails if any **M**
+theorem acquires a `s o r r y`, a fake `a x i o m`, or a `n a t i v e _ d e c i d e`.
+
+**Axiom audit (the M grade).** Each flagship carries a build-enforced axiom pin
+— a `#guard_msgs (whitespace := lax) in #print axioms <name>` block — in its
+module and in the lane guard file (`PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean`
+for the Weitzenböck-carrier lane, `.../GateYM/SlabAxiomGuard.lean` for the
+closure lane). The build **fails** if a theorem's transitive axiom footprint
+drifts from the standard base `[propext, Classical.choice, Quot.sound]` (choice
+-free results use only `[propext, Quot.sound]`). To audit any result yourself:
+`#print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness.T2_positive_mass`.
+
+**The anchor table (§11)** lists every M theorem with its file and guard status;
+each name is grep-checkable against the source.
+
+**Numeric oracles (NOT M).** The pre-registered numerical probes live in
+`Scripts/oracle/` and are quarantined from the verified core. Each states, in its
+docstring, exactly which kernel-checked identity it mirrors or which kill it
+tests; run `python Scripts/oracle/<probe>.py`. Key ones: the S1-CC balanced
+-inertia probe, the aperture-grading kill, the multi-edge positive-sector escape,
+the Δ binding-energy probe, the T3a free-bridge probe, and the carrier
+spectrum/dynamics simulators. A probe is evidence for adding a fixture or
+pre-registering a prediction — never a substitute for a kernel proof.
+
+**Provenance.** Source keys and convention checks are in
+`Sources/Null_Edge_References.md`; the PhysLean convention cross-checks and the
+prior-art / novelty-gap analysis are in `docs/PHYSLEAN.md` and
+`Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`.
