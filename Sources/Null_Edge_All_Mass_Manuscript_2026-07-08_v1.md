@@ -994,7 +994,10 @@ is the simulation's spec and validation oracle):
 
 - `carrier_spectrum_sim.py` — the physical-sector **mass phase diagram**: the
   squared mass gap is **aperture − closure**, with a **massless critical line at
-  closure = aperture** (validated against `T2_positive_mass`,
+  closure = aperture**. This is now itself a kernel theorem — the diagram the sim
+  draws is exactly `MassGapWitness` (§4, `B_least_eigenvalue` / `B_posDef_iff`,
+  **M**, guard-pinned) — so the simulator here is a *cross-check of a proved
+  result*, not just an oracle (also validated against `T2_positive_mass`,
   `signed_budget_sum_one`, `posDef_iff_det_pos`).
 - `carrier_evolution_sim.py` — unitary Hamiltonian flow with a positive mass
   gap, survival-amplitude **mass-spectrum resolution**, a unitary
