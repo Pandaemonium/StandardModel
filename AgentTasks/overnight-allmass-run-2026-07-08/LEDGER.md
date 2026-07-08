@@ -575,3 +575,16 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   odd-moment->inertia step are MEMO (next rungs). Physical total-operator
   positivity stays C (doublet-free dominance bound).
 - Fable call logged; budget/discipline per protocol.
+
+## [LAND Claude] S1-CC Lemma 1 (half-constraint rigidity) landed
+
+- Extended `S1CCBalancedInertia.lean`: `half_constraint_rigidity` - the
+  constraint charge !![0,G1;G2,0] is nilpotent iff G1 G2 = 0 AND G2 G1 = 0
+  (Q^2 = !![G1 G2, 0; 0, G2 G1]). So a nilpotent BRST Gauss charge on the
+  hyperbolic pair is FORCED to use a single null covector - the
+  Gupta-Bleuler half-constraint is not a choice. Fable Part B Lemma 1,
+  now M (was M-target). One SlabAxiomGuard pin, green (8148).
+- With anticonj_odd_pow_trace_zero, the two algebraic pillars of the
+  S1-CC resolution are now kernel-checked; Theorems 1-3 + 6x6 witness
+  remain M-targets (S1CC_RESOLUTION.md).
+- Verification: lake env lean (clean); lake build (8026); guard (8148).

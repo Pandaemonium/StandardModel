@@ -22,7 +22,8 @@ Kugo-Ojima witnesses.
 - **LANDED (M):** `anticonj_odd_pow_trace_zero` - `S^{-1} B S = -B` implies
   `Tr(B^(2k+1)) = 0` (`GateYM/S1CCBalancedInertia.lean`). The spectral-
   symmetry engine; house trace-identity style, guard-pinned.
-- **Lemma 1 (half-constraint rigidity) [M-target].** For
+- **Lemma 1 (half-constraint rigidity) [LANDED, M].**
+  `half_constraint_rigidity` in `S1CCBalancedInertia.lean`, guard-pinned. For
   `Q = c1 (x) G1 + c2 (x) G2` with the null pair, `Q^2 = 0 <=>
   G1 G2 = 0 and G2 G1 = 0`; so a nilpotent Gauss charge must use a SINGLE
   null covector - Gupta-Bleuler "half the constraint" is FORCED by

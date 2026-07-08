@@ -669,4 +669,8 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.conj_pow
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.half_constraint_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.half_constraint_rigidity
+
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

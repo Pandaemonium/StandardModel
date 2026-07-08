@@ -98,4 +98,32 @@ theorem anticonj_trace_zero (B S : Matrix n n ℂ) [Invertible S]
   have := anticonj_odd_pow_trace_zero B S h 0
   simpa using this
 
+/-! ## Lemma 1: the half-constraint rigidity (Gupta-Bleuler is forced) -/
+
+/-- **Half-constraint rigidity (Fable call-01, Part B, Lemma 1).** For the
+null pair `c₁ = E₀₁`, `c₂ = E₁₀` on the Clifford factor, a two-covector
+constraint charge `Q = c₁ ⊗ G₁ + c₂ ⊗ G₂` (here the `2x2`-over-`B` matrix
+`!![0, G₁; G₂, 0]`) is nilpotent iff `G₁ G₂ = 0` AND `G₂ G₁ = 0`. So a
+NILPOTENT (BRST-type) Gauss charge on the hyperbolic pair cannot use both
+null covectors nontrivially: the Gupta-Bleuler "impose only half the
+constraint" is not a modeling choice - it is FORCED by nilpotency.
+(`Q² = !![G₁G₂, 0; 0, G₂G₁]`.) -/
+theorem half_constraint_rigidity {B : Type*} [Ring B] (G₁ G₂ : B) :
+    (!![0, G₁; G₂, 0] : Matrix (Fin 2) (Fin 2) B) ^ 2 = 0
+      ↔ G₁ * G₂ = 0 ∧ G₂ * G₁ = 0 := by
+  have hsq : (!![0, G₁; G₂, 0] : Matrix (Fin 2) (Fin 2) B)
+      * !![0, G₁; G₂, 0] = !![G₁ * G₂, 0; 0, G₂ * G₁] := by
+    ext i j
+    fin_cases i <;> fin_cases j <;>
+      simp [Matrix.mul_apply, Fin.sum_univ_two]
+  rw [sq, hsq]
+  constructor
+  · intro hQ
+    refine ⟨?_, ?_⟩
+    · have := congrFun (congrFun hQ 0) 0; simpa using this
+    · have := congrFun (congrFun hQ 1) 1; simpa using this
+  · rintro ⟨h1, h2⟩
+    ext i j
+    fin_cases i <;> fin_cases j <;> simp [h1, h2]
+
 end PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia
