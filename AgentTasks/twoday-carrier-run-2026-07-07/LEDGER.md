@@ -4083,3 +4083,32 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Claim boundary: planning document; no new claims; every cited pin
   verified against SlabAxiomGuard/CarrierAxiomGuard contents this
   session.
+
+## [FABLE QCD-lane] Roadmap amendment A integrated + PlaquetteClosureAction landed
+
+- External-review feedback on the QCD roadmap (user-supplied memo)
+  integrated as sec 3a "Amendment A" after hand-verifying every
+  load-bearing identity: A0 Wilson-action-as-squared-closure-defect; A1
+  S1 split into S1a (flat-connection Hessian = d_1^# d_1 tensor kappa) +
+  S1b (BCH remainder classification - the crux isolated in the
+  commutator); A2 exact coupling-derivative theorem (d/dbeta of the loop
+  tension = EXCESS areal closure defect; Feynman-Hellmann, verified); A3
+  budget claims split weak (non-turn dominance, f_T << 1) vs strong (f_C
+  largest) with budget fractions f_A+f_C+f_T+f_E = 1 as the S6 theorem
+  shape; A4 smooth finite Banks-Casher m V Sigma_m = N_m via the
+  GW-stereographic map (rail-respecting: pure trace identity); A5 the
+  six-module execution sequence.
+- Module 1 LANDED: `PhysicsSM/Draft/NullEdge/GateYM/PlaquetteClosureAction.lean`
+  (kernel-clean, zero warnings): `closure_defect_trace_eq`
+  (Tr((1-U)^dag(1-U)) = 2N - (Tr U + Tr U^dag) for unitary U), real form,
+  `wilson_plaquette_eq_half_closure_defect` (N - Re Tr U = (1/2)|1-U|_HS^2),
+  and `closure_defect_trace_eq_zero_iff` (defect vanishes iff holonomy
+  trivial; stated for ANY matrix - unitarity hypothesis dropped as
+  unnecessary, per the strengthen-not-weaken precedent). Three pins in
+  `SlabAxiomGuard.lean`, guard build green (8144 jobs).
+- Lit ingested (dedup-checked): Yang et al. proton mass decomposition
+  arXiv:1808.08677, Durr et al. arXiv:0906.3599, Ji hep-ph/9410274 -
+  the S6/P-BUDGET calibration anchors.
+- Claim boundary: A0 is single-matrix trace algebra (no ensemble/measure
+  claim); amendment identities verified at pencil level, formalization
+  staged per A5; no continuum claims anywhere.

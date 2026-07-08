@@ -58,6 +58,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.MassCommonCarrier
 import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 import PhysicsSM.Draft.NullEdge.CouplingUnificationFinite
+import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -557,5 +558,19 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.CouplingUnificationFinite.generic_not_concurrent' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.CouplingUnificationFinite.generic_not_concurrent
+
+/-! ## QCD-ROADMAP A0: the Wilson action is a squared closure defect -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.closure_defect_trace_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.closure_defect_trace_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.wilson_plaquette_eq_half_closure_defect' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.wilson_plaquette_eq_half_closure_defect
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.closure_defect_trace_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.closure_defect_trace_eq_zero_iff
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

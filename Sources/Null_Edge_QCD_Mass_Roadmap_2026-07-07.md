@@ -216,6 +216,69 @@ strongest honest claim available at that stage).
 - CEILING: ratios `M`; scale-setting `[import]`; continuum `C` at most,
   with the ladder rungs as gates.
 
+## 3a. AMENDMENT A (2026-07-07 late): external-review upgrades, integrated
+
+An external review (user-supplied memo, same date) proposed five upgrades.
+All load-bearing identities were hand-verified by the executor before
+integration; they are adopted as follows.
+
+- **A0. The pre-theorem that unlocks S1 (adopted; module landed).** Before
+  identifying the carrier's `Q_C`, prove that the STANDARD Wilson gauge
+  action is itself a squared closure defect: for unitary `U`,
+  `Tr((1-U)^dag (1-U)) = 2N - 2 Re Tr U`, hence
+  `S_W = (beta/2N) sum_f |1 - H_f|_HS^2` exactly. Verified: expand and use
+  `U^dag U = 1`, `Tr U^dag = conj Tr U`. Kernel-checked in
+  `PhysicsSM/Draft/NullEdge/GateYM/PlaquetteClosureAction.lean`. The
+  thesis sentence sharpens to: "QCD mass is the transfer-matrix energy
+  cost of non-closing color-null transport."
+- **A1. S1 splits into S1a + S1b (adopted).** S1a (fast): the linearized
+  theorem - at the flat connection the Hessian of the closure action is
+  `d_1^# d_1 (x) kappa` (face-edge coboundary tensor the invariant form);
+  this alone justifies the small-plaquette `|F|^2` sentence. S1b (the
+  residual crux): the nonlinear/BCH remainder classification
+  (`R_comm = 0 / PSD / indefinite`), with the existing honesty rail
+  unchanged. The crux is now isolated in the commutator remainder only.
+- **A2. S3 gains an exact finite theorem (adopted).** The coupling
+  derivative of the Wilson-loop tension is the EXCESS areal closure
+  defect induced by the sources:
+  `d/dbeta [-log <W(C)>] = <S~>_W - <S~>_0` with
+  `S~ = (1/2N) sum_f |1 - H_f|^2` (Feynman-Hellmann on the finite
+  ensemble; verified). String tension is not merely correlated with
+  closure defect - its coupling derivative IS excess closure defect per
+  area.
+- **A3. The budget claim splits weak/strong (adopted; changes S6).**
+  Define budget fractions `f_A, f_C, f_T, f_E` (each channel expectation
+  over `M_#^2(psi) = 4<psi, D^#D psi>`) and prove `f_A+f_C+f_T+f_E = 1`
+  on normalized admissible witnesses. The WEAK claim (physically safest,
+  matches Ji/lattice budgets `[import]`: quark energy ~33%, glue ~37%,
+  anomaly ~23%, condensates ~9%, Yang et al. 1808.08677): hadron mass is
+  dominantly NON-TURN (`f_T << 1`). The STRONG claim (`f_C` largest
+  single share) is a separate, harder test. S6's first theorem targets
+  the weak claim; the strong claim is decided by the S5 witness, not
+  asserted.
+- **A4. S4a gets a smooth, rail-respecting form (adopted).** Away from
+  exceptional (doubler) modes, map the GW circle to the imaginary axis
+  by `A = D (1 - D/2)^{-1}` (anti-Hermitian, chirally paired,
+  eigenvalues `+-i lambda_j`); define the regularized condensate
+  `Sigma_m = (1/V) Re Tr (A + m)^{-1}` and the smooth near-zero count
+  `N_m = sum_j m^2/(lambda_j^2 + m^2)`. Exact finite identity (verified):
+  `m V Sigma_m = N_m`. No spectral measure, no limits - a trace identity.
+  Follow-up conjecture (grade C, gated): controlled blocking of
+  closure-disordered backgrounds increases `N_m` - the bridge from the
+  RG-Schur mechanism to constituent mass.
+- **A5. Module sequence (adopted as the S-lane execution order).**
+  (1) `PlaquetteClosureAction.lean` [LANDED]; (2)
+  `LinearizedNonabelianClosure.lean` (S1a Hessian); (3)
+  `ClosureTensionDerivative.lean` (A2 identity); (4)
+  `CarrierMassBudgetExpectation.lean` (f-sum = 1); (5)
+  `FiniteBanksCasherSmoothCount.lean` (A4 identity); (6)
+  `FirstMesonClosureBudget.lean` (S5 witness with budget insertions
+  `B_C(t)` tracking the flux sheet; success = `m_Gamma ~ sigma |Gamma|`
+  and `B_C` localized on the sheet).
+- Additional lit anchors adopted: Yang et al. (2018) proton mass
+  decomposition from the QCD EMT (arXiv:1808.08677); Ji (1994/95)
+  hep-ph/9410274; Durr et al. arXiv:0906.3599 - ingest with dedup check.
+
 ## 4. Critical path
 
 ```text
