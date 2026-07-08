@@ -343,6 +343,19 @@ the trusted namespace yet.
   `4 D^#D = Q_A^# + Q_C^# + 4 Q_T + 4 E_#` with varying soldering - aperture,
   closure, turn, and soldering-gradient (gravity-shaped) channels separated in
   one operator identity. "Unification is decomposition, not identification."
+- **Closure-current square algebra, abstract rung (finite identity,
+  2026-07-08 early).**
+  In the GateYM lane, `S1ClosureCurrentAlgebra.closure_current_square`
+  proves that a two-direction null-soldered current with skew transport pairing
+  has square `2 * b * A^#B`: a signed chromomagnetic channel, with no PSD
+  diagonal claim. The new guarded rung
+  `S1ClosureCurrentAlgebra.closure_current_square_pi` lifts this componentwise
+  to any pair-indexed finite product target, which models the no-cross-term
+  algebra of the pair-stabilized multi-direction route. Claim boundary: this is
+  abstract finite algebra over a pointwise product ring, not yet the
+  form-orthogonal direct-sum injection theorem, not yet the concrete carrier
+  normalization theorem, and not a positivity theorem. Guard-pinned in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`.
 - **First Move-2 identification (finite identity).** `Q_A = Q(sum_e alpha_e)`:
   the aperture block IS the invariant mass of the total null momentum, tying
   the carrier layer to the trusted P1 Plucker mass exactly.
@@ -361,6 +374,13 @@ the trusted namespace yet.
   strictly positive mass form) and unbalanced `(2,1)` complex (index 1, a
   forced massless mode for every dynamics). Masslessness of the surplus is
   the mass thesis's converse, now a theorem family.
+- **Finite Banks-Casher count identity (finite identity, 2026-07-08).**
+  Spectral-rail-safe chiral-condensate/near-zero-count relation on a fixed
+  finite background: for skew-Hermitian `A` (the stereographic GW operator)
+  and real `m`, `2 Re Tr (m+A)⁻¹ = 2m Tr (m² + AᴴA)⁻¹`, i.e.
+  `m V Sigma_m = N_m` - proved by elementary invertible-element algebra
+  (no spectral theorem, no measures, no limits). Guard-pinned in
+  `SlabAxiomGuard.lean` (`FiniteBanksCasherCount.lean`).
 - **RG-Schur mass generation (finite identity, 2026-07-07 late).** Blocking
   a null chain generates non-null effective terms: on the decimated 3-site
   chain the induced edge block is a nonzero idempotent (NOT nilpotent),

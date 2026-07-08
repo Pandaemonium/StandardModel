@@ -119,6 +119,33 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Claim boundary: submissions only; no Aristotle result harvested and no
   theorem/manuscript claim.
 
+## [AUDIT Codex] K1-STEP0 root hygiene probe
+
+- Read the K1 failure notes (`prompt_sm_crux_fibercount*.md`),
+  `CRUX_PARKED_STATUS.md`, `SEVENCHALLENGES_ANALYSIS.md`, and the live
+  `PolymerKPConclusion.lean` declarations around `childBlockOf`,
+  `restrictCluster_childBlock_n_eq`, `perPair_absWeight_bound`, and
+  `fiber_card_mul_le_factorial`.
+- Finding: the live `m_j` intended by the scaffold is total child-block
+  size. Evidence: `restrictCluster_childBlock_n_eq` identifies the
+  restricted child cluster size with `(childBlockOf T r j).card`, and
+  `perPair_absWeight_bound` uses `Nat.factorial (childBlockOf T r j).card`.
+- Added oracle/audit artifacts:
+  `Scripts/oracle/probe_kp_root_hygiene_v01.py` and
+  `K1_STEP0_ROOT_HYGIENE_AUDIT_2026-07-07.md`.
+- Probe command run:
+  `python Scripts/oracle/probe_kp_root_hygiene_v01.py`.
+  Result: in the one-block case `root=0`, `root_child=1`, `block=(1,2)`,
+  a root-pinned flat-word encoder collapses the two total-block
+  permutations to one image, while a structured ordered-block codomain
+  keeps both images distinct.
+- Consequence: do not submit another flat parse/root-pinned proof attempt
+  for K1. Full `m_j!` remains viable only through the structured-partition
+  route; a proof that pins the root-child inside each block should use
+  free-slot factorials instead.
+- Claim boundary: STEP0 oracle/audit only. This does not prove or refute
+  `pairSum_le_expBound`; it narrows the next theorem shape.
+
 ## [LAND Claude] K6: determinant-parity probe redirected T1; chiral det-dichotomy landed
 
 - Probe `Scripts/oracle/p1_zeromode_symmetry_invariant.py` DECIDED the T1
@@ -144,3 +171,22 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   (8026); lake build CarrierAxiomGuard (8069, pins green).
 - Lit: 7 SevenChallenges anchors ingested (math-ph/0605041, 1303.1199,
   2203.07826, gr-qc/0208036, gr-qc/0103111, 2404.00240, 2410.05380).
+
+## [LAND Claude] K5: finite Banks-Casher count identity
+
+- LANDED `PhysicsSM/Draft/NullEdge/GateYM/FiniteBanksCasherCount.lean`
+  (kernel-clean): `invOf_add_invOf`, `invOf_add_eq_central_mul`,
+  `resolvent_sum` / `resolvent_sum_trace` (the resolvent identity
+  ⅟(m+A)+⅟(m-A) = 2m·⅟((m-A)(m+A))), `skew_prod` (denominator = m²+AᴴA),
+  `skew_resolvent_conj` (Tr⅟(m-A) = conj Tr⅟(m+A) via invOf uniqueness +
+  star_invOf), `banks_casher_count` (headline: 2 Re Tr⅟(m+A) =
+  2m Tr⅟((m-A)(m+A)), = m V Sigma_m = N_m). Pure invertible-element
+  algebra; NO spectral theorem, NO measures, NO limits - respects the
+  spectral-language rail exactly (roadmap A4, SevenChallenges finding 6).
+- Three SlabAxiomGuard pins, green (8147 jobs). Roadmap S4a marked LANDED;
+  results-map line added.
+- Claim boundary: finite fixed-background identity; the GW exceptional-mode
+  (D=2) projection is assumed upstream (A on nonexceptional subspace); the
+  constituent-mass bridge (blocking increases N_m) stays grade C, gated.
+- Verification: lake env lean (clean); lake build FiniteBanksCasherCount
+  (8026); lake build SlabAxiomGuard (8147, pins green).

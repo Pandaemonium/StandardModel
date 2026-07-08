@@ -61,6 +61,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 import PhysicsSM.Draft.NullEdge.CouplingUnificationFinite
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction
 import PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra
+import PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -614,5 +615,23 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square' depends on axioms: [propext, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square_pi' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square_pi
+
+/-! ## K5 / S4a: finite Banks-Casher count identity (overnight 2026-07-08) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.banks_casher_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.banks_casher_count
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.skew_prod' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.skew_prod
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.resolvent_sum_trace' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount.resolvent_sum_trace
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard

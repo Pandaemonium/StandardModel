@@ -264,9 +264,14 @@ integration; they are adopted as follows.
   `Sigma_m = (1/V) Re Tr (A + m)^{-1}` and the smooth near-zero count
   `N_m = sum_j m^2/(lambda_j^2 + m^2)`. Exact finite identity (verified):
   `m V Sigma_m = N_m`. No spectral measure, no limits - a trace identity.
-  Follow-up conjecture (grade C, gated): controlled blocking of
-  closure-disordered backgrounds increases `N_m` - the bridge from the
-  RG-Schur mechanism to constituent mass.
+  **LANDED (kernel, 2026-07-08 overnight, K5):**
+  `PhysicsSM/Draft/NullEdge/GateYM/FiniteBanksCasherCount.lean` -
+  `banks_casher_count` (`Tr ⅟(m+A) + conj Tr ⅟(m+A) = 2m Tr ⅟((m-A)(m+A))`),
+  `skew_prod` (denominator `= m² + Aᴴ A`), `resolvent_sum` - proved by
+  pure invertible-element algebra + `star (⅟x) = ⅟(star x)`, no spectral
+  theorem; three SlabAxiomGuard pins. Follow-up conjecture (grade C,
+  gated): controlled blocking of closure-disordered backgrounds increases
+  `N_m` - the bridge from the RG-Schur mechanism to constituent mass.
 - **A5. Module sequence (adopted as the S-lane execution order).**
   (1) `PlaquetteClosureAction.lean` [LANDED]; (2)
   `LinearizedNonabelianClosure.lean` (S1a Hessian); (3)
@@ -300,6 +305,15 @@ Adopted:
   algebra) / O; grade M after Lean transcription (rungs L1-L5 of the
   memo's ladder; transcription risk: the memo's normalization is
   `D^#D = Q_A + Q_C`, not the guard-pinned 4-slot form - carry the 4's).
+- **K2/L4 abstract stabilized algebra rung landed (2026-07-08 early).**
+  Lean now has the guard-pinned componentwise pair-indexed theorem
+  `S1ClosureCurrentAlgebra.closure_current_square_pi`: a family of
+  two-direction closure currents squares in a finite product target with no
+  cross-pair terms. This is the algebraic finite-product rung behind the
+  stabilized direct-sum route. Remaining work: prove the form-orthogonal
+  direct-sum/injection theorem, then instantiate the pair index, signs, and
+  4-slot normalization on the concrete carrier. Do not read this as full K2,
+  positivity, or a site-diagonal defect-Gram theorem.
 - **The (a)/(b)/(c) trichotomy is RETIRED - it conflated representation
   with positivity.** Krein squares of null-soldered currents carry no PSD
   diagonal (the program's own nilpotency mechanism), and `sig(J Q_C)` is
@@ -330,9 +344,13 @@ Adopted:
   eigenvalues down against the PSD covariant-Laplacian part), so
   outcome-(c)-shaped global structure is required physics, not a failure
   branch. S1 and S4 are coupled in the right direction.
-- Pre-registered residual risk: with >= 3 transport directions the
-  per-pair ansatz may need the compensated form `Q_C + (aperture-shaped
-  correction) = L^#L` (outcome a'); next rung after L1-L5, not assumed.
+- Pre-registered residual risk after the K2/L4 abstract rung: the stabilized
+  finite-product algebra removes cross-pair contamination by construction, but
+  the form-level direct-sum theorem still has to prove the orthogonal-injection
+  hypotheses, and the concrete carrier theorem still has to prove that the
+  pair-indexed sum is exactly the guard-normalized `Q_C` slot. The older
+  single-target per-pair ansatz remains a secondary factorization question, not
+  a prerequisite for the stabilized theorem.
 - New lit anchors (pre-arXiv; cite classically, no auto-ingest):
   Lichnerowicz 1963; De Rujula-Georgi-Glashow PRD 12, 147 (1975);
   Aharonov-Casher 1979.
