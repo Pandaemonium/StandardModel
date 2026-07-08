@@ -559,11 +559,15 @@ compression `M6 = PᴴHAC P` is *exactly* the block diagonal `B(2,1) ⊕ B(2,-1)
 guard-pinned) — so the full sector form is a pair of closure-mirror blocks
 `Msec(λ,κ) = B(λ,κ) ⊕ B(λ,-κ)` (isospectral, both covered by the two-sided
 `B_posDef_iff`), and `T2_positive_mass` is its `(2,1)` corner *in the kernel*. The
-gap of this *full* `6`-dimensional sector form is itself a theorem:
-`SectorMassGap.Msec_least_eigenvalue` (**M**, guard-pinned) proves its least
-eigenvalue is `λ − κ = aperture − |closure|` (and `Msec_posDef_iff`: massive iff
-`|κ| < λ`) — so the mass gap holds of the actual sector, not just the `3×3`
-half-block. What is **not** a
+block-diagonal `6`-dimensional form `Msec = B(λ,κ) ⊕ B(λ,-κ)` also has its gap as a
+theorem: `SectorMassGap.Msec_least_eigenvalue` (**M**, guard-pinned) proves its
+least eigenvalue is `λ − κ` (and `Msec_posDef_iff`: massive iff `|κ| < λ`).
+*Honest scope (per the batch-3 audit):* `Msec` is a hand-defined block-diagonal
+*ansatz*, and — since the two mirror blocks are isospectral — its least eigenvalue
+is *definitionally* the block's `λ−κ`; the lift only doubles multiplicities, and
+`Msec` is not tied to the carrier except through the `3×3` top block at `(2,1)`
+(via `M6_topBlock_eq_B`). So this is not an independent "actual sector" result — it
+is the honest statement that the mirror pair shares the block's gap. What is **not** a
 theorem is that the carrier reduces to this shape at *general* `(λ,κ)`: that
 identification is **oracle-grade** (`carrier_spectrum_sim.py`, §9a), kernel-checked
 only at `(2,1)`. So the phase diagram is: *`B`'s spectral theory is M for all
@@ -1303,7 +1307,7 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `HAC_eq_clifford`, `Jmet_eq_clifford` | `Carrier/CliffordAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **T2 carrier realizes the documented Cl(4) recipe**: hand-typed Krein form/metric `= J(Q_A+Q_C)` / `Js⊗I3` (verbatim) — closes the docstring-only-provenance gap. Certifies *a* Clifford presentation, not canonicity (`K`/order are inputs) |
 | 4 | `B_posDef_iff`, `B_massless_iff_of_pos` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | spectral theory of the block `B(λ,κ)`: massive `↔ \|κ\|<λ`, massless line `κ=±λ` for `λ>0` (§4) |
 | 4 | `B_least_eigenvalue`, `B_spectrum` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue of `B` `= λ−κ` = aperture − closure (`IsLeast`); full spectrum `= {λ−κ, λ, λ+κ}` (`B_spectrum`) — the three sector mass levels |
-| 4 | `Msec_least_eigenvalue`, `Msec_posDef_iff` | `Carrier/SectorMassGap.lean` | M, guard-pinned (`CarrierAxiomGuard`) | full `6×6` sector form `Msec = B(λ,κ)⊕B(λ,-κ)`: least eigenvalue `= λ−κ` = aperture − \|closure\|; PosDef iff `\|κ\|<λ` — the gap of the actual sector, not just the block |
+| 4 | `Msec_least_eigenvalue`, `Msec_posDef_iff` | `Carrier/SectorMassGap.lean` | M, guard-pinned (`CarrierAxiomGuard`) | block-diagonal `Msec = B(λ,κ)⊕B(λ,-κ)`: least eigenvalue `= λ−κ`; PosDef iff `\|κ\|<λ`. Honest scope: `Msec` is a hand ansatz, isospectral mirror pair (gap = the block's, multiplicity-doubled); carrier-tied only via the `(2,1)` top block |
 | 4/10 | `spec_spacing_ratio`, `levels_eq_spectrum` | `Carrier/MassSpacingPrediction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **within-carrier prediction P-spacing**: the three mass levels are equally spaced (`(m²_mid−m²_lo)/(m²_hi−m²_mid)=1`, scale-invariant); NOT the cross-generation neutrino ratio (honest boundary, §10) |
 | 4 | `M6_topBlock_eq_B`, `M6_botBlock_eq_B` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the carrier tie at `(2,1)`**: `M6 = B(2,1) ⊕ B(2,-1)` — so the phase diagram is the carrier's actual sector form there (general `(λ,κ)` reduction is oracle-grade) |
 | 4/10 | `blockBindingDefect_eq_neg_kappa`, `closurePerturbation_offDiagonal` | `Carrier/BindingDefect.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **T3b binding defect**: `Δ_block(λ,κ) = −κ` — closure lowers the ground mass by exactly its strength (negative, closure-controlled, off-diagonal); physical identification stays **C** (§10 crux 0b-b) |
