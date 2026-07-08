@@ -10,6 +10,12 @@ one of this repo's theorems.  It records the current citation state so future
 docstrings and manuscript claims can cite precise keys only after statement and
 convention checks.
 
+Lean-side provenance records can use the lightweight metadata vocabulary in
+`PhysicsSM/Meta/SourceTrace.lean`: `SourceRef`, `SourceRole`,
+`VerificationStatus`, `ConventionCheck`, and `TraceRecord`.  The Markdown table
+here remains the human-facing source map; `SourceTrace.lean` gives declaration
+and fixture provenance a typed shape.
+
 Status labels:
 
 - `KEYED-LOCAL`: the run log records a Zotero/Neo4j key or a local graph hit.
@@ -24,7 +30,7 @@ Status labels:
 
 | Key | Identifier | Source | Role | Status |
 |---|---|---|---|---|
-| `BQJAG9TR` | `hep-th/9503153` | "The generalized Lichnerowicz formula and analysis of Dirac operators" | Continuum Weitzenbock/Lichnerowicz comparison for carrier square and curvature-slot wording. | KEYED-LOCAL |
+| `BQJAG9TR` | `hep-th/9503153` | Ackermann-Tolksdorf, "The generalized Lichnerowicz formula and analysis of Dirac operators" | Candidate continuum Weitzenbock/Lichnerowicz comparison for carrier-square and curvature-slot wording (chunk-matched, not yet quoted). | KEYED-LOCAL; full-text chunks located 2026-07-08, not yet manuscript-citation-quoted |
 | `2DEG7MT2` | `0708.3707` | "First order approach and index theorems for discrete and metric graphs" | Discrete graph Dirac/index comparison for W1 brick-2 design. | KEYED-LOCAL |
 | `WW6TKVH8` | `2203.02782` | "Laplace and Dirac Operators on Graphs" | Secondary graph-Dirac background. | KEYED-LOCAL |
 | `DCIW87IM` | `1301.3480` | "Gauge networks in noncommutative geometry" | Finite graph/covariant-edge Dirac scaffold for carrier `D = sum c(alpha_e) nabla_e`. | KEYED-LOCAL |
@@ -48,9 +54,8 @@ Status labels:
 |---|---|---|---|---|
 | `BEG87SU5` | `hep-lat/9808010` | Neuberger overlap locality record | Overlap/locality comparison for finite Ginsparg-Wilson and index files. | KEYED-LOCAL |
 | `TBD-NielsenNinomiya` | TBD | Nielsen-Ninomiya no-go theorem | Classical doubling no-go comparison for finite signed-zero-count skeletons. | NEEDS-VERIFY |
-| `TBD-GinspargWilson` | TBD | Ginsparg-Wilson relation | Imported lattice-chirality convention; match signs/normalization before outward citation. | NEEDS-VERIFY |
+| `N68MN4ET` | `hep-lat/9802011` | Luscher, "Exact chiral symmetry on the lattice and the Ginsparg-Wilson relation" | Candidate lattice-chirality convention; exact lattice chiral symmetry from the GW relation (chunk-matched, not yet quoted). | KEYED-LOCAL; full-text chunks located 2026-07-08, not yet manuscript-citation-quoted |
 | `TBD-NeubergerOverlap` | TBD | Neuberger overlap operator | Imported overlap-operator convention beyond the local finite algebra. | NEEDS-VERIFY |
-| `TBD-Luscher1998` | `hep-lat/9802011` per run protocol | Luscher lattice chiral symmetry | Deformed chirality / index comparison; local protocol says already in graph, but key is not recorded here. | ID-ONLY |
 | `TBD-McKeanSinger` | TBD | McKean-Singer index theorem | Analytic comparison only; do not cite for finite PSA/sector additivity until a precise theorem anchor is checked. | NEEDS-VERIFY |
 | `TBD-AtiyahSinger` | TBD | Atiyah-Singer index theorem | Continuum comparison for index language. | NEEDS-VERIFY |
 
@@ -107,6 +112,38 @@ Status labels:
 | `TBD-WilczekMassWithoutMass` | TBD | Wilczek "Mass without mass" essay | Framing only, not theorem support. | NEEDS-VERIFY |
 | `TBD-PDGLeptonMasses` | TBD | PDG or equivalent data source | Numerical precision for Koide/comparison claims. | NEEDS-VERIFY |
 
+## All-mass related-work anchors (2026-07-08 lit review)
+
+Surfaced by the comprehensive review
+(`Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`) and now cited in
+the manuscript §2a / References. `ID-ONLY` pending Zotero keying + convention
+check; Neo4j MCP was down this session, so ingest via `Scripts/lit/lit_ingest.py`
+(existence-check on arXiv id first). The three flagged as novelty-critical
+(closest prior art) are marked `[CRITICAL]`.
+
+| Key | Identifier | Source | Role | Status |
+|---|---|---|---|---|
+| `TBD-BiziBrouderBesnard2016` | `1611.07062` | Bizi-Brouder-Besnard, "Space and time dimensions of algebras ... Lorentzian NCG" | `[CRITICAL]` Krein spectral triple SOLVING fermion doubling = the §6/§8 Krein-positive-sector move; narrows §2a novelty. | ID-ONLY |
+| `TBD-Barrett2007` | `hep-th/0608221` | Barrett, "A Lorentzian version of the NCG of the Standard Model" | `[CRITICAL]` finite Lorentzian + SM prior art (Fable-flagged gap). | ID-ONLY, NEEDS-VERIFY |
+| `TBD-FosterJacobson2016-4D` | `1610.01142` | Foster-Jacobson, "Spin on a 4D Feynman Checkerboard" | `[CRITICAL]` 4D null-face checkerboard Dirac, projection amplitudes, no doubling; closest carrier prior art (already keyed `TN53N8J2`; elevated to must-cite in §2a). | KEYED-LOCAL |
+| `TBD-Connes2006` | `hep-th/0608226` | Connes, "NCG and the SM with neutrino mixing" | KO-dimension-6 fermion-doubling cure; SM+gravity+see-saw. | ID-ONLY |
+| `TBD-BakirciogluArnaultArrighi2025` | `2505.07900` | Bakircioglu-Arnault-Arrighi, "Fermion Doubling in Quantum Cellular Automata" | Chiral doubler-free neutrino-like QCA + Nielsen-Ninomiya evasion (F7). | ID-ONLY |
+| `TBD-NielsenNinomiya1981` | INSPIRE 155854 | Nielsen-Ninomiya, "Absence of neutrinos on a lattice" | The no-go traded by the Krein `J`-hermiticity route (F7, §8). | ID-ONLY |
+| `TBD-Zwanziger1991` | DOI `10.1016/0550-3213(91)90581-H` | Zwanziger, "Vanishing zero-momentum lattice gluon propagator and color confinement" | Confinement = singlets get real mass by reflection positivity; the prior form of §6 balanced closure (F2). | ID-ONLY |
+| `TBD-YangEtAl2018` | `1808.08677` | Yang et al., "Proton Mass Decomposition from the QCD EMT" | The proton mass budget (§4, §5); scheme-dependence. | ID-ONLY |
+| `TBD-Liu2021` | `2103.15768` | Liu, "Proton mass decomposition and hadron cosmological constant" | RG-invariant vs scheme-dependent decomposition; the §4a/§5 caveat's exact ref. | ID-ONLY |
+| `TBD-NuFIT60-2024` | `2410.05380` | Esteban et al., NuFIT-6.0 | Neutrino oscillation global fit; the P-ν comparison target. | ID-ONLY |
+| `TBD-Sumino2009` | `0812.2103` | Sumino, family gauge symmetry and Koide's formula | The "Sumino bar" (QED running) a Koide route must clear (§5). | ID-ONLY |
+| `TBD-CecchiniLesourdZeidler2023` | `2307.05277` | Cecchini-Lesourd-Zeidler, positive mass with dominant-energy shields | Extra timelike spinor direction; the shape of F4 (finite Witten positive-mass). | ID-ONLY |
+| `TBD-Golovnev2024` | `2411.14089` | Golovnev, "Is there any Trinity of Gravity ...?" | Skeptical critique of the geometric trinity; cite for §7 honesty. | ID-ONLY |
+| `TBD-OsborneVerstraete2005` | `quant-ph/0502176` | Osborne-Verstraete, general n-qubit CKW monogamy | Entanglement-monogamy prior art for F3 (mass monogamy as Plücker superadditivity). | ID-ONLY |
+| `TBD-Nandi2022` | `2204.13649` | Nandi, G-concurrence monogamy in higher dimension | The higher-dim wedge/determinant concurrence closest to Plücker mass (F3). | ID-ONLY |
+| `TBD-MeltonMichaelsenRuzziconi2026` | `2606.27421` | Melton-Michaelsen-Ruzziconi, "Observing Massive Scattering from Null Infinity" | Massive <-> timelike infinity = the celestial reading of the thesis (F9). | ID-ONLY |
+| `TBD-FernandezProcacci2006` | `math-ph/0605041` | Fernandez-Procacci, cluster-expansion bounds via Penrose identity | Target abstraction for the forest-injection bounty (Kotecky-Preiss lineage). | ID-ONLY |
+| `TBD-ToobySmith2024-HepLean` | `2405.08863` | Tooby-Smith, "HepLean: Digitalising high energy physics" | Machine-verified physics already exists; narrows §2a methodology claim. | ID-ONLY |
+| `TBD-ElvangHuang2013` | `1308.1697` | Elvang-Huang, "Scattering Amplitudes" | Canonical spinor-helicity `det P` kinematics reference (§3). | ID-ONLY |
+| `TBD-Kull2002` | `quant-ph/0212053` | Kull, checkerboard on dense-rational 2D Minkowski | Non-continuous-spacetime checkerboard precedent (§2a). | ID-ONLY |
+
 ## Next provenance actions
 
 1. Resolve the `ID-ONLY` entries into bare Zotero/Neo4j keys or downgrade their
@@ -120,3 +157,6 @@ Status labels:
 4. Keep this file synchronized with `LIT_LOG.md`, manuscript claim grades, and
    Lean module docstrings.  Do not promote a source from `NEEDS-VERIFY` based on
    author memory alone.
+5. When a Lean declaration or oracle fixture needs structured provenance, add a
+   `TraceRecord`-shaped note using `PhysicsSM.Meta.SourceTrace` vocabulary:
+   source role, verification status, locator, and explicit convention checks.

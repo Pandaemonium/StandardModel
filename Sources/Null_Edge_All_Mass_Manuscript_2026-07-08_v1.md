@@ -1055,3 +1055,98 @@ Osterwalder–Seiler, Banks–Casher, Ji, Yang et al., Dürr et al.,
 Asbóth–Obuse, Pereira–Vargas, NuFIT-6.0, Sumino — are `[import]` and are
 recorded in `Sources/Null_Edge_References.md`. It supersedes nothing; it
 sits beside the P1 origin-of-mass draft as the wider-scope companion.
+
+---
+
+## References
+
+External works cited (`[import]`), grouped by role. Identifiers are given where
+available; this is a draft list and identifiers should be convention-checked
+against `Sources/Null_Edge_References.md` before final submission. The
+project's own kernel-checked anchors are in the §11 table, not here. A fuller
+prior-art map with novelty-gap analysis is in
+`Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`.
+
+**Kinematics / spinor-helicity (§2a, §3).**
+
+- H. Elvang, Y. Huang, *Scattering Amplitudes*, arXiv:1308.1697.
+- L. Dixon, *A brief introduction to modern amplitude methods* (TASI lectures),
+  arXiv:1310.5353.
+
+**Physical pictures — zig-zag, Zitterbewegung, causal order (§2a).**
+
+- R. Penrose, *The Road to Reality*, Jonathan Cape (2004), §25.2.
+- P. A. M. Dirac (1930); D. Hestenes, *The Zitterbewegung interpretation of
+  quantum mechanics*, Found. Phys. 20 (1990) 1213.
+- D. Malament, *The class of continuous timelike curves determines the topology
+  of spacetime*, J. Math. Phys. 18 (1977) 1399.
+
+**Feynman checkerboard and its continuum limit (§2a, §9).**
+
+- R. P. Feynman, A. R. Hibbs, *Quantum Mechanics and Path Integrals* (1965).
+- H. A. Gersch, *Feynman's relativistic chessboard as an Ising model*, Int. J.
+  Theor. Phys. 20 (1981) 491; T. Jacobson, L. S. Schulman, *Quantum stochastics:
+  the passage from a relativistic to a non-relativistic path integral*, J. Phys.
+  A 17 (1984) 375.
+- B. Z. Foster, T. Jacobson, *Spin on a 4D Feynman Checkerboard*,
+  arXiv:1610.01142.
+- A. Kull, *Quantum mechanical motion of relativistic particle in
+  non-continuous spacetime*, arXiv:quant-ph/0212053.
+
+**Finite / Lorentzian / Krein spectral triples, NCG Standard Model (§2a, §6, §8).**
+
+- N. Bizi, C. Brouder, F. Besnard, *Space and time dimensions of algebras with
+  applications to Lorentzian noncommutative geometry*, arXiv:1611.07062.
+- J. W. Barrett, *A Lorentzian version of the non-commutative geometry of the
+  Standard Model*, J. Math. Phys. 48 (2007) 012303, arXiv:hep-th/0608221.
+- A. Connes, *Noncommutative geometry and the standard model with neutrino
+  mixing*, JHEP 0611 (2006) 081, arXiv:hep-th/0608226.
+- F. Finster, *The Continuum Limit of Causal Fermion Systems*, Springer (2016),
+  arXiv:1605.04742.
+
+**Discrete Dirac, quantum walks/automata, fermion doubling (§2a, §8).**
+
+- D. Bakircioglu, P. Arnault, P. Arrighi, *Fermion Doubling in Quantum Cellular
+  Automata*, arXiv:2505.07900.
+- H. B. Nielsen, M. Ninomiya, *Absence of neutrinos on a lattice*, Nucl. Phys.
+  B185 (1981) 20.
+
+**Confinement, positivity, constructive/lattice gauge theory (§6, §9).**
+
+- D. Zwanziger, *Vanishing of zero-momentum lattice gluon propagator and color
+  confinement*, Nucl. Phys. B364 (1991) 127.
+- K. Osterwalder, E. Seiler, *Gauge field theories on a lattice*, Ann. Phys. 110
+  (1978) 440.
+- T. Banks, A. Casher, *Chiral symmetry breaking in confining theories*, Nucl.
+  Phys. B169 (1980) 103.
+- J. K. Asbóth, H. Obuse, *Bulk-boundary correspondence for chiral symmetric
+  quantum walks*, Phys. Rev. B 88 (2013) 121406.
+
+**Hadron mass, proton mass decomposition (§4, §4a, §5).**
+
+- Y.-B. Yang et al., *Proton Mass Decomposition from the QCD Energy Momentum
+  Tensor*, Phys. Rev. Lett. 121 (2018) 212001, arXiv:1808.08677.
+- S. Dürr et al., *Ab initio determination of light hadron masses*, Science 322
+  (2008) 1224, arXiv:0906.3599.
+
+**Charged-lepton and neutrino masses (§5, §8, §10).**
+
+- Y. Koide, *Charged lepton mass formula: development and prospect*,
+  arXiv:0706.2534.
+- Y. Sumino, *Family gauge symmetry and Koide's mass formula*, Phys. Lett. B671
+  (2009) 477, arXiv:0812.2103.
+- I. Esteban et al. (NuFIT-6.0), *Updated global analysis of three-flavor
+  neutrino oscillations*, arXiv:2410.05380.
+
+**Discrete geometry / gravity (§7).**
+
+- T. Regge, *General relativity without coordinates*, Nuovo Cim. 19 (1961) 558.
+- R. Aldrovandi, J. G. Pereira, *Teleparallel Gravity*, Springer (2013)
+  (teleparallel / contorsion background for the E-slot trinity).
+
+**Machine-verified physics; slogans (§2a).**
+
+- J. Tooby-Smith, *HepLean: Digitalising high energy physics*, arXiv:2405.08863.
+- F. Wilczek, *QCD Made Simple* / "Mass Without Mass", Phys. Today 53 (2000) 22;
+  L. H. Kauffman, H. P. Noyes, discrete-physics program (bit-string / iterant
+  combinatorics).
