@@ -796,3 +796,17 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   into the final capstone. Deferring my count_trace_real guard pin to that
   coordinated pass.
 - Pivoting away from shared files to reduce contention.
+
+## [LAND Claude] S1a leading-closure-energy core (independent lane)
+
+- New self-contained module `GateYM/LinearizedClosureEnergy.lean`
+  (kernel-clean, LOCAL guard pins - no shared-guard-file contention while
+  Codex converges S1CC/SlabAxiomGuard): skew_leading_closure_energy
+  (Tr(A A) = -Tr(A^H A) for skew-Herm A), leading_closure_energy_nonneg
+  (0 <= -Tr(A A) = the positive HS/|F|^2 energy), and flat-iff-zero. The
+  algebraic core of roadmap S1a: leading closure defect IS positive
+  gauge-field energy. Chromomagnetic rail held (|F|^2 DEFECT-GRAM energy,
+  NOT Q_C). Full d_1^# d_1 (x) kappa coboundary Hessian is the next rung.
+- Not editing the roadmap doc (Codex concurrently editing it); roadmap A1
+  note deferred to avoid contention.
+- Verification: lake env lean (clean, local guards pass); lake build (8026).
