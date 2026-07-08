@@ -1061,8 +1061,14 @@ is the simulation's spec and validation oracle):
   **quantum-walk transfer operator** (whose continuum limit yields a Dirac-type
   flow under the standard QW→Dirac conditions — a 4-dimensional coin carrying
   the gamma matrices, with parity and discrete-rotation symmetry; Mlodinow–Brun,
-  §2a), and antisymmetrized **2-fermion Slater scattering amplitudes** (validated
-  against `FiniteUnitaryEvolution`, `T2`).
+  §2a; the *finite symbol facts* underlying that limit are now kernel-checked in
+  `ContinuumLimit` — the exact lattice dispersion `cos ω = cos k cos θ`, the mass
+  shell `(kσ_z+mσ_x)² = (k²+m²)·1` (`dirac_mass_shell`, **M**), and the
+  leading-order match of the discrete transfer generator to the Dirac Hamiltonian
+  symbol `-i(kσ_z+mσ_x)` (`Ustep_hasDerivAt_generator`, **M**); the continuum
+  *theorem* itself is `[import]` for 1+1D (Gersch; Jacobson–Schulman) and open for
+  the Cl(4) carrier), and antisymmetrized **2-fermion Slater scattering
+  amplitudes** (validated against `FiniteUnitaryEvolution`, `T2`).
 - `carrier_rgflow_sim.py` — Schur **RG flow** (`k_eff = t^2/mu`, invariant
   `mu·k_eff`), the **canonical ensemble** (`Z`, `F = <E> − T S`, ground
   dominance), and a **condensate** near-zero-mode fraction rising to the
@@ -1290,6 +1296,7 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M (first two guard-pinned) | **the D2 instantiation, closed**: the carrier-block Hermitian flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` (generator-as-Hamiltonian is a **C** posit; carrier tie kernel at `(2,1)`) |
 | 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved`, `carrier6_orbit_norm_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the flow **orbit** of the carrier block `B(λ,κ)` — and of the full `6×6` physical sector form `M6` (`carrier6_…`) — conserves sector norm & (commuting-observable) energy: `FiniteUnitaryEvolution` fired on the concrete carrier |
 | 9 | `secondQuantized_massGap` | `Carrier/FockMassGap.lean` | M, self-guarded (in-file pin) | **free second-quantized mass gap**: on the fermionic occupation Fock space, `dΓ(B)`'s gap = one-particle gap `λ−κ`; free 2-body = sum of constituents; `Δ=−κ` seeds a below-threshold bound state (interacting hadron mass open) |
+| 9 | `dirac_mass_shell`, `Ustep_hasDerivAt_generator` | `Carrier/ContinuumLimit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **continuum-limit finite symbol facts**: mass shell `(kσ_z+mσ_x)²=(k²+m²)·1`; discrete transfer generator matches the Dirac Hamiltonian symbol to leading order. Continuum *theorem* is `[import]` (1+1D) / open (Cl(4)) |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |

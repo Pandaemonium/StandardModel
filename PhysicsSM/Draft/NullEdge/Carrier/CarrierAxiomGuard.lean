@@ -53,6 +53,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.BindingDefect
 import PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap
 import PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction
+import PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -877,5 +878,20 @@ one sharp dimensionless prediction with a kill condition. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction.levels_eq_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction.levels_eq_spectrum
+
+/-! ## Continuum-limit finite symbol facts (1+1D Dirac quantum walk)
+
+`ContinuumLimit`: the finite kernel content underlying the QW→Dirac limit — the
+mass shell `(kσz+mσx)² = (k²+m²)•1` and the leading-order symbol match of the
+discrete transfer generator to the Dirac Hamiltonian. The continuum theorem itself
+is [import] (1+1D) / open (Cl(4)); only these finite facts are M. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit.dirac_mass_shell' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit.dirac_mass_shell
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit.Ustep_hasDerivAt_generator' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.ContinuumLimit.Ustep_hasDerivAt_generator
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
