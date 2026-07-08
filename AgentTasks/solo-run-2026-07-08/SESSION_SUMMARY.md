@@ -35,6 +35,12 @@ semantic alignment, integrated into the repo, guard-pinned, and full-build-verif
   is balanced `(2,2,0)` on the physical sector `V'/N`, with the full Gauss-sector
   construction (`QG_ker_eq`/`QG_range_eq`/`QG_ker_reps_basis`) kernel-checked —
   the program's former #1 crux, MEMO→kernel on the witness.
+- **S1-CC witness→general reduction** (`S1CCGeneralReduction`, `S1CCWitnessAsInstance`):
+  the balance *mechanism* is general M — `compression_balanced` (any coset reps,
+  any ±1 grading, Q_G-blind), `compression_balanced_eigbasis` (any b-eigenvector
+  family P, coordinate-alignment dropped — proved in-repo, not Aristotle),
+  `compression_has_neg_eigenvalue`, and `witness_balanced_via_general` (the 6×6
+  witness re-derived as a literal instance). Guard-pinned inline + in SlabAxiomGuard.
 - **Organizing theorem, provable half** (`EquivariantGradedIndex`):
   `graded_budget_decomposition` ("unification is decomposition" as a graded
   supertrace identity; NOT a topological index; budget still enters as a hypothesis
@@ -53,26 +59,57 @@ semantic alignment, integrated into the repo, guard-pinned, and full-build-verif
 
 ## Program-level crux upgrades
 
-1. §6 S1-CC closure-positivity: MEMO → **kernel on the explicit witness**.
+1. §6 S1-CC closure-positivity: MEMO → **kernel on the explicit witness**
+   (`balanced_on_physical_sector`), THEN the witness→general **balance mechanism**
+   → **general kernel** (`compression_balanced`, `compression_balanced_eigbasis`,
+   `witness_balanced_via_general`, all M). What stays MEMO is now only the
+   *existence of a b-adapted presentation of the actual sector V'/N* (dimension-
+   pinned, complementary to range Q_G, form descending) — a formalization gap, not
+   a mathematical risk (two adversarial reviews confirm the balance survives the
+   quotient). The presentation-existence proof is the live Aristotle frontier.
 2. T2 Clifford provenance: oracle → **kernel** (recipe match).
 3. T3b binding defect: conjecture → **block-level theorem** (Δ = −κ).
-4. §9 interacting hadron mass: "open" → **below-threshold bound state is a theorem**
-   (only deriving V from closure geometry stays open).
+4. §9 interacting hadron mass: "open" → **below-threshold bound state is a theorem**;
+   the interaction is a genuine 2nd-quantized closure operator, binding
+   **conditionally** (iff among excited modes, `derived_wrongPlane_no_binding`) —
+   the unconditional "carrier's own K binds" and the mass-value stay C (batch-4
+   audit corrected an over-claim here from "first-principles" to conditional).
 
 ## Reviews actioned
 
 - Fable call-05/06/07/08 (manuscript + semantic-alignment) — all items fixed,
   incl. a §6 crux-box self-contradiction, a docstring-outruns-kernel on the mass-gap
   carrier tie, the D2 generator posit grade, and the Clifford-canonicity over-claim.
-- Aristotle over-claim audits (batch 1/2/3) — every load-bearing finding fixed.
+- Fable call-09 (S1-CC general reduction) — caught a LOAD-BEARING vacuity: the
+  submitted existence lemma was trivially satisfiable (κ=Empty), so "once existence
+  is transcribed the crux closes to general M" over-stated the gap size. Fixed
+  (mechanism is general M; the *presentation of V'/N* stays MEMO); corrected the
+  running Aristotle job to the non-vacuous target.
+- Aristotle over-claim audits (batch 1/2/3/4/5) — every load-bearing finding fixed.
+  Batch-4: DerivedInteraction "first-principles" → conditional. Batch-5:
+  independent confirm of Fable call-09 + the reassuring ruling that the balance
+  genuinely survives the quotient (range Q_G is b-invariant ⇒ ± pairs cancel).
+
+## Provenance strengthened (lit)
+
+- §6 balanced-signature mechanism grounded in the Krein / indefinite-spectral-triple
+  literature (van den Dungen 1505.01939, Bizi 1812.00038) — [import] setting,
+  [orig] anticonjugation-forces-balance argument.
+- §6 physical-subspace/quotient analogy: verified + cited Gupta 1950, Bleuler 1950,
+  Kugo–Ojima 1979. All five VERIFIED in `Null_Edge_References.md`.
 
 ## In flight (Aristotle) + honest open items
 
-- Running: `gradedfire` (fire graded-budget on the real carrier), `hadronV`
-  (derive the hadron interaction V from closure geometry — the C→M step).
+- Running: `s1ccpres` (the S1-CC presentation-existence proof — corrected to the
+  non-vacuous dimension-pinned/range-complement/descent target; the last MEMO piece
+  of the central crux); `audit-batch6` (dynamics/spectral flagship over-claim
+  audit).
 - Genuinely open (honest boundaries, not pending calcs): the neutrino mass ratio
   (category error — needs a generation index + cross-carrier scale); the Cl(4)
-  continuum theorem (Trotter–Kato, outside the finite kernel); deriving V for a
-  first-principles hadron mass; the general-representative S1-CC reduction.
+  continuum theorem (Trotter–Kato, outside the finite kernel); tying the carrier's
+  own K to the hadron binding plane (conditional binding is M); the b-adapted
+  V'/N-presentation existence (in-flight); the aperture-rescue larger-Clifford route
+  for *surviving* positivity (§6 route 1 / §10 crux 0).
 
-Full build: green (~8092 jobs incl. all new modules). ~40 `solo-202607:` commits.
+Full build: green (**8298 jobs** incl. all new modules; guard-pin axiom prints
+pass). ~50 `solo-202607:` commits.
