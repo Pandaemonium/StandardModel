@@ -6,8 +6,7 @@ the dynamics spectrum simulator (`Scripts/oracle/carrier_spectrum_sim.py`) and
 generalizes `T2_positive_mass` from the fixed point `(lam,kappa) = (2,1)` to the
 whole coupling plane.
 
-On the two-edge `Cl(4)` carrier the physical-sector mass form is block-diagonal
-with the `3x3` Hermitian block
+The object of study is the `3x3` Hermitian block
 
   B(lam, kappa) = !![lam, kappa*I, 0; -kappa*I, lam, 0; 0, 0, lam]   (I = Complex.I)
 
@@ -16,6 +15,18 @@ with the `3x3` Hermitian block
 (for `0 <= kappa <= lam`): the squared mass gap is *aperture minus closure*, the
 state is massive iff `|kappa| < lam`, and massless exactly on the critical line
 `kappa = lam` (for the physical branch `0 < lam`).
+
+**Scope of the carrier tie (read this before citing).** What is kernel-checked
+here is the complete *spectral theory of `B(lam,kappa)`*. The identification of
+`B` with the two-edge `Cl(4)` carrier's compressed sector form is kernel-checked
+only *at the fixed point* `(lam,kappa) = (2,1)`: the bridge lemmas
+`M6_topBlock_eq_B` / `M6_botBlock_eq_B` / `M6_offBlock_eq_zero` prove that
+`SectorGroundMassWitness.M6` (`= Pisoᴴ HAC Piso`, the actual carrier compression)
+is *exactly* the block diagonal `B(2,1) (+) B(2,-1)`. So the sector form is a pair
+of closure-mirror blocks `B(lam,kappa) (+) B(lam,-kappa)` (isospectral; both
+covered by the two-sided `B_posDef_iff`), and "the mass phase diagram" holds at
+`(2,1)` **in the kernel**. The reduction of the carrier to this shape at *general*
+`(lam,kappa)` is oracle-grade (`carrier_spectrum_sim.py`), not proved here.
 
 ## Landed theorems (all M, kernel-clean)
 
@@ -36,6 +47,10 @@ state is massive iff `|kappa| < lam`, and massless exactly on the critical line
 - `B_least_eigenvalue`    - **the mass gap as an eigenvalue theorem**: for
   `0 <= kappa <= lam`, `IsLeast (Set.range eigenvalues) (lam - kappa)`. The least
   eigenvalue - the squared mass gap - is exactly *aperture minus closure*.
+- `M6_topBlock_eq_B`, `M6_botBlock_eq_B`, `M6_offBlock_eq_zero` - **the carrier
+  bridge at `(2,1)`**: the carrier compression `SectorGroundMassWitness.M6` is
+  exactly `B(2,1) (+) B(2,-1)` (block diagonal), so the spectral theory above is
+  the carrier's actual mass phase diagram at the fixed point, in the kernel.
 
 ## Provenance
 
@@ -50,6 +65,7 @@ generalizes `T2_positive_mass` (`SectorGroundMassWitness`). Mathlib-only.
 -/
 
 import Mathlib
+import PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness
 
 namespace PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
 
@@ -191,5 +207,30 @@ theorem B_least_eigenvalue (lam kappa : ℝ) (h0 : 0 ≤ kappa) (hlk : kappa ≤
       have := Matrix.IsHermitian.spectrum_real_eq_range_eigenvalues h_posSemidef.1;
       grind +splitIndPred;
     linarith [ h_eigenvalues_nonneg _ h_spectrum ]
+
+/-- **The carrier bridge at the fixed point `(λ,κ) = (2,1)`, top block.** The
+top-left `3x3` block of the `6x6` compressed sector form `M6` of the two-edge
+`Cl(4)` carrier (`SectorGroundMassWitness.M6 = Pisoᴴ HAC Piso`) is *exactly*
+`B(2,1)`. -/
+theorem M6_topBlock_eq_B :
+    SectorGroundMassWitness.M6.submatrix (Fin.castAdd 3) (Fin.castAdd 3) = B 2 1 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> simp [SectorGroundMassWitness.M6, B]
+
+/-- **The carrier bridge, mirror block.** The bottom-right `3x3` block of `M6` is
+`B(2,-1)` — the closure-mirror `B(λ,-κ)` of the top block. So the full sector form
+is the block diagonal `B(2,1) ⊕ B(2,-1)`, i.e. `B(λ,κ) ⊕ B(λ,-κ)` at the fixed
+point: two isospectral blocks, both governed by the *two-sided* `B_posDef_iff`. -/
+theorem M6_botBlock_eq_B :
+    SectorGroundMassWitness.M6.submatrix ((Fin.natAdd 3 : Fin 3 → Fin 6)) ((Fin.natAdd 3 : Fin 3 → Fin 6)) = B 2 (-1) := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> simp [SectorGroundMassWitness.M6, B]
+
+/-- **The off-diagonal blocks vanish:** `M6` is genuinely block diagonal, so the
+two block lemmas above capture all of it. -/
+theorem M6_offBlock_eq_zero :
+    SectorGroundMassWitness.M6.submatrix ((Fin.castAdd 3 : Fin 3 → Fin 6)) ((Fin.natAdd 3 : Fin 3 → Fin 6)) = 0 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> simp [SectorGroundMassWitness.M6]
 
 end PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness

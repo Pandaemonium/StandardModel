@@ -87,6 +87,27 @@ GREEN (8086 jobs). Manuscript §4 upgraded M-sim -> full M; §11 rows updated.
 => Fable call-05 bottom-line #3 (parametrized T2 mass-gap, critical line as M)
    is now fully DONE and kernel-pinned.
 
+## Cycle A.5 (~11:0x) — Fable call-06: fix the mass-gap over-claim
+
+Fable call-06 (semantic-alignment audit of MassGapWitness + manuscript finish)
+delivered ONE sharp load-bearing catch: **docstring-outruns-kernel**. The kernel
+proved the spectral theory of the *asserted* block B(λ,κ), but the tie of B to
+the actual carrier M6 was by-inspection only (no lemma), yet the docstring/§4
+claimed "the compressed sector form IS B(λ,κ)... fully kernel-checked" and
+"generalizes T2 to the whole plane". Fable confirmed the spectral theorems
+themselves are the intended math (B = λI+iκK, entrywise = M6's upper block at
+(2,1); PosDef right; IsLeast genuine; λ=0 split creditable). Fixed ALL items:
+1. **Landed the carrier bridge in the kernel**: `M6_topBlock_eq_B`,
+   `M6_botBlock_eq_B`, `M6_offBlock_eq_zero` (M, guard-pinned) — M6 = B(2,1) (+)
+   B(2,-1) exactly, via submatrix castAdd/natAdd. So the (2,1) tie is now a
+   THEOREM, not by inspection. Build green (8086 jobs).
+2. **Regraded §4 + module docstring**: split "B's spectral theory is M for all
+   (λ,κ)" from "B IS the carrier's sector form — M at (2,1), oracle-grade off it".
+   Removed "fully kernel-checked ... generalizes to the whole plane" over-claim.
+3. **Fixed the massless qualifier**: "(for κ≥0)" -> "(for λ>0, κ≥0)".
+4. **Named the mirror block** B(λ,-κ): sector form = B(λ,κ) (+) B(λ,-κ).
+Also refined the §9a spectrum-sim bullet + §11 rows to the same honest split.
+
 ## In flight (external, not harness-tracked)
 
 - (none — the mass-gap Aristotle job COMPLETED and is landed + pinned, cycle A.4)

@@ -1,3 +1,314 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `claude-fable-5`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-07-08T10:17:03`
+- Finished: `2026-07-08T10:19:29`
+- Timeout seconds: `600`
+- Max budget USD: `2.00`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model claude-fable-5 --max-budget-usd 2.00 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Fable-5 call 06 (solo run): mass-gap flagship semantic-alignment + manuscript finish
+
+You are the most capable mathematical-physics referee + Lean semantic-alignment
+auditor on this program. This is a **solo autonomous run** (finite,
+machine-verified: *mass is the obstruction to coherent null transport*). Since
+your last review (call-05) I have (1) written the dynamics section §9a, (2) added
+a finite S-matrix scattering simulator, (3) completed + verified the references,
+and — the headline — (4) **landed a new kernel flagship**: the parametrized
+mass-gap theorem you ranked as the #1 next move. I need two things: a
+**semantic-alignment audit of that Lean flagship** (does the kernel statement say
+the intended physics?) and a **final "is the manuscript finished" judgment**.
+
+## Program state (standalone; assume no prior knowledge)
+
+Kernel-checked (Lean 4, axiom-audited, guard-pinned) results: §3 the Plücker mass
+`det P = Σ|ψ_i∧ψ_j|²`; §4 the four-channel Krein budget `4 D^#D = Q_A+Q_C+4Q_T+
+4E_#`; the Rayleigh keystone `sector_ground_mass`; `T2_positive_mass` (an explicit
+two-edge Cl(4) carrier with a positive-definite physical sector — a genuine
+positive squared mass at the fixed couplings `(λ,κ)=(2,1)`); the free §3↔§4
+bridge; and the **new mass-gap flagship below**, which generalizes T2 to the whole
+`(λ,κ)` coupling plane. Grades: **T** source-verified, **M** kernel-checked,
+**MEMO** expert/LLM-oracle prose, **C** pre-registered conjecture with a kill.
+
+## The new kernel flagship — `MassGapWitness` (audit this VERBATIM)
+
+The claim it is meant to make, in physics words: on the two-edge Cl(4) carrier the
+physical-sector mass form reduces to a 3×3 Hermitian block `B(λ,κ)` with aperture
+strength `λ` and closure strength `κ`; its **spectrum is `{λ−κ, λ, λ+κ}`**, so
+the **squared mass gap (least eigenvalue) is `λ − κ` = aperture − closure**, the
+state is **massive iff `|κ| < λ`**, and **massless exactly on the critical line
+`κ = λ`** (for `λ > 0`). The full Lean source is embedded (via --source-file).
+
+**Your semantic-alignment task on this file — be adversarial:**
+1. Does `B` (the `def`) actually encode the intended block — aperture `λ` on the
+   diagonal, closure `κ` as the *skew imaginary* off-diagonal `κI` / `−κI`? Is the
+   sign/placement the intended chromomagnetic closure, or could it be a different
+   matrix that happens to have the same spectrum?
+2. Is `B_posDef_iff : B.PosDef ↔ κ < λ ∧ −λ < κ` the intended "massive iff
+   aperture dominates closure"? (Note `PosDef` here is the complex-Hermitian
+   positive-definiteness with `open scoped ComplexOrder`.)
+3. Is `B_least_eigenvalue : IsLeast (range eigenvalues) (λ−κ)` genuinely "the
+   squared mass gap is `λ−κ`", or a weaker/mis-stated fact? Is the hypothesis
+   `0 ≤ κ ≤ λ` the right domain; is `IsLeast` over the right set?
+4. The massless line is split into `B_massless_iff` (unconditional, includes a
+   `λ=0` disjunct) and `B_massless_iff_of_pos` (the `λ>0` physical line). Is that
+   the honest statement, and is `det B = λ(λ²−κ²)` (`B_det`) right?
+5. Any over-claim: does the file's docstring claim more than the theorems prove?
+   Is calling this "the mass gap = aperture − closure" earned, or is there a gap
+   between "least eigenvalue of an abstract 3×3 block" and "a physical mass gap"?
+
+Report any mismatch between the intended physics and the kernel statements — that
+is the whole point. The proof is kernel-checked and guard-pinned to
+`[propext, Classical.choice, Quot.sound]`; I am NOT asking you to check the proof,
+only whether the STATEMENTS are the intended mathematics.
+
+## The manuscript — is it finished?
+
+The complete manuscript is embedded (via --source-file). Since call-05 the changes
+are: §4 now has a "mass phase diagram" paragraph (upgraded to full **M** by the
+flagship above); §9a "A finite dynamics layer" (D1–D5 M-scaffolds + four
+Lean-anchored simulators, with the honest framing that conservation is a *generic
+sector-isometry* fact and the carrier-step instantiation is open); §2a gained a
+Mlodinow–Brun mass-side comparator; references completed (Ji, Wilson,
+Ginsparg–Wilson, Mlodinow–Brun, Bisio et al.). **Is it now publication-ready as a
+self-contained Markdown draft?** If not, give a short, concrete, ordered
+"remaining to finish" list — each item closeable in one editing pass. Flag any
+stale grade, internal inconsistency, or over-claim, most severe first.
+
+## Required output
+
+- **Semantic-alignment verdict on `MassGapWitness`** (3–6 sentences): do the
+  kernel statements say the intended physics? Any mismatch, most severe first.
+- **Manuscript verdict** (3–5 sentences): finished or not, and the shortest path.
+- **Ordered "remaining to finish" list** (if any), each item small + concrete.
+- **Bottom line:** the 1–3 things that most stand between here and "done".
+
+Be specific and technical; one sharp correct load-bearing criticism beats ten
+generic ones. Report even if the news is bad.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### PhysicsSM/Draft/NullEdge/Carrier/MassGapWitness.lean (196 lines)
+
+```lean
+/-
+# The carrier sector mass gap is aperture minus closure
+
+DRAFT (kernel-clean; no `s o r r y`). Kernel-checks the phase-diagram result of
+the dynamics spectrum simulator (`Scripts/oracle/carrier_spectrum_sim.py`) and
+generalizes `T2_positive_mass` from the fixed point `(lam,kappa) = (2,1)` to the
+whole coupling plane.
+
+On the two-edge `Cl(4)` carrier the physical-sector mass form is block-diagonal
+with the `3x3` Hermitian block
+
+  B(lam, kappa) = !![lam, kappa*I, 0; -kappa*I, lam, 0; 0, 0, lam]   (I = Complex.I)
+
+(aperture strength `lam`, closure strength `kappa`, both real). Its spectrum is
+`{lam - kappa, lam, lam + kappa}`, so the **least eigenvalue is `lam - kappa`**
+(for `0 <= kappa <= lam`): the squared mass gap is *aperture minus closure*, the
+state is massive iff `|kappa| < lam`, and massless exactly on the critical line
+`kappa = lam` (for the physical branch `0 < lam`).
+
+## Landed theorems (all M, kernel-clean)
+
+- `B_isHermitian`         - `B^H = B`.
+- `B_det`                 - `det B = lam*(lam^2 - kappa^2)`.
+- `B_massless_iff`        - unconditional: `det = 0 <-> lam = 0 or kappa = +-lam`
+  (the `lam = 0` disjunct is genuine - at `lam = 0` the block is singular for
+  *every* `kappa`).
+- `B_massless_iff_of_pos` - physical branch `0 < lam`: `det = 0 <-> kappa = +-lam`
+  (the massless critical line closure = aperture).
+- `B_posDef_iff`          - **massive iff aperture dominates**:
+  `B.PosDef <-> kappa < lam and -lam < kappa` (i.e. `|kappa| < lam`); the proof
+  is the quadratic form `Re(x^H B x) = lam*||x||^2 - 2*kappa*Im(conj x0 * x1)`,
+  bounded below by `(lam - |kappa|)*||x||^2`.
+- `B_posDef_iff_of_nonneg`- for `0 <= kappa`: `B.PosDef <-> kappa < lam`.
+- `B_shift_posSemidef`, `B_shift_det` - `B - (lam-kappa)*1` is positive
+  semidefinite and singular (the shift lemmas for the least eigenvalue).
+- `B_least_eigenvalue`    - **the mass gap as an eigenvalue theorem**: for
+  `0 <= kappa <= lam`, `IsLeast (Set.range eigenvalues) (lam - kappa)`. The least
+  eigenvalue - the squared mass gap - is exactly *aperture minus closure*.
+
+## Provenance
+
+All-mass solo run 2026-07-08 [orig]. Statements/skeleton by the reviewing agent
+(Claude), which independently proved `B_isHermitian`, `B_det`, and the massless
+line (and independently flagged the `lam = 0` subtlety) as a semantic-alignment
+cross-check; the complete proof set (incl. `B_posDef_iff` and
+`B_least_eigenvalue`) is from Aristotle (standalone package
+`AgentTasks/aristotle-standalone/allmass-massgap-20260708`), reviewed for
+semantic alignment and adopted here. Kernel-checks `carrier_spectrum_sim.py` and
+generalizes `T2_positive_mass` (`SectorGroundMassWitness`). Mathlib-only.
+-/
+
+import Mathlib
+
+namespace PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
+
+open Matrix Complex
+
+open scoped ComplexOrder
+
+/-- The carrier-sector `3x3` Hermitian mass block with aperture strength `lam`
+and closure strength `kappa`: aperture `lam` on the diagonal, closure `kappa` as
+the skew imaginary off-diagonal of the first `2x2` block. -/
+noncomputable def B (lam kappa : ℝ) : Matrix (Fin 3) (Fin 3) ℂ :=
+  !![(lam : ℂ), (kappa : ℂ) * Complex.I, 0;
+     -((kappa : ℂ) * Complex.I), (lam : ℂ), 0;
+     0, 0, (lam : ℂ)]
+
+/-- The carrier mass block is Hermitian. -/
+theorem B_isHermitian (lam kappa : ℝ) : (B lam kappa).IsHermitian := by
+  ext i j;
+  fin_cases i <;> fin_cases j <;> simp +decide [ B ]
+
+/-- The determinant of the carrier mass block factors as `lam * (lam^2 - kappa^2)`. -/
+theorem B_det (lam kappa : ℝ) :
+    (B lam kappa).det = (lam : ℂ) * ((lam : ℂ) ^ 2 - (kappa : ℂ) ^ 2) := by
+  simp +decide [ B, Matrix.det_fin_three ];
+  ring ; norm_num
+
+/-- Massless line (general, corrected form). The block is singular exactly when
+`lam = 0` **or** `kappa = ±lam`. NOTE: the literal statement `det = 0 ↔ kappa =
+±lam` is false when `lam = 0` (then `det = 0` for *every* `kappa`, since
+`det = lam*(lam²-kappa²)`), so the honest unconditional biconditional must
+include the `lam = 0` disjunct. See `B_massless_iff_of_pos` for the `lam > 0`
+specialization. -/
+theorem B_massless_iff (lam kappa : ℝ) :
+    (B lam kappa).det = 0 ↔ lam = 0 ∨ kappa = lam ∨ kappa = -lam := by
+  by_cases h : lam = 0 <;> simp_all +decide [ mul_eq_zero, sub_eq_zero ];
+  · convert B_det 0 kappa;
+    norm_num;
+  · rw [ B_det ] ; norm_num [ sub_eq_iff_eq_add, h ];
+    norm_cast ; exact ⟨ fun h => eq_or_eq_neg_of_sq_eq_sq _ _ h.symm, fun h => by rcases h with ( rfl | rfl ) <;> ring ⟩
+
+/-- Massless line for positive aperture (`lam > 0`): singular exactly on the
+critical line `kappa = ±lam`. This is the intended physical statement. -/
+theorem B_massless_iff_of_pos (lam kappa : ℝ) (hlam : 0 < lam) :
+    (B lam kappa).det = 0 ↔ kappa = lam ∨ kappa = -lam := by
+  exact B_massless_iff lam kappa |>.trans ⟨ fun h => by rcases h with ( rfl | rfl | rfl ) <;> simp_all +decide, fun h => by rcases h with ( rfl | rfl ) <;> simp_all +decide ⟩
+
+/-- Positive-definiteness (massive state) holds exactly when aperture dominates
+closure: `|kappa| < lam`, stated two-sided. -/
+theorem B_posDef_iff (lam kappa : ℝ) :
+    (B lam kappa).PosDef ↔ kappa < lam ∧ -lam < kappa := by
+  unfold B;
+  constructor;
+  · intro h_pos_def
+    have h_pos : ∀ x : Fin 3 → ℂ, x ≠ 0 → 0 < (star x ⬝ᵥ (Matrix.of ![![lam, kappa * Complex.I, 0], ![-(kappa * Complex.I), lam, 0], ![0, 0, lam]] *ᵥ x)).re := by
+      intro x hx_nonzero
+      have h_pos : 0 < (star x ⬝ᵥ (Matrix.of ![![lam, kappa * Complex.I, 0], ![-(kappa * Complex.I), lam, 0], ![0, 0, lam]] *ᵥ x)) := by
+        exact Matrix.PosDef.dotProduct_mulVec_pos h_pos_def hx_nonzero
+      convert h_pos using 1;
+      norm_num [ Complex.lt_def ];
+      norm_num [ vecHead, vecTail ] ; ring_nf ; aesop;
+    have := h_pos ( fun i => if i = 0 then -Complex.I else if i = 1 then 1 else 0 ) ; simp_all +decide [ Fin.sum_univ_three, Matrix.mulVec, dotProduct ];
+    have := h_pos ( fun i => if i = 0 then Complex.I else if i = 1 then 1 else 0 ) ; simp_all +decide [ funext_iff, Fin.forall_fin_succ ];
+    linarith;
+  · intro h
+    have h_pos : ∀ x : Fin 3 → ℂ, x ≠ 0 → 0 < (∑ i, (∑ j, (star (x i)) * (if i = 0 ∧ j = 0 then (lam : ℂ) else if i = 1 ∧ j = 1 then (lam : ℂ) else if i = 2 ∧ j = 2 then (lam : ℂ) else if i = 0 ∧ j = 1 then (kappa : ℂ) * Complex.I else if i = 1 ∧ j = 0 then -(kappa : ℂ) * Complex.I else 0) * (x j))) := by
+      intro x hx_ne_zero
+      have h_pos : 0 < lam * (∑ i, ‖x i‖ ^ 2) - 2 * kappa * Complex.im (star (x 0) * x 1) := by
+        have h_pos : 0 < lam * (∑ i, ‖x i‖ ^ 2) - 2 * |kappa| * ‖x 0‖ * ‖x 1‖ := by
+          have h_pos : 0 < lam * (∑ i, ‖x i‖ ^ 2) - |kappa| * (∑ i, ‖x i‖ ^ 2) := by
+            rw [ ← sub_mul ];
+            exact mul_pos ( by cases abs_cases kappa <;> linarith ) ( lt_of_lt_of_le ( by exact lt_of_le_of_ne ( Finset.sum_nonneg fun _ _ => sq_nonneg _ ) ( Ne.symm <| by contrapose! hx_ne_zero; ext i; simp_all +decide [ Finset.sum_eq_zero_iff_of_nonneg, sq_nonneg ] ) ) le_rfl );
+          norm_num [ Fin.sum_univ_three ] at *;
+          nlinarith [ sq_nonneg ( ‖x 0‖ - ‖x 1‖ ), abs_nonneg kappa, norm_nonneg ( x 0 ), norm_nonneg ( x 1 ), norm_nonneg ( x 2 ) ];
+        have h_im : |Complex.im (star (x 0) * x 1)| ≤ ‖x 0‖ * ‖x 1‖ := by
+          exact le_trans ( Complex.abs_im_le_norm _ ) ( by simp +decide [ Complex.normSq, Complex.norm_def ] );
+        cases abs_cases kappa <;> nlinarith [ abs_le.mp h_im ];
+      convert h_pos using 1 ; norm_num [ Fin.sum_univ_three ] ; ring;
+      simp +decide [ Complex.ext_iff, sq ] ; ring;
+      rw [ Complex.lt_def ] ; norm_num [ Complex.normSq, Complex.sq_norm ] ; ring;
+      exact ⟨ fun h => by linarith, fun h => ⟨ by linarith, trivial ⟩ ⟩;
+    constructor <;> norm_num [ Fin.sum_univ_three ] at *;
+    · ext i j; fin_cases i <;> fin_cases j <;> norm_num [ Complex.ext_iff ] ;
+    · intro x hx; specialize h_pos ( fun i => x i ) ; simp_all +decide [ Finsupp.sum_fintype, Fin.sum_univ_three ] ;
+
+/-- For nonnegative closure, the block is positive definite iff `kappa < lam`. -/
+theorem B_posDef_iff_of_nonneg (lam kappa : ℝ) (h : 0 ≤ kappa) :
+    (B lam kappa).PosDef ↔ kappa < lam := by
+  rw [B_posDef_iff];
+  exact ⟨ fun h => h.1, fun h => ⟨ h, by linarith ⟩ ⟩
+
+/-- The shifted block `B - (lam-kappa)•1` (which equals `B kappa kappa`) is
+positive semidefinite when `0 ≤ kappa`: every eigenvalue of `B` is `≥ lam - kappa`. -/
+theorem B_shift_posSemidef (lam kappa : ℝ) (h0 : 0 ≤ kappa) :
+    (B lam kappa - ((lam - kappa : ℝ) : ℂ) • (1 : Matrix (Fin 3) (Fin 3) ℂ)).PosSemidef := by
+  constructor;
+  · ext i j; fin_cases i <;> fin_cases j <;> simp +decide [ B ] ;
+  · have h_simp : ∀ x : Fin 3 → ℂ, (∑ i, ∑ j, star (x i) * (B lam kappa - ((lam - kappa) : ℂ) • 1) i j * x j) = kappa * (∑ i, ‖x i‖ ^ 2) - 2 * kappa * Complex.im (star (x 0) * x 1) := by
+      unfold B; simp +decide [ Matrix.one_apply, Fin.sum_univ_three ] ; intros; ring;
+      norm_num [ Complex.ext_iff, sq ] ; ring;
+      simpa [ Complex.normSq, Complex.sq_norm ] using by ring;
+    intro x; specialize h_simp x; simp_all +decide [ Finsupp.sum_fintype ] ;
+    norm_cast; simp_all +decide [ Fin.sum_univ_three ];
+    norm_num [ Complex.normSq, Complex.sq_norm ];
+    nlinarith [ sq_nonneg ( ( x 0 |> Complex.re ) - ( x 1 |> Complex.im ) ), sq_nonneg ( ( x 0 |> Complex.im ) + ( x 1 |> Complex.re ) ), sq_nonneg ( ( x 2 |> Complex.re ) ), sq_nonneg ( ( x 2 |> Complex.im ) ) ]
+
+/-- The shifted block `B - (lam-kappa)•1` is singular: `lam - kappa` is an
+eigenvalue of `B`. -/
+theorem B_shift_det (lam kappa : ℝ) :
+    (B lam kappa - ((lam - kappa : ℝ) : ℂ) • (1 : Matrix (Fin 3) (Fin 3) ℂ)).det = 0 := by
+  simp only [B, Matrix.det_fin_three, Matrix.sub_apply, Matrix.smul_apply, Matrix.one_apply]
+  simp [Matrix.cons_val]
+  linear_combination (kappa : ℂ) ^ 2 * (kappa : ℂ) * Complex.I_sq
+
+/-- **The mass gap as an eigenvalue theorem.** The least eigenvalue of the carrier
+mass block is `lam - kappa` (for `0 ≤ kappa ≤ lam`): the squared mass gap is
+aperture minus closure. (The hypothesis `hlk : kappa ≤ lam` was requested but is
+in fact unnecessary — `lam - kappa` is the least eigenvalue for all `0 ≤ kappa`.) -/
+theorem B_least_eigenvalue (lam kappa : ℝ) (h0 : 0 ≤ kappa) (hlk : kappa ≤ lam) :
+    IsLeast (Set.range (B_isHermitian lam kappa).eigenvalues) (lam - kappa) := by
+  refine ⟨?_, fun x hx => ?_⟩;
+  · have h_mem : lam - kappa ∈ spectrum ℝ (B lam kappa) := by
+      rw [ spectrum.mem_iff ];
+      convert B_shift_det lam kappa using 1;
+      rw [ ← neg_sub, Matrix.isUnit_iff_isUnit_det ] ; norm_num [ Algebra.algebraMap_eq_smul_one ];
+      rw [ ← neg_sub, Matrix.det_neg ] ; norm_num;
+      norm_num [ Matrix.det_fin_three ];
+    convert h_mem using 1;
+    rw [ Matrix.IsHermitian.spectrum_real_eq_range_eigenvalues ];
+  · have h_spectrum : x - (lam - kappa) ∈ spectrum ℝ (B lam kappa - ((lam - kappa : ℝ) : ℂ) • (1 : Matrix (Fin 3) (Fin 3) ℂ)) := by
+      convert spectrum.sub_singleton_eq ( B lam kappa ) ( lam - kappa ) |> fun h => h.subset ( Set.mem_sub.mpr ?_ ) using 1;
+      · norm_num [ Algebra.smul_def ];
+        congr!;
+      · simp_all +decide;
+        obtain ⟨ y, rfl ⟩ := hx; exact B_isHermitian lam kappa |> fun h => h.spectrum_real_eq_range_eigenvalues.symm ▸ Set.mem_range_self _;
+    have h_posSemidef : (B lam kappa - ((lam - kappa : ℝ) : ℂ) • (1 : Matrix (Fin 3) (Fin 3) ℂ)).PosSemidef := by
+      convert B_shift_posSemidef lam kappa h0 using 1;
+    have h_eigenvalues_nonneg : ∀ y ∈ spectrum ℝ (B lam kappa - ((lam - kappa : ℝ) : ℂ) • (1 : Matrix (Fin 3) (Fin 3) ℂ)), 0 ≤ y := by
+      convert h_posSemidef.eigenvalues_nonneg using 1;
+      have := Matrix.IsHermitian.spectrum_real_eq_range_eigenvalues h_posSemidef.1;
+      grind +splitIndPred;
+    linarith [ h_eigenvalues_nonneg _ h_spectrum ]
+
+end PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
+
+```
+
+### Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md (1392 lines)
+
+```markdown
 # Mass as null disagreement: a machine-verified finite framework
 
 **A finite, kernel-checked framework in which the invariant mass of a
@@ -535,34 +846,28 @@ give a genuine positive squared mass of `1`. The reader who wants a single
 picture to hold should hold this carrier.
 
 **The mass phase diagram (aperture − closure).** The worked point `(λ,κ)=(2,1)`
-is one point of a plane. Consider the `3×3` Hermitian block
-`B(λ,κ) = !![λ, κi, 0; -κi, λ, 0; 0, 0, λ]` (aperture strength `λ`, closure
-strength `κ`, both real), whose spectrum is `{λ − κ, λ, λ + κ}`. Its **complete
-spectral theory is a kernel theorem** (grade **M**, guard-pinned;
-`MassGapWitness`, `CarrierAxiomGuard`), and it organizes the whole coupling
-plane: `det B = λ(λ² − κ²)` (`B_det`); the block is **positive-definite (massive)
-iff `|κ| < λ`** (`B_posDef_iff`); it is **singular (massless) exactly on the
-critical line `κ = ±λ`, for `λ > 0`** (`B_massless_iff_of_pos`; the `λ = 0`
-edge case is handled separately — at `λ = 0` the block is singular for every `κ`);
-and — the sharpest form — its **least eigenvalue is `λ − κ`**,
-`IsLeast (range eigenvalues) (λ − κ)` for `0 ≤ κ ≤ λ` (`B_least_eigenvalue`). So
-*the squared mass gap of `B` = aperture − closure* is a **theorem** (axiom-audited
-`[propext, Classical.choice, Quot.sound]`): closure *subtracts* from mass and,
-tuned to equal aperture, cancels it — a finite, exactly-solvable massless
-critical line.
-
-*What ties `B` to the carrier, and what does not (the honest grade split).* At
-the fixed point `(2,1)` the tie is **kernel-checked**: the actual carrier
-compression `M6 = PᴴHAC P` is *exactly* the block diagonal `B(2,1) ⊕ B(2,-1)`
-(`M6_topBlock_eq_B`, `M6_botBlock_eq_B`, `M6_offBlock_eq_zero`, all **M**,
-guard-pinned) — so the full sector form is a pair of closure-mirror blocks
-`B(λ,κ) ⊕ B(λ,-κ)` (isospectral, both covered by the two-sided `B_posDef_iff`),
-and `T2_positive_mass` is its `(2,1)` corner *in the kernel*. What is **not** a
-theorem is that the carrier reduces to this shape at *general* `(λ,κ)`: that
-identification is **oracle-grade** (`carrier_spectrum_sim.py`, §9a), kernel-checked
-only at `(2,1)`. So the phase diagram is: *`B`'s spectral theory is M for all
-`(λ,κ)`; that `B` is the carrier's sector form is M at `(2,1)` and oracle-grade
-off it.*
+is one point of a plane. Restoring the couplings, the compressed sector form is
+`B(λ,κ)` with the `3×3` Hermitian block `!![λ, κi, 0; -κi, λ, 0; 0, 0, λ]`
+(aperture strength `λ`, closure strength `κ`, both real), whose spectrum is
+`{λ − κ, λ, λ + κ}`. Three statements follow and organize the whole coupling
+plane: the **squared mass gap is the least eigenvalue `λ − κ` = aperture minus
+closure**; the sector form is **positive-definite (massive) iff `|κ| < λ`**; and
+it is **singular (massless) exactly on the critical line `κ = λ`** (for `κ ≥ 0`),
+where `det B = λ(λ² − κ²) = 0`. So closure *subtracts* from mass and, tuned to
+equal aperture, cancels it: a finite, exactly-solvable analogue of a massless
+critical line. This is the mass phase diagram the spectrum simulator draws
+(`carrier_spectrum_sim.py`, §9a), and `T2_positive_mass` is its `(2,1)` corner.
+The parametrized statement is now **fully kernel-checked and guard-pinned**
+(`MassGapWitness`, pinned in `CarrierAxiomGuard`): `B` **Hermitian**; the
+**determinant** `det B = λ(λ² − κ²)`; the **massless critical line**
+(`det B = 0 ↔ κ = ±λ` for `λ > 0`, `B_massless_iff_of_pos`); the **massive
+condition** `B.PosDef ↔ |κ| < λ` (`B_posDef_iff`); and — the sharpest form — the
+**least eigenvalue is `λ − κ`**, `IsLeast (range eigenvalues) (λ − κ)` for
+`0 ≤ κ ≤ λ` (`B_least_eigenvalue`). So *the squared mass gap = aperture − closure*
+is a **theorem** (grade **M**, axiom-audited `[propext, Classical.choice,
+Quot.sound]`), and the massless line closure = aperture is its zero locus. This
+generalizes `T2_positive_mass` from the `(2,1)` point to the whole coupling plane
+and pins the critical line in the kernel.
 
 The physical target this shape is aimed at — a finite analogue of the Ji
 decomposition of the proton mass — is grade **C**, and the two claims it
@@ -1000,13 +1305,8 @@ is the simulation's spec and validation oracle):
 
 - `carrier_spectrum_sim.py` — the physical-sector **mass phase diagram**: the
   squared mass gap is **aperture − closure**, with a **massless critical line at
-  closure = aperture**. The *block* spectral theory the diagram rests on is now a
-  kernel theorem (`MassGapWitness`, §4, `B_least_eigenvalue` / `B_posDef_iff`,
-  **M**, guard-pinned), and the tie to the carrier is kernel-checked at `(2,1)`
-  (`M6_topBlock_eq_B`); so at that point the simulator *cross-checks a proved
-  result*. The general-coupling reduction the diagram sweeps is oracle-grade
-  (also validated against `T2_positive_mass`, `signed_budget_sum_one`,
-  `posDef_iff_det_pos`).
+  closure = aperture** (validated against `T2_positive_mass`,
+  `signed_budget_sum_one`, `posDef_iff_det_pos`).
 - `carrier_evolution_sim.py` — unitary Hamiltonian flow with a positive mass
   gap, survival-amplitude **mass-spectrum resolution**, a unitary
   **quantum-walk transfer operator** (whose continuum limit yields a Dirac-type
@@ -1179,9 +1479,8 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-vacuous `(1/2,0,1/2)` witness |
 | 4 | `sector_ground_mass` | `Carrier/SectorGroundMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | Rayleigh–Ritz keystone: definite-sector ground value is a positive squared mass (§4 rail 3, §10 crux 0) |
 | 4 | `T2_positive_mass` | `Carrier/SectorGroundMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the positivity linchpin**: explicit two-edge Cl(4) carrier, sector form `1+B^HB` PosDef, keystone fires ⇒ genuine positive mass (§6, §10 crux 0a) |
-| 4 | `B_posDef_iff`, `B_massless_iff_of_pos` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | spectral theory of the block `B(λ,κ)`: massive `↔ \|κ\|<λ`, massless line `κ=±λ` for `λ>0` (§4) |
-| 4 | `B_least_eigenvalue` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue of `B` `= λ−κ` = aperture − closure (`IsLeast`, for `0≤κ≤λ`) |
-| 4 | `M6_topBlock_eq_B`, `M6_botBlock_eq_B` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the carrier tie at `(2,1)`**: `M6 = B(2,1) ⊕ B(2,-1)` — so the phase diagram is the carrier's actual sector form there (general `(λ,κ)` reduction is oracle-grade) |
+| 4 | `B_posDef_iff`, `B_massless_iff_of_pos` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass phase diagram: massive `↔ \|κ\|<λ`, massless line `κ=±λ` for `λ>0` (§4) — generalizes T2 across the coupling plane |
+| 4 | `B_least_eigenvalue` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue `= λ−κ` = aperture − closure (`IsLeast`, for `0≤κ≤λ`) |
 | 3 | `free_mass_operator_eq_plucker` | `Carrier/FreeMassBridge.lean` | M, local guard pin | **free §3↔§4 bridge**: free mass operator `P·adj P = det P • 1` = Plücker mass (§10 crux 0b-a) |
 | 3 | `pairwiseMass_append` (+`_le`, `_append_eq_iff`) | `Carrier/MassMonogamy.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass monogamy: Plücker mass superadditive, excess = cross-disagreement (F3) |
 | 3 | `massOn_add_massOn_compl_le` | `Carrier/MassMonogamyPartition.lean` | M, guard-pinned (`CarrierAxiomGuard`) | general-partition monogamy: internal masses ≤ whole |
@@ -1401,3 +1700,47 @@ pre-registering a prediction — never a substitute for a kernel proof.
 `Sources/Null_Edge_References.md`; the PhysLean convention cross-checks and the
 prior-art / novelty-gap analysis are in `docs/PHYSLEAN.md` and
 `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`.
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+I have what I need: the guard pins are real (`B_posDef_iff`, `B_massless_iff_of_pos`, `B_least_eigenvalue` all pinned in `CarrierAxiomGuard.lean`), and — importantly — I checked `SectorGroundMassWitness.M6` against `MassGapWitness.B` entrywise. Here is the review.
+
+---
+
+## Semantic-alignment verdict on `MassGapWitness`
+
+The spectral mathematics is exactly what was intended, but the file's **carrier identification is docstring-outruns-kernel**, and that is the one load-bearing finding. What the kernel proves: for the abstract 3×3 matrix `B(λ,κ)` — which I verified encodes the intended block, `λ·I + iκ·K` with `K = E01−E10`, i.e. `2I+iK` at `(2,1)` is **entrywise identical** to the upper block of `SectorGroundMassWitness.M6` — Hermiticity, `det B = λ(λ²−κ²)`, the honestly-split massless line (the unconditional `λ=0` disjunct is correct and creditable), `PosDef ↔ |κ|<λ` (the two-sided statement is the intended "massive iff aperture dominates," and Mathlib's `PosDef` under `ComplexOrder` is the right positivity), and `IsLeast (range eigenvalues) (λ−κ)` — a genuine least-eigenvalue statement, not a weaker "is an eigenvalue" or "is a lower bound" fact, on the right set, with `0 ≤ κ` the right domain (for `κ<0` the gap is `λ−|κ|`, correctly excluded). What the kernel does **not** prove: that `B(λ,κ)` *is* the two-edge carrier's compressed sector form at general couplings. There is no lemma `M6 = fromBlocks (B 2 1) 0 0 (B 2 (−1))` even at the fixed point (the match is by-inspection only), the second M6 block is `B(λ,−κ)` (so the honest phrasing is "blockdiag of `B(λ,κ)` and its mirror," not "the 3×3 block"), and the general-`(λ,κ)` reduction rests entirely on `carrier_spectrum_sim.py` — oracle grade. So the file's opening sentence ("On the two-edge Cl(4) carrier the physical-sector mass form is block-diagonal with...") and the claim to "generalize `T2_positive_mass` to the whole coupling plane" claim a carrier theorem the kernel has not seen; what is kernel-checked is the complete spectral theory of the *asserted* block. Secondary point on answer (1): yes, any isospectral matrix would prove the same three flagship theorems — the thing that pins *this* matrix as the chromomagnetic closure is precisely the missing reduction lemma, so the sign/placement question is currently answered by the sim, not the kernel.
+
+## Manuscript verdict
+
+Very close to finished, and the grade discipline is genuinely well executed — but the §4 "mass phase diagram" paragraph currently inherits the same over-claim: "Restoring the couplings, the compressed sector form is `B(λ,κ)`..." is stated as fact and then blessed as "fully kernel-checked," when the kernel-checked part is the spectrum of `B` and the *reduction* is oracle-grade. By the paper's own rule ("a sentence that claims more than its grade licenses is an error"), that one sentence is an error. The shortest path is one cheap Lean lemma plus two sentence-level edits; after that I would call the manuscript publication-ready as a self-contained draft.
+
+## Remaining to finish (ordered)
+
+1. **Land the (2,1) bridge lemma** (cheap, `fin_cases`/`decide`-level): `M6 = fromBlocks (B 2 1) 0 0 (B 2 (−1))` in `MassGapWitness` or `SectorGroundMassWitness`, pinned. This earns "generalizes `T2_positive_mass`" at the fixed point in the kernel, not by inspection.
+2. **Regrade the reduction sentence in §4**: split the paragraph into "the block's spectral theory is M (`MassGapWitness`)" and "the identification of `B(λ,κ)` as the carrier's compressed sector form at general couplings is oracle-validated (`carrier_spectrum_sim.py`), kernel-checked at `(2,1)` via item 1" — mirror the same split in the `MassGapWitness` module docstring.
+3. **Fix the massless-line qualifier in §4**: "singular exactly on the critical line `κ = λ` (for `κ ≥ 0`)" must read "(for `λ > 0`, `κ ≥ 0`)" — the file itself proves why (`λ=0` disjunct); the prose currently drops the very subtlety the Lean flags.
+4. **Mention the mirror block**: one clause noting the sector form is `B(λ,κ) ⊕ B(λ,−κ)` (isospectral; covered by the two-sided `B_posDef_iff`), so "the 3×3 block" is not read as the whole 6×6 form.
+5. Optional polish: a one-sentence caveat that "squared mass gap" here means the least eigenvalue of the first-quantized sector mass form (distance of the spectrum from zero), consistent with §9's quantization-boundary paragraph — pre-empts the obvious referee quibble.
+
+## Bottom line
+
+1. The flagship's theorems are the intended mathematics; the missing piece is the **kernel tie from `B(λ,κ)` to the carrier** — land the entrywise `M6` bridge lemma and regrade the general-coupling reduction to oracle/MEMO.
+2. Fix the two §4 sentences (reduction claim; `λ>0` qualifier) so the prose matches the kernel exactly.
+3. After those edits, nothing else stands between this draft and "done" at its own declared standard; everything else flagged is polish, not substance.
+
+```
+
+## Response stderr
+
+```text
+
+```
