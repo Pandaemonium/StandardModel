@@ -1360,6 +1360,24 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   "nonnegative" in the manuscript anchor table, `HONEST_SCORECARD.md`, and
   `MORNING_REPORT.md`.
 - Claim boundary: documentation/audit downgrades only; no new Lean changes.
+- Follow-up grep found the repo-level results map still overstated S1-CC as
+  physically balanced rather than conditionally resolved at M-engine + MEMO
+  instantiation grade. Updated `NULL_EDGE_RESULTS.md` to match the manuscript:
+  finite balance engine landed, `6x6` witness balance by oracle, physical
+  `J Q_C|V'/N` bridge still open. Also softened the manuscript sentence that
+  said physical positivity "must" come from the `J`-definite complement; after
+  the aperture kill, any surviving positivity needs a `J`-positive sector not
+  balanced by the same grading.
+- Final wording sweep also found the older S1 status paragraph in
+  `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md` still saying "exactly
+  BALANCED" on the physical sector. Reworded it to "CONDITIONAL STRUCTURED
+  NO-GO" at M-engine + MEMO-instantiation grade, with the physical-sector
+  `J Q_C|V'/N` bridge still requiring Lean instantiation.
+- Final stale-trigger scan over the manuscript, morning report, scorecard,
+  roadmap, and `NULL_EDGE_RESULTS.md` found no hits for the old unconditional
+  physical-balance/positive-leading-energy phrases. Verification:
+  `pre-commit run --files AgentTasks/overnight-allmass-run-2026-07-08/LEDGER.md AgentTasks/overnight-allmass-run-2026-07-08/LIT_SEARCH_LOG.md AgentTasks/overnight-allmass-run-2026-07-08/HONEST_SCORECARD.md AgentTasks/overnight-allmass-run-2026-07-08/MORNING_REPORT.md AgentTasks/overnight-allmass-run-2026-07-08/ARISTOTLE_AUDIT_S1CC_SPECTRAL_BRIDGE_SHAPE_2026-07-08_0340.md AgentTasks/overnight-allmass-run-2026-07-08/ARISTOTLE_AUDIT_POST0600_S1CC_MANUSCRIPT_BOUNDARY_2026-07-08_0558.md Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md Sources/Null_Edge_References.md NULL_EDGE_RESULTS.md`
+  PASS at 06:15 PDT.
 
 ## [LAND Claude] Strengthening roadmap + T2 multi-edge positive-sector ESCAPE
 
@@ -1395,3 +1413,15 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   for a focused design pass, not rushed. T4 (g=2 Pauli test) documented in the
   roadmap as the next channel-name probe.
 - Task note: AgentTasks/allmass-strengthen-batch1-aristotle-2026-07-08.md.
+
+## [PROBE Claude] T4 structural: Q_C is a genuine magnetic-moment (sigma.F) coupling
+
+- probe_t4_closure_magnetic_moment.py (self-done while Aristotle batch-1 runs).
+  On the two-edge Cl(4) carrier, Q_C = (Clifford bivector sigma_12) (x) (color
+  curvature F): magnetic-moment structure, LINEAR in F (vs |F|^2 quadratic
+  energy - separates the chromomagnetic term from the Wilson energy, the S10
+  pre-registered error), and sign-flips under the spin grading (hyperfine).
+- STRENGTHENS the "chromomagnetic/QCD" channel name from pure grade-C analogy
+  to STRUCTURALLY CONFIRMED on a genuine multi-edge carrier. Honest limit: the
+  universal g=2 COEFFICIENT is NOT claimed (needs the physical
+  transport<->gauge-potential normalization; documented T4 sub-target).
