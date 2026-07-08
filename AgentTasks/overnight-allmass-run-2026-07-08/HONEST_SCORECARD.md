@@ -91,3 +91,49 @@ no-go (balanced), with the surviving positivity question opened; masslessness
 is topologically/chirally protected; and coarse-graining generates mass
 from disagreement. What it still cannot say: any absolute mass value, any
 continuum statement, or a genuine hadron mass - and it says so plainly.
+
+---
+
+## Post-call-03 additions (session update, ~03:00)
+
+**Two more Fable calls harvested (03 total), each cracking something major.**
+
+- **call-02** resolved the C4 double-pinning: it is NOT a global winding
+  invariant (Fable measured that to vanish) but an equivariant
+  reflection-sectored Lefschetz index. This CORRECTED a wrong attribution
+  in my landed `ChiralZeroModeParity.lean` docstring and the manuscript §8
+  - the mutual-review system catching a real error in kernel-adjacent prose.
+- **call-03** delivered three things: (A) the program's candidate
+  ORGANIZING theorem - a finite equivariant graded index unifying
+  McKean-Singer, C4, and S1-CC as literal corollaries (RG-Schur excluded
+  with a structural reason, attached via a bridge); structural core LANDED
+  (`EquivariantGradedIndex.lean`). (B) A concrete, rational, 18-dim
+  color-singlet S6 mass-budget witness with `b_C = -32/223 ≠ 0` and a
+  hyperfine spin-flip splitting `512/125` - VALIDATED by an exact-fraction
+  oracle this run (`probe_s6_singlet_budget.py`, exact match to Fable). (C)
+  The manuscript's deepest weakness: "mass" has two non-identified meanings
+  (`det P` vs `4 ev(D²)`) - the budget decomposes a quadratic functional, a
+  mass only at a ground state on a positive sector. Added as manuscript §4
+  rail 3 + §10 crux #0, with the shoring theorem `sector_ground_mass` (ripe
+  now that `aperture_dominance_pos` landed).
+
+**Additional kernel landings (post-draft):** `aperture_dominance_pos` (the
+positivity-bottleneck opener), `count_trace_real` (Banks-Casher count is
+real), `EquivariantGradedIndex` core (`chiralProduct_involution`).
+
+**Additional honest work:** wired two orphaned local-pin modules into the
+build graph (they escaped `lake build` - no lakefile globs); validated the
+S6 hyperfine prediction by exact-fraction oracle.
+
+**Manuscript status:** now addresses BOTH audit passes (Codex blocking
+findings + all three Fable reviews), including the deep mass-functional
+caveat. §11 table has 34 rows with grade + guard-pin columns, every name
+grep-verified. The single most important improvement of the night was the
+Part C honesty caveat - the manuscript now names its own deepest
+vulnerability and the theorem that would close it.
+
+**The clean handoff list (all documented, mostly Aristotle-ripe):**
+sector_ground_mass (the #0 keystone), the S6 18-dim Lean witness
+(oracle-backed, Kronecker route), the S1-CC balanced-inertia capstone
+(charpoly_neg + Codex's card_pos_eq_card_neg), the unifier L3/L4, the C4
+reflection-sectored pinning theorem, and `singlet_one_leg_closure_zero`.
