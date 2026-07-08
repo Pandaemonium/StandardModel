@@ -49,6 +49,7 @@ as current state.
 ## The null-edge program: core documents
 
 - `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` - the ALL-mass manuscript (2026-07-08 overnight): every mass channel in null-edge terms, college-accessible Part I, grades throughout, anchor table. Companion to (not replacement for) the P1 draft. [DRAFT-MS]
+- `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md` - related-work and novelty-gap review for the all-mass manuscript; close prior art and must-cite source-debt list. [LIVE]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md` - P1 manuscript v3 (2026-07-07 rewrite for clarity/impact; college-accessible Part I; status map incl. carrier layer). [DRAFT-MS]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - P1 manuscript v2 (superseded by v3; retained for provenance). [HISTORICAL]
 - `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` - stable publication topic IDs P1-P12. [LIVE]
@@ -77,8 +78,17 @@ as current state.
 - `MANUSCRIPT_SPEC.md` - the all-mass manuscript spec with audit gates G1-G5 and the anchor rule. [LIVE]
 - `GOAL_PROMPT_CLAUDE.md`, `GOAL_PROMPT_CODEX.md` - executor standing orders (Codex: Spark subagents for external lit). [STABLE]
 - `LEDGER.md`, `LIT_SEARCH_LOG.md` - append-only coordination + literature logs. [LIVE]
-- `S1CC_RESOLUTION.md` - the central positivity crux resolved as a structured no-go (closure balanced); theorem ladder + kill conditions. [LIVE]
+- `S1CC_RESOLUTION.md` - the central positivity crux framed as a conditional structured no-go: finite balance engine landed, physical `J Q_C|V'/N` bridge still MEMO; theorem ladder + kill conditions. [LIVE]
+- `STRENGTHENING_ROADMAP.md` - post-review strengthening targets T1-T7, including the two-edge positive-sector witness, bridge split, Pauli-term test, and checkerboard continuum anchor. [LIVE]
+- `T2_MULTIEDGE_ESCAPE_FINDING.md` - MEMO/oracle finding that a two-edge Cl(4) carrier supplies a `J`-positive sector under aperture dominance; Lean witness still open. [LIVE]
+- `DELTA_BINDING_ENERGY_FINDING.md` - MEMO/oracle finding splitting the naive S3/S4 bridge into a free equality target plus a closure-controlled binding-defect conjecture. [LIVE]
 - `C4_SECTORED_INDEX_AND_STRATEGY.md` - Fable call-02: the reflection-sectored chiral index (double-pinning is Lefschetz, not winding) + the ranked next-target strategy. [LIVE]
+- `DYNAMICS_GROUNDWORK.md` - PhysLean-inspired clean-room dynamics roadmap
+  (D1 finite action/EOM, D2 conservation, D3 transfer evolution, D4 RG flow,
+  D5 canonical ensemble) plus implemented finite D1-D5 seeds and simulation
+  harness.
+  [LIVE]
+- `MORNING_REPORT.md` - short dawn report for the user; read before the scorecard. [LIVE]
 - `HONEST_SCORECARD.md` - the run's honest accounting (landings, oracles, kills, remainder); finalized near dawn. [LIVE]
 - `Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` (Sources/) - see manuscripts. [DRAFT-MS]
 - `COLLABORATOR_BRIEF_2026-07-08.md` - standalone external brief: status snapshot + the seven hardest challenges (C1-C7) + closed-routes list; safe to send outside. [STABLE]

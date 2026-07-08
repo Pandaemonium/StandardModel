@@ -61,10 +61,11 @@ anticommutes `J` *would* balance the aperture - the trap Cl(4) lets us avoid.
 ## What this establishes, and what it does not
 
 - **Establishes (the strengthening):** the positivity program is **not dead**.
-  The obstruction was a small-model artifact; a two-edge carrier admits a
-  genuine `J`-positive sector on which aperture dominance makes the total mass
-  form positive-definite, instantiating the keystone. Crux 0a is de-risked from
-  "obstructed" to "escape mechanism validated numerically."
+  The obstruction is not forced by the single-doublet algebra alone; a two-edge
+  carrier admits a genuine `J`-positive sector on which aperture dominance makes
+  the total mass form positive-definite, numerically instantiating the
+  keystone's positive-sector hypothesis. Crux 0a is de-risked from
+  "obstructed" to "escape mechanism validated numerically at MEMO grade."
 - **Does not yet establish (honest scope):** this is a numeric oracle on a
   structural proof-of-concept (explicit Cl(4) rep, PD aperture `A = lambda I`,
   skew curvature `K`). It shows the mechanism and the existence of a positive

@@ -2,8 +2,9 @@
 
 **Date:** 2026-07-08 (all-mass overnight run). **Origin:** Fable feedback item 1
 (reframe crux 0b). **Status:** numeric-oracle proof-of-concept (MEMO). **Probe:**
-`Scripts/oracle/probe_bridge_binding_energy.py`. **Carrier:** the validated
-two-edge Cl(4) escape carrier (`probe_multiedge_positive_sector.py`).
+`Scripts/oracle/probe_bridge_binding_energy.py`. **Carrier:** the
+oracle-validated two-edge Cl(4) escape carrier
+(`probe_multiedge_positive_sector.py`).
 
 ## The result
 
@@ -39,15 +40,15 @@ The bridge should be **re-registered as a split**:
   `min spec(D^#D|P) = det P` of the ground bundle. Provable by direct Clifford
   computation; the honest "the operator mass IS the kinematic mass" theorem, in
   the free case.
-- **0b(b) - the binding defect (C, new invariant).** For interacting carriers,
+- **0b(b) - the binding defect (C, candidate invariant).** For interacting carriers,
   `Delta := min spec(D^#D|P) - det P` is a finite, negative, closure-controlled
-  **binding energy** - the program's first. Conjecture: `Delta` is governed by
+  **binding-energy candidate**. Conjecture: `Delta` is governed by
   the closure/turn expectations (off-diagonally). **Kill:** a carrier where
   `Delta` is positive, or is uncorrelated with the closure sector.
 
 This turns "the bridge is probably false" from a weakness into a *discovery*: the
-failure of naive additivity is the binding energy, and the program now has a
-finite handle on it. It also newly connects to §9 (mass generation) and §6
+failure of naive additivity is a binding-defect candidate, and the program now
+has a finite handle on it. It also newly connects to §9 (mass generation) and §6
 (closure as the binding channel) and gives the massless-bound-state point a
 concrete meaning.
 

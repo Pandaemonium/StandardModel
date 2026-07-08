@@ -70,8 +70,8 @@ Options if a genuine `import Physlib.*` dependency is ever needed:
 
 ## What's genuinely useful for us (2026-07-08 survey)
 
-We have **not** been using PhysLean in any `PhysicsSM/**` Lean - it appears only
-as a cited prior-art / tooling mention in docs and the manuscript. A survey of
+We do **not** import PhysLean in any `PhysicsSM/**` Lean - it appears only as a
+cited prior-art / tooling mention and clean-room design reference. A survey of
 the clone found three areas worth *consulting and convention-cross-checking*
 (not importing - version-pinned - and, per clean-room policy, port ideas not
 text):
@@ -137,7 +137,15 @@ conventions against the clone - and cite PhysLean's Weyl/spinor formalization in
    `StatisticalMechanics/CanonicalEnsemble` (`partitionFunction`,
    `helmholtzFreeEnergy` - the thermodynamic-limit route to the §9 condensate
    question). This gives the carrier the *action + equation-of-motion +
-   conservation + ensemble* structure it currently lacks.
+   conservation + ensemble* structure it currently lacks. Clean-room finite
+   seeds now exist in `PhysicsSM/Draft/NullEdge/Carrier/FiniteCarrierAction.lean`
+   (D1 multiplier action/EOM),
+   `PhysicsSM/Draft/NullEdge/Carrier/FiniteUnitaryEvolution.lean` (D2/D3
+   isometric evolution and conserved energy observables),
+   `PhysicsSM/Draft/NullEdge/Carrier/FiniteRGFlow.lean` (D4 finite flow
+   invariants / monotone observables), and
+   `PhysicsSM/Draft/NullEdge/Carrier/FiniteCanonicalEnsemble.lean` (D5 finite
+   partition function/probability normalization).
 
 **Confirmed ABSENT (reassuring for novelty - PhysLean does not pre-empt these):**
 Wilson loops / lattice gauge theory (its QFT is continuum perturbation theory);

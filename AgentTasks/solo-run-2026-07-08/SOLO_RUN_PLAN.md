@@ -16,6 +16,9 @@ green work, keep the build clean, and build on it.
 **Standing directives.**
 - **Frequent, comprehensive literature reviews** (see cadence below) — sweep
   before major manuscript or dynamics work, and log every sweep.
+- **Borrow liberally from public Lean repositories to establish pieces, with
+  proper attribution.** (See the dedicated section below.) PhysLean (`Physlib`)
+  first; scout other public Lean physics/math repos where they would help.
 - **Aristotle: use liberally** for Lean proofs (dynamics theorems +
   manuscript-supporting results). Harvest promptly; verify + guard-pin locally
   before claiming M.
@@ -24,6 +27,37 @@ green work, keep the build clean, and build on it.
   `AgentTasks/model-calls/claude/`.
 - Grade discipline throughout (T/M/MEMO/C); every numeric result quarantined
   from the verified core; kills reported at theorem prominence.
+
+## Borrowing from public Lean repositories (liberal, with attribution)
+
+**Directive (user, 2026-07-08): borrow liberally to establish pieces — from
+PhysLean, and from any other public Lean repository that helps — always with
+proper attribution and license compliance.**
+
+- **PhysLean (`Physlib`) — primary.** Access + version constraint + what to mine
+  are in [`docs/PHYSLEAN.md`](../../docs/PHYSLEAN.md): semantic search
+  (`lean-explore packages=["Physlib"]`) + source clone
+  (`AgentTasks/external/PhysLean`). We are version-pinned (they are v4.31.0, we
+  are v4.28.0), so **consult + convention-cross-check + clean-room port**, not
+  `import`. Use it for spinors/Weyl/SL(2,C), Pauli/Clifford/Dirac algebra,
+  Minkowski metric, variational/Lagrangian/Hamiltonian dynamics, canonical
+  ensemble, Wick/second-quantization, SM/anomaly/Spin(10). Cite the exact module.
+- **Mathlib** — already a build dependency; use directly (it is the base of every
+  M result).
+- **Other public Lean repos — scout and borrow when helpful.** Check
+  permissively-licensed Lean 4 projects (e.g. other formalized-physics or
+  relevant math efforts) via `lean-explore`, GitHub, or the scholarly search when
+  a needed structure (a spectral/variational/lattice/operator API) may already
+  exist. Before borrowing: (i) check the licence — Apache/MIT/BSD are OK to
+  consult + reuse-with-attribution + clean-room; **GPL/AGPL/unclear must NOT be
+  copied into trusted Lean** (consult only, then clean-room from the math per
+  `AGENTS.md`); (ii) record the source repo, commit, licence, and the exact
+  declaration in the module docstring / `Sources/Null_Edge_References.md`; (iii)
+  translate the *mathematics*, not the implementation text, and re-verify under
+  our pinned toolchain. When a borrow becomes a genuine build dependency, follow
+  the optional-root pattern (`docs/PHYSLEAN.md`), never bump the pin.
+- **Log** each borrow (repo + declaration + licence + how used) in the run
+  ledger and the references map, so provenance is auditable.
 
 ---
 

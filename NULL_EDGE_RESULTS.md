@@ -13,7 +13,9 @@ Claim labels are used throughout, in decreasing strength: **finite identity**
 (kernel-checked algebra), **reconstruction** (a known mechanism recovered from
 null-edge primitives, inputs still free), **structural theorem** (a qualitative
 feature forced by stated algebraic inputs), **prediction** (a normally-free EFT
-parameter fixed or restricted). The program has **no predictions yet**.
+parameter fixed or restricted). The program has **no physical predictions yet**;
+current "predictions" are finite-witness self-consistency targets unless
+explicitly stated otherwise.
 
 ---
 
@@ -64,6 +66,13 @@ Plucker spread of the null directions. Established (all trusted unless noted):
   (`fin_bundle_mass_zero_iff_common_direction`).
 - **Twistor-chart matching** with explicit, non-drifting normalization
   conventions (`multi_twistor_momentum_det_eq_pairwiseMass`).
+- **Draft finite kinematic strengthenings** (post-06 2026-07-08, guard-pinned
+  in `CarrierAxiomGuard`): `MassMonogamy.pairwiseMass_append` shows pairwise
+  mass is superadditive under bundle append with excess equal to cross
+  disagreement, and `RankAreaMass.posDef_iff_det_pos` / related lemmas identify
+  positive determinant with positive-definite finite momentum. These are
+  kinematic support facts only; they do not establish the Delta binding defect,
+  the carrier `D^#D|P = det P` bridge, or the S3/S4 interacting bridge.
 
 Kernel-clean but still *draft* (need convention/semantic review before
 promotion): **`SL(2,C)`/Lorentz invariance** of the determinant mass, the
@@ -354,9 +363,11 @@ the trusted namespace yet.
   not a carrier cross-term theorem. The same module now
   includes `finiteProductForm_component_same`,
   `finiteProductForm_component_ne`, and `finiteProductForm_assemble_eval`,
-  proving the abstract finite-product form identities for component inclusions
-  (same block evaluates to its component form; different blocks are
-  orthogonal; assembled families evaluate as a finite sum). A concrete
+  plus `finiteProductForm_total`, `finiteProductForm_total_square`, and
+  `finiteProductForm_total_eq_zero_of_forall`, proving the abstract
+  finite-product form identities for component inclusions (same block evaluates
+  to its component form; different blocks are orthogonal; assembled families
+  and sums of component inclusions evaluate as finite component sums). A concrete
   Gaussian-integer 2x2 witness also proves the square-zero generators can be
   noncommuting, so the bivector slot is not vacuous. Claim boundary: this is
   abstract finite algebra/form plumbing, not yet the concrete carrier
@@ -380,7 +391,14 @@ the trusted namespace yet.
   strictly positive mass form) and unbalanced `(2,1)` complex (index 1, a
   forced massless mode for every dynamics). Masslessness of the surplus is
   the mass thesis's converse, now a theorem family.
-- **S1-CC positivity crux resolved: closure is balanced (finite identity + MEMO, 2026-07-08).** The nonabelian closure channel `Q_C` is NOT positive on the physical sector - it is exactly BALANCED (Krein signature zero) via a grading anticonjugation. Kernel engine: `anticonj_odd_pow_trace_zero` (`S^-1 B S = -B => Tr(B^odd)=0`, guard-pinned in `S1CCBalancedInertia.lean`). Physical positivity relocates to the doublet-free complement's inertia surplus. Resolves the program's central open crux as a structured no-go with content.
+- **S1-CC positivity crux conditionally resolved: finite balance engine + MEMO physical instantiation (2026-07-08).** The finite Lean engine now proves the algebraic balance route: `anticonj_odd_pow_trace_zero`, `anticonj_charpoly_eq`, and the finite Hermitian count capstone `hermitian_balanced_count_of_neg_charpoly` (if `B` is Hermitian and `(-B).charpoly = B.charpoly`, then strict positive and negative Hermitian eigenvalue counts agree), all guard-pinned in `S1CCBalancedInertia.lean` / `SlabAxiomGuard.lean`. The checked `6x6` witness has balanced inertia `sig(J Q_C|_{V'/N}) = (2,2,0)` by oracle; only the equality of strict positive/negative eigenvalue counts is kernel-proved here, while nullity and the displayed inertia triple are probe facts. Remaining bridge: instantiate the physical-sector `J Q_C` representative and the `V'/N` descent hypotheses in Lean. The result is a structured no-go at M-engine + MEMO-instantiation grade on the single-doublet witness, not a fully kernel-closed physical-sector theorem.
+- **Two-edge positive-sector escape route (MEMO/oracle, 2026-07-08).** The
+  single-doublet aperture rescue is killed, but a post-06 Cl(4) two-edge oracle
+  supplies a larger-carrier route: the closure-balancing grading can
+  anticommute with the closure bivector while commuting with the Krein metric,
+  giving a `J`-positive sector where `J(Q_A+Q_C)` is positive under aperture
+  dominance. This is evidence for the next finite witness target, not a Lean
+  theorem and not yet the physical `J Q_C|V'/N` bridge.
 - **Signed mass-budget theorem + witness (finite identity, 2026-07-08).**
   The S6 flagship in signed form: from the guard-pinned Weitzenboeck
   identity `4 D² = Q_A + Q_C + 4 Q_T` and any linear expectation `ev`,
@@ -391,13 +409,20 @@ the trusted namespace yet.
   `b_C` is the chromomagnetic share. Guard-pinned
   (`CarrierMassBudget.lean`). 3-slot `D²` form; the 4-slot `D^#D` with the
   soldering share awaits the `D^#D` assembly.
-- **Finite Banks-Casher count identity (finite identity, 2026-07-08).**
+- **Finite Banks-Casher-type count identity (finite identity, 2026-07-08).**
   Spectral-rail-safe chiral-condensate/near-zero-count relation on a fixed
   finite background: for skew-Hermitian `A` (the stereographic GW operator)
   and real `m`, `2 Re Tr (m+A)⁻¹ = 2m Tr (m² + AᴴA)⁻¹`, i.e.
   `m V Sigma_m = N_m` - proved by elementary invertible-element algebra
   (no spectral theorem, no measures, no limits). Guard-pinned in
   `SlabAxiomGuard.lean` (`FiniteBanksCasherCount.lean`).
+- **K1 fixed-forest anti-regression toy (finite identity, 2026-07-08).**
+  `KPAntiRegressionToy.pinnedWord_collapses_toy` proves that, in the `n = 3`
+  one-block root-pinned toy, the pinned flat-word encoder collapses the two
+  internal child-block orderings to one image; `structuredWord_separates_toy`
+  proves the structured two-slot word separates them. This is a guard-pinned
+  regression anchor for the KP injection proof route, not the K1 fiber theorem
+  and not a strong-coupling gap proof.
 - **RG-Schur mass generation (finite identity, 2026-07-07 late).** Blocking
   a null chain generates non-null effective terms: on the decimated 3-site
   chain the induced edge block is a nonzero idempotent (NOT nilpotent),
@@ -407,16 +432,20 @@ the trusted namespace yet.
   (collinear couplings produce NO effective coupling). One Schur step, no
   flow claim. Guard-pinned in `CarrierAxiomGuard.lean`
   (`RGSchurMassWitness.lean`; the abstract lemma is choice-free).
-- **Still OPEN (unchanged honesty):** off-flat/physical-sector positivity (now
-  rerouted through a finite Gupta-Bleuler quotient, with OS/theta-reflection
-  and modular/ANEC readings queued as alternate selectors); the
+- **Still OPEN (2026-07-08 honesty):** off-flat/physical-sector positivity
+  remains open. The single-doublet aperture rescue is killed; the live route is
+  the MEMO/oracle two-edge positive-sector witness plus a future Lean
+  `Matrix.PosDef` transcription and physical-sector bridge. OS/theta-reflection
+  and modular/ANEC readings remain alternate selectors; the
   all-slots-active glue witness (mathematics hand-verified, Lean transcription
   pending); beyond-leading closure positivity; every continuum statement.
 - **Round-1 consultation harvest (same date, MEMO grade - working rigor,
   executor-spot-verified, kernel transcription pending):** the positivity
-  crux is SOLVED to its exact boundary (Theorem A: state positivity = Witt
+  crux was sharpened to a MEMO boundary (Theorem A: state positivity = Witt
   geometry of the constraint span; the physical-sector dimension equals the
-  chiral index, `dim(V'/N) = ind(D)`); the closed-complex "Tr E = pure
+  chiral index, `dim(V'/N) = ind(D)`) but not closed; the 2026-07-08
+  single-doublet and two-edge probes above supersede any stronger reading. The
+  closed-complex "Tr E = pure
   torsion" conjecture is KILLED and replaced by a corrected telescoping with
   a discrete Gibbons-Hawking boundary flux; a four-theorem no-go audit
   produced the program charter

@@ -78,4 +78,11 @@ one-line log per search in `LIT_SEARCH_LOG.md`.
   attempts - write the failure note and move.
 - Aristotle for anything that resists you for 30+ minutes; standalone
   packages when Mathlib-isolable; harvest-first always.
+- Aristotle is not proof-only: every 90 minutes, submit a "grand
+  strategy" job with the whole project goal, current run context, open
+  gates, kills, and requested strategic guidance. Submit smaller focused
+  strategy/no-go/semantic-alignment jobs more frequently, and keep 1-2
+  audit jobs running whenever fleet capacity allows.
+- Hard audit cutoff: at 06:00 local time on 2026-07-08, stop opening
+  new proof/manuscript fronts and switch to audit/reporting mode.
 - Report honestly at dawn: attempted / landed / killed / open, no spin.

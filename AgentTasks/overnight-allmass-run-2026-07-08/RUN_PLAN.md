@@ -136,11 +136,14 @@ formalizing. Module names and lit-ingest list in the analysis doc.
   new formalization: semantic local search (lean-explore for
   Mathlib/PhysLean; `Scripts/lit/neo4j_doc_search.py` for our docs). On
   any new physics claim or manuscript section: EXTERNAL search.
-- **Codex: run all EXTERNAL literature searches through Spark
+- **Codex default: run EXTERNAL literature searches through Spark
   subagents** (spawn a Spark subagent per search topic; main thread
-  keeps proving while Spark searches). Claude: scholarly MCP
-  (search-arxiv / search-inspirehep) + `Scripts/lit/neo4j_paper_search.py`
-  (--chunks for content-level claims).
+  keeps proving while Spark searches). If Spark is out-of-budget,
+  unavailable, or unresponsive after one bounded wait, Codex may run
+  the literature search directly with the available scholarly/web/Neo4j
+  tools and mark the entry `[fallback-no-spark]` with the reason. Claude:
+  scholarly MCP (search-arxiv / search-inspirehep) +
+  `Scripts/lit/neo4j_paper_search.py` (--chunks for content-level claims).
 - Ingest keepers via `Scripts/lit/lit_ingest.py` (dedup pre-check;
   IN_COLLECTION edge required). Log EVERY search + verdict in this
   run's `LIT_SEARCH_LOG.md` (append-only, one line per search).
@@ -171,6 +174,15 @@ formalizing. Module names and lit-ingest list in the analysis doc.
 - Aristotle: harvest-first; context packs for nontrivial submissions;
   standalone packages for Mathlib-isolable targets; 2-hour stall rule;
   one task note per job with the metadata block.
+- Aristotle is not proof-only. Each agent submits at least one
+  "grand strategy" Aristotle job every 90 minutes, giving the whole
+  project goal, current run context, open gates, kills, and desired
+  strategic guidance. Submit smaller focused Aristotle strategy jobs
+  more frequently for local choices, no-go analyses, semantic-alignment
+  questions, and theorem-shaping. Keep at least 1-2 Aristotle audit jobs
+  running whenever fleet capacity allows; manuscript over-claim checks,
+  anchor sweeps, convention-drift reviews, and kill-list audits count as
+  first-class fleet work and get normal ledger/task-note discipline.
 - External model calls ONLY via `Scripts/autonomous_loop/send_claude_review.py`
   / `send_gemini_review.py`, standalone prompts, `--source-file` for
   every reviewed declaration, full logs under `AgentTasks/model-calls/`.
@@ -203,6 +215,11 @@ Claude packages and places it. Every call ledgered with verdict.
   sources; fix or downgrade every finding; write `HONEST_SCORECARD.md`
   (what was attempted / landed / killed / remains, no spin) and
   `MORNING_REPORT.md` (the user reads this first).
+- **Hard audit cutoff: 06:00 local time on 2026-07-08.** At 06:00 both
+  agents switch to audit/reporting mode. Stop opening new proof or
+  manuscript-expansion fronts; spend remaining time on anchor sweeps,
+  over-claim checks, kill-list checks, verification records, fixing or
+  downgrading findings, `HONEST_SCORECARD.md`, and `MORNING_REPORT.md`.
 
 ## 6. Success criteria (in order)
 

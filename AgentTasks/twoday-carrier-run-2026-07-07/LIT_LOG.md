@@ -43,7 +43,7 @@ adds ONE genuinely new, high-value scaffold:
 - **arXiv:1301.3480 - "Gauge networks in noncommutative geometry"** (Marcolli-van
   Suijlekom) [NEW; key TBD, resolve before docstring cite]. chunk 27 gives a FINITE
   GRAPH Dirac operator with edge holonomies `U_e` and continuum limit
-  `holonomy = e^{...}(1 + l·nabla_e + O(l^2))` - essentially the carrier's discrete
+  `holonomy = e^{...}(1 + l*nabla_e + O(l^2))` - essentially the carrier's discrete
   home `D = sum_e c(alpha_e) nabla_e` with `nabla_e` the covariant edge difference.
   **The cleanest existing scaffold for W1 brick 2 (minimal 2-complex + covariant
   nabla).** Cross-check Fable's call-01 structure against it.
@@ -236,7 +236,7 @@ Relevance to live C/QC threads:
   formal lemma location, so this is **framing provenance only**, not a theorem
   source for the current Lean area-law/QC modules.
 - `NULLEDGE_PROGRAM_AND_EXTENSIONS.md` now cites **AXAWAGGB** for Fable's
-  suggested reframing of `H²(K,Z(G))` center-twist data as a 1-form
+  suggested reframing of `H^2(K,Z(G))` center-twist data as a 1-form
   center-symmetry background. No trusted Lean theorem was changed.
 
 ## Round 7 (Claude, cycle 8) - grounding the two Fable top-pick threads
@@ -453,3 +453,31 @@ Findings:
   literature-derived lemma was found; keep waiting on Aristotle `6b8dcebd` and
   continue to treat the blocker as local finite combinatorics rather than a
   paper-transcription task.
+
+## Round 16 (Codex, Spark literature sweep) - cross-lane reference expansion
+
+User requested a comprehensive literature search using Spark subagents. The
+compiled output is recorded in
+`AgentTasks/twoday-carrier-run-2026-07-07/LITERATURE_SWEEP_SPARK_REFERENCES_2026-07-07.md`.
+
+Scope:
+
+- Spark returned strong lane bibliographies for chirality/no-doubling,
+  teleparallel/causal/emergent-gravity constraints, and strong-coupling /
+  reflection-positivity / polymer tools.
+- Direct primary-source search filled the Krein/Gupta-Bleuler/Kugo-Ojima,
+  NCG/finite Standard Model, octonion/Furey/triality, and
+  spinor-helicity/checkerboard/mass-data lanes.
+- A local Neo4j vector recheck was attempted but failed during
+  sentence-transformer loading with Windows OS error 1455 ("paging file is too
+  small"). The sweep therefore records source candidates and direct identifiers,
+  not refreshed graph-chunk support.
+
+Highest-priority follow-up:
+
+- Key and chunk-search Nielsen-Ninomiya, Ginsparg-Wilson, Neuberger, Luscher,
+  Gupta-Bleuler, Kugo-Ojima, Furey-Hughes 2022/2025, Kibble/Sciama/Hehl,
+  Malament/HKM/Kronheimer-Penrose, Weinberg-Witten/Marolf, and
+  Kotecky-Preiss/Fernandez-Procacci.
+- Do not promote the sweep itself to manuscript theorem support; use it as a
+  source-map queue and collaborator handoff.

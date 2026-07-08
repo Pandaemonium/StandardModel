@@ -825,3 +825,181 @@ submission showed twelve running StandardModel-relevant lanes.
   `lake build PhysicsSM.Draft.NullEdge.GateI1.Q11GroupAction`;
   `lake env lean PhysicsSM/Draft/NullEdge/GateI1.lean`;
   `lake build PhysicsSM.Draft.NullEdge.GateI1`.
+
+## Hardest-pieces Aristotle wave from Fable + Pro feedback
+
+Submitted/continued 2026-07-07 from
+`FABLE_HANDOFF_HARDEST_PIECES.md` and
+`ARISTOTLE_HARDEST_PIECES_PRO_PATCHES_2026-07-07.md`.
+
+Fresh submissions:
+
+| Project ID | Aristotle job name | Lane | Type |
+|---|---|---|---|
+| `72b75f0d-99fb-4801-aa8f-86627690298c` | `ne-hard-p01-stagea-adaptedbasis-positivequot-proof-20260707` | P01 Stage A positive quotient | proof/strategy |
+| `4b4d1f1b-389d-4e90-ade3-36a9d1183869` | `ne-hard-p02-q11-exteriorpower-cauchybinet-rc0-proof-20260707` | P02 Q11 exterior-power RC0 | proof/strategy |
+| `8d95b408-7e9e-43b6-8478-6bb9540545f8` | `ne-hard-p03-qc-nonabelian-twoface-gram-obstruction-strategy-20260707` | P03 nonabelian `Q_C` two-face | oracle/strategy/proof |
+| `7f7c1ea6-a75d-429c-9ab9-3c447b5250c9` | `ne-hard-p12-koide-tsolder-p1-subnat-gate-strategy-20260707` | P12 Koide/T-solder SUB-NAT | probe/strategy/audit |
+
+Corrective instructions were also sent to running lanes for P01/Q01
+`373f0283`, P04/E-slot `ef87c91f`, P05/octonion bridge `6e37da00`,
+P06/Q12 `96058502` and `5ff9424e`, P07/KP `6b8dcebd`, P08/Q09
+`4b462390`, P09/Q10 `fbdbe43f`, P10/Q08 `f8aa05c8`, and P11/RG-Schur
+`82cc3c8e`.  The exact map is recorded in
+`ARISTOTLE_HARDEST_PIECES_WAVE_2026-07-07.md`.
+
+## Stuck-job partial rescue
+
+Partial/current archives for the older jobs were downloaded to
+`AgentTasks/aristotle-output/partial-audit-20260707-old/` and triaged.
+
+Harvested and canceled:
+
+| Project ID | Job | Landed result |
+|---|---|---|
+| `ef87c91f-80a7-40ca-8597-f8f48e95bb7b` | Q02 E-slot torsion/solder | `CarrierESlotTorsionSplit.lean`, guard-pinned in `CarrierAxiomGuard.lean` |
+| `ecbf61d8-c350-4f2e-975f-83ba0bfa6fc0` | W2A Minkowski aperture bridge | `CarrierMinkowskiBridge.lean`, guard-pinned in `CarrierAxiomGuard.lean` |
+| `82cc3c8e-8df1-4f91-86b6-a3af1606430e` | RG-Schur null-visible mass witness | New witness section in `SpectralSchur.lean` with local guard blocks |
+| `6b8dcebd-7efc-4485-b02e-b6fe6f0176de` | KP fixed-forest injection/counting | `FixedForestCounting.lean`, guard-pinned in `GateYM/AxiomGuard.lean` |
+
+Inspected but left running: Q01/Gauss (`373f0283`), Q04/octonion bridge
+(`6e37da00`), Q09/screen area (`4b462390`), Q12 C8/PSA (`96058502`), Q12
+GammaPrime (`5ff9424e`), Q10 positive `d = 4` (`fbdbe43f`), and Q08 graded
+radical (`f8aa05c8`).  Their partials were not close enough to finish in the
+rescue pass.  The newest hard-piece submissions remain intentionally undisturbed.
+
+Detailed note: `ARISTOTLE_STUCK_JOB_PARTIAL_AUDIT_2026-07-07.md`.
+
+## Local CC-MULT advance while hard-piece jobs run
+
+Codex landed a finite Schur-multiplicity theorem without waiting on Aristotle:
+
+- New Lean file:
+  `PhysicsSM/Draft/NullEdge/Carrier/ColorCommutantMultiplicity.lean`.
+- New guarded theorem:
+  `color_commutant_multiplicity_eq` proves that the commutant of the lifted
+  fundamental color generators on `Fin 3 x K` is exactly the color-blind
+  multiplicity algebra `I_color x Matrix K K Complex`.
+- Supporting theorem:
+  `multiplicity_operator_is_color_exact` proves every multiplicity-space
+  operator commutes with the lifted color generators after color-blind lifting.
+- Guard integration:
+  `CarrierAxiomGuard.lean` imports the module and pins both theorem footprints.
+- Claim boundary:
+  finite matrix algebra only.  This upgrades the parked CC-MULT stretch from
+  strategy to a kernel-checked algebraic result, but it does not derive Yukawa
+  values, a generation count, or the physical finite internal fiber.
+- Task note:
+  `CC_MULT_COLOR_COMMUTANT_MULTIPLICITY_2026-07-07.md`.
+
+## Local LIT-PROV SourceTrace closeout
+
+Codex advanced the provenance lane outside Fable's dynamics work:
+
+- Expanded `PhysicsSM/Meta/SourceTrace.lean` from a stub into a typed metadata
+  vocabulary for source kind, source role, verification status, claim grade,
+  source references, convention checks, and trace records.
+- Added helper constructors for pending papers, identifier-only papers,
+  clean-room markers, convention checks, and comparison-only records.
+- Updated `Sources/Null_Edge_References.md` to point to the Lean-side
+  `SourceTrace` vocabulary as the typed companion to the human source map.
+- Claim boundary: no bibliography item was promoted or verified.  This is
+  provenance plumbing that makes future source claims harder to overstate.
+- Verification passed:
+  `lake env lean PhysicsSM/Meta/SourceTrace.lean`;
+  `lake build PhysicsSM.Meta.SourceTrace`.
+- Task note:
+  `LIT_PROV_SOURCE_TRACE_CLOSEOUT_2026-07-07.md`.
+
+## Local PLUMBING compatibility audit
+
+Codex advanced the cross-lane real-structure plumbing lane outside Fable's
+dynamics work:
+
+- New audit note:
+  `PLUMBING_JR_EDGE_REVERSAL_COMPATIBILITY_AUDIT_2026-07-07.md`.
+- The audit separates five operations that are easy to conflate:
+  linear Krein `J_K/#`, antilinear `J_R`, edge reversal, generator conjugation,
+  and monodromy/triality.
+- Kernel anchors recorded:
+  `Q11RealStructure.JR_involutive`, `Btop_eq_Bstd`, `JR_charge_master`;
+  `GWEdgeReversalBridge.holonomy_reverseEdges`, `conj_inv_iff`,
+  `gw_relation_transfer_power`; and `CarrierKreinSquare.carrier_krein_square`.
+- Main guardrail:
+  edge reversal reverses word order, while generator conjugation preserves word
+  order; they agree only under explicit hypotheses such as transfer powers.
+- Claim boundary:
+  audit only.  No Lean statements changed.  The next theorem targets are
+  concrete `J_K` attachment, a Q11 `J_R` versus edge-reversal-plus-conjugation
+  bridge or no-go, and semilinear sector-projection gates for C8/G2/triality.
+
+## Freeze rescue and small refill
+
+On 2026-07-07, the 11 remaining `RUNNING` StandardModel Aristotle jobs were
+treated as frozen.  Codex downloaded in-progress snapshots, inspected them with
+the dry-run integration helper from a short repo-local output root
+(`AgentTasks/aofr/`), canceled all 11 old running tasks, and submitted a smaller
+three-job replacement batch.
+
+Detailed note:
+`ARISTOTLE_FREEZE_RESCUE_2026-07-07.md`.
+
+Harvested result:
+
+- `7f7c1ea6`
+  (`ne-hard-p12-koide-tsolder-p1-subnat-gate-strategy-20260707`) returned a
+  complete exact rational Lean payload now integrated as
+  `PhysicsSM/Draft/NullEdge/Carrier/KoideSubNatProbe.lean` and guard-pinned in
+  `CarrierAxiomGuard.lean`.
+- New guarded theorems:
+  `KoideSubNat.kappaB2_tet`, `KoideSubNat.subNat_strict_fails`,
+  `KoideSubNat.subNat_projective`, and `KoideSubNat.subNat_outcome_table`.
+- Claim boundary: exact finite bookkeeping only.  B1 gives `kappa = 2`, B2
+  gives `kappa = 1`; strict subdivision naturality fails by the inserted zero
+  mode; projective/genuine-corner and corner-count-renormalized naturality
+  survive.  This is a convention gate, not a physical mass-value prediction.
+
+Canceled frozen projects after snapshot harvest:
+
+| Project ID | Lane | Harvest status |
+|---|---|---|
+| `7f7c1ea6` | P12 Koide/T-solder SUB-NAT | Landed `KoideSubNatProbe.lean`; canceled. |
+| `8d95b408` | P03 nonabelian `Q_C` two-face | Partial with three proof holes; resubmitted focused. |
+| `4b4d1f1b` | P02 Q11 exterior-power RC0 | Partial Cauchy-Binet sketch with proof hole; resubmitted strategy. |
+| `72b75f0d` | P01 Stage A positive quotient | Many proof holes; no integration. |
+| `fbdbe43f` | Q10 `d = 4` self-dual corner | Stale guard/aggregator only; no integration. |
+| `f8aa05c8` | Q08 exterior quotient follow-up | Stale guard/aggregator only; no integration. |
+| `5ff9424e` | Q12 E4 semantic audit | Snapshot removed live E4 theorems; no integration. |
+| `6e37da00` | Q04 octonion left-action bridge | Stale/harmful unrelated deletions; no integration. |
+| `373f0283` | Q01 Gauss positive quotient | Partial with proof holes and stale deletes; no integration. |
+| `4b462390` | Q09 screen/BW/Reeh witness | Stale copies only; no integration. |
+| `96058502` | Q12 C8 / PSA sector bridge | Stale copies only; no integration. |
+
+New small replacement batch:
+
+| Project ID | Task ID | Aristotle job name | Type | Intended deliverable |
+|---|---|---|---|---|
+| `ef6a366f-e0a7-4230-b427-ec03f79d2608` | `c701fc30-b5ba-4426-8cd8-ab7ad4afa6ea` | `ne-rescue-p03-qc-twoface-krein-finish-20260707` | focused proof | Finish the three holes in the standalone Pauli two-face/Krein witness. |
+| `91260b54-371f-4d73-9765-813461610244` | `a07bc66f-2378-4512-aa92-5b18e187cd87` | `ne-rescue-p02-q11-cauchybinet-minipack-20260707` | strategy/proof plan | Compare live and partial Q11 files; return the next minimal Cauchy-Binet proof package. |
+| `4f0e6c21-232d-492d-9850-c1ab97e5ff64` | `e31c239a-31a6-4279-b12f-017443171544` | `ne-rescue-p12-koide-subnat-semantic-audit-20260707` | semantic audit | Audit the new Koide/SUB-NAT landing for claim-boundary and theorem-shape risks. |
+
+Queue poll immediately after submission showed all three new jobs `RUNNING`.
+
+## Replacement return harvest
+
+The three-job replacement batch returned and was harvested.
+
+- P03 `ef6a366f`:
+  landed `PhysicsSM/Draft/NullEdge/GateYM/QCNonabelianTwoFace.lean`.
+  The result proves the two-face Hilbert-adjoint closure mass as an operator
+  Gram and gives an exact Krein-adjoint counterexample with neither positive nor
+  negative semidefiniteness.  It is imported by `GateYM.lean` and guard-pinned in
+  `SlabAxiomGuard.lean`.
+- Q11 `91260b54`:
+  harvested as the report
+  `ARISTOTLE_Q11_CAUCHYBINET_RESCUE_PLAN_2026-07-07.md`.  Do not land the
+  determinant cocycle yet; the safe nucleus is only the Cauchy-Binet /
+  exterior-power functor-law chain.
+- P12 `4f0e6c21`:
+  semantic audit passed.  Codex applied the suggested strengthening that removes
+  two unused nonzero hypotheses from `kappaB1_eq` and `kappaB2_eq`.

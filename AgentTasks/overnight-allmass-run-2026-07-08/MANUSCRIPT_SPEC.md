@@ -67,5 +67,7 @@ manuscript delivered)
   (Koide, Tr E, defect-Gram-as-Q_C, one-sided GW) is explicitly
   reported as killed, with pointers.
 - G5: lit check - every external-physics comparison cites a paper in
-  the graph, verified at chunk level (Codex: Spark searches; Claude:
-  scholarly MCP), logged in LIT_SEARCH_LOG.md.
+  the graph, verified at chunk level (Codex: Spark searches when
+  available, or `[fallback-no-spark]` direct searches when Spark is
+  out-of-budget/unresponsive; Claude: scholarly MCP), logged in
+  LIT_SEARCH_LOG.md.

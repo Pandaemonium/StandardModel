@@ -53,9 +53,9 @@ forced unification) around that spine.
   `orthogonalProjection`. Aristotle already sketched it. **Risk: low.**
 
 ### T2. Multi-edge carrier with a genuine J-positive sector  `[new M; the LINCHPIN]`
-- **Strengthens:** discharges crux **0a**. Converts "no positive sector exists
-  (on the single-doublet toy)" into "here is a carrier with a genuine
-  `J`-positive physical sector on which the total Krein form is positive." This
+- **Strengthens:** targets crux **0a**. Converts "no positive sector exists
+  (on the single-doublet toy)" into "there is an oracle carrier with a genuine
+  `J`-positive sector on which the total Krein form is positive." This
   turns the whole S4/S6 positivity story from *obstructed-on-witness* into
   *instantiated*, and makes `sector_ground_mass` fire on a real object. Both
   reviews rank a fully-instantiated Krein model their #1 move.
@@ -96,10 +96,10 @@ forced unification) around that spine.
 - **UPDATE (probed this run, Fable item 1; `DELTA_BINDING_ENERGY_FINDING.md`):**
   the bridge SPLITS. **T3a - free equality (M-target):** flat transport =>
   `min spec = det P`, near-automatic from `(slash)^2 = det P`. **T3b - the
-  binding defect (C, NEW invariant):** interacting `Delta := min spec - det P`
+  binding defect (C, candidate invariant):** interacting `Delta := min spec - det P`
   is finite, NEGATIVE, closure-controlled, and OFF-DIAGONAL (invisible to the
   naive constituent estimate - which is why 0b-naive fails). `Delta` is the
-  program's first finite binding energy, with a critical coupling where the
+  program's first finite binding-energy candidate, with a critical coupling where the
   bound state goes massless. This converts "the bridge is probably false" into a
   discovery. Enriched-carrier probe (explicit null momenta) makes T3a a clean
   Lean target.
@@ -303,8 +303,8 @@ worth disproportionate effort.
 - **The decisive question is the S3<->S4 bridge, and it has been probed (T3
   update / `DELTA_BINDING_ENERGY_FINDING.md`).** It does not "land or fail" - it
   *splits*: free equality holds; the interacting discrepancy `Delta` is a finite,
-  negative, off-diagonal, closure-controlled **binding energy** (the program's
-  first). This is a better outcome than either horn Pro anticipated, and it
+  negative, off-diagonal, closure-controlled **binding-energy candidate**. This
+  is a better outcome than either horn Pro anticipated, and it
   unifies the bridge (Pro S3) with Schur-complement mass generation (Pro S8):
   both are *mass from off-diagonal null structure*.
 - **`sector_ground_mass` is proved (M)**; the T2 escape is validated

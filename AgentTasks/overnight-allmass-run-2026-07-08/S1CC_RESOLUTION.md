@@ -1,27 +1,41 @@
-# S1-CC resolved: closure is balanced, not positive (Fable call-01, 2026-07-08)
+# S1-CC conditional no-go: finite balance engine landed, physical bridge open (2026-07-08)
 
 Source: Fable-5 call-01 Part B (full log:
 `AgentTasks/model-calls/claude/2026-07-07-231939-fable-call-01.md`).
-Executor status: the trace engine is LANDED
-(`anticonj_odd_pow_trace_zero`, `S1CCBalancedInertia.lean`, guard-pinned);
-the remaining M-target theorems and the concrete `V'` are the next rungs.
+Executor status: the finite engine is LANDED
+(`anticonj_odd_pow_trace_zero`, `anticonj_charpoly_eq`,
+`hermitian_balanced_count_of_neg_charpoly`, `half_constraint_rigidity`;
+`S1CCBalancedInertia.lean`, guard-pinned). The physical `J Q_C|V'/N` bridge
+and concrete `V'` construction remain the next rungs.
 
 ## The resolution (grade MEMO unless noted)
 
-The central positivity crux S1-CC closes as a STRUCTURED NO-GO WITH
-CONTENT: closure is not positive on the physical sector `V'/N` - it is
-exactly BALANCED (signature zero), structurally, via a grading
-anticonjugation. The gate's torsor-compatibility question was the wrong
-question; only the square `Q_C` must descend, and descent <=> the finite
-Ward condition. Surviving positivity lives on the doublet-free complement
-(the `p - q` inertia surplus), converging with the repo's (2,1)/(1,2)
-Kugo-Ojima witnesses.
+The central positivity crux S1-CC is now a CONDITIONAL STRUCTURED NO-GO WITH
+CONTENT: the finite matrix engine proves the balance mechanism, and the
+checked `6x6` witness has `sig(J Q_C|_{V'/N}) = (2,2,0)` by oracle. The
+physical-sector statement still depends on MEMO-grade rungs: concrete `V'`,
+descent to `V'/N`, and identification of the restricted representative as the
+Hermitian `B = J Q_C` to which the finite theorem applies. The gate's
+torsor-compatibility question was the wrong question; only the square `Q_C`
+must descend, and descent <=> the finite Ward condition.
 
 ## The theorem ladder (formalize in this order)
 
 - **LANDED (M):** `anticonj_odd_pow_trace_zero` - `S^{-1} B S = -B` implies
   `Tr(B^(2k+1)) = 0` (`GateYM/S1CCBalancedInertia.lean`). The spectral-
   symmetry engine; house trace-identity style, guard-pinned.
+- **LANDED (M):** `countP_pos_eq_countP_neg_of_map_neg_eq` and
+  `card_pos_eq_card_neg_of_multiset_map_neg_eq` - the pure finite count half:
+  if a real multiset (or finite indexed family) is invariant under negation,
+  then positive and negative counts agree. This is not the spectral bridge; it
+  is the reusable final combinatorial step once the Hermitian eigenvalue
+  multiset is shown negation-invariant.
+- **LANDED (M):** `hermitian_balanced_count_of_neg_charpoly` - if a Hermitian
+  complex matrix satisfies `(-B).charpoly = B.charpoly`, then the number of
+  positive Hermitian eigenvalues equals the number of negative Hermitian
+  eigenvalues. Support rungs:
+  `neg_charpoly_roots_eq_map_neg_eigenvalues` and
+  `hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly`.
 - **Lemma 1 (half-constraint rigidity) [LANDED, M].**
   `half_constraint_rigidity` in `S1CCBalancedInertia.lean`, guard-pinned. For
   `Q = c1 (x) G1 + c2 (x) G2` with the null pair, `Q^2 = 0 <=>
@@ -39,16 +53,18 @@ Kugo-Ojima witnesses.
   Sufficient: `[G,K] = 0` (abelian gauge covariance). Only the SQUARE
   descends - the current `L_A` does NOT (fails for every representative,
   and does not need to).
-- **Theorem 2 (restricted inertia, closed form) [M-target].** On
+- **Theorem 2 (restricted inertia, closed form) [M-target].** If the physical
+  bridge hypotheses are instantiated as stated, then on
   `V'/N ~= ker G (+) ker G` with the hyperbolic induced form, the closure
   form has inertia `(rank K-bar, rank K-bar, 2(dim ker G - rank K-bar))` -
-  EXACTLY BALANCED. Positive only vacuously (`K-bar = 0`).
+  balanced exactly by the displayed formula. Positive only vacuously
+  (`K-bar = 0`).
 - **Theorem 3 (grading anticonjugation no-go) [M-target; flagship].**
   `S^dag (J'Q') S = -(J'Q')` implies `n+ = n-` (Sylvester congruence).
   Instantiate `S = b = sigma_z (x) 1`: it descends and anticonjugates `J`
-  (`Jb = -bJ`). Every `b`-invariant `V'` has balanced closure inertia; a
-  positive sector would need a constraint mixing Clifford and color
-  factors, which Lemma 1 forbids. The trace engine
+  (`Jb = -bJ`). Under the bridge hypotheses, every `b`-invariant `V'` has
+  balanced closure inertia; a positive sector would need a constraint mixing
+  Clifford and color factors, which Lemma 1 forbids. The trace engine
   (`anticonj_odd_pow_trace_zero`) is the odd-moment half of this.
 - **6x6 explicit witness [M-target, decide-style].** `W = C^3`,
   `G = diag(0,0,1)`, `K = antisym(e0,e1)`; `[G,K]=0`, `dim V'=5`,
@@ -65,8 +81,9 @@ Kugo-Ojima witnesses.
   `Scripts/oracle/probe_s1cc_balanced_inertia.py` on the 6x6 witness:
   ALL structural checks hold ([G,K]=0, K skew-Herm, Q_G nilpotent,
   J Q_C Hermitian, anticonjugation `b^-1(JQ_C)b = -(JQ_C)`), dims
-  (V'=5, N=1, quotient=4), and `sig(J Q_C|_{V'/N}) = (2,2,0)` EXACTLY
-  BALANCED, matching the predicted `(rank K-bar, rank K-bar) = (2,2)`.
+  (V'=5, N=1, quotient=4), and `sig(J Q_C|_{V'/N}) = (2,2,0)`, balanced
+  exactly by oracle, matching the predicted `(rank K-bar, rank K-bar) =
+  (2,2)`.
   The resolution passes its own pre-registered kill condition.
 - **K-C (nonabelian):** if no Hermitian `G` implementing the Gauss
   covectors satisfies `K(ker G) <= ker G` with `ker G != 0`, Theorem 1 is
@@ -74,39 +91,27 @@ Kugo-Ojima witnesses.
 
 ## Consequence for the program
 
-The spectral-language rail does NOT lift: closure being balanced (not
-positive) means the physical-positivity question relocates to the
-doublet-free complement, and the `p - q` inertia surplus is the decider -
-the same quantity the KreinPositiveSectorWitness `p > q` MEMO already
-names, now mechanized. Physical (total-operator) positivity on the full
-quotient is grade C: holds iff an aperture/turn-dominance inequality over
-the definite complement holds (Weyl-type bound). This TIGHTENS the §6/§8
-coupling: the balanced closure spectrum on the Gauss sector IS the finite
-chromomagnetic equioscillation (hyperfine), and it is what lets curvature
-pull total-operator eigenvalues toward zero from both sides, feeding the
-Banks-Casher count.
+The spectral-language rail does NOT lift: the finite engine gives count-level
+balance, not spectral measures or physical positivity. The checked witness
+shows the closure form is balanced on its `V'/N` realization, and the
+aperture-rescue route is killed there. Any surviving total-operator positivity
+needs a `J`-positive sector not balanced by the same grading. A post-06
+two-edge Cl(4) oracle supplies a MEMO/numeric route of exactly that kind, but
+it is not a theorem supplied by this note; the Lean `Matrix.PosDef` witness and
+the physical-sector bridge are still separate targets.
 
-## Next Aristotle target: the inertia-count capstone (Theorem 3 final step)
+## Next Aristotle target: physical-sector bridge (Theorem 3 instantiation)
 
-Three kernel rungs are landed (odd-trace, charpoly-symmetric,
-half-constraint) + K-B numeric validation. The remaining step to a fully
-kernel-checked balanced-inertia theorem:
+The Hermitian count capstone is now kernel-checked as finite matrix algebra:
+`hermitian_balanced_count_of_neg_charpoly`. The remaining work is not spectral
+API; it is the concrete null-edge identification:
 
 ```lean
--- Given: B Hermitian (Bᴴ = B), and (-B).charpoly = B.charpoly
---        (from anticonj_charpoly_eq, already landed).
--- Prove: the count of positive eigenvalues equals the count of negative:
-theorem anticonj_balanced_inertia (B : Matrix n n ℂ) (hB : B.IsHermitian)
-    (hsym : (-B).charpoly = B.charpoly) :
-    (Finset.univ.filter (fun i => 0 < hB.eigenvalues i)).card
-      = (Finset.univ.filter (fun i => hB.eigenvalues i < 0)).card
+-- Schematic next target:
+-- identify the physical-sector representative B' of J Q_C,
+-- prove B'.IsHermitian and (-B').charpoly = B'.charpoly from the grading
+-- anticonjugation, then apply hermitian_balanced_count_of_neg_charpoly.
 ```
 
-Route: `(-B).charpoly = B.charpoly` and the Hermitian charpoly factoring
-`= prod (X - eigenvalues i)` (over R, splits) give that the eigenvalue
-MULTISET is invariant under negation; a Multiset symmetry-count argument
-then gives equal positive/negative cardinalities. Needs
-`Matrix.IsHermitian.eigenvalues` + the charpoly-roots-as-eigenvalues
-connection + `Multiset` counting. Good standalone Aristotle package
-(Mathlib-only). HANDED OFF for the fleet / morning; the three landed rungs
-+ the numeric K-B pass already carry the resolution at MEMO+M.
+Do not fold the `V'/N` quotient, descent, or `B = J Q_C` identification into
+the finite matrix theorem. Those remain separate physical-sector rungs.

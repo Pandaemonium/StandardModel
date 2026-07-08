@@ -5,19 +5,22 @@ Groundwork for rigorous dynamics simulations (see
 principle: EVERY numerical output is checked against a landed, kernel-checked
 identity, so the simulation is anchored to proofs rather than free-floating.
 
-Five validated blocks:
+Six validated blocks:
   1. KINEMATICS  - Plucker mass: det(sum psi psi^dag) = sum_{i<j}|wedge|^2
      (validates PluckerMass.two_edge_plucker_mass_identity + MassMonogamy).
   2. BUDGET      - the carrier square splits into channels summing to one share
      (validates CarrierMassBudget.signed_budget_sum_one).
-  3. EVOLUTION   - discrete time evolution U=exp(-i H t) on a positive sector:
+  3. VARIATIONAL - quadratic action / mass-shell stationarity on the positive
+     sector (validates FiniteQuadraticAction).
+  4. EVOLUTION   - discrete time evolution U=exp(-i H t) on a positive sector:
      norm AND energy conserved (the dynamics seed; D2/D3 of the roadmap).
-  4. RG FLOW     - Schur decimation of a null chain and a finite trajectory:
+  5. RG FLOW     - Schur decimation of a null chain and a finite trajectory:
      (ab)^2 = k(ab), effective coupling != 0 iff non-collinear, and an
      idempotent effective edge stays controlled under repeated blocking
      (validates RGSchurMassWitness + FiniteRGFlow).
-  5. ENSEMBLE    - finite canonical probabilities over the sector spectrum:
-     Z > 0, p_i > 0, sum_i p_i = 1 (validates FiniteCanonicalEnsemble).
+  6. ENSEMBLE    - finite canonical probabilities over the sector spectrum:
+     Z > 0, p_i > 0, sum_i p_i = 1, beta=0 uniformity, and nonnegative energy
+     variance (validates FiniteCanonicalEnsemble).
 
 Numeric oracle only; the VALIDATIONS mirror kernel theorems.
 Usage: python Scripts/oracle/carrier_dynamics_harness.py
@@ -99,6 +102,15 @@ def build_carrier(lam=2.0, kappa=1.0, mu=1.0):
     return dict(QA=QA, QC=QC, QT=QT, J=J, dim=12)
 
 
+def positive_sector_hamiltonian(lam=2.0, kappa=1.0):
+    """Hermitian mass/Hamiltonian block on the J-positive carrier sector."""
+    c = build_carrier(lam=lam, kappa=kappa)
+    evJ, UJ = np.linalg.eigh(c["J"])
+    Pcols = UJ[:, evJ > 1e-9]
+    H = Pcols.conj().T @ (c["QA"] + c["QC"]) @ Pcols
+    return (H + H.conj().T) / 2.0
+
+
 def validate_budget():
     print("2. BUDGET (channel shares sum to one)")
     c = build_carrier()
@@ -116,17 +128,40 @@ def validate_budget():
 
 
 # ----------------------------------------------------------------------------
-# 3. EVOLUTION: discrete time evolution on a positive sector (the dynamics seed)
+# 3. VARIATIONAL: quadratic action and mass-shell stationarity
+# ----------------------------------------------------------------------------
+def validate_variational():
+    print("3. VARIATIONAL (quadratic action and mass-shell stationarity)")
+    H = positive_sector_hamiltonian()
+    w, V = np.linalg.eigh(H)
+    psi = V[:, 0]
+    m2 = w[0]
+    A = H - m2 * np.eye(H.shape[0])
+    residual = A @ psi
+    ok_quad = check("quadratic stationarity iff A psi = 0",
+                    np.linalg.norm(residual) < 1e-10)
+    ok_shell = check("mass-shell stationarity iff H psi = m^2 psi",
+                     np.linalg.norm(H @ psi - m2 * psi) < 1e-10)
+    rng = np.random.default_rng(4)
+    variations = [
+        rng.standard_normal(H.shape[0]) + 1j * rng.standard_normal(H.shape[0])
+        for _ in range(4)
+    ]
+    first_vars = [2.0 * np.vdot(eta, residual).real for eta in variations]
+    ok_var = check("first variations vanish on the eigen/mass-shell state",
+                   all(abs(x) < 1e-10 for x in first_vars))
+    print(f"      selected m^2={m2:.3f}; stationarity residual={np.linalg.norm(residual):.2e}")
+    return ok_quad and ok_shell and ok_var
+
+
+# ----------------------------------------------------------------------------
+# 4. EVOLUTION: discrete time evolution on a positive sector (the dynamics seed)
 # ----------------------------------------------------------------------------
 def validate_evolution():
-    print("3. EVOLUTION (unitary carrier dynamics on the positive sector)")
-    c = build_carrier(lam=2.0, kappa=1.0)
+    print("4. EVOLUTION (unitary carrier dynamics on the positive sector)")
     # On the J-positive sector the total mass form is PosDef (T2 escape); use it
     # as an ordinary Hermitian Hamiltonian H and evolve U = exp(-i H t).
-    evJ, UJ = np.linalg.eigh(c["J"])
-    Pcols = UJ[:, evJ > 1e-9]
-    H = Pcols.conj().T @ (c["QA"] + c["QC"]) @ Pcols
-    H = (H + H.conj().T) / 2.0
+    H = positive_sector_hamiltonian(lam=2.0, kappa=1.0)
     posdef = np.all(np.linalg.eigvalsh(H) > 1e-9)
     check("Hamiltonian PosDef on the sector (a genuine mass operator)", posdef)
     rng = np.random.default_rng(3)
@@ -149,10 +184,10 @@ def validate_evolution():
 
 
 # ----------------------------------------------------------------------------
-# 4. RG FLOW: Schur decimation of a null chain (mass generation)
+# 5. RG FLOW: Schur decimation of a null chain (mass generation)
 # ----------------------------------------------------------------------------
 def validate_rg_step():
-    print("4. RG FLOW (Schur decimation: mass from blocking non-collinear nulls)")
+    print("5. RG FLOW (Schur decimation: mass from blocking non-collinear nulls)")
     # Null (nilpotent) coefficients a, b with a^2=b^2=0, {a,b}=k.1.
     a = np.array([[0, 1], [0, 0]], dtype=complex)   # sigma_+
     b = np.array([[0, 0], [1, 0]], dtype=complex)   # sigma_-  ; {a,b}=I => k=1
@@ -184,28 +219,33 @@ def validate_rg_step():
 
 
 # ----------------------------------------------------------------------------
-# 5. ENSEMBLE: canonical ensemble over a finite carrier spectrum
+# 6. ENSEMBLE: canonical ensemble over a finite carrier spectrum
 # ----------------------------------------------------------------------------
 def validate_canonical_ensemble():
-    print("5. ENSEMBLE (finite canonical ensemble over the carrier spectrum)")
-    c = build_carrier(lam=2.0, kappa=1.0)
-    evJ, UJ = np.linalg.eigh(c["J"])
-    Pcols = UJ[:, evJ > 1e-9]
-    H = Pcols.conj().T @ (c["QA"] + c["QC"]) @ Pcols
-    H = (H + H.conj().T) / 2.0
+    print("6. ENSEMBLE (finite canonical ensemble over the carrier spectrum)")
+    H = positive_sector_hamiltonian(lam=2.0, kappa=1.0)
     energies = np.linalg.eigvalsh(H)
     beta = 0.9
     weights = np.exp(-beta * energies)
     Z = weights.sum()
     probs = weights / Z
+    mean_energy = np.sum(probs * energies)
+    variance = np.sum(probs * (energies - mean_energy) ** 2)
+    beta0_weights = np.exp(0.0 * energies)
+    beta0_probs = beta0_weights / beta0_weights.sum()
     free_energy = -(1.0 / beta) * np.log(Z)
     entropy = -np.sum(probs * np.log(probs))
     ok_z = check("partition function positive (partitionFunction_pos)", Z > 0)
     ok_p = check("all probabilities positive (probability_pos)", np.all(probs > 0))
     ok_sum = check("sum_i p_i = 1 (sum_probability_eq_one)",
                    np.isclose(probs.sum(), 1.0))
+    ok_beta0 = check("beta=0 probabilities are uniform (probability_zero)",
+                     np.allclose(beta0_probs, np.ones_like(beta0_probs) / len(beta0_probs)))
+    ok_var = check("energy variance nonnegative (energyVariance_nonneg)",
+                   variance >= -1e-12)
     print(f"      beta={beta:.2f} Z={Z:.6f} F={free_energy:.6f} S={entropy:.6f}")
-    return ok_z and ok_p and ok_sum
+    print(f"      <E>={mean_energy:.6f} Var(E)={variance:.6f}")
+    return ok_z and ok_p and ok_sum and ok_beta0 and ok_var
 
 
 def main():
@@ -213,6 +253,7 @@ def main():
     results = {
         "kinematics": validate_kinematics(),
         "budget": validate_budget(),
+        "variational": validate_variational(),
         "evolution": validate_evolution(),
         "rg_step": validate_rg_step(),
         "ensemble": validate_canonical_ensemble(),

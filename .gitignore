@@ -17,3 +17,4 @@ AgentTasks/aristotle-output/
 AgentTasks/aristotle-submit/
 # External dependency clones and local fork scratch space
 AgentTasks/external/
+AgentTasks/aofr/

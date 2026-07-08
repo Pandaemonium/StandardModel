@@ -139,10 +139,10 @@ canceled, harvested, or baseline name already visible in
 | SPIN10-U5 | Pure-spinor internal selection | U(5) / pure-spinor-line stabilizer shadow or honest finite substitute | strategy | `ne-next-spin10-u5-purespinor-stabilizer-shadow-strategy-20260707` |
 | M4-WIT | Concrete Pauli/Pontryagin witness | Krein-sharp carrier instantiation and positive-sector probe | proof/audit | `ne-next-m4-pauli-pontryagin-krein-positive-probe-proof-20260707` |
 | HSTAR | Model-by-model constraint audits | Quotient action now landed; next open the carrier Gauss/closure constraint and index-completeness interface | proof/audit | `ne-next-hstar-gauss-closure-index-completeness-interface-audit-20260707` |
-| PLUMBING | Cross-lane real structures | Compatibility table for `J_R`, edge reversal, monodromy inversion, `#`, linearity, and antilinearity | audit | `ne-next-plumbing-jr-edge-reversal-sharp-compatibility-audit-20260707` |
+| PLUMBING | Cross-lane real structures | Compatibility audit landed; next theorem work is concrete `J_K` attachment, Q11 `J_R` vs edge-reversal/conjugation bridge or no-go, and semilinear sector-projection gates | proof/audit | `ne-next-plumbing-jk-jr-edgereversal-sector-gates-proof-20260707` |
 | Q13 | Red-team / no-go | Re-audit Q12 E4, W2a bridge, RG-Schur, and latest manuscript wording for the four over-claim modes | audit | `ne-next-q13-currentfleet-overclaim-regression-audit-20260707` |
 | Manuscript | P1 v3 / scorecard / thread board | Synchronize claim grades after the next integration wave | audit | `ne-next-manuscript-p1-round2-scorecard-threadboard-sync-audit-20260707` |
-| LIT-PROV | Literature and provenance | Close source-key and convention-citation gaps from the harvested provenance audit | audit | `ne-next-lit-nullstrand-source-provenance-closeout-audit-20260707` |
+| LIT-PROV | Literature and provenance | Source map exists and Lean `SourceTrace` metadata vocabulary is landed; next closeout is resolving `ID-ONLY`/`NEEDS-VERIFY` rows through Neo4j/Zotero and adding locator/convention checks | audit | `ne-next-lit-nullstrand-source-key-resolution-audit-20260707` |
 
 Parked, banked, or stretch rails should still have unique names ready so they
 can be loaded quickly if they become the highest-EV work.  Do not submit these
@@ -150,7 +150,7 @@ unless the current board or a fresh local finding promotes them:
 
 | Lane | Pursuit | Promotion condition | Job type | Next unique Aristotle job name |
 |---|---|---|---|---|
-| CC-MULT | Color commutant | Reducible internal-space commutant / multiplicity-space Yukawa shape becomes the next SM-fiber blocker | strategy | `ne-next-cc-reducible-color-commutant-multiplicity-yukawa-strategy-20260707` |
+| CC-MULT | Color commutant | FINITE ALGEBRA LANDED locally: reducible color commutant on `Fin 3 x K` is `I_color x End(K)`; next blocker is attachment to the actual SM/Furey internal fiber plus weak/hypercharge/chirality/real-structure intersections | proof/audit | `ne-next-cc-smfiber-multiplicity-constraints-attachment-audit-20260707` |
 | AT-BRIDGE | Aperture equals turn bridge | Need a semantic audit tying the two-edge aperture theorem to the carrier `Q_A`/`Q_T` naming | audit | `ne-next-at-twoedge-aperture-turn-spinorhelicity-integration-audit-20260707` |
 | KPON | Pontryagin/Krein positivity | Carrier/Gauss/Ward completeness hypotheses are ready to wire to the finite positive quotient | strategy/audit | `ne-next-kpon-carrier-gauss-ward-index-positivity-interface-strategy-20260707` |
 | G-TP | Discrete torsion / teleparallel `E` | Carrier-owned `E`-slot API is ready for the torsion plus symmetric solder split | proof/strategy | `ne-next-gtp-discrete-torsion-eslot-split-api-proof-20260707` |
