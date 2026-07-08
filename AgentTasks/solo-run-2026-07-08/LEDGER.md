@@ -112,11 +112,22 @@ Also refined the §9a spectrum-sim bullet + §11 rows to the same honest split.
 
 - (none — the mass-gap Aristotle job COMPLETED and is landed + pinned, cycle A.4)
 
-## Next
+## Status: BOTH FOCUSES COMPLETE + VERIFIED (as of ~11:1x)
 
-- **Fable review** of the now-complete manuscript + the landed mass-gap flagship
-  (call-05 was ~09:23; the ~2h mark ~11:23). This is the highest-value next move.
-- Full `lake build` sanity (touched Lean: MassGapWitness + CarrierAxiomGuard;
-  CarrierAxiomGuard already built green at 8086 jobs, so the tree is consistent).
-- Manuscript is now genuinely FINISHED (all Fable call-05 items closed, mass-gap
-  fully kernel-pinned, 4 dynamics sims, references complete + verified).
+- **Focus 1 (manuscript): FINISHED.** Two Fable reviews (call-05, call-06) fully
+  actioned; Fable call-06 bottom line: "nothing else stands between this draft and
+  'done' at its own declared standard." Grades honest, references complete +
+  verified, over-claims removed.
+- **Focus 2 (dynamics): COMPLETE.** 4 Lean-anchored simulators (A spectrum, B
+  evolution + scattering, C RG/thermo), all passing; the mass-gap flagship
+  (spectral theory + carrier bridge at (2,1)) landed and guard-pinned.
+- **Full `lake build` GREEN — 8298 jobs** (final verification, whole tree).
+
+## Next (optional; both focuses already met)
+
+- Next Fable ~2h check (call-06 ~10:19; ~2h mark ~12:20).
+- Possible on-focus dynamics deepening: the ONE named open link in §9a — "fire D2
+  on the T2 witness" (the T2 sector step IS a sector isometry, instantiating
+  FiniteUnitaryEvolution on the concrete carrier). Candidate Aristotle job.
+- Deep §10 open cruxes (T3b binding invariant, 2nd quantization -> hadron mass,
+  neutrino ratio, continuum reduction) are genuine new research, honestly open.
