@@ -19,9 +19,14 @@ green work, keep the build clean, and build on it.
 - **Borrow liberally from public Lean repositories to establish pieces, with
   proper attribution.** (See the dedicated section below.) PhysLean (`Physlib`)
   first; scout other public Lean physics/math repos where they would help.
-- **Aristotle: use liberally** for Lean proofs (dynamics theorems +
-  manuscript-supporting results). Harvest promptly; verify + guard-pin locally
-  before claiming M.
+- **Aristotle: keep VERY active (user directive, 2026-07-08 ~11:53).** Run
+  *plenty* of jobs — a continuous mix of **audit** jobs (adversarial over-claim /
+  hidden-assumption audits of landed flagships), **strategy** jobs (formalization
+  designs, no-go analyses of the deep open cruxes), and **proof** jobs (dynamics
+  theorems + manuscript-supporting results). Keep several running at once; every
+  tick, harvest completed jobs (verify + guard-pin locally before claiming M;
+  fold strategy/audit findings into the manuscript/docs) and TOP UP the queue so
+  it never goes empty.
 - **Fable: comprehensive review roughly every 2 hours** (`send_claude_review.py
   --model claude-fable-5`), each with full standalone context; log under
   `AgentTasks/model-calls/claude/`.

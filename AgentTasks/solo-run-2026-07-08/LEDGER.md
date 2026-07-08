@@ -124,9 +124,29 @@ carrier flow exp(-i t H) is unitary + a genuine sector isometry), integrated int
   "top next dynamics target"); §11 row added. So FiniteUnitaryEvolution now fires
   on the actual carrier, not just a generic isometry.
 
-## In flight (external, not harness-tracked)
+## STANDING DIRECTIVE (user, ~11:53): keep Aristotle VERY active
 
-- (none — D2-on-T2 landed, cycle A.6)
+User: "please try to keep Aristotle very active. It should run plenty of audit
+jobs and strategy jobs, as well as working on any proofs." => every tick, TOP UP
+the Aristotle queue: keep several jobs running (audit + strategy + proof mix),
+harvest completed ones, resubmit. Do not let the queue go empty.
+
+## In flight (external, not harness-tracked) — Aristotle batch 1 (~11:50)
+
+- **AUDIT** `90783cf8-29ba-4d4f-b819-19a9c709c3e8` (allmass-audit-flagships) —
+  adversarial over-claim audit of the 5 landed flagships (4 modes: vacuity,
+  hollow-telescoping, docstring-outruns-kernel, false-shape).
+- **STRATEGY** `a5f58604-f44d-41fb-bdad-7c2fb1976b95` (allmass-strategy-binding) —
+  the Δ binding-energy finite invariant (T3b/0b-b): definition, block-level kernel
+  identity, kill/no-go.
+- **PROOF** `209d380f-bc7b-45f9-809a-847ee820541c` (allmass-proof-spectrum) — full
+  spectrum of B(λ,κ) = {λ-κ, λ, λ+κ} (strengthens B_least_eigenvalue).
+- **STRATEGY** `e2115aad-ff99-4f6d-8a8e-d385a411434c` (allmass-strategy-s1cc) —
+  kernelize the §6 S1-CC closure-positivity resolution (MEMO->M): V'/N construction
+  design, feasibility, no-go honesty.
+On harvest: review each for semantic alignment, integrate proofs (guard-pin),
+fold strategy/audit findings into the manuscript/docs, resubmit to keep queue full.
+
 - ~~Aristotle D2-on-T2 job~~ — project `9af87ff3-da85-456e-acda-acbc4809ee93`
   (`allmass-d2-on-t2-20260708`). Target: `hermitian_flow_mem_unitaryGroup` —
   for Hermitian H, `exp(-i t H)` is unitary (a genuine norm-preserving sector
