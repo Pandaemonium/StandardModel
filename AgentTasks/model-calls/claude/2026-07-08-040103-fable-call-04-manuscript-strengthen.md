@@ -1,3 +1,161 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `claude-fable-5`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-07-08T03:56:43`
+- Finished: `2026-07-08T04:01:03`
+- Timeout seconds: `2400`
+- Max budget USD: `9.00`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model claude-fable-5 --max-budget-usd 9.00 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Fable-5 call 04: strengthen the whole all-mass manuscript
+
+You are the most capable theoretical physicist and mathematical-physics
+referee on this program. This is a **whole-manuscript strengthening
+review**, not a proof job. The complete manuscript is provided verbatim
+below (under "Verbatim source artifacts under review"). Read all of it,
+then tell me how to make it stronger.
+
+## What the program is (standalone context; assume no prior knowledge)
+
+This is a finite, machine-verified mathematical-physics program with a
+single organizing thesis: **mass is the obstruction to coherent null
+transport** ("mass is trapped, mutually disagreeing light"). Concretely:
+
+- The only primitive is a *null edge* (a light-speed step). Bundle several;
+  the mass of the bundle is the total pairwise non-collinearity of their
+  null directions. This is made precise by a trusted, kernel-checked
+  theorem: `det P = sum_{i<j} |psi_i ^ psi_j|^2` (a Gram/Plucker
+  invariant). This is classical spinor-helicity kinematics, formalized.
+- The organizing formal device is a finite "carrier" Dirac operator `D`
+  whose Krein-adjoint square decomposes into four named blocks:
+  `4 D^#D = Q_A + Q_C + 4 Q_T + E_#` (aperture/**kinetic**,
+  closure/**gauge-QCD**, turn/**Higgs**, soldering/**gravity**). The claim
+  "unification is decomposition": the four mass channels are four summands
+  of one operator square. The channel *names* are pre-registered grade-C
+  structural analogies (no continuum reduction is claimed).
+- Everything is **first-quantized** and **finite-dimensional**. No continuum
+  limit, no absolute mass scale, no Fock space, no genuine hadron mass is
+  claimed. The admissible predictions are dimensionless ratios protected by
+  finite structure.
+
+## The claim calculus (used throughout; grades are the point)
+
+- **T** = source-verified external theorem. **M** = machine-verified
+  (kernel-checked in Lean 4, axiom-audited, guard-pinned). **MEMO** =
+  expert- + LLM-oracle-verified prose, pending kernel transcription. **C** =
+  pre-registered conjecture with an explicit kill condition. **[import]** =
+  external result used as input.
+
+## Current state (so your advice targets the real gaps)
+
+- The program's former #1 open crux -- physical-sector closure positivity
+  ("S1-CC") -- was resolved this run as a *structured no-go*: the closure
+  channel `Q_C = L^#L` is a Krein square but exactly **balanced** (Krein
+  signature zero) on the physical sector, via a grading anticonjugation
+  `b^{-1}(J Q_C)b = -(J Q_C)`. Kernel engine landed; numeric kill probe
+  passed (2,2,0). It is NOT a positive channel.
+- The deepest remaining honest caveat (already stated in the manuscript,
+  S4 rail 3): the four-channel budget decomposes a *quadratic functional*
+  `M^2 := 4 ev(D^2)`, which is a genuine *mass* only at the ground state of
+  a positive physical sector. The theorem that would close this
+  (`sector_ground_mass`, a finite Rayleigh-Ritz keystone) is identified and
+  its positivity input landed, but the keystone itself is not yet proved.
+- Two long-standing conjectures died this month by their own pre-registered
+  tests (tetrahedral-corner Koide `kappa=3/2 != 1`; the disorder->condensate
+  bridge). They are reported at theorem prominence.
+- The manuscript has already been through two external referee reviews
+  (scores 5.5/10 and 6/10) and revised: retitled to honesty, related-work
+  added, novelty of the kinematic theorem reframed as "classical content,
+  our contribution is the formalization + organizing use," channel-name
+  analogies boxed as grade C, second-quantization boundary stated, a
+  pre-registered prediction box added, a glossary added. So the *obvious*
+  honesty/framing fixes are largely done. I want the **next** level.
+
+## Your exact task
+
+Tell me, specifically and concretely, **how to make this manuscript
+stronger** -- as a piece of mathematical physics and as a document. I am
+looking for the highest-leverage improvements a top referee would demand
+before recommending acceptance to a serious mathematical-physics venue, and
+the improvements that would most increase the program's actual scientific
+value. In particular:
+
+1. **The single most valuable next result.** Given the current state, what
+   one theorem, computation, or construction would most strengthen the
+   whole edifice? (Candidates the program already sees: the
+   `sector_ground_mass` Rayleigh-Ritz keystone; a genuine continuum-limit
+   sub-case via the Feynman-checkerboard bridge; a carrier-rigidity theorem
+   that would upgrade "unification is decomposition" from a natural to a
+   *forced* decomposition. Rank these and add your own.)
+2. **The weakest load-bearing claim.** Which claim, if it quietly failed,
+   would collapse the most of the paper -- and is it actually true? Where
+   are the arguments most likely to hide a convention slip, a sign error,
+   an unstated hypothesis, or a false analogy? Be adversarial.
+3. **The channel-name correspondence.** Is the aperture/closure/turn/
+   soldering -> kinetic/QCD/Higgs/gravity mapping defensible even at grade
+   C, or is any block miscast? Is the "closure = chromomagnetic, linear in
+   F" vs "|F|^2 = Wilson action" distinction correct? Is there a *sharper*
+   correspondence test than the ones proposed?
+4. **The physics that is missing.** What would a skeptical high-energy
+   theorist say is conspicuously absent (anomalies, gauge invariance of the
+   finite blocks, the fermion-doubling/Nielsen-Ninomiya obstruction,
+   renormalization, the role of the Higgs vev, generations/CKM, ...)? Which
+   absences are fatal vs merely future work?
+5. **Exposition and structure.** What is confusing, over-claimed, or
+   under-explained? What single worked example, figure, or table would most
+   help a reader? Is the accessible Part I honest and correct?
+6. **Novelty and positioning.** Is the stated novelty (finite Krein +
+   kernel verification + four-channel budget + honest kill-reporting)
+   actually novel and correctly positioned against the cited related work
+   (Penrose twistors, Feynman checkerboard, spinor-helicity, Finster CFS,
+   Connes NCG, Wilczek)? What prior art is missing?
+
+## Required output format
+
+Produce a structured report:
+
+- **Verdict (2-4 sentences):** current strength, and the ceiling this
+  version can reach without new results.
+- **Top 5 strengthening moves, ranked**, each with: the move, why it is
+  high-leverage, the concrete first step, and a difficulty/risk estimate.
+- **Adversarial section:** the weakest load-bearing claim, and your best
+  attempt to break it (specific inputs/conventions where it would fail).
+- **Correctness flags:** any place you suspect the physics or mathematics
+  is actually wrong or convention-mismatched, most-severe first. If you
+  find none, say so explicitly and say what you checked.
+- **Missing-physics list:** absences, each tagged fatal / should-address /
+  future-work.
+- **Exposition fixes:** the few highest-value clarity/structure changes.
+- **One-paragraph bottom line:** if you had to raise this from ~6/10 to
+  ~8/10, what are the two or three things that must happen?
+
+Be specific and technical. Name the section, the claim, the convention.
+Prefer one sharp, correct, load-bearing criticism over ten generic ones.
+It is more useful to tell me the one thing that is wrong or weak than to
+praise what is right.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md (851 lines)
+
+```markdown
 # Mass as null disagreement: a machine-verified finite framework
 
 **A finite, kernel-checked framework in which the invariant mass of a
@@ -52,9 +210,8 @@ is slow, and nothing is heavy, at the bottom. Bind several such steps into
 one object and ask whether the bundle can still move at light speed. If
 its constituent light-directions all agree, it can, and it is massless.
 If they disagree, the bundle as a whole cannot keep up with light, and the
-total amount of that disagreement *is* its mass squared (the exact form, §3;
-"squared" is not a hedge — the invariant is literally a sum of squares).
-Mass is trapped, mutually disagreeing light.
+amount by which it falls short *is* its mass. Mass is trapped, mutually
+disagreeing light.
 
 The organizing slogan of the formal work is **"unification is
 decomposition."** A single finite operator — the carrier Dirac operator —
@@ -82,12 +239,9 @@ the paper's definition of "mass" at the kinematic layer. **Krein space** —
 a vector space with an *indefinite* inner product (a `+`/`−` metric); the
 right setting for a Lorentzian, not Euclidean, operator, and the reason
 "positive" is a theorem to be earned, not assumed. **Channel operators
-`Q_A, Q_C, Q_T`** — three Krein blocks of `4 D^#D`: aperture/**kinetic**,
-closure/**gauge–QCD**, and turn/**Higgs** respectively. **`E_#`** — the Krein
-self-adjointness *defect* (the cross term; vanishes in the self-adjoint gauge
-class); it is *not* the gravity block — identifying it with the gravity-shaped
-soldering-gradient channel `E` of §7 is a *conjecture* (§4). (All channel
-names are grade-C analogies, §4a.)
+`Q_A, Q_C, Q_T, E_#`** — the four Krein blocks of `4 D^#D`:
+aperture/**kinetic**, closure/**gauge–QCD**, turn/**Higgs**, and
+soldering/**gravity** respectively (their names are grade-C analogies, §4a).
 
 *Named external tools (all `[import]`/`T`).* **Weitzenböck / Lichnerowicz
 identity** — the algebraic fact that a Dirac operator's square is a
@@ -126,10 +280,9 @@ speed of light. But a zig-zag that reverses on itself does not *get*
 anywhere fast — its average progress is slow, and a particle "at rest" is
 the extreme case where the legs cancel and the light runs in place. This
 is the old idea that a massive particle is light that has been trapped, and
-this program's central theorem (§3) makes it exact: **the mass *squared* of
-a bundle of light-steps is precisely the total disagreement among their
-directions** (the disagreement is a sum of squared wedges, so it carries the
-dimensions of mass squared — see §3). All directions parallel: no disagreement, no mass, and the
+this program's central theorem (§3) makes it exact: **the mass of a bundle
+of light-steps is precisely the total disagreement among their
+directions.** All directions parallel: no disagreement, no mass, and the
 thing flies off at light speed like a photon. Any disagreement: mass.
 
 **Where mass is made: the corners.** The mass lives not in the legs of the
@@ -265,64 +418,33 @@ D = sum_e c(alpha_e) nabla_e + Gamma phi ,
 
 with a null covector soldering `c(alpha_e)` on each edge (a Clifford
 coefficient, `c(alpha)^2 = 0`), a covariant transport `nabla_e`, and a
-vertex "turn" term `Gamma phi`. The master identity of the whole program is that its Krein-adjoint square
-decomposes into channels. The exact kernel-checked statement
-(`carrier_krein_square`, **M**) is
+vertex "turn" term `Gamma phi`. The master identity of the whole program is
+that its Krein-adjoint square decomposes into channels:
 
 ```text
-4 . D^#D  =  Q_A^#  +  Q_C^#  +  4 Q_T  +  4 E_#      (carrier_krein_square, M)
-
-  Q_A^# = sum_{e,f} g(e,f) ( nabla_e^# nabla_f + nabla_f^# nabla_e )
-  Q_C^# = sum_{e,f} ( gamma_e gamma_f - gamma_f gamma_e )
-                    ( nabla_e^# nabla_f - nabla_f^# nabla_e )
-  Q_T   = phi^2
-  E_#   = sum_e gamma_e Gamma ( phi ( nabla_e^# - nabla_e ) )
+4 . D^#D  =  Q_A  +  Q_C  +  4 Q_T  +  E_#            (carrier_krein_square, M)
 ```
 
-Two honesty notes the paper's own discipline requires (both were drifts in
-an earlier draft of this display): the aperture/closure blocks contract the
-**Krein-adjoint** transports `nabla_e^#` against the bare ones — they are the
-*starred* blocks `nabla_e^# nabla_f`, not `nabla_e nabla_f` — and the defect
-enters with a **factor 4**, as `4 E_#`. Each summand is one physical channel;
-the reader can carry this table through §§5–9 (operator shapes shown in the
-self-adjoint gauge, where the blocks are bare — see the specialization below):
+and every other channel statement is a specialization of this one equation.
+Each summand is one physical channel, and the reader can carry this table
+through §§5–9:
 
 | channel | operator shape | force | how the invariant enters | positivity |
 |---|---|---|---|---|
 | `Q_A` | aperture / `{nabla, nabla}` | kinetic | Plücker mass of §3 (`det P`) | positive (§3) |
 | `Q_C` | closure / `[gamma,gamma][nabla,nabla]` | gauge / QCD | chromomagnetic `sigma·F`, §6 | signed (§6/§8) |
 | `4 Q_T` | turn / `phi^2` | Higgs / Yukawa | corner amplitude, §5 | turn-sign |
-| `4 E_#` | Krein self-adjointness defect | — | cross term, §7 | vanishes in the self-adjoint gauge class |
+| `E_#` | Krein self-adjointness defect | — | cross term, §7 | vanishes in the self-adjoint gauge class |
 
-**The hypotheses are the physics (and one of them freezes the Higgs).** The
-master identity holds under an explicit hypothesis set, and three hypotheses
-are load-bearing for how §§5–7 read: `hcl` (the Clifford/closure relation
-`{gamma_e, gamma_f} = g(e,f)`), `hcomm` (soldering commutes with transport,
-`gamma_e nabla_f = nabla_f gamma_e`), and `hCov` (the turn field is
-covariantly constant, `nabla_e phi = phi nabla_e`). Two consequences must be
-stated plainly, because the kernel sees them and the prose must not hide them:
-
-- Under `hcomm` the soldering-gradient (gravity) channel of §7 is
-  *identically absent* from this identity. So **no single kernel theorem
-  contains all four forces**: the four-channel table is assembled from two
-  theorems with different hypothesis sets — `carrier_krein_square` for
-  aperture/closure/turn, and `weitzenbock_master_varying` (§7) for the
-  soldering-gradient — and their union is a *program claim*, not one equation.
-- Under `hCov` the turn block is `Q_T = phi^2` with `phi` frozen, so at **M**
-  grade the "Higgs channel" is indistinguishable from an explicit Dirac mass
-  term. The Higgs *reading* (§5) is a grade-C interpretation; the kernel sees
-  a constant. This is the specific gap in the turn-channel name (§4a).
-
-**Two specializations, both kernel-checked.** In the self-adjoint gauge class
-(`nabla_e^# = nabla_e`) the cross term `E_#` vanishes and the starred blocks
-become bare, so the master identity reduces to the three-slot square
-`4 D^#D = Q_A + Q_C + 4 Q_T` (`carrier_krein_square_selfAdjoint`;
-`carrier_square_assembly`, **M**) — this is the form §§5–6 use. Separately,
-for *varying* soldering the gravity channel is a genuinely distinct object,
-the soldering-gradient defect `E` of `weitzenbock_master_varying` (**M**,
-§7) — this `E` (a `D^2`-defect measuring non-constancy of the soldering) and
-the Krein cross-term `E_#` above are two different blocks; identifying them
-is a conjecture (**C**), not a theorem.
+**Two specializations, both kernel-checked.** In the self-adjoint gauge
+class the cross term `E_#` vanishes, and the master identity reduces to the
+three-slot square `4 D^2 = Q_A + Q_C + 4 Q_T` (`carrier_square_assembly`,
+**M**) — this is the form §§5–6 use. Separately, for *varying* soldering the
+gravity channel is a genuinely distinct object, the soldering-gradient
+defect `E` of `weitzenbock_master_varying` (**M**, §7) — note this `E` (a
+`D^2`-defect measuring non-constancy of the soldering) and the Krein
+cross-term `E_#` above are two different blocks; identifying them is a
+conjecture (**C**), not a theorem.
 
 **Unification is decomposition.** These are not four theories glued
 together; they are four summands of one square. The claim the program
@@ -386,20 +508,13 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
    Krein space, only at the ground state of a *positive* physical sector.
    So the four-channel budget honestly decomposes a quadratic functional,
    and it becomes a decomposition of a *mass* exactly when that functional
-   is minimized on a *positive* sector. The theorem that would close this —
-   a finite Rayleigh–Ritz keystone, `sector_ground_mass` — depends on such a
-   positive sector *existing*, and a pre-registered probe this run (§6, §10)
-   found that **on the current single-doublet witness no positive sector
-   exists**: the closure grading balances the aperture's Krein form as well,
-   so the whole operator is balanced there. The aperture-dominance rung
-   (`aperture_dominance_pos`, §6) controls the *Hermitian* form `Re<v,(A+C)v>`,
-   which is weaker than the *Krein* form `J(A+C)` that actually sets the mass —
-   and it is the Krein form that is obstructed. So `sector_ground_mass` is
-   **not ripe on the existing model**; it presupposes a genuine multi-edge
-   carrier that evades the obstruction (larger Clifford algebra, closure
-   bivector distinct from chirality). Building that carrier is the single most
-   valuable next construction, and `sector_ground_mass` on it the single most
-   valuable next theorem (grade **C** / **M**-target; §10).
+   is minimized on a positive sector. The theorem that closes this — a
+   finite Rayleigh–Ritz keystone, `sector_ground_mass` — is now *ripe*: it
+   composes the just-landed aperture-dominance positivity
+   (`aperture_dominance_pos`, §6) with Krein self-adjointness to make
+   `min spec(D^#D)` on the sector a genuine mass whose budget shares are
+   the §4 fractions at the minimizer. It is grade **C** / **M**-target and
+   is the single most valuable next theorem (§10).
 
 The physical target this shape is aimed at — a finite analogue of the Ji
 decomposition of the proton mass — is grade **C**, and the two claims it
@@ -574,43 +689,6 @@ square has no positive-definite diagonal. Therefore:
 > stay MEMO pending their own rungs: the concrete `V'` construction from
 > the carrier Gauss covectors, and the step from odd-moment-vanishing to
 > the inertia count.
-
-**The adversarial check the resolution turns on — run, and it fails on the
-witness (a pre-registered probe finding, MEMO).** The escape route —
-"physical positivity comes from the `J`-definite complement" — silently
-requires that the closure bivector `b = sigma_z (x) 1` anticonjugates *only*
-the closure block, and does **not** also anticonjugate `J(Q_A + 4 Q_T)`.
-Prompted by an external review (Fable call-04), we checked this on the `6x6`
-witness and found the escape route **does not survive** there
-(`probe_s1cc_aperture_grading.py`): `b` negates `J Q_A` and `J Q_T` **as well
-as** `J Q_C`, so the *whole* form `J(Q_A + Q_C + 4 Q_T)` is congruent to its
-negative and is balanced — inertia `(2,2,0)` — on the physical sector `V'/N`.
-The aperture does **not** rescue positivity, because the object that must be
-positive is the *Krein* form `J Q_A`, and it is balanced even though `Q_A`
-itself is positive-definite as a matrix.
-
-The reason is structural, not an artifact of the toy: to balance closure by
-`b` one needs `J` to anticommute with `b` (so that `J Q_C` is `b`-odd); but
-the aperture `Q_A = {gamma, gamma}(...) = g . (transports)` is Clifford-*scalar*
-(the anticommutator is central by the closure relation `hcl`), hence
-`b`-even, hence `J Q_A` is `b`-odd — negated by the *same* grading. The turn
-`Q_T = phi^2` is `b`-even for the same reason. So **for any scalar-metric
-carrier with a `b`-invariant physical sector, the grading that balances
-closure balances the aperture and turn too.** What this does and does not
-touch: the no-go half — "`Q_C` is a balanced Krein square" — is unaffected;
-what is obstructed is the *surviving positivity* half (crux #1 below, §4 rail
-3, §10 crux 0). A rescue must break one of three premises — give `Q_A`
-genuine `sigma_z`-*odd* Clifford content (a **larger** Clifford algebra where
-the closure bivector and the chirality are *distinct* gradings), or use a `J`
-not anticommuting with `b` (reopening S1-CC), or a non-`b`-invariant sector
-(likewise). The live route is the first, which is exactly why a genuine
-*multi-edge* carrier (not this single-doublet witness) is now the program's
-sharpest target (§10). Full analysis and the exact rescue requirement:
-`S1CC_APERTURE_GRADING_FINDING.md`. (Technical note preserved: the kernel rung
-proves trace identities via a *similarity*; the inertia conclusion needs `b`
-to act by *congruence*, which holds because `b = sigma_z (x) 1` is
-Hermitian-unitary — this belongs in the mechanism's hypotheses, since a
-generic invertible `b` gives symmetric traces without equal inertia.)
 
 A second correction the resolution forces: the gate as originally posed
 asked whether a torsor *representative* `L_A` descends to `V'`; it does
@@ -821,41 +899,19 @@ is dead, so no one re-derives them:
   pre-registered probe: finite random curvature, chiral or generic,
   *decreases* `N_m` by spreading the spectrum. Condensate accumulation
   needs structured, not random, low-mode content (§9).
-- **"The aperture rescues positivity on the S1-CC witness's physical
-  sector"** — killed by a pre-registered probe this run
-  (`probe_s1cc_aperture_grading.py`), prompted by an external review. The
-  closure grading `b` that balances `Q_C` also balances `Q_A` and `Q_T` (the
-  aperture is Clifford-scalar, hence `b`-even, hence its Krein form `J Q_A` is
-  `b`-negated), so the *whole* operator `J(Q_A+Q_C+4Q_T)` is balanced
-  `(2,2,0)` on `V'/N`. The escape route of §6 has no witness; a rescuing model
-  must give the aperture genuine `sigma_z`-odd Clifford content — a larger
-  Clifford algebra with the closure bivector and chirality as distinct
-  gradings (a multi-edge carrier). This is the sharpest open problem, not a
-  refutation of the balanced-closure no-go itself (§6).
 
 **The open cruxes, ranked** (after this run's progress). The former #1 —
-physical-sector closure positivity (S1-CC) — is now *resolved at MEMO grade
-with a kernel-checked engine* (§6): the anticonjugation algebra that forces a
-balanced (signature-zero) closure form is kernel-checked (**M**), and the
-pre-registered numeric kill probe passed, but the balanced-inertia conclusion
-still rests on the MEMO-grade Gauss-sector `V'` construction and the inertia
-step (not yet transcribed). So it is a structured no-go established at the
-program's highest non-kernel grade, not a fully kernel-closed theorem — and
-its *surviving positivity half* is now known to be **obstructed on the
-witness** (see the new kill below and §6): the same grading that balances
-closure also balances the aperture and turn, so the escape route has no
-witness yet. What remains, ranked: **(0) `sector_ground_mass`** — the
-Rayleigh–Ritz keystone (§4 rail 3) that would turn the budget's quadratic
-functional into a genuine mass at the ground state of a positive sector; it
-is the deepest link, but it is **no longer "ripe on the existing witness"** —
-it now presupposes a carrier that *evades* the aperture-balancing obstruction
-(a larger-Clifford, multi-edge model where the closure bivector and the
-chirality are distinct gradings). (1) The surviving positivity question is
-therefore sharpened, not merely open: total-operator Krein-positivity on the
-doublet-free complement **cannot** hold for a scalar-metric single-doublet
-carrier (the aperture's Krein form `J Q_A` is balanced by the closure
-grading); the live route is a genuine multi-edge carrier, and building one is
-the program's single most valuable next construction (§6). (2) The strong-coupling
+physical-sector closure positivity (S1-CC) — is now *resolved* as a
+structured no-go (§6): closure is balanced, its algebraic engine is
+kernel-checked, and the pre-registered numeric kill probe passed. What
+remains, ranked: **(0) `sector_ground_mass`** — the Rayleigh–Ritz keystone
+(§4 rail 3) that turns the budget's quadratic functional into a genuine
+mass at the ground state of a positive sector; it is the deepest link and
+is now *ripe*, composing the just-landed aperture-dominance positivity with
+Krein self-adjointness. (1) The surviving positivity question S1-CC exposed
+— total-operator positivity on the doublet-free complement, i.e. an
+aperture/turn-dominance inequality over the `J`-definite directions (§6);
+its opener (`aperture_dominance_pos`) is landed. (2) The strong-coupling
 gap's forest injection (§6) — now a well-posed combinatorics problem
 (demoted to a standing bounty). (3) The color-singlet mass-budget witness
 (§4) — designed, `b_C ≠ 0`, awaiting transcription. (4) The reflection
@@ -903,8 +959,8 @@ anchor-swept — every name and guard status grep-verified against the repo on
 
 | § | Declaration | File | Grade / guard | Role |
 |---|---|---|---|---|
-| 3 | `det_rankOneHermitian_eq_zero` | `Spinor/PluckerMass.lean` | M, trusted namespace | single edge massless |
-| 3 | `two_edge_plucker_mass_identity` | `Spinor/PluckerMass.lean` | M, trusted namespace | two-edge mass = disagreement |
+| 3 | `det_rankOneHermitian_eq_zero` | `Spinor/PluckerMass.lean` | T, trusted namespace | single edge massless |
+| 3 | `two_edge_plucker_mass_identity` | `Spinor/PluckerMass.lean` | T, trusted namespace | two-edge mass = disagreement |
 | 3 | `fin_bundle_plucker_mass_identity` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | mass = pairwise disagreement, general `n` |
 | 3 | `fin_bundle_mass_zero_iff_common_direction` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | massless iff collinear |
 | 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master identity `4 D^#D = Q_A+Q_C+4Q_T+E_#` |
@@ -950,3 +1006,102 @@ Osterwalder–Seiler, Banks–Casher, Ji, Yang et al., Dürr et al.,
 Asbóth–Obuse, Pereira–Vargas, NuFIT-6.0, Sumino — are `[import]` and are
 recorded in `Sources/Null_Edge_References.md`. It supersedes nothing; it
 sits beside the P1 origin-of-mass draft as the wider-scope companion.
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+# Fable-5 call 04 report: strengthening review of `Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md`
+
+Before writing this I read the actual Lean of the four most load-bearing anchors: `CarrierKreinSquare.lean` (master identity), `CarrierMassBudget.lean` (budget + witness), `S1CCBalancedInertia.lean` (S1-CC engine), and `Spinor/PluckerMass.lean` (kinematic layer). Several findings below come from mismatches between the manuscript's displayed claims and the kernel statements, not from the prose.
+
+---
+
+## Verdict
+
+The manuscript's honesty architecture is now genuinely good — the grade calculus, the kill reporting, and §4a are better refereeing hygiene than most published papers. But the kernel-verified core is a family of *abstract ring identities plus 2×2/6×6 witnesses*, and the two things that would make it mathematical physics rather than organized algebra — a pinned Krein structure `J` with an instantiated physical sector, and a ground-state mass theorem on it — are both still MEMO/C. Without new results this version's ceiling is roughly 6.5–7/10 at a serious venue: acceptable as a "program + verified scaffold" paper, not as a physics result. There is also one internal contradiction and one display-equation/kernel mismatch that violate the paper's own discipline and must be fixed regardless.
+
+---
+
+## Top 5 strengthening moves, ranked
+
+**1. One fully-instantiated Krein model, end to end (subsumes `sector_ground_mass`).**
+This is the single most valuable next result, and I rank it *above* the bare Rayleigh–Ritz keystone because the keystone proved abstractly would still be hypothesis-ware. The Lean docstring of `carrier_krein_square` itself says the quiet part: *"'Krein' is aspirational until `J`/`κ` are pinned... The `star` here is an ARBITRARY StarRing involution... not yet as a certified indefinite-metric mass form."* The manuscript's entire §4/§6 narrative — Krein square, balanced closure, positive physical sector, ground mass — currently has **no single concrete model in which all of it coexists**. The move: take one modest carrier (the 18-dim singlet witness, or the `M₄` model the docstring names with `J := ρ(Γ)`, inertia `(2,2)`), and on it, kernel-check in sequence: (i) `J` pinned with stated inertia; (ii) the Gauss sector `V'` constructed explicitly (currently MEMO — and load-bearing for the S1-CC headline); (iii) aperture/turn dominance positivity on the `J`-definite complement; (iv) `sector_ground_mass` (Rayleigh–Ritz); (v) the budget shares evaluated *at the minimizer*. That converts "the budget decomposes a functional" into "the budget decomposes a mass" in at least one honest-to-goodness model, upgrades S1-CC from MEMO+engine to M, and kills every vacuity worry simultaneously. Difficulty: medium (finite linear algebra throughout). Risk: medium — the sector could turn out degenerate or the dominance inequality false on the concrete model, but a *failure here is itself decisive information* and the program's rules can absorb it.
+
+**2. A genuinely null witness — then, and only then, carrier rigidity.**
+Adversarial fact from the kernel: the only budget witness (`witness_budget_sum_one`) uses `γ = σ_x` with `g = 2` — a **non-null** soldering, in a paper whose defining primitive is `c(α)² = 0`. Worse, the master identity never *uses* nullity (it's absent from the hypotheses of `carrier_krein_square`), and nullity actively degrades the witness's structure: a single null edge has `g(e,e) = 0`, so its aperture diagonal vanishes identically — the positive aperture share `b_A = 1/2` in the flagship witness is an artifact of the non-null choice. Aperture positivity for null carriers can only come from *cross-pairings between non-collinear edges*, which is beautifully consistent with §3 but currently unwitnessed. First step: a two-null-edge carrier with nilpotent `γ`'s, `g(1,2) ≠ 0`, nonzero shares, kernel-checked. Then attempt the rigidity conjecture. Difficulty: witness low; rigidity high and plausibly *false* as stated (kill condition likely triggerable) — but a rigidity kill would itself be a publishable finding under this paper's rules.
+
+**3. The g = 2 test: a sharper correspondence probe for the closure channel.**
+The §4a kill condition (Ji-term convergence on refining complexes) is the *hardest possible* test — it needs the continuum program. There is a much sharper, finite, decisive test the manuscript misses: the coefficient of `σ·F` in the Lichnerowicz square is exactly what fixes the Dirac gyromagnetic ratio `g = 2`. Put an **abelian** background on a small carrier and check that `Q_C`'s expectation reproduces the Pauli-term coefficient with the right normalization relative to `Q_A`. If the finite carrier's `σ·F` coefficient is not the Lichnerowicz one, the "chromomagnetic" name fails *now*, without any continuum limit; if it is, the name is earned at the strongest level a finite model permits. Difficulty: low-medium; risk: real (it might fail — which is the point of a test).
+
+**4. Formalize the checkerboard bridge for the 1+1 chain.**
+The manuscript already identifies Gersch/Jacobson–Schulman as the one place a genuine continuum reduction exists (§2a) and imports it. Upgrading the import: (a) prove in Lean that the carrier `D` restricted to the 1+1 null chain *is* the checkerboard transfer operator (a finite identification, no analysis); (b) then the imported continuum theorem applies to *your* operator, not to a cousin. This gives the aperture+turn channels a genuine continuum anchor and makes §4a's "most promising bridge" a theorem-plus-import rather than a remark. Difficulty: (a) medium, (b) is a citation. High leverage per unit risk.
+
+**5. Gauge covariance of the four blocks.**
+A referee's first structural question — "is your decomposition gauge-invariant?" — has no theorem in the paper. Each block should transform by conjugation under a finite gauge transformation acting on transports, so block expectations in covariantly-paired states are gauge-invariant; this is a cheap kernel theorem (same difficulty class as `signed_budget_sum_one`) and removes an obvious objection. Also note honestly in §4 that `signed_budget_sum_one` is decomposition-independent algebra — *any* three-way split of `4D²` sums to one — so the scientific content lives entirely in which blocks are named, which is exactly why moves 1–3 matter.
+
+---
+
+## Adversarial section: the weakest load-bearing claim
+
+**The claim: "the master identity is a Krein-adjoint square" (§4), i.e., that the four-block split is a statement about an indefinite-metric mass form.** The kernel says less: `carrier_krein_square` holds for an *arbitrary* star, and its own docstring disclaims the Krein reading. Everything downstream — the balanced-closure resolution (§6), the sector-positivity program, `sector_ground_mass` as "ripe" — presupposes a `J` with nontrivial inertia under which *all* hypotheses (`star γ = γ`, `star Γ = Γ`, `star φ = φ`, the commutation table, and nullity `γ² = 0`) are **jointly satisfiable on a nonflat, multi-edge model**. That joint satisfiability is nowhere kernel-checked.
+
+My best attempt to break it, concretely: the S1-CC mechanism has `b = σ_z ⊗ 1` anticonjugating `J Q_C`. The manuscript's escape route ("positivity from the `J`-definite complement") silently requires that `b` does **not** also anticonjugate `J(Q_A + 4Q_T)`. If, on the concrete carrier, the same grading anticonjugates the *whole* of `J D^#D` — plausible, since `σ_z` is exactly the chirality that anticommutes with the soldered part `D₀` of any chiral Dirac operator (`ΓD₀Γ = −D₀` is hypothesis `hGammaAnti` + `hGammaNabla`!) — then the total form is balanced on every sector, `min spec` is negative, "mass" is indefinite, and the ground-state program dies. The saving structure is presumably `Q_T = φ²` (Γ-even), but this needs to be *checked*, not presumed: verify at M grade that the S1-CC anticonjugation kills only the closure block. This is the single computation most likely to quietly collapse §§4, 6, and 10's ranked crux (0)–(1) at once. Also note the anticonjugation as stated is a *similarity*; the inertia conclusion needs a *congruence* (fine for `b = σ_z ⊗ 1`, Hermitian-unitary, but the abstract Lean rung proves only trace identities — the manuscript says this, but the congruence condition on `b` should be stated as a hypothesis of the mechanism, since a generic invertible `b` would not give Sylvester).
+
+---
+
+## Correctness flags (most severe first)
+
+1. **Display equation ≠ kernel statement (§4 vs `carrier_krein_square`).** Manuscript: `4·D^#D = Q_A + Q_C + 4Q_T + E_#`. Lean: `4•(star D · D) = Q_A^# + Q_C^# + 4Q_T + 4·E_#` — the defect carries a **factor 4** the manuscript drops, and the aperture/closure blocks in the Krein square are the **starred** blocks `star(∇_e)·∇_f`, not the `∇_e∇_f` blocks of the budget table. In a paper whose thesis is grade discipline, the flagship displayed equation must match the kernel token-for-token, with the starred blocks named as such.
+2. **Internal contradiction on `E_#`.** The §1 glossary defines `E_#` as "soldering/**gravity**"; §4 correctly states that identifying the Krein defect `E_#` with the soldering-gradient `E` (the actual gravity-shaped block of §7) is a **conjecture**. The glossary over-claims against the paper's own caveat. Fix the glossary; while there, note that under the master identity's own hypotheses (`hcomm`: soldering commutes with transports) the soldering-gradient channel is *identically absent* — so **no single kernel theorem contains all four forces**; the four-channel table is assembled from two theorems with incompatible hypothesis sets. Say this in §4, plainly.
+3. **Hidden hypothesis: the Higgs is frozen.** `hCov : ∇_e φ-commutation` (covariantly constant turn field) is a hypothesis of the master identity but never surfaced in §4 prose. Under it, `Q_T = φ²` is indistinguishable from a bare Dirac mass term; nothing at M grade distinguishes "Higgs channel" from "explicit mass." §4a should list this as the specific gap in the turn-channel name (see missing-physics list).
+4. **Anchor-table grade inconsistency.** §11 grades `det_rankOneHermitian_eq_zero` and `two_edge_plucker_mass_identity` as "**T**, trusted namespace"; §3's text and the grade table's own definitions say these are **M** (kernel-checked; T is for *external* source-verified theorems). Small, but the grades are "the point of the paper."
+5. **"Resolved" outruns its grade (§10).** The ranked-crux paragraph says S1-CC "is now *resolved*" flatly; §6 correctly grades it "M engine + MEMO" with the `V'` construction and the inertia step both MEMO. By the paper's own rule, §10 should say "resolved at MEMO grade with a kernel-checked engine."
+6. **Nullity is decorative in §4's kernel content.** §4 defines the carrier with `c(α)² = 0`, but no cited §4 theorem assumes it and the only witness violates it (`σ_x`, `g = 2`). Not a falsehood — but the reader is led to think the four-block split is a fact *about null carriers*. State that nullity enters the kernel content only in §3 and §9.
+7. I found **no outright mathematical error** in the statements I checked (`carrier_krein_square`'s proof structure, the budget algebra, the odd-power trace engine, the two-edge Plücker identity and its collinearity criterion all match their intended readings). The problems above are convention drift, hypothesis concealment, and grade slippage — the exact failure modes the paper polices.
+
+---
+
+## Missing-physics list
+
+- **No instantiated `J` / physical sector `V'`** — *should-address (borderline fatal for the Krein narrative)*: move 1.
+- **Gauge invariance of the block decomposition** — *should-address*: cheap theorem, move 5.
+- **Higgs dynamics (vev selection, doublet structure, SSB)** — *future-work*, but the frozen-φ hypothesis must be flagged now (*should-address* at the prose level).
+- **Fermion doubling / Nielsen–Ninomiya** — partially addressed (GW grading, palindromic ordering, the kill list); *should-address* with one explicit paragraph in §8 rather than a kill-list bullet.
+- **Anomalies** — *future-work*: finite systems have no continuum anomalies, but a finite index-shadow statement (the §8 machinery is nearby) would be natural.
+- **Lorentz/Poincaré covariance of the carrier layer** — *should-address*: §3 has covariance (`PluckerMassCovariance` exists in the repo but is uncited); the carrier layer has no symmetry statement at all.
+- **Renormalization / scheme dictionary** — acknowledged, *future-work* (the demotion of the strong Ji claim is correct; cite Lorcé and Metz–Pasquini–Rodini on decomposition ambiguity to inoculate it).
+- **Generations, CKM, absolute scale** — acknowledged, *future-work*.
+- **Second quantization** — §9's boundary paragraph is exemplary; *future-work*.
+
+None is individually fatal; the *conjunction* of the first item with the adversarial finding above is the one existential risk.
+
+---
+
+## Exposition fixes
+
+1. Fix the §4 display equation to the exact kernel statement (starred blocks, `4E_#`) and print the full hypothesis list (including `hCov` and `hcomm`) in a small box under it. The hypotheses *are* the physics.
+2. Fix the glossary/§4 `E_#` contradiction and the §11 T/M grade typos.
+3. Add **one worked example section**: a single ≥2-edge, genuinely null carrier traced through every channel — `D`, `J`, the four blocks as explicit matrices, the shares, the protected mode. Currently the reader never sees one object that all the theorems are about. This is the highest-value expository addition by far.
+4. In §2a/related work, add the missing prior art: **Barrett's finite Lorentzian (Krein) spectral triples** (J. Math. Phys. 2007) — this is direct prior art for "finite Krein + Standard Model" and its absence is the one positioning gap a knowledgeable referee will catch; also van den Dungen–Paschke–Rennie (pseudo-Riemannian/Krein spectral triples), D'Ariano–Perinotti and Bisio–D'Ariano–Tosini (Dirac from quantum walks/cellular automata — direct kin of the checkerboard bridge), and the existing machine-verified-physics work (PhysLean/HepLean), since verification is claimed as a novelty pillar. Novelty claim (i) in §2a narrows accordingly but survives: the *sector-positivity-as-open-question* framing plus kernel verification plus kill-discipline is, to my knowledge, genuinely unoccupied territory.
+5. Part I is honest and correct as written; its one improvable sentence is "the amount by which it falls short *is* its mass" — insert "squared" ("its mass squared") to match `det P`, since Part I promises exactness.
+
+---
+
+## Bottom line
+
+To move from ~6 to ~8, three things must happen, and they are really one program: **(a)** instantiate a single concrete Krein model — pinned `J`, explicit Gauss sector, genuinely null multi-edge soldering — and kernel-check on it both the S1-CC balanced-inertia claim *and* the check that the anticonjugation spares the aperture/turn blocks (the paper's survival condition); **(b)** prove `sector_ground_mass` on that model, so the budget decomposes a mass and not a functional; **(c)** run one decisive finite correspondence test for a channel name — the abelian `g = 2` probe for `Q_C` is the sharpest available — so at least one grade-C analogy is either promoted or killed. Alongside, fix the display-equation drift, the `E_#` glossary contradiction, and the "resolved" grade slippage, which cost credibility disproportionate to their size in a paper whose thesis is that grade discipline is the product.
+
+```
+
+## Response stderr
+
+```text
+
+```
