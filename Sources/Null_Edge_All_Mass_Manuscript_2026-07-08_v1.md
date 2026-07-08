@@ -485,6 +485,24 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
      `Delta` a finite binding invariant is the remaining grade-**C** target
      (§10).
 
+**A worked example — the whole paper on one object.** Everything above is
+concrete on a single carrier, the one `T2_positive_mass` (**M**) is built from.
+Take two null edges: the Clifford factor is `Cl(4)` (Hermitian gammas
+`γ_1=σ_x⊗I, γ_2=σ_y⊗I, γ_3=σ_z⊗σ_x, γ_4=σ_z⊗σ_y`), the color factor `C^3`, so
+the carrier space is `C^12`. The closure bivector is `ω = γ_1γ_2`, the Krein
+metric `J = iγ_3γ_4 ⊗ I_3 = diag(-1,-1,-1,1,1,1,-1,-1,-1,1,1,1)` (inertia
+`(6,6)`), the aperture `Q_A = I_4 ⊗ 2·I_3`, the closure `Q_C = ω ⊗ K` with `K`
+the skew curvature. The assembled Krein form `J(Q_A+Q_C)` is block-diagonal;
+its `J`-positive sector is the 6 coordinates `{3,4,5,9,10,11}`, and the
+compressed sector form is `M6 = 1 + B^H B` with eigenvalues `{1,3,2}` on each
+block — **positive-definite, least eigenvalue 1** (aperture dominance
+`2 > 1`). So on this one object: §3's kinematic mass is the Plücker `det` of a
+momentum bundle; §4's budget splits `4 D^#D` into `Q_A + Q_C + 4Q_T + 4E_#`;
+§6's closure `Q_C` is the balanced (chromomagnetic) block; the positive
+physical sector exists (the 6-dim one above); and §4's keystone fires there to
+give a genuine positive squared mass of `1`. The reader who wants a single
+picture to hold should hold this carrier.
+
 The physical target this shape is aimed at — a finite analogue of the Ji
 decomposition of the proton mass — is grade **C**, and the two claims it
 supports are *not* on the same footing, for a reason internal to QCD:
