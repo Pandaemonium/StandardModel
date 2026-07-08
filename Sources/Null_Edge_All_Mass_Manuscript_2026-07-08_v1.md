@@ -409,12 +409,19 @@ kernel-checked core: a unitary carrying such an involution has determinant
 `+-1` (`chiral_det_eq_pm_one`, **M**); by the standard conjugate-pairing of
 unitary spectra (**T**, transcription pending) that sign pins the parity of
 the `-1`-eigenvalue multiplicity (the Lean file states the determinant fact;
-the multiplicity reading is prose, per its own docstring). The full amplitude-independent double pinning
-(observed for every hop strength) is grade **C**, awaiting the chiral
-winding invariant `[import]` (Asbóth–Obuse, chiral quantum walks). The
-resulting spectrum on the small cycle is neutrino-shaped (one exactly
-massless mode; oracle observation, **C**) — which is where the mass-value
-question, having failed for charged leptons (§5), honestly relocates.
+the multiplicity reading is prose, per its own docstring). The full
+amplitude-independent *double* pinning (both `±1` at every hop strength) is
+**not** a global winding invariant — that index was measured to vanish
+here. It is an equivariant *reflection-sectored* index: `W` commutes with a
+reflection `R` (leg-reversal ∘ orientation-swap), and the two `R`-sectors
+carry opposite chiral indices that cancel globally but each pin one `±1`
+mode. The sector index is a Lefschetz fixed-point count `±¼ Tr(ΓR)` that
+does not involve `W` — hence the `|t|`-independence (grade **C** /
+**M**-target, with a rational fixture and a spectral-theorem-free pinning
+theorem in hand; Fable analysis this run). The resulting spectrum on the
+small cycle is neutrino-shaped (one exactly massless mode; oracle, **C**) —
+which is where the mass-value question, having failed for charged leptons
+(§5), honestly relocates.
 
 **Why indefiniteness is a feature, not a bug.** The closure channel's
 global indefiniteness (§6) is *required* here: chiral symmetry breaking

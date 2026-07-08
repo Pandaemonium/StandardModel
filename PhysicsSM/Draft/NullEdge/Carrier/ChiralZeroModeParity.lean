@@ -29,10 +29,21 @@ For a unitary `W` carrying such a chiral involution:
 Since `det W = (-1)^{mult(-1)}` up to conjugate-pair factors, the sign of
 `det W` fixes the PARITY of the `-1`-eigenvalue multiplicity - the honest
 core of the determinant-parity mechanism (SevenChallenges memo finding 8).
-The full `|t|`-independent DOUBLE pinning (both `+-1` always present at
-even dimension) needs the chiral winding invariant (Asboth-Obuse `Z x Z`
-for chiral discrete-time walks, arXiv:1303.1199) and is left at oracle
-grade - see the probe and `SEVENCHALLENGES_ANALYSIS.md`.
+
+CORRECTION (Fable call-02, 2026-07-08): the full `|t|`-independent DOUBLE
+pinning (both `+-1` present at even dimension) is NOT forced by a global
+winding invariant - Fable measured the global Asboth-Obuse-type index to
+VANISH for the half-winding decoration (`tr Gamma = 0`, `tr(Gamma W) = 0`,
+`nu_0 = nu_pi = 0`), while `mult(+1) = mult(-1) = 2`. The correct mechanism
+is an EQUIVARIANT REFLECTION-SECTORED index: `W` commutes with a reflection
+`R` (leg-reversal composed with orientation swap, `R^2 = 1`, `[R, Gamma]
+= 0`), and the two `R`-sectors carry OPPOSITE chiral indices `(+1,+1)` and
+`(-1,-1)` that cancel globally but each pin one `+-1` mode. The sector
+index is `nu = +- (1/4) tr(Gamma R)`, a Lefschetz fixed-point count (`=
+#fixed legs`) that does NOT involve `W` - which is why the pinning is
+`|t|`-independent. Full analysis and the `M`-target sectored-pinning
+theorem: Fable call-02 log + the run's C4 note; the abstract engine here
+(`det = +-1`) stands.
 
 ## Claim boundary
 

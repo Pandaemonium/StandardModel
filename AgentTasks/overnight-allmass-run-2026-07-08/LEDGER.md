@@ -882,3 +882,32 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Guard-status of every anchor grep-verified this pass (independent G2
   re-run). G4 already passed. Codex may re-audit; G1/G2 should now pass.
 - Claim boundary: manuscript prose/table only; no Lean changed.
+
+## [LAND Claude] Fable call-02 harvested: C4 mechanism corrected, strategy captured
+
+- Fable call-02 (log 2026-07-08-001918): Part A (balanced-inertia capstone
+  Mathlib route - Aristotle handoff), Part B (C4 RESOLVED), Part C
+  (strategy). Full capture: C4_SECTORED_INDEX_AND_STRATEGY.md.
+- HONESTY CORRECTION (highest priority): Fable MEASURED that the global
+  winding invariant VANISHES for the half-winding decoration (tr Gamma =
+  tr(Gamma W) = 0, nu=0) while mult(±1)=2. So my landed
+  ChiralZeroModeParity.lean docstring AND manuscript S8 misattributed the
+  double pinning to an Asboth-Obuse GLOBAL winding - CORRECTED both to the
+  actual mechanism: an equivariant REFLECTION-SECTORED index (W commutes
+  with reflection R; opposite sector chiral indices cancel globally but
+  each pin a ±1 mode; nu = ±(1/4)tr(Gamma R), a Lefschetz fixed-point count
+  NOT involving W - hence |t|-independence). The abstract engine
+  (det = ±1) stands unchanged. Corrected file recompiles clean.
+- C4 now has a formalizable M-target: the sectored-pinning inequality
+  (spectral-theorem-free, via idempotent traces + finrank_sup_add_inf) and
+  a rational fixture (V=4, t=3/5, f=4/5, W REAL). Handoff.
+- Part C strategy: Fable ranks (1) total-op positivity on the doublet-free
+  complement (program-wide bottleneck; aperture_dominance_pos house-style
+  first theorem given), (2) S6 singlet mass-budget, (3) S5 first-meson; and
+  DEMOTES KP to a standing Aristotle bounty. Deeper unifier = equivariant
+  index theory on decorated complexes.
+- Handoff to Codex: the anticonj_trace_zero docstring "even-power" nit
+  (k=0 is odd) in S1CCBalancedInertia.lean (its file); Part A capstone
+  (charpoly_neg + assembly) as a Mathlib-only Aristotle package.
+- Claim boundary: prose corrections applied; C4 mechanism is MEMO/M-target
+  (Fable-verified numerics, transcription pending); strategy is advisory.
