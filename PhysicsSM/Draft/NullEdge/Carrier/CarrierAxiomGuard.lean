@@ -38,6 +38,9 @@ import PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex
 import PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMass
 import PhysicsSM.Draft.NullEdge.Carrier.MassMonogamy
 import PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass
+import PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness
+import PhysicsSM.Draft.NullEdge.Carrier.WittenPositiveMass
+import PhysicsSM.Draft.NullEdge.Carrier.MassMonogamyPartition
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -670,5 +673,20 @@ F3 mass monogamy + the rank/area-spectral bridge -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass.det_eq_zero_iff_not_posDef' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.RankAreaMass.det_eq_zero_iff_not_posDef
+
+/-! ## Aristotle batch-1 + round-3 (overnight 2026-07-08): the T2 linchpin,
+finite Witten positive-mass (F4), general-partition monogamy (F3 rd2) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness.T2_positive_mass' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness.T2_positive_mass
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.WittenPositiveMass.weitzenbock_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.WittenPositiveMass.weitzenbock_eq_zero_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassMonogamyPartition.massOn_add_massOn_compl_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassMonogamyPartition.massOn_add_massOn_compl_le
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
