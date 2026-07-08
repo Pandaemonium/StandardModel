@@ -47,6 +47,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution
 import PhysicsSM.Draft.NullEdge.Carrier.FiniteRGFlow
 import PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble
 import PhysicsSM.Draft.NullEdge.Carrier.FreeMassBridge
+import PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -715,6 +716,14 @@ finite Witten positive-mass (F4), general-partition monogamy (F3 rd2) -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.massShellStationary_iff_eigen
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.massShellAction_invariant_of_commutes' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.massShellAction_invariant_of_commutes
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.massShell_equation_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteQuadraticAction.massShell_equation_symmetry
+
 /-! ## D2/D3 dynamics seed: finite unitary transfer conservation -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteUnitaryEvolution.norm_conserved_orbit' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -744,5 +753,24 @@ finite Witten positive-mass (F4), general-partition monogamy (F3 rd2) -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble.energyVariance_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble.energyVariance_nonneg
+
+/-! ## Mass phase diagram: the sector mass gap is aperture minus closure
+
+`MassGapWitness` generalizes `T2_positive_mass` from the fixed `(2,1)` point to the
+whole coupling plane: the `3x3` Hermitian block `B(lam,kappa)` is positive definite
+(massive) iff `|kappa| < lam`, singular (massless) exactly on `kappa = +-lam` for
+`lam > 0`, and its least eigenvalue - the squared mass gap - is `lam - kappa`. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_posDef_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_posDef_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_massless_iff_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_massless_iff_of_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_least_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness.B_least_eigenvalue
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

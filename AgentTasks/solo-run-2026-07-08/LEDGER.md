@@ -69,17 +69,33 @@ Debugging notes: det needed det_fin_three + of_apply/cons_val extraction then
 linear_combination on Complex.I_sq (coeff lam*kappa^2); PosDef statement needs
 `open scoped ComplexOrder` for PartialOrder C.
 
+## Cycle A.4 (~10:50) — MASS-GAP FLAGSHIP LANDED + guard-pinned
+
+The Aristotle mass-gap job COMPLETED. Harvested, reviewed for semantic alignment
+(all statements match intended math; Aristotle independently caught the same
+lam=0 subtlety I did - strong corroboration), and integrated into
+`MassGapWitness.lean`. It proved MORE than the 3 lemmas I'd staged:
+- **B_posDef_iff** (the hard one): `B.PosDef <-> |kappa|<lam`, via exactly the
+  quadratic-form route I documented - massive iff aperture dominates closure;
+- **B_least_eigenvalue**: `IsLeast (range eigenvalues) (lam-kappa)` - the squared
+  mass gap = aperture - closure AS AN EIGENVALUE THEOREM (the sharpest form);
+- plus B_massless_iff (+ _of_pos), B_shift_posSemidef/det, B_posDef_iff_of_nonneg.
+Cleaned Aristotle's leftover `exact?` -> concrete lemma. Axiom audit: all
+[propext, Classical.choice, Quot.sound] (+decide is kernel decide, not native).
+GUARD-PINNED in CarrierAxiomGuard (3 new blocks); `lake build CarrierAxiomGuard`
+GREEN (8086 jobs). Manuscript §4 upgraded M-sim -> full M; §11 rows updated.
+=> Fable call-05 bottom-line #3 (parametrized T2 mass-gap, critical line as M)
+   is now fully DONE and kernel-pinned.
+
 ## In flight (external, not harness-tracked)
 
-- **Aristotle mass-gap proof job** — project `121f6472-...`, task `c9cfeed1-...`,
-  "the carrier sector mass gap is aperture minus closure" (B Hermitian,
-  PosDef iff |kappa|<lam, massless iff kappa=lam). IN_PROGRESS. On completion:
-  harvest -> `PhysicsSM/Draft/NullEdge/Carrier/MassGapWitness.lean`, upgrade the
-  §4 phase-diagram grade M-sim -> M, add §11 row, guard-pin.
+- (none — the mass-gap Aristotle job COMPLETED and is landed + pinned, cycle A.4)
 
 ## Next
 
-- Harvest the mass-gap job when done; upgrade §4 grade + guard pin.
-- Fable ~2h call (call-05 was ~09:23; next ~11:23) on the finished manuscript +
-  the mass-gap landing.
-- Manuscript is otherwise "finished" pending the mass-gap pin.
+- **Fable review** of the now-complete manuscript + the landed mass-gap flagship
+  (call-05 was ~09:23; the ~2h mark ~11:23). This is the highest-value next move.
+- Full `lake build` sanity (touched Lean: MassGapWitness + CarrierAxiomGuard;
+  CarrierAxiomGuard already built green at 8086 jobs, so the tree is consistent).
+- Manuscript is now genuinely FINISHED (all Fable call-05 items closed, mass-gap
+  fully kernel-pinned, 4 dynamics sims, references complete + verified).

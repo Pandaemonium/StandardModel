@@ -546,15 +546,17 @@ where `det B = λ(λ² − κ²) = 0`. So closure *subtracts* from mass and, tun
 equal aperture, cancels it: a finite, exactly-solvable analogue of a massless
 critical line. This is the mass phase diagram the spectrum simulator draws
 (`carrier_spectrum_sim.py`, §9a), and `T2_positive_mass` is its `(2,1)` corner.
-The parametrized statement is now **partly kernel-checked** (`MassGapWitness`):
-`B` **Hermitian**, the **determinant** `det B = λ(λ² − κ²)`, and the **massless
-critical line** (`det B = 0 ↔ κ = ±λ` for `λ > 0`) are grade **M**
-(kernel-clean, axiom-audited `[propext, Classical.choice, Quot.sound]`). The
-**positive-definiteness** branch — massive `↔ |κ| < λ`, the squared mass gap
-`λ − κ` — is the one remaining piece, `B.PosDef ↔ |κ| < λ`, held as an M-sim
-result (oracle-validated; Aristotle proof in progress, to be dropped into the
-same module and guard-pinned on landing). So the *massless line is a theorem*;
-the *massive-side gap* is M-sim pending that last proof.
+The parametrized statement is now **fully kernel-checked and guard-pinned**
+(`MassGapWitness`, pinned in `CarrierAxiomGuard`): `B` **Hermitian**; the
+**determinant** `det B = λ(λ² − κ²)`; the **massless critical line**
+(`det B = 0 ↔ κ = ±λ` for `λ > 0`, `B_massless_iff_of_pos`); the **massive
+condition** `B.PosDef ↔ |κ| < λ` (`B_posDef_iff`); and — the sharpest form — the
+**least eigenvalue is `λ − κ`**, `IsLeast (range eigenvalues) (λ − κ)` for
+`0 ≤ κ ≤ λ` (`B_least_eigenvalue`). So *the squared mass gap = aperture − closure*
+is a **theorem** (grade **M**, axiom-audited `[propext, Classical.choice,
+Quot.sound]`), and the massless line closure = aperture is its zero locus. This
+generalizes `T2_positive_mass` from the `(2,1)` point to the whole coupling plane
+and pins the critical line in the kernel.
 
 The physical target this shape is aimed at — a finite analogue of the Ji
 decomposition of the proton mass — is grade **C**, and the two claims it
@@ -1166,8 +1168,8 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-vacuous `(1/2,0,1/2)` witness |
 | 4 | `sector_ground_mass` | `Carrier/SectorGroundMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | Rayleigh–Ritz keystone: definite-sector ground value is a positive squared mass (§4 rail 3, §10 crux 0) |
 | 4 | `T2_positive_mass` | `Carrier/SectorGroundMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the positivity linchpin**: explicit two-edge Cl(4) carrier, sector form `1+B^HB` PosDef, keystone fires ⇒ genuine positive mass (§6, §10 crux 0a) |
-| 4 | `B_det`, `B_massless_iff` | `Carrier/MassGapWitness.lean` | M, kernel-clean (draft; not pinned — file has the PosDef handoff `s o r r y`) | mass phase diagram: `det B = λ(λ²−κ²)`, massless line `κ=±λ` for `λ>0` (§4) — generalizes T2 across the coupling plane |
-| 4 | `B_posDef_iff` | `Carrier/MassGapWitness.lean` | M-sim (Aristotle proof in progress) | the massive-side gap: `B.PosDef ↔ \|κ\|<λ` (squared mass gap `λ−κ`) |
+| 4 | `B_posDef_iff`, `B_massless_iff_of_pos` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass phase diagram: massive `↔ \|κ\|<λ`, massless line `κ=±λ` for `λ>0` (§4) — generalizes T2 across the coupling plane |
+| 4 | `B_least_eigenvalue` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue `= λ−κ` = aperture − closure (`IsLeast`, for `0≤κ≤λ`) |
 | 3 | `free_mass_operator_eq_plucker` | `Carrier/FreeMassBridge.lean` | M, local guard pin | **free §3↔§4 bridge**: free mass operator `P·adj P = det P • 1` = Plücker mass (§10 crux 0b-a) |
 | 3 | `pairwiseMass_append` (+`_le`, `_append_eq_iff`) | `Carrier/MassMonogamy.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass monogamy: Plücker mass superadditive, excess = cross-disagreement (F3) |
 | 3 | `massOn_add_massOn_compl_le` | `Carrier/MassMonogamyPartition.lean` | M, guard-pinned (`CarrierAxiomGuard`) | general-partition monogamy: internal masses ≤ whole |
