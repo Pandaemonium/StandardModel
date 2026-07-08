@@ -248,3 +248,29 @@ fold strategy/audit findings into the manuscript/docs, resubmit to keep queue fu
   FiniteUnitaryEvolution on the concrete carrier). Candidate Aristotle job.
 - Deep §10 open cruxes (T3b binding invariant, 2nd quantization -> hadron mass,
   neutrino ratio, continuum reduction) are genuine new research, honestly open.
+
+## Cycle A.9 (~13:10) — harvested batch 2 (all 3) + acted on audit
+
+- **PROOF sectorgap `1b19c35f`: LANDED. INTEGRATION TARGET.** `Msec(λ,κ) =
+  blockdiag(B(λ,κ),B(λ,-κ))` with `Msec_least_eigenvalue` (full 6-dim sector gap =
+  λ-κ = aperture - |closure|), `Msec_spectrum`, `Msec_posDef_iff`. Lifts the block
+  gap to the actual sector form. NEXT: re-base onto MassGapWitness.B, new module.
+- **AUDIT batch2 `c8f48caf`: ACTIONED.** All kernel statements sound; 1
+  load-bearing framing over-claim fixed (CliffordAssembly: proves HAC ADMITS the
+  Clifford factorization with K a hand-chosen input = existence, not canonicity -
+  softened docstrings/disclosure/§11) + 2 stale-wording bugs (S1CC "sorries below",
+  EGI phantom ref). Committed.
+- **STRATEGY fock `4894d6d0`: OVER-DELIVERED - landed. INTEGRATION TARGET.**
+  `FockMassGap.lean`: `secondQuantized_massGap` (free 2nd-quantized gap =
+  one-particle gap = λ-κ), `ground_isLeast`, `excited_isLeast`,
+  `fockEnergy_twoParticle` (free 2-body = sum of constituents),
+  `twoBody_bound_below_threshold` (Δ=-κ seed for hadron mass != sum). Advances the
+  §9 "no 2nd-quantized mass gap" boundary. NEXT: integrate (check the
+  FockGradedRadical import-prefix fix it mentions applies to our tree too).
+
+## In flight — Aristotle queue (2 running as of ~13:12, batch 3)
+
+- PROOF `b7131385` (hadron) — interacting 2-body bound state below threshold.
+- STRATEGY `86fec8fd` (continuum) — the carrier transfer step's continuum limit.
+INTEGRATION BACKLOG: Msec (sector gap), FockMassGap (2nd-quantized gap). Next
+ticks: integrate these, harvest batch 3, keep queue ~2-3 (sustainable vs backlog).
