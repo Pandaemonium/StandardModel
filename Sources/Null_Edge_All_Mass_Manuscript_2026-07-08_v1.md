@@ -239,8 +239,9 @@ light-mover into a right-handed one; the two carry different weak charge;
 the corner must therefore exchange weak charge with a background
 condensate; that condensate is the Higgs. The corner amplitude *is* the
 mass. This is a **MEMO**-grade reading, resting on the kinematic corner
-identities (`onshell_wedge_normSq_eq_coin_sq`, **M**) and the Standard-
-Model strand bookkeeping (Q04, **MEMO**).
+identity (`onshell_wedge_normSq_eq_coin_sq`, **M**, kernel-checked in
+`GateI1/MassCoinBridge.lean` — a supporting identity, not guard-pinned;
+§11) and the Standard-Model strand bookkeeping (Q04, **MEMO**).
 
 **A reported kill (this is the honest heart of the section).** The program
 attempted to derive the *value* of the charged-lepton mass ratios — the
@@ -538,49 +539,55 @@ condition, none requires new axioms.
 
 ## 11. The Lean anchor table
 
-Every declaration cited above, with file and grade. All are kernel-checked
-under `leanprover/lean4:v4.28.0`; the trusted-namespace entries carry the
-minimal axiom footprint `[propext, Classical.choice, Quot.sound]`, and the
-draft entries are guard-pinned in `CarrierAxiomGuard.lean` /
-`SlabAxiomGuard.lean`. *(This table was anchor-swept — every name
-grep-verified to exist on 2026-07-08 before inclusion, per the manuscript's
-anchor rule.)*
+Every declaration cited in §§3–9, with file, grade, and guard-pin status.
+All are kernel-checked under `leanprover/lean4:v4.28.0`. Axiom footprint is
+the standard `[propext, Classical.choice, Quot.sound]` (several abstract
+algebra lemmas are choice-free, `[propext, Quot.sound]`); the exact
+footprints are the `#print axioms` messages inside the guard blocks. Guard
+status: **trusted namespace** = outside `Draft/`, needs no pin;
+**guard-pinned** = a `#guard_msgs … #print axioms` block enforces the
+footprint in the named guard file; **local guard pin** = the block is in the
+declaration's own file; **not pinned** = kernel-checked but without an
+enforced pin (supporting identities only, never flagship claims). *(Table
+anchor-swept — every name and guard status grep-verified against the repo on
+2026-07-08, per the anchor rule.)*
 
-| § | Declaration | File | Role |
-|---|---|---|---|
-| 3 | `det_rankOneHermitian_eq_zero` | `Spinor/PluckerMass.lean` (trusted) | single edge massless |
-| 3 | `two_edge_plucker_mass_identity` | `Spinor/PluckerMass.lean` (trusted) | two-edge mass = disagreement |
-| 3 | `fin_bundle_plucker_mass_identity` | `Draft/NullEdgePluckerGeneralAristotle.lean` (Draft) | mass = pairwise disagreement, general `n` |
-| 3 | `fin_bundle_mass_zero_iff_common_direction` | `Draft/NullEdgePluckerGeneralAristotle.lean` (Draft) | massless iff collinear |
-| 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | master identity `4 D^#D = Q_A+Q_C+4Q_T+E_#` |
-| 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | 3-slot specialization (`E_#=0`) |
-| 4 | `signed_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | shares sum to one (abstract) |
-| 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | non-vacuous `(1/2,0,1/2)` witness |
-| 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | closure-defect trace identity |
-| 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | Wilson action = squared defect |
-| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | leading closure defect = positive `|F|²` energy |
-| 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | closure square structure |
-| 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | `Q_C = L^#L` (skew-pairing) |
-| 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | strong-coupling area law |
-| 6 | `wilsonSlabConnected_reflectionPositive` | `GateYM/WilsonSlabConnected.lean` | slab reflection positivity |
-| 6 | `OSReconstruction.osSpectralGap_pos` | `GateYM/OSReconstruction.lean` (guard-pinned) | OS spectral gap |
-| 6 | `slab_exponential_clustering` | `GateYM/SlabClustering.lean` | exponential clustering |
-| 6 | `banks_casher_count` | `GateYM/FiniteBanksCasherCount.lean` | finite Banks–Casher count |
-| 6 | `skew_prod` | `GateYM/FiniteBanksCasherCount.lean` | count denominator `= m²+AᴴA` |
-| 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | closure balanced on physical sector (engine) |
-| 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | positive physical sector `(2,1)` |
-| 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | indefinite no-go `(1,2)` |
-| 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | soldering-gradient `E` (varying soldering) |
-| 7 | `eslot_torsion_solder_split` | `Carrier/CarrierESlotTorsionSplit.lean` | `2E = Contract(T)+Contract(S)` |
-| 7 | `eslot_not_pure_torsion_witness` | `Carrier/CarrierESlotTorsionSplit.lean` | not pure torsion (witness) |
-| 8 | `chiralIndex_eq_graded_dimension` | `Carrier/CarrierIndexProtection.lean` | index = graded dimension |
-| 8 | `exists_protected_massless_mode` | `Carrier/CarrierIndexProtection.lean` | forced massless mode |
-| 8 | `chiral_det_eq_pm_one` | `Carrier/ChiralZeroModeParity.lean` | chiral determinant dichotomy |
-| 9 | `null_pair_prod_sq_eq_pairing_smul` | `Carrier/RGSchurMassWitness.lean` | decimation coefficient law |
-| 9 | `effective_edge_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | blocking generates non-null term |
-| 9 | `collinear_schurComplement_eq_zero` | `Carrier/RGSchurMassWitness.lean` | collinear negative control |
-| 9 | `nullL_mul_mid_mul_nullN` | `Carrier/RGSchurMassWitness.lean` | coupling = propagator element |
-| 9 | `mid_effective_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | non-null iff propagator-coupled |
+| § | Declaration | File | Grade / guard | Role |
+|---|---|---|---|---|
+| 3 | `det_rankOneHermitian_eq_zero` | `Spinor/PluckerMass.lean` | T, trusted namespace | single edge massless |
+| 3 | `two_edge_plucker_mass_identity` | `Spinor/PluckerMass.lean` | T, trusted namespace | two-edge mass = disagreement |
+| 3 | `fin_bundle_plucker_mass_identity` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | mass = pairwise disagreement, general `n` |
+| 3 | `fin_bundle_mass_zero_iff_common_direction` | `Draft/NullEdgePluckerGeneralAristotle.lean` | M, Draft (kernel-checked) | massless iff collinear |
+| 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master identity `4 D^#D = Q_A+Q_C+4Q_T+E_#` |
+| 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | 3-slot specialization (`E_#=0`) |
+| 4 | `signed_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | shares sum to one (abstract) |
+| 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-vacuous `(1/2,0,1/2)` witness |
+| 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
+| 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure-defect trace identity |
+| 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | Wilson action = squared defect |
+| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin | leading closure defect = positive `|F|²` energy |
+| 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure square structure (abstract) |
+| 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | abstract skew-pairing square (concrete `Q_C=L^#L` is MEMO) |
+| 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | M, guard-pinned (`SlabAxiomGuard`) | strong-coupling area law |
+| 6 | `wilsonSlabConnected_reflectionPositive` | `GateYM/WilsonSlabConnected.lean` | M, guard-pinned (`SlabAxiomGuard`) | slab reflection positivity |
+| 6 | `OSReconstruction.osSpectralGap_pos` | `GateYM/OSReconstruction.lean` | M, guard-pinned (`SlabAxiomGuard`) | OS spectral gap |
+| 6 | `slab_exponential_clustering` | `GateYM/SlabClustering.lean` | M, guard-pinned (`SlabAxiomGuard`) | exponential clustering |
+| 6 | `banks_casher_count` | `GateYM/FiniteBanksCasherCount.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite Banks-Casher count |
+| 6 | `skew_prod` | `GateYM/FiniteBanksCasherCount.lean` | M, guard-pinned (`SlabAxiomGuard`) | count denominator `= m²+AᴴA` |
+| 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure balanced on physical sector (engine) |
+| 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | positive physical sector `(2,1)` |
+| 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | indefinite no-go `(1,2)` |
+| 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | M, guard-pinned (`CarrierAxiomGuard`) | soldering-gradient `E` (varying soldering) |
+| 7 | `eslot_torsion_solder_split` | `Carrier/CarrierESlotTorsionSplit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | `2E = Contract(T)+Contract(S)` |
+| 7 | `eslot_not_pure_torsion_witness` | `Carrier/CarrierESlotTorsionSplit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | not pure torsion (witness) |
+| 8 | `chiralIndex_eq_graded_dimension` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | index = graded dimension |
+| 8 | `exists_protected_massless_mode` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | forced massless mode |
+| 8 | `chiral_det_eq_pm_one` | `Carrier/ChiralZeroModeParity.lean` | M, guard-pinned (`CarrierAxiomGuard`) | chiral determinant dichotomy |
+| 9 | `null_pair_prod_sq_eq_pairing_smul` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | decimation coefficient law |
+| 9 | `effective_edge_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | blocking generates non-null term |
+| 9 | `collinear_schurComplement_eq_zero` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | collinear negative control |
+| 9 | `nullL_mul_mid_mul_nullN` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | coupling = propagator element |
+| 9 | `mid_effective_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-null iff propagator-coupled |
 
 ---
 
