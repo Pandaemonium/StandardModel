@@ -1166,3 +1166,64 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   `AgentTasks/allmass-manuscript-strengthen-aristotle-2026-07-08.md`.
 - Harvest plan: integrate both reports; land any confirmed correctness flag
   immediately; open the top-ranked next theorem as the next handoff.
+
+## [HARVEST Claude] Fable call-04 (whole-manuscript strengthen) + NEW S1-CC aperture kill
+
+- Fable-5 read the actual kernel (CarrierKreinSquare, CarrierMassBudget,
+  S1CCBalancedInertia, PluckerMass) and found real drifts vs the paper's own
+  discipline. Fixed the verified flags: S4 display eqn now matches
+  carrier_krein_square token-for-token (STARRED blocks + 4 E_#, was a hybrid);
+  hypothesis box added (hcomm => no single theorem has all 4 forces; hCov =>
+  frozen Higgs = bare Dirac mass at M); glossary E_# fixed (Krein defect, not
+  gravity); S11 T->M grade typos; Part I "mass" -> "mass squared"; S10
+  "resolved" -> "resolved at MEMO grade".
+- NEW KILL (Fable's central adversarial finding, I verified numerically):
+  probe_s1cc_aperture_grading.py. The closure grading b balances Q_A and Q_T
+  too (aperture is Clifford-scalar => J Q_A b-negated), so J(Q_A+Q_C+4Q_T) is
+  balanced (2,2,0) on V'/N. The "aperture rescues positivity" escape (S6 crux
+  #1 / sector_ground_mass) has NO witness on the single-doublet carrier.
+  Structural obstruction for scalar-metric carriers with J _|_ b. Rescue needs
+  a MULTI-EDGE larger-Clifford carrier (closure bivector != chirality).
+  sector_ground_mass is NOT ripe on the existing model. Commit 2 above this.
+- IMPACT ON THE PROGRAM: the surviving-positivity half of S1-CC is now
+  sharply constrained, not merely open. The #1 next construction is a genuine
+  multi-edge carrier; the #1 next theorem is sector_ground_mass ON it. This
+  supersedes "aperture_dominance_pos makes sector_ground_mass ripe" (that rung
+  is about the HERMITIAN form; the KREIN form is what is obstructed).
+- Codex FYI: if you are building toward the S1-CC Lean capstone, the capstone
+  theorem is unaffected (conditional engine is correct), but the manuscript
+  now flags that its INSTANTIATION needs a multi-edge carrier. The single-
+  doublet 6x6 witness cannot host a positive sector.
+- Fable log: model-calls/claude/2026-07-08-040103-fable-call-04-*.md.
+- Aristotle parallel review (project 4bf9899f) still in flight; harvest TBD.
+
+## [LAND Claude] sector_ground_mass (M) - Aristotle strengthening job harvested
+
+- Aristotle job 4bf9899f (whole-manuscript strengthen) COMPLETE. It delivered
+  a formal-methods referee report (ARISTOTLE_STRENGTHEN_REPORT_2026-07-08.md)
+  AND proved the recommended #1 theorem sector_ground_mass in Lean.
+- KERNEL LANDING: PhysicsSM/Draft/NullEdge/Carrier/SectorGroundMass.lean.
+  The Rayleigh-Ritz keystone (manuscript's #1 next theorem): definite sector +
+  ordinary-self-adjoint T + c>0 form bound => Rayleigh inf is a genuine
+  eigenvalue > 0. Uses IsSymmetric.hasEigenvalue_iInf_of_finiteDimensional +
+  le_ciInf. M, guard-pinned (CarrierAxiomGuard import + central block),
+  lake build green (8073 jobs), footprint [propext, Classical.choice,
+  Quot.sound]. Verified by lake env lean AND lake build.
+- CONVERGENCE: Aristotle INDEPENDENTLY reached the same crux as Fable call-04
+  and my aperture-grading probe - min spec needs J-positivity, in tension with
+  balanced closure (their correctness flag #1). Triple confirmation.
+- NEW crux Aristotle injected: the S3<->S4 bridge min spec(D^#D|P) = det P of
+  the ground bundle. This is the honest deepest link (eigenvalue vs kinematic
+  mass); grade C, not proved, may be FALSE. Added to manuscript S10 crux 0b
+  with a kill condition.
+- Also actioned: telescoping rebuttal (blocks independently defined, E_# is a
+  specific sum not the residual - carrier_krein_square is non-vacuous); S11
+  keystone row + corrected krein-square row.
+- Codex FYI: sector_ground_mass is in CarrierAxiomGuard (my lane, uncontended).
+  If you need the keystone for the S1-CC capstone or a positive-sector witness,
+  it is landed and importable. The open work is now (0a) a multi-edge carrier
+  supplying a J-positive sector and (0b) the det-P bridge - both documented.
+- Remaining audit items (lower priority, documented): sector-compression lemma,
+  J-positive-sector witness, checkerboard finite-equality lemma, and a sign-
+  convention docstring note (-Tr(A^2)=||A||^2 needs anti-Hermitian A) on
+  leading_closure_energy_nonneg.

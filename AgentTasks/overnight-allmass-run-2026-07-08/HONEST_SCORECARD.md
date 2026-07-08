@@ -24,6 +24,7 @@ cracked the crux and corrected a misattribution in landed code.
 | S1-CC | `S1CCBalancedInertia.{anticonj_odd_pow_trace_zero, anticonj_charpoly_eq, half_constraint_rigidity}` | the crux resolution engine: anticonjugation => odd traces zero + charpoly symmetric + Gupta-Bleuler forced | M |
 | S1a | `LinearizedClosureEnergy.leading_closure_energy_nonneg` | leading closure defect = positive HS/|F|^2 energy | M (local pin) |
 | Pos | `ApertureDominancePositivity.aperture_dominance_pos` | aperture-dominance => total-op positivity on the complement (opener for the #1 next target) | M (local pin) |
+| KEY | `SectorGroundMass.sector_ground_mass` | **the Rayleigh-Ritz keystone**: definite sector + c>0 form => Rayleigh inf is a genuine eigenvalue > 0 (the budget functional -> a mass). Aristotle-proved, guard-pinned | M |
 
 Plus: `PlaquetteClosureAction` (Wilson action = squared closure defect),
 `S1ClosureCurrentAlgebra` L1-L3 (from the 07-07 session), and the E-slot
@@ -41,6 +42,16 @@ trinity split (verified/cited).
 
 ## Kills reported this run (at theorem prominence)
 
+- **"The aperture rescues positivity on the S1-CC witness's physical sector"**
+  - killed (`probe_s1cc_aperture_grading.py`), prompted by Fable call-04 and
+  independently reached by Aristotle. The closure grading `b` balances `J Q_A`
+  and `J Q_T` too (aperture is Clifford-scalar => b-even => Krein form
+  b-negated), so the whole `J(Q_A+Q_C+4Q_T)` is balanced (2,2,0) on V'/N. The
+  S6 "positivity from the J-definite complement" escape has NO witness; a
+  rescue needs a multi-edge larger-Clifford carrier. Does NOT kill the
+  balanced-closure no-go; DOES obstruct its surviving-positivity half. This is
+  now the program's sharpest structural open problem. Details:
+  `S1CC_APERTURE_GRADING_FINDING.md`.
 - Naive constituent-mass bridge "disorder increases N_m" - refuted (probe).
 - Global winding invariant forces the double pinning - refuted (Fable
   measured it to vanish); corrected in landed docstring + manuscript S8 to

@@ -7,13 +7,29 @@ accounting is in `HONEST_SCORECARD.md`, the deliverable is
 
 ## The one thing to know
 
-**The program's #1 open crux is resolved.** Physical-sector closure
-positivity (S1-CC) - the question that embargoed spectral language across
-the whole program - is settled: closure is exactly *balanced* (Krein
-signature zero), a structured no-go, not a positive channel. Its algebraic
-engine is kernel-checked and its pre-registered numeric kill probe passed
-`(2,2,0)`. And the all-mass manuscript is drafted, audited three ways, and
-refined - including naming its own deepest conceptual vulnerability.
+**The manuscript's #1 next theorem is now proved, and the two reviews it was
+sent to sharpened its deepest honest gap into a precise, kernel-adjacent
+problem.** Two developments this run, both from submitting the whole
+manuscript to Fable-5 and Aristotle for strengthening:
+
+1. **The Rayleigh-Ritz keystone `sector_ground_mass` is landed (M,
+   guard-pinned).** Aristotle proved it: on a definite physical sector, the
+   budget's *quadratic functional* attains its minimum as a genuine positive
+   eigenvalue - the theorem that turns "a functional" into "a mass." It is
+   conditional, and its two conditions are now the program's two deepest open
+   links (both named, both with kill conditions).
+
+2. **The S1-CC "resolution" is correctly split into its two halves, and the
+   surviving half is now known to be obstructed on the witness.** The *no-go*
+   half stands: closure is exactly balanced (Krein signature zero). But the
+   *positivity* half - "the aperture rescues positivity on the J-definite
+   complement" - was tested this run (a probe prompted by Fable, independently
+   reached by Aristotle) and **fails on the single-doublet witness**: the same
+   grading that balances closure balances the aperture too. A genuine
+   multi-edge carrier is now the sharpest target. This is the honesty the
+   program sells, working as intended: two independent expert reviewers plus a
+   numeric probe converged on the one load-bearing crack, and the manuscript
+   now states it plainly rather than glossing "resolved."
 
 ## What was delivered
 
