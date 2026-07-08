@@ -1,7 +1,7 @@
 # Null-edge / NullStrand reference map
 
 Status: live provenance aid, not a final bibliography.
-Last updated: 2026-07-07.
+Last updated: 2026-07-08.
 
 This file is the null-edge counterpart of `Sources/Paper_References.md`.  It
 tracks source keys, identifiers, and claim-boundary roles for the null-edge /
@@ -55,6 +55,9 @@ Status labels:
 | `BEG87SU5` | `hep-lat/9808010` | Neuberger overlap locality record | Overlap/locality comparison for finite Ginsparg-Wilson and index files. | KEYED-LOCAL |
 | `TBD-NielsenNinomiya` | TBD | Nielsen-Ninomiya no-go theorem | Classical doubling no-go comparison for finite signed-zero-count skeletons. | NEEDS-VERIFY |
 | `N68MN4ET` | `hep-lat/9802011` | Luscher, "Exact chiral symmetry on the lattice and the Ginsparg-Wilson relation" | Candidate lattice-chirality convention; exact lattice chiral symmetry from the GW relation (chunk-matched, not yet quoted). | KEYED-LOCAL; full-text chunks located 2026-07-08, not yet manuscript-citation-quoted |
+| `BVJBTK8J` | `1601.04832` | "Free quantum field theory from quantum cellular automata: derivation of Weyl, Dirac and Maxwell quantum cellular automata" | QCA/free-field comparison for discrete Dirac constructions; background only. | KEYED-LOCAL; Neo4j hit 2026-07-08 |
+| `B7IRW5HZ` | `hep-th/9304070` | "Dirac and Weyl equations on a lattice as quantum cellular automata" | Early lattice Dirac/Weyl-as-QCA comparison. | KEYED-LOCAL; Neo4j hit 2026-07-08 |
+| `arxiv:2503.05998` | `2503.05998` | "Quantum Electrodynamics from Quantum Cellular Automata, and the Tension Between Symmetry, Locality and Positive Energy" | QCA/positive-energy comparison; adjacent background, not support for null-edge claims. | KEYED-LOCAL; Neo4j hit 2026-07-08 |
 | `TBD-NeubergerOverlap` | TBD | Neuberger overlap operator | Imported overlap-operator convention beyond the local finite algebra. | NEEDS-VERIFY |
 | `TBD-McKeanSinger` | TBD | McKean-Singer index theorem | Analytic comparison only; do not cite for finite PSA/sector additivity until a precise theorem anchor is checked. | NEEDS-VERIFY |
 | `TBD-AtiyahSinger` | TBD | Atiyah-Singer index theorem | Continuum comparison for index language. | NEEDS-VERIFY |
@@ -117,19 +120,21 @@ Status labels:
 Surfaced by the comprehensive review
 (`Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`) and now cited in
 the manuscript §2a / References. `ID-ONLY` pending Zotero keying + convention
-check; Neo4j MCP was down this session, so ingest via `Scripts/lit/lit_ingest.py`
+check; after the 2026-07-08 Neo4j restart, several local keys were confirmed,
+but ID-only rows still need `Scripts/lit/lit_ingest.py` / chunk-level checks
 (existence-check on arXiv id first). The three flagged as novelty-critical
-(closest prior art) are marked `[CRITICAL]`.
+(closest prior art) are marked `[CRITICAL]`; source-status wording is deliberately
+conservative until local chunks are quoted.
 
 | Key | Identifier | Source | Role | Status |
 |---|---|---|---|---|
-| `TBD-BiziBrouderBesnard2016` | `1611.07062` | Bizi-Brouder-Besnard, "Space and time dimensions of algebras ... Lorentzian NCG" | `[CRITICAL]` Krein spectral triple SOLVING fermion doubling = the §6/§8 Krein-positive-sector move; narrows §2a novelty. | ID-ONLY |
-| `TBD-Barrett2007` | `hep-th/0608221` | Barrett, "A Lorentzian version of the NCG of the Standard Model" | `[CRITICAL]` finite Lorentzian + SM prior art (Fable-flagged gap). | ID-ONLY, NEEDS-VERIFY |
-| `TBD-FosterJacobson2016-4D` | `1610.01142` | Foster-Jacobson, "Spin on a 4D Feynman Checkerboard" | `[CRITICAL]` 4D null-face checkerboard Dirac, projection amplitudes, no doubling; closest carrier prior art (already keyed `TN53N8J2`; elevated to must-cite in §2a). | KEYED-LOCAL |
+| `TBD-BiziBrouderBesnard2016` | `1611.07062` | Bizi-Brouder-Besnard, "Space and time dimensions of algebras with applications to Lorentzian noncommutative geometry and quantum electrodynamics" | `[CRITICAL]` finite/Lorentzian/Krein NCG and fermion-doubling solution; narrows §2a novelty. | ID-ONLY; arXiv verified 2026-07-08, no local key/chunk yet |
+| `TBD-Barrett2007` | `hep-th/0608221` | Barrett, "A Lorentzian version of the non-commutative geometry of the standard model of particle physics" | `[CRITICAL]` Lorentzian NCG Standard Model and fermion-doubling removal prior art. | ID-ONLY; arXiv verified 2026-07-08, no local key/chunk yet |
+| `TBD-FosterJacobson2016-4D` | `1610.01142` | Foster-Jacobson, "Spin on a 4D Feynman Checkerboard" | `[CRITICAL]` 4D null-face checkerboard Dirac, projection amplitudes, no doubling; closest carrier prior art (already keyed `TN53N8J2`; elevated to must-cite in §2a). | KEYED-LOCAL; Neo4j key `TN53N8J2` confirmed 2026-07-08 |
 | `TBD-Connes2006` | `hep-th/0608226` | Connes, "NCG and the SM with neutrino mixing" | KO-dimension-6 fermion-doubling cure; SM+gravity+see-saw. | ID-ONLY |
-| `TBD-BakirciogluArnaultArrighi2025` | `2505.07900` | Bakircioglu-Arnault-Arrighi, "Fermion Doubling in Quantum Cellular Automata" | Chiral doubler-free neutrino-like QCA + Nielsen-Ninomiya evasion (F7). | ID-ONLY |
+| `TBD-BakirciogluArnaultArrighi2025` | `2505.07900` | Bakircioglu-Arnault-Arrighi, "Fermion Doubling in Quantum Cellular Automata" | QCA-era fermion-doubling prior art; manuscript novelty must not imply this analysis is absent. | ID-ONLY; arXiv verified 2026-07-08, no local key/chunk yet |
 | `TBD-NielsenNinomiya1981` | INSPIRE 155854 | Nielsen-Ninomiya, "Absence of neutrinos on a lattice" | The no-go traded by the Krein `J`-hermiticity route (F7, §8). | ID-ONLY |
-| `TBD-Zwanziger1991` | DOI `10.1016/0550-3213(91)90581-H` | Zwanziger, "Vanishing zero-momentum lattice gluon propagator and color confinement" | Confinement = singlets get real mass by reflection positivity; the prior form of §6 balanced closure (F2). | ID-ONLY |
+| `TBD-Zwanziger1991` | DOI `10.1016/0550-3213(91)90581-H` | Zwanziger, "Vanishing of zero-momentum lattice gluon propagator and color confinement" | Positivity-violation / confinement prior-art comparison; background only, not theorem support for null-edge balanced closure. | ID-ONLY; DOI/title verified 2026-07-08, no local key/chunk yet |
 | `TBD-YangEtAl2018` | `1808.08677` | Yang et al., "Proton Mass Decomposition from the QCD EMT" | The proton mass budget (§4, §5); scheme-dependence. | ID-ONLY |
 | `TBD-Liu2021` | `2103.15768` | Liu, "Proton mass decomposition and hadron cosmological constant" | RG-invariant vs scheme-dependent decomposition; the §4a/§5 caveat's exact ref. | ID-ONLY |
 | `TBD-NuFIT60-2024` | `2410.05380` | Esteban et al., NuFIT-6.0 | Neutrino oscillation global fit; the P-ν comparison target. | ID-ONLY |
@@ -140,9 +145,10 @@ check; Neo4j MCP was down this session, so ingest via `Scripts/lit/lit_ingest.py
 | `TBD-Nandi2022` | `2204.13649` | Nandi, G-concurrence monogamy in higher dimension | The higher-dim wedge/determinant concurrence closest to Plücker mass (F3). | ID-ONLY |
 | `TBD-MeltonMichaelsenRuzziconi2026` | `2606.27421` | Melton-Michaelsen-Ruzziconi, "Observing Massive Scattering from Null Infinity" | Massive <-> timelike infinity = the celestial reading of the thesis (F9). | ID-ONLY |
 | `TBD-FernandezProcacci2006` | `math-ph/0605041` | Fernandez-Procacci, cluster-expansion bounds via Penrose identity | Target abstraction for the forest-injection bounty (Kotecky-Preiss lineage). | ID-ONLY |
-| `TBD-ToobySmith2024-HepLean` | `2405.08863` | Tooby-Smith, "HepLean: Digitalising high energy physics" | Machine-verified physics already exists; narrows §2a methodology claim. | ID-ONLY |
+| `TBD-ToobySmith2024-HepLean` | `2405.08863` | Tooby-Smith, "HepLean: Digitalising high energy physics" | Machine-verified high-energy physics already exists; narrows §2a methodology claim. | ID-ONLY; arXiv verified 2026-07-08, no local key/chunk yet |
 | `TBD-ElvangHuang2013` | `1308.1697` | Elvang-Huang, "Scattering Amplitudes" | Canonical spinor-helicity `det P` kinematics reference (§3). | ID-ONLY |
 | `TBD-Kull2002` | `quant-ph/0212053` | Kull, checkerboard on dense-rational 2D Minkowski | Non-continuous-spacetime checkerboard precedent (§2a). | ID-ONLY |
+| `TBD-PhysLean-Weyl` | `2405.08863` | Tooby-Smith, PhysLean (`Physlib/Relativity/.../Weyl/Metric.lean`) | Convention cross-check for §3: `spinorWedge` = PhysLean left-handed Weyl metric `!![0,1;-1,0]` (clean-room match, verified 2026-07-08); see `docs/PHYSLEAN.md`. | KEYED-LOCAL (source clone) |
 
 ## Next provenance actions
 

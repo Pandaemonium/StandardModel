@@ -33,6 +33,13 @@ Conventions:
 - `rankOneHermitian psi = psi psi^dagger`;
 - determinant mass is the `2 x 2` determinant over `ℂ`;
 - squared modulus is represented as the complex number `z * conj z`.
+- Convention cross-check (clean-room, not copied): `spinorWedge psi phi
+  = psi 0 * phi 1 - psi 1 * phi 0` equals `psi^T * metricRaw * phi` for the
+  left-handed Weyl metric `metricRaw = !![0, 1; -1, 0]` of the PhysLean library
+  (`Physlib/Relativity/Tensors/ComplexTensor/Weyl/Metric.lean`, Apache-2.0) -
+  same 2-component `SL(2, C)` spinors, same sign. See `docs/PHYSLEAN.md`. Our
+  formalization was written independently; the match confirms the standard
+  convention.
 
 Status: trusted, no `s o r r y`.
 -/

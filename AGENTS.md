@@ -115,7 +115,13 @@ report the issue.
    Prefer the Lean MCP tools over blind grep: `lean-lsp`
    (`lean_leansearch`/`lean_loogle`/`lean_leanfinder`/`lean_state_search`, and
    `lean_local_search` to confirm a name exists) and `lean-explore`
-   (offline semantic search over Mathlib **and PhysLean**).
+   (offline semantic search over Mathlib **and PhysLean**). When formalizing a
+   **physics object** (spinors, Clifford/Pauli/Dirac algebra, Lorentz group,
+   gauge/hypercharge/anomaly, Standard Model, Spin(10)), also check **PhysLean**
+   first (`lean-explore packages=["Physlib"]`; source clone + version constraint
+   in [`docs/PHYSLEAN.md`](docs/PHYSLEAN.md)) and cross-check conventions against
+   it - it is version-pinned away from our build, so consult and clean-room
+   port, do not import.
 3. Identify the smallest useful target statement.
 4. Add or modify definitions only when necessary.
 5. State the theorem precisely.

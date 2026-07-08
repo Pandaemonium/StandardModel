@@ -185,7 +185,14 @@ verification, and the four-channel budget as one object. Situating the work:
   collinear — textbook in the amplitudes literature (Elvang–Huang; Dixon,
   TASI lectures) `[import]`. Our contribution in §3 is *not* the fact but its
   Plücker/Cauchy–Binet packaging, its kernel-checked formalization, and its
-  use as the organizing invariant that reappears in every channel.
+  use as the organizing invariant that reappears in every channel. As an
+  independent convention check, our spinor wedge `ψ⁰φ¹ − ψ¹φ⁰` coincides
+  exactly with the left-handed Weyl metric `𝓔 = !![0,1;-1,0]` of the PhysLean
+  physics library (`Physlib/Relativity/Tensors/ComplexTensor/Weyl`,
+  Tooby-Smith) `[import]` — same 2-component `SL(2,ℂ)` spinors, same sign — so
+  §3 is not idiosyncratic notation but the standard, independently-formalized
+  object; PhysLean's `comm_metricRaw` is the `SL(2,ℂ)`-invariance that makes
+  `det P` Lorentz-invariant.
 - **Part I is Penrose and Feynman.** The zig-zag electron is Penrose (*Road
   to Reality* §25.2); the "velocity eigenvalues are ±c, rest is light running
   in place" picture is *Zitterbewegung* (Dirac; Hestenes); the discrete
@@ -222,26 +229,29 @@ verification, and the four-channel budget as one object. Situating the work:
   Nielsen–Ninomiya evasion) `[import]` is the nearest kin to §8/the doubler
   discussion. Kauffman–Noyes combinatorial work and Wilczek's "mass without
   mass" (the QCD share) `[import]` are the nearest slogans; Zwanziger's (1991)
-  reflection-positivity confinement mechanism — color singlets get a real mass,
-  non-singlets a complex one — is the prior form of §6's balanced-closure
-  reading `[import]`.
+  lattice confinement / positivity-violation setting is a nearby comparison
+  and a warning that this terrain is occupied, not source support for §6's
+  finite balanced-closure theorem `[import]`.
 - **What is new, stated by contrast — and narrowed after a literature
   review.** Neither the finite Krein setting (Bizi et al; Barrett) nor
-  machine-verified physics (HepLean, Tooby-Smith 2024, formalizes CKM, anomaly
-  cancellation, Higgs physics in Lean 4) `[import]` is new *on its own*, and we
-  do not claim either. The defensible novelty is the **combination**: (i) a
+  machine-verified physics (HepLean `2405.08863`, exact-ID verified but not yet
+  source-quoted) `[import]` is new *on its own*, and we do not claim either.
+  The defensible novelty is the **combination**: (i) a
   finite Krein *null-edge* carrier whose square is graded into a four-channel
   budget `4 D^#D = Q_A+Q_C+4Q_T+E_#` that **answers to the kernel-checked
-  Plücker mass invariant `det P`** — the specific tie between an indefinite-
-  metric operator budget and the §3 kinematic mass is, to our search, unoccupied;
+  Plücker mass invariant `det P`** — we did not find this specific tie between
+  an indefinite-metric operator budget and the §3 kinematic mass in our search,
+  and we make no primacy claim;
   (ii) a **pre-registered kill-discipline** (grades, oracle quarantine, kill
   conditions) applied to a speculative unification — a working methodology, not
   "first verified physics"; and (iii) **kernel verification of a specific
-  constructive-QFT chain** (reflection positivity → OS reconstruction → spectral
-  gap → clustering), plausibly among the first machine-checked fragments in that
-  lineage. The pictures are borrowed and the individual ingredients are
+  constructive-QFT chain** (reflection positivity → OS reconstruction →
+  spectral gap → clustering), a machine-checked instance of that chain on finite
+  lattices; we make no priority claim relative to existing verified-physics work
+  such as HepLean. The pictures are borrowed and the individual ingredients are
   occupied; the combination, the `det P`-answering budget, and the verified
-  kill-discipline are ours. A full prior-art map with novelty-gap analysis is in
+  kill-discipline are the current contribution. A full prior-art map with
+  novelty-gap analysis is in
   `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`. Full source-key:
   `Sources/Null_Edge_References.md`.
 
@@ -600,8 +610,9 @@ distinct from the chromomagnetic `Q_C` channel — §4 rail 2.)
 lattices: the Wilson-loop area law (`tyAreaLaw_slab_exp`), slab reflection
 positivity (`wilsonSlabConnected_reflectionPositive`), an OS-reconstructed
 spectral gap (`osSpectralGap_pos`), and exponential clustering
-(`slab_exponential_clustering`) — the two hard pillars of confinement and
-mass gap, in their strong-coupling forms. The one remaining hole in the
+(`slab_exponential_clustering`) — finite strong-coupling analogues of two
+hard pillars often associated with confinement and mass-gap arguments. The one
+remaining hole in the
 gap chain is a finite forest-counting injection, now diagnosed (this
 month, audit memo, **MEMO**) as a *malposed statement* rather than a hard
 proof: the total-block
@@ -1146,7 +1157,9 @@ prior-art map with novelty-gap analysis is in
 
 **Machine-verified physics; slogans (§2a).**
 
-- J. Tooby-Smith, *HepLean: Digitalising high energy physics*, arXiv:2405.08863.
+- J. Tooby-Smith, *HepLean: Digitalising high energy physics*, arXiv:2405.08863
+  (now the *PhysLean* library, `Physlib`; its `Relativity/.../Weyl` metric
+  `!![0,1;-1,0]` is the independent convention check for §3's spinor wedge).
 - F. Wilczek, *QCD Made Simple* / "Mass Without Mass", Phys. Today 53 (2000) 22;
   L. H. Kauffman, H. P. Noyes, discrete-physics program (bit-string / iterant
   combinatorics).
