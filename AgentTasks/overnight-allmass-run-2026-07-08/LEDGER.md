@@ -933,3 +933,21 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   no closure positivity claimed (only the SUM). Instantiation is the
   handed-off content.
 - Verification: lake env lean (clean, local guard passes); lake build (green).
+
+## [FIX Claude] Wire orphaned local-pin modules into the build graph
+
+- Found two tonight-landed modules with LOCAL guard pins were orphaned
+  (imported by 0 files): the lakefile has no globs, so `lake build` builds
+  only transitive imports of roots; orphaned modules escape the standard
+  guard-build check.
+- FIXED: `ApertureDominancePositivity` now imported by CarrierAxiomGuard
+  (clean/uncontended) - building the guard now pulls it in and its local
+  pin self-verifies. Guard build green (8071).
+- HANDOFF: `LinearizedClosureEnergy` still orphaned - it belongs in
+  SlabAxiomGuard (import + optionally migrate its local pin), but that
+  file is Codex-contended right now. Whoever converges SlabAxiomGuard:
+  add `import PhysicsSM.Draft.NullEdge.GateYM.LinearizedClosureEnergy`
+  (its local pin self-verifies). Until then it is kernel-checked but not
+  in the standard guard-build check.
+- Note: both modules DO build individually (verified); this is a
+  durability/convention fix, not a correctness issue.
