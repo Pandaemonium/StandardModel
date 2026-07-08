@@ -4142,6 +4142,24 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Detailed note:
   `ARISTOTLE_FREEZE_RESCUE_2026-07-07.md`.
 
+## [ARISTOTLE-HARVEST Codex] Replacement batch returned; P03 landed, P12 strengthened
+
+- Downloaded and inspected the three replacement Aristotle outputs:
+  P03 `ef6a366f`, Q11 `91260b54`, and P12 `4f0e6c21`.
+- P03 landed as
+  `PhysicsSM/Draft/NullEdge/GateYM/QCNonabelianTwoFace.lean`: an exact
+  nonabelian two-face `Q_C` witness proving Hilbert-adjoint closure positivity
+  by an operator Gram identity, plus a Krein-adjoint negative control
+  `diag(2,-2)` showing positivity fails in the indefinite metric.
+- P03 is imported by `PhysicsSM/Draft/NullEdge/GateYM.lean` and guard-pinned in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`.
+- Q11 returned a strategy/proof-plan report rather than a patch.  Recorded it as
+  `ARISTOTLE_Q11_CAUCHYBINET_RESCUE_PLAN_2026-07-07.md`; claim boundary:
+  functor law only, with determinant cocycle / RC0 / unimodularity still parked.
+- P12 semantic audit passed; applied the low-risk strengthening removing the
+  unused nonzero hypotheses from `kappaB1_eq` and `kappaB2_eq` in
+  `KoideSubNatProbe.lean`.
+
 ## [FABLE review] S1 closure contribution VERIFIED and integrated (Amendment B)
 
 - Reviewed the external S1 memo + oracle (user-supplied; archived to
@@ -4170,3 +4188,32 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
   only after Lean transcription against the guard-pinned 4-slot
   normalization (L1-L5 ladder; multi-direction compensated-form risk
   pre-registered).
+
+## [FABLE S1-lane] Amendment-B Lean rungs L1-L3 LANDED; L4 queued; S1-CC gated
+
+- New module `PhysicsSM/Draft/NullEdge/GateYM/S1ClosureCurrentAlgebra.lean`
+  (kernel-clean, zero warnings), four guard pins green in SlabAxiomGuard:
+  - L1 `su2_closure_gram_central`: (1-W)(1-W)^H = (2 - tr W).1 for
+    special-unitary 2x2, via the generic `fin_two_add_adjugate`
+    (W + adj W = tr W . 1) and W^H = adjugate for det-1 unitaries; plus
+    `two_sub_two_cos` (2 - 2cos t = 4 sin^2(t/2), the aperture rhyme).
+  - L2 `closure_defect_split`: 2(1-W) = (1-W)(1-W)^H + (W^H - W) for any
+    unitary - the Gram-vs-field-strength split behind the Amendment-B
+    chromomagnetic wording rail.
+  - L3 `null_soldered_square` + `closure_current_square` (both
+    CHOICE-FREE, [propext, Quot.sound]): abstract two-term null-soldered
+    square in any ring with an explicit anti-homomorphism - no PSD
+    diagonal; skew pairing collapses it to the pure bivector term
+    2.(b.(A^# B)). Explicit-hypothesis style per the run's GW lemmas.
+- L4 QUEUED (next rung, Aristotle-shaped): instantiate
+  `closure_current_square` on the concrete two-transport carrier with
+  A^# B = -K/2, stated against the guard-pinned 4-slot normalization
+  (carry the 4's and the #-vs-dagger caveat). Any lane may take it; the
+  oracle fixture is `Scripts/oracle/probe_s1_closure_oracle_v01.py` R5.1.
+- Gate S1-CC remains BLOCKED on the Q01/HSTAR carrier V' transcription
+  (docket's declared next blocker). Standing request to the HSTAR lane:
+  on landing V', run the one-day necessary-condition probe
+  sig(J Q_C |_{V'}) per Amendment B before any positivity claim.
+- Verification: `lake env lean .../S1ClosureCurrentAlgebra.lean` clean;
+  `lake build ...S1ClosureCurrentAlgebra` (8026 jobs);
+  `lake build ...SlabAxiomGuard` (8146 jobs, all pins green).

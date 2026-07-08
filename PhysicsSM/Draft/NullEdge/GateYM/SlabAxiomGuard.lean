@@ -13,6 +13,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLaw
 import PhysicsSM.Draft.NullEdge.GateYM.QCLeading
 import PhysicsSM.Draft.NullEdge.GateYM.QCTwoStateCycleReadout
 import PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck
+import PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierBridge
 import PhysicsSM.Draft.NullEdge.GateYM.QCCarrierTorusAttachment
 import PhysicsSM.Draft.NullEdge.GateYM.TYAreaLawSUN
@@ -59,6 +60,7 @@ import PhysicsSM.Draft.NullEdge.GateI1.NBodyAperture
 import PhysicsSM.Draft.NullEdge.GateYM.CharacterExpansion
 import PhysicsSM.Draft.NullEdge.CouplingUnificationFinite
 import PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction
+import PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -538,6 +540,28 @@ is a documented draft `s o r r y` and is NOT guarded. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.QCClosureGramCheck.z2_half_defectGram_eq_linearDefect
 
+/-! ## P03: nonabelian two-face closure witness and Krein negative control -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.twoface_curvatureGram_eq_holonomyGram' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.twoface_curvatureGram_eq_holonomyGram
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.twoface_curvatureGram_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.twoface_curvatureGram_posSemidef
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.hz_kreinGram_not_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.hz_kreinGram_not_posSemidef
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.hz_kreinGram_not_negSemidef' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.hz_kreinGram_not_negSemidef
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.hilbert_vs_krein' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.QCNonabelianTwoFace.hilbert_vs_krein
+
 /-! ## Batch wave 11 (final): E8-240 COMPLETENESS - E8RootSet = exactly the norm-2 E8-lattice vectors -/
 
 /-- info: 'PhysicsSM.Draft.E8Root240Complete.E8RootSet_eq_lattice_norm2' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -572,5 +596,23 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.closure_defect_trace_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.PlaquetteClosureAction.closure_defect_trace_eq_zero_iff
+
+/-! ## QCD-ROADMAP Amendment B: S1 closure-current rungs L1-L3 -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.su2_closure_gram_central' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.su2_closure_gram_central
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_defect_split' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_defect_split
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.null_soldered_square' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.null_soldered_square
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
