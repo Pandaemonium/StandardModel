@@ -37,6 +37,25 @@ provenance; this block records the current state):
   cancel) — so the gap is formalization, not mathematical risk. This is the live
   Aristotle proof target (`allmass-strategy-s1ccpres-20260708`, corrected to the
   non-vacuous statement).
+- **NEW insight (Aristotle s1ccpres iteration, 2026-07-08 PM) — the physical
+  `Q_G` is Krein-self-adjoint, NOT definite-Hermitian.** A first attempt to state
+  the general existence with `Q_G.IsHermitian` (definite conjugate-transpose
+  adjoint) + `Q_G² = 0` was proved by Aristotle to be **degenerate**: over `ℂ`
+  with the definite adjoint, a Hermitian nilpotent vanishes
+  (`Aᴴ = A`, `A² = 0 ⇒ AᴴA = 0 ⇒ A = 0`, helper
+  `isHermitian_sq_eq_zero_imp_eq_zero`), so those hypotheses collapse `Q_G = 0` and
+  the "sector" degenerates to the whole carrier. This is a semantic sharpening, not
+  a setback: the *physical* BRST/Gauss charge is nilpotent and **non-Hermitian**
+  (self-adjoint only w.r.t. the indefinite Krein form), exactly like the witness's
+  `Q_G = c₁ ⊗ G` with `c₁ = E₀₁` (null covector, `c₁² = 0`, `c₁ ≠ c₁ᴴ`). The
+  correct general hypotheses are therefore `Q_G² = 0` and `[b, Q_G] = 0` (no
+  Hermiticity) — under which the sector `ker Q_G / range Q_G` is genuinely
+  nontrivial, and the b-eigenbasis existence is the real (non-degenerate)
+  simultaneous-structure problem. The degenerate `Q_G = 0` theorem was **not
+  integrated** into the trusted tree (it would be a hollow landing); the corrected
+  target is back with Aristotle. Also note `compression_balanced_eigbasis` needs
+  only the b-intertwining, **not** `Pᴴ P = 1`, so orthonormality (the wrong notion
+  without definite structure) is not required.
 - **K-A (soldered `Q_G`) still the pre-registered kill** — unchanged.
 
 ## The resolution (grade MEMO unless noted)

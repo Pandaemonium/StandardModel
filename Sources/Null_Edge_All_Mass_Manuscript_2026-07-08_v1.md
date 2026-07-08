@@ -761,7 +761,14 @@ square has no positive-definite diagonal. Therefore:
 > `ker Q_G`), because `range Q_G` is `b`-invariant, so its directions come in `±`
 > pairs that cancel in the inertia — a **MEMO** argument, independently confirmed
 > by two adversarial reviews (Fable call-09 and the batch-5 Aristotle audit); what
-> is owed is its kernel transcription.
+> is owed is its kernel transcription. (That transcription is genuinely
+> non-trivial for a sharp reason surfaced this run: the physical Gauss charge
+> `Q_G` is nilpotent and **Krein**-self-adjoint, *not* definite-self-adjoint — a
+> *definite*-Hermitian nilpotent would collapse to `0` over `ℂ`
+> (`Aᴴ=A, A²=0 ⇒ A=0`), degenerating the sector; the witness's
+> `Q_G = c₁ ⊗ G` with `c₁ = E₀₁` is nilpotent and non-Hermitian precisely so that
+> `V'/N` is nontrivial. The general existence must therefore use `Q_G² = 0` and
+> `[b,Q_G]=0` without Hermiticity — the honest, non-degenerate form of the gap.)
 > The mechanism is a grading anticonjugation: the closure bivector
 > `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
 > every gauge-defined constraint sector (gauge acts on the color factor

@@ -334,3 +334,18 @@ Keep queue full.
 - PROOF `f6644f9b` (s1ccpres) still RUNNING on the CORRECTED non-vacuous existence
   target (dimension pin + range-Q_G-complement + descent). This is the live
   frontier; harvest when IDLE.
+
+## Cycle A.15 (~16:30) — s1ccpres harvest #1: SEMANTIC BUG found, re-tasked
+
+- **Harvested f6644f9b (existence, iter 1).** Aristotle closed the sorry
+  non-vacuously BUT found my target hypotheses were physically WRONG:
+  `Q_G.IsHermitian` (definite adjoint) + `Q_G^2=0` FORCES `Q_G=0` over C
+  (`isHermitian_sq_eq_zero_imp_eq_zero`), so the theorem is DEGENERATE (only the
+  full-carrier Q_G=0 case). NOT integrated (hollow landing). The real insight: the
+  physical Gauss/BRST charge is nilpotent + NON-Hermitian (Krein-self-adjoint),
+  exactly like the witness c1=E01. Recorded in S1CC_RESOLUTION.md + S6 crux box.
+- **Re-tasked f6644f9b** via `continue`: corrected hypotheses `Q_G^2=0` and
+  `[b,Q_G]=0` WITHOUT Hermiticity (non-degenerate sector); P need only be a
+  b-eigenbasis of a complement of range Q_G in ker Q_G (compression_balanced_eigbasis
+  needs no orthonormality). Now RUNNING on the corrected target.
+- **In flight:** f6644f9b (corrected existence), `99797bf9` batch-6 dynamics audit.
