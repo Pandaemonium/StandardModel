@@ -152,7 +152,42 @@ harvest completed ones, resubmit. Do not let the queue go empty.
   Strategy doc's honest risk: the sign is airtight; the "Δ is THE binding energy"
   reading rests on the (λ,κ) carrier reduction (kernel only at (2,1)).
 
-## In flight — Aristotle queue (3 running as of ~12:12)
+## Cycle A.8 (~12:30) — harvested batch 1 (all 5) + refilled
+
+- **CLIFFORD `e39d6043`: LANDED + integrated + closes audit #2.** Both targets
+  VERBATIM (no convention change): `CliffordAssembly.HAC_eq_clifford`
+  (`J_cl*(Q_A+Q_C) = HAC`), `Jmet_eq_clifford` (`Js⊗I3 = Jmet`). The hand-typed T2
+  carrier IS the Cl(4) Kronecker assembly, kernel-certified. T2 provenance
+  disclosure upgraded (oracle -> M); §11 row; guard green (8089).
+- **S1-CC `e2115aad`: OVER-DELIVERED - landed kernel witness. INTEGRATION TARGET.**
+  `S1CCPhysicalSectorWitness.lean` (in result archive): converts kill-condition K-B
+  from oracle to kernel - `[G,K]=0`, `Q_G²=0`, `JQc` Hermitian, `b(JQc)b=−(JQc)`,
+  descent/radical, `balanced_on_physical_sector` (inertia (2,2,0) on V'/N),
+  `JQc_not_positive_on_sector`. **Upgrades the §6 central S1-CC crux from MEMO to
+  block-level M.** Also a MEMO->M strategy note. NEXT: re-base onto the project
+  (uses reused engine `hermitian_balanced_count_of_neg_charpoly`), guard-pin,
+  upgrade §6/§10 crux #1 grade.
+- **UNIFIER `9bc63388`: OVER-DELIVERED - landed graded-index half. INTEGRATION
+  TARGET.** `EquivariantGradedIndex.lean` (extended): `graded_budget_decomposition`
+  (the 4-channel budget as ONE equivariant graded identity - "unification is
+  decomposition"), `graded_trace_odd_vanishes` (McKean-Singer), `graded_trace_sum`,
+  `graded_trace_sector_split`. Honest boundary: a topological index theorem is NOT
+  earned (category error - no base space/K-theory). NEXT: integrate the new
+  theorems (project already has EquivariantGradedIndex; reconcile), guard-pin,
+  add a §11/§10 "organizing theorem (provable half)" note. Blocker for the rest:
+  eigenspace-finrank/projection-trace API.
+
+## In flight — Aristotle queue (3 running as of ~12:35, batch 2)
+
+- AUDIT `c8f48caf` (batch2) — over-claim audit of CliffordAssembly + BindingDefect
+  + the 2 new witnesses.
+- PROOF `1b19c35f` (sectorgap) — full 6x6 sector mass gap = aperture - |closure|.
+- STRATEGY `4894d6d0` (fock) — finite second-quantized mass gap from the 1-particle
+  carrier.
+NEXT TICK: integrate the S1-CC + unifier witnesses (backlog), harvest batch 2,
+top up.
+
+## (harvested) Aristotle batch 1 pt.2 (~11:53-12:12)
 
 - STRATEGY `e2115aad` (allmass-strategy-s1cc) — kernelize the §6 S1-CC crux.
 - STRATEGY `9bc63388` (allmass-strategy-unifier) — the equivariant-index unifier.
