@@ -735,15 +735,19 @@ square has no positive-definite diagonal. Therefore:
 > `hermitian_balanced_count_of_neg_charpoly` prove the finite Hermitian
 > count theorem (**M**). The half-constraint rigidity that forces the
 > single-covector Gauss charge is also kernel-checked
-> (`half_constraint_rigidity`, **M**); and the actual nullity and
-> `(2,2,0)` inertia are confirmed on the `6x6` witness by the
-> pre-registered numeric probe. So `Q_C` is honestly a *signed* chromomagnetic
+> (`half_constraint_rigidity`, **M**); and the actual `(2,2,0)` inertia is now
+> **kernel-checked** on the explicit `6x6` Clifford⊗color witness
+> (`S1CCPhysicalSectorWitness.balanced_on_physical_sector`, **M**, self-guarded) —
+> no longer only a numeric probe. So `Q_C` is honestly a *signed* chromomagnetic
 > channel; any surviving physical positivity would require a `J`-positive
-> sector not balanced by the same grading. The finite
-> count theorem is landed; what stays MEMO pending separate rungs is the
-> concrete `V'` construction from the carrier Gauss covectors, the descent
-> data, and the identification of the restricted representative as the
-> Hermitian `B = J Q_C` to which the finite theorem applies.
+> sector not balanced by the same grading. What used to stay MEMO — the concrete
+> `V'` construction from the carrier Gauss covectors (`Q_G = c₁⊗G`), the descent
+> data (`[G,K]=0`, `Q_G²=0`, `N ⊆ radical`, `b(J Q_C)b = −J Q_C`), and the
+> identification of the restricted representative `B = (J Q_C)|V'/N` (a literal
+> `submatrix` on the coordinate-axis coset reps) to which the finite count theorem
+> applies — is **now all kernel-checked** in that witness. What remains MEMO is
+> only the claim that *every* scalar-metric physical Gauss sector reduces to this
+> witness shape (the general representative), not the witness itself.
 
 **The adversarial check the resolution turns on — run, and it fails on the
 witness (a pre-registered probe finding, MEMO).** The escape route —
