@@ -731,6 +731,31 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   pinned image cardinality `(m_j - 1)!`, structured image cardinality `m_j!`,
   plus a named missing-factor statement bridged back to the real K1 encoders.
 
+## [SUBMITTED Codex] Aristotle audit - K2 total-assembly source
+
+- Submitted source-aware audit project
+  `fdf500a4-9a3b-4537-ad30-48d5c362fae8`.
+- Target:
+  `PhysicsSM/Draft/NullEdge/GateYM/S1ClosureCurrentAlgebra.lean`, finite-product
+  total-assembly declarations (`finiteProductForm_total`,
+  `finiteProductForm_total_square`,
+  `finiteProductForm_total_eq_zero_of_forall`).
+- Request: verify source semantics, overclaim boundary, guard pins, and the best
+  next theorem to bridge this abstract finite-product form to concrete K2
+  pair-indexed carrier data.
+
+## [SUBMITTED Codex] Aristotle audit - S1-CC balanced-inertia source
+
+- Submitted source-aware audit project
+  `283e0e8d-16d0-4e51-a385-517f2e4a01eb`.
+- Target:
+  `PhysicsSM/Draft/NullEdge/GateYM/S1CCBalancedInertia.lean`, especially
+  `anticonj_odd_pow_trace_zero`, `anticonj_charpoly_eq`, and
+  `half_constraint_rigidity`.
+- Request: verify finite algebra statements, identify any docstring overclaim
+  around "spectrum symmetric" or "balanced inertia", and propose the next
+  minimal Lean theorem from charpoly symmetry to balanced inertia.
+
 ## [LAND Claude] RG-Schur M-dependent iff + inertia-count handoff
 
 - `mid_effective_nilpotent_iff` (RGSchurMassWitness.lean): the decimated
@@ -747,3 +772,27 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   individual builds green). All ~9 tonight modules collectively verified.
 - Verification: lake env lean RGSchurMassWitness (clean); lake build (8027);
   CarrierAxiomGuard (8070).
+
+## [LAND Claude] Banks-Casher count reality + CONVERGENCE NOTE with Codex
+
+- `count_trace_real` (FiniteBanksCasherCount.lean, kernel-clean): the
+  near-zero count Tr(⅟((m-A)(m+A))) is REAL (the operator is Hermitian);
+  upgrades the manuscript's "genuine count" claim to kernel-checked.
+  Committed STANDALONE (guard pin deferred - see below).
+- CONVERGENCE (co-equal coordination): Codex is concurrently editing
+  S1CCBalancedInertia.lean - it added the multiset-count capstone lemmas
+  `countP_pos_eq_countP_neg_of_map_neg_eq` and
+  `card_pos_eq_card_neg_of_multiset_map_neg_eq`, i.e. the FINITE half of the
+  inertia-count capstone I handed off. Combined with my `anticonj_charpoly_eq`
+  (spectrum symmetric => eigenvalue multiset negation-invariant), these
+  compose into the full balanced-inertia theorem. Our two halves are meeting.
+- GUARD COORDINATION: SlabAxiomGuard.lean is being edited by BOTH of us
+  (Codex's countP pins + my count_trace_real pin, both uncommitted). Codex's
+  countP pin footprint reads [propext, Quot.sound] but the ACTUAL is
+  [propext, Classical.choice, Quot.sound] - needs Classical.choice added.
+  I am NOT touching the shared guard file to avoid clobber; whoever
+  converges the guard should: (a) fix Codex's countP pin footprint,
+  (b) add the count_trace_real pin, (c) wire card_pos... + anticonj_charpoly
+  into the final capstone. Deferring my count_trace_real guard pin to that
+  coordinated pass.
+- Pivoting away from shared files to reduce contention.

@@ -158,4 +158,35 @@ theorem banks_casher_count (A : Matrix n n ℂ) (m : ℝ) (hskew : Aᴴ = -A)
   rw [← skew_resolvent_conj A m hskew]
   exact resolvent_sum_trace A (m : ℂ)
 
+/-- Helper: the trace of the inverse of a Hermitian matrix is real. -/
+theorem trace_invOf_real_of_herm {P : Matrix n n ℂ} [Invertible P]
+    (hP : Pᴴ = P) : (starRingEnd ℂ) (⅟P).trace = (⅟P).trace := by
+  have hleft : (⅟P)ᴴ * P = 1 := by
+    have h : (P * ⅟P)ᴴ = 1 := by rw [mul_invOf_self, conjTranspose_one]
+    rwa [conjTranspose_mul, hP] at h
+  have hih : (⅟P)ᴴ = ⅟P := (invOf_eq_left_inv hleft).symm
+  rw [starRingEnd_apply, ← Matrix.trace_conjTranspose, hih]
+
+/-- **The count is a genuine real number.** The near-zero-count operator
+`(m - A)(m + A) = m² + Aᴴ A` is Hermitian (for real `m`, skew-Hermitian
+`A`), so its inverse is Hermitian and the count `Tr ⅟((m-A)(m+A)) = N_m/m²`
+is real: `conj N = N`. (Non-negativity `0 ≤ N_m` additionally needs the
+positive-definiteness of `m² + Aᴴ A`; recorded as a handoff. Reality alone
+already licenses calling `N_m` a count rather than an algebraic
+expression.) -/
+theorem count_trace_real (A : Matrix n n ℂ) (m : ℝ) (hskew : Aᴴ = -A)
+    [Invertible (((m : ℂ) • (1 : Matrix n n ℂ) - A)
+        * ((m : ℂ) • (1 : Matrix n n ℂ) + A))] :
+    (starRingEnd ℂ) (⅟(((m : ℂ) • (1 : Matrix n n ℂ) - A)
+        * ((m : ℂ) • (1 : Matrix n n ℂ) + A))).trace
+      = (⅟(((m : ℂ) • (1 : Matrix n n ℂ) - A)
+        * ((m : ℂ) • (1 : Matrix n n ℂ) + A))).trace := by
+  have h1 : ((m : ℂ) • (1 : Matrix n n ℂ) + A)ᴴ = (m : ℂ) • 1 - A := by
+    rw [conjTranspose_add, conjTranspose_smul, conjTranspose_one, hskew,
+      Complex.star_def, Complex.conj_ofReal, sub_eq_add_neg]
+  have h2 : ((m : ℂ) • (1 : Matrix n n ℂ) - A)ᴴ = (m : ℂ) • 1 + A := by
+    rw [conjTranspose_sub, conjTranspose_smul, conjTranspose_one, hskew,
+      Complex.star_def, Complex.conj_ofReal, sub_neg_eq_add]
+  exact trace_invOf_real_of_herm (by rw [conjTranspose_mul, h1, h2])
+
 end PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount
