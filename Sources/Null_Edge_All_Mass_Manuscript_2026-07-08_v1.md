@@ -194,20 +194,55 @@ verification, and the four-channel budget as one object. Situating the work:
   to the 1+1D Dirac propagator is a *proven theorem* (Gersch; Jacobson–
   Schulman) `[import]` — a `T`-grade external result that closes the §9/§10
   continuum gap *for the simplest chain*, which we import rather than reprove.
-- **Structurally closest living programs.** Finster's *causal fermion
-  systems* (finite/measure-theoretic, mass from a variational principle, no
-  background) `[import]` and Connes' *spectral triples* (our carrier `D` with
-  the `Γφ` fluctuation is NCG-adjacent) `[import]` are the nearest relatives;
-  Kauffman–Noyes combinatorial/discrete-physics work and Wilczek's "mass
-  without mass" essays (the QCD share) `[import]` are the nearest slogans.
-- **What is new, stated by contrast.** Against that background the actual
-  novelty is narrow and honest: (i) the *finite Krein/indefinite* setting
-  with an explicit physical-sector positivity question (§6), which the CFS
-  and NCG programs handle differently; (ii) *kernel verification* of the
-  algebra (the grades, the anchor table); and (iii) the *single four-channel
-  budget* `4 D^#D = Q_A+Q_C+4Q_T+E_#` as one decomposition, with the same
-  disagreement invariant read in each channel. The pictures are borrowed; the
-  finite-verified packaging and the budget are ours. Full source-key:
+  **This is also the closest living prior art, and we flag it plainly:**
+  Foster–Jacobson (2016), "Spin on a 4D Feynman Checkerboard" `[import]`,
+  discretize the Weyl equation on a hypercubic lattice with **null faces**,
+  with step amplitudes that are **spin projection operators** and a retarded
+  propagator that is a product of projectors, and **no fermion doubling** — a
+  construction startlingly close to our null-soldered Clifford carrier with
+  reflection sectors. Our added structure is the Krein grading and the
+  four-channel budget on top of such a carrier; the honest reading of F8/§9 is
+  "cast the Foster–Jacobson null-face checkerboard as a Krein carrier and read
+  its mass budget," not a new 3+1D checkerboard. Kull (2002) similarly builds a
+  checkerboard on a *dense rational* (non-continuous) 2D Minkowski.
+- **Structurally closest living programs.** The nearest relatives are the
+  *indefinite-metric spectral-triple* programs, and we cite them because they
+  already occupy ground §2a earlier drafts implied was ours: **Bizi–Brouder–
+  Besnard (2016)** build a pseudo-Riemannian spectral triple over **Krein**
+  spaces and *exhibit a physical-state space solving the fermion-doubling
+  problem* `[import]` — the same Krein-positive-sector move we make (§6, §8);
+  **Barrett (2007)** gives a *Lorentzian* version of the NCG Standard Model
+  `[import]`; **Connes (2006)** cures fermion doubling by a KO-dimension-6
+  twist `[import]`. Finster's *causal fermion systems* (finite/measure-
+  theoretic, mass from a variational principle, no background) `[import]` and
+  Connes' *spectral triples* generally (our carrier `D` with the `Γφ`
+  fluctuation is NCG-adjacent) are the broader family. On the discrete-Dirac
+  side, the *quantum-walk / quantum-cellular-automaton* literature (Bakircioglu–
+  Arnault–Arrighi 2025 give a chiral, doubler-free, neutrino-like QCA and its
+  Nielsen–Ninomiya evasion) `[import]` is the nearest kin to §8/the doubler
+  discussion. Kauffman–Noyes combinatorial work and Wilczek's "mass without
+  mass" (the QCD share) `[import]` are the nearest slogans; Zwanziger's (1991)
+  reflection-positivity confinement mechanism — color singlets get a real mass,
+  non-singlets a complex one — is the prior form of §6's balanced-closure
+  reading `[import]`.
+- **What is new, stated by contrast — and narrowed after a literature
+  review.** Neither the finite Krein setting (Bizi et al; Barrett) nor
+  machine-verified physics (HepLean, Tooby-Smith 2024, formalizes CKM, anomaly
+  cancellation, Higgs physics in Lean 4) `[import]` is new *on its own*, and we
+  do not claim either. The defensible novelty is the **combination**: (i) a
+  finite Krein *null-edge* carrier whose square is graded into a four-channel
+  budget `4 D^#D = Q_A+Q_C+4Q_T+E_#` that **answers to the kernel-checked
+  Plücker mass invariant `det P`** — the specific tie between an indefinite-
+  metric operator budget and the §3 kinematic mass is, to our search, unoccupied;
+  (ii) a **pre-registered kill-discipline** (grades, oracle quarantine, kill
+  conditions) applied to a speculative unification — a working methodology, not
+  "first verified physics"; and (iii) **kernel verification of a specific
+  constructive-QFT chain** (reflection positivity → OS reconstruction → spectral
+  gap → clustering), plausibly among the first machine-checked fragments in that
+  lineage. The pictures are borrowed and the individual ingredients are
+  occupied; the combination, the `det P`-answering budget, and the verified
+  kill-discipline are ours. A full prior-art map with novelty-gap analysis is in
+  `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`. Full source-key:
   `Sources/Null_Edge_References.md`.
 
 ---
@@ -648,16 +683,17 @@ what is obstructed is the *surviving positivity* half (crux #1 below, §4 rail
 genuine `sigma_z`-*odd* Clifford content (a **larger** Clifford algebra where
 the closure bivector and the chirality are *distinct* gradings), or use a `J`
 not anticommuting with `b` (reopening S1-CC), or a non-`b`-invariant sector
-(likewise). The live route is the first, and a follow-up probe this run confirms it
-**works**: an explicit *two-edge* carrier (`probe_multiedge_positive_sector.py`)
+(likewise). The live route is the first, and a follow-up probe this run gives a
+numeric MEMO witness for that route: an explicit *two-edge* carrier
+(`probe_multiedge_positive_sector.py`)
 whose 4-dimensional Clifford factor Cl(4) admits a grading `b` that
 anticommutes the closure bivector (balancing `Q_C`) while *commuting* with the
 Krein metric `J_s` (fixing `Q_A`) — the pair the 2-dimensional single-doublet
 could not provide — has a 6-dimensional `J`-positive sector on which the total
 Krein form `J(Q_A + Q_C)` becomes **positive-definite `(6,0,0)`** once the
-aperture dominates. So the obstruction is a small-model artifact, not a wall:
-a genuine multi-edge carrier supplies exactly the definite positive sector
-`sector_ground_mass` needs (numeric oracle; the Lean witness — `Matrix.PosDef`
+aperture dominates. So the obstruction appears to be a small-model artifact,
+not a wall: this multi-edge oracle supplies the definite positive-sector
+pattern `sector_ground_mass` needs (numeric oracle; the Lean witness — `Matrix.PosDef`
 on the sector feeding the keystone — is the next **M**-target). Full analysis:
 `S1CC_APERTURE_GRADING_FINDING.md` (the obstruction) and
 `T2_MULTIEDGE_ESCAPE_FINDING.md` (the escape). (Technical note preserved: the kernel rung
@@ -907,10 +943,10 @@ on the single-doublet witness, but a follow-up probe this run shows the
 obstruction is a small-model artifact: an explicit **two-edge Cl(4) carrier**
 has a `J`-positive sector on which the total Krein form is positive-definite
 `(6,0,0)` under aperture dominance (`probe_multiedge_positive_sector.py`, §6).
-So the escape mechanism is validated numerically; the remaining step is the
+So the escape mechanism is numerically validated at MEMO grade; the remaining step is the
 **Lean witness** (`Matrix.PosDef` on the sector, feeding the keystone) — now
 the program's single most valuable next *construction*, de-risked from
-"obstructed" to "transcribe the validated escape"; and **(0b)** the **§3↔§4 bridge**
+"obstructed" to "transcribe the candidate escape"; and **(0b)** the **§3↔§4 bridge**
 `min spec(D^#D|P) = det P` of the ground bundle — the theorem that the
 keystone's eigenvalue is *the* kinematic mass of §3 and not merely *an*
 eigenvalue. It is grade **C**, is **not** proved, and (per the Aristotle
@@ -959,10 +995,12 @@ footprints are the `#print axioms` messages inside the guard blocks. Guard
 status: **trusted namespace** = outside `Draft/`, needs no pin;
 **guard-pinned** = a `#guard_msgs … #print axioms` block enforces the
 footprint in the named guard file; **local guard pin** = the block is in the
-declaration's own file; **not pinned** = kernel-checked but without an
+declaration's own file and is enforced when that module builds; **not pinned** = kernel-checked but without an
 enforced pin (supporting identities only, never flagship claims). *(Table
-anchor-swept — every name and guard status grep-verified against the repo on
-2026-07-08, per the anchor rule.)*
+anchor-swept — every one of the 38 declaration names produced a string
+`grep` match in its claimed file on 2026-07-08. This is a text-match check,
+not an elaboration check; existence and axiom footprints are supported
+separately by the targeted Lean and guard builds.)*
 
 | § | Declaration | File | Grade / guard | Role |
 |---|---|---|---|---|
@@ -978,7 +1016,7 @@ anchor-swept — every name and guard status grep-verified against the repo on
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure-defect trace identity |
 | 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | Wilson action = squared defect |
-| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin; imported by `SlabAxiomGuard` | leading closure defect = nonnegative `|F|²` energy |
+| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin in `LinearizedClosureEnergy.lean`; enforced transitively because `SlabAxiomGuard` imports that module | leading closure defect = nonnegative `|F|²` energy |
 | 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure square structure (abstract) |
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | abstract skew-pairing square (concrete `Q_C=L^#L` is MEMO) |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | M, guard-pinned (`SlabAxiomGuard`) | strong-coupling area law |
