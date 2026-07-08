@@ -36,6 +36,21 @@ ZERO failures (spectrum/evolution/rgflow) — the §9a/Appendix A claims are tru
 Commits (this cycle): 7 `solo-202607:` commits (S9a+refs+S11; phase diagram;
 Mlodinow-Brun; Pereira harmonize; abstract de-stale).
 
+## Cycle A.2 (~10:xx) — direction-B deepening + novelty check
+
+Per the Stop-hook ("run until 6pm"), kept advancing after the manuscript finish:
+
+- **`carrier_scattering_sim.py`** — a 4th dynamics simulator: a finite S-matrix
+  (1+1D Dirac QW with a mass barrier). Unitary + reciprocal, transmission
+  monotone-down in barrier mass, massless region transparent (critical line as a
+  scattering statement). Debugged 3 real physics/measurement issues honestly
+  (measure-before-clearance, ring wrap-around, coin-angle wrapping past pi/2);
+  faithful sweep capped in the small-angle Mlodinow-Brun regime. ALL checks pass.
+  Wired into §9a + Appendix A (three -> four sims). Directions A+B+C now covered.
+- **Core-thesis novelty check** (chunk search): NO prior art frames mass as
+  null-direction disagreement / null-transport obstruction; substantiates §2a.
+- Verified all four simulators run with zero failures.
+
 ## In flight (external, not harness-tracked)
 
 - **Aristotle mass-gap proof job** — project `121f6472-...`, task `c9cfeed1-...`,

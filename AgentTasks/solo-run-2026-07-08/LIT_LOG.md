@@ -86,3 +86,30 @@ chain (already cited). So the "which carriers admit a continuum limit" TODO is
 effectively ANSWERED by Mlodinow-Brun; ACTED by making §9a's QW continuum-limit
 remark concrete (naming those conditions, cross-ref §2a) instead of a bare "cf."
 No need to chase Manighalam-Kon via external scholarly search.
+
+## Lit pass 2026-07-08 (core-thesis novelty check) - reassuring negative
+
+Chunk-searched the graph for the DEFINING thesis "mass = obstruction to coherent
+null transport / geometric disagreement of null directions". Nearest hits (all
+< 0.75 similarity, none a match):
+- Causal-set tails / back-scattering off curvature (Sorkin school) - a different
+  propagation phenomenon, not mass-as-null-disagreement;
+- energy-momentum diffusion from discreteness (massless stays on the light cone);
+- "Discreteness without symmetry breaking" direction-map theorem (relevant to our
+  null-frame/direction claims, already in the Malament-split discussion);
+- minimally-doubled fermions: backward/forward propagating states in parallel
+  correlators (a doubling-side neighbor, already covered in §8).
+NO prior art frames mass as null-direction disagreement / null-transport
+obstruction. This substantiates the §2a claim ("we did not find this specific
+tie ... and we make no primacy claim"); the classical spinor-helicity fact
+(P^2 = sum|<ij>|^2) remains the honest nearest [import], already credited. No
+manuscript edit needed - §2a already states this conservatively.
+
+## Direction B deepened: carrier_scattering_sim.py (finite S-matrix)
+
+Added the 4th dynamics simulator: a 1+1D Dirac QW with a mass barrier. Unitary
++ norm-conserving S-matrix (|T|+|R|=1 after clearance), transmission monotone-
+down in barrier mass and ->1 as m0->0 (massless region transparent = critical
+line as a scattering statement), reciprocal (T_L=T_R < 1e-3). Faithful regime =
+small coin angle (Mlodinow-Brun continuum). All checks pass. Wired into S9a +
+Appendix A. Directions A+B+C now covered by 4 Lean-anchored sims.
