@@ -226,7 +226,16 @@ det P = sum_{i<j} | psi_i wedge psi_j |^2 .
 
 The left side is invariant mass squared. The right side is the total
 pairwise *disagreement* of the null directions — the sum of squared
-wedges, which vanishes exactly when two directions are parallel. So:
+wedges, which vanishes exactly when two directions are parallel.
+
+The sharpest reading is geometric: `P = sum_i psi_i psi_i^dagger` is a
+positive matrix, and `det P` is the *area* (squared volume) its null
+directions span in spinor space. A massless bundle has **rank-one**
+momentum — all its light points one way, a single coherent beam. A massive
+bundle spans a **two-** (or higher-) dimensional slice, and its mass squared
+is exactly the area opened by the nonparallel directions. So "mass is trapped
+disagreeing light" is, precisely, *mass is the area null directions open in
+spinor space* — massless is rank-collapse, massive is spread. So:
 
 - A single null edge is massless: `det (psi psi^dagger) = 0`
   (`det_rankOneHermitian_eq_zero`, **M**, trusted namespace
@@ -379,10 +388,11 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
 
 1. **The shares are signed.** We do *not* call them positive fractions.
    Whether a channel share is positive is the closure-positivity question
-   of §6 — now *resolved*: `b_C` is genuinely signed (the closure form is
-   balanced on the physical sector), so `b_C` can be negative on some
-   states. This is not a defect: §8 explains why the physics of chiral
-   symmetry breaking *requires* the closure channel to have negative
+   of §6 — now conditionally resolved at the M-engine + MEMO-instantiation
+   boundary: `b_C` is genuinely signed, and the checked `6x6` witness has
+   balanced closure inertia on its `V'/N` realization. So `b_C` can be
+   negative on some states. This is not a defect: §8 explains why the physics
+   of chiral symmetry breaking *requires* the closure channel to have negative
    directions.
 2. **`b_C` is the chromomagnetic share, not "gluon energy."** The closure
    *channel* `Q_C` is linear in field strength (a `sigma·F` /
@@ -580,11 +590,14 @@ hypotheses, which is *stronger* in that direction); the group-independence
 positivity by itself — null Clifford coefficients are isotropic, so the
 square has no positive-definite diagonal. Therefore:
 
-> **The central crux, resolved as a structured no-go (M engine + MEMO).**
+> **The central crux, conditionally resolved as a structured no-go
+> (M engine + MEMO physical instantiation).**
 > Positivity of the closure channel is not a full-space fact and never
 > could be; it can hold only on the physical (Gauss-law) sector `V'/N`.
-> The resolution (Fable analysis, this run): closure is **not** positive
-> there — it is exactly *balanced* (Krein signature zero), structurally.
+> If the MEMO physical-sector identification and descent hypotheses are
+> instantiated as stated, closure is **not** positive there: it is balanced
+> on the checked `6x6` witness realization of `V'/N`
+> (`sig = (2,2,0)`, oracle).
 > The mechanism is a grading anticonjugation: the closure bivector
 > `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
 > every gauge-defined constraint sector (gauge acts on the color factor
@@ -596,12 +609,11 @@ square has no positive-definite diagonal. Therefore:
 > `hermitian_balanced_count_of_neg_charpoly` prove the finite Hermitian
 > count theorem (**M**). The half-constraint rigidity that forces the
 > single-covector Gauss charge is also kernel-checked
-> (`half_constraint_rigidity`, **M**); and the balanced inertia is
-> confirmed on the `6x6` witness by the pre-registered numeric probe
-> (`sig = (2,2,0)`, oracle). So `Q_C` is honestly a *signed* chromomagnetic
-> channel; physical positivity must come from the `J`-definite complement
-> of the closure doublet (the matter/transverse directions), exactly as in
-> Gupta-Bleuler the longitudinal pair contributes zero norm. The finite
+> (`half_constraint_rigidity`, **M**); and the actual nullity and
+> `(2,2,0)` inertia are confirmed on the `6x6` witness by the
+> pre-registered numeric probe. So `Q_C` is honestly a *signed* chromomagnetic
+> channel; any surviving physical positivity would require a `J`-positive
+> sector not balanced by the same grading. The finite
 > count theorem is landed; what stays MEMO pending separate rungs is the
 > concrete `V'` construction from the carrier Gauss covectors, the descent
 > data, and the identification of the restricted representative as the
@@ -616,7 +628,8 @@ Prompted by an external review (Fable call-04), we checked this on the `6x6`
 witness and found the escape route **does not survive** there
 (`probe_s1cc_aperture_grading.py`): `b` negates `J Q_A` and `J Q_T` **as well
 as** `J Q_C`, so the *whole* form `J(Q_A + Q_C + 4 Q_T)` is congruent to its
-negative and is balanced — inertia `(2,2,0)` — on the physical sector `V'/N`.
+negative and is balanced — inertia `(2,2,0)` — on the `6x6` witness
+realization of the physical sector `V'/N` (probe finding, MEMO).
 The aperture does **not** rescue positivity, because the object that must be
 positive is the *Krein* form `J Q_A`, and it is balanced even though `Q_A`
 itself is positive-definite as a matrix.
@@ -856,7 +869,7 @@ is dead, so no one re-derives them:
   ordering is the correct convention.
 - **Spectral-measure language before positivity** — embargoed
   program-wide; finite eigenvalue-*count* identities are the sanctioned
-  form (§6's Banks–Casher count, `banks_casher_count`, **M**).
+  form (§6's Banks–Casher-type finite count, `banks_casher_count`, **M**).
 - **"Random closure disorder increases the near-zero count `N_m`"** (the
   naive §9→§6 constituent-mass bridge, Amendment A4) — killed by a
   pre-registered probe: finite random curvature, chiral or generic,
@@ -868,24 +881,24 @@ is dead, so no one re-derives them:
   closure grading `b` that balances `Q_C` also balances `Q_A` and `Q_T` (the
   aperture is Clifford-scalar, hence `b`-even, hence its Krein form `J Q_A` is
   `b`-negated), so the *whole* operator `J(Q_A+Q_C+4Q_T)` is balanced
-  `(2,2,0)` on `V'/N`. The escape route of §6 has no witness; a rescuing model
-  must give the aperture genuine `sigma_z`-odd Clifford content — a larger
+  `(2,2,0)` on the checked `6x6` witness realization of `V'/N`. The escape
+  route of §6 has no witness; a rescuing model must give the aperture genuine
+  `sigma_z`-odd Clifford content — a larger
   Clifford algebra with the closure bivector and chirality as distinct
   gradings (a multi-edge carrier). This is the sharpest open problem, not a
   refutation of the balanced-closure no-go itself (§6).
 
 **The open cruxes, ranked** (after this run's progress). The former #1 —
-physical-sector closure positivity (S1-CC) — is now *resolved at MEMO grade
-with a kernel-checked engine* (§6): the anticonjugation algebra that forces a
-balanced (signature-zero) closure form is kernel-checked (**M**), and the
-pre-registered numeric kill probe passed, but the balanced-inertia conclusion
-still rests on the MEMO-grade Gauss-sector `V'` construction and the inertia
-step (not yet transcribed). So it is a structured no-go established at the
-program's highest non-kernel grade, not a fully kernel-closed theorem — and
-its *surviving positivity half* is now known to be **obstructed on the
-witness** (see the new kill below and §6): the same grading that balances
-closure also balances the aperture and turn, so the escape route has no
-witness yet. What remains, ranked: **(0) The Rayleigh–Ritz keystone
+physical-sector closure positivity (S1-CC) — is now *conditionally resolved at
+MEMO grade with a kernel-checked engine* (§6): the finite anticonjugation and
+Hermitian count algebra is kernel-checked (**M**), and the pre-registered
+numeric kill probe passed, but the physical `J Q_C|V'/N` instantiation still
+rests on the MEMO-grade Gauss-sector `V'` construction and descent data. So it
+is a structured no-go established at the program's highest non-kernel grade,
+not a fully kernel-closed theorem — and its *surviving positivity half* is now
+known to be **obstructed on the witness** (see the new kill below and §6): the
+same grading that balances closure also balances the aperture and turn, so the
+escape route has no witness yet. What remains, ranked: **(0) The Rayleigh–Ritz keystone
 `sector_ground_mass` is now *proved* (M, guard-pinned; §4 rail 3)** — the
 conditional "definite positive sector `⇒` genuine positive squared-mass
 eigenvalue" is kernel-checked. What it is conditional *on* splits into the
@@ -909,9 +922,10 @@ subject. (1) The strong-coupling gap's forest injection (§6) — now a
 well-posed combinatorics problem (demoted to a standing bounty). (2) The
 color-singlet mass-budget witness (§4) — designed, `b_C ≠ 0`, awaiting
 transcription. (3) The reflection-sectored double-pinning theorem and its
-rational fixture (§8). (4) The S1-CC Lean capstone and the equivariant-index
-unification of §§4/6/8 (the program's candidate organizing theorem). Each is
-finite, each has a kill condition, none requires new axioms.
+rational fixture (§8). (4) The S1-CC physical `J Q_C|V'/N` bridge applying
+the landed finite capstone, and the equivariant-index unification of §§4/6/8
+(the program's candidate organizing theorem). Each is finite, each has a kill
+condition, none requires new axioms.
 
 **Pre-registered predictions (falsifiable, dimensionless, dated).** The
 program is permitted exactly one kind of numeric prediction: a
@@ -964,14 +978,14 @@ anchor-swept — every name and guard status grep-verified against the repo on
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure-defect trace identity |
 | 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | Wilson action = squared defect |
-| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin; imported by `SlabAxiomGuard` | leading closure defect = positive `|F|²` energy |
+| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin; imported by `SlabAxiomGuard` | leading closure defect = nonnegative `|F|²` energy |
 | 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure square structure (abstract) |
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | abstract skew-pairing square (concrete `Q_C=L^#L` is MEMO) |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | M, guard-pinned (`SlabAxiomGuard`) | strong-coupling area law |
 | 6 | `wilsonSlabConnected_reflectionPositive` | `GateYM/WilsonSlabConnected.lean` | M, guard-pinned (`SlabAxiomGuard`) | slab reflection positivity |
 | 6 | `OSReconstruction.osSpectralGap_pos` | `GateYM/OSReconstruction.lean` | M, guard-pinned (`SlabAxiomGuard`) | OS spectral gap |
 | 6 | `slab_exponential_clustering` | `GateYM/SlabClustering.lean` | M, guard-pinned (`SlabAxiomGuard`) | exponential clustering |
-| 6 | `banks_casher_count` | `GateYM/FiniteBanksCasherCount.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite Banks-Casher count |
+| 6 | `banks_casher_count` | `GateYM/FiniteBanksCasherCount.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite Banks-Casher-type eigenvalue count |
 | 6 | `skew_prod` | `GateYM/FiniteBanksCasherCount.lean` | M, guard-pinned (`SlabAxiomGuard`) | count denominator `= m²+AᴴA` |
 | 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | odd-trace identity from finite anticonjugation |
 | 6 | `anticonj_charpoly_eq` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite anticonjugation gives charpoly negation symmetry |
