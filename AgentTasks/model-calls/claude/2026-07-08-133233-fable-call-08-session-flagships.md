@@ -1,3 +1,639 @@
+# Claude model call log
+
+## Metadata
+
+- Provider: `Claude CLI`
+- Model: `claude-fable-5`
+- Status: `completed`
+- Dry run: `False`
+- Started: `2026-07-08T13:29:46`
+- Finished: `2026-07-08T13:32:33`
+- Timeout seconds: `600`
+- Max budget USD: `2.50`
+- Return code: `0`
+
+## Command
+
+```text
+claude -p --bare --model claude-fable-5 --max-budget-usd 2.50 --output-format text --add-dir 'C:\Projects\StandardModel' --tools default --permission-mode bypassPermissions --disallowed-tools 'Edit Write NotebookEdit mcp__neo4j_graph__write-cypher mcp__zotero_write' --mcp-config 'C:\Projects\StandardModel\Scripts\autonomous_loop\review.mcp.json' --strict-mcp-config
+```
+
+## Prompt
+
+```text
+# Fable-5 call 08 (solo run): audit the session's new flagships + manuscript state
+
+You are the program's toughest semantic-alignment auditor + referee (finite,
+machine-verified mathematical-physics program: *mass is the obstruction to
+coherent null transport*). Since your last review (call-07) a large body of new
+kernel-checked, guard-pinned results landed. I need (1) a **semantic-alignment
+audit of the two most consequential new flagships** (embedded verbatim), and (2) a
+**manuscript-state judgment** on whether the grade discipline held across ~40 edits.
+
+## What landed since call-07 (all M, guard-pinned unless noted)
+
+- **Mass gap, full sector**: `B_spectrum` (spectrum `{λ-κ,λ,λ+κ}`); `Msec` = the
+  `6×6` sector form `B(λ,κ)⊕B(λ,-κ)` with least eigenvalue `λ-κ` = aperture-|closure|.
+- **D2 unitary flow**: `exp(-itH)` unitary + `LinearIsometryEquiv`; carrier ORBIT
+  conserves norm/energy. (Graded honestly: generator-as-Hamiltonian is a **C**
+  posit; Euclidean ≠ Krein evolution — the sector's Krein form = Euclidean identity
+  is `sector_krein_form_eq_one`.)
+- **Binding defect** (`BindingDefect`): `Δ_block(λ,κ) = −κ` (negative,
+  closure-controlled, off-diagonal) — the interacting-bridge crux, block level.
+- **T2 Clifford provenance** (`CliffordAssembly`): the hand-typed carrier `HAC`/`Jmet`
+  = the Cl(4) Kronecker assembly (verbatim); I graded this as "realizes the
+  documented recipe" (NOT canonicity — K/order are inputs) after a prior audit.
+- **S1-CC central-crux witness** (`S1CCPhysicalSectorWitness`, embedded): the §6
+  closure form `J Q_C|V'/N` has inertia `(2,2,0)` on the explicit `6×6` physical
+  sector — upgrading the program's former #1 crux from MEMO to kernel on the witness.
+- **Organizing theorem, provable half** (`EquivariantGradedIndex`, embedded):
+  `graded_budget_decomposition` writes the `4 D^#D = Q_A+Q_C+4Q_T+4E_#` budget as
+  one equivariant graded-supertrace identity ("unification is decomposition");
+  disclaimed as NOT a topological index.
+- **Free second-quantized gap** (`FockMassGap`): `dΓ(B)` gap = one-particle gap;
+  `Δ=−κ` seeds a below-threshold bound state (interacting hadron mass still open).
+
+## Task 1 — semantic-alignment audit of the two embedded flagships (be adversarial)
+
+**`S1CCPhysicalSectorWitness.lean`** (the central-crux upgrade). Probe HARD:
+- Is `V'/N` the genuine Gauss-constraint physical sector, or a convenient
+  coordinate choice? Is `N_in_radical` enough to justify "`B = (J Q_C)|V'/N` is the
+  genuine induced form", or is the `submatrix` compression subtly not the true
+  quotient form?
+- Is `balanced_on_physical_sector` (inertia `(2,2,0)`) the real inertia of the
+  induced form, or a weaker fact dressed up? Does the `6×6` toy carrier's link to
+  the *actual* §6 closure form live outside the kernel (I claim only the witness is
+  kernel; the general reduction stays MEMO — is that the honest line)?
+
+**`EquivariantGradedIndex.lean`** (the organizing theorem). Probe:
+- Is `graded_budget_decomposition` a genuine equivariant identity, or trace
+  linearity applied to an *assumed* budget hypothesis (renamed to sound deep)?
+  Where is the real content?
+- Does anything call this an "index" in a way the kernel does not earn? Is the
+  "NOT a topological index" disclaimer sufficient, or does the prose still oversell?
+
+## Task 2 — manuscript state
+
+The complete manuscript is embedded. Since call-07 it gained ~10 new §11 anchor
+rows, §10 crux upgrades (S1-CC MEMO→kernel; binding defect C→block-M), a §9
+second-quantization update, and grade caveats throughout. **Did the grade
+discipline hold?** Flag any grade slip, internal inconsistency, stale "open/MEMO"
+claim now closed, or over-claim introduced by the rapid additions — most severe
+first. If the manuscript is clean, say so and say what you checked. Is it still
+publication-ready as a self-contained draft?
+
+## Required output
+
+- **Semantic-alignment verdict** on each of the two embedded flagships (per-file,
+  3-5 sentences): do the kernel statements say the intended physics? Any mismatch,
+  most severe first.
+- **Manuscript verdict**: did grade discipline hold; any slips; still done?
+- **Bottom line**: the 1-3 most important things (if any) to fix.
+
+One sharp correct load-bearing finding beats ten generic cautions. Report even if
+the news is that it is all honest.
+
+
+## Verbatim source artifacts under review
+
+These are the ACTUAL files. Base every finding on the real statements and definitions below, not on any paraphrase above. For each theorem under review, explicitly check whether the Lean matches its intended reading, and flag every mismatch.
+
+### PhysicsSM/Draft/NullEdge/GateYM/S1CCPhysicalSectorWitness.lean (262 lines)
+
+```lean
+/-
+# S1-CC: an explicit physical-sector witness (MEMO → M for kill-condition K-B)
+
+DRAFT (kernel-clean; no `s o r r y`). This file converts
+the numeric-oracle kill condition **K-B** of `S1CC_RESOLUTION.md` (the `6×6`
+witness with `sig(J Q_C|_{V'/N}) = (2,2,0)`, previously PASSED by
+`probe_s1cc_balanced_inertia.py`) into a kernel-checked statement.
+
+The carrier is `H = ℂ⁶ = (Fin 2) × (Fin 3)` (Clifford ⊗ color). Everything is
+coordinate-aligned so that `V' = ker Q_G`, `N = range Q_G` and the coset
+representatives `V'/N` are axis subspaces, and the induced Krein form on `V'/N`
+is literally a `submatrix` of `J Q_C`.
+
+Design and no-go analysis: `S1CC_MEMO_TO_M_STRATEGY.md`.
+Abstract balance engine reused here: `S1CCBalancedInertia.lean`.
+
+## Claim boundary
+
+Finite explicit matrices. The abstract balance mechanism
+(`hermitian_balanced_count_of_neg_charpoly`) is already M and is only *applied*
+here. This file adds the concrete instantiation that was MEMO: an explicit
+carrier realizing all hypotheses on the physical sector, with the compressed
+form provably Hermitian, `b̄`-anticonjugated, nondegenerate and indefinite,
+hence balanced with inertia `(2,2,0)` — never positive.
+-/
+
+import Mathlib
+import PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia
+
+namespace PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness
+
+open Matrix
+open scoped Kronecker
+
+noncomputable section
+
+/-! ## The carrier and its operators -/
+
+/-- Clifford `σx`. -/
+def sx : Matrix (Fin 2) (Fin 2) ℂ := !![0,1;1,0]
+/-- Clifford `σz` — the closure grading generator on the Clifford leg. -/
+def sz : Matrix (Fin 2) (Fin 2) ℂ := !![1,0;0,-1]
+/-- Single null covector `E₀₁` (the Gupta–Bleuler "half constraint"). -/
+def c1 : Matrix (Fin 2) (Fin 2) ℂ := !![0,1;0,0]
+/-- Closure commutator `K` on the color leg (skew-Hermitian). -/
+def Kc : Matrix (Fin 3) (Fin 3) ℂ := !![0,1,0;-1,0,0;0,0,0]
+/-- Gauss operator `G = diag(0,0,1)` (Hermitian). -/
+def Gc : Matrix (Fin 3) (Fin 3) ℂ := !![0,0,0;0,0,0;0,0,1]
+
+/-- Nilpotent Gauss charge `Q_G = c₁ ⊗ G`. -/
+def QG : Matrix (Fin 2 × Fin 3) (Fin 2 × Fin 3) ℂ := c1 ⊗ₖ Gc
+/-- Closure Krein form `J Q_C = (σx·σz) ⊗ K` on the full carrier (Hermitian). -/
+def JQc : Matrix (Fin 2 × Fin 3) (Fin 2 × Fin 3) ℂ := (sx * sz) ⊗ₖ Kc
+/-- Closure bivector grading `b = σz ⊗ 1`. -/
+def bg : Matrix (Fin 2 × Fin 3) (Fin 2 × Fin 3) ℂ := sz ⊗ₖ (1 : Matrix (Fin 3) (Fin 3) ℂ)
+
+/-! ## Structural facts on the full carrier -/
+
+/-- `[G,K] = 0`: descent (Theorem 1 of the resolution) holds for this carrier. -/
+theorem GK_comm : Gc * Kc = Kc * Gc := by
+  unfold Gc Kc; ext i j; fin_cases i <;> fin_cases j <;>
+    simp [Matrix.mul_apply, Fin.sum_univ_three]
+
+/-- `Q_G² = 0`: the Gauss charge is nilpotent. -/
+theorem QG_nilpotent : QG * QG = 0 := by
+  unfold QG
+  rw [← Matrix.mul_kronecker_mul]
+  have : c1 * c1 = 0 := by
+    unfold c1; ext i j; fin_cases i <;> fin_cases j <;>
+      simp [Matrix.mul_apply, Fin.sum_univ_two]
+  rw [this, Matrix.zero_kronecker]
+
+/-- `J Q_C` is Hermitian (skew ⊗ skew). -/
+theorem JQc_hermitian : JQc.IsHermitian := by
+  unfold Matrix.IsHermitian JQc
+  rw [Matrix.conjTranspose_kronecker]
+  have h1 : (sx * sz)ᴴ = -(sx*sz) := by
+    unfold sx sz; ext i j; fin_cases i <;> fin_cases j <;>
+      simp [Matrix.conjTranspose]
+  have h2 : Kcᴴ = -Kc := by
+    unfold Kc; ext i j; fin_cases i <;> fin_cases j <;>
+      simp [Matrix.conjTranspose]
+  rw [h1, h2]; ext ⟨a,i⟩ ⟨b,j⟩; simp [kroneckerMap]
+
+/-- `b² = 1`, so `b` is an involution (hence invertible with `b⁻¹ = b`). -/
+theorem bg_sq : bg * bg = 1 := by
+  unfold bg
+  rw [← Matrix.mul_kronecker_mul, Matrix.mul_one]
+  have : sz * sz = 1 := by
+    unfold sz; ext i j; fin_cases i <;> fin_cases j <;>
+      simp [Matrix.mul_apply, Fin.sum_univ_two]
+  rw [this, Matrix.one_kronecker_one]
+
+/-- **Full-carrier anticonjugation** `b⁻¹ (J Q_C) b = -(J Q_C)` (using `b⁻¹=b`). -/
+theorem bg_anticonj : bg * JQc * bg = -JQc := by
+  unfold bg JQc
+  rw [← Matrix.mul_kronecker_mul, ← Matrix.mul_kronecker_mul, Matrix.one_mul,
+    Matrix.mul_one]
+  have h1 : sz * (sx*sz) * sz = -(sx*sz) := by
+    unfold sx sz; ext i j; fin_cases i <;> fin_cases j <;>
+      simp [Matrix.mul_apply, Fin.sum_univ_two]
+  rw [h1]; ext ⟨a,i⟩ ⟨b,j⟩; simp [kroneckerMap]
+
+/-- **Descent / radical fact.** The `N`-generator index `(0,2)` pairs trivially
+with the whole carrier under `J Q_C` (row 2 and column 2 of `K` vanish). Hence
+`N = range Q_G` lies in the radical of `J Q_C|_{V'}`, so the induced form on the
+quotient `V'/N` is well-defined and equals the `submatrix` compression below. -/
+theorem N_in_radical (p : Fin 2 × Fin 3) :
+    JQc (0,2) p = 0 ∧ JQc p (0,2) = 0 := by
+  constructor <;>
+  · obtain ⟨b, j⟩ := p
+    unfold JQc Kc; fin_cases b <;> fin_cases j <;>
+      simp [kroneckerMap, Matrix.mul_apply, Fin.sum_univ_two]
+
+/-! ## The compressed form on the physical sector `V'/N`
+
+`V' = ker Q_G` and `N = range Q_G` are coordinate-aligned:
+`Q_G = E_{(0,2),(1,2)}` (single matrix unit), so `V'` is all axes except
+`(1,2)` (dim 5), `N = span e_{(0,2)}` (dim 1), and the coset representatives are
+the four axes `(0,0),(0,1),(1,0),(1,1)` (= `ker G ⊕ ker G`).  -/
+
+/-- Coset representatives of `V'/N`. -/
+def r : Fin 4 → Fin 2 × Fin 3 := ![(0,0),(0,1),(1,0),(1,1)]
+
+/-- The induced Krein form on `V'/N`, as the compression (submatrix) of
+`J Q_C` to the representatives. -/
+def B : Matrix (Fin 4) (Fin 4) ℂ := JQc.submatrix r r
+
+/-- Explicit value of the compressed form: `B = (σx·σz) ⊗ k` with
+`k = !![0,1;-1,0]` the `ker G` block of `K`. -/
+def Bexpl : Matrix (Fin 4) (Fin 4) ℂ :=
+  !![0,0,0,-1; 0,0,1,0; 0,1,0,0; -1,0,0,0]
+
+/-- The descended grading `b̄ = σz ⊗ 1₂ = diag(1,1,-1,-1)` on `V'/N`. -/
+def bg4 : Matrix (Fin 4) (Fin 4) ℂ :=
+  !![1,0,0,0; 0,1,0,0; 0,0,-1,0; 0,0,0,-1]
+
+/-- The compression computes to the explicit matrix. -/
+theorem B_eq_Bexpl : B = Bexpl := by
+  unfold B Bexpl JQc r
+  ext i j; fin_cases i <;> fin_cases j <;>
+    simp [Matrix.submatrix, kroneckerMap, sx, sz, Kc, Matrix.mul_apply,
+      Fin.sum_univ_two]
+
+/-! ### Kernel facts on the compressed form -/
+
+/-- `B` is Hermitian. -/
+theorem B_isHermitian : B.IsHermitian := by
+  rw [B_eq_Bexpl]
+  unfold Matrix.IsHermitian Bexpl
+  ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.conjTranspose]
+
+/-- `B² = 1`: `B` is an involution, hence invertible with eigenvalues `±1`. -/
+theorem B_sq : B * B = 1 := by
+  rw [B_eq_Bexpl]; unfold Bexpl
+  ext i j; fin_cases i <;> fin_cases j <;>
+    simp [Matrix.mul_apply, Fin.sum_univ_four]
+
+/-- `tr B = 0`. -/
+theorem B_trace : B.trace = 0 := by
+  rw [B_eq_Bexpl]; unfold Bexpl
+  simp [Matrix.trace, Matrix.diag, Fin.sum_univ_four]
+
+/-- `b̄² = 1`. -/
+theorem bg4_sq : bg4 * bg4 = 1 := by
+  unfold bg4; ext i j; fin_cases i <;> fin_cases j <;>
+    simp [Matrix.mul_apply, Fin.sum_univ_four]
+
+/-- **Compressed anticonjugation** `b̄ B b̄ = -B` (with `b̄⁻¹ = b̄`). -/
+theorem bg4_anticonj : bg4 * B * bg4 = -B := by
+  rw [B_eq_Bexpl]; unfold bg4 Bexpl
+  ext i j; fin_cases i <;> fin_cases j <;>
+    simp [Matrix.mul_apply, Fin.sum_univ_four]
+
+/-- **Indefiniteness (the positivity refutation).** The Krein form on the
+physical sector realizes both signs, so it is not positive (nor negative)
+semidefinite. -/
+theorem JQc_not_positive_on_sector :
+    (∃ v : Fin 4 → ℂ, (star v ⬝ᵥ B.mulVec v).re < 0) ∧
+    (∃ w : Fin 4 → ℂ, 0 < (star w ⬝ᵥ B.mulVec w).re) := by
+  rw [B_eq_Bexpl]
+  refine ⟨⟨![1,0,0,1], ?_⟩, ⟨![1,0,0,-1], ?_⟩⟩ <;>
+    simp [Bexpl, Matrix.mulVec, dotProduct, Fin.sum_univ_four, star]
+
+/-! ### Inertia `(2,2,0)` via the balance engine
+
+`bg4_anticonj` + `S1CCBalancedInertia.anticonj_charpoly_eq` give
+`(-B).charpoly = B.charpoly`; then
+`S1CCBalancedInertia.hermitian_balanced_count_of_neg_charpoly` gives
+`#pos = #neg`. `B_sq` gives `det B = ±1 ≠ 0`, hence no zero eigenvalue. Combined
+with `Fintype.card (Fin 4) = 4` this yields the sharp inertia. -/
+
+/-- `B` is invertible (from `B² = 1`). -/
+theorem B_isUnit_det : IsUnit B.det := by
+  have h : B.det * B.det = 1 := by
+    have := congrArg Matrix.det B_sq
+    rwa [Matrix.det_mul, Matrix.det_one] at this
+  exact IsUnit.of_mul_eq_one _ h
+
+/-- Charpoly symmetry on the sector, from the compressed anticonjugation. -/
+theorem B_charpoly_symm : (-B).charpoly = B.charpoly := by
+  haveI : Invertible bg4 := ⟨bg4, bg4_sq, bg4_sq⟩
+  have hinv : (⅟ bg4 : Matrix (Fin 4) (Fin 4) ℂ) = bg4 := invOf_eq_right_inv bg4_sq
+  have hAnti : ⅟ bg4 * B * bg4 = -B := by rw [hinv]; exact bg4_anticonj
+  exact S1CCBalancedInertia.anticonj_charpoly_eq B bg4 hAnti
+
+/-- **Balanced count on the physical sector**: as many positive as negative
+Hermitian eigenvalues of `B`. -/
+theorem B_balanced :
+    (Finset.univ.filter (fun i => 0 < B_isHermitian.eigenvalues i)).card =
+      (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i < 0)).card :=
+  S1CCBalancedInertia.hermitian_balanced_count_of_neg_charpoly B B_isHermitian
+    B_charpoly_symm
+
+/-
+No zero eigenvalue (nondegeneracy from invertibility).
+-/
+theorem B_no_zero_eig :
+    (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i = 0)).card = 0 := by
+  have h_det : B.det = ∏ i, (B_isHermitian.eigenvalues i : ℂ) := by
+    convert Matrix.IsHermitian.det_eq_prod_eigenvalues B_isHermitian;
+  have h_det_ne_zero : B.det ≠ 0 := by
+    exact IsUnit.ne_zero ( B_isUnit_det );
+  simp_all +decide [ Finset.prod_eq_zero_iff ]
+
+/-
+**`balanced_on_physical_sector`.** The closure Krein form on `V'/N` has
+inertia `(2,2,0)`: two positive, two negative, no zero eigenvalues — balanced
+(Krein signature zero), hence never positive. This is the kernel form of the
+oracle result `sig(J Q_C|_{V'/N}) = (2,2,0)` (kill-condition K-B).
+-/
+theorem balanced_on_physical_sector :
+    (Finset.univ.filter (fun i => 0 < B_isHermitian.eigenvalues i)).card = 2 ∧
+    (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i < 0)).card = 2 ∧
+    (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i = 0)).card = 0 := by
+  refine' ⟨ _, _, _ ⟩;
+  · have h_card : (Finset.univ.filter (fun i => 0 < B_isHermitian.eigenvalues i)).card + (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i < 0)).card + (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i = 0)).card = 4 := by
+      rw [ Finset.card_filter, Finset.card_filter, Finset.card_filter ];
+      rw [ ← Finset.sum_add_distrib, ← Finset.sum_add_distrib ];
+      exact Eq.trans ( Finset.sum_congr rfl fun _ _ => by rcases lt_trichotomy ( B_isHermitian.eigenvalues _ ) 0 with h | h | h <;> split_ifs <;> first | linarith | aesop ) ( by norm_num );
+    linarith [ B_balanced, B_no_zero_eig ];
+  · have h_card : (Finset.univ.filter (fun i => 0 < B_isHermitian.eigenvalues i)).card + (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i < 0)).card + (Finset.univ.filter (fun i => B_isHermitian.eigenvalues i = 0)).card = 4 := by
+      rw [ Finset.card_filter, Finset.card_filter, Finset.card_filter ];
+      rw [ ← Finset.sum_add_distrib, ← Finset.sum_add_distrib ];
+      exact Eq.trans ( Finset.sum_congr rfl fun _ _ => by rcases lt_trichotomy ( B_isHermitian.eigenvalues _ ) 0 with h | h | h <;> split_ifs <;> first | linarith | aesop ) ( by norm_num );
+    linarith [ B_balanced, B_no_zero_eig ];
+  · convert B_no_zero_eig using 1
+
+end
+
+end PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness
+
+/-! ## Build-enforced axiom pins (this file self-guards its flagships) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.balanced_on_physical_sector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.balanced_on_physical_sector
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.JQc_not_positive_on_sector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.JQc_not_positive_on_sector
+
+```
+
+### PhysicsSM/Draft/NullEdge/Carrier/EquivariantGradedIndex.lean (261 lines)
+
+```lean
+/-
+# The equivariant graded index: the program's candidate organizing theorem
+
+DRAFT (kernel-clean; no `s o r r y`). The structural core of the finite
+equivariant-index framework proposed in Fable call-03 (Part A), overnight
+all-mass run 2026-07-08. Full design + corollary map:
+`AgentTasks/overnight-allmass-run-2026-07-08/CALL03_UNIFIER_S6WITNESS_MASSGAP.md`.
+Strategy / over-claim analysis for this file: `src/ORGANIZING_THEOREM_STRATEGY.md`.
+
+## The framework (why one theorem organizes §§4, 6, 8)
+
+Three gradings the program discovered separately - the chirality `Gamma`,
+the closure bivector `b = sigma_z (x) 1` (S1-CC), and the
+edge-orientation-reversal grading of the GW structure - are all ODD
+elements of ONE symmetry group acting on the decorated complex; gauge
+transformations and the reflection `R` (C4) are EVEN elements. The master
+invariant is the equivariant supertrace `tr(Gamma g | sector)`, and its
+three uses are `g = 1` (McKean-Singer index protection, via the odd-power
+cancellation `graded_trace_odd_power_vanishes`), `g = R` (the C4 sectored
+pinning, `graded_trace_sector_split`), and
+"an odd element exists" (S1-CC: the closure form has an exact supersymmetry,
+so its Witten index vanishes sector-by-sector, forcing balanced inertia).
+In the code `b` and the C4 witness grading are LITERALLY the same matrix
+`sigma_z` - that identity is the framework, not a coincidence.
+
+## What this file lands (the structural core + the provable-half identities)
+
+The master object is the **equivariant graded (super)trace**
+`sdim_g(A) := tr(Gamma * g * A)`, a `ℂ`-linear functional on operators.
+The organizing theorem's *provable half* is the collection of exact finite
+identities this functional satisfies; the *aspirational half* (a topological
+index theorem a la Atiyah-Singer) is NOT claimed - see the strategy note.
+
+Structural core (unchanged):
+* `IsOddInvolutionFor`, `IsEvenSymmetryFor`: the shared data (an odd
+  involution grading, an even commuting symmetry).
+* `chiralProduct_involution`: `C := Gamma * W` is an involution.
+* `sector_pins_W_fixed`: common eigenvectors of `Gamma` and `C` are `W`-fixed.
+
+Provable-half graded-trace identities (the sharpest true finite statements):
+* `graded_trace_odd_vanishes`: `sdim_g` of an *odd* operator is `0`
+  (the finite McKean-Singer supersymmetric cancellation).
+* `gamma_pow_comm`, `graded_trace_odd_power_vanishes`: `tr(Gamma * D^(2k+1)) = 0`
+  - only *even* powers of the Dirac operator (i.e. functions of `D^#D`) can
+  contribute to the supertrace: the finite "localizes to `D^#D`" statement.
+* `graded_trace_sum`: `sdim_g(Sum_i Q_i) = Sum_i sdim_g(Q_i)` - additivity;
+  "unification is decomposition" over an arbitrary channel index.
+* `graded_budget_decomposition`: the exact Dirac-square budget
+  `4 D^#D = Q_A + Q_C + 4 Q_T + 4 E_#` becomes ONE equivariant graded
+  identity relating the four channels' graded indices to the total.
+* `graded_trace_sector_split`: `sdim(A) = sdim_{P_+}(A) + sdim_{P_-}(A)` for
+  the reflection sectors `P_+- = (1 +- R)/2` - the C4 isotypic refinement.
+
+## Claim boundary
+
+Provable half only (finite linear algebra: trace cyclicity + eigenvalue
+pairing). This file makes NO topological-index claim: there is no base space,
+no family of Dirac operators, no K-theory class, and no characteristic-class
+formula. The finite "index" here is literally `str(ker D)` and is computed
+directly, not by topology (manuscript S2a is explicit about this). The
+remaining substance - L3 `graded_supertrace_localizes_to_kernel` (finrank
+form of McKean-Singer), L4 `sector_involution_pinning` (the `dim >= |nu|`
+counting, C4), the balanced-inertia capstone (L2, `anticonj_charpoly_eq` ->
+`n_+ = n_-`), and the RG-Schur bridge (L5) - are documented M-targets that
+need the spectral/eigenspace `finrank` API and are handed off.
+
+## Provenance
+
+Fable call-03 (2026-07-08), Part A - the organizing theorem and its Lean
+design - [orig]/[interp]; the involution and trace algebra is elementary -
+[import].
+-/
+
+import Mathlib
+
+namespace PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex
+
+open Matrix
+
+variable {n : Type*} [Fintype n] [DecidableEq n]
+
+/-- **Shared data (odd face).** `Gamma` is an odd involution for the
+operator `X`: a Hermitian self-inverse grading anticommuting with `X`. The
+additive-face hypothesis of the master theorem (S1-CC / index protection). -/
+structure IsOddInvolutionFor (Gamma X : Matrix n n ℂ) : Prop where
+  invol : Gamma * Gamma = 1
+  herm : Gammaᴴ = Gamma
+  anti : Gamma * X = -(X * Gamma)
+
+/-- **Shared data (even face).** `g` is an even symmetry: it commutes with
+both the operator `X` and the grading `Gamma`. The gauge group and the C4
+reflection `R` are even elements. -/
+structure IsEvenSymmetryFor (g X Gamma : Matrix n n ℂ) : Prop where
+  commX : g * X = X * g
+  commGamma : g * Gamma = Gamma * g
+
+/-- **The chiral product is an involution (the sector-index heart).** For an
+odd involution `Gamma` (`Gamma^2 = 1`) and a unitary `W` (`Wᴴ W = 1`) with
+`Gamma W Gamma = Wᴴ` (the multiplicative face), `C := Gamma * W` satisfies
+`C^2 = 1`. So `V` splits into `C`'s `+-1` eigenspaces, and together with
+`Gamma`'s split this pins the `+-1` eigenvalues of `W` - the multiplicative
+face of the same anticonjugation that gives the additive balanced inertia. -/
+theorem chiralProduct_involution (Gamma W : Matrix n n ℂ)
+    (hchiral : Gamma * W * Gamma = Wᴴ) (hU : Wᴴ * W = 1) :
+    (Gamma * W) * (Gamma * W) = 1 := by
+  rw [← mul_assoc (Gamma * W) Gamma W, hchiral, hU]
+
+/-- **The sector mode-production heart (clause (iii), spectral-theorem-free).**
+If a vector `v` is a common `s`-eigenvector of the grading `Gamma` and the
+chiral product `C = Gamma W` for a sign `s` (`s^2 = 1`, so `s = +-1`), then
+`v` is a fixed vector of `W`: `W v = v`. This is why BOTH the `(+1,+1)` and
+`(-1,-1)` sectors of `(Gamma, C)` land in `ker(W - 1)` - the finite
+mode-production fact behind the sectored pinning inequality (the finrank
+counting `dim >= |nu|` is the remaining L4 step). No eigenvalues, no
+spectral theorem - pure `mulVec` algebra. -/
+theorem sector_pins_W_fixed (Gamma W : Matrix n n ℂ) (v : n → ℂ) (s : ℂ)
+    (hGamma : Gamma * Gamma = 1) (hs : s * s = 1)
+    (hGv : Gamma.mulVec v = s • v)
+    (hCv : (Gamma * W).mulVec v = s • v) :
+    W.mulVec v = v := by
+  have h2 : Gamma.mulVec ((Gamma * W).mulVec v) = Gamma.mulVec (s • v) := by
+    rw [hCv]
+  rw [Matrix.mulVec_mulVec, ← mul_assoc, hGamma, one_mul, Matrix.mulVec_smul,
+    hGv, smul_smul, hs, one_smul] at h2
+  exact h2
+
+/-! ## The provable half: exact finite graded-trace identities
+
+The equivariant graded supertrace is `sdim_g(A) := (Gamma * g * A).trace`.
+The following are the sharpest TRUE finite statements the framework supports.
+They are pure linear algebra (trace cyclicity + a sign), NOT a topological
+index theorem. -/
+
+omit [DecidableEq n] in
+/-- **Supersymmetric cancellation (finite McKean-Singer, `g`-equivariant).**
+If `Gamma` anticommutes with an operator `X` (`X` is *odd*) and the even
+symmetry `g` commutes with `X`, then the equivariant supertrace of `X`
+vanishes: `tr(Gamma * g * X) = 0`. This is the finite algebraic heart of
+"the supertrace sees only the kernel": odd contributions cancel between the
+two chirality sectors. Only `[g, X] = 0` is needed here (not `[g, Gamma]`),
+so the even-face commutation with `Gamma` is deliberately omitted. -/
+theorem graded_trace_odd_vanishes (Gamma g X : Matrix n n ℂ)
+    (hanti : Gamma * X = -(X * Gamma)) (hgX : g * X = X * g) :
+    (Gamma * g * X).trace = 0 := by
+  have h1 : Gamma * g * X = -(X * Gamma * g) := by
+    have h0 : Gamma * g * X = Gamma * (g * X) := by rw [mul_assoc]
+    rw [h0, hgX, ← mul_assoc, hanti, neg_mul, mul_assoc]
+  have h2 : (Gamma * g * X).trace = (X * Gamma * g).trace := by
+    rw [Matrix.trace_mul_comm (Gamma * g) X, mul_assoc]
+  rw [h1, Matrix.trace_neg] at h2
+  have ht : (X * Gamma * g).trace = 0 := self_eq_neg.mp (id (Eq.symm h2))
+  rw [h1, Matrix.trace_neg, ht, neg_zero]
+
+/-- If `Gamma` anticommutes with `D`, then `Gamma * D^m = (-1)^m • (D^m * Gamma)`:
+the grading picks up the parity of the power. The engine behind
+`graded_trace_odd_power_vanishes`. -/
+theorem gamma_pow_comm (Gamma D : Matrix n n ℂ) (hanti : Gamma * D = -(D * Gamma)) :
+    ∀ m : ℕ, Gamma * D ^ m = (-1 : ℂ) ^ m • (D ^ m * Gamma) := by
+  intro m
+  induction m with
+  | zero => simp
+  | succ k ih =>
+    have step : Gamma * D ^ (k + 1) = (Gamma * D ^ k) * D := by rw [pow_succ, ← mul_assoc]
+    rw [step, ih, Matrix.smul_mul, mul_assoc, hanti, mul_neg, ← mul_assoc, ← pow_succ,
+        pow_succ (-1 : ℂ)]
+    module
+
+/-- **Localization to `D^#D` (finite McKean-Singer, odd powers).**
+For a Dirac operator `D` anticommuting with the grading `Gamma`, the
+supertrace of every *odd* power of `D` vanishes: `tr(Gamma * D^(2k+1)) = 0`.
+Hence any supertrace that is a power series in `D` reduces to a series in the
+*even* powers `D^(2k) = (D^#D)^k` - the finite face of "the supertrace of the
+heat kernel localizes to `D^#D` / to the kernel of `D`." -/
+theorem graded_trace_odd_power_vanishes (Gamma D : Matrix n n ℂ)
+    (hanti : Gamma * D = -(D * Gamma)) (k : ℕ) :
+    (Gamma * D ^ (2 * k + 1)).trace = 0 := by
+  have h := gamma_pow_comm Gamma D hanti (2 * k + 1)
+  have hsign : (-1 : ℂ) ^ (2 * k + 1) = -1 := by rw [pow_succ, pow_mul]; norm_num
+  rw [hsign, neg_one_smul] at h
+  have hcyc : (Gamma * D ^ (2 * k + 1)).trace = (D ^ (2 * k + 1) * Gamma).trace :=
+    Matrix.trace_mul_comm _ _
+  rw [h, Matrix.trace_neg] at hcyc
+  have ht : (D ^ (2 * k + 1) * Gamma).trace = 0 := self_eq_neg.mp (id (Eq.symm hcyc))
+  rw [h, Matrix.trace_neg, ht, neg_zero]
+
+omit [DecidableEq n] in
+/-- **Unification is decomposition (additivity of the graded index).**
+The equivariant graded supertrace of a channel sum is the sum of the
+per-channel graded supertraces: `sdim_g(Sum_i Q_i) = Sum_i sdim_g(Q_i)`.
+This is the exact, general form of the organizing slogan. -/
+theorem graded_trace_sum {ι : Type*} (s : Finset ι) (Gamma g : Matrix n n ℂ)
+    (Q : ι → Matrix n n ℂ) :
+    (Gamma * g * (∑ i ∈ s, Q i)).trace = ∑ i ∈ s, (Gamma * g * Q i).trace := by
+  rw [Finset.mul_sum, Matrix.trace_sum]
+
+omit [DecidableEq n] in
+/-- **The Dirac-square budget as one equivariant graded identity.**
+Given the four-channel budget `4 (D^# D) = Q_A + Q_C + 4 Q_T + 4 E_#`
+(aperture/kinetic, closure/QCD, turn/Higgs, soldering/gravity), the four
+channels' graded indices assemble into the total graded index:
+`4 sdim_g(D^#D) = sdim_g(Q_A) + sdim_g(Q_C) + 4 sdim_g(Q_T) + 4 sdim_g(E_#)`.
+This is the honest content of "the four channels ARE the graded pieces of one
+equivariant index": an exact additive decomposition of the master functional.
+It is NOT the claim that this common value is a topological invariant. -/
+theorem graded_budget_decomposition
+    (Gamma g Dsharp D QA QC QT E : Matrix n n ℂ)
+    (hbudget : (4 : ℂ) • (Dsharp * D) = QA + QC + (4 : ℂ) • QT + (4 : ℂ) • E) :
+    (4 : ℂ) • (Gamma * g * (Dsharp * D)).trace
+      = (Gamma * g * QA).trace + (Gamma * g * QC).trace
+        + (4 : ℂ) • (Gamma * g * QT).trace + (4 : ℂ) • (Gamma * g * E).trace := by
+  have key : (Gamma * g * ((4 : ℂ) • (Dsharp * D))).trace
+      = (Gamma * g * (QA + QC + (4 : ℂ) • QT + (4 : ℂ) • E)).trace := by rw [hbudget]
+  simp only [Matrix.mul_smul, mul_add, Matrix.trace_add, Matrix.trace_smul,
+    smul_eq_mul] at key ⊢
+  linear_combination key
+
+/-- **The C4 isotypic refinement (reflection-sectored split).**
+For a reflection `R`, the graded index splits over the two sectors
+`P_+- = (1 +- R)/2`: `sdim(A) = sdim_{P_+}(A) + sdim_{P_-}(A)`. This needs
+only `P_+ + P_- = 1` (an algebraic identity in `ℂ`); that `P_+-` are the
+`R`-eigenprojections is the extra input `R^2 = 1` used downstream to make the
+per-sector values integers `nu_0(chi), nu_pi(chi)`. -/
+theorem graded_trace_sector_split (Gamma R A : Matrix n n ℂ) :
+    (Gamma * A).trace
+      = (Gamma * ((2 : ℂ)⁻¹ • ((1 : Matrix n n ℂ) + R)) * A).trace
+        + (Gamma * ((2 : ℂ)⁻¹ • ((1 : Matrix n n ℂ) - R)) * A).trace := by
+  have hsum : (2 : ℂ)⁻¹ • ((1 : Matrix n n ℂ) + R) + (2 : ℂ)⁻¹ • ((1 : Matrix n n ℂ) - R)
+      = 1 := by rw [← smul_add]; module
+  calc (Gamma * A).trace
+      = (Gamma * (((2 : ℂ)⁻¹ • ((1 : Matrix n n ℂ) + R)
+            + (2 : ℂ)⁻¹ • ((1 : Matrix n n ℂ) - R)) * A)).trace := by rw [hsum, one_mul]
+    _ = _ := by rw [add_mul, mul_add, Matrix.trace_add, mul_assoc, mul_assoc]
+
+/-! ## Local axiom guard (self-contained) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.chiralProduct_involution' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms chiralProduct_involution
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.sector_pins_W_fixed' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms sector_pins_W_fixed
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.graded_trace_odd_vanishes' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms graded_trace_odd_vanishes
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.graded_trace_odd_power_vanishes' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms graded_trace_odd_power_vanishes
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.graded_budget_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms graded_budget_decomposition
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex.graded_trace_sector_split' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms graded_trace_sector_split
+
+end PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex
+
+```
+
+### Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md (1483 lines)
+
+```markdown
 # Mass as null disagreement: a machine-verified finite framework
 
 **A finite, kernel-checked framework in which the invariant mass of a
@@ -250,7 +886,7 @@ verification, and the four-channel budget as one object. Situating the work:
   *on its own*, and we do not claim either.
   The defensible novelty is the **combination**: (i) a
   finite Krein *null-edge* carrier whose square is graded into a four-channel
-  budget `4 D^#D = Q_A+Q_C+4Q_T+4E_#` that **answers to the kernel-checked
+  budget `4 D^#D = Q_A+Q_C+4Q_T+E_#` that **answers to the kernel-checked
   Plücker mass invariant `det P`** — we did not find this specific tie between
   an indefinite-metric operator budget and the §3 kinematic mass in our search,
   and we make no primacy claim;
@@ -601,7 +1237,7 @@ are also the paper's largest reservoir of unearned suggestion. State the
 boundary once, plainly, so no later sentence smuggles it back:
 
 1. **What is a theorem (M).** The operator square `4 D^#D` splits into four
-   named Krein blocks `Q_A + Q_C + 4Q_T + 4E_#` (§4, `carrier_square_assembly`).
+   named Krein blocks `Q_A + Q_C + 4Q_T + E_#` (§4, `carrier_square_assembly`).
    That the split *exists*, that the blocks have the stated Krein
    symmetries, and that their expectations sum to one budget — these are
    kernel-checked. The *algebra* of the decomposition is not in question.
@@ -721,16 +1357,14 @@ hypotheses, which is *stronger* in that direction); the group-independence
 positivity by itself — null Clifford coefficients are isotropic, so the
 square has no positive-definite diagonal. Therefore:
 
-> **The central crux, resolved as a structured no-go on the explicit witness
-> (M engine + M witness instantiation; general representative MEMO).**
+> **The central crux, conditionally resolved as a structured no-go
+> (M engine + MEMO physical instantiation).**
 > Positivity of the closure channel is not a full-space fact and never
 > could be; it can hold only on the physical (Gauss-law) sector `V'/N`.
-> On the explicit `6x6` Clifford⊗color witness, closure is **not** positive
-> there: the induced closure form is balanced,
-> `sig = (2,2,0)` — now **kernel-checked**
-> (`S1CCPhysicalSectorWitness.balanced_on_physical_sector`, **M**), not an
-> oracle probe. What stays **MEMO** is only that *every* scalar-metric physical
-> Gauss sector reduces to this witness shape (the general representative).
+> If the MEMO physical-sector identification and descent hypotheses are
+> instantiated as stated, closure is **not** positive there: it is balanced
+> on the checked `6x6` witness realization of `V'/N`
+> (`sig = (2,2,0)`, oracle).
 > The mechanism is a grading anticonjugation: the closure bivector
 > `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
 > every gauge-defined constraint sector (gauge acts on the color factor
@@ -747,16 +1381,14 @@ square has no positive-definite diagonal. Therefore:
 > (`S1CCPhysicalSectorWitness.balanced_on_physical_sector`, **M**, self-guarded) —
 > no longer only a numeric probe. So `Q_C` is honestly a *signed* chromomagnetic
 > channel; any surviving physical positivity would require a `J`-positive
-> sector not balanced by the same grading. What used to stay MEMO is now largely
-> **kernel-checked** on that witness: the descent data (`[G,K]=0`, `Q_G²=0`,
-> `N ⊆ radical`, `b(J Q_C)b = −J Q_C`), the restricted form `B = (J Q_C).submatrix`,
-> and its balanced inertia `(2,2,0)` are all **M**. One by-inspection step remains
-> (call-08 audit): that `r` enumerates the Gauss coset representatives — i.e. that
-> `ker Q_G` / `range Q_G` are the stated axes — is true because `Q_G = c₁⊗G` is a
-> single matrix unit, but is read off rather than a named lemma; it is `M`‑adjacent,
-> not yet a `#print axioms`-pinned theorem. What remains genuinely MEMO is the
-> claim that *every* scalar-metric physical Gauss sector reduces to this witness
-> shape (the general representative), not the witness itself.
+> sector not balanced by the same grading. What used to stay MEMO — the concrete
+> `V'` construction from the carrier Gauss covectors (`Q_G = c₁⊗G`), the descent
+> data (`[G,K]=0`, `Q_G²=0`, `N ⊆ radical`, `b(J Q_C)b = −J Q_C`), and the
+> identification of the restricted representative `B = (J Q_C)|V'/N` (a literal
+> `submatrix` on the coordinate-axis coset reps) to which the finite count theorem
+> applies — is **now all kernel-checked** in that witness. What remains MEMO is
+> only the claim that *every* scalar-metric physical Gauss sector reduces to this
+> witness shape (the general representative), not the witness itself.
 
 **The adversarial check the resolution turns on — run, and it fails on the
 witness (a pre-registered probe finding, MEMO).** The escape route —
@@ -1191,16 +1823,12 @@ color-singlet mass-budget witness (§4) — designed, `b_C ≠ 0`, awaiting
 transcription. (3) The reflection-sectored double-pinning theorem and its
 rational fixture (§8). (4) The equivariant-index unification of §§4/6/8 (the
 program's candidate organizing theorem) — whose **provable half is now landed**:
-`EquivariantGradedIndex.graded_budget_decomposition` (**M**, self-guarded) shows
-that *any* four-channel budget identity — including the kernel-checked
-`carrier_krein_square` `4 D^#D = Q_A+Q_C+4Q_T+4E_#` — pushes through the graded
-supertrace by linearity, giving *one equivariant graded-supertrace identity* on
-the four channels (McKean–Singer odd-power cancellation `graded_trace_odd_vanishes`;
-"unification is decomposition" `graded_trace_sum`; the C4 isotypic split
-`graded_trace_sector_split`). Precise boundary (per the call-08 audit): the budget
-enters as a *hypothesis* — the theorem is honest supertrace linearity, and the
-in-file instantiation on the actual carrier blocks is not yet done. And this is
-finite graded linear algebra, **not** a topological index theorem
+`EquivariantGradedIndex.graded_budget_decomposition` (**M**, self-guarded) writes
+the exact Dirac-square budget `4 D^#D = Q_A+Q_C+4Q_T+4E_#` as *one equivariant
+graded-supertrace identity* on the four channels (McKean–Singer odd-power
+cancellation `graded_trace_odd_vanishes`; "unification is decomposition"
+`graded_trace_sum`; the C4 isotypic split `graded_trace_sector_split`). The honest
+boundary: this is finite graded linear algebra, **not** a topological index theorem
 à la Atiyah–Singer — that is a category error at this generality (no base space, no
 K-theory receptacle, no family of operators; the count is direct), not a research
 gap. What stays open is the `finrank`/projection-trace dimension-counting layer
@@ -1256,7 +1884,7 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master Krein identity: starred blocks `Q_{A,C}^#` + `4 Q_T` + `4 E_#` (§4) |
 | 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | self-adjoint 3-slot specialization `4 D^#D = Q_A+Q_C+4Q_T` (`E_#=0`, bare blocks) |
 | 4 | `signed_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | shares sum to one (abstract) |
-| 4/10 | `graded_budget_decomposition`, `graded_trace_odd_vanishes` | `Carrier/EquivariantGradedIndex.lean` | M, self-guarded (in-file pin) | **organizing theorem, provable half**: *any* 4-channel budget pushes through the graded supertrace by linearity ("unification is decomposition"); McKean–Singer odd-power cancellation. Budget enters as a hypothesis (carrier instantiation not yet in-file); not a topological index |
+| 4/10 | `graded_budget_decomposition`, `graded_trace_odd_vanishes` | `Carrier/EquivariantGradedIndex.lean` | M, self-guarded (in-file pin) | **organizing theorem, provable half**: the 4-channel budget as one equivariant graded-supertrace identity ("unification is decomposition"); McKean–Singer odd-power cancellation. Not a topological index (finite graded linear algebra) |
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-vacuous `(1/2,0,1/2)` witness |
 | 4 | `sector_ground_mass` | `Carrier/SectorGroundMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | Rayleigh–Ritz keystone: definite-sector ground value is a positive squared mass (§4 rail 3, §10 crux 0) |
 | 4 | `T2_positive_mass` | `Carrier/SectorGroundMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the positivity linchpin**: explicit two-edge Cl(4) carrier, sector form `1+B^HB` PosDef, keystone fires ⇒ genuine positive mass (§6, §10 crux 0a) |
@@ -1293,7 +1921,7 @@ separately by the targeted Lean and guard builds.)*
 | 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | odd-trace identity from finite anticonjugation |
 | 6 | `anticonj_charpoly_eq` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite anticonjugation gives charpoly negation symmetry |
 | 6 | `hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | Hermitian eigenvalue multiset is negation-invariant |
-| 6 | `hermitian_balanced_count_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | equal positive/negative Hermitian eigenvalue counts (the balance engine); physical `J Q_C\|V'/N` instantiation now **M** on the witness (`S1CCPhysicalSectorWitness`), general representative MEMO |
+| 6 | `hermitian_balanced_count_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | equal positive/negative Hermitian eigenvalue counts; physical `J Q_C|V'/N` bridge still MEMO |
 | 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | positive physical sector `(2,1)` |
 | 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | indefinite no-go `(1,2)` |
 | 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | M, guard-pinned (`CarrierAxiomGuard`) | soldering-gradient `E` (varying soldering) |
@@ -1488,3 +2116,48 @@ pre-registering a prediction — never a substitute for a kernel proof.
 `Sources/Null_Edge_References.md`; the PhysLean convention cross-checks and the
 prior-art / novelty-gap analysis are in `docs/PHYSLEAN.md` and
 `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`.
+
+```
+
+## Final instruction
+
+Produce your review now, strictly in the Required output format specified above.
+```
+
+## Response stdout
+
+```text
+# Fable-5 call-08 review
+
+## Semantic-alignment verdict: `S1CCPhysicalSectorWitness.lean`
+
+**Verdict: the kernel statements are genuine and correctly computed, but the "physical sector" identification is prose, not kernel — one notch more MEMO than the manuscript's strongest sentence claims.** What the kernel actually proves is real: `B = JQc.submatrix r r` is genuinely the matrix claimed (`B_eq_Bexpl` checks out by hand: `sx·sz = !![0,-1;1,0]`, `k = !![0,1;-1,0]`, and the four blocks assemble to `Bexpl`), `balanced_on_physical_sector` counts actual `IsHermitian.eigenvalues` sign counts summing to 4 — this is the true inertia `(2,2,0)`, not a dressed-up weaker fact — and `N_in_radical` is stronger than needed (row/column `(0,2)` of `JQc` vanish against the *whole* carrier, so the compression is the genuine induced form given the coset-rep claim). The sharp finding is that **`Q_G` is decorative in the kernel**: no theorem states `ker Q_G = span{(0,0),(0,1),(0,2),(1,0),(1,1)}`, `range Q_G = span e_{(0,2)}`, or that `r` enumerates coset representatives — `N_in_radical` hard-codes the axis `(0,2)` and never mentions `Q_G`. Since `Q_G` is a single matrix unit these facts are trivially true by inspection, but the manuscript's §6 sentence "the concrete `V'` construction from the carrier Gauss covectors … is **now all kernel-checked**" outruns the kernel by exactly this by-inspection step (docstring-outruns-kernel, mild). Secondarily, `JQc` is one matrix *named* "J Q_C" — no kernel fact factors it into a Krein metric times a closure operator with each factor's properties. The claimed honest line ("witness kernel, general reduction MEMO") is the right line; the file itself holds it, and the fix is two five-line lemmas (`ker`/`range` of `Q_G`) plus one softened manuscript clause.
+
+## Semantic-alignment verdict: `EquivariantGradedIndex.lean`
+
+**Verdict: every statement is true and the topological-index disclaimer is adequate, but `graded_budget_decomposition` is thinner than even the disclaimed prose suggests — and the flag goes to the manuscript, not the file.** Concretely: (i) the theorem's hypotheses use **none** of the framework — `Gamma` and `g` are arbitrary matrices (no involution, no oddness, no commutation), `Dsharp` has no adjoint relation to `D`, and the budget is an *assumed hypothesis* `hbudget`; the conclusion is trace-linearity applied to it. The words "equivariant" and "graded" in the name are kernel-decorative. (ii) The structures `IsOddInvolutionFor` / `IsEvenSymmetryFor` are **defined and never used by any theorem in the file** — the "shared data" framing is dead code, which is the tell that the framework is not yet load-bearing. (iii) The genuine (small) content is `graded_trace_odd_vanishes` / `graded_trace_odd_power_vanishes` (real supersymmetric cancellation, correct proofs) and the two involution lemmas. (iv) Crucially, there is **no kernel composition** with `carrier_krein_square`: the manuscript §10/§11 line "`graded_budget_decomposition` (**M**) writes the **exact** Dirac-square budget as one equivariant graded-supertrace identity" invites the reading that the landed theorem *contains* the budget; in the kernel the budget is an undischarged hypothesis in a different formalism (concrete matrices vs. the abstract carrier setting), and the instantiation is not done. The file's own claim boundary is honest about "pure linear algebra" and lists L2–L5 as handoffs; the fix is to the manuscript's wording, plus (ideally) actually firing the lemma on the carrier blocks.
+
+## Manuscript verdict
+
+**Grade discipline substantially held across the ~40 edits — the caveat architecture (D2 generator-as-C-posit, `(2,1)`-only carrier tie, witness-vs-general-reduction split, channel names at C) is intact and consistently enforced — but the rapid S1-CC upgrade left three verified staleness/consistency defects, most severe first:**
+
+1. **§6 crux box is internally contradictory (stale header + stale label).** Line 723–730: the box header still reads "(M engine + **MEMO physical instantiation**)" and the body still says "balanced … (`sig = (2,2,0)`, **oracle**)" — then the *same paragraph* correctly announces the instantiation is "now kernel-checked … no longer only a numeric probe." A referee reading the box top-down sees the paper grading one fact MEMO/oracle and M simultaneously. This is the worst kind of slip for this paper because the box is the advertised former-#1 crux.
+2. **§11 anchor row stale:** the `hermitian_balanced_count_of_neg_charpoly` row still says "physical `J Q_C|V'/N` bridge still MEMO" — now false as written; it should say "witness instantiation now M (`S1CCPhysicalSectorWitness`); general representative MEMO."
+3. **Factor-4 drift on `E_#` recurs in §2a (line 253) and §4a item 1**, both writing `4 D^#D = Q_A+Q_C+4Q_T+E_#` — precisely the drift §4's honesty note declares an error class and claims to have fixed. Cosmetic, but the paper indicted this exact slip.
+4. **Over-generous §10/§11 wording on the organizing theorem** (see File-2 verdict): "writes the exact budget as one identity" should read "shows that *any* four-channel budget identity, including the kernel-checked `carrier_krein_square`, pushes through the supertrace by linearity; the budget hypothesis is not yet discharged in-file."
+
+Everything else I checked is clean: the aperture-grading kill correctly stays probe-grade (the witness file proves inertia of the *closure* compression only, not of `J(Q_A+Q_C+4Q_T)`, and the manuscript keeps the distinction); the FockMassGap, BindingDefect, and CarrierUnitaryFlow claims match their stated boundaries; the title-discipline note, the kill list, and the P-ν/P-hf pre-registrations are honest. With items 1–3 fixed, still publication-ready as a self-contained draft.
+
+## Bottom line
+
+1. **Fix the §6 crux box** (header "MEMO physical instantiation" and the "(2,2,0), oracle" label) and the §11 `hermitian_balanced_count` row — the manuscript currently grades its own headline result two ways at once.
+2. **Add the two missing witness lemmas** (`range Q_G = span e_{(0,2)}`, `ker Q_G` = the five axes, or a single "r ∪ {(0,2)} spans ker Q_G" statement) so "the `V'` construction is kernel-checked" becomes literally true; until then soften that one §6 clause.
+3. **Reword the organizing-theorem claims and instantiate `graded_budget_decomposition` on the actual carrier blocks** (and either use or delete the dead `IsOddInvolutionFor`/`IsEvenSymmetryFor` structures) — the theorem is honest linearity, but "M" prose should not let the budget hypothesis and the unused equivariance pass as landed structure.
+
+```
+
+## Response stderr
+
+```text
+
+```
