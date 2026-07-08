@@ -725,16 +725,29 @@ hypotheses, which is *stronger* in that direction); the group-independence
 positivity by itself — null Clifford coefficients are isotropic, so the
 square has no positive-definite diagonal. Therefore:
 
-> **The central crux, resolved as a structured no-go on the explicit witness
-> (M engine + M witness instantiation; general representative MEMO).**
+> **The central crux, resolved as a structured no-go — witness AND general
+> representative now kernel-checked (M engine + M witness + M general reduction);
+> only the sector *presentation* stays MEMO.**
 > Positivity of the closure channel is not a full-space fact and never
 > could be; it can hold only on the physical (Gauss-law) sector `V'/N`.
 > On the explicit `6x6` Clifford⊗color witness, closure is **not** positive
 > there: the induced closure form is balanced,
 > `sig = (2,2,0)` — now **kernel-checked**
 > (`S1CCPhysicalSectorWitness.balanced_on_physical_sector`, **M**), not an
-> oracle probe. What stays **MEMO** is only that *every* scalar-metric physical
-> Gauss sector reduces to this witness shape (the general representative).
+> oracle probe. And the witness → general upgrade is now itself a **theorem**:
+> `S1CCGeneralReduction.compression_balanced` (**M**, guard-pinned) proves that
+> for *any* `±1` closure grading `d` anticonjugating the closure form and *any*
+> choice of coset representatives `r`, the compressed form `J.submatrix r r` is
+> balanced — **with no hypothesis whatsoever on the Gauss charge `Q_G`** (`Q_G`
+> only selects *which* representatives `r`; balance holds for every `r`). The
+> `6x6` witness is re-derived as a literal instance of this general theorem
+> (`S1CCWitnessAsInstance.witness_balanced_via_general`, **M**), confirming it is
+> not special to its coordinate alignment. What stays **MEMO** is now only the
+> *presentation* step: that a general scalar-metric physical Gauss sector can be
+> put in the `b`-compatible submatrix-compression form the theorem consumes
+> (simultaneous diagonalization of the color-leg Gauss operator `G` using
+> `[G,K]=0`, leaving `b = σz ⊗ 1` untouched) — an algebra fact asserted in prose,
+> not yet transcribed.
 > The mechanism is a grading anticonjugation: the closure bivector
 > `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
 > every gauge-defined constraint sector (gauge acts on the color factor
@@ -758,9 +771,13 @@ square has no positive-definite diagonal. Therefore:
 > inertia `(2,2,0)`, **and** the identification `V' = ker Q_G` / `N = range Q_G`
 > with `r` enumerating the coset representatives — the latter now a named,
 > guard-pinned theorem set (`QG_range_eq`, `QG_ker_eq`, `QG_ker_reps_basis`, **M**),
-> not a by-inspection step. What remains genuinely MEMO is only the claim that
-> *every* scalar-metric physical Gauss sector reduces to this witness shape (the
-> general representative), not the witness itself.
+> not a by-inspection step. And the general-representative reduction — that the
+> balance holds for *every* representative, not just the coordinate-aligned
+> witness — is now the kernel theorem `compression_balanced` (**M**), with the
+> witness as an instance (`witness_balanced_via_general`, **M**). What remains
+> genuinely MEMO is only the *presentation* step (that an arbitrary scalar-metric
+> Gauss sector can be diagonalized into the `b`-compatible submatrix-compression
+> form via `[G,K]=0`), not the reduction and not the witness.
 
 **The adversarial check the resolution turns on — run, and it fails on the
 witness (a pre-registered probe finding, MEMO).** The escape route —
@@ -1190,9 +1207,15 @@ is proved to have inertia exactly **`(2,2,0)`** (`balanced_on_physical_sector`) 
 to be genuinely indefinite (`JQc_not_positive_on_sector`) — the balanced closure
 no-go, with the descent data (`[G,K]=0`, `Q_G²=0`, `N ⊆ radical`,
 `b(JQc)b = −JQc`) all kernel-checked. So on the explicit witness the no-go is a
-**theorem**, not MEMO. What remains oracle/MEMO is only the claim that *every*
-physical Gauss sector of the scalar-metric class reduces to this witness shape
-(the general representative), not the witness itself. What remains, ranked: **(0) The Rayleigh–Ritz
+**theorem**, not MEMO. And the general-representative reduction has now moved to
+the kernel too: `S1CCGeneralReduction.compression_balanced` (**M**, guard-pinned)
+proves the balance for *any* coset-representative selection and *any* `±1` closure
+grading with **no** hypothesis on `Q_G`, and the `6×6` witness is re-derived as a
+literal instance (`witness_balanced_via_general`, **M**). What remains MEMO is only
+the *presentation* step — that an arbitrary scalar-metric Gauss sector can be
+diagonalized (via `[G,K]=0`) into the `b`-compatible submatrix-compression form the
+theorem consumes — plus the genuinely-soldered non-scalar `Q_G` escape (kill K-A).
+What remains, ranked: **(0) The Rayleigh–Ritz
 keystone `sector_ground_mass` is *proved* (M, guard-pinned; §4 rail 3), and its
 positive-sector hypothesis is now *instantiated in the kernel*.** The two links
 this was conditional on have both moved this run:
@@ -1350,6 +1373,8 @@ separately by the targeted Lean and guard builds.)*
 | 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure square structure (abstract) |
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | abstract skew-pairing square (concrete `Q_C=L^#L` is MEMO) |
 | 6/10 | `balanced_on_physical_sector`, `JQc_not_positive_on_sector` | `GateYM/S1CCPhysicalSectorWitness.lean` | M, self-guarded (in-file pin) | **S1-CC physical-sector instantiation, now kernel**: on the explicit `6×6` Clifford⊗color witness the induced closure form `J Q_C\|V'/N` has inertia `(2,2,0)` (balanced, indefinite) — the central-crux no-go on the witness is a theorem, not MEMO (§6, §10 #1) |
+| 6/10 | `compression_balanced`, `compression_has_neg_eigenvalue` | `GateYM/S1CCGeneralReduction.lean` | M, guard-pinned (`SlabAxiomGuard`) + self-guarded | **S1-CC witness → general reduction, now kernel**: for *any* coset-representative selection `r` and *any* `±1` closure grading anticonjugating the closure form, the compression `J.submatrix r r` is balanced — **no hypothesis on `Q_G`**. Only the *presentation* step (diagonalizing an arbitrary scalar-metric Gauss sector into this `b`-compatible submatrix form via `[G,K]=0`) stays MEMO (§6, §10 #1) |
+| 6/10 | `witness_balanced_via_general` | `GateYM/S1CCWitnessAsInstance.lean` | M, guard-pinned (`SlabAxiomGuard`) + self-guarded | the `6×6` witness balance re-derived as a **literal instance** of `compression_balanced` — confirming it is not special to its coordinate alignment |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | M, guard-pinned (`SlabAxiomGuard`) | strong-coupling area law |
 | 6 | `wilsonSlabConnected_reflectionPositive` | `GateYM/WilsonSlabConnected.lean` | M, guard-pinned (`SlabAxiomGuard`) | slab reflection positivity |
 | 6 | `OSReconstruction.osSpectralGap_pos` | `GateYM/OSReconstruction.lean` | M, guard-pinned (`SlabAxiomGuard`) | OS spectral gap |

@@ -64,6 +64,8 @@ import PhysicsSM.Draft.NullEdge.GateYM.LinearizedClosureEnergy
 import PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra
 import PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount
 import PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia
+import PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction
+import PhysicsSM.Draft.NullEdge.GateYM.S1CCWitnessAsInstance
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -721,5 +723,19 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.hermitian_balanced_count_of_neg_charpoly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia.hermitian_balanced_count_of_neg_charpoly
+
+/-! ### S1-CC general reduction (witness → general) capstones -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_has_neg_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_has_neg_eigenvalue
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCWitnessAsInstance.witness_balanced_via_general' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCWitnessAsInstance.witness_balanced_via_general
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
