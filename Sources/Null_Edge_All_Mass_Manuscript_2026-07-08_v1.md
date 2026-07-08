@@ -255,6 +255,24 @@ verification, and the four-channel budget as one object. Situating the work:
   `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md`. Full source-key:
   `Sources/Null_Edge_References.md`.
 
+**Where this sits, at a glance.** The table crystallizes the positioning: no
+column is uniquely ours, but the *conjunction* of the last three rows is.
+
+| Program | finite | indefinite / Krein | fermion doubling handled | mass = `det P` (null-disagreement) invariant | one four-channel budget | kernel-verified + kill-discipline |
+|---|---|---|---|---|---|---|
+| **This paper** | ✓ | ✓ | ✓ (Krein-null) | ✓ | ✓ | ✓ |
+| Bizi–Brouder–Besnard (Krein triple) | — | ✓ | ✓ | — | — | — |
+| Barrett (Lorentzian NCG-SM) | fin. internal | ✓ | ✓ (KO-6) | — | — | — |
+| Connes–Chamseddine (NCG-SM) | fin. internal | Euclidean | ✓ (KO-6) | — | — | — |
+| Foster–Jacobson (4D checkerboard) | ✓ | — | ✓ | — | — | — |
+| QCA / quantum-walk Dirac | ✓ | — | ✓ | — | — | — |
+| Finster (causal fermion systems) | ✓ | Lorentzian | — | variational | — | — |
+| HepLean / PhysLean | ✓ | — | — | — | — | ✓ (formalized) |
+
+The novelty is the bottom-right block read together — a finite *Krein* carrier
+whose square is a four-channel budget *answering to the kernel-checked Plücker
+mass*, under a pre-registered kill-discipline — not any single ✓.
+
 ---
 
 ## 3. The kinematic layer: one trusted theorem (**T**/**M**)
