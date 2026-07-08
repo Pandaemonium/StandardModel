@@ -588,21 +588,24 @@ square has no positive-definite diagonal. Therefore:
 > The mechanism is a grading anticonjugation: the closure bivector
 > `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
 > every gauge-defined constraint sector (gauge acts on the color factor
-> alone, commuting with `b`), and a Hermitian form congruent to its own
-> negative has equal positive and negative inertia. The kernel engine is
-> proved: anticonjugation forces every odd power traceless
-> (`anticonj_odd_pow_trace_zero`, **M**), so the form's spectrum is
-> symmetric about zero; the half-constraint rigidity that forces the
+> alone, commuting with `b`), and a Hermitian form whose characteristic
+> polynomial is invariant under negation has equal positive and negative
+> eigenvalue counts. The kernel engine now has both rungs: anticonjugation
+> forces every odd power traceless (`anticonj_odd_pow_trace_zero`, **M**),
+> while `anticonj_charpoly_eq` plus
+> `hermitian_balanced_count_of_neg_charpoly` prove the finite Hermitian
+> count theorem (**M**). The half-constraint rigidity that forces the
 > single-covector Gauss charge is also kernel-checked
 > (`half_constraint_rigidity`, **M**); and the balanced inertia is
 > confirmed on the `6x6` witness by the pre-registered numeric probe
 > (`sig = (2,2,0)`, oracle). So `Q_C` is honestly a *signed* chromomagnetic
 > channel; physical positivity must come from the `J`-definite complement
 > of the closure doublet (the matter/transverse directions), exactly as in
-> Gupta–Bleuler the longitudinal pair contributes zero norm. Two clauses
-> stay MEMO pending their own rungs: the concrete `V'` construction from
-> the carrier Gauss covectors, and the step from odd-moment-vanishing to
-> the inertia count.
+> Gupta-Bleuler the longitudinal pair contributes zero norm. The finite
+> count theorem is landed; what stays MEMO pending separate rungs is the
+> concrete `V'` construction from the carrier Gauss covectors, the descent
+> data, and the identification of the restricted representative as the
+> Hermitian `B = J Q_C` to which the finite theorem applies.
 
 **The adversarial check the resolution turns on — run, and it fails on the
 witness (a pre-registered probe finding, MEMO).** The escape route —
@@ -632,10 +635,19 @@ what is obstructed is the *surviving positivity* half (crux #1 below, §4 rail
 genuine `sigma_z`-*odd* Clifford content (a **larger** Clifford algebra where
 the closure bivector and the chirality are *distinct* gradings), or use a `J`
 not anticommuting with `b` (reopening S1-CC), or a non-`b`-invariant sector
-(likewise). The live route is the first, which is exactly why a genuine
-*multi-edge* carrier (not this single-doublet witness) is now the program's
-sharpest target (§10). Full analysis and the exact rescue requirement:
-`S1CC_APERTURE_GRADING_FINDING.md`. (Technical note preserved: the kernel rung
+(likewise). The live route is the first, and a follow-up probe this run confirms it
+**works**: an explicit *two-edge* carrier (`probe_multiedge_positive_sector.py`)
+whose 4-dimensional Clifford factor Cl(4) admits a grading `b` that
+anticommutes the closure bivector (balancing `Q_C`) while *commuting* with the
+Krein metric `J_s` (fixing `Q_A`) — the pair the 2-dimensional single-doublet
+could not provide — has a 6-dimensional `J`-positive sector on which the total
+Krein form `J(Q_A + Q_C)` becomes **positive-definite `(6,0,0)`** once the
+aperture dominates. So the obstruction is a small-model artifact, not a wall:
+a genuine multi-edge carrier supplies exactly the definite positive sector
+`sector_ground_mass` needs (numeric oracle; the Lean witness — `Matrix.PosDef`
+on the sector feeding the keystone — is the next **M**-target). Full analysis:
+`S1CC_APERTURE_GRADING_FINDING.md` (the obstruction) and
+`T2_MULTIEDGE_ESCAPE_FINDING.md` (the escape). (Technical note preserved: the kernel rung
 proves trace identities via a *similarity*; the inertia conclusion needs `b`
 to act by *congruence*, which holds because `b = sigma_z (x) 1` is
 Hermitian-unitary — this belongs in the mechanism's hypotheses, since a
@@ -878,11 +890,14 @@ witness yet. What remains, ranked: **(0) The Rayleigh–Ritz keystone
 conditional "definite positive sector `⇒` genuine positive squared-mass
 eigenvalue" is kernel-checked. What it is conditional *on* splits into the
 two deepest open links: **(0a)** a positive sector must *exist* — obstructed
-on the current single-doublet witness (the aperture's Krein form `J Q_A` is
-balanced by the closure grading; total-operator Krein-positivity **cannot**
-hold for a scalar-metric single-doublet carrier), so the live route is a
-genuine multi-edge carrier, and building one is the program's single most
-valuable next *construction* (§6); and **(0b)** the **§3↔§4 bridge**
+on the single-doublet witness, but a follow-up probe this run shows the
+obstruction is a small-model artifact: an explicit **two-edge Cl(4) carrier**
+has a `J`-positive sector on which the total Krein form is positive-definite
+`(6,0,0)` under aperture dominance (`probe_multiedge_positive_sector.py`, §6).
+So the escape mechanism is validated numerically; the remaining step is the
+**Lean witness** (`Matrix.PosDef` on the sector, feeding the keystone) — now
+the program's single most valuable next *construction*, de-risked from
+"obstructed" to "transcribe the validated escape"; and **(0b)** the **§3↔§4 bridge**
 `min spec(D^#D|P) = det P` of the ground bundle — the theorem that the
 keystone's eigenvalue is *the* kinematic mass of §3 and not merely *an*
 eigenvalue. It is grade **C**, is **not** proved, and (per the Aristotle
@@ -949,7 +964,7 @@ anchor-swept — every name and guard status grep-verified against the repo on
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure-defect trace identity |
 | 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | Wilson action = squared defect |
-| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin | leading closure defect = positive `|F|²` energy |
+| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | M, local guard pin; imported by `SlabAxiomGuard` | leading closure defect = positive `|F|²` energy |
 | 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure square structure (abstract) |
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | abstract skew-pairing square (concrete `Q_C=L^#L` is MEMO) |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | M, guard-pinned (`SlabAxiomGuard`) | strong-coupling area law |
@@ -958,7 +973,10 @@ anchor-swept — every name and guard status grep-verified against the repo on
 | 6 | `slab_exponential_clustering` | `GateYM/SlabClustering.lean` | M, guard-pinned (`SlabAxiomGuard`) | exponential clustering |
 | 6 | `banks_casher_count` | `GateYM/FiniteBanksCasherCount.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite Banks-Casher count |
 | 6 | `skew_prod` | `GateYM/FiniteBanksCasherCount.lean` | M, guard-pinned (`SlabAxiomGuard`) | count denominator `= m²+AᴴA` |
-| 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure balanced on physical sector (engine) |
+| 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | odd-trace identity from finite anticonjugation |
+| 6 | `anticonj_charpoly_eq` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite anticonjugation gives charpoly negation symmetry |
+| 6 | `hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | Hermitian eigenvalue multiset is negation-invariant |
+| 6 | `hermitian_balanced_count_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | equal positive/negative Hermitian eigenvalue counts; physical `J Q_C|V'/N` bridge still MEMO |
 | 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | positive physical sector `(2,1)` |
 | 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | indefinite no-go `(1,2)` |
 | 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | M, guard-pinned (`CarrierAxiomGuard`) | soldering-gradient `E` (varying soldering) |
