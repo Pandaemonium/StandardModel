@@ -747,16 +747,16 @@ square has no positive-definite diagonal. Therefore:
 > (`S1CCPhysicalSectorWitness.balanced_on_physical_sector`, **M**, self-guarded) —
 > no longer only a numeric probe. So `Q_C` is honestly a *signed* chromomagnetic
 > channel; any surviving physical positivity would require a `J`-positive
-> sector not balanced by the same grading. What used to stay MEMO is now largely
-> **kernel-checked** on that witness: the descent data (`[G,K]=0`, `Q_G²=0`,
-> `N ⊆ radical`, `b(J Q_C)b = −J Q_C`), the restricted form `B = (J Q_C).submatrix`,
-> and its balanced inertia `(2,2,0)` are all **M**. One by-inspection step remains
-> (call-08 audit): that `r` enumerates the Gauss coset representatives — i.e. that
-> `ker Q_G` / `range Q_G` are the stated axes — is true because `Q_G = c₁⊗G` is a
-> single matrix unit, but is read off rather than a named lemma; it is `M`‑adjacent,
-> not yet a `#print axioms`-pinned theorem. What remains genuinely MEMO is the
-> claim that *every* scalar-metric physical Gauss sector reduces to this witness
-> shape (the general representative), not the witness itself.
+> sector not balanced by the same grading. What used to stay MEMO is now
+> **kernel-checked** on that witness — including the Gauss-sector construction
+> itself: the descent data (`[G,K]=0`, `Q_G²=0`, `N ⊆ radical`,
+> `b(J Q_C)b = −J Q_C`), the restricted form `B = (J Q_C).submatrix`, its balanced
+> inertia `(2,2,0)`, **and** the identification `V' = ker Q_G` / `N = range Q_G`
+> with `r` enumerating the coset representatives — the latter now a named,
+> guard-pinned theorem set (`QG_range_eq`, `QG_ker_eq`, `QG_ker_reps_basis`, **M**),
+> not a by-inspection step. What remains genuinely MEMO is only the claim that
+> *every* scalar-metric physical Gauss sector reduces to this witness shape (the
+> general representative), not the witness itself.
 
 **The adversarial check the resolution turns on — run, and it fails on the
 witness (a pre-registered probe finding, MEMO).** The escape route —

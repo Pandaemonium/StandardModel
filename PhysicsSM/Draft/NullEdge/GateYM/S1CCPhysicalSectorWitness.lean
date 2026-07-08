@@ -122,6 +122,122 @@ the four axes `(0,0),(0,1),(1,0),(1,1)` (= `ker G ⊕ ker G`).  -/
 /-- Coset representatives of `V'/N`. -/
 def r : Fin 4 → Fin 2 × Fin 3 := ![(0,0),(0,1),(1,0),(1,1)]
 
+/-! ### The Gauss constraint `Q_G` is the matrix unit `E_{(0,2),(1,2)}`
+
+These lemmas certify — at the vector and submodule level — that the physical
+sector `V'` really is `ker Q_G` and the null direction `N` really is
+`range Q_G`, closing the by-inspection gap in the coset construction above.
+`Q_G = c₁ ⊗ Gc` with `c₁ = E_{01}` and `Gc = diag(0,0,1)`, so its only nonzero
+entry is at row `(0,2)`, column `(1,2)`. -/
+
+/-- **`Q_G` is the single matrix unit `E_{(0,2),(1,2)}`.** Its only nonzero entry
+is a `1` at row `(0,2)`, column `(1,2)`. -/
+theorem QG_apply (p q : Fin 2 × Fin 3) :
+    QG p q =
+      if p = ((0:Fin 2),(2:Fin 3)) ∧ q = ((1:Fin 2),(2:Fin 3)) then 1 else 0 := by
+  obtain ⟨a, i⟩ := p; obtain ⟨b, j⟩ := q
+  fin_cases a <;> fin_cases i <;> fin_cases b <;> fin_cases j <;>
+    simp [QG, kroneckerMap, c1, Gc]
+
+/-- The `q`-th column of `Q_G`: it is `e_{(0,2)}` when `q = (1,2)` and `0`
+otherwise. -/
+theorem QG_col_eq (q : Fin 2 × Fin 3) :
+    QG.col q =
+      if q = ((1:Fin 2),(2:Fin 3)) then Pi.single ((0:Fin 2),(2:Fin 3)) 1 else 0 := by
+  ext p; obtain ⟨a, i⟩ := p
+  fin_cases a <;> fin_cases i <;>
+    simp [Matrix.col, QG_apply, Pi.single] <;>
+    (obtain ⟨b, j⟩ := q; fin_cases b <;> fin_cases j <;> simp)
+
+/-- Action of `Q_G` on any vector: it reads off the `(1,2)`-coordinate and
+deposits it on the `(0,2)`-axis, `Q_G v = v_{(1,2)} · e_{(0,2)}`. -/
+theorem QG_mulVec_eq (v : Fin 2 × Fin 3 → ℂ) :
+    QG.mulVec v = Pi.single ((0:Fin 2),(2:Fin 3)) (v ((1:Fin 2),(2:Fin 3))) := by
+  ext p; obtain ⟨a, i⟩ := p
+  fin_cases a <;> fin_cases i <;>
+    simp [Matrix.mulVec, dotProduct, QG_apply, Pi.single, Function.update]
+
+/-- **Every coset representative lies in `V' = ker Q_G`.** For each `k : Fin 4`,
+`Q_G · e_{r k} = 0`. -/
+theorem QG_reps_mem_ker (k : Fin 4) : QG.mulVec (Pi.single (r k) 1) = 0 := by
+  rw [Matrix.mulVec_single_one]
+  ext p; fin_cases k <;> simp [Matrix.col, QG_apply, r]
+
+/-- **The excluded axis `(1,2)` maps to the `N`-generator `(0,2)`.**
+`Q_G · e_{(1,2)} = e_{(0,2)}`, so `range Q_G` is exactly the line
+`span e_{(0,2)}`. -/
+theorem QG_excluded_to_N :
+    QG.mulVec (Pi.single ((1:Fin 2),(2:Fin 3)) 1)
+      = Pi.single ((0:Fin 2),(2:Fin 3)) 1 := by
+  rw [Matrix.mulVec_single_one]
+  ext p; obtain ⟨a, i⟩ := p
+  fin_cases a <;> fin_cases i <;>
+    simp [Matrix.col, QG_apply, Pi.single]
+
+/-- **`range Q_G = N`** as a submodule: the null direction is exactly the line
+spanned by the `N`-generator `e_{(0,2)}`. -/
+theorem QG_range_eq :
+    (Matrix.mulVecLin QG).range
+      = Submodule.span ℂ {Pi.single ((0:Fin 2),(2:Fin 3)) (1:ℂ)} := by
+  rw [Matrix.range_mulVecLin]
+  apply le_antisymm
+  · rw [Submodule.span_le]
+    rintro v ⟨q, rfl⟩
+    rw [QG_col_eq]
+    split
+    · exact Submodule.subset_span rfl
+    · exact Submodule.zero_mem _
+  · rw [Submodule.span_le]
+    rintro v rfl
+    exact Submodule.subset_span ⟨((1:Fin 2),(2:Fin 3)), by rw [QG_col_eq]; simp⟩
+
+/-- **`ker Q_G = V'`** as a submodule: the physical sector is exactly the span of
+the axes `e_p` for `p ≠ (1,2)` (a 5-dimensional hyperplane). -/
+theorem QG_ker_eq :
+    LinearMap.ker (Matrix.mulVecLin QG)
+      = Submodule.span ℂ
+          ((fun p => Pi.single p (1:ℂ)) ''
+            {p : Fin 2 × Fin 3 | p ≠ ((1:Fin 2),(2:Fin 3))}) := by
+  apply le_antisymm
+  · intro v hv
+    rw [LinearMap.mem_ker, Matrix.mulVecLin_apply, QG_mulVec_eq] at hv
+    have hv0 : v ((1:Fin 2),(2:Fin 3)) = 0 := by
+      have := congrFun hv ((0:Fin 2),(2:Fin 3)); simpa using this
+    rw [← Finset.univ_sum_single v]
+    apply Submodule.sum_mem; intro p _
+    by_cases hp : p = ((1:Fin 2),(2:Fin 3))
+    · subst hp; rw [hv0]; simp
+    · have heq : Pi.single p (v p) = (v p) • (Pi.single p 1 : Fin 2 × Fin 3 → ℂ) := by
+        ext x; by_cases hx : x = p <;> simp [Pi.single_apply, hx]
+      rw [heq]
+      exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨p, hp, rfl⟩)
+  · rw [Submodule.span_le]; rintro _ ⟨p, hp, rfl⟩
+    rw [SetLike.mem_coe, LinearMap.mem_ker, Matrix.mulVecLin_apply,
+      Matrix.mulVec_single_one, QG_col_eq, if_neg hp]
+
+/-- **Coset basis / enumeration.** `ker Q_G` is spanned by the four coset
+representatives `e_{r k}` together with the `N`-generator `e_{(0,2)}`; i.e. `r`
+enumerates the `V'/N` coset representatives and `(0,2)` is the extra null axis. -/
+theorem QG_ker_reps_basis :
+    LinearMap.ker (Matrix.mulVecLin QG)
+      = Submodule.span ℂ
+          (insert (Pi.single ((0:Fin 2),(2:Fin 3)) (1:ℂ))
+            (Set.range (fun k => Pi.single (r k) (1:ℂ)))) := by
+  rw [QG_ker_eq]; congr 1; ext w
+  constructor
+  · rintro ⟨p, hp, rfl⟩
+    obtain ⟨a, i⟩ := p
+    fin_cases a <;> fin_cases i <;> first
+      | exact absurd rfl hp
+      | exact Or.inl rfl
+      | exact Or.inr ⟨0, rfl⟩
+      | exact Or.inr ⟨1, rfl⟩
+      | exact Or.inr ⟨2, rfl⟩
+      | exact Or.inr ⟨3, rfl⟩
+  · rintro (rfl | ⟨k, rfl⟩)
+    · exact ⟨((0:Fin 2),(2:Fin 3)), by decide, rfl⟩
+    · exact ⟨r k, by fin_cases k <;> decide, rfl⟩
+
 /-- The induced Krein form on `V'/N`, as the compression (submatrix) of
 `J Q_C` to the representatives. -/
 def B : Matrix (Fin 4) (Fin 4) ℂ := JQc.submatrix r r
@@ -259,3 +375,11 @@ end PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.JQc_not_positive_on_sector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.JQc_not_positive_on_sector
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.QG_ker_reps_basis' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.QG_ker_reps_basis
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.QG_range_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCPhysicalSectorWitness.QG_range_eq
