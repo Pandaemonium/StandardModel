@@ -190,3 +190,103 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   constituent-mass bridge (blocking increases N_m) stays grade C, gated.
 - Verification: lake env lean (clean); lake build FiniteBanksCasherCount
   (8026); lake build SlabAxiomGuard (8147, pins green).
+
+## [ARISTOTLE-HARVEST Codex] First strategy/audit batch harvested
+
+- Grand strategy job `fd518559-2975-4c98-a472-e7bd5ce79dce` completed.
+  It could not inspect live repo declarations because the submitted project
+  was a scaffold, but it recommended K2 first, K1-STEP0 as a diagnostic before
+  any new injection attempt, and continued K2/K1 audit jobs.
+- K1 root-hygiene audit `0b59874b-2ecd-40e6-bfd6-866e334a6241`
+  completed. Verdict: the off-by-root diagnosis is plausible; the failure mode
+  is flat-encoder non-injectivity. If a connection slot is pinned and `m_j`
+  is total child-block size, the honest local factor is `(m_j - 1)!`; full
+  `m_j!` needs a structured-block route.
+- K2 stabilized-L4 audit `04d86726-bd2f-4185-82bd-603b13c79174`
+  completed. Verdict: direct-sum stabilization requires proved
+  form-orthogonal injections. A componentwise finite-product theorem is useful
+  plumbing, but not the full carrier direct-sum theorem and not positivity.
+- Updated the three Aristotle task notes from `submitted` to `harvested` with
+  the key results.
+- Claim boundary: strategy/audit harvest only; no new kernel claim in this
+  ledger entry.
+
+## [LAND Codex] K2/L4 abstract finite-product closure-square rung
+
+- Landed theorem:
+  `PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra.closure_current_square_pi`
+  in `PhysicsSM/Draft/NullEdge/GateYM/S1ClosureCurrentAlgebra.lean`.
+- Theorem boundary: a family of two-direction closure-current squares is lifted
+  componentwise to a pair-indexed finite product target. This models the
+  no-cross-term algebraic rung behind the pair-stabilized route.
+- Not claimed: the form-orthogonal direct-sum injection theorem, concrete
+  carrier pair-index/sign/4-slot normalization, positivity, spectral/inertia
+  facts, gluon energy, or a site-diagonal defect-Gram identification with
+  `Q_C`.
+- Guard-pinned the axiom footprint in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`:
+  `[propext, Quot.sound]`.
+- Updated manuscript-facing notes:
+  `NULL_EDGE_RESULTS.md` and
+  `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md`, both with the same
+  restricted claim boundary.
+- Commands run and observed passing:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/S1ClosureCurrentAlgebra.lean`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+- Build note: the targeted guard build reported pre-existing warnings in other
+  draft modules, including known draft proof-hole warnings in
+  `PolymerKPConclusion.lean`; they are not part of this K2 landing.
+
+## [ARISTOTLE-SUBMIT Codex] Keep audit fleet warm after K2/K1 landings
+
+- Local time: 2026-07-07 22:54 PDT, before the 06:00 hard audit cutoff.
+- Submitted K2 post-landing source audit:
+  `b9c000c4-b80e-434c-8315-4ef3243a8cc2`, task note
+  `ARISTOTLE_AUDIT_K2_POSTLANDING_SOURCE_2026-07-07_2252.md`.
+  The prompt includes the actual `closure_current_square_pi` source, guard
+  snippet, docs wording, and verification commands.
+- Submitted K1 replacement theorem-shape audit:
+  `bb1d8672-7d45-44a5-8c29-b27da9977fa4`, task note
+  `ARISTOTLE_AUDIT_K1_REPLACEMENT_SHAPE_2026-07-07_2252.md`.
+  The prompt includes the K1 STEP0 audit finding, oracle summary, and first
+  Aristotle audit result.
+- `aristotle list --limit 10` showed both new audit projects RUNNING.
+- Claim boundary: submissions only; results not yet harvested.
+
+## [CLAIM Codex] K2 direct-sum theorem reconnaissance + lit cycle
+
+- Local time: 2026-07-07 22:58 PDT, before the 06:00 hard audit cutoff.
+- Current Aristotle state: K2 post-landing source audit
+  `b9c000c4-b80e-434c-8315-4ef3243a8cc2` and K1 replacement-shape audit
+  `bb1d8672-7d45-44a5-8c29-b27da9977fa4` are RUNNING, so I will not block
+  on them.
+- I claim the next Codex step: K2 follow-up reconnaissance for the honest
+  form-orthogonal direct-sum/injection theorem needed after
+  `closure_current_square_pi`. I will inspect existing direct-sum/form APIs and
+  nearby GateYM carrier files, run one literature/local semantic action, and
+  either land a small verified plumbing lemma or write the exact theorem-shape
+  handoff if the abstraction boundary is not ready.
+- Claim boundary planned: no positivity, no concrete `Q_C` identification, no
+  full K2 claim unless a guard-pinned theorem actually lands.
+
+## [LAND Claude] K4: signed mass-budget theorem + witness (S6 flagship)
+
+- LANDED `PhysicsSM/Draft/NullEdge/Carrier/CarrierMassBudget.lean`
+  (kernel-clean, 0 warnings): `signed_budget_sum_one` (abstract - from the
+  Weitzenboeck identity + any linear ev with ev(D²)!=0, shares sum to 1);
+  concrete 2x2 single-edge witness (gammaW=sigma_x, GammaW=sigma_z,
+  nabla=phi=1, g=2) discharging all 8 carrier_square_assembly hypotheses
+  (witness_assembly), witness_QC_zero (closure share = 0 for one edge),
+  witness_budget_sum_one (budget (1/2, 0, 1/2), non-vacuous).
+- Signed (Amendment A3): no positivity asserted; b_C is the chromomagnetic
+  share (Amendment B rail). 3-slot D² form (matches pinned assembly);
+  4-slot D^#D + E budget awaits the D^#D assembly.
+- Three CarrierAxiomGuard pins, green (8070 jobs). Roadmap A3 marked
+  LANDED; results-map line added.
+- Verification: lake env lean (clean, 0 warnings); lake build
+  CarrierMassBudget (8029); lake build CarrierAxiomGuard (8070).
+- Claim boundary: b_A+b_C+b_T=1 proved; hadron/non-turn-dominance reading
+  is prose; witness is Euclidean (positive shares) - signed generality is
+  the abstract theorem's.

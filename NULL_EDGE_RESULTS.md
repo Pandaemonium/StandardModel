@@ -374,6 +374,16 @@ the trusted namespace yet.
   strictly positive mass form) and unbalanced `(2,1)` complex (index 1, a
   forced massless mode for every dynamics). Masslessness of the surplus is
   the mass thesis's converse, now a theorem family.
+- **Signed mass-budget theorem + witness (finite identity, 2026-07-08).**
+  The S6 flagship in signed form: from the guard-pinned Weitzenboeck
+  identity `4 D² = Q_A + Q_C + 4 Q_T` and any linear expectation `ev`,
+  the aperture/closure/turn shares of `M² = 4 ev(D²)` sum to one
+  (`signed_budget_sum_one`); a concrete 2x2 single-edge carrier witness
+  (`sigma_x`/`sigma_z`) gives closure share exactly 0 and budget
+  `(1/2, 0, 1/2)` - non-vacuous. Shares SIGNED (no positivity claimed);
+  `b_C` is the chromomagnetic share. Guard-pinned
+  (`CarrierMassBudget.lean`). 3-slot `D²` form; the 4-slot `D^#D` with the
+  soldering share awaits the `D^#D` assembly.
 - **Finite Banks-Casher count identity (finite identity, 2026-07-08).**
   Spectral-rail-safe chiral-condensate/near-zero-count relation on a fixed
   finite background: for skew-Hermitian `A` (the stereographic GW operator)

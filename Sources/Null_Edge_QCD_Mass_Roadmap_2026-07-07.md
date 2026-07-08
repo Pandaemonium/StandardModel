@@ -247,6 +247,11 @@ integration; they are adopted as follows.
   ensemble; verified). String tension is not merely correlated with
   closure defect - its coupling derivative IS excess closure defect per
   area.
+- **A3 LANDED (kernel, 2026-07-08 overnight, K4):** the signed budget
+  `b_A+b_C+b_T = 1` is kernel-checked (`CarrierMassBudget.lean`,
+  `signed_budget_sum_one`) with a non-vacuous 2x2 single-edge witness
+  (shares `1/2, 0, 1/2`; closure share exactly 0). 3-slot `D²` form; the
+  4-slot `D^#D`+E budget and a color-singlet witness remain.
 - **A3. The budget claim splits weak/strong (adopted; changes S6).**
   Define budget fractions `f_A, f_C, f_T, f_E` (each channel expectation
   over `M_#^2(psi) = 4<psi, D^#D psi>`) and prove `f_A+f_C+f_T+f_E = 1`

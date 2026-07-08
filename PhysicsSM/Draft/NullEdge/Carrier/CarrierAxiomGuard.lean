@@ -32,6 +32,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantScalar
 import PhysicsSM.Draft.NullEdge.Carrier.ColorCommutantMultiplicity
 import PhysicsSM.Draft.NullEdge.Carrier.RGSchurMassWitness
 import PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierMassBudget
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -613,5 +614,19 @@ product-square lemma, the non-nilpotent effective edge on the decimated
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity.chiral_det_eq_pm_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity.chiral_det_eq_pm_one
+
+/-! ## K4 / S6: the signed mass-budget theorem + witness (overnight 2026-07-08) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassBudget.signed_budget_sum_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassBudget.signed_budget_sum_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassBudget.witness_budget_sum_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassBudget.witness_budget_sum_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassBudget.witness_assembly' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassBudget.witness_assembly
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
