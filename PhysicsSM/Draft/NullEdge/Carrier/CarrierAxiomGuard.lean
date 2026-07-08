@@ -50,6 +50,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.FreeMassBridge
 import PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
 import PhysicsSM.Draft.NullEdge.Carrier.BindingDefect
+import PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -832,5 +833,20 @@ off-diagonal). The physical identification rests on the `(λ,κ)` carrier reduct
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.BindingDefect.closurePerturbation_offDiagonal' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.BindingDefect.closurePerturbation_offDiagonal
+
+/-! ## T2 Clifford provenance: the hand-typed carrier IS the Cl(4) Kronecker assembly
+
+`CliffordAssembly` closes the audit gap: `HAC`/`Jmet` (hand-typed) equal the
+Clifford assembly `J(Q_A+Q_C)` / `Js⊗I3` built from Pauli-Kronecker products —
+verbatim, no convention change. So T2's carrier identification is kernel, not
+oracle. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly.Jmet_eq_clifford' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly.Jmet_eq_clifford
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly.HAC_eq_clifford' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly.HAC_eq_clifford
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

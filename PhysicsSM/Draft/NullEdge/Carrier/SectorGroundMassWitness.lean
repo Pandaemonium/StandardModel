@@ -229,14 +229,14 @@ theorem reApplyInnerSelf_ge_of_sub_posSemidef {n : Type*} [Fintype n] [Decidable
 `g1..g4` as Pauli-Kronecker products, `omega = g1 g2`, `Js = i g3 g4`,
 `J = Js ⊗ I3`, aperture `Q_A = I4 ⊗ (lam I3)`, closure `Q_C = omega ⊗ K`, and the
 assembly `HAC = J(Q_A + Q_C)` — is asserted **only in these docstrings and the
-oracle** (`Scripts/oracle/probe_multiedge_positive_sector.py`); *no kernel
-declaration certifies that `HAC`/`Jmet` equal that Kronecker assembly.* So what is
-kernel-checked (`compression_eq`, `M6_posDef`, `T2_positive_mass`) is a genuine
-positive squared mass of the **hand-typed** Hermitian form `M6`; the identification
-of that form with the Cl(4) carrier's Krein form is oracle-grade, not **M**. The
-kernel derivation `HAC = kron(...)` is a pending proof job (audit finding,
-2026-07-08). Read "T2 gives a positive mass on the Cl(4) carrier" with that one
-oracle-grade link in the chain. -/
+oracle** (`Scripts/oracle/probe_multiedge_positive_sector.py`). **Update
+(2026-07-08): that link is now kernel-certified.** `CliffordAssembly.HAC_eq_clifford`
+and `CliffordAssembly.Jmet_eq_clifford` prove that the hand-typed `HAC`/`Jmet`
+equal the Clifford assembly `J(Q_A+Q_C)` / `Js⊗I3` built from Pauli-Kronecker
+products — *verbatim, with no convention change*. So the identification of `M6`'s
+carrier with the two-edge Cl(4) Krein form is now **M**, not oracle-grade: what was
+a docstring-only provenance (flagged by the flagship audit) is closed in the
+kernel. Read "T2 gives a positive mass on the Cl(4) carrier" as fully kernel-tied. -/
 
 /-- Assembled total Krein form `HAC = H_A + H_C = J (Q_A + Q_C)` on `C^12`, for
 aperture strength `lam = 2` (hand-typed; see the provenance disclosure above).
