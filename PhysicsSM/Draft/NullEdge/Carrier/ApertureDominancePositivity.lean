@@ -87,10 +87,35 @@ theorem aperture_dominance_pos (A C : Matrix n n ℂ)
   rw [hsplit]
   linarith [hAbound, hCbound, key]
 
+/-- **Explicit spectral gap on the sector.** The quadratic form of `A + C`
+is bounded below by `(c - kappa) . ‖v‖^2` on `P` - not merely positive but
+positive with a definite GAP `c - kappa > 0`. This is the quantitative
+content that makes `A + C` a genuine positive form on the sector (the
+`min spec >= c - kappa` conclusion (a) of `sector_ground_mass`, minus the
+diagonalizability, which needs the finite spectral theorem). It is what
+lets the budget's quadratic functional be read as a mass on the positive
+sector (manuscript §4 rail 3). -/
+theorem aperture_dominance_lower_bound (A C : Matrix n n ℂ)
+    (P : Submodule ℂ (n → ℂ)) (c κ : ℝ)
+    (hA : ∀ v ∈ P, c * ‖v‖ ^ 2 ≤ (star v ⬝ᵥ A.mulVec v).re)
+    (hC : ∀ v ∈ P, |(star v ⬝ᵥ C.mulVec v).re| ≤ κ * ‖v‖ ^ 2) :
+    ∀ v ∈ P, (c - κ) * ‖v‖ ^ 2 ≤ (star v ⬝ᵥ (A + C).mulVec v).re := by
+  intro v hv
+  have hsplit : (star v ⬝ᵥ (A + C).mulVec v).re
+      = (star v ⬝ᵥ A.mulVec v).re + (star v ⬝ᵥ C.mulVec v).re := by
+    rw [Matrix.add_mulVec, dotProduct_add, Complex.add_re]
+  have hCbound := (abs_le.mp (hC v hv)).1
+  rw [hsplit]
+  nlinarith [hA v hv, hCbound]
+
 /-! ## Local axiom guard (self-contained) -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ApertureDominancePositivity.aperture_dominance_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms aperture_dominance_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.ApertureDominancePositivity.aperture_dominance_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms aperture_dominance_lower_bound
 
 end PhysicsSM.Draft.NullEdge.Carrier.ApertureDominancePositivity
