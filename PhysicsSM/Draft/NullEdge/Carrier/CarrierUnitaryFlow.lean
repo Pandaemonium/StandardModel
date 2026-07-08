@@ -149,4 +149,21 @@ theorem carrier_orbit_energy_conserved (lam kappa t : ℝ)
       (carrierFlowStep lam kappa t) psi n) = FiniteUnitaryEvolution.observableEnergy E psi :=
   FiniteUnitaryEvolution.energy_conserved_orbit _ E hUE psi n
 
+/-- The flow step of the **full `6×6` physical sector form** `M6` (the actual
+carrier compression `Pisoᴴ HAC Piso`, `= B(2,1) ⊕ B(2,-1)` by the bridge), as a
+`LinearIsometryEquiv`. This is the honest "carrier sector evolution" object: `M6`
+is the real physical sector form (not just the `3×3` block), kernel-tied to the
+carrier at the fixed point. `M6` is Hermitian via `M6_posDef`. -/
+noncomputable def carrierFlowStep6 (t : ℝ) :
+    EuclideanSpace ℂ (Fin 6) ≃ₗᵢ[ℂ] EuclideanSpace ℂ (Fin 6) :=
+  hermitian_flow_isometry SectorGroundMassWitness.M6_posDef.1 t
+
+/-- **The full carrier sector orbit conserves norm.** The discrete time-evolution
+orbit of the `6×6` physical sector form `M6`'s flow conserves the sector norm —
+the concrete carrier's actual sector evolution, not just a block. -/
+theorem carrier6_orbit_norm_conserved (t : ℝ)
+    (psi : EuclideanSpace ℂ (Fin 6)) (n : ℕ) :
+    ‖FiniteUnitaryEvolution.orbit (carrierFlowStep6 t) psi n‖ = ‖psi‖ :=
+  FiniteUnitaryEvolution.norm_conserved_orbit _ psi n
+
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
