@@ -1003,9 +1003,11 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   the flow is of the *block* `B(λ,κ)` for all `(λ,κ)`, but `B` is the carrier's
   sector form kernel-checked only at `(2,1)` (§4), oracle-grade off it. (First
   -quantized throughout; Krein-unitary ≠ norm-unitary was the earlier worry, and
-  the resolution is that the physical *sector* form — where `B` lives — carries a
-  genuine positive inner product, per §4/§6, on which the flow is honestly
-  norm-unitary.)
+  the resolution is now **kernel-certified**: `sector_krein_form_eq_one` (**M**,
+  guard-pinned) proves `Pisoᴴ J Piso = 1`, i.e. the indefinite Krein metric `J`
+  compressed to the physical sector *is* the identity — the sector carries the
+  ordinary positive inner product, so norm-unitary evolution there is honest, not
+  a Krein-indefinite artifact.)
 - **D4 — renormalization flow.** `invariant_orbit`,
   `observable_antitone_orbit` (`FiniteRGFlow`, **M**, axiom-free): orbit
   invariants and monotones under an iterated step. The intended step is the §9

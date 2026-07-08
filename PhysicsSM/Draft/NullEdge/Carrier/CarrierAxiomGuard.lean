@@ -689,6 +689,10 @@ finite Witten positive-mass (F4), general-partition monogamy (F3 rd2) -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness.T2_positive_mass
 
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness.sector_krein_form_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorGroundMassWitness.sector_krein_form_eq_one
+
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.WittenPositiveMass.weitzenbock_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.WittenPositiveMass.weitzenbock_eq_zero_iff

@@ -312,6 +312,18 @@ theorem Piso_isometry : Pisoᴴ * Piso = (1 : Matrix (Fin 6) (Fin 6) ℂ) := by
   simp +decide [ Fin.sum_univ_succ, Matrix.mul_apply ];
   simp +decide [ Fin.forall_fin_succ, Matrix.one_apply ]
 
+/-- **The physical sector carries the standard (positive) inner product.** The
+Krein metric `J` compressed to the `J`-positive sector by the isometry `Piso` is
+the identity: `Pisoᴴ J Piso = 1`. So on the physical sector the *indefinite* Krein
+form restricts to the ordinary Euclidean inner product — which is exactly why
+norm-unitary (Euclidean) evolution on the sector is honest and not a
+Krein-indefinite artifact (the resolution of "Krein-unitary ≠ norm-unitary" for
+`CarrierUnitaryFlow`, kernel-certified). Two-line composite of `Jmet_mul_Piso`
+and `Piso_isometry`. -/
+theorem sector_krein_form_eq_one :
+    Pisoᴴ * Jmet * Piso = (1 : Matrix (Fin 6) (Fin 6) ℂ) := by
+  rw [Matrix.mul_assoc, Jmet_mul_Piso, Piso_isometry]
+
 /--
 The compressed total form equals `M6`: the explicit `12x6` isometry `Piso`
 compresses the assembled Krein form `HAC` to the `6x6` sector form `M6`.
