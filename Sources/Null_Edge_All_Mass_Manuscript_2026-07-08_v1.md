@@ -1510,6 +1510,12 @@ novelty-gap analysis is in
   (indefinite spectral triples over a `Z₂`-graded Krein space; the grading
   involution `Γ` with adjoint sign flip `Γ^‡ = (−1)^q Γ` — the NCG precedent for
   the §6 closure grading `b = σ_z ⊗ 1` being Krein-`‡`-odd on the closure channel).
+- T. Ya. Azizov, I. S. Iokhvidov, *Linear Operators in Spaces with an Indefinite
+  Metric*, Wiley (1989); J. Bognár, *Indefinite Inner Product Spaces*, Springer
+  (1974) (`[import]` — the standard operator theory of `J`-self-adjoint and
+  `J`-unitary operators on Krein spaces; the functional-analysis backing for the
+  §6 positive-sector framing and the §9a `J`-self-adjoint-generator ⇒
+  `J`-unitary-flow question).
 
 **Discrete Dirac, quantum walks/automata, fermion doubling (§2a, §8).**
 
