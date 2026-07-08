@@ -63,7 +63,7 @@ as current state.
 - `AgentTasks/fable_parallel/Q04_answer.md` - SM selection: B-L no-go for the naked triple; internal null-strand principle; pentad selection up to (4,1); anomaly = supertrace identity; octonion/Connes dictionary. [STABLE]
 - `AgentTasks/fable_parallel/Q05_answer.md` - generations: triality-as-monodromy (3 forced by D4; menu {1,3}); gauge-outer rail; Fano/E8 kills; CKM/PMNS dichotomy from Z/3 rep theory. [STABLE]
 - `AgentTasks/fable_parallel/Q06_answer.md` - continuum limit: benchmark ladder R0-R6; retardedness = Wilson term; exact GW with edge-reversal grading; UM/covariance gates; refinement category. [STABLE]
-- `AgentTasks/fable_parallel/Q07_answer.md` - mass values: equipartition Q = 2/V (Koide = 45deg x 3); T-SOLDER; leg-level sqrt-m; hierarchy = path overlap; GATE M-KOIDE. [STABLE]
+- `AgentTasks/fable_parallel/Q07_answer.md` - mass values: equipartition Q = 2/V (Koide = 45deg x 3); T-SOLDER; leg-level sqrt-m; hierarchy = path overlap; GATE M-KOIDE. NOTE: the gate's Route-A operationalization was killed by probe P1 (2026-07-07, measured kappa = 3/2); the equipartition identity is unaffected. [STABLE]
 - `AgentTasks/fable_parallel/Q08_answer.md` - second quantization: Fock commutes with GB quotient; finite Kugo-Ojima free; canonical wedge interaction; RG = Schur; infinity's two doors. [STABLE]
 - `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` - the unified-mass-model working plan (detail behind the results map). [LIVE]
 - `Sources/Luminal_Motion_Checkerboard_Research_Program.md` - the checkerboard program (bridges to the carrier via the turn/corner dictionary). [LIVE]

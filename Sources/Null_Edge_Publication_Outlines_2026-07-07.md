@@ -363,6 +363,32 @@ crisp moral.
   named rigidity) as the honesty frame. This is exactly the publication
   plan's P6-R ("flavor as an internal Gram-overlap problem"), now with a
   concrete theorem at its center.
+  STATUS UPDATE (2026-07-07 late, post-P1): DEACTIVATED as drafted. The
+  make-or-break fired negative - the pre-registered probe P1 measured
+  kappa = 3/2 (not 1), predicting Q = 5/9 against the observed 2/3, and
+  the carrier reduction does not produce the uniform-d ansatz at all
+  (`TSOLDER_KAPPA_ANALYSIS.md` sec 4a). Salvage: the sum-rule trace
+  theorem (43a7f979) stands as a lemma, and the honest kill is a
+  methods-paper paragraph. Any revival must clear the Sumino bar
+  (arXiv:0812.2103): a real Koide mechanism must also survive QED
+  running, which this route never reached.
+- NEW candidate (post-P1, replaces the P6-R slot's physics): "Masslessness
+  from decoration symmetry" - the P1 follow-up locus scan's finding
+  (TSOLDER_KAPPA_ANALYSIS sec 4b): every Z_V-symmetric celestial
+  decoration pins an EXACT zero mode of the cycle transfer (all cone
+  angles, V = 3..6 tested); generic decorations have a soft near-zero
+  mode; abstract non-geometric data need a codim-1 locus that geometric
+  decorations satisfy AUTOMATICALLY (the celestial geometry locks
+  amplitude and holonomy onto the massless curve); plus the tetrahedral
+  V = 3 case's exact rational spectrum and mod-pi degeneracy as the
+  distinguished example, and the even-V half-winding case as the one
+  |t|-independent abstract corner. Prior art to position against:
+  topological classification of discrete-time quantum walks with
+  protected 0- and pi-quasienergy modes (Kitagawa, arXiv:1112.1882;
+  Tarasinski-Asboth-Dahlhaus, arXiv:1401.2673; both now in the paper
+  graph) - the novelty claim must be the decoration/celestial-geometry
+  origin and the self-locking, not 0/pi-mode protection as such.
+  Gated on: kernel-checking targets T1-T3 of sec 4b.
 - NEW candidate (post-Q06): "The checkerboard carries an exact
   Ginsparg-Wilson structure" - GW-1/GW-2 with the edge-reversal grading, the
   retardedness-is-the-Wilson-term identity, and the strong-topology

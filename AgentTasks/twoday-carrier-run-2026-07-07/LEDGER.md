@@ -3948,3 +3948,33 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Claim boundary: numeric oracle only; nothing here is kernel-checked;
   the kill is of one operationalization, not of every carrier mass-value
   mechanism.
+
+## [FABLE follow-up] P1 kill propagated; lit ingested; zero-mode locus scan CORRECTS the discovery
+
+- Lit search + ingest: quantum-walk 0/pi-quasienergy topology (Kitagawa
+  arXiv:1112.1882 [3TAWUGB4]; Tarasinski-Asboth-Dahlhaus arXiv:1401.2673
+  [DEK4EJME]) added to Zotero + graph + embedded; Sumino arXiv:0812.2103
+  already present [ZDKPQWNP]. Sumino bar noted in the outlines: any Koide
+  revival must survive QED running.
+- Kill propagation (six anchors): NULL_EDGE_RESULTS.md batch line,
+  DOCUMENT_MAP Q07 line, publication outlines P6-R DEACTIVATED (+ new
+  candidate slot), THREAD_BOARD EQUIPARTITION-GATE, manuscript v3 gate
+  paragraph + changelog.
+- Locus scan run (`Scripts/oracle/p1_zero_mode_locus_scan.py`; findings in
+  TSOLDER_KAPPA_ANALYSIS.md sec 4b). CORRECTION to the previous ledger
+  entry: the exact zero mode is NOT tetrahedral-specific and NOT
+  Berry-phase-pinned as first reported - it is SYMMETRY-forced (every
+  Z_V-symmetric celestial decoration pins it, all cone angles, V=3..6;
+  random decorations sit near but not at zero). Tetrahedral-specific:
+  the exact rational spectrum and mod-pi double degeneracy. Additional
+  findings: abstract (non-geometric) data need a codim-1 locus h*(|t|)
+  (V=3 w=1: exists only for |t| >= 1/2, through trine (1/2, 180deg) and
+  tetrahedral (1/sqrt3, -90deg)); geometric decorations SELF-LOCK onto
+  that locus; even-V half-winding gives the one |t|-independent abstract
+  zero (V=4, w=2, h=0, all |t|).
+- New thread SYMMETRY-ZERO-MODE registered on the board with
+  pre-registered targets T1 (symmetry protection theorem), T2
+  (tetrahedral rational spectrum, exact arithmetic), T3 (abstract locus
+  char-poly relation) - sec 4b of the analysis doc.
+- Claim boundary: all numeric-oracle grade; T1-T3 are targets, not
+  results; "masslessness" = zero quasi-energy of the finite leg transfer.

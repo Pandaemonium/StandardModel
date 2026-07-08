@@ -545,6 +545,23 @@ cross-reviewed) / STALLED (escalation step) / PARKED (reason).
   carrier-to-leg reduction on the Z_3 tetrahedral cycle, corner convention
   pinned by the palindromic theorem in GWRetardedTransfer.lean. Next
   concrete action on this thread; kills pre-registered in the note.
+- **P1 RUN (2026-07-07 late): ROUTE A KILLED per pre-registration.**
+  `Scripts/oracle/p1_tsolder_koide_probe.py`; verdict in
+  `TSOLDER_KAPPA_ANALYSIS.md` sec 4a. Measured kappa = 3/2 exactly (not
+  1/B2, not 2/B1); predicted Q = 5/9 vs observed 2/3; uniform-d shape
+  fails (traceless 120-deg diagonal). Gate M-KOIDE Route-A VOID (K3).
+  DISCOVERY spawned and CORRECTED same day by the locus scan
+  (`Scripts/oracle/p1_zero_mode_locus_scan.py`, sec 4b of the analysis):
+  the exact zero mode is SYMMETRY-forced (every Z_V-symmetric celestial
+  decoration pins it, all cone angles, V=3..6; generic decorations sit
+  near zero; abstract data need a codim-1 locus that geometric
+  decorations satisfy automatically). Tetrahedral-specific: the rational
+  spectrum + mod-pi degeneracy. New thread SYMMETRY-ZERO-MODE with
+  pre-registered targets T1 (symmetry protection), T2 (tetrahedral
+  rationality), T3 (abstract locus) in sec 4b; prior art = quantum-walk
+  0/pi-mode topology (arXiv:1112.1882, 1401.2673, in graph). SUB-NAT
+  packet (7f7c1ea6) gets the numbers as input; any revived reduction
+  must be re-registered before running.
 ### FOCK-GB - second quantization commutes with the quotient [Claude; post-Q08]
 - **Done, in order:** L-Q8-1 finite Kugo-Ojima landed in
   `PhysicsSM/Draft/NullEdge/Carrier/KugoOjima.lean` from Aristotle

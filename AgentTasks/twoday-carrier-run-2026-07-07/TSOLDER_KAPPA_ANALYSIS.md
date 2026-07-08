@@ -196,15 +196,66 @@ exactly rephasing-invariant (defect 4e-16).
 
 **Unexpected findings worth their own thread (grade C, gated):**
 
-1. The tetrahedral decoration is spectrally distinguished: exact rational
-   spectrum, exact zero mode, and the mod-pi double degeneracy - none of
-   which the controls show. The zero mode at holonomy +/-90 deg looks like
-   holonomy-induced index protection (a massless generation FORCED by the
-   Berry phase of the decoration cycle) - potential bridge to the
-   `CarrierIndexProtection` family; formalizable as a finite statement.
+1. The tetrahedral decoration is spectrally distinguished by its exact
+   RATIONAL spectrum (pi/6 multiples) and mod-pi double degeneracy - the
+   controls show neither. (CORRECTION, same day, from the locus scan in
+   sec 4b: the exact ZERO mode itself is NOT tetrahedral-specific - every
+   symmetric cone decoration has it; the first draft of this section
+   over-attributed it. The correct protection statement is
+   symmetry-forced, not Berry-phase-forced; see sec 4b.)
 2. The spectrum {0, 1, 2} x pi/6 with one massless member reads as a
    neutrino-sector-shaped toy, not a charged-lepton one. If the mechanism
    ever returns to mass values, the natural target has MOVED.
+
+## 4b. ZERO-MODE LOCUS SCAN (2026-07-07, follow-up; numeric oracle)
+
+Script: `Scripts/oracle/p1_zero_mode_locus_scan.py` (+ a random-decoration
+check run inline). Question: when does the decorated-cycle transfer have
+an exact zero quasi-energy mode? Findings, exact to float precision:
+
+1. **Symmetry-forced masslessness (the corrected discovery).** EVERY
+   Z_V-symmetric decoration (symmetric V-gon on a cone, ANY half-angle
+   chi, V = 3,4,5,6 tested) carries an exact zero mode - roughly 400
+   crossings per V in the chi sweep is the detector firing along an
+   identically-zero curve. Random NON-symmetric spinor decorations do
+   NOT have exact zeros (min |E| between 1e-4 and 7e-2 across 12 trials)
+   - but they sit close to zero, i.e. generic decorations have a SOFT
+   near-massless mode and the cyclic symmetry pins it exactly.
+2. **Geometric decorations self-lock onto the massless locus.** In the
+   abstract data (|t|, holonomy h, flip winding w) WITHOUT the geometric
+   chaining, zero modes require a codim-1 locus: for V = 3, w = +/-1,
+   a curve h*(|t|) existing only for |t| >= 1/2, passing through the
+   trine endpoint (|t| = 1/2, h = 180 deg) and the tetrahedral point
+   (|t| = 1/sqrt3, h = -/+90 deg), running to (|t| = 1, h = 0 mod 360).
+   Spinor-geometric cone families trace (|t|(chi), h(chi)) EXACTLY along
+   this curve - the celestial geometry enforces the spectral condition.
+3. **One genuinely |t|-independent (topological) abstract case:** V = 4
+   with half-winding w = 2 (alternating flip phases) has the zero mode
+   at h = 0 for ALL |t| tested (spread 3e-12 deg). Even-V half-winding
+   is the properly "topological" corner of the abstract parameter space.
+4. Prior art now in the paper graph for the eventual writeup: protected
+   0- and pi-quasienergy modes in discrete-time quantum walks (Kitagawa,
+   arXiv:1112.1882 [3TAWUGB4]; Tarasinski-Asboth-Dahlhaus,
+   arXiv:1401.2673 [DEK4EJME]). Novelty must be claimed ONLY for the
+   decoration/celestial-geometry origin and the self-locking (finding 2),
+   not for 0/pi-mode protection as such.
+
+**Theorem targets handed to the HOLONOMY-ZERO-MODE thread (in order):**
+
+- T1 (symmetry protection, finite): a Z_V-symmetric spinor decoration
+  forces 1 in spec(W). Mechanism to formalize: the commuting decoration
+  symmetry (leg shift composed with the SU(2) cone rotation) and a
+  fixed-sector argument. Small, concrete, Aristotle-ready.
+- T2 (tetrahedral rationality): the V = 3 tetrahedral transfer has
+  spectrum pi/6 * {-6, -2, -1, 0, 4, 5} exactly (entries live in a
+  cyclotomic field; exact linear algebra is feasible).
+- T3 (abstract locus): for V = 3, w = 1 uniform data, 1 in spec(W) iff a
+  closed-form relation p(|t|, h) = 0 (evaluate the characteristic
+  polynomial at 1); then finding 2 becomes "spinor chaining implies p = 0".
+
+Claim boundary: all numeric-oracle grade; T1-T3 are pre-registered
+targets, not results; "masslessness" here means zero quasi-energy of the
+finite leg transfer, with no continuum claim.
 
 ## 5. Relation to standing threads
 

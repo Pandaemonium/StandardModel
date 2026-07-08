@@ -385,7 +385,14 @@ the trusted namespace yet.
   "retardedness IS the Wilson term" and an exact Ginsparg-Wilson structure
   whose grading is edge-orientation reversal; the equipartition sum rule
   (Koide's 2/3 = 45-degree equipartition x 3 modes, exact under a named
-  soldering hypothesis); and the second-quantization chain (Fock commutes
+  soldering hypothesis - NOTE: the tetrahedral-corner carrier route to that
+  hypothesis was KILLED by pre-registered probe P1 on 2026-07-07, measured
+  kappa = 3/2 not 1; the follow-up locus scan found symmetry-forced exact
+  masslessness (every Z_V-symmetric decoration pins a zero mode; generic
+  decorations sit near zero) - a new thread, independent of Koide; the
+  sum-rule identity itself stands; see
+  `AgentTasks/twoday-carrier-run-2026-07-07/TSOLDER_KAPPA_ANALYSIS.md`
+  secs 4a-4b); and the second-quantization chain (Fock commutes
   with the physical quotient; unitarity needs exactly the one open
   positivity; interactions are canonical with pair kernel = the carrier's
   wedge). Memos: `AgentTasks/fable_parallel/Q0{1..8}_answer.md`.

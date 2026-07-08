@@ -778,8 +778,17 @@ channels (turn power = hop power), the trace identity
 framework's honest resolution (permille matching floor). Gate M-KOIDE is
 pre-registered with kill conditions, the load-bearing one being the
 derivation (or refutation) of the soldering coefficient from carrier
-axioms. Until that derivation exists, this is a registered gate, not a
-result.
+axioms. (Update, 2026-07-07 late: the refutation now exists. The
+pre-registered probe P1 measured the soldering coefficient dynamically:
+kappa = 3/2, not the kappa = 1 the relation needs, and the carrier
+reduction does not produce the uniform-turn ansatz at all. The gate's
+Route-A operationalization is therefore void; the equipartition trace
+identity itself is unaffected, and the probe's by-product - exact
+masslessness forced by the decoration's cyclic symmetry, found by the
+follow-up locus scan - is recorded as a new, separate target. See
+`AgentTasks/twoday-carrier-run-2026-07-07/TSOLDER_KAPPA_ANALYSIS.md`
+sec 4a.) As of this update the mass-value layer holds NO live gate on
+the Koide relation; this is a reported kill, not a result.
 
 ### Layer 6 - Composite mass: QCD and the proton. IMPORTED CONTEXT.
 
@@ -833,7 +842,9 @@ it says so.**
   extended by the index-protection family, layer 4 updated with the MEMO-grade
   positivity boundary and the `dim = ind` bookkeeping, layer 5 updated with the
   killed F2.0 gate and the newly
-  pre-registered equipartition gate M-KOIDE. All 2026-07-07 program results
+  pre-registered equipartition gate M-KOIDE (whose Route-A
+  operationalization was itself killed by probe P1 later the same day;
+  see section 16). All 2026-07-07 program results
   cited at `MEMO` or draft grade only; the paper's own claims unchanged from
   v2.
 - **v2 (2026-07-03).** Interpretation-free core statement; orbit-invariant
