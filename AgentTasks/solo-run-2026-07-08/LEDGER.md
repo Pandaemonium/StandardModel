@@ -365,3 +365,10 @@ Keep queue full.
 - Both S1CC-audit (batch-5) and dynamics-audit (batch-6) now confirm the landed
   kernel statements are sound; every over-claim was docstring/prose, all fixed.
 - **In flight:** f6644f9b (corrected non-degenerate existence) still RUNNING.
+- **Submitted `624b93a3` (kreinflow) — audit-motivated.** The batch-6 LOAD-BEARING
+  gap (Krein flow preserves the J-positive sector = open) is now a concrete target:
+  prove (1) HAC is Jmet-self-adjoint, (2) range Piso is HAC-invariant, (3) general
+  J-self-adjoint => J-unitary-flow lemma + sector invariance. Would upgrade the D2
+  sector orbit from Euclidean-norm-conserving to Krein-form-conserving C->M on the
+  witness. If (1)/(2) false on the witness, that itself is a finding.
+- **Queue (~16:50):** 2 running (f6644f9b s1ccpres existence, 624b93a3 kreinflow).
