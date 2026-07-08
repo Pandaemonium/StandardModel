@@ -117,6 +117,16 @@ Also refined the §9a spectrum-sim bullet + §11 rows to the same honest split.
   closing the one open §9a dynamics link. On completion: harvest into a draft
   module, note in §9a that the D2 instantiation is now kernel-checked (not just
   the generic scaffold), guard-pin.
+  - **INTEL (my bounded attempt, reverted):** exact Mathlib lemma is
+    `NormedSpace.exp_mem_unitary_of_mem_skewAdjoint` (skew-adjoint => exp unitary);
+    `NormedSpace.exp` takes ONE arg (no field) in v4.28.0; skew-adjoint of
+    `-i t H` closes by `simp [star_smul, Matrix.star_eq_conjTranspose, hH.eq,
+    Complex.conj_I, Complex.conj_ofReal] ; module`. BUT `exact ... ∈ unitary
+    (Matrix (Fin n) (Fin n) ℂ)` TIMES OUT at whnf (200k heartbeats) on the
+    `unitary` monoid-instance diamond. Fix Aristotle should prefer: state the
+    conclusion as the plain matrix eqn `(exp A)ᴴ * exp A = 1` to dodge the
+    `unitary` submonoid diamond, or bump maxHeartbeats. Review its formulation
+    against this at harvest.
 
 ## Status: BOTH FOCUSES COMPLETE + VERIFIED (as of ~11:1x)
 
