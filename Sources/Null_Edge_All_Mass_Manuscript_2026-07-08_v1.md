@@ -1167,10 +1167,19 @@ this was conditional on have both moved this run:
 well-posed combinatorics problem (demoted to a standing bounty). (2) The
 color-singlet mass-budget witness (§4) — designed, `b_C ≠ 0`, awaiting
 transcription. (3) The reflection-sectored double-pinning theorem and its
-rational fixture (§8). (4) The S1-CC physical `J Q_C|V'/N` bridge applying
-the landed finite capstone, and the equivariant-index unification of §§4/6/8
-(the program's candidate organizing theorem). Each is finite, each has a kill
-condition, none requires new axioms.
+rational fixture (§8). (4) The equivariant-index unification of §§4/6/8 (the
+program's candidate organizing theorem) — whose **provable half is now landed**:
+`EquivariantGradedIndex.graded_budget_decomposition` (**M**, self-guarded) writes
+the exact Dirac-square budget `4 D^#D = Q_A+Q_C+4Q_T+4E_#` as *one equivariant
+graded-supertrace identity* on the four channels (McKean–Singer odd-power
+cancellation `graded_trace_odd_vanishes`; "unification is decomposition"
+`graded_trace_sum`; the C4 isotypic split `graded_trace_sector_split`). The honest
+boundary: this is finite graded linear algebra, **not** a topological index theorem
+à la Atiyah–Singer — that is a category error at this generality (no base space, no
+K-theory receptacle, no family of operators; the count is direct), not a research
+gap. What stays open is the `finrank`/projection-trace dimension-counting layer
+that would turn the algebraic supertrace facts into inertia/dimension theorems.
+Each of (1)–(4) is finite, each has a kill condition, none requires new axioms.
 
 **Pre-registered predictions (falsifiable, dimensionless, dated).** The
 program is permitted exactly one kind of numeric prediction: a
@@ -1221,6 +1230,7 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `carrier_krein_square` | `Carrier/CarrierKreinSquare.lean` | M, guard-pinned (`CarrierAxiomGuard`) | master Krein identity: starred blocks `Q_{A,C}^#` + `4 Q_T` + `4 E_#` (§4) |
 | 4 | `carrier_square_assembly` | `Carrier/CarrierSquareAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | self-adjoint 3-slot specialization `4 D^#D = Q_A+Q_C+4Q_T` (`E_#=0`, bare blocks) |
 | 4 | `signed_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | shares sum to one (abstract) |
+| 4/10 | `graded_budget_decomposition`, `graded_trace_odd_vanishes` | `Carrier/EquivariantGradedIndex.lean` | M, self-guarded (in-file pin) | **organizing theorem, provable half**: the 4-channel budget as one equivariant graded-supertrace identity ("unification is decomposition"); McKean–Singer odd-power cancellation. Not a topological index (finite graded linear algebra) |
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-vacuous `(1/2,0,1/2)` witness |
 | 4 | `sector_ground_mass` | `Carrier/SectorGroundMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | Rayleigh–Ritz keystone: definite-sector ground value is a positive squared mass (§4 rail 3, §10 crux 0) |
 | 4 | `T2_positive_mass` | `Carrier/SectorGroundMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the positivity linchpin**: explicit two-edge Cl(4) carrier, sector form `1+B^HB` PosDef, keystone fires ⇒ genuine positive mass (§6, §10 crux 0a) |
