@@ -1,30 +1,44 @@
-# All mass from null edges
+# Mass as null disagreement: a machine-verified finite framework
 
-**A machine-verified account of where mass comes from, built from a single
-primitive: light-speed transport that disagrees with itself.**
+**A finite, kernel-checked framework in which the invariant mass of a
+bundle of light-speed degrees of freedom is the geometric disagreement of
+their directions, and a single Dirac-type square decomposes into four
+force-shaped channels. The one trusted theorem is classical kinematics,
+formalized; the dynamics is finite operator algebra, graded honestly.**
 
-Draft v1, 2026-07-08. Status: **[DRAFT-MS]**. This is the *all-mass*
-manuscript; it subsumes and cites the P1 origin-of-mass draft
-(`Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`) rather than
-replacing it.
+Draft v1, 2026-07-08. Status: **[DRAFT-MS]**. It subsumes and cites the P1
+origin-of-mass draft (`Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`)
+rather than replacing it.
 
-Every technical claim below carries a grade, and the grades are the
-point of the paper as much as the claims are:
+*On the title (the paper's discipline applied to itself).* An earlier
+working title, "All mass from null edges," claimed more than the grades
+license: the kernel-checked content is (a) a classical kinematic identity,
+formalized, and (b) finite operator algebra about a functional *conjectured*
+(not yet proved) to be a mass — see §4 rail 3. Per this paper's own rule, a
+title graded **C** is an error; the present title is what the grades support.
+"All mass" survives only as the *program's* aim, not this paper's result.
+
+Every technical claim below carries a grade, and the grades are as much the
+point of the paper as the claims are:
 
 | Grade | Meaning |
 |---|---|
 | **T** | source-verified theorem (external mathematics) |
 | **M** | machine-verified: kernel-checked in Lean 4 under the pinned toolchain, axiom-audited, guard-pinned |
-| **MEMO** | expert-verified prose; kernel transcription pending |
+| **MEMO** | expert- and LLM-oracle-verified prose (hand-derivation plus frontier-model cross-check), pending kernel transcription — an explicit methodological choice, not a proof; failure mode is a convention or algebra slip that the kernel would catch |
 | **C** | pre-registered conjecture with an explicit kill condition |
 | **[import]** | an external result used as input, not reproved here |
 
 The discipline this paper holds itself to: **a sentence that claims more
-than its grade licenses is an error, however true it may turn out to be.**
-Two long-standing conjectures of this program died this month by their own
-pre-registered tests (§10). We report those with the same prominence as
-the theorems, because a program that cannot say what it has *disproved*
-cannot be trusted about what it has proved.
+than its grade licenses is an error, however true it may turn out to be** —
+and (per the reviews this draft has had) that discipline binds the
+*interpretive* vocabulary too: the channel names of §4 are **structural
+analogies at grade C** (no continuum reduction is claimed; §4a), and any
+"oracle" / "Fable-analysis" evidence is a numerical experiment, not part of
+the verified core (§11). Two long-standing conjectures of this program died
+this month by their own pre-registered tests (§10); we report those with the
+same prominence as the theorems, because a program that cannot say what it
+has *disproved* cannot be trusted about what it has proved.
 
 ---
 
@@ -55,6 +69,44 @@ assumed. From §3 onward the grades take over and the register is
 technical. A reader who wants only the verified core can read §3 (the one
 trusted theorem), §4 (the decomposition that organizes everything), and
 the anchor table (§11), and skip the rest.
+
+**Glossary (recurring terms and internal labels).** So the technical
+sections do not rely on codenames a reader cannot decode:
+
+*Objects.* **Null edge** — an elementary light-speed step (the only
+primitive). **Carrier (Dirac) operator `D`** — the finite first-quantized
+operator whose square organizes the mass channels. **`det P`** — the
+Gram/Plücker invariant of §3 that equals total pairwise null disagreement;
+the paper's definition of "mass" at the kinematic layer. **Krein space** —
+a vector space with an *indefinite* inner product (a `+`/`−` metric); the
+right setting for a Lorentzian, not Euclidean, operator, and the reason
+"positive" is a theorem to be earned, not assumed. **Channel operators
+`Q_A, Q_C, Q_T, E_#`** — the four Krein blocks of `4 D^#D`:
+aperture/**kinetic**, closure/**gauge–QCD**, turn/**Higgs**, and
+soldering/**gravity** respectively (their names are grade-C analogies, §4a).
+
+*Named external tools (all `[import]`/`T`).* **Weitzenböck / Lichnerowicz
+identity** — the algebraic fact that a Dirac operator's square is a
+Laplacian plus curvature; our four-block split is the finite instance.
+**Ginsparg–Wilson** — the lattice way to keep exact chirality at finite
+size; here the edge-orientation-reversal grading. **McKean–Singer /
+Lefschetz index** — supertrace formulas that count protected modes; §8's
+masslessness protection. **Banks–Casher** — relates near-zero eigenvalue
+density to condensation; we use only its finite *count* form. **Schur
+complement** — the linear-algebra "integrate out a site" step; §9's
+decimation. **Rayleigh–Ritz** — variational characterization of the lowest
+eigenvalue; the keystone (`sector_ground_mass`) that would turn the budget
+functional into a mass.
+
+*Internal labels (this program's own bookkeeping).* **S1-CC** — the
+"closure-channel positivity" question (S1) and its resolution as
+*balanced* (§6); the program's former #1 crux. **Amendment A2/A4** —
+numbered proposals in the program's working memos (A2: closure-defect
+energy; A4: the disorder→condensate bridge, since killed, §9/§10). **Probe
+P#** — a pre-registered numerical oracle experiment with a kill condition
+(e.g. probe P1 killed the tetrahedral-Koide route, §5). **`sector_ground_
+mass`, `aperture_dominance_pos`, `carrier_square_assembly`, …** — Lean
+theorem names; every one appears with its file and guard status in §11.
 
 ---
 
@@ -90,8 +142,8 @@ optional extra; it is the entry the corner *requires* in order to exist
 is a short list — which of a few elementary "strands" it carries. Charge
 is the bookkeeping of that list: quarks and leptons differ by how many
 color strands they hold, which is why quark charges come in thirds; lepton
-number and baryon number are just *counts* of strands (the Q04
-analysis). An antiparticle is the same list read backwards. The whole
+number and baryon number are just *counts* of strands. An antiparticle is
+the same list read backwards. The whole
 particle zoo of one generation is the catalogue of ways to occupy a
 handful of strands.
 
@@ -113,6 +165,45 @@ substance underneath.
 That is the entire picture. The rest of the paper is the mathematics that
 makes each italicized claim precise, and honest about which are theorems
 and which are still hopes.
+
+---
+
+## 2a. Related work: where this sits, and what is new
+
+None of the physical *pictures* above is original, and the paper is stronger
+for saying so; the novelty is a finite Krein-space setting, machine
+verification, and the four-channel budget as one object. Situating the work:
+
+- **The kinematic identity (§3) is classical spinor-helicity.** For a sum of
+  real null momenta `P = Σ pᵢ`, `P² = Σ_{i<j} 2 pᵢ·pⱼ = Σ_{i<j} |⟨ij⟩|²`, and
+  the invariant mass of a multi-massless system vanishes iff the momenta are
+  collinear — textbook in the amplitudes literature (Elvang–Huang; Dixon,
+  TASI lectures) `[import]`. Our contribution in §3 is *not* the fact but its
+  Plücker/Cauchy–Binet packaging, its kernel-checked formalization, and its
+  use as the organizing invariant that reappears in every channel.
+- **Part I is Penrose and Feynman.** The zig-zag electron is Penrose (*Road
+  to Reality* §25.2); the "velocity eigenvalues are ±c, rest is light running
+  in place" picture is *Zitterbewegung* (Dirac; Hestenes); the discrete
+  null-step-with-corners model is the **Feynman checkerboard**. The last is a
+  standing **asset**, not just a citation: the checkerboard's continuum limit
+  to the 1+1D Dirac propagator is a *proven theorem* (Gersch; Jacobson–
+  Schulman) `[import]` — a `T`-grade external result that closes the §9/§10
+  continuum gap *for the simplest chain*, which we import rather than reprove.
+- **Structurally closest living programs.** Finster's *causal fermion
+  systems* (finite/measure-theoretic, mass from a variational principle, no
+  background) `[import]` and Connes' *spectral triples* (our carrier `D` with
+  the `Γφ` fluctuation is NCG-adjacent) `[import]` are the nearest relatives;
+  Kauffman–Noyes combinatorial/discrete-physics work and Wilczek's "mass
+  without mass" essays (the QCD share) `[import]` are the nearest slogans.
+- **What is new, stated by contrast.** Against that background the actual
+  novelty is narrow and honest: (i) the *finite Krein/indefinite* setting
+  with an explicit physical-sector positivity question (§6), which the CFS
+  and NCG programs handle differently; (ii) *kernel verification* of the
+  algebra (the grades, the anchor table); and (iii) the *single four-channel
+  budget* `4 D^#D = Q_A+Q_C+4Q_T+E_#` as one decomposition, with the same
+  disagreement invariant read in each channel. The pictures are borrowed; the
+  finite-verified packaging and the budget are ours. Full source-key:
+  `Sources/Null_Edge_References.md`.
 
 ---
 
@@ -144,11 +235,17 @@ wedges, which vanishes exactly when two directions are parallel. So:
   one common beam (`fin_bundle_mass_zero_iff_common_direction`, **M**, Draft).
 
 This is the precise form of "mass is trapped disagreeing light," and it is
-the strongest thing the program owns: kernel-checked, axiom-audited, in the
-trusted layer. It is also *only* kinematics — it says what mass *is* for a
-given bundle, not what dynamics builds the bundle. The rest of the paper is
-about the dynamics, and it is held to a lower grade for exactly that
-reason.
+the most solid thing the paper rests on: kernel-checked, axiom-audited, in
+the trusted layer. **What is ours here is the formalization and the framing,
+not the fact.** The identity is classical spinor-helicity kinematics (§2a;
+Elvang–Huang, Dixon) — the invariant mass of a multi-massless system as its
+total pairwise non-collinearity. Our contribution is (a) the kernel-checked
+Plücker/Cauchy–Binet formalization and (b) the decision to make *this*
+invariant the organizing quantity that every later channel is measured
+against. It is also *only* kinematics — it says what mass *is* for a given
+bundle, not what dynamics builds the bundle, and crucially not what its mass
+*spectrum* is (a spectral quantity; §4 rail 3). The rest of the paper is
+about the dynamics, held to a lower grade for exactly that reason.
 
 ---
 
@@ -195,6 +292,23 @@ conjecture (**C**), not a theorem.
 together; they are four summands of one square. The claim the program
 stakes is that *the* invariant — pairwise null disagreement — reappears in
 each channel through a different canonical map.
+
+*The honest weakness in this thesis, named as a conjecture.* Every
+Dirac-type operator squares into a Lichnerowicz/Weitzenböck identity;
+decomposition-of-the-square is a property of the *category*, not of our
+carrier. So "unification is decomposition" is only a thesis if the
+decomposition is *forced*. We therefore pre-register the missing rigidity
+statement:
+
+> **Conjecture (carrier rigidity, C).** The axioms — null soldering on a
+> finite 2-complex, Krein structure, chiral grading, and covariantly
+> constant turn field — determine the carrier operator and its four-block
+> split *essentially uniquely* (up to the representation gauge already
+> identified in §6). **Kill condition:** exhibit two axiom-satisfying
+> carriers whose square-decompositions are not related by that gauge, or a
+> fifth canonically-forced block. Until this is settled, §4's split is a
+> *natural* decomposition, not a *forced* one, and the reader should hold
+> "unification" to that lower standard.
 
 **The budget corollary (M).** A one-line consequence of the assembly
 (apply any linear expectation `ev` — the state functional `<psi, . psi>` —
@@ -245,11 +359,65 @@ Fable analysis this run.)* Three honesty rails, all load-bearing:
    is the single most valuable next theorem (§10).
 
 The physical target this shape is aimed at — a finite analogue of the Ji
-decomposition of the proton mass — is grade **C**: the weak claim
-(non-turn dominance, `|b_T|` small, matching that ~99% of nucleon mass is
-not Higgs-generated `[import]`: Yang et al., proton mass decomposition) is
-the honest first goal; the strong claim (closure is the single largest
-share) is a separate, harder, falsifiable test.
+decomposition of the proton mass — is grade **C**, and the two claims it
+supports are *not* on the same footing, for a reason internal to QCD:
+
+- **Weak claim (scheme-robust, the honest first goal):** the turn/Higgs
+  share `|b_T|` is small — most of the mass is not Higgs-generated. The
+  physical counterpart (~99% of the nucleon mass is not from the Higgs
+  Yukawa) is renormalization-*scheme-independent* — it is the statement
+  that the light-quark masses are small — so a finite model reproducing
+  `|b_T| ≪ 1` is matching a robust fact `[import]` (Yang et al.).
+- **Strong claim (scheme-dependent, demoted):** "closure (chromomagnetic)
+  is the single largest share." The individual terms of the Ji
+  decomposition — quark energy, gluon energy, quark mass, trace anomaly —
+  are separately **renormalization-scheme and scale dependent**; their
+  relative sizes shift with the scheme, and only the *total* is invariant.
+  So a bare inequality `b_C > b_A` in this finite model, even if proved,
+  cannot be matched to "the chromomagnetic term dominates the proton mass"
+  without fixing a scheme correspondence the model does not yet have. We
+  therefore demote the strong claim to a **scheme-relative** statement and
+  do not present term dominance as a prediction. This is a genuine
+  limitation, not a temporary gap: term-by-term matching requires a
+  continuum renormalization dictionary (§9, §10) the model lacks.
+
+### 4a. What the channel names claim, and what they do not (grade **C**)
+
+The four channel names — *aperture*, *closure*, *turn*, *soldering*, mapped
+to *kinetic/QCD/Higgs/geometric* mass — do real organizing work, and they
+are also the paper's largest reservoir of unearned suggestion. State the
+boundary once, plainly, so no later sentence smuggles it back:
+
+1. **What is a theorem (M).** The operator square `4 D^#D` splits into four
+   named Krein blocks `Q_A + Q_C + 4Q_T + E_#` (§4, `carrier_square_assembly`).
+   That the split *exists*, that the blocks have the stated Krein
+   symmetries, and that their expectations sum to one budget — these are
+   kernel-checked. The *algebra* of the decomposition is not in question.
+
+2. **What is a named analogy (C).** That block `Q_A` *is* the QCD kinetic
+   term, `Q_C` *is* the chromomagnetic/gluonic term, `Q_T` *is* the Higgs
+   Yukawa, and `E_#` *is* the geometric/gravitational mass — these are
+   **structural analogies**, justified by shape (each block is the finite
+   image of the operator that carries that physics: a covariant Laplacian,
+   a curvature/commutator `σ·F`, a scalar-coupling term, a soldering
+   defect), **not** by any theorem that reduces the finite block to the
+   continuum object in a limit. There is **no continuum reduction** in this
+   paper. The names are load-bearing *hypotheses about a correspondence*,
+   pre-registered so they can be falsified, not established identifications.
+
+3. **The kill condition for the whole naming scheme.** If the finite
+   blocks' expectations, evaluated on a family of complexes approaching a
+   known continuum gauge theory, do *not* converge to the corresponding Ji
+   terms (up to the scheme caveat above), the correspondence is wrong and
+   the channel names should be retired to "block 1..4." That test is not
+   run here; it is the §9/§10 continuum program. The checkerboard continuum
+   limit (§2a) is the one sub-case where a genuine reduction exists in the
+   literature, which is why we flag it as the most promising bridge.
+
+Read §§5–8 with this in force: every time the text says "the QCD channel"
+or "the Higgs channel," it means "the block whose *shape* is that of the
+QCD/Higgs term, conjecturally its finite image" — grade **C** — never a
+proved identity.
 
 ---
 
@@ -272,7 +440,8 @@ coefficient `kappa` that would have to equal 1. A pre-registered numerical
 probe measured it: `kappa = 3/2`, not 1, predicting `Q = 5/9` against the
 observed `2/3`, and the carrier reduction does not even produce the
 required uniform-diagonal form. **The tetrahedral-corner Koide route is
-dead** (probe P1, `TSOLDER_KAPPA_ANALYSIS.md` §4a). What survives is the
+dead** (pre-registered probe P1; full analysis in the program's
+soldering-constant memo). What survives is the
 equipartition trace identity behind the Koide *combination* (pure algebra,
 unaffected) and a sharper open question — see §8. Any future mass-value
 route must additionally clear the Sumino bar `[import]`: a real Koide
@@ -321,7 +490,7 @@ month, audit memo, **MEMO**) as a *malposed statement* rather than a hard
 proof: the total-block
 permutation count collapses under the root-pinning constraint, so the
 structured-partition route is the only viable one
-(`PolymerKPConclusion.lean`; K1-STEP0 audit).
+(`PolymerKPConclusion.lean`; strong-coupling cluster-expansion audit).
 
 **The closure channel is an exact Krein square — and this relocates the
 crux (M + MEMO).** The nonabelian closure block factors exactly:
@@ -506,6 +675,30 @@ is therefore a documented kill at this level, and the honest open question
 is sharper: *which* structured (not random) closure backgrounds accumulate
 low modes. Grade **C**, with the naive version now closed.
 
+**On the level of quantization (a boundary a reviewer will ask about).**
+Everything in this paper is **first-quantized**: `D` is a one-particle
+operator on a finite-dimensional space, "mass" is a spectral/kinematic
+invariant of *states*, and the budget decomposes an expectation in a chosen
+one-particle state. There is no Fock space, no creation/annihilation
+algebra, no path integral, and therefore no particle number, no vacuum
+condensate as an operator statement, and no second-quantized mass gap. This
+is deliberate and it is also a real limitation:
+
+- Several physical notions the words invite — a *chiral condensate*
+  `⟨ψ̄ψ⟩`, the *number* of light hadrons, spontaneous symmetry breaking as a
+  vacuum property — are genuinely second-quantized and are **out of scope**
+  of every theorem here. When §6/§9 speak of Banks–Casher accumulation, the
+  kernel content is a statement about the *one-particle* near-zero
+  eigenvalue count, which is the finite shadow of the condensate, not the
+  condensate itself.
+- Promoting `D` to a field operator (a fermion field on the finite complex
+  with a functional integral over the closure/turn decorations) is the
+  natural next layer, and it is where a genuine hadron mass — an eigenvalue
+  of a *many-body* Hamiltonian — would have to live. Nothing here forbids
+  that construction; it is simply not attempted, and no claim in this paper
+  should be read as a many-body or field-theoretic result. Grade **C**,
+  and explicitly a future program, not a gap in a proof.
+
 ---
 
 ## 10. Boundaries, and the things we have disproved
@@ -568,6 +761,26 @@ gap's forest injection (§6) — now a well-posed combinatorics problem
 -CC Lean capstone and the equivariant-index unification of §§4/6/8 (the
 program's candidate organizing theorem). Each is finite, each has a kill
 condition, none requires new axioms.
+
+**Pre-registered predictions (falsifiable, dimensionless, dated).** The
+program is permitted exactly one kind of numeric prediction: a
+*dimensionless ratio protected by finite structure*. Two are on the table.
+Both are recorded here so a later "success" cannot be back-fitted; both are
+grade **C** (they rest on the channel-name correspondence of §4a, not yet a
+theorem).
+
+| # | Prediction | Model source | Comparison / kill condition |
+|---|---|---|---|
+| P-ν | Exactly one massless mode on the small chiral cycle; the *next* mode's ratio is a protected finite target (not an absolute mass) | §8 protection (chiral, not cyclic); oracle | Compare the finite mode-ratio pattern to a neutrino mass-squared ratio `Δm²₂₁/Δm²₃₁` (NuFIT-6.0 `[import]`). **Kill:** if the protected structure forces a ratio pattern incompatible with the measured hierarchy/ordering. Honest status: the *count* (one massless mode) is what the model owns; the *ratio value* is not yet computed, so this is a registered target, not a delivered number. |
+| P-hf | Finite hyperfine (π/ρ-analog) mass-squared splitting `M²(↓) − M²(↑) = 512/125` on the 18-dim color-singlet witness | §4 S6 witness; exact-fraction oracle (`probe_s6_singlet_budget.py`) | This is a property of *one specific finite witness* with fixed 3-4-5 rational holonomies — it is a self-consistency prediction of the construction (the closure/chromomagnetic sign flips between spin states), **not** a claim about the physical π/ρ ratio. **Kill:** if the Lean 18×18 transcription does not reproduce `512/125`, or if the sign structure is an artifact of the chosen holonomies (test: vary them). |
+
+Neither is a physical mass. P-ν is the only place the program touches a
+measured number, and it does so at the one point (§8) where masslessness is
+a theorem and the residual ratio is a protected finite quantity — which is
+the honest home for the mass-value question after it failed for charged
+leptons (§5). P-hf is a prediction *about the model's own consistency*,
+valuable because it is exact and checkable, not because `512/125` is a
+hadron ratio.
 
 ---
 
