@@ -1279,6 +1279,9 @@ novelty-gap analysis is in
 - L. Mlodinow, T. A. Brun, *Discrete spacetime, quantum walks, and relativistic
   wave equations*, Phys. Rev. A 97 (2018) 042131, arXiv:1802.03910 (4D coin →
   Dirac gammas; coin-flip operator = mass term; §2a mass-side comparator).
+- A. Bisio, G. M. D'Ariano, P. Perinotti, A. Tosini, *Weyl, Dirac and Maxwell
+  Quantum Cellular Automata*, arXiv:1601.04842 (1D Dirac QCA barrier scattering;
+  the prior-art setup for the §9a `carrier_scattering_sim.py` S-matrix).
 - H. B. Nielsen, M. Ninomiya, *Absence of neutrinos on a lattice*, Nucl. Phys.
   B185 (1981) 20.
 

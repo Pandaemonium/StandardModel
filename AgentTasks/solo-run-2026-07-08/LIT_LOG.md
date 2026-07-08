@@ -113,3 +113,14 @@ down in barrier mass and ->1 as m0->0 (massless region transparent = critical
 line as a scattering statement), reciprocal (T_L=T_R < 1e-3). Faithful regime =
 small coin angle (Mlodinow-Brun continuum). All checks pass. Wired into S9a +
 Appendix A. Directions A+B+C now covered by 4 Lean-anchored sims.
+
+## Lit pass 2026-07-08 (grounding the scattering sim)
+
+Chunk search for "Klein tunneling Dirac mass barrier transmission QW". Top hit:
+- **Bisio, D'Ariano, Perinotti, Tosini, "Weyl, Dirac and Maxwell Quantum Cellular
+  Automata" (arXiv:1601.04842)**, section "Scattering against a potential
+  barrier" - the 1D Dirac QCA scattered against a position-dependent barrier,
+  exactly the setup of carrier_scattering_sim.py. ACTED: cited in the sim
+  docstring (specific paper+section), manuscript References, and source map. The
+  established prior-art anchor for our finite S-matrix; the barrier-mass ->
+  aperture-closure-gap anchoring remains ours.

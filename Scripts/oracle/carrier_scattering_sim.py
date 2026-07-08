@@ -32,8 +32,11 @@ capped at m0 = 0.7. At high energy (k0 near pi/2) the barrier is over-barrier
 Numeric oracle only. Usage: python Scripts/oracle/carrier_scattering_sim.py
 
 Provenance: all-mass solo run 2026-07-08 [orig]. The 1D Dirac QW / checkerboard
-scattering setup is standard (cf. the QW->Dirac literature, Mlodinow-Brun 2018;
-Bisio-D'Ariano-Tosini); the anchoring to the carrier mass gap is ours.
+barrier-scattering setup is standard - see esp. Bisio, D'Ariano, Perinotti,
+Tosini, "Weyl, Dirac and Maxwell Quantum Cellular Automata" (arXiv:1601.04842),
+section "Scattering against a potential barrier", which studies the 1D Dirac
+QCA against a position-dependent barrier; cf. also Mlodinow-Brun 2018. The
+anchoring of the barrier mass to the carrier aperture-closure gap is ours.
 """
 
 import numpy as np
