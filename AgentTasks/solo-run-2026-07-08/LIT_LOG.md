@@ -25,3 +25,18 @@ evolution/transfer-operator + the checkerboard bridge F8/T6):
 
 TODO: full-text the Nzongani tetrahedral QW (matches our regulator) and the
 Manighalam-Kon coin-classification (which carriers admit a continuum limit).
+
+## Focus-2 result (spectra & budgets): carrier mass phase diagram
+
+`carrier_spectrum_sim.py` (Lean-anchored to T2_positive_mass, signed_budget_sum
+_one, posDef_iff_det_pos). On the two-edge Cl(4) carrier the physical-sector mass
+form has eigenvalues {lambda, lambda+kappa, lambda-kappa}; the SQUARED MASS GAP
+= least eigenvalue = **lambda - kappa** (aperture minus closure), so:
+  * massive phase: kappa < lambda (aperture dominates), gap = lambda - kappa;
+  * massless critical line: kappa = lambda (exact, kappa_crit/lambda = 1.000);
+  * positivity lost: kappa > lambda.
+A clean finite critical-coupling phase diagram, matching the Delta binding-defect
+critical point. This is the dynamics/spectra simulator's first physics output and
+a candidate manuscript result (finite mass gap = aperture - closure on a concrete
+carrier). NOTE: exact values are specific to this block-diagonal witness; the
+STRUCTURE (gap = aperture-dominance margin, critical at parity) is the claim.
