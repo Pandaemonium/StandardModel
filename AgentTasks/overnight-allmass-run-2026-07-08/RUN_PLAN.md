@@ -79,6 +79,16 @@ let the morning session propagate.
 
 ## 2. Tier-K kernel targets (ranked; claim in ledger before working)
 
+**AMENDED at setup+1 by `SEVENCHALLENGES_ANALYSIS.md` (read it first):**
+K1 has a MANDATORY STEP0 (the off-by-root counterexample probe + m_j
+semantic audit) before any prover attempt; K3 is decided by the
+restricted-inertia computation C2b (torsor-independent), with descent
+C2a as certification; K2/L4 lands the PAIR-STABILIZED square (direct
+sum of two-direction currents - makes multi-direction exact and cheap);
+K4 becomes the SIGNED budget (shares sum to 1; "fractions" only after
+C2b returns PSD); K6 runs the determinant-parity kill probe before
+formalizing. Module names and lit-ingest list in the analysis doc.
+
 - **K1 (the crux of cruxes): the KP fixed-forest injection**,
   `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` ~L1564.
   WARNING: it resisted FOUR Aristotle attempts on 07-06 (fibercount

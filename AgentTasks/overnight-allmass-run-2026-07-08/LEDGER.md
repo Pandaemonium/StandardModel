@@ -22,3 +22,19 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - The in-flight Aristotle fleet at setup is listed in RUN_PLAN sec 1;
   harvest-first before any new submissions.
 - Claim boundary: this entry records setup only; no work claimed.
+
+## [SETUP Fable] SevenChallenges memo adjudicated; targets rewired
+
+- External memo archived (`NullEdge_SevenChallenges_Memo_2026-07-08.md`)
+  + executor verdicts in `SEVENCHALLENGES_ANALYSIS.md`. Headlines:
+  (i) K1's five failures plausibly explained by an off-by-root encoder
+  trap - STEP0 decidable counterexample + m_j semantics audit is now
+  MANDATORY before attempt six; (ii) verified: torsor representatives
+  cannot change quotient positivity, so K3's decision is the restricted
+  inertia (C2b), computable the day V' lands; (iii) verified: the
+  pair-stabilized direct-sum current makes multi-direction Q_C = L^#L
+  exact and Lean-cheap; (iv) K4 regraded to the SIGNED budget; (v) K6
+  gets a determinant-parity kill probe before formalization; (vi) seven
+  lit anchors queued for P0 ingest.
+- Claim boundary: adjudication only; findings 2 and 8 are diagnoses
+  pending their probes; RUN_PLAN sec 2 amended in place with pointer.
