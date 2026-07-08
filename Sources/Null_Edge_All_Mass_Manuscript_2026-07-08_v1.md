@@ -1043,7 +1043,7 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   a finite canonical ensemble over any spectrum; applied to the carrier sector
   spectrum it gives the thermodynamics (and the §9 condensate's finite handle).
 
-**Lean-informed simulations (oracle grade, quarantined from the M core).** Four
+**Lean-informed simulations (oracle grade, quarantined from the M core).** Five
 Python simulators, each output *validated against a landed M-identity* (the Lean
 is the simulation's spec and validation oracle):
 
@@ -1085,6 +1085,17 @@ is the simulation's spec and validation oracle):
   continuum conditions, §2a); the mass a packet scatters off *is* the
   aperture−closure gap. Validated against `FiniteUnitaryEvolution` and the T2
   spectrum.
+- `carrier_fock_sim.py` — a finite **second-quantized (Fock)** simulator: the free
+  many-body spectrum of `dΓ(B)` on the fermionic occupation Fock space (ground
+  `= 0`, gap `= λ−κ`, two-body `=` sum of constituents), the binding seed
+  `Δ = −κ`, and an **interacting two-body probe** — with an attractive closure
+  interaction `V` of strength `κ` on the ground pair, the least eigenvalue drops
+  strictly *below* the free constituent threshold (a finite below-threshold bound
+  state, binding energy `< 0` iff `κ > 0`). Validated against
+  `FockMassGap.secondQuantized_massGap` / `fockEnergy_twoParticle`,
+  `BindingDefect` (`Δ = −κ`), and `B_spectrum`. The interacting probe is the
+  numeric shadow of the *open* interacting-hadron theorem (`V` inserted, grade
+  **C**; the kernel target is the running proof `allmass-proof-hadron`).
 
 ---
 
@@ -1495,7 +1506,7 @@ each name is grep-checkable against the source.
 docstring, exactly which kernel-checked identity it mirrors or which kill it
 tests; run `python Scripts/oracle/<probe>.py`. Key ones: the S1-CC balanced
 -inertia probe, the aperture-grading kill, the multi-edge positive-sector escape,
-the Δ binding-energy probe, the T3a free-bridge probe, and the four dynamics
+the Δ binding-energy probe, the T3a free-bridge probe, and the five dynamics
 simulators — `carrier_spectrum_sim.py` (mass phase diagram; validates
 `T2_positive_mass` + `signed_budget_sum_one`), `carrier_evolution_sim.py`
 (unitary flow, quantum-walk transfer, Slater amplitudes; validates
@@ -1503,8 +1514,11 @@ simulators — `carrier_spectrum_sim.py` (mass phase diagram; validates
 ensemble, condensate shadow; validates `FiniteRGFlow` +
 `FiniteCanonicalEnsemble` + `RGSchurMassWitness`), and `carrier_scattering_sim.py`
 (a finite S-matrix: mass-barrier transmission/reflection, unitary and reciprocal;
-validates `FiniteUnitaryEvolution` + `T2`). A probe is evidence for adding a fixture or
-pre-registering a prediction — never a substitute for a kernel proof.
+validates `FiniteUnitaryEvolution` + `T2`), and `carrier_fock_sim.py` (finite
+second-quantized Fock: free gap, binding seed, interacting below-threshold bound
+state; validates `FockMassGap` + `BindingDefect` + `B_spectrum`). A probe is
+evidence for adding a fixture or pre-registering a prediction — never a substitute
+for a kernel proof.
 
 **Provenance.** Source keys and convention checks are in
 `Sources/Null_Edge_References.md`; the PhysLean convention cross-checks and the
