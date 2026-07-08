@@ -274,3 +274,41 @@ fold strategy/audit findings into the manuscript/docs, resubmit to keep queue fu
 - STRATEGY `86fec8fd` (continuum) — the carrier transfer step's continuum limit.
 INTEGRATION BACKLOG: Msec (sector gap), FockMassGap (2nd-quantized gap). Next
 ticks: integrate these, harvest batch 3, keep queue ~2-3 (sustainable vs backlog).
+
+## Cycle A.13 (~15:45-16:10) — post-compaction: over-claim fixes + S1-CC general reduction + refill
+
+- **DerivedInteraction over-claim (batch-4 audit) FIXED.** §9/§11/docstrings
+  downgraded from "first-principles / V is exactly the carrier's closure operator"
+  to the honest CONDITIONAL (dGamma of a CHOSEN curvature binds iff among excited
+  modes; carrier's actual K not tied to the binding plane). InteractingTwoBody
+  "rank-one" nit fixed (single off-diagonal coupling, rank 2). Prose-only.
+- **S1-CC witness -> general reduction INTEGRATED (major).** Re-based Aristotle's
+  s1ccgen result onto the project's real S1CCBalancedInertia engine. New modules
+  `S1CCGeneralReduction` (compression_balanced, compression_has_neg_eigenvalue)
+  and `S1CCWitnessAsInstance` (witness_balanced_via_general = the 6x6 witness as a
+  literal instance). All M, guard-pinned inline + in SlabAxiomGuard (8152 jobs).
+- **Strengthened myself: compression_balanced_eigbasis (M).** Drops coordinate
+  alignment -> compression by ANY b-eigenvector family P. Same anticonjugation
+  trick; helper diagonal_pm1_conjTranspose. Proven + guard-pinned in-repo (not
+  Aristotle).
+- **Fable call-09 caught a LOAD-BEARING vacuity** in my SUBMITTED existence target
+  (kappa:=Empty discharges it) => manuscript "once existence is transcribed the
+  crux closes to general M" over-stated the gap SIZE. FIXED: what is general M is
+  the balance MECHANISM (Q_G-blind); MEMO is existence of a b-adapted PRESENTATION
+  of V'/N (complementary to range Q_G, dimension-pinned, form descending). The
+  general-reduction theorems themselves confirmed genuine M (Fable Q2/Q3).
+
+## In flight — Aristotle queue (2 running as of ~16:06) + Fable done
+
+- PROOF `f6644f9b` (s1ccpres) — the S1-CC presentation EXISTENCE lemma. CORRECTED
+  mid-run via `continue` after the Fable vacuity finding: must prove the
+  NON-VACUOUS statement (P presents V'/N: orthonormal b-eigenbasis of a complement
+  of range Q_G in ker Q_G, dim = card iota - 2*rank Q_G). Was actively on the
+  Mathlib spectral theorem (eigenvectorBasis) at snapshot.
+- AUDIT `763a34b8` (batch-5) — adversarial over-claim audit of the general
+  reduction; sharpest question = ker Q_G vs V'/N (Fable already ruled OVER-CLAIM,
+  fixed; audit is independent triangulation).
+- Fable call-09 (13:32 -> 16:05, ~2.5h cadence) DONE, actioned.
+NEXT: harvest f6644f9b (the non-vacuous existence proof, if it lands) + batch-5;
+if existence lands, add the fully-general physical_sector_balanced as M and
+promote the crux. Keep queue full.
