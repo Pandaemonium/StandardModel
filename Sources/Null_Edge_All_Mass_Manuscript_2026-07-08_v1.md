@@ -260,7 +260,7 @@ prediction**; ratios, not absolute scales, are the only admissible targets
 
 ---
 
-## 6. Closure mass: the QCD-shaped channel (**M** + the central open crux)
+## 6. Closure mass: the QCD-shaped channel (**M** + the central crux, resolved)
 
 Most visible mass is QCD binding energy. In this program it lives in the
 closure channel, and the closure channel is where the program is,
@@ -279,9 +279,13 @@ so the Wilson plaquette weight `N - Re Tr U` is half the Hilbert-Schmidt
 square of the closure defect `1 - U`
 (`wilson_plaquette_eq_half_closure_defect`, **M**;
 `closure_defect_trace_eq`, **M**). QCD's action and the program's closure
-channel are the same object at the source. The static-pair potential then
-reads as the transfer-time cost of excess areal closure defect (**C**,
-Amendment A2).
+channel are the same object at the source. And this squared defect *is
+positive energy*: for the linearized connection its leading value is the
+non-negative Hilbert-Schmidt norm `-Tr(A²) = ‖A‖² = |F|²` at leading order
+(`leading_closure_energy_nonneg`, **M**), zero exactly at flatness. The
+static-pair potential then reads as the transfer-time cost of excess areal
+closure defect (**C**, Amendment A2). (This `|F|²` *defect-gram* energy is
+distinct from the chromomagnetic `Q_C` channel — §4 rail 2.)
 
 **The strong-coupling pillars are kernel-checked (M).** On concrete finite
 lattices: the Wilson-loop area law (`tyAreaLaw_slab_exp`), slab reflection
@@ -540,6 +544,7 @@ anchor rule.)*
 | 4 | `witness_budget_sum_one` | `Carrier/CarrierMassBudget.lean` | non-vacuous `(1/2,0,1/2)` witness |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | closure-defect trace identity |
 | 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | Wilson action = squared defect |
+| 6 | `leading_closure_energy_nonneg` | `GateYM/LinearizedClosureEnergy.lean` | leading closure defect = positive `|F|²` energy |
 | 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | closure square structure |
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | `Q_C = L^#L` (skew-pairing) |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | strong-coupling area law |
