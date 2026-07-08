@@ -64,6 +64,13 @@ theorem diagonal_grading_sq (d : ι → ℂ) (hd : ∀ i, d i = 1 ∨ d i = -1) 
   · cases hd j <;> simp +decide [ *, Matrix.one_apply ]; all_goals simp +decide [ *, diagonal ];
   · simp +decide [ diagonal, hi ]
 
+omit [Fintype ι] in
+/-- A real `±1`-diagonal matrix is conjugate-transpose-invariant. -/
+theorem diagonal_pm1_conjTranspose (e : ι → ℂ) (he : ∀ i, e i = 1 ∨ e i = -1) :
+    (diagonal e)ᴴ = diagonal e := by
+  rw [Matrix.diagonal_conjTranspose]
+  congr 1; funext i; rcases he i with h | h <;> simp [Pi.star_apply, h]
+
 /-- **Compression inherits anticonjugation.** If a diagonal grading `diagonal d`
 anticonjugates a matrix `J` on the full carrier (`diagonal d * J * diagonal d = -J`),
 then for *any* representative selection `r : κ → ι` the descended grading
@@ -99,6 +106,50 @@ theorem compression_balanced (J : Matrix ι ι ℂ) (hJ : J.IsHermitian)
   exact hermitian_balanced_count_of_neg_charpoly B (hJ.submatrix r)
     (anticonj_charpoly_eq B S hAnti)
 
+/-- **General reduction, eigenbasis (presentation-independent) form.** The
+`compression_balanced` result compresses `J` by a *coordinate* `submatrix r r`;
+this strengthens it to compression by an **arbitrary `b`-eigenvector family**
+`P : Matrix ι κ ℂ`.  If `M` is Hermitian and anticonjugated by the `±1` grading
+`diagonal d`, and `P` intertwines that grading with a `±1` grading `e` on the
+compressed index (`diagonal d * P = P * diagonal e` — the columns of `P` are
+`b`-eigenvectors), then the compression `Pᴴ * M * P` is **balanced**: it has as
+many strictly positive as strictly negative eigenvalues.
+
+This is the presentation-independent statement the physical program actually
+needs: the coset representatives of `V'/N` need not be coordinate axes; *any*
+`b`-eigenbasis of the sector gives a balanced compression, and the only remaining
+gap (grade **C/MEMO**) is the *existence* of such a `b`-eigenbasis — supplied by
+simultaneous diagonalization once `[b, Q_G] = 0` (the scalar-metric case). The
+coordinate witness `submatrix r r` is the special case `P = (1 : Matrix ι ι ℂ).submatrix id r`. -/
+theorem compression_balanced_eigbasis
+    (M : Matrix ι ι ℂ) (d : ι → ℂ) (hd : ∀ i, d i = 1 ∨ d i = -1)
+    (hanti : diagonal d * M * diagonal d = -M)
+    (P : Matrix ι κ ℂ) (e : κ → ℂ) (he : ∀ i, e i = 1 ∨ e i = -1)
+    (hP : diagonal d * P = P * diagonal e)
+    (hB : (Pᴴ * M * P).IsHermitian) :
+    (Finset.univ.filter (fun i => 0 < hB.eigenvalues i)).card =
+      (Finset.univ.filter (fun i => hB.eigenvalues i < 0)).card := by
+  set S := diagonal e with hSdef
+  have hSsq : S * S = 1 := diagonal_grading_sq e he
+  haveI : Invertible S := ⟨S, hSsq, hSsq⟩
+  have hinv : ⅟S = S := invOf_eq_right_inv hSsq
+  -- left intertwiner: `diagonal e * Pᴴ = Pᴴ * diagonal d` (conjTranspose of `hP`).
+  have hLeft : S * Pᴴ = Pᴴ * diagonal d := by
+    have h := congrArg Matrix.conjTranspose hP
+    rw [Matrix.conjTranspose_mul, Matrix.conjTranspose_mul,
+      diagonal_pm1_conjTranspose d hd, diagonal_pm1_conjTranspose e he] at h
+    exact h.symm
+  have hAnti : ⅟S * (Pᴴ * M * P) * S = -(Pᴴ * M * P) := by
+    rw [hinv, hSdef]
+    calc diagonal e * (Pᴴ * M * P) * diagonal e
+        = (diagonal e * Pᴴ) * M * (P * diagonal e) := by simp only [Matrix.mul_assoc]
+      _ = (Pᴴ * diagonal d) * M * (diagonal d * P) := by rw [← hSdef, hLeft, ← hP]
+      _ = Pᴴ * (diagonal d * M * diagonal d) * P := by simp only [Matrix.mul_assoc]
+      _ = Pᴴ * (-M) * P := by rw [hanti]
+      _ = -(Pᴴ * M * P) := by rw [Matrix.mul_neg, Matrix.neg_mul]
+  exact hermitian_balanced_count_of_neg_charpoly (Pᴴ * M * P) hB
+    (anticonj_charpoly_eq (Pᴴ * M * P) S hAnti)
+
 /-- **No-positivity corollary.** If, in addition, the compressed form is
 nondegenerate (`IsUnit (J.submatrix r r).det`) on a nonempty sector, then it has
 a strictly negative eigenvalue — so the closure form is **never positive
@@ -123,6 +174,10 @@ end PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced_eigbasis' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced_eigbasis
 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_has_neg_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

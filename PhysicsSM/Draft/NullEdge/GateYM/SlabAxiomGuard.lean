@@ -730,6 +730,10 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced_eigbasis' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_balanced_eigbasis
+
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_has_neg_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction.compression_has_neg_eigenvalue
