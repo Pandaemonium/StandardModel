@@ -93,6 +93,16 @@ forced unification) around that spine.
   differs from `det P` of its momentum bundle. Even a *special-case* proof (the
   eigenvalue equals `det P` on one honest model) is a major strengthening.
 - **Depends on:** T2.
+- **UPDATE (probed this run, Fable item 1; `DELTA_BINDING_ENERGY_FINDING.md`):**
+  the bridge SPLITS. **T3a - free equality (M-target):** flat transport =>
+  `min spec = det P`, near-automatic from `(slash)^2 = det P`. **T3b - the
+  binding defect (C, NEW invariant):** interacting `Delta := min spec - det P`
+  is finite, NEGATIVE, closure-controlled, and OFF-DIAGONAL (invisible to the
+  naive constituent estimate - which is why 0b-naive fails). `Delta` is the
+  program's first finite binding energy, with a critical coupling where the
+  bound state goes massless. This converts "the bridge is probably false" into a
+  discovery. Enriched-carrier probe (explicit null momenta) makes T3a a clean
+  Lean target.
 
 ---
 

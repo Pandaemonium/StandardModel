@@ -1379,6 +1379,45 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   `pre-commit run --files AgentTasks/overnight-allmass-run-2026-07-08/LEDGER.md AgentTasks/overnight-allmass-run-2026-07-08/LIT_SEARCH_LOG.md AgentTasks/overnight-allmass-run-2026-07-08/HONEST_SCORECARD.md AgentTasks/overnight-allmass-run-2026-07-08/MORNING_REPORT.md AgentTasks/overnight-allmass-run-2026-07-08/ARISTOTLE_AUDIT_S1CC_SPECTRAL_BRIDGE_SHAPE_2026-07-08_0340.md AgentTasks/overnight-allmass-run-2026-07-08/ARISTOTLE_AUDIT_POST0600_S1CC_MANUSCRIPT_BOUNDARY_2026-07-08_0558.md Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md Sources/Null_Edge_References.md NULL_EDGE_RESULTS.md`
   PASS at 06:15 PDT.
 
+## [CLAIM Codex] Dawn consistency Aristotle audit sidecar
+
+- Submitted audit-only dawn report consistency job:
+  `ARISTOTLE_AUDIT_DAWN_REPORT_CONSISTENCY_2026-07-08_0616.md`.
+  Project `d9c2357b-b46d-4357-84c1-e0380fc08744`, task
+  `8289c6b1-d438-418f-86aa-ec3629d4a110`, status QUEUED at submission.
+- Scope: no proof work. Ask Aristotle to adversarially review the final report
+  surfaces for remaining contradictions among "structured no-go", MEMO
+  physical bridge, finite witness, nonnegative leading energy, and G5 partial
+  status.
+- Next local work while it runs: continue audit/report consistency checks and
+  harvest this job when complete.
+
+## [AUDIT Codex] Dawn report stale-target cleanup
+
+- While the dawn consistency sidecar runs, cleaned two stale report shorthands:
+  `MORNING_REPORT.md` no longer says "S1-CC resolution engine (3 rungs)" after
+  the finite count capstone, and both `MORNING_REPORT.md` / `HONEST_SCORECARD.md`
+  now describe `aperture_dominance_pos` as a Hermitian comparison lemma, not a
+  Krein-form rescue on the checked S1-CC witness.
+- Updated the manuscript's remaining "what remains" list to point to the
+  S1-CC physical `J Q_C|V'/N` bridge applying the landed finite capstone,
+  rather than listing the finite capstone itself as remaining.
+- Verification: stale-target grep for `aperture-dominance positivity opener`,
+  `#1 next target`, `S1-CC Lean capstone`, `3 rungs`, `charpoly_neg`,
+  `positive |F|^2`, and the old unconditional S1 wording returned no hits on
+  the report/manuscript/roadmap/results surfaces. `pre-commit run --files ...`
+  over the touched audit/report/manuscript/roadmap/reference/results set PASS.
+- Sharpened the remaining G5/Banks-Casher gap after Neo4j restart:
+  INSPIRE query for the original relation returned no record; Neo4j all-project
+  paper search found adjacent chiral-lattice records but not a clean
+  Banks-Casher original/source record; chunk search found adjacent
+  lattice-spectrum/chiral-condensate chunks; Zotero direct search found no
+  matching item. Logged in `LIT_SEARCH_LOG.md`; G5 remains PARTIAL for this
+  rail.
+- Updated `Sources/Null_Edge_References.md` to mark `BQJAG9TR`
+  (`hep-th/9503153`) as full-text-chunk checked on 2026-07-08, matching the
+  earlier `N68MN4ET` / Ginsparg-Wilson reference update.
+
 ## [LAND Claude] Strengthening roadmap + T2 multi-edge positive-sector ESCAPE
 
 - User asked to STRENGTHEN (not only weaken). Wrote STRENGTHENING_ROADMAP.md:
@@ -1425,3 +1464,17 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   to STRUCTURALLY CONFIRMED on a genuine multi-edge carrier. Honest limit: the
   universal g=2 COEFFICIENT is NOT claimed (needs the physical
   transport<->gauge-potential normalization; documented T4 sub-target).
+
+## [PROBE Claude] Fable item 1: the det-P bridge splits; Delta = a finite binding energy
+
+- probe_bridge_binding_energy.py on the Cl(4) escape carrier. Result:
+  (1) FREE bridge holds (min spec = kinematic baseline at zero closure);
+  (2) closure BINDS (Delta = min spec - baseline = -t < 0);
+  (3) the binding is OFF-DIAGONAL (<Q_C> in the free ground state ~ 0, but the
+      true ground state reorganizes) - which is exactly why naive constituent
+      additivity (crux 0b naive) fails;
+  (4) critical coupling: bound state goes MASSLESS at closure = aperture.
+- OUTCOME: crux 0b re-registered as a SPLIT - T3a free equality (M-target,
+  near-automatic from Clifford) + T3b Delta = a finite NEGATIVE closure-controlled
+  BINDING-ENERGY invariant (the program's first). Turns "bridge probably false"
+  into a discovery. DELTA_BINDING_ENERGY_FINDING.md; roadmap T3 updated.
