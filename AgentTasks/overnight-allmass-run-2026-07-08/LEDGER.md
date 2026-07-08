@@ -1578,6 +1578,35 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Verification: `pre-commit run --files NULL_EDGE_RESULTS.md` PASS; stale
   overclaim scan over live report/source/result/oracle surfaces PASS (no hits).
 
+## 2026-07-08 06:52 PDT - Codex
+
+- Re-ran targeted guard build after the `LinearizedClosureEnergy.lean`
+  docstring alignment.
+- Command:
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard`
+- Result: PASS / build completed successfully (8188 jobs).
+- Warnings: known draft/linter replay, including existing draft `s o r r y`
+  warnings in `ElectroweakRung.lean` and `PolymerKPConclusion.lean`; no new
+  proof or theorem statement changed in this audit step.
+
+## 2026-07-08 06:53 PDT - Codex
+
+- Harvested final-surface Aristotle audit:
+  `f8956dc8-6ddd-4ba6-a786-5bc2d45c67ef` /
+  `219b1f80-7f2f-4fc9-8e6f-1fba41ab0cea`, COMPLETE.
+- Verdict: no P0/P1 blockers; dawn report/scorecard safe for honesty.
+- Applied P2 polish: no-continuum clause on the two-edge route, "exhibits"
+  for T4, "escape candidate," abstract-calculus scope for coarse-graining, and
+  "unblocked but not yet landed" for the S6 remaining-work line.
+
+## 2026-07-08 06:54 PDT - Codex
+
+- Submitted anchor-traceability audit-only Aristotle sidecar.
+- Project: `6e94aed1-ffe5-4897-a352-aed2a62b749e`; task:
+  `39ac2ce9-b41b-400e-83ac-f14dce179431`.
+- Scope: audit the manuscript §11 claim that the 38-row Lean anchor table was
+  declaration/file grep-verified and guard/local-guard statuses are honest.
+
 ## [SUBMIT Claude] Aristotle round 2 (fresh jobs - queue was idle)
 
 - User: Aristotle largely empty, submit a round. batch-1 (8b3efa7c: T1/T2/T5)
@@ -1589,3 +1618,93 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   momentum PosDef; det P = product of light-cone eigenvalues (Pro's rank/area).
 - Both Mathlib-only, novel-ish, high value. Task note:
   allmass-strengthen-round2-aristotle-2026-07-08.md. Harvest when COMPLETE.
+
+## 2026-07-08 06:56 PDT - Codex
+
+- Append-only correction to the immediately preceding post-06 strengthening
+  prose: live report/source/oracle surfaces now use the audited boundary
+  "MEMO/numeric escape route/candidate" for the two-edge positive-sector probe,
+  "structural check passed; coefficient pending" for T4, and
+  "binding-defect candidate" for Delta.
+- Do not read earlier ledger shorthand such as "structurally confirmed,"
+  "first finite binding energy," or "massless bound state" as final delivery
+  wording; those were downgraded in the surfaced artifacts.
+
+## 2026-07-08 06:55 PDT - Codex
+
+- Fleet metadata cleanup: added task IDs to
+  `AgentTasks/allmass-strengthen-batch1-aristotle-2026-07-08.md` and
+  `AgentTasks/allmass-strengthen-round2-aristotle-2026-07-08.md`.
+- Also changed those task notes to the audited wording: T2 is numerically
+  validated at MEMO grade, and Delta is a binding-defect candidate.
+
+## 2026-07-08 06:55 PDT - Codex
+
+- Verification after final-surface P2 polish:
+  `pre-commit run --files` over `MORNING_REPORT.md`, `HONEST_SCORECARD.md`,
+  the final/anchor Aristotle audit notes, and `LEDGER.md` PASS.
+- Stale overclaim scan over live report/source/result/oracle surfaces PASS
+  (no hits).
+
+## 2026-07-08 06:56 PDT - Codex
+
+- Local anchor-table count audit found 38 declaration rows across 22 unique
+  files. Updated `MORNING_REPORT.md` delivery item from rough "~16 kernel
+  modules" wording to exact "38 anchored Lean declarations across 22 files."
+
+## 2026-07-08 06:58 PDT - Codex
+
+- Harvested anchor-traceability Aristotle audit:
+  `6e94aed1-ffe5-4897-a352-aed2a62b749e` /
+  `39ac2ce9-b41b-400e-83ac-f14dce179431`, COMPLETE_WITH_ERRORS.
+- Verdict: no P0 blockers; two P1 wording tightenings applied.
+- Applied edits: anchor sweep is now described as a declaration-name string
+  match by `grep`, not an elaboration/existence check; the
+  `leading_closure_energy_nonneg` local guard row now states transitive
+  enforcement through the `SlabAxiomGuard` import/build.
+
+## 2026-07-08 06:59 PDT - Codex
+
+- Submitted audit-only Aristotle sidecar for round-2 theorem-scope wording.
+- Project: `d2995afd-191b-4489-8329-c3e7737161c8`; task:
+  `16a4c19c-bf8e-4f23-95bc-88514a15e800`.
+- Scope: semantic-scope audit only for the in-flight monogamy and rank/area
+  proof jobs; no proof front opened by Codex.
+
+## 2026-07-08 06:59 PDT - Codex
+
+- Harvested Claude's round-2 rank/area Aristotle proof job:
+  project `979a3401-3c43-49bc-a475-942913780abb`, task
+  `c1b721b3-4c4a-444c-bcba-b607379346e1`, COMPLETE.
+- Archive:
+  `AgentTasks/aristotle-output/979a3401-3c43-49bc-a475-942913780abb.tar.gz`;
+  extracted output:
+  `AgentTasks/aristotle-output/979a3401-3c43-49bc-a475-942913780abb-extracted/allmass-rankarea-20260708-project_aristotle/`.
+- Boundary: post-06 standalone proof artifact, not integrated into live
+  `PhysicsSM` and not a morning-report landing yet. Aristotle reports
+  `AllMassRankArea/Core.lean` built and proved four finite kinematic matrix
+  statements. Local extracted rebuild attempted but failed before Lean because
+  Lake tried to clone Mathlib and `git` returned 128; no local build claim.
+
+## 2026-07-08 07:01 PDT - Codex
+
+- Broad touched-file hygiene checkpoint: `pre-commit run --files` over current
+  audit notes, report/scorecard/source/reference/result docs, three oracle
+  scripts, `LinearizedClosureEnergy.lean`, and the round-2 task notes PASS.
+
+## [LAND Claude] Comprehensive literature review (13 themes) + S2a novelty narrowing
+
+- Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md: scholarly search
+  (arXiv/INSPIRE/Semantic Scholar) across all 13 prior-art themes, novelty-gap
+  analysis, priority additions. Key finding: crowded neighbourhood; three
+  must-cite close works - Foster-Jacobson 2016 (4D null-face checkerboard, no
+  doubling), Bizi-Brouder-Besnard 2016 (Krein triple solving fermion doubling),
+  Barrett 2007 (Lorentzian NCG SM). Plus Zwanziger 1991 (F2), Bakircioglu et al
+  2025 (F7 QCA), HepLean (machine-verified physics exists).
+- Acted on it: manuscript S2a updated - added the omitted prior art and NARROWED
+  the novelty claim (finite Krein not new; not first verified physics ->
+  defensible novelty is the COMBINATION + det-P-answering budget + kill-discipline
+  + verified constructive-QFT chain).
+- Codex FYI: ~15 refs flagged for Zotero/Neo4j ingest (existence-check first;
+  Neo4j MCP was down this session - use Scripts/lit/lit_ingest.py when back).
+  The references map (Sources/Null_Edge_References.md) should gain these keys.
