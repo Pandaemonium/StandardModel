@@ -67,8 +67,8 @@ Status labels:
 | Key | Identifier | Source | Role | Status |
 |---|---|---|---|---|
 | `TBD-TemporalLorentzianSpectralTriples` | `1210.6575` | "Temporal Lorentzian Spectral Triples" | Krein-adjoint and fundamental-symmetry comparison for carrier `#` wording. | ID-ONLY |
-| `TBD-SemiRiemannianNCGThesis` | `1812.00038` | "Semi-Riemannian NCG, Gauge Theory, and the SM" | Indefinite spectral triple / chirality / finite IST comparison. | ID-ONLY |
-| `TBD-KreinFermionicAction` | `1505.01939` | "Krein spectral triples and the fermionic action" | Krein-square / fermionic-action comparison. | ID-ONLY |
+| `Bizi2018-SemiRiemannianNCGThesis` | `1812.00038` | N. Bizi, "Semi-Riemannian NCG, Gauge Theory, and the SM" PhD thesis (2018) | Indefinite spectral triple over Z2-graded Krein space; grading involution adjoint sign flip Gamma^ddag = (-1)^q Gamma — NCG precedent for the S6 closure grading b being Krein-ddag-odd. Cited in manuscript S6 refs. | VERIFIED (abstract + full-text chunks 75/79/87/88; author confirmed via arXiv) |
+| `vandenDungen2016-KreinFermionicAction` | `1505.01939` | K. van den Dungen, "Krein spectral triples and the fermionic action", Math. Phys. Anal. Geom. 19 (2016) 4 | Krein-space spectral triples; fundamental-symmetry decomposition K = K+ (+) K-; indefinite-inner-product setting for the S6 balanced-closure form. Cited in manuscript S6 refs ([import] setting; anticonjugation-forces-balance is [orig]). | VERIFIED (abstract + full-text chunk 4; author/doi confirmed via arXiv) |
 | `TBD-GuptaBleuler` | TBD | Gupta-Bleuler physical-state construction | Name-only import behind the finite quotient analogy. | NEEDS-VERIFY |
 | `TBD-KugoOjima` | TBD | Kugo-Ojima quartet / physical-subspace criterion | Name-only import; current finite witness is kernel-checked but carrier/Gauss wiring remains OPEN. | NEEDS-VERIFY |
 | `TBD-BognarOrAzizovIokhvidov` | TBD | Indefinite inner-product / Pontryagin-space reference | Functional-analysis backing for finite positive-sector framing. | NEEDS-VERIFY |

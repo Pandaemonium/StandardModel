@@ -137,3 +137,20 @@ limit) and a symmetric-mass-generation lattice chiral gauge paper (2505.20436;
 edge-A/edge-B fields in a bilinear Hamiltonian - thematically close to the
 two-edge carrier + bilinear dGamma(B), but a distinct program). Reassuring
 negative; no citation forced.
+
+## Pass ~16:10 — Krein-space balanced-signature provenance (§6 crux)
+
+Query (--chunks): "Krein space indefinite inner product balanced signature
+self-adjoint involution grading anticommutation BRST physical subquotient
+positivity". Top hits are already in-collection: Bizi thesis 1812.00038 (indefinite
+spectral triples over a Z2-graded Krein space; chunk 75: grading involution
+Gamma^ddag = (-1)^q Gamma; chunks 87/88: graded tensor-product adjoint sign rules)
+and van den Dungen 1505.01939 (Krein spectral triples; chunk 4: fundamental-symmetry
+decomposition K = K+ (+) K-). Both were ID-ONLY and NOT specifically cited for the
+S6 balanced-closure mechanism, though the manuscript's central-crux structure (a
+Z2-grading involution whose Krein adjoint flips the sign of the closure form,
+forcing balanced signature) is exactly the indefinite-spectral-triple setting.
+ACTION: added both to the S6 Krein reference block with an explicit [import]=setting
+/ [orig]=anticonjugation-forces-balance split; marked VERIFIED in
+Null_Edge_References.md (authors/abstract/doi confirmed via arXiv, full-text chunks
+cited). Honest: the setting is imported NCG, the balance argument is ours.

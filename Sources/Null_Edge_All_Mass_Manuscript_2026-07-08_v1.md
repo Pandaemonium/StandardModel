@@ -1476,6 +1476,17 @@ novelty-gap analysis is in
   mixing*, JHEP 0611 (2006) 081, arXiv:hep-th/0608226.
 - F. Finster, *The Continuum Limit of Causal Fermion Systems*, Springer (2016),
   arXiv:1605.04742.
+- K. van den Dungen, *Krein spectral triples and the fermionic action*, Math.
+  Phys. Anal. Geom. 19 (2016) 4, arXiv:1505.01939 (Krein-space generalization of
+  spectral triples; fundamental-symmetry decomposition `K = K⁺ ⊕ K⁻`; the
+  indefinite-inner-product setting for the §6 balanced-closure form — `[import]`
+  for the Krein/fundamental-symmetry framework, the anticonjugation-forces-balance
+  argument `b Q_C b = −Q_C ⇒ sig = (n,n,·)` is `[orig]`).
+- N. Bizi, *Semi-Riemannian Noncommutative Geometry, Gauge Theory, and the
+  Standard Model of Particle Physics*, PhD thesis (2018), arXiv:1812.00038
+  (indefinite spectral triples over a `Z₂`-graded Krein space; the grading
+  involution `Γ` with adjoint sign flip `Γ^‡ = (−1)^q Γ` — the NCG precedent for
+  the §6 closure grading `b = σ_z ⊗ 1` being Krein-`‡`-odd on the closure channel).
 
 **Discrete Dirac, quantum walks/automata, fermion doubling (§2a, §8).**
 
