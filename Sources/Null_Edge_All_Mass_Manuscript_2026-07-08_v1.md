@@ -878,7 +878,12 @@ is deliberate and it is also a real limitation:
   of a *many-body* Hamiltonian — would have to live. Nothing here forbids
   that construction; it is simply not attempted, and no claim in this paper
   should be read as a many-body or field-theoretic result. Grade **C**,
-  and explicitly a future program, not a gap in a proof.
+  and explicitly a future program, not a gap in a proof. We note that the
+  second-quantized layer we defer — creation/annihilation operators, normal
+  and time ordering, Wick's theorem — is *itself* already machine-verified in
+  the PhysLean library (`Physlib/QFT/PerturbationTheory`, with `wicks_theorem`
+  kernel-checked) `[import]`; that is the concrete peer framework a future
+  many-body extension of this carrier would build on, not reinvent.
 
 ---
 

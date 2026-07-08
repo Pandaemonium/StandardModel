@@ -105,6 +105,38 @@ charges, run a `lean-explore packages=["Physlib"]` query first and cross-check
 conventions against the clone - and cite PhysLean's Weyl/spinor formalization in
 §3 to reinforce the "classical kinematics, ours is the packaging" honesty.
 
+### Deeper survey (2026-07-08): more to mine, and confirmed gaps
+
+4. **Second quantization / Wick framework - highest new value (our §9 boundary
+   and the many-body roadmap).** `Physlib/QFT/PerturbationTheory/` is a full
+   machine-verified field-theory layer: `CreateAnnihilate`, `FieldOpFreeAlgebra`
+   (normal/time ordering, super-commute, grading), `WickAlgebra`,
+   `WickContraction`, and proved `wicks_theorem` / `static_wick_theorem` /
+   `wicks_theorem_normal_order`. This is *exactly* the Fock/creation-annihilation
+   layer our manuscript §9 declares out of scope. Two uses: (a) cite it now in
+   §9 as the peer machine-verified second-quantized framework (strengthens the
+   honesty of "we are deliberately first-quantized"); (b) it is the concrete
+   target *if* the program ever pursues second quantization - the many-body layer
+   where a genuine hadron mass and condensate would live (Fable/Pro roadmap).
+5. **Minkowski / indefinite metric - convention cross-check for the Krein
+   carrier.** `Physlib/Relativity/MinkowskiMatrix.lean` and
+   `Tensors/RealTensor/Vector/MinkowskiProduct.lean` formalize the indefinite
+   spacetime metric. Cross-check our Krein fundamental symmetry `J` / signature
+   conventions against it when the carrier metric is pinned.
+6. **Reusable math tooling.** `Physlib/Mathematics/InnerProductSpace` (adjacent
+   to `sector_ground_mass` / Rayleigh-Ritz), `Mathematics/VariationalCalculus`
+   and `ClassicalFieldTheory/Local/Variation` (any action / variational-principle
+   work; the mass functional is a Rayleigh quotient), `Mathematics/KroneckerDelta`
+   (the S6 Kronecker-product witness). Consult opportunistically.
+
+**Confirmed ABSENT (reassuring for novelty - PhysLean does not pre-empt these):**
+Wilson loops / lattice gauge theory (its QFT is continuum perturbation theory);
+a Dirac *operator* as a named object (it has the Dirac *algebra*/matrices only);
+a Grassmannian / Plücker-mass formalization (only anomaly-solution "planes");
+and a positive-energy / ADM / Witten theorem. So §6 (closure/Wilson), the carrier
+Dirac operator, the Plücker-mass packaging (§3, `MassMonogamy`), and F4 (finite
+Witten positive-mass) are genuinely ours - consistent with the literature review.
+
 ## Optional: full-text meaning search alongside our own docs
 
 To search PhysLean *by meaning at the chunk level* alongside this repo's docs
