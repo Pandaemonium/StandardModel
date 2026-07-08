@@ -48,6 +48,7 @@ as current state.
 
 ## The null-edge program: core documents
 
+- `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` - the ALL-mass manuscript (2026-07-08 overnight): every mass channel in null-edge terms, college-accessible Part I, grades throughout, anchor table. Companion to (not replacement for) the P1 draft. [DRAFT-MS]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md` - P1 manuscript v3 (2026-07-07 rewrite for clarity/impact; college-accessible Part I; status map incl. carrier layer). [DRAFT-MS]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - P1 manuscript v2 (superseded by v3; retained for provenance). [HISTORICAL]
 - `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` - stable publication topic IDs P1-P12. [LIVE]
