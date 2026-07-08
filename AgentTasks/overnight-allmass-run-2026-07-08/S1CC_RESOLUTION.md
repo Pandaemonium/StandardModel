@@ -85,3 +85,28 @@ coupling: the balanced closure spectrum on the Gauss sector IS the finite
 chromomagnetic equioscillation (hyperfine), and it is what lets curvature
 pull total-operator eigenvalues toward zero from both sides, feeding the
 Banks-Casher count.
+
+## Next Aristotle target: the inertia-count capstone (Theorem 3 final step)
+
+Three kernel rungs are landed (odd-trace, charpoly-symmetric,
+half-constraint) + K-B numeric validation. The remaining step to a fully
+kernel-checked balanced-inertia theorem:
+
+```lean
+-- Given: B Hermitian (Bᴴ = B), and (-B).charpoly = B.charpoly
+--        (from anticonj_charpoly_eq, already landed).
+-- Prove: the count of positive eigenvalues equals the count of negative:
+theorem anticonj_balanced_inertia (B : Matrix n n ℂ) (hB : B.IsHermitian)
+    (hsym : (-B).charpoly = B.charpoly) :
+    (Finset.univ.filter (fun i => 0 < hB.eigenvalues i)).card
+      = (Finset.univ.filter (fun i => hB.eigenvalues i < 0)).card
+```
+
+Route: `(-B).charpoly = B.charpoly` and the Hermitian charpoly factoring
+`= prod (X - eigenvalues i)` (over R, splits) give that the eigenvalue
+MULTISET is invariant under negation; a Multiset symmetry-count argument
+then gives equal positive/negative cardinalities. Needs
+`Matrix.IsHermitian.eigenvalues` + the charpoly-roots-as-eigenvalues
+connection + `Multiset` counting. Good standalone Aristotle package
+(Mathlib-only). HANDED OFF for the fleet / morning; the three landed rungs
++ the numeric K-B pass already carry the resolution at MEMO+M.

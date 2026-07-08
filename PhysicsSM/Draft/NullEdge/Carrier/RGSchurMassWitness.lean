@@ -260,4 +260,21 @@ theorem mid_effective_not_nilpotent (Minv : Matrix (Fin 2) (Fin 2) ℂ)
     rw [hpow k] at hk
     exact (smul_ne_zero (pow_ne_zero _ h) nullL_mul_nullN_ne_zero) hk
 
+/-- **The general characterization.** The effective edge from decimating a
+general hidden block is nilpotent (equivalently, zero) iff the propagator
+element between the two null directions vanishes:
+`IsNilpotent (c(l) Minv c(n)) <-> (Minv)_{11} = 0`. So decimation generates
+a mass-like (non-null) effective term EXACTLY when the hidden-block
+resolvent couples the two null light-cone directions - the general form of
+"mass from disagreement", with `(Minv)_{11} = 0` the decoupled control. -/
+theorem mid_effective_nilpotent_iff (Minv : Matrix (Fin 2) (Fin 2) ℂ) :
+    IsNilpotent (nullL * Minv * nullN) ↔ Minv 1 1 = 0 := by
+  constructor
+  · intro hnil
+    by_contra hne
+    exact mid_effective_not_nilpotent Minv hne hnil
+  · intro h0
+    rw [nullL_mul_mid_mul_nullN, h0, zero_smul]
+    exact ⟨1, by simp⟩
+
 end PhysicsSM.Draft.NullEdge.Carrier.RGSchurMass

@@ -578,6 +578,69 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   the structured two-slot toy separates the two orderings. It is not the general
   fixed-forest injection, not K1 closure, and not a strong-coupling gap theorem.
 
+## [HARVEST Codex] Aristotle manuscript repair-plan audit
+
+- Harvested project `ff8e265c-ffa8-49f3-9a16-5194467c5506`, task
+  `25364b86-0f1f-43f8-bcb7-b40e24d8fb49`; local note updated at
+  `ARISTOTLE_AUDIT_MANUSCRIPT_REPAIR_2026-07-07_2335.md`.
+- Downloaded output to
+  `AgentTasks/aristotle-output/ff8e265c-ffa8-49f3-9a16-5194467c5506-extracted/25364b86-0f1f-43f8-bcb7-b40e24d8fb49_aristotle/`.
+- Verdict: deliverable after fixes, not a deeper rewrite.
+- Aristotle confirms the Codex P0/P1 findings: the on-shell wedge theorem must
+  get a real guard pin or honest downgrade; §11 needs row-level
+  grade/guard/axiom columns; §3 trusted anchors should point to
+  `PhysicsSM/Spinor/PluckerMass.lean` after rechecking; §4 and §6 must be
+  reworded to the landed kernel shapes.
+- Guard-row warning: a table row alone is not sufficient for M-grade; pin or
+  downgrade.
+
+## [HARVEST Codex] Aristotle K2 total-assembly next-theorem audit
+
+- Harvested project `a692d71f-f536-4b44-afd7-f33660f69f9a`, task
+  `ca4dc9cf-03ac-4a1d-9bba-2ad3e6dc789d`; local note updated at
+  `ARISTOTLE_AUDIT_K2_TOTAL_ASSEMBLY_NEXT_2026-07-07_2335.md`.
+- Downloaded output to
+  `AgentTasks/aristotle-output/a692d71f-f536-4b44-afd7-f33660f69f9a-extracted/ca4dc9cf-03ac-4a1d-9bba-2ad3e6dc789d_aristotle/`.
+- Verdict: land `finiteProductForm_total`,
+  `finiteProductForm_total_square`, and
+  `finiteProductForm_total_eq_zero_of_forall`, using explicit
+  `(componentInclusion (R := R) i)` and a double-sum proof via
+  `Finset.sum_eq_single`.
+- Claim boundary: carrier-abstract finite-product bilinear assembly only; not
+  concrete current algebra, not physical Krein form, not positivity, not K2
+  closure.
+
+## [SUBMIT Codex] Aristotle K1 toy fixture source audit
+
+- Submitted project `32dcb44c-82e0-4dea-a81e-3817833ce1e7`, note
+  `ARISTOTLE_AUDIT_K1_TOY_FIXTURE_SOURCE_2026-07-07_2345.md`.
+- Prompt asks Aristotle to audit whether the landed
+  `KPAntiRegressionToy.lean` source honestly implements the recommended n=3
+  anti-regression fixture and what remains before packaging the free-slot
+  `(m_j - 1)!` theorem.
+- `aristotle list --limit 4` showed this job RUNNING, keeping the live audit
+  lane warm.
+
+## [LAND Codex] K2 finite-product total assembly
+
+- Landed in `PhysicsSM/Draft/NullEdge/GateYM/S1ClosureCurrentAlgebra.lean`:
+  `finiteProductForm_total`, `finiteProductForm_total_square`, and
+  `finiteProductForm_total_eq_zero_of_forall`.
+- Guard-pinned those three declarations in
+  `PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`; each prints
+  `[propext, Classical.choice, Quot.sound]`.
+- Updated `NULL_EDGE_RESULTS.md` and
+  `Sources/Null_Edge_QCD_Mass_Roadmap_2026-07-07.md` to describe the total
+  assembly as carrier-abstract finite-product bilinear plumbing.
+- Verification commands run and observed passing:
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/S1ClosureCurrentAlgebra.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.S1ClosureCurrentAlgebra`;
+  `lake env lean PhysicsSM/Draft/NullEdge/GateYM/SlabAxiomGuard.lean`;
+  `lake build PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard`.
+- Claim boundary: total assembly proves block-diagonal reconstruction for
+  abstract finite-product bilinear forms. It is not the concrete carrier's
+  Krein form, not positivity, not physical current algebra, and not full K2.
+
 ## [LAND Claude] Fable call-01 harvested: manuscript audit applied + S1-CC crux RESOLVED
 
 - Fable-5 call-01 (log:
@@ -651,3 +714,36 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   good Aristotle target, handed off for the fleet/morning. Theorems 1-2
   (descent, restricted-inertia-on-V') also remain, oracle-confirmed.
 - Verification: lake env lean (clean); lake build (8026); guard (8148).
+
+## [AUDIT Codex] K1 anti-regression toy Aristotle audit harvested
+
+- Harvested Aristotle project `32dcb44c-82e0-4dea-a81e-3817833ce1e7`, task
+  `38b9f67e-50e6-438e-917f-363919501cea`
+  (`COMPLETE_WITH_ERRORS`, but visible result is a substantive positive
+  source-aware audit).
+- Verdict: ship `KPAntiRegressionToy.lean` as-is. Aristotle independently
+  re-elaborated the finite toy, confirmed the `decide` proofs are honest and
+  non-vacuous, and found no overclaim.
+- Program meaning: the toy blocks the bad pinned full-`m_j!` route. In the
+  two-ordering case, pinned image cardinality is 1 while structured image
+  cardinality is 2.
+- Next K1 handoff: package the general free-slot theorem for Aristotle:
+  pinned image cardinality `(m_j - 1)!`, structured image cardinality `m_j!`,
+  plus a named missing-factor statement bridged back to the real K1 encoders.
+
+## [LAND Claude] RG-Schur M-dependent iff + inertia-count handoff
+
+- `mid_effective_nilpotent_iff` (RGSchurMassWitness.lean): the decimated
+  effective edge is nilpotent iff (Minv)_11 = 0 - i.e. decimation generates
+  a mass-like term EXACTLY when the hidden-block propagator couples the two
+  null directions. Completes the M-dependent §9 picture as a crisp iff.
+  Guard-pinned (8070).
+- HANDOFF (for Codex fleet / morning): the S1-CC inertia-count capstone
+  (anticonj_balanced_inertia) - exact statement + route in
+  S1CC_RESOLUTION.md. Mathlib-only standalone Aristotle target. The three
+  landed rungs + K-B pass already carry the resolution; this is the full
+  kernelization of Theorem 3.
+- Health check: both guards build green together (8184 jobs earlier;
+  individual builds green). All ~9 tonight modules collectively verified.
+- Verification: lake env lean RGSchurMassWitness (clean); lake build (8027);
+  CarrierAxiomGuard (8070).
