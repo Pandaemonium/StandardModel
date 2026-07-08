@@ -8,6 +8,37 @@ Executor status: the finite engine is LANDED
 `S1CCBalancedInertia.lean`, guard-pinned). The physical `J Q_C|V'/N` bridge
 and concrete `V'` construction remain the next rungs.
 
+## UPDATE (2026-07-08 PM) — witness kernel-checked + general reduction landed
+
+The rungs below the finite engine that this note listed as "next" / "M-target"
+have since landed as kernel theorems (the note's ladder is preserved below for
+provenance; this block records the current state):
+
+- **Witness bridge — DONE (M).** Theorem 3's `6x6` witness (K-B, previously
+  oracle) is now kernel-checked: `S1CCPhysicalSectorWitness.balanced_on_physical_sector`
+  (inertia `(2,2,0)` on `V'/N`), with the full descent data — `[G,K]=0`,
+  `Q_G^2=0`, `N ⊆ radical`, `b(JQc)b = -JQc`, `V' = ker Q_G` / `N = range Q_G`
+  (`QG_ker_eq`/`QG_range_eq`/`QG_ker_reps_basis`) — all M, self-guarded.
+- **Witness → general balance MECHANISM — DONE (M).**
+  `S1CCGeneralReduction.compression_balanced` (any coset reps `r`, any `±1`
+  grading, `Q_G`-blind), `compression_balanced_eigbasis` (any `b`-eigenvector
+  family `P` — coordinate alignment dropped; proved in-repo), and
+  `compression_has_neg_eigenvalue`. The witness is re-derived as a literal
+  instance: `S1CCWitnessAsInstance.witness_balanced_via_general` (M). Guard-pinned
+  inline + in `SlabAxiomGuard`.
+- **What STILL stays MEMO — the sector PRESENTATION (not the mechanism).** Two
+  adversarial reviews (Fable call-09, Aristotle audit batch-5) caught that a naive
+  "b-eigenbasis exists" statement is vacuous (empty family). The honest remaining
+  obligation is the existence of a `b`-adapted presentation of the *actual* sector
+  `V'/N`: an orthonormal `b`-eigenbasis in `ker Q_G` **complementary to
+  `range Q_G`**, dimension pinned to `dim ker Q_G - rank Q_G`, with the closure
+  form descending to the quotient. Both reviews also ruled the underlying MATH true
+  (balance survives the quotient because `range Q_G` is `b`-invariant ⇒ `±` pairs
+  cancel) — so the gap is formalization, not mathematical risk. This is the live
+  Aristotle proof target (`allmass-strategy-s1ccpres-20260708`, corrected to the
+  non-vacuous statement).
+- **K-A (soldered `Q_G`) still the pre-registered kill** — unchanged.
+
 ## The resolution (grade MEMO unless noted)
 
 The central positivity crux S1-CC is now a CONDITIONAL STRUCTURED NO-GO WITH
