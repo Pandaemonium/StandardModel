@@ -557,8 +557,13 @@ the fixed point `(2,1)` the tie is **kernel-checked**: the actual carrier
 compression `M6 = PᴴHAC P` is *exactly* the block diagonal `B(2,1) ⊕ B(2,-1)`
 (`M6_topBlock_eq_B`, `M6_botBlock_eq_B`, `M6_offBlock_eq_zero`, all **M**,
 guard-pinned) — so the full sector form is a pair of closure-mirror blocks
-`B(λ,κ) ⊕ B(λ,-κ)` (isospectral, both covered by the two-sided `B_posDef_iff`),
-and `T2_positive_mass` is its `(2,1)` corner *in the kernel*. What is **not** a
+`Msec(λ,κ) = B(λ,κ) ⊕ B(λ,-κ)` (isospectral, both covered by the two-sided
+`B_posDef_iff`), and `T2_positive_mass` is its `(2,1)` corner *in the kernel*. The
+gap of this *full* `6`-dimensional sector form is itself a theorem:
+`SectorMassGap.Msec_least_eigenvalue` (**M**, guard-pinned) proves its least
+eigenvalue is `λ − κ = aperture − |closure|` (and `Msec_posDef_iff`: massive iff
+`|κ| < λ`) — so the mass gap holds of the actual sector, not just the `3×3`
+half-block. What is **not** a
 theorem is that the carrier reduces to this shape at *general* `(λ,κ)`: that
 identification is **oracle-grade** (`carrier_spectrum_sim.py`, §9a), kernel-checked
 only at `(2,1)`. So the phase diagram is: *`B`'s spectral theory is M for all

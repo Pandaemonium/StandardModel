@@ -51,6 +51,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
 import PhysicsSM.Draft.NullEdge.Carrier.BindingDefect
 import PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly
+import PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -848,5 +849,18 @@ oracle. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly.HAC_eq_clifford' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly.HAC_eq_clifford
+
+/-! ## Full physical-sector mass gap = aperture minus |closure|
+
+`SectorMassGap` lifts the block gap to the actual `6×6` sector form `Msec = B(λ,κ)
+⊕ B(λ,-κ)`: least eigenvalue `λ-κ`, PosDef iff `|κ|<λ`. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap.Msec_least_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap.Msec_least_eigenvalue
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap.Msec_posDef_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap.Msec_posDef_iff
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard
