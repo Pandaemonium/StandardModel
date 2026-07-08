@@ -52,6 +52,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
 import PhysicsSM.Draft.NullEdge.Carrier.BindingDefect
 import PhysicsSM.Draft.NullEdge.Carrier.CliffordAssembly
 import PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap
+import PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -862,5 +863,19 @@ oracle. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap.Msec_posDef_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.SectorMassGap.Msec_posDef_iff
+
+/-! ## Within-carrier dimensionless prediction: the three mass levels are equally spaced
+
+`MassSpacingPrediction`: the levels `{λ-κ, λ, λ+κ}` (= `B_spectrum`) are an
+arithmetic progression, so `(m²_mid-m²_lo)/(m²_hi-m²_mid) = 1` (scale-invariant) —
+one sharp dimensionless prediction with a kill condition. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction.spec_spacing_ratio' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction.spec_spacing_ratio
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction.levels_eq_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.MassSpacingPrediction.levels_eq_spectrum
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

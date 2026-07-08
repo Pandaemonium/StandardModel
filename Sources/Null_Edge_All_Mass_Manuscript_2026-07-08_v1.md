@@ -1218,14 +1218,27 @@ theorem).
 |---|---|---|---|
 | P-ν | Exactly one massless mode on the small chiral cycle; the *next* mode's ratio is a protected finite target (not an absolute mass) | §8 protection (chiral, not cyclic); oracle | Compare the finite mode-ratio pattern to a neutrino mass-squared ratio `Δm²₂₁/Δm²₃₁` (NuFIT-6.0 `[import]`). **Kill:** if the protected structure forces a ratio pattern incompatible with the measured hierarchy/ordering. Honest status: the *count* (one massless mode) is what the model owns; the *ratio value* is not yet computed, so this is a registered target, not a delivered number. |
 | P-hf | Finite hyperfine (π/ρ-analog) mass-squared splitting `M²(↓) − M²(↑) = 512/125` on the 18-dim color-singlet witness | §4 S6 witness; exact-fraction oracle (`probe_s6_singlet_budget.py`) | This is a property of *one specific finite witness* with fixed 3-4-5 rational holonomies — it is a self-consistency prediction of the construction (the closure/chromomagnetic sign flips between spin states), **not** a claim about the physical π/ρ ratio. **Kill:** if the Lean 18×18 transcription does not reproduce `512/125`, or if the sign structure is an artifact of the chosen holonomies (test: vary them). |
+| P-spacing | The three squared-mass levels of one carrier are **equally spaced**: `(m²_mid − m²_lo)/(m²_hi − m²_mid) = 1`, scale-invariant | §4 `MassSpacingPrediction.spec_spacing_ratio` (**M**, guard-pinned; the levels `{λ-κ,λ,λ+κ}` = `B_spectrum`) | A kernel-checked *within-carrier* structural constraint: closure/mean/aperture form an arithmetic progression, dimensionless and scale-free. **Kill:** a single carrier whose two adjacent squared-mass gaps measure to a ratio `≠ 1`. Honest scope: within-carrier only — it is **not** the cross-generation neutrino ratio. |
 
-Neither is a physical mass. P-ν is the only place the program touches a
+None is a physical mass. P-ν is the only place the program touches a
 measured number, and it does so at the one point (§8) where masslessness is
 a theorem and the residual ratio is a protected finite quantity — which is
 the honest home for the mass-value question after it failed for charged
-leptons (§5). P-hf is a prediction *about the model's own consistency*,
-valuable because it is exact and checkable, not because `512/125` is a
-hadron ratio.
+leptons (§5). **The neutrino mass ratio itself is an honest boundary, not a
+pending calculation** (Aristotle no-go, 2026-07-08): predicting `m₂/m₃` is a
+*category error* at this generality — the finite structural data of one carrier
+fixes only the within-carrier ratio pattern `(λ-κ):λ:(λ+κ)` up to scale
+(`P-spacing`), and a cross-generation ratio needs two ingredients the theory
+does *not* derive — a **generation/family-replication index** selecting three
+distinct carriers as the mass eigenstates, and a **cross-carrier scale map**
+(a Yukawa-like texture) relating their normalizations. Both are external inputs;
+until they are supplied *and* derived, the neutrino ratio is outside what the
+program predicts. (Naively identifying one block's three levels with three
+generations fails twice: they are one sector's closure/mean/aperture, not a
+replication, and they would force an *arithmetic* `Δm²` ratio of `1`,
+contradicting the observed hierarchical splittings.) P-hf is a prediction
+*about the model's own consistency*, valuable because it is exact and
+checkable, not because `512/125` is a hadron ratio.
 
 ---
 
@@ -1263,6 +1276,8 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `HAC_eq_clifford`, `Jmet_eq_clifford` | `Carrier/CliffordAssembly.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **T2 carrier realizes the documented Cl(4) recipe**: hand-typed Krein form/metric `= J(Q_A+Q_C)` / `Js⊗I3` (verbatim) — closes the docstring-only-provenance gap. Certifies *a* Clifford presentation, not canonicity (`K`/order are inputs) |
 | 4 | `B_posDef_iff`, `B_massless_iff_of_pos` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | spectral theory of the block `B(λ,κ)`: massive `↔ \|κ\|<λ`, massless line `κ=±λ` for `λ>0` (§4) |
 | 4 | `B_least_eigenvalue`, `B_spectrum` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue of `B` `= λ−κ` = aperture − closure (`IsLeast`); full spectrum `= {λ−κ, λ, λ+κ}` (`B_spectrum`) — the three sector mass levels |
+| 4 | `Msec_least_eigenvalue`, `Msec_posDef_iff` | `Carrier/SectorMassGap.lean` | M, guard-pinned (`CarrierAxiomGuard`) | full `6×6` sector form `Msec = B(λ,κ)⊕B(λ,-κ)`: least eigenvalue `= λ−κ` = aperture − \|closure\|; PosDef iff `\|κ\|<λ` — the gap of the actual sector, not just the block |
+| 4/10 | `spec_spacing_ratio`, `levels_eq_spectrum` | `Carrier/MassSpacingPrediction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **within-carrier prediction P-spacing**: the three mass levels are equally spaced (`(m²_mid−m²_lo)/(m²_hi−m²_mid)=1`, scale-invariant); NOT the cross-generation neutrino ratio (honest boundary, §10) |
 | 4 | `M6_topBlock_eq_B`, `M6_botBlock_eq_B` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the carrier tie at `(2,1)`**: `M6 = B(2,1) ⊕ B(2,-1)` — so the phase diagram is the carrier's actual sector form there (general `(λ,κ)` reduction is oracle-grade) |
 | 4/10 | `blockBindingDefect_eq_neg_kappa`, `closurePerturbation_offDiagonal` | `Carrier/BindingDefect.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **T3b binding defect**: `Δ_block(λ,κ) = −κ` — closure lowers the ground mass by exactly its strength (negative, closure-controlled, off-diagonal); physical identification stays **C** (§10 crux 0b-b) |
 | 3 | `free_mass_operator_eq_plucker` | `Carrier/FreeMassBridge.lean` | M, local guard pin | **free §3↔§4 bridge**: free mass operator `P·adj P = det P • 1` = Plücker mass (§10 crux 0b-a) |
