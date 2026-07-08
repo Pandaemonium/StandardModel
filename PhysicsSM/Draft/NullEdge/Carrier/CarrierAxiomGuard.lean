@@ -34,6 +34,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.RGSchurMassWitness
 import PhysicsSM.Draft.NullEdge.Carrier.ChiralZeroModeParity
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierMassBudget
 import PhysicsSM.Draft.NullEdge.Carrier.ApertureDominancePositivity
+import PhysicsSM.Draft.NullEdge.Carrier.EquivariantGradedIndex
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane

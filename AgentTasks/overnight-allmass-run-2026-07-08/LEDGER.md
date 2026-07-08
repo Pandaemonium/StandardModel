@@ -998,3 +998,26 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
 - Claim boundary: numeric oracle (exact rationals); Lean transcription
   pending. This backs the manuscript S4 rail (b_C != 0, hyperfine) at
   oracle grade.
+
+## [LAND Claude] Equivariant graded index - structural core (Fable Part A organizing theorem)
+
+- New module `Carrier/EquivariantGradedIndex.lean` (kernel-clean, local pin,
+  wired into CarrierAxiomGuard build 8072): the shared data of the program's
+  candidate ORGANIZING theorem (Fable call-03 Part A) - `IsOddInvolutionFor`,
+  `IsEvenSymmetryFor`, and `chiralProduct_involution` (for Gamma with
+  Gamma W Gamma = Wᴴ and W unitary, C := Gamma*W is an involution C^2=1 -
+  proved WITHOUT needing Gamma^2=1, a stronger statement). This is the
+  algebraic heart of the sector index: the multiplicative face of the same
+  X ~ -X anticonjugation that gives the additive balanced inertia (S1-CC).
+- Framework claim: the chirality Gamma, the closure bivector b, and the GW
+  edge-reversal grading are all ODD elements of one group; gauge + the C4
+  reflection R are EVEN; the master invariant tr(Gamma g|sector) specializes
+  to McKean-Singer (g=1), C4 (g=R), and S1-CC (odd element exists). b and the
+  C4 grading are LITERALLY sigma_z - the framework.
+- HANDOFF (documented M-targets, need spectral/eigenspace API): L2 balanced
+  -inertia capstone, L3 graded_supertrace_localizes_to_kernel (re-derives the
+  index family), L4 sector_involution_pinning (C4), L5 Schur bridge (C).
+- Claim boundary: structural core only; the framework claim is MEMO until
+  L2-L4 land; RG-Schur is explicitly NOT an instance (Fable, structural).
+- Verification: lake env lean (clean, local pin); lake build CarrierAxiomGuard
+  (8072, green).
