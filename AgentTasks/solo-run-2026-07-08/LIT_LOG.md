@@ -52,3 +52,24 @@ STRUCTURE (gap = aperture-dominance margin, critical at parity) is the claim.
 Each block validated against a landed M-identity (T2, budget, FiniteUnitary
 Evolution, FiniteRGFlow, FiniteCanonicalEnsemble, RGSchurMassWitness). The Lean
 IS the simulation spec + validation oracle - Focus-2 goal met at the demo level.
+
+## Lit pass 2026-07-08 (~post call-05): mass-side QW prior art
+
+Ran neo4j chunk search (QW continuum-limit / coin-operator-as-mass). Top hit and
+a genuine novelty check:
+
+- **Mlodinow & Brun, "Discrete spacetime, quantum walks and relativistic wave
+  equations" (arXiv:1802.03910, PRA 97 042131, 2018).** A 3D quantum walk whose
+  coin space must be (at least) **4-dimensional**, which FORCES the Dirac gamma
+  matrices, imposed by parity + a discrete-rotation ("noncorrelation") symmetry.
+  The **coin-flip operator gives the mass term**; setting the internal phase
+  operators Q_{X,Y,Z}=0 yields a MASSLESS particle (min coin dim drops to 2).
+  This is the closest *mass-side* prior art: "mass = an internal operator you
+  can switch off," directly rhyming with our two-null-edge Cl(4) carrier and its
+  massless critical line kappa=lambda. Distinctions (our novelty): no Krein
+  grading, no four-channel budget, no det P tie; their single coin operator is
+  our aperture/closure pair. ACTED: added to §2a (mass-side comparator sentence),
+  References, source map. Not source support for our budget - a comparator.
+
+TODO (still open): full-text Manighalam-Kon coin-classification (which carriers
+admit a continuum limit) - complements Mlodinow-Brun's 4D-coin-forcing result.

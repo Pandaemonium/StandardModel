@@ -227,15 +227,24 @@ verification, and the four-channel budget as one object. Situating the work:
   side, the *quantum-walk / quantum-cellular-automaton* literature (Bakircioglu–
   Arnault–Arrighi 2025 give a chiral, doubler-free, neutrino-like QCA and its
   Nielsen–Ninomiya evasion) `[import]` is the nearest kin to §8/the doubler
-  discussion. Kauffman–Noyes combinatorial work and Wilczek's "mass without
+  discussion. **Mlodinow–Brun (2018) is the closest *mass*-side kin:** a 3D
+  quantum walk whose **four-dimensional** coin space is *forced* to carry the
+  Dirac gamma matrices by parity and a discrete-rotation ("noncorrelation")
+  symmetry, with the **coin-flip operator as the mass term** and a *massless*
+  particle recovered exactly when that operator is switched off `[import]`. That
+  is an independent "mass is an internal operator you can turn off" statement,
+  and it rhymes precisely with our two-null-edge `Cl(4)` carrier and its
+  massless critical line `κ = λ` (§4) — but without our Krein grading, the
+  four-channel budget, or the `det P` kinematic-mass tie; their single coin
+  operator is our aperture/closure pair. Kauffman–Noyes combinatorial work and Wilczek's "mass without
   mass" (the QCD share) `[import]` are the nearest slogans; Zwanziger's (1991)
   lattice confinement / positivity-violation setting is a nearby comparison
   and a warning that this terrain is occupied, not source support for §6's
   finite balanced-closure theorem `[import]`.
 - **What is new, stated by contrast — and narrowed after a literature
   review.** Neither the finite Krein setting (Bizi et al; Barrett) nor
-  machine-verified physics (HepLean `2405.08863`, exact-ID verified but not yet
-  source-quoted) `[import]` is new *on its own*, and we do not claim either.
+  machine-verified physics (HepLean/PhysLean `2405.08863`) `[import]` is new
+  *on its own*, and we do not claim either.
   The defensible novelty is the **combination**: (i) a
   finite Krein *null-edge* carrier whose square is graded into a four-channel
   budget `4 D^#D = Q_A+Q_C+4Q_T+E_#` that **answers to the kernel-checked
@@ -1244,6 +1253,9 @@ novelty-gap analysis is in
 
 - D. Bakircioglu, P. Arnault, P. Arrighi, *Fermion Doubling in Quantum Cellular
   Automata*, arXiv:2505.07900.
+- L. Mlodinow, T. A. Brun, *Discrete spacetime, quantum walks, and relativistic
+  wave equations*, Phys. Rev. A 97 (2018) 042131, arXiv:1802.03910 (4D coin →
+  Dirac gammas; coin-flip operator = mass term; §2a mass-side comparator).
 - H. B. Nielsen, M. Ninomiya, *Absence of neutrinos on a lattice*, Nucl. Phys.
   B185 (1981) 20.
 
