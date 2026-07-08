@@ -110,7 +110,13 @@ Also refined the §9a spectrum-sim bullet + §11 rows to the same honest split.
 
 ## In flight (external, not harness-tracked)
 
-- (none — the mass-gap Aristotle job COMPLETED and is landed + pinned, cycle A.4)
+- **Aristotle D2-on-T2 job** — project `9af87ff3-da85-456e-acda-acbc4809ee93`
+  (`allmass-d2-on-t2-20260708`). Target: `hermitian_flow_mem_unitaryGroup` —
+  for Hermitian H, `exp(-i t H)` is unitary (a genuine norm-preserving sector
+  isometry), instantiating `FiniteUnitaryEvolution` on the concrete carrier and
+  closing the one open §9a dynamics link. On completion: harvest into a draft
+  module, note in §9a that the D2 instantiation is now kernel-checked (not just
+  the generic scaffold), guard-pin.
 
 ## Status: BOTH FOCUSES COMPLETE + VERIFIED (as of ~11:1x)
 
