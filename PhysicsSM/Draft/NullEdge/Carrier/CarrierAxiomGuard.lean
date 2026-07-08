@@ -49,6 +49,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.FiniteCanonicalEnsemble
 import PhysicsSM.Draft.NullEdge.Carrier.FreeMassBridge
 import PhysicsSM.Draft.NullEdge.Carrier.MassGapWitness
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow
+import PhysicsSM.Draft.NullEdge.Carrier.BindingDefect
 
 /-!
 # CarrierAxiomGuard: build-enforced axiom-footprint guard for the Weitzenbock-carrier lane
@@ -816,5 +817,20 @@ generic isometry. -/
 /-- info: 'PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.carrier6_orbit_norm_conserved' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Carrier.CarrierUnitaryFlow.carrier6_orbit_norm_conserved
+
+/-! ## T3b: the Δ binding-energy invariant is `−κ` (closure lowers the ground mass)
+
+`BindingDefect` promotes the interacting-bridge binding defect from oracle to
+kernel at the block level: `Δ_block(λ,κ) = −κ` (negative, closure-controlled,
+off-diagonal). The physical identification rests on the `(λ,κ)` carrier reduction
+(kernel only at `(2,1)`), so it stays grade C; the block identity is M. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.BindingDefect.blockBindingDefect_eq_neg_kappa' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.BindingDefect.blockBindingDefect_eq_neg_kappa
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Carrier.BindingDefect.closurePerturbation_offDiagonal' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Carrier.BindingDefect.closurePerturbation_offDiagonal
 
 end PhysicsSM.Draft.NullEdge.Carrier.CarrierAxiomGuard

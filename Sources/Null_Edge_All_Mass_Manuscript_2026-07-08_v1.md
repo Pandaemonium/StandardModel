@@ -1138,13 +1138,24 @@ this was conditional on have both moved this run:
   operator `P · adjugate P` equals `det P • 1 = (Plücker mass) • 1`, so its least
   eigenvalue *is* the §3 kinematic mass. In the free case "the operator mass is
   the kinematic mass" is now a theorem (the finite Clifford mass-shell). *(0b-b,
-  interacting, the honest open link):* for nonflat carriers the bridge fails by
-  the `Delta` binding-defect candidate (§4 rail 3) — the least eigenvalue is
-  *below* `det P` by a closure-controlled, off-diagonal amount. This "failure"
-  is the physically correct one (bound-state mass is not additive); naming
-  `Delta` as a finite binding-energy invariant, and proving it is governed by
-  the closure sector, is the remaining grade-**C** target. **Kill condition:** a
-  carrier where `Delta` is positive or uncorrelated with closure. (1) The strong-coupling gap's forest injection (§6) — now a
+  interacting, now a block-level theorem):* for interacting carriers the bridge
+  fails by a `Delta` binding defect — the least eigenvalue is *below* `det P` by a
+  closure-controlled, off-diagonal amount. This is no longer only a candidate: on
+  the sector mass block `B(λ,κ)` it is **kernel-proved** that
+  `Δ_block(λ,κ) = −κ` (`BindingDefect.blockBindingDefect_eq_neg_kappa`, **M**,
+  guard-pinned) — closure lowers the ground mass by *exactly its strength*. It is
+  **negative** (binding sign, not additive constituent mass;
+  `blockBindingDefect_nonpos`), **closure-controlled** with unit slope
+  (`blockBindingDefect_closure_controlled`), and **off-diagonal**: the closure
+  perturbation `B(λ,κ) − B(λ,0)` has zero diagonal
+  (`closurePerturbation_offDiagonal`), so the naive additive estimate is `0` while
+  the true `Δ = −κ` — the finite shadow of "bound-state mass is not assembled from
+  constituents", and exactly why the naive bridge `0b` fails. **Kill condition**
+  (`Δ > 0` or uncorrelated with closure) is now provably *unreachable* on the
+  physical branch: `Δ > 0` forces `κ < 0` (`blockBindingDefect_pos_imp_neg_kappa`).
+  What stays grade **C** is only the *physical identification* — that this block
+  `Δ` is *the* carrier binding energy — which inherits the `(λ,κ)` carrier
+  reduction (kernel at `(2,1)`, oracle-grade off it). (1) The strong-coupling gap's forest injection (§6) — now a
 well-posed combinatorics problem (demoted to a standing bounty). (2) The
 color-singlet mass-budget witness (§4) — designed, `b_C ≠ 0`, awaiting
 transcription. (3) The reflection-sectored double-pinning theorem and its
@@ -1208,6 +1219,7 @@ separately by the targeted Lean and guard builds.)*
 | 4 | `B_posDef_iff`, `B_massless_iff_of_pos` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | spectral theory of the block `B(λ,κ)`: massive `↔ \|κ\|<λ`, massless line `κ=±λ` for `λ>0` (§4) |
 | 4 | `B_least_eigenvalue`, `B_spectrum` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the mass gap as a theorem**: least eigenvalue of `B` `= λ−κ` = aperture − closure (`IsLeast`); full spectrum `= {λ−κ, λ, λ+κ}` (`B_spectrum`) — the three sector mass levels |
 | 4 | `M6_topBlock_eq_B`, `M6_botBlock_eq_B` | `Carrier/MassGapWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **the carrier tie at `(2,1)`**: `M6 = B(2,1) ⊕ B(2,-1)` — so the phase diagram is the carrier's actual sector form there (general `(λ,κ)` reduction is oracle-grade) |
+| 4/10 | `blockBindingDefect_eq_neg_kappa`, `closurePerturbation_offDiagonal` | `Carrier/BindingDefect.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **T3b binding defect**: `Δ_block(λ,κ) = −κ` — closure lowers the ground mass by exactly its strength (negative, closure-controlled, off-diagonal); physical identification stays **C** (§10 crux 0b-b) |
 | 3 | `free_mass_operator_eq_plucker` | `Carrier/FreeMassBridge.lean` | M, local guard pin | **free §3↔§4 bridge**: free mass operator `P·adj P = det P • 1` = Plücker mass (§10 crux 0b-a) |
 | 3 | `pairwiseMass_append` (+`_le`, `_append_eq_iff`) | `Carrier/MassMonogamy.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass monogamy: Plücker mass superadditive, excess = cross-disagreement (F3) |
 | 3 | `massOn_add_massOn_compl_le` | `Carrier/MassMonogamyPartition.lean` | M, guard-pinned (`CarrierAxiomGuard`) | general-partition monogamy: internal masses ≤ whole |
