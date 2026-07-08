@@ -322,7 +322,11 @@ square has no positive-definite diagonal. Therefore:
 > negative has equal positive and negative inertia. The kernel engine is
 > proved: anticonjugation forces every odd power traceless
 > (`anticonj_odd_pow_trace_zero`, **M**), so the form's spectrum is
-> symmetric about zero. So `Q_C` is honestly a *signed* chromomagnetic
+> symmetric about zero; the half-constraint rigidity that forces the
+> single-covector Gauss charge is also kernel-checked
+> (`half_constraint_rigidity`, **M**); and the balanced inertia is
+> confirmed on the `6x6` witness by the pre-registered numeric probe
+> (`sig = (2,2,0)`, oracle). So `Q_C` is honestly a *signed* chromomagnetic
 > channel; physical positivity must come from the `J`-definite complement
 > of the closure doublet (the matter/transverse directions), exactly as in
 > Gupta–Bleuler the longitudinal pair contributes zero norm. Two clauses

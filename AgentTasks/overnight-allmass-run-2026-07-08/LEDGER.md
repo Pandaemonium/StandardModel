@@ -588,3 +588,20 @@ LIT_SEARCH_LOG.md, not here. No entry is ever edited or deleted.
   S1-CC resolution are now kernel-checked; Theorems 1-3 + 6x6 witness
   remain M-targets (S1CC_RESOLUTION.md).
 - Verification: lake env lean (clean); lake build (8026); guard (8148).
+
+## [LAND Claude] S1-CC kill probe K-B PASSED - resolution numerically validated
+
+- `Scripts/oracle/probe_s1cc_balanced_inertia.py` (the pre-registered K-B
+  kill probe) run on Fable's 6x6 witness (W=C^3, G=diag(0,0,1),
+  K=antisym(e0,e1)). ALL checks pass: [G,K]=0, K skew-Hermitian, Q_G
+  nilpotent, J Q_C Hermitian, anticonjugation b^-1(JQ_C)b = -(JQ_C);
+  dims V'=5, N=1, quotient=4; and sig(J Q_C|_{V'/N}) = (2,2,0) EXACTLY
+  BALANCED = predicted (rank K-bar, rank K-bar) = (2,2). The S1-CC
+  resolution passes its own pre-registered kill condition.
+- End-to-end status of the crux resolution: algebraic engine kernel-checked
+  (anticonj_odd_pow_trace_zero + half_constraint_rigidity), numeric
+  instantiation validated (K-B). Theorems 1-3 as stated remain M-targets
+  but are now oracle-confirmed on the witness. Manuscript S6 + resolution
+  doc updated.
+- Claim boundary: numeric oracle validation; the Theorems 1-3 Lean
+  transcription and the odd-moment->inertia bridge remain M-targets.

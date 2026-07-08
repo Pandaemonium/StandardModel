@@ -61,10 +61,13 @@ Kugo-Ojima witnesses.
   soldered, mixing Clifford and color), Theorem 3's `b`-invariance fails
   and the inertia prediction is void (forcing the ghost-extended BRST
   route). 
-- **K-B (numeric):** the roadmap's one-day probe on the transcribed `V'`:
-  prediction `sig(J Q_C|_{V'/N}) = (rank K-bar, rank K-bar)`, `= (2,2)` on
-  the 6x6 witness. Any unbalanced non-vacuous result kills the
-  instantiation (the abstract theorems survive).
+- **K-B (numeric): PASSED (2026-07-08).**
+  `Scripts/oracle/probe_s1cc_balanced_inertia.py` on the 6x6 witness:
+  ALL structural checks hold ([G,K]=0, K skew-Herm, Q_G nilpotent,
+  J Q_C Hermitian, anticonjugation `b^-1(JQ_C)b = -(JQ_C)`), dims
+  (V'=5, N=1, quotient=4), and `sig(J Q_C|_{V'/N}) = (2,2,0)` EXACTLY
+  BALANCED, matching the predicted `(rank K-bar, rank K-bar) = (2,2)`.
+  The resolution passes its own pre-registered kill condition.
 - **K-C (nonabelian):** if no Hermitian `G` implementing the Gauss
   covectors satisfies `K(ker G) <= ker G` with `ker G != 0`, Theorem 1 is
   empty there; re-pose at linearized level.
