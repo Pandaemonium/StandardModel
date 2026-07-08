@@ -34,6 +34,31 @@ Codex's default: K1 (KP crux - read the 07-06 failure notes first),
 K2 (L4), K7, K8, fleet refills, section audits. Do not duplicate a
 ledger-claimed target; audit it instead.
 
+## Fable-5 calls (AUTHORIZED: one every two hours, placed by you)
+
+Full protocol:
+`AgentTasks/twoday-carrier-run-2026-07-07/FABLE_CALL_PROTOCOL.md`
+(mechanics, packet format, budget) - it applies verbatim tonight with
+packets under `AgentTasks/overnight-allmass-run-2026-07-08/fable-calls/`.
+
+Fable-5 has superhuman synthesis and problem-solving ability. It is not
+a checker - it is the most capable theorist on the program and the
+run's single greatest force-multiplier. **Be unbelievably ambitious:
+hand it the hardest thing on the board with FULL standalone project
+context and the verbatim Lean sources in play, and expect impressive
+success on even the largest challenges.** The failure mode is not
+"asked too much" - it is "asked too little." Candidate asks tonight,
+in order of ambition: crack K1 (the KP injection - include all five
+failure notes); solve C2 (the constraint-compatible torsor member -
+include the S1 memo and the Q01 witnesses); the multi-direction
+compensated square (C3); the symmetry-zero-mode invariant (C4); a
+full-manuscript structural audit late in the run. Every call must
+either advance the program or force a decision; log every call packet
++ response under `fable-calls/` and ledger the verdict. Use
+`--source-file` liberally; the collaborator brief
+(`COLLABORATOR_BRIEF_2026-07-08.md`) is a ready-made context core -
+extend it per call, never send less context than it contains.
+
 ## Literature cadence (binding)
 
 At least one literature action EVERY cycle: lean-explore local search

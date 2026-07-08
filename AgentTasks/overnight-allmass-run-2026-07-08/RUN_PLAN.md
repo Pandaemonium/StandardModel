@@ -168,6 +168,16 @@ let the morning session propagate.
   prose; `pre-commit run` before commits; commit prefix
   `overnight-allmass-202607:` with small, frequent commits.
 
+## 4b. Fable-5 escalation (Claude places one call every two hours)
+
+Authorized per the 07-07 protocol
+(`AgentTasks/twoday-carrier-run-2026-07-07/FABLE_CALL_PROTOCOL.md`),
+packets in this run's `fable-calls/`. Policy is optimism: give Fable
+the LARGEST open problems (K1/C2/C3/C4, whole-assembly syntheses, the
+manuscript audit) with full standalone context and verbatim sources,
+and expect success. Codex may request a Fable ask via the ledger;
+Claude packages and places it. Every call ledgered with verdict.
+
 ## 5. Phases and cadence
 
 - **P0 (first hour): orient + harvest sweep.** Read sec-1 docs, harvest
