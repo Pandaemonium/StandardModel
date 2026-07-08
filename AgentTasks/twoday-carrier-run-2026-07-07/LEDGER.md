@@ -4217,3 +4217,17 @@ exists_nonneg_mass_subspace (rank-nullity, [ESTABLISHED easy]).
 - Verification: `lake env lean .../S1ClosureCurrentAlgebra.lean` clean;
   `lake build ...S1ClosureCurrentAlgebra` (8026 jobs);
   `lake build ...SlabAxiomGuard` (8146 jobs, all pins green).
+
+## [FABLE handoff] Overnight all-mass run 2026-07-08 initialized
+
+- New run dir `AgentTasks/overnight-allmass-run-2026-07-08/`: RUN_PLAN
+  (co-equal Claude+Codex, tier-K kernel targets K1-K10 ranked from the
+  QCD roadmap + hardest-pieces handoff + tonight's state, mandatory
+  lit-search cadence, Codex external lit via Spark subagents),
+  MANUSCRIPT_SPEC (the all-mass manuscript with audit gates G1-G5 and
+  the anchor rule), goal prompts, seeded ledger + lit log.
+- Mission: complete the closable kernel work, then draft AND audit the
+  manuscript explaining all forms of mass in null-edge terms with
+  verified Lean anchors. Honesty gates are the success criteria.
+- This twoday-carrier ledger remains the record of 07-07; tonight's
+  coordination moves to the new run's ledger.

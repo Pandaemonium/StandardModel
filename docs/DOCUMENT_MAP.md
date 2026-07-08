@@ -70,6 +70,13 @@ as current state.
 - `Sources/Luminal_Motion_Checkerboard_Research_Program.md` - the checkerboard program (bridges to the carrier via the turn/corner dictionary). [LIVE]
 - `docs/NERD_ROADMAP.md` - see operational guides; also the program's gate structure. [LIVE]
 
+## Overnight run 2026-07-08 (AgentTasks/overnight-allmass-run-2026-07-08/)
+
+- `RUN_PLAN.md` - constitution: co-equal Claude+Codex, tier-K targets, lit cadence, discipline. [LIVE]
+- `MANUSCRIPT_SPEC.md` - the all-mass manuscript spec with audit gates G1-G5 and the anchor rule. [LIVE]
+- `GOAL_PROMPT_CLAUDE.md`, `GOAL_PROMPT_CODEX.md` - executor standing orders (Codex: Spark subagents for external lit). [STABLE]
+- `LEDGER.md`, `LIT_SEARCH_LOG.md` - append-only coordination + literature logs. [LIVE]
+
 ## Active run: two-day carrier run (AgentTasks/twoday-carrier-run-2026-07-07/)
 
 - `RUN_PLAN.md` - the run's constitution (roles, cadences, discipline). [LIVE]
