@@ -1597,3 +1597,12 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   2/3/5 faithful) already addressed.
 - NET: FIVE audits done+acted on (3 prose + semantic-alignment + definitions). Honesty checked at claim,
   statement, AND definition level. One genuine rigged-definition caught+fixed at the deepest layer.
+
+### 2026-07-09 ~late-afternoon - Claude - ImbalancedChiralProtection lands: s8 arc COMPLETE - DraftLead
+- LANDED [M]: `ImbalancedChiralProtection` (38002682). CORRECT chiral protection: imbalanced grading
+  Gamma=diag(1,1,-1) (index 1), EVERY odd perturbation preserves a zero mode (odd_has_zero_mode FORALL-
+  quantified, 1x2-kernel rank argument, NOT cherry-picked); even term gaps. The genuine index/SSH-BdG
+  protection the balanced EvenMassGaps toy could not show. build 18s. s8 (ii) + anchor + taxonomy item 3.
+- s8 CHIRAL-PROTECTION ARC COMPLETE: definitions audit caught EvenMassGaps rig -> downgraded to valid
+  content -> provided+landed correct replacement. Model audit response: catch, downgrade, replace.
+- LANE: chiral-projectors-dirac RUNNING.
