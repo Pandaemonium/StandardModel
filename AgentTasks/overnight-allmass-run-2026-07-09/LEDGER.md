@@ -1714,3 +1714,20 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - FLEET decision (honest): 1 genuine claude job running (this) + 7 Codex. Declining to manufacture 6
   more to hit "~7" - that would be the filler the goal forbids (manuscript already comprehensive across
   A/B/C). Will add jobs only as genuine gaps surface from harvest/audit. Watching for the harvest.
+
+### 2026-07-09 ~afternoon - Claude - SUBMITTED dirac-operator-massshell-det (2nd genuine refill) - DraftLead
+- Job 9e8296eb (claude-dirac-operator-massshell-det). The 4-SPINOR determinant face of mass:
+  det(pslash - m.1) = (m^2 - E^2 + kz^2)^2, vanishing EXACTLY on the mass shell (E^2-kz^2=m^2), positive
+  square off shell (D invertible). Complements the 2x2 little-group det P = m^2 (PauliMomentumPhysLean).
+  Because pslash^2=(E^2-kz^2).1, the char poly is a perfect square -> the sqrt cancels -> purely rational
+  polynomial identity (ring), no Real.sqrt. Realizes the program's own determinant-level mass-shell test
+  det D(q)=0 (AGENTS.md NullStrand convention). Arithmetic pre-verified numerically (on/off/massless).
+- NOT filler: distinct object (4x4 Dirac operator det vs 2x2 little-group det P), directly aligned with
+  the det-D no-doubling convention. Buildable v3 (rational 4x4 det + ring). Namespace
+  DiracOperatorMassShellDet.
+- QA this cycle: fixed a stale 'completes the Dirac-algebra grounding' claim (chiral row) after inserting
+  the energy-projector row - moved the 'completes' summary to the actual last row (MassShellProjectors),
+  now listing eta/gamma/chiral+energy projectors + §3 sigma-map cross-ref. Same audit-caught pattern.
+- FLEET: 2 genuine claude jobs running (chiral-breaking a454d0c6 = {g5,D}=-2m.g5; dirac-det 9e8296eb =
+  det(pslash-m)=(m^2-p^2)^2) + 7 Codex. Both are Dirac-operator "mass = anticommutator/determinant"
+  capstones of the projector work. Genuine, not padding.
