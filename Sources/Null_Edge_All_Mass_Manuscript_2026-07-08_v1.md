@@ -344,6 +344,19 @@ the table on the momentum + polarization side:
   asymmetry is a state/initial-condition question, not a law asymmetry
   (`CPTAntiparticleZigzag.theta_swaps_weyl`, `spectrum_conjugate_paired`, **M**).
 
+The table, read off the momentum Gram and the polarization count (all **M**):
+
+| Object | null edges (momentum rank) | polarizations | massless ↔ | anchor |
+|---|---|---|---|---|
+| massless fermion (Weyl) | 1 (single null direction) | — | one edge, `det P=0` | `MassNullDecomposition` |
+| massive fermion (Dirac) | 2 (disagreeing pair, zigzag) | — | `m²=2·disagreement` | §3, §2b(2) |
+| photon (massless vector) | 1 | 2 (transverse) | one edge, `det=0` | `PhotonSingleEdge` |
+| massive vector (W/Z) | 2 | 3 (+longitudinal = the mass) | `edges=pol−1` | `HiggsLongitudinalMode` |
+| antiparticle | same pair, CPT-reoriented | — | conjugate-paired spectrum | `CPTAntiparticleZigzag` |
+
+Across the table, `mass = 0 ⇔ a single null edge` and `mass ≠ 0 ⇔ ≥ 2 disagreeing
+null edges` — one statement, all spins, particles and antiparticles.
+
 **Honest scope:** the `±c`-velocity-operator statement (1) is fermion-internal
 kinematics (a Dirac fact); the momentum/polarization edge-count reading covers
 fermions *and* gauge bosons *and* their antiparticles; all are finite

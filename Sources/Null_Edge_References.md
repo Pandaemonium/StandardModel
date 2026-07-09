@@ -1,7 +1,7 @@
 # Null-edge / NullStrand reference map
 
 Status: live provenance aid, not a final bibliography.
-Last updated: 2026-07-08.
+Last updated: 2026-07-09.
 
 This file is the null-edge counterpart of `Sources/Paper_References.md`.  It
 tracks source keys, identifiers, and claim-boundary roles for the null-edge /
@@ -86,10 +86,30 @@ Status labels:
 | `TBD-WittenPET` | TBD | Witten positive energy theorem | Continuum positive-energy comparison for E/gravity-slot aspirations. | NEEDS-VERIFY |
 | `TBD-WeinbergWitten` | TBD | Weinberg-Witten theorem | Gravity/redundancy obligation; exact hypotheses are load-bearing. | NEEDS-VERIFY |
 | `TBD-Marolf` | TBD | Marolf gravitational charge / no-local-stress-energy comparison | Gravity/redundancy obligation; exact statement not pinned. | NEEDS-VERIFY |
-| `TBD-Jacobson` | TBD | Jacobson thermodynamic gravity comparison | Fallback interpretive comparison only until exact source anchor is checked. | NEEDS-VERIFY |
+| `TBD-Jacobson` | `gr-qc/9504004` | Jacobson, "Thermodynamics of spacetime: the Einstein equation of state" | Equation-of-state framing for the finite `JacobsonClausius` avatar (§7); Lambda enters as the integration constant. Manuscript §7 now names it. | ID-ONLY; verify chunk before quoting |
+| `TBD-ChamseddineConnesMarcolli` | `hep-th/0610241` | Chamseddine-Connes-Marcolli, "Gravity and the standard model with neutrino mixing" | Spectral-action gravity+SM; the `SpectralActionAvatar`/`EinsteinHilbertTerm` order-2/4 split is the finite avatar. | ID-ONLY |
+| `TBD-QuiverSpectralAction` | `2401.03705` | "Bratteli networks and the spectral action on quivers" | Discrete/finite spectral-action precedent for our finite Krein carrier. | ID-ONLY |
+| `TBD-TwistedSpectralTriples` | `1710.04965` | "Lorentz signature and twisted spectral triples" | Lorentzian/Krein spectral-triple + spectral-action anchor (§7 unification). | ID-ONLY |
 | `TBD-Malament` | TBD | Malament causal order/conformal structure theorem | NullStrand order-vs-scale split; exact theorem anchor needed. | NEEDS-VERIFY |
 | `TBD-HawkingKingMcCarthy` | TBD | Hawking-King-McCarthy causal order result | NullStrand order-vs-scale split; exact theorem anchor needed. | NEEDS-VERIFY |
 | `TBD-SorkinBenincasaDowker` | TBD | Causal-set order/number and action literature | Emergent geometry comparison; exact sources not pinned here. | NEEDS-VERIFY |
+
+## Cosmological constant sources (2026-07-09, for §10a + the Lambda doc)
+
+Manuscript §10a and `Null_Edge_Cosmological_Constant_2026-07-09.md` cite these. All
+`ID-ONLY`/`NEEDS-VERIFY`: the manuscript's own claims are graded **M** (the finite
+scaling arithmetic) with the mechanism/conjugacy explicitly `[import]`; verify these
+before any outward-facing quotation of their internal results.
+
+| Key | Identifier | Source | Role | Status |
+|---|---|---|---|---|
+| `TBD-EverpresentLambda` | `astro-ph/0209274` | Ahmed-Dodelson-Greene-Sorkin, "Everpresent Lambda" | THE `Lambda ~ 1/sqrt(V)` prediction; §10a names it as the imported mechanism our finite scaling (`LambdaEdgeCount`) routes through the native edge count. | ID-ONLY; verify magnitude claim before quoting |
+| `TBD-SorkinCC2007` | TBD | Sorkin, "Is the cosmological constant a nonlocal quantum residue of discreteness?" | Everpresent-Lambda origin/framing. | NEEDS-VERIFY |
+| `TBD-JacobsonEntanglementEq` | `1505.04753` | Jacobson, "Entanglement equilibrium and the Einstein equation" | Modern entanglement version of the equation-of-state route. | ID-ONLY |
+| `TBD-CausalDiamondsAdS` | `1812.01596` | "Gravitational thermodynamics of causal diamonds in (A)dS" | Causal-diamond thermodynamics (our finite slab/diamond avatar). | ID-ONLY |
+| `TBD-DESIDR2` | `2503.14738` | DESI DR2 BAO cosmological measurements | Observational posture: ~3.1sigma hint of evolving dark energy (friendly, NOT a confirmation of this framework). | ID-ONLY; do not overstate |
+| `TBD-Planck2018` | `1807.06209` | Planck 2018 results VI: cosmological parameters | Rigid-LambdaCDM baseline for the observational posture. | ID-ONLY |
+| `TBD-Hyperuniformity` | TBD | Torquato-Stillinger hyperuniformity; Martin-Yalcin, Stillinger-Lovett (Coulomb sum rules) | The hyperuniform branch of the count-statistics fork (`LambdaCountDichotomy`): constraint-induced sub-extensive number fluctuations. | NEEDS-VERIFY |
 
 ## Octonion / Furey / Standard Model bridge sources
 
