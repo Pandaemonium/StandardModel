@@ -657,16 +657,38 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
 - **`FiniteKMCP` [WIN / M]** — the first substantive finite KM rung: plaquette/Jarlskog
   invariance under rephasing, the N=2 no-go (`jarlskog_two_eq_zero` and
   `exists_real_rephasing_two`), and an exact unitary N=3 `3-4-5` witness with
-  `J = 6912 / 78125 != 0`. This closes the N=2/N=3 nondegeneracy gate; the
-  general-N incidence/corank theorem remains open.
+  `J = 6912 / 78125 != 0`. This closes the N=2/N=3 nondegeneracy gate.
+- **`IncidenceCorank` [WIN / M]** — the general-N graph-incidence count now lands:
+  for the complete-graph coboundary map on edge phases, `rank = N-1` and
+  `corank = (N-1)(N-2)/2` over an arbitrary field, with N=2/N=3 fixtures.
+  Honest scope: this is the linearized phase-count theorem, not a full unitary
+  matrix normal-form theorem.
 - **`WEPTrace` [WIN / narrow M]** — WEP as the finite trace identity
   `Tr((kappa * 1) rho) = kappa Tr(rho)`, with a nonvacuous equal-trace witness and
   a channel-stress negative control. This is Goal IV's cheapest trace rung, not the
   E-slot field equation or Clausius/Jacobson result.
+- **`WEPActionBridge` [WIN / narrow M]** — turns the WEP trace source into a
+  finite trace-level multiplier action: stationarity against all matrix
+  variations is equivalent to `G = K`, and a channel-blind coupling gives source
+  side `kappa * Tr rho`. Nonzero source witness included. Honest scope:
+  trace/source bridge only, not the E-slot geometric action.
 - **`MassResourceModularAudit` [WIN / audit M]** — central normalization shifts cancel
   in the commutator derivation (`ad(z+B)=ad(B)` for central `z`), while the operator
-  equality `z+B=B` is false for nonzero shifts. This pins the Suite D modular
-  false-shape boundary.
+  equality `z+B=B` is false for nonzero shifts, now universally in the background
+  operator `B`. This pins the Suite D modular false-shape boundary.
+- **`IndexAnomalyInterface` [WIN / M interface]** — packages a signed finite toy
+  index, proves the finite winding anomaly
+  `toyIndex (Kw N w) - toyIndex (Kw N 0) = w`, and names the exact reduction
+  hypothesis needed for an analytic index claim. Honest scope: finite rank-nullity
+  only; no Fredholm/Atiyah-Singer content.
+- **`GateI1.MassEntropyMonotone` [WIN / M]** — binary entropy is antitone in
+  speed on `[0,1]`; visible entropy is monotone in invariant mass ratio on
+  future-cone momenta; bundled finite resource monotone has null momenta as free
+  states.
+- **`SuiteCDNextRungs` [WIN / M]** — collector of small next rungs: U(N) parameter
+  decomposition, finite C3 relative-index identity, traceless Suite D channel
+  charges, and linear independence of the four GGE charges. Honest scope:
+  arithmetic/interface rungs, not a continuum theory.
 
 ### Claude assembly Goal landings (2026-07-09)
 
@@ -707,15 +729,12 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   and does NOT build in-project (SIGTERM at 389s). Refined lesson: heavy symbolic COMPLEX matrix
   computation is as slow as Real transcendentals here. HELD (preserved at `harvest/d2/`);
   follow-up = re-derive over `R`/`Q` (real symmetric 2x2, `det = pd - z^2`), avoiding `C`.**
-  **Re-derivation over R attempted (`EntropyMonotoneReal`, harvest/d2real/) — STILL HELD.**
-  Restating over real symmetric `!![p,x;x,1-p]` (`det = p(1-p)-x^2`) removed `C`, but the module
-  STILL does not build in-project (SIGTERM at 350s even solo). Root cause is deeper than
-  `C`/transcendentals: the `nlinarith`-on-high-degree-polynomial proofs (MonotoneOn over an
-  interval, PSD via sum-of-squares, the 3-4-5 congruence det comparison) are themselves
-  pathologically slow under our pin. **Decision: D2 stays a documented draft-handoff; further
-  re-derivation is negative-return.** The RESULT (decoherence increases mass^2; signed closure
-  exception) stands as reviewed; only the M-anchor landing is deferred. Buildable-proof lesson:
-  keep proofs to `ring`/`norm_num`/`decide`/`fin_cases`; avoid `nlinarith` on degree>=3.
+  **`EntropyMonotoneReal` — RESOLVED, now LANDED [M] (2026-07-09, post-restart).** Restating over
+  real symmetric `!![p,x;x,1-p]` (`det = p(1-p)-x^2`), all 4 targets (`pinch_is_state`, `det_pinch`,
+  `mass_monotone_under_pinch`, `signed_closure_exception`). The earlier "does not build" verdict was
+  a MEASUREMENT ARTIFACT: the machine was memory-starved; after a restart this module builds in
+  ~18s. Edge + anchor row added. (Correcting the earlier "deeper than C/transcendentals" note —
+  the proofs were fine; the system was thrashing.)
 - **`Goal1Rung5Tie` (Goal I rung-5 tie) [HONEST KILL / M]** — the true bound eigenvector's
   closure SHARE is `b_C = 16/5 >= 0` (`closure_share_nonneg`), not the seed's modelled `<0`,
   though closure ENERGY is `-16 < 0` (`closure_energy_neg`). Budget computed from `v=(2,1,0)`,
@@ -767,11 +786,9 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   `det = sum_{h<h'} |a_h|^2 |a_h'|^2 |psi_h ^ psi_h'|^2` (mass = retained which-direction
   info); `det rho(t) = t(2-t) D` monotone under decoherence. Non-collinear witness `det=4/25`.
   Honest: "mass^2 = det rhoDir" is the normalization-robust invariant (trace=1 only in the
-  decohered case). **NOT LANDED: the module does not build in-project within budget (SIGTERM
-  at 595s even solo — the Complex-determinant / double-`Finset.sum` symbolic computation is
-  pathologically slow under our pin). HELD as a draft-handoff (preserved at
-  `harvest/B1/`); follow-up = re-derive with cheap rational proofs (the [job:
-  suiteD2] and rung5tie prompts encode the cheap-proof discipline).**
+  decohered case). **RESOLVED, now LANDED [M] (2026-07-09, post-restart):** the earlier "SIGTERM
+  595s solo" was a memory-starvation MEASUREMENT ARTIFACT — after a machine restart this exact
+  `Complex`-determinant module builds in ~24s (with `ComptonBoundSq`). Edge + anchor row added.
 - **`ComptonBound` (Suite D rung D5) [HELD — delivered, does NOT build in-project]** — the mass gap is a length
   floor: for every `J`-normalized state `(1/2)/m <= width`, saturated by `(1/sqrt2, 1/sqrt2)`
   (fixture `width 3 = 1/6`), and `width = (1/2) dCausal m 0 1` — the localization floor IS half
@@ -781,10 +798,8 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   at 595s solo — the `Real.sqrt` width/optimizer proofs `width 3 = 1/6` are pathologically slow
   under our pin). HELD as a draft-handoff (preserved at `harvest/D5/`); follow-up = cheap
   rational re-derivation avoiding `Real.sqrt` (e.g. work with `widthSq` throughout).**
-  **Re-derivation via widthSq attempted (`ComptonBoundSq`, harvest/d5sq/) — STILL HELD.**
-  Restating via the SQUARED width `widthSq m psi >= 1/(4 m^2)` (`compton_floor_sq`,
-  `no_sub_compton_sq`, saturated at `p0=p1=1/2`, `widthSq 3 = 1/36`) removed `Real.sqrt`, but the
-  module STILL does not build in-project (SIGTERM at 213s+ in the combined build; same
-  `nlinarith`-heavy class as `EntropyMonotoneReal`). **Decision: D5 stays a documented
-  draft-handoff; the RESULT (mass gap = length floor, `widthSq = (1/4) dCausal^2`) stands as
-  reviewed; M-anchor landing deferred.**
+  **`ComptonBoundSq` — RESOLVED, now LANDED [M] (2026-07-09, post-restart).** The SQUARED-width
+  form `widthSq m psi >= 1/(4 m^2)` (`compton_floor_sq`, `no_sub_compton_sq`, saturated at
+  `p0=p1=1/2`, `widthSq 3 = 1/36`, `widthSq = (1/4) dCausal^2`). The earlier "SIGTERM" was
+  memory-starvation, not the proofs; after a restart it builds in ~24s. Edge + anchor row added.
+  (The `Real.sqrt`-form `ComptonBound` stays superseded by this squared form.)
