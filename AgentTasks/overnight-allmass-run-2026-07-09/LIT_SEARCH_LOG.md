@@ -157,3 +157,17 @@ cites it.
   translation-invariant), which is textbook and correctly stated; it does NOT lean on a specific T-S
   result. The specific citation remains NEEDS-VERIFY (not in local graph); do not quote a T-S internal
   result without external verification. The concept as used is standard [import].
+
+## 2026-07-09 ~late-afternoon - Claude - test the [orig] claim (prior formalization? finite ST prior art?)
+- Tool: neo4j_paper_search.py --chunks. Query: machine-verified formalized Lean Coq NCG spectral triple
+  Dirac operator finite formalization physics theorem prover.
+- TWO findings, both supporting the manuscript's honest [orig] framing:
+  (a) The FINITE Krein/pseudo-Riemannian spectral-triple FRAMEWORK is prior art - surfaced arXiv:1804.09482
+      "Finite Pseudo-Riemannian Spectral Triples and The Standard Model" (the closest prior art for the
+      finite Krein carrier, incl. "the Krein structure for finite spectral triples"), + Franco 1210.6575,
+      Bizi (already cited). => the finite framework is correctly [import]. Added 1804.09482 to References.
+  (b) NO machine-verified / Lean / Coq formalization of NCG/spectral-triple mass surfaced. => the
+      manuscript's [orig] claim (the FINITE KERNEL-CHECKED FORMALIZATION + grading discipline is the
+      contribution, not the framework/physics) is supported: the novelty is the machine-verification.
+- NET: the [orig]/[import] split the 5 audits established is corroborated by the literature - framework
+  [import], formalization [orig]. +1 closest-prior-art ref (1804.09482, verified).
