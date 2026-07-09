@@ -1946,3 +1946,16 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   deliverable churn; only item 3's family law touches the current manuscript's central tie. Fable also
   flags external analyses have CONVERGED (rounds 3-6 restate the same ontology) - consistent with my
   saturation read for the isolated/ontology layer, corrected only for the 3 program-deciding syntheses.
+
+### 2026-07-09 ~late-afternoon - Claude - LANDING NOTE for ground-mass-det-family-law (ae1159c3, in flight) - DraftLead
+- Pre-located the landing site (preparatory scouting, the approach that caught the KraftCompressionMass
+  redundancy). ground-mass-det-family-law lands in §4 RIGHT AFTER the BudgetSignMismatch row (MS line
+  ~2145), framed as the POSITIVE COMPLETION of the audit->theorem arc: BudgetSignMismatch KILLED the
+  trace-side budget=c*detP as a family law; this is the CORRECT DETERMINANT-side family law it pointed to
+  (ground mass mu-=lam-kap = free mass + defect(-kap exact); det=mu-*mu+=mu-(tr-mu-); spectrum answers to
+  (tr,det) exactly). Anchor row must cross-ref BudgetSignMismatch (the kill) AND MassPhaseDiagram (spectrum
+  {lam-kap,lam,lam+kap} / det - already proved there, do NOT re-claim). NEW content = the family-law
+  synthesis + exact-defect + spectral-vs-invariants contrast (Fable Tier-1 item 3, load-bearing).
+- On harvest: verify semantic alignment (esp. that it does NOT re-derive MassPhaseDiagram's spectrum/det
+  as if novel), in-project build, edge, the §4 anchor row after 2145, commit + ledger. Strengthens the
+  manuscript's central §3<->§4 tie (coincidence -> law).
