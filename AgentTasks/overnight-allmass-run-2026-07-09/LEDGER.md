@@ -1833,3 +1833,20 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   this ledger, one commit. BOTH afternoon refill jobs now landed. Dirac-operator "mass = X" trilogy
   complete in-tree: {g5,D}=-2m.g5 (chiral breaking) + det(pslash-m)=(m^2-p^2)^2 (mass shell) + Lambda±
   energy projectors. Fleet: 0 claude jobs running.
+
+### 2026-07-09 ~late-afternoon - Claude - milestone: Dirac trilogy complete + saturation assessment - DraftLead
+- SESSION MILESTONE: the Dirac-operator "mass = X" grounding is COMPLETE in-tree. This session landed
+  4 modules on it: SigmaMapNullEdges (sigma-map = null edges, closes which-P), MassShellProjectors
+  (Lambda± energy projectors), DiracOperatorMassShellDet (det(pslash-m)=(m^2-p^2)^2), and
+  ChiralBreakingAnticommutator ({g5,D}=-2m.g5, with convention guard). Together with the prior
+  ZigzagWeyl / DiracVelocityOperator / PauliMomentumPhysLean / ChiralProjectorsDirac / DiracGammaPhysLean
+  / MinkowskiConvention, the fermion mass story is grounded at eta/gamma/chiral+energy projectors/
+  sigma-map/det-P(2x2)/det-D(4x4)/chiral-breaking/zigzag levels.
+- PRIORITY-C CHECK: re-read the §2b particle table - COMPREHENSIVE and honest (massless/massive fermion,
+  photon, W/Z, antiparticle all anchored; scalar-Higgs self-mass + neutrino Dirac-vs-Majorana held out
+  honestly). No gap. Priorities A (Lambda suite), B (gravity §7 reconciled), C (particle table) all
+  comprehensive.
+- SATURATION (honest): no genuinely high-value, non-redundant, buildable Dirac/spinor target remains;
+  the frontier is grounded. Per "never filler" > "~7 jobs", NOT manufacturing filler jobs against a
+  comprehensive manuscript. Will refill only on a genuinely new direction or a Codex cross-review need.
+  Fleet: 0 claude jobs; 7 Codex jobs (their lane). Run continues toward 21:00 cutoff.
