@@ -363,17 +363,27 @@ This is a reconstruction/finite-identity (frame-conditioned: "rest" is an observ
 choice), not new physics; but it is the honest, kernel-checked form of the
 "mass–entropy" reading, and it sits at grade **M**.
 
-At the two-level, the same block determinant is a **linear entropy / tangle**:
-`concurrenceSqComplex ρ = 4 det ρ` and the normalized mass ratio squared equals it
-(`NullEdgeQubitConcurrence`, kernel-checked, sorry-free) — i.e. for a single edge's
-purification, "mass² is the squared concurrence of the null bundle with itself" is
-a kernel-checked identity, not an analogy. Two identifications remain **C** and are
-pre-registered targets (§10): (i) the *full* multi-edge `det P = Wootters
-concurrence²` for an arbitrary null bundle (the two-level `4 det ρ`/tangle form is
-proved; the Wootters two-qubit formula bridge is not), and (ii) the binding defect
-`Δ = −κ` read as a kernel-checked *entanglement deficit* between bound sub-bundles.
-**Kill:** if the two-edge Plücker mass does not equal the Wootters concurrence² of
-the corresponding two-qubit state, identification (i) is false.
+And for a **two-edge** bundle the identification is now exact and kernel-checked,
+not an analogy. Writing the two null 2-spinors as the columns of `M`, the momentum
+matrix is `P = M Mᴴ`, the wedge is `det M = ψ₁ ∧ ψ₂`, and the **Wootters
+concurrence** of the corresponding two-qubit state is `C = 2|det M|`. Then
+(`TwoEdgeMassConcurrence`, **M**, guard-pinned):
+
+- `det_gram_eq_normSq_wedge` — `det P = |det M|²` (the two-edge Plücker mass is the
+  squared wedge magnitude);
+- `four_mul_det_gram_eq_concurrence_sq` — **`4 · det P = C²`**, i.e.
+  `det P = (C/2)²`: the two-edge mass literally *is* the Wootters concurrence²;
+- `det_gram_eq_zero_iff_concurrence_eq_zero` — massless ⇔ zero concurrence ⇔ a
+  collinear, unentangled product state.
+
+So for a single edge-pair, "mass is trapped disagreeing light" and "mass is the
+entanglement of the bundle with itself" are the *same* **M** statement. Two
+identifications remain **C** and are pre-registered targets (§10): (i) the
+*general multi-edge* `det P = Wootters concurrence²` for an arbitrary null bundle
+(the two-edge case is now proved; the `n`-edge Wootters bridge is not), and (ii)
+the binding defect `Δ = −κ` read as a kernel-checked *entanglement deficit* between
+bound sub-bundles. **Kill for (i):** exhibit a bundle whose Plücker mass differs
+from its Wootters concurrence² beyond the two-edge case's `1/4` normalization.
 
 ---
 
@@ -1429,6 +1439,7 @@ separately by the targeted Lean and guard builds.)*
 | 3 | `pairwiseMass_append` (+`_le`, `_append_eq_iff`) | `Carrier/MassMonogamy.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass monogamy: Plücker mass superadditive, excess = cross-disagreement (F3) |
 | 3 | `massOn_add_massOn_compl_le` | `Carrier/MassMonogamyPartition.lean` | M, guard-pinned (`CarrierAxiomGuard`) | general-partition monogamy: internal masses ≤ whole |
 | 3a | `vonNeumannEntropy_eq_zero_iff_null`, `vonNeumannEntropy_pos_of_timelike`, `velocityNormSq_eq_one_sub_massRatio`, `vonNeumannEntropy_rest_eq_log_two` | `GateI1/MassEntropyDictionary.lean` | M, self-guarded (in-file pin) | **mass ↔ visible-entropy dictionary**: null ⇔ `S=0` ("null edges don't age"), timelike ⇔ `S>0`, rest ⇔ `S=log 2`; `\|v\|²=1−m²/E²` |
+| 3a | `four_mul_det_gram_eq_concurrence_sq`, `det_gram_eq_normSq_wedge`, `det_gram_eq_zero_iff_concurrence_eq_zero` | `NullEdge/TwoEdgeMassConcurrence.lean` | M, self-guarded (in-file pin) | **two-edge mass = Wootters concurrence²**: `4·det P = C²` (`det P = (C/2)²`); massless ⇔ zero concurrence ⇔ product state. General multi-edge bridge stays **C** |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
