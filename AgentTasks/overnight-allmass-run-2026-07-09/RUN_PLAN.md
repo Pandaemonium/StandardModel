@@ -416,9 +416,9 @@ autonomous pass proved a VACUOUSLY DEGENERATE version — Hermitian nilpotent =>
   variational E-slot dynamics); **AUDIT LEAD** — cross-audit Claude's assemblies
   each cycle (semantic alignment, the four over-claim modes, non-degeneracy
   fixtures, hidden hypotheses), independent anchor sweeps.
-- Both keep the fleet saturated with rung jobs (harvest-first); both cross-review
-  each other's landings each cycle. Do not duplicate a ledger-claimed rung —
-  audit it instead.
+- Both keep ~7 jobs live in their own `claude-`/`codex-` lane (harvest-first,
+  no filler, 2-hour stall rule — sec 6); both cross-review each other's landings
+  each cycle. Do not duplicate a ledger-claimed rung — audit it instead.
 
 ## 5. Literature-search cadence (BOTH agents — AT LEAST every 30 minutes, BINDING)
 **Search frequently. The floor is one literature pass every 30 minutes for each
@@ -481,16 +481,24 @@ convention (metric signature, gamma signs, chirality) against it.
   carries the verification commands actually run + an explicit claim boundary.
 - No blocking sleeps/polls on external jobs — check inline; recognize
   saturation; use a background watcher for the fleet, not turn-by-turn polling.
-- Aristotle: **keep the fleet BUSY — usually ~12 jobs loaded** (cap is 10
-  concurrent RUNNING per agent-view; keep the pipeline full so the next job
-  starts the instant one finishes — check `aristotle list --limit 30` every
-  cycle and refill immediately). The 12 must be a MIX: rung/proof jobs,
-  **strategy jobs** (whole-goal chains, no-go analyses — at least 2-3 in flight),
-  and **audit jobs** (semantic-alignment / non-degeneracy / over-claim sweeps of
-  landed or landing work — at least 1-2 in flight). Harvest-first; every assembly
-  job is a seed-import package (sec 3.4) + the relevant PhysLean decl to port
-  (sec 5b). An idle fleet is a wasted night — if you are under ~12, your next
-  action is to queue jobs, not to hand-prove.
+- Aristotle: **each agent keeps ~7 of its own jobs running** (so ~14 in flight,
+  split into two lanes so neither agent is crowded out). **Prefix every job you
+  submit with `claude-` or `codex-`** so the lanes are legible in
+  `aristotle list --limit 30` — check it every cycle and refill YOUR lane the
+  instant a slot frees. Do NOT submit filler just to hit ~7: there is enough
+  high-impact work to fill the lanes honestly — but if no proof rung is ready,
+  fill with **strategy jobs** (whole-goal chains, no-go analyses) or **audit
+  jobs** (semantic-alignment / non-degeneracy / over-claim sweeps), never a
+  make-work job. Harvest-first; every assembly job is a seed-import package
+  (sec 3.4) + the relevant PhysLean decl to port (sec 5b). Be AMBITIOUS with each
+  job (hand it a whole chain, not a scrap).
+- **Two-hour stall rule.** If any one job has been RUNNING for more than two
+  hours, cancel it and harvest whatever completed work it produced (download +
+  salvage any finished lemmas), then re-scope and resubmit the remainder as a
+  fresh, smaller job. (If the CLI refuses to cancel a running job — a known
+  failure mode — stop feeding/continuing it, harvest its partial output, and
+  abandon it; do not let it block a lane slot in your bookkeeping.) Log the
+  cancel + salvage in the ledger.
 - External model calls (Fable) ONLY via `Scripts/autonomous_loop/send_claude_review.py`,
   standalone packets, `--source-file` for every reviewed declaration, full logs
   under `AgentTasks/model-calls/`. Fable is the run's greatest force-multiplier —
@@ -507,15 +515,15 @@ chain; Goal IV field-equation derivation; Goal II counting theorem; a
 manuscript over-claim + non-degeneracy audit in P3. Every call ledgered.
 
 ## 7. Phases and cadence
-- **P0 (first hour): orient + harvest + load the fleet.** Read sec-1; finish
-  `familyrankfix`; harvest `finitecpt` + the 3 closers as IDLE; **fill the
-  Aristotle fleet to ~12 jobs** (sec 6) — the CHEAP rung of all four goals (Goal
-  III(b), Goal IV(i), Goal I(1), Goal II(A)) + 2-3 strategy jobs + 1-2 audit
-  jobs; kick off the 30-min lit cadence (sec 5) and a first PhysLean sweep
-  (sec 5b) immediately.
-- **P1: assembly sprint.** Work claimed rungs; keep the fleet at ~12 and the
-  30-min lit cadence running; cross-review each cycle; fold landings into the
-  manuscript continuously.
+- **P0 (first hour): orient + harvest + load your lane.** Read sec-1; finish
+  `familyrankfix`; harvest `finitecpt` + the 3 closers as IDLE; **fill your
+  Aristotle lane to ~7 jobs** (sec 6, `claude-`/`codex-` prefixed) — the CHEAP
+  rung of all four goals (Goal III(b), Goal IV(i), Goal I(1), Goal II(A)) +
+  strategy + audit jobs; kick off the 30-min lit cadence (sec 5) and a first
+  PhysLean sweep (sec 5b) immediately.
+- **P1: assembly sprint.** Work claimed rungs; keep your lane at ~7 (2-hour
+  stall rule live) and the 30-min lit cadence running; cross-review each cycle;
+  fold landings into the manuscript continuously.
 - **P2 (by mid-run): manuscript consolidation.** Whatever rungs landed become
   manuscript prose + anchor rows at grade; no-gos into the future-directions
   doc; keep the deliverable honest and current.
@@ -538,6 +546,7 @@ manuscript over-claim + non-degeneracy audit in P3. Every call ledgered.
    Every rung attempted returned a theorem, a counterexample, or a sharpened
    missing axiom (sec 2b) — logged with its Registrar grade; no churn dead-ends.
 4. The fleet is harvested clean or documented in-flight at dawn; the P0 loose
-   end (`familyrankfix`) closed. The fleet was kept BUSY (~12 jobs, strategy +
-   audit in the mix) and the lit cadence held (a search every <=30 min per agent,
-   logged) — PhysLean consulted for every physics object formalized.
+   end (`familyrankfix`) closed. Each agent kept ~7 jobs in its own
+   `claude-`/`codex-` lane (strategy + audit in the mix, no filler; 2-hour stalls
+   cancelled + salvaged) and the lit cadence held (a search every <=30 min per
+   agent, logged) — PhysLean consulted for every physics object formalized.

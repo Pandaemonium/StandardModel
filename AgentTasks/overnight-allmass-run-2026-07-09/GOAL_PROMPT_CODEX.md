@@ -58,16 +58,21 @@ violation, `sum_X chi_{XY} != 0`, KMS generator not proportional to B).
 Claude's default: Goals I (hadron) and III (RG/relativity), the harvest, and the
 manuscript draft. Do not duplicate a ledger-claimed rung — audit it.
 
-## Aristotle (keep it BUSY — ~12 jobs; seed the imports + PhysLean)
-Keep the fleet loaded to **~12 jobs** (RUN_PLAN sec 6): check `aristotle list
---limit 30` every cycle and refill the instant a slot frees — an idle fleet is a
-wasted night. The 12 are a MIX: rung/proof jobs + **2-3 strategy jobs**
-(whole-goal chains, no-go analyses) + **1-2 audit jobs** running at all times (as
-AUDIT LEAD, keeping audit jobs in flight is your lane specifically). Every rung
-is a COMPOSITION of landed modules — package each job with the exact seed-import
+## Aristotle (keep ~7 in your `codex-` lane; seed the imports + PhysLean)
+Keep **~7 of your own jobs running**, every one **prefixed `codex-`** so your
+lane is legible next to Claude's `claude-` lane in `aristotle list --limit 30`
+(RUN_PLAN sec 6) — check it every cycle and refill YOUR lane the instant a slot
+frees. Do NOT submit filler to hit ~7; there is enough high-impact work — but if
+no proof rung is ready, fill with a **strategy job** or, as AUDIT LEAD, an
+**audit job** (keeping audit jobs in flight is your lane specifically). **Two-hour
+stall rule:** if one job has been running >2h, cancel it, harvest any completed
+lemmas, and resubmit the remainder smaller (if the CLI won't cancel a running job,
+stop continuing it, harvest partial output, abandon it) — log it. Every rung is a
+COMPOSITION of landed modules — package each job with the exact seed-import
 sources (RUN_PLAN sec 2) PLUS the relevant PhysLean declaration + convention to
-clean-room port (sec 5b), so the prover composes and borrows. If you want a Fable
-call, request it in the ledger; Claude packages and places it.
+clean-room port (sec 5b), so the prover composes and borrows. Be ambitious per
+job. If you want a Fable call, request it in the ledger; Claude packages and
+places it.
 
 ## Literature via Spark subagents (>=every 30 min) + PhysLean (borrow heavily)
 Run a literature pass AT LEAST every 30 minutes all night (RUN_PLAN sec 5).

@@ -61,17 +61,21 @@ evidence for it). Assassin rungs before Builder rungs.
 Codex's default: Goals II (finite KM) and IV (gravitational field equation),
 fleet refills, AUDIT LEAD. Do not duplicate a ledger-claimed rung — audit it.
 
-## Aristotle (keep it BUSY — ~12 jobs; seed the imports + PhysLean)
-Keep the fleet loaded to **~12 jobs** (RUN_PLAN sec 6): check `aristotle list
---limit 30` every cycle and refill the instant a slot frees — an idle fleet is a
-wasted night. The 12 are a MIX: rung/proof jobs + **2-3 strategy jobs**
-(whole-goal chains, no-go analyses) + **1-2 audit jobs** running at all times. If
-you're under ~12, your next action is to queue jobs, not to hand-prove. Every
-assembly rung is a COMPOSITION of landed modules — hand each job the exact
-seed-import list (RUN_PLAN sec 2) as a standalone package copying those sources,
-PLUS the relevant PhysLean declaration + convention to clean-room port (sec 5b),
-so the prover composes and borrows, not reinvents. Queue the CHEAP rung of both
-your goals before any expensive rung.
+## Aristotle (keep ~7 in your `claude-` lane; seed the imports + PhysLean)
+Keep **~7 of your own jobs running**, every one **prefixed `claude-`** so your
+lane is legible next to Codex's `codex-` lane in `aristotle list --limit 30`
+(RUN_PLAN sec 6) — check it every cycle and refill YOUR lane the instant a slot
+frees. Do NOT submit filler to hit ~7; there is enough high-impact work — but if
+no proof rung is ready, fill with a **strategy job** (whole-goal chain, no-go
+analysis) or an **audit job**, never make-work. **Two-hour stall rule:** if one
+job has been running >2h, cancel it, harvest any completed lemmas, and resubmit
+the remainder smaller (if the CLI won't cancel a running job, stop continuing it,
+harvest partial output, abandon it) — log it. Every assembly rung is a
+COMPOSITION of landed modules — hand each job the exact seed-import list (RUN_PLAN
+sec 2) as a standalone package copying those sources, PLUS the relevant PhysLean
+declaration + convention to clean-room port (sec 5b), so the prover composes and
+borrows. Queue the CHEAP rung of both your goals before any expensive rung; be
+ambitious per job.
 
 ## Literature (>=every 30 min) + PhysLean (borrow heavily)
 Run a literature pass AT LEAST every 30 minutes all night (RUN_PLAN sec 5), not
