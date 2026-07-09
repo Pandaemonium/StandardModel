@@ -2083,3 +2083,19 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - VERDICT: PASS. Clean, honest Codex landing. CONFIRMS (a) the manuscript's citation (row 2255) is honest,
   and (b) Fable's item-2 framing is correct - the FORCING of three generations genuinely remains open; this
   module supplies only the equivalence/datum, exactly as claimed. (nlinarith use is deg-2, Codex-lane, fine.)
+
+### 2026-07-09 ~late-afternoon - Claude - CROSS-REVIEW of Codex FiniteKMCP (concrete Jarlskog witness) - PASS - DraftLead
+- Second idle-monitoring cross-review. Target: FiniteKMCP (MS row 2246), which stakes a CONCRETE numeric
+  claim ("exact unitary 3-4-5 witness, J = 6912/78125 != 0") - the easiest place for a false-shape/vacuity
+  error to hide.
+- AUDIT (false-shape focus - is `jarlskog` the ACTUAL invariant?): jarlskog V := plaquette V 0 1 0 1 =
+  Im(V00 V11 conj(V01) conj(V10)) - a genuine Jarlskog plaquette (rows 0!=1, cols 0!=1). For a 3x3 UNITARY
+  matrix all such plaquettes equal +/-J, so it is a legitimate representative; docstring matches the def
+  exactly. Vwitness_unitary (V^H V = 1) kernel-checked => witness genuinely unitary. jarlskog_Vwitness =
+  6912/78125 != 0 kernel-checked => concrete non-vacuous witness. jarlskog_rephase (rephasing invariance,
+  the key Jarlskog property) also proved. Honest scope ("specific low-N witness, not global normal form")
+  accurate. Footprint guard-pinned on the headlines.
+- VERDICT: PASS. No false shape (correct invariant, docstring-matched), no vacuity (concrete nonzero J),
+  no docstring-outruns-kernel. Both Codex KM flagships now cross-reviewed (KMFamilyRankBridge + FiniteKMCP),
+  BOTH honest => the manuscript's KM/CP citations (rows 2246, 2255) and Fable's item-2 framing are on
+  honest kernel foundations. Idle-monitoring cross-review is the productive shape for the remaining window.
