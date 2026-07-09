@@ -707,6 +707,15 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   and does NOT build in-project (SIGTERM at 389s). Refined lesson: heavy symbolic COMPLEX matrix
   computation is as slow as Real transcendentals here. HELD (preserved at `harvest/d2/`);
   follow-up = re-derive over `R`/`Q` (real symmetric 2x2, `det = pd - z^2`), avoiding `C`.**
+  **Re-derivation over R attempted (`EntropyMonotoneReal`, harvest/d2real/) — STILL HELD.**
+  Restating over real symmetric `!![p,x;x,1-p]` (`det = p(1-p)-x^2`) removed `C`, but the module
+  STILL does not build in-project (SIGTERM at 350s even solo). Root cause is deeper than
+  `C`/transcendentals: the `nlinarith`-on-high-degree-polynomial proofs (MonotoneOn over an
+  interval, PSD via sum-of-squares, the 3-4-5 congruence det comparison) are themselves
+  pathologically slow under our pin. **Decision: D2 stays a documented draft-handoff; further
+  re-derivation is negative-return.** The RESULT (decoherence increases mass^2; signed closure
+  exception) stands as reviewed; only the M-anchor landing is deferred. Buildable-proof lesson:
+  keep proofs to `ring`/`norm_num`/`decide`/`fin_cases`; avoid `nlinarith` on degree>=3.
 - **`Goal1Rung5Tie` (Goal I rung-5 tie) [HONEST KILL / M]** — the true bound eigenvector's
   closure SHARE is `b_C = 16/5 >= 0` (`closure_share_nonneg`), not the seed's modelled `<0`,
   though closure ENERGY is `-16 < 0` (`closure_energy_neg`). Budget computed from `v=(2,1,0)`,
@@ -752,3 +761,10 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   at 595s solo — the `Real.sqrt` width/optimizer proofs `width 3 = 1/6` are pathologically slow
   under our pin). HELD as a draft-handoff (preserved at `harvest/D5/`); follow-up = cheap
   rational re-derivation avoiding `Real.sqrt` (e.g. work with `widthSq` throughout).**
+  **Re-derivation via widthSq attempted (`ComptonBoundSq`, harvest/d5sq/) — STILL HELD.**
+  Restating via the SQUARED width `widthSq m psi >= 1/(4 m^2)` (`compton_floor_sq`,
+  `no_sub_compton_sq`, saturated at `p0=p1=1/2`, `widthSq 3 = 1/36`) removed `Real.sqrt`, but the
+  module STILL does not build in-project (SIGTERM at 213s+ in the combined build; same
+  `nlinarith`-heavy class as `EntropyMonotoneReal`). **Decision: D5 stays a documented
+  draft-handoff; the RESULT (mass gap = length floor, `widthSq = (1/4) dCausal^2`) stands as
+  reviewed; M-anchor landing deferred.**
