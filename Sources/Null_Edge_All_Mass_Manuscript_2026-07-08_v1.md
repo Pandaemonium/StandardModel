@@ -1266,8 +1266,10 @@ coupling-stationarity `dS/dg = 0`, genuinely distinct and met together at an
 explicit joint stationary point `(E*,g*)` (`UnifiedActionVariation`, **M**) — the
 *variational* route to the finite field equation, alongside the *Jacobson
 equation-of-state* route above. This is
-the finite, structural unification of gravity and matter — *not* quantum gravity
-(no dynamical quantized metric, no graviton) and *not* a continuum reduction; the
+the finite, structural unification of gravity and matter *at the level of the graded
+bookkeeping* (the honesty note immediately below bounds exactly what that earns — the
+physics content is `[import]`, and the routes are not independent) — *not* quantum
+gravity (no dynamical quantized metric, no graviton) and *not* a continuum reduction; the
 full development, and the reconciliation with the Goal-IV WEP/action lane, is the
 P-L program (`Null_Edge_Future_Directions.md`).
 
