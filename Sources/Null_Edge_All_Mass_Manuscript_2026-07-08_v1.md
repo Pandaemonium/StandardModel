@@ -1741,17 +1741,20 @@ finite spectral functional whose order-2 and order-4 terms are gravity and matte
 (`SpectralActionAvatar`, `LambdaMomentHierarchy`, **M**). And `tr(1)` is invariant
 under *every* deformation of `D` — no gauge move, channel coupling, or soldering
 decoration changes it (`order0_deformation_invariant`, **M**): there is **no
-channel pathway into `Λ`**. This is the finite reason the magnitude problem is
-hard, stated positively: matter physics cannot renormalize `Λ`; only the *count*
-can. A uniform vacuum shift `D#D → D#D + c·1` is absorbed into the unimodular
+channel pathway into `Λ`**. The invariance itself is trivial — `tr(1)` contains no
+`D`, so the proof is arithmetic; the content is the *placement*, that the spectral
+action puts `Λ` at the one order the deformation algebra cannot reach. Read
+positively, this is the finite shadow of why the magnitude problem is hard: matter
+physics cannot renormalize `Λ`; only the *count* can. A uniform vacuum shift `D#D → D#D + c·1` is absorbed into the unimodular
 multiplier and leaves the physical, count-fluctuation `Λ` unchanged
 (`VacuumSequestering`, **M**) — the finite sequestering statement.
 
 **The count fixes the scale, as a fluctuation.** Route the everpresent scaling
 through the framework's own primitive: the pierced-null-edge count `N` of a causal
 region is an extensive volume measure, and under the Poisson input `δN² = N` the
-conjugate `Λ = δN/N` has RMS `1/√N` (`LambdaEdgeCount`, **M**, building on the
-kernel-checked `everpresentLambda_rms_eq_inv_sqrt_volume`). For the present horizon
+conjugate `Λ = δN/N` has RMS `1/√N` (`LambdaEdgeCount.lambda_rms_eq_inv_sqrt_count`,
+**M**, the finite reprise of the earlier scaling identity
+`NullEdgeP9EverpresentLambdaScaling.everpresentLambda_rms_eq_inv_sqrt_volume`, **M**). For the present horizon
 (`N ~ 10²⁴⁴` Planck 4-volumes) this is `~10⁻¹²²`, tracking the ambient density at
 every epoch — the coincidence, dissolved. As a Suite-D susceptibility the Poisson
 input is *bounded*, not assumed: for independent edges `Var(N) = Σpᵢ(1−pᵢ) ≤ ⟨N⟩`,
