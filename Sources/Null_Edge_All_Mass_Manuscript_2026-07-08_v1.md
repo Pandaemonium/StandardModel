@@ -741,6 +741,26 @@ boundary once, plainly, so no later sentence smuggles it back:
    limit (§2a) is the one sub-case where a genuine reduction exists in the
    literature, which is why we flag it as the most promising bridge.
 
+4. **A first RG probe of the naming scheme (M, partial).** The kill
+   condition in (3) has a sharper, RG-flavoured form — *basin membership*:
+   the channel names are physics iff the carrier flows to the free-Dirac
+   fixed point and aperture/closure/turn are its relevant/marginal
+   coordinates. On a concrete rational 3-coupling decimation model
+   (aperture `λ`, closure `κ`, chiral turn `τ`), this is now
+   kernel-checked: the exact flow is
+   `R3(λ,κ,τ) = (λ−2(κ²+τ²)/λ, −(κ²−τ²)/λ, −2κτ/λ)` — the free-Dirac
+   chiral square `z' = −z²/λ` with `z = κ+iτ` — and at criticality its
+   Jacobian has characteristic polynomial `(x−2)(x+1)(x+2)`, eigenvalues
+   `2` (relevant, aperture–closure), `−1` (marginal), `−2` (relevant, the
+   pure **turn** axis) (`Goal3ChannelRG.kill_test`, **M**). So on this model
+   the turn coupling is a *relevant* RG direction, and — being one of the
+   named channel couplings — it lies **inside** the channel basis: the
+   basin-membership form of the naming scheme is **not** falsified here, and
+   is sharpened (turn is relevant, not marginal). This is one rational
+   model, not the continuum reduction (3) still demands; it is the first
+   time the channel-name question has a kernel-checked RG answer rather than
+   only a shape analogy.
+
 Read §§5–8 with this in force: every time the text says "the QCD channel"
 or "the Higgs channel," it means "the block whose *shape* is that of the
 QCD/Higgs term, conjecturally its finite image" — grade **C** — never a
@@ -1614,7 +1634,7 @@ not an elaboration check; existence and axiom footprints are supported
 separately by the targeted Lean and guard builds. The 2026-07-09 round-2
 additions — `SignatureForcing`, `RPSelectsLorentzian`, `FiniteCPT` (§8 rows),
 `Goal3ExactRG` (§9 row), `SuiteAOp2Geom` (§7 row), `Goal1Hadron` + `Goal1Rung5Tie`
-(§6 rows), `Goal3BoostCovRational` (§9 row) — and Codex seed additions —
+(§6 rows), `Goal3BoostCovRational` (§9 row), `Goal3ChannelRG` (§4a row) — and Codex seed additions —
 `KMPhaseCounting`, `FiniteKMCP`, `WEPTrace`, `MassResourceModularAudit` — are per-module
 `lake build` green with in-file guard pins (the new modules' cited declaration
 names were grep-verified in-file on 2026-07-09); they await the next independent
@@ -1713,6 +1733,7 @@ anchor sweep.)*
 | 6 | `confinement_dichotomy_12`, `rung3_bound_below_threshold`, `rung4_positive_gap` | `NullEdge/Goal1Hadron.lean` | M, self-guarded (in-file pin) | **verified toy hadron** on the 12-dim `Cl(4)⊗C³` carrier: singlet sector PosDef / colored NegDef (dims pinned `>0`, witnesses `(1,1,1)`/`(1,−1,0)`); the two-particle singlet ground state is bound (`−1`) strictly below threshold `1` (witness `d=(0,1,7)`, `κ=4`); exact spectrum `{−1,8,9}` ⇒ gap `9`. Honest scope: finite toy, NOT a physical pion/rho, no continuum; the genuine chained result is rungs 1–4 |
 | 6 | `bound_budget_from_eigenvector`, `closure_share_nonneg`, `closure_energy_neg` | `NullEdge/Goal1Rung5Tie.lean` | M, self-guarded (in-file pin) | **honest budget of the toy hadron's actual ground state**: computed from the bound eigenvector `v=(2,1,0)`, closure ENERGY is negative (`⟨v,H_C v⟩=−16`, binding IS closure-driven) but the normalized closure SHARE is `b_C=16/5 ≥ 0` (total energy `−5<0` flips the sign). Corrects a modelled `b_C<0`; the program's negative-closure-share result is the separate 18-dim S1-CC witness (§6 above) |
 | 9 | `massless_cone_invariant`, `boost_preserves_Q`, `massless_cone_witness`, `massive_shell_not_invariant` | `NullEdge/Goal3BoostCovRational.lean` | M, self-guarded (in-file pin) | **emergent boost covariance (rational)**: the rational boost `Boost(5/3,4/3)` (det 1, `≠1`) preserves `Q=ω²−k²` and maps the massless light cone `Q=0` to itself (witness `(3,3)↦(9,9)`, moved but on-cone); massive states are boosted to distinct on-shell points. Honest scope: mass-shell-set + `Q`-form invariance, not a spinor intertwiner |
+| 4a | `R3_closed_form`, `critical_fixed_data`, `rg_eigenvalues`, `kill_test` | `NullEdge/Goal3ChannelRG.lean` | M, self-guarded (in-file pin) | **channel-RG kill-test (§4a point 4)**: 3-coupling decimation `R3(λ,κ,τ)=(λ−2(κ²+τ²)/λ, −(κ²−τ²)/λ, −2κτ/λ)` = chiral square `z'=−z²/λ`; criticality Jacobian char poly `(x−2)(x+1)(x+2)`, eigenvalues `2,−1,−2` (turn axis relevant); basin-membership NOT killed, turn is relevant. Honest scope: one rational model, not a continuum reduction |
 | 8/10 | `ckm_param_split`, `cp_possible_iff` | `NullEdge/KMPhaseCounting.lean` | M, self-guarded (in-file pin) | **finite CP phase-count arithmetic**: CKM bookkeeping splits `N^2` into angles, removable phases, and physical CP phases; the physical CP count is positive iff `N >= 3`. Honest scope: not yet the constructive N=2 rephasing theorem or N=3 Jarlskog witness |
 | 8/10 | `jarlskog_rephase`, `jarlskog_two_eq_zero`, `exists_real_rephasing_two`, `Vwitness_unitary`, `jarlskog_Vwitness_ne_zero` | `NullEdge/FiniteKMCP.lean` | M, self-guarded (in-file pin) | **finite KM CP rung**: the Jarlskog plaquette is rephasing-invariant; every unitary `2 x 2` matrix is rephasable to real entries; and an exact unitary `3-4-5` witness has `J = 6912 / 78125 != 0`. Honest scope: the general-N incidence/corank theorem is still open |
 | 7/9 | `wep_trace_identity`, `wep_universality`, `wep_source_nonvacuous`, `wep_violation_of_channel_stress` | `NullEdge/WEPTrace.lean` | M, self-guarded (in-file pin) | **WEP trace rung**: a channel-blind finite source `Tr(K rho)` depends only on total budget `Tr rho`, with a nonvacuous equal-trace witness and a channel-stress negative control. Honest scope: not the E-slot field equation or Clausius/Jacobson rung |

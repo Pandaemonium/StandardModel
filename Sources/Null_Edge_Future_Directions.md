@@ -720,6 +720,16 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   closure SHARE is `b_C = 16/5 >= 0` (`closure_share_nonneg`), not the seed's modelled `<0`,
   though closure ENERGY is `-16 < 0` (`closure_energy_neg`). Budget computed from `v=(2,1,0)`,
   not posited (see the `Goal1Hadron` correction above). Rational, builds ~25s.
+- **`Goal3ChannelRG` (Goal III / Suite B S4a kill-test) [WIN / M — basin-membership survives]** —
+  adding a chiral turn coupling `tau` to the decimation gives the exact 3-coupling flow
+  `R3(lam,kap,tau) = (lam - 2(kap^2+tau^2)/lam, -(kap^2-tau^2)/lam, -2 kap tau/lam)` = the
+  free-Dirac chiral square `z' = -z^2/lam` for `z = kap + i tau` (`R3_closed_form`: turn-free
+  subspace invariant). At criticality `(1,1,0)` the Jacobian `[[3,-4,0],[1,-2,0],[0,0,-2]]` has
+  char poly `(x-2)(x+1)(x+2)` => eigenvalues 2 (RELEVANT, aperture-closure plane), -1 (MARGINAL),
+  -2 (RELEVANT, the pure TURN axis) (`rg_eigenvalues`, `kill_test`). VERDICT: the turn coupling
+  is a NEW relevant direction but lies IN the named channel basis, so the S4a channel-name /
+  basin-membership conjecture is NOT killed — sharpened: turn is relevant, not marginal. Rational
+  (HasDerivAt + char-poly factoring), builds ~15s. Follows buildable-proof rule v3.
 - **`Goal1Hadron` (Goal I) [WIN / M, 5 rungs — with a rung-5 scope boundary]** — the verified
   toy hadron on the actual 12-dim `Cl(4) (x) C^3` (`eta4 (x) Gcolor`): rung 1 confinement
   dichotomy (singlet PosDef, colored NegDef; both sectors `finrank>0` pinned; witnesses
