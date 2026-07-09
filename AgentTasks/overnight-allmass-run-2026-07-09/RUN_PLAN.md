@@ -7,6 +7,18 @@ to 10 concurrent). Goals sourced from Fable-5's post-harvest analysis
 (2026-07-08); this plan operationalizes them with rungs, kills, imports,
 and the non-degeneracy hygiene the S1-CC saga forced us to learn.
 
+**Scope of this document (three horizons, all live).** The title says
+"overnight," but the plan now spans three horizons and each later one keeps the
+earlier discipline BINDING: **secs 0-8** — the original overnight run (mission,
+standing state, four assembly goals, four flagship suites, hygiene, discipline,
+phases, success criteria); **sec 9** — the 2026-07-09 DAY extension (day goals
+A-D, cutoff 21:00, all met); **sec 10** — the NEXT CAMPAIGN (post-day, six goals
+N1-N6: ship P-A, the exact-phase path sum, the continuum limit, the generations
+forcing hunt, two finite completions, the interacting-hadron arc), with its own
+definition of done in N8. A reader picking up the program fresh should read
+sec 1 (standing state) + sec 10 (current campaign); secs 2-8 are the method and
+the landed base sec 10 builds on. Secs 3, 5, 5b, 6 are BINDING at every horizon.
+
 ## 0. Mission (manuscript first; the four goals feed it)
 
 1. **Keep "all mass from null edges" fully and honestly supported.** The
@@ -1007,3 +1019,56 @@ ontology, valuable to verified physics as a field.
   existential; the four over-claim modes reviewed before any headline; kills
   pre-registered and reported as loudly as landings; the event horizon named
   in every deliverable.
+
+### N8. Definition of done (per goal — a landing OR a published negative)
+
+Every goal below is "done" when it reaches one of its two honest terminal
+states; a goal is NEVER left churning. "Done" for a proof rung means: in-project
+`lake build` green, term-position placeholder scan clean, `#guard_msgs` axiom
+footprint pinned, module + `PhysicsSMDraft` edge + anchor row (grep-verified
+names) + ledger in one commit.
+
+- **N0 done when:** `mass-shell-projectors` landed as a module, and the
+  `[P_L, Lambda±]` commutator either landed (M) or its stated identity failed
+  and the failure is recorded. (Session-P0 carry-over; clears once landed.)
+- **N1 done when:** `Sources/Null_Edge_P-A_Paper_Draft_v1.md` exists as a
+  camera-ready draft — four claims + tie, each with theorem name/grade/footprint;
+  axiom-audit appendix with verbatim `#print axioms`; positioning section citing
+  Douglas 2603.15770 (verified-then-cited); >=2 Fable source-embedded audits with
+  every finding fixed or downgraded; full anchor sweep passed; `REPRODUCING.md`
+  with exact build commands. NOTHING graded C in title/abstract/claims. (This is
+  the highest-priority terminal; it does not wait on N2-N6.)
+- **N2 done when:** N2.2 (path sum = kernel) is landed M — the payload identity —
+  with the m=0 collapse witness in-theorem; N2.4's turn-phase verdict landed or
+  the reading honestly bounded; N2.5 either lands the Cl(4) lift or fires its
+  pre-registered kill (channels not path-action-nameable => §4a retreat). N2 is
+  the gate for N3: N3 does not begin until N2.2 is green.
+- **N3 done when:** EITHER the coefficient-wise lattice->Dirac limit is landed
+  (dispersion N3.2 + kernel N3.3 + interchange N3.4, analytic grade, claim
+  narrowed to "lattice-limit-of-a-model" per the Douglas guard) — the program's
+  central positive — OR a pre-registered kill fired (limit dispersion wrong, or
+  a relevant direction outside the four channels) and §4a's retreat is executed
+  in the manuscript. This is the program's single decision point; either terminal
+  is a headline.
+- **N4 done when:** EITHER a named principle (Sakharov N4.1 / Bargmann N4.2 /
+  exceptional-Jordan N4.3) is shown to force N=3 at its honest grade (expected
+  ceiling: T|H, conditional on that displayed principle — NOT an unconditional
+  derivation), OR N4.4 packages the systematic no-go ("three generations cannot
+  be forced by {these} without a rank axiom") extending `FamilyRankNoGo`. N4.0
+  (the T|H minimality packaging) is the minimum deliverable and is done first.
+- **N5 done when:** each of N5.1 (rigidity wiring) and N5.2 (WAY dichotomy)
+  reaches a theorem or a strengthened no-go — both are completions of already-
+  landed modules, so both terminate this campaign, not later.
+- **N6 done when:** its next gated rung (a: three-constituent singlet bound
+  state) lands or is killed; N6 is a STANDING arc — "done for the campaign" means
+  one rung advanced, not the whole arc closed.
+
+**Campaign-level definition of done (the whole of §10):** N1 shipped (the paper
+draft is camera-ready and externally audited); N2.2 landed (the exact path-sum
+identity exists in the kernel); and every other goal is either advanced by >=1
+landed rung or terminated by its pre-registered kill with the negative written
+into the manuscript/future-directions. The campaign fails — regardless of theorem
+count — if any deliverable sentence outruns its kernel statement, any existential
+is satisfiable by a degenerate witness, or the event horizon is breached. Shipping
+N1 honestly is worth more than landing N3; a C-graded title is an error whatever
+it proves.
