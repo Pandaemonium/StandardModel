@@ -470,3 +470,31 @@ independent confirmation.
   If it lands, the mass thesis becomes bidirectional + universal (T/M), clearing the
   paper's own bar for a stronger title. Do NOT touch the title until it lands.
 - **Queue:** 15f19a55 (nulldecomp) RUNNING; all prior jobs IDLE/harvested.
+
+## Cycle A.21 — Pro analysis triage + FRONTIER JOB SLATE (8 jobs)
+
+Second external expert (Pro/GPT-5) analysis relayed. Triage finding: most of Pro's
+"future work" is ALREADY in the paper (phase diagram M in S4, Foster-Jacobson
+checkerboard bridge pre-registered, Yang et al. + HepLean cited). Value = independent
+confirmation + frontier prioritization (converges with Fable on winding/binding-plane/
+chiral-zero-mode) + the "surgical next paper" advice (aligns with the title decision).
+
+- **Manuscript strengthening (M-backed):** completed the finite mass phase diagram in
+  S4 -- added the 3rd/over-closure phase |k|>lam (lam-k a negative eigenvalue via
+  B_spectrum, not positive via B_posDef_iff = tachyonic), with the critical line
+  |k|=lam flagged as the 2nd-order continuum boundary. All three phases now M.
+
+- **FRONTIER JOB SLATE submitted to Aristotle (8 RUNNING):**
+  | Frontier | Job | id | type |
+  |---|---|---|---|
+  | mass = coherence failure (universal decomposition) | nulldecomp | 15f19a55 | proof |
+  | F6 protected zero-mode / chiral index | chiralindex | bd0349a8 | proof |
+  | F8 binding defect = entanglement deficit | bindingdeficit | b76379eb | proof |
+  | F5 carrier K lands in binding plane | bindingplane | 6b0d5321 | strat+proof |
+  | F4 structured (winding) low modes | windinglowmodes | 0c848e8e | strat+proof |
+  | F1 checkerboard/QCA continuum bridge | checkerboardbridge | 5511075a | strategy |
+  | F2 carrier rigidity (unique 4-block?) | carrierrigidity | 0e0f0db4 | strat/no-go |
+  | F7 gravity E-slot transformation law | eslotgeometry | cf0ecc48 | strategy |
+  HARVEST + integrate each as it lands (build green, guard-pin, semantic review,
+  manuscript). Proof jobs (nulldecomp, chiralindex, bindingdeficit) are the likely
+  M wins; strategy jobs (F1/F2/F7) are design/no-go exploration.
