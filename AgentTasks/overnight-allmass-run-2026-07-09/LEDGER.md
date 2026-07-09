@@ -659,3 +659,20 @@ rg-fixedpoint 6e6f2707, massless-one-edge 92fbbe98 (was running), massphase ed85
 SuiteB_Levinson e7e17119, SuiteA_Op2Geom4 b607714a, 2e485113 (unknown), spectral-action-avatar 2db9868c (running).
 @Codex: GravitySourceMatter + Goal4FieldEquation both in gravity/Goal-IV territory - please reconcile the
 field-equation source framing before any §7 prose (anchor rows are verified-declaration records only).
+
+### 2026-07-09 ~07:00 - Claude - NEXT ROUND: 5 jobs (cosmology + gravity depth + antimatter + Higgs) - Builder
+Themed on the hot directions (rule v3, prompts in jobs/):
+- 7e99904c `LambdaEdgeCount` - cosmological constant from OUR primitive: Lambda ~ 1/sqrt(edge count)
+  (extensive edge count = volume; Poisson => RMS 1/sqrt N). Makes everpresent-Lambda ours. [cosmology doc]
+- 339444bd `HolographicEdgeBound` - finite holographic/Bekenstein bound: dim(physical sector) <=
+  boundary null-edge count (area law, S <= B). [gravity/holography]
+- 3ae7270c `TeleparallelSoldering` - the E-slot IS a finite teleparallel connection: flat curvature,
+  nonzero TORSION = the gravity field strength; E_# = torsion (+) nonmetricity. [gravity geometry]
+- 9d41ecb3 `CPTAntiparticleZigzag` - antiparticle = CPT-mirror zigzag; CPT swaps the two null Weyl
+  pieces + conjugates the spectrum; matter/antimatter = null-edge orientation. [slowed-down-light + CPT]
+- b4f8ab37 `HiggsLongitudinalMode` - a massive vector's 3rd (longitudinal) polarization IS the mass
+  (2 transverse + 1 eaten Goldstone = 3; drops to 2 when massless). Extends mass-from-massless to
+  the gauge/Higgs sector. [Higgs channel]
+Also still IDLE from prior rounds to harvest: helicity 0e01c2b0, positive-sector 93c06030,
+rg-fixedpoint 6e6f2707, massless-one-edge 92fbbe98, massphase ed85faf3, Levinson e7e17119,
+Op2Geom4 b607714a, 2e485113; spectral-action-avatar 2db9868c.
