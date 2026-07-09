@@ -177,6 +177,75 @@ Scope: port the stronger verified `codex-goalII-finiteKM-strategy-20260709` retu
 - arithmetic boundary count `physicalPhases 2 = 0`, `physicalPhases 3 = 1`.
 Boundary: port first with local axiom prints, then replace with `#guard_msgs` pins after observing the actual footprint; do not treat the broad general-N lattice/corank roadmap as landed.
 
+### 2026-07-09T00:01:30.6308437-07:00 - Codex - LANDED stronger finite-KM Goal II rung
+Hat: Builder + Registrar.
+Files added/updated:
+- Added `PhysicsSM/Draft/NullEdge/FiniteKMCP.lean`.
+- Added `PhysicsSMDraft.lean` import edge.
+- Updated harvest log, future-directions, and manuscript anchor table with honest scope.
+Claim:
+- `FiniteKM.jarlskog_rephase`: Jarlskog plaquette is invariant under row/column phase rephasing.
+- `FiniteKM.jarlskog_two_eq_zero` and `FiniteKM.exists_real_rephasing_two`: N=2 no-go in invariant and constructive real-rephasing forms.
+- `FiniteKM.Vwitness_unitary`, `FiniteKM.jarlskog_Vwitness`, `FiniteKM.jarlskog_Vwitness_ne_zero`: exact unitary N=3 `3-4-5` witness with `J = 6912 / 78125 != 0`.
+- `FiniteKM.physicalPhases_eq`, `physicalPhases_two`, `physicalPhases_three`: arithmetic boundary count.
+Verification:
+- `lake env lean AgentTasks/aristotle-output/0a3009c4-e9fa-4ff9-9ab0-401a48725573/extracted/cf7ff771-5682-43c5-bd76-8932613b68fb_aristotle/RequestProject/FiniteKM.lean` passed before port (warnings only).
+- `lake build PhysicsSM.Draft.NullEdge.FiniteKMCP` passed after adding in-file `#guard_msgs` axiom pins; all pinned headlines have footprint `[propext, Classical.choice, Quot.sound]`.
+Boundary: the general-N integer incidence/corank theorem remains open; this lands the N=2/N=3 nondegeneracy gate and arithmetic count, not the full lattice theorem.
+
+### 2026-07-09T00:02:53.0711572-07:00 - Codex - VERIFY Codex seed modules post-hygiene
+Hat: Registrar.
+Verification:
+- `lake build PhysicsSM.Draft.NullEdge.KMPhaseCounting PhysicsSM.Draft.NullEdge.FiniteKMCP PhysicsSM.Draft.NullEdge.WEPTrace PhysicsSM.Draft.NullEdge.MassResourceModularAudit` passed after pre-commit.
+- `pre-commit run --files PhysicsSM/Draft/NullEdge/KMPhaseCounting.lean PhysicsSM/Draft/NullEdge/FiniteKMCP.lean PhysicsSM/Draft/NullEdge/WEPTrace.lean PhysicsSM/Draft/NullEdge/MassResourceModularAudit.lean PhysicsSMDraft.lean AgentTasks/overnight-allmass-run-2026-07-09/LEDGER.md AgentTasks/solo-run-2026-07-08/HARVEST_LOG.md Sources/Null_Edge_Future_Directions.md Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` passed.
+- `git diff --check` on the same touched set passed.
+- Local anchor sweep found every new declaration and guard pin in its claimed file, plus the draft-root import/doc rows.
+Boundary: `lake env lean PhysicsSMDraft.lean` remains blocked by the pre-existing `SpherePacking` search-path issue reported earlier; no full draft-root build claim is made.
+
+### 2026-07-09T00:03:44.2997798-07:00 - Codex - HARVEST source-carrying P0 closer audit
+Hat: Assassin + Registrar.
+Harvested `codex-audit-p0-closers-with-sources-20260709` (4afb63ef-e923-40ed-a696-5cd791902b83).
+Verdict:
+- Source-carrying audit succeeded; Aristotle saw the five actual Lean files.
+- FiniteCPT: clean at explicit-witness scope.
+- RPSelectsLorentzian: clean with two-site OS-toy caveats.
+- BargmannCP: algebra clean; solid-angle reading must remain commentary because only the tangent identity is formalized.
+- GradedDecompUniqueness: clean generic eigenspace-decomposition theorem; not carrier-specific uniqueness.
+- FamilyRankNoGo: genuine core is `forcing_iff_rankfixing`; Jordan/triality predicates are weak numeric proxies, while anomaly is the more faithful candidate.
+Action taken:
+- No new code patch needed; the live files already carry the relevant Bargmann and FamilyRankNoGo caveats in their comments/docstrings.
+Boundary: audit does not strengthen any theorem; it is a semantic-scope check for manuscript honesty.
+
+### 2026-07-09T00:04:45.2012171-07:00 - Codex - CLAIM refill Aristotle lane after Goal II landing
+Hat: Builder + Assassin + Registrar.
+Planned source-carrying submissions:
+- `codex-goalII-generalN-incidence-cp-20260709`: prove the remaining general-N signed-incidence/corank theorem behind `(N-1)(N-2)/2`, using `FiniteKMCP` + `KMPhaseCounting` as seeds.
+- `codex-goalIV-action-WEP-followup-20260709`: connect `WEPTrace` to the finite action/E-slot modules and propose/prove the next smallest action/source theorem.
+- `codex-audit-codex-seed-modules-20260709`: audit `FiniteKMCP`, `KMPhaseCounting`, `WEPTrace`, and `MassResourceModularAudit` for false shape, vacuity, hidden assumptions, and docstring-overclaim.
+Boundary: no filler; if any package preparation fails, rescope rather than submit a prompt-only proof job without sources.
+
+### 2026-07-09T00:09:14.0617502-07:00 - Codex - SUBMITTED Aristotle refill jobs
+Hat: Registrar.
+Submitted and confirmed with `aristotle list --limit 15`:
+- `codex-goalII-generalN-incidence-cp-20260709` -> cf44fb39-1ba7-4029-9c5a-52ef5d9dfbea RUNNING.
+- `codex-goalIV-action-WEP-followup-20260709` -> 19113426-0271-4bd2-94b4-604865089df2 RUNNING.
+- `codex-audit-codex-seed-modules-20260709` -> 8ba14f43-e8df-49df-b74e-170d8c3aebe6 RUNNING.
+Packaging:
+- Focused packages created under `AgentTasks/aristotle-submit/*-project` with exact source files.
+- Local package builds timed out during Lake setup at 180s, with no Lean errors emitted. Main-checkout targeted builds for the included Codex modules passed; Goal IV package includes existing action/E-slot source files for Aristotle context.
+Boundary: Codex lane is at 3 fresh running jobs, not ~7; next cycle should add more source-carrying strategy/audit jobs or harvest newly idle Claude/Codex jobs rather than filler.
+
+### 2026-07-09T00:11:13.2763137-07:00 - Codex - SUBMITTED Codex lane refill to 7 running jobs
+Hat: Registrar.
+Submitted and confirmed with `aristotle list --limit 18`:
+- `codex-C3-index-anomaly-interface-20260709` -> c81b6128-3bbd-4d04-8f96-3f55558d36c4 RUNNING.
+- `codex-suiteD-resource-theory-entropy-20260709` -> 031dc795-56dd-484e-b2d7-e4e99d1a4385 RUNNING.
+- `codex-audit-manuscript-newanchors-20260709` -> 4d287f28-cf1e-4de5-aae5-cfcbb02abfab RUNNING.
+- `codex-grand-strategy-suiteCD-0009-20260709` -> dadc9a43-59e2-4e3b-8a86-43e2804f3f1c RUNNING.
+Codex lane now has seven fresh running jobs including the three submitted at 00:09:
+cf44fb39 (Goal II general-N), 19113426 (Goal IV WEP/action), 8ba14f43 (seed-module audit).
+Packaging boundary: Aristotle CLI warned the slim packages contain Lean files but no `.lake` folder; this is expected for focused packages, but the warning is recorded. Main-checkout targeted builds are the local verification evidence, not package builds.
+
 ### 2026-07-09 ~00:10 - Claude - harvested Goal III + Suite A; audit addressed; lane refilled - Builder/Registrar
 - HARVESTED 2 wins (built in-project, guard-pinned, committed):
   - Goal III `Goal3ExactRG` [M, all 4 rungs]: exact rational RG R(lam,kap)=(lam-2k^2/lam,-k^2/lam);
@@ -195,3 +264,23 @@ Boundary: port first with local axiom prints, then replace with `#guard_msgs` pi
   (boost covariance emerges at criticality, seeds Goal3ExactRG).
 @Codex: Goal III's exact RG + Suite A finite Malament are now in the manuscript - please
 anchor-sweep the 2 new rows (sec 7 SuiteAOp2Geom, sec 9 Goal3ExactRG) next audit cycle.
+
+### 2026-07-09 ~01:20 - Claude - Goal I lands; BoostCov HELD; B1/D5 build-gated - Builder/Registrar
+HARVEST of the last 4 claude- jobs done. Verdicts + in-project build reality:
+- `Goal1Hadron` (Goal I) [M] LANDED + committed: 5 rungs on the real 12-dim Cl(4)xC^3
+  (dichotomy/H2/bound -1<thr/spectrum{-1,8,9} gap 9/budget b_C=-1/2). BOUNDARY: rung 5
+  budget is a MODELLED witness, NOT tied to the rung-3 eigenvector (genuine result = rungs 1-4).
+  Solo `lake build` exit 0.
+- `Goal3BoostCov` (Goal III e) [HELD - NOT LANDED]: result real (boost covariance emergent) but
+  the module does NOT build in-project (SIGTERM 582s even SOLO - transcendental-trig fixtures
+  cos(5pi/9) etc.). Edge+file removed; preserved in harvest/boostcov/; future-dir marked HELD.
+- `PathSumSemantics` (B1) + `ComptonBound` (D5): reviewed CLEAN wins, but BOTH also slow to
+  build in-project (B1 >200s, D5 SIGTERM 384s). Edges held; future-dir marked BUILD-PENDING.
+  B1 solo full-budget build in flight (bm04in65c). If they terminate <~600s -> land; else hold.
+LESSON (for BOTH lanes): Aristotle "builds cleanly" in ITS env != builds in-project here.
+Modules heavy in Real/Complex TRANSCENDENTAL computation (Real.cos/Real.sqrt in fixtures,
+nlinarith on reals) are pathologically slow under our v4.28.0 pin. Goal1Hadron (rational
+matrix algebra) built fine; the trig/sqrt ones did not. **Future job prompts should require
+computationally-cheap proofs: exact RATIONAL witnesses, avoid Real.cos/sqrt fixtures and
+nlinarith-on-reals; target <3 min/module in-project.** @Codex: applies to your lane too.
+Refilling claude- lane now (was fully idle).
