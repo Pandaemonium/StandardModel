@@ -1271,7 +1271,15 @@ is the simulation's spec and validation oracle):
   leading-order match of the discrete transfer generator to the Dirac Hamiltonian
   symbol `-i(kσ_z+mσ_x)` (`Ustep_hasDerivAt_generator`, **M**); the continuum
   *theorem* itself is `[import]` for 1+1D (Gersch; Jacobson–Schulman) and open for
-  the Cl(4) carrier), and antisymmetrized **2-fermion Slater scattering
+  the Cl(4) carrier). That same dispersion **derives the relativistic speed limit**
+  (`SubluminalBound`, **M**, guard-pinned): the group velocity `v_g = sin k cos θ /
+  sin ω` has `v_g² ≤ 1` with luminal deficit `sin²ω − (v_g sin ω)² = 1 − cos²θ =
+  sin²θ ≥ 0`, so **every massive mode is *strictly* subluminal and only the massless
+  walk (`θ = 0`) saturates the light cone** (`massive_implies_subluminal`,
+  `luminal_iff_massless`). "Nothing outruns light, and only the massless reach it"
+  is thus a theorem on the pinned dispersion, not an assumption. (What is *not*
+  derived is boost symmetry — expected only at the critical point.) Also,
+  antisymmetrized **2-fermion Slater scattering
   amplitudes** (validated against `FiniteUnitaryEvolution`, `T2`).
 - `carrier_rgflow_sim.py` — Schur **RG flow** (`k_eff = t^2/mu`, invariant
   `mu·k_eff`), the **canonical ensemble** (`Z`, `F = <E> − T S`, ground
@@ -1543,6 +1551,7 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `interacting_boundState_below_threshold` | `Carrier/InteractingTwoBody.lean` | M, self-guarded (in-file pin) | **interacting below-threshold bound state**: an attractive `V` of the closure scale `κ` gives a least eigenvalue strictly below the constituent sum (`IsLeast`, no inserted defect) |
 | 9 | `derived_boundState_below_threshold`, `derived_wrongPlane_no_binding` | `Carrier/DerivedInteraction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **`V` is a 2nd-quantized closure operator, conditionally binding**: `Vderived = dΓ(iκK)` (= modelled `V` up to phase gauge) binds below threshold *iff* the closure acts among *excited* modes (ground-plane closure → no binding; boundary `κ²=(d₂−d₀)(d₂−d₁)`). The conditional is **M**; tying the carrier's actual `K` to the binding plane, and the mass-value, stay **C** |
 | 9 | `dirac_mass_shell`, `Ustep_hasDerivAt_generator` | `Carrier/ContinuumLimit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **continuum-limit finite symbol facts**: mass shell `(kσ_z+mσ_x)²=(k²+m²)·1`; discrete transfer generator matches the Dirac Hamiltonian symbol to leading order. Continuum *theorem* is `[import]` (1+1D) / open (Cl(4)) |
+| 2a/9 | `massive_implies_subluminal`, `luminal_iff_massless`, `groupVelSq_num_le_sin_sq_omega` | `Carrier/SubluminalBound.lean` | M, self-guarded (in-file pin) | **derived speed limit**: from the pinned dispersion `cos ω=cos k cos θ`, `v_g²≤1` with deficit `1−cos²θ`; every massive mode strictly subluminal, only the massless (`θ=0`) luminal. Boost symmetry NOT derived (critical-point only) |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |

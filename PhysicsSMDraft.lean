@@ -142,6 +142,7 @@ import PhysicsSM.Draft.NullEdge.NEdgeMassConcurrence
 import PhysicsSM.Draft.NullEdge.NEdgeCauchyBinet
 import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierKreinFlow
+import PhysicsSM.Draft.NullEdge.Carrier.SubluminalBound
 import PhysicsSM.Draft.NullEdgeSymmetric2x2Spectrum
 import PhysicsSM.Draft.NullEdgeTwoNullMassive
 import PhysicsSM.Draft.NullEdgeHiggsPotential
