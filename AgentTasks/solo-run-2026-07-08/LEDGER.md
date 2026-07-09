@@ -372,3 +372,28 @@ Keep queue full.
   sector orbit from Euclidean-norm-conserving to Krein-form-conserving C->M on the
   witness. If (1)/(2) false on the witness, that itself is a finding.
 - **Queue (~16:50):** 2 running (f6644f9b s1ccpres existence, 624b93a3 kreinflow).
+
+## Cycle A.17 (~17:15) — Fable-feedback triage: landed proven pieces, jobbed the rest
+
+User relayed Fable's speculative-implications feedback and asked to (a) sharpen the
+manuscript with what's ALREADY proven, (b) submit Aristotle for the rest. Key
+discovery: much of Fable's "future work" was already at grade M (Fable is blind to
+the repo). Actions:
+
+- **Mass -> entropy dictionary LANDED as guard-pinned M.** MassEntropyDictionary
+  was sorry-free but unpinned; added self-guard pins (velocityNormSq_eq_one_sub_
+  massRatio, vonNeumannEntropy_eq_zero_iff_null "null edges don't age",
+  _pos_of_timelike, _rest_eq_log_two). New manuscript S3a "the same invariant reads
+  as a visible entropy (M)". 8027 jobs green.
+- **Two-edge mass = Wootters concurrence^2 LANDED (M).** New module
+  TwoEdgeMassConcurrence (4 thms, guard-pinned): 4 det(M Mᴴ) = C^2, det P = |wedge|^2,
+  massless <=> zero concurrence. Answers Fable's #3 for two edges. Manuscript S3a +
+  S11 updated. 8026 jobs green.
+- **Submitted `b99f437e` (gconcurrence):** generalize det P = concurrence^2 to n
+  edges (Cauchy-Binet + G-concurrence/Gour-Nandi), or report if it's a two-edge
+  coincidence.
+- Triage doc (kept/discarded/jobbed) delivered inline. Discarded: black holes,
+  ER=EPR branding, metric=Gram (already in S7). Future-work (C, not built): EP=budget,
+  Lambda=E_# defect, Jacobson first law, WW threading, critical-line RG (oracle),
+  winding condensate (oracle), analog experiments.
+- **Queue (~17:15):** 3 running (f6644f9b s1ccpres, 624b93a3 kreinflow, b99f437e gconcurrence).
