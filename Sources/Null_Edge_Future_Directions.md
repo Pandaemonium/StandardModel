@@ -61,8 +61,9 @@ its Lean actually earns only after it lands and is recorded in HARVEST RESULTS.
   `PositiveSectorClassification` [M], `ConfinementPositivity` [M],
   `CarrierClosurePlane` [M], `WindingLowModes` [M], `FamilyIndexNoGo` [no-go],
   `FamilyRankNoGo` [no-go], `KMPhaseCounting` [M arithmetic-count anchor],
-  Goals I + II, `FiniteCPT` [M]; NEW: constructive N=2 rephasing no-go, explicit
-  N=3 Jarlskog witness, functorial confinement, index=anomaly. Ties to P-A, P-F.
+  `FiniteKMCP` [M N=2 no-go + N=3 witness], Goals I + II, `FiniteCPT` [M]; NEW:
+  general-N incidence/corank theorem, functorial confinement, index=anomaly. Ties
+  to P-A, P-F.
 - **Suite D — Mass Resource Theorem.** Mass = positive-sector resource cost of
   compressing finite null histories (entropy = concurrence = compression cost =
   1/localization = thermodynamic response). Rungs: `MassThermodynamics` [M],
@@ -653,6 +654,11 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   `0 < ckmPhysCP N <-> 3 <= N`. This gives the arithmetic spine for Goal II, but the
   real KM theorem still needs the constructive N=2 rephasing no-go and an explicit
   nonzero N=3 Jarlskog witness.
+- **`FiniteKMCP` [WIN / M]** — the first substantive finite KM rung: plaquette/Jarlskog
+  invariance under rephasing, the N=2 no-go (`jarlskog_two_eq_zero` and
+  `exists_real_rephasing_two`), and an exact unitary N=3 `3-4-5` witness with
+  `J = 6912 / 78125 != 0`. This closes the N=2/N=3 nondegeneracy gate; the
+  general-N incidence/corank theorem remains open.
 - **`WEPTrace` [WIN / narrow M]** — WEP as the finite trace identity
   `Tr((kappa * 1) rho) = kappa Tr(rho)`, with a nonvacuous equal-trace witness and
   a channel-stress negative control. This is Goal IV's cheapest trace rung, not the
@@ -661,3 +667,56 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   in the commutator derivation (`ad(z+B)=ad(B)` for central `z`), while the operator
   equality `z+B=B` is false for nonzero shifts. This pins the Suite D modular
   false-shape boundary.
+
+### Claude assembly Goal landings (2026-07-09)
+
+- **`Goal3ExactRG` (Goal III) [WIN / M, all 4 rungs]** — exact rational RG of the chain
+  carrier: `R(lam,kap) = (lam - 2 kap^2/lam, -kap^2/lam)`; critical line `|kap|=|lam|`
+  invariant (non-deg witness `R(1,1/2)=(1/2,-1/4)`); Jacobian `[[3,-4],[1,-2]]`, relevant
+  eigenvalue exactly 2 (=> `nu=1` as the standard RG reading); conical shell `(k.sz)^2=k^2`
+  (=> `z=1`). Honest: critical LINE invariant as a set (period-2 sign flip), not a strict
+  fixed point; `nu`/`z` are interpretive readings of the kernel eigenvalue/dispersion data;
+  finite rational, no continuum.
+- **`Goal3BoostCov` (Goal III rung e) [HELD — delivered but does NOT build in-project]** —
+  discrete boost covariance is EMERGENT: `Boost c s = [[c,s],[s,c]]` with `c^2-s^2=1`
+  preserves `Q=w^2-k^2` (3-4-5 witness `Boost(5/3,4/3)`, det=1, !=1); the massless light cone
+  maps to itself (`massless_walk_boost_covariant`), while off criticality the same boost LEAVES
+  the lattice shell `cos w = cos k cos th` (`massive_walk_boost_covariance_fails`, explicit
+  `(pi/3,0)->(5pi/9,4pi/9)`). Honest: covariance = mass-shell-set + Q-form invariance, NOT a
+  fixed-operator spinor intertwiner; massive breaking is a lattice effect of the transcendental
+  dispersion. **NOT LANDED: the module does not build in-project within budget (SIGTERM at
+  582s even solo — a pathological elaboration cost, likely the transcendental-trig fixture
+  proofs `cos(5pi/9)<0` etc.). Per run discipline it is HELD as a draft-handoff (preserved at
+  `AgentTasks/overnight-allmass-run-2026-07-09/harvest/boostcov/`), NOT a landed M anchor, and
+  is NOT in the manuscript. Follow-up: re-derive the fixtures with a bounded, fast proof (or a
+  `maxHeartbeats`-scoped rational-cosine bound) so it builds here.** The exact-RG result
+  `Goal3ExactRG` already carries the "relativity born at the fixed point" story that landed.
+- **`Goal1Hadron` (Goal I) [WIN / M, 5 rungs — with a rung-5 scope boundary]** — the verified
+  toy hadron on the actual 12-dim `Cl(4) (x) C^3` (`eta4 (x) Gcolor`): rung 1 confinement
+  dichotomy (singlet PosDef, colored NegDef; both sectors `finrank>0` pinned; witnesses
+  `(1,1,1)`/`(1,-1,0)`); rung 2 `H2` Hermitian; rung 3 bound ground energy exactly `-1 <`
+  threshold `1` (witness `d=(0,1,7)`, `kap=4`, 3-4-5, discr 25); rung 4 exact spectrum
+  `{-1,8,9}` => positive gap 9; rung 5 signed budget `b_C=-1/2<0` (`b_A=3/2, b_T=0`).
+  **CRITICAL BOUNDARY (Aristotle-flagged):** rung 5's budget is a MODELLED witness, NOT
+  dynamically tied to the rung-3 bound eigenvector (that linkage needs the full Weitzenbock
+  carrier-square assembly). So the genuine chained result is rungs 1-4 (dichotomy + bound
+  singlet below threshold + positive gap on the real 12-dim carrier); "binding = negative
+  closure share" is a separate witness, held at that scope. Finite toy, no pion/rho, no continuum.
+- **`SuiteAOp2Geom` (Suite A op-to-geometry) [WIN / M, all 4 incl stretch]** — finite Malament
+  split on the 2-point Krein carrier: causal `dCausal m 0 1 = 1/m` (witnesses 1/3, 5/3),
+  `CausalLE` a partial order recovering edge orientation, order/conformal class
+  mass-independent while scale `Eslot m m' = m'/m`. Honest scope: 2-point witness only, not
+  escalated to the C^4 FiniteCPT carrier; Franco-Eckstein recipe ported specialized.
+- **`PathSumSemantics` (Suite B rung B1) [WIN on review; IN-PROJECT BUILD PENDING]** — the path-conditioned visible
+  state `rhoDir = sum a_h conj(a_h') Om(h,h') |psi_h><psi_h'|`: PSD/Hermitian; fully coherent
+  (`Om=1`) => pure `|Psi><Psi|`, `det=0` (massless); decohered (`Om=delta`) =>
+  `det = sum_{h<h'} |a_h|^2 |a_h'|^2 |psi_h ^ psi_h'|^2` (mass = retained which-direction
+  info); `det rho(t) = t(2-t) D` monotone under decoherence. Non-collinear witness `det=4/25`.
+  Honest: "mass^2 = det rhoDir" is the normalization-robust invariant (trace=1 only in the
+  decohered case; linear-entropy stated with an explicit `tr=1` hypothesis).
+- **`ComptonBound` (Suite D rung D5) [WIN on review; IN-PROJECT BUILD PENDING — slow]** — the mass gap is a length
+  floor: for every `J`-normalized state `(1/2)/m <= width`, saturated by `(1/sqrt2, 1/sqrt2)`
+  (fixture `width 3 = 1/6`), and `width = (1/2) dCausal m 0 1` — the localization floor IS half
+  the Connes distance. Kills stated + avoided (`no_sub_compton`, floor `>0`, mass-dependent).
+  Honest: exact up to the structural constant `c=1/2` (each point at half the inter-point
+  distance from the midpoint). Built on the SuiteAOp2Geom 2-point carrier.
