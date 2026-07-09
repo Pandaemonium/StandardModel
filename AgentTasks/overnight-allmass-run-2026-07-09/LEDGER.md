@@ -390,3 +390,91 @@ NOT duplicated (Codex-claimed, idle awaiting its harvest): general-N corank cf44
 C3 index-anomaly c81b6128, suiteD-resource-theory 031dc795.
 D3 (modular/KMS) deliberately NOT jobbed: inherently exp/log-transcendental - would violate
 rule v3; stays a documented [C] with the ModularSelection guardrail.
+
+### 2026-07-09 ~05:20 - Codex - harvested 5 Aristotle returns + applied seed audit patches - Builder/Assassin
+- HARVESTED + PORTED (all M, self-guarded, targeted build green):
+  `IncidenceCorank` from cf44fb39 (general-N complete-graph coboundary:
+  rank `N-1`, corank `(N-1)(N-2)/2`, N=2/N=3 fixtures);
+  `WEPActionBridge` from 19113426 (trace-level sourced multiplier action:
+  stationarity iff `G=K`, channel-blind source `kappa*Tr rho`, nonzero source witness);
+  `IndexAnomalyInterface` from c81b6128 (signed finite toy index, finite winding
+  anomaly `Index(D_w)-Index(D_0)=w`, winding-one nonvacuity, analytic-reduction
+  hypothesis isolated);
+  `GateI1.MassEntropyMonotone` from 031dc795 (binary entropy antitone in speed,
+  entropy monotone in mass ratio, bundled future-cone resource monotone);
+  `SuiteCDNextRungs` from dadc9a43 (U(N) parameter count, finite C3 relative
+  index, Suite D channel-charge trace sum, and 4-charge linear independence).
+- AUDIT PATCHES from 8ba14f43 applied: `FiniteKMCP.physicalPhases_eq` no longer
+  carries unnecessary `1 <= N`; `MassResourceModularAudit.modular_shift_operator_ne`
+  is strengthened from existential to universal in `B`.
+- DOCS UPDATED: `HARVEST_LOG.md`, `Null_Edge_Future_Directions.md`, and the
+  manuscript anchor table now include the new Codex landings and honest scopes.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.MassResourceModularAudit
+  PhysicsSM.Draft.NullEdge.IncidenceCorank PhysicsSM.Draft.NullEdge.WEPActionBridge
+  PhysicsSM.Draft.NullEdge.IndexAnomalyInterface
+  PhysicsSM.Draft.NullEdge.GateI1.MassEntropyMonotone
+  PhysicsSM.Draft.NullEdge.SuiteCDNextRungs PhysicsSM.Draft.NullEdge.FiniteKMCP`
+  PASS. Imported-module warnings only. No new `s o r r y` handoffs.
+- STATUS: Codex lane harvest-first complete for the seven returned jobs:
+  five proof ports + two audit/strategy records; manuscript-anchor independent
+  sweep remains the next Assassin task before dawn.
+
+### 2026-07-09 ~05:25 - Codex - audit lane refilled before hard-audit cutoff - Assassin
+- SUBMITTED `codex-audit-suitecd-harvest-20260709` -> Aristotle project
+  `827386b3-b5bd-421c-bfa6-e85a00493522` (RUNNING). Task: independent semantic
+  audit of the Codex Suite C/D harvest modules for vacuity, hollow telescoping,
+  docstring-vs-kernel drift, false shape, and nondegeneracy fixtures.
+- SUBMITTED `codex-audit-morning-anchor-scorecard-20260709` -> Aristotle project
+  `da87db8f-db46-4260-ada0-516dbf3563ee` (RUNNING). Task: morning report /
+  scorecard / ledger / manuscript-anchor audit against the latest Claude landed
+  Lean surfaces (`Goal3ExactRG`, `Goal3ChannelRG`, `Goal3ChannelRG4`,
+  `Goal1Hadron`, `Goal1Rung5Tie`, `SuiteAOp2Geom`).
+- RATIONALE: Codex lane is now audit-saturated rather than proof-frontier
+  saturated, matching AUDIT LEAD and the 6am hard switch.
+
+### 2026-07-09 ~05:00 - Codex - user moved audit cutoff to 7am; theorem lane refilled - Builder
+User guidance: server glitch likely cost overnight time; push hard audit switch
+from 6am to 7am. Submitted the most important Codex-complement theorem pieces,
+avoiding Claude's active duplicate fronts (`Goal4FieldEquation`,
+`SuiteD1ResourceCore`, `SuiteD4CriticalSymmetry`, Suite A/B jobs):
+- `0c83ed84-4ce3-4e20-8f23-9882dbae5036`
+  `codex-goalII-km-flagship-compose-20260709`: compose `KMPhaseCounting`,
+  `FiniteKMCP`, and `IncidenceCorank` into a Goal II flagship module
+  `KMFlagship.lean` (phase count = incidence corank; N=2 no-go + N=3 witness
+  bundled).
+- `b4272f59-c52a-445c-9921-eb4de6a4fa8a`
+  `codex-goalII-familyrank-cp-bridge-20260709`: prove "exactly one CP phase"
+  is equivalent to the rank-fixing datum `n=2` / three completions, composing
+  Goal II with `FamilyRankNoGo`.
+- `530af96f-479c-421a-bd5e-843802ea8bc9`
+  `codex-C3-index-protection-bridge-20260709`: compose finite index anomaly
+  with winding low-mode protection (`Index(D_w)-Index(D_0)=w` plus at least
+  `w` protected modes).
+- `2393b371-283c-474e-b0d1-e6af2db435ce`
+  `codex-goalIV-wep-action-resource-bridge-20260709`: compose WEP trace/action
+  source with mass-entropy resource monotone; explicitly avoids duplicating
+  Claude's E-slot field-equation job.
+- `ab422e82-8483-4486-8ff7-8512e0362394`
+  `codex-suiteD-modular-entropy-consistency-20260709`: bundle central-shift
+  modular guardrail, channel-charge tracelessness/independence, and entropy
+  resource consistency.
+Package: `AgentTasks/aristotle-submit/codex-theorem-batch-20260709-project`
+(full-project slim copy, no `.lake`; helper placeholder scan passed on the
+Codex harvest modules). Current Codex lane: 5 theorem jobs + 2 audit jobs
+RUNNING. New audit hard switch target: 7am.
+
+### 2026-07-09 ~05:55 - Claude - 6-module batch LANDS; "slowed-down light" jobs out - Builder/DraftLead
+Slowdown GONE (user restarted the machine): 6 modules built green in 32s TOTAL. All landed M,
+guard-pinned, edges added, rule v3:
+- Goal1Confinement [M] (§6): dynamical confinement, deconfinement KILL does not fire.
+- SuiteDResourceCore (D1) [M] (§3a): mass resource theory (free states det=0, mixing creates Plucker).
+- SuiteDCriticalSymmetry (D4) [M] (§10): critical lightness Z2-symmetry-protected (both halves).
+- SuiteBCl4Walk (B2) [M]: Cl(4) checkerboard lift (real Krein carrier, chiral-odd mass).
+- SuiteAQuatBargmann [M]: no cyclic abelian Bargmann CP over H (honest Aristotle self-correction).
+- Goal4FieldEquation (Goal IV) [M]: M(psi)gamma=mu.eta.gamma, mu=-6, WEP corollary. **CODEX-LANE
+  OVERLAP with your 19113426 — future-dir only, NOT in manuscript; please reconcile before §7.**
+Manuscript anchor rows added for the 3 clear Claude-lane results; verdict_finetuning name fixed.
+NEW jobs (user-requested "mass is slowed-down light"): velocity-operator 99bd223b (Dirac alpha
+eigenvalues +-1 = always moving at c), zigzag-weyl 2f2c8287 (massive Dirac = 2 null Weyl coupled
+by mass), zitterbewegung-average e6cce5f0 (drift = mass-weighted avg of +-c). Prompts in jobs/.
+STILL RUNNING: SuiteB_Levinson e7e17119, SuiteA_Op2Geom4 b607714a + the 3 above.
