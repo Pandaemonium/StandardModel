@@ -377,13 +377,27 @@ concurrence** of the corresponding two-qubit state is `C = 2|det M|`. Then
   collinear, unentangled product state.
 
 So for a single edge-pair, "mass is trapped disagreeing light" and "mass is the
-entanglement of the bundle with itself" are the *same* **M** statement. Two
-identifications remain **C** and are pre-registered targets (§10): (i) the
-*general multi-edge* `det P = Wootters concurrence²` for an arbitrary null bundle
-(the two-edge case is now proved; the `n`-edge Wootters bridge is not), and (ii)
-the binding defect `Δ = −κ` read as a kernel-checked *entanglement deficit* between
-bound sub-bundles. **Kill for (i):** exhibit a bundle whose Plücker mass differs
-from its Wootters concurrence² beyond the two-edge case's `1/4` normalization.
+entanglement of the bundle with itself" are the *same* **M** statement.
+
+And this is **not** a two-edge coincidence: it generalizes to `n` edges once the
+correct multi-party measure is used (`NEdgeMassConcurrence`, `NEdgeCauchyBinet`,
+**M**, guard-pinned). For `n` null spinors with amplitude matrix `M`:
+`det P = |ψ₁ ∧ … ∧ ψₙ|²` (`det_gram_eq_normSq_wedge`, general `n`), and with
+**Gour's G-concurrence** `G = n·(det ρ)^{1/n}` — the natural `n`-party successor of
+the Wootters concurrence —
+
+- `gConcurrence_pow_eq_det_gram` — **`det P = (G/n)ⁿ`**;
+- `four_mul_det_gram_eq_gConcurrence_two_sq` — at `n = 2`, `G = C` and this collapses
+  to the two-edge `4 · det P = C²`. The fixed `2`/square of the two-edge case is
+  just the `n = 2` shadow of the general `n`/`n`-th-power normalization.
+
+For a rectangular bundle (`d`-dim spinors, `n > d`) the **Cauchy–Binet** form
+`det_gram_eq_sum_normSq_minors` gives `det P = Σ_S |det M_S|²` over `d`-subsets `S`
+— the honest "mass = total `d`-wise disagreement," proved from scratch (not in
+Mathlib). So former pre-registered target (i) is now **M**: mass *is* the (Gour)
+concurrence² of the null bundle, at every `n`. One identification remains **C**:
+(ii) the binding defect `Δ = −κ` read as a kernel-checked *entanglement deficit*
+between bound sub-bundles (§10).
 
 ---
 
@@ -1448,7 +1462,8 @@ separately by the targeted Lean and guard builds.)*
 | 3 | `pairwiseMass_append` (+`_le`, `_append_eq_iff`) | `Carrier/MassMonogamy.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass monogamy: Plücker mass superadditive, excess = cross-disagreement (F3) |
 | 3 | `massOn_add_massOn_compl_le` | `Carrier/MassMonogamyPartition.lean` | M, guard-pinned (`CarrierAxiomGuard`) | general-partition monogamy: internal masses ≤ whole |
 | 3a | `vonNeumannEntropy_eq_zero_iff_null`, `vonNeumannEntropy_pos_of_timelike`, `velocityNormSq_eq_one_sub_massRatio`, `vonNeumannEntropy_rest_eq_log_two` | `GateI1/MassEntropyDictionary.lean` | M, self-guarded (in-file pin) | **mass ↔ visible-entropy dictionary**: null ⇔ `S=0` ("null edges don't age"), timelike ⇔ `S>0`, rest ⇔ `S=log 2`; `\|v\|²=1−m²/E²` |
-| 3a | `four_mul_det_gram_eq_concurrence_sq`, `det_gram_eq_normSq_wedge`, `det_gram_eq_zero_iff_concurrence_eq_zero` | `NullEdge/TwoEdgeMassConcurrence.lean` | M, self-guarded (in-file pin) | **two-edge mass = Wootters concurrence²**: `4·det P = C²` (`det P = (C/2)²`); massless ⇔ zero concurrence ⇔ product state. General multi-edge bridge stays **C** |
+| 3a | `four_mul_det_gram_eq_concurrence_sq`, `det_gram_eq_normSq_wedge`, `det_gram_eq_zero_iff_concurrence_eq_zero` | `NullEdge/TwoEdgeMassConcurrence.lean` | M, self-guarded (in-file pin) | **two-edge mass = Wootters concurrence²**: `4·det P = C²` (`det P = (C/2)²`); massless ⇔ zero concurrence ⇔ product state |
+| 3a | `gConcurrence_pow_eq_det_gram`, `det_gram_eq_normSq_wedge`, `det_gram_eq_sum_normSq_minors` | `NullEdge/NEdgeMassConcurrence.lean`, `NullEdge/NEdgeCauchyBinet.lean` | M, self-guarded (in-file pins) | **`n`-edge mass = G-concurrence²**: `det P = (G/n)ⁿ` (Gour G-concurrence), two-edge = `n=2` instance; Cauchy–Binet `det P = Σ_S \|det M_S\|²` (mass = total `d`-wise disagreement). "mass = concurrence²" is not a two-edge coincidence |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
