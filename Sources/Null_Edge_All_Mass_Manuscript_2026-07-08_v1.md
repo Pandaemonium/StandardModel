@@ -1148,8 +1148,31 @@ light-cone directions, and it is non-nilpotent iff that element is nonzero
 effective coupling between two null directions is their propagator
 overlap — and it recovers the scalar case as `Minv = mu⁻¹ . 1`.
 
-Claim boundary: one finite decimation step — no renormalization-group
-flow, no fixed point, no continuum. The bridge from this step to
+**The full rational RG flow (M, 2026-07-09).** The single decimation step
+above has since been iterated into an *exact rational* renormalization map.
+Integrating out every second site of the tridiagonal chain carrier (on-site
+aperture `lam`, closure edge `kap`) gives the closed form
+`R(lam,kap) = (lam − 2κ²/λ, −κ²/λ)` (`Rlam`, `Rkap`, `R_schur_derivation`,
+**M**, off the codimension-1 locus `lam=0`). Three consequences are now
+kernel-checked: the massless/critical line `|κ|=|λ|` is **R-invariant**
+(`massless_line_invariant_and_nondegenerate`, with the explicit non-degeneracy
+witness `R(1,1/2)=(1/2,−1/4)≠(1,1/2)` proving `R` is a genuine nontrivial flow);
+the linearization at the critical point has relevant eigenvalue **exactly 2**
+(`linearized_mass_eigenvalue_eq_two`), so with rescale `b=2` the correlation
+exponent is `ν = log₂2 = 1` as exact arithmetic; and on the critical line the
+dispersion is conical `ω=±k` (`conical_dispersion_z_eq_one`), so `z = 1`. Honest
+scope: `R` maps the critical *line* to itself as a set (a period-2 sign flip
+`(λ,λ)↦(−λ,−λ)`, so it is line-invariance, not a strict fixed point — the genuine
+fixed line of `R` is the decoupled `κ=0` line); the `ν=1`/`z=1` exponents are the
+linearization data at criticality; and this is still finite rational algebra, not
+a continuum limit. This is the honest "basin-membership" form of the §4a channel-
+name question: the carrier flows to a `z=1`, `ν=1` critical point — the Dirac
+universality class's exponents — by exact decimation.
+
+Claim boundary: the decimation is now an exact rational RG *flow* with an
+invariant critical line and its `ν`/`z` exponents (above) — but still no
+continuum, and the critical set is a period-2 line rather than a strict fixed
+point. The bridge from this step to
 constituent-mass generation was conjectured (Amendment A4) as "blocking a
 closure-disordered background increases the finite near-zero count `N_m`
 of §6". A pre-registered probe this run **refutes that at the finite
@@ -1583,9 +1606,12 @@ anchor-swept — every one of the 38 declaration names produced a string
 `grep` match in its claimed file on 2026-07-08. This is a text-match check,
 not an elaboration check; existence and axiom footprints are supported
 separately by the targeted Lean and guard builds. The 2026-07-09 round-2
-additions — `SignatureForcing`, `RPSelectsLorentzian`, `FiniteCPT` (§8 rows) —
-are per-module `lake build` green with in-file guard pins; they await the next
-independent anchor sweep.)*
+additions — `SignatureForcing`, `RPSelectsLorentzian`, `FiniteCPT` (§8 rows),
+`Goal3ExactRG` (§9 row), `SuiteAOp2Geom` (§7 row) — and Codex seed additions —
+`KMPhaseCounting`, `WEPTrace`, `MassResourceModularAudit` — are per-module
+`lake build` green with in-file guard pins (the new modules' cited declaration
+names were grep-verified in-file on 2026-07-09); they await the next independent
+anchor sweep.)*
 
 | § | Declaration | File | Grade / guard | Role |
 |---|---|---|---|---|
@@ -1675,6 +1701,11 @@ independent anchor sweep.)*
 | 8 | `clifford_null_forces_indefinite`, `Q13_indefinite`, `Q22_indefinite` | `NullEdge/SignatureForcing.lean` | M, self-guarded (in-file pin) | **null forces indefinite metric**: a nonzero null edge forbids a definite soldering Gram (`c(v)²=Q(v)`); `(1,3)` and `(2,2)` both indefinite (signature rung 1) |
 | 8 | `oneTime_reflectionPositive`, `twoTime_reflectionPositive_fails` | `NullEdge/RPSelectsLorentzian.lean` | M, self-guarded (in-file pin) | **reflection positivity selects one time**: the `(1,3)` OS toy is reflection-positive with a nondegenerate physical sector; any second time direction (incl. `(2,2)`) fails RP (signature rung 2). Honest scope: minimal single-mode two-site toy, not full OS reconstruction |
 | 8 | `Theta_conjugates_D_to_sharp`, `spectrum_conjugate_paired` | `NullEdge/FiniteCPT.lean` | M, self-guarded (in-file pin) | **finite CPT**: antiunitary `Theta=C.Gamma_rev.#` on a non-degenerate `C^4` Clifford⊗color witness gives `Theta D Theta^{-1}=D^#` ⇒ conjugate-paired Dirac spectrum. Honest scope: the concrete witness's `D`, not the §8 unitary `W` |
+| 9 | `R_schur_derivation`, `massless_line_invariant_and_nondegenerate`, `linearized_mass_eigenvalue_eq_two`, `conical_dispersion_z_eq_one` | `NullEdge/Goal3ExactRG.lean` | M, self-guarded (in-file pin) | **exact rational RG flow**: decimation `R(λ,κ)=(λ−2κ²/λ, −κ²/λ)`; critical line `\|κ\|=\|λ\|` invariant (witness `R(1,1/2)≠(1,1/2)`); relevant eigenvalue exactly `2` ⇒ `ν=1`; conical dispersion ⇒ `z=1`. Honest scope: critical *line* invariant (period-2, not a strict fixed point); finite rational, not a continuum limit |
+| 7 | `dCausal_01`, `causalLE_isPartialOrder`, `Eslot_mismatch`, `Eslot_ne_one` | `NullEdge/SuiteAOp2Geom.lean` | M, self-guarded (in-file pin) | **finite Malament split**: causal spectral distance `dCausal m 0 1 = 1/m` (witnesses `1/3`, `5/3`); `CausalLE` a partial order recovering edge orientation; order/conformal class mass-independent while scale `Eslot m m' = m'/m` — "causal order fixes the conformal class, decorations owe the scale". Honest scope: 2-point Krein carrier |
+| 8/10 | `ckm_param_split`, `cp_possible_iff` | `NullEdge/KMPhaseCounting.lean` | M, self-guarded (in-file pin) | **finite CP phase-count arithmetic**: CKM bookkeeping splits `N^2` into angles, removable phases, and physical CP phases; the physical CP count is positive iff `N >= 3`. Honest scope: not yet the constructive N=2 rephasing theorem or N=3 Jarlskog witness |
+| 7/9 | `wep_trace_identity`, `wep_universality`, `wep_source_nonvacuous`, `wep_violation_of_channel_stress` | `NullEdge/WEPTrace.lean` | M, self-guarded (in-file pin) | **WEP trace rung**: a channel-blind finite source `Tr(K rho)` depends only on total budget `Tr rho`, with a nonvacuous equal-trace witness and a channel-stress negative control. Honest scope: not the E-slot field equation or Clausius/Jacobson rung |
+| 9/10 | `modular_generator_eq_adB`, `modular_generator_matrix`, `modular_shift_operator_ne` | `NullEdge/MassResourceModularAudit.lean` | M, self-guarded (in-file pin) | **Suite D modular guardrail**: a central normalization shift cancels in the commutator derivation, but operator equality with `B` is generally false. Honest scope: modular false-shape guard, not a full mass-resource theory |
 
 ---
 
