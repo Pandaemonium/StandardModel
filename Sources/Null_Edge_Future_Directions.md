@@ -759,6 +759,41 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   NOT decouple from the Dirac universality class at the fixed point. Strongest kernel-checked
   support yet that the channel basis is the right coordinate system (still short of the continuum
   reduction). Rational, rule v3.
+
+### Claude frontier batch (2026-07-09, post-restart — all M, verified in-project, ~5s each)
+- **`Goal1Confinement` (Goal I dynamical confinement) [WIN / M — deconfinement kill does NOT fire]** —
+  on the toy hadron, `confinement_ordering`: `leastEigenvalue Hsing = -1 < 1 <= leastEigenvalue Hcol`,
+  with `colored_ground_ge_threshold` proved via an explicit sum-of-squares (`Hcol - 1` is PSD). The
+  lightest two-particle excitation is the color SINGLET bound state; the colored channel is gapped
+  above it. Closes the pre-registered "dynamical deconfinement" kill on `Goal1Hadron`.
+- **`Goal4FieldEquation` (Goal IV field-equation rung) [WIN / M — Codex-lane cross-check]** —
+  gamma-stationarity on the null cone <=> the finite field equation `M(psi) gamma = mu eta gamma`
+  (`field_equation`, both directions via HasDerivAt), with `multiplier_nonzero` (explicit witness
+  `psi*=(2,3), gamma*=(1,1)`, `mu=-6 != 0`, ruling out `0=0`) and `wep_corollary` (`M(psi1)=M(psi2)`
+  => same stationary set = channel-blind coupling). **@Codex: this OVERLAPS your Goal IV lane
+  (19113426 action/WEP) — treat as an independent cross-check; reconcile before either goes in the
+  manuscript §7.**
+- **`SuiteDResourceCore` (Suite D rung D1) [WIN / M]** — the mass resource theory core over R
+  (`free_states_characterized`: `det P = 0` <=> rank<=1 null Gram; `free_ops_preserve`: rotations
+  preserve `det`; `mixing_creates`: mixing distinct null directions creates exactly the Pluecker
+  amount `det = t(1-t)(u0 w1 - u1 w0)^2 > 0`). Witness `det = 4/25`. Mass = the resource created by
+  which-direction mixing, invariant under the free (rotation) group.
+- **`SuiteDCriticalSymmetry` (Suite D rung D4) [WIN / M — critical lightness is symmetry-protected]** —
+  on `B(lam,kap)`, an explicit involution `T` (`T_involution`, `T_ne_one/negOne`) with
+  `symmetry_iff_kap_zero`; the zero mode is forced at criticality (`zero_mode_at_criticality`), and
+  `naturalness_verdict_finetuning`: WITHOUT the symmetry, `B(1,1/2)` has NO zero mode (light level `1/2 != 0`)
+  — so critical lightness is natural IFF the Z2 is imposed, else fine-tuning. Both halves proved.
+- **`SuiteBCl4Walk` (Suite B rung B2) [WIN / M]** — the Cl(4) checkerboard lift: real 4x4 gammas
+  (Clifford relations, Krein `J` indefinite trace-0), kinetic + mass parts Krein-self-adjoint, mass
+  chiral-ODD, and `D(m)^2 = (a^2+m^2) 1` (the 3-4-5 shell `a=3,m=4 => D^2=25`). The 4-component real
+  walk IS a finite Krein null-edge carrier — the Cl(4) lift of the landed 1+1D bridge.
+- **`SuiteAQuatBargmann` (Suite A kill) [WIN / M — with an honest Aristotle self-correction]** —
+  hardens `DivisionDimensionSelection`: the C-Bargmann triple is rephasing-invariant + cyclic, but
+  over H the cyclic pivot-rephasing yields a true conjugation `star u . B . u` (`quaternion_rephasing_fails`)
+  and cyclic reordering fails (`quaternion_cyclic_fails`) — so H admits no composable cyclic abelian
+  Bargmann CP invariant of this form. NOTE: Aristotle correctly caught that the NAIVE middle-vector
+  rephasing is vacuous (adjacent phases cancel even over H) and proved the FAITHFUL pivot-rephasing
+  form instead — a good honest correction. Honest scope: this construction, not every conceivable one.
 - **`Goal1Hadron` (Goal I) [WIN / M, 5 rungs — with a rung-5 scope boundary]** — the verified
   toy hadron on the actual 12-dim `Cl(4) (x) C^3` (`eta4 (x) Gcolor`): rung 1 confinement
   dichotomy (singlet PosDef, colored NegDef; both sectors `finrank>0` pinned; witnesses

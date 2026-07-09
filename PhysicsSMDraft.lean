@@ -178,6 +178,12 @@ import PhysicsSM.Draft.NullEdge.Goal3ChannelRG4
 import PhysicsSM.Draft.NullEdge.EntropyMonotoneReal
 import PhysicsSM.Draft.NullEdge.ComptonBoundSq
 import PhysicsSM.Draft.NullEdge.PathSumSemantics
+import PhysicsSM.Draft.NullEdge.Goal1Confinement
+import PhysicsSM.Draft.NullEdge.SuiteAQuatBargmann
+import PhysicsSM.Draft.NullEdge.SuiteBCl4Walk
+import PhysicsSM.Draft.NullEdge.SuiteDCriticalSymmetry
+import PhysicsSM.Draft.NullEdge.SuiteDResourceCore
+import PhysicsSM.Draft.NullEdge.Goal4FieldEquation
 import PhysicsSM.Draft.NullEdge.SuiteAOp2Geom
 import PhysicsSM.Draft.NullEdge.KMPhaseCounting
 import PhysicsSM.Draft.NullEdge.FiniteKMCP
