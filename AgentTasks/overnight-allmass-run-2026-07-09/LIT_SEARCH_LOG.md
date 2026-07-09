@@ -136,3 +136,13 @@ cites it.
 - NET: s10a everpresent-Lambda [import] now grounded end-to-end - ADGS origin (via chain) + Aspects I/II
   (mechanism+observational tests) + Sorkin (origin) + BHS (Lorentz) + Weinberg/Burgess (CC problem).
   Every s10a imported citation is now verified or content-confirmed.
+
+## 2026-07-09 ~late-afternoon - Claude - READ the everpresent-Lambda observational VERDICT (not just cite it)
+- Tool: neo4j_paper_search.py --chunks. Query: DESI DR2 BAO dark energy w0 wa evolving 3 sigma 2025.
+- DESI DR2 (2503.14738) not in-graph (very recent). BUT read the CONTENT of the observational-test paper
+  2307.13743 (Aspects II): chunk 12 = fits SN Ia better than LambdaCDM for only ~0.017% (16/90000) of
+  realizations; chunk 2 = STRUGGLES with CMB (non-vanishing ISW, unlike LambdaCDM). => the everpresent
+  model is currently DISFAVORED, not a success.
+- ACTION: corrected s10a posture to report the CURRENT VERDICT (live but disfavored: rare SN fit + CMB
+  struggle), not just 'friendly to a deviation'. This is 'keep every sentence honest' applied to the
+  observational posture - reading the paper's content, reporting the unfavorable result faithfully. +ref note.

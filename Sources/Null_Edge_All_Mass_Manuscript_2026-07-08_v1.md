@@ -2005,12 +2005,16 @@ not a scale. It **dissolves** the magnitude divergence structurally (order-0
 blindness), **explains** the coincidence conditionally (Poisson branch), and
 **derives neither the value nor the sign**. The predicted dark energy is
 *fluctuating* — a falsifiable posture friendly to a confirmed deviation from rigid
-`w=−1`, killed by a confirmed rigid one. This posture is not ours to test alone: the
+`w=−1`, killed by a confirmed rigid one. This posture is not ours to test alone, and
+honesty requires reporting the *current* verdict, not just the possibility: the
 everpresent-`Λ` model it inherits has been confronted with cosmological data as a
 stochastic dark-energy model (Das–Nasiri–Yazdi, "Aspects of Everpresent `Λ` (II):
-Cosmological Tests", `arXiv:2307.13743`, `[import]`), which is where the
-fluctuating-vs-rigid question is actually adjudicated. `V` itself, the sign, and the
-stochastic dynamics stay outside (the event horizon).
+Cosmological Tests", `arXiv:2307.13743`, `[import]`), and *in its present form it does
+not do well* — it fits Type Ia supernovae better than `ΛCDM` for only a tiny fraction
+of realizations (~`0.017%`) and **struggles with the CMB** (a non-vanishing ISW
+contribution absent in `ΛCDM`). So the fluctuating posture is a *live but currently
+disfavored* option, not a success; that adjudication belongs to the imported model, and
+`V` itself, the sign, and the stochastic dynamics stay outside (the event horizon).
 
 ---
 
