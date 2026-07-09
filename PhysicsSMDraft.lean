@@ -193,6 +193,7 @@ import PhysicsSM.Draft.NullEdge.TeleparallelWEPCapstone
 import PhysicsSM.Draft.NullEdge.DiracVelocityOperator
 import PhysicsSM.Draft.NullEdge.HelicityChirality
 import PhysicsSM.Draft.NullEdge.ZigzagWeyl
+import PhysicsSM.Draft.NullEdge.ZigzagAutomaton
 import PhysicsSM.Draft.NullEdge.ZitterbewegungAverage
 import PhysicsSM.Draft.NullEdge.CPTAntiparticleZigzag
 import PhysicsSM.Draft.NullEdge.JacobsonClausius
@@ -226,6 +227,7 @@ import PhysicsSM.Draft.NullEdge.MassPhase4Channel
 import PhysicsSM.Draft.NullEdge.PositiveSectorClass
 import PhysicsSM.Draft.NullEdge.RGFixedPointStructure
 import PhysicsSM.Draft.NullEdge.MassPhaseRGCapstone
+import PhysicsSM.Draft.NullEdge.CelestialSphericalCode
 import PhysicsSM.Draft.NullEdge.SuiteAOp2Geom
 import PhysicsSM.Draft.NullEdge.KMPhaseCounting
 import PhysicsSM.Draft.NullEdge.FiniteKMCP
