@@ -493,3 +493,100 @@ Lane refilled with 5 more (rule v3, non-duplicating, on-thesis), prompts in jobs
   line period-2 separatrix; massive flows to free). The RG skeleton behind basin-membership.
 Total claude- lane now ~10 (5 new + 3 slowed-down-light 99bd223b/2f2c8287/e6cce5f0 + 2 batch
 e7e17119/b607714a to harvest). All builds ~5-30s now (slowdown fixed).
+
+### 2026-07-09 ~06:20 - Codex - harvested post-recovery theorem returns + applied audit caveats - Builder/Assassin
+- HARVESTED + PORTED (all M, self-guarded, targeted build green):
+  `KMFamilyRankBridge` from b4272f59 (exactly one physical CP phase iff `N=3`;
+  under `N=n+1`, equivalent to `n=2` / three completions, supplying the explicit
+  rank-fixing datum);
+  `IndexProtectionBridge` from 530af96f (finite winding anomaly plus at least
+  `w` protected kernel modes, with `w=1` fixture);
+  `WEPActionResourceBridge` from 2393b371 (channel-blind stationary action gives
+  total-budget source; mass-entropy bundle faithful on free states; null/rest
+  momenta give zero/positive witnesses);
+  `MassResourceConsistency` from ab422e82 (Suite D guardrail bundle:
+  traceless coordinate charges, charge-span linear independence, central-shift
+  generator invariance vs raw-operator false-shape guard, entropy faithfulness).
+- APPLIED audit wording fixes from `codex-audit-suitecd-harvest-20260709`
+  (827386b3): `IncidenceCorank.coboundary_corank` now explicitly says
+  linearized/tangent corank, not a global unitary normal form;
+  `SuiteCDNextRungs.channel_charges_independent` and downstream docs now say
+  coordinate-basis linear independence only, not a proven GGE/modular dynamics.
+  The audit package's "missing deps" build failure was a slim-package artifact:
+  the live repo contains `WindingLowModes`, `ModularSelection`, `GateI1/Core`,
+  and `GateI1/MassEntropyDictionary`, and the live targeted build below passed.
+  Remaining caveat: `MassEntropyMonotone.ResourceMonotone` is still a faithful
+  nonnegative resource-measure API; monotonicity is in separate order lemmas
+  until a free-operation field or rename lands.
+- DOCS UPDATED: `HARVEST_LOG.md`, `Null_Edge_Future_Directions.md`, and the
+  manuscript anchor table now include the four new theorem modules and narrowed
+  Suite D language.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.KMFamilyRankBridge
+  PhysicsSM.Draft.NullEdge.IndexProtectionBridge
+  PhysicsSM.Draft.NullEdge.WEPActionResourceBridge
+  PhysicsSM.Draft.NullEdge.MassResourceConsistency
+  PhysicsSM.Draft.NullEdge.SuiteCDNextRungs
+  PhysicsSM.Draft.NullEdge.IncidenceCorank` PASS. Imported-module warnings only.
+  No new `s o r r y` handoffs.
+- LOCAL FOLLOW-UP (audit caveat closed at finite-algebra level): added
+  `SuiteCDNextRungs.channel_charges_pairwise_commute` and
+  `channel_charges_commute_with_Bsum`, then threaded those fields through
+  `MassResourceConsistency`. This supplies the algebraic commutativity and
+  `Bsum`-conservation guardrails for the coordinate-basis charges while still
+  explicitly not deriving physical GGE/modular dynamics.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.SuiteCDNextRungs
+  PhysicsSM.Draft.NullEdge.MassResourceConsistency` PASS. Imported warnings only.
+
+### 2026-07-09 ~06:35 - Codex - harvested morning anchor audit + fixed scorecard/report drift - Assassin
+- HARVESTED `codex-audit-morning-anchor-scorecard-20260709` (da87db8f).
+  Verdict: LEDGER and manuscript anchor rows PASS; `HONEST_SCORECARD.md` and
+  `MORNING_REPORT.md` were FAIL-fixable because they omitted landed M anchor
+  `Goal3ChannelRG4`; file-internal mode-3 caveats were the stale phrase "fixed
+  point" in `Goal3ExactRG`/`Goal3ChannelRG4` prose where the theorem scope is a
+  period-2 critical line.
+- FIXED: added `Goal3ChannelRG4` to the scorecard/report; updated Codex-lane
+  scorecard/report rows to include the now-harvested Goal II/IV/C3/D modules;
+  added the caveat that `Goal3ExactRG`/`Goal3ChannelRG`/`Goal3ChannelRG4` are
+  finite rational models around an invariant period-2 critical line, with
+  `nu=1`/`z=1` interpretive readings of kernel-checked arithmetic and no
+  continuum limit.
+- FIXED file/doc wording: `Goal3ExactRG.lean` title/intro now says critical
+  period-2 line; `Goal3ChannelRG4.lean` says critical point on the period-2
+  invariant line; manuscript/future-direction prose no longer says the RG
+  channel story decouples at a strict fixed point.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.Goal3ExactRG
+  PhysicsSM.Draft.NullEdge.Goal3ChannelRG4
+  PhysicsSM.Draft.NullEdge.KMFamilyRankBridge
+  PhysicsSM.Draft.NullEdge.IndexProtectionBridge
+  PhysicsSM.Draft.NullEdge.WEPActionResourceBridge
+  PhysicsSM.Draft.NullEdge.MassResourceConsistency` PASS. Imported warnings only.
+
+### 2026-07-09 ~06:45 - Codex - 7am audit/strategy Aristotle lane refilled - Assassin/Oracle
+- SUBMITTED no-build strategy job
+  `codex-grand-strategy-0700-audit-pivot-20260709`:
+  project `470e924f-0dfc-41af-83bd-4539aaaceab7`. Prompt:
+  `ARISTOTLE_PROMPT_codex_grand_strategy_0700.md`.
+- SUBMITTED no-build Goal IV overlap audit
+  `codex-audit-goalIV-overlap-0700-20260709`:
+  project `2e485113-27ce-498b-b858-d73a6c23eb88`. Prompt:
+  `ARISTOTLE_PROMPT_codex_goalIV_overlap_audit_0700.md`.
+- RATIONALE: keep Aristotle running during the 7am pivot without burning proof
+  budget on full-project builds; `codex-goalII-km-flagship-compose-20260709`
+  remains the one active Codex proof job.
+
+### 2026-07-09 ~06:25 - Claude - GRAVITY+QFT UNIFICATION: lit search, analysis, docs, 4 jobs (user-directed) - Builder/DraftLead
+User: "literature search, own analysis, update docs, submit jobs to support a unified gravity+QFT theory."
+- LIT: 2 chunk searches confirm the two routes to gravity+matter-from-one-object, both with DISCRETE
+  precedents (Jacobson equation-of-state; Connes-Chamseddine spectral action / quiver-Bratteli spectral
+  action 2401.03705). Logged in LIT_SEARCH_LOG.
+- ANALYSIS + DOCS: future-directions P-L "One operator, both forces" - the unified program roadmap
+  (two routes + the 4 finite-avatar jobs + honest boundary: finite structural unification, NOT quantum
+  gravity / not continuum QFT; channel<->physics stays C).
+- 4 JOBS OUT (rule v3, self-contained, gravity-side parity push):
+  - jacobson-clausius 4aa9db52 - finite equation of state (Clausius <=> soldering field equation).
+  - spectral-action-avatar 2db9868c - one finite Tr f(D) -> gravity (order 2) + matter (order 4).
+  - gravity-source-matter 5466cd30 - finite field eq solderingCurv = kappa*matterBudget (WEP/channel-blind).
+    NOTE: extends Goal4FieldEquation (Codex overlap) in the unification direction - self-contained, flag.
+  - unified-mass-budget 65b5558c - matter mass + gravity mass = graded pieces of one 4D#D = same det P.
+@Codex: P-L unification program + gravity-source-matter overlaps your Goal IV / WEPActionBridge -
+please reconcile the field-equation source-of-gravity framing at harvest.

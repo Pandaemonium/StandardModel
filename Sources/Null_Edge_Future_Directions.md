@@ -157,6 +157,49 @@ to globalize. Transformation law first (does `E_#` transform like discrete
 contorsion/nonmetricity?), dynamics second. `E_#` splits into torsion + nonmetricity,
 pure-torsion is dead **[in-paper M]**. **[job: eslotgeometry]**.
 
+### P-L. "One operator, both forces": the unified gravity + QFT program (2026-07-09)
+The framework already carries gravity and matter as graded channels of ONE finite Krein
+Dirac square `4 D#D = Q_A + Q_C + 4Q_T + 4E_#` (aperture/closure/turn = matter/gauge/Higgs;
+soldering `E_#` = gravity). The unification program is to bring the gravity channel to parity
+with the matter channels and to prove they are *the same operator's* pieces. Two established
+routes to "gravity + matter from one object", each with a discrete precedent this program can
+imitate finitely:
+
+1. **Spectral action (Connes–Chamseddine).** One functional `Tr f(D/Lambda)` gives
+   Einstein–Hilbert + Yang–Mills + Higgs at successive heat-kernel orders (Chamseddine–Connes–
+   Marcolli, hep-th/0610241 "Gravity and the standard model with neutrino mixing" `[import]`).
+   **Discrete precedent:** the spectral action on quivers / Bratteli networks (arXiv:2401.03705)
+   `[import]`, finite-spectral-triple Dirac moduli (arXiv:0902.2068), and semi-Riemannian /
+   Krein NCG-SM (arXiv:1812.00038, 1210.6575) `[import]` — our carrier IS a finite Krein
+   spectral triple, so a finite polynomial-cutoff spectral action is the natural home.
+   → **[job: spectral-action-avatar 2db9868c]** — one finite `S(D)=a0 tr1 + a2 tr D^2 + a4 tr D^4`
+   whose order-2 term is the gravity (soldering) sector and order-4 term is the matter (channel)
+   sector; "one action, both forces", finitely.
+2. **Thermodynamic / equation-of-state (Jacobson).** The field equation follows from imposing
+   the Clausius relation `delta Q = T delta S`, `S ~ area`, across every local causal horizon
+   (Jacobson, gr-qc/9504004 "Thermodynamics of space-time: the Einstein equation of state";
+   entanglement-equilibrium version 1505.04753; causal-diamond version 1812.01596; non-equilibrium
+   / entropy-production f(R) extension gr-qc/0602001 `[import]`).
+   → **[job: jacobson-clausius 4aa9db52]** — finite avatar: area = pierced-edge count, heat =
+   soldering-budget flux, `T` = a finite Unruh constant; the finite soldering field equation IS
+   the integrability condition of `delta Q = T delta S`.
+
+The two additional unification rungs tie the routes to the matter side:
+- → **[job: gravity-source-matter 5466cd30]** — the finite field equation `solderingCurv =
+  kappa * matterBudget`: geometry (soldering) is sourced by the MATTER channels (Q_A+Q_C+Q_T),
+  channel-blind (= the weak equivalence principle). The finite `G = kappa T` coupling.
+- → **[job: unified-mass-budget 65b5558c]** — the one-theorem statement: matter mass
+  (Q_A+Q_C+Q_T) and gravity mass (E_#) are graded pieces of one operator `4 D#D`, their shares
+  sum to one budget, and that budget equals the SAME kinematic null-disagreement `det P`. One
+  operator, one invariant, four channels, both forces.
+
+**Honest boundary (unchanged).** This is a finite structural unification: gravity and matter as
+channels of one finite Dirac square, kernel-checked at the finite level. It is NOT quantum
+gravity in the LQG/string sense (no dynamical quantized metric, no graviton, no UV completion)
+and NOT a continuum QFT (RP/OS/RG are finite; only the 1+1D checkerboard→Dirac limit is imported).
+The channel↔physics identifications stay `[C]`; absolute scales stay outside. The gravity side is
+the thinner half and these four jobs are its parity push.
+
 ### P-H. "The continuum dictionary through quantum walks"
 Route: finite null carrier → quantum walk/checkerboard → Dirac/Weyl continuum →
 gauge-coupled field theory. **Not** QCD-first. First prove: *our finite carrier
@@ -683,12 +726,33 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   only; no Fredholm/Atiyah-Singer content.
 - **`GateI1.MassEntropyMonotone` [WIN / M]** — binary entropy is antitone in
   speed on `[0,1]`; visible entropy is monotone in invariant mass ratio on
-  future-cone momenta; bundled finite resource monotone has null momenta as free
-  states.
+  future-cone momenta; the bundled finite resource measure has null momenta as
+  free states. Naming caveat: the current `ResourceMonotone` API is faithful and
+  nonnegative; its order/monotonicity content is carried by separate lemmas.
 - **`SuiteCDNextRungs` [WIN / M]** — collector of small next rungs: U(N) parameter
   decomposition, finite C3 relative-index identity, traceless Suite D channel
-  charges, and linear independence of the four GGE charges. Honest scope:
-  arithmetic/interface rungs, not a continuum theory.
+  charges, linear independence of the four coordinate-basis channel charges,
+  pairwise commutativity, and commutation with `Bsum`. Honest scope:
+  arithmetic/interface rungs, not a continuum theory and not a derived
+  GGE/modular dynamics.
+- **`KMFamilyRankBridge` [WIN / M]** — bridges Goal II to the family-rank no-go:
+  exactly one physical CP phase is equivalent, in the finite arithmetic model,
+  to `N=3`, to `n=2`, and to three positive-sector completions. Honest scope:
+  this supplies the explicit rank-fixing datum; it does not physically derive
+  the number of generations.
+- **`IndexProtectionBridge` [WIN / M]** — composes the finite winding anomaly
+  with low-mode protection: the relative signed finite index equals `w` and
+  at least `w` kernel modes are protected, with a `w=1` fixture. Honest scope:
+  finite rank-nullity only; no analytic index theorem.
+- **`WEPActionResourceBridge` [WIN / narrow M]** — packages the channel-blind
+  total-budget source from the stationary trace action with the finite
+  mass-entropy resource witness pair (null zero / rest positive). Honest scope:
+  source/resource bridge only; no Clausius/Jacobson step.
+- **`MassResourceConsistency` [WIN / M]** — bundles Suite D guardrails:
+  Gibbs-Duhem tracelessness, coordinate-charge linear independence,
+  finite commutativity/conservation by `Bsum`, central-shift generator
+  invariance plus raw-operator false-shape guard, and mass-entropy faithfulness.
+  Honest scope: consistency bundle, not a thermodynamic-limit derivation.
 
 ### Claude assembly Goal landings (2026-07-09)
 
@@ -712,12 +776,12 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   `AgentTasks/overnight-allmass-run-2026-07-09/harvest/boostcov/`), NOT a landed M anchor, and
   is NOT in the manuscript. Follow-up: re-derive the fixtures with a bounded, fast proof (or a
   `maxHeartbeats`-scoped rational-cosine bound) so it builds here.** The exact-RG result
-  `Goal3ExactRG` already carries the "relativity born at the fixed point" story that landed.
+  `Goal3ExactRG` already carries the "relativity born on the critical period-2 line" story that landed.
   **RESOLVED: `Goal3BoostCovRational` [M, landed 2026-07-09]** re-derives the buildable core
   over Q (no trig): `Boost(5/3,4/3)` has det 1, preserves `Q=w^2-k^2`, `!= 1`, and maps the
   massless light cone `Q=0` to itself (rational witness `(3,3)->(9,9)`, moved but on-cone) =>
   emergent Lorentz covariance of the massless walk; `massive_shell_not_invariant` gives the
-  rational "mass breaks the fixed-point degeneracy" (`(1,0)->(5/3,4/3)` on the same shell).
+  rational "mass breaks the critical-line degeneracy" (`(1,0)->(5/3,4/3)` on the same shell).
   Builds ~17s. The lattice-trig dispersion-breaking half stays in the held transcendental version.
 - **`SuiteDEntropyMonotone` (Suite D rung D2) [WIN on review; HELD — does NOT build in-project]** — the mass/entropy resource
   monotone: pinching channel `Pinch t rho = (1-t)rho + t diag(rho)`; closed form
@@ -756,7 +820,7 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   (`rg_charpoly`), so the soldering eigenvalue is `3` — RELEVANT, even more relevant than
   aperture's `2` (`soldering_verdict`). VERDICT: all four named channels
   (aperture/closure/turn/soldering) are genuine relevant/marginal RG coordinates; geometry does
-  NOT decouple from the Dirac universality class at the fixed point. Strongest kernel-checked
+  NOT decouple from the Dirac critical regime. Strongest kernel-checked
   support yet that the channel basis is the right coordinate system (still short of the continuum
   reduction). Rational, rule v3.
 
