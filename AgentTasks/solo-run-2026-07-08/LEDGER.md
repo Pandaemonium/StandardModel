@@ -557,3 +557,27 @@ Fable recast the ontology layers as theorem-shaped M-targets with kills. Triage:
 Recurring pattern: external analyses converge and increasingly propose already-done
 work. Bottleneck is execution/harvest, not reframing. Frontier jobs now ~17 running
 (minus cpholonomy superseded).
+
+## Cycle A.25 -- Fable round-5 (foundations): LANDED subluminality + 4 foundational jobs
+
+Fable went "underneath" the framework (signature/dimension/complex/causality as
+theorem-targets). Triage: heavy existing scaffolding again (dispersion in ContinuumLimit;
+edge-reversal/chiral_det for CPT; whole Algebra/Division + SpinorTenfold d=10 for
+dimension selection; KreinPositiveSector for signature). Only spectral-distance genuinely
+absent.
+- LANDED: subluminality (Fable M-target O). SubluminalBound (M, guard-pinned, 8027):
+  v_g^2<=1 from the pinned dispersion, deficit 1-cos^2 theta; every massive mode strictly
+  subluminal, only massless luminal. Added S2a/S9 + S11. A derived relativistic speed
+  limit in the trusted core.
+- 4 NEW foundational jobs: signatureforcing d58cb415 (M, null=>indefinite + (2,2) RP
+  probe), divisionselection 79b0b772 (N, composition+CP force C/d=4 -- feeds Q5),
+  finitecpt e690c3b3 (R, Theta D Theta^-1 = D^#), spectraldistance be0b5442 (P, Connes
+  distance recovers the complex -- the one genuinely-absent piece).
+- Logged not jobbed: Q (critical universality = oracle probe via carrier_rgflow_sim),
+  S (index=anomaly = windinglowmodes's core question), T (criticality symmetry),
+  U (Compton bound). Plus finite Sakharov / dark-matter-shape / finite-Euclidean-gravity
+  implications and the honest "event horizon" list (absolute scale, Born rule, initial
+  conditions, edge count -- never derived).
+
+Reiterated to user: external analyses now converge/repeat; bottleneck is HARVEST not
+reframing (~21 jobs running). Recommend pausing intake to triage returns.
