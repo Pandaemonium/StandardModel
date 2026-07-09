@@ -60,3 +60,13 @@ cites it.
   [import] (KK/Bars/2T/Zitterbewegung/preon lineage); the [orig] contribution is the FINITE
   null-edge-disagreement (mass^2=det P Plucker) mechanism + kernel-checked grade. +Bars ref.
 - Honest posture strengthened: the lineage supplies the picture; the contribution is the finite theorem.
+
+## 2026-07-09 ~mid-afternoon - Claude - QCD trace-anomaly / hadron mass origin (red-team follow-up)
+- Tool: neo4j_paper_search.py --chunks. Query: proton mass origin QCD trace anomaly gluon field
+  energy dynamical chiral symmetry breaking not constituent quark mass.
+- RESULT: null-edge collection returned only lattice-QCD fermion technicalities (minimally-doubled
+  fermions, ChPT pion mass) - NOT the Ji/trace-anomaly proton-mass decomposition. No strong new
+  prior art in-collection. The red-team's point (proton mass ~ trace anomaly, not constituent
+  mass) is textbook QCD, does not need a graph citation to honor.
+- ACTION: check s6 (hadron) honestly distinguishes the KINEMATIC det-P bookkeeping from the
+  DYNAMICAL QCD mass mechanism (trace anomaly) - do not let det-P claim to "explain" hadron mass.
