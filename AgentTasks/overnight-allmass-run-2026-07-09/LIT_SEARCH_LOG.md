@@ -18,3 +18,18 @@ cites it.
 2026-07-09T07:05:00-07:00 Codex/Spark Lambda sidecar: finite/unimodular Lambda + count/volume conjugacy + Poisson-vs-hyperuniform + spectral-action channel sweep. Ranked anchors: astro-ph/0209274, arXiv:1210.2589, Living Rev causal set 10.1007/s41114-019-0023-1, gr-qc/0009099, arXiv:2203.15714, arXiv:0904.4841, gr-qc/0605006, cond-mat/0311532, PhysRep hyperuniformity 1801.06924, hep-th/9606001, hep-th/0605011; internal anchors `Sources/NERD_2.md` and `Sources/Underexplored_Angles_Lit_Review.md`. Status: reference/MEMO until source chunks are verified before manuscript citation.
 2026-07-09T08:30 Claude PhysLean/port: lean-explore packages=['Physlib'] 'Minkowski metric signature'. Found PhysLean `minkowskiMatrix {d} = LieAlgebra.Orthogonal.indefiniteDiagonal (Fin 1) (Fin d) R` = diag(1,-1,-1,...) (mostly-minus, MATCHES our eta). indefiniteDiagonal is MATHLIB, so directly portable (no PhysLean import). Also Lorentz.minkowskiProduct/contrMetric (PhysLean). Spawned port job minkowski-physlean-port (ground our eta in indefiniteDiagonal + PhysLean provenance). Kraft package (elazarg/kraft) referenced for kraft-compression-mass port.
 2026-07-09T08:45 Claude gravity/§7: chunk 'teleparallel torsion spectral action Einstein-Hilbert matter coupling'. Hits: Teleparallel Gravity as a Higher Gauge Theory (arXiv:1204.4339 - directly supports TeleparallelSoldering), Lorentz signature + twisted spectral triples (arXiv:1710.04965 - Krein/Lorentzian spectral action), Connes-Chamseddine gravity+SM coupling (hep-th/0610241 chunk 66). Add 1204.4339 + 1710.04965 to References before the §7 rewrite cites them.
+
+## 2026-07-09 ~mid-morning - Claude - Poisson-vs-hyperuniform sprinkling (Lambda C-fork kill)
+- Tool: neo4j_paper_search.py --chunks, null-edge collections.
+- Query: causal set sprinkling number variance Poisson fluctuations hyperuniform region.
+- FINDING (import): Poisson sprinkling is the UNIQUE Lorentz-invariant discretization
+  (arXiv:1010.5514 "Quantum Fields on Causal Sets" ch.22: Poisson chosen so the causet
+  picks out no direction; arXiv:1903.11544 ch.11: any regular discretization breaks
+  rotational/translational symmetry, "not regular in all frames"). => the hyperuniform
+  branch of the Lambda fork is NOT free: it costs Lorentz invariance.
+- USE: sharpens manuscript 10a fork - cross-links to landed RPSelectsLorentzian (s8):
+  IF the framework's Lorentzian selection governs count statistics THEN Poisson =>
+  everpresent-Lambda survives. Concrete form of the open C: count-Lorentz-invariance
+  => Poisson => everpresent. Graded import (Sorkin/Bombelli-Henson-Sorkin), bridge = C.
+- Sources to verify+add to References: arXiv:1010.5514 (Sorkin/Johnston/... QFT on causets),
+  arXiv:1903.11544 (Surya, "The causal set approach to quantum gravity", Living Reviews).

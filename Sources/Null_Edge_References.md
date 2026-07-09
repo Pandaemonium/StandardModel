@@ -110,6 +110,8 @@ before any outward-facing quotation of their internal results.
 | `TBD-DESIDR2` | `2503.14738` | DESI DR2 BAO cosmological measurements | Observational posture: ~3.1sigma hint of evolving dark energy (friendly, NOT a confirmation of this framework). | ID-ONLY; do not overstate |
 | `TBD-Planck2018` | `1807.06209` | Planck 2018 results VI: cosmological parameters | Rigid-LambdaCDM baseline for the observational posture. | ID-ONLY |
 | `TBD-Hyperuniformity` | TBD | Torquato-Stillinger hyperuniformity; Martin-Yalcin, Stillinger-Lovett (Coulomb sum rules) | The hyperuniform branch of the count-statistics fork (`LambdaCountDichotomy`): constraint-induced sub-extensive number fluctuations. | NEEDS-VERIFY |
+| `TBD-QFTonCausets` | `arXiv:1010.5514` | Sorkin (school), "Quantum Fields on Causal Sets" | Poisson sprinkling is the UNIQUE Lorentz-invariant discretization (ch.22: chosen so the causet picks out no direction) - the fork's Lorentz cost of the hyperuniform branch. | ID-ONLY (graph-verified title); verify the invariance argument before quoting |
+| `TBD-SuryaLRR` | `arXiv:1903.11544` | Surya, "The causal set approach to quantum gravity" (Living Reviews) | Any regular discretization breaks rotational/translational symmetry ("not regular in all frames", ch.11) - corroborates the Poisson=Lorentz-invariance link for the fork. | ID-ONLY (graph-verified title); verify before quoting |
 
 ## Octonion / Furey / Standard Model bridge sources
 

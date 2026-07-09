@@ -1787,7 +1787,15 @@ branches are exhibited on finite witnesses, with the criterion
 `everpresent_iff_extensive` (`LambdaCountDichotomy`, **M**); which branch the
 framework's own Gauss/gauge constraints select — the sub-question *which count is
 conjugate to `Λ`* — is the decidable open question where this program can exceed
-the borrowed mechanism (grade **C**, a pre-registered kill).
+the borrowed mechanism (grade **C**, a pre-registered kill). The fork is not
+symmetric, and the asymmetry is a handle the framework inherits: in the causal-set
+programme the **Poisson** branch is the *unique* Lorentz-invariant discretization —
+a regular or hyperuniform point set picks out a preferred frame (Sorkin;
+Bombelli–Henson–Sorkin, `[import]`) — so the hyperuniform branch does not come
+free, it costs Lorentz invariance. To the extent the framework's *own* Lorentzian
+selection (`RPSelectsLorentzian`, §8) governs the count statistics, it points to
+Poisson, and everpresent-`Λ` survives; turning `count-Lorentz-invariance ⇒ Poisson
+⇒ everpresent` into a theorem is the concrete form of the open **C**.
 
 **What this is, and is not.** The exponent `Λ_rms ∝ N^{−1/2}` (deviation measuring
 hyperuniformity) is the framework's only admissible numeric claim — an exponent,
