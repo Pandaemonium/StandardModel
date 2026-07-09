@@ -1576,3 +1576,12 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   BECAUSE it's the determinant (little-group invariant) - closes the red-team's frame-dependence point.
   Pairs with PauliMomentumPhysLean (the identity + its boost-invariance). build 18s. s3 anchor.
 - All cited names verified to resolve (sweep discipline). LANE: empty - all jobs harvested+landed.
+
+### 2026-07-09 ~late-afternoon - Claude - 4th audit (semantic-alignment) acted on - DraftLead
+- SEMANTIC-ALIGNMENT AUDIT (82004517, saved audits/): checks LEAN STATEMENTS vs manuscript readings.
+  VACUITY flagged on EvenMassGaps.odd_preserves (v could be 0) -> SOURCE VERIFIED CLEAN (v=![1,0] nonzero,
+  A_zero_mode is a real kernel vector). 3 reading-outruns fixes folded: (6) fork_iff false-shape (physics
+  is definitional, kernel=arithmetic only), (3) rank3 'intrinsically rank-2' rests on dimensional argument
+  not witnesses, (5) conditional-protection is one instance + [import] SSH/BdG principle. (2)/(4)/(1) clean.
+- NET: 4 audits done+acted on (3 prose red-teams + 1 statement-semantic). Every headline + every flagship
+  STATEMENT now checked for false-shape/vacuity. Manuscript honestly bounded at claim AND statement level.
