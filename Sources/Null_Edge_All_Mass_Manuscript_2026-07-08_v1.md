@@ -1087,6 +1087,28 @@ killed this mechanism outright. §6 and §8 are coupled in the right
 direction: the same sign structure that blocks naive closure positivity is
 what makes protected and near-protected light modes possible.
 
+**Two inputs converted to outputs, on toys (M, 2026-07-09).** The
+indefinite metric this section leans on is not a free choice: a nonzero
+null edge `c(alpha)` satisfies `c(alpha)^2 = 0` with `c(alpha) != 0`, and in
+a real Clifford algebra `c(v)^2 = Q(v)`, so a definite form has no nonzero
+isotropic vectors — the mere existence of a null edge *forces* the soldering
+Gram to be indefinite (`clifford_null_forces_indefinite`, with `Q13_indefinite`
+and `Q22_indefinite` the concrete `(1,3)`/`(2,2)` witnesses, M). A finite
+Osterwalder–Schrader toy then sharpens indefinite to Lorentzian: on the minimal
+single-mode two-site lattice the `(1,3)` signature is reflection-positive with a
+nondegenerate physical sector, while **any** second time direction (in
+particular `(2,2)`) fails reflection positivity (`oneTime_reflectionPositive`,
+`twoTime_reflectionPositive_fails`, M). So "indefinite, with exactly one time" is
+a two-step consequence rather than an assumption — with the honest scope that the
+second step is a minimal toy, not a full lattice OS reconstruction. Separately,
+the conjugate-pairing invoked above has a finite kernel-checked instance: an
+antiunitary CPT operator `Theta = C . Gamma_rev . #` on an explicit
+non-degenerate `C^4` Clifford ⊗ color witness satisfies `Theta D Theta^{-1} =
+D^#` and forces the Dirac spectrum to be conjugate-paired
+(`Theta_conjugates_D_to_sharp`, `spectrum_conjugate_paired`, M) — for that
+carrier's `D`, not the §8 unitary `W`, so it corroborates rather than discharges
+the transcription note above.
+
 ---
 
 ## 9. Dynamics: mass generation under coarse-graining (**M**)
@@ -1560,7 +1582,10 @@ enforced pin (supporting identities only, never flagship claims). *(Table
 anchor-swept — every one of the 38 declaration names produced a string
 `grep` match in its claimed file on 2026-07-08. This is a text-match check,
 not an elaboration check; existence and axiom footprints are supported
-separately by the targeted Lean and guard builds.)*
+separately by the targeted Lean and guard builds. The 2026-07-09 round-2
+additions — `SignatureForcing`, `RPSelectsLorentzian`, `FiniteCPT` (§8 rows) —
+are per-module `lake build` green with in-file guard pins; they await the next
+independent anchor sweep.)*
 
 | § | Declaration | File | Grade / guard | Role |
 |---|---|---|---|---|
@@ -1647,6 +1672,9 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `collinear_schurComplement_eq_zero` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | collinear negative control |
 | 9 | `nullL_mul_mid_mul_nullN` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | coupling = propagator element |
 | 9 | `mid_effective_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | non-null iff propagator-coupled |
+| 8 | `clifford_null_forces_indefinite`, `Q13_indefinite`, `Q22_indefinite` | `NullEdge/SignatureForcing.lean` | M, self-guarded (in-file pin) | **null forces indefinite metric**: a nonzero null edge forbids a definite soldering Gram (`c(v)²=Q(v)`); `(1,3)` and `(2,2)` both indefinite (signature rung 1) |
+| 8 | `oneTime_reflectionPositive`, `twoTime_reflectionPositive_fails` | `NullEdge/RPSelectsLorentzian.lean` | M, self-guarded (in-file pin) | **reflection positivity selects one time**: the `(1,3)` OS toy is reflection-positive with a nondegenerate physical sector; any second time direction (incl. `(2,2)`) fails RP (signature rung 2). Honest scope: minimal single-mode two-site toy, not full OS reconstruction |
+| 8 | `Theta_conjugates_D_to_sharp`, `spectrum_conjugate_paired` | `NullEdge/FiniteCPT.lean` | M, self-guarded (in-file pin) | **finite CPT**: antiunitary `Theta=C.Gamma_rev.#` on a non-degenerate `C^4` Clifford⊗color witness gives `Theta D Theta^{-1}=D^#` ⇒ conjugate-paired Dirac spectrum. Honest scope: the concrete witness's `D`, not the §8 unitary `W` |
 
 ---
 
