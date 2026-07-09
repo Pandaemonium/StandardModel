@@ -400,3 +400,22 @@ the repo). Actions:
   Lambda=E_# defect, Jacobson first law, WW threading, critical-line RG (oracle),
   winding condensate (oracle), analog experiments.
 - **Queue (~17:15):** 3 running (f6644f9b s1ccpres, 624b93a3 kreinflow, b99f437e gconcurrence).
+
+## Cycle A.18 (~17:50) — build-scope honesty fix + kreinflow HARVEST (M win)
+
+- **Build-scope correction (honesty).** The default `lake build` (8298) is the
+  TRUSTED PhysicsSM lib and does NOT cover NullEdge drafts; those are verified
+  per-module (explicit builds, pins pass) and enforced via PhysicsSMDraft (down
+  repo-wide on a pre-existing unrelated E8/SpherePacking module). Corrected the
+  earlier "8298 incl. all new modules" phrasing in ledger + SESSION_SUMMARY. Added
+  enforcement edges (TwoEdgeMassConcurrence, MassEntropyDictionary, CarrierKreinFlow)
+  to PhysicsSMDraft.
+- **kreinflow `624b93a3`: HARVESTED, LANDED (M).** Closed the batch-6 dynamical
+  Krein gap on the witness. CarrierKreinFlow: HAC is Jmet-self-adjoint,
+  range Piso is HAC-invariant, general J-self-adjoint=>J-unitary-flow lemma, giving
+  HAC_flow_Jmet_unitary + HAC_flow_sector_invariant. Sector orbit upgraded
+  Euclidean-norm-conserving -> KREIN-form-conserving AND sector-preserving. S9a D2 +
+  S11 + sector_krein_form_eq_one docstring updated (dynamical half C -> M on witness;
+  generator-as-Hamiltonian stays C). Built green 8027, pins pass.
+- **Still RUNNING near 6pm:** f6644f9b (s1ccpres corrected existence, 1h+),
+  b99f437e (gconcurrence). External latency; harvest when they complete.
