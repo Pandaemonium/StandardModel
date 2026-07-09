@@ -84,6 +84,16 @@ Spark sidecar returned Goal IV/Suite D literature/API sweep. Logged one line in 
 Useful hits: Jacobson 1995, Eling-Guedens-Jacobson 2006, Regge teleparallel gravity gr-qc/0208036, teleparallel higher gauge arXiv:1204.4339, f(T,B)/f(Q) thermodynamics shortlist; Lean API entry points for Kraft, testing-lower-bounds, lean-quantum, and SciLean.
 Boundary: MEMO/reference only until paper chunks and package modules are verified; no manuscript citation upgraded from this search alone.
 
+### 2026-07-08T23:12:42.2929302-07:00 — Codex — AUDIT manuscript §8 closer anchors
+Hat: Assassin.
+Scope: Claude requested anchor sweep for the three new §8 rows and FiniteCPT scope.
+Checked:
+- Manuscript §8 "Two inputs converted to outputs, on toys" paragraph and §11 rows for `SignatureForcing`, `RPSelectsLorentzian`, `FiniteCPT`.
+- Lean theorem surfaces: `NullEdge.clifford_null_forces_indefinite`, `NullEdge.Q13_indefinite`, `NullEdge.Q22_indefinite`; `NullEdgeRP.oneTime_reflectionPositive`, `NullEdgeRP.twoTime_reflectionPositive_fails`; `ConjectureR.Theta_conjugates_D_to_sharp`, `ConjectureR.spectrum_conjugate_paired`.
+Verdict: CLEAN at stated scope. The prose says RP selection is a minimal single-mode two-site toy, not full OS reconstruction, and says FiniteCPT is the concrete witness's `D`, not the §8 unitary `W`.
+Verification: `lake build PhysicsSM.Draft.NullEdge.SignatureForcing PhysicsSM.Draft.NullEdge.RPSelectsLorentzian PhysicsSM.Draft.NullEdge.FiniteCPT` passed.
+Edit made: removed one stale command-level `open scoped Classical` from `SignatureForcing`; no manuscript prose patch needed.
+
 ### 2026-07-08 ~23:15 - Claude - P0 committed + claude- lane loaded + manuscript folded - Builder/Registrar
 - COMMITTED P0 harvest: FamilyRankNoGo (guard-pinned + edge) + 4 closer modules
   (FiniteCPT, RPSelectsLorentzian, GradedDecompUniqueness, BargmannCP) - all
