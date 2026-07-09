@@ -676,6 +676,26 @@ the soldering-gradient defect `E` of `weitzenbock_master_varying` (**M**,
 the Krein cross-term `E_#` above are two different blocks; identifying them
 is a conjecture (**C**), not a theorem.
 
+**Two more honesty notes the §4+§8 audit forced.** *(a) The split is a chosen
+grouping, not a canonical decomposition.* Lichnerowicz's `D² = ∇*∇ + R/4` is
+canonical because it separates operators by *differential order* (a basis-independent
+grading), with the `1/4` fixed by the Clifford algebra. Here every block is already
+zeroth-order (finite matrices), so there is no order-grading to make the partition
+invariant: A/C/T/E is a *choice* of projection of one Hermitian form onto four
+operator-type subspaces, and a different basis of Hermitian forms would give a
+different budget. The stray factors of 4 are a normalization (a cleared common
+denominator), not algebra-fixed coefficients. *(b) `totalBudget = c·det P` is a
+witness-level match, not a proven family identity.* `totalBudget = tr(D^#D)` is a
+sum of squares (a positive/Frobenius form), while `det P` is an *indefinite* Gram
+determinant (`ab − |c|²`); a sum of squares cannot equal a fixed `c·(Gram
+determinant)` as an identity, because the two depend with *opposite sign* on the
+off-diagonal data. So the kernel-checked equality (`answers_detP`, both `= 3552`) is
+an equality *at the witness* on the critical/rank-controlled locus; whether one
+universal `c` works across a *family* (the real content) is **C**, not **M**, and the
+sign-mismatch kill-test (perturb one soldering entry and watch `totalBudget/det P`
+drift) is the pre-registered falsifier. What is **M** is the per-witness arithmetic;
+"answers to `det P`" as a family law is a conjecture.
+
 **Unification is decomposition.** These are not four theories glued
 together; they are four summands of one square. The claim the program
 stakes is that *the* invariant — pairwise null disagreement — reappears in
@@ -1271,15 +1291,29 @@ equation.
 
 ---
 
-## 8. Protected masslessness: topology forbids mass (**M**)
+## 8. Protected masslessness: a dimension count forbids the kernel from lifting (**M**)
 
-Some modes cannot acquire mass, and this is a theorem, not a tuning. The
-finite McKean–Singer index family shows that for a rank-symmetric carrier
-the chiral index equals the graded dimension
-(`chiralIndex_eq_graded_dimension`, **M**), and an unbalanced count forces
-an exact massless mode immune to every potential and transport
-(`exists_protected_massless_mode`, **M**). Masslessness of the chiral
-surplus is topological — the knot of Part I, made precise.
+Some modes cannot acquire mass for a *structural* reason, not a tuning — but the
+reason is finite linear algebra, and an adversarial audit
+(`AgentTasks/.../audits/REDTEAM_budget_protection_20260709.md`) sharpened exactly how
+far it reaches. The finite McKean–Singer index family shows that for a rank-symmetric
+carrier the chiral index equals the graded dimension
+(`chiralIndex_eq_graded_dimension`, **M**): this is the finite McKean–Singer /
+rank-nullity identity (`str e^{−tD²}` is `t`-independent because nonzero eigenvalues
+pair across the grading), the **algebraic half** of Atiyah–Singer. An unbalanced
+chiral count then forces a nonzero kernel, `dim ker ≥ |dim H₊ − dim H₋|` — an exact
+massless mode (`exists_protected_massless_mode`, **M**).
+
+**Honest scope (per audit).** (i) There is **no topological index side** here — no
+manifold, curvature, or characteristic class — so this is a *dimension count*
+forbidding the kernel from fully lifting, not a characteristic-class law; "topological"
+means only the loose sense of a discrete invariant (the chiral imbalance). (ii) The
+protection is **conditional**: the zero mode is robust to grading-preserving (**odd**)
+deformations — eigenvalues can only leave zero in `±` pairs — but an **even
+(grading-diagonal) mass term gaps it**. So the honest statement is
+*chiral-symmetry-conditional* protection, the finite analog of SSH / BdG sublattice
+zero modes (`[import]`), **not** immunity to *every* potential. The imbalance cannot be
+lifted by any *odd* perturbation; that is the true, narrow content.
 
 **Masslessness is not one thing — a taxonomy (all four kinds kernel-checked).**
 The framework separates *four distinct mechanisms* by which a mode is massless, and
@@ -1293,9 +1327,10 @@ a single parameter set to zero:
    aperture, `|κ| = λ`, closing the gap `λ − κ = 0` on the massless critical line
    (`B_massless_iff_of_pos`, **M**; §4 phase diagram). A tuned cancellation, not a
    collapse.
-3. **Index-protected (topological).** A chiral surplus forces a zero mode immune to
-   every potential and transport (`exists_protected_massless_mode`, **M**; this
-   section). No tuning — an index forbids the partner.
+3. **Index-protected (chiral).** A chiral surplus forces a zero mode robust to every
+   *grading-preserving (odd)* perturbation (`exists_protected_massless_mode`, **M**;
+   this section) — though an *even* mass term gaps it (above). No tuning — a dimension
+   count forbids the partner.
 4. **Gauge-quotient (Krein/BRST).** Masslessness/positivity is decided only *after*
    passing to the physical Gauss sector `V'/N`; the closure form is balanced there
    (`physical_sector_balanced` / `balanced_on_physical_sector`, **M**; §6) — the
@@ -1305,7 +1340,15 @@ a single parameter set to zero:
 So a photon-, gluon-, neutrino-, or critical-mode-like masslessness need not share a
 mechanism: the framework asks, for each light state, *which* of collinear, cancelled,
 protected, or quotient-null it is (or which mixture). That the four are separate
-kernel-checked theorems — not one — is itself a result.
+kernel-checked theorems — not one — is itself a result. *Honest classification (per
+audit):* only two of these are genuine **protections** (robust to a class of
+deformations): the index/chiral one (#3, robust to odd perturbations) and the
+gauge-quotient one (#4). The other two are not protections but *degeneracies* — the
+critical cancellation (#2) is a tuned, unprotected codimension-1 line (any perturbation
+off `|κ|=λ` reopens the gap), and the collinear one (#1) is the *definition* of
+on-shell masslessness (`det P = 0`), a locus, not a protection. Each is `[import]` in
+provenance (index / level-crossing / BRST / spinor-helicity kinematics); the taxonomy's
+value is that it *separates* these robustness classes, not that any one is new.
 
 **A new protection mechanism, found this month (M + C).** A determinant-
 parity probe redirected a stalled line of work: the protected zero modes of
@@ -1809,7 +1852,7 @@ theorem).
 |---|---|---|---|
 | P-ν | Exactly one massless mode on the small chiral cycle; the *next* mode's ratio is a protected finite target (not an absolute mass) | §8 protection (chiral, not cyclic); oracle | Compare the finite mode-ratio pattern to a neutrino mass-squared ratio `Δm²₂₁/Δm²₃₁` (NuFIT-6.0 `[import]`). **Kill:** if the protected structure forces a ratio pattern incompatible with the measured hierarchy/ordering. Honest status: the *count* (one massless mode) is what the model owns; the *ratio value* is not yet computed, so this is a registered target, not a delivered number. |
 | P-hf | Finite hyperfine (π/ρ-analog) mass-squared splitting `M²(↓) − M²(↑) = 512/125` on the 18-dim color-singlet witness | §4 S6 witness; exact-fraction oracle (`probe_s6_singlet_budget.py`) | This is a property of *one specific finite witness* with fixed 3-4-5 rational holonomies — it is a self-consistency prediction of the construction (the closure/chromomagnetic sign flips between spin states), **not** a claim about the physical π/ρ ratio. **Kill:** if the Lean 18×18 transcription does not reproduce `512/125`, or if the sign structure is an artifact of the chosen holonomies (test: vary them). |
-| P-spacing | The three squared-mass levels of one carrier are **equally spaced**: `(m²_mid − m²_lo)/(m²_hi − m²_mid) = 1`, scale-invariant | §4 `MassSpacingPrediction.spec_spacing_ratio` (**M**, guard-pinned; the levels `{λ-κ,λ,λ+κ}` = `B_spectrum`) | A kernel-checked *within-carrier* structural constraint: closure/mean/aperture form an arithmetic progression, dimensionless and scale-free. **Kill:** a single carrier whose two adjacent squared-mass gaps measure to a ratio `≠ 1`. Honest scope: within-carrier only — it is **not** the cross-generation neutrino ratio. |
+| P-spacing | The three squared-mass levels of one carrier are **equally spaced**: `(m²_mid − m²_lo)/(m²_hi − m²_mid) = 1`, scale-invariant | §4 `MassSpacingPrediction.spec_spacing_ratio` (**M**, guard-pinned; the levels `{λ-κ,λ,λ+κ}` = `B_spectrum`) | A kernel-checked *within-carrier* structural constraint: closure/mean/aperture form an arithmetic progression, dimensionless and scale-free. **Kill:** a single carrier whose two adjacent squared-mass gaps measure to a ratio `≠ 1`. Honest scope: within-carrier only — it is **not** the cross-generation neutrino ratio. *Audit caveat:* the spectrum is `{λ−κ,λ,λ+κ}`, so equal spacing is the **centrosymmetry** (reflection about `λ`) of that form *restated* — automatic once the levels take this shape; it is a genuine prediction only insofar as the centrosymmetric spectrum is *derived* from the carrier construction rather than the block ansatz `B(λ,κ)`. The content is the derivation of the form, not the ratio. |
 
 None is a physical mass. P-ν is the only place the program touches a
 measured number, and it does so at the one point (§8) where masslessness is
@@ -2036,7 +2079,7 @@ anchor sweep.)*
 | 2b | `theta_swaps_weyl`, `spectrum_conjugate_paired`, `antiparticle_verdict` | `NullEdge/CPTAntiparticleZigzag.lean` | M, self-guarded (in-file pin) | **antimatter = CPT-mirror zigzag**: `Θ=C·Γ_rev·#` is chiral-odd, swaps the two null Weyl pieces, conjugate-pairs the spectrum — matter/antimatter are the two CPT-orientations of one null-edge pair; asymmetry is a state, not a law |
 | 7 | `equation_of_state`, `jacobson_verdict` | `NullEdge/JacobsonClausius.lean` | M, self-guarded (in-file pin) | **finite gravitational equation of state**: the soldering field equation `∇heat = T·α·∇area` IS the integrability condition of Clausius `δQ=T δS` (`S~`pierced-edge count); non-degenerate + control witnesses. Finite Jacobson |
 | 7 | `field_equation_sourced`, `channel_blind_universal`, `unification_verdict` | `NullEdge/GravitySourceMatter.lean` | M, self-guarded (in-file pin) | **finite `G=κT`**: soldering stationarity ⇔ `solderingCurv γ = κ·matterBudget ψ` — geometry sourced by the matter channels, channel-blind (equal total budget ⇒ same geometry = WEP) |
-| 4/7 | `square_splits`, `answers_detP`, `unified_verdict` | `NullEdge/UnifiedMassBudget.lean` | M, self-guarded (in-file pin) | **one operator, both forces**: `4D#D = Q_A+Q_C+Q_T+E_sold` (matter ⊕ gravity graded blocks), shares sum to one budget, and `totalBudget = c·det P` (both `=3552`) — matter mass + gravity mass are graded pieces of one operator answering the same null-disagreement invariant |
+| 4/7 | `square_splits`, `answers_detP`, `unified_verdict` | `NullEdge/UnifiedMassBudget.lean` | M (witness) + C (family) | **one operator, both forces (witness-level)**: `4D#D = Q_A+Q_C+Q_T+E_sold` (matter ⊕ gravity graded blocks), shares sum to one budget, and `totalBudget = c·det P` (both `=3552`) *at the witness*. Honest scope (audit): the split is a *chosen* projection (not canonical — no order-grading), and `tr(D#D)` (sum-of-squares) `= c·det P` (indefinite Gram) is a per-witness equality; whether one `c` holds across a *family* is **C** (sign-mismatch kill-test), not a proven law |
 | 7 | `gravity_term_isolated`, `matter_term_isolated`, `one_functional_verdict` | `NullEdge/SpectralActionAvatar.lean` | M, self-guarded (in-file pin) | **one spectral action, both forces**: `S(D)=a₀tr(1)+a₂tr(D²)+a₄tr(D⁴)` — order-0 = Λ/volume, order-2 = gravity (soldering), order-4 = matter (channels); the two sectors separate by order (Connes–Chamseddine finite avatar) |
 | 7 | `order2_is_curvature`, `einstein_equation`, `eh_verdict` | `NullEdge/EinsteinHilbertTerm.lean` | M, self-guarded (in-file pin) | **finite Einstein–Hilbert**: the order-2 term `tr(D²)` is a curvature functional of the soldering; stationarity gives the finite field equation `E* = −tr(D_kin D_sold)/tr(D_sold²)`, sourced by matter (Goal-IV lane; reconcile prose w/ Codex WEP) |
 | 7 | `action_closed_form`, `gravity_equation`, `matter_equation`, `coupled_stationary_point`, `one_action_verdict` | `NullEdge/UnifiedActionVariation.lean` | M, self-guarded (in-file pin) | **one action, both field equations (capstone)**: from the single finite spectral action `S(E,g)=10−8w+2w²` (`w=(2+E)(3+g)`), the **gravity** equation is `dS/dE=0 ⟺ E=(−4−2g)/(3+g)` and the **matter** equation is `dS/dg=0 ⟺ g=(−4−3E)/(2+E)` — genuinely distinct (`derivatives_distinct`), coupled at the explicit joint stationary point `(E*,g*)=(−1,−1)`, with a control point where neither holds; `HasDerivAt` throughout. Closes the loop `SpectralActionAvatar` (order split) + `EinsteinHilbertTerm` (gravity `E*` only) left open by adding the matter variation and the joint point. Finite polynomial avatar (`E`=geometry/soldering, `g`=matter), not the continuum spectral action; the *variational* route, complementary to the Goal-IV WEP/equation-of-state capstone |
