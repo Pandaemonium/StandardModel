@@ -498,3 +498,22 @@ chiral-zero-mode) + the "surgical next paper" advice (aligns with the title deci
   HARVEST + integrate each as it lands (build green, guard-pin, semantic review,
   manuscript). Proof jobs (nulldecomp, chiralindex, bindingdeficit) are the likely
   M wins; strategy jobs (F1/F2/F7) are design/no-go exploration.
+
+## Cycle A.22 — Pro round-2: taxonomy (M) + future-directions doc + 3 more jobs
+
+Second Pro analysis (grand "null-coherence phases" reframing). Triage: almost all is
+grade-C ontology (mass as sync defect, proper-time-as-entropy-clock, gravity-as-null-
+ruler, generations-as-modules, dark sectors). Backed content already in the paper.
+
+- **Manuscript (M-backed):** added the **masslessness taxonomy** to S8 -- all FOUR
+  kinds are already kernel theorems: collinear (S3), critical (S4), index-protected
+  (S8 exists_protected_massless_mode), gauge-quotient (S6 physical_sector_balanced).
+  Pro proposed it as a frontier; it turned out backed, so it graduated to a result.
+- **Future-directions doc created:** Sources/Null_Edge_Future_Directions.md -- logs
+  all C-grade reframings as 10 candidate future papers (P-A surgical paper ... P-J
+  mass-as-scatterable-geometry) + the research-program order, cross-ref'd to running
+  jobs. Kept OUT of the manuscript to preserve grade discipline.
+- **3 follow-up jobs submitted:** phasediagram 966d4174 (P-B multi-channel phase
+  diagram), positivesectors ddf1d5bf (program step 2), familyindex 4f822368 (P-F
+  three-generations-as-representation, hard/no-go).
+- **Total frontier jobs now RUNNING: 11.** Harvest + integrate each as it lands.

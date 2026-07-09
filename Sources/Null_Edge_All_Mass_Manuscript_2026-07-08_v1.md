@@ -991,6 +991,32 @@ an exact massless mode immune to every potential and transport
 (`exists_protected_massless_mode`, **M**). Masslessness of the chiral
 surplus is topological — the knot of Part I, made precise.
 
+**Masslessness is not one thing — a taxonomy (all four kinds kernel-checked).**
+The framework separates *four distinct mechanisms* by which a mode is massless, and
+each is a theorem in a different section — so "massless" is a structural verdict, not
+a single parameter set to zero:
+
+1. **Collinear (kinematic).** All null directions are projectively collinear, so the
+   Plücker mass vanishes: `det P = 0 ⇔ common direction`
+   (`fin_bundle_mass_zero_iff_common_direction`, **M**; §3). A single coherent beam.
+2. **Critical (aperture–closure cancellation).** Signed closure exactly cancels
+   aperture, `|κ| = λ`, closing the gap `λ − κ = 0` on the massless critical line
+   (`B_massless_iff_of_pos`, **M**; §4 phase diagram). A tuned cancellation, not a
+   collapse.
+3. **Index-protected (topological).** A chiral surplus forces a zero mode immune to
+   every potential and transport (`exists_protected_massless_mode`, **M**; this
+   section). No tuning — an index forbids the partner.
+4. **Gauge-quotient (Krein/BRST).** Masslessness/positivity is decided only *after*
+   passing to the physical Gauss sector `V'/N`; the closure form is balanced there
+   (`physical_sector_balanced` / `balanced_on_physical_sector`, **M**; §6) — the
+   finite analogue of a mode being *unphysical* (a gauge/quotient artifact) rather
+   than genuinely massive.
+
+So a photon-, gluon-, neutrino-, or critical-mode-like masslessness need not share a
+mechanism: the framework asks, for each light state, *which* of collinear, cancelled,
+protected, or quotient-null it is (or which mixture). That the four are separate
+kernel-checked theorems — not one — is itself a result.
+
 **A new protection mechanism, found this month (M + C).** A determinant-
 parity probe redirected a stalled line of work: the protected zero modes of
 the decorated transport cycle are *not* forced by cyclic symmetry (that
