@@ -1983,3 +1983,26 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - NET: from Fable's FULL list, the one clean buildable claude-lane target is item 3 (SUBMITTED, ae1159c3).
   The rest are hard / heavy / Codex-lane / already-saturated - consistent with the deep-saturation read,
   corrected only for the program-deciding syntheses. Fleet honestly at 1 genuine job; not forcing filler.
+
+### 2026-07-09 ~late-afternoon - Claude - Pro strategic ranking + Fable/Pro CONVERGENCE recorded - DraftLead
+- Second frontier model (Pro) gave a 10-direction ranking. KEY SIGNAL = CONVERGENCE with Fable:
+  * Pro #1 (path-sum/action version; reproduce the 1+1D Dirac propagator from a null-edge path sum;
+    "turn the static mass decomposition into a quantum history theory") == Fable Tier-1 #1 (formalize the
+    checkerboard->Dirac continuum limit in-kernel). BOTH rank it THE single most important direction.
+  * Both flag generation structure (Pro #5 == Fable item 2) and soldering->gravity (Pro #3).
+  Two independent frontier models converging on the SAME frontier is strong strategic signal.
+- BUILDABILITY TRIAGE (DraftLead): Pro's top directions are the HARD DYNAMICS frontier and are NOT clean
+  buildable-rule-v3 jobs:
+  * path-sum phases need exp(i*action) (Complex) + a CONTINUUM LIMIT -> not rule-v3; second-paper. Finite
+    sub-piece (checkerboard-as-Krein-carrier) ALREADY landed (CheckerboardCarrierBridge).
+  * Hamiltonian generator (Pro #2) - subtle; Pro itself warns against positing the mass form as H. Finite
+    action->stationary-eq partially landed (Goal4FieldEquation, UnifiedActionVariation).
+  * soldering->gravity / structured closure / generations / rigidity / RG-continuum - each has a LANDED
+    finite core (ESlotGeometry, WindingLowModes, FamilyRankNoGo, GradedDecompUniqueness, Goal3ChannelRG4);
+    the NEW content is the hard continuum/forcing step, not rule-v3.
+- META-CONCLUSION (both models + my saturation read agree): the FINITE STATIC decomposition layer is
+  SATURATED; the frontier is DYNAMICS (path-sum/phase, continuum limit, generations, gravity) - which is
+  SECOND-PAPER work, not clean current jobs. The one clean current-buildable strategic target is Fable
+  item 3 (ground-mass-det-family-law, ae1159c3, IN FLIGHT). Not forcing filler against the saturated
+  finite layer. These rankings are recorded for the P-A-follow-on / second-paper roadmap, per both
+  reviewers' "don't delay P-A" note. Convergence also = the external-analysis-saturation Fable flagged.
