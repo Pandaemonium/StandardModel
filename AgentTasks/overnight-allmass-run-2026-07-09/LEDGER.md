@@ -1558,3 +1558,14 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   fit), s8 EvenMassGaps (conditional protection). All three red-teams' strongest kill-tests are now
   kernel-checked theorems - the audits' falsifiers folded into the manuscript as M boundaries.
 - LANE: pauli-momentum-physlean RUNNING (1).
+
+### 2026-07-09 ~late-afternoon - Claude - PauliMomentumPhysLean lands (det P=m^2 grounded) + s10a posture - DraftLead
+- PORT LANDED [M]: `PauliMomentumPhysLean` (5de72ad4). sigma-map P(p)=p.sigma (PhysLean Pauli) is the
+  Hermitian little-group matrix, det P=p0^2-p1^2-p2^2-p3^2=m^2, det=0 iff null; witnesses det=1/0/-1.
+  The CORRECT P the audit flagged (little-group spinor, not 4-vector Gram). Grounds s3 central identity
+  in PhysLean. build 19s. s3 anchor. PORT SCORECARD 9 (all named + Minkowski/gamma/Pauli groundings).
+- s10a OBSERVATIONAL POSTURE grounded: lit found Das-Nasiri-Yazdi 2307.13743 ("Aspects of Everpresent
+  Lambda II: Cosmological Tests") - cited in s10a as the [import] where fluctuating-vs-rigid w=-1 is
+  adjudicated. Directly addresses the Priority-A observational-posture concern. +ref VERIFIED.
+- s2b coherence verified clean; s10a coherence pass done earlier (removed redundant fork framing).
+- LANE: rational-boost-invariance RUNNING (1).
