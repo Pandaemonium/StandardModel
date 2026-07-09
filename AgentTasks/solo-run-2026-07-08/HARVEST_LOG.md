@@ -18,3 +18,8 @@ Loop: download -> check sorry -> read summary -> build in-project -> semantic re
 | windinglowmodes | 0c848e8e | INTEGRATED M | F4: winding_protects_low_modes (winding-w bg has >=w protected zero modes, disorder-robust); index=w. Structured (not random) accumulates. Also Conj S |
 | familyindex | 4f822368 | INTEGRATED (NO-GO) | C: count of completions = n+1, =3 iff n=2; three_not_forced. "Three generations" NOT forced w/o a rank-fixing axiom. Honest negative |
 | cpholonomy | c57c871b | SUPERSEDED | D: 3 wedge-triple identities proved (SL2-inv, CP-odd, magnitude) BUT wedge triple not phase-gauge-invariant; the Bargmann module (NullEdgeBargmannPhaseInvariance) is the gauge-invariant home. Not integrated |
+| massthermo | 2e522ee0 | INTEGRATED M | V: gibbs_duhem_sum_rule (Sum chi=0) + closure susceptibility dbC/dk=l/(l-k)^2 DIVERGES as k->l. Mass thermodynamics |
+| signatureforcing | d58cb415 | INTEGRATED (rung1 M) | M: null_forces_indefinite (rung 1, Clifford wrapper); (1,3)&(2,2) both indefinite. Rung 2 (RP selector) = precise pre-registered PROBE (lives in OS lattice/tensor, not quadratic form) |
+| finitelevinson | 10bf50fd | INTEGRATED M | L: finite_optical_theorem (|r|^2+|t|^2=1, phase relation) from S^H S=1. P-J spine, companion M-target |
+| wayturn | 10a914e3 | INTEGRATED M | H: way_nogo (U=u(x)1 charge-conserving => [u,Q_s]=0), way_defect_identity, chirality-flip witness. Higgs as WAY frame resource |
+| phasediagram | 966d4174 | INTEGRATED M | P-B: finite 4-channel mass phase diagram; 3-phase B3 (massive/critical/over-closure) reproved + multi-channel extension |
