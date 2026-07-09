@@ -1167,7 +1167,15 @@ principle (`GravitySourceMatter`, a finite `G=κT`); a finite **holographic** bo
 caps physical DOF by the boundary edge count (`HolographicEdgeBound`); and the
 whole is one operator — matter mass and gravity mass are graded pieces of a single
 `4D#D` answering the same `det P` (`UnifiedMassBudget`), the order-2/4 terms of one
-spectral action whose order-0 term is `Λ` (`SpectralActionAvatar`, §10a). This is
+spectral action whose order-0 term is `Λ` (`SpectralActionAvatar`, §10a). That
+single action is now varied *both* ways in one kernel-checked statement: the
+gravity equation is soldering-stationarity `dS/dE = 0` and the matter equation is
+coupling-stationarity `dS/dg = 0`, genuinely distinct and met together at an
+explicit joint stationary point `(E*,g*)` (`UnifiedActionVariation`, **M**) — the
+*variational* route to the finite field equation, complementary to the *Jacobson
+equation-of-state* route above (the two classical derivations of the Einstein
+equation, both realized on the same finite action; the Goal-IV WEP lane supplies
+the equation-of-state half). This is
 the finite, structural unification of gravity and matter — *not* quantum gravity
 (no dynamical quantized metric, no graviton) and *not* a continuum reduction; the
 full development, and the reconciliation with the Goal-IV WEP/action lane, is the
@@ -1896,6 +1904,7 @@ anchor sweep.)*
 | 4/7 | `square_splits`, `answers_detP`, `unified_verdict` | `NullEdge/UnifiedMassBudget.lean` | M, self-guarded (in-file pin) | **one operator, both forces**: `4D#D = Q_A+Q_C+Q_T+E_sold` (matter ⊕ gravity graded blocks), shares sum to one budget, and `totalBudget = c·det P` (both `=3552`) — matter mass + gravity mass are graded pieces of one operator answering the same null-disagreement invariant |
 | 7 | `gravity_term_isolated`, `matter_term_isolated`, `one_functional_verdict` | `NullEdge/SpectralActionAvatar.lean` | M, self-guarded (in-file pin) | **one spectral action, both forces**: `S(D)=a₀tr(1)+a₂tr(D²)+a₄tr(D⁴)` — order-0 = Λ/volume, order-2 = gravity (soldering), order-4 = matter (channels); the two sectors separate by order (Connes–Chamseddine finite avatar) |
 | 7 | `order2_is_curvature`, `einstein_equation`, `eh_verdict` | `NullEdge/EinsteinHilbertTerm.lean` | M, self-guarded (in-file pin) | **finite Einstein–Hilbert**: the order-2 term `tr(D²)` is a curvature functional of the soldering; stationarity gives the finite field equation `E* = −tr(D_kin D_sold)/tr(D_sold²)`, sourced by matter (Goal-IV lane; reconcile prose w/ Codex WEP) |
+| 7 | `action_closed_form`, `gravity_equation`, `matter_equation`, `coupled_stationary_point`, `one_action_verdict` | `NullEdge/UnifiedActionVariation.lean` | M, self-guarded (in-file pin) | **one action, both field equations (capstone)**: from the single finite spectral action `S(E,g)=10−8w+2w²` (`w=(2+E)(3+g)`), the **gravity** equation is `dS/dE=0 ⟺ E=(−4−2g)/(3+g)` and the **matter** equation is `dS/dg=0 ⟺ g=(−4−3E)/(2+E)` — genuinely distinct (`derivatives_distinct`), coupled at the explicit joint stationary point `(E*,g*)=(−1,−1)`, with a control point where neither holds; `HasDerivAt` throughout. Closes the loop `SpectralActionAvatar` (order split) + `EinsteinHilbertTerm` (gravity `E*` only) left open by adding the matter variation and the joint point. Finite polynomial avatar (`E`=geometry/soldering, `g`=matter), not the continuum spectral action; the *variational* route, complementary to the Goal-IV WEP/equation-of-state capstone |
 | 7 | `curvature_flat`, `torsion_nonzero`, `teleparallel_verdict` | `NullEdge/TeleparallelSoldering.lean` | M, self-guarded (in-file pin) | **the E-slot is a finite teleparallel connection**: flat curvature (`F=1` on loops), nonzero torsion = the gravity field strength; `E_# =` torsion ⊕ nonmetricity (arXiv:1204.4339 provenance) |
 | 7 | `holographic_bound`, `entropy_area_form` | `NullEdge/HolographicEdgeBound.lean` | M, self-guarded (in-file pin) | **finite holographic bound**: physical DOF ≤ boundary null-edge count (`S ≤ B`, area law) — a finite Bekenstein/holographic statement. Honest scope: finite linear-algebra bound, not the covariant entropy bound |
 | 8 | `corner_ker_ge_index`, `corner_ker_ge_index_perturbed`, `witness_one_protected_mode` | `NullEdge/ChiralIndexProtection.lean` | M, self-guarded (in-file pin) | **chiral index ⇒ protected modes**: `dim ker A ≥ n₊−n₋` (rank–nullity), stable under any odd (mass) perturbation; witness index-1 carrier has ≥1 protected massless mode |
