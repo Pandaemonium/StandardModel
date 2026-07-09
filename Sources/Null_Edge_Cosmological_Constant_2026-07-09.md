@@ -37,10 +37,14 @@ null-edge framework's leverage is strongest on the **coincidence** half.
 The magnitude problem in its usual form is a **continuum** artifact: a divergent (or
 Planck-cutoff) sum of field zero-point energies. A **finite** theory has no such sum —
 the "vacuum energy" is a finite, computable quantity, not a divergence `[spec ->
-structural]`. This does not by itself *predict* the small value, but it means the
-framework does not inherit the 120-orders-of-magnitude catastrophe; the question becomes
-"what finite quantity is `Lambda`, and what sets its scale?", which has three concrete
-loci below.
+structural]`. This does not by itself *predict* the small value, and — per the
+manuscript §10a correction, which an adversarial audit forced — it removes only the
+*divergence*, not the physical problem: matter loops still renormalize the vacuum
+energy (the 120-orders discrepancy *is* that feedback, Weinberg 1989 `[import]`), and
+the finite avatar's order-4-cannot-feed-order-0 compartmentalization *assumes that
+feedback away* rather than deriving its absence. What is genuinely gained is the removal
+of the continuum divergence and a reframing to "what finite quantity is `Lambda`, and
+what sets its scale?", which has three concrete loci below.
 
 ---
 
