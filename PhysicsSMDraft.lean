@@ -213,6 +213,8 @@ import PhysicsSM.Draft.NullEdge.LambdaConjugacy
 import PhysicsSM.Draft.NullEdge.LambdaMomentHierarchy
 import PhysicsSM.Draft.NullEdge.LambdaTwoRegionCovariance
 import PhysicsSM.Draft.NullEdge.LambdaThreeSplit
+import PhysicsSM.Draft.NullEdge.HiggsDofConservation
+import PhysicsSM.Draft.NullEdge.LambdaExponentFork
 import PhysicsSM.Draft.NullEdge.LambdaFrameConstraint
 import PhysicsSM.Draft.NullEdge.VacuumSequestering
 import PhysicsSM.Draft.NullEdge.HiggsLongitudinalMode
