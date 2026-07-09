@@ -2045,3 +2045,41 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - STRATEGIC: this was the ONE clean buildable target from BOTH frontier models' rankings (Fable item 3);
   the rest (path-sum/continuum, generations, gravity - Pro/Fable convergent) are the hard dynamics
   frontier = second-paper, not rule-v3. Finite static layer saturated (144 NullEdge modules now).
+
+### 2026-07-09 12:54 PDT - Codex - followed up Pro ten-direction roadmap - Builder
+- TRIAGE: read Pro's ten research directions and inserted an operational roadmap into
+  `Sources/Null_Edge_Future_Directions.md`: path-sum/phase theory, finite Hamiltonian generator,
+  soldering gravity, structured closure, generation structure, spinor/incidence geometry,
+  rigidity, four-channel RG continuum dictionary, retained which-direction information, and
+  second-quantized/many-body finite theory. Each direction now has status, current supports, and
+  a kill test.
+- HARVESTED [M]: `CarrierDynamicsRGInformationCapstone` (1c07ed70) landed in-tree and imported
+  in `PhysicsSMDraft.lean`. It bundles finite carrier dynamics D1-D5 with mass-phase/RG,
+  information/resource, thermodynamics, and modular-selection packets. Check passed:
+  `lake build PhysicsSM.Draft.NullEdge.CarrierDynamicsRGInformationCapstone`.
+- REFILL [Pro top three, ambitious]: prepared
+  `AgentTasks/aristotle-submit/codex-pro-followup-1310-20260709-project` and launched three
+  `codex-` jobs:
+  a788df9f `FourChannelPathActionCapstone` (path-sum/action scaffold),
+  047eabf8 `FiniteHamiltonianGeneratorCapstone` (finite phase-generator boundary),
+  5ca9cf09 `SolderingGravityTransformCapstone` (soldering transformation/finite gravity packet).
+  First path-action upload hit a transient SSL error and was retried after confirming no duplicate
+  appeared in `aristotle list`.
+
+### 2026-07-09 ~late-afternoon - Claude - CROSS-REVIEW of Codex KMFamilyRankBridge (underpins Fable item 2) - PASS - DraftLead
+- Idle-monitoring cross-review (DRAFT-LEAD peer audit; the manuscript cites Codex-landed modules, so their
+  honesty affects the deliverable). Target: KMFamilyRankBridge (MS row 2255) - it underpins Fable Tier-1
+  item 2 (the generations <-> one-CP-phase pivot), so its honest framing is load-bearing.
+- AUDIT (four over-claim modes, checking KERNEL statements not just docstring):
+  * physicalPhases_eq_one_iff: physicalPhases N=1 <-> N=3 - GENUINE Nat theorem (proof: N<=2 -> 0, N>=4 ->
+    >=3, so 1 only at N=3). Kernel matches docstring.
+  * cp_one_supplies_rankfixing: forall n, physicalPhases(n+1)=1 <-> n=2 - genuine iff; cp_one_is_rankfixing_datum
+    packages it via FamilyRankNoGo.forcing_iff_rankfixing as "one CP phase IS the rank-fixing datum n=2",
+    with concrete witness physicalPhases(3)=1.
+  * NOT hollow telescoping: honestly a chain of EQUIVALENCES to the same finite datum, NOT a derivation.
+    Explicit docstring disclaimer "Nothing here says CP dynamics derives three generations physically" is
+    SUPPORTED by the kernel. No vacuity (concrete witness + nontrivial iffs), no false shape, no
+    docstring-outruns-kernel. Footprint guard-pinned [propext,Classical.choice,Quot.sound] on all 4.
+- VERDICT: PASS. Clean, honest Codex landing. CONFIRMS (a) the manuscript's citation (row 2255) is honest,
+  and (b) Fable's item-2 framing is correct - the FORCING of three generations genuinely remains open; this
+  module supplies only the equivalence/datum, exactly as claimed. (nlinarith use is deg-2, Codex-lane, fine.)
