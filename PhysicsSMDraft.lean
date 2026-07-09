@@ -171,6 +171,8 @@ import PhysicsSM.Draft.NullEdge.GradedDecompUniqueness
 import PhysicsSM.Draft.NullEdge.BargmannCP
 import PhysicsSM.Draft.NullEdge.Goal3ExactRG
 import PhysicsSM.Draft.NullEdge.Goal1Hadron
+import PhysicsSM.Draft.NullEdge.Goal1Rung5Tie
+import PhysicsSM.Draft.NullEdge.Goal3BoostCovRational
 import PhysicsSM.Draft.NullEdge.SuiteAOp2Geom
 import PhysicsSM.Draft.NullEdge.KMPhaseCounting
 import PhysicsSM.Draft.NullEdge.FiniteKMCP

@@ -691,17 +691,42 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   is NOT in the manuscript. Follow-up: re-derive the fixtures with a bounded, fast proof (or a
   `maxHeartbeats`-scoped rational-cosine bound) so it builds here.** The exact-RG result
   `Goal3ExactRG` already carries the "relativity born at the fixed point" story that landed.
+  **RESOLVED: `Goal3BoostCovRational` [M, landed 2026-07-09]** re-derives the buildable core
+  over Q (no trig): `Boost(5/3,4/3)` has det 1, preserves `Q=w^2-k^2`, `!= 1`, and maps the
+  massless light cone `Q=0` to itself (rational witness `(3,3)->(9,9)`, moved but on-cone) =>
+  emergent Lorentz covariance of the massless walk; `massive_shell_not_invariant` gives the
+  rational "mass breaks the fixed-point degeneracy" (`(1,0)->(5/3,4/3)` on the same shell).
+  Builds ~17s. The lattice-trig dispersion-breaking half stays in the held transcendental version.
+- **`SuiteDEntropyMonotone` (Suite D rung D2) [WIN on review; HELD — does NOT build in-project]** — the mass/entropy resource
+  monotone: pinching channel `Pinch t rho = (1-t)rho + t diag(rho)`; closed form
+  `det(Pinch t rho) = det rho + (2t-t^2)|z|^2`; `mass_monotone_under_pinch` (decohering hidden
+  coherence can only INCREASE mass^2 = linear entropy); `signed_closure_exception` (a rational
+  3-4-5 closure rotation before pinching LOWERS post-pinch mass, `49/2500 < 1/4`). Non-degeneracy
+  `massSq 0 = 0` vs `massSq 1 = 1/4`. **NOT LANDED: despite rational witnesses, the module works
+  over `C` (Hermitian `!![p,z;conj z,1-p]`, Complex det/congruence/`conj` with `simp`-unfolding)
+  and does NOT build in-project (SIGTERM at 389s). Refined lesson: heavy symbolic COMPLEX matrix
+  computation is as slow as Real transcendentals here. HELD (preserved at `harvest/d2/`);
+  follow-up = re-derive over `R`/`Q` (real symmetric 2x2, `det = pd - z^2`), avoiding `C`.**
+- **`Goal1Rung5Tie` (Goal I rung-5 tie) [HONEST KILL / M]** — the true bound eigenvector's
+  closure SHARE is `b_C = 16/5 >= 0` (`closure_share_nonneg`), not the seed's modelled `<0`,
+  though closure ENERGY is `-16 < 0` (`closure_energy_neg`). Budget computed from `v=(2,1,0)`,
+  not posited (see the `Goal1Hadron` correction above). Rational, builds ~25s.
 - **`Goal1Hadron` (Goal I) [WIN / M, 5 rungs — with a rung-5 scope boundary]** — the verified
   toy hadron on the actual 12-dim `Cl(4) (x) C^3` (`eta4 (x) Gcolor`): rung 1 confinement
   dichotomy (singlet PosDef, colored NegDef; both sectors `finrank>0` pinned; witnesses
   `(1,1,1)`/`(1,-1,0)`); rung 2 `H2` Hermitian; rung 3 bound ground energy exactly `-1 <`
   threshold `1` (witness `d=(0,1,7)`, `kap=4`, 3-4-5, discr 25); rung 4 exact spectrum
-  `{-1,8,9}` => positive gap 9; rung 5 signed budget `b_C=-1/2<0` (`b_A=3/2, b_T=0`).
-  **CRITICAL BOUNDARY (Aristotle-flagged):** rung 5's budget is a MODELLED witness, NOT
-  dynamically tied to the rung-3 bound eigenvector (that linkage needs the full Weitzenbock
-  carrier-square assembly). So the genuine chained result is rungs 1-4 (dichotomy + bound
-  singlet below threshold + positive gap on the real 12-dim carrier); "binding = negative
-  closure share" is a separate witness, held at that scope. Finite toy, no pion/rho, no continuum.
+  `{-1,8,9}` => positive gap 9; rung 5 signed budget `b_C=-1/2<0` was a MODELLED witness.
+  **CORRECTED by `Goal1Rung5Tie` (2026-07-09, an honest kill):** tying the budget to the
+  ACTUAL rung-3 bound eigenvector `v=(2,1,0)` gives shares `b_A=-11/5, b_C=16/5>=0, b_T=0`
+  (`closure_share_nonneg`) — the modelled `b_C<0` does NOT survive. The transparent reason:
+  closure ENERGY is genuinely negative (`<v,H_C v> = -16 < 0`, `closure_energy_neg` — binding
+  IS closure-driven at the energy level), but the total energy `<v,H2 v> = -5 < 0`, so
+  normalizing flips the share sign. So the genuine chained result is rungs 1-4 (dichotomy +
+  bound singlet below threshold + positive gap on the real 12-dim carrier); "binding = negative
+  closure SHARE" is FALSE for this toy's ground state (though closure ENERGY is negative). The
+  program's proven negative-closure-share result lives on the SEPARATE 18-dim S1-CC witness
+  (manuscript §6, `b_C=-32/223<0`), a different object. Finite toy, no pion/rho, no continuum.
 - **`SuiteAOp2Geom` (Suite A op-to-geometry) [WIN / M, all 4 incl stretch]** — finite Malament
   split on the 2-point Krein carrier: causal `dCausal m 0 1 = 1/m` (witnesses 1/3, 5/3),
   `CausalLE` a partial order recovering edge orientation, order/conformal class
