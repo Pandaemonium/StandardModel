@@ -139,6 +139,7 @@ import PhysicsSM.Draft.NullEdgeP6Concurrence
 import PhysicsSM.Draft.NullEdge.TwoEdgeMassConcurrence
 import PhysicsSM.Draft.NullEdge.MassEnergyBound
 import PhysicsSM.Draft.NullEdge.MassNullDecomposition
+import PhysicsSM.Draft.NullEdge.DetPUniqueness
 import PhysicsSM.Draft.NullEdge.ChiralIndexProtection
 import PhysicsSM.Draft.NullEdge.BindingEntanglementDeficit
 import PhysicsSM.Draft.NullEdge.SchurSeesaw
