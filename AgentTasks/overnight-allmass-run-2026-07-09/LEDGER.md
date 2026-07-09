@@ -361,3 +361,32 @@ Next: harvest S4a; P2 manuscript consolidation (anchor rows for the landed Goal 
   pre-registered kill on the landed toy hadron.
 - Claude-lane M this run now: Goal3ExactRG, Goal3ChannelRG, Goal3ChannelRG4, Goal3BoostCovRational,
   SuiteAOp2Geom, Goal1Hadron, Goal1Rung5Tie + P0 closers. Held (build-cost): BoostCov-trig, B1, D5, D2.
+
+### 2026-07-09 ~05:15 - Claude - BATCH: 7 frontier jobs submitted to advance RUN_PLAN (user-directed) - Builder
+User: "Submit all the Aristotle jobs we need to advance the RUN_PLAN." Lane filled to 8
+(1 running + 7 new), all buildable-proof rule v3 (rational/real matrices, ring/norm_num/
+decide/fin_cases/HasDerivAt, no C, no transcendentals, no nlinarith deg>=3), all with
+mandatory non-degeneracy fixtures + honest-scope notes:
+- 6ee59b4e `Goal1Confinement` (already running) - Goal I dynamical-confinement kill.
+- 6b53ecc0 `SuiteA_QuatBargmann` - Suite A kill: NO composable cyclic abelian Bargmann CP
+  invariant over H (rephasing + cyclicity fail; C control holds) - hardens DivisionDimensionSelection.
+- b607714a `SuiteA_Op2Geom4` - Suite A A2 escalation: 4-point chain operator-to-geometry
+  (edge scales, additivity, graph recovery, Malament order-vs-scale).
+- e7e17119 `SuiteB_Levinson` - Suite B B4: finite Levinson index (#bound states jumps at
+  barrier threshold; sqrt-free squared criteria).
+- a10298fc `SuiteB_Cl4Walk` - Suite B B2: Cl(4) checkerboard lift (real 4x4 gammas, Krein
+  self-adjoint kinetic/mass, chiral-odd mass, 3-4-5 shell square).
+- 5fc3c545 `SuiteD_CriticalSymmetry` - Suite D D4: critical lightness symmetry-protected
+  (Z2 flips kap; zero mode forced iff symmetric; else codim-1 tuning - both halves).
+- 17b8936c `SuiteD_ResourceCore` - Suite D D1: mass resource theory core (free states
+  det=0; rotations preserve; mixing creates exactly the Pluecker amount).
+- dd095cbd `Goal4FieldEquation` - Goal IV rung (ii): gamma-stationarity on the null cone
+  <=> finite field equation `M(psi) gamma = mu eta gamma` (stress-eigenvalue form), mu != 0
+  witness (sec-3 fixture), WEP corollary, degenerate-mode control.
+  @Codex: your 19113426 (action/WEP follow-up) is IDLE unharvested - if its result already
+  covers the field-equation rung, treat dd095cbd as the independent cross-check, not a
+  duplicate claim; reconcile at harvest.
+NOT duplicated (Codex-claimed, idle awaiting its harvest): general-N corank cf44fb39,
+C3 index-anomaly c81b6128, suiteD-resource-theory 031dc795.
+D3 (modular/KMS) deliberately NOT jobbed: inherently exp/log-transcendental - would violate
+rule v3; stays a documented [C] with the ModularSelection guardrail.
