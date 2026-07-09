@@ -343,6 +343,18 @@ the table on the momentum + polarization side:
   CPT-orientations of the *same* null-edge pair, and the matter–antimatter
   asymmetry is a state/initial-condition question, not a law asymmetry
   (`CPTAntiparticleZigzag.theta_swaps_weyl`, `spectrum_conjugate_paired`, **M**).
+- **The scalar exception (the Higgs boson's *own* mass).** A spin-0 scalar has no
+  chirality and no zigzag — there are no two null Weyl pieces to couple — so the
+  null-edge mechanism does **not** generate the Higgs's own mass. That mass
+  parameter is the framework's naturalness *input*, not an output: it is the one
+  mass that sits outside "mass from massless." What the framework *does* formalize
+  about it is conditional and structural — the naturalness dichotomy for a light
+  scalar mode: near-critical lightness is symmetry-protected iff a `Z₂` involution
+  is imposed on the finite form, else it is fine-tuned
+  (`SuiteDCriticalSymmetry.symmetry_iff_kap_zero`,
+  `naturalness_verdict_finetuning`, **M**). This is the honest boundary of the
+  headline: every mass that is a *coupling of null edges* (fermions, gauge bosons,
+  their antiparticles) comes from massless edges; the scalar self-mass does not.
 
 The table, read off the momentum Gram and the polarization count (all **M**):
 
@@ -362,7 +374,12 @@ kinematics (a Dirac fact); the momentum/polarization edge-count reading covers
 fermions *and* gauge bosons *and* their antiparticles; all are finite
 one-momentum / DOF-counting models. "Mass is slowed-down light" is an `M`
 statement about internal kinematics — not a claim that anything is *observed* to
-move at `c`, and not a statement about the mass *values*.
+move at `c`, and not a statement about the mass *values*. Two cases are held
+outside the headline on purpose: the **scalar Higgs self-mass** is
+mechanism-exempt (spin-0, no zigzag — above), and the **neutrino's Dirac-versus-
+Majorana nature** (whether its CPT-conjugate zigzag is an independent partner or
+the same state) is a null-edge structural question the manuscript leaves open — a
+finite formalization is in progress and nothing about it is claimed here.
 
 ---
 
