@@ -1345,6 +1345,54 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - Port targets status: lean-quantum/Kraft/testing-lower-bounds/PhysLean LANDED (4);
   SciLean/CSLib/LeanCamCombi/Sphere-Packing SUBMITTED (in flight). All named targets covered.
 
+### 2026-07-09 ~09:05 PDT - Codex - Lambda/zigzag/celestial harvest + next proof wave - Builder/Registrar
+- HARVESTED + PORTED `claude-lambda-three-split`
+  (`c719d4d3-0db0-43bf-ad2e-c371af1886c5`) ->
+  `PhysicsSM/Draft/NullEdge/LambdaThreeSplit.lean`: finite rational matrix
+  three-Lambda avatar. Payload: adjustable bare+induced naive Lambda,
+  traceless sequestering kills uniform shifts, observed Lambda is the count
+  functional, and explicit sequestering/nondegeneracy witnesses.
+- HARVESTED + PORTED `claude-lambda-frame-constraint`
+  (`5b00a220-e1e0-4374-b082-40f6e240dd97`) ->
+  `PhysicsSM/Draft/NullEdge/LambdaFrameConstraint.lean`: finite frame-blind
+  covariance theorem. Payload: permutation-invariant symmetric covariance is
+  `aI+bJ`; with `a != 0`, any suppressed nonzero mode is uniform; explicit
+  nonuniform-suppression witness breaks frame-blindness.
+- HARVEST CHECK: `claude-leanquantum-dpi-mass`
+  (`ef75bd7e-08cc-49d8-a40f-e544faf74d2d`) and
+  `claude-tv-distinguishability-mass`
+  (`4a15341c-ae0c-45ca-82ef-6fd9d6460787`) were downloaded/inspected; both had
+  already been ported as `LeanQuantumDPIMass` and `TVDistinguishabilityMass`.
+  No duplicate port.
+- HARVESTED + PORTED `claude-zigzag-automaton`
+  (`544d5294-ca8b-47af-877c-3f0ad4bee193`) ->
+  `PhysicsSM/Draft/NullEdge/ZigzagAutomaton.lean`: CSLib-inspired finite
+  two-state chirality automaton, stochastic/symmetric transfer matrix,
+  eigenmodes `1` and `1-2a`, spectral gap `2a`, and massless iff reducible.
+- HARVESTED + PORTED `claude-celestial-spherical-code`
+  (`e05316fa-7b98-498d-b424-eb1c8f6b91fd`) ->
+  `PhysicsSM/Draft/NullEdge/CelestialSphericalCode.lean`: Sphere-Packing/
+  LeanCamCombi-inspired rational spherical-code avatar with chordal mass,
+  massless iff collinear, antipodal maximum, coordinate tight-frame design, and
+  explicit non-tight control.
+- REGISTERED the four new modules in `PhysicsSMDraft.lean`. Verification:
+  `lake build PhysicsSM.Draft.NullEdge.LambdaThreeSplit` PASS;
+  `lake build PhysicsSM.Draft.NullEdge.LambdaFrameConstraint` PASS;
+  `lake build PhysicsSM.Draft.NullEdge.ZigzagAutomaton` PASS;
+  `lake build PhysicsSM.Draft.NullEdge.CelestialSphericalCode` PASS.
+  Placeholder scans on all four landed files were clean.
+- REFILL SUBMITTED `4911f297-fa26-4974-9dc1-ee87d0f3a170`:
+  `codex-neutrino-mass-mechanism-capstone-0835-20260709`, targeting
+  `PhysicsSM/Draft/NullEdge/NeutrinoMassMechanismCapstone.lean`. Mission:
+  compose Dirac/Majorana split, type-I seesaw, and Schur seesaw into one finite
+  neutrino-mass mechanism package.
+- REFILL SUBMITTED `9e944215-b974-4ca9-96c3-014fd55fa611`:
+  `codex-lambda-everpresent-capstone-0900-20260709`, targeting
+  `PhysicsSM/Draft/NullEdge/LambdaEverpresentCapstone.lean`. Mission: compose
+  unimodular/sequestering, count/variance, frame-blindness, two-region
+  covariance, moment hierarchy, and three-Lambda split into one honest finite
+  Lambda capstone.
+
 ### 2026-07-09 ~afternoon - Claude - 2 Lambda modules land (Priority A); fork upgraded to theorem - DraftLead
 - LANDED [M]: `LambdaThreeSplit` (c719d4d3) - three-Lambda split (bare+induced+observed);
   traceless/unimodular projection kills every uniform shift, seq op independent of Lambda_bare,
@@ -1356,3 +1404,16 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   selection stays C. Folded both into 10a + 2 anchor rows. Both build 14s, guard-pinned, 0 sorry.
 - LANE refill: mass-four-faces (consolidation: det=Slin=Hlin one invariant up to x2, TV=Plucker
   distance - lets the manuscript cite a theorem instead of prose 'not independent evidence' caveats).
+
+### 2026-07-09 ~afternoon - Claude - celestial port lands; zigzag-automaton OFF-TARGET no-go - DraftLead
+- PORT LANDED [M]: `CelestialSphericalCode` (harvest e05316fa). Sphere-Packing-Lean/LeanCamCombi
+  spherical-code/design port (reference-only, version-pinned). mass=chordSq=2-2<u,v> in [0,4],
+  0 iff collinear (massless), 4 antipode; balanced massless multiplet = tight frame/2-design
+  (frameOp(ortho)=I) + non-isotropic control. Build 18s, guard-pinned. s3 anchor row.
+- NO-GO: claude-zigzag-automaton (544d5294->60fd49e5) came back CLEAN (0 sorry) but OFF-TARGET:
+  rebuilt the existing ZigzagWeyl module (same namespace + theorems) instead of the CSLib
+  transfer-matrix/automaton design. Redundant + would collide. DISCARDED, not landed. CSLib port
+  target NOT met -> if wanted, re-submit with an explicit 'do NOT reproduce ZigzagWeyl; build the
+  2-state stochastic transfer matrix T(a)=[[1-a,a],[a,1-a]]' guard.
+- PORT SCORECARD: 5 LANDED (Minkowski, lean-quantum DPI, testing-lower-bounds TV, Kraft,
+  CelestialSphericalCode); SciLean (mass-gradient-morse) in flight; CSLib off-target (needs resubmit).
