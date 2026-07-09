@@ -613,7 +613,18 @@ and — the sharpest form — its **least eigenvalue is `λ − κ`**,
 *the squared mass gap of `B` = aperture − closure* is a **theorem** (axiom-audited
 `[propext, Classical.choice, Quot.sound]`): closure *subtracts* from mass and,
 tuned to equal aperture, cancels it — a finite, exactly-solvable massless
-critical line.
+critical line. This gives a genuine **finite three-phase diagram** in the
+`(λ,κ)` plane, all three phases kernel-checked: a **massive** phase `|κ| < λ`
+(positive-definite, gap `λ − κ > 0`; `B_posDef_iff`), a **massless critical
+line** `|κ| = λ` (singular, gap `0`; `B_massless_iff_of_pos`), and an
+**over-closure phase** `|κ| > λ` where `λ − κ` is a strictly negative eigenvalue
+(it lies in the spectrum `{λ−κ, λ, λ+κ}`, `B_spectrum`) and the block is therefore
+no longer positive (`¬ B_posDef` by `B_posDef_iff`) — a tachyonic/unstable mode
+with no physical positive mass. So closure below aperture is mass, closure equal to aperture is the
+massless line, and closure above aperture over-shoots into instability — a finite,
+exactly-solvable order parameter for mass, with the critical line `|κ| = λ` a
+second-order boundary (where, per §9a, the gap closes and the correlation length
+would diverge — the pre-registered continuum-limit probe).
 
 *What ties `B` to the carrier, and what does not (the honest grade split).* At
 the fixed point `(2,1)` the tie is **kernel-checked**: the actual carrier
