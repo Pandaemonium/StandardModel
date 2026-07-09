@@ -240,3 +240,22 @@ cites it.
   velocity-mixture impurity) is best graded [interp]/[orig] framing. HONEST CAVEAT: absence of search
   hits != proof of novelty (may exist under other terminology / in textbooks off arXiv); grade the
   connection [interp] with the drift-relation core [import], and do NOT claim a strong novelty result.
+
+## 2026-07-09 ~late-afternoon - Claude - prior art for Fable item 2 (three generations / exceptional Jordan)
+- Tool: scholarly search-inspirehep. Context: Fable's Tier-1 item 2 (one-CP-phase forcing <-> three
+  generations) connects to the octonionic exceptional-Jordan thread + this project's octonion program;
+  survey the prior art to inform whether item 2 has an algebraic home.
+- FOUND (Tejinder P. Singh, 2020-2022, INSPIRE, high-cite): the exceptional Jordan algebra J3(O) and its
+  automorphism group F4 are the canonical algebraic home for THREE GENERATIONS - 2009.05574 (three
+  copies of G2 in F4 = three generations; cites Furey's SU(3)xU(1) electrocolor), 2205.06614 + 2209.03205
+  (J3(8) characteristic-equation eigenvalues claimed to reproduce sqrt of quark/lepton mass RATIOS).
+- CORROBORATES Fable item 2: the "octonionic 3x3 exceptional Jordan is where the family index lives" is
+  the established thread (Singh, Furey, Dubois-Violette-Todorov). Consistent with the program's OWN
+  FamilyRankNoGo: J3(O) is a candidate rank-fixer that does NOT force n=2 from more basic axioms (Singh
+  builds three generations IN via F4, rather than deriving n=2). So item 2's algebraic home exists but
+  "forcing" one CP phase / n=2 from something deeper remains open, exactly as the program's no-go says.
+- HONESTY BOUNDARY (flag): Singh's stronger claim - DERIVING mass RATIOS from J3(O) eigenvalues - is
+  OUTSIDE this program's event horizon (ratios only after structural work; not verified here). Track as
+  prior art for the item-2 thread; do NOT adopt / conflate with the program's honest scope. If the
+  family-index (item 2) work is pursued, add Singh 2009.05574 + 2205.06614 (+ existing Furey tracking) to
+  Null_Edge_References.md before citing. Not added now (item 2 is future-directions, not the current MS).
