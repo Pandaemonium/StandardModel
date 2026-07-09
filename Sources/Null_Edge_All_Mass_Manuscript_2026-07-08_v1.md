@@ -1,10 +1,19 @@
-# Mass as null disagreement: a machine-verified finite framework
+# All Mass Comes from Massless Edges: A Finite, Machine-Verified Framework
 
-**A finite, kernel-checked framework in which the invariant mass of a
+**A finite, kernel-checked framework in which the invariant mass of any
 bundle of light-speed degrees of freedom is the geometric disagreement of
-their directions, and a single Dirac-type square decomposes into four
-force-shaped channels. The one trusted theorem is classical kinematics,
-formalized; the dynamics is finite operator algebra, graded honestly.**
+their directions — and, conversely, every mass decomposes this way: every
+timelike momentum is a sum of null momenta, and every mass² is a
+disagreement of massless edges (bidirectional and universal, grade
+T/M). A single Dirac-type square resolves that disagreement into four
+force-shaped channels — aperture, closure, turn, soldering — now shown to
+be the relevant/marginal coordinates of the finite renormalization-group
+flow (M). What is earned is the decomposition, not the spectrum:
+identifying the four channels with the Standard Model's mass mechanisms is
+a pre-registered conjecture (C), and absolute mass values, mass ratios, and
+the continuum limit stay outside the framework. The one trusted theorem is
+classical kinematics, formalized; the dynamics is finite operator algebra,
+graded honestly.**
 
 Draft v1, 2026-07-08. Status: **[DRAFT-MS]**. It subsumes and cites the P1
 origin-of-mass draft (`Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md`)
