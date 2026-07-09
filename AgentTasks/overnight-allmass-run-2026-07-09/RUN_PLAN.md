@@ -711,3 +711,299 @@ continues. **Day audit cutoff: 21:00 local 2026-07-09** — final quarter switch
 to audit/report exactly as sec 7's P3 did (EVENING_REPORT.md + scorecard
 refresh). Event horizon unchanged (no absolute masses, no Born rule, no V/sign
 derivation for Lambda; new fronts obey the same claim calculus).
+
+---
+
+## 10. NEXT CAMPAIGN (post-2026-07-09) — ship, dynamics, forcing
+
+Planned 2026-07-09 after the day run closed all three day priorities (A: the Λ
+suite landed and folded; B: §7 reconciled with Codex's landed
+`GravityUnificationCapstone`; C: the particle table complete with honest
+boundaries). The finite STATIC layer is saturated (~144 kernel-checked NullEdge
+modules; both external frontier reviews converge on this verdict). The next
+campaign is three different kinds of work: **ship** (N1), **dynamics** (N2/N3),
+**forcing** (N4), with two finite completion theorems (N5) as parallel Aristotle
+fodder and one standing long arc (N6). Direction approved by the user
+2026-07-09 ("think ambitious and impactful").
+
+Everything in secs 3 (non-degeneracy), 5/5b (lit + PhysLean), and 6 (discipline,
+claim calculus, guard pins, harvest loop) remains BINDING. The verification of
+record is unchanged: per-module `lake build` + term-position placeholder scan +
+build-enforced `#guard_msgs` axiom pins, landed as module + `PhysicsSMDraft`
+edge + manuscript/paper anchor row (grep-verified names) + ledger, one commit.
+**Event horizon unchanged and verbatim:** no absolute mass scale, no Born rule,
+no V/sign derivation for Λ, no continuum/Clay claims beyond what N3 actually
+lands.
+
+### N0. Session P0 (carry-over, do first every session until cleared)
+
+- Harvest `claude-mass-shell-projectors` (a347e33b) when COMPLETE: energy
+  projectors `Lambda± = (pslash ± m)/2m` — complete pair of orthogonal
+  idempotents, `tr = 2` each, singular as `m -> 0` (the honest contrast with the
+  chiral projectors, which survive `m = 0`). Land per the standard loop; anchor
+  row next to `ChiralProjectorsDirac`.
+- Then the held follow-on becomes well-posed: **the projector non-commutation
+  theorem** `[P_L, Lambda±] != 0 iff m != 0` — "mass is exactly the failure of
+  the chirality split and the energy split to commute" (at `m -> 0` limit-form:
+  `2m·[P_L, Lambda+] = [P_L, pslash]`, computable exactly). One rational 4x4
+  Aristotle job; seeds: `ChiralProjectorsDirac`, the mass-shell module,
+  `DiracGammaPhysLean`.
+
+### N1. SHIP P-A — the tight four-claim paper (highest certainty x impact)
+
+**Mission.** Extract the submission-ready paper from the manuscript. Timing is
+load-bearing: Douglas-Hoback-Mei-Nissim 2603.15770 shows machine-verified QFT is
+having its founding moment; priority in that literature is being set now.
+
+**The spine (all M, guard-pinned, in-tree — anchor names verified 2026-07-09):**
+1. *Mass = null-edge disagreement, bidirectional.* `MassNullDecomposition`
+   (converse), `DetPUniqueness` (det is forced, not chosen),
+   `PauliMomentumPhysLean` (det P = m² in PhysLean's convention),
+   `SigmaMapNullEdges` (the σ-map IS a sum of null edges — closes which-P),
+   `MasslessEdgeCount` (edge count = rank), `RankCeiling` (the honest rank-2
+   boundary).
+2. *The carrier square's forced four-channel split.* `CarrierRigidity`
+   (four blocks forced, no fifth), `GradedDecompUniqueness` (abstract
+   uniqueness layer), `UnifiedMassBudget`.
+3. *Cl(4) positive sector with a mass gap.* `PositiveSectorClassification`,
+   `FockMassGap`, `ConfinementPositivity` (colored negdef / singlet positive).
+4. *Closure binds.* `CarrierClosurePlane` (unconditional),
+   `BindingEntanglementDeficit` (binding = entanglement deficit), `Goal1Hadron`.
++ *The tie:* `GroundMassDetFamilyLaw` (§3<->§4 as a family law, not a fit).
+
+**Rungs (mostly writing; Claude draft lead, Codex audit lead):**
+- (N1.1) Claim inventory freeze: one page, the four claims + tie, each with its
+  exact theorem statement, grade, and axiom footprint. NOTHING graded C in
+  title/abstract/claims — C-material moves to a clearly-labeled outlook section.
+- (N1.2) Extraction: new `Sources/Null_Edge_P-A_Paper_Draft_v1.md` from the
+  manuscript — §§ intro / claim 1 / claims 2-4 / family-law tie / methods
+  (verification of record, claim calculus, kill discipline as a FEATURE) /
+  outlook. Keep the manuscript as the program document; the paper is narrower.
+- (N1.3) Axiom-audit appendix: footprint statement, guard-file pattern, the
+  spaced-token scan, per-claim `#print axioms` output reproduced verbatim.
+- (N1.4) Prior-art + positioning section (lit rung, verify-then-cite):
+  Douglas et al. 2603.15770 (constructive-QFT formalization — the field
+  context); Wigner little group [import]; the two-twistor prior art
+  (Penrose/Perjes/Hughston) that gates the P-B adjacency; NCG finite triples
+  (1804.09482 already verified). Every citation through
+  `Null_Edge_References.md` first.
+- (N1.5) External audit: >=2 Fable calls via `send_claude_review.py`, one per
+  claim pair, `--source-file` for EVERY reviewed declaration; fix or downgrade
+  every finding. Then the mechanical passes: full anchor sweep (grep every
+  cited name), over-claim review of every section against the four modes.
+- (N1.6) Freeze + arXiv packaging (user does the submission; we deliver the
+  camera-ready draft + a REPRODUCING.md with the exact build commands).
+
+**Kill/honesty:** a referee-facing sentence that outruns its kernel statement is
+a defect regardless of how the theorem reads; the fix is always the sentence.
+
+### N2. The exact-phase path sum — Gaussian-rational checkerboard (start now)
+
+**Mission.** The buildable half of the #1 frontier ("turn the static budget into
+a quantum history theory"). Key observation: **the 1+1D checkerboard path sum is
+exact arithmetic in Q(i)** — amplitude per history = `(i·eps·m)^corners`, so for
+rational `eps·m` every phase and every kernel entry is Gaussian-rational, and
+the propagator is a POLYNOMIAL in `eps·m` with corner-count binomial
+coefficients. No transcendentals, no limits, fully kernel-checkable under
+buildable rule v3 (exact `Q(i)`, not analytic `Complex`).
+
+**In-tree seeds (verified):** `Draft/CheckerboardCornerCountAristotle`,
+`Draft/CheckerboardCornerClosedFormsAristotle`,
+`Draft/CheckerboardCornerPolynomialAristotle`,
+`Draft/CheckerboardKernelClosedFormsAristotle`,
+`Draft/CheckerboardSpinorRecursionAristotle`, `NullEdge/CheckerboardCarrierBridge`,
+`NullEdge/ZigzagAutomaton`, `NullEdge/ZigzagWeyl`,
+`NullEdge/GateD/FiniteCheckerboardTurns`, plus the checkerboard-program corner
+conventions + oracle fixtures (see the checkerboard WP task notes before fixing
+sign/corner conventions — do NOT re-derive them).
+
+**Rungs (each one Aristotle job, cheapest first):**
+- (N2.1) *Amplitude ring + path object.* Represent `Q(i)` explicitly (pairs
+  `(re, im) : Q x Q` with explicit mul, or `Zsqrtd (-1)` localized — first job
+  DECIDES and documents the representation; no analytic `Complex`). Define
+  finite checkerboard histories (null zigzags on the `(t,x)` lattice), their
+  corner count, and `amp h = (i·eps·m)^(corners h)`.
+- (N2.2) *Path sum = kernel (the payload).* `sum over histories from A to B of
+  amp h  =  K(A,B)` where `K` is the landed closed-form kernel
+  (`CheckerboardKernelClosedFormsAristotle`). This is the Jacobson-Schulman
+  combinatorial identity: group histories by corner count, count with
+  binomials, match coefficients. Exact, finite, rational.
+- (N2.3) *Path sum satisfies the discrete Dirac recursion* (tie to
+  `CheckerboardSpinorRecursionAristotle`): one-step decomposition of the sum =
+  the recursion. Together with N2.2: **the propagator IS the sum over null
+  histories** — as a kernel theorem, not an analogy.
+- (N2.4) *The turn-phase verdict.* `m = 0 => amp` supported on the (at most
+  two) straight null histories (massless propagation = no turning); each
+  chirality flip contributes exactly the quarter-phase `i`; mass enters the
+  amplitude ONLY through corners. Verdict theorem: "mass is the amplitude of
+  turning," graded M for the finite identity, `[import]` Feynman
+  checkerboard + Jacobson-Schulman for the reading. This realizes the
+  path-action reading exactly: the turn channel's PHASE face.
+- (N2.5, stretch) *Cl(4) lift.* Four-channel per-history action on the carrier
+  (`CheckerboardCarrierBridge` is the bridge); amplitude
+  `= prod of per-step channel phases`; reproduce the carrier one-step unitary.
+  **Pre-registered kill:** if no four-channel action assignment reproduces the
+  landed discrete propagator, the path-sum reading of the channels is WRONG and
+  §4a's retreat language activates — report as loudly as a landing.
+
+**Non-degeneracy fixtures (in-theorem, per sec 3):** a t=3 lattice point with
+corner count >= 1; kernel entry computed BOTH ways (path sum and closed form),
+nonzero, with visible m-dependence; the m=0 collapse witness (exactly the
+straight histories survive).
+
+**Lit rung (before the manuscript cites the reading):** verify + add
+Feynman-Hibbs (checkerboard problem), Jacobson-Schulman 1984 (path integral for
+the 1+1D Dirac equation), and the discrete-Lorentz quantum-walk line
+(Arrighi et al., already in the graph) to `Null_Edge_References.md`.
+
+### N3. The continuum limit — the program's single decision point (campaign 2)
+
+**Mission.** Lattice propagator (exact, from N2) -> Dirac propagator (analytic).
+Everything graded C — channel names, the Ji correspondence, the Higgs reading —
+lives or dies here. **Do not start until N2.2 is landed**; the limit must sit on
+the exact object.
+
+**Scope exception (explicit):** N3 is EXEMPT from buildable rule v3's
+no-transcendentals clause — this is the analytic campaign. Mathlib
+`Real`/`Filter.Tendsto` analysis is the point. Aristotle is used at LEMMA scale
+(one convergence lemma per job), not for the whole chain.
+
+**Strategy (statement engineering first — the strategy IS the plan):**
+- (N3.1) *Mathlib groundwork inventory* (human + lean-lsp/lean-explore, no
+  Aristotle): what exists for binomial/`Nat.choose` asymptotics, power-series
+  convergence, `arcsin`/`sqrt` expansions, dominated convergence for series.
+  Deliverable: a gap list — which limit lemmas exist vs need proving. Statement
+  freeze only after this.
+- (N3.2) *Dispersion lane (cheaper, do first).* One-step transfer-matrix
+  eigenvalues; prove `omega(k, eps) -> sqrt(k^2 + m^2)` as `eps -> 0` (Mathlib
+  asymptotics). **Pre-registered kill:** any other limit dispersion with the
+  landed channel couplings kills the channel-name reading — §4a activates.
+- (N3.3) *Kernel lane (coefficient-wise — the trick that keeps it finite).*
+  The exact kernel is `sum_c N(c; t, x) (i·eps·m)^c`. At fixed order `c` in
+  `m`, the corner-count binomial `N(c)` times the lattice scaling converges to
+  an explicit rational-coefficient limit — ARITHMETIC limits of binomials, one
+  order per job. Define the continuum propagator BY its power series in `m`
+  (kernel-friendly; avoids needing named Bessel functions, which Mathlib may
+  lack — the series = `J_0`/`J_1` Bessel forms is recorded as documentation
+  `[import]`, not needed by any proof).
+- (N3.4) *Sum interchange.* The one genuinely analytic lemma: uniform tail
+  bound justifying coefficient-wise -> kernel convergence (dominated
+  convergence over the finite-support lattice sums).
+- (N3.5) *The claim, exactly.* Douglas et al. constructed continuum QFT via
+  OS/GJ Gaussian measures; they did NOT prove a lattice -> continuum limit. Our
+  claim if N3 lands: "a machine-verified lattice-to-continuum limit of a named
+  model (1+1D checkerboard -> Dirac)" — that and no more. Standing lit check
+  each session N3 is active: has anyone landed a lattice limit since?
+
+### N4. The generations hunt — force one CP phase, or extend the no-go
+
+**Mission.** The chain is landed as equivalences-to-a-datum
+(`KMPhaseCounting`, `FiniteKMCP`, `KMFlagship`, `KMC3FlagshipCapstone`,
+`KMFamilyRankBridge`; the no-go `FamilyRankNoGo`): three completions <=> n=2
+<=> N=3 <=> exactly one physical CP phase. The open question is FORCING. Hunt
+discipline: every candidate principle gets formalized, then tested against the
+`FamilyRankNoGo` pattern — is it rank-fixing in disguise (equivalent to
+assuming n=2) or genuinely independent? Either verdict is a theorem.
+
+**Rungs:**
+- (N4.0, cheap, land first) *The minimality packaging.* `(N-1)(N-2)/2 >= 1 <=>
+  N >= 3` is already implicit in the counting theorem; state it as the
+  conditional forcing it honestly is: [the framework admits CP violation,
+  i.e. J != 0 is realizable] + [minimal completion count among those] => N = 3
+  EXACTLY. Grade: **T|H — conditional on two NAMED principles, not a
+  derivation**; the manuscript sentence must display both hypotheses. One
+  afternoon Aristotle job on the landed counting modules.
+- (N4.1) *Finite Sakharov.* Formalize the finite avatar: a 3-sector unitary
+  cycle's T-odd rate asymmetry is proportional to the Jarlskog `J` (finite
+  matrix identity, rational witness); so [observed matter asymmetry] => J != 0
+  => N >= 3. Turns N4.0's hypothesis (a) from an assumption into a physical
+  postulate with a finite theorem behind it. Kill: the asymmetry identity has
+  non-J terms that can carry it (then CP-violation-existence does not follow).
+- (N4.2) *Bargmann nondegeneracy.* State "every nondegenerate composable
+  Bargmann-invariant configuration on the completion torus requires >= 1
+  unremovable phase" and test whether anything caps it AT one without fixing
+  n=2. Expected honest outcome: it forces `>= 1`, not `= 1` — the cap is the
+  hard part; report exactly where it fails.
+- (N4.3) *The octonionic route (repo home turf, multi-week).* The exceptional
+  Jordan algebra `J_3(O)` is rank 3 BECAUSE the octonions end the division
+  algebras. Rungs: (a) define `J_3(O)` (27-dim) over the project's XOR-basis
+  octonions (`PhysicsSM.Algebra.Octonion.Basic`; every product through
+  `ConventionBridge`, all parenthesization explicit — AGENTS.md octonion rules
+  are BINDING and the known failure mode here); (b) the Freudenthal
+  determinant / degree-3 characteristic identity; (c) a Jordan frame witness:
+  3 primitive orthogonal idempotents (`diag` idempotents, explicit); (d) the
+  bridge: [completion algebra carries a `J_3(O)` frame] => completionCount = 3;
+  (e) the honest forcing test: what, if anything, in the framework selects
+  `J_3(O)` as the FAMILY algebra? Must not collide with
+  `DivisionDimensionSelection` (which selected K=C for the SPACETIME algebra —
+  keep the two selection questions explicitly separate). Kill: realizable-not-
+  forced => `FamilyRankNoGo` extends to the most famous candidate — publishable.
+- (N4.4) *The systematic no-go.* If N4.1-N4.3 all collapse to rank-fixing in
+  disguise or insufficiency: package "three generations cannot be forced by
+  {Sakharov, Bargmann, exceptional-Jordan} without a rank axiom" as the
+  strengthened no-go paper-let. Pre-register this NOW so the negative is a
+  deliverable, not a disappointment.
+
+### N5. Two finite completion theorems (parallel Aristotle fodder, start now)
+
+Both are COMPLETIONS of landed modules, not fresh starts (verified in-tree
+2026-07-09):
+
+- (N5.1) *Carrier rigidity wiring.* `GradedDecompUniqueness` already has the
+  abstract layer (`decomposition_unique`, and `split_not_forced` as its honest
+  boundary). Missing: the wiring to the CONCRETE carrier square
+  `2(D#D) = Q_A + Q_C + 2E# + 2Q_T`. Rungs: (a) extract the interface
+  hypotheses `decomposition_unique` needs; (b) prove the concrete four-block
+  split satisfies them on the Cl(4) carrier (seeds: `CarrierRigidity`,
+  `UnifiedMassBudget`, the GateYM guard files); (c) instantiate: THE four
+  channels are a property of the object, not the presentation. Kill: a
+  genuinely distinct split satisfying all interface properties — then
+  `split_not_forced` strengthens instead. Either way a theorem.
+- (N5.2) *The WAY dichotomy (the finite Higgs mechanism).* `WAYTurnNoGo`
+  already landed the negative half (`way_nogo`,
+  `chirality_requires_nontrivial_ancilla`). Missing: the CONSTRUCTIVE half —
+  an explicit finite charge-coherent ancilla (dim >= 2 reservoir, the
+  Higgs-as-WAY-reservoir template from
+  `2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`) implementing the
+  chirality gate with EXACT isospin conservation on system+ancilla; concrete
+  unitary witness in `Q` or `Q(i)`. Verdict: the turn channel operates IFF
+  coupled to a charge-coherent reservoir — the finite Higgs mechanism as a
+  dichotomy at M grade; upgrades §5 from MEMO to structure. Kill: no
+  finite-dim ancilla works — a strengthened no-go, also publishable.
+
+### N6. The verified interacting hadron (standing long arc, one job at a time)
+
+Landed base: `Goal1Hadron`, `Goal1Confinement`, `FockSecondQuantization`,
+`InteractingTwoBody`, `FockMassGap`, `DerivedInteraction`, `ConfinementPositivity`.
+Next rungs, in order, each gated on the last: (a) three-constituent
+(baryon-like) singlet bound state strictly below every colored threshold;
+(b) many-body spectral-gap ordering above it; (c) the bound eigenvector's
+channel budget exact and rational with `b_C < 0` (Goal I rung 5's honest
+correction, revisited at the many-body level); (d) two-hadron scattering sector
++ the `FiniteLevinson` tie (bound-state count = phase winding). The landmark if
+the arc completes: "first machine-verified interacting finite QFT with a
+confinement dichotomy and a bound state" — independent of the null-edge
+ontology, valuable to verified physics as a field.
+
+### N7. Sequencing, lanes, and cadence
+
+| When | Work | Shape |
+|---|---|---|
+| Session P0 | N0 harvest + projector commutator | harvest loop + 1 job |
+| Now (week 1) | N1.1-N1.4 extraction; N2.1-N2.3; N5.1-N5.2; N4.0 | writing + 5-6 Aristotle jobs |
+| Week 2 | N1.5-N1.6 audits + freeze; N2.4; N4.1-N4.2 | Fable calls + 3-4 jobs |
+| Campaign 2 | N3 (after N2.2 lands); N4.3 octonionic | analysis lane + octonion lane |
+| Standing | N6 (one job at a time); N4.4 if the hunt collapses | background |
+
+- **Lanes:** Claude — N1 draft lead, N2, N3, N0; Codex — N1 audit lead, N4,
+  N5; both cross-review landings per the sec-6 discipline. Fleet sizing follows
+  the work: with the static layer saturated, ~7 jobs is a CAP not a target —
+  no filler; an empty lane is honest when the frontier is writing or analysis.
+- **Lit cadence:** per-session floor (not 30-min — the day-run cadence was for
+  saturated fleets): one pass per active goal per session, logged; plus the N3
+  standing prior-art check and N1.4's verify-then-cite rule.
+- **Honesty invariants (verbatim from the day run, still the whole game):**
+  claim calculus on every sentence; non-degeneracy witness on every
+  existential; the four over-claim modes reviewed before any headline; kills
+  pre-registered and reported as loudly as landings; the event horizon named
+  in every deliverable.
