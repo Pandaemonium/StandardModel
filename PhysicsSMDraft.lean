@@ -136,6 +136,8 @@ import PhysicsSM.Draft.NullEdgeBivectorSimplicity
 import PhysicsSM.Draft.NullEdgeChiralityProjectors
 import PhysicsSM.Draft.NullEdgeP3SurfaceHolonomy
 import PhysicsSM.Draft.NullEdgeP6Concurrence
+import PhysicsSM.Draft.NullEdge.TwoEdgeMassConcurrence
+import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary
 import PhysicsSM.Draft.NullEdgeSymmetric2x2Spectrum
 import PhysicsSM.Draft.NullEdgeTwoNullMassive
 import PhysicsSM.Draft.NullEdgeHiggsPotential
