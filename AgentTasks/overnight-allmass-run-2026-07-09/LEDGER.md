@@ -1865,3 +1865,22 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   landed layers (Dirac kinematics <-> info-theory <-> mass geometry) are a genuine, non-redundant
   refill direction. Strategy going forward: ground the connections between landed layers, not more
   isolated facts. Fleet: 1 genuine claude job (50cdf453) + 7 Codex.
+
+### 2026-07-09 ~late-afternoon - Claude - REDUNDANCY LANDING GUARD for velocity-mixture-linear-entropy (50cdf453) - DraftLead
+- Preparatory landing-site scouting (finding the §3a anchor for 50cdf453) SURFACED an overlap I missed
+  pre-submission: KraftCompressionMass.lean ALREADY has the general linear entropy Hlin p = 1 - sum pi^2
+  identified with mass^2 (mass_is_compressibility: Hlin=0 <-> pure <-> massless), landed. My submitted
+  velocity-mixture-linear-entropy job (50cdf453) is a SPECIFIC INSTANCE of that general Hlin (the
+  2-outcome +/-c velocity register p+/-=(E+/-p)/2E, Hlin = m^2/(2E^2)).
+- HONEST CORRECTION: the "mass = linear entropy" CORE is NOT novel to my module - the PROGRAM already
+  has it (KraftCompressionMass). My earlier lit-log grade note ([interp], no prior art) must be read as
+  "no EXTERNAL prior art for the velocity-register instance", but INTERNALLY it is an instance of a
+  landed program result. So the added value is ONLY the specific tie: the +/-c velocity mixture's Hlin =
+  m^2/(2E^2), connecting KraftCompressionMass's general Hlin to the Dirac velocity spectrum
+  (DiracVelocityOperator) + the Zitterbewegung drift (ZitterbewegungAverage, vbar^2=1-m^2/E^2).
+- LANDING GUARD (decide at harvest after reading the exact theorems): EITHER (a) land as a SPECIFIC
+  velocity-register instance with an EXPLICIT KraftCompressionMass cross-ref, added value = the +/-c/drift
+  connection, NOT re-claiming "linear entropy = mass^2" as new; OR (b) HOLD as redundant if the added
+  value is too thin. Do NOT land it claiming a novel mass-entropy result. Anchor near KraftCompressionMass
+  (2125) / ZitterbewegungAverage (2134), cross-referencing both. This is the redundancy analogue of the
+  ZigzagWeyl convention guard - preparatory scouting caught it before landing.
