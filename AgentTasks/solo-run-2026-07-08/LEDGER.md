@@ -517,3 +517,21 @@ ruler, generations-as-modules, dark sectors). Backed content already in the pape
   diagram), positivesectors ddf1d5bf (program step 2), familyindex 4f822368 (P-F
   three-generations-as-representation, hard/no-go).
 - **Total frontier jobs now RUNNING: 11.** Harvest + integrate each as it lands.
+
+## Cycle A.23 -- Pro round-3 (coherence + information ontology): doc + 3 conjecture jobs
+
+Two deeper reframings (projective null-coherence field; finite quantum information /
+mass-as-codeword-mixedness). All grade [spec] -- logged to Sources/Null_Edge_Future_
+Directions.md (Deeper organizing layers + 6 pre-registered conjectures A-F with kills).
+Scanned for genuinely-provable NEW pieces beyond the 11 running jobs; submitted 3:
+
+- schurseesaw 9fb722f7 (Conj E, PROOF): finite seesaw -- protected mode + heavy hidden
+  block M => m_eff <= ||B^H v||^2 / lambda_min(M) -> 0. Neutrino-lightness mechanism.
+- cpholonomy c57c871b (Conj D, PROOF): CP = phase of triple null-ray holonomy
+  J=<12><23><31>; SL(2,C)-invariant, CP-odd, magnitude = product of disagreements.
+- confinementpositivity f30e34a2 (Conj B, STRATEGY): colored sub-sector indefinite
+  (no isolated mass) vs singlet positive -- confinement as a finite positivity theorem.
+
+Conjectures A (rigidity), C (family index), F (structured low modes) already map to
+running jobs (carrierrigidity, familyindex, windinglowmodes). TOTAL frontier jobs
+RUNNING: 14. Nothing added to the manuscript (all round-3 content is grade [spec]).

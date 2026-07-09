@@ -182,3 +182,98 @@ Do these in order; **fit no physical numbers until forced**:
 Follow-up jobs queued from Pro's round-2 analysis: multi-channel phase diagram (P-B),
 positive-sector classification (program step 2), family index / three generations
 (P-F).
+
+---
+
+## Deeper organizing layers (round-3 analysis) — all grade [spec]
+
+Two successively deeper reframings of the same kernel-checked core. Neither is a
+result; both are candidate *ontologies* that would sit under the whole program.
+
+### Layer 1 — the projective null-coherence field
+The primitive is not a particle or even a null bundle but a **field of null rays**
+`[ψ_e] ∈ ℂP¹` over the finite complex, with transport `∇`, chirality turn `Γφ`, and
+Krein sector `J`. Then:
+- **Massless = global projective synchronization** (`[ψ_e]=[ψ_f]` for all visible
+  edges); massive = synchronization failure.
+- **Mass = curvature of the projectivized null-ray connection.** Transport a ray
+  around a finite loop: if it returns to the same projective direction the loop is
+  coherence-flat; if rotated, it has opened projective area — measured by the same
+  wedge norms that give mass. Slogan: *unification is decomposition of
+  projective-coherence curvature.*
+- **Three separated scales** the theory should never conflate: projective *angle*
+  (dimensionless, protected ratios — what the theory owns), *amplitude* (absolute
+  MeV/GeV scale — NOT derived), *sector* (does the Krein form admit a positive
+  physical sector). This is why the theory is strong on counts/signs/ratios/phases
+  and silent on absolute masses.
+
+### Layer 2 — finite quantum information (the deepest condensation)
+The primitive is finite quantum information: pure directional messages, finite
+registers, coherent path sums, and loss/protection of distinguishability.
+- **Mass = visible mixedness of the direction register after hidden which-direction
+  information is coarse-grained.** `ρ = P/tr P`; collinear ⇒ rank-1 (massless);
+  disagreeing ⇒ rank-2 (massive); `det P = Σ w_i w_j |ψ_i∧ψ_j|²`; `det ρ =
+  (1−tr ρ²)/2` = linear entropy = (two-edge) concurrence². [in-paper M] for the
+  identities.
+- **The path-conditioned visible state** `ρ_dir = Σ_{h,h'} a_h ā_{h'} Ω_{hh'}
+  |ψ_h⟩⟨ψ_{h'}|` with coherence matrix `Ω_{hh'}=⟨E_{h'}|E_h⟩` contains the whole
+  theory: `Ω=1` fully coherent (interference), `Ω=δ` fully decohered (mixture). Mass
+  is *retained which-null-direction information after hidden histories are traced
+  out* — a failure of coherent compression, **not** mere ignorance (which is why
+  signed closure can *lower* mass: it reorganizes coherence, it is not noise).
+- **The four channels are four information defects:** aperture = directional
+  distinguishability cost; closure = loop memory/holonomy (signed, phase-sensitive
+  ⇒ binding possible); turn = cost of converting one protected register into another
+  (Higgs = the resource permitting the chirality gate); soldering = drift of the
+  directional *codebook* (gravity = failure to globalize the null-direction
+  dictionary).
+- **Confinement = non-decodability:** a colored algebraic excitation may exist in the
+  raw (indefinite) amplitude ledger but fail to define an isolated positive codeword;
+  singlets are the composite codewords that survive the positive-sector quotient.
+- **Binding = compression advantage:** a bound codeword stores the same external
+  information at lower visible mass cost than its separated constituents.
+- **RG = repeated lossy compression;** emergent mass = hidden pure structure turned
+  into visible entropy under coarse-graining (visible mass can rise even as total
+  information cannot — mass is visible *mixedness*, not total information).
+
+Condensed thesis (grade [spec]): *matter is compressed lightlike information; mass is
+the mixedness left over when the compression cannot be made coherent* — equivalently,
+**mass = the obstruction to representing a finite quantum history ensemble by one pure
+null-direction message.**
+
+---
+
+## Pre-registered conjectures (with kill conditions)
+
+From the round-3 analysis. Each is grade **[C]**; three map to already-running jobs,
+three are newly jobbed (see below).
+
+- **A. Coherence-curvature rigidity.** The four-channel split is *forced* by finite
+  null soldering + Krein positivity + chirality + local transport. *Kill:* a fifth
+  independent channel, or two inequivalent decompositions under the same axioms.
+  → job `carrierrigidity` (0e0f0db4).
+- **B. Sector confinement.** Non-singlet gauge sectors fail to admit an isolated
+  positive mass sector; singlets can. *Kill:* a colored positive sector with stable
+  isolated mass and correct constraint descent. → **new job** `confinementpositivity`.
+- **C. Family index three.** The SM charge pattern has exactly three inequivalent
+  positive-sector completions. *Kill:* prove one/two/four/∞ under the same axioms.
+  → job `familyindex` (4f822368).
+- **D. CP phase as projective holonomy.** The physical CP phase is the
+  gauge-invariant phase of a triple/quadruple null-ray holonomy
+  `(ψ₁∧ψ₂)(ψ₂∧ψ₃)(ψ₃∧ψ₁)`; magnitudes give disagreement, phases give a Bargmann
+  invariant. *Kill:* all such phases gauge away in the relevant carrier.
+  → **new job** `cpholonomy`.
+- **E. Small mass from protected Schur leakage (finite seesaw).** A chiral/index-
+  protected massless mode acquires mass only through Schur-mediated leakage into a
+  hidden heavy block, suppressed as `m_eff ~ (visible–hidden overlap)² / M_hidden`.
+  *Kill:* the protected mode stays exactly massless under all allowed leakage, or
+  receives unsuppressed mass generically. → **new job** `schurseesaw`.
+- **F. Structured (not random) closure creates condensate shadows.** Near-zero
+  accumulation needs coherent/topological closure backgrounds. *Kill:* random
+  backgrounds robustly raise near-zero counts under refinement. → job
+  `windinglowmodes` (0c848e8e).
+
+New conjecture-driven jobs (round-3), all submitted 2026-07-08:
+- `schurseesaw` `9fb722f7` (E — neutrino-lightness: `m_eff ≤ ‖Bᴴv‖²/λ_min(M) → 0`)
+- `cpholonomy` `c57c871b` (D — CP as the phase of the triple null-ray holonomy `J`)
+- `confinementpositivity` `f30e34a2` (B — colored ⇒ indefinite, singlet ⇒ positive)
