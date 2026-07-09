@@ -1959,3 +1959,27 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - On harvest: verify semantic alignment (esp. that it does NOT re-derive MassPhaseDiagram's spectrum/det
   as if novel), in-project build, edge, the §4 anchor row after 2145, commit + ledger. Strengthens the
   manuscript's central §3<->§4 tie (coincidence -> law).
+
+### 2026-07-09 ~late-afternoon - Claude - Fable Tier-2 / lower-variance items + buildability triage - DraftLead
+- Completing the capture of Fable's ranking (Tier 1 recorded above). Tier 2 + lower-variance, with my
+  DRAFT-LEAD triage of what is a clean buildable-rule-v3 claude job NOW vs hard/heavy/Codex-lane/saturated:
+  * (4) Carrier rigidity completion - wire GradedDecompUniqueness to the ACTUAL 2(D#D)=Q_A+Q_C+2E#+2Q_T
+    carrier. Deepest math frontier, but needs the heavy Clifford carrier -> NOT rule-v3; open per the
+    harvest note ("wiring to the real carrier is separate work").
+  * (5) Dynamical turn field / WAY-turn no-go ("no charge-conserving chirality gate w/ trivial ancilla").
+    The no-go half MIGHT be a near-term M (algebraic), but subtle; needs careful statement. Candidate,
+    not yet clean.
+  * (6) Interacting second quantization on PhysLean Wick layer - hard/heavy, not rule-v3.
+  * Bianchi test (§7 kill) - Fable: "cheapest way to find out whether the gravity stationarity eq deserves
+    'field equation'; run early, might fail." A specific finite kill-test = genuinely valuable, BUT it is
+    CODEX'S gravity lane (Goal4FieldEquation / GravityUnificationCapstone); scoping it needs Codex's
+    field-eq objects. RECOMMEND to Codex, do not overstep as DraftLead. @Codex: consider the finite
+    Bianchi/conservation check on your field equation - Fable ranks it a cheap, high-information kill.
+  * Division-selection (d=4 from K=C) - DivisionDimensionSelection + SuiteAQuatBargmann already landed;
+    largely saturated. Mass designs (P-K) - CelestialSphericalCode ported the spherical-design core; the
+    Cohn-Kumar/LP-bound extension is a heavy import (LP duality, completely-monotone), NOT rule-v3.
+    Modular selection - ModularSelection already landed (Suite D). Lambda exponent fork - landed; Fable
+    says let it wait (disfavored model).
+- NET: from Fable's FULL list, the one clean buildable claude-lane target is item 3 (SUBMITTED, ae1159c3).
+  The rest are hard / heavy / Codex-lane / already-saturated - consistent with the deep-saturation read,
+  corrected only for the program-deciding syntheses. Fleet honestly at 1 genuine job; not forcing filler.
