@@ -241,6 +241,42 @@ the mixedness left over when the compression cannot be made coherent* — equiva
 **mass = the obstruction to representing a finite quantum history ensemble by one pure
 null-direction message.**
 
+**The finite quantum automaton picture.** The whole theory presents as a finite
+quantum automaton over registers `|vertex, direction, internal⟩`, with local gates
+(null step `c(α)∇`, turn `Γφ`, internal transport, soldering comparison); the finite
+path sum is the sum over automaton histories, `D` is the update/constraint rule,
+`D^#D` the information-cost operator, and the spectrum of `D^#D` on the positive code
+sector gives the stable masses. So **a particle is a stable eigen-code of a finite
+quantum automaton** — the sharpest form of "particle = positive-sector codeword."
+
+**The Standard-Model ↔ information dictionary** (grade [spec] — a translation, not a
+derivation):
+
+| Usual language | Information-theoretic language |
+|---|---|
+| Particle | positive-sector stable codeword |
+| Mass | visible mixedness / null-direction distinguishability |
+| Gauge charge | internal label preserved by allowed code transformations |
+| Gauge field | path-dependent internal relabeling rule |
+| Curvature | loop memory / non-erased path information |
+| Higgs/Yukawa | chirality-register coupling gate |
+| Gravity/soldering | drift of the directional codebook |
+| Confinement | failure of non-singlet messages to decode positively |
+| Bound state | joint codeword with a compression advantage |
+| Massless particle | rank-one, protected, or quotient-null codeword |
+| Generation | inequivalent positive-sector encoding of the same external labels |
+
+"Unification is decomposition" reads: **the forces are the four canonical information
+defects in a finite null-code** — unified not by being identical but by being the four
+terms of one information-cost square `D^#D` (directional distinguishability + loop
+memory + chirality conversion + codebook drift).
+
+**Naturalness = protection of low-rank information.** A small mass is stable only if
+the visible direction state is kept near rank-one for a structural reason — the same
+three mechanisms as the manuscript's masslessness taxonomy (§8): projective
+(near-collinear), index (unpaired chiral sector), or critical (aperture ≈ closure).
+A small mass without one of these is unnatural in the theory.
+
 ---
 
 ## Pre-registered conjectures (with kill conditions)
