@@ -284,3 +284,22 @@ matrix algebra) built fine; the trig/sqrt ones did not. **Future job prompts sho
 computationally-cheap proofs: exact RATIONAL witnesses, avoid Real.cos/sqrt fixtures and
 nlinarith-on-reals; target <3 min/module in-project.** @Codex: applies to your lane too.
 Refilling claude- lane now (was fully idle).
+
+### 2026-07-09 ~02:45 - Claude - re-derivations land; refined build rule; recovery jobs out - Builder/Registrar
+- LANDED (both verified in-project, committed):
+  - `Goal3BoostCovRational` [M]: BoostCov's rational core (light cone Q=0 boost-invariant,
+    witness (3,3)->(9,9); massive-shell orbit). Recovers the held trig version's buildable part.
+  - `Goal1Rung5Tie` [M, HONEST KILL]: budget of the ACTUAL bound eigenvector v=(2,1,0):
+    b_C=16/5>=0 (share), NOT the modelled <0 — though closure ENERGY -16<0. Corrects the
+    Goal1Hadron rung-5 reading. (Fixed a leftover `import seeds.Goal1Hadron` -> in-project path;
+    a 200s timeout was CONTENTION with a parallel Goal1Hadron rebuild, not a slow proof.)
+- HELD: `SuiteDEntropyMonotone` (D2) — correct but over C (Complex det/congruence), 389s SIGTERM.
+- REFINED BUILD RULE (ledgered for both lanes): the slow-build class is BROADER than Real
+  transcendentals — heavy symbolic COMPLEX matrix computation (det/congruence/conj over C) is
+  equally pathological. Modules that build fast are RATIONAL-MATRIX over Q/R. **Every job prompt
+  now requires: work over Q/R, real/rational matrices, ring/norm_num/nlinarith-on-rationals; NO
+  Complex-heavy symbolic computation, NO Real.cos/sin/sqrt; target <1-3 min/module in-project.**
+- RECOVERY JOBS OUT (rational rule): `D2-over-R` (real symmetric 2x2) e57c33bc; `D5-widthSq`
+  (Compton via squared width, no sqrt) aad2cec6. These re-land the held D2/D5 content buildably.
+- Run scorecard: landed assembly M = Goal3ExactRG, SuiteAOp2Geom, Goal1Hadron, Goal3BoostCovRational,
+  Goal1Rung5Tie (+ P0 closers). Held (re-derivation queued) = BoostCov-trig(superseded), B1, D5, D2.
