@@ -33,3 +33,18 @@ cites it.
   => Poisson => everpresent. Graded import (Sorkin/Bombelli-Henson-Sorkin), bridge = C.
 - Sources to verify+add to References: arXiv:1010.5514 (Sorkin/Johnston/... QFT on causets),
   arXiv:1903.11544 (Surya, "The causal set approach to quantum gravity", Living Reviews).
+
+## 2026-07-09 ~afternoon - Claude - celestial-sphere null directions / spinor-helicity prior art
+- Tool: neo4j_paper_search.py --chunks, null-edge collections.
+- Query: celestial sphere null directions spinor helicity spherical harmonics scattering amplitudes conformal.
+- PRIOR ART (bears on ORIGINALITY honesty of s3/s2b):
+  * arXiv:1212.5605 (Scattering Amplitudes & the Positive Grassmannian) ch.5: null momenta =>
+    2x2 p^{a bdot} has det=0 => rank 1 => p=lambda~lambda. EXACT kinematic core under our
+    MassNullDecomposition (massless <=> det P=0 <=> rank-1). => our det-P statement is [comp]/
+    [import] spinor-helicity, NOT [orig]; contribution = finite kernel-checked formalization.
+  * arXiv:1709.04891 (Arkani-Hamed-Huang-Huang, "All Masses and Spins"): massive spinor-helicity
+    decomposes into little-group/null pieces. Prior art for "massive = two null pieces" + s2b
+    polarization counting.
+  * arXiv:2301.06203 ("Zig-Zag Theory of Massive Spinning Particles", ambitwistor): zig-zag framing
+    of massive particles' principal null directions. Prior art for the s2b Penrose-zigzag picture.
+- ACTION: add 3 refs (below), check s3/s2b originality tags do not claim the PHYSICS picture as orig.

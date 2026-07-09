@@ -2037,12 +2037,25 @@ novelty-gap analysis is in
 - H. Elvang, Y. Huang, *Scattering Amplitudes*, arXiv:1308.1697.
 - L. Dixon, *A brief introduction to modern amplitude methods* (TASI lectures),
   arXiv:1310.5353.
+- N. Arkani-Hamed, T.-C. Huang, Y. Huang, *Scattering Amplitudes For All Masses
+  and Spins*, arXiv:1709.04891. (Massive spinor-helicity; the massive state as
+  little-group/null components — prior art for the §2b "massive = two null pieces"
+  and polarization counting; our contribution is the finite kernel-checked form.)
+- N. Arkani-Hamed, J. Bourjaily, F. Cachazo, A. Goncharov, A. Postnikov,
+  J. Trnka, *Scattering Amplitudes and the Positive Grassmannian*, arXiv:1212.5605.
+  (Null momentum ⇒ rank-1, `det p^{αβ̇}=0`, `p=λλ̃` — the classical kinematic core
+  under `MassNullDecomposition` (§3); tagged `[import]`, not `[orig]`.)
 
 **Physical pictures — zig-zag, Zitterbewegung, causal order (§2a).**
 
 - R. Penrose, *The Road to Reality*, Jonathan Cape (2004), §25.2.
 - P. A. M. Dirac (1930); D. Hestenes, *The Zitterbewegung interpretation of
   quantum mechanics*, Found. Phys. 20 (1990) 1213.
+- *Symplectic Perturbation Theory in Massive Ambitwistor Space: A Zig-Zag Theory
+  of Massive Spinning Particles*, arXiv:2301.06203. (An independent "zig-zag"
+  framing of a massive particle's principal null directions — prior art for the
+  §2b Penrose-zigzag picture; our contribution is the finite kernel-checked
+  `ZigzagWeyl`/`DiracVelocityOperator` layer, not the picture.)
 - D. Malament, *The class of continuous timelike curves determines the topology
   of spacetime*, J. Math. Phys. 18 (1977) 1399.
 
