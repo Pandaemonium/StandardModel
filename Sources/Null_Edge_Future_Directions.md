@@ -603,9 +603,38 @@ completed job. All integrated modules build green with footprint
   is exactly `n+1` (strand rank `n`), `= 3` iff `n = 2` (`FamilyIndexNoGo.count_completions`,
   `three_not_forced`). "Three generations" is NOT forced by the finite carrier category; the
   missing ingredient is precisely a rank-fixing axiom (`n = 2`). Honest negative — the
-  replication index is underdetermined, exactly as pre-registered.
+  replication index is underdetermined, exactly as pre-registered. **Closer landed
+  (`FamilyRankNoGo.three_generations_not_forced` [M], 2026-07-09):** sharpens the no-go —
+  each candidate rank-fixer (triality's S3, anomaly cancellation, the exceptional Jordan
+  algebra J3(O)) is realizable at some `n != 2`, and `forcing_iff_rankfixing` proves any
+  structure that DOES force `n=2` is logically equivalent to the datum `n=2` itself. So
+  "three" must be an explicit input; none of the geometric/algebraic candidates derive it.
 
-### Still running (harvest in the follow-up round)
-`massthermo` (V), `spectraldistance` (P), `signatureforcing` (M), `finitecpt` (R),
-`divisionselection` (N), `finitelevinson` (L), `modularselection` (J), `massdesigns` (I/P-K),
-`wayturn` (H), `phasediagram` (P-B multi-channel).
+### Round-2 harvest (the four closers, 2026-07-09)
+The four follow-up closers from the 2026-07-08 round all landed (all [M], footprint
+`[propext, Classical.choice, Quot.sound]`, integrated as draft modules):
+- **`finitecpt` (Conjecture R) [WIN]** -> `NullEdge/FiniteCPT` — a finite CPT theorem on an
+  explicit non-degenerate `C^4` Clifford(x)color witness: `Theta` antiunitary,
+  `Theta D Theta^-1 = D^#`, spectrum conjugate-paired. Suite C's CPT rung. Honest scope:
+  the concrete witness, not arbitrary carriers.
+- **`siglorentz` (Suite A rung 2) [WIN]** -> `NullEdge/RPSelectsLorentzian` — the minimal
+  Osterwalder-Schrader toy: the `(1,3)` signature is reflection-positive with a nondegenerate
+  physical sector, and **any second time direction (in particular `(2,2)`) FAILS** reflection
+  positivity. Selects one time direction; also settles Suite A's A1 Assassin rung in the good
+  direction (no OS-positive `(2,2)` toy). Honest scope: single-mode two-site toy, not full OS
+  reconstruction.
+- **`bargmanncp` (Conjecture D) [WIN w/ caveat]** -> `NullEdge/BargmannCP` — the Bargmann/
+  Pancharatnam triple is CP-odd (`bargmann_CP_odd`), with `Im B != 0` a genuine
+  non-gaugeable CP-violating invariant, and `tan(arg B) = n1.(n2 x n3)/(1 + ...)` the exact
+  Van Oosterom-Strackee form => `arg B = Omega/2` (half the celestial solid angle). Caveat:
+  the literal spherical-excess-area identity needs spherical-triangle theory absent from
+  Mathlib; delivered in the sharp VOS tangent form. **Supersedes the `cpholonomy` wedge
+  triple**; this is the Bargmann object Goal II (finite KM / CP phase counting) builds on.
+- **`rigidityaxiom` (F2 uniqueness) [NUANCED / abstract-only]** -> `NullEdge/GradedDecompUniqueness`
+  — the delivered project had no carrier, so Aristotle formalized the GENERIC kernel: for an
+  internal-direct-sum grading by an operator with pairwise-distinct eigenvalues the blocks are
+  forced (`blocks_eq_eigenspaces`), the decomposition is unique (`decomposition_unique`), and
+  the type-count alone does NOT force the split (`split_not_forced`). A true general lemma and
+  the honest backbone for "which axiom upgrades type-count to uniqueness" (answer: candidate
+  (a), nondegenerate soldering) — but it is NOT a carrier-specific uniqueness claim; wiring it
+  to the real `2(D#D) = Q_A + Q_C + 2E_# + 2Q_T` carrier is separate work (open).
