@@ -574,6 +574,61 @@ e7e17119/b607714a to harvest). All builds ~5-30s now (slowdown fixed).
   budget on full-project builds; `codex-goalII-km-flagship-compose-20260709`
   remains the one active Codex proof job.
 
+### 2026-07-09 ~06:55 - Codex - harvested in-progress KM flagship snapshot - Builder
+- DOWNLOADED in-progress snapshot for
+  `codex-goalII-km-flagship-compose-20260709`
+  (`0c83ed84-4ce3-4e20-8f23-9882dbae5036`) while Aristotle was still marked
+  RUNNING in a build loop. Extracted target file:
+  `PhysicsSM/Draft/NullEdge/KMFlagship.lean`.
+- LOCAL CHECK: extracted `KMFlagship.lean` passed `lake env lean` against the
+  live repo, so the failed/ongoing Aristotle project build was not blocking the
+  target theorem file.
+- HARVESTED + PORTED `KMFlagship` [M, self-guarded]: physical phase count equals
+  complete-graph incidence corank for `1 <= N`, with a low-N summary bundling
+  N=2 no phase / constructive rephasing and the exact N=3 nonzero Jarlskog
+  witness. Honest scope: linearized corank plus low-N witnesses, not a global
+  unitary normal form for all `N`.
+- DOCS UPDATED: `HARVEST_LOG.md`, `Null_Edge_Future_Directions.md`, manuscript
+  anchor table, `HONEST_SCORECARD.md`, and `MORNING_REPORT.md`.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.KMFlagship
+  PhysicsSM.Draft.NullEdge.KMFamilyRankBridge` PASS.
+
+### 2026-07-09 ~07:00 - Codex - harvested 7am strategy/audit returns - Assassin/Oracle
+- HARVESTED no-build strategy job
+  `codex-grand-strategy-0700-audit-pivot-20260709`
+  (`470e924f-0dfc-41af-83bd-4539aaaceab7`). Key guidance: audit first around
+  `IndexAnomalyInterface`, `MassResourceConsistency`, charge-commutation
+  lemmas, WEP bridges, `MassEntropyMonotone`, and Goal II rank/corank; next
+  theorem pressure is WEP/field-source reconciliation plus nonvacuity witnesses
+  for the charge commutation lemmas.
+- HARVESTED no-build Goal IV overlap audit
+  `codex-audit-goalIV-overlap-0700-20260709`
+  (`2e485113-27ce-498b-b858-d73a6c23eb88`). Safe scope: Codex has trace-level
+  algebraic/variational WEP source-and-action bridges; Claude's
+  `Goal4FieldEquation` is a finite proportionality avatar; neither side should
+  be manuscripted as a tensor Einstein equation, Clausius/Jacobson derivation,
+  or continuum gravity source theorem.
+- ACTION: queued the audit's recommended next theorem jobs: full matrix
+  source recovery before trace shadow, Suite D charge nonvacuity, and an
+  independent KM flagship audit.
+
+### 2026-07-09 ~07:05 - Codex - next theorem wave submitted after KM harvest - Builder/Assassin
+- PREPARED submission package
+  `AgentTasks/aristotle-submit/codex-next-round-0700-20260709-project`
+  with live `KMFlagship`, WEP bridge modules, Suite C/D rungs, and prompt notes.
+  Package scan reported zero proof-placeholder, hidden-assumption-token, or
+  u n s a f e-token hits in the named theorem files.
+- SUBMITTED `codex-wep-action-slot-equation-0700-20260709`:
+  project `9ceb0ade-028d-4a7c-a52d-a244c2c150a4`, target
+  `PhysicsSM/Draft/NullEdge/WEPActionSlotEquation.lean`.
+- SUBMITTED `codex-suiteD-charge-nonvacuity-0700-20260709`:
+  project `1a4d58e1-5f80-40ad-9a2d-534414caae3d`, target
+  `PhysicsSM/Draft/NullEdge/SuiteDChargeNonvacuity.lean`.
+- SUBMITTED `codex-audit-kmflagship-0700-20260709`:
+  project `3888a5c9-b651-4b08-a2f3-7d29410a59a9`, audit-only target over
+  `KMPhaseCounting`, `FiniteKMCP`, `IncidenceCorank`, `KMFlagship`, and
+  `KMFamilyRankBridge`.
+
 ### 2026-07-09 ~06:25 - Claude - GRAVITY+QFT UNIFICATION: lit search, analysis, docs, 4 jobs (user-directed) - Builder/DraftLead
 User: "literature search, own analysis, update docs, submit jobs to support a unified gravity+QFT theory."
 - LIT: 2 chunk searches confirm the two routes to gravity+matter-from-one-object, both with DISCRETE
@@ -590,3 +645,17 @@ User: "literature search, own analysis, update docs, submit jobs to support a un
   - unified-mass-budget 65b5558c - matter mass + gravity mass = graded pieces of one 4D#D = same det P.
 @Codex: P-L unification program + gravity-source-matter overlaps your Goal IV / WEPActionBridge -
 please reconcile the field-equation source-of-gravity framing at harvest.
+
+### 2026-07-09 ~06:45 - Claude - "Mass is slowed-down light" + gravity trio LAND (6 modules) - Builder/DraftLead
+All 6 built green (28s batch), M, guard-pinned, cited names verified:
+- SLOWED-DOWN-LIGHT trio -> new manuscript §2b + 3 anchor rows: DiracVelocityOperator
+  (alpha eigenvalues +-1 = always at c), ZigzagWeyl (massive = 2 null Weyl coupled by mass),
+  ZitterbewegungAverage (drift = convex avg of +-c). §2b earns the title claim as M for fermions.
+- GRAVITY+QFT trio -> §4/§7 anchor rows: JacobsonClausius (finite equation of state, Clausius <=>
+  field eq), GravitySourceMatter (finite G=kappaT, WEP; OVERLAPS Codex Goal IV - reconcile prose),
+  UnifiedMassBudget (4D#D = matter (+) gravity, totalBudget = c*det P = 3552 - one operator both forces).
+STILL IDLE TO HARVEST (next): helicity-chirality 0e01c2b0, positive-sector 93c06030,
+rg-fixedpoint 6e6f2707, massless-one-edge 92fbbe98 (was running), massphase ed85faf3 (running),
+SuiteB_Levinson e7e17119, SuiteA_Op2Geom4 b607714a, 2e485113 (unknown), spectral-action-avatar 2db9868c (running).
+@Codex: GravitySourceMatter + Goal4FieldEquation both in gravity/Goal-IV territory - please reconcile the
+field-equation source framing before any §7 prose (anchor rows are verified-declaration records only).
