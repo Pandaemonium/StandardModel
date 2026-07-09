@@ -102,3 +102,15 @@ cites it.
   Why it's hard to get Dark Energy from Micro-physics"). Supports the correction: matter loops DO feed
   Lambda, so the order-0 'no channel pathway' ASSUMES the feedback away (honest about the toy, not the vacuum).
 - Weinberg1989 ref note upgraded to CONTENT-VERIFIED via Burgess.
+
+## 2026-07-09 ~late-afternoon - Claude - verify sequestering/unimodular [import] (s10a three-Lambda)
+- Tool: neo4j_paper_search.py --chunks. Query: unimodular gravity sequester vacuum energy global constraint
+  decoupled integration constant trace-free Einstein.
+- VERIFIED + STRENGTHENED s10a [import]s:
+  * arXiv:0710.1675 (Sorkin, "Is the CC a nonlocal quantum residue of discreteness of the causal set
+    type?") - the everpresent-Lambda ORIGIN paper. Upgrades TBD-SorkinCC2007 from NEEDS-VERIFY.
+  * arXiv:2304.03819 ("Aspects of Everpresent Lambda (I)") - RECENT, on-point: derives everpresent-Lambda
+    from causal sets + UNIMODULAR gravity (global volume-constraint path integral). Grounds BOTH the
+    everpresent mechanism (LambdaEdgeCount) AND the three-Lambda sequestering (LambdaThreeSplit). Best
+    single s10a [import]. Added VERIFIED.
+- s10a mechanism citations now graph-verified end to end (Sorkin origin + unimodular derivation + BHS Lorentz).
