@@ -259,3 +259,25 @@ cites it.
   prior art for the item-2 thread; do NOT adopt / conflate with the program's honest scope. If the
   family-index (item 2) work is pursued, add Singh 2009.05574 + 2205.06614 (+ existing Furey tracking) to
   Null_Edge_References.md before citing. Not added now (item 2 is future-directions, not the current MS).
+
+## 2026-07-09 ~late-afternoon - Claude - prior machine-verified QFT/OS (guards the "first continuum limit" claim)
+- Tool: scholarly search-arxiv ("formalization physics Lean proof assistant"). Context: guard the [orig]
+  status of Fable/Pro's #1 second-paper frontier claim ("first machine-verified lattice->continuum limit
+  anywhere") BEFORE anyone leans on it.
+- KEY FINDING (honesty guard): Douglas-Hoback-Mei-Nissim 2026, "Formalization of QFT", arXiv:2603.15770 -
+  a LEAN 4 formalization of the FREE BOSONIC QFT in 4D Euclidean spacetime proven to satisfy the
+  Osterwalder-Schrader / Glimm-Jaffe axioms (OS/GJ now proven using only Lean + Mathlib). This is PRIOR
+  machine-verified constructive QFT. => the program must NOT claim "first machine-verified continuum QFT";
+  the narrowest defensible claim is "first machine-verified LATTICE->continuum LIMIT of a specific model
+  (checkerboard->Dirac)", distinguished from Douglas et al.'s Gaussian-measure CONSTRUCTION (not a lattice
+  limit). Also DIRECTLY relevant to the program's own OS/RP work (Carrier RP->OS->clustering): Douglas et
+  al. formalized the OS/GJ axioms - a citation/comparison target for the OS/RP lane.
+- RELATED (machine-verified physics prior art, all Lean 4, 2025-2026): Kol et al. 2606.29687 (Claude
+  Fable-5 + Lean proved the FGG/QAOA conjecture - the same model giving strategic input here; establishes
+  the LLM+Lean methodology as prior art), Ehatamm et al. 2605.16523 "Lean-QEC" (QEC distance certificates -
+  relevant to the program's code-distance = area-law / confinement thread), Breen et al. 2510.12787
+  "Ax-Prover" (agentic Lean proving in math + quantum physics).
+- ACTION: log only (these are second-paper / OS-lane relevant, not the current MS headline). If the OS/RP
+  lane or the continuum-limit second paper cites them, add Douglas 2603.15770 (+ Lean-QEC for confinement)
+  to Null_Edge_References.md first. The "first machine-verified continuum limit" claim is now GUARDED:
+  narrow it to the lattice-limit-of-a-model form, cite Douglas et al. as the constructive-QFT precedent.
