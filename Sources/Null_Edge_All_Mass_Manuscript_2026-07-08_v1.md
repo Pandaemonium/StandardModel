@@ -1312,12 +1312,14 @@ massless mode (`exists_protected_massless_mode`, **M**).
 manifold, curvature, or characteristic class — so this is a *dimension count*
 forbidding the kernel from fully lifting, not a characteristic-class law; "topological"
 means only the loose sense of a discrete invariant (the chiral imbalance). (ii) The
-protection is **conditional**: the zero mode is robust to grading-preserving (**odd**)
-deformations — eigenvalues can only leave zero in `±` pairs — but an **even
-(grading-diagonal) mass term gaps it**. So the honest statement is
-*chiral-symmetry-conditional* protection, the finite analog of SSH / BdG sublattice
-zero modes (`[import]`), **not** immunity to *every* potential. The imbalance cannot be
-lifted by any *odd* perturbation; that is the true, narrow content.
+protection is **conditional**, and this too is now kernel-checked: the zero mode is
+robust to grading-preserving (**odd**) deformations — eigenvalues can only leave zero
+in `±` pairs — but an **even (grading-diagonal) mass term gaps it**, the Hermitian
+square acquiring `det = m⁴ ≠ 0` (`EvenMassGaps.odd_preserves`, `even_gaps`, **M**). So
+the honest statement is *chiral-symmetry-conditional* protection, the finite analog of
+SSH / BdG sublattice zero modes (`[import]`), **not** immunity to *every* potential.
+The imbalance cannot be lifted by any *odd* perturbation; that is the true, narrow
+content.
 
 **Masslessness is not one thing — a taxonomy (all four kinds kernel-checked).**
 The framework separates *four distinct mechanisms* by which a mode is massless, and
@@ -2154,6 +2156,7 @@ anchor sweep.)*
 | 7 | `eslot_not_pure_torsion_witness` | `Carrier/CarrierESlotTorsionSplit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | not pure torsion (witness) |
 | 8 | `chiralIndex_eq_graded_dimension` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | index = graded dimension |
 | 8 | `exists_protected_massless_mode` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | forced massless mode |
+| 8 | `odd_preserves`, `even_gaps`, `even_mode_massive`, `conditional_protection_verdict` | `NullEdge/EvenMassGaps.lean` | M, self-guarded (in-file pin) | **the protection is chiral-conditional (kill-test as theorem)**: the chiral zero mode `v` of an odd `A` is *preserved* by an odd perturbation (`(A+P_odd)v=0`) but *gapped* by an even (grading-diagonal) mass `m≠0` — the Hermitian square then has `det = m⁴ ≠ 0`, no zero eigenvalue. Confirms "immune to every potential" is false; protection holds only for grading-preserving perturbations (the §8 boundary as a theorem, cf. `RankCeiling`/`BudgetSignMismatch`) |
 | 8 | `chiral_det_eq_pm_one` | `Carrier/ChiralZeroModeParity.lean` | M, guard-pinned (`CarrierAxiomGuard`) | chiral determinant dichotomy |
 | 9 | `null_pair_prod_sq_eq_pairing_smul` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | decimation coefficient law |
 | 9 | `effective_edge_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | blocking generates non-null term |
