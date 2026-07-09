@@ -1490,3 +1490,22 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   kernel-checked. The program working as intended (adversarial audit -> honest boundary -> formalized).
 - LANE: redteam-gravity-lambda (audit s7+s10a) RUNNING (1). Refill needed - but session has landed ~14
   modules; all 7 port targets done; det-P red-team fully acted on. Priorities A/C mature, B blocked on Codex.
+
+### 2026-07-09 ~mid-afternoon - Claude - 2nd red-team (s7+s10a) acted on: two honest walk-backs - DraftLead
+- SCORECARD brought fully current (was stale, predated ~14 today's landings): particle-table/
+  Lambda/s7/ports grouped, no-gos, red-team sections, updated reader caveat. Committed for Codex co-sign.
+- 2nd RED-TEAM (redteam-gravity-lambda e6b6b11b, saved audits/REDTEAM_gravity_lambda_20260709.md)
+  on s7+s10a. TWO WALK-BACKS folded honestly:
+  * s10a LORENTZ MISLABEL (my last-cycle over-claim): LambdaFrameConstraint proves the WEAKER
+    de-Finetti/exchangeability fact (S_N covariance=aI+bJ), NOT the Lorentz statement. Real
+    'hyperuniform=>not Lorentz' = Bombelli-Henson-Sorkin [import]; translation-invariant
+    hyperuniform processes EXIST. Corrected the fork prose + anchor row; folded the count-variance
+    exponent kill-test.
+  * s7 LABELING: finite tr(D^2)=EH is definitional bookkeeping, NOT Chamseddine-Connes heat-kernel
+    theorem (no manifold in finite dim); the 5 'routes' are known-equivalent (TEGR=GR), not
+    independent; order-0 Lambda-invariance ASSUMES AWAY matter-loop feedback (Weinberg 1989). Bianchi
+    kill-test recorded.
+  * +4 refs (BHS, Weinberg 1989, Kaloper-Padilla, Chamseddine-Connes orig).
+- NET: both red-teams done + acted on. 3 headline sections honestly bounded: physics=[import], the
+  [orig] is the finite kernel-checked bookkeeping avatar + grading; 2 finite 'cores' (s7 EH, s10a
+  Lorentz) are weaker than their imports, now labeled as such. This is the pre-21:00 audit, real.

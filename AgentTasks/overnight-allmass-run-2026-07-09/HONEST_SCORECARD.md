@@ -79,7 +79,24 @@ then landed correctly).
   `RankCeiling`; (3) *phase-blindness* — `det P=|m|²` discards CP/Majorana phase.
 - **§6 composite mass**: dynamical QCD mass (trace anomaly, "mass without mass") is NOT derived — det-P
   re-labels hadron mass, does not explain it.
-A **companion red-team on §7 + §10a** is in flight (will drive the next honesty round).
+A **companion red-team on §7 + §10a** (`redteam-gravity-lambda`, saved to `audits/`) then
+forced two further walk-backs, both folded:
+- **§10a Lorentz mislabel (walk-back)**: `LambdaFrameConstraint` proves the *exchangeability*
+  (de Finetti, `S_N`) fact `C=aI+bJ`, **not** the Lorentz statement it was sold as — the real
+  "hyperuniform ⇒ not Lorentz" is Bombelli–Henson–Sorkin `[import]`; exchangeability is cruder
+  than Lorentz and translation-invariant hyperuniform processes exist. The fork's sharp form is
+  now the count-variance exponent (`α=1` keeps the number, `α<1` kills it — not both).
+- **§7 labeling**: finite `tr(D²)=`Einstein–Hilbert is *definitional bookkeeping*, not the
+  Chamseddine–Connes heat-kernel theorem (no manifold/short-time limit in finite dim); the
+  five "routes" are known-equivalent (TEGR≡GR), not independent; the order-0 Λ-invariance
+  *assumes away* matter-loop feedback (only `dim H` invariance). Bianchi + count-variance
+  kill-tests recorded.
+
+**Net after both audits:** the three headline sections (§3 mass, §7 unification, §10a Λ) are
+now honestly bounded — the *physics* is `[import]` (spinor-helicity, Chamseddine–Connes,
+Jacobson, Sorkin/BHS lineages); the `[orig]` contribution is the **finite kernel-checked
+bookkeeping avatar + T/M/C grading discipline**, and in two places (§7 EH, §10a Lorentz) the
+finite proposition is a *weaker* statement than the import it stands beside — now labeled as such.
 
 ### The one caveat a reader should carry (updated)
 The central `mass² = det P` is *standard kinematics* (spinor-helicity / Penrose zigzag / Kaluza–Klein–
