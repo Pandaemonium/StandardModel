@@ -70,3 +70,15 @@ cites it.
   mass) is textbook QCD, does not need a graph citation to honor.
 - ACTION: check s6 (hadron) honestly distinguishes the KINEMATIC det-P bookkeeping from the
   DYNAMICAL QCD mass mechanism (trace anomaly) - do not let det-P claim to "explain" hadron mass.
+
+## 2026-07-09 ~mid-afternoon - Claude - VERIFY the BHS Lorentz core (s10a correction)
+- Tool: neo4j_paper_search.py --chunks. Query: Poisson sprinkling unique Lorentz invariant discreteness
+  without breaking Lorentz symmetry random lattice frame.
+- VERIFIED (the [import] the s10a correction now relies on): arXiv:gr-qc/0605006 "Discreteness without
+  symmetry breaking: A Theorem" - Bombelli, Henson, Sorkin (top hit 0.884, exact title+authors in graph).
+  Poisson = unique Lorentz-invariant discrete point process on Minkowski. This is the REAL "hyperuniform
+  => not Lorentz" (not the exchangeability lemma LambdaFrameConstraint proves).
+- CORROBORATION: arXiv:gr-qc/0311055 (Henson, "QG Phenomenology, Lorentz Invariance and Discreteness"):
+  non-random discretization has empty/overfull regions in boosted frames => prefers a frame => breaks
+  Lorentz. Also 1903.11544 (Surya), 1010.5514 (QFT on causets) reconfirmed.
+- ACTION: upgraded BHS + added gr-qc/0311055 to References (NEEDS-VERIFY -> VERIFIED).
