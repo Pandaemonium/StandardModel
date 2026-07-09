@@ -676,3 +676,32 @@ Themed on the hot directions (rule v3, prompts in jobs/):
 Also still IDLE from prior rounds to harvest: helicity 0e01c2b0, positive-sector 93c06030,
 rg-fixedpoint 6e6f2707, massless-one-edge 92fbbe98, massphase ed85faf3, Levinson e7e17119,
 Op2Geom4 b607714a, 2e485113; spectral-action-avatar 2db9868c.
+
+### 2026-07-09 ~07:20 - Claude - LAMBDA ROUND: Fable+Pro synthesis folded into the Lambda doc + 4 jobs - Builder/DraftLead
+User relayed Fable + Pro analyses on the cosmological constant. Synthesis recorded in the Lambda
+doc (new sec 7b): **Lambda is the conjugate of the count** — the zeroth spectral moment (tr(1)),
+channel-blind par excellence; three-Lambda split (spec/int/fluc); mean-is-gauge/fluctuation-is-
+physical (finite unimodular trade); Lambda as a Suite-D susceptibility with the Bernoulli bound;
+THE PRE-REGISTERED FORK (Poisson vs hyperuniform count statistics — constraint-induced
+correlations could suppress Lambda below 1/sqrt(V) and KILL the everpresent identification; which
+count is conjugate to Lambda is the refinement); area-law reading [C/spec]; predictions 1-5;
+observational posture (DESI DR2 ~3.1sigma hints, Planck baseline, ZAS-vs-Aspects-II tension, all
+verify-before-cite); inflation [spec] note; Lambda-specific event horizon (no V, no sign, no
+stochastic dynamics; dissolves magnitude structurally, explains coincidence conditionally).
+4 NEW JOBS (rule v3, prompts in jobs/):
+- e4ee2975 `LambdaUnimodular` (L1, keystone) - count-constrained stationarity => +Lambda*1
+  multiplier; vacuum shift = gauge on the constraint surface; tr(1) channel-blindness (no channel
+  pathway into Lambda). Converts the Lambda-V conjugacy from [import] toward finite M.
+- ac58c729 `LambdaSusceptibility` (L3) - Var(N) identity + Bernoulli bound Var<=<N> => everpresent
+  as an UPPER BOUND for the ideal edge gas; grand-canonical susceptibility reading; area-exponent note.
+- 5d508356 `LambdaConjugacy` (Pro-C) - finite Fourier pair on ZMod 4 (omega=i, Gaussian rationals)
+  + Donoho-Stark support uncertainty |supp f|*|supp Ff| >= n; delta<->uniform extremals. Makes the
+  conjugacy NATIVE.
+- 735004c9 `LambdaCountDichotomy` (L4, the fork) - finite witnesses BOTH ways: free = extensive
+  variance (everpresent) vs sum-constrained = sub-extensive (hyperuniform, Var=0 for k-of-n);
+  `everpresent_iff_extensive` criterion; two-register witness (charge constrained, edge count free)
+  for the which-count refinement.
+Already covered: L2 lambda-edge-count 7e99904c (running); L5 rides spectral-action-avatar 2db9868c
++ L1's blindness lemma. L6 (manuscript surfacing + exponent prediction) after L1-L4 land.
+NOT jobbed (per event horizon / rule v3): Lambda covariance process (needs stochastic dynamics),
+sign derivation, V derivation; the large-ensemble Var(N) oracle probe stays a numeric follow-up.
