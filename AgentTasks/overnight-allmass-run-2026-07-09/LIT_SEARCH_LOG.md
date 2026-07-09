@@ -82,3 +82,14 @@ cites it.
   non-random discretization has empty/overfull regions in boosted frames => prefers a frame => breaks
   Lorentz. Also 1903.11544 (Surya), 1010.5514 (QFT on causets) reconfirmed.
 - ACTION: upgraded BHS + added gr-qc/0311055 to References (NEEDS-VERIFY -> VERIFIED).
+
+## 2026-07-09 ~late-afternoon - Claude - verify the Chamseddine-Connes heat-kernel [import] (s7 correction)
+- Tool: neo4j_paper_search.py --chunks. Query: Chamseddine Connes spectral action heat kernel
+  Seeley-DeWitt Einstein-Hilbert from Dirac operator.
+- CONFIRMED (the [import] the s7 correction leans on): the spectral action's EH emergence REQUIRES
+  the heat-kernel expansion (Gilkey's theorem on the Dirac square) - explicit in CCM hep-th/0610241
+  ch.81 ("square of the Dirac operator... suitable to apply the standard local formulas for the heat
+  expansion"), and 2401.03705 ("spectral action... reduces to Einstein's gravity if the spectral triple
+  is dual to a Riemannian manifold"). Both ALREADY in References. This directly supports the audit's
+  point: the finite avatar (no manifold/heat kernel) CANNOT reproduce a2~integral R - so finite
+  tr(D^2)=EH is labeling. CC-orig ref note upgraded to CONTENT-VERIFIED.
