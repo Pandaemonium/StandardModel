@@ -1920,3 +1920,29 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   edged -> the lean-quantum DPI direction is ALSO already ported (info-theory space confirmed saturated).
 - Fleet: 0 claude jobs. Per the deep-saturation assessment (143 modules), NOT submitting more. Remaining
   work to 21:00: periodic lit, Codex cross-review, honesty QA. Manuscript comprehensive + honest.
+
+### 2026-07-09 ~late-afternoon - Claude - FABLE STRATEGIC RANKING recorded + item-3 job submitted (corrects saturation) - DraftLead
+- Fable (mid-turn) ranked the program's directions by "which results change the EPISTEMIC STATUS of the
+  whole program". This CORRECTS my deep-saturation conclusion: I was saturated on ISOLATED facts + thin
+  cross-connections, but Fable identifies PROGRAM-DECIDING targets that are genuinely open, non-filler.
+  TIER 1 (recorded for the future-directions doc / P-A follow-ons):
+  1. 1+1D continuum limit formalized IN-KERNEL (checkerboard->Dirac, upgrade [import]->M; "first
+     machine-verified lattice->continuum limit anywhere"). HARD: it is a LIMIT (transcendental dispersion,
+     convergence) - violates buildable-rule v3, NOT a clean Aristotle job; second-paper work per Fable.
+  2. One-CP-phase forcing (three completions <-> n=2 <-> N=3 <-> exactly one physical CP phase; the
+     "largest single prize"). Open-ended research (every candidate collapses to "n=2 in disguise") - not
+     a clean buildable target yet; ties to the octonion / exceptional-Jordan thread.
+  3. The determinant-side FAMILY LAW replacing the killed budget=c*detP - "load-bearing... everything
+     else quietly presupposes it". TRACTABLE + buildable + strengthens the CURRENT manuscript.
+- ACTED on item 3 (the tractable, load-bearing one): investigated the objects (BudgetSignMismatch killed
+  budget=c*detP; MassPhaseDiagram spectrum {lam-kap,lam,lam+kap}, det=lam(lam^2-kap^2)); numerically
+  verified the exact family identities (ground mass mu-=lam-kap, det=mu-*mu+, defect=mu--lam=-kap,
+  det=mu-(2lam-mu-)). Scoped + SUBMITTED job ground-mass-det-family-law (buildable v3, real symmetric 2x2),
+  carefully cross-referencing BudgetSignMismatch + MassPhaseDiagram to avoid re-claiming their spectrum/det
+  (the redundancy lesson from the KraftCompressionMass overlap applied). NEW content = the family-law
+  synthesis + exact-defect + spectral-vs-invariants contrast.
+- HONEST NOTE: Fable's strategy also says NONE of Tier 1 should delay P-A (the tight 4-claim paper), and
+  items 1-3 are stronger as a SECOND paper. So Tier 1 is program/next-phase direction, not current-
+  deliverable churn; only item 3's family law touches the current manuscript's central tie. Fable also
+  flags external analyses have CONVERGED (rounds 3-6 restate the same ontology) - consistent with my
+  saturation read for the isolated/ontology layer, corrected only for the 3 program-deciding syntheses.
