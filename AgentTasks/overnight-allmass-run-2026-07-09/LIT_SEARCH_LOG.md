@@ -225,3 +225,18 @@ cites it.
   electron but the authors conclude it does NOT carry to the many-body QFT case. Checked manuscript §2a
   luminal claims (velocity_spectrum, drift_subluminal_from_average): all single-particle/kinematic - NO
   many-body luminal over-claim, so CONSISTENT with the caveat. Upgraded ID-ONLY -> VERIFIED in References.
+
+## 2026-07-09 ~late-afternoon - Claude - prior art for "mass = linear entropy of the +/-c velocity mixture"?
+- Tools: scholarly search-inspirehep (empty) + search-arxiv. Context: grade the pending
+  velocity-mixture-linear-entropy module (50cdf453) before it lands - is the connection [import] or [orig]?
+- Query "zitterbewegung entropy": arxiv returned 2, BOTH unrelated to this connection: Sbitnev 1501.06763
+  (superfluid-vacuum vortex model, zitterbewegung as vortex trembling - speculative, not this) and
+  Boumali-Hassanabadi 1611.06552 (q-deformed Dirac OSCILLATOR thermal statistics: partition function,
+  thermal entropy of the spectrum - NOT the velocity-mixture linear entropy). "zitterbewegung entropy mass"
+  and the INSPIRE queries returned nothing.
+- FINDING: the specific "mass^2 = 2E^2 * (linear entropy of the +/-c velocity mixture)" connection does
+  NOT surface as standard prior art. GRADING IMPLICATION for the pending module: the drift relation
+  vbar^2 = 1 - m^2/E^2 is [import] (standard Dirac kinematics); the LINEAR-ENTROPY reading (mass =
+  velocity-mixture impurity) is best graded [interp]/[orig] framing. HONEST CAVEAT: absence of search
+  hits != proof of novelty (may exist under other terminology / in textbooks off arXiv); grade the
+  connection [interp] with the drift-relation core [import], and do NOT claim a strong novelty result.
