@@ -1468,3 +1468,16 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   Complements the red-team: the det-P=mass IDENTITY is [import], but its CANONICITY is a genuine
   finite characterization (classical invariant theory, kernel-checked).
 - LANE: rank-ceiling, mass-four-faces, zigzag-automaton(resubmit) RUNNING (3). Refill on completion.
+
+### 2026-07-09 ~mid-afternoon - Claude - CSLib port lands (7/7 targets) + consolidation + 6 QCD honesty - DraftLead
+- PORT LANDED [M]: `ZigzagAutomaton` (148603dd, hardened resubmit). CSLib transfer-operator port:
+  chirality flip = 2x2 stochastic T(a), spectral gap 2a = mass proxy; massless<=>reducible. The
+  hardened anti-collision prompt worked (built the automaton, not ZigzagWeyl). ALL 7 NAMED PORT
+  TARGETS NOW LANDED: PhysLean, lean-quantum, testing-lower-bounds, Kraft, Sphere-Packing/LeanCamCombi,
+  SciLean, CSLib. Build 18s. s2b anchor.
+- LANDED [M]: `MassFourFaces` (da73a960). Consolidation: Slin=2det=Hlin (one single-register
+  invariant), TV=Plucker distance (two-register); all vanish at masslessness. Kernel-checks the
+  mass^2 dictionaries are ONE invariant, not independent - anti-double-count. Build 18s. 3a anchor.
+- s6 HONESTY (red-team composite-mass): explicit note that dynamical QCD mass (trace anomaly,
+  Wilczek 'mass without mass') is NOT derived; det-P re-labels hadron mass, does not explain it.
+- LANE: rank-ceiling RUNNING (1). Refill needed.
