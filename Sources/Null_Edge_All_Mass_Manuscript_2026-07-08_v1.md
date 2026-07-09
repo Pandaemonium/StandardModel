@@ -1113,6 +1113,26 @@ Malament split: causal order supplies the light-cone structure for free,
 and the decorations owe exactly the scale. But the finite *algebra* of the
 split is a theorem, not a hope.
 
+**The gravity channel, as it now stands (M scaffolds).** This run brought the
+soldering channel toward parity with the matter channels, as a cluster of finite
+theorems (grade **M**, physics identification still **C**): the E-slot *is* a
+finite **teleparallel** connection — flat curvature, nonzero torsion carrying the
+field strength (`TeleparallelSoldering`, arXiv:1204.4339); its stationarity is a
+finite **equation of state** (`JacobsonClausius` — the soldering field equation is
+the integrability condition of Clausius `δQ=T δS`) and equivalently a finite
+**Einstein–Hilbert** field equation (`EinsteinHilbertTerm` — the order-2 term of a
+spectral action is a curvature functional of the soldering); the geometry is
+**sourced by the matter channels**, channel-blind, which is the weak equivalence
+principle (`GravitySourceMatter`, a finite `G=κT`); a finite **holographic** bound
+caps physical DOF by the boundary edge count (`HolographicEdgeBound`); and the
+whole is one operator — matter mass and gravity mass are graded pieces of a single
+`4D#D` answering the same `det P` (`UnifiedMassBudget`), the order-2/4 terms of one
+spectral action whose order-0 term is `Λ` (`SpectralActionAvatar`, §10a). This is
+the finite, structural unification of gravity and matter — *not* quantum gravity
+(no dynamical quantized metric, no graviton) and *not* a continuum reduction; the
+full development, and the reconciliation with the Goal-IV WEP/action lane, is the
+P-L program (`Null_Edge_Future_Directions.md`).
+
 ---
 
 ## 8. Protected masslessness: topology forbids mass (**M**)
@@ -1820,6 +1840,10 @@ anchor sweep.)*
 | 7 | `equation_of_state`, `jacobson_verdict` | `NullEdge/JacobsonClausius.lean` | M, self-guarded (in-file pin) | **finite gravitational equation of state**: the soldering field equation `∇heat = T·α·∇area` IS the integrability condition of Clausius `δQ=T δS` (`S~`pierced-edge count); non-degenerate + control witnesses. Finite Jacobson |
 | 7 | `field_equation_sourced`, `channel_blind_universal`, `unification_verdict` | `NullEdge/GravitySourceMatter.lean` | M, self-guarded (in-file pin) | **finite `G=κT`**: soldering stationarity ⇔ `solderingCurv γ = κ·matterBudget ψ` — geometry sourced by the matter channels, channel-blind (equal total budget ⇒ same geometry = WEP) |
 | 4/7 | `square_splits`, `answers_detP`, `unified_verdict` | `NullEdge/UnifiedMassBudget.lean` | M, self-guarded (in-file pin) | **one operator, both forces**: `4D#D = Q_A+Q_C+Q_T+E_sold` (matter ⊕ gravity graded blocks), shares sum to one budget, and `totalBudget = c·det P` (both `=3552`) — matter mass + gravity mass are graded pieces of one operator answering the same null-disagreement invariant |
+| 7 | `gravity_term_isolated`, `matter_term_isolated`, `one_functional_verdict` | `NullEdge/SpectralActionAvatar.lean` | M, self-guarded (in-file pin) | **one spectral action, both forces**: `S(D)=a₀tr(1)+a₂tr(D²)+a₄tr(D⁴)` — order-0 = Λ/volume, order-2 = gravity (soldering), order-4 = matter (channels); the two sectors separate by order (Connes–Chamseddine finite avatar) |
+| 7 | `order2_is_curvature`, `einstein_equation`, `eh_verdict` | `NullEdge/EinsteinHilbertTerm.lean` | M, self-guarded (in-file pin) | **finite Einstein–Hilbert**: the order-2 term `tr(D²)` is a curvature functional of the soldering; stationarity gives the finite field equation `E* = −tr(D_kin D_sold)/tr(D_sold²)`, sourced by matter (Goal-IV lane; reconcile prose w/ Codex WEP) |
+| 7 | `curvature_flat`, `torsion_nonzero`, `teleparallel_verdict` | `NullEdge/TeleparallelSoldering.lean` | M, self-guarded (in-file pin) | **the E-slot is a finite teleparallel connection**: flat curvature (`F=1` on loops), nonzero torsion = the gravity field strength; `E_# =` torsion ⊕ nonmetricity (arXiv:1204.4339 provenance) |
+| 7 | `holographic_bound`, `entropy_area_form` | `NullEdge/HolographicEdgeBound.lean` | M, self-guarded (in-file pin) | **finite holographic bound**: physical DOF ≤ boundary null-edge count (`S ≤ B`, area law) — a finite Bekenstein/holographic statement. Honest scope: finite linear-algebra bound, not the covariant entropy bound |
 | 8 | `corner_ker_ge_index`, `corner_ker_ge_index_perturbed`, `witness_one_protected_mode` | `NullEdge/ChiralIndexProtection.lean` | M, self-guarded (in-file pin) | **chiral index ⇒ protected modes**: `dim ker A ≥ n₊−n₋` (rank–nullity), stable under any odd (mass) perturbation; witness index-1 carrier has ≥1 protected massless mode |
 | 10 | `seesaw_suppression`, `seesaw_zero_iff_no_overlap` | `NullEdge/SchurSeesaw.lean` | M, self-guarded (in-file pin) | **finite seesaw**: a protected mode leaking into a heavy hidden block `M` gets `\|m_eff\| ≤ ‖Bᴴv‖²/λ_min(M) → 0` (resolvent suppression, not tuning); mass=0 iff no overlap `Bᴴv=0` |
 | 10a | `edgecount_extensive`, `lambda_rms_eq_inv_sqrt_count` | `NullEdge/LambdaEdgeCount.lean` | M, self-guarded (in-file pin) | **everpresent `Λ` via the native count**: the pierced-null-edge count is an extensive volume measure; under Poisson `δN²=N`, `Λ=δN/N` has RMS `1/√N` (`~10⁻¹²²` for the present horizon). Honest scope: scaling given the Poisson input; conjugacy imported |

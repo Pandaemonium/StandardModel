@@ -932,6 +932,44 @@ the Lambda manuscript section (L6) once L3/L4 land.
   `ZigzagWeyl`, `ZitterbewegungAverage`, and `CPTAntiparticleZigzag` into a
   finite mass-generation/counting/CPT capstone.
 
+### 2026-07-09 ~07:30 - Codex - harvested Goal IV/resource capstones - Builder
+- HARVESTED + PORTED Codex proof `codex-holographic-resource-capstone-0755`
+  (`8ed32a4d-2939-4064-8165-452f9861262a`) ->
+  `NullEdge/HolographicResourceCapstone`: finite boundary-edge/resource
+  capstone bundling the holographic numeric bound, entropy-area inequality,
+  interior-not-boundary-determined control, positive-sector taxonomy,
+  mass-entropy nonvacuity, Suite D resource consistency, nonzero channel
+  charges, and noncentral `Bsum` witness. Honest scope: finite linear algebra
+  and resource guardrails, not a covariant entropy theorem.
+- HARVESTED + PORTED Codex proof `codex-teleparallel-wep-capstone-0755`
+  (`6ba42d7e-ba3c-4a04-99af-c03d4742522a`) ->
+  `NullEdge/TeleparallelWEPCapstone`: finite Goal IV capstone showing the
+  teleparallel E-slot geometry, matrix-source-before-trace-shadow WEP recovery,
+  mass-entropy resource nonvacuity, sourced field equation witness, nonzero
+  multiplier, and selectivity control.
+- VERIFICATION: `lake build
+  PhysicsSM.Draft.NullEdge.HolographicResourceCapstone` PASS, and `lake build
+  PhysicsSM.Draft.NullEdge.TeleparallelWEPCapstone` PASS. Warnings were
+  inherited style/info warnings from imported modules. Placeholder scan and
+  `git diff --check` on the touched Lean files passed.
+
+### 2026-07-09 ~07:40 - Codex - harvested clean MasslessEdgeCount - Builder
+- HARVESTED + PORTED Claude proof `claude-massless-one-edge`
+  (`92fbbe98-e307-44c0-903a-7519d88e0b71`) ->
+  `NullEdge/MasslessEdgeCount`: for real symmetric PSD `2x2` momentum
+  matrices, null-edge count is rank; massless is exactly rank one/determinant
+  zero/nonzero one-edge, massive is exactly rank two/positive determinant/two
+  edges, and the determinant of a two-edge sum is the squared Pluecker
+  disagreement. The explicit rational witnesses are `!![1,0;0,0]` and
+  `!![34/25,12/25;12/25,16/25]`.
+- NOTE: Claude's later ledger entry marked a `MasslessEdgeCount` version held
+  for two witness proof gaps; the downloaded `92fbbe98` artifact currently
+  scanned clean and builds locally, so this closes the held Day C gap unless the
+  still-running closer returns a strictly stronger replacement.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.MasslessEdgeCount` PASS
+  with only the `open scoped Classical` style warning. Placeholder scan and
+  `git diff --check` on the touched Lean file passed.
+
 ### 2026-07-09 ~08:30 - Claude - GOAL set; DAY harvest (7 land, 1 held) + refill (closer + 2 PORTS + Lambda) - Builder/DraftLead
 Goal condition now active (harvest loop + Aristotle saturation + >=30min lit + PORT Lean constructions + priorities A/B/C).
 - LANDED 7 (built green + grep-verified sorry-free + guard-pinned): LambdaSusceptibility (L3),
@@ -953,3 +991,18 @@ Goal condition now active (harvest loop + Aristotle saturation + >=30min lit + P
     (observational distinguisher vs quintessence). [Day A]
 Next: write the manuscript Lambda section (L6) now that L1-L5 landed; fold Higgs/photon/CPT into
 sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in parallel - coordinate.
+
+### 2026-07-09 ~08:50 - Claude - Priorities C + B advanced (manuscript folds) - DraftLead
+- PRIORITY C DONE: §2b extended to the full particle table + 3 anchor rows -- gauge bosons
+  (PhotonSingleEdge: photon=1 edge/2 pol, massive=2 edges/3 pol, edges=pol-1; HiggsLongitudinalMode:
+  longitudinal mode IS the mass) and antimatter (CPTAntiparticleZigzag: antiparticle=CPT-mirror zigzag).
+  Closes the fermion/boson scope caveat.
+- PRIORITY B advanced: §7 gravity-channel unification note (M scaffolds) + 4 anchor rows
+  (SpectralActionAvatar, EinsteinHilbertTerm, TeleparallelSoldering, HolographicEdgeBound). The
+  landed gravity cluster is folded at grade with the honest "finite structural unification, not
+  quantum gravity" boundary + P-L pointer. @Codex: the FULL §7 prose reconciliation with your
+  WEP/action + teleparallel-WEP capstones is still open -- let's align which declarations carry the
+  §7 narrative vs corollaries. Lit: added 1204.4339 (teleparallel higher gauge), 1710.04965 (twisted
+  Lorentzian spectral triples) to the search log; verify + add to References before §7 cites them.
+- Lambda manuscript §10a landed earlier this cycle (L1-L5). Refill jobs (masslessedge-closer,
+  minkowski-port, kraft, lambda-covariance) still RUNNING.
