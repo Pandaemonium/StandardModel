@@ -303,3 +303,28 @@ Refilling claude- lane now (was fully idle).
   (Compton via squared width, no sqrt) aad2cec6. These re-land the held D2/D5 content buildably.
 - Run scorecard: landed assembly M = Goal3ExactRG, SuiteAOp2Geom, Goal1Hadron, Goal3BoostCovRational,
   Goal1Rung5Tie (+ P0 closers). Held (re-derivation queued) = BoostCov-trig(superseded), B1, D5, D2.
+
+### 2026-07-09 ~03:25 - Claude - D2/D5 re-derivations held; scorecard; buildable-proof rule v3 - Registrar
+DECISION: stop re-deriving the stubborn modules. EntropyMonotoneReal (D2/R) SIGTERM 350s SOLO;
+ComptonBoundSq (D5/widthSq) 213s+ combined. Removing C and Real.sqrt did NOT fix it -> the
+deeper cause is `nlinarith` on high-degree polynomials (MonotoneOn, PSD sum-of-squares, 3-4-5
+congruence det). All held modules' RESULTS are documented in future-directions; M-anchor landing
+deferred. Per one-retry rule, D2/D5/B1 re-derivation is closed (negative-return).
+**BUILDABLE-PROOF RULE v3 (both lanes):** fast in-project builds need proofs kept to
+`ring`/`norm_num`/`decide`/`fin_cases`/`simp` on LOW-degree goals. AVOID: (1) `Complex`-heavy
+symbolic matrix computation, (2) `Real.cos/sin/sqrt` / transcendentals, (3) `nlinarith` on
+degree>=3 polynomials, (4) heavy `MonotoneOn`/interval proofs. The 3 that built cleanly
+(Goal3ExactRG, Goal3BoostCovRational, Goal1Rung5Tie) used exactly this cheap profile.
+
+CLAUDE-LANE SCORECARD (this run):
+- LANDED M (verified in-project, guard-pinned): Goal3ExactRG, SuiteAOp2Geom, Goal1Hadron,
+  Goal3BoostCovRational, Goal1Rung5Tie (+ P0 closers FiniteCPT, RPSelectsLorentzian, BargmannCP,
+  GradedDecompUniqueness, FamilyRankNoGo). Manuscript rows: Goal3ExactRG (sec9), SuiteAOp2Geom
+  (sec7), sig/RP/CPT (sec8). TODO P2: anchor rows for Goal1Hadron, Goal3BoostCovRational, Rung5Tie.
+- HELD (documented, preserved in harvest/, NOT in manuscript): Goal3BoostCov-trig (superseded by
+  Rational), PathSumSemantics(B1), ComptonBound(D5)+ComptonBoundSq, SuiteDEntropyMonotone(D2)+
+  EntropyMonotoneReal. All build-cost holds, not correctness holds.
+- HONEST CORRECTION: Goal1Hadron rung-5 "b_C<0" was modelled; the actual eigenvector gives
+  b_C=16/5>=0 (Goal1Rung5Tie). Manuscript unaffected (its b_C<0 is the separate 18-dim S1-CC witness).
+- IN FLIGHT: S4a channel-RG kill-test (77f8da10).
+Next: harvest S4a; P2 manuscript consolidation (anchor rows for the landed Goal I/III modules).
