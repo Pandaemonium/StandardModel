@@ -398,6 +398,20 @@ Majorana nature** — which of the two the physical neutrino is — stays open, 
 the finite *structure* of both options (the two mass-term types and their CPT /
 lepton-number properties) is now kernel-checked (above).
 
+**What is, and is not, new here.** The idea that mass is *hidden masslessness* is
+old and distinguished: it runs from Kaluza–Klein (a massive mode is the shadow of
+extra-dimensional momentum) through the twistor / two-time descriptions in which
+"the mass is the component of momentum in a higher dimension" (Bars,
+`arXiv:hep-th/0512091`, `[import]`), the massless-in-`D+1` picture, and the
+Zitterbewegung and preon traditions. This manuscript does **not** claim that
+general notion as original. What is specific here — and what the claim calculus
+tracks as `[orig]` — is the *finite null-edge-disagreement* mechanism: that `mass²`
+is the **Plücker determinant** `det P` measuring the disagreement of two null edges
+(§3), read across the particle table by momentum rank and polarization count, and
+*kernel-checked* under a pinned axiom footprint rather than argued informally. The
+lineage supplies the picture; the contribution is the finite theorem and its
+grade.
+
 ---
 
 ## 3. The kinematic layer: one trusted theorem (**T**/**M**)
@@ -2046,6 +2060,11 @@ novelty-gap analysis is in
   J. Trnka, *Scattering Amplitudes and the Positive Grassmannian*, arXiv:1212.5605.
   (Null momentum ⇒ rank-1, `det p^{αβ̇}=0`, `p=λλ̃` — the classical kinematic core
   under `MassNullDecomposition` (§3); tagged `[import]`, not `[orig]`.)
+- I. Bars, *Single twistor description of massless, massive, AdS, and other
+  interacting particles*, arXiv:hep-th/0512091. (Mass identified as the component
+  of momentum in a higher dimension — the Kaluza–Klein / two-time lineage of "mass
+  as hidden masslessness"; §2b positions this as prior art `[import]`, with the
+  finite null-edge-disagreement mechanism as the original contribution.)
 
 **Physical pictures — zig-zag, Zitterbewegung, causal order (§2a).**
 

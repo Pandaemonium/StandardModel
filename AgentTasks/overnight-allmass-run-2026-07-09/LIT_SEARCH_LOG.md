@@ -48,3 +48,15 @@ cites it.
   * arXiv:2301.06203 ("Zig-Zag Theory of Massive Spinning Particles", ambitwistor): zig-zag framing
     of massive particles' principal null directions. Prior art for the s2b Penrose-zigzag picture.
 - ACTION: add 3 refs (below), check s3/s2b originality tags do not claim the PHYSICS picture as orig.
+
+## 2026-07-09 ~afternoon - Claude - central-thesis originality check (mass from masslessness)
+- Tool: neo4j_paper_search.py --chunks, null-edge collections.
+- Query: mass generated from massless lightlike constituents geometric misalignment two null momenta rest mass emergent.
+- ORIGINALITY FINDING (bears on the HEADLINE claim): "mass = hidden masslessness" is an old,
+  distinguished lineage: Bars twistor/2T (hep-th/0512091) "mass = component of momentum in a
+  higher dimension" (Kaluza-Klein), massless-in-D+1; also causal-set massless diffusion
+  (0810.5591). The manuscript did NOT acknowledge this -> ORIGINALITY OVER-CLAIM RISK on the title.
+- ACTION (done): added a "What is, and is not, new here" paragraph to 2b - the general notion is
+  [import] (KK/Bars/2T/Zitterbewegung/preon lineage); the [orig] contribution is the FINITE
+  null-edge-disagreement (mass^2=det P Plucker) mechanism + kernel-checked grade. +Bars ref.
+- Honest posture strengthened: the lineage supplies the picture; the contribution is the finite theorem.
