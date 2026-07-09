@@ -355,6 +355,16 @@ the table on the momentum + polarization side:
   `naturalness_verdict_finetuning`, **M**). This is the honest boundary of the
   headline: every mass that is a *coupling of null edges* (fermions, gauge bosons,
   their antiparticles) comes from massless edges; the scalar self-mass does not.
+- **Neutrinos (Dirac vs Majorana).** The two neutrino mass types are a null-edge
+  *structural* distinction, now finite and kernel-checked against the landed CPT
+  operator `Θ`. A **Dirac** mass links the zigzag to an *independent* CPT-partner
+  (`Θψ ≠ ψ`) and conserves lepton number (`[M_D, Q] = 0`); a **Majorana** mass is
+  supported on the *self-conjugate* sector — an explicit `Θψ = ψ` witness — and
+  violates it (`[M_M, Q] ≠ 0`, explicit commutator entry `−2`), so the particle is
+  its own antiparticle. The distinction is exactly whether the CPT-conjugate zigzag
+  is a *new* state or the *same* one (`NeutrinoDiracMajorana.neutrino_verdict`,
+  `lepton_number`, **M**). *Which* nature the physical neutrino has stays open; this
+  is the finite structure of the two options, not a prediction.
 
 The table, read off the momentum Gram and the polarization count (all **M**):
 
@@ -377,9 +387,9 @@ statement about internal kinematics — not a claim that anything is *observed* 
 move at `c`, and not a statement about the mass *values*. Two cases are held
 outside the headline on purpose: the **scalar Higgs self-mass** is
 mechanism-exempt (spin-0, no zigzag — above), and the **neutrino's Dirac-versus-
-Majorana nature** (whether its CPT-conjugate zigzag is an independent partner or
-the same state) is a null-edge structural question the manuscript leaves open — a
-finite formalization is in progress and nothing about it is claimed here.
+Majorana nature** — which of the two the physical neutrino is — stays open, though
+the finite *structure* of both options (the two mass-term types and their CPT /
+lepton-number properties) is now kernel-checked (above).
 
 ---
 
