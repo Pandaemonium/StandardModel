@@ -419,3 +419,31 @@ the repo). Actions:
   generator-as-Hamiltonian stays C). Built green 8027, pins pass.
 - **Still RUNNING near 6pm:** f6644f9b (s1ccpres corrected existence, 1h+),
   b99f437e (gconcurrence). External latency; harvest when they complete.
+
+## Cycle A.19 (post-6pm) — HARVESTED all 3 remaining jobs + integrated
+
+All three completed and were integrated (each built green in-project, guard pins
+pass, footprint [propext, Classical.choice, Quot.sound]):
+
+- **gconcurrence `b99f437e` -> M.** NEdgeMassConcurrence + NEdgeCauchyBinet: n-edge
+  mass = |wedge|^2, det P = (G/n)^n (Gour G-concurrence), Cauchy-Binet mass = sum of
+  squared d-wise minors. "mass = concurrence^2" is NOT a two-edge coincidence.
+  Upgrades S3a target (i) C -> M.
+- **s1ccpres iter-2 `f6644f9b` -> M (CENTRAL CRUX CLOSED).** S1CCEigenbasis +
+  S1CCPresentationExistence: physical_sector_b_eigenbasis_exists (any +/-1 grading,
+  any NILPOTENT non-Hermitian Q_G commuting with it => full-dim complementary
+  b-eigenbasis presenting V'/N). Closes the last MEMO piece. Non-Hermiticity
+  load-bearing (iter-1 Hermitian+nilpotent => Q_G=0 degenerate, was proved then
+  REJECTED after Fable-09 + batch-5). SlabAxiomGuard 8154. Manuscript S6/S10/S11
+  updated, honest 3-iteration history. Self-review found + handled the
+  physical_sector_balanced exported-exists dimension-clause nuance (cite the
+  existence lemma).
+- (kreinflow harvested in A.18.)
+
+DUE DILIGENCE: attempted Fable call-10 confirmatory review of the crux -> FAILED,
+Fable "Credit balance is too low" (external, out of credit). Routed the confirmatory
+check to Aristotle instead: **AUDIT batch-7 `3c32cbdb`** (same questions: is iter-2
+genuinely non-degenerate / dimension count / physical_sector_balanced scope) --
+RUNNING; harvest + action when done. The crux is integrated as M with strong
+self-review + encoding of the two prior reviews' prescriptions; batch-7 is the
+independent confirmation.
