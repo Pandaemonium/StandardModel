@@ -92,11 +92,26 @@ forced two further walk-backs, both folded:
   *assumes away* matter-loop feedback (only `dim H` invariance). Bianchi + count-variance
   kill-tests recorded.
 
-**Net after both audits:** the three headline sections (§3 mass, §7 unification, §10a Λ) are
-now honestly bounded — the *physics* is `[import]` (spinor-helicity, Chamseddine–Connes,
-Jacobson, Sorkin/BHS lineages); the `[orig]` contribution is the **finite kernel-checked
-bookkeeping avatar + T/M/C grading discipline**, and in two places (§7 EH, §10a Lorentz) the
-finite proposition is a *weaker* statement than the import it stands beside — now labeled as such.
+A **third red-team on §4 (mass-budget) + §8 (protection)** (`redteam-budget-protection`, saved
+to `audits/`) completed the coverage and forced more corrections, all folded:
+- **§4 budget**: the four-channel split is a *chosen* projection (not canonical — no order-grading
+  like Lichnerowicz); the factors of 4 are normalization. `totalBudget = c·det P` is a *witness-
+  level* equality (sum-of-squares `tr(D#D)` vs indefinite Gram `det P`, opposite-sign off-diagonal
+  dependence) → **M** at the witness, **C** as a family law (anchor row regraded M(witness)+C(family)).
+- **§8 protection**: retitled "a dimension count forbids the kernel from lifting" — the *algebraic
+  half* of Atiyah–Singer (finite McKean–Singer = rank-nullity), **no topological index side**; the
+  protection is *chiral-conditional* (robust to odd perturbations, gapped by an even mass term), not
+  "immune to every potential." Taxonomy: 2 genuine protections (index, gauge) + 2 non-protections
+  (critical = tuned degeneracy, collinear = on-shell tautology). Mass-spacing "ratio=1" = the
+  centrosymmetry of the `{λ−κ,λ,λ+κ}` ansatz restated (a prediction only if the form is *derived*).
+
+**Net after all THREE audits (§3, §7+§10a, §4+§8 — full coverage):** every bold claim block is now
+honestly bounded. The *physics* is `[import]` (spinor-helicity, Chamseddine–Connes, Jacobson,
+Sorkin/BHS, McKean–Singer/index, Goldstone lineages); the `[orig]` contribution is the **finite
+kernel-checked bookkeeping avatar + T/M/C grading discipline**. In several places (§7 EH, §10a
+Lorentz, §4 budget-as-canonical, §8 "topological") the finite proposition is a *weaker or chosen*
+statement than the import it stood beside — now each labeled as such. No headline survives the audit
+as `[orig]` physics; the discipline and the finite verification are the contribution.
 
 ### The one caveat a reader should carry (updated)
 The central `mass² = det P` is *standard kinematics* (spinor-helicity / Penrose zigzag / Kaluza–Klein–

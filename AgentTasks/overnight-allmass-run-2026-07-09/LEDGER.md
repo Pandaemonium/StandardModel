@@ -1518,3 +1518,19 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   not our decl. All other 15 modules' cited names resolve (det/p/g were prose-notation false positives).
 - LIT (last cycle): VERIFIED BHS gr-qc/0605006 (the [import] Lorentz core) + gr-qc/0311055 corroboration.
 - LANE: higgs-dof-conservation, redteam-budget-protection (s4+s8 audit), lambda-exponent-fork RUNNING (3).
+
+### 2026-07-09 ~mid-afternoon - Claude - 3rd red-team (s4+s8) acted on: AUDIT COVERAGE COMPLETE - DraftLead
+- 3rd RED-TEAM (redteam-budget-protection ab8c8835, saved audits/REDTEAM_budget_protection_20260709.md)
+  on s4 mass-budget + s8 protection. Corrections folded:
+  * s4: four-channel split is CHOSEN (not canonical, no order-grading); factors of 4 = normalization;
+    totalBudget=c*det P is WITNESS-level (sum-of-squares vs indefinite Gram) -> M(witness)+C(family);
+    sign-mismatch kill-test recorded. Mass-spacing ratio=1 = centrosymmetry-of-ansatz restated.
+  * s8: 'topology forbids mass' -> 'dimension count' (algebraic half of Atiyah-Singer, NO topological
+    side); 'immune to every potential' -> chiral-CONDITIONAL (even mass gaps it, SSH/BdG [import]);
+    taxonomy = 2 protections (index,gauge) + 2 non-protections (critical=tuned, collinear=tautology).
+- MILESTONE: ALL THREE red-teams done + acted on. FULL AUDIT COVERAGE of every bold claim block
+  (s3 mass, s7 unification, s10a Lambda, s4 budget, s8 protection). Net: physics=[import]; [orig]=
+  the finite kernel-checked bookkeeping avatar + T/M/C grading discipline. No headline survives as
+  [orig] physics; the discipline + finite verification are the contribution. Scorecard updated.
+- PhysLean mined (lean-explore): submitted dirac-gamma-physlean port (exact spaceTime.gamma Dirac-rep,
+  Clifford {g^mu,g^nu}=2eta) - addresses the 'narrow PhysLean mining' note.
