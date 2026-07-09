@@ -832,12 +832,15 @@ square has no positive-definite diagonal. Therefore:
 > pass proved that degenerate version, and it was **rejected**, not integrated.
 > The physical Gauss/BRST charge is nilpotent and *non*-Hermitian (Krein-self-adjoint;
 > the witness `Q_G = c₁ ⊗ G`, `c₁ = E₀₁`), which is exactly why `V'/N` is nontrivial;
-> the corrected statement above drops Hermiticity and is non-degenerate. (Two prior
-> reviews — Fable call-09 and the batch-5 audit — flagged the empty-`κ` vacuity and
-> the definite-vs-Krein adjoint issue; the dimension pin and complementarity clauses
-> answer both. `physical_sector_balanced`'s *exported* `∃` keeps `Q_G P=0` and linear
-> independence but not the dimension clause, so the full-`V'/N` guarantee is carried
-> by `physical_sector_b_eigenbasis_exists`, which is the statement to cite.) What
+> the corrected statement above drops Hermiticity and is non-degenerate. (Three
+> adversarial reviews bear on this: Fable call-09 and the batch-5 audit flagged the
+> empty-`κ` vacuity and the definite-vs-Krein adjoint issue on earlier iterations,
+> and the batch-7 audit **ruled the corrected version CLEAN** — confirming the
+> hypotheses admit a nonzero nilpotent `Q_G`, the dimension count
+> `card ι − 2·rank Q_G` is exact, and the abstract `eigenbasis_core` argument is
+> sound. That audit also folded the dimension clause into `physical_sector_balanced`
+> itself, so a *single* theorem now certifies a full-dimensional `b`-adapted `P` in
+> `ker Q_G` whose compression `PᴴMP` is balanced — no split citation.) What
 > survives as the pre-registered kill is only the genuinely-soldered non-scalar
 > `Q_G` escape (**K-A**).
 > The mechanism is a grading anticonjugation: the closure bivector

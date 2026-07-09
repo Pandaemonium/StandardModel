@@ -124,9 +124,13 @@ theorem physical_sector_b_eigenbasis_exists
 /-- **The physical-sector balance, fully general (PRIZE).**  Feeding the corrected
 existence lemma into `compression_balanced_eigbasis` gives: the induced closure
 form `Pᴴ M P` on the physical Gauss sector is balanced (equal positive/negative
-eigenvalue counts), for *every* scalar-metric nilpotent `Q_G`.  Note that
-`compression_balanced_eigbasis` requires only the `b`-intertwining, not any
-orthonormality `Pᴴ P = 1` — appropriate now that `Q_G` is non-Hermitian. -/
+eigenvalue counts), for *every* scalar-metric nilpotent `Q_G`.  The exported `∃`
+also carries the dimension pin `card κ = card ι − 2·Q_G.rank`, so the balanced `P`
+is certified to be the FULL physical sector `V'/N = ker Q_G / range Q_G` (without
+this clause the `∃` is cheaply satisfiable by an empty/low-dimensional `P` and
+would not present the sector).  Note that `compression_balanced_eigbasis`
+requires only the `b`-intertwining, not any orthonormality `Pᴴ P = 1` —
+appropriate now that `Q_G` is non-Hermitian. -/
 theorem physical_sector_balanced
     (M : Matrix ι ι ℂ) (hM : M.IsHermitian)
     (d : ι → ℂ) (hd : ∀ i, d i = 1 ∨ d i = -1)
@@ -136,11 +140,12 @@ theorem physical_sector_balanced
     ∃ (κ : Type) (_ : Fintype κ) (_ : DecidableEq κ)
       (P : Matrix ι κ ℂ) (hB : (Pᴴ * M * P).IsHermitian),
       QG * P = 0 ∧ (∃ L : Matrix κ ι ℂ, L * P = 1) ∧
+      Fintype.card κ = Fintype.card ι - 2 * QG.rank ∧         -- full physical dimension
       (Finset.univ.filter (fun j => 0 < hB.eigenvalues j)).card =
         (Finset.univ.filter (fun j => hB.eigenvalues j < 0)).card := by
-  obtain ⟨κ, fκ, dκ, P, e, he, hP, hker, _, hLinv, _⟩ :=
+  obtain ⟨κ, fκ, dκ, P, e, he, hP, hker, hcard, hLinv, _⟩ :=
     physical_sector_b_eigenbasis_exists d hd QG hQGnil hbQG
-  refine ⟨κ, fκ, dκ, P, ?_, hker, hLinv, ?_⟩
+  refine ⟨κ, fκ, dκ, P, ?_, hker, hLinv, hcard, ?_⟩
   · -- Pᴴ M P is Hermitian since M is
     unfold Matrix.IsHermitian
     rw [Matrix.conjTranspose_mul, Matrix.conjTranspose_mul,
