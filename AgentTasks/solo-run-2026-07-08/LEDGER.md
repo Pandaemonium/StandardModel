@@ -447,3 +447,26 @@ genuinely non-degenerate / dimension count / physical_sector_balanced scope) --
 RUNNING; harvest + action when done. The crux is integrated as M with strong
 self-review + encoding of the two prior reviews' prescriptions; batch-7 is the
 independent confirmation.
+
+## Cycle A.20 — batch-7 crux audit CLEAN + universal-decomposition job
+
+- **AUDIT batch-7 `3c32cbdb`: HARVESTED. RULING CLEAN** (after one applied fix).
+  Confirms the S1-CC presentation-existence crux is honestly closed to M: Q1
+  non-degeneracy GENUINE (hypotheses admit nonzero nilpotent non-Hermitian Q_G, so
+  the iter-1 Q_G=0 collapse cannot recur), Q2 dimension count card i - 2 rank Q_G
+  exact, Q4 eigenbasis_core argument sound. Q3 (the nuance I self-flagged): the audit
+  FOLDED the dimension clause into physical_sector_balanced, making it a single
+  self-contained theorem (no split-citation). Pulled the fix in; built green 8029.
+  Manuscript S6: three reviews now bear on the crux; split caveat removed. So the
+  central crux is now triple-checked (Fable-09 + batch-5 flagged iters, batch-7
+  ruled corrected version CLEAN).
+- **Title-strengthening path (user):** to justify "all mass IS null-edge
+  disagreement" (kinematic CONSTITUTION, not value-derivation), the one missing
+  piece is the CONVERSE / universal decomposition (repo has only the forward
+  direction: two_null_sum_massSq + det P = |wedge|^2). Submitted **PROOF
+  `15f19a55` (nulldecomp)**: (A) every future-timelike 4-momentum = sum of two
+  future-null momenta (+ mass = 2 disagreement), (B, central) every PSD Hermitian
+  momentum matrix P = M Mᴴ = sum of null-edge dyads, with det P = normSq(det M).
+  If it lands, the mass thesis becomes bidirectional + universal (T/M), clearing the
+  paper's own bar for a stronger title. Do NOT touch the title until it lands.
+- **Queue:** 15f19a55 (nulldecomp) RUNNING; all prior jobs IDLE/harvested.
