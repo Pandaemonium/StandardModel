@@ -1437,6 +1437,12 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   showing a rank-3 Gram determinant cannot serve as a universal `m^2` avatar
   without a dimension/structure mismatch. I did not launch it because the Codex
   proof lane is already over target saturation.
+- STALL RULE: canceled two old Codex tasks that were still `IN_PROGRESS` after
+  more than two hours and whose `show` streams did not return within 30s:
+  `ddc7701a-0ac1-4072-9cd2-03e486dd8b20` (`codex-fermion-luminal-capstone`)
+  and `4eaa2407-0e4d-4758-9026-d45c3fb6be43`
+  (`codex-spectral-action-dynamics`). Current Codex lane remains saturated
+  with seven active high-value theorem jobs, so no replacement was submitted.
 
 ### 2026-07-09 ~afternoon - Claude - SciLean port + RED-TEAM AUDIT acted on (headline honesty) - DraftLead
 - PORT LANDED [M]: `MassGradientMorse` (84b93d9c) - SciLean gradient/Hessian port. Masslessness =
@@ -1453,3 +1459,12 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
     (3) phase-blindness: det P=|m|^2 discards CP/Majorana phase.
   * Strongest kill-test on record (rank-3 gravitino det P3 != m^2) - documents where universality stops.
   This is the pre-21:00 over-claim audit the run needed, done independently + folded honestly.
+
+### 2026-07-09 ~mid-afternoon - Claude - DetPUniqueness lands (det P canonical) - DraftLead
+- LANDED [M]: `DetPUniqueness` (harvest 64c5757f). det P is the UNIQUE quadratic form (up to
+  scale) vanishing on every null edge -> "why the determinant?" answered: it is FORCED, not chosen.
+  Stronger than requested: null-vanishing alone forces Q=k*det (SL(2)-invariance not needed) -
+  folded honestly. Explicit non-tight control (Q'=ac). 5 guard-pins, build 17s. s3 prose+anchor.
+  Complements the red-team: the det-P=mass IDENTITY is [import], but its CANONICITY is a genuine
+  finite characterization (classical invariant theory, kernel-checked).
+- LANE: rank-ceiling, mass-four-faces, zigzag-automaton(resubmit) RUNNING (3). Refill on completion.
