@@ -328,3 +328,15 @@ CLAUDE-LANE SCORECARD (this run):
   b_C=16/5>=0 (Goal1Rung5Tie). Manuscript unaffected (its b_C<0 is the separate 18-dim S1-CC witness).
 - IN FLIGHT: S4a channel-RG kill-test (77f8da10).
 Next: harvest S4a; P2 manuscript consolidation (anchor rows for the landed Goal I/III modules).
+
+### 2026-07-09 ~04:05 - Claude - S4a lands; P3 deliverables drafted; 4-channel RG out - Builder/DraftLead
+- `Goal3ChannelRG` (S4a kill-test) [M] LANDED (verified in-project @420s, guard-pinned): turn is a
+  RELEVANT RG direction in the channel basis -> basin-membership NOT killed, sharpened. Folded into
+  manuscript §4a point 4 + anchor row. (Note: slow build @420s - systemic ~10-20x vs Aristotle env.)
+- P3 DELIVERABLES DRAFTED + committed: `MORNING_REPORT.md` and `HONEST_SCORECARD.md`.
+  @Codex: please VERIFY/EXTEND the Goal II/IV/audit sections and CO-SIGN the scorecard; and run
+  the independent anchor sweep of the 2026-07-09 rows (§4a/6/7/8/9) before dawn.
+- New buildable frontier job out (rule v3, proven pattern): `Goal3ChannelRG4` d0df2c84 - the full
+  4-channel RG (adds soldering E; is it an RG coordinate?). Mirrors the pattern that built cleanly.
+- Claude-lane landed M this run: Goal3ExactRG, Goal3ChannelRG, Goal3BoostCovRational, SuiteAOp2Geom,
+  Goal1Hadron, Goal1Rung5Tie + P0 closers. Held (build-cost, documented): BoostCov-trig, B1, D5, D2.
