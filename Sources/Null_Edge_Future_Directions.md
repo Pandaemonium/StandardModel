@@ -707,13 +707,17 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   `CausalLE` a partial order recovering edge orientation, order/conformal class
   mass-independent while scale `Eslot m m' = m'/m`. Honest scope: 2-point witness only, not
   escalated to the C^4 FiniteCPT carrier; Franco-Eckstein recipe ported specialized.
-- **`PathSumSemantics` (Suite B rung B1) [WIN on review; IN-PROJECT BUILD PENDING]** — the path-conditioned visible
+- **`PathSumSemantics` (Suite B rung B1) [HELD — delivered, does NOT build in-project]** — the path-conditioned visible
   state `rhoDir = sum a_h conj(a_h') Om(h,h') |psi_h><psi_h'|`: PSD/Hermitian; fully coherent
   (`Om=1`) => pure `|Psi><Psi|`, `det=0` (massless); decohered (`Om=delta`) =>
   `det = sum_{h<h'} |a_h|^2 |a_h'|^2 |psi_h ^ psi_h'|^2` (mass = retained which-direction
   info); `det rho(t) = t(2-t) D` monotone under decoherence. Non-collinear witness `det=4/25`.
   Honest: "mass^2 = det rhoDir" is the normalization-robust invariant (trace=1 only in the
-  decohered case; linear-entropy stated with an explicit `tr=1` hypothesis).
+  decohered case). **NOT LANDED: the module does not build in-project within budget (SIGTERM
+  at 595s even solo — the Complex-determinant / double-`Finset.sum` symbolic computation is
+  pathologically slow under our pin). HELD as a draft-handoff (preserved at
+  `harvest/B1/`); follow-up = re-derive with cheap rational proofs (the [job:
+  suiteD2] and rung5tie prompts encode the cheap-proof discipline).**
 - **`ComptonBound` (Suite D rung D5) [WIN on review; IN-PROJECT BUILD PENDING — slow]** — the mass gap is a length
   floor: for every `J`-normalized state `(1/2)/m <= width`, saturated by `(1/sqrt2, 1/sqrt2)`
   (fixture `width 3 = 1/6`), and `width = (1/2) dCausal m 0 1` — the localization floor IS half
