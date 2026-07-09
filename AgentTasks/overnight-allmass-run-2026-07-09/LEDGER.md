@@ -824,3 +824,132 @@ NEXT ROUND (4 jobs, rule v3, prompts in jobs/):
 Still running to harvest: lambda-susceptibility ac58c729, lambda-conjugacy 5d508356, lambda-dichotomy
 735004c9, massless-one-edge 92fbbe98. Next: fold Higgs/CPT/photon into sec-2b table (Day C); write
 the Lambda manuscript section (L6) once L3/L4 land.
+
+### 2026-07-09 ~07:05 - Codex - harvested capstones + launched proof wave - Builder
+- HARVESTED + PORTED Codex proof `codex-unified-action-capstone-0725-20260709`
+  (`65d8f051-e7af-41a5-bead-d0d4fbc0089e`) ->
+  `NullEdge/UnifiedActionCapstone`: composes the finite spectral-action avatar,
+  unified mass budget, sourced matter/gravity equation, and finite
+  Jacobson-Clausius equation-of-state witness into one nonvacuous capstone.
+- HARVESTED + PORTED Codex proof `codex-mass-phase-rg-capstone-0725-20260709`
+  (`27c385c3-8f31-4418-b1f6-065d47f0c26d`) ->
+  `NullEdge/MassPhaseRGCapstone`: four-channel phase surface plus RG period-2
+  critical-line story, with the critical-line-not-fixed-point distinction kept
+  explicit.
+- HARVESTED + PORTED Claude Lambda proofs:
+  `claude-lambda-susceptibility` (`ac58c729-bd04-4a7b-b653-07f72138d16e`) ->
+  `NullEdge/LambdaSusceptibility`, deriving finite independent-edge expectation,
+  variance, Bernoulli bound, RMS upper bound, susceptibility reading, and rational
+  witnesses; and `claude-lambda-count-dichotomy`
+  (`735004c9-43cb-4723-a2cd-05bb750fa1a2`) ->
+  `NullEdge/LambdaCountDichotomy`, proving the Poisson/extensive versus
+  constrained/subextensive fork and a two-register "which count matters" witness.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.UnifiedActionCapstone
+  PhysicsSM.Draft.NullEdge.MassPhaseRGCapstone
+  PhysicsSM.Draft.NullEdge.LambdaSusceptibility
+  PhysicsSM.Draft.NullEdge.LambdaCountDichotomy` PASS. Warnings are inherited
+  style/info warnings only.
+- SUBMITTED next proof wave from
+  `AgentTasks/aristotle-submit/codex-capstone-proof-wave-0755-20260709-project`:
+  `e638cd66` LambdaSpectralCapstone, `6ba42d7e` TeleparallelWEPCapstone,
+  `d7b686b5` HiggsCPTCapstone, and `8ed32a4d` HolographicResourceCapstone.
+- LITERATURE SIDECAR: Spark returned the Lambda/unimodular/spectral shortlist:
+  Ahmed-Dodelson-Greene-Sorkin everpresent Lambda, causal set review, unimodular
+  gravity/conjugacy refs, hyperuniformity fork refs, and spectral-action anchors;
+  logged in `LIT_SEARCH_LOG.md`. Honest status: references to verify before
+  manuscript citation.
+- LEAN REFERENCE SIDECAR: Spark found strong local Physlib hooks for
+  variational calculus, Euler-Lagrange, entropy, and finite statistical
+  mechanics, plus Mathlib KL/coding/binary-entropy/completely-positive-map
+  lemmas; SciLean, standalone lean-quantum/testing-lower-bounds, and CSLib are
+  not safe local deps without version audit.
+
+### 2026-07-09 ~07:12 - Codex - harvested Lambda conjugacy proof - Builder
+- HARVESTED + PORTED Claude proof `claude-lambda-conjugacy`
+  (`5d508356-c349-4882-a9f8-2be2992c4c2f`) ->
+  `NullEdge/LambdaConjugacy`: finite Fourier pair over `ZMod 4` with
+  `omega = i`; sharp count maps to constant-modulus Lambda register, uniform
+  maps to delta, full Donoho-Stark support uncertainty `4 <= |supp f| *
+  |supp dft f|` for nonzero `f`, and explicit Gaussian witnesses.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.LambdaConjugacy` PASS.
+  Only inherited `open scoped Classical` style warning.
+
+### 2026-07-09 ~07:15 - Codex - harvested vacuum/EH proof returns - Builder
+- HARVESTED + PORTED Claude proof `claude-vacuum-sequestering`
+  (`525a0c77-f0fe-43dc-8485-d586d2addc3e`) ->
+  `NullEdge/VacuumSequestering`: finite rational sequestering avatar where a
+  uniform vacuum shift is absorbed into the multiplier while the physical
+  count-fluctuation Lambda residue is operator/shift-blind; includes huge-shift
+  nondegeneracy witness.
+- HARVESTED + PORTED Claude proof `claude-einstein-hilbert-term`
+  (`d2f629db-d125-4397-856b-76274eacd6ce`) ->
+  `NullEdge/EinsteinHilbertTerm`: finite order-2 spectral-action curvature
+  functional `tr(D(E)^2) = 2 + 4E + 2E^2`, stationarity at `E* = -1`, sourced
+  equation, convexity/positive curvature coefficient, and control witness.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.EinsteinHilbertTerm
+  PhysicsSM.Draft.NullEdge.VacuumSequestering` PASS. Only inherited
+  `open scoped Classical` style warnings.
+
+### 2026-07-09 ~07:20 - Codex - harvested Lambda moment + photon edge proofs - Builder
+- HARVESTED + PORTED Claude proof `claude-lambda-moment-hierarchy`
+  (`dd3da180-4d9f-482c-854f-4ead7d8177fa`) ->
+  `NullEdge/LambdaMomentHierarchy`: one finite rational spectral functional
+  split into order-0/order-2/order-4 moments, with order-0 invariant under all
+  rational operator deformations in every finite dimension, while explicit
+  order-2/order-4 traces move under a nonzero deformation. Honest scope:
+  finite polynomial spectral-action avatar; physical Lambda/gravity/matter
+  identifications remain conjectural readings.
+- HARVESTED + PORTED Claude proof `claude-photon-single-edge`
+  (`ad7a3dde-aad7-4326-b6d3-b8d8a070dbbd`) ->
+  `NullEdge/PhotonSingleEdge`: rational Minkowski momentum model proving a
+  photon witness has one null edge/rank one/two spin-1 polarizations, a massive
+  vector witness splits into two null edges with mass-squared equal to their
+  disagreement, and `edges = pol - 1` for the finite spin-1 count. Honest
+  scope: momentum/degree-of-freedom counting, not dynamical QFT.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.LambdaMomentHierarchy
+  PhysicsSM.Draft.NullEdge.PhotonSingleEdge` PASS. Only the inherited
+  `open scoped Classical` style warnings. Placeholder scan and `git diff
+  --check` on the touched Lean files passed.
+
+### 2026-07-09 ~07:25 - Codex - next ambitious proof wave submitted - Builder
+- Prepared submission project
+  `AgentTasks/aristotle-submit/codex-proof-wave-0720-20260709-project`.
+  The helper copied the package but warned that the current Lake file has no
+  active Sphere-Packing block to patch; irrelevant for these Mathlib/project
+  composition targets.
+- SUBMITTED `codex-lambda-magnitude-capstone-0720-20260709` ->
+  project `7c9e932f-c08b-41c3-9da8-1dc2a0a2200d`, target
+  `PhysicsSM/Draft/NullEdge/LambdaMagnitudeCapstone.lean`. Mission: compose
+  `LambdaMomentHierarchy`, `LambdaConjugacy`, `VacuumSequestering`,
+  `LambdaSusceptibility`, `LambdaCountDichotomy`, and `LambdaEdgeCount` into a
+  finite magnitude capstone with order-0 blindness, higher-order nonblindness,
+  conjugacy, sequestering, susceptibility, extensive/constrained fork, and
+  explicit nonzero witnesses.
+- SUBMITTED `codex-photon-higgs-cpt-capstone-0720-20260709` ->
+  project `b4ebecee-58de-4b36-a5b8-1199dfed205b`, target
+  `PhysicsSM/Draft/NullEdge/PhotonHiggsCPTCapstone.lean`. Mission: compose
+  `PhotonSingleEdge`, `HiggsLongitudinalMode`, `HelicityChirality`,
+  `ZigzagWeyl`, `ZitterbewegungAverage`, and `CPTAntiparticleZigzag` into a
+  finite mass-generation/counting/CPT capstone.
+
+### 2026-07-09 ~08:30 - Claude - GOAL set; DAY harvest (7 land, 1 held) + refill (closer + 2 PORTS + Lambda) - Builder/DraftLead
+Goal condition now active (harvest loop + Aristotle saturation + >=30min lit + PORT Lean constructions + priorities A/B/C).
+- LANDED 7 (built green + grep-verified sorry-free + guard-pinned): LambdaSusceptibility (L3),
+  LambdaConjugacy (Fourier/Donoho-Stark), LambdaCountDichotomy (L4 fork), LambdaMomentHierarchy (L5),
+  VacuumSequestering (magnitude theorem), EinsteinHilbertTerm (order-2 curvature), PhotonSingleEdge
+  (mass=disagreement across spin). The Lambda suite L1-L5 is now landed.
+- HELD `MasslessEdgeCount` - 2 real witness sorries (Matrix.rank of concrete matrices; the build
+  SUCCEEDED with sorries as warnings - the grep-check caught it, not lake). Resubmitted a closer.
+- VERIFICATION NOTE for both lanes: `lake build` succeeds WITH sorries (warnings, not errors) - always
+  grep sorry/admit/native_decide in addition to building before landing as M.
+- REFILL (4 jobs, honoring the PORT-Lean-sources goal):
+  - 8584e96e `masslessedge-closer` - close the 2 witness sorries via the module's own rank<->det
+    theorems + Mathlib PosSemidef/rank lemmas (prefer landed lemma over hand rank).
+  - 17b58865 `minkowski-physlean-port` [PORT] - ground our eta=diag(1,-1,-1,-1) in Mathlib
+    `LieAlgebra.Orthogonal.indefiniteDiagonal` = PhysLean `minkowskiMatrix` (provenance, no import).
+  - 6bc830f9 `kraft-compression-mass` [PORT] - finite Kraft bound (ref: kraft package): mass = the
+    compression cost of the null-direction message (linear entropy, rational).
+  - a3580b7c `lambda-two-region-covariance` - the finite Lambda covariance from causal overlap
+    (observational distinguisher vs quintessence). [Day A]
+Next: write the manuscript Lambda section (L6) now that L1-L5 landed; fold Higgs/photon/CPT into
+sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in parallel - coordinate.
