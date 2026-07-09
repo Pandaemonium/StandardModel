@@ -420,19 +420,48 @@ autonomous pass proved a VACUOUSLY DEGENERATE version — Hermitian nilpotent =>
   each other's landings each cycle. Do not duplicate a ledger-claimed rung —
   audit it instead.
 
-## 5. Literature-search cadence (BOTH agents, every cycle)
-Neo4j chunk search (`Scripts/lit/neo4j_paper_search.py --chunks`) and doc search
-before each assembly rung that leans on prior art: Goal II (Jarlskog/CP-phase
-counting), Goal III (Arrighi-Facchini-Forets discrete Lorentz covariance;
-Cardy/finite-size scaling), Goal IV (Jacobson thermodynamic gravity;
-teleparallel Einstein), Suite A (Baez-Huerta / Manogue-Dray division-algebra
-Minkowski; Franco-Eckstein Lorentzian spectral distance), Suite B (Arrighi
-discrete Lorentz; the **two-twistor particle prior art** Penrose/Perjes/Hughston
-that Fable flags as gating P-B — see
-`2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`), Suite D (Cohn-Kumar
-universal optimality for the P-K spherical-code rung). One line per search in
-`LIT_SEARCH_LOG.md`. Verify + add any cited source to `Null_Edge_References.md`
-before the manuscript cites it.
+## 5. Literature-search cadence (BOTH agents — AT LEAST every 30 minutes, BINDING)
+**Search frequently. The floor is one literature pass every 30 minutes for each
+agent, all night — not only before a rung.** A run that goes an hour without a
+search is off-cadence; log the gap in the ledger if it happens. This program's
+edge is that almost every reframing is an *identification claim* ("X you have is
+Y from another field"), so prior art is load-bearing: it supplies proof
+strategies, kill conditions, and the citations a referee will demand.
+- **Claude:** Neo4j chunk + doc search (`Scripts/lit/neo4j_paper_search.py
+  --chunks`, `neo4j_doc_search.py`) plus the scholarly MCP for off-graph hits;
+  one line per search in `LIT_SEARCH_LOG.md`.
+- **Codex:** run literature searches via **Spark subagents** — dispatch a Spark
+  subagent per search topic so lit work runs in parallel with your proof/audit
+  lane and never stalls it; the subagent returns the ranked hits + a one-line
+  ledger entry. Keep the 30-minute floor per your lane.
+- **Standing search targets:** Goal II (Jarlskog/CP-phase counting), Goal III
+  (Arrighi-Facchini-Forets discrete Lorentz covariance; Cardy/finite-size
+  scaling), Goal IV (Jacobson thermodynamic gravity; teleparallel Einstein),
+  Suite A (Baez-Huerta / Manogue-Dray division-algebra Minkowski; Franco-Eckstein
+  Lorentzian spectral distance), Suite B (Arrighi discrete Lorentz; the
+  **two-twistor particle prior art** Penrose/Perjes/Hughston that Fable flags as
+  gating P-B — see `2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`),
+  Suite D (Cohn-Kumar universal optimality for the P-K spherical-code rung).
+- Verify + add any cited source to `Null_Edge_References.md` before the
+  manuscript cites it. When a claim depends on a paper's internal content, use
+  `--chunks` full text, not the abstract (AGENTS.md).
+
+## 5b. PhysLean — borrow heavily (BINDING for every physics object)
+Before formalizing ANY physics object (spinors, Clifford/Pauli/Dirac algebra,
+Lorentz group, gauge/hypercharge/anomaly, signature, spectral triples, twistors),
+**search PhysLean first and lean on its formalizations** — it is a large, checked
+physics library and most of tonight's objects (Suite A signature/Lorentz/spinor,
+Suite B Dirac/quantum-walk, Suite C gauge/anomaly, Goal IV geometry) have
+PhysLean prior art. Use `lean-explore` scoped `packages=["Physlib"]`
+(`search_summary` -> `get_source_code`/`get_docstring`), and cross-check every
+convention (metric signature, gamma signs, chirality) against it.
+- **CRITICAL — consult and clean-room port, do NOT import.** PhysLean is
+  version-pinned away from our `v4.28.0` build (`docs/PHYSLEAN.md`); adding it as
+  a dependency breaks the build. "Borrow" = read its definition/theorem, record
+  provenance ("clean-room port from PhysLean `<decl>`, convention X"), and
+  re-state it against Mathlib in our namespace. Every Aristotle assembly job that
+  touches a physics object should be told the relevant PhysLean declaration name
+  + its convention so the prover ports rather than reinvents.
 
 ## 6. Discipline (constitution-grade; violations = run failure)
 - Kernel is truth. Flagship landings need `#guard_msgs` axiom pins + a
@@ -452,9 +481,16 @@ before the manuscript cites it.
   carries the verification commands actually run + an explicit claim boundary.
 - No blocking sleeps/polls on external jobs — check inline; recognize
   saturation; use a background watcher for the fleet, not turn-by-turn polling.
-- Aristotle: harvest-first; seed-import packages for the assembly rungs; one
-  "grand strategy" job per agent per 90 min (whole-goal chains, no-go analyses);
-  keep 1-2 audit jobs running whenever capacity allows.
+- Aristotle: **keep the fleet BUSY — usually ~12 jobs loaded** (cap is 10
+  concurrent RUNNING per agent-view; keep the pipeline full so the next job
+  starts the instant one finishes — check `aristotle list --limit 30` every
+  cycle and refill immediately). The 12 must be a MIX: rung/proof jobs,
+  **strategy jobs** (whole-goal chains, no-go analyses — at least 2-3 in flight),
+  and **audit jobs** (semantic-alignment / non-degeneracy / over-claim sweeps of
+  landed or landing work — at least 1-2 in flight). Harvest-first; every assembly
+  job is a seed-import package (sec 3.4) + the relevant PhysLean decl to port
+  (sec 5b). An idle fleet is a wasted night — if you are under ~12, your next
+  action is to queue jobs, not to hand-prove.
 - External model calls (Fable) ONLY via `Scripts/autonomous_loop/send_claude_review.py`,
   standalone packets, `--source-file` for every reviewed declaration, full logs
   under `AgentTasks/model-calls/`. Fable is the run's greatest force-multiplier —
@@ -471,11 +507,15 @@ chain; Goal IV field-equation derivation; Goal II counting theorem; a
 manuscript over-claim + non-degeneracy audit in P3. Every call ledgered.
 
 ## 7. Phases and cadence
-- **P0 (first hour): orient + harvest.** Read sec-1; finish `familyrankfix`;
-  harvest `finitecpt` + the 3 closers as IDLE; refill the fleet with the
-  CHEAP rung of all four goals (Goal III(b), Goal IV(i), Goal I(1), Goal II(A)).
-- **P1: assembly sprint.** Work claimed rungs; lit cadence per sec 5;
-  cross-review each cycle; fold landings into the manuscript continuously.
+- **P0 (first hour): orient + harvest + load the fleet.** Read sec-1; finish
+  `familyrankfix`; harvest `finitecpt` + the 3 closers as IDLE; **fill the
+  Aristotle fleet to ~12 jobs** (sec 6) — the CHEAP rung of all four goals (Goal
+  III(b), Goal IV(i), Goal I(1), Goal II(A)) + 2-3 strategy jobs + 1-2 audit
+  jobs; kick off the 30-min lit cadence (sec 5) and a first PhysLean sweep
+  (sec 5b) immediately.
+- **P1: assembly sprint.** Work claimed rungs; keep the fleet at ~12 and the
+  30-min lit cadence running; cross-review each cycle; fold landings into the
+  manuscript continuously.
 - **P2 (by mid-run): manuscript consolidation.** Whatever rungs landed become
   manuscript prose + anchor rows at grade; no-gos into the future-directions
   doc; keep the deliverable honest and current.
@@ -498,4 +538,6 @@ manuscript over-claim + non-degeneracy audit in P3. Every call ledgered.
    Every rung attempted returned a theorem, a counterexample, or a sharpened
    missing axiom (sec 2b) — logged with its Registrar grade; no churn dead-ends.
 4. The fleet is harvested clean or documented in-flight at dawn; the P0 loose
-   end (`familyrankfix`) closed.
+   end (`familyrankfix`) closed. The fleet was kept BUSY (~12 jobs, strategy +
+   audit in the mix) and the lit cadence held (a search every <=30 min per agent,
+   logged) — PhysLean consulted for every physics object formalized.

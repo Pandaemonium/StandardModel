@@ -58,12 +58,28 @@ violation, `sum_X chi_{XY} != 0`, KMS generator not proportional to B).
 Claude's default: Goals I (hadron) and III (RG/relativity), the harvest, and the
 manuscript draft. Do not duplicate a ledger-claimed rung — audit it.
 
-## Aristotle (harvest-first; seed the imports)
-Every rung is a COMPOSITION of landed modules — package each job with the exact
-seed-import sources (RUN_PLAN sec 2) so the prover composes. One grand-strategy
-job per 90 min (a whole goal chain / no-go analysis). Keep 1-2 audit jobs
-running. If you want a Fable call, request it in the ledger; Claude packages and
-places it.
+## Aristotle (keep it BUSY — ~12 jobs; seed the imports + PhysLean)
+Keep the fleet loaded to **~12 jobs** (RUN_PLAN sec 6): check `aristotle list
+--limit 30` every cycle and refill the instant a slot frees — an idle fleet is a
+wasted night. The 12 are a MIX: rung/proof jobs + **2-3 strategy jobs**
+(whole-goal chains, no-go analyses) + **1-2 audit jobs** running at all times (as
+AUDIT LEAD, keeping audit jobs in flight is your lane specifically). Every rung
+is a COMPOSITION of landed modules — package each job with the exact seed-import
+sources (RUN_PLAN sec 2) PLUS the relevant PhysLean declaration + convention to
+clean-room port (sec 5b), so the prover composes and borrows. If you want a Fable
+call, request it in the ledger; Claude packages and places it.
+
+## Literature via Spark subagents (>=every 30 min) + PhysLean (borrow heavily)
+Run a literature pass AT LEAST every 30 minutes all night (RUN_PLAN sec 5).
+**Dispatch a Spark subagent per search topic** so lit work runs in PARALLEL with
+your proof/audit lane and never stalls it — the subagent runs the Neo4j
+`--chunks`/doc/scholarly search and returns ranked hits + a one-line
+`LIT_SEARCH_LOG.md` entry. Standing targets are in RUN_PLAN sec 5 (your lanes:
+Goal II Jarlskog/CP counting, Goal IV Jacobson/teleparallel). And for EVERY
+physics object you formalize, search PhysLean FIRST via `lean-explore`
+`packages=["Physlib"]` and lean on it — consult + clean-room port with recorded
+provenance, do NOT import (version-pinned; breaks the build). See RUN_PLAN
+sec 5b.
 
 ## The one rule that matters most tonight
 Goals II and IV are existential-heavy (a Jarlskog witness, a nonzero multiplier

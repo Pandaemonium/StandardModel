@@ -61,12 +61,28 @@ evidence for it). Assassin rungs before Builder rungs.
 Codex's default: Goals II (finite KM) and IV (gravitational field equation),
 fleet refills, AUDIT LEAD. Do not duplicate a ledger-claimed rung — audit it.
 
-## Aristotle (harvest-first; seed the imports)
-Keep the fleet saturated. Every assembly rung is a COMPOSITION of landed
-modules — hand each job the exact seed-import list (RUN_PLAN sec 2) as a
-standalone package copying those sources, so the prover composes, not reinvents.
-One grand-strategy job per 90 min (a whole goal chain). Keep 1-2 audit jobs
-running. Queue the CHEAP rung of both your goals before any expensive rung.
+## Aristotle (keep it BUSY — ~12 jobs; seed the imports + PhysLean)
+Keep the fleet loaded to **~12 jobs** (RUN_PLAN sec 6): check `aristotle list
+--limit 30` every cycle and refill the instant a slot frees — an idle fleet is a
+wasted night. The 12 are a MIX: rung/proof jobs + **2-3 strategy jobs**
+(whole-goal chains, no-go analyses) + **1-2 audit jobs** running at all times. If
+you're under ~12, your next action is to queue jobs, not to hand-prove. Every
+assembly rung is a COMPOSITION of landed modules — hand each job the exact
+seed-import list (RUN_PLAN sec 2) as a standalone package copying those sources,
+PLUS the relevant PhysLean declaration + convention to clean-room port (sec 5b),
+so the prover composes and borrows, not reinvents. Queue the CHEAP rung of both
+your goals before any expensive rung.
+
+## Literature (>=every 30 min) + PhysLean (borrow heavily)
+Run a literature pass AT LEAST every 30 minutes all night (RUN_PLAN sec 5), not
+only before a rung: Neo4j `--chunks` + doc search + scholarly MCP, one line per
+search in `LIT_SEARCH_LOG.md`. Almost every suite claim is an identification
+claim, so prior art supplies proof strategies + kills + the citations a referee
+demands. And for EVERY physics object you formalize (spinor, Clifford, Lorentz,
+signature, spectral triple, twistor), search PhysLean FIRST via `lean-explore`
+`packages=["Physlib"]` and lean on it — consult + clean-room port with recorded
+provenance, do NOT import it (version-pinned; breaks the build). See RUN_PLAN
+sec 5b.
 
 ## Fable-5 calls (one every two hours, placed by you)
 Via `Scripts/autonomous_loop/send_claude_review.py --model claude-fable-5`,
