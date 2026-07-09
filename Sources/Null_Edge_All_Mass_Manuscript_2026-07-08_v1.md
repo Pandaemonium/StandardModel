@@ -1527,6 +1527,22 @@ contradicting the observed hierarchical splittings.) P-hf is a prediction
 *about the model's own consistency*, valuable because it is exact and
 checkable, not because `512/125` is a hadron ratio.
 
+**What the theory *does* now own about small masses (M).** While an absolute
+neutrino mass stays outside the program, the *mechanism* for a small mass is
+kernel-checked. There are three, and only three, structural ways to be light, each
+now a theorem: (a) **index-protected zero** — a chiral surplus forces an exact
+massless mode no potential can lift (`ChiralIndexProtection.corner_ker_ge_index`,
+**M**; §8); (b) **critical cancellation** — closure exactly offsets aperture on the
+massless line `|κ|=λ` (§4); and (c) **finite seesaw** — a protected mode that leaks
+into a *heavy hidden block* `M` acquires only a suppressed effective mass
+`|m_eff| ≤ ‖Bᴴv‖²/λ_min(M) → 0` as the hidden scale grows
+(`SchurSeesaw.seesaw_suppression`, **M**), vanishing exactly when the leakage channel
+is closed (`Bᴴv = 0`). So the *smallness* of a light mass is disciplined —
+projective/index/critical/seesaw, not arbitrary tuning — even though its *value*
+awaits the generation index and scale map above. (This is why a small neutrino mass
+would be *natural* in the framework: a protected mode with suppressed hidden leakage,
+not a fine-tuned coincidence — a falsifiable *shape*, not a number.)
+
 ---
 
 ## 11. The Lean anchor table
