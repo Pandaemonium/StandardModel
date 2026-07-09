@@ -23,3 +23,6 @@ Loop: download -> check sorry -> read summary -> build in-project -> semantic re
 | finitelevinson | 10bf50fd | INTEGRATED M | L: finite_optical_theorem (|r|^2+|t|^2=1, phase relation) from S^H S=1. P-J spine, companion M-target |
 | wayturn | 10a914e3 | INTEGRATED M | H: way_nogo (U=u(x)1 charge-conserving => [u,Q_s]=0), way_defect_identity, chirality-flip witness. Higgs as WAY frame resource |
 | phasediagram | 966d4174 | INTEGRATED M | P-B: finite 4-channel mass phase diagram; 3-phase B3 (massive/critical/over-closure) reproved + multi-channel extension |
+| spectraldistance | be0b5442 | INTEGRATED M | P: Connes spectralDist(Dm m) 0 1 = 1/m on the 2-vertex witness -- the complex's metric is RECOVERED from (A,D) (background independence, finite Malament first step) |
+| modularselection | 0053fc61 | INTEGRATED M | J: flow_scalar_shift (central shift invisible) + modular flow of Gibbs(B) = B-generated -- derives the D2 generator instead of positing it |
+| massdesigns | a02602f5 | INTEGRATED M | I/P-K: spinor_lagrange (|ψ|²|φ|²=|<ψ,φ>|²+|ψ∧φ|²), pair_disagreement_eq (|ψ∧φ|²=sin²(θ/2)=chordal dist). Bundle mass = pairwise energy on S² -- spherical-code foundation |

@@ -160,6 +160,9 @@ import PhysicsSM.Draft.NullEdge.SignatureForcing
 import PhysicsSM.Draft.NullEdge.FiniteLevinson
 import PhysicsSM.Draft.NullEdge.WAYTurnNoGo
 import PhysicsSM.Draft.NullEdge.MassPhaseDiagram
+import PhysicsSM.Draft.NullEdge.SpectralDistance
+import PhysicsSM.Draft.NullEdge.ModularSelection
+import PhysicsSM.Draft.NullEdge.MassSphericalDesigns
 import PhysicsSM.Draft.NullEdgeSymmetric2x2Spectrum
 import PhysicsSM.Draft.NullEdgeTwoNullMassive
 import PhysicsSM.Draft.NullEdgeHiggsPotential
