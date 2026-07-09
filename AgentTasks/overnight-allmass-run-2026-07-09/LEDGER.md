@@ -1170,3 +1170,24 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   (we do linear-entropy avatar) / version gap = pinned, not imported.
 - PORT SCORECARD: 2 landed (Minkowski/PhysLean, lean-quantum DPI); in flight: Kraft,
   testing-lower-bounds (tv). Lane RUNNING: tv, unified-action, kraft, masslessedge.
+
+### 2026-07-09 ~midday - Claude - 2 more ports land (TV, Kraft); lane refilled - DraftLead/Builder
+- PORT LANDED [M]: `TVDistinguishabilityMass` (harvest 4a15341c). testing-lower-bounds
+  (RemyDegenne) port, reference-only/version-pinned. mass = TV-distinguishability of
+  the two null directions; for 2-outcome readouts TV=|wedge|=|p0-q0| EQUALS Plucker
+  mass, 0 iff collinear/massless, DPI-monotone (dpi_total_variation), strict under
+  collapse. 4 guard-pins, build 18s.
+- PORT LANDED [M]: `KraftCompressionMass` (harvest 6bc830f9). kraft (elazarg) port,
+  reference-only/version-pinned. mass=incompressibility: Hlin=1-sum(pi^2)=mass^2 is 0
+  iff pure/massless; prefix code Kraft sum<=1; dyadic Shannon-Fano bracket (no Real.log).
+  5 guard-pins, build 19s. NOTE: 'sorry' grep hits were docstring-only ("no sorry..."),
+  confirmed false positive by term-position grep + green guard build.
+- Both folded into 3a as operational readings of the SAME mass^2=linear-entropy invariant
+  (shared with EntropyMonotoneReal/LeanQuantumDPIMass), each adding distinct provenance
+  (distinguishability+DPI+Plucker tie; source-coding/compressibility). Not double-counted.
+- PORT SCORECARD now: 4 LANDED (Minkowski/PhysLean, lean-quantum DPI, testing-lower-bounds
+  TV, Kraft) -- up from 1. Addresses the standing porting task materially.
+- LANE: refilled with 2 new high-value (NOT ports): lambda-frame-constraint (finite
+  Lorentz-blindness=>Poisson theorem, makes the lit finding a theorem, extends
+  LambdaCountDichotomy) + neutrino-seesaw (why nu is light, extends NeutrinoDiracMajorana).
+  Running: unified-action-variation (s7 capstone), lambda-frame-constraint, neutrino-seesaw.
