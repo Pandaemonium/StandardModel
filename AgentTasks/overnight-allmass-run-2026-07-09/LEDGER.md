@@ -478,3 +478,18 @@ NEW jobs (user-requested "mass is slowed-down light"): velocity-operator 99bd223
 eigenvalues +-1 = always moving at c), zigzag-weyl 2f2c8287 (massive Dirac = 2 null Weyl coupled
 by mass), zitterbewegung-average e6cce5f0 (drift = mass-weighted avg of +-c). Prompts in jobs/.
 STILL RUNNING: SuiteB_Levinson e7e17119, SuiteA_Op2Geom4 b607714a + the 3 above.
+
+### 2026-07-09 ~06:05 - Claude - BATCH: 5 more frontier jobs (user-requested) - Builder
+Lane refilled with 5 more (rule v3, non-duplicating, on-thesis), prompts in jobs/:
+- 92fbbe98 `MasslessEdgeCount` - edge count IS the mass class (massless=1 null edge, massive=2);
+  m^2 = det = squared Pluecker disagreement. Backs the TITLE directly (rank/det).
+- 0e01c2b0 `HelicityChirality` - massless: chirality=helicity; mass couples opposite helicities
+  ([D(m),h]!=0). Extends the slowed-down-light line.
+- 93c06030 `PositiveSectorClass` - Suite C1: carrier sector form -> {positive, protected-null,
+  indefinite, balanced}, exhaustive + exclusive + witnesses.
+- ed85faf3 `MassPhase4Channel` - P-B: multi-channel mass phase diagram (massive/critical/ghost
+  by least-eigenvalue sign; critical variety generalizing |kap|=lam).
+- 6e6f2707 `RGFixedPointStructure` - fixed-point set of R2 (free line kap=0 attractor; critical
+  line period-2 separatrix; massive flows to free). The RG skeleton behind basin-membership.
+Total claude- lane now ~10 (5 new + 3 slowed-down-light 99bd223b/2f2c8287/e6cce5f0 + 2 batch
+e7e17119/b607714a to harvest). All builds ~5-30s now (slowdown fixed).
