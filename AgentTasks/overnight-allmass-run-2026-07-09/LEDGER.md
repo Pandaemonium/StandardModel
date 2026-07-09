@@ -1509,3 +1509,12 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - NET: both red-teams done + acted on. 3 headline sections honestly bounded: physics=[import], the
   [orig] is the finite kernel-checked bookkeeping avatar + grading; 2 finite 'cores' (s7 EH, s10a
   Lorentz) are weaker than their imports, now labeled as such. This is the pre-21:00 audit, real.
+
+### 2026-07-09 ~mid-afternoon - Claude - anchor-citation sweep (honesty verification) - DraftLead
+- Ran the anchor-citation sweep across this session's ~15 new NullEdge modules (verify every
+  backticked cited name resolves to a declaration in its module - the check the manuscript promises).
+- FOUND + FIXED one real broken citation: MinkowskiConvention row cited `eta_eq_indefinite`, module
+  declares `eta_eq_indefiniteDiagonal`. Fixed; clarified minkowskiMatrix = PhysLean convention (external),
+  not our decl. All other 15 modules' cited names resolve (det/p/g were prose-notation false positives).
+- LIT (last cycle): VERIFIED BHS gr-qc/0605006 (the [import] Lorentz core) + gr-qc/0311055 corroboration.
+- LANE: higgs-dof-conservation, redteam-budget-protection (s4+s8 audit), lambda-exponent-fork RUNNING (3).
