@@ -526,15 +526,21 @@ carrier. So "unification is decomposition" is only a thesis if the
 decomposition is *forced*. We therefore pre-register the missing rigidity
 statement:
 
-> **Conjecture (carrier rigidity, C).** The axioms — null soldering on a
-> finite 2-complex, Krein structure, chiral grading, and covariantly
-> constant turn field — determine the carrier operator and its four-block
-> split *essentially uniquely* (up to the representation gauge already
-> identified in §6). **Kill condition:** exhibit two axiom-satisfying
-> carriers whose square-decompositions are not related by that gauge, or a
-> fifth canonically-forced block. Until this is settled, §4's split is a
-> *natural* decomposition, not a *forced* one, and the reader should hold
-> "unification" to that lower standard.
+> **Conjecture (carrier rigidity, C) — now partly resolved (M + no-go).** The
+> axioms — null soldering on a finite 2-complex, Krein structure, chiral grading,
+> and covariantly constant turn field — determine the carrier operator and its
+> four-block split *essentially uniquely*. **What is now kernel-checked
+> (`CarrierRigidity`, M):** the *type-count* half is forced — the expansion of
+> `2·(D#D)` falls into *exactly* these four grade-typed blocks
+> `Q_A + Q_C + 2E_# + 2Q_T` with **no fifth block** (`square_decomposition`), and
+> the four channels carry distinct even/odd Krein grades. **What is refuted (no-go):**
+> full *uniqueness* is **not** forced — one can exhibit axiom-satisfying carriers
+> whose split differs by more than the §6 representation gauge (two extra structures
+> make it non-unique). So "unification is decomposition" splits into a **forced**
+> claim (the four channel *types* are the only ones the square admits) and an
+> **open** one (a further axiom is needed to pin the split uniquely). The reader
+> should read §4's "unification" at the forced-type-count standard, not the
+> unique-decomposition standard.
 
 **The budget corollary (M).** A one-line consequence of the assembly
 (apply any linear expectation `ev` — the state functional `<psi, . psi>` —
@@ -1167,11 +1173,19 @@ curvature acting in a plane containing the ground mode leaves the ground pair
 decoupled and gives **no** binding (least eigenvalue = the free threshold), with the
 exact boundary `κ² = (d₂−d₀)(d₂−d₁)`. So the honest content is the **conditional**
 theorem: *if* the closure acts among the excited modes (not the ground plane), *then*
-a second-quantized closure interaction binds a state below the constituent sum — a
-kernel-checked structural fact, but grade **C** for the unconditional "the carrier's
-own closure binds" until the carrier's `K` is shown to occupy the binding plane. The
-mass-value identification (a *specific* hadron mass) is a further **C** step the
-program lacks (§10).) This is deliberate and it is also a real limitation:
+a second-quantized closure interaction binds a state below the constituent sum. **And
+that condition is now itself kernel-checked for the carrier** (`CarrierClosurePlane`,
+**M**, guard-pinned): reading the closure generator off the mass block `B(λ,κ) =
+λ·I + i·κ·K` gives the explicit `carrierK = !![0,0,0; 0,0,−1; 0,1,0]`
+(`massBlock_eq_carrierK`), and `carrierK_eq_closureCurvature` proves it **equals** the
+excited-mode/binding-plane curvature — the ground mode 0 is a spectator
+(`carrierK_ground_spectator`) and it is provably **not** the ground-plane curvature
+(`carrierK_ne_closureCurvature2`). So the carrier's *own* `K` occupies the binding
+plane, and the binding is **unconditional for the carrier** (`carrier_closure_binds`,
+**M**): the "closure *can* bind" conditional is upgraded to "*this* carrier's closure
+*does* bind" — **C → M**. The one step that stays **C** is only the mass-value
+identification (a *specific* hadron mass), which the program lacks (§10).) This is a
+real limitation only at the last step:
 
 - Several physical notions the words invite — a *chiral condensate*
   `⟨ψ̄ψ⟩`, the *number* of light hadrons, spontaneous symmetry breaking as a
@@ -1575,7 +1589,11 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved`, `carrier6_orbit_norm_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the flow **orbit** of the carrier block `B(λ,κ)` — and of the full `6×6` physical sector form `M6` (`carrier6_…`) — conserves sector norm & (commuting-observable) energy: `FiniteUnitaryEvolution` fired on the concrete carrier |
 | 9 | `secondQuantized_massGap` | `Carrier/FockMassGap.lean` | M, self-guarded (in-file pin) | **free second-quantized mass gap**: on the fermionic occupation Fock space, `dΓ(B)`'s gap = one-particle gap `λ−κ`; free 2-body = sum of constituents; `Δ=−κ` seeds a below-threshold bound state |
 | 9 | `interacting_boundState_below_threshold` | `Carrier/InteractingTwoBody.lean` | M, self-guarded (in-file pin) | **interacting below-threshold bound state**: an attractive `V` of the closure scale `κ` gives a least eigenvalue strictly below the constituent sum (`IsLeast`, no inserted defect) |
-| 9 | `derived_boundState_below_threshold`, `derived_wrongPlane_no_binding` | `Carrier/DerivedInteraction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **`V` is a 2nd-quantized closure operator, conditionally binding**: `Vderived = dΓ(iκK)` (= modelled `V` up to phase gauge) binds below threshold *iff* the closure acts among *excited* modes (ground-plane closure → no binding; boundary `κ²=(d₂−d₀)(d₂−d₁)`). The conditional is **M**; tying the carrier's actual `K` to the binding plane, and the mass-value, stay **C** |
+| 9 | `derived_boundState_below_threshold`, `derived_wrongPlane_no_binding` | `Carrier/DerivedInteraction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **`V` is a 2nd-quantized closure operator, conditionally binding**: `Vderived = dΓ(iκK)` (= modelled `V` up to phase gauge) binds below threshold *iff* the closure acts among *excited* modes (ground-plane closure → no binding; boundary `κ²=(d₂−d₀)(d₂−d₁)`) |
+| 9 | `massBlock_eq_carrierK`, `carrierK_eq_closureCurvature`, `carrier_closure_binds` | `Carrier/CarrierClosurePlane.lean` | M, self-guarded (in-file pin) | **the carrier's own `K` IS in the binding plane** → binding is unconditional for the carrier (**C→M**): `carrierK = !![0,0,0;0,0,−1;0,1,0] = closureCurvature`, ground mode a spectator, ≠ ground-plane curvature. Only the specific mass-value stays **C** |
+| 4 | `square_decomposition` | `NullEdge/CarrierRigidity.lean` | M, self-guarded (in-file pin) | **four-block square, no fifth block**: `2(D#D)=Q_A+Q_C+2E_#+2Q_T` exactly, four distinct even/odd Krein grades — the channel *type-count* is forced (structure of "unification=decomposition"). Full *uniqueness* of the split is NOT forced (non-rigid; needs a further axiom) |
+| 9a | `posDef_aperture_add_gram`, `massGap_one_add_gram` | `NullEdge/PositiveSectorClassification.lean` | M, self-guarded (in-file pin) | **positive-sector criterion (generalizes T2)**: `A PosDef ⇒ (A+BᴴB) PosDef`, gap `≥1` — closure entering *squared* never destabilizes a positive aperture, beyond the `Cl(4)` witness |
+| 2a | `Dop`/`kdag_Dop`, walk = carrier | `NullEdge/CheckerboardCarrierBridge.lean` | M, self-guarded (in-file pin) | **the 1+1D Dirac quantum walk IS a Krein null-edge carrier**: null Clifford edges `cP²=cM²=0`, `{cP,cM}=1`, kinetic/mass/`D` all Krein-self-adjoint; channel names match kinetic/mass. First "channels = physics" evidence |
 | 9 | `dirac_mass_shell`, `Ustep_hasDerivAt_generator` | `Carrier/ContinuumLimit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **continuum-limit finite symbol facts**: mass shell `(kσ_z+mσ_x)²=(k²+m²)·1`; discrete transfer generator matches the Dirac Hamiltonian symbol to leading order. Continuum *theorem* is `[import]` (1+1D) / open (Cl(4)) |
 | 2a/9 | `massive_implies_subluminal`, `luminal_iff_massless`, `groupVelSq_num_le_sin_sq_omega` | `Carrier/SubluminalBound.lean` | M, self-guarded (in-file pin) | **derived speed limit**: from the pinned dispersion `cos ω=cos k cos θ`, `v_g²≤1` with deficit `1−cos²θ`; every massive mode strictly subluminal, only the massless (`θ=0`) luminal. Boost symmetry NOT derived (critical-point only) |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |

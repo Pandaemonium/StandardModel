@@ -499,3 +499,64 @@ rounds 3-6 increasingly restate the same ontology and re-propose already-done or
 already-jobbed work. The conceptual layer is saturated. Next action is a **harvest
 pass** over the ~22 running frontier jobs, integrating what survives the kernel and
 recording the no-gos — not further intake.
+
+---
+
+## HARVEST RESULTS (2026-07-08) — what the frontier jobs returned
+
+Kernel verdicts after downloading, building in-project, and semantic-reviewing each
+completed job. All integrated modules build green with footprint
+`[propext, Classical.choice, Quot.sound]`.
+
+### Proof jobs — clean M (integrated into the manuscript)
+- **nulldecomp** — the converse: all mass IS null-edge disagreement (bidirectional). §3.
+- **chiralindex (F6)** — `dim ker >= index`, perturbation-stable, >=1 protected mode. §8.
+  (Only the >=1 bound; "exactly one" needs full-rank corner, out of scope.)
+- **bindingdeficit (F8)** — `Delta = kappa = C(rho)*lambda`, binding = entanglement deficit;
+  closes §3a target (ii) **C->M**.
+- **schurseesaw (E)** — `|m_eff| <= ||B^H v||^2/lambda_min(M) -> 0`, finite seesaw. §10.
+- **massenergy (O-adjacent)** and **subluminal (O)** — landed earlier this run.
+
+### Strategy jobs — M / structural wins (integrated as draft modules)
+- **F5 bindingplane [WIN, C->M]** — the carrier's OWN `K = closureCurvature`, so the
+  carrier binds UNCONDITIONALLY (`CarrierClosurePlane.carrier_closure_binds`). This is the
+  decisive upgrade of §9's DerivedInteraction from "closure *can* bind" to "*this* carrier
+  binds". → manuscript §9.
+- **F1 checkerboardbridge [WIN]** — the 1+1D Dirac quantum walk IS a Krein null-edge carrier;
+  kinetic/mass/D all Krein-self-adjoint, channel names match (`CheckerboardCarrierBridge`).
+  First evidence that the channel names are physics (the P-H continuum bridge, first rung).
+- **F7 eslotgeometry [WIN]** — the E-slot has a genuine transformation law (tensorial on the
+  metric-preserving group), splits into contorsion (metric-compatible) + nonmetricity, with
+  no double-counting vs `Q_C` (`ESlotGeometry`). Gravity channel gets real geometry (P-G).
+- **F4 windinglowmodes [WIN, +Conj S]** — winding-`w` closure background has `>= w` protected
+  zero modes, disorder-robust (`WindingLowModes.winding_protects_low_modes`); index = w.
+  Structured (not random) backgrounds accumulate low modes — and this IS the finite 't Hooft
+  vertex (Conjecture S).
+- **positive-sector classification (step 2) [WIN]** — `A PosDef => (A + B^H B) PosDef`, mass
+  gap `>= 1` (`PositiveSectorClassification`); generalizes the `T2 = 1 + B^H B` positivity
+  beyond the `Cl(4)` witness (closure entering squared can never destabilize a positive
+  aperture).
+- **Conjecture B confinementpositivity [WIN]** — colored (traceless) sub-sector is negative-
+  definite (no isolated positive mass); the color singlet is positive. Confinement as a finite
+  positivity dichotomy (`ConfinementPositivity`).
+- **Conjecture D cpholonomy [SUPERSEDED]** — the three wedge-triple identities are true M, but
+  the wedge triple is not phase-gauge-invariant; the gauge-invariant CP object is the already-
+  proven `NullEdgeBargmannPhaseInvariance.bargmannTriple_phase_invariant`. Not integrated.
+
+### Strategy jobs — honest NO-GOs / nuanced verdicts (recorded, not over-claimed)
+- **F2 carrierrigidity [NON-RIGID, but structured]** — `CarrierRigidity.square_decomposition`
+  proves the exact four-block identity `2(D#D) = Q_A + Q_C + 2E_# + 2Q_T` with **no fifth
+  block** (the channel TYPE-count is forced), AND the four channels have distinct even/odd
+  Krein grades. But full rigidity (uniqueness of the split) is **NOT forced** — two extra
+  structures make it non-unique. So "unification is decomposition" is disciplined: the
+  four-block *structure* is forced; the *decomposition* is not unique without a further axiom.
+- **Conjecture C familyindex [NO-GO]** — the count of inequivalent positive-sector completions
+  is exactly `n+1` (strand rank `n`), `= 3` iff `n = 2` (`FamilyIndexNoGo.count_completions`,
+  `three_not_forced`). "Three generations" is NOT forced by the finite carrier category; the
+  missing ingredient is precisely a rank-fixing axiom (`n = 2`). Honest negative — the
+  replication index is underdetermined, exactly as pre-registered.
+
+### Still running (harvest in the follow-up round)
+`massthermo` (V), `spectraldistance` (P), `signatureforcing` (M), `finitecpt` (R),
+`divisionselection` (N), `finitelevinson` (L), `modularselection` (J), `massdesigns` (I/P-K),
+`wayturn` (H), `phasediagram` (P-B multi-channel).
