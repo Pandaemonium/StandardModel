@@ -1606,3 +1606,11 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - s8 CHIRAL-PROTECTION ARC COMPLETE: definitions audit caught EvenMassGaps rig -> downgraded to valid
   content -> provided+landed correct replacement. Model audit response: catch, downgrade, replace.
 - LANE: chiral-projectors-dirac RUNNING.
+
+### 2026-07-09 ~late-afternoon - Claude - ChiralProjectorsDirac lands: Dirac-algebra grounding set complete - DraftLead
+- PORT LANDED [M]: `ChiralProjectorsDirac` (8c15f6b0). Weyl decomposition: PL,PR=(1-/+g5)/2 complete/
+  orthogonal/idempotent, g5*PL=-PL, tr PL=tr PR=2 (two 2-dim chirality sectors). PhysLean Fermion.Weyl
+  convention. build 2m45s (heavier 4x4 proj proofs), guard-pinned. s2a anchor.
+- DIRAC-ALGEBRA GROUNDING SET COMPLETE: eta (MinkowskiConvention) + gamma (DiracGammaPhysLean) + chiral
+  projectors (ChiralProjectorsDirac) + sigma-map (PauliMomentumPhysLean), all in PhysLean conventions.
+  Port scorecard: 10 (4 PhysLean groundings + 6 library ports). LANE now empty - refill.
