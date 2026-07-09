@@ -220,6 +220,7 @@ import PhysicsSM.Draft.NullEdge.VacuumSequestering
 import PhysicsSM.Draft.NullEdge.HiggsLongitudinalMode
 import PhysicsSM.Draft.NullEdge.MasslessEdgeCount
 import PhysicsSM.Draft.NullEdge.MinkowskiConvention
+import PhysicsSM.Draft.NullEdge.DiracGammaPhysLean
 import PhysicsSM.Draft.NullEdge.LongitudinalGoldstone
 import PhysicsSM.Draft.NullEdge.NeutrinoDiracMajorana
 import PhysicsSM.Draft.NullEdge.NeutrinoSeesaw
