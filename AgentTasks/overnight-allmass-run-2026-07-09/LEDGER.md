@@ -1665,3 +1665,22 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   PauliMomentumPhysLean and MasslessEdgeCount as the bridge) + this ledger, one commit.
 - Fleet: mass-shell-projectors (a347e33b) still RUNNING - the Dirac energy-projector complement; will
   complete the projector pair (chiral + energy). chiral-projectors-dirac already landed.
+
+### 2026-07-09 ~afternoon - Claude - LANDED MassShellProjectors (Dirac energy-projector pair) - DraftLead
+- HARVESTED claude-mass-shell-projectors (a347e33b, COMPLETE). The energy projectors Lambda±=(pslash±m)/2m
+  complement the chiral projectors: pslash²=(E²-kz²).1=m².1 on shell (g0²=1,g3²=-1,{g0,g3}=0); complete
+  (Lp+Lm=1), orthogonal (Lp.Lm=0), idempotent pair with tr Lp=tr Lm=2 (two ± energy states).
+- HONEST PAYLOAD (massless_singular): 2m.Lp = pslash+m.1 stays finite but Lp~1/m DIVERGES as m->0, so
+  Lambda± exist ONLY for m!=0 - the energy split NEEDS the mass, unlike the chirality split (survives
+  m=0). This is the projector-level face of mass-from-massless: mass turns massless chiral edges into a
+  rest-frame energy split. Semantic review: aligned, honest scope (real (t,z) avatar), no over-claim.
+- Ported to PhysicsSM/Draft/NullEdge/MassShellProjectors.lean (namespace MassShellProjectors). In-project
+  `lake build` GREEN (8026 jobs). Footprint [propext,Classical.choice,Quot.sound] via 7 build-enforced
+  #guard_msgs pins. Term-position sorry/native_decide = 0. Prose hygiene clean. Provenance: PhysLean
+  spaceTime.gamma/Dirac rep, clean-room (no import). Proof uses `module`/field_simp/fin_cases (buildable v3).
+- LANDED: module + PhysicsSMDraft edge + §11 anchor row (6 grep-verified names, paired after
+  ChiralProjectorsDirac) + this ledger, one commit. The Dirac projector PAIR (chiral P_L/P_R + energy
+  Lambda±) is now complete in-tree.
+- NEXT (genuine, non-filler follow-on now UNBLOCKED): the [P_L, Lambda±] commutator - mass = failure of
+  chirality and energy projectors to commute (the mass term couples L<->R). Needs both projector sets,
+  now both landed. Candidate for next Aristotle job.
