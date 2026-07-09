@@ -42,14 +42,22 @@ prove:
 
 * the enumeration law and the equivalence `count = 3 ↔ n = 2`
   (`completionCount`, `three_generations_iff`);
-* each candidate structure, faithfully formalized, is *realizable at some
-  `n ≠ 2`*, hence does not force `n = 2`
-  (`triality_not_forces`, `anomaly_not_forces`, `jordan_not_forces`);
-* the sharp no-go: a structure `C` forces `n = 2` **and** is realizable there
-  *iff* `C` is logically equivalent to the rank-fixing datum `n = 2` itself
-  (`forcing_iff_rankfixing`).  In other words, three generations requires an
-  explicit rank-fixing input that is *equivalent to* `n = 2`; none of the
-  proposed geometric/algebraic structures supplies it, because in each of them
+* each candidate structure is *realizable at some `n ≠ 2`*, hence does not force
+  `n = 2` (`triality_not_forces`, `anomaly_not_forces`, `jordan_not_forces`).
+  **Fidelity caveat (audit: Codex 2026-07-09).** Only the anomaly candidate
+  (`AnomalyStruct`, a nontrivial `∑qᵢ = ∑qᵢ³ = 0` pattern) is a *faithful*
+  formalization of its structure. The triality and Jordan predicates
+  (`TrialityStruct`, `JordanStruct`) record only the *numeric content* that is
+  manifestly `n`-independent (fixed group order `6` / matrix size `3` /
+  dimension `27`, with `JordanStruct` carrying a literal `n = n` conjunct) — so
+  their "does not force `n`" is near-tautological BY CONSTRUCTION, which is the
+  point (those structures do not mention the strand rank) but is not a deep fact
+  about `J₃(𝕆)` or `S₃`. The load-bearing, fully general result is the last item.
+* the sharp no-go (**the real content**): a structure `C` forces `n = 2` **and**
+  is realizable there *iff* `C` is logically equivalent to the rank-fixing datum
+  `n = 2` itself (`forcing_iff_rankfixing`).  In other words, three generations
+  requires an explicit rank-fixing input that is *equivalent to* `n = 2`; none of
+  the proposed geometric/algebraic structures supplies it, because in each of them
   the number "three" enters as an *input* (matrix size `3`, three summands,
   three charges) rather than being *derived*.
 

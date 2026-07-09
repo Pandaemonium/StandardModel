@@ -46,7 +46,7 @@ its Lean actually earns only after it lands and is recorded in HARVEST RESULTS.
   composable quantum systems + CP phase => (1,3)-Lorentzian complex two-spinor
   geometry. Signature/dimension/causality are OUTPUTS, not inputs. Rungs:
   `SignatureForcing` [M], `DivisionDimensionSelection` [M], `SpectralDistance` [M],
-  `siglorentz`/`finitecpt` [job]; NEW: the (2,2)-OS Assassin rung, full Lorentzian
+  `RPSelectsLorentzian` [M], `FiniteCPT` [M]; NEW: full Lorentzian
   operator-to-geometry recovery on T2. Ties to P-B, P-G, Layer 1, conjectures M-U.
 - **Suite B — Path-Sum Universality Theorem.** Finite null path sums flow to the
   Dirac/Weyl universality class; `Q_A,Q_C,Q_T,E` are its relevant/marginal
@@ -60,12 +60,14 @@ its Lean actually earns only after it lands and is recorded in HARVEST RESULTS.
   completions (or underdetermined without a new axiom). Rungs:
   `PositiveSectorClassification` [M], `ConfinementPositivity` [M],
   `CarrierClosurePlane` [M], `WindingLowModes` [M], `FamilyIndexNoGo` [no-go],
-  Goals I + II, `finitecpt` [job]; NEW: functorial confinement, index=anomaly. Ties
-  to P-A, P-F.
+  `FamilyRankNoGo` [no-go], `KMPhaseCounting` [M arithmetic-count anchor],
+  Goals I + II, `FiniteCPT` [M]; NEW: constructive N=2 rephasing no-go, explicit
+  N=3 Jarlskog witness, functorial confinement, index=anomaly. Ties to P-A, P-F.
 - **Suite D — Mass Resource Theorem.** Mass = positive-sector resource cost of
   compressing finite null histories (entropy = concurrence = compression cost =
   1/localization = thermodynamic response). Rungs: `MassThermodynamics` [M],
-  `ModularSelection` [M], `SchurSeesaw` [M], Goal IV (Clausius/Jacobson); NEW: the
+  `ModularSelection` [M], `MassResourceModularAudit` [M false-shape guard],
+  `SchurSeesaw` [M], `WEPTrace` [M trace identity], Goal IV (Clausius/Jacobson); NEW: the
   mass resource theory (free states `det P=0`, monotones, conversion laws), entropy
   monotonicity under Schur compression, modular selection stretch, small-mass
   naturalness, finite Compton bound. Ties to P-C, P-D, P-I, conjecture V.
@@ -461,10 +463,12 @@ land on the Q5 dimension/signature-selection thread.
   factor=mass scale, E-channel = order-vs-scale mismatch). *Kill:* distance
   degenerates. -> job `spectraldistance` `be0b5442` (the one piece genuinely absent
   from the repo).
-- **R. Finite CPT.** `Theta = C.Gamma_rev.#` antiunitary, `Theta D Theta^{-1} = D^#`,
+- **R. Finite CPT [M].** `Theta = C.Gamma_rev.#` antiunitary, `Theta D Theta^{-1} = D^#`,
   spectrum conjugate-paired. Edge-reversal + `chiral_det` machinery already exist
   (`GWEdgeReversalBridge`, `FermionicReflection`, `ChiralZeroModeParity`). *Kill:*
-  axiom-satisfying carrier with unpaired spectrum. -> job `finitecpt` `e690c3b3`.
+  axiom-satisfying carrier with unpaired spectrum. Landed on an explicit `C^4`
+  Clifford/color witness as `FiniteCPT` (`e690c3b3`); arbitrary-carrier CPT remains
+  a separate generalization target.
 - **Q. Critical universality [oracle probe, not jobbed].** Decimation flow at `k=l`
   has free-Dirac RG eigenvalues, dynamical exponent `z=1` (emergent isotropy = birth
   of boost symmetry), non-channel couplings irrelevant. Reframes S4a: "channel names
@@ -625,11 +629,14 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   reconstruction.
 - **`bargmanncp` (Conjecture D) [WIN w/ caveat]** -> `NullEdge/BargmannCP` — the Bargmann/
   Pancharatnam triple is CP-odd (`bargmann_CP_odd`), with `Im B != 0` a genuine
-  non-gaugeable CP-violating invariant, and `tan(arg B) = n1.(n2 x n3)/(1 + ...)` the exact
-  Van Oosterom-Strackee form => `arg B = Omega/2` (half the celestial solid angle). Caveat:
-  the literal spherical-excess-area identity needs spherical-triangle theory absent from
-  Mathlib; delivered in the sharp VOS tangent form. **Supersedes the `cpholonomy` wedge
-  triple**; this is the Bargmann object Goal II (finite KM / CP phase counting) builds on.
+  non-gaugeable CP-violating invariant (`bargmann_CP_genuine_iff`). What is KERNEL-PROVED
+  about the phase is the algebraic tangent identity `tan(arg B) = n1.(n2 x n3)/(1 + n1.n2 +
+  n2.n3 + n3.n1)` (`bargmann_tan_arg_unit`); that this RHS is the Van Oosterom-Strackee
+  expression for `tan(Omega/2)`, hence `arg B = Omega/2` (half the celestial solid angle), is
+  geometric COMMENTARY — no solid-angle object is formalized (needs spherical-triangle theory
+  absent from Mathlib). (Audit: Codex 2026-07-09, docstring-outruns-statement — tightened.)
+  **Supersedes the `cpholonomy` wedge triple**; the CP-oddness half is the Bargmann object
+  Goal II (finite KM / CP phase counting) builds on.
 - **`rigidityaxiom` (F2 uniqueness) [NUANCED / abstract-only]** -> `NullEdge/GradedDecompUniqueness`
   — the delivered project had no carrier, so Aristotle formalized the GENERIC kernel: for an
   internal-direct-sum grading by an operator with pairwise-distinct eigenvalues the blocks are
@@ -638,3 +645,19 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   the honest backbone for "which axiom upgrades type-count to uniqueness" (answer: candidate
   (a), nondegenerate soldering) — but it is NOT a carrier-specific uniqueness claim; wiring it
   to the real `2(D#D) = Q_A + Q_C + 2E_# + 2Q_T` carrier is separate work (open).
+
+### Codex Goal II / IV seed landings (2026-07-09)
+
+- **`KMPhaseCounting` [WIN / narrow M]** — finite CKM bookkeeping: the parameter split
+  `N^2 = angles + removable phases + physical CP phases` and the threshold
+  `0 < ckmPhysCP N <-> 3 <= N`. This gives the arithmetic spine for Goal II, but the
+  real KM theorem still needs the constructive N=2 rephasing no-go and an explicit
+  nonzero N=3 Jarlskog witness.
+- **`WEPTrace` [WIN / narrow M]** — WEP as the finite trace identity
+  `Tr((kappa * 1) rho) = kappa Tr(rho)`, with a nonvacuous equal-trace witness and
+  a channel-stress negative control. This is Goal IV's cheapest trace rung, not the
+  E-slot field equation or Clausius/Jacobson result.
+- **`MassResourceModularAudit` [WIN / audit M]** — central normalization shifts cancel
+  in the commutator derivation (`ad(z+B)=ad(B)` for central `z`), while the operator
+  equality `z+B=B` is false for nonzero shifts. This pins the Suite D modular
+  false-shape boundary.

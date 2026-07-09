@@ -24,9 +24,14 @@ The gauge-invariant Bargmann/Pancharatnam triple of three rays is
   the exact `Tr(ρ₁ρ₂ρ₃)` form of the Pancharatnam identity.
 
 * `bargmann_tan_arg_unit`: consequently `tan (arg B) = n₁·(n₂×n₃) / (1 + n₁·n₂ +
-  n₂·n₃ + n₃·n₁)`, which is exactly the Van Oosterom–Strackee expression for
-  `tan(Ω/2)` with `Ω` the solid angle of the Bloch-vector geodesic triangle; thus
-  `arg B` equals *half* that solid angle.
+  n₂·n₃ + n₃·n₁)`. **Scope (kernel vs commentary):** what is *proved* is exactly
+  this algebraic identity for `tan (arg B)`. The reading that this right-hand side
+  is the Van Oosterom–Strackee expression for `tan(Ω/2)` (with `Ω` the solid angle
+  of the Bloch-vector geodesic triangle), hence that `arg B` is *half* that solid
+  angle, is geometric COMMENTARY: no solid-angle object, spherical-excess area, or
+  `arg`-branch handling is formalized (that would need spherical-triangle theory
+  absent from Mathlib). The kernel content is the tangent identity; the solid-angle
+  identification is prose. (Audit: Codex 2026-07-09, docstring-outruns-statement.)
 -/
 
 namespace Bargmann
@@ -127,10 +132,12 @@ theorem bargmann_bloch_unit (a₁ b₁ a₂ b₂ a₃ b₃ : ℂ)
   simp_all +decide [ Complex.ext_iff, bargmann_bloch_re, bargmann_bloch_im ]
 
 /-
-**Van Oosterom–Strackee / half-solid-angle form.** For unit rays,
-`tan (arg B) = n₁·(n₂×n₃) / (1 + n₁·n₂ + n₂·n₃ + n₃·n₁)`, the standard
-expression for `tan(Ω/2)`; thus `arg B` is half the solid angle of the geodesic
-triangle `n₁,n₂,n₃` on the Bloch sphere.
+**Algebraic tangent identity (what is proved).** For unit rays,
+`tan (arg B) = n₁·(n₂×n₃) / (1 + n₁·n₂ + n₂·n₃ + n₃·n₁)`. This much is
+kernel-checked below. The identification of the right-hand side with the Van
+Oosterom–Strackee expression for `tan(Ω/2)`, and hence the reading that `arg B` is
+half the solid angle of the geodesic triangle `n₁,n₂,n₃` on the Bloch sphere, is
+geometric commentary — the solid angle itself is not formalized.
 -/
 theorem bargmann_tan_arg_unit (a₁ b₁ a₂ b₂ a₃ b₃ : ℂ)
     (h₁ : sqNorm a₁ b₁ = 1) (h₂ : sqNorm a₂ b₂ = 1) (h₃ : sqNorm a₃ b₃ = 1) :
