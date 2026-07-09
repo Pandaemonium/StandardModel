@@ -1316,10 +1316,21 @@ massless mode (`exists_protected_massless_mode`, **M**).
 manifold, curvature, or characteristic class — so this is a *dimension count*
 forbidding the kernel from fully lifting, not a characteristic-class law; "topological"
 means only the loose sense of a discrete invariant (the chiral imbalance). (ii) The
-protection is **conditional**, and this too is now kernel-checked: the zero mode is
-robust to grading-preserving (**odd**) deformations — eigenvalues can only leave zero
-in `±` pairs — but an **even (grading-diagonal) mass term gaps it**, the Hermitian
-square acquiring `det = m⁴ ≠ 0` (`EvenMassGaps.odd_preserves`, `even_gaps`, **M**). So
+protection is **conditional** — not immunity to *every* potential: an **even
+(grading-diagonal) mass term gaps the mode**, the Hermitian square acquiring
+`det = m⁴ ≠ 0` (`EvenMassGaps.even_gaps`, **M**), which alone refutes "immune to every
+potential." But the general rule is *subtler* than "odd preserves / even gaps," and a
+definitions-level audit (`AgentTasks/.../audits/AUDIT_definitions_honesty_20260709.md`)
+is right to press it: in the finite `EvenMassGaps` toy the grading is *balanced*
+(`dim H₊ = dim H₋`, index 0), so there is no index protection to begin with, and gapping
+is governed by whether a perturbation has support on the zero mode's chirality slot,
+**not** by parity — a *generic* odd perturbation (the physical Dirac mass `[[0,m],[m,0]]`)
+is odd yet **gaps** the mode, while the even `diag(0,m)` does **not**. So
+`EvenMassGaps.odd_preserves` is a cherry-picked upper-triangular perturbation (the same
+block shape as `A`), not a chiral law. The genuine chiral / sublattice (SSH–BdG)
+protection — where odd perturbations preserve a zero mode — requires an **imbalanced**
+grading (nonzero index) and is `[import]`, *not* demonstrated by this balanced 2-D toy;
+what the toy honestly delivers is only the counterexample to "every potential." So
 the honest statement is *chiral-symmetry-conditional* protection, the finite analog of
 SSH / BdG sublattice zero modes (`[import]`), **not** immunity to *every* potential.
 The imbalance cannot be lifted by any *odd* perturbation; that is the true, narrow
@@ -1337,10 +1348,12 @@ a single parameter set to zero:
    aperture, `|κ| = λ`, closing the gap `λ − κ = 0` on the massless critical line
    (`B_massless_iff_of_pos`, **M**; §4 phase diagram). A tuned cancellation, not a
    collapse.
-3. **Index-protected (chiral).** A chiral surplus forces a zero mode robust to every
-   *grading-preserving (odd)* perturbation (`exists_protected_massless_mode`, **M**;
-   this section) — though an *even* mass term gaps it (above). No tuning — a dimension
-   count forbids the partner.
+3. **Index-protected (chiral).** A chiral surplus (imbalanced grading) *forces* a zero
+   mode — a dimension count forbids the partner (`exists_protected_massless_mode`, **M**;
+   this section). Its robustness to grading-preserving perturbations is the standard
+   index / `±`-pairing argument for *imbalanced* gradings (`[import]`), not something the
+   finite existence theorem itself certifies; and an *even* mass term can still gap a
+   given mode (above). No tuning — the imbalance is the whole content.
 4. **Gauge-quotient (Krein/BRST).** Masslessness/positivity is decided only *after*
    passing to the physical Gauss sector `V'/N`; the closure form is balanced there
    (`physical_sector_balanced` / `balanced_on_physical_sector`, **M**; §6) — the
@@ -2174,7 +2187,7 @@ anchor sweep.)*
 | 7 | `eslot_not_pure_torsion_witness` | `Carrier/CarrierESlotTorsionSplit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | not pure torsion (witness) |
 | 8 | `chiralIndex_eq_graded_dimension` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | index = graded dimension |
 | 8 | `exists_protected_massless_mode` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | forced massless mode |
-| 8 | `odd_preserves`, `even_gaps`, `even_mode_massive`, `conditional_protection_verdict` | `NullEdge/EvenMassGaps.lean` | M, self-guarded (in-file pin) | **an explicit counterexample to "immune to every potential"**: the non-zero chiral kernel vector `v=![1,0]` of an odd `A` (`A_zero_mode`) is *preserved* by an odd perturbation (`(A+P_odd)v=0`) but *gapped* by an even (grading-diagonal) mass `m≠0` — the Hermitian square then has `det = m⁴ ≠ 0`. This one preserve/one-gap *instance* refutes "immune to *every* potential"; the general odd-preserves/even-gaps *classification* is the standard chiral (SSH/BdG) principle `[import]`, illustrated here, not proved in full by the two witnesses (the §8 boundary, cf. `RankCeiling`/`BudgetSignMismatch`) |
+| 8 | `even_gaps`, `even_mode_massive` | `NullEdge/EvenMassGaps.lean` | M, self-guarded (in-file pin) | **an explicit counterexample to "immune to every potential"** (and only that): an even (grading-diagonal) mass `m≠0` gaps the zero mode `v=![1,0]` — the Hermitian square has `det = m⁴ ≠ 0`. Honest, per the definitions audit: this toy's grading is *balanced* (index 0, so **no** index protection), and gapping tracks support on `v`'s slot, **not** parity — a *generic* odd perturbation (physical Dirac mass) also gaps `v`, so `odd_preserves` is a cherry-picked upper-triangular case, **not** a chiral law. The genuine odd-preserves (SSH/BdG) protection needs an imbalanced grading `[import]`; the toy delivers only the "every potential" counterexample |
 | 8 | `chiral_det_eq_pm_one` | `Carrier/ChiralZeroModeParity.lean` | M, guard-pinned (`CarrierAxiomGuard`) | chiral determinant dichotomy |
 | 9 | `null_pair_prod_sq_eq_pairing_smul` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | decimation coefficient law |
 | 9 | `effective_edge_not_nilpotent` | `Carrier/RGSchurMassWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | blocking generates non-null term |
