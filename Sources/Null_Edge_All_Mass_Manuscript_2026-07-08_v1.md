@@ -1158,14 +1158,20 @@ kernel-checked: the massless/critical line `|κ|=|λ|` is **R-invariant**
 (`massless_line_invariant_and_nondegenerate`, with the explicit non-degeneracy
 witness `R(1,1/2)=(1/2,−1/4)≠(1,1/2)` proving `R` is a genuine nontrivial flow);
 the linearization at the critical point has relevant eigenvalue **exactly 2**
-(`linearized_mass_eigenvalue_eq_two`), so with rescale `b=2` the correlation
-exponent is `ν = log₂2 = 1` as exact arithmetic; and on the critical line the
-dispersion is conical `ω=±k` (`conical_dispersion_z_eq_one`), so `z = 1`. Honest
-scope: `R` maps the critical *line* to itself as a set (a period-2 sign flip
-`(λ,λ)↦(−λ,−λ)`, so it is line-invariance, not a strict fixed point — the genuine
-fixed line of `R` is the decoupled `κ=0` line); the `ν=1`/`z=1` exponents are the
-linearization data at criticality; and this is still finite rational algebra, not
-a continuum limit. This is the honest "basin-membership" form of the §4a channel-
+(`linearized_mass_eigenvalue_eq_two`, which also kernel-checks `log₂2 = 1`); with
+the standard RG rescale `b=2` this reads as the correlation exponent `ν = 1/y_t =
+1` — an *interpretive* step, since the Lean proves the eigenvalue and the
+`logb 2 2 = 1` arithmetic, not a `ν` object set equal to 1. On the critical line
+the mass shell is conical `(k·σz)² = k²·1` (`conical_dispersion_z_eq_one`), i.e.
+`ω = ±k`, the `z = 1` reading (the theorem's second conjunct is the Pythagorean
+`cos 0` identity, carrying no extra model-specific content, so "z=1" is the
+standard RG reading of the conical first conjunct, not a separately proved
+dynamical-exponent object). Honest scope: `R` maps the critical *line* to itself
+as a set (a period-2 sign flip `(λ,λ)↦(−λ,−λ)`, so it is line-invariance, not a
+strict fixed point — the genuine fixed line of `R` is the decoupled `κ=0` line);
+the `ν=1`/`z=1` exponents are the standard RG *reading* of the kernel-checked
+linearization/dispersion data at criticality; and this is still finite rational
+algebra, not a continuum limit. This is the honest "basin-membership" form of the §4a channel-
 name question: the carrier flows to a `z=1`, `ν=1` critical point — the Dirac
 universality class's exponents — by exact decimation.
 
@@ -1608,7 +1614,7 @@ not an elaboration check; existence and axiom footprints are supported
 separately by the targeted Lean and guard builds. The 2026-07-09 round-2
 additions — `SignatureForcing`, `RPSelectsLorentzian`, `FiniteCPT` (§8 rows),
 `Goal3ExactRG` (§9 row), `SuiteAOp2Geom` (§7 row) — and Codex seed additions —
-`KMPhaseCounting`, `WEPTrace`, `MassResourceModularAudit` — are per-module
+`KMPhaseCounting`, `FiniteKMCP`, `WEPTrace`, `MassResourceModularAudit` — are per-module
 `lake build` green with in-file guard pins (the new modules' cited declaration
 names were grep-verified in-file on 2026-07-09); they await the next independent
 anchor sweep.)*
@@ -1704,6 +1710,7 @@ anchor sweep.)*
 | 9 | `R_schur_derivation`, `massless_line_invariant_and_nondegenerate`, `linearized_mass_eigenvalue_eq_two`, `conical_dispersion_z_eq_one` | `NullEdge/Goal3ExactRG.lean` | M, self-guarded (in-file pin) | **exact rational RG flow**: decimation `R(λ,κ)=(λ−2κ²/λ, −κ²/λ)`; critical line `\|κ\|=\|λ\|` invariant (witness `R(1,1/2)≠(1,1/2)`); relevant eigenvalue exactly `2` ⇒ `ν=1`; conical dispersion ⇒ `z=1`. Honest scope: critical *line* invariant (period-2, not a strict fixed point); finite rational, not a continuum limit |
 | 7 | `dCausal_01`, `causalLE_isPartialOrder`, `Eslot_mismatch`, `Eslot_ne_one` | `NullEdge/SuiteAOp2Geom.lean` | M, self-guarded (in-file pin) | **finite Malament split**: causal spectral distance `dCausal m 0 1 = 1/m` (witnesses `1/3`, `5/3`); `CausalLE` a partial order recovering edge orientation; order/conformal class mass-independent while scale `Eslot m m' = m'/m` — "causal order fixes the conformal class, decorations owe the scale". Honest scope: 2-point Krein carrier |
 | 8/10 | `ckm_param_split`, `cp_possible_iff` | `NullEdge/KMPhaseCounting.lean` | M, self-guarded (in-file pin) | **finite CP phase-count arithmetic**: CKM bookkeeping splits `N^2` into angles, removable phases, and physical CP phases; the physical CP count is positive iff `N >= 3`. Honest scope: not yet the constructive N=2 rephasing theorem or N=3 Jarlskog witness |
+| 8/10 | `jarlskog_rephase`, `jarlskog_two_eq_zero`, `exists_real_rephasing_two`, `Vwitness_unitary`, `jarlskog_Vwitness_ne_zero` | `NullEdge/FiniteKMCP.lean` | M, self-guarded (in-file pin) | **finite KM CP rung**: the Jarlskog plaquette is rephasing-invariant; every unitary `2 x 2` matrix is rephasable to real entries; and an exact unitary `3-4-5` witness has `J = 6912 / 78125 != 0`. Honest scope: the general-N incidence/corank theorem is still open |
 | 7/9 | `wep_trace_identity`, `wep_universality`, `wep_source_nonvacuous`, `wep_violation_of_channel_stress` | `NullEdge/WEPTrace.lean` | M, self-guarded (in-file pin) | **WEP trace rung**: a channel-blind finite source `Tr(K rho)` depends only on total budget `Tr rho`, with a nonvacuous equal-trace witness and a channel-stress negative control. Honest scope: not the E-slot field equation or Clausius/Jacobson rung |
 | 9/10 | `modular_generator_eq_adB`, `modular_generator_matrix`, `modular_shift_operator_ne` | `NullEdge/MassResourceModularAudit.lean` | M, self-guarded (in-file pin) | **Suite D modular guardrail**: a central normalization shift cancels in the commutator derivation, but operator equality with `B` is generally false. Honest scope: modular false-shape guard, not a full mass-resource theory |
 
