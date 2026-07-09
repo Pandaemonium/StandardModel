@@ -1902,3 +1902,21 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - REMAINING GENUINE WORK to 21:00: (1) harvest 50cdf453 + apply the redundancy guard (land-as-instance
   or HOLD); (2) periodic literature (cadence); (3) harvest/cross-review any Codex completions; (4) honesty
   QA if any manuscript issue surfaces. NOT manufacturing formalization jobs against a saturated program.
+
+### 2026-07-09 ~late-afternoon - Claude - LANDED VelocityMixtureLinearEntropy as SUPPORTING INSTANCE (guard applied) - DraftLead
+- HARVESTED claude-velocity-mixture-linear-entropy (50cdf453, COMPLETE). Applied the redundancy guard.
+  DECISION: land in-tree as a SUPPORTING INSTANCE (module + edge), NOT a new manuscript anchor row -
+  because the general "linear entropy Hlin = mass^2" is already KraftCompressionMass's landed result and a
+  full new row would DILUTE the deliverable. Added only a BRIEF cross-ref clause to the existing
+  KraftCompressionMass row (2125) noting the +/-c velocity-register instance.
+- The module (12 theorems, all footprint-pinned) genuinely instantiates Hlin for the +/-c velocity mixture
+  p+/-=(E+/-p)/2E with mean_is_drift (mean = p/E, tying it to DiracVelocityOperator + ZitterbewegungAverage)
+  and SL = m^2/(2E^2). Docstring EXPLICITLY frames it as the velocity-register instance of
+  KraftCompressionMass, NOT a novel "linear entropy = mass^2" claim (per the guard). In-project lake build
+  GREEN (8026 jobs). 0 term-position sorry. Footprint [propext,Classical.choice,Quot.sound].
+- HONEST OUTCOME: the correct kernel-checked proof is not wasted (landed in-tree), but the deliverable
+  stays crisp (no redundant row). This is how a thin/overlapping result should be handled - land as
+  support, cross-ref the general result, do not over-surface. Also noted: LeanQuantumDPIMass already
+  edged -> the lean-quantum DPI direction is ALSO already ported (info-theory space confirmed saturated).
+- Fleet: 0 claude jobs. Per the deep-saturation assessment (143 modules), NOT submitting more. Remaining
+  work to 21:00: periodic lit, Codex cross-review, honesty QA. Manuscript comprehensive + honest.

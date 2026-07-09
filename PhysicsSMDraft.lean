@@ -185,6 +185,7 @@ import PhysicsSM.Draft.NullEdge.Goal3ChannelRG4
 import PhysicsSM.Draft.NullEdge.EntropyMonotoneReal
 import PhysicsSM.Draft.NullEdge.LeanQuantumDPIMass
 import PhysicsSM.Draft.NullEdge.KraftCompressionMass
+import PhysicsSM.Draft.NullEdge.VelocityMixtureLinearEntropy
 import PhysicsSM.Draft.NullEdge.UnifiedActionVariation
 import PhysicsSM.Draft.NullEdge.MassGradientMorse
 import PhysicsSM.Draft.NullEdge.TVDistinguishabilityMass
