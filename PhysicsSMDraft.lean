@@ -147,6 +147,14 @@ import PhysicsSM.Draft.NullEdge.NEdgeCauchyBinet
 import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary
 import PhysicsSM.Draft.NullEdge.Carrier.CarrierKreinFlow
 import PhysicsSM.Draft.NullEdge.Carrier.SubluminalBound
+import PhysicsSM.Draft.NullEdge.Carrier.CarrierClosurePlane
+import PhysicsSM.Draft.NullEdge.ConfinementPositivity
+import PhysicsSM.Draft.NullEdge.PositiveSectorClassification
+import PhysicsSM.Draft.NullEdge.ESlotGeometry
+import PhysicsSM.Draft.NullEdge.CarrierRigidity
+import PhysicsSM.Draft.NullEdge.CheckerboardCarrierBridge
+import PhysicsSM.Draft.NullEdge.WindingLowModes
+import PhysicsSM.Draft.NullEdge.FamilyIndexNoGo
 import PhysicsSM.Draft.NullEdgeSymmetric2x2Spectrum
 import PhysicsSM.Draft.NullEdgeTwoNullMassive
 import PhysicsSM.Draft.NullEdgeHiggsPotential

@@ -9,3 +9,12 @@ Loop: download -> check sorry -> read summary -> build in-project -> semantic re
 | chiralindex | bd0349a8 | INTEGRATED M | F6: dim ker ≥ index, perturbation-stable, ≥1 protected mode. §8/§11 (exactly-one out of scope) |
 | bindingdeficit | b76379eb | INTEGRATED M | F8: Δ=κ=C(ρ)λ, binding=entanglement deficit. Closes §3a target (ii) C→M |
 | schurseesaw | 9fb722f7 | INTEGRATED M | E: |m_eff|≤‖Bᴴv‖²/λ_min(M)→0, seesaw suppression. §10/§11 (neutrino-lightness) |
+| bindingplane | 6b0d5321 | INTEGRATED M | F5: carrierK = closureCurvature (binding plane), ground mode spectator => carrier binds UNCONDITIONALLY. Closes DerivedInteraction C->M |
+| confinementpositivity | f30e34a2 | INTEGRATED M | B: colored (traceless) => qval<0 negdef (no positive mass); singlet positive. Confinement = finite positivity dichotomy |
+| positivesectors | ddf1d5bf | INTEGRATED M | step2: posDef_aperture_add_gram (A PosDef => A+BᴴB PosDef), mass gap>=1. Generalizes T2 beyond Cl(4) |
+| eslotgeometry | cf0ecc48 | INTEGRATED M | F7: E-slot transformation law (tensorial on metric-preserving group), contorsion/nonmetricity split, no double-counting Q_C |
+| carrierrigidity | 0e0f0db4 | INTEGRATED (nuanced) | F2: square_decomposition = exact 4-block, NO fifth block (type-count forced); but full uniqueness NOT forced (non-rigid). Disciplines "unification=decomposition" |
+| checkerboardbridge | 5511075a | INTEGRATED M | F1: 1+1D Dirac QW IS a Krein carrier; null Clifford edges, kinetic/mass/D all Krein-self-adjoint, channels match. First "channels=physics" evidence |
+| windinglowmodes | 0c848e8e | INTEGRATED M | F4: winding_protects_low_modes (winding-w bg has >=w protected zero modes, disorder-robust); index=w. Structured (not random) accumulates. Also Conj S |
+| familyindex | 4f822368 | INTEGRATED (NO-GO) | C: count of completions = n+1, =3 iff n=2; three_not_forced. "Three generations" NOT forced w/o a rank-fixing axiom. Honest negative |
+| cpholonomy | c57c871b | SUPERSEDED | D: 3 wedge-triple identities proved (SL2-inv, CP-odd, magnitude) BUT wedge triple not phase-gauge-invariant; the Bargmann module (NullEdgeBargmannPhaseInvariance) is the gauge-invariant home. Not integrated |
