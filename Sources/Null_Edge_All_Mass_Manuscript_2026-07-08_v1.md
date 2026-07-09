@@ -1152,10 +1152,19 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   guard-pinned) proves `Pisoᴴ J Piso = 1`, i.e. the indefinite Krein metric `J`
   compressed to the physical sector *is* the identity — the sector carries the
   ordinary positive inner product, so the two metrics *agree* on the sector. The
-  *dynamical* half — that the Krein flow keeps you *on* that sector (`range Piso`
-  invariant under `exp(−i t HAC)`) — is **not** proved (grade **C**, per the
-  batch-6 audit; `CarrierUnitaryFlow` caveat 0); so this identity does not by
-  itself equate the Euclidean norm-unitary flow with the physical Krein evolution.)
+  *dynamical* half — flagged open by the batch-6 audit — is now also
+  **kernel-certified on the witness** (`CarrierKreinFlow`, **M**): `HAC` is
+  Krein-(`Jmet`-)self-adjoint (`HAC_Jmet_selfAdjoint`) and the `J`-positive sector
+  `range Piso` is `HAC`-invariant (`HAC_sector_invariant`), so by a general
+  reusable lemma (`J_selfAdjoint_flow_J_unitary`: `J²=1 ∧ JH=HᴴJ ⇒ exp(−itH)` is
+  `J`-unitary) the flow is `Jmet`-unitary (`HAC_flow_Jmet_unitary`,
+  `Uᴴ Jmet U = Jmet`) **and** keeps you on the sector
+  (`HAC_flow_sector_invariant`, `exp(−itHAC)·Piso = Piso·exp(−itM6)`). So the
+  sector orbit is upgraded from Euclidean-norm-conserving to **Krein-form-conserving
+  and sector-preserving** — the static+dynamical equivalence of Euclidean and
+  Krein evolution *on this witness* is closed. What remains **C** is only the
+  identification of this `HAC`-generated flow with the *physical* time evolution
+  (the generator-as-Hamiltonian posit), and the `(2,1)` carrier tie above.)
 - **D4 — renormalization flow.** `invariant_orbit`,
   `observable_antitone_orbit` (`FiniteRGFlow`, **M**, axiom-free): orbit
   invariants and monotones under an iterated step. The intended step is the §9
@@ -1446,6 +1455,7 @@ separately by the targeted Lean and guard builds.)*
 | 9 | `massShellAction_invariant_of_commutes`, `massShell_equation_symmetry` | `Carrier/FiniteQuadraticAction.lean` | M, self-guarded (in-file pin) | finite Noether: a unitary symmetry commuting with `A` preserves the (mass-shell) action and transports mass-shell solutions to solutions of the same mass (dynamics D1) |
 | 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3) |
 | 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M (first two guard-pinned) | **the D2 instantiation, closed**: the carrier-block Hermitian flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` (generator-as-Hamiltonian is a **C** posit; carrier tie kernel at `(2,1)`) |
+| 9 | `HAC_flow_Jmet_unitary`, `HAC_flow_sector_invariant`, `J_selfAdjoint_flow_J_unitary`, `HAC_Jmet_selfAdjoint` | `Carrier/CarrierKreinFlow.lean` | M, self-guarded (in-file pin) | **the dynamical Krein half, closed on the witness** (batch-6 audit gap): `HAC` is `Jmet`-self-adjoint and `range Piso` is `HAC`-invariant, so `exp(−itHAC)` is `Jmet`-unitary AND sector-preserving — Krein-form-conserving orbit, not just Euclidean (generator-as-Hamiltonian stays **C**) |
 | 9 | `carrier_orbit_norm_conserved`, `carrier_orbit_energy_conserved`, `carrier6_orbit_norm_conserved` | `Carrier/CarrierUnitaryFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | the flow **orbit** of the carrier block `B(λ,κ)` — and of the full `6×6` physical sector form `M6` (`carrier6_…`) — conserves sector norm & (commuting-observable) energy: `FiniteUnitaryEvolution` fired on the concrete carrier |
 | 9 | `secondQuantized_massGap` | `Carrier/FockMassGap.lean` | M, self-guarded (in-file pin) | **free second-quantized mass gap**: on the fermionic occupation Fock space, `dΓ(B)`'s gap = one-particle gap `λ−κ`; free 2-body = sum of constituents; `Δ=−κ` seeds a below-threshold bound state |
 | 9 | `interacting_boundState_below_threshold` | `Carrier/InteractingTwoBody.lean` | M, self-guarded (in-file pin) | **interacting below-threshold bound state**: an attractive `V` of the closure scale `κ` gives a least eigenvalue strictly below the constituent sum (`IsLeast`, no inserted defect) |
