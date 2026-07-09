@@ -1481,3 +1481,12 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - s6 HONESTY (red-team composite-mass): explicit note that dynamical QCD mass (trace anomaly,
   Wilczek 'mass without mass') is NOT derived; det-P re-labels hadron mass, does not explain it.
 - LANE: rank-ceiling RUNNING (1). Refill needed.
+
+### 2026-07-09 ~mid-afternoon - Claude - RankCeiling lands (audit kill-test -> boundary theorem) - DraftLead
+- LANDED [M]: `RankCeiling` (eb62b7a6). Formalizes the red-team's strongest kill-test: rank-2 det IS
+  mass^2, rank-3 det P3 != pairwise mass (6!=2; det vanishes on nonzero-mass 4 vs 0). Upgrades the 2b
+  rank-2-ceiling known-limit from assertion to THEOREM. 6 guard-pins, build 17s. s3 anchor.
+- HONEST ARC complete: red-team raised rank-2 ceiling -> I stated it as a limit -> jobbed it -> now
+  kernel-checked. The program working as intended (adversarial audit -> honest boundary -> formalized).
+- LANE: redteam-gravity-lambda (audit s7+s10a) RUNNING (1). Refill needed - but session has landed ~14
+  modules; all 7 port targets done; det-P red-team fully acted on. Priorities A/C mature, B blocked on Codex.
