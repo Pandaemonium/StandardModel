@@ -535,3 +535,25 @@ Scanned for genuinely-provable NEW pieces beyond the 11 running jobs; submitted 
 Conjectures A (rigidity), C (family index), F (structured low modes) already map to
 running jobs (carrierrigidity, familyindex, windinglowmodes). TOTAL frontier jobs
 RUNNING: 14. Nothing added to the manuscript (all round-3 content is grade [spec]).
+
+## Cycle A.24 -- Fable round-4 (theorem-shaped): LANDED mass<=energy + 4 jobs, big "already done" find
+
+Fable recast the ontology layers as theorem-shaped M-targets with kills. Triage:
+- LANDED: mass<=energy (det P <= (tr P/2)^2, extremal at rest), MassEnergyBound (M,
+  guard-pinned, 8026); Fable's "do first" target. Added to S3a + S11.
+- ALREADY M (Fable blind to repo): Conj G mass-coherence duality = NullEdgeCelestial-
+  MixednessAristotle (det rho = 1-r^2); Conj D CP-as-Bargmann = NullEdgeBargmannPhase-
+  Invariance.bargmannTriple_phase_invariant (the phase-gauge-invariant object Fable's
+  cpholonomy correction wanted). cpholonomy job (wedge triple) is SUPERSEDED -- couldn't
+  cancel (already running), will not over-integrate. Twistor chart + celestial Bloch
+  machinery also already present.
+- 4 NEW jobs: wayturn 10a914e3 (H, WAY no-go for chirality gate), massdesigns a02602f5
+  (I/P-K, spherical t-design mass hierarchy -- imports sphere-packing toolkit),
+  modularselection 0053fc61 (J, Gibbs modular flow derives D2 generator), finitelevinson
+  10bf50fd (L, bound states = scattering-phase winding).
+- Strategy notes logged: twistor prior-art (Penrose/Perjes/Hughston) gates P-B;
+  code-distance=area-law (K) is confinementpositivity's proof strategy.
+
+Recurring pattern: external analyses converge and increasingly propose already-done
+work. Bottleneck is execution/harvest, not reframing. Frontier jobs now ~17 running
+(minus cpholonomy superseded).

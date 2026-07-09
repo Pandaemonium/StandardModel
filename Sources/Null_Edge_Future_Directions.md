@@ -313,3 +313,65 @@ New conjecture-driven jobs (round-3), all submitted 2026-07-08:
 - `schurseesaw` `9fb722f7` (E — neutrino-lightness: `m_eff ≤ ‖Bᴴv‖²/λ_min(M) → 0`)
 - `cpholonomy` `c57c871b` (D — CP as the phase of the triple null-ray holonomy `J`)
 - `confinementpositivity` `f30e34a2` (B — colored ⇒ indefinite, singlet ⇒ positive)
+
+---
+
+## Round-4 (Fable): theorem-shaped sharpenings — with a large "already done" surprise
+
+Fable's round-4 recast the two ontology layers as *theorem-shaped* claims with kills.
+Triage found that several are already proven in the repo (Fable is blind to it), one
+**landed** this pass, and four are genuinely new and jobbed.
+
+### Landed / already M
+- **`mass ≤ energy`, extremal at rest [LANDED M].** `det P ≤ (tr P/2)²` (`m ≤ E`),
+  equality iff `P` scalar = rest = max-mass & max-mixedness at fixed energy
+  (`MassEnergyBound.det_le_half_trace_sq`, M, guard-pinned; added to §3a). Fable's
+  "do first" M-target — an afternoon of Lean, now in the trusted core.
+- **Conjecture G (mass–coherence duality) — substantially ALREADY M.** The EGY-type
+  `mass² + visibility² = 1` is essentially `NullEdgeCelestialMixednessAristotle`'s
+  `blochDensity_det_eq_one_sub_radius_sq` (`det ρ = 1 − r²`) + purity/linear-entropy
+  lemmas. No job needed; surface it as the P-C payload.
+- **Conjecture D (CP as Bargmann holonomy) — substantially ALREADY M.** Fable's
+  *correction* to `cpholonomy` (use the phase-gauge-invariant **Bargmann** triple
+  `⟨ψ₁|ψ₂⟩⟨ψ₂|ψ₃⟩⟨ψ₃|ψ₁⟩`, not the wedge triple which kills on a gauge artifact) is
+  already `NullEdgeBargmannPhaseInvariance.bargmannTriple_phase_invariant` (+ smul,
+  trace versions). The submitted `cpholonomy` job (wedge triple) is superseded by
+  this module — don't over-integrate it; the CP-oddness + "phase = celestial solid
+  angle" geometric reading are the only remaining pieces. Twistor chart
+  (`TwistorPluckerMass`) and celestial Bloch machinery already exist too.
+
+### New conjectures (Fable's format) + jobs
+- **H. WAY-turn no-go.** No isospin-conserving closed-carrier unitary implements the
+  chirality gate with trivial ancilla (`[U,Q_s⊗1+1⊗Q_a]=0 ∧ U=u⊗1 ⇒ [u,Q_s]=0`); the
+  turn needs a charge-coherence ancilla (the Higgs), `m ∝ φ` with 1/variance
+  corrections. The no-go half is a near-term M. *Kill:* an exact charge-conserving
+  chirality gate with trivial ancilla. → job `wayturn` `10a914e3`.
+- **I / paper P-K. Design hierarchy of mass.** `|ψ∧φ|² = sin²(θ/2)` ⇒ bundle mass is
+  a chordal-energy on S²; sub-bundle mass spectra see higher moments; spherical
+  t-designs are the mass-uniform bundles; Cohn–Kumar universal optimality (completely
+  monotone) transfers → LP bounds on mass budgets. Pure §3 kinematics, imports the
+  sphere-packing toolkit wholesale. *Kill:* two non-isomorphic 2-designs with
+  distinguishable pair-mass multisets. → job `massdesigns` `a02602f5`.
+- **J. Modular selection.** The Gibbs state in `B` has modular flow = `exp(−itB)`, so
+  D2's generator is *derived*, not posited (Connes–Rovelli thermal time, finite); the
+  channel-GGE equipartition gives "do the four channels thermalize to one β?". *Kill:*
+  KMS generator on T2 provably not ∝ `B`. → job `modularselection` `0053fc61`.
+- **L. Finite Levinson.** Bound-state count of the barrier walk = scattering-phase
+  winding = reflection-sector index (+ a finite optical theorem). Gives P-J a theorem
+  spine (Cedzich–Grünbaum–Werner discrete Levinson as [import]). *Kill:* a
+  rational-fixture walk with count ≠ winding. → job `finitelevinson` `10bf50fd`.
+- **K. Code distance = area law** — folds into `confinementpositivity` as its proof
+  strategy: don't attack colored-sector positivity head-on; bound colored-sector norms
+  via the M-grade strong-coupling area law (Gauss sector = BRST cohomology wearing a
+  QEC code; code distance = minimal disagreement to expose color, grows with region).
+
+### Two strategy notes
+- **Twistor literature gates P-B.** The projective layer IS discrete twistor theory
+  (Penrose/Perjés/Hughston n-twistor massive particles carry internal symmetry —
+  SU(2)×U(1) for two twistors, SU(3) for three). Checkable on the Cl(4) carrier: does
+  the k-edge strand charge algebra reproduce the k-twistor internal symmetry algebra?
+  Either a huge legitimacy anchor for P-B, or a clean kill. P-B must cite this.
+- **Program order:** insert the P-K extremal/design layer immediately after steps 1–2
+  (rigidity, positive-sector classification) and *ahead* of the multi-channel phase
+  diagram — it's pure §3 kinematics, all M-targets, zero interpretive risk, and
+  credibility compounds fastest where the grades are highest.
