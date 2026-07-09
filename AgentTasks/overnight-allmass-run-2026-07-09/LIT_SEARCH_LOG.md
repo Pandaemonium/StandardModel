@@ -181,3 +181,32 @@ cites it.
   extension gr-qc/0602001 (Eling-Guedens-Jacobson). Jacobson ref upgraded ID-ONLY -> VERIFIED.
 - s7 [import]s now verified end-to-end: Chamseddine-Connes/Gilkey (spectral action), Jacobson (equation
   of state), teleparallel TEGR=GR, unimodular/sequestering - all confirmed or content-confirmed.
+
+## 2026-07-09 ~12:00 PDT - Codex - Goal II/IV standing lit cadence
+- Tools: Spark sidecar dispatched (`Hypatia`, timed out before result); fallback direct searches:
+  `neo4j_paper_search.py --chunks --k 5` plus INSPIRE-HEP. Goal II query
+  "Jarlskog invariant CKM rephasing invariant CP phase counting Kobayashi Maskawa" found INSPIRE
+  `10.1063/1.4944427` / "Rephasing invariants of the Cabibbo-Kobayashi-Maskawa matrix" (Perez,
+  Kielanowski, Juarez, 2016): every rephasing-invariant monomial's imaginary part is proportional
+  to Jarlskog's invariant or zero; use as external support for the Goal II invariant-shape story.
+  Local null-edge chunks were tangential, so do not use local graph as CKM prior-art coverage.
+  Goal IV query re-hit Jacobson `gr-qc/9504004`, Eling-Guedens-Jacobson `gr-qc/0602001`, and
+  "Teleparallel Gravity as a Higher Gauge Theory" `arXiv:1204.4339`; these remain the reference
+  spine for finite Clausius/equation-of-state and teleparallel E-slot wording.
+
+## 2026-07-09 ~afternoon - Claude - {g5,D} = chiral-symmetry breaking is standard [import] (Ginsparg-Wilson)
+- Tools: scholarly search-inspirehep (empty for the NL queries) + search-arxiv (3 hits). Context: support
+  the queued chiral-breaking-anticommutator module (a454d0c6), whose payload is {g5,D}=-2m.g5 (continuum
+  mass), before it lands / is cited.
+- FINDING: the anticommutator {g5, D} is the canonical object encoding chiral-symmetry breaking. arxiv:
+  Fujikawa hep-lat/0004012 writes the Ginsparg-Wilson relation explicitly as g5(g5 D)+(g5 D)g5 =
+  2a^{2k+1}(g5 D)^{2k+2}, i.e. {g5,D} != 0 IS the (lattice) chiral-symmetry breaking; Reisz-Rothe
+  hep-lat/9908013 (GW renormalization), Yamada hep-lat/9911017 (GW index).
+- ALREADY TRACKED in Null_Edge_References.md (chirality/overlap/index section): Ginsparg-Wilson 1982
+  (DOI 10.1103/PhysRevD.25.2649, flagged "§8 load-bearing"), Luscher hep-lat/9802011 ("Exact chiral
+  symmetry on the lattice and the Ginsparg-Wilson relation", KEYED-LOCAL), Neuberger overlap. So the
+  module's {g5,D}=-2m.g5 is the ELEMENTARY continuum-mass analogue of the lattice GW {g5,D}=2a.Dg5D:
+  both say the FAILURE of {g5,D}=0 is the chiral-symmetry breaking (continuum: mass; lattice: regulator).
+- NET: no NEW ref strictly needed (GW + Luscher already present, already §8 load-bearing); the queued
+  module will slot into §8's existing GW-cited chirality narrative. [import] framing corroborated. If
+  desired, Fujikawa hep-lat/0004012 is the explicit {g5,D}-algebra form (optional add on landing).
