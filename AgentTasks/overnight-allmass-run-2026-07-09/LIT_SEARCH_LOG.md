@@ -114,3 +114,14 @@ cites it.
     everpresent mechanism (LambdaEdgeCount) AND the three-Lambda sequestering (LambdaThreeSplit). Best
     single s10a [import]. Added VERIFIED.
 - s10a mechanism citations now graph-verified end to end (Sorkin origin + unimodular derivation + BHS Lorentz).
+
+## 2026-07-09 ~late-afternoon - Claude - s10a observational posture (DESI/everpresent-Lambda tests)
+- Tool: neo4j_paper_search.py --chunks. Query: DESI evolving dark energy w not minus one dynamical
+  dark energy observational evidence.
+- FOUND the observational companion: arXiv:2307.13743 (Das-Nasiri-Yazdi, Imperial, "Aspects of
+  Everpresent Lambda (II): Cosmological Tests of Current Models") - confronts everpresent-Lambda
+  (stochastic fluctuating dark energy from causal sets + unimodular) with cosmological data. This is
+  where the s10a fork's fluctuating-vs-rigid question is actually adjudicated.
+- ACTION: added 2307.13743 to References (VERIFIED); cited it in s10a 'What this is, and is not'
+  posture paragraph as the [import] observational test. Directly grounds the Priority-A observational-
+  posture concern (the fork now points to the real cosmological-test paper, honestly [import]).
