@@ -1,5 +1,13 @@
 # claude-zigzag-automaton — the chirality zigzag as a finite weighted automaton; mass = spectral gap = flip rate (CSLib path-semantics port)
 
+## CRITICAL SCOPE GUARD (read first)
+This job is NOT about Weyl/Dirac gamma-matrix operators. Do NOT build `gamma5`, `Dkin`, `Dmass`,
+`chiralFlip`, Weyl symbols, or any 4x4 Dirac operator, and do NOT use the namespace `ZigzagWeyl` or the
+theorem names `massless_decouples`/`mass_couples`/`zigzag_verdict`. Build ONLY the finite 2x2 STOCHASTIC
+TRANSFER MATRIX `T a = !![1-a, a; a, 1-a]` described below (a classical Markov/automaton, NOT a spinor
+operator). Namespace MUST be `ZigzagAutomaton`. The payloads are `spectral_gap` and
+`massless_iff_reducible` on `T a` — nothing about Clifford algebra.
+
 ## Context (blind to any repo; self-contained finite linear algebra, Mathlib only)
 
 Port the finite weighted-automaton / transfer-operator view (as in the CSLib automata / path-semantics
