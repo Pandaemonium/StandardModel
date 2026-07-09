@@ -1344,3 +1344,15 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   lambda-three-split=Priority A; lambda-frame-constraint=lit-finding-as-theorem].
 - Port targets status: lean-quantum/Kraft/testing-lower-bounds/PhysLean LANDED (4);
   SciLean/CSLib/LeanCamCombi/Sphere-Packing SUBMITTED (in flight). All named targets covered.
+
+### 2026-07-09 ~afternoon - Claude - 2 Lambda modules land (Priority A); fork upgraded to theorem - DraftLead
+- LANDED [M]: `LambdaThreeSplit` (c719d4d3) - three-Lambda split (bare+induced+observed);
+  traceless/unimodular projection kills every uniform shift, seq op independent of Lambda_bare,
+  only count-set Lambda_obs survives. Sharpens VacuumSequestering. Honest: observed=count leg
+  definitional. LANDED [M]: `LambdaFrameConstraint` (5b00a220) - frame-blind covariance = aI+bJ,
+  only suppressible mode = uniform total; regional suppression needs preferred covector (PSD control).
+- 10a FORK UPGRADE: last cycle's Lorentz->Poisson [import] argument is now backed by a cited M
+  theorem (LambdaFrameConstraint = the finite core); continuum-Lorentz lift stays [import], count
+  selection stays C. Folded both into 10a + 2 anchor rows. Both build 14s, guard-pinned, 0 sorry.
+- LANE refill: mass-four-faces (consolidation: det=Slin=Hlin one invariant up to x2, TV=Plucker
+  distance - lets the manuscript cite a theorem instead of prose 'not independent evidence' caveats).
