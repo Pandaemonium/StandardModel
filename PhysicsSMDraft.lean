@@ -177,6 +177,8 @@ import PhysicsSM.Draft.NullEdge.Goal3ChannelRG
 import PhysicsSM.Draft.NullEdge.Goal3ChannelRG4
 import PhysicsSM.Draft.NullEdge.EntropyMonotoneReal
 import PhysicsSM.Draft.NullEdge.LeanQuantumDPIMass
+import PhysicsSM.Draft.NullEdge.KraftCompressionMass
+import PhysicsSM.Draft.NullEdge.TVDistinguishabilityMass
 import PhysicsSM.Draft.NullEdge.ComptonBoundSq
 import PhysicsSM.Draft.NullEdge.PathSumSemantics
 import PhysicsSM.Draft.NullEdge.Goal1Confinement
@@ -210,6 +212,7 @@ import PhysicsSM.Draft.NullEdge.MinkowskiConvention
 import PhysicsSM.Draft.NullEdge.NeutrinoDiracMajorana
 import PhysicsSM.Draft.NullEdge.PhotonSingleEdge
 import PhysicsSM.Draft.NullEdge.PhotonHiggsCPTCapstone
+import PhysicsSM.Draft.NullEdge.MasslessParticleTableCapstone
 import PhysicsSM.Draft.NullEdge.LambdaEdgeCount
 import PhysicsSM.Draft.NullEdge.HolographicEdgeBound
 import PhysicsSM.Draft.NullEdge.HolographicResourceCapstone
