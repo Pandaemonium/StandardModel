@@ -1417,3 +1417,39 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   2-state stochastic transfer matrix T(a)=[[1-a,a],[a,1-a]]' guard.
 - PORT SCORECARD: 5 LANDED (Minkowski, lean-quantum DPI, testing-lower-bounds TV, Kraft,
   CelestialSphericalCode); SciLean (mass-gradient-morse) in flight; CSLib off-target (needs resubmit).
+
+### 2026-07-09 ~09:15 PDT - Codex - SciLean mass-gradient harvest; DETP red-team artifact - Builder/Registrar
+- HARVESTED + PORTED `claude-mass-gradient-morse`
+  (`84b93d9c-8f33-4ea6-8ebe-c763a8e81dbb`) ->
+  `PhysicsSM/Draft/NullEdge/MassGradientMorse.lean`: SciLean-inspired finite
+  variational/gradient avatar. Payload: `g(s,t)=(t-s)^2`, first partials by
+  `HasDerivAt`, `grad=0` iff `s=t` iff massless, constant Hessian
+  `!![2,-2;-2,2]` positive semidefinite, flat common-rotation direction
+  `![1,1]`, strict mass-generating relative direction `![1,-1]`, and explicit
+  massive/massless witnesses.
+- REGISTERED `MassGradientMorse` in `PhysicsSMDraft.lean`. Verification:
+  `lake build PhysicsSM.Draft.NullEdge.MassGradientMorse` PASS; placeholder
+  and broad-classical-scope scan on the file was clean after style cleanup.
+- HARVESTED ARTIFACT `claude-redteam-detp-kill`
+  (`a64e7464-0a1c-4d3c-90df-35ab91aeeb5f`) -> downloaded
+  `REDTEAM_detP_mass.md`. No Lean port needed: it is a strategy/audit result.
+  Most useful theorem follow-up: formalize the rank-3/spin-3/2 kill-test
+  showing a rank-3 Gram determinant cannot serve as a universal `m^2` avatar
+  without a dimension/structure mismatch. I did not launch it because the Codex
+  proof lane is already over target saturation.
+
+### 2026-07-09 ~afternoon - Claude - SciLean port + RED-TEAM AUDIT acted on (headline honesty) - DraftLead
+- PORT LANDED [M]: `MassGradientMorse` (84b93d9c) - SciLean gradient/Hessian port. Masslessness =
+  critical manifold of g(s,t)=(t-s)^2 (grad=0<=>s=t); Hessian PSD, flat ![1,1] + mass ![1,-1](=8).
+  LAST named port target. Build 17s. PORT SCORECARD: 6 LANDED (Minkowski, lean-quantum, TV, Kraft,
+  CelestialSphericalCode, MassGradientMorse); CSLib resubmitted (hardened, in flight).
+- RED-TEAM AUDIT (redteam-detp-kill a64e7464) - independent adversarial review of the HEADLINE,
+  saved audits/REDTEAM_detP_mass_20260709.md. ACTED ON (not just filed):
+  * ORIGINALITY corrected (2b): det-P=mass IDENTITY is standard spinor-helicity -> [import]
+    (I had overstated it as [orig] 'finite mechanism'). [orig] = finite decidable avatar + T/M/C
+    grading ONLY. The identity is kinematic (m^2=2p1.p2) - universal precisely because empty as origin.
+  * KNOWN LIMITS added (2b): (1) which P = spinor Gram M M^H (VERIFIED in MassNullDecomposition),
+    not 4-vector Gram (-m^4/4); PSD=same-sheet hyp. (2) rank-2 ceiling: not claimed at spin>=3/2.
+    (3) phase-blindness: det P=|m|^2 discards CP/Majorana phase.
+  * Strongest kill-test on record (rank-3 gravitino det P3 != m^2) - documents where universality stops.
+  This is the pre-21:00 over-claim audit the run needed, done independently + folded honestly.
