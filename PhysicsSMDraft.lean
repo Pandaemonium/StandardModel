@@ -137,6 +137,7 @@ import PhysicsSM.Draft.NullEdgeChiralityProjectors
 import PhysicsSM.Draft.NullEdgeP3SurfaceHolonomy
 import PhysicsSM.Draft.NullEdgeP6Concurrence
 import PhysicsSM.Draft.NullEdge.TwoEdgeMassConcurrence
+import PhysicsSM.Draft.NullEdge.MassEnergyBound
 import PhysicsSM.Draft.NullEdge.NEdgeMassConcurrence
 import PhysicsSM.Draft.NullEdge.NEdgeCauchyBinet
 import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary

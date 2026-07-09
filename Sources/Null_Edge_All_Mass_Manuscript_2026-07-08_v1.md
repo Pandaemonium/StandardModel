@@ -363,6 +363,15 @@ This is a reconstruction/finite-identity (frame-conditioned: "rest" is an observ
 choice), not new physics; but it is the honest, kernel-checked form of the
 "mass–entropy" reading, and it sits at grade **M**.
 
+That endpoint is also an **extremal principle** (**M**): for the `2×2` Hermitian
+momentum `P = E·1 + p⃗·σ` (energy `E = tr P/2`, mass `m² = det P = E²−|p⃗|²`), one has
+`det P ≤ (tr P/2)²`, i.e. **`m ≤ E`**, by one line of AM–GM on the Gram
+(`det_le_half_trace_sq`, **M**, guard-pinned; the gap is `((P₀₀−P₁₁)/2)² + |P₀₁|²`).
+Equality holds iff `P` is scalar — the **rest frame**, which is thus *simultaneously*
+the maximum-mass and maximum-mixedness configuration at fixed energy. So the
+`S = log 2` endpoint is not just a value but a variational extremum: rest maximizes
+both the mass and the visible entropy of the null bundle.
+
 And for a **two-edge** bundle the identification is now exact and kernel-checked,
 not an analogy. Writing the two null 2-spinors as the columns of `M`, the momentum
 matrix is `P = M Mᴴ`, the wedge is `det M = ψ₁ ∧ ψ₂`, and the **Wootters
@@ -1521,6 +1530,7 @@ separately by the targeted Lean and guard builds.)*
 | 3a | `vonNeumannEntropy_eq_zero_iff_null`, `vonNeumannEntropy_pos_of_timelike`, `velocityNormSq_eq_one_sub_massRatio`, `vonNeumannEntropy_rest_eq_log_two` | `GateI1/MassEntropyDictionary.lean` | M, self-guarded (in-file pin) | **mass ↔ visible-entropy dictionary**: null ⇔ `S=0` ("null edges don't age"), timelike ⇔ `S>0`, rest ⇔ `S=log 2`; `\|v\|²=1−m²/E²` |
 | 3a | `four_mul_det_gram_eq_concurrence_sq`, `det_gram_eq_normSq_wedge`, `det_gram_eq_zero_iff_concurrence_eq_zero` | `NullEdge/TwoEdgeMassConcurrence.lean` | M, self-guarded (in-file pin) | **two-edge mass = Wootters concurrence²**: `4·det P = C²` (`det P = (C/2)²`); massless ⇔ zero concurrence ⇔ product state |
 | 3a | `gConcurrence_pow_eq_det_gram`, `det_gram_eq_normSq_wedge`, `det_gram_eq_sum_normSq_minors` | `NullEdge/NEdgeMassConcurrence.lean`, `NullEdge/NEdgeCauchyBinet.lean` | M, self-guarded (in-file pins) | **`n`-edge mass = G-concurrence²**: `det P = (G/n)ⁿ` (Gour G-concurrence), two-edge = `n=2` instance; Cauchy–Binet `det P = Σ_S \|det M_S\|²` (mass = total `d`-wise disagreement). "mass = concurrence²" is not a two-edge coincidence |
+| 3a | `det_le_half_trace_sq` | `NullEdge/MassEnergyBound.lean` | M, self-guarded (in-file pin) | **mass ≤ energy, extremal at rest**: `det P ≤ (tr P/2)²` (`m ≤ E`), gap `((P₀₀−P₁₁)/2)²+\|P₀₁\|²`; equality iff `P` scalar = rest = max-mass & max-mixedness at fixed energy |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
