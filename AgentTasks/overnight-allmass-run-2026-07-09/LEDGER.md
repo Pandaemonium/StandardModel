@@ -1637,6 +1637,23 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   PhysicsSM.Draft.NullEdge.ParticleInformationCapstone` passed. Placeholder scan on both harvested
   files clean.
 
+### 2026-07-09 ~11:55 PDT - Codex - salvaged four canceled capstones while fleet runs - Builder
+- SALVAGED [M]: downloaded canceled-project snapshots and landed four complete target files:
+  `LambdaMagnitudeCapstone` (7c9e932f), `HiggsCPTCapstone` (d7b686b5),
+  `LambdaSpectralCapstone` (e638cd66), and locally repaired
+  `NeutrinoMassMechanismCapstone` (4911f297). Added all four `PhysicsSMDraft.lean` import edges.
+- NOT LANDED: `GoalIVReconciliationCapstone` snapshot (de0f3d3d) used unresolved placeholder
+  propositions in theorem headers; leaving it to the smaller retry job `0de5b7d5`, already running.
+- CHECKS: combined targeted build passed:
+  `lake build PhysicsSM.Draft.NullEdge.LambdaMagnitudeCapstone
+  PhysicsSM.Draft.NullEdge.HiggsCPTCapstone
+  PhysicsSM.Draft.NullEdge.LambdaSpectralCapstone
+  PhysicsSM.Draft.NullEdge.NeutrinoMassMechanismCapstone`.
+  Placeholder/broad-Classical scan on the four landed files was clean. `NeutrinoMassMechanismCapstone`
+  has two harmless unused-binder warnings inherited from the Schur zero-overlap theorem shape.
+- FLEET: seven Codex jobs remain RUNNING (`7c5b124e`, `eaf01c04`, `f02faec3`, `0de5b7d5`,
+  `eb6a3b29`, `81e1458a`, `bcbc8ee3`).
+
 ### 2026-07-09 ~afternoon - Claude - PRIORITY B DONE: §7 reconciled with Codex Goal-IV capstone - DraftLead
 - Codex's `GravityUnificationCapstone` LANDED IN-TREE (0 sorry, guard-pinned, builds in-project 8052
   jobs). This UNBLOCKS the deferred §7 reconciliation (Priority B), held many cycles pending Codex.
@@ -1684,3 +1701,16 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - NEXT (genuine, non-filler follow-on now UNBLOCKED): the [P_L, Lambda±] commutator - mass = failure of
   chirality and energy projectors to commute (the mass term couples L<->R). Needs both projector sets,
   now both landed. Candidate for next Aristotle job.
+
+### 2026-07-09 ~afternoon - Claude - SUBMITTED chiral-breaking-anticommutator (genuine refill) - DraftLead
+- Job a454d0c6 (claude-chiral-breaking-anticommutator). UNIFIES the two now-landed projector sets
+  (chiral P_L/P_R + energy Lambda±) into the single cleanest algebraic statement of mass-from-massless:
+  {g5, D} = -2m.g5 for D = pslash - m.1. Vanishes at m=0 (g5 anticommutes with the massless Dirac
+  operator = CHIRAL SYMMETRY), != 0 for m!=0 (mass = chiral-symmetry breaking). Plus the companion
+  Lagrangian fact P_L g0 P_R = P_L g0 (g0 intertwines chiralities -> mass bilinear couples L<->R).
+- NOT filler: the algebraic core of the whole thesis at the Dirac-operator level; the punchline of the
+  projector work. Buildable-proof rule v3 (rational 4x4, ext/fin_cases/simp/ring + module). Careful
+  statement to avoid false-shape (worked the sign: {g5,D}={g5,pslash}-{g5,m.1}=0-2m.g5).
+- FLEET decision (honest): 1 genuine claude job running (this) + 7 Codex. Declining to manufacture 6
+  more to hit "~7" - that would be the filler the goal forbids (manuscript already comprehensive across
+  A/B/C). Will add jobs only as genuine gaps surface from harvest/audit. Watching for the harvest.
