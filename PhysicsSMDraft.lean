@@ -142,6 +142,7 @@ import PhysicsSM.Draft.NullEdge.MassNullDecomposition
 import PhysicsSM.Draft.NullEdge.DetPUniqueness
 import PhysicsSM.Draft.NullEdge.RankCeiling
 import PhysicsSM.Draft.NullEdge.EvenMassGaps
+import PhysicsSM.Draft.NullEdge.ImbalancedChiralProtection
 import PhysicsSM.Draft.NullEdge.BudgetSignMismatch
 import PhysicsSM.Draft.NullEdge.MassFourFaces
 import PhysicsSM.Draft.NullEdge.ChiralIndexProtection
