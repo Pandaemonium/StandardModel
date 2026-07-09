@@ -171,3 +171,13 @@ cites it.
       contribution, not the framework/physics) is supported: the novelty is the machine-verification.
 - NET: the [orig]/[import] split the 5 audits established is corroborated by the literature - framework
   [import], formalization [orig]. +1 closest-prior-art ref (1804.09482, verified).
+
+## 2026-07-09 ~afternoon - Claude - verify Jacobson equation-of-state [import] (s7 route)
+- Tool: neo4j_paper_search.py --chunks. Query: Jacobson thermodynamics spacetime Einstein equation of
+  state Clausius heat entropy horizon area gravity.
+- VERIFIED: arXiv:gr-qc/9504004 "Thermodynamics of Spacetime: The Einstein Equation of State", Ted
+  Jacobson (chunk 0, top hit 0.887: exact title+author, "Einstein equation derived from entropy prop to
+  horizon area + dQ=TdS"). The s7 equation-of-state route's [import] is confirmed. Bonus: non-equilibrium
+  extension gr-qc/0602001 (Eling-Guedens-Jacobson). Jacobson ref upgraded ID-ONLY -> VERIFIED.
+- s7 [import]s now verified end-to-end: Chamseddine-Connes/Gilkey (spectral action), Jacobson (equation
+  of state), teleparallel TEGR=GR, unimodular/sequestering - all confirmed or content-confirmed.
