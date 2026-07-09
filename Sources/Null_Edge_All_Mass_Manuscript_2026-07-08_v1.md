@@ -1327,15 +1327,13 @@ is governed by whether a perturbation has support on the zero mode's chirality s
 **not** by parity — a *generic* odd perturbation (the physical Dirac mass `[[0,m],[m,0]]`)
 is odd yet **gaps** the mode, while the even `diag(0,m)` does **not**. So
 `EvenMassGaps.odd_preserves` is a cherry-picked upper-triangular perturbation (the same
-block shape as `A`), not a chiral law. The genuine chiral / sublattice (SSH–BdG)
-protection — where odd perturbations preserve a zero mode — requires an **imbalanced**
-grading (nonzero index) and is `[import]`, *not* demonstrated by this balanced 2-D toy;
-what the toy honestly delivers is only the counterexample to "every potential." The
-takeaway is therefore narrow: `EvenMassGaps` refutes "immune to every potential" (an
-even mass gaps the mode) but does **not** itself establish chiral protection. The
-genuine SSH / BdG chiral-conditional protection — where odd perturbations *do* preserve
-a zero mode — lives in the *imbalanced* (nonzero-index) case, and this we now demonstrate
-correctly: for the imbalanced grading `Γ = diag(1,1,−1)` (index `tr Γ = 1`), **every**
+block shape as `A`), not a chiral law. So `EvenMassGaps` honestly delivers only the
+counterexample to "every potential" — it refutes "immune to every potential" (an even
+mass gaps the mode) but does **not** itself establish chiral protection. The genuine
+SSH–BdG chiral protection — where odd perturbations *do* preserve a zero mode — is a
+condensed-matter principle (`[import]`) that requires an **imbalanced** grading
+(nonzero index), which the balanced toy lacks; that case we now demonstrate correctly as
+a finite instance: for the imbalanced grading `Γ = diag(1,1,−1)` (index `tr Γ = 1`), **every**
 odd perturbation preserves a zero mode in the larger chirality sector — the `H₊→H₋`
 block is a `1×2` map, whose kernel is always nonempty — while an even (grading-breaking)
 term can gap it (`ImbalancedChiralProtection.odd_has_zero_mode` (`∀`-quantified over odd
