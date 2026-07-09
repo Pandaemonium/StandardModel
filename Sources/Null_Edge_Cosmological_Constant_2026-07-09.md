@@ -292,8 +292,8 @@ no perturbation spectrum). Whether positive-sector decoding selects prolonged-po
 
 | Rung | Content | Status |
 |---|---|---|
-| L1 `lambda-unimodular` | finite unimodular trade: count-constrained stationarity => `+Lambda*1` multiplier term; order-0 shifts are gauge on the constraint surface; `tr(1)` channel-blindness (no channel pathway into Lambda) | submitted |
-| L2 `lambda-edge-count` | extensive edge count = volume; everpresent scaling through the native primitive | submitted (7e99904c) |
+| L1 `lambda-unimodular` | finite unimodular trade: count-constrained stationarity => `+Lambda*1` multiplier term; order-0 shifts are gauge on the constraint surface; `tr(1)` channel-blindness | **LANDED M** (`LambdaUnimodular`) |
+| L2 `lambda-edge-count` | extensive edge count = volume; everpresent scaling through the native primitive | **LANDED M** (`LambdaEdgeCount`) |
 | L3 `lambda-susceptibility` | grand-canonical `Var(N) = T d<N>/dmu`; `Lambda_rms = sqrt(chi_N)/<N>`; Bernoulli bound => everpresent as upper bound | submitted |
 | L4 `lambda-count-dichotomy` | the fork on finite witnesses: free/independent => `Var = sum p(1-p)` (Poisson in the sparse limit) vs a constrained witness with strictly sub-extensive variance (hyperuniform direction) + the pre-registered kill criterion | submitted |
 | L5 moment hierarchy | `Lambda` = order-0 / gravity = order-2 / matter = order-4 of one functional | rides `spectral-action-avatar` (2db9868c) + L1's blindness lemma |

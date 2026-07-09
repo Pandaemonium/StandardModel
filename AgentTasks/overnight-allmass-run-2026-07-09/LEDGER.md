@@ -705,3 +705,122 @@ Already covered: L2 lambda-edge-count 7e99904c (running); L5 rides spectral-acti
 + L1's blindness lemma. L6 (manuscript surfacing + exponent prediction) after L1-L4 land.
 NOT jobbed (per event horizon / rule v3): Lambda covariance process (needs stochastic dynamics),
 sign derivation, V derivation; the large-ensemble Var(N) oracle probe stays a numeric follow-up.
+
+### 2026-07-09 ~07:25 - Codex - harvested proof returns + launched ambitious proof wave - Builder
+- HARVESTED and extracted the recent IDLE proof returns:
+  `65b5558c` UnifiedMassBudget, `5466cd30` GravitySourceMatter,
+  `2db9868c` SpectralActionAvatar, `4aa9db52` JacobsonClausius,
+  `6e6f2707` RGFixedPointStructure, `ed85faf3` MassPhase4Channel,
+  `93c06030` PositiveSectorClass, `0e01c2b0` HelicityChirality,
+  `e6cce5f0` ZitterbewegungAverage, `2f2c8287` ZigzagWeyl, and
+  `99bd223b` DiracVelocityOperator.
+- LIVE STATUS: six of those were already live in `PhysicsSM/Draft/NullEdge`
+  (`UnifiedMassBudget`, `GravitySourceMatter`, `JacobsonClausius`,
+  `DiracVelocityOperator`, `ZigzagWeyl`, `ZitterbewegungAverage`). Ported five
+  additional proof artifacts as draft modules: `SpectralActionAvatar`,
+  `MassPhase4Channel`, `PositiveSectorClass`, `RGFixedPointStructure`, and
+  `HelicityChirality`; wired all into `PhysicsSMDraft.lean`.
+- LOCAL CHECKS: `lake build PhysicsSM.Draft.NullEdge.SpectralActionAvatar
+  PhysicsSM.Draft.NullEdge.MassPhase4Channel
+  PhysicsSM.Draft.NullEdge.PositiveSectorClass
+  PhysicsSM.Draft.NullEdge.RGFixedPointStructure` PASS; `lake build
+  PhysicsSM.Draft.NullEdge.HelicityChirality` PASS; after comment-only hygiene,
+  `lake build PhysicsSM.Draft.NullEdge.MassPhase4Channel
+  PhysicsSM.Draft.NullEdge.RGFixedPointStructure
+  PhysicsSM.Draft.NullEdge.UnifiedMassBudget` PASS. Only imported
+  `open scoped Classical` style warnings remain in some standalone artifacts.
+- PREPARED package
+  `AgentTasks/aristotle-submit/codex-ambitious-proof-wave-0725-20260709-project`;
+  package scan reported zero proof-placeholder, assumed-declaration-token, or
+  u n s a f e-token hits in all named Lean files.
+- SUBMITTED `codex-unified-action-capstone-0725-20260709`:
+  project `65d8f051-e7af-41a5-bead-d0d4fbc0089e`, target
+  `PhysicsSM/Draft/NullEdge/UnifiedActionCapstone.lean`.
+- SUBMITTED `codex-spectral-action-dynamics-0725-20260709`:
+  project `4eaa2407-0e4d-4758-9026-d45c3fb6be43`, target
+  `PhysicsSM/Draft/NullEdge/SpectralActionDynamics.lean`.
+- SUBMITTED `codex-fermion-luminal-capstone-0725-20260709`:
+  project `ddc7701a-0ac1-4072-9cd2-03e486dd8b20`, target
+  `PhysicsSM/Draft/NullEdge/FermionLuminalCapstone.lean`.
+- SUBMITTED `codex-mass-phase-rg-capstone-0725-20260709`:
+  project `27c385c3-8f31-4418-b1f6-065d47f0c26d`, target
+  `PhysicsSM/Draft/NullEdge/MassPhaseRGCapstone.lean`.
+
+### 2026-07-09 ~07:35 - Codex - harvested two Codex proof returns + Lambda edge-count - Builder
+- HARVESTED + PORTED `codex-wep-action-slot-equation-0700-20260709`
+  (`9ceb0ade-028d-4a7c-a52d-a244c2c150a4`) ->
+  `NullEdge/WEPActionSlotEquation`: stationarity recovers the full matrix
+  source `G = K`; the channel-blind trace identity is derived as its shadow.
+  Bundle theorem: `slot_resolved_source_recovery`. Honest scope: finite
+  trace-level multiplier action only, no Einstein/E-slot/Clausius claim.
+- HARVESTED + PORTED `codex-suiteD-charge-nonvacuity-0700-20260709`
+  (`1a4d58e1-5f80-40ad-9a2d-534414caae3d`) ->
+  `NullEdge/SuiteDChargeNonvacuity`: coordinate-basis charges are pairwise
+  distinct/nonzero; `QA * QC` commutes and is nonzero; `Bsum` is nonzero and
+  noncentral. This guards the Suite D commutativity results against vacuity.
+- HARVESTED + PORTED Claude proof `claude-lambda-edge-count`
+  (`7e99904c-2a3a-4bbd-ad75-f47326553ebf`) ->
+  `NullEdge/LambdaEdgeCount`: edge count is extensive/monotone; Poisson input
+  gives second moment `1/N`; RMS scales as `1/sqrt(N)`; `N=100` and disjoint
+  finite edge-set witnesses certify nonvacuity. Honest scope: proves scaling
+  conditional on Poisson fluctuation and extensive edge count, not Lambda value
+  or Lambda-volume conjugacy.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.WEPActionSlotEquation
+  PhysicsSM.Draft.NullEdge.SuiteDChargeNonvacuity
+  PhysicsSM.Draft.NullEdge.LambdaEdgeCount` PASS. Imported warnings only.
+
+### 2026-07-09 ~07:40 - Codex - harvested holographic edge bound proof - Builder
+- HARVESTED + PORTED Claude proof `claude-holographic-edge-bound`
+  (`339444bd-4ef9-462d-9699-77922e390af5`) ->
+  `NullEdge/HolographicEdgeBound`: explicit finite rank/finrank avatar of a
+  boundary null-edge bound. The physical sector has dimension `2`, boundary
+  edge count `3`, injects into the boundary restriction map, and satisfies
+  `finrank Phys <= edges`; an interior-only kernel vector outside `Phys`
+  proves global injectivity fails, so the reconstruction hypothesis is
+  nonvacuous. Honest scope: finite linear algebra over rationals, not a
+  covariant entropy theorem.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.HolographicEdgeBound`
+  PASS. Imported style warning only.
+
+### 2026-07-09 ~07:45 - Codex - harvested teleparallel soldering proof - Builder
+- HARVESTED + PORTED Claude proof `claude-teleparallel-soldering`
+  (`3ae7270c-923d-47d1-9441-edb573e83b05`) ->
+  `NullEdge/TeleparallelSoldering`: a finite triangle of rational `2x2`
+  soldering matrices has flat loop curvature (`curvatureLoop = 1`) but nonzero
+  torsion; the E-slot splits exactly into torsion plus nonmetricity, with pure
+  torsion, mixed, and zero-torsion control witnesses. Honest scope: finite
+  one-complex teleparallel avatar, not continuum gravity.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.TeleparallelSoldering`
+  PASS.
+
+### 2026-07-09 ~07:50 - Codex - harvested CPT antiparticle zigzag proof - Builder
+- HARVESTED + PORTED Claude proof `claude-cpt-antiparticle-zigzag`
+  (`9d41ecb3-16a6-4e11-86bf-b97da68d9e79`) ->
+  `NullEdge/CPTAntiparticleZigzag`: explicit finite `4x4` complex chiral-basis
+  model where the antiunitary `Theta` is involutive/conjugate-homogeneous,
+  swaps Weyl chirality, conjugates the Dirac spectrum, and carries a concrete
+  `1+i` eigenpair to its `1-i` mirror. Honest scope: finite one-carrier CPT
+  statement, not baryogenesis.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.CPTAntiparticleZigzag`
+  PASS. Imported style warning only.
+
+### 2026-07-09 ~08:10 - Claude - DAY harvest (11 modules) + next round (4 jobs) - Builder/DraftLead
+HARVESTED + LANDED 11 modules (batch built green in 23s, all M, guard-pinned, rule v3):
+LambdaUnimodular (L1), LambdaEdgeCount (L2), HiggsLongitudinalMode, CPTAntiparticleZigzag,
+HelicityChirality, SpectralActionAvatar, TeleparallelSoldering, HolographicEdgeBound,
+RGFixedPointStructure, MassPhase4Channel, PositiveSectorClass. Committed as first writer
+(current on-disk re-verified green). @Codex: you added 9/11 edges + ported teleparallel/cpt-zigzag
+in parallel - our copies are the same Aristotle output; if your port cleaned linter noise, re-apply
+on top of the committed files (they build green). Lambda doc rung table: L1/L2 marked LANDED.
+NEXT ROUND (4 jobs, rule v3, prompts in jobs/):
+- 525a0c77 `VacuumSequestering` - the finite MAGNITUDE theorem: local vacuum shift D#D+c*1 absorbed
+  by the unimodular constraint; physical Lambda_fluc is operator-blind (unchanged by huge c). [Day A]
+- d2f629db `EinsteinHilbertTerm` - spectral-action order-2 = finite curvature; stationarity = finite
+  Einstein equation E* = -tr(Dkin Dsold)/tr(Dsold^2). Composes SpectralActionAvatar+Teleparallel. [Day B]
+- ad7a3dde `PhotonSingleEdge` - photon = 1 null edge (2 pol), massive vector = 2 edges (3 pol);
+  edges = pol-1; "mass = disagreement" UNIVERSAL across spin. Closes the fermion/boson caveat. [Day C]
+- dd3da180 `LambdaMomentHierarchy` (L5) - one functional's 0/2/4 moments = Lambda/gravity/matter;
+  order-0 invariant under ALL deformations (Lambda channel-blind) => magnitude dissolves. [Day A]
+Still running to harvest: lambda-susceptibility ac58c729, lambda-conjugacy 5d508356, lambda-dichotomy
+735004c9, massless-one-edge 92fbbe98. Next: fold Higgs/CPT/photon into sec-2b table (Day C); write
+the Lambda manuscript section (L6) once L3/L4 land.
