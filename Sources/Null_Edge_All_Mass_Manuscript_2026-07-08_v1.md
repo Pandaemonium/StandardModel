@@ -700,7 +700,18 @@ drift) is the pre-registered falsifier — now itself kernel-checked: a sum-of-s
 budget matches `c·det P` at one witness but the same `c` fails at another, with the
 two moving in opposite sign (`BudgetSignMismatch.witness_match`, `family_fails`,
 `opposite_sign`, **M**). What is **M** is the per-witness arithmetic;
-"answers to `det P`" as a family law is a conjecture.
+"answers to `det P`" as a *sum-of-squares (trace-side)* family law is a conjecture —
+indeed a false one. **But the tie holds on the *determinant* side (now M):** read
+spectrally rather than as a sum of squares, the ground mass `μ₋ = λ − κ` (least
+eigenvalue of the aperture–closure block) satisfies `det P = μ₋·(tr − μ₋)` exactly over
+the *whole* family — the ground mass answers to `det P` given the trace, with binding
+defect `−κ` exact — while the trace-side budget is *not* a function of `det P` alone
+(`GroundMassDetFamilyLaw.groundmass_det_family_law`, `spectral_answers_to_invariants`,
+**M**; the determinant-side companion the kill-test pointed to). The kill-test located
+the mass↔`det P` tie on the determinant side, not the trace side; it did not abolish it.
+This is a family law about the ground mass / spectrum, not a claim that the four-channel
+*budget* scalar is itself `det P`-determined (it is not — that is the killed trace-side
+form).
 
 **Unification is decomposition.** These are not four theories glued
 together; they are four summands of one square. The claim the program
