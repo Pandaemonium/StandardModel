@@ -41,3 +41,13 @@ Quot.sound]. Manuscript: S3 bidirectional thesis, S3a binding=deficit (C->M), S9
 binds unconditionally (C->M), S4 rigidity partly-resolved. Follow-up round of 4 closers
 submitted (siglorentz, rigidityaxiom, familyrankfix, bargmanncp). REMAINING: harvest
 finitecpt (R) + the 4 follow-ups when they land.
+
+## Semantic review (load-bearing, deep pass)
+- bindingplane `carrier_closure_binds`: GENUINE. massBlock_eq_carrierK ties carrierK to the
+  actual mass block B=λI+iκK; carrierK_eq_closureCurvature (binding plane); conclusion is the
+  real below-threshold IsLeast + boundEnergy<pairThreshold. Non-vacuous. C->M sound.
+- divisionselection: NOT hollow. Composes/ContinuousPhase proved from genuine facts (mul_comm,
+  noncomposes_quat, phaseC_infinite); selection is case-by-case real algebra. (Minkowski/
+  Lorentz IDs honestly left as motivating docstrings, reflected in the manuscript grade.)
+- carrierrigidity: no-fifth-block GENUINE. The 4 blocks are independently grade-characterized
+  (aperture_even/closure_even/turn_even/solder_odd); type-count forced, uniqueness not (honest).
