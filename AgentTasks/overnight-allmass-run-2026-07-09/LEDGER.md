@@ -1749,3 +1749,20 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   sigma-map, det-P, boost-invariance all landed or queued; chiral-breaking + dirac-det in flight). No
   clean high-value non-redundant PhysLean port target surfaced this pass. Declining to force a marginal
   port (would be filler). Will re-mine if the harvest opens a genuinely new direction.
+
+### 2026-07-09 ~afternoon - Claude - CONVENTION LANDING GUARD for chiral-breaking job (a454d0c6) - DraftLead
+- While verifying the Colin-Wiseman central-thesis ref, read §2a point 2 + the landed ZigzagWeyl module.
+  SURFACED a convention issue to guard BEFORE landing chiral-breaking-anticommutator (a454d0c6):
+  * ZigzagWeyl (landed) + manuscript §2a point 2: "the mass term is CHIRAL-ODD". Its Dmass = m.chiralFlip
+    = m.gamma0 (Weyl basis, OFF-diagonal) - the Dirac HAMILTONIAN mass beta.m, which ANTICOMMUTES with
+    gamma5 ({g5,Dmass}=0, gamma5.Dmass.gamma5 = -Dmass). Chiral breaking shows as [gamma5, H] != 0.
+  * chiral-breaking job (queued): the COVARIANT operator D = pslash - m.1, where the mass m.1 is
+    CHIRAL-EVEN (commutes with gamma5, [g5,m.1]=0) but {gamma5, D} = -2m.gamma5 != 0 is the breaking.
+  * BOTH correct & standard, but DIFFERENT mass conventions. Folded naively they read as "mass odd" vs
+    "mass even" = apparent contradiction. RECONCILIATION (honest, illuminating): chiral-symmetry breaking
+    = [gamma5,H]!=0 (Hamiltonian, chiral-odd m.gamma0) EQUIVALENTLY {gamma5,D}!=0 (covariant, m.1). Two
+    faces of one fact; the covariant {g5,D}=-2m.g5 is the Ginsparg-Wilson continuum limit (lit-verified).
+- LANDING GUARD: when a454d0c6 completes, land it with an EXPLICIT covariant-vs-Hamiltonian note (NOT
+  naively "mass commutes with g5" next to ZigzagWeyl's "mass is chiral-odd"); anchor row must cross-ref
+  ZigzagWeyl and name the two faces. Do NOT silently merge the conventions (AGENTS.md). The dirac-det job
+  (9e8296eb) has NO such issue (det(pslash-m), chirality-neutral) - land normally.

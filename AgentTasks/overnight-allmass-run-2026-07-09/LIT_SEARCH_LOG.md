@@ -210,3 +210,18 @@ cites it.
 - NET: no NEW ref strictly needed (GW + Luscher already present, already §8 load-bearing); the queued
   module will slot into §8's existing GW-cited chirality narrative. [import] framing corroborated. If
   desired, Fujikawa hep-lat/0004012 is the explicit {g5,D}-algebra form (optional add on landing).
+
+## 2026-07-09 ~afternoon - Claude - VERIFIED the CENTRAL-thesis reference (Colin-Wiseman zig-zag)
+- Tool: scholarly search-arxiv (query "zig-zag road reality"). Context: Null_Edge_References.md listed
+  1107.4909 "The zig-zag road to reality" as ID-ONLY, but it backs the manuscript's CENTRAL thesis
+  (massive fermion = two coupled massless Weyl, the Penrose zig-zag). Highest-value citation to verify.
+- VERIFIED: arXiv:1107.4909, Samuel Colin & Howard M. Wiseman (2011), J. Phys. A 44 (2011) 345304, DOI
+  10.1088/1751-8113/44/34/345304. Abstract confirms EXACTLY: "a positive-energy massive Dirac electron
+  of given helicity can be thought of as a superposition of positive and negative energy Weyl particles
+  of the same helicity", moving "luminally at all times", "the `zig-zag' picture of the electron
+  discussed recently by Penrose", and "all fermions are fundamentally massless" (mass from Higgs).
+- TWO bonuses: (a) the pos/neg-energy Weyl split is EXACTLY the just-landed MassShellProjectors energy
+  projectors Lambda±; (b) HONEST CAVEAT - the all-times-luminal picture holds for a SINGLE Dirac
+  electron but the authors conclude it does NOT carry to the many-body QFT case. Checked manuscript §2a
+  luminal claims (velocity_spectrum, drift_subluminal_from_average): all single-particle/kinematic - NO
+  many-body luminal over-claim, so CONSISTENT with the caveat. Upgraded ID-ONLY -> VERIFIED in References.

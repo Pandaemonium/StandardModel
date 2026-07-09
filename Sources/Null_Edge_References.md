@@ -140,7 +140,7 @@ before any outward-facing quotation of their internal results.
 |---|---|---|---|---|
 | `TBD-ArkaniHamedHuangHuang2017` | `1709.04891` | Arkani-Hamed, Huang, Huang massive spinor-helicity source | Massive little-group / null-split comparison in P1.  This is the template: named and arXiv-keyed, but still needs a local bibliography key. | ID-ONLY |
 | `TN53N8J2` | `1610.01142` | "Spin on a 4D Feynman Checkerboard" | Checkerboard/null-zigzag toy comparison. | KEYED-LOCAL |
-| `TBD-PenroseZigZag` | `1107.4909` | "The zig-zag road to reality" | Penrose zig-zag / two-Weyl-spinor mass comparison. | ID-ONLY |
+| `TBD-PenroseZigZag` | `1107.4909` (DOI `10.1088/1751-8113/44/34/345304`) | Colin-Wiseman, "The zig-zag road to reality", J. Phys. A 44 (2011) 345304 | Backs the CENTRAL thesis: a massive Dirac electron of given helicity = superposition of positive- and negative-energy Weyl particles (the Penrose zig-zag), moving luminally; "all fermions are fundamentally massless" (mass from Higgs). The pos/neg-energy Weyl split is exactly the `MassShellProjectors` energy projectors. HONEST CAVEAT (from the abstract): the all-times-luminal picture holds for a SINGLE Dirac electron but the authors conclude it does NOT carry to the many-body QFT case - cite for the zig-zag / mass-from-massless framing, not for a many-body luminal theory. | VERIFIED (arXiv abstract + DOI, 2026-07-09) |
 | `TBD-FeynmanCheckerboard` | TBD | Feynman checkerboard source | Standard 1+1 checkerboard dispersion comparison. | NEEDS-VERIFY |
 | `TBD-Koide1982` | TBD | Koide original relation | Q07 / T-solder mass-values comparison. | NEEDS-VERIFY |
 | `TBD-WilczekMassWithoutMass` | TBD | Wilczek "Mass without mass" essay | Framing only, not theorem support. | NEEDS-VERIFY |
