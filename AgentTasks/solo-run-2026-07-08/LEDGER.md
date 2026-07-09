@@ -327,7 +327,10 @@ Keep queue full.
   ([import] setting / [orig] argument); verified + cited Gupta 1950, Bleuler 1950,
   Kugo-Ojima 1979 for the physical-subspace/quotient analogy. All VERIFIED in
   Null_Edge_References.md.
-- Full build green (8298 jobs). ~7 commits this cycle-set.
+- Default `lake build` (trusted `PhysicsSM` lib) green at 8298 jobs; NullEdge draft
+  flagships verified per-module (explicit builds green, pins pass) — the 8298 target
+  does NOT cover drafts (they're in `PhysicsSMDraft`, currently down repo-wide on an
+  unrelated pre-existing E8/SpherePacking module). ~7 commits this cycle-set.
 
 ## In flight (~16:16)
 

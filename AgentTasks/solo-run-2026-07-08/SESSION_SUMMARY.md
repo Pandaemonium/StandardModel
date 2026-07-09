@@ -111,5 +111,12 @@ semantic alignment, integrated into the repo, guard-pinned, and full-build-verif
   V'/N-presentation existence (in-flight); the aperture-rescue larger-Clifford route
   for *surviving* positivity (§6 route 1 / §10 crux 0).
 
-Full build: green (**8298 jobs** incl. all new modules; guard-pin axiom prints
+Verification: the default `lake build` (**trusted** `PhysicsSM` lib) is green at
+**8298 jobs** — but that target does NOT include the NullEdge draft flagships (they
+live in `PhysicsSMDraft`, per the root docstring). Each NullEdge module this session
+was verified by explicit `lake build PhysicsSM.Draft.…` (green, guard pins passing);
+that per-module build is the verification of record. `PhysicsSMDraft` (the draft
+enforcement lib) currently fails repo-wide on an unrelated pre-existing E8 module
+(`E8ThetaDim8MF` / `SpherePacking`), so draft-lib CI enforcement is down independent
+of this work. Guard-pin axiom prints
 pass). ~50 `solo-202607:` commits.
