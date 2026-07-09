@@ -323,11 +323,33 @@ now carry as three kernel-checked finite theorems rather than borrowed slogans.
 
 Read together: instantaneous-luminal (1) and observable-subluminal (3) are the
 same fact at two timescales, with the zigzag (2) the mechanism between them.
-**Honest scope:** these are finite one-momentum models for *fermions* (the
-`±c`-velocity-operator statement is a Dirac fact; massive bosons are covered only
-by the momentum-decomposition side, §3). "Mass is slowed-down light" is thus an
-`M` statement about fundamental fermions' internal kinematics — not a claim that
-anything is observed to move at `c`, and not a statement about the mass values.
+
+**Across the full particle table (M).** The velocity-operator statement (1) is a
+Dirac/*fermion* fact, but "mass is null-edge disagreement" extends to the rest of
+the table on the momentum + polarization side:
+- **Gauge bosons.** A massless vector (photon) is a *single* null edge — its
+  momentum Gram is rank-1 (`det = 0`) — with two transverse polarizations; a
+  massive vector is *two* null edges (rank-2, `det = m² =` disagreement) with
+  three, the extra **longitudinal** polarization being the mass. The polarization
+  count is the edge count shifted by the transverse baseline, `edges = pol − 1`,
+  and `m ≠ 0 ⇔ 2 edges ⇔ 3 polarizations`
+  (`PhotonSingleEdge.universal_verdict`, `edge_count_eq_pol_minus_one`;
+  `HiggsLongitudinalMode.longitudinal_is_mass`, **M**). The spin-1 mass is the
+  eaten longitudinal null (would-be-Goldstone) mode — the gauge/Higgs-channel
+  reading of "mass from massless."
+- **Antimatter.** The antiparticle is the CPT-mirror of the zigzag: the antiunitary
+  `Θ = C·Γ_rev·#` is chiral-odd, swapping the two null Weyl pieces, and pairs each
+  particle energy with its conjugate — so matter and antimatter are the two
+  CPT-orientations of the *same* null-edge pair, and the matter–antimatter
+  asymmetry is a state/initial-condition question, not a law asymmetry
+  (`CPTAntiparticleZigzag.theta_swaps_weyl`, `spectrum_conjugate_paired`, **M**).
+
+**Honest scope:** the `±c`-velocity-operator statement (1) is fermion-internal
+kinematics (a Dirac fact); the momentum/polarization edge-count reading covers
+fermions *and* gauge bosons *and* their antiparticles; all are finite
+one-momentum / DOF-counting models. "Mass is slowed-down light" is an `M`
+statement about internal kinematics — not a claim that anything is *observed* to
+move at `c`, and not a statement about the mass *values*.
 
 ---
 
@@ -1792,6 +1814,9 @@ anchor sweep.)*
 | 2b | `alpha_sq_one`, `velocity_spectrum`, `massless_luminal` | `NullEdge/DiracVelocityOperator.lean` | M, self-guarded (in-file pin) | **instantaneous velocity is exactly `±c`**: the Dirac velocity operators satisfy `αᵢ²=1`, `tr αᵢ=0`, so spectrum `= {+1,−1}` (mult 2), explicit `±1` eigenvectors; mass term anticommutes with each `αᵢ`. A fermion is internally always at `c` |
 | 2b | `massless_decouples`, `mass_couples`, `zigzag_verdict` | `NullEdge/ZigzagWeyl.lean` | M, self-guarded (in-file pin) | **Penrose zigzag**: massless ⇒ two decoupled null Weyl operators; mass is the chiral-odd coupling that swaps them; `D(m)²=(kinetic²)+m²` (3-4-5 shell). Massive Dirac = two null pieces coupled by mass |
 | 2b | `drift_subluminal_from_average`, `massless_limit`, `zitterbewegung_verdict` | `NullEdge/ZitterbewegungAverage.lean` | M, self-guarded (in-file pin) | **Zitterbewegung average**: drift `v̄=p/E`, `v̄²=1−m²/E²` as a convex average of `±1` (weights set by `m/E`); massless ⇒ single luminal channel, rest ⇒ 50/50 zigzag. Ties instantaneous `±c` to the subluminal drift |
+| 2b | `photon_one_edge`, `massive_vector_two_edges`, `edge_count_eq_pol_minus_one`, `universal_verdict` | `NullEdge/PhotonSingleEdge.lean` | M, self-guarded (in-file pin) | **mass=disagreement across spin (gauge bosons)**: photon = 1 null edge / 2 pol; massive vector = 2 edges (`det=m²`) / 3 pol; `edges = pol−1`, `m≠0 ⇔ 2 edges ⇔ 3 pol`. Extends the edge-count reading to spin-1 |
+| 2b | `massless_two_polarizations`, `massive_three_polarizations`, `longitudinal_is_mass` | `NullEdge/HiggsLongitudinalMode.lean` | M, self-guarded (in-file pin) | **the longitudinal mode is the mass**: `2 (transverse) + 1 (longitudinal/eaten Goldstone) = 3` for a massive vector, dropping to `2` when massless — the vector-boson mass is the extra null mode (gauge/Higgs channel) |
+| 2b | `theta_swaps_weyl`, `spectrum_conjugate_paired`, `antiparticle_verdict` | `NullEdge/CPTAntiparticleZigzag.lean` | M, self-guarded (in-file pin) | **antimatter = CPT-mirror zigzag**: `Θ=C·Γ_rev·#` is chiral-odd, swaps the two null Weyl pieces, conjugate-pairs the spectrum — matter/antimatter are the two CPT-orientations of one null-edge pair; asymmetry is a state, not a law |
 | 7 | `equation_of_state`, `jacobson_verdict` | `NullEdge/JacobsonClausius.lean` | M, self-guarded (in-file pin) | **finite gravitational equation of state**: the soldering field equation `∇heat = T·α·∇area` IS the integrability condition of Clausius `δQ=T δS` (`S~`pierced-edge count); non-degenerate + control witnesses. Finite Jacobson |
 | 7 | `field_equation_sourced`, `channel_blind_universal`, `unification_verdict` | `NullEdge/GravitySourceMatter.lean` | M, self-guarded (in-file pin) | **finite `G=κT`**: soldering stationarity ⇔ `solderingCurv γ = κ·matterBudget ψ` — geometry sourced by the matter channels, channel-blind (equal total budget ⇒ same geometry = WEP) |
 | 4/7 | `square_splits`, `answers_detP`, `unified_verdict` | `NullEdge/UnifiedMassBudget.lean` | M, self-guarded (in-file pin) | **one operator, both forces**: `4D#D = Q_A+Q_C+Q_T+E_sold` (matter ⊕ gravity graded blocks), shares sum to one budget, and `totalBudget = c·det P` (both `=3552`) — matter mass + gravity mass are graded pieces of one operator answering the same null-disagreement invariant |
