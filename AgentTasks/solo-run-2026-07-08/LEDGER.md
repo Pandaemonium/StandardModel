@@ -581,3 +581,13 @@ absent.
 
 Reiterated to user: external analyses now converge/repeat; bottleneck is HARVEST not
 reframing (~21 jobs running). Recommend pausing intake to triage returns.
+
+## Cycle A.26 -- Pro round-6 (synthesis): 1 new job (Gibbs-Duhem), rest already captured
+
+Pro's meta-feedback on Fable round-5 is a synthesis of round-4/5 (all already logged/
+jobbed). One genuinely-new target: Conjecture V mass-thermodynamics / Gibbs-Duhem
+susceptibility sum rule (Sum_X chi_XY=0 from the budget b_A+b_C+b_T=1) + closed-form
+susceptibility matrix on B(l,k) + critical divergence at k=l -> job massthermo 2e522ee0.
+Added the five-laws synthesis + mature-title framing to the doc (grade [spec]).
+Confirmed to user: conceptual layer SATURATED (rounds 3-6 converge/repeat); ~22 jobs
+running; NEXT ROUND = HARVEST pass, no more intake.

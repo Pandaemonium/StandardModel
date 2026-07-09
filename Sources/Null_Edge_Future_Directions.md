@@ -455,3 +455,47 @@ The absolute mass scale (ratios only, ever); the Born rule / measurement (the fi
 layer USES quantum probability, doesn't derive it); initial conditions (why THIS ensemble
 state); and the number of null edges. A framework that knows its own event horizon is
 more credible inside it.
+
+---
+
+## Round-6 (Pro, meta-feedback on Fable round-5): synthesis + one new target
+
+Pro's round is a **synthesis** of the round-4/5 material — the finite-null-information
+ontology, mass-as-decoding-rank, the coherence matrix `Omega`, the four info-defect
+channels, signature forcing, division selection, subluminality (landed), geometry
+recovery, universality, CPT/Sakharov, Compton, dark-matter shape, and the "event
+horizon" boundary are all already logged above or jobbed. One genuinely-new target:
+
+- **V. Mass thermodynamics / Gibbs–Duhem [new M-target, jobbed].** The budget
+  `b_A + b_C + b_T = 1` (kernel-checked) makes mass an equation of state:
+  differentiate to get `Sum_X chi_{XY} = 0` (susceptibility sum rule), compute the
+  susceptibility matrix in closed form on `B(l,k)`, and prove a channel
+  susceptibility **diverges as `k -> l`** — the thermodynamic signature of the
+  massless transition, stated with already-M objects. *Kill:* the sum rule fails /
+  no divergence at criticality. -> job `massthermo` `2e522ee0`.
+
+### The five-laws synthesis (grade [spec], organizing framing)
+Pro's compact statement of the developed theory, worth recording as the target
+skeleton for the eventual "finite null information dynamics" framing:
+1. **Null purity** — elementary messages are rank-one null direction states
+   `rho_edge = |psi><psi|`.
+2. **Mass as decoding rank** — a bundle is massive iff hidden null histories cannot
+   compress to one rank-one direction state; `m^2 = det P`. [in-paper M for the identity]
+3. **Forces as decoding defects** — `D^#D = aperture + closure + turn + codebook drift`.
+4. **Physicality as positivity** — a particle is a codeword in
+   `(ker Q / im Q)^+` (Krein-decoded positive sector).
+5. **Spacetime as recovered code geometry** — signature, dimension, causal order,
+   distance, and the speed limit are RECOVERED from null information + composition +
+   reflection positivity + spectral distance + critical universality (jobs M/N/P/Q +
+   the landed subluminality O).
+
+Candidate mature title (grade [spec], for a much later paper, NOT the current
+manuscript): *"Finite Null Information Dynamics: Mass, Causality, and Geometry as
+Decoding Obstructions"*; one-line thesis: *mass is the positive-sector spectral cost
+of compressing finite null histories into one visible direction message.*
+
+**Meta-note (recorded for discipline):** external analyses have now fully converged —
+rounds 3-6 increasingly restate the same ontology and re-propose already-done or
+already-jobbed work. The conceptual layer is saturated. Next action is a **harvest
+pass** over the ~22 running frontier jobs, integrating what survives the kernel and
+recording the no-gos — not further intake.
