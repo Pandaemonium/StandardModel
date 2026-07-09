@@ -398,19 +398,45 @@ Majorana nature** — which of the two the physical neutrino is — stays open, 
 the finite *structure* of both options (the two mass-term types and their CPT /
 lepton-number properties) is now kernel-checked (above).
 
-**What is, and is not, new here.** The idea that mass is *hidden masslessness* is
-old and distinguished: it runs from Kaluza–Klein (a massive mode is the shadow of
-extra-dimensional momentum) through the twistor / two-time descriptions in which
-"the mass is the component of momentum in a higher dimension" (Bars,
-`arXiv:hep-th/0512091`, `[import]`), the massless-in-`D+1` picture, and the
-Zitterbewegung and preon traditions. This manuscript does **not** claim that
-general notion as original. What is specific here — and what the claim calculus
-tracks as `[orig]` — is the *finite null-edge-disagreement* mechanism: that `mass²`
-is the **Plücker determinant** `det P` measuring the disagreement of two null edges
-(§3), read across the particle table by momentum rank and polarization count, and
-*kernel-checked* under a pinned axiom footprint rather than argued informally. The
-lineage supplies the picture; the contribution is the finite theorem and its
-grade.
+**What is, and is not, new here.** Two layers must be separated, and an adversarial
+audit (`AgentTasks/.../audits/REDTEAM_detP_mass_20260709.md`) sharpened where the
+line falls. *The physics is standard.* That a null momentum is rank-1 (`det = 0`)
+and a massive one rank-2, with `mass² = det P` on the little-group spinor matrix, is
+textbook massive spinor-helicity (Arkani-Hamed–Huang–Huang; §3 references); that a
+massive fermion is a zigzag of two massless Weyl edges is Penrose's; and "mass as
+hidden masslessness" runs back through Kaluza–Klein, Bars' two-time twistor
+description ("the mass is the component of momentum in a higher dimension",
+`arXiv:hep-th/0512091`), and the Zitterbewegung / preon traditions. All of this is
+`[import]` — **including the `mass² = det P` identity itself**, which this manuscript
+does *not* claim as new physics. The identity is moreover *kinematic*: every
+timelike `p` splits into two null momenta with `m² = 2 p₁·p₂`, so "all mass from
+massless edges" holds universally precisely because, at that level, it is a
+re-parametrization, not by itself a dynamical *origin*. *What is new is the formal
+layer.* The `[orig]` contribution is (i) the reduction to a **finite, decidable
+avatar** — a PSD `2×2` matrix whose `det`/rank statement is machine-checkable —
+carried across the table under (ii) a uniform **T/M/C kernel-grade discipline** with
+pinned axiom footprints. The lineage and the identity supply the physics; the
+contribution is the finite kernel-checked packaging and the honesty accounting — not
+the picture, and not the formula.
+
+**Known limits (from the same audit).** Three boundaries are load-bearing and stated
+here so no sentence outruns them. (1) **Which `P`.** `mass² = det P` is the identity
+for the little-group *spinor* `2×2` matrix (`P = M Mᴴ`, §3); it is **not** the
+Lorentzian Gram of the two null 4-vectors, whose determinant is `−(p₁·p₂)² = −m⁴/4`
+— wrong sign and dimension. Our `P` is always the spinor/PSD object, and `P`'s
+positive-semidefiniteness encodes the physical *same-null-cone-sheet* hypothesis (a
+future/past mix would give a spurious `m² < 0`); it is an explicit hypothesis, never
+decoration. (2) **Rank-2 ceiling.** The determinant reading is intrinsically a
+*two-edge* (`2×2`) statement. The polarization/edge counting is `edges = pol − 1` for
+the *bosonic* rows and "one vs two edges" for spin-½; it is **not** claimed to extend
+to a single `det`-of-Gram at spin `≥ 3/2` (a massive gravitino needs rank 3, where an
+`r×r` Gram scales as `[mass]^{2r}` and the true invariant is the *pairwise* `p_i·p_j`,
+not one determinant). The table is a rank-≤2 statement; higher spin is out of scope,
+not claimed. (3) **Phase-blindness.** `det P = |m|²` keeps the modulus and discards
+the mass *phase*; CP-violating / Majorana phases and the QCD `θ`-term live exactly
+there, so det-`P` is silent about them (the neutrino §2b bullet is a *structural*
+statement, not a phase prediction). None of these is fatal to the rank-2 claims the
+manuscript actually kernel-checks; each marks where universality stops.
 
 ---
 
@@ -1923,6 +1949,7 @@ anchor sweep.)*
 | 3 | `massive_eq_two_null`, `massSq_eq_two_null_disagreement`, `posSemidef_eq_null_edge_sum`, `det_eq_null_edge_disagreement` | `NullEdge/MassNullDecomposition.lean` | M, self-guarded (in-file pin) | **the converse — all mass IS null-edge disagreement**: every timelike `p` = sum of two null momenta (`m²=2·disagreement`); every PSD `P = M Mᴴ = Σψᵢψᵢᴴ`, `det P=\|det M\|²`. Mass ⇔ null-disagreement is bidirectional/universal |
 | 3 | `massless_iff_one_edge`, `massive_iff_two_edges`, `edge_count_eq_rank`, `mass_from_edges` | `NullEdge/MasslessEdgeCount.lean` | M, self-guarded (in-file pin) | **edge count = rank (the exact converse)**: for a PSD `2×2` `P`, `det=0 ⟺ rank 1 ⟺ one null edge`; `det>0 ⟺ rank 2 ⟺ two linearly-independent edges ⟺ PosDef`; and the *minimum* number of null edges summing to `P` **equals `rank P`** (`edge_count_eq_rank`, with the general `n`-edge lower bound `rank ≤ n`), mass² `= (v₀w₁−v₁w₀)²`. The rank-level sharpening of `MassNullDecomposition`: not just *a* two-edge decomposition, but the exact edge count |
 | 3 | `chord_eq_two_sub_two_inner`, `massless_iff_collinear`, `orthoframe_is_tight_frame`, `spherical_code_verdict` | `NullEdge/CelestialSphericalCode.lean` (port) | M, self-guarded (in-file pin) | **mass = chordal separation on the celestial sphere** — clean-room port of the spherical-code/design notion (Sphere-Packing-Lean / LeanCamCombi, reference-only, version-pinned): for rational unit null directions, `chordSq u v = 2−2⟨u,v⟩ ∈ [0,4]`, zero iff collinear (massless), maximal `4` at the antipode; and a *balanced* massless multiplet is a **tight frame / spherical 2-design** (`frameOp(ortho)=I`, with an explicit non-isotropic control). The celestial-geometry face of "mass = disagreement of null directions" |
+| 3 | `critical_iff_massless`, `hessian_psd_mass_direction`, `morse_mass_verdict` | `NullEdge/MassGradientMorse.lean` (port) | M, self-guarded (in-file pin) | **masslessness = critical manifold of the disagreement functional** — clean-room port of the gradient/Hessian (variational) view (SciLean, reference-only, version-pinned): for the celestial-slope disagreement `g(s,t)=(t−s)²`, `grad g = 0 ⟺ s=t ⟺ massless`; the constant Hessian is PSD with kernel `![1,1]` (common rotation, flat) and strictly positive on `![1,-1]` (`=8`) — the relative motion that *generates* mass. The variational/Morse face; `HasDerivAt` throughout |
 | 3a | `binding_defect_eq_coupling`, `binding_defect_eq_concurrence`, `binding_below_threshold_iff_entangled` | `NullEdge/BindingEntanglementDeficit.lean` | M, self-guarded (in-file pin) | **binding = entanglement deficit**: on `Bc(λ,κ)`, defect `Δ=κ=C(ρ)·λ` where `C(ρ)=κ/λ` is the coupled block's concurrence; binds below threshold iff entangled (§3a target ii, C→M) |
 | 3a | `coherent_is_pure`, `decohered_mass_eq_disagreement`, `mass_monotone_in_decoherence` | `NullEdge/PathSumSemantics.lean` | M, self-guarded (in-file pin) | **path-sum semantics**: the path-conditioned visible state `ρ_dir`; full coherence ⇒ pure (`det=0`, massless), decoherence ⇒ `det = Σ\|a\|²\|a'\|²\|ψ∧ψ'\|²` (mass = retained which-direction info), monotone `det ρ(t)=t(2−t)D`. Non-collinear witness `det=4/25` |
 | 3a | `det_pinch`, `mass_monotone_under_pinch`, `signed_closure_exception` | `NullEdge/EntropyMonotoneReal.lean` | M, self-guarded (in-file pin) | **entropy monotonicity under decoherence**: `det(Pinch t ρ)=det ρ+(2t−t²)x²`; decohering hidden coherence can only increase mass²/linear-entropy; a signed closure move can lower it (`49/2500<1/4`) — closure is not noise |
