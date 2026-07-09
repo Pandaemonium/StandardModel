@@ -1226,6 +1226,52 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   distinguishability, Kraft compression, and Dirac/Majorana split into a single
   finite information/particle bridge.
 
+### 2026-07-09 08:35 PDT - Codex - harvest action variation + neutrino seesaw - Builder/Registrar
+- HARVEST VERIFIED `claude-unified-action-variation`
+  (`b853a834-6a3a-47cf-b3d9-eda8c1374469`) ->
+  `PhysicsSM/Draft/NullEdge/UnifiedActionVariation.lean`: finite rational
+  spectral-action avatar with one polynomial functional, closed form
+  `S = 10 - 8w + 2w^2`, distinct `dS/dE` and `dS/dg` field equations,
+  nonzero coupled stationary point `(-1,-1)`, and control point `(0,0)` where
+  neither equation holds. The file was already present/imported; I removed the
+  unnecessary `open scoped Classical` line and rechecked it.
+- HARVESTED + PORTED `claude-neutrino-seesaw`
+  (`0839d0e4-33c2-4dcf-ae87-02cfe7a8155f`) ->
+  `PhysicsSM/Draft/NullEdge/NeutrinoSeesaw.lean`: finite real `2x2` type-I
+  seesaw avatar with Vieta data, opposite-sign eigenvalues, light-eigenvalue
+  bound `-ln < mD^2/MR`, product pinning `lp*(-ln)=mD^2`, and explicit
+  suppressed/control nondegeneracy witnesses.
+- REGISTERED `NeutrinoSeesaw` in `PhysicsSMDraft.lean`. Verification:
+  `lake build PhysicsSM.Draft.NullEdge.UnifiedActionVariation` PASS;
+  `lake build PhysicsSM.Draft.NullEdge.NeutrinoSeesaw` PASS; placeholder scans
+  on both files were clean; `git diff --check` on the touched Lean files PASS.
+- PREPARED next ambitious non-duplicative proof packet
+  `ARISTOTLE_PROMPT_codex_neutrino_mass_mechanism_capstone_0835.md` and package
+  `AgentTasks/aristotle-submit/codex-neutrino-mass-mechanism-capstone-0835-20260709-project`.
+  It composes `NeutrinoDiracMajorana`, `NeutrinoSeesaw`, and `SchurSeesaw`.
+  Not submitted yet because the Codex lane is already above the target
+  saturation (`46dde441`, `998e717e`, `535f2b9d`, `7c9e932f`, `d7b686b5`,
+  `e638cd66`, plus older running capstones).
+
+### 2026-07-09 08:45 PDT - Codex - C3 index anomaly capstone harvested - Builder/Registrar
+- HARVESTED + PORTED Codex proof `codex-c3-index-anomaly-capstone-0800`
+  (`998e717e-8ec3-4f6d-934e-1da0e4807120`) ->
+  `PhysicsSM/Draft/NullEdge/C3IndexAnomalyCapstone.lean`: Suite C3 bridge
+  composing finite KM phase counts, the nonzero `3-4-5` Jarlskog witness,
+  incidence corank, and finite winding index/protected low modes. Headline
+  payload: `N=3,w=1` has one CP phase and one protected winding mode; the
+  `N=2,w=0` control has both protections vanish.
+- REGISTERED in `PhysicsSMDraft.lean`. Verification:
+  `lake build PhysicsSM.Draft.NullEdge.C3IndexAnomalyCapstone
+  PhysicsSM.Draft.NullEdge.MasslessEdgeCount` PASS. Warnings were inherited
+  style/info output from dependencies. Placeholder scan on C3 and
+  `MasslessEdgeCount` was clean; `git diff --check` on C3/import edits PASS.
+- HARVEST CHECK: `claude-masslessedge-closer`
+  (`8584e96e-2aeb-4bf1-bffc-70ba82713580`) downloaded. The local
+  `MasslessEdgeCount` already carries the closed massless/massive witnesses and
+  guard pins; targeted build remains PASS, so I did not overwrite it with a
+  formatting/prose-different copy.
+
 ### 2026-07-09 ~midday - Claude - CYCLE CLOSE: s7 capstone lands; reconciliation deferred honestly - DraftLead
 - LANDED [M]: `UnifiedActionVariation` (harvest b853a834) - Priority B s7 capstone.
   One finite spectral action S(E,g)=10-8w+2w^2: gravity eq dS/dE=0, matter eq dS/dg=0,
@@ -1245,3 +1291,22 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - LANE: 4 high-value RUNNING (lambda-three-split, neutrino-seesaw, lambda-frame-constraint,
   masslessedge-closer). Deliberately NOT padded to 7 (no filler, per user). Refill on next
   completion. No job over 2h.
+
+### 2026-07-09 ~afternoon - Claude - seesaw lands; masslessedge-closer REDUNDANT; prior-art refs - DraftLead
+- LANDED [M]: `NeutrinoSeesaw` (harvest 0839d0e4) - type-I seesaw, |m_nu|<mD^2/MR via Vieta
+  (no sqrt), product pinned mD^2, opposite signs, MR-driven vs control. Extends
+  NeutrinoDiracMajorana; folded 2b bullet + 2 anchor rows. 7 guard-pins, build 17s.
+- REDUNDANT (no overwrite): masslessedge-closer (8584e96e -> 73e466e7) came back clean
+  (0 sorry) BUT the repo MasslessEdgeCount.lean is ALREADY guard-pinned M and MORE complete
+  (edge_count_eq_rank with general n-edge bound; the closer only did the 2-edge case).
+  Kept the repo version. NOTE: the repo module was landed-but-UNCITED - now surfaced with a
+  s3 anchor row (edge count = rank, the exact converse). Honest catch: 'held w/ 2 sorries' in
+  an old note was stale; it had already been closed (superior version) in-tree.
+- LIT (neo4j chunks): celestial/spinor-helicity prior art - null=rank1=det0=lambda~lambda
+  (Grassmannian 1212.5605), massive=little-group pieces (AHH 1709.04891), zig-zag of massive
+  particles (ambitwistor 2301.06203). CONFIRMS manuscript's existing honest tagging (s3 =
+  classical spinor-helicity [import], not [orig]). Added 3 refs w/ 'our part = finite kernel form'.
+- PORT submitted: celestial-spherical-code (spherical codes/designs, an untouched target:
+  mass=chordal separation of null directions; massless multiplet=tight frame/2-design).
+- LANE: 4 RUNNING (celestial-spherical-code, lambda-three-split, lambda-frame-constraint,
+  + neutrino-seesaw just harvested -> refilled by spherical-code). masslessedge-closer done (~1h).
