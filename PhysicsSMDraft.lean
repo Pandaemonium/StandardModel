@@ -163,6 +163,7 @@ import PhysicsSM.Draft.NullEdge.MassPhaseDiagram
 import PhysicsSM.Draft.NullEdge.SpectralDistance
 import PhysicsSM.Draft.NullEdge.ModularSelection
 import PhysicsSM.Draft.NullEdge.MassSphericalDesigns
+import PhysicsSM.Draft.NullEdge.DivisionDimensionSelection
 import PhysicsSM.Draft.NullEdgeSymmetric2x2Spectrum
 import PhysicsSM.Draft.NullEdgeTwoNullMassive
 import PhysicsSM.Draft.NullEdgeHiggsPotential

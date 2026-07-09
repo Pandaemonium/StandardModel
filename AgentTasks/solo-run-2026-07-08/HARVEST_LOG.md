@@ -26,3 +26,4 @@ Loop: download -> check sorry -> read summary -> build in-project -> semantic re
 | spectraldistance | be0b5442 | INTEGRATED M | P: Connes spectralDist(Dm m) 0 1 = 1/m on the 2-vertex witness -- the complex's metric is RECOVERED from (A,D) (background independence, finite Malament first step) |
 | modularselection | 0053fc61 | INTEGRATED M | J: flow_scalar_shift (central shift invisible) + modular flow of Gibbs(B) = B-generated -- derives the D2 generator instead of positing it |
 | massdesigns | a02602f5 | INTEGRATED M | I/P-K: spinor_lagrange (|ψ|²|φ|²=|<ψ,φ>|²+|ψ∧φ|²), pair_disagreement_eq (|ψ∧φ|²=sin²(θ/2)=chordal dist). Bundle mass = pairwise energy on S² -- spherical-code foundation |
+| divisionselection | 79b0b772 | INTEGRATED M | N: division_algebra_selection (Composes ∧ ContinuousPhase ⟺ k=C) => dimension_is_four. R fails continuity, H/O fail commutativity; only C. Feeds Q5. Boundary: Minkowski/Lorentz IDs are motivating docstrings, algebraic core proved |
