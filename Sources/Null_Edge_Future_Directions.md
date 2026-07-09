@@ -730,6 +730,16 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   is a NEW relevant direction but lies IN the named channel basis, so the S4a channel-name /
   basin-membership conjecture is NOT killed — sharpened: turn is relevant, not marginal. Rational
   (HasDerivAt + char-poly factoring), builds ~15s. Follows buildable-proof rule v3.
+- **`Goal3ChannelRG4` (full 4-channel RG) [WIN / M — all four channels are RG coordinates]** —
+  extends the S4a model with the fourth channel, soldering `E` (on-site block `lam*I + E*S`,
+  `S^2=I`): `R4_closed_form` with `d=lam^2-E^2`; the critical `4x4` Jacobian at `(1,1,0,0)` is
+  block `[[3,-4,0,0],[1,-2,0,0],[0,0,-2,0],[0,0,0,3]]`, char poly `(x-2)(x+1)(x+2)(x-3)`
+  (`rg_charpoly`), so the soldering eigenvalue is `3` — RELEVANT, even more relevant than
+  aperture's `2` (`soldering_verdict`). VERDICT: all four named channels
+  (aperture/closure/turn/soldering) are genuine relevant/marginal RG coordinates; geometry does
+  NOT decouple from the Dirac universality class at the fixed point. Strongest kernel-checked
+  support yet that the channel basis is the right coordinate system (still short of the continuum
+  reduction). Rational, rule v3.
 - **`Goal1Hadron` (Goal I) [WIN / M, 5 rungs — with a rung-5 scope boundary]** — the verified
   toy hadron on the actual 12-dim `Cl(4) (x) C^3` (`eta4 (x) Gcolor`): rung 1 confinement
   dichotomy (singlet PosDef, colored NegDef; both sectors `finrank>0` pinned; witnesses
