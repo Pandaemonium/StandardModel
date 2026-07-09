@@ -1272,6 +1272,25 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   guard pins; targeted build remains PASS, so I did not overwrite it with a
   formatting/prose-different copy.
 
+### 2026-07-09 08:50 PDT - Codex - Gravity capstone landed; Goal IV reconciliation launched - Builder
+- HARVESTED + PORTED Codex proof `codex-gravity-unification-capstone-0800`
+  (`535f2b9d-1e4c-40c5-af73-ed57c316e113`) ->
+  `PhysicsSM/Draft/NullEdge/GravityUnificationCapstone.lean`: finite Goal IV
+  capstone bundling WEP trace/action, mass-entropy resource nonvacuity, finite
+  field-equation multiplier/nontriviality, sourced matter, Jacobson/Clausius,
+  unified mass budget, spectral/EH action avatars, teleparallel-WEP source,
+  holographic/resource guardrails, and mostly-minus convention anchors.
+- REGISTERED in `PhysicsSMDraft.lean`. Verification:
+  `lake build PhysicsSM.Draft.NullEdge.GravityUnificationCapstone` PASS;
+  placeholder scan and `git diff --check` on the gravity/import edits PASS.
+- REFILL SUBMITTED `de0f3d3d-f809-4bfd-8e21-518337efe9af`:
+  `codex-goalIV-reconciliation-capstone-0850-20260709`, targeting
+  `PhysicsSM/Draft/NullEdge/GoalIVReconciliationCapstone.lean`. Mission: honest
+  §7 reconciliation theorem bundling the variational route
+  (`UnifiedActionVariation`), source/equation-of-state route
+  (`GravityUnificationCapstone`), nonvacuity gates, and mostly-minus convention,
+  without claiming the two finite routes are identical.
+
 ### 2026-07-09 ~midday - Claude - CYCLE CLOSE: s7 capstone lands; reconciliation deferred honestly - DraftLead
 - LANDED [M]: `UnifiedActionVariation` (harvest b853a834) - Priority B s7 capstone.
   One finite spectral action S(E,g)=10-8w+2w^2: gravity eq dS/dE=0, matter eq dS/dg=0,
@@ -1310,3 +1329,18 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   mass=chordal separation of null directions; massless multiplet=tight frame/2-design).
 - LANE: 4 RUNNING (celestial-spherical-code, lambda-three-split, lambda-frame-constraint,
   + neutrino-seesaw just harvested -> refilled by spherical-code). masslessedge-closer done (~1h).
+
+### 2026-07-09 ~afternoon - Claude - headline originality honesty + lane to 7 - DraftLead
+- MANUSCRIPT HONESTY (headline): added "What is, and is not, new here" to 2b. Lit (neo4j
+  chunks) surfaced the mass-from-masslessness lineage - Kaluza-Klein / Bars 2T-twistor
+  (hep-th/0512091, "mass = component of momentum in a higher dimension") / massless-in-D+1 /
+  Zitterbewegung/preon. The general notion is now [import]; the [orig] contribution is the
+  FINITE null-edge-disagreement (mass^2=det P Plucker) mechanism + kernel grade. +Bars ref.
+  Closes an originality over-claim risk on the TITLE itself.
+- LANE now 7 high-value (target hit, no filler): 3 PORTS clearing all named targets
+  [mass-gradient-morse=SciLean, zigzag-automaton=CSLib, celestial-spherical-code=Sphere-
+  Packing/LeanCamCombi]; 1 STRATEGY/AUDIT [redteam-detp-kill: hunt the strongest kill-test
+  for mass=det P]; 3 THEOREMS [detp-uniqueness=det P is CANONICAL not conventional;
+  lambda-three-split=Priority A; lambda-frame-constraint=lit-finding-as-theorem].
+- Port targets status: lean-quantum/Kraft/testing-lower-bounds/PhysLean LANDED (4);
+  SciLean/CSLib/LeanCamCombi/Sphere-Packing SUBMITTED (in flight). All named targets covered.
