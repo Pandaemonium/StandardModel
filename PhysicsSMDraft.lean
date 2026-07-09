@@ -199,6 +199,7 @@ import PhysicsSM.Draft.NullEdge.JacobsonClausius
 import PhysicsSM.Draft.NullEdge.GravitySourceMatter
 import PhysicsSM.Draft.NullEdge.UnifiedMassBudget
 import PhysicsSM.Draft.NullEdge.UnifiedActionCapstone
+import PhysicsSM.Draft.NullEdge.GravityUnificationCapstone
 import PhysicsSM.Draft.NullEdge.EinsteinHilbertTerm
 import PhysicsSM.Draft.NullEdge.LambdaUnimodular
 import PhysicsSM.Draft.NullEdge.LambdaSusceptibility
@@ -206,6 +207,8 @@ import PhysicsSM.Draft.NullEdge.LambdaCountDichotomy
 import PhysicsSM.Draft.NullEdge.LambdaConjugacy
 import PhysicsSM.Draft.NullEdge.LambdaMomentHierarchy
 import PhysicsSM.Draft.NullEdge.LambdaTwoRegionCovariance
+import PhysicsSM.Draft.NullEdge.LambdaThreeSplit
+import PhysicsSM.Draft.NullEdge.LambdaFrameConstraint
 import PhysicsSM.Draft.NullEdge.VacuumSequestering
 import PhysicsSM.Draft.NullEdge.HiggsLongitudinalMode
 import PhysicsSM.Draft.NullEdge.MasslessEdgeCount
@@ -233,6 +236,7 @@ import PhysicsSM.Draft.NullEdge.WEPActionBridge
 import PhysicsSM.Draft.NullEdge.WEPActionSlotEquation
 import PhysicsSM.Draft.NullEdge.MassResourceModularAudit
 import PhysicsSM.Draft.NullEdge.IndexAnomalyInterface
+import PhysicsSM.Draft.NullEdge.C3IndexAnomalyCapstone
 import PhysicsSM.Draft.NullEdge.GateI1.MassEntropyMonotone
 import PhysicsSM.Draft.NullEdge.SuiteCDNextRungs
 import PhysicsSM.Draft.NullEdge.SuiteDChargeNonvacuity

@@ -1803,7 +1803,16 @@ action puts `Λ` at the one order the deformation algebra cannot reach. Read
 positively, this is the finite shadow of why the magnitude problem is hard: matter
 physics cannot renormalize `Λ`; only the *count* can. A uniform vacuum shift `D#D → D#D + c·1` is absorbed into the unimodular
 multiplier and leaves the physical, count-fluctuation `Λ` unchanged
-(`VacuumSequestering`, **M**) — the finite sequestering statement.
+(`VacuumSequestering`, **M**) — the finite sequestering statement. Sharpened, this
+is a **three-`Λ` split**: a bare order-0 `Λ_bare` (adjustable), a radiative
+`Λ_ind` induced by the matter block, and the observed `Λ_obs`. The traceless /
+unimodular projection kills *every* uniform shift, so `Λ_bare` and the uniform part
+of `Λ_ind` are sequestered out — the sequestered operator is provably independent
+of the bare coefficient — and only the count-set `Λ_obs` survives, varying with the
+count (`LambdaThreeSplit.three_lambda_verdict`, **M**; the "observed = count" leg is
+definitional, the load-bearing content is that the projection annihilates the bare
+and uniform-induced shifts). The magnitude problem's adjustable pieces drop; the
+coincidence-scale count remains.
 
 **The count fixes the scale, as a fluctuation.** Route the everpresent scaling
 through the framework's own primitive: the pierced-null-edge count `N` of a causal
@@ -1833,8 +1842,16 @@ a regular or hyperuniform point set picks out a preferred frame (Sorkin;
 Bombelli–Henson–Sorkin, `[import]`) — so the hyperuniform branch does not come
 free, it costs Lorentz invariance. To the extent the framework's *own* Lorentzian
 selection (`RPSelectsLorentzian`, §8) governs the count statistics, it points to
-Poisson, and everpresent-`Λ` survives; turning `count-Lorentz-invariance ⇒ Poisson
-⇒ everpresent` into a theorem is the concrete form of the open **C**.
+Poisson, and everpresent-`Λ` survives. The *finite core* of that implication is now
+a theorem: a **frame-blind** (permutation-invariant) count covariance is exactly
+`a·I + b·J`, and its **only** suppressible mode is the uniform grand total — so any
+hyperuniform suppression of a *regional* (non-uniform) `Λ`-mode requires a preferred
+covector and breaks frame-blindness (`LambdaFrameConstraint.perm_inv_iff_aI_bJ`,
+`suppressed_dir_is_uniform`, **M**, with an explicit non-uniform-suppressing PSD
+control). Frame-blindness therefore leaves the regional `Λ`-fluctuations extensive
+— the everpresent branch. Lifting the *finite* frame-blindness to *continuum*
+Lorentz invariance is the remaining `[import]` step, and which count nature the
+framework ultimately selects stays the open **C**.
 
 **What this is, and is not.** The exponent `Λ_rms ∝ N^{−1/2}` (deviation measuring
 hyperuniformity) is the framework's only admissible numeric claim — an exponent,
@@ -1939,6 +1956,8 @@ anchor sweep.)*
 | 10a | `multiplier_field_equation`, `vacuum_shift_is_gauge` | `NullEdge/LambdaUnimodular.lean` | M, self-guarded (in-file pin) | **finite unimodular trade**: count-constrained stationarity ⇒ `+Λ·1` multiplier; the vacuum mean is gauge on the constraint surface (fluctuation physical). Converts `Λ`–`V` conjugacy toward finite M |
 | 10a | `bernoulli_bound`, `lambda_rms_upper_bound` | `NullEdge/LambdaSusceptibility.lean` | M, self-guarded (in-file pin) | **`Λ` as a susceptibility**: `Var(N)=Σpᵢ(1−pᵢ)≤⟨N⟩` (Bernoulli), so `Λ_rms ≤ 1/√⟨N⟩` — everpresent as an upper bound for the ideal edge gas, extremal in the Poisson limit |
 | 10a | `everpresent_iff_extensive` | `NullEdge/LambdaCountDichotomy.lean` | M, self-guarded (in-file pin) | **the pre-registered fork**: on finite witnesses, free count = extensive `Var~N` (everpresent survives) vs sum-constrained = sub-extensive (hyperuniform, `Λ` suppressed); `everpresent_iff_extensive` is the kill criterion. Which branch nature picks stays **C** |
+| 10a | `perm_inv_iff_aI_bJ`, `suppressed_dir_is_uniform`, `nonuniform_suppression_breaks_symmetry` | `NullEdge/LambdaFrameConstraint.lean` | M, self-guarded (in-file pin) | **frame-blindness forces the everpresent branch**: a permutation-invariant (frame-blind) count covariance is exactly `a·I+b·J`, and its *only* suppressible mode is the uniform grand total; suppressing a regional (non-uniform) `Λ`-mode requires a preferred covector, breaking frame-blindness (explicit PSD control). The finite core of "hyperuniform costs a preferred frame"; continuum-Lorentz lift stays `[import]`, selection stays **C** |
+| 10a | `uniform_shift_sequestered`, `observed_is_count`, `three_lambda_verdict` | `NullEdge/LambdaThreeSplit.lean` | M, self-guarded (in-file pin) | **the three-`Λ` split**: bare `Λ_bare` (adjustable) + induced `Λ_ind` (matter block) + observed `Λ_obs`; the traceless/unimodular projection kills every uniform shift, so the sequestered operator is independent of `Λ_bare` and only the count-set `Λ_obs` survives. Sharpens `VacuumSequestering`. Honest: the "observed=count" leg is definitional; the content is the projection annihilating bare+uniform shifts |
 | 10a | `support_uncertainty`, `conjugacy_verdict` | `NullEdge/LambdaConjugacy.lean` | M, self-guarded (in-file pin) | **`Λ`–count conjugacy, native**: the count and `Λ` registers are a finite Fourier pair with a Donoho–Stark support-uncertainty trade (`\|supp f\|·\|supp Ff\|≥n`); sharp count ⇔ maximally unsharp `Λ` |
 | 10a | `count_variances`, `lambda_covariance`, `correlation_length_reading`, `distinguisher_verdict` | `NullEdge/LambdaTwoRegionCovariance.lean` | M, self-guarded (in-file pin) | **the `Λ` two-region fingerprint**: `Cov(Λ₁,Λ₂)=b/(⟨N₁⟩⟨N₂⟩)` set by the *shared* causal-overlap count `b`; correlation → 1 nested, → 0 decoupled — long-range/horizon-scale, distinct from a local quintessence fluid (observational distinguisher) |
 | 2a | `eta_eq_indefinite`, `null_iff`, `convention_note` | `NullEdge/MinkowskiConvention.lean` | M, self-guarded (in-file pin) | **Minkowski convention grounded (port)**: our `η=diag(1,−1,−1,−1)` = the reindexed Mathlib `LieAlgebra.Orthogonal.indefiniteDiagonal` = PhysLean's `minkowskiMatrix` (`(+,−,−,−)`); `mink u u=0 ⇔` null cone. Clean-room port, provenance recorded |
