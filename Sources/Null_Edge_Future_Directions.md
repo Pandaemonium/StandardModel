@@ -718,9 +718,12 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   pathologically slow under our pin). HELD as a draft-handoff (preserved at
   `harvest/B1/`); follow-up = re-derive with cheap rational proofs (the [job:
   suiteD2] and rung5tie prompts encode the cheap-proof discipline).**
-- **`ComptonBound` (Suite D rung D5) [WIN on review; IN-PROJECT BUILD PENDING — slow]** — the mass gap is a length
+- **`ComptonBound` (Suite D rung D5) [HELD — delivered, does NOT build in-project]** — the mass gap is a length
   floor: for every `J`-normalized state `(1/2)/m <= width`, saturated by `(1/sqrt2, 1/sqrt2)`
   (fixture `width 3 = 1/6`), and `width = (1/2) dCausal m 0 1` — the localization floor IS half
   the Connes distance. Kills stated + avoided (`no_sub_compton`, floor `>0`, mass-dependent).
   Honest: exact up to the structural constant `c=1/2` (each point at half the inter-point
-  distance from the midpoint). Built on the SuiteAOp2Geom 2-point carrier.
+  distance from the midpoint). **NOT LANDED: does not build in-project within budget (SIGTERM
+  at 595s solo — the `Real.sqrt` width/optimizer proofs `width 3 = 1/6` are pathologically slow
+  under our pin). HELD as a draft-handoff (preserved at `harvest/D5/`); follow-up = cheap
+  rational re-derivation avoiding `Real.sqrt` (e.g. work with `widthSq` throughout).**
