@@ -1795,6 +1795,26 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   1c184e23 `SuiteCDMasterCapstone`,
   7f679d78 `FiniteDynamicsNoetherThermoCapstone`.
 
+### 2026-07-09 12:54 PDT - Codex - followed up Pro ten-direction roadmap - Builder
+- TRIAGE: read Pro's ten research directions and inserted an operational roadmap into
+  `Sources/Null_Edge_Future_Directions.md`: path-sum/phase theory, finite Hamiltonian generator,
+  soldering gravity, structured closure, generation structure, spinor/incidence geometry,
+  rigidity, four-channel RG continuum dictionary, retained which-direction information, and
+  second-quantized/many-body finite theory. Each direction now has status, current supports, and
+  a kill test.
+- HARVESTED [M]: `CarrierDynamicsRGInformationCapstone` (1c07ed70) landed in-tree and imported
+  in `PhysicsSMDraft.lean`. It bundles finite carrier dynamics D1-D5 with mass-phase/RG,
+  information/resource, thermodynamics, and modular-selection packets. Check passed:
+  `lake build PhysicsSM.Draft.NullEdge.CarrierDynamicsRGInformationCapstone`.
+- REFILL [Pro top three, ambitious]: prepared
+  `AgentTasks/aristotle-submit/codex-pro-followup-1310-20260709-project` and launched three
+  `codex-` jobs:
+  a788df9f `FourChannelPathActionCapstone` (path-sum/action scaffold),
+  047eabf8 `FiniteHamiltonianGeneratorCapstone` (finite phase-generator boundary),
+  5ca9cf09 `SolderingGravityTransformCapstone` (soldering transformation/finite gravity packet).
+  First path-action upload hit a transient SSL error and was retried after confirming no duplicate
+  appeared in `aristotle list`.
+
 ### 2026-07-09 ~afternoon - Claude - LANDED DiracOperatorMassShellDet (4-spinor det face of mass) - DraftLead
 - HARVESTED claude-dirac-operator-massshell-det (9e8296eb, COMPLETE). det(pslash - m.1) = (m^2-E^2+kz^2)^2
   = (m^2-p^2)^2: vanishes EXACTLY on the mass shell (det=0 <-> E^2-kz^2=m^2, D singular), positive square
@@ -2006,3 +2026,22 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   item 3 (ground-mass-det-family-law, ae1159c3, IN FLIGHT). Not forcing filler against the saturated
   finite layer. These rankings are recorded for the P-A-follow-on / second-paper roadmap, per both
   reviewers' "don't delay P-A" note. Convergence also = the external-analysis-saturation Fable flagged.
+
+### 2026-07-09 ~late-afternoon - Claude - LANDED GroundMassDetFamilyLaw (Fable item 3, the determinant-side family law) - DraftLead
+- HARVESTED claude-ground-mass-det-family-law (ae1159c3, COMPLETE; the 3%-at-5min bar was nonlinear,
+  finished ~10min). Fable Tier-1 item 3, the LOAD-BEARING central-tie fix. On P=!![lam,kap;kap,lam]:
+  ground mass mu-=lam-kap = free mass + defect(-kap EXACTLY, defect_exact); det=mu-*mu+=mu-(2lam-mu-)
+  (groundmass_det_family_law); spectrum an exact function of (tr,det) (spectral_answers_to_invariants),
+  whereas the trace-side budget is NOT a function of det alone (BudgetSignMismatch). Converts the central
+  §3<->§4 tie from a witness-level COINCIDENCE (the killed budget=c*detP) into a LAW.
+- Semantic review: aligned; does NOT re-derive MassPhaseDiagram's spectrum/det as novel (proves char_poly
+  for the specific 2x2 block, references both modules in docstring + anchor row); honest framing (positive
+  completion of the kill-test arc). In-project lake build GREEN (8026 jobs). Footprint
+  [propext,Classical.choice,Quot.sound] via 13 build-enforced #guard_msgs pins. 0 term-position sorry.
+- LANDED per the pre-registered landing note: module + edge + §4 anchor row RIGHT AFTER BudgetSignMismatch
+  (positive completion of the arc, cross-ref BudgetSignMismatch + MassPhaseDiagram) + this ledger, one
+  commit. The preparatory scouting (which caught the KraftCompressionMass redundancy earlier) placed it
+  correctly and framed it honestly. Fleet: 0 claude jobs.
+- STRATEGIC: this was the ONE clean buildable target from BOTH frontier models' rankings (Fable item 3);
+  the rest (path-sum/continuum, generations, gravity - Pro/Fable convergent) are the hard dynamics
+  frontier = second-paper, not rule-v3. Finite static layer saturated (144 NullEdge modules now).
