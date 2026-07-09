@@ -1549,3 +1549,12 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   totalBudget=c*det P is witness-fitted not a family law. audit->theorem arc for s4. build 17s. s4 anchor+prose.
 - Also landed DiracGammaPhysLean earlier (PhysLean port #8). Lit verified CC (Gilkey) + CC-problem (Burgess)
   [import]s. Abstract coherence pass (four-channel=chosen). LANE: even-mass-gaps + pauli-momentum RUNNING (2).
+
+### 2026-07-09 ~late-afternoon - Claude - EvenMassGaps lands: AUDIT->THEOREM ARC COMPLETE - DraftLead
+- LANDED [M]: `EvenMassGaps` (68d97a2a). Kernel-checks the s8 audit kill-test: chiral zero mode
+  preserved by ODD perturbation, GAPPED by EVEN mass (det Hmass=m^4!=0). Confirms protection is
+  chiral-CONDITIONAL, not 'immune to every potential'. build 18s. s8 anchor + opening citation.
+- AUDIT->THEOREM ARC COMPLETE: s3 RankCeiling (rank-2 ceiling), s4 BudgetSignMismatch (det-P witness-
+  fit), s8 EvenMassGaps (conditional protection). All three red-teams' strongest kill-tests are now
+  kernel-checked theorems - the audits' falsifiers folded into the manuscript as M boundaries.
+- LANE: pauli-momentum-physlean RUNNING (1).
