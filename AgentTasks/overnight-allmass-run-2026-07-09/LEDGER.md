@@ -1049,6 +1049,36 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - Lambda manuscript §10a landed earlier this cycle (L1-L5). Refill jobs (masslessedge-closer,
   minkowski-port, kraft, lambda-covariance) still RUNNING.
 
+### 2026-07-09 ~08:00 - Codex - harvest check + proof-wave refill - Builder
+- HARVEST CHECK: current newly-IDLE Codex projects in the visible queue
+  (`65d8f051`, `27c385c3`, `1a4d58e1`, `9ceb0ade`, `8ed32a4d`,
+  `6ba42d7e`) were already downloaded, ported, scanned, built, and logged in
+  the preceding harvest entries. No additional finished Codex artifact was
+  available in this pass.
+- TWO-HOUR STALL RULE: canceled stale Goal II KM flagship task
+  `8420d79a-1b04-4e59-b876-c868c0cca229` under project
+  `0c83ed84-4ce3-4e20-8f23-9882dbae5036`. The useful in-progress snapshot had
+  already been harvested as `PhysicsSM/Draft/NullEdge/KMFlagship.lean`; do not
+  count the old build loop as live proof capacity.
+- AUDIT DEFERRAL: canceled early audit task
+  `d5931fc1-a126-47b0-aea5-97e696032a76` under project
+  `3888a5c9-b651-4b08-a2f3-7d29410a59a9` because the current instruction is to
+  defer audit and focus on ambitious proof work.
+- SUBMITTED fresh proof wave from
+  `AgentTasks/aristotle-submit/codex-proof-wave-0800-20260709-project`
+  (`-NoRemoteSpherePacking`, because these targets do not need SpherePacking and
+  the current Lake file has no active block to patch):
+  - `535f2b9d-1e4c-40c5-af73-ed57c316e113` ->
+    `GravityUnificationCapstone.lean`: finite Goal IV capstone over WEP
+    trace/action, sourced field equation, Jacobson-Clausius, spectral/EH,
+    teleparallel E-slot, holographic/resource guardrails, and mostly-minus
+    convention provenance.
+  - `998e717e-8ec3-4f6d-934e-1da0e4807120` ->
+    `C3IndexAnomalyCapstone.lean`: finite bridge between Goal II KM
+    incidence/CP phase count and the `F4Winding` index/protected-low-mode
+    theorem, with explicit one-phase/nonzero-Jarlskog and zero-control
+    witnesses.
+
 ### 2026-07-09 ~09:10 - Claude - harvest: FIRST PORT lands (Minkowski) + Lambda covariance - Builder/DraftLead
 - PORT LANDED [M]: `MinkowskiConvention` - clean-room port grounding our `eta = diag(1,-1,-1,-1)`
   in Mathlib `LieAlgebra.Orthogonal.indefiniteDiagonal` = PhysLean `minkowskiMatrix` (Physlib/.../
@@ -1061,3 +1091,82 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   correlation ->1 nested / ->0 decoupled (horizon-scale distinguisher vs quintessence). §10a anchor row.
 - STILL RUNNING (4): masslessedge-closer, kraft-compression (PORT), leanquantum-dpi (PORT),
   unified-action-variation. First of the 3 in-flight ports now landed; 2 ports + closer + capstone pending.
+
+### 2026-07-09 ~08:10 - Codex - harvested lean-quantum DPI mass port - Builder/Registrar
+- HARVESTED + PORTED Claude proof `claude-leanquantum-dpi-mass`
+  (`ef75bd7e-08cc-49d8-a40f-e544faf74d2d`) ->
+  `PhysicsSM/Draft/NullEdge/LeanQuantumDPIMass.lean`: finite rational
+  `2x2` density/register model with `rho p x`, pinching channel `Phi t`,
+  linear entropy `Slin = 1 - tr(rho^2)`, state preservation under valid
+  pinching, DPI-style monotonicity
+  `Slin rho <= Slin (Phi t rho)`, explicit entropy-gain formula
+  `2*t*(2-t)*x^2`, signed coherent-closure exception via the rational `3-4-5`
+  rotation, and nondegenerate mass-creation witness
+  `Slin (rho (1/2) (1/2)) = 0` but `Slin (Phi 1 ...) = 1/2`.
+- PROVENANCE: lean-quantum package
+  (`https://github.com/Hayata-Yamasaki-Group/lean-quantum`) used as a
+  clean-room reference for density operators, channels, entropy, and DPI; no
+  new dependency imported. The landed theorem is the linear-entropy finite
+  avatar, not the full von Neumann relative-entropy DPI.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.LeanQuantumDPIMass` PASS
+  after removing the unneeded `open scoped Classical` warning. Placeholder scan
+  on the landed file was clean; `git diff --check` on touched files passed.
+
+### 2026-07-09 ~08:15 - Codex - harvested photon/Higgs/CPT capstone - Builder
+- HARVESTED + PORTED Codex proof `codex-photon-higgs-cpt-capstone-0720`
+  (`b4ebecee-58de-4b36-a5b8-1199dfed205b`) ->
+  `PhysicsSM/Draft/NullEdge/PhotonHiggsCPTCapstone.lean`: finite
+  mass-from-null-edges capstone bundling the spin-1 photon one-edge witness,
+  massive-vector two-edge/disagreement witness, `edges = pol - 1`, Higgs
+  longitudinal count, helicity/chirality verdict, Weyl zigzag at `m = 1`,
+  rational zitterbewegung `(p,E,m)=(4,5,3)` witness, and CPT antiparticle
+  mirror verdict.
+- SEMANTIC REVIEW NOTE: Aristotle correctly restated imported theorem payloads
+  as propositions rather than trying to conjoin theorem proof terms. No
+  statement weakening was observed; scope remains finite momentum/DOF counting
+  and finite matrix identities, not dynamical QFT.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.PhotonHiggsCPTCapstone`
+  PASS. Warnings were inherited `open scoped Classical` style warnings from
+  imported modules, not this new capstone. Placeholder scan and
+  `git diff --check` on the touched Lean files passed.
+
+### 2026-07-09 ~08:20 - Codex - neutrino Dirac/Majorana harvest verified - Builder/Registrar
+- HARVEST CHECK: `claude-neutrino-dirac-majorana`
+  (`1e2764af-433a-4e76-9f04-936a8d9374ed`) downloaded successfully. The target
+  `RequestProject/Main.lean` is identical to the already-present local
+  `PhysicsSM/Draft/NullEdge/NeutrinoDiracMajorana.lean`, so no overwrite was
+  made.
+- PAYLOAD VERIFIED: finite complex `4x4` Dirac/Majorana distinction as
+  null-edge structure: CPT involution `Theta`, Dirac two-state witness,
+  Majorana self-conjugate witness, lepton-number conservation/violation split,
+  and `neutrino_verdict`.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.NeutrinoDiracMajorana`
+  PASS. Only an existing local `open scoped Classical` style warning appeared.
+  Placeholder scan and `git diff --check` on the local file passed.
+
+### 2026-07-09 ~late-morning - Claude - over-claim audit + lit-sharpen + 2 lands (neutrino, DPI port) - DraftLead/Builder
+- AUDIT (10a Lambda section, self, over-claim modes): honest overall. Fixes:
+  (1) citation `everpresentLambda_rms_eq_inv_sqrt_volume` was not anchor-checkable
+  in its cited module -> now cites in-module `LambdaEdgeCount.lambda_rms_eq_inv_sqrt_count`
+  + names the P9 twin's module. (2) order0 invariance made honest: `tr(1)` is trivial-
+  by-placement (contains no D); depth is the order-0 PLACEMENT, not the arithmetic.
+- 2b BOUNDARY: scalar Higgs self-mass is mechanism-exempt (spin-0, no zigzag),
+  anchored to landed SuiteDCriticalSymmetry naturalness dichotomy; honest scope set.
+- LIT (neo4j chunks): Poisson sprinkling = UNIQUE Lorentz-invariant discretization
+  (Sorkin 1010.5514; Surya 1903.11544). 10a fork sharpened: hyperuniform branch
+  COSTS Lorentz invariance; cross-linked landed RPSelectsLorentzian (s8). +2 Refs rows.
+- LANDED [M]: `NeutrinoDiracMajorana` (harvest 1e2764af) - Priority C particle-table
+  extension. Dirac vs Majorana structural distinction vs landed CPT Theta:
+  Dirac->independent partner+[M_D,Q]=0; Majorana->self-conjugate sector+[M_M,Q]!=0
+  (entry -2). 4 guard-pins, 0 sorry, build 14s. Folded into 2b (which nature the
+  physical neutrino has stays OPEN; finite structure of both is checked).
+- PORT LANDED [M]: `LeanQuantumDPIMass` (harvest ef75bd7e). Clean-room port of
+  lean-quantum DPI (github Hayata-Yamasaki-Group/lean-quantum; reference-only,
+  version-pinned OFF v4.28.0 -> Mathlib-only). Slin=1-tr(rho^2)=2det=mass^2; channel
+  maps density->density (channel_is_state); Slin gain=2t(2-t)x^2>=0. HONEST OVERLAP:
+  reproduces landed EntropyMonotoneReal det-monotone (exactly 2x det-gain) in DPI
+  language -> folded 'NOT independent evidence' into the SAME 3a slot; adds channel/
+  PSD structure + provenance. PORT LOG: package=lean-quantum / decl=von Neumann DPI
+  (we do linear-entropy avatar) / version gap = pinned, not imported.
+- PORT SCORECARD: 2 landed (Minkowski/PhysLean, lean-quantum DPI); in flight: Kraft,
+  testing-lower-bounds (tv). Lane RUNNING: tv, unified-action, kraft, masslessedge.
