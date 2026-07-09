@@ -200,6 +200,13 @@ and NOT a continuum QFT (RP/OS/RG are finite; only the 1+1D checkerboard→Dirac
 The channel↔physics identifications stay `[C]`; absolute scales stay outside. The gravity side is
 the thinner half and these four jobs are its parity push.
 
+**Cosmological constant.** The one big-ticket cosmology item where this framework has a genuine,
+already partly-kernel-checked handle is `Lambda`, via the causal-set "everpresent `Lambda`"
+mechanism (`Lambda ~ 1/sqrt(V)`, the observed `~10^-122`; the scaling arithmetic is M in
+`NullEdgeP9EverpresentLambdaScaling`), plus `Lambda` as the order-0 term of the spectral action
+(the `spectral-action-avatar` job). Full analysis, grades, honest boundary, and the proposed
+`lambda-edge-count` rung: `Sources/Null_Edge_Cosmological_Constant_2026-07-09.md`.
+
 ### P-H. "The continuum dictionary through quantum walks"
 Route: finite null carrier → quantum walk/checkerboard → Dirac/Weyl continuum →
 gauge-coupled field theory. **Not** QCD-first. First prove: *our finite carrier
@@ -740,6 +747,12 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   to `N=3`, to `n=2`, and to three positive-sector completions. Honest scope:
   this supplies the explicit rank-fixing datum; it does not physically derive
   the number of generations.
+- **`KMFlagship` [WIN / M]** — the Goal II flagship composition now lands:
+  `FiniteKM.physicalPhases N` equals the complete-graph incidence corank for
+  `1 <= N`, while the low-N summary bundles the constructive N=2 rephasing
+  no-go and the exact N=3 nonzero Jarlskog witness. Honest scope: linearized
+  phase-count/corank theorem plus low-N witnesses; no global unitary normal form
+  for arbitrary `N`.
 - **`IndexProtectionBridge` [WIN / M]** — composes the finite winding anomaly
   with low-mode protection: the relative signed finite index equals `w` and
   at least `w` kernel modes are protected, with a `w=1` fixture. Honest scope:
