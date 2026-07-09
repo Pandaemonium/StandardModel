@@ -219,11 +219,13 @@ import PhysicsSM.Draft.NullEdge.LambdaThreeSplit
 import PhysicsSM.Draft.NullEdge.HiggsDofConservation
 import PhysicsSM.Draft.NullEdge.LambdaExponentFork
 import PhysicsSM.Draft.NullEdge.LambdaFrameConstraint
+import PhysicsSM.Draft.NullEdge.LambdaEverpresentCapstone
 import PhysicsSM.Draft.NullEdge.VacuumSequestering
 import PhysicsSM.Draft.NullEdge.HiggsLongitudinalMode
 import PhysicsSM.Draft.NullEdge.MasslessEdgeCount
 import PhysicsSM.Draft.NullEdge.MinkowskiConvention
 import PhysicsSM.Draft.NullEdge.DiracGammaPhysLean
+import PhysicsSM.Draft.NullEdge.ChiralProjectorsDirac
 import PhysicsSM.Draft.NullEdge.PauliMomentumPhysLean
 import PhysicsSM.Draft.NullEdge.RationalBoostInvariance
 import PhysicsSM.Draft.NullEdge.LongitudinalGoldstone
@@ -232,6 +234,7 @@ import PhysicsSM.Draft.NullEdge.NeutrinoSeesaw
 import PhysicsSM.Draft.NullEdge.PhotonSingleEdge
 import PhysicsSM.Draft.NullEdge.PhotonHiggsCPTCapstone
 import PhysicsSM.Draft.NullEdge.MasslessParticleTableCapstone
+import PhysicsSM.Draft.NullEdge.ParticleInformationCapstone
 import PhysicsSM.Draft.NullEdge.LambdaEdgeCount
 import PhysicsSM.Draft.NullEdge.HolographicEdgeBound
 import PhysicsSM.Draft.NullEdge.HolographicResourceCapstone
