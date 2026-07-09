@@ -1648,3 +1648,20 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   both finite-avatar/physics-[import], NOT independent - exactly the §7 honesty note's point.
 - §7 prose (reconciliation now IN-TREE, not deferred) + anchor row + edge (Codex had added it) +
   in-project build verified before citing. All cited names resolve. PRIORITY B: complete.
+
+### 2026-07-09 ~afternoon - Claude - LANDED SigmaMapNullEdges (closes "which P" loop) - DraftLead
+- HARVESTED claude-sigmamap-null-edges (22736275, COMPLETE). Verified semantic alignment: the PhysLean
+  Pauli sigma-map P(p)=p.sigma (real (t,z) avatar, P=diag(E+kz,E-kz)) is EXACTLY a nonneg sum of two
+  rank-1 null-edge dyads P=(E+kz).edge e0+(E-kz).edge e1; det P = product of edge weights = E^2-kz^2 =
+  m^2 (null-edge disagreement); collapses to ONE edge (det=0) at masslessness, TWO when massive.
+- CLOSES the "which P" loop the adversarial audit raised: the PhysLean-grounded P (PauliMomentumPhysLean)
+  and the manuscript's null-edge Gram M M^H (MasslessEdgeCount) are the SAME little-group P, decomposable
+  into null edges - not two constructions. det-P-is-mass frame-independence rests on P being this object.
+- Ported to PhysicsSM/Draft/NullEdge/SigmaMapNullEdges.lean (namespace SigmaMapNullEdges). In-project
+  `lake build` GREEN (8026 jobs, 199s). Footprint [propext, Classical.choice, Quot.sound] confirmed by
+  the build-enforced 7 #guard_msgs pins. Term-position sorry scan = 0. Prose hygiene clean (spaced/no
+  raw escape-hatch tokens). Provenance: PhysLean Pauli/spaceTime.gamma convention, clean-room (no import).
+- LANDED: module + PhysicsSMDraft edge + §11 anchor row (5 grep-verified names, inserted between
+  PauliMomentumPhysLean and MasslessEdgeCount as the bridge) + this ledger, one commit.
+- Fleet: mass-shell-projectors (a347e33b) still RUNNING - the Dirac energy-projector complement; will
+  complete the projector pair (chiral + energy). chiral-projectors-dirac already landed.
