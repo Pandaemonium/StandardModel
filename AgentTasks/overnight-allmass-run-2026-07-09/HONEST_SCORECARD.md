@@ -105,13 +105,30 @@ to `audits/`) completed the coverage and forced more corrections, all folded:
   (critical = tuned degeneracy, collinear = on-shell tautology). Mass-spacing "ratio=1" = the
   centrosymmetry of the `{λ−κ,λ,λ+κ}` ansatz restated (a prediction only if the form is *derived*).
 
-**Net after all THREE audits (§3, §7+§10a, §4+§8 — full coverage):** every bold claim block is now
-honestly bounded. The *physics* is `[import]` (spinor-helicity, Chamseddine–Connes, Jacobson,
-Sorkin/BHS, McKean–Singer/index, Goldstone lineages); the `[orig]` contribution is the **finite
-kernel-checked bookkeeping avatar + T/M/C grading discipline**. In several places (§7 EH, §10a
-Lorentz, §4 budget-as-canonical, §8 "topological") the finite proposition is a *weaker or chosen*
-statement than the import it stood beside — now each labeled as such. No headline survives the audit
-as `[orig]` physics; the discipline and the finite verification are the contribution.
+Two further audits went **below the prose** — checking the Lean itself:
+- **Semantic-alignment audit** (`semantic-alignment-audit`, `audits/`): do the *theorem statements*
+  encode their readings? Three reading-outruns-statement fixes folded (`fork_iff` is arithmetic not
+  physics; `rank3` refutes an identity at points, not a universal; conditional-protection is one
+  instance). A flagged `EvenMassGaps.odd_preserves` vacuity was **verified clean in source**.
+- **Definitions-honesty audit** (`definitions-honesty-audit`, `audits/`): do the *model definitions*
+  beg the question? Caught **one genuine rigged definition** (the smoking gun): the §8 `EvenMassGaps`
+  "odd preserves / even gaps" is a definitional artifact — the 2-D toy has *balanced* grading (index 0,
+  no protection), a *generic* odd perturbation (the physical Dirac mass) gaps `v`, and the chosen
+  `Podd` is cherry-picked. **Corrected**: `EvenMassGaps` reading downgraded to "a counterexample to
+  'immune to every potential', and only that"; the genuine SSH/BdG protection (imbalanced grading) is
+  `[import]`, with a *correct* finite demonstration (`ImbalancedChiralProtection`) landing to replace
+  the artifact. The other four definitions (`lamExp`, `budget`/`detP`, `massPair`, `edge`/`Qform`)
+  were rated faithful (Lean-verified in the audit).
+
+**Net after all FIVE audits (§3, §7+§10a, §4+§8 prose; + statement- and definition-level):** every bold
+claim block is honestly bounded, at the claim, statement, *and* definition levels. The *physics* is
+`[import]` (spinor-helicity, Chamseddine–Connes, Jacobson, Sorkin/BHS, McKean–Singer/index, Goldstone
+lineages); the `[orig]` contribution is the **finite kernel-checked bookkeeping avatar + T/M/C grading
+discipline**. In several places (§7 EH, §10a Lorentz, §4 budget-as-canonical, §8 "topological", §8
+`EvenMassGaps`) the finite proposition is a *weaker, chosen, or rigged* statement than the import it
+stood beside — now each labeled as such, and the one rig replaced with a correct construction. No
+headline survives the audit as `[orig]` physics; the discipline and the finite verification are the
+contribution, and the audit trail (five independent passes, all acted on) is itself part of it.
 
 ### The one caveat a reader should carry (updated)
 The central `mass² = det P` is *standard kinematics* (spinor-helicity / Penrose zigzag / Kaluza–Klein–
