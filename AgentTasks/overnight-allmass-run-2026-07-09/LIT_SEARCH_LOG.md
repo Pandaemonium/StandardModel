@@ -125,3 +125,14 @@ cites it.
 - ACTION: added 2307.13743 to References (VERIFIED); cited it in s10a 'What this is, and is not'
   posture paragraph as the [import] observational test. Directly grounds the Priority-A observational-
   posture concern (the fork now points to the real cosmological-test paper, honestly [import]).
+
+## 2026-07-09 ~late-afternoon - Claude - verify ADGS everpresent-Lambda anchor (s10a [import])
+- Tool: neo4j_paper_search.py --chunks. Query: everpresent Lambda 1/sqrt volume Ahmed Dodelson Greene
+  Sorkin causal set.
+- ADGS original (astro-ph/0209274) not a separate graph chunk, BUT its everpresent-Lambda mechanism
+  (fluctuating Lambda ~ 1/sqrt(V) from causal-set discreteness) is CONTENT-CONFIRMED via the verified
+  citing/extending chain already in-graph: Aspects I (2304.03819), Aspects II (2307.13743), Sorkin
+  (0710.1675). ADGS ref note upgraded to CONTENT-CONFIRMED.
+- NET: s10a everpresent-Lambda [import] now grounded end-to-end - ADGS origin (via chain) + Aspects I/II
+  (mechanism+observational tests) + Sorkin (origin) + BHS (Lorentz) + Weinberg/Burgess (CC problem).
+  Every s10a imported citation is now verified or content-confirmed.
