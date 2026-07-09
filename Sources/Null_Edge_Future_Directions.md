@@ -193,12 +193,18 @@ The two additional unification rungs tie the routes to the matter side:
   sum to one budget, and that budget equals the SAME kinematic null-disagreement `det P`. One
   operator, one invariant, four channels, both forces.
 
-**Honest boundary (unchanged).** This is a finite structural unification: gravity and matter as
-channels of one finite Dirac square, kernel-checked at the finite level. It is NOT quantum
-gravity in the LQG/string sense (no dynamical quantized metric, no graviton, no UV completion)
-and NOT a continuum QFT (RP/OS/RG are finite; only the 1+1D checkerboard→Dirac limit is imported).
-The channel↔physics identifications stay `[C]`; absolute scales stay outside. The gravity side is
-the thinner half and these four jobs are its parity push.
+**Honest boundary (sharpened by the §7 audit).** This is a finite structural unification: gravity
+and matter as channels of one finite Dirac square, kernel-checked at the finite level. It is NOT
+quantum gravity in the LQG/string sense (no dynamical quantized metric, no graviton, no UV
+completion) and NOT a continuum QFT (RP/OS/RG are finite; only the 1+1D checkerboard→Dirac limit is
+imported). Two further limits the manuscript §7 correction makes explicit, and which this program
+inherits: (i) the finite `tr(D²)` = Einstein–Hilbert identification is *definitional bookkeeping*,
+**not** the Chamseddine–Connes heat-kernel theorem — a finite module has no manifold or short-time
+limit, so the content that makes order-2 = curvature (`a₂ ∝ ∫R√g`, with the sign/`G` normalization)
+is `[import]`, not reproduced here; (ii) the variational, Jacobson equation-of-state, teleparallel,
+and WEP routes are *known-equivalent* presentations of one field equation (TEGR ≡ GR is a theorem),
+not independent corroborations. The channel↔physics identifications stay `[C]`; absolute scales stay
+outside. The gravity side is the thinner half and these four jobs are its parity push.
 
 **Cosmological constant.** The one big-ticket cosmology item where this framework has a genuine,
 already partly-kernel-checked handle is `Lambda`, via the causal-set "everpresent `Lambda`"
