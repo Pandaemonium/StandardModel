@@ -1731,3 +1731,21 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - FLEET: 2 genuine claude jobs running (chiral-breaking a454d0c6 = {g5,D}=-2m.g5; dirac-det 9e8296eb =
   det(pslash-m)=(m^2-p^2)^2) + 7 Codex. Both are Dirac-operator "mass = anticommutator/determinant"
   capstones of the projector work. Genuine, not padding.
+
+### 2026-07-09 ~afternoon - Claude - PORT mining pass (PhysLean) + false-shape flag + saturation note - DraftLead
+- Standing PORT task, genuinely exercised: lean-explore search_summary over Physlib for Dirac/spinor
+  mass/bilinear constructions. Findings:
+  * spaceTime.g0..g3/g/gSet -> ALREADY grounded (DiracGammaPhysLean).
+  * Fermion.dualLeftDualRightToMatrix_rho_symm_selfAdjoint (self-adjoint matrix from Weyl spinor tensor
+    product) -> the little-group P = spinor(x)spinor^dag object ALREADY grounded (PauliMomentumPhysLean
+    P_selfAdjoint + SigmaMapNullEdges). Corroborates; does not extend.
+- FALSE-SHAPE FLAG (honesty, valuable): PhysLean TwoHiggsDoublet.massTerm_eq_gramVector expresses the
+  2HDM mass term as P.xi . H.gramVector -- but that `gramVector` is the HIGGS SCALAR BILINEARS
+  (|Phi1|^2,|Phi2|^2,Re/Im<Phi1,Phi2>; Maniatis-Nachtmann/Ivanov bilinear formalism), a DIFFERENT object
+  from the manuscript's null-edge SPINOR Gram M M^dag. The shared word "Gram" is a coincidence. Citing
+  PhysLean's gramVector as support for the spinor-Gram mass thesis would be a FALSE-SHAPE over-claim.
+  Do NOT bridge these. (Manuscript already bounds the scalar-Higgs mass as a boundary in §2b - consistent.)
+- SATURATION (honest): the Dirac/spinor grounding is near-complete (eta, gamma, chiral+energy projectors,
+  sigma-map, det-P, boost-invariance all landed or queued; chiral-breaking + dirac-det in flight). No
+  clean high-value non-redundant PhysLean port target surfaced this pass. Declining to force a marginal
+  port (would be filler). Will re-mine if the harvest opens a genuinely new direction.
