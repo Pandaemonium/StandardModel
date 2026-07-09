@@ -1671,6 +1671,60 @@ not a fine-tuned coincidence — a falsifiable *shape*, not a number.)
 
 ---
 
+## 10a. The cosmological constant: `Λ` is the conjugate of the count (**M** + **C**)
+
+The framework has one specific handle on `Λ`, and it is not the magnitude
+problem — it is the *coincidence* problem, through the causal-set **everpresent
+`Λ`** mechanism (Ahmed–Dodelson–Greene–Sorkin `[import]`), for which our
+discreteness is exactly the needed ingredient. The full analysis with grades and
+the observational posture is in `Sources/Null_Edge_Cosmological_Constant_2026-07-09.md`;
+the kernel-checked core is this.
+
+**`Λ` is the zeroth moment.** The mass channels are the second-moment data of the
+carrier (`tr(D²)`-type, §4); `Λ` is the **order-0** term `a₀·tr(1)` of the same
+finite spectral functional whose order-2 and order-4 terms are gravity and matter
+(`SpectralActionAvatar`, `LambdaMomentHierarchy`, **M**). And `tr(1)` is invariant
+under *every* deformation of `D` — no gauge move, channel coupling, or soldering
+decoration changes it (`order0_deformation_invariant`, **M**): there is **no
+channel pathway into `Λ`**. This is the finite reason the magnitude problem is
+hard, stated positively: matter physics cannot renormalize `Λ`; only the *count*
+can. A uniform vacuum shift `D#D → D#D + c·1` is absorbed into the unimodular
+multiplier and leaves the physical, count-fluctuation `Λ` unchanged
+(`VacuumSequestering`, **M**) — the finite sequestering statement.
+
+**The count fixes the scale, as a fluctuation.** Route the everpresent scaling
+through the framework's own primitive: the pierced-null-edge count `N` of a causal
+region is an extensive volume measure, and under the Poisson input `δN² = N` the
+conjugate `Λ = δN/N` has RMS `1/√N` (`LambdaEdgeCount`, **M**, building on the
+kernel-checked `everpresentLambda_rms_eq_inv_sqrt_volume`). For the present horizon
+(`N ~ 10²⁴⁴` Planck 4-volumes) this is `~10⁻¹²²`, tracking the ambient density at
+every epoch — the coincidence, dissolved. As a Suite-D susceptibility the Poisson
+input is *bounded*, not assumed: for independent edges `Var(N) = Σpᵢ(1−pᵢ) ≤ ⟨N⟩`,
+so `Λ_rms ≤ 1/√⟨N⟩` with equality in the sparse limit (`LambdaSusceptibility`,
+**M**). And the conjugacy is native: the count and `Λ` registers are a finite
+Fourier pair with a support-uncertainty trade (`LambdaConjugacy`, **M**).
+
+**The pre-registered fork (grade C, the real physics).** Whether the everpresent
+identification survives depends on the count statistics: **Poisson** (`Var(N) ~ N`,
+everpresent survives, fluctuating dark energy at `1/√V`) versus **hyperuniform**
+(`Var(N) ≺ N`, `Λ` suppressed below `1/√V`, the identification *dies*). The two
+branches are exhibited on finite witnesses, with the criterion
+`everpresent_iff_extensive` (`LambdaCountDichotomy`, **M**); which branch the
+framework's own Gauss/gauge constraints select — the sub-question *which count is
+conjugate to `Λ`* — is the decidable open question where this program can exceed
+the borrowed mechanism (grade **C**, a pre-registered kill).
+
+**What this is, and is not.** The exponent `Λ_rms ∝ N^{−1/2}` (deviation measuring
+hyperuniformity) is the framework's only admissible numeric claim — an exponent,
+not a scale. It **dissolves** the magnitude divergence structurally (order-0
+blindness), **explains** the coincidence conditionally (Poisson branch), and
+**derives neither the value nor the sign**. The predicted dark energy is
+*fluctuating* — a falsifiable posture friendly to a confirmed deviation from rigid
+`w=−1`, killed by a confirmed rigid one. `V` itself, the sign, and the stochastic
+dynamics stay outside (the event horizon).
+
+---
+
 ## 11. The Lean anchor table
 
 Every declaration cited in §§3–9, with file, grade, and guard-pin status.
@@ -1743,6 +1797,13 @@ anchor sweep.)*
 | 4/7 | `square_splits`, `answers_detP`, `unified_verdict` | `NullEdge/UnifiedMassBudget.lean` | M, self-guarded (in-file pin) | **one operator, both forces**: `4D#D = Q_A+Q_C+Q_T+E_sold` (matter ⊕ gravity graded blocks), shares sum to one budget, and `totalBudget = c·det P` (both `=3552`) — matter mass + gravity mass are graded pieces of one operator answering the same null-disagreement invariant |
 | 8 | `corner_ker_ge_index`, `corner_ker_ge_index_perturbed`, `witness_one_protected_mode` | `NullEdge/ChiralIndexProtection.lean` | M, self-guarded (in-file pin) | **chiral index ⇒ protected modes**: `dim ker A ≥ n₊−n₋` (rank–nullity), stable under any odd (mass) perturbation; witness index-1 carrier has ≥1 protected massless mode |
 | 10 | `seesaw_suppression`, `seesaw_zero_iff_no_overlap` | `NullEdge/SchurSeesaw.lean` | M, self-guarded (in-file pin) | **finite seesaw**: a protected mode leaking into a heavy hidden block `M` gets `\|m_eff\| ≤ ‖Bᴴv‖²/λ_min(M) → 0` (resolvent suppression, not tuning); mass=0 iff no overlap `Bᴴv=0` |
+| 10a | `edgecount_extensive`, `lambda_rms_eq_inv_sqrt_count` | `NullEdge/LambdaEdgeCount.lean` | M, self-guarded (in-file pin) | **everpresent `Λ` via the native count**: the pierced-null-edge count is an extensive volume measure; under Poisson `δN²=N`, `Λ=δN/N` has RMS `1/√N` (`~10⁻¹²²` for the present horizon). Honest scope: scaling given the Poisson input; conjugacy imported |
+| 10a | `moment_hierarchy`, `order0_deformation_invariant` | `NullEdge/LambdaMomentHierarchy.lean` | M, self-guarded (in-file pin) | **`Λ` is the channel-blind zeroth moment**: order-0 (`Λ`) / order-2 (gravity) / order-4 (matter) of one functional; `tr(1)` is invariant under every deformation of `D` — no channel pathway into `Λ` |
+| 10a | `shift_absorbed_by_multiplier`, `sequestering_verdict` | `NullEdge/VacuumSequestering.lean` | M, self-guarded (in-file pin) | **finite vacuum sequestering**: a uniform vacuum shift `D#D+c·1` is absorbed by the unimodular multiplier; the physical count-fluctuation `Λ` is operator-blind (unchanged by huge `c`). The finite magnitude statement |
+| 10a | `multiplier_field_equation`, `vacuum_shift_is_gauge` | `NullEdge/LambdaUnimodular.lean` | M, self-guarded (in-file pin) | **finite unimodular trade**: count-constrained stationarity ⇒ `+Λ·1` multiplier; the vacuum mean is gauge on the constraint surface (fluctuation physical). Converts `Λ`–`V` conjugacy toward finite M |
+| 10a | `bernoulli_bound`, `lambda_rms_upper_bound` | `NullEdge/LambdaSusceptibility.lean` | M, self-guarded (in-file pin) | **`Λ` as a susceptibility**: `Var(N)=Σpᵢ(1−pᵢ)≤⟨N⟩` (Bernoulli), so `Λ_rms ≤ 1/√⟨N⟩` — everpresent as an upper bound for the ideal edge gas, extremal in the Poisson limit |
+| 10a | `everpresent_iff_extensive` | `NullEdge/LambdaCountDichotomy.lean` | M, self-guarded (in-file pin) | **the pre-registered fork**: on finite witnesses, free count = extensive `Var~N` (everpresent survives) vs sum-constrained = sub-extensive (hyperuniform, `Λ` suppressed); `everpresent_iff_extensive` is the kill criterion. Which branch nature picks stays **C** |
+| 10a | `support_uncertainty`, `conjugacy_verdict` | `NullEdge/LambdaConjugacy.lean` | M, self-guarded (in-file pin) | **`Λ`–count conjugacy, native**: the count and `Λ` registers are a finite Fourier pair with a Donoho–Stark support-uncertainty trade (`\|supp f\|·\|supp Ff\|≥n`); sharp count ⇔ maximally unsharp `Λ` |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
