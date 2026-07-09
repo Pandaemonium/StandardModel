@@ -102,3 +102,21 @@ binding: every existential ships with a required nonzero rational witness the
 theorem instantiates on, and you pre-register the degenerate mode. A theorem
 whose existential the degenerate witness satisfies is NOT landed — no matter how
 clean the build.
+
+## DAY EXTENSION (2026-07-09 daytime — read RUN_PLAN sec 9, BINDING)
+
+The run continues through today (audit cutoff 21:00). Overnight Goals I-IV are
+effectively landed; the manuscript is retitled "All Mass Comes from Massless
+Edges" with the new §2b. Your day lanes (RUN_PLAN sec 9b):
+- **Day Goal A (priority): the Λ suite.** Harvest+land L1-L4 (unimodular,
+  edge-count, susceptibility, conjugacy, dichotomy jobs in flight), then write
+  the graded manuscript Λ section (L6) with the exponent prediction and the
+  pre-registered Poisson-vs-hyperuniform fork. The Λ doc sec 7b is your spec.
+- **Day Goal C: mass-from-massless across the full particle table.** Harvest
+  Higgs-longitudinal + CPT-zigzag + helicity; extend §2b beyond fermions with
+  the honest fermion/boson scope split.
+- **Manuscript lead throughout**: fold every landing at grade in the same
+  commit; clear your share of the ~12-job IDLE backlog; keep the ~7-job lane
+  full (rule v3 in every prompt — the slowdown is FIXED, builds are ~15-30s).
+- Support Codex's Day Goal B (Goal-IV reconciliation): GravitySourceMatter /
+  Goal4FieldEquation are yours — provide the declarations and intended readings.

@@ -122,6 +122,68 @@ Pro/Fable responses that seeded this run live in this directory:
   **Suite B rung B1** formalizes. The reframing itself is [spec]; mine it for
   the B1 object and the codeword/decoding vocabulary, not for claims.
 
+## 1c. Public Lean packages to lean on heavily (reference-first)
+
+PhysLean remains the physics reference package, but this run should also lean
+heavily on the public Lean ecosystem below. Default policy: **consult and
+clean-room port theorem shapes, API design, proof strategy, and missing
+hypotheses; do NOT add a build dependency during the overnight run unless the
+toolchain/version audit is explicit and the dependency is isolated.** Our pin is
+Lean `v4.28.0`; many useful packages are near-but-not-equal pins.
+
+- **Kraft / InformationTheory**:
+  `https://github.com/elazarg/kraft` (Lean `v4.26.0`, Apache-2.0). Use heavily
+  for Suite D's compression/resource layer: prefix-free and uniquely-decodable
+  codes, Kraft-McMillan inequalities, and the source-coding lower bound
+  `entropy <= expected code length`. This is the closest public Lean analogue
+  of "mass as compression cost."
+- **testing-lower-bounds**:
+  `https://github.com/RemyDegenne/testing-lower-bounds` (Lean `v4.13.0-rc3`,
+  Apache-2.0). Use heavily for classical information theory: f-divergence,
+  KL/relative entropy, Renyi, total variation, DeGroot information, estimation
+  risk, and data-processing proof shapes. Treat as reference/blueprint only
+  because the toolchain is far from our pin.
+- **lean-quantum**:
+  `https://github.com/Hayata-Yamasaki-Group/lean-quantum` (Lean `v4.29.0-rc6`,
+  Apache-2.0). Use heavily for Suite B/D finite quantum-information interfaces:
+  coordinate-free finite-dimensional Hilbert systems, density operators,
+  channels, partial trace, Kraus/Stinespring/Choi representations, and quantum
+  entropy/DPI theorem shapes. This is the best public guide for `rho_dir`,
+  tracing hidden histories, and channel/resource monotones.
+- **SciLean**:
+  `https://github.com/lecopivo/SciLean` (Lean `v4.28.0-rc1`, Apache-2.0). Use
+  heavily as a reference for variational/action calculus, gradients,
+  optimization, differential equations, and executable scientific-computing
+  patterns. Do not import tonight: its README says Windows is not officially
+  supported and it uses BLAS/FFI plumbing.
+- **Plausible**:
+  `https://github.com/leanprover-community/plausible` (Lean `v4.32.0-rc1`,
+  Apache-2.0). Use as a design reference for Assassin/oracle counterexample
+  search over finite fixtures. It is not a proof source, but its workflow is
+  ideal for catching vacuity and degenerate existential statements early.
+- **CSLib**:
+  `https://github.com/leanprover/cslib` (Lean `v4.32.0-rc1`, Apache-2.0). Use
+  as a longer-term reference for verified CS/automata/path-semantics APIs,
+  especially Suite B path sums and finite algorithmic infrastructure.
+- **LeanCamCombi**:
+  `https://github.com/YaelDillies/cam-combi` (Lean `v4.31.0`, Apache-2.0). Use
+  for graph/probabilistic/extremal/additive-combinatorics proof style and any
+  Suite D spherical-code/design or finite-code combinatorics that is not already
+  covered by Mathlib.
+- **Sphere-Packing-Lean**:
+  `https://github.com/math-inc/Sphere-Packing-Lean` (Lean `v4.28.0`,
+  Apache-2.0; local Windows-safe fork already exists under
+  `AgentTasks/external/`). Use for E8/spherical-code/design and Cohn-Kumar
+  adjacent proof architecture. Do not point Windows at upstream directly because
+  of the known `Aux.lean` filename issue; use the existing Windows-safe fork or
+  standalone copied statements.
+
+**Workflow rule:** before starting Suite B or D rungs, and before Goal IV's
+Clausius/Jacobson rung, do a repo/API search over the relevant packages above
+and log one line in `LIT_SEARCH_LOG.md` or the ledger. If a theorem shape is
+borrowed, record the repo + module/file + convention gap in the task note or
+docstring. Translate mathematics, not source text.
+
 ## 2. The four assembly goals (rungs + kills + seed imports)
 
 Each goal is a CHAIN, not a lemma. Land the cheapest killable rung first;
@@ -184,6 +246,10 @@ theorem pair. Together (a)-(e) make the S4a channel-name kill runnable.
   the massless fixture.
 - **Seed imports:** `ContinuumLimit`, `SubluminalBound`, `MassGapWitness`,
   `MassPhaseDiagram`, `RGSchurMassWitness`, `FiniteRGFlow`.
+  **External Lean references:** consult `lean-quantum` for coordinate-free
+  finite Hilbert-state/channel APIs if the path-sum density matrix enters this
+  rung, and `CSLib` for finite path/automata API ideas. Reference only; do not
+  import.
 
 ### Goal IV — The finite gravitational field equation + first law (Codex lead)
 Give the E-slot dynamics. Vary the finite action `S[psi,gamma] = <psi, D#D psi>`
@@ -205,6 +271,12 @@ condition.
   Clausius term.
 - **Seed imports:** `ESlotGeometry`, `CarrierRigidity`, `FiniteCarrierAction`,
   `FiniteQuadraticAction`, `CarrierMassBudget`, `FiniteCanonicalEnsemble`.
+  **External Lean references:** consult `SciLean` before inventing finite
+  gradient/action notation; consult `lean-quantum` before formalizing density
+  operators, partial trace, or channel-stress maps; consult
+  `testing-lower-bounds` / `Kraft` before stating entropy, divergence, or
+  compression-cost monotones. Reference only unless a separate dependency audit
+  says otherwise.
 
 ## 2b. The four flagship theorem SUITES (the umbrellas the goals feed)
 
@@ -282,6 +354,11 @@ walk/checkerboard -> Dirac/Weyl continuum -> gauge-coupled (NOT "QCD first").
   {Q_A,Q_C,Q_T,E}; Cl(4) carrier not castable as a known Dirac quantum walk;
   doublers survive the claimed carrier conditions; finite path sums fail to
   reproduce the imported checkerboard/Dirac continuum theorem even in 1+1D.
+- **Lean reference packages:** for B1, lean heavily on `lean-quantum`'s
+  density-operator/channel/partial-trace interface before choosing any local
+  `rho_dir` representation; use `CSLib` as a reference for finite path/automata
+  semantics. If our local object is deliberately simpler, document the
+  simplification in the module docstring.
 
 ### Suite C — Positive-Code Particle Theorem
 **Stretch:** the physical particle catalogue = the stable positive-sector
@@ -354,6 +431,13 @@ code/design family: `2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`.)
   no susceptibility divergence at kappa=lambda; KMS/modular generator not
   proportional to B; a sub-Compton J-positive localized state; small mass
   generated generically without protection, criticality, or seesaw.
+- **Lean reference packages:** for D1/D2/D3, lean heavily on `Kraft` for
+  compression/source-coding theorem shapes, `testing-lower-bounds` for
+  divergence/data-processing/relative-entropy proof shapes, `lean-quantum` for
+  quantum channels and entropy/resource monotones, and `Sphere-Packing-Lean` /
+  `LeanCamCombi` for spherical-code/design and finite combinatorics. These are
+  reference libraries unless explicitly isolated; do not silently introduce
+  their dependencies into the main build.
 
 **The event horizon (keep sharp — it makes the wins credible).** Even if all
 four suites land, the framework still does NOT derive: the absolute mass scale,
@@ -442,6 +526,12 @@ strategies, kill conditions, and the citations a referee will demand.
   **two-twistor particle prior art** Penrose/Perjes/Hughston that Fable flags as
   gating P-B — see `2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`),
   Suite D (Cohn-Kumar universal optimality for the P-K spherical-code rung).
+- **Standing Lean-package targets:** for Suite B/D and Goal IV, search the
+  sec-1c package list before inventing a local API. `lean-quantum`, `Kraft`,
+  `testing-lower-bounds`, and `SciLean` are not optional flavor text; they are
+  first-pass reference libraries for density matrices/channels, compression,
+  divergences/data processing, and finite variational calculus. Log useful
+  module/file names and version gaps.
 - Verify + add any cited source to `Null_Edge_References.md` before the
   manuscript cites it. When a claim depends on a paper's internal content, use
   `--chunks` full text, not the abstract (AGENTS.md).
@@ -550,3 +640,74 @@ manuscript over-claim + non-degeneracy audit in P3. Every call ledgered.
    `claude-`/`codex-` lane (strategy + audit in the mix, no filler; 2-hour stalls
    cancelled + salvaged) and the lit cadence held (a search every <=30 min per
    agent, logged) — PhysLean consulted for every physics object formalized.
+
+---
+
+## 9. DAY EXTENSION (2026-07-09, daytime) — status and the day's goals
+
+The overnight run met its success criteria early (43 commits by dawn; both
+overnight cutoff artifacts drafted: `MORNING_REPORT.md`, `HONEST_SCORECARD.md`).
+The user extended the run through today. This section is the daytime constitution;
+secs 3 (non-degeneracy), 5/5b (lit + PhysLean cadence), and 6 (discipline,
+~7-job `claude-`/`codex-` lanes, buildable-proof rule v3 in every prompt) remain
+BINDING. The build slowdown was diagnosed as machine memory starvation and is
+FIXED (post-restart: ~15-30s/module) — the overnight HELD list was re-landed.
+
+### 9a. Where the run stands (dawn snapshot)
+
+- **Overnight Goals I-IV: effectively landed.** I: hadron + dynamical confinement
+  + rung-5 honest correction. II (Codex): KM phase counting, N=2 no-go + N=3
+  Jarlskog witness, incidence corank, family-rank bridge. III: exact RG, 3+4
+  channel RG (all four channels relevant), rational boost covariance. IV: WEP
+  trace/action bridges (Codex) + field equation, Jacobson equation-of-state,
+  gravity-sourced-by-matter, unified mass budget (Claude) — RECONCILIATION of the
+  two Goal-IV lanes is a named day task.
+- **Manuscript**: retitled **"All Mass Comes from Massless Edges"**; new §2b
+  ("Mass is slowed-down light" — velocity operator ±c, zigzag, Zitterbewegung);
+  §4a point 4 (channel-RG kill-test survives, all four channels RG-relevant);
+  §6/§7/§8/§9 extended; ~20 new anchor rows, all names grep-verified.
+- **New fronts opened (user-driven)**: gravity+QFT unification (P-L, 4 modules
+  landed + spectral-action-avatar delivered); cosmological constant (Λ doc +
+  sec 7b synthesis; 6 Λ jobs in flight/queued); mass-from-massless beyond
+  fermions (Higgs-longitudinal, CPT-antiparticle-zigzag delivered, to harvest).
+- **Fleet**: 4 Λ jobs running; IDLE harvest backlog ~12 (gravity trio follow-ons,
+  prior frontier round, spectral-action-avatar, Codex waves).
+
+### 9b. The day's goals (in priority order)
+
+- **Day Goal A — the Λ suite (the sharpest new physics).** Harvest + land
+  L1-L4 (`lambda-unimodular`, `lambda-edge-count`, `lambda-susceptibility`,
+  `lambda-conjugacy-uncertainty`, `lambda-count-dichotomy`); then **L6**: one
+  graded manuscript section on the cosmological constant (the everpresent handle,
+  the exponent prediction `Lambda_rms ~ N^{-1/2}` on the Poisson branch, the
+  pre-registered Poisson-vs-hyperuniform FORK with its kill). The fork
+  (`which count is conjugate to Lambda`) is where this program can exceed causal
+  set theory — treat a hyperuniform verdict as a headline negative, not a loss.
+- **Day Goal B — the unification assembly ("one operator, both forces").**
+  Reconcile the two Goal-IV lanes (Codex's WEPTrace/WEPActionBridge vs Claude's
+  Goal4FieldEquation/GravitySourceMatter — same multiplier pattern, different
+  constraints); harvest spectral-action-avatar + teleparallel + holographic; then
+  a coherent §7 rewrite: equation-of-state + G=kappaT + one-functional +
+  UnifiedMassBudget's `totalBudget = c*det P` as one graded story, and the P-L
+  candidate-paper skeleton in future-directions.
+- **Day Goal C — "mass from massless" across the full particle table.** Harvest
+  Higgs-longitudinal (gauge bosons: the third polarization IS the mass) and
+  CPT-antiparticle-zigzag (antimatter = CPT-mirror zigzag) + helicity-chirality;
+  extend §2b from fermions to the full table with the honest fermion/boson scope
+  split. This closes the title's last scope caveat.
+- **Day Goal D — consolidation (the paper is the deliverable).** Clear the
+  harvest backlog (~12 IDLE); independent anchor sweep of ALL 2026-07-09 rows
+  (Codex); verify + add every new [import] source (Jacobson, ADGS, DESI,
+  Chamseddine-Connes-Marcolli, quiver spectral action, Torquato/hyperuniformity)
+  to `Null_Edge_References.md` BEFORE the manuscript cites them; refresh the
+  scorecard/report at the day cutoff; over-claim audit of §2b + §7 + the Λ
+  section (the three newest, boldest sections).
+
+### 9c. Day cadence and cutoff
+
+Same lanes (Claude: A, C, manuscript lead + Λ/unification harvests; Codex: B
+reconciliation lead, D audit lead, its own Suite C/D waves). Lit cadence sec 5
+continues. **Day audit cutoff: 21:00 local 2026-07-09** — final quarter switches
+to audit/report exactly as sec 7's P3 did (EVENING_REPORT.md + scorecard
+refresh). Event horizon unchanged (no absolute masses, no Born rule, no V/sign
+derivation for Lambda; new fronts obey the same claim calculus).
