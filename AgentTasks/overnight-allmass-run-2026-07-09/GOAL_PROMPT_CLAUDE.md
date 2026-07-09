@@ -15,6 +15,19 @@ finish the harvest, and attempt Goals I and III. The manuscript
 the goals feed it — any rung that lands becomes prose + an anchor row at grade,
 any goal that dies by its kill is a published negative.
 
+Read your goals as rungs of the four flagship SUITES (RUN_PLAN sec 2b): your
+Goal I feeds **Suite C** (Positive-Code Particle), your Goal III feeds **Suites
+A/B** (Null Reconstruction / Path-Sum Universality). Governing rule: every rung
+returns a **theorem, a counterexample, or a sharpened missing axiom** — name
+your hat (Builder / Assassin / Oracle / Registrar) in the ledger. Beyond the
+Goals you also own the CHEAP self-contained suite M-targets: **B1** (path-sum
+semantics `rho_dir = sum a_h conj(a_h') Omega_{hh'} |psi_h><psi_h'|`), **D2**
+(entropy monotonicity under Schur compression, signed-closure exception),
+**D5** (finite Compton bound: no J-positive code localizes below `1/gap`), and
+the **A1** Assassin rung (try to build a (2,2)-signature carrier that passes OS
+positivity — a success KILLS one-time selection; a documented failure is the
+evidence for it). Assassin rungs before Builder rungs.
+
 ## Your default target split (claim in ledger; flexible)
 1. **P0 harvest:** finish the `familyrankfix` loose end (build in-project, add
    its `PhysicsSMDraft` edge, record the no-go in the future-directions doc +

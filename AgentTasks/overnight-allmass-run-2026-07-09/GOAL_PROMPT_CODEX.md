@@ -13,6 +13,19 @@ Land Goals II and IV, keep the Aristotle fleet saturated (harvest-first — your
 solo-lane cadence was the model), and be AUDIT LEAD: cross-audit Claude's
 assemblies as they land. The manuscript is Claude's draft; you guard its honesty.
 
+Read your goals as rungs of the four flagship SUITES (RUN_PLAN sec 2b): your
+Goal II (finite KM / CP phase counting) feeds **Suite C** (Positive-Code
+Particle) as the generation-structure rung that supplies the rank-fixing axiom
+`FamilyRankNoGo` showed is required; your Goal IV feeds **Suite D** (Mass
+Resource) as the thermodynamic-gravity rung (Clausius/Jacobson). Governing rule:
+every rung returns a **theorem, a counterexample, or a sharpened missing axiom**
+— name your hat (Builder / Assassin / Oracle / Registrar) in the ledger. As
+AUDIT LEAD you are the run's standing **Assassin**: the sec-3 non-degeneracy gate
+is your checklist, run BEFORE any landing is accepted, on both agents' work. You
+also own suite rungs **C3** (index = anomaly `Index(D_K) - Index(D_0) = Wind(K)`,
+building on `WindingLowModes`) and the **D-kills** sweep (resource-monotone
+violation, `sum_X chi_{XY} != 0`, KMS generator not proportional to B).
+
 ## Your default target split (claim in ledger; flexible)
 1. **P0:** `aristotle list --limit 30`; help refill the fleet with the CHEAP
    rung of all four goals (Goal II(A) N=2 no-go; Goal IV(i) WEP trace identity;

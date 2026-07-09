@@ -18,14 +18,18 @@ and the non-degeneracy hygiene the S1-CC saga forced us to learn.
 2. **Finish the harvest** (P0): integrate `familyrankfix` (landed, a
    no-go, half-integrated — see sec 1), then harvest `finitecpt` and the
    three closers `siglorentz`/`rigidityaxiom`/`bargmanncp` as they land.
-3. **Attempt the four assembly goals (sec 2).** These are the deepest
-   things the framework can currently *reach* — a hadron, a generation
-   count, relativity, a field equation, one flagship per force-channel.
-   **Any goal that lands becomes the manuscript's new spine; any goal
-   that dies by its kill condition is itself a publishable result.** They
-   are ambition, not obligation: a run that lands two rungs of two goals
-   and keeps the manuscript honest is a win; a run that over-claims one
-   goal is a loss whatever it proves.
+3. **Attempt the four assembly goals (sec 2), read as rungs of the four
+   flagship theorem SUITES (sec 2b).** The goals are the deepest things the
+   framework can currently *reach* — a hadron, a generation count, relativity,
+   a field equation; the suites (Null Reconstruction / Path-Sum Universality /
+   Positive-Code Particle / Mass Resource) are the publishable "grand theorems"
+   those rungs and the harvest modules build toward. **Any rung that lands
+   becomes the manuscript's new spine; any rung that dies by its kill condition
+   is itself a publishable result.** Ambition, not obligation: a run that lands
+   two rungs of two goals and keeps the manuscript honest is a win; a run that
+   over-claims one rung is a loss whatever it proves. Governing rule (sec 2b):
+   every rung returns a **theorem, a counterexample, or a sharpened missing
+   axiom** — never "churned."
 
 "All mass from null edges" is claimed ONLY in the layered sense: trusted
 kinematics (mass = null disagreement, now bidirectional/universal —
@@ -175,6 +179,159 @@ condition.
 - **Seed imports:** `ESlotGeometry`, `CarrierRigidity`, `FiniteCarrierAction`,
   `FiniteQuadraticAction`, `CarrierMassBudget`, `FiniteCanonicalEnsemble`.
 
+## 2b. The four flagship theorem SUITES (the umbrellas the goals feed)
+
+Fable-5's 2026-07-08 stretch analysis reframes the run's ambition: aim not at
+four isolated lemmas but at **four theorem suites**, each designed so that
+success is a publishable "grand theorem" and failure is a clean no-go that
+permanently disciplines the program. The four assembly Goals (sec 2) and the
+harvest modules (sec 1) are the RUNGS of these suites, not rivals to them. Do
+not renumber the Goals; read each suite as the spine a cluster of rungs builds.
+
+**The governing rule (adversarial run).** Every rung must return one of exactly
+three things: **a Lean theorem, a counterexample, or a sharpened missing axiom.**
+"Churned, unclear" is not an outcome. Structure each attempt around four hats
+(one agent can wear several; name the hat in the ledger entry):
+- **Builder** — prove it in Lean or reduce it to a finite rational matrix fixture.
+- **Assassin** — hunt the counterexample: degenerate case, vacuous hypothesis,
+  hidden positivity/nondegeneracy assumption. The sec-3 gate is the Assassin's
+  checklist; run it BEFORE claiming, not after.
+- **Oracle** — run finite rational fixtures / simulations to guide the Builder.
+  FORBIDDEN from being cited as proof (CAS/oracle policy); Oracle output grades
+  MEMO at most and lives in the ledger, never the manuscript spine.
+- **Registrar** — record the verdict in the ledger at its honest grade:
+  `M` / `C` / `MEMO` / `no-go` / `missing-axiom`.
+
+### Suite A — Null Reconstruction Theorem
+**Stretch:** finite null information + positive decoding + composable quantum
+systems + CP phase  =>  (1,3)-Lorentzian complex two-spinor geometry. Signature,
+dimension, causality are OUTPUTS of the null-information carrier, not inputs.
+- **Landed rungs:** `SignatureForcing` (null primitive => indefinite Gram, rung
+  1 done); `DivisionDimensionSelection` (composition + continuous abelian CP
+  phase => K=C => d=4); `SpectralDistance` (Connes distance recovers edge count).
+- **In-flight:** `siglorentz` (RP selects one time direction), `finitecpt`
+  (Theta D Theta^-1 = D^#) — harvest both into this suite.
+- **NEW rungs to attempt:** (A1, Assassin-first) build a **(2,2)-signature toy
+  carrier and TRY to pass slab reflection positivity** — a (2,2) carrier with a
+  nondegenerate physical sector that passes OS positivity KILLS one-time
+  selection; failing to build one is the evidence FOR it. (A2, stretch)
+  operator-to-geometry recovery: full Lorentzian/Connes distance on the T2
+  carrier recovering causal ORDER + decoration SCALE (not just edge count), the
+  E-slot = order-geometry vs decoration-scale mismatch (Malament split: order
+  gives the conformal class free, decorations owe the scale).
+- **Kills (any = a result):** a (2,2) carrier passes OS positivity; H admits a
+  composable cyclic abelian Bargmann CP invariant; spectral distance degenerates
+  to 0/inf/wrong graph; a massive mode saturates v_g=1 (already dead in the good
+  direction via `SubluminalBound` — kept as guardrail).
+
+### Suite B — Path-Sum Universality Theorem
+**Stretch:** finite null-edge path sums flow to the Dirac/Weyl continuum
+universality class, and `Q_A, Q_C, Q_T, E` are its relevant/marginal
+coordinates. This is what makes the channel NAMES physics (basin membership),
+not structural analogy. Bridge order is finite carrier -> quantum
+walk/checkerboard -> Dirac/Weyl continuum -> gauge-coupled (NOT "QCD first").
+- **Landed rungs:** `CheckerboardCarrierBridge` (1+1D Dirac walk IS a Krein
+  null-edge carrier); `FiniteLevinson` (finite optical theorem);
+  `MassPhaseDiagram` (critical line |kappa|=|lambda|).
+- **Feeder Goal:** Goal III (relativity at the fixed point) IS the critical-RG
+  rung of this suite: exact rational decimation, z=1, nu=1.
+- **NEW rungs:** (B1) formalize the **path-sum semantics** — the
+  path-conditioned visible state `rho_dir = sum a_h conj(a_h') Omega_{hh'}
+  |psi_h><psi_h'|`, with `Omega=1` full interference, `Omega=delta` decohered
+  mixture, mass = retained which-null-direction info after tracing hidden
+  histories. (B2) lift the checkerboard bridge to the Cl(4) carrier, then toward
+  3+1D (Foster-Jacobson / Mlodinow-Brun quantum-walk `[import]`). (B3) critical
+  RG universality as **basin membership** `kappa=lambda => z=1, free-Dirac fixed
+  point, non-channel couplings irrelevant`. (B4) finite Levinson upgrade:
+  `#bound states = scattering phase winding = reflection-sector index`.
+- **Kills:** z != 1 on the massless line; a relevant RG direction OUTSIDE
+  {Q_A,Q_C,Q_T,E}; Cl(4) carrier not castable as a known Dirac quantum walk;
+  doublers survive the claimed carrier conditions; finite path sums fail to
+  reproduce the imported checkerboard/Dirac continuum theorem even in 1+1D.
+
+### Suite C — Positive-Code Particle Theorem
+**Stretch:** the physical particle catalogue = the stable positive-sector
+eigen-codes of the finite null automaton. Confinement = non-decodability;
+binding = compression advantage; protected masslessness = index/quotient/rank-one
+codes; generations = inequivalent positive completions (or provably
+underdetermined without a new axiom).
+- **Landed rungs:** `PositiveSectorClassification` (A>0 => A+B^HB>0);
+  `ConfinementPositivity` (colored negdef / singlet positive);
+  `CarrierClosurePlane` (the carrier binds UNCONDITIONALLY);
+  `WindingLowModes` (winding-w background >= w protected modes = finite 't Hooft
+  vertex); `FamilyIndexNoGo`/`FamilyRankNoGo` (three generations NOT forced).
+- **In-flight:** `finitecpt` (finite CPT antiunitary Theta, spectra
+  conjugate-paired => matter-antimatter asymmetry is a state/modular question,
+  not a law asymmetry).
+- **Feeder Goals:** Goal I (verified hadron) IS the binding+confinement rung;
+  Goal II (finite KM) IS the generation-structure rung — supplying the
+  rank-fixing axiom (CP phase counting) that `FamilyRankNoGo` showed is required.
+- **NEW rungs:** (C1) positive-sector classification as a MAP `carrier data ->
+  {positive, balanced, protected-null, indefinite}`. (C2) sector confinement as
+  a FUNCTORIAL statement: `(Gauss/BRST quotient) o (positive-sector extraction)`
+  kills colored isolated codes, preserves singlets. (C3) index = anomaly:
+  `Index(D_K) - Index(D_0) = Wind(K)` + the finite level-crossing / strand-number
+  violation statement. (C4) sharpen generations: FIND the missing rank-fixing
+  axiom (Goal II's CP counting) OR prove none exists under the framework — do NOT
+  fit lepton masses; classify code completions.
+- **Kills:** a stable COLORED positive-sector code; a singlet sector that cannot
+  be made positive under the stated hypotheses; carrier closure NOT in the
+  binding plane for the intended family; winding does not move the chiral index;
+  Theta D Theta^-1 = D^# fails for an axiom-satisfying carrier; generation count
+  stays n+1 with no natural rank selector.
+
+### Suite D — Mass Resource Theorem
+**Stretch:** mass = the positive-sector resource cost of compressing finite null
+histories — one structure spanning entropy, concurrence, monogamy, Schur
+leakage, modular flow, thermodynamic susceptibilities, criticality, and a
+Compton/localization bound. Mass is simultaneously rank defect = entropy =
+entanglement = compression cost = 1/localization-length = thermodynamic response.
+- **Landed rungs:** `MassThermodynamics` (Gibbs-Duhem sum rule + critical
+  divergence at kappa->lambda); `ModularSelection` (block B as modular
+  generator); `SchurSeesaw` (finite seesaw bound); `MassSphericalDesigns`
+  (pair disagreement = sin^2(theta/2)); the concurrence/entropy dictionary
+  already in the manuscript.
+- **Feeder Goal:** Goal IV (gravitational field equation + first law) IS the
+  thermodynamic-gravity rung: Clausius `delta<E> = T delta S` along soldering
+  variations, Jacobson integrability => the field equation.
+- **NEW rungs:** (D1) formalize the **mass resource theory**: free states
+  `det P = 0` (rank-one direction states); monotones `det P, S(rho_dir), C^2,
+  G^n, cross-disagreement mass`; free operations preserving projective null
+  coherence (common spin transformations, gauge relabelings, coherent transport);
+  prove the monotonicity + conversion laws. (D2) **entropy monotonicity under
+  Schur compression**: `S(rho_dir^eff) - S(rho_dir) >= -C_closure` with
+  `C_closure` a SIGNED coherence term (closure is not noise; it can lower mass).
+  (D3) **modular selection stretch**: Gibbs state of B => modular flow
+  `sigma_t = e^{-itB}(.)e^{itB}` — the generator DERIVED from the state (kill: KMS
+  generator on T2 not proportional to B). (D4) **natural small-mass**:
+  `zero mode at kappa=lambda => enhanced symmetry constraining kappa-lambda`
+  (else critical lightness is fine-tuning unless seesaw is active). (D5) **finite
+  Compton bound**: no J-positive one-particle code localizes below `1/gap` — the
+  mass gap becomes a length scale (kill: an explicit sub-Compton J-positive
+  localized state in the T2 sector).
+- **Kills:** resource-monotone violation under allowed operations; entropy
+  monotonicity failure NOT explained by signed closure; `sum_X chi_{XY} != 0`;
+  no susceptibility divergence at kappa=lambda; KMS/modular generator not
+  proportional to B; a sub-Compton J-positive localized state; small mass
+  generated generically without protection, criticality, or seesaw.
+
+**The event horizon (keep sharp — it makes the wins credible).** Even if all
+four suites land, the framework still does NOT derive: the absolute mass scale,
+the Born rule, initial conditions, or the NUMBER of null edges. These are
+permanently out of scope (sec 3.5); naming them is part of the honesty gate. The
+single most ambitious sentence the run may work to make true — and only at the
+grade each rung actually earns — is: *spacetime, particles, forces, and mass are
+the decodable geometry, codewords, defects, and compression costs of finite null
+information.*
+
+**Priority within a saturated fleet.** The suites do NOT displace sec-2 ladder
+economics: still queue the cheapest killable rung of all four assembly Goals
+first. Among the NEW suite rungs, the Assassin rungs come first (A1 the (2,2)-OS
+attempt, D-kills) — a counterexample found early redirects the whole run — then
+the small self-contained M-targets (B1 path-sum semantics, D2 entropy
+monotonicity, D5 Compton bound). The stretch reconstructions (A2, B2 3+1D, C2
+functorial) are Fable-call / grand-strategy-job scale, not hand rungs.
+
 ## 3. Run hygiene — the S1-CC lesson, made policy (BINDING)
 
 All four goals are existential-heavy. The presentation-existence saga (an
@@ -291,6 +448,8 @@ manuscript over-claim + non-degeneracy audit in P3. Every call ledgered.
 2. The manuscript stays complete and honest; every landing has a verified
    anchor + grade; audited by the other agent + one external call.
 3. Assembly rungs maximized (each guard-pinned + non-degeneracy-fixtured);
-   every goal EITHER advanced OR killed-with-a-published-negative.
+   every goal/suite rung EITHER advanced OR killed-with-a-published-negative.
+   Every rung attempted returned a theorem, a counterexample, or a sharpened
+   missing axiom (sec 2b) — logged with its Registrar grade; no churn dead-ends.
 4. The fleet is harvested clean or documented in-flight at dawn; the P0 loose
    end (`familyrankfix`) closed.

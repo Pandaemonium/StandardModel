@@ -30,6 +30,55 @@ Plücker/wedge disagreement) and organizes every direction below.
 
 ---
 
+## The four flagship theorem SUITES (2026-07-09 run target frame)
+
+Fable-5's 2026-07-08 stretch analysis reorganizes every direction in this doc into
+**four theorem suites**, each designed so success is a publishable grand theorem and
+failure is a clean no-go. This is the strategic frame the 2026-07-09 overnight run
+executes (`AgentTasks/overnight-allmass-run-2026-07-09/RUN_PLAN.md` sec 2b); the
+suites are umbrellas over the landed harvest modules, the in-flight jobs, and the
+four assembly Goals. **Governing rule:** every rung returns a theorem, a
+counterexample, or a sharpened missing axiom (Builder / Assassin / Oracle /
+Registrar hats). All grade **[spec]/[C]** here; a rung is quoted below at the grade
+its Lean actually earns only after it lands and is recorded in HARVEST RESULTS.
+
+- **Suite A — Null Reconstruction Theorem.** Finite null info + positive decoding +
+  composable quantum systems + CP phase => (1,3)-Lorentzian complex two-spinor
+  geometry. Signature/dimension/causality are OUTPUTS, not inputs. Rungs:
+  `SignatureForcing` [M], `DivisionDimensionSelection` [M], `SpectralDistance` [M],
+  `siglorentz`/`finitecpt` [job]; NEW: the (2,2)-OS Assassin rung, full Lorentzian
+  operator-to-geometry recovery on T2. Ties to P-B, P-G, Layer 1, conjectures M-U.
+- **Suite B — Path-Sum Universality Theorem.** Finite null path sums flow to the
+  Dirac/Weyl universality class; `Q_A,Q_C,Q_T,E` are its relevant/marginal
+  coordinates (basin membership, not analogy). Rungs: `CheckerboardCarrierBridge`
+  [M], `FiniteLevinson` [M], Goal III (critical RG, z=1, nu=1); NEW: path-sum
+  semantics `rho_dir`, Cl(4)/3+1D checkerboard lift, Levinson index. Ties to P-H,
+  P-J, the channel-name conjecture (S4a).
+- **Suite C — Positive-Code Particle Theorem.** Particles = stable positive-sector
+  eigen-codes; confinement = non-decodability; binding = compression advantage;
+  masslessness = index/quotient/rank-one codes; generations = inequivalent positive
+  completions (or underdetermined without a new axiom). Rungs:
+  `PositiveSectorClassification` [M], `ConfinementPositivity` [M],
+  `CarrierClosurePlane` [M], `WindingLowModes` [M], `FamilyIndexNoGo` [no-go],
+  Goals I + II, `finitecpt` [job]; NEW: functorial confinement, index=anomaly. Ties
+  to P-A, P-F.
+- **Suite D — Mass Resource Theorem.** Mass = positive-sector resource cost of
+  compressing finite null histories (entropy = concurrence = compression cost =
+  1/localization = thermodynamic response). Rungs: `MassThermodynamics` [M],
+  `ModularSelection` [M], `SchurSeesaw` [M], Goal IV (Clausius/Jacobson); NEW: the
+  mass resource theory (free states `det P=0`, monotones, conversion laws), entropy
+  monotonicity under Schur compression, modular selection stretch, small-mass
+  naturalness, finite Compton bound. Ties to P-C, P-D, P-I, conjecture V.
+
+**The event horizon (unchanged, kept sharp).** Even if all four suites land, the
+framework still does NOT derive the absolute mass scale, the Born rule, initial
+conditions, or the number of null edges (see "What stays untouchable" below). The
+most ambitious sentence the run may work to make true, at the grade each rung earns:
+*spacetime, particles, forces, and mass are the decodable geometry, codewords,
+defects, and compression costs of finite null information.*
+
+---
+
 ## Candidate future papers
 
 ### P-A. "Finite null-edge Dirac carriers: Plücker mass, positive sectors, signed closure binding" (the surgical next paper)
