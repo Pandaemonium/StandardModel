@@ -1585,3 +1585,15 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   not witnesses, (5) conditional-protection is one instance + [import] SSH/BdG principle. (2)/(4)/(1) clean.
 - NET: 4 audits done+acted on (3 prose red-teams + 1 statement-semantic). Every headline + every flagship
   STATEMENT now checked for false-shape/vacuity. Manuscript honestly bounded at claim AND statement level.
+
+### 2026-07-09 ~late-afternoon - Claude - 5th audit (definitions) acted on: s8 chiral-protection RIGGED, fixed - DraftLead
+- DEFINITIONS-HONESTY AUDIT (45296cca, saved audits/): checks whether model DEFINITIONS beg the question.
+  SMOKING GUN: EvenMassGaps 'odd preserves/even gaps' is a definitional artifact. VERIFIED in-source:
+  balanced grading (index 0, no protection); generic odd perturbation (physical Dirac mass) GAPS v;
+  chosen Podd cherry-picked (upper-triangular = A's shape). CORRECTED s8 opening (ii) + anchor row
+  (removed odd_preserves/conditional_protection_verdict, kept even_gaps only) + taxonomy item 3
+  (robustness = [import] index argument, not the theorem). EvenMassGaps stays landed; reading downgraded
+  to 'counterexample to immune-to-every-potential, and only that'. Other findings (1 lamExp tautology,
+  2/3/5 faithful) already addressed.
+- NET: FIVE audits done+acted on (3 prose + semantic-alignment + definitions). Honesty checked at claim,
+  statement, AND definition level. One genuine rigged-definition caught+fixed at the deepest layer.
