@@ -1812,3 +1812,24 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   group (det P=m^2) + 4x4 Dirac operator (det D=(m^2-p^2)^2).
 - STILL TO LAND: chiral-breaking (a454d0c6, COMPLETE, reviewed - clean, contains its own reconciliation
   seed g5_commutes_mass + mass_bilinear_couples_chirality) - land next WITH the convention guard.
+
+### 2026-07-09 ~afternoon - Claude - LANDED ChiralBreakingAnticommutator (mass = {g5,D} obstruction) WITH convention guard - DraftLead
+- HARVESTED claude-chiral-breaking-anticommutator (a454d0c6, COMPLETE). {g5, D} = -2m.g5 for the
+  COVARIANT D=pslash-m.1: vanishes at m=0 (g5 anticommutes with massless pslash = chiral symmetry),
+  != 0 for m!=0 (chiral-symmetry breaking). The algebraic core of mass-from-massless; {g5,D} is the
+  continuum-mass value of the Ginsparg-Wilson object {g5,D}=2a.Dg5D (lit-verified this cycle, §8-tracked).
+- CONVENTION GUARD APPLIED (as pre-registered): the module says the covariant mass m.1 is chiral-EVEN
+  (g5_commutes_mass), which would superficially clash with ZigzagWeyl/§2a "mass is chiral-ODD". Landed
+  WITH explicit reconciliation in BOTH the module docstring AND the anchor row: ZigzagWeyl's chiral-odd
+  mass = the HAMILTONIAN mass beta.m=m.gamma0; the covariant mass m.1 is chiral-even; breaking shows as
+  {g5,D}!=0 vs [g5,H]!=0 - SAME physics, two forms, NOT a contradiction. Bridge =
+  mass_bilinear_couples_chirality (g0 intertwines chiralities -> psibar-psi couples L<->R). Anchor row
+  explicitly cross-refs the ZigzagWeyl row. Did NOT silently merge conventions (AGENTS.md).
+- Semantic review: all 8 targets aligned; module contains its own reconciliation seed (g5_commutes_mass
+  + mass_bilinear_couples_chirality). In-project lake build GREEN (8026 jobs). Footprint
+  [propext,Classical.choice,Quot.sound] via 9 build-enforced #guard_msgs pins. 0 term-position sorry.
+  Provenance PhysLean spaceTime.gamma, clean-room (no import).
+- LANDED: module + edge + §2b anchor row (5 grep-verified names, after ZigzagWeyl WITH reconciliation) +
+  this ledger, one commit. BOTH afternoon refill jobs now landed. Dirac-operator "mass = X" trilogy
+  complete in-tree: {g5,D}=-2m.g5 (chiral breaking) + det(pslash-m)=(m^2-p^2)^2 (mass shell) + Lambda±
+  energy projectors. Fleet: 0 claude jobs running.
