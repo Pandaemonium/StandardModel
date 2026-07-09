@@ -1850,3 +1850,18 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   the frontier is grounded. Per "never filler" > "~7 jobs", NOT manufacturing filler jobs against a
   comprehensive manuscript. Will refill only on a genuinely new direction or a Codex cross-review need.
   Fleet: 0 claude jobs; 7 Codex jobs (their lane). Run continues toward 21:00 cutoff.
+
+### 2026-07-09 ~late-afternoon - Claude - SUBMITTED velocity-mixture-linear-entropy + refined saturation - DraftLead
+- Job 50cdf453 (claude-velocity-mixture-linear-entropy). Connects the just-landed Dirac velocity
+  kinematics (velocity_spectrum +/-c, drift vbar^2=1-m^2/E^2) to a RATIONAL info-theoretic quantity:
+  the +/-c motion as a 2-outcome mixture p+/-=(E+/-p)/2E has LINEAR entropy S_L=1-Tr(rho^2)=2 p+ p- =
+  m^2/(2E^2). So mass^2 = 2E^2 * S_L: mass = the impurity of the luminal velocity mixture. Pure (S_L=0)
+  at masslessness, maximal (S_L=1/2) at rest. Arithmetic verified exactly over Q (5 witnesses).
+- HONESTY guard in the prompt: framed as LINEAR entropy (rational 1-Tr(rho^2) proxy, NOT Shannon),
+  corollary-level restatement of the drift relation in info-theoretic language - value = the connection,
+  not proof depth. Avoids hollow-telescoping. Buildable v3 (rational, field_simp/ring, no log). Serves
+  the named info-theory PORT direction (linear entropy / purity, lean-quantum territory, clean-room).
+- REFINED SATURATION: I was saturated on ISOLATED Dirac facts, but the CROSS-CONNECTIONS between the
+  landed layers (Dirac kinematics <-> info-theory <-> mass geometry) are a genuine, non-redundant
+  refill direction. Strategy going forward: ground the connections between landed layers, not more
+  isolated facts. Fleet: 1 genuine claude job (50cdf453) + 7 Codex.
