@@ -258,3 +258,21 @@ theorem vonNeumannEntropy_rest_eq_log_two (p : Momentum4) (hp0 : 0 < p 0)
 
 end MassEntropyDictionary
 end PhysicsSM.Draft.NullEdge.GateI1
+
+/-! ## Build-enforced axiom pins (mass -> entropy dictionary flagships) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.velocityNormSq_eq_one_sub_massRatio' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.velocityNormSq_eq_one_sub_massRatio
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_eq_zero_iff_null' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_eq_zero_iff_null
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_pos_of_timelike' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_pos_of_timelike
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_rest_eq_log_two' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_rest_eq_log_two

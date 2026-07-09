@@ -336,6 +336,45 @@ bundle, not what dynamics builds the bundle, and crucially not what its mass
 *spectrum* is (a spectral quantity; §4 rail 3). The rest of the paper is
 about the dynamics, held to a lower grade for exactly that reason.
 
+### 3a. The same invariant reads as a visible entropy (**M**)
+
+The mass invariant has a second, equivalent reading that costs nothing extra and
+is worth stating because it is *also* kernel-checked: the visible mass ratio is a
+**von Neumann entropy** of the normalized momentum block. Writing the normalized
+visible-momentum block of a momentum `p` as a two-level density `ρ` with
+eigenvalues `(1 ± √(1 − m²/E²))/2`, one has the finite dictionary
+(`MassEntropyDictionary`, **M**, guard-pinned):
+
+- `velocityNormSq_eq_one_sub_massRatio` — `|v|² = 1 − m²/E²`, so the block spectrum
+  (hence its entropy) is a function of the mass ratio alone;
+- `vonNeumannEntropy_eq_zero_iff_null` — the visible von Neumann entropy is `0`
+  **iff** the edge is null (`m² = 0`): *massless edges carry zero visible entropy —
+  they "do not age"*;
+- `vonNeumannEntropy_pos_of_timelike` — a timelike (massive) edge has strictly
+  positive visible entropy; and `vonNeumannEntropy_rest_eq_log_two` pins the other
+  endpoint — at rest the block is maximally mixed, `S = log 2`.
+
+So the two endpoints of "mass = null disagreement" are also the two endpoints of
+an entropy: massless/null ↔ pure (`S = 0`), fully massive/at rest ↔ maximally
+mixed (`S = log 2`). Coarse-graining that discards internal null structure (the D4
+Schur decimation of §9a) is then exactly the step that *produces* both effective
+mass and this visible entropy — mass generation as an information-loss phenomenon.
+This is a reconstruction/finite-identity (frame-conditioned: "rest" is an observer
+choice), not new physics; but it is the honest, kernel-checked form of the
+"mass–entropy" reading, and it sits at grade **M**.
+
+At the two-level, the same block determinant is a **linear entropy / tangle**:
+`concurrenceSqComplex ρ = 4 det ρ` and the normalized mass ratio squared equals it
+(`NullEdgeQubitConcurrence`, kernel-checked, sorry-free) — i.e. for a single edge's
+purification, "mass² is the squared concurrence of the null bundle with itself" is
+a kernel-checked identity, not an analogy. Two identifications remain **C** and are
+pre-registered targets (§10): (i) the *full* multi-edge `det P = Wootters
+concurrence²` for an arbitrary null bundle (the two-level `4 det ρ`/tangle form is
+proved; the Wootters two-qubit formula bridge is not), and (ii) the binding defect
+`Δ = −κ` read as a kernel-checked *entanglement deficit* between bound sub-bundles.
+**Kill:** if the two-edge Plücker mass does not equal the Wootters concurrence² of
+the corresponding two-qubit state, identification (i) is false.
+
 ---
 
 ## 4. The organizing spine: the mass-budget decomposition (**M** + **C**)
@@ -1389,6 +1428,7 @@ separately by the targeted Lean and guard builds.)*
 | 3 | `free_mass_operator_eq_plucker` | `Carrier/FreeMassBridge.lean` | M, local guard pin | **free §3↔§4 bridge**: free mass operator `P·adj P = det P • 1` = Plücker mass (§10 crux 0b-a) |
 | 3 | `pairwiseMass_append` (+`_le`, `_append_eq_iff`) | `Carrier/MassMonogamy.lean` | M, guard-pinned (`CarrierAxiomGuard`) | mass monogamy: Plücker mass superadditive, excess = cross-disagreement (F3) |
 | 3 | `massOn_add_massOn_compl_le` | `Carrier/MassMonogamyPartition.lean` | M, guard-pinned (`CarrierAxiomGuard`) | general-partition monogamy: internal masses ≤ whole |
+| 3a | `vonNeumannEntropy_eq_zero_iff_null`, `vonNeumannEntropy_pos_of_timelike`, `velocityNormSq_eq_one_sub_massRatio`, `vonNeumannEntropy_rest_eq_log_two` | `GateI1/MassEntropyDictionary.lean` | M, self-guarded (in-file pin) | **mass ↔ visible-entropy dictionary**: null ⇔ `S=0` ("null edges don't age"), timelike ⇔ `S>0`, rest ⇔ `S=log 2`; `\|v\|²=1−m²/E²` |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
