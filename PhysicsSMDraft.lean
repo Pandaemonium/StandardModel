@@ -169,6 +169,11 @@ import PhysicsSM.Draft.NullEdge.FiniteCPT
 import PhysicsSM.Draft.NullEdge.RPSelectsLorentzian
 import PhysicsSM.Draft.NullEdge.GradedDecompUniqueness
 import PhysicsSM.Draft.NullEdge.BargmannCP
+import PhysicsSM.Draft.NullEdge.Goal3ExactRG
+import PhysicsSM.Draft.NullEdge.SuiteAOp2Geom
+import PhysicsSM.Draft.NullEdge.KMPhaseCounting
+import PhysicsSM.Draft.NullEdge.WEPTrace
+import PhysicsSM.Draft.NullEdge.MassResourceModularAudit
 import PhysicsSM.Draft.NullEdgeSymmetric2x2Spectrum
 import PhysicsSM.Draft.NullEdgeTwoNullMassive
 import PhysicsSM.Draft.NullEdgeHiggsPotential
