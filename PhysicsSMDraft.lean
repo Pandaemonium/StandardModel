@@ -140,6 +140,7 @@ import PhysicsSM.Draft.NullEdge.TwoEdgeMassConcurrence
 import PhysicsSM.Draft.NullEdge.MassEnergyBound
 import PhysicsSM.Draft.NullEdge.MassNullDecomposition
 import PhysicsSM.Draft.NullEdge.DetPUniqueness
+import PhysicsSM.Draft.NullEdge.RankCeiling
 import PhysicsSM.Draft.NullEdge.MassFourFaces
 import PhysicsSM.Draft.NullEdge.ChiralIndexProtection
 import PhysicsSM.Draft.NullEdge.BindingEntanglementDeficit
