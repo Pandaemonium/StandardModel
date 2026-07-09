@@ -1191,3 +1191,57 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   Lorentz-blindness=>Poisson theorem, makes the lit finding a theorem, extends
   LambdaCountDichotomy) + neutrino-seesaw (why nu is light, extends NeutrinoDiracMajorana).
   Running: unified-action-variation (s7 capstone), lambda-frame-constraint, neutrino-seesaw.
+
+### 2026-07-09 08:13 PDT - Codex - harvest TV/Kraft/massless table + refill - Builder/Registrar
+- HARVESTED + PORTED `claude-tv-distinguishability-mass`
+  (`4a15341c-ae0c-45ca-82ef-6fd9d6460787`) ->
+  `PhysicsSM/Draft/NullEdge/TVDistinguishabilityMass.lean`: finite rational
+  total-variation model, DPI under column-stochastic coarse-graining,
+  Pluecker/wedge dictionary `TV = mass` for two-outcome readouts, and explicit
+  collinear/distinguishable/strict-DPI witnesses. Provenance:
+  `RemyDegenne/testing-lower-bounds`, clean-room reference only.
+- HARVESTED + PORTED `claude-kraft-compression-mass`
+  (`6bc830f9-f301-4e6c-9675-3b36452bdcba`) ->
+  `PhysicsSM/Draft/NullEdge/KraftCompressionMass.lean`: finite rational Kraft
+  inequality/compression-cost avatar, linear entropy `Hlin`, massless pure
+  witness, mixed `5/8` entropy witness, prefix-code witness, and guard-pinned
+  headline theorems. Provenance: `elazarg/kraft`, clean-room reference only.
+- HARVESTED + PORTED `codex-massless-particle-table-capstone-0740`
+  (`0137b0f4-0aca-43b7-9df1-f2fecff234c1`) ->
+  `PhysicsSM/Draft/NullEdge/MasslessParticleTableCapstone.lean`: full finite
+  massless-particle table bundle over rank/edge witnesses, spin-1 counts, Higgs
+  longitudinal mode, positive-sector taxonomy, chirality/zigzag, and CPT mirror.
+- REGISTERED all three modules in `PhysicsSMDraft.lean`. Verification:
+  `lake build PhysicsSM.Draft.NullEdge.KraftCompressionMass
+  PhysicsSM.Draft.NullEdge.TVDistinguishabilityMass
+  PhysicsSM.Draft.NullEdge.MasslessParticleTableCapstone` PASS; after removing
+  the TV `open scoped Classical` warning, `lake build
+  PhysicsSM.Draft.NullEdge.TVDistinguishabilityMass` PASS. Placeholder scan on
+  the three harvested files was clean.
+- REFILL SUBMITTED new ambitious proof job
+  `46dde441-bcac-4409-a836-1910de748154`:
+  `codex-particle-information-capstone-0825-20260709`, targeting
+  `PhysicsSM/Draft/NullEdge/ParticleInformationCapstone.lean`. This composes
+  the particle-table capstone, photon/Higgs/CPT, lean-quantum DPI, TV
+  distinguishability, Kraft compression, and Dirac/Majorana split into a single
+  finite information/particle bridge.
+
+### 2026-07-09 ~midday - Claude - CYCLE CLOSE: s7 capstone lands; reconciliation deferred honestly - DraftLead
+- LANDED [M]: `UnifiedActionVariation` (harvest b853a834) - Priority B s7 capstone.
+  One finite spectral action S(E,g)=10-8w+2w^2: gravity eq dS/dE=0, matter eq dS/dg=0,
+  distinct, coupled at explicit (E*,g*)=(-1,-1). Closes SpectralActionAvatar+EinsteinHilbert
+  loop (adds matter variation + joint point). Folded into s7 prose as the VARIATIONAL route,
+  complementary to Jacobson equation-of-state route. 5 guard-pins, build 17s.
+- s7 RECONCILIATION THEOREM (variational E* == equation-of-state E*): DEFERRED, on purpose.
+  Reason: Codex's GravityUnificationCapstone (535f2b9d, WEP/Clausius/teleparallel) is still a
+  SUBMITTED JOB, not landed in-tree. Proving agreement against a self-chosen Clausius strawman
+  would be circular. Will reconcile against Codex's REAL declarations once its capstone lands.
+  Convention pre-check already PASSES: both lanes use (+,-,-,-) (MinkowskiConvention port =
+  Codex mostly-minus). Prose framing (two classical Einstein-eq routes on one action) is in.
+- CYCLE TALLY (this session-continuation): 5 modules LANDED (NeutrinoDiracMajorana,
+  LeanQuantumDPIMass, TVDistinguishabilityMass, KraftCompressionMass, UnifiedActionVariation);
+  port scorecard 1->4; 10a over-claim self-audit (2 fixes); 2b scalar-Higgs boundary +
+  neutrino fold; lit-driven Lambda-fork Lorentz sharpening (+RPSelectsLorentzian cross-link).
+- LANE: 4 high-value RUNNING (lambda-three-split, neutrino-seesaw, lambda-frame-constraint,
+  masslessedge-closer). Deliberately NOT padded to 7 (no filler, per user). Refill on next
+  completion. No job over 2h.
