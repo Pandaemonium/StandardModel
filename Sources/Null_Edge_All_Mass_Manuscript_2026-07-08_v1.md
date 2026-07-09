@@ -296,6 +296,41 @@ mass*, under a pre-registered kill-discipline — not any single ✓.
 
 ---
 
+## 2b. Mass is slowed-down light (**M**)
+
+The title's physical content — that a massive fermion is *internally* always
+moving at the speed of light, and its rest mass is the time-average of that
+luminal motion — is the Zitterbewegung / Penrose-zigzag picture (§2a), which we
+now carry as three kernel-checked finite theorems rather than borrowed slogans.
+
+1. **Instantaneous velocity is exactly `±c`.** The Dirac velocity operators
+   `αᵢ` (the Heisenberg `dxᵢ/dt`) satisfy `αᵢ² = 1` and `tr αᵢ = 0`, so their
+   spectrum is exactly `{+1, −1}`, each with multiplicity two — never a value
+   between (`velocity_spectrum`, with explicit `±1` eigenvectors `(1,0,0,±1)`,
+   **M**). A fundamental fermion's *instantaneous* velocity is always `±c`.
+2. **The massive fermion is two null Weyl pieces coupled by mass** (Penrose's
+   zigzag). In the chiral basis the mass term is chiral-odd and couples the two
+   Weyl components; switch it off and they decouple into independent null
+   (light-like) Weyl operators (`massless_decouples`, `mass_couples`,
+   `zigzag_verdict`, **M**). Each piece moves at `c`; mass is only the coupling
+   that swaps them.
+3. **The observable drift is the mass-weighted average of the `±c` motion.**
+   For a stationary mode the mean velocity is a convex average of `±1` with
+   weights set by the mass fraction, giving `v̄² = (p/E)² = 1 − m²/E²`
+   (`drift_subluminal_from_average`, **M**) — matching the landed mass-entropy
+   dictionary (§3a). Massless ⇒ a single luminal channel (`v̄ = 1`); rest
+   (`m = E`) ⇒ a 50/50 luminal zigzag averaging to `v̄ = 0` (`massless_limit`).
+
+Read together: instantaneous-luminal (1) and observable-subluminal (3) are the
+same fact at two timescales, with the zigzag (2) the mechanism between them.
+**Honest scope:** these are finite one-momentum models for *fermions* (the
+`±c`-velocity-operator statement is a Dirac fact; massive bosons are covered only
+by the momentum-decomposition side, §3). "Mass is slowed-down light" is thus an
+`M` statement about fundamental fermions' internal kinematics — not a claim that
+anything is observed to move at `c`, and not a statement about the mass values.
+
+---
+
 ## 3. The kinematic layer: one trusted theorem (**T**/**M**)
 
 Everything orbits a single kernel-checked identity. Represent a massless
@@ -753,7 +788,7 @@ boundary once, plainly, so no later sentence smuggles it back:
 4. **A first RG probe of the naming scheme (M, partial).** The kill
    condition in (3) has a sharper, RG-flavoured form — *basin membership*:
    the channel names are physics iff the carrier flows to the free-Dirac
-   fixed point and aperture/closure/turn are its relevant/marginal
+   critical regime and aperture/closure/turn are its relevant/marginal
    coordinates. On a concrete rational 3-coupling decimation model
    (aperture `λ`, closure `κ`, chiral turn `τ`), this is now
    kernel-checked: the exact flow is
@@ -775,7 +810,7 @@ boundary once, plainly, so no later sentence smuggles it back:
    aperture's `2`) (`Goal3ChannelRG4.soldering_verdict`, **M**). On this
    model, then, **all four named channels — aperture, closure, turn,
    soldering — are genuine relevant/marginal RG coordinates**, and geometry
-   does not decouple from the Dirac universality class at the fixed point.
+   does not decouple from the Dirac critical regime.
    The basin-membership reading of the naming scheme is thus supported on a
    concrete finite model in all four channels at once — still short of the
    continuum reduction (3), but the strongest kernel-checked evidence the
@@ -1655,9 +1690,10 @@ separately by the targeted Lean and guard builds. The 2026-07-09 round-2
 additions — `SignatureForcing`, `RPSelectsLorentzian`, `FiniteCPT` (§8 rows),
 `Goal3ExactRG` (§9 row), `SuiteAOp2Geom` (§7 row), `Goal1Hadron` + `Goal1Rung5Tie`
 (§6 rows), `Goal3BoostCovRational` (§9 row), `Goal3ChannelRG` + `Goal3ChannelRG4` (§4a rows) — and Codex seed additions —
-`KMPhaseCounting`, `FiniteKMCP`, `IncidenceCorank`, `WEPTrace`,
+`KMPhaseCounting`, `FiniteKMCP`, `IncidenceCorank`, `KMFlagship`, `WEPTrace`,
 `WEPActionBridge`, `MassResourceModularAudit`, `IndexAnomalyInterface`,
-`GateI1.MassEntropyMonotone`, `SuiteCDNextRungs` — are per-module
+`GateI1.MassEntropyMonotone`, `SuiteCDNextRungs`, `KMFamilyRankBridge`,
+`IndexProtectionBridge`, `WEPActionResourceBridge`, `MassResourceConsistency` — are per-module
 `lake build` green with in-file guard pins (the new modules' cited declaration
 names were grep-verified in-file on 2026-07-09); they await the next independent
 anchor sweep.)*
@@ -1699,6 +1735,12 @@ anchor sweep.)*
 | 3a | `free_states_characterized`, `free_ops_preserve`, `mixing_creates` | `NullEdge/SuiteDResourceCore.lean` | M, self-guarded (in-file pin) | **mass resource theory**: free states = rank-one null Grams (`det P=0`); rotations preserve `det`; mixing distinct null directions creates exactly the Plücker amount `det=t(1−t)(u₀w₁−u₁w₀)²`. Mass = the resource of which-direction mixing, invariant under the free (rotation) group. Witness `det=4/25` |
 | 6 | `confinement_ordering`, `colored_ground_ge_threshold`, `singlet_bound_energy` | `NullEdge/Goal1Confinement.lean` | M, self-guarded (in-file pin) | **dynamical confinement**: on the toy hadron, `leastEigenvalue Hsing = −1 < 1 ≤ leastEigenvalue Hcol` — the lightest two-particle excitation is the color singlet bound state; colored channel gapped above (PSD via explicit sum-of-squares). The deconfinement kill does not fire |
 | 10 | `symmetry_iff_kap_zero`, `zero_mode_at_criticality`, `naturalness_verdict_finetuning` | `NullEdge/SuiteDCriticalSymmetry.lean` | M, self-guarded (in-file pin) | **critical lightness is symmetry-protected**: an explicit `Z₂` involution `T` is a symmetry of `B(λ,κ)` iff `κ=0`; the critical zero mode is forced under it; without it `B(1,½)` has no zero mode — so near-critical small mass is natural iff the symmetry is imposed, else fine-tuning (both halves) |
+| 2b | `alpha_sq_one`, `velocity_spectrum`, `massless_luminal` | `NullEdge/DiracVelocityOperator.lean` | M, self-guarded (in-file pin) | **instantaneous velocity is exactly `±c`**: the Dirac velocity operators satisfy `αᵢ²=1`, `tr αᵢ=0`, so spectrum `= {+1,−1}` (mult 2), explicit `±1` eigenvectors; mass term anticommutes with each `αᵢ`. A fermion is internally always at `c` |
+| 2b | `massless_decouples`, `mass_couples`, `zigzag_verdict` | `NullEdge/ZigzagWeyl.lean` | M, self-guarded (in-file pin) | **Penrose zigzag**: massless ⇒ two decoupled null Weyl operators; mass is the chiral-odd coupling that swaps them; `D(m)²=(kinetic²)+m²` (3-4-5 shell). Massive Dirac = two null pieces coupled by mass |
+| 2b | `drift_subluminal_from_average`, `massless_limit`, `zitterbewegung_verdict` | `NullEdge/ZitterbewegungAverage.lean` | M, self-guarded (in-file pin) | **Zitterbewegung average**: drift `v̄=p/E`, `v̄²=1−m²/E²` as a convex average of `±1` (weights set by `m/E`); massless ⇒ single luminal channel, rest ⇒ 50/50 zigzag. Ties instantaneous `±c` to the subluminal drift |
+| 7 | `equation_of_state`, `jacobson_verdict` | `NullEdge/JacobsonClausius.lean` | M, self-guarded (in-file pin) | **finite gravitational equation of state**: the soldering field equation `∇heat = T·α·∇area` IS the integrability condition of Clausius `δQ=T δS` (`S~`pierced-edge count); non-degenerate + control witnesses. Finite Jacobson |
+| 7 | `field_equation_sourced`, `channel_blind_universal`, `unification_verdict` | `NullEdge/GravitySourceMatter.lean` | M, self-guarded (in-file pin) | **finite `G=κT`**: soldering stationarity ⇔ `solderingCurv γ = κ·matterBudget ψ` — geometry sourced by the matter channels, channel-blind (equal total budget ⇒ same geometry = WEP) |
+| 4/7 | `square_splits`, `answers_detP`, `unified_verdict` | `NullEdge/UnifiedMassBudget.lean` | M, self-guarded (in-file pin) | **one operator, both forces**: `4D#D = Q_A+Q_C+Q_T+E_sold` (matter ⊕ gravity graded blocks), shares sum to one budget, and `totalBudget = c·det P` (both `=3552`) — matter mass + gravity mass are graded pieces of one operator answering the same null-disagreement invariant |
 | 8 | `corner_ker_ge_index`, `corner_ker_ge_index_perturbed`, `witness_one_protected_mode` | `NullEdge/ChiralIndexProtection.lean` | M, self-guarded (in-file pin) | **chiral index ⇒ protected modes**: `dim ker A ≥ n₊−n₋` (rank–nullity), stable under any odd (mass) perturbation; witness index-1 carrier has ≥1 protected massless mode |
 | 10 | `seesaw_suppression`, `seesaw_zero_iff_no_overlap` | `NullEdge/SchurSeesaw.lean` | M, self-guarded (in-file pin) | **finite seesaw**: a protected mode leaking into a heavy hidden block `M` gets `\|m_eff\| ≤ ‖Bᴴv‖²/λ_min(M) → 0` (resolvent suppression, not tuning); mass=0 iff no overlap `Bᴴv=0` |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
@@ -1766,12 +1808,17 @@ anchor sweep.)*
 | 8/10 | `ckm_param_split`, `cp_possible_iff` | `NullEdge/KMPhaseCounting.lean` | M, self-guarded (in-file pin) | **finite CP phase-count arithmetic**: CKM bookkeeping splits `N^2` into angles, removable phases, and physical CP phases; the physical CP count is positive iff `N >= 3`. Honest scope: not yet the constructive N=2 rephasing theorem or N=3 Jarlskog witness |
 | 8/10 | `jarlskog_rephase`, `jarlskog_two_eq_zero`, `exists_real_rephasing_two`, `Vwitness_unitary`, `jarlskog_Vwitness_ne_zero` | `NullEdge/FiniteKMCP.lean` | M, self-guarded (in-file pin) | **finite KM CP rung**: the Jarlskog plaquette is rephasing-invariant; every unitary `2 x 2` matrix is rephasable to real entries; and an exact unitary `3-4-5` witness has `J = 6912 / 78125 != 0`. Honest scope: constructive low-N witnesses; global normal form still separate |
 | 8/10 | `coboundary_rank`, `coboundary_corank`, `coboundary_corank_two`, `coboundary_corank_three` | `NullEdge/IncidenceCorank.lean` | M, self-guarded (in-file pin) | **general-N CP corank theorem**: complete-graph phase coboundary has rank `N-1` and corank `(N-1)(N-2)/2` over an arbitrary field; N=2 has no physical phase and N=3 has exactly one. Honest scope: linearized phase-count/corank theorem, not a full unitary normal-form theorem |
+| 8/10 | `physicalPhases_eq_incidence_corank`, `incidence_corank_eq_physical_count`, `goalII_lowN_summary` | `NullEdge/KMFlagship.lean` | M, self-guarded (in-file pin) | **Goal II flagship composition**: physical CP phase count equals complete-graph incidence corank for `1 <= N`; low-N summary bundles N=2 no phase / constructive rephasing and N=3 exact nonzero Jarlskog witness. Honest scope: linearized corank plus low-N witnesses, not a global unitary normal form for all `N` |
 | 7/9 | `wep_trace_identity`, `wep_universality`, `wep_source_nonvacuous`, `wep_violation_of_channel_stress` | `NullEdge/WEPTrace.lean` | M, self-guarded (in-file pin) | **WEP trace rung**: a channel-blind finite source `Tr(K rho)` depends only on total budget `Tr rho`, with a nonvacuous equal-trace witness and a channel-stress negative control. Honest scope: not the E-slot field equation or Clausius/Jacobson rung |
 | 7/9 | `stationary_iff_fieldEquation`, `stationary_channelBlind_source`, `bridge_nonvacuous` | `NullEdge/WEPActionBridge.lean` | M, self-guarded (in-file pin) | **WEP action/source bridge**: a finite trace-level multiplier action is stationary against all matrix variations iff `G=K`; channel-blind coupling gives source side `kappa * Tr rho`, with nonzero source witness. Honest scope: trace/source bridge, not the E-slot geometric field equation |
 | 9/10 | `modular_generator_eq_adB`, `modular_generator_matrix`, `modular_shift_operator_ne` | `NullEdge/MassResourceModularAudit.lean` | M, self-guarded (in-file pin) | **Suite D modular guardrail**: a central normalization shift cancels in the commutator derivation, but operator equality with `B` is false for every background `B` when the shift is nonzero. Honest scope: modular false-shape guard, not a full mass-resource theory |
 | 8/10 | `toyIndex_eq_dim_diff`, `toy_index_anomaly`, `windingOne_nonvacuity`, `analytic_anomaly_of_reduction` | `NullEdge/IndexAnomalyInterface.lean` | M, self-guarded (in-file pin) | **C3 finite index-anomaly interface**: signed finite index is dimension mismatch; the winding family satisfies `Index(D_w)-Index(D_0)=w`; winding one has a nonzero protected mode; the analytic statement is isolated as an explicit reduction hypothesis. Honest scope: finite rank-nullity only |
-| 3a/10 | `binEnt_antitoneOn`, `vonNeumannEntropy_antitone_speed`, `vonNeumannEntropy_monotone_massRatio`, `massEntropyMonotone` | `NullEdge/GateI1/MassEntropyMonotone.lean` | M, self-guarded (in-file pin) | **mass-entropy resource monotone**: binary entropy is antitone in speed; visible entropy is monotone in invariant mass ratio on future-cone momenta; null momenta are the free states of the bundled resource monotone. Honest scope: same-frame finite block, observer-conditioned entropy |
-| 4a/8/10 | `uN_parameter_count`, `c3_index_anomaly`, `channel_charges_traceless`, `channel_charges_independent` | `NullEdge/SuiteCDNextRungs.lean` | M, self-guarded (in-file pin) | **small Suite C/D next rungs**: U(N) parameter count, finite relative-index identity, Suite D traceless channel charges, and linear independence of the four GGE charges. Honest scope: arithmetic/interface rungs, not a continuum reduction |
+| 3a/10 | `binEnt_antitoneOn`, `vonNeumannEntropy_antitone_speed`, `vonNeumannEntropy_monotone_massRatio`, `massEntropyMonotone` | `NullEdge/GateI1/MassEntropyMonotone.lean` | M, self-guarded (in-file pin) | **mass-entropy resource measure**: binary entropy is antitone in speed; visible entropy is monotone in invariant mass ratio on future-cone momenta; null momenta are the free states of the bundled measure. Honest scope: same-frame finite block, observer-conditioned entropy; the current bundle is faithful/nonnegative, with monotonicity carried by separate order lemmas |
+| 4a/8/10 | `uN_parameter_count`, `c3_index_anomaly`, `channel_charges_traceless`, `channel_charges_independent`, `channel_charges_pairwise_commute`, `channel_charges_commute_with_Bsum` | `NullEdge/SuiteCDNextRungs.lean` | M, self-guarded (in-file pin) | **small Suite C/D next rungs**: U(N) parameter count, finite relative-index identity, Suite D traceless channel charges, coordinate-charge linear independence, pairwise commutativity, and commutation with `Bsum`. Honest scope: arithmetic/interface rungs only, not a continuum reduction or derived GGE/modular dynamics |
+| 8/10 | `physicalPhases_eq_one_iff`, `cp_one_iff_three_completions`, `cp_one_supplies_rankfixing`, `cp_one_is_rankfixing_datum` | `NullEdge/KMFamilyRankBridge.lean` | M, self-guarded (in-file pin) | **Goal II / family-rank bridge**: exactly one physical CP phase is equivalent, inside the finite arithmetic model, to `N=3`, `n=2`, and three positive-sector completions. Honest scope: supplies the explicit rank-fixing datum; does not physically derive three generations |
+| 8/10 | `winding_anomaly_protects_modes`, `winding_one_anomaly_and_mode` | `NullEdge/IndexProtectionBridge.lean` | M, self-guarded (in-file pin) | **C3 index-protection bridge**: finite relative signed index equals winding, and the same winding lower-bounds protected kernel modes, with a `w=1` nonvacuity fixture. Honest scope: finite rank-nullity only, no analytic index theorem |
+| 7/9/10 | `stationary_channelBlind_total_budget`, `massEntropyMonotone_free_iff`, `massEntropyMonotone_nonvacuous` | `NullEdge/WEPActionResourceBridge.lean` | M, self-guarded (in-file pin) | **WEP/source-resource bridge**: channel-blind stationarity gives the total-budget source, and null/rest momenta witness zero/positive mass-entropy resource. Honest scope: finite source/resource bridge, not an entropy-sourced field equation |
+| 9/10 | `mass_resource_consistency`, `mass_resource_consistency_conj` | `NullEdge/MassResourceConsistency.lean` | M, self-guarded (in-file pin) | **Suite D consistency bundle**: traceless channel charges, coordinate-charge linear independence, finite commutativity/conservation by `Bsum`, central-shift generator invariance plus raw-operator false-shape guard, and entropy faithfulness. Honest scope: finite consistency suite, not a thermodynamic-limit derivation |
 
 ---
 
