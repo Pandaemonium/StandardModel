@@ -788,9 +788,9 @@ hypotheses, which is *stronger* in that direction); the group-independence
 positivity by itself — null Clifford coefficients are isotropic, so the
 square has no positive-definite diagonal. Therefore:
 
-> **The central crux, resolved as a structured no-go — witness AND general
-> representative now kernel-checked (M engine + M witness + M general reduction);
-> only the sector *presentation* stays MEMO.**
+> **The central crux, resolved as a structured no-go — now fully kernel-checked
+> (M engine + M witness + M general reduction + M presentation-existence); only
+> the pre-registered soldered-`Q_G` escape (K-A) stays open.**
 > Positivity of the closure channel is not a full-space fact and never
 > could be; it can hold only on the physical (Gauss-law) sector `V'/N`.
 > On the explicit `6x6` Clifford⊗color witness, closure is **not** positive
@@ -809,29 +809,37 @@ square has no positive-definite diagonal. Therefore:
 > **presentation-independent**: `compression_balanced_eigbasis` (**M**,
 > guard-pinned) drops the coordinate-`submatrix` assumption and proves the same
 > balance for compression by *any* `b`-eigenvector family `P` (`b P = P e`, `e` a
-> `±1` grading) — the reps of `V'/N` need not be coordinate axes. *Honest scope
-> (per Fable call-09):* what is now general **M** is the balance **mechanism** —
-> it is `Q_G`-blind by construction (the theorems never mention `Q_G`). What stays
-> **MEMO** is the existence of a `b`-adapted presentation of the *actual* physical
-> sector: an orthonormal `b`-eigenvector family in `ker Q_G` that is genuinely
-> **complementary to `range Q_G`** with dimension pinned to
-> `dim ker Q_G − rank Q_G`, together with the descent of the closure form to the
-> quotient `V'/N`. (Simultaneous diagonalization of the color-leg Gauss operator
-> `G` and the grading `b = σz ⊗ 1` via `[G,K]=0` supplies the eigenbasis; the
-> dimension/complementarity/descent are the remaining un-transcribed pieces — this
-> is more than a one-line existence step.) The remaining gap is *formalization,
-> not mathematical risk*: the balance genuinely survives the quotient (not merely
-> `ker Q_G`), because `range Q_G` is `b`-invariant, so its directions come in `±`
-> pairs that cancel in the inertia — a **MEMO** argument, independently confirmed
-> by two adversarial reviews (Fable call-09 and the batch-5 Aristotle audit); what
-> is owed is its kernel transcription. (That transcription is genuinely
-> non-trivial for a sharp reason surfaced this run: the physical Gauss charge
-> `Q_G` is nilpotent and **Krein**-self-adjoint, *not* definite-self-adjoint — a
-> *definite*-Hermitian nilpotent would collapse to `0` over `ℂ`
-> (`Aᴴ=A, A²=0 ⇒ A=0`), degenerating the sector; the witness's
-> `Q_G = c₁ ⊗ G` with `c₁ = E₀₁` is nilpotent and non-Hermitian precisely so that
-> `V'/N` is nontrivial. The general existence must therefore use `Q_G² = 0` and
-> `[b,Q_G]=0` without Hermiticity — the honest, non-degenerate form of the gap.)
+> `±1` grading) — the reps of `V'/N` need not be coordinate axes. And the balance
+> **mechanism** is `Q_G`-blind by construction (the theorems never mention `Q_G`).
+> **The presentation-existence — the last MEMO piece — is now also kernel-checked
+> (M).** `S1CCPresentationExistence.physical_sector_b_eigenbasis_exists` (**M**,
+> guard-pinned) proves that for *any* `±1` grading `b` and *any* **nilpotent**
+> `Q_G` (`Q_G²=0`) commuting with `b` — **no Hermiticity assumed** — there exists a
+> `b`-eigenvector family `P` that genuinely presents `V'/N`: its columns lie in
+> `ker Q_G` (`Q_G P = 0`), are linearly independent (a left inverse `L` with
+> `L P = 1`), have the **full physical dimension** `card κ = card ι − 2·rank Q_G`,
+> and **span a complement of `range Q_G` inside `ker Q_G`**. Feeding that `P` into
+> `compression_balanced_eigbasis` gives the physical-sector balance for the whole
+> scalar-metric class (`physical_sector_balanced`, **M**). The genuine argument
+> (`S1CCEigenbasis`) is coordinate-free: a nilpotent `φ` commuting with a `±1`
+> involution `β` has `range φ ⊆ ker φ` both `β`-invariant, `β` splits the complement
+> along its `±1` eigenspaces, and rank–nullity fixes the dimension.
+>
+> *Honest scope / history (this is the third iteration; the first two were caught by
+> review).* The **non-Hermiticity is load-bearing**: a first attempt stated `Q_G`
+> Hermitian *and* nilpotent, which over `ℂ` forces `Q_G = 0`
+> (`Aᴴ=A, A²=0 ⇒ A=0`), degenerating the sector to the whole carrier — an Aristotle
+> pass proved that degenerate version, and it was **rejected**, not integrated.
+> The physical Gauss/BRST charge is nilpotent and *non*-Hermitian (Krein-self-adjoint;
+> the witness `Q_G = c₁ ⊗ G`, `c₁ = E₀₁`), which is exactly why `V'/N` is nontrivial;
+> the corrected statement above drops Hermiticity and is non-degenerate. (Two prior
+> reviews — Fable call-09 and the batch-5 audit — flagged the empty-`κ` vacuity and
+> the definite-vs-Krein adjoint issue; the dimension pin and complementarity clauses
+> answer both. `physical_sector_balanced`'s *exported* `∃` keeps `Q_G P=0` and linear
+> independence but not the dimension clause, so the full-`V'/N` guarantee is carried
+> by `physical_sector_b_eigenbasis_exists`, which is the statement to cite.) What
+> survives as the pre-registered kill is only the genuinely-soldered non-scalar
+> `Q_G` escape (**K-A**).
 > The mechanism is a grading anticonjugation: the closure bivector
 > `b = sigma_z (x) 1` satisfies `b^{-1}(J Q_C) b = -(J Q_C)` and preserves
 > every gauge-defined constraint sector (gauge acts on the color factor
@@ -858,10 +866,12 @@ square has no positive-definite diagonal. Therefore:
 > not a by-inspection step. And the general-representative reduction — that the
 > balance holds for *every* representative, not just the coordinate-aligned
 > witness — is now the kernel theorem `compression_balanced` (**M**), with the
-> witness as an instance (`witness_balanced_via_general`, **M**). What remains
-> genuinely MEMO is only the *presentation* step (that an arbitrary scalar-metric
-> Gauss sector can be diagonalized into the `b`-compatible submatrix-compression
-> form via `[G,K]=0`), not the reduction and not the witness.
+> witness as an instance (`witness_balanced_via_general`, **M**). And the
+> *presentation* step is now **M** as well (`physical_sector_b_eigenbasis_exists`):
+> for any `±1` grading and any nilpotent `Q_G` commuting with it, a full-dimension
+> `b`-eigenbasis presenting `V'/N` (complementary to `range Q_G`) exists — so
+> nothing in the reduction, the witness, or the presentation stays MEMO; only the
+> soldered-`Q_G` kill (K-A) is open.
 
 **The adversarial check the resolution turns on — run, and it fails on the
 witness (a pre-registered probe finding, MEMO).** The escape route —
@@ -1317,11 +1327,18 @@ grading with **no** hypothesis on `Q_G`, its presentation-independent strengthen
 `compression_balanced_eigbasis` (**M**) drops coordinate alignment (compression by
 *any* `b`-eigenvector family), and the `6×6` witness is re-derived as a literal
 instance (`witness_balanced_via_general`, **M**). So the balance *mechanism* is
-general **M** (`Q_G`-blind). What remains MEMO is the existence of a `b`-adapted
-presentation of the *actual* sector `V'/N` — a `b`-eigenbasis in `ker Q_G`
-complementary to `range Q_G`, dimension-pinned, with the form descending to the
-quotient (not merely a `b`-eigenbasis, per Fable call-09) — plus the
-genuinely-soldered non-scalar `Q_G` escape (kill K-A).
+general **M** (`Q_G`-blind). And the last piece — existence of a `b`-adapted
+presentation of the *actual* sector `V'/N` — is now **M** too:
+`S1CCPresentationExistence.physical_sector_b_eigenbasis_exists` (guard-pinned)
+produces, for any `±1` grading and any **nilpotent** `Q_G` (no Hermiticity)
+commuting with it, a `b`-eigenbasis in `ker Q_G` that is linearly independent,
+full-dimension (`card ι − 2·rank Q_G`), and complementary to `range Q_G` — the
+genuine `V'/N` presentation (`S1CCEigenbasis`). Non-Hermiticity is load-bearing (a
+Hermitian nilpotent would collapse `Q_G=0`; a first Aristotle pass proved that
+degenerate version and it was rejected — this is the corrected third iteration, and
+the dimension/complementarity answer the Fable call-09 + batch-5 findings). So the
+S1-CC no-go is now fully kernel-checked; the only pre-registered escape left is the
+genuinely-soldered non-scalar `Q_G` (kill K-A).
 What remains, ranked: **(0) The Rayleigh–Ritz
 keystone `sector_ground_mass` is *proved* (M, guard-pinned; §4 rail 3), and its
 positive-sector hypothesis is now *instantiated in the kernel*.** The two links
@@ -1485,7 +1502,8 @@ separately by the targeted Lean and guard builds.)*
 | 6 | `null_soldered_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure square structure (abstract) |
 | 6 | `closure_current_square` | `GateYM/S1ClosureCurrentAlgebra.lean` | M, guard-pinned (`SlabAxiomGuard`) | abstract skew-pairing square (concrete `Q_C=L^#L` is MEMO) |
 | 6/10 | `balanced_on_physical_sector`, `JQc_not_positive_on_sector` | `GateYM/S1CCPhysicalSectorWitness.lean` | M, self-guarded (in-file pin) | **S1-CC physical-sector instantiation, now kernel**: on the explicit `6×6` Clifford⊗color witness the induced closure form `J Q_C\|V'/N` has inertia `(2,2,0)` (balanced, indefinite) — the central-crux no-go on the witness is a theorem, not MEMO (§6, §10 #1) |
-| 6/10 | `compression_balanced`, `compression_balanced_eigbasis`, `compression_has_neg_eigenvalue` | `GateYM/S1CCGeneralReduction.lean` | M, guard-pinned (`SlabAxiomGuard`) + self-guarded | **S1-CC balance mechanism, now general kernel**: for *any* coset-representative selection `r` (or, `_eigbasis`, *any* `b`-eigenvector family `P`) and *any* `±1` closure grading anticonjugating the closure form, the compression is balanced — **`Q_G`-blind by construction** (the theorems never mention `Q_G`). `_eigbasis` drops coordinate alignment. What stays MEMO (per Fable call-09) is the existence of a `b`-adapted *presentation of the actual sector `V'/N`* — complementary to `range Q_G`, dimension-pinned, form descending to the quotient — not merely a `b`-eigenbasis (§6, §10 #1) |
+| 6/10 | `compression_balanced`, `compression_balanced_eigbasis`, `compression_has_neg_eigenvalue` | `GateYM/S1CCGeneralReduction.lean` | M, guard-pinned (`SlabAxiomGuard`) + self-guarded | **S1-CC balance mechanism, general kernel**: for *any* coset-representative selection `r` (or, `_eigbasis`, *any* `b`-eigenvector family `P`) and *any* `±1` closure grading anticonjugating the closure form, the compression is balanced — **`Q_G`-blind by construction**. `_eigbasis` drops coordinate alignment (§6, §10 #1) |
+| 6/10 | `physical_sector_b_eigenbasis_exists`, `physical_sector_balanced` | `GateYM/S1CCPresentationExistence.lean` (+ `S1CCEigenbasis.lean`) | M, guard-pinned (`SlabAxiomGuard`) | **S1-CC presentation-existence, closed (non-degenerate)**: for any `±1` grading `b` and any **nilpotent** `Q_G` (`Q_G²=0`, *no Hermiticity*) commuting with `b`, a `b`-eigenbasis presenting `V'/N` exists — in `ker Q_G`, linearly independent, full dimension `card ι − 2·rank Q_G`, complementary to `range Q_G` — closing the last MEMO piece of the central crux. Non-Hermiticity is load-bearing (a Hermitian nilpotent collapses to 0); 3rd iteration, prior two rejected on review |
 | 6/10 | `witness_balanced_via_general` | `GateYM/S1CCWitnessAsInstance.lean` | M, guard-pinned (`SlabAxiomGuard`) + self-guarded | the `6×6` witness balance re-derived as a **literal instance** of `compression_balanced` — confirming it is not special to its coordinate alignment |
 | 6 | `tyAreaLaw_slab_exp` | `GateYM/TYAreaLaw.lean` | M, guard-pinned (`SlabAxiomGuard`) | strong-coupling area law |
 | 6 | `wilsonSlabConnected_reflectionPositive` | `GateYM/WilsonSlabConnected.lean` | M, guard-pinned (`SlabAxiomGuard`) | slab reflection positivity |
@@ -1496,7 +1514,7 @@ separately by the targeted Lean and guard builds.)*
 | 6 | `anticonj_odd_pow_trace_zero` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | odd-trace identity from finite anticonjugation |
 | 6 | `anticonj_charpoly_eq` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | finite anticonjugation gives charpoly negation symmetry |
 | 6 | `hermitian_eigenvalue_multiset_map_neg_eq_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | Hermitian eigenvalue multiset is negation-invariant |
-| 6 | `hermitian_balanced_count_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | equal positive/negative Hermitian eigenvalue counts (the balance engine); physical `J Q_C\|V'/N` instantiation **M** on the witness (`S1CCPhysicalSectorWitness`); the general balance *mechanism* now **M** (`S1CCGeneralReduction`), only the V'/N *presentation* MEMO |
+| 6 | `hermitian_balanced_count_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | equal positive/negative Hermitian eigenvalue counts (the balance engine); physical `J Q_C\|V'/N` instantiation **M** on the witness (`S1CCPhysicalSectorWitness`); the general balance *mechanism* **M** (`S1CCGeneralReduction`) and the V'/N presentation-existence now **M** too (`S1CCPresentationExistence`, non-degenerate) |
 | 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | positive physical sector `(2,1)` |
 | 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | indefinite no-go `(1,2)` |
 | 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | M, guard-pinned (`CarrierAxiomGuard`) | soldering-gradient `E` (varying soldering) |

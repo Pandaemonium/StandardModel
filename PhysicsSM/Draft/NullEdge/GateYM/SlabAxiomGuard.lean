@@ -66,6 +66,8 @@ import PhysicsSM.Draft.NullEdge.GateYM.FiniteBanksCasherCount
 import PhysicsSM.Draft.NullEdge.GateYM.S1CCBalancedInertia
 import PhysicsSM.Draft.NullEdge.GateYM.S1CCGeneralReduction
 import PhysicsSM.Draft.NullEdge.GateYM.S1CCWitnessAsInstance
+import PhysicsSM.Draft.NullEdge.GateYM.S1CCEigenbasis
+import PhysicsSM.Draft.NullEdge.GateYM.S1CCPresentationExistence
 
 /-!
 # SlabAxiomGuard: build-enforced axiom-footprint guard for the lane-C (closure/YM)
@@ -741,5 +743,15 @@ Honestly labeled as elementary line geometry, NOT a GUT-unification derivation. 
 /-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCWitnessAsInstance.witness_balanced_via_general' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCWitnessAsInstance.witness_balanced_via_general
+
+/-! ### S1-CC presentation existence (non-degenerate V'/N b-eigenbasis) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCPresentationExistence.physical_sector_b_eigenbasis_exists' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCPresentationExistence.physical_sector_b_eigenbasis_exists
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GateYM.S1CCPresentationExistence.physical_sector_balanced' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GateYM.S1CCPresentationExistence.physical_sector_balanced
 
 end PhysicsSM.Draft.NullEdge.GateYM.SlabAxiomGuard
