@@ -323,6 +323,19 @@ spinor space* — massless is rank-collapse, massive is spread. So:
 - Mass is exactly zero iff all directions are projectively collinear —
   one common beam (`fin_bundle_mass_zero_iff_common_direction`, **M**, Draft).
 
+The identity also runs **the other way** — the thesis is not just "a null bundle
+*has* mass = disagreement" but "*every* mass *is* a null bundle's disagreement"
+(`MassNullDecomposition`, **M**, guard-pinned): every future-timelike 4-momentum is
+a sum of *two future-null momenta* with `m² = 2·(their Minkowski disagreement)`
+(`massive_eq_two_null`, `massSq_eq_two_null_disagreement`), and every
+positive-semidefinite momentum matrix decomposes into null-edge dyads `P = M Mᴴ =
+Σ ψᵢ ψᵢᴴ` with `det P = |det M|²` (`posSemidef_eq_null_edge_sum`,
+`det_eq_null_edge_disagreement`). So the mass ⇔ null-edge-disagreement correspondence
+is **bidirectional and universal**: nothing massive fails to decompose into
+massless edges, and its mass is exactly their disagreement. (The decomposition is
+not unique — a given mass *admits* many null-edge presentations; which one the
+carrier's dynamics selects is the C/dynamical layer.)
+
 This is the precise form of "mass is trapped disagreeing light," and it is
 the most solid thing the paper rests on: kernel-checked, axiom-audited, in
 the trusted layer. **What is ours here is the formalization and the framing,
@@ -404,9 +417,18 @@ For a rectangular bundle (`d`-dim spinors, `n > d`) the **Cauchy–Binet** form
 `det_gram_eq_sum_normSq_minors` gives `det P = Σ_S |det M_S|²` over `d`-subsets `S`
 — the honest "mass = total `d`-wise disagreement," proved from scratch (not in
 Mathlib). So former pre-registered target (i) is now **M**: mass *is* the (Gour)
-concurrence² of the null bundle, at every `n`. One identification remains **C**:
-(ii) the binding defect `Δ = −κ` read as a kernel-checked *entanglement deficit*
-between bound sub-bundles (§10).
+concurrence² of the null bundle, at every `n`. And former target (ii) is now **M**
+too: the binding defect **is** an entanglement deficit
+(`BindingEntanglementDeficit`, guard-pinned). On the coupled `2×2` binding block
+`Bc(λ,κ) = !![λ, κi; −κi, λ]` (least eigenvalue `λ−κ`, so the defect `Δ = λ−(λ−κ) =
+κ`, `binding_defect_eq_coupling`), the exact identity `Δ = κ = C(ρ)·λ`
+(`binding_defect_eq_concurrence`) holds, where `C(ρ) = 2‖ρ₀₁‖ = κ/λ` is the
+concurrence-type off-diagonal coherence of the normalized coupled density `ρ =
+Bc/tr Bc` — so **the mass lost to binding equals the coherence/entanglement the
+coupling creates between the bound modes**, and the state binds below the constituent
+sum *iff* it is entangled (`binding_below_threshold_iff_entangled`, `Δ ≠ 0 ⇔ κ ≠ 0`).
+Both entanglement readings of mass — the bundle's own mass as concurrence², and
+binding as an entanglement deficit — are now kernel-checked.
 
 ---
 
@@ -1539,6 +1561,10 @@ separately by the targeted Lean and guard builds.)*
 | 3a | `four_mul_det_gram_eq_concurrence_sq`, `det_gram_eq_normSq_wedge`, `det_gram_eq_zero_iff_concurrence_eq_zero` | `NullEdge/TwoEdgeMassConcurrence.lean` | M, self-guarded (in-file pin) | **two-edge mass = Wootters concurrence²**: `4·det P = C²` (`det P = (C/2)²`); massless ⇔ zero concurrence ⇔ product state |
 | 3a | `gConcurrence_pow_eq_det_gram`, `det_gram_eq_normSq_wedge`, `det_gram_eq_sum_normSq_minors` | `NullEdge/NEdgeMassConcurrence.lean`, `NullEdge/NEdgeCauchyBinet.lean` | M, self-guarded (in-file pins) | **`n`-edge mass = G-concurrence²**: `det P = (G/n)ⁿ` (Gour G-concurrence), two-edge = `n=2` instance; Cauchy–Binet `det P = Σ_S \|det M_S\|²` (mass = total `d`-wise disagreement). "mass = concurrence²" is not a two-edge coincidence |
 | 3a | `det_le_half_trace_sq` | `NullEdge/MassEnergyBound.lean` | M, self-guarded (in-file pin) | **mass ≤ energy, extremal at rest**: `det P ≤ (tr P/2)²` (`m ≤ E`), gap `((P₀₀−P₁₁)/2)²+\|P₀₁\|²`; equality iff `P` scalar = rest = max-mass & max-mixedness at fixed energy |
+| 3 | `massive_eq_two_null`, `massSq_eq_two_null_disagreement`, `posSemidef_eq_null_edge_sum`, `det_eq_null_edge_disagreement` | `NullEdge/MassNullDecomposition.lean` | M, self-guarded (in-file pin) | **the converse — all mass IS null-edge disagreement**: every timelike `p` = sum of two null momenta (`m²=2·disagreement`); every PSD `P = M Mᴴ = Σψᵢψᵢᴴ`, `det P=\|det M\|²`. Mass ⇔ null-disagreement is bidirectional/universal |
+| 3a | `binding_defect_eq_coupling`, `binding_defect_eq_concurrence`, `binding_below_threshold_iff_entangled` | `NullEdge/BindingEntanglementDeficit.lean` | M, self-guarded (in-file pin) | **binding = entanglement deficit**: on `Bc(λ,κ)`, defect `Δ=κ=C(ρ)·λ` where `C(ρ)=κ/λ` is the coupled block's concurrence; binds below threshold iff entangled (§3a target ii, C→M) |
+| 8 | `corner_ker_ge_index`, `corner_ker_ge_index_perturbed`, `witness_one_protected_mode` | `NullEdge/ChiralIndexProtection.lean` | M, self-guarded (in-file pin) | **chiral index ⇒ protected modes**: `dim ker A ≥ n₊−n₋` (rank–nullity), stable under any odd (mass) perturbation; witness index-1 carrier has ≥1 protected massless mode |
+| 10 | `seesaw_suppression`, `seesaw_zero_iff_no_overlap` | `NullEdge/SchurSeesaw.lean` | M, self-guarded (in-file pin) | **finite seesaw**: a protected mode leaking into a heavy hidden block `M` gets `\|m_eff\| ≤ ‖Bᴴv‖²/λ_min(M) → 0` (resolvent suppression, not tuning); mass=0 iff no overlap `Bᴴv=0` |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
