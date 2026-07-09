@@ -1569,3 +1569,10 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   adjudicated. Directly addresses the Priority-A observational-posture concern. +ref VERIFIED.
 - s2b coherence verified clean; s10a coherence pass done earlier (removed redundant fork framing).
 - LANE: rational-boost-invariance RUNNING (1).
+
+### 2026-07-09 ~late-afternoon - Claude - RationalBoostInvariance lands (mass boost-invariance) - DraftLead
+- LANDED [M]: `RationalBoostInvariance` (6ae0a5a4). Rational Lorentz boost L (beta=3/5) preserves eta
+  and leaves det P=E^2-k^2=m^2 invariant while components change. mass=det P is frame-independent
+  BECAUSE it's the determinant (little-group invariant) - closes the red-team's frame-dependence point.
+  Pairs with PauliMomentumPhysLean (the identity + its boost-invariance). build 18s. s3 anchor.
+- All cited names verified to resolve (sweep discipline). LANE: empty - all jobs harvested+landed.
