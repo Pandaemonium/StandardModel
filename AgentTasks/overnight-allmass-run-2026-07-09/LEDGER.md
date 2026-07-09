@@ -1542,3 +1542,10 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - LANDED [M]: `HiggsDofConservation` (1710c7a9) - Higgs mechanism = exact dof conservation 2+2=3+1,
   general 2n+s=3n+(s-n). Goldstone -> longitudinal transfer. s2b anchor.
 - All cited names verified to resolve (sweep discipline). LANE: dirac-gamma-physlean RUNNING (1).
+
+### 2026-07-09 ~late-afternoon - Claude - BudgetSignMismatch lands (s4 kill-test theorem) - DraftLead
+- LANDED [M]: `BudgetSignMismatch` (b89975d6). Kernel-checks the s4 audit kill-test: SoS budget matches
+  c*detP at one witness (c=10/3 at (2,2,1)) but same c FAILS at (2,2,0); opposite-sign in |x|. Confirms
+  totalBudget=c*det P is witness-fitted not a family law. audit->theorem arc for s4. build 17s. s4 anchor+prose.
+- Also landed DiracGammaPhysLean earlier (PhysLean port #8). Lit verified CC (Gilkey) + CC-problem (Burgess)
+  [import]s. Abstract coherence pass (four-channel=chosen). LANE: even-mass-gaps + pauli-momentum RUNNING (2).
