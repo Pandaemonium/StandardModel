@@ -27,3 +27,17 @@ Loop: download -> check sorry -> read summary -> build in-project -> semantic re
 | modularselection | 0053fc61 | INTEGRATED M | J: flow_scalar_shift (central shift invisible) + modular flow of Gibbs(B) = B-generated -- derives the D2 generator instead of positing it |
 | massdesigns | a02602f5 | INTEGRATED M | I/P-K: spinor_lagrange (|ψ|²|φ|²=|<ψ,φ>|²+|ψ∧φ|²), pair_disagreement_eq (|ψ∧φ|²=sin²(θ/2)=chordal dist). Bundle mass = pairwise energy on S² -- spherical-code foundation |
 | divisionselection | 79b0b772 | INTEGRATED M | N: division_algebra_selection (Composes ∧ ContinuousPhase ⟺ k=C) => dimension_is_four. R fails continuity, H/O fail commutativity; only C. Feeds Q5. Boundary: Minkowski/Lorentz IDs are motivating docstrings, algebraic core proved |
+
+## Tally (2026-07-08)
+Harvested 22 of 23 jobs (finitecpt R still running). Integrated as M/structural: 4 proof
+wins (nulldecomp, chiralindex, bindingdeficit, schurseesaw) + subluminal + mass<=energy
+(earlier) + 13 strategy wins (bindingplane, confinementpositivity, positivesectors,
+eslotgeometry, carrierrigidity[nuanced], checkerboardbridge, windinglowmodes, massthermo,
+signatureforcing[rung1], finitelevinson, wayturn, phasediagram, spectraldistance,
+modularselection, massdesigns, divisionselection). No-gos recorded: familyindex (three
+not forced), carrierrigidity (non-rigid). Superseded: cpholonomy (Bargmann is the home).
+Every integrated module builds green in-project, footprint [propext, Classical.choice,
+Quot.sound]. Manuscript: S3 bidirectional thesis, S3a binding=deficit (C->M), S9 carrier
+binds unconditionally (C->M), S4 rigidity partly-resolved. Follow-up round of 4 closers
+submitted (siglorentz, rigidityaxiom, familyrankfix, bargmanncp). REMAINING: harvest
+finitecpt (R) + the 4 follow-ups when they land.
