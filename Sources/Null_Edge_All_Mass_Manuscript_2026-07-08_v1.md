@@ -1330,11 +1330,13 @@ is odd yet **gaps** the mode, while the even `diag(0,m)` does **not**. So
 block shape as `A`), not a chiral law. The genuine chiral / sublattice (SSH–BdG)
 protection — where odd perturbations preserve a zero mode — requires an **imbalanced**
 grading (nonzero index) and is `[import]`, *not* demonstrated by this balanced 2-D toy;
-what the toy honestly delivers is only the counterexample to "every potential." So
-the honest statement is *chiral-symmetry-conditional* protection, the finite analog of
-SSH / BdG sublattice zero modes (`[import]`), **not** immunity to *every* potential.
-The imbalance cannot be lifted by any *odd* perturbation; that is the true, narrow
-content.
+what the toy honestly delivers is only the counterexample to "every potential." The
+takeaway is therefore narrow: `EvenMassGaps` refutes "immune to every potential" (an
+even mass gaps the mode) but does **not** itself establish chiral protection. The
+genuine SSH / BdG chiral-conditional protection — where odd perturbations *do* preserve
+a zero mode — is real physics (`[import]`) but lives in the *imbalanced* (nonzero-index)
+case, which this balanced 2-D toy does not exhibit; a correct finite demonstration needs
+that imbalance.
 
 **Masslessness is not one thing — a taxonomy (all four kinds kernel-checked).**
 The framework separates *four distinct mechanisms* by which a mode is massless, and
