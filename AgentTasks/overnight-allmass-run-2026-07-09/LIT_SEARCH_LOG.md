@@ -146,3 +146,14 @@ cites it.
 - ACTION: corrected s10a posture to report the CURRENT VERDICT (live but disfavored: rare SN fit + CMB
   struggle), not just 'friendly to a deviation'. This is 'keep every sentence honest' applied to the
   observational posture - reading the paper's content, reporting the unfavorable result faithfully. +ref note.
+
+## 2026-07-09 ~late-afternoon - Claude - hyperuniformity (Torquato-Stillinger) NOT locally verifiable
+- Tool: neo4j_paper_search.py --chunks. Query: hyperuniform structure factor S(k) suppressed density
+  fluctuations Torquato Stillinger sub-extensive number variance.
+- RESULT: NOT in the null-edge collection (condensed-matter, not causal-set; top hits tangential:
+  higher-order Laplacian RG 2401.11298, Bell model, QFT-on-causets density-dependence). So the
+  Torquato-Stillinger hyperuniformity reference CANNOT be content-verified here - stays NEEDS-VERIFY.
+- HONEST STATUS: the manuscript s10a fork uses the standard hyperuniformity DEFINITION (S(k)->0 as k->0,
+  translation-invariant), which is textbook and correctly stated; it does NOT lean on a specific T-S
+  result. The specific citation remains NEEDS-VERIFY (not in local graph); do not quote a T-S internal
+  result without external verification. The concept as used is standard [import].
