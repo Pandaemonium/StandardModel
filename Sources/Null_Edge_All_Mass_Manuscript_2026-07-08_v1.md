@@ -6,7 +6,8 @@ their directions — and, conversely, every mass decomposes this way: every
 timelike momentum is a sum of null momenta, and every mass² is a
 disagreement of massless edges (bidirectional and universal, grade
 T/M). A single Dirac-type square resolves that disagreement into four
-force-shaped channels — aperture, closure, turn, soldering — now shown to
+force-shaped channels — aperture, closure, turn, soldering (a *chosen* graded projection of the one
+square, not a canonical decomposition — an independent audit is explicit on this) — now shown to
 be the relevant/marginal coordinates of the finite renormalization-group
 flow (M). What is earned is the decomposition, not the spectrum:
 identifying the four channels with the Standard Model's mass mechanisms is
