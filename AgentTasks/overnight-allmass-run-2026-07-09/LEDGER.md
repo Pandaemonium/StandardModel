@@ -1766,3 +1766,49 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   naively "mass commutes with g5" next to ZigzagWeyl's "mass is chiral-odd"); anchor row must cross-ref
   ZigzagWeyl and name the two faces. Do NOT silently merge the conventions (AGENTS.md). The dirac-det job
   (9e8296eb) has NO such issue (det(pslash-m), chirality-neutral) - land normally.
+
+### 2026-07-09 12:12 PDT - Codex - harvested 1115 wave and launched 1220 ambitious proof wave - Builder
+- HARVESTED [M]: downloaded and landed all seven `codex-ambitious-wave-1115` results:
+  `CarrierDynamicsCapstone` (7c5b124e), `AllMassMasterCapstone` (eaf01c04),
+  `NeutrinoCPSeesawBridge` (f02faec3), `GoalIVReconciliationCapstone` retry
+  (0de5b7d5), `LambdaGravityCosmologyBridge` (eb6a3b29),
+  `InformationResourceBridge` (81e1458a), and `KMC3FlagshipCapstone` (bcbc8ee3).
+  The Goal IV retry replaced the earlier local repair with Aristotle's more explicit proposition
+  statements. Added all needed `PhysicsSMDraft.lean` imports.
+- CHECKS: targeted builds passed for all seven modules:
+  `lake build PhysicsSM.Draft.NullEdge.Carrier.CarrierDynamicsCapstone`;
+  `lake build PhysicsSM.Draft.NullEdge.KMC3FlagshipCapstone`;
+  `lake build PhysicsSM.Draft.NullEdge.NeutrinoCPSeesawBridge`;
+  `lake build PhysicsSM.Draft.NullEdge.GoalIVReconciliationCapstone`;
+  `lake build PhysicsSM.Draft.NullEdge.LambdaGravityCosmologyBridge`;
+  `lake build PhysicsSM.Draft.NullEdge.InformationResourceBridge`;
+  `lake build PhysicsSM.Draft.NullEdge.AllMassMasterCapstone`.
+  Placeholder scan on the seven harvested files is clean after prose hygiene patches.
+- REFILL [ambitious proof wave, no audit jobs]: prepared
+  `AgentTasks/aristotle-submit/codex-ambitious-wave-1220-20260709-project` and launched seven
+  `codex-` jobs now RUNNING:
+  50b12096 `AllMassGrandMeshCapstone`,
+  1e2e2a9e `KMNeutrinoFamilyAnomalyCapstone`,
+  7b98a909 `LambdaGravityResourceMasterCapstone`,
+  1c07ed70 `CarrierDynamicsRGInformationCapstone`,
+  e2441d5f `ParticleMassMechanismMasterCapstone`,
+  1c184e23 `SuiteCDMasterCapstone`,
+  7f679d78 `FiniteDynamicsNoetherThermoCapstone`.
+
+### 2026-07-09 ~afternoon - Claude - LANDED DiracOperatorMassShellDet (4-spinor det face of mass) - DraftLead
+- HARVESTED claude-dirac-operator-massshell-det (9e8296eb, COMPLETE). det(pslash - m.1) = (m^2-E^2+kz^2)^2
+  = (m^2-p^2)^2: vanishes EXACTLY on the mass shell (det=0 <-> E^2-kz^2=m^2, D singular), positive square
+  off shell (D invertible). pslash^2=(E^2-kz^2).1 makes the char poly a perfect square -> sqrt cancels ->
+  purely rational (cofactor det + ring). The 4-spinor companion to the 2x2 little-group det P = m^2;
+  realizes the program's det D(q)=0 mass-shell test (AGENTS.md NullStrand). massless_det: at m=0 det =
+  (E^2-kz^2)^2 = (det P)^2 (stated as interpretation - little-group P is a SEPARATE object, no false-shape).
+- Semantic review: aligned (D_eq matches hand computation; det matches numeric pre-check on/off/massless
+  5,3,4/3/0 -> 0/49/256). No convention issue (chirality-neutral determinant). Ported to
+  PhysicsSM/Draft/NullEdge/DiracOperatorMassShellDet.lean. In-project lake build GREEN (8026 jobs).
+  Footprint [propext,Classical.choice,Quot.sound] via 9 build-enforced #guard_msgs pins. 0 term-position
+  sorry. Provenance PhysLean spaceTime.gamma, clean-room (no import).
+- LANDED: module + PhysicsSMDraft edge + §3 anchor row (5 grep-verified names, after SigmaMapNullEdges in
+  the det-P cluster) + this ledger, one commit. Two determinant faces of mass now grounded: 2x2 little
+  group (det P=m^2) + 4x4 Dirac operator (det D=(m^2-p^2)^2).
+- STILL TO LAND: chiral-breaking (a454d0c6, COMPLETE, reviewed - clean, contains its own reconciliation
+  seed g5_commutes_mass + mass_bilinear_couples_chirality) - land next WITH the convention guard.
