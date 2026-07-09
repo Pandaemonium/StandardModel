@@ -93,3 +93,12 @@ cites it.
   is dual to a Riemannian manifold"). Both ALREADY in References. This directly supports the audit's
   point: the finite avatar (no manifold/heat kernel) CANNOT reproduce a2~integral R - so finite
   tr(D^2)=EH is labeling. CC-orig ref note upgraded to CONTENT-VERIFIED.
+
+## 2026-07-09 ~late-afternoon - Claude - verify the CC-problem [import] (s10a order-0 correction)
+- Tool: neo4j_paper_search.py --chunks. Query: cosmological constant problem vacuum energy matter loops
+  renormalize 120 orders Weinberg.
+- CONFIRMED: the matter-loop vacuum-energy renormalization (the ~120-orders CC problem the s10a order-0
+  correction leans on) is in-graph via Burgess review arXiv:1309.4133 ("The Cosmological Constant Problem:
+  Why it's hard to get Dark Energy from Micro-physics"). Supports the correction: matter loops DO feed
+  Lambda, so the order-0 'no channel pathway' ASSUMES the feedback away (honest about the toy, not the vacuum).
+- Weinberg1989 ref note upgraded to CONTENT-VERIFIED via Burgess.
