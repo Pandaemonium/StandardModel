@@ -246,6 +246,15 @@ Codex lane now has seven fresh running jobs including the three submitted at 00:
 cf44fb39 (Goal II general-N), 19113426 (Goal IV WEP/action), 8ba14f43 (seed-module audit).
 Packaging boundary: Aristotle CLI warned the slim packages contain Lean files but no `.lake` folder; this is expected for focused packages, but the warning is recorded. Main-checkout targeted builds are the local verification evidence, not package builds.
 
+### 2026-07-09T04:33:44.8957806-07:00 - Codex - HARVEST Spark Goal II lit sidecar
+Hat: Oracle + Registrar.
+Spark sidecar `Mencius` returned a Goal II/Suite C literature/API sweep:
+- Sources: KM 1973, CKM property/parametrization references, rephasing-invariant mixing-matrix papers, generalized Jarlskog invariants, and graph cycle-nullity/cycle-space references.
+- Lean leads: Mathlib `SimpleGraph.IncMatrix`, `SimpleGraph.Finite`, `SimpleGraph.LapMatrix`, and rank-nullity APIs.
+Action:
+- Appended one MEMO/reference line to `LIT_SEARCH_LOG.md`.
+Boundary: citation readiness not claimed; paper chunks and exact module APIs still need verification before manuscript citation.
+
 ### 2026-07-09 ~00:10 - Claude - harvested Goal III + Suite A; audit addressed; lane refilled - Builder/Registrar
 - HARVESTED 2 wins (built in-project, guard-pinned, committed):
   - Goal III `Goal3ExactRG` [M, all 4 rungs]: exact rational RG R(lam,kap)=(lam-2k^2/lam,-k^2/lam);
@@ -340,3 +349,15 @@ Next: harvest S4a; P2 manuscript consolidation (anchor rows for the landed Goal 
   4-channel RG (adds soldering E; is it an RG coordinate?). Mirrors the pattern that built cleanly.
 - Claude-lane landed M this run: Goal3ExactRG, Goal3ChannelRG, Goal3BoostCovRational, SuiteAOp2Geom,
   Goal1Hadron, Goal1Rung5Tie + P0 closers. Held (build-cost, documented): BoostCov-trig, B1, D5, D2.
+
+### 2026-07-09 ~04:55 - Claude - full 4-channel RG lands; confinement kill-test out - Builder/DraftLead
+- `Goal3ChannelRG4` [M] LANDED (verified in-project, guard-pinned): full 4-channel RG. Critical 4x4
+  Jacobian char poly (x-2)(x+1)(x+2)(x-3); soldering eigenvalue 3 = RELEVANT. VERDICT: ALL FOUR
+  named channels (aperture/closure/turn/soldering) are relevant/marginal RG coordinates; geometry
+  does NOT decouple. Folded into manuscript §4a point 4 (completes the channel-name RG evidence) +
+  anchor row + future-directions + sweep note. (User: keep pushing frontier.)
+- New frontier job out (self-contained, rule v3): `Goal1Confinement` 6ee59b4e - dynamical
+  confinement kill (no colored 2-particle state below the singlet bound state), closing a
+  pre-registered kill on the landed toy hadron.
+- Claude-lane M this run now: Goal3ExactRG, Goal3ChannelRG, Goal3ChannelRG4, Goal3BoostCovRational,
+  SuiteAOp2Geom, Goal1Hadron, Goal1Rung5Tie + P0 closers. Held (build-cost): BoostCov-trig, B1, D5, D2.
