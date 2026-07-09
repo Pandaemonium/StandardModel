@@ -1240,14 +1240,34 @@ single action is now varied *both* ways in one kernel-checked statement: the
 gravity equation is soldering-stationarity `dS/dE = 0` and the matter equation is
 coupling-stationarity `dS/dg = 0`, genuinely distinct and met together at an
 explicit joint stationary point `(E*,g*)` (`UnifiedActionVariation`, **M**) — the
-*variational* route to the finite field equation, complementary to the *Jacobson
-equation-of-state* route above (the two classical derivations of the Einstein
-equation, both realized on the same finite action; the Goal-IV WEP lane supplies
-the equation-of-state half). This is
+*variational* route to the finite field equation, alongside the *Jacobson
+equation-of-state* route above. This is
 the finite, structural unification of gravity and matter — *not* quantum gravity
 (no dynamical quantized metric, no graviton) and *not* a continuum reduction; the
 full development, and the reconciliation with the Goal-IV WEP/action lane, is the
 P-L program (`Null_Edge_Future_Directions.md`).
+
+**Honesty note (what the finite avatar does and does not earn).** An adversarial
+audit (`AgentTasks/.../audits/REDTEAM_gravity_lambda_20260709.md`) is right on two
+points. First, the *content* of "order-2 = Einstein–Hilbert, order-4 = matter" lives
+in the **Chamseddine–Connes spectral action** (`[import]`): the heat-kernel /
+Seeley–deWitt expansion of `Tr f(D/Λ)` is the theorem that makes `a₂ ∝ ∫R√g` with a
+definite sign and Newton-constant normalization. A *finite* module has no manifold,
+no short-time limit, and no heat-kernel expansion, so in the finite avatar the
+identification "`tr(D²)` = curvature" is **definitional bookkeeping**, not that
+theorem — `UnifiedActionVariation` / `SpectralActionAvatar` are a machine-checkable
+*avatar of* the spectral action's graded structure, not an instance of its
+nontrivial content, and the sign/normalization that would fix `G` is not forced by
+anything finite. Second, the variational, Jacobson equation-of-state, teleparallel,
+and WEP `G=κT` routes are **not** independent corroborations: teleparallel gravity is
+provably equivalent to GR (TEGR ≡ GR), and the rest are the *same* field equation
+seen through its action, thermodynamic, and conservation faces — one fact in several
+standard presentations, not five derivations. What the finite layer contributes is
+the kernel-checked *bookkeeping* that the graded pieces separate by order and co-vary
+from one functional; the physics is `[import]`. The pre-registered §7 kill is the
+**Bianchi test**: `dS/dE = 0` must yield a divergence-free rank-2 (contracted-Bianchi)
+structure paired with `∇·T = 0`, or it is a scalar constraint mislabeled the Einstein
+equation.
 
 ---
 
@@ -1846,9 +1866,17 @@ under *every* deformation of `D` — no gauge move, channel coupling, or solderi
 decoration changes it (`order0_deformation_invariant`, **M**): there is **no
 channel pathway into `Λ`**. The invariance itself is trivial — `tr(1)` contains no
 `D`, so the proof is arithmetic; the content is the *placement*, that the spectral
-action puts `Λ` at the one order the deformation algebra cannot reach. Read
-positively, this is the finite shadow of why the magnitude problem is hard: matter
-physics cannot renormalize `Λ`; only the *count* can. A uniform vacuum shift `D#D → D#D + c·1` is absorbed into the unimodular
+action puts `Λ` at the one order the *finite* deformation algebra cannot reach — and,
+honestly, this is only the invariance of `dim H`. It cuts both ways, and the audit is
+right to press it: in the *real* cosmological-constant problem quantum matter loops
+(the order-4 sector) **do** renormalize the vacuum energy — the ~120-orders
+discrepancy *is* that feedback (Weinberg 1989, `[import]`). A finite avatar in which
+order-4 cannot by construction feed order-0 has not *protected* `Λ`; it has **assumed
+the feedback away**, so "no channel pathway into `Λ`" restates the model's own
+compartmentalization rather than deriving anything about the vacuum. What the finite
+layer legitimately shows is only that `Λ` sits at the order the finite deformation
+algebra cannot reach; whether that survives a continuum with genuine matter-loop
+feedback is the imported open problem, not something claimed here. A uniform vacuum shift `D#D → D#D + c·1` is absorbed into the unimodular
 multiplier and leaves the physical, count-fluctuation `Λ` unchanged
 (`VacuumSequestering`, **M**) — the finite sequestering statement. Sharpened, this
 is a **three-`Λ` split**: a bare order-0 `Λ_bare` (adjustable), a radiative
@@ -1889,16 +1917,28 @@ a regular or hyperuniform point set picks out a preferred frame (Sorkin;
 Bombelli–Henson–Sorkin, `[import]`) — so the hyperuniform branch does not come
 free, it costs Lorentz invariance. To the extent the framework's *own* Lorentzian
 selection (`RPSelectsLorentzian`, §8) governs the count statistics, it points to
-Poisson, and everpresent-`Λ` survives. The *finite core* of that implication is now
-a theorem: a **frame-blind** (permutation-invariant) count covariance is exactly
-`a·I + b·J`, and its **only** suppressible mode is the uniform grand total — so any
-hyperuniform suppression of a *regional* (non-uniform) `Λ`-mode requires a preferred
-covector and breaks frame-blindness (`LambdaFrameConstraint.perm_inv_iff_aI_bJ`,
-`suppressed_dir_is_uniform`, **M**, with an explicit non-uniform-suppressing PSD
-control). Frame-blindness therefore leaves the regional `Λ`-fluctuations extensive
-— the everpresent branch. Lifting the *finite* frame-blindness to *continuum*
-Lorentz invariance is the remaining `[import]` step, and which count nature the
-framework ultimately selects stays the open **C**.
+Poisson, and everpresent-`Λ` survives. Two statements must be kept apart here, and an
+adversarial audit (`AgentTasks/.../audits/REDTEAM_gravity_lambda_20260709.md`) sharpened
+the line. The genuine "hyperuniform costs Lorentz invariance" result is the
+**Bombelli–Henson–Sorkin** uniqueness theorem — Poisson sprinkling is the *unique*
+Lorentz-invariant discrete point process on Minkowski space, so a hyperuniform
+(non-Poisson) process is *not* Lorentz-invariant (BHS 2009, `[import]`). Our finite
+`LambdaFrameConstraint` does **not** prove that; it proves a *weaker and different* fact
+— the de Finetti / **exchangeability** statement that a permutation-invariant (`S_N`)
+count covariance is exactly `a·I + b·J`, whose only suppressible mode is the uniform
+grand total (`perm_inv_iff_aI_bJ`, `suppressed_dir_is_uniform`, **M**, with an explicit
+control). Permutation invariance ("every pair of cells equally correlated regardless of
+separation") is a *cruder* symmetry than Lorentz invariance, and — unlike Lorentz — is
+**not** the property hyperuniformity violates: hyperuniformity is the *translation-
+invariant, distance-dependent* condition `S(k) → 0` as `k → 0`, and translation- and
+rotation-invariant hyperuniform processes exist. So `LambdaFrameConstraint` is an honest
+finite remark about *exchangeable* ensembles, not the Lorentz core; the Lorentz core
+stays `[import]` (BHS). Which count nature the framework selects remains the open **C**,
+and the *sharp, decidable* form of the fork is the count-variance exponent: everpresent
+survives iff `Var(N) ∝ N` (exponent `α = 1`), and a hyperuniform `α < 1` gives
+`Λ_rms ∝ N^{α/2−1}` — faster decay than `N^{−1/2}`, killing the `10⁻¹²²` number *and*
+(by BHS) breaking Lorentz invariance. `α = 1` keeps the number but forfeits hyperuniform
+novelty; `α < 1` gains novelty but kills the number — not both.
 
 **What this is, and is not.** The exponent `Λ_rms ∝ N^{−1/2}` (deviation measuring
 hyperuniformity) is the framework's only admissible numeric claim — an exponent,
@@ -2009,7 +2049,7 @@ anchor sweep.)*
 | 10a | `multiplier_field_equation`, `vacuum_shift_is_gauge` | `NullEdge/LambdaUnimodular.lean` | M, self-guarded (in-file pin) | **finite unimodular trade**: count-constrained stationarity ⇒ `+Λ·1` multiplier; the vacuum mean is gauge on the constraint surface (fluctuation physical). Converts `Λ`–`V` conjugacy toward finite M |
 | 10a | `bernoulli_bound`, `lambda_rms_upper_bound` | `NullEdge/LambdaSusceptibility.lean` | M, self-guarded (in-file pin) | **`Λ` as a susceptibility**: `Var(N)=Σpᵢ(1−pᵢ)≤⟨N⟩` (Bernoulli), so `Λ_rms ≤ 1/√⟨N⟩` — everpresent as an upper bound for the ideal edge gas, extremal in the Poisson limit |
 | 10a | `everpresent_iff_extensive` | `NullEdge/LambdaCountDichotomy.lean` | M, self-guarded (in-file pin) | **the pre-registered fork**: on finite witnesses, free count = extensive `Var~N` (everpresent survives) vs sum-constrained = sub-extensive (hyperuniform, `Λ` suppressed); `everpresent_iff_extensive` is the kill criterion. Which branch nature picks stays **C** |
-| 10a | `perm_inv_iff_aI_bJ`, `suppressed_dir_is_uniform`, `nonuniform_suppression_breaks_symmetry` | `NullEdge/LambdaFrameConstraint.lean` | M, self-guarded (in-file pin) | **frame-blindness forces the everpresent branch**: a permutation-invariant (frame-blind) count covariance is exactly `a·I+b·J`, and its *only* suppressible mode is the uniform grand total; suppressing a regional (non-uniform) `Λ`-mode requires a preferred covector, breaking frame-blindness (explicit PSD control). The finite core of "hyperuniform costs a preferred frame"; continuum-Lorentz lift stays `[import]`, selection stays **C** |
+| 10a | `perm_inv_iff_aI_bJ`, `suppressed_dir_is_uniform`, `nonuniform_suppression_breaks_symmetry` | `NullEdge/LambdaFrameConstraint.lean` | M, self-guarded (in-file pin) | **exchangeable (de Finetti) covariance fact**: a permutation-invariant (`S_N`) count covariance is exactly `a·I+b·J`, and its *only* suppressible mode is the uniform grand total (explicit PSD control). Honest scope (per audit): this is the *exchangeability* statement, **not** the Lorentz one — the real "hyperuniform ⇒ not Lorentz" is Bombelli–Henson–Sorkin `[import]`; `S_N` is cruder than Lorentz and hyperuniformity is translation-invariant (`S(k)→0`), so this does not by itself force the everpresent branch |
 | 10a | `uniform_shift_sequestered`, `observed_is_count`, `three_lambda_verdict` | `NullEdge/LambdaThreeSplit.lean` | M, self-guarded (in-file pin) | **the three-`Λ` split**: bare `Λ_bare` (adjustable) + induced `Λ_ind` (matter block) + observed `Λ_obs`; the traceless/unimodular projection kills every uniform shift, so the sequestered operator is independent of `Λ_bare` and only the count-set `Λ_obs` survives. Sharpens `VacuumSequestering`. Honest: the "observed=count" leg is definitional; the content is the projection annihilating bare+uniform shifts |
 | 10a | `support_uncertainty`, `conjugacy_verdict` | `NullEdge/LambdaConjugacy.lean` | M, self-guarded (in-file pin) | **`Λ`–count conjugacy, native**: the count and `Λ` registers are a finite Fourier pair with a Donoho–Stark support-uncertainty trade (`\|supp f\|·\|supp Ff\|≥n`); sharp count ⇔ maximally unsharp `Λ` |
 | 10a | `count_variances`, `lambda_covariance`, `correlation_length_reading`, `distinguisher_verdict` | `NullEdge/LambdaTwoRegionCovariance.lean` | M, self-guarded (in-file pin) | **the `Λ` two-region fingerprint**: `Cov(Λ₁,Λ₂)=b/(⟨N₁⟩⟨N₂⟩)` set by the *shared* causal-overlap count `b`; correlation → 1 nested, → 0 decoupled — long-range/horizon-scale, distinct from a local quintessence fluid (observational distinguisher) |
