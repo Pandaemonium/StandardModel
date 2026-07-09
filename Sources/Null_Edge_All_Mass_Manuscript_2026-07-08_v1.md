@@ -364,7 +364,14 @@ the table on the momentum + polarization side:
   its own antiparticle. The distinction is exactly whether the CPT-conjugate zigzag
   is a *new* state or the *same* one (`NeutrinoDiracMajorana.neutrino_verdict`,
   `lepton_number`, **M**). *Which* nature the physical neutrino has stays open; this
-  is the finite structure of the two options, not a prediction.
+  is the finite structure of the two options, not a prediction. And the Majorana
+  option comes with a *reason for lightness*: a heavy Majorana partner `M_R` seesaws
+  the active neutrino down to a light mass bounded by `|m_ν| < m_D²/M_R`, of opposite
+  sign to the heavy state, with the two masses' product pinned at `m_D²` — the
+  finite type-I seesaw, kernel-checked without square roots via Vieta
+  (`NeutrinoSeesaw.seesaw_bound`, `seesaw_verdict`, **M**; suppression is `M_R`-driven,
+  shown against a no-hierarchy control). A light neutrino is the null-edge fingerprint
+  of a heavy self-conjugate partner — a structural suppression, not a mass value.
 
 The table, read off the momentum Gram and the polarization count (all **M**):
 
@@ -1896,6 +1903,8 @@ anchor sweep.)*
 | 2b | `alpha_sq_one`, `velocity_spectrum`, `massless_luminal` | `NullEdge/DiracVelocityOperator.lean` | M, self-guarded (in-file pin) | **instantaneous velocity is exactly `±c`**: the Dirac velocity operators satisfy `αᵢ²=1`, `tr αᵢ=0`, so spectrum `= {+1,−1}` (mult 2), explicit `±1` eigenvectors; mass term anticommutes with each `αᵢ`. A fermion is internally always at `c` |
 | 2b | `massless_decouples`, `mass_couples`, `zigzag_verdict` | `NullEdge/ZigzagWeyl.lean` | M, self-guarded (in-file pin) | **Penrose zigzag**: massless ⇒ two decoupled null Weyl operators; mass is the chiral-odd coupling that swaps them; `D(m)²=(kinetic²)+m²` (3-4-5 shell). Massive Dirac = two null pieces coupled by mass |
 | 2b | `drift_subluminal_from_average`, `massless_limit`, `zitterbewegung_verdict` | `NullEdge/ZitterbewegungAverage.lean` | M, self-guarded (in-file pin) | **Zitterbewegung average**: drift `v̄=p/E`, `v̄²=1−m²/E²` as a convex average of `±1` (weights set by `m/E`); massless ⇒ single luminal channel, rest ⇒ 50/50 zigzag. Ties instantaneous `±c` to the subluminal drift |
+| 2b | `dirac_two_states`, `majorana_self_conjugate`, `lepton_number`, `neutrino_verdict` | `NullEdge/NeutrinoDiracMajorana.lean` | M, self-guarded (in-file pin) | **Dirac vs Majorana structure**: Dirac mass → independent CPT-partner (`Θψ≠ψ`), conserves lepton number (`[M_D,Q]=0`); Majorana mass → self-conjugate sector (`Θψ=ψ` witness), violates it (`[M_M,Q]≠0`, entry `−2`). Distinction = new state vs same state; nature stays open |
+| 2b | `char_vieta`, `seesaw_bound`, `seesaw_verdict` | `NullEdge/NeutrinoSeesaw.lean` | M, self-guarded (in-file pin) | **type-I seesaw**: `M=[[0,m_D],[m_D,M_R]]` has `det=−m_D²`, `trace=M_R`; a heavy Majorana `M_R` suppresses the light eigenvalue to `\|m_ν\|<m_D²/M_R` (opposite sign, product pinned at `m_D²`), no square roots via Vieta; suppression `M_R`-driven vs a no-hierarchy control. Why a Majorana partner makes ν light |
 | 2b | `photon_one_edge`, `massive_vector_two_edges`, `edge_count_eq_pol_minus_one`, `universal_verdict` | `NullEdge/PhotonSingleEdge.lean` | M, self-guarded (in-file pin) | **mass=disagreement across spin (gauge bosons)**: photon = 1 null edge / 2 pol; massive vector = 2 edges (`det=m²`) / 3 pol; `edges = pol−1`, `m≠0 ⇔ 2 edges ⇔ 3 pol`. Extends the edge-count reading to spin-1 |
 | 2b | `massless_two_polarizations`, `massive_three_polarizations`, `longitudinal_is_mass` | `NullEdge/HiggsLongitudinalMode.lean` | M, self-guarded (in-file pin) | **the longitudinal mode is the mass**: `2 (transverse) + 1 (longitudinal/eaten Goldstone) = 3` for a massive vector, dropping to `2` when massless — the vector-boson mass is the extra null mode (gauge/Higgs channel) |
 | 2b | `theta_swaps_weyl`, `spectrum_conjugate_paired`, `antiparticle_verdict` | `NullEdge/CPTAntiparticleZigzag.lean` | M, self-guarded (in-file pin) | **antimatter = CPT-mirror zigzag**: `Θ=C·Γ_rev·#` is chiral-odd, swaps the two null Weyl pieces, conjugate-pairs the spectrum — matter/antimatter are the two CPT-orientations of one null-edge pair; asymmetry is a state, not a law |

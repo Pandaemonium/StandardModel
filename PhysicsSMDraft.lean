@@ -211,6 +211,7 @@ import PhysicsSM.Draft.NullEdge.HiggsLongitudinalMode
 import PhysicsSM.Draft.NullEdge.MasslessEdgeCount
 import PhysicsSM.Draft.NullEdge.MinkowskiConvention
 import PhysicsSM.Draft.NullEdge.NeutrinoDiracMajorana
+import PhysicsSM.Draft.NullEdge.NeutrinoSeesaw
 import PhysicsSM.Draft.NullEdge.PhotonSingleEdge
 import PhysicsSM.Draft.NullEdge.PhotonHiggsCPTCapstone
 import PhysicsSM.Draft.NullEdge.MasslessParticleTableCapstone
