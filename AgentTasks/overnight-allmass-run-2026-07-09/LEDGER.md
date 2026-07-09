@@ -1534,3 +1534,11 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   [orig] physics; the discipline + finite verification are the contribution. Scorecard updated.
 - PhysLean mined (lean-explore): submitted dirac-gamma-physlean port (exact spaceTime.gamma Dirac-rep,
   Clifford {g^mu,g^nu}=2eta) - addresses the 'narrow PhysLean mining' note.
+
+### 2026-07-09 ~late-afternoon - Claude - 2 more lands (exponent-fork, higgs-dof); PhysLean port in flight - DraftLead
+- LANDED [M]: `LambdaExponentFork` (cd2c7533) - the SHARP decidable Lambda fork: lamExp(a)=a/2-1,
+  =-1/2 iff a=1; hyperuniform a<1 -> faster decay (10^-122 fails). Kernel-checks the pre-registered
+  kill added to 10a prose. s10a anchor + prose citation.
+- LANDED [M]: `HiggsDofConservation` (1710c7a9) - Higgs mechanism = exact dof conservation 2+2=3+1,
+  general 2n+s=3n+(s-n). Goldstone -> longitudinal transfer. s2b anchor.
+- All cited names verified to resolve (sweep discipline). LANE: dirac-gamma-physlean RUNNING (1).
