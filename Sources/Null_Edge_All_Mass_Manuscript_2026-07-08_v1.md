@@ -1925,7 +1925,10 @@ the feedback away**, so "no channel pathway into `Λ`" restates the model's own
 compartmentalization rather than deriving anything about the vacuum. What the finite
 layer legitimately shows is only that `Λ` sits at the order the finite deformation
 algebra cannot reach; whether that survives a continuum with genuine matter-loop
-feedback is the imported open problem, not something claimed here. A uniform vacuum shift `D#D → D#D + c·1` is absorbed into the unimodular
+feedback is the imported open problem, not something claimed here.
+
+**Sequestering removes the adjustable pieces.** A uniform vacuum shift
+`D#D → D#D + c·1` is absorbed into the unimodular
 multiplier and leaves the physical, count-fluctuation `Λ` unchanged
 (`VacuumSequestering`, **M**) — the finite sequestering statement. Sharpened, this
 is a **three-`Λ` split**: a bare order-0 `Λ_bare` (adjustable), a radiative
@@ -1960,15 +1963,9 @@ branches are exhibited on finite witnesses, with the criterion
 framework's own Gauss/gauge constraints select — the sub-question *which count is
 conjugate to `Λ`* — is the decidable open question where this program can exceed
 the borrowed mechanism (grade **C**, a pre-registered kill). The fork is not
-symmetric, and the asymmetry is a handle the framework inherits: in the causal-set
-programme the **Poisson** branch is the *unique* Lorentz-invariant discretization —
-a regular or hyperuniform point set picks out a preferred frame (Sorkin;
-Bombelli–Henson–Sorkin, `[import]`) — so the hyperuniform branch does not come
-free, it costs Lorentz invariance. To the extent the framework's *own* Lorentzian
-selection (`RPSelectsLorentzian`, §8) governs the count statistics, it points to
-Poisson, and everpresent-`Λ` survives. Two statements must be kept apart here, and an
-adversarial audit (`AgentTasks/.../audits/REDTEAM_gravity_lambda_20260709.md`) sharpened
-the line. The genuine "hyperuniform costs Lorentz invariance" result is the
+symmetric, and an adversarial audit
+(`AgentTasks/.../audits/REDTEAM_gravity_lambda_20260709.md`) sharpened exactly why —
+two statements must be kept apart. The genuine "hyperuniform costs Lorentz invariance" result is the
 **Bombelli–Henson–Sorkin** uniqueness theorem — Poisson sprinkling is the *unique*
 Lorentz-invariant discrete point process on Minkowski space, so a hyperuniform
 (non-Poisson) process is *not* Lorentz-invariant (BHS 2009, `[import]`). Our finite
@@ -1982,7 +1979,10 @@ separation") is a *cruder* symmetry than Lorentz invariance, and — unlike Lore
 invariant, distance-dependent* condition `S(k) → 0` as `k → 0`, and translation- and
 rotation-invariant hyperuniform processes exist. So `LambdaFrameConstraint` is an honest
 finite remark about *exchangeable* ensembles, not the Lorentz core; the Lorentz core
-stays `[import]` (BHS). Which count nature the framework selects remains the open **C**,
+stays `[import]` (BHS). (To the extent the framework's *own* Lorentzian selection
+(`RPSelectsLorentzian`, §8) bears on the count statistics it would point to Poisson —
+but that is a conjectural bridge, not something `LambdaFrameConstraint` establishes.)
+Which count nature the framework selects remains the open **C**,
 and the *sharp, decidable* form of the fork is the count-variance exponent: everpresent
 survives iff `Var(N) ∝ N` (exponent `α = 1`), and a hyperuniform `α < 1` gives
 `Λ_rms ∝ N^{α/2−1}` — faster decay than `N^{−1/2}`, killing the `10⁻¹²²` number *and*
