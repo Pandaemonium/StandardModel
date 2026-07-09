@@ -96,10 +96,37 @@ Repo-level — update IN THE SAME COMMIT as the work:
   harvests and semantic reviews.
 Everything else is read-only context; when in doubt, ledger first.
 
+**Source analyses (read-only; this plan distills them — consult for the full
+argument, extra rungs, and literature anchors a summary can't carry).** The raw
+Pro/Fable responses that seeded this run live in this directory:
+- `2026-07-08_FABLE_four-assembly-goals.md` — the source for sec 2 (Goals I-IV),
+  with each goal's statement-shape and kill reasoning spelled out.
+- `2026-07-08_FABLE_four-theorem-suites.md` — the source for sec 2b (Suites
+  A-D): the boxed stretch theorems, full kill lists, and the Builder / Assassin
+  / Oracle / Registrar structure.
+- `2026-07-08_FABLE_foundations-inputs-to-theorems.md` — the deepest detail for
+  **Suite A** (signature forcing two-rung argument; the R/C/H/O division-algebra
+  discriminators; the (2,2)-vs-(1,3) reflection-positivity + celestial-sphere
+  overdetermination; the `v_g` subluminality derivation; universality z=1; CPT).
+  Read before working any Suite A or Goal III rung.
+- `2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md` — the deepest detail
+  for **Suites C/D**: mass=energy AM-GM, the EGY identity `V^2 + m^2/m^2_max=1`,
+  the Higgs-as-WAY-reservoir template, confinement-as-BRST-code-distance (a
+  proof STRATEGY for `ConfinementPositivity`: bound colored-sector norms via the
+  area law), modular selection as a GGE, the P-K spherical-code/design family,
+  and the **two-twistor prior-art flag** (Penrose/Perjes/Hughston — lit cadence,
+  sec 5) that gates P-B.
+- `2026-07-08_PRO_finite-information-ontology-reframing.md` — the full
+  finite-null-information-dynamics ontology (`I = (A, H_dir, H_int, D, J,
+  Gamma, C)`), including the path-conditioned visible state `rho_dir` that
+  **Suite B rung B1** formalizes. The reframing itself is [spec]; mine it for
+  the B1 object and the codeword/decoding vocabulary, not for claims.
+
 ## 2. The four assembly goals (rungs + kills + seed imports)
 
 Each goal is a CHAIN, not a lemma. Land the cheapest killable rung first;
 report the kill as loudly as the win. All finite; none touches Clay/continuum.
+(Full statement-shapes + kill reasoning: `2026-07-08_FABLE_four-assembly-goals.md`.)
 
 ### Goal I — The verified hadron (Claude lead)
 One finite carrier (fermions on `Cl(4) (x) C^3`, its own closure background +
@@ -187,6 +214,10 @@ success is a publishable "grand theorem" and failure is a clean no-go that
 permanently disciplines the program. The four assembly Goals (sec 2) and the
 harvest modules (sec 1) are the RUNGS of these suites, not rivals to them. Do
 not renumber the Goals; read each suite as the spine a cluster of rungs builds.
+(Full analysis, boxed stretch theorems, all kill lists:
+`2026-07-08_FABLE_four-theorem-suites.md`. The deep per-suite detail lives in
+the two Fable foundations/ontology files + the Pro info-ontology file — cited
+per suite below and indexed in sec 1b.)
 
 **The governing rule (adversarial run).** Every rung must return one of exactly
 three things: **a Lean theorem, a counterexample, or a sharpened missing axiom.**
@@ -206,6 +237,8 @@ three things: **a Lean theorem, a counterexample, or a sharpened missing axiom.*
 **Stretch:** finite null information + positive decoding + composable quantum
 systems + CP phase  =>  (1,3)-Lorentzian complex two-spinor geometry. Signature,
 dimension, causality are OUTPUTS of the null-information carrier, not inputs.
+(Deep detail — two-rung signature argument, R/C/H/O discriminators,
+celestial-sphere cross-check: `2026-07-08_FABLE_foundations-inputs-to-theorems.md`.)
 - **Landed rungs:** `SignatureForcing` (null primitive => indefinite Gram, rung
   1 done); `DivisionDimensionSelection` (composition + continuous abelian CP
   phase => K=C => d=4); `SpectralDistance` (Connes distance recovers edge count).
@@ -239,7 +272,8 @@ walk/checkerboard -> Dirac/Weyl continuum -> gauge-coupled (NOT "QCD first").
   path-conditioned visible state `rho_dir = sum a_h conj(a_h') Omega_{hh'}
   |psi_h><psi_h'|`, with `Omega=1` full interference, `Omega=delta` decohered
   mixture, mass = retained which-null-direction info after tracing hidden
-  histories. (B2) lift the checkerboard bridge to the Cl(4) carrier, then toward
+  histories (the `rho_dir` object + its full ontology:
+  `2026-07-08_PRO_finite-information-ontology-reframing.md`). (B2) lift the checkerboard bridge to the Cl(4) carrier, then toward
   3+1D (Foster-Jacobson / Mlodinow-Brun quantum-walk `[import]`). (B3) critical
   RG universality as **basin membership** `kappa=lambda => z=1, free-Dirac fixed
   point, non-channel couplings irrelevant`. (B4) finite Levinson upgrade:
@@ -254,7 +288,10 @@ walk/checkerboard -> Dirac/Weyl continuum -> gauge-coupled (NOT "QCD first").
 eigen-codes of the finite null automaton. Confinement = non-decodability;
 binding = compression advantage; protected masslessness = index/quotient/rank-one
 codes; generations = inequivalent positive completions (or provably
-underdetermined without a new axiom).
+underdetermined without a new axiom). (C2's functorial confinement + the
+BRST/code-distance PROOF STRATEGY for `ConfinementPositivity` — bound
+colored-sector norms via the kernel-checked area law:
+`2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`.)
 - **Landed rungs:** `PositiveSectorClassification` (A>0 => A+B^HB>0);
   `ConfinementPositivity` (colored negdef / singlet positive);
   `CarrierClosurePlane` (the carrier binds UNCONDITIONALLY);
@@ -286,6 +323,9 @@ histories — one structure spanning entropy, concurrence, monogamy, Schur
 leakage, modular flow, thermodynamic susceptibilities, criticality, and a
 Compton/localization bound. Mass is simultaneously rank defect = entropy =
 entanglement = compression cost = 1/localization-length = thermodynamic response.
+(Deep detail — mass=energy AM-GM, the EGY identity `V^2+m^2/m^2_max=1`, the
+Higgs-as-WAY-reservoir template, modular selection as a GGE, the P-K spherical-
+code/design family: `2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`.)
 - **Landed rungs:** `MassThermodynamics` (Gibbs-Duhem sum rule + critical
   divergence at kappa->lambda); `ModularSelection` (block B as modular
   generator); `SchurSeesaw` (finite seesaw bound); `MassSphericalDesigns`
@@ -385,8 +425,14 @@ Neo4j chunk search (`Scripts/lit/neo4j_paper_search.py --chunks`) and doc search
 before each assembly rung that leans on prior art: Goal II (Jarlskog/CP-phase
 counting), Goal III (Arrighi-Facchini-Forets discrete Lorentz covariance;
 Cardy/finite-size scaling), Goal IV (Jacobson thermodynamic gravity;
-teleparallel Einstein). One line per search in `LIT_SEARCH_LOG.md`. Verify +
-add any cited source to `Null_Edge_References.md` before the manuscript cites it.
+teleparallel Einstein), Suite A (Baez-Huerta / Manogue-Dray division-algebra
+Minkowski; Franco-Eckstein Lorentzian spectral distance), Suite B (Arrighi
+discrete Lorentz; the **two-twistor particle prior art** Penrose/Perjes/Hughston
+that Fable flags as gating P-B — see
+`2026-07-08_FABLE_theorem-shaped-ontology-sharpenings.md`), Suite D (Cohn-Kumar
+universal optimality for the P-K spherical-code rung). One line per search in
+`LIT_SEARCH_LOG.md`. Verify + add any cited source to `Null_Edge_References.md`
+before the manuscript cites it.
 
 ## 6. Discipline (constitution-grade; violations = run failure)
 - Kernel is truth. Flagship landings need `#guard_msgs` axiom pins + a
