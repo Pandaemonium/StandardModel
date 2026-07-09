@@ -1614,3 +1614,37 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
 - DIRAC-ALGEBRA GROUNDING SET COMPLETE: eta (MinkowskiConvention) + gamma (DiracGammaPhysLean) + chiral
   projectors (ChiralProjectorsDirac) + sigma-map (PauliMomentumPhysLean), all in PhysLean conventions.
   Port scorecard: 10 (4 PhysLean groundings + 6 library ports). LANE now empty - refill.
+
+### 2026-07-09 11:25 PDT - Codex - harvested capstones, canceled stale runners, launched ambitious proof wave - Builder
+- HARVESTED [M]: `LambdaEverpresentCapstone` (9e944215) and `ParticleInformationCapstone` (46dde441)
+  downloaded, ported to the live tree, imported in `PhysicsSMDraft.lean`, and targeted-build checked.
+  Also cached/triaged older complete Codex result archives: C3 index anomaly (998e717e), gravity
+  unification (535f2b9d), massless particle table (0137b0f), photon/Higgs/CPT (b4ebecee),
+  holographic resource (8ed32a4d), teleparallel WEP (6ba42d7e), mass-phase/RG (27c385c3),
+  unified action (65d8f051), Suite-D charge nonvacuity (1a4d58e1), and WEP slot equation (9ceb0ade).
+  Those already correspond to in-tree modules, so no duplicate source files were copied.
+- STALL RULE: canceled stale Codex runners past the two-hour window:
+  4911f297 (neutrino mass mechanism), de0f3d3d (Goal IV reconciliation), 7c9e932f,
+  d7b686b5, and e638cd66.
+- REFILL [M targets, ambitious]: prepared clean submission package
+  `AgentTasks/aristotle-submit/codex-ambitious-wave-1115-20260709-project` and launched seven
+  `codex-` jobs:
+  7c5b124e `CarrierDynamicsCapstone`, eaf01c04 `AllMassMasterCapstone`,
+  f02faec3 `NeutrinoCPSeesawBridge`, 0de5b7d5 `GoalIVReconciliationCapstone`,
+  eb6a3b29 `LambdaGravityCosmologyBridge`, 81e1458a `InformationResourceBridge`,
+  bcbc8ee3 `KMC3FlagshipCapstone`.
+- CHECKS: `lake build PhysicsSM.Draft.NullEdge.LambdaEverpresentCapstone` passed; `lake build
+  PhysicsSM.Draft.NullEdge.ParticleInformationCapstone` passed. Placeholder scan on both harvested
+  files clean.
+
+### 2026-07-09 ~afternoon - Claude - PRIORITY B DONE: §7 reconciled with Codex Goal-IV capstone - DraftLead
+- Codex's `GravityUnificationCapstone` LANDED IN-TREE (0 sorry, guard-pinned, builds in-project 8052
+  jobs). This UNBLOCKS the deferred §7 reconciliation (Priority B), held many cycles pending Codex.
+- FOLDED into §7: the Goal-IV capstone conjoins the 14 finite gravity packets (WEP trace/action,
+  Jacobson-Clausius, spectral-action order split, EH, teleparallel, holographic, MinkowskiConvention)
+  into one non-vacuity bundle with an honest finite_gravity_claim_boundary (eta signature, flat
+  curvature loop, Rfin=-2, Clausius at witness). RECONCILED with the variational route
+  (UnifiedActionVariation): two presentations of ONE finite story, conventions matched (+,-,-,-),
+  both finite-avatar/physics-[import], NOT independent - exactly the §7 honesty note's point.
+- §7 prose (reconciliation now IN-TREE, not deferred) + anchor row + edge (Codex had added it) +
+  in-project build verified before citing. All cited names resolve. PRIORITY B: complete.
