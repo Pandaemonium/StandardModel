@@ -970,6 +970,48 @@ the Lambda manuscript section (L6) once L3/L4 land.
   with only the `open scoped Classical` style warning. Placeholder scan and
   `git diff --check` on the touched Lean file passed.
 
+### 2026-07-09 ~07:45 - Codex - massless particle table capstone submitted - Builder
+- Prepared submission project
+  `AgentTasks/aristotle-submit/codex-massless-table-wave-0740-20260709-project`.
+  The helper again warned that there is no active Sphere-Packing block to patch;
+  the package exists and includes the newly landed `MasslessEdgeCount`.
+- SUBMITTED `codex-massless-particle-table-capstone-0740-20260709` ->
+  project `0137b0f4-0aca-43b7-9df1-f2fecff234c1`, target
+  `PhysicsSM/Draft/NullEdge/MasslessParticleTableCapstone.lean`. Mission:
+  compose `MasslessEdgeCount`, `PhotonSingleEdge`, `HiggsLongitudinalMode`,
+  `PositiveSectorClass`, `HelicityChirality`, `ZigzagWeyl`,
+  `ZitterbewegungAverage`, and `CPTAntiparticleZigzag` into a finite
+  mass-from-null-edges particle-table capstone.
+
+### 2026-07-09 ~07:50 - Codex - harvested Lambda two-region covariance - Builder
+- HARVESTED + PORTED Claude proof `claude-lambda-two-region-covariance`
+  (`a3580b7c-dabb-4efe-b995-6eb98031a94a`) ->
+  `NullEdge/LambdaTwoRegionCovariance`: finite independent-edge covariance
+  model for nested causal regions, proving `Var(N1)=a+b`, `Var(N2)=b+c`,
+  `Cov(N1,N2)=b`, normalized Lambda covariance
+  `Cov(Lambda1,Lambda2)=b/(m1*m2)`, correlation limits `1` and `0`, and
+  explicit rational nested/decoupled witnesses (`98/99` and `1/51`). Honest
+  scope: finite independent-edge covariance fingerprint, not a dark-energy
+  power-spectrum claim.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.LambdaTwoRegionCovariance`
+  PASS with only the `open scoped Classical` style warning. Placeholder scan
+  and `git diff --check` on the touched Lean file passed.
+
+### 2026-07-09 ~07:55 - Codex - harvested Minkowski/PhysLean convention bridge - Builder/Registrar
+- HARVESTED + PORTED Claude proof `claude-minkowski-physlean-port`
+  (`17b58865-ccab-4711-be73-f4b6f216cf5a`) ->
+  `NullEdge/MinkowskiConvention`: clean-room local bridge grounding
+  `eta = diag(1,-1,-1,-1)` against Mathlib
+  `LieAlgebra.Orthogonal.indefiniteDiagonal (Fin 1) (Fin 3)`, with provenance
+  to PhysLean `minkowskiMatrix` / mostly-minus `(+,-,-,-)` convention and no
+  PhysLean import. Includes symmetry, involution, determinant/trace,
+  bilinearity/null-cone lemmas, and rational null/timelike witnesses.
+- PROVENANCE: PhysLean/Physlib Lorentz `minkowskiMatrix` convention (Tooby-Smith)
+  cross-checked by Mathlib `indefiniteDiagonal`; clean-room port only,
+  no new dependency.
+- VERIFICATION: `lake build PhysicsSM.Draft.NullEdge.MinkowskiConvention` PASS.
+  Placeholder scan and `git diff --check` on the touched Lean file passed.
+
 ### 2026-07-09 ~08:30 - Claude - GOAL set; DAY harvest (7 land, 1 held) + refill (closer + 2 PORTS + Lambda) - Builder/DraftLead
 Goal condition now active (harvest loop + Aristotle saturation + >=30min lit + PORT Lean constructions + priorities A/B/C).
 - LANDED 7 (built green + grep-verified sorry-free + guard-pinned): LambdaSusceptibility (L3),
@@ -1006,3 +1048,16 @@ sec-2b (Day C); harvest the 4 refill jobs. Codex adding edges/porting in paralle
   Lorentzian spectral triples) to the search log; verify + add to References before §7 cites them.
 - Lambda manuscript §10a landed earlier this cycle (L1-L5). Refill jobs (masslessedge-closer,
   minkowski-port, kraft, lambda-covariance) still RUNNING.
+
+### 2026-07-09 ~09:10 - Claude - harvest: FIRST PORT lands (Minkowski) + Lambda covariance - Builder/DraftLead
+- PORT LANDED [M]: `MinkowskiConvention` - clean-room port grounding our `eta = diag(1,-1,-1,-1)`
+  in Mathlib `LieAlgebra.Orthogonal.indefiniteDiagonal` = PhysLean `minkowskiMatrix` (Physlib/.../
+  Lorentz, Tooby-Smith), convention (+,-,-,-). `eta_eq_indefinite` is the full reindexing check
+  (finSumFinEquiv), + `null_iff` (null cone), + provenance note. Built in-project, guard-pinned, 0 sorry.
+  PORT LOG: package=PhysLean (Physlib) / underlying Mathlib decl `LieAlgebra.Orthogonal.indefiniteDiagonal`;
+  our repo `minkowskiMatrix` convention matches; VERSION GAP: PhysLean is pinned off our v4.28.0 so NOT
+  imported - the port uses the Mathlib decl directly (no PhysLean dependency). Manuscript §2a anchor row added.
+- LANDED [M]: `LambdaTwoRegionCovariance` - Cov(L1,L2)=b/(<N1><N2>) set by causal-overlap count;
+  correlation ->1 nested / ->0 decoupled (horizon-scale distinguisher vs quintessence). §10a anchor row.
+- STILL RUNNING (4): masslessedge-closer, kraft-compression (PORT), leanquantum-dpi (PORT),
+  unified-action-variation. First of the 3 in-flight ports now landed; 2 ports + closer + capstone pending.
