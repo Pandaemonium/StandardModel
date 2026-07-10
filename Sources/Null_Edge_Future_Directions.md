@@ -1536,3 +1536,41 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
   `p0=p1=1/2`, `widthSq 3 = 1/36`, `widthSq = (1/4) dCausal^2`). The earlier "SIGTERM" was
   memory-starvation, not the proofs; after a restart it builds in ~24s. Edge + anchor row added.
   (The `Real.sqrt`-form `ComptonBound` stays superseded by this squared form.)
+
+---
+
+## Higgs self-mass lane (2026-07-10, Claude, user-directed)
+
+The standing exception gets mechanisms. Lit anchors in the run's
+LIT_SEARCH_LOG pass 3 (Willey 1993; Tajima et al 2025; Steingasser 2024;
+Espinosa 2016). Five routes triaged; two jobbed, one named, two logged:
+
+1. **Composite/Nambu route [jobbed: claude-higgs-composite-gap 658c188e]** -
+   the turn field as condensed left-right pair; the finite mean-field core
+   makes the scalar stiffness an OUTPUT: (4G^2-k^2)/(8G^3), vanishing at the
+   2G = k criticality, 3-4-5 witness. Honest boundary: no m_sigma = 2 m_dyn
+   claim (continuum ratio is scheme-ambiguous per Willey); the RPA/pair-pole
+   is the named next rung.
+2. **Near-criticality route [jobbed: claude-higgs-criticality-seed 6b7080bc]**
+   - finite Landau core: m_H^2 = 2 mu^2 exactly; depth -mu2^2/(4 lam);
+   stiffness linear and depth quadratic in ONE distance-to-criticality knob.
+   PRE-REGISTERED CONJECTURE (grade C): the criticality-selection principle
+   that makes the universe large (code-proliferation, lambda_R -> 0+) also
+   pins the scalar sector to its critical line, explaining small m_H and
+   small Lambda together (Steingasser's three-tunings pattern as one critical
+   point). Kill: the two critical surfaces have independent control
+   parameters in every finite model.
+3. **WAY reference-resource sum rule [named target, not yet jobbed]** - the
+   radial (Higgs) stiffness bounded by the coherence the reference must carry
+   to service the Yukawa workload (Tajima et al 2507.23760 tradeoffs).
+   Statement design is delicate: population transfer needs no coherence; the
+   obstruction concerns the coherent gate. Needs the induced-channel
+   coherence ledger before an inequality is stated.
+4. **Transmutation identification [bookkeeping]** - under Coleman-Weinberg,
+   the Higgs self-mass and the absolute-scale bridge are the SAME open
+   bridge; rides the transmutation lane.
+5. **phi-as-register [scaffolding only]** - honest only if routes 2-3 then
+   fix the phi budget.
+
+None of these targets an absolute 125 GeV: ratios, floors, and joint rates
+only, per program discipline.

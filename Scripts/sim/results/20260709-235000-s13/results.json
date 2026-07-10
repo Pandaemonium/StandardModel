@@ -1,0 +1,70 @@
+{
+  "run": "20260709-232452",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S13",
+      "tier": "V1",
+      "anchors": [
+        "FiniteNoSignaling.partialTraceB_applyLocalKrausB",
+        "FiniteNoSignaling.reset_no_signaling_witness",
+        "TwoRegionTensorMicrocausality.separated_regions_commute",
+        "TwoRegionTensorMicrocausality.two_qubit_local_net_verdict"
+      ],
+      "conventions": {
+        "units": "dimensionless",
+        "convention": "visible/hidden and left/right tensor factors are supplied; Bell density and exact Gaussian rationals"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "reset_trace_preserving",
+          "expected": "sum K* K = I",
+          "observed": "trace preserving",
+          "pass": true
+        },
+        {
+          "name": "remote_marginal_fixed",
+          "expected": "Tr_B reset(rho) = Tr_B rho = I/2",
+          "observed": "[[(1/2+0i), (0+0i)], [(0+0i), (1/2+0i)]]",
+          "pass": true
+        },
+        {
+          "name": "joint_state_genuinely_changes",
+          "expected": "reset(rho) != rho",
+          "observed": "changed",
+          "pass": true
+        },
+        {
+          "name": "separated_tensor_factors_commute",
+          "expected": "[X tensor I, I tensor Z] = 0",
+          "observed": "[[(0+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (0+0i)]]",
+          "pass": true
+        },
+        {
+          "name": "local_factor_noncommutative",
+          "expected": "[X tensor I, Z tensor I] != 0",
+          "observed": "[[(0+0i), (0+0i), (-2+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (-2+0i)], [(2+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (2+0i), (0+0i), (0+0i)]]",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "non_tp_operation_can_change_remote_marginal",
+          "documented_failure": "K0 alone is not TP and changes Tr_B rho",
+          "observed": "[[(1/2+0i), (0+0i)], [(0+0i), (0+0i)]]",
+          "fails_as_documented": true
+        },
+        {
+          "name": "overlapping_local_observables_need_not_commute",
+          "documented_failure": "Pauli X and Z in the same factor do not commute",
+          "observed": "[[(0+0i), (0+0i), (-2+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (-2+0i)], [(2+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (2+0i), (0+0i), (0+0i)]]",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Operational locality on a supplied finite tensor factorization: a nonidentity local TP channel cannot signal to the remote marginal, and separated regional algebras commute despite internal noncommutativity. This is not emergent spacetime locality."
+    }
+  ]
+}

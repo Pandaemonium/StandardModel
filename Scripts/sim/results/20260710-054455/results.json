@@ -1,0 +1,57 @@
+{
+  "run": "20260710-054455",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S23",
+      "tier": "V1",
+      "anchors": [
+        "Carrier.PluckerJointTheoryWitness.one_pair_joint_chain",
+        "Carrier.PluckerJointTheoryWitness.rational_joint_chain_control",
+        "Carrier.PluckerJointTheoryWitness.collinear_joint_zero_control"
+      ],
+      "conventions": {
+        "units": "dimensionless Pluecker/action/Gibbs units",
+        "convention": "one literal pair edge0,edge1(2/5); mu=massSq=4/25 is reused without recalibration"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "one_pair_supplies_one_mass_scalar",
+          "expected": "Hodge/action/flow/Gibbs gap all equal 4/25",
+          "observed": "4/25",
+          "pass": true
+        },
+        {
+          "name": "shared_stiffness_drives_conserved_flow",
+          "expected": "(0,1)->(1,46/25) and Q=1 before/after",
+          "observed": "(Fraction(0, 1), Fraction(1, 1))->(Fraction(1, 1), Fraction(46, 25)); 1->1",
+          "pass": true
+        },
+        {
+          "name": "same_gap_sets_both_gibbs_responses",
+          "expected": "-d log Z/dbeta=2/25 and Var(0)=4/625",
+          "observed": "mean=2/25; Var=4/625",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "independent_gibbs_mass_is_detected",
+          "documented_failure": "substituting 9/25 in the ensemble breaks the shared-pair seam",
+          "observed": "action=4/25; Gibbs=9/25",
+          "fails_as_documented": true
+        },
+        {
+          "name": "collinear_pair_is_not_a_positive_mass_witness",
+          "documented_failure": "the collinear pair collapses mass, action curvature, and variance",
+          "observed": "mass=0; Hessian=0; Var=0",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "This exact V1 regression exercises the live joint-witness theorem on one configuration. It closes parameter identity across finite mass, action, flow, and ensemble layers; it does not identify the separate spatial Dirac carrier or derive the supplied pair/action."
+    }
+  ]
+}

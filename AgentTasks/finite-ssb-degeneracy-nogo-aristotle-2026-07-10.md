@@ -27,5 +27,5 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.FiniteSSBDegeneracyNoGo
   submission_project: AgentTasks/aristotle-submit/codex-finite-ssb-degeneracy-nogo-20260710-project
   output_dir: AgentTasks/aristotle-output/af7eb850-5998-430e-9e11-4e2d15ae7685
-  status: submitted
+  status: integrated and guarded 2026-07-09 23:06 PDT
 ```

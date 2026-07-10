@@ -33,7 +33,7 @@ aristotle:
   expected_module: SpectralChainDistance.ChainDistance
   submission_project: AgentTasks/aristotle-submit/spectral-distance-chain-20260709-project
   output_dir: AgentTasks/aristotle-output/7895c97a-60e0-4a98-9f8f-efca607086a6
-  status: submitted
+  status: integrated
 ```
 
 ## Integration notes
@@ -42,3 +42,11 @@ On completion: dry-run `Scripts/aristotle/integrate_completed.py`, review the
 report, then port into `PhysicsSM/Draft/NullEdge/` as a draft module with
 guard blocks, and update the operator-to-geometry rung in
 `Sources/Null_Edge_Future_Directions.md` (Suite A) plus the harvest log.
+
+## Integration result (2026-07-09 23:22 PDT)
+
+All targets returned placeholder-free with unchanged signatures (vacuum-shift:
+see the in-file corrected negative control note), verified with the pinned
+local Lean check pre-port, landed at PhysicsSM/Draft/NullEdge/SpectralChainDistance.lean
+with project namespace and passing axiom guards, imported by PhysicsSMDraft,
+and covered by a green targeted lake build.

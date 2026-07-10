@@ -16,7 +16,7 @@ as current state.
 1. `README.md` - what this repository is. [STABLE]
 2. `AGENTS.md` - the working contract for all contributors. [STABLE]
 3. `NULL_EDGE_RESULTS.md` - the flagship program's results map by trust level. [LIVE]
-4. `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - the first paper. [DRAFT-MS]
+4. `Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex` - the focused principal theorem paper. [DRAFT-MS]
 5. `AgentTasks/twoday-carrier-run-2026-07-07/SYNTHESIS_BEYOND_MASS.md` - the forward synthesis. [LIVE]
 
 ## Entry points and contracts
@@ -48,8 +48,11 @@ as current state.
 
 ## The null-edge program: core documents
 
+- `NULL-EDGE_TARGET_AUDIENCE.md` - publication-positioning memo: optimize Paper I for discrete relativistic quantum dynamics and the quantum-walk/QCA community; specifies the required comparison, spectrum, doubling, continuum, `3+1`, artifact, and outreach audits. [LIVE]
+- `Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex` - focused principal theorem draft: null-spinor area, the Pluecker-derived odd mass operator and exact unitary corner dictionary, full-zone `1+1` audit, and an exactly local finite `3+1` successive-axis extension with a phase-retaining complex rest operator, compact-box rate, exact three-torus Plancherel/wave-packet control, compact-support momentum-space `L2` convergence, explicit reversibility/causal cone, and an exact high-symmetry audit. The latter classifies all massless corners and proves explicit `+1`/`-1` body-center modes for every mass angle, so the current cubic regulator is globally ungapped; a separate theorem excludes the naive degree-one stationary-amplitude repair under the full involutory Dirac tangent. This is the impact-first Paper I draft; lattice-to-PDE identification, regulator replacement, interactions, and broader ontology are explicitly deferred. [DRAFT-MS]
+- `AgentTasks/overnight-null-information-run-2026-07-10/PAPER_I_NOVELTY_AUDIT_2026-07-10.md` - claim-by-claim priority/positioning audit: separates classical Pluecker and established tangent/successive-axis machinery from the defensible new synthesis, and corrects the Floquet `pi` mode to pseudo-doubler terminology. [LIVE]
 - `Sources/Null_Edge_General_Audience_Manuscript_2026-07-09.tex` - illustrated general-audience companion, centered on null primitive motion, emergent timelike drift, stepped-time checkerboards, and visual explanations of aperture/closure/turn/soldering; technical qualifications are carried in footnotes and a formal-anchor appendix. [DRAFT-MS]
-- `Sources/Null_Edge_Mass_Rank_Defect_Manuscript_2026-07-09.tex` - focused technical manuscript: canonical null-edge mass invariant, information/concurrence dictionary, finite carrier square, positive Hodge decoder, exact checkerboard/tetrahedral dynamics, binding, protected modes, falsifiers, and build anchors. [DRAFT-MS]
+- `Sources/Null_Edge_Mass_Rank_Defect_Manuscript_2026-07-09.tex` - broad technical research-program manuscript: canonical null-edge mass invariant, information/concurrence dictionary, finite carrier square, positive Hodge decoder, exact checkerboard/tetrahedral dynamics, binding, protected modes, falsifiers, and build anchors. It remains a source/companion draft, not the focused Paper I lede. [DRAFT-MS]
 - `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` - the ALL-mass manuscript (2026-07-08 overnight): every mass channel in null-edge terms, college-accessible Part I, grades throughout, anchor table. Companion to (not replacement for) the P1 draft. [DRAFT-MS]
 - `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md` - related-work and novelty-gap review for the all-mass manuscript; close prior art and must-cite source-debt list. [LIVE]
 - `Sources/Toward_a_complete_finite_null-information_theory.md` - verbatim Pro
@@ -92,6 +95,128 @@ as current state.
   moduli core: exact presentation shifts `D -> D+QR+RQ`, cross-carrier
   intertwining `D'U-UD=Q'R+RQ`, induced cohomology-action invariance, and an
   explicit distinct positive-decoder witness. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Carrier/DecoderModuliClassification.lean` - complete
+  moduli classification for the live three-state positive-Hodge carrier:
+  every decoder commuting with `Q=E01` has a five-coordinate normal form, the
+  four zero-physical coordinates are exactly `Q R + R Q` gauge, and `D 2 2` is
+  a complete invariant with canonical representatives and nondegenerate
+  same-mass/different-mass controls. Universal carrier classification remains
+  open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/PluckerMassOperator.lean` - general two-spinor
+  centerpiece for the focused Paper I draft: the complex Pluecker coordinate
+  defines an odd Hermitian rest operator whose square is the momentum
+  determinant; includes the exact Dirac square, phase covariance, and
+  collinear gap-closing theorem. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/PluckerMassDynamics.lean` and
+  `CornerWalkEquivalence.lean` - explicit rest eigenvectors, decomposition
+  independence, exact mass-coin group law, and the finite `cos^n` checkerboard
+  kernel scaling with corner ratio `-i tan(a mu)`. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/FermionDoublingAudit.lean` - exact massless
+  `{0, pi}` band-touching set, massive discriminant bound, and the Floquet
+  zone-edge partner audit for the focused `1+1` walk. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Compact3Plus1DiracRate.lean`,
+  `Local3Plus1RateBridge.lean`, `FiniteWalkPositionConvergence.lean`,
+  `FiniteZModPlancherel.lean`, `Finite3Plus1FourierBridge.lean`,
+  `Finite3Plus1AnalyticSignBridge.lean`, `FiniteTorus3Plancherel.lean`,
+  `FiniteTorus3WalkWavepacket.lean`, `Finite3Plus1BrillouinAudit.lean`,
+  `ContinuumL2MultiplierBridge.lean`, `CompactSupportL2WalkBridge.lean`,
+  `FiniteWalkOnsiteEquivalenceObstruction.lean`, `LocalQCAProperties.lean`,
+  `StationaryAmplitudeNoGo.lean`, `StationaryAmplitudeLiveAxisNoGo.lean`,
+  `WilsonDiracRegulator.lean`, `FloquetDeterminantCriterion.lean`, and
+  `CountableL2WavepacketConvergence.lean` -
+  exact finite local `3+1` norm preservation, ordered x/y/z/mass symbol,
+  compact-box `O(1/n)` rate, finite Fourier-kernel lifts in `1+1` and `3+1`,
+  exact vector-valued one-axis and product-three-torus
+  Plancherel/wave-packet bounds, exact
+  finite-character blocks on every product plane wave, the finite-to-analytic
+  negative-momentum conversion with a quarter-zone sign control, an explicit
+  two-sided local-cycle inverse and strict causal cone, the exact eight-corner
+  parity/alias classification, explicit massive body-center `+1` and `-1`
+  eigenmodes for every mass angle, an onsite-equivalence obstruction, the
+  degree-one Laurent no-go forcing a stationary amplitude to vanish under
+  origin normalization, exact all-momentum unitarity, and a full involutory
+  tangent, its three direct
+  specializations to the live axis generators, the Wilson--Dirac scalar square,
+  uniform massive Hamiltonian gap, and massless zero-set theorem removing all
+  non-origin cubic corners at the local-Hamiltonian level, generic exact
+  determinant-zero criteria for nonzero `+1` and `-1` Floquet modes, and a
+  countable Tannery `L2` theorem, plus the measure-theoretic theorem that a
+  vanishing uniform relative multiplier bound forces `L2` convergence, and its
+  walk-specific compact-support specialization with explicit `O(1/n)` envelope.
+  Completing the changing-lattice/continuum Fourier and PDE identification,
+  extending beyond compact support, and converting the Wilson spectral repair
+  into a strictly finite-range discrete-time regulator remain open.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Pluecker3Plus1ComplexMass.lean` - phase-retaining
+  four-component Pluecker rest operator in the live Clifford representation;
+  proves Hermiticity, `mass4(z)^2 = |z|^2 I`, the complete relativistic square,
+  real-axis reduction, chiral phase covariance, and the exact unitary
+  one-parameter mass-coin group law, with a `3+4i` control.
+  `ComplexPlueckerLocalWalk.lean` inserts that coin into the actual finite local
+  walk and proves exact norm preservation and plane-wave-sector invariance.
+  `VariablePlueckerLocalWalk.lean` promotes the Pluecker coordinate to an
+  arbitrary position-dependent field, including collinear zero sites, and
+  proves exact norm preservation, a two-sided inverse, a strict one-cycle
+  causal cone, constant-profile reduction, and local collinearity control.
+  `VariablePlueckerPhaseConnection.lean` proves exact covariance under a
+  site-dependent chiral phase, identifies the induced endpoint link on every
+  Clifford shift, and factors the full conjugated walk into linked spatial
+  shifts plus the pointwise-rotated Pluecker field without choosing an
+  argument branch at zero sites.
+  `ComplexPlueckerCheckerboardPathSum.lean` assigns each directed history edge
+  the corresponding entry of the actual complex Pluecker mass coin and proves
+  the full orientation-sensitive path sum equals its transfer power; a
+  `3+4i` control separates the nonzero `z` and conjugate-`z` turn factors.
+  `GlobalPhaseWindingNoGo.lean` proves that a globally lifted real phase has
+  zero total increment on a finite periodic cycle, so nonzero winding requires
+  branch, patch-transition, or independent link data; a three-link unit-winding
+  control shows how that extra data evades the no-go.
+  `StrictQCAMinimalArchitecture.lean` proves a scoped architecture lower bound:
+  no three-axis four-channel range-one single-factor Laurent QCA can retain the
+  exact live Dirac tangents and exact all-momentum unitarity while adding a
+  nonzero stationary Wilson-like channel.  Exact zero-stationary factors and a
+  noninvolutory-tangent escape witness establish nonvacuity and the first
+  viable relaxation.  The stronger even-corner theorem proves all three
+  even-parity zone corners exactly alias the origin after any momentum-
+  independent onsite coin, including the complex Pluecker mass coin.
+  `Carrier/PluckerScaleSelectionNoGo.lean` proves the landed positive Pluecker
+  action is quartic under common primitive-spinor scaling and has no nonzero
+  stationary scale whenever the unscaled action is positive; an exact
+  orthogonal-spinor witness has action `1/2`.  Selecting a nonzero mass thus
+  requires a competing homogeneity, constraint, ensemble scale, or additional
+  dimensionful input; the exact potential `(t^2-c)^2` is the positive control,
+  selecting nonzero minima only after the scale `c` is supplied.
+  `TemporalBlockingRG.lean` defines exact two-step temporal blocking, proves
+  closure of the mass-only Pluecker subgroup, gives an exact x-y quarter-turn
+  counterexample to closure of the scalar-parameter split family, and
+  identifies the generated submonoid as the canonical smallest
+  multiplicatively closed enlargement.
+  `FiniteCARFockBasic.lean` defines the occupation-basis fermionic Fock space
+  over any linearly ordered finite-mode label type and proves creation and
+  annihilation nilpotency plus all same-mode and distinct-mode canonical
+  anticommutation relations.  It is the algebraic first rung toward a local
+  second-quantized Pluecker walk; the exterior-power lift, inherited locality,
+  and interacting observable remain separate targets.
+- `Scripts/sim/null_edge_regulator_benchmark.py` and
+  `AgentTasks/null-edge-so-what-closure-2026-07-10/HELD_OUT_REGULATOR_BENCHMARK.md`
+  - pre-registered high-momentum benchmark of the exact even-corner alias
+  theorem, body-center modes, and Wilson corner gap, with an unregulated
+  negative control and fixed kill thresholds. [ORACLE]
+  `ComplexPlueckerRateTransfer.lean` proves Hamiltonian/flow conjugacy, equality
+  of the conjugacy-defined and explicit complex steps, and the uniform
+  complex-phase compact rate. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/DiscreteDimensionalTransmutation.lean` - exact
+  positive discrete one-loop-shaped flow, inverse-coupling invariant,
+  step-independent exponential scale, nonperturbative flatness beyond every
+  coupling power, and the `1/3 -> 1/4 -> 1/5` control. The flow law and
+  coefficient remain supplied; no physical beta function or measured scale is
+  claimed. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/FiniteEffectValuationHomogeneity.lean` - finite
+  qubit-effect valuation ladder: zero value, monotonicity, natural/rational
+  homogeneity, and real `[0,1]` homogeneity derived by rational squeeze without
+  assuming continuity, plus an explicit density-matrix valuation witness. The
+  full Busch-Gleason density-matrix representation remains an active successor.
+  [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/GaugeMassGram.lean` - finite reference-orbit theorem:
   the gauge-mass matrix is a positive Gram matrix, its null directions are
   stabilizers, and an explicit witness separates one broken from one unbroken
@@ -146,6 +271,33 @@ as current state.
   quotient positivity, Hilbert-vs-Krein Hodge theory, rank-vs-area language,
   reconstruction circularity, generation monodromy, and the next theorem
   targets. [LIVE]
+
+## Overnight run 2026-07-10 (AgentTasks/overnight-null-information-run-2026-07-10/)
+
+- `RUN_PLAN.md` - constitution for the manuscript, formalization, and
+  proof-linked simulation run; includes evidence gates, Aristotle cadence,
+  literature cadence, division of labor, and the 07:00 hard audit switch.
+  [LIVE]
+- `GOAL_PROMPT_CLAUDE.md`, `GOAL_PROMPT_CODEX.md` - co-equal executor standing
+  orders for manuscript/simulation and proof/audit leadership. [LIVE]
+- `COLLABORATOR_BRIEF_2026-07-10.md` - standalone scientific brief for external
+  strategy, literature, and theorem-design reviews. [LIVE]
+- `MANUSCRIPT_CLAIM_MATRIX.md` - claim-to-theorem-to-witness-to-simulation-to-
+  falsifier evidence registry for the strengthened manuscript. [LIVE]
+- `THEORY_COMPLETION_MATRIX.md` - whole-theory architecture registry from
+  primitive ontology through dynamics and known physics to empirical
+  prediction; prevents local theorem accumulation from substituting for a
+  unified theory. [LIVE]
+- `SIMULATION_BENCHMARKS.md` - benchmark ladder and validation registry,
+  separating exact fixtures, theorem regressions, reproductions, calibrated
+  fits, and genuine predictions. [LIVE]
+- `DOCUMENT_INTAKE_MAP.md` - operational decomposition of the three finite
+  null-information source essays into existing anchors and next proof rungs.
+  [LIVE]
+- `LEDGER.md`, `LIT_SEARCH_LOG.md`, `FOLLOWUP_JOBS.md` - append-only
+  coordination, literature, and Aristotle follow-up records. [LIVE]
+- `HONEST_SCORECARD.md`, `MORNING_REPORT.md` - dawn claim/trust audit and final
+  user-facing report templates. [LIVE]
 
 ## Active run: two-day carrier run (AgentTasks/twoday-carrier-run-2026-07-07/)
 

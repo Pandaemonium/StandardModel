@@ -1,0 +1,57 @@
+{
+  "run": "20260710-062019",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S24",
+      "tier": "V1",
+      "anchors": [
+        "Carrier.PluckerDiracCarrierBridge.one_pair_drives_dirac_symbol",
+        "Carrier.PluckerDiracCarrierBridge.rational_massive_dirac_control",
+        "Carrier.PluckerDiracCarrierBridge.collinear_zero_dirac_control"
+      ],
+      "conventions": {
+        "units": "dimensionless Pluecker and Clifford-symbol units",
+        "convention": "the same edge0,edge1(2/5) pair supplies m=4/25; momentum is fixed at (1,2,2)"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "same_pair_mass_is_gibbs_and_dirac_parameter",
+          "expected": "Gibbs gap = Dirac mass = 4/25",
+          "observed": "4/25",
+          "pass": true
+        },
+        {
+          "name": "shared_mass_gives_exact_relativistic_square",
+          "expected": "H(1,2,2,4/25)^2=(5641/625)I",
+          "observed": "5641/625",
+          "pass": true
+        },
+        {
+          "name": "rational_shared_mass_is_nondegenerate",
+          "expected": "H and its mass term are nonzero",
+          "observed": "m=4/25; H00=(4/25+0i)",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "independent_dirac_mass_is_detected",
+          "documented_failure": "substituting 9/25 changes the mass slot and exact dispersion",
+          "observed": "shared=5641/625; substituted=5706/625",
+          "fails_as_documented": true
+        },
+        {
+          "name": "collinear_zero_momentum_pair_collapses_generator",
+          "documented_failure": "the collinear pair has zero gap and zero generator at k=0",
+          "observed": "gap=0; H(0,0,0,0)=0",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "This exact V1 regression closes literal parameter identity from the one-pair mass/ensemble chain to the internal 3+1 Dirac symbol. It does not merge the selected scalar and Dirac actions or prove a position-space, compact-rate, or physical continuum theorem."
+    }
+  ]
+}

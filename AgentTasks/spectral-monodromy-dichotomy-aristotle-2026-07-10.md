@@ -23,9 +23,17 @@ aristotle:
   expected_module: SpectralMonodromyDichotomy.MonodromyDichotomy
   submission_project: AgentTasks/aristotle-submit/spectral-monodromy-dichotomy-20260710-project
   output_dir: AgentTasks/aristotle-output/8066248d-d28b-4262-ab65-94a0696a893c
-  status: submitted
+  status: integrated
 ```
 
 Integration: this is the post-no-go generation rung after
 `FamilyRankNoGo`; record both halves at their honest grades and do not let
 the positive half claim more than a complexified toy family.
+
+## Integration result (2026-07-09 23:22 PDT)
+
+All targets returned placeholder-free with unchanged signatures (vacuum-shift:
+see the in-file corrected negative control note), verified with the pinned
+local Lean check pre-port, landed at PhysicsSM/Draft/NullEdge/SpectralMonodromyDichotomy.lean
+with project namespace and passing axiom guards, imported by PhysicsSMDraft,
+and covered by a green targeted lake build.

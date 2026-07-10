@@ -1,0 +1,123 @@
+{
+  "run": "20260710-052141",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S20",
+      "tier": "V0/V1",
+      "anchors": [
+        "Carrier.FiniteGibbsResponse.log_partition_hasDerivAt",
+        "Carrier.FiniteGibbsVariance.meanEnergy_hasDerivAt",
+        "Carrier.FiniteGibbsVariance.variance_nonnegative",
+        "Carrier.FiniteGibbsVariance.rational_plucker_variance_control"
+      ],
+      "conventions": {
+        "units": "k_B=1; x=beta*gap; gap=4/25 in Pluecker units",
+        "convention": "equal-degeneracy levels E=(0,gap); C=beta^2 Var(E)"
+      },
+      "arithmetic": "binary64 normalized Gibbs probabilities; analytic curve",
+      "checks": [
+        {
+          "name": "normalized_gibbs_curve_matches_schottky_formula",
+          "expected": "max absolute curve error < 1e-14",
+          "observed": "2.77556e-16",
+          "pass": true
+        },
+        {
+          "name": "schottky_peak_location_and_height_reproduced",
+          "expected": "x*=beta*gap about 2.39936; Cmax about 0.43923",
+          "observed": "x=2.399000, C=0.43922883",
+          "pass": true
+        },
+        {
+          "name": "variance_positive_while_beta_zero_heat_capacity_vanishes",
+          "expected": "Var(0)=4/625 and C(0)=0",
+          "observed": "Var=0.00640000, C=0.00000000",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "degenerate_spectrum_has_no_schottky_peak",
+          "documented_failure": "setting the gap to zero makes variance and heat capacity vanish",
+          "observed": "C(beta)=0",
+          "fails_as_documented": true
+        },
+        {
+          "name": "wrong_sign_response_fails",
+          "documented_failure": "mean energy decreases, rather than increases, with beta",
+          "observed": "E(x=1)=0.04303063; E(x=2)=0.01907247",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "This is an algebraic self-consistency check of two equivalent closed forms for the equal-degeneracy two-level heat capacity, plus exact nondegeneracy controls. The gap cancels from the dimensionless curve, so this row is not an external physics reproduction."
+    },
+    {
+      "id": "S22",
+      "tier": "V2",
+      "anchors": [
+        "Carrier.FiniteGibbsVariance.meanEnergy_hasDerivAt",
+        "Carrier.FiniteGibbsVariance.variance_pos_iff_nonconstant",
+        "Carrier.FiniteGibbsVariance.meanEnergy_eq_response"
+      ],
+      "conventions": {
+        "units": "dimensionless beta and Pluecker energy units",
+        "convention": "three levels E=(0,4/25,9/25); centered variance versus independent central finite difference with Richardson extrapolation"
+      },
+      "arithmetic": "binary64 Gibbs sums and independent finite differences",
+      "checks": [
+        {
+          "name": "finite_difference_recovers_variance_response",
+          "expected": "Richardson error < 1e-10 on beta grid",
+          "observed": [
+            "3.12e-14",
+            "2.17e-14",
+            "6.25e-15",
+            "1.39e-14"
+          ],
+          "pass": true
+        },
+        {
+          "name": "central_difference_shows_second_order_convergence",
+          "expected": "halving h reduces every nonzero error by about four",
+          "observed": [
+            "4.7e-08->1.18e-08",
+            "3.94e-08->9.86e-09",
+            "1.47e-08->3.66e-09",
+            "1.13e-08->2.82e-09"
+          ],
+          "pass": true
+        },
+        {
+          "name": "three_level_spectrum_has_strict_fluctuations",
+          "expected": "Var(E)>0 at every finite beta",
+          "observed": [
+            "0.0216889",
+            "0.0209202",
+            "0.0177975",
+            "0.0118123"
+          ],
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "degenerate_spectrum_has_zero_response",
+          "documented_failure": "constant energies force both derivative response and variance to zero",
+          "observed": "derivative=-1.39e-15; Var=7.7e-34",
+          "fails_as_documented": false
+        },
+        {
+          "name": "wrong_response_sign_disagrees",
+          "documented_failure": "the derivative of mean energy is negative variance, not positive variance",
+          "observed": "dE/dbeta=-0.0209202; Var=0.0209202",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": false,
+      "interpretation": "This is a disclosed V2 reproduction of the canonical finite fluctuation-response law on a nondegenerate three-level spectrum. Unlike S20, the derivative and variance are computed independently; no thermodynamic limit or irreversibility is claimed."
+    }
+  ]
+}

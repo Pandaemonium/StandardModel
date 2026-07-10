@@ -29,5 +29,5 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.FiniteNoSignaling
   submission_project: AgentTasks/aristotle-submit/codex-finite-kraus-no-signaling-20260710-project
   output_dir: AgentTasks/aristotle-output/17674ce6-b10a-474a-931f-d0237d539f0b
-  status: submitted
+  status: integrated and guarded 2026-07-09 23:06 PDT
 ```

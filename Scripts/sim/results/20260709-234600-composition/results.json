@@ -1,0 +1,113 @@
+{
+  "run": "20260709-235323",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S01",
+      "tier": "V0/V1",
+      "anchors": [
+        "PhysicsSM.Draft.NullEdge GateI1.Core (Gram/wedge identity)",
+        "PluckerMassCovariance",
+        "CanonicalGramTurnDictionary"
+      ],
+      "conventions": {
+        "units": "c=1, dimensionless rational spinors",
+        "convention": "P = sum psi psi^T over Q; det P = m^2"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "cauchy_binet_generic",
+          "expected": "14",
+          "observed": "14",
+          "pass": true
+        },
+        {
+          "name": "sl2_invariance",
+          "expected": "14",
+          "observed": "14",
+          "pass": true
+        },
+        {
+          "name": "canonical_gram_equals_turn_mass_sq",
+          "expected": "9/25",
+          "observed": "9/25",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "collinear_bundle_massless",
+          "documented_failure": "det P = 0 on collinear bundle",
+          "observed": "0",
+          "fails_as_documented": true
+        },
+        {
+          "name": "fixed_pair_cannot_encode_second_turn_scale",
+          "documented_failure": "the m=3/5 spinor pair does not also encode turn scale m=2",
+          "observed": "fixed det=9/25, requested turn m^2=4",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Mass squared is exactly the pairwise failure of null directions to align, and it is an SL(2) invariant; collinear = massless."
+    },
+    {
+      "id": "S05",
+      "tier": "V0/V1",
+      "anchors": [
+        "ExactCheckerboardPathSum (exact sum + discrete Dirac recursion)",
+        "HistoryLocalFourChannelAction (corner amplitude (i eps m)^r)",
+        "CheckerboardAmplitudeGluing"
+      ],
+      "conventions": {
+        "units": "lattice units, eps*m = 1/4",
+        "convention": "corner weight i*eps*m; first step right; internal corners counted"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "enumeration_equals_recursion_t_le_8",
+          "expected": "exact equality over Gaussian rationals",
+          "observed": "equal",
+          "pass": true
+        },
+        {
+          "name": "support_in_light_cone",
+          "expected": "|x| <= 8",
+          "observed": "ok",
+          "pass": true
+        },
+        {
+          "name": "massless_straight_only",
+          "expected": "single straight null path",
+          "observed": "[(6, 1)]",
+          "pass": true
+        },
+        {
+          "name": "history_amplitude_gluing",
+          "expected": "(-1/16+0i)",
+          "observed": "(-1/16+0i)",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_corner_phase",
+          "documented_failure": "real corner weight disagrees with i*eps*m enumeration",
+          "observed": "differs",
+          "fails_as_documented": true
+        },
+        {
+          "name": "wrong_gluing_direction",
+          "documented_failure": "reusing the original direction misses the boundary turn",
+          "observed": "joined=(-1/16+0i), wrong=(0+1/4i)",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "The exact finite path sum IS the discrete Dirac evolution: mass enters only at turns, and setting m=0 leaves a single null ray."
+    }
+  ]
+}

@@ -179,6 +179,171 @@ matrix-coframe result proves only the finite local-frame, metric, volume,
 refinement, and nonzero-defect gates needed before a continuum comparison is
 meaningful.  It does not compete with those continuum or simplicial dynamics.
 
+\section{The candidate theory}
+\label{sec:theory}
+
+This paper defends one identifiable proposal.  We state it here in full, with
+each load-bearing arrow graded, so that the finite results of the later
+sections read as evidence for a single architecture rather than as a
+collection of related lemmas.
+
+\subsection{Postulates}
+
+\begin{enumerate}[label=\textbf{P\arabic*.},leftmargin=2.2em]
+  \item \textbf{Null primitives.}  The primitive data are finite oriented null
+  events: rank-one lightlike transmissions carrying spinor direction, internal
+  (charge, chirality, strand) labels, and complex amplitude.  There is no
+  primitive timelike motion, no primitive mass, and no background spacetime
+  container.
+  \item \textbf{Coherent composition.}  Histories compose by gluing and
+  superpose linearly; amplitudes of composite histories are ordered products
+  of elementary transport, turn, and soldering gates.  (The finite gluing
+  algebra is \Mtag; the claim that nature's amplitudes are exhausted by such
+  finite sums is \Ctag.)
+  \item \textbf{Gauge redundancy.}  Descriptions related by the constraint
+  differential $Q$ ($Q^2=0$) are identical physics.  Physical content lives on
+  the cohomology $\ker Q/\mathrm{im}\,Q$ (finite Kugo--Ojima structure,
+  \Mtag).
+  \item \textbf{Positive decoding.}  The physical sector is the
+  Krein-positive part of cohomology; probabilistic quantum theory operates
+  there and only there.  (Positive-sector existence and its sign no-go are
+  \Mtag; the normalized outcome rule itself is at present an imported Born
+  input, not a derivation.)
+  \item \textbf{One carrier square.}  Time evolution and interaction enter
+  through one finite Dirac-type carrier $D$; every second-order physical
+  effect is one of the four graded blocks of its Krein square --- aperture,
+  closure, turn, soldering gradient.  (The four-type decomposition is forced,
+  \Mtag; uniqueness of the split is not, and the equivalence class of
+  presentations modulo chain homotopy and Krein intertwiners is the physical
+  object, \Mtag.)
+\end{enumerate}
+
+\subsection{Derivation spine}
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}X@{}}
+\toprule
+Arrow & Grade & Anchor / open bridge\\
+\midrule
+null histories $\to$ gauge classes & \Mtag & finite Kugo--Ojima; generic
+Hilbert--Hodge representatives\\
+gauge classes $\to$ positive states & \Mtag/\Ctag & positive Hodge decoder;
+invariant sector selection open\\
+positive states $\to$ mass & \Mtag & Gram determinant $=$ Cauchy--Binet wedge
+sum; one supplied pair gives the same Hodge cost and finite-action Hessian\\
+mass $\to$ dynamics & \Mtag/\Ctag & exact checkerboard sum, quasienergy
+relation, one-step $O(\epsilon^2)$ bound; action-derived Euler--Lagrange flow
+with a positive-definite conserved first integral; unitary successive-axis
+split-step walk with relativistic square and tangent generator $-iH$;
+explicit sign-basis conjugacy gives the finite spatial tangent; compact-box
+$3+1$ rate and the physical position/PDE limit open; a generic positive
+least-residual path action has zero locus exactly equal to any selected
+unitary link equation\\
+states $\to$ outcomes & \Mtag/import & finite instrument API: normalized
+nonnegative outcome probabilities, projective repeatability, compatible
+no-disturbance; the Born trace rule itself is an imported input (P4)\\
+dynamics $\to$ interactions & \Mtag/\Ctag & four-block square, coefficient
+rigidity, signed closure binding; continuum field dictionary open\\
+interactions $\to$ geometry & \Mtag/\Ctag & nondegenerate matrix coframe,
+chain spectral distance $=$ weighted geodesic; continuum tetrad open\\
+geometry $\to$ cosmology & \Mtag/\Ctag & event-count/$\Lambda$ arithmetic,
+geometry-register coherence, ensemble vacuum-shift redundancy; volume
+statistics imported\\
+theory $\to$ experiment & V0--V2 & exact benchmark suite
+(\texttt{Scripts/sim/null\_information\_lab.py}: twenty families),
+including three disclosed V2 reproductions (fixed-momentum free $1+1$ and
+$3+1$ Dirac propagation; independent three-level fluctuation response);
+no V4 prediction yet\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The finite center of this spine is now two composable machine-checked theorems
+sharing one supplied pair and one literal mass parameter, not a verbal
+identification.  For one supplied noncollinear spinor pair, the same
+Pluecker scalar is its Hodge decoder cost, its action curvature, the stiffness
+of its conserved variational flow, its Gibbs gap, and the mass parameter in
+the internal $3+1$ Dirac dispersion and split-step tangent.  The rational
+fixture has $m=4/25$ and
+$H(1,2,2,m)^2=(5641/625)I$; a collinear pair collapses the mass, action
+curvature, fluctuation, and zero-momentum Dirac generator.  This establishes a
+coherent finite candidate architecture.  It does not yet prove that the scalar
+recurrence and spinor walk descend from one field-valued action, nor that the
+finite symbol has the required physical continuum limit.  The two theorems
+therefore close parameter identity across the clusters, not identity of their
+state carriers or actions.
+
+\subsection{What the theory says}
+
+In this theory a particle is a stable Krein-positive cohomology class of the
+carrier; its mass is the least spectral cost of decoding that class, which at
+the kinematic level is exactly the determinant of its null-direction Gram
+matrix.  Interactions are the four ways the carrier square can fail to be
+free: directional aperture, loop closure, chiral turn, and soldering drift.
+The finite construction encodes spacetime information algebraically --- the
+Pauli map, the null cone, and the direction sets are primitive inputs ---
+while causal order and a weighted geodesic distance are reconstructed from
+the carrier (finitely, \Mtag); emergence of a \emph{dynamical} continuum
+geometry remains conjectural (\Ctag).  The cosmological constant is the
+variable conjugate to total event
+count; it is observable exactly through geometry-register coherence between
+branches of different count (\Mtag, finitely), and a uniform vacuum offset is
+a redundancy of the ensemble description rather than a physical energy
+(\Mtag\ for the extensive case, with the exact non-extensive negative
+control landed).
+
+\paragraph{The power ledger.}  One mass operator generates several related
+quantities, and the paper distinguishes their operator orders throughout:
+
+\begin{center}
+\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Layer & Natural quantity\\
+\midrule
+null-spinor kinematics & $\mu^2=\det P$\\
+$D^{\#}D$, action Hessians, quadratic costs & $\mu^2$\\
+Dirac symbol eigenvalue / rest gap & $\mu$\\
+zero-momentum quasienergy & $\mu$, modulo the lattice branch\\
+exact unitary corner ratio & $\tan(a\mu)$, not $a\mu$, at finite spacing\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Squares give quadratic costs, absolute values give spectral gaps, and
+exponentials give finite-time evolution --- of one operator, not of several
+separately introduced parameters.  The construction realizing this
+(the Pl\"ucker-derived mass operator $B_z$ with $B_z^2=\det P\,I$, and the
+exact $\tan(a\mu)$ corner--walk correspondence) is the subject of the
+in-flight formalization pair recorded in the verification section; each
+downstream identification is labeled \emph{forced}, \emph{derived},
+\emph{realized}, or \emph{conjectured} accordingly.
+
+\subsection{What the theory does not yet derive}
+
+Nine bridges are open.  Each is a named theorem target with an exact
+statement, not a vague possibility: (i) the \emph{many-step continuum limit}
+on a compact $3+1$ momentum domain followed by a position/PDE lift;
+(ii) a \emph{shared field-valued action} whose reductions yield both the
+scalar variational recurrence and the spinor Dirac walk; (iii) an
+\emph{invariant positive-sector selection} principle replacing the current
+witness-level choice; (iv) a \emph{local net}: tensor microcausality and
+no-signaling beyond two regions; (v) the \emph{Born rule}, currently imported
+at P4; (vi) the \emph{Higgs self-mass} and the absolute mass scale, for which the
+theory presently offers mechanisms only for ratios and protected smallness
+(dimensional transmutation is the named route to the scale);
+(vii) the \emph{gauge group}: deriving the local automorphism group and its
+representations rather than supplying charge registers; (viii) the
+\emph{initial state and total event count}, on which the theory is silent;
+and (ix) the \emph{generation count}, where the landed no-go shows a
+rank-fixing input is required and the monodromy dichotomy confines the
+remaining mechanism space.  The
+falsifier list in Section~\ref{sec:falsifiers} states what failure looks like
+for each supported arrow.  The benchmark suite executes the finite content of
+the arrows assigned live S-rows in the evidence matrix; an \Mtag without such
+a row remains theorem-tested rather than simulation-tested.
+
 \section{The canonical null-edge mass invariant}
 
 \subsection{Positive spinor Gram matrices}
@@ -1009,6 +1174,7 @@ in the first column remains \Ctag even when the supporting finite statement is
 \end{table}
 
 \section{Falsifiers and claim boundaries}
+\label{sec:falsifiers}
 
 The model is intended to become easier to reject as it grows.  Its current
 boundaries can be stated as concrete tests.
@@ -1169,6 +1335,16 @@ Lean declaration & Source module & Mathematical payload\\
 \path{NullEdge/FamilyRankNoGo.lean} & Generation-count no-go\\
 \path{generation_permutation_nogo} &
 \path{NullEdge/GenerationPermutationNoGo.lean} & Diagonal-triplication symmetry no-go\\
+\path{one_pair_joint_chain} &
+\path{NullEdge/Carrier/PluckerJointTheoryWitness.lean} & One-pair mass/action/flow/ensemble composition\\
+\path{one_pair_drives_dirac_symbol} &
+\path{NullEdge/Carrier/PluckerDiracCarrierBridge.lean} & Same pair mass in Gibbs and internal $3+1$ Dirac symbol\\
+\path{axisBasis_conjugates_velocity} &
+\path{NullEdge/CliffordDiagonalPositionBridge.lean} & Explicit component-sign-to-Clifford dictionary\\
+\path{pathAction_eq_zero_iff_evolution} &
+\path{NullEdge/FiniteUnitaryPathAction.lean} & Zero residual action iff selected unitary EOM\\
+\path{outcome_prob_sum_one} &
+\path{NullEdge/FiniteInstrumentAPI.lean} & Kraus-complete outcome normalization with imported trace rule\\
 \bottomrule
 \end{tabularx}
 \caption{Selected machine-verified anchors.  Paths are relative to
@@ -1210,6 +1386,7 @@ lake build PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry
 lake build PhysicsSM.Draft.NullEdge.Carrier.GenericFiniteHodge
 lake build PhysicsSM.Draft.NullEdge.Carrier.KreinHodgeNoGo
 lake build PhysicsSM.Draft.NullEdge.SelfConsistentDecoder
+lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard
 \end{verbatim}
 A full draft build additionally depends on optional Sphere-Packing-Lean modules;
 native Windows verification of the null-edge targets is independent of those
@@ -1250,10 +1427,13 @@ rather than lower order.
 
 These statements are enough to define a serious finite research program, but
 not enough to identify the model with nature.  The decisive next results are
-a summed $3+1$ projector-history kernel, an exactly unitary massive tetrahedral
-update, a controlled many-step continuum limit, a derived
-choice of physical time generator, and a field-by-field principal-symbol audit
-of the four channels.  The higher-dimensional many-particle QCA obstruction of
+a compact-box $3+1$ product-limit bound for the landed successive-axis walk, a
+field-valued action whose reductions yield both the Pluecker recurrence and
+the Dirac update, a physical position/PDE continuum lift, a derived choice of
+time generator and spatial frame, and a field-by-field principal-symbol audit
+of the four channels.  The simultaneous six-channel scalar-square route has
+been killed rather than silently reinterpreted; Route B is a distinct
+construction.  The higher-dimensional many-particle QCA obstruction of
 Mlodinow--Brun is a separate locality problem, not a no-go for the landed
 single-particle kinematics \cite{MlodinowBrunNoGo}.  The failure conditions are
 already visible.

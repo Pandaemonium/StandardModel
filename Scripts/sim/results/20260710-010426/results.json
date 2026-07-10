@@ -1,0 +1,465 @@
+{
+  "run": "20260710-010426",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S01",
+      "tier": "V0/V1",
+      "anchors": [
+        "PhysicsSM.Draft.NullEdge GateI1.Core (Gram/wedge identity)",
+        "PluckerMassCovariance",
+        "CanonicalGramTurnDictionary",
+        "GeneralGramTurnScale"
+      ],
+      "conventions": {
+        "units": "c=1, dimensionless rational spinors",
+        "convention": "P = sum psi psi^T over Q; det P = m^2"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "cauchy_binet_generic",
+          "expected": "14",
+          "observed": "14",
+          "pass": true
+        },
+        {
+          "name": "sl2_invariance",
+          "expected": "14",
+          "observed": "14",
+          "pass": true
+        },
+        {
+          "name": "canonical_gram_equals_turn_mass_sq",
+          "expected": "9/25",
+          "observed": "9/25",
+          "pass": true
+        },
+        {
+          "name": "general_complex_gram_derived_turn",
+          "expected": "16",
+          "observed": "(16+0i)",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "collinear_bundle_massless",
+          "documented_failure": "det P = 0 on collinear bundle",
+          "observed": "0",
+          "fails_as_documented": true
+        },
+        {
+          "name": "fixed_pair_cannot_encode_second_turn_scale",
+          "documented_failure": "the m=3/5 spinor pair does not also encode turn scale m=2",
+          "observed": "fixed det=9/25, requested turn m^2=4",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Mass squared is exactly the pairwise failure of null directions to align, and it is an SL(2) invariant; collinear = massless."
+    },
+    {
+      "id": "S02",
+      "tier": "V0/V1",
+      "anchors": [
+        "VelocityMixtureLinearEntropy",
+        "KraftCompressionMass (Hlin)",
+        "TwoEdgeMassConcurrence"
+      ],
+      "conventions": {
+        "units": "c=1",
+        "convention": "S_L = 1 - sum p_i^2 (linear entropy); m^2 = 2 E^2 S_L on shell"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "velocity_register_linear_entropy_345",
+          "expected": "8/25",
+          "observed": "8/25",
+          "pass": true
+        },
+        {
+          "name": "mean_is_drift",
+          "expected": "3/5",
+          "observed": "3/5",
+          "pass": true
+        },
+        {
+          "name": "two_edge_concurrence_sq",
+          "expected": "16",
+          "observed": "16",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "pure_luminal_endpoint",
+          "documented_failure": "S_L = 0 at v = c (massless)",
+          "observed": "0",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "The invariant mass ratio is exactly the impurity of the luminal velocity register: mass is retained which-direction information."
+    },
+    {
+      "id": "S03",
+      "tier": "V1",
+      "anchors": [
+        "Carrier.DecoderChainHomotopy (exact deformation acts trivially on cohomology)",
+        "Carrier.KreinChainEquivalence (landed 2026-07-09)",
+        "PositiveHodgeDecoder",
+        "PositiveHodgePhysicalMass",
+        "HodgePluckerMassBridge.quartet_class_cost_eq_canonical_plucker"
+      ],
+      "conventions": {
+        "units": "dimensionless",
+        "convention": "Q nilpotent constraint, homotopy shift QR + RQ, Krein J = diag(1,1,-1)"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "homotopy_shift_exact_on_closed",
+          "expected": "difference in im Q (span e1)",
+          "observed": "[(0+0i), (0+0i), (0+0i)]",
+          "pass": true
+        },
+        {
+          "name": "chain_map_preserved",
+          "expected": "Q D' = D' Q",
+          "observed": "commutes",
+          "pass": true
+        },
+        {
+          "name": "quartet_decoder_pairing_positive_formula",
+          "expected": "(4+0i)",
+          "observed": "(4+0i)",
+          "pass": true
+        },
+        {
+          "name": "nondegenerate_quartet_class_cost_4_over_25",
+          "expected": "(4/25+0i)",
+          "observed": "(4/25+0i)",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "negative_krein_sector",
+          "documented_failure": "e3 norm = -1 < 0 (unphysical sector)",
+          "observed": "(-1+0i)",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Channel-gauge freedom in action: homotopy-shifted decoders differ as matrices but act identically on physical (cohomology) content; the Krein-negative direction is the excluded ghost sector."
+    },
+    {
+      "id": "S05",
+      "tier": "V0/V1",
+      "anchors": [
+        "ExactCheckerboardPathSum (exact sum + discrete Dirac recursion)",
+        "HistoryLocalFourChannelAction (corner amplitude (i eps m)^r)",
+        "CheckerboardAmplitudeGluing"
+      ],
+      "conventions": {
+        "units": "lattice units, eps*m = 1/4",
+        "convention": "corner weight i*eps*m; first step right; internal corners counted"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "enumeration_equals_recursion_t_le_8",
+          "expected": "exact equality over Gaussian rationals",
+          "observed": "equal",
+          "pass": true
+        },
+        {
+          "name": "support_in_light_cone",
+          "expected": "|x| <= 8",
+          "observed": "ok",
+          "pass": true
+        },
+        {
+          "name": "massless_straight_only",
+          "expected": "single straight null path",
+          "observed": "[(6, 1)]",
+          "pass": true
+        },
+        {
+          "name": "history_amplitude_gluing",
+          "expected": "(-1/16+0i)",
+          "observed": "(-1/16+0i)",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_corner_phase",
+          "documented_failure": "real corner weight disagrees with i*eps*m enumeration",
+          "observed": "differs",
+          "fails_as_documented": true
+        },
+        {
+          "name": "wrong_gluing_direction",
+          "documented_failure": "reusing the original direction misses the boundary turn",
+          "observed": "joined=(-1/16+0i), wrong=(0+1/4i)",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "The exact finite path sum IS the discrete Dirac evolution: mass enters only at turns, and setting m=0 leaves a single null ray."
+    },
+    {
+      "id": "S06",
+      "tier": "V1",
+      "anchors": [
+        "Clifford3Plus1WalkSymbol.alpha_sq",
+        "Clifford3Plus1WalkSymbol.alpha_pairwise_anticommute",
+        "Clifford3Plus1WalkSymbol.alpha_beta_anticommute",
+        "Clifford3Plus1WalkSymbol.H_sq"
+      ],
+      "conventions": {
+        "units": "c=1; dimensionless real k and m",
+        "convention": "Dirac alpha/beta matrices; H=sum k_j alpha_j+m beta"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "three_velocity_generators_square_to_identity",
+          "expected": "alpha_j^2 = I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "velocity_generators_pairwise_anticommute",
+          "expected": "{alpha_i,alpha_j}=0",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "mass_turn_anticommutes_with_velocity",
+          "expected": "{alpha_j,beta}=0 and beta^2=I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "relativistic_symbol_square_1223",
+          "expected": "H(1,2,2,3)^2 = 18 I",
+          "observed": "exact",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_mass_matrix_breaks_clifford_square",
+          "documented_failure": "flipping one beta sign destroys velocity-mass anticommutation",
+          "observed": "nonzero anticommutator",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "The supplied 3+1 internal walk symbol has exact luminal component generators and relativistic square. A BCC shift/path sum is still a separate construction."
+    },
+    {
+      "id": "S07",
+      "tier": "V1",
+      "anchors": [
+        "SubluminalBound (massive strictly subluminal)",
+        "RapidityInformationDistance (velocity_addition, mass_boost_invariant; landed 2026-07-09)"
+      ],
+      "conventions": {
+        "units": "c=1",
+        "convention": "light-cone components (E(1+v), E(1-v)); k = exp(rapidity) rationalized"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "mass_shell_345",
+          "expected": "16",
+          "observed": "16",
+          "pass": true
+        },
+        {
+          "name": "subluminal_drift",
+          "expected": "|v| < 1",
+          "observed": "3/5",
+          "pass": true
+        },
+        {
+          "name": "velocity_addition_exact",
+          "expected": "35/37",
+          "observed": "35/37",
+          "pass": true
+        },
+        {
+          "name": "boost_invariant_mass",
+          "expected": "16",
+          "observed": "16",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "superluminal_control",
+          "documented_failure": "E^2-p^2 < 0 for p > E (no real mass)",
+          "observed": "-11",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Einstein velocity addition is exactly multiplication of light-cone scale factors; the invariant mass is the boost-invariant product."
+    },
+    {
+      "id": "S08",
+      "tier": "V1",
+      "anchors": [
+        "BindingDefect / CarrierClosurePlane (signed closure binding)",
+        "SchurSeesaw (|m_eff| <= ||B||^2 / lambda_min(M))",
+        "DerivedInteraction"
+      ],
+      "conventions": {
+        "units": "dimensionless finite levels",
+        "convention": "B(lam,kap) spectrum {lam-kap, lam, lam+kap}; seesaw H = [[0,b],[b,M]]"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "closure_lowers_ground",
+          "expected": "ground 1 < free level 3",
+          "observed": "[Fraction(1, 1), Fraction(3, 1), Fraction(5, 1)]",
+          "pass": true
+        },
+        {
+          "name": "phase_boundaries",
+          "expected": "critical ground 0; over-closure ground < 0",
+          "observed": "crit=0, over=-1",
+          "pass": true
+        },
+        {
+          "name": "seesaw_suppression",
+          "expected": "|m_eff| = b^2/M decreasing in M",
+          "observed": "['-1/10', '-1/100', '-1/1000']",
+          "pass": true
+        },
+        {
+          "name": "schur_vs_exact_light_mode",
+          "expected": "residual exactly b^4/M^2 = 1/100",
+          "observed": "1/100",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_sign_closure",
+          "documented_failure": "positive closure shift raises rather than binds",
+          "observed": "5",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Binding is signed closure: coherent loop memory lowers the ground level, and heavy hidden sectors suppress light masses as 1/M -- the finite seesaw."
+    },
+    {
+      "id": "S12",
+      "tier": "V1",
+      "anchors": [
+        "GeometryRegisterLambda (landed 2026-07-09): rhoVis_periodic, rhoVis_lambda_observable, rhoVis_orthogonal_records_const"
+      ],
+      "conventions": {
+        "units": "Lambda in quarter-turn units (exact Gaussian rationals)",
+        "convention": "counts (1,3); overlap Om in {0,1}"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "pi_periodicity_counts_1_3",
+          "expected": "rho(0) = rho(pi)",
+          "observed": "equal",
+          "pass": true
+        },
+        {
+          "name": "lambda_observable_when_coherent",
+          "expected": "rho(0) != rho(pi/2) with identical records",
+          "observed": "differ",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "decohered_multiverse_hides_lambda",
+          "documented_failure": "rho independent of Lambda when geometry records orthogonal",
+          "observed": "constant",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Lambda couples to physics exactly through geometry-register coherence between branches of different event count: decohered geometries hide it, coherent ones expose a periodic signal."
+    },
+    {
+      "id": "S13",
+      "tier": "V1",
+      "anchors": [
+        "FiniteNoSignaling.partialTraceB_applyLocalKrausB",
+        "FiniteNoSignaling.reset_no_signaling_witness",
+        "TwoRegionTensorMicrocausality.separated_regions_commute",
+        "TwoRegionTensorMicrocausality.two_qubit_local_net_verdict"
+      ],
+      "conventions": {
+        "units": "dimensionless",
+        "convention": "visible/hidden and left/right tensor factors are supplied; Bell density and exact Gaussian rationals"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "reset_trace_preserving",
+          "expected": "sum K* K = I",
+          "observed": "trace preserving",
+          "pass": true
+        },
+        {
+          "name": "remote_marginal_fixed",
+          "expected": "Tr_B reset(rho) = Tr_B rho = I/2",
+          "observed": "[[(1/2+0i), (0+0i)], [(0+0i), (1/2+0i)]]",
+          "pass": true
+        },
+        {
+          "name": "joint_state_genuinely_changes",
+          "expected": "reset(rho) != rho",
+          "observed": "changed",
+          "pass": true
+        },
+        {
+          "name": "separated_tensor_factors_commute",
+          "expected": "[X tensor I, I tensor Z] = 0",
+          "observed": "[[(0+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (0+0i)]]",
+          "pass": true
+        },
+        {
+          "name": "local_factor_noncommutative",
+          "expected": "[X tensor I, Z tensor I] != 0",
+          "observed": "[[(0+0i), (0+0i), (-2+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (-2+0i)], [(2+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (2+0i), (0+0i), (0+0i)]]",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "non_tp_operation_can_change_remote_marginal",
+          "documented_failure": "K0 alone is not TP and changes Tr_B rho",
+          "observed": "[[(1/2+0i), (0+0i)], [(0+0i), (0+0i)]]",
+          "fails_as_documented": true
+        },
+        {
+          "name": "overlapping_local_observables_need_not_commute",
+          "documented_failure": "Pauli X and Z in the same factor do not commute",
+          "observed": "[[(0+0i), (0+0i), (-2+0i), (0+0i)], [(0+0i), (0+0i), (0+0i), (-2+0i)], [(2+0i), (0+0i), (0+0i), (0+0i)], [(0+0i), (2+0i), (0+0i), (0+0i)]]",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "Operational locality on a supplied finite tensor factorization: a nonidentity local TP channel cannot signal to the remote marginal, and separated regional algebras commute despite internal noncommutativity. This is not emergent spacetime locality."
+    }
+  ]
+}

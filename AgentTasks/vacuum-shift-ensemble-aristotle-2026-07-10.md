@@ -20,8 +20,16 @@ aristotle:
   expected_module: VacuumShiftEnsemble.VacuumShift
   submission_project: AgentTasks/aristotle-submit/vacuum-shift-ensemble-20260710-project
   output_dir: AgentTasks/aristotle-output/63170980-2893-416c-b36b-a412de5f70a8
-  status: submitted
+  status: integrated
 ```
 
 Integration: record as a new rung in the Lambda doc
 (`Sources/Null_Edge_Cosmological_Constant_2026-07-09.md`) rung table.
+
+## Integration result (2026-07-09 23:22 PDT)
+
+All targets returned placeholder-free with unchanged signatures (vacuum-shift:
+see the in-file corrected negative control note), verified with the pinned
+local Lean check pre-port, landed at PhysicsSM/Draft/NullEdge/VacuumShiftEnsemble.lean
+with project namespace and passing axiom guards, imported by PhysicsSMDraft,
+and covered by a green targeted lake build.

@@ -20,9 +20,17 @@ aristotle:
   expected_module: PositiveHodgeRayleigh.VariationalMass
   submission_project: AgentTasks/aristotle-submit/positive-hodge-rayleigh-20260710-project
   output_dir: AgentTasks/aristotle-output/be5c5929-b9ca-4763-a103-4e9c79cab5db
-  status: submitted
+  status: integrated
 ```
 
 Integration: port to the Carrier lane beside `PositiveHodgeDecoder`; this is
 the variational upgrade of the spectral-mass reading.  Do not let the
 docstring claim attainment without the ghost-positivity hypothesis.
+
+## Integration result (2026-07-09 23:22 PDT)
+
+All targets returned placeholder-free with unchanged signatures (vacuum-shift:
+see the in-file corrected negative control note), verified with the pinned
+local Lean check pre-port, landed at PhysicsSM/Draft/NullEdge/Carrier/PositiveHodgeRayleigh.lean
+with project namespace and passing axiom guards, imported by PhysicsSMDraft,
+and covered by a green targeted lake build.

@@ -1,0 +1,87 @@
+{
+  "run": "20260710-050946",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S19",
+      "tier": "V1",
+      "anchors": [
+        "Carrier.DiscretePluckerVariationalFlow.lagrangian_hasDerivAt_left",
+        "Carrier.DiscretePluckerVariationalFlow.euler_lagrange_iff_recurrence",
+        "Carrier.DiscretePluckerVariationalFlow.spinor_variational_flow_conserved",
+        "Carrier.DiscretePluckerVariationalFlow.rational_plucker_variational_control",
+        "Carrier.DiscretePluckerFlowStability.first_integral_zero_iff",
+        "Carrier.DiscretePluckerFlowStability.all_iterates_bounded",
+        "Carrier.DiscretePluckerFlowStability.rational_plucker_stability_control",
+        "Carrier.DiscretePluckerFlowRotation.rational_plucker_flow_conjugate_to_rotation",
+        "Carrier.DiscretePluckerFlowRotation.normalization_is_load_bearing"
+      ],
+      "conventions": {
+        "units": "dimensionless discrete time; mu=Pluecker massSq=4/25",
+        "convention": "L(q_n,q_{n+1})=1/2(dq)^2-1/2 mu q_n^2; state=(q_{n-1},q_n)"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "discrete_action_selects_nontrivial_recurrence",
+          "expected": "(0,1)->(1,46/25), EL residual 0",
+          "observed": "(Fraction(0, 1), Fraction(1, 1))->(Fraction(1, 1), Fraction(46, 25)); R=0",
+          "pass": true
+        },
+        {
+          "name": "variational_first_integral_conserved_for_25_steps",
+          "expected": "Q_mu=1 at every step",
+          "observed": "first=1, last=1",
+          "pass": true
+        },
+        {
+          "name": "every_iterate_satisfies_euler_lagrange",
+          "expected": "all adjacent residuals vanish",
+          "observed": "25 exact residuals",
+          "pass": true
+        },
+        {
+          "name": "positive_definite_first_integral_decomposition",
+          "expected": "Q_mu is the exact weighted sum of two squares",
+          "observed": "mu=4/25; Q=1",
+          "pass": true
+        },
+        {
+          "name": "all_iterates_obey_kernel_checked_coordinate_bound",
+          "expected": "mu/2*(q_prev^2+q^2) <= Q_mu=1",
+          "observed": "checked 26 states",
+          "pass": true
+        },
+        {
+          "name": "variational_flow_has_exact_rotation_parameters",
+          "expected": "2-mu=2c and c^2+s^2=1",
+          "observed": "c=23/25, s^2=96/625",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_sign_potential_breaks_first_integral",
+          "documented_failure": "using (2+mu)q-p instead of (2-mu)q-p changes Q_mu",
+          "observed": "1->1057/625",
+          "fails_as_documented": true
+        },
+        {
+          "name": "outside_stability_window_loses_positivity",
+          "documented_failure": "mu=5 gives a negative first integral on the state (1,-1)",
+          "observed": "-1",
+          "fails_as_documented": true
+        },
+        {
+          "name": "trace_matching_without_circle_normalization_is_insufficient",
+          "documented_failure": "mu=0,c=s=1 matches the trace but c^2+s^2 is 2, not 1",
+          "observed": "2-mu=2c; c^2+s^2=2",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "The selected adjacent-link action now derives a nontrivial finite recurrence with exact conservation, a finite stability window, and an exact conjugacy to a unit-circle rotation. Selection of that action from primitive null information and continuum field dynamics remain open."
+    }
+  ]
+}

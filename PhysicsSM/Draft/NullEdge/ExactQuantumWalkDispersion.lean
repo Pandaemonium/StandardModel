@@ -1,4 +1,5 @@
 import PhysicsSM.NullStrand.ZigZag.QuantumWalk
+import PhysicsSM.Draft.NullEdgeQWUnitarity
 
 /-!
 # Exact lattice dispersion and the zero-momentum mass gap
@@ -74,18 +75,40 @@ theorem zero_momentum_xMinus_eigenvector (a mu : ℝ) :
     rw [Complex.exp_mul_I]
     ring
 
-/-- Compact spectral verdict: exact dispersion, determinant one, and both
-zero-momentum eigenphases. -/
+/-- The walk operator is unitary in the explicit closed-form matrix model. -/
+theorem quantumWalk_unitary (a k mu : ℝ) :
+    PhysicsSM.Draft.NullEdgeQWUnitarity.IsUnitary2
+      (quantumWalkOperator a k mu) := by
+  simpa [quantumWalkOperator,
+    PhysicsSM.Draft.NullEdgeNullStepQuantumWalkCore.Ua,
+    PhysicsSM.Draft.NullEdgeNullStepQuantumWalkCore.Rz,
+    PhysicsSM.Draft.NullEdgeNullStepQuantumWalkCore.Rx,
+    PhysicsSM.Draft.NullEdgeQWUnitarity.Ua,
+    PhysicsSM.Draft.NullEdgeQWUnitarity.Rz,
+    PhysicsSM.Draft.NullEdgeQWUnitarity.Rx] using
+    PhysicsSM.Draft.NullEdgeQWUnitarity.Ua_unitary a k mu
+
+/-- Compact spectral verdict: the concrete trace identity, its quasienergy
+bridge, unitarity, determinant one, and both zero-momentum eigenphases. -/
 theorem exact_quantum_walk_dispersion_verdict (a k mu omega : ℝ) :
     (PhysicsSM.NullStrand.ZigZag.IsQuasienergy a k mu omega ↔
       Real.cos (omega * a) = Real.cos (k * a) * Real.cos (mu * a))
+      ∧ (quantumWalkOperator a k mu).trace =
+          2 * Complex.cos (k * a) * Complex.cos (mu * a)
+      ∧ (PhysicsSM.NullStrand.ZigZag.IsQuasienergy a k mu omega ↔
+          (quantumWalkOperator a k mu).trace =
+            (2 : ℂ) * Real.cos (omega * a))
       ∧ (quantumWalkOperator a k mu).det = 1
+      ∧ PhysicsSM.Draft.NullEdgeQWUnitarity.IsUnitary2
+          (quantumWalkOperator a k mu)
       ∧ PhysicsSM.NullStrand.ZigZag.IsQuasienergy a 0 mu mu
       ∧ (quantumWalkOperator a 0 mu).mulVec xPlus =
           Complex.exp (-((mu * a : ℝ) : ℂ) * I) • xPlus
       ∧ (quantumWalkOperator a 0 mu).mulVec xMinus =
           Complex.exp (((mu * a : ℝ) : ℂ) * I) • xMinus :=
-  ⟨exact_lattice_dispersion a k mu omega, quantumWalk_det_one a k mu,
+  ⟨exact_lattice_dispersion a k mu omega, quantumWalk_trace a k mu,
+    quantumWalk_quasienergy_relation a k mu omega,
+    quantumWalk_det_one a k mu, quantumWalk_unitary a k mu,
     mass_is_zero_momentum_quasienergy a mu,
     zero_momentum_xPlus_eigenvector a mu,
     zero_momentum_xMinus_eigenvector a mu⟩
@@ -93,6 +116,10 @@ theorem exact_quantum_walk_dispersion_verdict (a k mu omega : ℝ) :
 end PhysicsSM.Draft.NullEdge.ExactQuantumWalkDispersion
 
 /-! ## Build-enforced axiom-footprint pins -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ExactQuantumWalkDispersion.quantumWalk_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ExactQuantumWalkDispersion.quantumWalk_unitary
 
 /-- info: 'PhysicsSM.Draft.NullEdge.ExactQuantumWalkDispersion.zero_momentum_xPlus_eigenvector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

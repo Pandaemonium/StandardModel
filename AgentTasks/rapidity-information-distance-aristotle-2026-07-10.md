@@ -20,8 +20,16 @@ aristotle:
   expected_module: RapidityInformationDistance.RapidityDistance
   submission_project: AgentTasks/aristotle-submit/rapidity-information-distance-20260710-project
   output_dir: AgentTasks/aristotle-output/f001c5e8-58e6-41b6-8f62-87058d9249cb
-  status: submitted
+  status: integrated
 ```
 
 Integration: completes the causal-Bloch-geometry suite; surface beside the
 Bloch mass-ratio rung in Future Directions.
+
+## Integration result (2026-07-09 23:22 PDT)
+
+All targets returned placeholder-free with unchanged signatures (vacuum-shift:
+see the in-file corrected negative control note), verified with the pinned
+local Lean check pre-port, landed at PhysicsSM/Draft/NullEdge/RapidityInformationDistance.lean
+with project namespace and passing axiom guards, imported by PhysicsSMDraft,
+and covered by a green targeted lake build.

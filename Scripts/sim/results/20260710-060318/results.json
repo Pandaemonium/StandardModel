@@ -1,0 +1,207 @@
+{
+  "run": "20260710-060318",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S06",
+      "tier": "V1",
+      "anchors": [
+        "D4NullShellLattice.every_null_root_is_unit_luminal",
+        "D4NullRaySpinorFactorization.all_d4_null_rays_factor",
+        "Clifford3Plus1WalkSymbol.alpha_sq",
+        "Clifford3Plus1WalkSymbol.alpha_pairwise_anticommute",
+        "Clifford3Plus1WalkSymbol.alpha_beta_anticommute",
+        "Clifford3Plus1WalkSymbol.H_sq",
+        "NormalizedCliffordUnitaryStep.massive_rational_unitary_witness",
+        "SuccessiveAxisDiracWalk.successive_step_unitary",
+        "SuccessiveAxisDiracWalk.linear_split_entry_hasDerivAt",
+        "SuccessiveAxisPositionWalk.rational_routeb_position_walk_preserves_norm",
+        "SuccessiveAxisPositionWalk.tetrahedral_shift_nontrivial",
+        "SuccessiveAxisPositionWalk.lossy_delete_origin_control",
+        "D4FiniteUnitaryWalk.walk_preserves_norm",
+        "ExplicitSixChannelCoin.axis_block_coin_unitary",
+        "ExplicitSixChannelCoin.axis_block_coin_sq_ne_scalar",
+        "ExplicitSixChannelCoin.axis_block_walk_preserves_norm",
+        "ConcreteD4InvariantSector.concrete_coin_intertwines_four_sector",
+        "ConcreteD4InvariantSector.excluded_z_channel_control",
+        "AxisCoinPositiveCliffordNoGo.axisBlockCoin_has_no_positive_clifford_block",
+        "AxisCoinComplexCliffordNoGo.axisBlockCoin_has_no_complex_clifford_block",
+        "CliffordDiagonalPositionBridge.axisBasis_conjugates_velocity",
+        "CliffordDiagonalPositionBridge.axisSymbol_entry_hasDerivAt",
+        "CliffordDiagonalPositionBridge.spatialStep_preserves_norm",
+        "CliffordDiagonalPositionBridge.identity_basis_fails_axis_zero",
+        "SixFourRankObstruction.no_direct_six_to_four_equivalence"
+      ],
+      "conventions": {
+        "units": "c=1; dimensionless real k and m",
+        "convention": "Dirac alpha/beta matrices; H=sum k_j alpha_j+m beta"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "three_velocity_generators_square_to_identity",
+          "expected": "alpha_j^2 = I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "velocity_generators_pairwise_anticommute",
+          "expected": "{alpha_i,alpha_j}=0",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "mass_turn_anticommutes_with_velocity",
+          "expected": "{alpha_j,beta}=0 and beta^2=I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "relativistic_symbol_square_1223",
+          "expected": "H(1,2,2,3)^2 = 18 I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "normalized_massive_clifford_step_unitary",
+          "expected": "U^dagger U = U U^dagger = I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "successive_axis_four_component_step_unitary",
+          "expected": "Ux Uy Uz Um is two-sided unitary",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "d4_null_shell_has_twelve_luminal_steps",
+          "expected": "24 roots; 12 null unit-speed roots",
+          "observed": "24 roots; 12 null",
+          "pass": true
+        },
+        {
+          "name": "six_future_d4_rays_have_spinor_factors",
+          "expected": "rankOne(spinor)=halfPauli(scaled root)",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "explicit_axis_bases_are_unitary",
+          "expected": "U_j^dagger U_j=I for j=x,y,z",
+          "observed": [
+            "2.22e-16",
+            "2.22e-16",
+            "2.22e-16"
+          ],
+          "pass": true
+        },
+        {
+          "name": "component_signs_conjugate_to_clifford_generators",
+          "expected": "U_j diag(sign_j) U_j^dagger=alpha_j",
+          "observed": [
+            "2.22e-16",
+            "2.22e-16",
+            "2.22e-16"
+          ],
+          "pass": true
+        },
+        {
+          "name": "finite_periodic_d4_shift_preserves_norm",
+          "expected": "origin moves; norm 1 -> 1",
+          "observed": "((0, 0, 0), 0)->((1, 0, 0), 0); 1->1",
+          "pass": true
+        },
+        {
+          "name": "six_four_rank_gap_is_two",
+          "expected": "dim(direction)-dim(Dirac)=2",
+          "observed": "2",
+          "pass": true
+        },
+        {
+          "name": "routeb_position_walk_moves_and_preserves_norm",
+          "expected": "L=5 four-component support moves; norm 30 -> 30",
+          "observed": "support=8 positions; 30->30",
+          "pass": true
+        },
+        {
+          "name": "explicit_three_axis_coin_is_unitary",
+          "expected": "U^dagger U = U U^dagger = I_6",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "explicit_coin_mixes_without_cross_axis_leakage",
+          "expected": "U[x+,x-]=4i/5 and U[x+,y+]=0",
+          "observed": "(0+4/5i), (0+0i)",
+          "pass": true
+        },
+        {
+          "name": "full_axis_coin_is_not_a_clifford_involution",
+          "expected": "(U^2)[x+,x-]=24i/25 != 0",
+          "observed": "(0+24/25i)",
+          "pass": true
+        },
+        {
+          "name": "concrete_rank_four_sector_is_coin_shift_invariant",
+          "expected": "P^2=P, [P,U]=0, [P,Sdiag]=0",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "explicit_d4_coin_shift_walk_preserves_norm",
+          "expected": "six-channel norm 91 -> 91",
+          "observed": "91->91->91",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_mass_matrix_breaks_clifford_square",
+          "documented_failure": "flipping one beta sign destroys velocity-mass anticommutation",
+          "observed": "nonzero anticommutator",
+          "fails_as_documented": true
+        },
+        {
+          "name": "purely_spatial_d4_root_is_not_null",
+          "documented_failure": "the full D4 shell is not a Lorentzian null alphabet",
+          "observed": "-2",
+          "fails_as_documented": true
+        },
+        {
+          "name": "direct_six_channel_dirac_identification",
+          "documented_failure": "the full six-channel coin space is not linearly equivalent to C^4",
+          "observed": "rank 6 != rank 4",
+          "fails_as_documented": true
+        },
+        {
+          "name": "real_opposite_direction_turn_breaks_coin_unitarity",
+          "documented_failure": "replacing the imaginary 4i/5 turn by 4/5 makes each block nonunitary",
+          "observed": "U^dagger U != I_6",
+          "fails_as_documented": true
+        },
+        {
+          "name": "rank_four_sector_excludes_z_direction",
+          "documented_failure": "the concrete first-four projector annihilates the nonzero z-plus channel",
+          "observed": "[(0+0i), (0+0i), (0+0i), (0+0i), (0+0i), (0+0i)]",
+          "fails_as_documented": true
+        },
+        {
+          "name": "lossy_position_deletion_breaks_routeb_norm",
+          "documented_failure": "deleting the occupied origin annihilates the initial state",
+          "observed": "30->0",
+          "fails_as_documented": true
+        },
+        {
+          "name": "identity_basis_does_not_recover_alpha1",
+          "documented_failure": "the raw diagonal sign table is not the off-diagonal alpha1",
+          "observed": "diag(-1,-1,1,1) != alpha1",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "The selected D4 alphabet now drives an exact norm-preserving finite periodic shift dynamics with an explicit nontrivial three-axis coin. Its concrete first-four-channel invariant sector is exactly the x/y sector and excludes z. Separate theorems rule out every scalar-square restriction of this simultaneous coin. The successive-axis route now has an explicit unitary eigenbasis dictionary from component signs to all three Clifford generators, finite position unitarity, and the correct spatial tangent; its compact rate and continuum remain open."
+    }
+  ]
+}

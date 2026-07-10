@@ -31,5 +31,5 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation
   submission_project: AgentTasks/aristotle-submit/codex-one-loop-dimensional-transmutation-20260710-project
   output_dir: AgentTasks/aristotle-output/3ea09edf-0206-4b6c-94b5-d3e618ba8ec2
-  status: submitted
+  status: integrated and guarded 2026-07-09 23:06 PDT
 ```

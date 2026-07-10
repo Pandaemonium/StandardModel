@@ -36,7 +36,7 @@ aristotle:
   expected_module: GeometryRegisterLambda.GeometrySuperposition
   submission_project: AgentTasks/aristotle-submit/geometry-register-lambda-20260709-project
   output_dir: AgentTasks/aristotle-output/e4aad67f-5c4d-48d6-81fe-1793cdf42c7b
-  status: submitted
+  status: integrated
 ```
 
 ## Integration notes
@@ -45,3 +45,11 @@ On completion: dry-run integrate helper, review, port to
 `PhysicsSM/Draft/NullEdge/` with guard blocks; record in the Lambda doc
 (`Sources/Null_Edge_Cosmological_Constant_2026-07-09.md`) as the coherence
 rung alongside L1-L4, and in `Sources/Null_Edge_Future_Directions.md`.
+
+## Integration result (2026-07-09 23:22 PDT)
+
+All targets returned placeholder-free with unchanged signatures (vacuum-shift:
+see the in-file corrected negative control note), verified with the pinned
+local Lean check pre-port, landed at PhysicsSM/Draft/NullEdge/GeometryRegisterLambda.lean
+with project namespace and passing axiom guards, imported by PhysicsSMDraft,
+and covered by a green targeted lake build.

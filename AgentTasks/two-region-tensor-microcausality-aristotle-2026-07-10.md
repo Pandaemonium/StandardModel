@@ -28,5 +28,5 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.TwoRegionTensorMicrocausality
   submission_project: AgentTasks/aristotle-submit/codex-two-region-tensor-microcausality-20260710-project
   output_dir: AgentTasks/aristotle-output/13b40077-16df-4e15-b662-37a84ac51edb
-  status: submitted
+  status: integrated and guarded 2026-07-09 23:06 PDT
 ```

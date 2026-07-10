@@ -1,0 +1,130 @@
+{
+  "run": "20260710-050320",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S18",
+      "tier": "V2",
+      "anchors": [
+        "FixedMomentumManyStepContinuum.walk_mem_unitary",
+        "FixedMomentumManyStepContinuum.fixed_time_many_step_bound",
+        "FixedMomentumManyStepContinuum.fixed_time_many_step_tendsto"
+      ],
+      "conventions": {
+        "units": "c=hbar=1; k=3/5, m=4/5, t=1",
+        "convention": "H=k sigma_z+m sigma_x; U_n=(shift(k/n) coin(m/n))^n; analytic free Dirac exponential imported as the comparison target"
+      },
+      "arithmetic": "binary64 complex matrices; analytic 2x2 exponential",
+      "checks": [
+        {
+          "name": "split_step_error_decreases_monotonically",
+          "expected": "error decreases for n=8..512",
+          "observed": [
+            "0.0714723",
+            "0.0357095",
+            "0.0178514",
+            "0.00892529",
+            "0.00446259",
+            "0.00223129",
+            "0.00111564"
+          ],
+          "pass": true
+        },
+        {
+          "name": "split_step_respects_landed_explicit_bound",
+          "expected": "error <= D(k,m)t^2/n at every sampled n",
+          "observed": [
+            "0.0715<=5.55",
+            "0.0357<=2.78",
+            "0.0179<=1.39",
+            "0.00893<=0.694",
+            "0.00446<=0.347",
+            "0.00223<=0.173",
+            "0.00112<=0.0867"
+          ],
+          "pass": true
+        },
+        {
+          "name": "free_dirac_propagator_recovered_at_fixed_momentum",
+          "expected": "n=512 Frobenius error < 0.003",
+          "observed": "0.0011156437",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_mass_phase_does_not_recover_target",
+          "documented_failure": "reversing the imaginary mass phase converges to the wrong Hamiltonian",
+          "observed": "correct=0.00111564; wrong=1.90403",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "This is a disclosed V2 reproduction of accepted free 1+1 Dirac propagation at fixed momentum, not a parameter-free prediction or an infinite-volume/PDE theorem."
+    },
+    {
+      "id": "S21",
+      "tier": "V2",
+      "anchors": [
+        "SuccessiveAxisDiracWalk.successive_step_unitary",
+        "SuccessiveAxisDiracWalk.linear_split_entry_hasDerivAt",
+        "SuccessiveAxisDiracWalk.H_sq",
+        "SuccessiveAxisDiracWalk.nondegenerate_1223_control"
+      ],
+      "conventions": {
+        "units": "c=hbar=1; k=(1,2,2), m=3, t=1/4",
+        "convention": "factor order x,y,z,mass; H=sum k_j alpha_j+m beta; analytic four-component free Dirac exponential imported"
+      },
+      "arithmetic": "binary64 complex 4x4 matrices; analytic Clifford exponential",
+      "checks": [
+        {
+          "name": "full_3plus1_split_error_decreases_monotonically",
+          "expected": "error decreases for n=8..512",
+          "observed": [
+            "0.135569",
+            "0.0677722",
+            "0.0338845",
+            "0.016942",
+            "0.008471",
+            "0.0042355",
+            "0.00211775",
+            "0.00105887"
+          ],
+          "pass": true
+        },
+        {
+          "name": "full_3plus1_split_has_empirical_first_order_rate",
+          "expected": "n*error approaches a finite nonzero constant",
+          "observed": [
+            "1.08455",
+            "1.08435",
+            "1.0843",
+            "1.08429",
+            "1.08429",
+            "1.08429",
+            "1.08429",
+            "1.08429"
+          ],
+          "pass": true
+        },
+        {
+          "name": "free_3plus1_dirac_exponential_recovered",
+          "expected": "n=1024 Frobenius error < 0.002",
+          "observed": "0.0010588737",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_mass_phase_does_not_recover_3plus1_target",
+          "documented_failure": "reversing only the mass-factor phase converges to the wrong Dirac Hamiltonian",
+          "observed": "correct=0.00105887; wrong=2.46831",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "This is a disclosed V2 fixed-momentum reproduction of accepted free 3+1 Dirac evolution by the full internal split step. The observed first-order rate is numerical; no uniform 3+1 convergence theorem, position-space limit, or prediction is claimed."
+    }
+  ]
+}

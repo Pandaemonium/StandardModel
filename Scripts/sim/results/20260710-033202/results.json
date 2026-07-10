@@ -1,0 +1,138 @@
+{
+  "run": "20260710-033202",
+  "python": "3.12.10",
+  "arithmetic": "exact",
+  "results": [
+    {
+      "id": "S06",
+      "tier": "V1",
+      "anchors": [
+        "D4NullShellLattice.every_null_root_is_unit_luminal",
+        "D4NullRaySpinorFactorization.all_d4_null_rays_factor",
+        "Clifford3Plus1WalkSymbol.alpha_sq",
+        "Clifford3Plus1WalkSymbol.alpha_pairwise_anticommute",
+        "Clifford3Plus1WalkSymbol.alpha_beta_anticommute",
+        "Clifford3Plus1WalkSymbol.H_sq",
+        "NormalizedCliffordUnitaryStep.massive_rational_unitary_witness",
+        "D4FiniteUnitaryWalk.walk_preserves_norm",
+        "ExplicitSixChannelCoin.axis_block_coin_unitary",
+        "ExplicitSixChannelCoin.axis_block_coin_sq_ne_scalar",
+        "ExplicitSixChannelCoin.axis_block_walk_preserves_norm",
+        "SixFourRankObstruction.no_direct_six_to_four_equivalence"
+      ],
+      "conventions": {
+        "units": "c=1; dimensionless real k and m",
+        "convention": "Dirac alpha/beta matrices; H=sum k_j alpha_j+m beta"
+      },
+      "arithmetic": "exact-rational/Gaussian-rational",
+      "checks": [
+        {
+          "name": "three_velocity_generators_square_to_identity",
+          "expected": "alpha_j^2 = I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "velocity_generators_pairwise_anticommute",
+          "expected": "{alpha_i,alpha_j}=0",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "mass_turn_anticommutes_with_velocity",
+          "expected": "{alpha_j,beta}=0 and beta^2=I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "relativistic_symbol_square_1223",
+          "expected": "H(1,2,2,3)^2 = 18 I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "normalized_massive_clifford_step_unitary",
+          "expected": "U^dagger U = U U^dagger = I",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "d4_null_shell_has_twelve_luminal_steps",
+          "expected": "24 roots; 12 null unit-speed roots",
+          "observed": "24 roots; 12 null",
+          "pass": true
+        },
+        {
+          "name": "six_future_d4_rays_have_spinor_factors",
+          "expected": "rankOne(spinor)=halfPauli(scaled root)",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "finite_periodic_d4_shift_preserves_norm",
+          "expected": "origin moves; norm 1 -> 1",
+          "observed": "((0, 0, 0), 0)->((1, 0, 0), 0); 1->1",
+          "pass": true
+        },
+        {
+          "name": "six_four_rank_gap_is_two",
+          "expected": "dim(direction)-dim(Dirac)=2",
+          "observed": "2",
+          "pass": true
+        },
+        {
+          "name": "explicit_three_axis_coin_is_unitary",
+          "expected": "U^dagger U = U U^dagger = I_6",
+          "observed": "exact",
+          "pass": true
+        },
+        {
+          "name": "explicit_coin_mixes_without_cross_axis_leakage",
+          "expected": "U[x+,x-]=4i/5 and U[x+,y+]=0",
+          "observed": "(0+4/5i), (0+0i)",
+          "pass": true
+        },
+        {
+          "name": "full_axis_coin_is_not_a_clifford_involution",
+          "expected": "(U^2)[x+,x-]=24i/25 != 0",
+          "observed": "(0+24/25i)",
+          "pass": true
+        },
+        {
+          "name": "explicit_d4_coin_shift_walk_preserves_norm",
+          "expected": "six-channel norm 91 -> 91",
+          "observed": "91->91->91",
+          "pass": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "wrong_mass_matrix_breaks_clifford_square",
+          "documented_failure": "flipping one beta sign destroys velocity-mass anticommutation",
+          "observed": "nonzero anticommutator",
+          "fails_as_documented": true
+        },
+        {
+          "name": "purely_spatial_d4_root_is_not_null",
+          "documented_failure": "the full D4 shell is not a Lorentzian null alphabet",
+          "observed": "-2",
+          "fails_as_documented": true
+        },
+        {
+          "name": "direct_six_channel_dirac_identification",
+          "documented_failure": "the full six-channel coin space is not linearly equivalent to C^4",
+          "observed": "rank 6 != rank 4",
+          "fails_as_documented": true
+        },
+        {
+          "name": "real_opposite_direction_turn_breaks_coin_unitarity",
+          "documented_failure": "replacing the imaginary 4i/5 turn by 4/5 makes each block nonunitary",
+          "observed": "U^dagger U != I_6",
+          "fails_as_documented": true
+        }
+      ],
+      "pass": true,
+      "interpretation": "The selected D4 alphabet now drives an exact norm-preserving finite periodic shift dynamics with an explicit nontrivial three-axis coin. Its six-channel coin is not yet the four-component Clifford/Dirac sector; the rank obstruction makes that missing reduction explicit."
+    }
+  ]
+}

@@ -10,6 +10,33 @@ The resulting theory would be neither conventional particle physics nor conventi
 
 The existing machine-checked framework supplies unusually substantial anchors for this development: Plücker mass, its entropy and concurrence readings, positive physical sectors, the free kinematic–spectral bridge, signed closure binding, Schur-generated mass, protected zero modes, confinement-shaped positivity, and the four-type square decomposition. 
 
+**Formal status, 2026-07-10.** The first complete finite moduli theorem is now
+machine checked for the explicit three-state positive-Hodge carrier. For
+
+[
+Q=E_{01},
+]
+
+every complex decoder commuting with (Q) has the normal form
+
+[
+D(a,b,c,h,mu)=
+\begin{pmatrix}
+a&b&c\\
+0&a&0\\
+0&h&\mu
+\end{pmatrix}.
+]
+
+The four coordinates (a,b,c,h) are exactly deformations (QR+RQ), while
+(mu=D_{22}) is a complete invariant of chain-homotopy classes. Thus every
+commuting decoder is equivalent to the canonical representative
+(operatorname{diag}(0,0,mu)); distinct same-(mu) presentations are
+explicitly equivalent, and different-(mu) representatives are explicitly
+inequivalent. This proves the moduli thesis completely for one nontrivial
+finite carrier. It does not classify arbitrary carriers or establish the
+global causal-amplitude moduli theory proposed below.
+
 ---
 
 ## 1. Replace “the carrier” by a causal amplitude functor
@@ -1628,6 +1655,12 @@ This is likely a relatively inexpensive, very high-value theorem suite.
 
 ## C. Channel-equivalence theorem
 
+The explicit (Q=E_{01}) carrier now has a complete answer: its commuting
+decoder space modulo (QR+RQ) is classified by the single complex coordinate
+(mu=D_{22}). The remaining theorem program is to generalize this result to
+arbitrary finite constraint complexes and then prove preservation of the
+additional structures below.
+
 Classify changes of decomposition that are (Q)-exact or chain-homotopic and prove that they preserve:
 
 [
@@ -1640,7 +1673,9 @@ Classify changes of decomposition that are (Q)-exact or chain-homotopic and prov
 \text{critical locus}.
 ]
 
-This would turn the carrier non-rigidity result into a controlled “channel gauge” theory rather than an unresolved ambiguity.
+For the explicit three-state carrier, this already turns non-rigidity into a
+controlled channel gauge. The universal classification and the full invariant
+packet remain open.
 
 ## D. Vacuum-shift theorem
 
