@@ -41,19 +41,15 @@ draft. Do not duplicate a ledger-claimed target; audit it instead.
 
 ## Literature cadence (binding) - SPARK SUBAGENTS
 
-At least one literature action EVERY cycle. **Default: EXTERNAL
-literature searches go through Spark subagents**: spawn a Spark subagent
-per search topic (arXiv/INSPIRE queries, prior-art checks for
-manuscript sections, novelty checks for kernel claims) so your main
-thread keeps proving while Spark searches; triage Spark's results
-yourself. Fallback: if Spark is out-of-budget, unavailable, or
-unresponsive after one bounded wait, run the literature search directly
-with the available scholarly/web/Neo4j tools rather than stalling the
-cycle. Local semantic search (lean-explore,
-`Scripts/lit/neo4j_doc_search.py`) before any new formalization. Ingest
-keepers via `Scripts/lit/lit_ingest.py` (dedup pre-check). One-line log
-per search in `LIT_SEARCH_LOG.md`, marking Spark-sourced entries
-`[spark]` and fallback entries `[fallback-no-spark]` with the reason.
+At least one literature action EVERY cycle. **All EXTERNAL literature
+searches go through Spark subagents**: spawn a Spark subagent per
+search topic (arXiv/INSPIRE queries, prior-art checks for manuscript
+sections, novelty checks for kernel claims) so your main thread keeps
+proving while Spark searches; triage Spark's results yourself. Local
+semantic search (lean-explore, `Scripts/lit/neo4j_doc_search.py`)
+before any new formalization. Ingest keepers via
+`Scripts/lit/lit_ingest.py` (dedup pre-check). One-line log per search
+in `LIT_SEARCH_LOG.md`, marking Spark-sourced entries `[spark]`.
 
 ## Non-negotiables
 
@@ -66,11 +62,4 @@ per search in `LIT_SEARCH_LOG.md`, marking Spark-sourced entries
   finding - file it, do not fix it silently.
 - No blocking waits; harvest-first; 2-hour Aristotle stall rule; keep
   the fleet <= 10; one task note per job.
-- Aristotle is not proof-only: every 90 minutes, submit a "grand
-  strategy" job with the whole project goal, current run context, open
-  gates, kills, and requested strategic guidance. Submit smaller focused
-  strategy/no-go/semantic-alignment jobs more frequently, and keep 1-2
-  audit jobs running whenever fleet capacity allows.
-- Hard audit cutoff: at 06:00 local time on 2026-07-08, stop opening
-  new proof/manuscript fronts and switch to audit/reporting mode.
 - Report honestly at dawn: attempted / landed / killed / open, no spin.

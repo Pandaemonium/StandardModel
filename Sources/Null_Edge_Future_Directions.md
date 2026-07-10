@@ -4,9 +4,12 @@
 document collects conceptual reframings and candidate future papers for the
 null-edge mass program. It is deliberately *outside* the manuscript
 (`Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md`), which is held to grade
-discipline (only **T/M** claims, with **C** pre-registered and killable). Nothing
-here is a result; these are directions, organized so that the backed pieces can be
-grown into them. Sourced primarily from two external frontier-model analyses (Fable-5
+discipline (only **T/M** claims, with **C** pre-registered and killable). This
+document is not itself evidence; it records directions and labels the finite
+**M** anchors that have since landed beneath them. The illustrated companion
+`Null_Edge_General_Audience_Manuscript_2026-07-09.tex` presents the public-facing
+conceptual picture while preserving the technical boundaries in footnotes.
+Sourced primarily from two external frontier-model analyses (Fable-5
 and "Pro"/GPT-5, 2026-07-08), triaged against what the manuscript already proves.
 
 Legend: **[in-paper M]** already a kernel theorem in the manuscript; **[job]** a
@@ -27,6 +30,225 @@ The ontology shifts from *particles* to *coherence patterns*. Mass is not a subs
 but a **relational geometry**: lightlike parts that cannot agree. This is grade
 **[spec]** as an ontology, but it is grounded in an **[in-paper M]** core (mass =
 Plücker/wedge disagreement) and organizes every direction below.
+
+---
+
+## Hilbert-Hodge representatives and positive Krein decoding (Pro/Fable synthesis, 2026-07-09)
+
+The deepest current organizing sentence is:
+
+> **Physics may be the positive Hodge theory of finite null information.**
+
+This is a conjectural program title, not one theorem. Its mathematically safe
+finite content is a two-stage construction: ordinary Hilbert-Hodge theory
+chooses cohomology representatives using `Q^*`, and the descended Krein form is
+then used to choose additional positive physical data. Those stages must not be
+collapsed.
+
+- **[M] Null information:** rank-one null messages combine into a positive
+  momentum matrix; its determinant is Pluecker disagreement, linear entropy,
+  and (for two edges) concurrence squared.
+- **[M] Cohomological decoding:** finite Kugo-Ojima gives
+  `range Q <= ker Q`, identifies `range Q` as the radical on `ker Q`, and makes
+  the induced cohomology form nondegenerate. The descent of the form uses the
+  load-bearing hypothesis `Q# = Q`.
+- **[M] Generic finite Hilbert-Hodge theorem:** `GenericFiniteHodge` proves that
+  every closed vector has a unique representative in `ker Q intersect ker Q^*`,
+  and that a decoder commuting with `Q` descends to cohomology; commuting also
+  with `Q^*` preserves harmonic representatives.
+- **[M] Krein-Hodge no-go:** `KreinHodgeNoGo` gives
+  `J=[[0,1],[1,0]]`, `Q=[[0,1],[0,0]]`. Here `Q^2=0` and `Q#=Q`, but
+  `Q#Q+QQ#=0`, every vector is Krein-harmonic, `ker Q=range Q`, and an explicit
+  harmonic vector is not even closed. The Krein Laplacian does not compute
+  cohomology.
+- **[M] Positive Hodge witness:** `PositiveHodgeDecoder` separates the
+  constraint Laplacian `Delta_Q = Q^*Q + QQ^*` from the spectral mass operator
+  `D#D`. Every closed vector in the explicit witness is cohomologous to a
+  harmonic vector; `e2` is a non-exact positive harmonic class; a commuting
+  Krein-self-adjoint decoder gives `D#D e2 = mu^2 e2`. The same cohomology with
+  one Krein sign reversed is negative, so positivity is independent data.
+- **[C] Reconstruction:** derive the universal tuple
+  `(A,K,J,Gamma,Q,D,Nhat,omega)`, a nonzero invariant positive sector, the
+  physical decoder, and its refinement law rather than choosing them.
+- **[M finite] Self-consistent feedback seed:** `SelfConsistentDecoder` proves
+  that the two-level Gibbs feedback map has a fixed point for every `c>=0`, is
+  unique when `|c*g|<4`, and has an explicit unique interior witness at
+  `(c,E0,g)=(1,0,1)`.
+- **[spec] Self-decoding cosmology:** replace that scalar loop by a
+  decoder/state/geometry map, sum over finite causal complexes, identify native
+  event count with four-volume, and derive rather than assume the volume
+  statistics and Born rule. The finite fixed point does not select a cosmology.
+
+**Crucial operator distinction.** `Q` removes redundant descriptions;
+`Delta_Q = Q^*Q + QQ^*`, using the auxiliary positive Hilbert adjoint, selects
+harmonic cohomology representatives; `D#D`, using the Krein adjoint, supplies
+spectral mass. The distinction is forced: the finite Kugo-Ojima charge is
+Krein-self-adjoint and nilpotent, so replacing `Q^*` by `Q#` would give
+`Q#Q + QQ# = 2Q^2 = 0`. Collapsing these roles would make every physical
+cohomology class a zero mode. A successful universal theory must instead prove
+that `D` descends through the `Q` quotient and preserves its positive sector.
+
+**Physical-space correction.** First form the indefinite cohomology
+
+```text
+H_Q = ker Q / range Q,
+```
+
+whose Krein form is well-defined under `Q#=Q`. A physical Hilbert space is not
+canonically `(H_Q)_{J>0}`: an indefinite vector space has no preferred positive
+part. It is additional decoder data, namely a chosen nonzero `D`-invariant
+`J`-positive subspace `P <= H_Q`. Requiring `P` to be maximal is natural, but
+existence of a nonzero `D`-invariant choice is model-dependent and uniqueness is
+not expected. Different admissible choices may support the later Bogoliubov
+reading, but that physics remains conjectural.
+
+The compact conjectural dictionary is useful only at these grades: particles
+are stable eigen-codes in a chosen positive sector; rank distinguishes the
+massless boundary from the massive interior, while `det P` or the corresponding
+spectral area measures the continuous mass cost; the four square blocks are
+second-order decoding defects; soldering is codebook compatibility; gravity is
+decoder/codebook backreaction; and Lambda is conjugate to total code size. The
+last three clauses remain conjectural even though finite algebraic and
+arithmetic shadows have landed.
+
+---
+
+## Decoder moduli and chain-homotopy gauge (Pro follow-up, 2026-07-09)
+
+Pro's next correction is that the fundamental object should be an equivalence
+class of admissible decoders, not one privileged matrix presentation. The first
+finite part of that proposal is now a theorem.
+
+Let `Q^2 = 0` and let `D` commute with `Q`. For any linear homotopy `R`, define
+
+```text
+D' = D + Q R + R Q.
+```
+
+`DecoderChainHomotopy` proves (**[M]**):
+
+- chain homotopy is an equivalence relation on decoder presentations;
+- `D'` still commutes with `Q`;
+- both decoders preserve closed and exact representatives;
+- for every closed `x`, `D' x - D x` is exact, so `D` and `D'` induce the same
+  cohomology action;
+- more generally, if `UQ = Q'U` and
+  `D'U - UD = Q'R + RQ`, then `U` transports closed/exact representatives and
+  intertwines the two decoder actions on cohomology;
+- on the positive Hodge witness, `D'_mu = D_mu + 2Q` is genuinely a different
+  prephysical matrix but acts identically on the positive non-exact harmonic
+  class `e2`.
+
+This turns a real portion of carrier non-rigidity into controlled **channel
+gauge freedom**. It does not yet prove that every alternative four-block split
+is chain-homotopic, or that full prephysical spectra and individual channel
+shares are invariant. The physical candidates are instead the induced
+cohomology operator, its positive-sector spectrum, index, critical locus, and
+holonomy.
+
+The rest of the moduli program separates cleanly by grade:
+
+- **[M, mostly existing] Causal Bloch geometry:** the normalized future cone is
+  a qubit state space; mass ratio, determinant, purity deficit, and the free
+  proper-time rate are algebraic functions of one invariant (`GateI1`,
+  `NullEdgeP7BlochMassRatio`, `NullEdgeP7ProperTimePurityBridge`). The full
+  `SL(2,C)/SU(2)` isometric rapidity theorem remains open.
+- **[C] Positive Hodge-Pluecker variational mass:** minimize `D#D` over positive
+  normalized representatives of a cohomology class, prove attainment, and
+  recover the Pluecker determinant in the free carrier. Descent and positivity
+  hypotheses must make the quotient functional representative-independent.
+- **[C] Four tangent types:** reinterpret aperture, closure, turn, and soldering
+  as deformation classes in endomorphism cohomology. The landed theorem gives
+  four algebraic square types, not yet an irreducible tangent representation of
+  a decoder moduli space.
+- **[C] Spectral monodromy for generations:** a three-sheeted cover cannot be
+  inserted as the explanation of three generations; `FamilyRankNoGo` would
+  correctly diagnose that as rank-fixing data. The only visible non-circular
+  route combines the landed `KMFamilyRankBridge` with a separately derived
+  statement that there is exactly one physical CP phase: Sakharov-type
+  necessity could supply `>=1`, while a genuine economy or rigidity theorem
+  must supply `<=1`. Only then would `one phase <-> N=3` fix the sheet count.
+  With `N=3` derived, compute the discriminant and Berry/Bargmann monodromy;
+  reducible or trivial monodromy kills the generation-as-sheets interpretation.
+- **[M finite / C continuum] Vacuum-shift redundancy:**
+  `VacuumSequestering` proves the finite uniform-shift absorption theorem, and
+  `LambdaThreeSplit` proves the matching finite traceless projection statement.
+  What remains open is survival under the geometry measure, radiative feedback,
+  refinement, and the continuum limit.
+- **[C] Recovery-Compton theorem:** define recovery error for Schur decimation
+  and relate its length scale to the inverse positive gap. Entropy monotonicity
+  alone is not enough.
+- **[C] Information equivalence principle:** derive a Ward identity equating
+  state acceleration with opposite soldering/frame acceleration. Existing WEP
+  trace identities are anchors, not this theorem.
+- **[spec] Causal amplitude functor, self-consistent free energy, holographic
+  capacity, code-proliferation criticality, and an arrow from lost
+  recoverability:** each needs a category of finite causal complexes, a measure
+  or refinement law, and a physicalization functor that have not been derived.
+
+The strongest safe synthesis is therefore: **physical observables should live
+on a chosen invariant positive subspace of cohomology and be unchanged by
+chain-homotopy changes of decoder presentation.** Existence, maximality,
+comparison of positive choices, and dynamics of the proposed full moduli space
+remain reconstruction problems.
+
+---
+
+## Broader physics from finite null information (Pro synthesis, 2026-07-09)
+
+The wider proposal organizes physics around seven operations: **encoding,
+quotienting, positive decoding, holonomy, spectral cost, coarse-graining, and
+recovery**. At conjectural grade, logical information organizes charges and
+particles, holonomy organizes gauge transport/spin/statistics, spectral cost
+organizes mass and stability, and coarse-graining organizes thermodynamics and
+classical records. Gravity is singled out as dynamics of the directional
+codebook itself. This is an architecture, not a theorem derived from the
+current carrier.
+
+Two near-term pieces now have concrete theorem status:
+
+- **[M] Gauge mass as a reference-orbit Gram matrix.** `GaugeMassGram` proves
+  that `M^2_ab = <g_a T_a phi, g_b T_b phi>` is Hermitian and positive
+  semidefinite, its quadratic form is the squared combined displacement, and a
+  nonzero-coupling generator has zero diagonal mass exactly when it stabilizes
+  the reference. An explicit `diag(0,1)` witness separates unbroken and broken
+  directions. This does not derive electroweak inputs or the radial Higgs mass.
+- **[job] Spin as a null-factorization fiber.** Aristotle project
+  `ccff7fc8-bba7-4260-a335-25597d622551` targets the exact theorem that factors
+  of a fixed positive `2 x 2` momentum form a right `U(2)` fiber, reduced to
+  `SU(2)` after determinant-phase fixing. That identifies the algebraic massive
+  little-group fiber, not yet its spin representations or Wigner holonomy.
+
+The remaining headline targets have sharper boundaries:
+
+| Target | Current anchor | Missing theorem layer |
+|---|---|---|
+| Higgs as charge-coherent reference | `WAYTurnNoGo` finite conservation no-go | physical weak-charge representation and constructive coherent reservoir |
+| Exchange spin-statistics | exterior/Fock antisymmetry machinery and `Gamma_rev` framing | discretized configuration space / graph braid group (Ghrist `math/9905023`; Farley-Sabalka `math/0410539`, `[import]`); test whether attached 2-cells plus positivity collapse exchange representations to `+/-1`, then identify exchange with the framed `2pi` loop |
+| Anomaly as failed gauge descent | `IndexAnomalyInterface`, quotient Ward action | determinant line/phase cocycle and gluing-compatible descent theorem |
+| Resonance as recovery lifetime | real finite Schur decimation | open-channel resolvent, complex pole, and operational recovery metric |
+| Equivalence principle as Ward identity | WEP trace and soldering-response identities | simultaneous state/frame covariance and differentiated response equality |
+| Horizon capacity | explicit `HolographicEdgeBound` witness | general causal-region injection/gluing theorem and logarithmic area scaling |
+
+The proposed field/query, particle/spectral-response, scattering/channel,
+thermodynamic/data-processing, hydrodynamic/conserved-information,
+measurement/redundant-record, and cosmological/code-capacity dictionaries remain
+**[spec]** until a causal-history amplitude functor and refinement law exist.
+They are useful design criteria for that infrastructure, not substitute proofs.
+
+The BRST/Hodge formula in the source analysis also requires the same correction
+recorded above: harmonic representatives use `Q^*Q + QQ^*`, whereas spectral
+mass uses `D#D`. Since the finite Kugo-Ojima charge is Krein-self-adjoint and
+nilpotent, `Q#Q + QQ#` would vanish identically and cannot be the physical Hodge
+Laplacian.
+
+**Lambda convention lock.** The Lorentzian history factor `exp(i Lambda N)`
+and a Euclidean/canonical weight `exp(-beta Lambda_E N)` are related only after
+an analytic-continuation and normalization convention is stated. Their raw
+`Lambda` symbols must not be identified across the two displays.
+
+Full triage and project locators are recorded in
+`AgentTasks/overnight-allmass-run-2026-07-09/2026-07-09_PRO_broader-physics-null-information.md`.
 
 ---
 
@@ -53,7 +275,10 @@ its Lean actually earns only after it lands and is recorded in HARVEST RESULTS.
   coordinates (basin membership, not analogy). Rungs: `CheckerboardCarrierBridge`
   [M], `FiniteLevinson` [M], Goal III (critical RG, z=1, nu=1); NEW: path-sum
   semantics `rho_dir`, Cl(4)/3+1D checkerboard lift, Levinson index. Ties to P-H,
-  P-J, the channel-name conjecture (S4a).
+  P-J, the channel-name conjecture (S4a). Reconstruction hypotheses may assume
+  a stable refinement critical point, but must not assume `z=1`; the conical
+  null dispersion and its linear scaling are the theorem target that should
+  derive `z=1`.
 - **Suite C — Positive-Code Particle Theorem.** Particles = stable positive-sector
   eigen-codes; confinement = non-decodability; binding = compression advantage;
   masslessness = index/quotient/rank-one codes; generations = inequivalent positive
@@ -79,6 +304,232 @@ conditions, or the number of null edges (see "What stays untouchable" below). Th
 most ambitious sentence the run may work to make true, at the grade each rung earns:
 *spacetime, particles, forces, and mass are the decodable geometry, codewords,
 defects, and compression costs of finite null information.*
+
+---
+
+## Pro follow-up: ten research directions after the all-mass harvest (2026-07-09)
+
+Pro's 2026-07-09 follow-up sharpened the next frontier into a useful operational
+rule: the program is currently strongest as a **finite, first-quantized,
+operator-algebraic mass decomposition**. The next layer must turn that static
+decomposition into a **quantum history theory**: phases, path sums, Hamiltonian
+generators, structured closure backgrounds, soldering geometry, and generation
+structure. The ranking below is recorded as research-program guidance, not as a
+manuscript result.
+
+Top priority:
+
+1. **Path-sum / phase version of the four-channel theory** [C, Suite B]. Define a
+   local action budget for null-edge histories, with aperture, closure, turn, and
+   soldering contributions, and test whether the phase sum reproduces the
+   checkerboard/Dirac propagator. Current supports: `PathSumSemantics`,
+   `CheckerboardCarrierBridge`, `SuiteBCl4Walk`, `CarrierDynamicsCapstone`, and
+   `ExactCheckerboardPathSum` [M]. The finite 1+1 turn-only core is now closed:
+   the exact null-history sum equals the corner kernel and satisfies the
+   discrete Dirac recursion. `FourChannelPathActionCapstone` now also derives
+   the checkerboard state-level channel action from the expectations of
+   `Q_A,Q_C,4Q_T,4E_#`, whose sum is exactly the expectation of `4D#D`; its
+   on-shell `3-4-5` witness has channel tuple `(64,0,64,0)` and total `128` [M].
+   `QuantitativeDiracWalkContinuum` [M] now gives explicit one-step analytic
+   control in the max-entry seminorm:
+   `||U(k eps,m eps)-(1-i eps H)|| <= C(k,m) eps^2` for `|eps|<=1`, with a
+   displayed polynomial constant and exact massive/massless fixtures. This is
+   fixed-momentum control, not the still-open Trotter/spacetime limit.
+   `HistoryLocalFourChannelAction` [M] now closes the finite local phase algebra:
+   event actions add under concatenation, phases multiply, the flat encoding has
+   one aperture per step and one turn per reversal, and the quarter-turn weight
+   gives exactly `i^r` and `(i eps m)^r` with a nonzero one-turn witness.
+   `U1HistoryClosureHolonomy` [M] now wires a second channel locally: ordered
+   edge holonomy multiplies under history concatenation, is endpoint-covariant
+   on open paths and gauge invariant on closed paths, and an exact square loop
+   carries `I != 1` under a nonidentity gauge. This is finite abelian closure,
+   not yet a nonabelian Wilson action or a derivation from `Q_C`.
+   The first **3+1 kinematic rung is now landed** in
+   `TetrahedralNullHistory` [M]: four exact rational tetrahedral directions give
+   null primitive steps and
+   `X(c)^2=(8/3) sum_{i<j} c_i c_j`, with a nonzero mixed-direction witness.
+   Its tight-frame theorem also isolates the scheme-specific obstruction:
+   normalized four-projector averaging is exactly `v/3`, so microscopic speed
+   one, that recursion, and emergent speed one cannot all hold; the usual
+   Foster-Jacobson normalization instead uses step scale three. This is not a
+   no-go for 3+1 path sums. The next rungs are: (i) an order-sensitive product
+   of tetrahedral spin projectors and exact finite kernel recursion, (ii) an
+   exactly unitary massive tetrahedral update, and (iii) controlled many-step
+   convergence to the 3+1 Dirac propagator. The Mlodinow-Brun 2020 no-go applies
+   to a common higher-dimensional **many-particle QCA** construction, not this
+   single-particle path-sum ladder.
+
+   `D4AddedStepCausalClassification`, `D4DisconnectedCopy`, and
+   `D4ConcreteQuotient` [M] now sharpen
+   the optional `D4` lane. The active Hadamard steps are null, whereas distinct
+   half-sum and half-difference `D4` roots have Lorentz squares `-2/3` and
+   `+2/3`; full `D4` root connectivity therefore violates null-only primitive
+   propagation. Kinetic components are exactly shift-subgroup cosets. The
+   explicit three-bit parity label has kernel exactly `L_H`, so
+   `D4/L_H ~= (Z/2)^3` and there are unconditionally eight disconnected copies.
+   Use `D4` for cover/coset bookkeeping,
+   24-cell symmetry, and a triality/Spin(8) bridge, not as the active lattice.
+   The concrete quotient/kernel theorem has landed from focused Aristotle job
+   `9c0020be`; next test the all-eight-future-null body-diagonal sublattice as a
+   separate operator.
+
+   A parallel causality rung is also landed in `LowerOrderChannelCausality` [M].
+   A multiplet with common principal symbol
+   `(omega^2-|k|^2) I_d` has exactly the null characteristic cone, and arbitrary
+   finite zero-order aperture/closure/turn/soldering mixing vanishes under
+   principal scaling; a principal-order negative control shows the hypothesis
+   is essential. Massive-shell group drift is strictly subluminal. The honest
+   universal target is therefore **shared null front velocity**, not a
+   simultaneous classical velocity `c` for every particle or for interaction
+   channels. What remains C is a field-by-field principal-symbol instantiation
+   for scalar, Dirac, and gauge-fixed vector equations, plus a separate
+   cone-defining audit for soldering terms that alter the principal metric.
+
+   What also remains C is deriving the four weights from the carrier, tying the
+   local `U(1)` holonomy quantitatively to `Q_C`, and localizing a nonzero
+   soldering density on individual histories.
+   Kill
+   test: if the four-channel path action cannot reproduce the free checkerboard
+   Dirac limit, the path-sum reading is incomplete.
+2. **Hamiltonian / energy generator, not only a mass form** [C, dynamics lane].
+   Compare the candidates `D`, `D#D`, compressed physical-sector blocks, and the
+   Legendre transform of a finite action. Current supports:
+   `FiniteCarrierAction`, `FiniteQuadraticAction`, `FiniteUnitaryEvolution`,
+   `CarrierDynamicsCapstone`, `CarrierDynamicsRGInformationCapstone`, and
+   `FiniteHamiltonianGeneratorCapstone` [M]. The last makes the boundary citable:
+   action-derived EOM and unitary conservation are proved, but generator selection
+   remains open. `CayleyHamiltonianGenerator` [M] now proves the finite
+   Cayley/Crank-Nicolson generator-to-transfer equivalence and unitarity, with the
+   exact nontrivial witness `H=sigma_x`, `dt=2`, `e0 -> -i e1`. This derives an
+   update from a chosen generator; it does not choose the generator. Kill test:
+   if phase evolution is only posited from the mass form,
+   it remains model input, not a derived dynamics theorem.
+3. **Soldering as the route to emergent gravity** [C, Suite D/P-G]. Treat varying
+   soldering as discrete tetrad/connection data, prove legitimate transformation
+   behavior, then ask whether stationarity gives a teleparallel,
+   symmetric-teleparallel, or Einstein-like finite avatar. Current supports:
+   `ESlotGeometry`, `TeleparallelSoldering`, `GoalIVReconciliationCapstone`,
+   `LambdaGravityCosmologyBridge`. `SolderingLocalFrameCovariance` [M] passes
+   endpoint-frame covariance, exact refinement, orthogonal action invariance,
+   and holonomy conjugacy. `NondegenerateSolderingGeometry` [M] now closes the
+   next finite gate with invertible matrix coframes, induced Lorentz metric,
+   determinant volume, invariant quadratic defect action, and a nonzero exact
+   rational boost witness. What remains is compatibility with the actual E-slot
+   torsion/nonmetricity split and a continuum tetrad/action limit; failure there
+   retires the gravity interpretation.
+
+Second priority:
+
+4. **Structured closure backgrounds, not random closure disorder** [C, Suite C].
+   Classify small face-holonomy patterns and ask which produce protected low
+   modes, singlet binding, or hyperfine-like splittings. Current supports:
+   `ConfinementPositivity`, `WindingLowModes`, `Goal1Confinement`,
+   `IndexProtectionBridge`, and `StructuredHolonomyBindingCapstone` [M]. The
+   last gives one exact background with index-one protection and `-1 < 1`
+   singlet binding, but explicitly has no intertwiner between its winding and
+   binding sectors. Kill test: if no structured holonomy family robustly
+   produces low modes beyond toys, the QCD interpretation weakens.
+5. **Generation structure instead of inserted Yukawa constants** [C, Goal II/P-F].
+   Use CP phase counting and family-rank data as rank-fixing constraints, but keep
+   the distinction between "three derived families" and "three arbitrary copies"
+   sharp. Current supports: `FiniteKMCP`, `IncidenceCorank`, `KMFamilyRankBridge`,
+   `KMFlagship`, `KMC3FlagshipCapstone`, `KMNeutrinoFamilyAnomalyCapstone` [M].
+   `GenerationPermutationNoGo` [M] sharpens the duplication boundary: diagonal
+   family operators retain the full permutation commutant and no label is fixed
+   by every permutation, so three copies are not three canonically distinguished
+   generations.
+   Kill test: if the framework cannot distinguish three generations from three
+   duplicated charge modules, it has not derived generation structure.
+6. **Spinor/incidence geometry for spacetime and charges** [spec, Suite A/C].
+   Use Baez-style spinor/incidence geometry as a toolkit: derive Lorentzian
+   geometry from null relations, then ask whether charge groups arise from
+   automorphisms preserving chirality, soldering, and the channel split. Current
+   supports: `RPSelectsLorentzian`, `SuiteAOp2Geom`, `PauliMomentumPhysLean`,
+   `SigmaMapNullEdges`. Kill test: arbitrary or anomaly-inconsistent charge
+   assignments fail the derivation.
+7. **The missing rigidity assumption** [C, foundations]. Identify the extra
+   condition that turns "four channel types are forced" into "the carrier is
+   unique up to gauge equivalence." Candidate constraints: locality, reflection
+   positivity, causal-order preservation, soldered gauge constraints, refinement
+   functoriality, and checkerboard-limit compatibility. Current supports:
+   `CarrierRigidity`, `FourChannelRigidityCapstone` [M], and the
+   `FamilyRankNoGo`/`FamilyIndexNoGo` lessons. The explicit rational witness is
+   now coefficient-rigid once its support selectors are supplied; the abstract
+   no-go survives because those selectors are extra structure. Kill test: many
+   inequivalent carriers satisfying all reasonable constraints imply
+   underdetermination.
+
+Longer-horizon but load-bearing:
+
+8. **Four-channel RG toward a continuum dictionary** [C, Suite B]. Show whether
+   aperture/closure/turn/soldering flow toward kinetic, curvature/Yang-Mills,
+   scalar/Yukawa, and tetrad/gravity terms. Current supports: `Goal3ExactRG`,
+   `Goal3ChannelRG`, `Goal3ChannelRG4`, `MassPhaseRGCapstone`. Kill test: if the
+   finite blocks do not converge to their claimed continuum counterparts, rename
+   them neutral block coordinates `A,C,T,E`.
+9. **Mass as retained which-direction information** [C, Suite D]. Make the
+   resource theory precise: free states are coherent rank-one/null beams; resource
+   states retain, decohere, or expose which-null-direction information; monotones
+   track spectral mass under allowed dynamics. Current supports:
+   `PathSumSemantics`, `KraftCompressionMass`, `LeanQuantumDPIMass`,
+   `InformationResourceBridge`, `VelocityMixtureLinearEntropy`. Kill test:
+   entropy/entanglement measures must track spectral mass under the allowed
+   finite dynamics, not merely rename it.
+10. **Second-quantized / many-body finite theory** [spec -> C, Goal I]. Promote
+    carriers to finite Fock models with closure decorations, many-body actions,
+    condensate-like observables, singlet bound states, and scaling tests. Current
+    supports: `DGammaSquare`, `FockMassGap`, `DerivedInteraction`, `Goal1Hadron`,
+    `Goal1Confinement`, `CarrierClosurePlane`, and `ConfinementPositivity`. A
+    global additive `dGamma` channel-budget and square-cross-term theorem is now
+    submitted. Kill test: if the many-body theory does not preserve the
+    one-particle mass-budget structure or stable singlet binding, the QCD reading
+    is in trouble.
+
+Immediate follow-up registered from this Pro pass:
+
+- Harvested `CarrierDynamicsRGInformationCapstone` [M], which strengthens items 1,
+  2, 8, and 9 at the finite-composition level.
+- Landed the state-level checkerboard action wiring in
+  `FourChannelPathActionCapstone`: the four block expectations sum to the full
+  carrier quadratic action, with a nonzero on-shell witness.
+- Landed `HistoryLocalFourChannelAction` [M]: concatenation locality, exact
+  per-channel event counts, the quarter-turn phase `I^r`, and the standard
+  checkerboard corner amplitude `(i eps m)^r`, without claiming the continuum
+  limit.
+- Landed `U1HistoryClosureHolonomy` [M]: ordered finite closure transport,
+  endpoint gauge covariance, closed-loop invariance, and a nontrivial exact
+  square holonomy `I`. The nonabelian/carrier-derived closure action remains C.
+- Landed `TetrahedralNullHistory` [M]: exact rational 3+1 null-step kinematics,
+  a positive mixed-direction endpoint mass, and the `1/3` tight-frame
+  normalization obstruction. Landed `TetrahedralSpinProjectorPath` [M] adds
+  exact Hermitian idempotent Weyl projectors, the `1/3` bend sandwich,
+  chronological concatenation, and an orientation-sensitive `+-I*r/3` triple
+  phase. The summed endpoint kernel, unitarity, and continuum limit remain open.
+- Recovered and landed the `D4` envelope guardrails [M]: added root steps are
+  timelike/spacelike rather than null, and shift-only graph components are
+  exactly quotient cosets. `D4ConcreteQuotient` now proves the concrete
+  index-eight `D4/L_H ~= (Z/2)^3` isomorphism. The causal classification still
+  prevents `D4` from replacing the active null lattice.
+- Landed `LowerOrderChannelCausality` [M]: a common wave principal symbol gives
+  a shared null characteristic cone, lower-order channel mixing preserves it,
+  and massive group drift is strictly subluminal. Universal Standard Model
+  scope remains conditional on field-by-field principal-symbol checks.
+- Landed `NondegenerateSolderingGeometry` [M]: invertible matrix coframes,
+  induced Lorentz metric, determinant volume, covariant/refining defects, an
+  invariant quadratic action, and a nonzero rational boost witness. Continuum
+  tetrad geometry and the field equation remain C.
+- Landed `SolderingLocalFrameCovariance` [M]: finite endpoint covariance,
+  refinement composition, orthogonal action invariance, holonomy conjugacy, and
+  a nonzero rational defect. Nondegenerate continuum tetrad geometry remains C.
+- Keep the actual 3+1 checkerboard-to-Dirac limit as a longer paper-level target:
+  the endpoint kinematics are now closed, but the ordered spin amplitude and
+  analytic convergence remain substantial.
+- Current frontier jobs also attack two missing assumptions directly:
+  `GenerationPermutationNoGo` tests whether diagonal family triplication leaves
+  an unbroken full permutation commutant, while
+  `StructuredHolonomyBindingCapstone` asks for one explicit background carrying
+  both finite winding protection and carrier-closure binding without conflating
+  their operators.
 
 ---
 
@@ -153,15 +604,17 @@ The soldering `E`-slot changes *what it means for two null directions at neighbo
 sites to be comparable* — gravity is the **holonomy of the measuring apparatus for
 mass**, not another additive force term. A finite equivalence principle: locally one
 can gauge the null ruler coherent; the soldering-gradient defect records the failure
-to globalize. Transformation law first (does `E_#` transform like discrete
-contorsion/nonmetricity?), dynamics second. `E_#` splits into torsion + nonmetricity,
-pure-torsion is dead **[in-paper M]**. **[job: eslotgeometry]**.
+to globalize. The soldering-gradient `E` and the Krein cross term `E_#` are distinct
+kernel blocks. The torsion-plus-nonmetricity theorem applies to the `E`-slot;
+identifying either block with physical gravity remains grade **[C]**. Transformation
+law first, dynamics second. **[job: eslotgeometry]**.
 
 ### P-L. "One operator, both forces": the unified gravity + QFT program (2026-07-09)
-The framework already carries gravity and matter as graded channels of ONE finite Krein
-Dirac square `4 D#D = Q_A + Q_C + 4Q_T + 4E_#` (aperture/closure/turn = matter/gauge/Higgs;
-soldering `E_#` = gravity). The unification program is to bring the gravity channel to parity
-with the matter channels and to prove they are *the same operator's* pieces. Two established
+The framework already carries four graded blocks in ONE finite Krein Dirac square
+`4 D#D = Q_A + Q_C + 4Q_T + 4E_#`. The aperture/closure/turn and gravity
+identifications are a separate grade-**[C]** dictionary, and `E_#` is not the
+soldering-gradient `E` by definition. The unification program is to derive that
+dictionary and bring the geometric channel to parity with the matter channels. Two established
 routes to "gravity + matter from one object", each with a discrete precedent this program can
 imitate finitely:
 
@@ -219,8 +672,14 @@ gauge-coupled field theory. **Not** QCD-first. First prove: *our finite carrier
 specializes to a known quantum-walk Dirac model* (Foster–Jacobson 4D checkerboard,
 arXiv:1610.01142; Mlodinow–Brun symmetry-forced Dirac walk, arXiv:1802.03910 — both
 already cited), and the Plücker mass / turn amplitude / aperture−closure gap coincide
-with known walk parameters in the scaling limit. **[job: checkerboardbridge]**. The
-highest-stakes bridge (decides whether the channel names are physics).
+with known walk parameters in the scaling limit. The finite 1+1 carrier bridge and
+the rational 3+1 tetrahedral endpoint rung are now [M]; the latter also proves the
+regular-tetrahedron `1/3` normalization gate. Next prove the ordered spin-projector
+path amplitude, an exactly unitary massive update, and many-step convergence. In
+parallel, instantiate `LowerOrderChannelCausality` for scalar, Dirac, and gauge-fixed
+vector symbols, classifying each four-channel term as lower order or cone-defining.
+This remains the highest-stakes bridge because it decides whether the channel names
+are physics.
 
 ### P-I. "Mass monogamy: a conservation law for relational mass"
 Mass monogamy is **[in-paper M]** (`pairwiseMass_append`: `m²(A∪B) = m²(A)+m²(B)+
@@ -589,11 +1048,14 @@ Pro's compact statement of the developed theory, worth recording as the target
 skeleton for the eventual "finite null information dynamics" framing:
 1. **Null purity** — elementary messages are rank-one null direction states
    `rho_edge = |psi><psi|`.
-2. **Mass as decoding rank** — a bundle is massive iff hidden null histories cannot
-   compress to one rank-one direction state; `m^2 = det P`. [in-paper M for the identity]
+2. **Massless boundary by rank, mass magnitude by area** — rank one distinguishes
+   the massless locus, while the continuous cost is `m^2 = det P`, the irreducible
+   Pluecker/spectral area left after compression. [in-paper M]
 3. **Forces as decoding defects** — `D^#D = aperture + closure + turn + codebook drift`.
-4. **Physicality as positivity** — a particle is a codeword in
-   `(ker Q / im Q)^+` (Krein-decoded positive sector).
+4. **Physicality as selected positivity** — first form the indefinite quotient
+   `H_Q = ker Q / im Q` under `Q#=Q`; a particle is a codeword in additional
+   chosen `D`-invariant positive data `P <= H_Q`. No canonical positive part is
+   supplied by the quotient alone.
 5. **Spacetime as recovered code geometry** — signature, dimension, causal order,
    distance, and the speed limit are RECOVERED from null information + composition +
    reflection positivity + spectral distance + critical universality (jobs M/N/P/Q +
@@ -612,6 +1074,150 @@ recording the no-gos — not further intake.
 
 ---
 
+## Round-7 (Pro, 2026-07-09 evening): the self-decoding capstone — final intake
+
+Pro's round-7 ("physics is the positive Hodge theory of finite null information";
+"the universe is a finite superposition of null encodings that decodes itself") is
+the capstone restatement of rounds 3-6.  Triage confirms the saturation meta-note:
+its secs 1-5 and 7-13 map onto landed modules (`PositiveHodgeDecoder`,
+`PathSumSemantics`, `SuiteDResourceCore`, `ConfinementPositivity`,
+`LambdaUnimodular`/`LambdaEdgeCount`, `FamilyRankNoGo`, `GradedDecompUniqueness`,
+and now `GenericFiniteHodge`/`KreinHodgeNoGo`), then-running jobs (many-step
+fixed-momentum `8984157c`, Lambda L3 `lambda-susceptibility` and L4
+`lambda-count-dichotomy`),
+or the declared event horizon (Born rule, absolute scale, initial conditions).
+Exactly three non-duplicative jobbable targets were extracted and submitted
+(2026-07-09, focused Mathlib-only packages, statements typecheck with documented
+handoff markers):
+
+| Target | Pro hook | Job | ID |
+|---|---|---|---|
+| n-point chain spectral distance = weighted geodesic (+ additivity, scale covariance, edge-block commutator grounding) | sec 6 / gap "recover geometry from D"; escalates `SuiteAOp2Geom` beyond 2 points | `spectral-distance-chain` | `7895c97a` |
+| finite self-consistent decoder: fixed point exists (IVT), unique at weak coupling (logistic 1/4 contraction), explicit witness | sec 6 boxed `D = D[omega]`, `omega = omega_D` — first [spec]->M rung of self-decoding; landed as `SelfConsistentDecoder` | `backreaction-fixed-point` | `0311ff6c` |
+| superposed geometries: Lambda observable exactly through geometry-register coherence between different event counts (Fourier conjugacy, periodicity, coherent witness) | secs 1-2/7 `U_Lambda = e^{i Lambda N-hat}`; the coherence half complementing Lambda L1-L4's statistics half | `geometry-register-lambda` | `e4aad67f` |
+
+Task notes: `AgentTasks/spectral-distance-chain-aristotle-2026-07-09.md`,
+`AgentTasks/backreaction-fixed-point-aristotle-2026-07-09.md`,
+`AgentTasks/geometry-register-lambda-aristotle-2026-07-09.md`.  With these three
+submitted, round-7 intake is CLOSED; per the round-6 discipline the next action
+remains the harvest pass.
+
+---
+
+## Round-8 (Pro, 2026-07-10): the moduli theory — digestion, corrections, jobs
+
+Pro's round-8 ("a moduli theory of self-decoding null information") genuinely adds a
+layer beyond round-7: the fundamental object becomes an EQUIVALENCE CLASS of finite
+decoders, turning the carrier non-rigidity no-go into channel-gauge freedom.
+Digestion status: the same-carrier homotopy core landed same-day as
+`Carrier/DecoderChainHomotopy` [M] (sec 2's `D' = D + QR + RQ` acts identically on
+cohomology); secs 6/8/9/10/15 are substantially covered by `NullEdgeP7BlochMassRatio`,
+`VelocityMixtureLinearEntropy`/`KraftCompressionMass`, `UnifiedActionVariation`,
+`MassGradientMorse`, the WEP stack, and the P7 recovery stack
+(`P7PetzRecovery`/`P7RecoverabilityGap`/`P7KLDataProcessing`/`P7StochasticContraction`).
+Sec 11 (Lambda central) is a one-lemma corollary of `LambdaUnimodular`'s
+channel-blindness; secs 13/14/18/19 stay [spec] pending the Lambda statistics jobs and
+the area-law lane.  Sec 1's amplitude functor: the finite gluing shadows are landed
+(concatenation/holonomy-append lemmas); full monoidal categorification is packaging,
+deferred until an invariant needs it.
+
+**Own-analysis corrections recorded (2026-07-10):**
+
+- **Sec 16 (generations as sheet monodromy) needs a correction:** Hermitian carrier
+  families have real eigenvalues, and strictly ordered real spectra CANNOT braid — the
+  permutation monodromy of a nondegenerate Hermitian loop is always trivial.  The
+  honest dichotomy is: Z3 sheet monodromy exists on COMPLEXIFIED moduli loops
+  (explicit `lambda^3 = e^{i theta}` companion family), while for Hermitian families
+  generation structure must live in eigenVECTOR (Berry/Bargmann) holonomy or
+  degeneracy crossings — consistent with the landed `BargmannCP`.  Jobbed as a
+  two-half dichotomy.
+- **Sec 5 (variational mass) has an attainment gap:** the Krein-normalized
+  representative set is non-compact, so "least decoding cost" is well-posed exactly
+  under the Kugo-Ojima radical property (already [M]) PLUS ghost-positivity of the
+  cost on exact directions; without the latter there is a representative below the
+  harmonic value (counterexample jobbed).  Pleasingly, the well-posedness conditions
+  are precisely the structures the program already isolated.
+- **Sec 12 (vacuum shift):** the fixed-N invariance is elementary phase algebra; ALL
+  sequestering content lives in the extensivity of radiative corrections.  The jobbed
+  negative control (an N^2 offset provably not absorbable by any Lambda shift) pins
+  where the symmetry genuinely fails.
+
+**Theorem program A-H triage (Pro sec 21):**
+
+| Target | Verdict | Job / anchor |
+|---|---|---|
+| A. Positive Hodge-Plücker variational mass | jobbed (with attainment correction) | `positive-hodge-rayleigh` `be5c5929` |
+| B. Causal Bloch geometry | Bloch half landed (`P7BlochMassRatio` etc.); hyperbolic half jobbed | `rapidity-information-distance` `f001c5e8` |
+| C. Channel-equivalence theorem | homotopy half LANDED (`DecoderChainHomotopy` [M]); intertwiner half jobbed | `krein-chain-equivalence` `2687b7bb` |
+| D. Vacuum-shift theorem | ensemble version jobbed (L1 `LambdaUnimodular` [M] is the single-complex core) | `vacuum-shift-ensemble` `63170980` |
+| E. Code-proliferation criticality | deferred — rides the L3/L4 Lambda statistics jobs; generating-function rung proposed, not yet jobbed | Lambda lane |
+| F. Information equivalence principle | substantially covered by `WEPTrace`/`WEPActionBridge`/`Goal4FieldEquation` `wep_corollary` + `UnifiedActionVariation`; full Ward identity stays [C] | WEP stack |
+| G. Spectral-monodromy generation test | jobbed as the honest dichotomy (see correction above) | `spectral-monodromy-dichotomy` `8066248d` |
+| H. Recovery-Compton theorem | deferred — anchors exist (`P7PetzRecovery` stack, `ComptonBoundSq` [M]); the missing rung is a finite Combes-Thomas bound (`xi_rec <= 1/gap`), proposed as a named future job | P7 + D5 |
+
+Task notes: `AgentTasks/{krein-chain-equivalence,positive-hodge-rayleigh,vacuum-shift-ensemble,spectral-monodromy-dichotomy,rapidity-information-distance}-aristotle-2026-07-10.md`.
+All five statement packages typecheck; round-8 intake is CLOSED with E/F/H recorded
+as covered or named-deferred.  The harvest pass remains the standing next action.
+
+---
+
+## Round-9 (Pro, 2026-07-09 late evening): complete finite process theory
+
+Pro's `Toward_a_complete_finite_null-information_theory.md` enlarges the tuple
+from a carrier/decoder into a local, scale-dependent operational process theory:
+finite null histories, regional observable algebras, physical cohomology,
+refinement, measurement instruments, and event count. The source essay is
+preserved verbatim; this section records the graded intake rather than repeating
+its 57-topic dictionary.
+
+Most of the essay is a disciplined architecture for layers that the current
+finite carrier does not yet possess: a Haag-Kastler-style local net, pole and
+S-matrix reconstruction, OPE, continuum RG, spontaneous-breaking limit,
+open-system/measurement theory, relational time, dynamical gravity, holography,
+and cosmology. Those interpretations remain **[spec]** even where finite shadows
+already exist. In particular, using positive states is not a derivation of the
+Born rule; a local tensor factorization is not derived from graph separation;
+and a supplied one-loop running law is not a derived QCD beta function.
+
+Four nonduplicative finite rungs were extracted and submitted:
+
+| Target | Exact finite payload | Aristotle |
+|---|---|---|
+| Local operations cannot signal | arbitrary trace-preserving Kraus family on `B` leaves `Tr_B rho` on `A` unchanged; nonunitary reset changes the joint state | `finite-kraus-no-signaling` `17674ce6` |
+| Two-region local observable net | noncommutative left/right tensor-factor algebras commute across regions, are isotone, and generate the joint algebra; Pauli `X/Z` local no-go against global commutativity | `two-region-tensor-microcausality` `13b40077` |
+| Finite SSB degeneracy gate | a commuting unitary preserves the density matrix of a normalized simple eigenstate; a degenerate two-state ground space permits a moved representative | `finite-ssb-degeneracy-nogo` `af7eb850` |
+| Dimensional-transmutation algebra | positivity, inverse-coupling RG cocycle, and exact invariant `mu exp[-1/(2 b g(mu)^2)] = Lambda`, with an exponential witness | `one-loop-dimensional-transmutation` `3ea09edf` |
+
+These jobs sharpen four boundaries in the source analysis:
+
+1. **No-signaling is operational, not yet geometric.** The Kraus theorem forbids
+   changing a remote marginal under a local trace-preserving map; identifying
+   the tensor factors with spacelike-separated graph regions remains a separate
+   causal-factorization theorem.
+2. **Microcausality needs a net.** The tensor-product witness supplies exact
+   two-region locality while retaining noncommutative local physics. Extension
+   to a region poset with gluing, covariance, and refinement is open.
+3. **Finite symmetry breaking is a degeneracy statement.** A simple finite
+   vacuum cannot break an exact commuting symmetry at the density-matrix level.
+   Genuine spontaneous breaking therefore owes a degenerate/refinement limit;
+   the theorem does not construct one.
+4. **An absolute scale needs a running law.** The transmutation job proves the
+   invariant once one-loop running is supplied. Deriving that flow from closure
+   dynamics and matching physical units remain the real program.
+
+The Born/Gleason route, contextuality cohomology, resonance poles, crossing and
+analyticity, OPE compression, generalized/noninvertible symmetries, anomaly
+inflow, thermodynamic-limit phases, quantum Darwinism, relational time,
+entanglement-equilibrium gravity, holography, black-hole recovery, inflation,
+and baryogenesis were not converted into overnight proof jobs. Each requires a
+new API or analytic/refinement infrastructure; packaging a tautological finite
+avatar would create the appearance of progress without the missing physics.
+
+Full deduplication and claim grading are recorded in
+`AgentTasks/overnight-allmass-run-2026-07-09/2026-07-10_PRO_complete-finite-null-information.md`.
+
+---
+
 ## HARVEST RESULTS (2026-07-08) — what the frontier jobs returned
 
 Kernel verdicts after downloading, building in-project, and semantic-reviewing each
@@ -622,7 +1228,10 @@ completed job. All integrated modules build green with footprint
 - **nulldecomp** — the converse: all mass IS null-edge disagreement (bidirectional). §3.
 - **chiralindex (F6)** — `dim ker >= index`, perturbation-stable, >=1 protected mode. §8.
   (Only the >=1 bound; "exactly one" needs full-rank corner, out of scope.)
-- **bindingdeficit (F8)** — `Delta = kappa = C(rho)*lambda`, binding = entanglement deficit;
+- **bindingdeficit (F8)** — positive binding gain
+  `G_bind = kappa = C(rho)*lambda`, while the signed mass defect is
+  `Delta_bind = -kappa <= 0`, strict exactly when `kappa>0`; binding =
+  entanglement deficit;
   closes §3a target (ii) **C->M**.
 - **schurseesaw (E)** — `|m_eff| <= ||B^H v||^2/lambda_min(M) -> 0`, finite seesaw. §10.
 - **massenergy (O-adjacent)** and **subluminal (O)** — landed earlier this run.
@@ -660,6 +1269,11 @@ completed job. All integrated modules build green with footprint
   Krein grades. But full rigidity (uniqueness of the split) is **NOT forced** — two extra
   structures make it non-unique. So "unification is decomposition" is disciplined: the
   four-block *structure* is forced; the *decomposition* is not unique without a further axiom.
+- **F2 concrete selector upgrade [WIN / M]** — `FourChannelRigidityCapstone` proves that the
+  explicit rational matrices `QA, QC, QT, Es` are linearly independent, their coefficients are
+  uniquely recovered by exact entry selectors, and `4 D^T D` recovers `(1,1,1,1)`. This makes
+  the witness presentation rigid under its concrete support data while preserving the abstract
+  type-only no-go above.
 - **Conjecture C familyindex [NO-GO]** — the count of inequivalent positive-sector completions
   is exactly `n+1` (strand rank `n`), `= 3` iff `n = 2` (`FamilyIndexNoGo.count_completions`,
   `three_not_forced`). "Three generations" is NOT forced by the finite carrier category; the
@@ -910,7 +1524,8 @@ The four follow-up closers from the 2026-07-08 round all landed (all [M], footpr
 - **`ComptonBound` (Suite D rung D5) [HELD — delivered, does NOT build in-project]** — the mass gap is a length
   floor: for every `J`-normalized state `(1/2)/m <= width`, saturated by `(1/sqrt2, 1/sqrt2)`
   (fixture `width 3 = 1/6`), and `width = (1/2) dCausal m 0 1` — the localization floor IS half
-  the Connes distance. Kills stated + avoided (`no_sub_compton`, floor `>0`, mass-dependent).
+  the finite causal spectral-distance avatar, not the Riemannian Connes supremum.
+  Kills stated + avoided (`no_sub_compton`, floor `>0`, mass-dependent).
   Honest: exact up to the structural constant `c=1/2` (each point at half the inter-point
   distance from the midpoint). **NOT LANDED: does not build in-project within budget (SIGTERM
   at 595s solo — the `Real.sqrt` width/optimizer proofs `width 3 = 1/6` are pathologically slow

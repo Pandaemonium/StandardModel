@@ -1,7 +1,6 @@
 import Mathlib
 
 open scoped BigOperators
-open scoped Classical
 
 set_option maxHeartbeats 8000000
 set_option maxRecDepth 4000

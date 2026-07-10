@@ -1,0 +1,12 @@
+# Summary of changes for run f50e4aa3-ad47-4e7c-948d-1e59f4f2ae2f
+All four targets in the module docstring of `AllMassD2/Core.lean` are now proved kernel-clean (no `sorry`); the `package_ok` placeholder was replaced. `lake env lean AllMassD2/Core.lean` compiles, and `#print axioms` shows each result depends only on the standard `propext`, `Classical.choice`, `Quot.sound`.
+
+Proved (all generic in `Matrix (Fin n) (Fin n) ℂ`, `t : ℝ`, `H.IsHermitian`):
+- `skewHermitian_neg_I_smul` (helper): `((-(t:ℂ)) • (Complex.I • H))ᴴ = -((-(t:ℂ)) • (Complex.I • H))` — the generator of `exp(-i t H)` is skew-Hermitian. Proof: distribute `conjTranspose` over the two scalar smuls, use `H.IsHermitian.eq` and `conj I = -I`.
+- `hermitian_flow_mem_unitaryGroup` (core, load-bearing): `NormedSpace.exp ((-(t:ℂ)) • (Complex.I • H)) ∈ Matrix.unitaryGroup n ℂ`. Proof via `mem_unitaryGroup_iff`: `star (exp A) = (exp A)ᴴ = exp Aᴴ = exp (-A)` (using `Matrix.exp_conjTranspose` and the skew helper), then `exp A * exp (-A) = exp (A + -A) = exp 0 = 1` (`Matrix.exp_add_of_commute` on the commuting pair `A`, `-A`, then `NormedSpace.exp_zero`).
+- `hermitian_flow_isometry` (packaging): the induced map on `EuclideanSpace ℂ n` is a `LinearIsometryEquiv`. Built from `Matrix.toEuclideanLin U` / `toEuclideanLin Uᴴ` via `LinearEquiv.ofLinear` (both compositions are `id` from `U*Uᴴ = Uᴴ*U = 1`), then `LinearEquiv.isometryOfInner`, proving inner-product preservation with `Matrix.toEuclideanLin_conjTranspose_eq_adjoint` and `LinearMap.adjoint_inner_right`.
+- `B_flow_unitary` (specialization): the concrete carrier block `B lam kappa` generates a unitary flow, by instantiating the core on `B_isHermitian`.
+
+The `B` definition and `B_isHermitian` were kept unchanged.
+
+Semantic alignment: the docstring wrote the exponential as `Matrix.exp ℂ (…)`; in this Mathlib version the matrix exponential is `NormedSpace.exp (…)` (no field argument), so the statements use that name — mathematically identical (`exp` of the matrix `(-(t:ℂ)) • (Complex.I • H) = -i t H`). The load-bearing content is delivered: the carrier's Hermitian-generated time step `exp(-i t H)` is unitary, hence a genuine norm-preserving sector isometry, so `FiniteUnitaryEvolution` fires on the real carrier block rather than only on a generic isometry. The isometry is delivered as a full `LinearIsometryEquiv` on `EuclideanSpace ℂ n`, i.e. as far as Mathlib's matrix↔EuclideanSpace API cleanly allows. Changes committed and pushed.

@@ -57,7 +57,8 @@ has *disproved* cannot be trusted about what it has proved.
 
 ## 1. Thesis and reading guide
 
-One sentence: **mass is the obstruction to coherent null transport.**
+One sentence: **rank collapse is the massless boundary; mass squared is the
+irreducible spectral area of a bundle of null directions.**
 
 Unpacked: the only primitive is a *null edge* — an elementary step that
 moves at the speed of light, the way a photon does. Nothing in the theory
@@ -69,13 +70,45 @@ total amount of that disagreement *is* its mass squared (the exact form, §3;
 "squared" is not a hedge — the invariant is literally a sum of squares).
 Mass is trapped, mutually disagreeing light.
 
-The organizing slogan of the formal work is **"unification is
-decomposition."** A single finite operator — the carrier Dirac operator —
-squares to a sum of four terms, and each term is one physical channel
-through which mass enters: aperture (kinetic), closure (gauge / QCD), turn
-(Higgs / Yukawa), and soldering-gradient (gravity). We do not unify the
-forces by identifying them; we unify them by exhibiting them as four
+The one theorem-bearing object is the positive-semidefinite spinor Gram
+
+```text
+P = M M^dagger = sum_i psi_i psi_i^dagger.
+```
+
+Its rank-one boundary is the massless locus, and its determinant is the opened
+spinor area: `det P = sum_{i<j}|psi_i wedge psi_j|^2`. Kinematic mass,
+concurrence/entropy, path-decoherence mass exposure, and the finite resource
+reading are exact functions of this same form. The carrier Dirac operator `D`
+is the finite *lift* that tries to realize this invariant dynamically; it is not
+a second independent definition of mass. The free bridge is exact
+(`free_mass_operator_eq_plucker`), while the interacting block differs by the
+proved binding-information correction `G_bind = kappa = C(rho)lambda`.
+
+At that second level, the organizing slogan is **"unification is
+decomposition."** The selected carrier operator squares exactly into four
+algebraic blocks. Their neutral names are
+aperture, closure, turn, and soldering-gradient. The identifications with
+kinetic, gauge/QCD, Higgs/Yukawa, and gravity are a separate, conditional
+dictionary, not part of the square identity. We therefore do not claim to
+unify the forces by identifying them. The verified statement is narrower and
+cleaner: on the selected carrier, four independently testable coordinates are
 summands of one square (§4).
+
+The proof architecture has three levels. Keeping them separate is the paper's
+main simplification:
+
+| Level | Mathematical statement | Status |
+|---|---|---|
+| **Invariant** | A positive timelike momentum assembled from null spinors has `mass² = det P = Σ|psi_i wedge psi_j|²`; vanishing is exactly common null direction. | **T/M**, §§3-3a |
+| **Finite lift** | A selected Dirac carrier realizes that invariant spectrally: its square decomposes into four blocks, admits positive sectors, actions, conserved finite evolution, and exact RG/ensemble avatars. | **M**, §§4, 6, 8-9 |
+| **Physical dictionary** | The four blocks flow to kinetic, QCD, Higgs/Yukawa, and gravitational terms of a continuum Standard Model. | **C**, with kill tests in §4a |
+
+The capstone modules in §11 are build-integration interfaces. They show that the
+payload theorems coexist under one import graph, but their conjunctions are not
+independent evidence and should not be headline citations. The scientific
+payload remains the witness, equivalence, positivity, classification, and
+no-go theorems underneath them.
 
 **How to read this paper.** Part I (§2) is written for a reader who has
 seen special relativity and a little quantum mechanics — no gauge theory
@@ -173,12 +206,17 @@ fields you switch on. It stays massless the way a knot stays knotted (§8).
 This is the program's reading of why masslessness in the Standard Model
 tracks chirality.
 
-**Nothing moves slower than light — fundamentally.** Every edge is null.
-The electron on your desk is, in this ontology, moving at light speed the
-entire time — it simply is not *going* anywhere, because its light-steps
-disagree and cancel. "Slower than light" is what the statistics of
-disagreeing light-steps looks like from far away. There is no slow
-substance underneath.
+**Null primitive propagation; timelike emergent drift.** Every primitive edge
+is null by definition, and every leg of the exact finite `1+1` checkerboard is
+lightlike. In the finite Dirac avatar, each Cartesian velocity component has
+spectral support at `±c`; a state can mix those sectors, and its observable
+drift is subluminal when the mass is nonzero. Thus the theorem-supported
+content of “nothing is fundamentally slow” is precise: the model introduces
+no subluminal primitive step. It does **not** yet say that an electron follows
+a literal classical three-dimensional trajectory at speed `c` at every time.
+That stronger ontic reading would require a derived physical time generator,
+a simultaneous velocity-vector construction, and the unfinished `3+1`
+continuum limit.
 
 That is the entire picture. The rest of the paper is the mathematics that
 makes each italicized claim precise, and honest about which are theorems
@@ -205,7 +243,13 @@ verification, and the four-channel budget as one object. Situating the work:
   Tooby-Smith) `[import]` — same 2-component `SL(2,ℂ)` spinors, same sign — so
   §3 is not idiosyncratic notation but the standard, independently-formalized
   object; PhysLean's `comm_metricRaw` is the `SL(2,ℂ)`-invariance that makes
-  `det P` Lorentz-invariant.
+  `det P` Lorentz-invariant. The information-theoretic reading also has direct
+  prior art: Chin–Lee (2014), *Momentum bispinor, two-qubit entanglement and
+  twistor space*, explicitly relates the unit-energy future-light-cone momentum
+  bispinor to two-qubit entanglement `[import]`. Our contribution is therefore
+  not the momentum/entanglement correspondence itself, but its exact null-edge
+  Pluecker/Cauchy–Binet formalization, general-`n` extension, and integration
+  with the finite carrier and kill-tested mass program.
 - **Part I is Penrose and Feynman.** The zig-zag electron is Penrose (*Road
   to Reality* §25.2); the "velocity eigenvalues are ±c, rest is light running
   in place" picture is *Zitterbewegung* (Dirac; Hestenes); the discrete
@@ -249,7 +293,14 @@ verification, and the four-channel budget as one object. Situating the work:
   and it rhymes precisely with our two-null-edge `Cl(4)` carrier and its
   massless critical line `κ = λ` (§4) — but without our Krein grading, the
   four-channel budget, or the `det P` kinematic-mass tie; their single coin
-  operator is our aperture/closure pair. Kauffman–Noyes combinatorial work and Wilczek's "mass without
+  operator is our aperture/closure pair. A projector audit prevents one tempting
+  overstatement here: mass is **not** equivalent to failure of the chiral and
+  energy projectors to commute. `ChiralityEnergyCommutatorAudit` (**M**) proves
+  `2m[P_L,Lambda_+]=[P_L,pslash]`, and the right side is already nonzero for the
+  massless null momentum `(E,kz)=(1,1)`; at `m=0`, `Lambda_+` itself is singular.
+  The valid mass diagnostic is instead the covariant anticommutator
+  `{gamma5,D}=-2m gamma5` (`ChiralBreakingAnticommutator`, **M**).
+  Kauffman–Noyes combinatorial work and Wilczek's "mass without
   mass" (the QCD share) `[import]` are the nearest slogans; Zwanziger's (1991)
   lattice confinement / positivity-violation setting is a nearby comparison
   and a warning that this terrain is occupied, not source support for §6's
@@ -297,24 +348,25 @@ mass*, under a pre-registered kill-discipline — not any single ✓.
 
 ---
 
-## 2b. Mass is slowed-down light (**M**)
+## 2b. Massive drift from null propagation (**M** + **interp**)
 
-The title's physical content — that a massive fermion is *internally* always
-moving at the speed of light, and its rest mass is the time-average of that
-luminal motion — is the Zitterbewegung / Penrose-zigzag picture (§2a), which we
-now carry as three kernel-checked finite theorems rather than borrowed slogans.
+The strongest theorem-supported form of the Zitterbewegung / Penrose-zigzag
+picture is that the primitive propagation channels are null while their
+mass-coupled observable drift is timelike. Three kernel-checked finite
+statements support that formulation.
 
-1. **Instantaneous velocity is exactly `±c`.** The Dirac velocity operators
-   `αᵢ` (the Heisenberg `dxᵢ/dt`) satisfy `αᵢ² = 1` and `tr αᵢ = 0`, so their
-   spectrum is exactly `{+1, −1}`, each with multiplicity two — never a value
-   between (`velocity_spectrum`, with explicit `±1` eigenvectors `(1,0,0,±1)`,
-   **M**). A fundamental fermion's *instantaneous* velocity is always `±c`.
+1. **Each Dirac velocity component has only `±c` spectral support.** The
+   matrices `αᵢ` satisfy `αᵢ² = 1` and `tr αᵢ = 0`; the concrete `α₁` theorem
+   includes explicit nonzero `±1` eigenvectors (`alpha_sq_one`,
+   `velocity_spectrum`, **M**). This is a componentwise operator statement in
+   the chosen finite Dirac representation. It is not a simultaneous
+   three-vector eigenvalue or a classical microscopic trajectory.
 2. **The massive fermion is two null Weyl pieces coupled by mass** (Penrose's
    zigzag). In the chiral basis the mass term is chiral-odd and couples the two
    Weyl components; switch it off and they decouple into independent null
    (light-like) Weyl operators (`massless_decouples`, `mass_couples`,
-   `zigzag_verdict`, **M**). Each piece moves at `c`; mass is only the coupling
-   that swaps them.
+   `zigzag_verdict`, **M**). The null sectors are exact; reading their coupling
+   as a literal particle zigzag is the interpretive step.
 3. **The observable drift is the mass-weighted average of the `±c` motion.**
    For a stationary mode the mean velocity is a convex average of `±1` with
    weights set by the mass fraction, giving `v̄² = (p/E)² = 1 − m²/E²`
@@ -322,12 +374,139 @@ now carry as three kernel-checked finite theorems rather than borrowed slogans.
    dictionary (§3a). Massless ⇒ a single luminal channel (`v̄ = 1`); rest
    (`m = E`) ⇒ a 50/50 luminal zigzag averaging to `v̄ = 0` (`massless_limit`).
 
-Read together: instantaneous-luminal (1) and observable-subluminal (3) are the
-same fact at two timescales, with the zigzag (2) the mechanism between them.
+Read together: componentwise luminal spectral support (1) and
+observable-subluminal drift (3) are two scales of the same finite model, with
+the coupled null sectors (2) providing the bridge.
 
-**Across the full particle table (M).** The velocity-operator statement (1) is a
-Dirac/*fermion* fact, but "mass is null-edge disagreement" extends to the rest of
-the table on the momentum + polarization side:
+**Claim boundary.** The exact universal slogan is **“all primitive propagation
+is null; massive motion is emergent drift,”** not “every object has a classical
+velocity vector of magnitude `c` at every instant.” The latter would outrun
+the present kernel: the three `αᵢ` do not supply one simultaneous trajectory,
+the checkerboard result is finite and `1+1`, and the full carrier's physical
+Hamiltonian is not yet selected.
+
+**The first exact `3+1` checkerboard rung is now landed.**
+`TetrahedralNullHistory` (**M**, guard-pinned) realizes four regular
+tetrahedral spatial directions in the rational sum-zero subspace of `Q^4`,
+with normalized Gram matrix
+
+```text
+n_i · n_j = 1        if i=j,
+            -1/3     if i!=j.
+```
+
+Pairing one unit of time with any `n_i` gives a primitive null step. If a
+finite history uses direction `i` exactly `c_i` times, its endpoint satisfies
+the exact `3+1` disagreement law
+
+```text
+X(c)^2 = (8/3) * sum_(i<j) c_i c_j.
+```
+
+Thus every straight history is null, every counted history is causal, and the
+explicit two-direction history has `X^2=8/3>0`. This is the spatially
+three-dimensional counterpart of the Plücker statement “mixed null
+directions make mass.”
+
+`TetrahedralSpinProjectorPath` now closes the first path-ordering rung (**M**,
+guard-pinned). For `P_i=(I+r w_i.sigma)/2` with `3r^2=1`, each `P_i` is a
+Hermitian idempotent of trace one, the four projectors sum to `2I`, and distinct
+directions obey
+
+```text
+P_i P_j P_i = (1/3) P_i.
+```
+
+Chronological concatenation composes ordered projector products, and the first
+oriented triple has
+
+```text
+tr(P_0 P_1 P_2) = +i r/3,
+tr(P_2 P_1 P_0) = -i r/3.
+```
+
+Thus the spin amplitude remembers bends and orientation rather than only
+endpoint counts. This is still not a summed `3+1` Weyl/Dirac propagator or an
+exactly unitary massive update.
+
+The same module exposes a real normalization obstruction in the simplest
+tetrahedral spin-projector recursion. On the sum-zero spatial subspace,
+
+```text
+(1/4) * sum_i n_i (n_i · v) = (1/3) v.
+```
+
+Consequently a unit microscopic step produces first-moment continuum speed
+`1/3`; matching unit Weyl speed requires step scale `3`
+(`continuum_speed_one_iff_step_scale_three`). This explains the apparently
+superluminal microscopic step scale in the Foster–Jacobson discretization. It
+is **not** a no-go against `3+1` path sums: Foster–Jacobson construct a finite
+spin-projector history sum, D'Ariano–Mosco–Perinotti–Tosini give an exact
+`3+1` Weyl-walk path sum, and tetrahedral quantum walks recover the `3+1`
+Dirac equation in a continuum limit `[import]`. It is a no-go only against
+simultaneously imposing unit microscopic speed, the basic normalized
+four-projector average, and unit emergent Weyl speed.
+
+**Could the `D4` lattice help? Yes, as an envelope rather than a replacement.**
+After the spatial `sqrt(3)` rescaling, the four tetrahedral null steps are the
+Hadamard vectors
+
+```text
+(1, 1, 1, 1), (1, 1,-1,-1), (1,-1, 1,-1), (1,-1,-1, 1).
+```
+
+Their integer span `L_H` lies in the root lattice
+`D4={x in Z^4 : sum_i x_i even}`; the lattice arithmetic gives
+`[D4:L_H]=8`, so the full `D4` momentum torus is an eightfold cover of the
+tetrahedral torus. This makes `D4` useful for coset/taste bookkeeping, a
+24-cell symmetry completion, and a possible triality/Spin(8) bridge. Two
+new finite theorems delimit that use. `D4AddedStepCausalClassification`
+(**M**, guard-pinned) proves the Hadamard generators are null but, for
+distinct `A,B`,
+
+```text
+q((h_A+h_B)/2) = -2/3,       q((h_A-h_B)/2) = +2/3.
+```
+
+Thus the additional `D4` root-neighbor steps include timelike and spacelike
+primitives. Full `D4` is not a null-only replacement. Independently,
+`D4DisconnectedCopy` (**M**, guard-pinned) proves the generic group theorem
+that a graph using only shifts in `L_H` has connected components exactly the
+cosets of `L_H`. `D4ConcreteQuotient` now supplies the missing unconditional
+input (**M**, guard-pinned): the explicit parity label
+`phi(c)=(c1 mod 2,c3 mod 2,(c0+c2) mod 2)` is surjective with kernel exactly the
+Hadamard image, hence `D4/L_H ~= (Z/2)^3` and the quotient has cardinality eight.
+The null-shift graph therefore has exactly eight disconnected tetrahedral
+copies. The most promising null-only `D4` side experiment
+is instead the eight future body diagonals, which enlarge `L_H` by one coset;
+they improve inversion symmetry but still obey the same `1/3` spatial
+tight-frame factor and require a fresh branch/unitarity analysis.
+
+**The all-particle replacement is a characteristic-cone theorem.**
+`LowerOrderChannelCausality` (**M**, guard-pinned) considers any nonempty
+finite multiplet with common wave principal symbol
+
+```text
+sigma_pr(omega,k) = (omega^2 - |k|^2) I_d.
+```
+
+Its determinant is exactly `(omega^2-|k|^2)^d`, so its wavefront
+characteristic locus is the null cone for every `d>=1`. Arbitrary finite
+zero-order aperture/closure/turn/soldering mixing disappears under principal
+scaling, while a channel inserted at principal order can change the
+characteristic determinant (explicit negative control). On the massive shell
+the same module proves `|v_g|^2=|k|^2/E^2=1-m^2/E^2<1`, with the exact
+`3-4-5` witness `9/25<1`. This is the rigorous common statement available to
+scalar, spinor, and gauge-fixed vector components **once their equations are
+shown to share that principal symbol and their extra channels are lower
+order**. It does not assign a velocity to an interaction channel; it says
+those channels do not change the front velocity. Soldering is the delicate
+exception because it may alter the principal metric itself.
+
+**Across the full particle table (kinematic M, dynamical C).** The
+velocity-operator statement (1) is a Dirac/*fermion* fact. The separate
+kinematic statement “mass is null-edge disagreement” extends to the rest of
+the table on the momentum-rank and polarization side:
 - **Gauge bosons.** A massless vector (photon) is a *single* null edge — its
   momentum Gram is rank-1 (`det = 0`) — with two transverse polarizations; a
   massive vector is *two* null edges (rank-2, `det = m² =` disagreement) with
@@ -337,7 +516,16 @@ the table on the momentum + polarization side:
   (`PhotonSingleEdge.universal_verdict`, `edge_count_eq_pol_minus_one`;
   `HiggsLongitudinalMode.longitudinal_is_mass`, **M**). The spin-1 mass is the
   eaten longitudinal null (would-be-Goldstone) mode — the gauge/Higgs-channel
-  reading of "mass from massless."
+  reading of "mass from massless." A complementary finite theorem now gives the
+  reference-state geometry of that channel: for coupling-weighted orbit
+  tangents `v_a = g_a T_a phi`, the gauge-mass matrix `(<v_a,v_b>)` is a
+  Hermitian positive Gram matrix, and at nonzero coupling its `a`th diagonal
+  vanishes exactly when `T_a phi = 0`. The explicit two-generator witness is
+  `diag(0,1)`, separating one unbroken massless direction from one broken
+  positive direction (`GaugeMassGram.gaugeMassMatrix_posSemidef`,
+  `diagonal_zero_iff_stabilizer`, `gauge_mass_gram_witness`, **M**). This is the
+  finite orbit/stabilizer theorem, not a derivation of the electroweak
+  representation, Weinberg angle, or the Higgs boson's radial self-mass.
 - **Antimatter.** The antiparticle is the CPT-mirror of the zigzag: the antiunitary
   `Θ = C·Γ_rev·#` is chiral-odd, swapping the two null Weyl pieces, and pairs each
   particle energy with its conjugate — so matter and antimatter are the two
@@ -384,15 +572,18 @@ The table, read off the momentum Gram and the polarization count (all **M**):
 | massive vector (W/Z) | 2 | 3 (+longitudinal = the mass) | `edges=pol−1` | `HiggsLongitudinalMode` |
 | antiparticle | same pair, CPT-reoriented | — | conjugate-paired spectrum | `CPTAntiparticleZigzag` |
 
-Across the table, `mass = 0 ⇔ a single null edge` and `mass ≠ 0 ⇔ ≥ 2 disagreeing
-null edges` — one statement, all spins, particles and antiparticles.
+Across the displayed finite models, `mass = 0 ⇔ a single null edge` and
+`mass ≠ 0 ⇔ ≥ 2 disagreeing null edges` — one momentum-rank statement for the
+listed fermions, vectors, and antiparticles.
 
 **Honest scope:** the `±c`-velocity-operator statement (1) is fermion-internal
 kinematics (a Dirac fact); the momentum/polarization edge-count reading covers
 fermions *and* gauge bosons *and* their antiparticles; all are finite
-one-momentum / DOF-counting models. "Mass is slowed-down light" is an `M`
-statement about internal kinematics — not a claim that anything is *observed* to
-move at `c`, and not a statement about the mass *values*. Two cases are held
+one-momentum / DOF-counting models. “Null primitive propagation with timelike
+drift” is **M** for the finite Dirac/checkerboard avatars; extending it as a
+literal ontology of every particle is **interp**. It is neither a claim that
+composite objects are observed to move at `c` nor a statement about mass
+*values*. Two cases are held
 outside the headline on purpose: the **scalar Higgs self-mass** is
 mechanism-exempt (spin-0, no zigzag — above), and the **neutrino's Dirac-versus-
 Majorana nature** — which of the two the physical neutrino is — stays open, though
@@ -542,6 +733,45 @@ This is a reconstruction/finite-identity (frame-conditioned: "rest" is an observ
 choice), not new physics; but it is the honest, kernel-checked form of the
 "mass–entropy" reading, and it sits at grade **M**.
 
+There is a sharper two-history statement, and it is the cleanest bridge between
+the paper's kinematic and information-theoretic languages. Let `k` be the
+overlap of the hidden labels attached to two visible spinors `psi, phi`, let
+`V² = |k|²` be their retained visibility, and let
+`M²_max = |psi wedge phi|²` be the determinant mass exposed when the hidden
+labels are fully distinguishable. The new `MassCoherenceDuality` theorem gives
+
+```text
+M²_visible = (1 - V²) M²_max,
+M²_visible + V² M²_max = M²_max.
+```
+
+For non-collinear visible directions this normalizes to the exact complementarity
+law **`M²_visible / M²_max + V² = 1`**. The theorem carries a nondegenerate
+rational witness: `V² = 9/25`, `M²_visible / M²_max = 16/25`. Thus, in this
+finite two-history model, "mass is retained which-direction information" is an
+equation rather than a metaphor: hidden coherence masks a fixed Pluecker
+disagreement, while distinguishability exposes it as visible determinant mass.
+This is an Englert-shaped finite complementarity identity `[import]`, not a
+claim about a particular laboratory interferometer or a continuum particle.
+
+The path-sum language lands on **the same curve**, not a second analogy.
+`PathSumSemantics` gives the two-history decoherence law
+`det rho(t) = t(2-t) D`, where `D` is the amplitude-weighted maximum Pluecker
+disagreement. `MassCoherencePathEquivalence` (**M**) identifies the residual
+overlap as `k = 1-t` and proves
+
+```text
+t(2-t) = 1 - (1-t)^2,
+M²_path / M²_path,max + |k|² = 1.
+```
+
+Thus the hidden-label model and the path-decoherence model share one exact
+finite complementarity law even though their state spaces and maximum-mass
+normalizations differ. The same nondegenerate rational point appears in both:
+mass fraction `16/25`, visibility squared `9/25`. This removes a conceptual
+duplication: hidden overlap and path coherence are two parameterizations of one
+normalized mass-exposure curve, not two independent mass mechanisms.
+
 That endpoint is also an **extremal principle** (**M**): for the `2×2` Hermitian
 momentum `P = E·1 + p⃗·σ` (energy `E = tr P/2`, mass `m² = det P = E²−|p⃗|²`), one has
 `det P ≤ (tr P/2)²`, i.e. **`m ≤ E`**, by one line of AM–GM on the Gram
@@ -565,7 +795,11 @@ concurrence** of the corresponding two-qubit state is `C = 2|det M|`. Then
   collinear, unentangled product state.
 
 So for a single edge-pair, "mass is trapped disagreeing light" and "mass is the
-entanglement of the bundle with itself" are the *same* **M** statement.
+entanglement of the bundle with itself" are the *same* **M** statement. The
+momentum-bispinor/two-qubit correspondence is established prior art
+(Chin–Lee 2014, arXiv:1407.2492, `[import]`); what is machine-verified here is
+the null-edge determinant/concurrence identity in this convention and its
+placement in the larger carrier framework.
 
 And this is **not** a two-edge coincidence: it generalizes to `n` edges once the
 correct multi-party measure is used (`NEdgeMassConcurrence`, `NEdgeCauchyBinet`,
@@ -595,6 +829,23 @@ coupling creates between the bound modes**, and the state binds below the consti
 sum *iff* it is entangled (`binding_below_threshold_iff_entangled`, `Δ ≠ 0 ⇔ κ ≠ 0`).
 Both entanglement readings of mass — the bundle's own mass as concurrence², and
 binding as an entanglement deficit — are now kernel-checked.
+
+The two binding modules previously used opposite signs for the same quantity.
+`BindingInformationInvariant` (**M**) now resolves that convention and supplies
+one citable equation. If `Delta_signed = m_ground - m_free` and
+`G_bind = m_free - m_ground`, then on `0 <= kappa <= lambda`, `lambda>0`,
+
+```text
+Delta_signed = -kappa,
+G_bind = kappa = C(rho) lambda,
+m_ground = m_free - C(rho) lambda.
+```
+
+Moreover, `m_ground < m_free` iff `C(rho) != 0`. At the exact carrier witness
+`(lambda,kappa)=(2,1)`, the gain is `1`, `C(rho)=1/2`, the signed defect is
+`-1`, and the interacting ground mass is `1`. Thus closure strength,
+off-diagonal information, and binding gain are one finite block invariant, not
+three mechanisms. The carrier-to-continuum/QCD interpretation remains **C**.
 
 *Honesty note (dynamical mass is not derived).* These binding results, and the toy
 hadron of §6, are finite *structural* avatars — `Goal1Hadron` is explicitly not a
@@ -752,6 +1003,16 @@ statement:
 > **open** one (a further axiom is needed to pin the split uniquely). The reader
 > should read §4's "unification" at the forced-type-count standard, not the
 > unique-decomposition standard.
+
+> **Concrete rigidity upgrade (M).** The explicit rational carrier used in the
+> mass-budget witness is stronger than that abstract no-go: its four matrices
+> `QA, QC, QT, Es` admit exact entry selectors, are linearly independent over
+> `Q`, and have unique coefficients. In particular the matrix `4 D^T D` itself
+> recovers the tuple `(1,1,1,1)` (`FourChannelRigidityCapstone`, **M**). Thus the
+> displayed finite witness is not merely one arbitrary presentation of the same
+> square. This does **not** restore abstract uniqueness: the selectors use the
+> witness's concrete support data, precisely the extra structure absent from the
+> type-only axioms.
 
 **The budget corollary (M).** A one-line consequence of the assembly
 (apply any linear expectation `ev` — the state functional `<psi, . psi>` —
@@ -1226,6 +1487,46 @@ mechanism. Scope, stated plainly: everything here is finite and
 strong-coupling; the continuum Yang–Mills mass gap is the Clay problem and
 is **not claimed** (§10).
 
+The positive-Hodge refinement is now also explicit (**M**). For the same
+three-dimensional witness, the constraint Laplacian
+`Delta_Q = Q^*Q + QQ^*` selects a harmonic representative of every closed
+class. The surviving `e2` class is closed, non-exact, harmonic, and positive.
+A *separate* decoder `D_mu` commutes with `Q`, is Krein-self-adjoint, and obeys
+`D_mu# D_mu e2 = mu^2 e2`; at `mu=2` the spectral cost is `4`
+(`PositiveHodgeDecoder`). Reversing only the surviving Krein sign leaves the
+cohomology and Hodge data intact but makes the class negative. This is a finite
+witness for "positive cohomology class with spectral mass," not a derivation of
+the universal decoder or the continuum theory. In particular, `Q`, `Delta_Q`,
+and `D#D` cannot be identified: doing so would force every harmonic class to be
+massless.
+
+The generic finite **Hilbert**-Hodge theorem is now also kernel-checked (**M**):
+for every finite nilpotent `Q`, each closed vector has a unique representative
+in `ker Q intersect ker Q^*` modulo `range Q`; a decoder commuting with `Q`
+descends to cohomology, and commuting also with `Q^*` preserves harmonic
+representatives (`GenericFiniteHodge`). This does not make the Krein version
+true. `KreinHodgeNoGo` proves on the explicit `2x2` pair
+`J=[[0,1],[1,0]]`, `Q=[[0,1],[0,0]]` that `Q^2=0` and `Q#=Q` while
+`Q#Q+QQ#=0`; every vector is Krein-harmonic, yet `ker Q=range Q` and one
+harmonic vector is not closed. The Hilbert adjoint is therefore load-bearing.
+
+Nor is there a canonical `(ker Q/range Q)_{J>0}`. The condition `Q#=Q`
+allows the form to descend, but a nondegenerate indefinite quotient has no
+preferred positive part. Physicalization requires additional data: a chosen
+nonzero `D`-invariant `J`-positive subspace of cohomology. The positive witness
+constructs one such model; the matched negative witness proves that its
+existence is contingent, while maximality and uniqueness remain open.
+
+The first decoder-moduli theorem is now landed (**M**). If `Q^2=0`, `D`
+commutes with `Q`, and `D' = D + QR + RQ`, then `D'` also descends through the
+constraint quotient and `D'x-Dx` is exact for every closed `x`. The more general
+cross-carrier equation `D'U-UD=Q'R+RQ`, together with `UQ=Q'U`, intertwines the
+induced cohomology actions (`DecoderChainHomotopy`). The explicit shift
+`D'_mu=D_mu+2Q` is a genuinely different prephysical matrix but acts identically
+on the positive harmonic class `e2`. This makes chain-homotopy presentation
+freedom theorem-backed; it does not yet classify all four-channel
+non-uniqueness or prove full-spectrum invariance before quotienting.
+
 ---
 
 ## 7. Soldering mass: the gravity-shaped channel (**M** + **C**)
@@ -1257,6 +1558,32 @@ channel physically, and the honest content is mostly the boundary, per the
 Malament split: causal order supplies the light-cone structure for free,
 and the decorations owe exactly the scale. But the finite *algebra* of the
 split is a theorem, not a hope.
+
+The first transformation-law gate is now also kernel-checked in a focused
+rational avatar (`SolderingLocalFrameCovariance`, **M**). For edge transport
+`U_xy` and endpoint coframes `e_x,e_y`, set
+`T_xy=e_y-U_xy e_x`. Independent endpoint frame changes give exactly
+`T'_xy=g_y T_xy`; zero defect is frame-independent under invertibility; and
+subdivision composes by `T_xz=T_yz+U_yz T_xy`. Orthogonal frame changes preserve
+the quadratic soldering action, while loop holonomy transforms by conjugation
+and keeps its trace. The nonzero `2x2` rational witness has defect `(0,1)` and
+action `1` (`soldering_local_frame_covariance_verdict`, guard-pinned). This
+passes finite covariance and refinement consistency.
+
+The nondegeneracy gap in that first proxy is now closed at the finite matrix
+level (`NondegenerateSolderingGeometry`, **M**, guard-pinned). A square coframe
+`e` is nondegenerate when `det e != 0`; it induces `g[e]=e^T eta e` and volume
+`det e`. Invertible frame changes preserve nondegeneracy, `eta`-Lorentz frames
+preserve the induced metric and defect action
+`S_E(T)=tr(T^T eta T)`, and determinant-one frames preserve volume. The matrix
+defect obeys the same endpoint covariance and exact refinement law. The explicit
+rational `1+1` witness uses
+`eta=diag(1,-1)`, the nonidentity boost `[[5/3,4/3],[4/3,5/3]]`, two invertible
+coframes, and `T=diag(1,0) != 0` with invariant action `1`
+(`nondegenerate_soldering_geometry_verdict`). Thus finite soldering now carries
+an invertible metric-bearing coframe, not merely a vector label. It still does
+**not** construct a tetrad field on a continuum manifold, prove continuum local
+Lorentz covariance, or derive a gravity field equation.
 
 **The gravity channel, as it now stands (M scaffolds).** This run brought the
 soldering channel toward parity with the matter channels, as a cluster of finite
@@ -1616,6 +1943,94 @@ theorem is a general finite fact (M); the physics is its instantiation on the
 carrier, which is the pending link** — the same "the machine is built, the model
 that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
 
+The finite phase bookkeeping has also landed
+(`FourChannelPathActionCapstone`, **M**): for four real action contributions
+`S_A,S_C,S_T,S_E`, the phase of their sum factorizes exactly,
+`exp(i(S_A+S_C+S_T+S_E)) = prod_X exp(iS_X)`, and action differences give the
+corresponding relative phase. This is useful infrastructure but not yet the
+history theory. The checkerboard specialization is now carrier-derived rather
+than free: `checkerboard_channel_action_total` defines the four contributions as
+the quadratic expectations of `Q_A,Q_C,4Q_T,4E_#` and proves that their sum is
+the expectation of `4D#D` on every real two-component state. The exact on-shell
+`(E,k,m)=(5,3,4)` witness has channel tuple `(64,0,64,0)` and total action `128`
+(`three_four_five_channel_action_witness`, **M**). What is not yet derived is an
+assignment of all four block expectations to local events of an individual
+checkerboard history. A clean history-local action algebra has nevertheless
+landed (`HistoryLocalFourChannelAction`, **M**): for channel-labelled events,
+`S_w(h)=sum_a w_(channel a)` is additive under concatenation, its phase
+`exp(i S_w(h))` is multiplicative, and it factorizes exactly by the four event
+counts. In the recursive flat checkerboard there is one aperture event per null
+step, one turn event per direction reversal, and no closure or soldering events.
+The quarter-turn choice `(w_A,w_C,w_T,w_E)=(0,0,pi/2,0)` gives exactly
+`exp(i S_w(h))=i^(turnCount h)` and hence the local amplitude
+`(eps m)^r exp(i S_w(h))=(i eps m)^r`, with a nonzero one-turn witness
+(`checkerboardAmplitude_eq_corner_power`, guard-pinned). Thus the flat corner
+weight is now literally a local action phase.
+
+The closure channel now also has a genuine history-local phase
+(`U1HistoryClosureHolonomy`, **M**, guard-pinned), not merely a named event
+count. For complex edge transports, the ordered product
+`Hol_U(x_0,...,x_n)=prod_j U_(x_j,x_(j+1))` multiplies under history
+concatenation. Under unit-modulus vertex gauge
+`U'_(xy)=g_y U_(xy) star(g_x)`, it transforms only at the endpoints,
+`Hol_U'=g_end Hol_U star(g_start)`, and is exactly gauge invariant when the
+history closes. An explicit four-vertex loop has `Hol_U=i != 1` and remains `i`
+under a nonidentity gauge transformation
+(`square_nontrivial_gauge_invariant_witness`). This wires closure to finite
+`U(1)` holonomy without claiming a nonabelian Wilson action or continuum gauge
+field.
+
+The four weights remain inputs. Turn is physically wired to the flat
+checkerboard and closure is wired to finite `U(1)` transport, but the carrier
+quadratic action has not yet been assigned locally to both on the same history;
+nonabelian closure and nonzero soldering history densities remain open. The
+exact corner-weighted checkerboard sum,
+where the history amplitudes and recursion are fixed rather than named, is also
+landed (`ExactCheckerboardPathSum`, **M**).
+Over the explicit Gaussian-rational ring `Q(i)`, each finite null history has
+amplitude
+
+```text
+A(h) = (i eps m)^(number of corners of h),
+```
+
+and the exact sum over histories equals the landed even/odd binomial
+corner-count kernels (`exact_path_sum_eq_closed_kernel`,
+`exact_path_sum_flip_closed_kernel`). The same sum satisfies the one-step
+discrete Dirac recursion (`exact_path_sum_dirac_recursion`). At `m=0`, every
+positive-corner history has zero amplitude and only straight null histories can
+contribute (`massless_only_straight`). The exact three-step witness
+`[right,left,right]` has two corners, nonzero amplitude at mass `1`, and a
+different amplitude at mass `2`. This is the finite theorem the path-action
+scaffold was waiting for: **mass enters the 1+1 checkerboard history sum only
+through corner phases**. It is not the continuum limit or a 3+1 propagator.
+The finite-symbol approximation is now quantitative rather than only
+differential (`QuantitativeDiracWalkContinuum`, **M**). With
+`mnorm M = max_ij ||M_ij||` and
+`C(k,m)=2k^2+2m^2+|k|m^2+k^2|m|+|k||m|`, the kernel proves
+
+```text
+mnorm(Ustep(k eps,m eps) - (1 - i eps H(k,m))) <= C(k,m) eps^2
+```
+
+for every `|eps| <= 1` (`Ustep_taylor_remainder_bound`). The exact `(3,4)`
+witness has `H^2=25 I`, a nonzero generator, and a nonzero algebraic cross
+coefficient; at `m=0` the step is exactly the diagonal shift with no turn
+mixing (`massless_exact_control`). This is fixed-momentum one-step control, not
+a Trotter limit, spacetime-walk convergence theorem, or continuum propagator.
+The complementary exact spectrum is also now kernel-checked
+(`ExactQuantumWalkDispersion`, **M**):
+
+```text
+cos(omega a) = cos(k a) cos(m a),
+U_a(0) x_+ = exp(-i m a) x_+,
+U_a(0) x_- = exp(+i m a) x_-.
+```
+
+Thus the checkerboard turn parameter is exactly the positive zero-momentum
+quasienergy on the principal branch; the branch qualification is required
+because lattice quasienergy is periodic modulo `2 pi/a`.
+
 - **D1 — action and equation of motion.** `multiplierStationary_iff_eom`
   (`FiniteCarrierAction`, **M**): a finite action's variational stationarity is
   equivalent to the equation of motion `D psi = 0`. The carrier's dynamics is
@@ -1627,7 +2042,14 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   (`quadraticAction_invariant_of_commutes`, `massShellAction_invariant_of_commutes`)
   and transports mass-shell solutions to mass-shell solutions of the *same* mass
   (`massShell_equation_symmetry`) — the finite statement that a symmetry of the
-  dynamics is a symmetry of the mass spectrum.
+  dynamics is a symmetry of the mass spectrum. The new
+  `action_symmetry_conservation_packet` (`FiniteDynamicsNoetherThermoCapstone`,
+  **M**) makes the bridge explicit: the *same* commutation hypothesis both
+  transports every mass-shell eigenstate at fixed mass and conserves the real
+  `A`-expectation along the symmetry orbit. Its capstone conjoins that link with
+  the finite RG invariant/monotone and canonical-ensemble packets and the
+  concrete carrier-block unitary flow. This is an auditable finite Noether
+  analogue and composition surface, not a continuum Noether theorem.
 - **D2/D3 — evolution and conservation.** `norm_conserved_orbit`,
   `energy_conserved_orbit` (`FiniteUnitaryEvolution`, **M**) prove that *any
   sector isometry* conserves norm and energy along its orbit — generic finite
@@ -1674,6 +2096,13 @@ that satisfies its hypothesis is next" pattern as the keystone (§4 rail 3).
   Krein evolution *on this witness* is closed. What remains **C** is only the
   identification of this `HAC`-generated flow with the *physical* time evolution
   (the generator-as-Hamiltonian posit), and the `(2,1)` carrier tie above.)
+  A complementary finite update theorem is now also kernel-checked
+  (`CayleyHamiltonianGenerator`, **M**): the Cayley step of a chosen Hermitian
+  matrix solves the cleared-denominator Crank-Nicolson equation and is unitary
+  under the displayed inverse conditions. At `H=sigma_x, dt=2`, it is exactly
+  `-i sigma_x` and sends `e0` to `-i e1` with nonzero transition amplitude. This
+  derives the transfer step from a supplied generator; it does not select that
+  generator as the carrier's physical Hamiltonian.
 - **D4 — renormalization flow.** `invariant_orbit`,
   `observable_antitone_orbit` (`FiniteRGFlow`, **M**, axiom-free): orbit
   invariants and monotones under an iterated step. The intended step is the §9
@@ -1866,6 +2295,10 @@ this was conditional on have both moved this run:
   constituents", and exactly why the naive bridge `0b` fails. **Kill condition**
   (`Δ > 0` or uncorrelated with closure) is now provably *unreachable* on the
   physical branch: `Δ > 0` forces `κ < 0` (`blockBindingDefect_pos_imp_neg_kappa`).
+  Equivalently, the positive binding gain `G_bind := -Δ` satisfies the exact
+  information identity `G_bind = κ = C(ρ)λ`, and
+  `m_ground = m_free - C(ρ)λ` (`BindingInformationInvariant`, **M**); strict
+  lowering occurs iff `C(ρ) != 0`.
   What stays grade **C** is only the *physical identification* — that this block
   `Δ` is *the* carrier binding energy — which inherits the `(λ,κ)` carrier
   reduction (kernel at `(2,1)`, oracle-grade off it). (1) The strong-coupling gap's forest injection (§6) — now a
@@ -2128,27 +2561,38 @@ anchor sweep.)*
 | 3 | `chord_eq_two_sub_two_inner`, `massless_iff_collinear`, `orthoframe_is_tight_frame`, `spherical_code_verdict` | `NullEdge/CelestialSphericalCode.lean` (port) | M, self-guarded (in-file pin) | **mass = chordal separation on the celestial sphere** — clean-room port of the spherical-code/design notion (Sphere-Packing-Lean / LeanCamCombi, reference-only, version-pinned): for rational unit null directions, `chordSq u v = 2−2⟨u,v⟩ ∈ [0,4]`, zero iff collinear (massless), maximal `4` at the antipode; and a *balanced* massless multiplet is a **tight frame / spherical 2-design** (`frameOp(ortho)=I`, with an explicit non-isotropic control). The celestial-geometry face of "mass = disagreement of null directions" |
 | 3 | `critical_iff_massless`, `hessian_psd_mass_direction`, `morse_mass_verdict` | `NullEdge/MassGradientMorse.lean` (port) | M, self-guarded (in-file pin) | **masslessness = critical manifold of the disagreement functional** — clean-room port of the gradient/Hessian (variational) view (SciLean, reference-only, version-pinned): for the celestial-slope disagreement `g(s,t)=(t−s)²`, `grad g = 0 ⟺ s=t ⟺ massless`; the constant Hessian is PSD with kernel `![1,1]` (common rotation, flat) and strictly positive on `![1,-1]` (`=8`) — the relative motion that *generates* mass. The variational/Morse face; `HasDerivAt` throughout |
 | 3a | `binding_defect_eq_coupling`, `binding_defect_eq_concurrence`, `binding_below_threshold_iff_entangled` | `NullEdge/BindingEntanglementDeficit.lean` | M, self-guarded (in-file pin) | **binding = entanglement deficit**: on `Bc(λ,κ)`, defect `Δ=κ=C(ρ)·λ` where `C(ρ)=κ/λ` is the coupled block's concurrence; binds below threshold iff entangled (§3a target ii, C→M) |
+| 3a/4/10 | `bindingGain_eq_concurrence_mul_aperture`, `signedBindingDefect_eq_neg_concurrence_mul_aperture`, `groundMass_eq_free_sub_concurrence_mul_aperture`, `strict_binding_iff_nonzero_concurrence`, `witness_binding_information` | `NullEdge/BindingInformationInvariant.lean` | M, self-guarded (in-file pins) | **one signed binding invariant**: `Delta_signed=-κ`, positive gain `G_bind=κ=C(ρ)λ`, and `m_ground=m_free-C(ρ)λ`; strict binding iff coherence is nonzero. Exact `(λ,κ)=(2,1)` witness gives gain `1`, `C=1/2`, ground mass `1`. Finite carrier block only; QCD interpretation stays C |
 | 3a | `coherent_is_pure`, `decohered_mass_eq_disagreement`, `mass_monotone_in_decoherence` | `NullEdge/PathSumSemantics.lean` | M, self-guarded (in-file pin) | **path-sum semantics**: the path-conditioned visible state `ρ_dir`; full coherence ⇒ pure (`det=0`, massless), decoherence ⇒ `det = Σ\|a\|²\|a'\|²\|ψ∧ψ'\|²` (mass = retained which-direction info), monotone `det ρ(t)=t(2−t)D`. Non-collinear witness `det=4/25` |
+| 3a | `visibleMassSq_eq_one_sub_visibility_mul_max`, `mass_visibility_duality`, `normalized_mass_visibility_duality`, `witness_duality` | `NullEdge/MassCoherenceDuality.lean` | M, self-guarded (in-file pins) | **exact mass-coherence complementarity**: `M²_visible=(1−V²)M²_max`, hence `M²_visible/M²_max+V²=1` off the collinear locus. Rational nondegeneracy witness `16/25+9/25=1`. Finite two-history identity, not an experimental or continuum claim |
+| 3a/9 | `pathVisibleMassSq_eq_one_sub_visibility_mul_max`, `path_mass_visibility_duality`, `normalized_path_hidden_overlap_duality`, `witness_same_complementarity_curve` | `NullEdge/MassCoherencePathEquivalence.lean` | M, self-guarded (in-file pins) | **one complementarity curve**: the path law `det rho(t)=t(2-t)D` becomes the hidden-overlap law under `k=1-t`; both normalize to mass fraction plus `V²` equals one and share the exact `16/25+9/25` witness. The state spaces remain distinct; this is an equality of normalized finite laws |
+| 3a/9 | `four_channel_phase_factorization`, `phase_shift_by_action_difference`, `path_sum_information_packet`, `four_channel_path_action_capstone` | `NullEdge/FourChannelPathActionCapstone.lean` | M, self-guarded (in-file pins) | **finite action/phase scaffold**: an arbitrary four-component real action has a factorized complex phase and sits beside the landed path-information and carrier/RG packets. The action components are free inputs; no carrier-to-history assignment or continuum propagator is derived |
+| 9 | `GaussianRat.I_sq`, `pathAmplitude_eq_corner_power`, `exact_path_sum_eq_closed_kernel`, `exact_path_sum_flip_closed_kernel`, `exact_path_sum_dirac_recursion`, `massless_only_straight`, `t3_mass_dependent_witness`, `turn_phase_verdict` | `NullEdge/ExactCheckerboardPathSum.lean` | M, self-guarded (nine in-file pins) | **exact finite quantum-history theorem**: over `Q(i)`, the 1+1 checkerboard propagator is exactly the sum over null histories weighted by `(i eps m)^corners`, equals the binomial corner kernel, and satisfies the discrete Dirac recursion. At `m=0` only straight histories survive; an exact three-step witness is nonzero and mass-dependent. No continuum or 3+1 claim |
+| 2b/9 | `tetraDir_gram`, `endpointMassSq_eq_pairDisagreement`, `mixed01_timelike`, `frameOp_eq_third`, `continuum_speed_one_iff_step_scale_three`, `tetrahedral_null_history_verdict` | `NullEdge/TetrahedralNullHistory.lean` | M, self-guarded (in-file pin) | **exact rational 3+1 tetrahedral null-history kinematics and normalization gate**: four unit spatial directions have mutual dot product `-1/3`; a history endpoint obeys `X(c)^2=(8/3) sum_{i<j} c_i c_j`, so one-direction histories are null and the explicit mixed history has mass squared `8/3`. The normalized frame operator is exactly `1/3` on the spatial subspace, hence this simplest projector recursion has continuum speed one iff its microscopic step scale is three |
+| 2b/9 | `projector_idempotent`, `projector_resolution`, `projector_bend_sandwich`, `pathProjector_append`, `ordered_three_phase`, `tetrahedral_spin_projector_path_verdict` | `NullEdge/TetrahedralSpinProjectorPath.lean` | M, self-guarded (in-file pins) | **first ordered 3+1 spin-path amplitude**: exact Weyl projectors resolve `2I`, each distinct bend gives `P_i P_j P_i=(1/3)P_i`, chronological concatenation composes products, and reversing the first three-direction path flips the nonzero phase from `+i r/3` to `-i r/3`. No summed propagator, exactly unitary massive update, or continuum theorem |
+| 2b/9 | `q_h_null`, `q_halfSum`, `q_halfDiff`, `d4_added_step_causal_verdict` | `NullEdge/GateC1/D4AddedStepCausalClassification.lean` | M, self-guarded (in-file pins) | **`D4` is a causal envelope, not a null-only replacement**: the active Hadamard/tetrahedral steps are null, but every distinct half-sum root has `q=-2/3` and every half-difference root has `q=+2/3`. Connecting the full `D4` lattice by root steps therefore introduces timelike and spacelike primitives |
+| 2b/9 | `reach_iff_sub_mem_closure`, `componentEquiv`, `eightCopies` | `NullEdge/GateC1/D4DisconnectedCopy.lean` | M, self-guarded (in-file pins) | **coset/component theorem**: a kinetic graph using a shift set has connected components exactly the cosets of the generated subgroup; a quotient equivalence with `(Z/2)^3` gives eight components |
+| 2b/9 | `quotientLabel_surjective`, `quotientLabel_eq_zero_iff`, `d4QuotientEquiv`, `d4Quotient_card_eight`, `d4_concrete_quotient_verdict` | `NullEdge/GateC1/D4ConcreteQuotient.lean` | M, self-guarded (in-file pins) | **concrete D4 quotient closed**: the explicit three-bit parity label is surjective with kernel exactly the Hadamard image, so `D4/L_H ~= (Z/2)^3` and the null-shift graph has exactly eight components; this does not make the extra D4 roots null |
 | 3a | `det_pinch`, `mass_monotone_under_pinch`, `signed_closure_exception` | `NullEdge/EntropyMonotoneReal.lean` | M, self-guarded (in-file pin) | **entropy monotonicity under decoherence**: `det(Pinch t ρ)=det ρ+(2t−t²)x²`; decohering hidden coherence can only increase mass²/linear-entropy; a signed closure move can lower it (`49/2500<1/4`) — closure is not noise |
 | 3a | `channel_is_state`, `linear_entropy_monotone`, `signed_closure_exception` | `NullEdge/LeanQuantumDPIMass.lean` (port) | M, self-guarded (in-file pin) | **same decoherence monotone, density-operator language** — a clean-room port of the lean-quantum DPI (`github.com/Hayata-Yamasaki-Group/lean-quantum`, reference-only, version-pinned): `Slin ρ = 1−tr ρ² = 2 det ρ` is the mass² invariant, the pinching channel maps density→density (`channel_is_state`), and `Slin(Φₜρ)−Slin ρ = 2t(2−t)x² ≥ 0` — exactly twice the `EntropyMonotoneReal` det-gain. *Not independent evidence*: the DPI reprise of the row above, adding the channel/PSD structure and lean-quantum provenance |
 | 3a | `faces_agree`, `tv_is_plucker_distance`, `four_faces_verdict` | `NullEdge/MassFourFaces.lean` | M, self-guarded (in-file pin) | **the mass² dictionaries are one invariant (consolidation)**: `Slin ρ = 2 det ρ`, `Hlin = 2 det` (diagonal), so the linear-entropy / det / Hlin faces are *literally one* single-register invariant (up to the factor 2); and `TV` is the *two-register* Plücker distance `TVdiag p q = \|p(1−q)−(1−p)q\| = \|p−q\|`, a distinct object built from the same wedge — all four vanishing exactly at masslessness. Kernel-checks that the several mass² readings are **faces of one wedge/determinant invariant, not independent results** |
 | 3a | `mass_is_distinguishability`, `dpi_total_variation`, `witness_strict_dpi` | `NullEdge/TVDistinguishabilityMass.lean` (port) | M, self-guarded (in-file pin) | **mass = distinguishability of the two null directions** — clean-room port of the total-variation / data-processing core (`github.com/RemyDegenne/testing-lower-bounds`, reference-only, version-pinned): for `2`-outcome celestial readouts `TV p q = \|wedge p q\| = \|p₀−q₀\|`, so the TV-distinguishability *equals the Plücker mass* and vanishes iff collinear (massless); it is monotone under any column-stochastic coarse-graining (`dpi_total_variation`) and strictly cut by total collapse. Ties the §3 Plücker mass to an operational distinguishability with a DPI |
 | 3a | `kraft_inequality`, `mass_is_compressibility`, `shannon_fano_bracket` | `NullEdge/KraftCompressionMass.lean` (port) | M, self-guarded (in-file pin) | **mass = incompressibility (source-coding reading)** — clean-room port of the Kraft bound (`github.com/elazarg/kraft`, reference-only, version-pinned): the linear entropy `Hlin p = 1−Σpᵢ²` (= mass²) vanishes iff the visible register is a single pure direction (massless), else positive; a prefix code obeys the Kraft sum `Σ2^{−lᵢ} ≤ 1` and the dyadic Shannon–Fano bracket controls the length rationally (no `Real.log`). The compression-cost reading of the same mass²-invariant. (A supporting in-tree instance, `VelocityMixtureLinearEntropy`, specializes this `Hlin` to the `±c` velocity register: the 2-outcome mixture `(E±p)/2E` whose mean is the drift `p/E` has `S_L = m²/(2E²)`, tying the same invariant to the §2b Dirac velocity spectrum / Zitterbewegung drift.) |
-| 3a | `compton_floor_sq`, `no_sub_compton_sq` | `NullEdge/ComptonBoundSq.lean` | M, self-guarded (in-file pin) | **finite Compton bound**: the mass gap is a length floor `widthSq m ψ ≥ 1/(4m²)` on the `J`-positive sector; `widthSq = ¼·dCausal²` — the localization floor is half the Connes distance. Honest scope: 2-point carrier, structural constant `½` |
+| 3a | `compton_floor_sq`, `no_sub_compton_sq` | `NullEdge/ComptonBoundSq.lean` | M, self-guarded (in-file pin) | **finite Compton bound**: the mass gap is a length floor `widthSq m ψ ≥ 1/(4m²)` on the `J`-positive sector; `widthSq = ¼·dCausal²` — the localization floor is half the finite causal spectral-distance avatar. Honest scope: 2-point Krein carrier, structural constant `½`; not the Riemannian Connes supremum |
 | 3a | `free_states_characterized`, `free_ops_preserve`, `mixing_creates` | `NullEdge/SuiteDResourceCore.lean` | M, self-guarded (in-file pin) | **mass resource theory**: free states = rank-one null Grams (`det P=0`); rotations preserve `det`; mixing distinct null directions creates exactly the Plücker amount `det=t(1−t)(u₀w₁−u₁w₀)²`. Mass = the resource of which-direction mixing, invariant under the free (rotation) group. Witness `det=4/25` |
 | 6 | `confinement_ordering`, `colored_ground_ge_threshold`, `singlet_bound_energy` | `NullEdge/Goal1Confinement.lean` | M, self-guarded (in-file pin) | **dynamical confinement**: on the toy hadron, `leastEigenvalue Hsing = −1 < 1 ≤ leastEigenvalue Hcol` — the lightest two-particle excitation is the color singlet bound state; colored channel gapped above (PSD via explicit sum-of-squares). The deconfinement kill does not fire |
 | 10 | `symmetry_iff_kap_zero`, `zero_mode_at_criticality`, `naturalness_verdict_finetuning` | `NullEdge/SuiteDCriticalSymmetry.lean` | M, self-guarded (in-file pin) | **critical lightness is symmetry-protected**: an explicit `Z₂` involution `T` is a symmetry of `B(λ,κ)` iff `κ=0`; the critical zero mode is forced under it; without it `B(1,½)` has no zero mode — so near-critical small mass is natural iff the symmetry is imposed, else fine-tuning (both halves) |
-| 2b | `alpha_sq_one`, `velocity_spectrum`, `massless_luminal` | `NullEdge/DiracVelocityOperator.lean` | M, self-guarded (in-file pin) | **instantaneous velocity is exactly `±c`**: the Dirac velocity operators satisfy `αᵢ²=1`, `tr αᵢ=0`, so spectrum `= {+1,−1}` (mult 2), explicit `±1` eigenvectors; mass term anticommutes with each `αᵢ`. A fermion is internally always at `c` |
+| 2b | `alpha_sq_one`, `velocity_spectrum`, `massless_luminal` | `NullEdge/DiracVelocityOperator.lean` | M, self-guarded (in-file pin) | **componentwise Dirac velocity support is `±c`**: each `αᵢ²=1` and `tr αᵢ=0`; concrete `α₁` has explicit nonzero `±1` eigenvectors, and the mass matrix anticommutes with every `αᵢ`. This is a finite componentwise operator theorem, not a simultaneous classical 3-velocity or a universal all-particle trajectory claim |
 | 2b | `massless_decouples`, `mass_couples`, `zigzag_verdict` | `NullEdge/ZigzagWeyl.lean` | M, self-guarded (in-file pin) | **Penrose zigzag**: massless ⇒ two decoupled null Weyl operators; mass is the chiral-odd coupling that swaps them; `D(m)²=(kinetic²)+m²` (3-4-5 shell). Massive Dirac = two null pieces coupled by mass |
 | 2b | `chiral_breaking`, `massless_chiral_symmetry`, `g5_commutes_mass`, `mass_bilinear_couples_chirality`, `chiral_breaking_verdict` | `NullEdge/ChiralBreakingAnticommutator.lean` (port) | M, self-guarded (in-file pin) | **mass = the obstruction to `γ5` anticommuting with the Dirac operator**: for the *covariant* `D=pslash−m·1`, `{γ5,D}=−2m·γ5` — it **vanishes at `m=0`** (`γ5` anticommutes with the massless `pslash`: chiral symmetry, `L,R` decouple) and is `≠0` for `m≠0` (chiral-symmetry breaking). The algebraic core of *mass-from-massless*; this `{γ5,D}` is the continuum-mass value of the lattice **Ginsparg-Wilson** object `{γ5,D}=2a·Dγ5D` (GW 1982 / Luscher, §8-tracked). **Convention reconciliation with `ZigzagWeyl` (above):** there the mass is chiral-*odd* — that is the *Hamiltonian* mass `βm=m·γ0`; here the *covariant* mass `m·1` is chiral-*even* (`g5_commutes_mass`), so breaking shows as `{γ5,D}≠0` instead of `[γ5,H]≠0`. Same physics, two forms — NOT a contradiction; the bridge is `mass_bilinear_couples_chirality` (`γ0` intertwines the chiralities, so `ψ̄ψ` couples `L↔R`). `[import]` Dirac/GW, real `(t,z)` avatar |
 | 2b | `spectral_gap`, `massless_iff_reducible`, `zigzag_automaton_verdict` | `NullEdge/ZigzagAutomaton.lean` (port) | M, self-guarded (in-file pin) | **the zigzag as a weighted automaton** — clean-room port of the transfer-operator view (CSLib path semantics, reference-only, version-pinned): the chirality flip is a `2×2` stochastic transfer matrix `T(a)=[[1−a,a],[a,1−a]]` with eigenvalues `1` and `1−2a`, so the **spectral gap is `2a` = the mass proxy**; `a=0 ⟺ T=I ⟺ reducible` (two absorbing luminal channels that never mix), `a≠0 ⟺ mixing` (the zigzag). The classical-stochastic face of the zigzag, complementary to the unitary quantum walk |
-| 2b | `drift_subluminal_from_average`, `massless_limit`, `zitterbewegung_verdict` | `NullEdge/ZitterbewegungAverage.lean` | M, self-guarded (in-file pin) | **Zitterbewegung average**: drift `v̄=p/E`, `v̄²=1−m²/E²` as a convex average of `±1` (weights set by `m/E`); massless ⇒ single luminal channel, rest ⇒ 50/50 zigzag. Ties instantaneous `±c` to the subluminal drift |
+| 2b | `drift_subluminal_from_average`, `massless_limit`, `zitterbewegung_verdict` | `NullEdge/ZitterbewegungAverage.lean` | M, self-guarded (in-file pin) | **Zitterbewegung average**: drift `v̄=p/E`, `v̄²=1−m²/E²` as a convex average of abstract `±1` velocity sectors (weights set by `m/E`); massless ⇒ one luminal sector, rest ⇒ a 50/50 mixture. This is the finite bridge from componentwise luminal support to subluminal drift, not a classical trajectory theorem |
 | 2b | `dirac_two_states`, `majorana_self_conjugate`, `lepton_number`, `neutrino_verdict` | `NullEdge/NeutrinoDiracMajorana.lean` | M, self-guarded (in-file pin) | **Dirac vs Majorana structure**: Dirac mass → independent CPT-partner (`Θψ≠ψ`), conserves lepton number (`[M_D,Q]=0`); Majorana mass → self-conjugate sector (`Θψ=ψ` witness), violates it (`[M_M,Q]≠0`, entry `−2`). Distinction = new state vs same state; nature stays open |
 | 2b | `char_vieta`, `seesaw_bound`, `seesaw_verdict` | `NullEdge/NeutrinoSeesaw.lean` | M, self-guarded (in-file pin) | **type-I seesaw**: `M=[[0,m_D],[m_D,M_R]]` has `det=−m_D²`, `trace=M_R`; a heavy Majorana `M_R` suppresses the light eigenvalue to `\|m_ν\|<m_D²/M_R` (opposite sign, product pinned at `m_D²`), no square roots via Vieta; suppression `M_R`-driven vs a no-hierarchy control. Why a Majorana partner makes ν light |
 | 2b | `photon_one_edge`, `massive_vector_two_edges`, `edge_count_eq_pol_minus_one`, `universal_verdict` | `NullEdge/PhotonSingleEdge.lean` | M, self-guarded (in-file pin) | **mass=disagreement across spin (gauge bosons)**: photon = 1 null edge / 2 pol; massive vector = 2 edges (`det=m²`) / 3 pol; `edges = pol−1`, `m≠0 ⇔ 2 edges ⇔ 3 pol`. Extends the edge-count reading to spin-1 |
 | 2b | `massless_two_polarizations`, `massive_three_polarizations`, `longitudinal_is_mass` | `NullEdge/HiggsLongitudinalMode.lean` | M, self-guarded (in-file pin) | **the longitudinal mode is the mass**: `2 (transverse) + 1 (longitudinal/eaten Goldstone) = 3` for a massive vector, dropping to `2` when massless — the vector-boson mass is the extra null mode (gauge/Higgs channel) |
 | 2b | `epsL_normalized`, `epsL_orthogonal_p`, `longitudinal_singular`, `longitudinal_is_mass_verdict` | `NullEdge/LongitudinalGoldstone.lean` | M, self-guarded (in-file pin) | **the longitudinal polarization, explicitly**: in `(+,−,−,−)` the longitudinal `ε_L=(k/m,0,0,E/m)` is unit-spacelike (`η(ε_L,ε_L)=−1`) and orthogonal to `p`, but **singular as `m→0`** — `m·ε_L→(k,0,0,E)` stays finite so `ε_L∼1/m` diverges and its direction collapses onto the null momentum, leaving only 2 transverse modes. The 3rd polarization *is* the mass (Goldstone-enhancement avatar; single on-shell momentum) |
 | 2b | `dof_conserved_general`, `goldstone_is_longitudinal`, `higgs_mechanism_verdict` | `NullEdge/HiggsDofConservation.lean` | M, self-guarded (in-file pin) | **the Higgs mechanism is exact dof conservation**: massless gauge (2) + complex scalar (2) `=` massive gauge (3) + physical Higgs (1) `= 4`; generally `2n+s` before `= 3n+(s−n)` after for `n≤s` broken generators. Each broken generator moves one scalar (Goldstone) dof into the longitudinal polarization — "mass from massless" on the gauge side is this transfer, dof-preserving |
+| 2b/5 | `gaugeMassMatrix_posSemidef`, `diagonal_zero_iff_stabilizer`, `gaugeMass_quadratic_form`, `gauge_mass_gram_witness` | `NullEdge/GaugeMassGram.lean` | M, self-guarded (in-file pins) | **gauge mass as reference-orbit distinguishability**: the coupling-weighted generator tangents `g_a T_a phi` have a Hermitian positive Gram matrix; its quadratic form is the combined displacement norm, and a nonzero-coupling diagonal vanishes exactly for a stabilizer. Explicit `diag(0,1)` witness has one unbroken and one broken direction. Finite inner-product theorem only; no electroweak input or radial Higgs self-mass |
 | 2b | `theta_swaps_weyl`, `spectrum_conjugate_paired`, `antiparticle_verdict` | `NullEdge/CPTAntiparticleZigzag.lean` | M, self-guarded (in-file pin) | **antimatter = CPT-mirror zigzag**: `Θ=C·Γ_rev·#` is chiral-odd, swaps the two null Weyl pieces, conjugate-pairs the spectrum — matter/antimatter are the two CPT-orientations of one null-edge pair; asymmetry is a state, not a law |
 | 7 | `equation_of_state`, `jacobson_verdict` | `NullEdge/JacobsonClausius.lean` | M, self-guarded (in-file pin) | **finite gravitational equation of state**: the soldering field equation `∇heat = T·α·∇area` IS the integrability condition of Clausius `δQ=T δS` (`S~`pierced-edge count); non-degenerate + control witnesses. Finite Jacobson |
 | 7 | `field_equation_sourced`, `channel_blind_universal`, `unification_verdict` | `NullEdge/GravitySourceMatter.lean` | M, self-guarded (in-file pin) | **finite `G=κT`**: soldering stationarity ⇔ `solderingCurv γ = κ·matterBudget ψ` — geometry sourced by the matter channels, channel-blind (equal total budget ⇒ same geometry = WEP) |
@@ -2178,10 +2622,19 @@ anchor sweep.)*
 | 2a | `gamma_sq_0`, `gamma_anticomm_01`, `clifford_relation`, `dirac_gamma_verdict` | `NullEdge/DiracGammaPhysLean.lean` (port) | M, self-guarded (in-file pin) | **Dirac gamma algebra grounded (port)**: PhysLean's exact Dirac-representation `γ⁰…γ³` (`spaceTime.γ`) satisfy the Clifford algebra `{γ^μ,γ^ν}=2η^{μν}·I` with `(+,−,−,−)` — `(γ⁰)²=I`, `(γⁱ)²=−I`, distinct γ anticommute (all 16 index pairs). The Dirac-rep companion to the chiral `ZigzagWeyl`; grounds our Dirac convention in PhysLean's machine-verified one. Honest scope: the Clifford algebra only (no Lorentz covariance/spinor rep) |
 | 2a | `projectors_complete`, `projectors_idempotent`, `chirality_eigenvalues`, `projector_ranks`, `weyl_decomposition_verdict` | `NullEdge/ChiralProjectorsDirac.lean` (port) | M, self-guarded (in-file pin) | **Weyl (chiral) decomposition grounded (port)**: from the Dirac-rep `γ5` (traceless involution), the projectors `P_L,P_R=(1∓γ5)/2` are a *complete* (`P_L+P_R=1`), *orthogonal* (`P_L P_R=0`), *idempotent* pair with `γ5 P_L=−P_L`, splitting the Dirac 4-spinor into two 2-dimensional chirality sectors (`tr P_L=tr P_R=2`) — the massless Weyl pieces of the zigzag, grounded in PhysLean's `Fermion.Left/RightHandedWeyl` convention. The chiral half of the Dirac projector pair (the energy projectors `Λ±` follow) |
 | 2a | `pslash_sq`, `projectors_idempotent`, `projectors_orthogonal`, `projector_ranks`, `massless_singular`, `mass_shell_projector_verdict` | `NullEdge/MassShellProjectors.lean` (port) | M, self-guarded (in-file pin) | **mass-shell (energy) projectors — the mass-role contrast**: complementing the chiral projectors, the *energy* projectors `Λ±=(pslash±m)/2m` split the Dirac spinor by *sign of energy* on the shell `pslash²=m²·1` (from `g0²=1, g3²=−1, {g0,g3}=0`); they are a *complete* (`Λ₊+Λ₋=1`), *orthogonal* (`Λ₊Λ₋=0`), *idempotent* pair with `tr Λ₊=tr Λ₋=2` (two ± energy states). The honest payload `massless_singular`: `2m·Λ₊=pslash+m·1` stays finite while `Λ₊∼1/m` **diverges** as `m→0`, so `Λ±` exist *only* for `m≠0` — the energy split genuinely **needs the mass**, unlike the chirality split (which survives `m=0`). The projector-level face of *mass-from-massless*: mass is what turns the massless chiral edges into a rest-frame energy split. Grounds the `(pslash+m)` propagator numerator in PhysLean's `spaceTime.gamma` convention; `[import]` Dirac theory, real `(t,z)` avatar. Completes the §2a Dirac-algebra grounding (η, γ, chiral **and** energy projectors; cf. the §3 σ-map `SigmaMapNullEdges`) |
+| 2a | `rescaled_energy_commutator`, `massless_rescaled_commutator_nonzero`, `massive_projector_commutator_witness`, `chirality_energy_commutator_no_mass_iff` | `NullEdge/ChiralityEnergyCommutatorAudit.lean` | M, self-guarded (in-file pins) | **projector-slogan no-go**: `2m[P_L,Λ_+]=[P_L,pslash]`; the rescaled commutator is nonzero both at the massive `(5,3,4)` witness and at the massless null momentum `(1,1)`, while `Λ_+` is undefined at `m=0`. Therefore chiral/energy noncommutation is not a mass iff; use `{gamma5,D}=-2m gamma5` instead |
 | 3 | `posDef_iff_det_pos`, `det_eq_zero_iff_not_posDef` | `Carrier/RankAreaMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | massive ⇔ momentum PosDef ⇔ `det P > 0` (rank/area) |
 | 7 | `weitzenbock_eq_zero_iff` (+`_re_inner_nonneg`) | `Carrier/WittenPositiveMass.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite Witten/Lichnerowicz: `A^#A+C` PSD, vanishes iff covariantly constant & curvature-null (F4) |
 | 9 | `multiplierStationary_iff_eom` | `Carrier/FiniteCarrierAction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite carrier action: variational stationarity ⇔ the equation of motion (dynamics D1) |
 | 9 | `massShellAction_invariant_of_commutes`, `massShell_equation_symmetry` | `Carrier/FiniteQuadraticAction.lean` | M, self-guarded (in-file pin) | finite Noether: a unitary symmetry commuting with `A` preserves the (mass-shell) action and transports mass-shell solutions to solutions of the same mass (dynamics D1) |
+| 9 | `action_symmetry_conservation_packet`, `rg_ensemble_packet`, `finite_dynamics_noether_thermo_capstone` | `NullEdge/FiniteDynamicsNoetherThermoCapstone.lean` | M, self-guarded (in-file pins) | **finite Noether/thermo composition**: one commutation hypothesis transports fixed-mass solutions and conserves the `A`-expectation along the same orbit; conjoined with finite RG propagation, ensemble normalization/variance, and concrete carrier-flow conservation. Finite only; no continuum Noether theorem or derived physical Hamiltonian |
+| 9 | `action_derived_eom_packet`, `unitary_phase_conservation_packet`, `dirac_mass_shell_generator_packet`, `finite_hamiltonian_generator_capstone` | `NullEdge/FiniteHamiltonianGeneratorCapstone.lean` | M, self-guarded (four in-file pins) | **finite generator boundary, made citable**: variational stationarity gives the finite EOM/eigenvalue equations; a chosen Hermitian phase flow conserves norm and commuting observables; Dirac velocity and mass-shell projector facts motivate candidate generators. This is deliberately a composition/boundary theorem: it does not select `D`, `D#D`, or the compressed mass block as the physical Hamiltonian |
+| 9 | `Ustep_taylor_remainder_bound`, `Ustep_second_order_coefficient`, `three_four_five_quantitative_witness`, `massless_exact_control`, `quantitative_dirac_walk_continuum_verdict` | `NullEdge/QuantitativeDiracWalkContinuum.lean` | M, self-guarded (in-file pins) | **explicit one-step Dirac-walk error theorem**: in the max-entry seminorm, `Ustep(k eps,m eps)` differs from `1-i eps H(k,m)` by at most the displayed polynomial `C(k,m) eps^2` for `|eps|<=1`; exact `(3,4,5)` and massless controls. Fixed-momentum finite symbol only; no Trotter/PDE/propagator limit and no second-derivative claim |
+| 9 | `exact_lattice_dispersion`, `mass_is_zero_momentum_quasienergy`, `zero_momentum_xPlus_eigenvector`, `zero_momentum_xMinus_eigenvector`, `exact_quantum_walk_dispersion_verdict` | `NullEdge/ExactQuantumWalkDispersion.lean` | M, self-guarded (in-file pins) | **exact lattice spectrum**: `cos(omega a)=cos(k a)cos(m a)` and at zero momentum the two exact eigenphases are `exp(-i m a)` and `exp(+i m a)`. The turn parameter is the principal-branch positive quasienergy; quasienergy periodicity is explicit |
+| 9 | `checkerboard_channel_action_total`, `checkerboard_channel_phase_eq_carrier`, `three_four_five_channel_action_witness` | `NullEdge/FourChannelPathActionCapstone.lean` | M, self-guarded (in-file pins) | **carrier-derived finite action budget**: on every real checkerboard state, the expectations of `Q_A,Q_C,4Q_T,4E_#` sum exactly to the expectation of `4D#D`; the on-shell `(5,3,4)` witness gives `(64,0,64,0)` and total `128`. State-level, not yet a local action assignment on each history |
+| 9 | `historyAction_append`, `historyPhase_append`, `flatCheckerboard_action`, `quarterTurn_history_phase`, `checkerboardAmplitude_eq_corner_power`, `history_local_four_channel_action_verdict` | `NullEdge/HistoryLocalFourChannelAction.lean` | M, self-guarded (in-file pins) | **history-local action and phase**: channel-labelled event actions add and phases multiply under concatenation; the flat checkerboard has one aperture event per step, turn count equal to direction reversals, and zero closure/soldering counts; the quarter-turn action gives exactly `i^r` and `(i eps m)^r`, with a nonzero one-turn witness. General four weights remain input; only the flat turn lane is physically wired |
+| 9 | `pathHolonomyFrom_append`, `pathHolonomyFrom_gauge_covariant`, `closed_pathHolonomy_gauge_invariant`, `square_nontrivial_gauge_invariant_witness`, `u1_history_closure_holonomy_verdict` | `NullEdge/U1HistoryClosureHolonomy.lean` | M, self-guarded (in-file pins) | **history-local closure phase**: ordered complex edge transport multiplies under concatenation, transforms only at open-history endpoints, and is gauge invariant on closed histories. A four-vertex loop has exact holonomy `i != 1` and remains `i` under a nonidentity unit gauge. Finite abelian transport only; no nonabelian Wilson action, path-integral measure, or continuum limit |
+| 9 | `cayleyStep_iff_linear_update`, `linear_update_iff_crankNicolson`, `cayleyStep_unitary`, `cayley_hamiltonian_generator_verdict` | `NullEdge/CayleyHamiltonianGenerator.lean` | M, self-guarded (in-file pins) | **finite generator-to-update bridge**: Cayley evolution is exactly the Crank-Nicolson update and is unitary for a Hermitian generator under explicit inverse identities; `H=sigma_x,dt=2` gives the nonzero turn `e0 -> -i e1`. The generator is supplied, not physically selected |
 | 9 | `norm_conserved_orbit`, `energy_conserved_orbit` | `Carrier/FiniteUnitaryEvolution.lean` | M, guard-pinned (`CarrierAxiomGuard`) | a sector isometry conserves norm & energy along its orbit (dynamics D2/D3) |
 | 9 | `hermitian_flow_mem_unitaryGroup`, `B_flow_unitary`, `hermitian_flow_isometry` | `Carrier/CarrierUnitaryFlow.lean` | M (first two guard-pinned) | **the D2 instantiation, closed**: the carrier-block Hermitian flow `exp(−i t H)` is unitary and a `LinearIsometryEquiv` (generator-as-Hamiltonian is a **C** posit; carrier tie kernel at `(2,1)`) |
 | 9 | `HAC_flow_Jmet_unitary`, `HAC_flow_sector_invariant`, `J_selfAdjoint_flow_J_unitary`, `HAC_Jmet_selfAdjoint` | `Carrier/CarrierKreinFlow.lean` | M, self-guarded (in-file pin) | **the dynamical Krein half, closed on the witness** (batch-6 audit gap): `HAC` is `Jmet`-self-adjoint and `range Piso` is `HAC`-invariant, so `exp(−itHAC)` is `Jmet`-unitary AND sector-preserving — Krein-form-conserving orbit, not just Euclidean (generator-as-Hamiltonian stays **C**) |
@@ -2191,12 +2644,15 @@ anchor sweep.)*
 | 9 | `derived_boundState_below_threshold`, `derived_wrongPlane_no_binding` | `Carrier/DerivedInteraction.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **`V` is a 2nd-quantized closure operator, conditionally binding**: `Vderived = dΓ(iκK)` (= modelled `V` up to phase gauge) binds below threshold *iff* the closure acts among *excited* modes (ground-plane closure → no binding; boundary `κ²=(d₂−d₀)(d₂−d₁)`) |
 | 9 | `massBlock_eq_carrierK`, `carrierK_eq_closureCurvature`, `carrier_closure_binds` | `Carrier/CarrierClosurePlane.lean` | M, self-guarded (in-file pin) | **the carrier's own `K` IS in the binding plane** → binding is unconditional for the carrier (**C→M**): `carrierK = !![0,0,0;0,0,−1;0,1,0] = closureCurvature`, ground mode a spectator, ≠ ground-plane curvature. Only the specific mass-value stays **C** |
 | 4 | `square_decomposition` | `NullEdge/CarrierRigidity.lean` | M, self-guarded (in-file pin) | **four-block square, no fifth block**: `2(D#D)=Q_A+Q_C+2E_#+2Q_T` exactly, four distinct even/odd Krein grades — the channel *type-count* is forced (structure of "unification=decomposition"). Full *uniqueness* of the split is NOT forced (non-rigid; needs a further axiom) |
+| 4 | `channel_coordinates_recover`, `four_channel_coefficients_unique`, `channelCombination_injective`, `four_channels_linearIndependent`, `carrier_square_coefficients_recovered`, `four_channel_rigidity_with_boundary` | `NullEdge/FourChannelRigidityCapstone.lean` | M, self-guarded (six in-file pins) | **the explicit four-channel witness is coefficient-rigid**: rational entry selectors recover every coefficient, `QA/QC/QT/Es` are linearly independent, and `4 D^T D` recovers `(1,1,1,1)`. The final theorem carries the abstract no-go beside the positive result: concrete support data force this presentation; chirality/Krein type and block count alone do not force a unique carrier split |
 | 9a | `posDef_aperture_add_gram`, `massGap_one_add_gram` | `NullEdge/PositiveSectorClassification.lean` | M, self-guarded (in-file pin) | **positive-sector criterion (generalizes T2)**: `A PosDef ⇒ (A+BᴴB) PosDef`, gap `≥1` — closure entering *squared* never destabilizes a positive aperture, beyond the `Cl(4)` witness |
 | 2a | `Dop`/`kdag_Dop`, walk = carrier | `NullEdge/CheckerboardCarrierBridge.lean` | M, self-guarded (in-file pin) | **the 1+1D Dirac quantum walk IS a Krein null-edge carrier**: null Clifford edges `cP²=cM²=0`, `{cP,cM}=1`, kinetic/mass/`D` all Krein-self-adjoint; channel names match kinetic/mass. First "channels = physics" evidence |
 | 9 | `dirac_mass_shell`, `Ustep_hasDerivAt_generator` | `Carrier/ContinuumLimit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | **continuum-limit finite symbol facts**: mass shell `(kσ_z+mσ_x)²=(k²+m²)·1`; discrete transfer generator matches the Dirac Hamiltonian symbol to leading order. Continuum *theorem* is `[import]` (1+1D) / open (Cl(4)) |
 | 2a/9 | `massive_implies_subluminal`, `luminal_iff_massless`, `groupVelSq_num_le_sin_sq_omega` | `Carrier/SubluminalBound.lean` | M, self-guarded (in-file pin) | **derived speed limit**: from the pinned dispersion `cos ω=cos k cos θ`, `v_g²≤1` with deficit `1−cos²θ`; every massive mode strictly subluminal, only the massless (`θ=0`) luminal. Boost symmetry NOT derived (critical-point only) |
+| 2b/9 | `principalWaveSymbol_det`, `principal_characteristic_iff_null`, `four_lowerOrder_channels_preserve_principal_symbol`, `massive_groupSpeedSq_lt_one`, `principalOrder_channel_can_change_characteristic`, `lowerOrder_channel_causality_verdict` | `NullEdge/LowerOrderChannelCausality.lean` | M, self-guarded (in-file pin) | **conditional universal front-speed theorem**: a finite multiplet with common wave principal symbol `(omega^2-|k|^2) I_d` has characteristic determinant `(omega^2-|k|^2)^d`; arbitrary finite lower-order aperture/closure/turn/soldering mixing vanishes in principal scaling, while an explicit principal-order control changes the determinant. Massive-shell group drift is strictly subluminal, with exact `9/25<1`. This must still be instantiated for each field equation; it assigns no velocity to an interaction channel, and soldering may instead alter the principal metric |
 | 9 | `invariant_orbit`, `observable_antitone_orbit` | `Carrier/FiniteRGFlow.lean` | M, guard-pinned (`CarrierAxiomGuard`) | RG orbit invariants/monotones under an iterated step (dynamics D4; axiom-free) |
 | 9 | `partitionFunction_pos`, `sum_probability_eq_one` | `Carrier/FiniteCanonicalEnsemble.lean` | M, guard-pinned (`CarrierAxiomGuard`) | finite canonical ensemble over the carrier spectrum (dynamics D5) |
+| 9/10 | `gibbsWeight_mem_Ioo`, `exists_selfConsistent`, `gibbsWeight_lipschitz`, `selfConsistent_unique`, `witness_selfConsistent` | `NullEdge/SelfConsistentDecoder.lean` | M, self-guarded | **finite self-decoding seed**: a two-level Gibbs feedback map has a fixed point for `c>=0`, unique under `|c*g|<4`, with an explicit unique interior witness at `(1,0,1)`. Scalar feedback only; no decoder-valued geometry, cosmology, or low-temperature bifurcation theorem |
 | 5 | `onshell_wedge_normSq_eq_coin_sq` | `GateI1/MassCoinBridge.lean` | M, kernel-checked (not pinned; supporting) | corner flip amplitude = wedge |
 | 6 | `closure_defect_trace_eq` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | closure-defect trace identity |
 | 6 | `wilson_plaquette_eq_half_closure_defect` | `GateYM/PlaquetteClosureAction.lean` | M, guard-pinned (`SlabAxiomGuard`) | Wilson action = squared defect |
@@ -2219,9 +2675,15 @@ anchor sweep.)*
 | 6 | `hermitian_balanced_count_of_neg_charpoly` | `GateYM/S1CCBalancedInertia.lean` | M, guard-pinned (`SlabAxiomGuard`) | equal positive/negative Hermitian eigenvalue counts (the balance engine); physical `J Q_C\|V'/N` instantiation **M** on the witness (`S1CCPhysicalSectorWitness`); the general balance *mechanism* **M** (`S1CCGeneralReduction`) and the V'/N presentation-existence now **M** too (`S1CCPresentationExistence`, non-degenerate) |
 | 6 | `nonvacuous_positive_sector` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | positive physical sector `(2,1)` |
 | 6 | `nondegenerate_but_indefinite_no_go` | `Carrier/KreinPositiveSectorWitness.lean` | M, guard-pinned (`CarrierAxiomGuard`) | indefinite no-go `(1,2)` |
+| 6 | `closed_cohomologous_to_harmonic`, `positive_hodge_mass_witness`, `hodge_without_positivity_no_go` | `Carrier/PositiveHodgeDecoder.lean` | M, self-guarded | finite Hodge representative, positive spectral cohomology class, and matched sign no-go |
+| 6 | `hodge_energy`, `ker_hodgeLaplacian`, `finite_hodge_representative`, `commuting_decoder_descends`, `commuting_decoder_preserves_harmonic` | `Carrier/GenericFiniteHodge.lean` | M, self-guarded | generic finite Hilbert-Hodge theorem for nilpotent `Q`: unique harmonic representative modulo exact vectors and descent/preservation for compatible decoders. Uses `Q^*`; supplies no Krein-positive sector |
+| 6 | `Qop_kreinSelfAdjoint`, `kreinLaplacian_eq_zero`, `ker_Qop_eq_range_Qop`, `e1_harmonic_not_closed`, `krein_hodge_no_go` | `Carrier/KreinHodgeNoGo.lean` | M, self-guarded | **Krein-Hodge negative control**: nilpotent `Q#=Q` but `Q#Q+QQ#=0`, every vector harmonic, cohomology zero, and an explicit harmonic vector not closed. Refutes use of the Krein adjoint for representative selection |
+| 6 | `chainHomotopy_physical_action`, `decoder_chain_intertwining_packet`, `positive_decoder_moduli_witness` | `Carrier/DecoderChainHomotopy.lean` | M, self-guarded | same- and cross-carrier chain-homotopy invariance on cohomology, with nontrivial positive witness |
 | 7 | `weitzenbock_master_varying` | `Carrier/CarrierESlot.lean` | M, guard-pinned (`CarrierAxiomGuard`) | soldering-gradient `E` (varying soldering) |
 | 7 | `eslot_torsion_solder_split` | `Carrier/CarrierESlotTorsionSplit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | `2E = Contract(T)+Contract(S)` |
 | 7 | `eslot_not_pure_torsion_witness` | `Carrier/CarrierESlotTorsionSplit.lean` | M, guard-pinned (`CarrierAxiomGuard`) | not pure torsion (witness) |
+| 7 | `edgeDefect_covariant`, `edgeDefect_composition`, `solderingAction_frame_invariant`, `holonomyDefect_covariant`, `holonomy_trace_invariant`, `soldering_local_frame_covariance_verdict` | `NullEdge/SolderingLocalFrameCovariance.lean` | M, self-guarded (in-file pins) | **finite soldering geometry gate**: `T_xy=e_y-U_xy e_x` transforms covariantly under independent endpoint frames, composes exactly under refinement, has orthogonally invariant quadratic action, and yields conjugation-covariant holonomy with invariant trace; nonzero rational `2x2` witness has action `1`. Finite vector-coframe avatar only, not a nondegenerate continuum tetrad or gravity equation |
+| 7 | `nondegenerate_transform_iff`, `inducedMetric_frame_invariant`, `coframeVolume_specialLinear`, `coframeDefect_covariant`, `coframeDefect_composition`, `defectAction_frame_invariant`, `nondegenerate_nonzero_defect_witness`, `nondegenerate_soldering_geometry_verdict` | `NullEdge/NondegenerateSolderingGeometry.lean` | M, self-guarded (in-file pins) | **nondegenerate matrix-coframe geometry**: invertible frame changes preserve `det e != 0`; Lorentz frames preserve `e^T eta e` and `tr(T^T eta T)`; special-linear frames preserve volume; defects transform covariantly and refine exactly. Rational nonidentity boost `[[5/3,4/3],[4/3,5/3]]` preserves `eta=diag(1,-1)` and a nonzero defect action `1`. Finite metric-bearing coframe, not a continuum tetrad field or gravity equation |
 | 8 | `chiralIndex_eq_graded_dimension` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | index = graded dimension |
 | 8 | `exists_protected_massless_mode` | `Carrier/CarrierIndexProtection.lean` | M, guard-pinned (`CarrierAxiomGuard`) | forced massless mode |
 | 8 | `even_gaps`, `even_mode_massive` | `NullEdge/EvenMassGaps.lean` | M, self-guarded (in-file pin) | **an explicit counterexample to "immune to every potential"** (and only that): an even (grading-diagonal) mass `m≠0` gaps the zero mode `v=![1,0]` — the Hermitian square has `det = m⁴ ≠ 0`. Honest, per the definitions audit: this toy's grading is *balanced* (index 0, so **no** index protection), and gapping tracks support on `v`'s slot, **not** parity — a *generic* odd perturbation (physical Dirac mass) also gaps `v`, so `odd_preserves` is a cherry-picked upper-triangular case, **not** a chiral law. The genuine odd-preserves (SSH/BdG) protection needs an imbalanced grading `[import]`; the toy delivers only the "every potential" counterexample |
@@ -2246,6 +2708,7 @@ anchor sweep.)*
 | 8/10 | `jarlskog_rephase`, `jarlskog_two_eq_zero`, `exists_real_rephasing_two`, `Vwitness_unitary`, `jarlskog_Vwitness_ne_zero` | `NullEdge/FiniteKMCP.lean` | M, self-guarded (in-file pin) | **finite KM CP rung**: the Jarlskog plaquette is rephasing-invariant; every unitary `2 x 2` matrix is rephasable to real entries; and an exact unitary `3-4-5` witness has `J = 6912 / 78125 != 0`. Honest scope: constructive low-N witnesses; global normal form still separate |
 | 8/10 | `coboundary_rank`, `coboundary_corank`, `coboundary_corank_two`, `coboundary_corank_three` | `NullEdge/IncidenceCorank.lean` | M, self-guarded (in-file pin) | **general-N CP corank theorem**: complete-graph phase coboundary has rank `N-1` and corank `(N-1)(N-2)/2` over an arbitrary field; N=2 has no physical phase and N=3 has exactly one. Honest scope: linearized phase-count/corank theorem, not a full unitary normal-form theorem |
 | 8/10 | `physicalPhases_eq_incidence_corank`, `incidence_corank_eq_physical_count`, `goalII_lowN_summary` | `NullEdge/KMFlagship.lean` | M, self-guarded (in-file pin) | **Goal II flagship composition**: physical CP phase count equals complete-graph incidence corank for `1 <= N`; low-N summary bundles N=2 no phase / constructive rephasing and N=3 exact nonzero Jarlskog witness. Honest scope: linearized corank plus low-N witnesses, not a global unitary normal form for all `N` |
+| 2b/8/10 | `cp_rank_anomaly_packet`, `neutrino_mass_packet`, `km_neutrino_family_anomaly_capstone` | `NullEdge/KMNeutrinoFamilyAnomalyCapstone.lean` | M, self-guarded (in-file pins) | **KM/neutrino master interface**: exact N=2 control and N=3 nonzero Jarlskog witness, family-rank equivalence, finite winding/index protection, Dirac/Majorana branch, and finite seesaw suppression in one theorem surface. Composition only; no analytic anomaly theorem, PMNS fit, or measured neutrino mass |
 | 7/9 | `wep_trace_identity`, `wep_universality`, `wep_source_nonvacuous`, `wep_violation_of_channel_stress` | `NullEdge/WEPTrace.lean` | M, self-guarded (in-file pin) | **WEP trace rung**: a channel-blind finite source `Tr(K rho)` depends only on total budget `Tr rho`, with a nonvacuous equal-trace witness and a channel-stress negative control. Honest scope: not the E-slot field equation or Clausius/Jacobson rung |
 | 7/9 | `stationary_iff_fieldEquation`, `stationary_channelBlind_source`, `bridge_nonvacuous` | `NullEdge/WEPActionBridge.lean` | M, self-guarded (in-file pin) | **WEP action/source bridge**: a finite trace-level multiplier action is stationary against all matrix variations iff `G=K`; channel-blind coupling gives source side `kappa * Tr rho`, with nonzero source witness. Honest scope: trace/source bridge, not the E-slot geometric field equation |
 | 9/10 | `modular_generator_eq_adB`, `modular_generator_matrix`, `modular_shift_operator_ne` | `NullEdge/MassResourceModularAudit.lean` | M, self-guarded (in-file pin) | **Suite D modular guardrail**: a central normalization shift cancels in the commutator derivation, but operator equality with `B` is false for every background `B` when the shift is nonzero. Honest scope: modular false-shape guard, not a full mass-resource theory |
@@ -2253,9 +2716,15 @@ anchor sweep.)*
 | 3a/10 | `binEnt_antitoneOn`, `vonNeumannEntropy_antitone_speed`, `vonNeumannEntropy_monotone_massRatio`, `massEntropyMonotone` | `NullEdge/GateI1/MassEntropyMonotone.lean` | M, self-guarded (in-file pin) | **mass-entropy resource measure**: binary entropy is antitone in speed; visible entropy is monotone in invariant mass ratio on future-cone momenta; null momenta are the free states of the bundled measure. Honest scope: same-frame finite block, observer-conditioned entropy; the current bundle is faithful/nonnegative, with monotonicity carried by separate order lemmas |
 | 4a/8/10 | `uN_parameter_count`, `c3_index_anomaly`, `channel_charges_traceless`, `channel_charges_independent`, `channel_charges_pairwise_commute`, `channel_charges_commute_with_Bsum` | `NullEdge/SuiteCDNextRungs.lean` | M, self-guarded (in-file pin) | **small Suite C/D next rungs**: U(N) parameter count, finite relative-index identity, Suite D traceless channel charges, coordinate-charge linear independence, pairwise commutativity, and commutation with `Bsum`. Honest scope: arithmetic/interface rungs only, not a continuum reduction or derived GGE/modular dynamics |
 | 8/10 | `physicalPhases_eq_one_iff`, `cp_one_iff_three_completions`, `cp_one_supplies_rankfixing`, `cp_one_is_rankfixing_datum` | `NullEdge/KMFamilyRankBridge.lean` | M, self-guarded (in-file pin) | **Goal II / family-rank bridge**: exactly one physical CP phase is equivalent, inside the finite arithmetic model, to `N=3`, `n=2`, and three positive-sector completions. Honest scope: supplies the explicit rank-fixing datum; does not physically derive three generations |
+| 8/10 | `permLift_diagLift_comm`, `not_exists_universally_fixed_family_gen`, `swap_moves_vector`, `generation_permutation_nogo` | `NullEdge/GenerationPermutationNoGo.lean` | M, self-guarded (in-file pins) | **diagonal triplication is not derived generation structure**: every family permutation commutes with every diagonal one-generation operator; for `N>=2` no label is fixed by all permutations; the `(0 1)` swap moves an explicit nonzero family vector. Thus three diagonal copies plus the symmetric CP/rank counts do not canonically distinguish or order three generations. Scope: this duplicated diagonal model only |
 | 8/10 | `winding_anomaly_protects_modes`, `winding_one_anomaly_and_mode` | `NullEdge/IndexProtectionBridge.lean` | M, self-guarded (in-file pin) | **C3 index-protection bridge**: finite relative signed index equals winding, and the same winding lower-bounds protected kernel modes, with a `w=1` nonvacuity fixture. Honest scope: finite rank-nullity only, no analytic index theorem |
+| 6/8/10 | `structured_relative_index`, `carrier_curvature_ne_zero`, `witness_boundEnergy`, `witness_pairThreshold`, `structured_protection_and_binding`, `structured_capstone` | `NullEdge/StructuredHolonomyBindingCapstone.lean` | M, self-guarded (in-file pins) | **one exact structured-background witness**: `N=3,w=1` has index-one protection; the carrier curvature is nonzero and acts in the excited plane; the singlet energy is exactly `-1 < 1` threshold while the colored control stays at/above threshold. The winding and binding operators live in separate sectors and no causal intertwiner is claimed |
 | 7/9/10 | `stationary_channelBlind_total_budget`, `massEntropyMonotone_free_iff`, `massEntropyMonotone_nonvacuous` | `NullEdge/WEPActionResourceBridge.lean` | M, self-guarded (in-file pin) | **WEP/source-resource bridge**: channel-blind stationarity gives the total-budget source, and null/rest momenta witness zero/positive mass-entropy resource. Honest scope: finite source/resource bridge, not an entropy-sourced field equation |
 | 9/10 | `mass_resource_consistency`, `mass_resource_consistency_conj` | `NullEdge/MassResourceConsistency.lean` | M, self-guarded (in-file pin) | **Suite D consistency bundle**: traceless channel charges, coordinate-charge linear independence, finite commutativity/conservation by `Bsum`, central-shift generator invariance plus raw-operator false-shape guard, and entropy faithfulness. Honest scope: finite consistency suite, not a thermodynamic-limit derivation |
+| 2b/8/10 | `null_edge_mass_packet`, `particle_information_higgs_packet`, `neutrino_sigma_packet`, `particle_mass_mechanism_master_capstone` | `NullEdge/ParticleMassMechanismMasterCapstone.lean` | M, self-guarded (in-file pins) | **particle-mechanism composition interface**: null-edge disagreement, mass-energy bound, information/Higgs/CPT witnesses, and neutrino CP/seesaw packets in one theorem surface. Composition only; no measured masses or Standard Model completion |
+| 7/9/10a | `lambda_magnitude_spectral_packet`, `gravity_resource_information_packet`, `lambda_gravity_resource_master_capstone` | `NullEdge/LambdaGravityResourceMasterCapstone.lean` | M, self-guarded (in-file pins) | **Lambda/gravity/resource composition interface** with explicit nonzero Lambda-exponent and positive-boundary controls. Finite structural support only; no measured cosmological constant or continuum gravity |
+| 8/10 | `suiteC_positive_code_packet`, `suiteD_mass_resource_packet`, `suiteCD_master_capstone` | `NullEdge/SuiteCDMasterCapstone.lean` | M, self-guarded (in-file pins) | **Suite C/D composition interface** retaining the `N=2` control, `N=3` nonzero Jarlskog witness, winding/index control, and resource nonvacuity. It adds a citable interface, not new mathematical evidence |
+| 2b-10a | `cp_family_neutrino_packet`, `gravity_lambda_resource_packet`, `dynamics_information_packet`, `allmass_grand_mesh_capstone` | `NullEdge/AllMassGrandMeshCapstone.lean` | M, self-guarded (in-file pins) | **grand finite theorem mesh**: the run's CP/family, particle, dynamics, information, gravity/resource, and Lambda capstones coexist under the displayed channel-blind/stationary source hypotheses. Explicitly a composition theorem, not continuum unification |
 
 ---
 
@@ -2298,6 +2767,10 @@ novelty-gap analysis is in
   J. Trnka, *Scattering Amplitudes and the Positive Grassmannian*, arXiv:1212.5605.
   (Null momentum ⇒ rank-1, `det p^{αβ̇}=0`, `p=λλ̃` — the classical kinematic core
   under `MassNullDecomposition` (§3); tagged `[import]`, not `[orig]`.)
+- S. Chin, S. Lee, *Momentum bispinor, two-qubit entanglement and twistor
+  space*, arXiv:1407.2492. (Direct prior art for the unit-energy massive
+  momentum-bispinor / two-qubit-entanglement correspondence; our contribution
+  is the exact null-edge Cauchy-Binet formalization and carrier integration.)
 - I. Bars, *Single twistor description of massless, massive, AdS, and other
   interacting particles*, arXiv:hep-th/0512091. (Mass identified as the component
   of momentum in a higher dimension — the Kaluza–Klein / two-time lineage of "mass

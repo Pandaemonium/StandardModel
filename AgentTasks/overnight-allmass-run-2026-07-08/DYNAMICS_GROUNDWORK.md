@@ -71,6 +71,12 @@ Ordered so each step is simulatable and kernel-anchored.
   proves stationarity iff `D psi = 0` and `D† chi = 0`. This is the direct
   EOM scaffold, not yet a Hamiltonian flow or uniqueness theorem for the
   interacting carrier.
+  **Quadratic/mass-shell seed implemented:**
+  `PhysicsSM/Draft/NullEdge/Carrier/FiniteQuadraticAction.lean` defines
+  `Q_A(psi) = Re <psi, A psi>`, proves self-adjoint quadratic stationarity iff
+  `A psi = 0`, proves constrained mass-shell stationarity iff
+  `A psi = m^2 psi`, and proves unitary commuting symmetries preserve the
+  quadratic/mass-shell action and transport mass-shell solutions.
 - **D2 - Conserved quantities.** From `S` and its symmetries, define energy and
   the "disagreement charge"; prove conservation under the D1 evolution. These
   are the **validation invariants** for simulations.
@@ -99,8 +105,9 @@ Ordered so each step is simulatable and kernel-anchored.
   condensate in the large-complex limit.
   **Finite seed implemented:** `PhysicsSM/Draft/NullEdge/Carrier/FiniteCanonicalEnsemble.lean`
   defines a finite partition function, Boltzmann probabilities, expected energy,
-  free energy, and entropy, and proves `Z > 0`, `p_i > 0`, and
-  `sum_i p_i = 1` for nonempty finite state spaces. This does not prove the
+  free energy, entropy, and energy variance. It proves `Z > 0`, `p_i > 0`,
+  `sum_i p_i = 1`, beta-zero uniformity, constant-energy expectation, and
+  nonnegative variance for nonempty finite state spaces. This does not prove the
   thermodynamic limit or any condensate statement.
 
 ## Simulation harness (the concrete groundwork)
@@ -113,11 +120,11 @@ ensemble) and the invariants; the engine is ours (numpy oracle, the pattern of
 `Scripts/oracle/probe_multiedge_positive_sector.py` etc.).
 
 **First artifact (this run):** `Scripts/oracle/carrier_dynamics_harness.py` - a
-parametrized carrier builder + observable computer with five validated blocks:
-kinematics, budget, unitary evolution, an RG-decimation flow seed, and a finite
-canonical ensemble over the sector spectrum. Each block is checked against a
-landed or draft kernel identity. It is the simulation seed the D1-D5 roadmap
-plugs into.
+parametrized carrier builder + observable computer with six validated blocks:
+kinematics, budget, variational/mass-shell stationarity, unitary evolution, an
+RG-decimation flow seed, and a finite canonical ensemble over the sector
+spectrum. Each block is checked against a landed or draft kernel identity. It is
+the simulation seed the D1-D5 roadmap plugs into.
 
 ## Implemented seeds (2026-07-08)
 
@@ -129,10 +136,19 @@ plugs into.
     variations is exactly `D† chi = 0`.
   - `stationaryPair_iff_eom_pair`: a stationary pair is a primal/adjoint EOM
     pair.
+- **D1 quadratic action, mass shell, and finite symmetry:**
+  `FiniteQuadraticAction.lean`
+  - `quadraticFirstVariation_eq_two_re_inner`;
+  - `quadraticStationary_iff_eom`;
+  - `massShellStationary_iff_eigen`;
+  - `massShellAction_invariant_of_commutes`;
+  - `massShell_equation_symmetry`.
 - **D5 finite ensemble normalization:** `FiniteCanonicalEnsemble.lean`
   - `partitionFunction`, `probability`, `expectedEnergy`,
-    `helmholtzFreeEnergy`, `thermodynamicEntropy`.
-  - `partitionFunction_pos`, `probability_pos`, `sum_probability_eq_one`.
+    `helmholtzFreeEnergy`, `thermodynamicEntropy`, `energyVariance`.
+  - `partitionFunction_pos`, `probability_pos`, `sum_probability_eq_one`,
+    `partitionFunction_zero`, `probability_zero`, `expectedEnergy_const`,
+    `energyVariance_nonneg`.
 - **D2/D3 finite conservation and transfer scaffolding:**
   `FiniteUnitaryEvolution.lean`
   - finite orbit iteration;
@@ -143,17 +159,18 @@ plugs into.
   - invariant preservation along the orbit;
   - monotone-observable preservation along the orbit.
 - **Harness:** `Scripts/oracle/carrier_dynamics_harness.py`
-  - all five blocks PASS on the current two-edge carrier seed.
+  - all six blocks PASS on the current two-edge carrier seed.
 
 ## First concrete steps (ranked)
 
-The finite D1-D5 skeleton now exists. The next work should specialize and
-strengthen it rather than add another abstract layer.
+The finite D1-D5 skeleton now exists, including quadratic action/mass-shell,
+finite symmetry, and ensemble-fluctuation scaffolds. The next work should
+specialize and strengthen it rather than add another abstract layer.
 
-1. Strengthen D1 from multiplier-action scaffold to a natural quadratic or
-   first-order carrier action for the actual interacting `D`, with hypotheses
-   stating exactly when the Euler equation is `D psi = 0`, `D†D psi = 0`, or a
-   mass-shell equation.
+1. Specialize D1 from the abstract multiplier/quadratic action scaffold to the
+   actual interacting `D`, with hypotheses stating exactly when the Euler
+   equation is `D psi = 0`, `D†D psi = 0`, or the mass-shell equation landed in
+   `FiniteQuadraticAction`.
 2. Specialize D2 to carrier observables: prove the concrete mass/energy and
    disagreement charges commute with the chosen carrier stepper.
 3. Specialize D3 to the checkerboard / quantum-walk transfer operator used by

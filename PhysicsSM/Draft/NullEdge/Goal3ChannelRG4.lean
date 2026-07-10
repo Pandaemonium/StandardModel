@@ -41,8 +41,9 @@ not retained among the four physical couplings.)
 ## Results
 
 * `R4_closed_form` — the closed rational map and its reduction `R4(·,·,·,0) = (R3, 0)`.
-* `critical_jacobian` — the exact `4×4` Jacobian `DR4` at the fixed point `(1,1,0,0)`,
-  every entry proved as the corresponding partial derivative via `HasDerivAt`.
+* `critical_jacobian` — the exact `4×4` Jacobian `DR4` at the critical point
+  `(1,1,0,0)` on the period-2 invariant line, every entry proved as the
+  corresponding partial derivative via `HasDerivAt`.
 * `rg_charpoly` / `rg_eigenvalues` — the characteristic quartic
   `(x-2)(x+1)(x+2)(x-3)` and its four roots `{2, -1, -2, 3}`.
 * `soldering_verdict` — the soldering eigendirection has eigenvalue `r = 3`, hence
@@ -139,8 +140,8 @@ theorem R4_closed_form (lam kap tau : ℝ) (hlam : lam ≠ 0) :
 
 /-! ## Target 2 — the exact `4×4` critical Jacobian, entry by entry -/
 
-/-- The exact `4×4` Jacobian `DR4` of `R4` at the critical point `(1,1,0,0)`.  Rows/columns
-    are ordered `(lam, kap, tau, E)`. -/
+/-- The exact `4×4` Jacobian `DR4` of `R4` at the critical point `(1,1,0,0)`
+on the period-2 invariant line. Rows/columns are ordered `(lam, kap, tau, E)`. -/
 def DR4 : Matrix (Fin 4) (Fin 4) ℝ :=
   !![3, -4, 0, 0;
      1, -2, 0, 0;

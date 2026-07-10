@@ -1,0 +1,19 @@
+name = "RequestProject"
+defaultTargets = ["seeds", "RequestProject"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.28.0"
+
+# NOTE: `seeds/CarrierMassBudget.lean` is a reference-only seed that imports an
+# external module (`PhysicsSM.…`) not present in this repo, so it cannot compile
+# here. The file is left untouched on disk, but the default build glob targets
+# only the buildable seed `Goal1Hadron`, on which the deliverable depends.
+[[lean_lib]]
+name = "seeds"
+globs = ["seeds.Goal1Hadron"]
+
+[[lean_lib]]
+name = "RequestProject"
+globs = ["RequestProject.+"]

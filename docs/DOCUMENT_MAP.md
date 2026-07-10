@@ -48,8 +48,23 @@ as current state.
 
 ## The null-edge program: core documents
 
+- `Sources/Null_Edge_General_Audience_Manuscript_2026-07-09.tex` - illustrated general-audience companion, centered on null primitive motion, emergent timelike drift, stepped-time checkerboards, and visual explanations of aperture/closure/turn/soldering; technical qualifications are carried in footnotes and a formal-anchor appendix. [DRAFT-MS]
+- `Sources/Null_Edge_Mass_Rank_Defect_Manuscript_2026-07-09.tex` - focused technical manuscript: canonical null-edge mass invariant, information/concurrence dictionary, finite carrier square, positive Hodge decoder, exact checkerboard/tetrahedral dynamics, binding, protected modes, falsifiers, and build anchors. [DRAFT-MS]
 - `Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` - the ALL-mass manuscript (2026-07-08 overnight): every mass channel in null-edge terms, college-accessible Part I, grades throughout, anchor table. Companion to (not replacement for) the P1 draft. [DRAFT-MS]
 - `Sources/Null_Edge_All_Mass_Literature_Review_2026-07-08.md` - related-work and novelty-gap review for the all-mass manuscript; close prior art and must-cite source-debt list. [LIVE]
+- `Sources/Toward_a_complete_finite_null-information_theory.md` - verbatim Pro
+  source essay expanding the carrier into a local operational process theory
+  across QM, QFT, RG, phases, gravity, holography, and cosmology. It is an idea
+  source, not a graded theorem inventory; use the Round-9 triage below for claim
+  status. [SOURCE-ANALYSIS]
+- `Sources/A_broader_physics_of_finite_null_information.md` - verbatim Pro
+  information dictionary spanning charge, spin, fields, Higgs, locality,
+  thermodynamics, and gravity, with eight proposed theorem lanes. [SOURCE-ANALYSIS]
+- `Sources/A_moduli_theory_of_self-decoding_null_information.md` - verbatim Pro
+  proposal to replace one carrier by a moduli/equivalence theory of decoders;
+  includes chain homotopy, variational mass, recovery, Lambda, and monodromy
+  targets. [SOURCE-ANALYSIS]
+- `AgentTasks/overnight-allmass-run-2026-07-09/2026-07-10_PRO_complete-finite-null-information.md` - graded deduplication of the complete-process essay against landed modules and prior Pro rounds; records the four new finite jobs and the analytic/refinement targets deliberately deferred. [LIVE]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md` - P1 manuscript v3 (2026-07-07 rewrite for clarity/impact; college-accessible Part I; status map incl. carrier layer). [DRAFT-MS]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - P1 manuscript v2 (superseded by v3; retained for provenance). [HISTORICAL]
 - `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` - stable publication topic IDs P1-P12. [LIVE]
@@ -61,6 +76,29 @@ as current state.
   boundary at memo level; the finite Kugo-Ojima witness/no-go is now
   kernelized in `KreinPositiveSectorWitness`, while the carrier-level
   `dim(V'/N) = ind(D)` wiring remains an open theorem target. [STABLE]
+- `PhysicsSM/Draft/NullEdge/Carrier/PositiveHodgeDecoder.lean` - explicit finite
+  Hodge representative theorem, positive non-exact harmonic class with separate
+  spectral mass, and matched negative-sign no-go; generic finite Hodge
+  generalization now lives in `GenericFiniteHodge`. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Carrier/GenericFiniteHodge.lean` - generic finite
+  Hilbert-Hodge theorem for nilpotent differentials: unique harmonic
+  representatives modulo exact vectors and compatible decoder descent.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Carrier/KreinHodgeNoGo.lean` - exact `2x2`
+  counterexample showing that a nilpotent Krein-self-adjoint charge can have
+  zero Krein Laplacian, trivial cohomology, and harmonic vectors that are not
+  closed. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Carrier/DecoderChainHomotopy.lean` - finite decoder
+  moduli core: exact presentation shifts `D -> D+QR+RQ`, cross-carrier
+  intertwining `D'U-UD=Q'R+RQ`, induced cohomology-action invariance, and an
+  explicit distinct positive-decoder witness. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/GaugeMassGram.lean` - finite reference-orbit theorem:
+  the gauge-mass matrix is a positive Gram matrix, its null directions are
+  stabilizers, and an explicit witness separates one broken from one unbroken
+  generator. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/SelfConsistentDecoder.lean` - finite two-level Gibbs
+  feedback theorem: fixed-point existence, weak-coupling uniqueness, and an
+  explicit nonboundary self-consistent witness. [DRAFT-LEAN]
 - `AgentTasks/fable_parallel/Q02_answer.md` - gravity slot: Lemma-0 invariance, corrected telescoping + P-probe kill, TEGR coefficient derivation, certificates. [STABLE]
 - `AgentTasks/fable_parallel/Q03_answer.md` - the four-theorem no-go audit; verdict table; charter source. [STABLE]
 - `AgentTasks/fable_parallel/Q04_answer.md` - SM selection: B-L no-go for the naked triple; internal null-strand principle; pentad selection up to (4,1); anomaly = supertrace identity; octonion/Connes dictionary. [STABLE]
@@ -85,13 +123,29 @@ as current state.
 - `C4_SECTORED_INDEX_AND_STRATEGY.md` - Fable call-02: the reflection-sectored chiral index (double-pinning is Lefschetz, not winding) + the ranked next-target strategy. [LIVE]
 - `DYNAMICS_GROUNDWORK.md` - PhysLean-inspired clean-room dynamics roadmap
   (D1 finite action/EOM, D2 conservation, D3 transfer evolution, D4 RG flow,
-  D5 canonical ensemble) plus implemented finite D1-D5 seeds and simulation
-  harness.
+  D5 canonical ensemble) plus implemented finite D1-D5 seeds, quadratic
+  mass-shell/symmetry scaffolds, and simulation harness.
   [LIVE]
 - `MORNING_REPORT.md` - short dawn report for the user; read before the scorecard. [LIVE]
 - `HONEST_SCORECARD.md` - the run's honest accounting (landings, oracles, kills, remainder); finalized near dawn. [LIVE]
 - `Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md` (Sources/) - see manuscripts. [DRAFT-MS]
 - `COLLABORATOR_BRIEF_2026-07-08.md` - standalone external brief: status snapshot + the seven hardest challenges (C1-C7) + closed-routes list; safe to send outside. [STABLE]
+
+## Overnight run 2026-07-09 (AgentTasks/overnight-allmass-run-2026-07-09/)
+
+- `RUN_PLAN.md` - theorem-suite constitution, audit gates, agent lanes, and
+  public Lean reference-package policy. [LIVE]
+- `GOAL_PROMPT_CLAUDE.md`, `GOAL_PROMPT_CODEX.md` - executor standing orders.
+  [LIVE]
+- `LEDGER.md` - append-only coordination and theorem-job state. [LIVE]
+- `2026-07-09_PRO_broader-physics-null-information.md` - triage of the
+  finite-null-information reconstruction program: gauge-mass Gram landing,
+  spin-fiber job, existing anchors, missing theorem layers, and the required
+  Hilbert-vs-Krein adjoint correction. [LIVE]
+- `2026-07-09_FABLE_positive-hodge-structural-audit.md` - structural audit of
+  quotient positivity, Hilbert-vs-Krein Hodge theory, rank-vs-area language,
+  reconstruction circularity, generation monodromy, and the next theorem
+  targets. [LIVE]
 
 ## Active run: two-day carrier run (AgentTasks/twoday-carrier-run-2026-07-07/)
 

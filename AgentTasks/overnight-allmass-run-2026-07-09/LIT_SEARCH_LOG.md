@@ -281,3 +281,193 @@ cites it.
   lane or the continuum-limit second paper cites them, add Douglas 2603.15770 (+ Lean-QEC for confinement)
   to Null_Edge_References.md first. The "first machine-verified continuum limit" claim is now GUARDED:
   narrow it to the lattice-limit-of-a-model form, cite Douglas et al. as the constructive-QFT precedent.
+
+## 2026-07-09 13:45 PDT - Codex - exact checkerboard path-sum literature/API pass
+- Neo4j full-text search ranked Earle, arXiv:1012.1564, chunks 1 and 4-7 as the
+  closest convention source: path classes grouped by corner count, binomial
+  coefficients, and amplitudes proportional to powers of the turn weight. The
+  paper explicitly reports incorrect older Kauffman-Noyes formulas, so the
+  oracle-validated in-tree conventions remain authoritative.
+- Crossref verified Jacobson-Schulman, J. Phys. A 17 (1984) 375-383, DOI
+  `10.1088/0305-4470/17/2/023`. Feynman-Hibbs Problem 2-6 remains the original
+  checkerboard source. All three are now explicit rows in
+  `Sources/Null_Edge_References.md`.
+- Lean reference search found no ready-made checkerboard API in Mathlib; the
+  relevant local generic-semiring path sum and binomial closed forms are already
+  stronger seeds. PhysLean search reconfirmed the action/Euler-Lagrange naming
+  model (`ClassicalMechanics.eulerLagrangeOp`, `euler_lagrange_varGradient`, and
+  harmonic-oscillator EOM equivalences) for the parallel dynamics lane.
+- Scholarly meta-search hit a Semantic Scholar 429; direct arXiv/INSPIRE broad
+  queries were over-constrained and returned no additional accepted hits. The
+  Neo4j full-text result supplied the source-level evidence used here.
+
+## 2026-07-09 14:05 PDT - Codex - mass/coherence exact-duality pass
+- Local theorem search found the stronger seed
+  `partialCoherenceMomentum_det_eq_overlap_factor_mul_plucker`: visible
+  determinant mass is exactly `(1 - |k|^2)` times Pluecker disagreement for a
+  hidden-label overlap `k`. `PathSumSemantics` independently supplies the
+  two-history decoherence family `det rho(t)=t(2-t)D`.
+- Crossref verified B.-G. Englert, "Fringe Visibility and Which-Way
+  Information: An Inequality", Phys. Rev. Lett. 77 (1996) 2154, DOI
+  `10.1103/PhysRevLett.77.2154`. This is comparison/provenance only; the local
+  theorem is a model-specific equality, not a reproof of Englert's operational
+  inequality.
+- Landed `MassCoherenceDuality`: `M_visible^2=(1-V^2)M_max^2`, normalized
+  `M_visible^2/M_max^2+V^2=1`, with exact witness `16/25+9/25=1`.
+
+## 2026-07-09 14:28 PDT - Codex - generation symmetry and structured-holonomy pass
+- Neo4j abstract search ranked Boyle, arXiv:2006.16265, and the exceptional
+  Jordan/triality literature as the closest generation precedents. Full-text
+  chunks explicitly describe three canonical Jordan subalgebras/copies permuted
+  by triality. This supports the algebraic setting but sharpens the no-go: three
+  named/permuted copies are not by themselves a canonical family selector.
+- Furey et al., arXiv:2210.10126, likewise supplies nontrivial triality-related
+  representations while explicitly leaving some deeper origins open. The new
+  `GenerationPermutationNoGo` job therefore targets only the diagonal duplicated
+  model's full permutation commutant and no-fixed-label theorem; it will not
+  claim that triality can never distinguish generations.
+- Full-text structured-background search ranked Aoki-Fukaya-Kan,
+  arXiv:2402.09774, and lattice index/spectral-flow work as support for protected
+  modes in nontrivial gauge/curvature backgrounds. Those sources do not identify
+  the protected-mode operator with this project's separate singlet-binding
+  Hamiltonian. The structured-holonomy job is consequently required to state
+  simultaneous protection and binding, not causal identification, unless it
+  constructs an actual intertwiner.
+- Local theorem follow-up found an exact simplification independent of those
+  searches: `PathSumSemantics.decohered_family_det` and
+  `MassCoherenceDuality` are the same normalized complementarity curve under
+  `k=1-t`. This was landed as `MassCoherencePathEquivalence`, with the shared
+  rational witness `16/25+9/25=1`.
+
+## 2026-07-09 15:02 PDT - Codex - single-Gram prior-art guard
+- Neo4j full-text search ranked Chin-Lee, arXiv:1407.2492, as the direct prior
+  art for the massive momentum-bispinor / two-qubit-entanglement
+  correspondence. The paper explicitly maps unit-energy future-light-cone
+  momentum geometry to a two-qubit entanglement system.
+- Official arXiv metadata verified title, authors Seungbeom Chin and Sangmin
+  Lee, and identifier `1407.2492`; local Zotero key `3VBEK82X` is now recorded in
+  `Null_Edge_References.md`.
+- Manuscript novelty boundary tightened: the correspondence is `[import]`.
+  Local contributions are the exact null-edge Pluecker/Cauchy-Binet
+  formalization, general-`n` determinant identities, carrier integration, and
+  proof/kill discipline. No primacy claim remains for "mass as entanglement."
+
+## 2026-07-09 15:42 PDT - Codex - quantitative walk and Bloch-channel pass
+- Neo4j full-text search ranked Mlodinow-Brun, arXiv:1802.03910, and the
+  Arrighi/Di Molfetta quantum-walk papers as the closest local-collection
+  support for Dirac continuum limits, but the indexed chunks did not expose a
+  quantitative finite-matrix error theorem.
+- An official-arXiv search located Arrighi-Forets-Nesme,
+  `The Dirac equation as a quantum walk: higher dimensions, observational
+  convergence`, arXiv:1307.3524. It explicitly uses Trotter-Kato/operator
+  splitting and reports an `O(epsilon^2)` observational discrepancy at fixed
+  time. This is the most direct prior-art target for the running quantitative
+  fixed-momentum Lean job; it does not by itself prove the project's exact
+  matrix norm statement.
+- For the Bloch resource job, official arXiv metadata located Li-Choi,
+  `On unital qubit channels`, arXiv:2301.01358. Its canonical form sends the
+  Bloch sphere to an ellipsoid and represents unital qubit channels as convex
+  combinations of unitaries. This supports the running job's unital linear
+  contraction class. The local theorem remains a real Bloch-disk avatar, not a
+  classification of complex CPTP channels.
+- The first Neo4j command exposed a Windows output-encoding failure after two
+  useful hits; rerunning with `PYTHONIOENCODING=utf-8` completed normally.
+
+## 2026-07-09 15:57 PDT - Codex - Pro path/gravity/holonomy follow-up
+- Neo4j full-text checkerboard search ranked arXiv:1010.5514, 1012.1564,
+  1610.01142, and hep-th/9603202. The decisive common structure is local:
+  null zigzags acquire the mass-dependent complex factor at bends. This led to
+  the focused history-local target `2a29ad97`, which must prove `I^r` and
+  `(i eps m)^r` from local turn events rather than merely exponentiating a
+  freely supplied total.
+- Full-text soldering/gravity search ranked Baez-Wise, arXiv:1204.4339. Its
+  coframe is an `R^n`-valued one-form that supplies the metric when
+  nondegenerate, while teleparallel gravity moves the geometric content into
+  torsion. This sharpens the local target: prove frame-change covariance and
+  nondegeneracy of the finite soldering map before interpreting its defect as a
+  gravitational scalar.
+- Structured-holonomy search ranked lattice index/domain-wall work including
+  arXiv:2402.09774. A separate official-arXiv check found Suganuma-Doi-Iritani,
+  arXiv:1404.6494: low Dirac modes can be essential for chiral breaking while
+  contributing little to Polyakov/Wilson-loop confinement observables. Thus
+  protected low modes and binding/confinement must remain separate outputs;
+  the running winding-binding job may identify them only through an explicit
+  intertwiner.
+
+## 2026-07-09 16:33 PDT - Codex - closure holonomy and matrix coframe
+- Neo4j full-text search for finite path holonomy ranked arXiv:2401.03705
+  (quiver path holonomy and traced Wilson loops) and arXiv:1301.3480 (lattice
+  gauge fields/Wilson action). This supports the theorem shape of endpoint
+  gauge covariance and closed-loop invariance. The new U(1) target also
+  requires an exact nonidentity gauge and a square loop with holonomy `I != 1`.
+- Neo4j full-text search for coframe covariance again ranked Baez-Wise,
+  arXiv:1204.4339, specifically its statement that a nondegenerate coframe is
+  a tangent-space isomorphism and pulls back the internal metric. The new
+  matrix-coframe target therefore makes determinant nondegeneracy, induced
+  metric, volume, refinement, and a nonzero Lorentzian defect action explicit.
+
+## 2026-07-09 16:50 PDT - Codex - 3+1 checkerboard and universal-speed audit
+- Foster-Jacobson, arXiv:1610.01142, gives a 4D null-face lattice Weyl path
+  integral with spin-projector products and mass-induced chirality flips. Its
+  tetrahedral first-moment normalization uses microscopic step speed `3c`,
+  matching the exact `1/3` tight-frame factor now proved locally.
+- D'Ariano-Mosco-Perinotti-Tosini, arXiv:1705.08552, gives an exact finite-time
+  position-space path-sum propagator for a 3+1 Weyl quantum walk on a Cayley
+  graph of `Z^3`. Nzongani et al., arXiv:2404.09840, recover the 3+1 Dirac
+  equation from a unitary tetrahedral walk. These rule out a blanket
+  single-particle 3+1 checkerboard no-go.
+- Mlodinow-Brun, arXiv:2006.08927, is a no-go for a common local
+  **many-particle QCA/QFT construction** in two or more spatial dimensions.
+  It does not rule out the single-particle walks above; many-body locality must
+  be treated as a separate rung.
+- Claim repair: `all particles and channels microscopically move at c` is not a
+  common well-typed operator statement. The achievable universal theorem is a
+  shared null characteristic cone when all field equations have the same
+  principal symbol and the extra channels are lower order. A principal-order
+  channel or metric-changing soldering term can change the cone.
+
+## 2026-07-09 17:05 PDT - Codex - D4 envelope follow-up
+- Recovered the June 28 D4 analysis and four old Aristotle snapshots. The exact
+  lattice relation is `L_H subset D4`, documented with index eight and an
+  eightfold dual-torus cover; the concrete quotient isomorphism was not present
+  in the canceled proof snapshots and remains a Lean target.
+- Two snapshots were proof-complete under Lean 4.28: the added-step causal
+  classification and the generic quotient-coset component theorem. They were
+  landed with current namespaces, provenance, and axiom guards.
+- Physics verdict: `D4` is useful as a 24-cell/triality symmetry envelope and
+  for coset/taste bookkeeping. It is not a null-only replacement: full root
+  shifts include exact timelike (`q=-2/3`) and spacelike (`q=+2/3`) steps; using
+  only the tetrahedral null shifts leaves quotient-labeled disconnected copies.
+- Web search found an early hyperdiamond-checkerboard proposal
+  (arXiv:quant-ph/9503015), but it is not needed as an authority for the local
+  theorem and does not override the modern unitary-walk references. The current
+  proof program therefore treats hyperdiamond/D4 as comparison architecture,
+  not imported physics.
+
+## 2026-07-09 18:45 PDT - Codex - Fable-review related-work repair
+- Full-text Neo4j search placed D'Ariano-Perinotti (arXiv:1306.1934),
+  Bisio-D'Ariano-Tosini (arXiv:1212.2839), D'Ariano-Mosco-Perinotti-Tosini
+  (arXiv:1406.1021), Mlodinow-Brun (arXiv:1802.03910), and
+  Arrighi-Facchini-Forets (arXiv:1505.07023) as the closest discrete-Dirac and
+  curved-walk comparison set. The manuscript now states that their continuum
+  and symmetry results are more developed; our novelty claim is formal
+  integration with the rank invariant and four-channel carrier.
+- The discrete-geometry search returned Regge, Dittrich-Ryan simplicial phase
+  spaces (arXiv:0807.2806), Freidel-Speziale twisted geometries
+  (arXiv:1001.2748), and Baez-Wise teleparallel coframes (arXiv:1204.4339).
+  These now bound the finite coframe claim explicitly.
+- The exact lattice dispersion has no photon time-of-flight correction in the
+  minimal massless branch: setting `m=0` gives principal `omega=|k|` exactly.
+  The external observational gate must therefore use massive-species
+  dispersion unless another photon-sector correction is derived.
+
+## 2026-07-09 22:00 PDT - Codex - finite exchange topology
+- Primary-source web verification identified Ghrist's graph configuration-space
+  paper (`math/9905023`) and Farley-Sabalka's discrete-Morse graph-braid model
+  (`math/0410539`, AGT 5 (2005)) as the correct finite home for exchange
+  histories constrained to a graph.
+- Program consequence: do not assume the permutation group, or a Bose/Fermi
+  dichotomy, on the bare one-skeleton. The theorem target is whether the
+  carrier's attached 2-cells plus positivity collapse the surviving exchange
+  representations to `+/-1`, followed by comparison with the framed `2pi`
+  loop. References added to `Sources/Null_Edge_References.md`.

@@ -140,12 +140,14 @@ conventions against the clone - and cite PhysLean's Weyl/spinor formalization in
    conservation + ensemble* structure it currently lacks. Clean-room finite
    seeds now exist in `PhysicsSM/Draft/NullEdge/Carrier/FiniteCarrierAction.lean`
    (D1 multiplier action/EOM),
+   `PhysicsSM/Draft/NullEdge/Carrier/FiniteQuadraticAction.lean` (D1 quadratic
+   action, mass-shell stationarity, and finite symmetry),
    `PhysicsSM/Draft/NullEdge/Carrier/FiniteUnitaryEvolution.lean` (D2/D3
    isometric evolution and conserved energy observables),
    `PhysicsSM/Draft/NullEdge/Carrier/FiniteRGFlow.lean` (D4 finite flow
    invariants / monotone observables), and
    `PhysicsSM/Draft/NullEdge/Carrier/FiniteCanonicalEnsemble.lean` (D5 finite
-   partition function/probability normalization).
+   partition function/probability normalization and variance).
 
 **Confirmed ABSENT (reassuring for novelty - PhysLean does not pre-empt these):**
 Wilson loops / lattice gauge theory (its QFT is continuum perturbation theory);

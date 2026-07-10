@@ -1,0 +1,2 @@
+AgentTasks/overnight-allmass-run-2026-07-09/ARISTOTLE_PROMPT_codex_gravity_unification_capstone_0800.md
+AgentTasks/overnight-allmass-run-2026-07-09/ARISTOTLE_PROMPT_codex_c3_index_anomaly_capstone_0800.md

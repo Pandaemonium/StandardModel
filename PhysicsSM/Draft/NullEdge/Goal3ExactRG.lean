@@ -1,11 +1,11 @@
 /-
-# Goal III — Relativity is born at the fixed point (exact rational RG)
+# Goal III — Relativity is born on the critical period-2 line (exact rational RG)
 
 This file is a clean-room, Mathlib-only formalization of the claim that
-Lorentz/relativistic structure emerges as the **fixed point of an EXACT rational
-real-space RG (decimation)** for a 1D "null-edge" chain carrier whose sites carry
-an *aperture* `lam` (on-site mass-like term) and a *closure* `kap`
-(nearest-neighbour edge term).
+Lorentz/relativistic structure emerges on the **critical period-2 line of an
+exact rational real-space RG (decimation)** for a 1D "null-edge" chain carrier
+whose sites carry an *aperture* `lam` (on-site mass-like term) and a *closure*
+`kap` (nearest-neighbour edge term).
 
 ## The decimation map (closed rational form)
 

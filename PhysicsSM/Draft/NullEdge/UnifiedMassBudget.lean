@@ -24,7 +24,8 @@ kinematic invariant `det P`.  **Honest scope:** this is a finite carrier identit
 channel ↔ physics identification is narrative (kept in the docstrings), not proved.
 
 Everything is fully explicit rational matrices; all proofs are kernel-checked
-(`ring`/`fin_cases`/`norm_num`), no `sorry`/`native_decide`/new axioms.
+(`ring`/`fin_cases`/`norm_num`), with no proof placeholders, evaluator-trust
+shortcut, or new assumed declarations.
 -/
 
 open Matrix

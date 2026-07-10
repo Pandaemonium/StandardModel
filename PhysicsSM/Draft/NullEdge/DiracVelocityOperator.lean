@@ -17,12 +17,14 @@ set_option autoImplicit false
 set_option grind.warning false
 
 /-!
-# The Dirac velocity operator has eigenvalues exactly ±1 (always moving at c)
+# Dirac velocity components have spectral support exactly at ±1
 
 This file gives a self-contained, kernel-checked (`decide`/`norm_num`/`ring`) proof of the
-statement that the **Dirac velocity operator** `αᵢ` (the Heisenberg-picture time derivative
-`dxᵢ/dt = αᵢ`, units `c = 1`) has instantaneous-velocity eigenvalues **exactly `±1`** — the
-internal speed of a fundamental fermion is always `c`, never a value strictly between.
+statement that each Cartesian **Dirac velocity component** `αᵢ` (the
+Heisenberg-picture operator `dxᵢ/dt = αᵢ`, units `c = 1`) has spectral support
+at `±1`. This is a componentwise operator theorem. It is not a simultaneous
+three-vector eigenvalue, a classical trajectory, or a theorem that every
+particle species literally moves at `c` at every time.
 
 We use the **standard complex Dirac representation** on `Matrix (Fin 4) (Fin 4) ℂ`:
 `αᵢ = [[0, σᵢ], [σᵢ, 0]]` and `β = diag(1, 1, -1, -1)`, with the Pauli matrices
@@ -31,8 +33,8 @@ by finite matrix algebra (`ext` + `fin_cases` + `simp`/`norm_num`); there is **n
 complex analysis and no transcendental functions.
 
 ## What is proved
-* `alpha_sq_one`  : `αᵢ² = 1` for each `i` — every eigenvalue `λ` satisfies `λ² = 1`, i.e.
-  `λ = ±1`: the instantaneous speed is exactly `c`.
+* `alpha_sq_one`  : `αᵢ² = 1` for each `i` — every eigenvalue of that
+  component satisfies `λ² = 1`, hence `λ = ±1`.
 * `alpha_traceless` : `tr αᵢ = 0` — the `+1` and `-1` eigenspaces have equal dimension `2`, so
   **both** signs of the velocity genuinely occur (it is not a trivial `+1`).
 * `velocity_spectrum` : packages the spectral statement for `α₁` — `α₁² = 1`, `tr α₁ = 0`,
@@ -44,11 +46,12 @@ complex analysis and no transcendental functions.
   dynamics is diagonal in the velocity eigenbasis — pure `±c` motion.
 
 ## Honest scope
-This concerns the **instantaneous velocity operator** of a Dirac *fermion*; its eigenvalues
-`±c` express that the fermion is always moving at `c` internally (Zitterbewegung). The
-*observable* drift `⟨α⟩ = p/E` is subluminal — a separate fact whose reconciliation with the
-`±c` instantaneous spectrum is the Zitterbewegung-average companion result and is not treated
-here. This does not cover massive bosons.
+This concerns the Cartesian velocity-component operators of a Dirac fermion.
+The three components do not commute and do not define one simultaneous
+classical velocity vector. The observable drift `⟨α⟩ = p/E` is subluminal; its
+finite reconciliation with the componentwise `±c` support is the separate
+Zitterbewegung-average model. This file does not cover bosons or derive the
+full carrier's physical time evolution.
 -/
 
 namespace DiracVelocityOperator
@@ -73,7 +76,7 @@ abbrev alpha3 : Matrix (Fin 4) (Fin 4) ℂ :=
 abbrev beta : Matrix (Fin 4) (Fin 4) ℂ :=
   !![1, 0, 0, 0; 0, 1, 0, 0; 0, 0, -1, 0; 0, 0, 0, -1]
 
-/-! ## 1. `αᵢ² = 1`: the instantaneous speed is exactly `c` -/
+/-! ## 1. `αᵢ² = 1`: each velocity component has `±c` spectral support -/
 
 theorem alpha1_sq : alpha1 * alpha1 = 1 := by
   ext i j
@@ -90,8 +93,8 @@ theorem alpha3_sq : alpha3 * alpha3 = 1 := by
   fin_cases i <;> fin_cases j <;>
     simp [Matrix.mul_apply, Fin.sum_univ_four, alpha3]
 
-/-- **Every eigenvalue satisfies `λ² = 1`, i.e. `λ = ±1`.**  Each Dirac velocity operator
-squares to the identity, so the instantaneous internal speed is exactly `c`. -/
+/-- **Every component eigenvalue satisfies `λ² = 1`, hence `λ = ±1`.**
+Each Cartesian Dirac velocity operator squares to the identity. -/
 theorem alpha_sq_one :
     alpha1 * alpha1 = 1 ∧ alpha2 * alpha2 = 1 ∧ alpha3 * alpha3 = 1 :=
   ⟨alpha1_sq, alpha2_sq, alpha3_sq⟩

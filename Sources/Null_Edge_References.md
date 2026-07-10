@@ -141,7 +141,9 @@ before any outward-facing quotation of their internal results.
 | `TBD-ArkaniHamedHuangHuang2017` | `1709.04891` | Arkani-Hamed, Huang, Huang massive spinor-helicity source | Massive little-group / null-split comparison in P1.  This is the template: named and arXiv-keyed, but still needs a local bibliography key. | ID-ONLY |
 | `TN53N8J2` | `1610.01142` | "Spin on a 4D Feynman Checkerboard" | Checkerboard/null-zigzag toy comparison. | KEYED-LOCAL |
 | `TBD-PenroseZigZag` | `1107.4909` (DOI `10.1088/1751-8113/44/34/345304`) | Colin-Wiseman, "The zig-zag road to reality", J. Phys. A 44 (2011) 345304 | Backs the CENTRAL thesis: a massive Dirac electron of given helicity = superposition of positive- and negative-energy Weyl particles (the Penrose zig-zag), moving luminally; "all fermions are fundamentally massless" (mass from Higgs). The pos/neg-energy Weyl split is exactly the `MassShellProjectors` energy projectors. HONEST CAVEAT (from the abstract): the all-times-luminal picture holds for a SINGLE Dirac electron but the authors conclude it does NOT carry to the many-body QFT case - cite for the zig-zag / mass-from-massless framing, not for a many-body luminal theory. | VERIFIED (arXiv abstract + DOI, 2026-07-09) |
-| `TBD-FeynmanCheckerboard` | TBD | Feynman checkerboard source | Standard 1+1 checkerboard dispersion comparison. | NEEDS-VERIFY |
+| `TBD-FeynmanHibbs1965` | book, Problem 2-6 | Feynman-Hibbs, *Quantum Mechanics and Path Integrals* | Original 1+1 checkerboard problem and turn-weighted null-history formulation. | BIBLIOGRAPHY-VERIFIED 2026-07-09; exact problem cross-checked against later literature |
+| `TBD-JacobsonSchulman1984` | DOI `10.1088/0305-4470/17/2/023` | Jacobson-Schulman, "Quantum stochastics: the passage from a relativistic to a non-relativistic path integral", J. Phys. A 17 (1984) 375-383 | Corner-count/path-integral and continuum comparison used as `[import]`; finite exact path-sum target remains separately kernel-checked. | DOI/title/authors/year VERIFIED via Crossref 2026-07-09 |
+| `TBD-Earle2011Checkerboard` | `1012.1564` | Keith A. Earle, "Notes on The Feynman Checkerboard Problem" | Explicit corner-class formulas and propagator cross-check; also warns that older Kauffman-Noyes formulas fail simple cases, so landed oracle-validated conventions remain authoritative. | VERIFIED arXiv metadata + Neo4j full-text chunks 1, 4-7 on 2026-07-09 |
 | `TBD-Koide1982` | TBD | Koide original relation | Q07 / T-solder mass-values comparison. | NEEDS-VERIFY |
 | `TBD-WilczekMassWithoutMass` | TBD | Wilczek "Mass without mass" essay | Framing only, not theorem support. | NEEDS-VERIFY |
 | `TBD-PDGLeptonMasses` | TBD | PDG or equivalent data source | Numerical precision for Koide/comparison claims. | NEEDS-VERIFY |
@@ -179,12 +181,21 @@ conservative until local chunks are quoted.
 | `TBD-Golovnev2024` | `2411.14089` | Golovnev, "Is there any Trinity of Gravity ...?" | Skeptical critique of the geometric trinity; cite for §7 honesty. | ID-ONLY |
 | `TBD-OsborneVerstraete2005` | `quant-ph/0502176` | Osborne-Verstraete, general n-qubit CKW monogamy | Entanglement-monogamy prior art for F3 (mass monogamy as Plücker superadditivity). | ID-ONLY |
 | `TBD-Nandi2022` | `2204.13649` | Nandi, G-concurrence monogamy in higher dimension | The higher-dim wedge/determinant concurrence closest to Plücker mass (F3). | ID-ONLY |
+| `3VBEK82X` | `1407.2492` | S. Chin and S. Lee, "Momentum bispinor, two-qubit entanglement and twistor space" | Direct prior art for the massive-momentum-bispinor / two-qubit-entanglement correspondence. Requires the manuscript to grade the momentum-density/concurrence identification `[import]`; local novelty is the null-edge Cauchy-Binet formalization and carrier integration. | KEYED-LOCAL; abstract and full-text chunks verified 2026-07-09 |
+| `TBD-Englert1996` | DOI `10.1103/PhysRevLett.77.2154` | B.-G. Englert, "Fringe Visibility and Which-Way Information: An Inequality", Phys. Rev. Lett. 77 (1996) 2154 | External complementarity comparison for the exact finite `MassCoherenceDuality` identity; the Lean theorem is a model-specific equality, not a reproof of Englert's operational inequality. | DOI/title/author/year VERIFIED via Crossref 2026-07-09 |
 | `TBD-MeltonMichaelsenRuzziconi2026` | `2606.27421` | Melton-Michaelsen-Ruzziconi, "Observing Massive Scattering from Null Infinity" | Massive <-> timelike infinity = the celestial reading of the thesis (F9). | ID-ONLY |
 | `TBD-FernandezProcacci2006` | `math-ph/0605041` | Fernandez-Procacci, cluster-expansion bounds via Penrose identity | Target abstraction for the forest-injection bounty (Kotecky-Preiss lineage). | ID-ONLY |
 | `TBD-ToobySmith2024-HepLean` | `2405.08863` | Tooby-Smith, "HepLean: Digitalising high energy physics" | Machine-verified high-energy physics already exists; narrows §2a methodology claim. | ID-ONLY; arXiv verified 2026-07-08, no local key/chunk yet |
 | `TBD-ElvangHuang2013` | `1308.1697` | Elvang-Huang, "Scattering Amplitudes" | Canonical spinor-helicity `det P` kinematics reference (§3). | ID-ONLY |
 | `TBD-Kull2002` | `quant-ph/0212053` | Kull, checkerboard on dense-rational 2D Minkowski | Non-continuous-spacetime checkerboard precedent (§2a). | ID-ONLY |
 | `TBD-PhysLean-Weyl` | `2405.08863` | Tooby-Smith, PhysLean (`Physlib/Relativity/.../Weyl/Metric.lean`) | Convention cross-check for §3: `spinorWedge` = PhysLean left-handed Weyl metric `!![0,1;-1,0]` (clean-room match, verified 2026-07-08); see `docs/PHYSLEAN.md`. | KEYED-LOCAL (source clone) |
+
+## Finite exchange topology / graph braid groups
+
+| Key | Identifier | Source | Role | Status |
+|---|---|---|---|---|
+| `TBD-Ghrist1999GraphBraid` | `math/9905023` | Robert Ghrist, "Configuration Spaces and Braid Groups on Graphs in Robotics" | Primary source for configuration spaces and braid groups of particles constrained to finite graphs; supports the finite exchange-history target, not a Bose/Fermi collapse. | ARXIV VERIFIED 2026-07-09 |
+| `TBD-FarleySabalka2005` | `math/0410539` | Daniel Farley and Lucas Sabalka, "Discrete Morse Theory and Graph Braid Groups", Algebraic \& Geometric Topology 5 (2005) | Discrete Morse model for computing graph braid groups; theorem-shape reference for a finite configuration-history complex. | ARXIV/JOURNAL VERIFIED 2026-07-09 |
 
 ## Next provenance actions
 

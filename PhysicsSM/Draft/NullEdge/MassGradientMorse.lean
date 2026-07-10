@@ -1,7 +1,6 @@
 import Mathlib
 
 open scoped BigOperators
-open scoped Classical
 open Matrix
 
 set_option maxHeartbeats 8000000

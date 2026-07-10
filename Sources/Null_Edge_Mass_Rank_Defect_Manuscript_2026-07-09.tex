@@ -1,0 +1,1388 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{pdflscape}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{verified}{RGB}{0,92,74}
+\definecolor{external}{RGB}{45,76,135}
+\definecolor{conjectural}{RGB}{145,76,0}
+\newcommand{\Mtag}{\textcolor{verified}{\textsc{M}}}
+\newcommand{\Ttag}{\textcolor{external}{\textsc{T}}}
+\newcommand{\Ctag}{\textcolor{conjectural}{\textsc{C}}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Mass}{\mathcal{M}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\title{Mass as Null-Edge Spectral Area:\\
+Machine-Verified Null-Edge Kinematics and a Finite Carrier Model}
+\author{Null-Edge Formalization Project}
+\date{July 9, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We isolate a finite mathematical core for the statement that massive momentum
+can be assembled from massless constituents.  If spinors
+$\psi_1,\ldots,\psi_N\in\C^2$ define the positive semidefinite momentum Gram
+matrix $P=\sum_i\psi_i\psi_i^\dagger$, then
+\[
+  \det P=\sum_{i<j}|\psi_i\wedge\psi_j|^2.
+\]
+Rank distinguishes the massless boundary from the massive interior: the rank
+is one exactly when all occupied null directions are collinear.  The continuous
+mass squared is not the rank itself but the determinant, the summed spinor area.
+This is classical spinor kinematics, formalized in Lean 4.  We then study a
+finite Krein-space Dirac carrier whose adjoint square
+separates into aperture, closure, turn, and soldering-shaped blocks.  The
+explicit rational four-block witness is coefficient-rigid, although the same
+split is not forced by grading type alone.  A positive physical sector, an
+  exact aperture--closure phase diagram, a finite interacting bound state, and
+  an exact $1+1$ checkerboard path sum are also machine verified.  In the latter,
+  each null history carries weight $(\ii\epsilon m)^{\#\text{corners}}$ and the
+  finite sum satisfies a discrete Dirac recursion.  Its one-step symbol obeys
+  the exact lattice relation $\cos(\omega a)=\cos(ka)\cos(ma)$; at zero momentum
+  its eigenphases are $e^{\mp\ii ma}$, so the turn parameter is the
+  principal-branch spectral gap.  Further kernel checks give a
+  $3+1$ tetrahedral endpoint law, ordered Weyl-projector path amplitudes, and a
+  normalization obstruction,
+  a concrete quotient $D_4/L_H\simeq(\Z/2)^3$ of cardinality eight,
+  a common null-characteristic theorem for lower-order channel mixing, a
+nontrivial gauge-invariant finite closure holonomy, and a nondegenerate
+rational matrix coframe.  We distinguish these finite
+theorems from the conjectural identifications of the four blocks with kinetic,
+QCD, Yukawa, and gravitational mass in a continuum theory.  The result is a
+falsifiable finite model and proof architecture, not a derivation of measured
+particle masses or the Standard Model.
+\end{abstract}
+
+\paragraph{Claim labels.}
+Every substantive statement is marked as external mathematics (\Ttag),
+machine-verified in the pinned Lean project (\Mtag), or conjectural (\Ctag).
+The labels are part of the scientific claim: a formal proof verifies the Lean
+statement, while the physical interpretation remains a separate question.
+
+\section{Introduction}
+
+A future-directed timelike four-momentum can be written as a sum of
+future-directed null momenta.  In spinor notation this familiar fact takes a
+particularly economical form.  A null momentum is a rank-one positive
+semidefinite bispinor, and a sum of null momenta is a positive semidefinite
+$2\times2$ matrix.  The determinant measures the failure of that sum to remain
+rank one.  In standard normalization it is the invariant mass squared.
+
+The first purpose of this paper is to make this kinematic statement exact,
+finite, and machine checked.  The second is to ask how much of a dynamical
+operator model can be built while retaining the same discipline.  We introduce
+a finite Dirac-type carrier
+\begin{equation}\label{eq:carrier}
+  D=\sum_e c(\alpha_e)\nabla_e+\Gamma\phi,
+\end{equation}
+where $c(\alpha_e)^2=0$ encodes null edge directions, $\nabla_e$ is finite
+transport, and $\Gamma\phi$ changes the chiral or turn sector.  Its
+Krein-adjoint square has four algebraically distinguished contributions.  The
+neutral names used below are aperture, closure, turn, and soldering gradient.
+
+The central hierarchy is:
+\begin{enumerate}[label=(\roman*)]
+  \item the Gram determinant is the theorem-bearing mass invariant;
+  \item the finite carrier is a candidate dynamical realization of that
+        invariant;
+  \item the correspondence between carrier blocks and continuum Standard Model
+        terms is a testable conjecture.
+\end{enumerate}
+Conflating these levels would make the model appear stronger while making it
+scientifically weaker.  We therefore state positive results beside their
+sharpest known obstructions.
+
+The main finite contributions are:
+\begin{itemize}[leftmargin=1.5em]
+  \item an exact Cauchy--Binet mass identity and its massless iff collinear
+        boundary (\Ttag/\Mtag);
+  \item a uniqueness theorem for the determinant among quadratic forms
+        vanishing on all null edges (\Mtag);
+  \item exact coherence, entropy, and path-decoherence forms of the same
+        two-direction invariant (\Mtag);
+  \item the Mandelstam/spinor-helicity dictionary, termwise
+        $\mathrm{SL}(2,\C)$ invariance, two-edge concurrence identity, and
+        square-root mass superadditivity on the future cone (\Ttag/\Mtag);
+  \item a finite carrier-square decomposition, together with a concrete
+        coefficient-rigidity theorem and an abstract non-uniqueness result
+        (\Mtag);
+  \item a positive-sector mass witness and a complete finite
+        aperture--closure phase diagram (\Mtag);
+  \item an exact Gaussian-rational checkerboard path sum satisfying a discrete
+        Dirac recursion, together with its exact quasienergy relation and
+        zero-momentum eigenphases (\Mtag);
+  \item exact $3+1$ tetrahedral endpoint kinematics, ordered Weyl-projector
+        bend/orientation phases, a sharp normalization obstruction, and a
+        conditional common null-front theorem (\Mtag);
+  \item a nontrivial history-local $U(1)$ closure holonomy and a nondegenerate
+        finite matrix coframe with invariant Lorentzian defect action (\Mtag);
+  \item a finite second-quantized gap and a derived two-body closure interaction
+        with both binding and no-binding regimes (\Mtag).
+\end{itemize}
+
+Prior work already relates massive momenta to pairs of null spinors, momentum
+bispinors to two-qubit entanglement, and Dirac propagation to checkerboard or
+quantum-walk histories \cite{ElvangHuang,ArkaniHamedMassive,ChinLee,FeynmanHibbs,JacobsonSchulman}.
+Our contribution is not the physical picture itself.  It is the finite
+formalization, the integration with a single carrier square, and a proof policy
+that records nondegenerate witnesses and kill conditions beside headline
+claims.
+
+\subsection*{Position relative to discrete relativistic dynamics}
+
+Quantum walks and quantum cellular automata already derive free Weyl and Dirac
+evolution from homogeneity, locality, unitarity, isotropy, or information-
+processing principles, in both one and three spatial dimensions
+\cite{DarianoPerinottiPrinciples,BisioDarianoTosini,DarianoPathIntegral,
+DarianoWeyl,MlodinowBrun}.  Their continuum limits and symmetry classifications
+are substantially more developed than ours.  The present contribution is
+different: it connects an exact corner-weighted history sum to the same
+determinant/rank invariant used by a four-channel finite carrier, and exposes
+the resulting statements through kernel-checked declarations and explicit
+failure modes.  It is a formal bridge into that literature, not the first
+discrete derivation of the Dirac equation.
+
+Discrete gravitational work likewise contains far richer geometry: Regge
+calculus places curvature on simplicial hinges; connection formulations encode
+curvature by holonomy; twisted and simplicial phase spaces impose closure and
+gluing constraints; teleparallel gravity uses a nondegenerate coframe and flat
+connection; and position-dependent quantum walks model curved backgrounds
+\cite{Regge,DittrichRyan,FreidelSpeziale,BaezWise,ArrighiCurvedWalk}.  Our
+matrix-coframe result proves only the finite local-frame, metric, volume,
+refinement, and nonzero-defect gates needed before a continuum comparison is
+meaningful.  It does not compete with those continuum or simplicial dynamics.
+
+\section{The canonical null-edge mass invariant}
+
+\subsection{Positive spinor Gram matrices}
+
+Let $\psi_i\in\C^2$.  Write
+\begin{equation}\label{eq:gram}
+  M=\begin{bmatrix}\psi_1&\cdots&\psi_N\end{bmatrix},
+  \qquad P=MM^\dagger=\sum_i\psi_i\psi_i^\dagger.
+\end{equation}
+Each summand is positive semidefinite and rank at most one.  Under the Pauli
+map, it is a future null momentum.  The determinant of $P$ is the Lorentzian
+quadratic invariant of the total momentum.
+
+\begin{theorem}[Null-edge Cauchy--Binet, \Mtag]\label{thm:cb}
+For the matrix in \eqref{eq:gram},
+\begin{equation}\label{eq:cb}
+  \det P=\sum_{i<j}
+  \left|\det\begin{bmatrix}\psi_i&\psi_j\end{bmatrix}\right|^2.
+\end{equation}
+In particular $\det P\geq0$, and $\det P=0$ iff the columns of $M$ span a
+subspace of dimension at most one.
+\end{theorem}
+
+Equation \eqref{eq:cb} is the exact sense in which mass is pairwise disagreement
+of null directions.  The wedge vanishes when two directions agree; its squared
+magnitude is the opened spinor area.  No cancellation between different pairs
+is possible because every term is nonnegative.
+Nonnegative scalar weights can be included by replacing each column by
+$\sqrt{w_i}\psi_i$; this weighted form is a classical corollary, while
+Theorem~\ref{thm:cb} is the direct Lean declaration cited below.
+
+\paragraph{Mandelstam dictionary.}
+Let $p_i=\psi_i\psi_i^\dagger$ be the null momentum associated with the $i$th
+spinor and use the mostly-minus Pauli-map normalization.  Then
+\begin{equation}\label{eq:mandelstam}
+ |\psi_i\wedge\psi_j|^2
+   =2p_i\mathbin{\cdot}p_j
+   =(p_i+p_j)^2=:s_{ij},
+ \qquad
+ P^2=\sum_{i<j}s_{ij}.
+\end{equation}
+Thus Theorem~\ref{thm:cb} is exactly the familiar
+$\langle ij\rangle[ji]$ or pairwise-Mandelstam expansion
+\cite{ElvangHuang,ArkaniHamedMassive}.  We state this explicitly to separate
+what is classical from what is contributed here: the new payload is the finite
+formalization, the null-boundary uniqueness theorem, and the integration with
+the carrier and history layers.  Moreover
+\begin{equation}\label{eq:termwiseSL2}
+ (g\psi_i)\wedge(g\psi_j)=\det(g)(\psi_i\wedge\psi_j),
+ \qquad g\in\mathrm{SL}(2,\C),
+\end{equation}
+so every summand in \eqref{eq:cb}, not merely their total, is individually
+proper-orthochronous Lorentz invariant (\Mtag for the algebraic
+$\mathrm{SL}(2,\C)$ statement).
+
+\begin{corollary}[Massive iff rank two, \Ttag/\Mtag]
+For a nonzero positive semidefinite $2\times2$ momentum matrix,
+\[
+  \det P=0\iff\rank P=1,
+  \qquad
+  \det P>0\iff P\text{ is positive definite}.
+\]
+Thus the massless locus is precisely the rank-one boundary of the future cone.
+\end{corollary}
+
+The converse is equally important.  Every positive timelike momentum matrix has
+a spectral decomposition into two positive rank-one matrices, hence every
+future timelike four-momentum is a sum of future null momenta (\Mtag).  The
+decomposition is not unique; the invariant is.
+
+\subsection{Why the determinant is not an arbitrary choice}
+
+One might object that the determinant was selected because it gives the desired
+answer.  The finite formalization supports a stronger statement.
+
+\begin{theorem}[Quadratic uniqueness, \Mtag]\label{thm:detunique}
+Let $Q$ be a quadratic form on symmetric $2\times2$ matrices.  If $Q$ vanishes
+on every rank-one null-edge matrix, then $Q$ is a scalar multiple of the
+determinant.
+\end{theorem}
+
+The proof is coefficient-level polynomial algebra.  An explicit control,
+$Q'(\left[\begin{smallmatrix}a&b\\b&c\end{smallmatrix}\right])=ac$, vanishes on
+the two coordinate null rays but not on every null ray.  Universal
+null-vanishing is therefore load-bearing.  Congruence invariance under
+$\mathrm{SL}(2)$ is satisfied by the determinant but is not needed to force the
+quadratic form in this dimension.
+
+\subsection{A free operator bridge and an interacting correction}
+
+The Gram invariant and the carrier spectrum are not two definitions of mass.
+In the free finite model they meet through
+\begin{equation}\label{eq:adjbridge}
+  P\,\operatorname{adj}(P)=\det(P)I,
+\end{equation}
+so the free mass operator has least eigenvalue $\det P$ (\Mtag).  Interaction
+changes that spectral value.
+
+The free kinematic baseline is itself sharp.  If $p$ and $q$ are
+future-causal momenta and $m(p)=\sqrt{p^2}$, the specialized Minkowski
+determinant inequality gives
+\begin{equation}\label{eq:superadditive}
+ m(p+q)\geq m(p)+m(q)
+ \qquad(\Mtag).
+\end{equation}
+The landed theorem proves the square-root inequality on the concrete future
+cone; the classical equality characterization by proportional future-causal
+momenta is not yet part of that declaration.  Equation
+\eqref{eq:superadditive} is the correct free foil for binding: a bound-state
+ground energy below the free constituent threshold requires an interaction,
+not a failure of relativistic momentum algebra.
+
+For the normalized coupled block used below,
+the exact binding identity is
+\begin{equation}\label{eq:bindinginfo}
+  G_{\mathrm{bind}}=\kappa=C(\rho)\lambda,
+  \qquad
+  m_{\mathrm{ground}}=m_{\mathrm{free}}-C(\rho)\lambda,
+\end{equation}
+with signed defect $\Delta=-\kappa$ (\Mtag).  This is the expected behavior:
+binding mass is not additive.  It lowers a spectral ground state relative to
+the free threshold while leaving \eqref{eq:superadditive} intact for freely
+added four-momenta.  Equation \eqref{eq:bindinginfo} is a finite carrier
+identity, not a derivation of a QCD hadron mass.
+
+\section{Coherence and retained direction information}
+
+Normalize a nonzero Gram matrix by $\rho=P/\tr P$.  In two dimensions,
+\begin{equation}\label{eq:linent}
+  S_{\mathrm L}(\rho)=1-\tr(\rho^2)=2\det\rho.
+\end{equation}
+Thus linear entropy and normalized mass squared are the same scalar up to a
+factor of two.  This does not identify all information measures with mass; it
+identifies one exact two-level invariant.
+
+\subsection{The two-edge concurrence identity}
+
+For exactly two occupied edges, assemble the spinors as the columns of
+$M\in\C^{2\times2}$ and read the same coefficient matrix as an unnormalized
+two-qubit pure state.  Its pure-state Wootters concurrence is
+$C_W(M)=2|\det M|$ \cite{Wootters}.  Since $P=MM^\dagger$,
+\begin{equation}\label{eq:concurrence}
+ 4\det P=C_W(M)^2,
+ \qquad
+ \det P=0\Longleftrightarrow C_W(M)=0
+ \qquad(\Mtag).
+\end{equation}
+For a normalized two-qubit state this is the standard concurrence; without
+normalization it is the corresponding homogeneous algebraic identity.  It does
+not say that a particle's rest mass is ordinary laboratory entanglement.  It
+says that the two-edge Pl\"ucker invariant and the pure-state concurrence are
+the same determinant read in two established dictionaries.
+
+\subsection{Two-history complementarity}
+
+For two visible null directions with maximal disagreement scale $D$, the
+path-decoherence model gives
+\begin{equation}\label{eq:pathmass}
+  \det\rho(t)=t(2-t)D,
+  \qquad 0\leq t\leq1.
+\end{equation}
+Writing hidden overlap $k=1-t$ turns this into
+\begin{equation}\label{eq:duality}
+  \frac{\Mass^2_{\mathrm{vis}}}{\Mass^2_{\max}}+|k|^2=1.
+\end{equation}
+Both forms and the rational witness $16/25+9/25=1$ are machine verified.  The
+state spaces in the two derivations remain distinct; what is identified is the
+normalized complementarity curve.
+
+\subsection{Decoherence monotonicity and its boundary}
+
+For the real trace-one block
+\[
+  \rho(p,x)=\begin{bmatrix}p&x\\x&1-p\end{bmatrix}
+\]
+and the pinching map $\Phi_t$ that sends $x\mapsto(1-t)x$, direct calculation
+gives
+\begin{equation}\label{eq:pinch}
+  \det\Phi_t(\rho)=\det\rho+(2t-t^2)x^2.
+\end{equation}
+Hence pinching cannot decrease determinant on $0\leq t\leq1$ (\Mtag).  Full
+pinching sends the massless coherent state
+$\rho(1/2,1/2)$ to the maximally mixed state with determinant $1/4$.
+
+The allowed-operation class matters.  A coherent signed closure rotation before
+pinching can lower the final determinant relative to naive pinching (\Mtag).
+Closure is therefore not interchangeable with noise.  The verified resource
+statement is monotonicity for the displayed coarse-graining class, not for all
+finite dynamics.
+
+\section{A finite Dirac carrier and its square}
+
+\subsection{The Krein-square identity}
+
+Let $\#$ denote the Krein adjoint.  Under explicit Clifford, transport, and
+covariantly constant turn hypotheses, the carrier \eqref{eq:carrier} satisfies
+\begin{align}\label{eq:master}
+  4D^\#D &= Q_A^\#+Q_C^\#+4Q_T+4E_\#,\\
+  Q_A^\#&=\sum_{e,f}g(e,f)
+    (\nabla_e^\#\nabla_f+\nabla_f^\#\nabla_e),\nonumber\\
+  Q_C^\#&=\sum_{e,f}(\gamma_e\gamma_f-\gamma_f\gamma_e)
+    (\nabla_e^\#\nabla_f-\nabla_f^\#\nabla_e),\nonumber\\
+  Q_T&=\phi^2,\nonumber\\
+  E_\#&=\sum_e\gamma_e\Gamma\phi(\nabla_e^\#-\nabla_e).\nonumber
+\end{align}
+This is a finite algebraic identity (\Mtag).  The terms are defined
+independently; $E_\#$ is not a residual introduced to make the sum true.
+
+The names encode operator shapes:
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}p{0.19\textwidth} X >{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
+\toprule
+Block & Neutral role & Continuum analogy & Verified sign information\\
+\midrule
+$Q_A$ & symmetric transport, aperture & covariant kinetic term & positive in the explicit sector\\
+$Q_C$ & commutator, closure & curvature or chromomagnetic term & signed; balanced on the closure quotient\\
+$Q_T$ & turn field squared & scalar/Yukawa term & sign fixed by the turn convention\\
+$E$ & varying soldering defect & tetrad, torsion, nonmetricity & finite geometric split only\\
+\bottomrule
+\end{tabularx}
+\end{center}
+The continuum analogies are \Ctag.  In particular, the displayed theorem uses a
+covariantly constant $\phi$, so its turn term is indistinguishable from an
+explicit Dirac mass.  A varying-soldering theorem produces a separate defect
+$E$; identifying $E$ with $E_\#$ is not proved.
+
+\subsection{A finite local-frame gate for soldering}
+
+The first geometric transformation-law test for the soldering interpretation
+can be stated without a continuum manifold.  Represent the coframe data at the
+ends of an edge $x\to y$ by rational vectors $e_x,e_y$ and its transport by
+$U_{xy}$.  Define the finite defect
+\begin{equation}\label{eq:solderdefect}
+  T_{xy}=e_y-U_{xy}e_x.
+\end{equation}
+Under independent endpoint frame changes
+$e_x'=g_xe_x$, $e_y'=g_ye_y$, and
+$U_{xy}'=g_yU_{xy}g_x^{-1}$, the kernel proves
+\begin{equation}\label{eq:soldercov}
+  T_{xy}'=g_yT_{xy}.
+\end{equation}
+It also proves the exact refinement identity
+\begin{equation}\label{eq:solderrefine}
+  T_{xz}=T_{yz}+U_{yz}T_{xy},
+  \qquad U_{xz}=U_{yz}U_{xy}.
+\end{equation}
+Consequently $\lVert T_{xy}\rVert^2$ is invariant under orthogonal endpoint
+frames.  Closed-loop holonomy defects transform covariantly, while
+$\tr H$ is invariant under conjugation (\Mtag).  An exact $2\times2$ rational
+fixture has $T_{xy}=(0,1)\neq0$, a nonidentity orthogonal frame change, and
+$\lVert T_{xy}\rVert^2=1$ (\Mtag).
+
+The matrix-coframe upgrade now closes the finite nondegeneracy gate.  For a
+square coframe $e$ and internal metric $\eta$, define
+\begin{equation}\label{eq:inducedmetric}
+  g[e]=e^T\eta e,\qquad \operatorname{vol}(e)=\det e,
+  \qquad {\cal S}_E(T)=\tr(T^T\eta T).
+\end{equation}
+Invertible frame changes preserve $\det e\ne0$; an $\eta$-Lorentz frame
+preserves $g[e]$ and ${\cal S}_E$, and a determinant-one frame preserves
+$\operatorname{vol}(e)$ (\Mtag).  Matrix defects obey the same covariance and
+refinement laws \eqref{eq:soldercov}--\eqref{eq:solderrefine}.  The exact
+rational witness uses
+\begin{equation}\label{eq:rationalboost}
+ \eta=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+ \Lambda=\begin{pmatrix}5/3&4/3\\4/3&5/3\end{pmatrix},
+ \qquad \Lambda^T\eta\Lambda=\eta,\quad\det\Lambda=1,
+\end{equation}
+with two nondegenerate coframes and nonzero defect
+$T=\operatorname{diag}(1,0)$ satisfying ${\cal S}_E(T)=1$ before and after the
+nonidentity boost (\Mtag).
+
+This passes finite covariance, nondegeneracy, metric, volume, action, and
+subdivision gates suggested by discrete teleparallel geometry
+\cite{BaezWise}.  It still supplies only a rational finite coframe: continuum
+local Lorentz covariance, a nondegenerate tetrad field on a manifold, and a
+gravitational field equation are not consequences of these identities.
+
+\subsection{What is rigid, and what is not}
+
+The grading types force a four-block expansion with no fifth type (\Mtag), but
+they do not force a unique carrier.  Finite counterexamples admit inequivalent
+complements with the same coarse type data (\Mtag).  This negative result is not
+in tension with the following concrete theorem.
+
+\begin{theorem}[Concrete coefficient rigidity, \Mtag]\label{thm:rigid}
+For the explicit rational matrices $Q_A,Q_C,Q_T,E_s$ used by the carrier
+witness, there are rational entry functionals $r_A,r_C,r_T,r_E$ such that
+\[
+ r_X(aQ_A+cQ_C+tQ_T+eE_s)=
+ \begin{cases}a&X=A,\\c&X=C,\\t&X=T,\\e&X=E.\end{cases}
+\]
+Consequently the four matrices are linearly independent, every presentation
+has unique coefficients, and $4D^TD$ recovers $(1,1,1,1)$.
+\end{theorem}
+
+The entry selectors use concrete support data.  They are exactly the additional
+structure absent from the abstract non-uniqueness theorem.  The strongest
+honest statement is therefore: the witness decomposition is coefficient-rigid;
+the general carrier category is not yet rigid.
+
+\subsection{Positivity and the aperture--closure phase diagram}
+
+Krein self-adjointness does not imply positivity.  The project therefore
+constructs an explicit $12$-dimensional Clifford--color carrier and compresses
+it to a six-dimensional positive sector.  The compressed form is a pair of
+$3\times3$ blocks.  The basic block is
+\begin{equation}\label{eq:B}
+ B(\lambda,\kappa)=
+ \begin{bmatrix}
+ \lambda&\ii\kappa&0\\
+ -\ii\kappa&\lambda&0\\
+ 0&0&\lambda
+ \end{bmatrix},
+ \qquad
+ \operatorname{spec}B=\{\lambda-\kappa,\lambda,\lambda+\kappa\}.
+\end{equation}
+
+\begin{proposition}[Exact finite phase diagram, \Mtag]
+For $\lambda>0$,
+\begin{enumerate}[label=(\alph*)]
+  \item $B$ is positive definite iff $|\kappa|<\lambda$;
+  \item $B$ is singular on $|\kappa|=\lambda$;
+  \item for $\kappa>\lambda$, $\lambda-\kappa<0$ is an unstable direction.
+\end{enumerate}
+For $0\leq\kappa\leq\lambda$, the least eigenvalue is
+$\lambda-\kappa$.
+\end{proposition}
+
+At $(\lambda,\kappa)=(2,1)$ the actual carrier compression is exactly the
+block pair $B(2,1)\oplus B(2,-1)$ (\Mtag).  Extending this exact carrier
+identification to the whole parameter plane remains open; the spectral theorem
+for the displayed family does not depend on that extension.
+
+The quotient mechanism is more general than this witness, but positivity is
+not automatic.  For a nilpotent Krein-self-adjoint charge $Q$, the finite
+Kugo--Ojima theorem identifies $\operatorname{range}Q$ as the radical of the
+form restricted to $\ker Q$ and gives a nondegenerate induced form on
+$\ker Q/\operatorname{range}Q$ (\Mtag).  To make that quotient positive one
+must additionally prove nonnegativity on $\ker Q$ and that every zero-norm
+representative lies in $\operatorname{range}Q$.  The project contains an exact
+three-dimensional positive witness satisfying both conditions and a matched
+no-go with the same $Q$ but one ambient sign reversed: the quotient remains
+nondegenerate while its surviving class has norm $-1$ (\Mtag).  Hence
+Krein-self-adjointness is stable algebraic infrastructure, not a hidden
+positivity assumption; the inertia and constraint hypotheses are load-bearing.
+
+There is therefore no canonical notation $(\ker Q/\operatorname{range}Q)^+$.
+The hypothesis $Q^\#=Q$ makes the Krein form descend to the quotient, but an
+indefinite quotient has no preferred positive part.  A physical Hilbert space
+requires additional decoder data: a chosen nonzero $D$-invariant positive
+subspace of the induced-form cohomology.  Maximality is a natural further
+condition; existence of a nonzero invariant choice is model-dependent, and
+uniqueness is not expected.
+
+\subsection{A positive Hodge decoder}
+
+The quotient picture admits a sharper finite formulation.  Let $Q^*$ denote
+the ordinary Hilbert adjoint of the constraint differential and define the
+constraint Hodge Laplacian
+\begin{equation}\label{eq:constraintHodge}
+  \Delta_Q=Q^*Q+QQ^*.
+\end{equation}
+The generic finite Hilbert--Hodge theorem is now kernel-checked: when $Q^2=0$,
+every closed vector has a unique representative in
+$\ker Q\cap\ker Q^*$ modulo $\operatorname{range}Q$; a decoder commuting with
+$Q$ descends to cohomology, and commuting also with $Q^*$ preserves harmonic
+representatives (\texttt{GenericFiniteHodge}, \Mtag).  This theorem uses the
+auxiliary positive Hilbert adjoint.  It must not be confused with the spectral
+mass operator $D^\#D$ or with selection of a positive Krein subspace.
+
+The corresponding Krein-adjoint statement is false.  On $\C^2$, take
+\[
+ J=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ Q=\begin{pmatrix}0&1\\0&0\end{pmatrix}.
+\]
+Then $Q^2=0$, $Q^\#=Q$, and $Q^\#Q+QQ^\#=0$, so every vector is
+Krein-harmonic; nevertheless $\ker Q=\operatorname{range}Q$, and the
+cohomology is zero.  An explicit harmonic vector is not even closed
+(\texttt{KreinHodgeNoGo.krein\_hodge\_no\_go}, \Mtag).
+
+\begin{proposition}[Nonvacuous positive Hodge decoder, \Mtag]
+For the explicit three-dimensional Kugo--Ojima witness, every $Q$-closed vector
+is cohomologous to a $\Delta_Q$-harmonic vector.  The class represented by
+$e_2$ is closed, non-exact, harmonic, and has positive Krein norm.  There is a
+separate decoder $D_\mu$, commuting with $Q$ and Krein-self-adjoint, for which
+\begin{equation}\label{eq:positiveHodgeMass}
+  D_\mu^\#D_\mu e_2=\mu^2e_2.
+\end{equation}
+At $\mu=2$ this gives the explicit positive spectral cost $4$.  Reversing only
+the surviving Krein sign leaves $Q$, its cohomology, and $\Delta_Q$ unchanged,
+but gives $\langle e_2,e_2\rangle_J=-1$.
+\end{proposition}
+
+Thus ``particle as positive eigen-code'' now has a finite witness with all four
+ingredients visible: quotient, Hilbert-harmonic representative, selected
+positivity, and a nonzero spectral cost.  What remains open is derivation and
+classification of nonzero $D$-invariant maximal positive sectors, derivation of
+the decoder rather than insertion of $D_\mu$, comparison of inequivalent
+positive choices, and stability under refinement to a physical continuum
+theory.
+
+There is also a first controlled form of decoder non-rigidity.  If $Q^2=0$,
+$[D,Q]=0$, and
+\begin{equation}\label{eq:chainGauge}
+  D'=D+QR+RQ,
+\end{equation}
+then $D'$ also commutes with $Q$ and, for every closed representative $x$,
+$D'x-Dx=Q(Rx)$ is exact (\Mtag).  More generally, the cross-carrier equation
+$D'U-UD=Q'R+RQ$ intertwines the induced cohomology actions whenever
+$UQ=Q'U$.  In the positive witness, $D'_\mu=D_\mu+2Q$ is a genuinely distinct
+prephysical matrix but acts identically on the surviving class $e_2$.  This
+supports a moduli interpretation of some presentation freedom; it does not show
+that every alternative four-channel split is chain-homotopic.
+
+\section{Finite quantum histories}
+
+\subsection{The exact checkerboard sum}
+
+Consider a $1+1$ dimensional null walk with right/left steps.  If $c(h)$ is the
+number of direction changes of a history $h$, define its Gaussian-rational
+amplitude by
+\begin{equation}\label{eq:historyamp}
+  A(h)=(\ii\epsilon m)^{c(h)}.
+\end{equation}
+The use of $\Q(\ii)$ makes the finite theorem exact; no floating-point or
+analytic approximation enters.
+
+\begin{theorem}[Exact finite checkerboard kernel, \Mtag]\label{thm:checker}
+For a right-incoming, right-terminating path with $p$ right steps and $q>0$
+left steps,
+\begin{equation}\label{eq:rrkernel}
+ K_{RR}(p,q)=\sum_{r=1}^{p+q}
+ \binom{p}{r}\binom{q-1}{r-1}(\ii\epsilon m)^{2r}.
+\end{equation}
+For a right-incoming, left-terminating path,
+\begin{equation}\label{eq:rlkernel}
+ K_{RL}(p,q)=\sum_{r=0}^{p}
+ \binom{p}{r}\binom{q-1}{r}(\ii\epsilon m)^{2r+1}.
+\end{equation}
+These closed forms equal the literal finite sums over histories.  The same
+kernel satisfies the one-step recursion
+\begin{equation}\label{eq:diracrec}
+ K_{n+1}(x,d)=K_n(x-d,d)+K_n(x-d,\bar d)(\ii\epsilon m).
+\end{equation}
+At $m=0$, every history with a corner has zero amplitude; only straight null
+histories remain.
+\end{theorem}
+
+The explicit history $[R,L,R]$ has two corners, amplitude $-1$ at
+$(\epsilon,m)=(1,1)$, and amplitude $-4$ at $(1,2)$ (\Mtag).  This rules out a
+vacuous path-sum statement in which the mass parameter never affects a
+history.
+
+Theorem \ref{thm:checker} is the first dynamical bridge from the null-edge
+ontology to phase interference.  It does not prove a continuum propagator,
+uniform convergence, or a $3+1$ dimensional checkerboard.  The existing
+continuum module proves the finite symbol identities
+\begin{equation}\label{eq:walksymbol}
+ U_a(k)=e^{-\ii ka\sigma_z}e^{-\ii ma\sigma_x},
+ \qquad \tr U_a=2\cos(ka)\cos(ma),
+ \qquad \det U_a=1.
+\end{equation}
+Thus the exact lattice dispersion relation is
+\begin{equation}\label{eq:latticedispersion}
+ \cos(\omega a)=\cos(ka)\cos(ma)
+ \qquad(\Mtag).
+\end{equation}
+At $k=0$, the two $\sigma_x$ eigenvectors have exact eigenvalues
+\begin{equation}\label{eq:zeromomentumgap}
+ U_a(0)x_+=e^{-\ii ma}x_+,
+ \qquad
+ U_a(0)x_-=e^{+\ii ma}x_-
+ \qquad(\Mtag).
+\end{equation}
+Consequently $m$ is exactly the positive zero-momentum quasienergy on the
+principal branch, while the two eigenphases are separated by $2|m|a$.  The
+branch qualification is load-bearing: lattice quasienergy is periodic modulo
+$2\pi/a$, so \eqref{eq:latticedispersion} does not define a globally unique
+real $\omega$.
+
+The infinitesimal generator agrees with the continuum Dirac symbol:
+\begin{equation}\label{eq:generator}
+ \left.\frac{\dd}{\dd\epsilon}U(k\epsilon,m\epsilon)\right|_{\epsilon=0}
+ =-\ii(k\sigma_z+m\sigma_x).
+\end{equation}
+This leading-order statement now has an explicit finite error bound.  For a
+$2\times2$ complex matrix let
+$\lVert M\rVert_{\max}=\max_{i,j}|M_{ij}|$, and define
+\begin{equation}\label{eq:remainderconstant}
+ C(k,m)=2k^2+2m^2+|k|m^2+k^2|m|+|k||m|.
+\end{equation}
+Then, for $|\epsilon|\leq1$,
+\begin{equation}\label{eq:remainder}
+ \left\lVert U(k\epsilon,m\epsilon)
+ -\bigl(1-\ii\epsilon(k\sigma_z+m\sigma_x)\bigr)\right\rVert_{\max}
+ \leq C(k,m)\epsilon^2
+\end{equation}
+(\Mtag).  The proof is entrywise and global on the displayed interval.  It also
+gives the exact massless control $U(k,0)=U_{\rm shift}(k)$ with zero
+off-diagonal turn amplitude.  At $(k,m)=(3,4)$ the generator square is
+$25\,I_2$ and the algebraic cross coefficient is nonzero.  Equation
+\eqref{eq:remainder} is quantitative fixed-momentum, one-step control; it is
+not a Trotter limit, a spacetime-walk convergence theorem, or a continuum
+propagator theorem.
+
+\subsection{A $3+1$ tetrahedral kinematic lift}
+
+There is no single-particle obstruction to a $3+1$ checkerboard-like path
+sum.  Explicit Weyl and Dirac quantum walks already provide such constructions
+\cite{FosterJacobson,DarianoWeyl,NzonganiTetra}.  The first local rung needed
+here can be stated over the rationals.  Let $n_0,\ldots,n_3$ be the four
+vertices of a regular tetrahedron in a three-dimensional Euclidean subspace,
+normalized by
+\begin{equation}\label{eq:tetgram}
+ n_i\mathbin{\cdot}n_j=
+ \begin{cases}1,&i=j,\\-1/3,&i\ne j.\end{cases}
+\end{equation}
+For counts $c_i\in\N$, define the endpoint of a null history by
+\begin{equation}\label{eq:tetendpoint}
+ X(c)=\left(\sum_i c_i,\ \sum_i c_i n_i\right).
+\end{equation}
+Each primitive step $(1,n_i)$ is null, and exact expansion of
+\eqref{eq:tetgram} gives
+\begin{equation}\label{eq:tetmass}
+ X(c)^2=\frac{8}{3}\sum_{i<j}c_i c_j\geq0
+ \qquad(\Mtag).
+\end{equation}
+Thus every one-direction history is null, whereas the explicit history using
+directions $0$ and $1$ once each has $X^2=8/3>0$.  This is a genuine $3+1$
+mass-from-direction-disagreement identity.  It records endpoint kinematics;
+unitarity and continuum convergence are not yet included.
+
+The order-sensitive spin layer is now exact as well.  Let
+\begin{equation}\label{eq:tetprojector}
+ P_i=\frac12\bigl(I_2+r\,w_i\mathbin{\cdot}\sigma\bigr),
+ \qquad 3r^2=1.
+\end{equation}
+The four $P_i$ are Hermitian idempotents of trace one and resolve
+$\sum_iP_i=2I_2$.  Distinct directions obey the bend law
+\begin{equation}\label{eq:tetbend}
+ P_iP_jP_i=\frac13P_i\qquad(i\ne j),
+\end{equation}
+while the first oriented triple has
+\begin{equation}\label{eq:tetphase}
+ \tr(P_0P_1P_2)=\frac{\ii r}{3},
+ \qquad
+ \tr(P_2P_1P_0)=-\frac{\ii r}{3}
+ \qquad(\Mtag).
+\end{equation}
+Chronological concatenation composes the ordered projector products in operator
+order.  Hence the spin amplitude remembers bends and orientation; it is not a
+function of endpoint counts alone.  This closes the first ordered-projector
+rung, but no sum over all $3+1$ histories or exactly unitary massive update is
+claimed.
+
+The same tetrahedron exposes a useful normalization obstruction.  On its
+three-dimensional span,
+\begin{equation}\label{eq:tettightframe}
+ \frac14\sum_{i=0}^3 n_i(n_i\mathbin{\cdot}v)=\frac13v
+ \qquad(\Mtag).
+\end{equation}
+Consequently the simplest equally weighted tetrahedral projector recursion
+with microscopic step scale $s$ has first-moment continuum speed $s/3$;
+matching continuum $c=1$ requires $s=3$.  One therefore cannot simultaneously
+demand microscopic step speed one, this normalized four-projector recursion,
+and emergent speed one.  This is a no-go for that normalization, not for
+$3+1$ path sums.  Foster--Jacobson make the corresponding three-times-light
+step explicit, while other unitary walks use different lattice/update
+structures \cite{FosterJacobson,DarianoWeyl,NzonganiTetra}.
+
+The $D_4$ root lattice is useful here as a symmetry envelope, but not as a
+drop-in null lattice.  In the integer-rescaled coordinates the four
+tetrahedral steps are Hadamard vectors whose span $L_H$ lies in $D_4$ with
+index eight.  This supplies an eight-sheeted Brillouin-torus cover and a
+natural coset/triality bookkeeping problem.  However, the exact causal
+classification is
+\begin{equation}\label{eq:d4causal}
+ q(h_A)=0,\qquad
+ q\left(\frac{h_A+h_B}{2}\right)=-\frac23,\qquad
+ q\left(\frac{h_A-h_B}{2}\right)=\frac23
+ \quad(A\ne B)
+ \qquad(\Mtag).
+\end{equation}
+Thus the extra $D_4$ root-neighbor steps include timelike and spacelike
+primitives.  A separate graph theorem proves that motion using only the
+$L_H$ shifts has connected components exactly the $L_H$ cosets.  The explicit
+parity map
+\begin{equation}\label{eq:d4quotient}
+ \varphi(c_0,c_1,c_2,c_3)
+  =(c_1\bmod2,\ c_3\bmod2,\ c_0+c_2\bmod2)
+\end{equation}
+is surjective and has kernel exactly the Hadamard image.  Therefore
+\begin{equation}\label{eq:d4eight}
+ D_4/L_H\simeq(\Z/2)^3,
+ \qquad |D_4/L_H|=8
+ \qquad(\Mtag),
+\end{equation}
+and the null-shift graph has exactly eight disconnected copies.  This closes
+the earlier conditional asterisk.  Equation \eqref{eq:d4causal} remains the
+essential warning: the full $D_4$ root-neighbor graph is not null-only, so
+$D_4$ is a symmetry envelope and bookkeeping lattice rather than a license to
+add every root as a microscopic propagation step.
+
+\subsection{Null front speed across lower-order channels}
+
+The phrase ``every particle and channel moves at $c$'' is too strong: an
+interaction channel has no velocity observable, different Dirac velocity
+components do not commute, and scalar and vector fields do not share that
+operator.  The representation-independent statement concerns characteristics.
+For a nonempty $d$-component multiplet with common wave principal symbol
+\begin{equation}\label{eq:principalsymbol}
+ q(\omega,k)I_d,\qquad q(\omega,k)=\omega^2-|k|^2,
+\end{equation}
+one has
+\begin{equation}\label{eq:characteristicdet}
+ \det\bigl(q(\omega,k)I_d\bigr)=q(\omega,k)^d,
+ \qquad \det=0\ \Longleftrightarrow\ \omega^2=|k|^2
+ \qquad(\Mtag).
+\end{equation}
+If aperture, closure, turn, and internal soldering mixing enter through a
+finite zero-order matrix $B$, then principal scaling gives
+\begin{equation}\label{eq:lowerscaling}
+ \epsilon^2L(\omega/\epsilon,k/\epsilon)
+ =q(\omega,k)I_d+\epsilon^2B
+ \longrightarrow q(\omega,k)I_d
+ \qquad(\Mtag).
+\end{equation}
+The first-order analogue is
+$\epsilon D(p/\epsilon)=P(p)+\epsilon B$.  Hence lower-order mixing does not
+change the null wavefront cone.  The hypothesis is load-bearing: an explicit
+principal-order perturbation changes the determinant, and a soldering field
+that changes the principal metric changes the cone rather than preserving it.
+
+Mass affects drift without changing the front cone.  On
+$E^2=|k|^2+m^2$, the group speed satisfies
+\begin{equation}\label{eq:groupspeed}
+ |v_g|^2=\frac{|k|^2}{E^2}=1-\frac{m^2}{E^2}<1
+ \quad(m\ne0),
+\end{equation}
+with the exact $3$--$4$--$5$ witness $|v_g|^2=9/25$ (\Mtag).  Equations
+\eqref{eq:characteristicdet}--\eqref{eq:groupspeed} therefore support the
+precise claim: fields whose equations share the null principal symbol have
+front velocity $c$, while massive excitations have subluminal group drift and
+lower-order internal channels do not alter the front velocity.  Applying this
+to every Standard Model field remains conditional on a field-by-field
+principal-symbol audit.
+
+\subsection{Action and generator boundary}
+
+The checkerboard carrier now supplies a state-level four-channel action without
+four independently chosen numbers.  For a real two-component state $\psi$, set
+\begin{equation}\label{eq:channelaction}
+ (S_A,S_C,S_T,S_E)=
+ (\psi^TQ_A\psi,\psi^TQ_C\psi,
+  4\psi^TQ_T\psi,4\psi^TE_\#\psi).
+\end{equation}
+The exact carrier-square identity implies
+\begin{equation}\label{eq:actionbudget}
+ S_A+S_C+S_T+S_E
+ =\psi^T(4D^\#D)\psi
+\end{equation}
+for every $\psi$ (\Mtag).  At the on-shell symbol
+$(E,k,m)=(5,3,4)$ and $\psi=(1,0)$, the tuple is
+$(64,0,64,0)$ and the total is $128$ (\Mtag).  Thus the state-level action
+budget is carrier-derived and nonvacuous.
+
+A complementary theorem makes the phase bookkeeping local on histories.  If
+each event $a$ has channel label $\chi(a)\in\{A,C,T,E\}$ and the four real
+weights are $w_X$, define
+\begin{equation}\label{eq:historyaction}
+  S_w(h)=\sum_{a\in h}w_{\chi(a)},
+  \qquad \Phi_w(h)=\exp(\ii S_w(h)).
+\end{equation}
+Then
+\begin{equation}\label{eq:historycompose}
+  S_w(h_1h_2)=S_w(h_1)+S_w(h_2),\qquad
+  \Phi_w(h_1h_2)=\Phi_w(h_1)\Phi_w(h_2)
+\end{equation}
+(\Mtag), and the action decomposes exactly by the four event counts.  The
+recursive flat-checkerboard encoding has one aperture event per null step,
+one turn event per direction reversal, and no closure or soldering events.
+With $(w_A,w_C,w_T,w_E)=(0,0,\pi/2,0)$,
+\begin{equation}\label{eq:localcornerphase}
+  \Phi_w(h)=\ii^{c(h)},\qquad
+  (\epsilon m)^{c(h)}\Phi_w(h)=(\ii\epsilon m)^{c(h)}
+\end{equation}
+(\Mtag), including an explicit nonzero one-turn witness.  Thus the
+checkerboard weight is exactly a local action phase, not merely a global
+corner-count convention.
+
+Closure now has a separate history-local phase rather than only an event
+counter.  For complex edge transport $U_{xy}$, let
+\begin{equation}\label{eq:closureholonomy}
+  {\cal H}_U(x_0,\ldots,x_n)=
+    U_{x_0x_1}U_{x_1x_2}\cdots U_{x_{n-1}x_n}.
+\end{equation}
+Under a unit-modulus vertex gauge $g$,
+$U_{xy}'=g_yU_{xy}\overline{g_x}$, exact telescoping gives
+\begin{equation}\label{eq:closuregauge}
+  {\cal H}_{U'}=g_{x_n}{\cal H}_U\overline{g_{x_0}},
+  \qquad x_n=x_0\Longrightarrow {\cal H}_{U'}={\cal H}_U
+  \qquad(\Mtag).
+\end{equation}
+Holonomies multiply under history concatenation.  An exact four-vertex loop
+has ${\cal H}_U=\ii\ne1$ and remains $\ii$ under a nonidentity gauge
+transformation (\Mtag), so the closure phase is nonvacuous.
+
+The four general action weights remain inputs.  The turn phase is physically
+wired to the flat checkerboard and the closure phase is now wired to finite
+$U(1)$ transport, but their common derivation from the carrier action is not
+yet local on histories.  Nonabelian closure transport and nonzero local
+soldering history densities remain open.
+
+Finite variational modules prove that stationary pairs of a multiplier action
+are exactly primal and adjoint carrier solutions, and that a constrained quadratic
+action gives an eigenvalue equation (\Mtag).  Separately, a chosen Hermitian
+matrix generates a unitary exponential flow preserving norm and commuting
+observables (\Mtag).  These facts coexist, but they do not select $D$, $D^\#D$,
+or $B(\lambda,\kappa)$ as the physical Hamiltonian.  The generator choice is a
+named boundary, not an implicit theorem.
+
+There is nevertheless an exact finite generator-to-update bridge.  For a
+chosen matrix $H$, the Cayley step
+\begin{equation}\label{eq:cayley}
+ C_{\Delta t}(H)=
+ (1+\ii\Delta t H/2)^{-1}(1-\ii\Delta t H/2)
+\end{equation}
+solves the cleared-denominator Crank--Nicolson equation; for Hermitian $H$
+under the displayed inverse identities it is unitary (\Mtag).  The exact
+fixture $H=\sigma_x$, $\Delta t=2$ gives
+$C_2(\sigma_x)=-\ii\sigma_x$ and $e_0\mapsto-\ii e_1$ (\Mtag).  This derives
+the update from a supplied generator, not the physical generator itself.
+
+\section{Closure, binding, and finite many-body structure}
+
+The closure channel is signed.  On the explicit physical quotient its induced
+form has balanced inertia $(2,2,0)$ (\Mtag).  Consequently it cannot be treated
+as a positive energy density.  The positive Wilson/plaquette closure-defect
+energy is a different quadratic object.  This distinction prevents a common
+but false identification of a chromomagnetic term with total gluon energy.
+
+The finite fermionic occupation model has a sharp free result: if the
+one-particle energies have least value $\lambda-\kappa>0$, then the free
+second-quantized gap above the vacuum is exactly $\lambda-\kappa$ (\Mtag).
+Free two-particle energies are constituent sums and do not bind.
+
+A separate $\Lambda^2$ interaction is derived by second-quantizing a closure
+curvature.  For a sorted three-mode spectrum and $\kappa>0$, closure acting in
+the excited-mode plane gives a least eigenvalue strictly below the free
+two-particle threshold (\Mtag).  Closure in a plane containing the ground mode
+instead leaves the lowest pair unbound whenever
+\begin{equation}\label{eq:wrongplane}
+ \kappa^2\leq(d_2-d_0)(d_2-d_1).
+\end{equation}
+Thus ``closure binds'' is not a theorem about arbitrary curvature placement.
+The actual finite carrier curvature is machine-identified with the binding
+plane, closing that choice for the witness.  A continuum QCD or confinement
+interpretation remains \Ctag.
+
+\section{Protected masslessness and family structure}
+
+For a finite odd operator between positive and negative chiral sectors,
+rank--nullity gives
+\begin{equation}\label{eq:index}
+ \dim\ker D\geq n_+-n_-.
+\end{equation}
+The lower bound survives odd mass perturbations (\Mtag).  A separate finite
+winding model realizes index $w$, kernel dimension $w$, and refinement-stable
+protected mode count (\Mtag).  These are finite index statements, not a
+continuum anomaly theorem.
+
+The project also formalizes the Kobayashi--Maskawa phase-counting spine.  Two
+families admit no physical CP phase after rephasing, while three families admit
+an explicit nonzero rational Jarlskog witness (\Mtag).  What does not follow is
+equally important: triality, anomaly cancellation, and the finite carrier
+category do not by themselves force exactly three replicated charge families
+(\Mtag no-go).  More concretely, diagonal triplication retains the full family
+permutation commutant, and no family label is fixed by every permutation
+(\Mtag).  Three copies therefore do not become three canonically ordered
+generations.  A rank-fixing and symmetry-breaking input is still required.  The finite theory
+therefore reproduces the special role of three in CP phase counting without
+claiming to derive the observed number of generations.
+
+\section{Conjecture scoreboard}
+
+The physical dictionary is useful only while its failure conditions remain
+visible.  Table~\ref{tab:scoreboard} separates the proposed identification from
+the finite result that currently supports it.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}X@{}}
+\toprule
+Conjectural identification & Kill condition & Current status\\
+\midrule
+Null histories recover free relativistic propagation & No controlled
+many-step convergence to the Dirac propagator & Exact finite path sum,
+recursion, dispersion, eigenphases, and one-step $O(\epsilon^2)$ bound; the
+many-step theorem remains open\\
+The four carrier blocks match continuum field sectors &
+Refinement converges to different operators or requires inserted projectors &
+Concrete four-block coefficient rigidity, but abstract non-uniqueness\\
+Closure supplies a QCD-like binding channel & Singlet low modes disappear
+under enlargement/refinement, or the physical curvature occupies the no-binding
+plane & Exact finite binding and wrong-plane control; no confinement theorem\\
+Soldering supplies gravitational geometry & No nondegenerate continuum coframe,
+covariant action, or accepted field equation emerges & Finite nondegenerate
+matrix coframe with metric, volume, covariance, refinement, and nonzero action\\
+Finite family structure selects three generations & Replication symmetry leaves
+family labels interchangeable, or another rank is equally admissible & Exact
+three-family CP witness, together with rank-fixing and permutation no-go theorems\\
+$D_4$ is the microscopic step graph & Additional roots are not null &
+$D_4/L_H\simeq(\Z/2)^3$ is now exact, but causal classification restricts
+primitive propagation to the tetrahedral Hadamard sublattice\\
+Particles are positive Hodge eigen-codes & The physical quotient is empty or
+indefinite, or the spectral decoder fails to descend under refinement & Exact
+generic Hilbert--Hodge representatives; exact positive class with spectral
+cost $4$; matched sign no-go; and a $2\times2$ Krein-Hodge collapse.  Nonzero
+invariant positive-sector selection and continuum reconstruction remain open\\
+\bottomrule
+\end{tabularx}
+\caption{Current claim/kill/status scoreboard.  Every physical identification
+in the first column remains \Ctag even when the supporting finite statement is
+\Mtag.}
+\label{tab:scoreboard}
+\end{table}
+
+\section{Falsifiers and claim boundaries}
+
+The model is intended to become easier to reject as it grows.  Its current
+boundaries can be stated as concrete tests.
+
+\begin{enumerate}[leftmargin=1.7em]
+  \item \textbf{Continuum dictionary.}  If refined aperture, closure, turn, and
+  soldering blocks do not converge to kinetic, gauge-curvature, scalar, and
+  geometric operators, the physical names must be retired in favor of neutral
+  block labels.
+  \item \textbf{Carrier rigidity.}  The explicit witness is coefficient-rigid,
+  but the category is not.  A proposed extra principle must remove known
+  inequivalent complements without simply encoding the desired carrier.
+  \item \textbf{Path dynamics.}  The finite checkerboard theorem must extend to
+  a controlled continuum limit.  Failure to reproduce the free Dirac
+  propagator would kill the path interpretation.
+  \item \textbf{External dispersion gate.}  The exact principal-branch relation
+  \eqref{eq:latticedispersion} has the small-$a$ massive expansion
+  \[
+    \omega^2=k^2+m^2-\frac{a^2}{3}k^2m^2+O(a^4).
+  \]
+  Precision bounds on species-dependent massive-particle dispersion therefore
+  bound any literal microscopic spacing $a$ (\Ttag/\Ctag).  In the minimal
+  massless sector, however, $m=0$ gives $\omega=|k|$ exactly on the principal
+  branch.  Gamma-ray photon time-of-flight is consequently not the leading
+  constraint on this particular walk; importing such a bound without a photon
+  correction would be spurious.
+  \item \textbf{Resource interpretation.}  Determinant/linear entropy must be
+  monotone only under a precisely stated allowed-operation class.  A class that
+  includes the known signed-closure counterexample is false.
+  \item \textbf{Structured closure.}  Robust singlet low modes must persist
+  beyond the current small matrices and under refinement.  Random disorder is
+  already known not to supply the desired mechanism.
+  \item \textbf{Gravity.}  The soldering-gradient term must obey a legitimate
+  local-frame transformation law and approach a known gravitational action.
+  The rational matrix-coframe defect now passes finite nondegeneracy, induced
+  metric, volume, Lorentz-covariance, invariant-action, and refinement tests,
+  but a nondegenerate continuum tetrad field and a gravitational limit remain
+  unproved.  The present finite
+  torsion/nonmetricity split is not continuum general relativity.
+\end{enumerate}
+
+No result in this paper computes an electron, quark, proton, or cosmological
+mass.  No theorem establishes a continuum Standard Model, a physical path
+measure, scattering amplitudes, or quantum gravity.  The strongest result is a
+coherent finite chain: canonical null-edge mass kinematics, a positive carrier
+witness, a rigid concrete block presentation, an exact finite history sum, and
+an exact quasienergy spectrum tying the corner parameter to the zero-momentum
+walk gap.
+
+\section{Machine verification and reproducibility}
+
+The Lean kernel is the proof checker.  The project uses Lean 4.28.0 and a pinned
+Mathlib snapshot.  Headline draft results include build-enforced
+\texttt{\#print axioms} message guards; the expected footprint is limited to
+standard quotient/extensionality/classical-choice principles.  Numerical or
+computer-algebra scripts are treated as external oracles and are not used as
+proofs.
+
+For example, the checked guard output for the new dispersion and concrete
+$D_4$ verdicts is, verbatim apart from line wrapping,
+\begin{verbatim}
+depends on axioms: [propext, Classical.choice, Quot.sound]
+\end{verbatim}
+and the build fails if that footprint changes.
+
+\clearpage
+\begin{landscape}
+\begin{table}[!ht]
+\centering
+\scriptsize
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.34\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}X@{}}
+\toprule
+Lean declaration & Source module & Mathematical payload\\
+\midrule
+\path{i1_5_cauchy_binet_mass_identity} &
+\path{NullEdge/GateI1/Core.lean} & Equation \eqref{eq:cb}\\
+\path{spinorWedge_sl2_invariant} &
+\path{PhysicsSM/Spinor/PluckerMassCovariance.lean} & Equation \eqref{eq:termwiseSL2}\\
+\path{a2_sqrt_minkowskiSq_add_ge_of_futureCone} &
+\path{NullEdge/GateI1/Core.lean} & Free mass superadditivity \eqref{eq:superadditive}\\
+\path{four_mul_det_gram_eq_concurrence_sq} &
+\path{NullEdge/TwoEdgeMassConcurrence.lean} & Concurrence identity \eqref{eq:concurrence}\\
+\path{compositeMassSq_eq_zero_iff_collinear} &
+\path{GateI1/CompositeApertureMass.lean} & Massless iff common null direction\\
+\path{detP_unique} &
+\path{NullEdge/DetPUniqueness.lean} & Theorem \ref{thm:detunique}\\
+\path{free_mass_operator_eq_plucker} &
+\path{NullEdge/Carrier/FreeMassBridge.lean} & Free spectral/Gram bridge\\
+\path{path_mass_visibility_duality} &
+\path{NullEdge/MassCoherencePathEquivalence.lean} & Equation \eqref{eq:duality}\\
+\path{mass_monotone_under_pinch} &
+\path{NullEdge/EntropyMonotoneReal.lean} & Equation \eqref{eq:pinch}\\
+\path{carrier_krein_square} &
+\path{Carrier/CarrierKreinSquare.lean} & Equation \eqref{eq:master}\\
+\path{four_channels_linearIndependent} &
+\path{NullEdge/FourChannelRigidityCapstone.lean} & Concrete coefficient rigidity\\
+\path{T2_positive_mass} &
+\path{NullEdge/Carrier/SectorGroundMassWitness.lean} & Explicit positive physical sector\\
+\path{nonvacuous_positive_sector}, \path{nondegenerate_but_indefinite_no_go} &
+\path{NullEdge/Carrier/KreinPositiveSectorWitness.lean} & Positive quotient mechanism and matched sign no-go\\
+\path{closed_cohomologous_to_harmonic}, \path{positive_hodge_mass_witness} &
+\path{NullEdge/Carrier/PositiveHodgeDecoder.lean} & Equations \eqref{eq:constraintHodge}--\eqref{eq:positiveHodgeMass}\\
+\path{chainHomotopy_physical_action}, \path{decoder_chain_intertwining_packet} &
+\path{NullEdge/Carrier/DecoderChainHomotopy.lean} & Channel-gauge equivalence \eqref{eq:chainGauge}\\
+\path{B_posDef_iff}, \path{B_least_eigenvalue} &
+\path{Carrier/MassGapWitness.lean} & Exact phase diagram \eqref{eq:B}\\
+\path{exact_path_sum_eq_closed_kernel} &
+\path{NullEdge/ExactCheckerboardPathSum.lean} & Equation \eqref{eq:rrkernel}\\
+\path{exact_path_sum_dirac_recursion} &
+\path{NullEdge/ExactCheckerboardPathSum.lean} & Equation \eqref{eq:diracrec}\\
+\path{Ustep_hasDerivAt_generator} &
+\path{Carrier/ContinuumLimit.lean} & Equation \eqref{eq:generator}\\
+\path{Ustep_taylor_remainder_bound} &
+\path{NullEdge/QuantitativeDiracWalkContinuum.lean} & Equation \eqref{eq:remainder}\\
+\path{exact_quantum_walk_dispersion_verdict} &
+\path{NullEdge/ExactQuantumWalkDispersion.lean} & Equations \eqref{eq:latticedispersion}--\eqref{eq:zeromomentumgap}\\
+\path{endpointMassSq_eq_pairDisagreement} &
+\path{NullEdge/TetrahedralNullHistory.lean} & Equation \eqref{eq:tetmass}\\
+\path{frameOp_eq_third} &
+\path{NullEdge/TetrahedralNullHistory.lean} & Equation \eqref{eq:tettightframe}\\
+\path{tetrahedral_spin_projector_path_verdict} &
+\path{NullEdge/TetrahedralSpinProjectorPath.lean} & Equations \eqref{eq:tetprojector}--\eqref{eq:tetphase}\\
+\path{d4_added_step_causal_verdict} &
+\path{NullEdge/GateC1/D4AddedStepCausalClassification.lean} & Equation \eqref{eq:d4causal}\\
+\path{componentEquiv}, \path{eightCopies} &
+\path{NullEdge/GateC1/D4DisconnectedCopy.lean} & Coset-component theorem\\
+\path{d4_concrete_quotient_verdict} &
+\path{NullEdge/GateC1/D4ConcreteQuotient.lean} & Equations \eqref{eq:d4quotient}--\eqref{eq:d4eight}\\
+\path{principal_characteristic_iff_null} &
+\path{NullEdge/LowerOrderChannelCausality.lean} & Equations \eqref{eq:principalsymbol}--\eqref{eq:characteristicdet}\\
+\path{four_lowerOrder_channels_preserve_principal_symbol} &
+\path{NullEdge/LowerOrderChannelCausality.lean} & Equation \eqref{eq:lowerscaling}\\
+\path{massive_groupSpeedSq_lt_one} &
+\path{NullEdge/LowerOrderChannelCausality.lean} & Equation \eqref{eq:groupspeed}\\
+\path{checkerboard_channel_action_total} &
+\path{NullEdge/FourChannelPathActionCapstone.lean} & Equation \eqref{eq:actionbudget}\\
+\path{checkerboardAmplitude_eq_corner_power} &
+\path{NullEdge/HistoryLocalFourChannelAction.lean} & Equations \eqref{eq:historyaction}--\eqref{eq:localcornerphase}\\
+\path{u1_history_closure_holonomy_verdict} &
+\path{NullEdge/U1HistoryClosureHolonomy.lean} & Equations \eqref{eq:closureholonomy}--\eqref{eq:closuregauge}\\
+\path{cayley_hamiltonian_generator_verdict} &
+\path{NullEdge/CayleyHamiltonianGenerator.lean} & Equation \eqref{eq:cayley}\\
+\path{soldering_local_frame_covariance_verdict} &
+\path{NullEdge/SolderingLocalFrameCovariance.lean} & Equations \eqref{eq:soldercov}--\eqref{eq:solderrefine}\\
+\path{nondegenerate_soldering_geometry_verdict} &
+\path{NullEdge/NondegenerateSolderingGeometry.lean} & Equations \eqref{eq:inducedmetric}--\eqref{eq:rationalboost}\\
+\path{secondQuantized_massGap} &
+\path{Carrier/FockMassGap.lean} & Free finite Fock gap\\
+\path{derived_boundState_below_threshold} &
+\path{Carrier/DerivedInteraction.lean} & Closure-derived binding\\
+\path{derived_wrongPlane_no_binding} &
+\path{Carrier/DerivedInteraction.lean} & Obstruction \eqref{eq:wrongplane}\\
+\path{winding_protects_low_modes} &
+\path{NullEdge/WindingLowModes.lean} & Finite index protection\\
+\path{jarlskog_Vwitness_ne_zero} &
+\path{NullEdge/FiniteKMCP.lean} & Nonzero finite CP witness\\
+\path{three_generations_not_forced} &
+\path{NullEdge/FamilyRankNoGo.lean} & Generation-count no-go\\
+\path{generation_permutation_nogo} &
+\path{NullEdge/GenerationPermutationNoGo.lean} & Diagonal-triplication symmetry no-go\\
+\bottomrule
+\end{tabularx}
+\caption{Selected machine-verified anchors.  Paths are relative to
+\texttt{PhysicsSM/Draft} unless the full \texttt{PhysicsSM/} prefix is shown.}
+\label{tab:anchors}
+\end{table}
+\end{landscape}
+\clearpage
+
+No theorem cited in Table~\ref{tab:anchors} is accepted merely because a
+numerical fixture passes.  Capstone conjunctions are integration interfaces;
+the scientific citations are the payload declarations beneath them.
+
+This working revision is based on repository commit
+\path{10a9505dffb1decfd8cfadb8e37684609acc1d8d}, with additional manuscript and
+Lean changes still present in the working tree.  It is therefore not yet an
+archival identifier for the exact paper state.  A clean commit, source archive,
+and Zenodo DOI are explicit release gates before submission; no DOI is claimed
+for this draft.
+
+The principal verification commands are
+\begin{verbatim}
+lake env lean PhysicsSM/Draft/NullEdge/ExactCheckerboardPathSum.lean
+lake build PhysicsSM.Draft.NullEdge.QuantitativeDiracWalkContinuum
+lake build PhysicsSM.Draft.NullEdge.ExactQuantumWalkDispersion
+lake build PhysicsSM.Draft.NullEdge.TetrahedralNullHistory
+lake build PhysicsSM.Draft.NullEdge.TetrahedralSpinProjectorPath
+lake build PhysicsSM.Draft.NullEdge.LowerOrderChannelCausality
+lake build PhysicsSM.Draft.NullEdge.GateC1.D4AddedStepCausalClassification
+lake build PhysicsSM.Draft.NullEdge.GateC1.D4DisconnectedCopy
+lake build PhysicsSM.Draft.NullEdge.GateC1.D4ConcreteQuotient
+lake build PhysicsSM.Draft.NullEdge.FourChannelRigidityCapstone
+lake build PhysicsSM.Draft.NullEdge.FiniteHamiltonianGeneratorCapstone
+lake build PhysicsSM.Draft.NullEdge.CayleyHamiltonianGenerator
+lake build PhysicsSM.Draft.NullEdge.HistoryLocalFourChannelAction
+lake build PhysicsSM.Draft.NullEdge.U1HistoryClosureHolonomy
+lake build PhysicsSM.Draft.NullEdge.SolderingLocalFrameCovariance
+lake build PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry
+lake build PhysicsSM.Draft.NullEdge.Carrier.GenericFiniteHodge
+lake build PhysicsSM.Draft.NullEdge.Carrier.KreinHodgeNoGo
+lake build PhysicsSM.Draft.NullEdge.SelfConsistentDecoder
+\end{verbatim}
+A full draft build additionally depends on optional Sphere-Packing-Lean modules;
+native Windows verification of the null-edge targets is independent of those
+optional modules.
+
+\section{Conclusion}
+
+The finite theorem is simple to state.  A bundle of future null spinors defines
+a positive momentum Gram matrix, and its determinant is the sum of squared
+pairwise wedges.  Rank detects the massless/massive dichotomy; the determinant
+is the continuous spectral area of mutually disagreeing null directions and is
+canonical among quadratic forms vanishing on the full null boundary.
+
+The carrier model adds structure without changing that invariant.  Its square
+separates four operator types; the explicit rational presentation is
+coefficient-rigid and admits a positive sector.  Closure can lower the finite
+gap and, in the correct two-body plane, bind below threshold.  Turn mass enters
+an exact checkerboard history only at corners; the corner weight is now the
+exponential of an additive local action, producing a genuine finite phase sum
+and discrete Dirac recursion.  The same walk has exact dispersion
+$\cos(\omega a)=\cos(ka)\cos(ma)$ and zero-momentum eigenphases
+$e^{\mp\ii ma}$, so ``spectral'' and ``turn mass'' meet in one checked finite
+object.  Closure separately carries a nontrivial
+history-local $U(1)$ holonomy that is gauge invariant on closed loops.  A first
+$3+1$ rational tetrahedral lift now
+proves null primitive steps, a positive timelike endpoint from mixed
+directions, and the exact one-third normalization obstruction.  Its Hadamard
+sublattice has the concrete eight-element quotient
+$D_4/L_H\simeq(\Z/2)^3$, while the causal audit excludes the remaining roots as
+primitive null steps.  Independently,
+a principal-symbol theorem identifies the common null front cone preserved by
+lower-order channel mixing while retaining subluminal massive drift.  The
+soldering defect now has a nondegenerate matrix-coframe realization with an
+induced Lorentz metric, determinant volume, invariant quadratic action, exact
+refinement, and a nonzero rational boost witness.  A soldering field that
+modifies the principal metric must nevertheless be audited as cone-defining
+rather than lower order.
+
+These statements are enough to define a serious finite research program, but
+not enough to identify the model with nature.  The decisive next results are
+a summed $3+1$ projector-history kernel, an exactly unitary massive tetrahedral
+update, a controlled many-step continuum limit, a derived
+choice of physical time generator, and a field-by-field principal-symbol audit
+of the four channels.  The higher-dimensional many-particle QCA obstruction of
+Mlodinow--Brun is a separate locality problem, not a no-go for the landed
+single-particle kinematics \cite{MlodinowBrunNoGo}.  The failure conditions are
+already visible.
+
+\begin{thebibliography}{99}
+
+\bibitem{ElvangHuang}
+H.~Elvang and Y.-t.~Huang,
+\emph{Scattering Amplitudes}, arXiv:1308.1697.
+
+\bibitem{ArkaniHamedMassive}
+N.~Arkani-Hamed, T.-C.~Huang, and Y.-t.~Huang,
+\emph{Scattering Amplitudes For All Masses and Spins},
+JHEP 11 (2021) 070, arXiv:1709.04891.
+
+\bibitem{ChinLee}
+S.~Chin and S.~Lee,
+\emph{Momentum bispinor, two-qubit entanglement and twistor space},
+arXiv:1407.2492.
+
+\bibitem{Wootters}
+W.~K.~Wootters,
+\emph{Entanglement of formation of an arbitrary state of two qubits},
+Phys. Rev. Lett. 80 (1998) 2245--2248, arXiv:quant-ph/9709029.
+
+\bibitem{DarianoPerinottiPrinciples}
+G.~M.~D'Ariano and P.~Perinotti,
+\emph{Derivation of the Dirac equation from principles of information
+processing}, Phys. Rev. A 90 (2014) 062106, arXiv:1306.1934.
+
+\bibitem{BisioDarianoTosini}
+A.~Bisio, G.~M.~D'Ariano, and A.~Tosini,
+\emph{Quantum field as a quantum cellular automaton: the Dirac free evolution
+in one dimension}, Ann. Phys. 354 (2015) 244, arXiv:1212.2839.
+
+\bibitem{DarianoPathIntegral}
+G.~M.~D'Ariano, N.~Mosco, P.~Perinotti, and A.~Tosini,
+\emph{Path-integral solution of the one-dimensional Dirac quantum cellular
+automaton}, Phys. Lett. A 378 (2014) 3165--3168, arXiv:1406.1021.
+
+\bibitem{FeynmanHibbs}
+R.~P.~Feynman and A.~R.~Hibbs,
+\emph{Quantum Mechanics and Path Integrals}, McGraw--Hill, 1965.
+
+\bibitem{JacobsonSchulman}
+T.~Jacobson and L.~S.~Schulman,
+\emph{Quantum stochastics: the passage from a relativistic to a
+non-relativistic path integral}, J. Phys. A 17 (1984) 375.
+
+\bibitem{FosterJacobson}
+B.~Z.~Foster and T.~Jacobson,
+\emph{Spin on a 4D Feynman Checkerboard}, arXiv:1610.01142.
+
+\bibitem{DarianoWeyl}
+G.~M.~D'Ariano, N.~Mosco, P.~Perinotti, and A.~Tosini,
+\emph{Path-sum solution of the Weyl Quantum Walk in 3+1 dimensions},
+Phil. Trans. R. Soc. A 375 (2017) 20160394, arXiv:1705.08552.
+
+\bibitem{NzonganiTetra}
+U.~Nzongani, N.~Eon, I.~Marquez-Martin, A.~Perez, G.~Di Molfetta, and
+P.~Arrighi,
+\emph{Dirac quantum walk on tetrahedra}, arXiv:2404.09840.
+
+\bibitem{MlodinowBrun}
+L.~Mlodinow and T.~A.~Brun,
+\emph{Discrete spacetime, quantum walks, and relativistic wave equations},
+Phys. Rev. A 97 (2018) 042131, arXiv:1802.03910.
+
+\bibitem{MlodinowBrunNoGo}
+L.~Mlodinow and T.~A.~Brun,
+\emph{Quantum field theory from a quantum cellular automaton in one spatial
+dimension and a no-go theorem in higher dimensions},
+Phys. Rev. A 102 (2020) 042211, arXiv:2006.08927.
+
+\bibitem{Barrett}
+J.~W.~Barrett,
+\emph{A Lorentzian version of the non-commutative geometry of the Standard
+Model}, J. Math. Phys. 48 (2007) 012303, arXiv:hep-th/0608221.
+
+\bibitem{vanDenDungen}
+K.~van den Dungen,
+\emph{Krein spectral triples and the fermionic action},
+Math. Phys. Anal. Geom. 19 (2016) 4, arXiv:1505.01939.
+
+\bibitem{Wilson}
+K.~G.~Wilson,
+\emph{Confinement of quarks}, Phys. Rev. D 10 (1974) 2445.
+
+\bibitem{BanksCasher}
+T.~Banks and A.~Casher,
+\emph{Chiral symmetry breaking in confining theories},
+Nucl. Phys. B 169 (1980) 103.
+
+\bibitem{GinspargWilson}
+P.~H.~Ginsparg and K.~G.~Wilson,
+\emph{A remnant of chiral symmetry on the lattice},
+Phys. Rev. D 25 (1982) 2649.
+
+\bibitem{NielsenNinomiya}
+H.~B.~Nielsen and M.~Ninomiya,
+\emph{Absence of neutrinos on a lattice}, Nucl. Phys. B 185 (1981) 20.
+
+\bibitem{Regge}
+T.~Regge,
+\emph{General relativity without coordinates}, Nuovo Cim. 19 (1961) 558.
+
+\bibitem{DittrichRyan}
+B.~Dittrich and J.~P.~Ryan,
+\emph{Phase space descriptions for simplicial 4d geometries},
+Class. Quant. Grav. 28 (2011) 065006, arXiv:0807.2806.
+
+\bibitem{FreidelSpeziale}
+L.~Freidel and S.~Speziale,
+\emph{Twisted geometries: A geometric parametrisation of $SU(2)$ phase space},
+Phys. Rev. D 82 (2010) 084040, arXiv:1001.2748.
+
+\bibitem{BaezWise}
+J.~C.~Baez and D.~K.~Wise,
+\emph{Teleparallel gravity as a higher gauge theory},
+Commun. Math. Phys. 333 (2015) 153--186, arXiv:1204.4339.
+
+\bibitem{ArrighiCurvedWalk}
+P.~Arrighi, S.~Facchini, and M.~Forets,
+\emph{Quantum walking in curved spacetime}, arXiv:1505.07023.
+
+\bibitem{PhysLean}
+J.~Tooby-Smith,
+\emph{HepLean: Digitalising high energy physics}, arXiv:2405.08863.
+
+\end{thebibliography}
+
+\end{document}

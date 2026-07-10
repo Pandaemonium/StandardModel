@@ -1,0 +1,13 @@
+# Summary of changes for run 65381ab4-43fe-4af6-b92c-c807b360bfc0
+Delivered the requested strategy/audit as a document: `AUDIT_semantic_alignment.md` (committed and pushed). No Lean proof work was required or done; the repo's `RequestProject/Main.lean` contains only imports/options, and the six statements are not in the repo, so the audit reasons from the verbatim signatures you supplied (with explicit flags where a verdict depends on a definition — `edge`, `v`, `Hmass`, `Podd`, etc. — that is not visible in the project).
+
+For each of (1)–(6) the document gives a two-line vacuity/reading verdict with reasoning:
+
+- (1) det_P_eq_massSq — vacuity: witnessed (universal polynomial identity, det = p0²−p1²−p2²−p3² = m², non-degenerate at timelike/null points); reading: faithful, only the "little-group spinor matrix" label overreaches the proved determinant fact.
+- (2) detP_unique — vacuity: non-degenerate (det itself witnesses hnull; ∃k = uniqueness up to scale); reading: faithful ONLY if "quadratic" is retained (says nothing about higher-degree invariants). The `_hinv` underscore genuinely certifies "SL2-inv unused."
+- (3) rank3_det_ne_pairwise — vacuity: witnessed by explicit numerals (zero-vs-nonzero split is the sharp refuter); reading: "different function" is fair, but "intrinsically rank-2" is an interpretive over-generalization from two points.
+- (4) family_fails — vacuity: witnessed and genuinely needs BOTH configs (one is always fittable); reading: faithful for the c·detP form, would overreach if read as "no family law of any form."
+- (5) even_gaps / odd_preserves — vacuity: even_gaps witnessed (det = m⁴ ≠ 0), but odd_preserves is AT-RISK of vacuity because `(A+Podd s).mulVec v = 0` is trivial if v = 0 and no v ≠ 0 is visible; reading: "conditional chiral protection" generalizes from a single matrix/perturbation.
+- (6) fork_iff — vacuity: non-vacuous but arithmetically trivial (α/2−1 = −1/2 ⟺ α = 1); reading: FALSE-SHAPE, all physics is smuggled into the definition lamExp := α/2−1 and the threshold, none derived by the theorem.
+
+Ranked top-3 readings most at risk of outrunning the Lean: (6) fork_iff (false-shape — trivial arithmetic, physics is definitional), (5) odd_preserves (possible vacuity from missing v ≠ 0, plus single-example generalization), (3) rank3_det_ne_pairwise (universal "intrinsically rank-2" from finite witnesses), with (4) and (2) as lower-risk runners-up and (1) lowest risk. The document also gives a meta-finding: the two spots a prose red-team + kernel both miss are (6) and (5)'s odd_preserves, both of which should be checked directly against the source definitions.

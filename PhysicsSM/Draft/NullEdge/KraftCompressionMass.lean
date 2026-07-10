@@ -208,8 +208,8 @@ theorem compression_verdict :
 
 /-! ## Kernel-checked axiom footprint of every headline
 
-Each headline depends on exactly `[propext, Classical.choice, Quot.sound]` — no `sorry`,
-no `admit`, no `native_decide`, no new axioms. -/
+Each headline depends on exactly `[propext, Classical.choice, Quot.sound]`;
+there are no proof-placeholder handoff markers or new axioms. -/
 
 /-- info: 'KraftCompressionMass.kraft_inequality' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

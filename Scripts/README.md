@@ -148,8 +148,8 @@ Scripts/
     lieart_branching.py — generate branching rule fixtures via LieART (Mathematica)
     sympy_gamma.py      — generate gamma matrix identity fixtures via SymPy
     carrier_dynamics_harness.py - validated dynamics-simulation seed: Plucker
-      kinematics, budget normalization, unitary sector evolution, RG Schur flow,
-      and finite canonical ensemble checks
+      kinematics, budget normalization, variational mass-shell checks, unitary
+      sector evolution, RG Schur flow, and finite canonical ensemble checks
     validate_flux2d_wilson_dirac.py - numerical Wilson-Dirac flux-index oracle
   index/
     build_index.py      — extract declaration metadata from Lean sources into JSON

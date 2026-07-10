@@ -20,8 +20,8 @@ is the velocity-register instance of `KraftCompressionMass`'s `Hlin = mass²`, n
 
 ## Physical setup
 
-A massive Dirac fermion's instantaneous velocity operator has spectrum exactly `{+1, -1}`
-(`= ±c`, the luminal "zigzag"). For a stationary mode the observable mean velocity is
+A chosen Cartesian Dirac velocity component has spectrum `{+1, -1}` in the
+finite model. For a stationary one-dimensional mode the observable mean is
 `vbar = p/E` with `vbar² = 1 - m²/E² = (p/E)²`, on shell `m² = E² - p²`.
 
 We model the `±c` motion as a 2-outcome classical distribution over the velocity
@@ -42,8 +42,9 @@ the 50/50 zigzag).
 This is the **linear entropy** (a rational `1 - Tr ρ²` proxy), **NOT** the Shannon entropy.
 The result is a **corollary-level restatement** of the drift relation `vbar² = 1 - m²/E²` in
 information-theoretic language: `S_L = (1 - vbar²)/2`. The value here is the interpretation /
-connection (mass² = velocity-mixture impurity), not proof depth. This is not Shannon entropy
-and claims no more than a rational-entropy proxy. The linear entropy / purity `1 - Tr ρ²`
+connection (mass² = velocity-mixture impurity), not proof depth. It is not a
+simultaneous three-velocity or classical trajectory theorem. This is not
+Shannon entropy and claims no more than a rational-entropy proxy. The linear entropy / purity `1 - Tr ρ²`
 notion is standard quantum information (clean-room here, not imported).
 
 Everything is purely rational (`Q = ℚ`), proved by `field_simp`/`ring`/`norm_num`, carrying

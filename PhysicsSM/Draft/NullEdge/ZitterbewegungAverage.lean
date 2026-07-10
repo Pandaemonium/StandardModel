@@ -22,9 +22,9 @@ set_option grind.warning false
 This file formalizes a finite, sqrt-free, purely (rational/real) algebraic model that
 reconciles two facts about a single Dirac momentum mode:
 
-* **Instantaneous velocity is always ±c.** The velocity operator has eigenvalues ±1; the
-  two eigenstates are a right-mover (`+1`) and a left-mover (`-1`), the two "luminal
-  channels".
+* **A chosen Dirac velocity component has ±c spectral support.** The
+  corresponding finite operator has eigenvalues ±1. We model those two
+  outcomes as right- and left-moving luminal sectors.
 * **The observable drift is subluminal**, with speed-squared `‖v‖² = 1 - m²/E²`.
 
 The bridge is *Zitterbewegung*: the drift is the time-average (convex combination) of the
@@ -43,10 +43,11 @@ occupation imbalance by the physical Dirac value `w₊ - w₋ = p/E`.  Together 
 
 ## Scope / honesty
 
-This is a **finite 2-channel algebraic model**, not a derivation from the Dirac equation.
-It ties the two "landed halves" (instantaneous ±c vs. subluminal drift) together as one
-convex-averaging identity.  No `Real.sqrt`, no `Complex`; all statements are exact rational
-identities and inequalities.
+This is a **finite 2-channel algebraic model**, not a derivation from the Dirac
+equation or a classical microscopic trajectory. It ties componentwise `±c`
+spectral support to subluminal drift through one convex-averaging identity.
+No `Real.sqrt`, no `Complex`; all statements are exact rational identities and
+inequalities.
 -/
 
 namespace ZitterbewegungAverage
