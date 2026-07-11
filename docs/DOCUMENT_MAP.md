@@ -103,11 +103,170 @@ as current state.
   a complete invariant with canonical representatives and nondegenerate
   same-mass/different-mass controls. Universal carrier classification remains
   open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelShearModuli.lean` - first exact moduli result
+  for the four-channel classification program: a faithful additive
+  determinant-one rational shear family preserves the total of three ordered
+  even channels and every linear type submodule, while a nonzero middle
+  channel makes distinct shear parameters give distinct refinements. This is
+  a residual type-compatible subgroup. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelRefinementTorsor.lean` - full type-only
+  affine-fibre classification: after choosing any base refinement with fixed
+  total, every ordered three-channel refinement is reached by a unique
+  zero-sum admissible shift. A nonzero admissible direction proves the fibre
+  is non-singleton. The physical selector-preserving quotient remains open.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelSelectorUniqueness.lean` - conditional
+  uniqueness theorem for channel refinements: two internal decompositions
+  carrying the same pair of sign gradings with four distinct joint eigenvalues
+  coincide. The theorem does not derive the second grading from the carrier;
+  locality, edge exchange, word degree, positivity, and information
+  monotonicity remain candidate intrinsic selectors. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelNaturalityNoGo.lean` - maximal-symmetry
+  selector obstruction: every score invariant under all translations of an
+  additive torsor is constant, and a nontrivial type-only refinement torsor
+  admits no uniquely preferred refinement defined by a fully invariant
+  predicate. A successful selector must break the residual symmetry or justify
+  a smaller physical quotient. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelSelectorRigidity.lean` - exact additive
+  selector criterion: a homomorphic selector rigidifies the full fixed-total
+  refinement fibre iff it is injective on zero-sum shifts. A nonzero rational
+  ambiguity direction injects `Q`, so no finite-valued additive selector can
+  rigidify that fibre. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelSelectorDescent.lean` - exact source-to-
+  representation intrinsicality gate: kernel preservation is necessary for
+  selector descent and, under surjective evaluation, sufficient with a unique
+  descended selector; includes the killed-relation obstruction. This is
+  generic quotient infrastructure, not a live physical selector. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelSelectorQuotient.lean` - exact generic
+  quotient by a supplied selector kernel, with class equality equivalent to
+  selector indistinguishability and canonical equivalence to the selector
+  range. Standard first-isomorphism infrastructure; no selector is thereby
+  made physical. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelSolderDegreeNoGo.lean` - live
+  presentation-dependence kill for raw solder degree: the nonzero represented
+  word `P=c1*c1#` is idempotent, so degree-two and degree-four presentations
+  coincide and no additive represented selector can read both degrees.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelTraceSelectorNoGo.lean` - intrinsic
+  represented-selector boundary: componentwise matrix trace is
+  conjugation-invariant but blind to an explicit nonzero trace-zero zero-sum
+  shear, so it cannot rigidify the complete fixed-total fibre. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelQuadraticSelectorFamily.lean` - exact
+  variational selector family: every positive diagonal quadratic channel cost
+  has a unique weighted-barycentric minimizer, while two explicit positive
+  metrics select different decompositions of the same nonzero total. This
+  proves selection after choosing a metric, not a canonical physical metric.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelQuadraticInnerLift.lean` - exact lift of the
+  weighted selector theorem to arbitrary real inner-product channel spaces:
+  completion of squares, sharp lower bound, global unique minimizer, and
+  metric-disagreement control. The inner product and weights are supplied,
+  not physically derived. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelKreinMetricNoGo.lean` - exact positive-metric
+  obstruction on the live carrier: a nonzero chirality-even,
+  Krein-self-adjoint matrix has adjoint-induced self-pairing `-2`, so
+  `trace(A# B)` is not positive semidefinite on the retained even self-adjoint
+  sector. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelKreinSectorSignature.lean` - exhaustive
+  normal-form and signature classification of the live even
+  Krein-self-adjoint rational carrier sector: six unique coordinates with four
+  positive and two negative square directions. It does not derive which
+  positive subspace is physical. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelCommutatorSelectorClassification.lean` -
+  structural scalar-selector theorem on the live represented carrier: every
+  rational-linear functional annihilating all commutators is a scalar multiple
+  of trace and therefore noninjective, with an explicit nonzero trace-zero
+  witness. Nonlinear, vector-valued, spectral, locality, positivity, and
+  information selectors remain outside its scope. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean` -
+  exhaustive 16-field four-site compression classification and exact
+  same-derived-winding counterexample. Winding/wall count alone does not
+  determine the signature; the repaired finite criterion also requires wall
+  position relative to reflection-fixed sites. Compressed-sector no-mode is
+  not promoted to a complete-walk, topological, or stability claim.
+  [DRAFT-LEAN]
+- `AgentTasks/overnight-publication-run-2026-07-11/FOUR_CHANNEL_CLASSIFICATION_PROGRAM.md`
+  - active Paper F program separating the exact chosen four-term carrier-square
+  expansion, the canonical chirality odd/even split, residual even-sector
+  moduli, and the additional selector problem. [LIVE]
+- `AgentTasks/overnight-publication-run-2026-07-11/PAPER_F_MANUSCRIPT_ARCHITECTURE_2026-07-11.md`
+  - negative-classification manuscript architecture: theorem spine, abstract,
+  section order, nearest-work confrontation, publication fork, and prohibited
+  upgrades. The stronger positive-selector route remains separate. [LIVE]
+- `AgentTasks/overnight-publication-run-2026-07-11/HELP_NEEDED_2026-07-11.md`
+  - standalone collaborator brief ranking the seven hardest remaining bridges:
+    decomposition equivalence, operational phase consequences, strict `3+1`
+    locality, changing-lattice convergence, the corrected defect invariant,
+    geometric many-body causality, and nonzero scale selection. Each ask records
+    the landed frontier, closure criterion, kill condition, and misleading
+    routes already excluded. [LIVE]
+- `AgentTasks/overnight-publication-run-2026-07-11/PRO_RESPONSE_DISPOSITION_2026-07-11.md`
+  - implementation disposition of Pro's blocker response: endomorphism-
+    cohomology quotient, free phase-defect and reflection-index handoff to
+    Fable, sequential-to-layer CAR successor, low/high continuum synthesis,
+    homogeneous scale-selection no-go, and Laurent-unit resource theorem.
+    External formulas and citations remain proposals until independently
+    checked and kernel-transcribed. [LIVE]
+- `PhysicsSM/Draft/NullEdge/ChannelPositiveSectorModuli.lean` - guarded exact
+  rational Krein boost producing a second injective positive four-coordinate
+  family, with norm preservation and an explicit norm-one member outside the
+  diagonal family. This proves represented positive-sector nonuniqueness, not a
+  physical selector or full Grassmannian classification. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelPositiveComplementDisk.lean` - guarded
+  rational open-disk classification of positive complements containing the
+  three named even channels, with unique disk coordinate/nonzero scale, strict
+  interior, and null-boundary controls. No physical disk point or final
+  carrier/gauge quotient is selected. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ChannelPhysicalCohomology.lean` - guarded finite
+  contraction theorem: a chain map has zero induced physical action exactly
+  when it is null-homotopic, and every physical endomorphism has an explicit
+  lift. The rational witness/control triple proves nonvacuity and that the
+  chain-map condition is load-bearing. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Carrier/WardPhysicalCohomology.lean` - guarded
+  instantiation of the contraction theorem on the existing positive
+  Ward/descent witness. Its explicit charge, reverse-arrow contraction, and
+  one-dimensional physical inclusion/projection satisfy the full contraction
+  packet; zero physical action is exactly null homotopy and every physical
+  endomorphism lifts. Derivation from the full null-edge carrier,
+  finite-range homotopies, and the full carrier-automorphism quotient remain
+  open.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Carrier/PhysicalHomotopyLocality.lean` - guarded
+  finite-range theorem for the explicit cohomological homotopy. Matrix ranges
+  add under composition; `S*X+(P*X)*S` and `Q*H+H*Q` have displayed radius
+  budgets. An exact path witness attains distance two, while a distant
+  projector control violates radius one. Full-carrier derivation of local
+  contraction/projector data remains open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/Carrier/WardAutomorphismQuotient.lean` - guarded
+  complete coordinate classification of charge-commuting, Krein-form-
+  preserving automorphisms of the finite positive Ward witness. Physical
+  compression is exactly the final coordinate; physical-identity maps are
+  constraint-exact. Includes a nonidentity exact shear and a physical phase
+  that is provably non-exact. The initially proposed `U^*G*U=1` condition is
+  explicitly refuted and corrected to `U^*G*U=G`. [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/PluckerMassOperator.lean` - general two-spinor
   centerpiece for the focused Paper I draft: the complex Pluecker coordinate
   defines an odd Hermitian rest operator whose square is the momentum
   determinant; includes the exact Dirac square, phase covariance, and
   collinear gap-closing theorem. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/FullBlochSplitDeterminants.lean`,
+  `FullBlochSplitPlus.lean`, and `FullBlochSplitMinus.lean` - exact
+  all-momentum `4x4` determinant formulas for the live ordered successive-axis
+  walk at Floquet eigenvalues `+1` and `-1`, with an explicit definitional
+  bridge to `Compact3Plus1DiracRate.splitStep` and the body-center simultaneous
+  zero control.  These are spectral criteria, not an alias-free regulator.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/FullBlochZeroClassification.lean` - complete
+  zero- and pi-quasienergy crossing classification for the principal massive
+  branch of the live ordered split walk: both determinant polynomials vanish
+  exactly at the simultaneous body-center cosine locus. Includes the
+  `cos(theta)=0` extra-zero boundary control. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/CommutatorWilsonStrictnessKill.lean` - exact
+  family-scoped locality obstruction for a proposed commutator-Wilson repair:
+  integer Fourier frequencies are strict finite range but make the zone-edge
+  gate trivial and retain all three even-corner aliases; the noninteger
+  rational-Pythagorean de-aliasing certificate is therefore nonlocal.
+  [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/PluckerMassDynamics.lean` and
   `CornerWalkEquivalence.lean` - explicit rest eigenvectors, decomposition
   independence, exact mass-coin group law, and the finite `cos^n` checkerboard
@@ -116,6 +275,7 @@ as current state.
   `{0, pi}` band-touching set, massive discriminant bound, and the Floquet
   zone-edge partner audit for the focused `1+1` walk. [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/Compact3Plus1DiracRate.lean`,
+  `Compact3Plus1RefinedWindowRate.lean`,
   `Local3Plus1RateBridge.lean`, `FiniteWalkPositionConvergence.lean`,
   `FiniteZModPlancherel.lean`, `Finite3Plus1FourierBridge.lean`,
   `Finite3Plus1AnalyticSignBridge.lean`, `FiniteTorus3Plancherel.lean`,
@@ -126,7 +286,9 @@ as current state.
   `WilsonDiracRegulator.lean`, `FloquetDeterminantCriterion.lean`, and
   `CountableL2WavepacketConvergence.lean` -
   exact finite local `3+1` norm preservation, ordered x/y/z/mass symbol,
-  compact-box `O(1/n)` rate, finite Fourier-kernel lifts in `1+1` and `3+1`,
+  compact-box `O(1/n)` rate and a refined `3+1` many-step bound retaining
+  `exp(|t| B4/n)` rather than `exp(B4)`, finite Fourier-kernel lifts in `1+1`
+  and `3+1`,
   exact vector-valued one-axis and product-three-torus
   Plancherel/wave-packet bounds, exact
   finite-character blocks on every product plane wave, the finite-to-analytic
@@ -173,6 +335,19 @@ as current state.
   branch, patch-transition, or independent link data; an explicit three-link
   periodic field has winding one and is proved not to be the raw increment of
   any global real vertex phase.
+  `ChiralFlipMode.lean` supplies the generic finite protection engine for a
+  chiral unitary matrix: conjugation-closed unimodular characteristic roots
+  give `det W = (-1)^mult(-1)`, so determinant `-1` forces an exact `-1`
+  eigenvector and, in even dimension, an exact `+1` partner.  A nontrivial
+  sigma-x witness and identity control prevent a vacuous sign argument.  A
+  `SignWallDefectRouteB.lean` supplies the next conditional composition: an
+  isometric invariant-sector compression inherits chirality and unitarity, and
+  compressed determinant `-1` lifts a nonzero reflection-even flip mode to the
+  full register.  The sector embedding and determinant sign are still
+  hypotheses; the concrete spinor-derived wall instantiation is a separate
+  gate.  Some control/assigned-wall declarations in that draft module use
+  documented compiled evaluation, while the Route-B headline declarations
+  carry standard-axiom pins in `OvernightTheoryAxiomGuard.lean`.
   `StrictQCAMinimalArchitecture.lean` proves a scoped architecture lower bound:
   no three-axis four-channel range-one single-factor Laurent QCA can retain the
   exact live Dirac tangents and exact all-momentum unitarity while adding a
@@ -181,6 +356,22 @@ as current state.
   viable relaxation.  The stronger even-corner theorem proves all three
   even-parity zone corners exactly alias the origin after any momentum-
   independent onsite coin, including the complex Pluecker mass coin.
+  `LaurentUnitResource.lean` proves the cross-architecture one-dimensional
+  ring precursor: every unit Laurent polynomial over a field is a nonzero
+  scalar times a unique monomial, every genuine two-term polynomial is a
+  nonunit, and the determinant of an invertible finite Laurent matrix is a
+  unique monomial. This is a strict-QCA resource theorem at ring level, not a
+  `3+1` no-doubling theorem or physical index identification.
+  `LaurentFlowIndex.lean` packages that unique determinant exponent as an
+  additive invariant under matrix composition, proves identity exponent zero
+  and pure-shift normalization, and gives a one-channel two-shift
+  noninvertibility control. It remains an algebraic one-variable precursor,
+  not yet a physical GNVW-index or `3+1` theorem.
+  `PlueckerPhaseDefectSpectrum.lean` proves an exact symbolic two-site
+  free-carrier phase-defect polynomial, its equal-modulus hypothesis control,
+  zero-gap locus, and common-phase conjugacy. It establishes phase-sensitive
+  spectral data in that finite Hamiltonian, not topological protection or a
+  localized interacting defect.
   `Carrier/PluckerScaleSelectionNoGo.lean` proves the landed positive Pluecker
   action is quartic under common primitive-spinor scaling and has no nonzero
   stationary scale whenever the unscaled action is positive; an exact
@@ -188,6 +379,13 @@ as current state.
   requires a competing homogeneity, constraint, ensemble scale, or additional
   dimensionful input; the exact potential `(t^2-c)^2` is the positive control,
   selecting nonzero minima only after the scale `c` is supplied.
+  `FiniteHomogeneousScaleNoGo.lean` proves the generic radial theorem behind
+  that example: any positive finite action with exact positive-natural-degree
+  homogeneity has strictly positive unit-scale radial derivative and therefore
+  no stationary nonzero scale.  Degree zero is the flat boundary control, and
+  an exact quartic unit witness has derivative four.  The theorem does not
+  exclude dimensional transmutation in a refining family with running
+  dimensionless couplings.
   `TemporalBlockingRG.lean` defines exact two-step temporal blocking, proves
   closure of the mass-only Pluecker subgroup, gives an exact x-y quarter-turn
   counterexample to closure of the scalar-parameter split family, and
@@ -201,9 +399,18 @@ as current state.
   module, while its full covariance and inherited locality remain targets.
   `FiniteCARSecondQuantization.lean` defines the determinant-minor exterior
   lift `Gamma(U)` for every finite one-particle matrix, proves vacuum and exact
-  one-particle agreement, and conserves particle number and parity.  Creation
-  covariance, functoriality/unitarity for unitary `U`, and inherited causal
-  locality remain the hard successor theorems.
+  one-particle agreement, conserves particle number and parity, proves the
+  full creation-operator covariance identity by ordered-minor Laplace
+  expansion, and proves the exact exterior-functor laws
+  `Gamma(1) = 1` and `Gamma(UV) = Gamma(U) Gamma(V)`, together with
+  conjugate-transpose compatibility for every ordered-minor coefficient and
+  the exact two-sided inverse law for a one-particle unitary.  It also proves
+  the corresponding Fock adjoint identity and exact preservation of the finite
+  occupation-basis Hermitian inner product. `CARAnnihilationLocality.lean`
+  adds exact creation/annihilation adjointness, annihilation covariance for
+  every complex one-particle matrix, and relation-filtered coefficient-support
+  laws on both creation and annihilation. These are finite algebraic support
+  statements, not a Lieb--Robinson bound or interacting causal cone.
   `PlueckerQuarticInteraction.lean` gives an explicit four-mode quartic
   pair-transfer observable: its forward two-particle amplitude is the primitive
   spinor wedge `z`, its reverse amplitude is `conj z`, and a `3+4i` primitive
@@ -218,17 +425,67 @@ as current state.
   quartic square is exactly the pair-sector projector, giving its minimal
   finite dynamical polynomial.  The
   kick fixes every one-particle occupation basis state but is nontrivial on the
-  two-particle witness.  This is
+  two-particle witness. `PlueckerPairKickNonQuasiFree.lean` proves that no
+  one-particle matrix has determinant-minor lift equal to this kick: singleton
+  agreement forces the matrix to be the identity, which contradicts the exact
+  pair action. This is
   a finite unitary two-particle witness, not yet an operator-exponential theorem,
   a second-quantized local walk, or a continuum field theory.
+  `PlueckerCausalCone.lean` places that same pair operation on an arbitrary
+  embedded four-mode block as an even quartic CAR polynomial. It proves exact
+  disjoint-block commutation, unit-phase involutivity, a nonzero phase-transfer
+  witness, and finite scheduled support propagation in the strong even-CAR sense: supported
+  operators commute with every creation and annihilation generator outside the
+  declared region. Its weaker occupation-transition footprint is retained only
+  as infrastructure and is explicitly not a locality definition. The result is
+  finite and schedule-level. `PlueckerGeometricCone.lean` adds a genuine
+  graph-neighborhood theorem: under a reflexive neighborhood and a
+  `BlockLocal` hypothesis on every sequential gate, strong CAR support lies in
+  the corresponding iterated ball.  It includes a contiguous nontrivial block
+  and an explicit far block failing locality. `PlueckerLayerCone.lean` upgrades
+  this to circuit layers: pairwise-disjoint local gates consume one
+  neighborhood expansion per layer, so a schedule is bounded by its layer
+  depth rather than its gate count. The result does not prove sharpness,
+  Hilbert-space unitarity, free-walk composition, an operator exponential,
+  scattering, a continuum limit, or a higher-dimensional Jordan--Wigner
+  theorem.
+  `PlueckerQuarticNotOneBody.lean` adds the matching generator-level boundary:
+  every standard number-preserving one-body CAR generator has zero matrix
+  element between the displayed disjoint pairs, while the Hermitian Pluecker
+  quartic transfer has the exact nonzero unit-phase element. This remains a
+  fixed four-mode certificate, not a spatial-locality or scattering theorem.
   `ChangingLatticePDECore.lean` proves the exact `L2` bulk-plus-ultraviolet-tail
   bound needed to wrap fixed-space multiplier convergence in a genuine
   changing-lattice sampling/interpolation theorem, and proves that the `L2`
   tail outside measurable monotone bands vanishes when those bands exhaust
   frequency space.  Their composition proves abstract global `L2` convergence
-  whenever the in-band multiplier error tends to zero.  Scaled Fourier
-  isometries, concrete sampling/interpolation, and the final position-space PDE
-  identification remain successor gates.
+  whenever the in-band multiplier error tends to zero.
+  `ChangingModeEmbedding.lean` supplies a concrete coefficient-space layer:
+  restriction from common `Z^3` modes to `[-N,N]^3`, literal zero-padding back,
+  exact finite/common-space energy equality, nested exhaustion, and strong
+  square-summable tail convergence with zero-mode and outside-box controls.
+  `SobolevTailRate.lean` strengthens that layer quantitatively: finite weighted
+  mode energy of order `s` bounds the squared cutoff residual by
+  `(N+2)^(-s)`, with a nonzero just-outside-face delta control.
+  Scaled finite-torus/continuum Fourier isometries and the final position-space
+  PDE identification remain successor gates.
+  `Finite3Plus1ProductDFTCore.lean` proves the exact positive-character product
+  harmonic analysis used by the live finite walk: unit-modulus plane waves,
+  row and column orthogonality for every nonzero torus size, and cancellation
+  of the exact `1/sqrt(siteCard)` normalization.
+  `LiveDFTComposition.lean` composes that core into exact normalized
+  forward/inverse transform round trips, Parseval, finite-sum and local-step
+  linearity, the transform of a single plane-wave mode, a complete finite mode
+  expansion, and exact conjugacy of the live local step to its finite momentum
+  character block. `Finite3Plus1AnalyticSignBridge.lean` closes the convention
+  gate exactly: the finite block equals the analytic ordered block at the
+  negative lattice angle, with a nonzero quarter-zone sign fixture. The live
+  DFT module also proves the exact inverse-transform factorization and the
+  all-finite-time symbol-power law.
+  `Finite3Plus1FourierBridge.lean` additionally proves that every character
+  phase diagonal, every conjugated axis block, and the full ordered
+  axis/axis/axis/mass character block are exactly unitary for arbitrary real
+  mass and step parameters.
 - `Scripts/sim/null_edge_regulator_benchmark.py` and
   `AgentTasks/null-edge-so-what-closure-2026-07-10/HELD_OUT_REGULATOR_BENCHMARK.md`
   - pre-registered high-momentum benchmark of the exact even-corner alias
@@ -331,6 +588,46 @@ as current state.
 - `HONEST_SCORECARD.md`, `MORNING_REPORT.md` - dawn claim/trust audit and final
   user-facing report templates. [LIVE]
 
+## Overnight publication run 2026-07-11 (AgentTasks/overnight-publication-run-2026-07-11/)
+
+- `RUN_PLAN.md` - publication-first constitution: Paper A ship target, decisive
+  theorem races for Papers B-E, top-tier referee gates, Aristotle/literature
+  cadence, artifact standard, and the 07:00 hard audit. [LIVE]
+- `GOAL_PROMPT_CODEX.md`, `GOAL_PROMPT_CLAUDE.md` - co-equal standing orders
+  for proof/artifact leadership and Fable manuscript/positioning leadership.
+  [LIVE]
+- `PAPER_GATE_MATRIX.md`, `MANUSCRIPT_CLAIM_MATRIX.md`,
+  `REFEREE_OBJECTION_REGISTER.md` - publication readiness, exact claim anchors,
+  and hostile-referee dispositions. [LIVE]
+- `ARISTOTLE_QUEUE.md`, `LEDGER.md`, `LIT_SEARCH_LOG.md` - ranked proof fleet,
+  append-only coordination, and literature/package provenance. [LIVE]
+- `ARTIFACT_MANIFEST.md`, `HONEST_SCORECARD.md`, `MORNING_REPORT.md` - release
+  requirements and dawn handoff. [LIVE]
+
+## 24-hour publication run 2026-07-11 to 2026-07-12 (AgentTasks/24h-publication-run-2026-07-12/)
+
+- `RUN_PLAN.md` - successor constitution rooted in the verified 55-module
+  publication baseline; prioritizes Paper C stability/index, Paper D
+  changing-lattice composition, Paper E interacting dynamics, Paper F
+  decorated-carrier classification, and a theorem-gated Jordan-Clifford bridge
+  for the Furey-Baez manuscript.
+  [LIVE]
+- `JORDAN_CLIFFORD_BRIDGE_PROGRAM.md` - proposed dependency chain from a nested
+  exceptional-Jordan flag to weak/color spaces, Furey's exterior module, a
+  five-mode generation, and the representation-level `Z6` kernel; includes
+  semantic corrections, source-verification tasks, and field-theory gates.
+  [LIVE]
+- `GOAL_PROMPT_CODEX.md`, `GOAL_PROMPT_CLAUDE.md` - disjoint default lanes,
+  shared harvest/audit rules, and a 09:45 PDT July 12 completion target. [LIVE]
+- `ARISTOTLE_QUEUE.md`, `PAPER_GATE_MATRIX.md`,
+  `REFEREE_OBJECTION_REGISTER.md` - inherited-job disposition, first-wave
+  theorem targets, publication gates, and hostile-referee tests. [LIVE]
+- `LEDGER.md`, `LIT_SEARCH_LOG.md`, `MANUSCRIPT_CLAIM_DELTA.md`,
+  `ARTIFACT_MANIFEST.md` - append-only coordination and deltas from the
+  audited July 11 baseline. [LIVE]
+- `HONEST_SCORECARD.md`, `FINAL_REPORT.md` - final independent audit and
+  two-pass-verifier handoff templates. [LIVE]
+
 ## Active run: two-day carrier run (AgentTasks/twoday-carrier-run-2026-07-07/)
 
 - `RUN_PLAN.md` - the run's constitution (roles, cadences, discipline). [LIVE]
@@ -352,6 +649,9 @@ as current state.
 - `Sources/CodeLatticeE8_Publication_Theorem_Map.md` - theorem map for the E8 artifact. [STABLE]
 - `Sources/CodeLatticeE8_Trust_Report.md` - trust/verification report for the E8 artifact. [STABLE]
 - `Sources/Furey_Baez_DVT_Formalization_Paper_Outline.md` - octonion/SM formalization paper outline. [STABLE]
+- `Sources/Furey_Baez_Octonion_SM_Formalization_Manuscript_2026-07-11.tex` - the
+  Furey + Baez/DVT formalization manuscript (draft v1, written from the outline
+  against the live trusted tree; compiles clean; AFM-targeted). [DRAFT-MS]
 
 ## Research references and surveys (Sources/, selected)
 

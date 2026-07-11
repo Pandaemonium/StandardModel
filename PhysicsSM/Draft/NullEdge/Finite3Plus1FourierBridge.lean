@@ -158,6 +158,63 @@ theorem shiftPhase_norm {L : Nat} [NeZero L]
   rw [shiftPhase]
   split <;> rw [ZMod.stdAddChar_apply] <;> exact Circle.norm_coe _
 
+/-- Products of unitary internal matrices are unitary. -/
+theorem isUnitary_mul (U V : Mat4)
+    (hU : SuccessiveAxisDiracWalk.IsUnitary U)
+    (hV : SuccessiveAxisDiracWalk.IsUnitary V) :
+    SuccessiveAxisDiracWalk.IsUnitary (U * V) := by
+  constructor
+  · rw [Matrix.conjTranspose_mul, Matrix.mul_assoc,
+      ← Matrix.mul_assoc Uᴴ U V, hU.1, one_mul, hV.1]
+  · rw [Matrix.conjTranspose_mul, Matrix.mul_assoc,
+      ← Matrix.mul_assoc V Vᴴ Uᴴ, hV.2, one_mul, hU.2]
+
+/-- Every exact diagonal character block is unitary. -/
+theorem phaseDiag_unitary {L : Nat} [NeZero L]
+    (axis : Axis) (k : Position L) :
+    SuccessiveAxisDiracWalk.IsUnitary (phaseDiag axis k) := by
+  constructor <;>
+    rw [phaseDiag, Matrix.diagonal_conjTranspose,
+      Matrix.diagonal_mul_diagonal, ← Matrix.diagonal_one] <;>
+    congr 1 <;>
+    funext a
+  · change (starRingEnd ℂ) (shiftPhase axis k a) * shiftPhase axis k a = 1
+    rw [← Complex.normSq_eq_conj_mul_self]
+    norm_cast
+    rw [Complex.normSq_eq_norm_sq, shiftPhase_norm]
+    norm_num
+  · change shiftPhase axis k a * (starRingEnd ℂ) (shiftPhase axis k a) = 1
+    rw [mul_comm, ← Complex.normSq_eq_conj_mul_self]
+    norm_cast
+    rw [Complex.normSq_eq_norm_sq, shiftPhase_norm]
+    norm_num
+
+/-- Every conjugated one-axis finite character block is unitary. -/
+theorem finiteAxisSymbol_unitary {L : Nat} [NeZero L]
+    (axis : Axis) (k : Position L) :
+    SuccessiveAxisDiracWalk.IsUnitary (finiteAxisSymbol axis k) := by
+  unfold finiteAxisSymbol
+  exact isUnitary_mul _ _
+    (isUnitary_mul _ _
+      (CliffordDiagonalPositionBridge.axisBasis_unitary axis)
+      (phaseDiag_unitary axis k))
+    (CliffordDiagonalPositionBridge.conjTranspose_unitary _
+      (CliffordDiagonalPositionBridge.axisBasis_unitary axis))
+
+/-- The complete ordered finite character block is exactly unitary at every
+lattice momentum and every real mass/step parameter. -/
+theorem finiteLocalSymbol_unitary {L : Nat} [NeZero L]
+    (m eps : Real) (k : Position L) :
+    SuccessiveAxisDiracWalk.IsUnitary (finiteLocalSymbol m eps k) := by
+  unfold finiteLocalSymbol
+  exact isUnitary_mul _ _
+    (isUnitary_mul _ _
+      (isUnitary_mul _ _
+        (finiteAxisSymbol_unitary 0 k)
+        (finiteAxisSymbol_unitary 1 k))
+      (finiteAxisSymbol_unitary 2 k))
+    (Local3Plus1RateBridge.massFactor_unitary m eps)
+
 /-- Zero lattice momentum is an exact normalization control. -/
 theorem zero_mode_control {L : Nat} [NeZero L] (v : Vec4) :
     modeState (L := L) (fun _ => 0) v = fun _ => v := by
@@ -202,6 +259,10 @@ end PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge
 /-- info: 'PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge.shiftPhase_norm' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge.shiftPhase_norm
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge.finiteLocalSymbol_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge.finiteLocalSymbol_unitary
 
 /-- info: 'PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge.modeState_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% PORTFOLIO-RATIFICATION-PENDING: drafted overnight 2026-07-11 per strategy
+% memo 3 (draft-now, hold-submit).  Whether this earns a standalone slot or
+% becomes a section of the Paper E line is a portfolio decision reserved for
+% the user.  RELEASE GATES shared with the companion papers: named authors,
+% artifact manifest.
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tr}{\operatorname{tr}}
+\definecolor{kernelcolor}{RGB}{0,92,74}
+\newcommand{\Kernel}{\textcolor{kernelcolor}{\textsc{Kernel}}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Invariant Mass as Qubit Mixedness and Null-Direction
+Distinguishability}
+\author{Mark Schwab}
+\date{July 11, 2026 --- companion draft v1 (overnight run)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite family of lightlike momenta written as rank-one spinor
+matrices, $P=\sum_i\psi_i\psi_i^\dagger$, the invariant mass is
+$\mu=\sqrt{\det P}$.  We prove, with every finite statement checked by the
+Lean~4 kernel, that this Lorentzian invariant is exactly a quantum
+information quantity of the normalized momentum matrix $\rho=P/\tr P$: the
+squared mass-to-trace ratio is the qubit mixedness,
+$\mu^2/(\tr P)^2=\det\rho=(1-\tr\rho^2)/2$; for two spinors the rest gap is
+the energy-weighted trace distance of the normalized null directions,
+$\mu^2=\|\psi\|^2\|\phi\|^2-|\langle\psi,\phi\rangle|^2$, the optimal
+one-shot distinguishability; and for arbitrary families the mass is an
+ensemble-weighted sum of pairwise distinguishability combinations.  In the
+Pauli convention $P=E\,\id+\mathbf p\cdot\boldsymbol\sigma$ this reads
+$m^2/E^2=2\,(1-\tr\rho^2)$: the relativistic rest content of a momentum
+ensemble is precisely the purity deficit of its direction qubit.  The
+oriented Pluecker coordinate $z=\psi\wedge\phi$ refines the picture: its
+modulus is the mixedness datum above, while its phase lives in the
+determinant $U(1)$ of the purification freedom $P=MM^\dagger$,
+$M\mapsto MR$.  At fixed $P$, that phase is invisible to observables built
+only from the reduced momentum matrix and to the one-particle rest spectrum;
+the companion papers prove exactly which varying-phase and
+two-particle settings make it visible.  ``Mass is entropy'' would overstate
+the result; the exact statement concerns purity, determinant, and pairwise
+distinguishability at fixed normalization, and nothing here predicts an
+absolute mass scale.
+\end{abstract}
+
+\section{Setup and the purity identity}
+
+Let $\psi_1,\dots,\psi_N\in\C^2$ and $P=\sum_i\psi_i\psi_i^\dagger$.  Under
+the Pauli map each summand is a future null momentum; $\det P$ is the
+Lorentzian invariant $\mu^2$, and the classical Cauchy--Binet identity
+$\det P=\sum_{i<j}|\psi_i\wedge\psi_j|^2$ is kernel-checked in the
+companion derivation paper \cite{CompanionDerivation}.  Here we normalize:
+$T=\tr P$ and, for $T\neq0$, $\rho=P/T$, a positive unit-trace $2\times2$
+matrix --- literally a qubit density matrix built from the occupied null
+directions with energy weights.
+
+\begin{theorem}[Purity--determinant bridge]\label{thm:purity}
+For any $2\times2$ complex matrix $\rho$ of unit trace,
+\begin{equation}
+ \det\rho=\frac{1-\tr(\rho^2)}{2}.
+\end{equation}
+Consequently, for $T\neq0$,
+\begin{equation}
+ \frac{\mu^2}{T^2}
+ =\det\rho
+ =\frac{1-\tr\rho^2}{2}.
+\end{equation}
+\end{theorem}
+\noindent\Kernel{}\quad(\texttt{det\_eq\_half\_one\_sub\_purity},
+\texttt{normalized\_det}.)  A single occupied direction, or several
+perfectly aligned directions, give a pure state ($\tr\rho^2=1$) and zero
+mass; noncollinear directions give a mixed state and a positive rest gap;
+in the rest frame $\rho$ is maximally mixed.
+
+\begin{corollary}[Pauli form]\label{cor:pauli}
+Writing $P=E\,\id+\mathbf p\cdot\boldsymbol\sigma$ with real coefficients,
+$\tr P=2E$ and $\det P=E^2-|\mathbf p|^2$, so for $E\neq0$,
+\begin{equation}
+ \frac{m^2}{E^2}=2\left(1-\tr\rho^2\right),
+ \qquad \rho=\frac{P}{2E}.
+\end{equation}
+\end{corollary}
+\noindent\Kernel{}\quad(\texttt{pauli\_trace\_and\_det}; the displayed
+convention is fixed by explicit Pauli matrices in the artifact.)
+
+\section{Mass as optimal distinguishability}
+
+\begin{theorem}[Lagrange/trace-distance form]\label{thm:distance}
+For $\psi,\phi\in\C^2$,
+\begin{equation}
+ |\psi\wedge\phi|^2
+ =\|\psi\|^2\|\phi\|^2-|\langle\psi,\phi\rangle|^2 .
+\end{equation}
+\end{theorem}
+\noindent\Kernel{}\quad(\texttt{wedge\_normSq\_eq}.)  For unit spinors the
+right side is $1-|\langle\widehat\psi,\widehat\phi\rangle|^2$, the squared
+trace distance of the corresponding pure qubit states --- the optimal
+one-shot discrimination probability bias.  With the null normalization
+$\|\psi\|^2=2E_1$, $\|\phi\|^2=2E_2$,
+\begin{equation}
+ \mu=2\sqrt{E_1E_2}\;D(\widehat\psi,\widehat\phi):
+\end{equation}
+after energy weighting, \emph{rest mass is how well one measurement can
+tell the two null directions apart}.
+
+\begin{theorem}[Ensemble form]\label{thm:ensemble}
+For any finite family,
+\begin{equation}
+ \det P=\sum_{i<j}
+ \Bigl(\|\psi_i\|^2\|\psi_j\|^2-|\langle\psi_i,\psi_j\rangle|^2\Bigr),
+\end{equation}
+so with $p_i=\|\psi_i\|^2/T$,
+\begin{equation}
+ \frac{\mu^2}{T^2}
+ =\sum_{i<j}p_ip_j
+ \Bigl(1-|\langle\widehat\psi_i,\widehat\psi_j\rangle|^2\Bigr).
+\end{equation}
+\end{theorem}
+\noindent\Kernel{}\quad(\texttt{famMomentum\_det\_eq\_pairwise}.)
+Invariant mass squared is an ensemble-weighted sum of pairwise quantum
+distinguishabilities.  The maximally mixed witness (two orthogonal
+equal-energy directions: $\tr\rho^2=1/2$, $\mu^2/T^2=1/4$) and the pure
+control (repeated direction: $\tr\rho^2=1$, $\mu=0$) are part of the
+artifact (\texttt{witness\_and\_control}).
+
+\section{Where the phase lives, and what this paper does not claim}
+
+Factor $P=MM^\dagger$ with $M=[\psi\ \phi]$; then $z=\det M=\psi\wedge\phi$
+and the normalized amplitude $A=M/\sqrt{T}$ purifies $\rho=AA^\dagger$ with
+$\det A=z/T$.  Right multiplication $M\mapsto MR$, $R\in U(2)$, preserves
+$P$ while $z\mapsto z\det R$: \emph{the modulus of $z$ is the observable
+mixedness datum of Theorems~\ref{thm:purity}--\ref{thm:ensemble}, while its
+phase lives in the determinant $U(1)$ of the purification freedom}.  At fixed
+$P$, every observable built only from the reduced momentum matrix is blind to
+that purification phase, and exact unitary conjugacy preserves the one-particle
+rest spectrum.  The companion papers establish exactly which additional
+settings retain it: a spatially varying phase leaves derived
+link data with an integer winding, and a two-particle interference
+experiment separates equal-modulus fields with survival probability
+$4/5$ versus $1$ \cite{CompanionDerivation}.
+
+Four boundaries.  First, ``mass is entropy'' overstates the theorem: the
+exact statements concern the determinant, purity, and pairwise
+distinguishability at fixed trace normalization, not a von Neumann entropy
+production principle.  Second, nothing here selects an absolute scale: the
+identities are homogeneous, and the companion papers prove the natural
+positive homogeneous action selects only the collapsed zero scale.  Third,
+Pluecker coordinates appear widely in quantum-information treatments of
+entanglement; the contribution claimed here is the exact, kernel-checked
+bridge from null-momentum ensembles to Lorentzian mass, the canonical rest
+operator, and operational discrimination --- not the use of Pluecker
+coordinates in quantum information as such.  Fourth, the relativistic
+quantum information literature has long studied how the mixedness of
+\emph{reduced} states varies with the observer: reduced spin density
+matrices of massive particles are not Lorentz covariant and their entropy
+has no invariant meaning \cite{PeresTerno}, and boosts interchange spin and
+momentum entanglement \cite{GingrichAdami}.  The present identity is
+complementary rather than overlapping: it does not track mixedness across
+frames but pins it, frame by frame, to the mass-to-trace ratio --- the
+numerator $\mu^2$ is the Lorentz invariant, and all frame dependence is
+carried by the trace normalization $T=2E$.
+
+\appendix
+\section{Machine verification}
+
+All displayed identities are kernel-checked in Lean~4 over Mathlib in the
+module \texttt{PhysicsSM/Draft/NullEdge/MassMixedness.lean}, with
+build-enforced assumption footprints equal to
+$\{\mathtt{propext},\mathtt{Classical.choice},\mathtt{Quot.sound}\}$, and
+integrate with the project's existing trace-identity and visibility-duality
+modules.  The archival release is a shared gate with the companion papers.
+
+\begin{thebibliography}{9}
+
+\bibitem{CompanionDerivation}
+Null-Edge Formalization Project,
+\emph{Null-spinor area as the rest gap of an exactly unitary Dirac walk},
+companion paper, in preparation (2026).
+
+\bibitem{PeresTerno}
+A.~Peres and D.~R.~Terno,
+\emph{Quantum information and relativity theory},
+Rev.\ Mod.\ Phys.\ \textbf{76}, 93 (2004), arXiv:quant-ph/0212023.
+
+\bibitem{GingrichAdami}
+R.~M.~Gingrich and C.~Adami,
+\emph{Quantum entanglement of moving bodies},
+Phys.\ Rev.\ Lett.\ \textbf{89}, 270402 (2002), arXiv:quant-ph/0205179.
+
+\end{thebibliography}
+
+\end{document}

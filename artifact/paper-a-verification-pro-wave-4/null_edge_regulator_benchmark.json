@@ -1,0 +1,118 @@
+{
+  "parameters": {
+    "z_re": 3.0,
+    "z_im": 4.0,
+    "eps": 0.2,
+    "r": 1.0
+  },
+  "tolerance": 1e-10,
+  "metrics": {
+    "nonorigin_even_alias_count": 3,
+    "max_even_alias_residual": 2.298660082789514e-16,
+    "body_center_plus_distance": 5.928737959693675e-17,
+    "body_center_minus_distance": 2.237206298897719e-16,
+    "wilson_nonorigin_zero_count": 0,
+    "wilson_min_nonorigin_gap": 2.0,
+    "unregulated_zero_corner_count": 8
+  },
+  "checks": {
+    "three_nonorigin_even_aliases": true,
+    "alias_residual": true,
+    "body_center_plus": true,
+    "body_center_minus": true,
+    "wilson_no_nonorigin_zeros": true,
+    "wilson_corner_gap": true,
+    "unregulated_negative_control": true
+  },
+  "pass": true,
+  "corners": [
+    {
+      "corner_over_pi": [
+        0,
+        0,
+        0
+      ],
+      "parity": 0,
+      "origin_alias_residual": 0.0,
+      "wilson_gap": 0.0,
+      "unregulated_gap": 0.0
+    },
+    {
+      "corner_over_pi": [
+        0,
+        0,
+        1
+      ],
+      "parity": 1,
+      "origin_alias_residual": 2.0000000000000004,
+      "wilson_gap": 2.0,
+      "unregulated_gap": 1.2246467991473532e-16
+    },
+    {
+      "corner_over_pi": [
+        0,
+        1,
+        0
+      ],
+      "parity": 1,
+      "origin_alias_residual": 2.0000000000000004,
+      "wilson_gap": 2.0,
+      "unregulated_gap": 1.2246467991473532e-16
+    },
+    {
+      "corner_over_pi": [
+        0,
+        1,
+        1
+      ],
+      "parity": 0,
+      "origin_alias_residual": 2.2986600827895134e-16,
+      "wilson_gap": 3.9999999999999987,
+      "unregulated_gap": 1.7319121124709866e-16
+    },
+    {
+      "corner_over_pi": [
+        1,
+        0,
+        0
+      ],
+      "parity": 1,
+      "origin_alias_residual": 2.0000000000000004,
+      "wilson_gap": 2.0,
+      "unregulated_gap": 1.2246467991473532e-16
+    },
+    {
+      "corner_over_pi": [
+        1,
+        0,
+        1
+      ],
+      "parity": 0,
+      "origin_alias_residual": 2.298660082789514e-16,
+      "wilson_gap": 3.999999999999999,
+      "unregulated_gap": 1.7319121124709866e-16
+    },
+    {
+      "corner_over_pi": [
+        1,
+        1,
+        0
+      ],
+      "parity": 0,
+      "origin_alias_residual": 1.7319121124709866e-16,
+      "wilson_gap": 3.9999999999999982,
+      "unregulated_gap": 1.7319121124709866e-16
+    },
+    {
+      "corner_over_pi": [
+        1,
+        1,
+        1
+      ],
+      "parity": 1,
+      "origin_alias_residual": 2.000000000000001,
+      "wilson_gap": 5.999999999999998,
+      "unregulated_gap": 2.1211504774498136e-16
+    }
+  ]
+}

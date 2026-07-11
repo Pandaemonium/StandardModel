@@ -1,0 +1,49 @@
+$ C:\Users\Owner\AppData\Local\Programs\Python\Python312\python.exe Scripts/oracle/carrier_dynamics_harness.py --output C:\Projects\StandardModel\artifact\paper-a-verification-pro-wave-3\carrier_dynamics_harness.json
+
+=== Carrier dynamics harness: validated simulation blocks ===
+
+1. KINEMATICS (Plucker mass = pairwise disagreement)
+  [PASS] det(sum psi psi^dag) = sum_{i<j}|wedge|^2 (Plucker identity)
+  [PASS] collinear bundle massless (det P = 0)
+  [PASS] non-collinear bundle massive (det P > 0, PosDef)
+2. BUDGET (channel shares sum to one)
+      shares (b_A, b_C, b_T) = (0.325, 0.025, 0.650)
+  [PASS] b_A + b_C + b_T = 1 (signed_budget_sum_one)
+3. VARIATIONAL (quadratic action and mass-shell stationarity)
+  [PASS] quadratic stationarity iff A psi = 0
+  [PASS] mass-shell stationarity iff H psi = m^2 psi
+  [PASS] first variations vanish on the eigen/mass-shell state
+      selected m^2=1.000; stationarity residual=0.00e+00
+4. EVOLUTION (unitary carrier dynamics on the positive sector)
+  [PASS] Hamiltonian PosDef on the sector (a genuine mass operator)
+  [PASS] norm conserved under U=exp(-iHt) (unitarity)
+  [PASS] energy <psi|H|psi> conserved (the D2 invariant)
+      spectrum(H) min=1.000 max=3.000 (a positive mass gap = 1.000)
+5. RG FLOW (Schur decimation: mass from blocking non-collinear nulls)
+  [PASS] (ab)^2 = k (ab) with k={a,b} (null_pair_prod_sq law)
+  [PASS] effective term non-nilpotent (mass generated), k!=0
+  [PASS] finite RG orbit preserves idempotent nonzero effective edge
+  [PASS] finite RG orbit preserves trace observable
+  [PASS] collinear control: {a,a}=0 => effective term nilpotent (no mass)
+6. ENSEMBLE (finite canonical ensemble over the carrier spectrum)
+  [PASS] partition function positive (partitionFunction_pos)
+  [PASS] all probabilities positive (probability_pos)
+  [PASS] sum_i p_i = 1 (sum_probability_eq_one)
+  [PASS] beta=0 probabilities are uniform (probability_zero)
+  [PASS] energy variance nonnegative (energyVariance_nonneg)
+      beta=0.90 Z=1.278148 F=-0.272680 S=1.567490
+      <E>=1.468975 Var(E)=0.459359
+
+=== SUMMARY ===
+  kinematics  : all checks PASS
+  budget      : all checks PASS
+  variational : all checks PASS
+  evolution   : all checks PASS
+  rg_step     : all checks PASS
+  ensemble    : all checks PASS
+
+  Harness VALIDATED (every block matches its kernel theorem).
+  Finite D1-D5 kernel seeds now exist; the next work is specialization
+  to the interacting carrier action, transfer operator, Schur flow,
+  and thermodynamic limit - see DYNAMICS_GROUNDWORK.md.
+  Machine-readable summary: C:\Projects\StandardModel\artifact\paper-a-verification-pro-wave-3\carrier_dynamics_harness.json

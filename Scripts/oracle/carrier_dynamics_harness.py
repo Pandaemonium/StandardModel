@@ -23,8 +23,12 @@ Six validated blocks:
      variance (validates FiniteCanonicalEnsemble).
 
 Numeric oracle only; the VALIDATIONS mirror kernel theorems.
-Usage: python Scripts/oracle/carrier_dynamics_harness.py
+Usage: python Scripts/oracle/carrier_dynamics_harness.py [--output result.json]
 """
+
+import argparse
+import json
+from pathlib import Path
 
 import numpy as np
 
@@ -249,6 +253,14 @@ def validate_canonical_ensemble():
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Optional path for a machine-readable JSON validation summary.",
+    )
+    args = parser.parse_args()
+
     print("=== Carrier dynamics harness: validated simulation blocks ===\n")
     results = {
         "kinematics": validate_kinematics(),
@@ -267,6 +279,42 @@ def main():
     print("  to the interacting carrier action, transfer operator, Schur flow,")
     print("  and thermodynamic limit - see DYNAMICS_GROUNDWORK.md.")
 
+    if args.output is not None:
+        payload = {
+            "schema_version": 1,
+            "deterministic": True,
+            "numpy_version": np.__version__,
+            "random_seeds": {
+                "kinematics": 1,
+                "budget": 2,
+                "evolution": 3,
+                "variational": 4,
+            },
+            "parameters": {
+                "carrier": {"lambda": 2.0, "kappa": 1.0, "mu": 1.0},
+                "evolution_times": [0.0, 0.7, 1.9, 5.0],
+                "canonical_beta": 0.9,
+                "rg_steps": 5,
+            },
+            "tolerance_policy": {
+                "numpy_isclose_defaults": True,
+                "positive_spectrum_threshold": 1e-9,
+                "stationarity_residual_threshold": 1e-10,
+                "variance_floor": -1e-12,
+            },
+            "results": {name: bool(ok) for name, ok in results.items()},
+            "passed": bool(allok),
+        }
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(
+            json.dumps(payload, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+        print(f"  Machine-readable summary: {args.output}")
+
+    return 0 if allok else 1
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

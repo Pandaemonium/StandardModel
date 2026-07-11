@@ -1,0 +1,12 @@
+$ C:\Users\Owner\AppData\Local\Programs\Python\Python312\python.exe Scripts/sim/null_edge_regulator_benchmark.py --output C:\Projects\StandardModel\artifact\paper-a-verification\null_edge_regulator_benchmark.json
+
+{
+  "nonorigin_even_alias_count": 3,
+  "max_even_alias_residual": 2.298660082789514e-16,
+  "body_center_plus_distance": 5.928737959693675e-17,
+  "body_center_minus_distance": 2.237206298897719e-16,
+  "wilson_nonorigin_zero_count": 0,
+  "wilson_min_nonorigin_gap": 2.0,
+  "unregulated_zero_corner_count": 8
+}
+PASS

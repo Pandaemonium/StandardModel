@@ -56,7 +56,7 @@ No external code is copied.
 | Citation key | Reference |
 |---|---|
 | furey_thesis_2016 | Furey, "Standard model physics from an algebra?", PhD thesis, U. Waterloo, 2016. arXiv:1611.09182 |
-| furey_charge_2015 | Furey, "Charge quantization from a number operator", Phys. Lett. B 742 (2015) 195–199. arXiv:1603.04783 |
+| furey_charge_2015 | Furey, "Charge quantization from a number operator", Phys. Lett. B 742 (2015) 195–199. arXiv:1603.04078 |
 | furey_su3_2018 | Furey, "Three generations, two unbroken gauge symmetries, and one eight-dimensional algebra", Phys. Lett. B 785 (2018). arXiv:1805.06631 |
 | furey_sm_2018 | Furey, "SU(3)_C × SU(2)_L × U(1)_Y (×U(1)_X) as a symmetry of division algebraic ladder operators", EPJC 78 (2018) 375. arXiv:1806.00612 |
 

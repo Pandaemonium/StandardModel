@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% PORTFOLIO-RATIFICATION-PENDING: drafted 2026-07-12 (24h publication run)
+% as the Paper E companion once the dynamics gate closed: generator layer
+% (PlueckerPairGenerator), exact circuit locality (PlueckerCausalCone,
+% PlueckerLayerCone), operational discriminator (PlueckerPhaseObservable),
+% and the exact interacting two-particle spectrum fixture (pending
+% harvest slots marked PENDING below). RELEASE GATES shared with the
+% companions: named authors, artifact manifest.
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\tr}{\operatorname{tr}}
+\definecolor{kernelcolor}{RGB}{0,92,74}
+\definecolor{draftcolor}{RGB}{145,76,0}
+\newcommand{\Kernel}{\textcolor{kernelcolor}{\textsc{Kernel}}}
+\newcommand{\DraftTrust}{\textcolor{draftcolor}{\textsc{Kernel+Eval}}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+
+\title{Exactly Integrable Pair Interactions on a Fermionic Walk:\\
+generator, circuit cones, and an exact interacting spectrum}
+\author{Mark Schwab}
+\date{July 12, 2026 --- draft v0 (skeleton; 24h run)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We assemble a machine-checked account of the interacting layer of a
+finite fermionic quantum walk.  The supplied two-particle phase kick ---
+previously an opaque unitary gate --- is structured: it equals, up to a
+global phase, the exact quarter-period pulse of a finite Hermitian even
+quartic CAR generator $K(z)$ whose cube closes, $K^3=|z|^2K$, so the
+generated one-parameter gate family is exactly integrable, with a
+circle-parametrized group law proved as pure algebra and an explicit
+counterexample showing the naive half-pulse identification (without the
+global phase) is false.  Locality is exact rather than asymptotic:
+gates on disjoint mode sets commute, a scheduled sequence of finite-range
+blocks keeps CAR support inside the corresponding iterated neighborhood,
+and pairwise-disjoint layers cost one neighborhood step per layer, so
+depth --- not gate count --- bounds propagation.  There is no
+free/interaction exponential splitting: $[H_{\mathrm{free}},K]\neq0$
+exactly, so the composed automaton is defined, as in the interacting
+cellular-automaton literature, by alternating the free minor-lift with
+the kick layer.  On an explicit four-site ring at the Pythagorean kick,
+the composed step's two-particle spectrum is exactly characterized:
+the free levels that persist and twelve interaction-shifted quasienergies
+given in closed algebraic form by a rational cubic in $2\cos2\varepsilon$
+[PENDING: harvest of the spectrum-fixture formalization].  A
+gauge-invariant operational discriminator --- return probability $4/5$
+versus $1$ for equal-modulus conjugate fields --- shows the interacting
+sector retains the Pluecker phase.  Boundaries are stated exactly: the
+generator is supplied, not derived from the free carrier (an open
+problem shared with the Thirring-automaton literature); single-kick
+spectra are phase-independent; and no thermodynamic or continuum claim
+is made.
+\end{abstract}
+
+\section{Setup}
+[PENDING full prose.]  Fock space over four to eight modes; the CAR
+conventions, occupation basis, and the free determinant-minor lift
+$\Gamma(U)$ of the one-particle walk, as landed in
+\texttt{FiniteCARFockBasic}, \texttt{PlueckerQuarticInteraction}, and the
+minor-lift functoriality modules.
+
+\section{The generator layer}
+
+\begin{theorem}[Exactly integrable pair-gate family]\label{thm:gen}
+Let $K(z)\psi = z\,(\text{pairForward}\,\psi) +
+\bar z\,(\text{pairBackward}\,\psi)$ on the four-mode Fock space.  Then
+$K$ is Hermitian for the occupation inner product; $K^3=|z|^2K$; the
+circle-parametrized family
+$U(c,s)=\id+(c-1)P-\ii s\,K/|z|$ (with $P$ the pair-block projector)
+satisfies the exact group law
+$U(c_1,s_1)U(c_2,s_2)=U(c_1c_2-s_1s_2,\,s_1c_2+c_1s_2)$ and is unitary
+whenever $c^2+s^2=1$; and the walk's phase kick with unit coefficient
+$z/|z|$ equals $\ii\,U(0,1)$ on the pair sector, both fixing the
+complement --- the kick is the quarter-period pulse up to a global
+phase.  The naive identification without that phase is false, by an
+explicit amplitude witness.
+\end{theorem}
+\noindent\Kernel{}\quad(\texttt{PlueckerPairGenerator}:
+\texttt{generator\_hermitian}, \texttt{generator\_cubed},
+\texttt{group\_law}, \texttt{unitary}, \texttt{halfpulse\_low/high/off},
+\texttt{naive\_halfpulse\_false}, all-rational witness and the
+$(c,s)=(1,1)$ unitarity-failure control; in-file axiom guards.)
+
+\section{Exact circuit locality}
+[Prose PENDING; theorems landed.]  Disjoint even gates commute exactly;
+scheduled finite-range blocks propagate CAR support inside iterated
+neighborhoods with an explicit nonlocal control; pairwise-disjoint
+layers cost one neighborhood step per layer
+(\texttt{PlueckerCausalCone}, \texttt{PlueckerLayerCone}, \Kernel{}).
+
+\begin{remark}[No exponential splitting]
+$[H_{\mathrm{free}},K(z)]\neq0$ exactly (norm $5$ at the four-mode line
+witness; run record), so no Trotter-free factorization of a combined
+exponential exists; the interacting automaton is \emph{defined} by
+alternation, matching the field convention, and within-layer exactness
+is the landed theorem.  [Oracle-grade; formalization optional.]
+\end{remark}
+
+\section{The exact interacting spectrum on a four-site ring}
+[PENDING: boundstate harvest.]  At the rational $3$-$4$-$5$ kick the
+composed step's $28\times28$ two-particle characteristic polynomial
+factors over $\mathbb{Q}$ into unmoved free levels and a palindromic
+degree-12 factor whose quasienergies solve
+$3125w^3-2300w^2-6156w-1440=0$, $w=2\cos2\varepsilon$ [oracle-exact;
+formalization in flight].  A momentum block-diagonalization of the free
+lift, identifying which free levels the low-degree factors are, is the
+planned structural companion.
+
+\section{Operational phase retention}
+[Prose PENDING; theorem landed.]  Equal-modulus conjugate rest operators
+produce return probabilities $4/5$ versus $1$ in the supplied pair-kick
+sector (\texttt{PlueckerPhaseObservable}, \Kernel{}); single-kick
+spectra are exactly phase-independent, so the discriminator is genuinely
+interferometric.
+
+\section{Boundaries and open problems}
+The generator is supplied, not derived --- open here and in the
+interacting-automaton literature; the one-particle free carrier does
+carry the transported relative phase spectrally (companion paper).
+No continuum, thermodynamic, or scattering-theory claim is made; the
+spectrum fixture is $L=4$.
+
+\appendix
+\section{Machine verification}
+[PENDING: module/guard table on freeze.]
+
+\begin{thebibliography}{9}
+\bibitem{ThirringQCA}
+A.~Bisio, G.~M.~D'Ariano, P.~Perinotti, and A.~Tosini,
+\emph{The Thirring quantum cellular automaton},
+Phys.\ Rev.\ A 97 (2018) 032132, arXiv:1711.03920.
+\bibitem{ThirringPerturbative}
+A.~Bisio, P.~Perinotti, A.~Pizzamiglio, and S.~Rota,
+\emph{A perturbative approach to the solution of the Thirring quantum
+cellular automaton}, Entropy 27 (2025) 198, arXiv:2406.19917.
+\bibitem{QCAQFT}
+L.~Mlodinow and T.~A.~Brun,
+\emph{Quantum field theory from a quantum cellular automaton in one
+spatial dimension and a no-go theorem in higher dimensions},
+Phys.\ Rev.\ A 102 (2020) 042211, arXiv:2006.08927.
+\end{thebibliography}
+
+\end{document}

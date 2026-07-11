@@ -1,0 +1,71 @@
+name: Null-Edge Publication Verification
+
+on:
+  push:
+    paths:
+      - ".github/workflows/null_edge_publication_ci.yml"
+      - "PhysicsSM/Draft/NullEdge/**"
+      - "Scripts/oracle/carrier_dynamics_harness.py"
+      - "Scripts/publication/**"
+      - "Scripts/sim/null_edge_regulator_benchmark.py"
+      - "lakefile.toml"
+      - "lake-manifest.json"
+      - "lean-toolchain"
+  pull_request:
+    paths:
+      - ".github/workflows/null_edge_publication_ci.yml"
+      - "PhysicsSM/Draft/NullEdge/**"
+      - "Scripts/oracle/carrier_dynamics_harness.py"
+      - "Scripts/publication/**"
+      - "Scripts/sim/null_edge_regulator_benchmark.py"
+      - "lakefile.toml"
+      - "lake-manifest.json"
+      - "lean-toolchain"
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+    inputs:
+      full_build:
+        description: "Run the archival full repository build before headline checks"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  verify-paper-a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.8"
+
+      - name: Set up Lean
+        uses: leanprover/lean-action@v1
+
+      - name: Install numerical verifier dependencies
+        run: python -m pip install --disable-pip-version-check "numpy==2.4.3"
+
+      - name: Run formal and numerical publication checks
+        shell: bash
+        run: |
+          extra=()
+          if [[ "${{ github.event_name }}" == "schedule" || "${{ inputs.full_build }}" == "true" ]]; then
+            extra+=(--full-build)
+          fi
+          python Scripts/publication/verify_null_edge_paper_a.py "${extra[@]}"
+
+      - name: Upload verification record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: null-edge-paper-a-verification
+          path: artifact/paper-a-verification/
+          if-no-files-found: error
+          retention-days: 30

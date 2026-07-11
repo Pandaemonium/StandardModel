@@ -1,0 +1,4 @@
+import PhysicsSM.Draft.NullEdge.ChannelSolderDegreeNoGo
+
+#print axioms PhysicsSM.Draft.NullEdge.ChannelSolderDegreeNoGo.solderProjector_idempotent
+#print axioms PhysicsSM.Draft.NullEdge.ChannelSolderDegreeNoGo.no_additive_solder_degree_selector

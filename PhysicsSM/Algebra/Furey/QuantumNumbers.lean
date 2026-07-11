@@ -46,7 +46,7 @@ the two minimal left ideals J and J'. This is a longer-term target.
 ## Sources
 
 Source: Furey, arXiv:1806.00612, Sections 3–4.
-        Furey, arXiv:1603.04783 (charge quantization from number operator).
+        Furey, arXiv:1603.04078 (charge quantization from number operator).
 Provenance: clean-room formalization.
 
 ## Status

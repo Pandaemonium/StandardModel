@@ -146,6 +146,11 @@ import PhysicsSM.Spinor.SpinorTenfoldPurity
 import PhysicsSM.Spinor.SpinorTenfoldCAR
 import PhysicsSM.Spinor.SpinorTenfoldGammaSymm
 import PhysicsSM.Spinor.SpinorTenfoldColorAxis
+import PhysicsSM.Spinor.SpinorTenfoldWeakQuotient
+import PhysicsSM.Spinor.SpinorTenfoldWeakQuotientDescent
+import PhysicsSM.Spinor.SpinorTenfoldWeakQuotientSO10Generator
+import PhysicsSM.Draft.NullEdge.WeightedGrowingWindowModeSum
+import PhysicsSM.Draft.NullEdge.Carrier.WardGradedFrameDecoration
 import PhysicsSM.Spinor.SpinorTenfoldFierzKernel
 import PhysicsSM.Spinor.SpinorTenfoldFierz
 import PhysicsSM.Spinor.SpinorTenfoldCliffordGroup

@@ -40,3 +40,17 @@ doubling-repair references arXiv:2505.07900, 2601.15885, 2105.12314,
 smallest theorem-ready covering-map, stay-channel, BCC/tetrahedral, or unitary
 Wilson architecture outside the landed four-channel degree-one factor no-go,
 with an exact full-Bloch kill test.
+
+## Harvest and semantic verdict
+
+Downloaded the in-progress snapshot on 2026-07-10 and locally compiled
+`StrictQCASuccessor/Successor.lean`. Its proof-complete algebraic prefix is
+valid, but the claimed strict finite-range interpretation is rejected:
+`factor (r*q)` is a finite Fourier/Laurent harmonic only for integer `r`, while
+the de-aliasing certificates require noninteger trigonometric values. For
+integer `r`, the Wilson commutator is trivial at the zone edge and the aliases
+return. The corner and body-center certificates also impose different angle
+conditions and do not exhibit one parameter removing both. The two final
+global-doubler declarations remain proof placeholders backed only by numerical
+search. Sent a stop instruction and split the exact family-scoped obstruction
+into project `144a848d-d853-4ab5-b741-2a6fd7e0398b`.

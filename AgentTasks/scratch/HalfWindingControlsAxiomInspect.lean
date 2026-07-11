@@ -1,0 +1,6 @@
+import PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls
+
+#print axioms PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls.Wzero_no_neg_mode
+#print axioms PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls.Wzero_no_pos_mode
+#print axioms PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls.Wfour_no_neg_mode
+#print axioms PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls.Wfour_no_pos_mode

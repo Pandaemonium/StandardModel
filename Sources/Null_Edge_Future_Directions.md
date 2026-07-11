@@ -459,6 +459,24 @@ Second priority:
    inequivalent carriers satisfying all reasonable constraints imply
    underdetermination.
 
+   This is now a proposed classification paper rather than a single missing
+   lemma. Define a category of carrier-square decompositions and quotient by
+   gauge, carrier isomorphism, edge relabeling, and selector-preserving basis
+   change. First classify the full type-only moduli: chirality uniquely isolates
+   the odd soldering part, but the aperture/closure/turn refinement lies inside
+   one even sector. Then test whether solder degree, edge-exchange symmetry,
+   locality, physical positivity, information-resource monotonicity, and
+   refinement functoriality select one orbit. A residual family is a publishable
+   underdetermination theorem; uniqueness counts only if the selector is
+   intrinsic and not a coordinate reader encoding the desired answer. Run-local
+   specification: `AgentTasks/overnight-publication-run-2026-07-11/FOUR_CHANNEL_CLASSIFICATION_PROGRAM.md`.
+   The maximal-symmetry boundary is now exact in `ChannelNaturalityNoGo` [M]:
+   every full-torsor-invariant score is constant, so a unique physical channel
+   choice must break that symmetry or pass to a separately justified quotient.
+   `ChannelSelectorRigidity` [M] sharpens the positive side: an additive
+   selector works exactly when it is injective on zero-sum shifts, and no
+   finite-valued additive selector resolves a nonzero rational ambiguity.
+
 Longer-horizon but load-bearing:
 
 8. **Four-channel RG toward a continuum dictionary** [C, Suite B]. Show whether

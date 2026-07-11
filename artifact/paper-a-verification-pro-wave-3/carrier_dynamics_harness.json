@@ -1,0 +1,41 @@
+{
+  "deterministic": true,
+  "numpy_version": "2.4.3",
+  "parameters": {
+    "canonical_beta": 0.9,
+    "carrier": {
+      "kappa": 1.0,
+      "lambda": 2.0,
+      "mu": 1.0
+    },
+    "evolution_times": [
+      0.0,
+      0.7,
+      1.9,
+      5.0
+    ],
+    "rg_steps": 5
+  },
+  "passed": true,
+  "random_seeds": {
+    "budget": 2,
+    "evolution": 3,
+    "kinematics": 1,
+    "variational": 4
+  },
+  "results": {
+    "budget": true,
+    "ensemble": true,
+    "evolution": true,
+    "kinematics": true,
+    "rg_step": true,
+    "variational": true
+  },
+  "schema_version": 1,
+  "tolerance_policy": {
+    "numpy_isclose_defaults": true,
+    "positive_spectrum_threshold": 1e-09,
+    "stationarity_residual_threshold": 1e-10,
+    "variance_floor": -1e-12
+  }
+}

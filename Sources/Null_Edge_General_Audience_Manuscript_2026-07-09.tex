@@ -83,7 +83,7 @@
 \begin{center}
 \vspace*{0.55in}
 {\fontsize{31}{35}\selectfont\bfseries\textcolor{navy}{Reality in Null Steps}}\\[0.25em]
-{\Large Why mass may be the cost of keeping lightlike processes together}\\[0.75em]
+{\Large A visual guide to mass, motion, and geometry on a finite causal grid}\\[0.75em]
 {\large Null-Edge Formalization Project}\\[0.2em]
 {\textcolor{ink!65}{General-audience companion manuscript, revised July 10, 2026}}
 
@@ -98,7 +98,7 @@
   \node[draw=gold,fill=palegold,rounded corners=2pt,align=center,
     text width=4.35cm,inner sep=7pt] at (7.8,5.25)
     {\textbf{The central proposal}\\Mass is not a slower primitive step.\\
-     It is the durable residue left when\\lightlike processes must coexist.};
+     It is what lightlike steps look like\\when directions, phases, or frames disagree.};
   \draw[very thick,teal,-{Latex[length=2.2mm]}]
     (4.45,1.45)--(5.35,1.45);
   \node[label,anchor=west] at (5.55,1.45) {primitive null step};
@@ -119,22 +119,28 @@ proven, what is imported, and what is still conjecture.
 \end{center}
 \end{titlepage}
 
-\section*{Nothing moves slower than the speed of light}
+\section*{Nothing moves slower than light}
 
-Here is the opinion this manuscript will defend: nature's primitive act is not
-an object persisting from one moment to the next.  It is a causal transmission.
-That transmission is always lightlike.  Massive particles, atoms, and bodies
-are not slower primitive things.  They are stable patterns made from many such
-transmissions, and the pattern can drift more slowly than light even though no
-primitive link does.\footnote{This is the proposed ontology, not an experimental
-fact.  The exact finite model permits only lightlike one-step support and proves
-that coherent direction mixing can produce timelike drift.  Standard
-relativistic field equations likewise distinguish a null wavefront cone from
-the subluminal group velocity of a massive packet.  What remains conjectural is
-that nature has this finite null support at its fundamental scale.}
+Most people know that nothing can move \emph{faster} than the speed of light.
+But did you also know that nothing can move \emph{slower} than the speed of
+light?  It's true!\footnote{True at full strength in the model, and stated at
+full strength on purpose.  What is established physics: all known relativistic
+wave equations share one null front cone at highest order, and each Dirac
+velocity component has spectral values $\pm c$ (Section~\ref{sec:speed}).
+What is machine-checked in the finite model: every primitive step is
+lightlike, and slower-than-light drift emerges exactly from direction mixing
+(Sections~\ref{sec:onepage} and~\ref{sec:checkerboard}).  What is conjecture:
+that nature's elementary carrier works the same way.  The Higgs scalar is the
+one standing exception (Section~\ref{sec:particles}), and a composite object
+such as a proton is not claimed to move microscopically at $c$ as a whole.}
+If you zoom in closely enough, every particle is always whirring around at
+exactly the speed of light, all the time.  It is only when the lightlike
+steps keep changing direction that the particle appears, once you zoom out,
+to move slower.  That apparent slowness has a name.  We call it \emph{mass}.
 
-So the deliberately provocative slogan is not that an electron is a tiny bead
-racing along a hidden sawtooth path.  It is stronger and less classical:
+Before that picture hardens into a cartoon, one correction.  The claim is not
+that an electron is a tiny bead racing along a hidden sawtooth path.  The
+claim is stronger and less classical:
 
 \widebox{plum}{mist}{\Olabel\quad There is no massive object at the bottom
 of the description.  There are only lightlike quantum processes whose
@@ -161,19 +167,28 @@ phase matters as much as the magnitude, and exactly how the proposal can die.
 
 \section*{In brief}
 
-The proposal can be stated in four sentences.
+Our claim: the most elementary propagation nature allows is always lightlike
+--- one step forward in time is one null step through space, with nothing
+slower at the bottom.  A massive object drifts below light speed because its
+quantum amplitude is shared among different null directions.  Mass is not a
+substance riding along with the steps; mass \emph{measures} the failure of
+many lightlike directions to behave as one perfectly aligned ray.
+
+Behind that claim sit four commitments.
 
 \begin{enumerate}[leftmargin=1.6em]
-  \item \textbf{Events come before objects.}  A fundamental history is made of
-        causal transmissions, not little substances carried through a
-        pre-existing space.
+  \item \textbf{Events come before objects.}  The primitive entries in the
+        model are happenings --- one event passing influence to another ---
+        not little substances carried through a pre-existing space.
   \item \textbf{Null comes before timelike.}  Every primitive transmission is
-        lightlike; subluminal motion belongs to a composite pattern.
-  \item \textbf{Relation comes before mass.}  Mass measures a failure of null
-        directions, phases, and local frames to collapse to one simple ray.
-  \item \textbf{Decoding comes before particle.}  A particle is a stable answer
-        returned by the physical rules: a pattern that can be prepared,
-        transported, and detected repeatedly.
+        lightlike.  Moving slower than light is something only a composite
+        pattern can do.
+  \item \textbf{Relation comes before mass.}  Mass measures how far the
+        pattern's null directions, phases, and local frames fail to line up
+        into one ray.
+  \item \textbf{Decoding comes before particle.}  A particle is whatever
+        pattern survives being prepared, transported, and detected again and
+        again --- a stable answer, not a starting ingredient.
 \end{enumerate}
 
 We develop that idea on a finite causal grid.  Four recurring structures appear
@@ -454,7 +469,8 @@ program.}
 \section{The number hidden inside mass}
 \label{sec:phase}
 
-The wedge of two complex spinors is not merely a nonnegative mass:
+The oriented area of two null directions is not merely a nonnegative mass.
+It is a full complex number:
 \[
   z=\psi\wedge\phi=\rho e^{\ii\theta}.
 \]
@@ -465,7 +481,7 @@ angle and retains only
   \text{gap}^2=|z|^2.
 \]
 That is why an ordinary mass measurement sees the radius but not the angle.
-The angle is not absent; it is information that the quadratic spectrum has
+The angle is not absent; it is information that the squared energy formula has
 compressed away.
 
 \begin{center}
@@ -522,18 +538,40 @@ The current finite theory passes part of that harder test:
   \item A finite two-particle pair transfer has forward amplitude $z$ and
         reverse amplitude $\bar z$, while every one-particle basis state is
         fixed by the corresponding unitary pair operation.
+  \item Two mass fields with the same magnitude but different phases are
+        provably indistinguishable by any one-particle measurement, yet an
+        explicit two-particle interference experiment separates them, with
+        survival probability exactly $4/5$ against $1$.\footnote{Kernel-checked
+        at the $3+4\ii$ versus $5$ witnesses: the two rest operators are
+        exactly unitarily conjugate, and the double-kick interference
+        probability of a vacuum-referenced superposition is $4/5$, against
+        $1$ for the equal-field control.  The pair operation that reads the
+        phase is supplied, not yet derived from the free walk.}
 \end{itemize}
 
-The largest promised consequence is still open.  A phase winding around a zero
-of $z$ should behave like a topological defect and may force a localized mode.
-What is already proved is the necessary warning: a globally single-valued real
-phase on a periodic finite cycle has zero winding.  Nonzero winding requires
-patches or genuine link transition data; it cannot be conjured by drawing an
-angle that secretly jumps at a branch cut.\footnote{The live finite theorem
-constructs an explicit winding-one periodic link field and proves that no
-global real vertex phase realizes it.  The missing theorem is the reduction
-from patched local Pluecker data to the existing finite index operator and a
-stable localized eigenmode.}
+The largest promised consequence is still open, but its first half is now
+proved.  The link data of a mass field no longer has to be supplied by hand:
+for any field that never vanishes, the phase steps between neighboring sites
+are computed from the field itself, their total around a loop is always an
+exact whole number of turns, and an explicit field built from primitive
+spinors realizes exactly one turn.\footnote{Kernel-checked: the increments
+are principal arguments of neighbor ratios; the cycle total is $2\pi$ times
+an integer; a globally single-valued real phase still forces zero turns; and
+the winding-one witness is generated by an explicit spinor pair field.
+Nonzero winding cannot be conjured by drawing an angle that secretly jumps
+at a branch cut.}  A phase winding around a zero of $z$ may behave like a
+topological defect and force a localized mode; the current evidence now goes
+beyond a sketch but stops short of a general rule.  In one displayed two-wall
+walk, a self-adjoint compression forces exact $\pm1$ modes, while explicit
+inverse certificates prove that the complete displayed zero-wall and
+four-wall walks have none.  A second displayed family has exact localized
+mode witnesses.  Ordinary determinant and trace bookkeeping misses this
+fixture-level distinction.\footnote{The abstract compression theorem and its
+root count are kernel-checked.  The explicit rational fixtures use the
+compiled evaluator (draft-trust, documented).  What is not yet proved is a
+formal half-winding invariant, an iff theorem over wall counts, a bridge from
+the derived Pluecker winding to these walks, or stability under a stated class
+of perturbations.}
 
 \Olabel\quad The phase of mass is therefore a candidate memory of how the
 massive object is assembled.  The magnitude says how far the null directions
@@ -545,22 +583,22 @@ from place to place.
 
 ``Time in steps'' does not mean that an invisible cosmic clock clicks outside
 the universe.  A tick is one layer of causal updating: one more opportunity for
-an event to influence a later event.  Causal time is therefore order before it
-is duration.  A physical clock is a stable subsystem whose recurring phase or
-state change lets other processes compare durations.\footnote{The finite walk
+an event to influence a later event.  Causal time, in this picture, is order
+before it is duration; a physical clock is a stable subsystem whose recurring
+changes let other processes compare durations.\footnote{The finite walk
 supplies an external update count.  Deriving relational or proper time from an
 internal clock subsystem, and proving agreement with continuum proper time, is
 an open reconstruction problem.}
 
-\Olabel\quad Time does not carry the process forward.  The ordered process is
-what gives time its physical meaning.
-
 In one spatial dimension, a null step goes either right or left.  A massive
 Dirac amplitude can be represented as a sum over zigzag histories
-(Figure~\ref{fig:checkerboard}).  This is not one hidden classical trajectory;
-the propagator adds the complex amplitudes of every allowed history.  Each
-corner changes the propagation channel and contributes a factor proportional
-to the mass.  In the real-mass specialization,
+(Figure~\ref{fig:checkerboard}).  The everyday analogue is a sailboat tacking
+upwind: on every leg the boat moves at full sailing speed, yet its net
+progress up the channel is slower, set by how often it comes about.  The
+quantum version is not one hidden classical trajectory --- the propagator adds
+the complex amplitudes of every allowed history.  Each corner changes the
+propagation channel and contributes a factor proportional to the mass.  In the
+real-mass specialization,
 \[
   A(h)=(\ii\epsilon m)^{\#\text{corners}(h)}.
 \]
@@ -680,6 +718,29 @@ This tells us something conceptually valuable.  A local mass cannot simply be
 other virtue remain untouched.  Locality, unitarity, isotropy, internal
 dimension, and high-momentum topology negotiate with one another.
 
+The negotiation now has an exact map.  The project has proved a closed
+algebraic criterion, valid at every momentum and every mass value, whose two
+explicit polynomials vanish exactly where the walk's problematic
+zero-frequency and half-frequency waves live --- and, for every genuinely
+massive setting, has completely classified those trouble spots: they are
+precisely the points where all three momentum coordinates sit at a quarter
+turn.\footnote{Kernel-checked: $\det(U\mp1)=4P_{0,\pi}$ with explicit
+polynomials in the momentum cosines, and, for mass angles with
+$0<|\cos\theta|<1$, each polynomial vanishes exactly when all three momentum
+cosines are zero.  The boundary angles carry their own controls: the quarter-turn
+angle exhibits extra zeros, and the massless case reduces to the corner
+story.  Classifying the trouble spots does not remove them.}  Hunting for
+a clean regulator is therefore no longer a plotting exercise; it is a precise
+algebra problem with machine-checked regression tests.  The newest
+doubler-free walks in the literature escape by keeping a stay-put amplitude
+at the cost of the exact unit-speed structure --- a trade-off our no-go
+theorem shows is forced, not chosen.\footnote{Gupta and Short
+(arXiv:2601.15885) allow the walker to stay put, which removes the unwanted
+copies; applied to their published family, our kernel-checked
+stationary-amplitude theorem implies their velocity generator cannot square
+to the identity.  Their $3+1$ construction also retains a few residual
+non-Dirac states, so the fully clean problem is open in both programs.}
+
 There are already two controls on opposite sides of that boundary:
 
 \begin{center}
@@ -742,6 +803,14 @@ span an area, and the squared area is the mass contribution.  Aperture is the
 kinematic channel and the cleanest part of the framework.
 
 \subsection{Closure: remembering a loop}
+
+Walk a large closed loop on the curved Earth carrying an arrow you never
+deliberately rotate: start on the equator pointing north, walk to the north
+pole, turn and walk back down to a different point on the equator, then walk
+home along it.  The arrow comes back rotated, although you never twisted it;
+the loop itself did.  Closure is the grid version of that experiment, and on
+the grid the whole effect can be traced to something disarmingly simple: the
+order of two steps.
 
 Start at the southwest corner of a square and travel to the northeast corner.
 There are two simplest routes: walk east and then north, or walk north and then
@@ -828,14 +897,18 @@ as a turn; in the update table, it is conversion between two
 null left/right sectors.  The path picture and the rule-table picture are two views of
 the same local event.  Turn is therefore not a bend of a classical object.  It
 is amplitude transferred between two propagation channels; the mass rule
-sets the complex weight of that transfer.
+sets the complex weight of that transfer.  In the sailboat language of
+Section~\ref{sec:checkerboard}, turn is the tack: the mass sets how often the
+boat comes about.
 
 \subsection{Soldering: tying transport to spacetime}
 
 Internal directions do not become spacetime directions merely because we name
-them so.  Each site needs a local compass telling us what its internal arrows
-mean as actual directions, and neighboring compasses must be compared.  The
-technical name for such a compass is a \emph{coframe}.  At neighboring sites
+them so.  A printed map is useful only once its compass rose is aligned with
+north on the actual ground, and the alignment must be rechecked from place to
+place.  Each site therefore needs a local compass telling us what its internal
+arrows mean as actual directions, and neighboring compasses must be compared.
+The technical name for such a compass is a \emph{coframe}.  At neighboring sites
 $x$ and $y$, let $e_x$ and $e_y$ denote their compasses and $U_{xy}$ the rule
 for carrying one to the other (Figure~\ref{fig:solder}).  Their mismatch is
 \[
@@ -911,26 +984,6 @@ This is the framework's deepest simplification: instead of proposing four
 unrelated stories for mass, ask whether four familiar physical mechanisms are
 four faces of one underlying rule.  The finite algebra says that the
 question is coherent.  Nature has not yet answered yes.
-
-There is a more revealing way to say the same thing.  Each channel measures a
-different failure of perfect simplification:
-
-\begin{center}
-\begin{tabularx}{0.94\linewidth}{@{}>{\bfseries}p{0.18\linewidth}X@{}}
-\toprule
-Aperture & Several null directions cannot be compressed into one ray.\\
-Closure & Local comparisons cannot erase the memory of a completed loop.\\
-Turn & Propagation cannot remain inside one chiral or internal channel.\\
-Soldering & One internal frame cannot be identified with spacetime everywhere
-without residual mismatch.\\
-\bottomrule
-\end{tabularx}
-\end{center}
-
-\Olabel\quad On this reading, physics is made from irreducible residues of
-comparison.  Mass, gauge curvature, channel conversion, and geometry are not
-four substances.  They are four ways in which a finite causal process refuses
-to collapse into one globally trivial description.
 
 \section{What familiar words mean in this ontology}
 
@@ -1016,7 +1069,8 @@ rule.  The Higgs is therefore an exception to the \emph{current fermionic
 mechanism}, not necessarily to the broader ontology.  To remove the exception,
 the scalar must be derived as a collective mode of null data with the correct
 vacuum, radial excitation, couplings, and measured mass.  Merely renaming the
-input scalar ``emergent'' would explain nothing.
+input scalar ``emergent'' would explain nothing.  We would rather keep a bold
+rule with one honest exception than trade it for a beautiful rule that lies.
 
 \section{Mass as lost directional simplicity}
 
@@ -1059,6 +1113,19 @@ distinguishability, and compression cost all vanish on a single pure direction.
 They are related faces of one invariant, not independent confirmations of the
 physical theory.
 
+That schematic now has an exact backbone.  Normalizing the momentum matrix
+of any family of lightlike directions produces a qubit state whose
+mixedness is exactly the squared mass-to-energy ratio, and for two
+directions the mass is the energy-weighted trace distance --- the textbook
+measure of how well any single measurement can tell the two directions
+apart.\footnote{Kernel-checked: $\det\rho=(1-\operatorname{tr}\rho^2)/2$ at
+unit trace; $|\psi\wedge\phi|^2=|\psi|^2|\phi|^2-|\langle\psi,\phi\rangle|^2$;
+the family determinant equals the sum of pairwise distinguishability
+combinations; and in the Pauli convention $P=E\,\mathbf 1+\mathbf
+p\cdot\boldsymbol\sigma$, the ratio $m^2/E^2$ is twice the purity deficit.
+``Mass is entropy'' would overstate this; the exact statement is about
+purity and pairwise distinguishability at fixed normalization.}
+
 \section{When one particle is not enough}
 
 A probability-preserving one-particle walk is not yet a quantum field theory.
@@ -1072,8 +1139,8 @@ any finite ordered set of possible modes.  It also constructs the standard
 many-particle extension of a one-particle update: the extension leaves the
 empty state empty, reproduces the original update when exactly one mode is
 occupied, and preserves both particle number and whether that number is even
-or odd.  Full compatibility with adding a particle, probability preservation,
-and inherited spatial locality are the remaining gates.\footnote{The technical
+or odd.  Compatibility with adding a particle is now proved; probability
+preservation is exact for a unitary one-particle update; inherited spatial locality is the remaining gate.\footnote{The technical
 objects are the finite CAR algebra and the determinant-minor second
 quantization $\Gamma(U)$.}
 
@@ -1085,20 +1152,20 @@ every one-particle possibility unchanged but changes an explicit two-particle
 state.\footnote{The live theorem identifies a
 rank-two pair sector and proves Hermiticity, complex linearity, inner-product
 preservation, exact reversibility, and the $z$ versus $\bar z$ orientation
-entries.  It does not yet prove that the operation is the time exponential of
-a local quartic Hamiltonian, classify it as non-quasi-free in the completed
-Fock lift, or compute a continuum scattering amplitude.}
+entries.  It also proves that no one-particle matrix has this operation as its
+determinant-minor exterior lift.  At the generator level, every ordinary
+one-body rule changes at most one occupied mode and therefore has zero direct
+amplitude between these two disjoint pairs; the quartic transfer has the exact
+nonzero Pluecker-phase amplitude.  This does not exclude every general
+Bogoliubov or Gaussian map, and it does not yet prove that the operation is the
+time exponential of a local quartic Hamiltonian or compute a continuum
+scattering amplitude.}
 
 This is a modest result with a large conceptual point.  The phase that is
 invisible in the one-particle rest spectrum can become visible in a
 two-particle process.  If that survives the completed local many-particle extension,
 the Pluecker origin will have produced an operational distinction rather than
 only a new derivation of the same gap.
-
-\Olabel\quad An interaction is not a force exchanged between already complete
-objects.  It is the statement that the two patterns cannot be decoded
-independently: the admissible history of the pair contains information absent
-from either one-particle history.
 
 \section{What fixes a particular mass?}
 
@@ -1218,6 +1285,15 @@ Some particularly visual checked statements are worth listing plainly.
         exact $3$--$4$--$5$ witness with speed squared $9/25$.
   \item The direct complex checkerboard history sum equals the actual transfer
         power, with opposite turns retaining $z$ and $\bar z$ separately.
+  \item Two explicit polynomials decide, at every momentum and mass value,
+        exactly where the $3+1$ walk's problematic waves live; for every
+        genuinely massive setting those points are completely classified.
+  \item The link data of any nowhere-vanishing mass field is derived from
+        the field itself and always winds by an exact whole number of turns;
+        an explicit spinor-built field realizes one full turn.
+  \item Two equal-magnitude mass fields with different phases are separated
+        by an explicit two-particle interference probability, $4/5$ against
+        $1$, while every one-particle quantity provably agrees.
   \item The finite many-fermion bookkeeping satisfies every required sign and
         exclusion rule; its current lift agrees with one-particle motion and
         preserves number and even/odd parity.
@@ -1321,11 +1397,11 @@ continuum invariants.  Those survivors, if any, are candidates for physics.
 \section{Conclusion}
 
 The familiar statement ``massive things move slower than light'' describes the
-decoded object.  It need not describe the process from which that object is
-made.  In our picture, nothing fundamental slows down because no fundamental
-massive object is moving in the first place.  There are null causal
-transmissions, complex alternatives, and the stable patterns they jointly
-support.
+decoded object --- the view from far away.  In our picture it dissolves the
+moment you zoom in: underneath, nothing ever slows down, because no
+fundamental massive object is moving in the first place.  There are only null
+causal transmissions, complex alternatives, and the stable patterns they
+jointly support.
 
 \begin{center}
 \begin{tikzpicture}[node distance=0.25cm]
@@ -1395,6 +1471,9 @@ VariablePlueckerLocalWalk.lean & Position-dependent complex area, inverse, and c
 VariablePlueckerPhaseConnection.lean & Local phase change and induced endpoint link\\
 ComplexPlueckerCheckerboardPathSum.lean & Direct complex oriented history sum\\
 GlobalPhaseWindingNoGo.lean & Global phase has zero winding; patched-link control\\
+PlueckerWindingDerived.lean & Derived link increments, exact integer winding, spinor-built winding-one field\\
+PlueckerPhaseObservable.lean & Conjugate equal-magnitude rest operators and the $4/5$-versus-$1$ interference probability\\
+FullBlochSplitDeterminants.lean & Exact all-momentum polynomials for the $3+1$ walk's zero- and half-frequency waves\\
 ExactCheckerboardPathSum.lean & Exact finite corner-weighted history sum\\
 TetrahedralNullHistory.lean & $3+1$ endpoint law and $1/3$ frame factor\\
 TetrahedralSpinProjectorPath.lean & Ordered bends and orientation-sensitive spin phase\\

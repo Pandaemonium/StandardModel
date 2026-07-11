@@ -20,8 +20,9 @@ For the concrete `d = 3` Krasnov pair of `PhysicsSM.Spinor.SpinorTenfoldPurity`
 
 In the research notes this is "the axis of the pencil is color `ℂ³`": the line
 on the spinor tenfold through the two marked pure spinors is classified by the
-isotropic 3-plane `N₁ ∩ N₂`, on which the Standard Model stabilizer acts by
-its color factor. The matching hypercharge bookkeeping is in
+isotropic 3-plane `N₁ ∩ N₂`. Interpreting this plane as the `SU(3)` color
+factor of a Standard Model stabilizer is motivation; no stabilizer group or
+action is formalized in this module. The matching hypercharge bookkeeping is in
 `PhysicsSM.StandardModel.SpinorFockHypercharge` (indices `{0,1,2}` are the
 color directions).
 

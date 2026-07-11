@@ -1,0 +1,370 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% RELEASE GATE: named authors, affiliations, ORCIDs, and a contribution
+% statement replace the project line before circulation.
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\definecolor{kernelcolor}{RGB}{0,92,74}
+\newcommand{\Kernel}{\textcolor{kernelcolor}{\textsc{Kernel}}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+\title{Machine-Verified Fermion-Doubling Obstructions for Ordered $3+1$
+Dirac Quantum Walks}
+\author{Mark Schwab}
+\date{July 11, 2026 --- letter draft v1 (overnight run)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Whether a strictly local, exactly unitary, discrete-time walk can simulate
+the $3+1$-dimensional Dirac equation without fermion doubling is a live
+design problem, with its lattice origin in the Nielsen--Ninomiya theorem
+\cite{NielsenNinomiya}.  For the ordered successive-axis (split-step) walk --- the
+standard minimal architecture --- we settle the spectral side of that
+problem exactly, with every statement checked by the Lean~4 kernel.  We
+prove closed determinant factorizations valid at every momentum and mass
+angle, $\det(U\mp\id)=4P_{0,\pi}$ with $P_{0,\pi}$ explicit polynomials in
+the momentum cosines, and, for every mass angle with $0<|\cos\theta|<1$, a
+complete crossing classification: zero- and $\pi$-quasienergy modes occur
+exactly where all three momentum cosines vanish.  Independently of that
+branch restriction, the massive walk admits no uniform Floquet gap at any
+angle: body-center crossings at quasienergies
+$0$ and $\pi$ persist for every mass angle.  Two structural no-go theorems
+delimit the possible repairs: a degree-one nearest-neighbor factor admits no
+stationary amplitude compatible with origin normalization, exact unitarity,
+and an involutory unit-speed tangent; and every momentum-independent onsite
+coin leaves all three even-parity corner aliases of the massless walk
+intact.  As a corollary, the recently proposed stay-put doubler-free family
+of Gupta and Short, which is exactly of the covered degree-one form,
+necessarily has a non-involutory tangent generator: stay-put freedom is
+purchased by giving up the unit-speed Dirac tangent.  These are boundary
+theorems, not a doubler-free construction; they convert the search for a
+clean strict $3+1$ regulator into a precise, machine-checkable algebra
+problem and supply its regression tests.
+\end{abstract}
+
+\section{Setup: the ordered walk, and what ``local'' means here}
+\label{sec:setup}
+
+Two locality notions must not be conflated.  A \emph{strict} discrete-time
+walk updates the state by one application of a finite-range unitary; a
+lattice Hamiltonian generates $e^{-\ii tH}$, which is exactly unitary but
+not, in general, a finite-range one-step update.  Every claim in this
+letter is about the strict notion unless explicitly labeled Hamiltonian.
+
+Let $\alpha_1,\alpha_2,\alpha_3,\beta\in M_4(\C)$ be the standard mutually
+anticommuting Hermitian involutions and let the mass coin carry angle
+$\theta$.  The ordered successive-axis walk --- the architecture used by
+Mlodinow and Brun \cite{MlodinowBrun} and the minimal $3+1$ lift of the
+split-step walk --- has one-step Bloch symbol
+\begin{equation}\label{eq:walk}
+ U(\mathbf q,\theta)
+ =e^{-\ii q_x\alpha_1}e^{-\ii q_y\alpha_2}e^{-\ii q_z\alpha_3}
+  e^{-\ii\theta\beta},
+ \qquad \mathbf q\in[-\pi,\pi]^3 .
+\end{equation}
+On a finite periodic register the corresponding position-space update is
+exactly unitary, has an explicit two-sided inverse, and reads only sites
+reached by one conditional shift per axis; the plane-wave sectors reproduce
+\eqref{eq:walk} exactly \cite{CompanionDerivation}.  The factor ordering is
+not cosmetic: the spatial generators do not commute.
+
+Doubling and its variants in walk and automaton discretizations have a
+growing exact literature \cite{MlodinowBrunNoGo,GuptaShortQCA}; alternative
+$3+1$ architectures include the tetrahedral walk \cite{NzonganiTetra} and
+the principle-derived Weyl/Dirac automata \cite{DArianoPerinotti,FreeQCA}.  The present
+contribution is orthogonal to construction: it fixes, exactly and
+machine-checkably, what the minimal ordered architecture cannot do, and
+which repairs are closed.
+
+All results below are kernel-checked in Lean~4 over Mathlib
+\cite{Lean4,Mathlib}; each headline declaration carries a build-enforced
+axiom footprint equal to
+$\{\mathtt{propext},\mathtt{Classical.choice},\mathtt{Quot.sound}\}$.  The
+declaration table is in the appendix.  The kernel checks the statements;
+which physical readings they support is argued, as everywhere, in prose.
+
+\section{An exact all-zone spectral criterion}
+\label{sec:criterion}
+
+Write $x=\cos q_x$, $y=\cos q_y$, $w=\cos q_z$, $c=\cos\theta$, and define
+\begin{align}
+ S={}&4c^2x^2y^2w^2-2c^2x^2y^2-2c^2x^2w^2+c^2x^2
+      -2c^2y^2w^2+c^2y^2+c^2w^2 \notag\\
+   &{}-2x^2y^2w^2+x^2y^2+x^2w^2+y^2w^2,
+ \label{eq:S}\\
+ P_0&=S-2cxyw,
+ \qquad
+ P_\pi=S+2cxyw.
+ \label{eq:P}
+\end{align}
+
+\begin{theorem}[All-zone determinant factorization]\label{thm:det}
+For every real momentum and mass angle,
+\begin{equation}\label{eq:detfact}
+ \det\!\bigl(U(\mathbf q,\theta)-\id\bigr)=4P_0,
+ \qquad
+ \det\!\bigl(U(\mathbf q,\theta)+\id\bigr)=4P_\pi .
+\end{equation}
+Consequently $P_0=0$ and $P_\pi=0$ are, respectively, necessary and
+sufficient for a zero- and a $\pi$-quasienergy mode.
+\end{theorem}
+\noindent\Kernel{}\quad The identities are proved from the explicit
+$4\times4$ expansion and bridged definitionally to the live walk used in
+the companion paper's continuum estimates.
+
+Corner sampling is not a classification; \eqref{eq:detfact} is.  The zero
+sets themselves admit a complete description on the massive principal
+branch:
+
+\begin{theorem}[Complete crossing classification]\label{thm:class}
+For every mass angle with $0<|\cos\theta|<1$,
+\begin{equation}
+ P_0=0
+ \iff
+ P_\pi=0
+ \iff
+ x=y=w=0,
+\end{equation}
+that is, zero- and $\pi$-quasienergy crossings of the massive ordered walk
+occur exactly where all three momentum cosines vanish
+($q_j\in\{\pm\pi/2\}$).
+\end{theorem}
+\noindent\Kernel{}\quad The proof is a sharp sum-of-squares/AM--GM
+decomposition of $S\mp2cxyw$ on $|x|,|y|,|w|\le1$.  The boundary angles
+carry their own controls: at the quarter-turn angle $\cos\theta=0$
+explicit extra zeros are exhibited, and the massless angles
+$\cos\theta=\pm1$ reduce to the corner classification of
+Corollary~\ref{cor:aliases}.
+
+\section{No-gap and alias obstructions}
+\label{sec:obstructions}
+
+\begin{theorem}[No uniform Floquet gap]\label{thm:bodycenter}
+At body-center momentum $\mathbf q_B=(\pi/2,\pi/2,\pi/2)$ the massive step
+is a non-scalar involution for every mass angle: explicit nonzero
+eigenvectors with eigenvalues $+1$ and $-1$ persist for all $\theta$.  The
+ordered walk therefore retains exact quasienergies $0$ and $\pi$ at every
+mass angle and admits no uniform Floquet gap.
+\end{theorem}
+\noindent\Kernel{}\quad By Theorem~\ref{thm:class}, on the massive
+principal branch these body-center-type points are the \emph{only}
+crossings; the obstruction is thus exactly located, not merely exhibited.
+
+\begin{corollary}[Massless corner aliases]\label{cor:aliases}
+At $\theta=0$ the eight corners $\mathbf q\in\{0,\pi\}^3$ satisfy
+$U(\mathbf q,0)=(-1)^{r}\id$ with $r$ the number of $\pi$ entries; the
+three even-parity corners $(\pi,\pi,0)$, $(\pi,0,\pi)$, $(0,\pi,\pi)$ carry
+exactly the origin's zero-quasienergy symbol.
+\end{corollary}
+
+\section{Which repairs are impossible: two no-go theorems and a corollary}
+\label{sec:nogo}
+
+The most economical proposed repair adds a stay-put channel to each
+nearest-neighbor factor.
+
+\begin{theorem}[Degree-one stationary no-go]\label{thm:stationary}
+Let $F(q)=e^{\ii q}A+B+e^{-\ii q}C$ be unitary for every real $q$ with
+$F(0)=\id$ and $F'(0)=-\ii M$ for a Hermitian involution $M$.  Then $B=0$.
+The specializations $M=\alpha_j$ for each live axis generator are checked
+separately, and a partial-channel control shows the hypothesis is sharp: a
+tangent with a stationary kernel admits an exactly unitary degree-one
+witness with $B\neq0$.
+\end{theorem}
+\noindent\Kernel{}
+
+\begin{theorem}[All-coins alias persistence]\label{thm:allcoins}
+In the four-channel, range-one, single-factor-per-axis architecture ---
+each axis factor unitary at every momentum and carrying the exact
+involutory Dirac tangent --- with origin normalization, every
+momentum-independent onsite coin $Q$ leaves all
+three even-parity corner aliases intact:
+$U_Q(0,0,0)=U_Q(\pi,\pi,0)=U_Q(\pi,0,\pi)=U_Q(0,\pi,\pi)$.
+\end{theorem}
+\noindent\Kernel{}\quad Changing the onsite mass data cannot repair the
+cubic partners inside the minimal architecture; extra range, coupled
+substeps, enlarged or ancillary cells, or a changed tangent are structurally
+required.
+
+\begin{corollary}[Constraint on stay-put doubler-free families]
+\label{cor:gs}
+The doubler- and pseudo-doubler-free nearest-neighbor family of Gupta and
+Short \cite{GuptaShortDoubling} is exactly of the degree-one Laurent form
+covered by Theorem~\ref{thm:stationary}: one-step, unitary at every
+momentum, normalized at the origin, with stationary block
+$\gamma_0=\id-\gamma_+-\gamma_-\neq0$ built from tilted velocity projectors
+(their Eqs.~(29)--(30), (37)).  Its tangent generator, though automatically
+Hermitian, therefore cannot be an involution ($M^2\neq\id$): stay-put
+freedom is purchased exactly by relinquishing the involutory unit-speed
+Dirac tangent.  Their $3+1$ family moreover retains extraneous Weyl-like
+low-energy solutions at isolated momenta $\pm\mathbf q(\theta)$ (their
+Appendix~F), so a strictly local, exactly unitary, fully alias-free $3+1$
+walk with the complete involutory Dirac tangent remains open in both
+programs.
+\end{corollary}
+
+The three results triangulate the design space: inside the minimal
+architecture the aliases are unavoidable (Theorem~\ref{thm:allcoins}); a
+stay-put escape is incompatible with the exact unit-speed tangent
+(Theorem~\ref{thm:stationary}, Corollary~\ref{cor:gs}); and the massive
+spectrum of the minimal walk fails to gap at exactly classified points
+(Theorems \ref{thm:det}--\ref{thm:bodycenter}).  A Wilson-type Hamiltonian
+comparison removes the non-origin corners and opens a uniform massive gap
+\emph{at the Hamiltonian level only}; its finite-time exponential is not a
+strictly finite-range one-step update, and we do not conflate the two.
+
+\section{Scope, wagers, and what this letter is not}
+\label{sec:scope}
+
+These are boundary theorems, not a doubler-free construction.  Two further
+kernel-checked boundaries are part of the same suite: the natural positive
+homogeneous action of the underlying null-spinor data selects only the
+collapsed zero scale (no dynamical mass-scale selection), and exact
+two-step temporal blocking closes the mass-only subgroup but not the
+ordered split family.  A companion analysis of walks with
+spinor-derived defects addresses the corresponding protection question.  The companion paper \cite{CompanionDerivation}
+derives the walk's complex mass coin from null-spinor geometry and proves
+the corresponding $1+1$ and compact-support continuum control; no result is
+headlined in both documents.
+
+The letter's falsifiable wager is Theorem~\ref{thm:allcoins}'s reach: no
+four-channel, dimension-two-per-factor, range-one, single-substep
+factorized walk achieves alias-free $3+1$ Dirac dynamics; the first
+alias-free strict walk must grow a named resource (range, cell, substeps,
+or tangent).  Exhibiting an alias-free walk inside the minimal class would
+refute the wager and the architecture reading of
+Theorem~\ref{thm:allcoins}; eliminating the Gupta--Short residual states
+without growing a resource would refute the triangulation.  Equations
+\eqref{eq:detfact} and Theorem~\ref{thm:bodycenter} are the regression
+tests any proposed successor must pass.
+
+\appendix
+
+\section{Machine verification and artifact}
+
+The formal development uses Lean~4.28.0 and Mathlib \cite{Lean4,Mathlib}.
+Every theorem above is a kernel-checked declaration with a build-enforced
+assumption footprint contained in
+$\{\mathtt{propext},\mathtt{Classical.choice},\mathtt{Quot.sound}\}$.
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}p{0.42\linewidth}X@{}}
+\toprule
+Declaration & Statement\\
+\midrule
+\texttt{det\_splitStep\_sub\_one}, \texttt{det\_splitStep\_add\_one}
+ & the factorizations \eqref{eq:detfact}, all momenta and mass angles\\
+\texttt{FullBlochZeroClassification} (both iff theorems)
+ & Theorem~\ref{thm:class} with $\cos\theta$ boundary controls\\
+\texttt{body\_center\_walk\_sq},
+\texttt{body\_center\_plus/minus\_mode\_eigen}
+ & Theorem~\ref{thm:bodycenter} eigenmodes, every mass angle\\
+\texttt{massless\_corner\_parity\_classification},
+\texttt{origin\_alias\_*}
+ & Corollary~\ref{cor:aliases} with three distinctness witnesses\\
+\texttt{stationary\_forces\_zero}, \texttt{dirac\_no\_go},
+\texttt{alpha1/2/3\_stationary\_forces\_zero}
+ & Theorem~\ref{thm:stationary} and its live-axis specializations\\
+\texttt{relaxed\_witness}
+ & sharpness control for Theorem~\ref{thm:stationary}\\
+\texttt{live\_degree\_one\_factorized\_lower\_bound}
+ & Theorem~\ref{thm:allcoins}\\
+\texttt{no\_constant\_onsite\_equivalence\_of\_corner\_separation}
+ & onsite conjugacy cannot erase a corner alias\\
+\texttt{WilsonDiracRegulator.H\_sq},
+\texttt{massless\_energy\_eq\_zero\_iff}
+ & Hamiltonian-scope Wilson comparison\\
+\texttt{no\_nonzero\_stationary\_scale},
+\texttt{massCoin4\_block2\_closes},
+\texttt{xy\_blocking\_nonclosure\_control}
+ & scope boundaries of Section~\ref{sec:scope}\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+A pre-registered high-momentum benchmark (fixed inputs, $10^{-10}$ kill
+threshold) validates the implementation of the theorem chain numerically;
+the Lean identities, not the benchmark, carry the proof.  The archival
+release --- complete buildable module set, tagged commit, guard outputs,
+and deterministic benchmark manifest --- is a stated release gate shared
+with the companion paper.
+
+\begin{thebibliography}{9}
+
+\bibitem{NielsenNinomiya}
+H.~B.~Nielsen and M.~Ninomiya,
+\emph{Absence of neutrinos on a lattice. (I) Proof by homotopy theory},
+Nucl. Phys. B 185 (1981) 20--40.
+
+\bibitem{DArianoPerinotti}
+G.~M.~D'Ariano and P.~Perinotti,
+\emph{Derivation of the Dirac equation from principles of information
+processing}, Phys. Rev. A 90 (2014) 062106, arXiv:1306.1934.
+
+\bibitem{MlodinowBrun}
+L.~Mlodinow and T.~A.~Brun,
+\emph{Discrete spacetime, quantum walks, and relativistic wave equations},
+Phys. Rev. A 97 (2018) 042131, arXiv:1802.03910.
+
+\bibitem{MlodinowBrunNoGo}
+L.~Mlodinow and T.~A.~Brun,
+\emph{Quantum field theory from a quantum cellular automaton in one spatial
+dimension and a no-go theorem in higher dimensions},
+Phys. Rev. A 102 (2020) 042211, arXiv:2006.08927.
+
+\bibitem{GuptaShortDoubling}
+C.~Gupta and A.~J.~Short,
+\emph{Fermion doubling in Dirac quantum walks},
+Phys. Rev. A, accepted (2026), arXiv:2601.15885, doi:10.1103/kkz3-fthm.
+
+\bibitem{GuptaShortQCA}
+C.~Gupta and A.~J.~Short,
+\emph{Fermion doubling in quantum cellular automata}, arXiv:2505.07900.
+
+\bibitem{NzonganiTetra}
+U.~Nzongani, N.~Eon, I.~Marquez-Martin, A.~Perez, G.~Di Molfetta, and
+P.~Arrighi,
+\emph{Dirac quantum walk on tetrahedra},
+Phys. Rev. A 110 (2024) 042418, arXiv:2404.09840.
+
+\bibitem{FreeQCA}
+A.~Bisio, G.~M.~D'Ariano, P.~Perinotti, and A.~Tosini,
+\emph{Free quantum field theory from quantum cellular automata},
+Found. Phys. 46 (2016) 1032--1081, arXiv:1601.04832.
+
+\bibitem{CompanionDerivation}
+Null-Edge Formalization Project,
+\emph{Null-spinor area as the rest gap of an exactly unitary Dirac walk},
+companion paper, in preparation (2026).
+
+\bibitem{Lean4}
+L.~de Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, LNCS 12699 (2021) 625--635.
+
+\bibitem{Mathlib}
+The Mathlib Community,
+\emph{The Lean mathematical library}, CPP 2020, 367--381.
+
+\end{thebibliography}
+
+\end{document}
