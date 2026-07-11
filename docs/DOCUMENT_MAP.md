@@ -70,7 +70,8 @@ as current state.
 - `AgentTasks/overnight-allmass-run-2026-07-09/2026-07-10_PRO_complete-finite-null-information.md` - graded deduplication of the complete-process essay against landed modules and prior Pro rounds; records the four new finite jobs and the analytic/refinement targets deliberately deferred. [LIVE]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md` - P1 manuscript v3 (2026-07-07 rewrite for clarity/impact; college-accessible Part I; status map incl. carrier layer). [DRAFT-MS]
 - `Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft.md` - P1 manuscript v2 (superseded by v3; retained for provenance). [HISTORICAL]
-- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` - stable publication topic IDs P1-P12. [LIVE]
+- `Sources/Null_Edge_Publication_Portfolio_2026-07-10.md` - active theorem-led publication order, gates, and venue strategy. [LIVE]
+- `Sources/Null_Edge_Causal_Graph_Publication_Plan.md` - superseded June P1-P12 publication taxonomy, retained for provenance. [ARCHIVE]
 - `Sources/Null_Edge_Publication_Outlines_2026-07-07.md` - five Letter-caliber outlines (P13, P2-R, P14, P4-R, P15 + future slots). [LIVE]
 - `Sources/Ontology_extensions.md` - graded steer memo (teleparallel E-slot, positivity routes, index/spectral-action framing); integrated 2026-07-07. [STABLE]
 - `Sources/Null_Edge_Program_Charter_2026-07-07.md` - the post-audit program charter (U0-U5 claim ladder, amendments, declared losses, kills). [LIVE]
@@ -169,8 +170,9 @@ as current state.
   `3+4i` control separates the nonzero `z` and conjugate-`z` turn factors.
   `GlobalPhaseWindingNoGo.lean` proves that a globally lifted real phase has
   zero total increment on a finite periodic cycle, so nonzero winding requires
-  branch, patch-transition, or independent link data; a three-link unit-winding
-  control shows how that extra data evades the no-go.
+  branch, patch-transition, or independent link data; an explicit three-link
+  periodic field has winding one and is proved not to be the raw increment of
+  any global real vertex phase.
   `StrictQCAMinimalArchitecture.lean` proves a scoped architecture lower bound:
   no three-axis four-channel range-one single-factor Laurent QCA can retain the
   exact live Dirac tangents and exact all-momentum unitarity while adding a
@@ -195,8 +197,38 @@ as current state.
   over any linearly ordered finite-mode label type and proves creation and
   annihilation nilpotency plus all same-mode and distinct-mode canonical
   anticommutation relations.  It is the algebraic first rung toward a local
-  second-quantized Pluecker walk; the exterior-power lift, inherited locality,
-  and interacting observable remain separate targets.
+  second-quantized Pluecker walk; the determinant-minor lift begins in the next
+  module, while its full covariance and inherited locality remain targets.
+  `FiniteCARSecondQuantization.lean` defines the determinant-minor exterior
+  lift `Gamma(U)` for every finite one-particle matrix, proves vacuum and exact
+  one-particle agreement, and conserves particle number and parity.  Creation
+  covariance, functoriality/unitarity for unitary `U`, and inherited causal
+  locality remain the hard successor theorems.
+  `PlueckerQuarticInteraction.lean` gives an explicit four-mode quartic
+  pair-transfer observable: its forward two-particle amplitude is the primitive
+  spinor wedge `z`, its reverse amplitude is `conj z`, and a `3+4i` primitive
+  fixture proves orientation sensitivity that a norm-only free gap cannot see.
+  Its associated normalized phase-weighted pair kick is complex-linear,
+  exactly involutive, and preserves the full finite occupation-basis inner
+  product; it is packaged as an explicit complex-linear equivalence.  The
+  quartic operator is Hermitian on the full finite Fock space,
+  and the kick equals that operator on
+  the distinguished pair sector while acting as the identity off it; both
+  nontrivial actions are confined to that rank-two block.  At unit phase the
+  quartic square is exactly the pair-sector projector, giving its minimal
+  finite dynamical polynomial.  The
+  kick fixes every one-particle occupation basis state but is nontrivial on the
+  two-particle witness.  This is
+  a finite unitary two-particle witness, not yet an operator-exponential theorem,
+  a second-quantized local walk, or a continuum field theory.
+  `ChangingLatticePDECore.lean` proves the exact `L2` bulk-plus-ultraviolet-tail
+  bound needed to wrap fixed-space multiplier convergence in a genuine
+  changing-lattice sampling/interpolation theorem, and proves that the `L2`
+  tail outside measurable monotone bands vanishes when those bands exhaust
+  frequency space.  Their composition proves abstract global `L2` convergence
+  whenever the in-band multiplier error tends to zero.  Scaled Fourier
+  isometries, concrete sampling/interpolation, and the final position-space PDE
+  identification remain successor gates.
 - `Scripts/sim/null_edge_regulator_benchmark.py` and
   `AgentTasks/null-edge-so-what-closure-2026-07-10/HELD_OUT_REGULATOR_BENCHMARK.md`
   - pre-registered high-momentum benchmark of the exact even-corner alias

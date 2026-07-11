@@ -155,12 +155,12 @@ theorem create_create_anticomm {i j : ι} (hij : i ≠ j) (psi : Fock ι) :
   by_cases hlt : i < j
   · rw [if_neg (ne_of_gt hlt), opSign_erase_of_lt hi hlt,
       opSign_erase_of_not_lt (not_lt_of_gt hlt)]
-    ring
+    ring_nf
     rw [Finset.erase_right_comm]
-    ring
+    ring_nf
   · rw [opSign_erase_of_not_lt hlt,
       opSign_erase_of_lt hj (lt_of_le_of_ne (le_of_not_gt hlt) hij.symm)]
-    ring
+    ring_nf
     rw [if_neg hij.symm, Finset.erase_right_comm]
     ring
 

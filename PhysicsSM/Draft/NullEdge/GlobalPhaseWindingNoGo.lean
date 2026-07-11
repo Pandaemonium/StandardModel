@@ -11,8 +11,8 @@ nonzero complex-mass defect must either meet a zero of the Pluecker field or
 carry transition data on which no global real lift exists.
 
 This is a theorem-level obstruction, not a construction of the missing defect
-index.  The three-link control demonstrates that independent branch-adjusted
-link increments can carry one unit of winding.
+index.  The three-link control is packaged as an explicit periodic link field
+with integer winding, and is proved not to arise from any global real lift.
 
 Provenance: elementary finite telescoping on `ZMod`; clean-room formalization
 motivated by the local phase connection in
@@ -57,19 +57,51 @@ theorem global_real_lift_forces_zero_winding {L : Nat} [NeZero L]
     (mul_eq_zero.mp hprod).resolve_left htwoPi
   exact_mod_cast hwReal
 
-/-- Branch-adjusted link data can evade the global-lift no-go: three equal
-increments carry exactly one turn. -/
+/-- Independent periodic link increments together with their integer winding
+constraint.  Unlike `rawPhaseIncrement`, this data need not admit a global
+real-valued vertex potential. -/
+structure LinkWindingData (L : Nat) [NeZero L] where
+  increment : ZMod L -> Real
+  winding : Int
+  sum_eq_turns :
+    ∑ p : ZMod L, increment p = (2 * Real.pi) * (winding : Real)
+
+/-- Three equal branch-adjusted links carrying one turn. -/
+def threeLinkUnitWinding : LinkWindingData 3 where
+  increment := fun _ => 2 * Real.pi / 3
+  winding := 1
+  sum_eq_turns := by
+    norm_num [Finset.sum_const]
+    ring
+
+/-- The explicit three-link field has winding one. -/
+theorem threeLinkUnitWinding_winding : threeLinkUnitWinding.winding = 1 := rfl
+
+/-- The explicit three-link field sums to one complete turn. -/
 theorem three_link_unit_winding :
-    ([2 * Real.pi / 3, 2 * Real.pi / 3, 2 * Real.pi / 3] : List Real).sum =
-      2 * Real.pi := by
-  simp
-  ring
+    ∑ p : ZMod 3, threeLinkUnitWinding.increment p = 2 * Real.pi := by
+  rw [threeLinkUnitWinding.sum_eq_turns]
+  rw [threeLinkUnitWinding_winding]
+  norm_num
 
 /-- The one-winding link control is genuinely nonzero. -/
 theorem three_link_unit_winding_ne_zero :
-    ([2 * Real.pi / 3, 2 * Real.pi / 3, 2 * Real.pi / 3] : List Real).sum ≠ 0 := by
+    (∑ p : ZMod 3, threeLinkUnitWinding.increment p) ≠ 0 := by
   rw [three_link_unit_winding]
   exact mul_ne_zero (by norm_num) Real.pi_ne_zero
+
+/-- The winding-one link field is genuinely patched data: no globally defined
+real vertex phase has these raw increments on every edge. -/
+theorem threeLinkUnitWinding_not_global_lift :
+    ¬ ∃ theta : ZMod 3 -> Real,
+      ∀ p, rawPhaseIncrement theta p = threeLinkUnitWinding.increment p := by
+  rintro ⟨theta, htheta⟩
+  have hsum :
+      (∑ p : ZMod 3, rawPhaseIncrement theta p) =
+        ∑ p : ZMod 3, threeLinkUnitWinding.increment p := by
+    exact Finset.sum_congr rfl fun p _ => htheta p
+  rw [rawPhaseIncrement_sum_zero, three_link_unit_winding] at hsum
+  exact (mul_ne_zero (by norm_num) Real.pi_ne_zero) hsum.symm
 
 /-! ## Build-enforced assumption-footprint guards -/
 
@@ -80,5 +112,9 @@ theorem three_link_unit_winding_ne_zero :
 /-- info: 'PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo.three_link_unit_winding_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms three_link_unit_winding_ne_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo.threeLinkUnitWinding_not_global_lift' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms threeLinkUnitWinding_not_global_lift
 
 end PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo

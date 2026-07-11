@@ -67,6 +67,9 @@ import PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo
 import PhysicsSM.Draft.NullEdge.StrictQCAMinimalArchitecture
 import PhysicsSM.Draft.NullEdge.TemporalBlockingRG
 import PhysicsSM.Draft.NullEdge.FiniteCARFockBasic
+import PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization
+import PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction
+import PhysicsSM.Draft.NullEdge.ChangingLatticePDECore
 import PhysicsSM.Draft.NullEdge.ComplexPlueckerRateTransfer
 import PhysicsSM.Draft.NullEdge.FiniteTorus3WalkWavepacket
 import PhysicsSM.Draft.NullEdge.ContinuumL2MultiplierBridge
@@ -701,6 +704,10 @@ namespace PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo.three_link_unit_winding_ne_zero
 
+/-- info: 'PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo.threeLinkUnitWinding_not_global_lift' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo.threeLinkUnitWinding_not_global_lift
+
 /-- info: 'PhysicsSM.Draft.NullEdge.StrictQCAMinimalArchitecture.live_three_axis_stationary_no_go' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.StrictQCAMinimalArchitecture.live_three_axis_stationary_no_go
@@ -752,6 +759,82 @@ namespace PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard
 /-- info: 'PhysicsSM.Draft.NullEdge.FiniteCARFockBasic.create_annihilate_distinct_anticomm' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.FiniteCARFockBasic.create_annihilate_distinct_anticomm
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_vac' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_vac
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_apply_singleton' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_apply_singleton
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_number' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_number
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_parity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization.Gamma_parity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.plueckerQuartic_forward_amplitude' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.plueckerQuartic_forward_amplitude
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witness_pair_orientation_sensitive' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witness_pair_orientation_sensitive
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_involutive' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_involutive
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.pairKick_add' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.pairKick_add
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.pairKick_smul' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.pairKick_smul
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_preserves_fockNormSq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_preserves_fockNormSq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_preserves_fockInner' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_preserves_fockInner
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKickLinearEquiv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKickLinearEquiv
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.quarticPairTransfer_isHermitian' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.quarticPairTransfer_isHermitian
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.pairKick_eq_quartic_add_offPair' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.pairKick_eq_quartic_add_offPair
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.quarticPairTransfer_sq_eq_project' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.quarticPairTransfer_sq_eq_project
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_two_particle_nontrivial' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction.witnessPairKick_two_particle_nontrivial
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingLatticePDECore.tail_bulk_split' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingLatticePDECore.tail_bulk_split
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingLatticePDECore.uv_tail_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingLatticePDECore.uv_tail_tendsto_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingLatticePDECore.band_approx_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingLatticePDECore.band_approx_tendsto_zero
 
 /-- info: 'PhysicsSM.Draft.NullEdge.ComplexPlueckerRateTransfer.complex_fixed_time_many_step_bound_on_box' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

@@ -31,3 +31,12 @@ aristotle:
   output_dir: AgentTasks/aristotle-output/14ce545e-d17b-432f-a2e7-fb1fe35cfa1a
   status: submitted
 ```
+
+## Live literature injection
+
+During the live run, `continue --mode instruct` supplied the focused
+doubling-repair references arXiv:2505.07900, 2601.15885, 2105.12314,
+1603.06442, 1708.00826, and 2404.09840.  Aristotle was asked to identify the
+smallest theorem-ready covering-map, stay-channel, BCC/tetrahedral, or unitary
+Wilson architecture outside the landed four-channel degree-one factor no-go,
+with an exact full-Bloch kill test.

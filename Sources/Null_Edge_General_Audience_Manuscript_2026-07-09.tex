@@ -47,6 +47,7 @@
 \newcommand{\Mlabel}{\textcolor{teal}{\textsc{checked finite result}}}
 \newcommand{\Tlabel}{\textcolor{navy}{\textsc{established physics}}}
 \newcommand{\Clabel}{\textcolor{gold!80!black}{\textsc{open interpretation}}}
+\newcommand{\Olabel}{\textcolor{plum}{\textsc{ontology proposed here}}}
 
 \newcommand{\widebox}[3]{%
   \begin{center}
@@ -82,28 +83,28 @@
 \begin{center}
 \vspace*{0.55in}
 {\fontsize{31}{35}\selectfont\bfseries\textcolor{navy}{Reality in Null Steps}}\\[0.25em]
-{\Large A visual guide to mass, motion, and geometry on a finite causal grid}\\[0.75em]
+{\Large Why mass may be the cost of keeping lightlike processes together}\\[0.75em]
 {\large Null-Edge Formalization Project}\\[0.2em]
-{\textcolor{ink!65}{General-audience companion manuscript, July 9, 2026}}
+{\textcolor{ink!65}{General-audience companion manuscript, revised July 10, 2026}}
 
 \vspace{0.7in}
-\begin{tikzpicture}[x=0.82cm,y=0.72cm]
-  \foreach \x in {-6,-5,...,6} {\draw[faint] (\x,0)--(\x,8);}
-  \foreach \y in {0,1,...,8} {\draw[faint] (-6,\y)--(6,\y);}
+\begin{tikzpicture}[x=0.72cm,y=0.72cm]
+  \foreach \x in {-6,-5,...,3} {\draw[faint] (\x,0)--(\x,8);}
+  \foreach \y in {0,1,...,8} {\draw[faint] (-6,\y)--(3,\y);}
   \draw[->,thick,ink!65] (-6.5,0)--(-6.5,8.4) node[above,label]{time};
-  \draw[->,thick,ink!65] (-6.5,0)--(6.6,0) node[right,label]{space};
+  \draw[->,thick,ink!65] (-6.5,0)--(3.6,0) node[right,label]{space};
   \draw[nullray] (-4,0)--(-3,1)--(-4,2)--(-3,3)--(-2,4)--(-3,5)--(-2,6)--(-1,7)--(-2,8);
   \draw[drift,dashed] (-4,0)--(-2,8);
-  \node[label,fill=white,inner sep=3pt] at (2.6,6.8)
-    {every primitive segment\\is lightlike};
-  \draw[transport] (1.4,6.45)--(-1.2,6.15);
-  \node[label,fill=white,inner sep=3pt] at (2.7,3.9)
-    {the long-time drift\\is timelike};
-  \draw[transport] (1.4,3.75)--(-2.6,3.7);
   \node[draw=gold,fill=palegold,rounded corners=2pt,align=center,
-    text width=4.35cm,inner sep=7pt] at (3.25,1.65)
+    text width=4.35cm,inner sep=7pt] at (7.8,5.25)
     {\textbf{The central proposal}\\Mass is not a slower primitive step.\\
-     It is what lightlike steps look like\\when directions, phases, or frames disagree.};
+     It is the durable residue left when\\lightlike processes must coexist.};
+  \draw[very thick,teal,-{Latex[length=2.2mm]}]
+    (4.45,1.45)--(5.35,1.45);
+  \node[label,anchor=west] at (5.55,1.45) {primitive null step};
+  \draw[very thick,coral,dashed,-{Latex[length=2.2mm]}]
+    (4.45,0.65)--(5.35,0.65);
+  \node[label,anchor=west] at (5.55,0.65) {long-time drift};
 \end{tikzpicture}
 
 \vfill
@@ -118,24 +119,26 @@ proven, what is imported, and what is still conjecture.
 \end{center}
 \end{titlepage}
 
-\section*{Nothing moves slower than light}
+\section*{Nothing moves slower than the speed of light}
 
-Most people know that nothing can move \emph{faster} than the speed of light.
-But did you also know that nothing can move \emph{slower} than the speed of
-light?  It's true!\footnote{True at full strength in the model, and stated at
-full strength on purpose.  What is established physics: all known relativistic
-wave equations share one null front cone at highest order, and each Dirac
-velocity component has spectral values $\pm c$ (Section~\ref{sec:speed}).
-What is machine-checked in the finite model: every primitive step is
-lightlike, and slower-than-light drift emerges exactly from direction mixing
-(Sections~\ref{sec:onepage} and~\ref{sec:checkerboard}).  What is conjecture:
-that nature's elementary carrier works the same way.  The Higgs scalar is the
-one standing exception (Section~\ref{sec:particles}), and a composite object
-such as a proton is not claimed to move microscopically at $c$ as a whole.}
-If you zoom in closely enough, every particle is always whirring around at
-exactly the speed of light, all the time.  It is only when the lightlike
-steps keep changing direction that the particle appears, once you zoom out,
-to move slower.  That apparent slowness has a name.  We call it \emph{mass}.
+Here is the opinion this manuscript will defend: nature's primitive act is not
+an object persisting from one moment to the next.  It is a causal transmission.
+That transmission is always lightlike.  Massive particles, atoms, and bodies
+are not slower primitive things.  They are stable patterns made from many such
+transmissions, and the pattern can drift more slowly than light even though no
+primitive link does.\footnote{This is the proposed ontology, not an experimental
+fact.  The exact finite model permits only lightlike one-step support and proves
+that coherent direction mixing can produce timelike drift.  Standard
+relativistic field equations likewise distinguish a null wavefront cone from
+the subluminal group velocity of a massive packet.  What remains conjectural is
+that nature has this finite null support at its fundamental scale.}
+
+So the deliberately provocative slogan is not that an electron is a tiny bead
+racing along a hidden sawtooth path.  It is stronger and less classical:
+
+\widebox{plum}{mist}{\Olabel\quad There is no massive object at the bottom
+of the description.  There are only lightlike quantum processes whose
+stable, self-consistent pattern is what we call a massive object.}
 
 You already believe more of this than you might think.  \Tlabel\quad About 99
 percent of the mass of every proton and neutron --- and therefore most of your
@@ -148,26 +151,34 @@ moving in opposite directions have no individual mass, yet together they have
 a rest frame and a positive invariant mass.
 
 This manuscript pushes the pattern all the way down: \emph{every} elementary
-process is lightlike, and every mass, without exception, is the cost of
-organizing lightlike motion into one stable object.\footnote{The
-all-the-way-down claim is a research program, not established physics.  The
-manuscript's job is to show how much of it is already kernel-checked theorem,
-which parts are imported standard physics, and exactly how the rest could
-fail.}  The sections below show how much of that sentence is already theorem
---- and Section~\ref{sec:kill} lists, in advance, the seven ways the rest of
-it can die.
+process is lightlike, and every mass is the cost of organizing lightlike
+possibilities into one persistent, decodable object.\footnote{``Cost'' is not
+yet a universal thermodynamic quantity.  In the checked core it is a positive
+area, an energy gap, or a turning weight.  The stronger identification with
+an irreducible information or action cost is an ontology-level synthesis.}
+The sections below show how much of that sentence is theorem, why the complex
+phase matters as much as the magnitude, and exactly how the proposal can die.
 
 \section*{In brief}
 
-Our claim: the most elementary propagation nature allows is always lightlike
---- one step forward in time is one null step through space, with nothing
-slower at the bottom.  A massive object drifts below light speed because its
-quantum amplitude is shared among different null directions.  Mass is not a
-substance riding along with the steps; mass \emph{measures} the failure of
-many lightlike directions to behave as one perfectly aligned ray.
+The proposal can be stated in four sentences.
+
+\begin{enumerate}[leftmargin=1.6em]
+  \item \textbf{Events come before objects.}  A fundamental history is made of
+        causal transmissions, not little substances carried through a
+        pre-existing space.
+  \item \textbf{Null comes before timelike.}  Every primitive transmission is
+        lightlike; subluminal motion belongs to a composite pattern.
+  \item \textbf{Relation comes before mass.}  Mass measures a failure of null
+        directions, phases, and local frames to collapse to one simple ray.
+  \item \textbf{Decoding comes before particle.}  A particle is a stable answer
+        returned by the physical rules: a pattern that can be prepared,
+        transported, and detected repeatedly.
+\end{enumerate}
 
 We develop that idea on a finite causal grid.  Four recurring structures appear
-when a Dirac-like transport operator is squared: \emph{aperture}, the opening
+when the basic transport rule is applied twice and compared with itself:
+\emph{aperture}, the opening
 between directions; \emph{closure}, the mismatch accumulated around a loop;
 \emph{turn}, the conversion between chiral propagation channels; and
 \emph{soldering}, the map that ties internal transport to spacetime geometry.
@@ -180,7 +191,7 @@ advance.
 
 \section*{How to read the claims}
 
-Three kinds of statement are deliberately kept separate.
+Four kinds of statement are deliberately kept separate.
 
 \begin{center}
 \begin{tabularx}{0.94\linewidth}{@{}>{\bfseries}p{0.18\linewidth}X@{}}
@@ -189,6 +200,7 @@ Picture & A way to see the mechanism: null arrows, loops, turns, and frames.\\
 \Mlabel & An exact finite statement accepted by Lean's kernel for the displayed model.\\
 \Tlabel & Standard mathematics or physics imported from established literature.\\
 \Clabel & A proposed identification with continuum fields, particles, or measured reality.\\
+\Olabel & The paper's preferred account of what the formal structure means reality is made of.\\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -196,9 +208,10 @@ Picture & A way to see the mechanism: null arrows, loops, turns, and frames.\\
 The same sentence can be useful at one level and false at another.  ``A massive
 particle is made from lightlike motion'' is exact as a momentum decomposition,
 suggestive as a quantum-walk picture, and unproved as a literal microscopic
-ontology.  The colored tags introduced above therefore appear throughout the
-text, marking claim by claim which tier is active.  The prose argues the
-picture at full strength; the tags and footnotes keep the score.
+ontology.  An ontology label is therefore not a shy synonym for theorem.  It
+means: this is the interpretation that best unifies the checked structures and
+earns the right to be tested next.  The prose argues that interpretation at
+full strength; the tags and footnotes keep the score.
 
 \section{The picture in one page}
 \label{sec:onepage}
@@ -256,10 +269,59 @@ Four questions then organize the model:
 
 These are not four metaphors attached after the fact.  They are the four
 structural kinds of term that appear in the square of the finite
-\emph{carrier} --- the single operator, studied throughout the project, that
+\emph{carrier} --- the single rule, studied throughout the project, that
 advances the quantum amplitude by one tick.  \Clabel\quad Whether the four
 kinds become kinetic, gauge, Yukawa, and gravitational terms in a continuum
 theory is the central open test.
+
+\section{The ontology: events before objects}
+\label{sec:ontology}
+
+The grid in the figures is not meant to be a box containing tiny objects.  It
+is a ledger of possible causal events.  A link says that one event can
+contribute amplitude to another.  A history is a compatible chain of such
+contributions.  A physical state is a coherent sum over histories.  Only after
+that sum has been constrained, compared, and decoded do familiar objects
+appear.
+
+This reverses the usual order of explanation:
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.22cm]
+  \node[channel,fill=paleteal,text width=10.8cm] (e)
+    {\textbf{events and null links}\\what can influence what};
+  \node[channel,fill=mist,below=of e,text width=10.8cm] (h)
+    {\textbf{complex histories}\\how alternatives compose and interfere};
+  \node[channel,fill=palegold,below=of h,text width=10.8cm] (d)
+    {\textbf{physical decoding}\\which combinations survive constraints and positivity};
+  \node[channel,fill=palecoral,below=of d,text width=10.8cm] (p)
+    {\textbf{particles and geometry}\\stable answers, not primitive inputs};
+  \draw[transport] (e)--(h);
+  \draw[transport] (h)--(d);
+  \draw[transport] (d)--(p);
+\end{tikzpicture}
+\end{center}
+
+In this language, asking whether the primitive particles are massless is
+slightly misguided.  The proposal is that \emph{particles are not primitive}.
+Primitive reality consists of finite null-information transfers.  A particle
+is a repeatable codeword of that process: a pattern that survives transport,
+constraint reduction, coarse-graining, and measurement.\footnote{``Codeword''
+is used structurally, not as evidence that the universe is a digital computer
+running someone else's software.  The exact finite ingredients are a state
+space, local update, constraints, positive sector, and observable response.
+Calling their stable sector a code emphasizes redundancy and recoverability;
+the existence and uniqueness of a full physical decoder remain open.}
+
+This is why the framework is finite without being crudely pixelated.  Finiteness
+means that every physical question is answered by a finite composition of
+distinguishable alternatives.  It does not require the coordinate grid drawn
+on the page to remain visible in the continuum, any more than atoms make a
+glass of water look like a crystal lattice.
+
+\widebox{plum}{mist}{\Olabel\quad Reality is not fundamentally a collection of
+objects located in spacetime.  It is a finite causal process that constructs
+both stable objects and their spacetime relations from the same null data.}
 
 \section{Everything moves at the speed of light}
 \label{sec:speed}
@@ -280,13 +342,14 @@ so its interval is $\Delta t^2-|\Delta\mathbf{x}|^2=0$.
 
 \subsection*{Front speed}
 
-\Tlabel\quad For a relativistic wave equation, the fastest disturbance is
-governed by the highest-derivative, or \emph{principal}, part of the equation.  If that part is
+\Tlabel\quad In a relativistic wave equation, the sharp leading edge of a
+disturbance is governed by the part of the equation that actually carries
+information from place to place.  If that propagation rule has the form
 \[
   \omega^2-|\mathbf{k}|^2,
 \]
-the wavefront lies on the null cone.  Finite mass matrices and other
-lower-order internal couplings do not change this front cone.  They do change
+the wavefront lies on the light cone.  Mass and other local internal couplings
+do not change this fastest front.  They do change
 dispersion and interference behind the front.\footnote{For an operator whose
 symbol is $q(\omega,\mathbf{k})I+L$, with $L$ independent of momentum, the
 characteristic set is controlled at principal order by
@@ -308,13 +371,11 @@ the drift of a massive packet answer different questions.
 in the model is null; massive motion is an emergent timelike drift produced by
 coherent mixing among null channels.}
 
-\Tlabel\quad For a Dirac fermion, each individual velocity component has
-spectral values
-$\pm c$.  But the three component operators do not commute, so they do not
-define a simultaneous classical three-velocity of fixed magnitude $c$.  Scalar
-and vector fields use different operators altogether.  The universal language
-is therefore the shared null \emph{characteristic cone}, not a hidden classical
-trajectory assigned to every particle and interaction channel.\footnote{For the
+The slogan does \emph{not} assign every particle a hidden classical velocity
+arrow of length $c$.  Quantum motion is not a concealed billiard-ball path, and
+different kinds of fields encode motion differently.  The universal claim is
+about the lightlike support of causal influence, not a simultaneously
+measurable three-velocity for every component.\footnote{For the
 Dirac Hamiltonian, $\dot x_i=\alpha_i$ and each $\alpha_i$ has eigenvalues
 $\pm1$, but $[\alpha_i,\alpha_j]\ne0$ for $i\ne j$.  Componentwise spectral
 support therefore does not define a joint classical velocity vector.  Massive
@@ -359,18 +420,21 @@ on the same ray.}
 \label{fig:aperture}
 \end{figure}
 
-The finite theorem uses a $2\times2$ positive momentum matrix
+The finite theorem encodes each null direction by a pair of complex numbers
+$\psi_i$.  If $\psi=(a,b)$ and $\phi=(c,d)$, their oriented area is simply
 \[
-  P=\sum_i \psi_i\psi_i^\dagger.
+  \psi\wedge\phi=ad-bc.
 \]
-Each spinor $\psi_i$ supplies one rank-one, hence massless, contribution.  The
-determinant is
+It vanishes when the two encoded directions are the same and grows as they
+open apart.  Mathematicians call it a Pluecker coordinate.  For any finite
+collection, the theorem proves
 \[
-  \det P=\sum_{i<j}|\psi_i\wedge\psi_j|^2.
+  m^2=\sum_{i<j}|\psi_i\wedge\psi_j|^2.
 \]
-Every term is nonnegative.  The determinant vanishes exactly when all occupied
-spinors are collinear.  In the standard momentum-bispinor normalization,
-$\det P=m^2$.\footnote{The identity is the $2\times2$ Cauchy--Binet formula:
+Every term is a squared area between two directions and is therefore
+nonnegative.  The mass vanishes exactly when all occupied directions are
+collinear.\footnote{Technically, the positive momentum matrix is
+$P=\sum_i\psi_i\psi_i^\dagger$ and the identity is the $2\times2$ Cauchy--Binet formula:
 $\det(\Psi\Psi^\dagger)=\sum_{i<j}|\det(\psi_i,\psi_j)|^2$.  Identifying the
 determinant with Minkowski norm uses the Pauli-matrix map
 $p_\mu\mapsto p_\mu\sigma^\mu$ and a fixed metric/sign convention.}
@@ -383,21 +447,120 @@ directional disagreement; it equals it, term by term, with nothing left over.
 That identity is the seed of everything that follows.\footnote{The identity is
 kinematic.  Any timelike momentum can be decomposed into null momenta, so the
 identity alone does not explain why a particle has one mass rather than
-another; selecting a mass requires an operator, an action, a stable sector,
+another; selecting a mass requires dynamics, an action, a stable state,
 and ultimately a continuum limit.  Those are the later layers of the
 program.}
+
+\section{The number hidden inside mass}
+\label{sec:phase}
+
+The wedge of two complex spinors is not merely a nonnegative mass:
+\[
+  z=\psi\wedge\phi=\rho e^{\ii\theta}.
+\]
+Its radius $\rho=|z|$ supplies the rest gap.  Its angle $\theta$ records an
+orientation and relative phase.  The ordinary energy formula forgets that
+angle and retains only
+\[
+  \text{gap}^2=|z|^2.
+\]
+That is why an ordinary mass measurement sees the radius but not the angle.
+The angle is not absent; it is information that the quadratic spectrum has
+compressed away.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \draw[->,thick] (-2.6,0)--(2.8,0) node[right,label]{$\operatorname{Re}z$};
+  \draw[->,thick] (0,-2.4)--(0,2.65) node[above,label]{$\operatorname{Im}z$};
+  \draw[teal,very thick] (0,0) circle (1.75);
+  \draw[plum,very thick,-{Latex[length=2.2mm]}] (0,0)--(1.25,1.22)
+    node[above right,label]{$z=\rho e^{\ii\theta}$};
+  \draw[gold,thick] (0.62,0) arc[start angle=0,end angle=44,radius=0.62];
+  \node[label,gold!70!black] at (0.9,0.38) {$\theta$};
+  \node[channel,fill=paleteal,text width=3.55cm] at (5.0,1.2)
+    {\textbf{radius $\rho$}\\gap and dispersion};
+  \node[channel,fill=mist,text width=3.55cm] at (5.0,-1.0)
+    {\textbf{angle $\theta$}\\orientation, links, histories};
+  \draw[transport] (1.8,0.85)--(3.1,1.15);
+  \draw[transport] (1.0,-0.35)--(3.1,-0.85);
+\end{tikzpicture}
+\end{center}
+
+\Mlabel\quad The finite theory proves that the complex area determines the
+entire two-channel turning rule, and that the resulting energy satisfies
+\[
+  H(k,z)^2=(k^2+|z|^2)I.
+\]
+No second mass parameter is inserted.  The same oriented area that the null
+spinors determine supplies both the channel-changing rule and the familiar
+energy gap.\footnote{Technically, the rule is the unique two-component odd
+Hermitian rest operator compatible with the chosen velocity grading:
+$B_z=\left(\begin{smallmatrix}0&z\\\bar z&0\end{smallmatrix}\right)$ and
+$B_z^2=|z|^2I$.}
+
+At one fixed point, however, we must concede something important.  A standard
+Dirac model handed the complex number $z$ by fiat can reproduce the same
+turning rule, gap, and energies.  The Pluecker origin is then a derivation of the
+parameter, not yet a distinct observable theory.
+
+\widebox{coral}{palecoral}{\textbf{The reparametrization test.}\quad If the
+theory retains only a constant $|z|$, ``mass from null area'' is physically
+indistinguishable from renaming an assigned Dirac mass.  The origin matters
+only through structures that an arbitrary scalar mass does not supply.}
+
+The current finite theory passes part of that harder test:
+
+\begin{itemize}
+  \item $z=0$ occurs exactly when the primitive spinor directions become
+        collinear, so gap closure has a geometric locus rather than an
+        arbitrary tuning condition.
+  \item Oppositely oriented turns carry $z$ and $\bar z$ separately.  Exact
+        histories remember information that the spectrum erases.
+  \item If the phase varies from site to site, changing to the local chiral
+        basis produces an exact endpoint link between neighboring sites.  A
+        constant phase disappears; a varying phase leaves connection data.
+  \item A finite two-particle pair transfer has forward amplitude $z$ and
+        reverse amplitude $\bar z$, while every one-particle basis state is
+        fixed by the corresponding unitary pair operation.
+\end{itemize}
+
+The largest promised consequence is still open.  A phase winding around a zero
+of $z$ should behave like a topological defect and may force a localized mode.
+What is already proved is the necessary warning: a globally single-valued real
+phase on a periodic finite cycle has zero winding.  Nonzero winding requires
+patches or genuine link transition data; it cannot be conjured by drawing an
+angle that secretly jumps at a branch cut.\footnote{The live finite theorem
+constructs an explicit winding-one periodic link field and proves that no
+global real vertex phase realizes it.  The missing theorem is the reduction
+from patched local Pluecker data to the existing finite index operator and a
+stable localized eigenmode.}
+
+\Olabel\quad The phase of mass is therefore a candidate memory of how the
+massive object is assembled.  The magnitude says how far the null directions
+fail to collapse.  The phase says how that failure is oriented and compared
+from place to place.
 
 \section{Time in steps: the checkerboard picture}
 \label{sec:checkerboard}
 
+``Time in steps'' does not mean that an invisible cosmic clock clicks outside
+the universe.  A tick is one layer of causal updating: one more opportunity for
+an event to influence a later event.  Causal time is therefore order before it
+is duration.  A physical clock is a stable subsystem whose recurring phase or
+state change lets other processes compare durations.\footnote{The finite walk
+supplies an external update count.  Deriving relational or proper time from an
+internal clock subsystem, and proving agreement with continuum proper time, is
+an open reconstruction problem.}
+
+\Olabel\quad Time does not carry the process forward.  The ordered process is
+what gives time its physical meaning.
+
 In one spatial dimension, a null step goes either right or left.  A massive
 Dirac amplitude can be represented as a sum over zigzag histories
-(Figure~\ref{fig:checkerboard}).  The everyday analogue is a sailboat tacking
-upwind: on every leg the boat moves at full sailing speed, yet its net
-progress up the channel is slower, set by how often it comes about.  Each
-corner
-changes the propagation channel and contributes a factor proportional to the
-mass:
+(Figure~\ref{fig:checkerboard}).  This is not one hidden classical trajectory;
+the propagator adds the complex amplitudes of every allowed history.  Each
+corner changes the propagation channel and contributes a factor proportional
+to the mass.  In the real-mass specialization,
 \[
   A(h)=(\ii\epsilon m)^{\#\text{corners}(h)}.
 \]
@@ -433,11 +596,14 @@ segment remains null.}
 At $m=0$, every history containing a corner has zero amplitude; only straight
 null histories survive.  At nonzero $m$, turned histories participate and
 interfere.  \Mlabel\quad The project has checked the exact finite sum and its
-discrete Dirac recursion using exact fraction arithmetic, so no rounding or
-numerical approximation enters that finite statement.\footnote{Formally, the
-computation runs over the Gaussian rationals: complex numbers whose real and
-imaginary parts are ordinary fractions.  Every quantity in the finite
-statement is represented exactly.}
+discrete Dirac recursion using exact fraction arithmetic.  It has also checked
+the direct complex version: the two turn orientations use weights proportional
+to $z$ and $\bar z$, and the sum over all oriented histories equals repeated
+application of the local update rule exactly.\footnote{The
+Gaussian-rational checkerboard theorem and the later complex transfer theorem
+are distinct results.  The complex result is finite and exact but does not yet
+include position-dependent $z$, spatial translation phases, or an interacting
+continuum path integral.}
 
 The grid is a laboratory, not a portrait of space.  Everything it asserts
 about physics must survive the limit in which the grid itself
@@ -449,7 +615,7 @@ Lorentz symmetry requires a scaling limit in which the propagator, not merely
 a fitted dispersion curve, converges with controlled error to a
 Lorentz-covariant continuum kernel.}
 
-\subsection*{The first $3+1$ lift}
+\subsection*{Why $3+1$ dimensions are harder}
 
 In three spatial dimensions, four directions pointing toward the vertices of a
 regular tetrahedron form the smallest isotropic set of this kind.  If $c_i$
@@ -491,15 +657,62 @@ An explicit direction register, different weights, or a more elaborate unitary
 walk can change the ansatz; the finite theorem forbids only the three requested
 normalizations within the simple recursion.}
 
+That geometric lift is not yet a complete three-dimensional quantum walk.
+Exact probability preservation must hold for every wavelength the grid can
+carry, not only for smooth waves, and a lattice fermion tends to acquire
+unwanted high-frequency copies.
+
+The project now has a sharper result than the old normalization warning.
+Within the minimal four-channel architecture built from one degree-one factor
+for each spatial axis, exact probability preservation and the correct smooth
+three-dimensional limit
+force the stationary coefficient in each factor to vanish.  Worse, every
+fixed local turning rule --- including the Pluecker mass rule --- leaves three
+high-frequency wave patterns exactly indistinguishable from the intended
+low-frequency one.\footnote{This is
+a scoped no-go theorem, not a universal fermion-doubling theorem.  It applies
+to the live separable four-channel, range-one, single-factor architecture.
+Additional substeps, a larger cell, extra channels, a covering construction,
+or a different lattice may escape it.}
+
+This tells us something conceptually valuable.  A local mass cannot simply be
+``bolted onto'' the smallest three-axis lightlike shift while demanding every
+other virtue remain untouched.  Locality, unitarity, isotropy, internal
+dimension, and high-momentum topology negotiate with one another.
+
+There are already two controls on opposite sides of that boundary:
+
+\begin{center}
+\small
+\begin{tabularx}{0.94\linewidth}{@{}>{\bfseries}p{0.23\linewidth}XX@{}}
+\toprule
+Construction & What it achieves & What it does not yet achieve\\
+\midrule
+Six-direction D4 walk & Literal nearest-neighbor null shifts, explicit
+nontrivial direction mixing, exact probability preservation & Its current
+mixing rule cannot contain the required four-component Dirac behavior\\
+Wilson Hamiltonian & Correct low-momentum Dirac form and removal of the sampled
+unwanted zero corners & Its finite-time exponential is not a strictly
+nearest-neighbor one-step rule\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\Olabel\quad If spacetime really is assembled from finite null comparisons,
+the familiar four-component Dirac spinor may be an effective code sector, not
+the full microscopic register.  Extra directional channels need not mean extra
+observable particles; they may be the redundancy required for a local unitary
+decoder.  That is an attractive interpretation, but the missing alias-free
+construction must decide whether it is physics or wishful bookkeeping.
+
 \section{The four channels}
 
-The finite carrier has schematic form
-\[
-  D=\sum_e c(\alpha_e)\nabla_e+\Gamma\phi.
-\]
-Here $c(\alpha_e)$ represents a null direction, $\nabla_e$ transports a state,
-and $\Gamma\phi$ changes an internal or chiral channel.  Squaring $D$ separates
-four structural effects.
+The model packages propagation and internal change into one master rule, called
+the \emph{carrier}.  When we ask what remains after that rule is applied and
+compared with its reverse, four kinds of residue separate naturally.\footnote{In
+the technical manuscript the carrier is a Dirac-like operator
+$D=\sum_e c(\alpha_e)\nabla_e+\Gamma\phi$, and the four blocks appear in
+$D^\#D$.  The present section explains the content rather than the notation.}
 
 \begin{center}
 \begin{tabularx}{0.96\linewidth}{@{}>{\bfseries}p{0.16\linewidth}p{0.25\linewidth}X@{}}
@@ -509,11 +722,12 @@ Channel & Visual question & Finite mathematical content\\
 \textcolor{teal}{Aperture} & Do occupied null directions open apart? &
 Positive Gram/wedge terms; rank one becomes rank two; invariant mass appears.\\
 \textcolor{gold!80!black}{Closure} & Does transport around a loop return unchanged? &
-Commutators and holonomy; a closed path can return with a nontrivial phase or rotation.\\
+Loop memory; a closed path can return with a nontrivial phase or rotation.\\
 \textcolor{coral}{Turn} & Does propagation switch between null channels? &
-Chiral conversion and checkerboard corners; mass weights the switch.\\
+Left/right conversion and checkerboard corners; mass weights the switch.\\
 \textcolor{plum}{Solder} & Do internal frames and spacetime directions agree? &
-Coframe mismatch, torsion/nonmetricity-shaped terms, and a candidate geometry channel.\\
+Mismatch between the local directional compass and the neighboring one; a
+candidate geometry channel.\\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -529,42 +743,64 @@ kinematic channel and the cleanest part of the framework.
 
 \subsection{Closure: remembering a loop}
 
-Walk a large closed loop on the curved Earth carrying an arrow you never
-deliberately rotate: start on the equator pointing north, walk to the north
-pole, turn and walk back down to a different point on the equator, then walk
-home along it.  The arrow comes back rotated, although you never twisted it;
-the loop itself did.  Closure is the same experiment on the grid.  Place an
-internal arrow at one grid point and transport it around a closed loop
-(Figure~\ref{fig:closure}).
-The endpoint is the starting point, but the arrow may return rotated or with a
-phase.  That residual transformation is the holonomy.\footnote{For an ordered
-path $e_1\cdots e_n$, the transport is the ordered product
-$U_{e_n}\cdots U_{e_1}$.  Under vertex gauge transformations, open-path
-transport changes by endpoint factors; for $U(1)$ a closed product is invariant,
-while for a nonabelian group it is conjugated and only conjugacy-class data such
-as a matrix trace is gauge invariant.}
+Start at the southwest corner of a square and travel to the northeast corner.
+There are two simplest routes: walk east and then north, or walk north and then
+east.  Both routes use the same two directions and reach the same place.
+
+Now imagine that every step also carries an internal arrow --- a phase, a
+charge direction, or some other piece of quantum orientation.  The eastward
+step changes that arrow according to one local comparison rule, and the
+northward step changes it according to another.  If the two changes can be
+performed in either order with the same result, the two arrival arrows agree.
+If order matters, they do not (Figure~\ref{fig:closure}).
+
+That disagreement is \emph{closure}.  Walk outward along one route and return
+along the other in reverse: you have made a closed loop in space, yet the
+internal arrow fails to close.  The leftover rotation or phase is called the
+holonomy.\footnote{If east and north transport are $U_E$ and $U_N$, the two
+open paths compare $U_NU_E$ with $U_EU_N$.  Following one path and the inverse
+of the other produces the closed-loop holonomy.  Under local gauge changes,
+open paths acquire endpoint factors; a closed abelian phase is invariant,
+while a nonabelian holonomy is conjugated and only conjugacy-class data such as
+its trace is invariant.}
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[scale=1.05]
-  \coordinate (a) at (-2,-1.4);
-  \coordinate (b) at (2,-1.4);
-  \coordinate (c) at (2,1.4);
-  \coordinate (d) at (-2,1.4);
-  \draw[transport] (a)--(b) node[midway,below,label]{$U_{01}$};
-  \draw[transport] (b)--(c) node[midway,right,label]{$U_{12}$};
-  \draw[transport] (c)--(d) node[midway,above,label]{$U_{23}$};
-  \draw[transport] (d)--(a) node[midway,left,label]{$U_{30}$};
-  \foreach \p in {a,b,c,d} {\node[dot] at (\p) {};}
-  \draw[very thick,teal,-{Latex[length=2mm]}] (-2,-1.4)--(-1.25,-0.65);
-  \draw[very thick,gold,-{Latex[length=2mm]}] (-2,-1.4)--(-2.85,-0.9);
-  \node[label,align=left] at (5.0,0.65)
-    {same point, different arrow\\$H=U_{30}U_{23}U_{12}U_{01}\ne1$};
-  \node[label,align=left] at (5.0,-0.7)
-    {the loop stores curvature-like\\or gauge information};
+\begin{tikzpicture}[scale=1.0]
+  \coordinate (s) at (-2.4,-1.55);
+  \coordinate (en) at (2.4,-1.55);
+  \coordinate (ne) at (-2.4,1.55);
+  \coordinate (f) at (2.4,1.55);
+
+  \draw[very thick,teal,-{Latex[length=2mm]}]
+    (s)--(en) node[midway,below,label,text=teal!80!black]{east first};
+  \draw[very thick,teal,-{Latex[length=2mm]}]
+    (en)--(f) node[midway,right,label,text=teal!80!black]{then north};
+  \draw[very thick,navy,-{Latex[length=2mm]}]
+    (s)--(ne) node[midway,left,label,text=navy]{north first};
+  \draw[very thick,navy,-{Latex[length=2mm]}]
+    (ne)--(f) node[midway,above,label,text=navy]{then east};
+
+  \foreach \p in {s,en,ne,f} {\node[dot] at (\p) {};}
+  \node[label,below left=2pt of s] {same start};
+  \node[label,below left=3pt of f] {same finish};
+
+  \draw[very thick,gold,-{Latex[length=2mm]}]
+    (s)--++(0.72,0.72);
+  \node[label,anchor=east] at (-2.65,-0.8) {one starting arrow};
+
+  \draw[very thick,teal,-{Latex[length=2mm]}]
+    (f)--++(0.95,0.55);
+  \draw[very thick,navy,-{Latex[length=2mm]}]
+    (f)--++(0.25,1.05);
+
+  \node[label,align=left,anchor=west] at (4.45,0.75)
+    {same destination,\\different transported arrows};
+  \node[label,align=left,anchor=west] at (4.45,-0.55)
+    {their mismatch is the\\memory of the closed loop};
 \end{tikzpicture}
-\caption{Closure is not the geometric closing of the square; it is the failure
-of transported internal data to return unchanged.}
+\caption{East-then-north and north-then-east reach the same point.  Closure is
+the difference between the internal arrows delivered by the two routes.}
 \label{fig:closure}
 \end{figure}
 
@@ -574,34 +810,34 @@ contains an exact
 four-edge example with holonomy $\ii\ne1$ that stays $\ii$ under a nonidentity
 gauge change.
 
-\Mlabel\quad The nonabelian upgrade is now also checked.  For matrix-valued
-transport, an open history transforms only at its endpoints; a closed loop is
-conjugated by the gauge at its basepoint rather than left invariant; and the
-loop's matrix trace survives exactly.  An explicit rational $2\times2$ example
-with two noncommuting shear transports realizes all three statements: a
-nonidentity gauge change visibly moves the holonomy matrix while its trace
-stays fixed at $3$.  What remains open is connecting this history holonomy to
-the carrier's closure block, not the holonomy algebra itself.
+\Mlabel\quad The richer rotation-valued version is also checked.  When the
+internal arrow can rotate in ways whose order matters, changing the local
+labels changes the displayed return rotation but not its physically meaningful
+class.  In an exact finite example, the return table visibly changes while one
+summary number --- its trace --- remains exactly $3$.\footnote{Technically, an
+open transport changes by endpoint factors, a closed nonabelian holonomy is
+conjugated at its basepoint, and conjugacy-class data such as the trace is gauge
+invariant.  Connecting this history holonomy to the carrier's closure block
+remains open.}
 
 \subsection{Turn: converting one null channel into another}
 
 For a massless Weyl fermion, left- and right-handed propagation decouple.  A
 Dirac mass couples them.  In the checkerboard picture, the coupling is visible
-as a turn; in operator language, it is the off-diagonal conversion between two
-null chiral sectors.  The path picture and the matrix picture are two views of
-the same local event.  In the sailboat language of
-Section~\ref{sec:checkerboard}, turn is the tack: the mass sets how often the
-boat comes about.
+as a turn; in the update table, it is conversion between two
+null left/right sectors.  The path picture and the rule-table picture are two views of
+the same local event.  Turn is therefore not a bend of a classical object.  It
+is amplitude transferred between two propagation channels; the mass rule
+sets the complex weight of that transfer.
 
 \subsection{Soldering: tying transport to spacetime}
 
-Internal vectors do not become spacetime directions by naming them so.  A
-printed map is useful only once its compass rose is aligned with north on the
-actual ground, and the alignment must be rechecked from place to place.  A
-\emph{coframe} is the mathematical map that performs this identification.  At
-neighboring sites $x$ and $y$, let $e_x$ and $e_y$ be coframes and $U_{xy}$ the
-transport between their internal frames (Figure~\ref{fig:solder}).  Their
-mismatch is
+Internal directions do not become spacetime directions merely because we name
+them so.  Each site needs a local compass telling us what its internal arrows
+mean as actual directions, and neighboring compasses must be compared.  The
+technical name for such a compass is a \emph{coframe}.  At neighboring sites
+$x$ and $y$, let $e_x$ and $e_y$ denote their compasses and $U_{xy}$ the rule
+for carrying one to the other (Figure~\ref{fig:solder}).  Their mismatch is
 \[
   T_{xy}=e_y-U_{xy}e_x.
 \]
@@ -626,12 +862,11 @@ and the local frame that defines spacetime directions.}
 \label{fig:solder}
 \end{figure}
 
-\Mlabel\quad The finite matrix-coframe model now proves that invertible frame
-changes
-preserve coframe nondegeneracy, Lorentz frame changes preserve the induced
-metric $e^T\eta e$, determinant-one changes preserve volume, and the quadratic
-defect action $\tr(T^T\eta T)$ is frame invariant.  An exact rational boost
-provides a nonzero witness.\footnote{Here a coframe is represented by an
+\Mlabel\quad The finite model proves that changing the internal coordinate
+labels does not destroy a usable compass, that an exact change of inertial
+viewpoint preserves measured spacetime intervals, and that volume and the
+chosen mismatch score transform correctly.  The proof includes a nontrivial
+exact example rather than only the identity change.\footnote{Here a coframe is represented by an
 invertible matrix $e$, the induced metric is $g=e^T\eta e$, and the edge defect
 is $T_{xy}=e_y-U_{xy}e_x$.  The finite covariance theorem is algebraic.  It does
 not supply differentiability, a continuum connection, or a field equation.}
@@ -641,21 +876,18 @@ or graviton in the result.
 
 \section{Why these four belong together}
 
-The unifying object is not the word ``mass.''  It is the square of one finite
-Dirac-like carrier.  Schematically,
-\[
-  D^\#D
-  =\underbrace{Q_A}_{\text{aperture}}
-   +\underbrace{Q_C}_{\text{closure}}
-   +\underbrace{Q_T}_{\text{turn}}
-   +\underbrace{E}_{\text{soldering}}.
-\]
+The unifying object is not the word ``mass.''  It is one finite rule whose
+self-comparison separates into aperture, closure, turn, and soldering.  The
+technical equation belongs in the footnote; the conceptual fact is that the
+four effects are recovered from one calculation, rather than pasted together
+afterward.\footnote{Schematically,
+$D^\#D=Q_A+Q_C+Q_T+E$, with the four summands carrying the labels used here.}
 
 The four terms are distinguished by how transport, commutators, grading, and
 frame variation enter the square.  \Mlabel\quad In one explicit rational
 carrier, the four
-blocks are linearly independent and their coefficients can be recovered from
-matrix entries.  That makes the displayed decomposition rigid for that
+blocks are independent and their weights can be recovered from
+the update table.  That makes the displayed decomposition rigid for that
 witness.  It does not prove that every reasonable carrier has a unique
 four-channel decomposition; an abstract non-uniqueness theorem shows that an
 additional physical principle is needed.
@@ -663,22 +895,79 @@ additional physical principle is needed.
 \begin{center}
 \begin{tikzpicture}[node distance=0.75cm]
   \node[draw=navy,very thick,fill=mist,rounded corners=2pt,
-    minimum width=3.0cm,minimum height=1.0cm] (D) {$D$: null transport + turn field};
+    minimum width=3.0cm,minimum height=1.0cm] (D) {one-step carrier rule};
   \node[draw=navy,very thick,fill=mist,rounded corners=2pt,
-    below=of D,minimum width=3.0cm,minimum height=1.0cm] (D2) {$D^\#D$};
+    below=of D,minimum width=3.0cm,minimum height=1.0cm] (D2) {self-comparison};
   \node[channel,fill=paleteal,below left=0.85cm and 3.1cm of D2] (a) {aperture\\alignment cost};
   \node[channel,fill=palegold,below left=0.85cm and 0.25cm of D2] (c) {closure\\loop memory};
   \node[channel,fill=palecoral,below right=0.85cm and 0.25cm of D2] (t) {turn\\channel conversion};
   \node[channel,fill=mist,below right=0.85cm and 3.1cm of D2] (s) {solder\\frame mismatch};
-  \draw[transport] (D)--(D2) node[midway,right,label]{square};
+  \draw[transport] (D)--(D2) node[midway,right,label]{apply and compare};
   \foreach \n in {a,c,t,s} {\draw[transport] (D2)--(\n);}
 \end{tikzpicture}
 \end{center}
 
 This is the framework's deepest simplification: instead of proposing four
 unrelated stories for mass, ask whether four familiar physical mechanisms are
-the four graded faces of one operator square.  The finite algebra says that the
+four faces of one underlying rule.  The finite algebra says that the
 question is coherent.  Nature has not yet answered yes.
+
+There is a more revealing way to say the same thing.  Each channel measures a
+different failure of perfect simplification:
+
+\begin{center}
+\begin{tabularx}{0.94\linewidth}{@{}>{\bfseries}p{0.18\linewidth}X@{}}
+\toprule
+Aperture & Several null directions cannot be compressed into one ray.\\
+Closure & Local comparisons cannot erase the memory of a completed loop.\\
+Turn & Propagation cannot remain inside one chiral or internal channel.\\
+Soldering & One internal frame cannot be identified with spacetime everywhere
+without residual mismatch.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\Olabel\quad On this reading, physics is made from irreducible residues of
+comparison.  Mass, gauge curvature, channel conversion, and geometry are not
+four substances.  They are four ways in which a finite causal process refuses
+to collapse into one globally trivial description.
+
+\section{What familiar words mean in this ontology}
+
+The proposal is easiest to misunderstand when old nouns are carried over
+unchanged.  Here is the intended dictionary.
+
+\begin{center}
+\begin{tabularx}{0.96\linewidth}{@{}>{\bfseries}p{0.18\linewidth}X@{}}
+\toprule
+Event & A possible local comparison or transfer; the primitive item in the
+history, not an occurrence involving a pre-existing particle.\\
+Field & The rule assigning local responses and comparisons across the causal
+network.\\
+Particle & A stable physical pattern: a response that can be prepared,
+transported, and recognized repeatedly.\\
+Interaction & A failure of two such patterns to decode independently; joint
+composition changes the available amplitudes or spectrum.\\
+Gauge freedom & Redundancy in the local language used to compare internal
+states; loop residue, not a local label, carries invariant content.\\
+Geometry & The soldering rule that says which internal causal alternatives
+count as spacetime directions, together with the mismatch of that rule across
+the network.\\
+Mass & The positive residue left when the pattern cannot be represented by one
+perfectly aligned null channel.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+This dictionary is intentionally realist.  It does not say the theory is only
+a metaphor about information.  It says information that can be physically
+transmitted, composed, and recovered \emph{is} the relational content of the
+world; ``matter'' and ``spacetime'' are two stable organizations of that same
+content.\footnote{This is stronger than the kernel-checked claims.  The current
+formalization supplies finite state spaces, updates, constraints, positive
+sectors, and several exact invariants.  A complete reconstruction theorem from
+those objects to continuum quantum field theory and Lorentzian geometry is not
+yet proved.}
 
 \section{What the picture says about particles}
 \label{sec:particles}
@@ -699,10 +988,11 @@ Object & Null-edge picture & Boundary\\
 \midrule
 Massless fermion & One Weyl propagation channel; one null momentum direction. &
 Standard chiral kinematics.\\
-Massive fermion & Two null chiral channels coupled by a mass term; zigzag drift. &
-Finite algebra checked; literal trajectory remains interpretation.\\
+Massive fermion & Two null left/right channels coupled by a complex turning rule;
+timelike drift emerges from their coherent mixing. &
+Finite algebra and histories checked; microscopic ontology remains interpretation.\\
 Photon & Massless vector with only transverse polarizations. &
-The velocity-operator story for Dirac fermions does not transfer verbatim.\\
+The left/right zigzag story for fermions does not transfer verbatim.\\
 Massive $W/Z$ & The longitudinal polarization appears together with mass; a
 would-be scalar mode is reorganized into the vector field. &
 Degree-of-freedom accounting is standard; the null-edge dynamics is not derived.\\
@@ -712,17 +1002,21 @@ Antiparticle & CPT-related orientation of the same relativistic structure. &
 No explanation of the cosmic matter asymmetry follows.\\
 Composite matter & Constituents and binding fields contribute to total rest
 energy. & A composite object is not claimed to move microscopically at $c$.\\
-Higgs scalar & No Weyl zigzag of its own. & The scalar self-mass is an explicit
-exception to the universal fermionic picture.\\
+Higgs scalar & Candidate collective amplitude or orientation mode of the turn
+and reference structure, rather than a primitive massive bead. & No null-edge
+derivation of the Higgs potential or the $125$ GeV excitation exists.\\
 \bottomrule
 \end{tabularx}
 \end{center}
 
 The Higgs row matters.  The framework can describe how a scalar expectation
 reorganizes fermion and vector degrees of freedom, but it does not derive the
-Higgs boson's own mass from a pair of null chiral channels.  We would rather
-keep a bold rule with one honest exception than trade it for a beautiful rule
-that lies.
+Higgs potential or the Higgs boson's own mass from the present null-spinor
+rule.  The Higgs is therefore an exception to the \emph{current fermionic
+mechanism}, not necessarily to the broader ontology.  To remove the exception,
+the scalar must be derived as a collective mode of null data with the correct
+vacuum, radial excitation, couplings, and measured mass.  Merely renaming the
+input scalar ``emergent'' would explain nothing.
 
 \section{Mass as lost directional simplicity}
 
@@ -759,11 +1053,98 @@ the model contains a signed closure operation that can lower the determinant;
 closure is structured transport, not generic decoherence.
 
 The information view is useful because it unifies several descriptions:
-rank collapse for the massless boundary, continuous spectral area, linear
+rank collapse for the massless boundary, continuous area, linear
 entropy, loss of visibility, total-variation
 distinguishability, and compression cost all vanish on a single pure direction.
 They are related faces of one invariant, not independent confirmations of the
 physical theory.
+
+\section{When one particle is not enough}
+
+A probability-preserving one-particle walk is not yet a quantum field theory.
+Many identical fermions obey strict sign and exclusion rules, and those rules
+must remain local when the number of particles can change.  Interactions
+require more: the joint evolution must do something that cannot be reconstructed
+from independent one-particle motion.
+
+\Mlabel\quad The finite project now proves the complete fermionic sign rules for
+any finite ordered set of possible modes.  It also constructs the standard
+many-particle extension of a one-particle update: the extension leaves the
+empty state empty, reproduces the original update when exactly one mode is
+occupied, and preserves both particle number and whether that number is even
+or odd.  Full compatibility with adding a particle, probability preservation,
+and inherited spatial locality are the remaining gates.\footnote{The technical
+objects are the finite CAR algebra and the determinant-minor second
+quantization $\Gamma(U)$.}
+
+There is also a deliberately small interaction laboratory.  Among four
+possible modes, a pair-transfer rule converts one distinguished occupied pair
+into another with amplitude $z$ and converts it back with amplitude $\bar z$.
+A corresponding exactly reversible, probability-preserving operation leaves
+every one-particle possibility unchanged but changes an explicit two-particle
+state.\footnote{The live theorem identifies a
+rank-two pair sector and proves Hermiticity, complex linearity, inner-product
+preservation, exact reversibility, and the $z$ versus $\bar z$ orientation
+entries.  It does not yet prove that the operation is the time exponential of
+a local quartic Hamiltonian, classify it as non-quasi-free in the completed
+Fock lift, or compute a continuum scattering amplitude.}
+
+This is a modest result with a large conceptual point.  The phase that is
+invisible in the one-particle rest spectrum can become visible in a
+two-particle process.  If that survives the completed local many-particle extension,
+the Pluecker origin will have produced an operational distinction rather than
+only a new derivation of the same gap.
+
+\Olabel\quad An interaction is not a force exchanged between already complete
+objects.  It is the statement that the two patterns cannot be decoded
+independently: the admissible history of the pair contains information absent
+from either one-particle history.
+
+\section{What fixes a particular mass?}
+
+The area identity explains the \emph{form} of a mass gap.  It does not choose
+the norms or relative angle of the primitive spinors, so it does not explain
+why the electron, muon, or any other particle has its observed mass.  This is
+not a small missing numerical fit.  It is the distinction between a kinematic
+invariant and a dynamical theory.
+
+The simplest positive action does not solve the problem.  If both primitive
+spinors are scaled by $t$, the natural quadratic Pluecker action scales as
+$t^4$.  \Mlabel\quad For every positive noncollinear configuration, the exact
+scale stationarity equation then selects only $t=0$.  The theory has proved its
+own no-go: homogeneous positive Pluecker energy collapses instead of choosing a
+nonzero mass.
+
+One can add a competing term such as
+\[
+  V_c(t)=(t^2-c)^2,
+\]
+and obtain stable nonzero minima at $t=\pm\sqrt c$.  But then the selected
+scale is precisely the supplied constant $c$.  Calling that a prediction would
+hide the input in the potential.
+
+\widebox{coral}{palecoral}{The present theory explains why a rest term can be
+a Pluecker area and why it vanishes at collinearity.  It does not yet explain
+the absolute size of that area.}
+
+\Olabel\quad Our preferred possibility is that observed masses are stable
+scales of a coupled many-body and coarse-graining problem: attractors or
+dimensional transmutation scales of the full decoder, not arbitrary labels
+attached to isolated particles.  That idea becomes science only when a stated
+action or ensemble has a stable nonzero solution and a fluctuation spectrum.
+
+Coarse-graining already supplies a warning.  Under the explicit temporal block
+$U\mapsto U^2$, a pure mass coin stays in the same family after its angle is
+doubled.  The full ordered split walk does not: an exact quarter-turn witness
+blocks to $-I$ while naive parameter doubling gives $+I$.  The microscopic
+family generates additional ordered words and couplings.\footnote{This is an
+exact temporal-blocking theorem, not a spatial renormalization-group flow.  A
+physical RG paper still needs spatial decimation, effective observables, fixed
+points, and relevant/irrelevant directions.}
+
+The lesson is that the ontology should live in a universality class, not in one
+favorite lattice formula.  If null information is fundamental, it must remain
+recognizable after the details of one tick have been forgotten.
 
 \section{What the machine has checked}
 \label{sec:machine}
@@ -790,23 +1171,26 @@ evidence ladder is:
   \node[draw=teal,very thick,fill=paleteal,rounded corners=2pt,
     text width=11.5cm,align=left,inner sep=7pt] (m) {
     \textbf{Kernel-checked finite results}\quad
-    Gram/wedge mass identity; massless iff aligned; exact $1+1$ checkerboard
-    sum; $3+1$ tetrahedral endpoint law; one-step continuum error bound;
-    subluminal massive drift; carrier four-block witness; finite binding;
-    abelian and nonabelian closure holonomy; nondegenerate matrix-coframe
-    covariance.};
+    Area/mass identity; unique complex two-channel turning rule; exact
+    relativistic energy relation; local variable-$z$ walk and causal cone;
+    direct complex history sum; induced phase link; scoped $3+1$
+    high-frequency-copy no-go; long-time convergence bounds; finite fermion
+    signs and pair dynamics; blocking and scale-selection no-gos; loop memory
+    and local-compass covariance.};
   \node[draw=navy,very thick,fill=mist,rounded corners=2pt,
     below=of m,text width=11.5cm,align=left,inner sep=7pt] (t) {
     \textbf{Established external physics}\quad
     Massive momenta as sums of null momenta; Dirac/Weyl chirality; Feynman
-    checkerboard and quantum walks; gauge holonomy; coframes and Lorentz
-    geometry; Higgs degree-of-freedom transfer.};
+    checkerboard and quantum walks; unwanted lattice copies; gauge loop memory;
+    many-fermion quantum theory; local frames and relativity; Higgs
+    degree-of-freedom transfer.};
   \node[draw=gold,very thick,fill=palegold,rounded corners=2pt,
     below=of t,text width=11.5cm,align=left,inner sep=7pt] (c) {
     \textbf{Open physical identifications}\quad
-    The finite carrier is nature's microscopic carrier; its four blocks become
-    Standard Model kinetic/gauge/Yukawa/gravity terms; the regulator has the
-    correct continuum and many-body limits; observed mass values follow.};
+    The finite carrier is nature's microscopic process; winding of the complex
+    area forces a trapped physical mode; a local copy-free $3+1$ walk exists;
+    the grid disappears in the continuum limit; a local many-particle theory
+    and the Standard Model emerge; observed mass values and gravity follow.};
   \draw[transport] (m)--(t);
   \draw[transport] (t)--(c);
 \end{tikzpicture}
@@ -817,56 +1201,90 @@ Some particularly visual checked statements are worth listing plainly.
 \begin{itemize}
   \item One null direction gives zero mass invariant; two nonparallel directions
         give a strictly positive rational witness.
+  \item The same complex area determines the two-channel turning rule, and
+        applying that rule twice gives exactly the mass squared.  Under the
+        stated symmetries, no different two-channel rule is available.
+  \item An arbitrary site-dependent complex Pluecker field gives an exactly
+        unitary local coin and a strict finite causal cone, including at zeros
+        where the primitive spinors become collinear.
+  \item Local phase rotation creates an exact endpoint link; a constant phase
+        creates none.  A global real phase lift on a periodic cycle cannot carry
+        nonzero winding.
   \item Every primitive tetrahedral step is null, while a mixed two-direction
         endpoint is timelike.
-  \item The basic tetrahedral projector average has an unavoidable factor
-        $1/3$; the normalization tension is a theorem, not a plotting artifact.
+  \item The smallest live four-component, three-axis design necessarily keeps
+        three exact high-frequency copies for every fixed local turning rule.
   \item A finite massive shell has group drift strictly below $c$, including an
         exact $3$--$4$--$5$ witness with speed squared $9/25$.
-  \item A closed finite $U(1)$ loop can have nontrivial, exactly gauge-invariant
-        holonomy.
-  \item For noncommuting matrix transport, a closed loop's holonomy is
-        conjugated by the basepoint gauge --- an explicit rational gauge change
-        moves the holonomy matrix --- while its trace is exactly unchanged.
-  \item A rational nonidentity Lorentz boost preserves the induced metric and a
-        nonzero matrix-coframe defect action.
+  \item The direct complex checkerboard history sum equals the actual transfer
+        power, with opposite turns retaining $z$ and $\bar z$ separately.
+  \item The finite many-fermion bookkeeping satisfies every required sign and
+        exclusion rule; its current lift agrees with one-particle motion and
+        preserves number and even/odd parity.
+  \item A unitary pair operation fixes the one-particle basis and changes an
+        explicit two-particle state using the Pluecker phase.
+  \item A homogeneous positive Pluecker action has no nonzero stationary scale,
+        and the bare split family is not closed by temporal blocking.
+  \item A closed finite loop can return with a nontrivial phase that is exactly
+        independent of the local labels used along the route.
+  \item For richer internal rotations, changing local labels changes the
+        displayed return rotation while leaving its label-independent content
+        exactly unchanged.
+  \item A nontrivial exact change of inertial viewpoint preserves spacetime
+        intervals and a nonzero local-compass mismatch score.
 \end{itemize}
 
 \section{What could prove the picture wrong}
 \label{sec:kill}
 
 A useful speculative framework should become easier to kill as it becomes more
-specific.  Ours is now specific enough to shoot at; here are the seven clean
+specific.  Ours is now specific enough to shoot at.  These are the cleanest
 shots.
 
 \begin{enumerate}[leftmargin=1.6em]
-  \item \textbf{No continuum recovery.}  If the finite walk does not converge to
-  the Dirac/Weyl propagator with controlled errors, the grid is only a toy.
+  \item \textbf{Only a renamed mass.}  If every observable consequence depends
+        only on a freely supplied constant $|z|$, the Pluecker construction is
+        an elegant parametrization, not a new physical theory.
 
-  \item \textbf{Wrong characteristic cone.}  If channel terms enter at principal
-  order and alter the observed null cone, the universal-speed reading fails.
+  \item \textbf{No phase consequence.}  If patched Pluecker winding produces no
+        protected mode and the $z/\bar z$ orientation disappears from every
+        operational quantity, the complex phase is basis bookkeeping.
+
+  \item \textbf{No strict $3+1$ successor.}  If every local probability-preserving escape
+        from the proved four-channel alias class loses the Dirac tangent,
+        positivity, or locality, the proposed microscopic architecture fails.
+
+  \item \textbf{No changing-lattice continuum recovery.}  If explicit sampling
+        and interpolation do not converge to the position-space Dirac flow with
+        controlled ultraviolet tails, the grid remains a finite toy.
+
+  \item \textbf{No many-body locality.}  If the one-particle walk cannot become
+        a local many-fermion update with a physical interaction sector, it is
+        not a quantum field theory.
+
+  \item \textbf{No mass selection.}  If every natural action is scale-flat or
+        collapses to $z=0$ unless a mass is inserted by hand, the framework does
+        not explain observed mass values.
+
+  \item \textbf{No universality.}  If coarse-graining destroys the null-edge
+        structure instead of flowing within a controlled enlarged family, the
+        ontology depends on regulator details that low-energy physics forgets.
 
   \item \textbf{Wrong field dictionary.}  If aperture, closure, turn, and
-  soldering do not refine to kinetic, gauge, scalar, and geometric operators,
-  the physical names must be replaced by neutral block labels.
+        soldering do not refine to kinetic, gauge, scalar, and geometric
+        effects, the physical names must be replaced by neutral block labels.
 
-  \item \textbf{No many-body locality.}  Single-particle quantum walks do not
-  automatically produce a local quantum field theory.  Known higher-dimensional
-  QCA obstructions must be confronted rather than bypassed.
+  \item \textbf{No Higgs or gravitational completion.}  Failure to derive a
+        scalar collective mode and a legitimate continuum soldering action
+        leaves two major parts of the ontology unsupported.
 
-  \item \textbf{No mass values.}  Structural mass identities do not predict the
-  electron, quark, or neutrino spectrum.  A successful theory needs a rigid
-  generation/Yukawa mechanism, not inserted constants.
-
-  \item \textbf{No gravitational limit.}  A finite coframe defect is not yet an
-  Einstein or teleparallel field equation.  Failure of the soldering channel to
-  produce a legitimate continuum action would retire the gravity reading.
-
-  \item \textbf{Scalar exception remains unexplained.}  The Higgs self-mass must
-  be derived by another layer or retained openly as an input.
+  \item \textbf{No empirical leverage.}  A theory that can reproduce known
+        dispersion only by fitting free parameters, while predicting no defect,
+        scattering, scaling, or regulator correction, has not earned a claim
+        about nature.
 \end{enumerate}
 
-\widebox{coral}{palecoral}{A theorem about a finite matrix can be completely
+\widebox{coral}{palecoral}{A theorem about a finite calculation can be completely
 correct while its proposed physical interpretation is wrong.  The program is
 designed so that those two verdicts can be stated independently.}
 
@@ -875,20 +1293,25 @@ designed so that those two verdicts can be stated independently.}
 The next conceptual milestones are concrete.
 
 \begin{enumerate}[leftmargin=1.6em]
-  \item Sum the now-exact ordered $3+1$ spin-projector amplitudes into a full
-  endpoint kernel; bend attenuation and orientation-dependent phase are landed.
-  \item Build an exactly norm-preserving tetrahedral walk with an explicit
-  direction register and massive channel conversion.
-  \item Prove a many-step continuum theorem rather than only a one-step error
-  estimate.
-  \item Instantiate the common principal-symbol theorem separately for scalar,
-  Dirac, and gauge-fixed vector fields.
-  \item Connect the now-checked nonabelian history holonomy to the carrier's
-  closure block on each history.
-  \item Relate the nondegenerate finite coframe to the actual soldering term in
-  the carrier square and then to a continuum variational equation.
-  \item Derive, or sharply rule out, a mechanism for three generations and
-  dimensionless mass ratios.
+  \item Classify every wavelength of the current split walk, then construct the
+        smallest local $3+1$ design without unwanted copies or prove exactly
+        what extra memory, range, or internal channels are unavoidable.
+  \item Derive patched phase links from local nonzero $z(x)$, connect them to the
+        finite index spine, and prove or refute a stable localized defect mode.
+  \item Give an exact rule for translating smooth waves onto finer grids and
+        back, then prove that the resulting motion approaches the Dirac
+        equation for a clearly stated class of well-behaved waves.
+  \item Finish the local many-fermion extension; then compute a scattering
+        phase, bound-state energy, or selection rule.
+  \item Replace temporal blocking by spatial coarse-graining, identify the
+        smallest closed coupling family, and calculate its fixed points.
+  \item Construct an action or ensemble with a stable nonzero Pluecker scale,
+        or prove a broad enough no-go to show exactly which new dimensional
+        input is unavoidable.
+  \item Connect closure and soldering to accepted gauge and geometric continuum
+        actions, including their conservation laws and positive physical
+        sectors.
+  \item Produce a held-out observable whose coefficient is not freely fitted.
 \end{enumerate}
 
 The goal is not to make the grid increasingly ornate.  It is to discover which
@@ -898,36 +1321,52 @@ continuum invariants.  Those survivors, if any, are candidates for physics.
 \section{Conclusion}
 
 The familiar statement ``massive things move slower than light'' describes the
-view from far away.  In our picture it stops being true the moment you zoom
-in: underneath, nothing ever slows down.  A finite null-step model makes that
-claim precise:
+decoded object.  It need not describe the process from which that object is
+made.  In our picture, nothing fundamental slows down because no fundamental
+massive object is moving in the first place.  There are null causal
+transmissions, complex alternatives, and the stable patterns they jointly
+support.
 
 \begin{center}
 \begin{tikzpicture}[node distance=0.25cm]
   \node[draw=teal,fill=paleteal,rounded corners=2pt,text width=11.5cm,
     align=center,inner sep=7pt] (n) {\textbf{Null primitives}\quad
-    Every elementary propagation link lies on the light cone.};
+    Every elementary causal link lies on the light cone.};
   \node[draw=gold,fill=palegold,rounded corners=2pt,below=of n,text width=11.5cm,
     align=center,inner sep=7pt] (d) {\textbf{Structured disagreement}\quad
-    Directions open, loops remember, channels turn, and frames fail to match.};
+    Directions open, phases wind, loops remember, channels turn, and frames fail
+    to match.};
   \node[draw=coral,fill=palecoral,rounded corners=2pt,below=of d,text width=11.5cm,
-    align=center,inner sep=7pt] (m) {\textbf{Massive emergence}\quad
-    The combined state has timelike momentum, subluminal drift, and a definite
-    rest energy.};
+    align=center,inner sep=7pt] (m) {\textbf{Decoded reality}\quad
+    Stable patterns appear as particles, interactions, and spacetime
+    geometry.};
   \draw[transport] (n)--(d);
   \draw[transport] (d)--(m);
 \end{tikzpicture}
 \end{center}
 
 We think this is what mass \emph{is}: not a primitive substance, not a light
-ray that somehow slowed down, but the invariant cost of making many lightlike
-processes coexist as one stable object.\footnote{The score so far, by tier:
-the aperture identity, the checkerboard sum, the subluminal drift bound, the
-abelian and nonabelian closure holonomies, and the coframe covariance are
-kernel-checked finite results (Section~\ref{sec:machine}); the continuum,
-many-body, and mass-value layers remain open, with their kill conditions
-listed in Section~\ref{sec:kill}.}  Whether nature agrees is the question the
-remaining theorems and kill tests exist to answer.
+ray that somehow slowed down, but the irreducible positive residue of making
+several lightlike possibilities coexist as one stable object.  Aperture gives
+that residue a magnitude.  Phase gives it orientation.  Turn lets it persist
+through time.  Closure and soldering place it inside a world of comparisons.
+
+We also think the larger lesson goes beyond mass:
+
+\widebox{plum}{mist}{\Olabel\quad What is fundamental is not matter on a stage.
+It is the finite causal work of constructing matter and the stage together.}
+
+That sentence is not proved.  What is proved is that a surprisingly large and
+rigid finite architecture exists beneath it, that the architecture already
+rules out several easy stories, and that its remaining claims have sharp kill
+conditions.\footnote{The score so far includes the Pluecker/rest-operator
+identity, local exact unitarity, complex histories, phase-connection law,
+scoped alias and scale-selection no-gos, finite CAR algebra, a phase-sensitive
+two-particle operation, closure holonomies, and coframe covariance.  The strict
+$3+1$ successor, patched defect index, changing-lattice PDE limit, complete
+local Fock lift, mass spectrum, Higgs sector, and gravity limit remain open.}
+Whether nature agrees is the question the remaining theorems and experiments
+exist to answer.
 
 \appendix
 \section{Selected formal anchors}
@@ -935,9 +1374,9 @@ remaining theorems and kill tests exist to answer.
 The public-facing discussion above is grounded in the following Lean modules.
 These are finite draft modules with build-enforced assumption-footprint checks;
 their physical interpretation remains subject to the boundaries stated in the
-text.  A technical companion manuscript (\emph{Null-Edge P1: The Origin of
-Mass}, draft v3) states the same results with full definitions, conventions,
-and provenance.  Module paths in the table are relative to
+text.  The current technical companion, \emph{From Null-Spinor Area to a Dirac
+Gap}, states the central results with full definitions, conventions, and
+provenance.  Module paths in the table are relative to
 \texttt{PhysicsSM/Draft/NullEdge/} in the project repository
 (\url{https://github.com/Pandaemonium/StandardModel}); readers with a Lean~4
 toolchain can rebuild and re-verify every listed result.
@@ -949,12 +1388,27 @@ toolchain can rebuild and re-verify every listed result.
 Module & Payload used here\\
 \midrule
 GateI1/Core.lean & Gram/wedge mass identity and massless boundary\\
+PluckerMassOperator.lean & Complex area, two-channel rest rule, and exact energy square\\
+Pluecker3Plus1ComplexMass.lean & Four-component complex phase and exact $3+1$ energy square\\
+PluckerMassDynamics.lean & Exactly probability-preserving rest evolution\\
+VariablePlueckerLocalWalk.lean & Position-dependent complex area, inverse, and causal cone\\
+VariablePlueckerPhaseConnection.lean & Local phase change and induced endpoint link\\
+ComplexPlueckerCheckerboardPathSum.lean & Direct complex oriented history sum\\
+GlobalPhaseWindingNoGo.lean & Global phase has zero winding; patched-link control\\
 ExactCheckerboardPathSum.lean & Exact finite corner-weighted history sum\\
 TetrahedralNullHistory.lean & $3+1$ endpoint law and $1/3$ frame factor\\
 TetrahedralSpinProjectorPath.lean & Ordered bends and orientation-sensitive spin phase\\
+StrictQCAMinimalArchitecture.lean & Minimal three-axis obstruction and exact high-frequency copies\\
 LowerOrderChannelCausality.lean & Shared null principal cone and lower-order gate\\
 DiracVelocityOperator.lean & Componentwise Dirac velocity support\\
 Carrier/SubluminalBound.lean & Massive group-velocity bound\\
+FixedMomentumManyStepContinuum.lean & Uniform compact-momentum many-step convergence\\
+ChangingLatticePDECore.lean & Bulk/tail split and abstract global $L^2$ convergence\\
+FiniteCARFockBasic.lean & Generic finite fermionic sign and exclusion rules\\
+FiniteCARSecondQuantization.lean & Vacuum, one-particle, number, and parity controls\\
+PlueckerQuarticInteraction.lean & Phase-sensitive pair transfer and exact pair operation\\
+TemporalBlockingRG.lean & Exact temporal blocking closure and nonclosure controls\\
+Carrier/PluckerScaleSelectionNoGo.lean & Scale collapse and explicit escape control\\
 FourChannelRigidityCapstone.lean & Concrete four-block coefficient rigidity\\
 HistoryLocalFourChannelAction.lean & Local turn action and corner phase\\
 U1HistoryClosureHolonomy.lean & Gauge-invariant finite closure phase\\
@@ -980,6 +1434,13 @@ Carrier/DerivedInteraction.lean & Closure-derived finite binding and wrong-plane
   \item[Invariant mass.]  The mass every observer agrees on, defined by
   $m^2=E^2-|\mathbf p|^2$.  Zero for a single flash of light; positive for a
   system of misaligned flashes.
+  \item[Pluecker area.]  The oriented area $z=\psi\wedge\phi$ spanned by two
+  complex null directions.  Its magnitude supplies the finite rest gap; its
+  phase records orientation information the gap alone cannot see.
+  \item[Decoder.]  The total physical rule that removes redundancy, enforces
+  constraints and positivity, and turns microscopic alternatives into stable
+  observable responses.  A complete decoder for nature is proposed, not yet
+  derived.
   \item[Chirality.]  The two independent propagation channels
   (``left-handed'' and ``right-handed'') of a relativistic fermion.  Massless
   fermions keep the channels separate; a mass term couples them.
@@ -990,6 +1451,11 @@ Carrier/DerivedInteraction.lean & Closure-derived finite binding and wrong-plane
   \item[Regulator.]  A deliberately simplified setting --- here the finite
   grid --- that makes every quantity exactly computable.  Results are trusted
   as physics only if they survive removing the regulator.
+  \item[High-frequency copy.]  An unwanted lattice wave that obeys the same
+  low-energy-looking rule as the intended particle.  Technical literature
+  often calls such copies fermion doublers or Floquet aliases.
+  \item[Universality.]  The survival of the same large-scale physics after
+  microscopic details are changed or coarse-grained away.
   \item[Holonomy.]  The net rotation or phase an internal arrow acquires when
   transported around a closed loop.
   \item[Coframe / soldering.]  The map that identifies internal directions

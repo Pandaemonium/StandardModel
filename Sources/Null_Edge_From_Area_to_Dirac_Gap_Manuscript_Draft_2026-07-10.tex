@@ -94,9 +94,15 @@ sum through the distinct directed weights $z$ and $\bar z$.  Iterated vector-val
  convergence bounds, Fourier
 normalization, and negative controls are checked in Lean~4.  The novelty is
 the derived rest operator and its verified dynamical chain, not a new
-constant-coefficient $1+1$ walk.  A strict alias-free discrete-time successor,
-changing-lattice PDE convergence, and interactions remain open; an absolute
-mass requires an additional scale-bearing input.
+constant-coefficient $1+1$ walk.  A finite four-mode quartic extension has
+forward two-particle amplitude $z$ and conjugate reverse amplitude, so it
+retains orientation information beyond the norm-only free gap; its associated
+normalized phase kick is exactly reversible and Fock-norm preserving.  The
+quartic operator is Hermitian, and the kick equals it on the distinguished pair
+sector while acting identically off that sector.  A strict
+alias-free discrete-time successor, changing-lattice PDE convergence, and a
+local second-quantized continuum theory remain open; an absolute mass requires
+an additional scale-bearing input.
 \end{abstract}
 
 \paragraph{How to read the status marks.}
@@ -167,7 +173,8 @@ the oriented decomposition retains a path phase.  \NewResult{} \Kernel{}
 \textbf{What changes physically, and what does not.}
 The Pluecker origin fixes more than a dispersion parameter: it fixes the
 complex directed turn amplitudes, their local chiral connection under a
-spatially varying field, and the exact gap-closing locus.  It does not by
+spatially varying field, the exact gap-closing locus, and a finite quartic
+pair-transfer amplitude that distinguishes $z$ from $\bar z$.  It does not by
 itself cure lattice aliases or predict an absolute mass.  In fact, within the
 four-channel separable degree-one architecture, every even-parity zone corner
 is provably locked to the origin after any onsite Pluecker coin; under
@@ -177,7 +184,7 @@ consequences, not interpretive qualifications.  \NewResult{} \Kernel{}
 \end{minipage}}
 \end{center}
 
-Five contributions organize the paper.
+Six contributions organize the paper.
 \begin{enumerate}[leftmargin=2em]
   \item We isolate the exterior-area invariant and the exact massless boundary,
   and distinguish the first-order gap $\mu$ from the quadratic invariant
@@ -214,6 +221,21 @@ Five contributions organize the paper.
   ordered words in the full split family, and a homogeneous-action no-go
   proves that an additional scale-bearing input is required to select
   nonzero $|z|$.
+  \item We give the finite fermionic many-body seed explicitly: a generic
+  occupation-basis construction satisfies all canonical anticommutation
+  relations, and a four-mode quartic pair transfer has oriented two-particle
+  amplitudes $z$ and $\bar z$.  At the primitive-spinor fixture $z=3+4\ii$ the
+  two channels differ exactly, and the associated normalized pair kick is
+  an explicit complex-linear automorphism, involutive and Fock-inner-product
+  preserving.  This is a
+  finite unitary two-particle operation; the quartic operator is Hermitian and
+  agrees with the kick on the
+  pair sector.  The kick fixes every one-particle occupation state but is
+  nontrivial on the displayed two-particle state.  This is not yet a completed
+  second quantization of the spatial walk: only the determinant-minor vacuum,
+  one-particle, number, and parity theorems are landed.  Creation covariance,
+  functoriality, inherited locality, an operator-exponential theorem, and a
+  continuum vertex remain open.
 \end{enumerate}
 
 The result sits between spinor-helicity kinematics and discrete relativistic
@@ -266,6 +288,49 @@ works have stronger field-theoretic or higher-dimensional scope.  The present
 distinction is the geometrically generated complex rest operator, the exact
 kernel dictionary, and their formal verification.}
 \label{tab:comparison}
+\end{table}
+
+\subsection*{The reparametrization test}
+
+At constant nonzero $z$, the one-particle spectrum alone cannot distinguish
+this construction from a Dirac walk whose mass was assigned as $m=|z|$.  The
+claim of added content must therefore survive after that spectrum is held
+fixed.  Table~\ref{tab:reparametrization} states the test explicitly.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}p{0.22\linewidth}XX@{}}
+\toprule
+Question & Assigned scalar mass & Pluecker-derived input in this paper\\
+\midrule
+Constant dispersion
+ & Same after setting $m=|z|$
+ & No claimed distinction\\
+Gap-closing locus
+ & External condition $m=0$
+ & Exact collinearity condition $\psi\wedge\phi=0$\\
+Directed histories
+ & A real or independently chosen turn coefficient
+ & Opposite orientations carry $z$ and $\bar z$ in the same transfer sum\\
+Spatially varying phase
+ & Additional complex-mass field supplied independently
+ & Primitive-spinor phase induces an exact endpoint connection under local chiral conjugacy\\
+Finite two-particle probe
+ & Requires an independent interaction coefficient
+ & The exhibited quartic transfer reuses the same wedge as amplitudes $z$ and $\bar z$\\
+Absolute scale
+ & Not predicted
+ & Not predicted; the homogeneous-action no-go proves an added scale is required\\
+Ultraviolet lattice spectrum
+ & Regulator dependent
+ & Still regulator dependent; the present walk retains exact aliases\\
+\bottomrule
+\end{tabularx}
+\caption{What is and is not gained by deriving the mass parameter.  The
+quartic row is an explicit finite extension, not yet a theorem that the free
+action uniquely forces that interaction.}
+\label{tab:reparametrization}
 \end{table}
 
 This comparison also fixes the paper's ceiling.  Its centerpiece is a
@@ -1252,6 +1317,8 @@ Declaration & Status & Mathematical payload\\
  & \NewResult{} \Kernel{} & constant phase produces no endpoint link\\
 \texttt{global\_real\_lift\_forces\_zero\_winding}
  & \NoGo{} \Kernel{} & a global real phase lift has zero winding; nonzero index needs branch/transition data\\
+\texttt{threeLinkUnitWinding\_not\_global\_lift}
+ & \NewResult{} \Kernel{} & an explicit periodic link field has winding one and cannot be integrated to a global real vertex phase\\
 \texttt{ComplexPlueckerLocalWalk.complexLocalStep\_mode}
  & \NewResult{} \Kernel{} & phase-retaining mass coin inserted into the exact local Fourier block\\
 \texttt{complex\_fixed\_time\_many\_step\_bound\_on\_box}
@@ -1280,6 +1347,12 @@ Declaration & Status & Mathematical payload\\
  & \Classical{} \Kernel{} & uniform relative multiplier error implies measure-theoretic $L^2$ convergence\\
 \texttt{walk\_error\_eLpNorm\_tendsto\_zero\_on\_compact\_support\_any\_time}
  & \NewResult{} \Kernel{} & at every fixed time, the complex $3+1$ walk converges in momentum-space $L^2$ on bounded support\\
+\texttt{tail\_bulk\_split}
+ & \Classical{} \Kernel{} & for any measurable band, restricted approximation error is bounded by its in-band error plus the complementary tail\\
+\texttt{uv\_tail\_tendsto\_zero}
+ & \Classical{} \Kernel{} & for arbitrary $L^2$ data, mass outside measurable monotone bands vanishes as the bands exhaust frequency space\\
+\texttt{band\_approx\_tendsto\_zero}
+ & \Classical{} \Kernel{} & abstract vanishing in-band error plus measurable band exhaustion implies global $L^2$ convergence; concrete sampling remains open\\
 \texttt{massless\_corner\_parity\_classification}
  & \Realization{} \Kernel{} & exact $\{0,\pi\}^3$ matrix parity classification\\
 \texttt{massless\_corner\_quasienergy\_classification}
@@ -1312,6 +1385,28 @@ Declaration & Status & Mathematical payload\\
  & \NewResult{} \Kernel{} & mass-only temporal blocking closes, while the ordered split family fails exact scalar-parameter closure\\
 \texttt{no\_nonzero\_stationary\_scale}
  & \NoGo{} \Kernel{} & the positive quartic Pluecker action selects only the collapsed common scale\\
+\texttt{create\_annihilate\_same\_add},
+\texttt{create\_create\_anticomm}
+ & \NewResult{} \Kernel{} & generic finite occupation-basis creation and annihilation maps satisfy the CAR\\
+\texttt{Gamma\_vac}, \texttt{Gamma\_apply\_singleton},
+\texttt{Gamma\_number}, \texttt{Gamma\_parity}
+ & \NewResult{} \Kernel{} & determinant-minor second quantization fixes vacuum, equals $U$ on one-particle states, and preserves number and parity\\
+\texttt{plueckerQuartic\_forward\_amplitude},
+\texttt{witness\_pair\_orientation\_sensitive}
+ & \NewResult{} \Kernel{} & a quartic two-particle transfer reads the primitive wedge $z$ and distinguishes $3+4\ii$ from its conjugate\\
+\texttt{pairKick\_add}, \texttt{pairKick\_smul},
+\texttt{witnessPairKick\_involutive},
+\texttt{witnessPairKick\_preserves\_fockInner},
+\texttt{witnessPairKickLinearEquiv}
+ & \NewResult{} \Kernel{} & the normalized Pluecker-phase pair kick is a complex-linear automorphism, exactly reversible, and preserves the finite Fock inner product\\
+\texttt{quarticPairTransfer\_isHermitian},
+\texttt{pairKick\_eq\_quartic\_add\_offPair}
+ & \NewResult{} \Kernel{} & the rank-two quartic transfer is Hermitian and is exactly the kick on the pair sector, with identity action off it\\
+\texttt{pairKick\_singleton},
+\texttt{witnessPairKick\_two\_particle\_nontrivial}
+ & \NewResult{} \Kernel{} & the kick fixes every one-particle basis state but acts nontrivially on the explicit two-particle state\\
+\texttt{quarticPairTransfer\_sq\_eq\_project}
+ & \NewResult{} \Kernel{} & at unit phase the Hermitian quartic squares exactly to its rank-two pair-sector projector\\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -1372,6 +1467,9 @@ lake env lean PhysicsSM/Draft/NullEdge/ComplexPlueckerCheckerboardPathSum.lean
 lake env lean PhysicsSM/Draft/NullEdge/GlobalPhaseWindingNoGo.lean
 lake env lean PhysicsSM/Draft/NullEdge/StrictQCAMinimalArchitecture.lean
 lake env lean PhysicsSM/Draft/NullEdge/TemporalBlockingRG.lean
+lake env lean PhysicsSM/Draft/NullEdge/FiniteCARFockBasic.lean
+lake env lean PhysicsSM/Draft/NullEdge/PlueckerQuarticInteraction.lean
+lake env lean PhysicsSM/Draft/NullEdge/ChangingLatticePDECore.lean
 lake env lean PhysicsSM/Draft/NullEdge/Carrier/PluckerScaleSelectionNoGo.lean
 lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard
 python Scripts/sim/null_edge_regulator_benchmark.py
@@ -1435,12 +1533,15 @@ converges uniformly on bounded $1+1$ momentum boxes; a finite local $3+1$
  Open & A walk-specific changing-lattice Fourier/PDE limit, a replacement
  $3+1$ regulator that removes the corner aliases and body-center modes,
  beyond the excluded degree-one stationary-amplitude ansatz, a patched/link
- defect index and localized mode, second quantization, and interactions.\\
+ defect index and localized mode, creation covariance/functoriality of the
+ determinant-minor lift, inherited many-body locality, and a continuum
+ interaction theory.\\
 \bottomrule
 \end{tabularx}
 \end{center}
 
-The paper proves a finite free construction.  It does not prove that every
+The paper proves a finite free construction and one finite phase-sensitive
+quartic extension.  It does not prove that every
 massive particle is composite in the ordinary particle-physics sense.  The
 ``constituents'' here are null momentum factors of a finite spinor description,
 not additional asymptotic particles.  Nor does the theorem compute an absolute
@@ -1469,8 +1570,11 @@ The next problems are sharply ordered.
   The finite product DFT, its exact $N^{-3}$ normalization, and the
   walk-specific compact-support momentum-space $L^2$ limit are closed.  Control
   the changing lattice/continuum Fourier spaces and identify the limiting
-  multiplier with the position-space Dirac PDE propagator.  For unrestricted
-  data one must additionally construct a global or square-summable envelope.
+  multiplier with the position-space Dirac PDE propagator.  The abstract
+  bulk/tail split and vanishing of the ultraviolet tail under measurable
+  monotone band exhaustion are now closed for arbitrary $L^2$ data; what
+  remains is the concrete scaled sampling/interpolation isometry and its
+  composition with the walk symbol.
   Equations \eqref{eq:plancherel3}, \eqref{eq:countablel2},
   \eqref{eq:continuousl2multiplier}, and \eqref{eq:walkcompactl2} close the
   finite, abstract countable, and compact-support multiplier steps, not that
@@ -1502,15 +1606,22 @@ The next problems are sharply ordered.
   \item \textbf{Build patched defects from the local $z$ field.}
   The position-dependent unitary update, its inverse and causal cone, and exact
   site-dependent chiral connection are now closed.  A globally lifted real
-  phase has zero winding, so the next theorem must introduce branch/transition
-  links or a sign/domain wall through the collinear zero set, reduce that
-  operator to a finite index, and exhibit a localized protected mode.  The
-  existing finite winding operator is not yet derived from this local field.
-  \item \textbf{Derive an interacting shared action.}
-  The free operator now generates its square, gap, and exponential.  A complete
-  dynamics requires one field-valued action whose reductions produce both the
-  null-spinor geometry and the spinor evolution, rather than assigning the
-  same parameter to separate models.
+  phase has zero winding, while an explicit periodic link field with winding
+  one is proved not to admit such a lift.  The next theorem must derive that
+  branch/transition data, or a sign/domain wall through the collinear zero set,
+  from the local Pluecker field, reduce the resulting operator to a finite
+  index, and exhibit a localized protected mode.  The existing finite winding
+  operator is not yet derived from this local field.
+  \item \textbf{Complete the many-body and interacting lift.}
+  The generic finite CAR algebra, a phase-sensitive four-mode quartic
+  pair-transfer observable, and an exact norm-preserving pair kick are now
+  closed; the quartic operator is Hermitian and the kick/operator restriction
+  identity is exact.  The determinant-minor lift now fixes vacuum, agrees with
+  the one-particle matrix, and preserves number and parity.  Complete its
+  creation covariance, functoriality, unitarity, and inherited causal locality,
+  then derive an operator-exponential law and the quartic dynamics from one
+  field-valued action whose reductions also produce the null-spinor geometry
+  and one-particle evolution.
   \item \textbf{Add a scale-bearing selection mechanism and derive couplings.}
   The positive homogeneous Pluecker action now has a proved no-go: every
   positive configuration has only the collapsed stationary common scale.

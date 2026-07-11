@@ -168,7 +168,8 @@ def main() -> None:
     args = parser.parse_args()
     result = run_benchmark()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    with args.output.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result["metrics"], indent=2))
     print("PASS" if result["pass"] else "FAIL")
     if not result["pass"]:

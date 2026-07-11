@@ -29,3 +29,12 @@ aristotle:
   output_dir: AgentTasks/aristotle-output/b605f8b8-a75d-46b5-92b8-62fc57e82d79
   status: submitted
 ```
+
+## Live checkpoint
+
+At 2026-07-10 16:58 PDT a noninterrupting snapshot showed that the empty minor,
+vacuum, singleton minor, linearity, exact one-particle agreement, number, and
+parity theorems were complete.  They were independently checked and harvested
+into `PhysicsSM/Draft/NullEdge/FiniteCARSecondQuantization.lean`.  The running
+task remains active on ordered-enumeration, Laplace/cofactor, repeated-column,
+and `gamma_create_covariance` lemmas; it was not canceled or redirected.

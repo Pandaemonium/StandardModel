@@ -1,5 +1,11 @@
 # Null-edge causal graph program: candidate publications
 
+> **Superseded 2026-07-10.** This June plan is retained as a historical record
+> of the P1-P12 topic taxonomy. It is no longer the active publication plan.
+> See
+> [`Null_Edge_Publication_Portfolio_2026-07-10.md`](Null_Edge_Publication_Portfolio_2026-07-10.md)
+> for the current theorem-led portfolio, submission order, and venue strategy.
+
 Compiled: 2026-06-21.
 
 Companion to

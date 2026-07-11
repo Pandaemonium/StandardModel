@@ -639,6 +639,9 @@ import PhysicsSM.Draft.NullEdge.GlobalPhaseWindingNoGo
 import PhysicsSM.Draft.NullEdge.StrictQCAMinimalArchitecture
 import PhysicsSM.Draft.NullEdge.TemporalBlockingRG
 import PhysicsSM.Draft.NullEdge.FiniteCARFockBasic
+import PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization
+import PhysicsSM.Draft.NullEdge.PlueckerQuarticInteraction
+import PhysicsSM.Draft.NullEdge.ChangingLatticePDECore
 import PhysicsSM.Draft.NullEdge.CountableL2WavepacketConvergence
 import PhysicsSM.Draft.NullEdge.FiniteUnitaryPathAction
 import PhysicsSM.Draft.NullEdge.Carrier.DiscretePluckerVariationalFlow

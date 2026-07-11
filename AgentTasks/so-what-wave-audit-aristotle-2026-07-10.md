@@ -32,5 +32,6 @@ aristotle:
   expected_module: SoWhatWaveAudit.Main
   submission_project: AgentTasks/aristotle-submit/so-what-wave-audit-20260710-project
   output_dir: AgentTasks/aristotle-output/7ef4e516-fd9a-4511-985d-a692bf823a08
-  status: submitted
+  status: completed-and-harvested
+  report: AgentTasks/aristotle-output/7ef4e516-fd9a-4511-985d-a692bf823a08/extracted/project-files.tar/so-what-wave-audit-20260710-project_aristotle/AgentTasks/so-what-wave-audit-FINDINGS-2026-07-10.md
 ```
