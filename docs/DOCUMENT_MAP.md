@@ -28,6 +28,13 @@ as current state.
 
 ## Operational guides (docs/ and Scripts/)
 
+- `AutonomousLab/README.md` - front door for the Autonomous Fundamental Physics
+  Lab: persistent five-year research organization, cross-model roles,
+  portfolio/state, evidence gates, reproducibility, and executable lab-control
+  tooling. [LIVE]
+- `AutonomousLab/FIVE_YEAR_PLAN.md` - 2026-2031 hard-exam roadmap from finite
+  foundations through QFT, gravity, Standard Model/cosmology, prediction, and
+  external judgment. [LIVE]
 - `docs/BUILD.md` - build, toolchain pin, Windows fixes, verification commands. [STABLE]
 - `docs/ARISTOTLE.md` - Aristotle submission/integration mechanics and loop. [STABLE]
 - `docs/CONVENTIONS.md` - project conventions and convention-lock status. [STABLE]

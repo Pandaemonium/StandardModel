@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-12T11:50:00-07:00",
+  "note": "Registry of Aristotle proof/audit jobs. Statuses: submitted|running|idle|unknown|harvested|integrated|deferred|cancelled|failed. labctl validate enforces the fleet cap on submitted+running; `labctl jobs` lists against the cap; `labctl due` flags idle/unknown/harvested jobs awaiting integration. Seeded 2026-07-12 from the 24h publication-run ledger; pre-lab jobs carry work_item_id null.",
+  "jobs": [
+    {
+      "id": "b7405f03",
+      "work_item_id": "CONT-PROJ-001",
+      "title": "Changing-cell arbitrary-L2 projection capstone (inherited)",
+      "status": "unknown",
+      "submitted_at": "2026-07-11",
+      "notes": "Inherited from the pre-lab run; BLK-002: download newest snapshot and inspect remaining holes before local proof work."
+    },
+    {
+      "id": "9be8f014",
+      "work_item_id": null,
+      "title": "T1 fermionic fork (Lambda paper-maker)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Landed as PhysicsSM/Draft/NullEdge/LambdaFermionicFork.lean; guard-pinned in LambdaCosmologyAxiomGuard."
+    },
+    {
+      "id": "e22d0fe7",
+      "work_item_id": null,
+      "title": "General-N Donoho-Stark DFT uncertainty",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Landed as LambdaUncertaintyGeneralN.support_uncertainty; retired the Lambda paper ZMod-4 caveat."
+    },
+    {
+      "id": "f0e2e541",
+      "work_item_id": null,
+      "title": "cpostwin: Paper C positional-law kernel retrofit",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "HalfPeriodInvariant K5->K3; OvernightTheoryAxiomGuard green 8351."
+    },
+    {
+      "id": "f8753b41",
+      "work_item_id": null,
+      "title": "cubelaw: shared cube-closure tripotent corollary",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Landed as CubeLawTripotent + CubeLawTripotentAxiomGuard (green 8028); explicitly disclaims B_w<->K unification."
+    },
+    {
+      "id": "38810370",
+      "work_item_id": null,
+      "title": "vzannihil: kernel-only Vz_annihilated re-proof (8 files)",
+      "status": "deferred",
+      "submitted_at": "2026-07-12",
+      "notes": "Harvested, integration deferred (too large pre-freeze). Complementary to CayleyHamiltonAnnihilation: would remove one native dependency. Candidate future work item."
+    }
+  ]
+}

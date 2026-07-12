@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "lab_name": "Autonomous Fundamental Physics Lab",
+  "short_name": "AFPL",
+  "north_star": "Within five years, produce and hostile-test a complete candidate description of fundamental physics or a definitive mapped impossibility frontier.",
+  "strategic_year": 1,
+  "strategic_quarter": "Y1-Q1",
+  "current_cycle": {
+    "id": "BOOTSTRAP-2026-07-12",
+    "status": "active",
+    "phase": "institutional_setup",
+    "started_at": "2026-07-12T11:00:00-07:00",
+    "planned_end_at": "2026-07-13T11:00:00-07:00"
+  },
+  "active_project_ids": [
+    "LAB-INFRA",
+    "NE-CONTINUUM",
+    "NE-LORENTZ",
+    "NE-DYNAMICS",
+    "NE-GAUGE-CHIRAL",
+    "NE-GRAVITY-SCALE",
+    "NE-BRIDGES"
+  ],
+  "availability": {
+    "codex": {
+      "status": "available",
+      "last_checked": "2026-07-12T11:00:00-07:00"
+    },
+    "claude": {
+      "status": "available",
+      "detail": "Interactive Claude Code session (Fable); first-class lab agent as of 2026-07-12. Same model family as the Opus wrapper: the two are not independent reviewers of each other.",
+      "last_checked": "2026-07-12T11:50:00-07:00"
+    },
+    "opus": {
+      "status": "degraded",
+      "detail": "Repository wrapper authentication/credit unresolved (BLK-001); no longer promotion-blocking because the interactive claude lane carries Claude-family review. Separate authenticated Opus session may still be started by the Research Director.",
+      "last_checked": "2026-07-12T11:50:00-07:00"
+    },
+    "aristotle": {
+      "status": "available",
+      "last_checked": "2026-07-12T10:12:00-07:00"
+    }
+  },
+  "work_in_progress_limits": {
+    "active_science_projects": 6,
+    "executing_items_per_model": 3,
+    "moonshots": 2,
+    "aristotle_projects": 8
+  },
+  "last_reviews": {
+    "daily": null,
+    "weekly": null,
+    "monthly": null,
+    "quarterly": null,
+    "annual": null
+  },
+  "release_state": "internal_research",
+  "human_release_required": true
+}

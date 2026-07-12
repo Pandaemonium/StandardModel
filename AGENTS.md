@@ -18,6 +18,10 @@ operational detail lives in linked docs:
   [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md)
 - NullStrand/null-edge orientation and living program guardrails:
   [`docs/NULLSTRAND.md`](docs/NULLSTRAND.md)
+- Autonomous lab (persistent multi-agent research operations, roles, state):
+  [`AutonomousLab/README.md`](AutonomousLab/README.md) - autonomous/goal-mode
+  sessions enter through `AutonomousLab/prompts/` and update lab state instead
+  of creating a new ad-hoc run constitution
 - Lean MCP tooling (live LSP goals/diagnostics + Mathlib/PhysLean search):
   [`Scripts/MCP_SERVERS.md`](Scripts/MCP_SERVERS.md)
 - Research/MCP tooling (literature search, Zotero, Neo4j, local LLM):

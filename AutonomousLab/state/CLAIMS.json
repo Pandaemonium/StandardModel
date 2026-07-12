@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-12T11:52:00-07:00",
+  "note": "Canonical per-claim registry (EVIDENCE_MODEL section 6). Grades: T, T|H, M, M+E, S, C, I, X; SRL 0-9 attaches to the claim, not the paper. Every indicative manuscript sentence must map to a row here (or be subjunctive/oracle-labeled). Seeded 2026-07-12 from HONEST_SCORECARD.md and FINAL_REPORT.md of the 24h publication run; guard attributions per those documents.",
+  "claims": [
+    {
+      "id": "LAMBDA-FORK",
+      "statement": "Fermionic number-count dichotomy: a diagonal/thermal Wick kernel has extensive count variance, while an explicit projection (Fermi-sea) kernel K^2=K on region size k^2 has variance exactly k/4 (alpha = 1/2, sub-extensive and unbounded); the everpresent-Lambda fork is a theorem and only the physical count-identification remains open.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.LambdaFermionicFork.bondProj_numberVariance",
+        "PhysicsSM.Draft.NullEdge.LambdaFermionicFork.bondProj_isProjection",
+        "PhysicsSM.Draft.NullEdge.LambdaFermionicFork.fork_subextensive",
+        "PhysicsSM.Draft.NullEdge.LambdaFermionicFork.fermionic_fork_verdict"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/LambdaCosmologyAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Cosmological_Constant_Manuscript_Draft_2026-07-12.tex"
+      ],
+      "notes": "Physical count-identification (which count the dynamics conjugates to Lambda) remains grade C with a stated kill condition."
+    },
+    {
+      "id": "A-RESTGEN",
+      "statement": "Generalized cube law for the rest operator built from any number of null spinors: B^3 = mu^2 B with rank-4 support and a non-decomposable control.",
+      "grade": "M",
+      "srl": 5,
+      "decl_anchors": [
+        "PlueckerRestOperatorGeneral.restOp_cube",
+        "PlueckerRestOperatorGeneral.restOp_support_projector",
+        "PlueckerRestOperatorGeneral.controlZ_violates_cube"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+      ],
+      "notes": "Resolves Paper A open problem 4; construction replaces the scalar mass input with geometric data, it does not predict a mass value."
+    },
+    {
+      "id": "C-POS",
+      "statement": "Positional defect law on the four-site family: the reflection-fixed-leg compression is self-adjoint precisely for two-wall fields whose lone flip avoids the reflection-fixed sites; winding-only explanations are disproved by explicit blind pairs.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "HalfPeriodInvariant.selfadj_iff_protected",
+        "HalfPeriodInvariant.protected_modes",
+        "HalfPeriodInvariant.fixedSingleton_not_reflSym"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_HalfWinding_Defect_Paper_Draft_2026-07-11.tex"
+      ],
+      "notes": "Positional-law core is kernel-clean after the 07-12 retrofit; the paper's Pinned*/HalfWinding* fixtures remain M+E, so Paper C is NOT globally kernel-clean."
+    },
+    {
+      "id": "E-SPEC",
+      "statement": "Exact interacting two-particle spectrum of the composed fermionic walk on the four-site ring at the Pythagorean kick: characteristic polynomial factors into named free levels and a palindromic degree-12 factor whose twelve quasienergies solve one rational cubic.",
+      "grade": "M+E",
+      "srl": 4,
+      "decl_anchors": [
+        "PairSpectrumFixture.charpoly_factorization",
+        "PairSpectrumFixture.p12",
+        "PairCharpolyBridge.V_charpoly_eq"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/PairSpectrumFixtureGuard.lean (on-demand heavy guard, >34GB rebuild)",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Finite_CAR_Dynamics_Draft_2026-07-12.tex"
+      ],
+      "notes": "Factorization/cubic/structural identification are kernel; the 28x28 Gaussian-integer twin arithmetic runs the disclosed compiled evaluator. Generator supplied, not derived."
+    },
+    {
+      "id": "FB-SU3",
+      "statement": "The algebraically defined automorphisms of the explicit finite octonion model fixing the distinguished imaginary unit are multiplicatively equivalent to SU(3), with the target submonoid proved equal to Matrix.specialUnitaryGroup and the equivalence upgraded to a group isomorphism.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "octonionMulAutFixingE111MulEquivSU3",
+        "su3Submonoid_eq_specialUnitaryGroup",
+        "FBGroupIso.mulEquivToSU3AsGroups_map_inv"
+      ],
+      "guard_file": "guarded per FB manuscript guard blocks (see HONEST_SCORECARD FB-SU3; exact guard file not re-verified in this seed)",
+      "manuscript_uses": [
+        "Sources/Furey_Baez_Octonion_SM_Formalization_Manuscript_2026-07-11.tex"
+      ],
+      "notes": "Deliberately NOT a statement about the smooth Lie group G_2 = Aut(O); RH singlet completion is a recorded conventional input elsewhere in the FB package."
+    }
+  ]
+}

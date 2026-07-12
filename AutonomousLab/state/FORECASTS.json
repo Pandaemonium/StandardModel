@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-12T11:50:00-07:00",
+  "note": "Auto-appended by labctl transition on first entry to INTEGRATED/RELEASED (success) or KILLED/RETRACTED (failure). Scored at the monthly metascience review; entries are never edited retroactively.",
+  "entries": []
+}
