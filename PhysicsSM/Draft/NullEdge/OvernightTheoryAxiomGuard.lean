@@ -1,14 +1,87 @@
 import PhysicsSM.Draft.NullEdge.FiniteNoSignaling
+import PhysicsSM.Draft.NullEdge.CensusMultiplicity
+import PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral
+import PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling
+import PhysicsSM.Draft.NullEdge.GammaOddKickDichotomy
+import PhysicsSM.Draft.NullEdge.PairKickSelection
+import PhysicsSM.Draft.NullEdge.SplitStepChargeBalance
+import PhysicsSM.Draft.NullEdge.TwoBandFlowCount
+import PhysicsSM.Draft.NullEdge.PairMomentumBlocks
+import PhysicsSM.Draft.NullEdge.Selection2Repairs
+import PhysicsSM.Draft.NullEdge.CARBlockReduction
+import PhysicsSM.Draft.NullEdge.SplitStepSchurJet
+import PhysicsSM.Draft.NullEdge.MassCovarianceForcing
+import PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes
+import PhysicsSM.Draft.NullEdge.TwoBandEigenphaseAnalytic
+import PhysicsSM.Draft.NullEdge.CayleyHamiltonAnnihilation
+import PhysicsSM.Draft.NullEdge.CensusDerivationBridge
+import PhysicsSM.Draft.NullEdge.FlowOneInstance
+import PhysicsSM.Draft.NullEdge.CovarianceGroupFull
+import PhysicsSM.Draft.NullEdge.DynamicalMassCovariance
+import PhysicsSM.Draft.NullEdge.DiscreteWalkMassCovariance
+import PhysicsSM.Draft.NullEdge.FBGroupIso
 import PhysicsSM.Draft.JordanCliffordFermionKernel
 import PhysicsSM.Draft.JordanCliffordFureyFockBridge
 import PhysicsSM.Draft.JordanCliffordSpinorZ6Bridge
 import PhysicsSM.Draft.JordanCliffordFinitePhaseCharacter
 import PhysicsSM.Draft.JordanCliffordExteriorCoverAction
+import PhysicsSM.Draft.JordanCliffordBlockKernelCore
+import PhysicsSM.Draft.JordanCliffordExactExteriorKernel
 import PhysicsSM.Draft.JordanCliffordH2BlockStabilizer
 import PhysicsSM.Spinor.SpinorTenfoldWeakQuotient
 import PhysicsSM.Spinor.SpinorTenfoldWeakQuotientDescent
 import PhysicsSM.Spinor.SpinorTenfoldWeakQuotientSO10Generator
 import PhysicsSM.Draft.NullEdge.WeightedGrowingWindowModeSum
+import PhysicsSM.Draft.NullEdge.LiveWeighted3Plus1Walk
+import PhysicsSM.Draft.NullEdge.FullLiveCoefficientConvergence
+import PhysicsSM.Draft.NullEdge.TorusL2LiveWalk
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellIsometry
+import PhysicsSM.Draft.NullEdge.ChangingMomentumBoxExhaustion
+import PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellSampling
+import PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density
+import PhysicsSM.Draft.NullEdge.ChangingMomentumPointSamplerNoGo
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjection
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionL2
+import PhysicsSM.Draft.NullEdge.SU2LocalCrossingCharge
+import PhysicsSM.Draft.NullEdge.DiracLocalChargeNeutrality
+import PhysicsSM.Draft.NullEdge.ChiralityMixingNecessity
+import PhysicsSM.Draft.NullEdge.CubicWeylSectorCharge
+import PhysicsSM.Draft.NullEdge.QuadraticChiralityRegulator
+import PhysicsSM.Draft.NullEdge.ChargeBalanceForcesPartner
+import PhysicsSM.Draft.NullEdge.CommutatorRegulator
+import PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality
+import PhysicsSM.Draft.NullEdge.CommutatorChiralityCoefficient
+import PhysicsSM.Draft.NullEdge.MasslessWeylChargeCensus
+import PhysicsSM.Draft.NullEdge.CommutatorCornerInvisibility
+import PhysicsSM.Draft.NullEdge.CommutatorPiPeriodicity
+import PhysicsSM.Draft.NullEdge.ReciprocalConditionalShiftRegulator
+import PhysicsSM.Draft.NullEdge.ReciprocalLaurentRange
+import PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily
+import PhysicsSM.Draft.NullEdge.CoupledReciprocalSliceNoGo
+import PhysicsSM.Draft.NullEdge.PairedDeterminantReality
+import PhysicsSM.Draft.NullEdge.SU2CrossingLocking
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeProjectorWalk
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTangent
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlias
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylExactOffCornerAlias
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylRootClassification
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylQuinticFiberCensus
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlgebraicOffAxisAlias
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylLiveMatrixNumeratorBridge
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTzZeroInteriorBranch
+import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionGeometry
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionThreeTerm
+import PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner
+import PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine
+import PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition
+import PhysicsSM.Draft.NullEdge.LiveWeylJacobian
+import PhysicsSM.Draft.NullEdge.MasslessBlochCrossingClassification
+import PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative
+import PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge
+import PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness
 import PhysicsSM.Draft.NullEdge.Carrier.WardGradedFrameDecoration
 import PhysicsSM.Draft.NullEdge.TwoRegionTensorMicrocausality
 import PhysicsSM.Draft.NullEdge.FiniteSSBDegeneracyNoGo
@@ -88,6 +161,8 @@ import PhysicsSM.Draft.NullEdge.FiniteCARFockBasic
 import PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization
 import PhysicsSM.Draft.NullEdge.CARAnnihilationLocality
 import PhysicsSM.Draft.NullEdge.PlueckerPhaseDefectSpectrum
+import PhysicsSM.Draft.NullEdge.RingHolonomySpectrum
+import PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge
 import PhysicsSM.Draft.NullEdge.PinnedSectorIndex
 import PhysicsSM.Draft.NullEdge.PinnedLocalization
 import PhysicsSM.Draft.NullEdge.PinnedControlAndBlind
@@ -100,6 +175,8 @@ import PhysicsSM.Draft.NullEdge.ChannelShearModuli
 import PhysicsSM.Draft.NullEdge.ChannelRefinementTorsor
 import PhysicsSM.Draft.NullEdge.ChannelPositiveSectorModuli
 import PhysicsSM.Draft.NullEdge.ChannelPositiveComplementDisk
+import PhysicsSM.Draft.NullEdge.ChannelDecompositionModuliCapstone
+import PhysicsSM.Draft.NullEdge.ChannelStabilizerSelectorSuccessor
 import PhysicsSM.Draft.NullEdge.ChannelSelectorUniqueness
 import PhysicsSM.Draft.NullEdge.ChannelNaturalityNoGo
 import PhysicsSM.Draft.NullEdge.ChannelSelectorRigidity
@@ -131,6 +208,7 @@ import PhysicsSM.Draft.NullEdge.PlueckerQuarticNotOneBody
 import PhysicsSM.Draft.NullEdge.PlueckerCausalCone
 import PhysicsSM.Draft.NullEdge.PlueckerGeometricCone
 import PhysicsSM.Draft.NullEdge.PlueckerLayerCone
+import PhysicsSM.Draft.NullEdge.FreePairQCACombinedCone
 import PhysicsSM.Draft.NullEdge.ChangingLatticePDECore
 import PhysicsSM.Draft.NullEdge.Compact3Plus1RefinedWindowRate
 import PhysicsSM.Draft.NullEdge.Compact3Plus1GrowingWindowRate
@@ -1365,6 +1443,40 @@ pointwise unitarity fixes the remaining constant to unit modulus. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.PlueckerPhaseDefectSpectrum.common_phase_conjugacy
 
+/-! ## Three-site free ring holonomy spectrum (Codex impact review, 2026-07-12) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.H3_gauge_conjugacy' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.H3_gauge_conjugacy
+
+/-- info: 'PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.holonomy_gauge_invariant' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.holonomy_gauge_invariant
+
+/-- info: 'PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.trace_cube_H3' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.trace_cube_H3
+
+/-- info: 'PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.plus_minus_not_unitarily_conjugate' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.RingHolonomySpectrum.plus_minus_not_unitarily_conjugate
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.derivedHalfLink3_holonomy_eq_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.derivedHalfLink3_holonomy_eq_neg_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.derivedH3_not_unitarily_conjugate_to_trivial' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.derivedH3_not_unitarily_conjugate_to_trivial
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.windingOneField3_totalTurning' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.windingOneField3_totalTurning
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.windingOneField3_not_unitarily_conjugate_to_trivial' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRingHolonomyBridge.windingOneField3_not_unitarily_conjugate_to_trivial
+
 /-- info: 'PhysicsSM.Draft.NullEdge.PlueckerPairKickNonQuasiFree.witnessPairKick_not_secondQuantization' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.PlueckerPairKickNonQuasiFree.witnessPairKick_not_secondQuantization
@@ -1715,6 +1827,34 @@ selection of one disk point. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.ChannelPositiveComplementDisk.boundary_witness_null
 
+/-! The classification capstone separates coefficient rigidity in the chosen
+four-channel basis from the open-disk and torsor moduli left by weaker
+positive/type-only structure. Its selector no-go suite remains scoped to the
+explicit selector classes stated in the source module. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChannelDecompositionModuliCapstone.distinct_positive_named_sectors' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChannelDecompositionModuliCapstone.distinct_positive_named_sectors
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChannelDecompositionModuliCapstone.positive_complement_rays_classified_by_open_disk' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChannelDecompositionModuliCapstone.positive_complement_rays_classified_by_open_disk
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChannelDecompositionModuliCapstone.channel_decomposition_classification_verdict' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChannelDecompositionModuliCapstone.channel_decomposition_classification_verdict
+
+/-! ### ChannelStabilizerSelectorSuccessor: an explicit rational residual
+isometry and a nondegenerate invariant-selector obstruction. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChannelStabilizerSelectorSuccessor.swapNegativeNormal_gram' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChannelStabilizerSelectorSuccessor.swapNegativeNormal_gram
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChannelStabilizerSelectorSuccessor.rational_swap_orbit_obstructs_invariant_selector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChannelStabilizerSelectorSuccessor.rational_swap_orbit_obstructs_invariant_selector
+
 /-! The live three-channel RG map has an exact period-two marginal line.  This
 kills a proposed cubic-drift mechanism on that line only; it is not a no-go
 against dimensional transmutation elsewhere in coupling space. -/
@@ -1957,6 +2097,29 @@ elements acting identically. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.JordanCliffordExteriorCoverAction.sixKernelElements_evenExteriorRepresentation_eq_one
 
+/-! ### JordanCliffordBlockKernelCore: identity Kronecker action plus the
+product-cover determinant constraints forces both blocks to identity. -/
+
+/-- info: 'PhysicsSM.Draft.JordanCliffordBlockKernelCore.blocks_are_identity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.JordanCliffordBlockKernelCore.blocks_are_identity
+
+/-- info: 'PhysicsSM.Draft.JordanCliffordBlockKernelCore.reciprocal_scalar_control' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.JordanCliffordBlockKernelCore.reciprocal_scalar_control
+
+/-! ### JordanCliffordExactExteriorKernel: the algebraic true product-cover
+action on the supplied sixteen-state even exterior module has exactly the
+standard six-element identity fiber. -/
+
+/-- info: 'PhysicsSM.Draft.JordanCliffordExactExteriorKernel.productEvenExteriorAction_eq_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.JordanCliffordExactExteriorKernel.productEvenExteriorAction_eq_one_iff
+
+/-- info: 'PhysicsSM.Draft.JordanCliffordExactExteriorKernel.outside_standard_kernel_acts_nontrivially' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.JordanCliffordExactExteriorKernel.outside_standard_kernel_acts_nontrivially
+
 /-! ### JordanCliffordH2BlockStabilizer: coordinate `2+1` stabilizer theorem
 with determinant factorization, a nonidentity stabilizer, and a mixing control. -/
 
@@ -2049,6 +2212,85 @@ aggregation from a uniform scalar-rate envelope. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.WeightedGrowingWindowModeSum.weighted_single_mode_control
 
+/-! ### LiveWeighted3Plus1Walk: actual quartic split-versus-exact matrix error
+aggregated over growing three-dimensional momentum boxes. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveWeighted3Plus1Walk.walkErrorEnvelope_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveWeighted3Plus1Walk.walkErrorEnvelope_tendsto_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveWeighted3Plus1Walk.liveModeError_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveWeighted3Plus1Walk.liveModeError_tendsto_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveWeighted3Plus1Walk.walkErrorEnvelope_nonzero_fixture' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveWeighted3Plus1Walk.walkErrorEnvelope_nonzero_fixture
+
+/-! ### FullLiveCoefficientConvergence: full countable coefficient error,
+including the exact evolved ultraviolet tail. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FullLiveCoefficientConvergence.fullModeError_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FullLiveCoefficientConvergence.fullModeError_tendsto_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FullLiveCoefficientConvergence.fullModeError_outside_control' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FullLiveCoefficientConvergence.fullModeError_outside_control
+
+/-! ### TorusL2LiveWalk: exact Parseval transport of the complete live
+coefficient error to four fixed-torus scalar L2 components. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TorusL2LiveWalk.scalarFullErrorTorus_norm_sq_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TorusL2LiveWalk.scalarFullErrorTorus_norm_sq_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TorusL2LiveWalk.fullSpinorErrorTorus_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TorusL2LiveWalk.fullSpinorErrorTorus_tendsto_zero
+
+/-! ### ChangingMomentumCellIsometry: exact finite-support coefficient
+isometry into piecewise-constant functions on changing-spacing `R^3`
+momentum cells. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellIsometry.embedFinite_isometry' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellIsometry.embedFinite_isometry
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellIsometry.oneCell_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellIsometry.oneCell_nonzero
+
+/-! ### ChangingMomentumBoxExhaustion: physical-radius divergence exhausts
+momentum space, while bounded radius has a fixed outside point. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumBoxExhaustion.momentumBox_exhausts' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumBoxExhaustion.momentumBox_exhausts
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumBoxExhaustion.bounded_schedule_not_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumBoxExhaustion.bounded_schedule_not_exhaustive
+
+/-! ### ScaledChangingMomentumWalk: one explicit shrinking-spacing,
+exhausting-box schedule for the actual live 3+1 multiplier. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.physicalRadius_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.physicalRadius_tendsto_atTop
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.scaled_box_error_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.scaled_box_error_tendsto_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.scaled_boundary_momentum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.scaled_boundary_momentum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.scaled_boundary_error_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ScaledChangingMomentumWalk.scaled_boundary_error_tendsto_zero
+
 /-- info: 'PhysicsSM.Draft.NullEdge.SobolevTailRate.residual_energy_tendsto_zero_of_weighted_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.SobolevTailRate.residual_energy_tendsto_zero_of_weighted_one
@@ -2082,19 +2324,19 @@ winding are blind; the mirror candidate is ill-defined on the blind fields
 rational facts by `native_decide`, so these pins record the +2 draft-trust
 footprint like the sibling K6 fixtures. -/
 
-/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.selfadj_iff_protected' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.selfadj_iff_protected' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.selfadj_iff_protected
 
-/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.protected_modes' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.protected_modes' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.protected_modes
 
-/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.chiral_inverse' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.chiral_inverse' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.chiral_inverse
 
-/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.reflR_comm_walk_iff' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+/-- info: 'PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.reflR_comm_walk_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.HalfPeriodInvariant.reflR_comm_walk_iff
 
@@ -2184,4 +2426,996 @@ passed), and the landed-fixture transport pin. Kernel-only. -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.ThetaFamilyProtection.Wth_eq_landed
 
+/-! ## Complete-walk multiplicity census (fable-24h 2cc1968c, 2026-07-11)
+
+The 16-field eigenspace multiplicity law: rank/kernel of `Wof b -+ 1` is
+6/2 for the eight singleton fields, 4/4 for the four domain blocks, 8/0
+for the zero-wall/four-wall controls. Certificate route (kernel vectors +
+invertible minors + rank-nullity); native_decide on the certificate
+products (draft trust, disclosed in the module header). Removes Paper
+C's last run-record caveat. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_rank_minus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_rank_minus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_rank_plus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_rank_plus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_multiplicity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_multiplicity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_blind_same_multiplicity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CensusMultiplicity.census_blind_same_multiplicity
+
+/-! ## Generalized Pluecker rest operator (fable-24h 9e2af7b2, 2026-07-11)
+
+Paper A open problem 4 resolved: for any number of spinors the
+pairwise-area matrix obeys the cube closure Z Zdag Z = budget * Z, the
+odd Hermitian block operator obeys B^3 = budget * B (same closure shape
+as the interaction generator), with a trace-4 support projector, the
+two-spinor recovery, the massless boundary, and a non-decomposable
+control violating the law. Kernel-only. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.areaMatrix_cube' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.areaMatrix_cube
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.restOp_cube' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.restOp_cube
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.restOp_support_projector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.restOp_support_projector
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.restOp_sq_two' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.restOp_sq_two
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.controlZ_violates_cube' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral.controlZ_violates_cube
+
+/-! ## Two-band 1+1 warm-up and chirality-odd dichotomy (fable-24h 390053ef + 634a64e1, 2026-07-11)
+
+oneD: zero-flow two-band crossings are forced degenerate; the massive
+fixture is gapped on the whole circle; the flow-one walk's 0-crossing
+set equals its pi-crossing set equals the single momentum z = -1.
+oddkick: no chirality-odd generator on same-site pair blocks; the
+explicit two-parameter odd family on a component-mixing block; the
+grading's pair lift is a signed permutation. Both kernel-only. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling.unit_det_plus_crossing_degenerate' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling.unit_det_plus_crossing_degenerate
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling.U0c_gapped' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling.U0c_gapped
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling.U1c_zero_and_pi_sets' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling.U1c_zero_and_pi_sets
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GammaOddKickDichotomy.no_odd_generator_on_samesite_block' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GammaOddKickDichotomy.no_odd_generator_on_samesite_block
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GammaOddKickDichotomy.oddH_odd' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GammaOddKickDichotomy.oddH_odd
+
+/-- info: 'PhysicsSM.Draft.NullEdge.GammaOddKickDichotomy.G2_signed_permutation' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.GammaOddKickDichotomy.G2_signed_permutation
+
+/-! ## Selection uniqueness and charge balance (fable-24h c2c1d0b0 + 90c10f85, 2026-07-11)
+
+PairKickSelection resolves the pre-registered selection conjecture
+positively: equivariance + Hermiticity + vanishing at z = 0 pin the
+one-complex-parameter kick family exactly (uniqueness, converse,
+control). SplitStepChargeBalance is the first kernel instance of the
+corrected route-A bookkeeping on this paper's own walk: per-node
+Weyl-sector charges, exact Floquet opposition, census sum zero at
+each gap. Both kernel-only. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairKickSelection.selection_uniqueness' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairKickSelection.selection_uniqueness
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairKickSelection.selection_family_admissible' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairKickSelection.selection_family_admissible
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairKickSelection.selection_control' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairKickSelection.selection_control
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.Jplus_det_charge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.Jplus_det_charge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.census_floquet_opposition' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.census_floquet_opposition
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.census_sum_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.census_sum_zero
+
+/-! ## Two-band flow-count hinge (fable-24h e33d3f5f, 2026-07-11)
+
+R2 telescoping hinge: jump law + periodicity imply zero signed flow
+difference, hence no single nondegenerate crossing; hypotheses are
+the isolated analytic content by design, with the flow-one witness
+discharging them. Kernel-only. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandFlowCount.flowDiff_eq_zero_of_periodic_jumps' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandFlowCount.flowDiff_eq_zero_of_periodic_jumps
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandFlowCount.no_single_crossing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandFlowCount.no_single_crossing
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandFlowCount.flowOne_hypotheses_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandFlowCount.flowOne_hypotheses_nonvacuous
+
+/-! ## Momentum companion + selection2 audit repairs (fable-24h b94c21da + 9b4d417a, 2026-07-11)
+
+Momentum: the E-lane free-lift block decomposition (dims 6/8/6/8,
+annihilators, exact multiplicities, symmetry breaking, charpoly
+product) - kernel + two disclosed twin-layer native_decide tokens.
+Selection2: all four hostile2 kernel repairs, kernel-only. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairMomentumBlocks.pair_translation_invariance' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairMomentumBlocks.pair_translation_invariance
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairMomentumBlocks.momentum_block_dims' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairMomentumBlocks.momentum_block_dims
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairMomentumBlocks.block_annihilator_K2' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairMomentumBlocks.block_annihilator_K2
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairMomentumBlocks.plusminus_counts_K2' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairMomentumBlocks.plusminus_counts_K2
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairMomentumBlocks.kick_breaks_translation' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairMomentumBlocks.kick_breaks_translation
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairMomentumBlocks.charpoly_U2_block_product' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairMomentumBlocks.charpoly_U2_block_product
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Selection2Repairs.scalar_gauge_collapse' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Selection2Repairs.scalar_gauge_collapse
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Selection2Repairs.equivariance_violating_control' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Selection2Repairs.equivariance_violating_control
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Selection2Repairs.no_odd_generator_on_full_samesite_block' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Selection2Repairs.no_odd_generator_on_full_samesite_block
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Selection2Repairs.G2_census_exact' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Selection2Repairs.G2_census_exact
+
+/-! ## CAR-block reduction, Schur jet, census kernel retrofit, spectrum fixture (fable-24h 4f6a5cef + fcd99149 + 48a540a1 + 4d9642bf, 2026-07-12)
+
+carblock: the reduction equivalence + generator correspondence + Fock
+gauge tie + unitary sharpener, kernel-only. schurjet: the walk-derived
+central-node Jacobians and Floquet opposition, kernel-only. census:
+retrofit to kernel-only (pins above UPDATED from the +2 footprint).
+fixture: the E headline (PairSpectrumFixture + PairCharpolyBridge) is
+pinned SEPARATELY in PairSpectrumFixtureGuard.lean - its Vz^28-over-ZZ[i]
+native_decide steps OOM a 34GB machine, so it is NOT routed through this
+always-on aggregate guard; verified in Aristotle's build. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CARBlockReduction.hermitian_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CARBlockReduction.hermitian_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CARBlockReduction.blockOf_KopL' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CARBlockReduction.blockOf_KopL
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CARBlockReduction.Kop_equivariance' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CARBlockReduction.Kop_equivariance
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CARBlockReduction.sharpener' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CARBlockReduction.sharpener
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepSchurJet.kerDim_gap0' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepSchurJet.kerDim_gap0
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepSchurJet.Jac_gap0' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepSchurJet.Jac_gap0
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepSchurJet.census_floquet_opposition_derived' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepSchurJet.census_floquet_opposition_derived
+
+/-! ## Constraint forcing, all-node census, and the R1 flow-count closure (fable-24h 5e105f5f + 392ca12f + 0f31a7e4, 2026-07-12)
+
+walkforce: the derived-family covariance group IS the chiral phase
+circle, so the selection constraint set is forced. schurjet8: all
+eight nodes' charges derived from the walk symbol. flowr1b: the 1D
+flow-count theorem complete from eigenphase geometry. All kernel-only. -/
+
+/-- info: 'MassCovarianceForcing.classification' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms MassCovarianceForcing.classification
+
+/-- info: 'MassCovarianceForcing.covariance_group_eq_chiralPhase' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms MassCovarianceForcing.covariance_group_eq_chiralPhase
+
+/-- info: 'MassCovarianceForcing.blockOf_gauge_forced' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms MassCovarianceForcing.blockOf_gauge_forced
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes.kerDimNode_gap0' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes.kerDimNode_gap0
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes.census_chargeOf_gap0' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes.census_chargeOf_gap0
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes.census_chargeOf_gapPi' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes.census_chargeOf_gapPi
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandEigenphaseCount.TwoBandFamily.countAt_locally_constant' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandEigenphaseCount.TwoBandFamily.countAt_locally_constant
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandEigenphaseCount.TwoBandFamily.jump_law' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandEigenphaseCount.TwoBandFamily.jump_law
+
+/-- info: 'PhysicsSM.Draft.NullEdge.TwoBandEigenphaseCount.TwoBandFamily.flowDiff_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.TwoBandEigenphaseCount.TwoBandFamily.flowDiff_eq_zero
+
+/-! ## Cayley-Hamilton annihilation (fable-24h dac47b71, 2026-07-12)
+
+The reusable lemma aeval_eq_zero_of_charpoly_smul + V_annihilated as a
+KERNEL consequence of the charpoly identity - the E fixture's
+annihilation is kernel-from-charpoly, not an independent heavy native. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CayleyHamiltonAnnihilation.aeval_eq_zero_of_charpoly_smul' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CayleyHamiltonAnnihilation.aeval_eq_zero_of_charpoly_smul
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CayleyHamiltonAnnihilation.V_annihilated' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CayleyHamiltonAnnihilation.V_annihilated
+
+/-! ## Census derivation bridge (fable-24h d06a4442, 2026-07-12)
+
+Compiler-enforced: the all-nodes walk-derived census reproduces the
+LANDED SplitStepChargeBalance census everywhere (no drift). Closes the
+A-8NODE local-copy caveat. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CensusDerivationBridge.census_agree' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CensusDerivationBridge.census_agree
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CensusDerivationBridge.capstone_charge_reproduces_landed' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CensusDerivationBridge.capstone_charge_reproduces_landed
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CensusDerivationBridge.landed_gap0_eq_neg_walk' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CensusDerivationBridge.landed_gap0_eq_neg_walk
+
+/-! ## Flow-one instance, full covariance group, FB group-iso (fable-24h 88350d15 + 86779752 + 6b89c65a, 2026-07-12)
+
+flowOne concrete TwoBandFamily instance; the complete both-coset
+covariance group; the FB SU(3) group-isomorphism upgrade. All
+kernel-only. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FlowOneInstance.flowOne_flowDiff_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FlowOneInstance.flowOne_flowDiff_eq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FlowOneInstance.flowOne_no_single_crossing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FlowOneInstance.flowOne_no_single_crossing
+
+/-- info: 'CovarianceGroupFull.covariance_group_full' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms CovarianceGroupFull.covariance_group_full
+
+/-- info: 'FBGroupIso.mulEquivToSU3AsGroups_map_inv' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms FBGroupIso.mulEquivToSU3AsGroups_map_inv
+
 end PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SU2LocalCrossingCharge.localCrossingCharge_ne_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SU2LocalCrossingCharge.localCrossingCharge_ne_zero_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SU2LocalCrossingCharge.diracSectorCharges_cancel' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SU2LocalCrossingCharge.diracSectorCharges_cancel
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SU2LocalCrossingCharge.singularControl_charge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SU2LocalCrossingCharge.singularControl_charge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DiracLocalChargeNeutrality.massBlend_sq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DiracLocalChargeNeutrality.massBlend_sq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DiracLocalChargeNeutrality.exists_distinct_anticommuting_involutions' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DiracLocalChargeNeutrality.exists_distinct_anticommuting_involutions
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DiracLocalChargeNeutrality.exists_nonanticommuting_blend_failure' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DiracLocalChargeNeutrality.exists_nonanticommuting_blend_failure
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralityMixingNecessity.diracFirstJet_perp_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralityMixingNecessity.diracFirstJet_perp_eq_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralityMixingNecessity.exists_nonzero_perpPart' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralityMixingNecessity.exists_nonzero_perpPart
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CubicWeylSectorCharge.restrictPlus_generators' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CubicWeylSectorCharge.restrictPlus_generators
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CubicWeylSectorCharge.restrictMinus_generators' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CubicWeylSectorCharge.restrictMinus_generators
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CubicWeylSectorCharge.liveDiracSectorCharges_cancel' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CubicWeylSectorCharge.liveDiracSectorCharges_cancel
+
+/-- info: 'PhysicsSM.Draft.NullEdge.QuadraticChiralityRegulator.regulator_hasFDerivAt_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.QuadraticChiralityRegulator.regulator_hasFDerivAt_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.QuadraticChiralityRegulator.regulator_single_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.QuadraticChiralityRegulator.regulator_single_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.QuadraticChiralityRegulator.explicit_nonzero_chirality_mixing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.QuadraticChiralityRegulator.explicit_nonzero_chirality_mixing
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChargeBalanceForcesPartner.exists_second_nondegenerate_of_total_charge_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChargeBalanceForcesPartner.exists_second_nondegenerate_of_total_charge_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChargeBalanceForcesPartner.oppositeFixture_has_distinct_partner' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChargeBalanceForcesPartner.oppositeFixture_has_distinct_partner
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChargeBalanceForcesPartner.singleton_nonzero_charge_sum_ne_zero' depends on axioms: [propext, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChargeBalanceForcesPartner.singleton_nonzero_charge_sum_ne_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorRegulator.regulator_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorRegulator.regulator_unitary
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorRegulator.anticommuting_quarterTurn_eq_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorRegulator.anticommuting_quarterTurn_eq_neg_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_failure_without_second_involution' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_failure_without_second_involution
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_noncentral_quarterTurn' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_noncentral_quarterTurn
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorRegulator.commuting_quarterTurn_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorRegulator.commuting_quarterTurn_eq_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_failure_without_first_involution' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_failure_without_first_involution
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_genuinely_noncentral_quarterTurn' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorRegulator.exists_genuinely_noncentral_quarterTurn
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.massless_splitStep_commutes' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.massless_splitStep_commutes
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.Xi_conjTranspose' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.Xi_conjTranspose
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.massless_splitStep_commutes_plusProjector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.massless_splitStep_commutes_plusProjector
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.splitStep_commutes_iff_sin_theta_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.splitStep_commutes_iff_sin_theta_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.quarter_mass_breaks_global_chirality' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FullBlochGlobalChirality.quarter_mass_breaks_global_chirality
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorChiralityCoefficient.Xi_anticommutes_lieCoefficient' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorChiralityCoefficient.Xi_anticommutes_lieCoefficient
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorChiralityCoefficient.live_lieCoefficient_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorChiralityCoefficient.live_lieCoefficient_ne_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorChiralityCoefficient.live_lieCoefficient_is_full_perp' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorChiralityCoefficient.live_lieCoefficient_is_full_perp
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessWeylChargeCensus.detJm_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessWeylChargeCensus.detJm_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessWeylChargeCensus.zero_sector_charge_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessWeylChargeCensus.zero_sector_charge_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessWeylChargeCensus.pi_sector_charge_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessWeylChargeCensus.pi_sector_charge_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorCornerInvisibility.regulator_first_sine_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorCornerInvisibility.regulator_first_sine_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorCornerInvisibility.regulator_corner_trivial' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorCornerInvisibility.regulator_corner_trivial
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorCornerInvisibility.exists_nontrivial_away_from_corners' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorCornerInvisibility.exists_nontrivial_away_from_corners
+
+/-! ## Exact 3+1 charge census and regulator boundary (codex-24h, 2026-07-11)
+
+The massless live walk now has an exact Pauli-vector Frechet derivative and
+complete cosine-cube crossing classification.  The designated zero and pi
+node censuses cancel separately and instantiate the finite partner theorem.
+Pure phase commutators are pi-periodic and therefore corner-blind even with
+affine offsets.  The reciprocal conditional-shift word is the first exact
+quadratically flat primitive that gaps the old one-dimensional corner, but is
+not asserted to solve the full 3+1 torus problem. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorPiPeriodicity.regulator_corner_sign_invariant' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorPiPeriodicity.regulator_corner_sign_invariant
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorPiPeriodicity.phaseStep_flip_pair_ne_same' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorPiPeriodicity.phaseStep_flip_pair_ne_same
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalConditionalShiftRegulator.reciprocalRegulator_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalConditionalShiftRegulator.reciprocalRegulator_unitary
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalConditionalShiftRegulator.reciprocalRegulator_sub_one_factor' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalConditionalShiftRegulator.reciprocalRegulator_sub_one_factor
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalConditionalShiftRegulator.neg_one_has_no_zero_or_pi_crossing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalConditionalShiftRegulator.neg_one_has_no_zero_or_pi_crossing
+
+/-! ### ReciprocalLaurentRange: exact five-coefficient Laurent expansion,
+genuine two-sided range two, and cleared degree-four certificate. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalLaurentRange.reciprocalRegulator_eq_laurentEval' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalLaurentRange.reciprocalRegulator_eq_laurentEval
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalLaurentRange.cleared_laurent_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalLaurentRange.cleared_laurent_polynomial
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalLaurentRange.extreme_coefficients_load_bearing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalLaurentRange.extreme_coefficients_load_bearing
+
+/-! ### PairedDeterminantReality: the exact reality gate required before a
+four-component zero-gap determinant can enter a sign-change argument. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairedDeterminantReality.star_det_sub_one_eq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairedDeterminantReality.star_det_sub_one_eq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PairedDeterminantReality.det_sub_one_im_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PairedDeterminantReality.det_sub_one_im_eq_zero
+
+/-! ### StationaryAmplitudeProjectorWalk: exact range-one unitarity with
+noncommuting projectors and a nonzero onsite coefficient. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeProjectorWalk.stationaryWalk_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeProjectorWalk.stationaryWalk_unitary
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeProjectorWalk.explicit_stationary_walk_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeProjectorWalk.explicit_stationary_walk_unitary
+
+/-! ### PositiveWeylBranchCompleteness: global branch-resolved crossing
+classification and nondegeneracy for the live positive Weyl block. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.weylStep_eq_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.weylStep_eq_one_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.weylStep_eq_neg_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.weylStep_eq_neg_one_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.zeroBranch_jacobian_det_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.zeroBranch_jacobian_det_ne_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.piBranch_jacobian_det_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness.piBranch_jacobian_det_ne_zero
+
+/-! ### StationaryAmplitudeWeylTangent: nonzero stationary amplitude and an
+exact isotropic Pauli first moment in one three-axis unitary construction. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTangent.weylStep_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTangent.weylStep_unitary
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTangent.exists_stationary_amplitude_isotropic_weyl_fixture' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTangent.exists_stationary_amplitude_isotropic_weyl_fixture
+
+/-! ### StationaryAmplitudeWeylAlias: exact non-origin identity crossing for
+the stationary-amplitude isotropic fixture. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlias.corner_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlias.corner_alias
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlias.exists_distinct_identity_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlias.exists_distinct_identity_alias
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlias.nonconstant_control' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlias.nonconstant_control
+
+/-! ### StationaryAmplitudeWeylExactOffCornerAlias: exact Gaussian-rational
+identity crossing away from the corner phases, with orientation control. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylExactOffCornerAlias.exact_offCorner_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylExactOffCornerAlias.exact_offCorner_alias
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylExactOffCornerAlias.wrongOrientation_not_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylExactOffCornerAlias.wrongOrientation_not_alias
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylExactOffCornerAlias.exists_exact_nonorigin_unitCircle_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylExactOffCornerAlias.exists_exact_nonorigin_unitCircle_alias
+
+/-! ### StationaryAmplitudeWeylRootClassification: exact real census for the
+quintic and sextic factors returned by the tangent-coordinate elimination.
+The factor derivation from the matrix equations is still an external exact-CAS
+step and tangent-chart boundary points are not covered here. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylRootClassification.rootPoly_existsUnique_real' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylRootClassification.rootPoly_existsUnique_real
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylRootClassification.excludedPoly_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylRootClassification.excludedPoly_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylRootClassification.real_elimination_factor_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylRootClassification.real_elimination_factor_iff
+
+/-! ### StationaryAmplitudeWeylAlgebraicOffAxisAlias: an exact fully off-axis
+identity crossing of the imported live stationary-amplitude Weyl symbol. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlgebraicOffAxisAlias.rootPoly_existsUnique_real' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlgebraicOffAxisAlias.rootPoly_existsUnique_real
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlgebraicOffAxisAlias.exact_alias_of_root' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlgebraicOffAxisAlias.exact_alias_of_root
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlgebraicOffAxisAlias.exists_exact_fully_offaxis_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylAlgebraicOffAxisAlias.exists_exact_fully_offaxis_alias
+
+/-! ### Z2CubedFlavourCorner: exact finite census of the eight corner labels as
+one reduced representative with eight explicit flavours. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner.corner_unique_rep_and_flavour' does not depend on any axioms -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner.corner_unique_rep_and_flavour
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner.deck_regular' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner.deck_regular
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner.wrongCover_diagonal_not_surjective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner.wrongCover_diagonal_not_surjective
+
+/-! ### Z2CubedFlavourIntertwine: scalar parity pullback, exact zero/pi
+determinant exchange, and wrong-period control. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine.splitStep_cover_intertwines' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine.splitStep_cover_intertwines
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine.cover_det_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine.cover_det_alias
+
+/-- info: 'PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine.wrongCover_halfperiod_not_scalar' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine.wrongCover_halfperiod_not_scalar
+
+/-! ### ChangingMomentumCellSampling: concrete compact-support Lipschitz
+sampling convergence on changing half-open momentum cells. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellSampling.integral_sq_error_global_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellSampling.integral_sq_error_global_le
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellSampling.sampleFinite_tendsto_sq_error_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellSampling.sampleFinite_tendsto_sq_error_zero
+
+/-! ### ChangingMomentumL2Density: arbitrary-L2 compact approximation and
+global Lipschitz extraction for compactly supported smooth functions. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.memLp_exists_continuous_compact_sq_approx' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.memLp_exists_continuous_compact_sq_approx
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.compactSupport_contDiff_exists_global_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.compactSupport_contDiff_exists_global_lipschitz
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.memLp_exists_compact_global_lipschitz_eLpNorm_approx' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.memLp_exists_compact_global_lipschitz_eLpNorm_approx
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.quadraticAxis_not_global_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumL2Density.quadraticAxis_not_global_lipschitz
+
+/-! ### ChangingMomentumPointSamplerNoGo: exact AE-invariance obstruction for
+center sampling and normalized one-cell average controls. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumPointSamplerNoGo.sampleFinite_not_ae_invariant' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumPointSamplerNoGo.sampleFinite_not_ae_invariant
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumPointSamplerNoGo.cellAverage_congr_ae' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumPointSamplerNoGo.cellAverage_congr_ae
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumPointSamplerNoGo.cellAverage_const_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumPointSamplerNoGo.cellAverage_const_one
+
+/-! ### ChangingMomentumCellProjection: AE-invariant finite average projection,
+constant normalization, and unnormalized-scaling control. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjection.projectFinite_congr_ae' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjection.projectFinite_congr_ae
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjection.projectFinite_const_one_on_cell' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjection.projectFinite_const_one_on_cell
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjection.rawCellIntegral_two_control' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjection.rawCellIntegral_two_control
+
+/-! ### ChangingMomentumCellProjectionL2: normalized finite cell averages are
+globally contractive in squared `L2` energy. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionL2.cellAverage_energy_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionL2.cellAverage_energy_le
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionL2.projectFinite_L2_contraction' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionL2.projectFinite_L2_contraction
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionL2.projectFinite_pointSpike_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionL2.projectFinite_pointSpike_zero
+
+/-! ### ReciprocalCoinFamily: exact corner-gap classification across the
+rational tangent-half-angle two-band coin family. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily.no_zero_or_pi_crossing_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily.no_zero_or_pi_crossing_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily.half_has_no_zero_or_pi_crossing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily.half_has_no_zero_or_pi_crossing
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily.zero_parameter_control' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily.zero_parameter_control
+
+/-! ### CoupledReciprocalSliceNoGo: exact extra zero- and pi-quasienergy
+crossings for the tested chirality-coupled reciprocal architecture. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CoupledReciprocalSliceNoGo.sliceWalk_det' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CoupledReciprocalSliceNoGo.sliceWalk_det
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CoupledReciprocalSliceNoGo.exists_additional_zero_crossing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CoupledReciprocalSliceNoGo.exists_additional_zero_crossing
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CoupledReciprocalSliceNoGo.exists_additional_pi_crossing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CoupledReciprocalSliceNoGo.exists_additional_pi_crossing
+
+/-! ### SU2CrossingLocking: determinant-one unitary two-band crossings lock
+the whole sector to plus or minus identity. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SU2CrossingLocking.det_sub_one_eq_zero_iff_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SU2CrossingLocking.det_sub_one_eq_zero_iff_eq_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SU2CrossingLocking.det_add_one_eq_zero_iff_eq_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SU2CrossingLocking.det_add_one_eq_zero_iff_eq_neg_one
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SU2CrossingLocking.detNegOneControl_plus_crossing' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.SU2CrossingLocking.detNegOneControl_plus_crossing
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition.zeroCharge_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition.zeroCharge_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition.piCharge_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition.piCharge_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition.zeroNode_has_partner' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition.zeroNode_has_partner
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveWeylJacobian.hasFDerivAt_weylVector' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveWeylJacobian.hasFDerivAt_weylVector
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveWeylJacobian.det_weylJacobian' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveWeylJacobian.det_weylJacobian
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveWeylJacobian.origin_localCharge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveWeylJacobian.origin_localCharge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveWeylJacobian.rankDeficientControl_charge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveWeylJacobian.rankDeficientControl_charge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessBlochCrossingClassification.live_massless_det_sub_one_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessBlochCrossingClassification.live_massless_det_sub_one_eq_zero_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessBlochCrossingClassification.live_massless_det_add_one_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessBlochCrossingClassification.live_massless_det_add_one_eq_zero_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.MasslessBlochCrossingClassification.massless_corner_parity_controls' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.MasslessBlochCrossingClassification.massless_corner_parity_controls
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.trigRegulator_fderiv_origin' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.trigRegulator_fderiv_origin
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.trigRegulator_mixed_fderiv_origin' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.trigRegulator_mixed_fderiv_origin
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.live_mixed_fderiv_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.live_mixed_fderiv_ne_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.repeated_generator_mixed_fderiv_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.CommutatorMixedDerivative.repeated_generator_mixed_fderiv_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.weylJacobian_eq_Jm' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.weylJacobian_eq_Jm
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.live_zero_charge_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.live_zero_charge_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.live_pi_charge_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.live_pi_charge_sum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.live_zeroNode_has_partner' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.LiveMasslessWeylCensusBridge.live_zeroNode_has_partner
+
+/-! ### StationaryAmplitudeWeylLiveMatrixNumeratorBridge: the imported live
+matrix equals `+I` exactly when its scalar and Pauli numerator equations hold. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylLiveMatrixNumeratorBridge.live_eq_one_iff_numerators' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylLiveMatrixNumeratorBridge.live_eq_one_iff_numerators
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylLiveMatrixNumeratorBridge.corrected_eliminant_of_live_alias' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylLiveMatrixNumeratorBridge.corrected_eliminant_of_live_alias
+
+/-! ### StationaryAmplitudeWeylTzZeroInteriorBranch: complete exact census of
+the live numerator system on the finite `tz = 0` tangent-chart slice. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTzZeroInteriorBranch.tz_zero_interior_live_census' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTzZeroInteriorBranch.tz_zero_interior_live_census
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTzZeroInteriorBranch.explicit_witnesses' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylTzZeroInteriorBranch.explicit_witnesses
+
+/-! ### StationaryAmplitudeWeylBoundaryScaffold: exact completed controls from
+the first phase-minus-one boundary pass. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.no_xy_boundary_identity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.no_xy_boundary_identity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.no_yz_boundary_identity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.no_yz_boundary_identity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.all_neg_one_not_identity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.all_neg_one_not_identity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.weylStep_neg_one_one_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold.weylStep_neg_one_one_neg_one
+
+/-! ### ChangingMomentumCellProjectionStrongScaffold: harvested exact operator
+and dense-core lemmas for the representative-safe strong-convergence route. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.projectAt_L2_contraction' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.projectAt_L2_contraction
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.projectAt_sub' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.projectAt_sub
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.projectFinite_pointwise_error_on_cell' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.projectFinite_pointwise_error_on_cell
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.memLp_exists_compact_smooth_lipschitz_sq_approx' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold.memLp_exists_compact_smooth_lipschitz_sq_approx
+
+/-! ### ChangingMomentumCellProjectionGeometry: compact-support coverage and
+uniform active-cell volume localization for the explicit schedule. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionGeometry.compactSupport_eventually_covered' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionGeometry.compactSupport_eventually_covered
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionGeometry.active_cellUnion_volume_eventually_bounded' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionGeometry.active_cellUnion_volume_eventually_bounded
+
+/-! ### ChangingMomentumCellProjectionThreeTerm: quantitative dense-core
+transfer estimate for arbitrary `L2` fields. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionThreeTerm.projectAt_sq_error_le_of_approx' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionThreeTerm.projectAt_sq_error_le_of_approx
+
+/-! ### DynamicalMassCovariance: complete generator-family covariance,
+including the parity-reversing antidiagonal branch. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.sameMomentum_covariant_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.sameMomentum_covariant_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.parity_covariant_iff' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.parity_covariant_iff
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.chiralPhase_covariant' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.chiralPhase_covariant
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.chiralFlip_parity_covariant' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DynamicalMassCovariance.chiralFlip_parity_covariant
+
+/-! ### DiscreteWalkMassCovariance: the classified covariance branches act
+exactly on the ordered two-channel finite walk step. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DiscreteWalkMassCovariance.chiralPhase_walk_covariance' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DiscreteWalkMassCovariance.chiralPhase_walk_covariance
+
+/-- info: 'PhysicsSM.Draft.NullEdge.DiscreteWalkMassCovariance.chiralFlip_walk_parity_covariance' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.DiscreteWalkMassCovariance.chiralFlip_walk_parity_covariance
+
+/-! ### StationaryAmplitudeWeylQuinticFiberCensus: exact finite-chart
+classification of all positive-identity crossings. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylQuinticFiberCensus.quintic_fiber_unique' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylQuinticFiberCensus.quintic_fiber_unique
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylQuinticFiberCensus.live_identity_finite_chart_census' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylQuinticFiberCensus.live_identity_finite_chart_census
+
+/-- info: 'PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylQuinticFiberCensus.finite_chart_census_has_fully_offaxis_witness' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylQuinticFiberCensus.finite_chart_census_has_fully_offaxis_witness
+
+/-! ### FreePairQCACombinedCone: one free finite-range layer plus one local
+pair-gate layer has an exact two-neighborhood CAR support cone. -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FreePairQCACombinedCone.freeHeisenberg_geometric_cone' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FreePairQCACombinedCone.freeHeisenberg_geometric_cone
+
+/-- info: 'PhysicsSM.Draft.NullEdge.FreePairQCACombinedCone.free_then_pairLayer_geometric_cone' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.FreePairQCACombinedCone.free_then_pairLayer_geometric_cone

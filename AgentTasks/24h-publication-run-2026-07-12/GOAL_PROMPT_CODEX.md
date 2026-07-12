@@ -14,7 +14,9 @@ Read, in order:
 2. the prior run's `MORNING_REPORT.md`, `HONEST_SCORECARD.md`, and
    `HELP_NEEDED_2026-07-11.md`;
 3. `Sources/Null_Edge_Publication_Portfolio_2026-07-10.md`;
-4. exact source and guards for the lane you claim.
+4. `JORDAN_CLIFFORD_BRIDGE_PROGRAM.md` and
+   `D_R3_SHANNON_BRIDGE_PROGRAM.md`;
+5. exact source and guards for the lane you claim.
 
 Immediately run `aristotle list --limit 40`. Harvest inherited jobs before
 submitting replacements, especially `cb16b747` and `573430f4`. Record every
@@ -38,6 +40,24 @@ Your default technical lanes are Papers D, F, and B:
    module, five-mode generation, and representation-level `Z6` targets in
    `JORDAN_CLIFFORD_BRIDGE_PROGRAM.md`, then integrate only semantically aligned
    results.
+
+For Paper B, `MEMO_3PLUS1_ATTACK.md` contains a binding correction: a complete
+mass-admitting four-component Dirac tangent is class-A neutral, while its two
+Weyl sectors carry opposite charges. Land the explicit neutrality homotopy
+before any charge claim. Sectorwise charge bookkeeping requires a constant
+global chirality commuting with the entire Bloch symbol. Keep the proposed
+strict-Laurent strong-winding no-go at imported-T/VERIFY grade until its
+algebraic-K-theory and change-of-rings sources are checked. The first permitted
+construction search is the quadratic `Xi`-odd escape class: zero constant and
+linear odd jets, nonzero higher-order chirality mixing, exact unitarity, and
+exact zero/pi root-exclusion certificates.
+
+Paper D now has complete live coefficient convergence and fixed-unit-torus
+strong `L2` transport. Do not relabel that as the changing-lattice `R^3`
+theorem. Follow `D_R3_SHANNON_BRIDGE_PROGRAM.md`: the next exact gates are a
+normalized cell isometry for a shrinking momentum spacing, physical-box
+exhaustion with `N h_N -> infinity`, a scaled live multiplier theorem, and
+composition through the `R^3` Fourier isometry to the identified Dirac flow.
 
 Paper A is allowed to freeze as a superb specialist paper. Do not hold it
 hostage to prestige upgrades. Update its formal claims when new theorems land,

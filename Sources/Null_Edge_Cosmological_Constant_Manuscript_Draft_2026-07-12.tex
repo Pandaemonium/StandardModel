@@ -1,0 +1,443 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+% DRAFT (2026-07-12). Manuscript surfacing of the null-edge cosmological-
+% constant program (rungs L1-L6 of Null_Edge_Cosmological_Constant_2026-07-09.md).
+% Substantive where kernel theorems back it; outline/conjecture where marked.
+% RELEASE GATES before this leaves draft: (i) DONE 2026-07-12 - the Lambda
+% capstones are guard-pinned in PhysicsSM/Draft/NullEdge/LambdaCosmologyAxiomGuard
+% (~44 pins, 11 modules, build green); (ii) named authors; (iii) verify every
+% [import] against primary sources.
+
+\newcommand{\Lam}{\Lambda}
+\newcommand{\ii}{\mathrm{i}}
+\definecolor{kcol}{RGB}{0,92,74}
+\definecolor{icol}{RGB}{0,64,128}
+\definecolor{ccol}{RGB}{145,76,0}
+\definecolor{scol}{RGB}{120,120,120}
+% Claim calculus (project convention):
+\newcommand{\Kernel}{\textcolor{kcol}{\textsc{M}}}       % kernel-checked in repo
+\newcommand{\Import}{\textcolor{icol}{\textsc{[import]}}} % external result relied on
+\newcommand{\Conj}{\textcolor{ccol}{\textsc{[C]}}}        % pre-registered conjecture
+\newcommand{\Spec}{\textcolor{scol}{\textsc{[spec]}}}     % honest speculation
+\newcommand{\lm}[1]{\texttt{#1}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\title{The Cosmological Constant as the Count-Conjugate of a Finite
+Null-Edge Spacetime:\\ a kernel-checked everpresent-$\Lam$ core and its
+pre-registered dichotomy}
+\author{[named authors --- release gate]}
+\date{July 12, 2026 --- working draft (partial outline)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report a Lean~4 formalization, over Mathlib, of the arithmetic core of a
+finite ``null-edge'' account of the cosmological constant $\Lam$.  The value
+proposition is exactness and machine-verification of the \emph{structural}
+claims, not a first-principles derivation of the observed value.  Three
+independently landed, kernel-checked (\Kernel) results organize the account.
+(1) \emph{Magnitude dissolution, structurally}: in the finite spectral-action
+grading the coefficient of $\operatorname{tr}(\mathbf 1)$ is invariant under
+\emph{every} deformation of the Dirac operator, while the order-2 and order-4
+traces provably do change; only count statistics can touch the order-0
+coefficient.  (This grading invariance is the finite avatar of a classical
+heat-kernel fact; the physical statement that no matter or gauge channel
+renormalizes $\Lam$ rests on the finite unimodular trade of Section~4, not on
+the grading alone --- see the Section~4 remark.)
+(2) \emph{The everpresent scaling law}: with the discreteness (Poisson) input
+$\langle\delta N^2\rangle = V$ the normalized $\Lam = \delta N/V$ has RMS
+$1/\sqrt V$, routed through the framework's own extensive edge count rather than
+an abstract volume.  (3) \emph{A pre-registered dichotomy with a sharp
+exponent}: the count variance $\operatorname{Var}(N)$ is a finite susceptibility
+whose scaling exponent $\alpha$ decides everpresent survival --- the Poisson
+branch ($\alpha=1$) gives the everpresent exponent $-\tfrac12$ and predicts
+fluctuating dark energy at $1/\sqrt V$, while any hyperuniform branch
+($\alpha<1$, the constraint-correlated case realized by Coulomb systems)
+suppresses $\Lam$ below $1/\sqrt V$ and kills the everpresent identification.
+This dichotomy is now a \Kernel{} theorem on the framework's own fermionic states:
+via Wick's number-variance identity, an explicit projection (Fermi-sea) kernel
+realizes a genuinely sub-extensive, \emph{unbounded} variance ($\alpha=\tfrac12$),
+so the fork is proved and only the physical count-identification remains open.
+We additionally give an \emph{illustrative} finite Fourier/uncertainty picture of
+the $\Lam$--volume conjugacy on a small register, and pre-register the canonical
+finite Henneaux--Teitelboim statement ($\{\Lam,V\}=1$, $\dot\Lam=0$ on shell) as
+its proper successor.  Every trust boundary is stated at its
+point of use.  What is \emph{not} claimed: a derivation of the value
+$10^{-122}$ (the 4-volume $V$ is an input), of the sign, or of the stochastic
+dynamics.  As of this draft the capstones are kernel-clean \emph{and}
+build-guarded: a dedicated axiom guard (\lm{LambdaCosmologyAxiomGuard}) pins the
+footprint of every cited theorem on every build (Section~7).
+\end{abstract}
+
+\paragraph{Claim calculus.}  \Kernel{} = a theorem kernel-checked in this
+repository (axiom footprint $\{\texttt{propext},\texttt{Classical.choice},
+\texttt{Quot.sound}\}$; every module cited below is \texttt{native\_decide}-free).
+\Import{} = an external result relied on but not proved here.  \Conj{} = a
+pre-registered conjecture with a stated kill condition.  \Spec{} = honest
+speculation.  Unmarked prose is interpretation.
+
+\section{The problem, in two halves}
+
+\emph{Magnitude.}  Continuum QFT's naive vacuum zero-point density is
+$\sim M_{\mathrm{Pl}}^4$, about $120$ orders above the observed
+$\rho_\Lam\sim(10^{-3}\,\mathrm{eV})^4\sim10^{-122}$ in Planck units.
+\emph{Coincidence.}  Why is $\rho_\Lam$ comparable to the matter density
+\emph{now}, when the two scale differently with expansion?  A finite theory has
+no divergent zero-point sum, so the magnitude problem cannot appear in its
+continuum form; but finiteness alone does not \emph{predict} smallness, and
+matter loops still renormalize the vacuum energy (Weinberg 1989 \Import).  The
+framework's genuine leverage is (i) a \emph{structural} reason no channel can
+feed the order-0 coefficient (Section~4), and (ii) a specific, falsifiable
+handle on the coincidence half (Sections~3,5).
+
+\section{The finite spectral grading and the order-0 coefficient}
+
+In the spectral-action route (Chamseddine--Connes--Marcolli \Import) the action
+is one functional whose expansion gives a cosmological/volume term (order~0), a
+gravity term (order~2), and matter terms (order~4).  Thus $\Lam$ is the
+order-0 coefficient $a_0\operatorname{tr}(\mathbf 1)$ --- a finite, computable
+number, and a graded piece of the same functional yielding gravity and matter.
+
+The finite avatar makes this exact.  In \lm{LambdaMomentHierarchy} the graded
+pieces are explicit and the following hold \Kernel:
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item \lm{moment\_hierarchy}: the order-$0/2/4$ decomposition of the finite
+  functional into $(a_0\operatorname{tr}\mathbf1,\ \text{gravity},\ \text{matter})$;
+\item \lm{order0\_deformation\_invariant}: $\operatorname{order0}(a_0,D+P)=
+  \operatorname{order0}(a_0,D)$ for \emph{any} perturbation $P$;
+\item \lm{only\_count\_touches\_lambda} and \lm{hierarchy\_verdict}: the order-0
+  coefficient is blind to every channel deformation, the higher orders are not.
+\end{itemize}
+
+\section{The main handle: everpresent $\Lam$}
+
+\paragraph{Mechanism (Sorkin; Ahmed--Dodelson--Greene--Sorkin \Import).}
+In unimodular gravity $\Lam$ is conjugate to the spacetime 4-volume $V$; in a
+discrete spacetime the element count $N\sim V$, a Poisson fluctuation gives
+$\delta N\sim\sqrt V$, and conjugacy makes $\Lam$ fluctuate about zero with
+$|\Lam|\sim\delta N/V\sim1/\sqrt V$.  For the present horizon $V\sim10^{244}$
+Planck units, so $1/\sqrt V\sim10^{-122}$ --- the observed magnitude, untuned
+\Import --- and since $\Lam\sim1/\sqrt V$ tracks the ambient density at every
+epoch, the coincidence is dissolved.
+
+\paragraph{Kernel core.}  The scaling arithmetic is machine-checked, first
+abstractly and then through the framework's own primitive:
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item \lm{everpresentLambda\_secondMoment\_eq\_inv\_volume},
+  \lm{everpresentLambda\_rms\_eq\_inv\_sqrt\_volume} \Kernel{}: given
+  $\langle\delta N^2\rangle = V$, $\Lam=\delta N/V$ has second moment $1/V$ and
+  RMS $1/\sqrt V$ (\lm{NullEdgeP9EverpresentLambdaScaling}).
+\item \lm{edgecount\_extensive}, \lm{edgecount\_mono},
+  \lm{lambda\_rms\_eq\_inv\_sqrt\_count}, \lm{everpresent\_verdict} \Kernel{}:
+  the pierced-null-edge count $N$ is additive over disjoint regions and
+  monotone, and the everpresent RMS holds with $N$ \emph{the edge count}
+  (\lm{LambdaEdgeCount}) --- the handle is native, not borrowed via an abstract
+  $V$.
+\item \lm{uniformSecondMoment\_antitone},
+  \lm{uniformSuppression\_below\_everpresent} \Kernel{}: a uniform suppression
+  with residual $A^2/N$ beats the $\sqrt N$ fluctuation iff the scale is
+  sub-extensive (\lm{NullEdgeP9EverpresentLambdaTension}) --- the comparison
+  machinery for Section~5.
+\end{itemize}
+
+\paragraph{Honest scope.}  \Kernel{} is the \emph{arithmetic of the scaling}.
+The inputs remain \Import/\Conj: the $\Lam$--$V$ conjugacy (unimodular gravity),
+the Poisson second moment $\langle\delta N^2\rangle=V$ (Section~5 situates this),
+and the identification of the edge count with the 4-volume.
+
+\section{Structural magnitude dissolution (the headline theorem)}
+
+The order-0 blindness of Section~2 upgrades the ``finiteness removes the
+divergence'' story to a structural statement: matter physics \emph{cannot}
+renormalize $\Lam$.  In \lm{LambdaUnimodular} and the capstones:
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item \lm{trace\_one\_eq\_dim} ($\operatorname{tr}\mathbf1 = n$),
+  \lm{trace\_channel\_blind}, \lm{order0\_operator\_blind} \Kernel: the order-0
+  coefficient is invariant under channel and operator deformations.
+\item \lm{multiplier\_field\_equation}, \lm{vacuum\_shift\_is\_gauge},
+  \lm{gauge\_solution\_map} \Kernel: the finite unimodular trade --- under a
+  count constraint a shift of the order-0 coefficient is a gauge move on the
+  constraint surface (unobservable), the multiplier enters the field equation as
+  $+\Lam\,\mathbf1$ (Jacobson's integration constant, finitely), and the
+  observable residue is the count's deviation from its constrained mean.
+\item \lm{lambda\_only\_count\_can\_move\_order0} \Kernel{} (\lm{LambdaMagnitudeCapstone}):
+  bundles it --- $\operatorname{order0}(D+P)=\operatorname{order0}(D)$ and
+  $\Lam$ invariant under vacuum shifts, \emph{while}
+  $\operatorname{tr}((D+P)^2)\neq\operatorname{tr}(D^2)$ and the order-4 trace
+  likewise moves.  Matter physics moves the gravity and matter sectors and
+  leaves $\Lam$ untouched; only count statistics can move it.
+\item \lm{lambda\_magnitude\_capstone}, \lm{lambda\_nonvacuity\_witnesses} \Kernel:
+  the magnitude verdict with explicit non-vacuity witnesses.
+\end{itemize}
+
+\begin{remark}[what this is and is not, and where the load-bearing wall really is]
+The order-0 invariance is the finite avatar of a \emph{classical} heat-kernel
+fact --- the leading Seeley--DeWitt coefficient $a_0$ depends only on
+$\text{rank}\times\text{volume}$, not on the operator \Import{} --- so
+$\operatorname{order0}$ not mentioning $D$ makes \lm{order0\_deformation\_invariant}
+close to definitional (it is the structural encoding of the grading, best read as
+the Classical-analogue it is).  Consequently the grading theorem \emph{alone} does
+not carry the physical claim ``matter cannot renormalize $\Lam$'': as Section~1's
+Weinberg concession already admits, a Higgs-sector vacuum shift sits in the
+order-4 trace and still gravitates as an effective $\Lam$.  What neutralizes it is
+the finite \emph{unimodular trade} --- \lm{vacuum\_shift\_is\_gauge} together with
+the imported $\Lam$--$V$ conjugacy (Section~3): under a fixed-count constraint a
+uniform $c\,\mathbf1$ shift is a gauge move on the constraint surface, hence
+unobservable.  That trade, not the grading, is the load-bearing wall, and the
+paper should be read that way.  This dissolves the magnitude problem
+\emph{structurally} for the finite functional but does not derive the value
+($\operatorname{tr}\mathbf1=(\text{edge count})\times(\text{fibre dimension})$,
+$V$ an input).  The honest finite sequestering core still owes two keystones, both
+landable from \lm{LambdaUnimodular} (\emph{pre-registered, not yet theorems}):
+(i) an \emph{ensemble} shift-invariance --- at fixed count the partition function
+and every observable are invariant under a uniform $c\,\mathbf1$ shift, upgrading
+the trade from classical field equation to statistical mechanics; and (ii) a
+\emph{local-shift decomposition} --- an inhomogeneous $c(x)\mathbf1$ splits into a
+gauged uniform mode and a residue provably routed into the order-2/4 observables.
+\end{remark}
+
+\section{The pre-registered dichotomy and the exponent prediction}
+
+The Poisson input need not be assumed: it is a statement about the count
+variance, which the finite ensemble computes.
+
+\paragraph{$\Lam$ as a susceptibility.}  \lm{LambdaSusceptibility} \Kernel:
+$\lm{expect\_Ncount}$, $\lm{var\_count}$ give $\operatorname{Var}(N)$ for
+independent occupancies, and $\lm{bernoulli\_bound}$ proves
+$\operatorname{Var}(N)=\sum_i p_i(1-p_i)\le\langle N\rangle$ (equality in the
+sparse/Poisson limit).  Everpresent becomes an \emph{upper-bound theorem for an
+ideal edge gas}: $\Lam_{\mathrm{rms}}\le1/\sqrt{\langle N\rangle}$, with
+$\Lam_{\mathrm{rms}}=\sqrt{\chi_N}/\langle N\rangle$ the count susceptibility.
+
+\paragraph{The fork \Conj (the distinctive question).}  Do the framework's own
+constraints correlate the count?  Constraint-induced correlations can make
+number fluctuations sub-extensive --- the physical precedent is that Coulomb
+systems are hyperuniform (charge fluctuations scale with surface, not volume)
+\Import.  \lm{LambdaCountDichotomy} \Kernel{} formalizes both branches on finite
+witnesses: \lm{free\_variance\_extensive}/\lm{free\_extensive} (independent
+edges, $\operatorname{Var}\sim N$, Poisson) versus \lm{constrained\_variance\_hard}/
+\lm{hard\_subextensive} and \lm{soft\_variance}/\lm{soft\_subextensive} (a
+constrained witness with strictly sub-extensive variance).  What the kernel
+currently proves is that both branches are \emph{possible} on witnesses --- which
+nobody doubted; the answer, not the possibility, is the paper, and it is
+computable because the counted objects are fermionic.
+
+\paragraph{Resolving the fork on the framework's own fermionic states \Conj{}
+(the decisive upgrade).}  For any free-fermion/Gaussian (CAR) state with
+correlation matrix $K$ ($0\le K\le1$), Wick's theorem gives the regional number
+variance in one line,
+$\operatorname{Var}(N_A)=\operatorname{tr}K_A-\operatorname{tr}K_A^2$; the diagonal
+case $K=\operatorname{diag}p$ recovers \lm{var\_count} above (the extensive
+branch).  A \emph{projection} kernel $K^2=K$ --- a Fermi-sea, i.e.\
+\emph{kinematic}, count --- instead makes $\operatorname{Var}(N_A)$ count only
+boundary-crossing modes.  An explicit finite family ($b$ fully-occupied bulk sites
+plus $k$ boundary bonds) has $\operatorname{Var}=k/4$ with region size tunable to
+$k^2$: a genuinely \emph{sub-extensive and unbounded} variance, $\alpha=\tfrac12$
+--- the non-degenerate hyperuniform witness the kill branch needs, on a bona fide
+kernel rather than a degenerate toy.  The fork then sharpens into a
+\emph{dichotomy}: \emph{everpresent $\Lam$ survives iff the $\Lam$-conjugate count
+is the thermal/diagonal count rather than the kinematic/projection
+(vacuum-weighted) count.}  Two identifiable results tension it from both sides:
+the framework's own vacuum (finite Sorkin--Johnston / discrete free-fermion) reading
+is generically sub-extensive (Gioev--Klich regime) and would fire the kill, while a
+Lorentz-invariance leg (Bombelli--Henson--Sorkin: Poisson is the essentially unique
+Lorentz-invariant discretization \Import) pins the \emph{kinematic sprinkling} count
+at $\alpha=1$.  The \emph{mathematical} dichotomy is now \Kernel{} (\lm{LambdaFermionicFork},
+guard-pinned): the fermionic number-variance identity, an explicit boundary-bond
+\emph{projection} kernel ($K^2=K$, kernel-checked --- a genuine Fermi-sea
+correlation matrix, \lm{bondProj\_isProjection}) with $\operatorname{Var}=k/4$
+exactly (\lm{bondProj\_numberVariance}) and region size tunable to $k^2$
+(\lm{fork\_subextensive}: $\alpha=\tfrac12$, sub-extensive \emph{and} unbounded),
+and the two-branch verdict (\lm{fermionic\_fork\_verdict}).  So the fork is a
+theorem, not merely a possibility: a diagonal/thermal count is extensive and
+everpresent survives, while a projection/kinematic count can be genuinely
+sub-extensive and everpresent is killed --- on a bona fide kernel, not a
+degenerate toy.  What remains \Conj{} is only the \emph{physical}
+count-identification: which count the framework's own dynamics makes
+$\Lam$-conjugate (bare vs vacuum-weighted).  Either resolution publishes; a
+hyperuniform no-go for everpresent $\Lam$ in constrained fermionic discreta would
+be the higher-impact outcome.
+
+\paragraph{The exponent, exactly.}  \lm{LambdaExponentFork} \Kernel{} turns the
+fork into a single exponent.  With $\operatorname{Var}(N)\sim N^\alpha$ the
+$\Lam$ exponent is
+\[
+  \lm{lamExp}(\alpha)=\tfrac{\alpha}{2}-1
+  \qquad(\lm{lamExp\_closed}),
+\]
+so \lm{everpresent\_value}: $\lm{lamExp}(1)=-\tfrac12$ (Poisson);
+\lm{hyperuniform\_faster}: $\alpha<1\Rightarrow$ exponent $<-\tfrac12$
+(suppressed below $1/\sqrt V$; e.g.\ area scaling $\alpha=\tfrac34$ gives
+$\sim10^{-152}$); \lm{superextensive\_slower}; and \lm{fork\_iff}:
+$\lm{lamExp}(\alpha)=-\tfrac12\iff\alpha=1$.  In program discipline the
+prediction is an \emph{exponent}, not a scale: a measured deviation of the
+$\Lam$-variance exponent from $-\tfrac12$ measures hyperuniformity.
+
+\paragraph{Kill condition \Conj.}  If the framework's Gauss/gauge constraints
+force $\alpha<1$ on physical witnesses, the everpresent identification of
+observed dark energy dies in this framework and $\Lam$ demotes to an unexplained
+integration constant.  Which count is conjugate to $\Lam$ (bare edge count vs
+decorated/soldered count) is decidable on finite witnesses; either answer is
+publishable.
+
+\section{A finite Fourier/uncertainty picture of the conjugacy (illustrative)}
+
+\lm{LambdaConjugacy} \Kernel{} builds a volume register and a $\Lam$ partner by a
+finite DFT over $\mathbb Z/4$ and proves a support-uncertainty relation:
+\lm{delta\_maps\_to\_uniform} and \lm{uniform\_maps\_to\_delta} (a sharp count is a
+flat $\Lam$ and conversely), \lm{support\_uncertainty} (a Donoho--Stark support
+bound), \lm{delta\_saturates} (the extremal register saturates it).  We are careful
+not to oversell this: the $\mathbb Z/4$ support-uncertainty relation is an
+\emph{illustrative} finite avatar of ``$\Lam$ conjugate to volume'', a
+metaphor-made-exact on one small register, \emph{not} the canonical conjugacy
+statement.  The dictionary it suggests --- mass $=$ residual mixedness of hidden
+null \emph{directions}, $\Lam$ $=$ residual phase noise of hidden null
+\emph{volumes} (the same trace-out-the-hidden-register operation on two registers)
+--- is interpretation, not theorem.  Two successors make ``native'' literal:
+(i) the general-$N$ Donoho--Stark support bound
+$N\le|\operatorname{supp}f|\cdot|\operatorname{supp}\widehat f|$ over $\mathbb Z/N$,
+now \Kernel{} for \emph{all} $N$ (\lm{LambdaUncertaintyGeneralN.support\_uncertainty},
+via a machine-checked Plancherel and Cauchy--Schwarz on Mathlib's \lm{ZMod.dft};
+guard-pinned), which retires the ``$\mathbb Z/4$ witness only'' scope of this
+section --- its extremizer classification is the remaining piece; and (ii), the
+real prize, a finite Henneaux--Teitelboim statement --- a constrained Hamiltonian minisuperspace in
+which $\Lam$ is the momentum conjugate to total $4$-volume, $\{\Lam,V\}=1$,
+$\dot\Lam=0$ on shell, with \lm{vacuum\_shift\_is\_gauge} as a corollary.  To our
+knowledge unimodular gravity's $\Lam$-as-integration-constant has not been
+machine-checked even in a minisuperspace avatar; that theorem, not the DFT witness,
+is what would make the conjugacy native.  (Both are \Conj{}/pre-registered.)
+
+\section{Verification status, and the one honest gap that remains}
+
+Every module cited is kernel-clean (\texttt{native\_decide}-free; footprint
+$\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$) and
+imported in the draft build root.
+\begin{enumerate}[leftmargin=1.6em,itemsep=1pt]
+\item \textbf{Build-enforced axiom guard: in place.}  Every headline theorem
+  cited above is now pinned by a \lm{\#guard\_msgs}/\lm{\#print axioms} block in
+  \lm{PhysicsSM/Draft/NullEdge/LambdaCosmologyAxiomGuard.lean} (about forty pins
+  across the eleven $\Lam$ modules; build green).  The kernel-clean footprint is
+  therefore re-checked on \emph{every} build: should any dependency ever regress
+  --- a \texttt{sorry}, an \texttt{axiom}, or a \texttt{native\_decide} entering
+  a transitive proof --- the recorded axiom string stops matching and the guard
+  module fails to build.  A single pin is instructive: \lm{edgecount\_mono} is
+  guarded at the sharper footprint $\{\texttt{propext},\texttt{Quot.sound}\}$
+  (it needs no choice), so even a spurious \texttt{Classical.choice} would trip
+  the guard.  (Pattern: the sibling \lm{OvernightTheoryAxiomGuard}.)
+\item \textbf{This document is the surfacing (the remaining gate).}  Until now
+  the results lived only in draft modules; this manuscript is rung L6.  It
+  requires named authors and a primary-source pass on every \Import{} before
+  leaving draft.
+\end{enumerate}
+
+\section{The event horizon (what is \emph{not} claimed)}
+
+No derivation of $V$, hence not of the value $10^{-122}$: $V$ (the age/size of
+the universe) is an input.  No derivation of the \emph{sign} (the
+positive-sector/Krein bias is a one-line \Spec{} question at most).  No claim on
+the stochastic \emph{dynamics} (sequential growth is causal-set theory's, not
+ours).  The claim to defend is exactly: the framework \emph{dissolves the
+magnitude divergence structurally} (Sections~2,4), \emph{explains the
+coincidence conditionally} on the Poisson branch (Section~5), and derives
+neither the value nor the sign.
+
+\section{Predictions (conditional on the Poisson branch) \Conj}
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=1pt]
+\item $\langle\Lam\rangle\approx0$, $\Lam_{\mathrm{rms}}\sim V^{-1/2}$; the
+  observed positive value is a realization, the sign undetermined.
+\item Coincidence is \emph{permanent}: $|\rho_\Lam|\sim\rho_{\mathrm{crit}}$ at
+  every epoch, tiny because the universe is old and large.
+\item Deviations are \emph{horizon-scale} (low-frequency drift), not a
+  clustering local fluid.
+\item CPL $(w_0,w_a)$ fits may \emph{mislead}: stochastic $\Lam(t)$ can fake
+  smooth evolution; the object is volume noise, not a rolling scalar.
+\item No exact future de~Sitter equilibrium: $\Lam_{\mathrm{rms}}\sim t^{-2}$
+  keeps tracking; long-term acceleration may be intermittent.
+\end{enumerate}
+
+\noindent\emph{Inherited caveat (out of claimed scope).}  Predictions~1 and~5 lean
+on temporal structure this paper does not supply: a zero-mean $\Lam$ that is
+observed \emph{persistently} positive over $\sim$Hubble times requires long
+correlation times in the stochastic history, which is Zwane--Afshordi--Sorkin
+territory (the dynamics of everpresent $\Lam$), not the finite kinematic core
+formalized here.  We flag rather than assume it; a genuine prediction of the sign's
+persistence would need that dynamical input.
+
+\paragraph{Observational posture \Import{} (verify before citing).}
+Planck 2018 sets rigid $\Lam$CDM as baseline; DESI DR2 BAO$+$CMB report a
+time-evolving equation of state at $\sim3.1\sigma$ ($2.8$--$4.2\sigma$ with
+supernovae) --- \emph{hints}, not a replacement.  The framework inherits a
+falsifiable phenomenology (fluctuating, sign-changing, $1/\sqrt V$-tracking dark
+energy) \emph{conditional on the Poisson branch}.  Live tension:
+Zwane--Afshordi--Sorkin (everpresent models can fit as well as $\Lam$CDM and
+relieve low-$z$ tensions) vs the Aspects-II finding (CMB-favored fluctuation
+magnitudes smaller than typical everpresent models).  A confirmed rigid
+$w=-1$ with tight fluctuation bounds is the kill; a confirmed deviation is
+friendly but not a confirmation.
+
+\section*{Landed-theorem table}
+
+\begin{center}\small
+\begin{tabular}{@{}p{0.46\linewidth}p{0.34\linewidth}c@{}}
+\toprule
+Statement & Lean declaration & Grade\\
+\midrule
+order-0 coefficient invariant under any deformation; higher orders not &
+\lm{LambdaMomentHierarchy.order0\_deformation\_invariant}, \lm{only\_count\_touches\_lambda} & \Kernel\\
+magnitude verdict: only count statistics move $\Lam$ &
+\lm{LambdaMagnitudeCapstone.lambda\_only\_count\_can\_move\_order0} & \Kernel\\
+finite unimodular trade / multiplier / gauge shift &
+\lm{LambdaUnimodular.multiplier\_field\_equation}, \lm{vacuum\_shift\_is\_gauge} & \Kernel\\
+everpresent scaling $\Lam_{\mathrm{rms}}=1/\sqrt V$ &
+\lm{...EverpresentLambdaScaling.everpresentLambda\_rms\_eq\_inv\_sqrt\_volume} & \Kernel\\
+routed through the native edge count &
+\lm{LambdaEdgeCount.lambda\_rms\_eq\_inv\_sqrt\_count}, \lm{edgecount\_extensive} & \Kernel\\
+$\Lam$ as susceptibility; Bernoulli bound $\mathrm{Var}(N)\le\langle N\rangle$ &
+\lm{LambdaSusceptibility.var\_count}, \lm{bernoulli\_bound} & \Kernel\\
+Poisson vs hyperuniform dichotomy on finite witnesses &
+\lm{LambdaCountDichotomy.free\_extensive}, \lm{hard\_subextensive} & \Kernel\\
+exponent law $\lm{lamExp}(\alpha)=\alpha/2-1$; $\lm{lamExp}(1)=-1/2$; fork iff &
+\lm{LambdaExponentFork.lamExp\_closed}, \lm{everpresent\_value}, \lm{fork\_iff} & \Kernel\\
+finite $\Lam$--volume conjugacy \& support uncertainty &
+\lm{LambdaConjugacy.support\_uncertainty}, \lm{delta\_saturates} & \Kernel\\
+$1/\sqrt V\sim10^{-122}$ for the present horizon & Ahmed--Dodelson--Greene--Sorkin & \Import\\
+$\Lam$--$V$ conjugacy (unimodular gravity) & Henneaux--Teitelboim; Unruh & \Import\\
+$\Lam$ $=$ order-0 spectral-action term & Chamseddine--Connes--Marcolli & \Import\\
+which count is conjugate; kill on $\alpha<1$ & — & \Conj\\
+value $10^{-122}$, sign, stochastic dynamics & — & outside\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{References (verify before any manuscript citation) \Import}
+\begin{enumerate}[leftmargin=1.6em,itemsep=0pt]
+\item R.~Sorkin, ``Is the cosmological `constant' a nonlocal quantum residue of
+  discreteness of the causal set type?'' (2007).
+\item M.~Ahmed, S.~Dodelson, P.~Greene, R.~Sorkin, ``Everpresent Lambda,''
+  Phys.\ Rev.\ D 69, 103523 (2004), arXiv:astro-ph/0209274.
+\item T.~Jacobson, ``Thermodynamics of spacetime,'' arXiv:gr-qc/9504004;
+  entanglement-equilibrium version arXiv:1505.04753.
+\item A.~Chamseddine, A.~Connes, M.~Marcolli, ``Gravity and the standard model
+  with neutrino mixing,'' arXiv:hep-th/0610241.
+\item ``Bratteli networks and the spectral action on quivers,'' arXiv:2401.03705.
+\item Unimodular gravity / $\Lam$--$V$ conjugacy: Henneaux--Teitelboim; Unruh.
+\item S.~Torquato, F.~Stillinger, hyperuniformity; Martin--Yalcin,
+  Stillinger--Lovett (Coulomb charge-fluctuation sum rules).
+\item Planck 2018, arXiv:1807.06209; DESI DR2, arXiv:2503.14738;
+  Zwane--Afshordi--Sorkin; ``Aspects-II'' everpresent-fluctuation bound.
+\end{enumerate}
+
+\end{document}

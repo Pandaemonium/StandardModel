@@ -1644,6 +1644,90 @@ Entry template:
   both unchanged with all original proof holes, then canceled. Replacement
   jobs must isolate smaller blockers rather than resubmit the broad targets.
 
+## 2026-07-11 14:24 PDT - Codex: LANDED - live weighted 3+1 bulk convergence; fleet refilled
+
+- Harvested Aristotle `216ec89c`. Its complete proof targeted the stale
+  pre-audit aggregation API, so it was not copied blindly. Ported the rate,
+  domination, and square-summation proof to the live API with no redundant
+  pointwise hypothesis; direct target and source checks PASS.
+- Landed `PhysicsSM/Draft/NullEdge/LiveWeighted3Plus1Walk.lean`, root-imported
+  and aggregate-guarded. `walkErrorEnvelope_tendsto_zero` square-sums the
+  actual quartic `splitStep` versus `exactFlow` matrix error, multiplied by an
+  arbitrary square-summable input profile, over expanding three-dimensional
+  momentum boxes. `walkErrorEnvelope_nonzero_fixture` preserves the finite
+  nontriviality control.
+- Scope lock: dynamic coefficient-space bulk convergence only. The envelope is
+  zero outside the current box; the separate Sobolev-tail theorem controls the
+  omitted exact coefficients. No changing-lattice Fourier isometry,
+  physical-space map, or final Dirac PDE convergence is claimed.
+- Refilled the Codex lane with: exact weak-coordinate raising matrix
+  `ec71b329`; isolated Jbar span-preservation blocker `c0ff465f`; hostile audit
+  of the explicit quotient action `cd069c24`; scalar Laurent-rigidity strategy
+  `37fa366c`; and exact infinitesimal weak-quotient `sl(2,C)` triple
+  `eb38ef9a`. Existing exact exterior-action kernel `ca0e21e7` remains active.
+- Literature pass logged: graph search did not support upgrading the coordinate
+  quotient action to physical `SU(2)_L`, and did not surface a proof of scalar
+  constant-modulus Laurent rigidity. Both claims remain theorem-gated.
+- Aggregate axiom guard PASS after both landings: 8,279 jobs. `git diff
+  --check` PASS. Full pre-commit was attempted; it stopped after auto-trimming
+  an unrelated generated Paper A verification log that Fable had concurrently
+  regenerated, so no all-hooks PASS is claimed for this batch.
+
+## 2026-07-11 14:31 PDT - Codex -> Fable: MANUSCRIPT DELTA REQUEST - D/F/JC upgrades
+
+- Paper D may now say the **actual live quartic matrix-error envelope** converges
+  in squared coefficient norm for every square-summable profile on expanding
+  momentum boxes (`LiveWeighted3Plus1Walk.walkErrorEnvelope_tendsto_zero`). It
+  must still say this is coefficient-space bulk convergence plus a separate
+  tail theorem, not the changing-lattice physical-space Dirac PDE limit.
+- Paper F wording should replace "supplied null-frame completeness" with the
+  narrower charge-flag result: the retained block is exactly an intertwiner of
+  the displayed nilpotent charge on its two-step flag; literal decorated
+  completeness is coordinate read-off. No graph-derived soldering claim.
+- Furey-Baez/Jordan-Clifford prose may now say one explicit infinitesimal
+  `so(10)` generator preserves the derived first annihilator and color axis and
+  acts nontrivially on the weak quotient. Do not call it the pair stabilizer,
+  compact `su(2)`, a group action, or physical `SU(2)_L`; those are the next
+  gates. Exact anchors and wording are in `MANUSCRIPT_CLAIM_DELTA.md`.
+
+## 2026-07-11 14:31 PDT - Codex: LANDED - D operator-to-coefficient reduction
+
+- Extended `LiveWeighted3Plus1Walk.lean` with the actual four-component mode
+  error `liveModeError`. `liveModeError_norm_le_envelope` uses the Mathlib L2
+  operator-norm `mulVec` inequality to close the audit's missing
+  operator-to-coefficient bridge.
+- `liveModeError_tendsto_zero` now proves strong squared coefficient convergence
+  for the actual four-spinor error and every square-summable input profile.
+  Targeted source check PASS; aggregate recheck pending.
+- Fable prose correction: prefer the actual coefficient-error theorem over the
+  earlier envelope-only sentence. Boundary unchanged: this is momentum
+  coefficient space with the omitted exact tail handled separately, not a
+  changing-lattice Fourier isometry or position-space Dirac PDE limit.
+- Aggregate axiom guard PASS after the operator-to-coefficient landing: 8,279
+  jobs. Hostile semantic audit launched as Aristotle `5e7cf467`.
+
+## 2026-07-11 14:45 PDT - Codex: LANDED - full live coefficient convergence including UV tail
+
+- Landed `FullLiveCoefficientConvergence.lean`. The finite approximation is
+  defined on the common countable mode space: inside `modeBox N` its error is
+  the actual live split-versus-exact four-spinor error; outside the box its
+  error is minus the exact evolved coefficient.
+- `exactModeEvolved_norm_le` composes exact-flow unitarity with Mathlib's L2
+  operator norm. `fullModeError_pointwise_tendsto_zero` uses eventual box
+  inclusion and the live reciprocal bulk rate. `fullModeError_tendsto_zero`
+  uses one global square-summable envelope and Tannery to prove convergence of
+  the **complete** countable squared coefficient error for every
+  square-summable profile.
+- `fullModeError_outside_control` is the nontrivial tail control: an omitted
+  mode contributes its genuine negative exact evolved coefficient, not a
+  definitionally zero error.
+- Direct target and landed-source checks PASS. Aggregate guard recheck pending.
+- Fable manuscript correction: Paper D no longer needs to describe bulk and
+  tail as separate uncomposed results. It may state complete countable
+  momentum-coefficient convergence. The remaining gate is exactly the
+  changing-lattice Fourier/sampling/interpolation identification needed to
+  transport this theorem to physical-space Dirac flow; no PDE claim yet.
+
 ## 2026-07-11 14:17 PDT - Fable: SUBMITTED fable-24h-momentum (b94c21da) - strategy3 Q3-a rank 1
 
 - Fresh gated oracle (momentum_oracle.py): FIRST reproduced the
@@ -1668,3 +1752,2780 @@ Entry template:
 - Fleet (fable): boundstate RUNNING (33% @ 3h, V_eq_U2_K2 proved),
   halfcharge2 RUNNING (~4h), census 2cc1968c RUNNING, momentum
   b94c21da submitted. strategy4 due ~90min after strategy3 harvest.
+
+## 2026-07-11 14:19 PDT - Fable: CROSS-PAPER DRIFT AUDIT (strategy3 Q4 item 6) - one finding, fixed
+
+- Checked A's companion-citation sentences against C's and E's actual
+  post-fix statements: abstract line ~87 (involutive-compression
+  mechanism + positional law) matches C exactly incl. the new
+  existence/multiplicity split; abstract pair-kick passage matches E
+  Thm 1 verbatim post-R2 ("closes into an explicit circle group");
+  the three-boundary claim-discipline paragraph remains accurate
+  against C/E tagging conventions (kept verbatim per strategy3).
+- FINDING (fixed): E's own abstract and sec 5 carried the same
+  universality overreach flagged as R3 in A - "equal-modulus conjugate
+  fields" without fixture scope. Both now name the displayed fixtures
+  z=3+4i vs z=5. E double-compile PASS.
+- E structural-companion slot updated with the decided momentum table
+  (oracle-exact tag, formalization in flight b94c21da); E PASS.
+
+## 2026-07-11 14:20 PDT - Fable: INDEPENDENT AUDIT of Codex's WardGradedFrameDecoration - PASS
+
+- Hat: Assassin (standing duty)
+- FALSE SHAPE: none - grading iff (c=d=0), decorated-action completeness
+  (proved both directions, coordinates explicit via grind), and the
+  shear witness (Ward automorphism + grading-preserving +
+  constraint-exact + physically identical + different null-frame
+  action) all match the ledger claim exactly.
+- VACUITY: controlled - exact_shear_changes_nullFrame IS the
+  nonvacuity witness; restrictedCharge_eq pins the flag concretely.
+- HOLLOW TELESCOPING: preempted in-module - the docstring itself
+  concedes coordinate read-off and supplies the structural content
+  separately (charge-flag intertwiner theorem + Jordan-block
+  characterization of the intertwiner algebra). Correctly framed.
+- DOCSTRING-OUTRUNS-KERNEL: fences correct (no graph locality, no
+  soldering, no full-carrier classification claimed).
+- 0 sorries, 0 native_decide, in-file kernel-only axiom pins. PASS.
+
+## 2026-07-11 14:24 PDT - Fable: SUBMITTED fable-24h-grand-strategy4 (91385048) + A freeze-package progress
+
+- strategy4 (review-only, E + FB manuscripts attached): Q1 E referee
+  read incl. the "recruits levels from every sector" licensing check;
+  Q2 FB hostile read incl. JC semantic-boundary sweep + Baez-Schwahn
+  accuracy; Q3 endgame ordering + HONEST_SCORECARD design + the two
+  most likely manufactured-completion traps.
+- A freeze package: appendix verification list gained the three
+  abstract-claimed modules (PlueckerCausalCone, PlueckerLayerCone,
+  PlueckerPairGenerator - all kernel-only so the no-evaluator sentence
+  stays true); verify_null_edge_paper_a.py HEADLINE_MODULES gained
+  PlueckerPairGenerator; A double-compile PASS; manifest script
+  running in background.
+- Fleet (fable): boundstate, halfcharge2, census 2cc1968c, momentum
+  b94c21da, strategy4 91385048 - five active.
+
+## 2026-07-11 14:27 PDT - Fable: A FREEZE PACKAGE manifest run PASS (strategy3 Q4 item 5 closed)
+
+- Scripts/publication/verify_null_edge_paper_a.py: passed = true.
+  59 headline modules built including the newly added
+  PlueckerPairGenerator (check passed); both deterministic numerical
+  fixtures match their asserted SHA-256 (benchmark dd44f123...,
+  dynamics 79cff2a9...). Summary at
+  artifact/paper-a-verification/summary.json.
+- archival_ready = false / source_tree_clean = false as EXPECTED with
+  this run's uncommitted edits; matches the manuscript's stated
+  release requirements (clean commit, source archive, theorem ledger,
+  DOI are user-owned release decisions). No action.
+- Paper A freeze package is now: R1-R5 landed + appendix module list
+  complete + verify script coverage complete + manifest green +
+  double-compile PASS + hygiene PASS. A is FROZEN pending only the
+  named-author release gate (user-owned).
+
+## 2026-07-11 14:34 PDT - Fable: CLAIM - Paper A upgrade wave (user-directed)
+
+- User directive: execute the upgrade ladder. Three pieces this wave:
+  (1) generalized Pluecker rest operator B_w (open problem 4 -> theorem;
+  oracle first, then fable-24h-restop Aristotle job; the conjectured
+  law is the cube closure Z Zdag Z = mu^2 Z for spinor-generated
+  antisymmetric Z, echoing the pair generator's K^3 = |z|^2 K);
+  (2) "exact consequences for published constructions" subsection in A
+  (each row full-text-verified against the lit graph, unverifiable rows
+  dropped not guessed); (3) interaction-derivation conjecture stated in
+  the program claim calculus (C-label, gate, kill condition) in A open
+  problems + E boundaries.
+- CLAIM: Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex
+  (open problems + new subsection), Sources/Null_Edge_Finite_CAR_Dynamics_Draft_2026-07-12.tex
+  (boundaries paragraph) - Fable, this wave.
+
+## 2026-07-11 14:40 PDT - Fable: HARVEST CLAIM - 91385048 (strategy4)
+
+## 2026-07-11 14:47 PDT - Fable: HARVEST 91385048 (strategy4) COMPLETE + all 12 findings applied
+
+- Result: AgentTasks/aristotle-results/strategy4-91385048/. Verdict: both
+  drafts architecturally honest; residual risk = calibration leakage
+  into reader-facing text. ALL fixes applied this cycle:
+- E-1: abstract PENDING token removed; "is exactly characterized" ->
+  "is computed exactly (oracle-exact)... kernel formalization is the
+  paper's pending flagship". E-2: "gauge-invariant" dropped (no
+  invariance theorem); "shows retains" -> "separates..., consistent
+  with". E-3: universal "no Trotter-free factorization exists" ->
+  "do not exponentiate jointly; we define by alternation". E-4: my
+  momentum-paragraph "can, and does, recruit" -> memo's exact
+  replacement (eigenvector participation explicitly unresolved).
+  E-5: abstract commutator claim now tagged oracle-exact; Remark
+  renamed "No joint exponential" + notes ring-level kernel witness in
+  flight (momentum job T4). Sec-4 PENDING slot now maps the harvest
+  to the exact claims it fills (auditable per memo Q1b).
+- FB-1: universal footprint claim split into build-ENFORCED (flagships)
+  vs checked-at-writing (others). FB-2: MulEquiv/group-iso straddle
+  resolved by disclosure (group iso follows; packaged object is the
+  MulEquiv). FB-3: "forces det=1" -> "multiplicativity... pins det=1
+  (G2FixingE111DetOne)". FB-4: Moonshoot typo fixed, footnote dropped,
+  repo name quoted exactly. FB-5: capstone verb "is exactly" ->
+  "matches, once... appended".
+- BS nits: op-notation reconciled (SU(3)^op ~= SU(3) via g -> g^{-1},
+  right-multiplication role); factor roles disambiguated per
+  BAEZ_SCHWAHN_SOURCE_AUDIT.md proof-shape record (first factor =
+  qutrit conjugation cut to S(U(2)xU(1)); second = octonionic
+  automorphisms = thm:su3's avatar; one avatar each).
+- PROPOSED to Codex lane (owns the modules; not executed by me):
+  rename DVTTwoSidedStabilizerMoonshot -> descriptive
+  (e.g. DVTTwoSidedFaithfulQuotientAction) and
+  fureyRealizesOneGenerationPackage -> fureyMatchesOneGenerationPackage
+  per memo FB-4/FB-5; manuscript quotes repo names verbatim either way.
+- Venue guidance banked: E -> Quantum (not PRA-led-by-Lean); FB ->
+  arXiv-first + Annals of Formalized Mathematics / AACA, not J.Phys.A.
+- E + FB double-compile PASS.
+
+## 2026-07-11 14:52 PDT - Codex: JC exact-kernel stall harvested and split
+
+- Hat: Builder / Registrar.
+- Applied the two-hour stall rule to exact exterior-action kernel project
+  `ca0e21e7`; downloaded the 3.3 MB current snapshot before canceling it.
+- The snapshot contains genuine progress: a proved generic exterior-square
+  minor identity and a proved reduction from equality of the complete even
+  exterior action to identity of the degree-two exterior map. It did not close
+  the exact kernel; no incomplete snapshot code was copied into the live tree.
+- Isolated the mathematical hinge as a Mathlib-only theorem: if the `2 x 2`
+  and `3 x 3` blocks have identity Kronecker product, share the product-cover
+  phase powers, and arise from determinant-one factors, both blocks are
+  identity. Added a reciprocal-scalar negative control showing the determinant
+  hypotheses are substantive.
+- Focused target typechecks with two documented handoff holes. Submitted
+  replacement project `9775ac99-270a-4f19-99ed-b9236b715491` as
+  `codex-24h-jc-block-kernel-core`.
+- Claim discipline: this remains the algebraic hinge only. No exact continuous
+  `Z6` kernel claim lands until the focused result is composed with the
+  harvested exterior reduction and the trusted product-cover kernel theorem.
+
+## 2026-07-11 14:58 PDT - Codex: exact weak-coordinate raising matrix LANDED
+
+- Hat: Builder / Registrar.
+- Harvested Aristotle `ec71b329`; returned target was proof-complete and passed
+  a direct live-toolchain compile with no placeholders.
+- Integrated trusted module
+  `PhysicsSM.Spinor.SpinorTenfoldWeakQuotientSO10Coordinates`. The descended
+  complex `so(10)` generator is exactly `(w_3,w_4) |-> (0,-w_3)`, sends the
+  first basis vector to minus the second, and kills the second.
+- Direct source Lean PASS; all three headline declarations have build-enforced
+  kernel-only axiom pins.
+- Scope remains strict: one coordinate infinitesimal nilpotent action, not an
+  `sl(2)` triple, compact real form, group action, pair stabilizer, or physical
+  `SU(2)_L`.
+
+## 2026-07-11 14:59 PDT - Codex: full live coefficient aggregate guard PASS
+
+- `lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard` completed
+  successfully (8,280 jobs), including the new
+  `FullLiveCoefficientConvergence` module and its axiom pins.
+- Paper D may now claim complete countable momentum-coefficient convergence,
+  including the actual live walk in the retained box and the exact-evolution
+  ultraviolet tail outside it. Fixed-torus Fourier transport is being prepared;
+  changing-lattice sampling/interpolation and the `R^3` Dirac PDE limit remain
+  open.
+
+## 2026-07-11 14:53 PDT - Fable: UPGRADE WAVE COMPLETE - consequences block + NN citation + scorecard layer
+
+- Paper A gained "Exact consequences for published constructions"
+  (after tab:comparison): Gupta-Short stay-put row (collects the landed
+  corollary + shared Appendix-F open problem), successive-axis/onsite
+  repair row (all-coins alias theorem eq:genericcorneralias + exact
+  two-step blocking; class-level, MlodinowBrun as architecture
+  exemplar), and a Nielsen-Ninomiya scope row (action/Hamiltonian vs
+  strictly-unitary discrete-time boundaries logically independent).
+  NN bibitem added, both parts INSPIRE-verified with DOIs
+  (10.1016/0550-3213(82)90011-6, 10.1016/0550-3213(81)90524-1).
+  No new claims - every row cross-references landed theorems.
+  A double-compile PASS, no undefined refs.
+- HONEST_SCORECARD.md extended (constitution table kept intact) with
+  the strategy4 Q3b mechanical layer: per-claim decl-level rows for
+  A/C/E/FB pre-filled with honest statuses, 4 validity rules, the two
+  manufactured-completion trap checks, verifier-run header. Morning
+  audit is now mechanical.
+- Hygiene PASS on all touched files.
+- Upgrade-wave summary: (1) restop job 9e2af7b2 in flight
+  (oracle-verified cube law + rank-4 support + control); (2)
+  consequences block landed; (3) selection conjecture pre-registered in
+  A open problem 6 + E boundaries (gate: finite rational linear
+  algebra; kill: dim > 2). Claims released.
+
+## 2026-07-11 15:02 PDT - Codex: Paper D fixed-torus L2 job launched
+
+- Hat: Builder.
+- Mathlib search identified `UnitAddTorus.mFourierBasis` and its exact
+  Parseval/Fourier-series API in `Mathlib.Analysis.Fourier.AddCircleMulti`.
+- Prepared a typechecked target composing the complete live `Z^3`
+  four-spinor coefficient error with the inverse Fourier Hilbert-basis
+  isometry. The target requires exact reindexing/Parseval identities,
+  coordinate-to-spinor domination, scalar L2 convergence, and convergence in
+  the finite product of all four scalar torus-L2 components.
+- Submitted Aristotle project `3f6bb22c-323a-4b3d-9f3a-718a0eeb7355`.
+- Scope lock: fixed unit torus only. This does not close changing-lattice
+  sampling/interpolation on `R^3`, identify a position-space Dirac PDE
+  solution, or establish Lorentz restoration.
+
+## 2026-07-11 15:05 PDT - Codex: grand strategy 4 launched
+
+- Hat: Oracle / Assassin.
+- Submitted review-only Aristotle project
+  `3347f240-3a7e-490d-a514-dcc61c6c3349` with the complete run constitution,
+  Jordan-Clifford program, gate/claim matrices, and both main manuscripts.
+- Required output is an ordered five-item endgame with a theorem dependency
+  diagram, defensible claim after each item, kill condition per item, and the
+  most likely manufactured-completion warning.
+- The review is explicitly asked to decide the highest-value composition after
+  the weak-coordinate action and full coefficient theorem, and to separate a
+  fixed-torus L2 gain from the still-open changing-lattice `R^3` PDE bridge.
+
+## 2026-07-11 15:19 PDT - Codex: product-cover block kernel core LANDED
+
+- Hat: Builder / Registrar.
+- Harvested focused Aristotle `9775ac99`; both the block-identity theorem and
+  reciprocal-scalar negative control were proof-complete and independently
+  compiled.
+- Integrated guarded draft module
+  `PhysicsSM.Draft.JordanCliffordBlockKernelCore`. Targeted build PASS (8,026
+  jobs), with kernel-only axiom pins.
+- The theorem closes the pure matrix hinge: identity of the `2 x 3` Kronecker
+  action plus the shared cover phase powers and determinant-one factors forces
+  both blocks to identity. The explicit `(2 I_2, (1/2) I_3)` control proves
+  identity Kronecker action alone is insufficient.
+- No exact continuous exterior-action `Z6` iff is claimed yet. Remaining
+  composition: exterior degree-two identity -> pointwise block relation ->
+  this theorem -> trusted true product-cover kernel iff.
+
+## 2026-07-11 15:23 PDT - Codex: final exact exterior-kernel composition launched
+
+- Hat: Builder.
+- Prepared a typechecked four-hole target that incorporates the broad stalled
+  job's two completed exterior-square reductions and the newly landed pure
+  block theorem.
+- The only load-bearing mathematical hole is now the mixed-minor statement:
+  identity on exterior degree two must give the entrywise identity Kronecker
+  relation between the weak and color blocks. The remaining image/block-unit
+  lemmas are explicit trusted-API reductions.
+- Submitted Aristotle `63facda3-fcd6-487f-af95-7d0d6a43cf2d`.
+- If it lands, the target proves the exact algebraic action kernel on the true
+  product cover is precisely the six standard elements. It still does not
+  prove topology, smooth quotient structure, Jordan-derived `W,V`, Furey
+  intertwining, chirality, or dynamics.
+
+## 2026-07-11 15:03 PDT - Fable: 3+1 ATTACK MEMO written + charge-design job submitted (84f18f68)
+
+- User request: memo on what is needed to crack strict 3+1. Written to
+  AgentTasks/24h-publication-run-2026-07-12/MEMO_3PLUS1_ATTACK.md.
+  Structure: exact problem statement (single Dirac point, involutory
+  tangent, no other 0/pi crossings); the kernel-checked fence (crossing
+  classification, all-coins alias, stationary-amplitude no-go + GS
+  corollary, body-center kill, temporal blocking, B-lane determinant
+  flow BLIND on the live witness); the crux = one missing object (an
+  integer per-crossing local charge, exactly computable, sum-zero,
+  forced nonzero by the involutory tangent); route A = discrete-time
+  Nielsen-Ninomiya via algebraic residue/Bezout degrees (A1-A4 with
+  kill condition); route B = construction scouting (tetrahedral audit,
+  Pavia automaton audit marked VERIFY, bounded-class exact sweep);
+  milestones M1-M4 incl. the 1+1 kernel warm-up theorem; explicit
+  not-needed list.
+- Submitted fable-24h-charge-design 84f18f68 (strategy/design):
+  A1/A2 residue-form charge + sum-zero + tangent lemma + three-symbol
+  validation protocol with the zero-flow witness separation as the
+  ACCEPTANCE TEST + Lean feasibility verdict + 1+1 warm-up statement +
+  failure-mode analysis. Fleet (fable): 6 active (boundstate,
+  halfcharge2, census, momentum, restop, charge-design).
+- Gate-matrix B row note: this memo + job support Codex's B-lane
+  decisive gate ("land a stronger invariant that separates the
+  zero-flow live witness"); design review is joint on harvest.
+
+## 2026-07-11 15:07 PDT - Fable: HARVEST CLAIM - 2cc1968c (census)
+
+## 2026-07-11 15:14 PDT - Fable: INDEPENDENT AUDIT of Codex's SpinorTenfoldWeakQuotientSO10Coordinates - PASS
+
+- Hat: Assassin (standing duty). 0 sorries / 0 native_decide; in-file
+  kernel-only pins on all three headline decls. FALSE SHAPE: none -
+  descended action (w3,w4) -> (0,-w3) matches the ledger claim exactly,
+  with both basis controls pinning orientation and sign. VACUITY:
+  controlled by the two basis evaluations. HOLLOW: none - the module
+  says plainly it is the coordinate matrix of ONE infinitesimal
+  generator. DOCSTRING: fences exact (not sl(2), not su(2), not group
+  action, not stabilizer, not physical SU(2)_L). PASS.
+
+## 2026-07-11 15:27 PDT - Codex: fixed-torus strong L2 convergence LANDED
+
+- Hat: Builder / Registrar.
+- Closed all five torus-transport target proofs locally and canceled remote
+  job `3f6bb22c` as superseded.
+- New guarded module `PhysicsSM.Draft.NullEdge.TorusL2LiveWalk` reindexes the
+  repository's `Z^3`, packages each scalar error coordinate in `ell^2`, applies
+  Mathlib's multivariate torus Fourier Hilbert-basis isometry, proves exact
+  Parseval norm equality, and obtains strong convergence for all four scalar
+  torus-L2 components and their finite product.
+- Targeted build PASS (8,035 jobs), with kernel-only axiom pins.
+- Scope is deliberately narrower than the final publication gate: fixed unit
+  torus, not changing `delta Z^3`; no Shannon interpolation to `R^3`, no
+  identification with a position-space Dirac PDE solution, and no Lorentz
+  restoration claim.
+
+## 2026-07-11 15:27 PDT - Fable: ROUTE C added to 3+1 memo (user proposal: embrace doubling) + eigenvector oracle
+
+- User mid-run proposal: embrace fermion doubling; interpret doublers
+  as physical; chirality flips via Higgs-like interaction; Feynman
+  path-sum over all trajectories. Mapped onto the known landscape
+  (Wilson mechanism as path sum; minimally-doubled two-species-as-
+  flavors; graphene valleys; symmetric-mass-generation as the open
+  chiral-gauge frontier; NN's sting = wrong-chirality partners, so
+  naive embrace vectorizes the weak force) and onto OUR objects (the
+  checkerboard history sum with z / conj z corner flips IS the
+  proposed structure with the derived Pluecker field as frozen Higgs).
+- FINITE LAB RESULT (oracle-exact, from today's gated momentum oracle):
+  free lift has TEN exact +-1 modes (six K=0, four K=2 = pi-momentum =
+  doubler sector); composing with the derived local pair kick leaves
+  SIX. Multiset trade matches the K=2 quartet exactly. NEW eigenvector
+  oracle (embrace_oracle_out.txt): surviving kernels dims 4/2 as
+  required but momentum-HYBRIDIZED (one -1 survivor purely K=2) -
+  mechanism is reshuffle-and-gap, NOT sector deletion; the naive
+  deletion sentence is banned. Route C (C1-C4) added to
+  MEMO_3PLUS1_ATTACK.md with the SMG-obstruction kill condition (C3:
+  chirality bookkeeping, the honest heart of the problem).
+- Route C does not touch Route A's free-walk no-go program; the two are
+  complementary and share the E-lane exact interacting machinery.
+
+## 2026-07-11 15:29 PDT - Codex: R3 scaling gate sharpened
+
+- Hat: Assassin / Oracle.
+- Added `D_R3_SHANNON_BRIDGE_PROGRAM.md` and made it binding in `RUN_PLAN.md`
+  and the Codex goal prompt.
+- The fixed `Z^3` coefficient space is naturally dual to a fixed torus. An
+  `R^3` theorem additionally owes a momentum spacing `h_N -> 0`, physical-box
+  exhaustion `N h_N -> infinity`, the exact `h_N^(-3/2)` cell normalization,
+  and evaluation of the live symbol at scaled momentum `h_N k`.
+- Pre-registered kill conditions: fixed `h_N` remains periodic; bounded
+  `N h_N` does not exhaust `R^3`; wrong normalization breaks isometry; using
+  the unscaled live theorem proves convergence for a different evolution.
+- Literature comparison: Arrighi--Forets--Nesme (`arXiv:1307.3524`) treats
+  convergence of the evolution; Maeda--Suzuki (`arXiv:1902.02017`) explicitly
+  uses Shannon interpolation from `delta Z` to `R`. The next formal rung is an
+  exact finite-support cell isometry, not another abstract Fourier slogan.
+- Also fixed one concurrent aggregate-guard doc-comment typo
+  (`zero-/four-wall` accidentally contained a comment terminator) without
+  changing the census declaration or proof.
+
+## 2026-07-11 15:32 PDT - Fable: CENSUS LANDED COMPLETE - guard green at 8,283 jobs
+
+- Full landing chain done for CensusMultiplicity (2cc1968c): module
+  integrated with provenance header (statements verified identical by
+  diff; imports already repo-form), direct lake check PASS, four axiom
+  pins (+2 native footprint, disclosed), PhysicsSMDraft root import, C
+  paper synced (abstract multiplicities now "machine-checked by
+  explicit rank and kernel certificates"; body cites the module;
+  appendix row added; double-compile PASS), gate matrix + scorecard
+  C-CENSUS rows updated. Paper C now has NO remaining run-record
+  caveat on the multiplicity law; only the -+2 second-frame windings
+  stay quarantined (separate object).
+- GUARD BUILD FAILURE ROOT CAUSE (2 failed builds): my guard-file
+  docstring contained the prose range "zero-/four-wall" - the
+  substring "-/" TERMINATED the /-! comment mid-line, making the rest
+  parse as code ("unexpected identifier" with the column pointing at
+  the char after the accidental close; the line number drifted between
+  builds because Codex concurrently inserted pin blocks above). The
+  phrase was reworded to "zero-wall/four-wall" (fix appeared during
+  Codex's concurrent edit pass - thanks; not separately ledgered by
+  them). Lesson banked to persistent memory: never write "-/" or "/-"
+  inside Lean comments; spell ranges out.
+- Note for hygiene reviewers: the guard file briefly failed builds
+  between my 16:40 pin insert and this fix; no other file was
+  affected; final state green at 8,283 jobs incl. Codex's four new
+  modules (BlockKernelCore, LiveWeighted3Plus1Walk,
+  FullLiveCoefficientConvergence, TorusL2LiveWalk).
+
+## 2026-07-11 15:32 PDT - Fable: SUBMITTED fable-24h-grand-strategy5 (a67f12f7)
+
+- Route C hostile review against Golterman-Shamir full texts (both
+  papers attached from the graph): which of their SMG/propagator-zero
+  constraints translate to our finite unitary discrete-time setting;
+  the precise finite observable for C3's kill condition; C1-C4 plan
+  audit incl. whether C4 is well-posed; whether Route A's charge
+  should be chirality-resolved from the start; best use of remaining
+  strategy budget (~14h to audit phase).
+- Fleet (fable): boundstate 42%@4h18, halfcharge2 ~5.6h, momentum,
+  restop, charge-design, strategy5 - six active.
+
+## 2026-07-11 15:40 PDT - Codex: exact algebraic exterior-action Z6 kernel LANDED
+
+- Hat: Builder / Assassin.
+- Landed `PhysicsSM.Draft.JordanCliffordExactExteriorKernel`. The generic
+  exterior-square minor identity is evaluated on one weak and one color basis
+  vector; block diagonality kills the cross terms, and the landed
+  determinant-constrained block core forces both image blocks to identity.
+- Headline theorem:
+  `productEvenExteriorAction_eq_one_iff`: on the true algebraic
+  `U(1) x SU(2) x SU(3)` product-cover domain, the complete sixteen-state even
+  exterior action is identity iff the element is one of the six standard
+  covering-kernel elements. `outside_standard_kernel_acts_nontrivially` is the
+  negative-family control.
+- Verification: direct Lean PASS; targeted build PASS (8,061 jobs); no proof
+  holes, compiled-evaluator proof, or new assumptions; module-local axiom pins
+  show only `propext`, `Classical.choice`, and `Quot.sound`. Aggregate guard is
+  rebuilding with the new pins.
+- Scope lock: exact algebraic action kernel for the SUPPLIED `C^2 + C^3`
+  carrier. Not a topological/smooth quotient theorem, not a Jordan derivation
+  of the weak/color split, and not a Furey whole-module intertwiner.
+- Aristotle `63facda3` remains running; its return will be treated as an
+  independent proof/semantic review rather than silently replacing the local
+  checked proof.
+
+## 2026-07-11 15:44 PDT - Codex: D-R3-1 exact cell-isometry job launched
+
+- Hat: Builder / Assassin.
+- Prepared a Mathlib-only, directly typechecking target for the first genuine
+  changing-spacing `R^3` rung: half-open `h`-cells indexed by `Z^3`, exact cell
+  volume and disjointness, `h^(-3/2)` one-cell normalization, the unnormalized
+  `h^3` failure control, and a finite-support coefficient-to-Lebesgue-integral
+  isometry with a nonzero witness.
+- Submitted focused Aristotle project `9e72caad-393c-4f5d-8f46-d007d50f0ea9`.
+  The target deliberately contains no walk dynamics, Fourier transform, PDE
+  generator, or continuum-limit claim.
+- Canceled superseded proof-search task `5a6142af` in project `63facda3` after
+  the exact exterior kernel landed locally; a separate hostile semantic audit
+  task `12c040ee` is queued with the verbatim landed source.
+
+## 2026-07-11 16:00 PDT - Codex: D-R3-1 LANDED; semantic cell bug caught
+
+- Landed `PhysicsSM.Draft.NullEdge.ChangingMomentumCellIsometry` with all seven
+  target rungs proof-complete: coordinatewise half-open cells, measurability,
+  volume `h^3`, exact disjointness, normalized and unnormalized one-cell
+  integrals, finite-support isometry, and a nonzero witness.
+- The first typechecking target used `Set.Ico` directly on the function space.
+  Lean exposed that the product partial order's strict relation is not the
+  intended coordinatewise half-open cube. The landed definition is explicitly
+  `Set.pi univ (fun i => Set.Ico lower_i upper_i)`; all proofs were rerun after
+  that semantic correction.
+- Canceled stale Aristotle task `42ddd20a` rather than accept a proof of the
+  wrong set. Direct Lean PASS with no handoff markers; module-local axiom pins
+  show only `propext`, `Classical.choice`, and `Quot.sound`. Targeted and
+  aggregate builds are next.
+- Scope: this closes the changing-spacing coefficient-to-momentum-space
+  isometry only. It does not prove the scaled live multiplier estimate, box
+  exhaustion, Fourier/PDE identification, or Dirac evolution convergence.
+
+## 2026-07-11 15:46 PDT - Codex: aggregate guard confirms exact Z6 landing
+
+- `lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard` PASS at
+  8,284 jobs with the new exact exterior-kernel pins included.
+- Claim delta promoted from aggregate-pending to landed. The independent
+  semantic audit remains in flight and can still require prose-scope edits;
+  it cannot silently broaden the theorem.
+
+## 2026-07-11 15:53 PDT - Fable: HARVEST CLAIMS - 9e2af7b2 (restop) + 84f18f68 (charge-design) + a67f12f7 (strategy5)
+
+## 2026-07-11 16:00 PDT - Fable: TRIPLE HARVEST LANDED - restop + charge-design + strategy5, and C3 EXECUTED
+
+- RESTOP (9e2af7b2) LANDED: all ten theorems, zero placeholders, ZERO
+  native_decide - kernel-only, statement-diff identical (2 declared
+  helpers added). Integrated PlueckerRestOperatorGeneral + provenance;
+  root import; 5 guard pins; guard GREEN at 8,285 jobs. Paper A: open
+  problem 4 -> resolved theorem (cube closure B^3 = mu^2 B, rank-4
+  support, n=2 recovery, massless boundary, non-decomposable control),
+  abstract gained the one-sentence cube-law echo, appendix + verify
+  script rows added; A double-compile PASS. The rest sector and the
+  interaction now share one cubic algebra - kernel-checked.
+- CHARGE-DESIGN (84f18f68) harvested: serious A1/A2 design - Schur/
+  Feshbach reduction to the 2x2 block (Matrix.det_fromBlocks11 exists
+  in Mathlib), d-vector d_a = -(s/2) Im tr(sigma_a S), charge = sign
+  det v (nondegenerate; pure finite linear algebra, feasible NOW) with
+  Eisenbud-Levine-Khimshiashvili signature fallback (hardest build,
+  defer); sum-zero via toric global residues (hardest general step)
+  with a per-class resultant-elimination version feasible sooner;
+  4a/4b/4c validation recipes incl. WHY Gupta-Short evade (det v = 0,
+  non-involutory => charge not forced) and WHY the design separates
+  the zero-flow witness (Q lives in the traceless PSU(2) part, m in
+  the U(1) part). 1+1 warm-up stated exactly WITH A CORRECTION to my
+  memo: per-gap sums equal m; the vanishing invariant is the 0-vs-pi
+  DIFFERENCE (eigenphase-count proof, degree-free, Lean-plausible).
+  Failure modes F1-F4 named.
+- STRATEGY5 (a67f12f7) harvested: Route C verdicts - our finite result
+  does not yet touch either Golterman-Shamir mechanism (needs
+  propagator/continuum notions); the finite kill observable = the
+  chirality-graded spectral content of the survivors; C2 demoted to
+  Wilson-baseline (explicit breaking); C3 promoted; C4 as stated not
+  well-posed (replacement given); Route A charge should be
+  CHIRALITY-RESOLVED from the start; Q4 = run C3 now on matrices in
+  hand + N=6 finite-size control.
+- C3 EXECUTED (oracle-exact, c3_oracle2_out.txt): chiral grading =
+  sigma_y in the exact symmetric frame (half-coin conjugation,
+  3/sqrt10, 1/sqrt10); pair lift satisfies the free chiral relation.
+  FINDINGS: the derived kick is chirality-EVEN (G K G = K), the
+  composed step BREAKS the chiral relation, and the protected-sector
+  net chirality goes -4 (free: chi_+ = -4, chi_- = 0) to 0 (composed:
+  -2 and +2) - the interaction VECTORIZED the protected sector. The
+  C3 kill condition fired: the derived kick is NOT symmetric mass
+  generation as it stands (the exact finite incarnation of the
+  Golterman-Shamir worry). The algebra names the repair: palindromic
+  placement + chirality-ODD kick (G K G = K^dag) is the unique way to
+  stay in the chiral class; whether a Gamma-odd kick is derivable from
+  the same Pluecker datum is the sharply-posed C4 question. Memo
+  updated. Sharp negative result - first-class per run rules.
+
+## 2026-07-11 16:03 PDT - Fable: SUBMITTED fable-24h-oddkick (634a64e1); oneD deferred pending oracle
+
+- oddkick: the C4 dichotomy as five kernel targets (same-site no-go;
+  explicit two-parameter odd family on the (0,2)<->(1,3) block;
+  signed-permutation census). All facts oracle-decided first
+  (c4_oracle_out.txt, c4_orbit_out.txt).
+- The 1+1 warm-up job is deliberately NOT submitted yet: a first look
+  at the two-band case shows structure the charge memo's general
+  statement hides (for det U = 1 identically, +-1 crossings are forced
+  doubly degenerate - no simple crossings exist), so the honest seed
+  needs its own oracle round. Queued next.
+- Fleet (fable): boundstate (~5h), halfcharge2 (~6.5h; minimal-cut
+  decision ~21:45), momentum, oddkick - four active.
+
+## 2026-07-11 16:18 PDT - Codex: corrected the strict 3+1 charge strategy and launched A0/A5
+
+- Incorporated the new 3+1 analysis into `MEMO_3PLUS1_ATTACK.md`, RUN_PLAN,
+  both goal prompts, the gate matrix, and claim delta. Binding correction: a
+  complete mass-admitting four-component Dirac point is class-A neutral; its
+  globally split Weyl sectors have opposite charges. The prior unsplit
+  nonzero-charge target is false shape and canceled.
+- Route A is now A0 full-Dirac neutrality, A1 exact 2x2 Jacobian sector charge,
+  A2 global-chirality gate, A3 source-audited strict-Laurent strong-triviality,
+  A4 conditional charge cancellation, and A5 higher-order chirality mixing.
+  Route B now searches exact Laurent-unitary commutator regulators with zero
+  constant/linear odd jets and exact zero/pi root-exclusion certificates.
+- Focused typechecking proof packages submitted: full-Dirac neutrality
+  `86d33c00` / task `49f47050`, and chirality-mixing coefficient algebra
+  `a096d3ca` / task `49d6bec0`. Both include nonvacuity fixtures and negative
+  controls; neither imports the unverified global K-theory claim.
+- D-R3-1 cell isometry and D-R3-2 box exhaustion verification records repaired:
+  targeted builds PASS (2,554 / 8,026 jobs), aggregate guard PASS (8,286 jobs).
+
+## 2026-07-11 16:25 PDT - Codex: strict-Laurent primary-source audit
+
+- Read arXiv:1608.04696v3 directly supports the proposed algebraic spine:
+  Bass-Heller-Swan gives `K1(C[X_1^+-,...,X_d^+-]) = C^* + d Z`, and the
+  change-of-rings discussion excludes nonzero `SK1`/strong components for the
+  polynomially generated automorphism class. Corrected a notation hazard:
+  Read's `R_1` is complex; Read's `R_3` is quaternionic.
+- Bessho-Sato arXiv:2006.04204 supports bulk/local Floquet charge bookkeeping
+  but carries a dimension-dependent pi-gap sign. Finite-rank stabilization,
+  exact sector convention, and the final composition remain VERIFY. No new
+  Lean assumption was introduced. Audit memo:
+  `B_STRICT_LAURENT_SOURCE_AUDIT_2026-07-11.md`.
+
+## 2026-07-11 16:42 PDT - Codex: first corrected A1 rung LANDED
+
+- Added guarded `PhysicsSM/Draft/NullEdge/SU2LocalCrossingCharge.lean`.
+  `localCrossingCharge` is the sign of the exact real `3 x 3` crossing
+  Jacobian. Opposite unit Weyl orientations have charges `+1` and `-1`, their
+  supplied Dirac-sector sum is exactly zero, and the singular control has
+  charge zero. This is a supplied-jet theorem, not a global degree theorem.
+- Verification: direct Lean PASS; targeted build PASS (8,026 jobs); aggregate
+  `OvernightTheoryAxiomGuard` PASS (8,288 jobs). Pinned footprint is exactly
+  `[propext, Classical.choice, Quot.sound]`; no proof holes or compiled-evaluator
+  trust in the landed module.
+
+## 2026-07-11 16:50 PDT - Codex: corrected A0 and A5 finite cores LANDED
+
+- Harvested Aristotle `86d33c00` despite its misleading
+  COMPLETE_WITH_ERRORS project label: returned source is proof-complete and
+  statement-preserving. Landed `DiracLocalChargeNeutrality`: the mass blend
+  remains an involution around the coefficient circle, with explicit distinct
+  anticommuting `4 x 4` matrices and a `3/5`-`4/5` missing-anticommutation kill.
+- Harvested Aristotle `a096d3ca` COMPLETE. Landed
+  `ChiralityMixingNecessity`: exact even/odd reconstruction, commutation laws,
+  zero odd constant and first-jet coefficients, and an explicit nonzero odd
+  fixture. This is coefficient algebra, not yet an analytic `O(k^2)` theorem or
+  the global single-cone implication.
+- Verification: both direct Lean PASS; joint targeted build PASS (8,027 jobs);
+  aggregate axiom guard PASS (8,290 jobs), standard footprint only. No proof
+  holes or compiled-evaluator trust in either landed module.
+
+## 2026-07-11 16:56 PDT - Codex: submitted exact commutator-regulator primitive
+
+- Submitted focused Aristotle `1b5d1015` / task `d231e2c6` after direct
+  typecheck. Targets: exact unitary four-factor commutator loop, identity when
+  either momentum leg vanishes, the perfectly anticommuting quarter-turn
+  collapse to central `-I`, and an explicit noncentral mixed fixture.
+- Scope is finite complex matrix algebra only. Laurent realization and the
+  `Xi`-odd generator choice remain separate composition gates.
+
+## 2026-07-11 17:03 PDT - Codex: submitted live cubic Weyl-sector composition
+
+- Exact oracle check identified the live Clifford chirality
+  `Xi=-i alpha1 alpha2 alpha3` with the existing off-diagonal `gamma5`. In the
+  explicit `Xi=+1` basis the live generators restrict to
+  `(sigma_x,sigma_y,sigma_z)`; in the `Xi=-1` basis they restrict to the three
+  negatives, giving Jacobians `I_3` and `-I_3` and opposite charges.
+- Submitted focused, dependency-complete Aristotle `343be2d9` / task
+  `735a52dc` to kernel-check that composition against the actual landed
+  `Clifford3Plus1WalkSymbol` and `SU2LocalCrossingCharge` modules. No global
+  Bloch chirality or zone charge sum is claimed.
+
+## 2026-07-11 17:08 PDT - Codex: exact exterior-kernel hostile audit harvested
+
+- Aristotle follow-up `3347f240` / task `12c040ee` verdict: PASS WITH REQUIRED
+  SCOPE EDITS. It independently verified nonvacuity, the genuine mixed
+  weak/color minor extraction, load-bearing determinant/common-phase gates,
+  exact trusted block-unit target, and standard axiom footprint.
+- The audit's path/build warning described its stale uploaded snapshot. The
+  live modules are already under `PhysicsSM/Draft`, imported from
+  `PhysicsSMDraft`, and pinned in the aggregate guard, which passed at 8,290
+  jobs. Applied the remaining valid edit: removed the unused `Fintype` binder
+  from `exteriorSquare_minor_relation`.
+- Manuscript ceiling retained: discrete algebraic action on the supplied
+  `C^2+C^3` carrier is trivial exactly on six kernel elements. No smooth Lie
+  quotient, Jordan-derived split, Furey intertwiner, physical generation,
+  chirality, or dynamics claim.
+- Cosmetic binder repair verified in its correct form: `[Finite ι]` with local
+  `Fintype.ofFinite`; direct Lean PASS, targeted build PASS (8,061 jobs), and
+  refreshed aggregate guard PASS (8,290 jobs).
+
+## 2026-07-11 16:30 PDT - Fable: AUDIT of SU2LocalCrossingCharge PASS + Route A correction ACKNOWLEDGED
+
+- Hat: Assassin. SU2LocalCrossingCharge: 0 sorries / 0 native_decide;
+  sign API + three fixtures (unit orientations +-1, supplied
+  Dirac-sector sum zero, singular control 0). FALSE SHAPE none - the
+  docstring says precisely "supplied-jet theorem, not a global degree
+  theorem" and explicitly declines the four-component charge. VACUITY
+  controlled. Fences correct. PASS.
+- Codex's binding Route A correction ACCEPTED as mathematically right:
+  the full mass-admitting Dirac point is class-A neutral (the explicit
+  mass homotopy cos(pi s/2) F0 + sin(pi s/2) beta gaps it), so my
+  memo's A3 as originally written and the charge-design memo's A3
+  full-Dirac reading were FALSE SHAPE - canceled. RECONCILIATION for
+  the harvested charge-design memo (84f18f68): its Schur d=2
+  construction IS the Weyl-sector charge and survives intact; its
+  validation 4a must be read chirality-resolved (the cubic walk's
+  crossings must first be checked for dim ker = 2 vs 4; a 4-fold
+  Dirac-degenerate crossing falls under A0 neutrality, not A1); its
+  "tangent forces charge" lemma holds for the 2x2 Weyl tangent only.
+  CONVERGENT EVIDENCE note: strategy5 (from the SMG side) and my C3
+  oracle (chi is chirality-graded) demanded the same
+  chirality-resolved refactor - three independent routes agree.
+- A2's global-chirality gate ([U(k), Xi] = 0 zone-wide) is now the
+  load-bearing hypothesis to check per architecture; the C3 finding
+  that the composed interacting step EXITS the chiral class is the
+  interacting-side face of the same coin.
+
+## 2026-07-11 16:33 PDT - Fable: SUBMITTED fable-24h-oneD (390053ef) after two-band oracle
+
+- Oracle first (this time it reshaped the theorem): in the two-band
+  class, det U = 1 makes EVERY +-1 crossing doubly degenerate (lam' =
+  det/lam - one line), so the charge memo's "single simple crossing"
+  question is empty at zero flow; the massive 3-4-5 walk is fully
+  gapped (crossing roots {1/2,2},{-2,-1/2} off-circle, exact); and the
+  flow-one walk diag(z,1)*coin exhibits the sharpest two-band doubling:
+  its unique 0-crossing at z = -1 carries an exact pi-crossing partner
+  AT THE SAME MOMENTUM. Submitted as seven kernel-only targets
+  (degeneracy pair, gap fixture pair, double-crossing pair, and the
+  crossing-sets-coincide theorem). The general signed-count = m theorem
+  is explicitly out of scope (no churn clause).
+- Conceptual chain now aligned across three fronts: full-Dirac
+  neutrality (Codex A0) = two-band zero-flow degeneracy (oneD T1) =
+  chirality-resolved charge as the only meaningful object (strategy5 +
+  C3) - the run's 3+1 story is converging on one picture.
+- Fleet (fable): boundstate, halfcharge2, momentum, oddkick, oneD -
+  five active.
+
+## 2026-07-11 16:47 PDT - Codex: two-hour stall harvest completed
+
+- Canceled four jobs after the required two-hour ceiling and retained their
+  snapshots: D live-coefficient hostile audit `5e7cf467` / `8543250d`, B
+  Laurent strategy `37fa366c` / `1b8c8903`, JC weak-action hostile audit
+  `cd069c24` / `09043aee`, and JC2 span preservation `c0ff465f` / `aaf09984`.
+- The B and JC2 proof targets were byte-for-byte unchanged. The two review
+  jobs produced no report. Therefore there is no partial theorem or audit
+  verdict to claim; only the timeout and exact snapshot provenance are logged.
+- Next-round discipline: split the scalar Laurent lemma from stable K-theory,
+  split the concrete JC basis cases, and keep the live 3+1 commutator-regulator
+  and cubic Weyl-sector jobs as the immediate harvest priorities.
+
+## 2026-07-11 16:55 PDT - Codex: higher-order chirality escape submitted
+
+- Submitted focused Mathlib-only project `f6609f77` / task `189ec6f8` for an
+  explicit quadratic chirality-odd regulator. The target typechecks with nine
+  isolated proof holes and asks for exact zero constant term, zero complete
+  Frechet first derivative, a nonzero finite-momentum fixture, and exact
+  chirality breaking.
+- Scope fence is binding: this is a coefficient-level escape resource, not yet
+  a unitary walk, strict Laurent construction, root-exclusion certificate, or
+  no-doubling theorem.
+
+## 2026-07-11 16:58 PDT - Codex: corrected 3+1 charge chain under hostile audit
+
+- Submitted review project `e26a3647` / task `b3002737` with the verbatim
+  `SU2LocalCrossingCharge`, `DiracLocalChargeNeutrality`, and
+  `ChiralityMixingNecessity` sources plus the revised attack memo, K-theory
+  source audit, and manuscript.
+- Required output is a severity-ranked semantic audit that keeps supplied
+  Jacobian sign, Weyl local charge, full-Dirac mass homotopy, global chirality,
+  and imported stable topology as five distinct logical layers.
+
+## 2026-07-11 17:02 PDT - Codex: grand strategy 5 submitted
+
+- Submitted whole-project strategy `9e1ef235` / task `fdf1bf8c` on the corrected
+  3+1 architecture. It is instructed not to build the repository and instead
+  to specify the smallest exact local-unitary higher-order chirality-mixing
+  ansatz, its global root-exclusion certificate, and the missing Read-to-Floquet
+  theorem composition.
+- This restores the required 90-minute grand-strategy cadence. The false
+  full-Dirac-charge premise is explicitly prohibited in the prompt.
+
+## 2026-07-11 17:08 PDT - Codex: live cubic Weyl-sector composition LANDED
+
+- Harvested Aristotle `343be2d9` / `735a52dc`: all 13 statements preserved,
+  all proof holes closed, dependencies unchanged. Promoted as
+  `CubicWeylSectorCharge.lean`.
+- Kernel result: the actual live `Xi=-i alpha1 alpha2 alpha3` is an involution,
+  commutes with the three spatial Clifford generators, anticommutes with
+  `beta`, and two explicit orthogonal Weyl bases restrict the generators to
+  `(sigma1,sigma2,sigma3)` and its negative. The supplied-Jacobian charge API
+  therefore gives exact local charges `+1,-1` and zero sum.
+- Verification: direct Lean PASS; targeted build PASS (8,028 jobs); aggregate
+  axiom guard PASS (8,291 jobs), standard footprint only. Scope remains local:
+  no global Bloch chirality, isolated-crossing census, or zone charge sum.
+
+## 2026-07-11 17:15 PDT - Codex: full live-Bloch chirality boundary submitted
+
+- Submitted `d9517f33` / `dc9dc4fa` after direct target typecheck and semantic
+  context-pack refresh. The exact target is
+  `[Xi, splitStep(qx,qy,qz,theta)] = 0 iff sin(theta)=0` for the actual ordered
+  live Bloch step, with a quarter-turn noncommuting witness.
+- This is the global-symmetry gate required before any sectorwise charge sum.
+  It does not itself prove doubling or a zone invariant.
+- Spark literature pass found Bessho-Sato Theorems 2 and 3' as the closest
+  local-charge/Floquet bookkeeping loci and confirmed that the strict-Laurent
+  obstruction remains a separate Read input. No single finite-rank composition
+  theorem was found; that gap stays explicit.
+
+## 2026-07-11 17:28 PDT - Codex: quadratic escape and finite A4 hinge
+
+- Harvested Aristotle `f6609f77` / `189ec6f8`: all nine statements preserved.
+  `QuadraticChiralityRegulator` proves exact zero value and zero complete real
+  Frechet derivative at the origin, but a nonzero chirality-odd unit-axis
+  fixture. Direct Lean PASS; targeted build PASS (8,026 jobs).
+- Landed local `ChargeBalanceForcesPartner`: zero total integer charge plus one
+  nonzero crossing forces a distinct nonzero partner; the supplied-Jacobian
+  version yields a distinct nondegenerate crossing. Exact two-sector witness
+  and singleton negative control included. Direct Lean PASS; targeted build
+  PASS (8,027 jobs before warning cleanup; direct warning-free recheck PASS).
+- Hostile audit `e26a3647` found no critical kernel flaw. Its valid wording
+  correction is applied: the mass blend is a kernel-checked pointwise gapped
+  algebraic family; the null-homotopy/class-A consequence remains the standard
+  topological reading. Audit gaps for live Jacobian extraction and analytic A5
+  were superseded after its snapshot by the two new landed modules.
+- Joint aggregate guard for `QuadraticChiralityRegulator` and
+  `ChargeBalanceForcesPartner` PASS (8,295 jobs). The singleton negative control
+  uses the smaller `[propext, Quot.sound]` footprint; the pin was corrected and
+  the guard rerun successfully.
+
+## 2026-07-11 17:42 PDT - Codex: exact commutator regulator, false-shape repaired
+
+- Harvested Aristotle `1b5d1015` / `d231e2c6` (`COMPLETE_WITH_ERRORS`). It
+  correctly rejected the original quarter-turn theorem: `A^2=1` plus
+  anticommutation gives `AGAG=-G^2`, not `-I`; the omitted hypothesis was
+  `G^2=1`.
+- Promoted the intended two-involution theorem and added a kernel-checked
+  explicit counterexample to the false omitted-hypothesis version. The module
+  also proves exact regulator unitarity, identity on either coordinate axis,
+  central `-I` collapse for anticommuting involutions, and a noncentral rational
+  mixed fixture.
+- Verification: direct Lean PASS; targeted build PASS (8,026 jobs); Lean LSP
+  source/axiom audit PASS on four headline declarations, standard footprint
+  only. Scope: finite matrix word only, no Laurent momentum realization or
+  spectral root exclusion yet.
+- Aggregate axiom guard for the corrected commutator module PASS (8,296 jobs),
+  standard footprint only.
+
+## 2026-07-11 17:50 PDT - Codex: commutator chirality coefficient submitted
+
+- Submitted `88d35131` / `125bcd8d` after direct target typecheck. It composes
+  the exact commutator primitive with the live chirality algebra: an even
+  generator and odd generator should produce a chirality-odd Lie coefficient,
+  with live `alpha1/beta` nonzero fixture and commuting-pair zero control.
+- Scope fence: algebraic mixed-order coefficient only; the analytic Taylor
+  expansion of the exact unitary commutator remains a separate theorem.
+
+## 2026-07-11 17:52 PDT - Codex: corrected commutator under hostile audit
+
+- Submitted audit `99861ff2` / `3cb95259` on multiplication order, exact
+  unitarity, the repaired `G^2=1` hypothesis, the explicit false-statement
+  counterexample, and the noncentral rational fixture.
+- The reviewer is explicitly forbidden from promoting the finite matrix word
+  to a Laurent-local walk or a spectral regulator.
+
+## 2026-07-11 17:56 PDT - Codex: exact commutator mixed derivative submitted
+
+- Submitted analytic target `2ed756dc` / `254c6643` after direct typecheck.
+  It asks for the complete zero first derivative and exact mixed second
+  derivative `G*A-A*G` of the trigonometric unitary group commutator, plus live
+  nonzero and repeated-generator zero controls.
+- This is the composition that could turn the coefficient-level quadratic
+  escape into an exact-unitary higher-order mechanism. Laurent realization and
+  global root exclusion remain later gates.
+
+## 2026-07-11 18:07 PDT - Codex: full live-Bloch chirality boundary LANDED
+
+- Harvested Aristotle `d9517f33` / `dc9dc4fa`: every statement preserved. The
+  actual ordered step satisfies `[Xi,U(q,theta)]=0 iff sin(theta)=0`; the proof
+  derives an exact commutator formula and proves its spatial/chirality core has
+  determinant one. Massless is globally split; every genuine mass angle mixes
+  sectors. Quarter-turn mass is the exact noncommuting control.
+- Promoted `FullBlochGlobalChirality.lean`. Direct Lean PASS; targeted build
+  PASS (8,031 jobs); standard axiom footprint. Scope: exact global symmetry
+  boundary only, not charge balance or alias freedom.
+
+## 2026-07-11 16:58 PDT - Fable: HARVEST CLAIMS - 390053ef (oneD) + 634a64e1 (oddkick)
+
+## 2026-07-11 17:04 PDT - Fable: DOUBLE LANDING COMPLETE - oneD + oddkick, guard green 8,293
+
+- TwoBandCrossingDoubling (390053ef) LANDED: all seven theorems,
+  kernel-only, one notation normalization (Complex.abs -> norm, same
+  function). The 1+1 route-A warm-up trio: zero-flow degeneracy (the
+  1D shadow of full-Dirac neutrality), the massive 3-4-5 fixture
+  gapped on the whole circle, and the flow-one pseudo-doubler theorem
+  (0-crossing set = pi-crossing set = {-1}).
+- GammaOddKickDichotomy (634a64e1) LANDED: all five theorems,
+  statements identical, kernel-only VIA A NEW REUSABLE TECHNIQUE - a
+  computable GaussianInt twin + toComplex ring-hom bridge discharges
+  28x28 complex identities by plain kernel decide (banked to
+  persistent memory; retrofit candidate for the native_decide E-lane
+  fixtures). The C4 dichotomy is now kernel-checked: no chirality-odd
+  generator exists on same-site pair blocks (the derived kick's
+  support), while each component-mixing two-cycle block carries
+  exactly the displayed two-parameter odd family.
+- Both: provenance headers, root imports, 6 guard pins; aggregate
+  guard PASS 8,293 jobs. Memo Route A (M3 warm-up) and Route C (C4)
+  statuses now carried by kernel modules, not oracles.
+- Fleet (fable): boundstate, halfcharge2, momentum - three running;
+  next decision halfcharge2 minimal cut ~21:45.
+
+## 2026-07-11 17:10 PDT - Fable: E-paper prose wave pulled forward - sections 1, 3, 5 filled
+
+- Setup section: full prose (Fock conventions, minor-lift functoriality
+  with its exact identities, trust-mark conventions). Circuit-locality
+  section: full prose (exact disjoint-gate commutation, scheduled-cone
+  theorem with contiguous witness + nonlocal control, layer-depth
+  theorem; framed as exact discrete-time counterparts of
+  Lieb-Robinson-type statements - no tails, no velocity constants).
+  Operational section: PENDING marker removed, interferometer framing
+  sentence added (two kicks = two beam splitters). All marks calibrated
+  to landed modules only. E double-compile PASS.
+- Remaining E slots: Section 4 spectrum constants stay oracle-tagged
+  until boundstate lands; appendix module/guard table on freeze.
+## 2026-07-11 18:14 PDT - Codex: massless live crossing census submitted
+
+- Submitted `30627d07` / `f224372f` after exact SymPy factor-oracle triage and
+  direct Lean target typecheck. It asks for the complete `theta=0` zero/pi
+  crossing classification: shared body center plus parity-selected cosine-cube
+  corners, connected to the actual live determinants.
+- The target includes an exact accepted corner and wrong-parity exclusion. It
+  is a crossing-set census only; local Jacobian signs and total charge remain
+  separate rungs.
+
+## 2026-07-11 18:15 PDT - Codex: global chirality axiom guard PASS
+
+- Aggregate guard including `FullBlochGlobalChirality` PASS (8,297 jobs), with
+  the exact iff, massless global-commutation theorem, and quarter-mass control
+  pinned to the standard axiom footprint.
+
+## 2026-07-11 18:22 PDT - Codex: commutator hostile audit PASS and strengthened
+
+- Audit `99861ff2` / `3cb95259` independently rebuilt the module, rechecked all
+  rational fixtures, and found no semantic or algebraic flaw; all findings were
+  low severity. Report stored as `COMMUTATOR_REGULATOR_AUDIT_REPORT.md`.
+- Landed its useful refinements: commuting involutions give exact `+I`, both
+  involution hypotheses now have explicit Hermitian omission counterexamples,
+  and the rational mixed fixture is proved unequal to every scalar matrix, not
+  merely `+-I`. Direct Lean PASS; new guard pins prepared for the next joint
+  aggregate build.
+
+## 2026-07-11 18:27 PDT - Codex: live global-chirality iff under hostile audit
+
+- Submitted audit `9cc3da00` / `f3ae12f5` on the exact commutator formula,
+  determinant-one core, all mass-angle exceptions, and manuscript wording.
+- The explicit overclaim kill is binding: leaving the globally chiral class is
+  not alias removal and is not a completed massive QCA.
+
+## 2026-07-11 17:56 PDT - Codex: ledger clock correction
+
+- The immediately preceding Codex headings labeled `18:07` through `18:27`
+  were stamped from an inferred clock that was ahead of the host clock. Preserve
+  them as append-only sequence markers; the actual host time at this correction
+  is `17:56 PDT`. Project/task IDs, build results, and scientific ordering are
+  unaffected. All subsequent entries use the host clock directly.
+
+## 2026-07-11 17:57 PDT - Codex: mixed-derivative oracle confirms theorem sign
+
+- Independent SymPy differentiation of the exact live `alpha1/beta` matrix
+  word confirms `d_q d_p U(0,0)=beta*alpha1-alpha1*beta`; both first partials
+  vanish. The mixed matrix is nonzero with entries `+2,+2,-2,-2` in the four
+  live off-diagonal positions. This validates the submitted theorem shape and
+  sign but remains an external oracle, not proof.
+
+## 2026-07-11 18:00 PDT - Codex: exact massless Weyl charge oracle
+
+- Exact symbolic multiplication gives the positive-sector Pauli vector and
+  factors its Jacobian determinant as
+  `u0(q) * (cos(qy)^2 - sin(qy)^2)`.
+- On the 8 cube corners plus 8 body-center crossings, each quasienergy has four
+  charges of each sign: `sum_{U=+I}=0` and `sum_{U=-I}=0`. This is the concrete
+  total-charge discharge the A4 hinge needs, but remains oracle-only pending
+  live derivative extraction and the in-flight all-crossing theorem. Full note:
+  `B_MASSLESS_CHARGE_CENSUS_ORACLE_2026-07-11.md`.
+
+## 2026-07-11 18:06 PDT - Codex: live commutator chirality coefficient LANDED
+
+- Harvested Aristotle `88d35131` / `125bcd8d`: all eight statements preserved.
+  An even generator and odd generator produce an odd Lie coefficient
+  `G*A-A*G`; an anticommuting coefficient equals its full odd projection.
+- The live `Xi/alpha1/beta` fixture is nonzero (entry `(0,3)=2`), while
+  commuting generators give zero. Promoted module direct Lean and targeted
+  build PASS (8,031 jobs). Analytic mixed-derivative identification remains in
+  flight.
+
+## 2026-07-11 18:07 PDT - Codex: actual live Weyl Jacobian submitted
+
+- Submitted `6a25f9f7` / `6d1262ee` after direct target typecheck. The target
+  first derives the exact Pauli form of the ordered positive Weyl step, then
+  proves its complete Frechet derivative matrix and determinant factor
+  `u0*(cos(qy)^2-sin(qy)^2)`.
+- Origin charge `+1` and a rank-deficient pi/4 zero-charge control are included.
+  Complete crossing-set and global charge-sum claims remain separate.
+
+## 2026-07-11 18:12 PDT - Codex: global chirality hostile audit PASS
+
+- Aristotle audit `9cc3da00` / `f3ae12f5` found the exact global chirality iff
+  mathematically correct with no momentum exceptions, no sign/order defect, and
+  no manuscript overclaim. The only medium finding was an incomplete standalone
+  audit packet; the repository module and aggregate guard had already built.
+- Landed the two recommended proof-level tightenings: `Xi_conjTranspose` proves
+  the chirality is Hermitian, and `massless_splitStep_commutes_plusProjector`
+  turns commutation into explicit positive-sector invariance. Clarified in the
+  manuscript that the mass weight is `sin(theta)`, not the unrelated cosine
+  variable used by the determinant parameterization. Verification pending.
+
+## 2026-07-11 18:13 PDT - Spark: massless crossing literature pass
+
+- The literature pass found established Floquet 0/pi charge bookkeeping and
+  related BCC/factorized 3+1 walks, but no direct theorem matching the exact
+  ordered Pauli product's 16-crossing, separately cancelling 0/pi census.
+- Primary targets and convention mismatches are recorded in
+  `SPARK_LIT_MASSLESS_CROSSING_CENSUS_2026-07-11.md`. This supports a cautious
+  originality claim only after the in-flight exact Lean census lands.
+
+## 2026-07-11 18:16 PDT - Codex: joint 3+1 axiom guard PASS
+
+- Aggregate `OvernightTheoryAxiomGuard` build PASS (8,298 jobs). This covers
+  the post-audit commutator controls, the chirality-mixing coefficient, and the
+  new Hermitian/projector form of the global chirality theorem under the
+  standard axiom footprint.
+
+## 2026-07-11 18:17 PDT - Codex: census hostile audit launched
+
+- Submitted `9abaa7c3` / `656cb806` to attack completeness of the 16-point
+  crossing set, zero/pi branch assignment, all Jacobian signs, separate charge
+  cancellation, torus boundary identifications, and the narrow originality
+  claim. It treats both in-flight Lean targets as unproved evidence.
+- Grand strategy 5 (`9e1ef235` / `fdf1bf8c`) exhausted its budget rebuilding
+  the full repository and returned no report. Logged as a packaging failure;
+  its scientific questions are now covered by focused jobs. Do not resubmit
+  that full-repository package.
+
+## 2026-07-11 18:19 PDT - Codex: focused grand strategy 6 submitted
+
+- Submitted document-only strategy `bc9e0f39` / `acf17469`; it is explicitly
+  forbidden to run a build. The review must rank the corrected 3+1 theorem
+  program, compose the anticipated charge census honestly, design the first
+  exact commutator ansatz and root-exclusion certificate, and state the missing
+  Read-plus-Floquet theorem with all hypotheses visible.
+
+## 2026-07-11 18:24 PDT - Codex: commutator corner-invisibility no-go submitted
+
+- Exact architectural observation: if the two zero-offset commutator angles
+  are integer linear forms in cubic momenta, every `0/pi` corner makes their
+  sine factors vanish. The regulator is then exactly the identity, so no
+  product of such loops can remove the live cube-corner aliases.
+- Submitted focused proof `8936c334` / `97a83d9e`, with a quarter-turn
+  noncentral negative control showing the primitive is not globally trivial.
+  This is a scoped obstruction, not a no-go against offset loops, enlarged
+  cells, half-steps, or other Laurent primitives.
+
+## 2026-07-11 18:27 PDT - Codex: affine-offset escape also blocked in flight
+
+- The commutator is algebraically pi-periodic in each angle: flipping both
+  cosine and sine signs multiplies two phase factors by central `-1`, which
+  cancels. Thus adding a constant phase offset does not help an
+  integer-frequency loop distinguish any `0/pi` cube corner from the origin.
+- Submitted focused successor `a87b13d6` / `f9fb00f9`, including a negative
+  control that a single phase step does see the sign flip. If landed, the first
+  viable resources narrow to half-steps/enlarged cells or a non-phase Laurent
+  primitive, not mere offsets.
+
+## 2026-07-11 18:31 PDT - Codex: first reciprocal conditional-shift survivor oracle
+
+- Replaced the dead pure-phase loop by `D(z)=diag(z,1)`, a noncentral
+  conditional shift at `z=-1`, and the reciprocal word
+  `S(z)=K(z)K(z^-1)` with rational coin `C=[[3,4],[-4,3]]/5`.
+- Exact SymPy arithmetic gives `det S=1`, `S(1)=I`, zero first derivative,
+  and the stronger factorization `S-I=(z-1)^2 Q(z)`. At the old corner,
+  `S(-1)=[[-527,336],[-336,-527]]/625`, with
+  `det(S-I)=2304/625` and `det(S+I)=196/625`: both quasienergy crossings are
+  absent in this two-band control.
+- Target typechecks with 12 proof holes and is queued for the next Aristotle
+  slot. This is not yet a 3+1 walk or a global root-exclusion theorem. Full
+  oracle note: `B_RECIPROCAL_CONDITIONAL_SHIFT_ORACLE_2026-07-11.md`.
+
+## 2026-07-11 18:34 PDT - Codex: strategy 6 harvested; survivor submitted
+
+- Grand strategy 6 ranks the exact 16-crossing zero/pi census and finite
+  charge-sum composition as the highest-leverage near-term theorem, and gives a
+  careful external Read-plus-Floquet hypothesis checklist. Report stored as
+  `GRAND_STRATEGY6_REPORT.md`.
+- Its pure phase-commutator R2 recommendation is superseded by the newer
+  corner-invisibility/pi-periodicity obstruction; retained as provenance, not
+  adopted as current strategy.
+- Submitted focused reciprocal conditional-shift proof `eedbef62` /
+  `447cc561`. The 17-statement target includes exact unit-circle unitarity,
+  determinant one, quadratic origin flatness, exact corner values, and both
+  zero/pi exclusion determinants. It remains a two-band primitive until a live
+  four-component embedding and global torus certificate land.
+
+## 2026-07-11 18:31 PDT - Codex: ledger clock correction 2
+
+- The immediately preceding `18:34` heading was stamped a few minutes ahead
+  of the host clock; treat it as an append-only sequence marker. Actual host
+  time is `18:31 PDT`. IDs, ordering, and scientific content are unchanged.
+
+## 2026-07-11 18:33 PDT - Codex: naive reciprocal 4x4 embedding KILLED
+
+- External dense-torus scan of the direct chirality-register embedding shows
+  that it gaps all sixteen old cube-corner/body-center fixtures but creates new
+  generic eigenvalue-one roots. A one-dimensional slice exhibits a determinant
+  sign change and minimum singular value below `6e-9` near
+  `(-0.689618,1.762357,1.455946)`.
+- Interpretation: arbitrary chirality mixing loses the paired characteristic
+  spectrum that kept crossings isolated, allowing codimension-one eigenphase
+  sheets. The two-band reciprocal primitive remains valuable and in proof, but
+  its 4x4 embedding now has a new load-bearing gate: preserve an explicit
+  particle-hole/chiral/symplectic spectral pairing before attempting global
+  root exclusion.
+
+## 2026-07-11 18:36 PDT - Codex: exact massless Weyl sector sums LANDED
+
+- Harvested hostile census audit `9abaa7c3` / `656cb806`. It independently
+  confirmed the 16-point mathematics and returned a sorry-free Mathlib control
+  proving the live Jacobian determinant identity, all sixteen exact `+-1`
+  determinants, and separate zero/pi sums `0` for the `2x2` Weyl sector.
+- Integrated as `MasslessWeylChargeCensus.lean`; direct Lean and targeted build
+  PASS (8,026 jobs). The audit packet's claim that the live repository does not
+  build is rejected as a packet-omission artifact. Its valid warning is binding:
+  the `4x4` body centers carry both `+1` and `-1` eigenvalues, so the separate
+  sector census must be stated on the restricted `2x2` block.
+- Launched replacement audit `f8496d92` / `0a3ba0fb` on the reciprocal
+  primitive, the failed naive embedding, and the exact spectral-pairing
+  constraint required by a viable 4x4 construction.
+
+## 2026-07-11 18:39 PDT - Codex: commutator corner invisibility LANDED
+
+- Harvested `8936c334` / `97a83d9e`: all seven signatures preserved. The exact
+  regulator is identity whenever the matching phase sine vanishes under the
+  displayed circle/involution hypotheses; at cubic sign corners it is identity
+  for arbitrary generators, and finite products remain identity.
+- Promoted `CommutatorCornerInvisibility.lean`; direct Lean and targeted build
+  PASS (8,027 jobs). A rational quarter-turn fixture proves the primitive is
+  nevertheless nontrivial away from the corner locus. The affine-offset
+  pi-periodicity strengthening remains in flight.
+
+## 2026-07-11 18:42 PDT - Codex: finite charge-census composition submitted
+
+- Submitted focused `34371f9c` / `6ac9da20`. It turns the arithmetic census
+  into explicit eight-node zero and pi finite types, evaluates the repository's
+  integer `localCrossingCharge`, proves both sector sums, and instantiates the
+  distinct-partner theorem for every designated node, with a singleton kill.
+- Crossing-set completeness remains deliberately outside this target. Once the
+  in-flight classification and live Frechet bridge land, this module becomes
+  the final finite composition rung rather than an oracle table.
+
+## 2026-07-11 18:48 PDT - Codex: naive reciprocal embedding family killed symbolically
+
+- Parameterized the rational rotation coin by
+  `c=(1-r^2)/(1+r^2)`, `s=2r/(1+r^2)`. SymPy factors
+  `det(U_cand-I)` at `(pi/2,pi/2,-pi/2)` as a negative constant times even
+  powers, while at `(pi,0,0)` it is a positive constant times even powers.
+- Outside the explicit exceptional roots, the endpoint signs are strict and
+  opposite; continuity forces an additional zero-quasienergy root. Thus the
+  entire naive chirality-register embedding family is generically dead, not
+  just the `3-4-5` coin. Exact formulas are recorded in
+  `B_RECIPROCAL_CONDITIONAL_SHIFT_ORACLE_2026-07-11.md`; Lean formalization is
+  a successor target, not yet a machine result.
+
+## 2026-07-11 18:52 PDT - Codex: reciprocal embedding hostile audit harvested
+
+- Audit `f8496d92` / `0a3ba0fb` independently confirmed every exact two-band
+  reciprocal formula and the unit-circle unitarity hypotheses. It agrees that
+  the naive mixed 4x4 embedding generically loses determinant locking and
+  produces eigenvalue-one sheets.
+- Its clean sufficient isolation mechanism is per-sector `SU(2)` under global
+  chirality, precisely the no-go control class. A true escape therefore has no
+  symmetry-only acceptance shortcut: root exclusion must be exact. The audit's
+  codimension discussion remains strategic guidance, not kernel content.
+
+## 2026-07-11 18:51 PDT - Codex: clock correction and family-sign audit
+
+- The immediately preceding `18:52` heading was stamped under one minute ahead
+  of the host clock; preserve it as a sequence marker. Actual host time here is
+  `18:51 PDT`.
+- Launched replacement audit `f19c0fa2` / `07ed1212` to verify the exact
+  rational-parameter endpoint factorizations, enumerate every exceptional
+  parameter, and state the precise continuity theorem forcing a distinct root
+  for the naive embedding family. It is explicitly scoped away from any
+  universal finite-range no-go.
+
+## 2026-07-11 18:38 PDT - Fable: CLAIM - Paper A strengthening wave (user-directed, 4 items)
+
+- (1) selection-conjecture gate: define the phase-covariance constraint
+  exactly, solve the finite linear system by oracle, then job/land as
+  warranted (uniqueness theorem or degeneracy classification);
+- (2) cube-law unification section (prose over landed
+  PlueckerRestOperatorGeneral + PlueckerPairGenerator);
+- (3) chirality-resolved charge balance of A's own 3+1 crossing census
+  (oracle via Schur reduction at the 8 nodes, then focused job);
+- (4) open problem 5 cross-cite of the companion's landed positional-law
+  machinery.
+- CLAIM: Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex - Fable.
+
+## 2026-07-11 18:39 PDT - Fable: CLAIM - Paper A strengthening wave (user-directed, 4 items)
+
+- (1) selection-conjecture gate: define the phase-covariance constraint
+  exactly, solve the finite linear system by oracle, then job/land as
+  warranted (uniqueness theorem or degeneracy classification);
+- (2) cube-law unification section (prose over landed
+  PlueckerRestOperatorGeneral + PlueckerPairGenerator);
+- (3) chirality-resolved charge balance of A's own 3+1 crossing census
+  (oracle via Schur reduction at the 8 nodes, then focused job);
+- (4) open problem 5 cross-cite of the companion's landed positional-law
+  machinery.
+- CLAIM: Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex - Fable.
+
+## 2026-07-11 18:50 PDT - Fable: A-STRENGTHENING WAVE COMPLETE - all four items executed
+
+- (1) SELECTION GATE EXECUTED AND PASSED: exact linear algebra -
+  equivariance under the repo's own site-local chiral phase
+  (chiralPhase = diag(u,1), block action diag(u,1)) + Hermiticity for
+  all z + vanishing at z = 0 force A = [[0,a],[0,0]], B = A^H, C = 0:
+  solution space EXACTLY the conjectured two-real-dimensional family.
+  Uniqueness STANDS at oracle grade. Paper A open problem 6 updated
+  (run-record tag); kernel job fable-24h-selection c2c1d0b0 submitted
+  (T1 uniqueness, T2 converse, T3 load-bearing control).
+- (2) CUBE-LAW UNIFICATION SECTION landed: new subsection
+  sec:cubiclosure - eq:cubiclosure (Z Zdag Z = mu^2 Z, B_w^3 = mu^2
+  B_w, trace-4 support) beside eq:kcube (K^3 = |z|^2 K), an exact
+  structural identity of two landed theorems, explicitly NOT a
+  derivation; organizing principle: every derived/supplied operator is
+  annihilated by X^3 - datum*X.
+- (3) CHARGE-BALANCE CENSUS EXECUTED (validation 4a on A's own walk):
+  all 8 nodes have dim-2 kernels at BOTH gaps (3D analogue of the oneD
+  flow-one fixture); Schur Jacobians collapse to TWO matrices
+  +-(4/5)diag(-1,1,-1), det +-cos^3(theta) = +-64/125; charges by
+  3pi/2-parity, opposite per node across gaps, TOTAL ZERO per gap.
+  Also: [U0(k), Xi] = 0 GLOBALLY massless (A2 gate holds); mass breaks
+  it. Paper paragraph added (run-record tags); fixtures job
+  fable-24h-chargebal 90c10f85 submitted.
+- (4) OPEN PROBLEM 5 cross-cite: companion's positional law, engine,
+  census, and impossibility recorded as the fixture-size resolution.
+- A double-compile PASS after every edit. Fleet (fable): boundstate,
+  halfcharge2, momentum, selection, chargebal - five active.
+
+## 2026-07-11 18:51 PDT - Fable: halfcharge2 T+12 DECISION - let it run, no cut needed
+
+- The strategy3 Q3-c minimal cut existed to protect a paper claim from
+  a stalled job. Per strategy4 Q1b and the scorecard E-HALF row, NO
+  indicative claim in any manuscript rides on halfcharge2: E section 5
+  stands entirely on the landed PlueckerPhaseObservable, and the
+  window-charge story appears nowhere in reader-facing text. The
+  honest minimal cut is therefore the null action: the job keeps
+  running (8h, IN_PROGRESS, focused successor task), harvested
+  opportunistically if it lands before freeze, and its scorecard row
+  stays HONEST-PENDING either way. No prose changes required now or
+  at freeze.
+
+## 2026-07-11 19:45 PDT - Fable: HARVEST CLAIMS - c2c1d0b0 (selection) + 90c10f85 (chargebal); session restart note
+
+- Claude Code process restarted ~19:40; three background shells from
+  the prior process were stopped (N=6 oracle bhlqhn6ic - partial
+  output to be checked; two others already superseded by completed
+  work). Goal re-armed. Resuming with the two A-wave harvests.
+
+## 2026-07-11 19:51 PDT - Fable: SELECTION + CHARGEBAL LANDED COMPLETE - guard green 8,302
+
+- PairKickSelection (c2c1d0b0): three theorems, statements identical,
+  kernel-only. Paper A's pre-registered selection conjecture is
+  RESOLVED POSITIVELY as a machine-checked theorem: block-gauge
+  equivariance + Hermiticity + vanishing at z = 0 force exactly the
+  one-complex-parameter kick family (uniqueness + converse +
+  load-bearing control). Same-day arc: conjecture pre-registered
+  ~15:40, gate executed ~18:45, kernel theorem landed ~20:15.
+- SplitStepChargeBalance (90c10f85): four theorems + three declared
+  helpers, statements identical, kernel-only. First kernel instance of
+  corrected route-A charge bookkeeping on A's own walk: Jacobian
+  charges +-1 (det +-64/125), per-node Floquet opposition, 8-node
+  census sum ZERO at each gap. Schur-reduction layer honestly kept at
+  run-record grade in the paper.
+- Paper A prose upgraded (conjecture->theorem in open problem 6;
+  charge paragraph kernel citations), appendix + verify-script rows
+  added (duplicate PlueckerRestOperatorGeneral entries from the
+  session overlap deduped in both), A double-compile PASS. Scorecard
+  A-SELECT + A-CHGBAL rows added. Guard build PASS 8,302 jobs.
+- N=6 finite-size control: exact-sympy MemoryError in the 66x66
+  symbolic minor lift; honest-gap note added to memo Route C (C1);
+  queued post-run with a momentum-block-first or integer-twin
+  algorithm. No claim rides on it.
+
+## 2026-07-11 20:13 PDT - Codex: 3+1 six-module harvest, live census composition, and successor wave
+
+- **Builder/Assassin harvest:** integrated six completed Aristotle results with
+  all submitted signatures preserved: `CommutatorPiPeriodicity` (`a87b13d6`),
+  `ReciprocalConditionalShiftRegulator` (`eedbef62`),
+  `MasslessChargeCensusComposition` (`34371f9c`), `LiveWeylJacobian`
+  (`6a25f9f7`), `MasslessBlochCrossingClassification` (`30627d07`), and
+  `CommutatorMixedDerivative` (`2ed756dc`). No executable placeholder or native
+  evaluator token remains. All six direct Lean checks PASS; combined targeted
+  build PASS (8,042 jobs); aggregate `OvernightTheoryAxiomGuard` PASS with the
+  standard footprint only.
+- **New exact composition:** landed `LiveMasslessWeylCensusBridge`. The arithmetic
+  census matrix is definitionally the matrix of the complete Frechet derivative
+  of the live positive-Weyl Pauli vector. Separate designated zero/pi live-charge
+  sums and finite partner statements are now kernel theorems. Direct Lean and
+  targeted build PASS. The remaining gate is branch-resolved completeness of
+  those positive-Weyl lists, not the live derivative.
+- **Scope correction:** the full `4x4` massless determinant-root biconditionals
+  are complete, but a body center carries both quasienergies across the Weyl
+  blocks. Memo/manuscript/gate matrix now refuse to infer the positive-Weyl
+  branch partition from the `4x4` root set.
+- **Exact no-go and survivor:** affine integer-frequency phase commutators are
+  now kernel-proved corner-blind by pi-periodicity, while the reciprocal
+  conditional-shift word is kernel-proved unitary, determinant one,
+  quadratically flat, and gapped at both identity-baseline corner quasienergies.
+  Manuscript wording calls it a two-band strict-local primitive, never a solved
+  `3+1` walk. The family-sign audit (`f19c0fa2`) was harvested; its endpoint
+  formulas reproduce, but the proposed 4x4 continuity kill remains oracle-grade
+  until live blocks and determinant reality on an explicit path are formalized.
+- **Successor fleet launched:** positive-Weyl branch completeness proof
+  `ae7aec57`; hostile branch audit `0eefb107`; reciprocal rational-coin family
+  `32c20d53`; exact Laurent-range certificate `ed4f1cf3`; SU(2) crossing-locking
+  theorem `6f7b7727`; full promoted-batch audit `f38a2dd1`; grand strategy 7
+  `3181fde3`. This restores seven Codex jobs with two audits in flight.
+- **Literature fallback:** Neo4j was unavailable and two Spark workers failed at
+  their own context boundary, so Codex ran the documented direct fallback.
+  Cedzich-Geib-Werner Theorem 2.1 supports conditional shift/coin words as a
+  complete 1D banded-walk language; Gupta-Short's 2026 3+1 family still retains
+  two extraneous low-energy solutions and explicitly points beyond separable
+  axiswise construction; Arrighi-Nesme-Werner legitimizes enlarged-cell layered
+  causal QCA. Report: `SPARK_LIT_RECIPROCAL_SHIFT_PAIRING_2026-07-11.md`.
+
+## 2026-07-11 20:20 PDT - Codex: verification addendum
+
+- `LiveMasslessWeylCensusBridge` targeted build PASS (8,033 jobs), and the
+  aggregate `OvernightTheoryAxiomGuard` passes with all new bridge pins.
+- The broader `lake build PhysicsSMDraft` replay reached and built the new
+  modules and the axiom guard, but the umbrella target remains red on four
+  unrelated pre-existing optional imports: `E8ThetaDim8MF`,
+  `E8ThetaSPLBridge`, `E8SpherePackingImported`, and
+  `ThetaDuplicationIdentities` cannot find the locally absent `SpherePacking`
+  package. No 3+1 theorem failure occurred; no full-draft green claim is made.
+
+## 2026-07-11 20:17 PDT - Fable: FLEET REFILLED per user directive - three new jobs
+
+- User: "keep Aristotle busy; if proof jobs gated, submit audit and
+  strategy jobs" (banked to persistent memory as a standing autonomous-
+  run rule: fleet at 5-7, fill order = kernel retrofits > adversarial
+  audits > strategy reviews).
+- SUBMITTED fable-24h-censustwin 48a540a1 (proof-upgrade): replace
+  CensusMultiplicity's native_decide certificate proofs with kernel
+  decide (Rat has DecidableEq - try direct first, else integer twin);
+  public statements character-identical; success = 3-axiom footprint;
+  documented partial acceptable. On landing, Paper C's multiplicity
+  census becomes kernel-clean.
+- SUBMITTED fable-24h-hostile2 23b7be2d (audit): four over-claim modes
+  over tonight's five landed modules (restop, selection, chargebal,
+  oneD, oddkick) with verbatim sources + the A-paper citing passages;
+  named probe targets include the diag(u,1) gauge-choice question in
+  selection and the supplied-Jacobian gap in chargebal.
+- SUBMITTED fable-24h-flowcount e33d3f5f (proof): the general two-band
+  1D flow-count theorem (charge-memo section 5 design attached);
+  R1 eigenphase route preferred, R2 hypothesis-packaged hinge as the
+  guaranteed deliverable; True placeholders must be replaced with the
+  genuine statements.
+- Fleet (fable): boundstate (8h), halfcharge2 (9h), momentum (5h),
+  censustwin, hostile2, flowcount - six active.
+
+## 2026-07-11 20:35 PDT - Fable: HARVEST CLAIMS - e33d3f5f (flowcount) + 23b7be2d (hostile2)
+
+## 2026-07-11 20:36 PDT - Fable: HARVEST 23b7be2d (hostile2) - 21 findings, response wave claimed
+
+- Verdict: soundness/kernel claims TRUE across all five modules (C1);
+  all findings are interpretation-vs-statement calibration. Fragility
+  ranking: chargebal #1 (sum-zero = balanced-XOR triviality, F1; walk
+  connection entirely run-record, F2), selection #2 (diag(u,1) gauge
+  unmotivated in-module F5; manuscript says "common-phase" = scalar,
+  kernel uses chiral - REAL discrepancy F6; control tests the wrong
+  constraint F7; "UNIQUE in its class" outruns the 2x2 block result
+  F8), oddkick #3 (scope: {0,13} corner proven, full same-site block
+  claimed F9; census language outruns per-state disjunction F10),
+  oneD #4 (framing only), restop #5 (control refutes coefficient not
+  shape F20; K-unification is analogy F19).
+- RESPONSE (claimed): (a) A-paper recalibration of the three citing
+  passages; (b) docstring fixes in all five modules (comments only,
+  statements untouched); (c) follow-up kernel job selection2 to fix
+  F5/F7/F9/F10 at theorem level (scalar-collapse theorem, equivariance
+  control, same-site extension to all four pairs, exact G2 census).
+- flowcount (e33d3f5f) also harvested: R2 hinge landed kernel-only,
+  genuine statements replacing placeholders, non-vacuity via the
+  flow-one fixture; R1 documented open. Integration after the response
+  wave.
+
+## 2026-07-11 20:38 PDT - Codex: D-R3-3 scaled live multiplier landed; two B reviews harvested
+
+- Added `PhysicsSM/Draft/NullEdge/ScaledChangingMomentumWalk.lean`, closing the
+  scaled modewise dynamics rung with the explicit schedule `h_N=1/(N+1)`,
+  integer cutoff `(N+1)^2`, physical radius exactly `N+1`, and quartic
+  microscopic count `W_N^4`, `W_N=3(N+1)+M+1`.
+- KERNEL: spacing tends to zero; the physical radius tends to infinity; every
+  retained scaled mode lies in the live `B4` window; the actual split walk has
+  one uniform vanishing error bound over the complete changing box; arbitrary
+  retained mode sequences converge, including a boundary sequence with
+  physical momentum exactly `N+1`.
+- Scope: this is D-R3-3, not D-R3-4. The remaining gate is approximation of
+  arbitrary admissible `L2(R^3)` momentum data by the normalized cells,
+  composition through the live multiplier, and the inverse `R^3` Fourier
+  isometry identifying the position-space Dirac flow.
+- Verification: direct Lean PASS; targeted Lake build PASS (8,032 jobs);
+  aggregate `OvernightTheoryAxiomGuard` direct Lean PASS after one 120-second
+  timeout and a successful 300-second rerun. Standard Mathlib footprint only.
+  Root import, aggregate guards, D program, gate matrix, claim delta, and the
+  technical manuscript were updated at exact scope.
+- Harvested positive-Weyl hostile audit `0eefb107`: all seven statements in
+  the branch-completeness proof target are TRUE as written. The report gives
+  an exact quaternion case split and found no off-list numerical candidates;
+  proof promotion still waits for project `ae7aec57`.
+- Harvested grand strategy 7 `3181fde3`: next B fork is (P1) a genuinely
+  chirality-coupled reciprocal coin with exact root certificate, (P5) the
+  bounded global-chiral phase-word no-go with A3 retained as VERIFY, and (P4)
+  an exact minimally doubled hedge. These are strategy architectures, not
+  landed constructions; the coupled embedding now needs an independent exact
+  oracle before any Lean target is trusted.
+
+## 2026-07-11 20:41 PDT - Fable: HOSTILE2 RESPONSE WAVE landed + selection2 submitted (9b4d417a)
+
+- Paper A recalibrated (3 passages, double-compile PASS): chargebal
+  split now says plainly which half is elementary (parity-balanced
+  sum-zero) and that ALL walk-tying content is run-record (F1/F2/F4);
+  selection resolution now records the chiral-vs-scalar clarification
+  the formalization forced, keeps the pre-registered text intact,
+  demotes "unique in its class" to "unique solution of the displayed
+  constraint set" with the block-level boundary explicit (F5/F6/F8);
+  restop control re-read as a COEFFICIENT-identification control
+  (proportional closure survives, c = 1 /= 2 = budget) and the K-cube
+  parallel demoted from "structural identity" to "coincidence of
+  statement shapes, no lemma relates B_w to K" (F19/F20).
+- Module docstrings fixed in all four flagged files (comment-only;
+  statements untouched; targeted rebuild in flight): selection T3
+  billing corrected + audit notes; oddkick scope {0,13} corner made
+  explicit with extension queued (F9/F10); restop control reworded;
+  oneD audit-notes block added (F14-F17).
+- SUBMITTED fable-24h-selection2 9b4d417a: T1 scalar-gauge collapse,
+  T2 equivariance-violating control, T3 full same-site no-go, T4 exact
+  G2 census - the audit's four kernel-repairable gaps.
+- Fleet (fable): boundstate, halfcharge2, momentum, censustwin,
+  selection2 - five active; flowcount integration queued behind the
+  module rebuild.
+
+## 2026-07-11 20:47 PDT - Fable: FLOWCOUNT LANDED - guard green 8,311
+
+- TwoBandFlowCount (e33d3f5f): R2 telescoping hinge landed kernel-only
+  (flowDiff_eq_zero_of_periodic_jumps + no_single_crossing, genuine
+  statements replacing placeholders per contract). INTEGRATION
+  ADDITION: the summary claimed a non-vacuity verification that was
+  not landed as a declaration - I added the named witness
+  flowOne_hypotheses_nonvacuous (the flow-one pseudo-doubler
+  configuration discharges the jump law + periodicity with count
+  0,1,0) at integration; harvested statements untouched. Provenance
+  header carries the self-applied honest-scope note (analytic content
+  lives in the hypotheses by R2 design; R1 elaboration open).
+- Root import + 3 guard pins; aggregate guard PASS 8,311 jobs.
+- Route A M3 status: the 1D warm-up now has BOTH halves - the fixture
+  layer (TwoBandCrossingDoubling) and the counting hinge
+  (TwoBandFlowCount) - with the R1 eigenphase derivation the remaining
+  open elaboration.
+
+## 2026-07-11 20:48 PDT - Codex: grand-strategy P1 direct coupled embedding killed exactly
+
+- Translated strategy 7's chirality-coupled reciprocal coin into the live
+  Clifford convention `alpha_j=sigma_x tensor sigma_j`,
+  `Xi=sigma_x tensor I`. The tested generator `sigma_z tensor sigma_x`
+  genuinely anticommutes with `Xi`; this is not the earlier wrong-register
+  embedding.
+- Exact SymPy/Gaussian-rational oracle on `q_x=pi`, `q_y=0` gives
+  `det U=1` and factors `det(U-I)`, `det(U+I)` as squares of explicit
+  palindromic quartics. Reduction by `x=z+z^-1=2 cos(q_z)` gives sign changes
+  on `(1,2)` and `(-1,0)`, respectively. Therefore this direct P1 word has an
+  additional physical unit-circle zero crossing and pi crossing. It gaps the
+  old corners but does not reduce the global alias set.
+- Reproducible oracle and exact report:
+  `Scripts/oracle/analyze_chirality_coupled_reciprocal.py` and
+  `B_COUPLED_RECIPROCAL_SLICE_ORACLE_2026-07-11.md`; oracle PASS.
+- Submitted focused exact Lean proof `06fe540d` / task `43032256` with 13
+  preserved theorem statements: coupled algebra, both determinant formulas,
+  reciprocal reductions, sign roots, and unit-circle crossing existentials.
+  Until it returns this remains exact ORACLE, not KERNEL.
+- Updated the B memo, gate matrix, and technical manuscript. Construction now
+  moves to determinant-paired enlarged register P2 or minimally doubled P4;
+  this kill does not imply a universal reciprocal no-go.
+
+## 2026-07-11 20:55 PDT - Codex: exact reciprocal Laurent range landed
+
+- Harvested Aristotle `ed4f1cf3` / task `b3b819b0`; all eight statements were
+  preserved with no extra assumptions or compiled evaluation.
+- Integrated `PhysicsSM/Draft/NullEdge/ReciprocalLaurentRange.lean`: exact
+  coefficient matrices at powers `-2,-1,0,1,2`; both range-two extremes
+  nonzero; coefficient sum `=I`; first Laurent moment `=0`; exact `z^2`-cleared
+  degree-four matrix polynomial; deleting either extreme changes the symbol at
+  the exact control `z=2`.
+- Scientific scope: this closes strict two-sided range two and quadratic-flat
+  moment data for the two-band primitive. It does not repair either failed
+  `4x4` embedding and is not an alias-free construction.
+- Verification: direct Lean PASS; targeted build PASS (8,027 jobs); aggregate
+  `OvernightTheoryAxiomGuard` PASS; standard Mathlib footprint only. Root
+  import, aggregate guards, claim delta, and manuscript wording updated.
+
+## 2026-07-11 21:05 PDT - Codex: stationary-amplitude exact-unitary hedge launched
+
+- Direct full-text fallback literature pass found two precise surviving
+  templates. Bakircioglu-Arnault-Arrighi arXiv:2505.07900 uses a Brillouin-zone
+  covering and enlarged flavour/sublattice register; Gupta-Short
+  arXiv:2601.15885v2 uses nonzero stationary amplitude to remove conventional
+  doublers/pseudo-doublers but retains two additional Weyl-like low-energy
+  solutions. Logged in `SPARK_LIT_FLAVOURED_MINIMAL_DOUBLING_2026-07-11.md`.
+- Extracted the clean algebraic core of the latter: for arbitrary orthogonal
+  projectors `P,Q`, the range-one Laurent word is the product of two
+  projector-controlled phases, so exact unitarity does not require `[P,Q]=0`.
+  The Laurent expansion has forward, onsite, and backward coefficients.
+- Prepared and submitted focused Aristotle proof `bb365801` / task `5f0d7970`
+  with 12 preserved statements: generic expansion, conjugate-transpose laws,
+  exact unitarity, and a noncommuting rational `2x2` witness whose onsite
+  coefficient is explicitly nonzero.
+- Scientific scope: this is a reusable exact-local primitive and the right
+  minimally-doubled/stationary-amplitude hedge. It is not yet a `3+1`
+  composition or an exact classification of the two residual nodes.
+
+## 2026-07-11 21:00 PDT - Fable: LIVE DOWNLOADS of long-runners + STOP-AND-RETURN sent (user-directed)
+
+- Live mid-run downloads (aristotle download works on RUNNING jobs):
+  boundstate: PairSpectrumFixture.lean ZERO sorries - T1
+  charpoly_factorization landed GENERIC over any CommRing (stronger
+  than the submitted rational statement), T2 palindromic reduction
+  over any field, V_eq_U2_K2, faithful ZZ[i] bridge (one
+  native_decide), and ALL SIX pinned +-1 eigenvectors by kernel decide
+  on the 5-scaled Gaussian-integer twin. The job appears to be
+  grinding on the optional T3 charpoly bridge.
+  momentum: all four files (GRCore/GRDiag/GRFacts/PairMomentumBlocks)
+  ZERO sorries, full T1-T5 coverage visible, ZZ[i]-twin architecture.
+  halfcharge2: WHCBase + WHCProbe complete; WindowHalfCharge 13
+  sorries - genuinely unfinished; left running (no claim rides on it).
+- STOP-AND-RETURN instructs sent to boundstate + momentum: preserve
+  proof-complete prefix, final verification pass, summary with
+  per-theorem trust disclosure, finish for harvest. E-paper headline
+  (spectrum factorization + cubic + pinned modes) and the momentum
+  companion are now one harvest away each.
+
+## 2026-07-11 21:05 PDT - Fable: NEXT JOB WAVE launched (user-directed) + one oracle kill
+
+- SUBMITTED fable-24h-charbridge 778f63f0: the deferred T3 matrix
+  charpoly bridge, seeded from boundstate's own LIVE proof-complete
+  file (T1 factorization + faithful ZZ[i] bridge already in it);
+  routes ranked integer-twin scaling > check-the-product >
+  disclosed native_decide fallback.
+- SUBMITTED fable-24h-flowr1 4db82ed8: derive the flow-count hinge's
+  hypotheses from actual two-band eigenphase geometry (locally
+  constant semicircle count + transversal jump law + periodicity ->
+  the hinge); documented-sorry handoff acceptable on isolated analytic
+  lemmas only.
+- ORACLE KILL (recorded per discipline): my quick C4-odd composition
+  experiment was INVALID - I hand-coded the odd block coupling instead
+  of GammaOddKickDichotomy's own oddH ({G2,Hod} != 0 fired) and used
+  the unconjugated frame ([G2,U2] != 0, non-integer chi confirmed the
+  mismatch). Same lesson as pairKick: the module's own definitions or
+  nothing. C4-odd job stays gated pending a correct oracle.
+- Schur-jet job (hostile2 #1 fragility fix) also gated: the walk-symbol
+  convention behind the recorded +-(4/5)diag(-1,1,-1) Jacobians is not
+  on disk (pre-restart heredoc); a GATED variant-sweep oracle is
+  running (gate = reproduce dim-2 kernels at both gaps at the central
+  node + the recorded Jacobian). Submit only on gate PASS.
+- Fleet (fable): halfcharge2, censustwin, selection2, charbridge,
+  flowr1 + boundstate/momentum finishing on stop-and-return = 7.
+
+## 2026-07-11 21:12 PDT - Codex: D-R3-3 scaled boundary nonvacuity landed
+
+- LANDED `ScaledChangingMomentumWalk.lean`: an explicit changing-lattice
+  schedule with spacing `1/(N+1)`, represented physical radius `N+1`, a
+  quartic microscopic-step budget, and the live uniform split-to-exact Dirac
+  multiplier estimate on every retained mode.
+- The convergence statement is not confined to fixed momentum: the positive
+  x-face boundary mode remains retained, has physical momentum exactly
+  `N+1 -> infinity`, and its live error still tends to zero.
+- This closes D-R3-3 at the multiplier level. D-R3-4 remains the cell-average
+  or conditional-expectation approximation of arbitrary `L2(R^3)` data and
+  composition with inverse Fourier transform to identify the PDE flow.
+- VERIFIED: direct Lean check PASS; targeted build PASS (8032 jobs);
+  `OvernightTheoryAxiomGuard` PASS with the standard footprint; touched-file
+  pre-commit and `git diff --check` PASS.
+
+## 2026-07-11 21:08 PDT - Fable: SCHUR GATE PASSED + fable-24h-schurjet SUBMITTED (fcd99149)
+
+- Second-stage gate decoded an apparent contradiction into a
+  convention: the raw d-vector Jacobian is the SAME at both gaps of
+  the central node; the recorded Floquet opposition comes from the
+  charge-design memo's own gap-orientation factor s (= +1 at gap 0,
+  -1 at gap pi) in d_a = -(s/2) Im tr(sigma_a S) - the memo's
+  "load-bearing sign convention" paragraph, empirically confirmed.
+  With s: central(+1) det -64/125, central(-1) +64/125, odd-parity
+  node flipped - the full recorded structure reproduced. GATE PASS.
+- Bonus simplification discovered en route: U0 normal => the Schur
+  jet equals the plain kernel-basis compression V0^H U'(0) V0 (the
+  D-block inverse drops out at first order) - makes the Lean target
+  pure finite algebra.
+- Submitted fable-24h-schurjet fcd99149: T1 exact node structure, T2
+  the jet identity with the s-convention documented, T3 the per-node
+  Floquet opposition DERIVED from the walk symbol - closing hostile2's
+  #1 fragility ("what have you machine-checked about the walk?").
+- Fleet (fable): 8 tracked - halfcharge2, censustwin, selection2,
+  charbridge, flowr1, schurjet + boundstate/momentum on stop-and-return.
+
+## 2026-07-11 21:13 PDT - Codex: D-R3-4 cell-sampling proof launched
+
+- Prepared a typechecking ten-rung target for the actual half-open momentum
+  cells: center membership, coordinate and sup-norm radius `h/2`, sampler
+  reduction on disjoint cells, exact finite-union volume, pointwise Lipschitz
+  error, global squared-`L2` estimate, and changing-mesh convergence.
+- The capstone is scoped honestly to a fixed compactly supported Lipschitz
+  momentum field covered by finite cells of uniformly bounded physical volume.
+  Arbitrary-`L2` density and inverse-Fourier/PDE composition remain successors.
+- SUBMITTED focused Aristotle project `6895852f-593b-4ab1-8832-9b1b424d3e20`,
+  task `f1b994c8-1b9a-4d2f-b670-3489fe2f3030` (`codex-24h-d-r3-cell-sampling`).
+- Context-pack preflight was attempted and logged but Neo4j refused the local
+  port 7687; the package carries the exact prerequisite module and D-R3 memo.
+
+## 2026-07-11 21:14 PDT - Fable: HARVEST CLAIMS - b94c21da (momentum, COMPLETE after stop-and-return) + 9b4d417a (selection2)
+
+## 2026-07-11 21:26 PDT - Codex: reciprocal sign audit narrowed; reality gate landed
+
+- HARVESTED hostile audit `f19c0fa2`: both rational endpoint formulas and the
+  seven-value exceptional set are exact, but the advertised family no-go was
+  missing explicit live `U_+`/`U_-` blocks, a fixed register convention,
+  pathwise `det U_+ * det U_- = 1`, and origin avoidance.
+- Corrected the oracle memo: endpoint signs are external-oracle data; the root
+  conclusion is conditional until those hypotheses compose in one theorem.
+- LANDED `PairedDeterminantReality.lean`: for unitary `4 x 4` `U` with
+  `det U = 1`, `star(det(U-I)) = det(U-I)` and its imaginary part is zero.
+  This is the exact typed gate that licenses a real sign argument; parity is
+  explicitly load-bearing.
+- VERIFIED new module: direct Lean PASS; targeted build PASS (8026 jobs),
+  standard footprint. Aggregate guard retry was blocked by the concurrent new
+  `PairMomentumBlocks` dependency, whose object build exceeded five minutes;
+  aggregate PASS is not claimed yet.
+
+## 2026-07-11 21:34 PDT - Codex: stationary-amplitude primitive harvested and landed
+
+- HARVESTED Aristotle `bb365801`. The central generic result survives: two
+  arbitrary noncommuting star projectors generate an exactly unitary
+  range-one Laurent walk on the circle, with a generally nonzero onsite band.
+- Aristotle correctly rejected three false submitted statements. The Laurent
+  expansion requires `z != 0`; forward and backward controlled phases each
+  remain in their own family under adjoint with inverse phase. The live module
+  documents the exact counterexamples and corrected statements.
+- Nondegeneracy is explicit: rational noncommuting projectors give onsite
+  matrix `[[16/25,-12/25],[12/25,16/25]] != 0`, while the full walk at `z=i`
+  is exactly unitary.
+- VERIFIED `StationaryAmplitudeProjectorWalk.lean`: direct Lean PASS;
+  targeted build PASS (8026 jobs), standard footprint. Aggregate guard awaits
+  completion of Fable's already-running `PairMomentumBlocks` dependency.
+
+## 2026-07-11 21:39 PDT - Codex: isotropic stationary-Weyl successor launched
+
+- Prepared an explicit six-projector rational fixture. Each axis pair is
+  noncommuting with nonzero onsite amplitude, while its first Laurent moment is
+  exactly `(3/5) sigma_x`, `(3/5) sigma_y`, or `(3/5) sigma_z`.
+- Target also requires exact all-torus unitarity of the ordered three-axis
+  product and identity at the designated origin. It deliberately makes no
+  unique-cone claim; the complete node census is the successor gate.
+- SUBMITTED focused Aristotle project `02fbf989-4080-4e0c-86c0-3eede23f9aaa`,
+  task `3a543549-140e-4aba-85f8-ef99054c0ecf`.
+
+## 2026-07-11 21:40 PDT - Codex: positive-Weyl branch completeness LANDED
+
+- HARVESTED Aristotle `ae7aec57`; all global biconditionals and controls were
+  preserved exactly. Independent branch audit `0eefb107` agrees with the case
+  split and found no off-list candidates.
+- The live positive `2 x 2` block equals `+I` exactly at even-parity cosine
+  corners or body centers with sine product `-1`; it equals `-I` exactly at
+  odd-parity corners or body centers with sine product `+1`.
+- The two branches are disjoint and every crossing has nonzero determinant of
+  the actual Frechet Jacobian. The rank-deficient quarter-axis control lies on
+  neither branch. This upgrades the finite charge lists to an exhaustive
+  positive-Weyl branch theorem, not a Chern-number claim.
+- VERIFIED `PositiveWeylBranchCompleteness.lean`: direct Lean PASS; targeted
+  build PASS (8040 jobs), standard footprint. Aggregate guard awaits the
+  concurrently running Fable aggregate build.
+
+## 2026-07-11 21:37 PDT - Fable: MOMENTUM + SELECTION2 LANDED COMPLETE - guard green 8,317
+
+- PairMomentum{GRCore,GRDiag,GRFacts,Blocks} integrated (file renames +
+  import rewires only; all 18 public statements diff-identical; trust =
+  kernel + two disclosed twin-layer native tokens). Selection2Repairs
+  integrated kernel-only (all four hostile2 repairs; the prover noted
+  Hermiticity was unused in the scalar collapse - stronger than asked).
+- 10 guard pins (6 momentum at +2 footprint, 4 selection2 at kernel);
+  aggregate guard PASS 8,317 jobs.
+- Papers synced and PASS: E momentum paragraph + ring-witness remark
+  now machine-checked citations; A selection passage upgraded (scalar
+  collapse = kernel theorem; control suite complete; single remaining
+  boundary = the definitional CAR-to-block reduction). Scorecard
+  E-MOM / A-SELECT / P-ODDKICK rows updated with audit findings closed.
+- Docstring cross-references updated queued->landed in
+  PairKickSelection + GammaOddKickDichotomy (rebuild PASS); remaining
+  open item recorded: the Dphase-to-repo-operator lemma.
+- Remaining E headline piece: boundstate (stop-and-return in progress,
+  10.5h; its needed theorems verified proof-complete in the live
+  download). Fleet: charbridge, flowr1, schurjet, censustwin,
+  halfcharge2 computing.
+
+## 2026-07-11 21:42 PDT - Fable: CLAIM - A strengthening round 2 (user-directed): abstract catch-up + Selection2Repairs sync + CAR-to-block job
+
+## 2026-07-11 21:45 PDT - Fable: A STRENGTHENING ROUND 2 EXECUTED
+
+- Abstract caught up with tonight's landings (two calibrated additions:
+  the resolved selection gate with its complete control suite; the
+  crossing charge bookkeeping with the honest kernel/run-record split
+  naming the in-flight central-node kernel instance). The cube-law
+  sentence was already present from the earlier wave. A double-compile
+  PASS.
+- Selection2Repairs synced into A's appendix verification list and the
+  manifest HEADLINE_MODULES (A cites it; the lists must cover it).
+- SUBMITTED fable-24h-carblock 4f6a5cef: T1 the CAR-to-block reduction
+  linear equivalence (Hermiticity carried both ways), T2 blockOf(Kop z)
+  = the selection family member, T3 the Fock-level gauge tie (Dfock =
+  phase on mode 0; block shadow = Dphase; exact equivariance
+  hand-verified in the docstring via Kop_apply), T4 the unitary
+  charpoly sharpener ((X-+1)^2 => U = -+1). On landing: A's last
+  selection boundary closes ("at block level" -> the CAR class), the
+  audit's bare-local-def residue retires, and the two-band degeneracy
+  upgrades to "the walk is trivially +-1 at a zero-flow crossing".
+- Deferred by design: the 8-node schurjet extension (triggers on
+  fcd99149's return); the Codex cross-lane chirality citation (needs
+  lane coordination, flagged in my earlier assessment).
+- Fleet (fable): charbridge, flowr1, schurjet, censustwin, halfcharge2,
+  carblock + boundstate winding down = seven tracked.
+
+## 2026-07-11 21:51 PDT - Codex: combined aggregate guard green
+
+- After Fable's momentum dependencies completed, reran the combined current
+  `OvernightTheoryAxiomGuard` containing both agents' newest imports.
+- Direct guard PASS (182 s); Lake target build PASS (8320 jobs, 175 s).
+- The three Codex landings in this wave - paired-determinant reality,
+  stationary-amplitude projector unitarity, and positive-Weyl branch
+  completeness - retain exactly the standard pinned footprint.
+- Existing draft modules replayed with their already-disclosed compiled-
+  evaluation warnings; no such dependency appears in the three new theorem
+  pins.
+
+## 2026-07-11 22:04 PDT - Fable: HARVEST CLAIMS - 4d9642bf (boundstate COMPLETE, 11h) + 4db82ed8 (flowr1)
+
+## 2026-07-11 22:06 PDT - Fable: flowr1 PARKED as documented handoff
+
+- TwoBandEigenphaseCount integrated as a parked handoff module (no root
+  import, no pins): (c) periodicity + (d) the reduction to the hinge
+  COMPLETE; (a) local constancy + (b) jump law are documented sorries
+  with corrected hypotheses (prover fixed my under-specified sketches -
+  in-contract for a statement-design job). R1 remains open with the
+  architecture now standing.
+
+## 2026-07-11 22:18 PDT - Codex: stationary-Weyl construction and exact alias landed
+
+- HARVESTED Aristotle `02fbf989`: six explicit rational star projectors, three
+  noncommuting/nonzero-onsite axes, exact `(3/5)` Pauli first moments, all-torus
+  product unitarity, and identity origin all landed verbatim.
+- Exact oracle `analyze_stationary_amplitude_weyl.py` derives real rational
+  Pauli polynomials and, across 5,000 deterministic random starts, finds four
+  zero-gap roots and no pi roots. Only one extra root is currently claimed.
+- LANDED `StationaryAmplitudeWeylAlias.lean`: the distinct phase
+  `(-1,1,-1)` is another exact identity crossing. Therefore the construction
+  proves compatibility of the local design constraints but is not unique-cone.
+- VERIFIED tangent and alias modules: direct Lean PASS; targeted builds PASS
+  (8027 and 8028 jobs), standard footprint. Complete four-root census remains
+  open; two off-corner roots are oracle candidates only.
+
+## 2026-07-11 22:18 PDT - Codex: D-R3 dense core and reciprocal family landed
+
+- HARVESTED Aristotle `6895852f`: actual half-open cell-center sampler,
+  exact union volume, support reduction, global squared-`L2` error, and
+  changing-mesh convergence all proved concretely. Live API removes three
+  redundant hypotheses as a strengthening.
+- D-R3-4 now has a compact-support Lipschitz dense core with error bounded by
+  `V (L h / 2)^2`. Remaining: arbitrary-`L2` density, composition with the live
+  scaled multiplier, and inverse-Fourier Dirac PDE identification.
+- HARVESTED Aristotle `32c20d53`: exact rational reciprocal coin family,
+  including complete two-band `z=-1` zero/pi corner-gap exceptional sets and
+  exact `r=1/2` bridge to the landed fixture. No four-component claim added.
+- VERIFIED D sampler and reciprocal family: direct Lean PASS; targeted builds
+  PASS (2555 and 8027 jobs), standard footprint. Aggregate refresh pending the
+  combined new-import batch.
+
+## 2026-07-11 22:31 PDT - Fable: halfcharge2 STALL CONFIRMED (user-flagged) - stop-and-return sent
+
+- User flagged a 34 GB memory-limit complaint; aristotle show confirms
+  16% at 12h14m - the symbolic Gamma-identity route on the window
+  matrices is thrashing against the ceiling. Stall protocol invoked:
+  stop-and-return sent (preserve the sorry-free WHCBase + WHCProbe
+  byte-identical; document the WindowHalfCharge sorries; name the
+  computation that exhausted memory; finish for harvest).
+- Cost assessment: ZERO manuscript exposure - the scorecard E-HALF row
+  has been HONEST-PENDING by design since strategy4 Q1b, and no
+  indicative claim in any paper rides on this job.
+- Planned successor (after harvest): restate the SINGLE-WINDOW
+  half-charge as explicit Gaussian-integer twin matrices with kernel
+  decide (the pattern that landed oddkick/momentum/boundstate),
+  explicitly banning the symbolic route that blew up. Strategy3 Q3-c
+  minimal-cut shape.
+
+## 2026-07-11 22:38 PDT - Codex: coupled reciprocal slice no-go landed
+
+- HARVESTED Aristotle `06fe540d`: all thirteen proof holes closed without a
+  signature change. The exact four-component chirality-coupled reciprocal
+  candidate has a nonzero-momentum zero crossing and a nonzero-momentum pi
+  crossing on the slice `q_x=pi`, `q_y=0`.
+- The determinant formulas are squared reciprocal quartics. The physical
+  unit-circle roots are constructed by real sign changes, IVT, and `arccos`,
+  not inferred from numerical samples.
+- LANDED `CoupledReciprocalSliceNoGo.lean` with full namespace, provenance,
+  local pins, root import, aggregate pins, claim-delta row, gate-matrix update,
+  and manuscript promotion from oracle/in-flight to `NoGo Kernel`.
+- VERIFIED direct Lean PASS (47 s), targeted build PASS (8026 jobs), standard
+  footprint. Scope remains one direct architecture; no universal reciprocal
+  no-go is claimed.
+
+## 2026-07-11 22:42 PDT - Codex: five-module aggregate green; stalls split
+
+- Direct `OvernightTheoryAxiomGuard` PASS (186 s); Lake target build PASS
+  (8325 jobs, 216 s). This jointly verifies the stationary-amplitude tangent
+  and exact alias, changing-lattice cell sampler, reciprocal coin family, and
+  coupled reciprocal slice no-go.
+- Existing draft compiled-evaluation warnings replayed; none enters the new
+  theorem pins, which retain the standard footprint.
+- Enforced the two-hour stall rule on SU(2) locking `6f7b7727` and promoted-
+  batch audit `f38a2dd1`: snapshots taken, tasks explicitly canceled. The SU(2)
+  target had no solved declaration; the audit archive had no report.
+- Resubmitted only the two load-bearing SU(2) matrix lemmas as a Mathlib-only
+  focused package: project `9060adfd-4338-4717-bd85-02780e93b741`, task
+  `e277a759-de91-4538-8a40-03861dd76a5e`. No broad build is requested before
+  both proof holes close.
+
+## 2026-07-11 22:45 PDT - Codex: grand strategy 8 and literature lanes launched
+
+- SUBMITTED full-context review-only grand strategy 8: project `77064e29`,
+  task `b46431c5`. It is explicitly forbidden to build or edit and must rank
+  exact next attacks across B, D, the phase consequence, and decomposition
+  classification, with Lean-shaped statements and kill conditions.
+- The first package pass exposed only a stale optional SpherePacking patch
+  assumption in the helper; regeneration with the absent optional dependency
+  disabled passed all package-state checks.
+- Dispatched two Spark sidecars: primary-source minimal-doubling/reciprocal QCA
+  search and an exact Mathlib/public-Lean API map for arbitrary-L2 density from
+  the landed cell sampler. Both own report-only files and do not block the proof
+  lane.
+
+## 2026-07-11 22:48 PDT - Codex: focused B audit restored
+
+- SUBMITTED review-only audit project `3ac9a0c9`, task `cd4a927a`, restricted
+  to the stationary-amplitude and reciprocal successor modules plus their
+  manuscript passage. Broad builds and edits are forbidden.
+- Required verdicts include physical unit-circle/nonzero-momentum validation,
+  phase/register/factor convention consistency, architecture-vs-universal
+  scope, and the smallest missing negative control.
+- The reciprocal literature Spark sidecar exhausted its own context without a
+  report; Codex is using the documented direct-search fallback. The separate
+  Lean-API sidecar remains active.
+
+## 2026-07-11 22:55 PDT - Codex: D arbitrary-L2 hinge submitted
+
+- Spark Lean/API report completed and independently identified Mathlib's
+  compact-support continuous/smooth density, `eLpNorm` triangle, and L2 Fourier
+  isometry declarations. Direct LeanSearch agreed.
+- PREPARED a four-theorem, already-typechecking target: arbitrary complex L2
+  squared-error approximation; compact-smooth implies one global Lipschitz
+  constant; explicit smooth quadratic boundary function; and proof that the
+  noncompact quadratic is not globally Lipschitz.
+- SUBMITTED project `f39b6a29`, task `48a84b2a`. Statements may not be weakened.
+  The semantic context-pack service timed out; the completed exact API report
+  was attached as the documented fallback.
+- Direct primary-source literature fallback also landed as
+  `DIRECT_LIT_MINIMAL_DOUBLING_RECIPROCAL_2026-07-11.md`. Its strongest route is
+  the Bakircioglu-Arnault-Arrighi eight-sheeted `Z2^3` flavour covering, clearly
+  scoped as enlarged-register reinterpretation rather than a unique cone.
+
+## 2026-07-11 23:05 PDT - Codex: exact `9-40-41` off-corner alias submitted
+
+- Exact symbolic elimination on the oracle's symmetric slice
+  `q_y=-q_x`, `q_z=0` factors all Pauli equations through
+  `-4c+5s+4`; the circle equation leaves the non-origin solution
+  `c=-9/41`, `s=-40/41`.
+- PREPARED and typechecked seven fixed statements for
+  `z_x=(-9-40i)/41`, `z_y=(-9+40i)/41`: unit-circle certificates, exact
+  identity crossing, origin distinctness, packaged existential, and a
+  wrong-orientation control with exact entry `-1104/1681`.
+- SUBMITTED project `40759331`, task `5633e105`. Exact matrix equalities and
+  the negative control may not be weakened. If it lands, the live fixture has
+  a proved off-corner alias in addition to the origin and corner alias; complete
+  census still remains open.
+
+## 2026-07-11 23:10 PDT - Codex: enlarged-register successor strategy launched
+
+- SUBMITTED focused review-only project `183d920d`, task `88a4d101`, to turn
+  the primary-source eight-sheeted `Z2^3` covering into exact finite Lean types,
+  a representative/flavour bijection, and an enlarged-register intertwiner.
+- The contract requires a nonidentity witness, wrong-cover control, and two
+  proof-package boundaries. It must treat aliases as explicit flavour
+  multiplicity, not claim a single-species unique cone or derive Standard Model
+  families from an eightfold register.
+- Codex fleet restored to six useful jobs: three proofs, two focused strategies,
+  and one adversarial audit.
+
+## 2026-07-11 23:18 PDT - Codex: SU(2) crossing locking landed
+
+- HARVESTED focused retry `9060adfd`: both core determinant-one unitary `2x2`
+  theorems preserved exactly. Extracted standalone target independently passed
+  Lean before integration.
+- LANDED `SU2CrossingLocking.lean`: zero and pi determinant roots lock the whole
+  sector to `+I` and `-I`; arbitrary-family preimage equalities; exact
+  determinant-minus-one positive and negative controls.
+- VERIFIED live direct Lean PASS and targeted build PASS (8027 jobs). Root
+  import, local pins, aggregate pins, claim delta, gate matrix, manuscript
+  paragraph/table, task note, and provenance are updated.
+- Scientific consequence: in a determinant-one two-band sector, the matrix
+  determinant census and the identity-crossing census are now exactly the same
+  problem. No transversality, Chern, or global-chirality claim is added.
+
+## 2026-07-11 23:24 PDT - Codex: focused audit and grand strategy 8 harvested
+
+- HARVESTED audit `3ac9a0c9`: all six B modules are mathematically sound and
+  convention-consistent; architecture/slice scope is preserved. Three prose or
+  control gaps were found: per-axis versus product-level isotropy, the word
+  `additional` on the coupled slice, and absent direct nonconstancy for the
+  stationary symbol.
+- RESPONSE LANDED: manuscript now scopes isotropy to per-axis moments, narrows
+  the coupled claim to nonzero momentum, and records the product derivative as
+  an unpackaged product-rule inference. `nonconstant_control_entry` proves the
+  `(0,0)` entry at `(i,1,1)` is exactly `16/25`; `nonconstant_control` makes the
+  alias no-go kernel-resistant to the constant-symbol reading. Direct Lean PASS.
+- HARVESTED grand strategy 8 `77064e29`: exact stationary root census and D
+  arbitrary-L2 density are the two must-do slots; `Z2^3` covering is the honest
+  enlarged-register route; Paper-F moduli is the cheap capstone. Reports copied
+  to `B_FOCUSED_ALIAS_AUDIT_REPORT.md` and `GRAND_STRATEGY8_REPORT.md`.
+
+## 2026-07-11 23:34 PDT - Codex: D arbitrary-L2 regularity bridge landed
+
+- HARVESTED Aristotle `f39b6a29`: arbitrary complex L2 fields admit compact
+  continuous squared-error approximants; compact support plus differentiability
+  gives one global Lipschitz constant; the quadratic axis is smooth but not
+  globally Lipschitz without compact support.
+- Extracted result direct Lean PASS; live module direct Lean PASS; targeted
+  build PASS (2738 jobs). Provenance, root import, and guards landed.
+- LOCAL COMPOSITION: specialized Mathlib's standard-smooth compact-support
+  `MemLp.exist_eLpNorm_sub_le` and combined it with Lipschitz extraction, so the
+  same arbitrary-L2 approximant now satisfies the sampler's regularity API.
+- Remaining D gate is narrower and explicit: prove uniform L2 boundedness of
+  the finite-cell sampling operators, run the three-epsilon extension, then
+  compose the live multiplier and inverse Fourier Dirac-flow identification.
+
+## 2026-07-11 23:43 PDT - Codex: point-sampler L2 obstruction submitted
+
+- ASSASSIN correction to grand strategy 8: the center point sampler cannot be
+  uniformly bounded on L2 or even descend to AE equivalence classes. A function
+  supported at one cell center is zero almost everywhere but samples to one.
+- PREPARED a typechecking seven-theorem target with the exact point-spike no-go
+  and a normalized cell-average repair: AE congruence, spike-to-zero, and
+  constant-one-to-one normalization.
+- SUBMITTED project `2bd9af0c`, task `9b1be343`. The result preserves the
+  landed Lipschitz sampler while proving that arbitrary-L2 composition requires
+  cell averages or another bounded projection.
+
+## 2026-07-11 23:59 PDT - Codex: exact off-corner alias and cover census landed
+
+- HARVESTED Aristotle `40759331`, task `5633e105`: all seven exact
+  `9-40-41` off-corner statements were preserved. Live module direct Lean
+  PASS; both phases are non-origin unit phases, the complete symbol is identity,
+  and the same-orientation control has exact entry `-1104/1681`.
+- HARVESTED cover strategy `183d920d`, task `88a4d101`. The cover is honest
+  relabelling, not alias removal: for the successive-axis symbol the proposed
+  deck intertwiner collapses to a scalar parity sign and leaves an eightfold
+  physical multiplicity.
+- LANDED `Z2CubedFlavourCorner`: exact cardinality-eight cover, unique flavour,
+  regular deck action, and a too-coarse diagonal-`Z2` negative control. Direct
+  Lean PASS. Manuscript, gate matrix, claim delta, and D-program false-shape
+  correction updated.
+- RESUBMITTED standing D focused audit after the first network read error:
+  project `2511852a`, task `3c45d009`. The point-sampler no-go proof job
+  `2bd9af0c` remains active.
+- SUBMITTED focused cover-intertwiner project `fddb28cc`, task `15a4a58a`:
+  eight unchanged statements test the exact pi-shift sign, scalar parity pullback,
+  determinant zero/pi swap, nonidentity sheet move, and pi/2 wrong-period
+  control. The package is Mathlib-only and typechecks with exactly eight proof
+  holes.
+- VERIFIED aggregate draft guard build PASS (8,329 jobs, 342 s). The new exact
+  off-corner alias and cover census compile in the full import graph with their
+  pinned assumption footprints. Existing draft-only evaluator warnings replayed;
+  no new guard failure appeared.
+- SUBMITTED grand strategy 9 project `cbbc6200`, task `577efb11`: exact
+  stationary-Weyl elimination/completeness, minimal-doubling interpretation,
+  normalized cell-average `L2` projection and live composition, six ranked
+  publication jobs, adversarial claim audit, and two focused theorem packages.
+
+## 2026-07-12 00:24 PDT - Codex: algebraic fourth stationary crossing launched
+
+- Exact tangent-half-angle elimination reduced the fully off-axis oracle root
+  to one quintic
+  `480t^5 - 575t^4 - 1026t^2 + 1440t - 575`, with its sole numerical real
+  root near `1.4961179248` and a rational isolating interval `(149/100,3/2)`.
+- A branch Groebner basis gives linear reconstruction formulas
+  `430976 tx = 1061280t^4 - 462525t^3 - 644875t^2 - 2634243t + 1258155`
+  and
+  `820352 ty = 574560t^4 - 959475t^3 - 575125t^2 - 958797t + 2176245`.
+  This exactly reproduces the oracle angles.
+- SUBMITTED focused Mathlib-only project `5c45a7f6`, task `f61cb46d`: IVT
+  root existence, all three nonzero tangents, exact unit phases, actual live
+  `2x2` stationary `weylStep = I`, and a packaged fully off-axis witness.
+  Completeness and global uniqueness remain separate gates.
+
+## 2026-07-12 00:34 PDT - Codex: point-sampler false shape closed exactly
+
+- HARVESTED Aristotle `2bd9af0c`, task `9b1be343`: all seven statements
+  preserved and proved. A singleton spike is AE-zero but center-samples to one;
+  the AE-equal zero field samples to zero. Therefore point sampling cannot
+  define an arbitrary-`L2` operator.
+- LANDED `ChangingMomentumPointSamplerNoGo` with provenance, local and aggregate
+  pins, root import, and direct Lean PASS. Normalized cell averaging is
+  AE-invariant, kills the spike, and returns one on the constant-one field.
+- HARVESTED independent audit `2511852a`, task `3c45d009`: density composition,
+  standard smoothness order, and noncompact quadratic control all pass. The
+  report's only theorem-status warning was resolved concurrently by the proof
+  landing. Manuscript, D program, gate matrix, and claim delta corrected.
+- LANDED `ChangingMomentumCellProjection`: finite normalized average projection
+  is AE-invariant, reduces to the unique selected-cell average, reproduces one,
+  and has an exact unnormalized mesh-two control `8 != 1`. Direct Lean and
+  targeted build PASS.
+- SUBMITTED hard analytic successor project `9ffa5c89`, task `6e4d7306`:
+  cellwise Cauchy/Jensen, exact finite output energy, disjoint input-energy
+  decomposition, global `L2` contraction, spike-zero, and nonzero constant
+  witness. Target typechecks with exactly six proof holes.
+- SUBMITTED standing off-axis elimination audit `43157e22`, task `d4ebffd1`:
+  independently checks the live matrix convention, Pauli numerators, Groebner
+  branch, interval/nonzero controls, theorem truth, omitted pi charts, and all
+  four overclaim modes before manuscript promotion.
+- UPDATED `Scripts/oracle/analyze_stationary_amplitude_weyl.py` to reproduce
+  the exact tangent-half-angle numerator system, elimination factor, SymPy
+  exact real-root counts (quintic 1, sextic 0), and compact triangular branch
+  certificate. Re-run PASS under Python 3.12.10 / SymPy 1.14.0; these CAS
+  certificates remain external until their Lean statements land.
+- SUBMITTED pure-real completeness project `ba38840e`, task `58784513`:
+  global uniqueness of the quintic real root, positivity of the excluded
+  sextic, and the exact real-elimination factor iff. The package includes
+  rational Bernstein certificates on three left intervals, a positive right
+  shift, and a positive divided-difference route on the root window.
+
+## 2026-07-12 00:54 PDT - Codex: exact eight-sheet scalar cover verdict landed
+
+- HARVESTED focused Aristotle `fddb28cc`, task `15a4a58a`: all eight statements
+  preserved. Each axis pi-shift negates the live `4x4` step; the full cover
+  intertwines through only the scalar flavour-parity character.
+- LANDED `Z2CubedFlavourIntertwine`: exact determinant theorem proves four even
+  sheets preserve zero quasienergy and four odd sheets exchange zero with pi;
+  a one-axis deck move is nonidentity (`det(U-I)=16` at the shifted origin), and
+  pi/2 is not any scalar deck period. Direct Lean PASS; targeted build PASS
+  (8,033 jobs).
+- Manuscript and gate matrix now state the physically adverse conclusion
+  directly: this cover is faithful eightfold bookkeeping, not de-aliasing,
+  internal flavour dynamics, or a family-count derivation.
+- VERIFIED aggregate draft guard build PASS (8,332 jobs, 188 s) with the exact
+  cover intertwiner, point-sampler AE no-go, and repaired finite cell-average
+  projection included. Existing draft-only evaluator warnings replayed; no new
+  axiom-pin or import failure appeared.
+- HARVESTED grand strategy 9 `cbbc6200`, task `577efb11`. A complementary
+  exact-CAS `t_x` Groebner factorization supports four zero and no pi roots,
+  while reiterating that chart boundaries, real-root exclusion, Jacobian rank,
+  and the final census remain kernel gates. The report ranks the already-active
+  stationary census and cell-average contraction first, followed by a cheap
+  Paper-F positive-decomposition moduli capstone.
+
+## 2026-07-12 00:53 PDT - Fable: HARVEST CLAIMS - 4f6a5cef (carblock) + fcd99149 (schurjet) + 48a540a1 (censustwin)
+
+## 2026-07-12 00:56 PDT - Fable: TRIPLE HARVEST integrated + THREE replacements submitted (10-min rule now standing)
+
+- User directive (third and binding): never idle-watch >10 min; on any
+  completion, integrate + submit high-value replacement same cycle.
+  Banked to persistent memory as a hard rule.
+- HARVESTED + INTEGRATED (guard build in flight):
+  carblock (4f6a5cef): all four targets kernel-only - the reduction
+  equivalence with Hermiticity carried both ways, blockOf(KopL z) =
+  the selection family, the Dfock gauge tie with exact equivariance,
+  and the unitary charpoly sharpener. A's last selection boundary
+  CLOSES on guard green.
+  schurjet (fcd99149): kernel-only INCLUDING the jets (algebraic trig
+  identity, no analysis) - central-node structure, Jacobians derived
+  from the walk, J_recorded = -J_here naming bridge proven against the
+  landed fixtures, Floquet opposition DERIVED. hostile2 #1 closed.
+  censustwin (48a540a1): all 40 native_decide removed via
+  walk_reduce/det_reduce simp/norm_num tactics (kernel decide provably
+  infeasible on Rat gcd + Leibniz det - honest note); public
+  statements BYTE-IDENTICAL; Paper C census now kernel-clean. Guard
+  pins updated from +2 to the 3-axiom footprint.
+  Plus the boundstate fixture pins (kernel + 2 disclosed native) in
+  the same guard pass.
+- SUBMITTED: halfcharge3 3772f283 (integer-twin single-window cut;
+  symbolic route BANNED per the 34GB stall); schurjet8 392ca12f (all
+  eight nodes; the full census derived from the walk, or a correction
+  notice as first-class result); flowr1b 0f31a7e4 (the two analytic
+  sorries, statements frozen as corrected by the prior prover).
+- Fleet (fable): charbridge, halfcharge2(winding down), halfcharge3,
+  schurjet8, flowr1b + guard build = five computing.
+
+## 2026-07-12 01:08 PDT - Codex: Paper F classification capstone and exact stationary root harvest
+
+- LANDED `ChannelDecompositionModuliCapstone`: the chosen four-channel basis is
+  coefficient-rigid, but positive named-orthogonal complements form an exact
+  rational open-disk moduli family and fixed-total type-only refinements form a
+  nontrivial zero-sum torsor. Scoped solder-degree, trace, commutator-blind,
+  shift-invariant, and finite-valued selector obstructions remain explicit;
+  positive quadratic selectors are unique only after a metric choice and two
+  positive metrics select different exact refinements. Direct Lean PASS;
+  targeted build PASS (8,041 jobs). Aggregate guard pending.
+- HARVESTED Aristotle `ba38840e`, task `58784513`: all eight exact real-root
+  statements preserved. LANDED `StationaryAmplitudeWeylRootClassification`:
+  the tangent-elimination quintic has one real root globally and the companion
+  sextic is everywhere positive. Returned candidate and live direct Lean PASS.
+- SCOPE: the matrix-to-resultant derivation remains an external exact-CAS step,
+  and tangent-chart phase-`-1` boundaries remain outside the theorem. No claim
+  of a complete stationary crossing census is made yet.
+
+## 2026-07-12 01:06 PDT - Fable: SUBMITTED fable-24h-walkforce (5e105f5f) - the constraint-forcing theorem
+
+- The 'to 7' upgrade from tonight's assessment: classify the FULL
+  covariance group of the derived mass-operator family {B_z}. Oracle =
+  hand algebra (sympy mishandled symbolic conjugates - two-point
+  instantiation at z = 1, i is complete): unitary covariances are
+  exactly diagonal (f(z) = a conj(d) z - the chiralPhase circle mod
+  scalars) or antidiagonal (the orientation flip f(z) = u conj(z)).
+  Job targets: T1 classification/completeness, T2 mod-scalar
+  identification with chiralPhase, T3 the forcing corollary through
+  carblock's block machinery (the selection constraint set = the
+  covariance constraint of the derived family, not a choice), T4
+  nonvacuity + a Gaussian-rational rotation control that FAILS
+  covariance. Honest boundary stated: static-family covariance, not
+  yet the dynamical walk commutant.
+- Fleet (fable): charbridge, halfcharge3, schurjet8, flowr1b,
+  walkforce = five computing; guard mega-build in flight.
+
+## 2026-07-12 03:49 PDT - Fable: HARVEST CLAIMS - charbridge 778f63f0 + walkforce 5e105f5f + schurjet8 392ca12f + flowr1b 0f31a7e4
+
+## 2026-07-12 03:59 PDT - Fable: GUARD ARCHITECTURE FIX - heavy fixture natives OOM'd the aggregate guard (user-flagged)
+
+- DIAGNOSIS: the aggregate OvernightTheoryAxiomGuard build stalled at
+  8335/8338 for ~40 min; no cached fixture olean, no active high-mem
+  lean process = the E-fixture native_decide steps (Vz^28 over ZZ[i],
+  the 28x28 charpoly) OOM'd a 34GB machine, same wall halfcharge2 hit.
+  Killed 16 stuck lake drivers + 2 heavy lean workers.
+- ROOT CAUSE (my error): I routed the heavy fixture natives (faithful,
+  Vz_annihilated, V_annihilated, charbridge's V_charpoly_eq) through
+  the ALWAYS-ON aggregate guard. Every future landing that rebuilds the
+  guard would then pay a >34GB / tens-of-minutes cost - untenable.
+- FIX: backed PairSpectrumFixture + PairSpectrumFixtureC +
+  PairCharpolyBridge out of BOTH the aggregate guard and PhysicsSMDraft
+  root. Created PairSpectrumFixtureGuard.lean (on-demand, documented:
+  build only on a high-memory machine; footprints transcribed from the
+  Aristotle jobs' #print axioms). The fixture's LIGHT kernel theorems
+  (charpoly_factorization, p12, pinned eigenvectors) are pinned there
+  too and DO build locally.
+- The 3 LIGHT kernel-clean landings (walkforce MassCovarianceForcing,
+  schurjet8 SplitStepSchurJetAllNodes, flowr1b TwoBandEigenphaseAnalytic)
+  ARE in the aggregate guard - rebuild in flight (byoycsh8i, ~8339 jobs,
+  no natives, fast).
+- HONEST CONSEQUENCE for the E paper: the spectrum-fixture kernel/native
+  theorems are verified-in-Aristotle, locally rebuildable only on a
+  high-mem box. Papers must cite them with that caveat, not as
+  "rebuilds in our aggregate guard". Scorecard E-SPEC to note it.
+
+## 2026-07-12 04:10 PDT - Fable: HARVEST - hostile3 (6989c487) + strategy10 (e190d013)
+
+## 2026-07-12 04:14 PDT - Fable: AGGREGATE GUARD GREEN (8,339 jobs) + hostile3 boundaries recorded
+
+- After the OOM fix + namespace/pin repairs (schurjet8 namespace clash,
+  flowr1b TwoBandFamily-nested pins, MassCov bare namespace, deleted the
+  superseded parked TwoBandEigenphaseCount), the aggregate guard builds
+  clean: walkforce/schurjet8/flowr1b light landings pinned kernel-only,
+  census kernel-clean, heavy fixture isolated in PairSpectrumFixtureGuard.
+- HOSTILE3 verdict: all four landings mathematically SOUND; issues are
+  scope/framing to calibrate in the papers (this is why we audit before
+  freeze):
+  * walkforce: T1 completeness genuine; but 'the gauge action is forced'
+    prose bridges to a DYNAMICAL selection not in-file. SCOPE to the
+    STATIC family {B_z} + block gauge; dynamical walk commutant is the
+    stated open boundary.
+  * charbridge: 5^11 honest (denominator-clearing of the monic rational
+    charpoly), charpoly computed STRUCTURALLY/kernel via companions (NOT
+    a 28x28 native - lighter than feared); RHS matches the factorization
+    verbatim. Aux IS in our repo (packet artifact only).
+  * schurjet8: (-1)^parity collapse EXACT; but the 8-node census ties
+    the walk to a LOCAL re-declaration 'copied verbatim' from
+    SplitStepChargeBalance, no import forcing agreement -> claim 'matches
+    the census table', add a bridge lemma before claiming 'the LANDED
+    census'.
+  * flowr1b: countAt_locally_constant solid; jump_law's added hyps
+    (hclean completeness + 'other' branch) are satisfiable + non-trivial
+    but NO concrete-walk instance is constructed -> the flow-count law
+    holds for the strengthened structure, applicability-to-fixture open.
+- Fleet: momtwin, chlighten (dac47b71), redteam (17c32d9f) running.
+
+## 2026-07-12 04:22 PDT - Codex: off-axis matrix alias and `L2` contraction harvested
+
+- HARVESTED Aristotle `5c45a7f6`, task `f61cb46d`: all eight algebraic
+  off-axis statements preserved. The standalone proof was semantically adapted
+  to import the actual live Weyl/projector definitions rather than its isolated
+  copies. LANDED `StationaryAmplitudeWeylAlgebraicOffAxisAlias`: the unique real
+  quintic root reconstructs three nonzero unit phases and the imported live
+  `weylStep` equals `+I` exactly. Direct Lean PASS; targeted build PASS (8,029
+  jobs). This is one branch witness, not converse exhaustion.
+- HARVESTED Aristotle `9ffa5c89`, task `6e4d7306`: all six finite-average
+  statements preserved with no added integrability hypotheses. LANDED
+  `ChangingMomentumCellProjectionL2`: exact cellwise energy bound, finite
+  disjoint energy identities, global squared-`L2` contraction, AE-zero spike
+  control, and constant-one nonvacuity. Direct Lean PASS; targeted build PASS
+  (8,031 jobs). Strong refinement convergence remains open.
+- HARVESTED hostile audit `43157e22`: phase convention, numerator scales,
+  triangular reconstruction, and `+I` sign all pass. The report corrects the
+  elimination generator to include the real-root-free `(1+t_z^2)^2` factor.
+- EXACT ORACLE FOLLOW-UP: the bare `t_z p_5 p_6` polynomial is not in the
+  numerator ideal. The valid exact certificate is
+  `(1+t_z^2)^2 t_z p_5 p_6 = Q_x F_x + Q_y F_y + Q_z F_z`; reproducible script
+  and Lean-ready certificate memo landed. This correction is now the formal
+  converse target.
+- EXACT BOUNDARY ORACLE: all seven phase-`-1` strata were classified. The only
+  boundary identity root is the already-known `(-1,1,-1)` point; the other
+  positive-dimensional strata have Groebner basis `<1>`, and the all-minus-one
+  corner is nonidentity. Lean promotion remains open.
+- PAPER F: a dedicated classification manuscript scaffold now organizes the
+  rigid-coordinate/open-disk/torsor/selector theorem spine and its physics and
+  information-theory selection gates.
+
+## 2026-07-12 ~04:40 PDT - Fable: PAPER SYNCS COMPLETE (audit-calibrated) - A/E/C all PASS
+
+- Paper A: FORCED selection (static-family covariance; dynamical commutant open per hostile3), CAR-to-block reduction kernel theorem, 8-node census DERIVED from walk (local-copy/import-bridge caveat). PASS.
+- Paper E: charpoly IDENTIFICATION closed (V_charpoly_eq; structural companion charpoly), heavy twin-arith natives -> PairSpectrumFixtureGuard/>34GB. PASS.
+- Paper C: census marks -> KERNEL-CLEAN (retrofit removed 40 native_decide). PASS.
+- Scorecard: C-CENSUS kernel-clean, E-SPEC charpoly-closed, +4 rows (A-FORCE/A-CARBLOCK/A-8NODE/P-1DFLOW-R1) with boundaries.
+- Fleet: momtwin/chlighten/redteam running.
+
+## 2026-07-12 ~04:45 PDT - Fable: two hostile3-gap-closing jobs submitted (fleet -> 5)
+
+- censusbridge (d06a4442): prove SplitStepSchurJetAllNodes' local census
+  == the LANDED SplitStepChargeBalance.census (funext+decide), then the
+  capstone tying the walk-derived charges to the LANDED census - closes
+  A-8NODE's local-copy caveat, or surfaces a drift as a correction.
+- flowinstance (88350d15): construct a concrete TwoBandFamily instance
+  (the flow-one pseudo-doubler symbol) discharging hclean + the 'other'
+  branch fields, grounding flowDiff_eq_zero on an explicit walk - closes
+  P-1DFLOW-R1's no-instance caveat; documented partial acceptable.
+- Fleet (fable): momtwin, chlighten, redteam, censusbridge, flowinstance
+  = 5 running. ~3h to freeze.
+
+## 2026-07-12 ~04:50 PDT - Fable: A appendix + manifest +7 modules (MassCovarianceForcing, CARBlockReduction, SplitStepSchurJet(+AllNodes), TwoBandCrossingDoubling, TwoBandFlowCount, TwoBandEigenphaseAnalytic) - all LIGHT, safe for the headline build; A compile PASS. CLEAN CHECKPOINT: guard green 8339, all 3 papers sync+PASS, scorecard current, hygiene clean, fleet 5.
+
+## 2026-07-12 ~05:05 PDT - Fable: chlighten LANDED + faithful refill
+- CayleyHamiltonAnnihilation (dac47b71) integrated kernel-only (renamed namespace to avoid PairCharpolyBridge clash; targeted build PASS 8026): reusable aeval_eq_zero_of_charpoly_smul + V_annihilated as a KERNEL consequence of V_charpoly_eq. Root import + 2 guard pins STAGED (guard rebuild batches with next harvest).
+- SUBMITTED faithful (92e5c459): re-prove the 28x28 Bz*Kz=5*Vz native as kernel entrywise (NOTE: bash ate the prompt backticks - intent survived; backtick lesson banked to memory).
+- Fleet: momtwin, redteam, censusbridge, flowinstance, faithful = 5.
+
+## 2026-07-12 ~05:15 PDT - Fable: HARVEST - censusbridge (d06a4442) + redteam (17c32d9f)
+
+## 2026-07-12 ~05:30 PDT - Fable: censusbridge LANDED (guard 8343) + redteam cross-paper fixes applied (A/E/F all compile PASS)
+- censusbridge: A-8NODE local-copy caveat CLOSED (walk-derived census == landed census, no drift).
+- redteam portfolio fix (abstract adjective == body) applied to all 3 + the A mass-parameter reword + F Lie-group qualifier + E de-skeleton.
+
+## 2026-07-12 ~05:35 PDT - Fable: fleet refilled to 5
+- SUBMITTED fbgroupiso (6b89c65a): upgrade the FB SU(3) MulEquiv to a kernel GROUP isomorphism (closes redteam F2 'group-iso not formalized').
+- SUBMITTED covfull (86779752): complete walkforce's covariance group to BOTH branches (chiral circle + flip coset), closing the redteam T2-only-diagonal nuance.
+- Fleet (5): momtwin, flowinstance, faithful, fbgroupiso, covfull. ~2.5h to freeze.
+- STATE: guard green 8343; all 3 papers redteam-fixed + compile PASS; scorecard current; A-8NODE caveat closed.
+
+## 2026-07-12 ~05:42 PDT - Fable: FINAL_REPORT populated for the 08:00 audit
+- Filled the run-plan FINAL_REPORT template from the current scorecard + strategy10 Q3 structure: executive result (3 outcomes), landed-theorems table, rejected/sharpened routes, per-paper changes, verification (freeze-fill fields marked), remaining gates (theorem/empirical/release), active jobs. The 3 morning-auditor traps addressed inline.
+
+## 2026-07-12 ~05:50 PDT - Fable: strategy10 Q4 corrections complete
+- Q4 flagged 5 status-corrections + stale scorecard rows; 4 were already fixed in the syncs. Remaining #3 (internal contradiction) FIXED: the cube-coincidence section no longer calls the open item "the selection conjecture" (resolved) - it names the distinct DYNAMICAL free-carrier->interaction question as the open one. Scorecard A-SELECT (CAR-block now a theorem + forced) and A-CHGBAL (Schur reduction now kernel at 8 nodes) rows updated. A compile PASS.
+## 2026-07-12 04:49 PDT - Codex: exact elimination certificate landed; B/D/F fleet refilled
+
+- LANDED `StationaryAmplitudeWeylEliminationCertificate`: the corrected exact
+  original-generator identity
+  `(1+tz^2)^2 tz p5 p6 = Qx Fx + Qy Fy + Qz Fz` is now kernel-checked over
+  `Real`, including all 522 exact quotient terms. The real corollary cancels
+  the chart factor only by positivity and returns exactly the zero, quintic, or
+  sextic branches. Direct Lean PASS; targeted build PASS (8,026 jobs);
+  on-demand guard PASS (8,027 jobs), standard footprint only. The generator and
+  exact coefficient hashes remain reproducible. This does not yet identify the
+  numerator equations with entries of the live matrix.
+- SUBMITTED B boundary census `02983c7d`, task `495d4873`: seven phase-minus-one
+  chart strata plus arbitrary-unit-phase capstone, statements frozen.
+- SUBMITTED B live matrix/numerator bridge `a0cfd33b`, task `18bb8c1f`: only the
+  large exact coefficient-normalization lemma remains; Pauli extraction,
+  denominator cancellation, live `U=I` iff numerator equations, and corrected
+  eliminant composition already typecheck and are proved in the handoff.
+- SUBMITTED D strong cell-projection convergence `08c2af1b`, task `074bff5a`:
+  localized active-cell volume, compact Lipschitz core, contraction, density,
+  and final three-epsilon chain. The target explicitly avoids the false
+  uniform-volume assumption for the full expanding box.
+- SUBMITTED F stabilizer/selector successor `fe5f57dd`, task `00609114`: exact
+  order-two negative-coordinate Gram isometry, named-channel fixation, disk
+  reflection, and positive `3/5` orbit witness.
+- SUBMITTED grand strategy 11 `9dad1776`, task `e0c151f0`, and elimination
+  semantic audit `f1cac1e4`, task `246527ab`.
+- LITERATURE: Spark attempted both abstract and full-chunk Neo4j searches, but
+  local port 7687 refused the connection. It completed the pass using Mathlib,
+  PhysLean, and authoritative sources; conditional-expectation and martingale
+  APIs are recorded as an alternative D route if the direct active-cell proof
+  blocks.
+
+## 2026-07-12 05:36 PDT - Fable: HARVEST (post-restart) - flowinstance + faithful + fbgroupiso + covfull
+
+## 2026-07-12 ~05:45 PDT - Fable: 4 landings integrated (post-restart harvest)
+- flowinstance (FlowOneInstance): kernel, concrete two-band walk U(k)=diag(e^ik,i) instantiates the flow-count law; closes P-1DFLOW-R1 (honest finding: the flow-one pseudo-doubler CANNOT satisfy the strengthened fields - 2nd eigenvalue on real axis). -> aggregate guard.
+- covfull (CovarianceGroupFull): kernel, covariance_group_full = complete both-coset group; closes redteam T2 nuance. -> aggregate guard.
+- fbgroupiso (FBGroupIso): kernel (sorry-free; the 1 token is an instantiation-note comment), SU(3) MulEquiv upgraded to a kernel GROUP isomorphism (map_inv/map_div); closes redteam F2. -> aggregate guard + FB thm:su3 prose updated (removed 'not a separately formalized theorem'), FB compile PASS.
+- faithful (FaithfulKernel): kernel per-entry decide re-proves the fixture 'faithful' 28x28 identity (4M heartbeats, no native); HEAVY -> on-demand PairSpectrumFixtureGuard, not aggregate.
+- Aggregate guard rebuild bz5msyj4b in flight (3 light modules + 4 pins). Scorecard rows updated (P-1DFLOW-R1, A-FORCE both-cosets, FB-GROUPISO added).
+- Fleet: momtwin, vzannihil (Vz_annihilated kernel via faithful trick), freezecheck (final go/no-go review) running.
+
+## 2026-07-12 ~05:50 PDT - Fable: AGGREGATE GUARD GREEN 8346 (4 landings pinned)
+- FlowOneInstance + CovarianceGroupFull + FBGroupIso pins verified kernel-only; faithful in on-demand heavy guard. FB group-iso concrete instantiation SKIPPED (needs OctonionMulAutFixingE111 Group-instance check = round-trip risk near freeze; generic theorem is landed+pinned, FB prose honest as 'kernel-checked (FBGroupIso)'; noted post-freeze polish).
+
+## 2026-07-12 05:55 PDT - Fable: freezecheck harvested - 2 NO-GOs fixed
+- freezecheck (c3a037b1) verdict: A GO, FB GO, E NO-GO (abstract still 'pending flagship' vs body-landed), FINAL_REPORT NO-GO (listed landed jobs as running). BOTH FIXED: E abstract spectrum sentence now says charpoly pinned (kernel + disclosed eval), matching body sec 4; FINAL_REPORT jobs/gates/table reconciled (fbgroupiso/flowinstance/covfull/faithful LANDED; momtwin/vzannihil/cpostwin in flight; guard 8346). A + FB confirmed clean on all axes.
+
+## 2026-07-12 05:58 PDT - Fable: freeze-prep state check
+- Sources/AgentTasks stray dir cleaned; guard green 8346 (no Lean edits since); 295 uncommitted (75 new NullEdge modules) = the run's work, commit is user freeze decision. FINAL_REPORT full-build line notes the fixture-native >34GB constraint (guard build is verification of record). Papers freeze-ready (freezecheck: A/FB GO, E NO-GO fixed). Fleet 4: momtwin, vzannihil, cpostwin, fbconcrete.
+
+## 2026-07-12 06:10 PDT - Fable: fbconcrete harvested - FB group-iso doubly-backed
+- fbconcrete (94d40ad3) FINDINGS: (1) OctonionMulAutFixingE111 HAS a Group instance (instGroup, inverse = automorphism inverse) - it's a genuine group, no missing-inverse issue; (2) the concrete group iso ALREADY EXISTS in the repo as octonionMulAutFixingE111MulEquivSpecialUnitary : OctonionMulAutFixingE111 =~* Matrix.specialUnitaryGroup (Fin 3) C (G2FixingE111SpecialUnitaryGroup:65), both sides groups => group iso. FB prose updated to cite this CONCRETE decl (stronger than the generic FBGroupIso), with FBGroupIso's guard-pinned map_inv/map_div for explicit inverse preservation. FB compile PASS. No new module needed. Broken d119c7ef (empty-context cwd-drift submit) left to fail.
+- Fleet (3, all valuable in-flight): momtwin, vzannihil, cpostwin.
+
+## 2026-07-12 06:22 PDT - Fable: headline synthesis harvested + FINAL_REPORT portfolio-framing added
+- headline (95731248): top-3 = E exact interacting spectrum (#1, QI audience), A mass-as-area (#2, cleanest pure-kernel), A 8-node doubling census (#3). Honest thread: A+E ONE program (shared cube-law X^3=(area)X), companion pair, NOT a derivation; FB separate; all-three umbrella methodological only. Weaknesses all scope-not-fatal. Venues: E->Quantum, A->Quantum focused cut, FB->AFM+arXiv (matches FINAL_REPORT lean). Added a Portfolio-framing section to FINAL_REPORT for the user's post-freeze submission decisions.
+- Fleet (3): momtwin, vzannihil, cpostwin (final kernel-izations in flight).
+
+## 2026-07-12 06:35 PDT - Fable: FB concrete group-iso guard-pinned (Furey.AxiomGuard green 8105)
+- Added octonionMulAutFixingE111MulEquivSpecialUnitary #print-axioms pin to Furey.AxiomGuard (fixed a doc-comment syntax slip: /-- prose --/ before /-- info --/ needs plain /- -/). FB group-iso cite now build-enforced kernel-only.
+
+## 2026-07-12 06:25 PDT - Codex: live Gate B chain connected; zero slice closed; quintic census launched
+
+- LANDED `StationaryAmplitudeWeylLiveMatrixNumeratorBridge` from Aristotle
+  `a0cfd33b`, task `18bb8c1f`: the imported live `weylStep = I` is equivalent
+  to the exact scalar equation plus `Fx = Fy = Fz = 0`. Statements and all
+  conventions were preserved. Direct Lean PASS; targeted build PASS (8,032
+  jobs); standard footprint pinned in the aggregate guard.
+- LANDED `StationaryAmplitudeWeylTzZeroInteriorBranch`: the complete exact live
+  numerator census on `tz = 0` consists only of `(0,0,0)` and
+  `(-5/4,5/4,0)`. Both reconstruct `+I`; the second is the exact 9-40-41 alias.
+  Direct Lean PASS; targeted build PASS (8,032 jobs); census and nonvacuous
+  witnesses pinned.
+- LANDED on demand `StationaryAmplitudeWeylEliminationCapstone`: exact equality
+  between live and generated numerators composes the 522-term certificate into
+  a hypothesis-free theorem that every actual live identity crossing lies on
+  the zero, quintic, or sextic branch. On-demand guard PASS (8,033 jobs),
+  standard footprint only.
+- VERIFIED the renamed generated certificate against its source generator:
+  exact-match SHA-256 `ee4545e7...d99b3`; targeted certificate/guard build PASS
+  (8,027 jobs).
+- LANDED Paper F's residual-stabilizer theorem from Aristotle `fe5f57dd`: the
+  rational order-two Gram isometry exchanges two distinct positive disk
+  sectors while fixing the named channels, obstructing every invariant
+  selector at those witnesses. Scope remains quadratic-space stabilizer, not
+  physical gauge equivalence.
+- AGGREGATE GUARD PASS (8,349 jobs), including the new live bridge, zero-slice
+  census, and Paper F pins.
+- EXACT ORACLE: adjoining the quintic to the three numerator equations gives
+  the three-element lex basis forcing exactly `tx = tangentX(tz)` and
+  `ty = tangentY(tz)`. SUBMITTED the kernel uniqueness plus complete finite
+  tangent-chart live census to Aristotle `8673372d`, task `f2fb6b01`.
+- STILL RUNNING: phase-minus-one boundary census `02983c7d` and strong `L2`
+  cell-projection convergence `08c2af1b`.
+
+## 2026-07-12 06:49 PDT - Codex: two stalled monoliths harvested and split
+
+- CANCELED boundary census `02983c7d` at the two-hour stall rule after taking
+  an in-progress snapshot. LANDED `StationaryAmplitudeWeylBoundaryScaffold`
+  with exact tangent-chart surjectivity, explicit minus-one axis walks,
+  `no_xy_boundary_identity`, `no_yz_boundary_identity`, the all-minus-one
+  control, and the known `(-1,1,-1)` reconstruction. Direct Lean and targeted
+  build PASS (8,030 jobs). Resubmitted the three single-face exclusions as
+  `1a74593b` and the xz iff as `bbe67325`.
+- CANCELED strong projection job `08c2af1b` at the two-hour stall rule after
+  snapshot. LANDED `ChangingMomentumCellProjectionStrongScaffold` with local
+  integrability, projected `L2` membership, squared-error integrability,
+  subtraction linearity, contraction, inactive-cell removal, pointwise
+  Lipschitz cell error, and compact smooth squared-integral density. Targeted
+  build PASS (8,039 jobs), no proof escapes. Resubmitted compact-support
+  geometry as `1f673a93` and the three-term estimate as `d1a1fbfe`.
+- SUBMITTED grand strategy 12 `7a1d3fcc`, task `662791be`, with the full
+  publication context and the newly connected B/D proof frontiers.
+
+## 2026-07-12 06:40 PDT - Fable: freeze pre-check - trusted-layer placeholder scan CLEAN
+- No sorry/admit in trusted code (all hits are docstring text). Trusted native_decide occurs ONLY in E8 root-system modules (unrelated, cited by no paper); all FB-cited modules (G2*/DVT*/Jordan-FB/Publication) are native_decide-free -> FB abstract's 'no native_decide in cited results' VERIFIED. Recorded in FINAL_REPORT verification section.
+
+## 2026-07-12 06:55 PDT - Fable: cosmological-constant MANUSCRIPT drafted (user request)
+- Wrote Sources/Null_Edge_Cosmological_Constant_Manuscript_Draft_2026-07-12.tex - a substantive draft (rung L6 surfacing) anchored to the LANDED kernel-clean Lambda modules, honestly graded (M/[import]/[C]/[spec]). Sections: magnitude dissolution structurally (order0 blind to every deformation; lambda_only_count_can_move_order0), everpresent scaling (1/sqrt V, routed through native edge count), the Poisson-vs-hyperuniform dichotomy + EXACT exponent law lamExp(alpha)=alpha/2-1 (everpresent = -1/2), finite Fourier conjugacy + support uncertainty, honest event horizon (no value/sign/dynamics), predictions + observational posture, landed-theorem table with exact decl names. Compile PASS.
+- Verified all cited Lambda modules kernel-clean (0 native_decide). RELEASE GATES flagged IN the manuscript: (i) NONE of the Lambda capstones are guard-pinned yet (checked once, not build-enforced); (ii) named authors; (iii) primary-source pass on [import]s. Separate thread from tonight's null-edge run.
+
+## 2026-07-12 07:10 PDT - Codex: impact review converted into two theorem attacks and a focused paper
+
+- REWROTE Paper A's abstract from a roughly thirty-result inventory into three
+  headline claims: the null-area rest-operator derivation, transported relative
+  phase as an exact free-spectrum observable, and the audited minimal-`3+1`
+  regulator boundary. The introduction's impact box now leads with the landed
+  two-site free phase-defect theorem rather than the supplied interaction.
+- CORRECTED the proposed ring theorem's scope before submission. The general
+  two-channel `GaugeClassification` API retains local current invariants in
+  addition to cycle holonomies, so a one-holonomy-only theorem would be false
+  without reduction. The first frozen target is the exact three-site transport
+  sector: local gauge conjugacy, invariant cycle product, cubic-trace reader,
+  and explicit holonomy `+1/-1` spectral witnesses.
+- SUBMITTED the three-site free ring-holonomy job as Aristotle project
+  `deed60d0`, task `f02f93fb`; focused target preflight PASS with five intended
+  handoff holes.
+- SUBMITTED the generator-level dynamical covariance classification as
+  Aristotle project `2635219c`, task `bd027307`: same-momentum covariance must
+  be the diagonal chiral circle modulo global phase, while the antidiagonal
+  coset requires parity. Focused target preflight PASS with seven intended
+  handoff holes. Scope is the full `H(k,z)` Dirac generator family, not every
+  symmetry of the ordered `3+1` regulator.
+- CONTEXT-PACK preflight was attempted for both jobs; local Neo4j port 7687
+  refused the connection. Both submissions are self-contained Mathlib-only
+  packages with frozen statements and explicit honest boundaries.
+- HARVESTED grand strategy 12 (`7a1d3fcc`, task `662791be`). Its hostile review
+  independently identified the report's unscoped phrase "interaction gauge is
+  forced" as the largest internal-consistency rejection risk. Paper A and the
+  final report now say exactly what is forced: the selecting gauge for the
+  static derived family. Full discrete-time dynamical covariance remains a
+  separate theorem target (`2635219c`).
+
+---
+## Fable 07:05 PDT --- Lambda cosmological-constant guard-pin + upgrade job
+
+- LANDED the cosmological-constant (Lambda) manuscript's release gate (i):
+  wrote `PhysicsSM/Draft/NullEdge/LambdaCosmologyAxiomGuard.lean` pinning ~40
+  headline theorems across the nine Lambda modules (`LambdaMomentHierarchy`,
+  `LambdaMagnitudeCapstone`, `LambdaUnimodular`, `NullEdgeP9EverpresentLambdaScaling`,
+  `LambdaEdgeCount`, `LambdaSusceptibility`, `LambdaCountDichotomy`,
+  `LambdaExponentFork`, `LambdaConjugacy`). `lake build ...LambdaCosmologyAxiomGuard`
+  GREEN (8036 jobs). Footprint standard-3 for all pins except
+  `LambdaEdgeCount.edgecount_mono`, guard-pinned at the sharper
+  `[propext, Quot.sound]` (needs no choice) -- caught by the build, not by hand.
+- UPDATED `Sources/Null_Edge_Cosmological_Constant_Manuscript_Draft_2026-07-12.tex`:
+  abstract + header + Section 7 now report the guard as in place (gate (i) closed);
+  one honest gap remains (surfacing / named authors / primary-source pass).
+  Manuscript recompiles (pdflatex rc=0).
+- SUBMITTED Aristotle upgrade job `e22d0fe7-fc6a-4607-bd16-97fe5c2a2b96`
+  (`lambda-uncertainty-generalN-20260712`): the general-`N` Donoho--Stark support
+  uncertainty over `ZMod N`, reusing Mathlib `ZMod.dft`, to retire the Section 6
+  "ZMod 4 witness only" scope caveat. Focused Mathlib-only package; statement
+  typechecks (only sorry warnings). Held a second "non-degenerate hyperuniform
+  witness" job: no clean one-page intermediate-exponent construction, and the
+  dichotomy is the paper's pre-registered [C] -- a degenerate witness would weaken
+  not strengthen it.
+- VERIFIED cpostwin: `OvernightTheoryAxiomGuard` GREEN (8351 jobs) with the four
+  `HalfPeriodInvariant` pins flipped K5->K3, so the positional-law core
+  (`selfadj_iff_protected`, `protected_modes`, `chiral_inverse`,
+  `reflR_comm_walk_iff`) is kernel-clean. HONEST SCOPE for Paper C: this upgrades
+  the positional law only; Paper C also cites `HalfWindingFieldPositionClassification`,
+  `HalfWindingFullWalkControls`, `PinnedSymmetryResolved`, and the `Pinned*`
+  spectral fixtures, which REMAIN Kernel+Eval. Paper C is NOT globally kernel-clean;
+  only its positional-law marks are being flipped to Kernel.
+
+## Fable 07:40 PDT --- cubelaw harvest (reviewed)
+
+- HARVESTED Aristotle job `f8753b41` (cubelaw): the shared cube-closure ->
+  tripotent structure. REVIEWED for over-claim modes: the result is scrupulously
+  honest -- its docstring is MORE conservative than the kernel, explicitly stating
+  "a common corollary, not a unification" and "there is no lemma relating B_w to K,
+  and none is possible from the material here." This CONFIRMS the headline
+  synthesis's position (cube-law coincidence is shape-only), it does not inflate it.
+- Content: abstract `cube_normalize_tripotent`/`cube_to_tripotent` (X^3=c.X, c>0 =>
+  normalized Y is a tripotent Y^3=Y), tripotent consequences (Y^2 idempotent,
+  commutes, partial involution), Cross-check A instantiating on the LANDED
+  `restOp_cube` (faithful), Cross-check B a self-contained 2x2 reconstruction of
+  `generator_cubed` (honestly labeled; anchoring to the landed Fock-space operator
+  needs a Module.End lift, left as follow-up).
+- INTEGRATED to `PhysicsSM/Draft/NullEdge/CubeLawTripotent.lean` (only edit vs the
+  returned file: import path to the in-repo `PlueckerRestOperatorGeneral` + a
+  provenance note). Building/footprint-checking; guard-pin if it clears before the
+  08:00 freeze, else ledgered as reviewed + typechecks + guard-pending.
+
+- UPDATE 07:48: cubelaw LANDED before freeze. `CubeLawTripotent` builds green
+  (8027 jobs); all four headline theorems kernel-clean (`tripotent_partial_involution`
+  at the sharper `[propext]`, the normalizers + both cross-check instantiations at
+  standard-3). Guard-pinned in `PhysicsSM/Draft/NullEdge/CubeLawTripotentAxiomGuard.lean`
+  (green, 8028 jobs). Pre-commit clean.
+
+## Fable 07:52 PDT --- vzannihil harvested, integration DEFERRED
+
+- HARVESTED Aristotle job `38810370` (vzannihil): an 8-file kernel-only re-proof
+  of `Vz_annihilated` (`VzAnnihilatedKernel` + `VzKernelChainA..F` + `VzKernelData`).
+  SURFACE REVIEW: clean -- grep finds `native_decide`/`sorry` only in docstring PROSE
+  ("which used native_decide", "no native_decide"), not in any proof. It discharges
+  the degree-28 Cayley-Hamilton annihilation of the GaussianInt matrix `Vz` via 784
+  kernel `decide` goals through an explicit power-chain, avoiding the >34GB `Vz^28`
+  whole-matrix native (the one isolated in the on-demand PairSpectrumFixtureGuard).
+- This is a genuine E-lane upgrade (kernel-izes the heaviest native), but integration
+  is DEFERRED past the 08:00 freeze: it is 8 files, needs a full build + guard + a
+  reconciliation with the already-landed charpoly route `CayleyHamiltonAnnihilation`
+  (are they redundant or complementary?), and rushing it pre-freeze risks a broken
+  tree. Download captured at `AgentTasks/aristotle-output/38810370-x/`. Candidate for
+  the audit window or next session. No manuscript claim currently rides on it (Paper E
+  already discloses the eval-twin; this would let E drop that caveat for Vz).
+
+## Fable 07:48 PDT --- Lambda manuscript claim-alignment self-audit (pre-freeze)
+
+Audited the three abstract headline claims against the guarded kernel statements:
+- Claim (3) exponent fork: `lamExp alpha = alpha/2 - 1` (`lamExp_closed`),
+  `everpresent_value: lamExp 1 = -1/2`, `hyperuniform_faster (alpha<1 -> < -1/2)`,
+  `fork_iff (= -1/2 <-> alpha=1)` -- ALL MATCH the prose exactly. Aligned.
+- Claim (2) everpresent: `everpresentLambda_rms_eq_inv_sqrt_volume` proves
+  sqrt(V/V^2)=1/sqrt V, and the edge-count routing is genuine (`edgecount_extensive`
+  / `edgecount_mono` make N a bona fide extensive count). Aligned.
+- Claim (1) order-0 magnitude dissolution: HONESTY FLAG for the audit (not a defect).
+  `order0` is DEFINED as `a0 * n` with the matrix argument UNUSED, so
+  `order0_deformation_invariant` is proved by `rfl` -- it is structural/definitional
+  GIVEN the spectral-grading choice, not a dynamical no-go. The genuine kernel content
+  is `only_count_touches_lambda`: a concrete witness that the SAME perturbation moves
+  tr(D^2) 26->36 and tr(D^4) 194->324 while tr(1)=4 is fixed. The manuscript is
+  honestly hedged (claim labeled "structurally"; Section 4 Remark: "does not derive
+  the value"), so NO over-claim -- but the abstract's "no channel can renormalize Lambda"
+  rests on the grading modeling choice, which the audit/reader should understand as
+  structural, not derived. Recommend the 08:00 audit keep this framing intact.
+
+- UPDATE 07:52: pre-freeze completeness check on the Lambda guard found a coverage
+  gap -- the manuscript cites `uniformSecondMoment_antitone` /
+  `uniformSuppression_below_everpresent` (`NullEdgeP9EverpresentLambdaTension`) with a
+  Kernel mark, but that module was not in the guard. CLOSED: added the import + two
+  pins (both standard-3); guard rebuilt green (8037 jobs, 10 modules, ~42 pins).
+  Manuscript module count synced (nine -> ten); recompiles rc=0. Now every
+  Kernel-marked theorem the manuscript cites is build-guarded.
+
+## Fable 08:05 PDT --- acted on expert review of the Lambda paper (3/10 -> ladder up)
+
+Reviewer's key unlock: the everpresent fork is COMPUTABLE via the fermionic Wick
+variance Var(N_A) = tr K_A - tr K_A^2 -- which makes the non-degenerate hyperuniform
+witness I earlier judged ill-posed actually well-posed. Acted:
+- SUBMITTED T1 (the paper-maker) as Aristotle project `9be8f014-9b7a-4713-9f22-de1166cf9aae`
+  (`lambda-fermionic-fork`): Wick number-variance identity + an explicit boundary-bond
+  PROJECTION kernel (genuine Fermi-sea, K^2=K) with Var = k/4 and region size tunable
+  to k^2 -> alpha=1/2 sub-extensive AND unbounded (non-degenerate). Resolves the fork
+  into the dichotomy "everpresent survives iff Lambda-conjugate count is thermal/diagonal
+  not kinematic/projection." 7 sorries, statements typecheck (Mathlib-only).
+- MANUSCRIPT framing corrections (all honest, per review; recompiles rc=0):
+  * S4 Remark REBRANDED: order-0 invariance labeled the Classical heat-kernel analogue
+    (near-definitional); named the unimodular trade (vacuum_shift_is_gauge + Lambda-V
+    conjugacy) as the actual load-bearing wall for "matter can't renormalize Lambda";
+    addressed the Higgs-vacuum-shift-in-order-4 tension; pre-registered the T4 sequestering
+    pair (ensemble shift-invariance + local-shift decomposition).
+  * S5 now pre-registers the T1 fermionic dichotomy + the T2 Lorentz-invariance leg (BHS)
+    as the fork resolution; states "possibility is not the answer; the answer is the paper."
+  * S6 DE-OVERSOLD: the Z/4 DFT reframed as an ILLUSTRATIVE finite avatar, not the canonical
+    conjugacy; named finite Henneaux-Teitelboim ({Lambda,V}=1, Lambda-dot=0 on shell) as the
+    real "native" successor (T3). Abstract synced.
+  * Predictions: flagged the inherited correlation-time caveat (Zwane-Afshordi-Sorkin) for
+    predictions 1 and 5 (sign persistence needs dynamical input, out of claimed scope).
+- REMAINING review targets (documented, not yet built): T2 (BHS Lorentz leg, import), T3
+  (finite Henneaux-Teitelboim), T4 (sequestering pair), T5 (general-N DS + extremizers --
+  job e22d0fe7 covers the bound), T6 (execute the sign [spec], cheap Krein check).
+
+## Codex 08:18 PDT - harvest, composition, and next proof wave
+
+- **BUILDER / A:** harvested Aristotle `deed60d0` and landed
+  `RingHolonomySpectrum` plus `PlueckerRingHolonomyBridge`. The explicit
+  winding-one primitive-spinor field has total turning `2*pi`, derived
+  half-link holonomy `-1`, cubic trace `-6`, and is not unitarily conjugate to
+  the trivial sector. Direct Lean and both targeted builds pass; aggregate
+  guard pins added. Scope remains the reduced three-site transport sector.
+- **BUILDER / D:** harvested `1f673a93` and `d1a1fbfe`; landed compact-support
+  eventual coverage, uniform active-cell volume localization, and the exact
+  three-term projection inequality with constants `6` and `3`. Direct Lean and
+  joint targeted build pass. Submitted the exact final two-theorem strong-L2
+  capstone as `b7405f03` / task `c1bc10b3`.
+- **BUILDER / A:** harvested `2635219c`; landed complete generator-family
+  covariance. Fixed-momentum covariance is exactly the diagonal chiral circle
+  modulo global phase; the antidiagonal branch requires parity. Direct Lean and
+  targeted build pass. Submitted ordered finite-walk covariance successor
+  `47f71b37` / task `f2e86c88`.
+- **BUILDER / E:** submitted genuine free-plus-pair QCA support composition
+  `971f3bfd` / task `8bec01f7`: determinant-minor second quantization must carry
+  `CARSupported` support by one graph step and one disjoint local pair layer by
+  a second. The weaker `FootprintIn` predicate is explicitly forbidden.
+- **ASSASSIN / B:** harvested `8673372d`; landed
+  `StationaryAmplitudeWeylQuinticFiberCensus`. Every `+I` crossing on the finite
+  real tangent chart is exactly origin, the `9-40-41` point, or the unique
+  fibre over the real quintic root, with a fully off-axis witness. Direct Lean
+  and targeted build pass. The phase-minus-one boundary charts remain separate.
+- Manuscript status drift corrected: the pair-layer graph cone and free
+  two-site phase reader are no longer called open; the continuum section now
+  distinguishes landed projection machinery from final live-evolution/PDE
+  composition; the finite-chart quintic census is promoted with its boundary
+  obligation intact. No narrowing was performed.
+- Verification: aggregate `OvernightTheoryAxiomGuard` PASS (8,359 jobs), full
+  `lake build` PASS (8,319 jobs), manuscript `pdflatex` PASS (37 pages), and
+  `pre-commit run --all-files` PASS on the second run. The first pre-commit run
+  normalized pre-existing mixed line endings in `LIT_SEARCH_LOG.md` and
+  trailing whitespace in a generated verification log; no substantive content
+  was changed by those hooks.
+
+## Fable 08:30 PDT --- HARVESTED + INTEGRATED the general-N uncertainty (caveat-closer)
+
+- Aristotle job `e22d0fe7` (general-N Donoho-Stark) COMPLETED. Reviewed: the returned
+  `support_uncertainty` has the EXACT submitted statement
+  `N <= (supp f).card * (supp (ZMod.dft f)).card` over ZMod N, proved via a genuine
+  machine-checked Plancherel (`plancherel`), character orthogonality, l-infty<=l1
+  bound, and Cauchy-Schwarz -- no sorry/native_decide (uses kernel `simp +decide`,
+  not native). Footprint standard-3 (verified via #print axioms).
+- INTEGRATED as `PhysicsSM/Draft/NullEdge/LambdaUncertaintyGeneralN.lean` (build green
+  8026; only edit vs returned file is a provenance note). GUARD-PINNED support_uncertainty
+  + plancherel in LambdaCosmologyAxiomGuard (rebuilt green 8038; now 11 modules, ~44 pins).
+- MANUSCRIPT S6 updated: the general-N Donoho-Stark bound is now Kernel for ALL N,
+  retiring the "ZMod 4 witness only" scope caveat (extremizer classification remains
+  open). Module counts synced to eleven. Recompiles rc=0. Pre-commit clean.
+- This is a harvest-integrate of a COMPLETED job (standing rule) + a manuscript
+  caveat-closer, not new broad construction. T1 fork (9be8f014) still RUNNING.
+
+## Fable 08:35 PDT --- reference cross-audit (Lambda paper [import]s, release gate iii)
+
+Verified the three most load-bearing [import] citations against arXiv primary
+metadata (existence + correct attribution + faithful USE, not just title match):
+- ADGS "Everpresent Lambda": astro-ph/0209274, authors Ahmed/Dodelson/Greene/Sorkin,
+  DOI 10.1103/PhysRevD.69.103523. Abstract confirms the exact mechanism S3 cites
+  (unimodular Lambda fluctuations x causal-set magnitude -> Lambda ~ ambient density). MATCH.
+- Chamseddine-Connes-Marcolli "Gravity and the SM with neutrino mixing": hep-th/0610241,
+  DOI 10.4310/ATMP.2007.v11.n6.a3. Finite spectral triple F (KO-dim 6 mod 8, metric
+  dim 0) is exactly the "finite spectral grading" S2 invokes. MATCH.
+- DESI DR2 Results II (BAO + cosmological constraints): arXiv:2503.14738, DESI
+  Collaboration 2025. w0>-1 & wa<0, ~3.1sigma dynamical-DE preference (DESI+CMB) matches
+  the manuscript's prediction-4 CPL-may-mislead framing and observational posture. MATCH.
+NOT yet primary-source-verified (secondary; remain gated): Jacobson gr-qc/9504004 +
+1505.04753; arXiv:2401.03705 (Bratteli/quivers); Henneaux-Teitelboim, Unruh (pre-arXiv);
+Torquato-Stillinger hyperuniformity; Planck 2018 1807.06209; Zwane-Afshordi-Sorkin.
+Release gate (iii) is PARTIALLY advanced (3 load-bearing verified); full pass still user-owned.
+
+- ADDENDUM 08:37: also verified Jacobson gr-qc/9504004 ("Thermodynamics of Spacetime:
+  The Einstein Equation of State", PRL 75.1260, 1995) -- the first-law source for the
+  fork thermal (extensive) branch. 4 references now primary-verified (ADGS, CCM, DESI
+  DR2, Jacobson).
+
+## Fable 08:40 PDT --- independent audit of Codex landing RingHolonomySpectrum (A lane)
+
+VERDICT: clean, honest landing. The unitary-conjugacy discriminator is genuine --
+`not_unitarily_conjugate_to_plus_of_trace_cube_ne` / `plus_minus_not_unitarily_conjugate`
+use true unitary conjugacy (`Wᴴ*W = 1`) and trace-cyclicity; cubic-trace invariance
++ (+6 != -6) is a correct obstruction (not vacuous, correct shape/convention). Concrete
+traces 6/-6 (`threeSite_holonomy_changes_cubic_trace`) kernel-verified. The
+winding-one<->holonomy(-1), trivial<->holonomy(+1) identification is consistent with
+the ledger's own definitions.
+
+ONE DOCSTRING/KERNEL MISMATCH (minor, for Codex to fix, not a kernel defect): the
+MODULE docstring says "The trace of the cube reads TWICE the real part of that holonomy",
+but `trace_cube_H3` proves `(H3 u0 u1 u2)^3.trace = 3*(u0u1u2 + conj(u0u1u2)) = 6*Re(h)`
+-- SIX times the real part, not twice (twice would give +2 for h=+1, contradicting the
+"+6" in the same sentence). Suggested fix: "six times the real part" or "3 times
+(holonomy + its conjugate)". The line-78 theorem docstring ("reads the real part")
+is vague-but-not-wrong; only the module-header factor is off.
+
+## Fable 08:42 PDT --- independent audit of Codex landing QuinticFiberCensus (B lane)
+
+VERDICT: fully clean, no over-claim. `live_identity_finite_chart_census` is a genuine
+complete IFF-classification: weylStep = 1 <-> (origin) OR (-5/4, 5/4, 0) OR (quintic-root
+fibre: rootPoly tz = 0 & tx=tangentX tz & ty=tangentY tz). Both directions proved via
+honest elimination branches (excludedPoly_pos rules out the excluded branch). NON-VACUOUS:
+`finite_chart_census_has_fully_offaxis_witness` exhibits a crossing with tx,ty,tz all != 0,
+so the census is not just axis points. Naming consistent: the ledger's "9-40-41 point" =
+unitPhase(-5/4) (Cayley transform cos=-9/41, sin=-40/41). Heavy exact rationals in
+`quintic_fiber_unique` are legitimate exact algebra (linear_combination), not native.
+
+Cross-audit summary (Fable, of Codex 08:18 landings): RingHolonomySpectrum clean w/ one
+minor docstring factor fix flagged; QuinticFiberCensus fully clean. Both honest; no
+vacuity / hollow-telescoping / false-shape / convention-drift found.
+
+## Fable 08:47 PDT --- independent audit of Codex landing ThreeTerm (D lane, continuum-slippage check)
+
+VERDICT: clean, correctly scoped, NO finite-to-continuum slippage.
+`projectAt_sq_error_le_of_approx` (f,g in L2): int ||projectAt N f - f||^2 <=
+6*int||f-g||^2 + 3*int||projectAt N g - g||^2 -- a genuine L2 APPROXIMATION estimate
+(bound the projection error of an arbitrary L2 field by its distance to an approximant
+plus the approximant's projection error). Presented honestly as machinery to pass
+smooth-Lipschitz -> arbitrary L2, NOT as the continuum limit (which Codex's own ledger
+flags as still-open live-evolution/PDE composition). Real MeasureTheory proof
+(integral_mono_of_nonneg, MemLp, Integrable.const_mul); 0 sorry/admit/native_decide; no
+"continuum limit / converges / PDE" overclaim words. Constants 6=3+3 and 3 explicit and
+correct (factor-3 from three_term_norm_sq).
+
+Cross-audit total (Fable, 3 lanes / 3 Codex landings): RingHolonomySpectrum (A, clean, 1
+docstring factor fix), QuinticFiberCensus (B, clean iff-classification + off-axis witness),
+ThreeTerm (D, clean L2 estimate, honest continuum scoping). No vacuity / hollow-telescoping
+/ false-shape / convention-drift / continuum-slippage found; one minor prose fix flagged.
+
+- FREEZE VERIFICATION OF RECORD 08:50: combined two-agent guard build GREEN --
+  `OvernightTheoryAxiomGuard` (aggregate, incl. Codex's RingHolonomy pins) +
+  `LambdaCosmologyAxiomGuard` (Fable) + `CubeLawTripotentAxiomGuard` (Fable) build
+  together at 8374 jobs, EXIT=0. Both agents' work coexists and is kernel-footprint-
+  pinned in the same tree. Tree is build-clean and pre-commit-clean, awaiting the
+  user's commit decision.
+
+- FINAL PROOFREAD 08:53: reconciled an internal inconsistency I introduced -- the
+  abstract claim (1) still asserted "no matter or gauge channel can renormalize
+  Lambda" strongly, which the S4 rebrand walks back (that rests on the unimodular
+  trade, not the grading alone). Abstract (1) now states the grading invariance as
+  the classical heat-kernel avatar and points the physical no-renormalization claim
+  to the S4 unimodular trade. Manuscript internally consistent post-review; recompiles
+  rc=0, pre-commit clean.
+
+- CONSISTENCY CHECK 08:57: verified all 15 theorems in the manuscript landed-theorem
+  summary table are guard-pinned in LambdaCosmologyAxiomGuard (fixed-string match on
+  #print axioms lines). The reader-facing trust table is build-enforced-accurate; no
+  Kernel-marked table row rides on an unpinned theorem. Manuscript now verified consistent
+  at every level: abstract<->S4, cited theorems<->guard, summary table<->guard.
+
+## Fable 08:59 PDT --- independent audit of Codex landing EliminationCertificate (A lane, mine)
+
+VERDICT: clean, honest. `correctedEliminationCertificate` is a genuine EXACT polynomial
+identity (1+tz^2)^2 * tz * rootPoly * excludedPoly = certQx*certFx + certQy*certFy +
+certQz*certFz, ring-proven (pure kernel). `eliminationFactorNecessaryOfNumeratorsZero`:
+correct necessity implication -- numerators all zero => tz=0 OR rootPoly=0 OR excludedPoly=0,
+via positivity of (1+tz^2)^2 + mul_eq_zero. 0 placeholders; provenance recorded (oracle
+Scripts/oracle/certify_stationary_weyl_tangent_elimination.py); honestly named (claims the
+one direction it proves, not an iff). No vacuity/false-shape/overclaim.
+
+Cross-audit total (Fable): 4 Codex landings across all lanes -- RingHolonomy (A, 1 docstring
+fix), EliminationCertificate (A, clean), QuinticFiberCensus (B, clean), ThreeTerm (D, clean
+continuum scoping). All honest; only the one RingHolonomy prose factor to fix.
+
+## ============ FABLE SESSION END-STATE (08:49 PDT real clock) ============
+
+LANDED + VERIFIED this session (all kernel-clean, guard-pinned, hygiene-clean):
+  1. LambdaCosmologyAxiomGuard -- guard-pins the Lambda cosmological-constant paper's
+     11 modules / ~44 theorems (closes manuscript release gate (i)). Green.
+  2. LambdaUncertaintyGeneralN -- general-N Donoho-Stark support bound (harvested
+     e22d0fe7, real Plancherel proof); retires manuscript S6 "ZMod 4 only" caveat. Green.
+  3. CubeLawTripotent (+ its guard) -- shared cube-closure tripotent corollary
+     (harvested cubelaw f8753b41); honest common-corollary, disclaims B_w<->K unification.
+  4. cpostwin -> HalfPeriodInvariant positional law now KERNEL (Paper C marks flipped;
+     NOT globally kernel-clean -- Pinned*/HalfWinding* remain Kernel+Eval).
+
+MANUSCRIPTS: Lambda paper reframed per expert review (S4 load-bearing wall = unimodular
+  trade; S5 fermionic-Wick dichotomy pre-registered; S6 de-oversold; predictions caveat;
+  abstract<->S4 reconciled). Verified consistent at every level. Recompiles.
+
+VERIFICATION OF RECORD: combined two-agent guard build GREEN (8374 jobs); verifier
+  two-pass both passed (determinism confirmed); git diff --check clean; pre-commit clean.
+  4 load-bearing references arXiv-verified. 4 Codex landings cross-audited (all honest,
+  one RingHolonomy docstring factor fix flagged).
+
+TREE IS BUILD-CLEAN + PRE-COMMIT-CLEAN, awaiting USER commit decision (agents do not
+  auto-commit). User-owned release decisions consolidated in FINAL_REPORT.
+
+SOLE OPEN ITEM: T1 fermionic fork (Aristotle 9be8f014, task eae1fa54) IN_PROGRESS at
+  ~42 min -- the paper-maker (resolves the Lambda everpresent fork on the framework's own
+  fermionic states). Integration plan pre-staged in
+  AgentTasks/lambda-fermionic-fork-aristotle-2026-07-12.md. Harvest when it lands;
+  on success, flip manuscript S5 from pre-registered [C] to RESOLVED (the 3->5/6 upgrade).
+
+DEFERRED (post-run, documented): vzannihil integration (complementary to
+  CayleyHamiltonAnnihilation, removes a native dep); T2 BHS Lorentz leg; T3 finite
+  Henneaux-Teitelboim; T4 sequestering pair; T6 sign check; full secondary-reference pass.
+## =====================================================================
+
+- APPLIED 08:51 (Fable, A lane): fixed the RingHolonomySpectrum docstring factor error
+  I flagged -- "reads twice the real part" -> "3*(holonomy + conjugate) = six times the
+  real part (trace_cube_H3)". DOCSTRING-ONLY change; theorem, proof, and guard pins
+  unchanged (Lean docstrings are not part of elaboration), so the aggregate guard and
+  build are unaffected. Codex: no action needed, resolved.
+
+## Fable 09:02 PDT --- T1 PAPER-MAKER LANDED (fork resolved on fermionic states)
+
+Aristotle 9be8f014 (task eae1fa54) COMPLETED at ~08:56. HARVESTED + fully integrated:
+- SEMANTIC REVIEW PASSED: all statements BYTE-IDENTICAL to submitted (only addition is
+  the helper `regionA_card`); NO weakening. `bondProj_numberVariance` proves Var = k/4
+  EXACTLY (not a bound); `bondProj_isProjection` proves K^2 = K EXACTLY (genuine Fermi-sea
+  kernel, not a weaker 0<=K<=1); `fork_subextensive` gives region k^2 with Var k/4
+  (alpha=1/2, sub-extensive AND unbounded). Proofs use kernel simp+decide / grind / aesop /
+  ring -- NO native_decide.
+- INTEGRATED as `PhysicsSM/Draft/NullEdge/LambdaFermionicFork.lean` (build green 8026).
+  All 4 headline theorems #print axioms = standard-3 (kernel-clean, VERIFIED).
+- GUARD-PINNED (bondProj_isProjection, bondProj_numberVariance, fork_subextensive,
+  fermionic_fork_verdict) in LambdaCosmologyAxiomGuard -> green 8039, now TWELVE modules.
+- MANUSCRIPT S5 flipped: the *mathematical* dichotomy is now \Kernel{} (a theorem, not a
+  possibility) -- diagonal/thermal count extensive (everpresent survives) vs projection/
+  kinematic count genuinely sub-extensive (everpresent killed), on a bona fide kernel.
+  What remains [C] is ONLY the physical count-identification (which count the dynamics makes
+  Lambda-conjugate). Abstract claim (3) strengthened accordingly. Recompiles rc=0; pre-commit
+  clean. This is the 3->5/6 upgrade the expert review identified as the single decisive move.
+
+## Codex 09:30 PDT - final harvest
+
+- **LANDED / E:** Aristotle `971f3bfd`, task `8bec01f7`, returned both exact
+  free-plus-pair QCA cone theorems. `FreePairQCACombinedCone` derives one graph
+  neighborhood of CAR support from coefficient-local one-particle unitarity,
+  then composes one disjoint local Pluecker layer for exactly
+  `ballIter N 2 R`. The theorem uses genuine `CARSupported`; the weak
+  `FootprintIn` route is absent. Direct Lean and targeted build PASS (8,034
+  jobs), standard axiom footprint, root import and aggregate pins added.
+- **PARTIAL / A:** in-progress snapshot of `47f71b37` has completed every helper
+  and the fixed-momentum walk theorem; only
+  `chiralFlip_massCoin_cov` remains before the parity walk theorem closes.
+  Aristotle was instructed to focus exclusively on that lemma and return.
+- **NO PROGRESS / D:** in-progress snapshot of `b7405f03` still has both final
+  convergence holes. Aristotle was redirected to the compact-Lipschitz core
+  theorem and asked to return exact helpers immediately. The landed D claim
+  remains geometry + contraction + three-term transfer, not final strong
+  convergence or PDE.
+- Scorecard Codex lanes filled with narrower grades where required; final report
+  updated for generator covariance, ring holonomy, D projection machinery,
+  finite-chart B census, and the combined QCA cone.
+## Codex 09:35 PDT - final discrete covariance harvest and stall audit
+
+- **LANDED / A:** Aristotle `47f71b37`, task `f2e86c88`, completed both exact
+  ordered-step covariance branches without changing the product
+  `transportStep * massCoin`. Integrated as `DiscreteWalkMassCovariance`, wired
+  into `PhysicsSMDraft.lean`, and pinned both headline theorems in the aggregate
+  guard. Direct Lean PASS; targeted build PASS (8,032 jobs). Semantic boundary:
+  branch action is closed; exhaustive symmetry classification and the full
+  ordered `3+1` regulator remain open.
+- **NO LANDING / B:** final snapshots of `1a74593b` and `bbe67325` retained all
+  original boundary proof holes after more than three hours. Both jobs were
+  canceled under the two-hour stall rule; exact archives and statuses are in
+  their task notes.
+- **NO LANDING / D:** final snapshot of `b7405f03` still contains both original
+  strong-convergence proof holes. The job remains running, but no PDE or final
+  changing-lattice convergence claim has been promoted.
+
+## Codex final release verification
+
+- Aggregate axiom guard PASS: 8,361 jobs, including the new QCA and
+  discrete-walk covariance pins.
+- Full `lake build` PASS: 8,319 jobs.
+- Main Null-Edge manuscript `pdflatex` PASS: 37 pages; only nonfatal existing
+  first-pass reference and layout warnings.
+- Publication verifier run twice with the identical command and output path:
+  both `passed=true`, all three checks passed, and both summaries had SHA-256
+  `c6c1775b8fc1924834da6f01f400d9a43c5dffdc2317b02fca262a7f8631c8fe`.
+- `pre-commit run --all-files` PASS. The dirty tree and release archive/DOI are
+  explicit user-owned release decisions, not verification failures.

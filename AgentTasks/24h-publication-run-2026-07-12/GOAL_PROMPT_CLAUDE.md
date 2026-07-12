@@ -39,6 +39,16 @@ Move beyond discrete support bookkeeping:
 - preserve circuit-depth locality;
 - compute a phase-sensitive dynamical consequence.
 
+### Corrected strict 3+1 coordination
+
+Read the corrected Route A in `MEMO_3PLUS1_ATTACK.md`. The full four-component
+Dirac point is class-A neutral; only globally defined Weyl sectors carry the
+opposite local charges. Reject any manuscript or theorem wording that assigns
+the unsplit point charge `+-1`. Cross-audit Codex's neutrality, sector-charge,
+and chirality-mixing landings. Route C's chirality-odd kick search is related to
+the required higher-order mixing resource, but the many-body chiral grading and
+the one-particle spatial `Xi` must not be identified without a theorem.
+
 ### Paper A
 
 Make the free phase-defect spectrum and refined continuum rate visible at exact

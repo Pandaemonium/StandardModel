@@ -30,7 +30,15 @@ aristotle:
   expected_module: none-task-target
   submission_project: AgentTasks/aristotle-submit/codex-24h-jc-weak-coordinate-raising-20260711-project
   output_dir: AgentTasks/aristotle-output/ec71b329-76eb-44dc-8428-097f3df81d23
-  status: submitted
+  status: landed-trusted
   run: 24h-publication-run-2026-07-12
   owner: Codex
 ```
+
+## 2026-07-11 14:56 PDT harvest
+
+The returned target was proof-complete, contained no placeholders, and compiled
+directly against the live pinned toolchain. It was integrated as trusted module
+`PhysicsSM.Spinor.SpinorTenfoldWeakQuotientSO10Coordinates`, with provenance,
+the returned sign/order controls, and build-enforced axiom pins. Direct source
+check passed.

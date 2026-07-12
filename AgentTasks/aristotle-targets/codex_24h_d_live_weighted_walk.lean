@@ -42,6 +42,28 @@ def walkErrorEnvelope {E : Type*} [Norm E]
 def bulkRate (t : Real) (M N : Nat) : Real :=
   (2 * t ^ 2 * Real.exp |t|) / (refinementRadius M N : Real)
 
+theorem bulkRate_nonneg (t : Real) (M N : Nat) :
+    0 <= bulkRate t M N := by
+  unfold bulkRate refinementRadius
+  positivity
+
+/-- The refinement radius grows without bound with the cutoff. -/
+theorem refinementRadius_tendsto_atTop (M : Nat) :
+    Tendsto (fun N : Nat => (refinementRadius M N : Real)) atTop atTop := by
+  have hcast : Tendsto (fun N : Nat => (N : Real)) atTop atTop :=
+    tendsto_natCast_atTop_atTop
+  refine tendsto_atTop_mono (fun N => ?_) hcast
+  have hnat : N <= refinementRadius M N := by
+    unfold refinementRadius
+    omega
+  exact_mod_cast hnat
+
+/-- The common reciprocal bulk rate vanishes with refinement. -/
+theorem bulkRate_tendsto_zero (t : Real) (M : Nat) :
+    Tendsto (fun N : Nat => bulkRate t M N) atTop (nhds 0) := by
+  unfold bulkRate
+  exact tendsto_const_nhds.div_atTop (refinementRadius_tendsto_atTop M)
+
 /-- Every mode in the cutoff box lies inside the chosen `B4` window. -/
 theorem mode_B4_le_refinementRadius
     (m : Real) (M N : Nat) (hm : |m| <= (M : Real))
@@ -91,6 +113,15 @@ theorem walkErrorEnvelope_le_bulkRate
   · simp [walkErrorEnvelope, hk, bulkRate]
     positivity
 
+theorem walkErrorEnvelope_nonneg
+    {E : Type*} [NormedAddCommGroup E]
+    (m t : Real) (M N : Nat) (f : Mode -> E) (k : Mode) :
+    0 <= walkErrorEnvelope m t M N f k := by
+  unfold walkErrorEnvelope
+  split_ifs
+  · exact mul_nonneg (norm_nonneg _) (norm_nonneg _)
+  · exact le_rfl
+
 /-- The actual quartic split-versus-exact matrix-error envelope, square-summed
 over an expanding momentum box against any square-summable profile, tends to
 zero. This is a dynamic coefficient-space bulk theorem, not yet the final
@@ -102,7 +133,38 @@ theorem walkErrorEnvelope_tendsto_zero
     Tendsto
       (fun N : Nat => ∑' k : Mode, (walkErrorEnvelope m t M N f k) ^ 2)
       atTop (nhds 0) := by
-  sorry
+  have hbulk : Tendsto (fun N : Nat => bulkRate t M N) atTop (nhds 0) :=
+    bulkRate_tendsto_zero t M
+  have hgoal :
+      (fun N : Nat => ∑' k : Mode, (walkErrorEnvelope m t M N f k) ^ 2) =
+        (fun N : Nat =>
+          ∑' k : Mode, ‖(walkErrorEnvelope m t M N f k : Real)‖ ^ 2) := by
+    funext N
+    refine tsum_congr (fun k => ?_)
+    rw [Real.norm_eq_abs, sq_abs]
+  rw [hgoal]
+  refine growingWindow_countableWeightedL2_tendsto_zero
+    (r := fun N : Nat => (bulkRate t M N) ^ 2)
+    (err := fun N k => walkErrorEnvelope m t M N f k)
+    (f := fun k => (‖f k‖ : Real)) (s := 0) ?_ ?_ ?_
+  · simpa using hbulk.pow 2
+  · simpa using hf
+  · intro N k
+    have h0 : 0 <= walkErrorEnvelope m t M N f k :=
+      walkErrorEnvelope_nonneg m t M N f k
+    have hle : walkErrorEnvelope m t M N f k <= bulkRate t M N * ‖f k‖ :=
+      walkErrorEnvelope_le_bulkRate m t M N hm f k
+    have hsq : ‖(walkErrorEnvelope m t M N f k : Real)‖ ^ 2 <=
+        (bulkRate t M N * ‖f k‖) ^ 2 := by
+      rw [Real.norm_eq_abs, sq_abs]
+      exact pow_le_pow_left₀ h0 hle 2
+    calc
+      ‖(walkErrorEnvelope m t M N f k : Real)‖ ^ 2 <=
+          (bulkRate t M N * ‖f k‖) ^ 2 := hsq
+      _ = (bulkRate t M N) ^ 2 *
+            (((1 + modeRadius k : Nat) ^ 0 : Real) *
+              ‖(‖f k‖ : Real)‖ ^ 2) := by
+            simp [mul_pow]
 
 /-- Nonzero momentum/time fixture showing that the live envelope is not
 definitionally zero at finite cutoff. -/

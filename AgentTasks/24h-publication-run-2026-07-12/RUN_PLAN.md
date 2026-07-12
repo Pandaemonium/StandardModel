@@ -95,6 +95,8 @@ Read in this order:
 7. The exact Lean definitions and guards cited by that manuscript.
 8. `JORDAN_CLIFFORD_BRIDGE_PROGRAM.md` before any Furey-Baez or exceptional
    Jordan work.
+9. `D_R3_SHANNON_BRIDGE_PROGRAM.md` before claiming a changing-lattice
+   physical-space continuum or Dirac PDE limit.
 
 At startup:
 
@@ -226,17 +228,33 @@ inequivalent refinements, promote that as the theorem.
 
 ### P5. Paper B: strict-QCA resource bridge
 
-Build the missing physical bridge around the additive Laurent exponent:
+The corrected strategy is binding: the complete mass-admitting four-component
+Dirac tangent is class-A neutral. Its two Weyl sectors have opposite local
+charges. Never assign a nonzero unsplit charge to the full Dirac point.
+
+Build the missing physical bridge in five layers:
 
 - finite-range translation-invariant complex walk -> Laurent matrix;
 - pointwise unitarity -> Laurent inverse with the correct involution;
 - fixed Fourier convention and shift sign;
 - equality with the one-particle GNVW walk exponent at the stated scope;
-- apply the invariant to one live candidate and one control.
+- explicit full-Dirac mass homotopy and exact Weyl-sector Jacobian charges;
+- global-chirality control class versus quadratic chirality-mixing escape class.
 
 Do not identify this with the many-body positive-rational GNVW QCA index.
-Do not infer no-doubling from the exponent alone. A sharp failure to separate
-the live candidates is an informative resource no-go.
+Do not infer no-doubling from the exponent alone. A sectorwise charge sum needs
+global `[U(k), Xi] = 0`; local chirality at the intended crossing is not enough.
+Treat the strict-Laurent strong-winding claim as an imported-T candidate until
+the Bass-Heller-Swan/Read change-of-rings argument is verified in primary full
+text. Never encode it as a Lean assumption.
+
+The construction route should generate exact Laurent-unitary regulators whose
+constant and linear `Xi`-odd jets vanish but whose quadratic odd part is
+nonzero, starting with group-commutator loops. Divide every sweep into a
+globally chiral control class and this quadratic-mixing escape class. Require
+exact root-exclusion certificates for both zero- and pi-quasienergy crossings.
+The detailed theorem ladder and acceptance fixtures are in
+`MEMO_3PLUS1_ATTACK.md`.
 
 ### P6. Paper A and release package
 

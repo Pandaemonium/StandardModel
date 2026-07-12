@@ -55,4 +55,12 @@ namespace PhysicsSM.Algebra.Furey.AxiomGuard
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Algebra.Furey.LadderOperators.anticomm_1_1dag
 
+
+/- The concrete group isomorphism cited by the Furey-Baez manuscript:
+OctonionMulAutFixingE111 =~* Matrix.specialUnitaryGroup (Fin 3) C, both
+sides carrying a Group instance (2026-07-12, headline of the SU(3) claim). -/
+/-- info: 'PhysicsSM.Algebra.Octonion.G2ComplexLine.octonionMulAutFixingE111MulEquivSpecialUnitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Algebra.Octonion.G2ComplexLine.octonionMulAutFixingE111MulEquivSpecialUnitary
+
 end PhysicsSM.Algebra.Furey.AxiomGuard

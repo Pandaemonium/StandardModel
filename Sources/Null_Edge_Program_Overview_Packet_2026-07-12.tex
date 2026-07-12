@@ -1,0 +1,709 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% House trust-mark palette (matches the program manuscripts).
+\definecolor{kernelcolor}{RGB}{0,92,74}
+\definecolor{opencolor}{RGB}{145,76,0}
+\definecolor{classicalcolor}{RGB}{75,75,75}
+\newcommand{\Kernel}{\textcolor{kernelcolor}{\textsc{Kernel}}}
+\newcommand{\Open}{\textcolor{opencolor}{\textsc{Open}}}
+\newcommand{\ImportMark}{\textcolor{classicalcolor}{\textsc{Import}}}
+\newcommand{\ConjMark}{\textcolor{opencolor}{\textsc{Conjecture}}}
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Var}{\operatorname{Var}}
+
+\setlist{itemsep=2pt,topsep=4pt}
+
+\title{The Null-Edge Research Program\\
+\large An Orientation Packet for the Non-Specialist Reader}
+% RELEASE GATE: confirm the author line before circulating outside the project.
+\author{Mark Schwab}
+\date{July 12, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+This packet explains, for a reader with curiosity but no physics or
+mathematics training, what the null-edge research program is trying to do,
+how it works, what it has actually established so far, and what stands
+between it and its goals.  The program explores a simple but radical
+starting point --- that the elementary events of nature are discrete,
+light-speed links called \emph{null edges}, and that mass, particle
+dynamics, and perhaps the geometry of spacetime itself are bookkeeping
+built on top of them.  What makes the program unusual is not the
+speculation (physics has no shortage of speculative programs) but the
+method: every headline mathematical claim is checked, symbol by symbol, by
+a computer proof verifier, and every claim that is \emph{not} so checked
+is labeled as such, with a stated test that could kill it.  This document
+is deliberately honest about the boundary between what has been proved and
+what is still hoped for.
+\end{abstract}
+
+\tableofcontents
+
+\clearpage
+
+%=====================================================================
+\section{What this packet is}
+%=====================================================================
+
+The null-edge program is a research effort in mathematical physics with two
+intertwined goals:
+
+\begin{enumerate}
+\item \textbf{A physics goal.}  Explore whether familiar physics --- the
+  mass of particles, the Dirac equation that governs electrons, the
+  symmetries of the Standard Model, and the mysterious cosmological
+  constant that accelerates the universe's expansion --- can be
+  \emph{reconstructed} from a strictly finite, discrete substrate whose
+  only primitive ingredient is the light-speed link.
+\item \textbf{A methodology goal.}  Demonstrate that speculative physics
+  can be done to a higher standard of honesty than the field's norm, by
+  machine-verifying every load-bearing mathematical claim and by
+  pre-registering, in public, exactly which observations or theorems would
+  falsify each conjecture.
+\end{enumerate}
+
+The two goals reinforce each other.  Speculative programs usually fail not
+with a bang but with a slow drift into unfalsifiability; machine
+verification and pre-registered kill conditions make that drift impossible
+to hide.  Conversely, the discipline is only interesting if applied to
+questions worth asking.
+
+This packet has four main parts: the overarching framework and strategy
+(Sections~\ref{sec:idea}--\ref{sec:framework}), the publications currently
+in preparation (Section~\ref{sec:papers}), the most significant results so
+far (Section~\ref{sec:results}), and the biggest remaining challenges
+(Section~\ref{sec:challenges}).
+
+%=====================================================================
+\section{The idea in plain language}\label{sec:idea}
+%=====================================================================
+
+\subsection{Starting from light}
+
+In Einstein's relativity, directions through spacetime come in three
+kinds.  \emph{Timelike} directions are the paths of ordinary massive
+objects: you, a planet, an electron at rest.  \emph{Spacelike} directions
+connect events that cannot influence each other.  Between them sits the
+knife-edge case: \emph{null} (or ``lightlike'') directions, the paths of
+light itself.  A curious fact of relativity is that no time passes along a
+null path.  A photon, in a precise sense, does not age.
+
+Most approaches to fundamental physics treat massive matter as primary and
+light as a special case.  The null-edge program inverts this.  Its
+starting hypothesis is that the elementary event of nature is a discrete
+hop at light speed --- a \emph{null edge} --- and that everything slower
+than light is a composite phenomenon: light-speed motion that keeps
+changing direction.
+
+This is not a new intuition.  Feynman's ``checkerboard'' model of the
+1940s pictured an electron in one space dimension as a particle zigzagging
+at light speed, with the electron's mass setting the rate of direction
+reversals.  The quantum-mechanical trembling motion called
+\emph{zitterbewegung} points the same way.  The null-edge program asks:
+what if this picture is taken seriously, made exactly finite (no
+infinities, no limits taken on faith), and every step of the resulting
+mathematics is proved rather than estimated?
+
+\subsection{Mass as geometry: the area picture}
+
+The program's central conceptual result gives the old zigzag intuition an
+exact geometric form.  In the spinor language of relativity, each
+light-speed motion is described by a two-component complex object $\psi$
+(a \emph{null spinor}).  If a system contains several light-speed
+constituents, one can ask: how far is the total from being light-speed
+itself?
+
+The answer is an \emph{area}.  For two null spinors $\psi_1$ and $\psi_2$,
+the quantity $z = \psi_1\wedge\psi_2$ measures the area of the
+parallelogram they span in their abstract two-dimensional complex space.
+The program's flagship identity, proved and machine-checked, states that
+for the combined momentum object $P$,
+\[
+  \det P \;=\; \sum_{i<j} \lvert \psi_i \wedge \psi_j \rvert^2 ,
+\]
+that is: \emph{the squared rest mass of the total is exactly the sum of
+the squared areas between pairs of its light-speed constituents}.  A
+bundle of light rays all pointing the same way spans no area and stays
+massless.  The moment two genuinely different null directions open up, an
+area appears --- and that area \emph{is} the mass.
+
+In slogan form: \textbf{a massive particle is light going in more than one
+direction, and its rest mass is the area between the directions.}  The
+slogan is marketing; the determinant identity behind it is a theorem, and
+the program is careful never to let the slogan claim more than the theorem
+does.  In particular, the construction replaces the scalar mass input with
+geometric data; it does not predict any particular mass value.
+
+\subsection{Space, time, and counting}
+
+The program sits in the intellectual tradition of \emph{causal set
+theory}, which holds that spacetime is at bottom a discrete partial order
+--- a locally finite web of ``this event can influence that one'' ---
+and that geometry is recovered by the maxim \emph{order plus number equals
+geometry}: the causal order supplies the shape (angles, light cones), and
+simple counting of the discrete elements supplies the sizes (durations,
+volumes).  A classical theorem of Malament makes the first half precise in
+the continuum; the null-edge program treats the division of labor as a
+standing discipline: whenever someone claims that geometry ``emerges,''
+they must say which half --- the free half (shape from order) or the owed
+half (scale from counting) --- their claim actually addresses.
+
+This counting picture is also where the program touches cosmology.  If
+spacetime volume is literally a count of discrete elements, then that
+count fluctuates, and a celebrated heuristic (due to Sorkin and
+collaborators) says the cosmological constant $\Lam$ should fluctuate with
+magnitude $1/\sqrt{V}$ --- which, for the observed universe, lands
+strikingly close to the tiny observed value of dark energy.  Whether that
+heuristic survives exact scrutiny is one of the program's active fronts
+(Sections~\ref{sec:papers} and~\ref{sec:results}).
+
+%=====================================================================
+\section{How we work: physics you can compile}\label{sec:method}
+%=====================================================================
+
+\subsection{The proof checker}
+
+Every headline mathematical claim in this program is formalized in
+\emph{Lean~4}, a proof assistant: a programming language in which one
+writes not only definitions but complete logical proofs, which a small,
+heavily scrutinized core program (the \emph{kernel}) then checks step by
+step.  The kernel cannot be persuaded, tired out, or impressed by
+reputation.  If a proof has a gap, the build fails.
+
+Two consequences matter for a lay reader:
+
+\begin{itemize}
+\item \textbf{When we say ``proved,'' we mean machine-checked.}  A claim
+  marked \Kernel{} in our manuscripts has been verified by the Lean kernel
+  down to the axioms of standard mathematics.  There is no ``the details
+  are left to the reader.''
+\item \textbf{The computer checks the proof, not the physics.}  The kernel
+  certifies that a stated theorem follows from the axioms.  It cannot
+  certify that the stated theorem is the \emph{right} statement --- that
+  it means what the surrounding prose says it means.  Guarding that
+  boundary (``semantic alignment'') is a human and editorial
+  responsibility the program takes as seriously as the proofs themselves,
+  with named failure modes it audits against: vacuous hypotheses,
+  trivialities dressed as depth, prose that outruns the theorem, and
+  statements that are true but not the intended mathematics.
+\end{itemize}
+
+The formal development is substantial: the current publication packet
+cites more than seventy headline Lean modules, each with recorded
+provenance and explicitly documented conventions.
+
+\subsection{The claim ladder}
+
+Not everything in a physics program can be a theorem, and pretending
+otherwise is its own form of dishonesty.  Program manuscripts therefore
+label every claim on a fixed ladder:
+
+\begin{description}[style=nextline]
+\item[\Kernel] A theorem checked by the Lean kernel in this repository,
+  with a standard, pinned axiom footprint.  The strongest currency we
+  have.
+\item[Kernel + evaluator] A small, explicitly disclosed class of results
+  whose proof uses Lean's compiled evaluator for large finite
+  computations (for instance, verifying identities of $28\times 28$
+  integer matrices).  Trustworthy, but resting on slightly more machinery
+  than the bare kernel; every such use is disclosed at the point of use,
+  and the program routinely retrofits these down to bare-kernel proofs.
+\item[\ImportMark] An established result from the literature that we rely
+  on but have not re-proved.  Imports are named, cited, and checked
+  against primary sources before release.
+\item[\ConjMark] A pre-registered conjecture, stated with the test that
+  would settle it and the condition under which we will declare it dead.
+\item[Speculation] Labeled as such, always.  Interpretation and motivation
+  are kept visibly separate from theorems.
+\end{description}
+
+\subsection{Guards, audits, and kill conditions}
+
+Three further practices are worth explaining because they shape everything
+in Sections~\ref{sec:papers} and~\ref{sec:results}.
+
+\textbf{Axiom guards.}  Each flagship result is protected by a
+\emph{guard file}: a tripwire compiled into the codebase that records the
+exact logical assumptions of the theorem and fails the entire build if
+they ever silently change --- for example, if a future edit weakened a
+proof or smuggled in an extra assumption.  Honesty is enforced by the
+compiler, not by memory.
+
+\textbf{Adversarial audits.}  The program runs regular internal red-team
+reviews (by independent AI agents) whose explicit job is to
+find over-claims: abstract sentences without a theorem behind them,
+theorems whose hypotheses no concrete example satisfies, conventions that
+drifted between sources.  Findings are recorded in public scorecards, and
+corrections are made in the manuscripts, not in private.
+
+\textbf{Kill conditions.}  Conjectures are pre-registered with the result
+that would falsify them, and the program's roadmap is a ladder of
+\emph{gates}: pass/fail checkpoints designed so that both outcomes are
+publishable.  If a hoped-for gap theorem fails, the obstruction theorem is
+itself the paper.  The program has already exercised this discipline in
+public: an early claim of exact Lorentz invariance for a particular finite
+lattice was withdrawn when analysis showed it could not hold, and a
+proposed identification of the electron's internal clock with a certain
+canonical mathematical flow was not merely abandoned but \emph{disproved}
+--- the refutation is now itself a recorded result.  When a claim dies
+here, it dies in the open, with a death certificate.
+
+A note on how the work is produced: proofs and drafts are developed
+jointly by human direction and AI proof agents working around the clock.
+This is an accelerant, not a trust basis --- nothing rests on any agent's
+say-so, because every result must pass the kernel and the audit culture
+described above.
+
+%=====================================================================
+\section{The framework and strategy}\label{sec:framework}
+%=====================================================================
+
+\subsection{The objects}
+
+The program's mathematical world is deliberately austere.  Its recurring
+cast:
+
+\begin{itemize}
+\item \textbf{Null edges}: discrete light-speed links; the primitive.
+\item \textbf{Decorations}: finite algebraic data carried on the edges
+  (phases, spinor labels, transport rules) --- the minimum extra structure
+  needed to speak of interference and internal symmetry.
+\item \textbf{Quantum walks}: exactly unitary, tick-by-tick update rules
+  for a quantum particle hopping along null edges.  ``Exactly unitary''
+  means probability is conserved to the last decimal place at every tick;
+  nothing is approximate.
+\item \textbf{Finite Dirac operators}: the discrete counterparts of the
+  wave operator governing electrons, assembled from null hops and
+  decorations, and required to reproduce the continuum Dirac physics in
+  controlled limits.
+\item \textbf{Counting observables}: element counts, mode counts, defect
+  counts --- the quantities that, per ``order plus number,'' are supposed
+  to carry all metrical information, up to and including the cosmological
+  constant.
+\end{itemize}
+
+Everything is finite: finite graphs, finite matrices, finite Hilbert
+spaces.  Infinities enter only when a theorem explicitly takes a limit,
+and such theorems must state their convergence rates.
+
+\subsection{The strategy: a ladder of gates}
+
+The research plan is organized as a ladder of named gates, in roughly this
+order of logical dependence:
+
+\begin{enumerate}
+\item \textbf{Kinematics} (the ``I'' gates): make the mass-as-area
+  dictionary exact --- the determinant identity, its information-theoretic
+  reading (mass as entanglement between null constituents; the theorem
+  that a null edge has exactly zero entropy: \emph{null edges do not
+  age}), and the first-order bridge to Dirac operators.  Largely landed
+  and kernel-checked.
+\item \textbf{Lorentz invariance} (gate L0): no fixed finite lattice can
+  be exactly Lorentz-invariant, so the program treats its lattices as
+  \emph{regulators} --- disposable scaffolding --- and places the ontology
+  in random causal orders that are Lorentz-invariant in distribution.
+  Proving the right no-go and viability theorems here is open, paper-level
+  work.
+\item \textbf{Operator theory and chirality} (the ``C'' gates): discrete
+  space notoriously creates spurious mirror copies of particles
+  (\emph{fermion doubling}) and struggles to host the handed
+  (\emph{chiral}) fermions the Standard Model needs.  The program attacks
+  this with the overlap/Ginsparg--Wilson technology of lattice field
+  theory, kernel-checking each step, including exact bookkeeping of where
+  the doublers live and what charges they carry.
+\item \textbf{Interactions and dynamics} (the ``D'' and Fock-space gates):
+  promote one-particle walks to many-particle fermionic dynamics with
+  exact locality (strict causal cones) and exactly computed spectra; then
+  ask what principle \emph{selects} the dynamics, rather than supplying it
+  by hand.
+\item \textbf{Gravity and entropy} (the ``Q'' gates): the conjectured
+  route to gravity runs through information theory --- monotonicity
+  properties of entropy along nested causal regions.  Explicitly not
+  derived yet; the slogan ``gravity is data-processing'' is a gate to be
+  passed, not a result to be cited.
+\item \textbf{The cosmological constant} ($\Lam$ gates): make the
+  ``everpresent $\Lam$'' fluctuation heuristic exact inside the framework,
+  and find out whether it survives.  This front moved decisively in July
+  2026 (Section~\ref{sec:results}).
+\item \textbf{Algebraic matter structure} (a parallel track): formalize
+  the proposed links between the octonions --- the largest of the four
+  division algebras, an eight-dimensional number system in which even the
+  grouping of multiplications matters --- and the Standard Model's
+  symmetry group, as a verified audit trail through constructions usually
+  compared only informally.
+\end{enumerate}
+
+\subsection{What we deliberately do not claim}
+
+The program maintains a standing list of non-claims, restated in every
+relevant manuscript.  As of this writing: gravity has not been derived;
+no exact Lorentz invariance is claimed for any finite structure; the
+observed \emph{value} of the cosmological constant is not derived (its
+scale enters as an input); no absolute particle mass is predicted (the
+renormalization dictionary that would connect lattice numbers to
+laboratory numbers is unbuilt); and the interacting dynamics studied so
+far is \emph{supplied}, not derived from a deeper principle.  Readers
+should hold us to this list.
+
+%=====================================================================
+\section{The publications in preparation}\label{sec:papers}
+%=====================================================================
+
+The current packet contains five manuscripts in active preparation, plus
+supporting program documents.  Table~\ref{tab:papers} gives the one-line
+view; the prose below explains each.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}lXl@{}}
+\toprule
+Paper & Subject in one line & Status \\
+\midrule
+A & Rest mass derived as null-spinor area; exactly unitary Dirac walk & frozen draft, near-ready \\
+C & Defects in the mass field: exact mode counting and a positional law & frozen draft \\
+E & Interacting fermionic walk: exact two-particle spectrum & working draft \\
+$\Lam$ & Cosmological constant: structural core, everpresent dichotomy & new draft (July 2026) \\
+FB & Octonions and the Standard Model: verified algebraic audit trail & draft \\
+\bottomrule
+\end{tabularx}
+\caption{The active manuscripts.  Additional lanes (a strict-locality
+resource theorem, a changing-lattice continuum study, and a
+classification-plus-selector pair) are in earlier stages.}
+\label{tab:papers}
+\end{table}
+
+\subsection{Paper A: from area to Dirac gap}
+
+\emph{Null-Spinor Area as the Rest Gap of an Exactly Unitary Dirac Walk.}
+This is the flagship.  It proves the determinant identity of
+Section~\ref{sec:idea}, constructs from the area datum $z$ the unique
+odd Hermitian \emph{rest operator} $B_z$ with $B_z^2 = \det(P)\,\mathbf 1$,
+exponentiates it into an exactly unitary quantum walk, and proves that the
+walk's fixed-momentum behavior converges to genuine Dirac flow at an
+explicit rate.  It further shows the \emph{phase} of the area (not just
+its size) is physically visible in an exact two-site spectrum formula, and
+that the same symmetry that fixes the rest operator also selects a
+specific pair interaction.  Just as importantly, the paper proves exact
+no-go theorems delimiting its own construction: the minimal architecture
+provably retains high-frequency artifacts and cannot be repaired by the
+simplest fixes.  The paper says so, with proofs.
+
+\subsection{Paper C: the half-winding defect paper}
+
+If the mass field $z(x)$ varies from place to place, its zeros ---
+points where the two light directions momentarily align --- act as
+\emph{defects}, and localized modes appear at them.  Folklore says a
+topological winding number should predict these modes.  Paper C proves,
+by exhaustive machine-checked classification of all sixteen sign fields
+on a four-site ring, that the folklore is wrong here: two fields with
+identical winding have different mode structure.  The exact law
+(kernel-checked as of July 12) is \emph{positional}: what matters is
+where the defect sits relative to the reflection-symmetric sites.  The
+paper is thus a precision counterexample-plus-repair: familiar invariants
+(determinants, naive indices, both symmetric-time windings) are proved
+blind, and the correct finite criterion is proved in their place.
+
+\subsection{Paper E: exact interacting dynamics}
+
+Most exactly solvable models are free (non-interacting).  Paper E takes
+the program's fermionic walk, adds the selected two-particle interaction
+gate, and computes the composed dynamics \emph{exactly} on a four-site
+ring: the two-particle spectrum reduces to named free levels plus twelve
+interacting quasienergies that all solve a single rational cubic
+equation.  Every step is machine-checked, with one honestly disclosed
+concession: the largest matrix identities are verified by Lean's compiled
+evaluator on an integer-arithmetic twin of the problem rather than by the
+bare kernel.  An exact, machine-verified interacting spectrum at this
+level of explicitness is a rare artifact, aimed at the quantum-simulation
+and cellular-automaton communities.
+
+\subsection{The cosmological-constant paper}
+
+New in July 2026.  The paper formalizes the arithmetic core of the
+null-edge account of $\Lam$: (i) a structural theorem that in the finite
+spectral-action bookkeeping, \emph{only counting statistics} can touch the
+$\Lam$ coefficient --- no deformation of the dynamics reaches it; (ii) the
+everpresent scaling law, deriving the $1/\sqrt V$ fluctuation magnitude
+from a Poisson counting input, routed through the framework's own edge
+count; and (iii) a pre-registered dichotomy, now resolved at the
+mathematical level (Section~\ref{sec:results}), between counting
+statistics that keep dark-energy fluctuations alive and quieter
+(``hyperuniform'') statistics that kill them.  The paper is explicit that
+it does not derive the observed value, the sign, or the stochastic
+dynamics of $\Lam$.
+
+\subsection{The Furey--Baez octonion paper}
+
+A different kind of contribution: not new physics, but a verified audit
+trail through a web of algebraic constructions --- due to Furey, Baez,
+Dubois-Violette, Todorov, and others --- that link the octonions to the
+Standard Model's symmetry group $S(U(2)\times U(3))$.  The paper's
+flagship theorem proves that the automorphisms of an explicit octonion
+model fixing one chosen imaginary unit form exactly $SU(3)$, the symmetry
+group of the strong force (as a precise algebraic statement, deliberately
+distinguished from claims about smooth Lie groups).  Around it sit a
+formalized one-generation particle package, the exact six-element kernel
+of the Standard Model's gauge-group covering, charge operators with their
+eigenvalue tables, and anomaly sums --- with the one conventional input
+(the right-handed singlet completion) recorded as a visible,
+machine-readable claim boundary rather than hidden.
+
+\subsection{Supporting program documents}
+
+Behind the manuscripts sit the program treatises (the NERD series) that
+record the ontology, the gate ladder, failure modes, and the standing
+non-claims; a living conventions file that locks signs, orientations, and
+normalization choices; and a reproducibility artifact that rebuilds the
+formal development and re-verifies the headline theorems from scratch.
+
+%=====================================================================
+\section{The most significant results so far}\label{sec:results}
+%=====================================================================
+
+Everything in this section marked \Kernel{} is machine-checked and
+guard-pinned as described in Section~\ref{sec:method}.
+
+\subsection{Mass is an area (\Kernel)}
+
+The determinant identity $\det P=\sum_{i<j}|\psi_i\wedge\psi_j|^2$ and the
+rest-operator law $B_z^2=\det(P)\,\mathbf 1$: the program's conceptual
+anchor.  The squared rest mass of a bundle of light-speed constituents is
+exactly the summed squared areas between their spinor pairs, and the mass
+term of the resulting Dirac walk is built from that area, not inserted by
+hand.  A companion theorem generalizes the governing \emph{cube law}
+$B^3=\mu^2 B$ to any number of constituents.
+
+\subsection{Null edges do not age (\Kernel)}
+
+The information-theoretic dictionary: for the normalized two-level object
+attached to a momentum, the von Neumann entropy is zero exactly when the
+momentum is null.  Purity, masslessness, and ``no internal clock'' are
+provably the same thing in the finite model --- turning a poetic slogan of
+the framework into a theorem, and giving mass a second reading as
+\emph{entanglement} between null constituents.
+
+\subsection{An exactly solved interacting quantum automaton (\Kernel{} + disclosed evaluator)}
+
+Paper E's headline: the interacting two-particle spectrum of the composed
+fermionic walk, pinned exactly --- the characteristic polynomial factors
+into named free levels and a palindromic factor whose twelve interacting
+quasienergies solve one rational cubic.  Independent experts identified
+this as the packet's single most broadly interesting artifact: exact,
+machine-verified interacting dynamics is something very few groups in any
+tradition can exhibit.
+
+\subsection{Exact bookkeeping of fermion doubling (\Kernel)}
+
+For the ordered $3{+}1$-dimensional walk, all zero- and $\pi$-quasienergy
+crossings --- the ``doubler'' modes that discretization inevitably creates
+--- are classified with their charges computed \emph{from the walk's own
+symbol} at all eight nodes: charges $\pm1$, opposite at the two gaps,
+summing to zero.  This is a machine-checked finite instance of the famous
+Nielsen--Ninomiya obstruction, and the exact ledger one needs before any
+honest attempt to evade it.
+
+\subsection{The positional defect law (\Kernel)}
+
+Paper C's classification: mode counts at mass-field defects on the
+four-site ring are \emph{not} determined by the winding number ---
+explicit counterexample pairs are proved --- but by a positional
+compatibility law relative to the reflection-fixed sites, now
+kernel-checked at family level, with exact multiplicities (2, 4, or 0
+modes) certified for all sixteen fields.
+
+\subsection{The dynamics selects itself, at block level (\Kernel)}
+
+Within the static family of rest operators, the symmetry group that
+preserves the construction is proved to be exactly the chiral phase
+circle, and this covariance \emph{forces} the specific quartic pair
+interaction used in Paper E --- resolving what had been an open selection
+conjecture, at the block level.  (Whether the full time-dependent dynamics
+forces the same choice remains open, and the papers say so.)
+
+\subsection{The everpresent-$\Lam$ fork is now a theorem (\Kernel)}
+
+The July 2026 capstone.  The cosmological-constant story hinges on how the
+fundamental count $N$ fluctuates with volume: Poisson-like scatter
+($\Var(N)\sim V$) sustains ``everpresent'' dark-energy fluctuations at the
+observed order of magnitude, while sufficiently correlated, quiet
+(\emph{hyperuniform}) counting kills them.  Skeptics could reasonably ask
+whether the quiet branch was even mathematically possible for the
+framework's own fermionic states.  It is: via Wick's number-variance
+identity, an explicit Fermi-sea (projection) kernel is constructed with
+region size $k^2$ and count variance exactly $k/4$ --- genuinely
+sub-extensive \emph{and} unbounded, the non-degenerate case.  Both
+branches of the dichotomy are therefore realized by explicit states, the
+fork is a kernel-checked theorem, and the surviving open question is
+sharply physical rather than mathematical: \emph{which count does the
+dynamics make conjugate to $\Lam$ --- a thermal one (dark energy
+survives) or a Fermi-sea one (it does not)?}  A companion theorem (a
+general-$N$ finite uncertainty principle of Donoho--Stark type) supports
+the conjugacy picture on finite registers.
+
+\subsection{$SU(3)$ from the octonions, verified (\Kernel)}
+
+The Furey--Baez paper's flagship: the algebraically defined automorphisms
+of an explicit octonion model fixing one imaginary unit are proved
+multiplicatively equivalent to $SU(3)$ --- with the equivalence upgraded
+to a full group isomorphism, and the target proved equal to the standard
+special-unitary group of the mathematical library.  Around it, the
+one-generation package, the $\mathbb{Z}_6$ kernel computation, and the
+two-sided stabilizer characterization on the exceptional Jordan algebra
+give the octonion--Standard-Model literature its first machine-verified
+common core.
+
+\subsection{Chiral fermions on the regulator (\Kernel, draft lane)}
+
+On the operator-theory front, the free tetrahedral operator has a proved
+spectral gap, a self-adjoint sign, an exact Ginsparg--Wilson relation, and
+kernel-checked chiral (Weyl) projectors --- the statement that the
+program's regulator carries handed fermions at the free level, with the
+gauge-field, index, and anomaly layers (the hard part) explicitly next.
+
+%=====================================================================
+\section{The biggest remaining challenges}\label{sec:challenges}
+%=====================================================================
+
+This section is the packet's most important honesty device.  The program's
+finite theorems are exact; the distance between them and established
+physics is real and measured below.
+
+\subsection{The continuum limit}
+
+Every landed theorem lives on a finite structure.  Physics as observed is
+(at least effectively) continuous.  Paper A controls fixed-momentum
+convergence to Dirac flow with explicit rates, but full position-space
+convergence, the ``commuting square'' (finite construction then limit
+equals continuum construction then square), and the decoupling of
+high-frequency artifacts are open.  The finite square can be exact while
+the limit fails; the program's own test ladder says so and tests for it.
+
+\subsection{Lorentz invariance}
+
+No fixed finite lattice is exactly Lorentz-invariant, and the program has
+formally withdrawn any such claim.  The intended resolution --- ontology
+in Lorentz-invariant-in-distribution random causal orders, lattices
+demoted to regulators --- rests on theorems (the L0 gate; the
+Bombelli--Henson--Sorkin-type invariance leg for the $\Lam$ paper) that
+are stated, scheduled, and unproved.  This is the single largest
+structural debt in the framework.
+
+\subsection{Dynamics is supplied, not derived}
+
+The interaction gate of Paper E is \emph{selected} by symmetry within a
+declared family --- a genuine theorem --- but the family itself, and the
+alternation of free and interacting layers, are choices.  The deeper
+principle (maximum-entropy equilibrium, modular-flow generation, or
+something else) that would \emph{derive} the dynamics is gate-D work,
+formulated but unproven.  Similarly, the full time-dependent covariance
+question behind the selection theorem remains open.
+
+\subsection{No absolute scales, no gravity, no value of $\Lam$}
+
+Three non-claims that must eventually become claims if the program is to
+be physics rather than mathematics:
+
+\begin{itemize}
+\item \textbf{Masses.}  The framework derives mass \emph{operators}, not
+  mass \emph{values}.  Connecting lattice quantities to laboratory
+  numbers requires a renormalization dictionary that does not yet exist.
+\item \textbf{Gravity.}  The entropy-monotonicity route (Q gates) is a
+  plan with finite warm-up theorems, not a derivation.  Nothing in the
+  program yet reproduces Einstein's equations.
+\item \textbf{The cosmological constant.}  The fork theorem sharpened the
+  question but pointedly did not answer it: identifying which count the
+  dynamics conjugates to $\Lam$, the sign of the effect, and the actual
+  stochastic dynamics (including confronting existing observational
+  constraints on fluctuating dark energy) are the pre-registered next
+  rungs.
+\end{itemize}
+
+\subsection{Chirality and anomalies with gauge fields}
+
+The free-level chiral release is landed, but the Standard Model's handed
+fermions interact with gauge fields, where lattice traditions meet their
+hardest obstructions (doubling in interacting settings, index theorems,
+anomaly cancellation).  The program's index-integrality and winding
+theorems are first steps on a long, well-mapped climb, with the honest
+possibility that a no-go theorem, not a construction, is what lies at the
+top.
+
+\subsection{Unification of the threads}
+
+The packet's threads rhyme --- the same cube law $X^3=(\text{area})\,X$
+governs Paper A's rest operator and Paper E's interaction generator; the
+octonionic structures echo the spinor constructions --- but rhyme is not
+identity.  A kernel-checked corollary now captures the shared cube-law
+shape, and it explicitly \emph{disclaims} being a unification; the
+master bridge (the Jordan--Clifford program) is a ladder of graded rungs,
+each with a kill condition, whose top rung is unproven.  The program
+treats claiming unification before proving it as a named failure mode.
+
+\subsection{The permanent challenge: semantic alignment}
+
+Finally, the challenge that never closes: the kernel checks proofs, not
+meanings.  Every additional theorem increases the surface on which a
+correct proof of a subtly wrong statement could sit.  The audit culture
+--- adversarial reviews, over-claim taxonomies, guard files, claim
+labels --- is the program's standing answer, and it is a process, not a
+theorem.
+
+%=====================================================================
+\section{How to read our claims, and what would change our minds}
+%=====================================================================
+
+A reader encountering the program's manuscripts should apply three rules:
+
+\begin{enumerate}
+\item \textbf{Trust the marks, not the prose.}  Sentences marked \Kernel{}
+  are machine-checked theorems; unmarked prose is interpretation.  When in
+  doubt, the theorem statement --- not the surrounding narrative --- is
+  the claim.
+\item \textbf{Check the non-claims list.}  Each manuscript states what it
+  does not establish.  If a summary of our work (including an enthusiastic
+  one) contradicts the non-claims list, the summary is wrong.
+\item \textbf{Look for the kill conditions.}  Every conjecture worth the
+  name is pre-registered with the result that would kill it.  A program
+  that cannot state what would falsify it is not doing science; we invite
+  readers to hold the program to its own stated tests.
+\end{enumerate}
+
+What would change our minds?  Concretely: a proof that the quiet
+(hyperuniform) counting branch is dynamically forced would kill the
+everpresent-$\Lam$ identification; failure of the Lorentz-ensemble gate
+would confine the framework to regulator status; an obstruction at the
+gauge-field chirality gate would demote the matter sector to an effective
+description; and persistent failure of the continuum commuting square
+would leave the program as exact finite mathematics with a physics-shaped
+hole.  Each of these outcomes would be published under the same standards
+as a success --- because the program's deepest bet is that in speculative
+physics, \emph{verified honesty is itself the most valuable product}.
+
+\bigskip
+
+\noindent\textbf{Where to look next.}  The program's manuscripts (the five
+papers of Section~\ref{sec:papers}), the reproducibility artifact that
+rebuilds and re-verifies every headline theorem, and the public scorecards
+and ledgers of the audit runs together form the packet's full evidence
+base.  Nothing in this overview asks to be taken on trust; that is the
+point.
+
+\end{document}

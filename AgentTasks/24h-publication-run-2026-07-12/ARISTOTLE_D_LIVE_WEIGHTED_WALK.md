@@ -58,7 +58,15 @@ aristotle:
   expected_module: none-task-target
   submission_project: AgentTasks/aristotle-submit/codex-24h-d-live-weighted-walk-20260711-project
   output_dir: AgentTasks/aristotle-output/216ec89c-a5ec-4b08-b0e5-9a92e78df6a1
-  status: submitted
+  status: landed-post-audit-port
   run: 24h-publication-run-2026-07-12
   owner: Codex
 ```
+
+## Harvest result
+
+Aristotle returned a complete proof against the pre-audit API. The proof was
+ported to the live API after `hpoint` was removed, independently compiled, and
+landed as `PhysicsSM/Draft/NullEdge/LiveWeighted3Plus1Walk.lean`. The frozen
+theorem statement is unchanged. Targeted source build passes without proof
+holes; aggregate guard is pending.

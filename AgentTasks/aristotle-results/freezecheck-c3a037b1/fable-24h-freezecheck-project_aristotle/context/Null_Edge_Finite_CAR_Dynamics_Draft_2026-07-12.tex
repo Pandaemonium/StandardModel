@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% PORTFOLIO-RATIFICATION-PENDING: drafted 2026-07-12 (24h publication run)
+% as the Paper E companion once the dynamics gate closed: generator layer
+% (PlueckerPairGenerator), exact circuit locality (PlueckerCausalCone,
+% PlueckerLayerCone), operational discriminator (PlueckerPhaseObservable),
+% and the exact interacting two-particle spectrum fixture (pending
+% harvest slots marked PENDING below). RELEASE GATES shared with the
+% companions: named authors, artifact manifest.
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\tr}{\operatorname{tr}}
+\definecolor{kernelcolor}{RGB}{0,92,74}
+\definecolor{draftcolor}{RGB}{145,76,0}
+\newcommand{\Kernel}{\textcolor{kernelcolor}{\textsc{Kernel}}}
+\newcommand{\DraftTrust}{\textcolor{draftcolor}{\textsc{Kernel+Eval}}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+
+\title{Exact Pair-Gate Dynamics on a Fermionic Walk:\\
+generator, circuit cones, and an exact interacting spectrum}
+\author{Mark Schwab}
+\date{July 12, 2026 --- working draft}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We assemble a largely kernel-checked account of the interacting layer of
+a finite fermionic quantum walk, with the trust mark stated at each
+result --- kernel where the statement is proved directly, and compiled
+evaluator (on a Gaussian-integer twin) for the explicit $28\times28$
+matrix identities behind the exact interacting spectrum.  The supplied two-particle phase kick ---
+previously an opaque unitary gate --- is structured: it equals, up to a
+global phase, the exact quarter-period pulse of a finite Hermitian even
+quartic CAR generator $K(z)$ whose cube closes, $K^3=|z|^2K$, so the
+generated one-parameter gate family closes into an explicit
+circle-parametrized group, with the group law proved as pure algebra and an explicit
+counterexample showing the naive half-pulse identification (without the
+global phase) is false.  Locality is exact rather than asymptotic:
+gates on disjoint mode sets commute, a scheduled sequence of finite-range
+blocks keeps CAR support inside the corresponding iterated neighborhood,
+and pairwise-disjoint layers cost one neighborhood step per layer, so
+depth --- not gate count --- bounds propagation.  The free and kick
+layers do not commute (four-mode witness, oracle-exact), so the composed
+automaton is defined, as in the interacting
+cellular-automaton literature, by alternating the free minor-lift with
+the kick layer.  On an explicit four-site ring at the Pythagorean kick,
+the composed step's two-particle spectrum is computed exactly
+(oracle-exact): the free levels that persist and twelve
+interaction-shifted quasienergies solving a rational cubic in
+$2\cos2\varepsilon$; the kernel formalization of this factorization is
+the paper's pending flagship (Section~4).  A
+convention-fixed operational discriminator --- return probability $4/5$
+versus $1$ at the displayed fixtures
+$z=3+4\ii$ and $z=5$ --- separates the two equal-modulus conjugate
+fields, consistent with the interacting sector retaining the Pluecker
+phase.  Boundaries are stated exactly: the
+generator is supplied, not derived from the free carrier (an open
+problem shared with the Thirring-automaton literature); single-kick
+spectra are phase-independent; and no thermodynamic or continuum claim
+is made.
+\end{abstract}
+
+\section{Setup}
+
+All objects are finite and explicit.  The one-particle space is
+$\C^{2L}$ for a ring or line of $L$ sites with two internal components
+per site; Fock space is the $2^{2L}$-dimensional occupation-basis space
+over these modes, with creation and annihilation operators carrying the
+standard ordered sign conventions (\texttt{FiniteCARFockBasic}: the CAR
+relations, self-adjointness of the occupation form, and the sign
+bookkeeping are kernel theorems, not assumptions).  A one-particle
+unitary $U$ enters the many-body theory through the determinant-minor
+lift $\Gamma(U)$, whose entries on the $n$-particle sector are the
+$n\times n$ minors of $U$: the lift fixes the vacuum, preserves particle
+number and parity, obeys exact creation covariance, and is functorial,
+$\Gamma(1)=\id$ and $\Gamma(UV)=\Gamma(U)\Gamma(V)$, with the lifted
+conjugate transpose an exact two-sided inverse
+(\texttt{FiniteCARSecondQuantization}, \Kernel{}).  The supplied
+interaction is an even quartic CAR polynomial supported on one pair
+block (\texttt{PlueckerQuarticInteraction}, \Kernel{}); its structure is
+the subject of Section~2.  Throughout, ``exact'' means an identity of
+matrices over $\mathbb{Q}(\ii)$ checked by the Lean kernel; trust marks
+follow the companion papers (\Kernel{} vs \DraftTrust{}).
+
+\section{The generator layer}
+
+\begin{theorem}[The pair-gate family closes into a circle group]\label{thm:gen}
+Let $K(z)\psi = z\,(\text{pairForward}\,\psi) +
+\bar z\,(\text{pairBackward}\,\psi)$ on the four-mode Fock space.  Then
+$K$ is Hermitian for the occupation inner product; $K^3=|z|^2K$; the
+circle-parametrized family
+$U(c,s)=\id+(c-1)P-\ii s\,K/|z|$ (with $P$ the pair-block projector)
+satisfies the exact group law
+$U(c_1,s_1)U(c_2,s_2)=U(c_1c_2-s_1s_2,\,s_1c_2+c_1s_2)$ and is unitary
+whenever $c^2+s^2=1$; and the walk's phase kick with unit coefficient
+$z/|z|$ equals $\ii\,U(0,1)$ on the pair sector, both fixing the
+complement --- the kick is the quarter-period pulse up to a global
+phase.  The naive identification without that phase is false, by an
+explicit amplitude witness.
+\end{theorem}
+\noindent\Kernel{}\quad(\texttt{PlueckerPairGenerator}:
+\texttt{generator\_hermitian}, \texttt{generator\_cubed},
+\texttt{group\_law}, \texttt{unitary}, \texttt{halfpulse\_low/high/off},
+\texttt{naive\_halfpulse\_false}, all-rational witness and the
+$(c,s)=(1,1)$ unitarity-failure control; in-file axiom guards.)
+
+\section{Exact circuit locality}
+
+Locality in this paper is a set of finite identities, not an asymptotic
+bound.  Even gates on disjoint mode sets commute exactly, so a layer of
+pairwise-disjoint gates is order-independent.  For a scheduled sequence
+of finite-range blocks, CAR support propagates inside the corresponding
+iterated graph neighborhood: the image of an operator supported on a
+set $S$ under the scheduled circuit is supported on the union of the
+blocks' neighborhoods reached by the schedule, with an explicit
+contiguous witness realizing the bound and a nonlocal control showing
+the hypothesis is load-bearing (\texttt{PlueckerCausalCone}, \Kernel{}).
+A further layer theorem sharpens the count: pairwise-disjoint local
+gates cost one neighborhood expansion per \emph{layer}, so an arbitrary
+finite schedule is bounded by its layer depth rather than its gate
+count (\texttt{PlueckerLayerCone}, \Kernel{}).  These are the
+discrete-time, finite-volume counterparts of Lieb--Robinson-type
+statements, but they are exact: no exponential tail, no velocity
+constant to estimate.
+
+\begin{remark}[No joint exponential]
+$[H_{\mathrm{free}},K(z)]\neq0$ exactly (norm $5$ at the four-mode line
+witness; oracle-exact, not formalized), so the free and kick layers do
+not exponentiate jointly; we \emph{define} the interacting automaton by
+alternation, matching the field convention, and within-layer exactness
+is the landed theorem.  The ring-level witness is checked up to the same
+compiled evaluator on the twin (\DraftTrust):
+the pair-lifted translation and the composed step have an explicit
+nonzero commutator entry
+(\texttt{PairMomentumBlocks.kick\_breaks\_translation}, \DraftTrust{}).
+\end{remark}
+
+\section{The exact interacting spectrum on a four-site ring}
+At the rational $3$-$4$-$5$ kick the composed step's two-particle
+characteristic polynomial is pinned exactly.  A kernel polynomial
+factorization (\texttt{PairSpectrumFixture.charpoly\_factorization},
+over any commutative ring) gives the product
+$(\lambda+1)^2(\lambda-1)^4(25\lambda^2+14\lambda+25)
+(5\lambda^2-6\lambda+5)^2(5\lambda^2+6\lambda+5)^2\,p_{12}(\lambda)$
+as the explicit degree-$28$ polynomial with leading coefficient $5^{11}$;
+a kernel palindromic reduction (\texttt{p12\_palindromic\_reduction},
+over any field) rewrites the interacting factor as
+$p_{12}(\lambda)=\lambda^6\,(3125w^3-2300w^2-6156w-1440)$,
+$w=\lambda^2+\lambda^{-2}$, so the twelve interaction-shifted
+quasienergies solve the rational cubic in $w=2\cos2\varepsilon$; and the
+matrix bridge (\texttt{PairCharpolyBridge.V\_charpoly\_eq}) proves
+$5^{11}\,\chi_V(\lambda)$ equals that same explicit polynomial --- the
+characteristic polynomial of the composed step \emph{is} the displayed
+product, with the polynomial charpoly obtained structurally through a
+kernel companion-matrix assembly rather than a symbolic determinant.
+Six exact pinned modes (\texttt{Vz\_eigenvector\_plus/minus}, kernel
+\texttt{decide}) --- four $+1$ and two $-1$ eigenvectors --- realize the
+$(\lambda-1)^4$ and $(\lambda+1)^2$ free factors, and the faithfulness
+identity $B_zK_z=5\,V_z$ with $V=U_2K_2$ ties the integer twin to the
+physical matrix.  The polynomial-identity, structural-charpoly, and
+pinned-mode steps are kernel; the twin-matrix arithmetic identities run
+\texttt{native\_decide} on the $28\times28$ Gaussian-integer twin
+(compiled-evaluator trust), verified in the Aristotle build environment
+and pinned in a dedicated high-memory guard
+(\texttt{PairSpectrumFixtureGuard}) rather than the always-on aggregate
+guard, since the twin computation exceeds a $34$\,GB rebuild.  The
+structural companion is checked up to a compiled evaluator on a
+Gaussian-rational surrogate
+(\texttt{PairMomentumBlocks}, \DraftTrust{}): its kernel statements are
+transported from two disclosed compiled-evaluator identities on a
+Gaussian-rational twin of the momentum-block operator, so this layer is
+eval-trusted and about the twin rather than a kernel proof of the
+actual-field operator.  The cyclic momentum $K\in\mathbb{Z}/4$ splits
+the 28
+two-particle modes into blocks of dimension $(6,8,6,8)$; the $K=0$ block
+carries four $+1$ and two $-1$ modes, the $K=2$ block carries $2/2/2$
+($+1$/$-1$/the doubled-phase pair $((3+4\ii)/5)^2$), and the $K=1,3$
+blocks carry the two Pythagorean quadruples; so the composed automaton
+admits no exact momentum decomposition: the kick has nonzero matrix
+elements between distinct momentum sectors (explicit entry $3\ii/5$) and
+weights the four sectors equally on the seed state
+($|P_K\,e_{01}|^2=1/4$).  Whether every interacting quasienergy draws
+support from every sector is an eigenvector-participation question we do
+not resolve here.
+
+\section{Operational phase retention}
+
+The interacting sector can \emph{measure} the phase the free spectrum
+cannot see.  Equal-modulus conjugate rest operators
+produce return probabilities $4/5$ versus $1$ at the displayed fixtures
+($z=3+4\ii$ versus $z=5$) in the supplied pair-kick
+sector (\texttt{PlueckerPhaseObservable}, \Kernel{}); single-kick
+spectra are exactly phase-independent, so the discriminator is genuinely
+interferometric --- it requires two kicks and the relative phase between
+them, exactly as a two-arm interferometer requires two beam splitters.
+
+\section{Boundaries and open problems}
+The generator is supplied, not derived --- open here and in the
+interacting-automaton literature; the one-particle free carrier does
+carry the transported relative phase spectrally (companion paper).
+The companion paper pre-registers the sharp version as a conjecture
+with gate and kill condition: among one-pair-block Hermitian even
+quartic CAR polynomials, the phase-covariance constraint should select
+exactly the real two-dimensional family of the displayed generator and
+its quarter-phase rotation; the gate is finite rational linear algebra,
+and a larger solution space kills the uniqueness reading while
+promoting the surplus generators to results.
+No continuum, thermodynamic, or scattering-theory claim is made; the
+spectrum fixture is $L=4$.
+
+\appendix
+\section{Machine verification}
+[PENDING: module/guard table on freeze.]
+
+\begin{thebibliography}{9}
+\bibitem{ThirringQCA}
+A.~Bisio, G.~M.~D'Ariano, P.~Perinotti, and A.~Tosini,
+\emph{The Thirring quantum cellular automaton},
+Phys.\ Rev.\ A 97 (2018) 032132, arXiv:1711.03920.
+\bibitem{ThirringPerturbative}
+A.~Bisio, P.~Perinotti, A.~Pizzamiglio, and S.~Rota,
+\emph{A perturbative approach to the solution of the Thirring quantum
+cellular automaton}, Entropy 27 (2025) 198, arXiv:2406.19917.
+\bibitem{QCAQFT}
+L.~Mlodinow and T.~A.~Brun,
+\emph{Quantum field theory from a quantum cellular automaton in one
+spatial dimension and a no-go theorem in higher dimensions},
+Phys.\ Rev.\ A 102 (2020) 042211, arXiv:2006.08927.
+\end{thebibliography}
+
+\end{document}

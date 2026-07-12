@@ -1,6 +1,6 @@
 # Aristotle task: exact kernel of the even-exterior cover action
 
-Status: submitted.
+Status: canceled after the two-hour stall rule; partial snapshot harvested.
 
 Target:
 `AgentTasks/aristotle-targets/codex_24h_jc5_exact_exterior_kernel.lean`.
@@ -37,5 +37,19 @@ aristotle:
   expected_module: handoff target, to be integrated as PhysicsSM.Draft.JordanCliffordExactExteriorKernel
   submission_project: AgentTasks/aristotle-submit/codex-24h-jc5-exact-exterior-kernel-20260711-project
   output_dir: AgentTasks/aristotle-output/ca0e21e7-0b55-4694-9552-79c423742b78
-  status: submitted
+  status: canceled-stall-snapshot-harvested
 ```
+
+## 2026-07-11 14:49 PDT stall harvest
+
+The project remained `RUNNING` with its task `IN_PROGRESS` for more than two
+hours. The current archive was downloaded to
+`AgentTasks/aristotle-output/ca0e21e7-0b55-4694-9552-79c423742b78/stall-snapshot.tar.gz`
+and the task was canceled under the run rule.
+
+The snapshot made real progress: it proved a generic degree-two exterior-minor
+identity and the reduction from equality of the even-exterior action to
+identity of the degree-two exterior map. It isolated four remaining helpers,
+with the mathematical core now the pure block lemma extracted into
+`ARISTOTLE_JC_BLOCK_KERNEL_CORE.md`. No incomplete snapshot code was copied into
+the live Lean tree.

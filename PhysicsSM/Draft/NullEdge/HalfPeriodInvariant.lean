@@ -1,3 +1,10 @@
+/- KERNEL RETROFIT 2026-07-12 (Aristotle f0e2e541, fable-24h-cpostwin):
+all 23 in-proof native_decide replaced by kernel elaboration (entrywise
+Matrix.ext + fin_cases + simp/norm_num/ring; 16-field enumeration for the
+value discriminators). Public theorem STATEMENTS byte-identical (verified
+by diff). #print axioms on selfadj_iff_protected/protected_modes/all public
+theorems now [propext, Classical.choice, Quot.sound]. Paper C's positional
+law is now KERNEL-CLEAN. -/
 /-
 Provenance: Aristotle job f4879a60 (fable-pub-halfperiod-invariant-20260711),
 harvested 2026-07-11 ~07:05 PDT; design memo at
@@ -17,6 +24,14 @@ and the mirror-graded candidate is ILL-DEFINED on the blind fields
 (`reflR_comm_walk_iff`, `fixedSingleton_not_reflSym`). Sharpened open gate:
 match this finite discriminator to the CGGSVWZ real-space symmetry index
 (arXiv:1611.04439) and inherit gentle-perturbation stability.
+
+Kernel retrofit (this module only): every matrix fact below has been re-proved
+by kernel-checked elaboration (entrywise `Matrix.ext` reduction + `simp`/`ring`/
+`norm_num`, and case enumeration over the 16 sign patterns for the value-only
+discriminators). No `native_decide` remains here, so the module's axiom
+footprint is exactly `[propext, Classical.choice, Quot.sound]`. The sibling
+`ModeInvariantHalfWinding` retains its own `native_decide` holes and is not
+touched. Statements are character-identical to the harvested draft.
 -/
 import Mathlib
 import PhysicsSM.Draft.NullEdge.ModeInvariantHalfWinding
@@ -89,28 +104,64 @@ def Mfix (b : Fin 4 → Bool) : Matrix (Fin 4) (Fin 4) ℚ := Bfixᵀ * Wof b * 
 
 /-! ## 2.  Chiral / symmetric-frame structure (exact) -/
 
+set_option maxHeartbeats 4000000 in
 /-- `Γ` is an involution. -/
-theorem gradeX_sq : gradeX * gradeX = 1 := by native_decide
+theorem gradeX_sq : gradeX * gradeX = 1 := by
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [gradeX, Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
 
+set_option maxHeartbeats 8000000 in
 /-- Every derived field is chiral for `Γ`: `Γ W Γ = Wᵀ` (`= W†`). -/
-theorem gradeX_chiral : ∀ b, gradeX * Wof b * gradeX = (Wof b)ᵀ := by native_decide
+theorem gradeX_chiral : ∀ b, gradeX * Wof b * gradeX = (Wof b)ᵀ := by
+  intro b
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [gradeX, Wof, walkQ, shiftQ, coinQ, sField, Matrix.mul_apply, Matrix.transpose_apply,
+      Fintype.sum_prod_type, Fin.sum_univ_two]
 
+set_option maxHeartbeats 8000000 in
 /-- **The load-bearing hypothesis, exact and field-independent:** `Γ W Γ = W⁻¹`.
 Since every derived walk is orthogonal (`Wᵀ = W⁻¹`), chirality reads
 `Γ W Γ · W = 1`. -/
-theorem chiral_inverse : ∀ b, gradeX * Wof b * gradeX * Wof b = 1 := by native_decide
+theorem chiral_inverse : ∀ b, gradeX * Wof b * gradeX * Wof b = 1 := by
+  intro b
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [gradeX, Wof, walkQ, shiftQ, coinQ, sField, cW, Matrix.mul_apply,
+      Fintype.sum_prod_type, Fin.sum_univ_four, Fin.sum_univ_two] <;>
+    (try split_ifs) <;> ring_nf
 
+set_option maxHeartbeats 8000000 in
 /-- The shift is individually chiral. -/
-theorem shift_chiral : gradeX * shiftQ * gradeX = shiftQᵀ := by native_decide
+theorem shift_chiral : gradeX * shiftQ * gradeX = shiftQᵀ := by
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [gradeX, shiftQ, Matrix.mul_apply, Matrix.transpose_apply, Fintype.sum_prod_type,
+      Fin.sum_univ_two]
 
+set_option maxHeartbeats 8000000 in
 /-- Every coin `C(cW, sField b)` is individually chiral — so `W = S·C·S` is a
 genuine symmetric (palindromic) time-frame walk. -/
 theorem coin_chiral : ∀ b, gradeX * coinQ cW (sField b) * gradeX = (coinQ cW (sField b))ᵀ := by
-  native_decide
+  intro b
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [gradeX, coinQ, sField, cW, Matrix.mul_apply, Matrix.transpose_apply,
+      Fintype.sum_prod_type, Fin.sum_univ_two]
 
+set_option maxHeartbeats 4000000 in
 /-- Reflection is an involution commuting with `Γ` (field-independently). -/
-theorem reflR_sq : reflR * reflR = 1 := by native_decide
-theorem reflR_comm_grade : reflR * gradeX = gradeX * reflR := by native_decide
+theorem reflR_sq : reflR * reflR = 1 := by
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [reflR, Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
+
+set_option maxHeartbeats 4000000 in
+theorem reflR_comm_grade : reflR * gradeX = gradeX * reflR := by
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [reflR, gradeX, Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
 
 /-- A field is **reflection-symmetric** iff the two reflection-fixed sites `1, 3`
 carry equal signs.  This is exactly the condition for the reflection to commute
@@ -118,26 +169,50 @@ with the walk (`reflR_comm_walk`), i.e. for the mirror-graded (`R`-sector)
 winding to be *defined*. -/
 def reflSym (b : Fin 4 → Bool) : Bool := b 1 == b 3
 
+set_option maxHeartbeats 12000000 in
 /-- **Reflection commutes with the walk iff the field is reflection-symmetric.**
 So the mirror-graded winding candidate is only defined on reflection-symmetric
 fields — and every fixed singleton (`fixedSingleton`) breaks this symmetry. -/
 theorem reflR_comm_walk_iff :
-    ∀ b, (reflR * Wof b = Wof b * reflR) ↔ reflSym b = true := by native_decide
+    ∀ b, (reflR * Wof b = Wof b * reflR) ↔ reflSym b = true := by
+  intro b
+  cases hb0 : b 0 <;> cases hb1 : b 1 <;> cases hb2 : b 2 <;> cases hb3 : b 3 <;>
+    rw [← Matrix.ext_iff] <;>
+    simp [reflR, Wof, walkQ, shiftQ, coinQ, sField, cW, reflSym, Matrix.mul_apply,
+      Fintype.sum_prod_type, Fin.sum_univ_four, Fin.sum_univ_two, Fin.forall_fin_succ,
+      hb0, hb1, hb2, hb3] <;>
+    norm_num
 
 /-! ## 3.  DECISION = NO: the half-period / mirror-graded / trace invariants are blind
 
 All of these are constant across the whole 16-field family, hence cannot read the
 `8-vs-4` split (nor the mode counts). -/
 
+set_option maxHeartbeats 8000000 in
 /-- The naive chiral trace index `tr(ΓW) = 0` for every derived field. -/
-theorem allFields_trGW_zero : ∀ b, (gradeX * Wof b).trace = 0 := by native_decide
+theorem allFields_trGW_zero : ∀ b, (gradeX * Wof b).trace = 0 := by
+  intro b
+  simp [Matrix.trace, Matrix.diag, gradeX, Wof, walkQ, shiftQ, coinQ, sField, cW,
+    Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_four, Fin.sum_univ_two]
+  ring
 
+set_option maxHeartbeats 8000000 in
 /-- The mirror-graded trace index `tr(ΓWR) = 0` for every derived field. -/
-theorem allFields_trGWR_zero : ∀ b, (gradeX * Wof b * reflR).trace = 0 := by native_decide
+theorem allFields_trGWR_zero : ∀ b, (gradeX * Wof b * reflR).trace = 0 := by
+  intro b
+  simp [Matrix.trace, Matrix.diag, gradeX, reflR, Wof, walkQ, shiftQ, coinQ, sField, cW,
+    Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_four, Fin.sum_univ_two]
+  ring
 
+set_option maxHeartbeats 4000000 in
 /-- The bare symmetry traces vanish too (`tr Γ = tr(ΓR) = 0`). -/
-theorem trace_gradeX_zero : gradeX.trace = 0 := by native_decide
-theorem trace_gradeX_reflR_zero : (gradeX * reflR).trace = 0 := by native_decide
+theorem trace_gradeX_zero : gradeX.trace = 0 := by
+  simp [Matrix.trace, Matrix.diag, gradeX]
+
+set_option maxHeartbeats 4000000 in
+theorem trace_gradeX_reflR_zero : (gradeX * reflR).trace = 0 := by
+  simp [Matrix.trace, Matrix.diag, gradeX, reflR, Matrix.mul_apply, Fintype.sum_prod_type,
+    Fin.sum_univ_four, Fin.sum_univ_two]
 
 /-! ## 4.  The separating datum: fixed-leg self-adjointness = the 8-vs-4 split
 
@@ -159,46 +234,80 @@ def fixedSingleton (b : Fin 4 → Bool) : Bool := loneAt b 1 || loneAt b 3
 /-- The protecting predicate: two walls and **not** a fixed singleton. -/
 def protectedField (b : Fin 4 → Bool) : Bool := (wallCount b == 2) && (! fixedSingleton b)
 
+set_option maxHeartbeats 12000000 in
 /-- **The 8-vs-4 separation (exact).**  The reflection-fixed-leg compression is
 self-adjoint iff the field is protected (two-wall, not a fixed singleton) — the
 observed split of the twelve two-wall fields into `8` (engine fires) and `4`
 (positionally blind). -/
 theorem selfadj_iff_protected :
-    ∀ b, (Mfix b = (Mfix b)ᵀ) ↔ protectedField b = true := by native_decide
+    ∀ b, (Mfix b = (Mfix b)ᵀ) ↔ protectedField b = true := by
+  intro b
+  cases hb0 : b 0 <;> cases hb1 : b 1 <;> cases hb2 : b 2 <;> cases hb3 : b 3 <;>
+    rw [← Matrix.ext_iff] <;>
+    simp [Mfix, Wof, Bfix, walkQ, shiftQ, coinQ, sField, cW, protectedField, wallCount, loneAt,
+      fixedSingleton, Matrix.mul_apply, Matrix.transpose_apply, Fintype.sum_prod_type,
+      Fin.sum_univ_four, Fin.sum_univ_two, Fin.forall_fin_succ, hb0, hb1, hb2, hb3] <;>
+    norm_num
 
+set_option maxHeartbeats 4000000 in
 /-- Every fixed singleton breaks the reflection symmetry, so the mirror-graded
 (`R`-sector) winding candidate is not even defined on the 4 blind fields. -/
 theorem fixedSingleton_not_reflSym :
-    ∀ b, fixedSingleton b = true → reflSym b = false := by native_decide
+    ∀ b, fixedSingleton b = true → reflSym b = false := by
+  intro b
+  cases hb0 : b 0 <;> cases hb1 : b 1 <;> cases hb2 : b 2 <;> cases hb3 : b 3 <;>
+    simp [fixedSingleton, loneAt, reflSym, hb0, hb1, hb2, hb3]
 
 /-! ## 5.  Structural family facts (always hold) — only self-adjointness varies -/
 
+set_option maxHeartbeats 4000000 in
 /-- `Bfix` is an isometry (reflection-fixed legs are orthonormal). -/
-theorem fixedSector_isometry : Bfixᵀ * Bfix = 1 := by native_decide
+theorem fixedSector_isometry : Bfixᵀ * Bfix = 1 := by
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [Bfix, Matrix.mul_apply, Matrix.transpose_apply]
 
+set_option maxHeartbeats 8000000 in
 /-- The reflection-fixed sector is `W`-invariant for **every** derived field:
 `W · Bfix = Bfix · M(b)`.  (So `intertwine` never obstructs the engine.) -/
-theorem fixedSector_intertwine : ∀ b, Wof b * Bfix = Bfix * Mfix b := by native_decide
+theorem fixedSector_intertwine : ∀ b, Wof b * Bfix = Bfix * Mfix b := by
+  intro b
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [Mfix, Bfix, Wof, walkQ, shiftQ, coinQ, sField, cW, Matrix.mul_apply,
+      Matrix.transpose_apply, Fintype.sum_prod_type, Fin.sum_univ_four, Fin.sum_univ_two]
 
+set_option maxHeartbeats 8000000 in
 /-- Every derived walk is orthogonal (`Wᵀ W = 1`). -/
-theorem allFields_unitary : ∀ b, (Wof b)ᵀ * Wof b = 1 := by native_decide
+theorem allFields_unitary : ∀ b, (Wof b)ᵀ * Wof b = 1 := by
+  intro b
+  refine Matrix.ext (fun i j => ?_)
+  fin_cases i <;> fin_cases j <;>
+    simp [Wof, walkQ, shiftQ, coinQ, sField, cW, Matrix.mul_apply, Matrix.transpose_apply,
+      Fintype.sum_prod_type, Fin.sum_univ_four, Fin.sum_univ_two] <;>
+    (try split_ifs) <;> ring_nf
 
+set_option maxHeartbeats 8000000 in
 /-- The fixed-leg compression is traceless for every field (`tr M(b) = 0`) — so
 whenever it is an involution the split is `2 + 2`. -/
-theorem Mfix_trace_zero : ∀ b, (Mfix b).trace = 0 := by native_decide
+theorem Mfix_trace_zero : ∀ b, (Mfix b).trace = 0 := by
+  intro b
+  simp [Matrix.trace, Matrix.diag, Mfix, Bfix, Wof, walkQ, shiftQ, coinQ, sField, cW,
+    Matrix.mul_apply, Matrix.transpose_apply, Fintype.sum_prod_type,
+    Fin.sum_univ_four, Fin.sum_univ_two]
 
 /-! ## 6.  Fixture evaluations -/
 
 /-- The two-wall fixed-pair fixture `sWall = [+,+,−,+]` is protected. -/
-theorem sWall_protected : protectedField ![true, true, false, true] = true := by native_decide
+theorem sWall_protected : protectedField ![true, true, false, true] = true := by decide
 /-- The zero-wall control is not protected (no fixed-leg involution). -/
-theorem sZero_not_protected : protectedField ![true, true, true, true] = false := by native_decide
+theorem sZero_not_protected : protectedField ![true, true, true, true] = false := by decide
 /-- The four-wall walk is not protected. -/
-theorem sFour_not_protected : protectedField ![true, false, true, false] = false := by native_decide
+theorem sFour_not_protected : protectedField ![true, false, true, false] = false := by decide
 /-- A **fixed singleton** (lone flip at site `3`) is a blind two-wall field. -/
-theorem fixedSingleton_blind : protectedField ![true, true, true, false] = false := by native_decide
+theorem fixedSingleton_blind : protectedField ![true, true, true, false] = false := by decide
 /-- Another fixed singleton (lone flip at site `1`). -/
-theorem fixedSingleton_blind' : protectedField ![true, false, true, true] = false := by native_decide
+theorem fixedSingleton_blind' : protectedField ![true, false, true, true] = false := by decide
 
 /-! ## 7.  Engine bridge: invariant (self-adjointness) ⟹ pinned `±1` modes
 

@@ -1,29 +1,6 @@
-$ lake build PhysicsSM.Draft.NullEdge.PluckerMassDynamics PhysicsSM.Draft.NullEdge.Pluecker3Plus1ComplexMass PhysicsSM.Draft.NullEdge.PlueckerMassOperator PhysicsSM.Draft.NullEdge.CarrierRigidity PhysicsSM.Draft.NullEdge.FourChannelRigidityCapstone PhysicsSM.Draft.NullEdge.FullBlochZeroClassification PhysicsSM.Draft.NullEdge.CommutatorWilsonStrictnessKill PhysicsSM.Draft.NullEdge.LaurentUnitResource PhysicsSM.Draft.NullEdge.LaurentFlowIndex PhysicsSM.Draft.NullEdge.LaurentFourierWalkBridge PhysicsSM.Draft.NullEdge.Goal3MarginalLine PhysicsSM.Draft.NullEdge.FiniteHomogeneousScaleNoGo PhysicsSM.Draft.NullEdge.PlueckerWindingDerived PhysicsSM.Draft.NullEdge.PlueckerPhaseObservable PhysicsSM.Draft.NullEdge.PlueckerPhaseDefectSpectrum PhysicsSM.Draft.NullEdge.PlueckerPairKickNonQuasiFree PhysicsSM.Draft.NullEdge.PlueckerQuarticNotOneBody PhysicsSM.Draft.NullEdge.PlueckerCausalCone PhysicsSM.Draft.NullEdge.PlueckerGeometricCone PhysicsSM.Draft.NullEdge.PlueckerLayerCone PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization PhysicsSM.Draft.NullEdge.CARAnnihilationLocality PhysicsSM.Draft.NullEdge.ChangingModeEmbedding PhysicsSM.Draft.NullEdge.SobolevTailRate PhysicsSM.Draft.NullEdge.Compact3Plus1RefinedWindowRate PhysicsSM.Draft.NullEdge.Compact3Plus1GrowingWindowRate PhysicsSM.Draft.NullEdge.ChannelShearModuli PhysicsSM.Draft.NullEdge.ChannelRefinementTorsor PhysicsSM.Draft.NullEdge.ChannelSelectorUniqueness PhysicsSM.Draft.NullEdge.ChannelNaturalityNoGo PhysicsSM.Draft.NullEdge.ChannelSelectorRigidity PhysicsSM.Draft.NullEdge.ChannelSelectorDescent PhysicsSM.Draft.NullEdge.ChannelPhysicalCohomology PhysicsSM.Draft.NullEdge.Carrier.WardPhysicalCohomology PhysicsSM.Draft.NullEdge.Carrier.PhysicalHomotopyLocality PhysicsSM.Draft.NullEdge.Carrier.WardAutomorphismQuotient PhysicsSM.Draft.NullEdge.Carrier.WardQuotientFactorization PhysicsSM.Draft.NullEdge.ChannelSolderDegreeNoGo PhysicsSM.Draft.NullEdge.ChannelTraceSelectorNoGo PhysicsSM.Draft.NullEdge.ChannelQuadraticSelectorFamily PhysicsSM.Draft.NullEdge.ChannelKreinMetricNoGo PhysicsSM.Draft.NullEdge.ChannelCommutatorSelectorClassification PhysicsSM.Draft.NullEdge.ChannelQuadraticInnerLift PhysicsSM.Draft.NullEdge.HalfWindingFieldPositionClassification PhysicsSM.Draft.NullEdge.ChannelKreinSectorSignature PhysicsSM.Draft.NullEdge.ChannelPositiveSectorModuli PhysicsSM.Draft.NullEdge.ChannelPositiveComplementDisk PhysicsSM.Draft.NullEdge.ChannelSelectorQuotient PhysicsSM.Draft.NullEdge.ChiralFlipMode PhysicsSM.Draft.NullEdge.SignWallDefectRouteB PhysicsSM.Draft.NullEdge.ModeInvariantHalfWinding PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls PhysicsSM.Draft.NullEdge.WallModeWitness PhysicsSM.Draft.NullEdge.Finite3Plus1ProductDFTCore PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge PhysicsSM.Draft.NullEdge.Finite3Plus1AnalyticSignBridge PhysicsSM.Draft.NullEdge.LiveDFTComposition PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard
+$ lake build PhysicsSM.Draft.NullEdge.PluckerMassDynamics PhysicsSM.Draft.NullEdge.Pluecker3Plus1ComplexMass PhysicsSM.Draft.NullEdge.PlueckerMassOperator PhysicsSM.Draft.NullEdge.CarrierRigidity PhysicsSM.Draft.NullEdge.FourChannelRigidityCapstone PhysicsSM.Draft.NullEdge.FullBlochZeroClassification PhysicsSM.Draft.NullEdge.CommutatorWilsonStrictnessKill PhysicsSM.Draft.NullEdge.LaurentUnitResource PhysicsSM.Draft.NullEdge.LaurentFlowIndex PhysicsSM.Draft.NullEdge.LaurentFourierWalkBridge PhysicsSM.Draft.NullEdge.Goal3MarginalLine PhysicsSM.Draft.NullEdge.FiniteHomogeneousScaleNoGo PhysicsSM.Draft.NullEdge.PlueckerWindingDerived PhysicsSM.Draft.NullEdge.PlueckerPhaseObservable PhysicsSM.Draft.NullEdge.PlueckerPhaseDefectSpectrum PhysicsSM.Draft.NullEdge.PlueckerPairKickNonQuasiFree PhysicsSM.Draft.NullEdge.PlueckerQuarticNotOneBody PhysicsSM.Draft.NullEdge.PlueckerPairGenerator PhysicsSM.Draft.NullEdge.PlueckerRestOperatorGeneral PhysicsSM.Draft.NullEdge.PairKickSelection PhysicsSM.Draft.NullEdge.SplitStepChargeBalance PhysicsSM.Draft.NullEdge.MassCovarianceForcing PhysicsSM.Draft.NullEdge.CARBlockReduction PhysicsSM.Draft.NullEdge.SplitStepSchurJet PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling PhysicsSM.Draft.NullEdge.TwoBandFlowCount PhysicsSM.Draft.NullEdge.TwoBandEigenphaseAnalytic PhysicsSM.Draft.NullEdge.Selection2Repairs PhysicsSM.Draft.NullEdge.PlueckerCausalCone PhysicsSM.Draft.NullEdge.PlueckerGeometricCone PhysicsSM.Draft.NullEdge.PlueckerLayerCone PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization PhysicsSM.Draft.NullEdge.CARAnnihilationLocality PhysicsSM.Draft.NullEdge.ChangingModeEmbedding PhysicsSM.Draft.NullEdge.SobolevTailRate PhysicsSM.Draft.NullEdge.Compact3Plus1RefinedWindowRate PhysicsSM.Draft.NullEdge.Compact3Plus1GrowingWindowRate PhysicsSM.Draft.NullEdge.ChannelShearModuli PhysicsSM.Draft.NullEdge.ChannelRefinementTorsor PhysicsSM.Draft.NullEdge.ChannelSelectorUniqueness PhysicsSM.Draft.NullEdge.ChannelNaturalityNoGo PhysicsSM.Draft.NullEdge.ChannelSelectorRigidity PhysicsSM.Draft.NullEdge.ChannelSelectorDescent PhysicsSM.Draft.NullEdge.ChannelPhysicalCohomology PhysicsSM.Draft.NullEdge.Carrier.WardPhysicalCohomology PhysicsSM.Draft.NullEdge.Carrier.PhysicalHomotopyLocality PhysicsSM.Draft.NullEdge.Carrier.WardAutomorphismQuotient PhysicsSM.Draft.NullEdge.Carrier.WardQuotientFactorization PhysicsSM.Draft.NullEdge.ChannelSolderDegreeNoGo PhysicsSM.Draft.NullEdge.ChannelTraceSelectorNoGo PhysicsSM.Draft.NullEdge.ChannelQuadraticSelectorFamily PhysicsSM.Draft.NullEdge.ChannelKreinMetricNoGo PhysicsSM.Draft.NullEdge.ChannelCommutatorSelectorClassification PhysicsSM.Draft.NullEdge.ChannelQuadraticInnerLift PhysicsSM.Draft.NullEdge.HalfWindingFieldPositionClassification PhysicsSM.Draft.NullEdge.ChannelKreinSectorSignature PhysicsSM.Draft.NullEdge.ChannelPositiveSectorModuli PhysicsSM.Draft.NullEdge.ChannelPositiveComplementDisk PhysicsSM.Draft.NullEdge.ChannelSelectorQuotient PhysicsSM.Draft.NullEdge.ChiralFlipMode PhysicsSM.Draft.NullEdge.SignWallDefectRouteB PhysicsSM.Draft.NullEdge.ModeInvariantHalfWinding PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls PhysicsSM.Draft.NullEdge.WallModeWitness PhysicsSM.Draft.NullEdge.Finite3Plus1ProductDFTCore PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge PhysicsSM.Draft.NullEdge.Finite3Plus1AnalyticSignBridge PhysicsSM.Draft.NullEdge.LiveDFTComposition PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard
 
-ℹ [8031/8260] Replayed PhysicsSM.Algebra.Furey.AnomalyBridge
-info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:307:35: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:308:81: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:349:4: Try this:
-  [apply] exact Eq.symm (ComplexOctonion.ext rfl rfl)
-info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:375:4: Try this:
-  [apply] exact Eq.symm (ComplexOctonion.ext rfl rfl)
-info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:399:44: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8046/8260] Replayed PhysicsSM.Draft.NullEdge.SuccessiveAxisDiracWalk
+ℹ [8030/8210] Replayed PhysicsSM.Draft.NullEdge.SuccessiveAxisDiracWalk
 info: PhysicsSM/Draft/NullEdge/SuccessiveAxisDiracWalk.lean:85:25: Try this:
   [apply] ring_nf
 
@@ -42,7 +19,7 @@ info: PhysicsSM/Draft/NullEdge/SuccessiveAxisDiracWalk.lean:161:55: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8047/8260] Replayed PhysicsSM.Draft.NullEdge.Pluecker3Plus1ComplexMass
+ℹ [8031/8210] Replayed PhysicsSM.Draft.NullEdge.Pluecker3Plus1ComplexMass
 info: PhysicsSM/Draft/NullEdge/Pluecker3Plus1ComplexMass.lean:149:2: Try this:
   [apply] ring_nf
 
@@ -163,7 +140,7 @@ info: PhysicsSM/Draft/NullEdge/Pluecker3Plus1ComplexMass.lean:307:4: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8053/8260] Replayed PhysicsSM.Draft.NullEdge.Compact3Plus1DiracRate
+⚠ [8037/8210] Replayed PhysicsSM.Draft.NullEdge.Compact3Plus1DiracRate
 info: PhysicsSM/Draft/NullEdge/Compact3Plus1DiracRate.lean:90:154: Try this:
   [apply] ring_nf
 
@@ -226,14 +203,14 @@ Note: This linter can be disabled with `set_option linter.unusedVariables false`
 warning: PhysicsSM/Draft/NullEdge/Compact3Plus1DiracRate.lean:494:18: unused variable `hM`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-ℹ [8056/8260] Replayed PhysicsSM.Draft.NullEdge.FullBlochSplitMinus
+ℹ [8040/8210] Replayed PhysicsSM.Draft.NullEdge.FullBlochSplitMinus
 info: PhysicsSM/Draft/NullEdge/FullBlochSplitMinus.lean:21:292: Try this:
   [apply] ring_nf
 
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8061/8260] Replayed PhysicsSM.Draft.NullEdge.StationaryAmplitudeNoGo
+ℹ [8045/8210] Replayed PhysicsSM.Draft.NullEdge.StationaryAmplitudeNoGo
 info: PhysicsSM/Draft/NullEdge/StationaryAmplitudeNoGo.lean:138:6: Try this:
   [apply] ring_nf
 
@@ -246,13 +223,13 @@ info: PhysicsSM/Draft/NullEdge/StationaryAmplitudeNoGo.lean:148:2: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8063/8260] Replayed PhysicsSM.Draft.NullEdge.Goal3ChannelRG
+⚠ [8047/8210] Replayed PhysicsSM.Draft.NullEdge.Goal3ChannelRG
 warning: PhysicsSM/Draft/NullEdge/Goal3ChannelRG.lean:6:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
 Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
 For theorem statements, either add missing decidability assumptions or use `open Classical in`.
 
 Note: This linter can be disabled with `set_option linter.style.openClassical false`
-⚠ [8079/8260] Replayed PhysicsSM.Draft.NullEdge.PlueckerPhaseDefectSpectrum
+⚠ [8055/8210] Replayed PhysicsSM.Draft.NullEdge.PlueckerPhaseDefectSpectrum
 warning: PhysicsSM/Draft/NullEdge/PlueckerPhaseDefectSpectrum.lean:21:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
 Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
 For theorem statements, either add missing decidability assumptions or use `open Classical in`.
@@ -288,7 +265,7 @@ info: PhysicsSM/Draft/NullEdge/PlueckerPhaseDefectSpectrum.lean:242:20: Try this
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8080/8260] Replayed PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization
+⚠ [8056/8210] Replayed PhysicsSM.Draft.NullEdge.FiniteCARSecondQuantization
 warning: PhysicsSM/Draft/NullEdge/FiniteCARSecondQuantization.lean:65:0: `gammaEntry_singleton` has the hypothesis:
   • [DecidableEq ι] (#2)
 which is not used in the remainder of the type.
@@ -471,7 +448,195 @@ Note: This linter can be disabled with `set_option linter.unusedDecidableInType 
 warning: PhysicsSM/Draft/NullEdge/FiniteCARSecondQuantization.lean:616:26: unused variable `hright`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [8083/8260] Replayed PhysicsSM.Draft.NullEdge.PlueckerCausalCone
+ℹ [8063/8210] Replayed PhysicsSM.Draft.NullEdge.MassCovarianceForcing
+info: PhysicsSM/Draft/NullEdge/MassCovarianceForcing.lean:261:109: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/MassCovarianceForcing.lean:262:106: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8064/8210] Replayed PhysicsSM.Draft.NullEdge.CARBlockReduction
+info: PhysicsSM/Draft/NullEdge/CARBlockReduction.lean:291:96: Try this:
+  [apply] ring_nf!
+
+  The `ring!` tactic failed to close the goal. Use `ring_nf!` to obtain a normal form.
+
+  Note that `ring!` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/CARBlockReduction.lean:292:93: Try this:
+  [apply] ring_nf!
+
+  The `ring!` tactic failed to close the goal. Use `ring_nf!` to obtain a normal form.
+
+  Note that `ring!` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8065/8210] Replayed PhysicsSM.Draft.NullEdge.SplitStepSchurJet
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJet.lean:153:38: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJet.lean:253:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJet.lean:349:148: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJet.lean:363:28: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJet.lean:366:28: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJet.lean:379:28: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8066/8210] Replayed PhysicsSM.Draft.NullEdge.SplitStepSchurJetAllNodes
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:172:38: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:272:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:368:148: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:382:28: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:385:28: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:398:28: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:601:34: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:616:105: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:628:159: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:640:84: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:740:75: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:749:26: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/SplitStepSchurJetAllNodes.lean:750:61: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [8067/8210] Replayed PhysicsSM.Draft.NullEdge.TwoBandCrossingDoubling
+warning: PhysicsSM/Draft/NullEdge/TwoBandCrossingDoubling.lean:215:47: unused variable `hz`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8069/8210] Replayed PhysicsSM.Draft.NullEdge.TwoBandEigenphaseAnalytic
+warning: PhysicsSM/Draft/NullEdge/TwoBandEigenphaseAnalytic.lean:56:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
+For theorem statements, either add missing decidability assumptions or use `open Classical in`.
+
+Note: This linter can be disabled with `set_option linter.style.openClassical false`
+info: PhysicsSM/Draft/NullEdge/TwoBandEigenphaseAnalytic.lean:180:222: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/TwoBandEigenphaseAnalytic.lean:187:143: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/TwoBandEigenphaseAnalytic.lean:192:74: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/TwoBandEigenphaseAnalytic.lean:274:118: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/TwoBandEigenphaseAnalytic.lean:274:118: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/TwoBandEigenphaseAnalytic.lean:274:118: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [8071/8210] Replayed PhysicsSM.Draft.NullEdge.PlueckerCausalCone
 warning: PhysicsSM/Draft/NullEdge/PlueckerCausalCone.lean:108:0: `createL_apply` has the hypothesis:
   • [Fintype ι] (#2)
 which is not used in the remainder of the type.
@@ -853,7 +1018,7 @@ which is not used in the remainder of the type.
 Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
 
 Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
-⚠ [8084/8260] Replayed PhysicsSM.Draft.NullEdge.PlueckerGeometricCone
+⚠ [8072/8210] Replayed PhysicsSM.Draft.NullEdge.PlueckerGeometricCone
 warning: PhysicsSM/Draft/NullEdge/PlueckerGeometricCone.lean:120:0: `commuteOn_bKickL_of_generators` has the hypothesis:
   • [Fintype ι] (#2)
 which is not used in the remainder of the type.
@@ -896,36 +1061,7 @@ which is not used in the remainder of the type.
 Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
 
 Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
-⚠ [8085/8260] Replayed PhysicsSM.Draft.NullEdge.PlueckerLayerCone
-warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:28:0: `disjoint_coneRegion_of_disjoint_blocks` has the hypothesis:
-  • [Fintype ι] (#2)
-which is not used in the remainder of the type.
-
-Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
-
-Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
-warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:43:0: `reachCone_subset_ballStep_of_layerDisjoint` has the hypothesis:
-  • [Fintype ι] (#2)
-which is not used in the remainder of the type.
-
-Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
-
-Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
-warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:75:0: `heisenLayer_geometric_cone` has the hypothesis:
-  • [Fintype ι] (#2)
-which is not used in the remainder of the type.
-
-Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
-
-Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
-warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:89:0: `heisenLayers_geometric_cone` has the hypothesis:
-  • [Fintype ι] (#2)
-which is not used in the remainder of the type.
-
-Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
-
-Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
-⚠ [8086/8260] Replayed PhysicsSM.Draft.NullEdge.CARAnnihilationLocality
+⚠ [8073/8210] Replayed PhysicsSM.Draft.NullEdge.CARAnnihilationLocality
 warning: PhysicsSM/Draft/NullEdge/CARAnnihilationLocality.lean:40:55: unused variable `hi`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
@@ -992,7 +1128,7 @@ which is not used in the remainder of the type.
 Consider removing this hypothesis and using `classical` in the proof instead. For terms, consider using `open scoped Classical in` at the term level (not the command level).
 
 Note: This linter can be disabled with `set_option linter.unusedDecidableInType false`
-⚠ [8097/8260] Replayed PhysicsSM.Draft.NullEdge.ChannelPhysicalCohomology
+⚠ [8084/8210] Replayed PhysicsSM.Draft.NullEdge.ChannelPhysicalCohomology
 warning: PhysicsSM/Draft/NullEdge/ChannelPhysicalCohomology.lean:34:0: `nullHomotopic_imp_chainMap` has the hypothesis:
   • [DecidableEq I] (#5)
 which is not used in the remainder of the type.
@@ -1014,7 +1150,7 @@ which is not used in the remainder of the type.
 Consider removing this hypothesis and using `classical` in the proof instead. For terms, consider using `open scoped Classical in` at the term level (not the command level).
 
 Note: This linter can be disabled with `set_option linter.unusedDecidableInType false`
-⚠ [8102/8260] Replayed PhysicsSM.Draft.NullEdge.Carrier.PhysicalHomotopyLocality
+⚠ [8088/8210] Replayed PhysicsSM.Draft.NullEdge.Carrier.PhysicalHomotopyLocality
 warning: PhysicsSM/Draft/NullEdge/Carrier/PhysicalHomotopyLocality.lean:72:0: `explicitHomotopy_local` has the hypothesis:
   • [DecidableEq I] (#4)
 which is not used in the remainder of the type.
@@ -1029,18 +1165,14 @@ which is not used in the remainder of the type.
 Consider removing this hypothesis and using `classical` in the proof instead. For terms, consider using `open scoped Classical in` at the term level (not the command level).
 
 Note: This linter can be disabled with `set_option linter.unusedDecidableInType false`
-⚠ [8104/8260] Replayed PhysicsSM.Draft.NullEdge.Carrier.WardQuotientFactorization
-warning: PhysicsSM/Draft/NullEdge/Carrier/WardQuotientFactorization.lean:114:4: Try `simp at h22` instead of `simpa using h22`
-
-Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-ℹ [8110/8260] Replayed PhysicsSM.Draft.NullEdge.ChannelQuadraticInnerLift
+ℹ [8095/8210] Replayed PhysicsSM.Draft.NullEdge.ChannelQuadraticInnerLift
 info: PhysicsSM/Draft/NullEdge/ChannelQuadraticInnerLift.lean:56:2: Try this:
   [apply] ring_nf
 
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8111/8260] Replayed PhysicsSM.Draft.NullEdge.ModeInvariantHalfWinding
+⚠ [8096/8210] Replayed PhysicsSM.Draft.NullEdge.ModeInvariantHalfWinding
 warning: PhysicsSM/Draft/NullEdge/ModeInvariantHalfWinding.lean:330:42: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
@@ -1083,60 +1215,11 @@ Note: This linter can be disabled with `set_option linter.style.nativeDecide fal
 warning: PhysicsSM/Draft/NullEdge/ModeInvariantHalfWinding.lean:403:52: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8112/8260] Replayed PhysicsSM.Draft.NullEdge.HalfWindingFieldPositionClassification
-info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:72:2: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:76:2: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:78:2: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:91:2: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:106:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:117:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:128:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:136:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:139:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:143:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:147:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:153:37: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8117/8260] Replayed PhysicsSM.Draft.NullEdge.ChiralFlipMode
+⚠ [8098/8210] Replayed PhysicsSM.Draft.NullEdge.ChiralFlipMode
 warning: PhysicsSM/Draft/NullEdge/ChiralFlipMode.lean:205:5: unused variable `hU`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [8118/8260] Replayed PhysicsSM.Draft.NullEdge.SignWallDefectRouteB
+⚠ [8099/8210] Replayed PhysicsSM.Draft.NullEdge.SignWallDefectRouteB
 info: PhysicsSM/Draft/NullEdge/SignWallDefectRouteB.lean:141:22: Try this:
   [apply] ring_nf
 
@@ -1194,7 +1277,89 @@ Note: This linter can be disabled with `set_option linter.style.nativeDecide fal
 warning: PhysicsSM/Draft/NullEdge/SignWallDefectRouteB.lean:349:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8119/8260] Replayed PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls
+⚠ [8108/8210] Replayed PhysicsSM.Draft.NullEdge.FlowOneInstance
+warning: PhysicsSM/Draft/NullEdge/FlowOneInstance.lean:56:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
+For theorem statements, either add missing decidability assumptions or use `open Classical in`.
+
+Note: This linter can be disabled with `set_option linter.style.openClassical false`
+ℹ [8110/8210] Replayed PhysicsSM.Draft.NullEdge.DynamicalMassCovariance
+info: PhysicsSM/Draft/NullEdge/DynamicalMassCovariance.lean:157:99: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/DynamicalMassCovariance.lean:157:99: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/DynamicalMassCovariance.lean:187:65: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/DynamicalMassCovariance.lean:202:121: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/DynamicalMassCovariance.lean:202:121: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/DynamicalMassCovariance.lean:202:121: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/DynamicalMassCovariance.lean:202:121: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [8118/8299] Replayed PhysicsSM.Draft.NullEdge.PlueckerLayerCone
+warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:28:0: `disjoint_coneRegion_of_disjoint_blocks` has the hypothesis:
+  • [Fintype ι] (#2)
+which is not used in the remainder of the type.
+
+Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
+
+Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
+warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:43:0: `reachCone_subset_ballStep_of_layerDisjoint` has the hypothesis:
+  • [Fintype ι] (#2)
+which is not used in the remainder of the type.
+
+Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
+
+Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
+warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:75:0: `heisenLayer_geometric_cone` has the hypothesis:
+  • [Fintype ι] (#2)
+which is not used in the remainder of the type.
+
+Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
+
+Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
+warning: PhysicsSM/Draft/NullEdge/PlueckerLayerCone.lean:89:0: `heisenLayers_geometric_cone` has the hypothesis:
+  • [Fintype ι] (#2)
+which is not used in the remainder of the type.
+
+Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
+
+Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
+⚠ [8120/8299] Replayed PhysicsSM.Draft.NullEdge.Carrier.WardQuotientFactorization
+warning: PhysicsSM/Draft/NullEdge/Carrier/WardQuotientFactorization.lean:114:4: Try `simp at h22` instead of `simpa using h22`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8124/8299] Replayed PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls
 warning: PhysicsSM/Draft/NullEdge/HalfWindingFullWalkControls.lean:62:46: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
@@ -1219,60 +1384,226 @@ Note: This linter can be disabled with `set_option linter.style.nativeDecide fal
 warning: PhysicsSM/Draft/NullEdge/HalfWindingFullWalkControls.lean:131:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-ℹ [8130/8260] Replayed PhysicsSM.Draft.NullEdge.LiveDFTComposition
-info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:109:4: Try this:
-  [apply] ring_nf
+⚠ [8130/8299] Replayed PhysicsSM.Draft.NullEdge.PinnedMirrorChart
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:64:46: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:65:68: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:109:4: Try this:
-  [apply] ring_nf
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:73:69: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:101:65: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:141:6: Try this:
-  [apply] ring_nf
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:105:50: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:106:70: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:145:6: Try this:
-  [apply] ring_nf
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:107:58: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:117:58: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:218:52: Try this:
-  [apply] ring_nf
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:124:75: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:133:75: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:218:52: Try this:
-  [apply] ring_nf
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:145:55: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:146:55: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8141/8260] Replayed PhysicsSM.Gauge.BlockEmbeddings
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:149:77: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:150:77: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:159:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+⚠ [8131/8299] Replayed PhysicsSM.Draft.NullEdge.CensusMultiplicity
+warning: PhysicsSM/Draft/NullEdge/CensusMultiplicity.lean:315:0: `le_rank_of_minor` has the hypothesis:
+  • [Fintype ι] (#3)
+which is not used in the remainder of the type.
+
+Consider replacing this hypothesis with the corresponding instance of `Finite` and using `Fintype.ofFinite` in the proof, or removing it entirely.
+
+Note: This linter can be disabled with `set_option linter.unusedFintypeInType false`
+warning: PhysicsSM/Draft/NullEdge/CensusMultiplicity.lean:315:0: `le_rank_of_minor` has the hypotheses:
+  • [DecidableEq ι] (#5)
+  • [DecidableEq κ] (#6)
+which are not used in the remainder of the type.
+
+Consider removing these hypotheses and using `classical` in the proof instead. For terms, consider using `open scoped Classical in` at the term level (not the command level).
+
+Note: This linter can be disabled with `set_option linter.unusedDecidableInType false`
+⚠ [8132/8299] Replayed PhysicsSM.Draft.NullEdge.PairMomentumGRFacts
+warning: PhysicsSM/Draft/NullEdge/PairMomentumGRFacts.lean:22:1155: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+⚠ [8133/8299] Replayed PhysicsSM.Draft.NullEdge.PairMomentumGRDiag
+warning: PhysicsSM/Draft/NullEdge/PairMomentumGRDiag.lean:93:50: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+ℹ [8143/8299] Replayed PhysicsSM.Gauge.BlockEmbeddings
 info: PhysicsSM/Gauge/BlockEmbeddings.lean:159:4: Try this:
   [apply] exact omega_pow_six
-ℹ [8171/8260] Replayed PhysicsSM.Gauge.StandardModelProductCoveringTrueQuotientSMBlock
-info: PhysicsSM/Gauge/StandardModelProductCoveringTrueQuotientSMBlock.lean:245:39: Try this:
+ℹ [8156/8299] Replayed PhysicsSM.Spinor.SpinorTenfoldCAR
+info: PhysicsSM/Spinor/SpinorTenfoldCAR.lean:145:109: Try this:
   [apply] ring_nf
 
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Gauge/StandardModelProductCoveringTrueQuotientSMBlock.lean:266:76: Try this:
+info: PhysicsSM/Spinor/SpinorTenfoldCAR.lean:147:112: Try this:
   [apply] ring_nf
 
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8180/8260] Replayed PhysicsSM.Draft.NullEdge.WAYTurnNoGo
+info: PhysicsSM/Spinor/SpinorTenfoldCAR.lean:209:59: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8183/8299] Replayed PhysicsSM.Draft.NullEdge.ReciprocalCoinFamily
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:61:148: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:81:94: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:85:37: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:96:96: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:96:96: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:96:96: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:96:96: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:97:47: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:102:48: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:138:92: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:157:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:157:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:157:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:157:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:157:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:169:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:169:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:169:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:169:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:169:63: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/ReciprocalCoinFamily.lean:174:113: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [8204/8299] Replayed PhysicsSM.Draft.NullEdge.WAYTurnNoGo
 warning: PhysicsSM/Draft/NullEdge/WAYTurnNoGo.lean:6:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
 Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
 For theorem statements, either add missing decidability assumptions or use `open Classical in`.
@@ -1282,7 +1613,7 @@ info: PhysicsSM/Draft/NullEdge/WAYTurnNoGo.lean:138:0: 'WAY.way_defect_identity'
 info: PhysicsSM/Draft/NullEdge/WAYTurnNoGo.lean:139:0: 'WAY.way_nogo' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: PhysicsSM/Draft/NullEdge/WAYTurnNoGo.lean:140:0: 'WAY.chirality_gate_not_isospin_commuting' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: PhysicsSM/Draft/NullEdge/WAYTurnNoGo.lean:141:0: 'WAY.chirality_requires_nontrivial_ancilla' depends on axioms: [propext, Classical.choice, Quot.sound]
-ℹ [8182/8260] Replayed PhysicsSM.Draft.NullEdge.FixedMomentumManyStepContinuum
+ℹ [8205/8299] Replayed PhysicsSM.Draft.NullEdge.FixedMomentumManyStepContinuum
 info: PhysicsSM/Draft/NullEdge/FixedMomentumManyStepContinuum.lean:101:86: Try this:
   [apply] ring_nf
 
@@ -1421,7 +1752,251 @@ info: PhysicsSM/Draft/NullEdge/FixedMomentumManyStepContinuum.lean:478:124: Try 
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8184/8260] Replayed PhysicsSM.Draft.CheckerboardCornerCountAristotle
+⚠ [8208/8299] Replayed PhysicsSM.Draft.NullEdge.CheckerboardCarrierBridge
+warning: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:6:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
+For theorem statements, either add missing decidability assumptions or use `open Classical in`.
+
+Note: This linter can be disabled with `set_option linter.style.openClassical false`
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:270:0: 'DiracWalkCarrier.four_channel_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:271:0: 'DiracWalkCarrier.aperture_is_kinetic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:272:0: 'DiracWalkCarrier.turn_is_mass_squared' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:273:0: 'DiracWalkCarrier.soldering_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:274:0: 'DiracWalkCarrier.closure_vanishes' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:275:0: 'DiracWalkCarrier.mass_shell' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:276:0: 'DiracWalkCarrier.cP_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:277:0: 'DiracWalkCarrier.cM_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:278:0: 'DiracWalkCarrier.null_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:279:0: 'DiracWalkCarrier.null_disagreement' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:280:0: 'DiracWalkCarrier.kdag_Dop' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:281:0: 'DiracWalkCarrier.Hwalk_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:282:0: 'DiracWalkCarrier.walk_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:283:0: 'DiracWalkCarrier.mass_shell_walk' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8221/8356] Replayed PhysicsSM.Draft.NullEdge.LiveDFTComposition
+info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:109:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:109:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:141:6: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:145:6: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:218:52: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/LiveDFTComposition.lean:218:52: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8222/8356] Replayed PhysicsSM.Algebra.Furey.AnomalyBridge
+info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:307:35: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:308:81: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:349:4: Try this:
+  [apply] exact Eq.symm (ComplexOctonion.ext rfl rfl)
+info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:375:4: Try this:
+  [apply] exact Eq.symm (ComplexOctonion.ext rfl rfl)
+info: PhysicsSM/Algebra/Furey/AnomalyBridge.lean:399:44: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8238/8356] Replayed PhysicsSM.Spinor.SpinorTenfoldSO10Action
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:105:19: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:109:81: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:110:133: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:111:197: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:117:120: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:131:67: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:132:34: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:138:34: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:140:100: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:141:105: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:162:99: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:163:166: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:174:103: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:307:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:310:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:313:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:316:4: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:319:6: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:323:6: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:325:6: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:327:40: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:331:112: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:333:163: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:342:61: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:366:41: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Spinor/SpinorTenfoldSO10Action.lean:392:89: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8252/8356] Replayed PhysicsSM.Draft.NullEdge.PositiveWeylBranchCompleteness
+info: PhysicsSM/Draft/NullEdge/PositiveWeylBranchCompleteness.lean:58:32: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8254/8356] Replayed PhysicsSM.Draft.CheckerboardCornerCountAristotle
 info: PhysicsSM/Draft/CheckerboardCornerCountAristotle.lean:285:98: Try this:
   [apply] ring_nf
 
@@ -1458,7 +2033,7 @@ info: PhysicsSM/Draft/CheckerboardCornerCountAristotle.lean:530:10: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8185/8260] Replayed PhysicsSM.Draft.CheckerboardCornerClosedFormsAristotle
+ℹ [8255/8356] Replayed PhysicsSM.Draft.CheckerboardCornerClosedFormsAristotle
 info: PhysicsSM/Draft/CheckerboardCornerClosedFormsAristotle.lean:92:15: Try this:
   [apply] ring_nf
 
@@ -1477,182 +2052,24 @@ info: PhysicsSM/Draft/CheckerboardCornerClosedFormsAristotle.lean:128:105: Try t
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8186/8260] Replayed PhysicsSM.Draft.CheckerboardCornerPolynomialAristotle
+ℹ [8256/8356] Replayed PhysicsSM.Draft.CheckerboardCornerPolynomialAristotle
 info: PhysicsSM/Draft/CheckerboardCornerPolynomialAristotle.lean:69:89: Try this:
   [apply] ring_nf
 
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8189/8260] Replayed PhysicsSM.Draft.NullEdge.CheckerboardCarrierBridge
-warning: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:6:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
-Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
-For theorem statements, either add missing decidability assumptions or use `open Classical in`.
+⚠ [8302/8356] Replayed PhysicsSM.Draft.NullEdge.RingHolonomySpectrum
+warning: PhysicsSM/Draft/NullEdge/RingHolonomySpectrum.lean:55:5: unused variable `hg0`
 
-Note: This linter can be disabled with `set_option linter.style.openClassical false`
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:270:0: 'DiracWalkCarrier.four_channel_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:271:0: 'DiracWalkCarrier.aperture_is_kinetic' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:272:0: 'DiracWalkCarrier.turn_is_mass_squared' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:273:0: 'DiracWalkCarrier.soldering_form' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:274:0: 'DiracWalkCarrier.closure_vanishes' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:275:0: 'DiracWalkCarrier.mass_shell' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:276:0: 'DiracWalkCarrier.cP_null' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:277:0: 'DiracWalkCarrier.cM_null' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:278:0: 'DiracWalkCarrier.null_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:279:0: 'DiracWalkCarrier.null_disagreement' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:280:0: 'DiracWalkCarrier.kdag_Dop' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:281:0: 'DiracWalkCarrier.Hwalk_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:282:0: 'DiracWalkCarrier.walk_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: PhysicsSM/Draft/NullEdge/CheckerboardCarrierBridge.lean:283:0: 'DiracWalkCarrier.mass_shell_walk' depends on axioms: [propext, Classical.choice, Quot.sound]
-ℹ [8221/8260] Replayed PhysicsSM.Draft.NullEdge.Carrier.PluckerOscillatorGroup
-info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:64:66: Try this:
-  [apply] ring_nf
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PhysicsSM/Draft/NullEdge/RingHolonomySpectrum.lean:55:28: unused variable `hg1`
 
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PhysicsSM/Draft/NullEdge/RingHolonomySpectrum.lean:56:5: unused variable `hg2`
 
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:64:66: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:73:2: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:76:2: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [8223/8260] Replayed PhysicsSM.Draft.NullEdge.Carrier.FiniteGibbsVariance
-info: PhysicsSM/Draft/NullEdge/Carrier/FiniteGibbsVariance.lean:91:6: Try this:
-  [apply] ring_nf
-
-  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
-
-  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8242/8260] Replayed PhysicsSM.Draft.NullEdge.HalfPeriodInvariant
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:93:46: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:96:70: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:101:72: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:104:64: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:109:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:112:43: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:113:65: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:125:66: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:133:68: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:136:77: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:139:51: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:140:67: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:167:62: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:172:59: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:177:54: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:181:73: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:184:60: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:188:56: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:193:81: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:195:85: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:197:87: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:199:87: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/HalfPeriodInvariant.lean:201:88: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8243/8260] Replayed PhysicsSM.Draft.NullEdge.PinnedMirrorChart
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:64:46: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:65:68: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:73:69: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:101:65: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:105:50: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:106:70: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:107:58: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:117:58: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:124:75: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:133:75: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:145:55: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:146:55: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:149:77: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:150:77: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-warning: PhysicsSM/Draft/NullEdge/PinnedMirrorChart.lean:159:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
-
-Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8245/8260] Replayed PhysicsSM.Draft.NullEdge.PinnedSectorIndex
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8304/8356] Replayed PhysicsSM.Draft.NullEdge.PinnedSectorIndex
 warning: PhysicsSM/Draft/NullEdge/PinnedSectorIndex.lean:64:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
@@ -1662,7 +2079,7 @@ Note: This linter can be disabled with `set_option linter.style.nativeDecide fal
 warning: PhysicsSM/Draft/NullEdge/PinnedSectorIndex.lean:82:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8246/8260] Replayed PhysicsSM.Draft.NullEdge.PinnedLocalization
+⚠ [8305/8356] Replayed PhysicsSM.Draft.NullEdge.PinnedLocalization
 info: PhysicsSM/Draft/NullEdge/PinnedLocalization.lean:77:23: Try this:
   [apply] ring_nf
 
@@ -1735,7 +2152,7 @@ Note: This linter can be disabled with `set_option linter.style.nativeDecide fal
 warning: PhysicsSM/Draft/NullEdge/PinnedLocalization.lean:163:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8247/8260] Replayed PhysicsSM.Draft.NullEdge.PinnedControlAndBlind
+⚠ [8306/8356] Replayed PhysicsSM.Draft.NullEdge.PinnedControlAndBlind
 warning: PhysicsSM/Draft/NullEdge/PinnedControlAndBlind.lean:57:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
@@ -1757,20 +2174,20 @@ Note: This linter can be disabled with `set_option linter.style.nativeDecide fal
 warning: PhysicsSM/Draft/NullEdge/PinnedControlAndBlind.lean:145:75: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8248/8260] Replayed PhysicsSM.Draft.NullEdge.PinnedSpecProjectors
+⚠ [8307/8356] Replayed PhysicsSM.Draft.NullEdge.PinnedSpecProjectors
 warning: PhysicsSM/Draft/NullEdge/PinnedSpecProjectors.lean:43:83: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
 warning: PhysicsSM/Draft/NullEdge/PinnedSpecProjectors.lean:46:87: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
 
 Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
-⚠ [8250/8260] Replayed PhysicsSM.Draft.NullEdge.ThetaFamilyProtection
+⚠ [8309/8356] Replayed PhysicsSM.Draft.NullEdge.ThetaFamilyProtection
 warning: PhysicsSM/Draft/NullEdge/ThetaFamilyProtection.lean:77:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
 Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
 For theorem statements, either add missing decidability assumptions or use `open Classical in`.
 
 Note: This linter can be disabled with `set_option linter.style.openClassical false`
-⚠ [8254/8260] Replayed PhysicsSM.Draft.NullEdge.FiniteZModPlancherel
+⚠ [8315/8356] Replayed PhysicsSM.Draft.NullEdge.FiniteZModPlancherel
 info: PhysicsSM/Draft/NullEdge/FiniteZModPlancherel.lean:86:4: Try this:
   [apply] ring_nf!
 
@@ -1792,5 +2209,99 @@ info: PhysicsSM/Draft/NullEdge/FiniteZModPlancherel.lean:171:2: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-✔ [8260/8260] Built PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard (125s)
-Build completed successfully (8260 jobs).
+⚠ [8321/8356] Replayed PhysicsSM.Draft.NullEdge.HalfWindingFieldPositionClassification
+info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:72:2: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:76:2: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:78:2: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:91:2: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:106:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:117:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:128:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:136:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:139:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:143:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:147:2: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+warning: PhysicsSM/Draft/NullEdge/HalfWindingFieldPositionClassification.lean:153:37: Using `native_decide` is not allowed in mathlib: because it trusts the entire Lean compiler (not just the Lean kernel), it could quite possibly be used to prove false.
+
+Note: This linter can be disabled with `set_option linter.style.nativeDecide false`
+ℹ [8331/8356] Replayed PhysicsSM.Draft.NullEdge.Carrier.PluckerOscillatorGroup
+info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:64:66: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:64:66: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:73:2: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Draft/NullEdge/Carrier/PluckerOscillatorGroup.lean:76:2: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8332/8356] Replayed PhysicsSM.Draft.NullEdge.Carrier.FiniteGibbsVariance
+info: PhysicsSM/Draft/NullEdge/Carrier/FiniteGibbsVariance.lean:91:6: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8347/8356] Replayed PhysicsSM.Gauge.StandardModelProductCoveringTrueQuotientSMBlock
+info: PhysicsSM/Gauge/StandardModelProductCoveringTrueQuotientSMBlock.lean:245:39: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: PhysicsSM/Gauge/StandardModelProductCoveringTrueQuotientSMBlock.lean:266:76: Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [8356/8356] Built PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard (271s)
+Build completed successfully (8356 jobs).

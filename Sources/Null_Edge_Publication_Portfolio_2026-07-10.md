@@ -1,6 +1,6 @@
 # Null-edge publication portfolio
 
-Updated: 2026-07-10.
+Updated: 2026-07-12.
 
 This document supersedes the June P1-P12 publication plan. The older topic IDs
 remain useful for provenance, but they no longer define the paper portfolio.
@@ -48,9 +48,9 @@ Pluecker Mass**
 ### One-sentence claim
 
 A pair of primitive null spinors canonically determines a complex Pluecker
-coordinate whose modulus is the rest gap, whose phase survives in oriented
-histories and local connection data, and whose associated finite walk is
-exactly unitary.
+coordinate whose modulus is the rest gap, whose transported relative phase
+changes the free spectrum, and whose associated finite walk is exactly
+unitary.
 
 ### Core theorem package
 
@@ -84,15 +84,22 @@ exactly unitary.
    reparametrized Dirac mass.
 6. Release a clean Lean artifact, benchmark inputs/results, commit identifier,
    theorem-to-prose audit, and data/code availability statement.
+7. For the higher-impact lane, close the generator-level dynamical covariance
+   classification, promote the transported phase from the landed two-site
+   identity to a genuine ring-holonomy spectral witness, and land the
+   changing-lattice position-space PDE theorem. These are theorem gates, not
+   prose upgrades.
 
 ### Venue decision
 
 - **Core submission:** *Journal of Physics A* or *Journal of Mathematical
   Physics*. Both fit a substantial mathematical-physics paper with exact
   quantum-walk constructions and formal verification.
-- **Upgrade submission:** *Physical Review Research* or *Quantum* only if Paper
-  A absorbs one field-level consequence: either the strict alias-free `3+1`
-  successor from Paper B or the protected defect theorem from Paper C.
+- **Upgrade submission:** *Physical Review Research* or *Quantum* if the
+  position-space PDE limit, dynamical covariance classification, and a
+  nonconstant free ring-holonomy observable land as one focused chain. A strict
+  alias-free `3+1` successor from Paper B or protected defect theorem from Paper
+  C would be an additional, independent upgrade.
 - Do not send the current broad version to a prestige venue merely because it
   is ambitious. The upgrade is a theorem, not stronger adjectives.
 

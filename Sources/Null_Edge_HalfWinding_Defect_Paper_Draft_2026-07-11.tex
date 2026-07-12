@@ -69,7 +69,9 @@ carries exact $+1$ and $-1$ eigenvectors through the compression engine
 across all 16 complete walks --- $\dim\ker(W\mp\id)=2$ for each of the
 eight singleton fields, blind ones included, $4$ for each of the four
 domain-block fields, and none for the zero- and four-wall fields --- are
-decided by exact-arithmetic run record, not yet machine-checked; so the
+now machine-checked kernel-only by explicit rank and kernel-vector
+certificates closed through rank--nullity (the retrofit removed every
+compiled-evaluator step); so the
 positional law delimits the reach of the reflection certificate, not mode
 existence.
 The standard refinements fare no better than the winding: the mirror-graded
@@ -79,8 +81,10 @@ the walk iff the two fixed sites carry equal signs, which every fixed
 singleton violates; and the two symmetric-time-frame windings, computed
 exactly on the bulk, are position-blind and equal on the counterexample
 pair.  The counting engine and abstract theorems
-are kernel-checked in Lean~4; the explicit rational instantiations in the
-four-site family use the compiled evaluator (documented), while the
+are kernel-checked in Lean~4; the positional-law core of the four-site family
+(\texttt{HalfPeriodInvariant}) is kernel-only after a 2026-07-12 retrofit, while
+the remaining four-site rational fixtures (mirror-chart, field-position, and
+full-walk control witnesses) use the compiled evaluator (documented), and the
 eight-site complex-coin witness is kernel-only.  The classification layer of chiral-walk
 topology is imported, not claimed; the contribution is the derived origin
 of the defect data, the blindness pair, the involutive-compression engine,
@@ -219,7 +223,11 @@ same wall pattern relative to the fixed sites can change the signature while
 leaving its winding unchanged.  Absence of $\pm1$ modes for the second
 \emph{complete} eight-dimensional walk is not proved here; the no-mode
 certificates in this theorem are compression-sector statements.  In fact,
-exact rational computation (run record; not yet formalized) decides the
+exact rational linear algebra, machine-checked in
+\texttt{CensusMultiplicity} (kernel-only; integer kernel-vector certificates and
+invertible-minor rank certificates closed through rank--nullity;
+kernel-elaborated certificate products, no compiled evaluator),
+decides the
 complete walks of all 16 fields: \emph{every} two-wall field carries both
 modes --- each of the eight singleton fields, the four compression-blind
 fixed singletons included, has $\dim\ker(W\mp\id)=2$, and each of the four
@@ -269,9 +277,12 @@ reflection-fixed site $1$ or $3$); and for every such protected field the
 an exact nonzero $-1$ eigenvector, produced by the involutive-compression
 engine.  The four blind two-wall fields are exactly the fixed singletons.
 \end{theorem}
-\noindent\DraftTrust{}\quad(\texttt{HalfPeriodInvariant.selfadj\_iff\_protected},
-\texttt{protected\_modes}; the engine composition is kernel-only, the
-$16$-field decisions use the compiled evaluator, documented.)
+\noindent\Kernel{}\quad(\texttt{HalfPeriodInvariant.selfadj\_iff\_protected},
+\texttt{protected\_modes}; the engine composition and the $16$-field decisions
+are now both kernel-elaborated --- a 2026-07-12 retrofit replaced the module's
+compiled-evaluator decisions with kernel proofs, guard-pinned in
+\texttt{OvernightTheoryAxiomGuard} at footprint
+$\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.)
 
 \begin{theorem}[The mirror refinement is ill-defined exactly where needed]
 \label{thm:mirror}
@@ -280,8 +291,10 @@ sites carry equal signs; every fixed singleton violates this.  Hence the
 mirror-graded (reflection-sector) winding candidate is undefined on
 precisely the four blind fields it would need to separate.
 \end{theorem}
-\noindent\DraftTrust{}\quad(\texttt{reflR\_comm\_walk\_iff},
-\texttt{fixedSingleton\_not\_reflSym}.)  Separately, an exact
+\noindent\Kernel{}\quad(\texttt{reflR\_comm\_walk\_iff},
+\texttt{fixedSingleton\_not\_reflSym}; both kernel-elaborated in the 2026-07-12
+retrofit, footprint $\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.)
+Separately, an exact
 rational computation (reported in the run record, not formalized) shows the
 two symmetric-time-frame bulk windings are $(0,\mp2)$ per bulk sign ---
 correctly predicting the domain-block modes --- yet equal on the
@@ -425,10 +438,13 @@ control annihilators, \Kernel{});
 identities, modes, and exact controls, \Kernel{});
 \texttt{ThetaFamilyCompletion} (kernel all-$\theta$ atlas, the symbolic
 self-adjointness \emph{iff} for both charts, and the landed-fixture
-transport pin, \Kernel{}); and \texttt{CGGSVWZDictionary} (the
+transport pin, \Kernel{}); \texttt{CGGSVWZDictionary} (the
 translation-invariance impossibility, plain kernel \texttt{decide}, with
 oracle-transcribed winding constants explicitly quarantined,
-\Kernel{}).
+\Kernel{}); and \texttt{CensusMultiplicity} (the 16-field complete-walk
+multiplicity census $2/4/0$ for singleton/domain-block/control fields,
+by integer kernel-vector and invertible-minor certificates closed
+through rank--nullity, \DraftTrust{}).
 Assumption footprints are build-enforced in the repository's aggregate
 guard module (\texttt{OvernightTheoryAxiomGuard}), which pins each named
 headline theorem's exact axiom list --- the standard three axioms for the

@@ -164,3 +164,46 @@ Starting priorities:
   position-space Dirac flow. Do not relabel the current result a PDE limit.
 
 - 2026-07-11 14:15 PDT | JC/B successor pass | Neo4j abstract + full-text chunk search | Krasnov/pure-spinor stabilizer retrieval remained weak; the closest internal anchor was Furey 2018 (`arXiv:1806.00612`) for the five-ladder `SU(3)_C x SU(2)_L x U(1)` action, while no hit licensed upgrading the new coordinate `so(10)` quotient generator to physical `SU(2)_L`. For Paper B, Gross et al. (`arXiv:1804.04520`) remained the best classification anchor, but the graph did not surface a proof of constant-modulus Laurent-polynomial rigidity; keep that scalar theorem as a separate complex-analysis/algebra gate rather than citing the quantum-walk literature as if it proves it.
+
+- 2026-07-11 14:50 PDT | Paper D Fourier/PDE bridge pass | `lean-explore` over Mathlib plus Neo4j abstract/full-text search | Mathlib's `Mathlib.Analysis.Fourier.AddCircleMulti` already supplies `UnitAddTorus.mFourierBasis`, an isometric Hilbert-basis equivalence between torus `L2` and square-summable `Z^d` coefficients, together with `hasSum_mFourier_series_L2`, `hasSum_sq_mFourierCoeff`, and `orthonormal_mFourier`. This licenses a fixed-torus `L2` transport of the newly landed complete coefficient theorem. It does not by itself supply changing-lattice sampling/interpolation or an `R^3` Dirac PDE limit. Primary comparison hits remain Arrighi--Di Molfetta (`arXiv:1803.01015`), Mlodinow--Brun (`arXiv:1802.03910`), and the `3+1` Dirac quantum-walk paper (`arXiv:1603.06442`); their continuum discussions reinforce that the physical gate concerns the limiting evolution, not merely pointwise multipliers.
+
+- 2026-07-11 15:25 PDT | JC exact-kernel / Paper D continuum-boundary pass | primary arXiv search plus Mathlib cross-check | Baez--Schwahn (`arXiv:2606.15235`) supports the intrinsic nested-Jordan stabilizer and coordinate-independence program, but its stated result does not supply the exterior-fermion action or prove that action's exact kernel; retain those as this project's separate bridge theorems. For continuum comparison, Arrighi--Forets--Nesme (`arXiv:1307.3524`) proves observational convergence of a lattice walk to the continuum Dirac solution, while Maeda--Suzuki (`arXiv:1902.02017`) explicitly compares `delta Z` with `R` using Shannon interpolation and proves Sobolev convergence. These sources sharpen the boundary: the newly completed Mathlib-Parseval theorem is a legitimate fixed-`T^3` strong-L2 result, but the publication-grade `R^3` claim still owes an explicit changing-lattice Shannon map and comparison to the continuum Dirac flow.
+
+## 2026-07-11 15:30 PDT - Fable lit pass: SMG / embrace-doubling (Route C anchors)
+
+- Query: symmetric mass generation mirror decoupling chiral gauge.
+- In-graph with full text: Golterman-Shamir arXiv:2311.12790 (propagator
+  zeros vs SMG) + arXiv:2505.20436 (constraints on SMG for lattice
+  chiral gauge) - the adversarial pair for Route C; anchored in
+  MEMO_3PLUS1_ATTACK.md 5b. Also relevant: 2105.10977 (naive fermion
+  without doublers - claim to scrutinize), 2311.02487 (Kaehler-Dirac
+  reduced fermions route).
+- Route C manuscript use requires exact-statement checks of both G-S
+  papers (chunks available); internal memo anchoring done.
+## 2026-07-11 16:05 PDT - changing-spacing R3 interpolation after D-R3-1
+
+- Full-text chunk search confirms the next theorem must separate sampling from
+  evolution: Mlodinow--Brun (`arXiv:1802.03910`, continuum-limit section)
+  introduces independent spatial and temporal scales before deriving the
+  relativistic equation; Arrighi--Facchini--Forets (`arXiv:1505.07023`) treats
+  local unitary walks whose continuum equation is obtained after an explicit
+  scaling procedure.
+- Maeda--Suzuki (`arXiv:1902.02017`, retained anchor from the preceding pass)
+  remains the closest rigorous Shannon-interpolation reference for comparing a
+  changing `delta Z` lattice with `R`; its Sobolev control is more relevant to
+  D-R3-3/4 than fixed-torus DFT identities.
+- A new adjacent architecture hit, `Convergence of Discrete Exterior Calculus
+  for the Hodge-Dirac Operator` (`arXiv:2507.19405`), emphasizes commuting
+  interpolation diagrams. It is not evidence for this walk, but its proof
+  architecture supports making the sampling/evolution square commute rather
+  than identifying coefficient convergence with PDE convergence by prose.
+- Consequence: after the landed exact cell isometry, prioritize changing-box
+  exhaustion plus a scaled-symbol intertwining theorem; keep the final Dirac
+  generator identification as a separate named gate.
+2026-07-11 16:25 PDT | Codex | Corrected strict 3+1 charge route | Primary full-text/source audit: Read arXiv:1608.04696v3 explicitly gives `K_1(C[X_1^+-,...,X_d^+-]) ~= C^* + d Z` via Bass-Heller-Swan and says the change-of-rings image has no nonzero `SK_1`/higher-dimensional strong component; notation warning, Read's `R_1` is complex and `R_3` quaternionic. Bessho-Sato arXiv:2006.04204 supplement ties local Floquet charges to bulk topology with a dimension-dependent pi-gap sign. Higashikawa et al. arXiv:1806.06868 and Gupta-Short arXiv:2601.15885v2 retained as positive/escape controls. Composition, finite-rank stabilization, and sign conventions remain VERIFY. Full audit: `B_STRICT_LAURENT_SOURCE_AUDIT_2026-07-11.md`.
+2026-07-11 17:04 PDT | Spark/Codex | Global chiral Floquet composition | Bessho-Sato arXiv:2006.04204v3 Theorems 2 and 3' are the closest primary-source loci for three-dimensional local Weyl charge and zero/pi Floquet bookkeeping; Read arXiv:1608.04696v3 remains the separate strict-Laurent stable obstruction. No single finite-rank theorem composes them. Spark report is a locator, not authority: its Read Eq. (64) `K0` discussion does not replace the direct `K1` audit. Full report: `SPARK_LIT_GLOBAL_CHIRAL_FLOQUET_2026-07-11.md`.
+
+[2026-07-11] LIT sidecar: scanned local Neo4j+chunks + primary sources for 2006.04204, 1806.06868, 1705.08552, 1802.03910. Full-text chunks present only for 1802.03910. 0/pi sector split explicitly detailed in 2006.04204; ordered Pauli-product census match found only partially via directional factorized constructions (closest in 1802.03910), not exact theorem form. 16-crossing BCC+cube-corner cancellation appears novel at this architecture level.
+2026-07-11 20:12 PDT | Codex direct fallback (Spark context failure) | reciprocal conditional shifts / paraunitary factorization / strict 3+1 successors | Cedzich-Geib-Werner Thm 2.1 makes shift-coin words complete for 1D banded walks; Gupta-Short 3+1 stationary-amplitude family still leaves two extraneous low-energy solutions; Arrighi-Nesme-Werner legitimizes enlarged-cell layered QCA; no exact all-torus single-cone construction found | `SPARK_LIT_RECIPROCAL_SHIFT_PAIRING_2026-07-11.md`
+2026-07-11 20:58 PDT | direct fallback (Spark unavailable) | strict 3+1 flavoured/minimal doubling | arXiv:2505.07900 gives a covering-map flavour QCA with enlarged sublattice/register; arXiv:2601.15885 gives exact stationary-amplitude local unitaries but retains two extra low-energy Weyl solutions | `SPARK_LIT_FLAVOURED_MINIMAL_DOUBLING_2026-07-11.md`
+2026-07-12 15:00 PDT | LIT bot | D-gate cell-average convergence search | Neo4j abstract + --chunks via Scripts/lit/neo4j_paper_search.py | failed: NEO4J connection refused at 127.0.0.1:7687; fell back to Lean/web sources (mathlib+ergodic refs) | proceed with Lean APIs + external theorem-matching plan

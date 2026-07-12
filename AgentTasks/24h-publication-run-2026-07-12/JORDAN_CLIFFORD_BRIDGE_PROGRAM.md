@@ -142,9 +142,9 @@ state, the trusted Fock hypercharge equals the primitive center phase
 `3 N_W - 2 N_V`; on the even sector this composes with the trusted
 one-generation multiplet table. Each finite kernel label is paired uniquely
 with one explicit trusted unit-level covering-kernel witness mapping to the
-identity. This correspondence does not identify the kernel types or actions
-and does not transport the finite arithmetic to an actual continuous
-covering-group representation.
+identity. This correspondence by itself does not identify the kernel types or
+actions; the later exact algebraic action-kernel theorem below supplies that
+identification on the true product-cover domain.
 
 Hostile audit `83a0b810-896e-4166-b997-5f953874d93e` independently confirmed
 the arithmetic and identified two high scope gaps. The finite bridge now
@@ -152,16 +152,13 @@ closes both as far as possible without inventing a group action: it quantifies
 over every actual even five-mode occupation, proves equality with the six
 standard powers, adds a mixed near-miss control, and gives each label a unique
 trusted explicit unit-level covering-kernel witness mapping to identity. The
-next rung is to package the phase rule itself as a homomorphism/diagonal
-representation and then prove the full action-level kernel theorem.
+next rung was to package the phase rule itself as a homomorphism and then prove
+the full action-level kernel theorem.
 
 The finite homomorphism rung is now landed in
 `PhysicsSM.Draft.JordanCliffordFinitePhaseCharacter`: the finite center labels
 act through an additive character on all actual even occupations, and its
-kernel is exactly the six standard powers. The remaining JC5 gate is therefore
-specifically the continuous representation lift: construct the covering-group
-action on the complete exterior module and prove that its kernel restricts to,
-and contains no more than, this finite character kernel.
+kernel is exactly the six standard powers.
 
 The first algebraic representation half is now landed in
 `PhysicsSM.Draft.JordanCliffordExteriorCoverAction`. It packages the trusted
@@ -169,12 +166,18 @@ unit-cover block action on the supplied five-dimensional weak-plus-color space
 as a linear action, lifts it through Mathlib exterior powers, and obtains a
 monoid representation on exterior degrees `0`, `2`, and `4`. The module proves
 this even exterior space has complex dimension sixteen and that every one of
-the six trusted unit-level covering-kernel elements acts as the identity. The
-remaining exactness rung is the converse on the true product-cover domain: if
-an algebraic product-cover element acts
-identically on the complete even exterior module, prove it belongs to that
-six-element family. This result still does not derive the `2+3` split from the
-Jordan flag or identify the exterior module with Furey's left-action module.
+the six trusted unit-level covering-kernel elements acts as the identity.
+
+The converse exactness rung is now landed in
+`PhysicsSM.Draft.JordanCliffordExactExteriorKernel`. Identity of the full
+sixteen-state action forces identity of its degree-two mixed minors; the shared
+cover phase and determinant-one constraints then force both weak and color
+blocks to be identity. Consequently, on the true algebraic product-cover
+domain, the action kernel is exactly the six standard elements, with an
+outside-family nontriviality theorem. This closes the action-level `Z6` gate
+for the supplied carrier. It is not a topological or smooth Lie-group quotient
+theorem, does not derive the `2+3` split from the Jordan flag, and does not
+identify the exterior module with Furey's left-action module.
 
 The coordinate first-factor stabilizer rung is now landed in
 `PhysicsSM.Draft.JordanCliffordH2BlockStabilizer`. For a unitary complex
@@ -209,6 +212,17 @@ also transports the result to the proved `C^2` coordinate model. What remains
 load-bearing is no longer quotient mechanics: it is proving invariance for the
 actual marked-pair stabilizer and identifying the resulting group action and
 chirality.
+
+The first explicit infinitesimal action and its exact coordinate matrix have
+now landed in trusted modules
+`PhysicsSM.Spinor.SpinorTenfoldWeakQuotientSO10Generator` and
+`PhysicsSM.Spinor.SpinorTenfoldWeakQuotientSO10Coordinates`. The complex
+`so(10)` generator `e_3 wedge f_4` preserves the normal-form first annihilator
+and common color axis, acts nontrivially on the quotient, and is exactly
+`(w_3,w_4) |-> (0,-w_3)` in the derived two-coordinate model. Independent
+controls show that preserving the annihilator and preserving color are
+separate gates. This is a concrete raising operator, not yet an `sl(2)` triple,
+compact real form, pair stabilizer, group action, or physical `SU(2)_L`.
 
 ## 4. Second-wave research directions
 
