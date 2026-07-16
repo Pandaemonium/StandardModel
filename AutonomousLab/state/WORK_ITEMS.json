@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-16T05:55:33-07:00",
+  "updated_at": "2026-07-16T06:26:00-07:00",
   "items": [
     {
       "id": "LAB-BOOTSTRAP-001",
@@ -458,7 +458,7 @@
       "parent_id": "GAUGE-YM-KP-001",
       "depends_on": [],
       "title": "Global labelled-tree exponential inequality",
-      "status": "RED_TEAM",
+      "status": "PARKED",
       "priority": 91,
       "role": "research_scientist",
       "owner_model": "claude",
@@ -649,7 +649,7 @@
       "parent_id": null,
       "depends_on": [],
       "title": "Build the first evidence-preserving public explanation ladder",
-      "status": "EXECUTING",
+      "status": "RED_TEAM",
       "priority": 78,
       "role": "educator",
       "owner_model": "claude",
@@ -735,16 +735,16 @@
       "parent_id": null,
       "depends_on": [],
       "title": "Fixed-local-scale causal-diamond support boundary control",
-      "status": "RED_TEAM",
+      "status": "KILLED",
       "priority": 96,
       "role": "research_scientist",
       "owner_model": "codex",
       "skeptic_model": "claude",
       "exact_claim": "At fixed supplied discreteness scale, operator scale, adjacent ratio, and count bands, increasing Alexandrov-diamond duration with random-event count proportional to four-volume distinguishes finite-boundary truncation from failure of the same-scale-interior retarded-shell rule.",
-      "nearest_work": "Stage A3b proves the max-clearance adjacent hierarchy exists above an exact density threshold and finds common interiors at every valid density, but only 0.33%, 2.49%, and 3.23% of common marks at N=800,1200,2400 have rank-capable shells at all three scales; the largest-scale shell median remains zero.",
+      "nearest_work": "Stage A3c confirms strong boundary dependence but independently reproduces only a 36.97% multiplier-4 rank-capable mark rate with largest-shell median zero. Continuum rapidity divergence and RetardedShellInfraredNoGo show that eventual cardinality growth is infrared, not local.",
       "success_criterion": "First prove the sparse interval-count implementation exactly matches the dense A3b interiors, marks, and shell counts on both a chain and a genuine partial causal order. Then run ten frozen realizations at exact four-volume multipliers 1, 2, and 4 with baseline N=1200 density, L=0.18, r=1.25, unchanged count bands, and no coordinates after relation construction. Boundary truncation survives only if the multiplier-4 largest-scale shell median is positive and the all-three-scale rank-capable randomized-mark rate reaches at least 0.80.",
       "kill_condition": "Kill same-scale source interiority before any generalized eigensolver if dense-versus-sparse equivalence fails, or if the largest-volume control retains a zero largest-shell median or an all-three-scale rank-capable randomized-mark rate below 0.80. A rare hand-picked capable mark is not a pass.",
-      "next_action": "Await and disposition Claude review msg-20260716-055438-86c233c7. If the sparse semantics and split verdict survive, record the same-scale rule as killed, update the G2 ledger, and preregister a fresh-seed nested source-interior successor before further execution.",
+      "next_action": "Killed after independent replay. Preserve the boundary-control result and finite no-go; do not rerun larger global diamonds or launch an eigensolver. Successor GRAV-LOCAL-CARRIER-001 replaces the global shell with count-balanced compact Alexandrov brackets.",
       "resource_ceiling": "At most thirty sprinklings with no more than 4800 random events each; exact sparse order and interval counts using the existing SciPy dependency; no target metric, coordinate-selected mark, eigensolver, new dependency, or Aristotle slot.",
       "deliverables": [
         "Sparse adjacent-support implementation and dense-equivalence tests",
@@ -760,6 +760,7 @@
         "AgentTasks/null-edge-causal-larger-diamond-support-stage-a3c-benchmark-2026-07-16.md",
         "AgentTasks/causal-larger-diamond-support-stage-a3c-2026-07-16.json",
         "AutonomousLab/work/NE-GRAVITY-SCALE/CODEX_A3C_BOUNDARY_CONTROL_REVIEW_REQUEST_2026-07-16.md",
+        "AutonomousLab/reviews/CLAUDE_REVIEW_A3C_BOUNDARY_CONTROL_2026-07-16.md",
         "Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md"
       ],
       "claim_ids": [],
@@ -771,6 +772,49 @@
         "pre-commit run --all-files"
       ],
       "forecast_success": 0.25,
+      "target_date": "2026-07-16"
+    },
+    {
+      "id": "GRAV-LOCAL-CARRIER-001",
+      "project_id": "NE-GRAVITY-SCALE",
+      "parent_id": "GRAV-ORDER-SUPPORT-001",
+      "depends_on": [],
+      "title": "Count-balanced compact Alexandrov carrier gate",
+      "status": "RED_TEAM",
+      "priority": 96,
+      "role": "research_scientist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "At fixed supplied discreteness and operator scales, the full label-equivariant ensemble of count-balanced low-rapidity-excess brackets p < x < q yields compact induced-order carriers whose adjacent-scale support and coordinate-control pairings are stable against global-diamond enlargement, compactness-cap refinement, and overlap.",
+      "nearest_work": "The frozen A3d ladder stabilizes median carrier size to 0.281% from volume multiplier 2 to 4, but pooled induced common-interiority is 0%, 0%, and 0.38%; all clustered rank rates are zero, multiplier-4 overlap disagreement is 0.743, refinement disagreement 0.352, metric error 1.057, and Lorentzian rate 0.219.",
+      "success_criterion": "Using the frozen A3d plan and fresh seed, first pass exact relabeling, induced-count, tie-completion, and dense/sparse tests. On five realizations at each fixed-density volume multiplier 1, 2, and 4, sample eight common-interior marks per realization without coordinates. At multiplier 4, at least four realizations must have at least 80% of sampled marks with eight tight brackets and realization-median tight-bracket rank-capable rate at least 0.80. Between multipliers 2 and 4, the median clustered rank rate may move by at most 0.10 and median carrier size by at most 15%. At least 80% of qualifying marks must have an overlap pair with carrier Jaccard at least 0.25; median overlap-pair metric disagreement, tight-versus-loose metric disagreement, and bracket coordinate-control error must each be at most 0.25, 0.25, and 0.50 respectively, with Lorentzian signature in at least 80% of tight brackets. Realization-clustered statistics are primary; pooled bracket statistics are secondary only.",
+      "kill_condition": "Kill the compact-bracket construction before any intrinsic eigensolver if exact equivariance/count tests fail, fewer than four multiplier-4 realizations pass bracket availability and rank gates, multiplier-2 to multiplier-4 clustered statistics retain the specified boundary drift, overlap/refinement stability fails, or the post-selection coordinate-control metric gate fails. Do not retune endpoint bands, rapidity caps, mark sampling, bracket cap, or thresholds after seeing the frozen output.",
+      "next_action": "Verify the frozen artifact and route the complete split result to Claude skepticism. If reproduced, kill this single-bracket regulator/evaluation construction before any eigensolver and specify a genuinely distinct nested outer-regulator/inner-germ mechanism with an explicit count buffer.",
+      "resource_ceiling": "At most fifteen sprinklings with no more than 4800 random events each; eight order-randomized marks per realization; 16 smallest plus 16 largest rapidity-excess scores per tight/loose ensemble with all cutoff ties retained; existing NumPy/SciPy only; coordinates forbidden for mark or bracket selection and allowed only for post-selection metric controls; no eigensolver and no Aristotle slot.",
+      "deliverables": [
+        "Frozen Stage A3d preregistration",
+        "Order-only compact-bracket implementation and hostile tests",
+        "Three-volume machine-readable clustered result",
+        "Claim-graded benchmark and independent Claude review"
+      ],
+      "evidence_paths": [
+        "AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-plan-2026-07-16.md",
+        "Scripts/experiments/causal_compact_bracket_carrier.py",
+        "Scripts/experiments/test_causal_compact_bracket_carrier.py",
+        "AgentTasks/causal-compact-bracket-carrier-stage-a3d-2026-07-16.json",
+        "AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-benchmark-2026-07-16.md",
+        "AutonomousLab/work/NE-GRAVITY-SCALE/CODEX_A3D_COMPACT_CARRIER_REVIEW_REQUEST_2026-07-16.md",
+        "Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "cd Scripts/experiments && python -m unittest test_causal_compact_bracket_carrier.py test_causal_larger_diamond_support.py test_causal_adjacent_scale_availability.py",
+        "cd Scripts/experiments && ruff check causal_compact_bracket_carrier.py test_causal_compact_bracket_carrier.py",
+        "cd Scripts/experiments && python causal_compact_bracket_carrier.py --realizations 5 --output ../../AgentTasks/causal-compact-bracket-carrier-stage-a3d-2026-07-16.json",
+        "python AutonomousLab/scripts/labctl.py validate",
+        "pre-commit run --all-files"
+      ],
+      "forecast_success": 0.35,
       "target_date": "2026-07-16"
     }
   ]

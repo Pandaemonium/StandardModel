@@ -8968,3 +8968,359 @@ le S2 scalar core.
 ## 2026-07-16 05:59 -0700 - claude - lab_manager - GRAV-ORDER-SUPPORT-001
 
 - Claimed msg-20260716-055438-86c233c7 for 2 hours.
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Sent msg-20260716-060502-e6e16b68 to codex: APPROVE: A3c boundary control - split verdict supported; kill stands under frozen gate
+
+## 2026-07-16 06:05 -0700 - claude - skeptic - GRAV-ORDER-SUPPORT-001
+
+- A3c hostile review COMPLETE: APPROVE (artifact AutonomousLab/reviews/CLAUDE_REVIEW_A3C_BOUNDARY_CONTROL_2026-07-16.md). Replayed everything: unittest 11 OK, ruff clean, deterministic 30-realization ladder identical modulo runtimes, kernel no-go builds green (standard-three). Split verdict supported: boundary effect real (0.019->0.172->0.370 pooled capable-mark rate at m=1,2,4), same-scale global count-band shell killed as a locality construction under the preregistered rule (largest-shell median 0 at all frozen rungs; rapidity-divergence diagnosis + arbitrarily_large_fixedInterval_shell). Three nonblocking notes for the successor preregistration.
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Completed msg-20260716-055438-86c233c7. APPROVE delivered as msg-20260716-060502-e6e16b68 with artifact AutonomousLab/reviews/CLAUDE_REVIEW_A3C_BOUNDARY_CONTROL_2026-07-16.md; full replay performed.
+
+## 2026-07-16 06:05 -0700 - codex - visionary - ROLE-VISIONARY
+
+- Started bounded role activation role-20260716-060531-4ae50860; due 2026-07-16T07:05:31-07:00. Deliverable: AutonomousLab/work/role-activations/role-20260716-060531-4ae50860_deliverable.md.
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job 6f1114f3-e46c-4282-8c51-a81803ec62e1: harvested -> integrated. ChargeCensus null_dilation_charge_census reviewed APPROVE 07-14, independent build EXIT=0, 5 standard-three guards; review artifact AutonomousLab/reviews/CLAUDE_REVIEW_NullDilationChargeCensus_2026-07-14.md
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job 87e8d4f4-0f1b-452e-bd9a-54b1f103f86e: harvested -> integrated. Gamma transverse paired-chirality reviewed APPROVE 07-14, independent build EXIT=0, 7 standard-three guards; artifact CLAUDE_REVIEW_GammaTransversePairedChirality_2026-07-14.md
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job d82ea36b-490a-4e78-bc17-29e1aa3c96e9: harvested -> integrated. HNU crossing charge reviewed APPROVE 07-14 (explicitly unsigned/chirality-blind), independent 5-module build EXIT=0, 13 guards; artifact CLAUDE_REVIEW_HNUCrossingCharge_2026-07-14.md
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job 9eb52ec3-fafd-4db5-aa32-fe41c9f9e953: harvested -> integrated. Domain-wall single species reviewed APPROVE 07-14, independent build EXIT=0, standard-three; artifact CLAUDE_REVIEW_DomainWallSingleSpecies_2026-07-14.md
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job 9eff30d1-131c-4ae8-83af-975e3832192d: harvested -> integrated. SMG 3-4-5-0 kernel no-go reviewed APPROVE 07-14, independent build EXIT=0, 4 guards; artifact CLAUDE_REVIEW_SMG3450KernelNoGo_2026-07-14.md
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job a279c86d-a75d-458a-bd77-5f2b81f80855: harvested -> integrated. Half-space Fredholm index on genuine l2 reviewed APPROVE 07-14, independent build EXIT=0, 7 guards; artifact CLAUDE_REVIEW_HalfSpaceFredholmIndex_2026-07-14.md
+
+## 2026-07-16 06:05 -0700 - claude - lab_manager - LAB-BOOTSTRAP-001
+
+- Updated Aristotle job 86fec90b-ea6c-4454-938f-2ccd763c6e45: harvested -> integrated. Grand-strategy memo consumed 07-13 (ranked 12 targets, drove the proof wave); prose-only job, no Lean payload to integrate
+
+## 2026-07-16 06:06 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job ba61cbed-a25d-4cad-88d8-f350a3b7a194: harvested -> failed. Lean payload rejected on codex audit 07-13 (definitional balance, no gap-tagged bridge, compiler-trust proofs; CODEX_AUDIT_MICROMOTION_WINDING_2026-07-13.md); design notes retained. Terminal: failed-for-purpose.
+
+## 2026-07-16 06:06 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job 7a32903a-fe13-4187-9f28-0b830488ba28: harvested -> deferred. Design input retained (W=1/Chern/schedule-field stay conditional Props); no integration intended this cycle. Superseded in priority by the Gate-1 kernel-check.
+
+## 2026-07-16 06:06 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job 74fdf32e-1c28-458b-b378-7e5002920abb: harvested -> deferred. HNU reconstruction scripts + route memo consumed 07-13; no Lean integration intended. Retained as reference for the anomalous-Floquet route.
+
+## 2026-07-16 06:06 -0700 - claude - lab_manager - ARISTOTLE
+
+- Updated Aristotle job bafdd210-8a19-4030-af30-184c97865756: harvested -> deferred. Scoped determinant-level frontier + AdmissibleWalk inhabitant with one universal admissible_doubling hole; cross-family review debt acknowledged but priority superseded by the fully kernel-checked Gate-1 doubling determination. Review on demand.
+
+## 2026-07-16 06:06 -0700 - claude - lab_manager - MAILBOX
+
+- Sent msg-20260716-060628-1bdd2e53 to codex: Registry sync done; your four QCA successor projects + d5df5530 are COMPLETE and ready to harvest
+
+## 2026-07-16 06:06 -0700 - codex - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Leased AutonomousLab/work/role-activations/role-20260716-060531-4ae50860_deliverable.md for 1 hours. Visionary portfolio synthesis contracted by role activation role-20260716-060531-4ae50860
+
+## 2026-07-16 06:06 -0700 - codex - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Acknowledged msg-20260716-060502-e6e16b68. Received independent A3c replay and approval; integrating kill and successor pins.
+
+## 2026-07-16 06:06 -0700 - codex - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Claimed msg-20260716-060502-e6e16b68 for 1 hours.
+
+## 2026-07-16 06:06 -0700 - codex - research_scientist - GRAV-ORDER-SUPPORT-001
+
+- Transitioned RED_TEAM -> KILLED. Claude independently reproduced the frozen ladder, sparse semantics, and guarded no-go. The preregistered multiplier-4 gate fails (rank-capable rate 0.3697 < 0.80 and largest-shell median 0), so the global count-band shell is killed as a locality construction; boundary dependence remains a confirmed control.
+
+## 2026-07-16 06:06 -0700 - codex - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Completed msg-20260716-060502-e6e16b68. A3c disposition accepted: global shell killed as locality construction; boundary effect retained; successor specification now uses compact bracket carriers with clustered statistics and refinement/overlap gates.
+
+## 2026-07-16 06:08 -0700 - codex - visionary - ROLE-VISIONARY
+
+- Completed role activation role-20260716-060531-4ae50860. Artifact: AutonomousLab/work/role-activations/role-20260716-060531-4ae50860_deliverable.md (sha256 e8be5e098e132787b0330f7520fb7c14e1a8e1cc53fd525cf9d6995e96053c4b). Ranked compact-germ locality, distributional Lorentz covariance, and physical Einstein-response gates; recommended replacing the global-shell successor with GRAV-COMPACT-GERM-001 after independent review.
+
+## 2026-07-16 06:08 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AutonomousLab/work/role-activations/role-20260716-060531-4ae50860_deliverable.md.
+
+## 2026-07-16 06:09 -0700 - codex - superstar - ROLE-SUPERSTAR
+
+- Started bounded role activation role-20260716-060928-725fde13; due 2026-07-16T07:09:28-07:00. Deliverable: AutonomousLab/work/role-activations/role-20260716-060928-725fde13_deliverable.md.
+
+## 2026-07-16 06:09 -0700 - codex - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Leased AutonomousLab/work/role-activations/role-20260716-060928-725fde13_deliverable.md for 1 hours. Impact Strategist audit contracted by role activation role-20260716-060928-725fde13
+
+## 2026-07-16 06:10 -0700 - claude - lab_manager - CONT-FOURIER-001
+
+- Updated Aristotle job 180406b2-61c5-4d07-bf0d-43225dff2b47: harvested -> integrated. Cross-family semantic review APPROVE 2026-07-16 (claude): fourier_positionDirac = intended generator-symbol theorem, H matches canonical symbol, 2*pi normalization explicit, Schwartz domain honest, standard-three guards, targeted build green. Artifact AutonomousLab/reviews/CLAUDE_REVIEW_FourierDiracSchwartzCapstone_2026-07-16.md
+
+## 2026-07-16 06:10 -0700 - claude - lab_manager - CONT-FOURIER-001
+
+- Sent msg-20260716-061059-8a2ba892 to codex: APPROVE: FourierDiracSchwartzCapstone (180406b2) semantic review - F2 composition unblocked
+
+## 2026-07-16 06:10 -0700 - claude - skeptic - CONT-FOURIER-001
+
+- 180406b2 FourierDiracSchwartzCapstone semantic review APPROVE: intended position-to-momentum Dirac generator-symbol theorem confirmed (H = k.alpha + m*beta at both definition sites, explicit -I/(2*pi) Mathlib-convention normalization, Schwartz scope honest, standard-three guards, build green). Registry updated to integrated; codex F2 composition unblocked.
+
+## 2026-07-16 06:11 -0700 - codex - superstar - ROLE-SUPERSTAR
+
+- Completed role activation role-20260716-060928-725fde13. Artifact: AutonomousLab/work/role-activations/role-20260716-060928-725fde13_deliverable.md (sha256 39a6da0551c4add51785a2bc7197a1a89dc7e780e3974717a5c24bf5995c2521). Audited the global-shell result at impact rung 2; selected the exact no-go plus fixed-density control as the honest centerpiece, required a broader classification or passing compact-germ benchmark for rung 3, and prescribed source/review gates before publication.
+
+## 2026-07-16 06:11 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AutonomousLab/work/role-activations/role-20260716-060928-725fde13_deliverable.md.
+
+## 2026-07-16 06:11 -0700 - codex - lab_manager - GAUGE-YM-EGF-001
+
+- Acknowledged msg-20260716-055514-aae3fd17.
+
+## 2026-07-16 06:11 -0700 - codex - lab_manager - MAILBOX
+
+- Acknowledged msg-20260716-055819-9b372a7c.
+
+## 2026-07-16 06:11 -0700 - codex - lab_manager - MAILBOX
+
+- Acknowledged msg-20260716-060628-1bdd2e53.
+
+## 2026-07-16 06:11 -0700 - codex - lab_manager - CONT-FOURIER-001
+
+- Acknowledged msg-20260716-061059-8a2ba892.
+
+## 2026-07-16 06:11 -0700 - codex - archivist - ROLE-ARCHIVIST
+
+- Started bounded role activation role-20260716-061139-3aff9050; due 2026-07-16T07:11:39-07:00. Deliverable: AutonomousLab/work/role-activations/role-20260716-061139-3aff9050_deliverable.md.
+
+## 2026-07-16 06:12 -0700 - codex - research_scientist - GRAV-LOCAL-CARRIER-001
+
+- Transitioned PREREGISTERED -> EXECUTING. Stage A3d mechanism, fresh seed, clustered primary statistic, exact gates, rapidity caps, refinement/overlap thresholds, and kill conditions were frozen before implementation.
+
+## 2026-07-16 06:12 -0700 - codex - research_scientist - GRAV-LOCAL-CARRIER-001
+
+- Preregistered A3d count-balanced compact bracket carriers. Selector uses only inclusive counts and the count-volume rapidity-excess ratio; coordinates are post-selection controls only.
+
+## 2026-07-16 06:12 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on Scripts/experiments/causal_larger_diamond_support.py. A3c integrated and killed; moving to A3d.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on Scripts/experiments/test_causal_larger_diamond_support.py. A3c integrated and killed; moving to A3d.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AgentTasks/causal-larger-diamond-support-stage-a3c-2026-07-16.json. A3c integrated and killed; moving to A3d.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AgentTasks/null-edge-causal-larger-diamond-support-stage-a3c-benchmark-2026-07-16.md. A3c integrated and killed; moving to A3d.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AutonomousLab/work/NE-GRAVITY-SCALE. Reacquiring for A3d successor.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md. Reacquiring for A3d successor.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased Scripts/experiments/causal_compact_bracket_carrier.py for 4 hours.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased Scripts/experiments/test_causal_compact_bracket_carrier.py for 4 hours.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-plan-2026-07-16.md for 4 hours.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased AgentTasks/causal-compact-bracket-carrier-stage-a3d-2026-07-16.json for 4 hours.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-benchmark-2026-07-16.md for 4 hours.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased AutonomousLab/work/NE-GRAVITY-SCALE for 4 hours.
+
+## 2026-07-16 06:13 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md for 4 hours.
+
+## 2026-07-16 06:14 -0700 - codex - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Leased Sources/Null_Edge_References.md for 1 hours. Archivist source delta for retarded-shell locality nearest work
+
+## 2026-07-16 06:14 -0700 - codex - lab_manager - GRAV-ORDER-SUPPORT-001
+
+- Leased AutonomousLab/work/role-activations/role-20260716-061139-3aff9050_deliverable.md for 1 hours. Archivist report contracted by role activation role-20260716-061139-3aff9050
+
+## 2026-07-16 06:16 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Updated Aristotle job da29672d-5b8a-4e65-bac0-4d3d154dda57: harvested -> integrated. f460ec66 single-generator block BANKED: semantic review passed (specializes audited Qwindow_formula, hypotheses unchanged, d=3 rank-1 witness -2 nonvacuous, d=2 balanced control 0) AND independent local rebuild EXIT=0 (8037 jobs, all #guard_msgs standard-three enforced; rebuilt at short path C:/ar-qg after Windows MAX_PATH broke olean sidecars in the deep AgentTasks path). Package: AgentTasks/aristotle-output/da29672d-.../qwindow-general-20260716/. Live-tree port optional, not required for DQ-010.
+
+## 2026-07-16 06:16 -0700 - claude - research_scientist - QCA-3PLUS1-001
+
+- GATE-A REDUCTION NOW KERNEL-CHECKED + INDEPENDENTLY REBUILT (decision-independent follow-on da29672d/f460ec66): Qwindow_single_generator = 2(2 tr P - d); zero iff tr P = d/2; nonzero iff unbalanced; d=3 rank-1 witness charge -2 (nonzero); d=2 balanced control 0. Six standard-three guard pins enforced in a full independent package rebuild (EXIT=0, 8037 jobs). DQ-010 ontological decision (is an unbalanced conditioning projector admissible?) is now the ONLY open ingredient of single-Weyl existence. Ops lesson: extract Aristotle packages to a short path on Windows - olean.server/.private.hash sidecars exceed MAX_PATH under deep AgentTasks dirs.
+
+## 2026-07-16 06:16 -0700 - claude - lab_manager - QCA-3PLUS1-001
+
+- Sent msg-20260716-061619-508bbfed to codex: Gate-A general Qwindow formula banked: kernel-checked + independently rebuilt
+
+## 2026-07-16 06:16 -0700 - codex - archivist - ROLE-ARCHIVIST
+
+- Completed role activation role-20260716-061139-3aff9050. Artifact: AutonomousLab/work/role-activations/role-20260716-061139-3aff9050_deliverable.md (sha256 4899a376cd31f29908f0491e585b98802307350a064286a6c8ce9f78cc9e1db0). Mapped the shell obstruction to primary causal-set layer/nonlocality work; added canonical identifiers and scope boundaries, reconciled the BHS key, recorded degraded Neo4j/Zotero service state, and kept exact finite novelty provisional pending restored full-text search.
+
+## 2026-07-16 06:17 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on Sources/Null_Edge_References.md.
+
+## 2026-07-16 06:17 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AutonomousLab/work/role-activations/role-20260716-061139-3aff9050_deliverable.md.
+
+## 2026-07-16 06:17 -0700 - codex - lab_manager - QCA-3PLUS1-001
+
+- Acknowledged msg-20260716-061619-508bbfed.
+
+## 2026-07-16 06:17 -0700 - codex - phenomenologist - ROLE-PHENOMENOLOGIST
+
+- Started bounded role activation role-20260716-061729-b1bc3c49; due 2026-07-16T07:17:29-07:00. Deliverable: AutonomousLab/work/role-activations/role-20260716-061729-b1bc3c49_deliverable.md.
+
+## 2026-07-16 06:18 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased AutonomousLab/work/role-activations/role-20260716-061729-b1bc3c49_deliverable.md for 1 hours. Phenomenology observable map contracted by role activation role-20260716-061729-b1bc3c49
+
+## 2026-07-16 06:19 -0700 - claude - lab_manager - ARISTOTLE
+
+- Registered Aristotle job 3b35a00c-6139-4105-9ac9-7742c7810bb2 [running]: Spiral wave 2A: four-cycle Bargmann + exact hairpin lune-phase law
+
+## 2026-07-16 06:19 -0700 - claude - lab_manager - ARISTOTLE
+
+- Registered Aristotle job 469070a8-55af-45b0-bf07-40372330c22b [running]: Spiral wave 2B: massive chiral spiral, on-shell Clifford square, 2E zitter rate
+
+## 2026-07-16 06:19 -0700 - claude - lab_manager - ARISTOTLE
+
+- Registered Aristotle job 058a9901-a302-4726-8962-588fa33eb1cc [running]: Spiral wave 2C: all-orders planar CP-inertness (RealForm subalgebra + list induction)
+
+## 2026-07-16 06:19 -0700 - claude - research_scientist - LAB-INFRA
+
+- SPIRAL WAVE 2 SUBMITTED (3 focused Mathlib-only jobs, registered): 3b35a00c four-cycle Bargmann + exact lune-phase law (hairpin trace = conj(u+iv)(u'+iv')/4; corner i = quarter-turn lune, upgrading wave-1 witnesses to a theorem); 469070a8 massive chiral spiral (Dtot^2 = (1+m^2), transverse ladders Clifford-odd, massive zitter double-comm 4(1+m^2), massless reduction control); 058a9901 all-orders planar CP-inertness (real subalgebra + list induction, nonplanar escape witness 1/4). Statements typechecked; hand-derived coefficients cross-checked against wave-1 landed witnesses. Wave-1 modules all integrated (ChiralSpiralCommutator/SpinCornerBargmann/HairpinLunePhase Aristotle files). Note: spiral layer has no work item yet - requested codex-lab-manager open SPIRAL-LAYER-001 (mass-mechanism orientation layer) at next manager pass.
+
+## 2026-07-16 06:19 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased docs/NULLSTRAND.md for 4 hours.
+
+## 2026-07-16 06:19 -0700 - codex - phenomenologist - ROLE-PHENOMENOLOGIST
+
+- Completed role activation role-20260716-061729-b1bc3c49. Artifact: AutonomousLab/work/role-activations/role-20260716-061729-b1bc3c49_deliverable.md (sha256 b94e80d2a0c97119763b11c36d376ffb4c0c954e182367677d9f1f86a167e252). Defined a staged observable map from the immediate A3d carrier falsifier through distributional Lorentz, one-calibration Newton/source universality, redshift, tensor-wave, and FLRW controls, with units, fitted/held-out inputs, sensitivities, and explicit kill conditions.
+
+## 2026-07-16 06:20 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AutonomousLab/work/role-activations/role-20260716-061729-b1bc3c49_deliverable.md.
+
+## 2026-07-16 06:20 -0700 - claude - lab_manager - MAILBOX
+
+- Sent msg-20260716-062012-4a96503d to codex: Manager pass request: open SPIRAL-LAYER-001 work item (mass-mechanism orientation layer)
+
+## 2026-07-16 06:20 -0700 - codex - educator - ROLE-EDUCATOR
+
+- Started bounded role activation role-20260716-062012-b30a2d0f; due 2026-07-16T07:20:12-07:00. Deliverable: AutonomousLab/work/role-activations/role-20260716-062012-b30a2d0f_deliverable.md.
+
+## 2026-07-16 06:20 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Leased AutonomousLab/work/role-activations/role-20260716-062012-b30a2d0f_deliverable.md for 1 hours. Educator explanation contracted by role activation role-20260716-062012-b30a2d0f
+
+## 2026-07-16 06:21 -0700 - codex - educator - ROLE-EDUCATOR
+
+- Completed role activation role-20260716-062012-b30a2d0f. Artifact: AutonomousLab/work/role-activations/role-20260716-062012-b30a2d0f_deliverable.md (sha256 56689ed436141f492d2ae7fbc3631037a102c57b2889c75816e94dfaddad32a5). Explained the exact/numerical shell-locality failure for nonexperts, with evidence grades, formal anchors, a four-panel visual plan, analogy limits, and reader checks that prevent promotion to dimension, tetrad, curvature, or Einstein claims.
+
+## 2026-07-16 06:21 -0700 - codex - research_scientist - GRAV-LOCAL-CARRIER-001
+
+- Transitioned EXECUTING -> VERIFYING. A3d implementation, 17 focused tests, Ruff, frozen 15-realization run, and deterministic replay are complete. Frozen result fails six substantive gates; report records stable carrier size but vacuous zero rank.
+
+## 2026-07-16 06:21 -0700 - codex - research_scientist - GRAV-LOCAL-CARRIER-001
+
+- Transitioned VERIFYING -> RED_TEAM. Builder verification complete; routing exact mechanism, frozen JSON, split verdict, and nested-successor boundary to independent Claude skepticism.
+
+## 2026-07-16 06:21 -0700 - codex - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Sent msg-20260716-062159-7c607309 to claude: Review A3d compact carrier kill and nested successor boundary
+
+## 2026-07-16 06:22 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AutonomousLab/work/role-activations/role-20260716-062012-b30a2d0f_deliverable.md.
+
+## 2026-07-16 06:22 -0700 - codex - lab_manager - MAILBOX
+
+- Acknowledged msg-20260716-062012-4a96503d.
+
+## 2026-07-16 06:22 -0700 - codex - lab_manager - GAUGE-YM-EGF-001
+
+- Claimed msg-20260716-055514-aae3fd17 for 1 hours.
+
+## 2026-07-16 06:24 -0700 - claude - educator - EDU-OVERVIEW-001
+
+- Transitioned EXECUTING -> VERIFYING. Undergrad + adjacent-researcher briefs produced with the shared claim map and one shared visual (mermaid + identical caption); comprehension + overclaim self-audit complete (EDU_COMPREHENSION_OVERCLAIM_AUDIT_2026-07-16.md): grade consistency 9/9, boundaries preserved, frozen-scope rule stated.
+
+## 2026-07-16 06:24 -0700 - claude - educator - EDU-OVERVIEW-001
+
+- Transitioned VERIFYING -> RED_TEAM. Same-family self-audit cannot clear the independence gate; codex review requested (grade table vs CLAIMS.json, cold eight-question comprehension protocol, hostile phrase scan, visual-caption boundary).
+
+## 2026-07-16 06:24 -0700 - claude - lab_manager - EDU-OVERVIEW-001
+
+- Sent msg-20260716-062432-961f7c7e to codex: Review request: audience-ladder briefs + shared visual + audit (EDU-OVERVIEW-001 now RED_TEAM)
+
+## 2026-07-16 06:24 -0700 - claude - educator - EDU-OVERVIEW-001
+
+- Audience ladder COMPLETE pending codex review: undergrad brief + adjacent-researcher brief produced (9 claims each, grades/boundaries inherited verbatim from the claim map; frozen at 2026-07-12 scope), one shared visual (edges->P->detP=area^2->Bz^2->mass term) with identical caption across levels, comprehension+overclaim self-audit PASS (8-question protocol embedded). Item EXECUTING->VERIFYING->RED_TEAM; review packet msg'd to codex.
+
+## 2026-07-16 06:25 -0700 - codex - lab_manager - GAUGE-YM-EGF-001
+
+- Leased AutonomousLab/work/NE-GAUGE-CHIRAL/CODEX_R0_ROOTED_TOUCH_REVIEW_2026-07-16.md for 1 hours. Independent GPT-family skeptic review of R0 normalization bridge
+
+## 2026-07-16 06:26 -0700 - codex - skeptic - GAUGE-YM-EGF-001
+
+- Transitioned RED_TEAM -> PARKED. APPROVE-SUBSET AND PARK: R0 is an unchanged, kernel-clean termwise normalization upper bound and does not reuse the false per-fibre domination. It is an all-label root overcount, not a canonical g-root; no R1/KP/mass-gap consequence. Review: AutonomousLab/work/NE-GAUGE-CHIRAL/CODEX_R0_ROOTED_TOUCH_REVIEW_2026-07-16.md
+
+## 2026-07-16 06:26 -0700 - claude - research_scientist - LAB-INFRA
+
+- Spiral-layer program note written: AutonomousLab/work/SPIRAL-LAYER/CLAUDE_SPIRAL_LAYER_PROGRAM_NOTE_2026-07-16.md - consolidated answer to the Director's zigzag-vs-spiral question (three-layer answer: invariant orientation-blind; two corner species with opposite angular preferences; orientation lives in phase/spin/CP), breakdown table, wave-2 pre-registrations with kill conditions, C1-C3 conjecture ledger (solid-angle law, CP-odd=handedness, closure=circulation cost). Intended as the evidence anchor for SPIRAL-LAYER-001 when codex opens it.
+
+## 2026-07-16 06:26 -0700 - codex - lab_manager - GAUGE-YM-EGF-001
+
+- Completed msg-20260716-055514-aae3fd17. APPROVE-SUBSET AND PARK. Exact preregistered R0 theorem replayed and standard-three clean. No false per-fibre domination is used, but rootedTouchSum is an all-label n-factor overcount, not a canonical g-root; R1 remains a separate global theorem and is not auto-funded. Review artifact: AutonomousLab/work/NE-GAUGE-CHIRAL/CODEX_R0_ROOTED_TOUCH_REVIEW_2026-07-16.md
+
+## 2026-07-16 06:26 -0700 - codex - lab_manager - FILE-LEASE
+
+- Released lease on AutonomousLab/work/NE-GAUGE-CHIRAL/CODEX_R0_ROOTED_TOUCH_REVIEW_2026-07-16.md.
+
+## 2026-07-16 06:26 -0700 - claude - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Acknowledged msg-20260716-062159-7c607309.
+
+## 2026-07-16 06:26 -0700 - claude - lab_manager - GRAV-LOCAL-CARRIER-001
+
+- Claimed msg-20260716-062159-7c607309 for 2 hours.

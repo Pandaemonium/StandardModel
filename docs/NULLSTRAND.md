@@ -68,6 +68,15 @@ ensemble of eligible brackets, and prove refinement/overlap stability before
 spectral rank selection. See
 `AgentTasks/null-edge-causal-larger-diamond-support-stage-a3c-benchmark-2026-07-16.md`.
 
+Stage A3d tests the first compact replacement. The order-only excess
+`C(p,q)/(C(p,x)^(1/4)+C(x,q)^(1/4))^4` stabilizes carrier cardinality to
+`0.281%` between fixed-density volume multipliers two and four, but the same
+bracket over-truncates the evaluation germ: induced common-interiority is
+essentially zero, all clustered rank rates are zero, and overlap/metric gates
+fail. Do not retune its caps. The next mechanism must separate an outer compact
+regulator from a buffered inner evaluation region. See
+`AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-benchmark-2026-07-16.md`.
+
 ### All-mass program: strategic guidance (2026-07-08)
 
 The all-mass manuscript

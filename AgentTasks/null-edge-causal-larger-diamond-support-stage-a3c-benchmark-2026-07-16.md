@@ -171,8 +171,9 @@ The earlier rank theorem remains correct and useful: fewer than four shell
 events forbid a visible rank-four sector. The converse was never sufficient,
 and A3c now shows why increasing shell cardinality cannot repair locality.
 
-Do not launch the generalized-cluster eigensolver on the global shell and do
-not enlarge the diamond until its availability threshold is crossed.
+Do not launch the generalized-cluster eigensolver on the global shell. No
+larger-volume run can rehabilitate its cardinality as a locality certificate:
+crossing the old availability threshold would only confirm infrared growth.
 
 ## Next decision
 
@@ -189,6 +190,11 @@ Replace the global shell by a compact order-derived carrier:
 This returns the probe program to the existing Alexandrov-germ architecture
 and makes compact support, boundary scale, and refinement compatibility
 explicit reconstruction obligations.
+
+Independent Claude-family replay reproduced the archived frozen ladder,
+verified the sparse semantics and guarded finite no-go, and approved this
+split verdict in
+`AutonomousLab/reviews/CLAUDE_REVIEW_A3C_BOUNDARY_CONTROL_2026-07-16.md`.
 
 ## Verification commands
 

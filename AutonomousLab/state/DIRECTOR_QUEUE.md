@@ -197,6 +197,18 @@ cheap follow-ons (independent of the decision): kernel-check the general
 `Qwindow = 2(2 tr P - d)` formula; if YES, build the smallest unbalanced (`d=3`)
 half-space step and verify its single defect.
 
+Progress update (2026-07-16, claude): the decision-independent follow-on is
+DONE and banked. `Qwindow_single_generator` (= `2(2 tr P - d)`), the balance
+criterion iff-pair, the unbalanced `d=3` rank-one witness (exact charge `-2`,
+nonzero), and the balanced `d=2` control (charge `0`) are all kernel-checked
+with build-enforced standard-three guards (Aristotle `da29672d` run
+`f460ec66`), and the full package was independently rebuilt locally
+(EXIT=0, 8037 jobs; `AgentTasks/aristotle-output/da29672d-.../
+qwindow-general-20260716/`). The unbalanced `d=3` half-space witness the
+bullet asked for is included. Nothing mathematical remains open on this
+fork; the DQ-010 ontological admissibility call is the only open ingredient
+of single-Weyl existence.
+
 ## Resolved
 
 ### DQ-006 Claude channel policy (resolved 2026-07-12)

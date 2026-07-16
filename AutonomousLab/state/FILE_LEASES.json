@@ -1,55 +1,71 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-16T05:49:19-07:00",
+  "updated_at": "2026-07-16T06:26:12-07:00",
   "note": "Bounded repository-path leases prevent concurrent agents from silently overwriting one another. Paths are normalized repository-relative prefixes. Expired leases are ignored and removed on the next lease acquisition.",
   "leases": [
     {
-      "path": "Scripts/experiments/causal_larger_diamond_support.py",
+      "path": "Scripts/experiments/causal_compact_bracket_carrier.py",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-SUPPORT-001",
-      "acquired_at": "2026-07-16T05:49:17-07:00",
-      "expires_at": "2026-07-16T09:49:17-07:00",
-      "note": "Codex A3c fixed-local-scale boundary-control execution."
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:13:20-07:00",
+      "expires_at": "2026-07-16T10:13:20-07:00",
+      "note": ""
     },
     {
-      "path": "Scripts/experiments/test_causal_larger_diamond_support.py",
+      "path": "Scripts/experiments/test_causal_compact_bracket_carrier.py",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-SUPPORT-001",
-      "acquired_at": "2026-07-16T05:49:17-07:00",
-      "expires_at": "2026-07-16T09:49:17-07:00",
-      "note": "Codex A3c fixed-local-scale boundary-control execution."
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:13:21-07:00",
+      "expires_at": "2026-07-16T10:13:21-07:00",
+      "note": ""
     },
     {
-      "path": "AgentTasks/null-edge-causal-larger-diamond-support-stage-a3c-benchmark-2026-07-16.md",
+      "path": "AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-plan-2026-07-16.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-SUPPORT-001",
-      "acquired_at": "2026-07-16T05:49:18-07:00",
-      "expires_at": "2026-07-16T09:49:18-07:00",
-      "note": "Codex A3c fixed-local-scale boundary-control execution."
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:13:21-07:00",
+      "expires_at": "2026-07-16T10:13:21-07:00",
+      "note": ""
     },
     {
-      "path": "AgentTasks/causal-larger-diamond-support-stage-a3c-2026-07-16.json",
+      "path": "AgentTasks/causal-compact-bracket-carrier-stage-a3d-2026-07-16.json",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-SUPPORT-001",
-      "acquired_at": "2026-07-16T05:49:18-07:00",
-      "expires_at": "2026-07-16T09:49:18-07:00",
-      "note": "Codex A3c fixed-local-scale boundary-control execution."
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:13:21-07:00",
+      "expires_at": "2026-07-16T10:13:21-07:00",
+      "note": ""
     },
     {
-      "path": "Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md",
+      "path": "AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-benchmark-2026-07-16.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-SUPPORT-001",
-      "acquired_at": "2026-07-16T05:49:18-07:00",
-      "expires_at": "2026-07-16T09:49:18-07:00",
-      "note": "Codex A3c fixed-local-scale boundary-control execution."
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:13:21-07:00",
+      "expires_at": "2026-07-16T10:13:21-07:00",
+      "note": ""
     },
     {
       "path": "AutonomousLab/work/NE-GRAVITY-SCALE",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-SUPPORT-001",
-      "acquired_at": "2026-07-16T05:49:19-07:00",
-      "expires_at": "2026-07-16T09:49:19-07:00",
-      "note": "Codex A3c fixed-local-scale boundary-control execution."
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:13:21-07:00",
+      "expires_at": "2026-07-16T10:13:21-07:00",
+      "note": ""
+    },
+    {
+      "path": "Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:13:21-07:00",
+      "expires_at": "2026-07-16T10:13:21-07:00",
+      "note": ""
+    },
+    {
+      "path": "docs/NULLSTRAND.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-LOCAL-CARRIER-001",
+      "acquired_at": "2026-07-16T06:19:47-07:00",
+      "expires_at": "2026-07-16T10:19:47-07:00",
+      "note": ""
     }
   ]
 }

@@ -2721,8 +2721,8 @@ The volume element is
 \]
 
 A fixed interval-volume/count band fixes a proper-time interval
-(	au_1\le\tau\le\tau_2), but it leaves the rapidity direction
-(0\le\chi<\infty). Since
+\(\tau_1\le\tau\le\tau_2\), but it leaves the rapidity direction
+\(0\le\chi<\infty\). Since
 
 \[
   \int_0^\infty \sinh^2\chi\,d\chi=\infty,
@@ -2758,6 +2758,47 @@ mark, or an equivariant ensemble of such brackets when no canonical one
 exists. Retarded support is then evaluated in the induced finite order and
 must be stable under carrier refinement and overlap. The generalized-cluster
 eigensolver remains deferred until that compact-carrier gate passes.
+
+An independent Claude-family replay reproduced all frozen rates, audited the
+sparse orientation and count convention, rebuilt the guarded finite no-go,
+and approved the split verdict with no blocking finding. The successor is
+therefore preregistered around a count-volume rapidity-excess cut, with
+realization-clustered inference primary and pooled bracket counts secondary.
+
+### 3.70 Stage A3d removes infrared carrier growth but over-truncates the germ
+
+Stage A3d replaces the global shell by count-balanced brackets
+\(p\prec x\prec q\). If \(a=C(p,x)\), \(b=C(x,q)\), and \(c=C(p,q)\) are
+inclusive interval counts, the selector uses the order-only excess
+
+\[
+  E(p,x,q)=\frac{c}{(a^{1/4}+b^{1/4})^4}.
+\]
+
+The denominator is the collinear four-volume composition. Tight and loose
+ensembles impose \(E\le 1.5\) and \(E\le 2.0\), respectively, with complete
+cutoff ties and no coordinate or label selection. Every support predicate is
+then recomputed in the induced order on the open bracket.
+
+This mechanism does remove the infrared carrier growth. At fixed density, the
+median tight-carrier cardinalities at global volume multipliers \(1,2,4\) are
+\(156.0,177.75,177.25\); the multiplier-two to multiplier-four drift is only
+\(0.281\%\). The count-volume excess is therefore a useful compactness
+diagnostic.
+
+The same brackets do not contain a viable evaluation germ. Across 120 sampled
+marks and 1,143 tight brackets, pooled induced common-interiority is zero at
+the first two volumes and \(0.38\%\) at the largest. Per-mark median shell
+counts are \((1,0,0)\) at all volumes, and every realization has zero
+all-three-scale rank-capable rate. The largest-volume overlap metric
+disagreement is \(0.743\), tight/loose disagreement is \(0.352\), coordinate
+metric error is \(1.057\), and the clustered Lorentzian rate is \(0.219\).
+
+Thus the preregistered A3d construction is killed. Its stable zero rank is
+vacuous, not convergence. The next admissible architecture is not a wider cap
+or larger global diamond, but a nested outer regulator and inner evaluation
+region with an explicit count buffer. G2 and every downstream tetrad,
+curvature, and Einstein-dynamics gate remain closed.
 
 ## 4. Proposed null-edge gravitational data
 

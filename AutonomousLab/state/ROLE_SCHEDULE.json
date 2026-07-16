@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "created_at": "2026-07-12T17:45:00-07:00",
-  "updated_at": "2026-07-16T05:50:04-07:00",
+  "updated_at": "2026-07-16T06:21:56-07:00",
   "note": "Durable role-duty schedule. Periodic duties must produce a bounded activation packet and a hashed completion artifact. Event-driven roles are enforced by their corresponding work/review gates.",
   "policies": {
     "research_scientist": {
@@ -78,6 +78,106 @@
     }
   },
   "activations": [
+    {
+      "id": "role-20260716-062012-b30a2d0f",
+      "role": "educator",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T06:20:12-07:00",
+      "due_at": "2026-07-16T07:20:12-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-062012-b30a2d0f_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-062012-b30a2d0f_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T06:21:56-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-062012-b30a2d0f_deliverable.md",
+        "sha256": "56689ed436141f492d2ae7fbc3631037a102c57b2889c75816e94dfaddad32a5"
+      },
+      "summary": "Explained the exact/numerical shell-locality failure for nonexperts, with evidence grades, formal anchors, a four-panel visual plan, analogy limits, and reader checks that prevent promotion to dimension, tetrad, curvature, or Einstein claims."
+    },
+    {
+      "id": "role-20260716-061729-b1bc3c49",
+      "role": "phenomenologist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T06:17:29-07:00",
+      "due_at": "2026-07-16T07:17:29-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-061729-b1bc3c49_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-061729-b1bc3c49_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T06:19:56-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-061729-b1bc3c49_deliverable.md",
+        "sha256": "b94e80d2a0c97119763b11c36d376ffb4c0c954e182367677d9f1f86a167e252"
+      },
+      "summary": "Defined a staged observable map from the immediate A3d carrier falsifier through distributional Lorentz, one-calibration Newton/source universality, redshift, tensor-wave, and FLRW controls, with units, fitted/held-out inputs, sensitivities, and explicit kill conditions."
+    },
+    {
+      "id": "role-20260716-061139-3aff9050",
+      "role": "archivist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T06:11:39-07:00",
+      "due_at": "2026-07-16T07:11:39-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-061139-3aff9050_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-061139-3aff9050_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T06:16:58-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-061139-3aff9050_deliverable.md",
+        "sha256": "4899a376cd31f29908f0491e585b98802307350a064286a6c8ce9f78cc9e1db0"
+      },
+      "summary": "Mapped the shell obstruction to primary causal-set layer/nonlocality work; added canonical identifiers and scope boundaries, reconciled the BHS key, recorded degraded Neo4j/Zotero service state, and kept exact finite novelty provisional pending restored full-text search."
+    },
+    {
+      "id": "role-20260716-060928-725fde13",
+      "role": "superstar",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T06:09:28-07:00",
+      "due_at": "2026-07-16T07:09:28-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-060928-725fde13_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-060928-725fde13_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T06:11:08-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-060928-725fde13_deliverable.md",
+        "sha256": "39a6da0551c4add51785a2bc7197a1a89dc7e780e3974717a5c24bf5995c2521"
+      },
+      "summary": "Audited the global-shell result at impact rung 2; selected the exact no-go plus fixed-density control as the honest centerpiece, required a broader classification or passing compact-germ benchmark for rung 3, and prescribed source/review gates before publication."
+    },
+    {
+      "id": "role-20260716-060531-4ae50860",
+      "role": "visionary",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T06:05:31-07:00",
+      "due_at": "2026-07-16T07:05:31-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-060531-4ae50860_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-060531-4ae50860_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T06:08:42-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-060531-4ae50860_deliverable.md",
+        "sha256": "e8be5e098e132787b0330f7520fb7c14e1a8e1cc53fd525cf9d6995e96053c4b"
+      },
+      "summary": "Ranked compact-germ locality, distributional Lorentz covariance, and physical Einstein-response gates; recommended replacing the global-shell successor with GRAV-COMPACT-GERM-001 after independent review."
+    },
     {
       "id": "role-20260716-054651-65d7ed88",
       "role": "lab_manager",
