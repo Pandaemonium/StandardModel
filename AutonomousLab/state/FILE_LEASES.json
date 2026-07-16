@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-16T05:49:19-07:00",
+  "note": "Bounded repository-path leases prevent concurrent agents from silently overwriting one another. Paths are normalized repository-relative prefixes. Expired leases are ignored and removed on the next lease acquisition.",
+  "leases": [
+    {
+      "path": "Scripts/experiments/causal_larger_diamond_support.py",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-SUPPORT-001",
+      "acquired_at": "2026-07-16T05:49:17-07:00",
+      "expires_at": "2026-07-16T09:49:17-07:00",
+      "note": "Codex A3c fixed-local-scale boundary-control execution."
+    },
+    {
+      "path": "Scripts/experiments/test_causal_larger_diamond_support.py",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-SUPPORT-001",
+      "acquired_at": "2026-07-16T05:49:17-07:00",
+      "expires_at": "2026-07-16T09:49:17-07:00",
+      "note": "Codex A3c fixed-local-scale boundary-control execution."
+    },
+    {
+      "path": "AgentTasks/null-edge-causal-larger-diamond-support-stage-a3c-benchmark-2026-07-16.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-SUPPORT-001",
+      "acquired_at": "2026-07-16T05:49:18-07:00",
+      "expires_at": "2026-07-16T09:49:18-07:00",
+      "note": "Codex A3c fixed-local-scale boundary-control execution."
+    },
+    {
+      "path": "AgentTasks/causal-larger-diamond-support-stage-a3c-2026-07-16.json",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-SUPPORT-001",
+      "acquired_at": "2026-07-16T05:49:18-07:00",
+      "expires_at": "2026-07-16T09:49:18-07:00",
+      "note": "Codex A3c fixed-local-scale boundary-control execution."
+    },
+    {
+      "path": "Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-SUPPORT-001",
+      "acquired_at": "2026-07-16T05:49:18-07:00",
+      "expires_at": "2026-07-16T09:49:18-07:00",
+      "note": "Codex A3c fixed-local-scale boundary-control execution."
+    },
+    {
+      "path": "AutonomousLab/work/NE-GRAVITY-SCALE",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-SUPPORT-001",
+      "acquired_at": "2026-07-16T05:49:19-07:00",
+      "expires_at": "2026-07-16T09:49:19-07:00",
+      "note": "Codex A3c fixed-local-scale boundary-control execution."
+    }
+  ]
+}

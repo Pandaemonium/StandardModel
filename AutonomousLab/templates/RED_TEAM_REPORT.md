@@ -8,6 +8,13 @@
 
 ## Precise restatement
 
+## Nearest-work audit
+
+- Closest stronger claim a reader may infer:
+- Missing theorem, experiment, or assumption:
+- Titles/abstracts/captions checked:
+- Successor item opened or explicit out-of-scope disposition:
+
 ## Findings ordered by severity
 
 ## Counterexamples and independent commands

@@ -11,7 +11,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = ROOT.parent
-MODELS = ("codex", "claude", "opus", "aristotle")
+MODELS = ("codex", "claude", "aristotle")
 ROLES = (
     "research_scientist",
     "skeptic",

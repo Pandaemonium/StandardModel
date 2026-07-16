@@ -1,0 +1,3 @@
+{
+  "query": "UNWIND ['hep-lat/9707022', '1603.04078', '0905.2658', '1412.7740', '1409.2509', '1001.2725', '1309.6562'] AS requested OPTIONAL MATCH (p:Paper {arxiv_id: requested}) RETURN requested AS arxiv_id, collect({paper_key: p.paper_key, title: p.title, doi: p.doi, source: p.source}) AS matches ORDER BY arxiv_id"
+}

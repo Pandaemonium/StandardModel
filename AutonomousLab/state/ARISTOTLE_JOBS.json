@@ -1,15 +1,935 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-12T11:50:00-07:00",
+  "updated_at": "2026-07-16T05:57:35-07:00",
   "note": "Registry of Aristotle proof/audit jobs. Statuses: submitted|running|idle|unknown|harvested|integrated|deferred|cancelled|failed. labctl validate enforces the fleet cap on submitted+running; `labctl jobs` lists against the cap; `labctl due` flags idle/unknown/harvested jobs awaiting integration. Seeded 2026-07-12 from the 24h publication-run ledger; pre-lab jobs carry work_item_id null.",
   "jobs": [
+    {
+      "id": "e9a3645d-b658-46fe-b761-5b260df7ddad",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Adversarial compact-auxiliary null-dilation strategy",
+      "status": "running",
+      "submitted_at": "2026-07-13T16:49:17-07:00",
+      "notes": "Task bd9fefde-e932-49fe-93f4-57aac3ead3c1; audit full spectrum, winding, soldering, and decoder. [2026-07-13T17:39:46-07:00 codex] Adversarial assessment completed and replayed; exact factorization relocates rather than resolves the 3+1 obstruction. [2026-07-13T17:44:45-07:00 codex] Successor strategy task 44c3c958-01c0-4087-948e-77c4c86e1304 queued: full HNU antiperiodic twist parity/noncommutation/spectrum/ledger audit. [2026-07-13T18:26:13-07:00 codex] Antiperiodic full-HNU audit complete; exact scoped relocation no-go with finite witness harvested, cross-review pending msg-20260713-182552-3e0d2a5b. [2026-07-13T18:30:07-07:00 codex] Successor c538c705 targets transported-projector telescoping and central-holonomy classification after antiperiodic relocation no-go. [2026-07-13T19:09:12-07:00 codex] TransportedProjectorHolonomy downloaded; semantic scope concern sent for independent review. [2026-07-13T19:11:00-07:00 codex] Successor 7076b7f1 targets a genuinely schedule-indexed transported frame and varying-G telescoping law, correcting the constant-G scope. [2026-07-13T19:24:00-07:00 codex] Global-frame holonomy classification integrated after independent review; successor 7076b7f1 remains active for genuine varying-frame telescoping. [2026-07-13T19:46:08-07:00 codex] Task 7076 completed but repeated constant-G result; rejected for missing indexed frames, endpoint telescope, and link cocycle. [2026-07-13T19:46:25-07:00 codex] Task 11c39c15 submitted with exact typechecked varying-frame telescope handoff. [2026-07-13T20:09:37-07:00 codex] Correct schedule-indexed telescope integrated after direct replay and independent Claude APPROVE. Cyclic passive frames preserve central holonomy; no active transport escape claimed. [2026-07-13T20:10:18-07:00 codex] HNU-specific cyclic varying-frame holonomy no-escape composition and active-link boundary successor launched."
+    },
+    {
+      "id": "6f1114f3-e46c-4282-8c51-a81803ec62e1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "All-moving null dilation of conditioned shift",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T16:48:06-07:00",
+      "notes": "Task 740737f1-fa4c-4d5b-ba96-5da5f2f1cdbc; compact auxiliary out-and-back dilation. [2026-07-13T17:39:46-07:00 codex] Exact dilation theorem completed and replayed; live integration awaits Claude cross-family review msg-20260713-173926-bf27a0f8. [2026-07-13T17:44:05-07:00 codex] Successor task 75231ebb-9cc7-475e-940e-942b72b56bea queued: antiperiodic Fin 2 shift with T^2=-I and all-moving pi dilation. [2026-07-13T18:57:13-07:00 codex] Completed antiperiodic all-moving fine-tick ladder harvested and sent for independent semantic review. [2026-07-13T19:09:11-07:00 codex] Claude-approved positive fine-tick base integrated as AntiperiodicPiDilation; direct replay and targeted build pass. [2026-07-14T06:26:13-07:00 claude] Null-dilation: does dilation relocate/remove the compensating charge, exact det/census. Refill by claude. [2026-07-14T07:14:53-07:00 claude] Refill task COMPLETE + reviewed APPROVE (draft-trust): ChargeCensus.lean, null_dilation_charge_census - dilation RELOCATES+conserves (det=1, census 4->0), does NOT remove the compensating charge. Independently built EXIT=0, 5 standard-three guards, controls real. Confirms relocate-not-remove no-go pattern. Artifact: AutonomousLab/reviews/CLAUDE_REVIEW_NullDilationChargeCensus_2026-07-14.md"
+    },
+    {
+      "id": "87e8d4f4-0f1b-452e-bd9a-54b1f103f86e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Gamma-coupled transverse full-gap and paired-chirality control",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T16:13:21-07:00",
+      "notes": "Task 44b31d80-248d-4999-a5c4-bcac86efb384. Exact Clifford H^2 and complement gap; audit expected paired opposite Weyl chiralities. Determines what gamma coupling fixes and what remains for Floquet/interactions. [2026-07-13T18:43:46-07:00 codex] Completed snapshot harvested; full gamma/complement ladder sent for interactive Claude semantic review. [2026-07-13T18:56:29-07:00 codex] Claude-approved gamma-coupled transverse control integrated; exact complement gap and paired net-zero chirality. [2026-07-13T18:58:48-07:00 codex] Successor 4ec59560: gamma-centralizer chirality-selector no-go. [2026-07-14T06:26:14-07:00 claude] Gamma-transverse: full gap with net chirality vs paired net-zero, exact anticommutator/spectral. Refill by claude. [2026-07-14T07:34:31-07:00 claude] Refill COMPLETE + reviewed APPROVE (draft-trust): GammaTransverse paired_chirality_no_full_gap - transverse gamma coupling gives a massless cone (H^2=k^2) with net-zero PAIRED chirality (tr chir=0, opposite det signs), no full gap; can't isolate single chirality. Independent build EXIT=0, 7 standard-three guards, exemplary scope. Complements domain-wall (imbalance->single, balanced->paired). Artifact: AutonomousLab/reviews/CLAUDE_REVIEW_GammaTransversePairedChirality_2026-07-14.md"
+    },
+    {
+      "id": "d82ea36b-490a-4e78-bc17-29e1aa3c96e9",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Controlled transverse-selector plus anomalous-Floquet composition",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T16:08:06-07:00",
+      "notes": "Task 9c89efe3-5325-494d-9169-72fb8d214718. Exact rank-one transverse selector; arbitrary unitary U on selected sector and V on complement; prove combined unitarity and restrictions. Future HNU zero-sector plus pi-gap compensator scaffold; no locality/topology claim. [2026-07-13T17:39:46-07:00 codex] Controlled-sector precursor completed and replayed; live integration awaits Claude cross-family review msg-20260713-173926-bf27a0f8. [2026-07-13T17:42:56-07:00 codex] Successor task 29039417-befe-4736-be47-00af35e42c28 queued: exact HNU selected sector plus explicit pi complement and nonzero-eigenvector census. [2026-07-13T18:26:13-07:00 codex] HNU selected plus explicit Vpi complement completed and downloaded; cross-review pending msg-20260713-182552-3e0d2a5b. [2026-07-13T18:46:26-07:00 codex] HNUTransversePiComposite integrated with spectral-only boundary; targeted build passes. [2026-07-13T18:58:48-07:00 codex] Successor b5e9ba36: minimal HNU parent/boundary completion or sharp no-go. [2026-07-14T06:26:12-07:00 claude] Floquet-transverse composition: net single crossing vs compensated pair, exact crossing-charge/winding. Refill by claude. [2026-07-14T08:19:47-07:00 claude] Refill COMPLETE + reviewed APPROVE (draft-trust): HNUCrossingCharge - transverse-selector + HNU composite gives EXACTLY ONE zero-quasienergy crossing (composite_plus_one_iff: +1 eigvec iff k=0; zero_crossing_count=1; complement gapped at -1). CRITICAL: UNSIGNED / chirality-blind (census_chirality_blind) - NOT a signed single Weyl (consistent with a crossing OR its mirror). Independent 5-module build EXIT=0, 13 standard-three guards, exemplary scope. Closest refill result to Gate-1 but still unsigned. Artifact: AutonomousLab/reviews/CLAUDE_REVIEW_HNUCrossingCharge_2026-07-14.md"
+    },
+    {
+      "id": "a2f77b78-59ba-4b39-9319-152d3b446ff8",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "SM anomaly moments versus boundary-index ledger",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T15:48:55-07:00",
+      "notes": "Exact no-conflation theorem or cancellation; minimal mirror/orientation augmentation; focused rational/integer package. [2026-07-13T16:37:28-07:00 codex] Banked provisionally as AnomalyIndexLedger with aggregate-entry limitation explicit; targeted and central guards pass; awaiting Claude semantic cross-review. [2026-07-13T16:58:07-07:00 codex] Claude semantic approval; exact anomaly ledger and no-implication control; central guard passed."
+    },
+    {
+      "id": "da29672d-5b8a-4e65-bac0-4d3d154dda57",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact real-space HNU conditioned-shift symbol bridge",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T15:31:49-07:00",
+      "notes": "Finite periodic spin-conditioned shifts; strict locality/unitarity; exact Fourier symbol equals HNU endpoint; audits stationary branches versus primitive-null support. [2026-07-13T16:50:44-07:00 codex] Returned real-space HNU bridge compiled locally and staged in live tree; independent semantic review requested before integrated status. [2026-07-13T16:58:07-07:00 codex] Exact real-space HNU bridge compiled, independently approved, and centrally guarded; stationary sector remains explicit. [2026-07-13T19:12:28-07:00 codex] Successor fe61a4d3 targets an explicit position-space HNU changing-lattice L2 continuum bridge with compact momentum and tail controls. [2026-07-14T06:26:15-07:00 claude] Gate-1 half-space HNU window-defect DETERMINATION (single +1 vs paired/zero), Choice-A absorbing boundary, with periodic+pure-shift controls. Refill by claude per Director request. [2026-07-14T12:22:23-07:00 claude] GATE-1 DECISIVE RESULT (M|partial): the half-space HNU boundary window charge Qwindow = 2(tr p - tr q) = 0 (Qwindow_eq_zero) because HNU projectors are BALANCED (tr P3-=tr P3+) -> OUTCOME (b) DOUBLING, no isolated single chiral edge defect, pair-cancellation. Single Weyl would need imbalance HNU lacks (cf domain-wall). Numerically verified (balanced->0, unbalanced rank1v3->\u22134=2(tr p-tr q)); precursor HalfSpaceDefectIndex sorry-free; all controls+witness sorry-free+guarded; ONLY the 2 headlines carry sorryAx via 2 mechanical telescope lemmas (honestly unguarded). Resolves the decisive gate to the NO-GO / mapped-impossibility branch. Artifact: AutonomousLab/reviews/CLAUDE_REVIEW_Gate1_HalfSpaceHNU_DETERMINATION_2026-07-14.md [2026-07-14T12:23:37-07:00 claude] Follow-on fired: complete the 2 telescope lemmas (telescope_adjmul/muladj, 8-factor 1-U^HU peel) to make the Gate-1 headlines Qwindow_formula/Qwindow_eq_zero fully kernel-checked (remove sorryAx, convert to standard-three guards). Highest-value follow-on to the decisive doubling determination. [2026-07-14T16:04:19-07:00 claude] TELESCOPE COMPLETION DONE -> GATE 1 FULLY KERNEL-CHECKED (M, standard-three). Both telescope lemmas proved (no statement change), Qwindow_formula/Qwindow_eq_zero now #guard_msgs-pinned to [propext,Classical.choice,Quot.sound], NO sorryAx. Independent rebuild EXIT=0. The HNU half-space DOUBLES (Qwindow=0) is now a fully kernel-checked no-go. Grade M|partial -> M. [2026-07-14T17:39:51-07:00 claude] Follow-on: kernel-check the general single-generator formula Qwindow = 2(2 tr P - d) + the tr P = d/2 balance criterion, with a d=3 rank-1 unbalanced single-defect witness. Decision-independent (makes the Gate-A reduction kernel-checked); does NOT need the DQ-010 ontological decision. [2026-07-16T05:57:35-07:00 claude] f460ec66 follow-on downloaded + extracted; single-generator block (Qwindow_single_generator + iff pair + d=3 rank-1 witness -2 + d=2 balanced control) semantically reviewed against DQ-010 claim, guards standard-three in package; independent local rebuild in progress before integrated."
+    },
+    {
+      "id": "9eb52ec3-fafd-4db5-aa32-fe41c9f9e953",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact finite domain-wall Weyl boundary lift",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T15:20:08-07:00",
+      "notes": "Local Hermitian transverse chain, nonvacuous localized kernel, complement gap, and exact Pauli-Weyl boundary restriction; audits mirror and anomaly. [2026-07-13T16:05:13-07:00 codex] Integrated as semantically narrowed FiniteTransverseWeylLift: exact 3-site kernel/complement identity/continuum Pauli intertwiner; domain-wall, full-gap, doubling-escape, and anomaly-inflow claims explicitly rejected. Targeted and central guards pass. [2026-07-14T06:26:11-07:00 claude] Domain-wall Weyl: single species vs mirror pair, exact finite spectral/charge count. Refill by claude. [2026-07-14T07:22:51-07:00 claude] Refill COMPLETE + reviewed APPROVE (draft-trust): DomainWallWeyl single-species. finite_wall_single_species = single unpaired chiral zero mode (dim ker+=1, ker-=0, net +1, mirror empty) via sublattice imbalance; control balanced_ring_mirror_pair (net 0). Boundary sector = Weyl k.sigma (weyl_restriction). Independent build EXIT=0, standard-three, exemplary scope (NOT dynamical/continuum/HNU/gauge). Static domain-wall cousin of the Floquet route. Artifact: AutonomousLab/reviews/CLAUDE_REVIEW_DomainWallSingleSpecies_2026-07-14.md"
+    },
+    {
+      "id": "9eff30d1-131c-4ae8-83af-975e3832192d",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Finite 3-4-5-0 symmetric mass generation",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T15:19:12-07:00",
+      "notes": "Explicit fermionic many-body quartic gap or sharp no-go; rejects chemical-potential vacuity; standalone focused package. [2026-07-13T16:37:28-07:00 codex] Banked provisionally as Finite3450QuarticResonance. Added explicit nonzero full-space zero-mode theorem; two-state gap is not full mirror gap/SMG. Targeted and central guards pass; awaiting Claude semantic review. [2026-07-13T16:58:07-07:00 codex] Claude semantic approval; finite resonance only, with full-space zero-mode kill theorem; central guard passed. [2026-07-14T06:26:16-07:00 claude] 3450 SMG: next honest step on symmetric mass gap past full_hamiltonian_has_zero_mode. Refill by claude. [2026-07-14T07:36:35-07:00 claude] Refill COMPLETE + reviewed APPROVE (draft-trust): SMG3450 KernelNoGo. Complete zero-mode census Ham_zero_mode_iff + Ham_kernel_card=28/32 - single neutral quartic gaps only 4 states (two mirror pairs), does NOT achieve SMG; charged many-body zero-mode witness; sharp gapped controls. Independent build EXIT=0, 4 standard-three guards, exemplary scope. Quantitative single-quartic-SMG no-go. Artifact: AutonomousLab/reviews/CLAUDE_REVIEW_SMG3450KernelNoGo_2026-07-14.md"
+    },
+    {
+      "id": "a279c86d-a75d-458a-bd77-5f2b81f80855",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "codex-halfspace-stabilized-index-additivity",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T14:47:50-07:00",
+      "notes": "Extend unilateral finite-cutoff defect to m channels; derive stabilized +m/-m window traces and additivity with edge-case and nonvacuity controls. Explicitly not Fredholm or bulk-edge. [2026-07-13T15:17:45-07:00 codex] Integrated m-channel stabilized defect additivity/orientation into HalfSpaceDefectIndex.lean; targeted replay passed; central guard pending rerun. [2026-07-14T06:26:33-07:00 claude] Half-space Fredholm-index gap: infinite-l2 unilateral-shift ind=-1 or strongest finite->infinite bridge + missing-API report. Refill by claude per Director request. [2026-07-14T07:20:13-07:00 claude] Refill COMPLETE + reviewed APPROVE (draft-trust, strongest so far): Fredholm.lean proves the unilateral-shift kernel-index -1 on the GENUINE l2(Nat,C) - rightShift/leftShift as bounded ops, genuine l2 adjoint (rightShift^H=leftShift), dim ker S=0, dim ker S^H=1, shiftIndex=-1; controls +1/0; 7 standard-three guards; honest scope (names missing coker=ker(adjoint) API). Independent build EXIT=0. Real upgrade from finite precursor. Artifact: AutonomousLab/reviews/CLAUDE_REVIEW_HalfSpaceFredholmIndex_2026-07-14.md"
+    },
+    {
+      "id": "f0d38cd0-cdec-46ef-800b-b588e3e07740",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "codex-3plus1-multiplet-first-grand-strategy",
+      "status": "running",
+      "submitted_at": "2026-07-13T14:43:26-07:00",
+      "notes": "Lateral pivot from isolated anomalous Weyl to anomaly-free Standard Model multiplet; request exact finite target/mirror Fock gap witness or sharp missing axiom, with symmetry and semantic audits. [2026-07-13T15:17:45-07:00 codex] Integrated semantically narrowed four-state bilinear no-go/vacuity control as TargetMirrorBilinearNoGo.lean; targeted replay passed; does not establish SM anomaly cancellation or thermodynamic mirror gap. [2026-07-13T19:13:12-07:00 codex] Successor 99019b27 is a whole-program continuum/3+1 grand-strategy audit with theorem chains, kill conditions, manuscript claim ladder, and six dependency-ordered jobs. [2026-07-13T19:26:51-07:00 codex] Grand strategy 99019b27 harvested; ranked inflow > SMG > transported-frame and identified Pluecker-HNU intertwiner as the missing ontology-to-regulator bridge. [2026-07-13T19:27:40-07:00 codex] Successor c9f31d7f targets the nonvacuous Pluecker-HNU intertwiner or a sharp missing-data theorem, closing the ontology-to-regulator gap identified by grand synthesis. [2026-07-13T20:26:34-07:00 codex] Harvested c9f31d7f HNU-Pluecker candidate; direct replay passed. Integrating only reviewed subset through live imports; fake phase-covariance and forced/canonical prose rejected. [2026-07-13T20:26:53-07:00 codex] Task 82733834 queued: classify complete HNU-Pluecker intertwiner moduli, normalized locus, and prove/no-go canonical selection from Clifford equations alone."
+    },
+    {
+      "id": "c626cb61-f1db-49ff-aa41-a9d96e9152ad",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Adversarial anomalous-Floquet 3+1 audit",
+      "status": "running",
+      "submitted_at": "2026-07-13T14:18:24-07:00",
+      "notes": "Red-team determinant doubling, gap tags, topology category, null semantics, and boundary limit. [2026-07-13T16:05:13-07:00 codex] Adversarial HNU audit harvested. Its corrected SU(2) endpoint, zero/pi census, and scalar-winding obstruction agree with already integrated HNUExactCore; W=1 and half-space spectrum remain open. [2026-07-13T17:45:44-07:00 codex] Successor task 29712ef5-7778-455e-b9b8-416d9ec25ac7 queued: SU(2) nonzero fixed-vector rigidity plus exact HNU zero-quasienergy census. [2026-07-13T18:12:17-07:00 codex] Task 29712ef5 completed; local module replay passes and independent Claude mailbox review msg-20260713-181005-82c58238 is pending before aggregate integration. [2026-07-13T18:30:07-07:00 codex] Successor 5a562c93 targets exact HNU infrared directional and combined Weyl tangent with sign/normalization controls. [2026-07-13T19:09:11-07:00 codex] HNUInfraredTangent downloaded and sent for independent semantic review. [2026-07-13T19:11:35-07:00 codex] Successor 10a6436c composes exact HNU infrared derivative with Jacobian orientation and the Weyl sphere-charge adapter. [2026-07-13T19:18:56-07:00 codex] Task 5a562c93 independently approved and integrated as HNUInfraredTangent; successor 10a6436c remains active on exact Weyl charge composition. [2026-07-13T19:30:36-07:00 codex] Task 10a6436c completed and candidate downloaded; independent semantic review requested before integration. [2026-07-13T19:32:27-07:00 codex] Task 9bf9df60 submitted: adversarial HNU local/global charge consistency and missing-adapter theorem. [2026-07-13T19:57:24-07:00 codex] HNU exact tangent/local charge module integrated and independently reviewed; latest local/global successor returned no new candidate. Conditional local-to-global partner composition landed separately in HNULocalChargeBalance pending Claude semantic review. [2026-07-13T19:57:54-07:00 codex] Successor launched: exact HNU global zero/pi charge ledger or sharp endpoint-data insufficiency theorem, with nonvacuity control. [2026-07-13T20:52:28-07:00 codex] Integrated and independently approved global zero/pi endpoint ledger; successor launched for exact pi-face tangent-kernel/rank obstruction and nodal-surface classification."
+    },
+    {
+      "id": "a8178bce-aebf-40b1-98a1-b85869538183",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Half-space bulk-edge theorem architecture",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T14:18:24-07:00",
+      "notes": "Fredholm/Toeplitz or relative boundary invariant respecting finite cancellation no-gos. [2026-07-13T15:13:14-07:00 codex] Integrated as semantically narrowed HalfSpaceRelativeFlow.lean; no Fredholm/spectral-flow/bulk-edge claim; central flagship guard passed."
+    },
+    {
+      "id": "73a1d386-9910-493b-84b2-1867bdf6ef2e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact HNU endpoint degree-one attack",
+      "status": "running",
+      "submitted_at": "2026-07-13T14:18:24-07:00",
+      "notes": "Exact degree of T3 to SU2 or a precise topology API handoff; no finite surrogate. [2026-07-13T16:50:44-07:00 codex] Returned local-orientation and conditional-degree pillars; exact global degree remains unproved. [2026-07-13T17:46:25-07:00 codex] Successor task ba73ed6f-e5dd-4c2b-b117-277bd9aeec99 queued: SU(2) nonzero -1 eigenvector rigidity and exact HNU pi census. [2026-07-13T18:26:13-07:00 codex] SU2 -1 rigidity and HNU pi eigenspace census completed and downloaded; cross-review pending msg-20260713-182552-3e0d2a5b. [2026-07-13T18:30:55-07:00 codex] Successor 5780bc23 targets actual HNU compact-momentum one-step O(eps^2) and unitary-telescoped many-step O(1/n) continuum bound. [2026-07-13T20:56:36-07:00 codex] Task 5780bc23 completed fixed-momentum HNU O(eps^2) one-step and O(1/n) many-step theorem on equivalent standalone core. Harvested; independent semantic review requested. Successor launched to port exact theorem to live HNUExactCore endpoint with explicit factorization/equality bridge."
+    },
+    {
+      "id": "e61eeec5-b470-4d01-a3fd-3f79d8b489ee",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Localized half-space Toeplitz defect precursor",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T14:18:23-07:00",
+      "notes": "Focused matrix package; isolate rank-one source defect despite global cutoff cancellation. [2026-07-13T14:47:26-07:00 codex] Integrated HalfSpaceDefectIndex.lean. Exact +1 source/-1 far-cutoff defect for N>=1, global cancellation, fixed-window +1 stabilization, permutation zero control. Aristotle caught false N=0 original. Live replay and local guards pass; no Fredholm or bulk-edge claim."
+    },
+    {
+      "id": "4edbc70c-620c-424d-8895-0a83581753c3",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Spin-blind finite-schedule collapse and derivative bridge",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T14:18:23-07:00",
+      "notes": "Focused Mathlib package; prove actual schedule collapses to scalar phase times fixed coin. [2026-07-13T14:41:04-07:00 codex] Integrated as SpinBlindScheduleCollapse.lean; live replay and targeted build pass; exact schedule collapse plus analytic derivative bridge; nonidentity witness and local axiom guards included."
+    },
+    {
+      "id": "42a7df94-b0a4-4e03-af13-6683e0e09006",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Localized boundary-index strategy beyond finite trace cancellation",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T13:30:40-07:00",
+      "notes": "Choose causal-region relative, stabilized, or half-space index; correct dimensionality; return viable definition/theorem ladder or scoped no-go/missing API. [2026-07-13T14:15:54-07:00 codex] Integrated finite-permutation cancellation theorem and retained strategy report as non-theorem guidance."
+    },
+    {
+      "id": "2e6452db-3be3-4383-90bf-bc4be6680fd2",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Finite global transport-trace no-go and local cancellation witness",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T13:30:06-07:00",
+      "notes": "Prove Tr(U^*PU-P)=0 for finite unitary U plus explicit two-site nonzero local/opposite-flow witness; forces localized or infinite-volume boundary index. [2026-07-13T14:15:54-07:00 codex] Integrated global finite transport-trace cancellation and local nonzero witness."
+    },
+    {
+      "id": "ba414c3d-ba06-4a6e-abca-7f677f56d7a0",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Projector-conditioned shift fixed-coin irreducibility",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T13:25:34-07:00",
+      "notes": "Exact scoped no-factorization at phases +1/-1; selected rank-one witness; distinguishes HNU primitive from spin-blind scalar shift plus fixed coin. [2026-07-13T14:15:54-07:00 codex] Integrated fixed-coin irreducibility theorem for projector-conditioned shifts."
+    },
+    {
+      "id": "847494db-4bfe-4d09-adcb-e6a78a721c8a",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Reflecting-boundary single-cycle transport-zero control",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T13:24:15-07:00",
+      "notes": "Prove exact conjugacy of step to addition-one on Fin(2*(N+1)), transitivity, full period, and nonvacuous witness. [2026-07-13T14:15:54-07:00 codex] Integrated exact reflecting-cycle conjugacy, transitivity, and period control."
+    },
+    {
+      "id": "7a32903a-fe13-4187-9f28-0b830488ba28",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Non-definitional gap-tagged zero/pi Weyl balance",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T13:00:36-07:00",
+      "notes": "Focused package: AgentTasks/aristotle-submit/afpl-gap-tagged-weyl-balance-20260713 [2026-07-13T15:17:45-07:00 codex] Harvested gap-tagged HNU package. Exact endpoint/census overlaps HNUExactCore; W=1, Chern, schedule-field remain named conditional Props. Retained as design input, not yet integrated."
+    },
+    {
+      "id": "92acf509-c5da-45f8-84e2-324935d0fb3e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Weyl determinant sign to enclosing-sphere degree/Chern bridge",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T13:00:36-07:00",
+      "notes": "Focused package: AgentTasks/aristotle-submit/afpl-weyl-sphere-charge-bridge-20260713 [2026-07-13T14:15:54-07:00 codex] Integrated finite Weyl/Pauli algebra; degree and Chern endpoints remain explicitly conditional."
+    },
+    {
+      "id": "feb6f8e0-f83d-4b5f-9134-7c3a5c96a444",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Generic projector-conditioned unitary shift and sector controls",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T13:00:36-07:00",
+      "notes": "Focused package: AgentTasks/aristotle-submit/afpl-projector-conditioned-step-20260713 [2026-07-13T13:28:47-07:00 codex] Direct replay passed; integrated ProjectorConditionedStep with exact selected/complement action, unitarity, and nontrivial witness."
+    },
+    {
+      "id": "34409cf4-8202-404b-aefd-f528046b06a3",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Spin-blind scalar-shift winding-density obstruction",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T12:51:28-07:00",
+      "notes": "Standalone Mathlib proof package: AgentTasks/aristotle-submit/afpl-spinblind-winding-obstruction-20260713 [2026-07-13T13:28:47-07:00 codex] Direct replay passed; integrated pointwise scalar-log-derivative antisymmetrized-cubic obstruction plus nonzero Pauli control; prose narrowed to assumed scalar derivative form."
+    },
+    {
+      "id": "510857de-e789-4e2d-89ed-1f58044381dd",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact HNU single-Weyl Floquet algebra, trace, and census",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T12:51:28-07:00",
+      "notes": "Standalone Mathlib proof package: AgentTasks/aristotle-submit/afpl-hnu-exact-core-20260713 [2026-07-13T15:13:14-07:00 codex] Integrated as HNUExactCore.lean after semantic audit; targeted replay and central flagship guard passed."
+    },
+    {
+      "id": "10a7109d-135f-4e55-af89-06a0b3cdcc2c",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Corrected propositional micromotion-observable independent replay",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T12:35:34-07:00",
+      "notes": "Proof-complete v2 after rejecting Boolean inequality target; independent unchanged replay and audit that observable is basis-invariant but not winding. [2026-07-13T12:53:34-07:00 codex] Corrected propositional micromotion replay passed independently; live adapted module already integrated and aggregate-built."
+    },
+    {
+      "id": "4d78ebba-67b7-4b1c-86fc-72a8e21ef6ba",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Corrected propositional Weyl-charge independent replay",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T12:35:33-07:00",
+      "notes": "Proof-complete v2 after rejecting Boolean inequality target; independent unchanged replay and semantic determinant-sign audit. [2026-07-13T12:53:34-07:00 codex] Corrected propositional Weyl-charge replay passed with concrete det +/-1 witnesses; live adapted module already integrated."
+    },
+    {
+      "id": "6ef617a4-a5a1-4d57-8a13-b9484257ce94",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Three-dimensional open-boundary Weyl lift or scoped no-go",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T12:22:14-07:00",
+      "notes": "Construction job composing reflecting boundary memory with Pauli channels; exact locality/unitarity, causal interior equality, tangent charge, and boundary-mode accounting required. [2026-07-13T14:41:10-07:00 codex] Integrated as OpenBoundaryWeyl3DLift.lean after semantic narrowing: exact local/unitary finite 3D Pauli lift and bare reflecting-shift control only; no minimality, Weyl charge, full-U3 boundary spectrum, or continuum tangent claim. Live replay and targeted build pass."
+    },
+    {
+      "id": "ba61cbed-a25d-4cad-88d8-f350a3b7a194",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Finite noncommutative micromotion winding design",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T12:22:13-07:00",
+      "notes": "Strategy job for integer-valued finite T3xS1 invariant, gauge invariance, explicit witness, and tagged-charge balance. Determinant-only output rejected. [2026-07-13T12:54:31-07:00 codex] Design harvested; Lean payload rejected for integration: balance is definitional, no gap-tagged schedule bridge, major proofs use compiler trust. See CODEX_AUDIT_MICROMOTION_WINDING_2026-07-13.md."
+    },
+    {
+      "id": "74fdf32e-1c28-458b-b378-7e5002920abb",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact published single-Weyl Floquet reconstruction and null audit",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T12:22:13-07:00",
+      "notes": "Strategy/construction job using HNU and Bessho-Sato theorem shapes; requires explicit substeps, zero/pi census, winding, and primitive-null compatibility verdict. [2026-07-13T12:50:15-07:00 codex] Downloaded exact HNU reconstruction and verification scripts; route memo updated. No Lean theorem integration yet."
+    },
+    {
+      "id": "4770da4b-f70b-433b-86fe-53fa6abd812e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Basis-invariant equal-endpoint micromotion observable",
+      "status": "cancelled",
+      "submitted_at": "2026-07-13T12:17:18-07:00",
+      "notes": "Focused AF0.5 anti-collapse fixture; first-pulse trace invariant under unitary conjugation and distinguishes pulse/idle loops. Explicitly not a winding number. [2026-07-13T12:34:46-07:00 codex] Cancelled after semantic pre-landing audit found Boolean != coercion in the distinct-micromotion target. Corrected to propositional not-equal; local proof passes with standard guards; corrected replay job will be submitted."
+    },
+    {
+      "id": "85798492-c0be-43d3-87cc-374d5ae75f32",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Strictly local open-boundary reflecting QCA seed",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T12:17:18-07:00",
+      "notes": "Focused boundary-memory permutation; exact inverse, locality, and interior chiral transport. No Weyl/no-doubling claim. [2026-07-13T12:50:15-07:00 codex] Cross-reviewed and integrated as OpenBoundaryReflectingShift.lean; targeted and aggregate builds passed."
+    },
+    {
+      "id": "c22b5827-3041-410f-935b-b61a0f4f805e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Local Weyl orientation-charge transformation laws",
+      "status": "failed",
+      "submitted_at": "2026-07-13T12:17:18-07:00",
+      "notes": "Focused AF2 package; canonical charge, proper-frame invariance, reflection sign flip, positive scaling. No global census claim. [2026-07-13T12:34:45-07:00 codex] Rejected before harvest: target used Boolean != coercion instead of propositional inequality in Nondegenerate. Local semantic audit corrected to propositional not-equal and independently proved all statements; corrected replay job will be submitted."
+    },
+    {
+      "id": "cdcc00ba-0380-49ea-8a9a-7f6d8a6a349c",
+      "work_item_id": "LAB-BOOTSTRAP-001",
+      "title": "Pi-flux 3+1 construction and full zero/pi census",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T09:21:36-07:00",
+      "notes": "Lateral position-dependent cocycle route; accepts construction, scoped no-go, or sharpened missing hypothesis; rejects sampled census and pi-relocated partners. [2026-07-13T10:04:01-07:00 codex] Direct replay passed; PiFlux3Plus1Census gives exact finite magnetic-translation spectral doubling. Claude semantic review pending before integration. [2026-07-13T10:07:09-07:00 codex] Successor launched in same project: gauge-covariant intertwiner cocycle classification plus explicit symmetry-breaking decoder and full zero/pi census. [2026-07-13T13:24:15-07:00 codex] Integrated GaugeTwistedMagneticDecoder after direct replay and semantic narrowing; finite 1+3 magnetic-cell control only."
+    },
+    {
+      "id": "d2d33e0e-5e13-4079-855d-c3ee92441114",
+      "work_item_id": null,
+      "title": "Finite-depth null microsteps with longer effective range",
+      "status": "deferred",
+      "submitted_at": "2026-07-13T08:58:37-07:00",
+      "notes": "NE-3PLUS1-NR-001 lateral strategy/construction: preserve null nearest-neighbor substeps, use mixed-axis effective Laurent support, require zero+pi census. [2026-07-13T12:12:30-07:00 codex] Three-hour stall snapshot preserved at AgentTasks/aristotle-output/stall-review-20260713-1220; the two derivative holes in NullMicrostepHyperdiamond remain unchanged. Broad route stopped; rescope to smaller exact crossing/charge lemmas."
+    },
+    {
+      "id": "550cdd51-27ef-4c39-ab0e-b8493fa6ed37",
+      "work_item_id": null,
+      "title": "Position-dependent pi-flux magnetic-translation seed",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T08:35:05-07:00",
+      "notes": "Prove exact nonconstant cocycle, anticommuting finite shifts, bijectivity, and no-global-sign control. Minimal local seed for twisted 3+1 decoder; no census claim. [2026-07-13T09:19:38-07:00 codex] Downloaded; local Lean replay passed; awaiting independent Claude semantic review before integration. [2026-07-13T09:30:53-07:00 codex] Cross-family review ACCEPT; production module integrated and locally replayed. Scope remains 2D cocycle seed only."
+    },
+    {
+      "id": "220ea441-4a50-44db-be0b-663057542273",
+      "work_item_id": null,
+      "title": "Gauge-twisted flavor translation escape or no-go",
+      "status": "cancelled",
+      "submitted_at": "2026-07-13T08:09:15-07:00",
+      "notes": "Cancelled immediately after a cross-agent submission race would have exceeded fleet cap 8. Preserve prompt as next successor; Claude's signed flavor-cover Clifford decoder 5ed47bad may overlap."
+    },
+    {
+      "id": "5ed47bad-6557-4c68-ac6b-bacfc0a84142",
+      "work_item_id": null,
+      "title": "Signed flavor-cover Clifford decoder",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T08:08:36-07:00",
+      "notes": "Lateral 3+1 DK0 route: unsigned Z2^3 deck action versus Jordan-Wigner-signed Clifford lift, with explicit negative controls. Task note AgentTasks/clifford-cover-decoder-aristotle-2026-07-13.md. [2026-07-13T08:35:05-07:00 codex] Fleet IDLE; archive downloaded. Signed Clifford core complete, false vacuum witness correctly replaced by occupied-mode witness; independent Codex review/integration pending. [2026-07-13T09:03:06-07:00 codex] Cross-family reviewed; production module and guard wired. Exact regular deck versus Jordan-Wigner Clifford action; no decoder claim."
+    },
+    {
+      "id": "e4fb5dcd-9415-42f1-aadc-a6e7bc630cfd",
+      "work_item_id": null,
+      "title": "Universal 3+1 Brillouin degree balance or missing-hypothesis theorem",
+      "status": "deferred",
+      "submitted_at": "2026-07-13T08:08:30-07:00",
+      "notes": "Successor to strict frontier bafdd210; attacks admissible_doubling via canonical integer chirality/degree and Brillouin-zone balance, or returns exact counterexample/minimal missing hypotheses. [2026-07-13T12:12:31-07:00 codex] Three-hour stall snapshot preserved at AgentTasks/aristotle-output/stall-review-20260713-1220; universal admissible_doubling remains the sole proof hole. Broad degree-balance search stopped; retain as mapped missing-hypothesis frontier."
+    },
+    {
+      "id": "52a3a73b-e86e-4d2b-9810-853227487171",
+      "work_item_id": null,
+      "title": "QCA eight-cover to octonion XOR flavor bridge",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T08:00:30-07:00",
+      "notes": "Lateral 3+1 F0/F1 route; exact Z2^3 cover-to-octonion-label equivalence, regular deck action, multiplication-support bridge, and non-canonicity kill. Task note AgentTasks/qca-octonion-flavor-bridge-aristotle-2026-07-13.md. [2026-07-13T08:46:28-07:00 codex] Fleet IDLE; archive downloaded. All F0/F1 bridge proofs complete; independent Claude semantic/convention review requested before integration. [2026-07-13T09:03:06-07:00 codex] Claude ACCEPT; F3 boundary added; production XOR/octonion bridge and in-file axiom pins wired."
+    },
+    {
+      "id": "80dae4ce-9dde-4dff-850a-c86b703be771",
+      "work_item_id": "LAB-BOOTSTRAP-001",
+      "title": "General Sn quadratic-selector classification and phase diagram",
+      "status": "deferred",
+      "submitted_at": "2026-07-13T07:23:46-07:00",
+      "notes": "Dimension-independent successor to S3 classification; explicit empty/singleton controls and three transverse regimes. [2026-07-13T12:19:46-07:00 claude] 2h-stall rule (4h RUNNING at cap-8, blocking AF-ladder). Snapshot AgentTasks/aristotle-output/stall-snapshots-20260713/. Legit non-duplicative Sn selector target - resubmit as a smaller focused package per queue if still wanted. [2026-07-13T12:20:14-07:00 codex] Four-hour snapshot preserved at AgentTasks/aristotle-output/stall-review-20260713-1225; all ten GeneralSn target holes remain. Broad classification stopped; rescope to one theorem per focused package."
+    },
+    {
+      "id": "7f0c4cea-6a2b-4903-96ff-95886f9138b3",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Schwartz generator and PDE capstone",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T07:09:59-07:00",
+      "notes": "Task AgentTasks/afpl-schwartz-generator-pde-capstone-aristotle-2026-07-13.md; strongest honest exact-flow generator theorem. [2026-07-13T08:08:30-07:00 codex] Fleet IDLE; archive downloaded and extracted; pointwise Schwartz generator capstone complete, topology lift blocker explicit; awaiting cross-family review. [2026-07-13T09:03:06-07:00 codex] Claude ACCEPT; exact pointwise Schwartz generator/PDE capstone wired; Frechet topology blocker preserved."
+    },
+    {
+      "id": "799b9218-1fb2-43f6-a925-a5f34238c96b",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Noncommuting Gibbs variational uniqueness",
+      "status": "cancelled",
+      "submitted_at": "2026-07-13T07:09:59-07:00",
+      "notes": "Task AgentTasks/afpl-quantum-gibbs-variational-uniqueness-aristotle-2026-07-13.md; compose quantum Klein equality into strict free-energy uniqueness. [2026-07-13T12:19:48-07:00 claude] 2h-stall rule (5h RUNNING). Snapshot preserved. DUPLICATES landed claude jobs c35c62e5/07f05e60/5c0fa5d3 + 293198fd (Klein + Gibbs variational) - do NOT resubmit; assemble the strict-uniqueness corollary from landed equality-iff. [2026-07-13T12:20:14-07:00 codex] Five-hour snapshot preserved. Cancelled after cross-family duplication audit: landed quantum Klein equality plus Gibbs free-energy identities already imply the intended strict-uniqueness corollary; assemble locally instead of re-deriving."
+    },
+    {
+      "id": "81bc8433-2f6a-4c6f-a39e-66588595d2a0",
+      "work_item_id": "LAB-BOOTSTRAP-001",
+      "title": "Exhaustive S3 quadratic-selector phase diagram",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T06:45:30-07:00",
+      "notes": "Focused successor to 909624b6. Target typechecks with exactly three proof holes: exact transverse ray, unbounded-below negative regime, and three-regime capstone. [2026-07-13T07:22:32-07:00 codex] Downloaded, local replay and guarded targeted build passed; independent review requested. [2026-07-13T07:31:16-07:00 codex] Cross-family ACCEPT; imported and aggregate guard-pinned; lake build PhysicsSMDraft passed 9212 jobs."
+    },
+    {
+      "id": "d5df5530-4b14-4891-b358-bfa88f57bdce",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Compact-support L2 generator and strong derivative",
+      "status": "running",
+      "submitted_at": "2026-07-13T06:34:25-07:00",
+      "notes": "Focused successor to stalled full graph-domain job 864c1c0d. Task: AgentTasks/afpl-compact-support-l2-generator-aristotle-2026-07-13.md; package: AgentTasks/aristotle-submit/afpl-compact-support-l2-generator-20260713-project. [2026-07-13T09:58:32-07:00 codex] Two-hour stall rule: in-progress snapshot retained all target proof holes; no new compact-support generator theorem harvested. Split into a smaller focused successor. [2026-07-13T09:59:03-07:00 codex] Resubmitted inside existing project as a focused four-lemma finite-dimensional norm/continuity rung; full L2 derivative explicitly deferred. [2026-07-13T11:11:22-07:00 codex] Downloaded completed focused successor. Four finite-dimensional norm/continuity theorems proved and standard-three guarded; seven later MemLp/derivative/witness holes remain. Cross-family review msg-20260713-110830-976eb9a6 pending before any live integration. [2026-07-13T11:11:52-07:00 codex] Focused analytic successor launched: Duhamel multiplier bound, uniform slope domination, and bounded-support genMult MemLp only. Strong derivative and witness remain excluded. [2026-07-13T13:24:15-07:00 codex] Six-hour stall canceled after partial snapshot harvest. Finite-dimensional prefix landed previously; four analytic proof holes remain in draft CompactSupportL2Generator. [2026-07-13T14:43:48-07:00 codex] Continued as focused compact-support witness closure: ballWitness_boundedSupport and ballWitness_ne_zero only, with explicit a.e.-quotient/nonvacuity audit. [2026-07-13T15:40:37-07:00 codex] Closed and guard-pinned both compact ball witness lemmas locally. Canceled obsolete witness task 44c861cb and continued project on Duhamel bound momMult_sub_id_norm_le plus slope_norm_le with updated file. [2026-07-13T18:12:17-07:00 codex] Two-hour task 477b8bff cancelled after snapshot showed both final holes unchanged. Successor task 01d71970 uploaded current live file and targets only orbit_slope_tendsto."
+    },
+    {
+      "id": "bafdd210-8a19-4030-af30-184c97865756",
+      "work_item_id": null,
+      "title": "Strict local 3+1 construction or scoped no-go frontier",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T06:17:36-07:00",
+      "notes": "Frontier task pending dedicated work-item registration: AgentTasks/afpl-strict-3plus1-frontier-aristotle-2026-07-13.md; package: AgentTasks/aristotle-submit/afpl-strict-3plus1-frontier-20260713-project [2026-07-13T08:08:30-07:00 codex] Fleet IDLE; strict local 3+1 frontier archive downloaded. Scoped determinant no-go complete; universal admissible_doubling remains one explicit proof hole. [2026-07-13T08:08:59-07:00 codex] Downloaded and inspected. Landed scoped determinant-level frontier theorems and an AdmissibleWalk inhabitant; one explicit universal admissible_doubling proof hole remains. Output AgentTasks/aristotle-output/bafdd210-8a19-4030-af30-184c97865756/. Not integrated pending source replay and cross-family review."
+    },
+    {
+      "id": "686f31b0-39c5-4997-a687-966f2394708c",
+      "work_item_id": "LAB-BOOTSTRAP-001",
+      "title": "Information-natural decomposition selector or no-go design",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T06:14:58-07:00",
+      "notes": "Task: AgentTasks/afpl-information-selector-strategy-aristotle-2026-07-13.md; package: AgentTasks/aristotle-submit/afpl-information-selector-strategy-20260713-project [2026-07-13T08:00:30-07:00 codex] Aristotle fleet reports IDLE; archive downloaded and extracted; awaiting independent Claude semantic review before integration. [2026-07-13T08:19:26-07:00 codex] Independent Claude ACCEPT; new ChannelInformationSelectorClassification module copied and wired into root+aggregate. Targeted Lean replay/build passed. Stale returned aggregate guard rejected."
+    },
+    {
+      "id": "180406b2-61c5-4d07-bf0d-43225dff2b47",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Adversarial all-time position Dirac PDE theorem design",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T06:14:51-07:00",
+      "notes": "Task: AgentTasks/afpl-continuum-pde-audit-aristotle-2026-07-13.md; package: AgentTasks/aristotle-submit/afpl-continuum-pde-audit-20260713-project [2026-07-13T09:58:32-07:00 codex] Two-hour stall rule: harvested adversarial PDE memo and all-time pointwise generator theorem; cancelled remaining broad job. Returned proof failed live replay and was repaired locally; awaiting Claude review. [2026-07-13T09:59:19-07:00 codex] Resubmitted inside existing project as a focused static Schwartz scaffold: temperate generator symbol plus Fourier generator identity, no time-derivative claim. [2026-07-13T12:12:31-07:00 codex] Stall snapshot contains a complete FourierDiracSchwartzCapstone successor; exact live-repo replay passed. Running task cancelled after proof preservation. Independent Claude semantic review required before integration."
+    },
+    {
+      "id": "2963f848-9876-435f-af9f-e9dc68021d7b",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Lean-ready genuine pinching-channel DPI design",
+      "status": "cancelled",
+      "submitted_at": "2026-07-13T06:14:46-07:00",
+      "notes": "Task: AgentTasks/afpl-pinching-dpi-strategy-aristotle-2026-07-13.md; package: AgentTasks/aristotle-submit/afpl-pinching-dpi-strategy-20260713-project [2026-07-13T12:19:50-07:00 claude] 2h-stall rule (6h RUNNING). Snapshot preserved. DPI already in PhysLean QuantumInfo (DQ-008, docs/EXTERNAL_LEAN_SOURCES.md) - do NOT resubmit; clean-room port unless a null-edge-specific pinching angle exists. [2026-07-13T12:20:15-07:00 codex] Six-hour snapshot preserved. Cancelled after duplication audit: PhysLean/lean-quantum already supplies general quantum DPI theorem shape; any future job must isolate a Null-Edge-specific pinching statement."
+    },
+    {
+      "id": "b064c004-2bd9-4c3a-8e86-064b65300def",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Position Dirac generator packaged as a Schwartz CLM",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T06:10:24-07:00",
+      "notes": "T2-A target typechecks with three holes; packages exact -i/(2*pi) differential operator and Fourier symbol; no time-derivative or lattice-limit claim. [2026-07-13T07:06:36-07:00 codex] Downloaded, local replay and guarded targeted build passed; cross-family review requested. [2026-07-13T07:19:48-07:00 codex] Cross-family ACCEPT; imported and aggregate guard-pinned; lake build PhysicsSMDraft passed 9211 jobs."
+    },
+    {
+      "id": "293198fd-5aa5-4336-b589-9aa8c1893774",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "General noncommuting quantum Klein equality and strictness",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T06:00:45-07:00",
+      "notes": "Three-hole target typechecks; scalar equality input locally replayed; reconstructs matrix equality through spectral-overlap intertwining without simple-spectrum assumptions. [2026-07-13T07:06:36-07:00 codex] Downloaded, local replay and guarded targeted build passed; cross-family review requested. [2026-07-13T07:19:48-07:00 codex] Cross-family ACCEPT; imported and aggregate guard-pinned; lake build PhysicsSMDraft passed 9211 jobs."
+    },
+    {
+      "id": "909624b6-0c1f-4a26-b2e2-d9d7492a9e02",
+      "work_item_id": "LAB-BOOTSTRAP-001",
+      "title": "Full S3-invariant quadratic channel-selector classification",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T05:53:42-07:00",
+      "notes": "Target typechecks with exactly three draft proof holes; classifies six coefficients and fixed-total selector; package afpl-s3-quadratic-selector-20260713-project. [2026-07-13T06:45:22-07:00 codex] All three immutable proofs completed and replayed locally. Live guarded candidate S3QuadraticSelectorClassification staged and sent for Claude-family semantic review. [2026-07-13T07:01:45-07:00 codex] Cross-family ACCEPT; imported into PhysicsSMDraft and guarded; lake build PhysicsSMDraft passed 9209 jobs."
+    },
+    {
+      "id": "0775680f-a405-4e61-9072-0a4433624258",
+      "work_item_id": "L0-DIST-001",
+      "title": "Marked finite-Poisson configuration invariance under equivariant decoration",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T05:51:30-07:00",
+      "notes": "Target typechecks with exactly two draft proof holes; full-project package afpl-marked-poisson-config-20260713-project; complete marked configuration law, explicit decoration debt. [2026-07-13T06:17:31-07:00 codex] Aristotle completed both immutable proof holes; result downloaded to AgentTasks/aristotle-output/0775680f-a405-4e61-9072-0a4433624258 for local replay and semantic review. [2026-07-13T06:53:39-07:00 codex] Claude-family adversarial audit ACCEPT. MarkedPoissonConfigurationInvariance is live, PhysicsSMDraft imported, and aggregate guard pinned. SPL-free 9207-job PhysicsSMDraft build passes."
+    },
+    {
+      "id": "86fec90b-ea6c-4454-938f-2ccd763c6e45",
+      "work_item_id": "LAB-BOOTSTRAP-001",
+      "title": "Grand strategy: next theorem frontier after current wave",
+      "status": "harvested",
+      "submitted_at": "2026-07-13T05:38:34-07:00",
+      "notes": "Portfolio-wide Oracle/Assassin audit; ranks next theorem rungs and prepares top-three Lean briefs without duplicating active jobs. [2026-07-13T05:43:17-07:00 codex] Confirmed RUNNING via Aristotle CLI. [2026-07-13T06:09:58-07:00 codex] Grand strategy memo downloaded; ranked 12 targets and top launch order; used to prepare next proof wave."
+    },
+    {
+      "id": "debcfc09-3a35-4091-be59-97335fa521bd",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Exact Dirac time group on Schwartz spinors",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T05:25:08-07:00",
+      "notes": "Target typechecks with exactly three draft proof handoff markers; composes temperate growth with pointwise time group. [2026-07-13T06:10:08-07:00 codex] Complete proof downloaded, replayed, and placed in ExactFlowSchwartzGroup with guards; cross-family semantic review pending. [2026-07-13T06:53:27-07:00 codex] Claude-family adversarial audit ACCEPT. ExactFlowSchwartzGroup is live, PhysicsSMDraft imported, and aggregate guard pinned. SPL-free 9207-job PhysicsSMDraft build passes."
+    },
+    {
+      "id": "be3e675b-9c6e-47d3-aa40-ae51042cc427",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Scalar doubly-stochastic Klein equality core",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T05:16:04-07:00",
+      "notes": "Focused resubmission after ac779534 stalled; isolates zero-lambda strictness lemma from matrix reconstruction. [2026-07-13T05:25:08-07:00 codex] Confirmed RUNNING via Aristotle CLI. [2026-07-13T05:59:39-07:00 codex] Complete proof downloaded and replayed locally; draft module ScalarKleinEqualityCore landed with two standard-three guards; cross-family semantic review requested. [2026-07-13T06:28:22-07:00 codex] Claude-family adversarial audit ACCEPT; live ScalarKleinEqualityCore is imported by PhysicsSMDraft and pinned in OvernightTheoryAxiomGuard. Targeted module and 8436-job aggregate guard build pass."
+    },
+    {
+      "id": "e2cc5463-a4f5-4f23-9a4a-a16592cffc22",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Equal-local-magnitude gauge-invariant phase interferometer",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T05:12:14-07:00",
+      "notes": "Finite U1 operational discriminator: equal edge magnitudes, distinct exact loop interference scores 4 vs 2. [2026-07-13T05:25:08-07:00 codex] Confirmed RUNNING via Aristotle CLI. [2026-07-13T05:43:17-07:00 codex] Proof-complete download replayed and guard-pinned live; Claude semantic review requested. [2026-07-13T06:28:27-07:00 codex] Claude-family adversarial audit ACCEPT; EqualMagnitudePhaseInterferometer is live, draft-aggregate imported, and axiom-guard pinned. Targeted module and 8436-job aggregate guard build pass."
+    },
+    {
+      "id": "aa1888ab-da73-4c45-9c82-bafcee4907ed",
+      "work_item_id": "L0-DIST-001",
+      "title": "Deterministic decoration law invariance iff equivariance",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T05:09:43-07:00",
+      "notes": "Full-support PMF law-level classification; graph support bridge plus both directions and constant control. [2026-07-13T05:25:08-07:00 codex] Confirmed RUNNING via Aristotle CLI. [2026-07-13T05:43:17-07:00 codex] Proof-complete download replayed and guard-pinned live; Claude semantic review requested. [2026-07-13T06:28:32-07:00 codex] Claude-family adversarial audit ACCEPT; DeterministicDecorationEquivariance is live, draft-aggregate imported, and axiom-guard pinned. Targeted module and 8436-job aggregate guard build pass."
+    },
+    {
+      "id": "c8b815ee-f0fa-44ca-af6d-2ad3cf4bae86",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Exact Schwartz-domain Fourier-to-Dirac generator-symbol capstone",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T05:07:11-07:00",
+      "notes": "Project package afpl-fourier-dirac-schwartz-capstone-20260713-project; explicit Mathlib 2*pi convention, three derivatives, and mass term. [2026-07-13T05:25:08-07:00 codex] Confirmed RUNNING via Aristotle CLI. [2026-07-13T06:10:13-07:00 codex] Complete proof downloaded, replayed, and placed in FourierDiracSchwartzCapstone with guards; cross-family semantic review pending. [2026-07-13T06:53:33-07:00 codex] Claude-family adversarial audit ACCEPT. FourierDiracSchwartzCapstone is live, PhysicsSMDraft imported, and aggregate guard pinned. SPL-free 9207-job PhysicsSMDraft build passes."
+    },
+    {
+      "id": "ad6685ad-2c7c-4563-9a95-2916b5fde8e6",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Exact momentum and Fourier-conjugated position L2 time-group capstone",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T04:56:43-07:00",
+      "notes": "Full project package AgentTasks/aristotle-submit/afpl-exact-flow-l2-group-capstone-20260713-project; five immutable quotient-safe group/inverse targets; context pack exact-flow-l2-group-20260713-20260713-045501.md. [2026-07-13T05:03:41-07:00 codex] Confirmed RUNNING in Aristotle fleet. [2026-07-13T05:37:20-07:00 codex] Proof-complete download replayed locally and guard-pinned live; urgent Claude review requested before integration. [2026-07-13T05:45:19-07:00 codex] Claude adversarial ACCEPT; local replay and targeted build passed; exact L2 group capstone landed with six standard-three guards."
+    },
+    {
+      "id": "ac97f093-2b43-4e74-b16b-feef9597d03f",
+      "work_item_id": "L0-DIST-001",
+      "title": "Explicit non-equivariant decoration symmetry-breaking counterexample",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T04:31:29-07:00",
+      "notes": "Mathlib-only adversarial companion package AgentTasks/aristotle-submit/l0-decoration-kill-20260713-project; explicit finite kill control split from canceled broad job 28e4ff06. [2026-07-13T04:35:22-07:00 codex] Confirmed RUNNING via aristotle list after focused submission. [2026-07-13T04:58:38-07:00 codex] Result harvested and banked; live scoped finite counterexample and guard pass direct Lean; Claude cross-family review ACCEPT."
+    },
+    {
+      "id": "0ab450fa-de04-4ae9-bb79-eb186f5172da",
+      "work_item_id": "L0-DIST-001",
+      "title": "Finite-volume mixed-Poisson configuration-law invariance",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T04:31:21-07:00",
+      "notes": "Mathlib-only package AgentTasks/aristotle-submit/l0-poisson-config-invariant-20260713-project; positive distributional Lorentz-strategy rung; replaces canceled broad job 28e4ff06. [2026-07-13T04:35:22-07:00 codex] Confirmed RUNNING via aristotle list after focused submission. [2026-07-13T05:03:41-07:00 codex] Completed result downloaded, theorem signatures preserved, direct Lean replay passed; live module and guards prepared, awaiting Claude review. [2026-07-13T05:25:09-07:00 codex] Kernel replay, guard build, and Claude semantic review ACCEPT msg-20260713-050656-485563f3."
+    },
+    {
+      "id": "7be67a65-d965-4ad4-8609-2bb723dc415a",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Focused Fourier coordinate-derivative symbol with explicit 2*pi",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T04:31:04-07:00",
+      "notes": "Mathlib-only package AgentTasks/aristotle-submit/cont-fourier-partial-standalone-20260713-project; immutable forward-transform sign and normalization; replaces canceled broad job 3b1fe9d3. [2026-07-13T04:35:22-07:00 codex] Confirmed RUNNING via aristotle list after focused submission. [2026-07-13T04:58:38-07:00 codex] Result harvested and banked; live module and guards pass direct Lean; Claude cross-family review ACCEPT."
+    },
+    {
+      "id": "864c1c0d-c6e6-485f-b657-3f6b9b6fe529",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Full L2 exact-flow generator graph-domain theorem",
+      "status": "cancelled",
+      "submitted_at": "2026-07-13T04:09:48-07:00",
+      "notes": "Eighth fleet slot. Prove strong derivative at zero of the exact momentum-space L2 unitary orbit on the natural graph domain G_m f in L2; compact-support dense-domain fallback only if the graph-domain theorem blocks. Explicitly excludes bounded-generator, operator-norm, Stone, Fourier/PDE, continuum, and Lorentz claims. Package afpl-l2-generator-domain-20260713-project; task note AgentTasks/afpl-l2-generator-domain-aristotle-2026-07-13.md. [2026-07-13T06:32:52-07:00 codex] Two-hour stall rule enforced. Current snapshot downloaded and inspected: no graph-domain declaration or partial L2 derivative theorem was present. Broad full-domain attempt canceled; successor will isolate the compact-momentum-support dense-domain rung."
+    },
+    {
+      "id": "c2da9ae1-b3ef-48a1-b2a8-e0d72f2f30b3",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Pointwise generator of exact Dirac momentum flow",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T03:26:00-07:00",
+      "notes": "Full-repo slim package afpl-exact-flow-generator-20260713-project. Two immutable targets: real-time derivative exactFlow*[-iH] and zero-time spinor action. Excludes full-L2 generator/domain, Fourier/PDE, continuum, and Lorentz claims. [2026-07-13T04:09:47-07:00 codex] Task COMPLETE; downloaded placeholder-free target and replayed both immutable theorems locally with lake env lean. Cross-family semantic review requested in msg-20260713-040526-c9e4dc1b before live promotion. [2026-07-13T04:17:16-07:00 codex] Promoted as PhysicsSM/Draft/NullEdge/ExactFlowGenerator.lean with module and aggregate axiom guards after Claude ACCEPT review; targeted Lean and 8426-job aggregate guard build passed."
+    },
+    {
+      "id": "65c69022-89c5-4356-af6e-1a8be96e2655",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Arbitrary-phase operator S2 capstone",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T03:11:47-07:00",
+      "notes": "Three-hole exact target: unitary entropy transport, general-z Gibbs optimizer at beta=-artanh(e)/norm(z), normalized energy, and modular-flow covariance. [2026-07-13T06:10:18-07:00 codex] Complete arbitrary-phase S2 proof downloaded and replayed; live integration and cross-family audit pending. [2026-07-13T07:01:45-07:00 codex] Cross-family ACCEPT; imported into PhysicsSMDraft and guarded; lake build PhysicsSMDraft passed 9209 jobs."
+    },
+    {
+      "id": "844d7dcd-25dd-4ace-9331-70e3f1f0531e",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Strong time continuity of exact momentum-space L2 multiplier",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T02:38:14-07:00",
+      "notes": "Full-repo slim package afpl-mom-mult-l2-strong-continuity-20260713-project. Three immutable targets: fibre zero-time identity, L2 zero-time identity, strong continuity of each orbit. Explicitly excludes operator-norm continuity and group/generator/Fourier/PDE claims. [2026-07-13T02:38:20-07:00 codex] External fleet reports RUNNING. [2026-07-13T03:26:53-07:00 codex] Returned source extracted through short path after Windows path-length failure; exact candidate replays cleanly; urgent cross-family semantic audit msg-20260713-032243-5ea6baa1 pending before promotion. [2026-07-13T03:38:21-07:00 codex] Cross-family audit msg-20260713-032659-ee19b530 accepted exact scope and DCT proof. Promoted as MomMultL2StrongContinuity; direct Lean, targeted 8047-job build, and aggregate 8424-job axiom guard pass."
+    },
+    {
+      "id": "0704b7da-df6b-4dba-bc5c-fc22168d931f",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Exact live Dirac flow time-group law",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T02:34:53-07:00",
+      "notes": "Full-repo slim package afpl-exact-flow-time-group-20260713-project. Three immutable targets: exactFlow(s+t)=exactFlow(s)*exactFlow(t), forward inverse, reverse inverse. Uses live exactFlow; no L2/strong-continuity/generator/Fourier/PDE claim. [2026-07-13T02:35:01-07:00 codex] External fleet reports RUNNING. [2026-07-13T04:47:36-07:00 codex] Proof-complete in-progress snapshot preserved at in-progress-snapshot-0438.zip; statement-identical target replayed locally and live module prepared. Aristotle packaging/build loop canceled after two-hour stall and timeout; cross-family semantic review pending before integrated status. [2026-07-13T04:58:38-07:00 codex] Snapshot harvested, statement-aligned, direct Lean check passed, Claude cross-family review ACCEPT."
+    },
+    {
+      "id": "63e6b14f-f7a1-4db8-a39d-a9c50971f5b9",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Variable pointwise L2 isometry composition",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T02:10:36-07:00",
+      "notes": "Mathlib-only focused package afpl-cont-l2-isometry-composition-20260713-project. Three immutable targets: quotient-safe L2 composition law, identity/identity control, negative-identity/negative-identity control. Builds locally under Lean 4.28. No multiplier group-law, Fourier, generator, or PDE claim. [2026-07-13T02:10:52-07:00 codex] External fleet reports RUNNING. [2026-07-13T02:36:15-07:00 codex] All three immutable targets replay placeholder-free with standard axioms; independent proof review requested before live promotion. [2026-07-13T02:55:44-07:00 codex] Reviewed quotient-safe composition theorem and identity/double-negative controls promoted to guarded live generic module; targeted and aggregate 8422-job builds pass."
+    },
+    {
+      "id": "1271173b-0275-4250-9a34-56fd7977649c",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Representative-safe variable pointwise L2 isometry lift",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T01:47:30-07:00",
+      "notes": "Mathlib-only focused package afpl-cont-mom-mult-l2-isometry-20260713-project. Four immutable targets: Lp linear isometry, ae coeFn contract, identity control, negative-identity control. Independently accepted by Claude message msg-20260713-013752-e2a76ef7. No surjectivity/Fourier/PDE claim. [2026-07-13T02:00:29-07:00 codex] All four immutable targets returned unchanged and placeholder-free; direct candidate replay passed. Independent proof review requested from Claude in msg-20260713-020012-5dc9ac53 before live promotion. [2026-07-13T02:24:22-07:00 codex] Accepted proof promoted as guarded VariablePointwiseL2Isometry; live exact multiplier L2 specialization and 8421-job aggregate guard pass."
+    },
+    {
+      "id": "1493c36f-ba69-4fd5-8bd4-cd4af517bc1e",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "afpl-projective-measurement-dpi-20260713",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T01:10:00-07:00",
+      "notes": "Focused projective-measurement quantum DPI in sigma eigenbasis; immutable target, equality boundary and nontrivial-control requirement. Submission project AgentTasks/aristotle-submit/afpl-projective-measurement-dpi-20260713-project. [2026-07-13T02:31:28-07:00 codex] Returned immutable target and helpers replay successfully in current repo (53.7s); candidate placeholder-free with standard warnings only. Cross-family semantic review requested before live promotion. [2026-07-13T02:55:44-07:00 codex] Reviewed projective reference-eigenbasis DPI promoted with self-equality control; targeted 8029-job and aggregate 8422-job builds pass. Scope excludes arbitrary CPTP and strict concrete qubit gap."
+    },
+    {
+      "id": "06176494",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Exact Dirac momentum multiplier temperate growth",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T00:47:00-07:00",
+      "notes": "Full id 06176494-1f12-439c-beb8-4468e7b142c6. Full-repo focused package afpl-cont-mom-mult-temperate-20260713-project. Immutable Function.HasTemperateGrowth target for the exact Dirac momentum multiplier; polynomial all-derivative bounds required, exponential-in-norm fallback explicitly rejected. Successor composes with pointwise isometry e790e78a; no L2/PDE overclaim. [2026-07-13T05:13:07-07:00 codex] Stopped after >4h stall; preserved snapshot with claimed complete temperate-growth proof for independent local build/audit. [2026-07-13T05:25:09-07:00 codex] Non-cancellable server job snapshot contained a complete kernel-checking proof; live integration pending urgent Claude semantic review msg-20260713-052004-6d2cabf2. [2026-07-13T05:33:00-07:00 codex] Kernel replay, targeted and aggregate guard builds, and Claude adversarial ACCEPT msg-20260713-052416-bb32d5e8; added fourth guard for zero-momentum control."
+    },
+    {
+      "id": "70a0d064",
+      "work_item_id": "GAUGE-YM-EGF-001",
+      "title": "Corrected rooted-touch normalization bridge R0",
+      "status": "integrated",
+      "submitted_at": "2026-07-13T00:02:00-07:00",
+      "notes": "Full id 70a0d064-e2b3-459a-9f9e-c144c8847b6a. Full-repo package gauge-rooted-touch-r0-20260713-project. Proves boundedTouchSum <= rootedTouchSum by factorial normalization; forbidden from using refuted unrooted recurrence. R1 and size-to-height remain separate. [2026-07-13T00:15:50-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T01:47:05-07:00 codex] Aristotle returned R0 unchanged; candidate has no placeholders and replayed successfully with lake env lean. Handoff to Claude work-item owner for semantic integration; do not copy returned stale aggregate guard. [2026-07-16T05:53:54-07:00 claude] R0 rooted-touch normalization bridge banked kernel-clean (standard three axioms, guard-pinned) per 07-13 ledger + DQ-009; work item moves to RED_TEAM awaiting codex skeptic review; R1 funding remains Director decision DQ-009 (default: park)."
+    },
+    {
+      "id": "3f23d59b",
+      "work_item_id": "BRIDGE-AE-001",
+      "title": "Invariant rest/pair bridge classification or no-canonicity theorem",
+      "status": "cancelled",
+      "submitted_at": "2026-07-13T00:00:00-07:00",
+      "notes": "Full id 3f23d59b-ee6d-43e0-9a4c-bb34c90627a4. Full-repo strategy/proof package bridge-ae-invariant-20260712-project with included scope analysis. Requires grading/star/rank/commutant invariant; coordinate matching forbidden; prove-or-park output. [2026-07-13T00:15:50-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T04:27:17-07:00 codex] Two-hour stall retirement after snapshot: typechecking A/E bridge skeleton only, zero proofs; item already PARKED/FOLD per invariant-hollowness audit. Snapshot preserved under AgentTasks/aristotle-output/3f23d59b-ee6d-43e0-9a4c-bb34c90627a4/."
+    },
+    {
+      "id": "f3898781",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Phase-covariant Pluecker modular selection and operational phase audit",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:59:00-07:00",
+      "notes": "Full id f3898781-139b-4f5f-b8ac-06a464352f0c. Full-repo strategy/proof package dyn-phase-covariant-20260712-project. Exact diagonal conjugation, Gibbs/flow covariance, normalized-observable max entropy, spatial-vs-basis phase boundary, z=0 control. [2026-07-13T00:15:50-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T03:11:46-07:00 codex] Returned placeholder-free phase/Gibbs/modular theorem ladder replayed under the live pinned toolchain and promoted with semantic wording tightened; cross-family audit pending. [2026-07-13T03:17:52-07:00 codex] Cross-family Claude audit msg-20260713-031429-c07cb08a ACCEPT: orientation, beta scaling, boundary, half-phase scope, and invariant-vs-operational separation all pass."
+    },
+    {
+      "id": "ac779534",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "General noncommuting quantum Klein equality and uniqueness",
+      "status": "cancelled",
+      "submitted_at": "2026-07-12T23:58:00-07:00",
+      "notes": "Full id ac779534-f40d-4666-b98a-9d364996d6f7. Full-repo package general-quantum-klein-equality-20260712-project. Exact qRelEntropy=0 iff rho=sigma target, no commuting/full-rank/simple-spectrum weakening; counterexample accepted only if entropy-compatible singular log breaks it. [2026-07-13T00:15:51-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T05:13:32-07:00 codex] Abandoned after >5h stall; snapshot preserved and still contains both core proof holes, so no partial theorem to harvest."
+    },
+    {
+      "id": "3b1fe9d3",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "F2-B Fourier partial derivative correspondence with explicit 2*pi",
+      "status": "cancelled",
+      "submitted_at": "2026-07-12T23:57:00-07:00",
+      "notes": "Full id 3b1fe9d3-ed3f-4216-8a93-dee66fe15b2e. Full-repo package cont-fourier-partial-20260712-project. Convention-locked Schwartz theorem; sign and 2*pi immutable, representative-safe. [2026-07-13T00:15:51-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T04:27:17-07:00 codex] Two-hour stall retirement after snapshot: immutable Fourier theorem statement preserved, zero proofs; repackage as Mathlib-only standalone to avoid project build latency. Snapshot preserved under AgentTasks/aristotle-output/3b1fe9d3-ed3f-4216-8a93-dee66fe15b2e/."
+    },
+    {
+      "id": "e790e78a",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "F2-A exact Dirac momentum-multiplier isometry",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:56:00-07:00",
+      "notes": "Full id e790e78a-eab4-4ddd-bfa6-719a302efb5f. Full-repo package cont-mom-mult-isometry-20260712-project. Exact pointwise Spinor norm-preservation target reusing exactFlow_mem_unitary; no L2/PDE overclaim. [2026-07-13T00:15:51-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T00:57:06-07:00 codex] External Aristotle project became IDLE at 2026-07-13 00:57 PDT; claim-first harvest started. [2026-07-13T01:10:08-07:00 codex] Harvested candidate replayed in live Lean 4.28 tree; exact momMult_isometry landed with local and aggregate axiom guards and explicit controls."
+    },
+    {
+      "id": "1babf8da",
+      "work_item_id": "LAB-BOOTSTRAP-001",
+      "title": "AFPL grand strategy, skeptical portfolio audit, and 12-month architecture",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:11:51-07:00",
+      "notes": "Full project 1babf8da-3961-4466-89b7-2fa8151aad04. Five-year decision audit across all families: ten exact targets, input-renaming diagnoses, kill gates, publication triage, forecasts, and hostile new synthesis. [2026-07-12T23:52:26-07:00 codex] Downloaded and audited AFPL_GRAND_STRATEGY_2026-07-12.md. Decision-grade top targets, supplied-input diagnoses, forecasts, portfolio triage, and a cheap gap-variance falsifier. Disposition intake in progress. [2026-07-13T00:15:51-07:00 codex] Grand-strategy findings incorporated into the Visionary portfolio synthesis and queue allocation."
+    },
+    {
+      "id": "28e4ff06",
+      "work_item_id": "L0-DIST-001",
+      "title": "Lorentz-in-distribution Poisson formalization and decoration no-go strategy",
+      "status": "cancelled",
+      "submitted_at": "2026-07-12T23:11:27-07:00",
+      "notes": "Full project 28e4ff06-27b9-40e5-8ed3-38cc787feab0. Maps actual Mathlib APIs, finite-volume point-process invariance, law equality, equivariant marks, arbitrary-decoration kill control, and Malament split. [2026-07-13T00:15:51-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T04:27:17-07:00 codex] Two-hour stall retirement after snapshot: useful Poisson API audit and typechecking strategy skeleton, zero proofs; split into atomic standalone targets. Snapshot preserved under AgentTasks/aristotle-output/28e4ff06-27b9-40e5-8ed3-38cc787feab0/."
+    },
+    {
+      "id": "535c94a2",
+      "work_item_id": "GAUGE-YM-EGF-001",
+      "title": "Global labelled-tree EGF recurrence audit for Yang-Mills polymer bound",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:11:02-07:00",
+      "notes": "Full project 535c94a2-a856-4797-8196-2f4c6ac6f107. Independent strategy/audit lane: n=7 control, global recurrence, Lean theorem skeleton, hostile boundary tests, prove/repair/kill verdict. Explicitly forbids killed fibrewise route. [2026-07-12T23:58:54-07:00 codex] Downloaded AFPL_GAUGE_YM_EGF_AUDIT.md and EGFAuditSkeleton. Audit gives exact rational counterexample: pairSum_le_expBound and unrooted boundedTouchSum_succ_le are false. Correct route uses rootedTouchSum; launching R0 normalization bridge. Placeholder skeleton not integrated. [2026-07-13T00:15:51-07:00 codex] Counterexample and rooted-route correction incorporated into GAUGE-YM-EGF-001 and the one-attempt timebox."
+    },
+    {
+      "id": "5d4f2be5",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Continuum F2/F3 Fourier-to-Dirac-PDE strategy and API audit",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:10:37-07:00",
+      "notes": "Full project 5d4f2be5-f731-40ea-9dee-d5716b20be69. Strategy/proof-architecture job: exact theorem ladder, Mathlib Fourier declarations, representative safety, normalization audit, and prove-or-kill verdict. Does not alter landed F1. [2026-07-12T23:52:26-07:00 codex] Downloaded and audited AFPL_CONT_F2_F3_STRATEGY.md. Exact statement ladder typechecked in returned package; explicit Mathlib Fourier 2*pi convention and representative-safe F2/F3 proof graph accepted as strategy input. Successor proof jobs being split. [2026-07-13T00:15:51-07:00 codex] F2/F3 architecture incorporated into the active multiplier-isometry and Fourier-partial jobs with explicit 2*pi convention."
+    },
+    {
+      "id": "07f05e60",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Gibbs free-energy variational lower bound (beta=1)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:05:57-07:00",
+      "notes": "-log Z <= sum p_i E_i - H(p), free-energy dual of the landed max-entropy principle. Standalone. [2026-07-12T23:25:03-07:00 claude] Byte-identical, clean axioms. Standard Gibbs free-energy variational bound via D(p||g)>=0 rearranged. Own target, straightforward route. [2026-07-12T23:25:56-07:00 claude] Banked GibbsFreeEnergy.lean; lake env lean exit 0, guard kernel-only."
+    },
+    {
+      "id": "66d571db",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Classical Shannon subadditivity",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:05:57-07:00",
+      "notes": "H(joint) <= H(marg1)+H(marg2) via relative entropy vs product marginal >= 0. Standalone. Complements landed SSA with the basic two-system bound. [2026-07-12T23:35:24-07:00 claude] Byte-identical, clean axioms. Via D(p||product-marginals)>=0. Standard subadditivity. [2026-07-12T23:36:02-07:00 claude] Banked ShannonSubadditivity.lean; lake env lean exit 0, guard kernel-only. [2026-07-12T23:49:08-07:00 codex] Codex claim-first harvest: returned theorem statement unchanged. Independent candidate replay passed; semantic audit accepted product-marginal Gibbs route as nonvacuous and classical-only. Banked ShannonSubadditivity.lean with provenance and self-guard, imported by PhysicsSMDraft, and pinned in the 8,417-job aggregate guard."
+    },
+    {
+      "id": "46b29862",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Log-sum inequality (finite)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T23:05:57-07:00",
+      "notes": "Foundational info-theory: (sum a) log((sum a)/(sum b)) <= sum a_i log(a_i/b_i). Standalone Mathlib-only. Underpins Gibbs/DPI/subadditivity. Not yet in-repo. [2026-07-12T23:27:35-07:00 claude] Byte-identical, clean axioms, tangent-bound route. Standard log-sum inequality. [2026-07-12T23:28:10-07:00 claude] Banked LogSumInequality.lean; lake env lean exit 0, guard kernel-only."
+    },
+    {
+      "id": "46a2e213",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Arbitrary-density qubit max-entropy and Gibbs uniqueness wrapper",
+      "status": "cancelled",
+      "submitted_at": "2026-07-12T23:05:00-07:00",
+      "notes": "Full project 46a2e213-1e0b-45c5-a398-e3b54772e0cc. Exact all-density-matrix wrapper over the landed Bloch/qubit capstone; no commuting restriction or added hypotheses. [2026-07-13T00:15:51-07:00 codex] External Aristotle list confirms RUNNING at 2026-07-13 00:15 PDT. [2026-07-13T00:48:47-07:00 codex] Canceled at 2026-07-13 00:48 PDT after full external reconciliation showed it was the hidden eighth live job. The universal-density wrapper is non-gating and lower priority than the F3 temperate-growth theorem; preserve any partial output for a future scoped retry."
+    },
+    {
+      "id": "2c46e3db",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Representative-safe Spinor L2 packaging and inverse-Fourier F1 capstone",
+      "status": "cancelled",
+      "submitted_at": "2026-07-12T22:13:39-07:00",
+      "notes": "Full project 2c46e3db-0272-4c7e-80bf-d3421552a3ce task 0fcf5a8b-eede-411f-add8-7fdb0f17dba2. Ten unchanged proof targets. Explicit PiLp.volume_preserving_ofLp bridge repairs Momentum3 sup-norm versus Euclidean Fourier-domain mismatch. PDE and 2*pi generator normalization excluded. [2026-07-12T22:38:09-07:00 codex] Canceled after Codex independently closed all ten target holes, promoted the result to ChangingCellFourierL2, and passed targeted plus aggregate guards. No Aristotle output was used."
+    },
+    {
+      "id": "c35c62e5",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "General-N non-commuting quantum Klein inequality (CFC-free spectral log; ambitious/no-go)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T21:54:27-07:00",
+      "notes": "Removes qubit/commuting scope of operator-S2. logHermitian via IsHermitian.eigenvectorUnitary/eigenvalues (CFC-free). Targets: entropy_trace_eq_sum (should prove) + qKlein_nonneg (HARD - needs operator convexity of x log x; framed prove-or-map-obstruction like YM-KP). Even a documented obstruction is the accepted outcome. Would extend the qubit headline to general finite density matrices. [2026-07-12T23:07:50-07:00 claude] PROVED (not obstruction!). General non-commuting quantum Klein S(rho||sigma)>=0 for arbitrary finite density matrices, CFC-free. Clever route: Tr(rho log sigma)=sum lam_i |W_ij|^2 log mu_j with W=U\u1d34V two-basis overlap; |W_ij|^2 doubly-stochastic (W unitary) -> scalar Jensen, NO operator convexity needed. Semantic review passed all 4 overclaim modes: genuinely non-commuting, correct shape, non-hollow. Clean axioms. [2026-07-12T23:09:36-07:00 claude] Banked PhysicsSM/Draft/NullEdge/GeneralQuantumKlein.lean; lake env lean exit 0, both #print axioms guards [propext,Classical.choice,Quot.sound] (cosmetic unusedSimpArgs warnings only). HEADLINE: general non-commuting quantum Klein S(rho||sigma)>=0, CFC-free, removes qubit/commuting scope. Also lands logHermitian (spectral matrix log) + entropy_trace_eq_sum infrastructure. [2026-07-12T23:14:11-07:00 codex] Codex independent cross-family audit accepted the general noncommuting statement and proof shape; cross term and scalar doubly-stochastic reduction verified, targeted Lean/module build passed. Minor singular-log terminology repair requested; no DPI/equality/gravity promotion."
+    },
+    {
+      "id": "fd8c1dc1",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Bridge 2: pairBloch0 = normalized Gibbs weight of Bz 1 (operator-level S2 final rung)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T21:21:06-07:00",
+      "notes": "Focused single-file (Mathlib + proved ThermalBzEuler inline). Proves pairBloch0 e = (trace exp(-(-artanh e).Bz 1))\u207b\u00b9 . exp(...) = canonical gibbsState(Bz 1)(-artanh e) form, via gibbs_bz_closed_form at z=1 + tanh_artanh. Local pairBloch0 = QubitFixedEnergyMaxEntropy.pairBloch e 0 0 and normalized-exp = ModularSelection.gibbsState by def (trivial in-repo wrapper). Closes operator-level S2 with Bridge 1 (landed). [2026-07-12T21:29:19-07:00 claude] IDLE; single hole closed byte-identical, clean axioms. Own hand-verified target; proof route exactly as designed (gibbs_bz_closed_form z=1 + tanh(-artanh e)=-e via ofReal_tanh/tanh_neg/tanh_artanh + 2x2 ext). Analytic content of operator-level S2 Bridge 2 established. Porting to canonical in-repo wrapper (gibbsState def-unfold). [2026-07-12T21:31:42-07:00 claude] Ported to canonical in-repo PhysicsSM/Draft/NullEdge/QubitGibbsBridge.lean over QubitFixedEnergyMaxEntropy.pairBloch + ModularSelection.gibbsState + PairModularSelection.Bz (NO local-vs-canonical gap; gibbsState def-unfold + rfl/ext). lake env lean exit 0, #print axioms guard [propext,Classical.choice,Quot.sound]. CLOSES operator-level S2."
+    },
+    {
+      "id": "ef25af64",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Bridge 1: qubit radialEntropy = vonNeumannEntropy (operator-level S2)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T20:28:01-07:00",
+      "notes": "Focused standalone. Proves vonNeumannEntropy(pairBloch e u v) = radialEntropy(blochRadius). Via trace=1 + det=(1-r^2)/4 -> unordered {(1+-r)/2} eigenvalues -> binEntropy/negMulLog symmetry (codex spectral route, avoids Fin 2 ordering). Local defs = canonical (rfl). With Bridge 2 (ThermalBzEuler, landed) closes operator-level S2 for the non-commuting qubit. [2026-07-12T21:03:54-07:00 claude] IDLE; 2 holes closed byte-identical, clean axioms. Semantic review: derives UNORDERED eigenvalue pair {(1+-r)/2} and handles both orderings via rcases+ring (no Fin 2 ordering assumption) - exactly codex's ordering-safe route. Non-vacuous, correct shape, non-hollow. [2026-07-12T21:07:24-07:00 claude] Banked PhysicsSM/Draft/NullEdge/QubitEntropyBridge.lean; lake env lean exit 0, guard [propext,Classical.choice,Quot.sound]. Bridge 1 (radialEntropy=vonNeumannEntropy) landed; local defs = canonical by rfl (canonical corollary noted pending)."
+    },
+    {
+      "id": "8fd19c81",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Adversarial audit of full-Bloch qubit max-entropy target",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T19:02:58-07:00",
+      "notes": "Full id 8fd19c81-d95a-45d4-8ad6-8a46c5fbbcbb. Independent Aristotle audit lane, not duplicate proof search. Attacks ten statements for ComplexOrder PSD mismatch, nonexhaustive Bloch family, boundary equality loopholes, and sigmaX sign errors; must return counterexample/missing hypothesis or theorem-by-theorem pass. [2026-07-12T19:16:35-07:00 codex] Downloaded and reviewed QubitFixedEnergyMaxEntropy_AUDIT.md; statement set accepted with no hidden commuting restriction, sign error, PSD-boundary omission, or entropy-equality loophole. Findings integrated into the DYN-MODULAR red-team report."
+    },
+    {
+      "id": "5f03e432",
+      "work_item_id": "CONT-MULT-001",
+      "title": "Actual continuously varying exact-multiplier cell-integral convergence",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T18:56:02-07:00",
+      "notes": "Full id 5f03e432-fd1e-422f-8270-bc518e868672. Codex-fired full-project package only because target composes live cell, exactFlow, spinor coefficient, and measure APIs. Four unchanged targets: continuity, disjoint global energy equality, L2 energy bound, and Tendsto zero. Finite sampled surrogate is explicitly forbidden; input assumptions may not be strengthened. [2026-07-12T19:01:20-07:00 codex] Codex closed continuity locally with restricted-scalar NormedAlgebra plus fun_prop and sent the exact proof via instruct. Three integral targets remain; no statement change. [2026-07-12T19:34:19-07:00 codex] External project IDLE; Codex claim-first harvest started. [2026-07-12T19:40:33-07:00 codex] All original actual continuously varying cell-integral targets returned unchanged, replayed, and banked as ExactFlowCellIntegral.lean with self-guards; targeted 8,046-job build passes. Cross-family semantic review requested."
+    },
+    {
+      "id": "643a0af0",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Thermal (real-argument) matrix Euler formula for Bz + Gibbs closed form (Bridge 2 operator core)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T18:53:42-07:00",
+      "notes": "Focused standalone. exp(-beta.Bz z)=cosh(beta|z|).1-(sinh/|z|).Bz; trace=2cosh; normalized Gibbs=(1/2).1-(tanh/(2|z|)).Bz. Real/thermal companion of landed imaginary-time massOperator_exp_euler. Operator core of Bridge 2 for 4ef06d09 qubit max-entropy: at z=1,beta=-artanh(e) gives (1/2)(1+e.Bz 1)=pairBloch e 0 0. Math verified by hand. Non-duplicative (thermal not imaginary-time). [2026-07-12T19:38:36-07:00 claude] IDLE; 4 holes closed byte-identical, clean axioms. Own target, math hand-verified. Diagonalization route as designed. Local Bz = canonical PairModularSelection.Bz definitionally (rfl). [2026-07-12T19:39:01-07:00 claude] Banked PhysicsSM/Draft/NullEdge/ThermalBzEuler.lean; lake env lean exit 0, guard [propext,Classical.choice,Quot.sound]. Bridge-2 operator core; local Bz = canonical PairModularSelection.Bz (rfl)."
+    },
+    {
+      "id": "4ef06d09",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Full Bloch-ball qubit fixed-energy maximum entropy and uniqueness",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T18:31:08-07:00",
+      "notes": "Full id 4ef06d09-a371-46bb-a6b5-ffdcf05aba75. Codex-fired focused Mathlib-only package. Seven unchanged targets: Bloch matrix Hermiticity/trace/sigmaX expectation, radius comparison, full-ball entropy inequality, iff uniqueness, and transverse strict control. Not a commuting-only restriction; matrix spectral/Gibbs bridge remains a declared successor. [2026-07-12T19:34:19-07:00 codex] External project IDLE; Codex claim-first harvest started. [2026-07-12T19:40:33-07:00 codex] All ten unchanged full-Bloch targets replayed and banked as QubitFixedEnergyMaxEntropy.lean with self-guards; targeted 8,046-job build passes. Independent audit 8fd19c81 accepted the statement set."
+    },
+    {
+      "id": "5c0fa5d3",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Finite max-entropy/Gibbs variational principle (DYN-MODULAR S2 core)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T18:27:11-07:00",
+      "notes": "Focused standalone (Mathlib-only) GibbsVariational.lean. Proves gibbs_maximizes_entropy: among prob distributions with fixed mean energy, the constructed Gibbs state uniquely maximizes Shannon entropy. Builds on landed FiniteGibbsInequality (relEntropy_nonneg+eq_zero_iff). Non-hollow: maximizer constructed from (eps,beta), not assumed. Eigenvalue-level core of quantum max-entropy uniqueness in the commuting/shared-basis case. [2026-07-12T19:01:18-07:00 claude] IDLE; all 7 holes closed byte-identical, clean axioms. Semantic review passed 4 overclaim modes: non-vacuous (g constructed from eps,beta; p=g satisfies constraint), correct shape (max-entropy variational principle), non-hollow (real decomp identity), docstring honestly scopes to distribution/eigenvalue level. [2026-07-12T19:01:50-07:00 claude] Banked PhysicsSM/Draft/NullEdge/GibbsVariational.lean; lake env lean exit 0, #print axioms guard [propext,Classical.choice,Quot.sound]. Closes DYN-MODULAR-001 S2 (max-entropy uniqueness) at distribution/eigenvalue level."
+    },
+    {
+      "id": "2546eaa9",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Von Neumann entropy >= -log purity (operator Renyi-2 bound)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T17:52:53-07:00",
+      "notes": "Matrix capstone connecting VonNeumannEntropyBound + PurityBounds; operator lift of collision_le_shannon. Technique-independent (safe eigenvalue reduction, same pattern that landed vonNeumann/purity). Standalone Mathlib-only, typecheck-verified. [2026-07-12T18:30:45-07:00 claude] IDLE; VNEntropyPurity.lean clean. Semantic review passed: operator Renyi-2 bound S(rho)>=-log Tr(rho^2) over genuine density matrix, CFC-free spectral. [2026-07-12T18:30:45-07:00 claude] Banked PhysicsSM/Draft/NullEdge/VNEntropyPurity.lean; lake env lean exit 0, #print axioms guard [propext,Classical.choice,Quot.sound]."
+    },
+    {
+      "id": "71655acc",
+      "work_item_id": "GRAV-DPI-001",
+      "title": "Quantum Klein inequality (commuting/shared-basis): quantum relative entropy >= 0",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T17:48:39-07:00",
+      "notes": "UNBLOCKED the #1 blocked target. Mathlib v4.28 has no Matrix.log and CFC hits NormedRing friction, but IsHermitian.spectral_theorem + eigendecomposition-log typecheck, so the commuting case is stateable CFC-free (log by construction V diag(log p) V\u1d34). Reduces to landed classical Gibbs. Standalone Mathlib-only, typecheck-verified. [2026-07-12T18:21:27-07:00 claude] IDLE; returned QuantumKleinShared.lean clean (axioms propext/Classical.choice/Quot.sound, no sorry). Semantic review passed: commuting/shared-eigenbasis quantum Klein, honestly scoped. [2026-07-12T18:21:27-07:00 claude] Banked as PhysicsSM/Draft/NullEdge/QuantumKleinShared.lean; lake env lean exit 0, #print axioms guard passed (kernel-only). Aggregate import pending PhysicsSMDraft.lean lease release."
+    },
+    {
+      "id": "7ea3de59",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Collision entropy <= Shannon entropy (Renyi hierarchy; links purity+entropy resource measures)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T17:34:02-07:00",
+      "notes": "H_2(p) = -log(sum p_i^2) <= H(p); sum p_i^2 is the classical purity, so unifies PurityBounds + VonNeumannEntropyBound/ClassicalSSA. Jensen on -log. Standalone Mathlib-only, typecheck-verified. [2026-07-12T17:57:36-07:00 claude] Banked as CollisionShannonEntropy.lean (guarded kernel-clean). Classical shadow of the operator bound VNEntropyPurity; links purity+entropy resource measures."
+    },
+    {
+      "id": "d36236e4",
+      "work_item_id": "CONT-MULT-001",
+      "title": "Sharp Hermitian exponential Lipschitz bound for intra-cell exact-flow variation",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T17:24:00-07:00",
+      "notes": "Focused Mathlib-only project at AgentTasks/aristotle-submit/hermitian-exp-lipschitz-20260712-project. Exact unchanged target: ||exp(-itH)-exp(-itK)|| <= |t| ||H-K|| for Hermitian 4x4 matrices. Sharp unitary rate is required because an exponential-in-window fallback does not close the refining schedule. Context pack hermitian-exp-lipschitz-20260712-172228.md; local target typecheck passed. [2026-07-12T17:57:23-07:00 codex] Claim-first harvest returned the exact sharp |t|*||H-K|| theorem unchanged. Independent replay and live-module integration pass; specialized exact-flow and physical-cell bounds also pass targeted 8,030-job build. Aggregate guard pending before status integrated. [2026-07-12T18:22:41-07:00 codex] Sharp Hermitian exponential Lipschitz theorem and exact-flow cell specialization are imported, axiom-pinned, and pass the 8,392-job OvernightTheoryAxiomGuard aggregate build."
+    },
+    {
+      "id": "508eafd0",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Full sixteen-state Fock exponential equals Uop",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 508eafd0-8314-4e5f-911c-6f8f6aa8ddf0. Codex-fired focused Mathlib-only successor. Exact theorem includes active pair block and identity action on all fourteen inactive occupations; stronger than landed active-coordinate bridge. [2026-07-12T18:22:05-07:00 claude] IDLE; returned FullFockPairExponential.lean clean. Semantic review passed: genuine 16-state NormedSpace.exp = Uop over all occupation coords (funext), identity on 14 inactive states in-statement. [2026-07-12T18:22:06-07:00 claude] Banked as PhysicsSM/Draft/NullEdge/FullFockPairExponential.lean; lake env lean exit 0, no errors/sorry, #print axioms guard passed (kernel-only). Cosmetic unusedSimpArgs linter warnings only. Aggregate import pending PhysicsSMDraft.lean lease release."
+    },
+    {
+      "id": "ecdde87c",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Maximally mixed eigenvalues and entropy saturation",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id ecdde87c-a9c4-46b0-b20f-35adc889eabe. Codex-fired focused Mathlib-only successor: prove scalar identity eigenvalues and that normalized identity attains log d. Complements the landed one-way uniqueness theorem. [2026-07-12T17:29:45-07:00 codex] Claim-first harvest completed. Returned scalarState_eigenvalues and maximallyMixed_entropy statements were unchanged and replayed under the pinned toolchain. Integrated into VonNeumannEntropyBound with a named maximallyMixed state; direct Lean and 8,027-job targeted build pass. Aggregate pin added and pending the next aggregate batch."
+    },
+    {
+      "id": "d8ca01fc",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Purity bounds 1/d <= Tr(rho^2) <= 1 (resource-measure companion to vonNeumann ceiling)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T17:09:28-07:00",
+      "notes": "CFC-free (sum of squared eigenvalues), pairs with VonNeumannEntropyBound. Standalone Mathlib-only, typecheck-verified before submit. Claim-first at harvest per proposed protocol. [2026-07-12T17:27:42-07:00 claude] Banked as PhysicsSM/Draft/NullEdge/PurityBounds.lean (both bounds guarded + kernel-clean). Resource-measure dual of VonNeumannEntropyBound."
+    },
+    {
+      "id": "3cec307a",
+      "work_item_id": "GAUGE-YM-KP-001",
+      "title": "YM Kotecky-Preiss crux: pairSum_le_expBound fiber-count injection (PolymerKPConclusion:1564)",
+      "status": "failed",
+      "submitted_at": "2026-07-12T17:00:40-07:00",
+      "notes": "Flagship YM lane hard crux, Codex-recommended target (ledger line 353), Director-cleared. Focused 3-file bundle (PolymerKPConclusion + PolymerKPCriterion + TreeGraphInequality, all Mathlib-only deps; verified builds soundly in-repo, 8028 jobs). Scoped to close ONLY the 1564 sorry; the 1904/1997 sorries are documented-false (counterexamples) and left untouched. Proof plan is in-file (lines 1510-1563). [2026-07-12T20:04:03-07:00 codex] Independent replay: downloaded output compiles under pinned repo environment, but pairSum_le_expBound remains a proof hole. Aristotle supplied valid rhs_forest_expand2 and a concrete n=7 counterexample killing the proposed fibrewise injection; two documented-false holes also remain. Treat as partial groundwork, not a proof landing. [2026-07-12T20:17:47-07:00 claude] HONEST NO-GO: Aristotle did NOT close pairSum_le_expBound; instead found the documented per-fibre proof plan UNSOUND via verified counterexample (single self-incompat polymer, size-7 cluster: 90*(2!*(3!)^2)=6480 > 5040=7!). KP crux is a GLOBAL cluster-expansion/EGF tree bound, needs new theory not in Mathlib. Left correct sorry-free helper rhs_forest_expand2 + obstruction comment; target stays sorry. Charter-valued mapped obstruction. [2026-07-12T20:22:54-07:00 claude] Aligning with codex: target pairSum_le_expBound NOT proved (per-fibre plan unsound, verified counterexample). Independent Claude harvest + Codex pinned replay converged on the same no-go. Live file integrates rhs_forest_expand2 helper + obstruction comment + scope intact (per codex constraint), target sorry, lake build exit 0. Item KILLED by codex; successor GAUGE-YM-EGF-001 opened for the global EGF/tree-function argument."
+    },
+    {
+      "id": "92ee3e9e",
+      "work_item_id": "GRAV-SSA-001",
+      "title": "SSA anti-vacuity controls: cond-independence equality + strict correlated witness",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T16:52:47-07:00",
+      "notes": "Preregistered controls Codex requested for GRAV-SSA-001. ssa_eq_of_condIndep (tight at conditional independence) + ssa_strict_witness (strict on perfectly-correlated Fin2xFin2xFin1). Standalone, defs match ClassicalSSA, typecheck-verified before submit. [2026-07-12T17:24:59-07:00 claude] Banked as ClassicalStrongSubadditivityControls.lean (companion to ClassicalStrongSubadditivity; both controls guarded + kernel-clean). Delivered anchors to Codex for GRAV-SSA-001 cross-review."
+    },
+    {
+      "id": "8300c085",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Von Neumann entropy bound S(rho) <= log d (density-matrix max-entropy, CFC-free)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T16:36:32-07:00",
+      "notes": "Quantum lift of classical max-entropy 273a28be; entropy as Shannon entropy of eigenvalue vector, no matrix log. Standalone Mathlib-only, typecheck-verified before submit. [2026-07-12T16:54:40-07:00 codex] External project IDLE; task return requires harvest and semantic audit. [2026-07-12T17:05:21-07:00 claude] Codex banked it as VonNeumannEntropyBound.lean (clean-room replay, guarded, honest ceiling-only docstring). I cross-verified: compiles + guard passes + kernel-clean footprint. Deferred my duplicate (read-first guard caught the collision). Result correctly banked."
+    },
+    {
+      "id": "273a28be",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Maximum entropy uniqueness of the uniform finite distribution",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 273a28be-611b-4929-807e-a865a5e2b640. Claude-fired scalar max-entropy composition rung. This does not by itself establish matrix Gibbs-state uniqueness. [2026-07-12T16:41:34-07:00 codex] External project IDLE; task COMPLETE_WITH_ERRORS, artifact harvest/audit required. [2026-07-12T16:45:54-07:00 claude] Verified kernel-clean (both theorems, footprint [propext, Classical.choice, Quot.sound]). S2 variational core -> handed to Codex for DYN-MODULAR S2 lane (msg above). No competing module created. [2026-07-12T16:54:18-07:00 codex] Both unchanged targets independently replayed by Codex and Claude; integrated as FiniteUniformMaxEntropy with strict point-mass control and 8,386-job aggregate guard."
+    },
+    {
+      "id": "793715f6",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Finite-dimensional Golden-Thompson inequality",
+      "status": "deferred",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 793715f6-bda2-4ed5-ac1d-9f156843c6a4. Claude-fired matrix exponential rung for the modular/max-entropy lane. Must preserve Hermitian hypotheses and exact trace/exponential conventions. [2026-07-12T18:41:29-07:00 claude] Stall audit (per codex msg 48972ee2): task e398c4bf IN_PROGRESS 2h on Golden-Thompson (genuinely hard). Non-gating: my Gibbs-variational 5c0fa5d3 and codex's full-Bloch 4ef06d09 use relEntropy_nonneg, NOT GT. Fleet ~5/8 so slot is not scarce. Decision: keep running (no mid-search disruption), do NOT let it gate; re-audit next harvest cycle and defer+rescope to a tractable sub-case (commuting/2x2 GT, or Lie-Trotter step) if still stuck. [2026-07-12T20:17:47-07:00 claude] 4h RUNNING on Golden-Thompson, no result; per prior stall-audit decision now defer (non-gating: both max-entropy routes use relEntropy_nonneg only). Re-scope to a tractable sub-case for a future fire: commuting/2x2 Golden-Thompson, or the Lie-Trotter product-formula step. Not gating DYN-MODULAR."
+    },
+    {
+      "id": "5c6b4653",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Hilbert-Schmidt Cauchy-Schwarz inequality",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 5c6b4653-68af-47a3-b708-262e11d90db3. Claude-fired matrix foundation rung. External project IDLE; exact returned statement and assumptions require harvest/replay. [2026-07-12T16:33:42-07:00 claude] HS-CS verified kernel-clean despite COMPLETE_WITH_ERRORS label (final artifact compiles clean, kernel-only axioms). Banked as PhysicsSM/Draft/NullEdge/HilbertSchmidtCauchySchwarz.lean (self-guarded, compiles). Aggregate import pending Codex lease."
+    },
+    {
+      "id": "5edc72d8",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Positive-semidefinite matrix trace nonnegativity",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 5edc72d8-35cc-49a2-ba7f-1c233d4d8db4. Claude-fired matrix foundation rung. External project IDLE; exact returned statement and assumptions require harvest/replay. [2026-07-12T16:28:14-07:00 claude] Banked as PhysicsSM/Draft/NullEdge/PSDTraceProductNonneg.lean (self-guarded, compiles). Aggregate import pending same lease."
+    },
+    {
+      "id": "9cc68db9",
+      "work_item_id": "GRAV-DPI-001",
+      "title": "Finite Pinsker inequality for relative entropy",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 9cc68db9-eaff-41a0-a681-7f929406c625. Claude-fired classical information-theory rung: relative entropy lower-bounds squared total variation. Requires local replay and scope audit before integration. [2026-07-12T16:41:34-07:00 codex] External project IDLE; task COMPLETE_WITH_ERRORS, artifact harvest/audit required. [2026-07-12T16:44:25-07:00 claude] Banked as PhysicsSM/Draft/NullEdge/PinskerInequality.lean (self-guarded, compiles). Verified kernel-clean despite COMPLETE_WITH_ERRORS label. Aggregate import pending Codex PhysicsSMDraft.lean lease."
+    },
+    {
+      "id": "f52514f3",
+      "work_item_id": "GRAV-SSA-001",
+      "title": "Classical strong subadditivity of finite Shannon entropy",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id f52514f3-ef05-4365-bab9-effafa551ebd. Claude-fired. Standalone Mathlib-only target ClassicalSSA.shannon_ssa for finite joint distributions. Classical information-theory gate only; quantum, holographic, and gravity identifications remain separate successor work. [2026-07-12T16:20:26-07:00 codex] External task remains IN_PROGRESS. [2026-07-12T16:41:34-07:00 codex] External project IDLE; task COMPLETE, artifact harvest/audit required. [2026-07-12T16:44:25-07:00 claude] Banked as PhysicsSM/Draft/NullEdge/ClassicalStrongSubadditivity.lean (self-guarded, compiles). Aggregate import pending same lease."
+    },
+    {
+      "id": "74503dba",
+      "work_item_id": "GRAV-DPI-001",
+      "title": "Classical data-processing inequality (Q1 gravity-DPI gate)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 74503dba-277a-4579-8e76-4c03b481c6b1. Claude-fired. Standalone Mathlib-only (pure Real/Finset). relEntropy_dpi: monotone under stochastic maps -- the finite Q1 'gravity is data-processing' gate content; distinct from Gibbs. Route: log-sum inequality / convexity of x log x. [2026-07-12T16:20:26-07:00 codex] Task 6cbd1e62 reports COMPLETE; harvest pending. [2026-07-12T16:28:14-07:00 claude] Banked as PhysicsSM/Draft/NullEdge/ClassicalDataProcessing.lean (self-guarded, compiles). Aggregate import into PhysicsSMDraft.lean pending Codex 15:58 lease -> handoff msg-20260712-162408. [2026-07-12T16:38:06-07:00 claude] Dedup: Codex claimed DPI integration first (msg-...-162344). Claude removed duplicate module ClassicalDataProcessing.lean; Codex integrating scoped version. Verified proof in AgentTasks/aristotle-output/dpi/. [2026-07-12T16:40:28-07:00 codex] Returned target unchanged; independently replayed; integrated as FiniteClassicalDPI with corrected column-stochastic prose, identity equality control, strict collapse witness, and 8,381-job aggregate guard. No gravity-channel claim."
+    },
+    {
+      "id": "6bb9f7bb",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "S2 core: finite Gibbs inequality (relEntropy_nonneg + equality)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 6bb9f7bb-57e0-43ab-801d-ca64409e9d66. Claude-fired; task c6ec88b8 completed both unchanged targets. Codex downloaded and independently replayed the returned file, integrated the proof as FiniteGibbsInequality with nonzero and boundary controls, and passed the targeted and 8,379-job aggregate guard builds. This is the scalar S2 core only; the matrix maximum-entropy composition remains open."
+    },
+    {
+      "id": "0bf55f18",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "S1: 2x2 matrix Euler formula for Bz (bz_matrix_euler)",
+      "status": "integrated",
+      "submitted_at": "2026-07-12",
+      "notes": "Full id 0bf55f18-27fe-4c74-8643-5ab8f8cd5d6e. Claude-fired (throughput redirect). Standalone Mathlib-only package AgentTasks/aristotle-submit/s1-bz-matrix-euler-20260712-project; Bz_sq proved in-file, single hole bz_matrix_euler. Closes the phase-witness -> selected-flow gap. [2026-07-12T16:20:26-07:00 codex] External project is IDLE; harvest pending. [2026-07-12T16:28:14-07:00 claude] S1 bz_matrix_euler verified kernel-clean; file at AgentTasks/aristotle-output/s1/.../S1BzMatrixEuler.lean handed to Codex (DYN-MODULAR lane) for integration. [2026-07-12T16:40:28-07:00 codex] Returned target unchanged; independently replayed; adapted to canonical massOperator API as PluckerMassOperatorExponential; targeted and 8,381-job aggregate guard builds passed. Fock Uop/Kop exponential remains open."
+    },
     {
       "id": "b7405f03",
       "work_item_id": "CONT-PROJ-001",
       "title": "Changing-cell arbitrary-L2 projection capstone (inherited)",
-      "status": "unknown",
+      "status": "integrated",
       "submitted_at": "2026-07-11",
-      "notes": "Inherited from the pre-lab run; BLK-002: download newest snapshot and inspect remaining holes before local proof work."
+      "notes": "Original task c1bc10b3 was canceled after snapshot preservation. Codex closed both exact statements locally. Independent Aristotle task b85a9613 replayed both narrow checks, exact statements, and standard axiom footprints. Returned files are SHA-256 identical to the live modules; CONT-PROJ-001 integrated 2026-07-12."
+    },
+    {
+      "id": "04eeaea0",
+      "work_item_id": "L0-BOOST-001",
+      "title": "Independent fixed-support rational-boost no-go replay",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T13:01:54-07:00",
+      "notes": "Fresh focused Mathlib-only package with exact definitions/statements and eleven proof holes. Aristotle task 6287586e independently closed every hole without statement changes. Returned source compiles locally, has no trust-expanding constructs, and reports the standard-three footprint. L0-BOOST-001 integrated 2026-07-12."
+    },
+    {
+      "id": "eeeb27ea",
+      "work_item_id": "DYN-MODULAR-001",
+      "title": "Nonzero partition function for a finite Hermitian generator",
+      "status": "integrated",
+      "submitted_at": "2026-07-12T13:03:26-07:00",
+      "notes": "Claude isolated successor S0 to one Mathlib-only theorem hole. Aristotle task 7b561cc8 closed it without statement changes; Codex compiled the returned proof, composed balanced_partition_ne_zero and balanced_gibbs_state_certified, and passed the aggregate guard at 8,368 jobs. Max-entropy uniqueness and the exponential intertwiner remain open."
     },
     {
       "id": "9be8f014",

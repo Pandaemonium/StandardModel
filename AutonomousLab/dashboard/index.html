@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>AFPL Lab Console</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="brand-mark" aria-hidden="true">AF</div>
+      <div>
+        <p class="eyebrow">Autonomous Fundamental Physics Lab</p>
+        <h1>Research Operations Console</h1>
+      </div>
+    </div>
+    <div class="header-state">
+      <div class="cycle-block">
+        <span class="label">Cycle</span>
+        <strong id="cycle-id">Loading</strong>
+        <span id="cycle-phase">Connecting to lab state</span>
+      </div>
+      <div class="clock-block">
+        <strong id="local-clock">--:--:--</strong>
+        <span id="last-refresh">Awaiting first refresh</span>
+      </div>
+      <div class="toolbar" aria-label="Dashboard controls">
+        <label for="refresh-rate">Auto refresh</label>
+        <select id="refresh-rate">
+          <option value="10">10 sec</option>
+          <option value="30" selected>30 sec</option>
+          <option value="60">1 min</option>
+          <option value="300">5 min</option>
+        </select>
+        <button id="refresh-button" type="button" title="Refresh dashboard now" aria-label="Refresh dashboard now">
+          <span aria-hidden="true">&#8635;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="alert-bar" class="alert-bar hidden" role="status"></div>
+
+  <main>
+    <section class="north-star-band" aria-labelledby="north-star-title">
+      <div>
+        <span class="section-kicker">North Star</span>
+        <h2 id="north-star-title">Loading lab mandate</h2>
+      </div>
+      <div class="release-box">
+        <span class="label">Release state</span>
+        <strong id="release-state">--</strong>
+        <span id="release-control">--</span>
+      </div>
+    </section>
+
+    <section id="kpi-strip" class="kpi-strip" aria-label="Lab key metrics"></section>
+
+    <nav class="section-nav" aria-label="Dashboard sections">
+      <a href="#projects">Portfolio</a>
+      <a href="#roles">Roles</a>
+      <a href="#work">Work</a>
+      <a href="#proofs">Proof fleet</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#communications">Communications</a>
+    </nav>
+
+    <div class="dashboard-grid">
+      <section id="projects" class="panel panel-wide">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Program Portfolio</span>
+            <h2>Priority Projects</h2>
+          </div>
+          <span id="project-count" class="panel-meta">--</span>
+        </div>
+        <div id="project-list" class="project-list loading-block">Loading projects</div>
+      </section>
+
+      <section id="roles" class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Institutional Cognition</span>
+            <h2>Role Cadence</h2>
+          </div>
+          <span id="role-health" class="status-pill neutral">--</span>
+        </div>
+        <div id="role-list" class="role-list loading-block">Loading duties</div>
+      </section>
+
+      <section id="proofs" class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Formal Proof Operations</span>
+            <h2>Aristotle Fleet</h2>
+          </div>
+          <span id="job-summary" class="panel-meta">--</span>
+        </div>
+        <div id="job-status-chart" class="status-chart"></div>
+        <div id="job-list" class="compact-list loading-block">Loading jobs</div>
+      </section>
+
+      <section id="work" class="panel panel-wide">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Execution System</span>
+            <h2>Work Pipeline</h2>
+          </div>
+          <span id="work-summary" class="panel-meta">--</span>
+        </div>
+        <div id="pipeline-chart" class="pipeline-chart"></div>
+        <div class="subheading-row">
+          <h3>Active now</h3>
+          <span>Ordered by priority</span>
+        </div>
+        <div id="active-work-list" class="work-list loading-block">Loading work items</div>
+      </section>
+
+      <section id="evidence" class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Claim Calculus</span>
+            <h2>Evidence Register</h2>
+          </div>
+          <span id="claim-summary" class="panel-meta">--</span>
+        </div>
+        <div id="claim-chart" class="claim-chart"></div>
+        <div id="claim-list" class="compact-list loading-block">Loading claims</div>
+      </section>
+
+      <section id="communications" class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Coordination</span>
+            <h2>Mailbox and Agents</h2>
+          </div>
+          <span id="message-summary" class="panel-meta">--</span>
+        </div>
+        <div id="availability-list" class="availability-list"></div>
+        <div id="message-list" class="compact-list loading-block">Loading messages</div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Institutional Memory</span>
+            <h2>Recent Ledger</h2>
+          </div>
+          <span id="forecast-summary" class="panel-meta">--</span>
+        </div>
+        <div id="ledger-list" class="ledger-list loading-block">Loading ledger</div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      <span id="validation-indicator" class="health-dot neutral"></span>
+      <span id="validation-text">State validation pending</span>
+    </div>
+    <div id="watermark">Watermark --</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

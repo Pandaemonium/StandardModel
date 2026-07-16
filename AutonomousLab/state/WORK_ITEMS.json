@@ -1,142 +1,777 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-12T11:57:49-07:00",
+  "updated_at": "2026-07-16T05:55:33-07:00",
   "items": [
     {
       "id": "LAB-BOOTSTRAP-001",
       "project_id": "LAB-INFRA",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Implement AFPL operating framework",
-      "status": "RED_TEAM",
+      "status": "INTEGRATED",
       "priority": 100,
       "role": "lab_manager",
       "owner_model": "codex",
-      "skeptic_model": "opus",
+      "skeptic_model": "claude",
       "exact_claim": "The lab has persistent validated state, role separation, executable prompt assembly, and tested operating procedures.",
+      "nearest_work": "Demonstrate at the first weekly review that the framework recovers more coordination time than it consumes in maintenance.",
       "success_criterion": "All required documents exist; labctl validate and unit tests pass; repository document map points to AFPL.",
       "kill_condition": "Validation or role machinery cannot operate without heavyweight dependencies or destructive state mutation.",
-      "next_action": "Codex or Research Director confirms the claude red-team repairs (2026-07-12), then REPLICATING via clean-checkout validate+tests.",
+      "next_action": "Measure maintenance cost and coordination benefit at the first weekly review; preserve the clean-context replication report as the bootstrap baseline.",
       "resource_ceiling": "Docs, scripts, tests, and state only; no Lean builds; no external spend.",
+      "deliverables": [
+        "Validated operating framework",
+        "Independent red-team report",
+        "Clean-context replication report"
+      ],
+      "evidence_paths": [
+        "AutonomousLab/work/LAB-INFRA/RED_TEAM_LAB-BOOTSTRAP-001_2026-07-12.md",
+        "AutonomousLab/work/LAB-INFRA/REPLICATION_LAB-BOOTSTRAP-001_2026-07-12.md"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "python AutonomousLab/scripts/labctl.py validate",
+        "python -m unittest discover -s AutonomousLab/tests -p test_lab_framework.py -v"
+      ],
       "forecast_success": 0.97,
       "target_date": "2026-07-12"
     },
     {
       "id": "CONT-PROJ-001",
       "project_id": "NE-CONTINUUM",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Changing-cell arbitrary-L2 projection capstone",
-      "status": "EXECUTING",
+      "status": "INTEGRATED",
       "priority": 98,
       "role": "research_scientist",
       "owner_model": "codex",
-      "skeptic_model": "opus",
+      "skeptic_model": "claude",
       "exact_claim": "The explicit scheduled cell-average projections converge strongly to the identity on the declared L2 space.",
+      "nearest_work": "Identify the representative-safe projection coefficients with coefficients consumed by the actual scaled live walk.",
       "success_criterion": "Kernel-checked final epsilon theorem with active-cell and ultraviolet controls, followed by semantic audit.",
       "kill_condition": "The proposed pointwise/cell projection is not representative-safe or the active boxes fail to exhaust the norm.",
-      "next_action": "Inspect the latest snapshot of Aristotle project b7405f03 before local or duplicate proof work.",
+      "next_action": "Open a separate live-walk composition item that identifies evolved coefficients with the convergent projection coefficients; keep inverse Fourier and PDE recovery as later gates.",
       "resource_ceiling": "Harvest b7405f03 first; at most one further focused Aristotle package; targeted lake builds only.",
+      "deliverables": [
+        "Compact-core convergence theorem",
+        "Arbitrary-L2 strong convergence theorem",
+        "Independent replay and semantic audit"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/ChangingMomentumCellProjectionCompactCore.lean",
+        "PhysicsSM/Draft/NullEdge/ChangingMomentumCellProjectionStrongL2.lean",
+        "AutonomousLab/work/NE-CONTINUUM/RED_TEAM_D-PROJ-L2_2026-07-12.md"
+      ],
+      "claim_ids": [
+        "D-PROJ-L2"
+      ],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionCompactCore",
+        "lake build PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongL2",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
       "forecast_success": 0.55,
       "target_date": "2026-07-14"
     },
     {
+      "id": "CONT-LIVE-001",
+      "project_id": "NE-CONTINUUM",
+      "parent_id": "CONT-PROJ-001",
+      "depends_on": [
+        "CONT-PROJ-001"
+      ],
+      "title": "Changing-cell coefficients and scaled live-walk composition",
+      "status": "INTEGRATED",
+      "priority": 97,
+      "role": "research_scientist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "The normalized coefficients extracted from the representative-safe changing cells reconstruct the landed projection exactly, and the actual scaled split walk acting on those coefficients converges strongly in the same embedded momentum-space norm to exact modewise evolution.",
+      "nearest_work": "Replace cell-center exact evolution by exact multiplier variation within each cell, then transport the result through inverse Fourier reconstruction.",
+      "success_criterion": "Rung A proves the exact square-root-volume coefficient/projection identity, its energy formula, a nonzero constant-cell witness, and a wrong-normalization control. Rung B uses those coefficients, the scaled live splitStep, and the exact flow to prove a global squared-error limit with no abstract coefficient sequence substituted for the cell data.",
+      "kill_condition": "The cell normalization is incompatible with the walk coefficient norm, the required spinor-valued contraction fails, or the proposed limit merely composes an assumed coefficient convergence without identifying the coefficients generated from the L2 field.",
+      "next_action": "Use the integrated scheduled cell-center theorem only as an input to CONT-MULT-001. Preserve the coupled-schedule and no-PDE scope in every manuscript use.",
+      "resource_ceiling": "Targeted Lean builds plus one focused standalone Aristotle package for the spinor energy/live composition; no inverse-Fourier or PDE claim in this item.",
+      "deliverables": [
+        "Exact normalized coefficient/projection bridge",
+        "Scaled live-walk global coefficient error limit",
+        "Cross-family semantic audit"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/ChangingMomentumCellCoefficientBridge.lean",
+        "PhysicsSM/Draft/NullEdge/ChangingCellScaledLiveWalk.lean",
+        "AutonomousLab/work/NE-CONTINUUM/CODEX_CONT_LIVE_AUDIT_REQUEST.md",
+        "AutonomousLab/work/NE-CONTINUUM/CLAUDE_CONT_LIVE_AUDIT_VERDICT.md"
+      ],
+      "claim_ids": [
+        "CONT-CHANGING-CELL-LIVE"
+      ],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.ChangingMomentumCellCoefficientBridge",
+        "lake build PhysicsSM.Draft.NullEdge.ChangingCellScaledLiveWalk",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.66,
+      "target_date": "2026-07-15"
+    },
+    {
+      "id": "CONT-MULT-001",
+      "project_id": "NE-CONTINUUM",
+      "parent_id": "CONT-LIVE-001",
+      "depends_on": [
+        "CONT-LIVE-001"
+      ],
+      "title": "Intra-cell exact Dirac multiplier variation",
+      "status": "INTEGRATED",
+      "priority": 96,
+      "role": "research_scientist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "Finite Hermitian evolution obeys the sharp generator bound ||exp(-itH)-exp(-itK)|| <= |t| ||H-K||, and its specialization to the Dirac symbol makes the exact multiplier variation across every refining momentum cell vanish in the total embedded L2 error.",
+      "nearest_work": "After the momentum-space multiplier limit, transport the complete live-walk convergence theorem through a unitary inverse Fourier transform and identify the position-space Dirac flow on a stated domain.",
+      "success_criterion": "Kernel-check the sharp Hermitian exponential estimate without window growth, specialize it to the linear Dirac symbol and cell diameter, compose it with arbitrary-L2 projection energy, and include zero-time plus nonconstant-momentum controls.",
+      "kill_condition": "Only an exponential-in-window estimate is available, the cell schedule does not force the resulting variation bound to zero, or the global theorem assumes rather than derives multiplier convergence.",
+      "next_action": "Use the integrated momentum-space theorem only as an input to CONT-FOURIER-001. Preserve the no-inverse-Fourier, no-position-space-PDE, and no-Lorentz-restoration boundary in every manuscript use.",
+      "resource_ceiling": "The exact integral target has landed. Do not submit another multiplier-variation job; reserve continuum proof capacity for independent audit and the inverse-Fourier/PDE successor.",
+      "deliverables": [
+        "Sharp Hermitian exponential Lipschitz theorem",
+        "Exact Dirac-symbol cell-variation bound",
+        "Global embedded multiplier-variation limit"
+      ],
+      "evidence_paths": [
+        "AgentTasks/aristotle-standalone/hermitian-exp-lipschitz-20260712/HermitianExpLipschitz.lean",
+        "AgentTasks/context-packs/hermitian-exp-lipschitz-20260712-172228.md",
+        "AgentTasks/cont-hermitian-exp-lipschitz-aristotle-2026-07-12.md",
+        "AgentTasks/cont-exact-multiplier-cell-integral-aristotle-2026-07-12.md",
+        "AgentTasks/aristotle-targets/codex_afpl_exact_multiplier_cell_integral.lean",
+        "AgentTasks/aristotle-output/d36236e4-hermitian-exp-lipschitz",
+        "PhysicsSM/Draft/NullEdge/HermitianExpLipschitz.lean",
+        "PhysicsSM/Draft/NullEdge/ExactFlowMomentumLipschitz.lean",
+        "PhysicsSM/Draft/NullEdge/ExactFlowCellSampleEnergy.lean",
+        "PhysicsSM/Draft/NullEdge/ExactFlowCellIntegral.lean",
+        "PhysicsSM/Draft/NullEdge/Compact3Plus1DiracRate.lean",
+        "PhysicsSM/Draft/NullEdge/ChangingCellScaledLiveWalk.lean",
+        "AutonomousLab/work/NE-CONTINUUM/CLAUDE_CONT_MULT_AUDIT_VERDICT.md"
+      ],
+      "claim_ids": [
+        "CONT-EXACTFLOW-LIPSCHITZ",
+        "CONT-EXACTFLOW-SAMPLED-CELLS",
+        "CONT-EXACTFLOW-CELL-INTEGRAL"
+      ],
+      "verification_commands": [
+        "lake env lean AgentTasks/aristotle-standalone/hermitian-exp-lipschitz-20260712/HermitianExpLipschitz.lean",
+        "lake build PhysicsSM.Draft.NullEdge.Compact3Plus1DiracRate",
+        "lake build PhysicsSM.Draft.NullEdge.HermitianExpLipschitz",
+        "lake build PhysicsSM.Draft.NullEdge.ExactFlowMomentumLipschitz",
+        "lake build PhysicsSM.Draft.NullEdge.ExactFlowCellSampleEnergy",
+        "lake build PhysicsSM.Draft.NullEdge.ExactFlowCellIntegral",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.52,
+      "target_date": "2026-07-17"
+    },
+    {
+      "id": "CONT-FOURIER-001",
+      "project_id": "NE-CONTINUUM",
+      "parent_id": "CONT-MULT-001",
+      "depends_on": [
+        "CONT-MULT-001"
+      ],
+      "title": "Inverse-Fourier transport and position-space Dirac flow",
+      "status": "EXECUTING",
+      "priority": 95,
+      "role": "research_scientist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "The integrated changing-cell live-walk convergence in momentum space transports through a specified unitary inverse Fourier transform to strong convergence toward the position-space Dirac evolution on a displayed domain.",
+      "nearest_work": "Compose the accepted representative-safe inverse-Fourier transport rung with an exact Dirac momentum-multiplier isometry and Mathlib's derivative/Fourier convention, while keeping the unbounded-generator domain explicit.",
+      "success_criterion": "State the spinor-valued Fourier transform and domain precisely; prove unitary transport of the full momentum-space error; separately identify the exact multiplier flow with the position-space Dirac solution; include zero-field, nonzero wave-packet, and domain-boundary controls; obtain cross-family semantic review.",
+      "kill_condition": "The live embedded fields do not inhabit the Fourier API's Hilbert space without an unproved identification, the position-space generator domain is hidden, or the theorem merely renames momentum-space convergence as PDE convergence.",
+      "next_action": "Harvest Aristotle jobs e790e78a and 3b1fe9d3. If both survive semantic audit, compose their F2 multiplier-isometry and Fourier-partial-derivative lemmas with the accepted ChangingCellFourierL2 F1 transport. Preserve Mathlib's explicit 2*pi convention and open F3 only with a displayed Sobolev or Schwartz domain; do not rename unitary L2 transport as a PDE theorem.",
+      "resource_ceiling": "One API/literature map and one focused Aristotle package after the statement typechecks; no Lorentz-restoration or interacting-QFT claim.",
+      "deliverables": [
+        "Fourier-Plancherel API and convention map",
+        "Unitary transport of the momentum-space convergence theorem",
+        "Position-space Dirac-flow identification on a displayed domain",
+        "Cross-family semantic audit"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/ChangingCellScaledLiveWalk.lean",
+        "PhysicsSM/Draft/NullEdge/ExactFlowCellIntegral.lean",
+        "PhysicsSM/Draft/NullEdge/ChangingCellFourierL2.lean",
+        "AutonomousLab/work/NE-CONTINUUM/CLAUDE_CONT_MULT_AUDIT_VERDICT.md",
+        "AutonomousLab/work/NE-CONTINUUM/CODEX_CONT-FOURIER-001_API_MAP_2026-07-12.md",
+        "AutonomousLab/work/NE-CONTINUUM/CLAUDE_AUDIT_CONT-FOURIER-001_2026-07-12.md"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.ChangingCellScaledLiveWalk",
+        "lake build PhysicsSM.Draft.NullEdge.ExactFlowCellIntegral",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.42,
+      "target_date": "2026-07-21"
+    },
+    {
       "id": "L0-BOOST-001",
       "project_id": "NE-LORENTZ",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Finite support under a noncompact rational boost",
-      "status": "SPECIFIED",
+      "status": "INTEGRATED",
       "priority": 94,
       "role": "research_scientist",
       "owner_model": "codex",
-      "skeptic_model": "opus",
+      "skeptic_model": "claude",
       "exact_claim": "An explicit noncompact rational 1+1 Lorentz boost preserves the Minkowski form but no finite invariant support can contain the selected nonzero future vector.",
+      "nearest_work": "State a positive measure-level Lorentz-invariance theorem without promoting it to equivariant finite-valency decoration.",
       "success_criterion": "Kernel theorem, infinite-orbit witness, zero-vector and identity controls, and source-audited interpretation.",
       "kill_condition": "The chosen exact scalar field or orbit statement does not support the claimed finite-set no-go.",
-      "next_action": "Prepare a focused Lean theorem statement and context pack.",
+      "next_action": "An independent Reproducer replays the exact theorem and controls, then the lab registers the fixed-support no-go while opening a separate positive distributional-Lorentz work item.",
       "resource_ceiling": "One focused Mathlib-only Aristotle package; no full-repo package.",
+      "deliverables": [
+        "Exact rational-boost no-go",
+        "Zero and identity controls",
+        "Independent Aristotle replay"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/L0FiniteSupportBoostNoGo.lean",
+        "AutonomousLab/work/NE-LORENTZ/RED_TEAM_L0-BOOST-001_2026-07-12.md",
+        "AutonomousLab/work/NE-LORENTZ/ARISTOTLE_L0_REPLAY_2026-07-12.md"
+      ],
+      "claim_ids": [
+        "L0-FINITE-BOOST"
+      ],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.L0FiniteSupportBoostNoGo",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
       "forecast_success": 0.78,
       "target_date": "2026-07-15"
     },
     {
+      "id": "L0-DIST-001",
+      "project_id": "NE-LORENTZ",
+      "parent_id": "L0-BOOST-001",
+      "depends_on": [
+        "L0-BOOST-001"
+      ],
+      "title": "Lorentz invariance in distribution and decoration debt",
+      "status": "INTEGRATED",
+      "priority": 93,
+      "role": "archivist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "The primary causal-set literature supports an exact measure-level Lorentz-invariance statement for Poisson sprinklings and a distinct obstruction to equivariant finite-valency direction extraction; neither result by itself supplies Lorentz-equivariant null-edge decorations or physical scale.",
+      "nearest_work": "Formalize a cylinder-event invariance theorem and isolate the additional equivariance and scale assumptions needed for decorated null-edge ensembles.",
+      "success_criterion": "Primary full-text theorem map with hypotheses and theorem locations; corrected uniqueness language; a Lean-ready cylinder-event invariance target or sharpened missing measure API; explicit decoration and scale debts; contradictory-source search.",
+      "kill_condition": "The cited literature does not support the advertised measure statement, the finite-valency corollary is overstated, or the proposed decorated-ensemble theorem silently assumes the equivariance it is meant to derive.",
+      "next_action": "Use the integrated source map to design a separate cylinder-event formalization item only after selecting or building an honest configuration-space point-process API. Preserve the Poisson-uniqueness, hyperuniform, decoration, and scale debts.",
+      "resource_ceiling": "Read-only Neo4j/Zotero until identifier and known-answer checks pass; no Lean proof submission before the source theorem and local measure API are mapped.",
+      "deliverables": [
+        "Primary-source theorem map",
+        "Contradictory-source audit",
+        "Lean-ready measure statement or explicit API blocker"
+      ],
+      "evidence_paths": [
+        "AutonomousLab/work/NE-LORENTZ/LITERATURE_AUDIT_POISSON_LORENTZ_2026-07-12.md",
+        "AutonomousLab/work/NE-LORENTZ/CODEX_L0_DIST_AUDIT_REQUEST.md",
+        "AutonomousLab/work/NE-LORENTZ/CLAUDE_L0_DIST_AUDIT_VERDICT.md"
+      ],
+      "claim_ids": [
+        "L0-POISSON-LORENTZ-SOURCE"
+      ],
+      "verification_commands": [
+        "python AutonomousLab/scripts/labctl.py validate",
+        "python Scripts/lit/neo4j_doc_search.py --query \"Lorentz invariant Poisson sprinkling finite valency\""
+      ],
+      "forecast_success": 0.72,
+      "target_date": "2026-07-17"
+    },
+    {
       "id": "DYN-MODULAR-001",
       "project_id": "NE-DYNAMICS",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Pair-generator maximum-entropy modular selection",
-      "status": "TRIAGED",
+      "status": "INTEGRATED",
       "priority": 90,
       "role": "research_scientist",
-      "owner_model": "opus",
+      "owner_model": "claude",
       "skeptic_model": "codex",
       "exact_claim": "For displayed finite constraints, the unique Gibbs state has modular flow equal to the Pluecker pair evolution up to explicit beta rescaling.",
+      "nearest_work": "Prove non-hollow density-matrix maximum-entropy uniqueness under a displayed nontrivial energy constraint without encoding the selected Gibbs state in the hypotheses.",
       "success_criterion": "Unique-state theorem, flow equality, covariance, noncommuting phase-sensitive witness, and input ledger.",
       "kill_condition": "The uniqueness assumptions encode the desired state or the flow result is only a definitional restatement with no operational witness.",
-      "next_action": "Opus prepares the theorem/source packet; Codex audits existing ModularSelection semantics.",
-      "resource_ceiling": "Context-pack preparation plus at most one Aristotle package; no full-repo package.",
+      "next_action": "Compose the landed full-Bloch theorem with two exact bridges: identify pairEntropy with the repository's spectral von Neumann entropy, and identify pairBloch e 0 0 with the normalized Gibbs state of canonical Bz 1 at beta = -artanh e. Claude owns the completed thermal operator-core harvest 643a0af0. Keep e, beta, and the generator as displayed supplied inputs and do not close the work item until both bridges are kernel-checked.",
+      "resource_ceiling": "The full-Bloch theorem and its independent statement audit have landed. Do not duplicate them. Spend proof capacity only on the spectral-entropy bridge and canonical normalized-Gibbs composition.",
+      "deliverables": [
+        "Finite partition and Gibbs-state certificate",
+        "Maximum-entropy uniqueness theorem",
+        "Active-sector flow intertwiner and phase-sensitive witness"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/HermitianPartitionPositive.lean",
+        "PhysicsSM/Draft/NullEdge/FiniteGibbsInequality.lean",
+        "PhysicsSM/Draft/NullEdge/GibbsVariational.lean",
+        "PhysicsSM/Draft/NullEdge/GibbsVariationalControls.lean",
+        "PhysicsSM/Draft/NullEdge/QuantumKleinShared.lean",
+        "PhysicsSM/Draft/NullEdge/FiniteUniformMaxEntropy.lean",
+        "PhysicsSM/Draft/NullEdge/PSDTraceProductNonneg.lean",
+        "PhysicsSM/Draft/NullEdge/HilbertSchmidtCauchySchwarz.lean",
+        "PhysicsSM/Draft/NullEdge/PurityBounds.lean",
+        "PhysicsSM/Draft/NullEdge/CollisionShannonEntropy.lean",
+        "PhysicsSM/Draft/NullEdge/VNEntropyPurity.lean",
+        "PhysicsSM/Draft/NullEdge/QubitFixedEnergyMaxEntropy.lean",
+        "PhysicsSM/Draft/NullEdge/ThermalBzEuler.lean",
+        "PhysicsSM/Draft/NullEdge/VonNeumannEntropyBound.lean",
+        "PhysicsSM/Draft/NullEdge/PluckerMassOperatorExponential.lean",
+        "PhysicsSM/Draft/NullEdge/PairActiveSectorExponential.lean",
+        "PhysicsSM/Draft/NullEdge/FullFockPairExponential.lean",
+        "PhysicsSM/Draft/NullEdge/CanonicalFullFockPairExponential.lean",
+        "PhysicsSM/Draft/NullEdge/PairModularSelection.lean",
+        "AutonomousLab/work/NE-DYNAMICS/CODEX_RED_TEAM_DYN-MODULAR-001_2026-07-12.md"
+      ],
+      "claim_ids": [
+        "DYN-PAIR-GIBBS",
+        "INFO-GIBBS-FINITE",
+        "INFO-GIBBS-VARIATIONAL",
+        "INFO-QUANTUM-KLEIN-SHARED",
+        "INFO-UNIFORM-MAXENTROPY",
+        "MATRIX-PSD-TRACE",
+        "MATRIX-HS-CS",
+        "INFO-PURITY-BOUNDS",
+        "INFO-COLLISION-SHANNON",
+        "INFO-VN-PURITY",
+        "INFO-VONNEUMANN-MAXENTROPY",
+        "DYN-PLUECKER-MATRIX-EXP",
+        "DYN-PAIR-ACTIVE-EXP",
+        "DYN-FULL-FOCK-CANONICAL-EXP",
+        "DYN-QUBIT-FIXED-ENERGY-MAXENT",
+        "DYN-THERMAL-BZ-CLOSED-FORM"
+      ],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.HermitianPartitionPositive",
+        "lake build PhysicsSM.Draft.NullEdge.FiniteGibbsInequality",
+        "lake build PhysicsSM.Draft.NullEdge.GibbsVariationalControls",
+        "lake build PhysicsSM.Draft.NullEdge.QuantumKleinShared",
+        "lake build PhysicsSM.Draft.NullEdge.FiniteUniformMaxEntropy",
+        "lake build PhysicsSM.Draft.NullEdge.PSDTraceProductNonneg",
+        "lake build PhysicsSM.Draft.NullEdge.HilbertSchmidtCauchySchwarz",
+        "lake build PhysicsSM.Draft.NullEdge.PurityBounds",
+        "lake build PhysicsSM.Draft.NullEdge.CollisionShannonEntropy",
+        "lake build PhysicsSM.Draft.NullEdge.VNEntropyPurity",
+        "lake build PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy",
+        "lake build PhysicsSM.Draft.NullEdge.ThermalBzEuler",
+        "lake build PhysicsSM.Draft.NullEdge.VonNeumannEntropyBound",
+        "lake build PhysicsSM.Draft.NullEdge.PluckerMassOperatorExponential",
+        "lake build PhysicsSM.Draft.NullEdge.PairActiveSectorExponential",
+        "lake build PhysicsSM.Draft.NullEdge.FullFockPairExponential",
+        "lake build PhysicsSM.Draft.NullEdge.CanonicalFullFockPairExponential",
+        "lake build PhysicsSM.Draft.NullEdge.PairModularSelection",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
       "forecast_success": 0.62,
       "target_date": "2026-07-19"
     },
     {
       "id": "GAUGE-COV-001",
       "project_id": "NE-GAUGE-CHIRAL",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Overlap gauge covariance and index invariance",
-      "status": "TRIAGED",
+      "status": "INTEGRATED",
       "priority": 92,
       "role": "research_scientist",
       "owner_model": "codex",
-      "skeptic_model": "opus",
+      "skeptic_model": "claude",
       "exact_claim": "Unitary gauge conjugation of a gapped Hermitian kernel transports its certified sign and overlap operator and preserves the trace index.",
+      "nearest_work": "Upgrade algebraic covariance to a local gauge-field family with locality control and a nonzero topological index witness.",
       "success_criterion": "General theorem plus nonidentity gauge witness, trivial-index control, and gap-closing boundary.",
       "kill_condition": "The existing certified-sign API lacks conjugation naturality or the proposed gauge hypotheses are insufficient.",
-      "next_action": "Inspect GateC2 definitions, PhysLean conventions, and matrix functional-calculus APIs.",
+      "next_action": "Open a separate successor only when a local gauge-field family, locality notion, and explicit nonzero-index background are stated. Do not promote abstract basis conjugation to a physical gauge connection.",
       "resource_ceiling": "Targeted lake builds; one focused Aristotle package only if locally stalled.",
+      "deliverables": [
+        "General overlap conjugation covariance theorem",
+        "Nonidentity gauge witness",
+        "Independent semantic audit"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/GateC2/OverlapGaugeCovarianceCapstone.lean",
+        "AutonomousLab/work/NE-GAUGE-CHIRAL/CODEX_GAUGE_COV_AUDIT_REQUEST.md",
+        "AutonomousLab/work/NE-GAUGE-CHIRAL/CLAUDE_GAUGE_COV_AUDIT_VERDICT.md"
+      ],
+      "claim_ids": [
+        "GAUGE-OVERLAP-CONJ-COV"
+      ],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.GateC2.OverlapGaugeCovarianceCapstone",
+        "lake build PhysicsSM.Draft.NullEdge.GateC2",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
       "forecast_success": 0.7,
       "target_date": "2026-07-19"
     },
     {
+      "id": "GAUGE-YM-KP-001",
+      "project_id": "NE-GAUGE-CHIRAL",
+      "parent_id": null,
+      "depends_on": [],
+      "title": "Yang-Mills polymer Kotecky-Preiss combinatorial crux",
+      "status": "KILLED",
+      "priority": 91,
+      "role": "research_scientist",
+      "owner_model": "claude",
+      "skeptic_model": "codex",
+      "exact_claim": "The displayed polymer pair sum is bounded by the exponential majorant through the proposed finite fiber-count injection in PolymerKPConclusion.pairSum_le_expBound.",
+      "nearest_work": "The proposed fibrewise route is dead. Preserve the valid forest expansion and move the still-open global inequality to GAUGE-YM-EGF-001.",
+      "success_criterion": "Aristotle returns the unchanged pairSum_le_expBound statement; both model families replay it under the pinned toolchain, audit the fiber-count map for vacuity, and guard-pin the exact theorem before any convergence interpretation is promoted.",
+      "kill_condition": "The proposed fiber map is not injective, the cardinality factor is insufficient, the theorem statement is vacuous, or closing the proof requires weakening the displayed inequality.",
+      "next_action": "Do not integrate the failed target. Retain the independent audit and downloaded archive as the failure record; any further work proceeds only under GAUGE-YM-EGF-001.",
+      "resource_ceiling": "Closed after one focused Aristotle package. No resubmission of the disproved fibre-count strategy.",
+      "deliverables": [
+        "Kernel-checked pairSum_le_expBound theorem",
+        "Explicit fiber-count or cardinality proof",
+        "Cross-family semantic and vacuity audit"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean",
+        "PhysicsSM/Draft/NullEdge/GateYM/PolymerKPCriterion.lean",
+        "PhysicsSM/Draft/NullEdge/GateYM/TreeGraphInequality.lean",
+        "AgentTasks/aristotle-standalone/ym-crux-20260712",
+        "AgentTasks/aristotle-downloads/3cec307a-codex-independent",
+        "AutonomousLab/work/NE-GAUGE-CHIRAL/CODEX_RED_TEAM_GAUGE-YM-KP-001_2026-07-12.md"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion",
+        "lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.55,
+      "target_date": "2026-07-15"
+    },
+    {
+      "id": "GAUGE-YM-EGF-001",
+      "project_id": "NE-GAUGE-CHIRAL",
+      "parent_id": "GAUGE-YM-KP-001",
+      "depends_on": [],
+      "title": "Global labelled-tree exponential inequality",
+      "status": "RED_TEAM",
+      "priority": 91,
+      "role": "research_scientist",
+      "owner_model": "claude",
+      "skeptic_model": "codex",
+      "exact_claim": "The unchanged finite pairSum_le_expBound inequality follows from a genuinely global labelled-rooted-tree exponential or recurrence argument, without any per-fibre or per-child-size domination claim.",
+      "nearest_work": "Derive a coefficient-level recurrence from rhs_forest_expand2 and identify the exact global compensation inequality needed before returning to the full polymer system.",
+      "success_criterion": "A proof-hole-free unchanged pairSum_le_expBound theorem, an explicit nonvacuous single-polymer coefficient control through at least n=7, cross-family replay, and a guard pin before composition with the polymer criterion.",
+      "kill_condition": "The global inequality itself fails on a finite polymer system, the recurrence requires a false coefficientwise domination, or the proof needs assumptions absent from the displayed theorem.",
+      "next_action": "Harvest the one time-boxed rooted normalization probe 70a0d064. If R0 fails, close this route and package the per-fibre plus unrooted-recurrence plus rooted-R0 failures as a Branch-B impossibility result. If R0 succeeds, record only the normalization bridge and require a fresh portfolio decision before funding R1; do not submit R1 automatically.",
+      "resource_ceiling": "Capped at the already-running rooted R0 attempt 70a0d064 for this allocation cycle. No automatic successor proof spend; a new portfolio decision is required after harvest.",
+      "deliverables": [
+        "Global coefficient or recurrence lemma",
+        "Nonvacuous n=7 control showing cross-class compensation",
+        "Kernel-checked unchanged pairSum_le_expBound theorem",
+        "Cross-family semantic audit"
+      ],
+      "evidence_paths": [
+        "PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean",
+        "AgentTasks/aristotle-downloads/3cec307a-codex-independent",
+        "AgentTasks/afpl-gauge-rooted-touch-r0-aristotle-2026-07-13.md",
+        "AutonomousLab/work/NE-GAUGE-CHIRAL/CODEX_RED_TEAM_GAUGE-YM-KP-001_2026-07-12.md",
+        "AutonomousLab/work/NE-GAUGE-CHIRAL/ARCHIVIST_GAUGE-YM-EGF-001_2026-07-12.md",
+        "AutonomousLab/work/role-activations/VISIONARY_PORTFOLIO_2026-07-13_00.md"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion",
+        "lake build PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.35,
+      "target_date": "2026-07-19"
+    },
+    {
+      "id": "GRAV-DPI-001",
+      "project_id": "NE-GRAVITY-SCALE",
+      "parent_id": null,
+      "depends_on": [],
+      "title": "Finite classical relative-entropy data processing",
+      "status": "INTEGRATED",
+      "priority": 89,
+      "role": "research_scientist",
+      "owner_model": "claude",
+      "skeptic_model": "codex",
+      "exact_claim": "For finite positive probability distributions and a displayed stochastic map, classical relative entropy does not increase under the map.",
+      "nearest_work": "Identify a physically derived gravitational coarse-graining channel and prove that its information monotonicity yields a gravitational response law rather than merely satisfying generic data processing.",
+      "success_criterion": "A kernel-checked finite DPI theorem with normalization and positivity hypotheses explicit, equality or strictness boundary controls, and a semantic audit that separates generic information theory from gravity.",
+      "kill_condition": "The proposed statement omits support hypotheses needed for logarithms, encodes stochasticity incorrectly, or the gravity interpretation adds content absent from the generic finite theorem.",
+      "next_action": "Use the integrated generic DPI only as an input to a new atomic item that derives a physically specified null-edge coarse-graining channel; do not infer a gravitational response law from generic monotonicity.",
+      "resource_ceiling": "One focused Mathlib-only Aristotle package and targeted Lean replay; no gravitational field-equation claim in this item.",
+      "deliverables": [
+        "Finite classical DPI theorem",
+        "Positivity and equality-boundary controls",
+        "Cross-family semantic audit"
+      ],
+      "evidence_paths": [
+        "AgentTasks/aristotle-standalone/classical-dpi-20260712",
+        "AgentTasks/aristotle-output/74503dba-277a-4579-8e76-4c03b481c6b1",
+        "PhysicsSM/Draft/NullEdge/FiniteClassicalDPI.lean",
+        "PhysicsSM/Draft/NullEdge/PinskerInequality.lean",
+        "AutonomousLab/work/NE-GRAVITY-SCALE/CODEX_RED_TEAM_GRAV-DPI-001_2026-07-12.md"
+      ],
+      "claim_ids": [
+        "INFO-CLASSICAL-DPI",
+        "INFO-PINSKER-FINITE"
+      ],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.FiniteClassicalDPI",
+        "lake build PhysicsSM.Draft.NullEdge.PinskerInequality",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.74,
+      "target_date": "2026-07-15"
+    },
+    {
+      "id": "GRAV-SSA-001",
+      "project_id": "NE-GRAVITY-SCALE",
+      "parent_id": null,
+      "depends_on": [],
+      "title": "Finite classical strong subadditivity",
+      "status": "INTEGRATED",
+      "priority": 88,
+      "role": "research_scientist",
+      "owner_model": "claude",
+      "skeptic_model": "codex",
+      "exact_claim": "For every finite nonnegative normalized joint distribution, Shannon entropy obeys H(XYZ) + H(Z) <= H(XZ) + H(YZ).",
+      "nearest_work": "Lift the finite result to quantum strong subadditivity or derive a concrete geometric entropy inequality from a physically specified null-edge coarse-graining channel.",
+      "success_criterion": "A kernel-checked finite SSA theorem with marginal definitions, normalization hypotheses, a conditional-independence equality control, and a semantic audit separating classical information theory from holography or gravity.",
+      "kill_condition": "The marginal definitions use inconsistent tuple ordering, zero entries invalidate the logarithmic convention, or the gravity interpretation is promoted without a derived physical channel.",
+      "next_action": "Use this integrated classical theorem only as an input to a separately specified quantum or physical-channel item. Do not promote holographic or gravitational conclusions from generic classical SSA.",
+      "resource_ceiling": "One focused Mathlib-only Aristotle package and targeted Lean replay; no quantum or holographic promotion in this item.",
+      "deliverables": [
+        "Finite classical SSA theorem",
+        "Marginal and equality-boundary controls",
+        "Cross-family semantic audit"
+      ],
+      "evidence_paths": [
+        "AgentTasks/aristotle-standalone/classical-ssa-20260712",
+        "AgentTasks/aristotle-output/f52514f3-ef05-4365-bab9-effafa551ebd",
+        "PhysicsSM/Draft/NullEdge/ClassicalStrongSubadditivity.lean",
+        "PhysicsSM/Draft/NullEdge/ClassicalStrongSubadditivityControls.lean",
+        "AutonomousLab/work/NE-GRAVITY-SCALE/CODEX_RED_TEAM_GRAV-SSA-001_2026-07-12.md"
+      ],
+      "claim_ids": [
+        "INFO-CLASSICAL-SSA"
+      ],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.ClassicalStrongSubadditivity",
+        "lake build PhysicsSM.Draft.NullEdge.ClassicalStrongSubadditivityControls",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.68,
+      "target_date": "2026-07-15"
+    },
+    {
       "id": "BRIDGE-AE-001",
       "project_id": "NE-BRIDGES",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Rest-operator/pair-generator active-sector bridge",
-      "status": "TRIAGED",
+      "status": "PARKED",
       "priority": 80,
       "role": "visionary",
-      "owner_model": "opus",
+      "owner_model": "claude",
       "skeptic_model": "codex",
       "exact_claim": "A canonical active-sector map intertwines the two-by-two Pluecker rest operator and pair generator, while a stated rank or representation obstruction blocks a naive full-sector equivalence.",
+      "nearest_work": "Find a grading-respecting star-algebra invariant that distinguishes a canonical bridge from a chosen coordinate identification.",
       "success_criterion": "Explicit map, operator/evolution corollaries, nonzero and zero controls, and no-extension theorem.",
       "kill_condition": "The map is only a chosen coordinate identification or the full-sector distinction has no invariant content.",
-      "next_action": "Compare exact definitions and state the strongest non-hollow bridge.",
+      "next_action": "Keep the basis-action bridge folded into DYN-MODULAR. Reactivate only with a nontrivial grading-respecting star-algebra or rank/kernel invariant beyond coordinate identification and dimension count.",
       "resource_ceiling": "Design and audit only until the intertwiner statement typechecks; no proof-search spend before that.",
+      "deliverables": [
+        "Invariant bridge specification",
+        "Noncanonicity or no-extension theorem",
+        "Decision to reactivate or supersede"
+      ],
+      "evidence_paths": [
+        "AutonomousLab/work/NE-BRIDGES/BRIDGE-AE-001_scope_analysis.md"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "python AutonomousLab/scripts/labctl.py validate"
+      ],
       "forecast_success": 0.58,
       "target_date": "2026-07-21"
     },
     {
       "id": "ARCHIVE-BASELINE-001",
       "project_id": "LAB-INFRA",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Establish the literature and knowledge-graph baseline",
-      "status": "TRIAGED",
+      "status": "PARKED",
       "priority": 86,
       "role": "archivist",
       "owner_model": "codex",
-      "skeptic_model": "opus",
+      "skeptic_model": "claude",
       "exact_claim": "Every load-bearing claim in the active manuscript portfolio has a canonical primary-source record, a recorded convention check, and a discoverable Zotero/Neo4j path or an explicit source-debt entry.",
+      "nearest_work": "Automate bidirectional checks from manuscript claims to canonical source identifiers and full-text knowledge-graph chunks.",
       "success_criterion": "Audit the active manuscripts, deduplicate canonical identifiers, refresh document and paper indexes, and pass known-answer retrieval checks recorded in an archive maintenance report.",
       "kill_condition": "The available source text or identifiers are insufficient to establish canonical provenance for a load-bearing claim; that claim must be downgraded or entered as source debt.",
-      "next_action": "Inventory active manuscript citations and establish known-answer retrieval queries before changing Zotero or Neo4j.",
-      "resource_ceiling": "Read-only Zotero/Neo4j until known-answer checks pass; writes follow the dedup protocol.",
+      "next_action": "Resolve the 26 NEEDS-VERIFY source markers and nine missing manuscript arXiv links from the accepted inventory. Reconcile the 1709.04891 prefixed-key duplicate by canonical arXiv/DOI identity before any add, then rerun the deterministic repository, Zotero, and Neo4j known-answer checks and record every unresolved claim as explicit source debt.",
+      "resource_ceiling": "Bounded Zotero/Neo4j writes are allowed only through the documented arXiv/DOI dedup protocol now that deterministic retrieval tests pass; no title-only dedup or bulk mutation.",
+      "deliverables": [
+        "Citation inventory",
+        "Canonical identifier and source-debt map",
+        "Known-answer retrieval report"
+      ],
+      "evidence_paths": [
+        "AutonomousLab/LITERATURE_AND_KNOWLEDGE.md",
+        "Sources/Null_Edge_References.md",
+        "AutonomousLab/work/LAB-INFRA/ARCHIVE-BASELINE-001_inventory_2026-07-12.md",
+        "AutonomousLab/work/LAB-INFRA/ARCHIVE-MAINTENANCE-001_2026-07-12.md",
+        "AutonomousLab/work/LAB-INFRA/CLAUDE_AUDIT_ARCHIVE-BASELINE-001_2026-07-12.md",
+        "Scripts/lit/test_neo4j_doc_search.py"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "python AutonomousLab/scripts/labctl.py validate",
+        "python Scripts/lit/neo4j_doc_search.py --changed"
+      ],
       "forecast_success": 0.9,
       "target_date": "2026-07-16"
     },
     {
       "id": "EDU-OVERVIEW-001",
       "project_id": "LAB-INFRA",
+      "parent_id": null,
+      "depends_on": [],
       "title": "Build the first evidence-preserving public explanation ladder",
-      "status": "TRIAGED",
+      "status": "EXECUTING",
       "priority": 78,
       "role": "educator",
-      "owner_model": "opus",
+      "owner_model": "claude",
       "skeptic_model": "codex",
       "exact_claim": "The program overview can be translated into general-reader, undergraduate, and adjacent-researcher forms while preserving the same evidence grades, formal anchors, and kill conditions.",
+      "nearest_work": "Test whether readers at three audience levels recover the same claim grades and boundaries without access to the technical manuscript.",
       "success_criterion": "Produce three audience briefs with a shared claim map, at least one tested visual explanation, and research-owner plus Skeptic review.",
       "kill_condition": "A central public-facing claim cannot be expressed accessibly without becoming materially stronger or less falsifiable than its technical source.",
-      "next_action": "Take Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex as the baseline artifact; extract its ten most important claims and map each to a state/CLAIMS.json row or literature anchor.",
+      "next_action": "Using the now-complete nine-headline claim map, produce undergraduate and adjacent-researcher briefs alongside the existing general-reader packet, add one tested visual explanation shared across levels, and run a comprehension plus overclaim audit before requesting Codex review.",
       "resource_ceiling": "Docs only; every public-facing claim must map to a claim-registry row.",
+      "deliverables": [
+        "Shared claim map",
+        "Three audience-specific briefs",
+        "Comprehension and overclaim audit"
+      ],
+      "evidence_paths": [
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex",
+        "AutonomousLab/work/LAB-INFRA/EDU-OVERVIEW-001_claim_map.md",
+        "AutonomousLab/state/CLAIMS.json",
+        "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean"
+      ],
+      "claim_ids": [
+        "A-PLUECKER-MASS-AREA",
+        "INFO-NULL-ENTROPY",
+        "E-SPEC",
+        "A-DOUBLING-CENSUS",
+        "C-POS",
+        "A-COVARIANCE-FORCED",
+        "LAMBDA-FORK",
+        "FB-SU3",
+        "C1-FREE-CHIRAL-PROJECTORS"
+      ],
+      "verification_commands": [
+        "python AutonomousLab/scripts/labctl.py validate",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
       "forecast_success": 0.88,
       "target_date": "2026-07-18"
+    },
+    {
+      "id": "QCA-3PLUS1-001",
+      "project_id": "NE-3PLUS1",
+      "parent_id": null,
+      "depends_on": [],
+      "title": "Anomalous-Floquet null microsteps with causal interior exhaustion",
+      "status": "EXECUTING",
+      "priority": 99,
+      "role": "research_scientist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "A strictly local periodically driven 3+1 update can carry one bulk Weyl crossing when the compensating topological charge is stored in full-period micromotion, while primitive-null factorization and growing open diamonds preserve exact finite-time interior observables.",
+      "nearest_work": "Prove the generic finite-propagation equality for two locally identical open diamonds, then reconstruct a published single-Weyl Floquet schedule and test whether each substep admits a primitive-null factorization with nonzero loop winding.",
+      "success_criterion": "Kernel-check AF0-AF5: unitary micromotion schedule, one tagged bulk crossing with nonzero local charge, nonzero full-loop invariant and generalized balance, primitive-null finite-range factorization, and an exact causal-exhaustion theorem separating surface modes from compact interior observables.",
+      "kill_condition": "Every primitive-null schedule has zero micromotion winding; the compensating sector remains a second light bulk species after zero/pi accounting; or boundary modes retain nonvanishing influence on fixed compact interior observables in the exhaustion limit.",
+      "next_action": "Formalize OD5 causal-region equality and AF1 tagged crossing census while the active Aristotle construction jobs test finite-depth null microsteps, open spectral graphs, and the full Brillouin balance.",
+      "resource_ceiling": "Keep at most two dedicated Aristotle construction jobs active; numerical oracles are advisory only; no single-Weyl or continuum claim before cross-family review and aggregate guards.",
+      "deliverables": [
+        "Anomalous-Floquet theorem ladder AF0-AF6",
+        "Primitive-null schedule or scoped factorization no-go",
+        "Exact open-diamond interior-exhaustion theorem",
+        "Zero/pi bulk and surface census with anomaly audit"
+      ],
+      "evidence_paths": [
+        "AutonomousLab/work/NE-3PLUS1/CODEX_ANOMALOUS_FLOQUET_3PLUS1_ROUTE_2026-07-13.md",
+        "AutonomousLab/work/NE-3PLUS1/CODEX_OPEN_CAUSAL_DIAMOND_ROUTE_2026-07-13.md",
+        "AutonomousLab/work/NE-3PLUS1/CLAUDE_OPEN_DIAMOND_BOUNDARY_MODE_AUDIT_2026-07-13.md",
+        "PhysicsSM/Draft/NullEdge/FloquetMicromotionSchedule.lean",
+        "PhysicsSM/Draft/NullEdge/FloquetTaggedCrossingBalance.lean",
+        "Scripts/experiments/directed_edge_open_diamond.py"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "lake env lean PhysicsSM/Draft/NullEdge/FloquetMicromotionSchedule.lean",
+        "python Scripts/experiments/directed_edge_open_diamond.py --radii 2 3 4 5 6 --coins grover fourier --separation 1 --decoupling-steps 4 --decoupling-only",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard"
+      ],
+      "forecast_success": 0.42,
+      "target_date": "2026-07-20"
+    },
+    {
+      "id": "GRAV-ORDER-SUPPORT-001",
+      "project_id": "NE-GRAVITY-SCALE",
+      "parent_id": null,
+      "depends_on": [],
+      "title": "Fixed-local-scale causal-diamond support boundary control",
+      "status": "RED_TEAM",
+      "priority": 96,
+      "role": "research_scientist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "At fixed supplied discreteness scale, operator scale, adjacent ratio, and count bands, increasing Alexandrov-diamond duration with random-event count proportional to four-volume distinguishes finite-boundary truncation from failure of the same-scale-interior retarded-shell rule.",
+      "nearest_work": "Stage A3b proves the max-clearance adjacent hierarchy exists above an exact density threshold and finds common interiors at every valid density, but only 0.33%, 2.49%, and 3.23% of common marks at N=800,1200,2400 have rank-capable shells at all three scales; the largest-scale shell median remains zero.",
+      "success_criterion": "First prove the sparse interval-count implementation exactly matches the dense A3b interiors, marks, and shell counts on both a chain and a genuine partial causal order. Then run ten frozen realizations at exact four-volume multipliers 1, 2, and 4 with baseline N=1200 density, L=0.18, r=1.25, unchanged count bands, and no coordinates after relation construction. Boundary truncation survives only if the multiplier-4 largest-scale shell median is positive and the all-three-scale rank-capable randomized-mark rate reaches at least 0.80.",
+      "kill_condition": "Kill same-scale source interiority before any generalized eigensolver if dense-versus-sparse equivalence fails, or if the largest-volume control retains a zero largest-shell median or an all-three-scale rank-capable randomized-mark rate below 0.80. A rare hand-picked capable mark is not a pass.",
+      "next_action": "Await and disposition Claude review msg-20260716-055438-86c233c7. If the sparse semantics and split verdict survive, record the same-scale rule as killed, update the G2 ledger, and preregister a fresh-seed nested source-interior successor before further execution.",
+      "resource_ceiling": "At most thirty sprinklings with no more than 4800 random events each; exact sparse order and interval counts using the existing SciPy dependency; no target metric, coordinate-selected mark, eigensolver, new dependency, or Aristotle slot.",
+      "deliverables": [
+        "Sparse adjacent-support implementation and dense-equivalence tests",
+        "Three-volume machine-readable boundary-control result",
+        "Claim-graded benchmark report and GR-ledger update",
+        "Independent Claude-family protocol and interpretation review"
+      ],
+      "evidence_paths": [
+        "Scripts/experiments/causal_larger_diamond_support.py",
+        "Scripts/experiments/test_causal_larger_diamond_support.py",
+        "AgentTasks/null-edge-causal-adjacent-scale-availability-stage-a3b-benchmark-2026-07-16.md",
+        "AgentTasks/causal-adjacent-scale-availability-stage-a3b-2026-07-16.json",
+        "AgentTasks/null-edge-causal-larger-diamond-support-stage-a3c-benchmark-2026-07-16.md",
+        "AgentTasks/causal-larger-diamond-support-stage-a3c-2026-07-16.json",
+        "AutonomousLab/work/NE-GRAVITY-SCALE/CODEX_A3C_BOUNDARY_CONTROL_REVIEW_REQUEST_2026-07-16.md",
+        "Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "cd Scripts/experiments && python -m unittest test_causal_larger_diamond_support.py test_causal_adjacent_scale_availability.py",
+        "cd Scripts/experiments && ruff check causal_larger_diamond_support.py test_causal_larger_diamond_support.py",
+        "cd Scripts/experiments && python causal_larger_diamond_support.py --realizations 10 --output ../../AgentTasks/causal-larger-diamond-support-stage-a3c-2026-07-16.json",
+        "python AutonomousLab/scripts/labctl.py validate",
+        "pre-commit run --all-files"
+      ],
+      "forecast_success": 0.25,
+      "target_date": "2026-07-16"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-12T11:52:00-07:00",
+  "updated_at": "2026-07-12T23:20:00-07:00",
   "note": "Canonical per-claim registry (EVIDENCE_MODEL section 6). Grades: T, T|H, M, M+E, S, C, I, X; SRL 0-9 attaches to the claim, not the paper. Every indicative manuscript sentence must map to a row here (or be subjunctive/oracle-labeled). Seeded 2026-07-12 from HONEST_SCORECARD.md and FINAL_REPORT.md of the 24h publication run; guard attributions per those documents.",
   "claims": [
     {
@@ -16,7 +16,8 @@
       ],
       "guard_file": "PhysicsSM/Draft/NullEdge/LambdaCosmologyAxiomGuard.lean",
       "manuscript_uses": [
-        "Sources/Null_Edge_Cosmological_Constant_Manuscript_Draft_2026-07-12.tex"
+        "Sources/Null_Edge_Cosmological_Constant_Manuscript_Draft_2026-07-12.tex",
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
       ],
       "notes": "Physical count-identification (which count the dynamics conjugates to Lambda) remains grade C with a stated kill condition."
     },
@@ -32,7 +33,8 @@
       ],
       "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
       "manuscript_uses": [
-        "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+        "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex",
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
       ],
       "notes": "Resolves Paper A open problem 4; construction replaces the scalar mass input with geometric data, it does not predict a mass value."
     },
@@ -48,7 +50,8 @@
       ],
       "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
       "manuscript_uses": [
-        "Sources/Null_Edge_HalfWinding_Defect_Paper_Draft_2026-07-11.tex"
+        "Sources/Null_Edge_HalfWinding_Defect_Paper_Draft_2026-07-11.tex",
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
       ],
       "notes": "Positional-law core is kernel-clean after the 07-12 retrofit; the paper's Pinned*/HalfWinding* fixtures remain M+E, so Paper C is NOT globally kernel-clean."
     },
@@ -64,7 +67,8 @@
       ],
       "guard_file": "PhysicsSM/Draft/NullEdge/PairSpectrumFixtureGuard.lean (on-demand heavy guard, >34GB rebuild)",
       "manuscript_uses": [
-        "Sources/Null_Edge_Finite_CAR_Dynamics_Draft_2026-07-12.tex"
+        "Sources/Null_Edge_Finite_CAR_Dynamics_Draft_2026-07-12.tex",
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
       ],
       "notes": "Factorization/cubic/structural identification are kernel; the 28x28 Gaussian-integer twin arithmetic runs the disclosed compiled evaluator. Generator supplied, not derived."
     },
@@ -80,9 +84,474 @@
       ],
       "guard_file": "guarded per FB manuscript guard blocks (see HONEST_SCORECARD FB-SU3; exact guard file not re-verified in this seed)",
       "manuscript_uses": [
-        "Sources/Furey_Baez_Octonion_SM_Formalization_Manuscript_2026-07-11.tex"
+        "Sources/Furey_Baez_Octonion_SM_Formalization_Manuscript_2026-07-11.tex",
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
       ],
       "notes": "Deliberately NOT a statement about the smooth Lie group G_2 = Aut(O); RH singlet completion is a recorded conventional input elsewhere in the FB package."
+    },
+    {
+      "id": "D-PROJ-L2",
+      "statement": "The explicit refining and exhausting finite normalized cell-average projections converge strongly in squared L2(R^3) error to every complex L2 field. The compact core is localized to the uniformly bounded union of active cells, and arbitrary-L2 transfer uses the exact 6 + 3 estimate.",
+      "grade": "M",
+      "srl": 5,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionCompactCore.compact_lipschitz_projectAt_tendsto_sq_error_zero",
+        "PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongL2.projectAt_tendsto_strong_L2"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex",
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
+      ],
+      "notes": "This is representative-safe projection convergence. It does not identify projection coefficients with the live walk, apply inverse Fourier transport, or establish the position-space Dirac PDE limit. Claude-family semantic audit co-signed the grade and scope. Independent Aristotle task b85a9613 replayed both files and guarded axiom footprints; returned SHA-256 hashes match the live modules exactly. Work item CONT-PROJ-001 is integrated."
+    },
+    {
+      "id": "DYN-PAIR-GIBBS",
+      "statement": "Within the displayed real-level pair-generator family, central-shift selection is equivalent to level balance. At balance the finite Hermitian partition function is nonzero, the modular Hamiltonian exponentiates to the normalized Gibbs state, and its modular flow equals conjugation by the Pluecker rest block with explicit beta-time rescaling.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.PairModularSelection.pair_modular_selection",
+        "PhysicsSM.Draft.NullEdge.PairModularSelection.balanced_partition_ne_zero",
+        "PhysicsSM.Draft.NullEdge.PairModularSelection.balanced_gibbs_state_certified",
+        "PhysicsSM.Draft.NullEdge.PairModularSelection.balanced_gibbs_modular_flow",
+        "PhysicsSM.Draft.NullEdge.PairModularSelection.pair_selection_kill"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Finite_CAR_Dynamics_Draft_2026-07-12.tex"
+      ],
+      "notes": "The wedge coupling z, level constraints, beta, and balance condition are supplied inputs. This claim does not prove maximum-entropy uniqueness, derive balance dynamically, or identify the supplied Uop operation with exp(-i alpha Kop). The generic partition theorem was proved by Aristotle task 7b561cc8 and checked locally; aggregate guard passes at 8,368 jobs."
+    },
+    {
+      "id": "INFO-GIBBS-FINITE",
+      "statement": "For finite probability vectors p and strictly positive q, classical relative entropy is nonnegative and vanishes exactly when p = q; an explicit point-mass versus uniform two-point witness is strictly positive.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.FiniteGibbsInequality.relEntropy_nonneg",
+        "PhysicsSM.Draft.NullEdge.FiniteGibbsInequality.relEntropy_eq_zero_iff",
+        "PhysicsSM.Draft.NullEdge.FiniteGibbsInequality.pointMass_uniform_relEntropy_pos"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Scalar finite information theory only. This is an input to the open matrix maximum-entropy theorem; it does not prove a quantum Klein inequality, characterize density matrices, derive a Gibbs ensemble, or supply a gravity channel. Aristotle project 6bb9f7bb returned the core proof; Codex independently replayed it, added nonzero and boundary controls, and passed the 8,379-job aggregate guard."
+    },
+    {
+      "id": "DYN-PLUECKER-MATRIX-EXP",
+      "statement": "For every nonzero complex Pluecker coordinate z and real parameter a, the exponential exp(-i a B(z)) of the canonical two-by-two rest operator equals its exact cosine-sine mass coin.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.PluckerMassOperatorExponential.massOperator_exp_euler",
+        "PhysicsSM.Draft.NullEdge.PluckerMassOperatorExponential.exp_eq_massCoin"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "This is the canonical two-dimensional matrix exponential rung only. It does not prove that the Fock-space operation Uop is exp(-i alpha Kop), nor does it identify the separate phase-sensitive Uop witness with the selected modular flow. Aristotle project 0bf55f18 returned the unchanged target; Codex independently replayed and adapted it to the live massOperator API. Targeted builds and the 8,381-job aggregate guard pass."
+    },
+    {
+      "id": "INFO-VONNEUMANN-MAXENTROPY",
+      "statement": "Every finite nonempty positive-semidefinite Hermitian complex matrix of trace one has von Neumann entropy at most log of the dimension; the maximally mixed scalar matrix attains that value, and saturation forces that matrix.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.VonNeumannEntropyBound.vonNeumann_le_log_card",
+        "PhysicsSM.Draft.NullEdge.VonNeumannEntropyBound.entropy_eq_log_card_implies_maximallyMixed",
+        "PhysicsSM.Draft.NullEdge.VonNeumannEntropyBound.maximallyMixed_entropy"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "This is the complete unconstrained finite-dimensional entropy-ceiling characterization, but it has no nontrivial energy constraint and therefore does not close Gibbs-state uniqueness for DYN-MODULAR-001. Aristotle project 8300c085 supplied the ceiling; project ecdde87c supplied the scalar-state eigenvalue and attainment proofs. Codex independently replayed both, composed scalar equality with the Hermitian spectral theorem to prove saturation uniqueness, and passed direct, targeted, and 8,392-job aggregate guard builds."
+    },
+    {
+      "id": "DYN-PAIR-ACTIVE-EXP",
+      "statement": "On the ordered lowPair/highPair coordinates, the quartic pair generator Kop is exactly the canonical Pluecker rest matrix, and the displayed Uop cosine-sine evolution is its genuine matrix exponential; a nonzero generator control and an equal-modulus 3+4i versus 5 phase witness are explicit.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.PairActiveSectorExponential.pairCoordinates_Kop",
+        "PhysicsSM.Draft.NullEdge.PairActiveSectorExponential.pairCoordinates_Uop_exp",
+        "PhysicsSM.Draft.NullEdge.PairActiveSectorExponential.active_generator_nonzero",
+        "PhysicsSM.Draft.NullEdge.PairActiveSectorExponential.active_exponential_phase_sensitive"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "This is an active-coordinate theorem, not an equality of endomorphism exponentials on the full sixteen-state Fock space. It also does not derive z, beta, or the state-selection constraint. Codex composed the live Kop and Uop APIs with the independently replayed S1 matrix exponential, added nonzero and phase-sensitive controls, and passed targeted builds plus the 8,388-job aggregate guard."
+    },
+    {
+      "id": "CONT-EXACTFLOW-LIPSCHITZ",
+      "statement": "Finite Hermitian four-by-four evolution satisfies the sharp bound ||exp(-itH)-exp(-itK)|| <= |t| ||H-K||; for the live 3+1 Dirac symbol this yields an L1 momentum bound and, inside a physical momentum cell of side h, an exact-multiplier variation bound 3|t|h/2.",
+      "grade": "M",
+      "srl": 5,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.HermitianExpLipschitz.hermitian_exp_lipschitz",
+        "PhysicsSM.Draft.NullEdge.ExactFlowMomentumLipschitz.exactFlow_momentum_lipschitz",
+        "PhysicsSM.Draft.NullEdge.ExactFlowMomentumLipschitz.exactFlow_cellCenter_norm_le",
+        "PhysicsSM.Draft.NullEdge.ExactFlowMomentumLipschitz.H_x_witness_ne"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "This is finite-dimensional operator analysis plus a pointwise physical-cell estimate. It does not yet prove the global arbitrary-L2 multiplier-variation integral, inverse Fourier reconstruction, position-space PDE convergence, or Lorentz restoration. Aristotle project d36236e4 returned the sharp theorem unchanged; Codex independently replayed it and composed the live Dirac and cell bounds with zero-time and nonconstant-generator controls. Targeted 8,030-job and 8,392-job aggregate guard builds pass."
+    },
+    {
+      "id": "CONT-CHANGING-CELL-LIVE",
+      "statement": "For every fixed four-component L2 momentum field and bounded mass, the scheduled refining-cell coefficients are normalized by the square root of cell volume, and the total re-embedded L2 error energy between the actual scaled split walk and exact Dirac evolution frozen at the physical cell centers tends to zero.",
+      "grade": "M",
+      "srl": 5,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.ChangingMomentumCellCoefficientBridge.embedFinite_cellCoefficient",
+        "PhysicsSM.Draft.NullEdge.ChangingMomentumCellCoefficientBridge.bare_average_wrong_energy_two",
+        "PhysicsSM.Draft.NullEdge.ChangingCellScaledLiveWalk.embeddedScaledLiveError_tendsto_zero"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "The refinement schedule simultaneously changes mesh, momentum window, and Trotter step count. Exact evolution is frozen at each cell center. No intra-cell multiplier estimate, inverse Fourier transform, position-space PDE convergence, or Lorentz restoration is claimed. Claude-family skeptic review returned ACCEPT_WITH_SCOPE after tracing normalization, actual splitStep use, scheduled-mode coverage, energy squeeze, and non-vacuity. Targeted builds and the 8,388-job aggregate guard pass."
+    },
+    {
+      "id": "INFO-CLASSICAL-DPI",
+      "statement": "For finite probability vectors p and strictly positive q, every displayed nonnegative column-stochastic kernel contracts classical relative entropy. The identity channel realizes equality and an explicit two-input collapse channel realizes strict contraction.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.FiniteClassicalDPI.relEntropy_dpi",
+        "PhysicsSM.Draft.NullEdge.FiniteClassicalDPI.identityTwo_relEntropy_eq",
+        "PhysicsSM.Draft.NullEdge.FiniteClassicalDPI.collapseTwoToOne_strict"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Generic finite classical information theory only. The kernel convention is column-stochastic: T i j is the probability of output i given input j. This claim neither proves quantum DPI nor derives a physical gravitational channel or response law. Aristotle project 74503dba returned the unchanged target; Codex independently replayed it, corrected the prose convention, added equality and strictness controls, and passed the 8,381-job aggregate guard."
+    },
+    {
+      "id": "INFO-UNIFORM-MAXENTROPY",
+      "statement": "On every finite nonempty sample space, a nonnegative normalized probability vector has Shannon entropy at most log of the cardinality, with equality exactly for the uniform distribution; an explicit point mass on Fin 2 is strictly below the maximum.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.FiniteUniformMaxEntropy.entropy_le_log_card",
+        "PhysicsSM.Draft.NullEdge.FiniteUniformMaxEntropy.entropy_eq_log_card_iff",
+        "PhysicsSM.Draft.NullEdge.FiniteUniformMaxEntropy.pointMassTwo_entropy_strict"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Scalar classical maximum entropy only. It neither characterizes density matrices nor includes a nontrivial energy expectation constraint, so it does not close Gibbs-state uniqueness for DYN-MODULAR-001. Aristotle project 273a28be returned both targets unchanged; Codex and Claude independently replayed them, and Codex integrated the live API with an explicit strict witness. The 8,386-job aggregate guard passes."
+    },
+    {
+      "id": "INFO-PINSKER-FINITE",
+      "statement": "For finite normalized p with nonnegative entries and strictly positive q, relative entropy is at least one half of the square of the displayed L1 distance sum_i |p_i - q_i|.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.Pinsker.pinsker"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "The module calls the unhalved L1 distance totalVariation; the coefficient is stated accordingly. This is classical finite information theory, not quantum Pinsker and not a gravity law. Claude integrated Aristotle project 9cc68db9; Codex independently replayed the return and rebuilt the live module and aggregate guard."
+    },
+    {
+      "id": "INFO-CLASSICAL-SSA",
+      "statement": "Every finite nonnegative normalized joint distribution obeys classical Shannon strong subadditivity H(XYZ) + H(Z) <= H(XZ) + H(YZ) for the displayed marginals; the displayed conditional-independence identity gives equality, while an explicit correlated Fin 2 witness gives strict inequality.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.ClassicalSSA.shannon_ssa",
+        "PhysicsSM.Draft.NullEdge.ClassicalSSAControls.ssa_eq_of_condIndep",
+        "PhysicsSM.Draft.NullEdge.ClassicalSSAControls.ssa_strict_witness"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "The equality theorem proves only that the displayed conditional-independence identity is sufficient; it does not characterize all equality cases. The result is classical finite information theory and does not imply quantum SSA, holography, or gravity. Claude integrated Aristotle projects f52514f3 and 92ee3e9e. Codex independently rebuilt both, corrected an overstrong 'exactly' sentence in the control prose, and recorded a semantic review. The 8,392-job aggregate guard build passes."
+    },
+    {
+      "id": "INFO-PURITY-BOUNDS",
+      "statement": "For every finite Hermitian positive-semidefinite complex matrix of trace one, eigenvalue purity is at most one and, on a nonempty d-dimensional space, at least 1/d.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.PurityBounds.purity_le_one",
+        "PhysicsSM.Draft.NullEdge.PurityBounds.inv_card_le_purity"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "This is a finite eigenvalue-purity bound. The module does not prove the equality characterizations, monotonicity under a physical channel, or an entanglement/mass interpretation. Claude integrated Aristotle project d8ca01fc; Codex independently rebuilt the live module and wired aggregate pins."
+    },
+    {
+      "id": "GAUGE-OVERLAP-CONJ-COV",
+      "statement": "For finite complex matrices with a certified overlap sign, a single one-sided unitary basis change transports the sign certificate and overlap operator by conjugation and preserves the finite trace overlap index; an explicit nonidentity swap witnesses nonvacuity.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.GateC2.OverlapGaugeCovarianceCapstone.Dov_conj",
+        "PhysicsSM.Draft.NullEdge.GateC2.OverlapGaugeCovarianceCapstone.gauge_covariance_package",
+        "PhysicsSM.Draft.NullEdge.GateC2.OverlapGaugeCovarianceCapstone.nonidentity_gauge_control",
+        "PhysicsSM.Draft.NullEdge.GateC2.OverlapGaugeCovarianceCapstone.nonzero_index_forces_gap_closure"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Finite algebraic conjugation covariance only. The theorem constructs no nonzero-index background, locality bound, continuum anomaly, or physical gauge connection. Claude-family skeptic review returned ACCEPT_WITH_SCOPE after checking one-sided unitarity, shared conjugation data, the nonidentity swap, and the conditional gap-closure boundary. Targeted builds pass."
+    },
+    {
+      "id": "L0-POISSON-LORENTZ-SOURCE",
+      "statement": "Primary causal-set literature supports Poincare invariance of homogeneous Poisson sprinkling in law and a no-go against measurable equivariant extraction of a preferred finite direction set, reference frame, or finite-valency graph; it does not establish Poisson uniqueness or canonical null-edge decorations.",
+      "grade": "T",
+      "srl": 2,
+      "decl_anchors": [],
+      "guard_file": "",
+      "manuscript_uses": [
+        "Sources/Null_Edge_References.md",
+        "Sources/Null_Edge_All_Mass_Manuscript_2026-07-08_v1.md",
+        "Sources/Null_Edge_Cosmological_Constant_Manuscript_Draft_2026-07-12.tex",
+        "PhysicsSM/Draft/NullEdge/LambdaFrameConstraint.lean"
+      ],
+      "notes": "Source map co-signed by Codex and Claude after full-text chunk review of Bombelli-Henson-Sorkin gr-qc/0605006 and Dowker-Sorkin 1909.06070. Mathlib currently supplies only the one-variable Poisson distribution on Nat; no configuration-space Poisson point-process API was found locally. No Lean formalization, Poisson-uniqueness claim, hyperuniform no-go, finite decoration, tetrad, or scale is promoted."
+    },
+    {
+      "id": "MATRIX-PSD-TRACE",
+      "statement": "For finite complex positive-semidefinite matrices A and B, the real part of trace(A B) is nonnegative.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.PSDTrace.trace_mul_nonneg"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Pure finite matrix algebra. This is a positivity foundation, not a density-matrix entropy theorem. Claude integrated Aristotle project 5edc72d8; Codex independently rebuilt the module and aggregate guard."
+    },
+    {
+      "id": "MATRIX-HS-CS",
+      "statement": "Finite complex matrices satisfy the Hilbert-Schmidt Cauchy-Schwarz bound |trace(A^H B)|^2 <= Re trace(A^H A) Re trace(B^H B).",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.HilbertSchmidt.hs_cauchy_schwarz"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Pure finite matrix algebra. It supplies an overlap bound but no modular-flow or maximum-entropy conclusion by itself. Claude integrated Aristotle project 5c6b4653; Codex independently rebuilt the module and aggregate guard."
+    },
+    {
+      "id": "L0-FINITE-BOOST",
+      "statement": "For the exact rational 3-4-5 Lorentz boost, the selected future unit-timelike vector has an injective forward orbit, so no finite support containing it can be forward-invariant. The zero singleton and identity transformation remain finite invariant boundary controls.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.L0FiniteSupportBoostNoGo.no_finite_forward_invariant_support",
+        "PhysicsSM.Draft.NullEdge.L0FiniteSupportBoostNoGo.restVec_control",
+        "PhysicsSM.Draft.NullEdge.L0FiniteSupportBoostNoGo.zero_singleton_forwardInvariant",
+        "PhysicsSM.Draft.NullEdge.L0FiniteSupportBoostNoGo.identity_preserves_every_finite_support"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
+      ],
+      "notes": "This is only a fixed-finite-support obstruction. It neither proves nor disproves Lorentz invariance in distribution for random causal orders. Claude-family semantic audit co-signed the theorem and boundary. Independent focused Aristotle task 6287586e re-proved all eleven exact targets from definitions with no copied proofs or statement changes; the returned file compiles locally with the standard-three footprint. Work item L0-BOOST-001 is integrated."
+    },
+    {
+      "id": "CONT-EXACTFLOW-SAMPLED-CELLS",
+      "statement": "For every four-component L2 momentum field and every refinement-dependent choice of one physical point inside each scheduled momentum cell, the total squared coefficient error between exact Dirac evolution at those points and at the corresponding cell centers tends to zero uniformly, with explicit bound (3 |t| h / 2)^2 times the input energy.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.ExactFlowCellSampleEnergy.exactCellSampleError_energy_le",
+        "PhysicsSM.Draft.NullEdge.ExactFlowCellSampleEnergy.exactCellSampleError_tendsto_zero"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "The sample may vary arbitrarily with the refinement level and cell, and membership in the physical cell is the only representative condition. The coefficients are the actual normalized cell averages of the input field, and their total energy is bounded by the landed L2 contraction. This is a finite sampled convergence theorem, not the continuously varying cell integral, inverse Fourier reconstruction, position-space PDE convergence, or Lorentz restoration. Claude-family review independently replayed the module and returned ACCEPT_WITH_SCOPE in AutonomousLab/work/NE-CONTINUUM/CLAUDE_AUDIT_EXACTFLOW_CELL_SAMPLE_2026-07-12.md."
+    },
+    {
+      "id": "INFO-GIBBS-VARIATIONAL",
+      "statement": "For every finite nonempty energy spectrum and supplied inverse temperature, the constructed Gibbs probability distribution uniquely maximizes Shannon entropy among all nonnegative normalized distributions with the same displayed mean energy. A nonconstant three-level spectrum has a distinct same-energy competitor with a strict entropy deficit.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.GibbsVariational.gibbs_maximizes_entropy",
+        "PhysicsSM.Draft.NullEdge.GibbsVariationalControls.edgeCompetitor_same_energy",
+        "PhysicsSM.Draft.NullEdge.GibbsVariationalControls.edgeCompetitor_ne_gibbs",
+        "PhysicsSM.Draft.NullEdge.GibbsVariationalControls.edgeCompetitor_entropy_strict"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Finite classical distribution-level variational theorem only. The energies and inverse temperature are supplied, and no dynamics selects them. The three-level control rules out a singleton feasible set but does not prove the noncommuting density-matrix Gibbs theorem, identify spectral von Neumann entropy with the local Bloch formula, or derive the live Pluecker generator. Aristotle project 5c0fa5d3 supplied the general proof; Codex independently rebuilt it, added the strict non-hollow control, and passed the 8,395-job aggregate axiom guard."
+    },
+    {
+      "id": "INFO-QUANTUM-KLEIN-SHARED",
+      "statement": "For two finite probability spectra represented in one supplied unitary eigenbasis, the displayed co-diagonalizable matrix relative entropy is nonnegative.",
+      "grade": "M",
+      "srl": 3,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.QuantumKleinShared.qRelEntropy_eq_sum",
+        "PhysicsSM.Draft.NullEdge.QuantumKleinShared.qKlein_nonneg"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Shared-eigenbasis commuting case only. The logarithms are constructed from supplied spectra and basis. This is not general noncommuting quantum Klein, quantum data processing, a physical channel, or a gravity theorem. Aristotle project 71655acc supplied the proof; Claude banked it and Codex independently audited its restricted semantics."
+    },
+    {
+      "id": "INFO-COLLISION-SHANNON",
+      "statement": "For every finite nonempty probability vector, collision entropy, defined as the negative logarithm of the summed squares, is at most Shannon entropy.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.CollisionShannon.collision_le_shannon"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Finite classical Renyi-order inequality only. It does not identify collision entropy with a physical resource, prove channel monotonicity, or derive dynamics. Aristotle project 7ea3de59 supplied the proof and Claude banked it."
+    },
+    {
+      "id": "INFO-VN-PURITY",
+      "statement": "For every finite nonempty positive-semidefinite Hermitian complex matrix of trace one, spectral von Neumann entropy is at least minus the logarithm of spectral purity.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.VNEntropyPurity.vonNeumann_ge_neg_log_purity"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Single-state finite spectral inequality only. It proves no channel monotonicity, equality classification, modular selection, or physical resource interpretation. Aristotle project 2546eaa9 supplied the proof and Claude banked it."
+    },
+    {
+      "id": "DYN-FULL-FOCK-CANONICAL-EXP",
+      "statement": "An explicit sixteen-occupation matrix acts exactly as the canonical finite-CAR pair generator Kop on every coordinate, and for every complex coupling including zero its matrix exponential acts exactly as the canonical cosine-sine Uop, including identity action on all fourteen inactive states.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.CanonicalFullFockPairExponential.canonicalKopMatrix_mulVec",
+        "PhysicsSM.Draft.NullEdge.CanonicalFullFockPairExponential.exp_mulVec_eq_canonicalUop"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Finite supplied-generator identity only. The canonical bridge repairs the local-declaration mismatch identified by cross-family review and separately closes the zero-coupling boundary. It does not derive z, select the time parameter, prove maximum-entropy selection, or construct a continuum interaction. Aristotle project 508eafd0 supplied the local exponential proof; Claude banked it, and Codex proved the exact canonical API bridges and universal boundary composition. The 8,403-job aggregate axiom guard passes."
+    },
+    {
+      "id": "DYN-QUBIT-FIXED-ENERGY-MAXENT",
+      "statement": "Every Hermitian trace-one qubit matrix has the displayed full Bloch parameterization, positive semidefiniteness is exactly the closed Bloch-ball condition, and at fixed sigma-X expectation e the displayed radial entropy is uniquely maximized by zero transverse coordinates, with an explicit strict noncommuting control.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy.pairBloch_surjective",
+        "PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy.pairBloch_posSemidef_iff",
+        "PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy.pairBloch_sigmaX_expectation",
+        "PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy.pairEntropy_le_fixedEnergy",
+        "PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy.pairEntropy_eq_fixedEnergy_iff",
+        "PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy.transverse_strict_control"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "The variational family is the full Hermitian trace-one qubit slice, not a commuting subfamily, and the closed-ball hypothesis supplies genuine density matrices. The local radial entropy has not yet been formally identified with the repository's spectral von Neumann entropy, and the optimizer has not yet been identified with the normalized Gibbs state of the canonical Bz 1 generator. Aristotle builder project 4ef06d09 closed all ten unchanged targets; audit project 8fd19c81 and independent Claude-family review both found no missing hypothesis, semantic counterexample, or hidden commuting reduction. The 8,403-job aggregate axiom guard passes."
+    },
+    {
+      "id": "CONT-EXACTFLOW-CELL-INTEGRAL",
+      "statement": "For every componentwise L2 four-spinor field, the actual continuously varying exact Dirac multiplier minus its cell-center value has an exact disjoint-cell energy decomposition, is bounded by the squared physical cell rate times the input energy, and converges to zero in total embedded L2 energy.",
+      "grade": "M",
+      "srl": 5,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.ExactFlowCellIntegral.exactCellVariationField_energy_eq",
+        "PhysicsSM.Draft.NullEdge.ExactFlowCellIntegral.exactCellVariationField_energy_le",
+        "PhysicsSM.Draft.NullEdge.ExactFlowCellIntegral.exactCellVariationField_tendsto_zero"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "This is the actual within-cell integral, not a finite sampled surrogate. Continuity, integrability, disjointness, normalization cancellation, and the global bound are derived without extra regularity beyond componentwise L2. It does not yet apply inverse Fourier transport, identify the position-space Dirac PDE domain, or prove Lorentz restoration. Aristotle project 5f03e432 returned all original target statements unchanged; Codex replayed them against the live repository and passed the 8,403-job aggregate axiom guard. Cross-family semantic review is required before work-item integration."
+    },
+    {
+      "id": "DYN-THERMAL-BZ-CLOSED-FORM",
+      "statement": "For every nonzero complex pair coupling and real inverse temperature, the exponential of the displayed two-by-two rest block has an exact hyperbolic Euler form, trace twice the corresponding hyperbolic cosine, and the normalized Gibbs matrix has the displayed identity-minus-tanh-times-generator closed form.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.ThermalBzEuler.thermal_bz_euler",
+        "PhysicsSM.Draft.NullEdge.ThermalBzEuler.trace_thermal_bz",
+        "PhysicsSM.Draft.NullEdge.ThermalBzEuler.gibbs_bz_closed_form"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [],
+      "notes": "Finite local matrix theorem for supplied nonzero z and beta. The matrix literal matches the canonical Bz, but the exact API bridge and the specialization beta = -artanh e to the landed qubit optimizer remain successor theorems. The claim does not derive temperature, coupling, thermalization, or maximum-entropy selection. Aristotle project 643a0af0 supplied the proof and Claude banked it with a kernel-only self-guard. The 8,403-job aggregate axiom guard passes."
+    },
+    {
+      "id": "A-PLUECKER-MASS-AREA",
+      "statement": "For every finite family of two-component complex spinors, the determinant of the summed rank-one momentum matrix is the sum of all pairwise squared Pluecker areas. For a pair, the canonical odd Hermitian rest operator built from that same wedge squares to the momentum determinant times the identity, and the resulting finite Dirac symbol squares to k^2 plus that determinant.",
+      "grade": "M",
+      "srl": 5,
+      "decl_anchors": [
+        "PhysicsSM.Spinor.PluckerMass.fin_bundle_det_eq_ofReal_pluckerMassReal",
+        "PhysicsSM.Spinor.PluckerMass.two_edge_mass_zero_iff_wedge_zero",
+        "PhysicsSM.Draft.NullEdge.PlueckerMassOperator.Bz_sq",
+        "PhysicsSM.Draft.NullEdge.PlueckerMassOperator.hero_identity"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean (operator); PhysicsSM/Spinor/PluckerMass.lean (trusted base)",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
+      ],
+      "notes": "Exact finite kinematics and operator algebra. The identity selects no measured mass value, does not derive the spinor data or their scale, and is not by itself an action, stability theorem, continuum limit, or Standard Model mass mechanism. The pair rest operator uses the same wedge as the determinant; no independent scalar mass parameter occurs in these statements."
+    },
+    {
+      "id": "INFO-NULL-ENTROPY",
+      "statement": "For a future-cone momentum with positive energy, the entropy of the displayed normalized two-level visible-momentum block is zero exactly on the null boundary; it is positive for timelike momentum and reaches log 2 at rest.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_eq_zero_iff_null",
+        "PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_pos_of_timelike",
+        "PhysicsSM.Draft.NullEdge.GateI1.MassEntropyDictionary.vonNeumannEntropy_rest_eq_log_two"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/GateI1/MassEntropyDictionary.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
+      ],
+      "notes": "Finite reconstruction identity for the displayed observer-conditioned normalized block. It is not a universal thermodynamic entropy law, a derivation of proper time, or proof that an arbitrary null process has no internal dynamics."
+    },
+    {
+      "id": "A-DOUBLING-CENSUS",
+      "statement": "In the displayed three-axis split-step census, all eight Boolean momentum corners carry charge plus or minus one, the two Floquet gaps have opposite charge at every corner, and the total charge over the eight corners is exactly zero; the derived capstone census agrees with the landed parity census.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.chargeOf_census",
+        "PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.census_floquet_opposition",
+        "PhysicsSM.Draft.NullEdge.SplitStepChargeBalance.census_sum_zero",
+        "PhysicsSM.Draft.NullEdge.CensusDerivationBridge.capstone_charge_reproduces_landed"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
+      ],
+      "notes": "Exact bookkeeping for one finite split-step architecture. It is not a universal fermion-doubling theorem, does not eliminate the extra corners, and does not establish a chiral continuum theory."
+    },
+    {
+      "id": "A-COVARIANCE-FORCED",
+      "statement": "A unitary two-by-two basis change that keeps the displayed complex rest-operator family covariant at the probes z=1 and z=i must be diagonal or antidiagonal. On the orientation-preserving branch it is, modulo a unimodular scalar, exactly a chiral phase; an explicit nontrivial rotation fails the covariance condition.",
+      "grade": "M",
+      "srl": 4,
+      "decl_anchors": [
+        "MassCovarianceForcing.classification",
+        "MassCovarianceForcing.covariance_group_eq_chiralPhase",
+        "MassCovarianceForcing.blockOf_gauge_forced",
+        "MassCovarianceForcing.rotation_not_covariant"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
+      ],
+      "notes": "Finite classification conditional on the displayed two-probe covariance and unitarity hypotheses. It does not derive those hypotheses dynamically, identify the full Standard Model gauge group, or establish continuum local gauge symmetry."
+    },
+    {
+      "id": "C1-FREE-CHIRAL-PROJECTORS",
+      "statement": "On the finite free tetrahedral regulator, under the displayed Hermitian-unitary grading, anticommutation, and positive-gap hypotheses, the Fourier-transported sign operator is a self-adjoint involution and its plus/minus Weyl operators are complementary idempotent spectral projectors.",
+      "grade": "M",
+      "srl": 3,
+      "decl_anchors": [
+        "PhysicsSM.Draft.NullEdge.GateC1.TetraOperatorOverlapGW.signHfree_involutive",
+        "PhysicsSM.Draft.NullEdge.GateC1.TetraOperatorOverlapGW.signHfree_selfAdjoint",
+        "PhysicsSM.Draft.NullEdge.GateC1.TetraOperatorWeylProjectors.weylProjOp_add",
+        "PhysicsSM.Draft.NullEdge.GateC1.TetraOperatorWeylProjectors.weylProjOpPlus_idem"
+      ],
+      "guard_file": "PhysicsSM/Draft/NullEdge/OvernightTheoryAxiomGuard.lean",
+      "manuscript_uses": [
+        "Sources/Null_Edge_Program_Overview_Packet_2026-07-12.tex"
+      ],
+      "notes": "Free finite-regulator spectral decomposition only. The gap and Clifford hypotheses are supplied. This claim constructs no gauge background, nonzero index, anomaly, interacting chiral theory, continuum limit, or proof of anomaly cancellation."
     }
   ]
 }

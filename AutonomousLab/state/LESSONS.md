@@ -31,3 +31,28 @@
   convention in `AutonomousLab/AGENTS.md`.
 - Write the session handoff when context is at risk (before compaction), not
   only at session end; a handoff reconstructed from memory is fiction.
+- Before handing a target to Aristotle, check whether an already-proven
+  in-repo theorem is structurally parallel: DYN-MODULAR-001 was self-proved
+  kernel-clean in one session by reusing the `ModularSelection.equipartition_generator`
+  diagonal-extraction pattern and the `PlueckerPairGenerator.Uop` closed form,
+  spending zero Aristotle budget. "Prepare a clean statement for Aristotle" and
+  "land it yourself" are the same first step; do the cheap parallel-pattern
+  check before assuming a proof is hard.
+- The cross-family gate earns its keep on prose, not kernels. DYN-MODULAR-001's
+  Lean proofs were correct, but the cross-family (Codex) review caught four
+  real over-reads the builder (claude) missed: calling a non-Hermitian family
+  "Hermitian" (complex diagonal), calling non-commuting projectors "conserved
+  charges", "modular/Gibbs/max-entropy" language beyond what was composed, and
+  a phase witness attached to the supplied evolution rather than the selected
+  flow. Same-family self-review would likely have shared the framing blind
+  spot. When you build, expect the independent reviewer to find the
+  docstring-outruns-kernel gaps; when you review, look there first even when
+  the kernel is green. The repair strengthened the result (added the genuine
+  Gibbs composition + Hermiticity + a noncommutation control).
+- Literature ingestion must be idempotent across partial commits, not only
+  successful runs. On 2026-07-12 Zotero accepted `1909.06070`, but the parent
+  process decoded the MCP response with the wrong Windows encoding and crashed
+  before the Neo4j write. The repair forces UTF-8 in the child process and
+  searches Zotero by normalized arXiv identity before creating an item, so a
+  retry reuses the canonical key instead of minting a duplicate. Keep the
+  Zotero write and Neo4j write as a recoverable two-phase operation.

@@ -1,6 +1,8 @@
 # Work item: ID - title
 
 - Project:
+- Parent item (or none):
+- Dependencies:
 - State:
 - Priority:
 - Owner model/role:
@@ -13,6 +15,9 @@
 ## Intended reading
 
 ## Nearest work and source status
+
+State the closest stronger claim that this item does not establish and the
+missing theorem, experiment, or assumption separating it from the exact claim.
 
 ## Inputs and conventions
 
@@ -27,6 +32,15 @@
 ## Prohibited weakening/promotion
 
 ## Verification commands
+
+Commands must be runnable by a clean-context agent. List expected artifacts
+and claim-registry IDs separately.
+
+## Deliverables and evidence links
+
+- Deliverables:
+- Evidence paths:
+- Claim-registry IDs:
 
 ## Forecasts
 

@@ -1,6 +1,95 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-12T11:50:00-07:00",
+  "updated_at": "2026-07-12T22:48:28-07:00",
   "note": "Auto-appended by labctl transition on first entry to INTEGRATED/RELEASED (success) or KILLED/RETRACTED (failure). Scored at the monthly metascience review; entries are never edited retroactively.",
-  "entries": []
+  "entries": [
+    {
+      "item_id": "CONT-PROJ-001",
+      "forecast_success": 0.55,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T13:37:10-07:00",
+      "recorded_by": "codex/lab_manager"
+    },
+    {
+      "item_id": "L0-BOOST-001",
+      "forecast_success": 0.78,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T14:05:23-07:00",
+      "recorded_by": "codex/lab_manager"
+    },
+    {
+      "item_id": "LAB-BOOTSTRAP-001",
+      "forecast_success": 0.97,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T15:00:18-07:00",
+      "recorded_by": "codex/lab_manager"
+    },
+    {
+      "item_id": "GRAV-DPI-001",
+      "forecast_success": 0.74,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T16:40:29-07:00",
+      "recorded_by": "codex/skeptic"
+    },
+    {
+      "item_id": "CONT-LIVE-001",
+      "forecast_success": 0.66,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T17:25:08-07:00",
+      "recorded_by": "codex/research_scientist"
+    },
+    {
+      "item_id": "L0-DIST-001",
+      "forecast_success": 0.72,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T17:47:51-07:00",
+      "recorded_by": "codex/archivist"
+    },
+    {
+      "item_id": "GAUGE-COV-001",
+      "forecast_success": 0.7,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T17:47:51-07:00",
+      "recorded_by": "codex/research_scientist"
+    },
+    {
+      "item_id": "GRAV-SSA-001",
+      "forecast_success": 0.68,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T17:47:51-07:00",
+      "recorded_by": "codex/skeptic"
+    },
+    {
+      "item_id": "GAUGE-YM-KP-001",
+      "forecast_success": 0.55,
+      "outcome": "failure",
+      "resolved_status": "KILLED",
+      "resolved_at": "2026-07-12T20:04:04-07:00",
+      "recorded_by": "codex/skeptic"
+    },
+    {
+      "item_id": "CONT-MULT-001",
+      "forecast_success": 0.52,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T20:58:20-07:00",
+      "recorded_by": "codex/research_scientist"
+    },
+    {
+      "item_id": "DYN-MODULAR-001",
+      "forecast_success": 0.62,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-12T22:48:28-07:00",
+      "recorded_by": "codex/skeptic"
+    }
+  ]
 }

@@ -6,11 +6,11 @@
   "strategic_year": 1,
   "strategic_quarter": "Y1-Q1",
   "current_cycle": {
-    "id": "BOOTSTRAP-2026-07-12",
+    "id": "GR-CONTINUUM-2026-07-16",
     "status": "active",
-    "phase": "institutional_setup",
-    "started_at": "2026-07-12T11:00:00-07:00",
-    "planned_end_at": "2026-07-13T11:00:00-07:00"
+    "phase": "focused_execution",
+    "started_at": "2026-07-16T05:47:58-07:00",
+    "planned_end_at": "2026-07-16T17:56:58-07:00"
   },
   "active_project_ids": [
     "LAB-INFRA",
@@ -24,21 +24,18 @@
   "availability": {
     "codex": {
       "status": "available",
-      "last_checked": "2026-07-12T11:00:00-07:00"
+      "last_checked": "2026-07-13T17:48:25-07:00",
+      "detail": "Concurrent transaction-lock verification after Windows race fix."
     },
     "claude": {
       "status": "available",
-      "detail": "Interactive Claude Code session (Fable); first-class lab agent as of 2026-07-12. Same model family as the Opus wrapper: the two are not independent reviewers of each other.",
-      "last_checked": "2026-07-12T11:50:00-07:00"
-    },
-    "opus": {
-      "status": "degraded",
-      "detail": "Repository wrapper authentication/credit unresolved (BLK-001); no longer promotion-blocking because the interactive claude lane carries Claude-family review. Separate authenticated Opus session may still be started by the Research Director.",
-      "last_checked": "2026-07-12T11:50:00-07:00"
+      "detail": "Interactive Claude solo session until ~18:00 2026-07-16; lane claimed",
+      "last_checked": "2026-07-16T05:48:34-07:00"
     },
     "aristotle": {
       "status": "available",
-      "last_checked": "2026-07-12T10:12:00-07:00"
+      "last_checked": "2026-07-16T05:48:34-07:00",
+      "detail": "Live list responsive; ~25 IDLE projects awaiting harvest triage incl untracked 07-15 causal-operator wave"
     }
   },
   "work_in_progress_limits": {
@@ -48,12 +45,21 @@
     "aristotle_projects": 8
   },
   "last_reviews": {
-    "daily": null,
+    "daily": "2026-07-13T00:16:48-07:00",
     "weekly": null,
     "monthly": null,
     "quarterly": null,
     "annual": null
   },
   "release_state": "internal_research",
-  "human_release_required": true
+  "human_release_required": true,
+  "execution_mode": {
+    "kind": "collaborative",
+    "active_model": null,
+    "proof_backend": "aristotle",
+    "independent_review_policy": "cross_family_required",
+    "started_at": "2026-07-16T05:50:56-07:00",
+    "planned_end_at": null,
+    "reason": "Both interactive families have Director /goal windows until 18:00 today (codex: continuum-GR from bare graph; claude: general lab operation). Claude's 05:48 solo-set unknowingly stomped codex's 05:46 solo-set; collaborative is the true state."
+  }
 }

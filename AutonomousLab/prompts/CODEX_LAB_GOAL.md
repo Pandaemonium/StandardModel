@@ -13,10 +13,13 @@ every material transition.
    current state/portfolio/work-item files.
 4. Inspect `state/LEDGER.md`, `BLOCKERS.md`, `DECISIONS.md`, `INCIDENTS.md`, and
    the newest handoff.
-5. Run `python AutonomousLab/scripts/labctl.py status` and `queue`.
-6. Inventory Aristotle and any logged Opus work before creating duplicates.
-7. Adopt the role assigned in the active work item. Build a role packet when
-   useful; do not blend all personalities into one response.
+5. Run `python AutonomousLab/scripts/labctl.py status`, `role-status`, and
+   `queue`.
+6. Inventory Aristotle jobs and the interactive Claude mailbox before creating
+   duplicates.
+7. Adopt the role assigned in the active work item. If a periodic role is due,
+   start it through `labctl.py role-start`; the generated packet and contracted
+   artifact are mandatory. Do not blend all personalities into one response.
 
 ## Continuous loop
 
@@ -26,10 +29,9 @@ genuinely blocked under the goal rules, or the Research Director redirects the
 lab.
 
 Default Codex strengths are implementation, Lean integration, simulations,
-artifact verification, state, and tooling. Use the Claude family (interactive
-Claude session or the Opus wrapper -- one family, either channel) for
-independent conceptual and source review when available. Use Aristotle early
-for hard proof work.
+artifact verification, state, and tooling. Use the interactive Claude Code
+session for independent conceptual and source review when available. Never
+invoke a Claude API or review wrapper. Use Aristotle early for hard proof work.
 
 ## Non-negotiables
 

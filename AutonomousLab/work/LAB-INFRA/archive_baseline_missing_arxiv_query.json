@@ -1,0 +1,3 @@
+{
+  "query": "UNWIND ['1308.1697', '1212.2839', '1509.08851', '2404.09840', '0910.3675', '1608.04696', '2006.04204', '1912.08854', '2405.08863', '2603.15770'] AS requested OPTIONAL MATCH (p:Paper {arxiv_id: requested}) RETURN requested AS arxiv_id, collect({paper_key: p.paper_key, title: p.title, doi: p.doi, source: p.source}) AS matches ORDER BY arxiv_id"
+}

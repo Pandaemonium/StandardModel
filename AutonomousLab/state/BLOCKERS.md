@@ -2,5 +2,11 @@
 
 | ID | Project | Blocker | Type | First seen | Owner | Next test |
 | --- | --- | --- | --- | --- | --- | --- |
-| BLK-001 | LAB-INFRA | Opus wrapper API path lacks credit; Pro path is not authenticated inside the isolated wrapper | external service | 2026-07-12 | Codex Lab Manager | No longer promotion-blocking: the interactive claude lane (added 2026-07-12) carries Claude-family review. Wrapper restoration is DQ-006 in the Director queue; retry only after authentication/billing changes |
-| BLK-002 | NE-CONTINUUM | Final arbitrary-L2 projection capstone incomplete in inherited Aristotle job | proof/analysis | 2026-07-12 | Codex Scientist | Download newest `b7405f03` snapshot and inspect exact remaining holes |
+(none)
+
+## Resolved
+
+| ID | Project | Resolution | Resolved |
+| --- | --- | --- | --- |
+| BLK-001 | LAB-INFRA | Research Director retired the Claude API/review-wrapper path. Interactive Claude Code is the sole Claude-family channel, so no billing or authentication repair is required. | 2026-07-12 |
+| BLK-002 | NE-CONTINUUM | Snapshot inspection confirmed both inherited holes. Codex factored the active-cell compact core and exact `6 + 3` density transfer into two kernel-checked modules; aggregate axiom guard passed. Stalled Aristotle task canceled after preservation. | 2026-07-12 |

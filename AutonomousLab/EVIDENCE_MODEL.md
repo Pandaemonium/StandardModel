@@ -84,6 +84,12 @@ credit as new landings at equal rigor.
 - semantic review by a different model;
 - provenance and convention audit.
 
+Solo mode does not remove the different-model semantic-review gate. A newly
+checked theorem may be recorded as a kernel-accepted internal draft with its
+build and guard evidence attached, but grade `M` promotion waits whenever the
+registered independent family is paused. Results promoted before solo mode keep
+their grade; the lab does not retroactively erase completed review.
+
 ### To SRL 6
 
 - changing spaces/maps are explicit;
@@ -137,3 +143,29 @@ registry row of the sentence's claimed grade; sentences without a row must be
 subjunctive or explicitly oracle/conjecture-labeled. `labctl.py validate`
 checks registry well-formedness (grades, SRL range, `M`/`M+E` rows must cite
 declarations); the Skeptic checks the sentence-to-row mapping at promotion.
+
+## 7. Evidence graph
+
+`state/WORK_ITEMS.json` connects execution to the claim registry. Every item
+records:
+
+- `parent_id` for an atomic rung of a larger work item;
+- `depends_on` for scientific or procedural prerequisites;
+- `nearest_work` for the closest stronger claim not established by the item;
+- `deliverables` for the artifacts whose failures can be judged separately;
+- `evidence_paths` for proofs, reports, source maps, simulations, or audits;
+- `claim_ids` for claim-registry rows supported or modified by the item;
+- `verification_commands` for clean-context replay.
+
+The graph is intentionally file-backed and inspectable. Unknown dependencies,
+dependency cycles, and unknown claim links are validation failures. A work item
+with several independently falsifiable deliverables should be split into a
+parent and atomic children before execution rather than marked partially done.
+
+## 8. Reproduction manifests
+
+`labctl.py repro-manifest WORK-ID` renders a deterministic packet from the
+work item. The Reproducer may add environment details and raw outputs, but may
+not silently change the claim, artifacts, or commands. A successful replay
+checks execution reproducibility; it does not replace semantic review of what
+the theorem or simulation means.

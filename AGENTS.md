@@ -16,6 +16,9 @@ operational detail lives in linked docs:
 - Aristotle submission/integration mechanics: [`docs/ARISTOTLE.md`](docs/ARISTOTLE.md)
 - Project conventions and convention-lock status:
   [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md)
+- External Lean libraries to consult before duplicating (borrow, do not
+  reinvent - Mathlib, PhysLean incl. its `QuantumInfo` entropy tree):
+  [`docs/EXTERNAL_LEAN_SOURCES.md`](docs/EXTERNAL_LEAN_SOURCES.md)
 - NullStrand/null-edge orientation and living program guardrails:
   [`docs/NULLSTRAND.md`](docs/NULLSTRAND.md)
 - Autonomous lab (persistent multi-agent research operations, roles, state):

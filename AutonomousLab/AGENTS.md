@@ -18,13 +18,16 @@ work inside `AutonomousLab/`.
 ## Roles
 
 - Use the role assigned by the work item and load the shared constitution plus
-  model overlay (`codex`, `claude` for interactive Claude sessions, `opus`
-  for the review wrapper, `aristotle`).
+  model overlay (`codex`, `claude` for interactive Claude Code sessions, or
+  `aristotle`).
 - A role switch within one model context is self-review, not independent
   review.
 - Builder and skeptic must be different **model families** for headline
-  promotion: Codex/GPT, Claude (interactive + wrapper are one family), and
-  Aristotle. `labctl.py validate` enforces this.
+  promotion: Codex/GPT, interactive Claude Code, and Aristotle.
+  `labctl.py validate` enforces this.
+- AFPL does not invoke Claude through an API or repository review wrapper.
+  Claude-family work is performed in the user-started interactive Claude Code
+  session and coordinated through the durable mailbox.
 - Aristotle cannot own a work item; it contributes through jobs recorded in
   `state/ARISTOTLE_JOBS.json`.
 - Release candidates require independent reproduction.

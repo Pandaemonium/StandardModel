@@ -31,21 +31,16 @@ Roles:
 ## 2. Agents, model families, and strengths
 
 The lab distinguishes **agents** (who does work) from **model families** (who
-counts as independent). Families: Codex/GPT; Claude (both the interactive
-Claude Code session and the Opus review wrapper); Aristotle. Independence for
-review is judged by family, and `labctl.py validate` enforces
-different-family builder/skeptic pairs.
+counts as independent). Families: Codex/GPT; interactive Claude Code;
+Aristotle. Independence for review is judged by family, and `labctl.py
+validate` enforces different-family builder/skeptic pairs.
 
 - **Codex:** repository reading, implementation, Lean integration, exact
   tooling, simulations, artifact verification, and operational state.
-- **Claude (interactive):** co-equal executor with full repository tools;
+- **Claude Code:** co-equal interactive executor with full repository tools;
   combined build-integrate-audit work, Lean statement preparation and
   Aristotle harvest review, manuscript claim discipline, hostile semantic
   review of Codex lanes.
-- **Opus (wrapper):** logged, read-only review calls through the repository
-  wrapper; batch conceptual analysis, literature interpretation, and
-  narrative strategy. Same family as interactive Claude: the two are not
-  independent reviewers of each other.
 - **Aristotle:** difficult Lean proofs, theorem decomposition, mathlib search,
   finite counterexamples, proof audits, and formal strategy. A
   submit-and-return service: it cannot own work items or mutate lab state.
@@ -58,14 +53,25 @@ Default pairings rotate:
 
 | Builder | Independent skeptic | Formal specialist |
 | --- | --- | --- |
-| Codex Scientist | Claude-family Skeptic (interactive or wrapper) | Aristotle Prover/Auditor |
-| Claude Scientist (interactive) | Codex Skeptic | Aristotle Prover/Auditor |
-| Opus Scientist (wrapper) | Codex Skeptic | Aristotle Prover/Auditor |
+| Codex Scientist | Claude Code Skeptic | Aristotle Prover/Auditor |
+| Claude Code Scientist | Codex Skeptic | Aristotle Prover/Auditor |
 | Aristotle proof result | one interactive family integrates | the other family audits semantics |
 
-The same family may perform a preliminary self-audit (including interactive
-Claude reviewing an Opus-wrapper output or vice versa), but it does not
-satisfy the independent-review gate.
+A second Claude Code persona may perform a preliminary self-audit, but it does
+not satisfy the independent-review gate.
+
+### Bounded solo operation
+
+The Research Director may activate the first-class execution mode documented in
+`SOLO_MODE.md`. The active interactive family may instantiate every role and
+use Aristotle, but temporary role plurality does not create model-family
+independence. Registered owner/skeptic pairings remain unchanged.
+
+The solo family may clear an independent review when it is the registered
+different-family skeptic of work built earlier by the paused family. Reviews of
+its own work that require the paused family remain deferred. Solo mode never
+waives a formal-landing, headline, reproduction, program-pivot, procedure, or
+release quorum; it converts the missing disposition into visible review debt.
 
 ## 4. Decision quorum
 
@@ -83,6 +89,11 @@ Requires:
 - cross-model Skeptic review;
 - Aristotle provenance if used;
 - Lab Manager state and guard audit.
+
+During solo mode, a new theorem may be built, checked, guarded, and provisionally
+integrated as an internal draft, but it does not satisfy this landing quorum
+until the registered independent review is complete. A prior independent review
+remains valid.
 
 ### Manuscript headline
 
